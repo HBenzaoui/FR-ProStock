@@ -1,0 +1,15 @@
+﻿[MainForm.Bona_recTable]
+Visible=False
+
+[MainForm.Bonv_livTable]
+Visible=False
+
+[MainForm.Bonv_facTable]
+Visible=False
+
+[MainForm.Bona_facTableCredit]
+Visible=False
+
+[MainForm.Bonv_ctrTable]
+Visible=False
+

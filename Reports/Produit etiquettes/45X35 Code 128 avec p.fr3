@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<TfrxReport Version="5.4.6" DotMatrixReport="False" IniFile="\Software\Fast Reports" PreviewOptions.Buttons="32767" PreviewOptions.Zoom="1" PrintOptions.Printer="Par défaut" PrintOptions.PrintOnSheet="0" ReportOptions.CreateDate="41864.6328157407" ReportOptions.Description.Text="" ReportOptions.LastChange="42585.0265378241" ScriptLanguage="PascalScript" ScriptText.Text="&#13;&#10;&#13;&#10;begin&#13;&#10;end.">
+  <Datasets>
+    <item DataSet="frxProduitDB" DataSetName="frxProduitDB"/>
+  </Datasets>
+  <Variables>
+    <item Name="PV" Value="3"/>
+  </Variables>
+  <TfrxDataPage Name="Data" Height="1000" Left="0" Top="0" Width="1000"/>
+  <TfrxReportPage Name="PAGE1" PaperWidth="45" PaperHeight="35" PaperSize="256" LeftMargin="0" RightMargin="0" TopMargin="0" BottomMargin="0" ColumnWidth="0" ColumnPositions.Text="" HGuides.Text="" VGuides.Text="">
+    <TfrxMemoView Name="PRODUIT" Align="baCenter" Left="1.889765" Top="15.1181102362205" Width="166.29932" Height="32.50393701" DataField="nom_p" DataSet="frxProduitDB" DataSetName="frxProduitDB" Font.Charset="1" Font.Color="0" Font.Height="-9" Font.Name="Helvetica LT Std" Font.Style="0" GapY="0" HAlign="haCenter" LineSpacing="0" ParentFont="False" Text="[frxProduitDB.&#34;nom_p&#34;]"/>
+    <TfrxMemoView Name="Name" Align="baCenter" Left="0" Top="1.77953" Width="170.07885" Height="12.8503937" OnBeforePrint="TITLEOnBeforePrint" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="Helvetica LT Std" Font.Style="5" GapY="0" HAlign="haCenter" ParentFont="False" Text=""/>
+    <TfrxMemoView Name="Prix" Align="baCenter" Left="1.889765" Top="102.60637" Width="166.29932" Height="27.96851126" OnBeforePrint="PPA2OnBeforePrint" DataSet="frxProduitDB" DataSetName="frxProduitDB" DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="0" Font.Height="-17" Font.Name="Helvetica LT Std" Font.Style="1" HAlign="haCenter" ParentFont="False" VAlign="vaCenter" Text=""/>
+    <TfrxBarCodeView Name="BAR_CODE" Align="baCenter" Left="29.039425" Top="48.7953" Width="112" Height="52.91339803" OnBeforePrint="BAR_CODEOnBeforePrint" BarType="bcCode128" DataField="codebar_p" DataSet="frxProduitDB" DataSetName="frxProduitDB" Expression="&#60;frxProduitDB.&#34;codebar_p&#34;&#62;" HAlign="haCenter" Rotation="0" Text="00000000000000" WideBarRatio="2" Zoom="1" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="Helvetica LT Std" Font.Style="0"/>
+  </TfrxReportPage>
+</TfrxReport>

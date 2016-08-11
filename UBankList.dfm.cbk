@@ -1,0 +1,894 @@
+object BankListF: TBankListF
+  Left = 0
+  Top = 0
+  Caption = 'BankListF'
+  ClientHeight = 741
+  ClientWidth = 1191
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  OnShow = FormShow
+  DesignSize = (
+    1191
+    741)
+  PixelsPerInch = 96
+  TextHeight = 13
+  object TopP: TPanel
+    Left = 0
+    Top = 0
+    Width = 1191
+    Height = 82
+    Align = alTop
+    BevelOuter = bvNone
+    Color = 15722984
+    DoubleBuffered = True
+    ParentBackground = False
+    ParentDoubleBuffered = False
+    TabOrder = 0
+    StyleElements = []
+    DesignSize = (
+      1191
+      82)
+    object PeriodBankListLbl: TLabel
+      Left = 462
+      Top = 32
+      Width = 59
+      Height = 18
+      Anchors = [akTop, akRight]
+      Caption = 'P'#233'riode:'
+      Color = 15722984
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 4207405
+      Font.Height = 19
+      Font.Name = 'Helvetica LT Std'
+      Font.Style = []
+      ParentColor = False
+      ParentFont = False
+      StyleElements = []
+    end
+    object sSpeedButton1: TsSpeedButton
+      Left = 1110
+      Top = 26
+      Width = 30
+      Height = 30
+      Hint = 'Modifer'
+      Anchors = [akTop, akRight]
+      ParentShowHint = False
+      ShowHint = True
+      SkinData.SkinSection = 'SPEEDBUTTON'
+      Images = MainForm.PanelIcons24
+      ImageIndex = 7
+    end
+    object sSpeedButton2: TsSpeedButton
+      Left = 1074
+      Top = 26
+      Width = 30
+      Height = 30
+      Hint = 'Modifer'
+      Anchors = [akTop, akRight]
+      ParentShowHint = False
+      ShowHint = True
+      SkinData.SkinSection = 'SPEEDBUTTON'
+      Images = MainForm.PanelIcons24
+      ImageIndex = 8
+    end
+    object sSpeedButton3: TsSpeedButton
+      Left = 1146
+      Top = 26
+      Width = 30
+      Height = 30
+      Hint = 'Modifer'
+      Anchors = [akTop, akRight]
+      ParentShowHint = False
+      ShowHint = True
+      SkinData.SkinSection = 'SPEEDBUTTON'
+      Images = MainForm.PanelIcons24
+      ImageIndex = 9
+    end
+    object Label1: TLabel
+      Left = 744
+      Top = 13
+      Width = 23
+      Height = 18
+      Anchors = [akTop, akRight]
+      Caption = 'Du:'
+      Color = 15722984
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 4207405
+      Font.Height = 18
+      Font.Name = 'Roboto'
+      Font.Style = []
+      ParentColor = False
+      ParentFont = False
+      StyleElements = []
+    end
+    object Label2: TLabel
+      Left = 745
+      Top = 48
+      Width = 22
+      Height = 18
+      Anchors = [akTop, akRight]
+      Caption = 'Au:'
+      Color = 15722984
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 4207405
+      Font.Height = 18
+      Font.Name = 'Roboto'
+      Font.Style = []
+      ParentColor = False
+      ParentFont = False
+      StyleElements = []
+    end
+    object Label3: TLabel
+      Left = 22
+      Top = 32
+      Width = 174
+      Height = 18
+      Caption = 'Les Comptes Bancaires:'
+      Color = 15722984
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 4207405
+      Font.Height = 19
+      Font.Name = 'Helvetica LT Std'
+      Font.Style = []
+      ParentColor = False
+      ParentFont = False
+      StyleElements = []
+    end
+    object ArrowsPnl: TPanel
+      Left = 921
+      Top = 29
+      Width = 132
+      Height = 25
+      Anchors = [akTop, akRight]
+      BevelEdges = []
+      BevelKind = bkFlat
+      BevelOuter = bvNone
+      Color = 15722984
+      Ctl3D = True
+      DoubleBuffered = False
+      FullRepaint = False
+      ParentBackground = False
+      ParentCtl3D = False
+      ParentDoubleBuffered = False
+      TabOrder = 0
+      StyleElements = []
+      object LastBBankbtn: TsSpeedButton
+        Left = 99
+        Top = 0
+        Width = 24
+        Height = 24
+        Hint = 'Modifer'
+        ParentShowHint = False
+        ShowHint = True
+        SkinData.SkinSection = 'SPEEDBUTTON'
+        Images = MainForm.PanelIcons24
+        ImageIndex = 3
+      end
+      object NextBankbtn: TsSpeedButton
+        Left = 69
+        Top = 0
+        Width = 24
+        Height = 24
+        Hint = 'Detaill'
+        ParentShowHint = False
+        ShowHint = True
+        SkinData.SkinSection = 'SPEEDBUTTON'
+        Images = MainForm.PanelIcons24
+        ImageIndex = 2
+        ShowCaption = False
+      end
+      object PreviosBankbtn: TsSpeedButton
+        Left = 39
+        Top = 0
+        Width = 24
+        Height = 24
+        Hint = 'Modifer'
+        ParentShowHint = False
+        ShowHint = True
+        SkinData.SkinSection = 'SPEEDBUTTON'
+        Images = MainForm.PanelIcons24
+        ImageIndex = 1
+      end
+      object FisrtBankbtn: TsSpeedButton
+        Left = 9
+        Top = 0
+        Width = 24
+        Height = 24
+        Hint = 'Detaill'
+        ParentShowHint = False
+        ShowHint = True
+        SkinData.SkinSection = 'SPEEDBUTTON'
+        Images = MainForm.PanelIcons24
+        ImageIndex = 0
+        ShowCaption = False
+      end
+    end
+    object LineP: TPanel
+      Left = 0
+      Top = 80
+      Width = 1207
+      Height = 2
+      Anchors = [akLeft, akTop, akRight]
+      BevelOuter = bvNone
+      Color = 7854350
+      ParentBackground = False
+      TabOrder = 1
+      StyleElements = []
+    end
+    object Panel1: TPanel
+      Left = 1189
+      Top = 21
+      Width = 1
+      Height = 40
+      ParentCustomHint = False
+      Anchors = [akTop, akRight]
+      BevelEdges = []
+      BevelOuter = bvNone
+      BiDiMode = bdLeftToRight
+      Color = 4207405
+      Ctl3D = True
+      DoubleBuffered = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentBiDiMode = False
+      ParentBackground = False
+      ParentCtl3D = False
+      ParentDoubleBuffered = False
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = False
+      TabOrder = 2
+      StyleElements = []
+    end
+    object S01: TPanel
+      Left = 1059
+      Top = 21
+      Width = 1
+      Height = 40
+      ParentCustomHint = False
+      Anchors = [akTop, akRight]
+      BevelEdges = []
+      BevelOuter = bvNone
+      BiDiMode = bdLeftToRight
+      Color = 4207405
+      Ctl3D = True
+      DoubleBuffered = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentBiDiMode = False
+      ParentBackground = False
+      ParentCtl3D = False
+      ParentDoubleBuffered = False
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = False
+      TabOrder = 3
+      StyleElements = []
+    end
+    object Panel2: TPanel
+      Left = 914
+      Top = 21
+      Width = 1
+      Height = 40
+      ParentCustomHint = False
+      Anchors = [akTop, akRight]
+      BevelEdges = []
+      BevelOuter = bvNone
+      BiDiMode = bdLeftToRight
+      Color = 4207405
+      Ctl3D = True
+      DoubleBuffered = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentBiDiMode = False
+      ParentBackground = False
+      ParentCtl3D = False
+      ParentDoubleBuffered = False
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = False
+      TabOrder = 4
+      StyleElements = []
+    end
+    object DateEndBankListD: TDateTimePicker
+      Left = 773
+      Top = 43
+      Width = 120
+      Height = 29
+      Anchors = [akTop, akRight]
+      Date = 42435.595104571760000000
+      Time = 42435.595104571760000000
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 4207405
+      Font.Height = 22
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 5
+    end
+    object DateStartBankListD: TDateTimePicker
+      Left = 773
+      Top = 8
+      Width = 120
+      Height = 29
+      Anchors = [akTop, akRight]
+      Date = 42435.595104571760000000
+      Time = 42435.595104571760000000
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 4207405
+      Font.Height = 22
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 6
+    end
+    object DaysBankListCbx: TComboBox
+      Left = 527
+      Top = 26
+      Width = 189
+      Height = 30
+      Style = csDropDownList
+      Anchors = [akTop, akRight]
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = 22
+      Font.Name = 'Helvetica LT Std'
+      Font.Style = []
+      ItemIndex = 0
+      ParentColor = True
+      ParentFont = False
+      TabOrder = 7
+      Text = 'Aujourd'#39'hui'
+      Items.Strings = (
+        'Aujourd'#39'hui'
+        'Hier'
+        'Mois en cours'
+        'Cette Ann'#233'e'
+        'Toutes')
+    end
+    object BankListCbx: TComboBox
+      Left = 202
+      Top = 26
+      Width = 200
+      Height = 30
+      Style = csDropDownList
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = 22
+      Font.Name = 'Helvetica LT Std'
+      Font.Style = []
+      ItemIndex = 0
+      ParentColor = True
+      ParentFont = False
+      TabOrder = 8
+      Text = 'Tous'
+      Items.Strings = (
+        'Tous')
+    end
+  end
+  object Panel3: TPanel
+    Left = 0
+    Top = 82
+    Width = 1
+    Height = 612
+    Align = alLeft
+    BevelOuter = bvNone
+    Color = 7854350
+    ParentBackground = False
+    TabOrder = 1
+    StyleElements = []
+    ExplicitHeight = 659
+  end
+  object CaisseListDBGridEh: TDBGridEh
+    Left = 0
+    Top = 82
+    Width = 1191
+    Height = 609
+    Anchors = [akLeft, akTop, akRight, akBottom]
+    Border.Color = 4207405
+    Border.ExtendedDraw = False
+    BorderStyle = bsNone
+    Color = clWhite
+    ColumnDefValues.EndEllipsis = True
+    ColumnDefValues.Title.TitleButton = True
+    ColumnDefValues.ToolTips = True
+    Ctl3D = True
+    DataGrouping.Active = True
+    DataSource = BankListDataS
+    DynProps = <>
+    EditActions = [geaSelectAllEh]
+    EvenRowColor = clWindow
+    FixedColor = clWindow
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = 4207405
+    Font.Height = 24
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    FooterRowCount = 1
+    FooterParams.FillStyle = cfstSolidEh
+    GridLineParams.DataHorzLines = True
+    GridLineParams.DataVertLines = True
+    HorzScrollBar.ExtraPanel.NavigatorButtons = [nbFirstEh, nbPriorEh, nbNextEh, nbLastEh, nbRefreshEh]
+    HorzScrollBar.ExtraPanel.Visible = True
+    HorzScrollBar.ExtraPanel.VisibleItems = [gsbiNavigator, gsbiSelAggregationInfoEh]
+    HorzScrollBar.Height = 15
+    IndicatorOptions = [gioShowRowselCheckboxesEh]
+    IndicatorParams.Color = clBtnFace
+    IndicatorParams.HorzLineColor = 15970832
+    IndicatorParams.VertLineColor = 15970832
+    IndicatorTitle.ShowDropDownSign = True
+    IndicatorTitle.TitleButton = True
+    OddRowColor = 16315635
+    Options = [dgTitles, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgMultiSelect]
+    OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghAutoSortMarking, dghMultiSortMarking, dghDialogFind, dghColumnResize, dghColumnMove, dghHotTrack, dghExtendVertLines]
+    ParentCtl3D = False
+    ParentFont = False
+    ParentShowHint = False
+    RowDetailPanel.Color = clBtnFace
+    RowHeight = 30
+    SearchPanel.FilterOnTyping = True
+    ShowHint = True
+    SumList.Active = True
+    SumList.VirtualRecords = True
+    TabOrder = 2
+    TitleParams.BorderInFillStyle = True
+    TitleParams.FillStyle = cfstThemedEh
+    TitleParams.Font.Charset = DEFAULT_CHARSET
+    TitleParams.Font.Color = 4207405
+    TitleParams.Font.Height = 19
+    TitleParams.Font.Name = 'Helvetica LT Std'
+    TitleParams.Font.Style = []
+    TitleParams.Font.Quality = fqProof
+    TitleParams.ParentFont = False
+    TitleParams.RowHeight = 25
+    TitleParams.SortMarkerStyle = smstThemeDefinedEh
+    TitleParams.VertLines = True
+    VertScrollBar.Width = 15
+    Columns = <
+      item
+        Alignment = taCenter
+        Checkboxes = False
+        DynProps = <>
+        EditButtons = <>
+        FieldName = 'valider_bvfac'
+        Footers = <>
+        ImageList = MainForm.GridIcons13
+        KeyList.Strings = (
+          'False'
+          'True')
+        Layout = tlCenter
+        ReadOnly = True
+        Title.Alignment = taCenter
+        Title.Caption = 'VA'
+        Title.EndEllipsis = True
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = 4207405
+        Title.Font.Height = 18
+        Title.Font.Name = 'Helvetica LT Std'
+        Title.Font.Style = []
+        Title.Font.Quality = fqProof
+        Title.ToolTips = True
+        Visible = False
+        Width = 24
+      end
+      item
+        Alignment = taCenter
+        DynProps = <>
+        EditButtons = <>
+        FieldName = 'date_ocb'
+        Footers = <>
+        Layout = tlCenter
+        Title.Alignment = taCenter
+        Title.Caption = 'Date'
+        Title.EndEllipsis = True
+        Title.ToolTips = True
+        Width = 113
+      end
+      item
+        Alignment = taCenter
+        DynProps = <>
+        EditButtons = <>
+        FieldName = 'time_ocb'
+        Footers = <>
+        Layout = tlCenter
+        Title.Alignment = taCenter
+        Title.Caption = 'Houre'
+        Title.EndEllipsis = True
+        Title.ToolTips = True
+        Width = 132
+      end
+      item
+        DynProps = <>
+        EditButtons = <>
+        FieldName = 'nom_ocb'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = 18
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
+        Footers = <>
+        Layout = tlCenter
+        Title.Alignment = taCenter
+        Title.Caption = 'Description'
+        Title.EndEllipsis = True
+        Title.ToolTips = True
+        Width = 400
+      end
+      item
+        DynProps = <>
+        EditButtons = <>
+        FieldName = 'third_ocb'
+        Footers = <
+          item
+            Alignment = taRightJustify
+            Color = 14276563
+            Value = 'Total:'
+            ValueType = fvtStaticText
+          end>
+        Layout = tlCenter
+        Title.Alignment = taCenter
+        Title.Caption = 'Tiers'
+        Title.EndEllipsis = True
+        Title.ToolTips = True
+        Width = 200
+      end
+      item
+        Checkboxes = False
+        DynProps = <>
+        EditButtons = <>
+        FieldName = 'code_mdpai'
+        Footers = <
+          item
+            Color = 14276563
+          end>
+        ImageList = MainForm.GridIconsMP20
+        KeyList.Strings = (
+          '1'
+          '2'
+          '3'
+          '4')
+        Layout = tlCenter
+        ReadOnly = True
+        Title.Alignment = taCenter
+        Title.Caption = 'MP'
+        Width = 28
+      end
+      item
+        Color = 14612166
+        DisplayFormat = '#,##0.00'
+        DynProps = <>
+        EditButtons = <>
+        FieldName = 'encaiss_ocb'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = 24
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        Footers = <
+          item
+            Alignment = taRightJustify
+            Color = 7854350
+            DisplayFormat = '#,##0.00'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = 4207405
+            Font.Height = 22
+            Font.Name = 'Segoe UI'
+            Font.Style = [fsBold]
+            ValueType = fvtSum
+          end
+          item
+            FieldName = 'encaiss_ocb'
+            ValueType = fvtFieldValue
+          end>
+        Layout = tlCenter
+        MinWidth = 150
+        Title.Alignment = taCenter
+        Title.Caption = 'Encaissement'
+        Title.EndEllipsis = True
+        Title.ToolTips = True
+        Width = 200
+      end
+      item
+        Color = 14210301
+        DisplayFormat = '#,##0.00'
+        DynProps = <>
+        EditButtons = <>
+        FieldName = 'decaiss_ocb'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = 24
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        Footers = <
+          item
+            Alignment = taRightJustify
+            Color = 4666873
+            DisplayFormat = '#,##0.00'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = 15722984
+            Font.Height = 22
+            Font.Name = 'Segoe UI'
+            Font.Style = [fsBold]
+            ValueType = fvtSum
+          end
+          item
+            FieldName = 'decaiss_ocb'
+          end>
+        Layout = tlCenter
+        MinWidth = 150
+        Title.Alignment = taCenter
+        Title.Caption = 'D'#233'caissement'
+        Title.EndEllipsis = True
+        Title.ToolTips = True
+        Width = 200
+      end
+      item
+        DisplayFormat = '#,##0.00'
+        DynProps = <>
+        EditButtons = <>
+        FieldName = 'RemisePerc'
+        Footers = <>
+        Visible = False
+      end
+      item
+        DisplayFormat = '#,##0.00'
+        DynProps = <>
+        EditButtons = <>
+        FieldName = 'timber_bvfac'
+        Footers = <>
+        Layout = tlCenter
+        MinWidth = 150
+        Title.Alignment = taCenter
+        Title.Caption = 'Timber Fiscal'
+        Visible = False
+        Width = 150
+      end
+      item
+        DisplayFormat = '#,##0.00'
+        DynProps = <>
+        EditButtons = <>
+        FieldName = 'MontantTVA'
+        Footers = <>
+        Layout = tlCenter
+        MinWidth = 150
+        Title.Alignment = taCenter
+        Title.Caption = 'Montant TVA'
+        Title.EndEllipsis = True
+        Title.ToolTips = True
+        Visible = False
+        Width = 150
+      end
+      item
+        DisplayFormat = '#,##0.00'
+        DynProps = <>
+        EditButtons = <>
+        FieldName = 'montttc_bvfac'
+        Footers = <>
+        Layout = tlCenter
+        Title.Alignment = taCenter
+        Title.Caption = 'Montant TTC'
+        Title.EndEllipsis = True
+        Title.ToolTips = True
+        Visible = False
+        Width = 150
+      end
+      item
+        DisplayFormat = '#,##0.00'
+        DynProps = <>
+        EditButtons = <>
+        FieldName = 'montver_bvfac'
+        Footers = <>
+        Layout = tlCenter
+        MinWidth = 150
+        Title.Alignment = taCenter
+        Title.Caption = 'Montant Vers'#233
+        Title.EndEllipsis = True
+        Title.ToolTips = True
+        Visible = False
+        Width = 150
+      end
+      item
+        DisplayFormat = '#,##0.00'
+        DynProps = <>
+        EditButtons = <>
+        FieldName = 'MontantRes'
+        Footers = <>
+        Layout = tlCenter
+        MinWidth = 150
+        Title.Alignment = taCenter
+        Title.Caption = 'Montant Reste'
+        Title.EndEllipsis = True
+        Title.ToolTips = True
+        Visible = False
+        Width = 150
+      end>
+    object RowDetailData: TRowDetailPanelControlEh
+    end
+  end
+  object Panel4: TPanel
+    Left = 0
+    Top = 694
+    Width = 1191
+    Height = 47
+    Align = alBottom
+    BevelOuter = bvNone
+    Color = 4207405
+    ParentBackground = False
+    TabOrder = 3
+    DesignSize = (
+      1191
+      47)
+    object Shape1: TShape
+      Left = 0
+      Top = 0
+      Width = 320
+      Height = 47
+      Align = alLeft
+      Brush.Color = 4207405
+      Pen.Color = 4666873
+    end
+    object SoldIniBankListLbl: TLabel
+      AlignWithMargins = True
+      Left = 98
+      Top = 10
+      Width = 211
+      Height = 25
+      Margins.Left = 0
+      Margins.Top = 0
+      Margins.Right = 0
+      Alignment = taRightJustify
+      AutoSize = False
+      BiDiMode = bdLeftToRight
+      Caption = '0'
+      Color = 15722984
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 7854350
+      Font.Height = 25
+      Font.Name = 'Helvetica LT Std'
+      Font.Style = [fsBold]
+      ParentBiDiMode = False
+      ParentColor = False
+      ParentFont = False
+      Layout = tlCenter
+      StyleElements = []
+    end
+    object Label4: TLabel
+      Left = 9
+      Top = 12
+      Width = 86
+      Height = 21
+      Caption = 'Sold Initial:'
+      Color = clWhite
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Height = 21
+      Font.Name = 'Roboto'
+      Font.Style = []
+      ParentColor = False
+      ParentFont = False
+      StyleElements = []
+    end
+    object Shape2: TShape
+      Left = 880
+      Top = 0
+      Width = 311
+      Height = 47
+      Align = alRight
+      Brush.Color = 4207405
+      Pen.Color = 4666873
+    end
+    object Shape3: TShape
+      Left = 320
+      Top = 0
+      Width = 560
+      Height = 47
+      Align = alClient
+      Brush.Color = 4207405
+      Pen.Color = 4666873
+      ExplicitWidth = 377
+    end
+    object Label5: TLabel
+      Left = 326
+      Top = 12
+      Width = 151
+      Height = 21
+      Caption = 'Solde de la p'#233'riode:'
+      Color = clWhite
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Height = 21
+      Font.Name = 'Roboto'
+      Font.Style = []
+      ParentColor = False
+      ParentFont = False
+      StyleElements = []
+    end
+    object SoldPeriodeBankListLbl: TLabel
+      AlignWithMargins = True
+      Left = 480
+      Top = 10
+      Width = 209
+      Height = 25
+      Margins.Left = 0
+      Margins.Top = 0
+      Margins.Right = 0
+      Alignment = taRightJustify
+      AutoSize = False
+      BiDiMode = bdLeftToRight
+      Caption = '0'
+      Color = 15722984
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 1752319
+      Font.Height = 25
+      Font.Name = 'Helvetica LT Std'
+      Font.Style = [fsBold]
+      ParentBiDiMode = False
+      ParentColor = False
+      ParentFont = False
+      Layout = tlCenter
+      StyleElements = []
+    end
+    object SoldTotalBankListLbl: TLabel
+      AlignWithMargins = True
+      Left = 972
+      Top = 10
+      Width = 211
+      Height = 25
+      Margins.Left = 0
+      Margins.Top = 0
+      Margins.Right = 0
+      Alignment = taRightJustify
+      Anchors = [akTop, akRight]
+      AutoSize = False
+      BiDiMode = bdLeftToRight
+      Caption = '0'
+      Color = 15722984
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 16771277
+      Font.Height = 25
+      Font.Name = 'Helvetica LT Std'
+      Font.Style = [fsBold]
+      ParentBiDiMode = False
+      ParentColor = False
+      ParentFont = False
+      Layout = tlCenter
+      StyleElements = []
+    end
+    object Label6: TLabel
+      Left = 886
+      Top = 12
+      Width = 83
+      Height = 21
+      Anchors = [akTop, akRight]
+      Caption = 'Sold Total:'
+      Color = clWhite
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Height = 21
+      Font.Name = 'Roboto'
+      Font.Style = []
+      ParentColor = False
+      ParentFont = False
+      StyleElements = []
+    end
+  end
+  object BankListDataS: TDataSource
+    DataSet = MainForm.Opt_cas_bnk_BankTable
+    Left = 1024
+    Top = 632
+  end
+end
