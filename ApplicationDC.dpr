@@ -39,7 +39,8 @@ uses
   StringTool in 'StringTool.pas',
   USplashPrinting in 'USplashPrinting.pas' {FSplashPrinting},
   UOptions in 'UOptions.pas' {FOptions},
-  UDashboard in 'UDashboard.pas' {DashboardF};
+  UDashboard in 'UDashboard.pas' {DashboardF},
+  UDataModule in 'UDataModule.pas' {DataModuleF: TDataModule};
 
 {$R *.res}
 
@@ -49,5 +50,6 @@ ReportMemoryLeaksOnShutdown:=True;
   Application.MainFormOnTaskbar := False;
   Application.CreateForm(TMainForm, MainForm);
   Application.CreateForm(TFOptions, FOptions);
+  Application.CreateForm(TDataModuleF, DataModuleF);
   Application.Run;
 end.

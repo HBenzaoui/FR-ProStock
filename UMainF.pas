@@ -525,7 +525,7 @@ type
     N16: TMenuItem;
     N17: TMenuItem;
     H1: TMenuItem;
-    sTabSheet1: TsTabSheet;
+    Accual: TsTabSheet;
     Bonv_ctr_Top10produit: TFDQuery;
     Bonv_ctr_Top10produitcode_p: TIntegerField;
     Bonv_ctr_Top10produitsum: TLargeintField;
@@ -678,7 +678,6 @@ type
     FourFaceBtn: TAdvToolButton;
     ProduitFaceBtn: TAdvToolButton;
     procedure ClientMainFBtnClick(Sender: TObject);
-    procedure FormActivate(Sender: TObject);
     procedure FourMainFBtnClick(Sender: TObject);
     procedure ProduitMainFBtnClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -688,7 +687,6 @@ type
     procedure BRMainFMmnClick(Sender: TObject);
     procedure Bona_recPlistTableCalcFields(DataSet: TDataSet);
     procedure Bona_recTableCalcFields(DataSet: TDataSet);
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure sPageControl1CloseBtnClick(Sender: TComponent; TabIndex: Integer;
@@ -760,6 +758,7 @@ type
     procedure ClientMainFMnmClick(Sender: TObject);
     procedure FourMainFMnmClick(Sender: TObject);
     procedure ProduitMainFMmnClick(Sender: TObject);
+    procedure BoardMainFBtnClick(Sender: TObject);
   private
 
     TimerStart: TDateTime;
@@ -777,6 +776,7 @@ type
     TabSheetBank: TsTabSheet;
     TabSheetRegFour: TsTabSheet;
     TabSheetRegClient: TsTabSheet;
+    TabSheetDashBoard: TsTabSheet;
 
 
   public
@@ -799,7 +799,7 @@ uses UClientsList, UFournisseurList, UProduitsList, UBonRec, UBonRecGestion,
   USplashAddUnite, UBonLiv, UBonLivGestion, UBonFacVGestion, UBonFacV,
   UBonFacAGestion, UBonFacA, UComptoir,ShellAPI, UBonCtr, UCaisseList,
   UBankList, UUsersList, UUsersGestion, UReglementFList, UReglementCList,
-  UOptions, UModePaieList;
+  UOptions, UModePaieList, UDashboard;
 
 procedure TMainForm.ClientMainFBtnClick(Sender: TObject);
 begin
@@ -1051,43 +1051,31 @@ begin
 
 end;
 
-procedure TMainForm.FormActivate(Sender: TObject);
-begin
-   {
-     FDQProduit.SQL.Clear;
-     FDQProduit.SQL.Add('SELECT * FROM Produit  code_p');
-     FDQProduit.OpenOrExecute;
-     FDQProduit.Active:=True;
-   }
-
-
-
-end;
-
 procedure TMainForm.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
-var
-  msg: String;
+//var
+//  msg: String;
 begin
 
 
- msg:='You have not saved. Do you really want to close?';
+// msg:='You have not saved. Do you really want to close?';
+//
+//  if MessageDlg(msg, mtConfirmation, [mbOk, mbCancel], 0) = mrCancel then
+//   begin CanClose := false end
+//    else
+//    begin
+////      GstockdcConnection.ExecSQL('VACUUM') ;
+//      CanClose := True;
+//    end;
 
-  if MessageDlg(msg, mtConfirmation, [mbOk, mbCancel], 0) = mrCancel then
-    CanClose := false;
-{
-ProduitTable.UpdateConstraints;
-ProduitTable.UpdateTransaction;
-ProduitTable.UpdateStatus;
-ProduitTable.UpdateAttributes;
-ProduitTable.UpdateRecord;
-ProduitTable.UpdateCursorPos;
-ProduitTable.UpdatesPending;
-}
+
 end;
 
 procedure TMainForm.FormCreate(Sender: TObject);
 begin
-// GstockdcConnection.ExecSQL('VACUUM') ;
+//Screen.MenuFont.Name := 'Helvetica LT Std';
+//Screen.MenuFont.Height := 15;
+Screen.PixelsPerInch:= 10;
+//Screen.me
 
   Application.UpdateFormatSettings := false;
   FormatSettings.DecimalSeparator := ',';
@@ -1100,13 +1088,6 @@ begin
 
   Label2.Caption:=#174;
 
-
- {
-
-  FS.ThousandSeparator := ',';
-FS.DecimalSeparator := '.';
-V := StrToFloat(S, FS);
- }
 end;
 
 procedure TMainForm.ProduitTableCalcFields(DataSet: TDataSet);
@@ -1130,10 +1111,6 @@ begin
 
   ProduitTable.FieldValues['PrixVTTCA2']:=
  (((ProduitTable.FieldValues['prixva2_p'] * ProduitTable.FieldValues['tva_p'])/100) + (ProduitTable.FieldValues['prixva2_p'])) ;
-
-
- //  ProduitTable.FieldValues['QUT']:= ProduitTable.FieldValues['qut_p'] ;
-
 
 end;
 
@@ -1194,15 +1171,6 @@ begin
   SQLQuery.Active:= False;
   SQLQuery.SQL.Clear;
   end;
-end;
-
-procedure TMainForm.FormClose(Sender: TObject; var Action: TCloseAction);
-begin
-//GstockdcConnection.ExecSQL('VACUUM') ;
-//FreeAndNil(BonCtrF);
-//FreeAndNil(BonFacVF);
-//FreeAndNil(BonRecF);
-//FreeAndNil(BonRecGestionF);
 end;
 
 procedure TMainForm.sPageControl1CloseBtnClick(Sender: TComponent;
@@ -1488,7 +1456,7 @@ EnableWindow(HTaskBar,True);
 //Show the taskbar
 ShowWindow(HTaskbar,SW_SHOW);
 
-GstockdcConnection.ExecSQL('VACUUM') ;
+
 end;
 
 procedure TMainForm.Bonv_livTableCalcFields(DataSet: TDataSet);
@@ -2903,6 +2871,38 @@ end;
 procedure TMainForm.ProduitMainFMmnClick(Sender: TObject);
 begin
 ProduitMainFBtnClick(Sender);
+end;
+
+procedure TMainForm.BoardMainFBtnClick(Sender: TObject);
+begin
+  if sPageControl1.ActivePage.Caption <> ' Tableau de Bord ' then
+    if not Assigned(TabSheetDashBoard) then
+
+    begin
+
+      TabSheetDashBoard := TsTabSheet.Create(sPageControl1);
+      TabSheetDashBoard.Caption := ' Tableau de Bord ';
+      TabSheetDashBoard.StyleElements:=[];
+      TabSheetDashBoard.Font.Name:= 'Roboto';
+      TabSheetDashBoard.Font.Size:= 14;
+      TabSheetDashBoard.Height:= 25;
+      TabSheetDashBoard.DoubleBuffered:= True;
+      TabSheetDashBoard.PageControl := sPageControl1;
+      sPageControl1.ActivePage.UseCloseBtn := True;
+      // sPageControl1.Pages[0].Name := 'Liste des Produits';
+      DashboardF := TDashboardF.Create(nil);
+      DashboardF.Parent := TabSheetDashBoard;
+      DashboardF.BorderStyle := bsNone;
+      DashboardF.BorderIcons := [];
+      DashboardF.Align := alClient;
+     // Parent := MainForm.FaceP;
+      DashboardF.Show;
+//      DashboardF.GettingData;
+      sPageControl1.ActivePage := TabSheetDashBoard;
+
+    end else
+
+     sPageControl1.ActivePage := TabSheetDashBoard;
 end;
 
 End.

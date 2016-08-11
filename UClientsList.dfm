@@ -390,7 +390,7 @@ object ClientListF: TClientListF
     Height = 82
     Align = alTop
     BevelOuter = bvNone
-    Color = 15722984
+    Color = 14933719
     DoubleBuffered = True
     ParentBackground = False
     ParentDoubleBuffered = False
@@ -644,7 +644,7 @@ object ClientListF: TClientListF
       BevelEdges = []
       BevelKind = bkFlat
       BevelOuter = bvNone
-      Color = 15722984
+      Color = 14933719
       Ctl3D = True
       DoubleBuffered = False
       FullRepaint = False
