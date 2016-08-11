@@ -10,6 +10,7 @@ object DashboardF: TDashboardF
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  OnActivate = FormActivate
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
@@ -375,7 +376,6 @@ object DashboardF: TDashboardF
       ParentBackground = False
       ParentFont = False
       TabOrder = 0
-      ExplicitLeft = 1
       object Image1: TsImage
         Left = 0
         Top = 0
@@ -571,7 +571,6 @@ object DashboardF: TDashboardF
       Color = 10379008
       ParentBackground = False
       TabOrder = 0
-      ExplicitWidth = 511
       object sImage2: TsImage
         Left = 0
         Top = 0

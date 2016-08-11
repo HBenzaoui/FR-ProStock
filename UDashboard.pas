@@ -49,6 +49,7 @@ type
     sImage1: TsImage;
     sImage2: TsImage;
     procedure FormCreate(Sender: TObject);
+    procedure FormActivate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -63,6 +64,11 @@ implementation
 {$R *.dfm}
 
 procedure TDashboardF.FormCreate(Sender: TObject);
+begin
+//
+end;
+
+procedure TDashboardF.FormActivate(Sender: TObject);
 begin
 //
 end;
