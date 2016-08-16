@@ -8,7 +8,7 @@ uses
   DBGridEhGrouping, ToolCtrlsEh, DBGridEhToolCtrls, DynVarsEh, Data.DB,
   EhLibVCL, GridsEh, DBAxisGridsEh, DBGridEh, VclTee.TeeGDIPlus, VCLTee.Series,
   VCLTee.TeEngine, VCLTee.TeeAnimations, VCLTee.TeeProcs, VCLTee.Chart,
-  VCLTee.DBChart;
+  VCLTee.DBChart, VCLTee.TeeTools;
 
 type
   TDashboardF = class(TForm)
@@ -86,17 +86,29 @@ type
     Panel29: TPanel;
     CtrTop10PRODUITDBGridEh: TDBGridEh;
     DashBTop5produit: TDataSource;
+    DBChart1: TDBChart;
+    PieSeries1: TPieSeries;
+    TeeAnimationTool1: TTeeAnimationTool;
+    TeeAnimationTool2: TTeeAnimationTool;
+    DBChart2: TDBChart;
+    Series1: TBarSeries;
+    ChartAnimation1: TSeriesAnimationTool;
+    ChartAnimation2: TTeeAnimationTool;
+    Series2: TBarSeries;
     procedure FormShow(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     procedure Selecting_Only_Valide_Bons;
     procedure Selecting_All_Bons;
+    procedure MonthsData;
+
 
   public
     procedure GettingData;
   end;
 
 var
-  DashboardF: TDashboardF;
+DashboardF:   TDashboardF;
 
 implementation
 
@@ -416,14 +428,129 @@ begin
   MainForm.FournisseurTable.EnableControls;
 
 
+end;
+
+procedure TDashboardF.MonthsData;
+  var m1,m2,m3,m4,m5,m6,m7,m8,m9,m10,m11,m12 : Currency;
+  a : TArray<Integer>;
+  b: array[1..12] of Currency;
+  i: Byte;
+  begin
+
+  //DataModuleF.ToatalVerMonthVLIV.Active:- fasle;
+  DataModuleF.ToatalVerMonthVLIV.First;
+
+  //        a := TArray<Integer>.Create(m1,m2,m3,m4,m5,m6,m7,m8,m9,m10,m11,m12);
+
+          for I := 1 to 12 do
+        begin
+       while NOT DataModuleF.ToatalVerMonthVLIV.Eof do
+      begin
+
+          b[i] := DataModuleF.ToatalVerMonthVLIV.FieldByName('sales').AsCurrency;
+          DataModuleF.ToatalVerMonthVLIV.Next;
+
+        end;
+
+      end;
+
+
+
+  while NOT DataModuleF.ToatalVerMonthVLIV.Eof do
+  begin
+  m1:= DataModuleF.ToatalVerMonthVLIV.FieldByName('sales').AsCurrency;
+  DataModuleF.ToatalVerMonthVLIV.Next;
+  end;
 
 
 end;
 
-
 procedure TDashboardF.FormShow(Sender: TObject);
 begin
-DashboardF.GettingData;
+MonthsData;
+
+
+    with PieSeries1 do
+    begin
+      Clear;
+      Add(  StrToInt(NBLDashBLbl.Caption), 'BL' ,  $00E5B533 ) ;
+      Add(  StrToInt(NFVDashBLbl.Caption), 'FCV',  $00CC66AA ) ;
+      Add(  StrToInt(NCTRDashBLbl.Caption), 'BCTR', $0000CC99 ) ;
+      Add(  StrToInt(NBRDashBLbl.Caption), 'BR',   $0033BBFF ) ;
+      Add(  StrToInt(NFADashBLbl.Caption), 'FCA',  $004444FF ) ;
+    end;
+
+
+    with Series1 do
+    begin
+      Clear;
+      Add(  StrToInt(NBLDashBLbl.Caption),     'Jan' ,  $00E5B533 ) ;
+      Add(  StrToInt(NFVDashBLbl.Caption),     'Fev',  $00E5B533 ) ;
+      Add(  StrToInt(NCTRDashBLbl.Caption),    'Mar', $00E5B533 ) ;
+      Add(  StrToInt(NBRDashBLbl.Caption),     'Avr',   $00E5B533 ) ;
+      Add(  StrToInt(NFADashBLbl.Caption),     'Mai',  $00E5B533 ) ;
+      Add(  StrToInt(NBLDashBLbl.Caption),     'Jui' ,  $00E5B533 ) ;
+      Add(  StrToInt(NFVDashBLbl.Caption),     'Jul',  $00E5B533 ) ;
+      Add(  StrToInt(NCTRDashBLbl.Caption),    'Aou', $00E5B533 ) ;
+      Add(  StrToInt(NBRDashBLbl.Caption),     'Sep',   $00E5B533 ) ;
+      Add(  StrToInt(NFADashBLbl.Caption),     'Oct',  $00E5B533 ) ;
+      Add(  StrToInt(NBRDashBLbl.Caption),     'Nov',   $00E5B533 ) ;
+      Add(  StrToInt(NFADashBLbl.Caption),     'Dec',  $00E5B533 ) ;
+
+    end;
+
+      with Series2 do
+    begin
+      Clear;
+
+      Add(  StrToInt(NCTRDashBLbl.Caption),   'Jan' ,  $004444FF ) ;
+      Add(  StrToInt(NCTRDashBLbl.Caption),   'Fev',  $004444FF ) ;
+      Add(  StrToInt(NCTRDashBLbl.Caption),   'Mar', $004444FF ) ;
+      Add(  StrToInt(NBRDashBLbl.Caption),    'Avr',   $004444FF  ) ;
+      Add(  StrToInt(NFADashBLbl.Caption),    'Mai',  $004444FF  ) ;
+      Add(  StrToInt(NBLDashBLbl.Caption),    'Jui' ,  $004444FF  ) ;
+      Add(  StrToInt(NCTRDashBLbl.Caption),   'Jul',  $004444FF  ) ;
+      Add(  StrToInt(NCTRDashBLbl.Caption),   'Aou', $004444FF  ) ;
+      Add(  StrToInt(NCTRDashBLbl.Caption),   'Sep',   $004444FF   ) ;
+      Add(  StrToInt(NCTRDashBLbl.Caption),   'Oct',  $004444FF  ) ;
+      Add(  StrToInt(NCTRDashBLbl.Caption),   'Nov',   $004444FF  ) ;
+      Add(  StrToInt(NCTRDashBLbl.Caption),   'Dec',  $004444FF  ) ;
+
+    end;
+
+
+//          with Series2 do
+//    begin
+//      Clear;
+//      Add(  StrToInt(NBLDashBLbl.Caption),     'Jan' ,  $00E5B533 ) ;
+//      Add(  StrToInt(NFVDashBLbl.Caption),     'Fev',  $00CC66AA ) ;
+//      Add(  StrToInt(NCTRDashBLbl.Caption),    'Mar', $0000CC99 ) ;
+//      Add(  StrToInt(NBRDashBLbl.Caption),     'Avr',   $0033BBFF ) ;
+//      Add(  StrToInt(NFADashBLbl.Caption),     'Mai',  $004444FF ) ;
+//      Add(  StrToInt(NBLDashBLbl.Caption),     'Jui' ,  $00E5B533 ) ;
+//      Add(  StrToInt(NFVDashBLbl.Caption),     'Jul',  $00CC66AA ) ;
+//      Add(  StrToInt(NCTRDashBLbl.Caption),    'Aou', $0000CC99 ) ;
+//      Add(  StrToInt(NBRDashBLbl.Caption),     'Sep',   $0033BBFF ) ;
+//      Add(  StrToInt(NFADashBLbl.Caption),     'Oct',  $004444FF ) ;
+//      Add(  StrToInt(NBRDashBLbl.Caption),     'Nov',   $0033BBFF ) ;
+//      Add(  StrToInt(NFADashBLbl.Caption),     'Dec',  $004444FF ) ;
+//
+//    end;
+
+   ChartAnimation1.Play;
+
+
+
+
+
+    TeeAnimationTool1.Play;
+    TeeAnimationTool2.play;
+
+end;
+
+procedure TDashboardF.FormCreate(Sender: TObject);
+begin
+GettingData;
 end;
 
 end.

@@ -1074,8 +1074,6 @@ procedure TMainForm.FormCreate(Sender: TObject);
 begin
 //Screen.MenuFont.Name := 'Helvetica LT Std';
 //Screen.MenuFont.Height := 15;
-Screen.PixelsPerInch:= 10;
-//Screen.me
 
   Application.UpdateFormatSettings := false;
   FormatSettings.DecimalSeparator := ',';
