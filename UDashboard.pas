@@ -431,36 +431,403 @@ begin
 end;
 
 procedure TDashboardF.MonthsData;
-  var m1,m2,m3,m4,m5,m6,m7,m8,m9,m10,m11,m12 : Currency;
-  a : TArray<Integer>;
-  b: array[1..12] of Currency;
-  i: Byte;
+  var
+  b: array[0..11] of Currency;
   begin
 
-  //DataModuleF.ToatalVerMonthVLIV.Active:- fasle;
-  DataModuleF.ToatalVerMonthVLIV.First;
+      //----------- calculte the ACHATS--------------------
+       b[0] := 0; b[1] := 0; b[2] := 0; b[3] := 0; b[4] := 0;
+       b[5] := 0; b[6] := 0; b[7] := 0; b[8] := 0; b[9] := 0;
+       b[10] := 0; b[11] := 0;
 
-  //        a := TArray<Integer>.Create(m1,m2,m3,m4,m5,m6,m7,m8,m9,m10,m11,m12);
-
-          for I := 1 to 12 do
-        begin
-       while NOT DataModuleF.ToatalVerMonthVLIV.Eof do
       begin
 
-          b[i] := DataModuleF.ToatalVerMonthVLIV.FieldByName('sales').AsCurrency;
-          DataModuleF.ToatalVerMonthVLIV.Next;
+          with DataModuleF.ToatalVerMonthAREC do
+        begin
+          Filtered := False;
+          Filter := 'mon = 01';
+          Filtered := True;
+          b[0] := FieldByName('sales').AsCurrency;
+
+           Filtered := False;
+          Filter := 'mon = 02';
+          Filtered := True;
+          b[1] := FieldByName('sales').AsCurrency;
+
+           Filtered := False;
+          Filter := 'mon = 03';
+          Filtered := True ;
+          b[2] := FieldByName('sales').AsCurrency;
+
+          Filtered := False;
+          Filter := 'mon = 04';
+          Filtered := True;
+          b[3] := FieldByName('sales').AsCurrency;
+
+           Filtered := False;
+          Filter := 'mon = 05';
+          Filtered := True ;
+          b[4] := FieldByName('sales').AsCurrency;
+
+           Filtered := False;
+          Filter := 'mon = 06';
+          Filtered := True;
+          b[5] := FieldByName('sales').AsCurrency;
+
+           Filtered := False;
+          Filter := 'mon = 07';
+          Filtered := True;
+          b[6] := FieldByName('sales').AsCurrency;
+
+           Filtered := False;
+          Filter := 'mon = 08';
+          Filtered := True;
+          b[7] := FieldByName('sales').AsCurrency;
+
+           Filtered := False;
+          Filter := 'mon = 09';
+          Filtered := True ;
+          b[8] := FieldByName('sales').AsCurrency;
+
+           Filtered := False;
+          Filter := 'mon = 10';
+          Filtered := True;
+          b[9] := FieldByName('sales').AsCurrency;
+
+           Filtered := False;
+          Filter := 'mon = 11';
+          Filtered := True ;
+          b[10] := FieldByName('sales').AsCurrency;
+
+           Filtered := False;
+          Filter := 'mon = 12';
+          Filtered := True ;
+          b[11] := FieldByName('sales').AsCurrency;
 
         end;
 
-      end;
+        end;
+
+
+        begin
+
+          with DataModuleF.ToatalVerMonthAFAC do
+         begin
+          Filtered := False;
+          Filter := 'mon = 01';
+          Filtered := True;
+          b[0] := b[0] + FieldByName('sales').AsCurrency;
+
+           Filtered := False;
+          Filter := 'mon = 02';
+          Filtered := True;
+          b[1] := b[1]+ FieldByName('sales').AsCurrency;
+
+           Filtered := False;
+          Filter := 'mon = 03';
+          Filtered := True ;
+          b[2] := b[2]+ FieldByName('sales').AsCurrency;
+
+          Filtered := False;
+          Filter := 'mon = 04';
+          Filtered := True;
+          b[3] := b[3]+ FieldByName('sales').AsCurrency;
+
+           Filtered := False;
+          Filter := 'mon = 05';
+          Filtered := True ;
+          b[4] := b[4] + FieldByName('sales').AsCurrency;
+
+           Filtered := False;
+          Filter := 'mon = 06';
+          Filtered := True;
+          b[5] := b[5] + FieldByName('sales').AsCurrency;
+
+           Filtered := False;
+          Filter := 'mon = 07';
+          Filtered := True;
+          b[6] :=b[6] + FieldByName('sales').AsCurrency;
+
+           Filtered := False;
+          Filter := 'mon = 08';
+          Filtered := True;
+          b[7] :=b[7] + FieldByName('sales').AsCurrency;
+
+           Filtered := False;
+          Filter := 'mon = 09';
+          Filtered := True ;
+          b[8] :=b[8] + FieldByName('sales').AsCurrency;
+
+           Filtered := False;
+          Filter := 'mon = 10';
+          Filtered := True;
+          b[9] :=b[9] + FieldByName('sales').AsCurrency;
+
+           Filtered := False;
+          Filter := 'mon = 11';
+          Filtered := True ;
+          b[10] :=b[10] + FieldByName('sales').AsCurrency;
+
+           Filtered := False;
+          Filter := 'mon = 12';
+          Filtered := True ;
+          b[11] :=b[11] + FieldByName('sales').AsCurrency;
+
+         end;
+
+        end;
+
+
+    with Series1 do
+    begin
+      Clear;
+      Add(  b[0],   'Jan' , $004444FF ) ;
+      Add(  b[1],   'Fev',  $004444FF ) ;
+      Add(  b[2],   'Mar',  $004444FF ) ;
+      Add(  b[3],   'Avr',  $004444FF ) ;
+      Add(  b[4],   'Mai',  $004444FF ) ;
+      Add(  b[5],   'Jui' , $004444FF ) ;
+      Add(  b[6],   'Jul',  $004444FF ) ;
+      Add(  b[7],   'Aou',  $004444FF ) ;
+      Add(  b[8],   'Sep',  $004444FF ) ;
+      Add(  b[9],   'Oct',  $004444FF ) ;
+      Add(  b[10],  'Nov',  $004444FF ) ;
+      Add(  b[11],  'Dec',  $004444FF ) ;
+
+    end;
+
+  //----------- calculte the VENTES--------------------
+       b[0] := 0; b[1] := 0; b[2] := 0; b[3] := 0; b[4] := 0;
+       b[5] := 0; b[6] := 0; b[7] := 0; b[8] := 0; b[9] := 0;
+       b[10] := 0; b[11] := 0;
+
+      begin
+
+          with DataModuleF.ToatalVerMonthVLIV do
+        begin
+          Filtered := False;
+          Filter := 'mon = 01';
+          Filtered := True;
+          b[0] := FieldByName('sales').AsCurrency;
+
+           Filtered := False;
+          Filter := 'mon = 02';
+          Filtered := True;
+          b[1] := FieldByName('sales').AsCurrency;
+
+           Filtered := False;
+          Filter := 'mon = 03';
+          Filtered := True ;
+          b[2] := FieldByName('sales').AsCurrency;
+
+          Filtered := False;
+          Filter := 'mon = 04';
+          Filtered := True;
+          b[3] := FieldByName('sales').AsCurrency;
+
+           Filtered := False;
+          Filter := 'mon = 05';
+          Filtered := True ;
+          b[4] := FieldByName('sales').AsCurrency;
+
+           Filtered := False;
+          Filter := 'mon = 06';
+          Filtered := True;
+          b[5] := FieldByName('sales').AsCurrency;
+
+           Filtered := False;
+          Filter := 'mon = 07';
+          Filtered := True;
+          b[6] := FieldByName('sales').AsCurrency;
+
+           Filtered := False;
+          Filter := 'mon = 08';
+          Filtered := True;
+          b[7] := FieldByName('sales').AsCurrency;
+
+           Filtered := False;
+          Filter := 'mon = 09';
+          Filtered := True ;
+          b[8] := FieldByName('sales').AsCurrency;
+
+           Filtered := False;
+          Filter := 'mon = 10';
+          Filtered := True;
+          b[9] := FieldByName('sales').AsCurrency;
+
+           Filtered := False;
+          Filter := 'mon = 11';
+          Filtered := True ;
+          b[10] := FieldByName('sales').AsCurrency;
+
+           Filtered := False;
+          Filter := 'mon = 12';
+          Filtered := True ;
+          b[11] := FieldByName('sales').AsCurrency;
+
+        end;
+
+        end;
+
+
+        begin
+
+          with DataModuleF.ToatalVerMonthVFAC do
+         begin
+          Filtered := False;
+          Filter := 'mon = 01';
+          Filtered := True;
+          b[0] := b[0] + FieldByName('sales').AsCurrency;
+
+           Filtered := False;
+          Filter := 'mon = 02';
+          Filtered := True;
+          b[1] := b[1]+ FieldByName('sales').AsCurrency;
+
+           Filtered := False;
+          Filter := 'mon = 03';
+          Filtered := True ;
+          b[2] := b[2]+ FieldByName('sales').AsCurrency;
+
+          Filtered := False;
+          Filter := 'mon = 04';
+          Filtered := True;
+          b[3] := b[3]+ FieldByName('sales').AsCurrency;
+
+           Filtered := False;
+          Filter := 'mon = 05';
+          Filtered := True ;
+          b[4] := b[4] + FieldByName('sales').AsCurrency;
+
+           Filtered := False;
+          Filter := 'mon = 06';
+          Filtered := True;
+          b[5] := b[5] + FieldByName('sales').AsCurrency;
+
+           Filtered := False;
+          Filter := 'mon = 07';
+          Filtered := True;
+          b[6] :=b[6] + FieldByName('sales').AsCurrency;
+
+           Filtered := False;
+          Filter := 'mon = 08';
+          Filtered := True;
+          b[7] :=b[7] + FieldByName('sales').AsCurrency;
+
+           Filtered := False;
+          Filter := 'mon = 09';
+          Filtered := True ;
+          b[8] :=b[8] + FieldByName('sales').AsCurrency;
+
+           Filtered := False;
+          Filter := 'mon = 10';
+          Filtered := True;
+          b[9] :=b[9] + FieldByName('sales').AsCurrency;
+
+           Filtered := False;
+          Filter := 'mon = 11';
+          Filtered := True ;
+          b[10] :=b[10] + FieldByName('sales').AsCurrency;
+
+           Filtered := False;
+          Filter := 'mon = 12';
+          Filtered := True ;
+          b[11] :=b[11] + FieldByName('sales').AsCurrency;
+
+         end;
+
+        end;
+
+
+          begin
+
+          with DataModuleF.ToatalVerMonthVCTR do
+         begin
+          Filtered := False;
+          Filter := 'mon = 01';
+          Filtered := True;
+          b[0] := b[0] + FieldByName('sales').AsCurrency;
+
+           Filtered := False;
+          Filter := 'mon = 02';
+          Filtered := True;
+          b[1] := b[1]+ FieldByName('sales').AsCurrency;
+
+           Filtered := False;
+          Filter := 'mon = 03';
+          Filtered := True ;
+          b[2] := b[2]+ FieldByName('sales').AsCurrency;
+
+          Filtered := False;
+          Filter := 'mon = 04';
+          Filtered := True;
+          b[3] := b[3]+ FieldByName('sales').AsCurrency;
+
+           Filtered := False;
+          Filter := 'mon = 05';
+          Filtered := True ;
+          b[4] := b[4] + FieldByName('sales').AsCurrency;
+
+           Filtered := False;
+          Filter := 'mon = 06';
+          Filtered := True;
+          b[5] := b[5] + FieldByName('sales').AsCurrency;
+
+           Filtered := False;
+          Filter := 'mon = 07';
+          Filtered := True;
+          b[6] :=b[6] + FieldByName('sales').AsCurrency;
+
+           Filtered := False;
+          Filter := 'mon = 08';
+          Filtered := True;
+          b[7] :=b[7] + FieldByName('sales').AsCurrency;
+
+           Filtered := False;
+          Filter := 'mon = 09';
+          Filtered := True ;
+          b[8] :=b[8] + FieldByName('sales').AsCurrency;
+
+           Filtered := False;
+          Filter := 'mon = 10';
+          Filtered := True;
+          b[9] :=b[9] + FieldByName('sales').AsCurrency;
+
+           Filtered := False;
+          Filter := 'mon = 11';
+          Filtered := True ;
+          b[10] :=b[10] + FieldByName('sales').AsCurrency;
+
+           Filtered := False;
+          Filter := 'mon = 12';
+          Filtered := True ;
+          b[11] :=b[11] + FieldByName('sales').AsCurrency;
+
+         end;
+
+        end;
+
+
+    with Series2 do
+    begin
+      Clear;
+      Add(  b[0],   'Jan' , $00E5B533 ) ;
+      Add(  b[1],   'Fev',  $00E5B533 ) ;
+      Add(  b[2],   'Mar',  $00E5B533 ) ;
+      Add(  b[3],   'Avr',  $00E5B533 ) ;
+      Add(  b[4],   'Mai',  $00E5B533 ) ;
+      Add(  b[5],   'Jui' , $00E5B533 ) ;
+      Add(  b[6],   'Jul',  $00E5B533 ) ;
+      Add(  b[7],   'Aou',  $00E5B533 ) ;
+      Add(  b[8],   'Sep',  $00E5B533 ) ;
+      Add(  b[9],   'Oct',  $00E5B533 ) ;
+      Add(  b[10],  'Nov',  $00E5B533 ) ;
+      Add(  b[11],  'Dec',  $00E5B533 ) ;
+
+    end;
 
 
 
-  while NOT DataModuleF.ToatalVerMonthVLIV.Eof do
-  begin
-  m1:= DataModuleF.ToatalVerMonthVLIV.FieldByName('sales').AsCurrency;
-  DataModuleF.ToatalVerMonthVLIV.Next;
-  end;
 
 
 end;
@@ -481,67 +848,7 @@ MonthsData;
     end;
 
 
-    with Series1 do
-    begin
-      Clear;
-      Add(  StrToInt(NBLDashBLbl.Caption),     'Jan' ,  $00E5B533 ) ;
-      Add(  StrToInt(NFVDashBLbl.Caption),     'Fev',  $00E5B533 ) ;
-      Add(  StrToInt(NCTRDashBLbl.Caption),    'Mar', $00E5B533 ) ;
-      Add(  StrToInt(NBRDashBLbl.Caption),     'Avr',   $00E5B533 ) ;
-      Add(  StrToInt(NFADashBLbl.Caption),     'Mai',  $00E5B533 ) ;
-      Add(  StrToInt(NBLDashBLbl.Caption),     'Jui' ,  $00E5B533 ) ;
-      Add(  StrToInt(NFVDashBLbl.Caption),     'Jul',  $00E5B533 ) ;
-      Add(  StrToInt(NCTRDashBLbl.Caption),    'Aou', $00E5B533 ) ;
-      Add(  StrToInt(NBRDashBLbl.Caption),     'Sep',   $00E5B533 ) ;
-      Add(  StrToInt(NFADashBLbl.Caption),     'Oct',  $00E5B533 ) ;
-      Add(  StrToInt(NBRDashBLbl.Caption),     'Nov',   $00E5B533 ) ;
-      Add(  StrToInt(NFADashBLbl.Caption),     'Dec',  $00E5B533 ) ;
-
-    end;
-
-      with Series2 do
-    begin
-      Clear;
-
-      Add(  StrToInt(NCTRDashBLbl.Caption),   'Jan' ,  $004444FF ) ;
-      Add(  StrToInt(NCTRDashBLbl.Caption),   'Fev',  $004444FF ) ;
-      Add(  StrToInt(NCTRDashBLbl.Caption),   'Mar', $004444FF ) ;
-      Add(  StrToInt(NBRDashBLbl.Caption),    'Avr',   $004444FF  ) ;
-      Add(  StrToInt(NFADashBLbl.Caption),    'Mai',  $004444FF  ) ;
-      Add(  StrToInt(NBLDashBLbl.Caption),    'Jui' ,  $004444FF  ) ;
-      Add(  StrToInt(NCTRDashBLbl.Caption),   'Jul',  $004444FF  ) ;
-      Add(  StrToInt(NCTRDashBLbl.Caption),   'Aou', $004444FF  ) ;
-      Add(  StrToInt(NCTRDashBLbl.Caption),   'Sep',   $004444FF   ) ;
-      Add(  StrToInt(NCTRDashBLbl.Caption),   'Oct',  $004444FF  ) ;
-      Add(  StrToInt(NCTRDashBLbl.Caption),   'Nov',   $004444FF  ) ;
-      Add(  StrToInt(NCTRDashBLbl.Caption),   'Dec',  $004444FF  ) ;
-
-    end;
-
-
-//          with Series2 do
-//    begin
-//      Clear;
-//      Add(  StrToInt(NBLDashBLbl.Caption),     'Jan' ,  $00E5B533 ) ;
-//      Add(  StrToInt(NFVDashBLbl.Caption),     'Fev',  $00CC66AA ) ;
-//      Add(  StrToInt(NCTRDashBLbl.Caption),    'Mar', $0000CC99 ) ;
-//      Add(  StrToInt(NBRDashBLbl.Caption),     'Avr',   $0033BBFF ) ;
-//      Add(  StrToInt(NFADashBLbl.Caption),     'Mai',  $004444FF ) ;
-//      Add(  StrToInt(NBLDashBLbl.Caption),     'Jui' ,  $00E5B533 ) ;
-//      Add(  StrToInt(NFVDashBLbl.Caption),     'Jul',  $00CC66AA ) ;
-//      Add(  StrToInt(NCTRDashBLbl.Caption),    'Aou', $0000CC99 ) ;
-//      Add(  StrToInt(NBRDashBLbl.Caption),     'Sep',   $0033BBFF ) ;
-//      Add(  StrToInt(NFADashBLbl.Caption),     'Oct',  $004444FF ) ;
-//      Add(  StrToInt(NBRDashBLbl.Caption),     'Nov',   $0033BBFF ) ;
-//      Add(  StrToInt(NFADashBLbl.Caption),     'Dec',  $004444FF ) ;
-//
-//    end;
-
-   ChartAnimation1.Play;
-
-
-
-
+    ChartAnimation1.Play;
 
     TeeAnimationTool1.Play;
     TeeAnimationTool2.play;

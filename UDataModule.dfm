@@ -140,7 +140,7 @@ object DataModuleF: TDataModuleF
         TargetDataType = dtAnsiString
       end>
     SQL.Strings = (
-      'select to_char(date_bvliv,'#39'dd'#39') as mon,'
+      'select to_char(date_bvliv,'#39'mm'#39') as mon,'
       '       extract(year from date_bvliv) as yyyy,'
       '       sum("montver_bvliv") as "sales"'
       'from bonv_liv'
@@ -187,7 +187,7 @@ object DataModuleF: TDataModuleF
         TargetDataType = dtAnsiString
       end>
     SQL.Strings = (
-      'select to_char(date_bvctr,'#39'dd'#39') as mon,'
+      'select to_char(date_bvctr,'#39'mm'#39') as mon,'
       '       extract(year from date_bvctr) as yyyy,'
       '       sum("montver_bvctr") as "sales"'
       'from bonv_ctr'
@@ -225,7 +225,7 @@ object DataModuleF: TDataModuleF
         TargetDataType = dtAnsiString
       end>
     SQL.Strings = (
-      'select to_char(date_bvfac,'#39'dd'#39') as mon,'
+      'select to_char(date_bvfac,'#39'mm'#39') as mon,'
       '       extract(year from date_bvfac) as yyyy,'
       '       sum("montver_bvfac") as "sales"'
       'from bonv_fac'
@@ -263,7 +263,7 @@ object DataModuleF: TDataModuleF
         TargetDataType = dtAnsiString
       end>
     SQL.Strings = (
-      'select to_char(date_barec,'#39'dd'#39') as mon,'
+      'select to_char(date_barec,'#39'mm'#39') as mon,'
       '       extract(year from date_barec) as yyyy,'
       '       sum("montver_barec") as "sales"'
       'from bona_rec'
@@ -301,7 +301,7 @@ object DataModuleF: TDataModuleF
         TargetDataType = dtAnsiString
       end>
     SQL.Strings = (
-      'select to_char(date_bafac,'#39'dd'#39') as mon,'
+      'select to_char(date_bafac,'#39'mm'#39') as mon,'
       '       extract(year from date_bafac) as yyyy,'
       '       sum("montver_bafac") as "sales"'
       'from bona_fac'
