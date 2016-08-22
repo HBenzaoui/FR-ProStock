@@ -1195,6 +1195,15 @@ object DashboardF: TDashboardF
           YValues.Name = 'Bar'
           YValues.Order = loNone
         end
+        object ChartTool1: TMarksTipTool
+          Format.CustomPosition = True
+          Format.Left = 0
+          Format.TextAlignment = taCenter
+          Format.Top = 0
+          Format.Visible = False
+          MouseDelay = 150
+          Style = smsValue
+        end
         object ChartAnimation1: TSeriesAnimationTool
           object TSeriesAnimation
             Duration = 2000

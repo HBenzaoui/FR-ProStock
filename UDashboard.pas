@@ -95,6 +95,7 @@ type
     ChartAnimation1: TSeriesAnimationTool;
     ChartAnimation2: TTeeAnimationTool;
     Series2: TBarSeries;
+    ChartTool1: TMarksTipTool;
     procedure FormShow(Sender: TObject);
     procedure FormCreate(Sender: TObject);
   private
