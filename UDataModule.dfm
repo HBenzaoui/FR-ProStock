@@ -1,9 +1,9 @@
 object DataModuleF: TDataModuleF
   OldCreateOrder = False
+  OnCreate = DataModuleCreate
   Height = 515
   Width = 619
   object Top5produit: TFDQuery
-    Active = True
     Connection = MainForm.GstockdcConnection
     SQL.Strings = (
       '-- This quiery will select the top 5 seled prudect '
@@ -36,7 +36,6 @@ object DataModuleF: TDataModuleF
     end
   end
   object TopClient: TFDQuery
-    Active = True
     Connection = MainForm.GstockdcConnection
     SQL.Strings = (
       'SELECT       code_c,'
@@ -68,7 +67,6 @@ object DataModuleF: TDataModuleF
     end
   end
   object TotalProduit: TFDQuery
-    Active = True
     Connection = MainForm.GstockdcConnection
     SQL.Strings = (
       'SELECT   SUM(qut_p) as totat'
@@ -83,7 +81,6 @@ object DataModuleF: TDataModuleF
     end
   end
   object TopVerClient: TFDQuery
-    Active = True
     Connection = MainForm.GstockdcConnection
     SQL.Strings = (
       'SELECT       code_c, MAX(montver_bvfac)'
@@ -95,7 +92,6 @@ object DataModuleF: TDataModuleF
     Top = 144
   end
   object TopFour: TFDQuery
-    Active = True
     Connection = MainForm.GstockdcConnection
     SQL.Strings = (
       'SELECT       code_f,'
@@ -118,7 +114,6 @@ object DataModuleF: TDataModuleF
     end
   end
   object TopVerFour: TFDQuery
-    Active = True
     Connection = MainForm.GstockdcConnection
     SQL.Strings = (
       'SELECT       code_c, MAX(montver_bvfac)'
@@ -130,7 +125,6 @@ object DataModuleF: TDataModuleF
     Top = 144
   end
   object ToatalVerMonthVLIV: TFDQuery
-    Active = True
     Connection = GstockdcConnection02
     FormatOptions.AssignedValues = [fvMapRules]
     FormatOptions.OwnMapRules = True
@@ -168,16 +162,11 @@ object DataModuleF: TDataModuleF
     end
   end
   object GstockdcConnection02: TFDConnection
-    Params.Strings = (
-      'CharacterSet=SQL_ASCII'
-      'ConnectionDef=GSTOCKDC')
-    Connected = True
     LoginPrompt = False
     Left = 91
     Top = 336
   end
   object ToatalVerMonthVCTR: TFDQuery
-    Active = True
     Connection = GstockdcConnection02
     FormatOptions.AssignedValues = [fvMapRules]
     FormatOptions.OwnMapRules = True
@@ -215,7 +204,6 @@ object DataModuleF: TDataModuleF
     end
   end
   object ToatalVerMonthVFAC: TFDQuery
-    Active = True
     Connection = GstockdcConnection02
     FormatOptions.AssignedValues = [fvMapRules]
     FormatOptions.OwnMapRules = True
@@ -253,7 +241,6 @@ object DataModuleF: TDataModuleF
     end
   end
   object ToatalVerMonthAREC: TFDQuery
-    Active = True
     Connection = GstockdcConnection02
     FormatOptions.AssignedValues = [fvMapRules]
     FormatOptions.OwnMapRules = True
@@ -291,7 +278,6 @@ object DataModuleF: TDataModuleF
     end
   end
   object ToatalVerMonthAFAC: TFDQuery
-    Active = True
     Connection = GstockdcConnection02
     FormatOptions.AssignedValues = [fvMapRules]
     FormatOptions.OwnMapRules = True

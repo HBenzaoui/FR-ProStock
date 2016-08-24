@@ -1075,6 +1075,23 @@ begin
 //Screen.MenuFont.Name := 'Helvetica LT Std';
 //Screen.MenuFont.Height := 15;
 
+  FDPhysPgDriverLink1.VendorLib:= GetCurrentDir+'\libpq.dll ' ;
+
+  GstockdcConnection.DriverName := 'PG';
+  GstockdcConnection.Params.Values['Server'] :='localhost'; // your server name'';
+//  FDConnection1.Params.Values['Database'] := 'GSTOCKDC';
+  GstockdcConnection.Params.Values['user_name'] := 'postgres';    // adjust to suit
+  GstockdcConnection.Params.Values['password'] := ''; // ditto
+  GstockdcConnection.Params.Values['Port'] := '5432';
+  GstockdcConnection.LoginPrompt := False;
+
+
+// FDScript1.ExecuteAll;
+
+ GstockdcConnection.Params.Values['Database'] := 'GSTOCKDC';
+ GstockdcConnection.Connected:= True;
+
+
   Application.UpdateFormatSettings := false;
   FormatSettings.DecimalSeparator := ',';
   FormatSettings.ThousandSeparator := ' ';

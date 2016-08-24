@@ -48,6 +48,7 @@ type
     StringField4: TStringField;
     FloatField4: TFloatField;
     CurrencyField4: TCurrencyField;
+    procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -65,5 +66,22 @@ uses
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
 {$R *.dfm}
+
+procedure TDataModuleF.DataModuleCreate(Sender: TObject);
+begin
+  GstockdcConnection02.DriverName := 'PG';
+  GstockdcConnection02.Params.Values['Server'] :='localhost'; // your server name'';
+//  FDConnection1.Params.Values['Database'] := 'GSTOCKDC';
+  GstockdcConnection02.Params.Values['user_name'] := 'postgres';    // adjust to suit
+  GstockdcConnection02.Params.Values['password'] := ''; // ditto
+  GstockdcConnection02.Params.Values['Port'] := '5432';
+  GstockdcConnection02.LoginPrompt := False;
+
+
+// FDScript1.ExecuteAll;
+
+ GstockdcConnection02.Params.Values['Database'] := 'GSTOCKDC';
+ GstockdcConnection02.Connected:= True;
+end;
 
 end.

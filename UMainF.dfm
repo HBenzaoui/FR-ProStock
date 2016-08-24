@@ -21034,7 +21034,6 @@ object MainForm: TMainForm
     Top = 105
   end
   object ClientTable: TFDQuery
-    Active = True
     FilterOptions = [foCaseInsensitive]
     IndexFieldNames = 'code_c'
     Connection = GstockdcConnection
@@ -21181,7 +21180,6 @@ object MainForm: TMainForm
     Top = 304
   end
   object FournisseurTable: TFDQuery
-    Active = True
     FilterOptions = [foCaseInsensitive]
     IndexFieldNames = 'code_f'
     Connection = GstockdcConnection
@@ -21326,7 +21324,6 @@ object MainForm: TMainForm
     Top = 304
   end
   object ProduitTable: TFDQuery
-    Active = True
     OnCalcFields = ProduitTableCalcFields
     FilterOptions = [foCaseInsensitive]
     IndexFieldNames = 'code_p'
@@ -21540,7 +21537,6 @@ object MainForm: TMainForm
     end
   end
   object UniteTable: TFDQuery
-    Active = True
     FilterOptions = [foCaseInsensitive]
     IndexFieldNames = 'code_u'
     Connection = GstockdcConnection
@@ -21550,7 +21546,6 @@ object MainForm: TMainForm
     Top = 347
   end
   object SfamproduitTable: TFDQuery
-    Active = True
     FilterOptions = [foCaseInsensitive]
     IndexFieldNames = 'code_sfamp'
     Connection = GstockdcConnection
@@ -21560,7 +21555,6 @@ object MainForm: TMainForm
     Top = 472
   end
   object FamproduitTable: TFDQuery
-    Active = True
     FilterOptions = [foCaseInsensitive]
     IndexFieldNames = 'code_famp'
     Connection = GstockdcConnection
@@ -21599,7 +21593,6 @@ object MainForm: TMainForm
     Top = 230
   end
   object LocalisationTable: TFDQuery
-    Active = True
     IndexFieldNames = 'code_l'
     Connection = GstockdcConnection
     SQL.Strings = (
@@ -36735,12 +36728,9 @@ object MainForm: TMainForm
     end
   end
   object GstockdcConnection: TFDConnection
-    Params.Strings = (
-      'ConnectionDef=GSTOCKDC')
-    Connected = True
     LoginPrompt = False
-    Left = 35
-    Top = 104
+    Left = 51
+    Top = 112
   end
   object Opt_cas_bnk_CaisseTable: TFDQuery
     FilterOptions = [foCaseInsensitive]
@@ -39486,7 +39476,6 @@ object MainForm: TMainForm
       FF00FF000000FF00FF00FFFF0000FFFFFF0000000000}
   end
   object CompanyTable: TFDQuery
-    Active = True
     Connection = GstockdcConnection
     SQL.Strings = (
       'SELECT * FROM company')
