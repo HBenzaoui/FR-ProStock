@@ -677,6 +677,7 @@ type
     ClientFaceBtn: TAdvToolButton;
     FourFaceBtn: TAdvToolButton;
     ProduitFaceBtn: TAdvToolButton;
+    FDScriptCreateTables: TFDScript;
     procedure ClientMainFBtnClick(Sender: TObject);
     procedure FourMainFBtnClick(Sender: TObject);
     procedure ProduitMainFBtnClick(Sender: TObject);
@@ -759,6 +760,7 @@ type
     procedure FourMainFMnmClick(Sender: TObject);
     procedure ProduitMainFMmnClick(Sender: TObject);
     procedure BoardMainFBtnClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
 
     TimerStart: TDateTime;
@@ -795,7 +797,9 @@ implementation
 
 {$R *.dfm}
 
-uses UClientsList, UFournisseurList, UProduitsList, UBonRec, UBonRecGestion,
+uses TlHelp32,
+
+UClientsList, UFournisseurList, UProduitsList, UBonRec, UBonRecGestion,
   USplashAddUnite, UBonLiv, UBonLivGestion, UBonFacVGestion, UBonFacV,
   UBonFacAGestion, UBonFacA, UComptoir,ShellAPI, UBonCtr, UCaisseList,
   UBankList, UUsersList, UUsersGestion, UReglementFList, UReglementCList,
@@ -1071,11 +1075,17 @@ begin
 end;
 
 procedure TMainForm.FormCreate(Sender: TObject);
+var sCmd: string;
 begin
 //Screen.MenuFont.Name := 'Helvetica LT Std';
 //Screen.MenuFont.Height := 15;
 
-  FDPhysPgDriverLink1.VendorLib:= GetCurrentDir+'\libpq.dll ' ;
+//FDPhysPgDriverLink1.VendorLib:= GetCurrentDir+'\bin\libpq.dll ' ;
+
+//  sCmd := Pwidechar(GetCurrentDir+ '\bin\pg_s.bat' );
+//  ShellExecute(0, 'open', PChar(sCmd) , PChar(sCmd), nil, SW_HIDE);
+//
+//  Sleep(5000);
 
   GstockdcConnection.DriverName := 'PG';
   GstockdcConnection.Params.Values['Server'] :='localhost'; // your server name'';
@@ -1085,12 +1095,10 @@ begin
   GstockdcConnection.Params.Values['Port'] := '5432';
   GstockdcConnection.LoginPrompt := False;
 
-
-// FDScript1.ExecuteAll;
-
  GstockdcConnection.Params.Values['Database'] := 'GSTOCKDC';
  GstockdcConnection.Connected:= True;
 
+ FDScriptCreateTables.ExecuteAll;
 
   Application.UpdateFormatSettings := false;
   FormatSettings.DecimalSeparator := ',';
@@ -1098,10 +1106,11 @@ begin
   FormatSettings.CurrencyDecimals := 2;
   FormatSettings.DateSeparator:= '/';
 
-   Width:= Screen.Width;
+  Width:= Screen.Width;
   Height:= Screen.Height - 50;
 
   Label2.Caption:=#174;
+
 
 end;
 
@@ -2181,6 +2190,8 @@ begin
     RegclientTable.Active := True;
     RegfournisseurTable.Active := True;
 
+    CompanyTable.Active := True;
+
 
        if UserTypeLbl.Caption <> '0' then
      begin
@@ -2918,6 +2929,40 @@ begin
     end else
 
      sPageControl1.ActivePage := TabSheetDashBoard;
+end;
+
+function KillTask(ExeFileName: string): Integer;
+const
+  PROCESS_TERMINATE = $0001;
+var
+  ContinueLoop: BOOL;
+  FSnapshotHandle: THandle;
+  FProcessEntry32: TProcessEntry32;
+begin
+  Result := 0;
+  FSnapshotHandle := CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
+  FProcessEntry32.dwSize := SizeOf(FProcessEntry32);
+  ContinueLoop := Process32First(FSnapshotHandle, FProcessEntry32);
+
+  while Integer(ContinueLoop) <> 0 do
+  begin
+    if ((UpperCase(ExtractFileName(FProcessEntry32.szExeFile)) =
+      UpperCase(ExeFileName)) or (UpperCase(FProcessEntry32.szExeFile) =
+      UpperCase(ExeFileName))) then
+      Result := Integer(TerminateProcess(
+                        OpenProcess(PROCESS_TERMINATE,
+                                    BOOL(0),
+                                    FProcessEntry32.th32ProcessID),
+                                    0));
+     ContinueLoop := Process32Next(FSnapshotHandle, FProcessEntry32);
+  end;
+  CloseHandle(FSnapshotHandle);
+end;
+
+procedure TMainForm.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+   KillTask('postgres.exe');
+   KillTask('cmd.exe');
 end;
 
 End.

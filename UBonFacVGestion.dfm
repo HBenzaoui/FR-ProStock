@@ -2299,7 +2299,7 @@ object BonFacVGestionF: TBonFacVGestionF
     Top = 384
   end
   object BonFacVPListfrxRprt: TfrxReport
-    Version = '5.5'
+    Version = '5.4.6'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]

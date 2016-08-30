@@ -88,6 +88,7 @@ type
     procedure WilayaFournisseurGCbxEnter(Sender: TObject);
     procedure VilleFournisseurGCbxKeyPress(Sender: TObject; var Key: Char);
     procedure VilleFournisseurGCbxEnter(Sender: TObject);
+    procedure FormKeyPress(Sender: TObject; var Key: Char);
   private
     { Private declarations }
   public
@@ -1129,6 +1130,16 @@ begin
       MainForm.WilayasTable.SQL.Text:= 'SELECT * FROM wilayas ' ;
       MainForm.WilayasTable.Active := True;
 
+end;
+
+procedure TFournisseurGestionF.FormKeyPress(Sender: TObject; var Key: Char);
+begin
+     if key = #27 then
+ begin
+ key := #0;
+  Close;
+
+ end;
 end;
 
 end.

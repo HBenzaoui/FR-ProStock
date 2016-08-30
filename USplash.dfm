@@ -17,16 +17,16 @@ object FSplash: TFSplash
   PixelsPerInch = 96
   TextHeight = 13
   object Label1: TLabel
-    Left = 6
-    Top = 6
-    Width = 286
-    Height = 28
+    Left = 18
+    Top = 7
+    Width = 264
+    Height = 26
     Caption = 'Register Correctement Cr'#233#233
     Color = 7854350
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWhite
-    Font.Height = 28
-    Font.Name = 'Roboto Lt'
+    Font.Height = 26
+    Font.Name = 'Roboto'
     Font.Style = []
     Font.Quality = fqAntialiased
     ParentColor = False

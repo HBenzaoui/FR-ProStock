@@ -14,6 +14,7 @@ object MainForm: TMainForm
   Menu = MainMenu1
   OldCreateOrder = False
   WindowState = wsMaximized
+  OnClose = FormClose
   OnCloseQuery = FormCloseQuery
   OnCreate = FormCreate
   OnDestroy = FormDestroy
@@ -23446,8 +23447,8 @@ object MainForm: TMainForm
     ResourceOptions.AssignedValues = [rvMacroCreate, rvMacroExpand, rvDirectExecute, rvPersistent]
     ResourceOptions.MacroCreate = False
     ResourceOptions.DirectExecute = True
-    Left = 672
-    Top = 168
+    Left = 680
+    Top = 184
   end
   object PanelIcons24: TsAlphaImageList
     Height = 24
@@ -39481,5 +39482,6007 @@ object MainForm: TMainForm
       'SELECT * FROM company')
     Left = 346
     Top = 129
+  end
+  object FDScriptCreateTables: TFDScript
+    SQLScripts = <
+      item
+        Name = 'three'
+        SQL.Strings = (
+          '/*'
+          'Source Server         : PostgreSQL'
+          'Source Server Version : 90600'
+          'Source Host           : localhost:5432'
+          'Source Database       : GSTOCKDC'
+          'Source Schema         : public'
+          'Target Server Type    : PGSQL'
+          'Target Server Version : 90600'
+          'File Encoding         : 65001'
+          'Date: 2016-08-28 15:50:18'
+          '*/'
+          ''
+          '-- ----------------------------'
+          '-- Sequence structure for codebarres_code_cb_seq'
+          '-- ----------------------------'
+          'CREATE SEQUENCE "codebarres_code_cb_seq"'
+          ' INCREMENT 1'
+          ' MINVALUE 1'
+          ' MAXVALUE 2147483647'
+          ' START 1'
+          ' CACHE 1;'
+          ''
+          '-- ----------------------------'
+          '-- Sequence structure for famproduit_code_famp_seq'
+          '-- ----------------------------'
+          'CREATE SEQUENCE "famproduit_code_famp_seq"'
+          ' INCREMENT 1'
+          ' MINVALUE 1'
+          ' MAXVALUE 2147483647'
+          ' START 7'
+          ' CACHE 1;'
+          'SELECT setval('#39'"public"."famproduit_code_famp_seq"'#39', 7, true);'
+          ''
+          '-- ----------------------------'
+          '-- Sequence structure for fournisseur_code_f_seq'
+          '-- ----------------------------'
+          'CREATE SEQUENCE "fournisseur_code_f_seq"'
+          ' INCREMENT 1'
+          ' MINVALUE 1'
+          ' MAXVALUE 2147483647'
+          ' START 2'
+          ' CACHE 1;'
+          'SELECT setval('#39'"public"."fournisseur_code_f_seq"'#39', 2, true);'
+          ''
+          '-- ----------------------------'
+          '-- Sequence structure for magasin_code_m_seq'
+          '-- ----------------------------'
+          'CREATE SEQUENCE "magasin_code_m_seq"'
+          ' INCREMENT 1'
+          ' MINVALUE 1'
+          ' MAXVALUE 2147483647'
+          ' START 6'
+          ' CACHE 1;'
+          'SELECT setval('#39'"public"."magasin_code_m_seq"'#39', 6, true);'
+          ''
+          '-- ----------------------------'
+          '-- Sequence structure for produit_code_p_seq'
+          '-- ----------------------------'
+          'CREATE SEQUENCE "produit_code_p_seq"'
+          ' INCREMENT 1'
+          ' MINVALUE 1'
+          ' MAXVALUE 2147483647'
+          ' START 1'
+          ' CACHE 1;'
+          ''
+          '-- ----------------------------'
+          '-- Sequence structure for sfamproduit_code_sfamp_seq'
+          '-- ----------------------------'
+          'CREATE SEQUENCE "sfamproduit_code_sfamp_seq"'
+          ' INCREMENT 1'
+          ' MINVALUE 1'
+          ' MAXVALUE 9223372036854775807'
+          ' START 3'
+          ' CACHE 1;'
+          'SELECT setval('#39'"public"."sfamproduit_code_sfamp_seq"'#39', 3, true);'
+          ''
+          '-- ----------------------------'
+          '-- Sequence structure for unite_code_u_seq01'
+          '-- ----------------------------'
+          'CREATE SEQUENCE "unite_code_u_seq01"'
+          ' INCREMENT 1'
+          ' MINVALUE 1'
+          ' MAXVALUE 32767'
+          ' START 5'
+          ' CACHE 1;'
+          'SELECT setval('#39'"public"."unite_code_u_seq01"'#39', 5, true);'
+          ''
+          '-- ----------------------------'
+          '-- Table structure for bona_fac'
+          '-- ----------------------------'
+          'CREATE TABLE "bona_fac" ('
+          '"code_bafac" int4 NOT NULL,'
+          '"date_bafac" date,'
+          '"time_bafac" time(6),'
+          '"code_f" int4,'
+          '"montht_bafac" money DEFAULT 0,'
+          '"montver_bafac" money DEFAULT 0,'
+          '"valider_bafac" bool DEFAULT false,'
+          '"num_bafac" varchar(20) COLLATE "default",'
+          '"obser_bafac" text COLLATE "default",'
+          '"montttc_bafac" money DEFAULT 0,'
+          '"remise_bafac" money DEFAULT 0,'
+          '"num_cheque_bafac" varchar(50) COLLATE "default",'
+          '"code_mdpai" int2,'
+          '"code_cmpt" int2,'
+          '"timber_bafac" money DEFAULT 0,'
+          '"code_ur" int4'
+          ')'
+          'WITH (OIDS=FALSE)'
+          ''
+          ';'
+          ''
+          '-- ----------------------------'
+          '-- Records of bona_fac'
+          '-- ----------------------------'
+          'BEGIN;'
+          'COMMIT;'
+          ''
+          '-- ----------------------------'
+          '-- Table structure for bona_fac_list'
+          '-- ----------------------------'
+          'CREATE TABLE "bona_fac_list" ('
+          '"code_bafacl" int4 NOT NULL,'
+          '"code_bafac" int4,'
+          '"qut_p" int4,'
+          '"prixht_p" money DEFAULT 0,'
+          '"cond_p" int4,'
+          '"code_p" int4,'
+          '"tva_p" int2'
+          ')'
+          'WITH (OIDS=FALSE)'
+          ''
+          ';'
+          ''
+          '-- ----------------------------'
+          '-- Records of bona_fac_list'
+          '-- ----------------------------'
+          'BEGIN;'
+          'COMMIT;'
+          ''
+          '-- ----------------------------'
+          '-- Table structure for bona_rec'
+          '-- ----------------------------'
+          'CREATE TABLE "bona_rec" ('
+          '"code_barec" int4 NOT NULL,'
+          '"date_barec" date,'
+          '"time_barec" time(6),'
+          '"code_f" int4,'
+          '"montht_barec" money DEFAULT 0,'
+          '"montver_barec" money DEFAULT 0,'
+          '"valider_barec" bool DEFAULT false,'
+          '"num_barec" varchar(20) COLLATE "default",'
+          '"obser_barec" text COLLATE "default",'
+          '"montttc_barec" money DEFAULT 0,'
+          '"remise_barec" money DEFAULT 0,'
+          '"num_cheque_barec" varchar(50) COLLATE "default",'
+          '"code_mdpai" int2,'
+          '"code_cmpt" int2,'
+          '"code_ur" int4,'
+          '"bon_or_no_barec" bool DEFAULT true'
+          ')'
+          'WITH (OIDS=FALSE)'
+          ''
+          ';'
+          ''
+          '-- ----------------------------'
+          '-- Records of bona_rec'
+          '-- ----------------------------'
+          'COMMIT;'
+          ''
+          '-- ----------------------------'
+          '-- Table structure for bona_rec_list'
+          '-- ----------------------------'
+          'CREATE TABLE "bona_rec_list" ('
+          '"code_barecl" int4 NOT NULL,'
+          '"code_barec" int4,'
+          '"qut_p" int4,'
+          '"prixht_p" money DEFAULT 0,'
+          '"cond_p" int4,'
+          '"code_p" int4'
+          ')'
+          'WITH (OIDS=FALSE)'
+          ''
+          ';'
+          ''
+          '-- ----------------------------'
+          '-- Records of bona_rec_list'
+          '-- ----------------------------'
+          'BEGIN;'
+          'COMMIT;'
+          ''
+          '-- ----------------------------'
+          '-- Table structure for bonv_ctr'
+          '-- ----------------------------'
+          'CREATE TABLE "bonv_ctr" ('
+          '"code_bvctr" int4 NOT NULL,'
+          '"date_bvctr" date,'
+          '"time_bvctr" time(6),'
+          '"code_c" int4,'
+          '"montht_bvctr" money DEFAULT 0,'
+          '"montver_bvctr" money DEFAULT 0,'
+          '"valider_bvctr" bool DEFAULT false,'
+          '"num_bvctr" varchar(20) COLLATE "default",'
+          '"obser_bvctr" text COLLATE "default",'
+          '"montttc_bvctr" money DEFAULT 0,'
+          '"remise_bvctr" money DEFAULT 0,'
+          '"code_ur" int4'
+          ')'
+          'WITH (OIDS=FALSE)'
+          ''
+          ';'
+          ''
+          '-- ----------------------------'
+          '-- Records of bonv_ctr'
+          '-- ----------------------------'
+          'BEGIN;'
+          'COMMIT;'
+          ''
+          '-- ----------------------------'
+          '-- Table structure for bonv_ctr_list'
+          '-- ----------------------------'
+          'CREATE TABLE "bonv_ctr_list" ('
+          '"code_bvctrl" int4 NOT NULL,'
+          '"code_bvctr" int4,'
+          '"qut_p" int4,'
+          '"prixvd_p" money DEFAULT 0,'
+          '"cond_p" int4,'
+          '"code_p" int4'
+          ')'
+          'WITH (OIDS=FALSE)'
+          ''
+          ';'
+          ''
+          '-- ----------------------------'
+          '-- Records of bonv_ctr_list'
+          '-- ----------------------------'
+          'BEGIN;'
+          'COMMIT;'
+          ''
+          '-- ----------------------------'
+          '-- Table structure for bonv_fac'
+          '-- ----------------------------'
+          'CREATE TABLE "bonv_fac" ('
+          '"code_bvfac" int4 NOT NULL,'
+          '"date_bvfac" date,'
+          '"time_bvfac" time(6),'
+          '"code_c" int4,'
+          '"montht_bvfac" money DEFAULT 0,'
+          '"montver_bvfac" money DEFAULT 0,'
+          '"valider_bvfac" bool DEFAULT false,'
+          '"num_bvfac" varchar(20) COLLATE "default",'
+          '"obser_bvfac" text COLLATE "default",'
+          '"montttc_bvfac" money DEFAULT 0,'
+          '"remise_bvfac" money DEFAULT 0,'
+          '"num_cheque_bvfac" varchar(50) COLLATE "default",'
+          '"code_mdpai" int2,'
+          '"code_cmpt" int2,'
+          '"timber_bvfac" money DEFAULT 0,'
+          '"code_ur" int4'
+          ')'
+          'WITH (OIDS=FALSE)'
+          ''
+          ';'
+          ''
+          '-- ----------------------------'
+          '-- Records of bonv_fac'
+          '-- ----------------------------'
+          'BEGIN;'
+          'COMMIT;'
+          ''
+          '-- ----------------------------'
+          '-- Table structure for bonv_fac_list'
+          '-- ----------------------------'
+          'CREATE TABLE "bonv_fac_list" ('
+          '"code_bvfacl" int4 NOT NULL,'
+          '"code_bvfac" int4,'
+          '"qut_p" int4,'
+          '"prixvd_p" money DEFAULT 0,'
+          '"cond_p" int4,'
+          '"code_p" int4,'
+          '"tva_p" int2'
+          ')'
+          'WITH (OIDS=FALSE)'
+          ''
+          ';'
+          ''
+          '-- ----------------------------'
+          '-- Records of bonv_fac_list'
+          '-- ----------------------------'
+          'BEGIN;'
+          'COMMIT;'
+          ''
+          '-- ----------------------------'
+          '-- Table structure for bonv_liv'
+          '-- ----------------------------'
+          'CREATE TABLE "bonv_liv" ('
+          '"code_bvliv" int4 NOT NULL,'
+          '"date_bvliv" date,'
+          '"time_bvliv" time(6),'
+          '"code_c" int4,'
+          '"montht_bvliv" money DEFAULT 0,'
+          '"montver_bvliv" money DEFAULT 0,'
+          '"valider_bvliv" bool DEFAULT false,'
+          '"num_bvliv" varchar(20) COLLATE "default",'
+          '"obser_bvliv" text COLLATE "default",'
+          '"montttc_bvliv" money DEFAULT 0,'
+          '"remise_bvliv" money DEFAULT 0,'
+          '"num_cheque_bvliv" varchar(50) COLLATE "default",'
+          '"code_mdpai" int2,'
+          '"code_cmpt" int2,'
+          '"code_ur" int4'
+          ')'
+          'WITH (OIDS=FALSE)'
+          ''
+          ';'
+          ''
+          '-- ----------------------------'
+          '-- Records of bonv_liv'
+          '-- ----------------------------'
+          'BEGIN;'
+          'COMMIT;'
+          ''
+          '-- ----------------------------'
+          '-- Table structure for bonv_liv_list'
+          '-- ----------------------------'
+          'CREATE TABLE "bonv_liv_list" ('
+          '"code_bvlivl" int4 NOT NULL,'
+          '"code_bvliv" int4,'
+          '"qut_p" int4,'
+          '"prixvd_p" money DEFAULT 0,'
+          '"cond_p" int4,'
+          '"code_p" int4'
+          ')'
+          'WITH (OIDS=FALSE)'
+          ''
+          ';'
+          ''
+          '-- ----------------------------'
+          '-- Records of bonv_liv_list'
+          '-- ----------------------------'
+          'BEGIN;'
+          'COMMIT;'
+          ''
+          '-- ----------------------------'
+          '-- Table structure for client'
+          '-- ----------------------------'
+          'CREATE TABLE "client" ('
+          '"nom_c" varchar(40) COLLATE "default",'
+          '"adr_c" varchar(60) COLLATE "default",'
+          '"ville_c" varchar(25) COLLATE "default",'
+          '"fix_c" char(15) COLLATE "default",'
+          '"mob_c" char(15) COLLATE "default",'
+          '"email_c" varchar(40) COLLATE "default",'
+          '"willaya_c" varchar(25) COLLATE "default",'
+          '"fax_c" char(15) COLLATE "default",'
+          '"activ_c" bool,'
+          '"logo_c" bytea,'
+          '"mob2_c" char(15) COLLATE "default",'
+          '"rc_c" char(25) COLLATE "default",'
+          '"nif_c" char(25) COLLATE "default",'
+          '"nart_c" char(25) COLLATE "default",'
+          '"nis_c" char(25) COLLATE "default",'
+          '"obser_c" text COLLATE "default",'
+          '"nbank_c" char(25) COLLATE "default",'
+          '"rib_c" char(25) COLLATE "default",'
+          '"activite_c" char(40) COLLATE "default",'
+          '"pays_c" varchar(25) COLLATE "default",'
+          '"siteweb_c" varchar(40) COLLATE "default",'
+          '"oldcredit_c" money DEFAULT 0,'
+          '"maxcredit_c" money DEFAULT 0,'
+          '"code_c" int4 NOT NULL,'
+          '"tarification_c" int2 DEFAULT 0'
+          ')'
+          'WITH (OIDS=FALSE)'
+          ''
+          ';'
+          ''
+          '-- ----------------------------'
+          '-- Records of client'
+          '-- ----------------------------'
+          'BEGIN;'
+          'COMMIT;'
+          ''
+          '-- ----------------------------'
+          '-- Table structure for codebarres'
+          '-- ----------------------------'
+          'CREATE TABLE "codebarres" ('
+          '"nom_cb" varchar(20) COLLATE "default",'
+          '"code_p" int4,'
+          '"code_cb" int4 NOT NULL'
+          ')'
+          'WITH (OIDS=FALSE)'
+          ''
+          ';'
+          ''
+          '-- ----------------------------'
+          '-- Records of codebarres'
+          '-- ----------------------------'
+          'BEGIN;'
+          'COMMIT;'
+          ''
+          '-- ----------------------------'
+          '-- Table structure for communes'
+          '-- ----------------------------'
+          'CREATE TABLE "communes" ('
+          '"code_cumm" int2 NOT NULL,'
+          '"codepostal_cumm" int4,'
+          '"nom_cumm" char(25) COLLATE "default",'
+          '"code_w" int2'
+          ')'
+          'WITH (OIDS=FALSE)'
+          ''
+          ';'
+          ''
+          '-- ----------------------------'
+          '-- Records of communes'
+          '-- ----------------------------'
+          'BEGIN;'
+          
+            'INSERT INTO "communes" VALUES ('#39'1'#39', '#39'1001'#39', '#39'Adrar              ' +
+            '      '#39', '#39'1'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'2'#39', '#39'1002'#39', '#39'Tamest             ' +
+            '      '#39', '#39'1'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'3'#39', '#39'1003'#39', '#39'Charouine          ' +
+            '      '#39', '#39'1'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'4'#39', '#39'1004'#39', '#39'Reggane            ' +
+            '      '#39', '#39'1'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'5'#39', '#39'1005'#39', '#39'Inozghmir          ' +
+            '      '#39', '#39'1'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'6'#39', '#39'1006'#39', '#39'Tit                ' +
+            '      '#39', '#39'1'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'7'#39', '#39'1007'#39', '#39'Ksar Kaddour       ' +
+            '      '#39', '#39'1'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'8'#39', '#39'1008'#39', '#39'Tsabit             ' +
+            '      '#39', '#39'1'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'9'#39', '#39'1009'#39', '#39'Timimoun           ' +
+            '      '#39', '#39'1'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'10'#39', '#39'1010'#39', '#39'Ouled Said        ' +
+            '       '#39', '#39'1'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'11'#39', '#39'1011'#39', '#39'Zaouiet Kounta    ' +
+            '       '#39', '#39'1'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'12'#39', '#39'1012'#39', '#39'Aoulef            ' +
+            '       '#39', '#39'1'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'13'#39', '#39'1013'#39', '#39'Timokten          ' +
+            '       '#39', '#39'1'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'14'#39', '#39'1014'#39', '#39'Tamentit          ' +
+            '       '#39', '#39'1'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'15'#39', '#39'1015'#39', '#39'Fenoughil         ' +
+            '       '#39', '#39'1'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'16'#39', '#39'1016'#39', '#39'Tinerkouk         ' +
+            '       '#39', '#39'1'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'17'#39', '#39'1017'#39', '#39'Deldoul           ' +
+            '       '#39', '#39'1'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'18'#39', '#39'1018'#39', '#39'Sali              ' +
+            '       '#39', '#39'1'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'19'#39', '#39'1019'#39', '#39'Akabli            ' +
+            '       '#39', '#39'1'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'20'#39', '#39'1020'#39', '#39'Metarfa           ' +
+            '       '#39', '#39'1'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'21'#39', '#39'1021'#39', '#39'O Ahmed Timmi     ' +
+            '       '#39', '#39'1'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'22'#39', '#39'1022'#39', '#39'Bouda             ' +
+            '       '#39', '#39'1'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'23'#39', '#39'1023'#39', '#39'Aougrout          ' +
+            '       '#39', '#39'1'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'24'#39', '#39'1024'#39', '#39'Talmine           ' +
+            '       '#39', '#39'1'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'25'#39', '#39'1025'#39', '#39'B Badji Mokhtar   ' +
+            '       '#39', '#39'1'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'26'#39', '#39'1026'#39', '#39'Sbaa              ' +
+            '       '#39', '#39'1'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'27'#39', '#39'1027'#39', '#39'Ouled Aissa       ' +
+            '       '#39', '#39'1'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'28'#39', '#39'1028'#39', '#39'Timiaouine        ' +
+            '       '#39', '#39'1'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'29'#39', '#39'2001'#39', '#39'Chlef             ' +
+            '       '#39', '#39'2'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'30'#39', '#39'2002'#39', '#39'Tenes             ' +
+            '       '#39', '#39'2'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'31'#39', '#39'2003'#39', '#39'Benairia          ' +
+            '       '#39', '#39'2'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'32'#39', '#39'2004'#39', '#39'El Karimia        ' +
+            '       '#39', '#39'2'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'33'#39', '#39'2005'#39', '#39'Tadjna            ' +
+            '       '#39', '#39'2'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'34'#39', '#39'2006'#39', '#39'Taougrite         ' +
+            '       '#39', '#39'2'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'35'#39', '#39'2007'#39', '#39'Beni Haoua        ' +
+            '       '#39', '#39'2'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'36'#39', '#39'2008'#39', '#39'Sobha             ' +
+            '       '#39', '#39'2'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'37'#39', '#39'2009'#39', '#39'Harchoun          ' +
+            '       '#39', '#39'2'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'38'#39', '#39'2010'#39', '#39'Ouled Fares       ' +
+            '       '#39', '#39'2'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'39'#39', '#39'2011'#39', '#39'Sidi Akacha       ' +
+            '       '#39', '#39'2'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'40'#39', '#39'2012'#39', '#39'Boukadir          ' +
+            '       '#39', '#39'2'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'41'#39', '#39'2013'#39', '#39'Beni Rached       ' +
+            '       '#39', '#39'2'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'42'#39', '#39'2014'#39', '#39'Talassa           ' +
+            '       '#39', '#39'2'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'43'#39', '#39'2015'#39', '#39'Herenfa           ' +
+            '       '#39', '#39'2'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'44'#39', '#39'2016'#39', '#39'Oued Goussine     ' +
+            '       '#39', '#39'2'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'45'#39', '#39'2017'#39', '#39'Dahra             ' +
+            '       '#39', '#39'2'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'46'#39', '#39'2018'#39', '#39'Ouled Abbes       ' +
+            '       '#39', '#39'2'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'47'#39', '#39'2019'#39', '#39'Sendjas           ' +
+            '       '#39', '#39'2'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'48'#39', '#39'2020'#39', '#39'Zeboudja          ' +
+            '       '#39', '#39'2'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'49'#39', '#39'2021'#39', '#39'Oued Sly          ' +
+            '       '#39', '#39'2'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'50'#39', '#39'2022'#39', '#39'Abou El Hassen    ' +
+            '       '#39', '#39'2'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'51'#39', '#39'2023'#39', '#39'El Marsa          ' +
+            '       '#39', '#39'2'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'52'#39', '#39'2024'#39', '#39'Chettia           ' +
+            '       '#39', '#39'2'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'53'#39', '#39'2025'#39', '#39'Sidi Abderrahmane ' +
+            '       '#39', '#39'2'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'54'#39', '#39'2026'#39', '#39'Moussadek         ' +
+            '       '#39', '#39'2'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'55'#39', '#39'2027'#39', '#39'El Hadjadj        ' +
+            '       '#39', '#39'2'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'56'#39', '#39'2028'#39', '#39'Labiod Medjadja   ' +
+            '       '#39', '#39'2'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'57'#39', '#39'2029'#39', '#39'Oued Fodda        ' +
+            '       '#39', '#39'2'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'58'#39', '#39'2030'#39', '#39'Ouled Ben Abdelkad' +
+            'er     '#39', '#39'2'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'59'#39', '#39'2031'#39', '#39'Bouzghaia         ' +
+            '       '#39', '#39'2'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'60'#39', '#39'2032'#39', '#39'Ain Merane        ' +
+            '       '#39', '#39'2'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'61'#39', '#39'2033'#39', '#39'Oum Drou          ' +
+            '       '#39', '#39'2'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'62'#39', '#39'2034'#39', '#39'Breira            ' +
+            '       '#39', '#39'2'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'63'#39', '#39'2035'#39', '#39'Ben Boutaleb      ' +
+            '       '#39', '#39'2'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'64'#39', '#39'3001'#39', '#39'Laghouat          ' +
+            '       '#39', '#39'3'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'65'#39', '#39'3002'#39', '#39'Ksar El Hirane    ' +
+            '       '#39', '#39'3'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'66'#39', '#39'3003'#39', '#39'Benacer Ben Chohra' +
+            '       '#39', '#39'3'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'67'#39', '#39'3004'#39', '#39'Sidi Makhlouf     ' +
+            '       '#39', '#39'3'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'68'#39', '#39'3005'#39', '#39'Hassi Delaa       ' +
+            '       '#39', '#39'3'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'69'#39', '#39'3006'#39', '#39'Hassi R Mel       ' +
+            '       '#39', '#39'3'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'70'#39', '#39'3007'#39', '#39'Ain Mahdi         ' +
+            '       '#39', '#39'3'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'71'#39', '#39'3008'#39', '#39'Tadjmout          ' +
+            '       '#39', '#39'3'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'72'#39', '#39'3009'#39', '#39'Kheneg            ' +
+            '       '#39', '#39'3'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'73'#39', '#39'3010'#39', '#39'Gueltat Sidi Saad ' +
+            '       '#39', '#39'3'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'74'#39', '#39'3011'#39', '#39'Ain Sidi Ali      ' +
+            '       '#39', '#39'3'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'75'#39', '#39'3012'#39', '#39'Beidha            ' +
+            '       '#39', '#39'3'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'76'#39', '#39'3013'#39', '#39'Brida             ' +
+            '       '#39', '#39'3'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'77'#39', '#39'3014'#39', '#39'El Ghicha         ' +
+            '       '#39', '#39'3'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'78'#39', '#39'3015'#39', '#39'Hadj Mechri       ' +
+            '       '#39', '#39'3'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'79'#39', '#39'3016'#39', '#39'Sebgag            ' +
+            '       '#39', '#39'3'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'80'#39', '#39'3017'#39', '#39'Taouiala          ' +
+            '       '#39', '#39'3'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'81'#39', '#39'3018'#39', '#39'Tadjrouna         ' +
+            '       '#39', '#39'3'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'82'#39', '#39'3019'#39', '#39'Aflou             ' +
+            '       '#39', '#39'3'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'83'#39', '#39'3020'#39', '#39'El Assafia        ' +
+            '       '#39', '#39'3'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'84'#39', '#39'3021'#39', '#39'Oued Morra        ' +
+            '       '#39', '#39'3'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'85'#39', '#39'3022'#39', '#39'Oued M Zi         ' +
+            '       '#39', '#39'3'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'86'#39', '#39'3023'#39', '#39'El Haouaita       ' +
+            '       '#39', '#39'3'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'87'#39', '#39'3024'#39', '#39'Sidi Bouzid       ' +
+            '       '#39', '#39'3'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'88'#39', '#39'4001'#39', '#39'Oum El Bouaghi    ' +
+            '       '#39', '#39'4'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'89'#39', '#39'4002'#39', '#39'Ain Beida         ' +
+            '       '#39', '#39'4'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'90'#39', '#39'4003'#39', '#39'Ainmlila          ' +
+            '       '#39', '#39'4'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'91'#39', '#39'4004'#39', '#39'Behir Chergui     ' +
+            '       '#39', '#39'4'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'92'#39', '#39'4005'#39', '#39'El Amiria         ' +
+            '       '#39', '#39'4'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'93'#39', '#39'4006'#39', '#39'Sigus             ' +
+            '       '#39', '#39'4'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'94'#39', '#39'4007'#39', '#39'El Belala         ' +
+            '       '#39', '#39'4'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'95'#39', '#39'4008'#39', '#39'Ain Babouche      ' +
+            '       '#39', '#39'4'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'96'#39', '#39'4009'#39', '#39'Berriche          ' +
+            '       '#39', '#39'4'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'97'#39', '#39'4010'#39', '#39'Ouled Hamla       ' +
+            '       '#39', '#39'4'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'98'#39', '#39'4011'#39', '#39'Dhala             ' +
+            '       '#39', '#39'4'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'99'#39', '#39'4012'#39', '#39'Ain Kercha        ' +
+            '       '#39', '#39'4'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'100'#39', '#39'4013'#39', '#39'Hanchir Toumghani' +
+            '        '#39', '#39'4'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'101'#39', '#39'4014'#39', '#39'El Djazia        ' +
+            '        '#39', '#39'4'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'102'#39', '#39'4015'#39', '#39'Ain Diss         ' +
+            '        '#39', '#39'4'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'103'#39', '#39'4016'#39', '#39'Fkirina          ' +
+            '        '#39', '#39'4'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'104'#39', '#39'4017'#39', '#39'Souk Naamane     ' +
+            '        '#39', '#39'4'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'105'#39', '#39'4018'#39', '#39'Zorg             ' +
+            '        '#39', '#39'4'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'106'#39', '#39'4019'#39', '#39'El Fedjoudj Bough' +
+            'rar     '#39', '#39'4'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'107'#39', '#39'4020'#39', '#39'Ouled Zouai      ' +
+            '        '#39', '#39'4'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'108'#39', '#39'4021'#39', '#39'Bir Chouhada     ' +
+            '        '#39', '#39'4'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'109'#39', '#39'4022'#39', '#39'Ksar Sbahi       ' +
+            '        '#39', '#39'4'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'110'#39', '#39'4023'#39', '#39'Oued Nini        ' +
+            '        '#39', '#39'4'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'111'#39', '#39'4024'#39', '#39'Meskiana         ' +
+            '        '#39', '#39'4'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'112'#39', '#39'4025'#39', '#39'Ain Fekroune     ' +
+            '        '#39', '#39'4'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'113'#39', '#39'4026'#39', '#39'Rahia            ' +
+            '        '#39', '#39'4'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'114'#39', '#39'4027'#39', '#39'Ain Zitoun       ' +
+            '        '#39', '#39'4'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'115'#39', '#39'4028'#39', '#39'Ouled Gacem      ' +
+            '        '#39', '#39'4'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'116'#39', '#39'4029'#39', '#39'El Harmilia      ' +
+            '        '#39', '#39'4'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'117'#39', '#39'5001'#39', '#39'Batna            ' +
+            '        '#39', '#39'5'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'118'#39', '#39'5002'#39', '#39'Ghassira         ' +
+            '        '#39', '#39'5'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'119'#39', '#39'5003'#39', '#39'Maafa            ' +
+            '        '#39', '#39'5'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'120'#39', '#39'5004'#39', '#39'Merouana         ' +
+            '        '#39', '#39'5'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'121'#39', '#39'5005'#39', '#39'Seriana          ' +
+            '        '#39', '#39'5'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'122'#39', '#39'5006'#39', '#39'Menaa            ' +
+            '        '#39', '#39'5'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'123'#39', '#39'5007'#39', '#39'El Madher        ' +
+            '        '#39', '#39'5'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'124'#39', '#39'5008'#39', '#39'Tazoult          ' +
+            '        '#39', '#39'5'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'125'#39', '#39'5009'#39', '#39'Ngaous           ' +
+            '        '#39', '#39'5'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'126'#39', '#39'5010'#39', '#39'Guigba           ' +
+            '        '#39', '#39'5'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'127'#39', '#39'5011'#39', '#39'Inoughissen      ' +
+            '        '#39', '#39'5'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'128'#39', '#39'5012'#39', '#39'Ouyoun El Assafir' +
+            '        '#39', '#39'5'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'129'#39', '#39'5013'#39', '#39'Djerma           ' +
+            '        '#39', '#39'5'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'130'#39', '#39'5014'#39', '#39'Bitam            ' +
+            '        '#39', '#39'5'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'131'#39', '#39'5015'#39', '#39'Metkaouak        ' +
+            '        '#39', '#39'5'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'132'#39', '#39'5016'#39', '#39'Arris            ' +
+            '        '#39', '#39'5'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'133'#39', '#39'5017'#39', '#39'Kimmel           ' +
+            '        '#39', '#39'5'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'134'#39', '#39'5018'#39', '#39'Tilatou          ' +
+            '        '#39', '#39'5'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'135'#39', '#39'5019'#39', '#39'Ain Djasser      ' +
+            '        '#39', '#39'5'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'136'#39', '#39'5020'#39', '#39'Ouled Selam      ' +
+            '        '#39', '#39'5'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'137'#39', '#39'5021'#39', '#39'Tigherghar       ' +
+            '        '#39', '#39'5'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'138'#39', '#39'5022'#39', '#39'Ain Yagout       ' +
+            '        '#39', '#39'5'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'139'#39', '#39'5023'#39', '#39'Fesdis           ' +
+            '        '#39', '#39'5'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'140'#39', '#39'5024'#39', '#39'Sefiane          ' +
+            '        '#39', '#39'5'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'141'#39', '#39'5025'#39', '#39'Rahbat           ' +
+            '        '#39', '#39'5'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'142'#39', '#39'5026'#39', '#39'Tighanimine      ' +
+            '        '#39', '#39'5'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'143'#39', '#39'5027'#39', '#39'Lemsane          ' +
+            '        '#39', '#39'5'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'144'#39', '#39'5028'#39', '#39'Ksar Belezma     ' +
+            '        '#39', '#39'5'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'145'#39', '#39'5029'#39', '#39'Seggana          ' +
+            '        '#39', '#39'5'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'146'#39', '#39'5030'#39', '#39'Ichmoul          ' +
+            '        '#39', '#39'5'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'147'#39', '#39'5031'#39', '#39'Foum Toub        ' +
+            '        '#39', '#39'5'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'148'#39', '#39'5032'#39', '#39'Beni Foudhala El ' +
+            'Hakania '#39', '#39'5'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'149'#39', '#39'5033'#39', '#39'Oued El Ma       ' +
+            '        '#39', '#39'5'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'150'#39', '#39'5034'#39', '#39'Talkhamt         ' +
+            '        '#39', '#39'5'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'151'#39', '#39'5035'#39', '#39'Bouzina          ' +
+            '        '#39', '#39'5'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'152'#39', '#39'5036'#39', '#39'Chemora          ' +
+            '        '#39', '#39'5'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'153'#39', '#39'5037'#39', '#39'Oued Chaaba      ' +
+            '        '#39', '#39'5'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'154'#39', '#39'5038'#39', '#39'Taxlent          ' +
+            '        '#39', '#39'5'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'155'#39', '#39'5039'#39', '#39'Gosbat           ' +
+            '        '#39', '#39'5'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'156'#39', '#39'5040'#39', '#39'Ouled Aouf       ' +
+            '        '#39', '#39'5'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'157'#39', '#39'5041'#39', '#39'Boumagueur       ' +
+            '        '#39', '#39'5'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'158'#39', '#39'5042'#39', '#39'Barika           ' +
+            '        '#39', '#39'5'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'159'#39', '#39'5043'#39', '#39'Djezzar          ' +
+            '        '#39', '#39'5'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'160'#39', '#39'5044'#39', '#39'Tkout            ' +
+            '        '#39', '#39'5'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'161'#39', '#39'5045'#39', '#39'Ain Touta        ' +
+            '        '#39', '#39'5'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'162'#39', '#39'5046'#39', '#39'Hidoussa         ' +
+            '        '#39', '#39'5'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'163'#39', '#39'5047'#39', '#39'Teniet El Abed   ' +
+            '        '#39', '#39'5'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'164'#39', '#39'5048'#39', '#39'Oued Taga        ' +
+            '        '#39', '#39'5'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'165'#39', '#39'5049'#39', '#39'Ouled Fadel      ' +
+            '        '#39', '#39'5'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'166'#39', '#39'5050'#39', '#39'Timgad           ' +
+            '        '#39', '#39'5'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'167'#39', '#39'5051'#39', '#39'Ras El Aioun     ' +
+            '        '#39', '#39'5'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'168'#39', '#39'5052'#39', '#39'Chir             ' +
+            '        '#39', '#39'5'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'169'#39', '#39'5053'#39', '#39'Ouled Si Slimane ' +
+            '        '#39', '#39'5'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'170'#39', '#39'5054'#39', '#39'Zanat El Beida   ' +
+            '        '#39', '#39'5'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'171'#39', '#39'5055'#39', '#39'Amdoukal         ' +
+            '        '#39', '#39'5'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'172'#39', '#39'5056'#39', '#39'Ouled Ammar      ' +
+            '        '#39', '#39'5'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'173'#39', '#39'5057'#39', '#39'El Hassi         ' +
+            '        '#39', '#39'5'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'174'#39', '#39'5058'#39', '#39'Lazrou           ' +
+            '        '#39', '#39'5'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'175'#39', '#39'5059'#39', '#39'Boumia           ' +
+            '        '#39', '#39'5'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'176'#39', '#39'5060'#39', '#39'Boulhilat        ' +
+            '        '#39', '#39'5'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'177'#39', '#39'5061'#39', '#39'Larbaa           ' +
+            '        '#39', '#39'5'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'178'#39', '#39'6001'#39', '#39'Bejaia           ' +
+            '        '#39', '#39'6'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'179'#39', '#39'6002'#39', '#39'Amizour          ' +
+            '        '#39', '#39'6'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'180'#39', '#39'6003'#39', '#39'Ferraoun         ' +
+            '        '#39', '#39'6'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'181'#39', '#39'6004'#39', '#39'Taourirt Ighil   ' +
+            '        '#39', '#39'6'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'182'#39', '#39'6005'#39', '#39'Chelata          ' +
+            '        '#39', '#39'6'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'183'#39', '#39'6006'#39', '#39'Tamokra          ' +
+            '        '#39', '#39'6'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'184'#39', '#39'6007'#39', '#39'Timzrit          ' +
+            '        '#39', '#39'6'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'185'#39', '#39'6008'#39', '#39'Souk El Thenine  ' +
+            '        '#39', '#39'6'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'186'#39', '#39'6009'#39', '#39'Mcisna           ' +
+            '        '#39', '#39'6'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'187'#39', '#39'6010'#39', '#39'Thinabdher       ' +
+            '        '#39', '#39'6'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'188'#39', '#39'6011'#39', '#39'Tichi            ' +
+            '        '#39', '#39'6'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'189'#39', '#39'6012'#39', '#39'Semaoun          ' +
+            '        '#39', '#39'6'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'190'#39', '#39'6013'#39', '#39'Kendira          ' +
+            '        '#39', '#39'6'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'191'#39', '#39'6014'#39', '#39'Tifra            ' +
+            '        '#39', '#39'6'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'192'#39', '#39'6015'#39', '#39'Ighram           ' +
+            '        '#39', '#39'6'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'193'#39', '#39'6016'#39', '#39'Amalou           ' +
+            '        '#39', '#39'6'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'194'#39', '#39'6017'#39', '#39'Ighil Ali        ' +
+            '        '#39', '#39'6'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'195'#39', '#39'6018'#39', '#39'Ifelain Ilmathen ' +
+            '        '#39', '#39'6'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'196'#39', '#39'6019'#39', '#39'Toudja           ' +
+            '        '#39', '#39'6'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'197'#39', '#39'6020'#39', '#39'Darguina         ' +
+            '        '#39', '#39'6'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'198'#39', '#39'6021'#39', '#39'Sidi Ayad        ' +
+            '        '#39', '#39'6'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'199'#39', '#39'6022'#39', '#39'Aokas            ' +
+            '        '#39', '#39'6'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'200'#39', '#39'6023'#39', '#39'Beni Djellil     ' +
+            '        '#39', '#39'6'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'201'#39', '#39'6024'#39', '#39'Adekar           ' +
+            '        '#39', '#39'6'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'202'#39', '#39'6025'#39', '#39'Akbou            ' +
+            '        '#39', '#39'6'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'203'#39', '#39'6026'#39', '#39'Seddouk          ' +
+            '        '#39', '#39'6'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'204'#39', '#39'6027'#39', '#39'Tazmalt          ' +
+            '        '#39', '#39'6'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'205'#39', '#39'6028'#39', '#39'Ait Rizine       ' +
+            '        '#39', '#39'6'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'206'#39', '#39'6029'#39', '#39'Chemini          ' +
+            '        '#39', '#39'6'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'207'#39', '#39'6030'#39', '#39'Souk Oufella     ' +
+            '        '#39', '#39'6'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'208'#39', '#39'6031'#39', '#39'Taskriout        ' +
+            '        '#39', '#39'6'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'209'#39', '#39'6032'#39', '#39'Tibane           ' +
+            '        '#39', '#39'6'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'210'#39', '#39'6033'#39', '#39'Tala Hamza       ' +
+            '        '#39', '#39'6'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'211'#39', '#39'6034'#39', '#39'Barbacha         ' +
+            '        '#39', '#39'6'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'212'#39', '#39'6035'#39', '#39'Beni Ksila       ' +
+            '        '#39', '#39'6'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'213'#39', '#39'6036'#39', '#39'Ouzallaguen      ' +
+            '        '#39', '#39'6'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'214'#39', '#39'6037'#39', '#39'Bouhamza         ' +
+            '        '#39', '#39'6'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'215'#39', '#39'6038'#39', '#39'Beni Melikeche   ' +
+            '        '#39', '#39'6'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'216'#39', '#39'6039'#39', '#39'Sidi Aich        ' +
+            '        '#39', '#39'6'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'217'#39', '#39'6040'#39', '#39'El Kseur         ' +
+            '        '#39', '#39'6'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'218'#39', '#39'6041'#39', '#39'Melbou           ' +
+            '        '#39', '#39'6'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'219'#39', '#39'6042'#39', '#39'Akfadou          ' +
+            '        '#39', '#39'6'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'220'#39', '#39'6043'#39', '#39'Leflaye          ' +
+            '        '#39', '#39'6'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'221'#39', '#39'6044'#39', '#39'Kherrata         ' +
+            '        '#39', '#39'6'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'222'#39', '#39'6045'#39', '#39'Draa Kaid        ' +
+            '        '#39', '#39'6'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'223'#39', '#39'6046'#39', '#39'Tamridjet        ' +
+            '        '#39', '#39'6'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'224'#39', '#39'6047'#39', '#39'Ait Smail        ' +
+            '        '#39', '#39'6'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'225'#39', '#39'6048'#39', '#39'Boukhelifa       ' +
+            '        '#39', '#39'6'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'226'#39', '#39'6049'#39', '#39'Tizi Nberber     ' +
+            '        '#39', '#39'6'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'227'#39', '#39'6050'#39', '#39'Beni Maouch      ' +
+            '        '#39', '#39'6'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'228'#39', '#39'6051'#39', '#39'Oued Ghir        ' +
+            '        '#39', '#39'6'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'229'#39', '#39'6052'#39', '#39'Boudjellil       ' +
+            '        '#39', '#39'6'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'230'#39', '#39'7001'#39', '#39'Biskra           ' +
+            '        '#39', '#39'7'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'231'#39', '#39'7002'#39', '#39'Oumache          ' +
+            '        '#39', '#39'7'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'232'#39', '#39'7003'#39', '#39'Branis           ' +
+            '        '#39', '#39'7'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'233'#39', '#39'7004'#39', '#39'Chetma           ' +
+            '        '#39', '#39'7'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'234'#39', '#39'7005'#39', '#39'Ouled Djellal    ' +
+            '        '#39', '#39'7'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'235'#39', '#39'7006'#39', '#39'Ras El Miaad     ' +
+            '        '#39', '#39'7'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'236'#39', '#39'7007'#39', '#39'Besbes           ' +
+            '        '#39', '#39'7'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'237'#39', '#39'7008'#39', '#39'Sidi Khaled      ' +
+            '        '#39', '#39'7'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'238'#39', '#39'7009'#39', '#39'Doucen           ' +
+            '        '#39', '#39'7'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'239'#39', '#39'7010'#39', '#39'Ech Chaiba       ' +
+            '        '#39', '#39'7'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'240'#39', '#39'7011'#39', '#39'Sidi Okba        ' +
+            '        '#39', '#39'7'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'241'#39', '#39'7012'#39', '#39'Mchouneche       ' +
+            '        '#39', '#39'7'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'242'#39', '#39'7013'#39', '#39'El Haouch        ' +
+            '        '#39', '#39'7'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'243'#39', '#39'7014'#39', '#39'Ain Naga         ' +
+            '        '#39', '#39'7'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'244'#39', '#39'7015'#39', '#39'Zeribet El Oued  ' +
+            '        '#39', '#39'7'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'245'#39', '#39'7016'#39', '#39'El Feidh         ' +
+            '        '#39', '#39'7'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'246'#39', '#39'7017'#39', '#39'El Kantara       ' +
+            '        '#39', '#39'7'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'247'#39', '#39'7018'#39', '#39'Ain Zaatout      ' +
+            '        '#39', '#39'7'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'248'#39', '#39'7019'#39', '#39'El Outaya        ' +
+            '        '#39', '#39'7'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'249'#39', '#39'7020'#39', '#39'Djemorah         ' +
+            '        '#39', '#39'7'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'250'#39', '#39'7021'#39', '#39'Tolga            ' +
+            '        '#39', '#39'7'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'251'#39', '#39'7022'#39', '#39'Lioua            ' +
+            '        '#39', '#39'7'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'252'#39', '#39'7023'#39', '#39'Lichana          ' +
+            '        '#39', '#39'7'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'253'#39', '#39'7024'#39', '#39'Ourlal           ' +
+            '        '#39', '#39'7'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'254'#39', '#39'7025'#39', '#39'Mlili            ' +
+            '        '#39', '#39'7'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'255'#39', '#39'7026'#39', '#39'Foughala         ' +
+            '        '#39', '#39'7'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'256'#39', '#39'7027'#39', '#39'Bordj Ben Azzouz ' +
+            '        '#39', '#39'7'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'257'#39', '#39'7028'#39', '#39'Meziraa          ' +
+            '        '#39', '#39'7'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'258'#39', '#39'7029'#39', '#39'Bouchagroun      ' +
+            '        '#39', '#39'7'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'259'#39', '#39'7030'#39', '#39'Mekhadma         ' +
+            '        '#39', '#39'7'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'260'#39', '#39'7031'#39', '#39'El Ghrous        ' +
+            '        '#39', '#39'7'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'261'#39', '#39'7032'#39', '#39'El Hadjab        ' +
+            '        '#39', '#39'7'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'262'#39', '#39'7033'#39', '#39'Khanguet Sidinadj' +
+            'i       '#39', '#39'7'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'263'#39', '#39'8001'#39', '#39'Bechar           ' +
+            '        '#39', '#39'8'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'264'#39', '#39'8002'#39', '#39'Erg Ferradj      ' +
+            '        '#39', '#39'8'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'265'#39', '#39'8003'#39', '#39'Ouled Khoudir    ' +
+            '        '#39', '#39'8'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'266'#39', '#39'8004'#39', '#39'Meridja          ' +
+            '        '#39', '#39'8'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'267'#39', '#39'8005'#39', '#39'Timoudi          ' +
+            '        '#39', '#39'8'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'268'#39', '#39'8006'#39', '#39'Lahmar           ' +
+            '        '#39', '#39'8'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'269'#39', '#39'8007'#39', '#39'Beni Abbes       ' +
+            '        '#39', '#39'8'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'270'#39', '#39'8008'#39', '#39'Beni Ikhlef      ' +
+            '        '#39', '#39'8'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'271'#39', '#39'8009'#39', '#39'Mechraa Houari B ' +
+            '        '#39', '#39'8'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'272'#39', '#39'8010'#39', '#39'Kenedsa          ' +
+            '        '#39', '#39'8'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'273'#39', '#39'8011'#39', '#39'Igli             ' +
+            '        '#39', '#39'8'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'274'#39', '#39'8012'#39', '#39'Tabalbala        ' +
+            '        '#39', '#39'8'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'275'#39', '#39'8013'#39', '#39'Taghit           ' +
+            '        '#39', '#39'8'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'276'#39', '#39'8014'#39', '#39'El Ouata         ' +
+            '        '#39', '#39'8'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'277'#39', '#39'8015'#39', '#39'Boukais          ' +
+            '        '#39', '#39'8'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'278'#39', '#39'8016'#39', '#39'Mogheul          ' +
+            '        '#39', '#39'8'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'279'#39', '#39'8017'#39', '#39'Abadla           ' +
+            '        '#39', '#39'8'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'280'#39', '#39'8018'#39', '#39'Kerzaz           ' +
+            '        '#39', '#39'8'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'281'#39', '#39'8019'#39', '#39'Ksabi            ' +
+            '        '#39', '#39'8'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'282'#39', '#39'8020'#39', '#39'Tamtert          ' +
+            '        '#39', '#39'8'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'283'#39', '#39'8021'#39', '#39'Beni Ounif       ' +
+            '        '#39', '#39'8'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'284'#39', '#39'9001'#39', '#39'Blida            ' +
+            '        '#39', '#39'9'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'285'#39', '#39'9002'#39', '#39'Chebli           ' +
+            '        '#39', '#39'9'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'286'#39', '#39'9003'#39', '#39'Bouinan          ' +
+            '        '#39', '#39'9'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'287'#39', '#39'9004'#39', '#39'Oued El Alleug   ' +
+            '        '#39', '#39'9'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'288'#39', '#39'9007'#39', '#39'Ouled Yaich      ' +
+            '        '#39', '#39'9'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'289'#39', '#39'9008'#39', '#39'Chrea            ' +
+            '        '#39', '#39'9'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'290'#39', '#39'9010'#39', '#39'El Affroun       ' +
+            '        '#39', '#39'9'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'291'#39', '#39'9011'#39', '#39'Chiffa           ' +
+            '        '#39', '#39'9'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'292'#39', '#39'9012'#39', '#39'Hammam Melouane  ' +
+            '        '#39', '#39'9'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'293'#39', '#39'9013'#39', '#39'Ben Khlil        ' +
+            '        '#39', '#39'9'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'294'#39', '#39'9014'#39', '#39'Soumaa           ' +
+            '        '#39', '#39'9'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'295'#39', '#39'9016'#39', '#39'Mouzaia          ' +
+            '        '#39', '#39'9'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'296'#39', '#39'9017'#39', '#39'Souhane          ' +
+            '        '#39', '#39'9'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'297'#39', '#39'9018'#39', '#39'Meftah           ' +
+            '        '#39', '#39'9'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'298'#39', '#39'9019'#39', '#39'Ouled Selama     ' +
+            '        '#39', '#39'9'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'299'#39', '#39'9020'#39', '#39'Boufarik         ' +
+            '        '#39', '#39'9'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'300'#39', '#39'9021'#39', '#39'Larbaa           ' +
+            '        '#39', '#39'9'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'301'#39', '#39'9022'#39', '#39'Oued Djer        ' +
+            '        '#39', '#39'9'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'302'#39', '#39'9023'#39', '#39'Beni Tamou       ' +
+            '        '#39', '#39'9'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'303'#39', '#39'9024'#39', '#39'Bouarfa          ' +
+            '        '#39', '#39'9'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'304'#39', '#39'9025'#39', '#39'Beni Mered       ' +
+            '        '#39', '#39'9'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'305'#39', '#39'9026'#39', '#39'Bougara          ' +
+            '        '#39', '#39'9'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'306'#39', '#39'9027'#39', '#39'Guerrouaou       ' +
+            '        '#39', '#39'9'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'307'#39', '#39'9028'#39', '#39'Ain Romana       ' +
+            '        '#39', '#39'9'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'308'#39', '#39'9029'#39', '#39'Djebabra         ' +
+            '        '#39', '#39'9'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'309'#39', '#39'10001'#39', '#39'Bouira          ' +
+            '         '#39', '#39'10'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'310'#39', '#39'10002'#39', '#39'El Asnam        ' +
+            '         '#39', '#39'10'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'311'#39', '#39'10003'#39', '#39'Guerrouma       ' +
+            '         '#39', '#39'10'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'312'#39', '#39'10004'#39', '#39'Souk El Khemis  ' +
+            '         '#39', '#39'10'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'313'#39', '#39'10005'#39', '#39'Kadiria         ' +
+            '         '#39', '#39'10'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'314'#39', '#39'10006'#39', '#39'Hanif           ' +
+            '         '#39', '#39'10'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'315'#39', '#39'10007'#39', '#39'Dirah           ' +
+            '         '#39', '#39'10'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'316'#39', '#39'10008'#39', '#39'Ait Laaziz      ' +
+            '         '#39', '#39'10'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'317'#39', '#39'10009'#39', '#39'Taghzout        ' +
+            '         '#39', '#39'10'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'318'#39', '#39'10010'#39', '#39'Raouraoua       ' +
+            '         '#39', '#39'10'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'319'#39', '#39'10011'#39', '#39'Mezdour         ' +
+            '         '#39', '#39'10'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'320'#39', '#39'10012'#39', '#39'Haizer          ' +
+            '         '#39', '#39'10'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'321'#39', '#39'10013'#39', '#39'Lakhdaria       ' +
+            '         '#39', '#39'10'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'322'#39', '#39'10014'#39', '#39'Maala           ' +
+            '         '#39', '#39'10'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'323'#39', '#39'10015'#39', '#39'El Hachimia     ' +
+            '         '#39', '#39'10'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'324'#39', '#39'10016'#39', '#39'Aomar           ' +
+            '         '#39', '#39'10'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'325'#39', '#39'10017'#39', '#39'Chorfa          ' +
+            '         '#39', '#39'10'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'326'#39', '#39'10018'#39', '#39'Bordj Oukhriss  ' +
+            '         '#39', '#39'10'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'327'#39', '#39'10019'#39', '#39'El Adjiba       ' +
+            '         '#39', '#39'10'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'328'#39', '#39'10020'#39', '#39'El Hakimia      ' +
+            '         '#39', '#39'10'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'329'#39', '#39'10021'#39', '#39'El Khebouzia    ' +
+            '         '#39', '#39'10'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'330'#39', '#39'10022'#39', '#39'Ahl El Ksar     ' +
+            '         '#39', '#39'10'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'331'#39', '#39'10023'#39', '#39'Bouderbala      ' +
+            '         '#39', '#39'10'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'332'#39', '#39'10024'#39', '#39'Zbarbar         ' +
+            '         '#39', '#39'10'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'333'#39', '#39'10025'#39', '#39'Ain El Hadjar   ' +
+            '         '#39', '#39'10'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'334'#39', '#39'10026'#39', '#39'Djebahia        ' +
+            '         '#39', '#39'10'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'335'#39', '#39'10027'#39', '#39'Aghbalou        ' +
+            '         '#39', '#39'10'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'336'#39', '#39'10028'#39', '#39'Taguedit        ' +
+            '         '#39', '#39'10'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'337'#39', '#39'10029'#39', '#39'Ain Turk        ' +
+            '         '#39', '#39'10'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'338'#39', '#39'10030'#39', '#39'Saharidj        ' +
+            '         '#39', '#39'10'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'339'#39', '#39'10031'#39', '#39'Dechmia         ' +
+            '         '#39', '#39'10'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'340'#39', '#39'10032'#39', '#39'Ridane          ' +
+            '         '#39', '#39'10'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'341'#39', '#39'10033'#39', '#39'Bechloul        ' +
+            '         '#39', '#39'10'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'342'#39', '#39'10034'#39', '#39'Boukram         ' +
+            '         '#39', '#39'10'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'343'#39', '#39'10035'#39', '#39'Ain Bessam      ' +
+            '         '#39', '#39'10'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'344'#39', '#39'10036'#39', '#39'Bir Ghbalou     ' +
+            '         '#39', '#39'10'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'345'#39', '#39'10037'#39', '#39'Mchedallah      ' +
+            '         '#39', '#39'10'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'346'#39', '#39'10038'#39', '#39'Sour El Ghozlane' +
+            '         '#39', '#39'10'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'347'#39', '#39'10039'#39', '#39'Maamora         ' +
+            '         '#39', '#39'10'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'348'#39', '#39'10040'#39', '#39'Ouled Rached    ' +
+            '         '#39', '#39'10'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'349'#39', '#39'10041'#39', '#39'Ain Laloui      ' +
+            '         '#39', '#39'10'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'350'#39', '#39'10042'#39', '#39'Hadjera Zerga   ' +
+            '         '#39', '#39'10'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'351'#39', '#39'10043'#39', '#39'Ath Mansour     ' +
+            '         '#39', '#39'10'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'352'#39', '#39'10044'#39', '#39'El Mokrani      ' +
+            '         '#39', '#39'10'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'353'#39', '#39'10045'#39', '#39'Oued El Berdi   ' +
+            '         '#39', '#39'10'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'354'#39', '#39'11001'#39', '#39'Tamanghasset    ' +
+            '         '#39', '#39'11'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'355'#39', '#39'11002'#39', '#39'Abalessa        ' +
+            '         '#39', '#39'11'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'356'#39', '#39'11003'#39', '#39'In Ghar         ' +
+            '         '#39', '#39'11'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'357'#39', '#39'11004'#39', '#39'In Guezzam      ' +
+            '         '#39', '#39'11'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'358'#39', '#39'11005'#39', '#39'Idles           ' +
+            '         '#39', '#39'11'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'359'#39', '#39'11006'#39', '#39'Tazouk          ' +
+            '         '#39', '#39'11'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'360'#39', '#39'11007'#39', '#39'Tinzaouatine    ' +
+            '         '#39', '#39'11'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'361'#39', '#39'11008'#39', '#39'In Salah        ' +
+            '         '#39', '#39'11'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'362'#39', '#39'11009'#39', '#39'In Amguel       ' +
+            '         '#39', '#39'11'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'363'#39', '#39'11010'#39', '#39'Foggaret Ezzaoui' +
+            'a        '#39', '#39'11'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'364'#39', '#39'12001'#39', '#39'Tebessa         ' +
+            '         '#39', '#39'12'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'365'#39', '#39'12002'#39', '#39'Bir El Ater     ' +
+            '         '#39', '#39'12'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'366'#39', '#39'12003'#39', '#39'Cheria          ' +
+            '         '#39', '#39'12'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'367'#39', '#39'12004'#39', '#39'Stah Guentis    ' +
+            '         '#39', '#39'12'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'368'#39', '#39'12005'#39', '#39'El Aouinet      ' +
+            '         '#39', '#39'12'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'369'#39', '#39'12006'#39', '#39'Lahouidjbet     ' +
+            '         '#39', '#39'12'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'370'#39', '#39'12007'#39', '#39'Safsaf El Ouesra' +
+            '         '#39', '#39'12'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'371'#39', '#39'12008'#39', '#39'Hammamet        ' +
+            '         '#39', '#39'12'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'372'#39', '#39'12009'#39', '#39'Negrine         ' +
+            '         '#39', '#39'12'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'373'#39', '#39'12010'#39', '#39'Bir El Mokadem  ' +
+            '         '#39', '#39'12'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'374'#39', '#39'12011'#39', '#39'El Kouif        ' +
+            '         '#39', '#39'12'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'375'#39', '#39'12012'#39', '#39'Morsott         ' +
+            '         '#39', '#39'12'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'376'#39', '#39'12013'#39', '#39'El Ogla         ' +
+            '         '#39', '#39'12'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'377'#39', '#39'12014'#39', '#39'Bir Dheheb      ' +
+            '         '#39', '#39'12'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'378'#39', '#39'12015'#39', '#39'El Ogla El Malha' +
+            '         '#39', '#39'12'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'379'#39', '#39'12016'#39', '#39'Gorriguer       ' +
+            '         '#39', '#39'12'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'380'#39', '#39'12017'#39', '#39'Bekkaria        ' +
+            '         '#39', '#39'12'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'381'#39', '#39'12018'#39', '#39'Boukhadra       ' +
+            '         '#39', '#39'12'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'382'#39', '#39'12019'#39', '#39'Ouenza          ' +
+            '         '#39', '#39'12'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'383'#39', '#39'12020'#39', '#39'El Ma El Biodh  ' +
+            '         '#39', '#39'12'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'384'#39', '#39'12021'#39', '#39'Oum Ali         ' +
+            '         '#39', '#39'12'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'385'#39', '#39'12022'#39', '#39'Thlidjene       ' +
+            '         '#39', '#39'12'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'386'#39', '#39'12023'#39', '#39'Ain Zerga       ' +
+            '         '#39', '#39'12'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'387'#39', '#39'12024'#39', '#39'El Meridj       ' +
+            '         '#39', '#39'12'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'388'#39', '#39'12025'#39', '#39'Boulhaf Dyr     ' +
+            '         '#39', '#39'12'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'389'#39', '#39'12026'#39', '#39'Bedjene         ' +
+            '         '#39', '#39'12'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'390'#39', '#39'12027'#39', '#39'El Mazeraa      ' +
+            '         '#39', '#39'12'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'391'#39', '#39'12028'#39', '#39'Ferkane         ' +
+            '         '#39', '#39'12'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'392'#39', '#39'13001'#39', '#39'Tlemcen         ' +
+            '         '#39', '#39'13'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'393'#39', '#39'13002'#39', '#39'Beni Mester     ' +
+            '         '#39', '#39'13'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'394'#39', '#39'13003'#39', '#39'Ain Tallout     ' +
+            '         '#39', '#39'13'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'395'#39', '#39'13004'#39', '#39'Remchi          ' +
+            '         '#39', '#39'13'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'396'#39', '#39'13005'#39', '#39'El Fehoul       ' +
+            '         '#39', '#39'13'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'397'#39', '#39'13006'#39', '#39'Sabra           ' +
+            '         '#39', '#39'13'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'398'#39', '#39'13007'#39', '#39'Ghazaouet       ' +
+            '         '#39', '#39'13'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'399'#39', '#39'13008'#39', '#39'Souani          ' +
+            '         '#39', '#39'13'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'400'#39', '#39'13009'#39', '#39'Djebala         ' +
+            '         '#39', '#39'13'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'401'#39', '#39'13010'#39', '#39'El Gor          ' +
+            '         '#39', '#39'13'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'402'#39', '#39'13011'#39', '#39'Oued Chouly     ' +
+            '         '#39', '#39'13'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'403'#39', '#39'13012'#39', '#39'Ain Fezza       ' +
+            '         '#39', '#39'13'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'404'#39', '#39'13013'#39', '#39'Ouled Mimoun    ' +
+            '         '#39', '#39'13'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'405'#39', '#39'13014'#39', '#39'Amieur          ' +
+            '         '#39', '#39'13'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'406'#39', '#39'13015'#39', '#39'Ain Youcef      ' +
+            '         '#39', '#39'13'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'407'#39', '#39'13016'#39', '#39'Zenata          ' +
+            '         '#39', '#39'13'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'408'#39', '#39'13017'#39', '#39'Beni Snous      ' +
+            '         '#39', '#39'13'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'409'#39', '#39'13018'#39', '#39'Bab El Assa     ' +
+            '         '#39', '#39'13'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'410'#39', '#39'13019'#39', '#39'Dar Yaghmouracen' +
+            'e        '#39', '#39'13'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'411'#39', '#39'13020'#39', '#39'Fellaoucene     ' +
+            '         '#39', '#39'13'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'412'#39', '#39'13021'#39', '#39'Azails          ' +
+            '         '#39', '#39'13'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'413'#39', '#39'13022'#39', '#39'Sebbaa Chioukh  ' +
+            '         '#39', '#39'13'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'414'#39', '#39'13023'#39', '#39'Terni Beni Hedie' +
+            'l        '#39', '#39'13'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'415'#39', '#39'13024'#39', '#39'Bensekrane      ' +
+            '         '#39', '#39'13'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'416'#39', '#39'13025'#39', '#39'Ain Nehala      ' +
+            '         '#39', '#39'13'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'417'#39', '#39'13026'#39', '#39'Hennaya         ' +
+            '         '#39', '#39'13'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'418'#39', '#39'13027'#39', '#39'Maghnia         ' +
+            '         '#39', '#39'13'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'419'#39', '#39'13028'#39', '#39'Hammam Boughrara' +
+            '         '#39', '#39'13'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'420'#39', '#39'13029'#39', '#39'Souahlia        ' +
+            '         '#39', '#39'13'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'421'#39', '#39'13030'#39', '#39'Msirda Fouaga   ' +
+            '         '#39', '#39'13'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'422'#39', '#39'13031'#39', '#39'Ain Fetah       ' +
+            '         '#39', '#39'13'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'423'#39', '#39'13032'#39', '#39'El Aricha       ' +
+            '         '#39', '#39'13'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'424'#39', '#39'13033'#39', '#39'Souk Thlata     ' +
+            '         '#39', '#39'13'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'425'#39', '#39'13034'#39', '#39'Sidi Abdelli    ' +
+            '         '#39', '#39'13'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'426'#39', '#39'13035'#39', '#39'Sebdou          ' +
+            '         '#39', '#39'13'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'427'#39', '#39'13036'#39', '#39'Beni Ouarsous   ' +
+            '         '#39', '#39'13'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'428'#39', '#39'13037'#39', '#39'Sidi Medjahed   ' +
+            '         '#39', '#39'13'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'429'#39', '#39'13038'#39', '#39'Beni Boussaid   ' +
+            '         '#39', '#39'13'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'430'#39', '#39'13039'#39', '#39'Marsa Ben Mhidi ' +
+            '         '#39', '#39'13'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'431'#39', '#39'13040'#39', '#39'Nedroma         ' +
+            '         '#39', '#39'13'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'432'#39', '#39'13041'#39', '#39'Sidi Djillali   ' +
+            '         '#39', '#39'13'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'433'#39', '#39'13042'#39', '#39'Beni Bahdel     ' +
+            '         '#39', '#39'13'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'434'#39', '#39'13043'#39', '#39'El Bouihi       ' +
+            '         '#39', '#39'13'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'435'#39', '#39'13044'#39', '#39'Honaine         ' +
+            '         '#39', '#39'13'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'436'#39', '#39'13045'#39', '#39'Tianet          ' +
+            '         '#39', '#39'13'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'437'#39', '#39'13046'#39', '#39'Ouled Riyah     ' +
+            '         '#39', '#39'13'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'438'#39', '#39'13047'#39', '#39'Bouhlou         ' +
+            '         '#39', '#39'13'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'439'#39', '#39'13048'#39', '#39'Souk El Khemis  ' +
+            '         '#39', '#39'13'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'440'#39', '#39'13049'#39', '#39'Ain Ghoraba     ' +
+            '         '#39', '#39'13'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'441'#39', '#39'13050'#39', '#39'Chetouane       ' +
+            '         '#39', '#39'13'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'442'#39', '#39'13051'#39', '#39'Mansourah       ' +
+            '         '#39', '#39'13'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'443'#39', '#39'13052'#39', '#39'Beni Semiel     ' +
+            '         '#39', '#39'13'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'444'#39', '#39'13053'#39', '#39'Ain Kebira      ' +
+            '         '#39', '#39'13'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'445'#39', '#39'14001'#39', '#39'Tiaret          ' +
+            '         '#39', '#39'14'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'446'#39', '#39'14002'#39', '#39'Medroussa       ' +
+            '         '#39', '#39'14'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'447'#39', '#39'14003'#39', '#39'Ain Bouchekif   ' +
+            '         '#39', '#39'14'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'448'#39', '#39'14004'#39', '#39'Sidi Ali Mellal ' +
+            '         '#39', '#39'14'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'449'#39', '#39'14005'#39', '#39'Ain Zarit       ' +
+            '         '#39', '#39'14'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'450'#39', '#39'14006'#39', '#39'Ain Deheb       ' +
+            '         '#39', '#39'14'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'451'#39', '#39'14007'#39', '#39'Sidi Bakhti     ' +
+            '         '#39', '#39'14'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'452'#39', '#39'14008'#39', '#39'Medrissa        ' +
+            '         '#39', '#39'14'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'453'#39', '#39'14009'#39', '#39'Zmalet El Emir A' +
+            'ek       '#39', '#39'14'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'454'#39', '#39'14010'#39', '#39'Madna           ' +
+            '         '#39', '#39'14'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'455'#39', '#39'14011'#39', '#39'Sebt            ' +
+            '         '#39', '#39'14'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'456'#39', '#39'14012'#39', '#39'Mellakou        ' +
+            '         '#39', '#39'14'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'457'#39', '#39'14013'#39', '#39'Dahmouni        ' +
+            '         '#39', '#39'14'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'458'#39', '#39'14014'#39', '#39'Rahouia         ' +
+            '         '#39', '#39'14'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'459'#39', '#39'14015'#39', '#39'Mahdia          ' +
+            '         '#39', '#39'14'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'460'#39', '#39'14016'#39', '#39'Sougueur        ' +
+            '         '#39', '#39'14'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'461'#39', '#39'14017'#39', '#39'Sidi Abdelghani ' +
+            '         '#39', '#39'14'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'462'#39', '#39'14018'#39', '#39'Ain El Hadid    ' +
+            '         '#39', '#39'14'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'463'#39', '#39'14019'#39', '#39'Ouled Djerad    ' +
+            '         '#39', '#39'14'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'464'#39', '#39'14020'#39', '#39'Naima           ' +
+            '         '#39', '#39'14'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'465'#39', '#39'14021'#39', '#39'Meghila         ' +
+            '         '#39', '#39'14'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'466'#39', '#39'14022'#39', '#39'Guertoufa       ' +
+            '         '#39', '#39'14'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'467'#39', '#39'14023'#39', '#39'Sidi Hosni      ' +
+            '         '#39', '#39'14'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'468'#39', '#39'14024'#39', '#39'Djillali Ben Ama' +
+            'r        '#39', '#39'14'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'469'#39', '#39'14025'#39', '#39'Sebaine         ' +
+            '         '#39', '#39'14'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'470'#39', '#39'14026'#39', '#39'Tousnina        ' +
+            '         '#39', '#39'14'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'471'#39', '#39'14027'#39', '#39'Frenda          ' +
+            '         '#39', '#39'14'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'472'#39', '#39'14028'#39', '#39'Ain Kermes      ' +
+            '         '#39', '#39'14'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'473'#39', '#39'14029'#39', '#39'Ksar Chellala   ' +
+            '         '#39', '#39'14'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'474'#39', '#39'14030'#39', '#39'Rechaiga        ' +
+            '         '#39', '#39'14'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'475'#39', '#39'14031'#39', '#39'Nadorah         ' +
+            '         '#39', '#39'14'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'476'#39', '#39'14032'#39', '#39'Tagdemt         ' +
+            '         '#39', '#39'14'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'477'#39', '#39'14033'#39', '#39'Oued Lilli      ' +
+            '         '#39', '#39'14'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'478'#39', '#39'14034'#39', '#39'Mechraa Safa    ' +
+            '         '#39', '#39'14'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'479'#39', '#39'14035'#39', '#39'Hamadia         ' +
+            '         '#39', '#39'14'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'480'#39', '#39'14036'#39', '#39'Chehaima        ' +
+            '         '#39', '#39'14'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'481'#39', '#39'14037'#39', '#39'Takhemaret      ' +
+            '         '#39', '#39'14'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'482'#39', '#39'14038'#39', '#39'Sidi Abderrahman' +
+            'e        '#39', '#39'14'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'483'#39', '#39'14039'#39', '#39'Serghine        ' +
+            '         '#39', '#39'14'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'484'#39', '#39'14040'#39', '#39'Bougara         ' +
+            '         '#39', '#39'14'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'485'#39', '#39'14041'#39', '#39'Faidja          ' +
+            '         '#39', '#39'14'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'486'#39', '#39'14042'#39', '#39'Tidda           ' +
+            '         '#39', '#39'14'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'487'#39', '#39'15001'#39', '#39'Tizi Ouzou      ' +
+            '         '#39', '#39'15'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'488'#39', '#39'15002'#39', '#39'Ain El Hammam   ' +
+            '         '#39', '#39'15'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'489'#39', '#39'15003'#39', '#39'Akbil           ' +
+            '         '#39', '#39'15'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'490'#39', '#39'15004'#39', '#39'Freha           ' +
+            '         '#39', '#39'15'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'491'#39', '#39'15005'#39', '#39'Souamaa         ' +
+            '         '#39', '#39'15'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'492'#39', '#39'15006'#39', '#39'Mechtrass       ' +
+            '         '#39', '#39'15'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'493'#39', '#39'15007'#39', '#39'Irdjen          ' +
+            '         '#39', '#39'15'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'494'#39', '#39'15008'#39', '#39'Timizart        ' +
+            '         '#39', '#39'15'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'495'#39', '#39'15009'#39', '#39'Makouda         ' +
+            '         '#39', '#39'15'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'496'#39', '#39'15010'#39', '#39'Draa El Mizan   ' +
+            '         '#39', '#39'15'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'497'#39', '#39'15011'#39', '#39'Tizi Ghenif     ' +
+            '         '#39', '#39'15'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'498'#39', '#39'15012'#39', '#39'Bounouh         ' +
+            '         '#39', '#39'15'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'499'#39', '#39'15013'#39', '#39'Ait Chaffaa     ' +
+            '         '#39', '#39'15'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'500'#39', '#39'15014'#39', '#39'Frikat          ' +
+            '         '#39', '#39'15'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'501'#39', '#39'15015'#39', '#39'Beni Aissi      ' +
+            '         '#39', '#39'15'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'502'#39', '#39'15016'#39', '#39'Beni Zmenzer    ' +
+            '         '#39', '#39'15'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'503'#39', '#39'15017'#39', '#39'Iferhounene     ' +
+            '         '#39', '#39'15'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'504'#39', '#39'15018'#39', '#39'Azazga          ' +
+            '         '#39', '#39'15'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'505'#39', '#39'15019'#39', '#39'Iloula Oumalou  ' +
+            '         '#39', '#39'15'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'506'#39', '#39'15020'#39', '#39'Yakouren        ' +
+            '         '#39', '#39'15'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'507'#39', '#39'15021'#39', '#39'Larba Nait Irath' +
+            'en       '#39', '#39'15'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'508'#39', '#39'15022'#39', '#39'Tizi Rached     ' +
+            '         '#39', '#39'15'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'509'#39', '#39'15023'#39', '#39'Zekri           ' +
+            '         '#39', '#39'15'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'510'#39', '#39'15024'#39', '#39'Ouaguenoun      ' +
+            '         '#39', '#39'15'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'511'#39', '#39'15025'#39', '#39'Ain Zaouia      ' +
+            '         '#39', '#39'15'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'512'#39', '#39'15026'#39', '#39'Mkira           ' +
+            '         '#39', '#39'15'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'513'#39', '#39'15027'#39', '#39'Ait Yahia       ' +
+            '         '#39', '#39'15'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'514'#39', '#39'15028'#39', '#39'Ait Mahmoud     ' +
+            '         '#39', '#39'15'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'515'#39', '#39'15029'#39', '#39'Maatka          ' +
+            '         '#39', '#39'15'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'516'#39', '#39'15030'#39', '#39'Ait Boumehdi    ' +
+            '         '#39', '#39'15'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'517'#39', '#39'15031'#39', '#39'Abi Youcef      ' +
+            '         '#39', '#39'15'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'518'#39', '#39'15032'#39', '#39'Beni Douala     ' +
+            '         '#39', '#39'15'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'519'#39', '#39'15033'#39', '#39'Illilten        ' +
+            '         '#39', '#39'15'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'520'#39', '#39'15034'#39', '#39'Bouzguen        ' +
+            '         '#39', '#39'15'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'521'#39', '#39'15035'#39', '#39'Ait Aggouacha   ' +
+            '         '#39', '#39'15'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'522'#39', '#39'15036'#39', '#39'Ouadhia         ' +
+            '         '#39', '#39'15'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'523'#39', '#39'15037'#39', '#39'Azzefoun        ' +
+            '         '#39', '#39'15'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'524'#39', '#39'15038'#39', '#39'Tigzirt         ' +
+            '         '#39', '#39'15'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'525'#39', '#39'15039'#39', '#39'Ait Aissa Mimoun' +
+            '         '#39', '#39'15'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'526'#39', '#39'15040'#39', '#39'Boghni          ' +
+            '         '#39', '#39'15'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'527'#39', '#39'15041'#39', '#39'Ifigha          ' +
+            '         '#39', '#39'15'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'528'#39', '#39'15042'#39', '#39'Ait Oumalou     ' +
+            '         '#39', '#39'15'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'529'#39', '#39'15043'#39', '#39'Tirmitine       ' +
+            '         '#39', '#39'15'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'530'#39', '#39'15044'#39', '#39'Akerrou         ' +
+            '         '#39', '#39'15'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'531'#39', '#39'15045'#39', '#39'Yatafen         ' +
+            '         '#39', '#39'15'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'532'#39', '#39'15046'#39', '#39'Beni Ziki       ' +
+            '         '#39', '#39'15'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'533'#39', '#39'15047'#39', '#39'Draa Ben Khedda ' +
+            '         '#39', '#39'15'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'534'#39', '#39'15048'#39', '#39'Ouacif          ' +
+            '         '#39', '#39'15'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'535'#39', '#39'15049'#39', '#39'Idjeur          ' +
+            '         '#39', '#39'15'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'536'#39', '#39'15050'#39', '#39'Mekla           ' +
+            '         '#39', '#39'15'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'537'#39', '#39'15051'#39', '#39'Tizi Nthlata    ' +
+            '         '#39', '#39'15'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'538'#39', '#39'15052'#39', '#39'Beni Yenni      ' +
+            '         '#39', '#39'15'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'539'#39', '#39'15053'#39', '#39'Aghrib          ' +
+            '         '#39', '#39'15'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'540'#39', '#39'15054'#39', '#39'Iflissen        ' +
+            '         '#39', '#39'15'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'541'#39', '#39'15055'#39', '#39'Boudjima        ' +
+            '         '#39', '#39'15'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'542'#39', '#39'15056'#39', '#39'Ait Yahia Moussa' +
+            '         '#39', '#39'15'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'543'#39', '#39'15057'#39', '#39'Souk El Thenine ' +
+            '         '#39', '#39'15'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'544'#39', '#39'15058'#39', '#39'Ait Khelil      ' +
+            '         '#39', '#39'15'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'545'#39', '#39'15059'#39', '#39'Sidi Naamane    ' +
+            '         '#39', '#39'15'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'546'#39', '#39'15060'#39', '#39'Iboudraren      ' +
+            '         '#39', '#39'15'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'547'#39', '#39'15061'#39', '#39'Aghni Goughran  ' +
+            '         '#39', '#39'15'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'548'#39', '#39'15062'#39', '#39'Mizrana         ' +
+            '         '#39', '#39'15'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'549'#39', '#39'15063'#39', '#39'Imsouhal        ' +
+            '         '#39', '#39'15'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'550'#39', '#39'15064'#39', '#39'Tadmait         ' +
+            '         '#39', '#39'15'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'551'#39', '#39'15065'#39', '#39'Ait Bouadou     ' +
+            '         '#39', '#39'15'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'552'#39', '#39'15066'#39', '#39'Assi Youcef     ' +
+            '         '#39', '#39'15'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'553'#39', '#39'15067'#39', '#39'Ait Toudert     ' +
+            '         '#39', '#39'15'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'554'#39', '#39'16001'#39', '#39'Alger Centre    ' +
+            '         '#39', '#39'16'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'555'#39', '#39'16002'#39', '#39'Sidi Mhamed     ' +
+            '         '#39', '#39'16'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'556'#39', '#39'16003'#39', '#39'El Madania      ' +
+            '         '#39', '#39'16'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'557'#39', '#39'16004'#39', '#39'Hamma Anassers  ' +
+            '         '#39', '#39'16'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'558'#39', '#39'16005'#39', '#39'Bab El Oued     ' +
+            '         '#39', '#39'16'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'559'#39', '#39'16006'#39', '#39'Bologhine Ibn Zi' +
+            'ri       '#39', '#39'16'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'560'#39', '#39'16007'#39', '#39'Casbah          ' +
+            '         '#39', '#39'16'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'561'#39', '#39'16008'#39', '#39'Oued Koriche    ' +
+            '         '#39', '#39'16'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'562'#39', '#39'16009'#39', '#39'Bir Mourad Rais ' +
+            '         '#39', '#39'16'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'563'#39', '#39'16010'#39', '#39'El Biar         ' +
+            '         '#39', '#39'16'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'564'#39', '#39'16011'#39', '#39'Bouzareah       ' +
+            '         '#39', '#39'16'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'565'#39', '#39'16012'#39', '#39'Birkhadem       ' +
+            '         '#39', '#39'16'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'566'#39', '#39'16013'#39', '#39'El Harrach      ' +
+            '         '#39', '#39'16'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'567'#39', '#39'16014'#39', '#39'Baraki          ' +
+            '         '#39', '#39'16'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'568'#39', '#39'16015'#39', '#39'Oued Smar       ' +
+            '         '#39', '#39'16'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'569'#39', '#39'16016'#39', '#39'Bourouba        ' +
+            '         '#39', '#39'16'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'570'#39', '#39'16017'#39', '#39'Hussein Dey     ' +
+            '         '#39', '#39'16'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'571'#39', '#39'16018'#39', '#39'Kouba           ' +
+            '         '#39', '#39'16'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'572'#39', '#39'16019'#39', '#39'Bachedjerah     ' +
+            '         '#39', '#39'16'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'573'#39', '#39'16020'#39', '#39'Dar El Beida    ' +
+            '         '#39', '#39'16'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'574'#39', '#39'16021'#39', '#39'Bab Azzouar     ' +
+            '         '#39', '#39'16'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'575'#39', '#39'16022'#39', '#39'Ben Aknoun      ' +
+            '         '#39', '#39'16'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'576'#39', '#39'16023'#39', '#39'Dely Ibrahim    ' +
+            '         '#39', '#39'16'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'577'#39', '#39'16024'#39', '#39'Bains Romains   ' +
+            '         '#39', '#39'16'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'578'#39', '#39'16025'#39', '#39'Rais Hamidou    ' +
+            '         '#39', '#39'16'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'579'#39', '#39'16026'#39', '#39'Djasr Kasentina ' +
+            '         '#39', '#39'16'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'580'#39', '#39'16027'#39', '#39'El Mouradia     ' +
+            '         '#39', '#39'16'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'581'#39', '#39'16028'#39', '#39'Hydra           ' +
+            '         '#39', '#39'16'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'582'#39', '#39'16029'#39', '#39'Mohammadia      ' +
+            '         '#39', '#39'16'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'583'#39', '#39'16030'#39', '#39'Bordj El Kiffan ' +
+            '         '#39', '#39'16'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'584'#39', '#39'16031'#39', '#39'El Magharia     ' +
+            '         '#39', '#39'16'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'585'#39', '#39'16032'#39', '#39'Beni Messous    ' +
+            '         '#39', '#39'16'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'586'#39', '#39'16033'#39', '#39'Les Eucalyptus  ' +
+            '         '#39', '#39'16'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'587'#39', '#39'16034'#39', '#39'Birtouta        ' +
+            '         '#39', '#39'16'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'588'#39', '#39'16035'#39', '#39'Tassala El Merdj' +
+            'a        '#39', '#39'16'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'589'#39', '#39'16036'#39', '#39'Ouled Chebel    ' +
+            '         '#39', '#39'16'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'590'#39', '#39'16037'#39', '#39'Sidi Moussa     ' +
+            '         '#39', '#39'16'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'591'#39', '#39'16038'#39', '#39'Ain Taya        ' +
+            '         '#39', '#39'16'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'592'#39', '#39'16039'#39', '#39'Bordj El Bahri  ' +
+            '         '#39', '#39'16'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'593'#39', '#39'16040'#39', '#39'Marsa           ' +
+            '         '#39', '#39'16'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'594'#39', '#39'16041'#39', '#39'Haraoua         ' +
+            '         '#39', '#39'16'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'595'#39', '#39'16042'#39', '#39'Rouiba          ' +
+            '         '#39', '#39'16'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'596'#39', '#39'16043'#39', '#39'Reghaia         ' +
+            '         '#39', '#39'16'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'597'#39', '#39'16044'#39', '#39'Ain Benian      ' +
+            '         '#39', '#39'16'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'598'#39', '#39'16045'#39', '#39'Staoueli        ' +
+            '         '#39', '#39'16'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'599'#39', '#39'16046'#39', '#39'Zeralda         ' +
+            '         '#39', '#39'16'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'600'#39', '#39'16047'#39', '#39'Mahelma         ' +
+            '         '#39', '#39'16'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'601'#39', '#39'16048'#39', '#39'Rahmania        ' +
+            '         '#39', '#39'16'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'602'#39', '#39'16049'#39', '#39'Souidania       ' +
+            '         '#39', '#39'16'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'603'#39', '#39'16050'#39', '#39'Cheraga         ' +
+            '         '#39', '#39'16'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'604'#39', '#39'16051'#39', '#39'Ouled Fayet     ' +
+            '         '#39', '#39'16'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'605'#39', '#39'16052'#39', '#39'El Achour       ' +
+            '         '#39', '#39'16'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'606'#39', '#39'16053'#39', '#39'Draria          ' +
+            '         '#39', '#39'16'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'607'#39', '#39'16054'#39', '#39'Douera          ' +
+            '         '#39', '#39'16'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'608'#39', '#39'16055'#39', '#39'Baba Hassen     ' +
+            '         '#39', '#39'16'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'609'#39', '#39'16056'#39', '#39'Khracia         ' +
+            '         '#39', '#39'16'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'610'#39', '#39'16057'#39', '#39'Saoula          ' +
+            '         '#39', '#39'16'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'611'#39', '#39'17001'#39', '#39'Djelfa          ' +
+            '         '#39', '#39'17'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'612'#39', '#39'17002'#39', '#39'Moudjebara      ' +
+            '         '#39', '#39'17'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'613'#39', '#39'17003'#39', '#39'El Guedid       ' +
+            '         '#39', '#39'17'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'614'#39', '#39'17004'#39', '#39'Hassi Bahbah    ' +
+            '         '#39', '#39'17'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'615'#39', '#39'17005'#39', '#39'Ain Maabed      ' +
+            '         '#39', '#39'17'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'616'#39', '#39'17006'#39', '#39'Sed Rahal       ' +
+            '         '#39', '#39'17'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'617'#39', '#39'17007'#39', '#39'Feidh El Botma  ' +
+            '         '#39', '#39'17'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'618'#39', '#39'17008'#39', '#39'Birine          ' +
+            '         '#39', '#39'17'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'619'#39', '#39'17009'#39', '#39'Bouira Lahdeb   ' +
+            '         '#39', '#39'17'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'620'#39', '#39'17010'#39', '#39'Zaccar          ' +
+            '         '#39', '#39'17'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'621'#39', '#39'17011'#39', '#39'El Khemis       ' +
+            '         '#39', '#39'17'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'622'#39', '#39'17012'#39', '#39'Sidi Baizid     ' +
+            '         '#39', '#39'17'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'623'#39', '#39'17013'#39', '#39'Mliliha         ' +
+            '         '#39', '#39'17'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'624'#39', '#39'17014'#39', '#39'El Idrissia     ' +
+            '         '#39', '#39'17'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'625'#39', '#39'17015'#39', '#39'Douis           ' +
+            '         '#39', '#39'17'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'626'#39', '#39'17016'#39', '#39'Hassi El Euch   ' +
+            '         '#39', '#39'17'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'627'#39', '#39'17017'#39', '#39'Messaad         ' +
+            '         '#39', '#39'17'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'628'#39', '#39'17018'#39', '#39'Guettara        ' +
+            '         '#39', '#39'17'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'629'#39', '#39'17019'#39', '#39'Sidi Ladjel     ' +
+            '         '#39', '#39'17'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'630'#39', '#39'17020'#39', '#39'Had Sahary      ' +
+            '         '#39', '#39'17'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'631'#39', '#39'17021'#39', '#39'Guernini        ' +
+            '         '#39', '#39'17'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'632'#39', '#39'17022'#39', '#39'Selmana         ' +
+            '         '#39', '#39'17'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'633'#39', '#39'17023'#39', '#39'Ain Chouhada    ' +
+            '         '#39', '#39'17'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'634'#39', '#39'17024'#39', '#39'Oum Laadham     ' +
+            '         '#39', '#39'17'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'635'#39', '#39'17025'#39', '#39'Dar Chouikh     ' +
+            '         '#39', '#39'17'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'636'#39', '#39'17026'#39', '#39'Charef          ' +
+            '         '#39', '#39'17'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'637'#39', '#39'17027'#39', '#39'Beni Yacoub     ' +
+            '         '#39', '#39'17'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'638'#39', '#39'17028'#39', '#39'Zaafrane        ' +
+            '         '#39', '#39'17'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'639'#39', '#39'17029'#39', '#39'Deldoul         ' +
+            '         '#39', '#39'17'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'640'#39', '#39'17030'#39', '#39'Ain El Ibel     ' +
+            '         '#39', '#39'17'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'641'#39', '#39'17031'#39', '#39'Ain Oussera     ' +
+            '         '#39', '#39'17'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'642'#39', '#39'17032'#39', '#39'Benhar          ' +
+            '         '#39', '#39'17'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'643'#39', '#39'17033'#39', '#39'Hassi Fedoul    ' +
+            '         '#39', '#39'17'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'644'#39', '#39'17034'#39', '#39'Amourah         ' +
+            '         '#39', '#39'17'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'645'#39', '#39'17035'#39', '#39'Ain Fekka       ' +
+            '         '#39', '#39'17'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'646'#39', '#39'17036'#39', '#39'Tadmit          ' +
+            '         '#39', '#39'17'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'647'#39', '#39'18001'#39', '#39'Jijel           ' +
+            '         '#39', '#39'18'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'648'#39', '#39'18002'#39', '#39'Erraguene       ' +
+            '         '#39', '#39'18'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'649'#39', '#39'18003'#39', '#39'El Aouana       ' +
+            '         '#39', '#39'18'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'650'#39', '#39'18004'#39', '#39'Ziamma Mansouria' +
+            'h        '#39', '#39'18'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'651'#39', '#39'18005'#39', '#39'Taher           ' +
+            '         '#39', '#39'18'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'652'#39', '#39'18006'#39', '#39'Emir Abdelkader ' +
+            '         '#39', '#39'18'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'653'#39', '#39'18007'#39', '#39'Chekfa          ' +
+            '         '#39', '#39'18'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'654'#39', '#39'18008'#39', '#39'Chahna          ' +
+            '         '#39', '#39'18'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'655'#39', '#39'18009'#39', '#39'El Milia        ' +
+            '         '#39', '#39'18'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'656'#39', '#39'18010'#39', '#39'Sidi Maarouf    ' +
+            '         '#39', '#39'18'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'657'#39', '#39'18011'#39', '#39'Settara         ' +
+            '         '#39', '#39'18'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'658'#39', '#39'18012'#39', '#39'El Ancer        ' +
+            '         '#39', '#39'18'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'659'#39', '#39'18013'#39', '#39'Sidi Abdelaziz  ' +
+            '         '#39', '#39'18'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'660'#39', '#39'18014'#39', '#39'Kaous           ' +
+            '         '#39', '#39'18'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'661'#39', '#39'18015'#39', '#39'Ghebala         ' +
+            '         '#39', '#39'18'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'662'#39', '#39'18016'#39', '#39'Bouraoui Belhade' +
+            'f        '#39', '#39'18'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'663'#39', '#39'18017'#39', '#39'Djmila          ' +
+            '         '#39', '#39'18'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'664'#39', '#39'18018'#39', '#39'Selma Benziada  ' +
+            '         '#39', '#39'18'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'665'#39', '#39'18019'#39', '#39'Boussif Ouled As' +
+            'keur     '#39', '#39'18'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'666'#39', '#39'18020'#39', '#39'El Kennar Nouchf' +
+            'i        '#39', '#39'18'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'667'#39', '#39'18021'#39', '#39'Ouled Yahia Khad' +
+            'rouch    '#39', '#39'18'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'668'#39', '#39'18022'#39', '#39'Boudria Beni Yad' +
+            'jis      '#39', '#39'18'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'669'#39', '#39'18023'#39', '#39'Kemir Oued Adjou' +
+            'l        '#39', '#39'18'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'670'#39', '#39'18024'#39', '#39'Texena          ' +
+            '         '#39', '#39'18'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'671'#39', '#39'18025'#39', '#39'Djemaa Beni Habi' +
+            'bi       '#39', '#39'18'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'672'#39', '#39'18026'#39', '#39'Bordj Taher     ' +
+            '         '#39', '#39'18'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'673'#39', '#39'18027'#39', '#39'Ouled Rabah     ' +
+            '         '#39', '#39'18'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'674'#39', '#39'18028'#39', '#39'Ouadjana        ' +
+            '         '#39', '#39'18'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'675'#39', '#39'19001'#39', '#39'Setif           ' +
+            '         '#39', '#39'19'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'676'#39', '#39'19002'#39', '#39'Ain El Kebira   ' +
+            '         '#39', '#39'19'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'677'#39', '#39'19003'#39', '#39'Beni Aziz       ' +
+            '         '#39', '#39'19'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'678'#39', '#39'19004'#39', '#39'Ouled Sidi Ahmed' +
+            '         '#39', '#39'19'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'679'#39', '#39'19005'#39', '#39'Boutaleb        ' +
+            '         '#39', '#39'19'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'680'#39', '#39'19006'#39', '#39'Ain Roua        ' +
+            '         '#39', '#39'19'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'681'#39', '#39'19007'#39', '#39'Draa Kebila     ' +
+            '         '#39', '#39'19'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'682'#39', '#39'19008'#39', '#39'Bir El Arch     ' +
+            '         '#39', '#39'19'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'683'#39', '#39'19009'#39', '#39'Beni Chebana    ' +
+            '         '#39', '#39'19'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'684'#39', '#39'19010'#39', '#39'Ouled Tebben    ' +
+            '         '#39', '#39'19'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'685'#39', '#39'19011'#39', '#39'Hamma           ' +
+            '         '#39', '#39'19'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'686'#39', '#39'19012'#39', '#39'Maaouia         ' +
+            '         '#39', '#39'19'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'687'#39', '#39'19013'#39', '#39'Ain Legraj      ' +
+            '         '#39', '#39'19'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'688'#39', '#39'19014'#39', '#39'Ain Abessa      ' +
+            '         '#39', '#39'19'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'689'#39', '#39'19015'#39', '#39'Dehamcha        ' +
+            '         '#39', '#39'19'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'690'#39', '#39'19016'#39', '#39'Babor           ' +
+            '         '#39', '#39'19'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'691'#39', '#39'19017'#39', '#39'Guidjel         ' +
+            '         '#39', '#39'19'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'692'#39', '#39'19018'#39', '#39'Ain Lahdjar     ' +
+            '         '#39', '#39'19'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'693'#39', '#39'19019'#39', '#39'Bousselam       ' +
+            '         '#39', '#39'19'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'694'#39', '#39'19020'#39', '#39'El Eulma        ' +
+            '         '#39', '#39'19'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'695'#39', '#39'19021'#39', '#39'Djemila         ' +
+            '         '#39', '#39'19'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'696'#39', '#39'19022'#39', '#39'Beni Ouartilane ' +
+            '         '#39', '#39'19'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'697'#39', '#39'19023'#39', '#39'Rosfa           ' +
+            '         '#39', '#39'19'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'698'#39', '#39'19024'#39', '#39'Ouled Addouane  ' +
+            '         '#39', '#39'19'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'699'#39', '#39'19025'#39', '#39'Belaa           ' +
+            '         '#39', '#39'19'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'700'#39', '#39'19026'#39', '#39'Ain Arnat       ' +
+            '         '#39', '#39'19'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'701'#39', '#39'19027'#39', '#39'Amoucha         ' +
+            '         '#39', '#39'19'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'702'#39', '#39'19028'#39', '#39'Ain Oulmane     ' +
+            '         '#39', '#39'19'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'703'#39', '#39'19029'#39', '#39'Beidha Bordj    ' +
+            '         '#39', '#39'19'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'704'#39', '#39'19030'#39', '#39'Bouandas        ' +
+            '         '#39', '#39'19'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'705'#39', '#39'19031'#39', '#39'Bazer Sakhra    ' +
+            '         '#39', '#39'19'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'706'#39', '#39'19032'#39', '#39'Hammam Essokhna ' +
+            '         '#39', '#39'19'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'707'#39', '#39'19033'#39', '#39'Mezloug         ' +
+            '         '#39', '#39'19'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'708'#39', '#39'19034'#39', '#39'Bir Haddada     ' +
+            '         '#39', '#39'19'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'709'#39', '#39'19035'#39', '#39'Serdj El Ghoul  ' +
+            '         '#39', '#39'19'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'710'#39', '#39'19036'#39', '#39'Harbil          ' +
+            '         '#39', '#39'19'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'711'#39', '#39'19037'#39', '#39'El Ouricia      ' +
+            '         '#39', '#39'19'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'712'#39', '#39'19038'#39', '#39'Tizi Nbechar    ' +
+            '         '#39', '#39'19'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'713'#39', '#39'19039'#39', '#39'Salah Bey       ' +
+            '         '#39', '#39'19'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'714'#39', '#39'19040'#39', '#39'Ain Azal        ' +
+            '         '#39', '#39'19'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'715'#39', '#39'19041'#39', '#39'Guenzet         ' +
+            '         '#39', '#39'19'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'716'#39', '#39'19042'#39', '#39'Talaifacene     ' +
+            '         '#39', '#39'19'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'717'#39', '#39'19043'#39', '#39'Bougaa          ' +
+            '         '#39', '#39'19'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'718'#39', '#39'19044'#39', '#39'Beni Fouda      ' +
+            '         '#39', '#39'19'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'719'#39', '#39'19045'#39', '#39'Tachouda        ' +
+            '         '#39', '#39'19'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'720'#39', '#39'19046'#39', '#39'Beni Mouhli     ' +
+            '         '#39', '#39'19'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'721'#39', '#39'19047'#39', '#39'Ouled Sabor     ' +
+            '         '#39', '#39'19'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'722'#39', '#39'19048'#39', '#39'Guellal         ' +
+            '         '#39', '#39'19'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'723'#39', '#39'19049'#39', '#39'Ain Sebt        ' +
+            '         '#39', '#39'19'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'724'#39', '#39'19050'#39', '#39'Hammam Guergour ' +
+            '         '#39', '#39'19'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'725'#39', '#39'19051'#39', '#39'Ait Naoual Mezad' +
+            'a        '#39', '#39'19'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'726'#39', '#39'19052'#39', '#39'Ksar El Abtal   ' +
+            '         '#39', '#39'19'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'727'#39', '#39'19053'#39', '#39'Beni Hocine     ' +
+            '         '#39', '#39'19'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'728'#39', '#39'19054'#39', '#39'Ait Tizi        ' +
+            '         '#39', '#39'19'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'729'#39', '#39'19055'#39', '#39'Maouklane       ' +
+            '         '#39', '#39'19'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'730'#39', '#39'19056'#39', '#39'Guelta Zerka    ' +
+            '         '#39', '#39'19'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'731'#39', '#39'19057'#39', '#39'Oued El Barad   ' +
+            '         '#39', '#39'19'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'732'#39', '#39'19058'#39', '#39'Taya            ' +
+            '         '#39', '#39'19'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'733'#39', '#39'19059'#39', '#39'El Ouldja       ' +
+            '         '#39', '#39'19'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'734'#39', '#39'19060'#39', '#39'Tella           ' +
+            '         '#39', '#39'19'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'735'#39', '#39'20001'#39', '#39'Saida           ' +
+            '         '#39', '#39'20'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'736'#39', '#39'20002'#39', '#39'Doui Thabet     ' +
+            '         '#39', '#39'20'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'737'#39', '#39'20003'#39', '#39'Ain El Hadjar   ' +
+            '         '#39', '#39'20'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'738'#39', '#39'20004'#39', '#39'Ouled Khaled    ' +
+            '         '#39', '#39'20'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'739'#39', '#39'20005'#39', '#39'Moulay Larbi    ' +
+            '         '#39', '#39'20'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'740'#39', '#39'20006'#39', '#39'Youb            ' +
+            '         '#39', '#39'20'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'741'#39', '#39'20007'#39', '#39'Hounet          ' +
+            '         '#39', '#39'20'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'742'#39', '#39'20008'#39', '#39'Sidi Amar       ' +
+            '         '#39', '#39'20'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'743'#39', '#39'20009'#39', '#39'Sidi Boubekeur  ' +
+            '         '#39', '#39'20'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'744'#39', '#39'20010'#39', '#39'El Hassasna     ' +
+            '         '#39', '#39'20'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'745'#39', '#39'20011'#39', '#39'Maamora         ' +
+            '         '#39', '#39'20'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'746'#39', '#39'20012'#39', '#39'Sidi Ahmed      ' +
+            '         '#39', '#39'20'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'747'#39', '#39'20013'#39', '#39'Ain Sekhouna    ' +
+            '         '#39', '#39'20'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'748'#39', '#39'20014'#39', '#39'Ouled Brahim    ' +
+            '         '#39', '#39'20'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'749'#39', '#39'20015'#39', '#39'Tircine         ' +
+            '         '#39', '#39'20'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'750'#39', '#39'20016'#39', '#39'Ain Soltane     ' +
+            '         '#39', '#39'20'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'751'#39', '#39'21001'#39', '#39'Skikda          ' +
+            '         '#39', '#39'21'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'752'#39', '#39'21002'#39', '#39'Ain Zouit       ' +
+            '         '#39', '#39'21'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'753'#39', '#39'21003'#39', '#39'El Hadaik       ' +
+            '         '#39', '#39'21'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'754'#39', '#39'21004'#39', '#39'Azzaba          ' +
+            '         '#39', '#39'21'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'755'#39', '#39'21005'#39', '#39'Djendel Saadi Mo' +
+            'hamed    '#39', '#39'21'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'756'#39', '#39'21006'#39', '#39'Ain Cherchar    ' +
+            '         '#39', '#39'21'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'757'#39', '#39'21007'#39', '#39'Bekkouche Lakhda' +
+            'r        '#39', '#39'21'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'758'#39', '#39'21008'#39', '#39'Benazouz        ' +
+            '         '#39', '#39'21'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'759'#39', '#39'21009'#39', '#39'Es Sebt         ' +
+            '         '#39', '#39'21'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'760'#39', '#39'21010'#39', '#39'Collo           ' +
+            '         '#39', '#39'21'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'761'#39', '#39'21011'#39', '#39'Beni Zid        ' +
+            '         '#39', '#39'21'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'762'#39', '#39'21012'#39', '#39'Kerkera         ' +
+            '         '#39', '#39'21'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'763'#39', '#39'21013'#39', '#39'Ouled Attia     ' +
+            '         '#39', '#39'21'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'764'#39', '#39'21014'#39', '#39'Oued Zehour     ' +
+            '         '#39', '#39'21'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'765'#39', '#39'21015'#39', '#39'Zitouna         ' +
+            '         '#39', '#39'21'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'766'#39', '#39'21016'#39', '#39'El Harrouch     ' +
+            '         '#39', '#39'21'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'767'#39', '#39'21017'#39', '#39'Zerdazas        ' +
+            '         '#39', '#39'21'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'768'#39', '#39'21018'#39', '#39'Ouled Hebaba    ' +
+            '         '#39', '#39'21'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'769'#39', '#39'21019'#39', '#39'Sidi Mezghiche  ' +
+            '         '#39', '#39'21'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'770'#39', '#39'21020'#39', '#39'Emdjez Edchich  ' +
+            '         '#39', '#39'21'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'771'#39', '#39'21021'#39', '#39'Beni Oulbane    ' +
+            '         '#39', '#39'21'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'772'#39', '#39'21022'#39', '#39'Ain Bouziane    ' +
+            '         '#39', '#39'21'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'773'#39', '#39'21023'#39', '#39'Ramdane Djamel  ' +
+            '         '#39', '#39'21'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'774'#39', '#39'21024'#39', '#39'Beni Bachir     ' +
+            '         '#39', '#39'21'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'775'#39', '#39'21025'#39', '#39'Salah Bouchaour ' +
+            '         '#39', '#39'21'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'776'#39', '#39'21026'#39', '#39'Tamalous        ' +
+            '         '#39', '#39'21'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'777'#39', '#39'21027'#39', '#39'Ain Kechra      ' +
+            '         '#39', '#39'21'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'778'#39', '#39'21028'#39', '#39'Oum Toub        ' +
+            '         '#39', '#39'21'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'779'#39', '#39'21029'#39', '#39'Bein El Ouiden  ' +
+            '         '#39', '#39'21'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'780'#39', '#39'21030'#39', '#39'Fil Fila        ' +
+            '         '#39', '#39'21'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'781'#39', '#39'21031'#39', '#39'Cheraia         ' +
+            '         '#39', '#39'21'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'782'#39', '#39'21032'#39', '#39'Kanoua          ' +
+            '         '#39', '#39'21'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'783'#39', '#39'21033'#39', '#39'El Ghedir       ' +
+            '         '#39', '#39'21'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'784'#39', '#39'21034'#39', '#39'Bouchtata       ' +
+            '         '#39', '#39'21'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'785'#39', '#39'21035'#39', '#39'Ouldja Boulbalou' +
+            't        '#39', '#39'21'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'786'#39', '#39'21036'#39', '#39'Kheneg Mayoum   ' +
+            '         '#39', '#39'21'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'787'#39', '#39'21037'#39', '#39'Hamadi Krouma   ' +
+            '         '#39', '#39'21'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'788'#39', '#39'21038'#39', '#39'El Marsa        ' +
+            '         '#39', '#39'21'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'789'#39', '#39'22001'#39', '#39'Sidi Bel Abbes  ' +
+            '         '#39', '#39'22'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'790'#39', '#39'22002'#39', '#39'Tessala         ' +
+            '         '#39', '#39'22'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'791'#39', '#39'22003'#39', '#39'Sidi Brahim     ' +
+            '         '#39', '#39'22'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'792'#39', '#39'22004'#39', '#39'Mostefa Ben Brah' +
+            'im       '#39', '#39'22'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'793'#39', '#39'22005'#39', '#39'Telagh          ' +
+            '         '#39', '#39'22'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'794'#39', '#39'22006'#39', '#39'Mezaourou       ' +
+            '         '#39', '#39'22'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'795'#39', '#39'22007'#39', '#39'Boukhanafis     ' +
+            '         '#39', '#39'22'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'796'#39', '#39'22008'#39', '#39'Sidi Ali Boussid' +
+            'i        '#39', '#39'22'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'797'#39', '#39'22009'#39', '#39'Badredine El Mok' +
+            'rani     '#39', '#39'22'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'798'#39', '#39'22010'#39', '#39'Marhoum         ' +
+            '         '#39', '#39'22'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'799'#39', '#39'22011'#39', '#39'Tafissour       ' +
+            '         '#39', '#39'22'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'800'#39', '#39'22012'#39', '#39'Amarnas         ' +
+            '         '#39', '#39'22'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'801'#39', '#39'22013'#39', '#39'Tilmouni        ' +
+            '         '#39', '#39'22'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'802'#39', '#39'22014'#39', '#39'Sidi Lahcene    ' +
+            '         '#39', '#39'22'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'803'#39', '#39'22015'#39', '#39'Ain Thrid       ' +
+            '         '#39', '#39'22'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'804'#39', '#39'22016'#39', '#39'Makedra         ' +
+            '         '#39', '#39'22'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'805'#39', '#39'22017'#39', '#39'Tenira          ' +
+            '         '#39', '#39'22'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'806'#39', '#39'22018'#39', '#39'Moulay Slissen  ' +
+            '         '#39', '#39'22'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'807'#39', '#39'22019'#39', '#39'El Hacaiba      ' +
+            '         '#39', '#39'22'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'808'#39', '#39'22020'#39', '#39'Hassi Zehana    ' +
+            '         '#39', '#39'22'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'809'#39', '#39'22021'#39', '#39'Tabia           ' +
+            '         '#39', '#39'22'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'810'#39', '#39'22022'#39', '#39'Merine          ' +
+            '         '#39', '#39'22'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'811'#39', '#39'22023'#39', '#39'Ras El Ma       ' +
+            '         '#39', '#39'22'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'812'#39', '#39'22024'#39', '#39'Ain Tindamine   ' +
+            '         '#39', '#39'22'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'813'#39', '#39'22025'#39', '#39'Ain Kada        ' +
+            '         '#39', '#39'22'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'814'#39', '#39'22026'#39', '#39'Mcid            ' +
+            '         '#39', '#39'22'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'815'#39', '#39'22027'#39', '#39'Sidi Khaled     ' +
+            '         '#39', '#39'22'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'816'#39', '#39'22028'#39', '#39'Ain El Berd     ' +
+            '         '#39', '#39'22'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'817'#39', '#39'22029'#39', '#39'Sfissef         ' +
+            '         '#39', '#39'22'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'818'#39', '#39'22030'#39', '#39'Ain Adden       ' +
+            '         '#39', '#39'22'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'819'#39', '#39'22031'#39', '#39'Oued Taourira   ' +
+            '         '#39', '#39'22'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'820'#39', '#39'22032'#39', '#39'Dhaya           ' +
+            '         '#39', '#39'22'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'821'#39', '#39'22033'#39', '#39'Zerouala        ' +
+            '         '#39', '#39'22'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'822'#39', '#39'22034'#39', '#39'Lamtar          ' +
+            '         '#39', '#39'22'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'823'#39', '#39'22035'#39', '#39'Sidi Chaib      ' +
+            '         '#39', '#39'22'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'824'#39', '#39'22036'#39', '#39'Sidi Dahou Dezai' +
+            'rs       '#39', '#39'22'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'825'#39', '#39'22037'#39', '#39'Oued Sbaa       ' +
+            '         '#39', '#39'22'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'826'#39', '#39'22038'#39', '#39'Boudjebaa El Bor' +
+            'dj       '#39', '#39'22'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'827'#39', '#39'22039'#39', '#39'Sehala Thaoura  ' +
+            '         '#39', '#39'22'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'828'#39', '#39'22040'#39', '#39'Sidi Yacoub     ' +
+            '         '#39', '#39'22'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'829'#39', '#39'22041'#39', '#39'Sidi Hamadouche ' +
+            '         '#39', '#39'22'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'830'#39', '#39'22042'#39', '#39'Belarbi         ' +
+            '         '#39', '#39'22'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'831'#39', '#39'22043'#39', '#39'Oued Sefioun    ' +
+            '         '#39', '#39'22'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'832'#39', '#39'22044'#39', '#39'Teghalimet      ' +
+            '         '#39', '#39'22'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'833'#39', '#39'22045'#39', '#39'Ben Badis       ' +
+            '         '#39', '#39'22'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'834'#39', '#39'22046'#39', '#39'Sidi Ali Benyoub' +
+            '         '#39', '#39'22'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'835'#39', '#39'22047'#39', '#39'Chetouane Belail' +
+            'a        '#39', '#39'22'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'836'#39', '#39'22048'#39', '#39'Bir El Hammam   ' +
+            '         '#39', '#39'22'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'837'#39', '#39'22049'#39', '#39'Taoudmout       ' +
+            '         '#39', '#39'22'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'838'#39', '#39'22050'#39', '#39'Redjem Demouche ' +
+            '         '#39', '#39'22'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'839'#39', '#39'22051'#39', '#39'Benachiba Chelia' +
+            '         '#39', '#39'22'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'840'#39', '#39'22052'#39', '#39'Hassi Dahou     ' +
+            '         '#39', '#39'22'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'841'#39', '#39'23001'#39', '#39'Annaba          ' +
+            '         '#39', '#39'23'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'842'#39', '#39'23002'#39', '#39'Berrahel        ' +
+            '         '#39', '#39'23'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'843'#39', '#39'23003'#39', '#39'El Hadjar       ' +
+            '         '#39', '#39'23'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'844'#39', '#39'23004'#39', '#39'Eulma           ' +
+            '         '#39', '#39'23'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'845'#39', '#39'23005'#39', '#39'El Bouni        ' +
+            '         '#39', '#39'23'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'846'#39', '#39'23006'#39', '#39'Oued El Aneb    ' +
+            '         '#39', '#39'23'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'847'#39', '#39'23007'#39', '#39'Cheurfa         ' +
+            '         '#39', '#39'23'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'848'#39', '#39'23008'#39', '#39'Seraidi         ' +
+            '         '#39', '#39'23'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'849'#39', '#39'23009'#39', '#39'Ain Berda       ' +
+            '         '#39', '#39'23'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'850'#39', '#39'23010'#39', '#39'Chetaibi        ' +
+            '         '#39', '#39'23'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'851'#39', '#39'23011'#39', '#39'Sidi Amer       ' +
+            '         '#39', '#39'23'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'852'#39', '#39'23012'#39', '#39'Treat           ' +
+            '         '#39', '#39'23'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'853'#39', '#39'24001'#39', '#39'Guelma          ' +
+            '         '#39', '#39'24'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'854'#39', '#39'24002'#39', '#39'Nechmaya        ' +
+            '         '#39', '#39'24'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'855'#39', '#39'24003'#39', '#39'Bouati Mahmoud  ' +
+            '         '#39', '#39'24'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'856'#39', '#39'24004'#39', '#39'Oued Zenati     ' +
+            '         '#39', '#39'24'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'857'#39', '#39'24005'#39', '#39'Tamlouka        ' +
+            '         '#39', '#39'24'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'858'#39', '#39'24006'#39', '#39'Oued Fragha     ' +
+            '         '#39', '#39'24'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'859'#39', '#39'24007'#39', '#39'Ain Sandel      ' +
+            '         '#39', '#39'24'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'860'#39', '#39'24008'#39', '#39'Ras El Agba     ' +
+            '         '#39', '#39'24'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'861'#39', '#39'24009'#39', '#39'Dahouara        ' +
+            '         '#39', '#39'24'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'862'#39', '#39'24010'#39', '#39'Belkhir         ' +
+            '         '#39', '#39'24'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'863'#39', '#39'24011'#39', '#39'Ben Djarah      ' +
+            '         '#39', '#39'24'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'864'#39', '#39'24012'#39', '#39'Bou Hamdane     ' +
+            '         '#39', '#39'24'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'865'#39', '#39'24013'#39', '#39'Ain Makhlouf    ' +
+            '         '#39', '#39'24'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'866'#39', '#39'24014'#39', '#39'Ain Ben Beida   ' +
+            '         '#39', '#39'24'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'867'#39', '#39'24015'#39', '#39'Khezara         ' +
+            '         '#39', '#39'24'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'868'#39', '#39'24016'#39', '#39'Beni Mezline    ' +
+            '         '#39', '#39'24'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'869'#39', '#39'24017'#39', '#39'Bou Hachana     ' +
+            '         '#39', '#39'24'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'870'#39', '#39'24018'#39', '#39'Guelaat Bou Sbaa' +
+            '         '#39', '#39'24'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'871'#39', '#39'24019'#39', '#39'Hammam Maskhouti' +
+            'ne       '#39', '#39'24'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'872'#39', '#39'24020'#39', '#39'El Fedjoudj     ' +
+            '         '#39', '#39'24'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'873'#39', '#39'24021'#39', '#39'Bordj Sabat     ' +
+            '         '#39', '#39'24'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'874'#39', '#39'24022'#39', '#39'Hamman Nbail    ' +
+            '         '#39', '#39'24'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'875'#39', '#39'24023'#39', '#39'Ain Larbi       ' +
+            '         '#39', '#39'24'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'876'#39', '#39'24024'#39', '#39'Medjez Amar     ' +
+            '         '#39', '#39'24'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'877'#39', '#39'24025'#39', '#39'Bouchegouf      ' +
+            '         '#39', '#39'24'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'878'#39', '#39'24026'#39', '#39'Heliopolis      ' +
+            '         '#39', '#39'24'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'879'#39', '#39'24027'#39', '#39'Ain Hessania    ' +
+            '         '#39', '#39'24'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'880'#39', '#39'24028'#39', '#39'Roknia          ' +
+            '         '#39', '#39'24'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'881'#39', '#39'24029'#39', '#39'Salaoua Announa ' +
+            '         '#39', '#39'24'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'882'#39', '#39'24030'#39', '#39'Medjez Sfa      ' +
+            '         '#39', '#39'24'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'883'#39', '#39'24031'#39', '#39'Boumahra Ahmed  ' +
+            '         '#39', '#39'24'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'884'#39', '#39'24032'#39', '#39'Ain Reggada     ' +
+            '         '#39', '#39'24'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'885'#39', '#39'24033'#39', '#39'Oued Cheham     ' +
+            '         '#39', '#39'24'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'886'#39', '#39'24034'#39', '#39'Djeballah Khemis' +
+            'si       '#39', '#39'24'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'887'#39', '#39'25001'#39', '#39'Constantine     ' +
+            '         '#39', '#39'25'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'888'#39', '#39'25002'#39', '#39'Hamma Bouziane  ' +
+            '         '#39', '#39'25'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'889'#39', '#39'25003'#39', '#39'El Haria        ' +
+            '         '#39', '#39'25'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'890'#39', '#39'25004'#39', '#39'Zighoud Youcef  ' +
+            '         '#39', '#39'25'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'891'#39', '#39'25005'#39', '#39'Didouche Mourad ' +
+            '         '#39', '#39'25'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'892'#39', '#39'25006'#39', '#39'El Khroub       ' +
+            '         '#39', '#39'25'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'893'#39', '#39'25007'#39', '#39'Ain Abid        ' +
+            '         '#39', '#39'25'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'894'#39', '#39'25008'#39', '#39'Beni Hamiden    ' +
+            '         '#39', '#39'25'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'895'#39', '#39'25009'#39', '#39'Ouled Rahmoune  ' +
+            '         '#39', '#39'25'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'896'#39', '#39'25010'#39', '#39'Ain Smara       ' +
+            '         '#39', '#39'25'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'897'#39', '#39'25011'#39', '#39'Mesaoud Boudjeri' +
+            'ou       '#39', '#39'25'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'898'#39', '#39'25012'#39', '#39'Ibn Ziad        ' +
+            '         '#39', '#39'25'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'899'#39', '#39'26001'#39', '#39'Medea           ' +
+            '         '#39', '#39'26'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'900'#39', '#39'26002'#39', '#39'Ouzera          ' +
+            '         '#39', '#39'26'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'901'#39', '#39'26003'#39', '#39'Ouled Maaref    ' +
+            '         '#39', '#39'26'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'902'#39', '#39'26004'#39', '#39'Ain Boucif      ' +
+            '         '#39', '#39'26'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'903'#39', '#39'26005'#39', '#39'Aissaouia       ' +
+            '         '#39', '#39'26'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'904'#39', '#39'26006'#39', '#39'Ouled Deide     ' +
+            '         '#39', '#39'26'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'905'#39', '#39'26007'#39', '#39'El Omaria       ' +
+            '         '#39', '#39'26'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'906'#39', '#39'26008'#39', '#39'Derrag          ' +
+            '         '#39', '#39'26'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'907'#39', '#39'26009'#39', '#39'El Guelbelkebir ' +
+            '         '#39', '#39'26'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'908'#39', '#39'26010'#39', '#39'Bouaiche        ' +
+            '         '#39', '#39'26'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'909'#39', '#39'26011'#39', '#39'Mezerena        ' +
+            '         '#39', '#39'26'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'910'#39', '#39'26012'#39', '#39'Ouled Brahim    ' +
+            '         '#39', '#39'26'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'911'#39', '#39'26013'#39', '#39'Damiat          ' +
+            '         '#39', '#39'26'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'912'#39', '#39'26014'#39', '#39'Sidi Ziane      ' +
+            '         '#39', '#39'26'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'913'#39', '#39'26015'#39', '#39'Tamesguida      ' +
+            '         '#39', '#39'26'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'914'#39', '#39'26016'#39', '#39'El Hamdania     ' +
+            '         '#39', '#39'26'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'915'#39', '#39'26017'#39', '#39'Kef Lakhdar     ' +
+            '         '#39', '#39'26'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'916'#39', '#39'26018'#39', '#39'Chelalet El Adha' +
+            'oura     '#39', '#39'26'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'917'#39', '#39'26019'#39', '#39'Bouskene        ' +
+            '         '#39', '#39'26'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'918'#39', '#39'26020'#39', '#39'Rebaia          ' +
+            '         '#39', '#39'26'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'919'#39', '#39'26021'#39', '#39'Bouchrahil      ' +
+            '         '#39', '#39'26'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'920'#39', '#39'26022'#39', '#39'Ouled Hellal    ' +
+            '         '#39', '#39'26'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'921'#39', '#39'26023'#39', '#39'Tafraout        ' +
+            '         '#39', '#39'26'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'922'#39', '#39'26024'#39', '#39'Baata           ' +
+            '         '#39', '#39'26'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'923'#39', '#39'26025'#39', '#39'Boghar          ' +
+            '         '#39', '#39'26'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'924'#39', '#39'26026'#39', '#39'Sidi Naamane    ' +
+            '         '#39', '#39'26'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'925'#39', '#39'26027'#39', '#39'Ouled Bouachra  ' +
+            '         '#39', '#39'26'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'926'#39', '#39'26028'#39', '#39'Sidi Zahar      ' +
+            '         '#39', '#39'26'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'927'#39', '#39'26029'#39', '#39'Oued Harbil     ' +
+            '         '#39', '#39'26'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'928'#39', '#39'26030'#39', '#39'Benchicao       ' +
+            '         '#39', '#39'26'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'929'#39', '#39'26031'#39', '#39'Sidi Damed      ' +
+            '         '#39', '#39'26'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'930'#39', '#39'26032'#39', '#39'Aziz            ' +
+            '         '#39', '#39'26'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'931'#39', '#39'26033'#39', '#39'Souagui         ' +
+            '         '#39', '#39'26'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'932'#39', '#39'26034'#39', '#39'Zoubiria        ' +
+            '         '#39', '#39'26'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'933'#39', '#39'26035'#39', '#39'Ksar El Boukhari' +
+            '         '#39', '#39'26'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'934'#39', '#39'26036'#39', '#39'El Azizia       ' +
+            '         '#39', '#39'26'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'935'#39', '#39'26037'#39', '#39'Djouab          ' +
+            '         '#39', '#39'26'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'936'#39', '#39'26038'#39', '#39'Chahbounia      ' +
+            '         '#39', '#39'26'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'937'#39', '#39'26039'#39', '#39'Meghraoua       ' +
+            '         '#39', '#39'26'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'938'#39', '#39'26040'#39', '#39'Cheniguel       ' +
+            '         '#39', '#39'26'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'939'#39', '#39'26041'#39', '#39'Ain Ouksir      ' +
+            '         '#39', '#39'26'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'940'#39', '#39'26042'#39', '#39'Oum El Djalil   ' +
+            '         '#39', '#39'26'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'941'#39', '#39'26043'#39', '#39'Ouamri          ' +
+            '         '#39', '#39'26'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'942'#39', '#39'26044'#39', '#39'Si Mahdjoub     ' +
+            '         '#39', '#39'26'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'943'#39', '#39'26045'#39', '#39'Tlatet Eddoair  ' +
+            '         '#39', '#39'26'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'944'#39', '#39'26046'#39', '#39'Beni Slimane    ' +
+            '         '#39', '#39'26'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'945'#39', '#39'26047'#39', '#39'Berrouaghia     ' +
+            '         '#39', '#39'26'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'946'#39', '#39'26048'#39', '#39'Seghouane       ' +
+            '         '#39', '#39'26'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'947'#39', '#39'26049'#39', '#39'Meftaha         ' +
+            '         '#39', '#39'26'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'948'#39', '#39'26050'#39', '#39'Mihoub          ' +
+            '         '#39', '#39'26'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'949'#39', '#39'26051'#39', '#39'Boughezoul      ' +
+            '         '#39', '#39'26'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'950'#39', '#39'26052'#39', '#39'Tablat          ' +
+            '         '#39', '#39'26'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'951'#39', '#39'26053'#39', '#39'Deux Bassins    ' +
+            '         '#39', '#39'26'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'952'#39', '#39'26054'#39', '#39'Draa Essamar    ' +
+            '         '#39', '#39'26'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'953'#39', '#39'26055'#39', '#39'Sidi Errabia    ' +
+            '         '#39', '#39'26'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'954'#39', '#39'26056'#39', '#39'Bir Ben Laabed  ' +
+            '         '#39', '#39'26'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'955'#39', '#39'26057'#39', '#39'El Ouinet       ' +
+            '         '#39', '#39'26'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'956'#39', '#39'26058'#39', '#39'Ouled Antar     ' +
+            '         '#39', '#39'26'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'957'#39', '#39'26059'#39', '#39'Bouaichoune     ' +
+            '         '#39', '#39'26'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'958'#39', '#39'26060'#39', '#39'Hannacha        ' +
+            '         '#39', '#39'26'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'959'#39', '#39'26061'#39', '#39'Sedraia         ' +
+            '         '#39', '#39'26'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'960'#39', '#39'26062'#39', '#39'Medjebar        ' +
+            '         '#39', '#39'26'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'961'#39', '#39'26063'#39', '#39'Khams Djouamaa  ' +
+            '         '#39', '#39'26'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'962'#39', '#39'26064'#39', '#39'Saneg           ' +
+            '         '#39', '#39'26'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'963'#39', '#39'27001'#39', '#39'Mostaganem      ' +
+            '         '#39', '#39'27'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'964'#39', '#39'27002'#39', '#39'Sayada          ' +
+            '         '#39', '#39'27'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'965'#39', '#39'27003'#39', '#39'Fornaka         ' +
+            '         '#39', '#39'27'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'966'#39', '#39'27004'#39', '#39'Stidia          ' +
+            '         '#39', '#39'27'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'967'#39', '#39'27005'#39', '#39'Ain Nouissy     ' +
+            '         '#39', '#39'27'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'968'#39', '#39'27006'#39', '#39'Hassi Maameche  ' +
+            '         '#39', '#39'27'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'969'#39', '#39'27007'#39', '#39'Ain Tadles      ' +
+            '         '#39', '#39'27'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'970'#39', '#39'27008'#39', '#39'Sour            ' +
+            '         '#39', '#39'27'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'971'#39', '#39'27009'#39', '#39'Oued El Kheir   ' +
+            '         '#39', '#39'27'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'972'#39', '#39'27010'#39', '#39'Sidi Bellater   ' +
+            '         '#39', '#39'27'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'973'#39', '#39'27011'#39', '#39'Kheiredine'#160'     ' +
+            '         '#39', '#39'27'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'974'#39', '#39'27012'#39', '#39'Sidi Ali        ' +
+            '         '#39', '#39'27'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'975'#39', '#39'27013'#39', '#39'Abdelmalek Ramda' +
+            'ne       '#39', '#39'27'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'976'#39', '#39'27014'#39', '#39'Hadjadj         ' +
+            '         '#39', '#39'27'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'977'#39', '#39'27015'#39', '#39'Nekmaria        ' +
+            '         '#39', '#39'27'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'978'#39', '#39'27016'#39', '#39'Sidi Lakhdar    ' +
+            '         '#39', '#39'27'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'979'#39', '#39'27017'#39', '#39'Achaacha        ' +
+            '         '#39', '#39'27'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'980'#39', '#39'27018'#39', '#39'Khadra          ' +
+            '         '#39', '#39'27'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'981'#39', '#39'27019'#39', '#39'Bouguirat       ' +
+            '         '#39', '#39'27'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'982'#39', '#39'27020'#39', '#39'Sirat           ' +
+            '         '#39', '#39'27'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'983'#39', '#39'27021'#39', '#39'Ain Sidi Cherif ' +
+            '         '#39', '#39'27'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'984'#39', '#39'27022'#39', '#39'Mesra           ' +
+            '         '#39', '#39'27'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'985'#39', '#39'27023'#39', '#39'Mansourah       ' +
+            '         '#39', '#39'27'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'986'#39', '#39'27024'#39', '#39'Souaflia        ' +
+            '         '#39', '#39'27'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'987'#39', '#39'27025'#39', '#39'Ouled Boughalem ' +
+            '         '#39', '#39'27'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'988'#39', '#39'27026'#39', '#39'Ouled Maallah   ' +
+            '         '#39', '#39'27'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'989'#39', '#39'27027'#39', '#39'Mezghrane       ' +
+            '         '#39', '#39'27'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'990'#39', '#39'27028'#39', '#39'Ain Boudinar    ' +
+            '         '#39', '#39'27'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'991'#39', '#39'27029'#39', '#39'Tazgait         ' +
+            '         '#39', '#39'27'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'992'#39', '#39'27030'#39', '#39'Safsaf          ' +
+            '         '#39', '#39'27'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'993'#39', '#39'27031'#39', '#39'Touahria        ' +
+            '         '#39', '#39'27'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'994'#39', '#39'27032'#39', '#39'El Hassiane     ' +
+            '         '#39', '#39'27'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'995'#39', '#39'28001'#39', '#39'Msila           ' +
+            '         '#39', '#39'28'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'996'#39', '#39'28002'#39', '#39'Maadid          ' +
+            '         '#39', '#39'28'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'997'#39', '#39'28003'#39', '#39'Hammam Dhalaa   ' +
+            '         '#39', '#39'28'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'998'#39', '#39'28004'#39', '#39'Ouled Derradj   ' +
+            '         '#39', '#39'28'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'999'#39', '#39'28005'#39', '#39'Tarmount        ' +
+            '         '#39', '#39'28'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1000'#39', '#39'28006'#39', '#39'Mtarfa         ' +
+            '          '#39', '#39'28'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1001'#39', '#39'28007'#39', '#39'Khoubana       ' +
+            '          '#39', '#39'28'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1002'#39', '#39'28008'#39', '#39'Mcif           ' +
+            '          '#39', '#39'28'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1003'#39', '#39'28009'#39', '#39'Chellal        ' +
+            '          '#39', '#39'28'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1004'#39', '#39'28010'#39', '#39'Ouled Madhi    ' +
+            '          '#39', '#39'28'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1005'#39', '#39'28011'#39', '#39'Magra          ' +
+            '          '#39', '#39'28'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1006'#39', '#39'28012'#39', '#39'Berhoum        ' +
+            '          '#39', '#39'28'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1007'#39', '#39'28013'#39', '#39'Ain Khadra     ' +
+            '          '#39', '#39'28'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1008'#39', '#39'28014'#39', '#39'Ouled Addi Gueb' +
+            'ala       '#39', '#39'28'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1009'#39', '#39'28015'#39', '#39'Belaiba        ' +
+            '          '#39', '#39'28'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1010'#39', '#39'28016'#39', '#39'Sidi Aissa     ' +
+            '          '#39', '#39'28'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1011'#39', '#39'28017'#39', '#39'Ain El Hadjel  ' +
+            '          '#39', '#39'28'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1012'#39', '#39'28018'#39', '#39'Sidi Hadjeres  ' +
+            '          '#39', '#39'28'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1013'#39', '#39'28019'#39', '#39'Ouanougha      ' +
+            '          '#39', '#39'28'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1014'#39', '#39'28020'#39', '#39'Bou Saada      ' +
+            '          '#39', '#39'28'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1015'#39', '#39'28021'#39', '#39'Ouled Sidi Brah' +
+            'im        '#39', '#39'28'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1016'#39', '#39'28022'#39', '#39'Sidi Ameur     ' +
+            '          '#39', '#39'28'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1017'#39', '#39'28023'#39', '#39'Tamsa          ' +
+            '          '#39', '#39'28'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1018'#39', '#39'28024'#39', '#39'Ben Srour      ' +
+            '          '#39', '#39'28'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1019'#39', '#39'28025'#39', '#39'Ouled Slimane  ' +
+            '          '#39', '#39'28'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1020'#39', '#39'28026'#39', '#39'El Houamed     ' +
+            '          '#39', '#39'28'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1021'#39', '#39'28027'#39', '#39'El Hamel       ' +
+            '          '#39', '#39'28'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1022'#39', '#39'28028'#39', '#39'Ouled Mansour  ' +
+            '          '#39', '#39'28'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1023'#39', '#39'28029'#39', '#39'Maarif         ' +
+            '          '#39', '#39'28'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1024'#39', '#39'28030'#39', '#39'Dehahna        ' +
+            '          '#39', '#39'28'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1025'#39', '#39'28031'#39', '#39'Bouti Sayah    ' +
+            '          '#39', '#39'28'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1026'#39', '#39'28032'#39', '#39'Khettouti Sed D' +
+            'jir       '#39', '#39'28'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1027'#39', '#39'28033'#39', '#39'Zarzour        ' +
+            '          '#39', '#39'28'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1028'#39', '#39'28034'#39', '#39'Oued Chair     ' +
+            '          '#39', '#39'28'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1029'#39', '#39'28035'#39', '#39'Benzouh        ' +
+            '          '#39', '#39'28'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1030'#39', '#39'28036'#39', '#39'Bir Foda       ' +
+            '          '#39', '#39'28'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1031'#39', '#39'28037'#39', '#39'Ain Fares      ' +
+            '          '#39', '#39'28'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1032'#39', '#39'28038'#39', '#39'Sidi Mhamed    ' +
+            '          '#39', '#39'28'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1033'#39', '#39'28039'#39', '#39'Ouled Atia     ' +
+            '          '#39', '#39'28'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1034'#39', '#39'28040'#39', '#39'Souamaa        ' +
+            '          '#39', '#39'28'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1035'#39', '#39'28041'#39', '#39'Ain El Melh    ' +
+            '          '#39', '#39'28'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1036'#39', '#39'28042'#39', '#39'Medjedel       ' +
+            '          '#39', '#39'28'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1037'#39', '#39'28043'#39', '#39'Slim           ' +
+            '          '#39', '#39'28'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1038'#39', '#39'28044'#39', '#39'Ain Errich     ' +
+            '          '#39', '#39'28'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1039'#39', '#39'28045'#39', '#39'Beni Ilmane    ' +
+            '          '#39', '#39'28'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1040'#39', '#39'28046'#39', '#39'Oultene        ' +
+            '          '#39', '#39'28'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1041'#39', '#39'28047'#39', '#39'Djebel Messaad ' +
+            '          '#39', '#39'28'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1042'#39', '#39'29001'#39', '#39'Mascara        ' +
+            '          '#39', '#39'29'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1043'#39', '#39'29002'#39', '#39'Bou Hanifia    ' +
+            '          '#39', '#39'29'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1044'#39', '#39'29003'#39', '#39'Tizi           ' +
+            '          '#39', '#39'29'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1045'#39', '#39'29004'#39', '#39'Hacine         ' +
+            '          '#39', '#39'29'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1046'#39', '#39'29005'#39', '#39'Maoussa        ' +
+            '          '#39', '#39'29'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1047'#39', '#39'29006'#39', '#39'Teghennif      ' +
+            '          '#39', '#39'29'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1048'#39', '#39'29007'#39', '#39'El Hachem      ' +
+            '          '#39', '#39'29'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1049'#39', '#39'29008'#39', '#39'Sidi Kada      ' +
+            '          '#39', '#39'29'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1050'#39', '#39'29009'#39', '#39'Zelmata        ' +
+            '          '#39', '#39'29'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1051'#39', '#39'29010'#39', '#39'Oued El Abtal  ' +
+            '          '#39', '#39'29'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1052'#39', '#39'29011'#39', '#39'Ain Ferah      ' +
+            '          '#39', '#39'29'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1053'#39', '#39'29012'#39', '#39'Ghriss         ' +
+            '          '#39', '#39'29'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1054'#39', '#39'29013'#39', '#39'Froha          ' +
+            '          '#39', '#39'29'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1055'#39', '#39'29014'#39', '#39'Matemore       ' +
+            '          '#39', '#39'29'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1056'#39', '#39'29015'#39', '#39'Makdha         ' +
+            '          '#39', '#39'29'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1057'#39', '#39'29016'#39', '#39'Sidi Boussaid  ' +
+            '          '#39', '#39'29'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1058'#39', '#39'29017'#39', '#39'El Bordj       ' +
+            '          '#39', '#39'29'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1059'#39', '#39'29018'#39', '#39'Ain Fekan      ' +
+            '          '#39', '#39'29'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1060'#39', '#39'29019'#39', '#39'Benian         ' +
+            '          '#39', '#39'29'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1061'#39', '#39'29020'#39', '#39'Khalouia       ' +
+            '          '#39', '#39'29'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1062'#39', '#39'29021'#39', '#39'El Menaouer    ' +
+            '          '#39', '#39'29'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1063'#39', '#39'29022'#39', '#39'Oued Taria     ' +
+            '          '#39', '#39'29'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1064'#39', '#39'29023'#39', '#39'Aouf           ' +
+            '          '#39', '#39'29'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1065'#39', '#39'29024'#39', '#39'Ain Fares      ' +
+            '          '#39', '#39'29'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1066'#39', '#39'29025'#39', '#39'Ain Frass      ' +
+            '          '#39', '#39'29'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1067'#39', '#39'29026'#39', '#39'Sig            ' +
+            '          '#39', '#39'29'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1068'#39', '#39'29027'#39', '#39'Oggaz          ' +
+            '          '#39', '#39'29'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1069'#39', '#39'29028'#39', '#39'Alaimia        ' +
+            '          '#39', '#39'29'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1070'#39', '#39'29029'#39', '#39'El Gaada       ' +
+            '          '#39', '#39'29'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1071'#39', '#39'29030'#39', '#39'Zahana         ' +
+            '          '#39', '#39'29'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1072'#39', '#39'29031'#39', '#39'Mohammadia     ' +
+            '          '#39', '#39'29'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1073'#39', '#39'29032'#39', '#39'Sidi Abdelmoume' +
+            'ne        '#39', '#39'29'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1074'#39', '#39'29033'#39', '#39'Ferraguig      ' +
+            '          '#39', '#39'29'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1075'#39', '#39'29034'#39', '#39'El Ghomri      ' +
+            '          '#39', '#39'29'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1076'#39', '#39'29035'#39', '#39'Sedjerara      ' +
+            '          '#39', '#39'29'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1077'#39', '#39'29036'#39', '#39'Moctadouz      ' +
+            '          '#39', '#39'29'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1078'#39', '#39'29037'#39', '#39'Bou Henni      ' +
+            '          '#39', '#39'29'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1079'#39', '#39'29038'#39', '#39'Guettena       ' +
+            '          '#39', '#39'29'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1080'#39', '#39'29039'#39', '#39'El Mamounia    ' +
+            '          '#39', '#39'29'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1081'#39', '#39'29040'#39', '#39'El Keurt       ' +
+            '          '#39', '#39'29'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1082'#39', '#39'29041'#39', '#39'Gharrous       ' +
+            '          '#39', '#39'29'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1083'#39', '#39'29042'#39', '#39'Gherdjoum      ' +
+            '          '#39', '#39'29'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1084'#39', '#39'29043'#39', '#39'Chorfa         ' +
+            '          '#39', '#39'29'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1085'#39', '#39'29044'#39', '#39'Ras Ain Amirouc' +
+            'he        '#39', '#39'29'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1086'#39', '#39'29045'#39', '#39'Nesmot         ' +
+            '          '#39', '#39'29'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1087'#39', '#39'29046'#39', '#39'Sidi Abdeldjeba' +
+            'r         '#39', '#39'29'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1088'#39', '#39'29047'#39', '#39'Sehailia       ' +
+            '          '#39', '#39'29'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1089'#39', '#39'30001'#39', '#39'Ouargla        ' +
+            '          '#39', '#39'30'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1090'#39', '#39'30002'#39', '#39'Ain Beida      ' +
+            '          '#39', '#39'30'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1091'#39', '#39'30003'#39', '#39'Ngoussa        ' +
+            '          '#39', '#39'30'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1092'#39', '#39'30004'#39', '#39'Hassi Messaoud ' +
+            '          '#39', '#39'30'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1093'#39', '#39'30005'#39', '#39'Rouissat       ' +
+            '          '#39', '#39'30'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1094'#39', '#39'30006'#39', '#39'Balidat Ameur  ' +
+            '          '#39', '#39'30'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1095'#39', '#39'30007'#39', '#39'Tebesbest      ' +
+            '          '#39', '#39'30'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1096'#39', '#39'30008'#39', '#39'Nezla          ' +
+            '          '#39', '#39'30'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1097'#39', '#39'30009'#39', '#39'Zaouia El Abidi' +
+            'a         '#39', '#39'30'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1098'#39', '#39'30010'#39', '#39'Sidi Slimane   ' +
+            '          '#39', '#39'30'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1099'#39', '#39'30011'#39', '#39'Sidi Khouiled  ' +
+            '          '#39', '#39'30'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1100'#39', '#39'30012'#39', '#39'Hassi Ben Abdel' +
+            'lah       '#39', '#39'30'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1101'#39', '#39'30013'#39', '#39'Touggourt      ' +
+            '          '#39', '#39'30'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1102'#39', '#39'30014'#39', '#39'El Hadjira     ' +
+            '          '#39', '#39'30'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1103'#39', '#39'30015'#39', '#39'Taibet         ' +
+            '          '#39', '#39'30'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1104'#39', '#39'30016'#39', '#39'Tamacine       ' +
+            '          '#39', '#39'30'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1105'#39', '#39'30017'#39', '#39'Benaceur       ' +
+            '          '#39', '#39'30'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1106'#39', '#39'30018'#39', '#39'Mnaguer        ' +
+            '          '#39', '#39'30'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1107'#39', '#39'30019'#39', '#39'Megarine       ' +
+            '          '#39', '#39'30'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1108'#39', '#39'30020'#39', '#39'El Allia       ' +
+            '          '#39', '#39'30'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1109'#39', '#39'30021'#39', '#39'El Borma       ' +
+            '          '#39', '#39'30'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1110'#39', '#39'31001'#39', '#39'Oran           ' +
+            '          '#39', '#39'31'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1111'#39', '#39'31002'#39', '#39'Gdyel          ' +
+            '          '#39', '#39'31'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1112'#39', '#39'31003'#39', '#39'Bir El Djir    ' +
+            '          '#39', '#39'31'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1113'#39', '#39'31004'#39', '#39'Hassi Bounif   ' +
+            '          '#39', '#39'31'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1114'#39', '#39'31005'#39', '#39'Es Senia       ' +
+            '          '#39', '#39'31'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1115'#39', '#39'31006'#39', '#39'Arzew          ' +
+            '          '#39', '#39'31'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1116'#39', '#39'31007'#39', '#39'Bethioua       ' +
+            '          '#39', '#39'31'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1117'#39', '#39'31008'#39', '#39'Marsat El Hadja' +
+            'dj        '#39', '#39'31'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1118'#39', '#39'31009'#39', '#39'Ain Turk       ' +
+            '          '#39', '#39'31'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1119'#39', '#39'31010'#39', '#39'El Ancar       ' +
+            '          '#39', '#39'31'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1120'#39', '#39'31011'#39', '#39'Oued Tlelat    ' +
+            '          '#39', '#39'31'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1121'#39', '#39'31012'#39', '#39'Tafraoui       ' +
+            '          '#39', '#39'31'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1122'#39', '#39'31013'#39', '#39'Sidi Chami     ' +
+            '          '#39', '#39'31'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1123'#39', '#39'31014'#39', '#39'Boufatis       ' +
+            '          '#39', '#39'31'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1124'#39', '#39'31015'#39', '#39'Mers El Kebir  ' +
+            '          '#39', '#39'31'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1125'#39', '#39'31016'#39', '#39'Bousfer        ' +
+            '          '#39', '#39'31'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1126'#39', '#39'31017'#39', '#39'El Karma       ' +
+            '          '#39', '#39'31'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1127'#39', '#39'31018'#39', '#39'El Braya       ' +
+            '          '#39', '#39'31'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1128'#39', '#39'31019'#39', '#39'Hassi Ben Okba ' +
+            '          '#39', '#39'31'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1129'#39', '#39'31020'#39', '#39'Ben Freha      ' +
+            '          '#39', '#39'31'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1130'#39', '#39'31021'#39', '#39'Hassi Mefsoukh ' +
+            '          '#39', '#39'31'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1131'#39', '#39'31022'#39', '#39'Sidi Ben Yabka ' +
+            '          '#39', '#39'31'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1132'#39', '#39'31023'#39', '#39'Messerghin     ' +
+            '          '#39', '#39'31'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1133'#39', '#39'31024'#39', '#39'Boutlelis      ' +
+            '          '#39', '#39'31'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1134'#39', '#39'31025'#39', '#39'Ain Kerma      ' +
+            '          '#39', '#39'31'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1135'#39', '#39'31026'#39', '#39'Ain Biya       ' +
+            '          '#39', '#39'31'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1136'#39', '#39'32001'#39', '#39'El Bayadh      ' +
+            '          '#39', '#39'32'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1137'#39', '#39'32002'#39', '#39'Rogassa        ' +
+            '          '#39', '#39'32'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1138'#39', '#39'32003'#39', '#39'Stitten        ' +
+            '          '#39', '#39'32'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1139'#39', '#39'32004'#39', '#39'Brezina        ' +
+            '          '#39', '#39'32'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1140'#39', '#39'32005'#39', '#39'Ghassoul       ' +
+            '          '#39', '#39'32'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1141'#39', '#39'32006'#39', '#39'Boualem        ' +
+            '          '#39', '#39'32'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1142'#39', '#39'32007'#39', '#39'El Abiodh Sidi ' +
+            'Cheikh    '#39', '#39'32'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1143'#39', '#39'32008'#39', '#39'Ain El Orak    ' +
+            '          '#39', '#39'32'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1144'#39', '#39'32009'#39', '#39'Arbaouat       ' +
+            '          '#39', '#39'32'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1145'#39', '#39'32010'#39', '#39'Bougtoub       ' +
+            '          '#39', '#39'32'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1146'#39', '#39'32011'#39', '#39'El Kheither    ' +
+            '          '#39', '#39'32'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1147'#39', '#39'32012'#39', '#39'Kef El Ahmar   ' +
+            '          '#39', '#39'32'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1148'#39', '#39'32013'#39', '#39'Boussemghoun   ' +
+            '          '#39', '#39'32'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1149'#39', '#39'32014'#39', '#39'Chellala       ' +
+            '          '#39', '#39'32'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1150'#39', '#39'32015'#39', '#39'Krakda         ' +
+            '          '#39', '#39'32'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1151'#39', '#39'32016'#39', '#39'El Bnoud       ' +
+            '          '#39', '#39'32'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1152'#39', '#39'32017'#39', '#39'Cheguig        ' +
+            '          '#39', '#39'32'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1153'#39', '#39'32018'#39', '#39'Sidi Ameur     ' +
+            '          '#39', '#39'32'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1154'#39', '#39'32019'#39', '#39'El Mehara      ' +
+            '          '#39', '#39'32'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1155'#39', '#39'32020'#39', '#39'Tousmouline    ' +
+            '          '#39', '#39'32'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1156'#39', '#39'32021'#39', '#39'Sidi Slimane   ' +
+            '          '#39', '#39'32'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1157'#39', '#39'32022'#39', '#39'Sidi Tifour    ' +
+            '          '#39', '#39'32'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1158'#39', '#39'33001'#39', '#39'Illizi         ' +
+            '          '#39', '#39'33'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1159'#39', '#39'33002'#39', '#39'Djanet         ' +
+            '          '#39', '#39'33'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1160'#39', '#39'33003'#39', '#39'Debdeb         ' +
+            '          '#39', '#39'33'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1161'#39', '#39'33004'#39', '#39'Bordj Omar Dris' +
+            's         '#39', '#39'33'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1162'#39', '#39'33005'#39', '#39'Bordj El Haouas' +
+            'se        '#39', '#39'33'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1163'#39', '#39'33006'#39', '#39'In Amenas      ' +
+            '          '#39', '#39'33'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1164'#39', '#39'34001'#39', '#39'Bordj Bou Arrer' +
+            'idj       '#39', '#39'34'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1165'#39', '#39'34002'#39', '#39'Ras El Oued    ' +
+            '          '#39', '#39'34'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1166'#39', '#39'34003'#39', '#39'Bordj Zemoura  ' +
+            '          '#39', '#39'34'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1167'#39', '#39'34004'#39', '#39'Mansoura       ' +
+            '          '#39', '#39'34'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1168'#39', '#39'34005'#39', '#39'El Mhir        ' +
+            '          '#39', '#39'34'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1169'#39', '#39'34006'#39', '#39'Ben Daoud      ' +
+            '          '#39', '#39'34'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1170'#39', '#39'34007'#39', '#39'El Achir       ' +
+            '          '#39', '#39'34'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1171'#39', '#39'34008'#39', '#39'Ain Taghrout   ' +
+            '          '#39', '#39'34'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1172'#39', '#39'34009'#39', '#39'Bordj Ghdir    ' +
+            '          '#39', '#39'34'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1173'#39', '#39'34010'#39', '#39'Sidi Embarek   ' +
+            '          '#39', '#39'34'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1174'#39', '#39'34011'#39', '#39'El Hamadia     ' +
+            '          '#39', '#39'34'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1175'#39', '#39'34012'#39', '#39'Belimour       ' +
+            '          '#39', '#39'34'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1176'#39', '#39'34013'#39', '#39'Medjana        ' +
+            '          '#39', '#39'34'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1177'#39', '#39'34014'#39', '#39'Teniet En Nasr ' +
+            '          '#39', '#39'34'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1178'#39', '#39'34015'#39', '#39'Djaafra        ' +
+            '          '#39', '#39'34'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1179'#39', '#39'34016'#39', '#39'El Main        ' +
+            '          '#39', '#39'34'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1180'#39', '#39'34017'#39', '#39'Ouled Brahem   ' +
+            '          '#39', '#39'34'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1181'#39', '#39'34018'#39', '#39'Ouled Dahmane  ' +
+            '          '#39', '#39'34'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1182'#39', '#39'34019'#39', '#39'Hasnaoua       ' +
+            '          '#39', '#39'34'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1183'#39', '#39'34020'#39', '#39'Khelil         ' +
+            '          '#39', '#39'34'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1184'#39', '#39'34021'#39', '#39'Taglait        ' +
+            '          '#39', '#39'34'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1185'#39', '#39'34022'#39', '#39'Ksour          ' +
+            '          '#39', '#39'34'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1186'#39', '#39'34023'#39', '#39'Ouled Sidi Brah' +
+            'im        '#39', '#39'34'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1187'#39', '#39'34024'#39', '#39'Tafreg         ' +
+            '          '#39', '#39'34'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1188'#39', '#39'34025'#39', '#39'Colla          ' +
+            '          '#39', '#39'34'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1189'#39', '#39'34026'#39', '#39'Tixter         ' +
+            '          '#39', '#39'34'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1190'#39', '#39'34027'#39', '#39'El Ach         ' +
+            '          '#39', '#39'34'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1191'#39', '#39'34028'#39', '#39'El Anseur      ' +
+            '          '#39', '#39'34'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1192'#39', '#39'34029'#39', '#39'Tesmart        ' +
+            '          '#39', '#39'34'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1193'#39', '#39'34030'#39', '#39'Ain Tesra      ' +
+            '          '#39', '#39'34'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1194'#39', '#39'34031'#39', '#39'Bir Kasdali    ' +
+            '          '#39', '#39'34'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1195'#39', '#39'34032'#39', '#39'Ghilassa       ' +
+            '          '#39', '#39'34'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1196'#39', '#39'34033'#39', '#39'Rabta          ' +
+            '          '#39', '#39'34'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1197'#39', '#39'34034'#39', '#39'Haraza         ' +
+            '          '#39', '#39'34'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1198'#39', '#39'35001'#39', '#39'Boumerdes      ' +
+            '          '#39', '#39'35'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1199'#39', '#39'35002'#39', '#39'Boudouaou      ' +
+            '          '#39', '#39'35'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1200'#39', '#39'35004'#39', '#39'Afir           ' +
+            '          '#39', '#39'35'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1201'#39', '#39'35005'#39', '#39'Bordj Menaiel  ' +
+            '          '#39', '#39'35'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1202'#39', '#39'35006'#39', '#39'Baghlia        ' +
+            '          '#39', '#39'35'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1203'#39', '#39'35007'#39', '#39'Sidi Daoud     ' +
+            '          '#39', '#39'35'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1204'#39', '#39'35008'#39', '#39'Naciria        ' +
+            '          '#39', '#39'35'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1205'#39', '#39'35009'#39', '#39'Djinet         ' +
+            '          '#39', '#39'35'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1206'#39', '#39'35010'#39', '#39'Isser          ' +
+            '          '#39', '#39'35'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1207'#39', '#39'35011'#39', '#39'Zemmouri       ' +
+            '          '#39', '#39'35'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1208'#39', '#39'35012'#39', '#39'Si Mustapha    ' +
+            '          '#39', '#39'35'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1209'#39', '#39'35013'#39', '#39'Tidjelabine    ' +
+            '          '#39', '#39'35'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1210'#39', '#39'35014'#39', '#39'Chabet El Ameur' +
+            '          '#39', '#39'35'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1211'#39', '#39'35015'#39', '#39'Thenia         ' +
+            '          '#39', '#39'35'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1212'#39', '#39'35018'#39', '#39'Timezrit       ' +
+            '          '#39', '#39'35'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1213'#39', '#39'35019'#39', '#39'Corso          ' +
+            '          '#39', '#39'35'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1214'#39', '#39'35020'#39', '#39'Ouled Moussa   ' +
+            '          '#39', '#39'35'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1215'#39', '#39'35021'#39', '#39'Larbatache     ' +
+            '          '#39', '#39'35'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1216'#39', '#39'35022'#39', '#39'Bouzegza Keddar' +
+            'a         '#39', '#39'35'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1217'#39', '#39'35025'#39', '#39'Taourga        ' +
+            '          '#39', '#39'35'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1218'#39', '#39'35026'#39', '#39'Ouled Aissa    ' +
+            '          '#39', '#39'35'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1219'#39', '#39'35027'#39', '#39'Ben Choud      ' +
+            '          '#39', '#39'35'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1220'#39', '#39'35028'#39', '#39'Dellys         ' +
+            '          '#39', '#39'35'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1221'#39', '#39'35029'#39', '#39'Ammal          ' +
+            '          '#39', '#39'35'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1222'#39', '#39'35030'#39', '#39'Beni Amrane    ' +
+            '          '#39', '#39'35'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1223'#39', '#39'35031'#39', '#39'Souk El Had    ' +
+            '          '#39', '#39'35'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1224'#39', '#39'35032'#39', '#39'Boudouaou El Ba' +
+            'hri       '#39', '#39'35'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1225'#39', '#39'35033'#39', '#39'Ouled Hedadj   ' +
+            '          '#39', '#39'35'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1226'#39', '#39'35035'#39', '#39'Laghata        ' +
+            '          '#39', '#39'35'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1227'#39', '#39'35036'#39', '#39'Hammedi        ' +
+            '          '#39', '#39'35'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1228'#39', '#39'35037'#39', '#39'Khemis El Khech' +
+            'na        '#39', '#39'35'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1229'#39', '#39'35038'#39', '#39'El Kharrouba   ' +
+            '          '#39', '#39'35'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1230'#39', '#39'36001'#39', '#39'El Tarf        ' +
+            '          '#39', '#39'36'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1231'#39', '#39'36002'#39', '#39'Bouhadjar      ' +
+            '          '#39', '#39'36'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1232'#39', '#39'36003'#39', '#39'Ben Mhidi      ' +
+            '          '#39', '#39'36'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1233'#39', '#39'36004'#39', '#39'Bougous        ' +
+            '          '#39', '#39'36'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1234'#39', '#39'36005'#39', '#39'El Kala        ' +
+            '          '#39', '#39'36'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1235'#39', '#39'36006'#39', '#39'Ain El Assel   ' +
+            '          '#39', '#39'36'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1236'#39', '#39'36007'#39', '#39'El Aioun       ' +
+            '          '#39', '#39'36'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1237'#39', '#39'36008'#39', '#39'Bouteldja      ' +
+            '          '#39', '#39'36'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1238'#39', '#39'36009'#39', '#39'Souarekh       ' +
+            '          '#39', '#39'36'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1239'#39', '#39'36010'#39', '#39'Berrihane      ' +
+            '          '#39', '#39'36'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1240'#39', '#39'36011'#39', '#39'Lac Des Oiseaux' +
+            '          '#39', '#39'36'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1241'#39', '#39'36012'#39', '#39'Chefia         ' +
+            '          '#39', '#39'36'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1242'#39', '#39'36013'#39', '#39'Drean          ' +
+            '          '#39', '#39'36'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1243'#39', '#39'36014'#39', '#39'Chihani        ' +
+            '          '#39', '#39'36'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1244'#39', '#39'36015'#39', '#39'Chebaita Mokhta' +
+            'r         '#39', '#39'36'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1245'#39', '#39'36016'#39', '#39'Besbes         ' +
+            '          '#39', '#39'36'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1246'#39', '#39'36017'#39', '#39'Asfour         ' +
+            '          '#39', '#39'36'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1247'#39', '#39'36018'#39', '#39'Echatt         ' +
+            '          '#39', '#39'36'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1248'#39', '#39'36019'#39', '#39'Zerizer        ' +
+            '          '#39', '#39'36'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1249'#39', '#39'36020'#39', '#39'Zitouna        ' +
+            '          '#39', '#39'36'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1250'#39', '#39'36021'#39', '#39'Ain Kerma      ' +
+            '          '#39', '#39'36'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1251'#39', '#39'36022'#39', '#39'Oued Zitoun    ' +
+            '          '#39', '#39'36'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1252'#39', '#39'36023'#39', '#39'Hammam Beni Sal' +
+            'ah        '#39', '#39'36'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1253'#39', '#39'36024'#39', '#39'Raml Souk      ' +
+            '          '#39', '#39'36'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1254'#39', '#39'37001'#39', '#39'Tindouf        ' +
+            '          '#39', '#39'37'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1255'#39', '#39'37002'#39', '#39'Oum El Assel   ' +
+            '          '#39', '#39'37'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1256'#39', '#39'38001'#39', '#39'Tissemsilt     ' +
+            '          '#39', '#39'38'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1257'#39', '#39'38002'#39', '#39'Bordj Bou Naama' +
+            '          '#39', '#39'38'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1258'#39', '#39'38003'#39', '#39'Theniet El Had ' +
+            '          '#39', '#39'38'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1259'#39', '#39'38004'#39', '#39'Lazharia       ' +
+            '          '#39', '#39'38'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1260'#39', '#39'38005'#39', '#39'Beni Chaib     ' +
+            '          '#39', '#39'38'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1261'#39', '#39'38006'#39', '#39'Lardjem        ' +
+            '          '#39', '#39'38'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1262'#39', '#39'38007'#39', '#39'Melaab         ' +
+            '          '#39', '#39'38'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1263'#39', '#39'38008'#39', '#39'Sidi Lantri    ' +
+            '          '#39', '#39'38'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1264'#39', '#39'38009'#39', '#39'Bordj El Emir A' +
+            'bdelkader '#39', '#39'38'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1265'#39', '#39'38010'#39', '#39'Layoune        ' +
+            '          '#39', '#39'38'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1266'#39', '#39'38011'#39', '#39'Khemisti       ' +
+            '          '#39', '#39'38'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1267'#39', '#39'38012'#39', '#39'Ouled Bessem   ' +
+            '          '#39', '#39'38'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1268'#39', '#39'38013'#39', '#39'Ammari         ' +
+            '          '#39', '#39'38'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1269'#39', '#39'38014'#39', '#39'Youssoufia     ' +
+            '          '#39', '#39'38'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1270'#39', '#39'38015'#39', '#39'Sidi Boutouchen' +
+            't         '#39', '#39'38'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1271'#39', '#39'38016'#39', '#39'Larbaa         ' +
+            '          '#39', '#39'38'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1272'#39', '#39'38017'#39', '#39'Maasem         ' +
+            '          '#39', '#39'38'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1273'#39', '#39'38018'#39', '#39'Sidi Abed      ' +
+            '          '#39', '#39'38'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1274'#39', '#39'38019'#39', '#39'Tamalaht       ' +
+            '          '#39', '#39'38'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1275'#39', '#39'38020'#39', '#39'Sidi Slimane   ' +
+            '          '#39', '#39'38'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1276'#39', '#39'38021'#39', '#39'Boucaid        ' +
+            '          '#39', '#39'38'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1277'#39', '#39'38022'#39', '#39'Beni Lahcene   ' +
+            '          '#39', '#39'38'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1278'#39', '#39'39001'#39', '#39'El Oued        ' +
+            '          '#39', '#39'39'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1279'#39', '#39'39002'#39', '#39'Robbah         ' +
+            '          '#39', '#39'39'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1280'#39', '#39'39003'#39', '#39'Oued El Alenda ' +
+            '          '#39', '#39'39'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1281'#39', '#39'39004'#39', '#39'Bayadha        ' +
+            '          '#39', '#39'39'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1282'#39', '#39'39005'#39', '#39'Nakhla         ' +
+            '          '#39', '#39'39'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1283'#39', '#39'39006'#39', '#39'Guemar         ' +
+            '          '#39', '#39'39'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1284'#39', '#39'39007'#39', '#39'Kouinine       ' +
+            '          '#39', '#39'39'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1285'#39', '#39'39008'#39', '#39'Reguiba        ' +
+            '          '#39', '#39'39'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1286'#39', '#39'39009'#39', '#39'Hamraia        ' +
+            '          '#39', '#39'39'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1287'#39', '#39'39010'#39', '#39'Taghzout       ' +
+            '          '#39', '#39'39'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1288'#39', '#39'39011'#39', '#39'Debila         ' +
+            '          '#39', '#39'39'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1289'#39', '#39'39012'#39', '#39'Hassani Abdelkr' +
+            'im        '#39', '#39'39'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1290'#39', '#39'39013'#39', '#39'Hassi Khelifa  ' +
+            '          '#39', '#39'39'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1291'#39', '#39'39014'#39', '#39'Taleb Larbi    ' +
+            '          '#39', '#39'39'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1292'#39', '#39'39015'#39', '#39'Douar El Ma    ' +
+            '          '#39', '#39'39'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1293'#39', '#39'39016'#39', '#39'Sidi Aoun      ' +
+            '          '#39', '#39'39'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1294'#39', '#39'39017'#39', '#39'Trifaoui       ' +
+            '          '#39', '#39'39'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1295'#39', '#39'39018'#39', '#39'Magrane        ' +
+            '          '#39', '#39'39'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1296'#39', '#39'39019'#39', '#39'Beni Guecha    ' +
+            '          '#39', '#39'39'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1297'#39', '#39'39020'#39', '#39'Ourmas         ' +
+            '          '#39', '#39'39'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1298'#39', '#39'39021'#39', '#39'Still          ' +
+            '          '#39', '#39'39'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1299'#39', '#39'39022'#39', '#39'Mrara          ' +
+            '          '#39', '#39'39'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1300'#39', '#39'39023'#39', '#39'Sidi Khellil   ' +
+            '          '#39', '#39'39'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1301'#39', '#39'39024'#39', '#39'Tendla         ' +
+            '          '#39', '#39'39'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1302'#39', '#39'39025'#39', '#39'El Ogla        ' +
+            '          '#39', '#39'39'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1303'#39', '#39'39026'#39', '#39'Mih Ouansa     ' +
+            '          '#39', '#39'39'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1304'#39', '#39'39027'#39', '#39'El Mghair      ' +
+            '          '#39', '#39'39'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1305'#39', '#39'39028'#39', '#39'Djamaa         ' +
+            '          '#39', '#39'39'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1306'#39', '#39'39029'#39', '#39'Oum Touyour    ' +
+            '          '#39', '#39'39'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1307'#39', '#39'39030'#39', '#39'Sidi Amrane    ' +
+            '          '#39', '#39'39'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1308'#39', '#39'40001'#39', '#39'Khenchela      ' +
+            '          '#39', '#39'40'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1309'#39', '#39'40002'#39', '#39'Mtoussa        ' +
+            '          '#39', '#39'40'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1310'#39', '#39'40003'#39', '#39'Kais           ' +
+            '          '#39', '#39'40'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1311'#39', '#39'40004'#39', '#39'Baghai         ' +
+            '          '#39', '#39'40'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1312'#39', '#39'40005'#39', '#39'El Hamma       ' +
+            '          '#39', '#39'40'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1313'#39', '#39'40006'#39', '#39'Ain Touila     ' +
+            '          '#39', '#39'40'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1314'#39', '#39'40007'#39', '#39'Taouzianat     ' +
+            '          '#39', '#39'40'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1315'#39', '#39'40008'#39', '#39'Bouhmama       ' +
+            '          '#39', '#39'40'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1316'#39', '#39'40009'#39', '#39'El Oueldja     ' +
+            '          '#39', '#39'40'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1317'#39', '#39'40010'#39', '#39'Remila         ' +
+            '          '#39', '#39'40'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1318'#39', '#39'40011'#39', '#39'Cherchar       ' +
+            '          '#39', '#39'40'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1319'#39', '#39'40012'#39', '#39'Djellal        ' +
+            '          '#39', '#39'40'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1320'#39', '#39'40013'#39', '#39'Babar          ' +
+            '          '#39', '#39'40'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1321'#39', '#39'40014'#39', '#39'Tamza          ' +
+            '          '#39', '#39'40'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1322'#39', '#39'40015'#39', '#39'Ensigha        ' +
+            '          '#39', '#39'40'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1323'#39', '#39'40016'#39', '#39'Ouled Rechache ' +
+            '          '#39', '#39'40'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1324'#39', '#39'40017'#39', '#39'El Mahmal      ' +
+            '          '#39', '#39'40'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1325'#39', '#39'40018'#39', '#39'Msara          ' +
+            '          '#39', '#39'40'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1326'#39', '#39'40019'#39', '#39'Yabous         ' +
+            '          '#39', '#39'40'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1327'#39', '#39'40020'#39', '#39'Khirane        ' +
+            '          '#39', '#39'40'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1328'#39', '#39'40021'#39', '#39'Chelia         ' +
+            '          '#39', '#39'40'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1329'#39', '#39'41001'#39', '#39'Souk Ahras     ' +
+            '          '#39', '#39'41'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1330'#39', '#39'41002'#39', '#39'Sedrata        ' +
+            '          '#39', '#39'41'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1331'#39', '#39'41003'#39', '#39'Hanancha       ' +
+            '          '#39', '#39'41'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1332'#39', '#39'41004'#39', '#39'Mechroha       ' +
+            '          '#39', '#39'41'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1333'#39', '#39'41005'#39', '#39'Ouled Driss    ' +
+            '          '#39', '#39'41'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1334'#39', '#39'41006'#39', '#39'Tiffech        ' +
+            '          '#39', '#39'41'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1335'#39', '#39'41007'#39', '#39'Zaarouria      ' +
+            '          '#39', '#39'41'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1336'#39', '#39'41008'#39', '#39'Taoura         ' +
+            '          '#39', '#39'41'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1337'#39', '#39'41009'#39', '#39'Drea           ' +
+            '          '#39', '#39'41'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1338'#39', '#39'41010'#39', '#39'Haddada        ' +
+            '          '#39', '#39'41'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1339'#39', '#39'41011'#39', '#39'Khedara        ' +
+            '          '#39', '#39'41'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1340'#39', '#39'41012'#39', '#39'Merahna        ' +
+            '          '#39', '#39'41'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1341'#39', '#39'41013'#39', '#39'Ouled Moumen   ' +
+            '          '#39', '#39'41'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1342'#39', '#39'41014'#39', '#39'Bir Bouhouche  ' +
+            '          '#39', '#39'41'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1343'#39', '#39'41015'#39', '#39'Mdaourouche    ' +
+            '          '#39', '#39'41'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1344'#39', '#39'41016'#39', '#39'Oum El Adhaim  ' +
+            '          '#39', '#39'41'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1345'#39', '#39'41017'#39', '#39'Ain Zana       ' +
+            '          '#39', '#39'41'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1346'#39', '#39'41018'#39', '#39'Ain Soltane    ' +
+            '          '#39', '#39'41'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1347'#39', '#39'41019'#39', '#39'Quillen        ' +
+            '          '#39', '#39'41'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1348'#39', '#39'41020'#39', '#39'Sidi Fredj     ' +
+            '          '#39', '#39'41'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1349'#39', '#39'41021'#39', '#39'Safel El Ouiden' +
+            '          '#39', '#39'41'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1350'#39', '#39'41022'#39', '#39'Ragouba        ' +
+            '          '#39', '#39'41'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1351'#39', '#39'41023'#39', '#39'Khemissa       ' +
+            '          '#39', '#39'41'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1352'#39', '#39'41024'#39', '#39'Oued Keberit   ' +
+            '          '#39', '#39'41'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1353'#39', '#39'41025'#39', '#39'Terraguelt     ' +
+            '          '#39', '#39'41'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1354'#39', '#39'41026'#39', '#39'Zouabi         ' +
+            '          '#39', '#39'41'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1355'#39', '#39'42001'#39', '#39'Tipaza         ' +
+            '          '#39', '#39'42'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1356'#39', '#39'42002'#39', '#39'Menaceur       ' +
+            '          '#39', '#39'42'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1357'#39', '#39'42003'#39', '#39'Larhat         ' +
+            '          '#39', '#39'42'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1358'#39', '#39'42004'#39', '#39'Douaouda       ' +
+            '          '#39', '#39'42'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1359'#39', '#39'42005'#39', '#39'Bourkika       ' +
+            '          '#39', '#39'42'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1360'#39', '#39'42006'#39', '#39'Khemisti       ' +
+            '          '#39', '#39'42'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1361'#39', '#39'42010'#39', '#39'Aghabal        ' +
+            '          '#39', '#39'42'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1362'#39', '#39'42012'#39', '#39'Hadjout        ' +
+            '          '#39', '#39'42'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1363'#39', '#39'42013'#39', '#39'Sidi Amar      ' +
+            '          '#39', '#39'42'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1364'#39', '#39'42014'#39', '#39'Gouraya        ' +
+            '          '#39', '#39'42'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1365'#39', '#39'42015'#39', '#39'Nodor          ' +
+            '          '#39', '#39'42'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1366'#39', '#39'42016'#39', '#39'Chaiba         ' +
+            '          '#39', '#39'42'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1367'#39', '#39'42017'#39', '#39'Ain Tagourait  ' +
+            '          '#39', '#39'42'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1368'#39', '#39'42022'#39', '#39'Cherchel       ' +
+            '          '#39', '#39'42'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1369'#39', '#39'42023'#39', '#39'Damous         ' +
+            '          '#39', '#39'42'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1370'#39', '#39'42024'#39', '#39'Meurad         ' +
+            '          '#39', '#39'42'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1371'#39', '#39'42025'#39', '#39'Fouka          ' +
+            '          '#39', '#39'42'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1372'#39', '#39'42026'#39', '#39'Bou Ismail     ' +
+            '          '#39', '#39'42'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1373'#39', '#39'42027'#39', '#39'Ahmer El Ain   ' +
+            '          '#39', '#39'42'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1374'#39', '#39'42030'#39', '#39'Bou Haroun     ' +
+            '          '#39', '#39'42'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1375'#39', '#39'42032'#39', '#39'Sidi Ghiles    ' +
+            '          '#39', '#39'42'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1376'#39', '#39'42033'#39', '#39'Messelmoun     ' +
+            '          '#39', '#39'42'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1377'#39', '#39'42034'#39', '#39'Sidi Rached    ' +
+            '          '#39', '#39'42'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1378'#39', '#39'42035'#39', '#39'Kolea          ' +
+            '          '#39', '#39'42'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1379'#39', '#39'42036'#39', '#39'Attatba        ' +
+            '          '#39', '#39'42'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1380'#39', '#39'42040'#39', '#39'Sidi Semiane   ' +
+            '          '#39', '#39'42'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1381'#39', '#39'42041'#39', '#39'Beni Milleuk   ' +
+            '          '#39', '#39'42'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1382'#39', '#39'42042'#39', '#39'Hadjerat Ennous' +
+            '          '#39', '#39'42'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1383'#39', '#39'43001'#39', '#39'Mila           ' +
+            '          '#39', '#39'43'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1384'#39', '#39'43002'#39', '#39'Ferdjioua      ' +
+            '          '#39', '#39'43'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1385'#39', '#39'43003'#39', '#39'Chelghoum Laid ' +
+            '          '#39', '#39'43'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1386'#39', '#39'43004'#39', '#39'Oued Athmenia  ' +
+            '          '#39', '#39'43'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1387'#39', '#39'43005'#39', '#39'Ain Mellouk    ' +
+            '          '#39', '#39'43'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1388'#39', '#39'43006'#39', '#39'Telerghma      ' +
+            '          '#39', '#39'43'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1389'#39', '#39'43007'#39', '#39'Oued Seguen    ' +
+            '          '#39', '#39'43'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1390'#39', '#39'43008'#39', '#39'Tadjenanet     ' +
+            '          '#39', '#39'43'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1391'#39', '#39'43009'#39', '#39'Benyahia Abderr' +
+            'ahmane    '#39', '#39'43'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1392'#39', '#39'43010'#39', '#39'Oued Endja     ' +
+            '          '#39', '#39'43'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1393'#39', '#39'43011'#39', '#39'Ahmed Rachedi  ' +
+            '          '#39', '#39'43'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1394'#39', '#39'43012'#39', '#39'Ouled Khalouf  ' +
+            '          '#39', '#39'43'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1395'#39', '#39'43013'#39', '#39'Tiberguent     ' +
+            '          '#39', '#39'43'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1396'#39', '#39'43014'#39', '#39'Bouhatem       ' +
+            '          '#39', '#39'43'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1397'#39', '#39'43015'#39', '#39'Rouached       ' +
+            '          '#39', '#39'43'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1398'#39', '#39'43016'#39', '#39'Tessala Lamatai' +
+            '          '#39', '#39'43'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1399'#39', '#39'43017'#39', '#39'Grarem Gouga   ' +
+            '          '#39', '#39'43'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1400'#39', '#39'43018'#39', '#39'Sidi Merouane  ' +
+            '          '#39', '#39'43'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1401'#39', '#39'43019'#39', '#39'Tassadane Hadda' +
+            'da        '#39', '#39'43'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1402'#39', '#39'43020'#39', '#39'Derradji Bousse' +
+            'lah       '#39', '#39'43'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1403'#39', '#39'43021'#39', '#39'Minar Zarza    ' +
+            '          '#39', '#39'43'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1404'#39', '#39'43022'#39', '#39'Amira Arras    ' +
+            '          '#39', '#39'43'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1405'#39', '#39'43023'#39', '#39'Terrai Bainen  ' +
+            '          '#39', '#39'43'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1406'#39', '#39'43024'#39', '#39'Hamala         ' +
+            '          '#39', '#39'43'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1407'#39', '#39'43025'#39', '#39'Ain Tine       ' +
+            '          '#39', '#39'43'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1408'#39', '#39'43026'#39', '#39'El Mechira     ' +
+            '          '#39', '#39'43'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1409'#39', '#39'43027'#39', '#39'Sidi Khelifa   ' +
+            '          '#39', '#39'43'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1410'#39', '#39'43028'#39', '#39'Zeghaia        ' +
+            '          '#39', '#39'43'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1411'#39', '#39'43029'#39', '#39'Elayadi Barbes ' +
+            '          '#39', '#39'43'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1412'#39', '#39'43030'#39', '#39'Ain Beida Harri' +
+            'che       '#39', '#39'43'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1413'#39', '#39'43031'#39', '#39'Yahia Beniguech' +
+            'a         '#39', '#39'43'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1414'#39', '#39'43032'#39', '#39'Chigara        ' +
+            '          '#39', '#39'43'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1415'#39', '#39'44001'#39', '#39'Ain Defla      ' +
+            '          '#39', '#39'44'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1416'#39', '#39'44002'#39', '#39'Miliana        ' +
+            '          '#39', '#39'44'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1417'#39', '#39'44003'#39', '#39'Boumedfaa      ' +
+            '          '#39', '#39'44'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1418'#39', '#39'44004'#39', '#39'Khemis Miliana ' +
+            '          '#39', '#39'44'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1419'#39', '#39'44005'#39', '#39'Hammam Righa   ' +
+            '          '#39', '#39'44'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1420'#39', '#39'44006'#39', '#39'Arib           ' +
+            '          '#39', '#39'44'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1421'#39', '#39'44007'#39', '#39'Djelida        ' +
+            '          '#39', '#39'44'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1422'#39', '#39'44008'#39', '#39'El Amra        ' +
+            '          '#39', '#39'44'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1423'#39', '#39'44009'#39', '#39'Bourached      ' +
+            '          '#39', '#39'44'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1424'#39', '#39'44010'#39', '#39'El Attaf       ' +
+            '          '#39', '#39'44'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1425'#39', '#39'44011'#39', '#39'El Abadia      ' +
+            '          '#39', '#39'44'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1426'#39', '#39'44012'#39', '#39'Djendel        ' +
+            '          '#39', '#39'44'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1427'#39', '#39'44013'#39', '#39'Oued Chorfa    ' +
+            '          '#39', '#39'44'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1428'#39', '#39'44014'#39', '#39'Ain Lechiakh   ' +
+            '          '#39', '#39'44'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1429'#39', '#39'44015'#39', '#39'Oued Djemaa    ' +
+            '          '#39', '#39'44'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1430'#39', '#39'44016'#39', '#39'Rouina         ' +
+            '          '#39', '#39'44'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1431'#39', '#39'44017'#39', '#39'Zeddine        ' +
+            '          '#39', '#39'44'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1432'#39', '#39'44018'#39', '#39'El Hassania    ' +
+            '          '#39', '#39'44'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1433'#39', '#39'44019'#39', '#39'Bir Ouled Kheli' +
+            'fa        '#39', '#39'44'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1434'#39', '#39'44020'#39', '#39'Ain Soltane    ' +
+            '          '#39', '#39'44'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1435'#39', '#39'44021'#39', '#39'Tarik Ibn Ziad ' +
+            '          '#39', '#39'44'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1436'#39', '#39'44022'#39', '#39'Bordj Emir Khal' +
+            'ed        '#39', '#39'44'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1437'#39', '#39'44023'#39', '#39'Ain Torki      ' +
+            '          '#39', '#39'44'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1438'#39', '#39'44024'#39', '#39'Sidi Lakhdar   ' +
+            '          '#39', '#39'44'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1439'#39', '#39'44025'#39', '#39'Ben Allal      ' +
+            '          '#39', '#39'44'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1440'#39', '#39'44026'#39', '#39'Ain Benian     ' +
+            '          '#39', '#39'44'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1441'#39', '#39'44027'#39', '#39'Hoceinia       ' +
+            '          '#39', '#39'44'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1442'#39', '#39'44028'#39', '#39'Barbouche      ' +
+            '          '#39', '#39'44'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1443'#39', '#39'44029'#39', '#39'Djemaa Ouled Ch' +
+            'ikh       '#39', '#39'44'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1444'#39', '#39'44030'#39', '#39'Mekhatria      ' +
+            '          '#39', '#39'44'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1445'#39', '#39'44031'#39', '#39'Bathia         ' +
+            '          '#39', '#39'44'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1446'#39', '#39'44032'#39', '#39'Tachta Zegagha ' +
+            '          '#39', '#39'44'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1447'#39', '#39'44033'#39', '#39'Ain Bouyahia   ' +
+            '          '#39', '#39'44'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1448'#39', '#39'44034'#39', '#39'El Maine       ' +
+            '          '#39', '#39'44'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1449'#39', '#39'44035'#39', '#39'Tiberkanine    ' +
+            '          '#39', '#39'44'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1450'#39', '#39'44036'#39', '#39'Belaas         ' +
+            '          '#39', '#39'44'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1451'#39', '#39'45001'#39', '#39'Naama          ' +
+            '          '#39', '#39'45'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1452'#39', '#39'45002'#39', '#39'Mechria        ' +
+            '          '#39', '#39'45'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1453'#39', '#39'45003'#39', '#39'Ain Sefra      ' +
+            '          '#39', '#39'45'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1454'#39', '#39'45004'#39', '#39'Tiout          ' +
+            '          '#39', '#39'45'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1455'#39', '#39'45005'#39', '#39'Sfissifa       ' +
+            '          '#39', '#39'45'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1456'#39', '#39'45006'#39', '#39'Moghrar        ' +
+            '          '#39', '#39'45'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1457'#39', '#39'45007'#39', '#39'Assela         ' +
+            '          '#39', '#39'45'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1458'#39', '#39'45008'#39', '#39'Djeniane Bourze' +
+            'g         '#39', '#39'45'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1459'#39', '#39'45009'#39', '#39'Ain Ben Khelil ' +
+            '          '#39', '#39'45'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1460'#39', '#39'45010'#39', '#39'Makman Ben Amer' +
+            '          '#39', '#39'45'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1461'#39', '#39'45011'#39', '#39'Kasdir         ' +
+            '          '#39', '#39'45'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1462'#39', '#39'45012'#39', '#39'El Biod        ' +
+            '          '#39', '#39'45'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1463'#39', '#39'46001'#39', '#39'Ain Temouchent ' +
+            '          '#39', '#39'46'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1464'#39', '#39'46002'#39', '#39'Chaabet El Ham ' +
+            '          '#39', '#39'46'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1465'#39', '#39'46003'#39', '#39'Ain Kihal      ' +
+            '          '#39', '#39'46'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1466'#39', '#39'46004'#39', '#39'Hammam Bouhadja' +
+            'r         '#39', '#39'46'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1467'#39', '#39'46005'#39', '#39'Bou Zedjar     ' +
+            '          '#39', '#39'46'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1468'#39', '#39'46006'#39', '#39'Oued Berkeche  ' +
+            '          '#39', '#39'46'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1469'#39', '#39'46007'#39', '#39'Aghlal         ' +
+            '          '#39', '#39'46'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1470'#39', '#39'46008'#39', '#39'Terga          ' +
+            '          '#39', '#39'46'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1471'#39', '#39'46009'#39', '#39'Ain El Arbaa   ' +
+            '          '#39', '#39'46'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1472'#39', '#39'46010'#39', '#39'Tamzoura       ' +
+            '          '#39', '#39'46'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1473'#39', '#39'46011'#39', '#39'Chentouf       ' +
+            '          '#39', '#39'46'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1474'#39', '#39'46012'#39', '#39'Sidi Ben Adda  ' +
+            '          '#39', '#39'46'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1475'#39', '#39'46013'#39', '#39'Aoubellil      ' +
+            '          '#39', '#39'46'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1476'#39', '#39'46014'#39', '#39'El Malah       ' +
+            '          '#39', '#39'46'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1477'#39', '#39'46015'#39', '#39'Sidi Boumediene' +
+            '          '#39', '#39'46'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1478'#39', '#39'46016'#39', '#39'Oued Sabah     ' +
+            '          '#39', '#39'46'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1479'#39', '#39'46017'#39', '#39'Ouled Boudjemaa' +
+            '          '#39', '#39'46'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1480'#39', '#39'46018'#39', '#39'Ain Tolba      ' +
+            '          '#39', '#39'46'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1481'#39', '#39'46019'#39', '#39'El Amria       ' +
+            '          '#39', '#39'46'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1482'#39', '#39'46020'#39', '#39'Hassi El Ghella' +
+            '          '#39', '#39'46'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1483'#39', '#39'46021'#39', '#39'Hassasna       ' +
+            '          '#39', '#39'46'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1484'#39', '#39'46022'#39', '#39'Ouled Kihal    ' +
+            '          '#39', '#39'46'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1485'#39', '#39'46023'#39', '#39'Beni Saf       ' +
+            '          '#39', '#39'46'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1486'#39', '#39'46024'#39', '#39'Sidi Safi      ' +
+            '          '#39', '#39'46'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1487'#39', '#39'46025'#39', '#39'Oulhaca El Gher' +
+            'aba       '#39', '#39'46'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1488'#39', '#39'46026'#39', '#39'Tadmaya        ' +
+            '          '#39', '#39'46'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1489'#39', '#39'46027'#39', '#39'El Emir Abdelka' +
+            'der       '#39', '#39'46'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1490'#39', '#39'46028'#39', '#39'El Messaid     ' +
+            '          '#39', '#39'46'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1491'#39', '#39'47001'#39', '#39'Ghardaia       ' +
+            '          '#39', '#39'47'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1492'#39', '#39'47002'#39', '#39'El Meniaa      ' +
+            '          '#39', '#39'47'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1493'#39', '#39'47003'#39', '#39'Dhayet Bendhaho' +
+            'ua        '#39', '#39'47'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1494'#39', '#39'47004'#39', '#39'Berriane       ' +
+            '          '#39', '#39'47'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1495'#39', '#39'47005'#39', '#39'Metlili        ' +
+            '          '#39', '#39'47'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1496'#39', '#39'47006'#39', '#39'El Guerrara    ' +
+            '          '#39', '#39'47'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1497'#39', '#39'47007'#39', '#39'El Atteuf      ' +
+            '          '#39', '#39'47'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1498'#39', '#39'47008'#39', '#39'Zelfana        ' +
+            '          '#39', '#39'47'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1499'#39', '#39'47009'#39', '#39'Sebseb         ' +
+            '          '#39', '#39'47'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1500'#39', '#39'47010'#39', '#39'Bounoura       ' +
+            '          '#39', '#39'47'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1501'#39', '#39'47011'#39', '#39'Hassi Fehal    ' +
+            '          '#39', '#39'47'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1502'#39', '#39'47012'#39', '#39'Hassi Gara     ' +
+            '          '#39', '#39'47'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1503'#39', '#39'47013'#39', '#39'Mansoura       ' +
+            '          '#39', '#39'47'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1504'#39', '#39'48001'#39', '#39'Relizane       ' +
+            '          '#39', '#39'48'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1505'#39', '#39'48002'#39', '#39'Oued Rhiou     ' +
+            '          '#39', '#39'48'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1506'#39', '#39'48003'#39', '#39'Belaassel Bouze' +
+            'gza       '#39', '#39'48'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1507'#39', '#39'48004'#39', '#39'Sidi Saada     ' +
+            '          '#39', '#39'48'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1508'#39', '#39'48005'#39', '#39'Ouled Aiche    ' +
+            '          '#39', '#39'48'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1509'#39', '#39'48006'#39', '#39'Sidi Lazreg    ' +
+            '          '#39', '#39'48'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1510'#39', '#39'48007'#39', '#39'El Hamadna     ' +
+            '          '#39', '#39'48'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1511'#39', '#39'48008'#39', '#39'Sidi Mhamed Ben' +
+            ' Ali      '#39', '#39'48'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1512'#39', '#39'48009'#39', '#39'Mediouna       ' +
+            '          '#39', '#39'48'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1513'#39', '#39'48010'#39', '#39'Sidi Khettab   ' +
+            '          '#39', '#39'48'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1514'#39', '#39'48011'#39', '#39'Ammi Moussa    ' +
+            '          '#39', '#39'48'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1515'#39', '#39'48012'#39', '#39'Zemmoura       ' +
+            '          '#39', '#39'48'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1516'#39', '#39'48013'#39', '#39'Beni Dergoun   ' +
+            '          '#39', '#39'48'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1517'#39', '#39'48014'#39', '#39'Djidiouia      ' +
+            '          '#39', '#39'48'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1518'#39', '#39'48015'#39', '#39'El Guettar     ' +
+            '          '#39', '#39'48'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1519'#39', '#39'48016'#39', '#39'Hamri          ' +
+            '          '#39', '#39'48'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1520'#39', '#39'48017'#39', '#39'El Matmar      ' +
+            '          '#39', '#39'48'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1521'#39', '#39'48018'#39', '#39'Sidi Mhamed Ben' +
+            ' Aouda    '#39', '#39'48'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1522'#39', '#39'48019'#39', '#39'Ain Tarek      ' +
+            '          '#39', '#39'48'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1523'#39', '#39'48020'#39', '#39'Oued Essalem   ' +
+            '          '#39', '#39'48'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1524'#39', '#39'48021'#39', '#39'Ouarizane      ' +
+            '          '#39', '#39'48'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1525'#39', '#39'48022'#39', '#39'Mazouna        ' +
+            '          '#39', '#39'48'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1526'#39', '#39'48023'#39', '#39'Kalaa          ' +
+            '          '#39', '#39'48'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1527'#39', '#39'48024'#39', '#39'Ain Rahma      ' +
+            '          '#39', '#39'48'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1528'#39', '#39'48025'#39', '#39'Yellel         ' +
+            '          '#39', '#39'48'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1529'#39', '#39'48026'#39', '#39'Oued El Djemaa ' +
+            '          '#39', '#39'48'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1530'#39', '#39'48027'#39', '#39'Ramka          ' +
+            '          '#39', '#39'48'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1531'#39', '#39'48028'#39', '#39'Mendes         ' +
+            '          '#39', '#39'48'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1532'#39', '#39'48029'#39', '#39'Lahlef         ' +
+            '          '#39', '#39'48'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1533'#39', '#39'48030'#39', '#39'Beni Zentis    ' +
+            '          '#39', '#39'48'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1534'#39', '#39'48031'#39', '#39'Souk El Haad   ' +
+            '          '#39', '#39'48'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1535'#39', '#39'48032'#39', '#39'Dar Ben Abdella' +
+            'h         '#39', '#39'48'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1536'#39', '#39'48033'#39', '#39'El Hassi       ' +
+            '          '#39', '#39'48'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1537'#39', '#39'48034'#39', '#39'Had Echkalla   ' +
+            '          '#39', '#39'48'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1538'#39', '#39'48035'#39', '#39'Bendaoud       ' +
+            '          '#39', '#39'48'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1539'#39', '#39'48036'#39', '#39'El Ouldja      ' +
+            '          '#39', '#39'48'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1540'#39', '#39'48037'#39', '#39'Merdja Sidi Abe' +
+            'd         '#39', '#39'48'#39');'
+          
+            'INSERT INTO "communes" VALUES ('#39'1541'#39', '#39'48038'#39', '#39'Ouled Sidi Miho' +
+            'ub        '#39', '#39'48'#39');'
+          'COMMIT;'
+          ''
+          '-- ----------------------------'
+          '-- Table structure for company'
+          '-- ----------------------------'
+          'CREATE TABLE "company" ('
+          '"code_comp" int4 NOT NULL,'
+          '"nom_comp" varchar(40) COLLATE "default",'
+          '"fix_comp" char(15) COLLATE "default",'
+          '"mob_comp" char(15) COLLATE "default",'
+          '"adr_comp" varchar(60) COLLATE "default",'
+          '"logo_comp" bytea'
+          ')'
+          'WITH (OIDS=FALSE)'
+          ''
+          ';'
+          ''
+          '-- ----------------------------'
+          '-- Records of company'
+          '-- ----------------------------'
+          'BEGIN;'
+          
+            'INSERT INTO "company" VALUES ('#39'1'#39', '#39'DIGITAL Company'#39', '#39'0661-45-8' +
+            '1-97  '#39', '#39'000            '#39', '#39'Alger'#39', E'#39'\\377\\330\\377\\340\\000' +
+            '\\020JFIF\\000\\001\\001\\000\\000\\001\\000\\001\\000\\000\\377' +
+            '\\333\\000C\\000\\020\\013\\014\\016\\014\\012\\020\\016\\015\\0' +
+            '16\\022\\021\\020\\023\\030(\\032\\030\\026\\026\\0301#%\\035(:3' +
+            '=<9387@H\\\\N@DWE78PmQW_bghg>Mqypdx\\\\egc\\377\\333\\000C\\001\' +
+            '\021\\022\\022\\030\\025\\030/\\032\\032/cB8Bccccccccccccccccccc' +
+            'ccccccccccccccccccccccccccccccc\\377\\300\\000\\021\\010\\000Z\\' +
+            '001,\\003\\001"\\000\\002\\021\\001\\003\\021\\001\\377\\304\\00' +
+            '0\\037\\000\\000\\001\\005\\001\\001\\001\\001\\001\\001\\000\\0' +
+            '00\\000\\000\\000\\000\\000\\000\\001\\002\\003\\004\\005\\006\\' +
+            '007\\010\\011\\012\\013\\377\\304\\000\\265\\020\\000\\002\\001\' +
+            '\003\\003\\002\\004\\003\\005\\005\\004\\004\\000\\000\\001}\\00' +
+            '1\\002\\003\\000\\004\\021\\005\\022!1A\\006\\023Qa\\007"q\\0242' +
+            '\\201\\221\\241\\010#B\\261\\301\\025R\\321\\360$3br\\202\\011\\' +
+            '012\\026\\027\\030\\031\\032%&'#39#39'()*456789:CDEFGHIJSTUVWXYZcdefgh'
+          
+            'ijstuvwxyz\\203\\204\\205\\206\\207\\210\\211\\212\\222\\223\\22' +
+            '4\\225\\226\\227\\230\\231\\232\\242\\243\\244\\245\\246\\247\\2' +
+            '50\\251\\252\\262\\263\\264\\265\\266\\267\\270\\271\\272\\302\\' +
+            '303\\304\\305\\306\\307\\310\\311\\312\\322\\323\\324\\325\\326\' +
+            '\327\\330\\331\\332\\341\\342\\343\\344\\345\\346\\347\\350\\351' +
+            '\\352\\361\\362\\363\\364\\365\\366\\367\\370\\371\\372\\377\\30' +
+            '4\\000\\037\\001\\000\\003\\001\\001\\001\\001\\001\\001\\001\\0' +
+            '01\\001\\000\\000\\000\\000\\000\\000\\001\\002\\003\\004\\005\\' +
+            '006\\007\\010\\011\\012\\013\\377\\304\\000\\265\\021\\000\\002\' +
+            '\001\\002\\004\\004\\003\\004\\007\\005\\004\\004\\000\\001\\002' +
+            'w\\000\\001\\002\\003\\021\\004\\005!1\\006\\022AQ\\007aq\\023"2' +
+            '\\201\\010\\024B\\221\\241\\261\\301\\011#3R\\360\\025br\\321\\0' +
+            '12\\026$4\\341%\\361\\027\\030\\031\\032&'#39#39'()*56789:CDEFGHIJSTUV' +
+            'WXYZcdefghijstuvwxyz\\202\\203\\204\\205\\206\\207\\210\\211\\21' +
+            '2\\222\\223\\224\\225\\226\\227\\230\\231\\232\\242\\243\\244\\2' +
+            '45\\246\\247\\250\\251\\252\\262\\263\\264\\265\\266\\267\\270\\'
+          
+            '271\\272\\302\\303\\304\\305\\306\\307\\310\\311\\312\\322\\323\' +
+            '\324\\325\\326\\327\\330\\331\\332\\342\\343\\344\\345\\346\\347' +
+            '\\350\\351\\352\\362\\363\\364\\365\\366\\367\\370\\371\\372\\37' +
+            '7\\332\\000\\014\\003\\001\\000\\002\\021\\003\\021\\000?\\000\\' +
+            '364\\012(\\254_\\024\\337\\\\\\351\\372lr\\332I\\345\\271\\230);' +
+            'A\\343\\004\\367\\372UF<\\316\\310\\231IE]\\233TW\\235\\177\\302' +
+            'O\\254\\177\\317\\347\\376BO\\360\\243\\376\\022}c\\376\\177?\\3' +
+            '62\\022\\177\\205m\\365i\\230}j\\035\\231\\350\\265\\034\\323G\\' +
+            '002n\\221\\266\\214\\3438\\315y\\367\\374$\\372\\307\\374\\376\\' +
+            '177\\344$\\377\\000\\012\\325\\322u;\\315J\\326\\347\\355\\223y\' +
+            '\236[\\307\\267\\345\\003\\031\\015\\236\\203\\330VU\\351\\316\\' +
+            '2257>\\305F\\274d\\354\\216\\2669c\\224f7V\\372\\036\\224\\372\\' +
+            '346\\243\\221\\343p\\350\\305Xw\\025\\271et.\\242\\3160\\353\\30' +
+            '3\\012\\342\\241\\211U4z3d\\313\\004\\205\\004\\222\\000\\034\\2' +
+            '22j\\030\\257 \\225w\\011\\024{1\\301\\025\\026\\247?\\225m\\260' +
+            '}\\3518\\374;\\377\\000\\237z\\304\\251\\257\\211t\\345\\312\\20'
+          
+            '1\\263\\244\\216D\\223&6\\014\\001\\301#\\245>\\251\\351\\2214v\' +
+            '\203w\\361\\235\\337\\205ZwX\\321\\235\\330*\\250\\311bp\\000\\3' +
+            '65\\256\\232m\\312)\\261\\216\\242\\271MO\\306+\\033\\354\\323cY' +
+            '@\\306e\\220\\020\\017\\260\\034\\037\\306\\260'#39#39'\\327\\265[\\20' +
+            '0\\241\\357e\\033zyxO\\375\\007\\031\\256\\250\\341\\346\\367\\3' +
+            '20\\347\\226"\\021\\321jzU\\025\\345\\377\\000\\332\\272\\217\\3' +
+            '74\\377\\000\\335\\177\\337\\346\\377\\000\\032\\222\\035oS\\201' +
+            '\\367\\245\\364\\344\\343\\037;o\\037\\221\\310\\253\\372\\264\\' +
+            '273\\223\\365\\250\\366=2\\212\\345\\374-\\255\\336\\352\\027\\2' +
+            '22[]\\272H\\0263 }\\2407P1\\307\\030\\347\\322\\272\\212\\347\\2' +
+            '34\\034\\035\\231\\274&\\246\\256\\202\\212\\342\\374A\\256\\352' +
+            'Vz\\315\\305\\275\\275\\316\\310\\223n\\325\\330\\247\\031P{\\21' +
+            '7z<?\\256\\352W\\232\\315\\275\\275\\305\\316\\370\\237v\\345\\3' +
+            '30\\2438R{\\017j\\323\\330K\\227\\230\\317\\333\\307\\233\\224\\' +
+            '355(\\2563\\304\\032\\356\\245g\\254\\317ooq\\262$\\333\\205\\33' +
+            '0\\247\\252\\203\\334{\\326o\\374$\\372\\307\\374\\376\\177\\344'
+          
+            '$\\377\\000\\012k\\017&\\256)b"\\235\\217E\\242\\274\\353\\376\\' +
+            '022}c\\376\\177?\\362\\022\\177\\205/\\374$\\372\\307\\374\\376\' +
+            '\177\\344$\\377\\000\\012\\177V\\230\\276\\265\\016\\314\\364J+\' +
+            '\316\\277\\341'#39#39'\\326?\\347\\363\\377\\000!'#39#39'\\370WG\\341-N\\363' +
+            'R\\373_\\333&\\363<\\275\\233~P1\\235\\331\\350=\\205L\\350J*\\3' +
+            '54\\250W\\214\\345\\312\\216\\212\\212+\\235\\361\\206\\246mlE\\' +
+            '244L\\004\\267\\031\\335\\352\\023\\277\\347\\323\\363\\254\\341' +
+            '\\027'#39#39'dk9(\\306\\354\\226\\353\\305\\232e\\274\\30652\\317\\216' +
+            '\\255\\022\\202\\271\\372\\2223\\370qQ\\177\\302g\\247\\177\\317' +
+            '\\033\\257\\373\\345\\177\\370\\252\\341\\250\\256\\337\\253\\30' +
+            '0\\341\\372\\314\\317V\\266\\231nm\\242\\235\\001\\013*\\007\\00' +
+            '0\\365\\301\\031\\251k3\\303\\2235\\306\\203h\\354\\000!6q\\350\' +
+            '\244\\250\\376U\\247\\\\2Vm\\035\\321wI\\205\\025\\302\\352\\276' +
+            '"\\324\\341\\325.b\\202\\347lq\\310\\312\\243\\313S\\214\\034w\\' +
+            '025\\177\\302\\332\\305\\376\\241\\251I\\025\\334\\376b,%\\200\\' +
+            '330\\243\\234\\201\\330{\\326\\256\\204\\224y\\214\\225x\\271r\\'
+          
+            '235]U\\276\\277\\206\\305CJ\\035\\276R\\344"\\347\\0121\\223\\37' +
+            '1\\221\\371\\372d\\213U^\\346\\321.A\\334J\\266\\302\\233\\200\\' +
+            '007\\345$d`\\202\\016p:\\212\\311Z\\372\\233;\\333A\\366\\363-\\' +
+            '304BE\\004rT\\203\\324\\020pG\\340A\\025-28\\3265\\332\\212\\024' +
+            'd\\236=O$\\376t\\372Lh+\\226\\361\\324\\305m\\255!\\354\\356\\31' +
+            '6\\177\\000\\007\\376\\315]Mr><\\377\\000\\227\\037\\373i\\377\\' +
+            '000\\262\\326\\264\\177\\210\\214k\\377\\000\\015\\234\\326\\235' +
+            '\\022O\\251Z\\305 \\334\\222L\\212\\3038\\310$\\003]\\340\\360\\' +
+            '316\\216\\016~\\307\\377\\000\\221\\037\\374k\\206\\322?\\3441e\' +
+            '\377\\000_\\021\\377\\000\\350B\\275B\\266\\304I\\246\\254\\314p' +
+            '\\321\\213N\\350\\311>\\032\\322\\030\\344\\331\\217\\302F\\037\' +
+            '\326\\241:$:ts\\033%\\220\\211\\235IO\\275\\267\\033\\272w\\307=' +
+            '\\353r\\212\\344\\250\\345887\\271\\323\\354\\342\\265H\\347~\\3' +
+            '15?\\374\\361\\223\\376\\3715oMI\\242\\272\\033\\242p\\254\\010$' +
+            '\\251\\000W'#39#39'\\254\\335j\\026:\\265\\315\\272\\337\\334\\205W\\3' +
+            '12\\201;\\234)\\344\\016O\\241\\025\\247\\340\\355B\\356\\343Q\\'
+          
+            '232\\031\\356%\\231\\014[\\377\\000x\\305\\260A\\003\\214\\375Md' +
+            '\\262\\357gj\\212[\\030\\306\\262s\\345\\261\\326\\313\\345\\210' +
+            '\\230\\315\\264F\\006X\\277@\\007sYR\\352Z\\035\\243\\2077\\020\' +
+            '\026l\\343a2c\\362\\316+\\007\\306\\267\\246[\\350\\354\\325\\37' +
+            '7\\000w\\012\\356`3\\367\\217\\257\\341\\217\\314\\3266\\221i\\3' +
+            '66\\375R\\336\\330\\375\\327\\177\\233\\234|\\243\\223\\372\\003' +
+            ']\\261\\303BQ\\347\\230\\247]\\251r\\305\\036\\232\\214\\035\\02' +
+            '5\\206@a\\221\\220A\\374\\217J\\342<W\\254\\275\\315\\323\\330@\' +
+            '\344[\\304p\\370\\343{\\016\\271\\366\\007\\365\\347\\322\\272\\' +
+            '315b\\354\\330\\351W7\\012HeL)\\000\\0341\\340\\036}\\310\\2571\' +
+            '\252\\303\\3017\\314\\305\\211\\233K\\225\\026,,g\\324.\\226\\33' +
+            '6\\3317;rI\\350\\243\\324\\373Wgc\\341+\\010"\\377\\000J\\015s!\' +
+            '\352I*\\007\\320\\003\\374\\363\\322\\235\\341\\013\\001i\\245\\' +
+            '011\\330\\021-\\311\\334r1\\205\\037w\\372\\237\\306\\267\\251U\' +
+            '\254\\333\\264GF\\214To-\\312\\177\\331Zw\\374\\370Z\\377\\000\\' +
+            '337\\225\\377\\000\\012\\212}\\013K\\270\\000=\\214C\\035<\\261\'
+          
+            '\263\\377\\000A\\305h\\321XsK\\271\\321\\313\\027\\320\\311\\323' +
+            '\\264\\013m2\\375\\356m^@\\035\\031Llr\\006H#\\007\\333\\035\\36' +
+            '3Z\\324QI\\311\\313V8\\305EY\\036u\\342\\257\\371\\030n\\277\\34' +
+            '0\\037\\372\\002\\325\\237\\005\\304\\222kE\\230d\\307\\0132\\37' +
+            '3\\034\\201\\374\\211\\252\\336*\\377\\000\\221\\206\\353\\376\\' +
+            '001\\377\\000\\240-\\\\\\360G\\374\\206&\\377\\000\\257s\\377\\0' +
+            '00\\241-w\\277\\340\\374\\217=\\177\\033\\346u\\027z\\026\\233yp' +
+            '\\367\\027\\026\\333\\345|nm\\3543\\201\\216\\307\\332\\241\\377' +
+            '\\000\\204cG\\377\\000\\237?\\374\\212\\377\\000\\343Z\\364W\\01' +
+            '7<\\227S\\271\\323\\213\\350y\\246\\275o\\005\\246\\261q\\005\\2' +
+            '52\\355\\211\\012\\2002N>Q\\236\\276\\371\\255/\\011ivz\\221\\27' +
+            '3\\373d^g\\227\\263o\\314F3\\234\\364>\\325\\223\\2541mf\\364\\2' +
+            '37\\371\\356\\343\\377\\000\\0365\\320\\370\\017\\376_\\277\\355' +
+            '\\237\\376\\315]\\325\\033T\\256p\\323I\\325\\265\\273\\232\\377' +
+            '\\000\\360\\214h\\377\\000\\363\\347\\377\\000\\221_\\374j\\335\' +
+            '\206\\231g\\246\\371\\237c\\207\\313\\3631\\273\\346'#39#39'8\\316:\\2'
+          
+            '37sW(\\256\\0279=\\033;\\324"\\235\\322\\032\\356\\261\\243;\\26' +
+            '0UQ\\222\\304\\340\\001\\353^g\\254_\\266\\245\\251MrI\\330N#\\0' +
+            '07\\262\\216\\237O_\\2515\\326\\370\\307Q\\3736\\236-c|Kq\\303c\' +
+            '\250N\\377\\000\\237O\\246k\\205\\256\\274<,\\271\\231\\307\\211' +
+            '\\235\\337*4\\374?\\246.\\253\\250\\3712\\022"E.\\344\\034\\034t' +
+            '\\000~$~\\031\\254\\312\\357|!a\\366]+\\317`D\\227'#39#39'q\\316G\\312' +
+            '>\\357\\365?\\215cHt\\015"F1\\251\\324\\247\\311\\332\\244\\217-' +
+            '\\007\\246z\\036\\017\\277#\\265R\\253y4\\265!\\322\\264\\023z\\' +
+            '032\\376\\012g:3\\206$\\2013\\005\\317a\\201\\323\\361\\315t\\02' +
+            '5\\313h\\232\\205\\316\\277u"\\335\\\\\\230\\022\\025\\014!\\267' +
+            '%7\\365\\311'#39#39';\\2608\\340\\036\\342\\272Xa\\212\\005"(\\325\\00' +
+            '3\\035\\315\\201\\367\\217\\251\\365>\\365\\313UZN\\373\\235\\22' +
+            '4\\235\\342\\255\\261\\346z\\277\\374\\206/\\177\\353\\342O\\375' +
+            '\\010\\326\\377\\000\\201bS=\\344\\307\\357*\\252\\217\\241$\\23' +
+            '7\\375\\004V\\006\\257\\377\\000!\\213\\337\\372\\370\\223\\377\' +
+            '\000B5\\321x\\017\\376_\\277\\355\\237\\376\\315]u\\177\\204q\\3'
+          
+            '22\\376)\\327QE\\025\\347\\236\\210QE\\024\\000W#\\343\\317\\371' +
+            'q\\377\\000\\266\\237\\373-u\\325\\307\\370\\356E2\\331F\\017\\3' +
+            '16\\252\\354G\\261\\306?\\221\\255\\250\\177\\021\\030\\342?\\20' +
+            '6\\316\\177H\\377\\000\\220\\305\\227\\375|G\\377\\000\\241\\012' +
+            '\\365\\012\\363\\237\\013\\250o\\020\\332\\206\\000\\214\\261\\3' +
+            '74\\224\\232\\364j\\274K\\367\\2223\\302\\257u\\260\\242\\212\\2' +
+            '53\\251_E\\247YIs1\\037(\\371T\\234on\\300}k\\235+\\273#\\245\\2' +
+            '64\\225\\331\\301x\\226T\\233_\\273h\\316@`\\275;\\205\\000\\376' +
+            '\\240\\325\\357\\004\\177\\310b_\\372\\367?\\372\\022\\327?,\\21' +
+            '74\\257$\\214Y\\335\\2131=\\311\\353]6\\200\\206\\313\\303z\\235' +
+            '\\363;G\\346)H\\316\\010\\344\\002\\001\\007\\375\\346\\307\\266' +
+            '+\\320\\250\\255O\\227\\344y\\324\\335\\352s|\\314\\035N\\354\\3' +
+            '37j7\\027$\\222$rW \\002\\027\\240\\034{b\\267|\\021g\\276\\352{' +
+            '\\306^#]\\211\\225\\356z\\220}@\\037\\370\\365s\\025\\350\\036\\' +
+            '020\\205b\\320cu'#39#39'3;;g\\261\\316\\336?\\005\\024\\253>ZvC\\240\\' +
+            '271\\252]\\221x\\322W\\217EUS\\201$\\312\\255\\3560O\\363\\002\\'
+          
+            '270J\\364\\275f\\324j62X\\254\\210\\222\\311\\206\\033\\273\\000' +
+            '\\303'#39#39'\\037\\347\\255y\\335\\362\\304\\227\\263$\\0301#\\225B\\' +
+            '016w\\001\\3009\\367\\353\\351\\315N\\035\\256[\\025\\211\\213\\' +
+            '346\\271\\351\\266Q\\25466\\361#nT\\215T7\\250\\003\\255OY\\236\' +
+            '\035\\271[\\255\\022\\325\\227\\000\\242\\010\\330\\006\\316\\01' +
+            '2\\361\\317\\324\\000\\177\\032\\323\\2569+6\\231\\333\\027x\\24' +
+            '6\\216/\\306\\026\\323\\334\\3531\\010 \\222R-\\306B!o\\342oJ\\3' +
+            '47\\247\\264\\270\\266\\333\\366\\213ya\\335\\367|\\304+\\237\\2' +
+            '46k\\325k\\217\\361\\333\\251\\222\\3120~e\\016\\307\\350q\\217\' +
+            '\344k\\246\\215V\\332\\205\\216Z\\364RNw1\\3747\\022\\315\\257Z#' +
+            '\\214\\200\\305\\277\\025\\004\\217\\324W\\244W\\235\\370W\\376F' +
+            '+_\\370\\037\\376\\200k\\321*q?\\022/\\013\\3603\\315|A7\\3325\\' +
+            '313\\307\\3061!O\\373\\347\\345\\376\\225\\245\\340p\\177\\265\\' +
+            '246lp #?\\360%\\254}_\\376C\\027\\277\\365\\361'#39#39'\\376\\204k\\24' +
+            '2\\360 \\031\\2768\\344y|\\377\\000\\337U\\275M)\\034\\364\\365\' +
+            '\252u\\324QEy\\347\\242y~\\257\\377\\000!\\213\\337\\372\\370\\2'
+          
+            '23\\377\\000B5\\321\\370\\014q|{~\\357\\377\\000f\\256kSu\\227S\' +
+            '\273\\221\\016U\\246v\\007\\330\\261\\256\\273\\300\\352\\006\\2' +
+            '253c\\2239\\037\\370\\352\\377\\000\\215w\\326\\322\\221\\347\\3' +
+            '21\\326\\251\\322RR\\326\\027\\213\\265\\017\\261\\351f\\0048\\2' +
+            '26\\347(=\\227\\370\\217\\364\\374}\\253\\2121rvGt\\244\\242\\23' +
+            '3g!\\256j\\007R\\325%\\2346c\\007d|\\177\\010\\351\\371\\365\\37' +
+            '4j\\212\\005.\\241\\311\\013\\236H\\031 })*Kx%\\272\\235 \\201\\' +
+            '014\\2229\\302\\250\\357^\\232J*\\307\\224\\333\\223\\271\\273>\' +
+            '\247\\177\\257]\\013\\0155\\014\\026\\335\\025\\027\\345\\302c\\' +
+            '031b;{t\\3509\\342\\260\\256akk\\231`r\\013D\\345\\011\\035\\011' +
+            '\\007\\025\\350\\3726\\227\\026\\225d\\261"\\2175\\2002\\277]\\3' +
+            '15\\365\\364\\364\\256+\\305*\\027\\3047A@\\003*x\\377\\000tV\\0' +
+            '24\\246\\234\\234b\\264:*\\323j*Rz\\226|\\027*G\\255\\025c\\203,' +
+            'L\\253\\356r\\017\\362\\006\\273\\312\\363O\\017\\316m\\365\\313' +
+            '7\\013\\2732\\004\\307\\373\\337/\\365\\257K\\254q+\\336\\271\\2' +
+            '66\\031\\336\\026<\\277W\\377\\000\\220\\305\\357\\375|I\\377\\0'
+          
+            '00\\241\\032\\350\\374\\006\\016/\\217c\\345\\217\\375\\012\\271' +
+            '9\\035\\245\\221\\244rK1$\\223\\334\\232\\355\\274\\020\\007\\36' +
+            '6D\\307\\034\\371\\347\\377\\000AZ\\336\\266\\224\\354s\\320\\32' +
+            '6\\255\\316\\216\\212(\\256\\003\\321\\012(\\242\\200\\012\\341\' +
+            '\274o\\377\\000!\\210\\277\\353\\334\\177\\350M]\\315s~"\\320.\\' +
+            '365[\\364\\236\\007\\201Qc\\011\\363\\261\\311\\344\\236\\303\\3' +
+            '36\\266\\243%\\031\\335\\230\\327\\213\\224,\\216[E\\275\\217O\\' +
+            '325a\\272\\231Y\\222=\\331\\010\\001<\\251\\035\\376\\265\\325\\' +
+            '177\\302g\\247\\177\\317\\033\\257\\373\\345\\177\\370\\252\\311' +
+            '\\377\\000\\2043Q\\377\\000\\236\\326\\277\\367\\323\\177\\3614\' +
+            '\177\\302\\031\\250\\377\\000\\317k_\\373\\351\\277\\370\\232\\3' +
+            '50\\237\\262\\233\\273g4=\\264\\025\\2224\\247\\361\\245\\252\\2' +
+            '50\\373=\\244\\322\\034\\362$!1\\371f\\271\\215ST\\271\\325g\\02' +
+            '2\\334\\260\\371F\\025\\027\\205_\\240\\255_\\370C5\\037\\371\\3' +
+            '55k\\377\\000}7\\377\\000\\023ZV\\276\\014\\266\\216M\\3277O2\\2' +
+            '02\\010U]\\200\\375y?\\246))Q\\247\\252\\034\\243Z\\246\\214\\34'
+          
+            '6t\\235*}V\\353\\312\\207\\345E\\346I\\010\\341\\007\\370\\372\\' +
+            '012\\354|Eo\\025\\257\\205\\247\\202\\004\\011\\032\\004\\012\\2' +
+            '43\\375\\361Z\\326\\266\\260Y\\302"\\266\\211bA\\331G^\\331>\\24' +
+            '7\\216\\264\\351\\242I\\341\\222\\031\\006RE*\\303=A\\0305\\214\' +
+            '\353sI>\\210\\332\\024yb\\327VyEt\\272_\\212#\\323\\364t\\266\\3' +
+            '733<\\361\\222\\027\\220\\024\\202s\\223\\371\\372~5F\\363\\303z' +
+            '\\225\\275\\337\\223\\034\\015:1\\302H\\203\\202=\\377\\000\\273' +
+            '\\370\\326\\336\\213\\3414\\207\\023\\352ad~\\012\\304\\016T\\17' +
+            '7\\275\\352}\\272}s]5'#39#39'M\\307S\\232\\234*)i\\2417\\207 \\277\\27' +
+            '2\\274\\223X\\277ly\\321\\354\\2151\\3749\\007 v\\034q\\353\\234' +
+            '\\373\\236o\\304\\032SiW\\345W\\375D\\271h\\210\\317\\003?w\\236' +
+            '\\343\\374+\\321\\352+\\213x\\256\\240x'#39#39'A$n0\\312{\\3274k5+\\36' +
+            '4:\\245AJ6\\352y\\306\\221\\253\\334i3\\357\\204\\356\\215\\210\' +
+            '\363#=\\030\\177C\\357]u\\257\\213t\\331\\2233\\231-\\330\\001\\' +
+            '220\\312X\\023\\337\\004g\\365\\305R\\277\\360b33\\330\\\\l\\317' +
+            'H\\345\\031\\035\\177\\275\\327\\030\\366?Z\\312\\237\\302z\\254'
+          
+            'D\\004\\2169\\201\\035c\\220\\014\\177\\337X\\255\\245\\354\\252' +
+            'j\\331\\204}\\265-\\022:\\206\\361F\\220\\252H\\272,@\\316\\004m' +
+            '\\223\\371\\212\\344|E\\251\\303\\252\\337\\307=\\272\\310\\250\' +
+            '\261\\004!\\300\\0079'#39#39'\\261>\\264\\357\\370F5\\217\\371\\363\\3' +
+            '77\\000\\310\\251\\3765f?\\007\\352O\\030f{x\\311\\352\\254\\347' +
+            '#\\362\\004S\\214iA\\3351NUj+4G\\340\\370|\\315u\\037\\376y#?\\3' +
+            '51\\217\\353]\\375`h\\036\\035}&\\344\\334Ir\\262;G\\260\\242\\2' +
+            '46\\000$\\203\\327<\\364\\364\\255\\372\\347\\255%)]\\0354 \\341' +
+            '\\0133\\3135\\031R}F\\352h\\316RI\\235\\224\\373\\022H\\256\\227' +
+            '\\300\\177\\362\\375\\377\\000l\\377\\000\\366j\\251\\377\\000\\' +
+            '010f\\243\\377\\000=\\255\\177\\357\\246\\377\\000\\342ks\\303Z5' +
+            '\\306\\221\\366\\237\\264<M\\346\\355\\333\\345\\222zg\\256@\\36' +
+            '5\\255\\352\\316\\016\\015&s\\322\\2475Q6\\215\\332(\\244\\256#\' +
+            '\270\\362Z\\356<\\021\\377\\000 y\\277\\353\\340\\377\\000\\350+' +
+            'Y?\\360\\206j?\\363\\332\\327\\376\\372o\\376&\\272?\\016i\\223i' +
+            'V\\017\\005\\303F\\314\\322\\227\\005\\011#\\030\\003\\270\\036\'
+          
+            '\225\\333Z\\244e\\013&p\\320\\247(\\316\\355\\032\\265\\346\\332' +
+            '\\366\\243\\375\\247\\252K2\\234\\304\\277$\\177\\356\\216\\375;' +
+            '\\362y\\365\\256\\367W\\202\\346\\353N\\226\\336\\321\\243Y%\\03' +
+            '3K9\\300\\012z\\366=\\270\\374k\\223\\377\\000\\2043Q\\377\\000\' +
+            '\236\\326\\277\\367\\323\\177\\3615\\235\\007\\030\\353&i\\210S\' +
+            '\225\\243\\024s\\265\\336xWG:}\\247\\332gV[\\231\\307*\\303\\005' +
+            '\\027\\260\\374x'#39#39'\\360\\364\\252\\032W\\204f\\202\\3769o\\236\\' +
+            '011!Nv)'#39#39'q\\355\\234\\201\\307\\177\\302\\272\\332u\\352\\246\\2' +
+            '71b*\\024Z|\\322\\026\\270/\\031\\302\\261\\353a\\3279\\226%v\\3' +
+            '72\\362?\\220\\025\\336\\327=\\342?\\017\\317\\252\\335E=\\264\\' +
+            '221\\253*la!#\\276F0\\017\\251\\254\\350\\311Fwf\\265\\342\\345\' +
+            '\013#\\210\\206W\\202x\\346\\214\\341\\343`\\312}\\0109\\025\\35' +
+            '2\\365\\303\\377\\000\\302\\031\\250\\377\\000\\317k_\\373\\351\' +
+            '\277\\370\\232\\352\\305\\244\\303C\\026a\\324L-\\274\\255\\3318' +
+            '\\335\\267\\031\\317\\326\\264\\257(\\312\\326fXx\\312\\027\\272' +
+            '<\\312\\272?\\016\\370\\202\\323J\\260x.#\\231\\231\\245.\\012\\'
+          
+            '000F0\\007r=)?\\341\\014\\324\\177\\347\\265\\257\\375\\364\\337' +
+            '\\374M\\037\\360\\206j?\\363\\332\\327\\376\\372o\\376&\\266\\22' +
+            '4\\351\\311Y\\263\\030B\\244\\035\\3225\\377\\000\\3413\\323\\27' +
+            '7\\347\\215\\327\\375\\362\\277\\374U'#39#39'\\374&zw\\374\\361\\272\\' +
+            '377\\000\\276W\\377\\000\\212\\254\\237\\370C5\\037\\371\\355k\\' +
+            '377\\000}7\\377\\000\\023G\\374!\\232\\217\\374\\366\\265\\377\\' +
+            '000\\276\\233\\377\\000\\211\\254\\271(\\3675\\347\\257\\330\\35' +
+            '44\\373\\330\\365\\013(\\356\\241WT\\2238\\016\\000<\\022?\\245Y' +
+            '\\252\\032-\\224\\232~\\225\\015\\254\\314\\214\\361\\356\\311BH' +
+            '\\345\\211\\376\\265~\\271ek\\273\\035Q\\275\\225\\302\\251\\337' +
+            'm\\217\\022\\313\\250\\275\\242}\\336\\261\\205'#39#39'\\352\\312y\\37' +
+            '7\\000\\012\\271X/\\022\\336x\\265\\343\\275\\214<p[\\206\\201\\' +
+            '030eNH\\313c8\\316r:v\\036\\225PWb\\233\\262-\\3322^\\241{]fy@\\' +
+            '353\\264E\\221\\365\\0332*\\177\\261\\317\\377\\000A+\\257\\373\' +
+            '\346/\\376"\\255**\\226*\\240\\0269b\\007S\\214d\\376\\000S\\251' +
+            '9v\\032\\217r\\237\\330\\347\\377\\000\\240\\225\\327\\375\\363\'
+          
+            '\027\\377\\000\\021G\\330\\347\\377\\000\\240\\225\\327\\375\\36' +
+            '3\\027\\377\\000\\021W(\\245\\314\\303\\225\\024\\376\\307?\\375' +
+            '\\004\\256\\277\\357\\230\\277\\370\\212\\253\\347\\301\\366\\25' +
+            '7\\263\\177n\\311\\347g\\0333\\016s\\234c\\356u\\317n\\265cZ\\22' +
+            '6ht{\\271-\\3012,G\\030m\\245}H>\\303'#39#39'\\360\\254\\323ch<\\033\\' +
+            '264\\302\\230\\3737\\237\\357\\346l\\316\\354\\372\\347\\364\\34' +
+            '3\\245i\\035U\\331\\022\\321\\331\\032\\237c\\237\\376\\202W_\\3' +
+            '67\\314_\\374E\\037c\\237\\376\\202W_\\367\\314_\\374E\\032D\\22' +
+            '2K\\244\\332<\\331\\336\\320\\251$\\266I\\343\\251>\\247\\255\\\' +
+            '\\\250m\\247b\\322M\\\\\\247\\3669\\377\\000\\350%u\\377\\000|\\' +
+            '305\\377\\000\\304Q\\3669\\377\\000\\350%u\\377\\000|\\305\\377\' +
+            '\000\\304U\\312)s0\\345E\\011`x#2M\\253\\\\F\\203\\2538\\210\\00' +
+            '1\\370\\354\\244h\\312A\\347\\276\\2612\\303\\200|\\303\\344\\20' +
+            '5\\301\\350s\\262\\253\\370\\2372i\\211j\\277z\\356x\\341\\014z)' +
+            #39#39'9\\375+\\006\\346y\\256\\264\\205\\322L\\207\\314\\263\\363~\\' +
+            '320\\313\\323lC\\345\\343\\214\\203\\300\\311\\356+hC\\231\\\\\\'
+          
+            '312s\\345m\\035J[K"+\\246\\251r\\312\\303!\\200\\210\\202=~\\345' +
+            '/\\330\\347\\377\\000\\240\\225\\327\\375\\363\\027\\377\\000\\0' +
+            '21F\\221\\377\\000 {/\\372\\367\\217\\377\\000A\\025r\\262n\\316' +
+            '\\306\\251]\\\\\\247\\3669\\377\\000\\350%u\\377\\000|\\305\\377' +
+            '\\000\\304Q\\3669\\377\\000\\350%u\\377\\000|\\305\\377\\000\\30' +
+            '4U\\312)s0\\345E\\011\\241kx\\232Y\\265k\\210\\343^\\254\\302 \\' +
+            '007\\3769Q\\332\\024\\275B\\326\\272\\314\\322\\201\\327h\\213#\' +
+            '\3526qQ\\370\\253\\376E\\333\\257\\370\\007\\376\\206\\264\\315>' +
+            '\\336\\362]rMB\\346\\311-\\001\\267\\362\\266\\211\\003\\227;\\2' +
+            '63\\236=\\2069\\366\\255\\022\\367o\\376D7\\357r\\377\\000\\231{' +
+            '\\354s\\377\\000\\320J\\353\\376\\371\\213\\377\\000\\210\\243\\' +
+            '354s\\377\\000\\320J\\353\\376\\371\\213\\377\\000\\210\\253\\22' +
+            '4V|\\314\\276TS\\373\\034\\377\\000\\364\\022\\272\\377\\000\\27' +
+            '6b\\377\\000\\342(\\373\\034\\377\\000\\364\\022\\272\\377\\000\' +
+            '\276b\\377\\000\\342*\\345\\024s0\\345E\\017!\\374\\357'#39#39'\\373Z\' +
+            '\343\\315\\333\\273f"\\335\\216\\231\\306\\316\\224\\377\\000\\2'
+          
+            '61\\317\\377\\000A+\\257\\373\\346/\\376"\\271'#39#39'\\273\\377\\000\' +
+            '\211\\241\\326V\\033\\234\\013\\257\\365\\313\\027\\356\\214\\03' +
+            '0\\331\\337\\235\\306\\273\\232\\322qq\\261\\020\\222\\235\\312\' +
+            '\177c\\237\\376\\202W_\\367\\314_\\374E\\037c\\237\\376\\202W_\\' +
+            '367\\314_\\374E\\\\\\242\\263\\346e\\362\\242\\237\\330\\347\\37' +
+            '7\\000\\240\\225\\327\\375\\363\\027\\377\\000\\021L\\222\\007\\' +
+            '213o\\233\\253\\\\&\\366\\012\\273\\204Cq=\\000\\371:\\325\\372\' +
+            '\303\\361\\\\\\002\\346\\322\\312\\002\\333D\\267\\210\\204\\216' +
+            '\\331\\014*\\243\\253\\2613\\367U\\321u\\240t\\221#mZ\\341^L\\35' +
+            '4R"\\005\\261\\327\\003g4\\377\\000\\261\\317\\377\\000A+\\257\\' +
+            '373\\346/\\376"\\260-/%\\233\\\\\\322\\355.\\306.\\254\\332h\\34' +
+            '4<\\374\\343`\\332\\334\\372\\343\\372\\367\\256\\256\\234\\323\' +
+            '\215\\205\\006\\245r\\237\\330\\347\\377\\000\\240\\225\\327\\37' +
+            '5\\363\\027\\377\\000\\021G\\330\\347\\377\\000\\240\\225\\327\\' +
+            '375\\363\\027\\377\\000\\021W(\\250\\346e\\362\\242\\237\\330\\3' +
+            '47\\377\\000\\240\\225\\327\\375\\363\\027\\377\\000\\021LX\\035'
+          
+            '\\344x\\327V\\270g\\217\\033\\324\\010\\211\\\\\\364\\310\\331\\' +
+            '305_\\256w\\304\\020\\334\\333^Cua"\\305%\\331\\026\\222d\\340\\' +
+            '022\\337u\\270\\031\\310\\347\\237a\\357W\\037y\\330\\231\\373\\' +
+            '252\\346\\325\\234\\261K\\0001]\\013\\240\\244\\203 e9=pv\\340w\' +
+            '\253\\025\\005\\235\\254VV\\221\\333B\\010\\2161\\201\\236\\247\' +
+            '\334\\373\\324\\365\\017}\\013W\\266\\241T\\257\\264\\273{\\347I' +
+            '\\\\\\311\\024\\3500\\223B\\333]G\\246\\177>\\276\\246\\256\\321' +
+            'Bmj\\201\\244\\364e[\\033!d\\216\\277i\\271\\270,s\\272y\\013\\2' +
+            '21\\354=*\\325\\024P\\335\\365`\\225\\264AE\\024R\\030\\327E\\22' +
+            '1\\031\\035C+\\014\\025# \\217J\\311\\036\\034\\263\\003\\3133]\' +
+            '\233o\\371\\3663\\037/\\327\\247^\\274\\365\\353[\\024U)5\\261.)' +
+            '\\356'#39#39'N\\224\\264QRPQE\\024\\001Z\\362\\312;\\317#\\314g\\036D\' +
+            '\3132\\355=H\\351\\237nj\\027\\322m\\236{\\331\\216\\375\\367\\2' +
+            '21\\371nx\\371F1\\362\\361\\307\\377\\000XU\\372)\\2514K\\212d6\' +
+            '\226\\353ik\\025\\272\\273:\\306\\241T\\2763\\201\\323\\245ME\\0' +
+            '24\\212\\330(\\242\\212\\000\\255\\250YG\\250YIk3:\\244\\230\\31'
+          
+            '1B\\001\\340\\203\\375*\\315\\024S\\277A[[\\205\\024QHaL\\232?6\' +
+            '\027\\217{\\246\\365+\\271\\016\\031s\\334\\037Z}\\024\\001O\\37' +
+            '36\\337\\373/\\373;o\\356<\\275\\235\\006~\\2751\\234\\363\\237Z' +
+            '\\236\\332\\025\\266\\266\\212\\004$\\254H\\020\\023\\327\\000b\' +
+            '\245\\242\\235\\333\\022I\\005\\024QHaU\\257,\\243\\274\\362<\\3' +
+            '06q\\344L\\263.\\3229#\\246}\\271\\2534SN\\302j\\373\\224\\345\\' +
+            '323`\\227S\\202\\374\\356\\023\\302\\245F\\017\\004\\020z\\217\\' +
+            '304\\325\\312(\\241\\266\\301$\\266\\012(\\242\\220\\302\\253^YG' +
+            'y\\344y\\214\\343\\310\\231f]\\244rGL\\373sVh\\246\\235\\204\\32' +
+            '5\\367\\012(\\242\\220\\317\\377\\331'#39');'
+          'COMMIT;'
+          ''
+          '-- ----------------------------'
+          '-- Table structure for compte'
+          '-- ----------------------------'
+          'CREATE TABLE "compte" ('
+          '"code_cmpt" int2 NOT NULL,'
+          '"nom_cmpt" varchar(50) COLLATE "default",'
+          '"refer_cmpt" varchar(20) COLLATE "default",'
+          '"nature_cmpt" bool,'
+          '"oldcredit_cmpt" money DEFAULT 0,'
+          '"date_cmpt" date'
+          ')'
+          'WITH (OIDS=FALSE)'
+          ''
+          ';'
+          ''
+          '-- ----------------------------'
+          '-- Records of compte'
+          '-- ----------------------------'
+          'BEGIN;'
+          
+            'INSERT INTO "compte" VALUES ('#39'1'#39', '#39'Caisse'#39', '#39'00001'#39', '#39'f'#39', '#39'$200.' +
+            '00'#39', '#39'2016-01-01'#39');'
+          
+            'INSERT INTO "compte" VALUES ('#39'2'#39', '#39'Banque'#39', '#39'00002'#39', '#39't'#39', '#39'$0.00' +
+            #39', '#39'2016-01-01'#39');'
+          'COMMIT;'
+          ''
+          '-- ----------------------------'
+          '-- Table structure for famproduit'
+          '-- ----------------------------'
+          'CREATE TABLE "famproduit" ('
+          
+            '"code_famp" int2 DEFAULT nextval(('#39'public.famproduit_code_famp_s' +
+            'eq'#39'::text)::regclass) NOT NULL,'
+          '"nom_famp" varchar(30) COLLATE "default"'
+          ')'
+          'WITH (OIDS=FALSE)'
+          ''
+          ';'
+          'COMMENT ON COLUMN "famproduit"."code_famp" IS '#39#10#10#39';'
+          ''
+          '-- ----------------------------'
+          '-- Records of famproduit'
+          '-- ----------------------------'
+          'BEGIN;'
+          'COMMIT;'
+          ''
+          '-- ----------------------------'
+          '-- Table structure for fournisseur'
+          '-- ----------------------------'
+          'CREATE TABLE "fournisseur" ('
+          
+            '"code_f" int4 DEFAULT nextval(('#39'public.fournisseur_code_f_seq'#39'::' +
+            'text)::regclass) NOT NULL,'
+          '"nom_f" varchar(40) COLLATE "default",'
+          '"adr_f" char(50) COLLATE "default",'
+          '"ville_f" char(25) COLLATE "default",'
+          '"willaya_f" char(25) COLLATE "default",'
+          '"pays_f" char(25) COLLATE "default",'
+          '"fix_f" char(15) COLLATE "default",'
+          '"mob_f" char(15) COLLATE "default",'
+          '"mob2_f" char(15) COLLATE "default",'
+          '"fax_f" char(15) COLLATE "default",'
+          '"email_f" char(40) COLLATE "default",'
+          '"obser_f" char(250) COLLATE "default",'
+          '"logo_f" bytea,'
+          '"activ_f" bool,'
+          '"rc_f" char(25) COLLATE "default",'
+          '"nif_f" char(25) COLLATE "default",'
+          '"nart_f" char(25) COLLATE "default",'
+          '"nis_f" char(25) COLLATE "default",'
+          '"nbank_f" char(25) COLLATE "default",'
+          '"rib_f" char(25) COLLATE "default",'
+          '"siteweb_f" char(40) COLLATE "default",'
+          '"oldcredit_f" money DEFAULT 0,'
+          '"maxcredit_f" money DEFAULT 0'
+          ')'
+          'WITH (OIDS=FALSE)'
+          ''
+          ';'
+          ''
+          '-- ----------------------------'
+          '-- Records of fournisseur'
+          '-- ----------------------------'
+          'BEGIN;'
+          'COMMIT;'
+          ''
+          '-- ----------------------------'
+          '-- Table structure for localisation'
+          '-- ----------------------------'
+          'CREATE TABLE "localisation" ('
+          
+            '"code_l" int2 DEFAULT nextval(('#39'public.magasin_code_m_seq'#39'::text' +
+            ')::regclass) NOT NULL,'
+          '"nom_l" varchar(30) COLLATE "default"'
+          ')'
+          'WITH (OIDS=FALSE)'
+          ''
+          ';'
+          ''
+          '-- ----------------------------'
+          '-- Records of localisation'
+          '-- ----------------------------'
+          'BEGIN;'
+          'COMMIT;'
+          ''
+          '-- ----------------------------'
+          '-- Table structure for mode_paiement'
+          '-- ----------------------------'
+          'CREATE TABLE "mode_paiement" ('
+          '"code_mdpai" int2 NOT NULL,'
+          '"nom_mdpai" varchar(40) COLLATE "default",'
+          '"code_cmpt" int4'
+          ')'
+          'WITH (OIDS=FALSE)'
+          ''
+          ';'
+          ''
+          '-- ----------------------------'
+          '-- Records of mode_paiement'
+          '-- ----------------------------'
+          'BEGIN;'
+          'INSERT INTO "mode_paiement" VALUES ('#39'1'#39', '#39'Esp'#232'ce'#39', '#39'1'#39');'
+          'INSERT INTO "mode_paiement" VALUES ('#39'2'#39', '#39'Ch'#232'que'#39', '#39'2'#39');'
+          'INSERT INTO "mode_paiement" VALUES ('#39'3'#39', '#39#192' Terme'#39', '#39'0'#39');'
+          'INSERT INTO "mode_paiement" VALUES ('#39'4'#39', '#39'Virement'#39', '#39'2'#39');'
+          'COMMIT;'
+          ''
+          '-- ----------------------------'
+          '-- Table structure for opt_cas_bnk'
+          '-- ----------------------------'
+          'CREATE TABLE "opt_cas_bnk" ('
+          '"code_ocb" int4 NOT NULL,'
+          '"date_ocb" date,'
+          '"nom_ocb" varchar(50) COLLATE "default",'
+          '"third_ocb" varchar(50) COLLATE "default",'
+          '"encaiss_ocb" money DEFAULT 0,'
+          '"decaiss_ocb" money DEFAULT 0,'
+          '"code_mdpai" int4,'
+          '"code_cmpt" int4,'
+          '"time_ocb" time(6),'
+          '"nature_ocb" bool,'
+          '"code_ur" int4,'
+          '"code_barec" int4,'
+          '"code_bafac" int4,'
+          '"code_bvliv" int4,'
+          '"code_bvfac" int4,'
+          '"code_bvctr" int4,'
+          '"code_rc" int4,'
+          '"code_rf" int4'
+          ')'
+          'WITH (OIDS=FALSE)'
+          ''
+          ';'
+          ''
+          '-- ----------------------------'
+          '-- Records of opt_cas_bnk'
+          '-- ----------------------------'
+          'BEGIN;'
+          'COMMIT;'
+          ''
+          '-- ----------------------------'
+          '-- Table structure for produit'
+          '-- ----------------------------'
+          'CREATE TABLE "produit" ('
+          '"code_p" int4 NOT NULL,'
+          '"nom_p" varchar(150) COLLATE "default",'
+          '"refer_p" varchar(20) COLLATE "default",'
+          '"qut_p" float8 DEFAULT 0,'
+          '"code_famp" int4,'
+          '"alertqut_p" int4 DEFAULT 0,'
+          '"code_f" int4,'
+          '"obser_p" text COLLATE "default",'
+          '"logo_p" bytea,'
+          '"code_l" int4,'
+          '"code_sfamp" int4,'
+          '"perissable_p" bool DEFAULT false,'
+          '"dateperiss_p" date,'
+          '"alertdays_p" int2 DEFAULT 0,'
+          '"prixht_p" money DEFAULT 0,'
+          '"tva_p" varchar(6) COLLATE "default" DEFAULT 0,'
+          '"prixvd_p" money DEFAULT 0,'
+          '"prixvr_p" money DEFAULT 0,'
+          '"prixvg_p" money DEFAULT 0,'
+          '"prixva_p" money DEFAULT 0,'
+          '"prixva2_p" money DEFAULT 0,'
+          '"codebar_p" varchar(20) COLLATE "default",'
+          '"qutmax_p" float8 DEFAULT 0,'
+          '"qutmin_p" float8 DEFAULT 0,'
+          '"code_u" int2,'
+          '"qutini_p" float8 DEFAULT 0'
+          ')'
+          'WITH (OIDS=FALSE)'
+          ''
+          ';'
+          ''
+          '-- ----------------------------'
+          '-- Records of produit'
+          '-- ----------------------------'
+          'BEGIN;'
+          'COMMIT;'
+          ''
+          '-- ----------------------------'
+          '-- Table structure for regclient'
+          '-- ----------------------------'
+          'CREATE TABLE "regclient" ('
+          '"code_rc" int4 NOT NULL,'
+          '"nom_rc" varchar(50) COLLATE "default",'
+          '"date_rc" date,'
+          '"time_rc" time(6),'
+          '"montver_rc" money DEFAULT 0,'
+          '"code_mdpai" int4,'
+          '"num_cheque_rc" varchar(50) COLLATE "default",'
+          '"code_c" int4,'
+          '"code_ur" int4,'
+          '"obser_rc" text COLLATE "default",'
+          '"code_cmpt" int4,'
+          '"bon_or_no_rc" int2,'
+          '"code_bvliv" int4 DEFAULT 0,'
+          '"code_bvfac" int4 DEFAULT 0,'
+          '"code_bvctr" int4'
+          ')'
+          'WITH (OIDS=FALSE)'
+          ''
+          ';'
+          ''
+          '-- ----------------------------'
+          '-- Records of regclient'
+          '-- ----------------------------'
+          'BEGIN;'
+          'COMMIT;'
+          ''
+          '-- ----------------------------'
+          '-- Table structure for regfournisseur'
+          '-- ----------------------------'
+          'CREATE TABLE "regfournisseur" ('
+          '"code_rf" int4 NOT NULL,'
+          '"nom_rf" varchar(50) COLLATE "default",'
+          '"date_rf" date,'
+          '"time_rf" time(6),'
+          '"montver_rf" money DEFAULT 0,'
+          '"code_mdpai" int4,'
+          '"num_cheque_rf" varchar(50) COLLATE "default",'
+          '"code_f" int4,'
+          '"code_ur" int4,'
+          '"obser_rf" text COLLATE "default",'
+          '"code_cmpt" int4,'
+          '"code_barec" int4 DEFAULT 0,'
+          '"bon_or_no_rf" int2,'
+          '"code_bafac" int4 DEFAULT 0'
+          ')'
+          'WITH (OIDS=FALSE)'
+          ''
+          ';'
+          ''
+          '-- ----------------------------'
+          '-- Records of regfournisseur'
+          '-- ----------------------------'
+          'BEGIN;'
+          'COMMIT;'
+          ''
+          '-- ----------------------------'
+          '-- Table structure for sfamproduit'
+          '-- ----------------------------'
+          'CREATE TABLE "sfamproduit" ('
+          
+            '"code_sfamp" int2 DEFAULT nextval('#39'sfamproduit_code_sfamp_seq'#39'::' +
+            'regclass) NOT NULL,'
+          '"nom_sfamp" varchar(30) COLLATE "default"'
+          ')'
+          'WITH (OIDS=FALSE)'
+          ''
+          ';'
+          ''
+          '-- ----------------------------'
+          '-- Records of sfamproduit'
+          '-- ----------------------------'
+          'BEGIN;'
+          'COMMIT;'
+          ''
+          '-- ----------------------------'
+          '-- Table structure for unite'
+          '-- ----------------------------'
+          'CREATE TABLE "unite" ('
+          
+            '"code_u" int2 DEFAULT nextval(('#39'public.unite_code_u_seq01'#39'::text' +
+            ')::regclass) NOT NULL,'
+          '"nom_u" varchar(15) COLLATE "default"'
+          ')'
+          'WITH (OIDS=FALSE)'
+          ''
+          ';'
+          ''
+          '-- ----------------------------'
+          '-- Records of unite'
+          '-- ----------------------------'
+          'BEGIN;'
+          'COMMIT;'
+          ''
+          '-- ----------------------------'
+          '-- Table structure for users'
+          '-- ----------------------------'
+          'CREATE TABLE "users" ('
+          '"code_ur" int4 NOT NULL,'
+          '"nom_ur" varchar(40) COLLATE "default",'
+          '"password_ur" varchar(32) COLLATE "default",'
+          '"vente_ur" bool,'
+          '"bl_ur" bool,'
+          '"fcv_ur" bool,'
+          '"rgc_ur" bool,'
+          '"achat_ur" bool,'
+          '"br_ur" bool,'
+          '"fca_ur" bool,'
+          '"rgf_ur" bool,'
+          '"tre_ur" bool,'
+          '"caisse_ur" bool,'
+          '"bank_ur" bool,'
+          '"client_ur" bool,'
+          '"four_ur" bool,'
+          '"type_ur" int2 DEFAULT 0,'
+          '"ctr_ur" bool,'
+          '"produit_ur" bool'
+          ')'
+          'WITH (OIDS=FALSE)'
+          ''
+          ';'
+          'COMMENT ON COLUMN "users"."ctr_ur" IS '#39#10#39';'
+          ''
+          '-- ----------------------------'
+          '-- Records of users'
+          '-- ----------------------------'
+          'BEGIN;'
+          'COMMIT;'
+          ''
+          '-- ----------------------------'
+          '-- Table structure for wilayas'
+          '-- ----------------------------'
+          'CREATE TABLE "wilayas" ('
+          '"code_w" int2 NOT NULL,'
+          '"nom_w" varchar(20) COLLATE "default"'
+          ')'
+          'WITH (OIDS=FALSE)'
+          ''
+          ';'
+          ''
+          '-- ----------------------------'
+          '-- Records of wilayas'
+          '-- ----------------------------'
+          'BEGIN;'
+          'INSERT INTO "wilayas" VALUES ('#39'1'#39', '#39'Adrar'#39');'
+          'INSERT INTO "wilayas" VALUES ('#39'2'#39', '#39'Chlef'#39');'
+          'INSERT INTO "wilayas" VALUES ('#39'3'#39', '#39'Laghouat'#39');'
+          'INSERT INTO "wilayas" VALUES ('#39'4'#39', '#39'Oum El Bouaghi'#39');'
+          'INSERT INTO "wilayas" VALUES ('#39'5'#39', '#39'Batna'#39');'
+          'INSERT INTO "wilayas" VALUES ('#39'6'#39', '#39'B'#233'ja'#239'a'#39');'
+          'INSERT INTO "wilayas" VALUES ('#39'7'#39', '#39'Biskra'#39');'
+          'INSERT INTO "wilayas" VALUES ('#39'8'#39', '#39'B'#233'char'#39');'
+          'INSERT INTO "wilayas" VALUES ('#39'9'#39', '#39'Blida'#39');'
+          'INSERT INTO "wilayas" VALUES ('#39'10'#39', '#39'Bouira'#39');'
+          'INSERT INTO "wilayas" VALUES ('#39'11'#39', '#39'Tamanrasset'#39');'
+          'INSERT INTO "wilayas" VALUES ('#39'12'#39', '#39'T'#233'bessa'#39');'
+          'INSERT INTO "wilayas" VALUES ('#39'13'#39', '#39'Tlemcen'#39');'
+          'INSERT INTO "wilayas" VALUES ('#39'14'#39', '#39'Tiaret'#39');'
+          'INSERT INTO "wilayas" VALUES ('#39'15'#39', '#39'Tizi Ouzou'#39');'
+          'INSERT INTO "wilayas" VALUES ('#39'16'#39', '#39'Alger'#39');'
+          'INSERT INTO "wilayas" VALUES ('#39'17'#39', '#39'Djelfa'#39');'
+          'INSERT INTO "wilayas" VALUES ('#39'18'#39', '#39'Jijel'#39');'
+          'INSERT INTO "wilayas" VALUES ('#39'19'#39', '#39'S'#233'tif'#39');'
+          'INSERT INTO "wilayas" VALUES ('#39'20'#39', '#39'Sa'#239'da'#39');'
+          'INSERT INTO "wilayas" VALUES ('#39'21'#39', '#39'Skikda'#39');'
+          'INSERT INTO "wilayas" VALUES ('#39'22'#39', '#39'Sidi Bel Abb'#232's'#39');'
+          'INSERT INTO "wilayas" VALUES ('#39'23'#39', '#39'Annaba'#39');'
+          'INSERT INTO "wilayas" VALUES ('#39'24'#39', '#39'Guelma'#39');'
+          'INSERT INTO "wilayas" VALUES ('#39'25'#39', '#39'Constantine'#39');'
+          'INSERT INTO "wilayas" VALUES ('#39'26'#39', '#39'M'#233'd'#233'a'#39');'
+          'INSERT INTO "wilayas" VALUES ('#39'27'#39', '#39'Mostaganem'#39');'
+          'INSERT INTO "wilayas" VALUES ('#39'28'#39', '#39'M'#39#39'Sila'#39');'
+          'INSERT INTO "wilayas" VALUES ('#39'29'#39', '#39'Mascara'#39');'
+          'INSERT INTO "wilayas" VALUES ('#39'30'#39', '#39'Ouargla'#39');'
+          'INSERT INTO "wilayas" VALUES ('#39'31'#39', '#39'Oran'#39');'
+          'INSERT INTO "wilayas" VALUES ('#39'32'#39', '#39'El Bayadh'#39');'
+          'INSERT INTO "wilayas" VALUES ('#39'33'#39', '#39'Illizi'#39');'
+          'INSERT INTO "wilayas" VALUES ('#39'34'#39', '#39'Bordj Bou Arreridj'#39');'
+          'INSERT INTO "wilayas" VALUES ('#39'35'#39', '#39'Boumerd'#232's'#39');'
+          'INSERT INTO "wilayas" VALUES ('#39'36'#39', '#39'El Tarf'#39');'
+          'INSERT INTO "wilayas" VALUES ('#39'37'#39', '#39'Tindouf'#39');'
+          'INSERT INTO "wilayas" VALUES ('#39'38'#39', '#39'Tissemsilt'#39');'
+          'INSERT INTO "wilayas" VALUES ('#39'39'#39', '#39'El Oued'#39');'
+          'INSERT INTO "wilayas" VALUES ('#39'40'#39', '#39'Khenchela'#39');'
+          'INSERT INTO "wilayas" VALUES ('#39'41'#39', '#39'Souk Ahras'#39');'
+          'INSERT INTO "wilayas" VALUES ('#39'42'#39', '#39'Tipaza'#39');'
+          'INSERT INTO "wilayas" VALUES ('#39'43'#39', '#39'Mila'#39');'
+          'INSERT INTO "wilayas" VALUES ('#39'44'#39', '#39'A'#239'n Defla'#39');'
+          'INSERT INTO "wilayas" VALUES ('#39'45'#39', '#39'Na'#226'ma'#39');'
+          'INSERT INTO "wilayas" VALUES ('#39'46'#39', '#39'A'#239'n T'#233'mouchent'#39');'
+          'INSERT INTO "wilayas" VALUES ('#39'47'#39', '#39'Gharda'#239'a'#39');'
+          'INSERT INTO "wilayas" VALUES ('#39'48'#39', '#39'Relizane'#39');'
+          'COMMIT;'
+          ''
+          '-- ----------------------------'
+          '-- Function structure for truncate_tables'
+          '-- ----------------------------'
+          'CREATE OR REPLACE FUNCTION "truncate_tables"("username" varchar)'
+          '  RETURNS "pg_catalog"."void" AS $BODY$ '
+          'DECLARE statements CURSOR FOR SELECT tablename FROM pg_tables'
+          ' WHERE tableowner = username'
+          ' AND schemaname ='#39'public'#39';'
+          'BEGIN         '
+          '  FOR stmt IN statements LOOP '
+          '      EXECUTE '#39'TRUNCATE TABLE '#39' || quote_ident(stmt.tablename)'
+          '                                || '#39' CASCADE;'#39'; '
+          '  END LOOP;'
+          'END;'
+          '$BODY$'
+          '  LANGUAGE '#39'plpgsql'#39' VOLATILE COST 100'
+          ';'
+          ''
+          '-- ----------------------------'
+          '-- Alter Sequences Owned By '
+          '-- ----------------------------'
+          
+            'ALTER SEQUENCE "sfamproduit_code_sfamp_seq" OWNED BY "sfamprodui' +
+            't"."code_sfamp";'
+          ''
+          '-- ----------------------------'
+          '-- Primary Key structure for table bona_fac'
+          '-- ----------------------------'
+          'ALTER TABLE "bona_fac" ADD PRIMARY KEY ("code_bafac");'
+          ''
+          '-- ----------------------------'
+          '-- Primary Key structure for table bona_fac_list'
+          '-- ----------------------------'
+          'ALTER TABLE "bona_fac_list" ADD PRIMARY KEY ("code_bafacl");'
+          ''
+          '-- ----------------------------'
+          '-- Primary Key structure for table bona_rec'
+          '-- ----------------------------'
+          'ALTER TABLE "bona_rec" ADD PRIMARY KEY ("code_barec");'
+          ''
+          '-- ----------------------------'
+          '-- Primary Key structure for table bona_rec_list'
+          '-- ----------------------------'
+          'ALTER TABLE "bona_rec_list" ADD PRIMARY KEY ("code_barecl");'
+          ''
+          '-- ----------------------------'
+          '-- Primary Key structure for table bonv_ctr'
+          '-- ----------------------------'
+          'ALTER TABLE "bonv_ctr" ADD PRIMARY KEY ("code_bvctr");'
+          ''
+          '-- ----------------------------'
+          '-- Primary Key structure for table bonv_ctr_list'
+          '-- ----------------------------'
+          'ALTER TABLE "bonv_ctr_list" ADD PRIMARY KEY ("code_bvctrl");'
+          ''
+          '-- ----------------------------'
+          '-- Primary Key structure for table bonv_fac'
+          '-- ----------------------------'
+          'ALTER TABLE "bonv_fac" ADD PRIMARY KEY ("code_bvfac");'
+          ''
+          '-- ----------------------------'
+          '-- Primary Key structure for table bonv_fac_list'
+          '-- ----------------------------'
+          'ALTER TABLE "bonv_fac_list" ADD PRIMARY KEY ("code_bvfacl");'
+          ''
+          '-- ----------------------------'
+          '-- Primary Key structure for table bonv_liv'
+          '-- ----------------------------'
+          'ALTER TABLE "bonv_liv" ADD PRIMARY KEY ("code_bvliv");'
+          ''
+          '-- ----------------------------'
+          '-- Primary Key structure for table bonv_liv_list'
+          '-- ----------------------------'
+          'ALTER TABLE "bonv_liv_list" ADD PRIMARY KEY ("code_bvlivl");'
+          ''
+          '-- ----------------------------'
+          '-- Primary Key structure for table client'
+          '-- ----------------------------'
+          'ALTER TABLE "client" ADD PRIMARY KEY ("code_c");'
+          ''
+          '-- ----------------------------'
+          '-- Primary Key structure for table codebarres'
+          '-- ----------------------------'
+          'ALTER TABLE "codebarres" ADD PRIMARY KEY ("code_cb");'
+          ''
+          '-- ----------------------------'
+          '-- Primary Key structure for table communes'
+          '-- ----------------------------'
+          'ALTER TABLE "communes" ADD PRIMARY KEY ("code_cumm");'
+          ''
+          '-- ----------------------------'
+          '-- Primary Key structure for table company'
+          '-- ----------------------------'
+          'ALTER TABLE "company" ADD PRIMARY KEY ("code_comp");'
+          ''
+          '-- ----------------------------'
+          '-- Primary Key structure for table compte'
+          '-- ----------------------------'
+          'ALTER TABLE "compte" ADD PRIMARY KEY ("code_cmpt");'
+          ''
+          '-- ----------------------------'
+          '-- Primary Key structure for table famproduit'
+          '-- ----------------------------'
+          'ALTER TABLE "famproduit" ADD PRIMARY KEY ("code_famp");'
+          ''
+          '-- ----------------------------'
+          '-- Primary Key structure for table fournisseur'
+          '-- ----------------------------'
+          'ALTER TABLE "fournisseur" ADD PRIMARY KEY ("code_f");'
+          ''
+          '-- ----------------------------'
+          '-- Primary Key structure for table localisation'
+          '-- ----------------------------'
+          'ALTER TABLE "localisation" ADD PRIMARY KEY ("code_l");'
+          ''
+          '-- ----------------------------'
+          '-- Primary Key structure for table mode_paiement'
+          '-- ----------------------------'
+          'ALTER TABLE "mode_paiement" ADD PRIMARY KEY ("code_mdpai");'
+          ''
+          '-- ----------------------------'
+          '-- Primary Key structure for table opt_cas_bnk'
+          '-- ----------------------------'
+          'ALTER TABLE "opt_cas_bnk" ADD PRIMARY KEY ("code_ocb");'
+          ''
+          '-- ----------------------------'
+          '-- Primary Key structure for table produit'
+          '-- ----------------------------'
+          'ALTER TABLE "produit" ADD PRIMARY KEY ("code_p");'
+          ''
+          '-- ----------------------------'
+          '-- Primary Key structure for table regclient'
+          '-- ----------------------------'
+          'ALTER TABLE "regclient" ADD PRIMARY KEY ("code_rc");'
+          ''
+          '-- ----------------------------'
+          '-- Primary Key structure for table regfournisseur'
+          '-- ----------------------------'
+          'ALTER TABLE "regfournisseur" ADD PRIMARY KEY ("code_rf");'
+          ''
+          '-- ----------------------------'
+          '-- Primary Key structure for table sfamproduit'
+          '-- ----------------------------'
+          'ALTER TABLE "sfamproduit" ADD PRIMARY KEY ("code_sfamp");'
+          ''
+          '-- ----------------------------'
+          '-- Primary Key structure for table unite'
+          '-- ----------------------------'
+          'ALTER TABLE "unite" ADD PRIMARY KEY ("code_u");'
+          ''
+          '-- ----------------------------'
+          '-- Primary Key structure for table users'
+          '-- ----------------------------'
+          'ALTER TABLE "users" ADD PRIMARY KEY ("code_ur");'
+          ''
+          '-- ----------------------------'
+          '-- Primary Key structure for table wilayas'
+          '-- ----------------------------'
+          'ALTER TABLE "wilayas" ADD PRIMARY KEY ("code_w");')
+      end>
+    Connection = GstockdcConnection
+    Params = <>
+    Macros = <>
+    Left = 485
+    Top = 104
   end
 end

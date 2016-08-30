@@ -19,6 +19,7 @@ object ClientGestionF: TClientGestionF
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   OnKeyDown = FormKeyDown
+  OnKeyPress = FormKeyPress
   PixelsPerInch = 96
   TextHeight = 13
   object ClientGPgControl: TsPageControl
@@ -43,10 +44,6 @@ object ClientGestionF: TClientGestionF
     TabsLineSkin = 'BAR'
     object GeneralClientGTB: TsTabSheet
       Caption = 'G'#233'n'#233'ral'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object GeneralTB: TPanel
         Left = 0
         Top = 0

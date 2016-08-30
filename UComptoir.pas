@@ -323,12 +323,45 @@ end;
 
 end;
 
+
+function GetWindowsVersion: string;
+begin
+  result := 'Unknown (Windows ' + IntToStr(Win32MajorVersion) + '.' + IntToStr(Win32MinorVersion) + ')';
+  case Win32MajorVersion of
+    4:
+      case Win32MinorVersion of
+        0: result := 'Windows 95';
+        10: result := 'Windows 98';
+        90: result := 'Windows ME';
+      end;
+    5:
+      case Win32MinorVersion of
+        0: result := 'Windows 2000';
+        1: result := 'Windows XP';
+      end;
+    6:
+      case Win32MinorVersion of
+        0: result := 'Windows Vista';
+        1: result := 'Windows 7';
+        2: result := 'Windows 8';
+        3: result := 'Windows 8.1';
+      end;
+    10:
+      case Win32MinorVersion of
+        0: result := 'Windows 10';
+      end;
+  end;
+end;
+
 procedure TBonCtrGestionF.ShowKeyBoardBonCtrGBtnClick(Sender: TObject);
 var    SEInfo: TShellExecuteInfo;
     ExitCode: DWORD;
     ExecuteFile, ParamString, StartInString: string;
     Wow64FsEnableRedirection: LongBool;
  begin
+
+  if NOT  (GetWindowsVersion = 'Windows XP' )then
+   begin
 
     if Wow64DisableWow64FsRedirection(Wow64FsEnableRedirection) then
     begin
@@ -363,6 +396,8 @@ var    SEInfo: TShellExecuteInfo;
     end
     else
     RaiseLastOSError;
+
+  end;
 end;
 
 procedure TBonCtrGestionF.ShowCalculaturBonCtrGBtnClick(Sender: TObject);

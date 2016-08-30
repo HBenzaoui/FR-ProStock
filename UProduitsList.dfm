@@ -69,8 +69,8 @@ object ProduitsListF: TProduitsListF
     TitleParams.FillStyle = cfstThemedEh
     TitleParams.Font.Charset = DEFAULT_CHARSET
     TitleParams.Font.Color = clBlack
-    TitleParams.Font.Height = 19
-    TitleParams.Font.Name = 'Helvetica LT Std'
+    TitleParams.Font.Height = 17
+    TitleParams.Font.Name = 'Roboto'
     TitleParams.Font.Style = []
     TitleParams.Font.Quality = fqProof
     TitleParams.ParentFont = False

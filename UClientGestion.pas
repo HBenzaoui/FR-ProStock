@@ -101,6 +101,7 @@ type
     procedure MaxCreditClientGEdtExit(Sender: TObject);
     procedure VilleClientGCbxEnter(Sender: TObject);
     procedure WilayaClientGCbxEnter(Sender: TObject);
+    procedure FormKeyPress(Sender: TObject; var Key: Char);
 
   private
     { Private declarations }
@@ -1103,6 +1104,16 @@ begin
        MainForm.WilayasTable.Next;
       end;
      end;
+end;
+
+procedure TClientGestionF.FormKeyPress(Sender: TObject; var Key: Char);
+begin
+     if key = #27 then
+ begin
+ key := #0;
+  Close;
+
+ end;
 end;
 
 end.

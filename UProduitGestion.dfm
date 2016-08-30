@@ -30,7 +30,7 @@ object ProduitGestionF: TProduitGestionF
     Top = 0
     Width = 686
     Height = 614
-    ActivePage = PlusInfoClientGTB
+    ActivePage = GeneralClientGTB
     Align = alClient
     DoubleBuffered = True
     Font.Charset = DEFAULT_CHARSET

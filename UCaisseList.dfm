@@ -694,6 +694,7 @@ object CaisseListF: TCaisseListF
       ParentFont = False
       TabOrder = 7
       Text = 'Mois en cours'
+      StyleElements = []
       OnChange = DaysCaisseListCbxChange
       Items.Strings = (
         'Aujourd'#39'hui'
@@ -718,6 +719,7 @@ object CaisseListF: TCaisseListF
       ParentFont = False
       TabOrder = 8
       Text = 'Tous'
+      StyleElements = []
       OnChange = CaisseListCbxChange
       OnDropDown = CaisseListCbxDropDown
       Items.Strings = (
@@ -909,7 +911,7 @@ object CaisseListF: TCaisseListF
     Top = 568
   end
   object CaisseListfrxRprt: TfrxReport
-    Version = '5.5'
+    Version = '5.4.6'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
