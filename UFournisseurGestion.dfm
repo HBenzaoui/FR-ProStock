@@ -19,6 +19,7 @@ object FournisseurGestionF: TFournisseurGestionF
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   OnKeyDown = FormKeyDown
+  OnKeyPress = FormKeyPress
   PixelsPerInch = 96
   TextHeight = 13
   object FournisseurGPgControl: TsPageControl

@@ -684,7 +684,7 @@ object BonCtrGestionF: TBonCtrGestionF
       Anchors = [akLeft, akRight]
       AutoSize = False
       Caption = '0'
-      Font.Charset = ANSI_CHARSET
+      Font.Charset = DEFAULT_CHARSET
       Font.Color = 7854350
       Font.Height = -120
       Font.Name = 'DS-Digital'

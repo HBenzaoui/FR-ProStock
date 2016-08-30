@@ -19,6 +19,7 @@ object ClientGestionF: TClientGestionF
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   OnKeyDown = FormKeyDown
+  OnKeyPress = FormKeyPress
   PixelsPerInch = 96
   TextHeight = 13
   object ClientGPgControl: TsPageControl

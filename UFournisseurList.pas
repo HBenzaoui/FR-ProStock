@@ -126,16 +126,23 @@ end;
 procedure TFournisseurListF.ActifFournisseursRdioBtnClick(Sender: TObject);
 begin
 
-
-
-  FournisseurListDataS.DataSet:= MainForm.FournisseurTableActif;
-
   ResearchFournisseurEdt.Text:= '';
   ResearchFournisseurEdt.SetFocus;
 
-   MainForm.FournisseurTableActif.Filtered := false;
 
-    MainForm.FournisseurTableActif.Refresh;
+  MainForm.FournisseurTable.DisableControls;
+
+  MainForm.FournisseurTable.Active := false;
+  MainForm.FournisseurTable.SQL.Clear;
+  MainForm.FournisseurTable.SQL.Text :=
+  'SELECT * FROM fournisseur WHERE activ_f = true ORDER BY code_f ';
+  MainForm.FournisseurTable.Active := true;
+
+
+
+    MainForm.FournisseurTable.EnableControls;
+
+
 
 end;
 
@@ -162,125 +169,9 @@ procedure TFournisseurListF.DeleteFournisseursBtnClick(Sender: TObject);
 begin
 
 
- if ActifFournisseursRdioBtn.Checked then
-
- begin
-
- if not FournisseursListDBGridEh.DataSource.DataSet.IsEmpty then
-   begin
-   GrayForms;
-     with MainForm.FournisseurTableActif do  begin
-
-
-   if MyMessageDlg('Ėtes-vous sûr de vouloir supprimer le Fournisseur : '+ sLineBreak +  QuotedStr(fieldbyname('nom_f').Value) , mtConfirmation, [mbYes,mbNo], ['Oui','Non'],'Attention', mbNo )  = mrYes then
-       begin
-
-
-      MainForm.FournisseurTableActif.Delete;
-
-      MainForm.FournisseurTableActif.Refresh;
-
-      FournisseurListF.ActifFournisseursLbl.Caption:= IntToStr( MainForm.FournisseurTableActif.RecordCount);
-
-      MainForm.FournisseurTable.Refresh;
-      toutFournisseursLbl.Caption:= IntToStr(MainForm.FournisseurTable.RecordCount);
-
-
-      FSplash := TFSplash.Create(FournisseurListF);
-      try
-        FSplash.Left := Screen.Width div 2 - (FSplash.Width div 2);
-        FSplash.Top := 0;
-
-        FSplash.Label1.Caption:='  Suppression avec succés';
-        FSplash.Color:= $004735F9;
-        AnimateWindow(FSplash.Handle, 150, AW_VER_POSITIVE OR AW_SLIDE OR AW_ACTIVATE);
-        sleep(250);
-        AnimateWindow(FSplash.Handle, 150, AW_VER_NEGATIVE OR
-          AW_SLIDE OR AW_HIDE);
-      finally
-        FSplash.free;
-
-      end;
-
-        NormalForms;
-        sndPlaySound('C:\Windows\Media\speech off.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
-
-    end
-    else
-
-     NormalForms
-
-    end;
-   end
-
- else   Exit
-
- end;
-
- //------------------------------------------------------------------------------------------------
-
-  if PassifFournisseursRdioBtn.Checked then
-
- begin
-
- if not FournisseursListDBGridEh.DataSource.DataSet.IsEmpty then
-   begin
-   GrayForms;
-     with MainForm.FournisseurTablePassif do  begin
-
-
-   if MyMessageDlg('Ėtes-vous sûr de vouloir supprimer le Fournisseur : '+ sLineBreak +  QuotedStr(fieldbyname('nom_f').Value) , mtConfirmation, [mbYes,mbNo], ['Oui','Non'],'Attention', mbNo )  = mrYes then
-       begin
-
-
-      MainForm.FournisseurTablePassif.Delete;
-
-      MainForm.FournisseurTablePassif.Refresh;
-
-      FournisseurListF.PassifFournisseursLbl.Caption:= IntToStr( MainForm.FournisseurTablePassif.RecordCount);
-
-       MainForm.FournisseurTable.Refresh;
-      toutFournisseursLbl.Caption:= IntToStr(MainForm.FournisseurTable.RecordCount);
-
-
-
-      FSplash := TFSplash.Create(FournisseurListF);
-      try
-        FSplash.Left := Screen.Width div 2 - (FSplash.Width div 2);
-        FSplash.Top := 0;
-
-        FSplash.Label1.Caption:='  Suppression avec succés';
-        FSplash.Color:= $004735F9;
-        AnimateWindow(FSplash.Handle, 150, AW_VER_POSITIVE OR AW_SLIDE OR AW_ACTIVATE);
-        sleep(250);
-        AnimateWindow(FSplash.Handle, 150, AW_VER_NEGATIVE OR
-          AW_SLIDE OR AW_HIDE);
-      finally
-        FSplash.free;
-
-      end;
-
-        NormalForms;
-        sndPlaySound('C:\Windows\Media\speech off.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
-
-    end
-    else
-
-     NormalForms
-
-    end;
-   end
-
- else   Exit
-
- end;
-
 //-------------------------------------------------------------------------------------------------
 
 
-  if toutFournisseursRdioBtn.Checked then
-
- begin
 
  if not FournisseursListDBGridEh.DataSource.DataSet.IsEmpty then
    begin
@@ -299,14 +190,14 @@ begin
       toutFournisseursLbl.Caption:= IntToStr( MainForm.FournisseurTable.RecordCount);
 
 
-      MainForm.FournisseurTableActif.Refresh;
+//      MainForm.FournisseurTableActif.Refresh;
 
-      FournisseurListF.ActifFournisseursLbl.Caption:= IntToStr( MainForm.FournisseurTableActif.RecordCount);
-
-
-       MainForm.FournisseurTablePassif.Refresh;
-
-       FournisseurListF.PassifFournisseursLbl.Caption:= IntToStr( MainForm.FournisseurTablePassif.RecordCount);
+//      FournisseurListF.ActifFournisseursLbl.Caption:= IntToStr( MainForm.FournisseurTableActif.RecordCount);
+//
+//
+//       MainForm.FournisseurTablePassif.Refresh;
+//
+//       FournisseurListF.PassifFournisseursLbl.Caption:= IntToStr( MainForm.FournisseurTablePassif.RecordCount);
 
 
 
@@ -335,9 +226,7 @@ begin
      NormalForms
 
     end;
-   end
 
- else   Exit
 
  end;
 
@@ -356,91 +245,6 @@ begin
      FournisseurGestionF.Show;
      FournisseurGestionF.NameFournisseurGEdt.SetFocus;
      FournisseurGestionF.OKFournisseurGBtn.Tag:= 1 ;
-
-   if ActifFournisseursRdioBtn.Checked then
-   begin
-
- if not FournisseursListDBGridEh.DataSource.DataSet.IsEmpty then
-     begin
-     //----------------- SHOW THE DATA ON THE Fournisseur GESTION PANEL -----------------------------//
-
-         with MainForm.FournisseurTableActif do  begin
-
-            FournisseurGestionF.ActiveFournisseurGSlider.SliderOn:=  FieldValues['activ_f'];
-            FournisseurGestionF.NameFournisseurGEdt.Text:= fieldbyname('nom_f').Value;
-
-            FournisseurGestionF.AdrFournisseurGEdt.Text:= fieldbyname('adr_f').Value;
-            FournisseurGestionF.WilayaFournisseurGCbx.Text:= fieldbyname('willaya_f').Value;
-            FournisseurGestionF.VilleFournisseurGCbx.Text:= fieldbyname('ville_f').Value;
-            FournisseurGestionF.FixFournisseurGEdt.Text:= fieldbyname('fix_f').Value;
-            FournisseurGestionF.FaxFournisseurGEdt.Text:= fieldbyname('fax_f').Value;
-            FournisseurGestionF.MobileFournisseurGEdt.Text:= fieldbyname('mob_f').Value;
-            FournisseurGestionF.MobileFournisseurGEdt.Text:= fieldbyname('mob2_f').Value;
-            FournisseurGestionF.EmailFournisseurGEdt.Text:= fieldbyname('email_f').Value;
-            FournisseurGestionF.SiteFournisseurGEdt.Text:= fieldbyname('siteWeb_f').Value;
-
-            FournisseurGestionF.RCFournisseurGEdt.Text:= fieldbyname('rc_f').Value;
-            FournisseurGestionF.NArtFournisseurGEdt.Text:= fieldbyname('nart_f').Value;
-            FournisseurGestionF.NIFFournisseurGEdt.Text:= fieldbyname('nif_f').Value;
-            FournisseurGestionF.NISFournisseurGEdt.Text:= fieldbyname('nis_f').Value;
-            FournisseurGestionF.NBankFournisseurGEdt.Text:= fieldbyname('nbank_f').Value;
-            FournisseurGestionF.RIBFournisseurGEdt.Text:= fieldbyname('rib_f').Value;
-            FournisseurGestionF.OldCreditFournisseurGEdt.Text:= CurrToStrF( fieldbyname('oldcredit_f').Value,ffNumber, 2);
-            FournisseurGestionF.MaxCreditFournisseurGEdt.Text:= CurrToStrF( fieldbyname('maxcredit_f').Value,ffNumber, 2);
-
-            FournisseurGestionF.ObserFournisseurGMem.Text:= fieldbyname('obser_f').Value;
-
-          end ;
-
-      end
-
-  else  Exit
-
-
-   end;
-   if PassifFournisseursRdioBtn.Checked then
-   begin
-
-    if not FournisseursListDBGridEh.DataSource.DataSet.IsEmpty then
-
-     begin
-      //----------------- Show the splash screan for the produit familly to add new one---------//
-     //----------------- SHOW THE DATA ON THE Fournisseur GESTION PANEL -----------------------------//
-
-         with MainForm.FournisseurTablePassif do  begin
-
-            FournisseurGestionF.ActiveFournisseurGSlider.SliderOn:=  FieldValues['activ_f'];
-            FournisseurGestionF.NameFournisseurGEdt.Text:= fieldbyname('nom_f').Value;
-
-            FournisseurGestionF.AdrFournisseurGEdt.Text:= fieldbyname('adr_f').Value;
-            FournisseurGestionF.WilayaFournisseurGCbx.Text:= fieldbyname('willaya_f').Value;
-            FournisseurGestionF.VilleFournisseurGCbx.Text:= fieldbyname('ville_f').Value;
-            FournisseurGestionF.FixFournisseurGEdt.Text:= fieldbyname('fix_f').Value;
-            FournisseurGestionF.FaxFournisseurGEdt.Text:= fieldbyname('fax_f').Value;
-            FournisseurGestionF.MobileFournisseurGEdt.Text:= fieldbyname('mob_f').Value;
-            FournisseurGestionF.MobileFournisseurGEdt.Text:= fieldbyname('mob2_f').Value;
-            FournisseurGestionF.EmailFournisseurGEdt.Text:= fieldbyname('email_f').Value;
-            FournisseurGestionF.SiteFournisseurGEdt.Text:= fieldbyname('siteWeb_f').Value;
-
-            FournisseurGestionF.RCFournisseurGEdt.Text:= fieldbyname('rc_f').Value;
-            FournisseurGestionF.NArtFournisseurGEdt.Text:= fieldbyname('nart_f').Value;
-            FournisseurGestionF.NIFFournisseurGEdt.Text:= fieldbyname('nif_f').Value;
-            FournisseurGestionF.NISFournisseurGEdt.Text:= fieldbyname('nis_f').Value;
-            FournisseurGestionF.NBankFournisseurGEdt.Text:= fieldbyname('nbank_f').Value;
-            FournisseurGestionF.RIBFournisseurGEdt.Text:= fieldbyname('rib_f').Value;
-            FournisseurGestionF.OldCreditFournisseurGEdt.Text:= CurrToStrF( fieldbyname('oldcredit_f').Value,ffNumber, 2);
-            FournisseurGestionF.MaxCreditFournisseurGEdt.Text:= CurrToStrF( fieldbyname('maxcredit_f').Value,ffNumber, 2);
-
-            FournisseurGestionF.ObserFournisseurGMem.Text:= fieldbyname('obser_f').Value;
-
-           end ;
-
-      end
-
-  else  Exit
-   end;
-   if toutFournisseursRdioBtn.Checked then
-   begin
 
     if not FournisseursListDBGridEh.DataSource.DataSet.IsEmpty then
 
@@ -476,23 +280,11 @@ begin
            end ;
       end
   else  Exit
-   end;
 end;
 
 procedure TFournisseurListF.FisrtFournisseursbtnClick(Sender: TObject);
 begin
-    if ActifFournisseursRdioBtn.Checked then
-    begin
-        MainForm.FournisseurTableActif.First;
-    end;
-     if PassifFournisseursRdioBtn.Checked then
-    begin
-         MainForm.FournisseurTablePassif.First;
-    end;
-     if ToutFournisseursRdioBtn.Checked then
-    begin
         MainForm.FournisseurTable.First;
-     end;
 end;
 
 procedure TFournisseurListF.FormClose(Sender: TObject;
@@ -500,8 +292,8 @@ procedure TFournisseurListF.FormClose(Sender: TObject;
 begin
  //--------- do that when i want ODER by the Indexed of the FirDACTable-----/
  MainForm.FournisseurTable.IndexesActive:=True;
- MainForm.FournisseurTableActif.IndexesActive:= True;
- MainForm.FournisseurTablePassif.IndexesActive:= True;
+// MainForm.FournisseurTableActif.IndexesActive:= True;
+// MainForm.FournisseurTablePassif.IndexesActive:= True;
  ShowMessage('hello');
 end;
 
@@ -512,17 +304,42 @@ end;
 
 procedure TFournisseurListF.FormShow(Sender: TObject);
 begin
-   if ActifFournisseursRdioBtn.Checked then
-
-      ActifFournisseursRdioBtnClick(Sender);
 
        ResearchFournisseurEdt.SetFocus ;
   //----- for show how many Fournisseur on the database--------------//
       ToutFournisseursLbl.Caption:= IntToStr( MainForm.FournisseurTable.RecordCount) ;
 
-      ActifFournisseursLbl.Caption:= IntToStr( MainForm.FournisseurTableActif.RecordCount);
-      PassifFournisseursLbl.Caption:= IntToStr( MainForm.FournisseurTablePassif.RecordCount);
+      MainForm.FournisseurTable.DisableControls;
 
+      MainForm.FournisseurTable.Active := false;
+      MainForm.FournisseurTable.SQL.Clear;
+      MainForm.FournisseurTable.SQL.Text :=
+      'SELECT * FROM fournisseur  WHERE activ_f = true ORDER BY code_f';
+      MainForm.FournisseurTable.Active := true;
+
+     FournisseurListF.ActifFournisseursLbl.Caption :=
+     IntToStr(MainForm.FournisseurTable.RecordCount);
+
+      MainForm.FournisseurTable.Active := false;
+      MainForm.FournisseurTable.SQL.Clear;
+      MainForm.FournisseurTable.SQL.Text :=
+      'SELECT * FROM fournisseur WHERE activ_f = false ORDER BY code_f';
+      MainForm.FournisseurTable.Active := true;
+
+      FournisseurListF.PassifFournisseursLbl.Caption :=
+      IntToStr(MainForm.FournisseurTable.RecordCount);
+
+
+      MainForm.FournisseurTable.Active := false;
+      MainForm.FournisseurTable.SQL.Clear;
+      MainForm.FournisseurTable.SQL.Text :=
+      'SELECT * FROM fournisseur ORDER BY code_f ';
+      MainForm.FournisseurTable.Active := true;
+
+      FournisseurListF.ToutFournisseursLbl.Caption :=
+      IntToStr(MainForm.FournisseurTable.RecordCount);
+
+      MainForm.FournisseurTable.EnableControls;
 
 end;
 
@@ -560,23 +377,23 @@ begin
  FournisseursListDBGridEh.DefaultDrawColumnCell(Rect, DataCol, Column, State);
  end;
 end;
-if  FournisseurListDataS.DataSet = MainForm.FournisseurTableActif then
-begin
-if MainForm.FournisseurTableActif.FieldValues['oldcredit_f'] <> 0     then
- begin
- FournisseursListDBGridEh.Canvas.Font.Color:=$004735F9;//   Brush.Color:=clRed;
- FournisseursListDBGridEh.DefaultDrawColumnCell(Rect, DataCol, Column, State);
- end;
-end;
-
- if  FournisseurListDataS.DataSet = MainForm.FournisseurTablePassif then
- begin
- if MainForm.FournisseurTablePassif.FieldValues['oldcredit_f'] <> 0    then
- begin
- FournisseursListDBGridEh.Canvas.Font.Color:=$004735F9;//   Brush.Color:=clRed;
- FournisseursListDBGridEh.DefaultDrawColumnCell(Rect, DataCol, Column, State);
- end;
- end;
+//if  FournisseurListDataS.DataSet = MainForm.FournisseurTableActif then
+//begin
+//if MainForm.FournisseurTableActif.FieldValues['oldcredit_f'] <> 0     then
+// begin
+// FournisseursListDBGridEh.Canvas.Font.Color:=$004735F9;//   Brush.Color:=clRed;
+// FournisseursListDBGridEh.DefaultDrawColumnCell(Rect, DataCol, Column, State);
+// end;
+//end;
+//
+// if  FournisseurListDataS.DataSet = MainForm.FournisseurTablePassif then
+// begin
+// if MainForm.FournisseurTablePassif.FieldValues['oldcredit_f'] <> 0    then
+// begin
+// FournisseursListDBGridEh.Canvas.Font.Color:=$004735F9;//   Brush.Color:=clRed;
+// FournisseursListDBGridEh.DefaultDrawColumnCell(Rect, DataCol, Column, State);
+// end;
+// end;
 
 end;
 
@@ -632,154 +449,48 @@ procedure TFournisseurListF.FournisseursListDBGridEhTitleBtnClick(
 begin
  //--------- do that when i want ODER by the EHDBNGRID-----/
  MainForm.FournisseurTable.IndexesActive:=false;
- MainForm.FournisseurTableActif.IndexesActive:= false;
- MainForm.FournisseurTablePassif.IndexesActive:= false;
+// MainForm.FournisseurTableActif.IndexesActive:= false;
+// MainForm.FournisseurTablePassif.IndexesActive:= false;
 end;
 
 procedure TFournisseurListF.LastClientbtnClick(Sender: TObject);
 begin
- if ActifFournisseursRdioBtn.Checked then
-
-    begin
-
-        MainForm.FournisseurTableActif.last;
-
-    end;
-
-     if PassifFournisseursRdioBtn.Checked then
-
-    begin
-
-         MainForm.FournisseurTablePassif.last;
-
-    end;
-
-     if ToutFournisseursRdioBtn.Checked then
-
-    begin
 
         MainForm.FournisseurTable.last;
 
-    end;
 end;
 
 procedure TFournisseurListF.NextClientbtnClick(Sender: TObject);
 begin
-  if ActifFournisseursRdioBtn.Checked then
-
-    begin
-
-        MainForm.FournisseurTableActif.Next;
-
-    end;
-
-     if PassifFournisseursRdioBtn.Checked then
-
-    begin
-
-         MainForm.FournisseurTablePassif.Next;
-
-    end;
-
-     if ToutFournisseursRdioBtn.Checked then
-
-    begin
-
         MainForm.FournisseurTable.Next;
-
-    end;
 end;
 
 procedure TFournisseurListF.PassifFournisseursRdioBtnClick(Sender: TObject);
 begin
 
 
-  FournisseurListDataS.DataSet:= MainForm.FournisseurTablePassif;
-
   ResearchFournisseurEdt.Text:= '';
   ResearchFournisseurEdt.SetFocus;
-    MainForm.FournisseurTablePassif.Filtered := false;
-    MainForm.FournisseurTablePassif.Refresh;
+
+  MainForm.FournisseurTable.DisableControls;
+
+  MainForm.FournisseurTable.Active := false;
+  MainForm.FournisseurTable.SQL.Clear;
+  MainForm.FournisseurTable.SQL.Text :=
+  'SELECT * FROM fournisseur WHERE activ_f = false ORDER BY code_f ';
+  MainForm.FournisseurTable.Active := true;
+
+  MainForm.FournisseurTable.EnableControls;
 
 end;
 
 procedure TFournisseurListF.PreviosClientbtnClick(Sender: TObject);
 begin
-  if ActifFournisseursRdioBtn.Checked then
-
-    begin
-
-        MainForm.FournisseurTableActif.Prior;
-
-    end;
-
-     if PassifFournisseursRdioBtn.Checked then
-
-    begin
-
-         MainForm.FournisseurTablePassif.Prior;
-
-    end;
-
-     if ToutFournisseursRdioBtn.Checked then
-
-    begin
-
         MainForm.FournisseurTable.Prior;
-
-    end;
 end;
 
 procedure TFournisseurListF.ResearchFournisseurEdtChange(Sender: TObject);
-
-
 begin
-        if ActifFournisseursRdioBtn.Checked then
-
-              //----------- Searching in databese-------------------//
-
-       if (ResearchFournisseurEdt.text <> '') then
-
-                begin
-
-                  MainForm.FournisseurTableActif.Filtered:=false;
-                  MainForm.FournisseurTableActif.Filter := '[nom_f] LIKE ' + quotedstr(    ResearchFournisseurEdt.Text +'%' )+'OR  [nom_f] LIKE ' + quotedstr(  '%' +  ResearchFournisseurEdt.Text +'%'  )    +  'and  [activ_f] = true' ;
-                  MainForm.FournisseurTableActif.Filtered :=True;
-
-                  end
-                else
-
-                    begin
-
-                        MainForm.FournisseurTableActif.Filtered := false;
-
-                           end;
-
-
-
-   if PassifFournisseursRdioBtn.Checked then
-
-          if (ResearchFournisseurEdt.text <> '') then
-
-                begin
-
-                  MainForm.FournisseurTablePassif.Filtered:=false;
-                  MainForm.FournisseurTablePassif.Filter := '[nom_f] LIKE ' + quotedstr(  '%'+  ResearchFournisseurEdt.Text +'%') +  'and  [activ_f] = false' ;
-                  MainForm.FournisseurTablePassif.Filtered :=True;
-
-                  end
-                else
-
-                    begin
-
-                         MainForm.FournisseurTablePassif.Filtered := false;
-
-
-                           end;
-
-   if toutFournisseursRdioBtn.Checked then
-
-
       if (ResearchFournisseurEdt.text <> '') then
 
                 begin
@@ -815,14 +526,18 @@ end;
 
 procedure TFournisseurListF.toutFournisseursRdioBtnClick(Sender: TObject);
 begin
+  ResearchFournisseurEdt.Text:= '';
+  ResearchFournisseurEdt.SetFocus;
 
+  MainForm.FournisseurTable.DisableControls;
+    MainForm.FournisseurTable.Active := false;
+  MainForm.FournisseurTable.SQL.Clear;
+  MainForm.FournisseurTable.SQL.Text :=
+  'SELECT * FROM fournisseur ORDER BY code_f ';
+  MainForm.FournisseurTable.Active := true;
 
- FournisseurListDataS.DataSet:= MainForm.FournisseurTable;
- ResearchFournisseurEdt.Text:= '';
- ResearchFournisseurEdt.SetFocus;
-   MainForm.FournisseurTable.Filtered := false;
+    MainForm.FournisseurTable.EnableControls;
 
-   MainForm.FournisseurTable.Refresh;
 
 end;
 
