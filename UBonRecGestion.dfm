@@ -2095,32 +2095,6 @@ object BonRecGestionF: TBonRecGestionF
     Left = 984
     Top = 480
   end
-  object BindSourceDB1: TBindSourceDB
-    DataSet = MainForm.Bona_recTable
-    ScopeMappings = <>
-    Left = 968
-    Top = 424
-  end
-  object BindingsList1: TBindingsList
-    Methods = <>
-    OutputConverters = <>
-    Left = 908
-    Top = 421
-    object LinkPropertyToFieldCaption: TLinkPropertyToField
-      Category = 'Quick Bindings'
-      DataSource = BindSourceDB1
-      FieldName = 'num_barec'
-      Component = NumBonRecGEdt
-      ComponentProperty = 'Caption'
-    end
-    object LinkControlToField1: TLinkControlToField
-      Category = 'Quick Bindings'
-      DataSource = BindSourceDB1
-      FieldName = 'date_barec'
-      Control = DateBonRecGD
-      Track = True
-    end
-  end
   object frxBonRecDT: TfrxDBDataset
     UserName = 'frxBonRecDB'
     CloseDataSource = False
@@ -2256,7 +2230,7 @@ object BonRecGestionF: TBonRecGestionF
     Top = 480
   end
   object BonRecPListfrxRprt: TfrxReport
-    Version = '5.5'
+    Version = '5.4.6'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]

@@ -111,10 +111,6 @@ type
     ObserBonRecGLbl: TLabel;
     ObserBonRecGMem: TMemo;
     BonRRemiseHTNewLbl: TLabel;
-    BindSourceDB1: TBindSourceDB;
-    BindingsList1: TBindingsList;
-    LinkPropertyToFieldCaption: TLinkPropertyToField;
-    LinkControlToField1: TLinkControlToField;
     Label19: TLabel;
     BonRecGOLDStock: TLabel;
     Label20: TLabel;
@@ -1113,8 +1109,10 @@ begin
     MainForm.ProduitTable.Active:=True;
 
 
-    BonRecGOLDStock.Caption:=  floatTostrF((MainForm.ProduitTable.FieldValues['qut_p']),ffNumber,14,2);
-    BonRecGNEWStock.Caption:=  floatTostrF(((MainForm.ProduitTable.FieldValues['qut_p'])+(MainForm.Bona_recPlistTable.FieldValues['qut_p'])),ffNumber,14,2);
+    BonRecGOLDStock.Caption:=
+     floatTostrF((MainForm.ProduitTable.FieldValues['qut_p']),ffNumber,14,2);
+    BonRecGNEWStock.Caption:=
+     floatTostrF(((MainForm.ProduitTable.FieldValues['qut_p'])+((MainForm.Bona_recPlistTable.FieldValues['qut_p']) * (MainForm.Bona_recPlistTable.FieldValues['cond_p']))),ffNumber,14,2);
 
     MainForm.ProduitTable.Active:=False;
     MainForm.ProduitTable.SQL.Clear;

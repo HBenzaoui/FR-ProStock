@@ -165,7 +165,6 @@ type
     Bona_recPlistTablenomp: TStringField;
     Bona_recPlistTablereferp: TStringField;
     Bona_recPlistTabletvap: TIntegerField;
-    FDScript1: TFDScript;
     Button1: TButton;
     Button2: TButton;
     c4: TMenuItem;
@@ -676,6 +675,7 @@ type
     FourFaceBtn: TAdvToolButton;
     ProduitFaceBtn: TAdvToolButton;
     FDScriptCreateTables: TFDScript;
+    FDScript1: TFDScript;
     procedure ClientMainFBtnClick(Sender: TObject);
     procedure FourMainFBtnClick(Sender: TObject);
     procedure ProduitMainFBtnClick(Sender: TObject);
@@ -797,7 +797,7 @@ implementation
 
 uses TlHelp32,
 
-UClientsList, UFournisseurList, UProduitsList, UBonRec, UBonRecGestion,
+   UClientsList, UFournisseurList, UProduitsList, UBonRec, UBonRecGestion,
   USplashAddUnite, UBonLiv, UBonLivGestion, UBonFacVGestion, UBonFacV,
   UBonFacAGestion, UBonFacA, UComptoir,ShellAPI, UBonCtr, UCaisseList,
   UBankList, UUsersList, UUsersGestion, UReglementFList, UReglementCList,
@@ -1096,7 +1096,7 @@ begin
  GstockdcConnection.Params.Values['Database'] := 'GSTOCKDC';
  GstockdcConnection.Connected:= True;
 
- FDScriptCreateTables.ExecuteAll;
+// FDScriptCreateTables.ExecuteAll;
 
   Application.UpdateFormatSettings := false;
   FormatSettings.DecimalSeparator := ',';
@@ -2156,9 +2156,10 @@ begin
       GstockdcConnection.Connected := True;
     ProduitTable.Active := True;
     ClientTable.Active := True;
+//    ClientListF.ClientTablePassif.Active := True;
+//    ClientListF.ClientTableActif.Active := True;
     FournisseurTable.Active := True;
-//    FournisseurTablePassif.Active := True;
-//    FournisseurTableActif.Active := True;
+
 //    Bona_recTable.Active := True;
 //    Bona_recPlistTable.Active := True;
 //    Bona_facTable.Active := True;

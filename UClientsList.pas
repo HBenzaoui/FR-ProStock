@@ -350,13 +350,14 @@ end;
 
 procedure TClientListF.DeleteClientsBtnClick(Sender: TObject);
 begin
-
+ if NOT (MainForm.ClientTable.FieldByName('code_c').AsInteger = 1) then
+ begin
 
  if ActifClientsRdioBtn.Checked then
 
  begin
 
- if not ClientsListDBGridEh.DataSource.DataSet.IsEmpty then
+  if not ClientsListDBGridEh.DataSource.DataSet.IsEmpty then
    begin
    GrayForms;
      with ClientTableActif do  begin
@@ -364,6 +365,7 @@ begin
 
    if MyMessageDlg('Ėtes-vous sûr de vouloir supprimer le client : '+ sLineBreak +  QuotedStr(fieldbyname('nom_c').Value) , mtConfirmation, [mbYes,mbNo], ['Oui','Non'],'Attention', mbNo )  = mrYes then
        begin
+
 
 
       ClientTableActif.Delete;
@@ -528,6 +530,8 @@ begin
    end
 
  else   Exit
+
+ end;
 
  end;
 

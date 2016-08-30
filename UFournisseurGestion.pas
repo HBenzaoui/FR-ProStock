@@ -302,16 +302,18 @@ procedure TFournisseurGestionF.OKFournisseurGBtnClick(Sender: TObject);
 var codeF : Integer;
 begin
 
-  MainForm.FournisseurTable.Active := false;
-  MainForm.FournisseurTable.SQL.Clear;
-  MainForm.FournisseurTable.SQL.Text :=
-    'SELECT * FROM fournisseur ORDER BY code_f';
-  MainForm.FournisseurTable.Active := true;
+
 
   if NameFournisseurGEdt.Text <> '' then
   begin
     if OKFournisseurGBtn.Tag = 0 then
     begin
+      MainForm.FournisseurTable.Active := false;
+      MainForm.FournisseurTable.SQL.Clear;
+      MainForm.FournisseurTable.SQL.Text :=
+        'SELECT * FROM fournisseur ORDER BY code_f';
+      MainForm.FournisseurTable.Active := true;
+
         with MainForm.FournisseurTable do
         begin
           if NOT (MainForm.FournisseurTable.IsEmpty) then
@@ -371,7 +373,7 @@ begin
         end;
 
 
-    // ----------------------------------------------------------------------------------------------------
+    // ----------------editing fourn---------------------------------------------------
 
     if OKFournisseurGBtn.Tag = 1 then
     begin
@@ -419,17 +421,6 @@ begin
           post;
         end;
 
-//      MainForm.FournisseurTableActif.Refresh;
-//      FournisseurListF.ActifFournisseursLbl.Caption :=
-//        IntToStr(MainForm.FournisseurTableActif.RecordCount);
-//
-//      MainForm.FournisseurTablePassif.Refresh;
-//      FournisseurListF.PassifFournisseursLbl.Caption :=
-//        IntToStr(MainForm.FournisseurTablePassif.RecordCount);
-
-//      MainForm.FournisseurTable.Refresh;
-//      FournisseurListF.ToutFournisseursLbl.Caption :=
-//        IntToStr(MainForm.FournisseurTable.RecordCount);
     end;
 
     // --------------- adding from the produit panel----
@@ -437,115 +428,118 @@ begin
     if OKFournisseurGBtn.Tag = 2 then
     begin
       with MainForm.FournisseurTable do
-      begin
-        Last;
-        Insert;
-        // fieldbyname('code_c').Value :=   Concat(N,fieldbyname('code_c').Value )     ;
-        FieldValues['activ_f'] := ActiveFournisseurGSlider.SliderOn;
-        fieldbyname('nom_f').Value := NameFournisseurGEdt.Text;
-        fieldbyname('adr_f').Value := AdrFournisseurGEdt.Text;
-        fieldbyname('willaya_f').Value := WilayaFournisseurGCbx.Text;
-        fieldbyname('ville_f').Value := VilleFournisseurGCbx.Text;
-        fieldbyname('fix_f').Value := FixFournisseurGEdt.Text;
-        fieldbyname('fax_f').Value := FaxFournisseurGEdt.Text;
-        fieldbyname('mob_f').Value := MobileFournisseurGEdt.Text;
-        fieldbyname('mob2_f').Value := MobileFournisseurGEdt.Text;
-        fieldbyname('email_f').Value := EmailFournisseurGEdt.Text;
-        fieldbyname('siteweb_f').Value := SiteFournisseurGEdt.Text;
-        fieldbyname('rc_f').Value := RCFournisseurGEdt.Text;
-        fieldbyname('nart_f').Value := NArtFournisseurGEdt.Text;
-        fieldbyname('nif_f').Value := NIFFournisseurGEdt.Text;
-        fieldbyname('nis_f').Value := NISFournisseurGEdt.Text;
-        fieldbyname('nbank_f').Value := NBankFournisseurGEdt.Text;
-        fieldbyname('rib_f').Value := RIBFournisseurGEdt.Text;
-        if OldCreditFournisseurGEdt.Text <> '' then
         begin
-          fieldbyname('oldcredit_f').Value :=
-            Trim(OldCreditFournisseurGEdt.Text);
-        end
-        else
-        begin
-          fieldbyname('oldcredit_f').Value := StrToInt('0')
-        end;
-        if MaxCreditFournisseurGEdt.Text <> '' then
-        begin
-          fieldbyname('maxcredit_f').Value :=
-            Trim(MaxCreditFournisseurGEdt.Text);
-        end
-        else
-        begin
-          fieldbyname('maxcredit_f').Value := StrToInt('0')
-        end;
-        fieldbyname('obser_f').Value := ObserFournisseurGMem.Text;
-        post;
-      end;
+          if NOT (MainForm.FournisseurTable.IsEmpty) then
+          begin
+          MainForm.FournisseurTable.Last;
+          codeF:= MainForm.FournisseurTable.FieldValues['code_f'] + 1;
+          end else
+              begin
+               codeF:= 1;
+              end;
+          Append;
+          FieldValues['code_f'] := codeF;
+          FieldValues['activ_f'] := ActiveFournisseurGSlider.SliderOn;
+          fieldbyname('nom_f').Value := NameFournisseurGEdt.Text;
+          fieldbyname('adr_f').Value := AdrFournisseurGEdt.Text;
+          fieldbyname('willaya_f').Value := WilayaFournisseurGCbx.Text;
+          fieldbyname('ville_f').Value := VilleFournisseurGCbx.Text;
+          fieldbyname('fix_f').Value := FixFournisseurGEdt.Text;
+          fieldbyname('fax_f').Value := FaxFournisseurGEdt.Text;
+          fieldbyname('mob_f').Value := MobileFournisseurGEdt.Text;
+          fieldbyname('mob2_f').Value := MobileFournisseurGEdt.Text;
+          fieldbyname('email_f').Value := EmailFournisseurGEdt.Text;
+          fieldbyname('siteweb_f').Value := SiteFournisseurGEdt.Text;
+
+          fieldbyname('rc_f').Value := RCFournisseurGEdt.Text;
+          fieldbyname('nart_f').Value := NArtFournisseurGEdt.Text;
+          fieldbyname('nif_f').Value := NIFFournisseurGEdt.Text;
+          fieldbyname('nis_f').Value := NISFournisseurGEdt.Text;
+          fieldbyname('nbank_f').Value := NBankFournisseurGEdt.Text;
+          fieldbyname('rib_f').Value := RIBFournisseurGEdt.Text;
+          if OldCreditFournisseurGEdt.Text <> '' then
+          begin
+            fieldbyname('oldcredit_f').Value :=
+              Trim(OldCreditFournisseurGEdt.Text);
+          end
+          else
+          begin
+            fieldbyname('oldcredit_f').Value := StrToInt('0')
+          end;
+          if MaxCreditFournisseurGEdt.Text <> '' then
+          begin
+            fieldbyname('maxcredit_f').Value :=
+              Trim(MaxCreditFournisseurGEdt.Text);
+          end
+          else
+          begin
+            fieldbyname('maxcredit_f').Value := StrToInt('0')
+          end;
+          fieldbyname('obser_f').Value := ObserFournisseurGMem.Text;
+          post;
+          end;
+
+
       MainForm.FournisseurTable.Refresh;
       MainForm.FournisseurTable.Last;
       ProduitGestionF.FournisseurProduitGCbx.Text := NameFournisseurGEdt.Text;
-      // ProduitGestionF.FournisseurProduitGCbx.SetFocus;
-
-      if assigned(FournisseurListF) then
-      begin
-        // ----- for show how many Fournisseur on the database--------------//
-        MainForm.FournisseurTable.Refresh;
-//        MainForm.FournisseurTableActif.Refresh;
-//        MainForm.FournisseurTablePassif.Refresh;
-        FournisseurListF.ToutFournisseursLbl.Caption :=
-          IntToStr(MainForm.FournisseurTable.RecordCount);
-//        FournisseurListF.ActifFournisseursLbl.Caption :=
-//          IntToStr(MainForm.FournisseurTableActif.RecordCount);
-//        FournisseurListF.PassifFournisseursLbl.Caption :=
-//          IntToStr(MainForm.FournisseurTablePassif.RecordCount);
-      end;
-
     end;
 
   // --------------- adding from the bon_rec  panel----
          if OKFournisseurGBtn.Tag = 3 then
     begin
-      with MainForm.FournisseurTable do
-      begin
-        Last;
-        Insert;
-        // fieldbyname('code_c').Value :=   Concat(N,fieldbyname('code_c').Value )     ;
-        FieldValues['activ_f'] := ActiveFournisseurGSlider.SliderOn;
-        fieldbyname('nom_f').Value := NameFournisseurGEdt.Text;
-        fieldbyname('adr_f').Value := AdrFournisseurGEdt.Text;
-        fieldbyname('willaya_f').Value := WilayaFournisseurGCbx.Text;
-        fieldbyname('ville_f').Value := VilleFournisseurGCbx.Text;
-        fieldbyname('fix_f').Value := FixFournisseurGEdt.Text;
-        fieldbyname('fax_f').Value := FaxFournisseurGEdt.Text;
-        fieldbyname('mob_f').Value := MobileFournisseurGEdt.Text;
-        fieldbyname('mob2_f').Value := MobileFournisseurGEdt.Text;
-        fieldbyname('email_f').Value := EmailFournisseurGEdt.Text;
-        fieldbyname('siteweb_f').Value := SiteFournisseurGEdt.Text;
-        fieldbyname('rc_f').Value := RCFournisseurGEdt.Text;
-        fieldbyname('nart_f').Value := NArtFournisseurGEdt.Text;
-        fieldbyname('nif_f').Value := NIFFournisseurGEdt.Text;
-        fieldbyname('nis_f').Value := NISFournisseurGEdt.Text;
-        fieldbyname('nbank_f').Value := NBankFournisseurGEdt.Text;
-        fieldbyname('rib_f').Value := RIBFournisseurGEdt.Text;
-        if OldCreditFournisseurGEdt.Text <> '' then
+        with MainForm.FournisseurTable do
         begin
-          fieldbyname('oldcredit_f').Value :=
-            Trim(OldCreditFournisseurGEdt.Text);
-        end
-        else
-        begin
-          fieldbyname('oldcredit_f').Value := StrToInt('0')
-        end;
-        if MaxCreditFournisseurGEdt.Text <> '' then
-        begin
-          fieldbyname('maxcredit_f').Value :=
-            Trim(MaxCreditFournisseurGEdt.Text);
-        end
-        else
-        begin
-          fieldbyname('maxcredit_f').Value := StrToInt('0')
-        end;
-        fieldbyname('obser_f').Value := ObserFournisseurGMem.Text;
-        post;
-      end;
+          if NOT (MainForm.FournisseurTable.IsEmpty) then
+          begin
+          MainForm.FournisseurTable.Last;
+          codeF:= MainForm.FournisseurTable.FieldValues['code_f'] + 1;
+          end else
+              begin
+               codeF:= 1;
+              end;
+          Append;
+          FieldValues['code_f'] := codeF;
+          FieldValues['activ_f'] := ActiveFournisseurGSlider.SliderOn;
+          fieldbyname('nom_f').Value := NameFournisseurGEdt.Text;
+          fieldbyname('adr_f').Value := AdrFournisseurGEdt.Text;
+          fieldbyname('willaya_f').Value := WilayaFournisseurGCbx.Text;
+          fieldbyname('ville_f').Value := VilleFournisseurGCbx.Text;
+          fieldbyname('fix_f').Value := FixFournisseurGEdt.Text;
+          fieldbyname('fax_f').Value := FaxFournisseurGEdt.Text;
+          fieldbyname('mob_f').Value := MobileFournisseurGEdt.Text;
+          fieldbyname('mob2_f').Value := MobileFournisseurGEdt.Text;
+          fieldbyname('email_f').Value := EmailFournisseurGEdt.Text;
+          fieldbyname('siteweb_f').Value := SiteFournisseurGEdt.Text;
+
+          fieldbyname('rc_f').Value := RCFournisseurGEdt.Text;
+          fieldbyname('nart_f').Value := NArtFournisseurGEdt.Text;
+          fieldbyname('nif_f').Value := NIFFournisseurGEdt.Text;
+          fieldbyname('nis_f').Value := NISFournisseurGEdt.Text;
+          fieldbyname('nbank_f').Value := NBankFournisseurGEdt.Text;
+          fieldbyname('rib_f').Value := RIBFournisseurGEdt.Text;
+          if OldCreditFournisseurGEdt.Text <> '' then
+          begin
+            fieldbyname('oldcredit_f').Value :=
+              Trim(OldCreditFournisseurGEdt.Text);
+          end
+          else
+          begin
+            fieldbyname('oldcredit_f').Value := StrToInt('0')
+          end;
+          if MaxCreditFournisseurGEdt.Text <> '' then
+          begin
+            fieldbyname('maxcredit_f').Value :=
+              Trim(MaxCreditFournisseurGEdt.Text);
+          end
+          else
+          begin
+            fieldbyname('maxcredit_f').Value := StrToInt('0')
+          end;
+          fieldbyname('obser_f').Value := ObserFournisseurGMem.Text;
+          post;
+          end;
+
       MainForm.FournisseurTable.Refresh;
       MainForm.FournisseurTable.Last;
       BonRecGestionF.FournisseurBonRecGCbx.Text := NameFournisseurGEdt.Text;
@@ -558,49 +552,58 @@ begin
       // --------------- adding from the facture d''achat panel----
          if OKFournisseurGBtn.Tag = 4 then
     begin
-      with MainForm.FournisseurTable do
-      begin
-        Last;
-        Insert;
-        // fieldbyname('code_c').Value :=   Concat(N,fieldbyname('code_c').Value )     ;
-        FieldValues['activ_f'] := ActiveFournisseurGSlider.SliderOn;
-        fieldbyname('nom_f').Value := NameFournisseurGEdt.Text;
-        fieldbyname('adr_f').Value := AdrFournisseurGEdt.Text;
-        fieldbyname('willaya_f').Value := WilayaFournisseurGCbx.Text;
-        fieldbyname('ville_f').Value := VilleFournisseurGCbx.Text;
-        fieldbyname('fix_f').Value := FixFournisseurGEdt.Text;
-        fieldbyname('fax_f').Value := FaxFournisseurGEdt.Text;
-        fieldbyname('mob_f').Value := MobileFournisseurGEdt.Text;
-        fieldbyname('mob2_f').Value := MobileFournisseurGEdt.Text;
-        fieldbyname('email_f').Value := EmailFournisseurGEdt.Text;
-        fieldbyname('siteweb_f').Value := SiteFournisseurGEdt.Text;
-        fieldbyname('rc_f').Value := RCFournisseurGEdt.Text;
-        fieldbyname('nart_f').Value := NArtFournisseurGEdt.Text;
-        fieldbyname('nif_f').Value := NIFFournisseurGEdt.Text;
-        fieldbyname('nis_f').Value := NISFournisseurGEdt.Text;
-        fieldbyname('nbank_f').Value := NBankFournisseurGEdt.Text;
-        fieldbyname('rib_f').Value := RIBFournisseurGEdt.Text;
-        if OldCreditFournisseurGEdt.Text <> '' then
+        with MainForm.FournisseurTable do
         begin
-          fieldbyname('oldcredit_f').Value :=
-            Trim(OldCreditFournisseurGEdt.Text);
-        end
-        else
-        begin
-          fieldbyname('oldcredit_f').Value := StrToInt('0')
-        end;
-        if MaxCreditFournisseurGEdt.Text <> '' then
-        begin
-          fieldbyname('maxcredit_f').Value :=
-            Trim(MaxCreditFournisseurGEdt.Text);
-        end
-        else
-        begin
-          fieldbyname('maxcredit_f').Value := StrToInt('0')
-        end;
-        fieldbyname('obser_f').Value := ObserFournisseurGMem.Text;
-        post;
-      end;
+          if NOT (MainForm.FournisseurTable.IsEmpty) then
+          begin
+          MainForm.FournisseurTable.Last;
+          codeF:= MainForm.FournisseurTable.FieldValues['code_f'] + 1;
+          end else
+              begin
+               codeF:= 1;
+              end;
+          Append;
+          FieldValues['code_f'] := codeF;
+          FieldValues['activ_f'] := ActiveFournisseurGSlider.SliderOn;
+          fieldbyname('nom_f').Value := NameFournisseurGEdt.Text;
+          fieldbyname('adr_f').Value := AdrFournisseurGEdt.Text;
+          fieldbyname('willaya_f').Value := WilayaFournisseurGCbx.Text;
+          fieldbyname('ville_f').Value := VilleFournisseurGCbx.Text;
+          fieldbyname('fix_f').Value := FixFournisseurGEdt.Text;
+          fieldbyname('fax_f').Value := FaxFournisseurGEdt.Text;
+          fieldbyname('mob_f').Value := MobileFournisseurGEdt.Text;
+          fieldbyname('mob2_f').Value := MobileFournisseurGEdt.Text;
+          fieldbyname('email_f').Value := EmailFournisseurGEdt.Text;
+          fieldbyname('siteweb_f').Value := SiteFournisseurGEdt.Text;
+
+          fieldbyname('rc_f').Value := RCFournisseurGEdt.Text;
+          fieldbyname('nart_f').Value := NArtFournisseurGEdt.Text;
+          fieldbyname('nif_f').Value := NIFFournisseurGEdt.Text;
+          fieldbyname('nis_f').Value := NISFournisseurGEdt.Text;
+          fieldbyname('nbank_f').Value := NBankFournisseurGEdt.Text;
+          fieldbyname('rib_f').Value := RIBFournisseurGEdt.Text;
+          if OldCreditFournisseurGEdt.Text <> '' then
+          begin
+            fieldbyname('oldcredit_f').Value :=
+              Trim(OldCreditFournisseurGEdt.Text);
+          end
+          else
+          begin
+            fieldbyname('oldcredit_f').Value := StrToInt('0')
+          end;
+          if MaxCreditFournisseurGEdt.Text <> '' then
+          begin
+            fieldbyname('maxcredit_f').Value :=
+              Trim(MaxCreditFournisseurGEdt.Text);
+          end
+          else
+          begin
+            fieldbyname('maxcredit_f').Value := StrToInt('0')
+          end;
+          fieldbyname('obser_f').Value := ObserFournisseurGMem.Text;
+          post;
+          end;
+
       MainForm.FournisseurTable.Refresh;
       MainForm.FournisseurTable.Last;
       BonFacAGestionF.FourBonFacAGCbx.Text := NameFournisseurGEdt.Text;
@@ -613,48 +616,57 @@ begin
      if OKFournisseurGBtn.Tag = 5 then
     begin
       with MainForm.FournisseurTable do
-      begin
-        Last;
-        Insert;
-        // fieldbyname('code_c').Value :=   Concat(N,fieldbyname('code_c').Value )     ;
-        FieldValues['activ_f'] := ActiveFournisseurGSlider.SliderOn;
-        fieldbyname('nom_f').Value := NameFournisseurGEdt.Text;
-        fieldbyname('adr_f').Value := AdrFournisseurGEdt.Text;
-        fieldbyname('willaya_f').Value := WilayaFournisseurGCbx.Text;
-        fieldbyname('ville_f').Value := VilleFournisseurGCbx.Text;
-        fieldbyname('fix_f').Value := FixFournisseurGEdt.Text;
-        fieldbyname('fax_f').Value := FaxFournisseurGEdt.Text;
-        fieldbyname('mob_f').Value := MobileFournisseurGEdt.Text;
-        fieldbyname('mob2_f').Value := MobileFournisseurGEdt.Text;
-        fieldbyname('email_f').Value := EmailFournisseurGEdt.Text;
-        fieldbyname('siteweb_f').Value := SiteFournisseurGEdt.Text;
-        fieldbyname('rc_f').Value := RCFournisseurGEdt.Text;
-        fieldbyname('nart_f').Value := NArtFournisseurGEdt.Text;
-        fieldbyname('nif_f').Value := NIFFournisseurGEdt.Text;
-        fieldbyname('nis_f').Value := NISFournisseurGEdt.Text;
-        fieldbyname('nbank_f').Value := NBankFournisseurGEdt.Text;
-        fieldbyname('rib_f').Value := RIBFournisseurGEdt.Text;
-        if OldCreditFournisseurGEdt.Text <> '' then
         begin
-          fieldbyname('oldcredit_f').Value :=
-            Trim(OldCreditFournisseurGEdt.Text);
-        end
-        else
-        begin
-          fieldbyname('oldcredit_f').Value := StrToInt('0')
-        end;
-        if MaxCreditFournisseurGEdt.Text <> '' then
-        begin
-          fieldbyname('maxcredit_f').Value :=
-            Trim(MaxCreditFournisseurGEdt.Text);
-        end
-        else
-        begin
-          fieldbyname('maxcredit_f').Value := StrToInt('0')
-        end;
-        fieldbyname('obser_f').Value := ObserFournisseurGMem.Text;
-        post;
-      end;
+          if NOT (MainForm.FournisseurTable.IsEmpty) then
+          begin
+          MainForm.FournisseurTable.Last;
+          codeF:= MainForm.FournisseurTable.FieldValues['code_f'] + 1;
+          end else
+              begin
+               codeF:= 1;
+              end;
+          Append;
+          FieldValues['code_f'] := codeF;
+          FieldValues['activ_f'] := ActiveFournisseurGSlider.SliderOn;
+          fieldbyname('nom_f').Value := NameFournisseurGEdt.Text;
+          fieldbyname('adr_f').Value := AdrFournisseurGEdt.Text;
+          fieldbyname('willaya_f').Value := WilayaFournisseurGCbx.Text;
+          fieldbyname('ville_f').Value := VilleFournisseurGCbx.Text;
+          fieldbyname('fix_f').Value := FixFournisseurGEdt.Text;
+          fieldbyname('fax_f').Value := FaxFournisseurGEdt.Text;
+          fieldbyname('mob_f').Value := MobileFournisseurGEdt.Text;
+          fieldbyname('mob2_f').Value := MobileFournisseurGEdt.Text;
+          fieldbyname('email_f').Value := EmailFournisseurGEdt.Text;
+          fieldbyname('siteweb_f').Value := SiteFournisseurGEdt.Text;
+
+          fieldbyname('rc_f').Value := RCFournisseurGEdt.Text;
+          fieldbyname('nart_f').Value := NArtFournisseurGEdt.Text;
+          fieldbyname('nif_f').Value := NIFFournisseurGEdt.Text;
+          fieldbyname('nis_f').Value := NISFournisseurGEdt.Text;
+          fieldbyname('nbank_f').Value := NBankFournisseurGEdt.Text;
+          fieldbyname('rib_f').Value := RIBFournisseurGEdt.Text;
+          if OldCreditFournisseurGEdt.Text <> '' then
+          begin
+            fieldbyname('oldcredit_f').Value :=
+              Trim(OldCreditFournisseurGEdt.Text);
+          end
+          else
+          begin
+            fieldbyname('oldcredit_f').Value := StrToInt('0')
+          end;
+          if MaxCreditFournisseurGEdt.Text <> '' then
+          begin
+            fieldbyname('maxcredit_f').Value :=
+              Trim(MaxCreditFournisseurGEdt.Text);
+          end
+          else
+          begin
+            fieldbyname('maxcredit_f').Value := StrToInt('0')
+          end;
+          fieldbyname('obser_f').Value := ObserFournisseurGMem.Text;
+          post;
+          end;
+
       MainForm.FournisseurTable.Refresh;
       MainForm.FournisseurTable.Last;
       ReglementFGestionF.FournisseurRegFGCbx.Text := NameFournisseurGEdt.Text;
@@ -738,7 +750,7 @@ begin
         MainForm.FournisseurTable.Active := false;
         MainForm.FournisseurTable.SQL.Clear;
         MainForm.FournisseurTable.SQL.Text :=
-        'SELECT * FROM fournisseur  WHERE activ_f = falseR BY code_f';
+        'SELECT * FROM fournisseur  WHERE activ_f = false ORDER BY code_f';
         MainForm.FournisseurTable.Active := true;
        end;
 

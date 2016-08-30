@@ -2122,7 +2122,7 @@ object BonLivGestionF: TBonLivGestionF
     Top = 480
   end
   object BonLivPListfrxRprt: TfrxReport
-    Version = '5.5'
+    Version = '5.4.6'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -2956,6 +2956,7 @@ object BonLivGestionF: TBonLivGestionF
           Top = 59.472480000000000000
           Width = 60.472480000000000000
           Height = 18.897650000000000000
+          DataSet = BonRecF.frxBonRecDB
           DataSetName = 'frxBonRecDB'
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric

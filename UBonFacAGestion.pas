@@ -2005,8 +2005,10 @@ begin
     MainForm.ProduitTable.SQL.Text:='SELECT * FROM produit WHERE code_p = ' +IntToStr(MainForm.Bona_fac_listTable.FieldValues['code_p']);
     MainForm.ProduitTable.Active:=True;
 
-    BonFacAGOLDStock.Caption:=  floatTostrF((MainForm.ProduitTable.FieldValues['qut_p']),ffNumber,14,2);
-    BonFacAGNEWStock.Caption:=  floatTostrF(((MainForm.ProduitTable.FieldValues['qut_p'])-(MainForm.Bona_fac_listTable.FieldValues['qut_p'])),ffNumber,14,2);
+    BonFacAGOLDStock.Caption:=
+      floatTostrF((MainForm.ProduitTable.FieldValues['qut_p']),ffNumber,14,2);
+    BonFacAGNEWStock.Caption:=
+      floatTostrF(((MainForm.ProduitTable.FieldValues['qut_p'])+((MainForm.Bona_fac_listTable.FieldValues['qut_p'])*(MainForm.Bona_fac_listTable.FieldValues['cond_p']))),ffNumber,14,2);
 
     if(StrToFloat (StringReplace(BonFacAGNEWStock.Caption, #32, '', [rfReplaceAll])))  < 0 then
     begin

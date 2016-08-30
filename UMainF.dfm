@@ -23313,6 +23313,7 @@ object MainForm: TMainForm
     OnCalcFields = Bona_recPlistTableCalcFields
     FilterOptions = [foCaseInsensitive]
     IndexFieldNames = 'code_barec'
+    MasterSource = BonRecF.BonRecListDataS
     MasterFields = 'code_barec'
     Connection = GstockdcConnection
     SQL.Strings = (
@@ -23400,36 +23401,6 @@ object MainForm: TMainForm
     Connection = GstockdcConnection
     Left = 188
     Top = 94
-  end
-  object FDScript1: TFDScript
-    SQLScripts = <
-      item
-        Name = 'drop'
-        SQL.Strings = (
-          
-            'CREATE OR REPLACE FUNCTION truncate_tables(username IN VARCHAR )' +
-            ' RETURNS void as $$ '
-          'DECLARE statements CURSOR FOR SELECT tablename FROM pg_tables'
-          ' WHERE tableowner = username'
-          ' AND schemaname ='#39'public'#39';'
-          'BEGIN         '
-          '  FOR stmt IN statements LOOP '
-          '      EXECUTE '#39'TRUNCATE TABLE '#39' || quote_ident(stmt.tablename)'
-          '                                || '#39' CASCADE;'#39'; '
-          '  END LOOP;'
-          'END;'
-          '$$ LANGUAGE plpgsql;')
-      end>
-    Params = <>
-    Macros = <>
-    FetchOptions.AssignedValues = [evItems, evAutoClose, evAutoFetchAll]
-    FetchOptions.AutoClose = False
-    FetchOptions.Items = [fiBlobs, fiDetails]
-    ResourceOptions.AssignedValues = [rvMacroCreate, rvMacroExpand, rvDirectExecute, rvPersistent]
-    ResourceOptions.MacroCreate = False
-    ResourceOptions.DirectExecute = True
-    Left = 680
-    Top = 184
   end
   object PanelIcons24: TsAlphaImageList
     Height = 24
@@ -35239,6 +35210,7 @@ object MainForm: TMainForm
     OnCalcFields = Bonv_liv_listTableCalcFields
     FilterOptions = [foCaseInsensitive]
     IndexFieldNames = 'code_bvliv'
+    MasterSource = BonLivF.BonLivListDataS
     MasterFields = 'code_bvliv'
     Connection = GstockdcConnection
     SQL.Strings = (
@@ -36710,6 +36682,10 @@ object MainForm: TMainForm
     end
   end
   object GstockdcConnection: TFDConnection
+    Params.Strings = (
+      'Database=GSTOCKDC'
+      'User_Name=postgres'
+      'DriverID=PG')
     LoginPrompt = False
     Left = 51
     Top = 112
@@ -37746,7 +37722,7 @@ object MainForm: TMainForm
           DD035F4E82CC199DE81EF5C0A80728C7009712F39510F7C09B0000000049454E
           44AE426082}
       end>
-    Left = 936
+    Left = 904
     Top = 384
     Bitmap = {
       494C010100000800080001000100FFFFFFFF0400FFFFFFFFFFFFFFFF424D7600
@@ -39467,7 +39443,7 @@ object MainForm: TMainForm
   object FDScriptCreateTables: TFDScript
     SQLScripts = <
       item
-        Name = 'three'
+        Name = 'CreateTables'
         SQL.Strings = (
           '/*'
           'Source Server         : PostgreSQL'
@@ -39850,6 +39826,14 @@ object MainForm: TMainForm
           '-- Records of client'
           '-- ----------------------------'
           'BEGIN;'
+          
+            'INSERT INTO "client" VALUES ('#39'Comptoir'#39', '#39#39', '#39#39', '#39'              ' +
+            ' '#39', '#39'               '#39', '#39#39', '#39#39', '#39'               '#39', '#39't'#39', null, '#39'  ' +
+            '             '#39', '#39'                         '#39', '#39'                  ' +
+            '       '#39', '#39'                         '#39', '#39'                        ' +
+            ' '#39', '#39#39', '#39'                         '#39', '#39'                         '#39 +
+            ', '#39'                                        '#39', null, '#39#39', '#39'$0.00'#39',' +
+            ' '#39'$0.00'#39', '#39'1'#39', '#39'0'#39');'
           'COMMIT;'
           ''
           '-- ----------------------------'
@@ -45465,5 +45449,36 @@ object MainForm: TMainForm
     Macros = <>
     Left = 485
     Top = 104
+  end
+  object FDScript1: TFDScript
+    SQLScripts = <
+      item
+        Name = 'drop'
+        SQL.Strings = (
+          
+            'CREATE OR REPLACE FUNCTION truncate_tables(username IN VARCHAR )' +
+            ' RETURNS void as $$ '
+          'DECLARE statements CURSOR FOR SELECT tablename FROM pg_tables'
+          ' WHERE tableowner = username'
+          ' AND schemaname ='#39'public'#39';'
+          'BEGIN         '
+          '  FOR stmt IN statements LOOP '
+          '      EXECUTE '#39'TRUNCATE TABLE '#39' || quote_ident(stmt.tablename)'
+          '                                || '#39' CASCADE;'#39'; '
+          '  END LOOP;'
+          'END;'
+          '$$ LANGUAGE plpgsql;')
+      end>
+    Connection = GstockdcConnection
+    Params = <>
+    Macros = <>
+    FetchOptions.AssignedValues = [evItems, evAutoClose, evAutoFetchAll]
+    FetchOptions.AutoClose = False
+    FetchOptions.Items = [fiBlobs, fiDetails]
+    ResourceOptions.AssignedValues = [rvMacroCreate, rvMacroExpand, rvDirectExecute, rvPersistent]
+    ResourceOptions.MacroCreate = False
+    ResourceOptions.DirectExecute = True
+    Left = 680
+    Top = 184
   end
 end

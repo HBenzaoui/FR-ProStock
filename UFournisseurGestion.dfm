@@ -55,6 +55,7 @@ object FournisseurGestionF: TFournisseurGestionF
         ParentBackground = False
         TabOrder = 0
         StyleElements = []
+        ExplicitTop = -2
         DesignSize = (
           508
           458)
@@ -251,10 +252,12 @@ object FournisseurGestionF: TFournisseurGestionF
           StyleElements = [seClient, seBorder]
         end
         object RequiredFournisseurGlbl: TLabel
-          Left = 194
+          Left = 73
           Top = 38
-          Width = 139
-          Height = 32
+          Width = 425
+          Height = 21
+          Alignment = taCenter
+          AutoSize = False
           Caption = 'S'#39'il vous pla'#238't entrer un nom'
           Color = clBtnFace
           Font.Charset = DEFAULT_CHARSET
@@ -563,10 +566,6 @@ object FournisseurGestionF: TFournisseurGestionF
     end
     object PlusInfoClientGTB: TsTabSheet
       Caption = 'Plus D'#39'info'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object PlusInfoTB: TPanel
         Left = 0
         Top = 0

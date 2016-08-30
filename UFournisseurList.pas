@@ -168,10 +168,7 @@ end;
 procedure TFournisseurListF.DeleteFournisseursBtnClick(Sender: TObject);
 begin
 
-
 //-------------------------------------------------------------------------------------------------
-
-
 
  if not FournisseursListDBGridEh.DataSource.DataSet.IsEmpty then
    begin
@@ -187,17 +184,66 @@ begin
 
       MainForm.FournisseurTable.Refresh;
 
-      toutFournisseursLbl.Caption:= IntToStr( MainForm.FournisseurTable.RecordCount);
+        MainForm.FournisseurTable.DisableControls;
+
+      MainForm.FournisseurTable.Active := false;
+      MainForm.FournisseurTable.SQL.Clear;
+      MainForm.FournisseurTable.SQL.Text :=
+      'SELECT * FROM fournisseur  WHERE activ_f = true ORDER BY code_f';
+      MainForm.FournisseurTable.Active := true;
+
+     FournisseurListF.ActifFournisseursLbl.Caption :=
+     IntToStr(MainForm.FournisseurTable.RecordCount);
+
+      MainForm.FournisseurTable.Active := false;
+      MainForm.FournisseurTable.SQL.Clear;
+      MainForm.FournisseurTable.SQL.Text :=
+      'SELECT * FROM fournisseur WHERE activ_f = false ORDER BY code_f ';
+      MainForm.FournisseurTable.Active := true;
+
+      FournisseurListF.PassifFournisseursLbl.Caption :=
+      IntToStr(MainForm.FournisseurTable.RecordCount);
 
 
-//      MainForm.FournisseurTableActif.Refresh;
+      MainForm.FournisseurTable.Active := false;
+      MainForm.FournisseurTable.SQL.Clear;
+      MainForm.FournisseurTable.SQL.Text :=
+      'SELECT * FROM fournisseur ORDER BY code_f ';
+      MainForm.FournisseurTable.Active := true;
 
-//      FournisseurListF.ActifFournisseursLbl.Caption:= IntToStr( MainForm.FournisseurTableActif.RecordCount);
-//
-//
-//       MainForm.FournisseurTablePassif.Refresh;
-//
-//       FournisseurListF.PassifFournisseursLbl.Caption:= IntToStr( MainForm.FournisseurTablePassif.RecordCount);
+      FournisseurListF.ToutFournisseursLbl.Caption :=
+      IntToStr(MainForm.FournisseurTable.RecordCount);
+
+
+
+      if FournisseurListF.ActifFournisseursRdioBtn.Checked then
+       begin
+        MainForm.FournisseurTable.Active := false;
+        MainForm.FournisseurTable.SQL.Clear;
+        MainForm.FournisseurTable.SQL.Text :=
+        'SELECT * FROM fournisseur  WHERE activ_f = true ORDER BY code_f';
+        MainForm.FournisseurTable.Active := true;
+       end;
+
+       if FournisseurListF.PassifFournisseursRdioBtn.Checked then
+       begin
+        MainForm.FournisseurTable.Active := false;
+        MainForm.FournisseurTable.SQL.Clear;
+        MainForm.FournisseurTable.SQL.Text :=
+        'SELECT * FROM fournisseur  WHERE activ_f = false ORDER BY code_f';
+        MainForm.FournisseurTable.Active := true;
+       end;
+
+       if FournisseurListF.toutFournisseursRdioBtn.Checked then
+       begin
+        MainForm.FournisseurTable.Active := false;
+        MainForm.FournisseurTable.SQL.Clear;
+        MainForm.FournisseurTable.SQL.Text :=
+        'SELECT * FROM fournisseur ORDER BY code_f';
+        MainForm.FournisseurTable.Active := true;
+       end;
+
+      MainForm.FournisseurTable.EnableControls;
 
 
 
@@ -338,6 +384,36 @@ begin
 
       FournisseurListF.ToutFournisseursLbl.Caption :=
       IntToStr(MainForm.FournisseurTable.RecordCount);
+
+
+
+      if FournisseurListF.ActifFournisseursRdioBtn.Checked then
+       begin
+        MainForm.FournisseurTable.Active := false;
+        MainForm.FournisseurTable.SQL.Clear;
+        MainForm.FournisseurTable.SQL.Text :=
+        'SELECT * FROM fournisseur  WHERE activ_f = true ORDER BY code_f';
+        MainForm.FournisseurTable.Active := true;
+       end;
+
+       if FournisseurListF.PassifFournisseursRdioBtn.Checked then
+       begin
+        MainForm.FournisseurTable.Active := false;
+        MainForm.FournisseurTable.SQL.Clear;
+        MainForm.FournisseurTable.SQL.Text :=
+        'SELECT * FROM fournisseur  WHERE activ_f = false ORDER BY code_f';
+        MainForm.FournisseurTable.Active := true;
+       end;
+
+       if FournisseurListF.toutFournisseursRdioBtn.Checked then
+       begin
+        MainForm.FournisseurTable.Active := false;
+        MainForm.FournisseurTable.SQL.Clear;
+        MainForm.FournisseurTable.SQL.Text :=
+        'SELECT * FROM fournisseur ORDER BY code_f';
+        MainForm.FournisseurTable.Active := true;
+       end;
+
 
       MainForm.FournisseurTable.EnableControls;
 
