@@ -451,7 +451,7 @@ begin
   PreiodRX.Text:= 'Période du : ' + DateToStr(DateStartBVFacD.Date) + ' au ' + DateToStr(DateEndBVFacD.Date) ;
 
         Agent:= BonFacVfrxRprt.FindObject('Agent') as TfrxMemoView;
-  Agent.Text:= MainForm.UserIDLbl.Caption ;
+  Agent.Text:= MainForm.UserNameLbl.Caption ;
 end;
 
 

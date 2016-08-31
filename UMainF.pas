@@ -151,7 +151,6 @@ type
     Bona_recTableobser_barec: TWideMemoField;
     Bona_recPlistTablecode_barecl: TIntegerField;
     Bona_recPlistTablecode_barec: TIntegerField;
-    Bona_recPlistTablequt_p: TIntegerField;
     Bona_recPlistTableprixht_p: TCurrencyField;
     Bona_recPlistTablecond_p: TIntegerField;
     Bona_recPlistTablePrixATTC: TCurrencyField;
@@ -236,7 +235,6 @@ type
     Bonv_livTablecode_cmpt: TSmallintField;
     Bonv_liv_listTablecode_bvlivl: TIntegerField;
     Bonv_liv_listTablecode_bvliv: TIntegerField;
-    Bonv_liv_listTablequt_p: TIntegerField;
     Bonv_liv_listTablecond_p: TIntegerField;
     Bonv_liv_listTablecode_p: TIntegerField;
     Bona_facTable: TFDQuery;
@@ -257,7 +255,6 @@ type
     Bona_facTablecode_cmpt: TSmallintField;
     Bona_fac_listTablecode_bafacl: TIntegerField;
     Bona_fac_listTablecode_bafac: TIntegerField;
-    Bona_fac_listTablequt_p: TIntegerField;
     Bona_fac_listTableprixht_p: TCurrencyField;
     Bona_fac_listTablecond_p: TIntegerField;
     Bona_fac_listTablecode_p: TIntegerField;
@@ -285,7 +282,6 @@ type
     Bonv_facTablecode_cmpt: TSmallintField;
     Bonv_fac_listTablecode_bvfacl: TIntegerField;
     Bonv_fac_listTablecode_bvfac: TIntegerField;
-    Bonv_fac_listTablequt_p: TIntegerField;
     Bonv_fac_listTablecond_p: TIntegerField;
     WilayasDataS: TDataSource;
     CommunesTablecode_w: TSmallintField;
@@ -463,7 +459,6 @@ type
     Bonv_ctr_listTable: TFDQuery;
     Bonv_ctr_listTablecode_bvctrl: TIntegerField;
     Bonv_ctr_listTablecode_bvctr: TIntegerField;
-    Bonv_ctr_listTablequt_p: TIntegerField;
     Bonv_ctr_listTableprixvd_p: TCurrencyField;
     Bonv_ctr_listTablecond_p: TIntegerField;
     Bonv_ctr_listTablecode_p: TIntegerField;
@@ -525,7 +520,6 @@ type
     Accual: TsTabSheet;
     Bonv_ctr_Top10produit: TFDQuery;
     Bonv_ctr_Top10produitcode_p: TIntegerField;
-    Bonv_ctr_Top10produitsum: TLargeintField;
     Bonv_ctr_Top10produitnomp: TStringField;
     GstockdcConnection: TFDConnection;
     Opt_cas_bnk_CaisseTable: TFDQuery;
@@ -676,6 +670,14 @@ type
     ProduitFaceBtn: TAdvToolButton;
     FDScriptCreateTables: TFDScript;
     FDScript1: TFDScript;
+    BonCtrListDataS: TDataSource;
+    UserNameLbl: TLabel;
+    Bonv_fac_listTablequt_p: TFloatField;
+    Bona_recPlistTablequt_p: TFloatField;
+    Bona_fac_listTablequt_p: TFloatField;
+    Bonv_liv_listTablequt_p: TFloatField;
+    Bonv_ctr_listTablequt_p: TFloatField;
+    Bonv_ctr_Top10produitsum: TFloatField;
     procedure ClientMainFBtnClick(Sender: TObject);
     procedure FourMainFBtnClick(Sender: TObject);
     procedure ProduitMainFBtnClick(Sender: TObject);
@@ -759,6 +761,7 @@ type
     procedure ProduitMainFMmnClick(Sender: TObject);
     procedure BoardMainFBtnClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure H1Click(Sender: TObject);
   private
 
     TimerStart: TDateTime;
@@ -1107,7 +1110,7 @@ begin
   Width:= Screen.Width;
   Height:= Screen.Height - 50;
 
-  Label2.Caption:=#174;
+//  Label2.Caption:=#174;
 
 
 end;
@@ -1162,7 +1165,7 @@ begin
   Bona_recTable.FieldValues['MontantRes']:=
 ((Bona_recTable.FieldValues['montttc_barec']) - (Bona_recTable.FieldValues['montver_barec'])) ;
 
-  if (Bona_recTable.FieldValues['remise_barec']) AND (Bona_recTable.FieldValues['montht_barec']) <> 0 then
+  if ((Bona_recTable.FieldByName('remise_barec').AsCurrency) <> 0 ) AND  ((Bona_recTable.FieldByName('montht_barec').AsCurrency) <> 0) then
   begin
     Bona_recTable.FieldValues['RemisePerc']:=
     ((Bona_recTable.FieldValues['remise_barec'] / Bona_recTable.FieldValues['montht_barec']) * 100) ;
@@ -1489,7 +1492,7 @@ begin
   Bonv_livTable.FieldValues['MontantRes']:=
 ((Bonv_livTable.FieldValues['montttc_bvliv']) - (Bonv_livTable.FieldValues['montver_bvliv'])) ;
 
-  if (Bonv_livTable.FieldValues['remise_bvliv']) AND (Bonv_livTable.FieldValues['montht_bvliv']) <> 0 then
+  if ((Bonv_livTable.FieldByName('remise_bvliv').AsCurrency) <> 0 ) AND  ((Bonv_livTable.FieldByName('montht_bvliv').AsCurrency) <> 0) then
   begin
     Bonv_livTable.FieldValues['RemisePerc']:=
     ((Bonv_livTable.FieldValues['remise_bvliv'] / Bonv_livTable.FieldValues['montht_bvliv']) * 100) ;
@@ -1594,7 +1597,7 @@ begin
   Bonv_facTable.FieldValues['MontantRes']:=
 ((Bonv_facTable.FieldValues['montttc_bvfac']) - (Bonv_facTable.FieldValues['montver_bvfac'])) ;
 
-  if (Bonv_facTable.FieldValues['remise_bvfac']) AND (Bonv_facTable.FieldValues['montht_bvfac']) <> 0 then
+  if ((Bonv_facTable.FieldByName('remise_bvfac').AsCurrency) <> 0 ) AND  ((Bonv_facTable.FieldByName('montht_bvfac').AsCurrency) <> 0) then
   begin
     Bonv_facTable.FieldValues['RemisePerc']:=
     ((Bonv_facTable.FieldValues['remise_bvfac'] / Bonv_facTable.FieldValues['montht_bvfac']) * 100) ;
@@ -1789,7 +1792,7 @@ begin
   Bona_facTable.FieldValues['MontantRes']:=
 ((Bona_facTable.FieldValues['montttc_bafac']) - (Bona_facTable.FieldValues['montver_bafac'])) ;
 
-  if (Bona_facTable.FieldValues['remise_bafac']) AND (Bona_facTable.FieldValues['montht_bafac']) <> 0 then
+ if ((Bona_facTable.FieldByName('remise_bafac').AsCurrency) <> 0 ) AND  ((Bona_facTable.FieldByName('montht_bafac').AsCurrency) <> 0) then
   begin
     Bona_facTable.FieldValues['RemisePerc']:=
     ((Bona_facTable.FieldValues['remise_bafac'] / Bona_facTable.FieldValues['montht_bafac']) * 100) ;
@@ -2055,7 +2058,7 @@ begin
       Bonv_ctrTable.FieldValues['MontantRen']:=0;
      end;
 
-  if (Bonv_ctrTable.FieldValues['remise_bvctr']) AND (Bonv_ctrTable.FieldValues['montht_bvctr']) <> 0 then
+  if ((Bonv_ctrTable.FieldByName('remise_bvctr').AsCurrency) <> 0 ) AND  ((Bonv_ctrTable.FieldByName('montht_bvctr').AsCurrency) <> 0) then
   begin
     Bonv_ctrTable.FieldValues['RemisePerc']:=
     ((Bonv_ctrTable.FieldValues['remise_bvctr'] / Bonv_ctrTable.FieldValues['montht_bvctr']) * 100) ;
@@ -2964,6 +2967,9 @@ begin
    KillTask('cmd.exe');
 end;
 
+procedure TMainForm.H1Click(Sender: TObject);
+begin
+FactureV2MainFMnmClick(Sender);
+end;
+
 End.
-
-

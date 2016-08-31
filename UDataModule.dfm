@@ -19,7 +19,7 @@ object DataModuleF: TDataModuleF
       FieldName = 'code_p'
       Origin = 'code_p'
     end
-    object Top5produitsum: TLargeintField
+    object Top5produitsum: TFloatField
       AutoGenerateValue = arDefault
       FieldName = 'sum'
       Origin = 'sum'

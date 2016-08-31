@@ -1814,61 +1814,10 @@ begin
    BonLivF.BonLivListDataS.DataSet.Refresh;
    Refresh;
 
-        ModePaieBonLivGCbx.Refresh;
-     CompteBonLivGCbx.Refresh;
+   ModePaieBonLivGCbx.Refresh;
+   CompteBonLivGCbx.Refresh;
 
-  begin
-
-          AddBVLivBonLivGBtn.Enabled:= False;
-          AddBVLivBonLivGBtn.ImageIndex:=28;// 4 For D
-          EditBVLivBonLivGBtn.Enabled:= False;
-          EditBVLivBonLivGBtn.ImageIndex:=29;// 5 for D
-          ValiderBVLivBonLivGBtn.Enabled:= True;
-          ValiderBVLivBonLivGBtn.ImageIndex:=12;//30 for D
-
-          DateBonLivGD.Enabled:= True;
-          ObserBonLivGMem.Enabled:= True;
-          ClientBonLivGCbx.Enabled:= True;
-          AddClientBonLivGBtn.ImageIndex:=10;//35 fo D
-          ModePaieBonLivGCbx.Enabled:= True;
-          AddModePaieBonLivGBtn.ImageIndex:=10;// 35 fo D
-          CompteBonLivGCbx.Enabled:= True;
-          AddCompteBonLivGBtn.ImageIndex:=10;// 35 fo D
-          NChequeBonLivGCbx.Enabled:= True;
-          ProduitBonLivGCbx.Enabled:= True;
-          EnterAddProduitBonLivGBtn.Enabled:= True;
-          EnterAddProduitBonLivGBtn.ImageIndex:=15;// 40 fo D
-          ListAddProduitBonLivGBtn.Enabled:= True;
-          ListAddProduitBonLivGBtn.ImageIndex:=13;//41 fo D
-          NewAddProduitBonLivGBtn.Enabled:= True;
-          NewAddProduitBonLivGBtn.ImageIndex:=4;//28 fo D
-          DeleteProduitBonLivGBtn.Enabled:= True;
-          DeleteProduitBonLivGBtn.ImageIndex:=14;//36 fo D
-          ClearProduitBonLivGBtn.Enabled:= True;
-          ClearProduitBonLivGBtn.ImageIndex:=16;//39 fo A
-          ProduitsListDBGridEh.DataSource.DataSet.EnableControls;//DisableControls    For A
-          ProduitsListDBGridEh.Columns[2].TextEditing :=True;//False for D
-          ProduitsListDBGridEh.Columns[3].TextEditing:=True;//False for D
-          ProduitsListDBGridEh.Columns[4].TextEditing:=True;//False for D
-          ProduitsListDBGridEh.Options:=
-          ProduitsListDBGridEh.Options +[dgEditing] +[dgAlwaysShowSelection]+[dgMultiSelect]- [dgRowSelect] ; //flip + and -  for A
-          ProduitsListDBGridEh.Color:= clWhite;// $00EFE9E8 for D
-          ProduitsListDBGridEh.FixedColor:=clwindow;//$00EFE9E8 for D
-          ProduitsListDBGridEh.EvenRowColor:=clwindow;//$00EFE9E8 for D
-          RemisePerctageBonLivGEdt.Enabled:=True;//False for D
-          RemiseBonLivGEdt.Enabled:=True;//False for D
-          RemiseTypeBonLivGCbx.Enabled:= True;//False for D;
-
-          ResherchPARDesProduitsRdioBtn.Enabled:= True;//False for D
-          ResherchPARRefProduitsRdioBtn.Enabled:= True;//False for D
-          ResherchPARCBProduitsRdioBtn.Enabled:= True;//False for D
-
-          ValiderBVLivBonLivGImg.ImageIndex:=1;//0 fo D
-          ValiderBVLivBonLivGLbl.Color:=$007374FF;// $004AC38B for D
-          ValiderBVLivBonLivGLbl.Font.Color:= clWhite;// clBlack for D
-          ValiderBVLivBonLivGLbl.Caption:='Ce bon n''est pas encore Validé';// 'Ce bon est Valid' for D
-  end;
-
+   EnableBonLiv;
 
  codeBL:= 0;
    //   BonRecGestionF := TBonRecGestionF.Create(BonRecGestionF);

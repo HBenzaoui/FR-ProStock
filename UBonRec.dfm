@@ -48,7 +48,7 @@ object BonRecF: TBonRecF
     HorzScrollBar.ExtraPanel.Visible = True
     HorzScrollBar.ExtraPanel.VisibleItems = [gsbiNavigator, gsbiSelAggregationInfoEh]
     HorzScrollBar.Height = 15
-    IndicatorOptions = [gioShowRowselCheckboxesEh]
+    IndicatorOptions = []
     IndicatorParams.Color = clBtnFace
     IndicatorParams.HorzLineColor = 15970832
     IndicatorParams.VertLineColor = 15970832
@@ -56,7 +56,7 @@ object BonRecF: TBonRecF
     IndicatorTitle.TitleButton = True
     OddRowColor = 16315635
     Options = [dgTitles, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgMultiSelect]
-    OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghAutoSortMarking, dghMultiSortMarking, dghDialogFind, dghColumnResize, dghColumnMove, dghHotTrack, dghExtendVertLines]
+    OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghDialogFind, dghColumnResize, dghColumnMove, dghHotTrack, dghExtendVertLines]
     ParentCtl3D = False
     ParentFont = False
     ParentShowHint = False

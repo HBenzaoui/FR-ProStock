@@ -341,8 +341,8 @@ begin
       DateStartCaisseListD.Enabled:=True;
       DateEndCaisseListD.Enabled:=True;
 
-      DateStartCaisseListD.Date:=EncodeDate (YearOf(Now),MonthOf(Now),DayOf(Now));
-      DateEndCaisseListD.Date:=EncodeDate (YearOf(Now),MonthOf(Now),DayOf(Now));
+      DateStartCaisseListD.Date:=Now;// EncodeDate (YearOf(Now),MonthOf(Now),DayOf(Now));
+      DateEndCaisseListD.Date:=Now; //  EncodeDate (YearOf(Now),MonthOf(Now),DayOf(Now));
 
     end;
       if DaysCaisseListCbx.Text = 'Hier' then
@@ -350,8 +350,8 @@ begin
       DateStartCaisseListD.Enabled:=True;
       DateEndCaisseListD.Enabled:=True;
 
-      DateStartCaisseListD.Date:=EncodeDate (YearOf(Now),MonthOf(Now),DayOf(Yesterday));
-      DateEndCaisseListD.Date:=EncodeDate (YearOf(Now),MonthOf(Now),DayOf(Yesterday));
+      DateStartCaisseListD.Date:= Yesterday;//  EncodeDate (YearOf(Now),MonthOf(Now),DayOf(Now - 1));
+      DateEndCaisseListD.Date:= Yesterday//  EncodeDate (YearOf(Now),MonthOf(Now),DayOf(Now - 1));
     end;
       if DaysCaisseListCbx.Text = 'Mois en cours' then
     begin
@@ -393,7 +393,7 @@ begin
   PreiodRX.Text:= 'Période du : ' + DateToStr(DateStartCaisseListD.Date) + ' au ' + DateToStr(DateEndCaisseListD.Date) ;
 
     Agent:= CaisseListfrxRprt.FindObject('Agent') as TfrxMemoView;
-  Agent.Text:= MainForm.UserIDLbl.Caption ;
+  Agent.Text:= MainForm.UserNameLbl.Caption ;
 
     Caisse:= CaisseListfrxRprt.FindObject('Caisse') as TfrxMemoView;
   Caisse.Text:= 'Caisse : ' + CaisseListCbx.Text;

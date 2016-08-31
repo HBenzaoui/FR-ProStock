@@ -571,7 +571,7 @@ begin
   PreiodRX.Text:= 'Période du : ' + DateToStr(DateStartBARecD.Date) + ' au ' + DateToStr(DateEndBARecD.Date) ;
 
     Agent:= BonRecfrxRprt.FindObject('Agent') as TfrxMemoView;
-  Agent.Text:= MainForm.UserIDLbl.Caption ;
+  Agent.Text:= MainForm.UserNameLbl.Caption ;
 end;
 procedure TBonRecF.sSpeedButton2Click(Sender: TObject);
 begin

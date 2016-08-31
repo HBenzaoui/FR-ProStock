@@ -19,8 +19,6 @@ type
     TopClientnomclient: TStringField;
     TotalProduit: TFDQuery;
     TotalProduittotat: TFloatField;
-    Top5produitcode_p: TIntegerField;
-    Top5produitsum: TLargeintField;
     Top5produitnomp: TStringField;
     TopVerClient: TFDQuery;
     TopFour: TFDQuery;
@@ -48,6 +46,8 @@ type
     StringField4: TStringField;
     FloatField4: TFloatField;
     CurrencyField4: TCurrencyField;
+    Top5produitcode_p: TIntegerField;
+    Top5produitsum: TFloatField;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }

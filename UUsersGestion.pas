@@ -70,6 +70,7 @@ type
     procedure VentesSdrChanging(Sender: TObject; var CanChange: Boolean);
     procedure AchatsSdrChanging(Sender: TObject; var CanChange: Boolean);
     procedure TreSdrChanging(Sender: TObject; var CanChange: Boolean);
+    procedure BLSdrChanging(Sender: TObject; var CanChange: Boolean);
   private
     procedure EnablePar;
     procedure DisablePar;
@@ -129,6 +130,22 @@ begin
 
  ParaP.Enabled:= True;
 
+ VentesSdr.Enabled:= True;
+ BLSdr.Enabled:= True;
+ FCVSdr.Enabled:= True;
+ RGCSdr.Enabled:= True;
+ AchatsSdr.Enabled:= True;
+ BRSdr.Enabled:= True;
+ FCASdr.Enabled:= True;
+ RGFSdr.Enabled:= True;
+ TreSdr.Enabled:= True;
+ CaisseSdr.Enabled:= True;
+ BankSdr.Enabled:= True;
+ ClientSdr.Enabled:= True;
+ FourSdr.Enabled:= True;
+ CtrSdr.Enabled:= True;
+ ProduitSdr.Enabled:= True;
+
 end;
 
 procedure TUsersGestionF.DisablePar;
@@ -169,6 +186,26 @@ begin
  ProduitSdr.SliderOn:= True;
 
    ParaP.Enabled:= False;
+
+
+
+ VentesSdr.Enabled:=   False;
+ BLSdr.Enabled:=       False;
+ FCVSdr.Enabled:=      False;
+ RGCSdr.Enabled:=      False;
+ AchatsSdr.Enabled:=   False;
+ BRSdr.Enabled:=       False;
+ FCASdr.Enabled:=      False;
+ RGFSdr.Enabled:=      False;
+ TreSdr.Enabled:=      False;
+ CaisseSdr.Enabled:=   False;
+ BankSdr.Enabled:=     False;
+ ClientSdr.Enabled:=   False;
+ FourSdr.Enabled:=     False;
+ CtrSdr.Enabled:=      False;
+ ProduitSdr.Enabled:=  False;
+
+
 end;
 
 
@@ -176,14 +213,12 @@ procedure TUsersGestionF.TypeUserGCbxChange(Sender: TObject);
 begin
 if TypeUserGCbx.ItemIndex = 0 then
   begin
-
      DisablePar;
-
-  end else
-      begin
-
-        EnablePar;
-      end;
+  end;
+if TypeUserGCbx.ItemIndex = 1 then
+  begin
+    EnablePar;
+  end;
 end;
 
 procedure TUsersGestionF.OKUserGEdtClick(Sender: TObject);
@@ -369,10 +404,10 @@ begin
  RGCSdr.SliderOn := False;
  CtrSdr.SliderOn := False;
 
-  BLSdr.Enabled:= False;
-  FCVSdr.Enabled:= False;
-  RGCSdr.Enabled:= False;
-  CtrSdr.Enabled:= False;
+//  BLSdr.Enabled:= False;
+//  FCVSdr.Enabled:= False;
+//  RGCSdr.Enabled:= False;
+//  CtrSdr.Enabled:= False;
 
  L02.Enabled:= False;
  L03.Enabled:= False;
@@ -385,10 +420,10 @@ begin
        RGCSdr.SliderOn := True;
        CtrSdr.SliderOn := True;
 
-        BLSdr.Enabled:= True;
-        FCVSdr.Enabled:= True;
-        RGCSdr.Enabled:= True;
-        CtrSdr.Enabled:= True;
+//        BLSdr.Enabled:= True;
+//        FCVSdr.Enabled:= True;
+//        RGCSdr.Enabled:= True;
+//        CtrSdr.Enabled:= True;
 
        L02.Enabled:= True;
        L03.Enabled:= True;
@@ -407,9 +442,9 @@ begin
  FCASdr.SliderOn := False;
  RGFSdr.SliderOn := False;
 
-  BRSdr.Enabled:= False;
-  FCASdr.Enabled:= False;
-  RGFSdr.Enabled:= False;
+//  BRSdr.Enabled:= False;
+//  FCASdr.Enabled:= False;
+//  RGFSdr.Enabled:= False;
 
  L06.Enabled:= False;
  L07.Enabled:= False;
@@ -420,9 +455,9 @@ begin
        FCASdr.SliderOn := True;
        RGFSdr.SliderOn := True;
 
-        BRSdr.Enabled:= True;
-        FCASdr.Enabled:= True;
-        RGFSdr.Enabled:= True;
+//        BRSdr.Enabled:= True;
+//        FCASdr.Enabled:= True;
+//        RGFSdr.Enabled:= True;
 
        L06.Enabled:= True;
        L07.Enabled:= True;
@@ -438,8 +473,8 @@ begin
  CaisseSdr.SliderOn := False;
  BankSdr.SliderOn := False;
 
-  CaisseSdr.Enabled:= False;
-  BankSdr.Enabled:= False;
+//  CaisseSdr.Enabled:= False;
+//  BankSdr.Enabled:= False;
 
  L10.Enabled:= False;
  L11.Enabled:= False;
@@ -448,12 +483,17 @@ begin
        CaisseSdr.SliderOn := True;
        BankSdr.SliderOn := True;
 
-        CaisseSdr.Enabled:= True;
-        BankSdr.Enabled:= True;
+//        CaisseSdr.Enabled:= True;
+//        BankSdr.Enabled:= True;
 
        L10.Enabled:= True;
        L11.Enabled:= True;
      end;
+end;
+
+procedure TUsersGestionF.BLSdrChanging(Sender: TObject; var CanChange: Boolean);
+begin
+//L02.Enabled:= BLSdr.SliderOn;
 end;
 
 end.

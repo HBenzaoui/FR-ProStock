@@ -564,7 +564,7 @@ object BonLivF: TBonLivF
     HorzScrollBar.ExtraPanel.Visible = True
     HorzScrollBar.ExtraPanel.VisibleItems = [gsbiNavigator, gsbiSelAggregationInfoEh]
     HorzScrollBar.Height = 15
-    IndicatorOptions = [gioShowRowselCheckboxesEh]
+    IndicatorOptions = []
     IndicatorParams.Color = clBtnFace
     IndicatorParams.HorzLineColor = 15970832
     IndicatorParams.VertLineColor = 15970832
@@ -572,7 +572,7 @@ object BonLivF: TBonLivF
     IndicatorTitle.TitleButton = True
     OddRowColor = 16315635
     Options = [dgTitles, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgMultiSelect]
-    OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghAutoSortMarking, dghMultiSortMarking, dghDialogFind, dghColumnResize, dghColumnMove, dghHotTrack, dghExtendVertLines]
+    OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghDialogFind, dghColumnResize, dghColumnMove, dghHotTrack, dghExtendVertLines]
     ParentCtl3D = False
     ParentFont = False
     ParentShowHint = False
@@ -888,7 +888,7 @@ object BonLivF: TBonLivF
     Top = 392
   end
   object BonLivfrxRprt: TfrxReport
-    Version = '5.5'
+    Version = '5.4.6'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -1260,8 +1260,7 @@ object BonLivF: TBonLivF
           Top = 1.000000000000000000
           Width = 457.323130000000000000
           Height = 18.897650000000000000
-          DataSet = BonLivGestionF.frxBonLivDT
-          DataSetName = 'frxBonLivDT'
+          DataSetName = ''
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -9

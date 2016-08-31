@@ -11,6 +11,7 @@ object DashboardF: TDashboardF
   Font.Style = []
   OldCreateOrder = False
   OnCreate = FormCreate
+  OnPaint = FormShow
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13

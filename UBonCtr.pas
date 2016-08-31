@@ -13,7 +13,6 @@ uses
 type
   TBonCtrF = class(TForm)
     BVCtrListDBGridEh: TDBGridEh;
-    BonCtrListDataS: TDataSource;
     Panel3: TPanel;
     TopP: TPanel;
     EditBVCtrBtn: TAdvToolButton;
@@ -407,7 +406,7 @@ begin
   PreiodRX.Text:= 'Période du : ' + DateToStr(DateStartBVCtrD.Date) + ' au ' + DateToStr(DateEndBVCtrD.Date) ;
 
   Agent:= BonCtrfrxRprt.FindObject('Agent') as TfrxMemoView;
-  Agent.Text:= MainForm.UserIDLbl.Caption ;
+  Agent.Text:= MainForm.UserNameLbl.Caption ;
 end;
 
 procedure TBonCtrF.sSpeedButton2Click(Sender: TObject);

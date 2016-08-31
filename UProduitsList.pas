@@ -621,7 +621,7 @@ var
   Agent,Actif,Passif,Tout,Four : TfrxMemoView;
 begin
   Agent:= ProduitListfrxRprt.FindObject('Agent') as TfrxMemoView;
-  Agent.Text:= MainForm.UserIDLbl.Caption ;
+  Agent.Text:= MainForm.UserNameLbl.Caption ;
 
 end;
 
@@ -695,12 +695,3 @@ begin
 end;
 
 end.
-
-
-
-
-
-
-
-
-

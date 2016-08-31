@@ -604,7 +604,7 @@ var
   Agent,Actif,Passif,Tout,Four : TfrxMemoView;
 begin
   Agent:= FourListfrxRprt.FindObject('Agent') as TfrxMemoView;
-  Agent.Text:= MainForm.UserIDLbl.Caption ;
+  Agent.Text:= MainForm.UserNameLbl.Caption ;
 
     Actif:= FourListfrxRprt.FindObject('Actif') as TfrxMemoView;
   Actif.Text:= ActifFournisseursLbl.Caption ;

@@ -48,7 +48,7 @@ object FournisseurListF: TFournisseurListF
     HorzScrollBar.ExtraPanel.Visible = True
     HorzScrollBar.ExtraPanel.VisibleItems = [gsbiNavigator, gsbiSelAggregationInfoEh]
     HorzScrollBar.Height = 15
-    IndicatorOptions = [gioShowRowselCheckboxesEh]
+    IndicatorOptions = []
     IndicatorParams.Color = clBtnFace
     IndicatorParams.HorzLineColor = 15970832
     IndicatorParams.VertLineColor = 15970832
@@ -56,7 +56,7 @@ object FournisseurListF: TFournisseurListF
     IndicatorTitle.TitleButton = True
     OddRowColor = 16315635
     Options = [dgTitles, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgMultiSelect]
-    OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghAutoSortMarking, dghMultiSortMarking, dghDialogFind, dghColumnResize, dghColumnMove, dghHotTrack, dghExtendVertLines]
+    OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghDialogFind, dghColumnResize, dghColumnMove, dghHotTrack, dghExtendVertLines]
     ParentCtl3D = False
     ParentFont = False
     ParentShowHint = False
@@ -975,7 +975,7 @@ object FournisseurListF: TFournisseurListF
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 42576.399521435200000000
-    ReportOptions.LastChange = 42582.428356539300000000
+    ReportOptions.LastChange = 42613.658715416670000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       ''
@@ -1252,7 +1252,7 @@ object FournisseurListF: TFournisseurListF
             end>
         end
         object Memo12: TfrxMemoView
-          Top = 1.380201430000000000
+          Top = 1.000000000000000000
           Width = 35.095635710000000000
           Height = 18.897650000000000000
           Font.Charset = DEFAULT_CHARSET

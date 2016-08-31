@@ -11,6 +11,7 @@ object CaisseListF: TCaisseListF
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  OnPaint = FormShow
   OnShow = FormShow
   DesignSize = (
     1191
@@ -50,7 +51,7 @@ object CaisseListF: TCaisseListF
     HorzScrollBar.ExtraPanel.Visible = True
     HorzScrollBar.ExtraPanel.VisibleItems = [gsbiNavigator, gsbiSelAggregationInfoEh]
     HorzScrollBar.Height = 15
-    IndicatorOptions = [gioShowRowselCheckboxesEh]
+    IndicatorOptions = []
     IndicatorParams.Color = clBtnFace
     IndicatorParams.HorzLineColor = 15970832
     IndicatorParams.VertLineColor = 15970832
@@ -58,7 +59,7 @@ object CaisseListF: TCaisseListF
     IndicatorTitle.TitleButton = True
     OddRowColor = 16315635
     Options = [dgTitles, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgMultiSelect]
-    OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghAutoSortMarking, dghMultiSortMarking, dghDialogFind, dghColumnResize, dghColumnMove, dghHotTrack, dghExtendVertLines]
+    OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghDialogFind, dghColumnResize, dghColumnMove, dghHotTrack, dghExtendVertLines]
     ParentCtl3D = False
     ParentFont = False
     ParentShowHint = False

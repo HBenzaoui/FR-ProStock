@@ -79,6 +79,8 @@ procedure TBankListF.FormShow(Sender: TObject);
 Var TotalEncaiss,TotalDecaiss,cmptsum,TotalSoldComptEnc,TotalSoldComptDic : Currency;
 begin
 
+
+
   DateStartBankListD.Date:=EncodeDate (YearOf(Now),MonthOf(Now),01);
   DateEndBankListD.Date:=EncodeDate (YearOf(Now),MonthOf(Now),DayOf(Now));
 
@@ -175,8 +177,8 @@ begin
       DateStartBankListD.Enabled:=True;
       DateEndBankListD.Enabled:=True;
 
-      DateStartBankListD.Date:=EncodeDate (YearOf(Now),MonthOf(Now),DayOf(Now));
-      DateEndBankListD.Date:=EncodeDate (YearOf(Now),MonthOf(Now),DayOf(Now));
+      DateStartBankListD.Date:=Now;  // EncodeDate (YearOf(Now),MonthOf(Now),DayOf(Now));
+      DateEndBankListD.Date:=Now; //EncodeDate (YearOf(Now),MonthOf(Now),DayOf(Now));
 
     end;
       if DaysBankListCbx.Text = 'Hier' then
@@ -184,8 +186,8 @@ begin
       DateStartBankListD.Enabled:=True;
       DateEndBankListD.Enabled:=True;
 
-      DateStartBankListD.Date:=EncodeDate (YearOf(Now),MonthOf(Now),DayOf(Yesterday));
-      DateEndBankListD.Date:=EncodeDate (YearOf(Now),MonthOf(Now),DayOf(Yesterday));
+      DateStartBankListD.Date:=Yesterday; // EncodeDate (YearOf(Now),MonthOf(Now),DayOf(Yesterday));
+      DateEndBankListD.Date:=Yesterday; //EncodeDate (YearOf(Now),MonthOf(Now),DayOf(Yesterday));
     end;
       if DaysBankListCbx.Text = 'Mois en cours' then
     begin
@@ -387,7 +389,7 @@ begin
   PreiodRX.Text:= 'Période du : ' + DateToStr(DateStartBankListD.Date) + ' au ' + DateToStr(DateEndBankListD.Date) ;
 
     Agent:= BankListfrxRprt.FindObject('Agent') as TfrxMemoView;
-  Agent.Text:= MainForm.UserIDLbl.Caption ;
+  Agent.Text:= MainForm.UserNameLbl.Caption ;
 
     Caisse:= BankListfrxRprt.FindObject('Caisse') as TfrxMemoView;
   Caisse.Text:= 'Compte : ' + BankListCbx.Text;

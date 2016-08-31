@@ -1209,6 +1209,7 @@ object UsersGestionF: TUsersGestionF
       FontOn.Style = []
       SliderCursor = crHandPoint
       Reversed = True
+      OnChanging = BLSdrChanging
     end
     object FCVSdr: TsSlider
       Left = 148

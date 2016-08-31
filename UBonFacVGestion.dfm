@@ -1343,7 +1343,7 @@ object BonFacVGestionF: TBonFacVGestionF
     IndicatorTitle.UseGlobalMenu = False
     OddRowColor = 16315635
     Options = [dgEditing, dgTitles, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgMultiSelect]
-    OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghAutoSortMarking, dghMultiSortMarking, dghDialogFind, dghShowRecNo, dghColumnResize, dghColumnMove, dghHotTrack, dghExtendVertLines]
+    OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghDialogFind, dghShowRecNo, dghColumnResize, dghColumnMove, dghHotTrack, dghExtendVertLines]
     ParentCtl3D = False
     ParentFont = False
     ParentShowHint = False
@@ -1395,6 +1395,7 @@ object BonFacVGestionF: TBonFacVGestionF
       end
       item
         Alignment = taCenter
+        DisplayFormat = '0.00 '
         DynProps = <>
         EditButtons = <>
         FieldName = 'qut_p'

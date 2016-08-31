@@ -280,7 +280,7 @@ begin
  if ResherchPARCBProduitsRdioBtn.Checked = False then
   begin
 
- BonRecGestionF.Cursor := crDefault;
+ Cursor := crDefault;
  end;
 end; }
 end;
@@ -794,7 +794,7 @@ begin
  begin
 //-- use this code to make the montants look lake money values-------//
     BonRecTotalHTLbl.Caption :=       FloatToStrF(StrToFloat(BonRecTotalHTLbl.Caption),ffNumber,14,2) ;
-//    BonRecGestionF.RemiseBonRecGEdt.Text :=       FloatToStrF(StrToFloat(RemiseBonRecGEdt.Text),ffNumber,14,2) ;
+//    RemiseBonRecGEdt.Text :=       FloatToStrF(StrToFloat(RemiseBonRecGEdt.Text),ffNumber,14,2) ;
     BonRecTotalTVALbl.Caption :=      FloatToStrF(StrToFloat(BonRecTotalTVALbl.Caption),ffNumber,14,2) ;
     BonRecTotalTTCLbl.Caption :=      FloatToStrF(StrToFloat(BonRecTotalTTCLbl.Caption),ffNumber,14,2) ;
     BonRecResteLbl.Caption :=         FloatToStrF(StrToFloat(BonRecResteLbl.Caption),ffNumber,14,2) ;
@@ -809,7 +809,7 @@ begin
    ProduitBonRecGCbx.SetFocus;
  end else
      begin
-   //    BonRecGestionF.FournisseurBonRecGCbx.SetFocus;
+   //    FournisseurBonRecGCbx.SetFocus;
      end;
 
   FournisseurBonRecGCbx.SetFocus;
@@ -1755,61 +1755,10 @@ begin
    BonRecF.BonRecListDataS.DataSet.Refresh;
    Refresh;
 
-        ModePaieBonRecGCbx.Refresh;
-     CompteBonRecGCbx.Refresh;
+   ModePaieBonRecGCbx.Refresh;
+   CompteBonRecGCbx.Refresh;
 
-  begin
-
-     AddBARecBonRecGBtn.Enabled:= False;
-     AddBARecBonRecGBtn.ImageIndex:=28;// 4 For D
-     EditBARecBonRecGBtn.Enabled:= False;
-     EditBARecBonRecGBtn.ImageIndex:=29;// 5 for D
-     ValiderBARecBonRecGBtn.Enabled:= True;
-     ValiderBARecBonRecGBtn.ImageIndex:=12;//30 for D
-
-          DateBonRecGD.Enabled:= True;
-          ObserBonRecGMem.Enabled:= True;
-          FournisseurBonRecGCbx.Enabled:= True;
-          AddFourBonRecGBtn.ImageIndex:=10;//35 fo D
-          ModePaieBonRecGCbx.Enabled:= True;
-          AddModePaieBonRecGBtn.ImageIndex:=10;// 35 fo D
-          CompteBonRecGCbx.Enabled:= True;
-          AddCompteBonRecGBtn.ImageIndex:=10;// 35 fo D
-          NChequeBonRecGCbx.Enabled:= True;
-          ProduitBonRecGCbx.Enabled:= True;
-          EnterAddProduitBonRecGBtn.Enabled:= True;
-          EnterAddProduitBonRecGBtn.ImageIndex:=15;// 40 fo D
-          ListAddProduitBonRecGBtn.Enabled:= True;
-          ListAddProduitBonRecGBtn.ImageIndex:=13;//41 fo D
-          NewAddProduitBonRecGBtn.Enabled:= True;
-          NewAddProduitBonRecGBtn.ImageIndex:=4;//28 fo D
-          DeleteProduitBonRecGBtn.Enabled:= True;
-          DeleteProduitBonRecGBtn.ImageIndex:=14;//36 fo D
-          ClearProduitBonRecGBtn.Enabled:= True;
-          ClearProduitBonRecGBtn.ImageIndex:=16;//39 fo A
-          ProduitsListDBGridEh.DataSource.DataSet.EnableControls;//DisableControls    For A
-          ProduitsListDBGridEh.Columns[2].TextEditing :=True;//False for D
-          ProduitsListDBGridEh.Columns[3].TextEditing:=True;//False for D
-          ProduitsListDBGridEh.Columns[4].TextEditing:=True;//False for D
-          ProduitsListDBGridEh.Options:=
-          ProduitsListDBGridEh.Options +[dgEditing] +[dgAlwaysShowSelection]+[dgMultiSelect]- [dgRowSelect] ; //flip + and -  for A
-          ProduitsListDBGridEh.Color:= clWhite;// $00EFE9E8 for D
-          ProduitsListDBGridEh.FixedColor:=clwindow;//$00EFE9E8 for D
-          ProduitsListDBGridEh.EvenRowColor:=clwindow;//$00EFE9E8 for D
-          RemisePerctageBonRecGEdt.Enabled:=True;//False for D
-          RemiseBonRecGEdt.Enabled:=True;//False for D
-          RemiseTypeBonRecGCbx.Enabled:= True;//False for D;
-
-          ResherchPARDesProduitsRdioBtn.Enabled:= True;//False for D
-          ResherchPARRefProduitsRdioBtn.Enabled:= True;//False for D
-          ResherchPARCBProduitsRdioBtn.Enabled:= True;//False for D
-
-          ValiderBARecBonRecGImg.ImageIndex:=1;//0 fo D
-          ValiderBARecBonRecGLbl.Color:=$007374FF;// $004AC38B for D
-          ValiderBARecBonRecGLbl.Font.Color:= clWhite;// clBlack for D
-          ValiderBARecBonRecGLbl.Caption:='Ce bon n''est pas encore Validé';// 'Ce bon est Valid' for D
-  end;
-
+   EnableBonRec;
 
  codeBR:= 0;
    //   BonRecGestionF := TBonRecGestionF.Create(BonRecGestionF);
@@ -1855,7 +1804,7 @@ begin
 
 //-- use this code to make the montants look lake money values-------//
     BonRecTotalHTLbl.Caption :=       FloatToStrF(0,ffNumber,14,2) ;
-//    BonRecGestionF.RemiseBonRecGEdt.Text :=       FloatToStrF(StrToInt64(RemiseBonRecGEdt.Text),ffNumber,14,2) ;
+//    RemiseBonRecGEdt.Text :=       FloatToStrF(StrToInt64(RemiseBonRecGEdt.Text),ffNumber,14,2) ;
 BonRecTotalTVALbl.Caption :=      FloatToStrF(0,ffNumber,14,2) ;
 BonRecTotalTTCLbl.Caption :=      FloatToStrF(0,ffNumber,14,2) ;
 BonRecResteLbl.Caption :=         FloatToStrF(0,ffNumber,14,2) ;

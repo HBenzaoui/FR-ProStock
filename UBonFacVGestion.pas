@@ -193,57 +193,57 @@ uses StringTool,
 {$R *.dfm}
 procedure TBonFacVGestionF.EnableBonFacV;
 begin
-      BonFacVGestionF.AddBVFacBonFacVGBtn.Enabled:= False;
-     BonFacVGestionF.AddBVFacBonFacVGBtn.ImageIndex:=28;// 4 For D
-     BonFacVGestionF.EditBVFacBonFacVGBtn.Enabled:= False;
-     BonFacVGestionF.EditBVFacBonFacVGBtn.ImageIndex:=29;// 5 for D
-     BonFacVGestionF.ValiderBVFacBonFacVGBtn.Enabled:= True;
-     BonFacVGestionF.ValiderBVFacBonFacVGBtn.ImageIndex:=12;//30 for D
+   AddBVFacBonFacVGBtn.Enabled:= False;
+   AddBVFacBonFacVGBtn.ImageIndex:=28;// 4 For D
+   EditBVFacBonFacVGBtn.Enabled:= False;
+   EditBVFacBonFacVGBtn.ImageIndex:=29;// 5 for D
+   ValiderBVFacBonFacVGBtn.Enabled:= True;
+   ValiderBVFacBonFacVGBtn.ImageIndex:=12;//30 for D
 
-          BonFacVGestionF.DateBonFacVGD.Enabled:= True;
-          BonFacVGestionF.ObserBonFacVGMem.Enabled:= True;
-          BonFacVGestionF.ClientBonFacVGCbx.Enabled:= True;
-          BonFacVGestionF.AddClientBonFacVGBtn.Enabled:= True ; //
-          BonFacVGestionF.AddClientBonFacVGBtn.ImageIndex:=10;//35 fo D
-          BonFacVGestionF.ModePaieBonFacVGCbx.Enabled:= True;
-          BonFacVGestionF.AddModePaieBonFacVGBtn.Enabled:= True ;
-          BonFacVGestionF.AddModePaieBonFacVGBtn.ImageIndex:=10;// 35 fo D
-          BonFacVGestionF.CompteBonFacVGCbx.Enabled:= True;
-          BonFacVGestionF.AddCompteBonFacVGBtn.Enabled:= True ;
-          BonFacVGestionF.AddCompteBonFacVGBtn.ImageIndex:=10;// 35 fo D
-          BonFacVGestionF.NChequeBonFacVGCbx.Enabled:= True;
-          BonFacVGestionF.ProduitBonFacVGCbx.Enabled:= True;
-          BonFacVGestionF.EnterAddProduitBonFacVGBtn.Enabled:= True;
-          BonFacVGestionF.EnterAddProduitBonFacVGBtn.ImageIndex:=15;// 40 fo D
-          BonFacVGestionF.ListAddProduitBonFacVGBtn.Enabled:= True;
-          BonFacVGestionF.ListAddProduitBonFacVGBtn.ImageIndex:=13;//41 fo D
-          BonFacVGestionF.NewAddProduitBonFacVGBtn.Enabled:= True;
-          BonFacVGestionF.NewAddProduitBonFacVGBtn.ImageIndex:=4;//28 fo D
-          BonFacVGestionF.DeleteProduitBonFacVGBtn.Enabled:= True;
-          BonFacVGestionF.DeleteProduitBonFacVGBtn.ImageIndex:=14;//36 fo D
-          BonFacVGestionF.ClearProduitBonFacVGBtn.Enabled:= True;
-          BonFacVGestionF.ClearProduitBonFacVGBtn.ImageIndex:=16;//39 fo A
-          BonFacVGestionF.ProduitsListDBGridEh.DataSource.DataSet.EnableControls;//DisableControls    For A
-          BonFacVGestionF.ProduitsListDBGridEh.Columns[2].TextEditing :=True;//False for D
-          BonFacVGestionF.ProduitsListDBGridEh.Columns[3].TextEditing:=True;//False for D
-          BonFacVGestionF.ProduitsListDBGridEh.Columns[4].TextEditing:=True;//False for D
-          BonFacVGestionF.ProduitsListDBGridEh.Options:=
-          BonFacVGestionF.ProduitsListDBGridEh.Options +[dgEditing] +[dgAlwaysShowSelection]+[dgMultiSelect]- [dgRowSelect] ; //flip + and -  for A
-          BonFacVGestionF.ProduitsListDBGridEh.Color:= clWhite;// $00D9D7D3 for D
-          BonFacVGestionF.ProduitsListDBGridEh.FixedColor:=clwindow;//$00D9D7D3 for D
-          BonFacVGestionF.ProduitsListDBGridEh.EvenRowColor:=clwindow;//$00EFE9E8 for D
-          BonFacVGestionF.RemisePerctageBonFacVGEdt.Enabled:=True;//False for D
-          BonFacVGestionF.RemiseBonFacVGEdt.Enabled:=True;//False for D
-          BonFacVGestionF.RemiseTypeBonFacVGCbx.Enabled:= True;//False for D;
+   DateBonFacVGD.Enabled:= True;
+   ObserBonFacVGMem.Enabled:= True;
+   ClientBonFacVGCbx.Enabled:= True;
+   AddClientBonFacVGBtn.Enabled:= True ; //
+   AddClientBonFacVGBtn.ImageIndex:=10;//35 fo D
+   ModePaieBonFacVGCbx.Enabled:= True;
+   AddModePaieBonFacVGBtn.Enabled:= True ;
+   AddModePaieBonFacVGBtn.ImageIndex:=10;// 35 fo D
+   CompteBonFacVGCbx.Enabled:= True;
+   AddCompteBonFacVGBtn.Enabled:= True ;
+   AddCompteBonFacVGBtn.ImageIndex:=10;// 35 fo D
+   NChequeBonFacVGCbx.Enabled:= True;
+   ProduitBonFacVGCbx.Enabled:= True;
+   EnterAddProduitBonFacVGBtn.Enabled:= True;
+   EnterAddProduitBonFacVGBtn.ImageIndex:=15;// 40 fo D
+   ListAddProduitBonFacVGBtn.Enabled:= True;
+   ListAddProduitBonFacVGBtn.ImageIndex:=13;//41 fo D
+   NewAddProduitBonFacVGBtn.Enabled:= True;
+   NewAddProduitBonFacVGBtn.ImageIndex:=4;//28 fo D
+   DeleteProduitBonFacVGBtn.Enabled:= True;
+   DeleteProduitBonFacVGBtn.ImageIndex:=14;//36 fo D
+   ClearProduitBonFacVGBtn.Enabled:= True;
+   ClearProduitBonFacVGBtn.ImageIndex:=16;//39 fo A
+   ProduitsListDBGridEh.DataSource.DataSet.EnableControls;//DisableControls    For A
+   ProduitsListDBGridEh.Columns[2].TextEditing :=True;//False for D
+   ProduitsListDBGridEh.Columns[3].TextEditing:=True;//False for D
+   ProduitsListDBGridEh.Columns[4].TextEditing:=True;//False for D
+   ProduitsListDBGridEh.Options:=
+   ProduitsListDBGridEh.Options +[dgEditing] +[dgAlwaysShowSelection]+[dgMultiSelect]- [dgRowSelect] ; //flip + and -  for A
+   ProduitsListDBGridEh.Color:= clWhite;// $00D9D7D3 for D
+   ProduitsListDBGridEh.FixedColor:=clwindow;//$00D9D7D3 for D
+   ProduitsListDBGridEh.EvenRowColor:=clwindow;//$00EFE9E8 for D
+   RemisePerctageBonFacVGEdt.Enabled:=True;//False for D
+   RemiseBonFacVGEdt.Enabled:=True;//False for D
+   RemiseTypeBonFacVGCbx.Enabled:= True;//False for D;
 
-          BonFacVGestionF.ResherchPARDesProduitsRdioBtn.Enabled:= True;//False for D
-          BonFacVGestionF.ResherchPARRefProduitsRdioBtn.Enabled:= True;//False for D
-          BonFacVGestionF.ResherchPARCBProduitsRdioBtn.Enabled:= True;//False for D
+   ResherchPARDesProduitsRdioBtn.Enabled:= True;//False for D
+   ResherchPARRefProduitsRdioBtn.Enabled:= True;//False for D
+   ResherchPARCBProduitsRdioBtn.Enabled:= True;//False for D
 
-          BonFacVGestionF.ValiderBVFacBonFacVGImg.ImageIndex:=1;//0 fo D
-          BonFacVGestionF.ValiderBVFacBonFacVGLbl.Color:=$007374FF;// $004AC38B for D
-          BonFacVGestionF.ValiderBVFacBonFacVGLbl.Font.Color:= clWhite;// clBlack for D
-          BonFacVGestionF.ValiderBVFacBonFacVGLbl.Caption:='Ce Facture n''est pas encore Validé';// 'Ce facture est Valid' for D
+   ValiderBVFacBonFacVGImg.ImageIndex:=1;//0 fo D
+   ValiderBVFacBonFacVGLbl.Color:=$007374FF;// $004AC38B for D
+   ValiderBVFacBonFacVGLbl.Font.Color:= clWhite;// clBlack for D
+   ValiderBVFacBonFacVGLbl.Caption:='Ce Facture n''est pas encore Validé';// 'Ce facture est Valid' for D
 end;
 
 //refresh datagrid data - preserve row position
@@ -288,32 +288,32 @@ begin
 //  FormatSettings.CurrencyDecimals := 2;
 //  FormatSettings.DateSeparator:= '/';
 // use this tage when i click AddBVFacBonRecGBtn bon button
- if BonFacVGestionF.tag=0 then
+ if Tag=0 then
  begin
 //-- use this code to make the montants look lake money values-------//
-    BonFacVGestionF.BonFacVTotalHTLbl.Caption :=       FloatToStrF(StrToFloat(BonFacVTotalHTLbl.Caption),ffNumber,14,2) ;
-    BonFacVGestionF.BonFacVTotalTVALbl.Caption :=      FloatToStrF(StrToFloat(BonFacVTotalTVALbl.Caption),ffNumber,14,2) ;
-    BonFacVGestionF.BonFacVTotalTTCLbl.Caption :=      FloatToStrF(StrToFloat(BonFacVTotalTTCLbl.Caption),ffNumber,14,2) ;
-    BonFacVGestionF.BonFacVResteLbl.Caption :=         FloatToStrF(StrToFloat(BonFacVResteLbl.Caption),ffNumber,14,2) ;
-    BonFacVGestionF.BonFacVRegleLbl.Caption :=         FloatToStrF(StrToFloat(BonFacVRegleLbl.Caption),ffNumber,14,2) ;
-    BonFacVGestionF.BonFacVGClientOLDCredit.Caption:= FloatToStrF(StrToFloat(BonFacVGClientOLDCredit.Caption),ffNumber,14,2) ;
-    BonFacVGestionF.BonFacVGClientNEWCredit.Caption:= FloatToStrF(StrToFloat(BonFacVGClientNEWCredit.Caption),ffNumber,14,2) ;
+   BonFacVTotalHTLbl.Caption :=       FloatToStrF(StrToFloat(BonFacVTotalHTLbl.Caption),ffNumber,14,2) ;
+   BonFacVTotalTVALbl.Caption :=      FloatToStrF(StrToFloat(BonFacVTotalTVALbl.Caption),ffNumber,14,2) ;
+   BonFacVTotalTTCLbl.Caption :=      FloatToStrF(StrToFloat(BonFacVTotalTTCLbl.Caption),ffNumber,14,2) ;
+   BonFacVResteLbl.Caption :=         FloatToStrF(StrToFloat(BonFacVResteLbl.Caption),ffNumber,14,2) ;
+   BonFacVRegleLbl.Caption :=         FloatToStrF(StrToFloat(BonFacVRegleLbl.Caption),ffNumber,14,2) ;
+   BonFacVGClientOLDCredit.Caption:= FloatToStrF(StrToFloat(BonFacVGClientOLDCredit.Caption),ffNumber,14,2) ;
+   BonFacVGClientNEWCredit.Caption:= FloatToStrF(StrToFloat(BonFacVGClientNEWCredit.Caption),ffNumber,14,2) ;
  CodeFV:= MainForm.Bonv_facTable.FieldValues['code_bvfac']   ;
- BonFacVGestionF.NumBonFacVGEdt.Caption := 'FV'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5, CodeFV]);
+ NumBonFacVGEdt.Caption := 'FV'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5, CodeFV]);
   if MainForm.Bonv_facTable.FieldValues['code_c'] <> null then
  begin
    ClientBonFacVGCbx.Text:= MainForm.Bonv_facTable.FieldValues['clientbvfac'];
    ProduitBonFacVGCbx.SetFocus;
  end else
      begin
-       BonFacVGestionF.ClientBonFacVGCbx.SetFocus;
+       ClientBonFacVGCbx.SetFocus;
      end;
  end;
 // use this tage when i click on edit button for bon
- if BonFacVGestionF.Tag = 1 then
+ if Tag = 1 then
  begin
-     BonFacVGestionF.BonFacVGClientOLDCredit.Caption:= FloatToStrF(StrToFloat(StringReplace(BonFacVGClientOLDCredit.Caption, #32, '', [rfReplaceAll])),ffNumber,14,2) ;
-     BonFacVGestionF.BonFacVGClientNEWCredit.Caption:= FloatToStrF(StrToFloat(StringReplace(BonFacVGClientNEWCredit.Caption, #32, '', [rfReplaceAll])),ffNumber,14,2) ;
+     BonFacVGClientOLDCredit.Caption:= FloatToStrF(StrToFloat(StringReplace(BonFacVGClientOLDCredit.Caption, #32, '', [rfReplaceAll])),ffNumber,14,2) ;
+     BonFacVGClientNEWCredit.Caption:= FloatToStrF(StrToFloat(StringReplace(BonFacVGClientNEWCredit.Caption, #32, '', [rfReplaceAll])),ffNumber,14,2) ;
   end;
 
 end;
@@ -481,61 +481,10 @@ begin
    BonFacVF.BonFacVListDataS.DataSet.Refresh;
    Refresh;
 
-        ModePaieBonFacVGCbx.Refresh;
+     ModePaieBonFacVGCbx.Refresh;
      CompteBonFacVGCbx.Refresh;
 
-  begin
-
-     BonFacVGestionF.AddBVFacBonFacVGBtn.Enabled:= False;
-     BonFacVGestionF.AddBVFacBonFacVGBtn.ImageIndex:=28;// 4 For D
-     BonFacVGestionF.EditBVFacBonFacVGBtn.Enabled:= False;
-     BonFacVGestionF.EditBVFacBonFacVGBtn.ImageIndex:=29;// 5 for D
-     BonFacVGestionF.ValiderBVFacBonFacVGBtn.Enabled:= True;
-     BonFacVGestionF.ValiderBVFacBonFacVGBtn.ImageIndex:=12;//30 for D
-
-          BonFacVGestionF.DateBonFacVGD.Enabled:= True;
-          BonFacVGestionF.ObserBonFacVGMem.Enabled:= True;
-          BonFacVGestionF.ClientBonFacVGCbx.Enabled:= True;
-          BonFacVGestionF.AddClientBonFacVGBtn.ImageIndex:=10;//35 fo D
-          BonFacVGestionF.ModePaieBonFacVGCbx.Enabled:= True;
-          BonFacVGestionF.AddModePaieBonFacVGBtn.ImageIndex:=10;// 35 fo D
-          BonFacVGestionF.CompteBonFacVGCbx.Enabled:= True;
-          BonFacVGestionF.AddCompteBonFacVGBtn.ImageIndex:=10;// 35 fo D
-          BonFacVGestionF.NChequeBonFacVGCbx.Enabled:= True;
-          BonFacVGestionF.ProduitBonFacVGCbx.Enabled:= True;
-          BonFacVGestionF.EnterAddProduitBonFacVGBtn.Enabled:= True;
-          BonFacVGestionF.EnterAddProduitBonFacVGBtn.ImageIndex:=15;// 40 fo D
-          BonFacVGestionF.ListAddProduitBonFacVGBtn.Enabled:= True;
-          BonFacVGestionF.ListAddProduitBonFacVGBtn.ImageIndex:=13;//41 fo D
-          BonFacVGestionF.NewAddProduitBonFacVGBtn.Enabled:= True;
-          BonFacVGestionF.NewAddProduitBonFacVGBtn.ImageIndex:=4;//28 fo D
-          BonFacVGestionF.DeleteProduitBonFacVGBtn.Enabled:= True;
-          BonFacVGestionF.DeleteProduitBonFacVGBtn.ImageIndex:=14;//36 fo D
-          BonFacVGestionF.ClearProduitBonFacVGBtn.Enabled:= True;
-          BonFacVGestionF.ClearProduitBonFacVGBtn.ImageIndex:=16;//39 fo A
-          BonFacVGestionF.ProduitsListDBGridEh.DataSource.DataSet.EnableControls;//DisableControls    For A
-          BonFacVGestionF.ProduitsListDBGridEh.Columns[2].TextEditing :=True;//False for D
-          BonFacVGestionF.ProduitsListDBGridEh.Columns[3].TextEditing:=True;//False for D
-          BonFacVGestionF.ProduitsListDBGridEh.Columns[4].TextEditing:=True;//False for D
-          BonFacVGestionF.ProduitsListDBGridEh.Options:=
-          BonFacVGestionF.ProduitsListDBGridEh.Options +[dgEditing] +[dgAlwaysShowSelection]+[dgMultiSelect]- [dgRowSelect] ; //flip + and -  for A
-          BonFacVGestionF.ProduitsListDBGridEh.Color:= clWhite;// $00EFE9E8 for D
-          BonFacVGestionF.ProduitsListDBGridEh.FixedColor:=clwindow;//$00EFE9E8 for D
-          BonFacVGestionF.ProduitsListDBGridEh.EvenRowColor:=clwindow;//$00EFE9E8 for D
-          BonFacVGestionF.RemisePerctageBonFacVGEdt.Enabled:=True;//False for D
-          BonFacVGestionF.RemiseBonFacVGEdt.Enabled:=True;//False for D
-          BonFacVGestionF.RemiseTypeBonFacVGCbx.Enabled:= True;//False for D;
-
-          BonFacVGestionF.ResherchPARDesProduitsRdioBtn.Enabled:= True;//False for D
-          BonFacVGestionF.ResherchPARRefProduitsRdioBtn.Enabled:= True;//False for D
-          BonFacVGestionF.ResherchPARCBProduitsRdioBtn.Enabled:= True;//False for D
-
-          BonFacVGestionF.ValiderBVFacBonFacVGImg.ImageIndex:=1;//0 fo D
-          BonFacVGestionF.ValiderBVFacBonFacVGLbl.Color:=$007374FF;// $004AC38B for D
-          BonFacVGestionF.ValiderBVFacBonFacVGLbl.Font.Color:= clWhite;// clBlack for D
-          BonFacVGestionF.ValiderBVFacBonFacVGLbl.Caption:='Ce facture n''est pas encore Validé';// 'Ce bon est Valid' for D
-  end;
-
+     EnableBonFacV;
 
  codeFV:= 0;
    //   BonRecGestionF := TBonRecGestionF.Create(BonRecGestionF);
@@ -572,25 +521,25 @@ begin
            MainForm.Bonv_facTable.Post;
 
            end;
-            BonFacVGestionF.ProduitsListDBGridEh.DataSource.DataSet.EnableControls;
+            ProduitsListDBGridEh.DataSource.DataSet.EnableControls;
           end;
 
 
 
 //-- use this code to make the montants look lake money values-------//
-    BonFacVGestionF.BonFacVTotalHTLbl.Caption :=       FloatToStrF(0,ffNumber,14,2) ;
+    BonFacVTotalHTLbl.Caption :=       FloatToStrF(0,ffNumber,14,2) ;
 //    BonRecGestionF.RemiseBonFacVGEdt.Text :=       FloatToStrF(StrToInt64(RemiseBonFacVGEdt.Text),ffNumber,14,2) ;
-    BonFacVGestionF.BonFacVTotalTVALbl.Caption :=      FloatToStrF(0,ffNumber,14,2) ;
-    BonFacVGestionF.BonFacVTotalTTCLbl.Caption :=      FloatToStrF(0,ffNumber,14,2) ;
-    BonFacVGestionF.BonFacVResteLbl.Caption :=         FloatToStrF(0,ffNumber,14,2) ;
-    BonFacVGestionF.BonFacVRegleLbl.Caption :=         FloatToStrF(0,ffNumber,14,2) ;
-    BonFacVGestionF.BonFacVGClientOLDCredit.Caption:= FloatToStrF(0,ffNumber,14,2) ;
-    BonFacVGestionF.BonFacVGClientNEWCredit.Caption:= FloatToStrF(0,ffNumber,14,2) ;
+    BonFacVTotalTVALbl.Caption :=      FloatToStrF(0,ffNumber,14,2) ;
+    BonFacVTotalTTCLbl.Caption :=      FloatToStrF(0,ffNumber,14,2) ;
+    BonFacVResteLbl.Caption :=         FloatToStrF(0,ffNumber,14,2) ;
+    BonFacVRegleLbl.Caption :=         FloatToStrF(0,ffNumber,14,2) ;
+    BonFacVGClientOLDCredit.Caption:= FloatToStrF(0,ffNumber,14,2) ;
+    BonFacVGClientNEWCredit.Caption:= FloatToStrF(0,ffNumber,14,2) ;
 
  CodeCB:= MainForm.Bonv_FacTable.FieldValues['code_bvfac']   ;
- BonFacVGestionF.NumBonFacVGEdt.Caption := 'FV'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5, CodeCB]);
+ NumBonFacVGEdt.Caption := 'FV'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5, CodeCB]);
 
-     BonFacVGestionF.ClientBonFacVGCbx.SetFocus;
+     ClientBonFacVGCbx.SetFocus;
 
      Tag :=0;
 
@@ -673,13 +622,18 @@ begin
 
      end;
 
+
+
+   //---thise is to visivle timber after edit and calculate it----//
+     ModePaieBonFacVGCbxClick(Sender);
+
 end;
 
 procedure TBonFacVGestionF.ProduitBonFacVGCbxEnter(Sender: TObject);
 var
 I : Integer;
   begin
-  BonFacVGestionF.Cursor := crDefault;
+  Cursor := crDefault;
 //  PostMessage((Sender as TComboBox).Handle, CB_SHOWDROPDOWN, 1, 0);
       ProduitBonFacVGCbx.Refresh;
       ProduitBonFacVGCbx.Items.Clear;
@@ -746,12 +700,12 @@ begin
  begin
   key := #0;
 
-    if BonFacVGestionF.ClientBonFacVGCbx.Text<> '' then
+    if ClientBonFacVGCbx.Text<> '' then
    begin
      MainForm.ClientTable.DisableControls;
      MainForm.ClientTable.Active:=false;
      MainForm.ClientTable.SQL.Clear;
-     MainForm.ClientTable.SQL.Text:='Select * FROM client WHERE LOWER(nom_c) LIKE LOWER('+ QuotedStr( BonFacVGestionF.ClientBonFacVGCbx.Text )+')'  ;
+     MainForm.ClientTable.SQL.Text:='Select * FROM client WHERE LOWER(nom_c) LIKE LOWER('+ QuotedStr( ClientBonFacVGCbx.Text )+')'  ;
      MainForm.ClientTable.Active:=True;
    end;
 
@@ -795,7 +749,7 @@ begin
              MainForm.Bonv_fac_listTable.FieldValues['code_p']:=  MainForm.ProduitTable.FieldValues['code_p'] ;
              MainForm.Bonv_fac_listTable.FieldValues['qut_p'] :=  01;
 
-           if  NOT (MainForm.ClientTable.IsEmpty) AND (BonFacVGestionF.ClientBonFacVGCbx.Text<> '' ) then
+           if  NOT (MainForm.ClientTable.IsEmpty) AND (ClientBonFacVGCbx.Text<> '' ) then
            begin
              if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 0 then
              begin
@@ -855,7 +809,7 @@ begin
      end else
      begin
 
-      FSplashAddUnite:=TFSplashAddUnite.Create(BonFacVGestionF);
+      FSplashAddUnite:=TFSplashAddUnite.Create(Application);
       FSplashAddUnite.Image1.ImageIndex:=3;
       FSplashAddUnite.Width:=300;
       FSplashAddUnite.Height:=160;
@@ -934,7 +888,7 @@ begin
              MainForm.Bonv_fac_listTable.FieldValues['code_p']:=  MainForm.ProduitTable.FieldValues['code_p'] ;
              MainForm.Bonv_fac_listTable.FieldValues['qut_p'] :=  01;
 
-           if  NOT (MainForm.ClientTable.IsEmpty) AND (BonFacVGestionF.ClientBonFacVGCbx.Text<> '' ) then
+           if  NOT (MainForm.ClientTable.IsEmpty) AND (ClientBonFacVGCbx.Text<> '' ) then
            begin
              if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 0 then
              begin
@@ -994,7 +948,7 @@ begin
          end else
          begin
 
-          FSplashAddUnite:=TFSplashAddUnite.Create(BonFacVGestionF);
+          FSplashAddUnite:=TFSplashAddUnite.Create(Application);
             FSplashAddUnite.Image1.ImageIndex:=3;
             FSplashAddUnite.Width:=300;
             FSplashAddUnite.Height:=160;
@@ -1082,7 +1036,7 @@ begin
              MainForm.Bonv_fac_listTable.FieldValues['code_bvfac']:= MainForm.Bonv_facTable.FieldValues['code_bvfac'];
              MainForm.Bonv_fac_listTable.FieldValues['code_p']:=  MainForm.ProduitTable.FieldValues['code_p'] ;
              MainForm.Bonv_fac_listTable.FieldValues['qut_p'] :=  01;
-           if  NOT (MainForm.ClientTable.IsEmpty) AND (BonFacVGestionF.ClientBonFacVGCbx.Text<> '' ) then
+           if  NOT (MainForm.ClientTable.IsEmpty) AND (ClientBonFacVGCbx.Text<> '' ) then
            begin
              if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 0 then
              begin
@@ -1143,7 +1097,7 @@ begin
              begin
 
 
-          FSplashAddUnite:=TFSplashAddUnite.Create(BonFacVGestionF);
+          FSplashAddUnite:=TFSplashAddUnite.Create(Application);
             FSplashAddUnite.Image1.ImageIndex:=3;
             FSplashAddUnite.Width:=300;
             FSplashAddUnite.Height:=160;
@@ -1213,7 +1167,7 @@ begin
 
 //-------- use this code to start creating th form-----//
   MainForm.ProduitTable.Filtered:=False;
-  FastProduitsListF := TFastProduitsListF.Create(BonFacVGestionF);
+  FastProduitsListF := TFastProduitsListF.Create(Application);
 
 
 //-------- Show the splash screan for the produit familly to add new one---------//
@@ -1266,7 +1220,7 @@ end;
 
 procedure TBonFacVGestionF.ClearProduitBonFacVGBtnClick(Sender: TObject);
 begin
-  FSplashAddUnite:=TFSplashAddUnite.Create(BonFacVGestionF);
+  FSplashAddUnite:=TFSplashAddUnite.Create(Application);
   FSplashAddUnite.Width:=350;
   FSplashAddUnite.Height:=160;
   FSplashAddUnite.Panel1.Color:=  $004735F9;
@@ -2129,8 +2083,8 @@ begin
 
 
 
-     BonFacVGestionF.BonFacVRegleLbl.Caption:=  FloatToStrF(StrToFloat(StringReplace(BonFacVTotalTTCLbl.Caption, #32, '', [rfReplaceAll])),ffNumber,14,2);
-     BonFacVGestionF.BonFacVResteLbl.Caption := FloatToStrF(0,ffNumber,14,2);
+     BonFacVRegleLbl.Caption:=  FloatToStrF(StrToFloat(StringReplace(BonFacVTotalTTCLbl.Caption, #32, '', [rfReplaceAll])),ffNumber,14,2);
+     BonFacVResteLbl.Caption := FloatToStrF(0,ffNumber,14,2);
 
     FSplashVersement.DisableBonFacV;
 
@@ -2179,19 +2133,19 @@ begin
           MainForm.ClientTable.DisableControls;
           MainForm.ClientTable.Active:=false;
           MainForm.ClientTable.SQL.Clear;
-          MainForm.ClientTable.SQL.Text:='Select * FROM client WHERE LOWER(nom_c) LIKE LOWER('+ QuotedStr(BonFacVGestionF.ClientBonFacVGCbx.Text )+')'  ;
+          MainForm.ClientTable.SQL.Text:='Select * FROM client WHERE LOWER(nom_c) LIKE LOWER('+ QuotedStr(ClientBonFacVGCbx.Text )+')'  ;
           MainForm.ClientTable.Active:=True;
 
           MainForm.Mode_paiementTable.DisableControls;
           MainForm.Mode_paiementTable.Active:=false;
           MainForm.Mode_paiementTable.SQL.Clear;
-          MainForm.Mode_paiementTable.SQL.Text:='Select * FROM mode_paiement WHERE LOWER(nom_mdpai) LIKE LOWER('+ QuotedStr(BonFacVGestionF.ModePaieBonFacVGCbx.Text )+')'  ;
+          MainForm.Mode_paiementTable.SQL.Text:='Select * FROM mode_paiement WHERE LOWER(nom_mdpai) LIKE LOWER('+ QuotedStr(ModePaieBonFacVGCbx.Text )+')'  ;
           MainForm.Mode_paiementTable.Active:=True;
 
           MainForm.CompteTable.DisableControls;
           MainForm.CompteTable.Active:=false;
           MainForm.CompteTable.SQL.Clear;
-          MainForm.CompteTable.SQL.Text:='Select * FROM compte WHERE LOWER(nom_cmpt) LIKE LOWER('+ QuotedStr(BonFAcVGestionF.CompteBonFacVGCbx.Text )+')'  ;
+          MainForm.CompteTable.SQL.Text:='Select * FROM compte WHERE LOWER(nom_cmpt) LIKE LOWER('+ QuotedStr(CompteBonFacVGCbx.Text )+')'  ;
           MainForm.CompteTable.Active:=True;
 
           MainForm.Bonv_facTable.Edit;
@@ -2201,37 +2155,37 @@ begin
           MainForm.Bonv_facTable.FieldValues['time_bvfac']:=TimeOf(Now);
           MainForm.Bonv_facTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
           MainForm.Bonv_facTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
-          MainForm.Bonv_facTable.FieldValues['obser_bvfac']:= BonFacVGestionF.ObserBonFacVGMem.Text;
-          MainForm.Bonv_facTable.FieldValues['num_cheque_bvfac']:= BonFacVGestionF.NChequeBonFacVGCbx.Text;
-          MainForm.Bonv_facTable.FieldByName('montht_bvfac').AsCurrency:= StrToCurr(StringReplace(BonFacVGestionF.BonFacVTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
+          MainForm.Bonv_facTable.FieldValues['obser_bvfac']:= ObserBonFacVGMem.Text;
+          MainForm.Bonv_facTable.FieldValues['num_cheque_bvfac']:= NChequeBonFacVGCbx.Text;
+          MainForm.Bonv_facTable.FieldByName('montht_bvfac').AsCurrency:= StrToCurr(StringReplace(BonFacVTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
 
           if TimberBonFacVGEdt.Visible = True then
           begin
-          MainForm.Bonv_facTable.FieldByName('timber_bvfac').AsCurrency:= StrToCurr(StringReplace(BonFacVGestionF.TimberBonFacVGEdt.Text, #32, '', [rfReplaceAll]));
+          MainForm.Bonv_facTable.FieldByName('timber_bvfac').AsCurrency:= StrToCurr(StringReplace(TimberBonFacVGEdt.Text, #32, '', [rfReplaceAll]));
 
           end;
 
-          if BonFAcVGestionF.RemiseBonFAcVGEdt.Text<>'' then
+          if RemiseBonFAcVGEdt.Text<>'' then
           begin
-          MainForm.Bonv_facTable.FieldByName('remise_bvfac').AsCurrency:=StrToCurr(StringReplace(BonFacVGestionF.RemiseBonFacVGEdt.Text, #32, '', [rfReplaceAll]));
+          MainForm.Bonv_facTable.FieldByName('remise_bvfac').AsCurrency:=StrToCurr(StringReplace(RemiseBonFacVGEdt.Text, #32, '', [rfReplaceAll]));
           end else begin
                     MainForm.Bonv_facTable.FieldByName('remise_bvfac').AsCurrency:=0;
                    end;
 
           MainForm.Bonv_facTable.FieldByName('montver_bvfac').AsCurrency:=StrToCurr(StringReplace(BonFacVTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
-          MainForm.Bonv_facTable.FieldByName('montttc_bvfac').AsCurrency:=StrToCurr(StringReplace(BonFacVGestionF.BonFacVTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
+          MainForm.Bonv_facTable.FieldByName('montttc_bvfac').AsCurrency:=StrToCurr(StringReplace(BonFacVTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
           MainForm.Bonv_facTable.FieldByName('valider_bvfac').AsBoolean:= True;
 
-          if (LowerCase(BonFacVGestionF.ModePaieBonFacVGCbx.Text)='espèce') OR (LowerCase(BonFacVGestionF.ModePaieBonFacVGCbx.Text)='espece') then
+          if (LowerCase(ModePaieBonFacVGCbx.Text)='espèce') OR (LowerCase(ModePaieBonFacVGCbx.Text)='espece') then
           begin
            MainForm.Bonv_facTable.FieldValues['code_mdpai']:=1 ;
           end;
-           if (LowerCase(BonFacVGestionF.ModePaieBonFacVGCbx.Text)='chèque') OR (LowerCase(BonFacVGestionF.ModePaieBonFacVGCbx.Text)='cheque') then
+           if (LowerCase(ModePaieBonFacVGCbx.Text)='chèque') OR (LowerCase(ModePaieBonFacVGCbx.Text)='cheque') then
           begin
            MainForm.Bonv_facTable.FieldValues['code_mdpai']:=2 ;
           end;
-          if (LowerCase(BonFacVGestionF.ModePaieBonFAcVGCbx.Text)='à terme' ) OR (LowerCase(BonFacVGestionF.ModePaieBonFacVGCbx.Text)='a terme' )
-             OR (LowerCase(BonFacVGestionF.ModePaieBonFacVGCbx.Text)='À terme' ) then
+          if (LowerCase(ModePaieBonFAcVGCbx.Text)='à terme' ) OR (LowerCase(ModePaieBonFacVGCbx.Text)='a terme' )
+             OR (LowerCase(ModePaieBonFacVGCbx.Text)='À terme' ) then
           begin
            MainForm.Bonv_facTable.FieldValues['code_mdpai']:=3 ;
           end;
@@ -2343,7 +2297,7 @@ begin
 
           MainForm.ClientTable.Edit;
           MainForm.ClientTable.FieldByName('oldcredit_c').AsCurrency:=
-          ((StrToCurr(StringReplace(BonFacVGestionF.BonFacVGClientNEWCredit.Caption, #32, '', [rfReplaceAll]))));
+          ((StrToCurr(StringReplace(BonFacVGClientNEWCredit.Caption, #32, '', [rfReplaceAll]))));
           MainForm.ClientTable.Post;
 
           MainForm.ClientTable.Active:=false;
@@ -2356,7 +2310,7 @@ begin
           //--- this is for adding the money to the caisse----
        begin
 
-        if Tag=0 then
+        if Tag = 0 then
           begin
               MainForm.Opt_cas_bnk_CaisseTable.DisableControls;
               MainForm.Opt_cas_bnk_CaisseTable.Active:=false;
@@ -2384,16 +2338,16 @@ begin
               MainForm.Opt_cas_bnk_CaisseTable.FieldValues['encaiss_ocb']:= StrToCurr(StringReplace(BonFacVTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));;
       //        MainForm.Opt_cas_bnk_CaisseTable.FieldValues['decaiss_ocb']:= ;
 
-               if (LowerCase(BonFacVGestionF.ModePaieBonFacVGCbx.Text)='espèce') OR (LowerCase(BonFacVGestionF.ModePaieBonFacVGCbx.Text)='espece') then
+               if (LowerCase(ModePaieBonFacVGCbx.Text)='espèce') OR (LowerCase(ModePaieBonFacVGCbx.Text)='espece') then
               begin
                MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=1 ;
               end;
-               if (LowerCase(BonFacVGestionF.ModePaieBonFacVGCbx.Text)='chèque') OR (LowerCase(BonFacVGestionF.ModePaieBonFacVGCbx.Text)='cheque') then
+               if (LowerCase(ModePaieBonFacVGCbx.Text)='chèque') OR (LowerCase(ModePaieBonFacVGCbx.Text)='cheque') then
               begin
                MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=2 ;
               end;
-              if (LowerCase(BonFacVGestionF.ModePaieBonFAcVGCbx.Text)='à terme' ) OR (LowerCase(BonFacVGestionF.ModePaieBonFacVGCbx.Text)='a terme' )
-                 OR (LowerCase(BonFacVGestionF.ModePaieBonFacVGCbx.Text)='À terme' ) then
+              if (LowerCase(ModePaieBonFAcVGCbx.Text)='à terme' ) OR (LowerCase(ModePaieBonFacVGCbx.Text)='a terme' )
+                 OR (LowerCase(ModePaieBonFacVGCbx.Text)='À terme' ) then
               begin
                MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=3 ;
               end;
@@ -2430,16 +2384,16 @@ begin
                     MainForm.Opt_cas_bnk_CaisseTable.FieldValues['encaiss_ocb']:= StrToCurr(StringReplace(BonFacVTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));;
             //        MainForm.Opt_cas_bnk_CaisseTable.FieldValues['decaiss_ocb']:= ;
 
-                     if (LowerCase(BonFacVGestionF.ModePaieBonFacVGCbx.Text)='espèce') OR (LowerCase(BonFacVGestionF.ModePaieBonFacVGCbx.Text)='espece') then
+                     if (LowerCase(ModePaieBonFacVGCbx.Text)='espèce') OR (LowerCase(ModePaieBonFacVGCbx.Text)='espece') then
                     begin
                      MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=1 ;
                     end;
-                     if (LowerCase(BonFacVGestionF.ModePaieBonFacVGCbx.Text)='chèque') OR (LowerCase(BonFacVGestionF.ModePaieBonFacVGCbx.Text)='cheque') then
+                     if (LowerCase(ModePaieBonFacVGCbx.Text)='chèque') OR (LowerCase(ModePaieBonFacVGCbx.Text)='cheque') then
                     begin
                      MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=2 ;
                     end;
-                    if (LowerCase(BonFacVGestionF.ModePaieBonFAcVGCbx.Text)='à terme' ) OR (LowerCase(BonFacVGestionF.ModePaieBonFacVGCbx.Text)='a terme' )
-                       OR (LowerCase(BonFacVGestionF.ModePaieBonFacVGCbx.Text)='À terme' ) then
+                    if (LowerCase(ModePaieBonFAcVGCbx.Text)='à terme' ) OR (LowerCase(ModePaieBonFacVGCbx.Text)='a terme' )
+                       OR (LowerCase(ModePaieBonFacVGCbx.Text)='À terme' ) then
                     begin
                      MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=3 ;
                     end;
@@ -2505,7 +2459,7 @@ end;
 
 procedure TBonFacVGestionF.ModePaieBonFacVGCbxChange(Sender: TObject);
 begin
-  if (LowerCase(BonFacVGestionF.ModePaieBonFacVGCbx.Text)='espèce') OR (LowerCase(BonFacVGestionF.ModePaieBonFacVGCbx.Text)='espece') then
+  if (LowerCase(ModePaieBonFacVGCbx.Text)='espèce') OR (LowerCase(ModePaieBonFacVGCbx.Text)='espece') then
   begin
   TimberPerctageBonFacVGEdt.Visible:= True;
   TimberBonFacVGEdt.Visible:= True;
@@ -2531,7 +2485,7 @@ end;
 procedure TBonFacVGestionF.AddModePaieBonFacVGBtnClick(Sender: TObject);
 begin
    //-------- Show the splash screan for the mode de paiement ---------//
-    FSplashAddUnite:=TFSplashAddUnite.Create(BonFacVGestionF);
+    FSplashAddUnite:=TFSplashAddUnite.Create(Application);
     FSplashAddUnite.Width:=330;
     FSplashAddUnite.Height:=185;
     FSplashAddUnite.NameAddUniteSLbl.Left:= 11;

@@ -11,6 +11,8 @@ object BankListF: TBankListF
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  OnActivate = FormShow
+  OnPaint = FormShow
   OnShow = FormShow
   DesignSize = (
     1191
@@ -433,7 +435,7 @@ object BankListF: TBankListF
     HorzScrollBar.ExtraPanel.Visible = True
     HorzScrollBar.ExtraPanel.VisibleItems = [gsbiNavigator, gsbiSelAggregationInfoEh]
     HorzScrollBar.Height = 15
-    IndicatorOptions = [gioShowRowselCheckboxesEh]
+    IndicatorOptions = []
     IndicatorParams.Color = clBtnFace
     IndicatorParams.HorzLineColor = 15970832
     IndicatorParams.VertLineColor = 15970832
@@ -441,7 +443,7 @@ object BankListF: TBankListF
     IndicatorTitle.TitleButton = True
     OddRowColor = 16315635
     Options = [dgTitles, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgMultiSelect]
-    OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghAutoSortMarking, dghMultiSortMarking, dghDialogFind, dghColumnResize, dghColumnMove, dghHotTrack, dghExtendVertLines]
+    OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghDialogFind, dghColumnResize, dghColumnMove, dghHotTrack, dghExtendVertLines]
     ParentCtl3D = False
     ParentFont = False
     ParentShowHint = False
@@ -982,7 +984,7 @@ object BankListF: TBankListF
     Top = 480
   end
   object BAnkListfrxRprt: TfrxReport
-    Version = '5.5'
+    Version = '5.4.6'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]

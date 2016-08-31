@@ -48,7 +48,7 @@ object ProduitsListF: TProduitsListF
     HorzScrollBar.ExtraPanel.Visible = True
     HorzScrollBar.ExtraPanel.VisibleItems = [gsbiNavigator, gsbiSelAggregationInfoEh]
     HorzScrollBar.Height = 15
-    IndicatorOptions = [gioShowRowselCheckboxesEh]
+    IndicatorOptions = []
     IndicatorParams.Color = clBtnFace
     IndicatorParams.HorzLineColor = 15970832
     IndicatorParams.VertLineColor = 15970832
@@ -56,7 +56,7 @@ object ProduitsListF: TProduitsListF
     IndicatorTitle.TitleButton = True
     OddRowColor = 16315635
     Options = [dgTitles, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgMultiSelect]
-    OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghAutoSortMarking, dghMultiSortMarking, dghDialogFind, dghColumnResize, dghColumnMove, dghHotTrack, dghExtendVertLines]
+    OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghDialogFind, dghColumnResize, dghColumnMove, dghHotTrack, dghExtendVertLines]
     ParentCtl3D = False
     ParentFont = False
     ParentShowHint = False
@@ -352,24 +352,26 @@ object ProduitsListF: TProduitsListF
         Width = 130
       end
       item
+        DisplayFormat = '0.00 '
         DynProps = <>
         EditButtons = <>
         FieldName = 'QUT'
         Footers = <>
+        Visible = False
       end
       item
         Alignment = taCenter
         Color = 15722984
+        DisplayFormat = '0.00 '
         DynProps = <>
         EditButtons = <>
         FieldName = 'qut_p'
         Footers = <>
         Layout = tlCenter
-        MaxWidth = 100
         MinWidth = 100
         Title.Alignment = taCenter
         Title.Caption = 'Stock'
-        Width = 100
+        Width = 150
       end
       item
         Alignment = taCenter

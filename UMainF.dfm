@@ -1580,7 +1580,7 @@ object MainForm: TMainForm
     Panels = <
       item
         Bevel = pbNone
-        Text = 'Agent : Admin'
+        Text = 'Agent : '
         Width = 250
       end
       item
@@ -1593,8 +1593,8 @@ object MainForm: TMainForm
     SizeGrip = False
     SkinData.SkinSection = 'MENUBTN'
     object UserIDLbl: TLabel
-      Left = 91
-      Top = -2
+      Left = 195
+      Top = -1
       Width = 10
       Height = 23
       Caption = '1'
@@ -1619,6 +1619,19 @@ object MainForm: TMainForm
       Font.Style = [fsBold]
       ParentFont = False
       Visible = False
+    end
+    object UserNameLbl: TLabel
+      Left = 46
+      Top = 3
+      Width = 36
+      Height = 15
+      Caption = 'Admin'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Height = 15
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
     end
     object vente_ur: TCheckBox
       Left = 269
@@ -1951,6 +1964,7 @@ object MainForm: TMainForm
       object H1: TMenuItem
         Caption = 'Liste des Factures'
         ImageIndex = 10
+        OnClick = H1Click
       end
     end
     object TreMainFMnm: TMenuItem
@@ -21181,6 +21195,7 @@ object MainForm: TMainForm
     Top = 304
   end
   object FournisseurTable: TFDQuery
+    Active = True
     FilterOptions = [foCaseInsensitive]
     IndexFieldNames = 'code_f'
     Connection = GstockdcConnection
@@ -21325,6 +21340,7 @@ object MainForm: TMainForm
     Top = 304
   end
   object ProduitTable: TFDQuery
+    Active = True
     OnCalcFields = ProduitTableCalcFields
     FilterOptions = [foCaseInsensitive]
     IndexFieldNames = 'code_p'
@@ -21521,6 +21537,7 @@ object MainForm: TMainForm
       FieldName = 'QUT'
     end
     object ProduitTablequt_p: TFloatField
+      DisplayWidth = 10
       FieldName = 'qut_p'
       Origin = 'qut_p'
     end
@@ -21538,6 +21555,7 @@ object MainForm: TMainForm
     end
   end
   object UniteTable: TFDQuery
+    Active = True
     FilterOptions = [foCaseInsensitive]
     IndexFieldNames = 'code_u'
     Connection = GstockdcConnection
@@ -21547,6 +21565,7 @@ object MainForm: TMainForm
     Top = 347
   end
   object SfamproduitTable: TFDQuery
+    Active = True
     FilterOptions = [foCaseInsensitive]
     IndexFieldNames = 'code_sfamp'
     Connection = GstockdcConnection
@@ -21556,6 +21575,7 @@ object MainForm: TMainForm
     Top = 472
   end
   object FamproduitTable: TFDQuery
+    Active = True
     FilterOptions = [foCaseInsensitive]
     IndexFieldNames = 'code_famp'
     Connection = GstockdcConnection
@@ -21575,6 +21595,7 @@ object MainForm: TMainForm
     Top = 528
   end
   object LocalisationTable: TFDQuery
+    Active = True
     IndexFieldNames = 'code_l'
     Connection = GstockdcConnection
     SQL.Strings = (
@@ -21586,7 +21607,7 @@ object MainForm: TMainForm
     FilterOptions = [foCaseInsensitive]
     Connection = GstockdcConnection
     Left = 188
-    Top = 134
+    Top = 150
   end
   object MainMenuImageListMainFormaa: TsAlphaImageList
     Height = 18
@@ -23309,6 +23330,7 @@ object MainForm: TMainForm
     end
   end
   object Bona_recPlistTable: TFDQuery
+    Active = True
     AfterRefresh = Bona_recPlistTableAfterRefresh
     OnCalcFields = Bona_recPlistTableCalcFields
     FilterOptions = [foCaseInsensitive]
@@ -23329,7 +23351,7 @@ object MainForm: TMainForm
       FieldName = 'code_barec'
       Origin = 'code_barec'
     end
-    object Bona_recPlistTablequt_p: TIntegerField
+    object Bona_recPlistTablequt_p: TFloatField
       FieldName = 'qut_p'
       Origin = 'qut_p'
     end
@@ -35226,7 +35248,7 @@ object MainForm: TMainForm
       FieldName = 'code_bvliv'
       Origin = 'code_bvliv'
     end
-    object Bonv_liv_listTablequt_p: TIntegerField
+    object Bonv_liv_listTablequt_p: TFloatField
       FieldName = 'qut_p'
       Origin = 'qut_p'
     end
@@ -35452,7 +35474,7 @@ object MainForm: TMainForm
       FieldName = 'code_bafac'
       Origin = 'code_bafac'
     end
-    object Bona_fac_listTablequt_p: TIntegerField
+    object Bona_fac_listTablequt_p: TFloatField
       FieldName = 'qut_p'
       Origin = 'qut_p'
     end
@@ -35529,7 +35551,7 @@ object MainForm: TMainForm
     Connection = GstockdcConnection
     SQL.Strings = (
       'SELECT * FROM wilayas')
-    Left = 439
+    Left = 471
     Top = 272
     object WilayasTablecode_w: TSmallintField
       FieldName = 'code_w'
@@ -35546,7 +35568,7 @@ object MainForm: TMainForm
     Connection = GstockdcConnection
     SQL.Strings = (
       'SELECT * FROM communes')
-    Left = 437
+    Left = 469
     Top = 363
     object CommunesTablecode_cumm: TSmallintField
       FieldName = 'code_cumm'
@@ -35589,7 +35611,7 @@ object MainForm: TMainForm
       FieldName = 'code_bvfac'
       Origin = 'code_bvfac'
     end
-    object Bonv_fac_listTablequt_p: TIntegerField
+    object Bonv_fac_listTablequt_p: TFloatField
       FieldName = 'qut_p'
       Origin = 'qut_p'
     end
@@ -35800,7 +35822,7 @@ object MainForm: TMainForm
   end
   object WilayasDataS: TDataSource
     DataSet = WilayasTable
-    Left = 440
+    Left = 472
     Top = 320
   end
   object Bonv_livTableCredit: TFDQuery
@@ -36490,7 +36512,7 @@ object MainForm: TMainForm
     OnCalcFields = Bonv_ctr_listTableCalcFields
     FilterOptions = [foCaseInsensitive]
     IndexFieldNames = 'code_bvctr'
-    MasterSource = BonCtrF.BonCtrListDataS
+    MasterSource = BonCtrListDataS
     MasterFields = 'code_bvctr'
     Connection = GstockdcConnection
     SQL.Strings = (
@@ -36506,7 +36528,7 @@ object MainForm: TMainForm
       FieldName = 'code_bvctr'
       Origin = 'code_bvctr'
     end
-    object Bonv_ctr_listTablequt_p: TIntegerField
+    object Bonv_ctr_listTablequt_p: TFloatField
       FieldName = 'qut_p'
       Origin = 'qut_p'
     end
@@ -36665,7 +36687,7 @@ object MainForm: TMainForm
       FieldName = 'code_p'
       Origin = 'code_p'
     end
-    object Bonv_ctr_Top10produitsum: TLargeintField
+    object Bonv_ctr_Top10produitsum: TFloatField
       AutoGenerateValue = arDefault
       FieldName = 'sum'
       Origin = 'sum'
@@ -45207,6 +45229,10 @@ object MainForm: TMainForm
           '-- Records of users'
           '-- ----------------------------'
           'BEGIN;'
+          
+            'INSERT INTO "users" VALUES ('#39'1'#39', '#39'Admin'#39', '#39'admin'#39', '#39't'#39', '#39't'#39', '#39't'#39 +
+            ', '#39't'#39', '#39't'#39', '#39't'#39', '#39't'#39', '#39't'#39', '#39't'#39', '#39't'#39', '#39't'#39', '#39't'#39', '#39't'#39', '#39'0'#39', '#39't'#39', '#39't' +
+            #39');'
           'COMMIT;'
           ''
           '-- ----------------------------'
@@ -45470,5 +45496,10 @@ object MainForm: TMainForm
     ResourceOptions.DirectExecute = True
     Left = 680
     Top = 184
+  end
+  object BonCtrListDataS: TDataSource
+    DataSet = Bonv_ctrTable
+    Left = 381
+    Top = 394
   end
 end

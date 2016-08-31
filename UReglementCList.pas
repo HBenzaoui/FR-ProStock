@@ -395,7 +395,7 @@ begin
   PreiodRX:= RegCListfrxRprt.FindObject('PreiodRX') as TfrxMemoView;
   PreiodRX.Text:= 'Période du : ' + DateToStr(DateStartRegCD.Date) + ' au ' + DateToStr(DateEndRegCD.Date) ;
       Agent:= RegCListfrxRprt.FindObject('Agent') as TfrxMemoView;
-  Agent.Text:= MainForm.UserIDLbl.Caption ;
+  Agent.Text:= MainForm.UserNameLbl.Caption ;
   end;
 
 

@@ -1271,7 +1271,7 @@ object BonRecGestionF: TBonRecGestionF
     end
   end
   object ProduitsListDBGridEh: TDBGridEh
-    Left = 8
+    Left = 2
     Top = 304
     Width = 1086
     Height = 250
@@ -1309,7 +1309,7 @@ object BonRecGestionF: TBonRecGestionF
     IndicatorTitle.UseGlobalMenu = False
     OddRowColor = 16315635
     Options = [dgEditing, dgTitles, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgMultiSelect]
-    OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghAutoSortMarking, dghMultiSortMarking, dghDialogFind, dghShowRecNo, dghColumnResize, dghColumnMove, dghHotTrack, dghExtendVertLines]
+    OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghDialogFind, dghShowRecNo, dghColumnResize, dghColumnMove, dghHotTrack, dghExtendVertLines]
     ParentCtl3D = False
     ParentFont = False
     ParentShowHint = False
@@ -1361,6 +1361,7 @@ object BonRecGestionF: TBonRecGestionF
       end
       item
         Alignment = taCenter
+        DisplayFormat = '0.00'
         DynProps = <>
         EditButtons = <>
         FieldName = 'qut_p'

@@ -60,7 +60,7 @@ object BonCtrGestionF: TBonCtrGestionF
     IndicatorTitle.UseGlobalMenu = False
     OddRowColor = 16315635
     Options = [dgEditing, dgTitles, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgMultiSelect]
-    OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghAutoSortMarking, dghMultiSortMarking, dghDialogFind, dghShowRecNo, dghColumnResize, dghColumnMove, dghHotTrack, dghExtendVertLines]
+    OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghDialogFind, dghShowRecNo, dghColumnResize, dghColumnMove, dghHotTrack, dghExtendVertLines]
     ParentCtl3D = False
     ParentFont = False
     ParentShowHint = False
@@ -121,6 +121,7 @@ object BonCtrGestionF: TBonCtrGestionF
       end
       item
         Alignment = taCenter
+        DisplayFormat = '0.00 '
         DynProps = <>
         EditButtons = <>
         FieldName = 'qut_p'
@@ -633,7 +634,7 @@ object BonCtrGestionF: TBonCtrGestionF
       Font.Style = []
       ParentFont = False
       Sorted = True
-      TabOrder = 1
+      TabOrder = 0
       OnDropDown = ProduitBonCtrGCbxDropDown
       OnEnter = ProduitBonCtrGCbxDropDown
       OnExit = ProduitBonCtrGCbxExit
@@ -648,7 +649,7 @@ object BonCtrGestionF: TBonCtrGestionF
       BevelOuter = bvNone
       Color = 4666873
       ParentBackground = False
-      TabOrder = 0
+      TabOrder = 1
     end
     object Panel29: TPanel
       Left = 0

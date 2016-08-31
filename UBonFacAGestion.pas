@@ -594,61 +594,10 @@ begin
    BonFacAF.BonFacAListDataS.DataSet.Refresh;
    Refresh;
 
-        ModePaieBonFacAGCbx.Refresh;
+     ModePaieBonFacAGCbx.Refresh;
      CompteBonFacAGCbx.Refresh;
 
-  begin
-
-      AddBAFacBonFacAGBtn.Enabled:= False;
-      AddBAFacBonFacAGBtn.ImageIndex:=28;// 4 For D
-      EditBAFacBonFacAGBtn.Enabled:= False;
-      EditBAFacBonFacAGBtn.ImageIndex:=29;// 5 for D
-      ValiderBAFacBonFacAGBtn.Enabled:= True;
-      ValiderBAFacBonFacAGBtn.ImageIndex:=12;//30 for D
-
-      DateBonFacAGD.Enabled:= True;
-      ObserBonFacAGMem.Enabled:= True;
-      FourBonFacAGCbx.Enabled:= True;
-      AddFourBonFacAGBtn.ImageIndex:=10;//35 fo D
-      ModePaieBonFacAGCbx.Enabled:= True;
-      AddModePaieBonFacAGBtn.ImageIndex:=10;// 35 fo D
-      CompteBonFacAGCbx.Enabled:= True;
-      AddCompteBonFacAGBtn.ImageIndex:=10;// 35 fo D
-      NChequeBonFacAGCbx.Enabled:= True;
-      ProduitBonFacAGCbx.Enabled:= True;
-      EnterAddProduitBonFacAGBtn.Enabled:= True;
-      EnterAddProduitBonFacAGBtn.ImageIndex:=15;// 40 fo D
-      ListAddProduitBonFacAGBtn.Enabled:= True;
-      ListAddProduitBonFacAGBtn.ImageIndex:=13;//41 fo D
-      NewAddProduitBonFacAGBtn.Enabled:= True;
-      NewAddProduitBonFacAGBtn.ImageIndex:=4;//28 fo D
-      DeleteProduitBonFacAGBtn.Enabled:= True;
-      DeleteProduitBonFacAGBtn.ImageIndex:=14;//36 fo D
-      ClearProduitBonFacAGBtn.Enabled:= True;
-      ClearProduitBonFacAGBtn.ImageIndex:=16;//39 fo A
-      ProduitsListDBGridEh.DataSource.DataSet.EnableControls;//DisableControls    For A
-      ProduitsListDBGridEh.Columns[2].TextEditing :=True;//False for D
-      ProduitsListDBGridEh.Columns[3].TextEditing:=True;//False for D
-      ProduitsListDBGridEh.Columns[4].TextEditing:=True;//False for D
-      ProduitsListDBGridEh.Options:=
-      ProduitsListDBGridEh.Options +[dgEditing] +[dgAlwaysShowSelection]+[dgMultiSelect]- [dgRowSelect] ; //flip + and -  for A
-      ProduitsListDBGridEh.Color:= clWhite;// $00EFE9E8 for D
-      ProduitsListDBGridEh.FixedColor:=clwindow;//$00EFE9E8 for D
-      ProduitsListDBGridEh.EvenRowColor:=clwindow;//$00EFE9E8 for D
-      RemisePerctageBonFacAGEdt.Enabled:=True;//False for D
-      RemiseBonFacAGEdt.Enabled:=True;//False for D
-      RemiseTypeBonFacAGCbx.Enabled:= True;//False for D;
-
-      ResherchPARDesProduitsRdioBtn.Enabled:= True;//False for D
-      ResherchPARRefProduitsRdioBtn.Enabled:= True;//False for D
-      ResherchPARCBProduitsRdioBtn.Enabled:= True;//False for D
-
-      ValiderBAFacBonFacAGImg.ImageIndex:=1;//0 fo D
-      ValiderBAFacBonFacAGLbl.Color:=$007374FF;// $004AC38B for D
-      ValiderBAFacBonFacAGLbl.Font.Color:= clWhite;// clBlack for D
-      ValiderBAFacBonFacAGLbl.Caption:='Ce facture n''est pas encore Validé';// 'Ce bon est Valid' for D
-  end;
-
+     EnableBonFacA;
 
  codeFA:= 0;
    //   BonRecGestionF := TBonRecGestionF.Create(BonRecGestionF);
@@ -786,6 +735,10 @@ begin
 
      end;
 
+
+  //---thise is to visivle timber after edit and calculate it----//
+     ModePaieBonFacAGCbxClick(Sender);
+
 end;
 
 procedure TBonFacAGestionF.ValiderBAFacBonFacAGBtnClick(Sender: TObject);
@@ -798,7 +751,7 @@ begin
     begin
 
 
-       FourBonFacAGCbxChange(Sender);
+ //      FourBonFacAGCbxChange(Sender);
       MainForm.FournisseurTable.DisableControls;
       MainForm.FournisseurTable.Active:=false;
       MainForm.FournisseurTable.SQL.Clear;
@@ -927,10 +880,9 @@ begin
           MainForm.Bona_facTable.FieldValues['num_cheque_bafac']:= NChequeBonFacAGCbx.Text;
           MainForm.Bona_facTable.FieldByName('montht_bafac').AsCurrency:= StrToCurr(StringReplace(BonFacATotalHTLbl.Caption, #32, '', [rfReplaceAll]));
 
-          if Visible = True then
+          if TimberBonFacaGEdt.Visible = True then
           begin
           MainForm.Bona_facTable.FieldByName('timber_bafac').AsCurrency:= StrToCurr(StringReplace(TimberBonFacaGEdt.Text, #32, '', [rfReplaceAll]));
-
           end;
 
           if RemiseBonFacAGEdt.Text<>'' then

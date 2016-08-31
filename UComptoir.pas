@@ -174,7 +174,7 @@ implementation
 
 {$R *.dfm}
 uses  Printers,StringTool,IniFiles,
- Winapi.ShellAPI, UMainF, UProduitsList, UBonCtr, USplashAddUnite,
+ Winapi.ShellAPI, UMainF, UProduitsList, UBonCtr, USplashAddUnite,UProduitGestion,
   UFastProduitsList, USplashVersement, UOptions;
 
 
@@ -202,7 +202,7 @@ begin
           AddBVCtrBonCtrGBtn.Enabled:= False;
           AddBVCtrBonCtrGBtn.Enabled:= False;
           AddBVCtrBonCtrGBtn.ImageIndex:=28;// 4 For D.ImageIndex:=28;// 4 For D.Enabled:= False;
-          PrintTicketBVCtrBonCtrGBtn.ImageIndex:=28;// 4 For D
+//          PrintTicketBVCtrBonCtrGBtn.ImageIndex:=28;// 4 For D
           EditBVCtrBonCtrGBtn.Enabled:= False;
           EditBVCtrBonCtrGBtn.ImageIndex:=29;// 5 for D
           ValiderBVCtrBonCtrGBtn.Enabled:= True;
@@ -213,17 +213,12 @@ begin
 
 
           DateBonCtrGD.Enabled:= True;
-       //   ObserBonCtrGMem.Enabled:= True;
+
           ClientBonCtrGCbx.Enabled:= True;
           AddClientBonCtrGBtn.Enabled:= True ; //
           AddClientBonCtrGBtn.ImageIndex:=10;//35 fo D
-//          ModePaieBonCtrGCbx.Enabled:= True;
-//          AddModePaieBonCtrGBtn.Enabled:= True ;
-//          AddModePaieBonCtrGBtn.ImageIndex:=10;// 35 fo D
-//          CompteBonCtrGCbx.Enabled:= True;
-//          AddCompteBonCtrGBtn.Enabled:= True ;
-//          AddCompteBonCtrGBtn.ImageIndex:=10;// 35 fo D
-//          NChequeBonCtrGCbx.Enabled:= True;
+
+
             ProduitBonCtrGCbx.Enabled:= True;
             EnterAddProduitBonCtrGBtn.Enabled:= True;
             EnterAddProduitBonCtrGBtn.ImageIndex:=15;// 40 fo D
@@ -246,11 +241,11 @@ begin
             ProduitsListDBGridEh.EvenRowColor:=clwindow;//$00EFE9E8 for D
             RemisePerctageBonCtrGEdt.Enabled:=True;//False for D
             RemiseBonCtrGEdt.Enabled:=True;//False for D
-//          RemiseTypeBonCtrGCbx.Enabled:= True;//False for D;
-//
-//          ResherchPARDesProduitsRdioBtn.Enabled:= True;//False for D
-//          ResherchPARRefProduitsRdioBtn.Enabled:= True;//False for D
-//          ResherchPARCBProduitsRdioBtn.Enabled:= True;//False for D
+
+            CtrTop10PRODUITDBGridEh.Enabled:=True;//False for D
+            CtrTop10PRODUITDBGridEh.Color:= clWhite;// $00D9D7D3 for D
+            CtrTop10PRODUITDBGridEh.FixedColor:=clwindow;//$00D9D7D3 for D
+            CtrTop10PRODUITDBGridEh.EvenRowColor:=clwindow;//$00EFE9E8 for D
 
           ValiderBVCtrBonCtrGImg.ImageIndex:=1;//0 fo D
           ValiderBVCtrBonCtrGLbl.Color:=$007374FF;// $004AC38B for D
@@ -480,8 +475,12 @@ begin
 end;
 
 procedure TBonCtrGestionF.NewAddProduitBonCtrGBtnClick(Sender: TObject);
+var
+  codeP, refnum: integer;
 begin
-ProduitsListF.AddProduitsBtnClick(Sender);
+  FormStyle:=fsNormal;
+
+  ProduitsListF.AddProduitsBtnClick(Sender);
 end;
 
 procedure TBonCtrGestionF.AddBVCtrBonCtrGBtn1Click(Sender: TObject);
@@ -1242,15 +1241,14 @@ begin
 //-------- use this code to start creating th form-----//
   MainForm.ProduitTable.Filtered:=False;
   FastProduitsListF := TFastProduitsListF.Create(Application);
+  FastProduitsListF.Tag := 4;
 
 //-------- Show the splash screan for the produit familly to add new one---------//
   FastProduitsListF.Left := (Screen.Width div 2) - (FastProduitsListF.Width div 2);
   FastProduitsListF.Top := (Screen.Height div 2) - (FastProduitsListF.Height div 2);
   FormStyle:=fsNormal;
-  FastProduitsListF.Show;
-  FastProduitsListF.ResearchProduitsEdt.SetFocus;
-//---------Use this tag = 2 for adding from facture dd'achat
-  FastProduitsListF.Tag := 4;
+  FastProduitsListF.ShowModal;
+
 end;
 
 procedure TBonCtrGestionF.Timer1Timer(Sender: TObject);
@@ -2512,9 +2510,6 @@ end;
 procedure TBonCtrGestionF.ExValiderBVCtrBonCtrGBtnClick(Sender: TObject);
 var CodeOCB,CodeRF : Integer;
  begin
-
-
-
        FSplashVersement.DisableBonCtr;
 
 

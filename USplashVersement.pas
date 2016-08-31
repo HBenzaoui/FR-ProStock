@@ -99,13 +99,8 @@ begin
           BonCtrGestionF.ClientBonCtrGCbx.Enabled:= False;
           BonCtrGestionF.AddClientBonCtrGBtn.Enabled:= False ; //
           BonCtrGestionF.AddClientBonCtrGBtn.ImageIndex:=35;//10 fo A
-//          BonCtrGestionF.ModePaieBonCtrGCbx.Enabled:= False;
-//          BonCtrGestionF.AddModePaieBonCtrGBtn.Enabled:= False ;
-//          BonCtrGestionF.AddModePaieBonCtrGBtn.ImageIndex:=35;//10 fo A
-//          BonCtrGestionF.CompteBonCtrGCbx.Enabled:= False;
-//          BonCtrGestionF.AddCompteBonCtrGBtn.Enabled:= False ;
-//          BonCtrGestionF.AddCompteBonCtrGBtn.ImageIndex:=35;//10 fo A
-//          BonCtrGestionF.NChequeBonCtrGCbx.Enabled:= False;
+
+
           BonCtrGestionF.ProduitBonCtrGCbx.Enabled:= False;
           BonCtrGestionF.EnterAddProduitBonCtrGBtn.Enabled:= False;
           BonCtrGestionF.EnterAddProduitBonCtrGBtn.ImageIndex:=40;//15 fo A
@@ -128,11 +123,11 @@ begin
           BonCtrGestionF.ProduitsListDBGridEh.EvenRowColor:=$00D9D7D3;//clwindow for A
           BonCtrGestionF.RemisePerctageBonCtrGEdt.Enabled:=False;//True for A
           BonCtrGestionF.RemiseBonCtrGEdt.Enabled:=False;//True for A
-//          BonCtrGestionF.RemiseTypeBonCtrGCbx.Enabled:= False;//True for A;
-//
-//          BonCtrGestionF.ResherchPARDesProduitsRdioBtn.Enabled:= False;//True for A
-//          BonCtrGestionF.ResherchPARRefProduitsRdioBtn.Enabled:= False;//True for A                                   Ce bon n'est pas encore validé
-//          BonCtrGestionF.ResherchPARCBProduitsRdioBtn.Enabled:= False;//True for A
+
+          BonCtrGestionF.CtrTop10PRODUITDBGridEh.Enabled:=False;//True for A
+          BonCtrGestionF.CtrTop10PRODUITDBGridEh.Color:= $00EFE9E8;// clWhite for A
+          BonCtrGestionF.CtrTop10PRODUITDBGridEh.FixedColor:=$00D9D7D3;//clwindow for A
+          BonCtrGestionF.CtrTop10PRODUITDBGridEh.EvenRowColor:=$00D9D7D3;//clwindow for A
 
           BonCtrGestionF.ValiderBVCtrBonCtrGImg.ImageIndex:=0;//1 fo A
           BonCtrGestionF.ValiderBVCtrBonCtrGLbl.Color:=$004AC38B;// $007374FF for A
