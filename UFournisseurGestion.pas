@@ -704,7 +704,11 @@ begin
 
 
 
-        MainForm.FournisseurTable.DisableControls;
+     if OKFournisseurGBtn.Tag = 0 OR 1 then
+     begin
+
+
+      MainForm.FournisseurTable.DisableControls;
 
       MainForm.FournisseurTable.Active := false;
       MainForm.FournisseurTable.SQL.Clear;
@@ -763,22 +767,14 @@ begin
         MainForm.FournisseurTable.Active := true;
        end;
 
-      MainForm.FournisseurTable.EnableControls;
+       if OKFournisseurGBtn.Tag = 0 then
+       begin
+       MainForm.FournisseurTable.Last;
+       end;
 
+       MainForm.FournisseurTable.EnableControls;
 
-
-    //      MainForm.FournisseurTableActif.Refresh;
-//      FournisseurListF.ActifFournisseursLbl.Caption :=
-//        IntToStr(MainForm.FournisseurTableActif.RecordCount);
-//
-//      MainForm.FournisseurTablePassif.Refresh;
-//      FournisseurListF.PassifFournisseursLbl.Caption :=
-//        IntToStr(MainForm.FournisseurTablePassif.RecordCount);
-
-//      MainForm.FournisseurTable.Refresh;
-//      FournisseurListF.ToutFournisseursLbl.Caption :=
-//        IntToStr(MainForm.FournisseurTable.RecordCount);
-
+     end;
 
   end
 

@@ -50,59 +50,7 @@ type
     PassifClientsLbl: TLabel;
     Label5: TLabel;
     ActifClientsLbl: TLabel;
-    ClientTableActif: TFDQuery;
-    ClientTablePassif: TFDQuery;
     Panel3: TPanel;
-    ClientTableActifnom_c: TWideStringField;
-    ClientTableActifadr_c: TWideStringField;
-    ClientTableActifville_c: TWideStringField;
-    ClientTableActiffix_c: TWideStringField;
-    ClientTableActifmob_c: TWideStringField;
-    ClientTableActifemail_c: TWideStringField;
-    ClientTableActifwillaya_c: TWideStringField;
-    ClientTableActiffax_c: TWideStringField;
-    ClientTableActifactiv_c: TBooleanField;
-    ClientTableActiflogo_c: TBlobField;
-    ClientTableActifmob2_c: TWideStringField;
-    ClientTableActifrc_c: TWideStringField;
-    ClientTableActifnif_c: TWideStringField;
-    ClientTableActifnart_c: TWideStringField;
-    ClientTableActifnis_c: TWideStringField;
-    ClientTableActifobser_c: TWideMemoField;
-    ClientTableActifnbank_c: TWideStringField;
-    ClientTableActifrib_c: TWideStringField;
-    ClientTableActifactivite_c: TWideStringField;
-    ClientTableActifpays_c: TWideStringField;
-    ClientTableActifsiteweb_c: TWideStringField;
-    ClientTableActifoldcredit_c: TCurrencyField;
-    ClientTableActifmaxcredit_c: TCurrencyField;
-    ClientTableActifcode_c: TIntegerField;
-    ClientTableActiftarification_c: TSmallintField;
-    ClientTablePassifnom_c: TWideStringField;
-    ClientTablePassifadr_c: TWideStringField;
-    ClientTablePassifville_c: TWideStringField;
-    ClientTablePassiffix_c: TWideStringField;
-    ClientTablePassifmob_c: TWideStringField;
-    ClientTablePassifemail_c: TWideStringField;
-    ClientTablePassifwillaya_c: TWideStringField;
-    ClientTablePassiffax_c: TWideStringField;
-    ClientTablePassifactiv_c: TBooleanField;
-    ClientTablePassiflogo_c: TBlobField;
-    ClientTablePassifmob2_c: TWideStringField;
-    ClientTablePassifrc_c: TWideStringField;
-    ClientTablePassifnif_c: TWideStringField;
-    ClientTablePassifnart_c: TWideStringField;
-    ClientTablePassifnis_c: TWideStringField;
-    ClientTablePassifobser_c: TWideMemoField;
-    ClientTablePassifnbank_c: TWideStringField;
-    ClientTablePassifrib_c: TWideStringField;
-    ClientTablePassifactivite_c: TWideStringField;
-    ClientTablePassifpays_c: TWideStringField;
-    ClientTablePassifsiteweb_c: TWideStringField;
-    ClientTablePassifoldcredit_c: TCurrencyField;
-    ClientTablePassifmaxcredit_c: TCurrencyField;
-    ClientTablePassifcode_c: TIntegerField;
-    ClientTablePassiftarification_c: TSmallintField;
     sSpeedButton3: TsSpeedButton;
     frxPDFExport1: TfrxPDFExport;
     frxXLSExport1: TfrxXLSExport;
@@ -198,112 +146,9 @@ begin
 
        //  MainForm.ClientTable.Refresh;
 
-
-
-
-   if ActifClientsRdioBtn.Checked then
-   begin
-
- if not ClientsListDBGridEh.DataSource.DataSet.IsEmpty then
-
-     begin
-
-
-     //----------------- SHOW THE DATA ON THE CLIENT GESTION PANEL -----------------------------//
-
-         with ClientTableActif do  begin
-
-            ClientGestionF.ActiveClientGSlider.SliderOn:=  FieldValues['activ_c'];
-            ClientGestionF.NameClientGEdt.Text:= fieldbyname('nom_c').Value;
-            ClientGestionF.AcitiviteClientGEdt.Text:= fieldbyname('activite_c').Value;
-            ClientGestionF.AdrClientGEdt.Text:= fieldbyname('adr_c').Value;
-            ClientGestionF.WilayaClientGCbx.Text:= fieldbyname('willaya_c').Value;
-            ClientGestionF.VilleClientGCbx.Text:= fieldbyname('ville_c').Value;
-            ClientGestionF.FixClientGEdt.Text:= fieldbyname('fix_c').Value;
-            ClientGestionF.FaxClientGEdt.Text:= fieldbyname('fax_c').Value;
-            ClientGestionF.MobileClientGEdt.Text:= fieldbyname('mob_c').Value;
-            ClientGestionF.MobileClientGEdt.Text:= fieldbyname('mob2_c').Value;
-            ClientGestionF.EmailClientGEdt.Text:= fieldbyname('email_c').Value;
-            ClientGestionF.SiteClientGEdt.Text:= fieldbyname('siteWeb_c').Value;
-
-            ClientGestionF.RCClientGEdt.Text:= fieldbyname('rc_c').Value;
-            ClientGestionF.NArtClientGEdt.Text:= fieldbyname('nart_c').Value;
-            ClientGestionF.NIFClientGEdt.Text:= fieldbyname('nif_c').Value;
-            ClientGestionF.NISClientGEdt.Text:= fieldbyname('nis_c').Value;
-            ClientGestionF.NBankClientGEdt.Text:= fieldbyname('nbank_c').Value;
-            ClientGestionF.RIBClientGEdt.Text:= fieldbyname('rib_c').Value;
-            ClientGestionF.OldCreditClientGEdt.Text:= CurrToStrF( fieldbyname('oldcredit_c').Value,ffNumber, 2);
-            ClientGestionF.MaxCreditClientGEdt.Text:= CurrToStrF( fieldbyname('maxcredit_c').Value,ffNumber, 2);
-            ClientGestionF.ModeTarifClientGCbx.ItemIndex:= fieldbyname('tarification_c').AsInteger;
-            ClientGestionF.ObserClientGMem.Text:= fieldbyname('obser_c').Value;
-
-          end ;
-
-      end
-
-  else  Exit
-
-
-   end;
-
-
-   if PassifClientsRdioBtn.Checked then
-   begin
-
     if not ClientsListDBGridEh.DataSource.DataSet.IsEmpty then
 
      begin
-      //----------------- Show the splash screan for the produit familly to add new one---------//
-
-
-
-     //----------------- SHOW THE DATA ON THE CLIENT GESTION PANEL -----------------------------//
-
-         with ClientTablePassif do  begin
-
-            ClientGestionF.ActiveClientGSlider.SliderOn:=  FieldValues['activ_c'];
-            ClientGestionF.NameClientGEdt.Text:= fieldbyname('nom_c').Value;
-            ClientGestionF.AcitiviteClientGEdt.Text:= fieldbyname('activite_c').Value;
-            ClientGestionF.AdrClientGEdt.Text:= fieldbyname('adr_c').Value;
-            ClientGestionF.WilayaClientGCbx.Text:= fieldbyname('willaya_c').Value;
-            ClientGestionF.VilleClientGCbx.Text:= fieldbyname('ville_c').Value;
-            ClientGestionF.FixClientGEdt.Text:= fieldbyname('fix_c').Value;
-            ClientGestionF.FaxClientGEdt.Text:= fieldbyname('fax_c').Value;
-            ClientGestionF.MobileClientGEdt.Text:= fieldbyname('mob_c').Value;
-            ClientGestionF.MobileClientGEdt.Text:= fieldbyname('mob2_c').Value;
-            ClientGestionF.EmailClientGEdt.Text:= fieldbyname('email_c').Value;
-            ClientGestionF.SiteClientGEdt.Text:= fieldbyname('siteWeb_c').Value;
-
-            ClientGestionF.RCClientGEdt.Text:= fieldbyname('rc_c').Value;
-            ClientGestionF.NArtClientGEdt.Text:= fieldbyname('nart_c').Value;
-            ClientGestionF.NIFClientGEdt.Text:= fieldbyname('nif_c').Value;
-            ClientGestionF.NISClientGEdt.Text:= fieldbyname('nis_c').Value;
-            ClientGestionF.NBankClientGEdt.Text:= fieldbyname('nbank_c').Value;
-            ClientGestionF.RIBClientGEdt.Text:= fieldbyname('rib_c').Value;
-            ClientGestionF.OldCreditClientGEdt.Text:= CurrToStrF( fieldbyname('oldcredit_c').Value,ffNumber, 2);
-            ClientGestionF.MaxCreditClientGEdt.Text:= CurrToStrF( fieldbyname('maxcredit_c').Value,ffNumber, 2);
-            ClientGestionF.ModeTarifClientGCbx.ItemIndex:= fieldbyname('tarification_c').AsInteger;
-            ClientGestionF.ObserClientGMem.Text:= fieldbyname('obser_c').Value;
-
-           end ;
-
-      end
-
-  else  Exit
-
-
-   end;
-
-
-   if toutClientsRdioBtn.Checked then
-
-   begin
-
-    if not ClientsListDBGridEh.DataSource.DataSet.IsEmpty then
-
-     begin
-
-
 
      //----------------- SHOW THE DATA ON THE CLIENT GESTION PANEL -----------------------------//
 
@@ -334,17 +179,7 @@ begin
             ClientGestionF.ObserClientGMem.Text:= fieldbyname('obser_c').Value;
 
            end ;
-
-      end
-
-  else  Exit
-
-
    end;
-
-
-
-
 
 end;
 
@@ -352,135 +187,13 @@ procedure TClientListF.DeleteClientsBtnClick(Sender: TObject);
 begin
  if NOT (MainForm.ClientTable.FieldByName('code_c').AsInteger = 1) then
  begin
-
- if ActifClientsRdioBtn.Checked then
-
- begin
-
   if not ClientsListDBGridEh.DataSource.DataSet.IsEmpty then
    begin
-   GrayForms;
-     with ClientTableActif do  begin
-
-
-   if MyMessageDlg('Ėtes-vous sûr de vouloir supprimer le client : '+ sLineBreak +  QuotedStr(fieldbyname('nom_c').Value) , mtConfirmation, [mbYes,mbNo], ['Oui','Non'],'Attention', mbNo )  = mrYes then
-       begin
-
-
-
-      ClientTableActif.Delete;
-
-      ClientListF.ClientTableActif.Refresh;
-
-      ClientListF.ActifClientsLbl.Caption:= IntToStr( ClientListF.ClientTableActif.RecordCount);
-
-      MainForm.ClientTable.Refresh;
-      toutClientsLbl.Caption:= IntToStr(MainForm.ClientTable.RecordCount);
-
-
-      FSplash := TFSplash.Create(ClientListF);
-      try
-        FSplash.Left := Screen.Width div 2 - (FSplash.Width div 2);
-        FSplash.Top := 0;
-
-        FSplash.Label1.Caption:='  Suppression avec succés';
-        FSplash.Color:= $004735F9;
-        AnimateWindow(FSplash.Handle, 150, AW_VER_POSITIVE OR AW_SLIDE OR AW_ACTIVATE);
-        sleep(250);
-        AnimateWindow(FSplash.Handle, 150, AW_VER_NEGATIVE OR
-          AW_SLIDE OR AW_HIDE);
-      finally
-        FSplash.free;
-
-      end;
-
-        NormalForms;
-        sndPlaySound('C:\Windows\Media\speech off.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
-
-    end
-    else
-
-     NormalForms
-
-    end;
-   end
-
- else   Exit
-
- end;
-
- //------------------------------------------------------------------------------------------------
-
-  if PassifClientsRdioBtn.Checked then
-
- begin
-
- if not ClientsListDBGridEh.DataSource.DataSet.IsEmpty then
-   begin
-   GrayForms;
-     with ClientTablePassif do  begin
-
-
-   if MyMessageDlg('Ėtes-vous sûr de vouloir supprimer le client : '+ sLineBreak +  QuotedStr(fieldbyname('nom_c').Value) , mtConfirmation, [mbYes,mbNo], ['Oui','Non'],'Attention', mbNo )  = mrYes then
-       begin
-
-
-      ClientTablePassif.Delete;
-
-      ClientListF.ClientTablePassif.Refresh;
-
-      ClientListF.PassifClientsLbl.Caption:= IntToStr( ClientListF.ClientTablePassif.RecordCount);
-
-       MainForm.ClientTable.Refresh;
-      toutClientsLbl.Caption:= IntToStr(MainForm.ClientTable.RecordCount);
-
-
-
-      FSplash := TFSplash.Create(ClientListF);
-      try
-        FSplash.Left := Screen.Width div 2 - (FSplash.Width div 2);
-        FSplash.Top := 0;
-
-        FSplash.Label1.Caption:='  Suppression avec succés';
-        FSplash.Color:= $004735F9;
-        AnimateWindow(FSplash.Handle, 150, AW_VER_POSITIVE OR AW_SLIDE OR AW_ACTIVATE);
-        sleep(250);
-        AnimateWindow(FSplash.Handle, 150, AW_VER_NEGATIVE OR
-          AW_SLIDE OR AW_HIDE);
-      finally
-        FSplash.free;
-
-      end;
-
-        NormalForms;
-        sndPlaySound('C:\Windows\Media\speech off.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
-
-    end
-    else
-
-     NormalForms
-
-    end;
-   end
-
- else   Exit
-
- end;
-
-//-------------------------------------------------------------------------------------------------
-
-
-  if toutClientsRdioBtn.Checked then
-
- begin
-
- if not ClientsListDBGridEh.DataSource.DataSet.IsEmpty then
-   begin
-   GrayForms;
+    GrayForms;
      with MainForm.ClientTable do  begin
 
 
-   if MyMessageDlg('Ėtes-vous sûr de vouloir supprimer le client : '+ sLineBreak +  QuotedStr(fieldbyname('nom_c').Value) , mtConfirmation, [mbYes,mbNo], ['Oui','Non'],'Attention', mbNo )  = mrYes then
+    if MyMessageDlg('Ėtes-vous sûr de vouloir supprimer le client : '+ sLineBreak +  QuotedStr(fieldbyname('nom_c').Value) , mtConfirmation, [mbYes,mbNo], ['Oui','Non'],'Attention', mbNo )  = mrYes then
        begin
 
 
@@ -488,17 +201,67 @@ begin
 
       MainForm.ClientTable.Refresh;
 
-      toutClientsLbl.Caption:= IntToStr( MainForm.ClientTable.RecordCount);
+    MainForm.ClientTable.DisableControls;
+
+      MainForm.ClientTable.Active := false;
+      MainForm.ClientTable.SQL.Clear;
+      MainForm.ClientTable.SQL.Text :=
+      'SELECT * FROM client  WHERE activ_c = true ORDER BY code_c';
+      MainForm.ClientTable.Active := true;
+
+     ClientListF.ActifClientsLbl.Caption :=
+     IntToStr(MainForm.ClientTable.RecordCount);
+
+      MainForm.ClientTable.Active := false;
+      MainForm.ClientTable.SQL.Clear;
+      MainForm.ClientTable.SQL.Text :=
+      'SELECT * FROM client WHERE activ_c = false ORDER BY code_c';
+      MainForm.ClientTable.Active := true;
+
+      ClientListF.PassifClientsLbl.Caption :=
+      IntToStr(MainForm.ClientTable.RecordCount);
 
 
-      ClientListF.ClientTableActif.Refresh;
+      MainForm.ClientTable.Active := false;
+      MainForm.ClientTable.SQL.Clear;
+      MainForm.ClientTable.SQL.Text :=
+      'SELECT * FROM client ORDER BY code_c ';
+      MainForm.ClientTable.Active := true;
 
-      ClientListF.ActifClientsLbl.Caption:= IntToStr( ClientListF.ClientTableActif.RecordCount);
+      ClientListF.ToutClientsLbl.Caption :=
+      IntToStr(MainForm.ClientTable.RecordCount);
 
 
-       ClientListF.ClientTablePassif.Refresh;
 
-       ClientListF.PassifClientsLbl.Caption:= IntToStr( ClientListF.ClientTablePassif.RecordCount);
+      if ClientListF.ActifClientsRdioBtn.Checked then
+       begin
+        MainForm.ClientTable.Active := false;
+        MainForm.ClientTable.SQL.Clear;
+        MainForm.ClientTable.SQL.Text :=
+        'SELECT * FROM client  WHERE activ_c = true ORDER BY code_c';
+        MainForm.ClientTable.Active := true;
+       end;
+
+       if ClientListF.PassifClientsRdioBtn.Checked then
+       begin
+        MainForm.ClientTable.Active := false;
+        MainForm.ClientTable.SQL.Clear;
+        MainForm.ClientTable.SQL.Text :=
+        'SELECT * FROM client  WHERE activ_c = false ORDER BY code_c';
+        MainForm.ClientTable.Active := true;
+       end;
+
+       if ClientListF.toutClientsRdioBtn.Checked then
+       begin
+        MainForm.ClientTable.Active := false;
+        MainForm.ClientTable.SQL.Clear;
+        MainForm.ClientTable.SQL.Text :=
+        'SELECT * FROM client ORDER BY code_c';
+        MainForm.ClientTable.Active := true;
+       end;
+
+
+      MainForm.ClientTable.EnableControls;
 
 
 
@@ -527,11 +290,7 @@ begin
      NormalForms
 
     end;
-   end
-
- else   Exit
-
- end;
+   end;
 
  end;
 
@@ -573,21 +332,6 @@ if  ClientListDataS.DataSet = MainForm.ClientTable then
  ClientsListDBGridEh.Canvas.Font.Color:=$004735F9;//   Brush.Color:=clRed;
  ClientsListDBGridEh.DefaultDrawColumnCell(Rect, DataCol, Column, State);
  end;
- end else
-if   ClientListDataS.DataSet = ClientTableActif then
-begin
-if ClientTableActif.FieldValues['oldcredit_c'] <> 0     then
- begin
- ClientsListDBGridEh.Canvas.Font.Color:=$004735F9;//   Brush.Color:=clRed;
- ClientsListDBGridEh.DefaultDrawColumnCell(Rect, DataCol, Column, State);
- end;
-end else
-if  ClientListDataS.DataSet = ClientTablePassif then
-
- if ClientTablePassif.FieldValues['oldcredit_c'] <> 0    then
- begin
- ClientsListDBGridEh.Canvas.Font.Color:=$004735F9;//   Brush.Color:=clRed;
- ClientsListDBGridEh.DefaultDrawColumnCell(Rect, DataCol, Column, State);
  end;
 end;
 
@@ -644,64 +388,88 @@ begin
 
  //--------- do that when i want ODER by the EHDBNGRID-----/
  MainForm.ClientTable.IndexesActive:=false;
- ClientTableActif.IndexesActive:= false;
- ClientTablePassif.IndexesActive:= false;
-
 end;
 
 procedure TClientListF.FisrtClientbtnClick(Sender: TObject);
 begin
-
-    if ActifClientsRdioBtn.Checked then
-
-    begin
-
-        ClientTableActif.First;
-
-    end;
-
-     if PassifClientsRdioBtn.Checked then
-
-    begin
-
-         ClientTablePassif.First;
-
-    end;
-
-     if ToutClientsRdioBtn.Checked then
-
-    begin
-
         MainForm.ClientTable.First;
-
-    end;
-
 end;
 
 procedure TClientListF.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
  //--------- do that when i want ODER by the Indexed of the FirDACTable-----/
  MainForm.ClientTable.IndexesActive:=True;
- ClientTableActif.IndexesActive:= True;
- ClientTablePassif.IndexesActive:= True;
+
 end;
 
 procedure TClientListF.FormShow(Sender: TObject);
 begin
-
-   if ActifClientsRdioBtn.Checked then
-
-      ActifClientsRdioBtnClick(Sender);
-
        ResearchClientsEdt.SetFocus ;
-
-
-       //----- for show how many Clients on the database--------------//
+   //----- for show how many Clients on the database--------------//
 
       ToutClientsLbl.Caption:= IntToStr( MainForm.ClientTable.RecordCount) ;
 
-      ActifClientsLbl.Caption:= IntToStr( ClientListF.ClientTableActif.RecordCount);
-      PassifClientsLbl.Caption:= IntToStr( ClientListF.ClientTablePassif.RecordCount);
+      MainForm.ClientTable.DisableControls;
+
+      MainForm.ClientTable.Active := false;
+      MainForm.ClientTable.SQL.Clear;
+      MainForm.ClientTable.SQL.Text :=
+      'SELECT * FROM client  WHERE activ_c = true ORDER BY code_c';
+      MainForm.ClientTable.Active := true;
+
+     ClientListF.ActifClientsLbl.Caption :=
+     IntToStr(MainForm.ClientTable.RecordCount);
+
+      MainForm.ClientTable.Active := false;
+      MainForm.ClientTable.SQL.Clear;
+      MainForm.ClientTable.SQL.Text :=
+      'SELECT * FROM client WHERE activ_c = false ORDER BY code_c';
+      MainForm.ClientTable.Active := true;
+
+      ClientListF.PassifClientsLbl.Caption :=
+      IntToStr(MainForm.ClientTable.RecordCount);
+
+
+      MainForm.ClientTable.Active := false;
+      MainForm.ClientTable.SQL.Clear;
+      MainForm.ClientTable.SQL.Text :=
+      'SELECT * FROM client ORDER BY code_c ';
+      MainForm.ClientTable.Active := true;
+
+      ClientListF.ToutClientsLbl.Caption :=
+      IntToStr(MainForm.ClientTable.RecordCount);
+
+
+
+      if ClientListF.ActifClientsRdioBtn.Checked then
+       begin
+        MainForm.ClientTable.Active := false;
+        MainForm.ClientTable.SQL.Clear;
+        MainForm.ClientTable.SQL.Text :=
+        'SELECT * FROM client  WHERE activ_c = true ORDER BY code_c';
+        MainForm.ClientTable.Active := true;
+       end;
+
+       if ClientListF.PassifClientsRdioBtn.Checked then
+       begin
+        MainForm.ClientTable.Active := false;
+        MainForm.ClientTable.SQL.Clear;
+        MainForm.ClientTable.SQL.Text :=
+        'SELECT * FROM client  WHERE activ_c = false ORDER BY code_c';
+        MainForm.ClientTable.Active := true;
+       end;
+
+       if ClientListF.toutClientsRdioBtn.Checked then
+       begin
+        MainForm.ClientTable.Active := false;
+        MainForm.ClientTable.SQL.Clear;
+        MainForm.ClientTable.SQL.Text :=
+        'SELECT * FROM client ORDER BY code_c';
+        MainForm.ClientTable.Active := true;
+       end;
+
+
+      MainForm.ClientTable.EnableControls;
 
 
 
@@ -710,30 +478,7 @@ end;
 procedure TClientListF.LastClientbtnClick(Sender: TObject);
 
 begin
-
- if ActifClientsRdioBtn.Checked then
-
-    begin
-
-        ClientTableActif.last;
-
-    end;
-
-     if PassifClientsRdioBtn.Checked then
-
-    begin
-
-         ClientTablePassif.last;
-
-    end;
-
-     if ToutClientsRdioBtn.Checked then
-
-    begin
-
         MainForm.ClientTable.last;
-
-    end;
 end;
 
 procedure TClientListF.AddClientsBtnClick(Sender: TObject);
@@ -756,153 +501,69 @@ end;
 
 procedure TClientListF.NextClientbtnClick(Sender: TObject);
 begin
-
-  if ActifClientsRdioBtn.Checked then
-
-    begin
-
-        ClientTableActif.Next;
-
-    end;
-
-     if PassifClientsRdioBtn.Checked then
-
-    begin
-
-         ClientTablePassif.Next;
-
-    end;
-
-     if ToutClientsRdioBtn.Checked then
-
-    begin
-
-        MainForm.ClientTable.Next;
-
-    end;
-
+     MainForm.ClientTable.Next;
 end;
 
 procedure TClientListF.PreviosClientbtnClick(Sender: TObject);
 begin
-
-  if ActifClientsRdioBtn.Checked then
-
-    begin
-
-        ClientTableActif.Prior;
-
-    end;
-
-     if PassifClientsRdioBtn.Checked then
-
-    begin
-
-         ClientTablePassif.Prior;
-
-    end;
-
-     if ToutClientsRdioBtn.Checked then
-
-    begin
-
-        MainForm.ClientTable.Prior;
-
-    end;
-
-
-
-
-end;
+   MainForm.ClientTable.Prior;
+ end;
 
 procedure TClientListF.ActifClientsRdioBtnClick(Sender: TObject);
 begin
-
-  ClientListDataS.DataSet:= ClientTableActif;
-
   ResearchClientsEdt.Text:= '';
   ResearchClientsEdt.SetFocus;
 
-  ClientTableActif.Filtered := false;
-  ClientTableActif.Refresh;
+  MainForm.ClientTable.DisableControls;
 
+  MainForm.ClientTable.Active := false;
+  MainForm.ClientTable.SQL.Clear;
+  MainForm.ClientTable.SQL.Text :=
+  'SELECT * FROM client WHERE activ_c = true ORDER BY code_c ';
+  MainForm.ClientTable.Active := true;
+
+  MainForm.ClientTable.EnableControls;
 
 end;
 
 procedure TClientListF.PassifClientsRdioBtnClick(Sender: TObject);
 begin
 
-  ClientListDataS.DataSet:= ClientTablePassif;
-
-   ResearchClientsEdt.Text:= '';
+  ResearchClientsEdt.Text:= '';
   ResearchClientsEdt.SetFocus;
 
-  ClientTablePassif.Filtered := false;
-  ClientTablePassif.Refresh;
+  MainForm.ClientTable.DisableControls;
+
+  MainForm.ClientTable.Active := false;
+  MainForm.ClientTable.SQL.Clear;
+  MainForm.ClientTable.SQL.Text :=
+  'SELECT * FROM client WHERE activ_c = false ORDER BY code_c ';
+  MainForm.ClientTable.Active := true;
+
+  MainForm.ClientTable.EnableControls;
 
 
 end;
 
 procedure TClientListF.toutClientsRdioBtnClick(Sender: TObject);
 begin
- ClientListDataS.DataSet:= MainForm.ClientTable;
- ResearchClientsEdt.Text:= '';
+  ResearchClientsEdt.Text:= '';
   ResearchClientsEdt.SetFocus;
 
-   MainForm.ClientTable.Filtered := False;
-   MainForm.ClientTable.Refresh;
+  MainForm.ClientTable.DisableControls;
+
+  MainForm.ClientTable.Active := false;
+  MainForm.ClientTable.SQL.Clear;
+  MainForm.ClientTable.SQL.Text :=
+  'SELECT * FROM client ORDER BY code_c ';
+  MainForm.ClientTable.Active := true;
+
+  MainForm.ClientTable.EnableControls;
 
 end;
 
 procedure TClientListF.ResearchClientsEdtChange(Sender: TObject);
-
-
 begin
-        if ActifClientsRdioBtn.Checked then
-
-              //----------- Searching in databese-------------------//
-
-       if (ResearchClientsEdt.text <> '') then
-
-                begin
-
-                  ClientTableActif.Filtered:=false;
-                  ClientTableActif.Filter := '[nom_c] LIKE ' + quotedstr(    ResearchClientsEdt.Text +'%' )+'OR  [nom_c] LIKE ' + quotedstr(  '%' +  ResearchClientsEdt.Text +'%'  )    +  'and  [activ_c] = true' ;
-                  ClientTableActif.Filtered :=True;
-
-                  end
-                else
-
-                    begin
-
-                         ClientTableActif.Filtered := false;
-
-                           end;
-
-
-
-   if PassifClientsRdioBtn.Checked then
-
-          if (ResearchClientsEdt.text <> '') then
-
-                begin
-
-                  ClientTablePassif.Filtered:=false;
-                  ClientTablePassif.Filter := '[nom_c] LIKE ' + quotedstr(  '%'+  ResearchClientsEdt.Text +'%') +  'and  [activ_c] = false' ;
-                  ClientTablePassif.Filtered :=True;
-
-                  end
-                else
-
-                    begin
-
-                         ClientTablePassif.Filtered := false;
-
-                     end;
-
-   if toutClientsRdioBtn.Checked then
-
-
       if (ResearchClientsEdt.text <> '') then
 
                 begin
@@ -978,8 +639,6 @@ end;
 procedure TClientListF.sSpeedButton2Click(Sender: TObject);
 begin
   MainForm.ClientTable.DisableControls;
-      ClientTableActif.DisableControls;
-    ClientTablePassif.DisableControls;
 
    GettingData;
 
@@ -987,15 +646,11 @@ begin
   ClientListfrxRprt.ShowReport;
 
   MainForm.ClientTable.EnableControls;
-      ClientTableActif.EnableControls;
-    ClientTablePassif.EnableControls;
 end;
 
 procedure TClientListF.sSpeedButton1Click(Sender: TObject);
 begin
 MainForm.ClientTable.DisableControls;
-    ClientTableActif.DisableControls;
-    ClientTablePassif.DisableControls;
 
     GettingData;
 
@@ -1004,15 +659,11 @@ frxXLSExport1.FileName := 'Etat liste des Client';
 ClientListfrxRprt.Export(frxXLSExport1);
 
 MainForm.ClientTable.EnableControls;
-    ClientTableActif.EnableControls;
-    ClientTablePassif.EnableControls;
 end;
 
 procedure TClientListF.sSpeedButton3Click(Sender: TObject);
 begin
 MainForm.ClientTable.DisableControls;
-    ClientTableActif.DisableControls;
-    ClientTablePassif.DisableControls;
 
     GettingData;
 
@@ -1021,8 +672,6 @@ frxPDFExport1.FileName := 'Etat liste des Client';
 ClientListfrxRprt.Export(frxPDFExport1);
 
 MainForm.ClientTable.EnableControls;
-    ClientTableActif.EnableControls;
-    ClientTablePassif.EnableControls;
 end;
 
 end.

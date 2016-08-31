@@ -216,6 +216,7 @@ begin
   Selecting_All_Bons;
 
 
+
   NProduitTotalDashBLbl.Caption:= (DataModuleF.TotalProduit.FieldValues['totat']);
 
 

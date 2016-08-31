@@ -55,7 +55,6 @@ object FournisseurGestionF: TFournisseurGestionF
         ParentBackground = False
         TabOrder = 0
         StyleElements = []
-        ExplicitTop = -2
         DesignSize = (
           508
           458)

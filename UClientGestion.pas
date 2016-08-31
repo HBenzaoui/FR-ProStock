@@ -342,119 +342,28 @@ Var CodeC: Integer;
 begin
 
   if NameClientGEdt.Text <> '' then
-
   begin
-
-    // --- This TAG is for adding---//
+      // --- This TAG is for adding---//
     if OKClientGBtn.Tag = 0 then
-
     begin
+      MainForm.ClientTable.Active := false;
+      MainForm.ClientTable.SQL.Clear;
+      MainForm.ClientTable.SQL.Text :=
+     'SELECT * FROM client ORDER BY code_c';
+      MainForm.ClientTable.Active := true;
 
-      if ClientListF.ActifClientsRdioBtn.Checked then
-
+      with MainForm.ClientTable do
       begin
-        with ClientListF.ClientTableActif do
-        begin
-          if ClientListF.ClientTableActif.RecordCount <= 0  then
+          if NOT (MainForm.ClientTable.IsEmpty) then
           begin
-          Insert;
-          fieldbyname('code_c').AsInteger:= 1;
-          FieldValues['activ_c'] := ActiveClientGSlider.SliderOn;
-          fieldbyname('nom_c').Value := NameClientGEdt.Text;
-          fieldbyname('activite_c').Value := AcitiviteClientGEdt.Text;
-          fieldbyname('adr_c').Value := AdrClientGEdt.Text;
-          fieldbyname('willaya_c').Value := WilayaClientGCbx.Text;
-          fieldbyname('ville_c').Value := VilleClientGCbx.Text;
-          fieldbyname('fix_c').Value := FixClientGEdt.Text;
-          fieldbyname('fax_c').Value := FaxClientGEdt.Text;
-          fieldbyname('mob_c').Value := MobileClientGEdt.Text;
-          fieldbyname('mob2_c').Value := MobileClientGEdt.Text;
-          fieldbyname('email_c').Value := EmailClientGEdt.Text;
-          fieldbyname('siteweb_c').Value := SiteClientGEdt.Text;
-          fieldbyname('rc_c').Value := RCClientGEdt.Text;
-          fieldbyname('nart_c').Value := NArtClientGEdt.Text;
-          fieldbyname('nif_c').Value := NIFClientGEdt.Text;
-          fieldbyname('nis_c').Value := NISClientGEdt.Text;
-          fieldbyname('nbank_c').Value := NBankClientGEdt.Text;
-          fieldbyname('rib_c').Value := RIBClientGEdt.Text;
-          if OldCreditClientGEdt.Text <> '' then
-          begin
-            fieldbyname('oldcredit_c').Value := StrToCurr(StringReplace(OldCreditClientGEdt.Text, #32, '', [rfReplaceAll]))
-          end else
-          begin
-            fieldbyname('oldcredit_c').Value := StrToCurr('0')
-          end;
-          if MaxCreditClientGEdt.Text <> '' then
-          begin
-            fieldbyname('maxcredit_c').Value := StrToCurr(StringReplace(MaxCreditClientGEdt.Text, #32, '', [rfReplaceAll]))
-          end else
-          begin
-            fieldbyname('maxcredit_c').Value := StrToCurr('0')
-          end;
-          fieldbyname('tarification_c').Value := ModeTarifClientGCbx.ItemIndex;
-          fieldbyname('obser_c').Value := ObserClientGMem.Text;
-          post;
+          MainForm.ClientTable.Last;
+          CodeC:= MainForm.ClientTable.FieldValues['code_c'] + 1;
           end else
               begin
-                last;
-                CodeC:=fieldbyname('code_c').AsInteger;
-                Insert;
-                fieldbyname('code_c').AsInteger:= CodeC + 1;
-                FieldValues['activ_c'] := ActiveClientGSlider.SliderOn;
-                fieldbyname('nom_c').Value := NameClientGEdt.Text;
-                fieldbyname('activite_c').Value := AcitiviteClientGEdt.Text;
-                fieldbyname('adr_c').Value := AdrClientGEdt.Text;
-                fieldbyname('willaya_c').Value := WilayaClientGCbx.Text;
-                fieldbyname('ville_c').Value := VilleClientGCbx.Text;
-                fieldbyname('fix_c').Value := FixClientGEdt.Text;
-                fieldbyname('fax_c').Value := FaxClientGEdt.Text;
-                fieldbyname('mob_c').Value := MobileClientGEdt.Text;
-                fieldbyname('mob2_c').Value := MobileClientGEdt.Text;
-                fieldbyname('email_c').Value := EmailClientGEdt.Text;
-                fieldbyname('siteweb_c').Value := SiteClientGEdt.Text;
-                fieldbyname('rc_c').Value := RCClientGEdt.Text;
-                fieldbyname('nart_c').Value := NArtClientGEdt.Text;
-                fieldbyname('nif_c').Value := NIFClientGEdt.Text;
-                fieldbyname('nis_c').Value := NISClientGEdt.Text;
-                fieldbyname('nbank_c').Value := NBankClientGEdt.Text;
-                fieldbyname('rib_c').Value := RIBClientGEdt.Text;
-                if OldCreditClientGEdt.Text <> '' then
-                begin
-                  fieldbyname('oldcredit_c').Value := Trim(OldCreditClientGEdt.Text);
-                end  else
-                begin
-                  fieldbyname('oldcredit_c').Value := StrToInt('0')
-                end;
-                if MaxCreditClientGEdt.Text <> '' then
-                begin
-                  fieldbyname('maxcredit_c').Value := Trim(MaxCreditClientGEdt.Text);
-                end  else
-                begin
-                  fieldbyname('maxcredit_c').Value := StrToInt('0')
-                end;
-                fieldbyname('tarification_c').Value := ModeTarifClientGCbx.ItemIndex;
-                fieldbyname('obser_c').Value := ObserClientGMem.Text;
-                post;
+               CodeC:= 1;
               end;
-        end;
-
-        ClientListF.ClientTableActif.Refresh;
-        ClientListF.ClientTableActif.Last;
-        ClientListF.ActifClientsLbl.Caption :=
-        IntToStr(ClientListF.ClientTableActif.RecordCount);
-
-      end;
-
-      if ClientListF.PassifClientsRdioBtn.Checked then
-
-      begin
-
-        with ClientListF.ClientTablePassif do
-        begin
-         if ClientListF.ClientTablePassif.RecordCount <= 0  then
-          begin
-          Insert;
-          fieldbyname('code_c').AsInteger:= 1;
+          Append;
+          fieldbyname('code_c').AsInteger:= CodeC;
           FieldValues['activ_c'] := ActiveClientGSlider.SliderOn;
           fieldbyname('nom_c').Value := NameClientGEdt.Text;
           fieldbyname('activite_c').Value := AcitiviteClientGEdt.Text;
@@ -492,266 +401,17 @@ begin
           fieldbyname('tarification_c').Value := ModeTarifClientGCbx.ItemIndex;
           fieldbyname('obser_c').Value := ObserClientGMem.Text;
           post;
-          end else
-              begin
-                last;
-                CodeC:=fieldbyname('code_c').AsInteger;
-                Insert;
-                fieldbyname('code_c').AsInteger:= CodeC + 1;
-                FieldValues['activ_c'] := ActiveClientGSlider.SliderOn;
-                fieldbyname('nom_c').Value := NameClientGEdt.Text;
-                fieldbyname('activite_c').Value := AcitiviteClientGEdt.Text;
-                fieldbyname('adr_c').Value := AdrClientGEdt.Text;
-                fieldbyname('willaya_c').Value := WilayaClientGCbx.Text;
-                fieldbyname('ville_c').Value := VilleClientGCbx.Text;
-                fieldbyname('fix_c').Value := FixClientGEdt.Text;
-                fieldbyname('fax_c').Value := FaxClientGEdt.Text;
-                fieldbyname('mob_c').Value := MobileClientGEdt.Text;
-                fieldbyname('mob2_c').Value := MobileClientGEdt.Text;
-                fieldbyname('email_c').Value := EmailClientGEdt.Text;
-                fieldbyname('siteweb_c').Value := SiteClientGEdt.Text;
-                fieldbyname('rc_c').Value := RCClientGEdt.Text;
-                fieldbyname('nart_c').Value := NArtClientGEdt.Text;
-                fieldbyname('nif_c').Value := NIFClientGEdt.Text;
-                fieldbyname('nis_c').Value := NISClientGEdt.Text;
-                fieldbyname('nbank_c').Value := NBankClientGEdt.Text;
-                fieldbyname('rib_c').Value := RIBClientGEdt.Text;
-                if OldCreditClientGEdt.Text <> '' then
-                begin
-                  fieldbyname('oldcredit_c').Value := Trim(OldCreditClientGEdt.Text);
-                end
-                else
-                begin
-                  fieldbyname('oldcredit_c').Value := StrToInt('0')
-                end;
-                if MaxCreditClientGEdt.Text <> '' then
-                begin
-                  fieldbyname('maxcredit_c').Value := Trim(MaxCreditClientGEdt.Text);
-                end
-                else
-                begin
-                  fieldbyname('maxcredit_c').Value := StrToInt('0')
-                end;
-                fieldbyname('tarification_c').Value := ModeTarifClientGCbx.ItemIndex;
-                fieldbyname('obser_c').Value := ObserClientGMem.Text;
-                post;
-              end;
-        end;
+       end;
 
-        ClientListF.ClientTablePassif.Refresh;
-        ClientListF.ClientTablePassif.Last;
-        ClientListF.PassifClientsLbl.Caption :=
-          IntToStr(ClientListF.ClientTablePassif.RecordCount);
 
-      end;
-
-      if ClientListF.toutClientsRdioBtn.Checked then
-
-      begin
-
-        with MainForm.ClientTable do
-        begin
-         if MainForm.ClientTable.RecordCount <= 0  then
-          begin
-          Insert;
-          fieldbyname('code_c').AsInteger:= 1;
-          FieldValues['activ_c'] := ActiveClientGSlider.SliderOn;
-          fieldbyname('nom_c').Value := NameClientGEdt.Text;
-          fieldbyname('activite_c').Value := AcitiviteClientGEdt.Text;
-          fieldbyname('adr_c').Value := AdrClientGEdt.Text;
-          fieldbyname('willaya_c').Value := WilayaClientGCbx.Text;
-          fieldbyname('ville_c').Value := VilleClientGCbx.Text;
-          fieldbyname('fix_c').Value := FixClientGEdt.Text;
-          fieldbyname('fax_c').Value := FaxClientGEdt.Text;
-          fieldbyname('mob_c').Value := MobileClientGEdt.Text;
-          fieldbyname('mob2_c').Value := MobileClientGEdt.Text;
-          fieldbyname('email_c').Value := EmailClientGEdt.Text;
-          fieldbyname('siteweb_c').Value := SiteClientGEdt.Text;
-          fieldbyname('rc_c').Value := RCClientGEdt.Text;
-          fieldbyname('nart_c').Value := NArtClientGEdt.Text;
-          fieldbyname('nif_c').Value := NIFClientGEdt.Text;
-          fieldbyname('nis_c').Value := NISClientGEdt.Text;
-          fieldbyname('nbank_c').Value := NBankClientGEdt.Text;
-          fieldbyname('rib_c').Value := RIBClientGEdt.Text;
-          if OldCreditClientGEdt.Text <> '' then
-          begin
-            fieldbyname('oldcredit_c').Value := Trim(OldCreditClientGEdt.Text);
-          end
-          else
-          begin
-            fieldbyname('oldcredit_c').Value := StrToInt('0')
-          end;
-          if MaxCreditClientGEdt.Text <> '' then
-          begin
-            fieldbyname('maxcredit_c').Value := Trim(MaxCreditClientGEdt.Text);
-          end
-          else
-          begin
-            fieldbyname('maxcredit_c').Value := StrToInt('0')
-          end;
-          fieldbyname('tarification_c').Value := ModeTarifClientGCbx.ItemIndex;
-          fieldbyname('obser_c').Value := ObserClientGMem.Text;
-          post;
-          end else
-              begin
-                last;
-                CodeC:=fieldbyname('code_c').AsInteger;
-                Insert;
-                fieldbyname('code_c').AsInteger:= CodeC + 1;
-                FieldValues['activ_c'] := ActiveClientGSlider.SliderOn;
-                fieldbyname('nom_c').Value := NameClientGEdt.Text;
-                fieldbyname('activite_c').Value := AcitiviteClientGEdt.Text;
-                fieldbyname('adr_c').Value := AdrClientGEdt.Text;
-                fieldbyname('willaya_c').Value := WilayaClientGCbx.Text;
-                fieldbyname('ville_c').Value := VilleClientGCbx.Text;
-                fieldbyname('fix_c').Value := FixClientGEdt.Text;
-                fieldbyname('fax_c').Value := FaxClientGEdt.Text;
-                fieldbyname('mob_c').Value := MobileClientGEdt.Text;
-                fieldbyname('mob2_c').Value := MobileClientGEdt.Text;
-                fieldbyname('email_c').Value := EmailClientGEdt.Text;
-                fieldbyname('siteweb_c').Value := SiteClientGEdt.Text;
-                fieldbyname('rc_c').Value := RCClientGEdt.Text;
-                fieldbyname('nart_c').Value := NArtClientGEdt.Text;
-                fieldbyname('nif_c').Value := NIFClientGEdt.Text;
-                fieldbyname('nis_c').Value := NISClientGEdt.Text;
-                fieldbyname('nbank_c').Value := NBankClientGEdt.Text;
-                fieldbyname('rib_c').Value := RIBClientGEdt.Text;
-                if OldCreditClientGEdt.Text <> '' then
-                begin
-                  fieldbyname('oldcredit_c').Value := Trim(OldCreditClientGEdt.Text);
-                end
-                else
-                begin
-                  fieldbyname('oldcredit_c').Value := StrToInt('0')
-                end;
-                if MaxCreditClientGEdt.Text <> '' then
-                begin
-                  fieldbyname('maxcredit_c').Value := Trim(MaxCreditClientGEdt.Text);
-                end
-                else
-                begin
-                  fieldbyname('maxcredit_c').Value := StrToInt('0')
-                end;
-                fieldbyname('tarification_c').Value := ModeTarifClientGCbx.ItemIndex;
-                fieldbyname('obser_c').Value := ObserClientGMem.Text;
-                post;
-              end;
-        end;
         MainForm.ClientTable.Refresh;
         MainForm.ClientTable.Last;
-        ClientListF.ToutClientsLbl.Caption :=
-          IntToStr(MainForm.ClientTable.RecordCount);
-
-      end;
-
     end;
 
+  // ------------// --- This TAG is for editing---//---------------------------------------------------
 
-    // ----------------------------------------------------------------------------------------------------
-
-    // --- This TAG is for editing---//
     if OKClientGBtn.Tag = 1 then
-
     begin
-
-      if ClientListF.ActifClientsRdioBtn.Checked then
-
-      begin
-
-        with ClientListF.ClientTableActif do
-        begin
-          Edit;
-
-          FieldValues['activ_c'] := ActiveClientGSlider.SliderOn;
-          fieldbyname('nom_c').Value := NameClientGEdt.Text;
-          fieldbyname('activite_c').Value := AcitiviteClientGEdt.Text;
-          fieldbyname('adr_c').Value := AdrClientGEdt.Text;
-          fieldbyname('willaya_c').Value := WilayaClientGCbx.Text;
-          fieldbyname('ville_c').Value := VilleClientGCbx.Text;
-          fieldbyname('fix_c').Value := FixClientGEdt.Text;
-          fieldbyname('fax_c').Value := FaxClientGEdt.Text;
-          fieldbyname('mob_c').Value := MobileClientGEdt.Text;
-          fieldbyname('mob2_c').Value := MobileClientGEdt.Text;
-          fieldbyname('email_c').Value := EmailClientGEdt.Text;
-          fieldbyname('siteweb_c').Value := SiteClientGEdt.Text;
-
-          fieldbyname('rc_c').Value := RCClientGEdt.Text;
-          fieldbyname('nart_c').Value := NArtClientGEdt.Text;
-          fieldbyname('nif_c').Value := NIFClientGEdt.Text;
-          fieldbyname('nis_c').Value := NISClientGEdt.Text;
-          fieldbyname('nbank_c').Value := NBankClientGEdt.Text;
-          fieldbyname('rib_c').Value := RIBClientGEdt.Text;
-          if OldCreditClientGEdt.Text <> '' then
-          begin
-            fieldbyname('oldcredit_c').Value := Trim(OldCreditClientGEdt.Text);
-          end
-          else
-          begin
-            fieldbyname('oldcredit_c').Value := StrToInt('0')
-          end;
-          if MaxCreditClientGEdt.Text <> '' then
-          begin
-            fieldbyname('maxcredit_c').Value := Trim(MaxCreditClientGEdt.Text);
-          end
-          else
-          begin
-            fieldbyname('maxcredit_c').Value := StrToInt('0')
-          end;
-          fieldbyname('tarification_c').Value :=ModeTarifClientGCbx.ItemIndex;
-          fieldbyname('obser_c').Value := ObserClientGMem.Text;
-          post;
-        end;
-      end;
-
-      if ClientListF.PassifClientsRdioBtn.Checked then
-
-      begin
-
-        with ClientListF.ClientTablePassif do
-        begin
-          Edit;
-          FieldValues['activ_c'] := ActiveClientGSlider.SliderOn;
-          fieldbyname('nom_c').Value := NameClientGEdt.Text;
-          fieldbyname('activite_c').Value := AcitiviteClientGEdt.Text;
-          fieldbyname('adr_c').Value := AdrClientGEdt.Text;
-          fieldbyname('willaya_c').Value := WilayaClientGCbx.Text;
-          fieldbyname('ville_c').Value := VilleClientGCbx.Text;
-          fieldbyname('fix_c').Value := FixClientGEdt.Text;
-          fieldbyname('fax_c').Value := FaxClientGEdt.Text;
-          fieldbyname('mob_c').Value := MobileClientGEdt.Text;
-          fieldbyname('mob2_c').Value := MobileClientGEdt.Text;
-          fieldbyname('email_c').Value := EmailClientGEdt.Text;
-          fieldbyname('siteweb_c').Value := SiteClientGEdt.Text;
-          fieldbyname('rc_c').Value := RCClientGEdt.Text;
-          fieldbyname('nart_c').Value := NArtClientGEdt.Text;
-          fieldbyname('nif_c').Value := NIFClientGEdt.Text;
-          fieldbyname('nis_c').Value := NISClientGEdt.Text;
-          fieldbyname('nbank_c').Value := NBankClientGEdt.Text;
-          fieldbyname('rib_c').Value := RIBClientGEdt.Text;
-          if OldCreditClientGEdt.Text <> '' then
-          begin
-            fieldbyname('oldcredit_c').Value := Trim(OldCreditClientGEdt.Text);
-          end
-          else
-          begin
-            fieldbyname('oldcredit_c').Value := StrToInt('0')
-          end;
-          if MaxCreditClientGEdt.Text <> '' then
-          begin
-            fieldbyname('maxcredit_c').Value := Trim(MaxCreditClientGEdt.Text);
-          end
-          else
-          begin
-            fieldbyname('maxcredit_c').Value := StrToInt('0')
-          end;
-          fieldbyname('tarification_c').Value :=ModeTarifClientGCbx.ItemIndex;
-          fieldbyname('obser_c').Value := ObserClientGMem.Text;
-          post;
-        end;
-      end;
-      if ClientListF.toutClientsRdioBtn.Checked then
-
-      begin
 
         with MainForm.ClientTable do
         begin
@@ -795,27 +455,24 @@ begin
           fieldbyname('obser_c').Value := ObserClientGMem.Text;
           post;
         end;
-      end;
-      ClientListF.ClientTableActif.Refresh;
-      ClientListF.ActifClientsLbl.Caption :=
-        IntToStr(ClientListF.ClientTableActif.RecordCount);
-      ClientListF.ClientTablePassif.Refresh;
-      ClientListF.PassifClientsLbl.Caption :=
-        IntToStr(ClientListF.ClientTablePassif.RecordCount);
-      MainForm.ClientTable.Refresh;
-      ClientListF.ToutClientsLbl.Caption :=
-        IntToStr(MainForm.ClientTable.RecordCount);
     end;
 
-
-
-    // --------------- adding from the bon_liv  panel----
+  // --------------- adding from the bon_liv  panel----
          if OKClientGBtn.Tag = 3 then
     begin
       with MainForm.ClientTable do
       begin
-        Last;
-        Insert;
+
+         if NOT (MainForm.ClientTable.IsEmpty) then
+          begin
+          MainForm.ClientTable.Last;
+          CodeC:= MainForm.ClientTable.FieldValues['code_c'] + 1;
+          end else
+              begin
+               CodeC:= 1;
+              end;
+        Append;
+        FieldValues['code_c'] := CodeC;
         FieldValues['activ_c'] := ActiveClientGSlider.SliderOn;
         fieldbyname('nom_c').Value := NameClientGEdt.Text;
         fieldbyname('adr_c').Value := AdrClientGEdt.Text;
@@ -862,13 +519,21 @@ begin
 
     end;
 
-    // --------------- adding from the facutre de vente  panel----
+  // --------------- adding from the facutre de vente  panel----
          if OKClientGBtn.Tag = 4 then
     begin
       with MainForm.ClientTable do
       begin
-        Last;
-        Insert;
+               if NOT (MainForm.ClientTable.IsEmpty) then
+          begin
+          MainForm.ClientTable.Last;
+          CodeC:= MainForm.ClientTable.FieldValues['code_c'] + 1;
+          end else
+              begin
+               CodeC:= 1;
+              end;
+        Append;
+        FieldValues['code_c'] := CodeC;
         FieldValues['activ_c'] := ActiveClientGSlider.SliderOn;
         fieldbyname('nom_c').Value := NameClientGEdt.Text;
         fieldbyname('adr_c').Value := AdrClientGEdt.Text;
@@ -916,13 +581,21 @@ begin
     end;
 
 
-        // --------------- adding from the regelement client----
+  // --------------- adding from the regelement client----
          if OKClientGBtn.Tag = 5 then
     begin
       with MainForm.ClientTable do
       begin
-        Last;
-        Insert;
+          if NOT (MainForm.ClientTable.IsEmpty) then
+          begin
+          MainForm.ClientTable.Last;
+          CodeC:= MainForm.ClientTable.FieldValues['code_c'] + 1;
+          end else
+              begin
+               CodeC:= 1;
+              end;
+        Append;
+        FieldValues['code_c'] := CodeC;
         FieldValues['activ_c'] := ActiveClientGSlider.SliderOn;
         fieldbyname('nom_c').Value := NameClientGEdt.Text;
         fieldbyname('adr_c').Value := AdrClientGEdt.Text;
@@ -993,6 +666,80 @@ begin
     NameClientGErrorP.Visible := false;
     sndPlaySound('C:\Windows\Media\speech on.wav', SND_NODEFAULT Or SND_ASYNC Or
       SND_RING);
+
+
+     if OKClientGBtn.Tag = 0 OR 1 then
+     begin
+
+       MainForm.ClientTable.DisableControls;
+
+      MainForm.ClientTable.Active := false;
+      MainForm.ClientTable.SQL.Clear;
+      MainForm.ClientTable.SQL.Text :=
+      'SELECT * FROM client  WHERE activ_c = true ORDER BY code_c';
+      MainForm.ClientTable.Active := true;
+
+     ClientListF.ActifClientsLbl.Caption :=
+     IntToStr(MainForm.ClientTable.RecordCount);
+
+      MainForm.ClientTable.Active := false;
+      MainForm.ClientTable.SQL.Clear;
+      MainForm.ClientTable.SQL.Text :=
+      'SELECT * FROM client WHERE activ_c = false ORDER BY code_c';
+      MainForm.ClientTable.Active := true;
+
+      ClientListF.PassifClientsLbl.Caption :=
+      IntToStr(MainForm.ClientTable.RecordCount);
+
+
+      MainForm.ClientTable.Active := false;
+      MainForm.ClientTable.SQL.Clear;
+      MainForm.ClientTable.SQL.Text :=
+      'SELECT * FROM client ORDER BY code_c ';
+      MainForm.ClientTable.Active := true;
+
+      ClientListF.ToutClientsLbl.Caption :=
+      IntToStr(MainForm.ClientTable.RecordCount);
+
+
+
+      if ClientListF.ActifClientsRdioBtn.Checked then
+       begin
+        MainForm.ClientTable.Active := false;
+        MainForm.ClientTable.SQL.Clear;
+        MainForm.ClientTable.SQL.Text :=
+        'SELECT * FROM client  WHERE activ_c = true ORDER BY code_c';
+        MainForm.ClientTable.Active := true;
+       end;
+
+       if ClientListF.PassifClientsRdioBtn.Checked then
+       begin
+        MainForm.ClientTable.Active := false;
+        MainForm.ClientTable.SQL.Clear;
+        MainForm.ClientTable.SQL.Text :=
+        'SELECT * FROM client  WHERE activ_c = false ORDER BY code_c';
+        MainForm.ClientTable.Active := true;
+       end;
+
+       if ClientListF.toutClientsRdioBtn.Checked then
+       begin
+        MainForm.ClientTable.Active := false;
+        MainForm.ClientTable.SQL.Clear;
+        MainForm.ClientTable.SQL.Text :=
+        'SELECT * FROM client ORDER BY code_c';
+        MainForm.ClientTable.Active := true;
+       end;
+
+      if OKClientGBtn.Tag = 0 then
+      begin
+      MainForm.ClientTable.Last;
+      end;
+
+     MainForm.ClientTable.EnableControls;
+
+     end;
+
+
   end
   else
     try

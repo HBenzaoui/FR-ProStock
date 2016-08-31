@@ -453,24 +453,6 @@ begin
  FournisseursListDBGridEh.DefaultDrawColumnCell(Rect, DataCol, Column, State);
  end;
 end;
-//if  FournisseurListDataS.DataSet = MainForm.FournisseurTableActif then
-//begin
-//if MainForm.FournisseurTableActif.FieldValues['oldcredit_f'] <> 0     then
-// begin
-// FournisseursListDBGridEh.Canvas.Font.Color:=$004735F9;//   Brush.Color:=clRed;
-// FournisseursListDBGridEh.DefaultDrawColumnCell(Rect, DataCol, Column, State);
-// end;
-//end;
-//
-// if  FournisseurListDataS.DataSet = MainForm.FournisseurTablePassif then
-// begin
-// if MainForm.FournisseurTablePassif.FieldValues['oldcredit_f'] <> 0    then
-// begin
-// FournisseursListDBGridEh.Canvas.Font.Color:=$004735F9;//   Brush.Color:=clRed;
-// FournisseursListDBGridEh.DefaultDrawColumnCell(Rect, DataCol, Column, State);
-// end;
-// end;
-
 end;
 
 procedure TFournisseurListF.FournisseursListDBGridEhKeyDown(Sender: TObject;

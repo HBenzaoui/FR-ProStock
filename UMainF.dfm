@@ -36686,6 +36686,7 @@ object MainForm: TMainForm
       'Database=GSTOCKDC'
       'User_Name=postgres'
       'DriverID=PG')
+    Connected = True
     LoginPrompt = False
     Left = 51
     Top = 112
@@ -39477,17 +39478,6 @@ object MainForm: TMainForm
           ' START 7'
           ' CACHE 1;'
           'SELECT setval('#39'"public"."famproduit_code_famp_seq"'#39', 7, true);'
-          ''
-          '-- ----------------------------'
-          '-- Sequence structure for fournisseur_code_f_seq'
-          '-- ----------------------------'
-          'CREATE SEQUENCE "fournisseur_code_f_seq"'
-          ' INCREMENT 1'
-          ' MINVALUE 1'
-          ' MAXVALUE 2147483647'
-          ' START 2'
-          ' CACHE 1;'
-          'SELECT setval('#39'"public"."fournisseur_code_f_seq"'#39', 2, true);'
           ''
           '-- ----------------------------'
           '-- Sequence structure for magasin_code_m_seq'
