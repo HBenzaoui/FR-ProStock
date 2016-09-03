@@ -161,8 +161,8 @@ end;
 
 procedure TFournisseurListF.Button1Click(Sender: TObject);
 begin
-FreeAndNil(FournisseurListF);
-FreeAndNil(MainForm.TabSheetFournisseur);
+//FreeAndNil(FournisseurListF);
+//FreeAndNil(MainForm.TabSheetFournisseur);
 end;
 
 procedure TFournisseurListF.DeleteFournisseursBtnClick(Sender: TObject);
@@ -192,8 +192,7 @@ begin
       'SELECT * FROM fournisseur  WHERE activ_f = true ORDER BY code_f';
       MainForm.FournisseurTable.Active := true;
 
-     FournisseurListF.ActifFournisseursLbl.Caption :=
-     IntToStr(MainForm.FournisseurTable.RecordCount);
+     ActifFournisseursLbl.Caption :=  IntToStr(MainForm.FournisseurTable.RecordCount);
 
       MainForm.FournisseurTable.Active := false;
       MainForm.FournisseurTable.SQL.Clear;
@@ -201,8 +200,7 @@ begin
       'SELECT * FROM fournisseur WHERE activ_f = false ORDER BY code_f ';
       MainForm.FournisseurTable.Active := true;
 
-      FournisseurListF.PassifFournisseursLbl.Caption :=
-      IntToStr(MainForm.FournisseurTable.RecordCount);
+      PassifFournisseursLbl.Caption :=IntToStr(MainForm.FournisseurTable.RecordCount);
 
 
       MainForm.FournisseurTable.Active := false;
@@ -211,12 +209,9 @@ begin
       'SELECT * FROM fournisseur ORDER BY code_f ';
       MainForm.FournisseurTable.Active := true;
 
-      FournisseurListF.ToutFournisseursLbl.Caption :=
-      IntToStr(MainForm.FournisseurTable.RecordCount);
+      ToutFournisseursLbl.Caption := IntToStr(MainForm.FournisseurTable.RecordCount);
 
-
-
-      if FournisseurListF.ActifFournisseursRdioBtn.Checked then
+      if ActifFournisseursRdioBtn.Checked then
        begin
         MainForm.FournisseurTable.Active := false;
         MainForm.FournisseurTable.SQL.Clear;
@@ -225,7 +220,7 @@ begin
         MainForm.FournisseurTable.Active := true;
        end;
 
-       if FournisseurListF.PassifFournisseursRdioBtn.Checked then
+       if PassifFournisseursRdioBtn.Checked then
        begin
         MainForm.FournisseurTable.Active := false;
         MainForm.FournisseurTable.SQL.Clear;
@@ -234,7 +229,7 @@ begin
         MainForm.FournisseurTable.Active := true;
        end;
 
-       if FournisseurListF.toutFournisseursRdioBtn.Checked then
+       if toutFournisseursRdioBtn.Checked then
        begin
         MainForm.FournisseurTable.Active := false;
         MainForm.FournisseurTable.SQL.Clear;
@@ -338,9 +333,10 @@ procedure TFournisseurListF.FormClose(Sender: TObject;
 begin
  //--------- do that when i want ODER by the Indexed of the FirDACTable-----/
  MainForm.FournisseurTable.IndexesActive:=True;
-// MainForm.FournisseurTableActif.IndexesActive:= True;
-// MainForm.FournisseurTablePassif.IndexesActive:= True;
- ShowMessage('hello');
+
+
+
+FreeAndNil(FournisseurListF);
 end;
 
 procedure TFournisseurListF.FormCreate(Sender: TObject);
@@ -363,8 +359,7 @@ begin
       'SELECT * FROM fournisseur  WHERE activ_f = true ORDER BY code_f';
       MainForm.FournisseurTable.Active := true;
 
-     FournisseurListF.ActifFournisseursLbl.Caption :=
-     IntToStr(MainForm.FournisseurTable.RecordCount);
+     ActifFournisseursLbl.Caption:= IntToStr(MainForm.FournisseurTable.RecordCount);
 
       MainForm.FournisseurTable.Active := false;
       MainForm.FournisseurTable.SQL.Clear;
@@ -372,8 +367,7 @@ begin
       'SELECT * FROM fournisseur WHERE activ_f = false ORDER BY code_f';
       MainForm.FournisseurTable.Active := true;
 
-      FournisseurListF.PassifFournisseursLbl.Caption :=
-      IntToStr(MainForm.FournisseurTable.RecordCount);
+      PassifFournisseursLbl.Caption := IntToStr(MainForm.FournisseurTable.RecordCount);
 
 
       MainForm.FournisseurTable.Active := false;
@@ -382,12 +376,9 @@ begin
       'SELECT * FROM fournisseur ORDER BY code_f ';
       MainForm.FournisseurTable.Active := true;
 
-      FournisseurListF.ToutFournisseursLbl.Caption :=
-      IntToStr(MainForm.FournisseurTable.RecordCount);
+      ToutFournisseursLbl.Caption := IntToStr(MainForm.FournisseurTable.RecordCount);
 
-
-
-      if FournisseurListF.ActifFournisseursRdioBtn.Checked then
+      if ActifFournisseursRdioBtn.Checked then
        begin
         MainForm.FournisseurTable.Active := false;
         MainForm.FournisseurTable.SQL.Clear;
@@ -396,7 +387,7 @@ begin
         MainForm.FournisseurTable.Active := true;
        end;
 
-       if FournisseurListF.PassifFournisseursRdioBtn.Checked then
+       if PassifFournisseursRdioBtn.Checked then
        begin
         MainForm.FournisseurTable.Active := false;
         MainForm.FournisseurTable.SQL.Clear;
@@ -405,7 +396,7 @@ begin
         MainForm.FournisseurTable.Active := true;
        end;
 
-       if FournisseurListF.toutFournisseursRdioBtn.Checked then
+       if toutFournisseursRdioBtn.Checked then
        begin
         MainForm.FournisseurTable.Active := false;
         MainForm.FournisseurTable.SQL.Clear;

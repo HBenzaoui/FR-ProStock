@@ -59,6 +59,7 @@ type
     procedure sSpeedButton2Click(Sender: TObject);
     procedure sSpeedButton1Click(Sender: TObject);
     procedure sSpeedButton3Click(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     procedure GettingData;
     { Private declarations }
@@ -436,6 +437,12 @@ RegCListfrxRprt.Export(frxPDFExport1);
 
 
 MainForm.RegclientTable.EnableControls;
+end;
+
+procedure TReglementCListF.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+Action:= caFree;
+ReglementCListF:= nil;
 end;
 
 end.

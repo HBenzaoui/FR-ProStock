@@ -980,8 +980,8 @@ begin
 //-------- Show the splash screan for the produit familly to add new one---------//
   FastProduitsListF.Left := (Screen.Width div 2) - (FastProduitsListF.Width div 2);
   FastProduitsListF.Top := (Screen.Height div 2) - (FastProduitsListF.Height div 2);
-  FastProduitsListF.Show;
-  FastProduitsListF.ResearchProduitsEdt.SetFocus;
+  FastProduitsListF.ShowModal;
+//  FastProduitsListF.ResearchProduitsEdt.SetFocus;
 
  // FastProduitsListF.OKproduitGBtn.Enabled:=False;
  // produitGestionF.CancelProduitGBtn.Tag:=0;

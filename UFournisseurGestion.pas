@@ -102,66 +102,9 @@ implementation
 
 {$R *.dfm}
 
-uses Contnrs, Types, UFournisseurList, UMainF, USplash, UClientGestion,
+uses  UFournisseurList, UMainF, USplash, UClientGestion,
   UProduitGestion, USplashAddUnite, UBonRecGestion, UBonFacAGestion,
   UReglementFGestion;
-
-var
-  gGrayForms: TComponentList;
-
-procedure GrayForms;
-var
-  loop: integer;
-  fScrnFrm: TForm;
-  fForm: TForm;
-//  fPoint: TPoint;
-  fScreens: TList;
-
-begin
-  if not assigned(gGrayForms) then
-  begin
-    gGrayForms := TComponentList.Create;
-    gGrayForms.OwnsObjects := true;
-
-    fScreens := TList.Create;
-    try
-      for loop := 0 to 0 do
-        fScreens.Add(Screen.Forms[loop]);
-
-      for loop := 0 to 0 do
-
-      begin
-        fScrnFrm := fScreens[loop];
-
-        if fScrnFrm.Visible then
-        begin
-          fForm := TForm.Create(fScrnFrm);
-          gGrayForms.Add(fForm);
-
-          fForm.Position := poOwnerFormCenter;
-          fForm.AlphaBlend := true;
-          fForm.AlphaBlendValue := 80;
-          fForm.Color := clBlack;
-          fForm.BorderStyle := bsNone;
-          fForm.StyleElements := [];
-          fForm.Enabled := false;
-          fForm.BoundsRect := fScrnFrm.BoundsRect;
-          SetWindowLong(fForm.Handle, GWL_HWNDPARENT, fScrnFrm.Handle);
-          SetWindowPos(fForm.Handle, fScrnFrm.Handle, 0, 0, 0, 0,
-            SWP_NOSIZE or SWP_NOMOVE);
-          fForm.Visible := true;
-        end;
-      end;
-    finally
-      fScreens.free;
-    end;
-  end;
-end;
-
-procedure NormalForms;
-begin
-  FreeAndNil(gGrayForms);
-end;
 
 procedure TFournisseurGestionF.CancelFournisseurGBtnClick(Sender: TObject);
 begin
@@ -907,3 +850,4 @@ begin
 end;
 
 end.
+

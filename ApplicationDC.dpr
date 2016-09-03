@@ -40,7 +40,8 @@ uses
   USplashPrinting in 'USplashPrinting.pas' {FSplashPrinting},
   UOptions in 'UOptions.pas' {FOptions},
   UDashboard in 'UDashboard.pas' {DashboardF},
-  UDataModule in 'UDataModule.pas' {DataModuleF: TDataModule};
+  UDataModule in 'UDataModule.pas' {DataModuleF: TDataModule},
+  UHomeF in 'UHomeF.pas' {HomeF};
 
 {$R *.res}
 
@@ -51,5 +52,6 @@ ReportMemoryLeaksOnShutdown:=True;
   Application.CreateForm(TMainForm, MainForm);
   Application.CreateForm(TFOptions, FOptions);
   Application.CreateForm(TDataModuleF, DataModuleF);
+  Application.CreateForm(THomeF, HomeF);
   Application.Run;
 end.

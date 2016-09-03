@@ -38,7 +38,6 @@ type
     ResherchPARDesProduitsRdioBtn: TRadioButton;
     ResherchPARDCodProduitsRdioBtn: TRadioButton;
     Panel2: TPanel;
-    ProduitListDataS: TDataSource;
     ProduitListGridImgLst: TsAlphaImageList;
     Panel3: TPanel;
     sSpeedButton3: TsSpeedButton;

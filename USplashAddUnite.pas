@@ -82,6 +82,7 @@ begin
             if uScrnFrm.Visible then
             begin
                UForm := TForm.Create(uScrnFrm);
+               UForm.WindowState:= wsMaximized;
                gGrayForms.Add(UForm);
                UForm.Position := poOwnerFormCenter;
                UForm.AlphaBlend := true;
@@ -785,6 +786,12 @@ begin
  if Assigned(ProduitGestionF) then
  begin
      SetWindowPos(ProduitGestionF.Handle, HWND_NOTOPMOST, 0, 0, 0, 0,SWP_NOMOVE or SWP_NOSIZE);
+ end;
+
+
+  if Assigned(FastProduitsListF) then
+ begin
+     SetWindowPos(FastProduitsListF.Handle, HWND_NOTOPMOST, 0, 0, 0, 0,SWP_NOMOVE or SWP_NOSIZE);
  end;
 
 end;
@@ -1791,4 +1798,5 @@ begin
 end;
 
 end.
+
 

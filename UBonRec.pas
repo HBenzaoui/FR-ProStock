@@ -66,6 +66,7 @@ type
     procedure sSpeedButton1Click(Sender: TObject);
     procedure sSpeedButton3Click(Sender: TObject);
     procedure BARecListDBGridEhDblClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
 
   private
     procedure GettingData;
@@ -620,5 +621,11 @@ begin
 end;
 end;
 
+procedure TBonRecF.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+ FreeAndNil(BonRecF);
+end;
+
 end.
+
 

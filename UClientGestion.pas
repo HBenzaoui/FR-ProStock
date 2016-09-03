@@ -11,8 +11,6 @@ uses
   AdvSmoothSlider, DBAdvSmoothSlider, Vcl.Mask, System.Rtti,
   System.Bindings.Outputs, Vcl.Bind.Editors, Data.Bind.EngExt,
   Vcl.Bind.DBEngExt, Data.Bind.Components, Data.Bind.DBScope;
-procedure GrayForms;
-procedure NormalForms;
 
 type
   TClientGestionF = class(TForm)
@@ -79,7 +77,6 @@ type
     RIBClientGLbl: TLabel;
     NameClientGErrorP: TPanel;
     VilleClientGCbx: TComboBox;
-    procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure CancelClientGBtnClick(Sender: TObject);
     procedure OKClientGBtnClick(Sender: TObject);
@@ -102,6 +99,7 @@ type
     procedure VilleClientGCbxEnter(Sender: TObject);
     procedure WilayaClientGCbxEnter(Sender: TObject);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
+    procedure FormCreate(Sender: TObject);
 
   private
     { Private declarations }
@@ -115,61 +113,11 @@ var
 
 implementation
 
-uses Contnrs, Types, UMainF, UClientsList, USplash, UBonLivGestion,
+uses   UMainF, UClientsList, USplash, UBonLivGestion,
   UBonFacVGestion, UReglementCList,  UReglementCGestion;
 
 {$R *.dfm}
 
-var
-  gGrayForms: TComponentList;
-
-procedure GrayForms;
-var
-  loop: integer;
-  wScrnFrm: TForm;
-  wForm: TForm;
-//  wPoint: TPoint;
-  wScreens: TList;
-begin
-  if not assigned(gGrayForms) then
-  begin
-    gGrayForms := TComponentList.Create;
-    gGrayForms.OwnsObjects := true;
-    wScreens := TList.Create;
-    try
-      for loop := 0 to 0 do
-        wScreens.Add(Screen.Forms[loop]);
-      for loop := 0 to 0 do
-      begin
-        wScrnFrm := wScreens[loop];
-        if wScrnFrm.Visible then
-        begin
-          wForm := TForm.Create(wScrnFrm);
-          gGrayForms.Add(wForm);
-          wForm.Position := poOwnerFormCenter;
-          wForm.AlphaBlend := true;
-          wForm.AlphaBlendValue := 150;
-          wForm.Color := clBlack;
-          wForm.BorderStyle := bsNone;
-          wForm.StyleElements := [];
-          wForm.Enabled := false;
-          wForm.BoundsRect := wScrnFrm.BoundsRect;
-          SetWindowLong(wForm.Handle, GWL_HWNDPARENT, wScrnFrm.Handle);
-          SetWindowPos(wForm.Handle, wScrnFrm.Handle, 0, 0, 0, 0,
-            SWP_NOSIZE or SWP_NOMOVE);
-          wForm.Visible := true;
-        end;
-      end;
-    finally
-      wScreens.free;
-    end;
-  end;
-end;
-
-procedure NormalForms;
-begin
-  FreeAndNil(gGrayForms);
-end;
 
 // -------------- This procedure will make the edi rest to 0.00 when ceaning ------///
 procedure RestToZiro;
@@ -271,12 +219,6 @@ procedure TClientGestionF.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
 
   NormalForms;
-
-end;
-
-procedure TClientGestionF.FormCreate(Sender: TObject);
-begin
-  GrayForms;
 
 end;
 
@@ -861,6 +803,11 @@ begin
   Close;
 
  end;
+end;
+
+procedure TClientGestionF.FormCreate(Sender: TObject);
+begin
+  GrayForms;
 end;
 
 end.

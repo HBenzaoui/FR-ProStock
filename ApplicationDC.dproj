@@ -238,6 +238,10 @@
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
+        <DCCReference Include="UHomeF.pas">
+            <Form>HomeF</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -259,19 +263,12 @@
                     <Source Name="MainSource">ApplicationDC.dpr</Source>
                 </Source>
                 <Excluded_Packages>
-                    <Excluded_Packages Name="D:\Hamza\GeeK\SOFTs\DX10\Steema TeeChart Pro VCL 2015.16 RAD Studio 10 Seattle\Steema TeeChart Pro VCL 2015.16\Delphi23\Delphi23.win32\Bin\DclTeePro923.bpl">File D:\Hamza\GeeK\SOFTs\DX10\Steema TeeChart Pro VCL 2015.16 RAD Studio 10 Seattle\Steema TeeChart Pro VCL 2015.16\Delphi23\Delphi23.win32\Bin\DclTeePro923.bpl not found</Excluded_Packages>
-                    <Excluded_Packages Name="D:\Hamza\GeeK\SOFTs\DX10\Steema TeeChart Pro VCL 2015.16 RAD Studio 10 Seattle\Steema TeeChart Pro VCL 2015.16\Delphi23\Delphi23.win32\Bin\DclFMXTeePro923.bpl">File D:\Hamza\GeeK\SOFTs\DX10\Steema TeeChart Pro VCL 2015.16 RAD Studio 10 Seattle\Steema TeeChart Pro VCL 2015.16\Delphi23\Delphi23.win32\Bin\DclFMXTeePro923.bpl not found</Excluded_Packages>
-                    <Excluded_Packages Name="D:\Hamza\GeeK\SOFTs\DX10\Steema TeeChart Pro VCL 2015.16 RAD Studio 10 Seattle\Steema TeeChart Pro VCL 2015.16\Delphi23\Delphi23.win32\Bin\DclTree2D23Tee9.bpl">File D:\Hamza\GeeK\SOFTs\DX10\Steema TeeChart Pro VCL 2015.16 RAD Studio 10 Seattle\Steema TeeChart Pro VCL 2015.16\Delphi23\Delphi23.win32\Bin\DclTree2D23Tee9.bpl not found</Excluded_Packages>
-                    <Excluded_Packages Name="D:\Hamza\GeeK\SOFTs\DX10\Steema TeeChart Pro VCL 2015.16 RAD Studio 10 Seattle\Steema TeeChart Pro VCL 2015.16\Delphi23\Delphi23.win32\Bin\DclFMXTree23.bpl">File D:\Hamza\GeeK\SOFTs\DX10\Steema TeeChart Pro VCL 2015.16 RAD Studio 10 Seattle\Steema TeeChart Pro VCL 2015.16\Delphi23\Delphi23.win32\Bin\DclFMXTree23.bpl not found</Excluded_Packages>
                     <Excluded_Packages Name="C:\Users\Public\Documents\Embarcadero\Studio\17.0\Bpl\DclEhLibADODataDrivers230.bpl">EhLib 8.0 DataDrivers for ADO</Excluded_Packages>
                     <Excluded_Packages Name="C:\Users\Public\Documents\Embarcadero\Studio\17.0\Bpl\DclEhLibDBXDataDrivers230.bpl">EhLib 8.0 DataDrivers for DBX</Excluded_Packages>
                     <Excluded_Packages Name="C:\Users\Public\Documents\Embarcadero\Studio\17.0\Bpl\DclEhLibIBXDataDrivers230.bpl">EhLib 8.0 DataDrivers for IBX</Excluded_Packages>
                     <Excluded_Packages Name="C:\Users\Public\Documents\Embarcadero\Studio\17.0\Bpl\AlphaDBDX10.bpl">AlphaControls DB-aware pack</Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\dcloffice2k230.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\dclofficexp230.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\dclFMXtee9230.bpl">TeeChart Lite FMX Components</Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\dcltee9230.bpl">TeeChart Standard VCL Components</Excluded_Packages>
-                    <Excluded_Packages Name="C:\Program Files (x86)\FastReport 5 VCL Trial\LibD23\dclfrxTee23.bpl">(untitled)</Excluded_Packages>
                     <Excluded_Packages Name="C:\Program Files (x86)\FastReport 5 VCL Trial\LibD23\dclfsTee23.bpl">FastScript 1.9 Tee Components</Excluded_Packages>
                     <Excluded_Packages Name="C:\Program Files (x86)\FastReport 5 VCL Trial\LibD23\dclfrxIBX23.bpl">FastReport 5.0 IBX Components</Excluded_Packages>
                     <Excluded_Packages Name="C:\Program Files (x86)\FastReport 5 VCL Trial\LibD23\dclfsIBX23.bpl">FastScript 1.9 IBX Components</Excluded_Packages>
@@ -329,27 +326,12 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployClass Name="DependencyModule">
-                    <Platform Name="Win32">
-                        <Operation>0</Operation>
-                        <Extensions>.dll;.bpl</Extensions>
-                    </Platform>
+                <DeployClass Name="ProjectiOSDeviceResourceRules">
                     <Platform Name="iOSDevice64">
                         <Operation>1</Operation>
-                        <Extensions>.dylib</Extensions>
-                    </Platform>
-                    <Platform Name="OSX32">
-                        <RemoteDir>Contents\MacOS</RemoteDir>
-                        <Operation>1</Operation>
-                        <Extensions>.dylib</Extensions>
                     </Platform>
                     <Platform Name="iOSDevice32">
                         <Operation>1</Operation>
-                        <Extensions>.dylib</Extensions>
-                    </Platform>
-                    <Platform Name="iOSSimulator">
-                        <Operation>1</Operation>
-                        <Extensions>.dylib</Extensions>
                     </Platform>
                 </DeployClass>
                 <DeployClass Name="ProjectOSXResource">
@@ -703,12 +685,27 @@
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
-                <DeployClass Name="ProjectiOSDeviceResourceRules">
+                <DeployClass Name="DependencyModule">
+                    <Platform Name="Win32">
+                        <Operation>0</Operation>
+                        <Extensions>.dll;.bpl</Extensions>
+                    </Platform>
                     <Platform Name="iOSDevice64">
                         <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
+                    <Platform Name="OSX32">
+                        <RemoteDir>Contents\MacOS</RemoteDir>
+                        <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
                     </Platform>
                     <Platform Name="iOSDevice32">
                         <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
+                    <Platform Name="iOSSimulator">
+                        <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
                     </Platform>
                 </DeployClass>
                 <ProjectRoot Platform="iOSDevice64" Name="$(PROJECTNAME).app"/>
@@ -731,11 +728,3 @@
     <Import Project="$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj" Condition="Exists('$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj')"/>
     <Import Project="$(MSBuildProjectName).deployproj" Condition="Exists('$(MSBuildProjectName).deployproj')"/>
 </Project>
-
-<!-- EurekaLog First Line
-[Exception Log]
-EurekaLog Version=7007
-Activate=0
-DeleteMapAfterCompile=0
-Encrypt Password=""
-EurekaLog Last Line -->

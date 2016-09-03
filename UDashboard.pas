@@ -98,6 +98,7 @@ type
     ChartTool1: TMarksTipTool;
     procedure FormShow(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     procedure Selecting_Only_Valide_Bons;
     procedure Selecting_All_Bons;
@@ -1181,6 +1182,11 @@ end;
 procedure TDashboardF.FormCreate(Sender: TObject);
 begin
 GettingData;
+end;
+
+procedure TDashboardF.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+ FreeAndNil(DashboardF);
 end;
 
 End.

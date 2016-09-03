@@ -62,6 +62,7 @@ type
     procedure sSpeedButton2Click(Sender: TObject);
     procedure sSpeedButton1Click(Sender: TObject);
     procedure sSpeedButton3Click(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     procedure GettingData;
     { Private declarations }
@@ -492,6 +493,11 @@ BonFacVfrxRprt.Export(frxPDFExport1);
 
 
 MainForm.Bonv_facTable.EnableControls;
+end;
+
+procedure TBonFacVF.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+ FreeAndNil(BonFacVF);
 end;
 
 end.

@@ -209,8 +209,7 @@ begin
       'SELECT * FROM client  WHERE activ_c = true ORDER BY code_c';
       MainForm.ClientTable.Active := true;
 
-     ClientListF.ActifClientsLbl.Caption :=
-     IntToStr(MainForm.ClientTable.RecordCount);
+     ActifClientsLbl.Caption := IntToStr(MainForm.ClientTable.RecordCount);
 
       MainForm.ClientTable.Active := false;
       MainForm.ClientTable.SQL.Clear;
@@ -218,8 +217,7 @@ begin
       'SELECT * FROM client WHERE activ_c = false ORDER BY code_c';
       MainForm.ClientTable.Active := true;
 
-      ClientListF.PassifClientsLbl.Caption :=
-      IntToStr(MainForm.ClientTable.RecordCount);
+      PassifClientsLbl.Caption := IntToStr(MainForm.ClientTable.RecordCount);
 
 
       MainForm.ClientTable.Active := false;
@@ -228,12 +226,11 @@ begin
       'SELECT * FROM client ORDER BY code_c ';
       MainForm.ClientTable.Active := true;
 
-      ClientListF.ToutClientsLbl.Caption :=
-      IntToStr(MainForm.ClientTable.RecordCount);
+      ToutClientsLbl.Caption :=   IntToStr(MainForm.ClientTable.RecordCount);
 
 
 
-      if ClientListF.ActifClientsRdioBtn.Checked then
+      if ActifClientsRdioBtn.Checked then
        begin
         MainForm.ClientTable.Active := false;
         MainForm.ClientTable.SQL.Clear;
@@ -242,7 +239,7 @@ begin
         MainForm.ClientTable.Active := true;
        end;
 
-       if ClientListF.PassifClientsRdioBtn.Checked then
+       if PassifClientsRdioBtn.Checked then
        begin
         MainForm.ClientTable.Active := false;
         MainForm.ClientTable.SQL.Clear;
@@ -251,7 +248,7 @@ begin
         MainForm.ClientTable.Active := true;
        end;
 
-       if ClientListF.toutClientsRdioBtn.Checked then
+       if toutClientsRdioBtn.Checked then
        begin
         MainForm.ClientTable.Active := false;
         MainForm.ClientTable.SQL.Clear;
@@ -260,10 +257,7 @@ begin
         MainForm.ClientTable.Active := true;
        end;
 
-
       MainForm.ClientTable.EnableControls;
-
-
 
       FSplash := TFSplash.Create(ClientListF);
       try
@@ -400,25 +394,28 @@ begin
  //--------- do that when i want ODER by the Indexed of the FirDACTable-----/
  MainForm.ClientTable.IndexesActive:=True;
 
+ Action := caFree;
+
+ ClientListF:= nil;
+
 end;
 
 procedure TClientListF.FormShow(Sender: TObject);
 begin
        ResearchClientsEdt.SetFocus ;
    //----- for show how many Clients on the database--------------//
-
+//
       ToutClientsLbl.Caption:= IntToStr( MainForm.ClientTable.RecordCount) ;
-
+//
       MainForm.ClientTable.DisableControls;
-
+//
       MainForm.ClientTable.Active := false;
       MainForm.ClientTable.SQL.Clear;
       MainForm.ClientTable.SQL.Text :=
       'SELECT * FROM client  WHERE activ_c = true ORDER BY code_c';
       MainForm.ClientTable.Active := true;
 
-     ClientListF.ActifClientsLbl.Caption :=
-     IntToStr(MainForm.ClientTable.RecordCount);
+     ActifClientsLbl.Caption :=  IntToStr(MainForm.ClientTable.RecordCount);
 
       MainForm.ClientTable.Active := false;
       MainForm.ClientTable.SQL.Clear;
@@ -426,9 +423,7 @@ begin
       'SELECT * FROM client WHERE activ_c = false ORDER BY code_c';
       MainForm.ClientTable.Active := true;
 
-      ClientListF.PassifClientsLbl.Caption :=
-      IntToStr(MainForm.ClientTable.RecordCount);
-
+      PassifClientsLbl.Caption := IntToStr(MainForm.ClientTable.RecordCount);
 
       MainForm.ClientTable.Active := false;
       MainForm.ClientTable.SQL.Clear;
@@ -436,12 +431,11 @@ begin
       'SELECT * FROM client ORDER BY code_c ';
       MainForm.ClientTable.Active := true;
 
-      ClientListF.ToutClientsLbl.Caption :=
-      IntToStr(MainForm.ClientTable.RecordCount);
+      ToutClientsLbl.Caption :=  IntToStr(MainForm.ClientTable.RecordCount);
 
 
 
-      if ClientListF.ActifClientsRdioBtn.Checked then
+      if ActifClientsRdioBtn.Checked then
        begin
         MainForm.ClientTable.Active := false;
         MainForm.ClientTable.SQL.Clear;
@@ -450,7 +444,7 @@ begin
         MainForm.ClientTable.Active := true;
        end;
 
-       if ClientListF.PassifClientsRdioBtn.Checked then
+       if PassifClientsRdioBtn.Checked then
        begin
         MainForm.ClientTable.Active := false;
         MainForm.ClientTable.SQL.Clear;
@@ -459,7 +453,7 @@ begin
         MainForm.ClientTable.Active := true;
        end;
 
-       if ClientListF.toutClientsRdioBtn.Checked then
+       if toutClientsRdioBtn.Checked then
        begin
         MainForm.ClientTable.Active := false;
         MainForm.ClientTable.SQL.Clear;

@@ -58,6 +58,7 @@ type
     procedure sSpeedButton2Click(Sender: TObject);
     procedure sSpeedButton1Click(Sender: TObject);
     procedure sSpeedButton3Click(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     procedure GettingData;
     { Private declarations }
@@ -118,8 +119,8 @@ begin
               end;
 
 
-  BankListF.SoldIniBankListLbl.Caption :=       FloatToStrF(cmptsum,ffNumber,14,2);
-  BankListF.SoldPeriodeBankListLbl.Caption :=       FloatToStrF((TotalEncaiss - TotalDecaiss ),ffNumber,14,2) ;
+  SoldIniBankListLbl.Caption :=       FloatToStrF(cmptsum,ffNumber,14,2);
+  SoldPeriodeBankListLbl.Caption :=       FloatToStrF((TotalEncaiss - TotalDecaiss ),ffNumber,14,2) ;
 
 
                 MainForm.SQLQuery.Active:=False;
@@ -136,7 +137,7 @@ begin
           MainForm.SQLQuery.Next;
         end;
 
-  BankListF.SoldTotalBankListLbl.Caption :=
+  SoldTotalBankListLbl.Caption :=
        FloatToStrF(((TotalSoldComptEnc - TotalSoldComptDic) +(cmptsum)),ffNumber,14,2) ;
         MainForm.SQLQuery.Active:=False;
         MainForm.SQLQuery.SQL.Clear;
@@ -268,8 +269,8 @@ if BankListCbx.Text <> 'Tous' then
               end;
 
 
-    BankListF.SoldIniBankListLbl.Caption :=       FloatToStrF(cmptsum,ffNumber,14,2);
-  BankListF.SoldPeriodeBankListLbl.Caption :=       FloatToStrF((TotalEncaiss - TotalDecaiss ),ffNumber,14,2) ;
+         SoldIniBankListLbl.Caption :=       FloatToStrF(cmptsum,ffNumber,14,2);
+         SoldPeriodeBankListLbl.Caption :=       FloatToStrF((TotalEncaiss - TotalDecaiss ),ffNumber,14,2) ;
 
 
 
@@ -288,7 +289,7 @@ if BankListCbx.Text <> 'Tous' then
           MainForm.SQLQuery.Next;
         end;
 
-  BankListF.SoldTotalBankListLbl.Caption :=
+       SoldTotalBankListLbl.Caption :=
        FloatToStrF(((TotalSoldComptEnc - TotalSoldComptDic) +(cmptsum)),ffNumber,14,2) ;
 
         MainForm.SQLQuery.Active:=False;
@@ -343,9 +344,9 @@ if BankListCbx.Text <> 'Tous' then
               end;
 
 
-        BankListF.SoldIniBankListLbl.Caption :=       FloatToStrF(cmptsum,ffNumber,14,2);
+            SoldIniBankListLbl.Caption :=       FloatToStrF(cmptsum,ffNumber,14,2);
 
-        BankListF.SoldPeriodeBankListLbl.Caption :=       FloatToStrF((TotalEncaiss - TotalDecaiss ),ffNumber,14,2) ;
+            SoldPeriodeBankListLbl.Caption :=       FloatToStrF((TotalEncaiss - TotalDecaiss ),ffNumber,14,2) ;
 
 
                 MainForm.SQLQuery.Active:=False;
@@ -363,7 +364,7 @@ if BankListCbx.Text <> 'Tous' then
           MainForm.SQLQuery.Next;
         end;
 
-       BankListF.SoldTotalBankListLbl.Caption :=
+       SoldTotalBankListLbl.Caption :=
        FloatToStrF(((TotalSoldComptEnc - TotalSoldComptDic) +(cmptsum)),ffNumber,14,2) ;
 
         MainForm.SQLQuery.Active:=False;
@@ -442,6 +443,11 @@ BankListfrxRprt.Export(frxPDFExport1);
 
 
 MainForm.Opt_cas_bnk_BankTable.EnableControls;
+end;
+
+procedure TBankListF.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+ FreeAndNil(BankListF);
 end;
 
 end.

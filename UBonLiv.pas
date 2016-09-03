@@ -64,6 +64,7 @@ type
     procedure sSpeedButton3Click(Sender: TObject);
     procedure sSpeedButton1Click(Sender: TObject);
     procedure BVLivListDBGridEhDblClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     procedure GettingData;
     { Private declarations }
@@ -506,6 +507,11 @@ if BVLivListDBGridEh.ScreenToClient(Mouse.CursorPos).Y>25 then
 begin
   BonLivF.EditBVLivBtnClick(Sender) ;
 end;
+end;
+
+procedure TBonLivF.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+ FreeAndNil(BonLivF);
 end;
 
 end.

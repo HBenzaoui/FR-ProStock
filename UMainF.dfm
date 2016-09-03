@@ -1,7 +1,7 @@
 object MainForm: TMainForm
   Left = 1954
   Top = 106
-  Caption = 'MainForm'
+  Caption = 'Application'
   ClientHeight = 678
   ClientWidth = 969
   Color = clBtnFace
@@ -11,6 +11,7 @@ object MainForm: TMainForm
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
+  FormStyle = fsMDIForm
   Menu = MainMenu1
   OldCreateOrder = False
   WindowState = wsMaximized
@@ -856,598 +857,13 @@ object MainForm: TMainForm
         end>
     end
   end
-  object FaceP: TPanel
-    Left = 0
-    Top = 71
-    Width = 969
-    Height = 587
-    Align = alClient
-    BevelOuter = bvNone
-    Color = 14276563
-    DoubleBuffered = True
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
-    Font.Height = 16
-    Font.Name = 'Roboto'
-    Font.Style = []
-    ParentBackground = False
-    ParentDoubleBuffered = False
-    ParentFont = False
-    TabOrder = 2
-    StyleElements = []
-    object sPageControl1: TsPageControl
-      Left = 0
-      Top = 0
-      Width = 969
-      Height = 587
-      ActivePage = Accual
-      Align = alClient
-      DoubleBuffered = True
-      ParentDoubleBuffered = False
-      TabOrder = 0
-      CloseBtnSkin = 'GAUGE'
-      OnCloseBtnClick = sPageControl1CloseBtnClick
-      object Accual: TsTabSheet
-        Caption = 'Accual'
-        UseCloseBtn = False
-        object Panel1: TPanel
-          Left = 0
-          Top = 0
-          Width = 961
-          Height = 556
-          Align = alClient
-          BevelOuter = bvNone
-          Color = 14933719
-          ParentBackground = False
-          TabOrder = 0
-          object Label1: TLabel
-            Left = 17
-            Top = 16
-            Width = 78
-            Height = 21
-            Alignment = taCenter
-            Caption = 'Welcome'
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = 10379008
-            Font.Height = 22
-            Font.Name = 'Helvetica LT Std'
-            Font.Style = [fsBold]
-            ParentFont = False
-            Layout = tlCenter
-          end
-          object GridPanel1: TGridPanel
-            Left = 26
-            Top = 34
-            Width = 834
-            Height = 508
-            BevelOuter = bvNone
-            ColumnCollection = <
-              item
-                Value = 33.335001657825600000
-              end
-              item
-                Value = 33.333331159024820000
-              end
-              item
-                Value = 33.331667183149570000
-              end>
-            ControlCollection = <
-              item
-                Column = 0
-                Control = BLFaceBtn
-                Row = 0
-              end
-              item
-                Column = 1
-                Control = FCVFaceBtn
-                Row = 0
-              end
-              item
-                Column = 2
-                Control = CTRFaceBtn
-                Row = 0
-              end
-              item
-                Column = 0
-                Control = BRFaceBtn
-                Row = 1
-              end
-              item
-                Column = 1
-                Control = FCAFaceBtn
-                Row = 1
-              end
-              item
-                Column = 2
-                Control = AdvToolButton15
-                Row = 1
-              end
-              item
-                Column = 0
-                Control = CaisseFaceBtn
-                Row = 2
-              end
-              item
-                Column = 1
-                Control = BankFaceBtn
-                Row = 2
-              end
-              item
-                Column = 2
-                Control = AdvToolButton18
-                Row = 2
-              end
-              item
-                Column = 0
-                Control = ClientFaceBtn
-                Row = 3
-              end
-              item
-                Column = 1
-                Control = FourFaceBtn
-                Row = 3
-              end
-              item
-                Column = 2
-                Control = ProduitFaceBtn
-                Row = 3
-              end>
-            RowCollection = <
-              item
-                Value = 24.999870595130870000
-              end
-              item
-                Value = 24.999788831945310000
-              end
-              item
-                Value = 25.000186950775690000
-              end
-              item
-                Value = 25.000153622148130000
-              end
-              item
-                SizeStyle = ssAuto
-              end>
-            TabOrder = 0
-            DesignSize = (
-              834
-              508)
-            object BLFaceBtn: TAdvToolButton
-              Tag = 2
-              Left = 0
-              Top = 20
-              Width = 269
-              Height = 106
-              Cursor = crHandPoint
-              Anchors = [akLeft, akBottom]
-              AutoThemeAdapt = False
-              BorderColor = 7854350
-              BorderDownColor = 7854350
-              BorderHotColor = 15970832
-              ColorDown = 7854350
-              ColorHot = clBtnFace
-              ColorChecked = clNone
-              DropDownSplit = False
-              Caption = 'Bon de livration'
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = 4207405
-              Font.Height = 20
-              Font.Name = 'Helvetica LT Std'
-              Font.Style = []
-              ImageIndex = 0
-              Images = faceIcon68
-              Margin = 10
-              ParentFont = False
-              ParentShowHint = False
-              Rounded = True
-              ShowHint = True
-              Spacing = 10
-              OnClick = BLFaceBtnClick
-              Version = '1.6.1.1'
-              TMSStyle = 0
-            end
-            object FCVFaceBtn: TAdvToolButton
-              Tag = 2
-              Left = 278
-              Top = 20
-              Width = 269
-              Height = 106
-              Cursor = crHandPoint
-              Anchors = [akLeft, akBottom]
-              AutoThemeAdapt = False
-              BorderColor = 7854350
-              BorderDownColor = 7854350
-              BorderHotColor = 15970832
-              ColorDown = 7854350
-              ColorHot = clBtnFace
-              ColorChecked = clNone
-              DropDownSplit = False
-              Caption = 'Facture de Vente'
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = 4207405
-              Font.Height = 20
-              Font.Name = 'Helvetica LT Std'
-              Font.Style = []
-              ImageIndex = 1
-              Images = faceIcon68
-              Margin = 10
-              ParentFont = False
-              ParentShowHint = False
-              Rounded = True
-              ShowHint = True
-              Spacing = 10
-              OnClick = FCVFaceBtnClick
-              Version = '1.6.1.1'
-              TMSStyle = 0
-            end
-            object CTRFaceBtn: TAdvToolButton
-              Tag = 2
-              Left = 555
-              Top = 20
-              Width = 269
-              Height = 106
-              Cursor = crHandPoint
-              Anchors = [akLeft, akBottom]
-              AutoThemeAdapt = False
-              BorderColor = 7854350
-              BorderDownColor = 7854350
-              BorderHotColor = 15970832
-              ColorDown = 7854350
-              ColorHot = clBtnFace
-              ColorChecked = clNone
-              DropDownSplit = False
-              Caption = 'Vente au Comptoir'
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = 4207405
-              Font.Height = 20
-              Font.Name = 'Helvetica LT Std'
-              Font.Style = []
-              ImageIndex = 2
-              Images = faceIcon68
-              Margin = 10
-              ParentFont = False
-              ParentShowHint = False
-              Rounded = True
-              ShowHint = True
-              Spacing = 10
-              OnClick = CTRFaceBtnClick
-              Version = '1.6.1.1'
-              TMSStyle = 0
-            end
-            object BRFaceBtn: TAdvToolButton
-              Tag = 2
-              Left = 0
-              Top = 146
-              Width = 269
-              Height = 106
-              Cursor = crHandPoint
-              Anchors = [akLeft, akBottom]
-              AutoThemeAdapt = False
-              BorderColor = 7854350
-              BorderDownColor = 7854350
-              BorderHotColor = 15970832
-              ColorDown = 7854350
-              ColorHot = clBtnFace
-              ColorChecked = clNone
-              DropDownSplit = False
-              Caption = 'Bon de R'#233'ception'
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = 4207405
-              Font.Height = 20
-              Font.Name = 'Helvetica LT Std'
-              Font.Style = []
-              ImageIndex = 0
-              Images = faceIcon68
-              Margin = 10
-              ParentFont = False
-              ParentShowHint = False
-              Rounded = True
-              ShowHint = True
-              Spacing = 10
-              OnClick = BRFaceBtnClick
-              Version = '1.6.1.1'
-              ExplicitTop = 230
-              TMSStyle = 0
-            end
-            object FCAFaceBtn: TAdvToolButton
-              Tag = 2
-              Left = 278
-              Top = 146
-              Width = 269
-              Height = 106
-              Cursor = crHandPoint
-              Anchors = [akLeft, akBottom]
-              AutoThemeAdapt = False
-              BorderColor = 7854350
-              BorderDownColor = 7854350
-              BorderHotColor = 15970832
-              ColorDown = 7854350
-              ColorHot = clBtnFace
-              ColorChecked = clNone
-              DropDownSplit = False
-              Caption = 'Facture d'#39'Achat'
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = 4207405
-              Font.Height = 20
-              Font.Name = 'Helvetica LT Std'
-              Font.Style = []
-              ImageIndex = 1
-              Images = faceIcon68
-              Margin = 10
-              ParentFont = False
-              ParentShowHint = False
-              Rounded = True
-              ShowHint = True
-              Spacing = 10
-              OnClick = FCAFaceBtnClick
-              Version = '1.6.1.1'
-              TMSStyle = 0
-            end
-            object AdvToolButton15: TAdvToolButton
-              Tag = 2
-              Left = 555
-              Top = 146
-              Width = 269
-              Height = 106
-              Cursor = crHandPoint
-              Anchors = [akLeft, akBottom]
-              AutoThemeAdapt = False
-              BorderColor = 7854350
-              BorderDownColor = 7854350
-              BorderHotColor = 15970832
-              ColorDown = 7854350
-              ColorHot = clBtnFace
-              ColorChecked = clNone
-              DropDownSplit = False
-              Enabled = False
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = 4207405
-              Font.Height = 20
-              Font.Name = 'Helvetica LT Std'
-              Font.Style = []
-              ImageIndex = 0
-              Margin = 10
-              ParentFont = False
-              ParentShowHint = False
-              Rounded = True
-              ShowHint = True
-              Spacing = 10
-              Visible = False
-              Version = '1.6.1.1'
-              ExplicitTop = 230
-              TMSStyle = 0
-            end
-            object CaisseFaceBtn: TAdvToolButton
-              Tag = 2
-              Left = 0
-              Top = 273
-              Width = 269
-              Height = 106
-              Cursor = crHandPoint
-              Anchors = [akLeft, akBottom]
-              AutoThemeAdapt = False
-              BorderColor = 7854350
-              BorderDownColor = 7854350
-              BorderHotColor = 15970832
-              ColorDown = 7854350
-              ColorHot = clBtnFace
-              ColorChecked = clNone
-              DropDownSplit = False
-              Caption = 'La Caisse'
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = 4207405
-              Font.Height = 20
-              Font.Name = 'Helvetica LT Std'
-              Font.Style = []
-              ImageIndex = 3
-              Images = faceIcon68
-              Margin = 10
-              ParentFont = False
-              ParentShowHint = False
-              Rounded = True
-              ShowHint = True
-              Spacing = 10
-              OnClick = CaisseFaceBtnClick
-              Version = '1.6.1.1'
-              ExplicitTop = 357
-              TMSStyle = 0
-            end
-            object BankFaceBtn: TAdvToolButton
-              Tag = 2
-              Left = 278
-              Top = 273
-              Width = 269
-              Height = 106
-              Cursor = crHandPoint
-              Anchors = [akLeft, akBottom]
-              AutoThemeAdapt = False
-              BorderColor = 7854350
-              BorderDownColor = 7854350
-              BorderHotColor = 15970832
-              ColorDown = 7854350
-              ColorHot = clBtnFace
-              ColorChecked = clNone
-              DropDownSplit = False
-              Caption = 'La Banque'
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = 4207405
-              Font.Height = 20
-              Font.Name = 'Helvetica LT Std'
-              Font.Style = []
-              ImageIndex = 4
-              Images = faceIcon68
-              Margin = 10
-              ParentFont = False
-              ParentShowHint = False
-              Rounded = True
-              ShowHint = True
-              Spacing = 10
-              OnClick = BankFaceBtnClick
-              Version = '1.6.1.1'
-              ExplicitTop = 357
-              TMSStyle = 0
-            end
-            object AdvToolButton18: TAdvToolButton
-              Tag = 2
-              Left = 555
-              Top = 273
-              Width = 269
-              Height = 106
-              Cursor = crHandPoint
-              Anchors = [akLeft, akBottom]
-              AutoThemeAdapt = False
-              BorderColor = 7854350
-              BorderDownColor = 7854350
-              BorderHotColor = 15970832
-              ColorDown = 7854350
-              ColorHot = clBtnFace
-              ColorChecked = clNone
-              DropDownSplit = False
-              Enabled = False
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = 4207405
-              Font.Height = 20
-              Font.Name = 'Helvetica LT Std'
-              Font.Style = []
-              ImageIndex = 0
-              Margin = 10
-              ParentFont = False
-              ParentShowHint = False
-              Rounded = True
-              ShowHint = True
-              Spacing = 10
-              Visible = False
-              Version = '1.6.1.1'
-              ExplicitTop = 357
-              TMSStyle = 0
-            end
-            object ClientFaceBtn: TAdvToolButton
-              Tag = 2
-              Left = 0
-              Top = 400
-              Width = 269
-              Height = 106
-              Cursor = crHandPoint
-              Anchors = [akLeft, akBottom]
-              AutoThemeAdapt = False
-              BorderColor = 7854350
-              BorderDownColor = 7854350
-              BorderHotColor = 15970832
-              ColorDown = 7854350
-              ColorHot = clBtnFace
-              ColorChecked = clNone
-              DropDownSplit = False
-              Caption = 'Liste des Clients '
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = 4207405
-              Font.Height = 20
-              Font.Name = 'Helvetica LT Std'
-              Font.Style = []
-              ImageIndex = 5
-              Images = faceIcon68
-              Margin = 10
-              ParentFont = False
-              ParentShowHint = False
-              Rounded = True
-              ShowHint = True
-              Spacing = 10
-              OnClick = ClientFaceBtnClick
-              Version = '1.6.1.1'
-              ExplicitTop = 484
-              TMSStyle = 0
-            end
-            object FourFaceBtn: TAdvToolButton
-              Tag = 2
-              Left = 278
-              Top = 400
-              Width = 269
-              Height = 106
-              Cursor = crHandPoint
-              Anchors = [akLeft, akBottom]
-              AutoThemeAdapt = False
-              BorderColor = 7854350
-              BorderDownColor = 7854350
-              BorderHotColor = 15970832
-              ColorDown = 7854350
-              ColorHot = clBtnFace
-              ColorChecked = clNone
-              DropDownSplit = False
-              Caption = 'Liste des Fournisseurs'
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = 4207405
-              Font.Height = 20
-              Font.Name = 'Helvetica LT Std'
-              Font.Style = []
-              ImageIndex = 6
-              Images = faceIcon68
-              Margin = 10
-              ParentFont = False
-              ParentShowHint = False
-              Rounded = True
-              ShowHint = True
-              Spacing = 10
-              OnClick = FourFaceBtnClick
-              Version = '1.6.1.1'
-              ExplicitTop = 484
-              TMSStyle = 0
-            end
-            object ProduitFaceBtn: TAdvToolButton
-              Tag = 2
-              Left = 555
-              Top = 400
-              Width = 269
-              Height = 106
-              Cursor = crHandPoint
-              Anchors = [akLeft, akBottom]
-              AutoThemeAdapt = False
-              BorderColor = 7854350
-              BorderDownColor = 7854350
-              BorderHotColor = 15970832
-              ColorDown = 7854350
-              ColorHot = clBtnFace
-              ColorChecked = clNone
-              DropDownSplit = False
-              Caption = 'Liste des produits'
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = 4207405
-              Font.Height = 20
-              Font.Name = 'Helvetica LT Std'
-              Font.Style = []
-              ImageIndex = 7
-              Images = faceIcon68
-              Margin = 10
-              ParentFont = False
-              ParentShowHint = False
-              Rounded = True
-              ShowHint = True
-              Spacing = 10
-              OnClick = ProduitFaceBtnClick
-              Version = '1.6.1.1'
-              ExplicitTop = 484
-              TMSStyle = 0
-            end
-          end
-        end
-      end
-    end
-    object Button13: TButton
-      Left = 1117
-      Top = 6
-      Width = 75
-      Height = 25
-      Caption = 'Button11'
-      TabOrder = 1
-      Visible = False
-      OnClick = Button13Click
-    end
-  end
   object Button1: TButton
     Left = 1216
     Top = 368
     Width = 138
     Height = 25
     Caption = 'Add the delte function'
-    TabOrder = 3
+    TabOrder = 2
     Visible = False
     OnClick = Button1Click
   end
@@ -1457,7 +873,7 @@ object MainForm: TMainForm
     Width = 145
     Height = 25
     Caption = 'execute the delte function'
-    TabOrder = 4
+    TabOrder = 3
     Visible = False
     OnClick = Button2Click
   end
@@ -1467,7 +883,7 @@ object MainForm: TMainForm
     Width = 75
     Height = 25
     Caption = 'bonRec'
-    TabOrder = 5
+    TabOrder = 4
     Visible = False
     OnClick = Button3Click
   end
@@ -1477,7 +893,7 @@ object MainForm: TMainForm
     Width = 155
     Height = 25
     Caption = 'Test If conected'
-    TabOrder = 6
+    TabOrder = 5
     Visible = False
     OnClick = Button4Click
   end
@@ -1487,7 +903,7 @@ object MainForm: TMainForm
     Width = 155
     Height = 25
     Caption = 'Connect DATABASE'
-    TabOrder = 7
+    TabOrder = 6
     Visible = False
     OnClick = Button5Click
   end
@@ -1497,7 +913,7 @@ object MainForm: TMainForm
     Width = 155
     Height = 25
     Caption = 'Add Paramst To FDConection'
-    TabOrder = 8
+    TabOrder = 7
     Visible = False
     OnClick = Button6Click
   end
@@ -1507,7 +923,7 @@ object MainForm: TMainForm
     Width = 155
     Height = 25
     Caption = 'Connect Tables'
-    TabOrder = 9
+    TabOrder = 8
     Visible = False
     OnClick = Button7Click
   end
@@ -1517,7 +933,7 @@ object MainForm: TMainForm
     Width = 155
     Height = 25
     Caption = 'Swithc DB'
-    TabOrder = 10
+    TabOrder = 9
     Visible = False
     OnClick = Button8Click
   end
@@ -1527,7 +943,7 @@ object MainForm: TMainForm
     Width = 75
     Height = 25
     Caption = 'Button11'
-    TabOrder = 11
+    TabOrder = 10
     Visible = False
     OnClick = Button11Click
   end
@@ -1537,7 +953,7 @@ object MainForm: TMainForm
     Width = 155
     Height = 25
     Caption = 'Dicco'
-    TabOrder = 12
+    TabOrder = 11
     Visible = False
     OnClick = Button14Click
   end
@@ -1547,7 +963,7 @@ object MainForm: TMainForm
     Width = 75
     Height = 25
     Caption = 'PGdump'
-    TabOrder = 13
+    TabOrder = 12
     Visible = False
     OnClick = Button15Click
   end
@@ -1557,7 +973,7 @@ object MainForm: TMainForm
     Width = 75
     Height = 25
     Caption = 'Bank'
-    TabOrder = 14
+    TabOrder = 13
     Visible = False
     OnClick = Button17Click
   end
@@ -1567,7 +983,7 @@ object MainForm: TMainForm
     Width = 75
     Height = 25
     Caption = 'Button18'
-    TabOrder = 15
+    TabOrder = 14
     Visible = False
     OnClick = Button18Click
   end
@@ -1775,7 +1191,7 @@ object MainForm: TMainForm
     Width = 75
     Height = 25
     Caption = 'Button19'
-    TabOrder = 17
+    TabOrder = 16
     Visible = False
     OnClick = Button19Click
   end
@@ -21585,8 +21001,8 @@ object MainForm: TMainForm
     Top = 415
   end
   object CodebarresTable: TFDQuery
-    IndexFieldNames = 'code_cb'
-    MasterSource = ProduitsListF.ProduitListDataS
+    IndexFieldNames = 'code_p'
+    MasterSource = ProduitListDataS
     MasterFields = 'code_p'
     Connection = GstockdcConnection
     SQL.Strings = (
@@ -45501,5 +44917,25 @@ object MainForm: TMainForm
     DataSet = Bonv_ctrTable
     Left = 381
     Top = 394
+  end
+  object dxTabbedMDIManager1: TdxTabbedMDIManager
+    Active = True
+    LookAndFeel.Kind = lfUltraFlat
+    LookAndFeel.NativeStyle = False
+    LookAndFeel.SkinName = 'Darkroom'
+    TabProperties.AllowTabDragDrop = True
+    TabProperties.CloseButtonMode = cbmEveryTab
+    TabProperties.CloseTabWithMiddleClick = True
+    TabProperties.CustomButtons.Buttons = <>
+    TabProperties.Focusable = True
+    TabProperties.HotTrack = True
+    TabProperties.TabHeight = 18
+    Left = 272
+    Top = 112
+  end
+  object ProduitListDataS: TDataSource
+    DataSet = ProduitTable
+    Left = 120
+    Top = 296
   end
 end
