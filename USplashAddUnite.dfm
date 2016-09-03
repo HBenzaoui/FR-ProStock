@@ -308,9 +308,4 @@ object FSplashAddUnite: TFSplashAddUnite
     OnDropDown = CompteAddUniteSCbxEnter
     OnEnter = CompteAddUniteSCbxEnter
   end
-  object AddUnitCompteDataS: TDataSource
-    DataSet = MainForm.CompteTable
-    Left = 226
-    Top = 119
-  end
 end

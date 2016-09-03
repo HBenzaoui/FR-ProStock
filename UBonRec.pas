@@ -37,7 +37,6 @@ type
     ResearchBARecEdt: TSearchBox;
     Panel2: TPanel;
     Panel3: TPanel;
-    BonRecListDataS: TDataSource;
     DateEndBARecD: TDateTimePicker;
     DateStartBARecD: TDateTimePicker;
     Label1: TLabel;

@@ -854,7 +854,7 @@ object BonLivF: TBonLivF
     ColumnDefValues.ToolTips = True
     Ctl3D = True
     DataGrouping.Active = True
-    DataSource = BonLivListDataS
+    DataSource = MainForm.BonLivListDataS
     DynProps = <>
     EditActions = [geaSelectAllEh]
     EvenRowColor = clWindow
@@ -1111,11 +1111,6 @@ object BonLivF: TBonLivF
     object RowDetailData: TRowDetailPanelControlEh
     end
   end
-  object BonLivListDataS: TDataSource
-    DataSet = MainForm.Bonv_livTable
-    Left = 1064
-    Top = 600
-  end
   object frxXLSExport1: TfrxXLSExport
     UseFileCache = True
     ShowProgress = True
@@ -1188,7 +1183,7 @@ object BonLivF: TBonLivF
       'code_ur=code_ur'
       'Agnet=Agnet'
       'NeTHT=NeTHT')
-    DataSource = BonLivListDataS
+    DataSource = MainForm.BonLivListDataS
     BCDToCurrency = False
     Left = 248
     Top = 392

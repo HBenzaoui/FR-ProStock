@@ -7366,7 +7366,7 @@ object MainForm: TMainForm
           3C77FFA9E73F8B3FF99E33FEF56FD657075E1D40E0BF0300C726BEAC3B892455
           0000000049454E44AE426082}
       end>
-    Left = 768
+    Left = 818
     Top = 376
     Bitmap = {
       494C010100000800080001000100FFFFFFFF0400FFFFFFFFFFFFFFFF424D7600
@@ -20607,7 +20607,7 @@ object MainForm: TMainForm
   end
   object FDPhysPgDriverLink1: TFDPhysPgDriverLink
     VendorLib = 'C:\Program Files (x86)\PostgreSQL\9.6\bin\libpq.dll'
-    Left = 608
+    Left = 658
     Top = 304
   end
   object FournisseurTable: TFDQuery
@@ -20752,7 +20752,7 @@ object MainForm: TMainForm
   object FDGUIxWaitCursor1: TFDGUIxWaitCursor
     Provider = 'Forms'
     ScreenCursor = gcrDefault
-    Left = 576
+    Left = 626
     Top = 304
   end
   object ProduitTable: TFDQuery
@@ -22603,7 +22603,7 @@ object MainForm: TMainForm
           15D1DBE2FE9F7A7EE6FF9917E7FEA7EC4A27AFA8A04B6147F3E29A2E150EDDAA
           CC21D1AA00003647FFB5D2032A050000000049454E44AE426082}
       end>
-    Left = 768
+    Left = 818
     Top = 320
     Bitmap = {
       494C010100000800080001000100FFFFFFFF0400FFFFFFFFFFFFFFFF424D7600
@@ -22751,7 +22751,7 @@ object MainForm: TMainForm
     OnCalcFields = Bona_recPlistTableCalcFields
     FilterOptions = [foCaseInsensitive]
     IndexFieldNames = 'code_barec'
-    MasterSource = BonRecF.BonRecListDataS
+    MasterSource = BonRecListDataS
     MasterFields = 'code_barec'
     Connection = GstockdcConnection
     SQL.Strings = (
@@ -31898,7 +31898,7 @@ object MainForm: TMainForm
           D739B9ED774EC6FD9E689A7487B6889CDC3CE2C7000FCD65BF06A436F1000000
           0049454E44AE426082}
       end>
-    Left = 770
+    Left = 820
     Top = 432
     Bitmap = {
       494C010100000800080001000100FFFFFFFF0400FFFFFFFFFFFFFFFF424D7600
@@ -31908,11 +31908,12 @@ object MainForm: TMainForm
       FF00FF000000FF00FF00FFFF0000FFFFFF0000000000}
   end
   object Mode_paiementTable: TFDQuery
+    Active = True
     FilterOptions = [foCaseInsensitive]
     IndexFieldNames = 'code_mdpai'
-    MasterSource = FSplashAddUnite.AddUnitCompteDataS
-    MasterFields = 'code_cmpt'
     Connection = GstockdcConnection
+    FetchOptions.AssignedValues = [evCache]
+    FetchOptions.Cache = [fiBlobs, fiMeta]
     SQL.Strings = (
       'SELECT * FROM mode_paiement')
     Left = 675
@@ -31933,6 +31934,7 @@ object MainForm: TMainForm
     end
   end
   object CompteTable: TFDQuery
+    Active = True
     FilterOptions = [foCaseInsensitive]
     IndexFieldNames = 'code_cmpt'
     Connection = GstockdcConnection
@@ -31940,6 +31942,32 @@ object MainForm: TMainForm
       'SELECT * FROM compte')
     Left = 671
     Top = 463
+    object CompteTablecode_cmpt: TSmallintField
+      FieldName = 'code_cmpt'
+      Origin = 'code_cmpt'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+    end
+    object CompteTablenom_cmpt: TWideStringField
+      FieldName = 'nom_cmpt'
+      Origin = 'nom_cmpt'
+      Size = 50
+    end
+    object CompteTablerefer_cmpt: TWideStringField
+      FieldName = 'refer_cmpt'
+      Origin = 'refer_cmpt'
+    end
+    object CompteTablenature_cmpt: TBooleanField
+      FieldName = 'nature_cmpt'
+      Origin = 'nature_cmpt'
+    end
+    object CompteTableoldcredit_cmpt: TCurrencyField
+      FieldName = 'oldcredit_cmpt'
+      Origin = 'oldcredit_cmpt'
+    end
+    object CompteTabledate_cmpt: TDateField
+      FieldName = 'date_cmpt'
+      Origin = 'date_cmpt'
+    end
   end
   object PanelIcons48: TsAlphaImageList
     Height = 48
@@ -33303,7 +33331,7 @@ object MainForm: TMainForm
           E1DC7E8886FB1809F7310EF5E8130EF0A77F98601A830000000049454E44AE42
           6082}
       end>
-    Left = 770
+    Left = 820
     Top = 487
     Bitmap = {
       494C010100000800080001000100FFFFFFFF0400FFFFFFFFFFFFFFFF424D7600
@@ -34275,7 +34303,7 @@ object MainForm: TMainForm
           FE4C477D34DB5661DEEC86B4EB210367C8C81C32F47BF11A00675B9C14029FD6
           5E0000000049454E44AE426082}
       end>
-    Left = 768
+    Left = 818
     Top = 552
     Bitmap = {
       494C010100000800080001000100FFFFFFFF0400FFFFFFFFFFFFFFFF424D7600
@@ -34392,7 +34420,7 @@ object MainForm: TMainForm
           E811DC4DBC3271C934B17B826628E2A66BB08700930364E80C44B80AEC966CDD
           4D85D5445E34FFB7F4DB6D5F2817078F074875C60000000049454E44AE426082}
       end>
-    Left = 768
+    Left = 818
     Top = 608
     Bitmap = {
       494C010100000800080001000100FFFFFFFF0400FFFFFFFFFFFFFFFF424D7600
@@ -34520,7 +34548,7 @@ object MainForm: TMainForm
     Connection = GstockdcConnection
     SQL.Strings = (
       'SELECT * FROM bonv_liv')
-    Left = 426
+    Left = 476
     Top = 463
     object Bonv_livTablecode_bvliv: TIntegerField
       FieldName = 'code_bvliv'
@@ -34648,12 +34676,12 @@ object MainForm: TMainForm
     OnCalcFields = Bonv_liv_listTableCalcFields
     FilterOptions = [foCaseInsensitive]
     IndexFieldNames = 'code_bvliv'
-    MasterSource = BonLivF.BonLivListDataS
+    MasterSource = BonLivListDataS
     MasterFields = 'code_bvliv'
     Connection = GstockdcConnection
     SQL.Strings = (
       'SELECT * FROM bonv_liv_list')
-    Left = 425
+    Left = 475
     Top = 536
     object Bonv_liv_listTablecode_bvlivl: TIntegerField
       FieldName = 'code_bvlivl'
@@ -34738,8 +34766,8 @@ object MainForm: TMainForm
     Connection = GstockdcConnection
     SQL.Strings = (
       'SELECT * FROM bona_fac')
-    Left = 232
-    Top = 477
+    Left = 282
+    Top = 487
     object Bona_facTablecode_bafac: TIntegerField
       FieldName = 'code_bafac'
       Origin = 'code_bafac'
@@ -34874,13 +34902,13 @@ object MainForm: TMainForm
     OnCalcFields = Bona_fac_listTableCalcFields
     FilterOptions = [foCaseInsensitive]
     IndexFieldNames = 'code_bafac'
-    MasterSource = BonFacAF.BonFacAListDataS
+    MasterSource = BonFacAListDataS
     MasterFields = 'code_bafac'
     Connection = GstockdcConnection
     SQL.Strings = (
       'SELECT * FROM bona_fac_list')
-    Left = 231
-    Top = 541
+    Left = 281
+    Top = 551
     object Bona_fac_listTablecode_bafacl: TIntegerField
       FieldName = 'code_bafacl'
       Origin = 'code_bafacl'
@@ -34967,7 +34995,7 @@ object MainForm: TMainForm
     Connection = GstockdcConnection
     SQL.Strings = (
       'SELECT * FROM wilayas')
-    Left = 471
+    Left = 521
     Top = 272
     object WilayasTablecode_w: TSmallintField
       FieldName = 'code_w'
@@ -34984,7 +35012,7 @@ object MainForm: TMainForm
     Connection = GstockdcConnection
     SQL.Strings = (
       'SELECT * FROM communes')
-    Left = 469
+    Left = 519
     Top = 363
     object CommunesTablecode_cumm: TSmallintField
       FieldName = 'code_cumm'
@@ -35011,12 +35039,12 @@ object MainForm: TMainForm
     OnCalcFields = Bonv_fac_listTableCalcFields
     FilterOptions = [foCaseInsensitive]
     IndexFieldNames = 'code_bvfac'
-    MasterSource = BonFacVF.BonFacVListDataS
+    MasterSource = BonFacVListDataS
     MasterFields = 'code_bvfac'
     Connection = GstockdcConnection
     SQL.Strings = (
       'SELECT * FROM bonv_fac_list')
-    Left = 526
+    Left = 576
     Top = 536
     object Bonv_fac_listTablecode_bvfacl: TIntegerField
       FieldName = 'code_bvfacl'
@@ -35105,7 +35133,7 @@ object MainForm: TMainForm
     Connection = GstockdcConnection
     SQL.Strings = (
       'SELECT * FROM bonv_fac')
-    Left = 526
+    Left = 576
     Top = 462
     object Bonv_facTablecode_bvfac: TIntegerField
       FieldName = 'code_bvfac'
@@ -35238,7 +35266,7 @@ object MainForm: TMainForm
   end
   object WilayasDataS: TDataSource
     DataSet = WilayasTable
-    Left = 472
+    Left = 522
     Top = 320
   end
   object Bonv_livTableCredit: TFDQuery
@@ -35248,7 +35276,7 @@ object MainForm: TMainForm
     Connection = GstockdcConnection
     SQL.Strings = (
       'SELECT * FROM bonv_liv')
-    Left = 426
+    Left = 476
     Top = 599
     object IntegerField3: TIntegerField
       FieldName = 'code_bvliv'
@@ -35353,8 +35381,8 @@ object MainForm: TMainForm
     Connection = GstockdcConnection
     SQL.Strings = (
       'SELECT * FROM bona_fac')
-    Left = 232
-    Top = 605
+    Left = 282
+    Top = 615
     object IntegerField5: TIntegerField
       FieldName = 'code_bafac'
       Origin = 'code_bafac'
@@ -35458,7 +35486,7 @@ object MainForm: TMainForm
     Connection = GstockdcConnection
     SQL.Strings = (
       'SELECT * FROM bonv_fac')
-    Left = 526
+    Left = 576
     Top = 598
     object IntegerField7: TIntegerField
       FieldName = 'code_bvfac'
@@ -35663,7 +35691,7 @@ object MainForm: TMainForm
           0579BBBEFFC7064673322D2CA071714DF30A67B4D2C78601CD9E6B205E628F75
           0000000049454E44AE426082}
       end>
-    Left = 864
+    Left = 914
     Top = 608
     Bitmap = {
       494C010100000800080001000100FFFFFFFF0400FFFFFFFFFFFFFFFF424D7600
@@ -35832,7 +35860,7 @@ object MainForm: TMainForm
     Connection = GstockdcConnection
     SQL.Strings = (
       'SELECT * FROM bonv_ctr')
-    Left = 326
+    Left = 376
     Top = 334
     object Bonv_ctrTablecode_bvctr: TIntegerField
       FieldName = 'code_bvctr'
@@ -35933,7 +35961,7 @@ object MainForm: TMainForm
     Connection = GstockdcConnection
     SQL.Strings = (
       'SELECT * FROM bonv_ctr_list')
-    Left = 323
+    Left = 373
     Top = 380
     object Bonv_ctr_listTablecode_bvctrl: TIntegerField
       FieldName = 'code_bvctrl'
@@ -36014,7 +36042,7 @@ object MainForm: TMainForm
     Connection = GstockdcConnection
     SQL.Strings = (
       'SELECT * FROM bonv_ctr')
-    Left = 328
+    Left = 378
     Top = 430
     object IntegerField4: TIntegerField
       FieldName = 'code_bvctr'
@@ -36097,7 +36125,7 @@ object MainForm: TMainForm
       'GROUP BY code_p'
       'ORDER BY sum(qut_p) DESC LIMIT 10'
       '')
-    Left = 328
+    Left = 378
     Top = 480
     object Bonv_ctr_Top10produitcode_p: TIntegerField
       FieldName = 'code_p'
@@ -36339,6 +36367,7 @@ object MainForm: TMainForm
     Top = 264
   end
   object UsersTable: TFDQuery
+    Active = True
     FilterOptions = [foCaseInsensitive]
     IndexFieldNames = 'code_ur'
     Connection = GstockdcConnection
@@ -36873,7 +36902,7 @@ object MainForm: TMainForm
           606D0E004A8E056060784A05C0982507D6E671072A2CC583E7522A00C66C0072
           C5F9A3DB0170001AEB0F470D8AD3FA5457750000000049454E44AE426082}
       end>
-    Left = 848
+    Left = 898
     Top = 544
     Bitmap = {
       494C010100000800080001000100FFFFFFFF0400FFFFFFFFFFFFFFFF424D7600
@@ -38863,7 +38892,7 @@ object MainForm: TMainForm
           CC916283205CA15EF07F6204200001084847DE0114DA4BB6843D7FBA00000000
           49454E44AE426082}
       end>
-    Left = 760
+    Left = 810
     Top = 248
     Bitmap = {
       494C010100000800080001000100FFFFFFFF0400FFFFFFFFFFFFFFFF424D7600
@@ -44915,7 +44944,7 @@ object MainForm: TMainForm
   end
   object BonCtrListDataS: TDataSource
     DataSet = Bonv_ctrTable
-    Left = 381
+    Left = 431
     Top = 394
   end
   object dxTabbedMDIManager1: TdxTabbedMDIManager
@@ -44924,12 +44953,12 @@ object MainForm: TMainForm
     LookAndFeel.NativeStyle = False
     LookAndFeel.SkinName = 'Darkroom'
     TabProperties.AllowTabDragDrop = True
-    TabProperties.CloseButtonMode = cbmEveryTab
+    TabProperties.CloseButtonMode = cbmActiveAndHoverTabs
     TabProperties.CloseTabWithMiddleClick = True
     TabProperties.CustomButtons.Buttons = <>
     TabProperties.Focusable = True
     TabProperties.HotTrack = True
-    TabProperties.TabHeight = 18
+    TabProperties.TabHeight = 25
     Left = 272
     Top = 112
   end
@@ -44937,5 +44966,30 @@ object MainForm: TMainForm
     DataSet = ProduitTable
     Left = 120
     Top = 296
+  end
+  object BonRecListDataS: TDataSource
+    DataSet = Bona_recTable
+    Left = 191
+    Top = 550
+  end
+  object BonFacAListDataS: TDataSource
+    DataSet = Bona_facTable
+    Left = 346
+    Top = 564
+  end
+  object BonLivListDataS: TDataSource
+    DataSet = Bonv_livTable
+    Left = 511
+    Top = 560
+  end
+  object BonFacVListDataS: TDataSource
+    DataSet = Bonv_facTable
+    Left = 631
+    Top = 552
+  end
+  object AddUnitCompteDataS: TDataSource
+    DataSet = CompteTable
+    Left = 756
+    Top = 509
   end
 end

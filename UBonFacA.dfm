@@ -338,7 +338,7 @@ object BonFacAF: TBonFacAF
     ColumnDefValues.ToolTips = True
     Ctl3D = True
     DataGrouping.Active = True
-    DataSource = BonFacAListDataS
+    DataSource = MainForm.BonFacAListDataS
     DynProps = <>
     EditActions = [geaSelectAllEh]
     EvenRowColor = clWindow
@@ -1120,11 +1120,6 @@ object BonFacAF: TBonFacAF
     ParentBackground = False
     TabOrder = 2
     StyleElements = []
-  end
-  object BonFacAListDataS: TDataSource
-    DataSet = MainForm.Bona_facTable
-    Left = 936
-    Top = 544
   end
   object BonFacAfrxRprt: TfrxReport
     Version = '5.4.6'
@@ -1999,7 +1994,7 @@ object BonFacAF: TBonFacAF
       'code_ur=code_ur'
       'Agnet=Agnet'
       'NeTHT=NeTHT')
-    DataSource = BonFacAListDataS
+    DataSource = MainForm.BonFacAListDataS
     BCDToCurrency = False
     Left = 248
     Top = 392

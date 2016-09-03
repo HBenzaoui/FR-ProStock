@@ -478,7 +478,7 @@ begin
    MainForm.Mode_paiementTable.Refresh;
    MainForm.CompteTable.Refresh;
    BonFacVPListDataS.DataSet.Refresh;
-   BonFacVF.BonFacVListDataS.DataSet.Refresh;
+   MainForm.BonFacVListDataS.DataSet.Refresh;
    Refresh;
 
      ModePaieBonFacVGCbx.Refresh;
@@ -1565,7 +1565,8 @@ begin
      ModePaieBonFacVGCbxDropDown(Sender);
 
      ModePaieBonFacVGCbx.ItemIndex:=0;
-     CompteBonFacVGCbx.ItemIndex:=0;
+//     CompteBonFacVGCbx.ItemIndex:=0;
+     ModePaieBonFacVGCbxClick(Self) ;
 
      BonFacVGClientOLDCredit.Caption:= FloatToStrF(0,ffNumber,14,2) ;
      BonFAcVGClientNEWCredit.Caption:=BonFacVGClientOLDCredit.Caption;

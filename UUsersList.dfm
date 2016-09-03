@@ -301,6 +301,7 @@ object UsersListF: TUsersListF
     Font.Style = []
     ParentFont = False
     TabOrder = 3
+    OnChange = ResearchUsersEdtChange
   end
   object UsersListDataS: TDataSource
     DataSet = MainForm.UsersTable

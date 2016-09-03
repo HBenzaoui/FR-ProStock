@@ -338,7 +338,7 @@ object BonRecF: TBonRecF
     ColumnDefValues.ToolTips = True
     Ctl3D = True
     DataGrouping.Active = True
-    DataSource = BonRecListDataS
+    DataSource = MainForm.BonRecListDataS
     DynProps = <>
     EditActions = [geaSelectAllEh]
     EvenRowColor = clWindow
@@ -1111,11 +1111,6 @@ object BonRecF: TBonRecF
     TabOrder = 2
     StyleElements = []
   end
-  object BonRecListDataS: TDataSource
-    DataSet = MainForm.Bona_recTable
-    Left = 1096
-    Top = 664
-  end
   object frxBonRecDB: TfrxDBDataset
     UserName = 'frxBonRecDB'
     CloseDataSource = False
@@ -1145,7 +1140,7 @@ object BonRecF: TBonRecF
       'Agnet=Agnet'
       'bon_or_no_barec=bon_or_no_barec'
       'NeTHT=NeTHT')
-    DataSource = BonRecListDataS
+    DataSource = MainForm.BonRecListDataS
     BCDToCurrency = False
     Left = 248
     Top = 392

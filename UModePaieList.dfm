@@ -11,8 +11,10 @@ object ModePaieListF: TModePaieListF
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
+  KeyPreview = True
   OldCreateOrder = False
   OnClose = FormClose
+  OnKeyPress = FormKeyPress
   OnShow = FormShow
   DesignSize = (
     326
@@ -52,7 +54,7 @@ object ModePaieListF: TModePaieListF
     TMSStyle = 0
   end
   object AdvToolButton2: TAdvToolButton
-    Left = 113
+    Left = 112
     Top = 61
     Width = 100
     Height = 30
@@ -79,6 +81,7 @@ object ModePaieListF: TModePaieListF
     Shaded = False
     ShowHint = True
     Spacing = -1
+    OnClick = AdvToolButton2Click
     Version = '1.6.1.1'
     TMSStyle = 0
   end
@@ -110,6 +113,7 @@ object ModePaieListF: TModePaieListF
     Shaded = False
     ShowHint = True
     Spacing = -2
+    OnClick = AdvToolButton3Click
     Version = '1.6.1.1'
     TMSStyle = 0
   end
@@ -137,6 +141,7 @@ object ModePaieListF: TModePaieListF
     Height = 296
     Anchors = [akLeft, akTop, akRight]
     AutoFitColWidths = True
+    DataSource = ModePaieListDataS
     DynProps = <>
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -146,10 +151,9 @@ object ModePaieListF: TModePaieListF
     HorzScrollBar.Tracking = False
     HorzScrollBar.ExtraPanel.NavigatorButtons = []
     HorzScrollBar.ExtraPanel.VisibleItems = []
-    HorzScrollBar.SmoothStep = False
     HorzScrollBar.VisibleMode = sbNeverShowEh
     IndicatorOptions = []
-    Options = [dgTitles, dgColumnResize, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit]
+    Options = [dgTitles, dgColumnResize, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
     OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghFitRowHeightToText, dghDialogFind, dghColumnResize, dghColumnMove, dghExtendVertLines]
     ParentFont = False
     ReadOnly = True
@@ -157,8 +161,7 @@ object ModePaieListF: TModePaieListF
     RowLines = 1
     TabOrder = 0
     TreeViewParams.ShowTreeLines = False
-    VertScrollBar.Tracking = False
-    VertScrollBar.VisibleMode = sbNeverShowEh
+    VertScrollBar.SmoothStep = True
     VertScrollBar.Width = 10
     Columns = <
       item
@@ -166,7 +169,7 @@ object ModePaieListF: TModePaieListF
         CaseInsensitiveTextSearch = False
         DynProps = <>
         EditButtons = <>
-        FieldName = 'nom_cb'
+        FieldName = 'nom_mdpai'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = 20
@@ -174,15 +177,28 @@ object ModePaieListF: TModePaieListF
         Font.Style = []
         Footers = <>
         Layout = tlCenter
-        Title.Alignment = taCenter
-        Title.Caption = 'Mode de Paiement'
+        Title.Caption = '                     Mode de Paiement'
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = 10379008
         Title.Font.Height = 20
         Title.Font.Name = 'Roboto'
         Title.Font.Style = []
-        Width = 310
+        Width = 260
         WordWrap = False
+      end
+      item
+        DynProps = <>
+        EditButtons = <>
+        FieldName = 'code_mdpai'
+        Footers = <>
+        ImageList = MainForm.GridIconsMP20
+        KeyList.Strings = (
+          '1'
+          '2'
+          '3'
+          '4')
+        Title.Caption = ' '
+        Width = 36
       end>
     object RowDetailData: TRowDetailPanelControlEh
     end
@@ -232,35 +248,40 @@ object ModePaieListF: TModePaieListF
     StyleElements = []
     object OKAddUniteSBtn: TAdvToolButton
       Tag = 2
-      Left = 69
+      Left = 46
       Top = 12
-      Width = 187
+      Width = 233
       Height = 30
       Cursor = crHandPoint
       AutoThemeAdapt = False
       BorderColor = 7854350
       BorderDownColor = 7854350
       BorderHotColor = 15970832
+      Color = 7854350
+      ColorTo = 7854350
       ColorDown = 7854350
-      ColorHot = clBtnFace
+      ColorDownTo = 7854350
+      ColorHot = 8453888
+      ColorHotTo = 8453888
       ColorChecked = clNone
       DropDownSplit = False
       Caption = 'OK'
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = 4207405
-      Font.Height = 18
+      Font.Color = clWhite
+      Font.Height = 20
       Font.Name = 'Roboto'
-      Font.Style = []
+      Font.Style = [fsBold]
       ParentFont = False
       ParentShowHint = False
       Rounded = True
       ShowHint = True
       Spacing = -1
+      OnClick = OKAddUniteSBtnClick
       Version = '1.6.1.1'
       TMSStyle = 0
     end
   end
-  object ResearchUsersEdt: TSearchBox
+  object ResearchModePaiEdt: TSearchBox
     Left = 57
     Top = 97
     Width = 261
@@ -272,5 +293,11 @@ object ModePaieListF: TModePaieListF
     Font.Style = []
     ParentFont = False
     TabOrder = 3
+    OnChange = ResearchModePaiEdtChange
+  end
+  object ModePaieListDataS: TDataSource
+    DataSet = MainForm.Mode_paiementTable
+    Left = 290
+    Top = 390
   end
 end

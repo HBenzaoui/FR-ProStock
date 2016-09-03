@@ -39,7 +39,6 @@ type
     DateStartBVLivD: TDateTimePicker;
     Panel3: TPanel;
     BVLivListDBGridEh: TDBGridEh;
-    BonLivListDataS: TDataSource;
     ResherchBVLNumBRdioBtn: TRadioButton;
     ResherchBVLClientRdioBtn: TRadioButton;
     Panel4: TPanel;

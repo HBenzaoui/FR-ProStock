@@ -3141,7 +3141,7 @@ object BonFacVGestionF: TBonFacVGestionF
           Top = 203.338582677165000000
           Width = 154.960730000000000000
           Height = 31.370086060000000000
-          DataSet = BonFacVF.frxBonFacVDB
+          DataSet = frxBonFacVDT
           DataSetName = 'frxBonFacVDB'
           DisplayFormat.FormatStr = '%2.2m'
           DisplayFormat.Kind = fkNumeric
@@ -3286,7 +3286,7 @@ object BonFacVGestionF: TBonFacVGestionF
           Top = 58.960629920000000000
           Width = 60.472480000000000000
           Height = 18.897650000000000000
-          DataSet = BonFacAF.frxBonFacADB
+          DataSet = BonFacAGestionF.frxBonRecDT
           DataSetName = 'frxBonFacADB'
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -3394,7 +3394,7 @@ object BonFacVGestionF: TBonFacVGestionF
           Top = 20.409448818897600000
           Width = 166.299224800000000000
           Height = 28.346456690000000000
-          DataSet = BonFacAF.frxBonFacADB
+          DataSet = BonFacAGestionF.frxBonRecDT
           DataSetName = 'frxBonFacADB'
           DisplayFormat.FormatStr = '%2.2m'
           DisplayFormat.Kind = fkNumeric
@@ -3416,7 +3416,7 @@ object BonFacVGestionF: TBonFacVGestionF
           Width = 94.488250000000000000
           Height = 18.897650000000000000
           Visible = False
-          DataSet = BonFacAF.frxBonFacADB
+          DataSet = BonFacAGestionF.frxBonRecDT
           DataSetName = 'frxBonFacADB'
           DisplayFormat.FormatStr = '%2.2m'
           DisplayFormat.Kind = fkNumeric
@@ -3437,7 +3437,7 @@ object BonFacVGestionF: TBonFacVGestionF
           Width = 94.488250000000000000
           Height = 18.897650000000000000
           Visible = False
-          DataSet = BonFacAF.frxBonFacADB
+          DataSet = BonFacAGestionF.frxBonRecDT
           DataSetName = 'frxBonFacADB'
           DisplayFormat.FormatStr = '%2.2m'
           DisplayFormat.Kind = fkNumeric
@@ -3458,7 +3458,7 @@ object BonFacVGestionF: TBonFacVGestionF
           Width = 166.299320000000000000
           Height = 18.897650000000000000
           Visible = False
-          DataSet = BonFacAF.frxBonFacADB
+          DataSet = BonFacAGestionF.frxBonRecDT
           DataSetName = 'frxBonFacADB'
           DisplayFormat.FormatStr = '%2.2m'
           DisplayFormat.Kind = fkNumeric
@@ -3479,7 +3479,7 @@ object BonFacVGestionF: TBonFacVGestionF
           Width = 166.299320000000000000
           Height = 18.897650000000000000
           Visible = False
-          DataSet = BonFacAF.frxBonFacADB
+          DataSet = BonFacAGestionF.frxBonRecDT
           DataSetName = 'frxBonFacADB'
           DisplayFormat.FormatStr = '%2.2m'
           DisplayFormat.Kind = fkNumeric

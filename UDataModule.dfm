@@ -1,8 +1,8 @@
 object DataModuleF: TDataModuleF
   OldCreateOrder = False
   OnCreate = DataModuleCreate
-  Height = 515
-  Width = 619
+  Height = 665
+  Width = 1100
   object Top5produit: TFDQuery
     Connection = MainForm.GstockdcConnection
     SQL.Strings = (
@@ -13,8 +13,8 @@ object DataModuleF: TDataModuleF
       'ORDER BY sum(qut_p) DESC LIMIT 5'
       ''
       '')
-    Left = 460
-    Top = 32
+    Left = 750
+    Top = 12
     object Top5produitcode_p: TIntegerField
       FieldName = 'code_p'
       Origin = 'code_p'
@@ -44,8 +44,8 @@ object DataModuleF: TDataModuleF
       '    GROUP BY code_c'
       '    ORDER BY best_client DESC'
       '    LIMIT    1;')
-    Left = 36
-    Top = 88
+    Left = 586
+    Top = 18
     object TopClientcode_c: TIntegerField
       FieldName = 'code_c'
       Origin = 'code_c'
@@ -71,8 +71,8 @@ object DataModuleF: TDataModuleF
     SQL.Strings = (
       'SELECT   SUM(qut_p) as totat'
       'FROM produit')
-    Left = 460
-    Top = 176
+    Left = 750
+    Top = 76
     object TotalProduittotat: TFloatField
       AutoGenerateValue = arDefault
       FieldName = 'totat'
@@ -88,8 +88,8 @@ object DataModuleF: TDataModuleF
       '    GROUP BY code_c'
       '    ORDER BY MAX(montver_bvfac) DESC'
       '    LIMIT    1;')
-    Left = 36
-    Top = 144
+    Left = 586
+    Top = 74
   end
   object TopFour: TFDQuery
     Connection = MainForm.GstockdcConnection
@@ -100,8 +100,8 @@ object DataModuleF: TDataModuleF
       '    GROUP BY code_f'
       '    ORDER BY best_four DESC'
       '    LIMIT    1;')
-    Left = 116
-    Top = 90
+    Left = 666
+    Top = 20
     object TopFourcode_f: TIntegerField
       FieldName = 'code_f'
       Origin = 'code_f'
@@ -121,8 +121,8 @@ object DataModuleF: TDataModuleF
       '    GROUP BY code_c'
       '    ORDER BY MAX(montver_bvfac) DESC'
       '    LIMIT    1;')
-    Left = 116
-    Top = 144
+    Left = 666
+    Top = 74
   end
   object ToatalVerMonthVLIV: TFDQuery
     Connection = GstockdcConnection02
@@ -139,8 +139,8 @@ object DataModuleF: TDataModuleF
       '       sum("montver_bvliv") as "sales"'
       'from bonv_liv'
       'group by 1,2')
-    Left = 236
-    Top = 312
+    Left = 646
+    Top = 222
     object ToatalVerMonthVLIVmon: TStringField
       AutoGenerateValue = arDefault
       FieldName = 'mon'
@@ -163,8 +163,8 @@ object DataModuleF: TDataModuleF
   end
   object GstockdcConnection02: TFDConnection
     LoginPrompt = False
-    Left = 91
-    Top = 336
+    Left = 501
+    Top = 246
   end
   object ToatalVerMonthVCTR: TFDQuery
     Connection = GstockdcConnection02
@@ -181,8 +181,8 @@ object DataModuleF: TDataModuleF
       '       sum("montver_bvctr") as "sales"'
       'from bonv_ctr'
       'group by 1,2')
-    Left = 236
-    Top = 424
+    Left = 646
+    Top = 334
     object StringField1: TStringField
       AutoGenerateValue = arDefault
       FieldName = 'mon'
@@ -218,8 +218,8 @@ object DataModuleF: TDataModuleF
       '       sum("montver_bvfac") as "sales"'
       'from bonv_fac'
       'group by 1,2')
-    Left = 236
-    Top = 368
+    Left = 646
+    Top = 278
     object StringField2: TStringField
       AutoGenerateValue = arDefault
       FieldName = 'mon'
@@ -255,8 +255,8 @@ object DataModuleF: TDataModuleF
       '       sum("montver_barec") as "sales"'
       'from bona_rec'
       'group by 1,2')
-    Left = 476
-    Top = 320
+    Left = 746
+    Top = 140
     object StringField3: TStringField
       AutoGenerateValue = arDefault
       FieldName = 'mon'
@@ -292,8 +292,8 @@ object DataModuleF: TDataModuleF
       '       sum("montver_bafac") as "sales"'
       'from bona_fac'
       'group by 1,2')
-    Left = 476
-    Top = 376
+    Left = 746
+    Top = 196
     object StringField4: TStringField
       AutoGenerateValue = arDefault
       FieldName = 'mon'

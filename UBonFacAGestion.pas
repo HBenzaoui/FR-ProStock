@@ -591,7 +591,7 @@ begin
    MainForm.Mode_paiementTable.Refresh;
    MainForm.CompteTable.Refresh;
    BonFacAPListDataS.DataSet.Refresh;
-   BonFacAF.BonFacAListDataS.DataSet.Refresh;
+   MainForm.BonFacAListDataS.DataSet.Refresh;
    Refresh;
 
      ModePaieBonFacAGCbx.Refresh;

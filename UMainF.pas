@@ -675,6 +675,17 @@ type
     Bonv_ctr_Top10produitsum: TFloatField;
     dxTabbedMDIManager1: TdxTabbedMDIManager;
     ProduitListDataS: TDataSource;
+    BonRecListDataS: TDataSource;
+    BonFacAListDataS: TDataSource;
+    BonLivListDataS: TDataSource;
+    BonFacVListDataS: TDataSource;
+    CompteTablecode_cmpt: TSmallintField;
+    CompteTablenom_cmpt: TWideStringField;
+    CompteTablerefer_cmpt: TWideStringField;
+    CompteTablenature_cmpt: TBooleanField;
+    CompteTableoldcredit_cmpt: TCurrencyField;
+    CompteTabledate_cmpt: TDateField;
+    AddUnitCompteDataS: TDataSource;
     procedure ClientMainFBtnClick(Sender: TObject);
     procedure FourMainFBtnClick(Sender: TObject);
     procedure ProduitMainFBtnClick(Sender: TObject);
@@ -3019,7 +3030,7 @@ begin
 
             ModePaieListF.Show;
 
-            ModePaieListF.ResearchUsersEdt.SetFocus;
+            ModePaieListF.ResearchModePaiEdt.SetFocus;
 end;
 
 

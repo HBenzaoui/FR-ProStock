@@ -43,7 +43,6 @@ type
     ResherchBFANumBRdioBtn: TRadioButton;
     Panel4: TPanel;
     Panel3: TPanel;
-    BonFacAListDataS: TDataSource;
     BonFacAfrxRprt: TfrxReport;
     frxBonFacADB: TfrxDBDataset;
     frxXLSExport1: TfrxXLSExport;

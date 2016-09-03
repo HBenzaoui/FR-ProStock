@@ -1,4 +1,4 @@
-unit UBonLivGestion;
+ï»¿unit UBonLivGestion;
 
 interface
 
@@ -185,7 +185,7 @@ uses   WinSpool,
   StringTool, UMainF, USplashAddUnite, UClientsList, UClientGestion, USplashAddCompte,
   UFastProduitsList, UProduitsList, USplashVersement, UBonLiv;
 
-  {$R *.dfm}
+//  {$R *.dfm}
 
 //refresh datagrid data - preserve row position
 procedure Refresh_PreservePosition;
@@ -259,7 +259,7 @@ begin
       ValiderBVLivBonLivGImg.ImageIndex:=1;//0 fo D
       ValiderBVLivBonLivGLbl.Color:=$007374FF;// $004AC38B for D
       ValiderBVLivBonLivGLbl.Font.Color:= clWhite;// clBlack for D
-      ValiderBVLivBonLivGLbl.Caption:='Ce bon n''est pas encore Validé';// 'Ce bon est Valid' for D
+      ValiderBVLivBonLivGLbl.Caption:='Ce bon n''est pas encore ValidÃ©';// 'Ce bon est Valid' for D
   end;
 
 procedure TBonLivGestionF.FormShow(Sender: TObject);
@@ -624,7 +624,7 @@ begin
       end else begin
         NomP:='';
       end;
-      FSplashAddUnite.NameAddUniteSLbl.Caption:='Article déja inséré : '+ sLineBreak +  sLineBreak + QuotedStr(NomP);
+      FSplashAddUnite.NameAddUniteSLbl.Caption:='Article dÃ©ja insÃ©rÃ© : '+ sLineBreak +  sLineBreak + QuotedStr(NomP);
       FSplashAddUnite.NameAddUniteSLbl.Font.Height:= 22;
       FSplashAddUnite.NameAddUniteSLbl.Top:= (FSplashAddUnite.Panel1.Height) + 10 ;
       FSplashAddUnite.NameAddUniteSLbl.Font.Height:=18;
@@ -765,7 +765,7 @@ begin
             end else begin
               NomP:='';
             end;
-            FSplashAddUnite.NameAddUniteSLbl.Caption:='Article déja inséré : '+ sLineBreak +  sLineBreak + QuotedStr(NomP);
+            FSplashAddUnite.NameAddUniteSLbl.Caption:='Article dÃ©ja insÃ©rÃ© : '+ sLineBreak +  sLineBreak + QuotedStr(NomP);
             FSplashAddUnite.NameAddUniteSLbl.Font.Height:= 22;
             FSplashAddUnite.NameAddUniteSLbl.Top:= (FSplashAddUnite.Panel1.Height) + 10 ;
             FSplashAddUnite.NameAddUniteSLbl.Font.Height:=18;
@@ -908,7 +908,7 @@ begin
             end else begin
               NomP:='';
             end;
-            FSplashAddUnite.NameAddUniteSLbl.Caption:='Article déja inséré : '+ sLineBreak +  sLineBreak + QuotedStr(NomP);
+            FSplashAddUnite.NameAddUniteSLbl.Caption:='Article dÃ©ja insÃ©rÃ© : '+ sLineBreak +  sLineBreak + QuotedStr(NomP);
             FSplashAddUnite.NameAddUniteSLbl.Font.Height:= 22;
             FSplashAddUnite.NameAddUniteSLbl.Top:= (FSplashAddUnite.Panel1.Height) + 10 ;
             FSplashAddUnite.NameAddUniteSLbl.Font.Height:=18;
@@ -1078,8 +1078,7 @@ begin
     CompteBonLivGCbxEnter(Sender);
      ModePaieBonLivGCbxDropDown(Sender);
      ModePaieBonLivGCbx.ItemIndex:=0;
-//     CompteBonLivGCbx.ItemIndex:=0;
-     ModePaieBonLivGCbxClick(Self) ;
+     CompteBonLivGCbx.ItemIndex:=0;
 
      BonLivGClientOLDCredit.Caption:= FloatToStrF(0,ffNumber,14,2) ;
      BonLivGClientNEWCredit.Caption:=BonLivGClientOLDCredit.Caption;
@@ -1195,7 +1194,7 @@ begin
     FSplashAddUnite.Panel1.Color:= $0040332D ;
     FSplashAddUnite.LineP.Color:= $0040332D  ;
     FSplashAddUnite.NameAddUniteSLbl.Caption:='Designation:';
-    FSplashAddUnite.RequiredAddUniteSlbl.Caption:='S''il vous plaît entrer le Designation' ;
+    FSplashAddUnite.RequiredAddUniteSlbl.Caption:='S''il vous plaÃ®t entrer le Designation' ;
     FSplashAddUnite.FormCaptionAddUniteSLbl.Caption:='Ajouter Mode de Paiement';
     FSplashAddUnite.FormCaptionAddUniteSLbl.Font.Color:= $00EFE9E8;
     FSplashAddUnite.RequiredStarAddUniteSLbl.Left:= FSplashAddUnite.NameAddUniteSEdt.Left + FSplashAddUnite.NameAddUniteSEdt.Width + 5;
@@ -2052,7 +2051,7 @@ if NOT (MainForm.Bonv_liv_listTable.IsEmpty) then
    ProduitsListDBGridEh.ShowHint:= True;
 
      ChangeHint(TDBGridEh(Sender),
-      ( 'Dés: '+ (MainForm.ProduitTable.FieldValues['nom_p'])
+      ( 'DÃ©s: '+ (MainForm.ProduitTable.FieldValues['nom_p'])
        + sLineBreak +
          'Prix HT= '+ CurrToStrF((MainForm.ProduitTable.FieldValues['prixht_p']),ffNumber,2)
        + sLineBreak +
@@ -2086,7 +2085,7 @@ DocInfo1: TDocInfo;
 s : string;
 begin
 if not OpenPrinter(PChar('DotMatrix'), Handle, nil) then begin
-ShowMessage('Printer «DotMatrix» not found.');
+ShowMessage('Printer Â«DotMatrixÂ» not found.');
 Exit;
 end;
 
@@ -2186,7 +2185,7 @@ begin
    GettingData;
 
 BonLivPListfrxRprt.PrepareReport;
-frxXLSExport1.FileName := 'Bon de Livraison N° '
+frxXLSExport1.FileName := 'Bon de Livraison NÂ° '
   +IntToStr(YearOf(Today)) + '-' + Format('%.*d', [5,(MainForm.Bonv_livTable.FieldByName('code_bvliv').AsInteger)]);
 BonLivPListfrxRprt.Export(frxXLSExport1);
 //EmptyLines: = True;
@@ -2202,7 +2201,7 @@ begin
 
 BonLivPListfrxRprt.PrepareReport;
 
-frxPDFExport1.FileName := 'Bon de Livraison N° '
+frxPDFExport1.FileName := 'Bon de Livraison NÂ° '
   +IntToStr(YearOf(Today)) + '-' + Format('%.*d', [5,(MainForm.Bonv_livTable.FieldByName('code_bvliv').AsInteger)]);
 
 frxPDFExport1.EmbeddedFonts:=True;

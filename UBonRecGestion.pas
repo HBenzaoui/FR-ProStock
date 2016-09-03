@@ -1752,7 +1752,7 @@ begin
    MainForm.Mode_paiementTable.Refresh;
    MainForm.CompteTable.Refresh;
    BonRecPListDataS.DataSet.Refresh;
-   BonRecF.BonRecListDataS.DataSet.Refresh;
+   MainForm.BonRecListDataS.DataSet.Refresh;
    Refresh;
 
    ModePaieBonRecGCbx.Refresh;

@@ -558,22 +558,15 @@ end;
 
 procedure TClientListF.ResearchClientsEdtChange(Sender: TObject);
 begin
-      if (ResearchClientsEdt.text <> '') then
-
-                begin
-
-                  MainForm.ClientTable.Filtered:=false;
-                  MainForm.ClientTable.Filter := '[nom_c] LIKE ' + quotedstr(  '%'+  ResearchClientsEdt.Text +'%');
-                  MainForm.ClientTable.Filtered :=True;
-
-                  end
-                else
-
-                    begin
-                        MainForm.ClientTable.Filtered := False;
-
-                           end;
-
+  if (ResearchClientsEdt.text <> '') then
+      begin
+      MainForm.ClientTable.Filtered:=false;
+      MainForm.ClientTable.Filter := '[nom_c] LIKE ' + quotedstr(  '%'+  ResearchClientsEdt.Text +'%');
+      MainForm.ClientTable.Filtered :=True;
+    end  else
+      begin
+        MainForm.ClientTable.Filtered := False;
+       end;
 end;
 
 procedure TClientListF.ResearchClientsEdtKeyPress(Sender: TObject;

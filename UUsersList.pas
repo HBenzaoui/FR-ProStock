@@ -27,6 +27,7 @@ type
     procedure AdvToolButton1Click(Sender: TObject);
     procedure AdvToolButton2Click(Sender: TObject);
     procedure AdvToolButton3Click(Sender: TObject);
+    procedure ResearchUsersEdtChange(Sender: TObject);
   private
     { Private declarations }
   public
@@ -117,28 +118,45 @@ end;
 
 procedure TUsersListF.AdvToolButton3Click(Sender: TObject);
 begin
-if NOT (MainForm.UsersTable.IsEmpty) then
-begin
-MainForm.UsersTable.Delete;
+  if NOT (MainForm.UsersTable.FieldByName('code_ur').AsInteger = 1) then
+  begin
+  if NOT (MainForm.UsersTable.IsEmpty) then
+     begin
+     MainForm.UsersTable.Delete;
 
-      FSplash := TFSplash.Create(UsersListF);
-      try
-        FSplash.Left := Screen.Width div 2 - (FSplash.Width div 2);
-        FSplash.Top := 0;
+          FSplash := TFSplash.Create(UsersListF);
+          try
+            FSplash.Left := Screen.Width div 2 - (FSplash.Width div 2);
+            FSplash.Top := 0;
 
-        FSplash.Label1.Caption:='  Suppression avec succés';
-        FSplash.Color:= $004735F9;
-        AnimateWindow(FSplash.Handle, 150, AW_VER_POSITIVE OR AW_SLIDE OR AW_ACTIVATE);
-        sleep(250);
-        AnimateWindow(FSplash.Handle, 150, AW_VER_NEGATIVE OR
-          AW_SLIDE OR AW_HIDE);
-      finally
-        FSplash.free;
+            FSplash.Label1.Caption:='  Suppression avec succés';
+            FSplash.Color:= $004735F9;
+            AnimateWindow(FSplash.Handle, 150, AW_VER_POSITIVE OR AW_SLIDE OR AW_ACTIVATE);
+            sleep(250);
+            AnimateWindow(FSplash.Handle, 150, AW_VER_NEGATIVE OR
+              AW_SLIDE OR AW_HIDE);
+          finally
+            FSplash.free;
 
-      end;
-  sndPlaySound('C:\Windows\Media\speech off.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+          end;
+      sndPlaySound('C:\Windows\Media\speech off.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
 
+   end;
+
+  end;
 end;
+
+procedure TUsersListF.ResearchUsersEdtChange(Sender: TObject);
+begin
+  if (ResearchUsersEdt.text <> '') then
+      begin
+      MainForm.UsersTable.Filtered:=false;
+      MainForm.UsersTable.Filter := '[nom_ur] LIKE ' + quotedstr(  '%'+  ResearchUsersEdt.Text +'%');
+      MainForm.UsersTable.Filtered :=True;
+    end  else
+      begin
+        MainForm.UsersTable.Filtered := False;
+       end;
 end;
 
 end.

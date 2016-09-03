@@ -40,7 +40,6 @@ type
     DateEndBVFacD: TDateTimePicker;
     DateStartBVFacD: TDateTimePicker;
     Panel3: TPanel;
-    BonFacVListDataS: TDataSource;
     ResherchBFVClientRdioBtn: TRadioButton;
     ResherchBFVNumBRdioBtn: TRadioButton;
     Panel4: TPanel;
