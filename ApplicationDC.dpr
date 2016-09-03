@@ -41,7 +41,8 @@ uses
   UOptions in 'UOptions.pas' {FOptions},
   UDashboard in 'UDashboard.pas' {DashboardF},
   UDataModule in 'UDataModule.pas' {DataModuleF: TDataModule},
-  UHomeF in 'UHomeF.pas' {HomeF};
+  UHomeF in 'UHomeF.pas' {HomeF},
+  uCompteList in 'uCompteList.pas' {CompteListF};
 
 {$R *.res}
 

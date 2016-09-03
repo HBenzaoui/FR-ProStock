@@ -76,7 +76,7 @@ begin
 //            UsersGestionF.TypeUserGCbxChange(Sender);
             UsersGestionF.Left:=  (Screen.Width div 2 ) - (UsersGestionF.Width div 2)    ;
             UsersGestionF.Top:=   (Screen.Height div 2) - (UsersGestionF.Height div 2)    ;
-            UsersGestionF.Show;
+            UsersGestionF.ShowModal;
 end;
 
 procedure TUsersListF.AdvToolButton2Click(Sender: TObject);
@@ -110,7 +110,7 @@ begin
         UsersGestionF.ProduitSdr.SliderOn:=  MainForm.UsersTable.FieldValues['produit_ur'];
 
 
-        UsersGestionF.Show;
+        UsersGestionF.ShowModal;
         UsersGestionF.Tag := 1;
 
 
@@ -143,7 +143,10 @@ begin
 
    end;
 
-  end;
+  end else
+      begin
+        sndPlaySound('C:\Windows\Media\chord.wav', SND_NODEFAULT Or SND_ASYNC Or  SND_RING);
+      end;
 end;
 
 procedure TUsersListF.ResearchUsersEdtChange(Sender: TObject);

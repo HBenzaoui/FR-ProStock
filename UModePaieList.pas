@@ -13,7 +13,6 @@ type
   TModePaieListF = class(TForm)
     CodeBarresDBGridEh: TDBGridEh;
     Panel1: TPanel;
-    FormCaptionAddUniteSLbl: TLabel;
     AdvToolButton1: TAdvToolButton;
     AdvToolButton2: TAdvToolButton;
     AdvToolButton3: TAdvToolButton;
@@ -82,7 +81,7 @@ end;
 procedure TModePaieListF.FormShow(Sender: TObject);
 begin
 GrayForms;
-
+ ResearchModePaiEdt.SetFocus;
 //MainForm.Mode_paiementTable.IndexesActive:= False;
 
 end;

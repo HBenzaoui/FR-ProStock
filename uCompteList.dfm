@@ -1,10 +1,10 @@
-object ModePaieListF: TModePaieListF
+object CompteListF: TCompteListF
   Left = 0
   Top = 0
   BorderStyle = bsDialog
   ClientHeight = 488
   ClientWidth = 326
-  Color = 15722984
+  Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
@@ -86,7 +86,7 @@ object ModePaieListF: TModePaieListF
     TMSStyle = 0
   end
   object AdvToolButton3: TAdvToolButton
-    Left = 218
+    Left = 216
     Top = 61
     Width = 100
     Height = 30
@@ -120,9 +120,9 @@ object ModePaieListF: TModePaieListF
   object Label1: TLabel
     Left = 8
     Top = 101
-    Width = 43
+    Width = 57
     Height = 18
-    Caption = 'Mode:'
+    Caption = 'Compte:'
     Color = clWhite
     Font.Charset = DEFAULT_CHARSET
     Font.Color = 4207405
@@ -133,95 +133,25 @@ object ModePaieListF: TModePaieListF
     ParentFont = False
     StyleElements = []
   end
-  object CodeBarresDBGridEh: TDBGridEh
-    AlignWithMargins = True
-    Left = 8
-    Top = 129
-    Width = 310
-    Height = 296
-    Anchors = [akLeft, akTop, akRight]
-    AutoFitColWidths = True
-    DataSource = ModePaieListDataS
-    DynProps = <>
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
-    Font.Height = 30
-    Font.Name = 'Segoe UI'
-    Font.Style = []
-    HorzScrollBar.Tracking = False
-    HorzScrollBar.ExtraPanel.NavigatorButtons = []
-    HorzScrollBar.ExtraPanel.VisibleItems = []
-    HorzScrollBar.VisibleMode = sbNeverShowEh
-    IndicatorOptions = []
-    Options = [dgTitles, dgColumnResize, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
-    OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghFitRowHeightToText, dghDialogFind, dghColumnResize, dghColumnMove, dghExtendVertLines]
-    ParentFont = False
-    ReadOnly = True
-    RowHeight = 4
-    RowLines = 1
-    TabOrder = 0
-    TreeViewParams.ShowTreeLines = False
-    VertScrollBar.SmoothStep = True
-    VertScrollBar.Width = 10
-    Columns = <
-      item
-        Alignment = taCenter
-        CaseInsensitiveTextSearch = False
-        DynProps = <>
-        EditButtons = <>
-        FieldName = 'nom_mdpai'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = 20
-        Font.Name = 'Helvetica LT Std'
-        Font.Style = []
-        Footers = <>
-        Layout = tlCenter
-        Title.Caption = '                     Mode de Paiement'
-        Title.Font.Charset = DEFAULT_CHARSET
-        Title.Font.Color = 10379008
-        Title.Font.Height = 20
-        Title.Font.Name = 'Roboto'
-        Title.Font.Style = []
-        Width = 260
-        WordWrap = False
-      end
-      item
-        DynProps = <>
-        EditButtons = <>
-        FieldName = 'code_mdpai'
-        Footers = <>
-        ImageList = MainForm.GridIconsMP20
-        KeyList.Strings = (
-          '1'
-          '2'
-          '3'
-          '4')
-        Title.Caption = ' '
-        Width = 36
-      end>
-    object RowDetailData: TRowDetailPanelControlEh
-    end
-  end
   object Panel1: TPanel
-    Left = 0
+    Left = -10
     Top = 0
-    Width = 326
+    Width = 336
     Height = 45
     Anchors = [akLeft, akTop, akRight]
     BevelOuter = bvNone
-    Caption = 'Les Modes de Paiement'
-    Color = 4207405
+    Caption = 'La Liste Des Comptes'
+    Color = 10379008
     DoubleBuffered = True
     Font.Charset = DEFAULT_CHARSET
-    Font.Color = 15722984
+    Font.Color = clWhite
     Font.Height = 22
     Font.Name = 'Roboto'
     Font.Style = []
     ParentBackground = False
     ParentDoubleBuffered = False
     ParentFont = False
-    TabOrder = 1
+    TabOrder = 0
     StyleElements = []
   end
   object BottomP: TPanel
@@ -231,13 +161,13 @@ object ModePaieListF: TModePaieListF
     Height = 54
     Align = alBottom
     BevelOuter = bvNone
-    Color = 4207405
+    Color = 10379008
     DoubleBuffered = True
     ParentBackground = False
     ParentDoubleBuffered = False
-    TabOrder = 2
+    TabOrder = 1
     StyleElements = []
-    object OKAddUniteSBtn: TAdvToolButton
+    object OKAddCompteSBtn: TAdvToolButton
       Tag = 2
       Left = 46
       Top = 12
@@ -267,15 +197,15 @@ object ModePaieListF: TModePaieListF
       Rounded = True
       ShowHint = True
       Spacing = -1
-      OnClick = OKAddUniteSBtnClick
+      OnClick = OKAddCompteSBtnClick
       Version = '1.6.1.1'
       TMSStyle = 0
     end
   end
-  object ResearchModePaiEdt: TSearchBox
-    Left = 57
+  object ResearchCompteEdt: TSearchBox
+    Left = 65
     Top = 97
-    Width = 261
+    Width = 251
     Height = 26
     Font.Charset = DEFAULT_CHARSET
     Font.Color = 4207405
@@ -283,12 +213,80 @@ object ModePaieListF: TModePaieListF
     Font.Name = 'Roboto'
     Font.Style = []
     ParentFont = False
-    TabOrder = 3
-    OnChange = ResearchModePaiEdtChange
+    TabOrder = 2
   end
-  object ModePaieListDataS: TDataSource
-    DataSet = MainForm.Mode_paiementTable
-    Left = 240
-    Top = 340
+  object CompteDBGridEh: TDBGridEh
+    AlignWithMargins = True
+    Left = 8
+    Top = 129
+    Width = 310
+    Height = 296
+    Anchors = [akLeft, akTop, akRight]
+    AutoFitColWidths = True
+    DataSource = CompteListDataS
+    DynProps = <>
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = 30
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    HorzScrollBar.Tracking = False
+    HorzScrollBar.ExtraPanel.NavigatorButtons = []
+    HorzScrollBar.ExtraPanel.VisibleItems = []
+    HorzScrollBar.VisibleMode = sbNeverShowEh
+    IndicatorOptions = []
+    Options = [dgTitles, dgColumnResize, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
+    OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghFitRowHeightToText, dghDialogFind, dghColumnResize, dghColumnMove, dghExtendVertLines]
+    ParentFont = False
+    ReadOnly = True
+    RowHeight = 4
+    RowLines = 1
+    TabOrder = 3
+    TreeViewParams.ShowTreeLines = False
+    VertScrollBar.SmoothStep = True
+    VertScrollBar.Width = 10
+    Columns = <
+      item
+        Alignment = taCenter
+        CaseInsensitiveTextSearch = False
+        DynProps = <>
+        EditButtons = <>
+        FieldName = 'nom_cmpt'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = 20
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
+        Footers = <>
+        Layout = tlCenter
+        Title.Caption = '                         Les Comptes'
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = 10379008
+        Title.Font.Height = 20
+        Title.Font.Name = 'Roboto'
+        Title.Font.Style = []
+        Width = 260
+        WordWrap = False
+      end
+      item
+        Checkboxes = False
+        DynProps = <>
+        EditButtons = <>
+        FieldName = 'nature_cmpt'
+        Footers = <>
+        ImageList = MainForm.GridIconsComptes20
+        KeyList.Strings = (
+          'False'
+          'True')
+        Title.Caption = ' '
+        Width = 36
+      end>
+    object RowDetailData: TRowDetailPanelControlEh
+    end
+  end
+  object CompteListDataS: TDataSource
+    DataSet = MainForm.CompteTable
+    Left = 238
+    Top = 360
   end
 end

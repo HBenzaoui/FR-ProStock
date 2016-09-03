@@ -2,7 +2,6 @@ object UsersGestionF: TUsersGestionF
   Left = 0
   Top = 0
   BorderStyle = bsDialog
-  Caption = 'UsersGestionF'
   ClientHeight = 582
   ClientWidth = 450
   Color = clBtnFace
@@ -13,6 +12,9 @@ object UsersGestionF: TUsersGestionF
   Font.Style = []
   KeyPreview = True
   OldCreateOrder = False
+  Position = poScreenCenter
+  OnClose = FormClose
+  OnCreate = FormCreate
   OnKeyPress = FormKeyPress
   PixelsPerInch = 96
   TextHeight = 13

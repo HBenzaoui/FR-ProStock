@@ -2,7 +2,6 @@ object UsersListF: TUsersListF
   Left = 0
   Top = 0
   BorderStyle = bsDialog
-  Caption = 'UsersListF'
   ClientHeight = 558
   ClientWidth = 452
   Color = clBtnFace
@@ -13,6 +12,7 @@ object UsersListF: TUsersListF
   Font.Style = []
   KeyPreview = True
   OldCreateOrder = False
+  Position = poScreenCenter
   OnClose = FormClose
   OnCreate = FormCreate
   OnKeyPress = FormKeyPress

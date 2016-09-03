@@ -54,7 +54,7 @@ uses Contnrs, Types, UProduitGestion, UMainF, UBonRecGestion, UFastProduitsList,
 var
   gGrayForms: TComponentList;
 
-procedure GrayForms;
+procedure GrayFormsAddUnit;
 var
    loop : integer;
    uScrnFrm : TForm;
@@ -102,7 +102,7 @@ begin
    end;
 end;
 
-procedure NormalForms;
+procedure NormalFormsAddUnit;
 begin
   FreeAndNil(gGrayForms);
 end;
@@ -781,7 +781,7 @@ end;
 
 procedure TFSplashAddUnite.FormCreate(Sender: TObject);
 begin
-       GrayForms  ;
+       GrayFormsAddUnit  ;
  if Assigned(ProduitGestionF) then
  begin
      SetWindowPos(ProduitGestionF.Handle, HWND_NOTOPMOST, 0, 0, 0, 0,SWP_NOMOVE or SWP_NOSIZE);
@@ -807,7 +807,7 @@ begin
  end;
 
 
-  NormalForms  ;
+  NormalFormsAddUnit  ;
 
 end;
 
@@ -1815,6 +1815,7 @@ begin
        RequiredAddUniteSlbl.Visible:=False;
        AnimateWindow(FSplashAddUnite.Handle, 175, AW_VER_NEGATIVE OR AW_SLIDE OR AW_HIDE);
        FSplashAddUnite.Release;
+       sndPlaySound('C:\Windows\Media\speech on.wav', SND_NODEFAULT Or SND_ASYNC Or  SND_RING);
 
 //-------- use ths tag to inore the next code when adding from the modepai form-----
 //         if RequiredStarAddUniteSLbl.Tag = 0 then
@@ -1840,7 +1841,7 @@ begin
     end;
    end;
 
-     //---- this tag = 29 is for adding the  ------///
+     //---- this tag = 29 is for editing from mode paie list form  ------///
    if OKAddUniteSBtn.Tag = 29 then
    begin
      if NameAddUniteSEdt.Text <> '' then
@@ -1871,6 +1872,7 @@ begin
        RequiredAddUniteSlbl.Visible:=False;
        AnimateWindow(FSplashAddUnite.Handle, 175, AW_VER_NEGATIVE OR AW_SLIDE OR AW_HIDE);
        FSplashAddUnite.Release;
+       sndPlaySound('C:\Windows\Media\speech on.wav', SND_NODEFAULT Or SND_ASYNC Or  SND_RING);
 
        end
 

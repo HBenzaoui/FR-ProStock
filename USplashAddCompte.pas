@@ -49,15 +49,74 @@ var
 implementation
 
 uses
-  UMainF, UClientGestion, USplashAddUnite, UBonRecGestion, UBonLivGestion,
+  UMainF,Contnrs, UClientGestion, USplashAddUnite, UBonRecGestion, UBonLivGestion,
   UBonFacVGestion, UBonFacAGestion, UReglementCGestion, UReglementFGestion;
 
 {$R *.dfm}
 
+
+var
+  gGrayForms: TComponentList;
+
+procedure GrayFormsAddCompte;
+var
+   loop : integer;
+   uScrnFrm : TForm;
+   UForm : TForm;
+//   uPoint : TPoint;
+   uScreens : TList;
+
+begin
+   if not assigned(gGrayForms) then
+   begin
+      gGrayForms := TComponentList.Create;
+      gGrayForms.OwnsObjects := true;
+
+      uScreens := TList.create;
+      try
+         for loop := 0 to 0 do
+            uScreens.Add(Screen.Forms[loop]);
+
+         for loop := 0 to 0 do
+
+         begin
+            uScrnFrm := uScreens[loop];
+
+            if uScrnFrm.Visible then
+            begin
+               UForm := TForm.Create(uScrnFrm);
+               UForm.WindowState:= wsMaximized;
+               gGrayForms.Add(UForm);
+               UForm.Position := poOwnerFormCenter;
+               UForm.AlphaBlend := true;
+               UForm.AlphaBlendValue := 80;
+               UForm.Color := clBlack;
+               UForm.BorderStyle := bsNone;
+               UForm.StyleElements:= [];
+               UForm.Enabled := false;
+               UForm.BoundsRect := uScrnFrm.BoundsRect;
+               SetWindowLong(UForm.Handle, GWL_HWNDPARENT, uScrnFrm.Handle);
+               SetWindowPos(UForm.handle, uScrnFrm.handle, 0,0,0,0, SWP_NOSIZE or SWP_NOMOVE);
+               UForm.Visible := true;
+            end;
+         end;
+      finally
+         uScreens.free;
+      end;
+   end;
+end;
+
+procedure NormalFormsAddCompte;
+begin
+  FreeAndNil(gGrayForms);
+end;
+
+
+
 procedure TFSplashAddCompte.FormCreate(Sender: TObject);
 begin
 
- GrayForms  ;
+ GrayFormsAddCompte  ;
 
  if Assigned(FSplashAddUnite) then
  begin
@@ -73,7 +132,7 @@ begin
     begin
     SetWindowPos(FSplashAddUnite.Handle,HWND_TOPMOST,0,0,0,0,SWP_NOACTIVATE or SWP_NOMOVE or SWP_NOSIZE);
     end;
-    NormalForms;
+    NormalFormsAddCompte;
  end;
 
 procedure TFSplashAddCompte.FormKeyPress(Sender: TObject; var Key: Char);
@@ -104,26 +163,27 @@ procedure TFSplashAddCompte.FormShow(Sender: TObject);
 var CodeCB : Integer;
 begin
 
-
-
- //   SetWindowPos(FSplashAddUnite.Handle,HWND_TOPMOST,0,0,0,0,SWP_NOACTIVATE or SWP_NOMOVE or SWP_NOSIZE);
-
-  MainForm.CompteTable.Active:= False;
-  MainForm.CompteTable.sql.Clear;
-  MainForm.CompteTable.SQL.Text:='SELECT * FROM compte';
-  MainForm.CompteTable.Active:= True;;
-
-
- if NOT(MainForm.CompteTable.IsEmpty) then
+ if OKAddCompteSBtn.Tag <> 8  then
  begin
- MainForm.CompteTable.Last;
- CodeCB:= MainForm.CompteTable.FieldValues['code_cmpt'] + 1  ;
- NumAddCompteSEdt.Text :=  Format('%.*d', [5, CodeCB]);
- end else
- begin
-   CodeCB:= 1;
-    NumAddCompteSEdt.Text :=  Format('%.*d', [5, CodeCB]);
+    MainForm.CompteTable.Active:= False;
+    MainForm.CompteTable.sql.Clear;
+    MainForm.CompteTable.SQL.Text:='SELECT * FROM compte';
+    MainForm.CompteTable.Active:= True;;
+
+
+   if NOT(MainForm.CompteTable.IsEmpty) then
+   begin
+   MainForm.CompteTable.Last;
+   CodeCB:= MainForm.CompteTable.FieldValues['code_cmpt'] + 1  ;
+   NumAddCompteSEdt.Text :=  Format('%.*d', [5, CodeCB]);
+   end else
+   begin
+     CodeCB:= 1;
+      NumAddCompteSEdt.Text :=  Format('%.*d', [5, CodeCB]);
+   end;
+
  end;
+
 end;
 
 procedure TFSplashAddCompte.OKAddCompteSBtnClick(Sender: TObject);
@@ -390,12 +450,12 @@ begin
     end;
   end;
 
-          //----- use this tag for adding from the regelemnt fournisseur------//
+ //----- use this tag for adding from the regelemnt fournisseur------//
  if OKAddCompteSBtn.Tag = 5 then
   begin
    if NameAddCompteSEdt.Text <> '' then
     begin
-                 with MainForm.CompteTable do  begin
+        with MainForm.CompteTable do  begin
                if NOT (MainForm.CompteTable.IsEmpty) then
               begin
               MainForm.CompteTable.Last;
@@ -433,8 +493,8 @@ begin
       RequiredAddCompteSlbl.Visible:= True;
       NameAddCompteSErrorP.Visible:= True;
       sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
-     OKAddCompteSBtn.Enabled := False;
-     OKAddCompteSBtn.ImageIndex := 18;
+      OKAddCompteSBtn.Enabled := False;
+      OKAddCompteSBtn.ImageIndex := 18;
       finally
       NameAddCompteSEdt.SetFocus;
     end;
@@ -489,6 +549,105 @@ begin
       NameAddCompteSEdt.SetFocus;
     end;
   end;
+
+
+   //----- use this tag for adding from the compte list form------//
+ if OKAddCompteSBtn.Tag = 7 then
+  begin
+   if NameAddCompteSEdt.Text <> '' then
+    begin
+        with MainForm.CompteTable do  begin
+           if NOT (MainForm.CompteTable.IsEmpty) then
+          begin
+          MainForm.CompteTable.Last;
+          CodeCompte:= MainForm.CompteTable.FieldValues['code_cmpt'] + 1;
+          end else
+              begin
+               CodeCompte:= 1;
+              end;
+          Append;
+          fieldbyname('code_cmpt').AsInteger:= CodeCompte;
+          fieldbyname('nom_cmpt').AsString := NameAddCompteSEdt.Text;
+          fieldbyname('refer_cmpt').AsString := NumAddCompteSEdt.Text;
+          if NatureAddCompteSCbx.ItemIndex = 0 then
+             fieldbyname('nature_cmpt').AsBoolean:= False else begin fieldbyname('nature_cmpt').AsBoolean:= True end;
+          if SoldeAddCompteSCbx.Text<>'' then
+          begin
+          FieldValues['oldcredit_cmpt']:=Trim(SoldeAddCompteSCbx.Text) end else
+          begin FieldValues['oldcredit_cmpt']:=StrToInt('0')end;
+          fieldbyname('date_cmpt').Value := Now;
+          post;
+           end;
+
+          NameAddCompteSErrorP.Visible:=False;
+         RequiredAddCompteSlbl.Visible:=False;
+         AnimateWindow(FSplashAddCompte.Handle, 175, AW_VER_NEGATIVE OR AW_SLIDE OR AW_HIDE);
+         FSplashAddCompte.Release;
+         sndPlaySound('C:\Windows\Media\speech on.wav', SND_NODEFAULT Or SND_ASYNC Or  SND_RING);
+
+         MainForm.CompteTable.Refresh;
+         MainForm.Mode_paiementTable.Refresh;
+     end
+        else
+       try
+       NameAddCompteSEdt.BorderStyle:= bsNone;
+      NameAddCompteSEdt.StyleElements:= [];
+      RequiredAddCompteSlbl.Visible:= True;
+      NameAddCompteSErrorP.Visible:= True;
+      sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+     OKAddCompteSBtn.Enabled := False;
+     OKAddCompteSBtn.ImageIndex := 18;
+      finally
+      NameAddCompteSEdt.SetFocus;
+    end;
+  end;
+
+
+
+   //----- use this tag for editing from the compte list form------//
+ if OKAddCompteSBtn.Tag = 8 then
+  begin
+   if NameAddCompteSEdt.Text <> '' then
+    begin
+        with MainForm.CompteTable do  begin
+
+          Edit;
+          fieldbyname('nom_cmpt').AsString := NameAddCompteSEdt.Text;
+          fieldbyname('refer_cmpt').AsString := NumAddCompteSEdt.Text;
+          if NatureAddCompteSCbx.ItemIndex = 0 then
+             fieldbyname('nature_cmpt').AsBoolean:= False else begin fieldbyname('nature_cmpt').AsBoolean:= True end;
+          if SoldeAddCompteSCbx.Text<>'' then
+          begin
+          FieldValues['oldcredit_cmpt']:=Trim(SoldeAddCompteSCbx.Text) end else
+          begin FieldValues['oldcredit_cmpt']:=StrToInt('0')end;
+          fieldbyname('date_cmpt').Value := Now;
+          post;
+           end;
+
+          NameAddCompteSErrorP.Visible:=False;
+         RequiredAddCompteSlbl.Visible:=False;
+         AnimateWindow(FSplashAddCompte.Handle, 175, AW_VER_NEGATIVE OR AW_SLIDE OR AW_HIDE);
+         FSplashAddCompte.Release;
+         sndPlaySound('C:\Windows\Media\speech on.wav', SND_NODEFAULT Or SND_ASYNC Or  SND_RING);
+
+         MainForm.CompteTable.Refresh;
+         MainForm.Mode_paiementTable.Refresh;
+     end
+        else
+       try
+       NameAddCompteSEdt.BorderStyle:= bsNone;
+      NameAddCompteSEdt.StyleElements:= [];
+      RequiredAddCompteSlbl.Visible:= True;
+      NameAddCompteSErrorP.Visible:= True;
+      sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+     OKAddCompteSBtn.Enabled := False;
+     OKAddCompteSBtn.ImageIndex := 18;
+      finally
+      NameAddCompteSEdt.SetFocus;
+    end;
+  end;
+
+
 
 end;
 

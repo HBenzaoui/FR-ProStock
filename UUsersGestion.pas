@@ -71,6 +71,8 @@ type
     procedure AchatsSdrChanging(Sender: TObject; var CanChange: Boolean);
     procedure TreSdrChanging(Sender: TObject; var CanChange: Boolean);
     procedure BLSdrChanging(Sender: TObject; var CanChange: Boolean);
+    procedure FormCreate(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     procedure EnablePar;
     procedure DisablePar;
@@ -84,10 +86,67 @@ var
 
 implementation
 
-uses  Winapi.MMSystem,
+uses  Winapi.MMSystem,Contnrs,
   UClientGestion, UMainF;
 
 {$R *.dfm}
+
+
+var
+  gGrayForms: TComponentList;
+
+procedure GrayFormsAddUser;
+var
+   loop : integer;
+   uScrnFrm : TForm;
+   UForm : TForm;
+//   uPoint : TPoint;
+   uScreens : TList;
+
+begin
+   if not assigned(gGrayForms) then
+   begin
+      gGrayForms := TComponentList.Create;
+      gGrayForms.OwnsObjects := true;
+
+      uScreens := TList.create;
+      try
+         for loop := 0 to 0 do
+            uScreens.Add(Screen.Forms[loop]);
+
+         for loop := 0 to 0 do
+
+         begin
+            uScrnFrm := uScreens[loop];
+
+            if uScrnFrm.Visible then
+            begin
+               UForm := TForm.Create(uScrnFrm);
+               UForm.WindowState:= wsMaximized;
+               gGrayForms.Add(UForm);
+               UForm.Position := poOwnerFormCenter;
+               UForm.AlphaBlend := true;
+               UForm.AlphaBlendValue := 80;
+               UForm.Color := clBlack;
+               UForm.BorderStyle := bsNone;
+               UForm.StyleElements:= [];
+               UForm.Enabled := false;
+               UForm.BoundsRect := uScrnFrm.BoundsRect;
+               SetWindowLong(UForm.Handle, GWL_HWNDPARENT, uScrnFrm.Handle);
+               SetWindowPos(UForm.handle, uScrnFrm.handle, 0,0,0,0, SWP_NOSIZE or SWP_NOMOVE);
+               UForm.Visible := true;
+            end;
+         end;
+      finally
+         uScreens.free;
+      end;
+   end;
+end;
+
+procedure NormalFormsAddUser;
+begin
+  FreeAndNil(gGrayForms);
+end;
 
 
 procedure TUsersGestionF.EnablePar;
@@ -494,6 +553,16 @@ end;
 procedure TUsersGestionF.BLSdrChanging(Sender: TObject; var CanChange: Boolean);
 begin
 //L02.Enabled:= BLSdr.SliderOn;
+end;
+
+procedure TUsersGestionF.FormCreate(Sender: TObject);
+begin
+GrayFormsAddUser
+end;
+
+procedure TUsersGestionF.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+NormalFormsAddUser;
 end;
 
 end.

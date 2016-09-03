@@ -686,6 +686,7 @@ type
     CompteTableoldcredit_cmpt: TCurrencyField;
     CompteTabledate_cmpt: TDateField;
     AddUnitCompteDataS: TDataSource;
+    GridIconsComptes20: TsAlphaImageList;
     procedure ClientMainFBtnClick(Sender: TObject);
     procedure FourMainFBtnClick(Sender: TObject);
     procedure ProduitMainFBtnClick(Sender: TObject);
@@ -770,6 +771,7 @@ type
     procedure BoardMainFBtnClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure H1Click(Sender: TObject);
+    procedure c4Click(Sender: TObject);
   private
 
     TimerStart: TDateTime;
@@ -792,7 +794,7 @@ uses TlHelp32,Contnrs,
   USplashAddUnite, UBonLiv, UBonLivGestion, UBonFacVGestion, UBonFacV,
   UBonFacAGestion, UBonFacA, UComptoir,ShellAPI, UBonCtr, UCaisseList,
   UBankList, UUsersList, UUsersGestion, UReglementFList, UReglementCList,
-  UOptions, UModePaieList, UDashboard;
+  UOptions, UModePaieList, UDashboard,uCompteList;
 
 
   var
@@ -3023,14 +3025,19 @@ procedure TMainForm.M2Click(Sender: TObject);
 begin
   //-------- Show the splash screan for the produit familly to add new one---------//
 
+            Mode_paiementTable.Active:= False;
+            Mode_paiementTable.SQL.Clear;
+            Mode_paiementTable.SQL.Text:= 'SELECT * FROM mode_paiement';
+            Mode_paiementTable.Active:= True;
+
             ModePaieListF:=TModePaieListF.Create(Application);
      //       ClientGestionF.BringToFront;
             ModePaieListF.Left:=  (Screen.Width div 2 ) - (ModePaieListF.Width div 2)    ;
             ModePaieListF.Top:=   (Screen.Height div 2) - (ModePaieListF.Height div 2)    ;
 
-            ModePaieListF.Show;
+            ModePaieListF.ShowModal;
 
-            ModePaieListF.ResearchModePaiEdt.SetFocus;
+
 end;
 
 
@@ -3127,6 +3134,24 @@ end;
 procedure TMainForm.H1Click(Sender: TObject);
 begin
 FactureV2MainFMnmClick(Sender);
+end;
+
+procedure TMainForm.c4Click(Sender: TObject);
+begin
+  //-------- Show the splash screan for the produit familly to add new one---------//
+
+            CompteTable.Active:= False;
+            CompteTable.SQL.Clear;
+            CompteTable.SQL.Text:= 'SELECT * FROM compte';
+            CompteTable.Active:= True;
+
+            CompteListF:=TCompteListF.Create(Application);
+     //       ClientGestionF.BringToFront;
+            CompteListF.Left:=  (Screen.Width div 2 ) - (CompteListF.Width div 2)    ;
+            CompteListF.Top:=   (Screen.Height div 2) - (CompteListF.Height div 2)    ;
+
+            CompteListF.ShowModal;
+
 end;
 
 End.
