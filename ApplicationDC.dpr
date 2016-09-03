@@ -42,7 +42,11 @@ uses
   UDashboard in 'UDashboard.pas' {DashboardF},
   UDataModule in 'UDataModule.pas' {DataModuleF: TDataModule},
   UHomeF in 'UHomeF.pas' {HomeF},
-  uCompteList in 'uCompteList.pas' {CompteListF};
+  uCompteList in 'uCompteList.pas' {CompteListF},
+  UFamPList in 'UFamPList.pas' {FamPListF},
+  USFamPList in 'USFamPList.pas' {SFamPListF},
+  ULocaleList in 'ULocaleList.pas' {LocaleListF},
+  UUnitesList in 'UUnitesList.pas' {UnitesListF};
 
 {$R *.res}
 

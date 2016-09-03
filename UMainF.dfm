@@ -1253,17 +1253,26 @@ object MainForm: TMainForm
       object F4: TMenuItem
         Caption = 'Familles Articles'
         ImageIndex = 15
+        OnClick = F4Click
+      end
+      object S1: TMenuItem
+        Caption = 'Sous Familles Articles'
+        ImageIndex = 15
+        OnClick = S1Click
       end
       object R1: TMenuItem
         Caption = 'Remises/Promotions'
         ImageIndex = 16
+        Visible = False
       end
       object N2: TMenuItem
         Caption = '-'
+        Visible = False
       end
       object M1: TMenuItem
         Caption = 'Mouvements De Stock'
         ImageIndex = 3
+        Visible = False
       end
       object N3: TMenuItem
         Caption = '-'
@@ -1286,9 +1295,15 @@ object MainForm: TMainForm
       object N13: TMenuItem
         Caption = '-'
       end
+      object U1: TMenuItem
+        Caption = 'Unites'
+        ImageIndex = 25
+        OnClick = U1Click
+      end
       object o1: TMenuItem
         Caption = 'Localisations'
         ImageIndex = 20
+        OnClick = o1Click
       end
     end
     object AchatsMainFMnm: TMenuItem
@@ -22603,6 +22618,54 @@ object MainForm: TMainForm
           C11664EEC9253E99E2CB680BAF2EFEFFE3CF0F78F8FF03C2838F0F939ED1F015
           15D1DBE2FE9F7A7EE6FF9917E7FEA7EC4A27AFA8A04B6147F3E29A2E150EDDAA
           CC21D1AA00003647FFB5D2032A050000000049454E44AE426082}
+      end
+      item
+        ImageFormat = ifPNG
+        ImageName = 'tape_measure-48'
+        ImgData = {
+          89504E470D0A1A0A0000000D49484452000000300000003008060000005702F9
+          870000000473424954080808087C08648800000006624B474400FF00FF00FFA0
+          BDA793000000097048597300000DD700000DD70142289B780000001974455874
+          536F667477617265007777772E696E6B73636170652E6F72679BEE3C1A000004
+          C74944415468DEED996F6C137518C74FD1DD58E4853146A32F8D06D9C00D3A61
+          76BA6EFDC718461896EDEECA56DABB0E65980C51C318B38E4D971841963803D9
+          B2C50091E160B44C651B5B5B8B7333465EA022B2174274314660904C70718FCF
+          EFBACADDB5DD0AF426357DF1BCB8ADEDF3FDFC9E7FBFDFEF2800A012D9A82440
+          1220099004889B592C961413CB9F33B0FC3E13E7282F28DBF068420114B1F67C
+          23CB83CC38FE7B132BBC9B1829E44BADBF7E226D64FF4E4D0B46C18376854018
+          18DE9F20002983E0A301BC742179D6E95CF7183987D6C80879773E40809A87E2
+          27D0FE8201EABEC42B623F5D24AEBE8F0E246617F2D3EF05D327B52E31017CF4
+          B722C040AA2EF100FAE63D80E227D1C6E1538A4E3C007FCA1A71F5FD74EFAC4D
+          E2254EE7BD7A6EFD020323ACC141538313743F0E9D0346D6D168628497CD56FE
+          D9C2C24D748CF9DF1C0448D9AA3A008EFB3946C6C1E380F9356C6A86DB9F0656
+          E8C781F426E9E55181BCF41911E08BB94B550540412BD04EC7203C2A109A17A3
+          E53258799DCE664B8540DA2353ED730C3AA839AA01E0AAD7DE86F068768DAB60
+          07FDED4FF82EB81F6C516D376A601D95910414DB6D50EF5A05C7DBF3E0EC310D
+          040E68E1D0877AD8DDB81256ADB7DD248CF0862A004686B7A28349A9B315EBEC
+          D0DDAA83C9A1F900C391EDB26FA10862E61C3101E839213BEE007A867F888459
+          EA88AB58073F7A3451852BED5CF712583D63348431D21CE20E408A4DEAE84547
+          B9B8B2B18A0FD9D0C11C304D1F81EEB89FC848CBC31FFE4DEAC8D3A29309BB32
+          901E33C4474DA6A80058635BE20E8061B5499D385F61E0EFA12765A2766DD043
+          EB96BC9800C87749D1478428B56B540070B4499D7CD62617FA8B67116CB52C87
+          13EF2F139F473EC984B6D7F3E0834DF970F46D2D5C8D101DD2B122005CBED5FC
+          9F0180EF943A3A7578A94CCCB1C66744803F7A3260B47B116C2B318BCF216B28
+          37C258BF1C82B4DBF0F4E13DAADC4A60D1F54A1D8DF6654AD2613E34D88CB0A7
+          2A581364C55D9C097EEAC8828BBD197078875684E86AD0CAA3D69309110EEDAF
+          AA02803F3E1C72423AC8C45737F2FF7CD753A2C05AC60CBD3B97C1A1B772A1B3
+          2EF7DFFF93F9505F760330643FB8B3C300CC56E762550030B467A48E2E1CCF92
+          8919E9CC84A68D052248359AB4982FF565C076842360D2EF78F7E52A012EB95C
+          AEBBD58A805BEAECC8DE82B0A2242BFD75AB464CA750043A5CB9D06837886004
+          52FAF98F9B0D4A00B76A3773B8CF5F2B7556B3AD386A8BBC165820AEFACF53A9
+          55BD7639F437C98B7E126D6355A9BC803941500D20C75235978CF890B3956576
+          38FF79D6B4BD9EB4CEB358C8CAEE43ACA7FD39E5EAFF4E7CA87A37AA9C05F64A
+          0EC603E937BD95183F990E25429972FAEE50FD72971C3A945DC355BB5A4C8758
+          C55FF42E84CDAF5994AB7F5D67B13D3C2BB7D3D88DF628212A3797C07747B367
+          147FBAEB692855ACFC9455CFDAF53A39F621C43791F630EFD4BD00C31D39628B
+          9D180CCE0932F0DC2DF9505B530C85D6F0B38089E177CDFAFB8122F6A5FB7162
+          9E9C6E4F6FE282DBED69F7FD0CDF4E51D45DFFC90B8EE79DCE3422E016CFBE57
+          C9CDC4ED6CDAE276AD42AEBB716BF1658CC227F0B3CDE46477C7BD6232B2158F
+          A3C0ED065638626484536466601A8DE2DFFAD076A370674189F3B1E44BBE2440
+          122009F0FF06F8076866FCE472540F8C0000000049454E44AE426082}
       end>
     Left = 818
     Top = 320
@@ -38936,27 +38999,6 @@ object MainForm: TMainForm
           ' START 1'
           ' CACHE 1;'
           ''
-          '-- ----------------------------'
-          '-- Sequence structure for famproduit_code_famp_seq'
-          '-- ----------------------------'
-          'CREATE SEQUENCE "famproduit_code_famp_seq"'
-          ' INCREMENT 1'
-          ' MINVALUE 1'
-          ' MAXVALUE 2147483647'
-          ' START 7'
-          ' CACHE 1;'
-          'SELECT setval('#39'"public"."famproduit_code_famp_seq"'#39', 7, true);'
-          ''
-          '-- ----------------------------'
-          '-- Sequence structure for magasin_code_m_seq'
-          '-- ----------------------------'
-          'CREATE SEQUENCE "magasin_code_m_seq"'
-          ' INCREMENT 1'
-          ' MINVALUE 1'
-          ' MAXVALUE 2147483647'
-          ' START 6'
-          ' CACHE 1;'
-          'SELECT setval('#39'"public"."magasin_code_m_seq"'#39', 6, true);'
           ''
           '-- ----------------------------'
           '-- Sequence structure for produit_code_p_seq'
@@ -38968,27 +39010,6 @@ object MainForm: TMainForm
           ' START 1'
           ' CACHE 1;'
           ''
-          '-- ----------------------------'
-          '-- Sequence structure for sfamproduit_code_sfamp_seq'
-          '-- ----------------------------'
-          'CREATE SEQUENCE "sfamproduit_code_sfamp_seq"'
-          ' INCREMENT 1'
-          ' MINVALUE 1'
-          ' MAXVALUE 9223372036854775807'
-          ' START 3'
-          ' CACHE 1;'
-          'SELECT setval('#39'"public"."sfamproduit_code_sfamp_seq"'#39', 3, true);'
-          ''
-          '-- ----------------------------'
-          '-- Sequence structure for unite_code_u_seq01'
-          '-- ----------------------------'
-          'CREATE SEQUENCE "unite_code_u_seq01"'
-          ' INCREMENT 1'
-          ' MINVALUE 1'
-          ' MAXVALUE 32767'
-          ' START 5'
-          ' CACHE 1;'
-          'SELECT setval('#39'"public"."unite_code_u_seq01"'#39', 5, true);'
           ''
           '-- ----------------------------'
           '-- Table structure for bona_fac'
@@ -44909,6 +44930,12 @@ object MainForm: TMainForm
     Connection = GstockdcConnection
     Params = <>
     Macros = <>
+    FetchOptions.AssignedValues = [evItems, evAutoClose, evAutoFetchAll]
+    FetchOptions.AutoClose = False
+    FetchOptions.Items = [fiBlobs, fiDetails]
+    ResourceOptions.AssignedValues = [rvMacroCreate, rvMacroExpand, rvDirectExecute, rvPersistent]
+    ResourceOptions.MacroCreate = False
+    ResourceOptions.DirectExecute = True
     Left = 485
     Top = 104
   end

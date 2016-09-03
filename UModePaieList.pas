@@ -127,7 +127,7 @@ begin
     FSplashAddUnite.LineP.Color:= $0040332D  ;
     FSplashAddUnite.NameAddUniteSLbl.Caption:='Designation:';
     FSplashAddUnite.RequiredAddUniteSlbl.Caption:='S''il vous plaît entrer le Designation' ;
-    FSplashAddUnite.FormCaptionAddUniteSLbl.Caption:='Ajouter Mode de Paiement';
+    FSplashAddUnite.FormCaptionAddUniteSLbl.Caption:='Modifier Mode de Paiement';
     FSplashAddUnite.FormCaptionAddUniteSLbl.Font.Color:= $00EFE9E8;
     FSplashAddUnite.RequiredStarAddUniteSLbl.Left:= FSplashAddUnite.NameAddUniteSEdt.Left + FSplashAddUnite.NameAddUniteSEdt.Width + 5;
     FSplashAddUnite.FormCaptionAddUniteSLbl.Left:=( FSplashAddUnite.Width div 2) -  ( FSplashAddUnite.FormCaptionAddUniteSLbl.Width div 2);

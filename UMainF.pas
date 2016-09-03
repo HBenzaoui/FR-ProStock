@@ -687,6 +687,8 @@ type
     CompteTabledate_cmpt: TDateField;
     AddUnitCompteDataS: TDataSource;
     GridIconsComptes20: TsAlphaImageList;
+    S1: TMenuItem;
+    U1: TMenuItem;
     procedure ClientMainFBtnClick(Sender: TObject);
     procedure FourMainFBtnClick(Sender: TObject);
     procedure ProduitMainFBtnClick(Sender: TObject);
@@ -772,6 +774,10 @@ type
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure H1Click(Sender: TObject);
     procedure c4Click(Sender: TObject);
+    procedure F4Click(Sender: TObject);
+    procedure S1Click(Sender: TObject);
+    procedure U1Click(Sender: TObject);
+    procedure o1Click(Sender: TObject);
   private
 
     TimerStart: TDateTime;
@@ -794,7 +800,8 @@ uses TlHelp32,Contnrs,
   USplashAddUnite, UBonLiv, UBonLivGestion, UBonFacVGestion, UBonFacV,
   UBonFacAGestion, UBonFacA, UComptoir,ShellAPI, UBonCtr, UCaisseList,
   UBankList, UUsersList, UUsersGestion, UReglementFList, UReglementCList,
-  UOptions, UModePaieList, UDashboard,uCompteList;
+  UOptions, UModePaieList, UDashboard,uCompteList, UFamPList, USFamPList,
+  UUnitesList, ULocaleList;
 
 
   var
@@ -3152,6 +3159,74 @@ begin
 
             CompteListF.ShowModal;
 
+end;
+
+procedure TMainForm.F4Click(Sender: TObject);
+begin
+  //-------- Show the splash screan for the produit familly to add new one---------//
+
+            FamproduitTable.Active:= False;
+            FamproduitTable.SQL.Clear;
+            FamproduitTable.SQL.Text:= 'SELECT * FROM famproduit';
+            FamproduitTable.Active:= True;
+
+            FamPListF:=TFamPListF.Create(Application);
+     //       ClientGestionF.BringToFront;
+            FamPListF.Left:=  (Screen.Width div 2 ) - (FamPListF.Width div 2)    ;
+            FamPListF.Top:=   (Screen.Height div 2) - (FamPListF.Height div 2)    ;
+
+            FamPListF.ShowModal;
+end;
+
+procedure TMainForm.S1Click(Sender: TObject);
+begin
+  //-------- Show the splash screan for the produit familly to add new one---------//
+
+            SfamproduitTable.Active:= False;
+            SfamproduitTable.SQL.Clear;
+            SfamproduitTable.SQL.Text:= 'SELECT * FROM sfamproduit';
+            SfamproduitTable.Active:= True;
+
+            SFamPListF:=TSFamPListF.Create(Application);
+     //       ClientGestionF.BringToFront;
+            SFamPListF.Left:=  (Screen.Width div 2 ) - (SFamPListF.Width div 2)    ;
+            SFamPListF.Top:=   (Screen.Height div 2) - (SFamPListF.Height div 2)    ;
+
+            SFamPListF.ShowModal;
+end;
+
+procedure TMainForm.U1Click(Sender: TObject);
+begin
+  //-------- Show the splash screan for the produit familly to add new one---------//
+
+            UniteTable.Active:= False;
+            UniteTable.SQL.Clear;
+            UniteTable.SQL.Text:= 'SELECT * FROM unite';
+            UniteTable.Active:= True;
+
+            UnitesListF:=TUnitesListF.Create(Application);
+     //       ClientGestionF.BringToFront;
+            UnitesListF.Left:=  (Screen.Width div 2 ) - (UnitesListF.Width div 2)    ;
+            UnitesListF.Top:=   (Screen.Height div 2) - (UnitesListF.Height div 2)    ;
+
+            UnitesListF.ShowModal;
+end;
+
+procedure TMainForm.o1Click(Sender: TObject);
+begin
+  //-------- Show the splash screan for the produit familly to add new one---------//
+
+            LocalisationTable.Active:= False;
+            LocalisationTable.SQL.Clear;
+            LocalisationTable.SQL.Text:= 'SELECT * FROM localisation';
+            LocalisationTable.Active:= True;
+
+            LocaleListF:=TLocaleListF.Create(Application);
+     //       ClientGestionF.BringToFront;
+            LocaleListF.Left:=  (Screen.Width div 2 ) - (LocaleListF.Width div 2)    ;
+            LocaleListF.Top:=   (Screen.Height div 2) - (LocaleListF.Height div 2)    ;
+
+            LocaleListF.ShowModal;
 end;
 
 End.
