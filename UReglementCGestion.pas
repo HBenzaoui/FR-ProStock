@@ -246,7 +246,7 @@ end;
 
 procedure TReglementCGestionF.ClientRegCGCbxExit(Sender: TObject);
 var CodeC: Integer;
-OLDCreditC,RegCCreditC : Currency;
+OLDCreditC,RegCCreditC,OLDCreditCINI : Currency;
 begin
 
   if ClientRegCGCbx.Text <> '' then
@@ -257,6 +257,7 @@ begin
       MainForm.ClientTable.SQL.Clear;
       MainForm.ClientTable.SQL.Text:='Select * FROM client WHERE LOWER(nom_c) LIKE LOWER('+ QuotedStr( ClientRegCGCbx.Text )+')'  ;
       MainForm.ClientTable.Active:=True;
+      OLDCreditCINI:=MainForm.ClientTable.FieldByName('oldcredit_c').AsCurrency;
 
       if (MainForm.ClientTable.IsEmpty) then
       begin
@@ -265,7 +266,7 @@ begin
        RegCGClientNEWCredit.Caption:=RegCGClientOLDCredit.Caption;
        exit;
       end;
-      CodeC:= MainForm.ClientTable.FieldValues['code_c'] ;
+      CodeC:= MainForm.ClientTable.FieldByName('code_c').AsInteger ;
 
       MainForm.Bonv_livTableCredit.DisableControls;
       MainForm.Bonv_livTableCredit.Active:=false;
@@ -295,17 +296,10 @@ begin
 
 
 
-      if NOT (MainForm.Bonv_livTableCredit.IsEmpty ) OR NOT (MainForm.RegclientTable.IsEmpty) then
+      if NOT (MainForm.Bonv_livTableCredit.IsEmpty ) OR NOT (MainForm.RegclientTable.IsEmpty) OR NOT (OLDCreditCINI = 0)  then
       begin
        MainForm.Bonv_livTableCredit.last;
-       RegCGClientOLDCredit.Caption:= CurrToStrF((OLDCreditC - RegCCreditC),ffNumber,2) ;
-
-//       if NOT (MainForm.Bonv_livTable.IsEmpty) then
-//        begin
-//         RegCGClientNEWCredit.Caption:=
-////         CurrToStrF((MainForm.Bonv_livTableCredit.FieldValues['MontantRes'])+(StringReplace(BonLivResteLbl.Caption, #32, '', [rfReplaceAll])),ffNumber,2);//  anyways i'm software developer
-//           CurrToStrF((MainForm.Bonv_livTableCredit.FieldValues['MontantRes']),ffNumber,2);//  anyways i'm software developer
-//        end;
+       RegCGClientOLDCredit.Caption:= CurrToStrF(((OLDCreditC - RegCCreditC) + OLDCreditCINI ),ffNumber,2) ;
         end else
         begin
          RegCGClientOLDCredit.Caption:= CurrToStrF(0,ffNumber,2) ;
@@ -333,11 +327,6 @@ begin
       MainForm.ClientTable.Active:=True;
       MainForm.ClientTable.EnableControls;
 
-//      if NOT (MainForm.Bonv_livTablet.IsEmpty) then
-//      begin
-//      ValiderBVlivBonLivGBtn.Enabled:= True;
-//      ValiderBVlivBonLivGBtn.ImageIndex:=12;
-//      end;
 
     end else
     begin
@@ -532,6 +521,10 @@ begin
           MainForm.RegclientTable.Refresh;
 //          MainForm.RegclientTable.Open;
 
+          MainForm.ClientTable.Edit;
+          MainForm.ClientTable.FieldByName('credit_c').AsCurrency:=
+          ((StrToCurr(StringReplace(RegCGClientNEWCredit.Caption, #32, '', [rfReplaceAll]))));
+          MainForm.ClientTable.Post;
 
           MainForm.ClientTable.Active:=false;
           MainForm.ClientTable.SQL.Clear;

@@ -20628,6 +20628,10 @@ object MainForm: TMainForm
       FieldName = 'tarification_c'
       Origin = 'tarification_c'
     end
+    object ClientTablecredit_c: TCurrencyField
+      FieldName = 'credit_c'
+      Origin = 'credit_c'
+    end
   end
   object FDPhysPgDriverLink1: TFDPhysPgDriverLink
     VendorLib = 'C:\Program Files (x86)\PostgreSQL\9.6\bin\libpq.dll'
@@ -20771,6 +20775,10 @@ object MainForm: TMainForm
     object FournisseurTablemaxcredit_f: TCurrencyField
       FieldName = 'maxcredit_f'
       Origin = 'maxcredit_f'
+    end
+    object FournisseurTablecredit_f: TCurrencyField
+      FieldName = 'credit_f'
+      Origin = 'credit_f'
     end
   end
   object FDGUIxWaitCursor1: TFDGUIxWaitCursor
@@ -44968,7 +44976,7 @@ object MainForm: TMainForm
     TabProperties.CustomButtons.Buttons = <>
     TabProperties.Focusable = True
     TabProperties.HotTrack = True
-    TabProperties.TabHeight = 25
+    TabProperties.TabHeight = 30
     Left = 272
     Top = 112
   end

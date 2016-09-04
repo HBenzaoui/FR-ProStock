@@ -316,7 +316,7 @@ if  ClientListDataS.DataSet = MainForm.ClientTable then
  begin
 
 //------ use this code to red the produit with 0 or null in stock----//
- if MainForm.ClientTable.FieldValues['oldcredit_c'] <> 0     then
+ if MainForm.ClientTable.FieldByName('credit_c').AsCurrency > 0     then
  begin
  ClientsListDBGridEh.Canvas.Font.Color:=$004735F9;//   Brush.Color:=clRed;
  ClientsListDBGridEh.DefaultDrawColumnCell(Rect, DataCol, Column, State);

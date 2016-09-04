@@ -359,12 +359,6 @@ var
 
 procedure TBonRecF.DeleteBARecBtnClick(Sender: TObject);
 begin
-//  MainForm.Bona_recTable.DisableControls;
-//  MainForm.Bona_recTable.Active:= False;
-//  MainForm.Bona_recTable.SQL.clear;
-//  mainform.Bona_recTable.sql.Text:='SELECT * FROM bona_rec  ';
-//  MainForm.Bona_recTable.Active:= True;
-
 
 if NOT (MainForm.Bona_recTable.IsEmpty) then
  begin

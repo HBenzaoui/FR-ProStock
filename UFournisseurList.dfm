@@ -633,7 +633,7 @@ object FournisseurListF: TFournisseurListF
         Width = 130
       end
       item
-        Alignment = taCenter
+        DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
         FieldName = 'oldcredit_f'
@@ -646,7 +646,20 @@ object FournisseurListF: TFournisseurListF
         Width = 130
       end
       item
-        Alignment = taCenter
+        DisplayFormat = '#,##0.00'
+        DynProps = <>
+        EditButtons = <>
+        FieldName = 'credit_f'
+        Footers = <>
+        Layout = tlCenter
+        Title.Alignment = taCenter
+        Title.Caption = 'Credit'
+        Title.EndEllipsis = True
+        Title.ToolTips = True
+        Width = 130
+      end
+      item
+        DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
         FieldName = 'maxcredit_f'

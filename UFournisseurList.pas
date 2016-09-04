@@ -438,7 +438,7 @@ end;
 //------ use this code to red the produit with 0 or null in stock----//
 if  FournisseurListDataS.DataSet = MainForm.FournisseurTable then
 begin
- if MainForm.FournisseurTable.FieldValues['oldcredit_f'] <> 0     then
+ if MainForm.FournisseurTable.FieldByName('credit_f').AsCurrency > 0     then
  begin
  FournisseursListDBGridEh.Canvas.Font.Color:=$004735F9;//   Brush.Color:=clRed;
  FournisseursListDBGridEh.DefaultDrawColumnCell(Rect, DataCol, Column, State);

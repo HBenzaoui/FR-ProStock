@@ -1219,13 +1219,13 @@ begin
       MainForm.FournisseurTable.SQL.Clear;
       MainForm.FournisseurTable.SQL.Text:= 'SELECT * FROM fournisseur WHERE code_f ='+ Inttostr(codeF) ;
       MainForm.FournisseurTable.Active:= True;
-      if MainForm.FournisseurTable.FieldValues['oldcredit_f'] <> 0 then
+      if MainForm.FournisseurTable.FieldByName('credit_f').AsCurrency <> 0 then
       begin
       MainForm.FournisseurTable.Edit;
-      MainForm.FournisseurTable.FieldValues['oldcredit_f']:= (MainForm.FournisseurTable.FieldValues['oldcredit_f']) - (MainForm.Bona_recTable.FieldValues['MontantRes']);
+      MainForm.FournisseurTable.FieldByName('credit_f').AsCurrency:= (MainForm.FournisseurTable.FieldByName('credit_f').AsCurrency) - (MainForm.Bona_recTable.FieldByName('MontantRes').AsCurrency);
       MainForm.FournisseurTable.Post;
       end;
-      MainForm.FournisseurTable.EnableControls;
+
       MainForm.GstockdcConnection.ExecSQL('DELETE FROM bona_rec_list where code_barec = ' + IntToStr(codeBR));
       MainForm.GstockdcConnection.ExecSQL('DELETE FROM regfournisseur where code_barec = ' + IntToStr(codeBR));
       MainForm.GstockdcConnection.ExecSQL('DELETE FROM opt_cas_bnk where code_barec = ' + IntToStr(codeBR));
@@ -1233,6 +1233,12 @@ begin
       MainForm.Bona_recTable.Refresh ;
       MainForm.RegfournisseurTable.Refresh ;
       MainForm.Opt_cas_bnk_CaisseTable.Refresh ;
+
+      MainForm.FournisseurTable.Active:= false;
+      MainForm.FournisseurTable.SQL.Clear;
+      MainForm.FournisseurTable.SQL.Text:= 'SELECT * FROM fournisseur ';
+      MainForm.FournisseurTable.Active:= True;
+      MainForm.FournisseurTable.EnableControls;
 
     sndPlaySound('C:\Windows\Media\speech off.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
           AnimateWindow(FSplashAddUnite.Handle, 175, AW_VER_NEGATIVE OR AW_SLIDE OR AW_HIDE);
@@ -1255,13 +1261,13 @@ begin
       MainForm.ClientTable.SQL.Clear;
       MainForm.ClientTable.SQL.Text:= 'SELECT * FROM client WHERE code_c ='+ Inttostr(codeF) ;
       MainForm.ClientTable.Active:= True;
-      if MainForm.ClientTable.FieldValues['oldcredit_c'] <> 0 then
+      if MainForm.ClientTable.FieldByName('credit_c').AsCurrency <> 0 then
       begin
       MainForm.ClientTable.Edit;
-      MainForm.ClientTable.FieldValues['oldcredit_c']:= (MainForm.ClientTable.FieldValues['oldcredit_c']) - (MainForm.Bonv_livTable.FieldValues['MontantRes']);
+      MainForm.ClientTable.FieldByName('credit_c').AsCurrency:= (MainForm.ClientTable.FieldByName('credit_c').AsCurrency) - (MainForm.Bonv_livTable.FieldByName('MontantRes').AsCurrency);
       MainForm.ClientTable.Post;
       end;
-      MainForm.ClientTable.EnableControls;
+
       MainForm.GstockdcConnection.ExecSQL('DELETE FROM bonv_liv_list where code_bvliv = ' + IntToStr(codeBR));
       MainForm.GstockdcConnection.ExecSQL('DELETE FROM regclient where code_bvliv = ' + IntToStr(codeBR));
       MainForm.GstockdcConnection.ExecSQL('DELETE FROM opt_cas_bnk where code_bvliv = ' + IntToStr(codeBR));
@@ -1269,6 +1275,13 @@ begin
       MainForm.Bonv_livTable.Refresh ;
       MainForm.RegclientTable.Refresh ;
       MainForm.Opt_cas_bnk_CaisseTable.Refresh ;
+
+      MainForm.ClientTable.Active:= false;
+      MainForm.ClientTable.SQL.Clear;
+      MainForm.ClientTable.SQL.Text:= 'SELECT * FROM client ';
+      MainForm.ClientTable.Active:= True;
+
+      MainForm.ClientTable.EnableControls;
 
     sndPlaySound('C:\Windows\Media\speech off.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
           AnimateWindow(FSplashAddUnite.Handle, 175, AW_VER_NEGATIVE OR AW_SLIDE OR AW_HIDE);
@@ -1379,13 +1392,14 @@ begin
       MainForm.ClientTable.SQL.Clear;
       MainForm.ClientTable.SQL.Text:= 'SELECT * FROM client WHERE code_c ='+ Inttostr(codeF) ;
       MainForm.ClientTable.Active:= True;
-      if MainForm.ClientTable.FieldValues['oldcredit_c'] <> 0 then
+
+      if MainForm.ClientTable.FieldValues['credit_c'] <> 0 then
       begin
       MainForm.ClientTable.Edit;
-      MainForm.ClientTable.FieldValues['oldcredit_c']:= (MainForm.ClientTable.FieldValues['oldcredit_c']) - (MainForm.Bonv_facTable.FieldValues['MontantRes']);
+      MainForm.ClientTable.FieldByName('credit_c').AsCurrency:= (MainForm.ClientTable.FieldByName('credit_c').AsCurrency) - (MainForm.Bonv_facTable.FieldByName('MontantRes').AsCurrency);
       MainForm.ClientTable.Post;
       end;
-      MainForm.ClientTable.EnableControls;
+
       MainForm.GstockdcConnection.ExecSQL('DELETE FROM bonv_fac_list where code_bvfac = ' + IntToStr(codeBR));
       MainForm.GstockdcConnection.ExecSQL('DELETE FROM regclient where code_bvfac = ' + IntToStr(codeBR));
       MainForm.GstockdcConnection.ExecSQL('DELETE FROM opt_cas_bnk where code_bvfac = ' + IntToStr(codeBR));
@@ -1393,6 +1407,13 @@ begin
       MainForm.Bonv_facTable.Refresh ;
       MainForm.RegclientTable.Refresh ;
       MainForm.Opt_cas_bnk_CaisseTable.Refresh ;
+
+      MainForm.ClientTable.Active:= false;
+      MainForm.ClientTable.SQL.Clear;
+      MainForm.ClientTable.SQL.Text:= 'SELECT * FROM client ';
+      MainForm.ClientTable.Active:= True;
+
+      MainForm.ClientTable.EnableControls;
 
     sndPlaySound('C:\Windows\Media\speech off.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
           AnimateWindow(FSplashAddUnite.Handle, 175, AW_VER_NEGATIVE OR AW_SLIDE OR AW_HIDE);
@@ -1434,13 +1455,15 @@ begin
       MainForm.FournisseurTable.SQL.Clear;
       MainForm.FournisseurTable.SQL.Text:= 'SELECT * FROM fournisseur WHERE code_f ='+ Inttostr(codeF) ;
       MainForm.FournisseurTable.Active:= True;
-      if MainForm.FournisseurTable.FieldValues['oldcredit_f'] <> 0 then
+
+
+      if MainForm.ClientTable.FieldByName('credit_c').AsCurrency <> 0 then
       begin
-      MainForm.FournisseurTable.Edit;
-      MainForm.FournisseurTable.FieldValues['oldcredit_f']:= (MainForm.FournisseurTable.FieldValues['oldcredit_f']) - (MainForm.Bona_facTable.FieldValues['MontantRes']);
-      MainForm.FournisseurTable.Post;
+      MainForm.ClientTable.Edit;
+      MainForm.ClientTable.FieldByName('credit_c').AsCurrency:= (MainForm.ClientTable.FieldByName('credit_c').AsCurrency) - (MainForm.Bona_facTable.FieldByName('MontantRes').AsCurrency);
+      MainForm.ClientTable.Post;
       end;
-      MainForm.FournisseurTable.EnableControls;
+
       MainForm.GstockdcConnection.ExecSQL('DELETE FROM bona_fac_list where code_bafac = ' + IntToStr(codeBR));
       MainForm.GstockdcConnection.ExecSQL('DELETE FROM regfournisseur where code_bafac = ' + IntToStr(codeBR));
       MainForm.GstockdcConnection.ExecSQL('DELETE FROM opt_cas_bnk where code_bafac = ' + IntToStr(codeBR));
@@ -1448,6 +1471,12 @@ begin
       MainForm.Bona_facTable.Refresh ;
       MainForm.RegfournisseurTable.Refresh ;
       MainForm.Opt_cas_bnk_CaisseTable.Refresh ;
+
+      MainForm.FournisseurTable.Active:= false;
+      MainForm.FournisseurTable.SQL.Clear;
+      MainForm.FournisseurTable.SQL.Text:= 'SELECT * FROM fournisseur ';
+      MainForm.FournisseurTable.Active:= True;
+      MainForm.FournisseurTable.EnableControls;
 
     sndPlaySound('C:\Windows\Media\speech off.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
           AnimateWindow(FSplashAddUnite.Handle, 175, AW_VER_NEGATIVE OR AW_SLIDE OR AW_HIDE);
@@ -1684,10 +1713,30 @@ begin
           //---- this tag = 24 is for Delleting reglement four  ------///
    if OKAddUniteSBtn.Tag = 24 then
    begin
+      CodeF:=  MainForm.RegfournisseurTable.FieldValues['code_f'];
+      MainForm.FournisseurTable.DisableControls;
+      MainForm.FournisseurTable.Active:= false;
+      MainForm.FournisseurTable.SQL.Clear;
+      MainForm.FournisseurTable.SQL.Text:= 'SELECT * FROM fournisseur WHERE code_f ='+ Inttostr(codeF) ;
+      MainForm.FournisseurTable.Active:= True;
+//      if MainForm.FournisseurTable.FieldByName('credit_f').AsCurrency <> 0 then
+      begin
+      MainForm.FournisseurTable.Edit;
+      MainForm.FournisseurTable.FieldByName('credit_f').AsCurrency:= (MainForm.FournisseurTable.FieldByName('credit_f').AsCurrency) + (MainForm.RegfournisseurTable.FieldByName('montver_rf').AsCurrency);
+      MainForm.FournisseurTable.Post;
+      end;
+
         MainForm.SQLQuery.ExecSQL('DELETE FROM regfournisseur WHERE code_rf = ' +IntToStr(MainForm.RegfournisseurTable.FieldByName('code_rf').AsInteger));
         MainForm.SQLQuery.ExecSQL('DELETE FROM opt_cas_bnk WHERE code_rf = ' +IntToStr(MainForm.RegfournisseurTable.FieldByName('code_rf').AsInteger));
         MainForm.RegfournisseurTable.Refresh;
         MainForm.Opt_cas_bnk_CaisseTable.Refresh;
+
+
+      MainForm.FournisseurTable.Active:= false;
+      MainForm.FournisseurTable.SQL.Clear;
+      MainForm.FournisseurTable.SQL.Text:= 'SELECT * FROM fournisseur ';
+      MainForm.FournisseurTable.Active:= True;
+      MainForm.FournisseurTable.EnableControls;
 
 //   BonCtrGestionF.BonCtrGClientNEWCredit.Caption:= BonCtrGestionF.BonCtrSTotalTTCLbl.Caption;
    sndPlaySound('C:\Windows\Media\recycle.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
@@ -1699,10 +1748,29 @@ begin
              //---- this tag = 25 is for Delleting reglement client  ------///
    if OKAddUniteSBtn.Tag = 25 then
    begin
+         CodeF:=  MainForm.RegclientTable.FieldValues['code_c'];
+      MainForm.ClientTable.DisableControls;
+      MainForm.ClientTable.Active:= false;
+      MainForm.ClientTable.SQL.Clear;
+      MainForm.ClientTable.SQL.Text:= 'SELECT * FROM client WHERE code_c ='+ Inttostr(codeF) ;
+      MainForm.ClientTable.Active:= True;
+//      if MainForm.FournisseurTable.FieldByName('credit_f').AsCurrency <> 0 then
+      begin
+      MainForm.ClientTable.Edit;
+      MainForm.ClientTable.FieldByName('credit_c').AsCurrency:= (MainForm.ClientTable.FieldByName('credit_c').AsCurrency) + (MainForm.RegclientTable.FieldByName('montver_rc').AsCurrency);
+      MainForm.ClientTable.Post;
+      end;
+
         MainForm.SQLQuery.ExecSQL('DELETE FROM regclient WHERE code_rc = ' +IntToStr(MainForm.RegclientTable.FieldByName('code_rc').AsInteger));
         MainForm.SQLQuery.ExecSQL('DELETE FROM opt_cas_bnk WHERE code_rc = ' +IntToStr(MainForm.RegclientTable.FieldByName('code_rc').AsInteger));
         MainForm.RegclientTable.Refresh;
         MainForm.Opt_cas_bnk_CaisseTable.Refresh;
+
+      MainForm.ClientTable.Active:= false;
+      MainForm.ClientTable.SQL.Clear;
+      MainForm.ClientTable.SQL.Text:= 'SELECT * FROM client ';
+      MainForm.ClientTable.Active:= True;
+      MainForm.ClientTable.EnableControls;
 
 //   BonCtrGestionF.BonCtrGClientNEWCredit.Caption:= BonCtrGestionF.BonCtrSTotalTTCLbl.Caption;
    sndPlaySound('C:\Windows\Media\recycle.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);

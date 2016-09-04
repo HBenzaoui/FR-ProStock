@@ -413,6 +413,12 @@ begin
           MainForm.RegfournisseurTable.Refresh;
 //          MainForm.RegfournisseurTable.Open;
 
+          MainForm.FournisseurTable.Edit;
+          MainForm.FournisseurTable.FieldByName('credit_f').AsCurrency:=
+          ((StrToCurr(StringReplace(RegFGFourNEWCredit.Caption, #32, '', [rfReplaceAll]))));
+          MainForm.FournisseurTable.Post;
+
+
           MainForm.FournisseurTable.Active:=false;
           MainForm.FournisseurTable.SQL.Clear;
           MainForm.FournisseurTable.SQL.Text:='Select * FROM fournisseur' ;
@@ -524,7 +530,7 @@ end;
 
 procedure TReglementFGestionF.FournisseurRegFGCbxExit(Sender: TObject);
 var CodeF: Integer;
-OLDCreditC,RegFCreditF,OLDCreditFV : Currency;
+OLDCreditC,RegFCreditF,OLDCreditFV,OLDCreditFINI : Currency;
 begin
 
   if FournisseurRegFGCbx.Text <> '' then
@@ -535,6 +541,7 @@ begin
       MainForm.FournisseurTable.SQL.Clear;
       MainForm.FournisseurTable.SQL.Text:='Select * FROM fournisseur WHERE LOWER(nom_f) LIKE LOWER('+ QuotedStr( FournisseurRegFGCbx.Text )+')'  ;
       MainForm.FournisseurTable.Active:=True;
+      OLDCreditFINI:=MainForm.FournisseurTable.FieldByName('oldcredit_f').AsCurrency;
 
       if (MainForm.FournisseurTable.IsEmpty) then
       begin
@@ -543,7 +550,7 @@ begin
        RegFGFourNEWCredit.Caption:=RegFGFourOLDCredit.Caption;
        exit;
       end;
-      CodeF:= MainForm.FournisseurTable.FieldValues['code_f'] ;
+      CodeF:= MainForm.FournisseurTable.FieldByName('code_f').AsInteger;
 
       MainForm.Bona_recTableCredit.DisableControls;
       MainForm.Bona_recTableCredit.Active:=false;
@@ -574,29 +581,10 @@ begin
      end;
 
 
-//      MainForm.Bona_facTableCredit.DisableControls;
-//      MainForm.Bona_facTableCredit.Active:=false;
-//      MainForm.Bona_facTableCredit.SQL.Clear;
-//      MainForm.Bona_facTableCredit.SQL.Text:='Select * FROM bona_fac WHERE valider_bafac = true AND code_f = '+ IntToStr( CodeF )+' ORDER BY code_bafac '  ;
-//      MainForm.Bona_facTableCredit.Active:=True;
-//
-//      while NOT (MainForm.Bona_facTableCredit.Eof) do
-//     begin
-//     OLDCreditFV := OLDCreditFV + MainForm.Bona_facTableCredit.FieldValues['MontantRes'];
-//     MainForm.Bona_facTableCredit.Next;
-//     end;
-//      MainForm.Bona_facTableCredit.EnableControls;
-
-
-
-
-      if NOT (MainForm.Bona_recTableCredit.IsEmpty ) OR NOT (MainForm.RegfournisseurTable.IsEmpty ) then // OR  NOT (MainForm.Bona_facTableCredit.IsEmpty ) then
+      if NOT (MainForm.Bona_recTableCredit.IsEmpty ) OR NOT (MainForm.RegfournisseurTable.IsEmpty ) OR NOT (OLDCreditFINI = 0) then
       begin
        MainForm.Bona_recTableCredit.last;
-//       MainForm.Bona_facTableCredit.last;
-       RegFGFourOLDCredit.Caption:= CurrToStrF((OLDCreditC - RegFCreditF),ffNumber,2) ;
-
-
+       RegFGFourOLDCredit.Caption:= CurrToStrF(((OLDCreditC - RegFCreditF) + OLDCreditFINI),ffNumber,2) ;
         end else
         begin
          RegFGFourOLDCredit.Caption:= CurrToStrF(0,ffNumber,2) ;
@@ -622,16 +610,6 @@ begin
       MainForm.RegfournisseurTable.SQL.Text:='Select * FROM regfournisseur '  ;
       MainForm.RegfournisseurTable.Active:=True;
       MainForm.RegfournisseurTable.EnableControls;
-
-
-//       MainForm.Bona_facTableCredit.DisableControls;
-//      MainForm.Bona_facTableCredit.Active:=false;
-//      MainForm.Bona_facTableCredit.SQL.Clear;
-//      MainForm.Bona_facTableCredit.SQL.Text:='Select * FROM bona_fac '  ;
-//      MainForm.Bona_facTableCredit.Active:=True;
-//      MainForm.Bona_facTableCredit.last;
-//      MainForm.Bona_facTableCredit.EnableControls;
-
 
     end else
     begin

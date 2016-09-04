@@ -662,7 +662,7 @@ object ClientListF: TClientListF
         Width = 130
       end
       item
-        Alignment = taCenter
+        DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
         FieldName = 'oldcredit_c'
@@ -675,7 +675,19 @@ object ClientListF: TClientListF
         Width = 130
       end
       item
-        Alignment = taCenter
+        DisplayFormat = '#,##0.00'
+        DynProps = <>
+        EditButtons = <>
+        FieldName = 'credit_c'
+        Footers = <>
+        Layout = tlCenter
+        Title.Alignment = taCenter
+        Title.Caption = 'Cr'#233'dit'
+        Title.ToolTips = True
+        Width = 130
+      end
+      item
+        DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
         FieldName = 'maxcredit_c'

@@ -982,7 +982,7 @@ end;
 
 procedure TBonLivGestionF.ClientBonLivGCbxExit(Sender: TObject);
 var CodeC: Integer;
-OLDCreditC,RegCCreditC : Currency;
+OLDCreditC,RegCCreditC,OLDCreditCINI : Currency;
 begin
 
   if ClientBonLivGCbx.Text <> '' then
@@ -993,6 +993,8 @@ begin
       MainForm.ClientTable.SQL.Clear;
       MainForm.ClientTable.SQL.Text:='Select * FROM client WHERE LOWER(nom_c) LIKE LOWER('+ QuotedStr( ClientBonLivGCbx.Text )+')'  ;
       MainForm.ClientTable.Active:=True;
+      OLDCreditCINI:=MainForm.ClientTable.FieldByName('oldcredit_c').AsCurrency;
+
 
       if (MainForm.ClientTable.IsEmpty) then
       begin
@@ -1029,10 +1031,10 @@ begin
      MainForm.RegclientTable.Next;
      end;
 
-      if NOT (MainForm.Bonv_livTableCredit.IsEmpty ) OR NOT (MainForm.RegclientTable.IsEmpty) then
+      if NOT (MainForm.Bonv_livTableCredit.IsEmpty ) OR NOT (MainForm.RegclientTable.IsEmpty) OR NOT (OLDCreditCINI = 0) then
       begin
        MainForm.Bonv_livTableCredit.last;
-       BonLivGClientOLDCredit.Caption:= CurrToStrF((OLDCreditC - RegCCreditC),ffNumber,2) ;
+       BonLivGClientOLDCredit.Caption:= CurrToStrF(((OLDCreditC - RegCCreditC) + OLDCreditCINI ),ffNumber,2) ;
 
        if NOT (BonLivPListDataS.DataSet.IsEmpty) then
         begin

@@ -683,6 +683,8 @@ type
     GridIconsComptes20: TsAlphaImageList;
     S1: TMenuItem;
     U1: TMenuItem;
+    ClientTablecredit_c: TCurrencyField;
+    FournisseurTablecredit_f: TCurrencyField;
     procedure ClientMainFBtnClick(Sender: TObject);
     procedure FourMainFBtnClick(Sender: TObject);
     procedure ProduitMainFBtnClick(Sender: TObject);
@@ -1161,8 +1163,9 @@ end;
 procedure TMainForm.FormCreate(Sender: TObject);
 var sCmd: string;
 begin
-//Screen.MenuFont.Name := 'Helvetica LT Std';
-//Screen.MenuFont.Height := 15;
+Screen.MenuFont.Name := 'Roboto';
+Screen.MenuFont.Height := 15;
+Screen.MenuFont.Color:= $0040332D ;
 
 //FDPhysPgDriverLink1.VendorLib:= GetCurrentDir+'\bin\libpq.dll ' ;
 
@@ -2495,7 +2498,7 @@ end;
 
 procedure TMainForm.N17Click(Sender: TObject);
 begin
-//F7Click(Sender);
+FactureV2MainFMnmClick(Sender);
 BonFacVF.AddBVFacBtnClick(Sender);
 end;
 

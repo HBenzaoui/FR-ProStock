@@ -1016,10 +1016,10 @@ begin
           end;
 
 
-          MainForm.FournisseurTable.Edit;
-          MainForm.FournisseurTable.FieldByName('oldcredit_f').AsCurrency:=
-          ((StrToCurr(StringReplace(BonFacAGFourNEWCredit.Caption, #32, '', [rfReplaceAll]))));
-          MainForm.FournisseurTable.Post;
+//          MainForm.FournisseurTable.Edit;
+//          MainForm.FournisseurTable.FieldByName('credit_f').AsCurrency:=
+//          ((StrToCurr(StringReplace(BonFacAGFourNEWCredit.Caption, #32, '', [rfReplaceAll]))));
+//          MainForm.FournisseurTable.Post;
 
           MainForm.FournisseurTable.Active:=false;
           MainForm.FournisseurTable.SQL.Clear;
@@ -1185,7 +1185,7 @@ end;
 
 procedure TBonFacAGestionF.FourBonFacAGCbxExit(Sender: TObject);
 var CodeF: Integer;
-RegFCreditF,OLDCreditC : Currency;
+RegFCreditF,OLDCreditC,OLDCreditFINI : Currency;
 begin
 
   if FourBonFacAGCbx.Text <> '' then
@@ -1196,6 +1196,7 @@ begin
       MainForm.FournisseurTable.SQL.Clear;
       MainForm.FournisseurTable.SQL.Text:='Select * FROM fournisseur WHERE LOWER(nom_f) LIKE LOWER('+ QuotedStr( FourBonFacAGCbx.Text )+')'  ;
       MainForm.FournisseurTable.Active:=True;
+      OLDCreditFINI:= MainForm.FournisseurTable.FieldByName('oldcredit_f').AsCurrency;
 
       if (MainForm.FournisseurTable.IsEmpty) then
       begin
@@ -1204,7 +1205,7 @@ begin
        BonFacAGFourNEWCredit.Caption:=BonFacAGFourOLDCredit.Caption;
        exit;
       end;
-      CodeF:= MainForm.FournisseurTable.FieldValues['code_f'] ;
+      CodeF:= MainForm.FournisseurTable.FieldByName('code_f').AsInteger ;
 
        MainForm.Bona_recTableCredit.DisableControls;
       MainForm.Bona_recTableCredit.Active:=false;
@@ -1235,10 +1236,10 @@ begin
      end;
 
 
-      if  NOT (MainForm.Bona_recTableCredit.IsEmpty) OR NOT (MainForm.RegfournisseurTable.IsEmpty ) then
+      if  NOT (MainForm.Bona_recTableCredit.IsEmpty) OR NOT (MainForm.RegfournisseurTable.IsEmpty ) OR NOT (OLDCreditFINI = 0) then
       begin
        MainForm.Bona_recTableCredit.last;
-       BonFacAGFourOLDCredit.Caption:= CurrToStrF((OLDCreditC - RegFCreditF),ffNumber,2) ;
+       BonFacAGFourOLDCredit.Caption:= CurrToStrF(((OLDCreditC - RegFCreditF) + OLDCreditFINI ),ffNumber,2) ;
 
        if NOT (BonFacAPListDataS.DataSet.IsEmpty) then
         begin

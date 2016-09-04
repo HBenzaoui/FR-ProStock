@@ -751,7 +751,7 @@ begin
           end;
 
           MainForm.FournisseurTable.Edit;
-          MainForm.FournisseurTable.FieldByName('oldcredit_f').AsCurrency:=
+          MainForm.FournisseurTable.FieldByName('credit_f').AsCurrency:=
           ((StrToCurr(StringReplace(BonRecGestionF.BonRecGFourNEWCredit.Caption, #32, '', [rfReplaceAll]))));
           MainForm.FournisseurTable.Post;
 
@@ -1126,7 +1126,7 @@ begin
         end;
 
           MainForm.ClientTable.Edit;
-          MainForm.ClientTable.FieldByName('oldcredit_c').AsCurrency:=
+          MainForm.ClientTable.FieldByName('credit_c').AsCurrency:=
           ((StrToCurr(StringReplace(BonLivGestionF.BonLivGClientNEWCredit.Caption, #32, '', [rfReplaceAll]))));
           MainForm.ClientTable.Post;
 

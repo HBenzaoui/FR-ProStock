@@ -13,6 +13,7 @@ object ReglementCGestionF: TReglementCGestionF
   Font.Style = []
   KeyPreview = True
   OldCreateOrder = False
+  Position = poScreenCenter
   OnClose = FormClose
   OnKeyPress = FormKeyPress
   OnShow = FormShow

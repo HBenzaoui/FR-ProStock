@@ -821,7 +821,7 @@ begin
 
 procedure TBonRecGestionF.FournisseurBonRecGCbxExit(Sender: TObject);
 var CodeF: Integer;
-OLDCreditF,RegFCreditF,OLDCreditFV : Currency;
+OLDCreditF,RegFCreditF,OLDCreditFV,OLDCreditFINI : Currency;
 begin
 
   if FournisseurBonRecGCbx.Text <> '' then
@@ -832,6 +832,7 @@ begin
       MainForm.FournisseurTable.SQL.Clear;
       MainForm.FournisseurTable.SQL.Text:='Select * FROM fournisseur WHERE LOWER(nom_f) LIKE LOWER('+ QuotedStr( FournisseurBonRecGCbx.Text )+')'  ;
       MainForm.FournisseurTable.Active:=True;
+      OLDCreditFINI:= MainForm.FournisseurTable.FieldByName('oldcredit_f').AsCurrency ;
 
       if (MainForm.FournisseurTable.IsEmpty) then
       begin
@@ -840,7 +841,7 @@ begin
        BonRecGFourNEWCredit.Caption:=BonRecGFourOLDCredit.Caption;
        exit;
       end;
-      CodeF:= MainForm.FournisseurTable.FieldValues['code_f'] ;
+      CodeF:= MainForm.FournisseurTable.FieldByName('code_f').AsInteger ;
 
 
       MainForm.Bona_recTableCredit.DisableControls;
@@ -855,8 +856,6 @@ begin
      MainForm.Bona_recTableCredit.Next;
      end;
 
-
-
       MainForm.RegfournisseurTable.DisableControls;
       MainForm.RegfournisseurTable.Active:=false;
       MainForm.RegfournisseurTable.SQL.Clear;
@@ -870,27 +869,12 @@ begin
      end;
 
 
-//      MainForm.Bona_facTableCredit.DisableControls;
-//      MainForm.Bona_facTableCredit.Active:=false;
-//      MainForm.Bona_facTableCredit.SQL.Clear;
-//      MainForm.Bona_facTableCredit.SQL.Text:='Select * FROM bona_fac WHERE valider_bafac = true AND code_f = '+ IntToStr( CodeF )+' ORDER BY code_bafac '  ;
-//      MainForm.Bona_facTableCredit.Active:=True;
-//
-//     while NOT (MainForm.Bona_facTableCredit.Eof) do
-//     begin
-//     OLDCreditFV := OLDCreditFV + MainForm.Bona_facTableCredit.FieldValues['MontantRes'];
-//     MainForm.Bona_facTableCredit.Next;
-//     end;
-//      MainForm.Bona_facTableCredit.EnableControls;
-
-
-
       MainForm.Bona_recTableCredit.EnableControls;
-      if NOT (MainForm.Bona_recTableCredit.IsEmpty ) OR NOT (MainForm.RegfournisseurTable.IsEmpty ) then
+      if NOT (MainForm.Bona_recTableCredit.IsEmpty ) OR NOT (MainForm.RegfournisseurTable.IsEmpty ) OR NOT (OLDCreditFINI = 0) then
       begin
        MainForm.Bona_recTableCredit.last;
 //       MainForm.Bona_facTableCredit.last;
-       BonRecGFourOLDCredit.Caption:= CurrToStrF((OLDCreditF - RegFCreditF ),ffNumber,2) ;
+       BonRecGFourOLDCredit.Caption:= CurrToStrF(((OLDCreditF - RegFCreditF) + OLDCreditFINI ),ffNumber,2) ;
 
        if NOT (BonRecPListDataS.DataSet.IsEmpty) then
         begin
@@ -918,23 +902,6 @@ begin
       MainForm.RegfournisseurTable.Active:=True;
       MainForm.RegfournisseurTable.EnableControls;
 
-
-//      MainForm.Bona_facTableCredit.DisableControls;
-//      MainForm.Bona_facTableCredit.Active:=false;
-//      MainForm.Bona_facTableCredit.SQL.Clear;
-//      MainForm.Bona_facTableCredit.SQL.Text:='Select * FROM bona_fac '  ;
-//      MainForm.Bona_facTableCredit.Active:=True;
-//      MainForm.Bona_facTableCredit.last;
-//      MainForm.Bona_facTableCredit.EnableControls;
-
-
-{      if NOT (BonRecPListDataS.DataSet.IsEmpty) then
-      begin
-      BonRecGFourNEWCredit.Caption:=
-      CurrToStrF((MainForm.FournisseurTable.FieldValues['oldcredit_f'])+(StringReplace(BonRecResteLbl.Caption, #32, '', [rfReplaceAll])),ffNumber,2);//  anyways i'm software developer
-   //   BonRecResteLbl.Caption;
-       end;
-}
 
       MainForm.FournisseurTable.Active:=false;
       MainForm.FournisseurTable.SQL.Clear;

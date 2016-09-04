@@ -1468,7 +1468,7 @@ end;
 
 procedure TBonFacVGestionF.ClientBonFacVGCbxExit(Sender: TObject);
 var CodeC: Integer;
-OLDCreditC,RegCCreditC : Currency;
+OLDCreditC,RegCCreditC,OLDCreditCINI : Currency;
 begin
 
   if ClientBonFacVGCbx.Text <> '' then
@@ -1479,7 +1479,7 @@ begin
       MainForm.ClientTable.SQL.Clear;
       MainForm.ClientTable.SQL.Text:='Select * FROM client WHERE LOWER(nom_c) LIKE LOWER('+ QuotedStr( ClientBonFacVGCbx.Text )+')'  ;
       MainForm.ClientTable.Active:=True;
-
+      OLDCreditCINI:= MainForm.ClientTable.FieldByName('oldcredit_c').AsCurrency;
       if (MainForm.ClientTable.IsEmpty) then
       begin
        ClientBonFacVGCbx.Text := '';
@@ -1487,7 +1487,7 @@ begin
        BonFacVGClientNEWCredit.Caption:=BonFacVGClientOLDCredit.Caption;
        exit;
       end;
-      CodeC:= MainForm.ClientTable.FieldValues['code_c'] ;
+      CodeC:= MainForm.ClientTable.FieldByName('code_c').AsInteger ;
 
       MainForm.Bonv_livTableCredit.DisableControls;
       MainForm.Bonv_livTableCredit.Active:=false;
@@ -1516,10 +1516,10 @@ begin
      end;
 
 
-      if NOT (MainForm.Bonv_livTableCredit.IsEmpty ) OR NOT (MainForm.RegclientTable.IsEmpty) then
+      if NOT (MainForm.Bonv_livTableCredit.IsEmpty ) OR NOT (MainForm.RegclientTable.IsEmpty) OR NOT (OLDCreditCINI = 0)then
       begin
        MainForm.Bonv_livTableCredit.last;
-       BonFacVGClientOLDCredit.Caption:= CurrToStrF((OLDCreditC - RegCCreditC ),ffNumber,2) ;
+       BonFacVGClientOLDCredit.Caption:= CurrToStrF(((OLDCreditC - RegCCreditC) + OLDCreditCINI ),ffNumber,2) ;
 
        if NOT (BonFacVPListDataS.DataSet.IsEmpty) then
         begin
@@ -2296,10 +2296,10 @@ begin
               //-----------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-          MainForm.ClientTable.Edit;
-          MainForm.ClientTable.FieldByName('oldcredit_c').AsCurrency:=
-          ((StrToCurr(StringReplace(BonFacVGClientNEWCredit.Caption, #32, '', [rfReplaceAll]))));
-          MainForm.ClientTable.Post;
+//          MainForm.ClientTable.Edit;
+//          MainForm.ClientTable.FieldByName('credit_c').AsCurrency:=
+//          ((StrToCurr(StringReplace(BonFacVGClientNEWCredit.Caption, #32, '', [rfReplaceAll]))));
+//          MainForm.ClientTable.Post;
 
           MainForm.ClientTable.Active:=false;
           MainForm.ClientTable.SQL.Clear;
