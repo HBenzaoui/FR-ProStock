@@ -89,6 +89,8 @@ type
     procedure VilleFournisseurGCbxKeyPress(Sender: TObject; var Key: Char);
     procedure VilleFournisseurGCbxEnter(Sender: TObject);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
+    procedure MaxCreditFournisseurGEdtClick(Sender: TObject);
+    procedure OldCreditFournisseurGEdtClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -201,11 +203,10 @@ procedure TFournisseurGestionF.MaxCreditFournisseurGEdtExit(Sender: TObject);
 var
   MaxCredit: Currency;
 begin
-  if MaxCreditFournisseurGEdt.Text <> '' then
+  if MaxCreditFournisseurGEdt.Text<>'' then
   begin
-    MaxCredit := StrToFloat(StringReplace(MaxCreditFournisseurGEdt.Text, #32,
-      '', [rfReplaceAll]));
-    MaxCreditFournisseurGEdt.Text := FloatToStrF(MaxCredit, ffNumber, 14, 2);
+  MaxCredit:=StrToFloat(StringReplace(MaxCreditFournisseurGEdt.Text, #32, '', [rfReplaceAll]));
+  MaxCreditFournisseurGEdt.Text := FloatToStrF(MaxCredit,ffNumber,14,2);
   end;
 end;
 
@@ -219,15 +220,20 @@ end;
 
 procedure TFournisseurGestionF.MaxCreditFournisseurGEdtKeyPress(Sender: TObject;
   var Key: Char);
-
 const
-  N = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', ',', '.',
-    Char(VK_back)];
+  N = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0',',','.', Char(VK_back)];
+  F = ['.'];
 begin
 
   if not(Key in N) then
   begin
-    Key := #0;
+     key := #0;
+  end;
+  if (Key in F) then
+  begin
+
+    key :=  #44;
+
   end;
 end;
 
@@ -743,13 +749,10 @@ procedure TFournisseurGestionF.OldCreditFournisseurGEdtExit(Sender: TObject);
 var
   OldCreditFournisseur: Currency;
 begin
-  if OldCreditFournisseurGEdt.Text <> '' then
+  if OldCreditFournisseurGEdt.Text<>'' then
   begin
-    OldCreditFournisseur :=
-      StrToFloat(StringReplace(OldCreditFournisseurGEdt.Text, #32, '',
-      [rfReplaceAll]));
-    OldCreditFournisseurGEdt.Text := FloatToStrF(OldCreditFournisseur,
-      ffNumber, 14, 2);
+  OldCreditFournisseur:=StrToFloat(StringReplace(OldCreditFournisseurGEdt.Text, #32, '', [rfReplaceAll]));
+  OldCreditFournisseurGEdt.Text := FloatToStrF(OldCreditFournisseur,ffNumber,14,2);
   end;
 end;
 
@@ -847,6 +850,20 @@ begin
   Close;
 
  end;
+end;
+
+procedure TFournisseurGestionF.MaxCreditFournisseurGEdtClick(Sender: TObject);
+begin
+//----- use this code to delte the blanks from the Tedit when enter that will avoide the not foit point error --///
+MaxCreditFournisseurGEdt.Text := StringReplace(MaxCreditFournisseurGEdt.Text, #32, '', [rfReplaceAll]);
+MaxCreditFournisseurGEdt.SelectAll;
+end;
+
+procedure TFournisseurGestionF.OldCreditFournisseurGEdtClick(Sender: TObject);
+begin
+//----- use this code to delte the blanks from the Tedit when enter that will avoide the not foit point error --///
+OldCreditFournisseurGEdt.Text := StringReplace(OldCreditFournisseurGEdt.Text, #32, '', [rfReplaceAll]);
+OldCreditFournisseurGEdt.SelectAll;
 end;
 
 end.

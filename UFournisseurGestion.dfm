@@ -44,10 +44,6 @@ object FournisseurGestionF: TFournisseurGestionF
     TabsLineSkin = 'BAR'
     object GeneralClientGTB: TsTabSheet
       Caption = 'G'#233'n'#233'ral'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object GeneralTB: TPanel
         Left = 0
         Top = 0
@@ -569,10 +565,6 @@ object FournisseurGestionF: TFournisseurGestionF
     end
     object PlusInfoClientGTB: TsTabSheet
       Caption = 'Plus D'#39'info'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object PlusInfoTB: TPanel
         Left = 0
         Top = 0
@@ -879,6 +871,7 @@ object FournisseurGestionF: TFournisseurGestionF
           ParentDoubleBuffered = False
           ParentFont = False
           TabOrder = 6
+          OnClick = OldCreditFournisseurGEdtClick
           OnExit = OldCreditFournisseurGEdtExit
           OnKeyDown = MaxCreditFournisseurGEdtKeyDown
           OnKeyPress = MaxCreditFournisseurGEdtKeyPress
@@ -898,6 +891,7 @@ object FournisseurGestionF: TFournisseurGestionF
           ParentDoubleBuffered = False
           ParentFont = False
           TabOrder = 7
+          OnClick = MaxCreditFournisseurGEdtClick
           OnExit = MaxCreditFournisseurGEdtExit
           OnKeyDown = MaxCreditFournisseurGEdtKeyDown
           OnKeyPress = MaxCreditFournisseurGEdtKeyPress

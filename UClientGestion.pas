@@ -100,6 +100,8 @@ type
     procedure WilayaClientGCbxEnter(Sender: TObject);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
     procedure FormCreate(Sender: TObject);
+    procedure OldCreditClientGEdtClick(Sender: TObject);
+    procedure MaxCreditClientGEdtClick(Sender: TObject);
 
   private
     { Private declarations }
@@ -148,11 +150,10 @@ procedure TClientGestionF.OldCreditClientGEdtExit(Sender: TObject);
 var
   OldCreditClient: Currency;
 begin
-  if OldCreditClientGEdt.Text <> '' then
+  if OldCreditClientGEdt.Text<>'' then
   begin
-    OldCreditClient := StrToFloat(StringReplace(OldCreditClientGEdt.Text, #32,
-      '', [rfReplaceAll]));
-    OldCreditClientGEdt.Text := FloatToStrF(OldCreditClient, ffNumber, 14, 2);
+  OldCreditClient:=StrToFloat(StringReplace(OldCreditClientGEdt.Text, #32, '', [rfReplaceAll]));
+  OldCreditClientGEdt.Text := FloatToStrF(OldCreditClient,ffNumber,14,2);
   end;
 end;
 
@@ -167,15 +168,20 @@ end;
 procedure TClientGestionF.OldCreditClientGEdtKeyPress(Sender: TObject;
   var Key: Char);
 const
-  N = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', ',', '.',
-    Char(VK_back)];
+  N = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0',',','.', Char(VK_back)];
+  F = ['.'];
 begin
 
   if not(Key in N) then
   begin
-    Key := #0;
+     key := #0;
   end;
+  if (Key in F) then
+  begin
 
+    key :=  #44;
+
+  end;
 end;
 
 procedure TClientGestionF.ActiveClientGSliderChanging(Sender: TObject;
@@ -704,11 +710,10 @@ procedure TClientGestionF.MaxCreditClientGEdtExit(Sender: TObject);
 var
   MaxCredit: Currency;
 begin
-  if MaxCreditClientGEdt.Text <> '' then
+  if MaxCreditClientGEdt.Text<>'' then
   begin
-    MaxCredit := StrToFloat(StringReplace(MaxCreditClientGEdt.Text, #32, '',
-      [rfReplaceAll]));
-    MaxCreditClientGEdt.Text := FloatToStrF(MaxCredit, ffNumber, 14, 2);
+  MaxCredit:=StrToFloat(StringReplace(MaxCreditClientGEdt.Text, #32, '', [rfReplaceAll]));
+  MaxCreditClientGEdt.Text := FloatToStrF(MaxCredit,ffNumber,14,2);
   end;
 end;
 
@@ -808,6 +813,20 @@ end;
 procedure TClientGestionF.FormCreate(Sender: TObject);
 begin
   GrayForms;
+end;
+
+procedure TClientGestionF.OldCreditClientGEdtClick(Sender: TObject);
+begin
+//----- use this code to delte the blanks from the Tedit when enter that will avoide the not foit point error --///
+OldCreditClientGEdt.Text := StringReplace(OldCreditClientGEdt.Text, #32, '', [rfReplaceAll]);
+OldCreditClientGEdt.SelectAll;
+end;
+
+procedure TClientGestionF.MaxCreditClientGEdtClick(Sender: TObject);
+begin
+//----- use this code to delte the blanks from the Tedit when enter that will avoide the not foit point error --///
+MaxCreditClientGEdt.Text := StringReplace(MaxCreditClientGEdt.Text, #32, '', [rfReplaceAll]);
+MaxCreditClientGEdt.SelectAll;
 end;
 
 end.

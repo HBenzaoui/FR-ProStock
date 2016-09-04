@@ -149,11 +149,8 @@ begin
     if not ClientsListDBGridEh.DataSource.DataSet.IsEmpty then
 
      begin
-
      //----------------- SHOW THE DATA ON THE CLIENT GESTION PANEL -----------------------------//
-
          with MainForm.ClientTable do begin
-
             ClientGestionF.ActiveClientGSlider.SliderOn:=  FieldValues['activ_c'];
             ClientGestionF.NameClientGEdt.Text:= fieldbyname('nom_c').Value;
             ClientGestionF.AcitiviteClientGEdt.Text:= fieldbyname('activite_c').Value;
@@ -177,10 +174,8 @@ begin
             ClientGestionF.MaxCreditClientGEdt.Text:= CurrToStrF( fieldbyname('maxcredit_c').Value,ffNumber, 2);
             ClientGestionF.ModeTarifClientGCbx.ItemIndex:= fieldbyname('tarification_c').AsInteger;
             ClientGestionF.ObserClientGMem.Text:= fieldbyname('obser_c').Value;
-
            end ;
    end;
-
 end;
 
 procedure TClientListF.DeleteClientsBtnClick(Sender: TObject);

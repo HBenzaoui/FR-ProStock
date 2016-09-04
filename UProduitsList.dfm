@@ -360,7 +360,7 @@ object ProduitsListF: TProduitsListF
     IndicatorTitle.ShowDropDownSign = True
     IndicatorTitle.TitleButton = True
     OddRowColor = 16315635
-    Options = [dgTitles, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgMultiSelect]
+    Options = [dgTitles, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
     OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghDialogFind, dghColumnResize, dghColumnMove, dghHotTrack, dghExtendVertLines]
     ParentCtl3D = False
     ParentFont = False
@@ -373,7 +373,7 @@ object ProduitsListF: TProduitsListF
     TitleParams.BorderInFillStyle = True
     TitleParams.FillStyle = cfstThemedEh
     TitleParams.Font.Charset = DEFAULT_CHARSET
-    TitleParams.Font.Color = clBlack
+    TitleParams.Font.Color = 4207405
     TitleParams.Font.Height = 17
     TitleParams.Font.Name = 'Roboto'
     TitleParams.Font.Style = []

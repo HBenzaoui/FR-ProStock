@@ -269,6 +269,9 @@ procedure TCaisseListF.FormShow(Sender: TObject);
 Var TotalEncaiss,TotalDecaiss,cmptsum,TotalSoldComptEnc,TotalSoldComptDic : Currency;
 begin
 
+ if (DaysCaisseListCbx.ItemIndex = 2) AND (CaisseListCbx.ItemIndex = 0) then
+ begin
+
   DateStartCaisseListD.Date:=EncodeDate (YearOf(Now),MonthOf(Now),01);
   DateEndCaisseListD.Date:=EncodeDate (YearOf(Now),MonthOf(Now),DayOf(Now));
 
@@ -332,6 +335,8 @@ begin
 
            MainForm.Opt_cas_bnk_CaisseTable.EnableControls;
            MainForm.CompteTable.EnableControls;
+
+ end;
 end;
 
 procedure TCaisseListF.DaysCaisseListCbxChange(Sender: TObject);

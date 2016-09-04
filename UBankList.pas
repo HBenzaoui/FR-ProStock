@@ -79,9 +79,8 @@ uses
 procedure TBankListF.FormShow(Sender: TObject);
 Var TotalEncaiss,TotalDecaiss,cmptsum,TotalSoldComptEnc,TotalSoldComptDic : Currency;
 begin
-
-
-
+ if (DaysBankListCbx.ItemIndex = 2) AND (BankListCbx.ItemIndex = 0) then
+ begin
   DateStartBankListD.Date:=EncodeDate (YearOf(Now),MonthOf(Now),01);
   DateEndBankListD.Date:=EncodeDate (YearOf(Now),MonthOf(Now),DayOf(Now));
 
@@ -145,6 +144,8 @@ begin
 
            MainForm.Opt_cas_bnk_BankTable.EnableControls;
            MainForm.CompteTable.EnableControls;
+ end;
+
 end;
 
 procedure TBankListF.BankListCbxDropDown(Sender: TObject);

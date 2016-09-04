@@ -740,7 +740,7 @@ object BonRecGestionF: TBonRecGestionF
       ParentBackground = False
       ParentCtl3D = False
       ParentDoubleBuffered = False
-      TabOrder = 0
+      TabOrder = 2
       StyleElements = []
       object sSpeedButton7: TsSpeedButton
         Left = 99
@@ -806,7 +806,7 @@ object BonRecGestionF: TBonRecGestionF
       BevelOuter = bvNone
       Color = 14727239
       ParentBackground = False
-      TabOrder = 1
+      TabOrder = 3
       StyleElements = []
     end
     object Panel8: TPanel
@@ -834,7 +834,7 @@ object BonRecGestionF: TBonRecGestionF
       ParentFont = False
       ParentShowHint = False
       ShowHint = False
-      TabOrder = 2
+      TabOrder = 4
       StyleElements = []
     end
     object Panel9: TPanel
@@ -862,7 +862,7 @@ object BonRecGestionF: TBonRecGestionF
       ParentFont = False
       ParentShowHint = False
       ShowHint = False
-      TabOrder = 3
+      TabOrder = 5
       StyleElements = []
     end
     object Panel10: TPanel
@@ -889,7 +889,7 @@ object BonRecGestionF: TBonRecGestionF
       ParentFont = False
       ParentShowHint = False
       ShowHint = False
-      TabOrder = 4
+      TabOrder = 6
       StyleElements = []
     end
     object Panel11: TPanel
@@ -916,7 +916,7 @@ object BonRecGestionF: TBonRecGestionF
       ParentFont = False
       ParentShowHint = False
       ShowHint = False
-      TabOrder = 5
+      TabOrder = 7
       StyleElements = []
     end
     object DateBonRecGD: TDateTimePicker
@@ -932,7 +932,7 @@ object BonRecGestionF: TBonRecGestionF
       Font.Name = 'Helvetica LT Std'
       Font.Style = []
       ParentFont = False
-      TabOrder = 6
+      TabOrder = 8
       OnExit = DateBonRecGDExit
     end
     object FournisseurBonRecGCbx: TComboBox
@@ -949,7 +949,7 @@ object BonRecGestionF: TBonRecGestionF
       ParentCtl3D = False
       ParentFont = False
       Sorted = True
-      TabOrder = 7
+      TabOrder = 0
       OnChange = FournisseurBonRecGCbxChange
       OnClick = FournisseurBonRecGCbxExit
       OnDropDown = FournisseurBonRecGCbxEnter
@@ -966,7 +966,7 @@ object BonRecGestionF: TBonRecGestionF
       BevelOuter = bvNone
       Color = 14727239
       ParentBackground = False
-      TabOrder = 8
+      TabOrder = 9
       StyleElements = []
     end
     object ProduitBonRecGCbx: TComboBox
@@ -982,7 +982,7 @@ object BonRecGestionF: TBonRecGestionF
       Font.Style = []
       ParentFont = False
       Sorted = True
-      TabOrder = 9
+      TabOrder = 1
       OnChange = ProduitBonRecGCbxChange
       OnDropDown = ProduitBonRecGCbxEnter
       OnEnter = ProduitBonRecGCbxEnter
@@ -1308,7 +1308,7 @@ object BonRecGestionF: TBonRecGestionF
     IndicatorParams.VertLines = True
     IndicatorTitle.UseGlobalMenu = False
     OddRowColor = 16315635
-    Options = [dgEditing, dgTitles, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgMultiSelect]
+    Options = [dgEditing, dgTitles, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
     OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghDialogFind, dghShowRecNo, dghColumnResize, dghColumnMove, dghHotTrack, dghExtendVertLines]
     ParentCtl3D = False
     ParentFont = False

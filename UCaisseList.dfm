@@ -364,7 +364,7 @@ object CaisseListF: TCaisseListF
     IndicatorTitle.ShowDropDownSign = True
     IndicatorTitle.TitleButton = True
     OddRowColor = 16315635
-    Options = [dgTitles, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgMultiSelect]
+    Options = [dgTitles, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
     OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghDialogFind, dghColumnResize, dghColumnMove, dghHotTrack, dghExtendVertLines]
     ParentCtl3D = False
     ParentFont = False
@@ -801,7 +801,7 @@ object CaisseListF: TCaisseListF
       ParentBackground = False
       ParentCtl3D = False
       ParentDoubleBuffered = False
-      TabOrder = 0
+      TabOrder = 1
       StyleElements = []
       object LastCaiseebtn: TsSpeedButton
         Left = 99
@@ -863,7 +863,7 @@ object CaisseListF: TCaisseListF
       BevelOuter = bvNone
       Color = 7854350
       ParentBackground = False
-      TabOrder = 1
+      TabOrder = 2
       StyleElements = []
     end
     object Panel1: TPanel
@@ -891,7 +891,7 @@ object CaisseListF: TCaisseListF
       ParentFont = False
       ParentShowHint = False
       ShowHint = False
-      TabOrder = 2
+      TabOrder = 3
       StyleElements = []
     end
     object S01: TPanel
@@ -919,7 +919,7 @@ object CaisseListF: TCaisseListF
       ParentFont = False
       ParentShowHint = False
       ShowHint = False
-      TabOrder = 3
+      TabOrder = 4
       StyleElements = []
     end
     object Panel2: TPanel
@@ -947,7 +947,7 @@ object CaisseListF: TCaisseListF
       ParentFont = False
       ParentShowHint = False
       ShowHint = False
-      TabOrder = 4
+      TabOrder = 5
       StyleElements = []
     end
     object DateEndCaisseListD: TDateTimePicker
@@ -964,7 +964,7 @@ object CaisseListF: TCaisseListF
       Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
-      TabOrder = 5
+      TabOrder = 6
       OnChange = DateStartCaisseListDChange
     end
     object DateStartCaisseListD: TDateTimePicker
@@ -981,7 +981,7 @@ object CaisseListF: TCaisseListF
       Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
-      TabOrder = 6
+      TabOrder = 7
       OnChange = DateStartCaisseListDChange
     end
     object DaysCaisseListCbx: TComboBox
@@ -999,7 +999,7 @@ object CaisseListF: TCaisseListF
       ItemIndex = 2
       ParentColor = True
       ParentFont = False
-      TabOrder = 7
+      TabOrder = 0
       Text = 'Mois en cours'
       StyleElements = []
       OnChange = DaysCaisseListCbxChange

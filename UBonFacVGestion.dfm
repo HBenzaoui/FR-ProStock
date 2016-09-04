@@ -788,7 +788,7 @@ object BonFacVGestionF: TBonFacVGestionF
       ParentBackground = False
       ParentCtl3D = False
       ParentDoubleBuffered = False
-      TabOrder = 0
+      TabOrder = 2
       StyleElements = []
       object sSpeedButton4: TsSpeedButton
         Left = 99
@@ -854,7 +854,7 @@ object BonFacVGestionF: TBonFacVGestionF
       BevelOuter = bvNone
       Color = 11544476
       ParentBackground = False
-      TabOrder = 1
+      TabOrder = 3
       StyleElements = []
     end
     object Panel8: TPanel
@@ -882,7 +882,7 @@ object BonFacVGestionF: TBonFacVGestionF
       ParentFont = False
       ParentShowHint = False
       ShowHint = False
-      TabOrder = 2
+      TabOrder = 4
       StyleElements = []
     end
     object Panel9: TPanel
@@ -910,7 +910,7 @@ object BonFacVGestionF: TBonFacVGestionF
       ParentFont = False
       ParentShowHint = False
       ShowHint = False
-      TabOrder = 3
+      TabOrder = 5
       StyleElements = []
     end
     object Panel10: TPanel
@@ -937,7 +937,7 @@ object BonFacVGestionF: TBonFacVGestionF
       ParentFont = False
       ParentShowHint = False
       ShowHint = False
-      TabOrder = 4
+      TabOrder = 6
       StyleElements = []
     end
     object Panel11: TPanel
@@ -964,7 +964,7 @@ object BonFacVGestionF: TBonFacVGestionF
       ParentFont = False
       ParentShowHint = False
       ShowHint = False
-      TabOrder = 5
+      TabOrder = 7
       StyleElements = []
     end
     object DateBonFacVGD: TDateTimePicker
@@ -980,7 +980,7 @@ object BonFacVGestionF: TBonFacVGestionF
       Font.Name = 'Helvetica LT Std'
       Font.Style = []
       ParentFont = False
-      TabOrder = 6
+      TabOrder = 8
     end
     object ClientBonFacVGCbx: TComboBox
       Left = 463
@@ -996,7 +996,7 @@ object BonFacVGestionF: TBonFacVGestionF
       ParentCtl3D = False
       ParentFont = False
       Sorted = True
-      TabOrder = 7
+      TabOrder = 0
       OnChange = ClientBonFacVGCbxChange
       OnClick = ClientBonFacVGCbxExit
       OnDropDown = ClientBonFacVGCbxEnter
@@ -1013,7 +1013,7 @@ object BonFacVGestionF: TBonFacVGestionF
       BevelOuter = bvNone
       Color = 11544476
       ParentBackground = False
-      TabOrder = 8
+      TabOrder = 9
       StyleElements = []
     end
     object ProduitBonFacVGCbx: TComboBox
@@ -1029,7 +1029,7 @@ object BonFacVGestionF: TBonFacVGestionF
       Font.Style = []
       ParentFont = False
       Sorted = True
-      TabOrder = 9
+      TabOrder = 1
       OnDropDown = ProduitBonFacVGCbxEnter
       OnEnter = ProduitBonFacVGCbxEnter
       OnExit = ProduitBonFacVGCbxExit
@@ -1342,7 +1342,7 @@ object BonFacVGestionF: TBonFacVGestionF
     IndicatorParams.VertLines = True
     IndicatorTitle.UseGlobalMenu = False
     OddRowColor = 16315635
-    Options = [dgEditing, dgTitles, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgMultiSelect]
+    Options = [dgEditing, dgTitles, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
     OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghDialogFind, dghShowRecNo, dghColumnResize, dghColumnMove, dghHotTrack, dghExtendVertLines]
     ParentCtl3D = False
     ParentFont = False

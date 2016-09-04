@@ -1311,6 +1311,7 @@ object MainForm: TMainForm
       object B2: TMenuItem
         Caption = 'Bon de Commande'
         ImageIndex = 9
+        Visible = False
       end
       object BRMainFMmn: TMenuItem
         Caption = 'Bon de R'#233'ception'
@@ -1320,6 +1321,7 @@ object MainForm: TMainForm
       object C3: TMenuItem
         Caption = 'Bon de Retour'
         ImageIndex = 9
+        Visible = False
       end
       object N8: TMenuItem
         Caption = '-'
@@ -1332,6 +1334,7 @@ object MainForm: TMainForm
       object c44: TMenuItem
         Caption = 'Facture d'#39'Avoir Achat'
         ImageIndex = 10
+        Visible = False
       end
       object N9: TMenuItem
         Caption = '-'
@@ -1355,10 +1358,12 @@ object MainForm: TMainForm
       object F6: TMenuItem
         Caption = 'Facture Proforma'
         ImageIndex = 9
+        Visible = False
       end
       object B4: TMenuItem
         Caption = 'Bon de Commande Client'
         ImageIndex = 9
+        Visible = False
       end
       object BLMainFMmn: TMenuItem
         Caption = 'Bon de Livraison'
@@ -1376,6 +1381,7 @@ object MainForm: TMainForm
       object FacturedAvoirVente: TMenuItem
         Caption = 'Facture d'#39'Avoir Vente'
         ImageIndex = 10
+        Visible = False
       end
       object N12: TMenuItem
         Caption = '-'
@@ -1421,6 +1427,7 @@ object MainForm: TMainForm
       object T3: TMenuItem
         Caption = 'Transfert entre les Comptes'
         ImageIndex = 21
+        Visible = False
       end
       object N15: TMenuItem
         Caption = '-'
@@ -1444,6 +1451,7 @@ object MainForm: TMainForm
     end
     object statistiques1: TMenuItem
       Caption = 'Statistiques'
+      Visible = False
     end
     object A4: TMenuItem
       Caption = 'Aide'
@@ -32006,32 +32014,6 @@ object MainForm: TMainForm
       'SELECT * FROM compte')
     Left = 671
     Top = 463
-    object CompteTablecode_cmpt: TSmallintField
-      FieldName = 'code_cmpt'
-      Origin = 'code_cmpt'
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-    end
-    object CompteTablenom_cmpt: TWideStringField
-      FieldName = 'nom_cmpt'
-      Origin = 'nom_cmpt'
-      Size = 50
-    end
-    object CompteTablerefer_cmpt: TWideStringField
-      FieldName = 'refer_cmpt'
-      Origin = 'refer_cmpt'
-    end
-    object CompteTablenature_cmpt: TBooleanField
-      FieldName = 'nature_cmpt'
-      Origin = 'nature_cmpt'
-    end
-    object CompteTableoldcredit_cmpt: TCurrencyField
-      FieldName = 'oldcredit_cmpt'
-      Origin = 'oldcredit_cmpt'
-    end
-    object CompteTabledate_cmpt: TDateField
-      FieldName = 'date_cmpt'
-      Origin = 'date_cmpt'
-    end
   end
   object PanelIcons48: TsAlphaImageList
     Height = 48

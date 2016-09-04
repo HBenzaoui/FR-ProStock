@@ -72,7 +72,7 @@ var
 
 implementation
 
-uses
+uses   Winapi.MMSystem,
   UReglementFGestion, UMainF, UBonRec, UBonFacA, UBonRecGestion,
   USplashVersement, USplashAddUnite;
 
@@ -296,7 +296,10 @@ if NOT (MainForm.RegfournisseurTable.IsEmpty) then
       FSplashAddUnite.OKAddUniteSBtn.Enabled:=True;
       FSplashAddUnite.OKAddUniteSBtn.Tag:= 24 ;
 
-     end;
+     end else
+         begin
+           sndPlaySound('C:\Windows\Media\chord.wav', SND_NODEFAULT Or SND_ASYNC Or  SND_RING);
+         end;
 
  end;
 end;

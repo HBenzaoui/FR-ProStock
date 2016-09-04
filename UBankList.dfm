@@ -466,7 +466,7 @@ object BankListF: TBankListF
       ParentBackground = False
       ParentCtl3D = False
       ParentDoubleBuffered = False
-      TabOrder = 0
+      TabOrder = 1
       StyleElements = []
       object LastBBankbtn: TsSpeedButton
         Left = 99
@@ -528,7 +528,7 @@ object BankListF: TBankListF
       BevelOuter = bvNone
       Color = 7854350
       ParentBackground = False
-      TabOrder = 1
+      TabOrder = 2
       StyleElements = []
     end
     object Panel1: TPanel
@@ -556,7 +556,7 @@ object BankListF: TBankListF
       ParentFont = False
       ParentShowHint = False
       ShowHint = False
-      TabOrder = 2
+      TabOrder = 3
       StyleElements = []
     end
     object S01: TPanel
@@ -584,7 +584,7 @@ object BankListF: TBankListF
       ParentFont = False
       ParentShowHint = False
       ShowHint = False
-      TabOrder = 3
+      TabOrder = 4
       StyleElements = []
     end
     object Panel2: TPanel
@@ -612,7 +612,7 @@ object BankListF: TBankListF
       ParentFont = False
       ParentShowHint = False
       ShowHint = False
-      TabOrder = 4
+      TabOrder = 5
       StyleElements = []
     end
     object DateEndBankListD: TDateTimePicker
@@ -629,7 +629,7 @@ object BankListF: TBankListF
       Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
-      TabOrder = 5
+      TabOrder = 6
       OnChange = DateEndBankListDChange
     end
     object DateStartBankListD: TDateTimePicker
@@ -646,7 +646,7 @@ object BankListF: TBankListF
       Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
-      TabOrder = 6
+      TabOrder = 7
       OnChange = DateEndBankListDChange
     end
     object DaysBankListCbx: TComboBox
@@ -661,11 +661,11 @@ object BankListF: TBankListF
       Font.Height = 22
       Font.Name = 'Helvetica LT Std'
       Font.Style = []
-      ItemIndex = 0
+      ItemIndex = 2
       ParentColor = True
       ParentFont = False
-      TabOrder = 7
-      Text = 'Aujourd'#39'hui'
+      TabOrder = 0
+      Text = 'Mois en cours'
       OnChange = DaysBankListCbxChange
       Items.Strings = (
         'Aujourd'#39'hui'
@@ -748,7 +748,7 @@ object BankListF: TBankListF
     IndicatorTitle.ShowDropDownSign = True
     IndicatorTitle.TitleButton = True
     OddRowColor = 16315635
-    Options = [dgTitles, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgMultiSelect]
+    Options = [dgTitles, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
     OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghDialogFind, dghColumnResize, dghColumnMove, dghHotTrack, dghExtendVertLines]
     ParentCtl3D = False
     ParentFont = False

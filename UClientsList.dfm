@@ -343,6 +343,8 @@ object ClientListF: TClientListF
     DataSource = ClientListDataS
     DynProps = <>
     EditActions = [geaSelectAllEh]
+    EvenRowColor = clWindow
+    FixedColor = clWindow
     Font.Charset = DEFAULT_CHARSET
     Font.Color = 4207405
     Font.Height = 24
@@ -361,12 +363,13 @@ object ClientListF: TClientListF
     IndicatorTitle.ShowDropDownSign = True
     IndicatorTitle.TitleButton = True
     OddRowColor = 16315635
-    Options = [dgTitles, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgMultiSelect]
+    Options = [dgTitles, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
     OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghDialogFind, dghColumnResize, dghColumnMove, dghHotTrack, dghExtendVertLines]
     ParentCtl3D = False
     ParentFont = False
     ParentShowHint = False
     ReadOnly = True
+    RowDetailPanel.Color = clBtnFace
     RowHeight = 30
     SearchPanel.FilterOnTyping = True
     ShowHint = True

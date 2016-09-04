@@ -679,12 +679,6 @@ type
     BonFacAListDataS: TDataSource;
     BonLivListDataS: TDataSource;
     BonFacVListDataS: TDataSource;
-    CompteTablecode_cmpt: TSmallintField;
-    CompteTablenom_cmpt: TWideStringField;
-    CompteTablerefer_cmpt: TWideStringField;
-    CompteTablenature_cmpt: TBooleanField;
-    CompteTableoldcredit_cmpt: TCurrencyField;
-    CompteTabledate_cmpt: TDateField;
     AddUnitCompteDataS: TDataSource;
     GridIconsComptes20: TsAlphaImageList;
     S1: TMenuItem;

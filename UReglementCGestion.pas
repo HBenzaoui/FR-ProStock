@@ -456,17 +456,17 @@ begin
               end;
 
 
-          MainForm.RegclientTable.Append;
-          MainForm.RegclientTable.FieldValues['code_rc']:= CodeRF;
-          MainForm.RegclientTable.FieldValues['nom_rc']:= NumRegCGEdt.Caption;
-          MainForm.RegclientTable.FieldValues['code_c']:= MainForm.ClientTable.FieldByName('code_c').AsInteger;
-          MainForm.RegclientTable.FieldValues['date_rc']:= DateOf(Today);
-          MainForm.RegclientTable.FieldValues['time_rc']:=TimeOf(Now);
-          MainForm.RegclientTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
-          MainForm.RegclientTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
-          MainForm.RegclientTable.FieldValues['obser_rc']:= ReglementCGestionF.ObserRegCGMem.Text;
-          MainForm.RegclientTable.FieldValues['num_cheque_rc']:= ReglementCGestionF.NChequeRegCGCbx.Text;
-          MainForm.RegclientTable.FieldValues['code_ur']:= StrToInt( MainForm.UserIDLbl.Caption);
+            MainForm.RegclientTable.Append;
+            MainForm.RegclientTable.FieldValues['code_rc']:= CodeRF;
+            MainForm.RegclientTable.FieldValues['nom_rc']:= NumRegCGEdt.Caption;
+            MainForm.RegclientTable.FieldValues['code_c']:= MainForm.ClientTable.FieldByName('code_c').AsInteger;
+            MainForm.RegclientTable.FieldValues['date_rc']:= DateOf(Today);
+            MainForm.RegclientTable.FieldValues['time_rc']:=TimeOf(Now);
+            MainForm.RegclientTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
+            MainForm.RegclientTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
+            MainForm.RegclientTable.FieldValues['obser_rc']:= ReglementCGestionF.ObserRegCGMem.Text;
+            MainForm.RegclientTable.FieldValues['num_cheque_rc']:= ReglementCGestionF.NChequeRegCGCbx.Text;
+            MainForm.RegclientTable.FieldValues['code_ur']:= StrToInt( MainForm.UserIDLbl.Caption);
 
           MainForm.RegclientTable.FieldValues['bon_or_no_rc']:= 1;
 

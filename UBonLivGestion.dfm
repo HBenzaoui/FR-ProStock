@@ -739,7 +739,7 @@ object BonLivGestionF: TBonLivGestionF
       ParentBackground = False
       ParentCtl3D = False
       ParentDoubleBuffered = False
-      TabOrder = 0
+      TabOrder = 2
       StyleElements = []
       object sSpeedButton4: TsSpeedButton
         Left = 99
@@ -805,7 +805,7 @@ object BonLivGestionF: TBonLivGestionF
       BevelOuter = bvNone
       Color = 4666873
       ParentBackground = False
-      TabOrder = 1
+      TabOrder = 3
       StyleElements = []
     end
     object Panel8: TPanel
@@ -833,7 +833,7 @@ object BonLivGestionF: TBonLivGestionF
       ParentFont = False
       ParentShowHint = False
       ShowHint = False
-      TabOrder = 2
+      TabOrder = 4
       StyleElements = []
     end
     object Panel9: TPanel
@@ -861,7 +861,7 @@ object BonLivGestionF: TBonLivGestionF
       ParentFont = False
       ParentShowHint = False
       ShowHint = False
-      TabOrder = 3
+      TabOrder = 5
       StyleElements = []
     end
     object Panel10: TPanel
@@ -888,7 +888,7 @@ object BonLivGestionF: TBonLivGestionF
       ParentFont = False
       ParentShowHint = False
       ShowHint = False
-      TabOrder = 4
+      TabOrder = 6
       StyleElements = []
     end
     object Panel11: TPanel
@@ -915,7 +915,7 @@ object BonLivGestionF: TBonLivGestionF
       ParentFont = False
       ParentShowHint = False
       ShowHint = False
-      TabOrder = 5
+      TabOrder = 7
       StyleElements = []
     end
     object DateBonLivGD: TDateTimePicker
@@ -931,7 +931,7 @@ object BonLivGestionF: TBonLivGestionF
       Font.Name = 'Helvetica LT Std'
       Font.Style = []
       ParentFont = False
-      TabOrder = 6
+      TabOrder = 8
     end
     object ClientBonLivGCbx: TComboBox
       Left = 463
@@ -947,7 +947,7 @@ object BonLivGestionF: TBonLivGestionF
       ParentCtl3D = False
       ParentFont = False
       Sorted = True
-      TabOrder = 7
+      TabOrder = 0
       OnChange = ClientBonLivGCbxChange
       OnClick = ClientBonLivGCbxExit
       OnDropDown = ClientBonLivGCbxEnter
@@ -964,7 +964,7 @@ object BonLivGestionF: TBonLivGestionF
       BevelOuter = bvNone
       Color = 4666873
       ParentBackground = False
-      TabOrder = 8
+      TabOrder = 9
       StyleElements = []
     end
     object ProduitBonLivGCbx: TComboBox
@@ -980,7 +980,7 @@ object BonLivGestionF: TBonLivGestionF
       Font.Style = []
       ParentFont = False
       Sorted = True
-      TabOrder = 9
+      TabOrder = 1
       OnDropDown = ProduitBonLivGCbxEnter
       OnEnter = ProduitBonLivGCbxEnter
       OnExit = ProduitBonLivGCbxExit
@@ -1292,7 +1292,7 @@ object BonLivGestionF: TBonLivGestionF
     IndicatorParams.VertLines = True
     IndicatorTitle.UseGlobalMenu = False
     OddRowColor = 16315635
-    Options = [dgEditing, dgTitles, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgMultiSelect]
+    Options = [dgEditing, dgTitles, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
     OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghDialogFind, dghShowRecNo, dghColumnResize, dghColumnMove, dghHotTrack, dghExtendVertLines]
     ParentCtl3D = False
     ParentFont = False
@@ -2957,8 +2957,6 @@ object BonLivGestionF: TBonLivGestionF
           Top = 59.472480000000000000
           Width = 60.472480000000000000
           Height = 18.897650000000000000
-          DataSet = BonRecF.frxBonRecDB
-          DataSetName = 'frxBonRecDB'
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET

@@ -44,10 +44,6 @@ object ClientGestionF: TClientGestionF
     TabsLineSkin = 'BAR'
     object GeneralClientGTB: TsTabSheet
       Caption = 'G'#233'n'#233'ral'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object GeneralTB: TPanel
         Left = 0
         Top = 0
@@ -556,10 +552,6 @@ object ClientGestionF: TClientGestionF
     end
     object PlusInfoClientGTB: TsTabSheet
       Caption = 'Plus D'#39'info'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object PlusInfoTB: TPanel
         Left = 0
         Top = 0
@@ -887,6 +879,7 @@ object ClientGestionF: TClientGestionF
           ParentDoubleBuffered = False
           ParentFont = False
           TabOrder = 6
+          OnClick = OldCreditClientGEdtClick
           OnExit = OldCreditClientGEdtExit
           OnKeyDown = OldCreditClientGEdtKeyDown
           OnKeyPress = OldCreditClientGEdtKeyPress
@@ -906,6 +899,7 @@ object ClientGestionF: TClientGestionF
           ParentDoubleBuffered = False
           ParentFont = False
           TabOrder = 7
+          OnClick = MaxCreditClientGEdtClick
           OnExit = MaxCreditClientGEdtExit
           OnKeyDown = OldCreditClientGEdtKeyDown
           OnKeyPress = OldCreditClientGEdtKeyPress

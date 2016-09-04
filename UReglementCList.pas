@@ -72,7 +72,7 @@ var
 
 implementation
 
-uses
+uses Winapi.MMSystem,
   UReglementCGestion, UMainF, USplashAddUnite;
 
 {$R *.dfm}
@@ -383,7 +383,10 @@ begin
       FSplashAddUnite.OKAddUniteSBtn.Enabled:=True;
       FSplashAddUnite.OKAddUniteSBtn.Tag:= 25 ;
 
-     end;
+     end else
+         begin
+           sndPlaySound('C:\Windows\Media\chord.wav', SND_NODEFAULT Or SND_ASYNC Or  SND_RING);
+         end;
 
  end;
 end;
