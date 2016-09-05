@@ -364,6 +364,8 @@ begin
           MainForm.Bona_facTable.FieldByName('montver_bafac').AsCurrency:=StrToCurr(StringReplace(BonFacARegleLbl.Caption, #32, '', [rfReplaceAll]));
           MainForm.Bona_facTable.FieldByName('montttc_bafac').AsCurrency:=StrToCurr(StringReplace(BonFacATotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
 
+          MainForm.Bona_facTable.FieldByName('timber_bafac').AsCurrency:=StrToCurr(StringReplace(TimberBonFacAGEdt.Text, #32, '', [rfReplaceAll]));
+
           MainForm.Bona_facTable.Post;
           MainForm.Bona_facTable.EnableControls;
 
@@ -971,7 +973,8 @@ begin
                     MainForm.RegfournisseurTable.SQL.Text:='SELECT * FROM regfournisseur WHERE code_bafac ='+IntToStr(MainForm.Bona_facTable.FieldValues['code_bafac']);
                     MainForm.RegfournisseurTable.Active:=True;
 
-
+                    if NOT (MainForm.RegfournisseurTable.IsEmpty) then
+                 begin
                   MainForm.RegfournisseurTable.Edit;
                   MainForm.RegfournisseurTable.FieldValues['code_bafac']:= MainForm.Bona_facTable.FieldValues['code_bafac'];
                   MainForm.RegfournisseurTable.FieldValues['nom_rf']:= NumBonFacAGEdt.Caption;
@@ -1004,6 +1007,57 @@ begin
                   MainForm.RegfournisseurTable.Post;
                   MainForm.RegfournisseurTable.Refresh;
 
+                 end else
+                    begin
+
+                       MainForm.RegfournisseurTable.Active:=false;
+                       MainForm.RegfournisseurTable.SQL.Clear;
+                       MainForm.RegfournisseurTable.SQL.Text:='SELECT * FROM regfournisseur';
+                       MainForm.RegfournisseurTable.Active:=True;
+
+                     if NOT (MainForm.RegfournisseurTable.IsEmpty) then
+                      begin
+                       MainForm.RegfournisseurTable.Last;
+                       CodeRF:= MainForm.RegfournisseurTable.FieldValues['code_rf'] + 1;
+                      end else
+                          begin
+                           CodeRF:= 1;
+                          end;
+
+                      MainForm.RegfournisseurTable.Append;
+                      MainForm.RegfournisseurTable.FieldValues['code_rf']:= CodeRF;
+                      MainForm.RegfournisseurTable.FieldValues['code_bafac']:= MainForm.Bona_facTable.FieldValues['code_bafac'];
+                      MainForm.RegfournisseurTable.FieldValues['nom_rf']:= NumBonFacAGEdt.Caption;
+                      MainForm.RegfournisseurTable.FieldValues['code_f']:= MainForm.FournisseurTable.FieldByName('code_f').AsInteger;
+                      MainForm.RegfournisseurTable.FieldValues['date_rf']:= DateOf(Today);
+                      MainForm.RegfournisseurTable.FieldValues['time_rf']:=TimeOf(Now);
+                      MainForm.RegfournisseurTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
+                      MainForm.RegfournisseurTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
+                      MainForm.RegfournisseurTable.FieldValues['obser_rf']:= ObserBonFacAGMem.Text;
+                      MainForm.RegfournisseurTable.FieldValues['num_cheque_rf']:= NChequeBonFacAGCbx.Text;
+                      MainForm.RegfournisseurTable.FieldValues['bon_or_no_rf']:= 3;
+                      MainForm.RegfournisseurTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
+
+                      MainForm.RegfournisseurTable.FieldByName('montver_rf').AsCurrency:=StrToCurr(StringReplace(BonFacATotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
+
+                      if (LowerCase(ModePaieBonFacAGCbx.Text)='espèce') OR (LowerCase(ModePaieBonFacAGCbx.Text)='espece') then
+                      begin
+                       MainForm.RegfournisseurTable.FieldValues['code_mdpai']:=1 ;
+                      end;
+                       if (LowerCase(ModePaieBonFacAGCbx.Text)='chèque') OR (LowerCase(ModePaieBonFacAGCbx.Text)='cheque') then
+                      begin
+                       MainForm.RegfournisseurTable.FieldValues['code_mdpai']:=2 ;
+                      end;
+                      if (LowerCase(ModePaieBonFacAGCbx.Text)='à terme' ) OR (LowerCase(ModePaieBonFacAGCbx.Text)='a terme' )
+                         OR (LowerCase(ModePaieBonFacAGCbx.Text)='À terme' ) then
+                      begin
+                       MainForm.RegfournisseurTable.FieldValues['code_mdpai']:=3 ;
+                      end;
+
+                      MainForm.RegfournisseurTable.Post;
+                      MainForm.RegfournisseurTable.Refresh;
+
+                    end;
 
                     MainForm.RegfournisseurTable.Active:=false;
                     MainForm.RegfournisseurTable.SQL.Clear;
@@ -1015,19 +1069,11 @@ begin
 
           end;
 
-
-//          MainForm.FournisseurTable.Edit;
-//          MainForm.FournisseurTable.FieldByName('credit_f').AsCurrency:=
-//          ((StrToCurr(StringReplace(BonFacAGFourNEWCredit.Caption, #32, '', [rfReplaceAll]))));
-//          MainForm.FournisseurTable.Post;
-
           MainForm.FournisseurTable.Active:=false;
           MainForm.FournisseurTable.SQL.Clear;
           MainForm.FournisseurTable.SQL.Text:='Select * FROM fournisseur' ;
           MainForm.FournisseurTable.Active:=True;
           MainForm.FournisseurTable.EnableControls;
-
-
 
                         //--- this is for adding the money to the caisse----
          begin
@@ -1098,13 +1144,14 @@ begin
                         MainForm.Opt_cas_bnk_CaisseTable.SQL.Text:='SELECT * FROM opt_cas_bnk WHERE code_bafac ='+IntToStr(MainForm.Bona_facTable.FieldValues['code_bafac']) ;
                         MainForm.Opt_cas_bnk_CaisseTable.Active:=True;
 
+                        if NOT ( MainForm.Opt_cas_bnk_CaisseTable.IsEmpty) then
+                        begin
 
                           MainForm.Opt_cas_bnk_CaisseTable.Edit;
                           MainForm.Opt_cas_bnk_CaisseTable.FieldValues['date_ocb']:= DateOf(Today);
                           MainForm.Opt_cas_bnk_CaisseTable.FieldValues['time_ocb']:= TimeOf(Now);;
                           MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nom_ocb']:= 'Versement au Fournisseur pièce N° '+NumBonFacAGEdt.Caption;
                           MainForm.Opt_cas_bnk_CaisseTable.FieldValues['third_ocb']:= FourBonFacAGCbx.Text;
-                       //   MainForm.Opt_cas_bnk_CaisseTable.FieldValues['encaiss_ocb']:= StrToCurr(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll]));
                           MainForm.Opt_cas_bnk_CaisseTable.FieldValues['decaiss_ocb']:= StrToCurr(StringReplace(BonFacATotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
 
                            if (LowerCase(ModePaieBonFacAGCbx.Text)='espèce') OR (LowerCase(ModePaieBonFacAGCbx.Text)='espece') then
@@ -1129,6 +1176,66 @@ begin
                           MainForm.Opt_cas_bnk_CaisseTable.Post;
                           MainForm.Opt_cas_bnk_CaisseTable.Refresh;
                           MainForm.Opt_cas_bnk_BankTable.Refresh;
+
+                        end else
+                            begin
+                              MainForm.Opt_cas_bnk_CaisseTable.Active:=false;
+                              MainForm.Opt_cas_bnk_CaisseTable.SQL.Clear;
+                              MainForm.Opt_cas_bnk_CaisseTable.SQL.Text:='SELECT * FROM opt_cas_bnk' ;
+                              MainForm.Opt_cas_bnk_CaisseTable.Active:=True;
+
+
+                              if NOT (MainForm.Opt_cas_bnk_CaisseTable.IsEmpty) then
+                              begin
+                              MainForm.Opt_cas_bnk_CaisseTable.Last;
+                              CodeOCB:= MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ocb'] + 1;
+                              end else
+                                  begin
+                                   CodeOCB:= 1;
+                                  end;
+
+
+                                MainForm.Opt_cas_bnk_CaisseTable.Append;
+                                MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ocb']:= CodeOCB;
+                                MainForm.Opt_cas_bnk_CaisseTable.FieldValues['date_ocb']:= DateOf(Today);
+                                MainForm.Opt_cas_bnk_CaisseTable.FieldValues['time_ocb']:= TimeOf(Now);;
+                                MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nom_ocb']:= 'Versement au Fournisseur pièce N° '+NumBonFacAGEdt.Caption;
+                                MainForm.Opt_cas_bnk_CaisseTable.FieldValues['third_ocb']:= FourBonFacAGCbx.Text;
+                                MainForm.Opt_cas_bnk_CaisseTable.FieldValues['decaiss_ocb']:= StrToCurr(StringReplace(BonFacATotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
+
+                                 if (LowerCase(ModePaieBonFacAGCbx.Text)='espèce') OR (LowerCase(ModePaieBonFacAGCbx.Text)='espece') then
+                                begin
+                                 MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=1 ;
+                                end;
+                                 if (LowerCase(ModePaieBonFacAGCbx.Text)='chèque') OR (LowerCase(ModePaieBonFacAGCbx.Text)='cheque') then
+                                begin
+                                 MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=2 ;
+                                end;
+                                if (LowerCase(ModePaieBonFacAGCbx.Text)='à terme' ) OR (LowerCase(ModePaieBonFacAGCbx.Text)='a terme' )
+                                   OR (LowerCase(ModePaieBonFacAGCbx.Text)='À terme' ) then
+                                begin
+                                 MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=3 ;
+                                end;
+
+                                MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_cmpt']:=MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
+                                MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nature_ocb']:= MainForm.CompteTable.FieldByName('nature_cmpt').AsBoolean;
+                                MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_bafac']:= MainForm.Bona_facTable.FieldValues['code_bafac'];
+                                MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ur']:= StrToInt (MainForm.UserIDLbl.Caption);
+
+                                MainForm.Opt_cas_bnk_CaisseTable.Post;
+                                MainForm.Opt_cas_bnk_CaisseTable.Refresh;
+                                MainForm.Opt_cas_bnk_BankTable.Refresh;
+
+
+                              MainForm.Opt_cas_bnk_CaisseTable.Active:=false;
+                              MainForm.Opt_cas_bnk_CaisseTable.SQL.Clear;
+                              MainForm.Opt_cas_bnk_CaisseTable.SQL.Text:='SELECT * FROM opt_cas_bnk where nature_ocb = false' ;
+                              MainForm.Opt_cas_bnk_CaisseTable.Active:=True;
+
+
+
+
+                            end;
 
 
                         MainForm.Opt_cas_bnk_CaisseTable.Active:=false;
@@ -1244,7 +1351,7 @@ begin
        if NOT (BonFacAPListDataS.DataSet.IsEmpty) then
         begin
          BonFacAGFourNEWCredit.Caption:=
-         CurrToStrF((MainForm.Bona_recTableCredit.FieldValues['MontantRes'])+(StringReplace(BonFacAResteLbl.Caption, #32, '', [rfReplaceAll])),ffNumber,2);//  anyways i'm software developer
+         CurrToStrF((MainForm.Bona_recTableCredit.FieldByName('MontantRes').AsCurrency ) + StrToCurr(StringReplace(BonFacAResteLbl.Caption, #32, '', [rfReplaceAll])),ffNumber,2);//  anyways i'm software developer
         end;
         end else
         begin
@@ -1282,6 +1389,8 @@ begin
       ValiderBAFacBonFacAGBtn.Enabled:= True;
       ValiderBAFacBonFacAGBtn.ImageIndex:=12;
       end;
+
+      MainForm.Bona_fac_listTable.Refresh;
 
     end else
     begin
@@ -1939,7 +2048,7 @@ begin
     DeleteProduitBonFacAGBtn.Visible:= True;
     ClearProduitBonFacAGBtn.Visible:= True;
 
-    if FourBonFacAGCbx.Text<>'' then
+    if (FourBonFacAGCbx.Text<>'') AND  (MainForm.Bona_facTable.FieldByName('valider_bafac').AsBoolean <> True) then
     begin
     ValiderBAFacBonFacAGBtn.Enabled:= True;
     ValiderBAFacBonFacAGBtn.ImageIndex:=12;

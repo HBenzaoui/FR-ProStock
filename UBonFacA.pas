@@ -298,7 +298,15 @@ begin
          MainForm.Mode_paiementTable.SQL.Clear;
          MainForm.Mode_paiementTable.SQL.Text:='Select * FROM mode_paiement WHERE code_mdpai ='+(IntToStr( CodeF ) ) ;
          MainForm.Mode_paiementTable.Active:=True;
-         BonFacAGestionF.ModePaieBonFacAGCbx.Text:= MainForm.Mode_paiementTable.FieldValues['nom_mdpai'];
+         BonFacAGestionF.ModePaieBonFacAGCbx.Text:= MainForm.Mode_paiementTable.FieldValues['nom_mdpai'] ;
+         if  MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger = 1 then
+         begin
+         BonFacAGestionF.TimberBonFacAGlbl.Visible:= True;
+         BonFacAGestionF.TimberPerctageBonFacAGLbl.Visible:= True;
+         BonFacAGestionF.TimberPerctageBonFacAGEdt.Visible:= True;
+         BonFacAGestionF.TimberBonFacAGEdt.Visible:= True;
+         BonFacAGestionF.TimberBonFacAGEdt.Text :=     CurrToStrF(MainForm.Bona_facTable.FieldValues['timber_bafac'], ffNumber, 2);
+         end;
          MainForm.Mode_paiementTable.Active:=false;
          MainForm.Mode_paiementTable.SQL.Clear;
          MainForm.Mode_paiementTable.SQL.Text:='SELECT * FROM mode_paiement ' ;
@@ -323,18 +331,16 @@ begin
         BonFacAGestionF.NChequeBonFacAGCbx.Text:= MainForm.Bona_facTable.FieldValues['num_cheque_bafac'];
        end;
 
-     if MainForm.Bona_facTable.FieldValues['RemisePerc']<> null then
-     begin
-     BonFacAGestionF.RemisePerctageBonFacAGEdt.Text :=     CurrToStrF(MainForm.Bona_facTable.FieldValues['RemisePerc'], ffNumber, 2);
-     end;
 
-     if MainForm.Bona_facTable.FieldValues['RemisePerc']<> null then
+     if (MainForm.Bona_facTable.FieldValues['RemisePerc']<> null) AND (MainForm.Bona_facTable.FieldValues['remise_bafac']<> 0)  then
      begin
      BonFacAGestionF.RemisePerctageBonFacAGEdt.Text :=     CurrToStrF(MainForm.Bona_facTable.FieldValues['RemisePerc'], ffNumber, 2);
+     BonFacAGestionF.RemiseBonFacAGEdt.Text :=       CurrToStrF(MainForm.Bona_facTable.FieldValues['remise_bafac'], ffNumber, 2);
+
      end;
 
     BonFacAGestionF.BonFacATotalHTLbl.Caption :=    CurrToStrF(MainForm.Bona_facTable.FieldValues['montht_bafac'], ffNumber, 2);
-    BonFacAGestionF.RemiseBonFacAGEdt.Text :=       CurrToStrF(MainForm.Bona_facTable.FieldValues['remise_bafac'], ffNumber, 2);
+
     BonFacAGestionF.BonFacATotalTVALbl.Caption :=   CurrToStrF(MainForm.Bona_facTable.FieldValues['MontantTVA'], ffNumber, 2);
     BonFacAGestionF.BonFacATotalTTCLbl.Caption :=   CurrToStrF(MainForm.Bona_facTable.FieldValues['montttc_bafac'], ffNumber, 2);
     BonFacAGestionF.BonFacARegleLbl.Caption :=      CurrToStrF(MainForm.Bona_facTable.FieldValues['montver_bafac'], ffNumber, 2);
@@ -348,6 +354,7 @@ begin
             BonFacAGestionF.EnableBonFacA;
            end;
       BonFacAGestionF.Tag:= 1;
+       MainForm.Bona_fac_listTable.Refresh;
       BonFacAGestionF.ShowModal;
 
     finally

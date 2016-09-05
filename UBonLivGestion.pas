@@ -265,12 +265,7 @@ begin
 procedure TBonLivGestionF.FormShow(Sender: TObject);
 var CodeBL: Integer;
 begin
-//  Application.UpdateFormatSettings := false;
-//  FormatSettings.DecimalSeparator := ',';
-//  FormatSettings.ThousandSeparator := ' ';
-//  FormatSettings.CurrencyDecimals := 2;
-//  FormatSettings.DateSeparator:= '/';
-// use this tage when i click AddBVLivBonRecGBtn bon button
+
  if Tag=0 then
  begin
 //-- use this code to make the montants look lake money values-------//
@@ -1038,8 +1033,18 @@ begin
 
        if NOT (BonLivPListDataS.DataSet.IsEmpty) then
         begin
+        if Tag = 0 then
+         begin
          BonLivGClientNEWCredit.Caption:=
-         CurrToStrF((MainForm.Bonv_livTableCredit.FieldValues['MontantRes'])+(StringReplace(BonLivResteLbl.Caption, #32, '', [rfReplaceAll])),ffNumber,2);//  anyways i'm software developer
+         CurrToStrF((MainForm.Bonv_livTableCredit.FieldByName('MontantRes').AsCurrency ) + StrToCurr(StringReplace(BonLivResteLbl.Caption, #32, '', [rfReplaceAll])),ffNumber,2);//  anyways i'm software developer
+         end else
+             begin
+              BonLivGClientNEWCredit.Caption:=
+              CurrToStrF((MainForm.Bonv_livTableCredit.FieldByName('MontantRes').AsCurrency ) + StrToCurr(StringReplace(BonLivTotalTTCLbl.Caption, #32, '', [rfReplaceAll])),ffNumber,2);//  anyways i'm software developer
+
+
+             end;
+
         end;
         end else
         begin
@@ -1072,6 +1077,8 @@ begin
       ValiderBVlivBonLivGBtn.Enabled:= True;
       ValiderBVlivBonLivGBtn.ImageIndex:=12;
       end;
+
+      MainForm.Bonv_liv_listTable.Refresh;
 
     end else
     begin
@@ -1325,7 +1332,7 @@ begin
     DeleteProduitBonLivGBtn.Visible:= True;
     ClearProduitBonLivGBtn.Visible:= True;
 
-    if ClientBonLivGCbx.Text<>'' then
+    if (ClientBonLivGCbx.Text<>'') AND (MainForm.Bonv_livTable.FieldByName('valider_bvliv').AsBoolean <> True) then
     begin
     ValiderBVLivBonLivGBtn.Enabled:= True;
     ValiderBVLivBonLivGBtn.ImageIndex:=12;

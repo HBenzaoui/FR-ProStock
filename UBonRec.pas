@@ -238,12 +238,6 @@ var
     ResearchBARecEdt.Text:='';
     end;
 
-//  MainForm.Bona_recTable.DisableControls;
-//  MainForm.Bona_recTable.Active:= False;
-//  MainForm.Bona_recTable.SQL.clear;
-//  mainform.Bona_recTable.sql.Text:='SELECT * FROM bona_rec  ';
-//  MainForm.Bona_recTable.Active:= True;
-
      MainForm.Bona_recTable.Refresh;
 
 
@@ -298,22 +292,16 @@ var
         BonRecGestionF.NChequeBonRecGCbx.Text:= MainForm.Bona_recTable.FieldValues['num_cheque_barec'];
        end;
 
-   {    if MainForm.Bona_recTable.FieldValues['ModePaie']<> null then
-       begin
-       BonRecGestionF.ModePaieBonRecGCbx.Text:= MainForm.Bona_recTable.FieldValues['ModePaie'];
-       end;
-   {    if MainForm.Bona_recTable.FieldValues['Compte']<> null then
-       begin
-       BonRecGestionF.CompteBonRecGCbx.Text:= MainForm.Bona_recTable.FieldValues['Compte'];
-       end;
-     }
 
-     if MainForm.Bona_recTable.FieldValues['RemisePerc']<> null then
+
+     if (MainForm.Bona_recTable.FieldValues['RemisePerc']<> null) AND (MainForm.Bona_recTable.FieldValues['remise_barec']<> 0) then
      begin
-     BonRecGestionF.RemisePerctageBonRecGEdt.Text :=     CurrToStrF(MainForm.Bona_recTable.FieldValues['RemisePerc'], ffNumber, 2);
+      BonRecGestionF.RemisePerctageBonRecGEdt.Text :=     CurrToStrF(MainForm.Bona_recTable.FieldValues['RemisePerc'], ffNumber, 2);
+      BonRecGestionF.RemiseBonRecGEdt.Text :=     CurrToStrF(MainForm.Bona_recTable.FieldValues['remise_barec'], ffNumber, 2);
      end;
+
     BonRecGestionF.BonRecTotalHTLbl.Caption :=    CurrToStrF(MainForm.Bona_recTable.FieldValues['montht_barec'], ffNumber, 2);
-    BonRecGestionF.RemiseBonRecGEdt.Text :=     CurrToStrF(MainForm.Bona_recTable.FieldValues['remise_barec'], ffNumber, 2);
+
     BonRecGestionF.BonRecTotalTVALbl.Caption :=   CurrToStrF(MainForm.Bona_recTable.FieldValues['MontantTVA'], ffNumber, 2);
     BonRecGestionF.BonRecTotalTTCLbl.Caption :=   CurrToStrF(MainForm.Bona_recTable.FieldValues['montttc_barec'], ffNumber, 2);
     BonRecGestionF.BonRecRegleLbl.Caption :=      CurrToStrF(MainForm.Bona_recTable.FieldValues['montver_barec'], ffNumber, 2);
@@ -329,11 +317,8 @@ var
             BonRecGestionF.EnableBonRec;
            end;
       BonRecGestionF.Tag:= 1;
+      MainForm.Bona_recPlistTable.Refresh;
       BonRecGestionF.ShowModal;
-
-
-
-
 
 
 

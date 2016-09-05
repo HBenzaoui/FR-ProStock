@@ -369,18 +369,20 @@ begin
          MainForm.CompteTable.SQL.Text:='SELECT * FROM compte ' ;
          MainForm.CompteTable.Active:=True;
        end;
-       if MainForm.Bonv_livTable.FieldValues['num_cheque_bvliv']<> null then
+       if (MainForm.Bonv_livTable.FieldValues['num_cheque_bvliv']<> null)  then
        begin
         BonLivGestionF.NChequeBonLivGCbx.Text:= MainForm.Bonv_livTable.FieldValues['num_cheque_bvliv'];
+
        end;
 
 
-     if MainForm.Bonv_livTable.FieldValues['RemisePerc']<> null then
+     if (MainForm.Bonv_livTable.FieldValues['RemisePerc']<> null) AND (MainForm.Bonv_livTable.FieldValues['remise_bvliv']<> 0) then
      begin
      BonLivGestionF.RemisePerctageBonLivGEdt.Text :=     CurrToStrF(MainForm.Bonv_livTable.FieldValues['RemisePerc'], ffNumber, 2);
+      BonLivGestionF.RemiseBonLivGEdt.Text :=     CurrToStrF(MainForm.Bonv_livTable.FieldValues['remise_bvliv'], ffNumber, 2);
      end;
     BonLivGestionF.BonLivTotalHTLbl.Caption :=    CurrToStrF(MainForm.Bonv_livTable.FieldValues['montht_bvliv'], ffNumber, 2);
-    BonLivGestionF.RemiseBonLivGEdt.Text :=     CurrToStrF(MainForm.Bonv_livTable.FieldValues['remise_bvliv'], ffNumber, 2);
+
     BonLivGestionF.BonLivTotalTVALbl.Caption :=   CurrToStrF(MainForm.Bonv_livTable.FieldValues['MontantTVA'], ffNumber, 2);
     BonLivGestionF.BonLivTotalTTCLbl.Caption :=   CurrToStrF(MainForm.Bonv_livTable.FieldValues['montttc_bvliv'], ffNumber, 2);
     BonLivGestionF.BonLivRegleLbl.Caption :=      CurrToStrF(MainForm.Bonv_livTable.FieldValues['montver_bvliv'], ffNumber, 2);
@@ -396,7 +398,11 @@ begin
             BonLivGestionF.EnableBonLiv;
            end;
       BonLivGestionF.Tag:= 1;
+      MainForm.Bonv_liv_listTable.Refresh;
       BonLivGestionF.ShowModal;
+
+
+
 
         finally
           BonLivGestionF.Free;

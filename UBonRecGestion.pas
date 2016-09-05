@@ -878,8 +878,17 @@ begin
 
        if NOT (BonRecPListDataS.DataSet.IsEmpty) then
         begin
+         if Tag = 0 then
+         begin
          BonRecGFourNEWCredit.Caption:=
-         CurrToStrF((MainForm.Bona_recTableCredit.FieldValues['MontantRes'])+(StringReplace(BonRecResteLbl.Caption, #32, '', [rfReplaceAll])),ffNumber,2);//  anyways i'm software developer
+         CurrToStrF((MainForm.Bona_recTableCredit.FieldByName('MontantRes').AsCurrency )+ StrToCurr (StringReplace(BonRecResteLbl.Caption, #32, '', [rfReplaceAll])),ffNumber,2);//  anyways i'm software developer
+        end else
+            begin
+              BonRecGFourNEWCredit.Caption:=
+              CurrToStrF((MainForm.Bona_recTableCredit.FieldByName('MontantRes').AsCurrency )+ StrToCurr (StringReplace(BonRecResteLbl.Caption, #32, '', [rfReplaceAll])),ffNumber,2);//  anyways i'm software developer
+
+            end;
+
         end;
         end else
         begin
@@ -913,6 +922,8 @@ begin
       ValiderBARecBonRecGBtn.Enabled:= True;
       ValiderBARecBonRecGBtn.ImageIndex:=12;
       end;
+
+      MainForm.Bona_recPlistTable.Refresh;
 
     end else
     begin
@@ -1053,12 +1064,8 @@ begin
   begin
     DeleteProduitBonRecGBtn.Visible:= True;
     ClearProduitBonRecGBtn.Visible:= True;
-    //AddBARecBonRecGBtn.Enabled:= True;
-    //AddBARecBonRecGBtn.ImageIndex:=4;
-    //EditBARecBonRecGBtn.Enabled:= True;
-    //EditBARecBonRecGBtn.ImageIndex:=5;
 
-    if FournisseurBonRecGCbx.Text<>'' then
+    if (FournisseurBonRecGCbx.Text<>'')  AND (MainForm.Bona_recTable.FieldByName('valider_barec').AsBoolean <> True) then
     begin
     ValiderBARecBonRecGBtn.Enabled:= True;
     ValiderBARecBonRecGBtn.ImageIndex:=12;

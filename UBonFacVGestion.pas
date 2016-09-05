@@ -1310,7 +1310,7 @@ begin
     DeleteProduitBonFacVGBtn.Visible:= True;
     ClearProduitBonFacVGBtn.Visible:= True;
 
-    if ClientBonFacVGCbx.Text<>'' then
+    if (ClientBonFacVGCbx.Text<>'') AND  (MainForm.Bonv_facTable.FieldByName('valider_bvfac').AsBoolean <> True)  then
     begin
     ValiderBVFacBonFacVGBtn.Enabled:= True;
     ValiderBVFacBonFacVGBtn.ImageIndex:=12;
@@ -1524,7 +1524,7 @@ begin
        if NOT (BonFacVPListDataS.DataSet.IsEmpty) then
         begin
          BonFacVGClientNEWCredit.Caption:=
-         CurrToStrF((MainForm.Bonv_livTableCredit.FieldValues['MontantRes'])+(StringReplace(BonFacVResteLbl.Caption, #32, '', [rfReplaceAll])),ffNumber,2);//  anyways i'm software developer
+         CurrToStrF((MainForm.Bonv_livTableCredit.FieldByName('MontantRes').AsCurrency) + StrToCurr(StringReplace(BonFacVResteLbl.Caption, #32, '', [rfReplaceAll]))  ,ffNumber,2);//  anyways i'm software developer
         end;
         end else
         begin
@@ -1557,6 +1557,8 @@ begin
       ValiderBVFacBonFacVGBtn.Enabled:= True;
       ValiderBVFacBonFacVGBtn.ImageIndex:=12;
       end;
+
+      MainForm.Bonv_fac_listTable.Refresh;
 
     end else
     begin
@@ -1992,6 +1994,8 @@ begin
 
           MainForm.Bonv_facTable.FieldByName('montver_bvfac').AsCurrency:=StrToCurr(StringReplace(BonFacVRegleLbl.Caption, #32, '', [rfReplaceAll]));
           MainForm.Bonv_facTable.FieldByName('montttc_bvfac').AsCurrency:=StrToCurr(StringReplace(BonFacVTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
+
+          MainForm.Bonv_facTable.FieldByName('timber_bvfac').AsCurrency:=StrToCurr(StringReplace(TimberBonFacVGEdt.Text, #32, '', [rfReplaceAll]));
 
           MainForm.Bonv_facTable.Post;
           MainForm.Bonv_facTable.EnableControls;

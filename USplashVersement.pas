@@ -85,14 +85,7 @@ end;
 
 procedure TFSplashVersement.DisableBonCtr;
 begin
-     BonCtrGestionF.AddBVCtrBonCtrGBtn.Enabled:= True;
-     BonCtrGestionF.AddBVCtrBonCtrGBtn.ImageIndex:=4;// 28 For A
-     BonCtrGestionF.EditBVCtrBonCtrGBtn.Enabled:= True;
-     BonCtrGestionF.EditBVCtrBonCtrGBtn.ImageIndex:=5; // 29 For A
-     BonCtrGestionF.ValiderBVCtrBonCtrGBtn.Enabled:= False;
-     BonCtrGestionF.ValiderBVCtrBonCtrGBtn.ImageIndex:=30; // 12 For A
-     BonCtrGestionF.ExValiderBVCtrBonCtrGBtn.Enabled:= False;
-     BonCtrGestionF.ExValiderBVCtrBonCtrGBtn.ImageIndex:=30;//30 for D
+
 
           BonCtrGestionF.DateBonCtrGD.Enabled:= False;
 //          BonCtrGestionF.ObserBonCtrGMem.Enabled:= False;
@@ -133,16 +126,21 @@ begin
           BonCtrGestionF.ValiderBVCtrBonCtrGLbl.Color:=$004AC38B;// $007374FF for A
           BonCtrGestionF.ValiderBVCtrBonCtrGLbl.Font.Color:= clBlack;// clWhite for A
           BonCtrGestionF.ValiderBVCtrBonCtrGLbl.Caption:='Ce bon est Validé';// 'Ce bon n''est pas encore Validé' for A
+
+
+          BonCtrGestionF.AddBVCtrBonCtrGBtn.Enabled:= True;
+          BonCtrGestionF.AddBVCtrBonCtrGBtn.ImageIndex:=4;// 28 For A
+          BonCtrGestionF.EditBVCtrBonCtrGBtn.Enabled:= True;
+          BonCtrGestionF.EditBVCtrBonCtrGBtn.ImageIndex:=5; // 29 For A
+          BonCtrGestionF.ValiderBVCtrBonCtrGBtn.Enabled:= False;
+          BonCtrGestionF.ValiderBVCtrBonCtrGBtn.ImageIndex:=30; // 12 For A
+          BonCtrGestionF.ExValiderBVCtrBonCtrGBtn.Enabled:= False;
+          BonCtrGestionF.ExValiderBVCtrBonCtrGBtn.ImageIndex:=30;//30 for D
 end;
 
 procedure TFSplashVersement.DisableBonFacA;
 begin
-     BonFacAGestionF.AddBAFacBonFacAGBtn.Enabled:= True;
-     BonFacAGestionF.AddBAFacBonFacAGBtn.ImageIndex:=4;// 28 For A
-     BonFacAGestionF.EditBAFacBonFacAGBtn.Enabled:= True;
-     BonFacAGestionF.EditBAFacBonFacAGBtn.ImageIndex:=5; // 29 For A
-     BonFacAGestionF.ValiderBAFacBonFacAGBtn.Enabled:= False;
-     BonFacAGestionF.ValiderBAFacBonFacAGBtn.ImageIndex:=30; // 12 For A
+
 
           BonFacAGestionF.DateBonFacAGD.Enabled:= False;
           BonFacAGestionF.ObserBonFacAGMem.Enabled:= False;
@@ -188,17 +186,21 @@ begin
           BonFacAGestionF.ValiderBAFacBonFacAGLbl.Color:=$004AC38B;// $007374FF for A
           BonFacAGestionF.ValiderBAFacBonFacAGLbl.Font.Color:= clBlack;// clWhite for A
           BonFacAGestionF.ValiderBAFacBonFacAGLbl.Caption:='Ce Facture est Validé';// 'Ce bon n''est pas encore Validé' for A
+
+
+
+          BonFacAGestionF.AddBAFacBonFacAGBtn.Enabled:= True;
+          BonFacAGestionF.AddBAFacBonFacAGBtn.ImageIndex:=4;// 28 For A
+          BonFacAGestionF.EditBAFacBonFacAGBtn.Enabled:= True;
+          BonFacAGestionF.EditBAFacBonFacAGBtn.ImageIndex:=5; // 29 For A
+          BonFacAGestionF.ValiderBAFacBonFacAGBtn.Enabled:= False;
+          BonFacAGestionF.ValiderBAFacBonFacAGBtn.ImageIndex:=30; // 12 For A
 end;
 
 
 procedure TFSplashVersement.DisableBonRec;
 begin
-     BonRecGestionF.AddBARecBonRecGBtn.Enabled:= True;
-     BonRecGestionF.AddBARecBonRecGBtn.ImageIndex:=4;// 28 For A
-     BonRecGestionF.EditBARecBonRecGBtn.Enabled:= True;
-     BonRecGestionF.EditBARecBonRecGBtn.ImageIndex:=5; // 29 For A
-     BonRecGestionF.ValiderBARecBonRecGBtn.Enabled:= False;
-     BonRecGestionF.ValiderBARecBonRecGBtn.ImageIndex:=30; // 12 For A
+
 
           BonRecGestionF.DateBonRecGD.Enabled:= False;
           BonRecGestionF.ObserBonRecGMem.Enabled:= False;
@@ -244,18 +246,20 @@ begin
           BonRecGestionF.ValiderBARecBonRecGLbl.Color:=$004AC38B;// $007374FF for A
           BonRecGestionF.ValiderBARecBonRecGLbl.Font.Color:= clBlack;// clWhite for A
           BonRecGestionF.ValiderBARecBonRecGLbl.Caption:='Ce bon est Validé';// 'Ce bon n''est pas encore Validé' for A
+
+          BonRecGestionF.AddBARecBonRecGBtn.Enabled:= True;
+          BonRecGestionF.AddBARecBonRecGBtn.ImageIndex:=4;// 28 For A
+          BonRecGestionF.EditBARecBonRecGBtn.Enabled:= True;
+          BonRecGestionF.EditBARecBonRecGBtn.ImageIndex:=5; // 29 For A
+          BonRecGestionF.ValiderBARecBonRecGBtn.ImageIndex:=30; // 12 For A
+          BonRecGestionF.ValiderBARecBonRecGBtn.Enabled:= False;
 end;
 
 
 
 procedure TFSplashVersement.DisableBonLiv;
 begin
-     BonLivGestionF.AddBVLivBonLivGBtn.Enabled:= True;
-     BonLivGestionF.AddBVLivBonLivGBtn.ImageIndex:=4;// 28 For A
-     BonLivGestionF.EditBVLivBonLivGBtn.Enabled:= True;
-     BonLivGestionF.EditBVLivBonLivGBtn.ImageIndex:=5; // 29 For A
-     BonLivGestionF.ValiderBVLivBonLivGBtn.Enabled:= False;
-     BonLivGestionF.ValiderBVLivBonLivGBtn.ImageIndex:=30; // 12 For A
+
 
           BonLivGestionF.DateBonLivGD.Enabled:= False;
           BonLivGestionF.ObserBonLivGMem.Enabled:= False;
@@ -301,17 +305,20 @@ begin
           BonLivGestionF.ValiderBVLivBonLivGLbl.Color:=$004AC38B;// $007374FF for A
           BonLivGestionF.ValiderBVLivBonLivGLbl.Font.Color:= clBlack;// clWhite for A
           BonLivGestionF.ValiderBVLivBonLivGLbl.Caption:='Ce bon est Validé';// 'Ce bon n''est pas encore Validé' for A
+
+          BonLivGestionF.AddBVLivBonLivGBtn.Enabled:= True;
+          BonLivGestionF.AddBVLivBonLivGBtn.ImageIndex:=4;// 28 For A
+          BonLivGestionF.EditBVLivBonLivGBtn.Enabled:= True;
+          BonLivGestionF.EditBVLivBonLivGBtn.ImageIndex:=5; // 29 For A
+
+          BonLivGestionF.ValiderBVLivBonLivGBtn.ImageIndex:=30; // 12 For A
+          BonLivGestionF.ValiderBVLivBonLivGBtn.Enabled:= False;
 end;
 
 
 procedure TFSplashVersement.DisableBonFacV ;
 begin
-     BonFacVGestionF.AddBVFacBonFacVGBtn.Enabled:= True;
-     BonFacVGestionF.AddBVFacBonFacVGBtn.ImageIndex:=4;// 28 For A
-     BonFacVGestionF.EditBVFacBonFacVGBtn.Enabled:= True;
-     BonFacVGestionF.EditBVFacBonFacVGBtn.ImageIndex:=5; // 29 For A
-     BonFacVGestionF.ValiderBVFacBonFacVGBtn.Enabled:= False;
-     BonFacVGestionF.ValiderBVFacBonFacVGBtn.ImageIndex:=30; // 12 For A
+
 
           BonFacVGestionF.DateBonFacVGD.Enabled:= False;
           BonFacVGestionF.ObserBonFacVGMem.Enabled:= False;
@@ -357,6 +364,13 @@ begin
           BonFacVGestionF.ValiderBVFacBonFacVGLbl.Color:=$004AC38B;// $007374FF for A
           BonFacVGestionF.ValiderBVFacBonFacVGLbl.Font.Color:= clBlack;// clWhite for A
           BonFacVGestionF.ValiderBVFacBonFacVGLbl.Caption:='Ce Facture est Validé';// 'Ce bon n''est pas encore Validé' for A
+
+          BonFacVGestionF.AddBVFacBonFacVGBtn.Enabled:= True;
+          BonFacVGestionF.AddBVFacBonFacVGBtn.ImageIndex:=4;// 28 For A
+          BonFacVGestionF.EditBVFacBonFacVGBtn.Enabled:= True;
+          BonFacVGestionF.EditBVFacBonFacVGBtn.ImageIndex:=5; // 29 For A
+          BonFacVGestionF.ValiderBVFacBonFacVGBtn.Enabled:= False;
+          BonFacVGestionF.ValiderBVFacBonFacVGBtn.ImageIndex:=30; // 12 For A
 end;
 
 procedure TFSplashVersement.FormShow(Sender: TObject);
@@ -531,11 +545,12 @@ begin
 
      BonRecGestionF.BonRecGFourNEWCredit.Caption := ResteVersementSLbl.Caption;
 
-      DisableBonRec;
+
 
      AnimateWindow(FSplashVersement.Handle, 175, AW_VER_NEGATIVE OR AW_SLIDE OR AW_HIDE);
      FSplashVersement.Release;
      sndPlaySound('C:\Windows\Media\speech on.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+     DisableBonRec;
 
 //--- this is for adding to the priduit
       begin
@@ -1026,6 +1041,7 @@ begin
      FSplashVersement.Release;
      sndPlaySound('C:\Windows\Media\speech on.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
 
+
 //--- this is for adding to the priduit
       begin
            MainForm.ProduitTable.Active:=False;
@@ -1462,6 +1478,10 @@ begin
           MainForm.CompteTable.Active:=True;
           MainForm.CompteTable.EnableControls;
        end;
+
+
+
+
 
    end else
       begin
