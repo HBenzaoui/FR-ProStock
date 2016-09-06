@@ -268,6 +268,8 @@ begin
 
  if Tag=0 then
  begin
+
+   DateBonLivGD.Date:=EncodeDate (YearOf(Now),MonthOf(Now),DayOf(Now));
 //-- use this code to make the montants look lake money values-------//
     BonLivTotalHTLbl.Caption :=       FloatToStrF(StrToFloat(BonLivTotalHTLbl.Caption),ffNumber,14,2) ;
 //    RemiseBonLivGEdt.Text :=       FloatToStrF(StrToFloat(RemiseBonLivGEdt.Text),ffNumber,14,2) ;
@@ -352,7 +354,8 @@ begin
       CanClose := false;
     end else
         begin
-
+         if  (MainForm.Bonv_livTable.FieldByName('valider_bvliv').AsBoolean = false)  then
+         begin
           MainForm.ClientTable.DisableControls;
           MainForm.ClientTable.Active:=false;
           MainForm.ClientTable.SQL.Clear;
@@ -412,6 +415,8 @@ begin
           MainForm.CompteTable.SQL.Text:='Select * FROM compte' ;
           MainForm.CompteTable.Active:=True;
           MainForm.CompteTable.EnableControls;
+
+         end;
 
         end;
   end  else
@@ -979,10 +984,9 @@ procedure TBonLivGestionF.ClientBonLivGCbxExit(Sender: TObject);
 var CodeC: Integer;
 OLDCreditC,RegCCreditC,OLDCreditCINI : Currency;
 begin
-
   if ClientBonLivGCbx.Text <> '' then
     begin
-     ClientBonLivGCbxChange(Sender);
+      ClientBonLivGCbxChange(Sender);
       MainForm.ClientTable.DisableControls;
       MainForm.ClientTable.Active:=false;
       MainForm.ClientTable.SQL.Clear;
@@ -1072,7 +1076,7 @@ begin
       MainForm.ClientTable.SQL.Text:='Select * FROM client' ;
       MainForm.ClientTable.Active:=True;
       MainForm.ClientTable.EnableControls;
-      if NOT (BonLivPListDataS.DataSet.IsEmpty) then
+      if NOT (BonLivPListDataS.DataSet.IsEmpty) AND NOT (MainForm.Bonv_livTable.FieldByName('valider_bvliv').AsBoolean = true) then
       begin
       ValiderBVlivBonLivGBtn.Enabled:= True;
       ValiderBVlivBonLivGBtn.ImageIndex:=12;

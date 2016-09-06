@@ -28,6 +28,7 @@ type
     procedure AdvToolButton2Click(Sender: TObject);
     procedure AdvToolButton3Click(Sender: TObject);
     procedure ResearchFamPEdtChange(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -67,7 +68,7 @@ end;
 
 procedure TFamPListF.FormShow(Sender: TObject);
 begin
-GrayForms;
+
 ResearchFamPEdt.SetFocus;
 end;
 
@@ -175,6 +176,11 @@ begin
       begin
         MainForm.FamproduitTable.Filtered := False;
        end;
+end;
+
+procedure TFamPListF.FormCreate(Sender: TObject);
+begin
+GrayForms;
 end;
 
 end.

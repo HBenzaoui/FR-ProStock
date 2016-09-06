@@ -1,7 +1,7 @@
 object BonFacVGestionF: TBonFacVGestionF
   Left = 0
   Top = 0
-  Caption = 'BonFacVGestionF'
+  Caption = 'Facture de Vente'
   ClientHeight = 702
   ClientWidth = 1089
   Color = clBtnFace
@@ -2301,6 +2301,8 @@ object BonFacVGestionF: TBonFacVGestionF
   end
   object BonFacVPListfrxRprt: TfrxReport
     Version = '5.4.6'
+    DataSet = frxBonFacVDT
+    DataSetName = 'frxBonFacVDB'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -2308,7 +2310,7 @@ object BonFacVGestionF: TBonFacVGestionF
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 42576.399521435200000000
-    ReportOptions.LastChange = 42581.715972511600000000
+    ReportOptions.LastChange = 42620.506281331020000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       ''
@@ -2721,7 +2723,7 @@ object BonFacVGestionF: TBonFacVGestionF
           Fill.BackColor = 13948116
           HAlign = haCenter
           Memo.UTF8W = (
-            'Taux')
+            'TVA')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -3055,7 +3057,7 @@ object BonFacVGestionF: TBonFacVGestionF
           Font.Style = []
           HAlign = haRight
           Memo.UTF8W = (
-            'Total TVA :')
+            'TVA :')
           ParentFont = False
           VAlign = vaCenter
         end

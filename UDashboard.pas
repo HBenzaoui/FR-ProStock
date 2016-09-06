@@ -115,7 +115,7 @@ DashboardF:   TDashboardF;
 implementation
 
 uses
-  UMainF, UDataModule;
+  UMainF, UDataModule,System.Threading;
 
 {$R *.dfm}
 
@@ -1159,8 +1159,6 @@ end;
 procedure TDashboardF.FormShow(Sender: TObject);
 begin
 MonthsData;
-
-
     with PieSeries1 do
     begin
       Clear;
@@ -1171,12 +1169,12 @@ MonthsData;
       Add(  StrToInt(NFADashBLbl.Caption), 'FCA',  $004444FF ) ;
     end;
 
-
-    ChartAnimation1.Play;
-
-    TeeAnimationTool1.Play;
-    TeeAnimationTool2.play;
-
+  TTask.Run ( procedure
+            begin
+              ChartAnimation1.Play;
+              TeeAnimationTool1.Play;
+              TeeAnimationTool2.play;
+            end);
 end;
 
 procedure TDashboardF.FormCreate(Sender: TObject);

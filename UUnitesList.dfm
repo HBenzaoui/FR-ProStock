@@ -12,7 +12,7 @@ object UnitesListF: TUnitesListF
   Font.Style = []
   KeyPreview = True
   OldCreateOrder = False
-  Position = poScreenCenter
+  Position = poMainFormCenter
   OnClose = FormClose
   OnKeyPress = FormKeyPress
   OnShow = FormShow

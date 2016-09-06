@@ -205,11 +205,12 @@ begin
        BonCtrGestionF.ClientBonCtrGCbx.Text:= MainForm.Bonv_ctrTable.FieldValues['clientbvctr'];
         end;
 
-     if MainForm.Bonv_ctrTable.FieldValues['RemisePerc']<> null then
+     if (MainForm.Bonv_ctrTable.FieldValues['RemisePerc']<> null) AND (MainForm.Bonv_ctrTable.FieldByName('remise_bvctr').AsCurrency <> 0) then
      begin
      BonCtrGestionF.RemisePerctageBonCtrGEdt.Text :=     CurrToStrF(MainForm.Bonv_ctrTable.FieldValues['RemisePerc'], ffNumber, 2);
+     BonCtrGestionF.RemiseBonCtrGEdt.Text :=     CurrToStrF(MainForm.Bonv_ctrTable.FieldValues['remise_bvctr'], ffNumber, 2);
      end;
-    BonCtrGestionF.RemiseBonCtrGEdt.Text :=     CurrToStrF(MainForm.Bonv_ctrTable.FieldValues['remise_bvctr'], ffNumber, 2);
+
 //    BonCtrGestionF.BonCtrTotalTVALbl.Caption :=   CurrToStrF(MainForm.Bonv_ctrTable.FieldValues['MontantTVA'], ffNumber, 2);
     BonCtrGestionF.BonCtrTotalTTCLbl.Caption :=   CurrToStrF(MainForm.Bonv_ctrTable.FieldValues['montttc_bvctr'], ffNumber, 2);
     BonCtrGestionF.BonCtrRegleLbl.Caption :=      CurrToStrF(MainForm.Bonv_ctrTable.FieldValues['montver_bvctr'], ffNumber, 2);
@@ -225,11 +226,10 @@ begin
             BonCtrGestionF.EnableBonCtr;
            end;
 
- //     BonCtrGestionF.Parent:= nil;
-//      BonCtrGestionF.BorderStyle := bsNone;
-//      BonCtrGestionF.WindowState := wsMaximized;
 
     BonCtrGestionF.Tag:=1;
+
+       MainForm.Bonv_ctr_listTable.Refresh;
 
       BonCtrGestionF.Show;
 

@@ -12,6 +12,7 @@ object BonCtrGestionF: TBonCtrGestionF
   Font.Style = []
   FormStyle = fsStayOnTop
   OldCreateOrder = False
+  Position = poOwnerFormCenter
   WindowState = wsMaximized
   OnActivate = FormActivate
   OnClose = FormClose
@@ -1965,13 +1966,13 @@ object BonCtrGestionF: TBonCtrGestionF
   object BonCtrPListDataS: TDataSource
     DataSet = MainForm.Bonv_ctr_listTable
     OnDataChange = BonCtrPListDataSDataChange
-    Left = 584
-    Top = 520
+    Left = 1014
+    Top = 540
   end
   object BonCtrTop10produit: TDataSource
     DataSet = MainForm.Bonv_ctr_Top10produit
-    Left = 850
-    Top = 533
+    Left = 1240
+    Top = 543
   end
   object frxComptoirListPDB: TfrxDBDataset
     UserName = 'frxComptoirListPDB'

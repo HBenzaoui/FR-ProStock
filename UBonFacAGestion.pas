@@ -324,7 +324,8 @@ begin
       CanClose := false;
     end else
         begin
-
+          if  (MainForm.Bona_facTable.FieldByName('valider_bafac').AsBoolean = false)  then
+         begin
           MainForm.FournisseurTable.DisableControls;
           MainForm.FournisseurTable.Active:=false;
           MainForm.FournisseurTable.SQL.Clear;
@@ -387,6 +388,8 @@ begin
           MainForm.CompteTable.Active:=True;
           MainForm.CompteTable.EnableControls;
 
+         end;
+
         end;
   end  else
   begin
@@ -398,14 +401,11 @@ end;
 procedure TBonFacAGestionF.FormShow(Sender: TObject);
 var CodeFA: Integer;
 begin
-//   Application.UpdateFormatSettings := false;
-//  FormatSettings.DecimalSeparator := ',';
-//  FormatSettings.ThousandSeparator := ' ';
-//  FormatSettings.CurrencyDecimals := 2;
-//  FormatSettings.DateSeparator:= '/';
+
 // use this tage when i click AddBVFacBonRecGBtn bon button
  if Tag=0 then
  begin
+    DateBonFacAGD.Date:=EncodeDate (YearOf(Now),MonthOf(Now),DayOf(Now));
 //-- use this code to make the montants look lake money values-------//
       BonFacATotalHTLbl.Caption :=       FloatToStrF(StrToFloat(BonFacATotalHTLbl.Caption),ffNumber,14,2) ;
       BonFacATotalTVALbl.Caption :=      FloatToStrF(StrToFloat(BonFacATotalTVALbl.Caption),ffNumber,14,2) ;

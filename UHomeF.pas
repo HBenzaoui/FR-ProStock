@@ -4,7 +4,8 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, AdvToolBtn, Vcl.ExtCtrls, Vcl.StdCtrls;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, AdvToolBtn, Vcl.ExtCtrls, Vcl.StdCtrls,
+  dxGDIPlusClasses;
 
 type
   THomeF = class(TForm)
@@ -23,6 +24,7 @@ type
     ClientFaceBtn: TAdvToolButton;
     FourFaceBtn: TAdvToolButton;
     ProduitFaceBtn: TAdvToolButton;
+    Image2: TImage;
     procedure BLFaceBtnClick(Sender: TObject);
     procedure FCVFaceBtnClick(Sender: TObject);
     procedure CTRFaceBtnClick(Sender: TObject);

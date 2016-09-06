@@ -2,7 +2,7 @@ object ReglementCGestionF: TReglementCGestionF
   Left = 0
   Top = 0
   BorderStyle = bsDialog
-  Caption = 'ReglementCGestionF'
+  Caption = 'R'#233'glement Client'
   ClientHeight = 403
   ClientWidth = 540
   Color = clBtnFace

@@ -272,16 +272,15 @@ begin
 // use this tage when i click AddBVCtrBonRecGBtn bon button
  if Tag=0 then
  begin
+ DateBonCtrGD.Date:=EncodeDate (YearOf(Now),MonthOf(Now),DayOf(Now));
+
 //-- use this code to make the montants look lake money values-------//
-//    BonCtrTotalHTLbl.Caption :=       FloatToStrF(StrToFloat(BonCtrTotalHTLbl.Caption),ffNumber,14,2) ;
-//    RemiseBonCtrGEdt.Text :=       FloatToStrF(StrToFloat(RemiseBonCtrGEdt.Text),ffNumber,14,2) ;
-//    BonCtrTotalTVALbl.Caption :=      FloatToStrF(StrToFloat(BonCtrTotalTVALbl.Caption),ffNumber,14,2) ;
+
       BonCtrTotalTTCLbl.Caption :=      FloatToStrF(StrToFloat(BonCtrTotalTTCLbl.Caption),ffNumber,14,2) ;
       BonCTotalTTCNewLbl.Caption :=      FloatToStrF(StrToFloat(BonCTotalTTCNewLbl.Caption),ffNumber,14,2) ;
       BonCtrRenduLbl.Caption :=         FloatToStrF(StrToFloat(BonCtrRenduLbl.Caption),ffNumber,14,2) ;
       BonCtrRegleLbl.Caption :=         FloatToStrF(StrToFloat(BonCtrRegleLbl.Caption),ffNumber,14,2) ;
-//    BonCtrGClientOLDCredit.Caption:= FloatToStrF(StrToFloat(BonCtrGClientOLDCredit.Caption),ffNumber,14,2) ;
-//    BonCtrGClientNEWCredit.Caption:= FloatToStrF(StrToFloat(BonCtrGClientNEWCredit.Caption),ffNumber,14,2) ;
+
  CodeBL:= MainForm.Bonv_ctrTable.FieldValues['code_bvctr']   ;
  NumBonCtrGEdt.Caption := 'CT'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5, CodeBL]);
   if MainForm.Bonv_ctrTable.FieldValues['code_c'] <> null then
@@ -846,8 +845,6 @@ begin
     begin
       sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
       ClientBonCtrGCbx.StyleElements:= [];
-   //   RequiredClientGlbl.Visible:= True;
-    //  NameClientGErrorP.Visible:= True;
 
       ClientBonCtrGCbx.SetFocus;
       CanClose := false;
@@ -860,27 +857,11 @@ begin
           MainForm.ClientTable.SQL.Text:='Select * FROM client WHERE LOWER(nom_c) LIKE LOWER('+ QuotedStr( ClientBonCtrGCbx.Text )+')'  ;
           MainForm.ClientTable.Active:=True;
 
-      {    MainForm.Mode_paiementTable.DisableControls;
-          MainForm.Mode_paiementTable.Active:=false;
-          MainForm.Mode_paiementTable.SQL.Clear;
-          MainForm.Mode_paiementTable.SQL.Text:='Select * FROM mode_paiement WHERE LOWER(nom_mdpai) LIKE LOWER('+ QuotedStr( ModePaieBonCtrGCbx.Text )+')'  ;
-          MainForm.Mode_paiementTable.Active:=True;
 
-          MainForm.CompteTable.DisableControls;
-          MainForm.CompteTable.Active:=false;
-          MainForm.CompteTable.SQL.Clear;
-          MainForm.CompteTable.SQL.Text:='Select * FROM compte WHERE LOWER(nom_cmpt) LIKE LOWER('+ QuotedStr( CompteBonCtrGCbx.Text )+')'  ;
-          MainForm.CompteTable.Active:=True;
-       }
 
           MainForm.Bonv_ctrTable.DisableControls;
           MainForm.Bonv_ctrTable.Edit;
           MainForm.Bonv_ctrTable.FieldValues['code_c']:= MainForm.ClientTable.FieldByName('code_c').AsInteger;
-    //      MainForm.Bonv_ctrTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
-      //    MainForm.Bonv_ctrTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
-//          MainForm.Bonv_ctrTable.FieldValues['obser_bvctr']:= ObserBonCtrGMem.Text;
-//          MainForm.Bonv_ctrTable.FieldValues['num_cheque_bvliv']:= NChequeBonCtrGCbx.Text;
-    //      MainForm.Bonv_ctrTable.FieldByName('montht_bvctr').AsCurrency:= StrToCurr(StringReplace(BonCtrTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
 
           if RemiseBonCtrGEdt.Text<>'' then
           begin
@@ -902,18 +883,7 @@ begin
           MainForm.ClientTable.Active:=True;
           MainForm.ClientTable.EnableControls;
 
-    {      MainForm.Mode_paiementTable.Active:=false;
-          MainForm.Mode_paiementTable.SQL.Clear;
-          MainForm.Mode_paiementTable.SQL.Text:='Select * FROM mode_paiement' ;
-          MainForm.Mode_paiementTable.Active:=True;
-          MainForm.Mode_paiementTable.EnableControls;
 
-          MainForm.CompteTable.Active:=false;
-          MainForm.CompteTable.SQL.Clear;
-          MainForm.CompteTable.SQL.Text:='Select * FROM compte' ;
-          MainForm.CompteTable.Active:=True;
-          MainForm.CompteTable.EnableControls;
-      }
         end;
   end  else
   begin
@@ -1049,7 +1019,7 @@ begin
     DeleteProduitBonCtrGBtn.Visible:= True;
     ClearProduitBonCtrGBtn.Visible:= True;
 
-    if ClientBonCtrGCbx.Text<>'' then
+    if (ClientBonCtrGCbx.Text<>'') AND (MainForm.Bonv_ctrTable.FieldByName('valider_bvctr').AsBoolean <> True)  then
     begin
     ValiderBVCtrBonCtrGBtn.Enabled:= True;
     ValiderBVCtrBonCtrGBtn.ImageIndex:=12;
@@ -2562,25 +2532,14 @@ var CodeOCB,CodeRF : Integer;
           MainForm.ClientTable.SQL.Text:='Select * FROM client WHERE LOWER(nom_c) LIKE LOWER('+ QuotedStr(ClientBonCtrGCbx.Text )+')'  ;
           MainForm.ClientTable.Active:=True;
 
-//          MainForm.Mode_paiementTable.DisableControls;
-//          MainForm.Mode_paiementTable.Active:=false;
-//          MainForm.Mode_paiementTable.SQL.Clear;
-//          MainForm.Mode_paiementTable.SQL.Text:='Select * FROM mode_paiement WHERE LOWER(nom_mdpai) LIKE LOWER('+ QuotedStr(ModePaieBonCtrGCbx.Text )+')'  ;
-//          MainForm.Mode_paiementTable.Active:=True;
-//
-//          MainForm.CompteTable.DisableControls;
-//          MainForm.CompteTable.Active:=false;
-//          MainForm.CompteTable.SQL.Clear;
-//          MainForm.CompteTable.SQL.Text:='Select * FROM compte WHERE LOWER(nom_cmpt) LIKE LOWER('+ QuotedStr(CompteBonCtrGCbx.Text )+')'  ;
-//          MainForm.CompteTable.Active:=True;
 
           MainForm.Bonv_ctrTable.Edit;
           MainForm.Bonv_ctrTable.FieldValues['code_c']:= MainForm.ClientTable.FieldByName('code_c').AsInteger;
           MainForm.Bonv_ctrTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
-//          MainForm.Bonv_ctrTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
-//          MainForm.Bonv_ctrTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
-//          MainForm.Bonv_ctrTable.FieldValues['obser_bvctr']:= ObserBonCtrGMem.Text;
-//          MainForm.Bonv_ctrTable.FieldValues['num_cheque_bvctr']:= NChequeBonCtrGCbx.Text;
+
+
+
+
           MainForm.Bonv_ctrTable.FieldByName('montht_bvctr').AsCurrency:= StrToCurr(StringReplace(BonCtrTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
           if RemiseBonCtrGEdt.Text<>'' then
           begin
@@ -2593,20 +2552,6 @@ var CodeOCB,CodeRF : Integer;
           MainForm.Bonv_ctrTable.FieldByName('montttc_bvctr').AsCurrency:=StrToCurr(StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
           MainForm.Bonv_ctrTable.FieldByName('valider_bvctr').AsBoolean:= True;
           MainForm.Bonv_ctrTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption) ;
-
-//          if (LowerCase(ModePaieBonCtrGCbx.Text)='espèce') OR (LowerCase(ModePaieBonCtrGCbx.Text)='espece') then
-//          begin
-//           MainForm.Bonv_ctrTable.FieldValues['code_mdpai']:=1 ;
-//          end;
-//           if (LowerCase(ModePaieBonCtrGCbx.Text)='chèque') OR (LowerCase(ModePaieBonCtrGCbx.Text)='cheque') then
-//          begin
-//           MainForm.Bonv_ctrTable.FieldValues['code_mdpai']:=2 ;
-//          end;
-//          if (LowerCase(ModePaieBonCtrGCbx.Text)='à terme' ) OR (LowerCase(ModePaieBonCtrGCbx.Text)='a terme' )
-//             OR (LowerCase(ModePaieBonCtrGCbx.Text)='À terme' ) then
-//          begin
-//           MainForm.Bonv_ctrTable.FieldValues['code_mdpai']:=3 ;
-//          end;
 
           MainForm.Bonv_ctrTable.Post;
 
@@ -2634,25 +2579,10 @@ var CodeOCB,CodeRF : Integer;
             MainForm.RegclientTable.FieldValues['time_rc']:=TimeOf(Now);
             MainForm.RegclientTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
             MainForm.RegclientTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
-//            MainForm.RegclientTable.FieldValues['obser_rc']:= ObserBonCtrGMem.Text;
-//            MainForm.RegclientTable.FieldValues['num_cheque_rc']:= NChequeBonCtrGCbx.Text;
             MainForm.RegclientTable.FieldValues['bon_or_no_rc']:= 4;
 
             MainForm.RegclientTable.FieldByName('montver_rc').AsCurrency:=StrToCurr(StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
 
-//            if (LowerCase(BonCtrGestionF.ModePaieBonCtrGCbx.Text)='espèce') OR (LowerCase(ModePaieBonCtrGCbx.Text)='espece') then
-//            begin
-//             MainForm.RegclientTable.FieldValues['code_mdpai']:=1 ;
-//            end;
-//             if (LowerCase(BonCtrGestionF.ModePaieBonCtrGCbx.Text)='chèque') OR (LowerCase(BonCtrGestionFodePaieBonCtrGCbx.Text)='cheque') then
-//            begin
-//             MainForm.RegclientTable.FieldValues['code_mdpai']:=2 ;
-//            end;
-//            if (LowerCase(BonCtrGestionF.ModePaieBonCtrGCbx.Text)='à terme' ) OR (LowerCase(BonCtrGestionFModePaieBonCtrGCbx.Text)='a terme' )
-//               OR (LowerCase(BonCtrGestionF.ModePaieBonCtrGCbx.Text)='À terme' ) then
-//            begin
-//             MainForm.RegclientTable.FieldValues['code_mdpai']:=3 ;
-//            end;
 
             MainForm.RegclientTable.Post;
             MainForm.RegclientTable.Refresh;
@@ -2666,6 +2596,9 @@ var CodeOCB,CodeRF : Integer;
                 MainForm.RegclientTable.SQL.Text:='SELECT * FROM regclient WHERE code_bvctr ='+IntToStr(MainForm.Bonv_ctrTable.FieldValues['code_bvctr']) ;
                 MainForm.RegclientTable.Active:=True;
 
+                if NOT (MainForm.RegclientTable.IsEmpty) then
+                begin
+
 
                   MainForm.RegclientTable.Edit;
                   MainForm.RegclientTable.FieldValues['code_bvctr']:= MainForm.Bonv_ctrTable.FieldValues['code_bvctr'];
@@ -2675,28 +2608,49 @@ var CodeOCB,CodeRF : Integer;
                   MainForm.RegclientTable.FieldValues['time_rc']:=TimeOf(Now);
                   MainForm.RegclientTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
                   MainForm.RegclientTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
-//                  MainForm.RegclientTable.FieldValues['obser_rc']:= ObserBonLivGMem.Text;
-//                  MainForm.RegclientTable.FieldValues['num_cheque_rc']:= NChequeBonLivGCbx.Text;
                   MainForm.RegclientTable.FieldValues['bon_or_no_rc']:= 4;
 
                   MainForm.RegclientTable.FieldByName('montver_rc').AsCurrency:=StrToCurr(StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
 
-//                  if (LowerCase(ModePaieBonCtrGCbx.Text)='espèce') OR (LowerCase(ModePaieBonCtrGCbx.Text)='espece') then
-//                  begin
-//                   MainForm.RegclientTable.FieldValues['code_mdpai']:=1 ;
-//                  end;
-//                   if (LowerCase(BonCtrGestionF.ModePaieBonCtrGCbx.Text)='chèque') OR (LowerCase(ModePaieBonCtrGCbx.Text)='cheque') then
-//                  begin
-//                   MainForm.RegclientTable.FieldValues['code_mdpai']:=2 ;
-//                  end;
-//                  if (LowerCase(ModePaieBonCtrGCbx.Text)='à terme' ) OR (LowerCase(ModePaieBonCtrGCbx.Text)='a terme' )
-//                     OR (LowerCase(ModePaieBonCtrGCbx.Text)='À terme' ) then
-//                  begin
-//                   MainForm.RegclientTable.FieldValues['code_mdpai']:=3 ;
-//                  end;
 
                   MainForm.RegclientTable.Post;
                   MainForm.RegclientTable.Refresh;
+
+                end else
+                    begin
+
+                        MainForm.RegclientTable.Active:=false;
+                        MainForm.RegclientTable.SQL.Clear;
+                        MainForm.RegclientTable.SQL.Text:='SELECT * FROM regclient ';
+                        MainForm.RegclientTable.Active:=True;
+
+                         if NOT (MainForm.RegclientTable.IsEmpty) then
+                        begin
+                         MainForm.RegclientTable.Last;
+                         CodeRF:= MainForm.RegclientTable.FieldValues['code_rc'] + 1;
+                        end else
+                            begin
+                             CodeRF:= 1;
+                          end;
+
+                        MainForm.RegclientTable.Append;
+                        MainForm.RegclientTable.FieldValues['code_rc']:= CodeRF;
+                        MainForm.RegclientTable.FieldValues['code_bvctr']:= MainForm.Bonv_ctrTable.FieldValues['code_bvctr'];
+                        MainForm.RegclientTable.FieldValues['nom_rc']:= NumBonCtrGEdt.Caption;
+                        MainForm.RegclientTable.FieldValues['code_c']:= MainForm.ClientTable.FieldByName('code_c').AsInteger;
+                        MainForm.RegclientTable.FieldValues['date_rc']:= DateOf(Today);
+                        MainForm.RegclientTable.FieldValues['time_rc']:=TimeOf(Now);
+                        MainForm.RegclientTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
+                        MainForm.RegclientTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
+                        MainForm.RegclientTable.FieldValues['bon_or_no_rc']:= 4;
+
+                        MainForm.RegclientTable.FieldByName('montver_rc').AsCurrency:=StrToCurr(StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
+
+
+                        MainForm.RegclientTable.Post;
+                        MainForm.RegclientTable.Refresh;
+
+                    end;
 
                 MainForm.RegclientTable.Active:=false;
                 MainForm.RegclientTable.SQL.Clear;
@@ -2707,19 +2661,7 @@ var CodeOCB,CodeRF : Integer;
               end;
 
         end;
-
- //-----------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-
-
-
-     //     MainForm.Bona_recTable.EnableControls;
-
-//          MainForm.ClientTable.Edit;
-//          MainForm.ClientTable.FieldByName('oldcredit_c').AsCurrency:=
-//          ((StrToCurr(StringReplace(BonCtrGClientNEWCredit.Caption, #32, '', [rfReplaceAll]))));
-//          MainForm.ClientTable.Post;
+    //-----------------------------------------------------------------------------------------------------------------------------------------------------------
 
           MainForm.ClientTable.Active:=false;
           MainForm.ClientTable.SQL.Clear;
@@ -2755,21 +2697,9 @@ var CodeOCB,CodeRF : Integer;
                     MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nom_ocb']:= 'Vente au Comptoir N° '+NumBonCtrGEdt.Caption;
                     MainForm.Opt_cas_bnk_CaisseTable.FieldValues['third_ocb']:= ClientBonCtrGCbx.Text;
                     MainForm.Opt_cas_bnk_CaisseTable.FieldValues['encaiss_ocb']:= StrToCurr(StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
-            //        MainForm.Opt_cas_bnk_CaisseTable.FieldValues['decaiss_ocb']:= ;
 
-        //             if (LowerCase(ModePaieBonCtrGCbx.Text)='espèce') OR (LowerCase(ModePaieBonCtrGCbx.Text)='espece') then
-        //            begin
                      MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=1 ;
-        //            end;
-        //             if (LowerCase(ModePaieBonCtrGCbx.Text)='chèque') OR (LowerCase(ModePaieBonCtrGCbx.Text)='cheque') then
-        //            begin
-        //             MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=2 ;
-        //            end;
-        //            if (LowerCase(ModePaieBonCtrGCbx.Text)='à terme' ) OR (LowerCase(ModePaieBonCtrGCbx.Text)='a terme' )
-        //               OR (LowerCase(ModePaieBonCtrGCbx.Text)='À terme' ) then
-        //            begin
-        //             MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=3 ;
-        //            end;
+
 
                     MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_cmpt']:=MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
                     MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nature_ocb']:= MainForm.CompteTable.FieldByName('nature_cmpt').AsBoolean;
@@ -2796,27 +2726,19 @@ var CodeOCB,CodeRF : Integer;
                   MainForm.Opt_cas_bnk_CaisseTable.Active:=True;
 
 
+
+                  if NOT (MainForm.Opt_cas_bnk_CaisseTable.IsEmpty) then
+                  
+                  begin
                     MainForm.Opt_cas_bnk_CaisseTable.Edit;
                     MainForm.Opt_cas_bnk_CaisseTable.FieldValues['date_ocb']:= DateOf(Today);
                     MainForm.Opt_cas_bnk_CaisseTable.FieldValues['time_ocb']:= TimeOf(Now);;
                     MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nom_ocb']:= 'Vente au Comptoir N° '+NumBonCtrGEdt.Caption;
                     MainForm.Opt_cas_bnk_CaisseTable.FieldValues['third_ocb']:= ClientBonCtrGCbx.Text;
                     MainForm.Opt_cas_bnk_CaisseTable.FieldValues['encaiss_ocb']:= StrToCurr(StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
-            //        MainForm.Opt_cas_bnk_CaisseTable.FieldValues['decaiss_ocb']:= ;
 
-        //             if (LowerCase(ModePaieBonCtrGCbx.Text)='espèce') OR (LowerCase(ModePaieBonCtrGCbx.Text)='espece') then
-        //            begin
                      MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=1 ;
-        //            end;
-        //             if (LowerCase(ModePaieBonCtrGCbx.Text)='chèque') OR (LowerCase(ModePaieBonCtrGCbx.Text)='cheque') then
-        //            begin
-        //             MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=2 ;
-        //            end;
-        //            if (LowerCase(ModePaieBonCtrGCbx.Text)='à terme' ) OR (LowerCase(ModePaieBonCtrGCbx.Text)='a terme' )
-        //               OR (LowerCase(ModePaieBonCtrGCbx.Text)='À terme' ) then
-        //            begin
-        //             MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=3 ;
-        //            end;
+
 
                     MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_cmpt']:=MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
                     MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nature_ocb']:= MainForm.CompteTable.FieldByName('nature_cmpt').AsBoolean;
@@ -2826,6 +2748,51 @@ var CodeOCB,CodeRF : Integer;
                     MainForm.Opt_cas_bnk_CaisseTable.Post;
                     MainForm.Opt_cas_bnk_CaisseTable.Refresh;
                     MainForm.Opt_cas_bnk_BankTable.Refresh;
+                  
+                  end else
+                      begin
+
+                          MainForm.Opt_cas_bnk_CaisseTable.Active:=false;
+                          MainForm.Opt_cas_bnk_CaisseTable.SQL.Clear;
+                          MainForm.Opt_cas_bnk_CaisseTable.SQL.Text:='SELECT * FROM opt_cas_bnk' ;
+                          MainForm.Opt_cas_bnk_CaisseTable.Active:=True;
+
+
+                          if NOT (MainForm.Opt_cas_bnk_CaisseTable.IsEmpty) then
+                          begin
+                          MainForm.Opt_cas_bnk_CaisseTable.Last;
+                          CodeOCB:= MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ocb'] + 1;
+                          end else
+                              begin
+                               CodeOCB:= 1;
+                              end;
+
+                            MainForm.Opt_cas_bnk_CaisseTable.Append;
+                            MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ocb']:= CodeOCB;
+                            MainForm.Opt_cas_bnk_CaisseTable.FieldValues['date_ocb']:= DateOf(Today);
+                            MainForm.Opt_cas_bnk_CaisseTable.FieldValues['time_ocb']:= TimeOf(Now);;
+                            MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nom_ocb']:= 'Vente au Comptoir N° '+NumBonCtrGEdt.Caption;
+                            MainForm.Opt_cas_bnk_CaisseTable.FieldValues['third_ocb']:= ClientBonCtrGCbx.Text;
+                            MainForm.Opt_cas_bnk_CaisseTable.FieldValues['encaiss_ocb']:= StrToCurr(StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
+
+                             MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=1 ;
+
+
+                            MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_cmpt']:=MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
+                            MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nature_ocb']:= MainForm.CompteTable.FieldByName('nature_cmpt').AsBoolean;
+                            MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption) ;
+                            MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_bvctr']:= MainForm.Bonv_ctrTable.FieldValues['code_bvctr'];
+
+                            MainForm.Opt_cas_bnk_CaisseTable.Post;
+                            MainForm.Opt_cas_bnk_CaisseTable.Refresh;
+                            MainForm.Opt_cas_bnk_BankTable.Refresh;
+
+
+                            MainForm.Opt_cas_bnk_CaisseTable.Active:=false;
+                            MainForm.Opt_cas_bnk_CaisseTable.SQL.Clear;
+                            MainForm.Opt_cas_bnk_CaisseTable.SQL.Text:='SELECT * FROM opt_cas_bnk where nature_ocb = false' ;
+                            MainForm.Opt_cas_bnk_CaisseTable.Active:=True;
+                      end;
 
 
                     MainForm.Opt_cas_bnk_CaisseTable.Active:=false;
@@ -2837,17 +2804,7 @@ var CodeOCB,CodeRF : Integer;
 
          end;
 
-//          MainForm.Mode_paiementTable.Active:=false;
-//          MainForm.Mode_paiementTable.SQL.Clear;
-//          MainForm.Mode_paiementTable.SQL.Text:='Select * FROM mode_paiement' ;
-//          MainForm.Mode_paiementTable.Active:=True;
-//          MainForm.Mode_paiementTable.EnableControls;
-//
-//          MainForm.CompteTable.Active:=false;
-//          MainForm.CompteTable.SQL.Clear;
-//          MainForm.CompteTable.SQL.Text:='Select * FROM compte' ;
-//          MainForm.CompteTable.Active:=True;
-//          MainForm.CompteTable.EnableControls;
+
        end;
 
 

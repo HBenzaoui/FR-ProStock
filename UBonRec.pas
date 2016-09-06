@@ -99,17 +99,14 @@ begin
   mainform.Bona_recTable.sql.Text:='SELECT * FROM bona_rec  ';
   MainForm.Bona_recTable.Active:= True;
 
-
  BonRecGestionF := TBonRecGestionF.Create(nil);
  try
 
-    if Assigned(BonRecF) then
+  if Assigned(BonRecF) then
   begin
   ResearchBARecEdt.Text:='';
   end;
-
     codeBR:= 0;
-
      if MainForm.Bona_recTable.RecordCount <= 0 then
       begin
 
@@ -134,30 +131,24 @@ begin
            begin
         //   MainForm.Bona_recTable.Last;
            codeBR := MainForm.Bona_recTable.FieldValues['code_barec'];
+
+
            end else
-           begin
-        //   MainForm.Bona_recTable.Last;
-          // codeBR := MainForm.Bona_recTable.FieldValues['code_barec'];
-           MainForm.Bona_recTable.Insert;
-           MainForm.Bona_recTable.FieldValues['code_barec']:= codeBR + 1;
-           MainForm.Bona_recTable.FieldValues['num_barec']:=  'BR'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5,(codeBR + 1)]);
-           MainForm.Bona_recTable.FieldValues['date_barec']:= DateOf(Today);
-           MainForm.Bona_recTable.FieldValues['time_barec']:= TimeOf(Now);
-           MainForm.Bona_recTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
-           MainForm.Bona_recTable.Post;
-
-
-           end;
+                 begin
+              //   MainForm.Bona_recTable.Last;
+                // codeBR := MainForm.Bona_recTable.FieldValues['code_barec'];
+                 MainForm.Bona_recTable.Insert;
+                 MainForm.Bona_recTable.FieldValues['code_barec']:= codeBR + 1;
+                 MainForm.Bona_recTable.FieldValues['num_barec']:=  'BR'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5,(codeBR + 1)]);
+                 MainForm.Bona_recTable.FieldValues['date_barec']:= DateOf(Today);
+                 MainForm.Bona_recTable.FieldValues['time_barec']:= TimeOf(Now);
+                 MainForm.Bona_recTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
+                 MainForm.Bona_recTable.Post;
+                 end;
      //    BonRecGestionF.ProduitsListDBGridEh.DataSource.DataSet.EnableControls;
           end;
 
-//      MainForm.Bona_recPlistTable.Active:=False;
-//      MainForm.Bona_recPlistTable.SQL.Clear;
-//      MainForm.Bona_recPlistTable.SQL.Text:= 'SELECT * FROM bona_rec_list';
-//      MainForm.Bona_recPlistTable.Active:=True;
-
-MainForm.Bona_recPlistTable.IndexFieldNames:='code_barec';
-//MainForm.Bona_recPlistTable.Refresh;
+   MainForm.Bona_recPlistTable.IndexFieldNames:='code_barec';
 
            BonRecGestionF.Tag:= 0;
       BonRecGestionF.ShowModal;

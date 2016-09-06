@@ -2,7 +2,7 @@ object BonRecGestionF: TBonRecGestionF
   Left = 2506
   Top = 151
   Anchors = [akTop, akRight]
-  Caption = 'BonRecGestionF'
+  Caption = 'Bon de R'#233'ception'
   ClientHeight = 702
   ClientWidth = 1089
   Color = clBtnFace

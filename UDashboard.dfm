@@ -606,7 +606,7 @@ object DashboardF: TDashboardF
         Width = 157
         Height = 16
         Anchors = [akTop, akRight]
-        Caption = 'Top montant Fournisseur:'
+        Caption = 'Top Montant Fournisseur:'
         Color = 4207405
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
@@ -835,11 +835,11 @@ object DashboardF: TDashboardF
         523
         289)
       object Label22: TLabel
-        Left = 35
+        Left = 21
         Top = 63
-        Width = 117
+        Width = 131
         Height = 16
-        Caption = 'Nombre de Produit:'
+        Caption = 'Nombre des Produits:'
         Color = 4207405
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
@@ -931,11 +931,11 @@ object DashboardF: TDashboardF
         StyleElements = []
       end
       object Label5: TLabel
-        Left = 9
+        Left = 62
         Top = 141
-        Width = 159
+        Width = 106
         Height = 16
-        Caption = 'Nombre de Bons Livration:'
+        Caption = 'N'#176' Bons Livration:'
         Color = 4207405
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
@@ -983,7 +983,7 @@ object DashboardF: TDashboardF
         Top = 187
         Width = 156
         Height = 16
-        Caption = 'N'#176' des Bons de Comptoir :'
+        Caption = 'N'#176' des Bons au Comptoir :'
         Color = 4207405
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
@@ -1027,11 +1027,11 @@ object DashboardF: TDashboardF
         StyleElements = []
       end
       object Label13: TLabel
-        Left = 32
+        Left = 54
         Top = 235
-        Width = 136
+        Width = 114
         Height = 16
-        Caption = 'N'#176' des bons r'#233'ception:'
+        Caption = 'N'#176' Bons R'#233'ception:'
         Color = 4207405
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
@@ -1077,9 +1077,9 @@ object DashboardF: TDashboardF
       object Label20: TLabel
         Left = 48
         Top = 259
-        Width = 120
+        Width = 121
         Height = 16
-        Caption = 'N'#176' Factures d'#39'Achat:'
+        Caption = 'N'#176' Factures D'#39'Achat:'
         Color = 4207405
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405

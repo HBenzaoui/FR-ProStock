@@ -282,14 +282,12 @@ end;
 procedure TBonFacVGestionF.FormShow(Sender: TObject);
 var CodeFV: Integer;
 begin
-// Application.UpdateFormatSettings := false;
-//  FormatSettings.DecimalSeparator := ',';
-//  FormatSettings.ThousandSeparator := ' ';
-//  FormatSettings.CurrencyDecimals := 2;
-//  FormatSettings.DateSeparator:= '/';
+
 // use this tage when i click AddBVFacBonRecGBtn bon button
  if Tag=0 then
  begin
+    DateBonFacVGD.Date:=EncodeDate (YearOf(Now),MonthOf(Now),DayOf(Now));
+
 //-- use this code to make the montants look lake money values-------//
    BonFacVTotalHTLbl.Caption :=       FloatToStrF(StrToFloat(BonFacVTotalHTLbl.Caption),ffNumber,14,2) ;
    BonFacVTotalTVALbl.Caption :=      FloatToStrF(StrToFloat(BonFacVTotalTVALbl.Caption),ffNumber,14,2) ;
@@ -1955,7 +1953,8 @@ begin
       CanClose := false;
     end else
         begin
-
+         if  (MainForm.Bonv_facTable.FieldByName('valider_bvfac').AsBoolean = false)  then
+         begin
           MainForm.ClientTable.DisableControls;
           MainForm.ClientTable.Active:=false;
           MainForm.ClientTable.SQL.Clear;
@@ -2017,6 +2016,8 @@ begin
           MainForm.CompteTable.SQL.Text:='Select * FROM compte' ;
           MainForm.CompteTable.Active:=True;
           MainForm.CompteTable.EnableControls;
+
+         end;
 
         end;
   end  else

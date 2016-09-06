@@ -792,6 +792,7 @@ begin
 // use this tage when i click AddBARecBonRecGBtn bon button
  if Tag = 0 then
  begin
+    DateBonRecGD.Date:=EncodeDate (YearOf(Now),MonthOf(Now),DayOf(Now));
 //-- use this code to make the montants look lake money values-------//
     BonRecTotalHTLbl.Caption :=       FloatToStrF(StrToFloat(BonRecTotalHTLbl.Caption),ffNumber,14,2) ;
 //    RemiseBonRecGEdt.Text :=       FloatToStrF(StrToFloat(RemiseBonRecGEdt.Text),ffNumber,14,2) ;
@@ -917,7 +918,7 @@ begin
       MainForm.FournisseurTable.SQL.Text:='Select * FROM fournisseur' ;
       MainForm.FournisseurTable.Active:=True;
       MainForm.FournisseurTable.EnableControls;
-      if NOT (BonRecPListDataS.DataSet.IsEmpty) then
+      if NOT (BonRecPListDataS.DataSet.IsEmpty) AND NOT (MainForm.Bona_recTable.FieldByName('valider_barec').AsBoolean = true) then
       begin
       ValiderBARecBonRecGBtn.Enabled:= True;
       ValiderBARecBonRecGBtn.ImageIndex:=12;
@@ -981,7 +982,8 @@ procedure TBonRecGestionF.FormCloseQuery(Sender: TObject;
       CanClose := false;
     end else
         begin
-
+         if  (MainForm.Bona_recTable.FieldByName('valider_barec').AsBoolean = false)  then
+         begin
           MainForm.FournisseurTable.DisableControls;
           MainForm.FournisseurTable.Active:=false;
           MainForm.FournisseurTable.SQL.Clear;
@@ -1024,7 +1026,7 @@ procedure TBonRecGestionF.FormCloseQuery(Sender: TObject;
           MainForm.Bona_recTable.Post;
           MainForm.Bona_recTable.EnableControls;
 
-                    MainForm.FournisseurTable.Active:=false;
+          MainForm.FournisseurTable.Active:=false;
           MainForm.FournisseurTable.SQL.Clear;
           MainForm.FournisseurTable.SQL.Text:='Select * FROM fournisseur' ;
           MainForm.FournisseurTable.Active:=True;
@@ -1041,6 +1043,8 @@ procedure TBonRecGestionF.FormCloseQuery(Sender: TObject;
           MainForm.CompteTable.SQL.Text:='Select * FROM compte' ;
           MainForm.CompteTable.Active:=True;
           MainForm.CompteTable.EnableControls;
+
+          end;
 
         end;
   end  else
@@ -1099,10 +1103,8 @@ begin
     begin
     DeleteProduitBonRecGBtn.Visible:= False;
     ClearProduitBonRecGBtn.Visible:= False;
-    //AddBARecBonRecGBtn.Enabled:= False;
-    //AddBARecBonRecGBtn.ImageIndex:=28;
-    //EditBARecBonRecGBtn.Enabled:= False;
-    //EditBARecBonRecGBtn.ImageIndex:=29;
+
+
     ValiderBARecBonRecGBtn.Enabled:= False;
     ValiderBARecBonRecGBtn.ImageIndex:=30;
 
@@ -1637,17 +1639,13 @@ begin
       MainForm.FournisseurTable.SQL.Clear;
       MainForm.FournisseurTable.SQL.Text:='Select * FROM fournisseur WHERE LOWER(nom_f) LIKE LOWER('+ QuotedStr( FournisseurBonRecGCbx.Text )+')'  ;
       MainForm.FournisseurTable.Active:=True;
-
-
   EnableBonRec;
-
  // this is to unvalider the bon
   begin
   MainForm.Bona_recTable.Edit;
   MainForm.Bona_recTable.FieldByName('valider_barec').AsBoolean:= False;
   MainForm.Bona_recTable.Post;
   end;
-
 
 // use this code to rest the old credit to the to the last time before he pay anything in that bon so you can aclculate again
   BonRecGFourOLDCredit.Caption:=
@@ -1661,7 +1659,6 @@ begin
       MainForm.FournisseurTable.SQL.Text:='Select * FROM fournisseur '  ;
       MainForm.FournisseurTable.Active:=True;
       MainForm.FournisseurTable.EnableControls;
-
   //-------------------------------------------
     begin
            MainForm.ProduitTable.Active:=False;
@@ -1692,8 +1689,7 @@ begin
             MainForm.ProduitTable.Post;
             MainForm.SQLQuery.Next;
            end;
-
-            MainForm.ProduitTable.Active:=False;
+           MainForm.ProduitTable.Active:=False;
            MainForm.ProduitTable.SQL.Clear;
            MainForm.ProduitTable.SQL.Text:='SELECT * FROM produit ' ;
            MainForm.ProduitTable.Active:=True;
@@ -1701,9 +1697,7 @@ begin
            MainForm.SQLQuery.Active:=False;
            MainForm.SQLQuery.SQL.Clear;
           MainForm.Bona_recTable.Refresh;
-
      end;
-
 
 end;
 

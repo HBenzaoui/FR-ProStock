@@ -196,10 +196,26 @@ type
     procedure PrixVTTCA2ProduitEdtClick(Sender: TObject);
     procedure PrixVHTDProduitEdtKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
-    procedure PrixVHTDProduitEdtKeyPress(Sender: TObject; var Key: Char);
     procedure CodeBarProduitGEdtExit(Sender: TObject);
     procedure CodeBarProduitGEdtKeyPress(Sender: TObject; var Key: Char);
     procedure FormCreate(Sender: TObject);
+    procedure PrixVTTCDProduitEdtKeyPress(Sender: TObject; var Key: Char);
+    procedure PrixAHTProduitEdtKeyPress(Sender: TObject; var Key: Char);
+    procedure PrixATTCProduitEdtKeyPress(Sender: TObject; var Key: Char);
+    procedure PrixVHTDProduitEdtKeyPress(Sender: TObject; var Key: Char);
+    procedure MargeDProduitEdtKeyPress(Sender: TObject; var Key: Char);
+    procedure PrixVHTRProduitEdtKeyPress(Sender: TObject; var Key: Char);
+    procedure PrixVTTCRProduitEdtKeyPress(Sender: TObject; var Key: Char);
+    procedure MargeRProduitEdtKeyPress(Sender: TObject; var Key: Char);
+    procedure PrixVHTGProduitEdtKeyPress(Sender: TObject; var Key: Char);
+    procedure PrixVTTCGProduitEdtKeyPress(Sender: TObject; var Key: Char);
+    procedure MargeGProduitEdtKeyPress(Sender: TObject; var Key: Char);
+    procedure PrixVHTA1ProduitEdtKeyPress(Sender: TObject; var Key: Char);
+    procedure PrixVTTCA1ProduitEdtKeyPress(Sender: TObject; var Key: Char);
+    procedure MargeA1ProduitEdtKeyPress(Sender: TObject; var Key: Char);
+    procedure PrixVHTA2ProduitEdtKeyPress(Sender: TObject; var Key: Char);
+    procedure PrixVTTCA2ProduitEdtKeyPress(Sender: TObject; var Key: Char);
+    procedure MargeA2ProduitEdtKeyPress(Sender: TObject; var Key: Char);
   private
     { Private declarations }
      lastkey:char;
@@ -309,23 +325,17 @@ var CodeB: String;
 begin
 
    //------ this code is to select the last code_cb in the database and add the value to oune number 1070000000111 then pust it in tyhe code a barre new number
-
       MainForm.CodebarresTable.Active:= False;
       MainForm.CodebarresTable.sql.Clear;
       mainform.CodebarresTable.SQL.Text:= 'SELECT * FROM codebarres ORDER by code_cb '   ;
       MainForm.CodebarresTable.Active:= True;
       MainForm.CodebarresTable.IndexFieldNames:='';
-
-      //------ if the edit was empty set oune number first when the tabel is empty if not empty add our number to the last in the databse
-
+  //------ if the edit was empty set oune number first when the tabel is empty if not empty add our number to the last in the databse
      if IsValidEntry(CodeBarProduitGEdt.Text)   then
     begin
-
       if CodeBarProduitGEdt.Text = ''  then
          begin
-
           if (MainForm.CodebarresTable.RecordCount <= 0) AND (MainForm.ProduitTable.RecordCount <= 0)   then
-
              begin
              CodeBarProduitGEdt.Text := '1050000000111' ;
              CodeBarProduitGEdt.Text  := IntToStr(  StrToInt64(CodeBarProduitGEdt.Text) + 6);
@@ -333,59 +343,42 @@ begin
             begin
               MainForm.ProduitTable.Last;
               CodeB := IntToStr(  StrToInt64(MainForm.ProduitTable.FieldValues['code_p']) + 1050000000111);
-
-              if   (MainForm.ProduitTable.Locate('codebar_p', CodeB, [loCaseInsensitive]))
+                if   (MainForm.ProduitTable.Locate('codebar_p', CodeB, [loCaseInsensitive]))
                  OR
                    (MainForm.CodebarresTable.Locate('nom_cb', CodeB, [loCaseInsensitive]))
                  then
                  begin
-
-                 CodeBarProduitGEdt.Text := IntToStr(  StrToInt64(CodeB) + Random(99) );
-
-                 end else
+                   CodeBarProduitGEdt.Text := IntToStr(  StrToInt64(CodeB) + Random(99) );
+                  end else
                      begin
-
-
-                       CodeBarProduitGEdt.Text:= CodeB;
+                        CodeBarProduitGEdt.Text:= CodeB;
                      end;
                  end;
              end else
-
-   //------ if the edit not empty add our number to the last in the edit
-
-       begin
-              if (MainForm.CodebarresTable.RecordCount <= 0) AND (MainForm.ProduitTable.RecordCount <= 0) then
-
+       //------ if the edit not empty add our number to the last in the edit
+           begin
+         if (MainForm.CodebarresTable.RecordCount <= 0) AND (MainForm.ProduitTable.RecordCount <= 0) then
              begin
              CodeBarProduitGEdt.Text := IntToStr(  StrToInt64(CodeBarProduitGEdt.Text) + StrToInt64(MainForm.ProduitTable.FieldValues['code_p']));
-
-            end else
-
-             begin
+           end else
+                begin
              // use this tag to put the random number at first from the number 1050000000111 + code_p then the second press from the edit + code_p
                 if RandomCBProduitGBtn.Tag = 0 then
                 begin
                     MainForm.ProduitTable.Last;
                     CodeB := IntToStr(  StrToInt64(MainForm.ProduitTable.FieldValues['code_p']) + 1050000000111);
-
-                  if  (MainForm.ProduitTable.Locate('codebar_p', CodeB, [loCaseInsensitive]))
+                   if  (MainForm.ProduitTable.Locate('codebar_p', CodeB, [loCaseInsensitive]))
                      OR
                       (MainForm.CodebarresTable.Locate('nom_cb', CodeB, [loCaseInsensitive]))
                      then
                      begin
-
-                      CodeBarProduitGEdt.Text := IntToStr(  StrToInt64(CodeBarProduitGEdt.Text) + Random(99) );
-
+                       CodeBarProduitGEdt.Text := IntToStr(  StrToInt64(CodeBarProduitGEdt.Text) + Random(99) );
                      end else
                          begin
-
                           CodeBarProduitGEdt.Text:= CodeB;
-
                          end;
                     end ;
-
                 if RandomCBProduitGBtn.Tag = 1 then
-
                 begin
                   CodeB := IntToStr(  StrToInt64(CodeBarProduitGEdt.Text) + StrToInt64(MainForm.ProduitTable.FieldValues['code_p']));
                  if   (MainForm.ProduitTable.Locate('codebar_p', CodeB, [loCaseInsensitive]))
@@ -393,38 +386,25 @@ begin
                       (MainForm.CodebarresTable.Locate('nom_cb', CodeB, [loCaseInsensitive]))
                  then
                  begin
-
                  CodeBarProduitGEdt.Text := IntToStr(  StrToInt64(CodeBarProduitGEdt.Text) + Random(99) );
-
                  end else
                      begin
-
                       CodeBarProduitGEdt.Text:= CodeB;
-
                      end;
                   end;
-
               end;
-
        end;
-
       RandomCBProduitGBtn.Tag := 1 ;
       CodeBarProduitGEdt.SelectAll;
       CodeBarProduitGEdt.SetFocus;
       MainForm.CodebarresTable.IndexFieldNames:='code_p';
-
-
      end else
-
    begin
           CodeBarProduitGEdt.Text := '' ;
      begin
-
       if CodeBarProduitGEdt.Text = ''  then
          begin
-
           if (MainForm.CodebarresTable.RecordCount <= 0) AND (MainForm.ProduitTable.RecordCount <= 0)   then
-
              begin
              CodeBarProduitGEdt.Text := '1050000000111' ;
              CodeBarProduitGEdt.Text  := IntToStr(  StrToInt64(CodeBarProduitGEdt.Text) + 6);
@@ -432,59 +412,42 @@ begin
             begin
               MainForm.ProduitTable.Last;
               CodeB := IntToStr(  StrToInt64(MainForm.ProduitTable.FieldValues['code_p']) + 1050000000111);
-
               if   (MainForm.ProduitTable.Locate('codebar_p', CodeB, [loCaseInsensitive]))
                  OR
                    (MainForm.CodebarresTable.Locate('nom_cb', CodeB, [loCaseInsensitive]))
                  then
                  begin
-
                  CodeBarProduitGEdt.Text := IntToStr(  StrToInt64(CodeB) + Random(99) );
-
                  end else
                      begin
-
-
                        CodeBarProduitGEdt.Text:= CodeB;
                      end;
                  end;
              end else
-
    //------ if the edit not empty add our number to the last in the edit
-
        begin
               if (MainForm.CodebarresTable.RecordCount <= 0) AND (MainForm.ProduitTable.RecordCount <= 0) then
-
              begin
              CodeBarProduitGEdt.Text := IntToStr(  StrToInt64(CodeBarProduitGEdt.Text) + StrToInt64(MainForm.ProduitTable.FieldValues['code_p']));
-
             end else
-
              begin
              // use this tag to put the random number at first from the number 1050000000111 + code_p then the second press from the edit + code_p
                 if RandomCBProduitGBtn.Tag = 0 then
                 begin
                     MainForm.ProduitTable.Last;
                     CodeB := IntToStr(  StrToInt64(MainForm.ProduitTable.FieldValues['code_p']) + 1050000000111);
-
                   if  (MainForm.ProduitTable.Locate('codebar_p', CodeB, [loCaseInsensitive]))
                      OR
                       (MainForm.CodebarresTable.Locate('nom_cb', CodeB, [loCaseInsensitive]))
                      then
                      begin
-
                       CodeBarProduitGEdt.Text := IntToStr(  StrToInt64(CodeBarProduitGEdt.Text) + Random(99) );
-
                      end else
                          begin
-
                           CodeBarProduitGEdt.Text:= CodeB;
-
                          end;
                     end ;
-
                 if RandomCBProduitGBtn.Tag = 1 then
-
                 begin
                   CodeB := IntToStr(  StrToInt64(CodeBarProduitGEdt.Text) + StrToInt64(MainForm.ProduitTable.FieldValues['code_p']));
                  if   (MainForm.ProduitTable.Locate('codebar_p', CodeB, [loCaseInsensitive]))
@@ -492,26 +455,18 @@ begin
                       (MainForm.CodebarresTable.Locate('nom_cb', CodeB, [loCaseInsensitive]))
                  then
                  begin
-
                  CodeBarProduitGEdt.Text := IntToStr(  StrToInt64(CodeBarProduitGEdt.Text) + Random(99) );
-
                  end else
                      begin
-
                       CodeBarProduitGEdt.Text:= CodeB;
-
                      end;
                   end;
-
               end;
-
        end;
-
       RandomCBProduitGBtn.Tag := 1 ;
       CodeBarProduitGEdt.SelectAll;
       CodeBarProduitGEdt.SetFocus;
       MainForm.CodebarresTable.IndexFieldNames:='code_p';
-
          end;
          end;
 
@@ -1817,12 +1772,29 @@ end;
 procedure TProduitGestionF.PrixAHTProduitEdtChange(Sender: TObject);
 var
 PrixAHTProduit,TVAProduit,PrixATTCProduit,PrixVHTDProduit,PrixVHTRProduit,PrixVHTGProduit,PrixVHTa1Produit,PrixVHTa2Produit : Currency;
+Key : CHar;
 begin
   //--------- to calculate the PrixATTC using TVA------//
      if PrixAHTProduitEdt.Focused then
       begin
-      if PrixAHTProduitEdt.Text <> '' then
+//        if (Key = '.') AND  (Pos(Key, PrixAHTProduitEdt.Text) > 0) then
+//          begin
+//            Key := #0;
+//            Exit
+//          end;
+
+       if     (PrixAHTProduitEdt.Text <> '') AND (PrixAHTProduitEdt.Text <> '0') AND (PrixAHTProduitEdt.Text <> '00')
+         AND (PrixAHTProduitEdt.Text <> '000') AND (PrixAHTProduitEdt.Text <> '0.00') AND (PrixAHTProduitEdt.Text <> '0.0')
+         AND (PrixAHTProduitEdt.Text <> '.') AND (PrixAHTProduitEdt.Text <> '..') AND (PrixAHTProduitEdt.Text <> '.0')   AND (PrixAHTProduitEdt.Text <> '0.')
+       then
        begin
+
+        PrixVHTDProduitEdt.Enabled:= True;PrixVTTCDProduitEdt.Enabled:= True; MargeDProduitEdt.Enabled:= True;
+        PrixVHTRProduitEdt.Enabled:= True;PrixVTTCRProduitEdt.Enabled:= True; MargeRProduitEdt.Enabled:= True;
+        PrixVHTGProduitEdt.Enabled:= True;PrixVTTCGProduitEdt.Enabled:= True; MargeGProduitEdt.Enabled:= True;
+        PrixVHTA1ProduitEdt.Enabled:= True;PrixVTTCA1ProduitEdt.Enabled:= True; MargeA1ProduitEdt.Enabled:= True;
+        PrixVHTA2ProduitEdt.Enabled:= True;PrixVTTCA2ProduitEdt.Enabled:= True; MargeA2ProduitEdt.Enabled:= True;
+
        if PrixAHTProduitEdt.Text<>'' then
        begin
        PrixAHTProduit:=StrToFloat (StringReplace(PrixAHTProduitEdt.Text, #32, '', [rfReplaceAll]));
@@ -1876,6 +1848,12 @@ begin
            MargeGProduitEdt.Text:= '';
            MargeA1ProduitEdt.Text:= '';
            MargeA2ProduitEdt.Text:= '';
+           PrixVHTDProduitEdt.Enabled:= False;PrixVTTCDProduitEdt.Enabled:= False; MargeDProduitEdt.Enabled:= False;
+           PrixVHTRProduitEdt.Enabled:= False;PrixVTTCRProduitEdt.Enabled:= False; MargeRProduitEdt.Enabled:= False;
+           PrixVHTGProduitEdt.Enabled:= False;PrixVTTCGProduitEdt.Enabled:= False; MargeGProduitEdt.Enabled:= False;
+           PrixVHTA1ProduitEdt.Enabled:= False;PrixVTTCA1ProduitEdt.Enabled:= False; MargeA1ProduitEdt.Enabled:= False;
+           PrixVHTA2ProduitEdt.Enabled:= False;PrixVTTCA2ProduitEdt.Enabled:= False; MargeA2ProduitEdt.Enabled:= False;
+
          end;
       end;
       if PrixATTCProduitEdt.Focused then
@@ -1899,11 +1877,11 @@ begin
       end;
 end;
 
-
 procedure TProduitGestionF.PrixAHTProduitEdtExit(Sender: TObject);
 var
 PrixHTCProduit: Currency;
 begin
+
   if PrixAHTProduitEdt.Text<>'' then
   begin
   PrixHTCProduit:=StrToFloat(StringReplace(PrixAHTProduitEdt.Text, #32, '', [rfReplaceAll]));
@@ -2628,15 +2606,25 @@ if key = VK_RETURN then
 SelectNext(ActiveControl as TWinControl, True,True );
 end;
 
-procedure TProduitGestionF.PrixVHTDProduitEdtKeyPress(Sender: TObject;
-  var Key: Char);
-const
-  N = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0',',','.', Char(VK_back)];
-begin
 
-  if not(Key in N) then
+function DecimalOK(Edit:TEdit):boolean;
+{check there is not a decimal point already in the number where the cursor
+ is located, return true if there is none, i.e. OK to add one}
+var
+  start,stop:integer;
+  s:string;
+begin
+  start:=Edit.selstart;
+  stop:=start+1;
+  s:=edit.text;
+  result:=true;
+  {find the number being built}
+  while (start>0) and (s[start]<>FormatSettings.DecimalSeparator) do dec(start);
+  if start>0 then result:=false
+  else
   begin
-     key := #0;
+    while (stop<=length(s)) and (s[stop]<>FormatSettings.DecimalSeparator) do inc(stop);
+    if stop >length(s) then result:=false;
   end;
 end;
 
@@ -2728,6 +2716,376 @@ begin
   FormatSettings.ThousandSeparator := ' ';
   FormatSettings.CurrencyDecimals := 2;
   FormatSettings.DateSeparator:= '/';
+end;
+
+procedure TProduitGestionF.PrixVTTCDProduitEdtKeyPress(Sender: TObject;
+  var Key: Char);
+const
+  N = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0',',','.', Char(VK_back)];
+   F = [','];
+begin
+  if not(Key in N) then
+  begin
+     key := #0;
+  end;
+
+   if (Key in F) then
+  begin
+    key :=  #46;
+  end;
+  if (Key = '.') AND (Pos(Key, (PrixVTTCDProduitEdt.Text)) > 0) Then
+  begin
+      Key := #0;
+  end;
+end;
+
+procedure TProduitGestionF.PrixAHTProduitEdtKeyPress(Sender: TObject;
+  var Key: Char);
+const
+  N = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0',',','.', Char(VK_back)];
+   F = [','];
+begin
+  if not(Key in N) then
+  begin
+     key := #0;
+  end;
+
+   if (Key in F) then
+  begin
+    key :=  #46;
+  end;
+  if (Key = '.') AND (Pos(Key, (PrixAHTProduitEdt.Text)) > 0) Then
+  begin
+      Key := #0;
+  end;
+
+end;
+
+procedure TProduitGestionF.PrixATTCProduitEdtKeyPress(Sender: TObject;
+  var Key: Char);
+const
+  N = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0',',','.', Char(VK_back)];
+   F = [','];
+begin
+  if not(Key in N) then
+  begin
+     key := #0;
+  end;
+
+   if (Key in F) then
+  begin
+    key :=  #46;
+  end;
+  if (Key = '.') AND (Pos(Key, (PrixATTCProduitEdt.Text)) > 0) Then
+  begin
+      Key := #0;
+  end;
+
+end;
+
+procedure TProduitGestionF.PrixVHTDProduitEdtKeyPress(Sender: TObject;
+  var Key: Char);
+const
+  N = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0',',','.', Char(VK_back)];
+   F = [','];
+begin
+  if not(Key in N) then
+  begin
+     key := #0;
+  end;
+
+   if (Key in F) then
+  begin
+    key :=  #46;
+  end;
+  if (Key = '.') AND (Pos(Key, (PrixVHTDProduitEdt.Text)) > 0) Then
+  begin
+      Key := #0;
+  end;
+
+end;
+
+procedure TProduitGestionF.MargeDProduitEdtKeyPress(Sender: TObject;
+  var Key: Char);
+const
+  N = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0',',','.', Char(VK_back)];
+   F = [','];
+begin
+  if not(Key in N) then
+  begin
+     key := #0;
+  end;
+
+   if (Key in F) then
+  begin
+    key :=  #46;
+  end;
+  if (Key = '.') AND (Pos(Key, (MargeDProduitEdt.Text)) > 0) Then
+  begin
+      Key := #0;
+  end;
+
+end;
+
+procedure TProduitGestionF.PrixVHTRProduitEdtKeyPress(Sender: TObject;
+  var Key: Char);
+const
+  N = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0',',','.', Char(VK_back)];
+   F = [','];
+begin
+  if not(Key in N) then
+  begin
+     key := #0;
+  end;
+
+   if (Key in F) then
+  begin
+    key :=  #46;
+  end;
+  if (Key = '.') AND (Pos(Key, (PrixVHTRProduitEdt.Text)) > 0) Then
+  begin
+      Key := #0;
+  end;
+
+end;
+
+procedure TProduitGestionF.PrixVTTCRProduitEdtKeyPress(Sender: TObject;
+  var Key: Char);
+const
+  N = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0',',','.', Char(VK_back)];
+   F = [','];
+begin
+  if not(Key in N) then
+  begin
+     key := #0;
+  end;
+
+   if (Key in F) then
+  begin
+    key :=  #46;
+  end;
+  if (Key = '.') AND (Pos(Key, (PrixVTTCRProduitEdt.Text)) > 0) Then
+  begin
+      Key := #0;
+  end;
+
+end;
+
+procedure TProduitGestionF.MargeRProduitEdtKeyPress(Sender: TObject;
+  var Key: Char);
+const
+  N = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0',',','.', Char(VK_back)];
+   F = [','];
+begin
+  if not(Key in N) then
+  begin
+     key := #0;
+  end;
+
+   if (Key in F) then
+  begin
+    key :=  #46;
+  end;
+  if (Key = '.') AND (Pos(Key, (MargeRProduitEdt.Text)) > 0) Then
+  begin
+      Key := #0;
+  end;
+end;
+
+procedure TProduitGestionF.PrixVHTGProduitEdtKeyPress(Sender: TObject;
+  var Key: Char);
+const
+  N = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0',',','.', Char(VK_back)];
+   F = [','];
+begin
+  if not(Key in N) then
+  begin
+     key := #0;
+  end;
+
+   if (Key in F) then
+  begin
+    key :=  #46;
+  end;
+  if (Key = '.') AND (Pos(Key, (PrixVHTGProduitEdt.Text)) > 0) Then
+  begin
+      Key := #0;
+  end;
+end;
+
+procedure TProduitGestionF.PrixVTTCGProduitEdtKeyPress(Sender: TObject;
+  var Key: Char);
+const
+  N = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0',',','.', Char(VK_back)];
+   F = [','];
+begin
+  if not(Key in N) then
+  begin
+     key := #0;
+  end;
+
+   if (Key in F) then
+  begin
+    key :=  #46;
+  end;
+  if (Key = '.') AND (Pos(Key, (PrixVTTCGProduitEdt.Text)) > 0) Then
+  begin
+      Key := #0;
+  end;
+
+end;
+
+procedure TProduitGestionF.MargeGProduitEdtKeyPress(Sender: TObject;
+  var Key: Char);
+const
+  N = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0',',','.', Char(VK_back)];
+   F = [','];
+begin
+  if not(Key in N) then
+  begin
+     key := #0;
+  end;
+
+   if (Key in F) then
+  begin
+    key :=  #46;
+  end;
+  if (Key = '.') AND (Pos(Key, (MargeGProduitEdt.Text)) > 0) Then
+  begin
+      Key := #0;
+  end;
+
+end;
+
+procedure TProduitGestionF.PrixVHTA1ProduitEdtKeyPress(Sender: TObject;
+  var Key: Char);
+const
+  N = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0',',','.', Char(VK_back)];
+   F = [','];
+begin
+  if not(Key in N) then
+  begin
+     key := #0;
+  end;
+
+   if (Key in F) then
+  begin
+    key :=  #46;
+  end;
+  if (Key = '.') AND (Pos(Key, (PrixVHTA1ProduitEdt.Text)) > 0) Then
+  begin
+      Key := #0;
+  end;
+
+end;
+
+procedure TProduitGestionF.PrixVTTCA1ProduitEdtKeyPress(Sender: TObject;
+  var Key: Char);
+const
+  N = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0',',','.', Char(VK_back)];
+   F = [','];
+begin
+  if not(Key in N) then
+  begin
+     key := #0;
+  end;
+
+   if (Key in F) then
+  begin
+    key :=  #46;
+  end;
+  if (Key = '.') AND (Pos(Key, (PrixVTTCA1ProduitEdt.Text)) > 0) Then
+  begin
+      Key := #0;
+  end;
+
+end;
+
+procedure TProduitGestionF.MargeA1ProduitEdtKeyPress(Sender: TObject;
+  var Key: Char);
+const
+  N = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0',',','.', Char(VK_back)];
+   F = [','];
+begin
+  if not(Key in N) then
+  begin
+     key := #0;
+  end;
+
+   if (Key in F) then
+  begin
+    key :=  #46;
+  end;
+  if (Key = '.') AND (Pos(Key, (MargeA1ProduitEdt.Text)) > 0) Then
+  begin
+      Key := #0;
+  end;
+
+end;
+
+procedure TProduitGestionF.PrixVHTA2ProduitEdtKeyPress(Sender: TObject;
+  var Key: Char);
+const
+  N = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0',',','.', Char(VK_back)];
+   F = [','];
+begin
+  if not(Key in N) then
+  begin
+     key := #0;
+  end;
+
+   if (Key in F) then
+  begin
+    key :=  #46;
+  end;
+  if (Key = '.') AND (Pos(Key, (PrixVHTA2ProduitEdt.Text)) > 0) Then
+  begin
+      Key := #0;
+  end;
+
+end;
+
+procedure TProduitGestionF.PrixVTTCA2ProduitEdtKeyPress(Sender: TObject;
+  var Key: Char);
+const
+  N = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0',',','.', Char(VK_back)];
+   F = [','];
+begin
+  if not(Key in N) then
+  begin
+     key := #0;
+  end;
+
+   if (Key in F) then
+  begin
+    key :=  #46;
+  end;
+  if (Key = '.') AND (Pos(Key, (PrixVTTCA2ProduitEdt.Text)) > 0) Then
+  begin
+      Key := #0;
+  end;
+end;
+
+procedure TProduitGestionF.MargeA2ProduitEdtKeyPress(Sender: TObject;
+  var Key: Char);
+const
+  N = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0',',','.', Char(VK_back)];
+   F = [','];
+begin
+  if not(Key in N) then
+  begin
+     key := #0;
+  end;
+
+   if (Key in F) then
+  begin
+    key :=  #46;
+  end;
+  if (Key = '.') AND (Pos(Key, (MargeA2ProduitEdt.Text)) > 0) Then
+  begin
+      Key := #0;
+  end;
+
 end;
 
 end.

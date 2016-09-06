@@ -697,8 +697,6 @@ type
     procedure Bona_recTableCalcFields(DataSet: TDataSet);
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
-    procedure sPageControl1CloseBtnClick(Sender: TComponent; TabIndex: Integer;
-      var CanClose: Boolean; var Action: TacCloseAction);
     procedure Button3Click(Sender: TObject);
     procedure Bona_recPlistTableAfterRefresh(DataSet: TDataSet);
     procedure Button4Click(Sender: TObject);
@@ -857,288 +855,46 @@ end;
 
 procedure TMainForm.ClientMainFBtnClick(Sender: TObject);
 begin
-
-
 if Not Assigned(ClientListF) then
 
      ClientListF:= TClientListF.Create(Application) else
                                         begin
                                           ClientListF.Show
                                         end;
-
-
-//  if sPageControl1.ActivePage.Caption <> ' Liste des Clients ' then
-//  begin
-//    if TabSheetClient <> nil then
-//
-//    begin
-//    //  TabSheetClient := TsTabSheet.Create(sPageControl1);
-//      TabSheetClient.Caption := ' Liste des Clients ';
-//      TabSheetClient.StyleElements:=[];
-//      TabSheetClient.Font.Name:= 'Roboto';
-//      TabSheetClient.Font.Size:= 14;
-//      TabSheetClient.Height:= 25;
-//      TabSheetClient.DoubleBuffered:= True;
-//      TabSheetClient.PageControl := sPageControl1;
-//      sPageControl1.ActivePage.UseCloseBtn := True;
-//      // sPageControl1.Pages[0].Name := 'Liste des Clients';
-//      ClientListF := TClientListF.Create(nil);
-//      ClientListF.Parent := TabSheetClient;
-//      ClientListF.BorderStyle := bsNone;
-//      ClientListF.BorderIcons := [];
-//      ClientListF.Align := alClient;
-//     // Parent := MainForm.FaceP;
-//      ClientListF.Show;
-//       sPageControl1.ActivePage := TabSheetClient;
-//
-//    end else
-//        begin
-//             TabSheetClient := TsTabSheet.Create(sPageControl1);
-//      TabSheetClient.Caption := ' Liste des Clients ';
-//      TabSheetClient.StyleElements:=[];
-//      TabSheetClient.Font.Name:= 'Roboto';
-//      TabSheetClient.Font.Size:= 14;
-//      TabSheetClient.Height:= 25;
-//      TabSheetClient.DoubleBuffered:= True;
-//      TabSheetClient.PageControl := sPageControl1;
-//      sPageControl1.ActivePage.UseCloseBtn := True;
-//      // sPageControl1.Pages[0].Name := 'Liste des Clients';
-//      ClientListF := TClientListF.Create(nil);
-//      ClientListF.Parent := TabSheetClient;
-//      ClientListF.BorderStyle := bsNone;
-//      ClientListF.BorderIcons := [];
-//      ClientListF.Align := alClient;
-//     // Parent := MainForm.FaceP;
-//      ClientListF.Show;
-//       sPageControl1.ActivePage := TabSheetClient;
-//        end;
-//    end
-//    else
-//    begin
-//
-//    // sPageControl1.ActivePage := TabSheetClient;
-//  //   if True then
-//
-//
-//
-//    //   TabSheetClient := TsTabSheet.Create(sPageControl1);
-//      TabSheetClient.Caption := ' Liste des Clients ';
-//      TabSheetClient.StyleElements:=[];
-//      TabSheetClient.Font.Name:= 'Roboto';
-//      TabSheetClient.Font.Size:= 14;
-//   //   TabSheetClient.Height:= 25;
-//      TabSheetClient.DoubleBuffered:= True;
-//      TabSheetClient.PageControl := sPageControl1;
-//      sPageControl1.ActivePage.UseCloseBtn := True;
-//      // sPageControl1.Pages[0].Name := 'Liste des Clients';
-//   //   ClientListF := TClientListF.Create(nil);
-//      ClientListF.Parent := TabSheetClient;
-//      ClientListF.BorderStyle := bsNone;
-//      ClientListF.BorderIcons := [];
-//      ClientListF.Align := alClient;
-//     // Parent := MainForm.FaceP;
-//      ClientListF.Show;
-//       sPageControl1.ActivePage := TabSheetClient;
-//    end;
-
-
-
 end;
 
 procedure TMainForm.FourMainFBtnClick(Sender: TObject);
 begin
-
-
 if Not Assigned(FournisseurListF) then
-
      FournisseurListF:= TFournisseurListF.Create(Application) else
-                                        begin
-                                          FournisseurListF.Show
-                                        end;
-
-
-//    if sPageControl1.ActivePage.Caption <> ' Liste des Fournisseurs ' then
-//    if not Assigned(TabSheetFournisseur) then
-//    begin
-//      TabSheetFournisseur := TsTabSheet.Create(sPageControl1);
-//      TabSheetFournisseur.Caption := ' Liste des Fournisseurs ';
-//      TabSheetFournisseur.StyleElements:=[];
-//      TabSheetFournisseur.Font.Name:= 'Roboto';
-//      TabSheetFournisseur.Font.Size:= 14;
-//   //   TabSheetFournisseur.Height:= 25;
-//      TabSheetFournisseur.DoubleBuffered:= True;
-//      TabSheetFournisseur.PageControl := sPageControl1;
-//      sPageControl1.ActivePage.UseCloseBtn := True;
-//      // sPageControl1.Pages[0].Name := 'Liste des Clients';
-//      FournisseurListF := TFournisseurListF.Create(TabSheetFournisseur);
-//      FournisseurListF.Parent := TabSheetFournisseur;
-//      FournisseurListF.BorderStyle := bsNone;
-//      FournisseurListF.BorderIcons := [];
-//      FournisseurListF.Align := alClient;
-//     // Parent := MainForm.FaceP;
-//      FournisseurListF.Show;
-//      sPageControl1.ActivePage := TabSheetFournisseur;
-//     end else
-//    if TabSheetFournisseur <> nil then
-//    begin
-//      TabSheetFournisseur := TsTabSheet.Create(sPageControl1);
-//      TabSheetFournisseur.Caption := ' Liste des Fournisseurs ';
-//      TabSheetFournisseur.StyleElements:=[];
-//      TabSheetFournisseur.Font.Name:= 'Roboto';
-//      TabSheetFournisseur.Font.Size:= 14;
-//   //   TabSheetFournisseur.Height:= 25;
-//      TabSheetFournisseur.DoubleBuffered:= True;
-//      TabSheetFournisseur.PageControl := sPageControl1;
-//      sPageControl1.ActivePage.UseCloseBtn := True;
-//      // sPageControl1.Pages[0].Name := 'Liste des Clients';
-//      FournisseurListF := TFournisseurListF.Create(nil);
-//      FournisseurListF.Parent := TabSheetFournisseur;
-//      FournisseurListF.BorderStyle := bsNone;
-//      FournisseurListF.BorderIcons := [];
-//      FournisseurListF.Align := alClient;
-//     // Parent := MainForm.FaceP;
-//      FournisseurListF.Show;
-//      sPageControl1.ActivePage := TabSheetFournisseur;
-//      end;
+        begin
+          FournisseurListF.Show
+        end;
 end;
 
 procedure TMainForm.ComptoirMainFBtnClick(Sender: TObject);
-var
-  codeCT : integer;
-
-  begin
-
+begin
  BonCtrF.AddBVCtrBtnClick(Self);
 end;
 
 procedure TMainForm.ProduitMainFBtnClick(Sender: TObject);
 begin
-
 if Not Assigned(ProduitsListF) then
 
      ProduitsListF:= TProduitsListF.Create(Application) else
                                         begin
                                           ProduitsListF.Show
                                         end;
-
-
-//  if sPageControl1.ActivePage.Caption <> ' Liste des Produits ' then
-//    if not Assigned(TabSheetProduit) then
-//
-//    begin
-//
-//      TabSheetProduit := TsTabSheet.Create(sPageControl1);
-//      TabSheetProduit.Caption := ' Liste des Produits ';
-//      TabSheetProduit.StyleElements:=[];
-//      TabSheetProduit.Font.Name:= 'Roboto';
-//      TabSheetProduit.Font.Size:= 14;
-//      TabSheetProduit.Height:= 25;
-//      TabSheetProduit.DoubleBuffered:= True;
-//      TabSheetProduit.PageControl := sPageControl1;
-//      sPageControl1.ActivePage.UseCloseBtn := True;
-//      // sPageControl1.Pages[0].Name := 'Liste des Produits';
-//      ProduitsListF := TProduitsListF.Create(nil);
-//      ProduitsListF.Parent := TabSheetProduit;
-//      ProduitsListF.BorderStyle := bsNone;
-//      ProduitsListF.BorderIcons := [];
-//      ProduitsListF.Align := alClient;
-//     // Parent := MainForm.FaceP;
-//      ProduitsListF.Show;
-//      sPageControl1.ActivePage := TabSheetProduit;
-//
-//    end else
-//
-//     sPageControl1.ActivePage := TabSheetProduit;
-
 end;
 
 procedure TMainForm.BRMainFMmnClick(Sender: TObject);
 begin
-//  if sPageControl1.ActivePage.Caption <> ' Bon de Réception ' then
-//  begin
-//  if not Assigned(TabSheetBonRect) then
-//    begin
-//      TabSheetBonRect := TsTabSheet.Create(sPageControl1);
-//      TabSheetBonRect.Caption := ' Bon de Réception ';
-//      TabSheetBonRect.StyleElements:=[];
-//      TabSheetBonRect.Font.Name:= 'Roboto';
-//      TabSheetBonRect.Font.Size:= 14;
-//      TabSheetBonRect.Height:= 25;
-//      TabSheetBonRect.DoubleBuffered:= True;
-//      TabSheetBonRect.PageControl := sPageControl1;
-//      sPageControl1.ActivePage.UseCloseBtn := True;
-//      // sPageControl1.Pages[0].Name := 'Bon de Réception';
-//      BonRecF := TBonRecF.Create(Application);
-//      BonRecF.Parent := TabSheetBonRect;
-//      BonRecF.BorderStyle := bsNone;
-//      BonRecF.BorderIcons := [];
-//      BonRecF.Align := alClient;
-//     // Parent := MainForm.FaceP;
-//      BonRecF.Show;
-//      sPageControl1.ActivePage := TabSheetBonRect;
-//
-//    end
-//
-//    else
-//    begin
-//
-//       sPageControl1.ActivePage := TabSheetBonRect;
-//
-//
-//    end;
-//  end;
-
-
 if Not Assigned(BonRecF) then
 
      BonRecF:= TBonRecF.Create(Application) else
                                         begin
                                           BonRecF.Show
                                         end;
-
-
-
-//  if sPageControl1.ActivePage.Caption <> ' Bon de Réception ' then
-//  begin
-//  if ( Sender <> TabSheetBonRect ) then
-//    begin
-//       if (TabSheetBonRect = nil)  then
-//      begin
-//      TabSheetBonRect := TsTabSheet.Create(sPageControl1);
-//      end else
-//               begin
-//                 sPageControl1.ActivePage := TabSheetBonRect;
-//
-//           end;
-//      TabSheetBonRect.Caption := ' Bon de Réception ';
-//      TabSheetBonRect.StyleElements:=[];
-//      TabSheetBonRect.Font.Name:= 'Roboto';
-//      TabSheetBonRect.Font.Size:= 14;
-//      TabSheetBonRect.Height:= 25;
-//      TabSheetBonRect.DoubleBuffered:= True;
-//      TabSheetBonRect.PageControl := sPageControl1;
-//      sPageControl1.ActivePage.UseCloseBtn := True;
-//      // sPageControl1.Pages[0].Name := 'Bon de Livraison';
-//      if not Assigned(BonRecF) then
-//      begin
-//      BonRecF := TBonRecF.Create(TabSheetBonRect);
-//      end;
-//      BonRecF.Parent := TabSheetBonRect;
-//      BonRecF.BorderStyle := bsNone;
-//      BonRecF.BorderIcons := [];
-//      BonRecF.Align := alClient;
-//     // Parent := MainForm.FaceP;
-//      BonRecF.Show;
-//      sPageControl1.ActivePage := TabSheetBonRect;
-//
-//    end
-//
-//    else
-//    begin
-//       sPageControl1.ActivePage := TabSheetBonRect;
-//    end;
-//  end;
-
 end;
 
 procedure TMainForm.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
@@ -1163,7 +919,7 @@ end;
 procedure TMainForm.FormCreate(Sender: TObject);
 var sCmd: string;
 begin
-Screen.MenuFont.Name := 'Roboto';
+//Screen.MenuFont.Name := 'Roboto';
 Screen.MenuFont.Height := 15;
 Screen.MenuFont.Color:= $0040332D ;
 
@@ -1284,46 +1040,7 @@ begin
   end;
 end;
 
-procedure TMainForm.sPageControl1CloseBtnClick(Sender: TComponent;
-  TabIndex: Integer; var CanClose: Boolean; var Action: TacCloseAction);
- var ta : TObject;
 
-  I: Integer;
-  Aba: TTabSheet;
-begin
-
-
-
-//
-//  if sPageControl1.ActivePage.Caption = ' Liste des Produits ' then
-//  begin
-//
-//
-//    for I := 0 to sPageControl1.PageCount - 1 do
-//  begin
-//    if (sPageControl1.Pages[I].Caption =  ' Liste des Produits ') then
-//    begin
-//      Aba := sPageControl1.Pages[I];
-//      Aba.Destroy;
-//      sPageControl1.ActivePageIndex := 0;
-//      Break;
-//    end;
-//  end;
-//
-//
-//  end;
-
-
-//if (ta is TsTabSheet) then
-// begin
-// Action :=  acaFree;
-// if (Sender is TForm) then
-//  begin
-//    Sender.Free
-//  end;
-//
-// end;
-end;
 
 procedure TMainForm.Button3Click(Sender: TObject);
 begin
@@ -1475,83 +1192,12 @@ end;
 
 procedure TMainForm.BLMainFMmnClick(Sender: TObject);
 begin
-//  if sPageControl1.ActivePage.Caption <> ' Bon de Livraison ' then
-//  begin
-//  if ( Sender <> TabSheetBonLiv ) then
-//    begin
-//       if (TabSheetBonLiv = nil)  then
-//      begin
-//      TabSheetBonLiv := TsTabSheet.Create(sPageControl1);
-//      end else
-//               begin
-//                 sPageControl1.ActivePage := TabSheetBonLiv;
-//
-//           end;
-//      TabSheetBonLiv.Caption := ' Bon de Livraison ';
-//      TabSheetBonLiv.StyleElements:=[];
-//      TabSheetBonLiv.Font.Name:= 'Roboto';
-//      TabSheetBonLiv.Font.Size:= 14;
-//      TabSheetBonLiv.Height:= 25;
-//      TabSheetBonLiv.DoubleBuffered:= True;
-//      TabSheetBonLiv.PageControl := sPageControl1;
-//      sPageControl1.ActivePage.UseCloseBtn := True;
-//      // sPageControl1.Pages[0].Name := 'Bon de Livraison';
-//      BonLivF := TBonLivF.Create(sPageControl1);
-//      BonLivF.Parent := sPageControl1;
-//      BonLivF.BorderStyle := bsNone;
-//      BonLivF.BorderIcons := [];
-//      BonLivF.Align := alClient;
-//     // Parent := MainForm.FaceP;
-//      BonLivF.Show;
-//      sPageControl1.ActivePage := TabSheetBonLiv;
-//
-//    end
-//
-//    else
-//    begin
-//
-//       sPageControl1.ActivePage := TabSheetBonLiv;
-//
-//
-//    end;
-//  end;
-
-
 if Not Assigned(BonLivF) then
 
      BonLivF:= TBonLivF.Create(Application) else
                                         begin
                                           BonLivF.Show
                                         end;
-
-
-//    if sPageControl1.ActivePage.Caption <> ' Bon de Livraison ' then
-//    if not Assigned(TabSheetBonLiv) then
-//
-//    begin
-//
-//      TabSheetBonLiv := TsTabSheet.Create(sPageControl1);
-//      TabSheetBonLiv.Caption := ' Bon de Livraison ';
-//      TabSheetBonLiv.StyleElements:=[];
-//      TabSheetBonLiv.Font.Name:= 'Roboto';
-//      TabSheetBonLiv.Font.Size:= 14;
-//      TabSheetBonLiv.Height:= 25;
-//      TabSheetBonLiv.DoubleBuffered:= True;
-//      TabSheetBonLiv.PageControl := sPageControl1;
-//      sPageControl1.ActivePage.UseCloseBtn := True;
-//      // sPageControl1.Pages[0].Name := 'Liste des Produits';
-//      BonLivF := TBonLivF.Create(nil);
-//      BonLivF.Parent := TabSheetBonLiv;
-//      BonLivF.BorderStyle := bsNone;
-//      BonLivF.BorderIcons := [];
-//      BonLivF.Align := alClient;
-//     // Parent := MainForm.FaceP;
-//      BonLivF.Show;
-//      sPageControl1.ActivePage := TabSheetBonLiv;
-//
-//    end else
-//
-//     sPageControl1.ActivePage := TabSheetBonLiv;
 end;
 
 procedure TMainForm.Button9Click(Sender: TObject);
@@ -1821,51 +1467,6 @@ if Not Assigned(BonFacVF) then
                                         begin
                                           BonFacVF.Show
                                         end;
-
-//
-//  if sPageControl1.ActivePage.Caption <> ' Facture de Vente' then
-//  begin
-//  if ( Sender <> TabSheetBonFacV ) then
-//    begin
-//       if (TabSheetBonFacV = nil)  then
-//      begin
-//      TabSheetBonFacV := TsTabSheet.Create(sPageControl1);
-//      end else
-//               begin
-//                 sPageControl1.ActivePage := TabSheetBonFacV;
-//
-//           end;
-//      TabSheetBonFacV.Caption := ' Facture de Vente ';
-//      TabSheetBonFacV.StyleElements:=[];
-//      TabSheetBonFacV.Font.Name:= 'Roboto';
-//      TabSheetBonFacV.Font.Size:= 14;
-//      TabSheetBonFacV.Height:= 25;
-//      TabSheetBonFacV.DoubleBuffered:= True;
-//      TabSheetBonFacV.PageControl := sPageControl1;
-//      sPageControl1.ActivePage.UseCloseBtn := True;
-//      // sPageControl1.Pages[0].Name := 'Bon de Livraison';
-//      if not Assigned(BonFacVF) then
-//      begin
-//      BonFacVF := TBonFacVF.Create(TabSheetBonFacV);
-//      end;
-//      BonFacVF.Parent := TabSheetBonFacV;
-//      BonFacVF.BorderStyle := bsNone;
-//      BonFacVF.BorderIcons := [];
-//      BonFacVF.Align := alClient;
-//     // Parent := MainForm.FaceP;
-//      BonFacVF.Show;
-//      sPageControl1.ActivePage := TabSheetBonFacV;
-//
-//    end
-//
-//    else
-//    begin
-//
-//       sPageControl1.ActivePage := TabSheetBonFacV;
-//
-//
-//    end;
-//  end;
 end;
 
 procedure TMainForm.Button10Click(Sender: TObject);
@@ -2011,46 +1612,12 @@ end;
 
 procedure TMainForm.FactureAMainFMnmClick(Sender: TObject);
 begin
-
-
 if Not Assigned(BonFacAF) then
 
      BonFacAF:= TBonFacAF.Create(Application) else
                                         begin
                                           BonFacAF.Show
                                         end;
-
-
-//  if sPageControl1.ActivePage.Caption <> ' Facture d''Achat ' then
-//    if not Assigned(TabSheetBonFacA) then
-//
-//    begin
-//
-//      TabSheetBonFacA := TsTabSheet.Create(sPageControl1);
-//      TabSheetBonFacA.Caption := ' Facture d''Achat ';
-//      TabSheetBonFacA.StyleElements:=[];
-//      TabSheetBonFacA.Font.Name:= 'Roboto';
-//      TabSheetBonFacA.Font.Size:= 14;
-//      TabSheetBonFacA.Height:= 25;
-//      TabSheetBonFacA.DoubleBuffered:= True;
-//      TabSheetBonFacA.PageControl := sPageControl1;
-//      sPageControl1.ActivePage.UseCloseBtn := True;
-//      // sPageControl1.Pages[0].Name := 'Liste des Produits';
-//      BonFacAF := TBonFacAF.Create(nil);
-//      BonFacAF.Parent := TabSheetBonFacA;
-//      BonFacAF.BorderStyle := bsNone;
-//      BonFacAF.BorderIcons := [];
-//      BonFacAF.Align := alClient;
-//     // Parent := MainForm.FaceP;
-//      BonFacAF.Show;
-//      sPageControl1.ActivePage := TabSheetBonFacA;
-//
-//    end else
-//
-//     sPageControl1.ActivePage := TabSheetBonFacA;
-
-
-
 end;
 
 procedure TMainForm.Button12Click(Sender: TObject);
@@ -2074,8 +1641,6 @@ begin
     ProduitTable.Disconnect ;
   ClientTable.Disconnect;
   FournisseurTable.Disconnect ;
-//  FournisseurTablePassif.Disconnect ;
-//  FournisseurTableActif.Disconnect ;
   Bona_recTable.Disconnect;
   Bona_recPlistTable.Disconnect ;
   Bona_facTable.Disconnect ;
@@ -2514,42 +2079,12 @@ end;
 
 procedure TMainForm.CaisseMainFMnmClick(Sender: TObject);
 begin
-
-
 if Not Assigned(CaisseListF) then
 
      CaisseListF:= TCaisseListF.Create(Application) else
                                         begin
                                           CaisseListF.Show
                                         end;
-
-//    if sPageControl1.ActivePage.Caption <> ' Etat de Caisses ' then
-//    if not Assigned(TabSheetCaisse) then
-//
-//    begin
-//
-//      TabSheetCaisse := TsTabSheet.Create(sPageControl1);
-//      TabSheetCaisse.Caption := ' Etat de Caisses ';
-//      TabSheetCaisse.StyleElements:=[];
-//      TabSheetCaisse.Font.Name:= 'Roboto';
-//      TabSheetCaisse.Font.Size:= 14;
-//      TabSheetCaisse.Height:= 25;
-//      TabSheetCaisse.DoubleBuffered:= True;
-//      TabSheetCaisse.PageControl := sPageControl1;
-//      sPageControl1.ActivePage.UseCloseBtn := True;
-//      // sPageControl1.Pages[0].Name := 'Liste des Produits';
-//      CaisseListF := TCaisseListF.Create(nil);
-//      CaisseListF.Parent := TabSheetCaisse;
-//      CaisseListF.BorderStyle := bsNone;
-//      CaisseListF.BorderIcons := [];
-//      CaisseListF.Align := alClient;
-//     // Parent := MainForm.FaceP;
-//      CaisseListF.Show;
-//      sPageControl1.ActivePage := TabSheetCaisse;
-//
-//    end else
-//
-//     sPageControl1.ActivePage := TabSheetCaisse;
 end;
 
 procedure TMainForm.CaisseMainFBtnClick(Sender: TObject);
@@ -2559,42 +2094,12 @@ end;
 
 procedure TMainForm.BankMainFMnmClick(Sender: TObject);
 begin
-
 if Not Assigned(BankListF) then
 
      BankListF:= TBankListF.Create(Application) else
                                         begin
                                           BankListF.Show
                                         end;
-
-
-//    if sPageControl1.ActivePage.Caption <> ' Etat relevé de comptes ' then
-//    if not Assigned(TabSheetBank) then
-//
-//    begin
-//
-//      TabSheetBank := TsTabSheet.Create(sPageControl1);
-//      TabSheetBank.Caption := ' Etat relevé de comptes ';
-//      TabSheetBank.StyleElements:=[];
-//      TabSheetBank.Font.Name:= 'Roboto';
-//      TabSheetBank.Font.Size:= 14;
-//      TabSheetBank.Height:= 25;
-//      TabSheetBank.DoubleBuffered:= True;
-//      TabSheetBank.PageControl := sPageControl1;
-//      sPageControl1.ActivePage.UseCloseBtn := True;
-//      // sPageControl1.Pages[0].Name := 'Liste des Produits';
-//      BankListF := TBankListF.Create(nil);
-//      BankListF.Parent := TabSheetBank;
-//      BankListF.BorderStyle := bsNone;
-//      BankListF.BorderIcons := [];
-//      BankListF.Align := alClient;
-//     // Parent := MainForm.FaceP;
-//      BankListF.Show;
-//      sPageControl1.ActivePage := TabSheetBank;
-//
-//    end else
-//
-//     sPageControl1.ActivePage := TabSheetBank;
 end;
 
 procedure TMainForm.Button17Click(Sender: TObject);
@@ -2665,7 +2170,6 @@ begin
   //-------- Show the splash screan for the produit familly to add new one---------//
 
             UsersListF:=TUsersListF.Create(Application);
-     //       ClientGestionF.BringToFront;
             UsersListF.Left:=  (Screen.Width div 2 ) - (UsersListF.Width div 2)    ;
             UsersListF.Top:=   (Screen.Height div 2) - (UsersListF.Height div 2)    ;
 
@@ -2676,84 +2180,22 @@ end;
 
 procedure TMainForm.RGFourMainFMnmClick(Sender: TObject);
 begin
-
 if Not Assigned(ReglementFListF) then
 
      ReglementFListF:= TReglementFListF.Create(Application) else
                                         begin
                                           ReglementFListF.Show
                                         end;
-
-
-
-//    if sPageControl1.ActivePage.Caption <> ' Règlement Fournisseur ' then
-//    if not Assigned(TabSheetRegFour) then
-//
-//    begin
-//
-//      TabSheetRegFour:= TsTabSheet.Create(sPageControl1);
-//      TabSheetRegFour.Caption := ' Règlement Fournisseur';
-//      TabSheetRegFour.StyleElements:=[];
-//      TabSheetRegFour.Font.Name:= 'Roboto';
-//      TabSheetRegFour.Font.Size:= 14;
-//      TabSheetRegFour.Height:= 25;
-//      TabSheetRegFour.DoubleBuffered:= True;
-//      TabSheetRegFour.PageControl := sPageControl1;
-//      sPageControl1.ActivePage.UseCloseBtn := True;
-//      // sPageControl1.Pages[0].Name := 'Liste des Produits';
-//      ReglementFListF := TReglementFListF.Create(nil);
-//      ReglementFListF.Parent := TabSheetRegFour;
-//      ReglementFListF.BorderStyle := bsNone;
-//      ReglementFListF.BorderIcons := [];
-//      ReglementFListF.Align := alClient;
-//     // Parent := MainForm.FaceP;
-//      ReglementFListF.Show;
-//      sPageControl1.ActivePage := TabSheetRegFour;
-//
-//    end else
-//
-//     sPageControl1.ActivePage := TabSheetRegFour;
 end;
 
 procedure TMainForm.RGClientMainFMnmClick(Sender: TObject);
 begin
-
-
 if Not Assigned(ReglementCListF) then
 
      ReglementCListF:= TReglementCListF.Create(Application) else
                                         begin
                                           ReglementCListF.Show
                                         end;
-
-
-//    if sPageControl1.ActivePage.Caption <> ' Règlement Clients ' then
-//    if not Assigned(TabSheetRegClient) then
-//
-//    begin
-//
-//      TabSheetRegClient:= TsTabSheet.Create(sPageControl1);
-//      TabSheetRegClient.Caption := ' Règlement Clients';
-//      TabSheetRegClient.StyleElements:=[];
-//      TabSheetRegClient.Font.Name:= 'Roboto';
-//      TabSheetRegClient.Font.Size:= 14;
-//      TabSheetRegClient.Height:= 25;
-//      TabSheetRegClient.DoubleBuffered:= True;
-//      TabSheetRegClient.PageControl := sPageControl1;
-//      sPageControl1.ActivePage.UseCloseBtn := True;
-//      // sPageControl1.Pages[0].Name := 'Liste des Produits';
-//      ReglementCListF := TReglementCListF.Create(nil);
-//      ReglementCListF.Parent := TabSheetRegClient;
-//      ReglementCListF.BorderStyle := bsNone;
-//      ReglementCListF.BorderIcons := [];
-//      ReglementCListF.Align := alClient;
-//     // Parent := MainForm.FaceP;
-//      ReglementCListF.Show;
-//      sPageControl1.ActivePage := TabSheetRegClient;
-//
-//    end else
-//
-//     sPageControl1.ActivePage := TabSheetRegClient;
 end;
 
 procedure TMainForm.Button19Click(Sender: TObject);
@@ -2874,91 +2316,12 @@ end;
 
 procedure TMainForm.CtrMainFMmnClick(Sender: TObject);
 begin
-//  if sPageControl1.ActivePage.Caption <> ' Comptoir de Vente ' then
-//    if not Assigned(TabSheetBonCtr) then
-//
-//    begin
-//
-//      TabSheetBonCtr := TsTabSheet.Create(Application);
-//      TabSheetBonCtr.Parent:= sPageControl1;
-//      TabSheetBonCtr.Caption := ' Comptoir de Vente ';
-//      TabSheetBonCtr.StyleElements:=[];
-//      TabSheetBonCtr.Font.Name:= 'Roboto';
-//      TabSheetBonCtr.Font.Size:= 14;
-//      TabSheetBonCtr.Height:= 25;
-//      TabSheetBonCtr.DoubleBuffered:= True;
-//      TabSheetBonCtr.PageControl := sPageControl1;
-//      sPageControl1.ActivePage.UseCloseBtn := True;
-//      // sPageControl1.Pages[0].Name := 'Liste des Produits';
-//      if nOT Assigned(BonCtrF) then
-//      begin
-//      BonCtrF := TBonCtrF.Create(TabSheetBonCtr);
-//      end;
-//      BonCtrF.Parent := TabSheetBonCtr;
-//      BonCtrF.BorderStyle := bsNone;
-//      BonCtrF.BorderIcons := [];
-//      BonCtrF.Align := alClient;
-//     // Parent := MainForm.FaceP;
-//      BonCtrF.Show;
-//      sPageControl1.ActivePage := TabSheetBonCtr;
-//
-//    end else
-//
-//     sPageControl1.ActivePage := TabSheetBonCtr;
-
      if Not Assigned(BonCtrF) then
 
      BonCtrF:= TBonCtrF.Create(Application) else
                                         begin
                                           BonCtrF.Show
                                         end;
-
-
-
-
-//       if sPageControl1.ActivePage.Caption <> ' Comptoir de Vente ' then
-//  begin
-//  if ( Sender <> TabSheetBonCtr ) then
-//    begin
-//       if (TabSheetBonCtr = nil)  then
-//      begin
-//      TabSheetBonCtr := TsTabSheet.Create(sPageControl1);
-//      end else
-//               begin
-//                 sPageControl1.ActivePage := TabSheetBonCtr;
-//
-//           end;
-//      TabSheetBonCtr.Caption := ' Comptoir de Vente ';
-//      TabSheetBonCtr.StyleElements:=[];
-//      TabSheetBonCtr.Font.Name:= 'Roboto';
-//      TabSheetBonCtr.Font.Size:= 14;
-//      TabSheetBonCtr.Height:= 25;
-//      TabSheetBonCtr.DoubleBuffered:= True;
-//      TabSheetBonCtr.PageControl := sPageControl1;
-//      sPageControl1.ActivePage.UseCloseBtn := True;
-//      // sPageControl1.Pages[0].Name := 'Bon de Livraison';
-//      if not Assigned(BonCtrF) then
-//      begin
-//      BonCtrF := TBonCtrF.Create(TabSheetBonCtr);
-//      end;
-//      BonCtrF.Parent := TabSheetBonCtr;
-//      BonCtrF.BorderStyle := bsNone;
-//      BonCtrF.BorderIcons := [];
-//      BonCtrF.Align := alClient;
-//     // Parent := MainForm.FaceP;
-//      BonCtrF.Show;
-//      sPageControl1.ActivePage := TabSheetBonCtr;
-//
-//    end
-//
-//    else
-//    begin
-//
-//       sPageControl1.ActivePage := TabSheetBonCtr;
-//
-//
-//    end;
-//  end;
 end;
 
 procedure TMainForm.BLFaceBtnClick(Sender: TObject);
@@ -2969,8 +2332,9 @@ end;
 
 procedure TMainForm.OptionMainFMnmClick(Sender: TObject);
 begin
-FOptions.Position:= poScreenCenter;
-FOptions.Show;
+//FOptions.Position:= poScreenCenter;
+            FOptions.Show;
+
 end;
 
 procedure TMainForm.ClientFaceBtnClick(Sender: TObject);
@@ -2997,9 +2361,6 @@ procedure TMainForm.BankFaceBtnClick(Sender: TObject);
 begin
 BankMainFMnmClick(Sender);
 end;
-
-
-
 
 procedure TMainForm.CTRFaceBtnClick(Sender: TObject);
 begin
@@ -3040,11 +2401,7 @@ begin
             ModePaieListF.Top:=   (Screen.Height div 2) - (ModePaieListF.Height div 2)    ;
 
             ModePaieListF.ShowModal;
-
-
 end;
-
-
 
 procedure TMainForm.ClientMainFMnmClick(Sender: TObject);
 begin
@@ -3063,42 +2420,12 @@ end;
 
 procedure TMainForm.BoardMainFBtnClick(Sender: TObject);
 begin
-
      if Not Assigned(DashboardF) then
 
      DashboardF:= TDashboardF.Create(Application) else
                                         begin
                                           DashboardF.Show
                                         end;
-
-//  if sPageControl1.ActivePage.Caption <> ' Tableau de Bord ' then
-//    if not Assigned(TabSheetDashBoard) then
-//
-//    begin
-//
-//      TabSheetDashBoard := TsTabSheet.Create(sPageControl1);
-//      TabSheetDashBoard.Caption := ' Tableau de Bord ';
-//      TabSheetDashBoard.StyleElements:=[];
-//      TabSheetDashBoard.Font.Name:= 'Roboto';
-//      TabSheetDashBoard.Font.Size:= 14;
-//      TabSheetDashBoard.Height:= 25;
-//      TabSheetDashBoard.DoubleBuffered:= True;
-//      TabSheetDashBoard.PageControl := sPageControl1;
-//      sPageControl1.ActivePage.UseCloseBtn := True;
-//      // sPageControl1.Pages[0].Name := 'Liste des Produits';
-//      DashboardF := TDashboardF.Create(nil);
-//      DashboardF.Parent := TabSheetDashBoard;
-//      DashboardF.BorderStyle := bsNone;
-//      DashboardF.BorderIcons := [];
-//      DashboardF.Align := alClient;
-//     // Parent := MainForm.FaceP;
-//      DashboardF.Show;
-////      DashboardF.GettingData;
-//      sPageControl1.ActivePage := TabSheetDashBoard;
-//
-//    end else
-//
-//     sPageControl1.ActivePage := TabSheetDashBoard;
 end;
 
 function KillTask(ExeFileName: string): Integer;
@@ -3168,11 +2495,10 @@ begin
             FamproduitTable.Active:= True;
 
             FamPListF:=TFamPListF.Create(Application);
-     //       ClientGestionF.BringToFront;
             FamPListF.Left:=  (Screen.Width div 2 ) - (FamPListF.Width div 2)    ;
             FamPListF.Top:=   (Screen.Height div 2) - (FamPListF.Height div 2)    ;
 
-            FamPListF.ShowModal;
+            FamPListF.Show;
 end;
 
 procedure TMainForm.S1Click(Sender: TObject);

@@ -1213,7 +1213,10 @@ begin
       //------ this is a executable SQL use it for quick delete code barres in the DB when we cancel
       codeBR:= MainForm.Bona_recTable.FieldValues['code_barec'];
       //----- this is to delte the old ciredit when we delte the bon rec
-      CodeF:=  MainForm.Bona_recTable.FieldValues['code_f'];
+      if (MainForm.Bona_recTable.FieldByName('code_f').AsInteger <> 0) AND (MainForm.Bona_recTable.FieldByName('code_f').AsInteger <> null)  then
+      begin
+      CodeF:=  MainForm.Bona_recTable.FieldByName('code_f').AsInteger;
+      end;
       MainForm.FournisseurTable.DisableControls;
       MainForm.FournisseurTable.Active:= false;
       MainForm.FournisseurTable.SQL.Clear;
@@ -1255,7 +1258,13 @@ begin
       //------ this is a executable SQL use it for quick delete code barres in the DB when we cancel
       codeBR:= MainForm.Bonv_livTable.FieldValues['code_bvliv'];
       //----- this is to delte the old ciredit when we delte the bon liv
-      CodeF:=  MainForm.Bonv_livTable.FieldValues['code_c'];
+
+
+     if (MainForm.Bonv_livTable.FieldByName('code_c').AsInteger <> 0) AND (MainForm.Bonv_livTable.FieldByName('code_c').AsInteger <> null)  then
+      begin
+      CodeF:=  MainForm.Bonv_livTable.FieldByName('code_c').AsInteger;
+      end;
+
       MainForm.ClientTable.DisableControls;
       MainForm.ClientTable.Active:= false;
       MainForm.ClientTable.SQL.Clear;
@@ -1386,7 +1395,11 @@ begin
       //------ this is a executable SQL use it for quick delete code barres in the DB when we cancel
       codeBR:= MainForm.Bonv_facTable.FieldValues['code_bvfac'];
       //----- this is to delte the old ciredit when we delte the bon liv
-      CodeF:=  MainForm.Bonv_facTable.FieldValues['code_c'];
+      if (MainForm.Bonv_facTable.FieldByName('code_c').AsInteger <> 0) AND (MainForm.Bonv_facTable.FieldByName('code_c').AsInteger <> null)  then
+      begin
+      CodeF:=  MainForm.Bonv_facTable.FieldByName('code_c').AsInteger;
+      end;
+
       MainForm.ClientTable.DisableControls;
       MainForm.ClientTable.Active:= false;
       MainForm.ClientTable.SQL.Clear;
@@ -1449,7 +1462,11 @@ begin
       //------ this is a executable SQL use it for quick delete code barres in the DB when we cancel
       codeBR:= MainForm.Bona_facTable.FieldValues['code_bafac'];
       //----- this is to delte the old ciredit when we delte the bon liv
-      CodeF:=  MainForm.Bona_facTable.FieldValues['code_f'];
+      if (MainForm.Bona_facTable.FieldByName('code_f').AsInteger <> 0) AND (MainForm.Bona_facTable.FieldByName('code_f').AsInteger <> null)  then
+      begin
+      CodeF:=  MainForm.Bona_facTable.FieldByName('code_f').AsInteger;
+      end;
+
       MainForm.FournisseurTable.DisableControls;
       MainForm.FournisseurTable.Active:= false;
       MainForm.FournisseurTable.SQL.Clear;

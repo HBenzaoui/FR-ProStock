@@ -238,6 +238,7 @@ object ProduitGestionF: TProduitGestionF
           Font.Style = []
           ParentColor = False
           ParentFont = False
+          Visible = False
           StyleElements = []
         end
         object DatePerProduitGLbl: TLabel
@@ -938,7 +939,7 @@ object ProduitGestionF: TProduitGestionF
           OnClick = PrixAHTProduitEdtClick
           OnExit = PrixAHTProduitEdtExit
           OnKeyDown = PrixVHTDProduitEdtKeyDown
-          OnKeyPress = PrixVHTDProduitEdtKeyPress
+          OnKeyPress = PrixAHTProduitEdtKeyPress
         end
         object NameProduitGEdt: TEdit
           Left = 113
@@ -1103,7 +1104,7 @@ object ProduitGestionF: TProduitGestionF
           OnClick = PrixATTCProduitEdtClick
           OnExit = PrixATTCProduitEdtExit
           OnKeyDown = PrixVHTDProduitEdtKeyDown
-          OnKeyPress = PrixVHTDProduitEdtKeyPress
+          OnKeyPress = PrixATTCProduitEdtKeyPress
         end
         object LineP3: TPanel
           Left = 73
@@ -1126,6 +1127,7 @@ object ProduitGestionF: TProduitGestionF
           Height = 26
           Alignment = taRightJustify
           DoubleBuffered = True
+          Enabled = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = 18
@@ -1148,6 +1150,7 @@ object ProduitGestionF: TProduitGestionF
           Height = 26
           Alignment = taRightJustify
           DoubleBuffered = True
+          Enabled = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = 18
@@ -1161,7 +1164,7 @@ object ProduitGestionF: TProduitGestionF
           OnClick = PrixVTTCDProduitEdtClick
           OnExit = PrixVTTCDProduitEdtExit
           OnKeyDown = PrixVHTDProduitEdtKeyDown
-          OnKeyPress = PrixVHTDProduitEdtKeyPress
+          OnKeyPress = PrixVTTCDProduitEdtKeyPress
         end
         object LineP4: TPanel
           Left = 394
@@ -1184,6 +1187,7 @@ object ProduitGestionF: TProduitGestionF
           Height = 26
           Alignment = taCenter
           DoubleBuffered = True
+          Enabled = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = 18
@@ -1197,7 +1201,7 @@ object ProduitGestionF: TProduitGestionF
           OnChange = MargeDProduitEdtChange
           OnClick = MargeDProduitEdtClick
           OnKeyDown = PrixVHTDProduitEdtKeyDown
-          OnKeyPress = PrixVHTDProduitEdtKeyPress
+          OnKeyPress = MargeDProduitEdtKeyPress
         end
         object PrixVHTRProduitEdt: TEdit
           Left = 314
@@ -1206,6 +1210,7 @@ object ProduitGestionF: TProduitGestionF
           Height = 26
           Alignment = taRightJustify
           DoubleBuffered = True
+          Enabled = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = 18
@@ -1219,7 +1224,7 @@ object ProduitGestionF: TProduitGestionF
           OnClick = PrixVHTRProduitEdtClick
           OnExit = PrixVHTRProduitEdtExit
           OnKeyDown = PrixVHTDProduitEdtKeyDown
-          OnKeyPress = PrixVHTDProduitEdtKeyPress
+          OnKeyPress = PrixVHTRProduitEdtKeyPress
         end
         object PrixVTTCRProduitEdt: TEdit
           Left = 441
@@ -1228,6 +1233,7 @@ object ProduitGestionF: TProduitGestionF
           Height = 26
           Alignment = taRightJustify
           DoubleBuffered = True
+          Enabled = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = 18
@@ -1241,7 +1247,7 @@ object ProduitGestionF: TProduitGestionF
           OnClick = PrixVTTCRProduitEdtClick
           OnExit = PrixVTTCRProduitEdtExit
           OnKeyDown = PrixVHTDProduitEdtKeyDown
-          OnKeyPress = PrixVHTDProduitEdtKeyPress
+          OnKeyPress = PrixVTTCRProduitEdtKeyPress
         end
         object MargeRProduitEdt: TEdit
           Left = 567
@@ -1250,6 +1256,7 @@ object ProduitGestionF: TProduitGestionF
           Height = 26
           Alignment = taCenter
           DoubleBuffered = True
+          Enabled = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = 18
@@ -1262,7 +1269,7 @@ object ProduitGestionF: TProduitGestionF
           OnChange = MargeRProduitEdtChange
           OnClick = MargeRProduitEdtClick
           OnKeyDown = PrixVHTDProduitEdtKeyDown
-          OnKeyPress = PrixVHTDProduitEdtKeyPress
+          OnKeyPress = MargeRProduitEdtKeyPress
         end
         object PrixVHTGProduitEdt: TEdit
           Left = 314
@@ -1271,6 +1278,7 @@ object ProduitGestionF: TProduitGestionF
           Height = 26
           Alignment = taRightJustify
           DoubleBuffered = True
+          Enabled = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = 18
@@ -1284,7 +1292,7 @@ object ProduitGestionF: TProduitGestionF
           OnClick = PrixVHTGProduitEdtClick
           OnExit = PrixVHTGProduitEdtExit
           OnKeyDown = PrixVHTDProduitEdtKeyDown
-          OnKeyPress = PrixVHTDProduitEdtKeyPress
+          OnKeyPress = PrixVHTGProduitEdtKeyPress
         end
         object PrixVTTCGProduitEdt: TEdit
           Left = 441
@@ -1293,6 +1301,7 @@ object ProduitGestionF: TProduitGestionF
           Height = 26
           Alignment = taRightJustify
           DoubleBuffered = True
+          Enabled = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = 18
@@ -1306,7 +1315,7 @@ object ProduitGestionF: TProduitGestionF
           OnClick = PrixVTTCGProduitEdtClick
           OnExit = PrixVTTCGProduitEdtExit
           OnKeyDown = PrixVHTDProduitEdtKeyDown
-          OnKeyPress = PrixVHTDProduitEdtKeyPress
+          OnKeyPress = PrixVTTCGProduitEdtKeyPress
         end
         object MargeGProduitEdt: TEdit
           Left = 567
@@ -1315,6 +1324,7 @@ object ProduitGestionF: TProduitGestionF
           Height = 26
           Alignment = taCenter
           DoubleBuffered = True
+          Enabled = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = 18
@@ -1327,7 +1337,7 @@ object ProduitGestionF: TProduitGestionF
           OnChange = MargeGProduitEdtChange
           OnClick = MargeGProduitEdtClick
           OnKeyDown = PrixVHTDProduitEdtKeyDown
-          OnKeyPress = PrixVHTDProduitEdtKeyPress
+          OnKeyPress = MargeGProduitEdtKeyPress
         end
         object PrixVHTA1ProduitEdt: TEdit
           Left = 314
@@ -1336,6 +1346,7 @@ object ProduitGestionF: TProduitGestionF
           Height = 26
           Alignment = taRightJustify
           DoubleBuffered = True
+          Enabled = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = 18
@@ -1349,7 +1360,7 @@ object ProduitGestionF: TProduitGestionF
           OnClick = PrixVHTA1ProduitEdtClick
           OnExit = PrixVHTA1ProduitEdtExit
           OnKeyDown = PrixVHTDProduitEdtKeyDown
-          OnKeyPress = PrixVHTDProduitEdtKeyPress
+          OnKeyPress = PrixVHTA1ProduitEdtKeyPress
         end
         object PrixVTTCA1ProduitEdt: TEdit
           Left = 441
@@ -1358,6 +1369,7 @@ object ProduitGestionF: TProduitGestionF
           Height = 26
           Alignment = taRightJustify
           DoubleBuffered = True
+          Enabled = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = 18
@@ -1371,7 +1383,7 @@ object ProduitGestionF: TProduitGestionF
           OnClick = PrixVTTCA1ProduitEdtClick
           OnExit = PrixVTTCA1ProduitEdtExit
           OnKeyDown = PrixVHTDProduitEdtKeyDown
-          OnKeyPress = PrixVHTDProduitEdtKeyPress
+          OnKeyPress = PrixVTTCA1ProduitEdtKeyPress
         end
         object MargeA1ProduitEdt: TEdit
           Left = 567
@@ -1380,6 +1392,7 @@ object ProduitGestionF: TProduitGestionF
           Height = 26
           Alignment = taCenter
           DoubleBuffered = True
+          Enabled = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = 18
@@ -1392,7 +1405,7 @@ object ProduitGestionF: TProduitGestionF
           OnChange = MargeA1ProduitEdtChange
           OnClick = MargeA1ProduitEdtClick
           OnKeyDown = PrixVHTDProduitEdtKeyDown
-          OnKeyPress = PrixVHTDProduitEdtKeyPress
+          OnKeyPress = MargeA1ProduitEdtKeyPress
         end
         object PrixVHTA2ProduitEdt: TEdit
           Left = 314
@@ -1401,6 +1414,7 @@ object ProduitGestionF: TProduitGestionF
           Height = 26
           Alignment = taRightJustify
           DoubleBuffered = True
+          Enabled = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = 18
@@ -1414,7 +1428,7 @@ object ProduitGestionF: TProduitGestionF
           OnClick = PrixVHTA2ProduitEdtClick
           OnExit = PrixVHTA2ProduitEdtExit
           OnKeyDown = PrixVHTDProduitEdtKeyDown
-          OnKeyPress = PrixVHTDProduitEdtKeyPress
+          OnKeyPress = PrixVHTA2ProduitEdtKeyPress
         end
         object PrixVTTCA2ProduitEdt: TEdit
           Left = 441
@@ -1423,6 +1437,7 @@ object ProduitGestionF: TProduitGestionF
           Height = 26
           Alignment = taRightJustify
           DoubleBuffered = True
+          Enabled = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = 18
@@ -1436,7 +1451,7 @@ object ProduitGestionF: TProduitGestionF
           OnClick = PrixVTTCA2ProduitEdtClick
           OnExit = PrixVTTCA2ProduitEdtExit
           OnKeyDown = PrixVHTDProduitEdtKeyDown
-          OnKeyPress = PrixVHTDProduitEdtKeyPress
+          OnKeyPress = PrixVTTCA2ProduitEdtKeyPress
         end
         object MargeA2ProduitEdt: TEdit
           Left = 567
@@ -1445,6 +1460,7 @@ object ProduitGestionF: TProduitGestionF
           Height = 26
           Alignment = taCenter
           DoubleBuffered = True
+          Enabled = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = 18
@@ -1457,7 +1473,7 @@ object ProduitGestionF: TProduitGestionF
           OnChange = MargeA2ProduitEdtChange
           OnClick = MargeA2ProduitEdtClick
           OnKeyDown = PrixVHTDProduitEdtKeyDown
-          OnKeyPress = PrixVHTDProduitEdtKeyPress
+          OnKeyPress = MargeA2ProduitEdtKeyPress
         end
         object LineP2: TPanel
           Left = 0
@@ -1489,7 +1505,6 @@ object ProduitGestionF: TProduitGestionF
           ParentFont = False
           TabOrder = 31
           OnKeyDown = PrixVHTDProduitEdtKeyDown
-          OnKeyPress = PrixVHTDProduitEdtKeyPress
         end
         object StockAlertProduitEdt: TEdit
           Left = 547
@@ -1507,7 +1522,6 @@ object ProduitGestionF: TProduitGestionF
           ParentFont = False
           TabOrder = 32
           OnKeyDown = PrixVHTDProduitEdtKeyDown
-          OnKeyPress = PrixVHTDProduitEdtKeyPress
         end
         object StockActuelProduitEdt: TEdit
           Left = 341

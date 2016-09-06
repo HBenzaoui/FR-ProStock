@@ -416,7 +416,12 @@ begin
           ProduitGestionF.ImageShowProduitG.Grayed := True;
           ProduitGestionF.ImageShowProduitG.Blend := 50;
         end;
-      end;
+         ProduitGestionF.PrixVHTDProduitEdt.Enabled:= True;ProduitGestionF.PrixVTTCDProduitEdt.Enabled:= True; ProduitGestionF.MargeDProduitEdt.Enabled:= True;
+        ProduitGestionF.PrixVHTRProduitEdt.Enabled:= True;ProduitGestionF.PrixVTTCRProduitEdt.Enabled:= True; ProduitGestionF.MargeRProduitEdt.Enabled:= True;
+        ProduitGestionF.PrixVHTGProduitEdt.Enabled:= True;ProduitGestionF.PrixVTTCGProduitEdt.Enabled:= True; ProduitGestionF.MargeGProduitEdt.Enabled:= True;
+        ProduitGestionF.PrixVHTA1ProduitEdt.Enabled:= True;ProduitGestionF.PrixVTTCA1ProduitEdt.Enabled:= True; ProduitGestionF.MargeA1ProduitEdt.Enabled:= True;
+        ProduitGestionF.PrixVHTA2ProduitEdt.Enabled:= True;ProduitGestionF.PrixVTTCA2ProduitEdt.Enabled:= True; ProduitGestionF.MargeA2ProduitEdt.Enabled:= True;
+        end;
     end
     else  begin
       Exit

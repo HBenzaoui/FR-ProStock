@@ -491,6 +491,7 @@ object ProduitsListF: TProduitsListF
         Visible = False
       end
       item
+        DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
         FieldName = 'PrixATTC'
@@ -507,7 +508,7 @@ object ProduitsListF: TProduitsListF
         Width = 131
       end
       item
-        DisplayFormat = '0.00 '
+        DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
         FieldName = 'prixvd_p'
@@ -525,7 +526,7 @@ object ProduitsListF: TProduitsListF
         Width = 130
       end
       item
-        DisplayFormat = '0.00 '
+        DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
         FieldName = 'PrixVTTCD'
@@ -545,7 +546,7 @@ object ProduitsListF: TProduitsListF
         Width = 130
       end
       item
-        DisplayFormat = '0.00 '
+        DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
         FieldName = 'prixvr_p'
@@ -563,7 +564,7 @@ object ProduitsListF: TProduitsListF
         Width = 130
       end
       item
-        DisplayFormat = '0.00 '
+        DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
         FieldName = 'PrixVTTCR'
@@ -581,7 +582,7 @@ object ProduitsListF: TProduitsListF
         Width = 130
       end
       item
-        DisplayFormat = '0.00 '
+        DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
         FieldName = 'prixvg_p'
@@ -599,7 +600,7 @@ object ProduitsListF: TProduitsListF
         Width = 130
       end
       item
-        DisplayFormat = '0.00 '
+        DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
         FieldName = 'PrixVTTCG'
@@ -617,6 +618,7 @@ object ProduitsListF: TProduitsListF
         Width = 130
       end
       item
+        DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
         FieldName = 'prixva_p'
@@ -627,6 +629,7 @@ object ProduitsListF: TProduitsListF
         Width = 130
       end
       item
+        DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
         FieldName = 'PrixVTTCA'
@@ -637,6 +640,7 @@ object ProduitsListF: TProduitsListF
         Width = 130
       end
       item
+        DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
         FieldName = 'prixva2_p'
@@ -647,6 +651,7 @@ object ProduitsListF: TProduitsListF
         Width = 130
       end
       item
+        DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
         FieldName = 'PrixVTTCA2'
