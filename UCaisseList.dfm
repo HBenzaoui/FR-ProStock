@@ -499,6 +499,39 @@ object CaisseListF: TCaisseListF
         Width = 28
       end
       item
+        Color = 14210301
+        DisplayFormat = '#,##0.00'
+        DynProps = <>
+        EditButtons = <>
+        FieldName = 'decaiss_ocb'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = 24
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        Footers = <
+          item
+            Color = 4666873
+            DisplayFormat = '#,##0.00'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = 15722984
+            Font.Height = 22
+            Font.Name = 'Segoe UI'
+            Font.Style = [fsBold]
+            ValueType = fvtSum
+          end
+          item
+            FieldName = 'decaiss_ocb'
+          end>
+        Layout = tlCenter
+        MinWidth = 150
+        Title.Alignment = taCenter
+        Title.Caption = 'D'#233'caissement'
+        Title.EndEllipsis = True
+        Title.ToolTips = True
+        Width = 200
+      end
+      item
         Color = 14612166
         DisplayFormat = '#,##0.00'
         DynProps = <>
@@ -528,39 +561,6 @@ object CaisseListF: TCaisseListF
         MinWidth = 150
         Title.Alignment = taCenter
         Title.Caption = 'Encaissement'
-        Title.EndEllipsis = True
-        Title.ToolTips = True
-        Width = 200
-      end
-      item
-        Color = 14210301
-        DisplayFormat = '#,##0.00'
-        DynProps = <>
-        EditButtons = <>
-        FieldName = 'decaiss_ocb'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clBlack
-        Font.Height = 24
-        Font.Name = 'Segoe UI'
-        Font.Style = []
-        Footers = <
-          item
-            Color = 4666873
-            DisplayFormat = '#,##0.00'
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = 15722984
-            Font.Height = 22
-            Font.Name = 'Segoe UI'
-            Font.Style = [fsBold]
-            ValueType = fvtSum
-          end
-          item
-            FieldName = 'decaiss_ocb'
-          end>
-        Layout = tlCenter
-        MinWidth = 150
-        Title.Alignment = taCenter
-        Title.Caption = 'D'#233'caissement'
         Title.EndEllipsis = True
         Title.ToolTips = True
         Width = 200
@@ -1095,9 +1095,9 @@ object CaisseListF: TCaisseListF
     object Label4: TLabel
       Left = 9
       Top = 12
-      Width = 95
+      Width = 99
       Height = 21
-      Caption = 'Solde Initial:'
+      Caption = 'Solde Initial :'
       Color = clWhite
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
@@ -1130,9 +1130,9 @@ object CaisseListF: TCaisseListF
     object Label5: TLabel
       Left = 326
       Top = 12
-      Width = 151
+      Width = 155
       Height = 21
-      Caption = 'Solde de la p'#233'riode:'
+      Caption = 'Solde de la p'#233'riode :'
       Color = clWhite
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
@@ -1197,10 +1197,10 @@ object CaisseListF: TCaisseListF
     object Label8: TLabel
       Left = 886
       Top = 12
-      Width = 92
+      Width = 52
       Height = 21
       Anchors = [akTop, akRight]
-      Caption = 'Solde Total:'
+      Caption = 'Solde :'
       Color = clWhite
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
@@ -1226,7 +1226,7 @@ object CaisseListF: TCaisseListF
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 42576.399521435200000000
-    ReportOptions.LastChange = 42582.605195243060000000
+    ReportOptions.LastChange = 42621.424269548610000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       ''
@@ -1436,7 +1436,7 @@ object CaisseListF: TCaisseListF
           Fill.BackColor = 13948116
           HAlign = haCenter
           Memo.UTF8W = (
-            'Entr'#233'e')
+            'Sortie')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -1454,7 +1454,7 @@ object CaisseListF: TCaisseListF
           Fill.BackColor = 13948116
           HAlign = haCenter
           Memo.UTF8W = (
-            'Sortie')
+            'Entr'#233'e')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -1632,26 +1632,7 @@ object CaisseListF: TCaisseListF
           Top = 0.779530000000000000
           Width = 151.559055120000000000
           Height = 18.897650000000000000
-          DataSet = frxCaisseListDB
-          DataSetName = 'frxCaisseListDB'
-          DisplayFormat.FormatStr = '%2.2m'
-          DisplayFormat.Kind = fkNumeric
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -12
-          Font.Name = 'Helvetica LT Std'
-          Font.Style = []
-          HAlign = haRight
-          Memo.UTF8W = (
-            '[frxCaisseListDB."encaiss_ocb"]')
-          ParentFont = False
-          VAlign = vaCenter
-        end
-        object Memo9: TfrxMemoView
-          Left = 815.496600000000000000
-          Top = 0.779530000000000000
-          Width = 151.559055120000000000
-          Height = 18.897650000000000000
+          DataField = 'decaiss_ocb'
           DataSet = frxCaisseListDB
           DataSetName = 'frxCaisseListDB'
           DisplayFormat.FormatStr = '%2.2m'
@@ -1664,6 +1645,27 @@ object CaisseListF: TCaisseListF
           HAlign = haRight
           Memo.UTF8W = (
             '[frxCaisseListDB."decaiss_ocb"]')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo9: TfrxMemoView
+          Left = 815.496600000000000000
+          Top = 0.779530000000000000
+          Width = 151.559055120000000000
+          Height = 18.897650000000000000
+          DataField = 'encaiss_ocb'
+          DataSet = frxCaisseListDB
+          DataSetName = 'frxCaisseListDB'
+          DisplayFormat.FormatStr = '%2.2m'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -12
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[frxCaisseListDB."encaiss_ocb"]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -1847,7 +1849,7 @@ object CaisseListF: TCaisseListF
           Fill.BackColor = 13948116
           HAlign = haRight
           Memo.UTF8W = (
-            'Solde Total :')
+            'Solde :')
           ParentFont = False
           VAlign = vaCenter
         end

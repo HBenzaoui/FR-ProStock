@@ -1162,19 +1162,27 @@ MonthsData;
     with PieSeries1 do
     begin
       Clear;
-      Add(  StrToInt(NBLDashBLbl.Caption), 'BL' ,  $00E5B533 ) ;
-      Add(  StrToInt(NFVDashBLbl.Caption), 'FCV',  $00CC66AA ) ;
+      Add(  StrToInt(NBLDashBLbl.Caption),  'BL' ,  $00E5B533 ) ;
+      Add(  StrToInt(NFVDashBLbl.Caption),  'FCV',  $00CC66AA ) ;
       Add(  StrToInt(NCTRDashBLbl.Caption), 'BCTR', $0000CC99 ) ;
-      Add(  StrToInt(NBRDashBLbl.Caption), 'BR',   $0033BBFF ) ;
-      Add(  StrToInt(NFADashBLbl.Caption), 'FCA',  $004444FF ) ;
+      Add(  StrToInt(NBRDashBLbl.Caption),  'BR',   $0033BBFF ) ;
+      Add(  StrToInt(NFADashBLbl.Caption),  'FCA',  $004444FF ) ;
     end;
 
-  TTask.Run ( procedure
-            begin
+//  TTask.Run ( procedure
+//            begin
+
+             if NOT Assigned(DashboardF) then
+              begin
               ChartAnimation1.Play;
               TeeAnimationTool1.Play;
               TeeAnimationTool2.play;
-            end);
+
+              end;
+
+
+
+//            end);
 end;
 
 procedure TDashboardF.FormCreate(Sender: TObject);

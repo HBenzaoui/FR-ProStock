@@ -1049,17 +1049,17 @@ object MainForm: TMainForm
       Font.Style = []
       ParentFont = False
     end
-    object vente_ur: TCheckBox
-      Left = 269
+    object bl_ur: TCheckBox
+      Left = 251
       Top = 4
       Width = 13
       Height = 13
-      Caption = 'vente_ur'
+      Caption = 'CheckBox1'
       TabOrder = 0
       Visible = False
     end
-    object bl_ur: TCheckBox
-      Left = 286
+    object fcv_ur: TCheckBox
+      Left = 266
       Top = 4
       Width = 13
       Height = 13
@@ -1067,8 +1067,8 @@ object MainForm: TMainForm
       TabOrder = 1
       Visible = False
     end
-    object fcv_ur: TCheckBox
-      Left = 303
+    object rgc_ur: TCheckBox
+      Left = 281
       Top = 4
       Width = 13
       Height = 13
@@ -1076,8 +1076,8 @@ object MainForm: TMainForm
       TabOrder = 2
       Visible = False
     end
-    object rgc_ur: TCheckBox
-      Left = 320
+    object br_ur: TCheckBox
+      Left = 296
       Top = 4
       Width = 13
       Height = 13
@@ -1085,8 +1085,8 @@ object MainForm: TMainForm
       TabOrder = 3
       Visible = False
     end
-    object achat_ur: TCheckBox
-      Left = 337
+    object fca_ur: TCheckBox
+      Left = 311
       Top = 4
       Width = 13
       Height = 13
@@ -1094,8 +1094,8 @@ object MainForm: TMainForm
       TabOrder = 4
       Visible = False
     end
-    object br_ur: TCheckBox
-      Left = 354
+    object rgf_ur: TCheckBox
+      Left = 326
       Top = 4
       Width = 13
       Height = 13
@@ -1103,8 +1103,8 @@ object MainForm: TMainForm
       TabOrder = 5
       Visible = False
     end
-    object fca_ur: TCheckBox
-      Left = 371
+    object caisse_ur: TCheckBox
+      Left = 341
       Top = 4
       Width = 13
       Height = 13
@@ -1112,8 +1112,8 @@ object MainForm: TMainForm
       TabOrder = 6
       Visible = False
     end
-    object rgf_ur: TCheckBox
-      Left = 388
+    object bank_ur: TCheckBox
+      Left = 356
       Top = 4
       Width = 13
       Height = 13
@@ -1121,8 +1121,8 @@ object MainForm: TMainForm
       TabOrder = 7
       Visible = False
     end
-    object tre_ur: TCheckBox
-      Left = 405
+    object client_ur: TCheckBox
+      Left = 371
       Top = 4
       Width = 13
       Height = 13
@@ -1130,8 +1130,8 @@ object MainForm: TMainForm
       TabOrder = 8
       Visible = False
     end
-    object caisse_ur: TCheckBox
-      Left = 422
+    object four_ur: TCheckBox
+      Left = 386
       Top = 4
       Width = 13
       Height = 13
@@ -1139,8 +1139,8 @@ object MainForm: TMainForm
       TabOrder = 9
       Visible = False
     end
-    object bank_ur: TCheckBox
-      Left = 439
+    object ctr_ur: TCheckBox
+      Left = 401
       Top = 4
       Width = 13
       Height = 13
@@ -1148,8 +1148,8 @@ object MainForm: TMainForm
       TabOrder = 10
       Visible = False
     end
-    object client_ur: TCheckBox
-      Left = 456
+    object produit_ur: TCheckBox
+      Left = 416
       Top = 4
       Width = 13
       Height = 13
@@ -1157,17 +1157,17 @@ object MainForm: TMainForm
       TabOrder = 11
       Visible = False
     end
-    object four_ur: TCheckBox
-      Left = 473
+    object famp_ur: TCheckBox
+      Left = 431
       Top = 4
       Width = 13
       Height = 13
-      Caption = 'CheckBox1'
+      Caption = 'famp_ur'
       TabOrder = 12
       Visible = False
     end
-    object ctr_ur: TCheckBox
-      Left = 490
+    object sfamp_ur: TCheckBox
+      Left = 446
       Top = 4
       Width = 13
       Height = 13
@@ -1175,13 +1175,40 @@ object MainForm: TMainForm
       TabOrder = 13
       Visible = False
     end
-    object produit_ur: TCheckBox
-      Left = 507
+    object mdpai_ur: TCheckBox
+      Left = 461
       Top = 4
       Width = 13
       Height = 13
       Caption = 'CheckBox1'
       TabOrder = 14
+      Visible = False
+    end
+    object cmpt_ur: TCheckBox
+      Left = 476
+      Top = 4
+      Width = 13
+      Height = 13
+      Caption = 'CheckBox1'
+      TabOrder = 15
+      Visible = False
+    end
+    object unit_ur: TCheckBox
+      Left = 491
+      Top = 4
+      Width = 13
+      Height = 13
+      Caption = 'CheckBox1'
+      TabOrder = 16
+      Visible = False
+    end
+    object local_ur: TCheckBox
+      Left = 506
+      Top = 4
+      Width = 13
+      Height = 13
+      Caption = 'CheckBox1'
+      TabOrder = 17
       Visible = False
     end
   end
@@ -1230,7 +1257,7 @@ object MainForm: TMainForm
         Caption = 'Les Produit'
       end
     end
-    object L1: TMenuItem
+    object ListesMainFMnm: TMenuItem
       Caption = 'Listes'
       object ClientMainFMnm: TMenuItem
         Caption = 'Clients'
@@ -1250,15 +1277,15 @@ object MainForm: TMainForm
         ImageIndex = 8
         OnClick = ProduitMainFMmnClick
       end
-      object F4: TMenuItem
+      object FamPMainFMmn: TMenuItem
         Caption = 'Familles Articles'
         ImageIndex = 15
-        OnClick = F4Click
+        OnClick = FamPMainFMmnClick
       end
-      object S1: TMenuItem
+      object SFamPMainFMmn: TMenuItem
         Caption = 'Sous Familles Articles'
         ImageIndex = 15
-        OnClick = S1Click
+        OnClick = SFamPMainFMmnClick
       end
       object R1: TMenuItem
         Caption = 'Remises/Promotions'
@@ -1282,28 +1309,28 @@ object MainForm: TMainForm
         ImageIndex = 18
         Visible = False
       end
-      object M2: TMenuItem
+      object MPMainFMmn: TMenuItem
         Caption = 'Modes de paiement'
         ImageIndex = 17
-        OnClick = M2Click
+        OnClick = MPMainFMmnClick
       end
-      object c4: TMenuItem
+      object ComptesMainFMmn: TMenuItem
         Caption = 'Comptes'
         ImageIndex = 19
-        OnClick = c4Click
+        OnClick = ComptesMainFMmnClick
       end
       object N13: TMenuItem
         Caption = '-'
       end
-      object U1: TMenuItem
+      object UniteMainFMmn: TMenuItem
         Caption = 'Unites'
         ImageIndex = 25
-        OnClick = U1Click
+        OnClick = UniteMainFMmnClick
       end
-      object o1: TMenuItem
+      object LocalMainFMmn: TMenuItem
         Caption = 'Localisations'
         ImageIndex = 20
-        OnClick = o1Click
+        OnClick = LocalMainFMmnClick
       end
     end
     object AchatsMainFMnm: TMenuItem

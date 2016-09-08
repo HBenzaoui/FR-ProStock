@@ -210,11 +210,12 @@ begin
     //   MainForm.Align:= alClient;
    //    AnimateWindow(ClientGestionF.Handle, 250, AW_VER_NEGATIVE OR AW_BLEND OR AW_ACTIVATE );
     ProduitGestionF.ProduitGPgControl.TabIndex := 0;
+    ProduitGestionF.Tag := 1;
+    ProduitGestionF.OKProduitGBtn.Tag := 1;
     ProduitGestionF.Show;
     ProduitGestionF.NameProduitGEdt.SetFocus;
-    ProduitGestionF.OKProduitGBtn.Tag := 1;
 
-    ProduitGestionF.Tag := 1;
+
         //  MainForm.ClientTable.Refresh;
     if not ProduitsListDBGridEh.DataSource.DataSet.IsEmpty then
     begin

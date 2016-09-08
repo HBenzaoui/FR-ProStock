@@ -2239,7 +2239,7 @@ object BonRecGestionF: TBonRecGestionF
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 42576.399521435200000000
-    ReportOptions.LastChange = 42578.788332523100000000
+    ReportOptions.LastChange = 42621.407534085650000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       ''
@@ -2840,7 +2840,7 @@ object BonRecGestionF: TBonRecGestionF
           Font.Style = []
           HAlign = haRight
           Memo.UTF8W = (
-            'Total TVA :')
+            'TVA :')
           ParentFont = False
           VAlign = vaCenter
         end
