@@ -215,6 +215,7 @@ object ProduitGestionF: TProduitGestionF
           Height = 18
           Caption = 'P'#233'rissable:'
           Color = 4207405
+          Enabled = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = 4207405
           Font.Height = 18
@@ -571,6 +572,7 @@ object ProduitGestionF: TProduitGestionF
           Height = 18
           Caption = 'Alerte :'
           Color = 4207405
+          Enabled = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = 4207405
           Font.Height = 18
@@ -1039,6 +1041,7 @@ object ProduitGestionF: TProduitGestionF
           BevelOuter = bvNone
           BiDiMode = bdLeftToRight
           Ctl3D = False
+          Enabled = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = 4207405
           Font.Height = 12
@@ -1177,7 +1180,7 @@ object ProduitGestionF: TProduitGestionF
           DoubleBuffered = True
           ParentBackground = False
           ParentDoubleBuffered = False
-          TabOrder = 16
+          TabOrder = 29
           StyleElements = []
         end
         object MargeDProduitEdt: TEdit
@@ -1196,7 +1199,7 @@ object ProduitGestionF: TProduitGestionF
           MaxLength = 5
           ParentDoubleBuffered = False
           ParentFont = False
-          TabOrder = 17
+          TabOrder = 24
           StyleElements = [seClient, seBorder]
           OnChange = MargeDProduitEdtChange
           OnClick = MargeDProduitEdtClick
@@ -1219,7 +1222,7 @@ object ProduitGestionF: TProduitGestionF
           MaxLength = 14
           ParentDoubleBuffered = False
           ParentFont = False
-          TabOrder = 18
+          TabOrder = 16
           OnChange = PrixVHTRProduitEdtChange
           OnClick = PrixVHTRProduitEdtClick
           OnExit = PrixVHTRProduitEdtExit
@@ -1242,7 +1245,7 @@ object ProduitGestionF: TProduitGestionF
           MaxLength = 14
           ParentDoubleBuffered = False
           ParentFont = False
-          TabOrder = 19
+          TabOrder = 17
           OnChange = PrixVHTRProduitEdtChange
           OnClick = PrixVTTCRProduitEdtClick
           OnExit = PrixVTTCRProduitEdtExit
@@ -1265,7 +1268,7 @@ object ProduitGestionF: TProduitGestionF
           MaxLength = 5
           ParentDoubleBuffered = False
           ParentFont = False
-          TabOrder = 20
+          TabOrder = 25
           OnChange = MargeRProduitEdtChange
           OnClick = MargeRProduitEdtClick
           OnKeyDown = PrixVHTDProduitEdtKeyDown
@@ -1287,7 +1290,7 @@ object ProduitGestionF: TProduitGestionF
           MaxLength = 14
           ParentDoubleBuffered = False
           ParentFont = False
-          TabOrder = 21
+          TabOrder = 18
           OnChange = PrixVHTGProduitEdtChange
           OnClick = PrixVHTGProduitEdtClick
           OnExit = PrixVHTGProduitEdtExit
@@ -1310,7 +1313,7 @@ object ProduitGestionF: TProduitGestionF
           MaxLength = 14
           ParentDoubleBuffered = False
           ParentFont = False
-          TabOrder = 22
+          TabOrder = 19
           OnChange = PrixVHTGProduitEdtChange
           OnClick = PrixVTTCGProduitEdtClick
           OnExit = PrixVTTCGProduitEdtExit
@@ -1333,7 +1336,7 @@ object ProduitGestionF: TProduitGestionF
           MaxLength = 5
           ParentDoubleBuffered = False
           ParentFont = False
-          TabOrder = 23
+          TabOrder = 26
           OnChange = MargeGProduitEdtChange
           OnClick = MargeGProduitEdtClick
           OnKeyDown = PrixVHTDProduitEdtKeyDown
@@ -1355,7 +1358,7 @@ object ProduitGestionF: TProduitGestionF
           MaxLength = 14
           ParentDoubleBuffered = False
           ParentFont = False
-          TabOrder = 24
+          TabOrder = 20
           OnChange = PrixVHTA1ProduitEdtChange
           OnClick = PrixVHTA1ProduitEdtClick
           OnExit = PrixVHTA1ProduitEdtExit
@@ -1378,7 +1381,7 @@ object ProduitGestionF: TProduitGestionF
           MaxLength = 14
           ParentDoubleBuffered = False
           ParentFont = False
-          TabOrder = 25
+          TabOrder = 21
           OnChange = PrixVHTA1ProduitEdtChange
           OnClick = PrixVTTCA1ProduitEdtClick
           OnExit = PrixVTTCA1ProduitEdtExit
@@ -1401,7 +1404,7 @@ object ProduitGestionF: TProduitGestionF
           MaxLength = 5
           ParentDoubleBuffered = False
           ParentFont = False
-          TabOrder = 26
+          TabOrder = 27
           OnChange = MargeA1ProduitEdtChange
           OnClick = MargeA1ProduitEdtClick
           OnKeyDown = PrixVHTDProduitEdtKeyDown
@@ -1423,7 +1426,7 @@ object ProduitGestionF: TProduitGestionF
           MaxLength = 14
           ParentDoubleBuffered = False
           ParentFont = False
-          TabOrder = 27
+          TabOrder = 22
           OnChange = PrixVHTA2ProduitEdtChange
           OnClick = PrixVHTA2ProduitEdtClick
           OnExit = PrixVHTA2ProduitEdtExit
@@ -1446,7 +1449,7 @@ object ProduitGestionF: TProduitGestionF
           MaxLength = 14
           ParentDoubleBuffered = False
           ParentFont = False
-          TabOrder = 28
+          TabOrder = 23
           OnChange = PrixVHTA2ProduitEdtChange
           OnClick = PrixVTTCA2ProduitEdtClick
           OnExit = PrixVTTCA2ProduitEdtExit
@@ -1469,7 +1472,7 @@ object ProduitGestionF: TProduitGestionF
           MaxLength = 5
           ParentDoubleBuffered = False
           ParentFont = False
-          TabOrder = 29
+          TabOrder = 28
           OnChange = MargeA2ProduitEdtChange
           OnClick = MargeA2ProduitEdtClick
           OnKeyDown = PrixVHTDProduitEdtKeyDown
@@ -1513,6 +1516,7 @@ object ProduitGestionF: TProduitGestionF
           Height = 26
           Alignment = taCenter
           DoubleBuffered = True
+          Enabled = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = 18
@@ -1734,6 +1738,7 @@ object ProduitGestionF: TProduitGestionF
           Height = 18
           Caption = 'Max.Stock:'
           Color = 4207405
+          Enabled = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = 4207405
           Font.Height = 18
@@ -1750,6 +1755,7 @@ object ProduitGestionF: TProduitGestionF
           Height = 18
           Caption = 'Min.Stock:'
           Color = 4207405
+          Enabled = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = 4207405
           Font.Height = 18
@@ -1909,6 +1915,7 @@ object ProduitGestionF: TProduitGestionF
           Height = 26
           Alignment = taRightJustify
           DoubleBuffered = True
+          Enabled = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = 18
@@ -1925,6 +1932,7 @@ object ProduitGestionF: TProduitGestionF
           Height = 26
           Alignment = taRightJustify
           DoubleBuffered = True
+          Enabled = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = 18

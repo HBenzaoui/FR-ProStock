@@ -50,11 +50,13 @@ type
     N7: TMenuItem;
     Q1: TMenuItem;
     A1: TMenuItem;
-    L1: TMenuItem;
+    ListesMainFMnm: TMenuItem;
     ClientMainFMnm: TMenuItem;
     FourMainFMnm: TMenuItem; N1: TMenuItem;
-    ProduitMainFMmn: TMenuItem; F4: TMenuItem; R1: TMenuItem; N2: TMenuItem; M1: TMenuItem;
-    N3: TMenuItem; T1: TMenuItem; M2: TMenuItem;
+    ProduitMainFMmn: TMenuItem;
+    FamPMainFMmn: TMenuItem; R1: TMenuItem; N2: TMenuItem; M1: TMenuItem;
+    N3: TMenuItem; T1: TMenuItem;
+    MPMainFMmn: TMenuItem;
     VenteMainFMnm: TMenuItem;
     AchatsMainFMnm: TMenuItem;
     FactureVMainFMnm: TMenuItem; statistiques1: TMenuItem;
@@ -178,9 +180,9 @@ type
     Bona_recPlistTabletvap: TIntegerField;
     Button1: TButton;
     Button2: TButton;
-    c4: TMenuItem;
+    ComptesMainFMmn: TMenuItem;
     N13: TMenuItem;
-    o1: TMenuItem;
+    LocalMainFMmn: TMenuItem;
     PanelIcons24: TsAlphaImageList;
     Button3: TButton;
     Mode_paiementTable: TFDQuery;
@@ -646,15 +648,12 @@ type
     RegclientTableMP: TStringField;
     RegfournisseurTableMP: TStringField;
     UserTypeLbl: TLabel;
-    vente_ur: TCheckBox;
     bl_ur: TCheckBox;
     fcv_ur: TCheckBox;
     rgc_ur: TCheckBox;
-    achat_ur: TCheckBox;
     br_ur: TCheckBox;
     fca_ur: TCheckBox;
     rgf_ur: TCheckBox;
-    tre_ur: TCheckBox;
     caisse_ur: TCheckBox;
     bank_ur: TCheckBox;
     client_ur: TCheckBox;
@@ -681,10 +680,16 @@ type
     BonFacVListDataS: TDataSource;
     AddUnitCompteDataS: TDataSource;
     GridIconsComptes20: TsAlphaImageList;
-    S1: TMenuItem;
-    U1: TMenuItem;
+    SFamPMainFMmn: TMenuItem;
+    UniteMainFMmn: TMenuItem;
     ClientTablecredit_c: TCurrencyField;
     FournisseurTablecredit_f: TCurrencyField;
+    famp_ur: TCheckBox;
+    sfamp_ur: TCheckBox;
+    mdpai_ur: TCheckBox;
+    cmpt_ur: TCheckBox;
+    unit_ur: TCheckBox;
+    local_ur: TCheckBox;
     procedure ClientMainFBtnClick(Sender: TObject);
     procedure FourMainFBtnClick(Sender: TObject);
     procedure ProduitMainFBtnClick(Sender: TObject);
@@ -759,7 +764,7 @@ type
     procedure FCAFaceBtnClick(Sender: TObject);
     procedure FCVFaceBtnClick(Sender: TObject);
     procedure FourFaceBtnClick(Sender: TObject);
-    procedure M2Click(Sender: TObject);
+    procedure MPMainFMmnClick(Sender: TObject);
     procedure ProduitFaceBtnClick(Sender: TObject);
     procedure ClientMainFMnmClick(Sender: TObject);
     procedure FourMainFMnmClick(Sender: TObject);
@@ -767,11 +772,11 @@ type
     procedure BoardMainFBtnClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure H1Click(Sender: TObject);
-    procedure c4Click(Sender: TObject);
-    procedure F4Click(Sender: TObject);
-    procedure S1Click(Sender: TObject);
-    procedure U1Click(Sender: TObject);
-    procedure o1Click(Sender: TObject);
+    procedure ComptesMainFMmnClick(Sender: TObject);
+    procedure FamPMainFMmnClick(Sender: TObject);
+    procedure SFamPMainFMmnClick(Sender: TObject);
+    procedure UniteMainFMmnClick(Sender: TObject);
+    procedure LocalMainFMmnClick(Sender: TObject);
   private
 
     TimerStart: TDateTime;
@@ -789,13 +794,13 @@ implementation
 
 {$R *.dfm}
 
-uses TlHelp32,Contnrs,
+uses TlHelp32,Contnrs,System.Threading,IniFiles,
    UClientsList, UFournisseurList, UProduitsList, UBonRec, UBonRecGestion,
   USplashAddUnite, UBonLiv, UBonLivGestion, UBonFacVGestion, UBonFacV,
   UBonFacAGestion, UBonFacA, UComptoir,ShellAPI, UBonCtr, UCaisseList,
   UBankList, UUsersList, UUsersGestion, UReglementFList, UReglementCList,
   UOptions, UModePaieList, UDashboard,uCompteList, UFamPList, USFamPList,
-  UUnitesList, ULocaleList;
+  UUnitesList, ULocaleList, UHomeF, UDataModule;
 
 
   var
@@ -850,7 +855,6 @@ procedure NormalForms;
 begin
   FreeAndNil(gGrayForms);
 end;
-
 
 
 procedure TMainForm.ClientMainFBtnClick(Sender: TObject);
@@ -909,6 +913,10 @@ begin
 //   begin CanClose := false end
 //    else
 //    begin
+//
+////      KillTask('postgres.exe');
+////      KillTask('cmd.exe');
+//
 ////      GstockdcConnection.ExecSQL('VACUUM') ;
 //      CanClose := True;
 //    end;
@@ -918,30 +926,51 @@ end;
 
 procedure TMainForm.FormCreate(Sender: TObject);
 var sCmd: string;
+Ini: TIniFile;
 begin
-//Screen.MenuFont.Name := 'Roboto';
 Screen.MenuFont.Height := 15;
 Screen.MenuFont.Color:= $0040332D ;
 
-//FDPhysPgDriverLink1.VendorLib:= GetCurrentDir+'\bin\libpq.dll ' ;
 
-//  sCmd := Pwidechar(GetCurrentDir+ '\bin\pg_s.bat' );
-//  ShellExecute(0, 'open', PChar(sCmd) , PChar(sCmd), nil, SW_HIDE);
-//
-//  Sleep(5000);
+FDPhysPgDriverLink1.VendorLib:= 'C:\Program Files (x86)\PostgreSQL\9.6\bin\libpq.dll' ; // Eable this is only for Debuggin
+
+//FDPhysPgDriverLink1.VendorLib:= GetCurrentDir+'\bin\libpq.dll' ;    // Eable this is only for releasing
+
+//  sCmd := Pwidechar(GetCurrentDir+ '\bin\pg_s.bat' );                // Eable this is only for releasing
+//  ShellExecute(0, 'open', PChar(sCmd) , PChar(sCmd), nil, SW_HIDE);  // Eable this is only for releasing
+
+//  Sleep(5000);                                                       // Eable this is only for releasing
 
   GstockdcConnection.DriverName := 'PG';
-  GstockdcConnection.Params.Values['Server'] :='localhost'; // your server name'';
-//  FDConnection1.Params.Values['Database'] := 'GSTOCKDC';
-  GstockdcConnection.Params.Values['user_name'] := 'postgres';    // adjust to suit
+  GstockdcConnection.Params.Values['Server'] :='localhost';
+  GstockdcConnection.Params.Values['user_name'] := 'postgres';
   GstockdcConnection.Params.Values['password'] := ''; // ditto
   GstockdcConnection.Params.Values['Port'] := '5432';
   GstockdcConnection.LoginPrompt := False;
 
- GstockdcConnection.Params.Values['Database'] := 'GSTOCKDC';
- GstockdcConnection.Connected:= True;
+   GstockdcConnection.Params.Values['Database'] := 'GSTOCKDC';
+   GstockdcConnection.Connected:= True;
 
-// FDScriptCreateTables.ExecuteAll;
+//   if NOT fileexists('Config') then
+//   begin
+
+
+//    FDScriptCreateTables.ExecuteAll;
+//     Sleep(2000);      // just for the first time
+
+//   end;
+
+//  begin
+//    Ini := TIniFile.Create(ChangeFileExt(Application.ExeName,'.ini'));
+//    Ini.WriteBool(Caption,   'DB', True);
+//    Ini.Free;
+//  end;
+
+
+     // Enable this is only for releasing
+
+
+
 
   Application.UpdateFormatSettings := false;
   FormatSettings.DecimalSeparator := ',';
@@ -1164,9 +1193,6 @@ begin
   UniteTable.Active := True;
   WilayasTable.Active := True;
   CommunesTable.Active := True;
-
-
-
 
 end;
 
@@ -1832,19 +1858,17 @@ end;
 
 procedure TMainForm.FormShow(Sender: TObject);
 begin
-      GstockdcConnection.Connected := True;
+//      GstockdcConnection.Connected := True;
     ProduitTable.Active := True;
     ClientTable.Active := True;
-//    ClientListF.ClientTablePassif.Active := True;
-//    ClientListF.ClientTableActif.Active := True;
     FournisseurTable.Active := True;
 
-//    Bona_recTable.Active := True;
-//    Bona_recPlistTable.Active := True;
-//    Bona_facTable.Active := True;
-//    Bona_fac_listTable.Active := True;
+    Bona_recTable.Active := True;
+    Bona_recPlistTable.Active := True;
+    Bona_facTable.Active := True;
+    Bona_fac_listTable.Active := True;
     Bonv_livTable.Active := True;
- //   Bonv_liv_listTable.Active := True;
+    Bonv_liv_listTable.Active := True;
     Bonv_facTable.Active := True;
     Bonv_fac_listTable.Active := True;
     Bonv_ctrTable.Active := True;
@@ -1871,185 +1895,276 @@ begin
     CompanyTable.Active := True;
 
 
-       if UserTypeLbl.Caption <> '0' then
-     begin
+    if UserTypeLbl.Caption <> '0' then
+      begin
 
        OptionMainFMnm.Visible:= False;
        UsersGMainFMnm.Visible:= False;
 
+       BoardMainFBtn.Enabled:= False;
+       BoardMainFBtn.ImageIndex:= 12;
 
-
-      if vente_ur.Checked  then
+       if NOT (bl_ur.Checked) AND NOT (fcv_ur.Checked)  AND NOT (rgc_ur.Checked) AND NOT (ctr_ur.Checked) Then
        begin
-        VenteMainFMnm.Visible:= True;
+          VenteMainFMnm.Visible:= False;
+
+          BLMainFBtn.Enabled:= False;
+          BLMainFBtn.ImageIndex:= 16;
+          HomeF.BLFaceBtn.Enabled:= False;
+
+          FactureVMainFMnm.Visible:= False;
+          HomeF.FCVFaceBtn.Enabled:= False;
+
+          ComptoirMainFBtn.Enabled:= False;
+          ComptoirMainFBtn.ImageIndex:= 17;
+          HomeF.CTRFaceBtn.Enabled:= False;
+
        end else
            begin
-            BLMainFBtn.Enabled:= False;
-              BLMainFBtn.ImageIndex:= 16;
-            ComptoirMainFBtn.Enabled:= False;
-              ComptoirMainFBtn.ImageIndex:= 17;
-            VenteMainFMnm.Visible:= False;
-            FactureVMainFMnm.Visible:= False;
 
-            CtrMainFMmn.Visible:= False;
-            BLMainFMmn.Visible:= False;
+             if bl_ur.Checked  then
+             begin
+              BLMainFBtn.Enabled:= True;
+              BLMainFBtn.ImageIndex:= 4;
+              BLMainFMmn.Visible:= True;
+              HomeF.BLFaceBtn.Enabled:= True;
+             end else
+                 begin
+                  BLMainFBtn.Enabled:= False;
+                  BLMainFBtn.ImageIndex:= 16;
+                  BLMainFMmn.Visible:= False;
+                  HomeF.BLFaceBtn.Enabled:= False;
+                 end;
+
+             if fcv_ur.Checked then
+             begin
+              FactureVMainFMnm.Visible:= True;
+              FactureV2MainFMnm.Visible:= True;
+              HomeF.FCVFaceBtn.Enabled:= True;
+             end else
+                 begin
+                 FactureVMainFMnm.Visible:= False;
+                 FactureV2MainFMnm.Visible:= False;
+                 HomeF.FCVFaceBtn.Enabled:= False;
+                 end;
+
+               if rgc_ur.Checked  then
+               begin
+                RGClientMainFMnm.Visible:= True;
+               end else
+                   begin
+                    RGClientMainFMnm.Visible:= False;
+                   end;
+
+             if ctr_ur.Checked  then
+             begin
+              ComptoirMainFBtn.Enabled:= True;
+              ComptoirMainFBtn.ImageIndex:= 5;
+              CtrMainFMmn.Visible:= True;
+              HomeF.CTRFaceBtn.Enabled:= True;
+             end else
+                 begin
+                  ComptoirMainFBtn.Enabled:= False;
+                  ComptoirMainFBtn.ImageIndex:= 17;
+                  CtrMainFMmn.Visible:= False;
+                  HomeF.CTRFaceBtn.Enabled:= False;
+                 end;
            end;
-
-       if bl_ur.Checked  then
-       begin
-        BLMainFBtn.Enabled:= True;
-        BLMainFBtn.ImageIndex:= 4;
-        BLMainFMmn.Visible:= True;
-//        BLFaceBtn.Enabled:= True;
-       end else
-           begin
-            BLMainFBtn.Enabled:= False;
-            BLMainFBtn.ImageIndex:= 16;
-            BLMainFMmn.Visible:= False;
-//            BLFaceBtn.Enabled:= False;
-           end;
-       if fcv_ur.Checked then
-       begin
-        FactureVMainFMnm.Visible:= True;
-        FactureV2MainFMnm.Visible:= True;
-//        FCVFaceBtn.Enabled:= True;
-       end else
-           begin
-           FactureVMainFMnm.Visible:= False;
-           FactureV2MainFMnm.Visible:= False;
-//           FCVFaceBtn.Enabled:= False;
-           end;
-       if rgc_ur.Checked  then
-       begin
-        RGClientMainFMnm.Visible:= True;
-       end else
-           begin
-            RGClientMainFMnm.Visible:= False;
-           end;
-
-       if ctr_ur.Checked  then
-       begin
-        ComptoirMainFBtn.Enabled:= True;
-        ComptoirMainFBtn.ImageIndex:= 5;
-        CtrMainFMmn.Visible:= True;
-//        CTRFaceBtn.Enabled:= True;
-       end else
-           begin
-            ComptoirMainFBtn.Enabled:= False;
-            ComptoirMainFBtn.ImageIndex:= 17;
-            CtrMainFMmn.Visible:= False;
-//            CTRFaceBtn.Enabled:= False;
-           end;
-
-       if achat_ur.Checked  then
-       begin
-       AchatsMainFMnm.Visible:= True;
-       end else
-           begin
+          if NOT (br_ur.Checked) AND NOT (fca_ur.Checked)  AND NOT (rgf_ur.Checked)  Then
+          begin
            AchatsMainFMnm.Visible:= False;
+           
            BRMainFBtn.Enabled:= False;
            BRMainFBtn.ImageIndex:= 15;
-          end;
-       if br_ur.Checked  then
-       begin
-       BRMainFMmn.Visible:= True;
-       BRMainFBtn.Enabled:= True;
-       BRMainFBtn.ImageIndex:= 3;
-//       BRFaceBtn.Enabled:= True;
-       end else
-           begin
-           BRMainFMmn.Visible:= False;
-           BRMainFBtn.Enabled:= False;
-           BRMainFBtn.ImageIndex:= 15;
-//           BRFaceBtn.Enabled:= False;
-           end;
-       if fca_ur.Checked  then
-       begin
-        FactureAMainFMnm.Visible:= True;
-//        FCAFaceBtn.Enabled:= True;
-       end else
-           begin
-              FactureAMainFMnm.Visible:= False;
-//              FCAFaceBtn.Enabled:= False;
-           end;
-       if rgf_ur.Checked  then
-       begin
-         RGFourMainFMnm.Visible:= True;
-       end else
-           begin
-            RGFourMainFMnm.Visible:= False;
-          end;
-       if tre_ur.Checked  then
-       begin
-         TreMainFMnm.Visible:= True;
-       end else
-           begin
-             TreMainFMnm.Visible:= False;
-             CaisseMainFBtn.Enabled:= False;
-           end;
-       if caisse_ur.Checked  then
-       begin
-        CaisseMainFBtn.Enabled:= True;
-        CaisseMainFBtn.ImageIndex:= 7;
-//        CaisseFaceBtn.Enabled:= True;
-        CaisseMainFMnm.Visible:= False;
-       end else
-           begin
-            CaisseMainFBtn.Enabled:= False;
-            CaisseMainFBtn.ImageIndex:= 19;
-//            CaisseFaceBtn.Enabled:= False;
-            CaisseMainFMnm.Visible:= False;
-           end;
-       if bank_ur.Checked  then
-       begin
-        BankMainFMnm.Visible:= True;
-//        BankFaceBtn.Enabled:= True;
-       end else
-           begin
-            BankMainFMnm.Visible:= False;
-//            BankFaceBtn.Enabled:= False;
-           end;
-       if client_ur.Checked  then
-       begin
-        ClientMainFBtn.Enabled:= True;
-        ClientMainFBtn.ImageIndex:= 1;
-        ClientMainFMnm.Visible:= True;
-//        ClientFaceBtn.Enabled:= True;
-       end else
-           begin
-            ClientMainFBtn.Enabled:= False;
-            ClientMainFBtn.ImageIndex:= 13;
-            ClientMainFMnm.Visible:= False;
-//            ClientFaceBtn.Enabled:= False;
-           end;
-       if four_ur.Checked  then
-       begin
-        FourMainFBtn.Enabled:= True;
-        FourMainFBtn.ImageIndex:= 2;
-        FourMainFMnm.Visible:= True;
-//        FourFaceBtn.Enabled:= True;
-       end else
-           begin
-            FourMainFBtn.Enabled:= False;
-            FourMainFBtn.ImageIndex:= 14;
-            FourMainFMnm.Visible:= False;
-//            FourFaceBtn.Enabled:= False;
-           end;
+           HomeF.BRFaceBtn.Enabled:= False;
 
-       if produit_ur.Checked  then
-       begin
-        ProduitMainFBtn.Enabled:= True;
-        ProduitMainFBtn.ImageIndex:= 6;
-        ProduitMainFMmn.Visible:= True;
-//        ProduitFaceBtn.Enabled:= True;
-       end else
-           begin
-            ProduitMainFBtn.Enabled:= False;
-            ProduitMainFBtn.ImageIndex:= 18;
-            ProduitMainFMmn.Visible:= False;
-//            ProduitFaceBtn.Enabled:= False;
-           end;
+           HomeF.FCAFaceBtn.Enabled:= False;
 
+          end else
+              begin
+                 if br_ur.Checked  then
+                 begin
+                   BRMainFMmn.Visible:= True;
+                   BRMainFBtn.Enabled:= True;
+                   BRMainFBtn.ImageIndex:= 3;
+                   HomeF.BRFaceBtn.Enabled:= True;
+                 end else
+                     begin
+                       BRMainFMmn.Visible:= False;
+                       BRMainFBtn.Enabled:= False;
+                       BRMainFBtn.ImageIndex:= 15;
+                       HomeF.BRFaceBtn.Enabled:= False;
+                     end;
+                 if fca_ur.Checked  then
+                 begin
+                  FactureAMainFMnm.Visible:= True;
+                  HomeF.FCAFaceBtn.Enabled:= True;
+                 end else
+                     begin
+                        FactureAMainFMnm.Visible:= False;
+                        HomeF.FCAFaceBtn.Enabled:= False;
+                     end;
+                 if rgf_ur.Checked  then
+                 begin
+                   RGFourMainFMnm.Visible:= True;
+                 end else
+                     begin
+                      RGFourMainFMnm.Visible:= False;
+                    end;
+
+              end;
+
+           if NOT (caisse_ur.Checked) AND NOT (bank_ur.Checked)  Then
+
+             begin
+               TreMainFMnm.Visible:= False;
+
+                CaisseMainFBtn.Enabled:= False;
+                CaisseMainFBtn.ImageIndex:= 19;
+                HomeF.CaisseFaceBtn.Enabled:= False;
+                CaisseMainFMnm.Visible:= False;
+
+                HomeF.BankFaceBtn.Enabled:= False;
+
+             end else
+                 begin
+
+                   if caisse_ur.Checked  then
+                   begin
+                    CaisseMainFBtn.Enabled:= True;
+                    CaisseMainFBtn.ImageIndex:= 7;
+                    HomeF.CaisseFaceBtn.Enabled:= True;
+                    CaisseMainFMnm.Visible:= True;
+                   end else
+                       begin
+                        CaisseMainFBtn.Enabled:= False;
+                        CaisseMainFBtn.ImageIndex:= 19;
+                        HomeF.CaisseFaceBtn.Enabled:= False;
+                        CaisseMainFMnm.Visible:= False;
+                       end;
+                     if bank_ur.Checked  then
+                     begin
+                      BankMainFMnm.Visible:= True;
+                      HomeF.BankFaceBtn.Enabled:= True;
+                     end else
+                         begin
+                          BankMainFMnm.Visible:= False;
+                          HomeF.BankFaceBtn.Enabled:= False;
+                         end;
+
+                 end;
+
+            if NOT (client_ur.Checked) AND NOT (four_ur.Checked)  AND NOT (produit_ur.Checked)  AND
+               NOT (famp_ur.Checked)   AND NOT (sfamp_ur.Checked) AND NOT (mdpai_ur.Checked)    AND
+               NOT (cmpt_ur.Checked)   AND NOT (unit_ur.Checked)  AND NOT (local_ur.Checked)    Then
+            begin
+              ListesMainFMnm.Visible := False;
+
+              ClientMainFBtn.Enabled:= False;
+              ClientMainFBtn.ImageIndex:= 13;
+              HomeF.ClientFaceBtn.Enabled:= False;
+
+              FourMainFBtn.Enabled:= False;
+              FourMainFBtn.ImageIndex:= 14;
+              HomeF.FourFaceBtn.Enabled:= False;
+
+              ProduitMainFBtn.Enabled:= False;
+              ProduitMainFBtn.ImageIndex:= 18;
+              HomeF.ProduitFaceBtn.Enabled:= False;
+
+            end else
+                begin
+
+                  if client_ur.Checked  then
+                   begin
+                    ClientMainFBtn.Enabled:= True;
+                    ClientMainFBtn.ImageIndex:= 1;
+                    ClientMainFMnm.Visible:= True;
+                    HomeF.ClientFaceBtn.Enabled:= True;
+                   end else
+                       begin
+                        ClientMainFBtn.Enabled:= False;
+                        ClientMainFBtn.ImageIndex:= 13;
+                        ClientMainFMnm.Visible:= False;
+                        HomeF.ClientFaceBtn.Enabled:= False;
+                       end;
+
+                  if four_ur.Checked  then
+                   begin
+                    FourMainFBtn.Enabled:= True;
+                    FourMainFBtn.ImageIndex:= 2;
+                    FourMainFMnm.Visible:= True;
+                    HomeF.FourFaceBtn.Enabled:= True;
+                   end else
+                       begin
+                        FourMainFBtn.Enabled:= False;
+                        FourMainFBtn.ImageIndex:= 14;
+                        FourMainFMnm.Visible:= False;
+                        HomeF.FourFaceBtn.Enabled:= False;
+                       end;
+
+                  if produit_ur.Checked  then
+                     begin
+                      ProduitMainFBtn.Enabled:= True;
+                      ProduitMainFBtn.ImageIndex:= 6;
+                      ProduitMainFMmn.Visible:= True;
+                      HomeF.ProduitFaceBtn.Enabled:= True;
+                   end else
+                     begin
+                      ProduitMainFBtn.Enabled:= False;
+                      ProduitMainFBtn.ImageIndex:= 18;
+                      ProduitMainFMmn.Visible:= False;
+                      HomeF.ProduitFaceBtn.Enabled:= False;
+                     end;
+
+                  if famp_ur.Checked  then
+                     begin
+                      FamPMainFMmn.Visible:= True;
+                   end else
+                     begin
+                      FamPMainFMmn.Visible:= False;
+                     end;
+
+                   if sfamp_ur.Checked  then
+                     begin
+                      SFamPMainFMmn.Visible:= True;
+                   end else
+                     begin
+                      SFamPMainFMmn.Visible:= False;
+                     end;
+
+                   if mdpai_ur.Checked  then
+                     begin
+                      MPMainFMmn.Visible:= True;
+                   end else
+                     begin
+                      MPMainFMmn.Visible:= False;
+                     end;
+
+                  if cmpt_ur.Checked  then
+                     begin
+                      ComptesMainFMmn.Visible:= True;
+                   end else
+                     begin
+                      ComptesMainFMmn.Visible:= False;
+                     end;
+
+                   if unit_ur.Checked  then
+                     begin
+                      UniteMainFMmn.Visible:= True;
+                   end else
+                     begin
+                      UniteMainFMmn.Visible:= False;
+                     end;
+
+                   if local_ur.Checked  then
+                     begin
+                      LocalMainFMmn.Visible:= True;
+                   end else
+                     begin
+                      LocalMainFMmn.Visible:= False;
+                     end;
+                end;
      end else
          begin
            OptionMainFMnm.Visible:= True;
@@ -2386,7 +2501,7 @@ FactureAMainFMnmClick(Sender);
 BonFacAF.AddBAFacBtnClick(Sender);
 end;
 
-procedure TMainForm.M2Click(Sender: TObject);
+procedure TMainForm.MPMainFMmnClick(Sender: TObject);
 begin
   //-------- Show the splash screan for the produit familly to add new one---------//
 
@@ -2456,10 +2571,46 @@ begin
   CloseHandle(FSnapshotHandle);
 end;
 
+procedure KillProcess(hWindowHandle: HWND);
+var
+
+  hprocessID: INTEGER;
+  processHandle: THandle;
+  DWResult: DWORD;
+begin
+  SendMessageTimeout(hWindowHandle, WM_CLOSE, 0, 0,
+    SMTO_ABORTIFHUNG or SMTO_NORMAL, 5000, DWResult);
+
+  if isWindow(hWindowHandle) then
+  begin
+    // PostMessage(hWindowHandle, WM_QUIT, 0, 0);
+
+    { Get the process identifier for the window}
+    GetWindowThreadProcessID(hWindowHandle, @hprocessID);
+    if hprocessID <> 0 then
+    begin
+      { Get the process handle }
+      processHandle := OpenProcess(PROCESS_TERMINATE or PROCESS_QUERY_INFORMATION,
+        False, hprocessID);
+      if processHandle <> 0 then
+      begin
+        { Terminate the process }
+        TerminateProcess(processHandle, 0);
+        CloseHandle(ProcessHandle);
+      end;
+    end;
+  end;
+end;
+
 procedure TMainForm.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-   KillTask('postgres.exe');
-   KillTask('cmd.exe');
+
+   GstockdcConnection.Connected:= False;
+   DataModuleF.GstockdcConnection02.Connected:= False;
+
+//   KillTask('postgres.exe');
+//   KillTask('cmd.exe');
+
 end;
 
 procedure TMainForm.H1Click(Sender: TObject);
@@ -2467,7 +2618,7 @@ begin
 FactureV2MainFMnmClick(Sender);
 end;
 
-procedure TMainForm.c4Click(Sender: TObject);
+procedure TMainForm.ComptesMainFMmnClick(Sender: TObject);
 begin
   //-------- Show the splash screan for the produit familly to add new one---------//
 
@@ -2485,7 +2636,7 @@ begin
 
 end;
 
-procedure TMainForm.F4Click(Sender: TObject);
+procedure TMainForm.FamPMainFMmnClick(Sender: TObject);
 begin
   //-------- Show the splash screan for the produit familly to add new one---------//
 
@@ -2501,7 +2652,7 @@ begin
             FamPListF.Show;
 end;
 
-procedure TMainForm.S1Click(Sender: TObject);
+procedure TMainForm.SFamPMainFMmnClick(Sender: TObject);
 begin
   //-------- Show the splash screan for the produit familly to add new one---------//
 
@@ -2518,7 +2669,7 @@ begin
             SFamPListF.ShowModal;
 end;
 
-procedure TMainForm.U1Click(Sender: TObject);
+procedure TMainForm.UniteMainFMmnClick(Sender: TObject);
 begin
   //-------- Show the splash screan for the produit familly to add new one---------//
 
@@ -2535,7 +2686,7 @@ begin
             UnitesListF.ShowModal;
 end;
 
-procedure TMainForm.o1Click(Sender: TObject);
+procedure TMainForm.LocalMainFMmnClick(Sender: TObject);
 begin
   //-------- Show the splash screan for the produit familly to add new one---------//
 

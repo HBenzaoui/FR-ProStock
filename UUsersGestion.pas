@@ -62,7 +62,20 @@ type
     L14: TLabel;
     ProduitSdr: TsSlider;
     L15: TLabel;
-    procedure TypeUserGCbxChange(Sender: TObject);
+    ListesSdr: TsSlider;
+    L16: TLabel;
+    FamPSdr: TsSlider;
+    L17: TLabel;
+    L18: TLabel;
+    SFamPSdr: TsSlider;
+    L19: TLabel;
+    MPSdr: TsSlider;
+    ComptesSdr: TsSlider;
+    L20: TLabel;
+    L21: TLabel;
+    UnitSdr: TsSlider;
+    L22: TLabel;
+    LocalSdr: TsSlider;
     procedure OKUserGEdtClick(Sender: TObject);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
     procedure NameUserGEdtKeyPress(Sender: TObject; var Key: Char);
@@ -73,6 +86,25 @@ type
     procedure BLSdrChanging(Sender: TObject; var CanChange: Boolean);
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure ListesSdrChanging(Sender: TObject; var CanChange: Boolean);
+    procedure FCVSdrChanging(Sender: TObject; var CanChange: Boolean);
+    procedure RGCSdrChanging(Sender: TObject; var CanChange: Boolean);
+    procedure CtrSdrChanging(Sender: TObject; var CanChange: Boolean);
+    procedure CaisseSdrChanging(Sender: TObject; var CanChange: Boolean);
+    procedure BankSdrChanging(Sender: TObject; var CanChange: Boolean);
+    procedure BRSdrChanging(Sender: TObject; var CanChange: Boolean);
+    procedure FCASdrChanging(Sender: TObject; var CanChange: Boolean);
+    procedure RGFSdrChanging(Sender: TObject; var CanChange: Boolean);
+    procedure ClientSdrChanging(Sender: TObject; var CanChange: Boolean);
+    procedure FourSdrChanging(Sender: TObject; var CanChange: Boolean);
+    procedure ProduitSdrChanging(Sender: TObject; var CanChange: Boolean);
+    procedure FamPSdrChanging(Sender: TObject; var CanChange: Boolean);
+    procedure SFamPSdrChanging(Sender: TObject; var CanChange: Boolean);
+    procedure MPSdrChanging(Sender: TObject; var CanChange: Boolean);
+    procedure ComptesSdrChanging(Sender: TObject; var CanChange: Boolean);
+    procedure UnitSdrChanging(Sender: TObject; var CanChange: Boolean);
+    procedure LocalSdrChanging(Sender: TObject; var CanChange: Boolean);
+    procedure TypeUserGCbxClick(Sender: TObject);
   private
     procedure EnablePar;
     procedure DisablePar;
@@ -154,21 +186,27 @@ begin
 
  ParaL.Enabled:= True;
  L01.Enabled:= True;
- L02.Enabled:= True;
- L03.Enabled:= True;
- L04.Enabled:= True;
+// L02.Enabled:= True;
+// L03.Enabled:= True;
+// L04.Enabled:= True;
  L05.Enabled:= True;
- L06.Enabled:= True;
- L07.Enabled:= True;
- L08.Enabled:= True;
+// L06.Enabled:= True;
+// L07.Enabled:= True;
+// L08.Enabled:= True;
  L09.Enabled:= True;
- L10.Enabled:= True;
- L11.Enabled:= True;
- L12.Enabled:= True;
- L13.Enabled:= True;
- L14.Enabled:= True;
- L15.Enabled:= True;
-
+// L10.Enabled:= True;
+// L11.Enabled:= True;
+// L12.Enabled:= True;
+// L13.Enabled:= True;
+// L14.Enabled:= True;
+// L15.Enabled:= True;
+ L16.Enabled:= True;
+// L17.Enabled:= True;
+// L18.Enabled:= True;
+// L19.Enabled:= True;
+// L20.Enabled:= True;
+// L21.Enabled:= True;
+// L22.Enabled:= True;
 
 
  VentesSdr.SliderOn := False;
@@ -186,24 +224,38 @@ begin
  FourSdr.SliderOn :=   False;
  CtrSdr.SliderOn :=    False;
  ProduitSdr.SliderOn:= False;
+ ListesSdr.SliderOn:=  False;
+ FamPSdr.SliderOn:=    False;
+ SFamPSdr.SliderOn:=   False;
+ MPSdr.SliderOn:=      False;
+ ComptesSdr.SliderOn:= False;
+ UnitSdr.SliderOn:=    False;
+ LocalSdr.SliderOn:=   False;
 
  ParaP.Enabled:= True;
 
- VentesSdr.Enabled:= True;
- BLSdr.Enabled:= True;
- FCVSdr.Enabled:= True;
- RGCSdr.Enabled:= True;
- AchatsSdr.Enabled:= True;
- BRSdr.Enabled:= True;
- FCASdr.Enabled:= True;
- RGFSdr.Enabled:= True;
- TreSdr.Enabled:= True;
- CaisseSdr.Enabled:= True;
- BankSdr.Enabled:= True;
- ClientSdr.Enabled:= True;
- FourSdr.Enabled:= True;
- CtrSdr.Enabled:= True;
+ VentesSdr.Enabled:=  True;
+ BLSdr.Enabled:=      True;
+ FCVSdr.Enabled:=     True;
+ RGCSdr.Enabled:=     True;
+ AchatsSdr.Enabled:=  True;
+ BRSdr.Enabled:=      True;
+ FCASdr.Enabled:=     True;
+ RGFSdr.Enabled:=     True;
+ TreSdr.Enabled:=     True;
+ CaisseSdr.Enabled:=  True;
+ BankSdr.Enabled:=    True;
+ ClientSdr.Enabled:=  True;
+ FourSdr.Enabled:=    True;
+ CtrSdr.Enabled:=     True;
  ProduitSdr.Enabled:= True;
+ ListesSdr.Enabled:=  True;
+ FamPSdr.Enabled:=    True;
+ SFamPSdr.Enabled:=   True;
+ MPSdr.Enabled:=      True;
+ ComptesSdr.Enabled:= True;
+ UnitSdr.Enabled:=    True;
+ LocalSdr.Enabled:=   True;
 
 end;
 
@@ -227,6 +279,13 @@ begin
  L13.Enabled:= False;
  L14.Enabled:= False;
  L15.Enabled:= False;
+ L16.Enabled:= False;
+ L17.Enabled:= False;
+ L18.Enabled:= False;
+ L19.Enabled:= False;
+ L20.Enabled:= False;
+ L21.Enabled:= False;
+ L22.Enabled:= False;
 
  VentesSdr.SliderOn := True;
  BLSdr.SliderOn :=     True;
@@ -243,6 +302,13 @@ begin
  FourSdr.SliderOn :=   True;
  CtrSdr.SliderOn :=    True;
  ProduitSdr.SliderOn:= True;
+ ListesSdr.SliderOn:=  True;
+ FamPSdr.SliderOn:=    True;
+ SFamPSdr.SliderOn:=   True;
+ MPSdr.SliderOn:=      True;
+ ComptesSdr.SliderOn:= True;
+ UnitSdr.SliderOn:=    True;
+ LocalSdr.SliderOn:=   True;
 
    ParaP.Enabled:= False;
 
@@ -263,22 +329,17 @@ begin
  FourSdr.Enabled:=     False;
  CtrSdr.Enabled:=      False;
  ProduitSdr.Enabled:=  False;
+ ListesSdr.Enabled:=   False;
+ FamPSdr.Enabled:=     False;
+ SFamPSdr.Enabled:=    False;
+ MPSdr.Enabled:=       False;
+ ComptesSdr.Enabled:=  False;
+ UnitSdr.Enabled:=     False;
+ LocalSdr.Enabled:=    False;
 
 
 end;
 
-
-procedure TUsersGestionF.TypeUserGCbxChange(Sender: TObject);
-begin
-if TypeUserGCbx.ItemIndex = 0 then
-  begin
-     DisablePar;
-  end;
-if TypeUserGCbx.ItemIndex = 1 then
-  begin
-    EnablePar;
-  end;
-end;
 
 procedure TUsersGestionF.OKUserGEdtClick(Sender: TObject);
 Var CodeUR : Integer;
@@ -306,21 +367,24 @@ begin
                       MainForm.UsersTable.FieldValues['nom_ur']:= NameUserGEdt.Text;
                       MainForm.UsersTable.FieldValues['password_ur']:= PassUserGEdt.Text;
                       MainForm.UsersTable.FieldValues['type_ur']:= TypeUserGCbx.ItemIndex;
-                      MainForm.UsersTable.FieldValues['vente_ur']:=VentesSdr.SliderOn;
                       MainForm.UsersTable.FieldValues['bl_ur']:=BLSdr.SliderOn;
                       MainForm.UsersTable.FieldValues['fcv_ur']:=FCVSdr.SliderOn;
                       MainForm.UsersTable.FieldValues['rgc_ur']:=RGCSdr.SliderOn;
-                      MainForm.UsersTable.FieldValues['achat_ur']:=AchatsSdr.SliderOn;
                       MainForm.UsersTable.FieldValues['br_ur']:=BRSdr.SliderOn;
                       MainForm.UsersTable.FieldValues['fca_ur']:=FCASdr.SliderOn;
                       MainForm.UsersTable.FieldValues['rgf_ur']:=RGFSdr.SliderOn;
-                      MainForm.UsersTable.FieldValues['tre_ur']:=TreSdr.SliderOn;
                       MainForm.UsersTable.FieldValues['caisse_ur']:=CaisseSdr.SliderOn;
                       MainForm.UsersTable.FieldValues['bank_ur']:=BankSdr.SliderOn;
                       MainForm.UsersTable.FieldValues['client_ur']:=ClientSdr.SliderOn;
                       MainForm.UsersTable.FieldValues['four_ur']:=FourSdr.SliderOn;
                       MainForm.UsersTable.FieldValues['ctr_ur']:=CtrSdr.SliderOn;
                       MainForm.UsersTable.FieldValues['produit_ur']:=ProduitSdr.SliderOn;
+                      MainForm.UsersTable.FieldValues['famp_ur']:=FamPSdr.SliderOn;
+                      MainForm.UsersTable.FieldValues['sfamp_ur']:=SFamPSdr.SliderOn;
+                      MainForm.UsersTable.FieldValues['mdpai_ur']:=MPSdr.SliderOn;
+                      MainForm.UsersTable.FieldValues['cmpt_ur']:=ComptesSdr.SliderOn;
+                      MainForm.UsersTable.FieldValues['unit_ur']:=UnitSdr.SliderOn;
+                      MainForm.UsersTable.FieldValues['local_ur']:=LocalSdr.SliderOn;
                       MainForm.UsersTable.Post;
                     end else
                         begin
@@ -328,21 +392,24 @@ begin
                             MainForm.UsersTable.FieldValues['nom_ur']:= NameUserGEdt.Text;
                             MainForm.UsersTable.FieldValues['password_ur']:= PassUserGEdt.Text;
                             MainForm.UsersTable.FieldValues['type_ur']:= TypeUserGCbx.ItemIndex;
-                            MainForm.UsersTable.FieldValues['vente_ur']:=VentesSdr.SliderOn;
                             MainForm.UsersTable.FieldValues['bl_ur']:=BLSdr.SliderOn;
                             MainForm.UsersTable.FieldValues['fcv_ur']:=FCVSdr.SliderOn;
                             MainForm.UsersTable.FieldValues['rgc_ur']:=RGCSdr.SliderOn;
-                            MainForm.UsersTable.FieldValues['achat_ur']:=AchatsSdr.SliderOn;
                             MainForm.UsersTable.FieldValues['br_ur']:=BRSdr.SliderOn;
                             MainForm.UsersTable.FieldValues['fca_ur']:=FCASdr.SliderOn;
                             MainForm.UsersTable.FieldValues['rgf_ur']:=RGFSdr.SliderOn;
-                            MainForm.UsersTable.FieldValues['tre_ur']:=TreSdr.SliderOn;
                             MainForm.UsersTable.FieldValues['caisse_ur']:=CaisseSdr.SliderOn;
                             MainForm.UsersTable.FieldValues['bank_ur']:=BankSdr.SliderOn;
                             MainForm.UsersTable.FieldValues['client_ur']:=ClientSdr.SliderOn;
                             MainForm.UsersTable.FieldValues['four_ur']:=FourSdr.SliderOn;
                             MainForm.UsersTable.FieldValues['ctr_ur']:=CtrSdr.SliderOn;
                             MainForm.UsersTable.FieldValues['produit_ur']:=ProduitSdr.SliderOn;
+                            MainForm.UsersTable.FieldValues['famp_ur']:=FamPSdr.SliderOn;
+                            MainForm.UsersTable.FieldValues['sfamp_ur']:=SFamPSdr.SliderOn;
+                            MainForm.UsersTable.FieldValues['mdpai_ur']:=MPSdr.SliderOn;
+                            MainForm.UsersTable.FieldValues['cmpt_ur']:=ComptesSdr.SliderOn;
+                            MainForm.UsersTable.FieldValues['unit_ur']:=UnitSdr.SliderOn;
+                            MainForm.UsersTable.FieldValues['local_ur']:=LocalSdr.SliderOn;
 
                             MainForm.UsersTable.Post;
                         end;
@@ -552,7 +619,13 @@ end;
 
 procedure TUsersGestionF.BLSdrChanging(Sender: TObject; var CanChange: Boolean);
 begin
-//L02.Enabled:= BLSdr.SliderOn;
+ if BLSdr.SliderOn = True then
+ begin
+ L02.Enabled:= False;
+ end else
+     begin
+       L02.Enabled:= True;
+     end;
 end;
 
 procedure TUsersGestionF.FormCreate(Sender: TObject);
@@ -563,6 +636,271 @@ end;
 procedure TUsersGestionF.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
 NormalFormsAddUser;
+end;
+
+procedure TUsersGestionF.ListesSdrChanging(Sender: TObject;
+  var CanChange: Boolean);
+begin
+ if ListesSdr.SliderOn = True then
+ begin
+   ClientSdr.SliderOn :=   False;
+   FourSdr.SliderOn :=     False;
+   ProduitSdr.SliderOn :=  False;
+   FamPSdr.SliderOn:=      False;
+   SFamPSdr.SliderOn:=     False;
+   MPSdr.SliderOn:=        False;
+   ComptesSdr.SliderOn:=   False;
+   UnitSdr.SliderOn:=      False;
+   LocalSdr.SliderOn:=     False;
+
+
+   L12.Enabled:= False;
+   L13.Enabled:= False;
+   L15.Enabled:= False;
+   L17.Enabled:= False;
+   L18.Enabled:= False;
+   L19.Enabled:= False;
+   L20.Enabled:= False;
+   L21.Enabled:= False;
+   L22.Enabled:= False;
+ end else
+     begin
+       ClientSdr.SliderOn :=   True;
+       FourSdr.SliderOn :=     True;
+       ProduitSdr.SliderOn :=  True;
+       FamPSdr.SliderOn:=      True;
+       SFamPSdr.SliderOn:=     True;
+       MPSdr.SliderOn:=        True;
+       ComptesSdr.SliderOn:=   True;
+       UnitSdr.SliderOn:=      True;
+       LocalSdr.SliderOn:=     True;
+
+
+       L12.Enabled:= True;
+       L13.Enabled:= True;
+       L15.Enabled:= True;
+       L17.Enabled:= True;
+       L18.Enabled:= True;
+       L19.Enabled:= True;
+       L20.Enabled:= True;
+       L21.Enabled:= True;
+       L22.Enabled:= True;
+     end;
+end;
+
+procedure TUsersGestionF.FCVSdrChanging(Sender: TObject;
+  var CanChange: Boolean);
+begin
+ if FCVSdr.SliderOn = True then
+ begin
+ L03.Enabled:= False;
+ end else
+     begin
+       L03.Enabled:= True;
+     end;
+end;
+
+procedure TUsersGestionF.RGCSdrChanging(Sender: TObject;
+  var CanChange: Boolean);
+begin
+ if RGCSdr.SliderOn = True then
+ begin
+ L04.Enabled:= False;
+ end else
+     begin
+       L04.Enabled:= True;
+     end;
+end;
+
+procedure TUsersGestionF.CtrSdrChanging(Sender: TObject;
+  var CanChange: Boolean);
+begin
+ if CtrSdr.SliderOn = True then
+ begin
+ L14.Enabled:= False;
+ end else
+     begin
+       L14.Enabled:= True;
+     end;
+end;
+
+procedure TUsersGestionF.CaisseSdrChanging(Sender: TObject;
+  var CanChange: Boolean);
+begin
+ if CaisseSdr.SliderOn = True then
+ begin
+ L10.Enabled:= False;
+ end else
+     begin
+       L10.Enabled:= True;
+     end;
+end;
+
+procedure TUsersGestionF.BankSdrChanging(Sender: TObject;
+  var CanChange: Boolean);
+begin
+ if BankSdr.SliderOn = True then
+ begin
+ L11.Enabled:= False;
+ end else
+     begin
+       L11.Enabled:= True;
+     end;
+end;
+
+procedure TUsersGestionF.BRSdrChanging(Sender: TObject; var CanChange: Boolean);
+begin
+ if BRSdr.SliderOn = True then
+ begin
+ L06.Enabled:= False;
+ end else
+     begin
+       L06.Enabled:= True;
+     end;
+end;
+
+procedure TUsersGestionF.FCASdrChanging(Sender: TObject;
+  var CanChange: Boolean);
+begin
+ if FCASdr.SliderOn = True then
+ begin
+ L07.Enabled:= False;
+ end else
+     begin
+       L07.Enabled:= True;
+     end;
+end;
+
+procedure TUsersGestionF.RGFSdrChanging(Sender: TObject;
+  var CanChange: Boolean);
+begin
+ if RGFSdr.SliderOn = True then
+ begin
+ L08.Enabled:= False;
+ end else
+     begin
+       L08.Enabled:= True;
+     end;
+end;
+
+procedure TUsersGestionF.ClientSdrChanging(Sender: TObject;
+  var CanChange: Boolean);
+begin
+ if ClientSdr.SliderOn = True then
+ begin
+ L12.Enabled:= False;
+ end else
+     begin
+       L12.Enabled:= True;
+     end;
+end;
+
+procedure TUsersGestionF.FourSdrChanging(Sender: TObject;
+  var CanChange: Boolean);
+begin
+ if FourSdr.SliderOn = True then
+ begin
+ L13.Enabled:= False;
+ end else
+     begin
+       L13.Enabled:= True;
+     end;
+end;
+
+procedure TUsersGestionF.ProduitSdrChanging(Sender: TObject;
+  var CanChange: Boolean);
+begin
+ if ProduitSdr.SliderOn = True then
+ begin
+ L15.Enabled:= False;
+ end else
+     begin
+       L15.Enabled:= True;
+     end;
+end;
+
+procedure TUsersGestionF.FamPSdrChanging(Sender: TObject;
+  var CanChange: Boolean);
+begin
+ if   FamPSdr.SliderOn = True then
+ begin
+ L17.Enabled:= False;
+ end else
+     begin
+       L17.Enabled:= True;
+     end;
+end;
+
+
+procedure TUsersGestionF.SFamPSdrChanging(Sender: TObject;
+  var CanChange: Boolean);
+begin
+ if   SFamPSdr.SliderOn = True then
+ begin
+ L18.Enabled:= False;
+ end else
+     begin
+       L18.Enabled:= True;
+     end;
+end;
+
+procedure TUsersGestionF.MPSdrChanging(Sender: TObject; var CanChange: Boolean);
+begin
+ if   MPSdr.SliderOn = True then
+ begin
+ L19.Enabled:= False;
+ end else
+     begin
+       L19.Enabled:= True;
+     end;
+end;
+
+procedure TUsersGestionF.ComptesSdrChanging(Sender: TObject;
+  var CanChange: Boolean);
+begin
+ if   ComptesSdr.SliderOn = True then
+ begin
+ L20.Enabled:= False;
+ end else
+     begin
+       L20.Enabled:= True;
+     end;
+end;
+
+procedure TUsersGestionF.UnitSdrChanging(Sender: TObject;
+  var CanChange: Boolean);
+begin
+ if   UnitSdr.SliderOn = True then
+ begin
+ L21.Enabled:= False;
+ end else
+     begin
+       L21.Enabled:= True;
+     end;
+end;
+
+procedure TUsersGestionF.LocalSdrChanging(Sender: TObject;
+  var CanChange: Boolean);
+begin
+ if   LocalSdr.SliderOn = True then
+ begin
+ L22.Enabled:= False;
+ end else
+     begin
+       L22.Enabled:= True;
+     end;
+end;
+
+procedure TUsersGestionF.TypeUserGCbxClick(Sender: TObject);
+begin
+if TypeUserGCbx.ItemIndex = 0 then
+  begin
+     DisablePar;
+  end;
+if TypeUserGCbx.ItemIndex = 1 then
+  begin
+    EnablePar;
+  end;
 end;
 
 end.

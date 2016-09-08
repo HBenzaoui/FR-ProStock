@@ -91,27 +91,29 @@ begin
         UsersGestionF.PassChkUserGEdt.Text:= MainForm.UsersTable.FieldValues['password_ur'];
         UsersGestionF.TypeUserGCbx.ItemIndex:=  MainForm.UsersTable.FieldValues['type_ur'];
 
-        UsersGestionF.TypeUserGCbxChange(Sender);
+        UsersGestionF.TypeUserGCbxClick(Sender);
 
-        UsersGestionF.VentesSdr.SliderOn:=  MainForm.UsersTable.FieldValues['type_ur'];
         UsersGestionF.BLSdr.SliderOn:=  MainForm.UsersTable.FieldValues['bl_ur'];
         UsersGestionF.FCVSdr.SliderOn:=  MainForm.UsersTable.FieldValues['fcv_ur'];
         UsersGestionF.RGCSdr.SliderOn:=  MainForm.UsersTable.FieldValues['rgc_ur'];
-        UsersGestionF.AchatsSdr.SliderOn:=  MainForm.UsersTable.FieldValues['achat_ur'];
         UsersGestionF.BRSdr.SliderOn:=  MainForm.UsersTable.FieldValues['br_ur'];
         UsersGestionF.FCASdr.SliderOn:=  MainForm.UsersTable.FieldValues['fca_ur'];
         UsersGestionF.RGFSdr.SliderOn:=  MainForm.UsersTable.FieldValues['rgf_ur'];
-        UsersGestionF.TreSdr.SliderOn:=  MainForm.UsersTable.FieldValues['tre_ur'];
         UsersGestionF.CaisseSdr.SliderOn:=  MainForm.UsersTable.FieldValues['caisse_ur'];
         UsersGestionF.BankSdr.SliderOn:=  MainForm.UsersTable.FieldValues['bank_ur'];
         UsersGestionF.ClientSdr.SliderOn:=  MainForm.UsersTable.FieldValues['client_ur'];
         UsersGestionF.FourSdr.SliderOn:=  MainForm.UsersTable.FieldValues['four_ur'];
         UsersGestionF.CtrSdr.SliderOn:=  MainForm.UsersTable.FieldValues['ctr_ur'];
         UsersGestionF.ProduitSdr.SliderOn:=  MainForm.UsersTable.FieldValues['produit_ur'];
+        UsersGestionF.FamPSdr.SliderOn  :=  MainForm.UsersTable.FieldValues['famp_ur'];
+        UsersGestionF.SFamPSdr.SliderOn:=  MainForm.UsersTable.FieldValues['sfamp_ur'];
+        UsersGestionF.MPSdr.SliderOn:=  MainForm.UsersTable.FieldValues['mdpai_ur'];
+        UsersGestionF.ComptesSdr.SliderOn:=  MainForm.UsersTable.FieldValues['cmpt_ur'];
+        UsersGestionF.UnitSdr.SliderOn:=  MainForm.UsersTable.FieldValues['unit_ur'];
+        UsersGestionF.LocalSdr.SliderOn:=  MainForm.UsersTable.FieldValues['local_ur'];
 
-
-        UsersGestionF.ShowModal;
         UsersGestionF.Tag := 1;
+        UsersGestionF.ShowModal;
 
 
 end;

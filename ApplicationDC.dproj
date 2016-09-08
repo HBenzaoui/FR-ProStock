@@ -5,7 +5,7 @@
         <FrameworkType>VCL</FrameworkType>
         <MainSource>ApplicationDC.dpr</MainSource>
         <Base>True</Base>
-        <Config Condition="'$(Config)'==''">Debug</Config>
+        <Config Condition="'$(Config)'==''">Release</Config>
         <Platform Condition="'$(Platform)'==''">Win32</Platform>
         <TargetedPlatforms>1</TargetedPlatforms>
         <AppType>Application</AppType>
@@ -94,173 +94,131 @@
         </DelphiCompile>
         <DCCReference Include="UMainF.pas">
             <Form>MainForm</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="UClientsList.pas">
             <Form>ClientListF</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="UClientGestion.pas">
             <Form>ClientGestionF</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="USplash.pas">
             <Form>FSplash</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="UFournisseurList.pas">
             <Form>FournisseurListF</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="UFournisseurGestion.pas">
             <Form>FournisseurGestionF</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="UProduitsList.pas">
             <Form>ProduitsListF</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="UProduitGestion.pas">
             <Form>ProduitGestionF</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="USplashAddUnite.pas">
             <Form>FSplashAddUnite</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="USplashAddCodeBarre.pas">
             <Form>FSplashAddCodeBarre</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="UBonRec.pas">
             <Form>BonRecF</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="UBonRecGestion.pas">
             <Form>BonRecGestionF</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="UBonLivGestion.pas">
             <Form>BonLivGestionF</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="UBonLiv.pas">
             <Form>BonLivF</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="UComptoir.pas">
             <Form>BonCtrGestionF</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="UFastProduitsList.pas">
             <Form>FastProduitsListF</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="UModePaieList.pas">
             <Form>ModePaieListF</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="USplashAddCompte.pas">
             <Form>FSplashAddCompte</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="USplashVersement.pas">
             <Form>FSplashVersement</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="UBonFacV.pas">
             <Form>BonFacVF</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="UBonFacVGestion.pas">
             <Form>BonFacVGestionF</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="UBonFacA.pas">
             <Form>BonFacAF</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="UBonFacAGestion.pas">
             <Form>BonFacAGestionF</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="UBonCtr.pas">
             <Form>BonCtrF</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="UCaisseList.pas">
             <Form>CaisseListF</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="UBankList.pas">
             <Form>BankListF</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="UUsersList.pas">
             <Form>UsersListF</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="UUsersGestion.pas">
             <Form>UsersGestionF</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="UReglementFList.pas">
             <Form>ReglementFListF</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="UReglementCGestion.pas">
             <Form>ReglementCGestionF</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="UReglementCList.pas">
             <Form>ReglementCListF</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="UReglementFGestion.pas">
             <Form>ReglementFGestionF</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="StringTool.pas"/>
         <DCCReference Include="USplashPrinting.pas">
             <Form>FSplashPrinting</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="UOptions.pas">
             <Form>FOptions</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="UDashboard.pas">
             <Form>DashboardF</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="UDataModule.pas">
             <Form>DataModuleF</Form>
-            <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
         <DCCReference Include="UHomeF.pas">
             <Form>HomeF</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="uCompteList.pas">
             <Form>CompteListF</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="UFamPList.pas">
             <Form>FamPListF</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="USFamPList.pas">
             <Form>SFamPListF</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="ULocaleList.pas">
             <Form>LocaleListF</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="UUnitesList.pas">
             <Form>UnitesListF</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>

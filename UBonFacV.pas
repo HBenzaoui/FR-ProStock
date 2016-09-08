@@ -389,8 +389,7 @@ begin
 
   if NOT (MainForm.Bonv_fac_listTable.IsEmpty) then
    begin
-
-         FSplashAddUnite:=TFSplashAddUnite.Create(BonFacVF);
+      FSplashAddUnite:=TFSplashAddUnite.Create(BonFacVF);
       FSplashAddUnite.Width:=300;
       FSplashAddUnite.Height:=160;
       FSplashAddUnite.Panel1.Color:=  $004735F9;
@@ -420,10 +419,8 @@ begin
       FSplashAddUnite.Show;
       FSplashAddUnite.OKAddUniteSBtn.Enabled:=True;
       FSplashAddUnite.OKAddUniteSBtn.Tag:= 13 ;
-     end
-      else
-      begin
-              MainForm.Bonv_facTable.Delete ;
+     end else  begin
+        MainForm.Bonv_facTable.Delete ;
         GrayForms;
         FSplash := TFSplash.Create(BonFacVF);
         try

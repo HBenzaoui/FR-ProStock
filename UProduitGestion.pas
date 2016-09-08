@@ -1775,106 +1775,114 @@ PrixAHTProduit,TVAProduit,PrixATTCProduit,PrixVHTDProduit,PrixVHTRProduit,PrixVH
 Key : CHar;
 begin
   //--------- to calculate the PrixATTC using TVA------//
-     if PrixAHTProduitEdt.Focused then
-      begin
+ if PrixAHTProduitEdt.Focused then
+  begin
 //        if (Key = '.') AND  (Pos(Key, PrixAHTProduitEdt.Text) > 0) then
 //          begin
 //            Key := #0;
 //            Exit
 //          end;
 
-       if     (PrixAHTProduitEdt.Text <> '') AND (PrixAHTProduitEdt.Text <> '0') AND (PrixAHTProduitEdt.Text <> '00')
-         AND (PrixAHTProduitEdt.Text <> '000') AND (PrixAHTProduitEdt.Text <> '0.00') AND (PrixAHTProduitEdt.Text <> '0.0')
-         AND (PrixAHTProduitEdt.Text <> '.') AND (PrixAHTProduitEdt.Text <> '..') AND (PrixAHTProduitEdt.Text <> '.0')   AND (PrixAHTProduitEdt.Text <> '0.')
-       then
-       begin
+   if   (PrixAHTProduitEdt.Text <> '') AND (PrixAHTProduitEdt.Text <> '0') AND (PrixAHTProduitEdt.Text <> '00')
+     AND (PrixAHTProduitEdt.Text <> '000') AND (PrixAHTProduitEdt.Text <> '0.00') AND (PrixAHTProduitEdt.Text <> '0.0')
+     AND (PrixAHTProduitEdt.Text <> '.') AND (PrixAHTProduitEdt.Text <> '0000') AND (PrixAHTProduitEdt.Text <> '.0')
+     AND (PrixAHTProduitEdt.Text <> '00000')  AND (PrixAHTProduitEdt.Text <> '0.') AND (PrixAHTProduitEdt.Text <> '000000')
+   then
+   begin
 
-        PrixVHTDProduitEdt.Enabled:= True;PrixVTTCDProduitEdt.Enabled:= True; MargeDProduitEdt.Enabled:= True;
-        PrixVHTRProduitEdt.Enabled:= True;PrixVTTCRProduitEdt.Enabled:= True; MargeRProduitEdt.Enabled:= True;
-        PrixVHTGProduitEdt.Enabled:= True;PrixVTTCGProduitEdt.Enabled:= True; MargeGProduitEdt.Enabled:= True;
-        PrixVHTA1ProduitEdt.Enabled:= True;PrixVTTCA1ProduitEdt.Enabled:= True; MargeA1ProduitEdt.Enabled:= True;
-        PrixVHTA2ProduitEdt.Enabled:= True;PrixVTTCA2ProduitEdt.Enabled:= True; MargeA2ProduitEdt.Enabled:= True;
+     if   (PrixAHTProduitEdt.Text <> '0000000') then
+    begin
+      PrixVHTDProduitEdt.Enabled:= True;PrixVTTCDProduitEdt.Enabled:= True; MargeDProduitEdt.Enabled:= True;
+      PrixVHTRProduitEdt.Enabled:= True;PrixVTTCRProduitEdt.Enabled:= True; MargeRProduitEdt.Enabled:= True;
+      PrixVHTGProduitEdt.Enabled:= True;PrixVTTCGProduitEdt.Enabled:= True; MargeGProduitEdt.Enabled:= True;
+      PrixVHTA1ProduitEdt.Enabled:= True;PrixVTTCA1ProduitEdt.Enabled:= True; MargeA1ProduitEdt.Enabled:= True;
+      PrixVHTA2ProduitEdt.Enabled:= True;PrixVTTCA2ProduitEdt.Enabled:= True; MargeA2ProduitEdt.Enabled:= True;
 
-       if PrixAHTProduitEdt.Text<>'' then
-       begin
-       PrixAHTProduit:=StrToFloat (StringReplace(PrixAHTProduitEdt.Text, #32, '', [rfReplaceAll]));
-       end;
-       if TVAProduitGCbx.Text<>'' then
-       begin
-       TVAProduit:=StrToFloat (StringReplace(TVAProduitGCbx.Text, #32, '', [rfReplaceAll]));
-       end;
-       PrixATTCProduitEdt.Text := FloatToStrF( (((PrixAHTProduit * TVAProduit)/100) + (PrixAHTProduit)),ffNumber,14,2);
-          begin // margeD when exit ATTC
-          if PrixVHTDProduitEdt.Text<>'' then
-          begin
-          PrixVHTDProduit:=StrToFloat (StringReplace(PrixVHTDProduitEdt.Text, #32, '', [rfReplaceAll]));
-          end;
-          MargeDProduitEdt.Text := FloatToStrF(((((PrixVHTDProduit - PrixAHTProduit) / (PrixAHTProduit)) * 100)),ffNumber,14,2) ;
-         end;
-          begin // margeR when exit ATTC
-          if PrixVHTRProduitEdt.Text<>'' then
-          begin
-          PrixVHTRProduit:=StrToFloat (StringReplace(PrixVHTRProduitEdt.Text, #32, '', [rfReplaceAll]));
-          end;
-          MargeRProduitEdt.Text := FloatToStrF(((((PrixVHTRProduit - PrixAHTProduit) / (PrixAHTProduit)) * 100)),ffNumber,14,2) ;
-         end;
-         begin // margeG when exit ATTC
-         if PrixVHTGProduitEdt.Text<>'' then
+         if PrixAHTProduitEdt.Text<>'' then
          begin
-          PrixVHTGProduit:=StrToFloat (StringReplace(PrixVHTGProduitEdt.Text, #32, '', [rfReplaceAll]));
+         PrixAHTProduit:=StrToFloat (StringReplace(PrixAHTProduitEdt.Text, #32, '', [rfReplaceAll]));
          end;
-          MargeGProduitEdt.Text := FloatToStrF(((((PrixVHTGProduit - PrixAHTProduit) / (PrixAHTProduit)) * 100)),ffNumber,14,2) ;
-         end;
-         begin // margeA1 when exit ATTC
-         if PrixVHTA1ProduitEdt.Text<>'' then
-          begin
-          PrixVHTA1Produit:=StrToFloat (StringReplace(PrixVHTA1ProduitEdt.Text, #32, '', [rfReplaceAll]));
-          end;
-          MargeA1ProduitEdt.Text := FloatToStrF(((((PrixVHTA1Produit - PrixAHTProduit) / (PrixAHTProduit)) * 100)),ffNumber,14,2)
-         end;
-          begin // margeA2 when exit ATTC
-          if PrixVHTA2ProduitEdt.Text<>'' then
-          begin
-          PrixVHTA2Produit:=StrToFloat (StringReplace(PrixVHTA2ProduitEdt.Text, #32, '', [rfReplaceAll]));
-          end;
-          MargeA2ProduitEdt.Text := FloatToStrF(((((PrixVHTA2Produit - PrixAHTProduit) / (PrixAHTProduit)) * 100)),ffNumber,14,2) ;
-         end;
-         end else
-         if (PrixAHTProduitEdt.Text='') OR (PrixAHTProduitEdt.Text='0')  then
+         if TVAProduitGCbx.Text<>'' then
          begin
-           PrixATTCProduitEdt.Text:= '';
-           MargeDProduitEdt.Text:= '';
-           MargeRProduitEdt.Text:= '';
-           MargeGProduitEdt.Text:= '';
-           MargeA1ProduitEdt.Text:= '';
-           MargeA2ProduitEdt.Text:= '';
-           PrixVHTDProduitEdt.Enabled:= False;PrixVTTCDProduitEdt.Enabled:= False; MargeDProduitEdt.Enabled:= False;
-           PrixVHTRProduitEdt.Enabled:= False;PrixVTTCRProduitEdt.Enabled:= False; MargeRProduitEdt.Enabled:= False;
-           PrixVHTGProduitEdt.Enabled:= False;PrixVTTCGProduitEdt.Enabled:= False; MargeGProduitEdt.Enabled:= False;
-           PrixVHTA1ProduitEdt.Enabled:= False;PrixVTTCA1ProduitEdt.Enabled:= False; MargeA1ProduitEdt.Enabled:= False;
-           PrixVHTA2ProduitEdt.Enabled:= False;PrixVTTCA2ProduitEdt.Enabled:= False; MargeA2ProduitEdt.Enabled:= False;
-
-         end;
-      end;
-      if PrixATTCProduitEdt.Focused then
-      begin
-       if PrixATTCProduitEdt.Text <>'' then
-        begin
-         PrixATTCProduit:=StrToFloat (StringReplace(PrixATTCProduitEdt.Text, #32, '', [rfReplaceAll]));
          TVAProduit:=StrToFloat (StringReplace(TVAProduitGCbx.Text, #32, '', [rfReplaceAll]));
-         PrixAHTProduitEdt.Text := FloatToStrF(((PrixATTCProduit) -((PrixATTCProduit * TVAProduit)/(100+TVAProduit))),ffNumber,14,2);
-        end else
-         if (PrixATTCProduitEdt.Text='') OR (PrixATTCProduitEdt.Text='0')  then
-         begin
-            PrixAHTProduitEdt.Text:= '';
-            MargeDProduitEdt.Text:= '';
-            MargeRProduitEdt.Text:= '';
-            MargeGProduitEdt.Text:= '';
-            MargeA1ProduitEdt.Text:= '';
-            MargeA2ProduitEdt.Text:= '';
-             Exit
          end;
-      end;
+         PrixATTCProduitEdt.Text := FloatToStrF( (((PrixAHTProduit * TVAProduit)/100) + (PrixAHTProduit)),ffNumber,14,2);
+            begin // margeD when exit ATTC
+            if PrixVHTDProduitEdt.Text<>'' then
+            begin
+            PrixVHTDProduit:=StrToFloat (StringReplace(PrixVHTDProduitEdt.Text, #32, '', [rfReplaceAll]));
+            end;
+            MargeDProduitEdt.Text := FloatToStrF(((((PrixVHTDProduit - PrixAHTProduit) / (PrixAHTProduit)) * 100)),ffNumber,14,2) ;
+           end;
+            begin // margeR when exit ATTC
+            if PrixVHTRProduitEdt.Text<>'' then
+            begin
+            PrixVHTRProduit:=StrToFloat (StringReplace(PrixVHTRProduitEdt.Text, #32, '', [rfReplaceAll]));
+            end;
+            MargeRProduitEdt.Text := FloatToStrF(((((PrixVHTRProduit - PrixAHTProduit) / (PrixAHTProduit)) * 100)),ffNumber,14,2) ;
+           end;
+           begin // margeG when exit ATTC
+           if PrixVHTGProduitEdt.Text<>'' then
+           begin
+            PrixVHTGProduit:=StrToFloat (StringReplace(PrixVHTGProduitEdt.Text, #32, '', [rfReplaceAll]));
+           end;
+            MargeGProduitEdt.Text := FloatToStrF(((((PrixVHTGProduit - PrixAHTProduit) / (PrixAHTProduit)) * 100)),ffNumber,14,2) ;
+           end;
+           begin // margeA1 when exit ATTC
+           if PrixVHTA1ProduitEdt.Text<>'' then
+            begin
+            PrixVHTA1Produit:=StrToFloat (StringReplace(PrixVHTA1ProduitEdt.Text, #32, '', [rfReplaceAll]));
+            end;
+            MargeA1ProduitEdt.Text := FloatToStrF(((((PrixVHTA1Produit - PrixAHTProduit) / (PrixAHTProduit)) * 100)),ffNumber,14,2)
+           end;
+            begin // margeA2 when exit ATTC
+            if PrixVHTA2ProduitEdt.Text<>'' then
+            begin
+            PrixVHTA2Produit:=StrToFloat (StringReplace(PrixVHTA2ProduitEdt.Text, #32, '', [rfReplaceAll]));
+            end;
+            MargeA2ProduitEdt.Text := FloatToStrF(((((PrixVHTA2Produit - PrixAHTProduit) / (PrixAHTProduit)) * 100)),ffNumber,14,2) ;
+           end;
+           end else
+                 begin
+                     PrixAHTProduitEdt.Text := '';
+                 end;
+
+
+     end else
+     if (PrixAHTProduitEdt.Text='') OR (PrixAHTProduitEdt.Text='0')  then
+     begin
+       PrixATTCProduitEdt.Text:= '';
+       MargeDProduitEdt.Text:= '';
+       MargeRProduitEdt.Text:= '';
+       MargeGProduitEdt.Text:= '';
+       MargeA1ProduitEdt.Text:= '';
+       MargeA2ProduitEdt.Text:= '';
+       PrixVHTDProduitEdt.Enabled:= False;PrixVTTCDProduitEdt.Enabled:= False; MargeDProduitEdt.Enabled:= False;
+       PrixVHTRProduitEdt.Enabled:= False;PrixVTTCRProduitEdt.Enabled:= False; MargeRProduitEdt.Enabled:= False;
+       PrixVHTGProduitEdt.Enabled:= False;PrixVTTCGProduitEdt.Enabled:= False; MargeGProduitEdt.Enabled:= False;
+       PrixVHTA1ProduitEdt.Enabled:= False;PrixVTTCA1ProduitEdt.Enabled:= False; MargeA1ProduitEdt.Enabled:= False;
+       PrixVHTA2ProduitEdt.Enabled:= False;PrixVTTCA2ProduitEdt.Enabled:= False; MargeA2ProduitEdt.Enabled:= False;
+     end;
+  end;
+  if PrixATTCProduitEdt.Focused then
+  begin
+   if PrixATTCProduitEdt.Text <>'' then
+    begin
+     PrixATTCProduit:=StrToFloat (StringReplace(PrixATTCProduitEdt.Text, #32, '', [rfReplaceAll]));
+     TVAProduit:=StrToFloat (StringReplace(TVAProduitGCbx.Text, #32, '', [rfReplaceAll]));
+     PrixAHTProduitEdt.Text := FloatToStrF(((PrixATTCProduit) -((PrixATTCProduit * TVAProduit)/(100+TVAProduit))),ffNumber,14,2);
+    end else
+     if (PrixATTCProduitEdt.Text='') OR (PrixATTCProduitEdt.Text='0')  then
+     begin
+        PrixAHTProduitEdt.Text:= '';
+        MargeDProduitEdt.Text:=  '';
+        MargeRProduitEdt.Text:=  '';
+        MargeGProduitEdt.Text:=  '';
+        MargeA1ProduitEdt.Text:= '';
+        MargeA2ProduitEdt.Text:= '';
+         Exit
+     end;
+  end;
 end;
 
 procedure TProduitGestionF.PrixAHTProduitEdtExit(Sender: TObject);
@@ -1913,9 +1921,9 @@ begin
     end;
     begin // margeR when exit ATTC
     if PrixVHTRProduitEdt.Text<>'' then
-    begin
-    PrixVHTRProduit:=StrToFloat(StringReplace(PrixVHTRProduitEdt.Text, #32, '', [rfReplaceAll]));
-    end;
+     begin
+     PrixVHTRProduit:=StrToFloat(StringReplace(PrixVHTRProduitEdt.Text, #32, '', [rfReplaceAll]));
+     end;
     MargeRProduitEdt.Text := FloatToStrF(((((PrixVHTRProduit - PrixAHTProduit) / (PrixAHTProduit)) * 100)),ffNumber,14,2) ;
     end;
     begin // margeG when exit ATTC
@@ -2015,19 +2023,19 @@ begin
          if PrixVHTA2ProduitEdt.Text <> '' then
         begin
         if TVAProduitGCbx.Text<>'' then
-        begin
-        TVAProduit:=StrToFloat (StringReplace(TVAProduitGCbx.Text, #32, '', [rfReplaceAll]));
-        end;
-        if PrixVHTA2ProduitEdt.Text<>'' then
-        begin
-        PrixVHTA2Produit:=StrToFloat (StringReplace(PrixVHTA2ProduitEdt.Text, #32, '', [rfReplaceAll]));
-        end;
-        if PrixAHTProduitEdt.Text<>'' then
-        begin
-        PrixAHTProduit:=StrToFloat (StringReplace(PrixAHTProduitEdt.Text, #32, '', [rfReplaceAll]));
-        end;
-        PrixVTTCA2ProduitEdt.Text := FloatToStrF( (((PrixVHTA2Produit * TVAProduit)/100) + (PrixVHTA2Produit)),ffNumber,14,2);
-        MargeA2ProduitEdt.Text := FloatToStrF( ((((PrixVHTA2Produit - PrixAHTProduit) / (PrixAHTProduit)) * 100)),ffNumber,14,2) ;
+           begin
+            TVAProduit:=StrToFloat (StringReplace(TVAProduitGCbx.Text, #32, '', [rfReplaceAll]));
+          end;
+          if PrixVHTA2ProduitEdt.Text<>'' then
+          begin
+          PrixVHTA2Produit:=StrToFloat (StringReplace(PrixVHTA2ProduitEdt.Text, #32, '', [rfReplaceAll]));
+          end;
+          if PrixAHTProduitEdt.Text<>'' then
+          begin
+          PrixAHTProduit:=StrToFloat (StringReplace(PrixAHTProduitEdt.Text, #32, '', [rfReplaceAll]));
+          end;
+          PrixVTTCA2ProduitEdt.Text := FloatToStrF( (((PrixVHTA2Produit * TVAProduit)/100) + (PrixVHTA2Produit)),ffNumber,14,2);
+          MargeA2ProduitEdt.Text := FloatToStrF( ((((PrixVHTA2Produit - PrixAHTProduit) / (PrixAHTProduit)) * 100)),ffNumber,14,2) ;
         end else
         if PrixVHTA2ProduitEdt.Text='' then
         begin
@@ -2052,7 +2060,7 @@ begin
         if PrixVTTCA2ProduitEdt.Text='' then
         begin
         PrixVHTA2ProduitEdt.Text:= '' ;
-        MargeA2ProduitEdt.Text:= '' ;
+        MargeA2ProduitEdt.Text:= ''   ;
         end;
       end;
   {
