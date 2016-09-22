@@ -794,14 +794,13 @@ implementation
 
 {$R *.dfm}
 
-uses TlHelp32,Contnrs,
+uses TlHelp32,Contnrs,System.Threading,IniFiles,
    UClientsList, UFournisseurList, UProduitsList, UBonRec, UBonRecGestion,
   USplashAddUnite, UBonLiv, UBonLivGestion, UBonFacVGestion, UBonFacV,
   UBonFacAGestion, UBonFacA, UComptoir,ShellAPI, UBonCtr, UCaisseList,
   UBankList, UUsersList, UUsersGestion, UReglementFList, UReglementCList,
   UOptions, UModePaieList, UDashboard,uCompteList, UFamPList, USFamPList,
-  UUnitesList, ULocaleList, UHomeF;
-
+  UUnitesList, ULocaleList, UHomeF, UDataModule;
 
   var
     gGrayForms: TComponentList;
@@ -855,7 +854,6 @@ procedure NormalForms;
 begin
   FreeAndNil(gGrayForms);
 end;
-
 
 
 procedure TMainForm.ClientMainFBtnClick(Sender: TObject);
@@ -914,6 +912,10 @@ begin
 //   begin CanClose := false end
 //    else
 //    begin
+//
+////      KillTask('postgres.exe');
+////      KillTask('cmd.exe');
+//
 ////      GstockdcConnection.ExecSQL('VACUUM') ;
 //      CanClose := True;
 //    end;
@@ -923,30 +925,51 @@ end;
 
 procedure TMainForm.FormCreate(Sender: TObject);
 var sCmd: string;
+Ini: TIniFile;
 begin
-//Screen.MenuFont.Name := 'Roboto';
 Screen.MenuFont.Height := 15;
 Screen.MenuFont.Color:= $0040332D ;
 
-//FDPhysPgDriverLink1.VendorLib:= GetCurrentDir+'\bin\libpq.dll ' ;
 
-//  sCmd := Pwidechar(GetCurrentDir+ '\bin\pg_s.bat' );
-//  ShellExecute(0, 'open', PChar(sCmd) , PChar(sCmd), nil, SW_HIDE);
-//
-//  Sleep(5000);
+FDPhysPgDriverLink1.VendorLib:= 'C:\Program Files (x86)\PostgreSQL\9.6\bin\libpq.dll' ; // Eable this is only for Debuggin
+
+//FDPhysPgDriverLink1.VendorLib:= GetCurrentDir+'\bin\libpq.dll' ;    // Eable this is only for releasing
+
+//  sCmd := Pwidechar(GetCurrentDir+ '\bin\pg_s.bat' );                // Eable this is only for releasing
+//  ShellExecute(0, 'open', PChar(sCmd) , PChar(sCmd), nil, SW_HIDE);  // Eable this is only for releasing
+
+//  Sleep(5000);                                                       // Eable this is only for releasing
 
   GstockdcConnection.DriverName := 'PG';
-  GstockdcConnection.Params.Values['Server'] :='localhost'; // your server name'';
-//  FDConnection1.Params.Values['Database'] := 'GSTOCKDC';
-  GstockdcConnection.Params.Values['user_name'] := 'postgres';    // adjust to suit
+  GstockdcConnection.Params.Values['Server'] :='localhost';
+  GstockdcConnection.Params.Values['user_name'] := 'postgres';
   GstockdcConnection.Params.Values['password'] := ''; // ditto
   GstockdcConnection.Params.Values['Port'] := '5432';
   GstockdcConnection.LoginPrompt := False;
 
- GstockdcConnection.Params.Values['Database'] := 'GSTOCKDC';
- GstockdcConnection.Connected:= True;
+   GstockdcConnection.Params.Values['Database'] := 'GSTOCKDC';
+   GstockdcConnection.Connected:= True;
 
-// FDScriptCreateTables.ExecuteAll;
+//   if NOT fileexists('Config') then
+//   begin
+
+
+//    FDScriptCreateTables.ExecuteAll;
+//     Sleep(2000);      // just for the first time
+
+//   end;
+
+//  begin
+//    Ini := TIniFile.Create(ChangeFileExt(Application.ExeName,'.ini'));
+//    Ini.WriteBool(Caption,   'DB', True);
+//    Ini.Free;
+//  end;
+
+
+     // Enable this is only for releasing
+
+
+
 
   Application.UpdateFormatSettings := false;
   FormatSettings.DecimalSeparator := ',';
@@ -1169,9 +1192,6 @@ begin
   UniteTable.Active := True;
   WilayasTable.Active := True;
   CommunesTable.Active := True;
-
-
-
 
 end;
 
@@ -1837,19 +1857,17 @@ end;
 
 procedure TMainForm.FormShow(Sender: TObject);
 begin
-      GstockdcConnection.Connected := True;
+//      GstockdcConnection.Connected := True;
     ProduitTable.Active := True;
     ClientTable.Active := True;
-//    ClientListF.ClientTablePassif.Active := True;
-//    ClientListF.ClientTableActif.Active := True;
     FournisseurTable.Active := True;
 
-//    Bona_recTable.Active := True;
-//    Bona_recPlistTable.Active := True;
-//    Bona_facTable.Active := True;
-//    Bona_fac_listTable.Active := True;
+    Bona_recTable.Active := True;
+    Bona_recPlistTable.Active := True;
+    Bona_facTable.Active := True;
+    Bona_fac_listTable.Active := True;
     Bonv_livTable.Active := True;
- //   Bonv_liv_listTable.Active := True;
+    Bonv_liv_listTable.Active := True;
     Bonv_facTable.Active := True;
     Bonv_fac_listTable.Active := True;
     Bonv_ctrTable.Active := True;
@@ -2048,6 +2066,11 @@ begin
               FourMainFBtn.Enabled:= False;
               FourMainFBtn.ImageIndex:= 14;
               HomeF.FourFaceBtn.Enabled:= False;
+
+              ProduitMainFBtn.Enabled:= False;
+              ProduitMainFBtn.ImageIndex:= 18;
+              HomeF.ProduitFaceBtn.Enabled:= False;
+
 
               ProduitMainFBtn.Enabled:= False;
               ProduitMainFBtn.ImageIndex:= 18;
@@ -2552,10 +2575,46 @@ begin
   CloseHandle(FSnapshotHandle);
 end;
 
+procedure KillProcess(hWindowHandle: HWND);
+var
+
+  hprocessID: INTEGER;
+  processHandle: THandle;
+  DWResult: DWORD;
+begin
+  SendMessageTimeout(hWindowHandle, WM_CLOSE, 0, 0,
+    SMTO_ABORTIFHUNG or SMTO_NORMAL, 5000, DWResult);
+
+  if isWindow(hWindowHandle) then
+  begin
+    // PostMessage(hWindowHandle, WM_QUIT, 0, 0);
+
+    { Get the process identifier for the window}
+    GetWindowThreadProcessID(hWindowHandle, @hprocessID);
+    if hprocessID <> 0 then
+    begin
+      { Get the process handle }
+      processHandle := OpenProcess(PROCESS_TERMINATE or PROCESS_QUERY_INFORMATION,
+        False, hprocessID);
+      if processHandle <> 0 then
+      begin
+        { Terminate the process }
+        TerminateProcess(processHandle, 0);
+        CloseHandle(ProcessHandle);
+      end;
+    end;
+  end;
+end;
+
 procedure TMainForm.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-   KillTask('postgres.exe');
-   KillTask('cmd.exe');
+
+   GstockdcConnection.Connected:= False;
+   DataModuleF.GstockdcConnection02.Connected:= False;
+
+//   KillTask('postgres.exe');
+//   KillTask('cmd.exe');
+
 end;
 
 procedure TMainForm.H1Click(Sender: TObject);

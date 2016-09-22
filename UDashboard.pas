@@ -1179,11 +1179,8 @@ MonthsData;
               TeeAnimationTool2.play;
 
               end;
-
-
-
 //            end);
-end;
+end;
 
 procedure TDashboardF.FormCreate(Sender: TObject);
 begin

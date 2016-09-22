@@ -653,6 +653,7 @@ object ClientGestionF: TClientGestionF
           Height = 18
           Caption = 'Cr'#233'dit Max:'
           Color = 4207405
+          Enabled = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = 4207405
           Font.Height = 18
@@ -701,6 +702,7 @@ object ClientGestionF: TClientGestionF
           Height = 18
           Caption = 'DA'
           Color = clBtnFace
+          Enabled = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clGreen
           Font.Height = 18
@@ -891,6 +893,7 @@ object ClientGestionF: TClientGestionF
           Height = 26
           Alignment = taRightJustify
           DoubleBuffered = False
+          Enabled = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = 18

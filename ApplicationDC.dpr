@@ -1,7 +1,7 @@
 program ApplicationDC;
 
 uses
-  Vcl.Forms,
+  Vcl.Forms,Windows, SysUtils,
   UMainF in 'UMainF.pas' {MainForm},
   UClientsList in 'UClientsList.pas' {ClientListF},
   Vcl.Themes,
@@ -50,7 +50,37 @@ uses
 
 {$R *.res}
 
+procedure RestoreWindow(MainForm : string);
+var
+   Wnd,
+   App : HWND;
+
 begin
+     Wnd := FindWindow(PChar(MainForm), nil);
+     if (Wnd <> 0)
+        then begin // Set Window to foreground
+             App := GetWindowLong(Wnd, GWL_HWNDPARENT);
+             if IsIconic(App)
+                then ShowWindow(App, SW_RESTORE);
+
+             SetForegroundwindow(App);
+             end;
+end;
+
+var
+   Semafor     : THandle;
+
+begin
+     // Don't start twice ... if already running bring this instance to front
+     Semafor := CreateSemaphore(nil, 0, 1, 'MY_APPLICATION_IS_RUNNING');
+     if ((Semafor <> 0) and // application is already running
+         (GetLastError = ERROR_ALREADY_EXISTS))
+        then begin
+             RestoreWindow('ApplicationDC');
+             CloseHandle(Semafor);
+             Halt;
+             end;
+
 ReportMemoryLeaksOnShutdown:=True;
   Application.Initialize;
   Application.MainFormOnTaskbar := False;

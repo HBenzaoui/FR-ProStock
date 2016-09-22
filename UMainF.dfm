@@ -295,6 +295,7 @@ object MainForm: TMainForm
       ColorHot = 15722984
       ColorChecked = clNone
       Caption = 'Statistiques'
+      Enabled = False
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 4207405
       Font.Height = 13
@@ -323,6 +324,7 @@ object MainForm: TMainForm
       ColorHot = 15722984
       ColorChecked = clNone
       Caption = 'Journal'
+      Enabled = False
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 4207405
       Font.Height = 13
@@ -381,6 +383,7 @@ object MainForm: TMainForm
       ColorHot = 15722984
       ColorChecked = clNone
       Caption = 'Aide'
+      Enabled = False
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 4207405
       Font.Height = 13
@@ -1482,6 +1485,7 @@ object MainForm: TMainForm
     end
     object A4: TMenuItem
       Caption = 'Aide'
+      Enabled = False
       object A6: TMenuItem
         Caption = 'Aide '
         ImageIndex = 5
@@ -20661,12 +20665,10 @@ object MainForm: TMainForm
     end
   end
   object FDPhysPgDriverLink1: TFDPhysPgDriverLink
-    VendorLib = 'C:\Program Files (x86)\PostgreSQL\9.6\bin\libpq.dll'
-    Left = 658
-    Top = 304
+    Left = 600
+    Top = 154
   end
   object FournisseurTable: TFDQuery
-    Active = True
     FilterOptions = [foCaseInsensitive]
     IndexFieldNames = 'code_f'
     Connection = GstockdcConnection
@@ -20811,11 +20813,10 @@ object MainForm: TMainForm
   object FDGUIxWaitCursor1: TFDGUIxWaitCursor
     Provider = 'Forms'
     ScreenCursor = gcrDefault
-    Left = 626
-    Top = 304
+    Left = 526
+    Top = 182
   end
   object ProduitTable: TFDQuery
-    Active = True
     OnCalcFields = ProduitTableCalcFields
     FilterOptions = [foCaseInsensitive]
     IndexFieldNames = 'code_p'
@@ -21030,7 +21031,6 @@ object MainForm: TMainForm
     end
   end
   object UniteTable: TFDQuery
-    Active = True
     FilterOptions = [foCaseInsensitive]
     IndexFieldNames = 'code_u'
     Connection = GstockdcConnection
@@ -21040,7 +21040,6 @@ object MainForm: TMainForm
     Top = 347
   end
   object SfamproduitTable: TFDQuery
-    Active = True
     FilterOptions = [foCaseInsensitive]
     IndexFieldNames = 'code_sfamp'
     Connection = GstockdcConnection
@@ -21050,7 +21049,6 @@ object MainForm: TMainForm
     Top = 472
   end
   object FamproduitTable: TFDQuery
-    Active = True
     FilterOptions = [foCaseInsensitive]
     IndexFieldNames = 'code_famp'
     Connection = GstockdcConnection
@@ -21070,7 +21068,6 @@ object MainForm: TMainForm
     Top = 528
   end
   object LocalisationTable: TFDQuery
-    Active = True
     IndexFieldNames = 'code_l'
     Connection = GstockdcConnection
     SQL.Strings = (
@@ -22853,7 +22850,6 @@ object MainForm: TMainForm
     end
   end
   object Bona_recPlistTable: TFDQuery
-    Active = True
     AfterRefresh = Bona_recPlistTableAfterRefresh
     OnCalcFields = Bona_recPlistTableCalcFields
     FilterOptions = [foCaseInsensitive]
@@ -32015,7 +32011,6 @@ object MainForm: TMainForm
       FF00FF000000FF00FF00FFFF0000FFFFFF0000000000}
   end
   object Mode_paiementTable: TFDQuery
-    Active = True
     FilterOptions = [foCaseInsensitive]
     IndexFieldNames = 'code_mdpai'
     Connection = GstockdcConnection
@@ -32041,7 +32036,6 @@ object MainForm: TMainForm
     end
   end
   object CompteTable: TFDQuery
-    Active = True
     FilterOptions = [foCaseInsensitive]
     IndexFieldNames = 'code_cmpt'
     Connection = GstockdcConnection
@@ -36229,11 +36223,6 @@ object MainForm: TMainForm
     end
   end
   object GstockdcConnection: TFDConnection
-    Params.Strings = (
-      'Database=GSTOCKDC'
-      'User_Name=postgres'
-      'DriverID=PG')
-    Connected = True
     LoginPrompt = False
     Left = 51
     Top = 112
@@ -36448,7 +36437,6 @@ object MainForm: TMainForm
     Top = 264
   end
   object UsersTable: TFDQuery
-    Active = True
     FilterOptions = [foCaseInsensitive]
     IndexFieldNames = 'code_ur'
     Connection = GstockdcConnection
@@ -38995,16 +38983,21 @@ object MainForm: TMainForm
         Name = 'CreateTables'
         SQL.Strings = (
           '/*'
+          'Navicat PGSQL Data Transfer'
+          ''
           'Source Server         : PostgreSQL'
           'Source Server Version : 90600'
           'Source Host           : localhost:5432'
           'Source Database       : GSTOCKDC'
           'Source Schema         : public'
+          ''
           'Target Server Type    : PGSQL'
           'Target Server Version : 90600'
           'File Encoding         : 65001'
-          'Date: 2016-08-28 15:50:18'
+          ''
+          'Date: 2016-09-21 16:21:45'
           '*/'
+          ''
           ''
           '-- ----------------------------'
           '-- Sequence structure for codebarres_code_cb_seq'
@@ -39016,7 +39009,6 @@ object MainForm: TMainForm
           ' START 1'
           ' CACHE 1;'
           ''
-          ''
           '-- ----------------------------'
           '-- Sequence structure for produit_code_p_seq'
           '-- ----------------------------'
@@ -39026,7 +39018,6 @@ object MainForm: TMainForm
           ' MAXVALUE 2147483647'
           ' START 1'
           ' CACHE 1;'
-          ''
           ''
           '-- ----------------------------'
           '-- Table structure for bona_fac'
@@ -39065,7 +39056,7 @@ object MainForm: TMainForm
           'CREATE TABLE "bona_fac_list" ('
           '"code_bafacl" int4 NOT NULL,'
           '"code_bafac" int4,'
-          '"qut_p" int4,'
+          '"qut_p" float8 DEFAULT 0,'
           '"prixht_p" money DEFAULT 0,'
           '"cond_p" int4,'
           '"code_p" int4,'
@@ -39109,6 +39100,7 @@ object MainForm: TMainForm
           '-- ----------------------------'
           '-- Records of bona_rec'
           '-- ----------------------------'
+          'BEGIN;'
           'COMMIT;'
           ''
           '-- ----------------------------'
@@ -39117,7 +39109,7 @@ object MainForm: TMainForm
           'CREATE TABLE "bona_rec_list" ('
           '"code_barecl" int4 NOT NULL,'
           '"code_barec" int4,'
-          '"qut_p" int4,'
+          '"qut_p" float8 DEFAULT 0,'
           '"prixht_p" money DEFAULT 0,'
           '"cond_p" int4,'
           '"code_p" int4'
@@ -39165,7 +39157,7 @@ object MainForm: TMainForm
           'CREATE TABLE "bonv_ctr_list" ('
           '"code_bvctrl" int4 NOT NULL,'
           '"code_bvctr" int4,'
-          '"qut_p" int4,'
+          '"qut_p" float8 DEFAULT 0,'
           '"prixvd_p" money DEFAULT 0,'
           '"cond_p" int4,'
           '"code_p" int4'
@@ -39217,7 +39209,7 @@ object MainForm: TMainForm
           'CREATE TABLE "bonv_fac_list" ('
           '"code_bvfacl" int4 NOT NULL,'
           '"code_bvfac" int4,'
-          '"qut_p" int4,'
+          '"qut_p" float8 DEFAULT 0,'
           '"prixvd_p" money DEFAULT 0,'
           '"cond_p" int4,'
           '"code_p" int4,'
@@ -39269,7 +39261,7 @@ object MainForm: TMainForm
           'CREATE TABLE "bonv_liv_list" ('
           '"code_bvlivl" int4 NOT NULL,'
           '"code_bvliv" int4,'
-          '"qut_p" int4,'
+          '"qut_p" float8 DEFAULT 0,'
           '"prixvd_p" money DEFAULT 0,'
           '"cond_p" int4,'
           '"code_p" int4'
@@ -39312,7 +39304,8 @@ object MainForm: TMainForm
           '"oldcredit_c" money DEFAULT 0,'
           '"maxcredit_c" money DEFAULT 0,'
           '"code_c" int4 NOT NULL,'
-          '"tarification_c" int2 DEFAULT 0'
+          '"tarification_c" int2 DEFAULT 0,'
+          '"credit_c" money DEFAULT 0'
           ')'
           'WITH (OIDS=FALSE)'
           ''
@@ -39329,7 +39322,7 @@ object MainForm: TMainForm
             '       '#39', '#39'                         '#39', '#39'                        ' +
             ' '#39', '#39#39', '#39'                         '#39', '#39'                         '#39 +
             ', '#39'                                        '#39', null, '#39#39', '#39'$0.00'#39',' +
-            ' '#39'$0.00'#39', '#39'1'#39', '#39'0'#39');'
+            ' '#39'$0.00'#39', '#39'1'#39', '#39'0'#39', '#39'$0.00'#39');'
           'COMMIT;'
           ''
           '-- ----------------------------'
@@ -44401,8 +44394,8 @@ object MainForm: TMainForm
           '-- ----------------------------'
           'BEGIN;'
           
-            'INSERT INTO "compte" VALUES ('#39'1'#39', '#39'Caisse'#39', '#39'00001'#39', '#39'f'#39', '#39'$200.' +
-            '00'#39', '#39'2016-01-01'#39');'
+            'INSERT INTO "compte" VALUES ('#39'1'#39', '#39'Caisse'#39', '#39'00001'#39', '#39'f'#39', '#39'$0.00' +
+            #39', '#39'2016-01-01'#39');'
           
             'INSERT INTO "compte" VALUES ('#39'2'#39', '#39'Banque'#39', '#39'00002'#39', '#39't'#39', '#39'$0.00' +
             #39', '#39'2016-01-01'#39');'
@@ -44420,7 +44413,9 @@ object MainForm: TMainForm
           'WITH (OIDS=FALSE)'
           ''
           ';'
-          'COMMENT ON COLUMN "famproduit"."code_famp" IS '#39#10#10#39';'
+          'COMMENT ON COLUMN "famproduit"."code_famp" IS '#39
+          ''
+          #39';'
           ''
           '-- ----------------------------'
           '-- Records of famproduit'
@@ -44432,9 +44427,7 @@ object MainForm: TMainForm
           '-- Table structure for fournisseur'
           '-- ----------------------------'
           'CREATE TABLE "fournisseur" ('
-          
-            '"code_f" int4 DEFAULT nextval(('#39'public.fournisseur_code_f_seq'#39'::' +
-            'text)::regclass) NOT NULL,'
+          '"code_f" int4 NOT NULL,'
           '"nom_f" varchar(40) COLLATE "default",'
           '"adr_f" char(50) COLLATE "default",'
           '"ville_f" char(25) COLLATE "default",'
@@ -44456,7 +44449,8 @@ object MainForm: TMainForm
           '"rib_f" char(25) COLLATE "default",'
           '"siteweb_f" char(40) COLLATE "default",'
           '"oldcredit_f" money DEFAULT 0,'
-          '"maxcredit_f" money DEFAULT 0'
+          '"maxcredit_f" money DEFAULT 0,'
+          '"credit_f" money DEFAULT 0'
           ')'
           'WITH (OIDS=FALSE)'
           ''
@@ -44646,9 +44640,7 @@ object MainForm: TMainForm
           '-- Table structure for sfamproduit'
           '-- ----------------------------'
           'CREATE TABLE "sfamproduit" ('
-          
-            '"code_sfamp" int2 DEFAULT nextval('#39'sfamproduit_code_sfamp_seq'#39'::' +
-            'regclass) NOT NULL,'
+          '"code_sfamp" int2 NOT NULL,'
           '"nom_sfamp" varchar(30) COLLATE "default"'
           ')'
           'WITH (OIDS=FALSE)'
@@ -44687,27 +44679,31 @@ object MainForm: TMainForm
           '"code_ur" int4 NOT NULL,'
           '"nom_ur" varchar(40) COLLATE "default",'
           '"password_ur" varchar(32) COLLATE "default",'
-          '"vente_ur" bool,'
           '"bl_ur" bool,'
           '"fcv_ur" bool,'
           '"rgc_ur" bool,'
-          '"achat_ur" bool,'
           '"br_ur" bool,'
           '"fca_ur" bool,'
           '"rgf_ur" bool,'
-          '"tre_ur" bool,'
           '"caisse_ur" bool,'
           '"bank_ur" bool,'
           '"client_ur" bool,'
           '"four_ur" bool,'
           '"type_ur" int2 DEFAULT 0,'
           '"ctr_ur" bool,'
-          '"produit_ur" bool'
+          '"produit_ur" bool,'
+          '"famp_ur" bool,'
+          '"sfamp_ur" bool,'
+          '"mdpai_ur" bool,'
+          '"cmpt_ur" bool,'
+          '"unit_ur" bool,'
+          '"local_ur" bool'
           ')'
           'WITH (OIDS=FALSE)'
           ''
           ';'
-          'COMMENT ON COLUMN "users"."ctr_ur" IS '#39#10#39';'
+          'COMMENT ON COLUMN "users"."ctr_ur" IS '#39
+          #39';'
           ''
           '-- ----------------------------'
           '-- Records of users'
@@ -44715,8 +44711,8 @@ object MainForm: TMainForm
           'BEGIN;'
           
             'INSERT INTO "users" VALUES ('#39'1'#39', '#39'Admin'#39', '#39'admin'#39', '#39't'#39', '#39't'#39', '#39't'#39 +
-            ', '#39't'#39', '#39't'#39', '#39't'#39', '#39't'#39', '#39't'#39', '#39't'#39', '#39't'#39', '#39't'#39', '#39't'#39', '#39't'#39', '#39'0'#39', '#39't'#39', '#39't' +
-            #39');'
+            ', '#39't'#39', '#39't'#39', '#39't'#39', '#39't'#39', '#39't'#39', '#39't'#39', '#39't'#39', '#39'0'#39', '#39't'#39', '#39't'#39', '#39't'#39', '#39't'#39', '#39't' +
+            #39', '#39't'#39', '#39't'#39', '#39't'#39');'
           'COMMIT;'
           ''
           '-- ----------------------------'
@@ -44785,6 +44781,21 @@ object MainForm: TMainForm
           'COMMIT;'
           ''
           '-- ----------------------------'
+          '-- View structure for clientv'
+          '-- ----------------------------'
+          'CREATE OR REPLACE VIEW "clientv" AS '
+          
+            ' SELECT client.nom_c,'#10'    client.adr_c,'#10'    client.ville_c,'#10'    ' +
+            'client.fix_c,'#10'    client.mob_c,'#10'    client.email_c,'#10'    client.w' +
+            'illaya_c,'#10'    client.fax_c,'#10'    client.activ_c,'#10'    client.logo_' +
+            'c,'#10'    client.mob2_c,'#10'    client.rc_c,'#10'    client.nif_c,'#10'    cli' +
+            'ent.nart_c,'#10'    client.nis_c,'#10'    client.obser_c,'#10'    client.nba' +
+            'nk_c,'#10'    client.rib_c,'#10'    client.activite_c,'#10'    client.pays_c' +
+            ','#10'    client.siteweb_c,'#10'    client.oldcredit_c,'#10'    client.maxcr' +
+            'edit_c,'#10'    client.code_c'#10'   FROM client'#10'  WHERE (client.nom_c I' +
+            'S NULL);'
+          ''
+          '-- ----------------------------'
           '-- Function structure for truncate_tables'
           '-- ----------------------------'
           'CREATE OR REPLACE FUNCTION "truncate_tables"("username" varchar)'
@@ -44805,9 +44816,6 @@ object MainForm: TMainForm
           '-- ----------------------------'
           '-- Alter Sequences Owned By '
           '-- ----------------------------'
-          
-            'ALTER SEQUENCE "sfamproduit_code_sfamp_seq" OWNED BY "sfamprodui' +
-            't"."code_sfamp";'
           ''
           '-- ----------------------------'
           '-- Primary Key structure for table bona_fac'
