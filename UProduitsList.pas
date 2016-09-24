@@ -76,6 +76,8 @@ type
   public
     { Public declarations }
 
+    CodePToUseOut : Integer;
+
   end;
 
 var
@@ -113,12 +115,22 @@ procedure TProduitsListF.AddProduitsBtnClick(Sender: TObject);
 var
   codeP, refnum: integer;
 begin
+   //thise is to back the same row if we didnt add anything
+   if Assigned (ProduitsListF) then
+   begin
+   if not  MainForm.ProduitTable.IsEmpty then
+   begin
+   CodePToUseOut :=   MainForm.ProduitTable.FieldByName('code_p').AsInteger;
+   end;
+
+   end;
+
 //-------- use this code to disable contron o dbgrid when adding or editing in the background-----//
   MainForm.ProduitTable.DisableControls;
   MainForm.ProduitTable.Filtered:=False;
   MainForm.ProduitTable.IndexesActive := True;
 //-------- use this code to start creating th form-----//
-  produitGestionF := TproduitGestionF.Create(ProduitsListF);
+  ProduitGestionF := TproduitGestionF.Create(ProduitsListF);
 
   if MainForm.ProduitTable.RecordCount <= 0 then
   begin
@@ -233,6 +245,8 @@ begin
         if (fieldbyname('nom_p').Value <> null) then
         begin
         ProduitGestionF.NameProduitGEdt.Text := fieldbyname('nom_p').Value;
+         //----- this is to move the coursour to the last  --------------------------------------------------------
+         ProduitGestionF.NameProduitGEdt.SelStart :=  ProduitGestionF.NameProduitGEdt.GetTextLen ;
         end;
         //	FamP:= fieldbyname('code_famp').Value;
         if (fieldbyname('famp').Value <> null) then
@@ -483,7 +497,7 @@ end;
  ProduitsListDBGridEh.DefaultDrawColumnCell(Rect, DataCol, Column, State);
  end;
  //------ use this code to red the produit with 0 or null in stock----//
- if  (MainForm.ProduitTable.FieldValues['qut_p'] = 0) OR (MainForm.ProduitTable.FieldValues['qut_p'] = null)   then
+ if  (MainForm.ProduitTable.FieldValues['qut_p'] = 0) AND (MainForm.ProduitTable.FieldValues['qutini_p'] = 0)   then
  begin
  ProduitsListDBGridEh.Canvas.Font.Color:=$004735F9;
  ProduitsListDBGridEh.DefaultDrawColumnCell(Rect, DataCol, Column, State);

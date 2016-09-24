@@ -115,7 +115,6 @@ type
     BonRecGOLDStock: TLabel;
     Label20: TLabel;
     BonRecGNEWStock: TLabel;
-    Button1: TButton;
     frxBonRecDT: TfrxDBDataset;
     frxBonRecPListDB: TfrxDBDataset;
     frxFourDB: TfrxDBDataset;
@@ -172,10 +171,10 @@ type
     procedure ProduitsListDBGridEhExit(Sender: TObject);
     procedure ProduitsListDBGridEhKeyPress(Sender: TObject; var Key: Char);
     procedure FormCreate(Sender: TObject);
-    procedure Button1Click(Sender: TObject);
     procedure sSpeedButton5Click(Sender: TObject);
     procedure sSpeedButton4Click(Sender: TObject);
     procedure sSpeedButton6Click(Sender: TObject);
+    procedure ProduitsListDBGridEhCellClick(Column: TColumnEh);
   private
     procedure GettingData;
     { Private declarations }
@@ -291,8 +290,9 @@ I : Integer;
   begin
   Cursor := crDefault;
 //  PostMessage((Sender as TComboBox).Handle, CB_SHOWDROPDOWN, 1, 0);
-      ProduitBonRecGCbx.Refresh;
+//      ProduitBonRecGCbx.Refresh;
       ProduitBonRecGCbx.Items.Clear;
+      MainForm.ProduitTable.DisableControls;
       MainForm.ProduitTable.Active:=False;
       MainForm.ProduitTable.SQL.Clear;
       MainForm.ProduitTable.SQL.Text:= 'SELECT * FROM produit ';
@@ -324,6 +324,8 @@ I : Integer;
        MainForm.ProduitTable.Next;
       end;
      end;
+
+     MainForm.ProduitTable.EnableControls;
 
 end;
 
@@ -402,6 +404,7 @@ begin
              MainForm.Bona_recPlistTable.FieldValues['qut_p'] :=  01;
              MainForm.Bona_recPlistTable.FieldValues['prixht_p']:= MainForm.ProduitTable.FieldValues['prixht_p'];
              MainForm.Bona_recPlistTable.FieldValues['cond_p']:= 01;
+             MainForm.Bona_recPlistTable.FieldValues['tva_p']:= MainForm.ProduitTable.FieldValues['tva_p'];
              MainForm.Bona_recPlistTable.Post ;
              MainForm.Bona_recPlistTable.IndexFieldNames:='code_barec';
 
@@ -509,6 +512,7 @@ begin
              MainForm.Bona_recPlistTable.FieldValues['qut_p'] :=  01;
              MainForm.Bona_recPlistTable.FieldValues['prixht_p']:= MainForm.ProduitTable.FieldValues['prixht_p'];
              MainForm.Bona_recPlistTable.FieldValues['cond_p']:= 01;
+             MainForm.Bona_recPlistTable.FieldValues['tva_p']:= MainForm.ProduitTable.FieldValues['tva_p'];
              MainForm.Bona_recPlistTable.Post ;
              MainForm.Bona_recPlistTable.IndexFieldNames:='code_barec';
 
@@ -625,6 +629,7 @@ begin
              MainForm.Bona_recPlistTable.FieldValues['qut_p'] :=  01;
              MainForm.Bona_recPlistTable.FieldValues['prixht_p']:= MainForm.ProduitTable.FieldValues['prixht_p'];
              MainForm.Bona_recPlistTable.FieldValues['cond_p']:= 01;
+             MainForm.Bona_recPlistTable.FieldValues['tva_p']:= MainForm.ProduitTable.FieldValues['tva_p'];
              MainForm.Bona_recPlistTable.Post ;
              MainForm.Bona_recPlistTable.IndexFieldNames:='code_barec';
 
@@ -959,15 +964,17 @@ begin
 //-------- Show the splash screan for the produit familly to add new one---------//
   FastProduitsListF.Left := (Screen.Width div 2) - (FastProduitsListF.Width div 2);
   FastProduitsListF.Top := (Screen.Height div 2) - (FastProduitsListF.Height div 2);
-  FastProduitsListF.ShowModal;
-//  FastProduitsListF.ResearchProduitsEdt.SetFocus;
+  FastProduitsListF.Show;
+  FastProduitsListF.ResearchProduitsEdt.SetFocus;
+
 
  // FastProduitsListF.OKproduitGBtn.Enabled:=False;
- // produitGestionF.CancelProduitGBtn.Tag:=0;
+//  produitGestionF.CancelProduitGBtn.Tag:=0;
 end;
 
 procedure TBonRecGestionF.FormCloseQuery(Sender: TObject;
   var CanClose: Boolean);
+  Var CodeBR : Integer;
  begin
  if  NOT ProduitsListDBGridEh.DataSource.DataSet.IsEmpty then
   begin
@@ -984,6 +991,8 @@ procedure TBonRecGestionF.FormCloseQuery(Sender: TObject;
         begin
          if  (MainForm.Bona_recTable.FieldByName('valider_barec').AsBoolean = false)  then
          begin
+          codeBR:= MainForm.Bona_recTable.FieldByName('code_barec').AsInteger;
+
           MainForm.FournisseurTable.DisableControls;
           MainForm.FournisseurTable.Active:=false;
           MainForm.FournisseurTable.SQL.Clear;
@@ -1044,6 +1053,12 @@ procedure TBonRecGestionF.FormCloseQuery(Sender: TObject;
           MainForm.CompteTable.Active:=True;
           MainForm.CompteTable.EnableControls;
 
+        //------- This is to delete data from tre and reg ih not valide----------------------------------------------
+              MainForm.GstockdcConnection.ExecSQL('DELETE FROM regfournisseur where code_barec = ' + IntToStr(codeBR));
+              MainForm.GstockdcConnection.ExecSQL('DELETE FROM opt_cas_bnk where code_barec = ' + IntToStr(codeBR));
+              MainForm.RegfournisseurTable.Refresh ;
+              MainForm.Opt_cas_bnk_CaisseTable.Refresh ;
+
           end;
 
         end;
@@ -1079,6 +1094,8 @@ begin
     RemiseBonRecGEdt.Enabled:=True;
     RemiseTypeBonRecGCbx.Enabled:= True;
 
+   if MainForm.Bona_recTable.FieldValues['valider_barec'] <> True then
+   begin
 
     MainForm.ProduitTable.DisableControls;
     MainForm.ProduitTable.Active:=False;
@@ -1092,12 +1109,22 @@ begin
     BonRecGNEWStock.Caption:=
      floatTostrF(((MainForm.ProduitTable.FieldValues['qut_p'])+((MainForm.Bona_recPlistTable.FieldValues['qut_p']) * (MainForm.Bona_recPlistTable.FieldValues['cond_p']))),ffNumber,14,2);
 
+//     if(StrToFloat (StringReplace(BonRecGNEWStock.Caption, #32, '', [rfReplaceAll])))  < 0 then
+//    begin
+//     Timer1.Enabled:= true;
+//    end else
+//        begin
+//        Timer1.Enabled:= False;
+//        Label20.Visible:=false;
+//        end;
+
     MainForm.ProduitTable.Active:=False;
     MainForm.ProduitTable.SQL.Clear;
     MainForm.ProduitTable.SQL.Text:='SELECT * FROM produit ';
     MainForm.ProduitTable.Active:=True;
     MainForm.ProduitTable.EnableControls;
 
+   end;
      ProduitsListDBGridEh.ReadOnly:=False;
     end else
     begin
@@ -1649,7 +1676,7 @@ begin
 
 // use this code to rest the old credit to the to the last time before he pay anything in that bon so you can aclculate again
   BonRecGFourOLDCredit.Caption:=
-  CurrToStrF((((MainForm.FournisseurTable.FieldValues['oldcredit_f'])-(StringReplace(BonRecResteLbl.Caption, #32, '', [rfReplaceAll])))),ffNumber,2);
+  CurrToStrF((((MainForm.FournisseurTable.FieldValues['credit_f'])-(StringReplace(BonRecResteLbl.Caption, #32, '', [rfReplaceAll])))),ffNumber,2);
 
   BonRecRegleLbl.Caption:=FloatToStrF(0,ffNumber,14,2) ;
   BonRecResteLbl.Caption:= BonRecTotalTTCLbl.Caption;
@@ -1661,22 +1688,21 @@ begin
       MainForm.FournisseurTable.EnableControls;
   //-------------------------------------------
     begin
+           MainForm.ProduitTable.DisableControls;
            MainForm.ProduitTable.Active:=False;
            MainForm.ProduitTable.SQL.Clear;
            MainForm.ProduitTable.SQL.Text:='SELECT * FROM produit ' ;
            MainForm.ProduitTable.Active:=True;
            Mainform.Sqlquery.Active:=False;
            Mainform.Sqlquery.Sql.Clear;
-           Mainform.Sqlquery.Sql.Text:='SELECT code_barecl,code_p,  qut_p, cond_p , prixht_p FROM bona_rec_list WHERE code_barec =  '
+           Mainform.Sqlquery.Sql.Text:='SELECT code_barecl,code_p,  qut_p, cond_p  FROM bona_rec_list WHERE code_barec =  '
                                                  + IntToStr (MainForm.Bona_recTable.FieldValues['code_barec'])
-                                                 + 'GROUP BY code_barecl, code_p, qut_p, cond_p,prixht_p ' ;
+                                                 + 'GROUP BY code_barecl, code_p, qut_p, cond_p ' ;
            MainForm.SQLQuery.Active:=True;
            MainForm.SQLQuery.First;
 
            while  NOT (MainForm.SQLQuery.Eof) do
            begin
-
-            MainForm.ProduitTable.DisableControls;
             MainForm.ProduitTable.Active:=False;
             MainForm.ProduitTable.SQL.Clear;
             MainForm.ProduitTable.SQL.Text:='SELECT * FROM produit WHERE code_p = ' +QuotedStr(MainForm.SQLQuery.FieldValues['code_p']) ;
@@ -1685,10 +1711,11 @@ begin
             MainForm.ProduitTable.Edit;
             MainForm.ProduitTable.FieldValues['qut_p']:= ( MainForm.ProduitTable.FieldValues['qut_p']
                                                          - (MainForm.SQLQuery.FieldValues['qut_p']) * ((MainForm.SQLQuery.FieldValues['cond_p'])));
-            MainForm.ProduitTable.FieldValues['prixht_p']:= MainForm.SQLQuery.FieldValues['prixht_p'];
+//            MainForm.ProduitTable.FieldValues['prixht_p']:= MainForm.SQLQuery.FieldValues['prixht_p'];
             MainForm.ProduitTable.Post;
             MainForm.SQLQuery.Next;
            end;
+
            MainForm.ProduitTable.Active:=False;
            MainForm.ProduitTable.SQL.Clear;
            MainForm.ProduitTable.SQL.Text:='SELECT * FROM produit ' ;
@@ -1696,7 +1723,7 @@ begin
            MainForm.ProduitTable.EnableControls;
            MainForm.SQLQuery.Active:=False;
            MainForm.SQLQuery.SQL.Clear;
-          MainForm.Bona_recTable.Refresh;
+           MainForm.Bona_recTable.Refresh;
      end;
 
 end;
@@ -1967,8 +1994,7 @@ end;
 procedure TBonRecGestionF.ProduitsListDBGridEhExit(Sender: TObject);
 var key : Char;
 begin
-key:=#13;
-ProduitsListDBGridEhKeyPress(Sender,Key)
+Refresh_PreservePosition;
 end;
 
 procedure TBonRecGestionF.ProduitsListDBGridEhKeyPress(Sender: TObject;
@@ -1997,12 +2023,6 @@ end;
 procedure TBonRecGestionF.FormCreate(Sender: TObject);
 begin
 MainForm.Bona_recPlistTable.Active:=True;
-end;
-
-procedure TBonRecGestionF.Button1Click(Sender: TObject);
-begin
-MainForm.Bona_recTable.Active:= False;
-MainForm.Bona_recPlistTable.Active:= False;
 end;
 
 procedure TBonRecGestionF.GettingData;
@@ -2085,6 +2105,11 @@ frxPDFExport1.FileName := 'Bon de Réception N° '
 frxPDFExport1.EmbeddedFonts:=True;
 
 BonRecPListfrxRprt.Export(frxPDFExport1);
+end;
+
+procedure TBonRecGestionF.ProduitsListDBGridEhCellClick(Column: TColumnEh);
+begin
+Refresh_PreservePosition;
 end;
 
 end.

@@ -174,6 +174,8 @@ begin
             ClientGestionF.MaxCreditClientGEdt.Text:= CurrToStrF( fieldbyname('maxcredit_c').Value,ffNumber, 2);
             ClientGestionF.ModeTarifClientGCbx.ItemIndex:= fieldbyname('tarification_c').AsInteger;
             ClientGestionF.ObserClientGMem.Text:= fieldbyname('obser_c').Value;
+             //----- this is to move the coursour to the last  --------------------------------------------------------
+            ClientGestionF.NameClientGEdt.SelStart :=  ClientGestionF.NameClientGEdt.GetTextLen ;
            end ;
    end;
 end;

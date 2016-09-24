@@ -196,12 +196,16 @@ begin
       ModePaieRegFGCbxClick(Self) ;
       OKRegFGBtn.Enabled:= True;
       OKRegFGBtn.ImageIndex := 17;
+
+      FournisseurRegFGCbxExit(Sender);
      end else
          begin
         
           OKRegFGBtn.Enabled:= False;
           OKRegFGBtn.ImageIndex := 18;
          end;
+
+
 end;
 
 procedure TReglementFGestionF.ModePaieRegFGCbxClick(Sender: TObject);
@@ -499,8 +503,6 @@ begin
           sndPlaySound('C:\Windows\Media\speech on.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
           Close;
 
-
-
                 end else
             begin
               RegFGErrorP.Visible:= True;
@@ -509,11 +511,6 @@ begin
               OKRegFGBtn.ImageIndex := 18;
               VerRegFGEdt.SetFocus;
             end;
-
-
-
-
-
 
   end else
       begin
@@ -535,7 +532,7 @@ begin
 
   if FournisseurRegFGCbx.Text <> '' then
     begin
-     FournisseurRegFGCbxChange(Sender);
+//     FournisseurRegFGCbxChange(Sender);
       MainForm.FournisseurTable.DisableControls;
       MainForm.FournisseurTable.Active:=false;
       MainForm.FournisseurTable.SQL.Clear;

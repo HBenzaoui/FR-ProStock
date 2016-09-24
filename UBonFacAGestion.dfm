@@ -1366,6 +1366,8 @@ object BonFacAGestionF: TBonFacAGestionF
     TitleParams.SortMarkerStyle = smstThemeDefinedEh
     TitleParams.VertLines = True
     VertScrollBar.Width = 15
+    OnCellClick = ProduitsListDBGridEhCellClick
+    OnExit = ProduitsListDBGridEhExit
     OnKeyPress = ProduitsListDBGridEhKeyPress
     Columns = <
       item
@@ -1441,6 +1443,7 @@ object BonFacAGestionF: TBonFacAGestionF
         Width = 70
       end
       item
+        DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
         FieldName = 'prixht_p'
@@ -1463,6 +1466,27 @@ object BonFacAGestionF: TBonFacAGestionF
       end
       item
         Alignment = taCenter
+        DynProps = <>
+        EditButtons = <>
+        FieldName = 'tva_p'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 18
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
+        Footers = <>
+        Layout = tlCenter
+        Title.Alignment = taCenter
+        Title.Caption = 'TVA %'
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = 4207405
+        Title.Font.Height = 19
+        Title.Font.Name = 'Helvetica LT Std'
+        Title.Font.Style = []
+        Title.Font.Quality = fqProof
+      end
+      item
+        Alignment = taCenter
         DropDownBox.ColumnDefValues.Layout = tlCenter
         DropDownBox.Options = []
         DropDownRows = 0
@@ -1476,9 +1500,11 @@ object BonFacAGestionF: TBonFacAGestionF
         ReadOnly = True
         TextEditing = False
         Title.Alignment = taCenter
-        Title.Caption = 'TVA'
+        Title.Caption = 'TVA OLD'
+        Visible = False
       end
       item
+        DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
         FieldName = 'PrixATTC'
@@ -1501,6 +1527,7 @@ object BonFacAGestionF: TBonFacAGestionF
         Width = 170
       end
       item
+        DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
         FieldName = 'MontantHT'
@@ -1523,6 +1550,7 @@ object BonFacAGestionF: TBonFacAGestionF
         Width = 170
       end
       item
+        DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
         FieldName = 'MontantTVA'
@@ -1545,6 +1573,7 @@ object BonFacAGestionF: TBonFacAGestionF
         Width = 170
       end
       item
+        DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
         FieldName = 'MontantTTC'

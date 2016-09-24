@@ -592,6 +592,17 @@ object BonFacVF: TBonFacVF
         Width = 150
       end
       item
+        DisplayFormat = '#,##0.00'
+        DynProps = <>
+        EditButtons = <>
+        FieldName = 'marge_bvfac'
+        Footers = <>
+        Layout = tlCenter
+        Title.Alignment = taCenter
+        Title.Caption = 'Marge'
+        Width = 150
+      end
+      item
         Alignment = taCenter
         DynProps = <>
         EditButtons = <>

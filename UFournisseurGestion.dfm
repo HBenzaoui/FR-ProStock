@@ -299,7 +299,7 @@ object FournisseurGestionF: TFournisseurGestionF
           ParentBackground = False
           ParentCtl3D = False
           ShowCaption = False
-          TabOrder = 11
+          TabOrder = 12
           Visible = False
           StyleElements = []
         end
@@ -314,7 +314,7 @@ object FournisseurGestionF: TFournisseurGestionF
           DoubleBuffered = False
           ParentBackground = False
           ParentDoubleBuffered = False
-          TabOrder = 10
+          TabOrder = 11
           StyleElements = []
         end
         object AdrFournisseurGEdt: TEdit
@@ -331,6 +331,7 @@ object FournisseurGestionF: TFournisseurGestionF
           ParentDoubleBuffered = False
           ParentFont = False
           TabOrder = 1
+          OnKeyPress = NameFournisseurGEdtKeyPress
         end
         object FixFournisseurGEdt: TEdit
           Left = 66
@@ -345,9 +346,9 @@ object FournisseurGestionF: TFournisseurGestionF
           Font.Style = []
           ParentDoubleBuffered = False
           ParentFont = False
-          TabOrder = 3
+          TabOrder = 4
           OnKeyDown = FixFournisseurGEdtKeyDown
-          OnKeyPress = FaxFournisseurGEdtKeyPress
+          OnKeyPress = NameFournisseurGEdtKeyPress
         end
         object EmailFournisseurGEdt: TEdit
           Left = 66
@@ -362,7 +363,8 @@ object FournisseurGestionF: TFournisseurGestionF
           Font.Style = []
           ParentDoubleBuffered = False
           ParentFont = False
-          TabOrder = 7
+          TabOrder = 8
+          OnKeyPress = NameFournisseurGEdtKeyPress
         end
         object SiteFournisseurGEdt: TEdit
           Left = 327
@@ -377,7 +379,8 @@ object FournisseurGestionF: TFournisseurGestionF
           Font.Style = []
           ParentDoubleBuffered = False
           ParentFont = False
-          TabOrder = 8
+          TabOrder = 9
+          OnKeyPress = NameFournisseurGEdtKeyPress
         end
         object MobileFournisseurGEdt: TEdit
           Left = 66
@@ -392,9 +395,9 @@ object FournisseurGestionF: TFournisseurGestionF
           Font.Style = []
           ParentDoubleBuffered = False
           ParentFont = False
-          TabOrder = 5
+          TabOrder = 6
           OnKeyDown = FixFournisseurGEdtKeyDown
-          OnKeyPress = FaxFournisseurGEdtKeyPress
+          OnKeyPress = NameFournisseurGEdtKeyPress
         end
         object Mobile2FournisseurGEdt: TEdit
           Left = 327
@@ -409,9 +412,9 @@ object FournisseurGestionF: TFournisseurGestionF
           Font.Style = []
           ParentDoubleBuffered = False
           ParentFont = False
-          TabOrder = 6
+          TabOrder = 7
           OnKeyDown = FixFournisseurGEdtKeyDown
-          OnKeyPress = FaxFournisseurGEdtKeyPress
+          OnKeyPress = NameFournisseurGEdtKeyPress
         end
         object FaxFournisseurGEdt: TEdit
           Left = 327
@@ -426,20 +429,21 @@ object FournisseurGestionF: TFournisseurGestionF
           Font.Style = []
           ParentDoubleBuffered = False
           ParentFont = False
-          TabOrder = 4
+          TabOrder = 5
           OnKeyDown = FixFournisseurGEdtKeyDown
-          OnKeyPress = FaxFournisseurGEdtKeyPress
+          OnKeyPress = NameFournisseurGEdtKeyPress
         end
         object NameFournisseurGEdt: TEdit
           Left = 73
           Top = 60
           Width = 424
           Height = 26
+          AutoSelect = False
           BevelInner = bvSpace
           BevelKind = bkFlat
           BevelOuter = bvSpace
           Ctl3D = True
-          DoubleBuffered = False
+          DoubleBuffered = True
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = 18
@@ -451,6 +455,7 @@ object FournisseurGestionF: TFournisseurGestionF
           TabOrder = 0
           StyleElements = [seClient, seBorder]
           OnChange = NameFournisseurGEdtChange
+          OnKeyPress = NameFournisseurGEdtKeyPress
         end
         object ActiveFournisseurGSlider: TsSlider
           Left = 146
@@ -469,7 +474,7 @@ object FournisseurGestionF: TFournisseurGestionF
           ParentBackground = False
           ParentCtl3D = False
           ParentFont = False
-          TabOrder = 9
+          TabOrder = 10
           StyleElements = []
           BoundLabel.Caption = 'sSlider1'
           BoundLabel.Layout = sclBottomCenter
@@ -495,6 +500,7 @@ object FournisseurGestionF: TFournisseurGestionF
           TabOrder = 2
           OnDropDown = WilayaFournisseurGCbxEnter
           OnEnter = WilayaFournisseurGCbxEnter
+          OnKeyPress = NameFournisseurGEdtKeyPress
           Items.Strings = (
             'Adrar'
             'A'#239'n-Defla'
@@ -556,10 +562,10 @@ object FournisseurGestionF: TFournisseurGestionF
           Font.Name = 'Roboto'
           Font.Style = []
           ParentFont = False
-          TabOrder = 12
+          TabOrder = 3
           OnDropDown = VilleFournisseurGCbxEnter
           OnEnter = VilleFournisseurGCbxEnter
-          OnKeyPress = VilleFournisseurGCbxKeyPress
+          OnKeyPress = NameFournisseurGEdtKeyPress
         end
       end
     end
@@ -580,7 +586,7 @@ object FournisseurGestionF: TFournisseurGestionF
           508
           458)
         object RCFournisseurGLbl: TLabel
-          Left = 26
+          Left = 22
           Top = 18
           Width = 23
           Height = 18
@@ -596,7 +602,7 @@ object FournisseurGestionF: TFournisseurGestionF
           StyleElements = []
         end
         object NArtFournisseurGLbl: TLabel
-          Left = 266
+          Left = 258
           Top = 18
           Width = 40
           Height = 18
@@ -612,7 +618,7 @@ object FournisseurGestionF: TFournisseurGestionF
           StyleElements = []
         end
         object NIFFournisseurGLbl: TLabel
-          Left = 22
+          Left = 18
           Top = 64
           Width = 27
           Height = 18
@@ -628,7 +634,7 @@ object FournisseurGestionF: TFournisseurGestionF
           StyleElements = []
         end
         object NISFournisseurGLbl: TLabel
-          Left = 278
+          Left = 270
           Top = 64
           Width = 28
           Height = 18
@@ -660,7 +666,7 @@ object FournisseurGestionF: TFournisseurGestionF
           StyleElements = []
         end
         object MaxCreditFournisseurGLbl: TLabel
-          Left = 266
+          Left = 258
           Top = 209
           Width = 77
           Height = 18
@@ -677,7 +683,7 @@ object FournisseurGestionF: TFournisseurGestionF
           StyleElements = []
         end
         object CurrencyFournisseurG: TLabel
-          Left = 236
+          Left = 234
           Top = 241
           Width = 20
           Height = 18
@@ -710,7 +716,7 @@ object FournisseurGestionF: TFournisseurGestionF
           StyleElements = [seClient, seBorder]
         end
         object OldCreditFournisseurGLbl: TLabel
-          Left = 12
+          Left = 8
           Top = 208
           Width = 94
           Height = 18
@@ -726,7 +732,7 @@ object FournisseurGestionF: TFournisseurGestionF
           StyleElements = []
         end
         object NBankFournisseurGLbl: TLabel
-          Left = 12
+          Left = 8
           Top = 119
           Width = 121
           Height = 18
@@ -742,7 +748,7 @@ object FournisseurGestionF: TFournisseurGestionF
           StyleElements = []
         end
         object RIBFournisseurGLbl: TLabel
-          Left = 278
+          Left = 270
           Top = 119
           Width = 28
           Height = 18
@@ -772,9 +778,9 @@ object FournisseurGestionF: TFournisseurGestionF
           StyleElements = []
         end
         object RCFournisseurGEdt: TEdit
-          Left = 62
+          Left = 49
           Top = 15
-          Width = 170
+          Width = 186
           Height = 26
           DoubleBuffered = False
           Font.Charset = DEFAULT_CHARSET
@@ -787,9 +793,9 @@ object FournisseurGestionF: TFournisseurGestionF
           TabOrder = 0
         end
         object NArtFournisseurGEdt: TEdit
-          Left = 312
+          Left = 299
           Top = 15
-          Width = 170
+          Width = 186
           Height = 26
           DoubleBuffered = False
           Font.Charset = DEFAULT_CHARSET
@@ -802,9 +808,9 @@ object FournisseurGestionF: TFournisseurGestionF
           TabOrder = 1
         end
         object NIFFournisseurGEdt: TEdit
-          Left = 62
+          Left = 49
           Top = 61
-          Width = 170
+          Width = 186
           Height = 26
           DoubleBuffered = False
           Font.Charset = DEFAULT_CHARSET
@@ -817,9 +823,9 @@ object FournisseurGestionF: TFournisseurGestionF
           TabOrder = 2
         end
         object NISFournisseurGEdt: TEdit
-          Left = 312
+          Left = 299
           Top = 61
-          Width = 170
+          Width = 186
           Height = 26
           DoubleBuffered = False
           Font.Charset = DEFAULT_CHARSET
@@ -859,9 +865,9 @@ object FournisseurGestionF: TFournisseurGestionF
           TabOrder = 8
         end
         object OldCreditFournisseurGEdt: TEdit
-          Left = 60
+          Left = 47
           Top = 232
-          Width = 170
+          Width = 186
           Height = 26
           Alignment = taRightJustify
           DoubleBuffered = False
@@ -879,9 +885,9 @@ object FournisseurGestionF: TFournisseurGestionF
           OnKeyPress = MaxCreditFournisseurGEdtKeyPress
         end
         object MaxCreditFournisseurGEdt: TEdit
-          Left = 312
+          Left = 299
           Top = 232
-          Width = 170
+          Width = 186
           Height = 26
           Alignment = taRightJustify
           DoubleBuffered = False
@@ -914,9 +920,9 @@ object FournisseurGestionF: TFournisseurGestionF
           StyleElements = []
         end
         object NBankFournisseurGEdt: TEdit
-          Left = 62
+          Left = 49
           Top = 142
-          Width = 170
+          Width = 186
           Height = 26
           DoubleBuffered = False
           Font.Charset = DEFAULT_CHARSET
@@ -929,9 +935,9 @@ object FournisseurGestionF: TFournisseurGestionF
           TabOrder = 4
         end
         object RIBFournisseurGEdt: TEdit
-          Left = 312
+          Left = 299
           Top = 141
-          Width = 170
+          Width = 186
           Height = 26
           DoubleBuffered = False
           Font.Charset = DEFAULT_CHARSET

@@ -95,6 +95,11 @@ end;
 procedure TModePaieListF.AdvToolButton2Click(Sender: TObject);
 begin
            //-------- Show the splash screan for the mode de paiement ---------//
+   if  (MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger  <> 1) AND
+    (MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger  <> 2) AND
+    (MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger  <> 3) AND
+    (MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger  <> 4) then
+    begin
     FSplashAddUnite:=TFSplashAddUnite.Create(Application);
     FSplashAddUnite.Width:=330;
     FSplashAddUnite.Height:=185;
@@ -141,6 +146,12 @@ begin
 //    FSplashAddUnite.RequiredStarAddUniteSLbl.Tag := 1;
 
 
+    end else
+        begin
+          sndPlaySound('C:\Windows\Media\chord.wav', SND_NODEFAULT Or SND_ASYNC Or  SND_RING);
+        end;
+
+
 end;
 
 procedure TModePaieListF.AdvToolButton3Click(Sender: TObject);
@@ -173,7 +184,10 @@ begin
 
    end;
 
-  end;
+  end else
+      begin
+        sndPlaySound('C:\Windows\Media\chord.wav', SND_NODEFAULT Or SND_ASYNC Or  SND_RING);
+      end;
 end;
 
 procedure TModePaieListF.ResearchModePaiEdtChange(Sender: TObject);

@@ -91,6 +91,7 @@ type
     procedure FormKeyPress(Sender: TObject; var Key: Char);
     procedure MaxCreditFournisseurGEdtClick(Sender: TObject);
     procedure OldCreditFournisseurGEdtClick(Sender: TObject);
+    procedure NameFournisseurGEdtKeyPress(Sender: TObject; var Key: Char);
   private
     { Private declarations }
   public
@@ -104,9 +105,66 @@ implementation
 
 {$R *.dfm}
 
-uses  UFournisseurList, UMainF, USplash, UClientGestion,
+uses Contnrs,
+ UFournisseurList, UMainF, USplash, UClientGestion,
   UProduitGestion, USplashAddUnite, UBonRecGestion, UBonFacAGestion,
   UReglementFGestion;
+
+
+
+  var
+    gGrayForms: TComponentList;
+
+procedure GrayFormsFour;
+var
+  loop: integer;
+  wScrnFrm: TForm;
+  wForm: TForm;
+//  wPoint: TPoint;
+  wScreens: TList;
+begin
+  if not assigned(gGrayForms) then
+  begin
+    gGrayForms := TComponentList.Create;
+    gGrayForms.OwnsObjects := true;
+    wScreens := TList.Create;
+    try
+      for loop := 0 to 0 do
+        wScreens.Add(Screen.Forms[loop]);
+      for loop := 0 to 0 do
+      begin
+        wScrnFrm := wScreens[loop];
+        if wScrnFrm.Visible then
+        begin
+          wForm := TForm.Create(wScrnFrm);
+       ///wForm.Align:= alClient;
+          wForm.WindowState := wsMaximized;
+          gGrayForms.Add(wForm);
+          wForm.Position := poOwnerFormCenter;
+          wForm.AlphaBlend := true;
+          wForm.AlphaBlendValue := 150;
+          wForm.Color := clBlack;
+          wForm.BorderStyle := bsNone;
+          wForm.StyleElements := [];
+          wForm.Enabled := false;
+          wForm.BoundsRect := wScrnFrm.BoundsRect;
+          SetWindowLong(wForm.Handle, GWL_HWNDPARENT, wScrnFrm.Handle);
+          SetWindowPos(wForm.Handle, wScrnFrm.Handle, 0, 0, 0, 0,
+            SWP_NOSIZE or SWP_NOMOVE);
+          wForm.Visible := true;
+        end;
+      end;
+    finally
+      wScreens.free;
+    end;
+  end;
+end;
+
+procedure NormalFormsFour;
+begin
+  FreeAndNil(gGrayForms);
+end;
+
 
 procedure TFournisseurGestionF.CancelFournisseurGBtnClick(Sender: TObject);
 begin
@@ -151,13 +209,14 @@ procedure TFournisseurGestionF.FormActivate(Sender: TObject);
 begin
   OldCreditFournisseurGEdtExit(Sender);
   MaxCreditFournisseurGEdtExit(Sender);
+
 end;
 
 procedure TFournisseurGestionF.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
 
-  NormalForms;
+  NormalFormsFour;
 
 end;
 
@@ -168,7 +227,7 @@ begin
     SetWindowPos(ProduitGestionF.Handle, HWND_NOTOPMOST, 0, 0, 0, 0,
       SWP_NOMOVE or SWP_NOSIZE);
   end;
-  GrayForms
+  GrayFormsFour;
 end;
 
 procedure TFournisseurGestionF.FormDestroy(Sender: TObject);
@@ -178,7 +237,7 @@ begin
     SetWindowPos(ProduitGestionF.Handle, HWND_TOPMOST, 0, 0, 0, 0,
       SWP_NOACTIVATE or SWP_NOMOVE or SWP_NOSIZE);
   end;
-  NormalForms;
+  NormalFormsFour;
   // if ProduitGestionF = nil then
   // begin
   // FournisseurListF.FournisseursListDBGridEh.SetFocus;
@@ -245,10 +304,10 @@ begin
   NameFournisseurGEdt.StyleElements := [seClient, seBorder];
   RequiredFournisseurGlbl.Visible := false;
   NameFournisseurGErrorP.Visible := false;
-end;
+ end;
 
 procedure TFournisseurGestionF.OKFournisseurGBtnClick(Sender: TObject);
-var codeF : Integer;
+var codeF,CodeFEdit : Integer;
 begin
 
 
@@ -296,7 +355,7 @@ begin
           if OldCreditFournisseurGEdt.Text <> '' then
           begin
             fieldbyname('oldcredit_f').Value :=
-              Trim(OldCreditFournisseurGEdt.Text);
+            StrToCurr(StringReplace(OldCreditFournisseurGEdt.Text, #32, '', [rfReplaceAll]));
           end
           else
           begin
@@ -305,7 +364,7 @@ begin
           if MaxCreditFournisseurGEdt.Text <> '' then
           begin
             fieldbyname('maxcredit_f').Value :=
-              Trim(MaxCreditFournisseurGEdt.Text);
+            StrToCurr(StringReplace(MaxCreditFournisseurGEdt.Text, #32, '', [rfReplaceAll]));
           end
           else
           begin
@@ -314,7 +373,6 @@ begin
           fieldbyname('obser_f').Value := ObserFournisseurGMem.Text;
           post;
           end;
-
 
         MainForm.FournisseurTable.Refresh;
         MainForm.FournisseurTable.Last;
@@ -326,7 +384,7 @@ begin
 
     if OKFournisseurGBtn.Tag = 1 then
     begin
-
+       CodeFEdit:= MainForm.FournisseurTable.FieldByName('code_f').AsInteger;
         with MainForm.FournisseurTable do
         begin
           Edit;
@@ -351,7 +409,7 @@ begin
           if OldCreditFournisseurGEdt.Text <> '' then
           begin
             fieldbyname('oldcredit_f').Value :=
-              Trim(OldCreditFournisseurGEdt.Text);
+            StrToCurr(StringReplace(OldCreditFournisseurGEdt.Text, #32, '', [rfReplaceAll]));
           end
           else
           begin
@@ -360,7 +418,7 @@ begin
           if MaxCreditFournisseurGEdt.Text <> '' then
           begin
             fieldbyname('maxcredit_f').Value :=
-              Trim(MaxCreditFournisseurGEdt.Text);
+            StrToCurr(StringReplace(MaxCreditFournisseurGEdt.Text, #32, '', [rfReplaceAll]));
           end
           else
           begin
@@ -623,8 +681,6 @@ begin
 
     end;
 
-
-
     begin
       FSplash := TFSplash.Create(FournisseurGestionF);
       try
@@ -651,11 +707,8 @@ begin
     sndPlaySound('C:\Windows\Media\speech on.wav', SND_NODEFAULT Or SND_ASYNC Or
       SND_RING);
 
-
-
      if OKFournisseurGBtn.Tag = 0 OR 1 then
      begin
-
 
       MainForm.FournisseurTable.DisableControls;
 
@@ -686,8 +739,6 @@ begin
 
       FournisseurListF.ToutFournisseursLbl.Caption :=
       IntToStr(MainForm.FournisseurTable.RecordCount);
-
-
 
       if FournisseurListF.ActifFournisseursRdioBtn.Checked then
        begin
@@ -723,11 +774,10 @@ begin
 
        MainForm.FournisseurTable.EnableControls;
 
+       MainForm.FournisseurTable.Locate('code_f',CodeFEdit,[]) ;
+
      end;
-
-  end
-
-  else
+  end  else
     try
       NameFournisseurGEdt.BorderStyle := bsNone;
       NameFournisseurGEdt.StyleElements := [];
@@ -807,7 +857,8 @@ procedure TFournisseurGestionF.VilleFournisseurGCbxEnter(Sender: TObject);
 Var I,CodeW: Integer;
 
 begin
-
+ if WilayaFournisseurGCbx.Text <> '' then
+ begin
       MainForm.WilayasTable.Active:=False;
       MainForm.WilayasTable.SQL.Clear;
       MainForm.WilayasTable.SQL.Text:= 'SELECT * FROM wilayas WHERE LOWER(nom_w) LIKE LOWER('+QuotedStr(WilayaFournisseurGCbx.Text)+')' ;
@@ -840,6 +891,8 @@ begin
       MainForm.WilayasTable.SQL.Text:= 'SELECT * FROM wilayas ' ;
       MainForm.WilayasTable.Active := True;
 
+ end;
+
 end;
 
 procedure TFournisseurGestionF.FormKeyPress(Sender: TObject; var Key: Char);
@@ -847,7 +900,7 @@ begin
      if key = #27 then
  begin
  key := #0;
-  Close;
+  CancelFournisseurGBtnClick(Sender);
 
  end;
 end;
@@ -864,6 +917,16 @@ begin
 //----- use this code to delte the blanks from the Tedit when enter that will avoide the not foit point error --///
 OldCreditFournisseurGEdt.Text := StringReplace(OldCreditFournisseurGEdt.Text, #32, '', [rfReplaceAll]);
 OldCreditFournisseurGEdt.SelectAll;
+end;
+
+procedure TFournisseurGestionF.NameFournisseurGEdtKeyPress(Sender: TObject;
+  var Key: Char);
+begin
+ if Key = #13 then
+  begin
+    Key := #0;
+    SelectNext(ActiveControl as TWinControl, true, true);
+  end;
 end;
 
 end.

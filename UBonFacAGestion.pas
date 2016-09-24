@@ -171,6 +171,8 @@ type
     procedure sSpeedButton2Click(Sender: TObject);
     procedure sSpeedButton1Click(Sender: TObject);
     procedure sSpeedButton3Click(Sender: TObject);
+    procedure ProduitsListDBGridEhCellClick(Column: TColumnEh);
+    procedure ProduitsListDBGridEhExit(Sender: TObject);
   private
     procedure GettingData;
     { Private declarations }
@@ -310,6 +312,8 @@ end;
 
 procedure TBonFacAGestionF.FormCloseQuery(Sender: TObject;
  var CanClose: Boolean);
+
+ Var CodeFA :Integer;
 begin
  if  NOT ProduitsListDBGridEh.DataSource.DataSet.IsEmpty then
   begin
@@ -324,6 +328,8 @@ begin
       CanClose := false;
     end else
         begin
+         CodeFA := MainForm.Bona_facTable.FieldByName('code_bafac').AsInteger;
+
           if  (MainForm.Bona_facTable.FieldByName('valider_bafac').AsBoolean = false)  then
          begin
           MainForm.FournisseurTable.DisableControls;
@@ -365,7 +371,10 @@ begin
           MainForm.Bona_facTable.FieldByName('montver_bafac').AsCurrency:=StrToCurr(StringReplace(BonFacARegleLbl.Caption, #32, '', [rfReplaceAll]));
           MainForm.Bona_facTable.FieldByName('montttc_bafac').AsCurrency:=StrToCurr(StringReplace(BonFacATotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
 
+          if TimberBonFacAGEdt.Visible = True then
+          begin
           MainForm.Bona_facTable.FieldByName('timber_bafac').AsCurrency:=StrToCurr(StringReplace(TimberBonFacAGEdt.Text, #32, '', [rfReplaceAll]));
+          end;
 
           MainForm.Bona_facTable.Post;
           MainForm.Bona_facTable.EnableControls;
@@ -387,6 +396,12 @@ begin
           MainForm.CompteTable.SQL.Text:='Select * FROM compte' ;
           MainForm.CompteTable.Active:=True;
           MainForm.CompteTable.EnableControls;
+
+            //------- This is to delete data from tre and reg ih not valide----------------------------------------------
+            MainForm.GstockdcConnection.ExecSQL('DELETE FROM regfournisseur where code_bafac = ' + IntToStr(CodeFA));
+            MainForm.GstockdcConnection.ExecSQL('DELETE FROM opt_cas_bnk where code_bafac = ' + IntToStr(CodeFA));
+            MainForm.RegfournisseurTable.Refresh ;
+            MainForm.Opt_cas_bnk_CaisseTable.Refresh ;
 
          end;
 
@@ -684,7 +699,7 @@ begin
 
 // use this code to rest the old credit to the to the last time before he pay anything in that bon so you can aclculate again
   BonFacAGFourOLDCredit.Caption:=
-  CurrToStrF((((MainForm.FournisseurTable.FieldValues['oldcredit_f'])-(StringReplace(BonFacAResteLbl.Caption, #32, '', [rfReplaceAll])))),ffNumber,2);
+  CurrToStrF((((MainForm.FournisseurTable.FieldValues['credit_f'])-(StringReplace(BonFacAResteLbl.Caption, #32, '', [rfReplaceAll])))),ffNumber,2);
 
   BonFacARegleLbl.Caption:=FloatToStrF(0,ffNumber,14,2) ;
   BonFacAResteLbl.Caption:= BonFacATotalTTCLbl.Caption;
@@ -700,20 +715,21 @@ begin
  //----------------------------------------
 
       begin
+           MainForm.ProduitTable.DisableControls;
            MainForm.ProduitTable.Active:=False;
            MainForm.ProduitTable.SQL.Clear;
            MainForm.ProduitTable.SQL.Text:='SELECT * FROM produit ' ;
            MainForm.ProduitTable.Active:=True;
            Mainform.Sqlquery.Active:=False;
            Mainform.Sqlquery.Sql.Clear;
-           Mainform.Sqlquery.Sql.Text:='SELECT code_bafacl,code_p,  qut_p, cond_p , prixht_p FROM bona_fac_list WHERE code_bafac =  '
+           Mainform.Sqlquery.Sql.Text:='SELECT code_bafacl,code_p,  qut_p, cond_p  FROM bona_fac_list WHERE code_bafac =  '
                                                  + IntToStr (MainForm.Bona_facTable.FieldValues['code_bafac'])
-                                                 + 'GROUP BY code_bafacl, code_p, qut_p, cond_p,prixht_p ' ;
+                                                 + 'GROUP BY code_bafacl, code_p, qut_p, cond_p ' ;
            MainForm.SQLQuery.Active:=True;
            MainForm.SQLQuery.First;
            while  NOT (MainForm.SQLQuery.Eof) do
            begin
-            MainForm.ProduitTable.DisableControls;
+
             MainForm.ProduitTable.Active:=False;
             MainForm.ProduitTable.SQL.Clear;
             MainForm.ProduitTable.SQL.Text:='SELECT * FROM produit WHERE code_p = ' +QuotedStr(MainForm.SQLQuery.FieldValues['code_p']) ;
@@ -721,7 +737,8 @@ begin
             MainForm.ProduitTable.Edit;
             MainForm.ProduitTable.FieldValues['qut_p']:= ( MainForm.ProduitTable.FieldValues['qut_p']
                                                          - ((MainForm.SQLQuery.FieldValues['qut_p']) * ((MainForm.SQLQuery.FieldValues['cond_p']))));
-            MainForm.ProduitTable.FieldValues['prixht_p']:= MainForm.SQLQuery.FieldValues['prixht_p'];
+//            MainForm.ProduitTable.FieldValues['prixht_p']:= MainForm.SQLQuery.FieldValues['prixht_p'];
+//            MainForm.ProduitTable.FieldValues['tva_p']:= MainForm.SQLQuery.FieldValues['tva_p'];
             MainForm.ProduitTable.Post;
             MainForm.SQLQuery.Next;
            end;
@@ -816,20 +833,21 @@ begin
 
 //--- this is for adding to the priduit
       begin
+           MainForm.ProduitTable.DisableControls;
            MainForm.ProduitTable.Active:=False;
            MainForm.ProduitTable.SQL.Clear;
            MainForm.ProduitTable.SQL.Text:='SELECT * FROM produit ' ;
            MainForm.ProduitTable.Active:=True;
            Mainform.Sqlquery.Active:=False;
            Mainform.Sqlquery.Sql.Clear;
-           Mainform.Sqlquery.Sql.Text:='SELECT code_bafacl,code_p,  qut_p, cond_p , prixht_p FROM bona_fac_list WHERE code_bafac =  '
+           Mainform.Sqlquery.Sql.Text:='SELECT code_bafacl,code_p,  qut_p, cond_p , prixht_p,tva_p FROM bona_fac_list WHERE code_bafac =  '
                                                  + IntToStr (MainForm.Bona_facTable.FieldValues['code_bafac'])
-                                                 + 'GROUP BY code_bafacl, code_p, qut_p, cond_p,prixht_p ' ;
+                                                 + 'GROUP BY code_bafacl, code_p, qut_p, cond_p,prixht_p,tva_p ' ;
            MainForm.SQLQuery.Active:=True;
            MainForm.SQLQuery.First;
            while  NOT (MainForm.SQLQuery.Eof) do
            begin
-            MainForm.ProduitTable.DisableControls;
+//            MainForm.ProduitTable.DisableControls;
             MainForm.ProduitTable.Active:=False;
             MainForm.ProduitTable.SQL.Clear;
             MainForm.ProduitTable.SQL.Text:='SELECT * FROM produit WHERE code_p = ' +QuotedStr(MainForm.SQLQuery.FieldValues['code_p']) ;
@@ -838,12 +856,12 @@ begin
             MainForm.ProduitTable.FieldValues['qut_p']:= ( MainForm.ProduitTable.FieldValues['qut_p']
                                                          + ((MainForm.SQLQuery.FieldValues['qut_p']) * ((MainForm.SQLQuery.FieldValues['cond_p']))));
             MainForm.ProduitTable.FieldValues['prixht_p']:= MainForm.SQLQuery.FieldValues['prixht_p'];
-
+            MainForm.ProduitTable.FieldValues['tva_p']:= MainForm.SQLQuery.FieldValues['tva_p'];
             MainForm.ProduitTable.Post;
             MainForm.SQLQuery.Next;
            end;
 
-            MainForm.ProduitTable.Active:=False;
+           MainForm.ProduitTable.Active:=False;
            MainForm.ProduitTable.SQL.Clear;
            MainForm.ProduitTable.SQL.Text:='SELECT * FROM produit ' ;
            MainForm.ProduitTable.Active:=True;
@@ -911,6 +929,10 @@ begin
           begin
            MainForm.Bona_facTable.FieldValues['code_mdpai']:=3 ;
           end;
+          if (LowerCase(ModePaieBonFacAGCbx.Text)='virement' ) then
+          begin
+           MainForm.Bona_facTable.FieldValues['code_mdpai']:=4 ;
+          end;
 
           MainForm.Bona_facTable.Post;
 
@@ -959,6 +981,10 @@ begin
                OR (LowerCase(ModePaieBonFacAGCbx.Text)='À terme' ) then
             begin
              MainForm.RegfournisseurTable.FieldValues['code_mdpai']:=3 ;
+            end;
+            if (LowerCase(ModePaieBonFacAGCbx.Text)='virement' ) then
+            begin
+             MainForm.RegfournisseurTable.FieldValues['code_mdpai']:=4 ;
             end;
 
             MainForm.RegfournisseurTable.Post;
@@ -1053,6 +1079,10 @@ begin
                       begin
                        MainForm.RegfournisseurTable.FieldValues['code_mdpai']:=3 ;
                       end;
+                      if (LowerCase(ModePaieBonFacAGCbx.Text)='virement' ) then
+                      begin
+                       MainForm.RegfournisseurTable.FieldValues['code_mdpai']:=4 ;
+                      end;
 
                       MainForm.RegfournisseurTable.Post;
                       MainForm.RegfournisseurTable.Refresh;
@@ -1118,6 +1148,10 @@ begin
                     begin
                      MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=3 ;
                     end;
+                    if (LowerCase(ModePaieBonFacAGCbx.Text)='virement' ) then
+                    begin
+                     MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=4 ;
+                    end;
 
                     MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_cmpt']:=MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
                     MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nature_ocb']:= MainForm.CompteTable.FieldByName('nature_cmpt').AsBoolean;
@@ -1166,6 +1200,10 @@ begin
                              OR (LowerCase(ModePaieBonFacAGCbx.Text)='À terme' ) then
                           begin
                            MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=3 ;
+                          end;
+                          if (LowerCase(ModePaieBonFacAGCbx.Text)='virement' ) then
+                          begin
+                           MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=4 ;
                           end;
 
                           MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_cmpt']:=MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
@@ -1216,6 +1254,10 @@ begin
                                 begin
                                  MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=3 ;
                                 end;
+                                if (LowerCase(ModePaieBonFacAGCbx.Text)='virement' ) then
+                                begin
+                                 MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=4 ;
+                                end;
 
                                 MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_cmpt']:=MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
                                 MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nature_ocb']:= MainForm.CompteTable.FieldByName('nature_cmpt').AsBoolean;
@@ -1232,11 +1274,7 @@ begin
                               MainForm.Opt_cas_bnk_CaisseTable.SQL.Text:='SELECT * FROM opt_cas_bnk where nature_ocb = false' ;
                               MainForm.Opt_cas_bnk_CaisseTable.Active:=True;
 
-
-
-
                             end;
-
 
                         MainForm.Opt_cas_bnk_CaisseTable.Active:=false;
                         MainForm.Opt_cas_bnk_CaisseTable.SQL.Clear;
@@ -1451,7 +1489,7 @@ begin
         TimberPerctageBonFacAGLbl.Visible:= False;
         TimberBonFacAGlbl.Visible:= False;
       end;
-  // MainForm.Bona_fac_listTable.Refresh;
+   MainForm.Bona_fac_listTable.Refresh;
 end;
 
 procedure TBonFacAGestionF.ModePaieBonFacAGCbxClick(Sender: TObject);
@@ -1539,8 +1577,9 @@ I : Integer;
   begin
   Cursor := crDefault;
 //  PostMessage((Sender as TComboBox).Handle, CB_SHOWDROPDOWN, 1, 0);
-      ProduitBonFacAGCbx.Refresh;
+//      ProduitBonFacAGCbx.Refresh;
       ProduitBonFacAGCbx.Items.Clear;
+      MainForm.ProduitTable.DisableControls;
       MainForm.ProduitTable.Active:=False;
       MainForm.ProduitTable.SQL.Clear;
       MainForm.ProduitTable.SQL.Text:= 'SELECT * FROM produit ';
@@ -1572,6 +1611,8 @@ I : Integer;
        MainForm.ProduitTable.Next;
       end;
      end;
+
+     MainForm.ProduitTable.EnableControls;
 end;
 
 procedure TBonFacAGestionF.ProduitBonFacAGCbxExit(Sender: TObject);
@@ -1869,8 +1910,8 @@ if key = #13 then
              MainForm.Bona_fac_listTable.FieldValues['qut_p'] :=  01;
              MainForm.Bona_fac_listTable.FieldValues['prixht_p']:= MainForm.ProduitTable.FieldValues['prixht_p'];
              MainForm.Bona_fac_listTable.FieldValues['cond_p']:= 01;
-             MainForm.Bona_fac_listTable.Post ;
              MainForm.Bona_fac_listTable.FieldValues['tva_p']:= MainForm.ProduitTable.FieldValues['tva_p'];
+             MainForm.Bona_fac_listTable.Post ;
              MainForm.Bona_fac_listTable.IndexFieldNames:='code_bafac';
 
              MainForm.Bona_fac_listTable.Active:=False;
@@ -2669,6 +2710,16 @@ frxPDFExport1.FileName := 'Facture D''achat N° '
 frxPDFExport1.EmbeddedFonts:=True;
 
 BonFacAPListfrxRprt.Export(frxPDFExport1);
+end;
+
+procedure TBonFacAGestionF.ProduitsListDBGridEhCellClick(Column: TColumnEh);
+begin
+  Refresh_PreservePosition;
+end;
+
+procedure TBonFacAGestionF.ProduitsListDBGridEhExit(Sender: TObject);
+begin
+  Refresh_PreservePosition;
 end;
 
 end.

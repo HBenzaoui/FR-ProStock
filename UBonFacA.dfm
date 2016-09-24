@@ -476,7 +476,8 @@ object BonFacAF: TBonFacAF
         KeyList.Strings = (
           '1'
           '2'
-          '3')
+          '3'
+          '4')
         Layout = tlCenter
         ReadOnly = True
         Title.Alignment = taCenter

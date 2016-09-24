@@ -40,7 +40,7 @@ var
 
 implementation
 
-uses  Winapi.MMSystem,
+uses  Winapi.MMSystem, Threading,
   UMainF, USplashAddUnite, USplash;
 
 {$R *.dfm}
@@ -95,7 +95,10 @@ begin
   FSplashAddUnite.Image1.ImageIndex:=7;
   FSplashAddUnite.NameAddUniteSErrorP.Left:= (FSplashAddUnite.NameAddUniteSEdt.Left) - 1;
 
-  AnimateWindow(FSplashAddUnite.Handle, 175, AW_VER_POSITIVE OR AW_SLIDE OR AW_ACTIVATE );
+//      TTask.Run ( procedure
+//       begin
+          AnimateWindow(FSplashAddUnite.Handle, 175, AW_VER_POSITIVE OR AW_SLIDE OR AW_ACTIVATE );
+//       end);
   FSplashAddUnite.Show;
   FSplashAddUnite.NameAddUniteSEdt.SetFocus;
   FSplashAddUnite.OKAddUniteSBtn.Tag:= 0 ;
@@ -145,21 +148,27 @@ begin
      begin
      MainForm.FamproduitTable.Delete;
 
-          FSplash := TFSplash.Create(FamPListF);
-          try
-            FSplash.Left := Screen.Width div 2 - (FSplash.Width div 2);
-            FSplash.Top := 0;
 
-            FSplash.Label1.Caption:='  Suppression avec succés';
-            FSplash.Color:= $004735F9;
-            AnimateWindow(FSplash.Handle, 150, AW_VER_POSITIVE OR AW_SLIDE OR AW_ACTIVATE);
-            sleep(250);
-            AnimateWindow(FSplash.Handle, 150, AW_VER_NEGATIVE OR
-              AW_SLIDE OR AW_HIDE);
-          finally
-            FSplash.free;
+    TTask.Run ( procedure
+            begin
 
-          end;
+            FSplash := TFSplash.Create(FamPListF);
+            try
+              FSplash.Left := Screen.Width div 2 - (FSplash.Width div 2);
+              FSplash.Top := 0;
+
+              FSplash.Label1.Caption:='  Suppression avec succés';
+              FSplash.Color:= $004735F9;
+              AnimateWindow(FSplash.Handle, 150, AW_VER_POSITIVE OR AW_SLIDE OR AW_ACTIVATE);
+              sleep(250);
+              AnimateWindow(FSplash.Handle, 150, AW_VER_NEGATIVE OR
+                AW_SLIDE OR AW_HIDE);
+            finally
+              FSplash.free;
+
+            end;
+          end);
+
       sndPlaySound('C:\Windows\Media\speech off.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
    end;
 

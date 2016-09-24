@@ -109,41 +109,41 @@ begin
 
           if ResherchBFAFourRdioBtn.Checked then
           begin
-          MainForm.Bona_FacTable.DisableControls;
-          MainForm.Bona_FacTable.Active:=False;
-          MainForm.Bona_FacTable.SQL.Clear;
-          MainForm.Bona_FacTable.SQL.Text:='SELECT * FROM bona_fac WHERE code_f IN( SELECT code_f FROM client WHERE LOWER(nom_f) LIKE LOWER' +'('''+'%'+(ResearchBAFacEdt.Text)+'%'+''')' +')';
-          MainForm.Bona_FacTable.Active:=True;
-          MainForm.Bona_FacTable.EnableControls;
+            MainForm.Bona_FacTable.DisableControls;
+            MainForm.Bona_FacTable.Active:=False;
+            MainForm.Bona_FacTable.SQL.Clear;
+            MainForm.Bona_FacTable.SQL.Text:='SELECT * FROM bona_fac WHERE code_f IN( SELECT code_f FROM client WHERE LOWER(nom_f) LIKE LOWER' +'('''+'%'+(ResearchBAFacEdt.Text)+'%'+''')' +')';
+            MainForm.Bona_FacTable.Active:=True;
+            MainForm.Bona_FacTable.EnableControls;
 
           end;
 
           if ResherchBFANumBRdioBtn.Checked then
           begin
-          MainForm.Bona_FacTable.DisableControls;
-          MainForm.Bona_FacTable.Active:=False;
-          MainForm.Bona_FacTable.SQL.Clear;
-          MainForm.Bona_FacTable.SQL.Text:='SELECT * FROM bona_fac WHERE LOWER(num_bafac) LIKE LOWER' +'('''+'%'+(ResearchBAFacEdt.Text)+'%'+''')' ;
-          MainForm.Bona_FacTable.Active:=True;
-          MainForm.Bona_FacTable.EnableControls;
+            MainForm.Bona_FacTable.DisableControls;
+            MainForm.Bona_FacTable.Active:=False;
+            MainForm.Bona_FacTable.SQL.Clear;
+            MainForm.Bona_FacTable.SQL.Text:='SELECT * FROM bona_fac WHERE LOWER(num_bafac) LIKE LOWER' +'('''+'%'+(ResearchBAFacEdt.Text)+'%'+''')' ;
+            MainForm.Bona_FacTable.Active:=True;
+            MainForm.Bona_FacTable.EnableControls;
           end;
 
 
     end else
      begin
-          MainForm.FournisseurTable.DisableControls;
-          MainForm.FournisseurTable.Active:=False;
-          MainForm.FournisseurTable.SQL.Clear;
-          MainForm.FournisseurTable.SQL.Text:='SELECT * FROM fournisseur ' ;
-          MainForm.FournisseurTable.Active:=True;
-          MainForm.FournisseurTable.EnableControls;
+            MainForm.FournisseurTable.DisableControls;
+            MainForm.FournisseurTable.Active:=False;
+            MainForm.FournisseurTable.SQL.Clear;
+            MainForm.FournisseurTable.SQL.Text:='SELECT * FROM fournisseur ' ;
+            MainForm.FournisseurTable.Active:=True;
+            MainForm.FournisseurTable.EnableControls;
 
-          MainForm.Bona_FacTable.DisableControls;
-          MainForm.Bona_FacTable.Active:=False;
-          MainForm.Bona_FacTable.SQL.Clear;
-          MainForm.Bona_FacTable.SQL.Text:='SELECT * FROM bona_fac ' ;
-          MainForm.Bona_FacTable.Active:=True;
-          MainForm.Bona_FacTable.EnableControls;
+            MainForm.Bona_FacTable.DisableControls;
+            MainForm.Bona_FacTable.Active:=False;
+            MainForm.Bona_FacTable.SQL.Clear;
+            MainForm.Bona_FacTable.SQL.Text:='SELECT * FROM bona_fac ' ;
+            MainForm.Bona_FacTable.Active:=True;
+            MainForm.Bona_FacTable.EnableControls;
 
      end;
 end;

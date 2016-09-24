@@ -195,12 +195,17 @@ begin
       ModePaieRegCGCbxClick(Self) ;
       OKRegCGBtn.Enabled:= True;
       OKRegCGBtn.ImageIndex := 17;
+
+      ClientRegCGCbxExit(Sender);
+
      end else
          begin
 
           OKRegCGBtn.Enabled:= False;
           OKRegCGBtn.ImageIndex := 18;
          end;
+
+
 end;
 
 procedure TReglementCGestionF.ClientRegCGCbxKeyPress(Sender: TObject;
@@ -251,7 +256,7 @@ begin
 
   if ClientRegCGCbx.Text <> '' then
     begin
-     ClientRegCGCbxChange(Sender);
+//     ClientRegCGCbxChange(Sender);
       MainForm.ClientTable.DisableControls;
       MainForm.ClientTable.Active:=false;
       MainForm.ClientTable.SQL.Clear;

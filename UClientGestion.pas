@@ -260,33 +260,24 @@ end;
 
 procedure TClientGestionF.NameClientGEdtKeyPress(Sender: TObject;
   var Key: Char);
-
 begin
-
   // ---- close the form when i press Esc -----//
-
   if Key = #27 then
   begin
     Key := #0;
-
     Close;
-
   end;
-
   // ---- jump to the next edit when i press enter-----//
-
   if Key = #13 then
-
   begin
     Key := #0;
     SelectNext(ActiveControl as TWinControl, true, true);
-
   end;
 
 end;
 
 procedure TClientGestionF.OKClientGBtnClick(Sender: TObject);
-Var CodeC: Integer;
+Var CodeC,CodeCEdit: Integer;
 begin
 
   if NameClientGEdt.Text <> '' then
@@ -332,7 +323,7 @@ begin
           fieldbyname('rib_c').Value := RIBClientGEdt.Text;
           if OldCreditClientGEdt.Text <> '' then
           begin
-            fieldbyname('oldcredit_c').Value := Trim(OldCreditClientGEdt.Text);
+            fieldbyname('oldcredit_c').Value := StrToCurr(StringReplace(OldCreditClientGEdt.Text, #32, '', [rfReplaceAll]));
           end
           else
           begin
@@ -340,7 +331,7 @@ begin
           end;
           if MaxCreditClientGEdt.Text <> '' then
           begin
-            fieldbyname('maxcredit_c').Value := Trim(MaxCreditClientGEdt.Text);
+            fieldbyname('maxcredit_c').Value := StrToCurr(StringReplace(MaxCreditClientGEdt.Text, #32, '', [rfReplaceAll]));
           end
           else
           begin
@@ -351,16 +342,13 @@ begin
           post;
        end;
 
-
         MainForm.ClientTable.Refresh;
         MainForm.ClientTable.Last;
     end;
-
   // ------------// --- This TAG is for editing---//---------------------------------------------------
-
     if OKClientGBtn.Tag = 1 then
     begin
-
+        CodeCEdit:=MainForm.ClientTable.FieldByName('code_c').AsInteger;
         with MainForm.ClientTable do
         begin
           Edit;
@@ -385,7 +373,7 @@ begin
           fieldbyname('rib_c').Value := RIBClientGEdt.Text;
           if OldCreditClientGEdt.Text <> '' then
           begin
-            fieldbyname('oldcredit_c').Value := Trim(OldCreditClientGEdt.Text);
+            fieldbyname('oldcredit_c').Value := StrToCurr(StringReplace(OldCreditClientGEdt.Text, #32, '', [rfReplaceAll]));
           end
           else
           begin
@@ -393,7 +381,7 @@ begin
           end;
           if MaxCreditClientGEdt.Text <> '' then
           begin
-            fieldbyname('maxcredit_c').Value := Trim(MaxCreditClientGEdt.Text);
+            fieldbyname('maxcredit_c').Value := StrToCurr(StringReplace(MaxCreditClientGEdt.Text, #32, '', [rfReplaceAll]));
           end
           else
           begin
@@ -406,7 +394,7 @@ begin
     end;
 
   // --------------- adding from the bon_liv  panel----
-         if OKClientGBtn.Tag = 3 then
+    if OKClientGBtn.Tag = 3 then
     begin
       with MainForm.ClientTable do
       begin
@@ -685,6 +673,8 @@ begin
 
      MainForm.ClientTable.EnableControls;
 
+      MainForm.ClientTable.Locate('code_c',CodeCEdit,[]) ;
+
      end;
 
 
@@ -742,14 +732,16 @@ procedure TClientGestionF.VilleClientGCbxEnter(Sender: TObject);
 Var I,CodeW: Integer;
 
 begin
-       MainForm.WilayasTable.Active:=False;
+ if WilayaClientGCbx.Text <> '' then
+ begin
+      MainForm.WilayasTable.Active:=False;
       MainForm.WilayasTable.SQL.Clear;
       MainForm.WilayasTable.SQL.Text:= 'SELECT * FROM wilayas WHERE LOWER(nom_w) LIKE LOWER('+QuotedStr(WilayaClientGCbx.Text)+')' ;
       MainForm.WilayasTable.Active := True;
 
  CodeW:=MainForm.WilayasTable.FieldValues['code_w'];
 
-       MainForm.CommunesTable.Active:=False;
+      MainForm.CommunesTable.Active:=False;
       MainForm.CommunesTable.SQL.Clear;
       MainForm.CommunesTable.SQL.Text:= 'SELECT * FROM communes WHERE code_w ='+ IntToStr(CodeW);
       MainForm.CommunesTable.Active := True;
@@ -760,18 +752,21 @@ begin
       MainForm.CommunesTable.first;
      begin
 
-     for I := 0 to MainForm.CommunesTable.RecordCount - 1 do
-     if ( MainForm.CommunesTable.FieldByName('nom_cumm').IsNull = False )  then
-     begin
-       VilleClientGCbx.Items.Add(MainForm.CommunesTable.FieldByName('nom_cumm').AsString);
-       MainForm.CommunesTable.Next;
-      end;
+       for I := 0 to MainForm.CommunesTable.RecordCount - 1 do
+       if ( MainForm.CommunesTable.FieldByName('nom_cumm').IsNull = False )  then
+       begin
+         VilleClientGCbx.Items.Add(MainForm.CommunesTable.FieldByName('nom_cumm').AsString);
+         MainForm.CommunesTable.Next;
+        end;
+
      end;
 
       MainForm.WilayasTable.Active:=False;
       MainForm.WilayasTable.SQL.Clear;
       MainForm.WilayasTable.SQL.Text:= 'SELECT * FROM wilayas ' ;
       MainForm.WilayasTable.Active := True;
+
+ end;
 
 end;
 
@@ -805,7 +800,7 @@ begin
      if key = #27 then
  begin
  key := #0;
-  Close;
+  CancelClientGBtnClick(Sender);
 
  end;
 end;

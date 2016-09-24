@@ -231,7 +231,7 @@ object FSplashVersement: TFSplashVersement
     StyleElements = [seClient, seBorder]
   end
   object RegleVersementSGLbl: TLabel
-    Left = 235
+    Left = 228
     Top = 228
     Width = 32
     Height = 14
@@ -328,10 +328,10 @@ object FSplashVersement: TFSplashVersement
     OnKeyPress = VerVersementSEdtKeyPress
   end
   object RegleVersementSGSlider: TsSlider
-    Left = 269
+    Left = 260
     Top = 226
-    Width = 31
-    Height = 18
+    Width = 42
+    Height = 16
     Anchors = [akLeft, akBottom]
     BevelOuter = bvNone
     BiDiMode = bdLeftToRight

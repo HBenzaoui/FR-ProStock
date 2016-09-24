@@ -173,6 +173,7 @@ begin
        MainForm.Bona_recPlistTable.FieldValues['qut_p'] :=  01;
        MainForm.Bona_recPlistTable.FieldValues['prixht_p']:= MainForm.ProduitTable.FieldValues['prixht_p'];
        MainForm.Bona_recPlistTable.FieldValues['cond_p']:= 01;
+       MainForm.Bona_recPlistTable.FieldValues['tva_p']:= MainForm.ProduitTable.FieldValues['tva_p'];
        MainForm.Bona_recPlistTable.Post ;
        MainForm.Bona_recPlistTable.IndexFieldNames:='code_barec';
 
@@ -286,6 +287,8 @@ begin
        MainForm.Bonv_liv_listTable.FieldValues['code_bvliv']:= MainForm.Bonv_livTable.FieldValues['code_bvliv'];
        MainForm.Bonv_liv_listTable.FieldValues['code_p']:=  MainForm.ProduitTable.FieldValues['code_p'] ;
        MainForm.Bonv_liv_listTable.FieldValues['qut_p'] :=  01;
+       MainForm.Bonv_liv_listTable.FieldValues['cond_p']:= 01;
+       MainForm.Bonv_liv_listTable.FieldValues['tva_p']:= MainForm.ProduitTable.FieldValues['tva_p'];
 
            if  NOT (MainForm.ClientTable.IsEmpty) AND (BonLivGestionF.ClientBonLivGCbx.Text<> '' ) then
            begin
@@ -314,7 +317,7 @@ begin
                  begin
                   MainForm.Bonv_liv_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixvd_p'];
                  end;
-       MainForm.Bonv_liv_listTable.FieldValues['cond_p']:= 01;
+
        MainForm.Bonv_liv_listTable.Post ;
        MainForm.Bonv_liv_listTable.IndexFieldNames:='code_bvliv';
 
@@ -433,6 +436,9 @@ begin
        MainForm.Bonv_fac_listTable.FieldValues['code_bvfac']:= MainForm.Bonv_facTable.FieldValues['code_bvfac'];
        MainForm.Bonv_fac_listTable.FieldValues['code_p']:=  MainForm.ProduitTable.FieldValues['code_p'] ;
        MainForm.Bonv_fac_listTable.FieldValues['qut_p'] :=  01;
+       MainForm.Bonv_fac_listTable.FieldValues['cond_p']:= 01;
+       MainForm.Bonv_fac_listTable.FieldValues['tva_p']:= MainForm.ProduitTable.FieldValues['tva_p'];
+
        if  NOT (MainForm.ClientTable.IsEmpty) AND (BonFacVGestionF.ClientBonFacVGCbx.Text<> '' ) then
        begin
          if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 0 then
@@ -459,7 +465,7 @@ begin
              begin
               MainForm.Bonv_fac_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixvd_p'];
              end;
-       MainForm.Bonv_fac_listTable.FieldValues['cond_p']:= 01;
+
        MainForm.Bonv_fac_listTable.Post ;
        MainForm.Bonv_fac_listTable.IndexFieldNames:='code_bvfac';
 
@@ -568,6 +574,7 @@ begin
        MainForm.Bona_fac_listTable.FieldValues['qut_p'] :=  01;
        MainForm.Bona_fac_listTable.FieldValues['prixht_p']:= MainForm.ProduitTable.FieldValues['prixht_p'];
        MainForm.Bona_fac_listTable.FieldValues['cond_p']:= 01;
+       MainForm.Bona_fac_listTable.FieldValues['tva_p']:= MainForm.ProduitTable.FieldValues['tva_p'];
        MainForm.Bona_fac_listTable.Post ;
        MainForm.Bona_fac_listTable.IndexFieldNames:='code_bafac';
 
@@ -642,8 +649,6 @@ begin
             MainForm.ProduitTable.Active:=True;
            end;
 
-
-
       if Not (MainForm.ProduitTable.IsEmpty) then
       begin
       CodeCB:= MainForm.ProduitTable.FieldByName('code_p').AsInteger ;
@@ -692,6 +697,8 @@ begin
        MainForm.Bonv_ctr_listTable.FieldValues['code_bvctr']:= MainForm.Bonv_ctrTable.FieldValues['code_bvctr'];
        MainForm.Bonv_ctr_listTable.FieldValues['code_p']:=  MainForm.ProduitTable.FieldValues['code_p'] ;
        MainForm.Bonv_ctr_listTable.FieldValues['qut_p'] :=  01;
+       MainForm.Bonv_ctr_listTable.FieldValues['cond_p']:= 01;
+       MainForm.Bonv_ctr_listTable.FieldValues['tva_p']:= MainForm.ProduitTable.FieldValues['tva_p'];
 
        if  NOT (MainForm.ClientTable.IsEmpty) AND (BonCtrGestionF.ClientBonCtrGCbx.Text<> '' ) then
            begin
@@ -720,7 +727,7 @@ begin
                  begin
                   MainForm.Bonv_ctr_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixvd_p'];
                  end;
-       MainForm.Bonv_ctr_listTable.FieldValues['cond_p']:= 01;
+
        MainForm.Bonv_ctr_listTable.Post ;
        MainForm.Bonv_ctr_listTable.IndexFieldNames:='code_bvctr';
 
@@ -1211,7 +1218,7 @@ begin
 
        //    MainForm.ProduitTable.Last ;
       //------ this is a executable SQL use it for quick delete code barres in the DB when we cancel
-      codeBR:= MainForm.Bona_recTable.FieldValues['code_barec'];
+      codeBR:= MainForm.Bona_recTable.FieldByName('code_barec').AsInteger;
       //----- this is to delte the old ciredit when we delte the bon rec
       if (MainForm.Bona_recTable.FieldByName('code_f').AsInteger <> 0) AND (MainForm.Bona_recTable.FieldByName('code_f').AsInteger <> null)  then
       begin

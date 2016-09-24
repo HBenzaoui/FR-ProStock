@@ -276,9 +276,7 @@ end;
 
 procedure TFournisseurListF.EditFournisseursBtnClick(Sender: TObject);
 begin
-
       //----------------- Show the splash screan for the produit familly to add new one---------//
-
      FournisseurGestionF:=TFournisseurGestionF.Create(FournisseurListF);
      FournisseurGestionF.FournisseurGPgControl.TabIndex:= 0;
      FournisseurGestionF.Left:=  ( Screen.Width div 2 ) - (FournisseurGestionF.Width div 2)    ;
@@ -286,17 +284,12 @@ begin
      FournisseurGestionF.Show;
      FournisseurGestionF.NameFournisseurGEdt.SetFocus;
      FournisseurGestionF.OKFournisseurGBtn.Tag:= 1 ;
-
     if not FournisseursListDBGridEh.DataSource.DataSet.IsEmpty then
-
      begin
      //----------------- SHOW THE DATA ON THE Fournisseur GESTION PANEL -----------------------------//
-
          with MainForm.FournisseurTable do begin
-
             FournisseurGestionF.ActiveFournisseurGSlider.SliderOn:=  FieldValues['activ_f'];
             FournisseurGestionF.NameFournisseurGEdt.Text:= fieldbyname('nom_f').Value;
-
             FournisseurGestionF.AdrFournisseurGEdt.Text:= fieldbyname('adr_f').Value;
             FournisseurGestionF.WilayaFournisseurGCbx.Text:= fieldbyname('willaya_f').Value;
             FournisseurGestionF.VilleFournisseurGCbx.Text:= fieldbyname('ville_f').Value;
@@ -318,7 +311,11 @@ begin
 
             FournisseurGestionF.ObserFournisseurGMem.Text:= fieldbyname('obser_f').Value;
 
+            //----- this is to move the coursour to the last  --------------------------------------------------------
+            FournisseurGestionF.NameFournisseurGEdt.SelStart :=  FournisseurGestionF.NameFournisseurGEdt.GetTextLen ;
+
            end ;
+
       end
   else  Exit
 end;

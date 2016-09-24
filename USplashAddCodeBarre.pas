@@ -37,6 +37,7 @@ type
       Shift: TShiftState);
     procedure CodeBarresDBGridEhKeyPress(Sender: TObject; var Key: Char);
     procedure OKAddUniteSBtnClick(Sender: TObject);
+    procedure FormKeyPress(Sender: TObject; var Key: Char);
   private
     { Private declarations }
   public
@@ -646,6 +647,17 @@ begin
 
  NormalForms;
   Destroy;
+end;
+
+procedure TFSplashAddCodeBarre.FormKeyPress(Sender: TObject; var Key: Char);
+begin
+ if key = #27 then
+ begin
+  key := #0;
+
+  OKAddUniteSBtnClick(Sender);
+
+ end;
 end;
 
 end.

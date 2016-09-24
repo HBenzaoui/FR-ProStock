@@ -690,6 +690,24 @@ type
     cmpt_ur: TCheckBox;
     unit_ur: TCheckBox;
     local_ur: TCheckBox;
+    Bona_recPlistTabletva_p: TSmallintField;
+    Bonv_liv_listTabletva_p: TSmallintField;
+    Bonv_ctr_listTabletva_p: TSmallintField;
+    Bonv_liv_listTableMarge: TCurrencyField;
+    Bonv_liv_listTableMontantAHT: TCurrencyField;
+    Bonv_liv_listTableprixht_p: TCurrencyField;
+    Bonv_fac_listTableMarge: TCurrencyField;
+    Bonv_fac_listTableMontantAHT: TCurrencyField;
+    Bonv_fac_listTableprixht_p: TCurrencyField;
+    Bonv_liv_listTableMargeM: TCurrencyField;
+    Bonv_fac_listTableMargeM: TCurrencyField;
+    Bonv_livTablemarge_bvliv: TCurrencyField;
+    Bonv_facTablemarge_bvfac: TCurrencyField;
+    Bonv_ctr_listTableMarge: TCurrencyField;
+    Bonv_ctr_listTableMontantAHT: TCurrencyField;
+    Bonv_ctr_listTableprixht_p: TCurrencyField;
+    Bonv_ctr_listTableMargeM: TCurrencyField;
+    Bonv_ctrTablemarge_bvctr: TCurrencyField;
     procedure ClientMainFBtnClick(Sender: TObject);
     procedure FourMainFBtnClick(Sender: TObject);
     procedure ProduitMainFBtnClick(Sender: TObject);
@@ -930,7 +948,6 @@ begin
 Screen.MenuFont.Height := 15;
 Screen.MenuFont.Color:= $0040332D ;
 
-
 FDPhysPgDriverLink1.VendorLib:= 'C:\Program Files (x86)\PostgreSQL\9.6\bin\libpq.dll' ; // Eable this is only for Debuggin
 
 //FDPhysPgDriverLink1.VendorLib:= GetCurrentDir+'\bin\libpq.dll' ;    // Eable this is only for releasing
@@ -1012,7 +1029,7 @@ end;
 procedure TMainForm.Bona_recPlistTableCalcFields(DataSet: TDataSet);
 begin
   Bona_recPlistTable.FieldValues['PrixATTC']:=
- (((Bona_recPlistTable.FieldValues['prixht_p'] * Bona_recPlistTable.FieldValues['tvap'])/100) + (Bona_recPlistTable.FieldValues['prixht_p'])) ;
+ (((Bona_recPlistTable.FieldValues['prixht_p'] * Bona_recPlistTable.FieldValues['tva_p'])/100) + (Bona_recPlistTable.FieldValues['prixht_p'])) ;
 
    Bona_recPlistTable.FieldValues['MontantHT']:=
  ((Bona_recPlistTable.FieldValues['prixht_p'] * Bona_recPlistTable.FieldValues['qut_p']) * (Bona_recPlistTable.FieldValues['cond_p']) ) ;
@@ -1090,7 +1107,7 @@ var TotalHT,TotalTVA,TVA,TotalTTC,LeReste,Regle: Currency;
         TotalHT:= TotalHT + (MainForm.Bona_recPlistTable.FieldValues['MontantHT'] );
         TotalTVA:= TotalTVA + MainForm.Bona_recPlistTable.FieldValues['MontantTVA'];
         TotalTTC:= TotalTTC + MainForm.Bona_recPlistTable.FieldValues['MontantTTC'];
-        TVA:=TVA + MainForm.Bona_recPlistTable.FieldValues['tvap'] ;
+        TVA:=TVA + MainForm.Bona_recPlistTable.FieldValues['tva_p'] ;
         LeReste:= TotalTTC - StrToCurr(StringReplace(BonRecGestionF.BonRecRegleLbl.Caption, #32, '', [rfReplaceAll]))  ;
         MainForm.Bona_recPlistTable.Next;
       end;
@@ -1273,7 +1290,7 @@ end;
 procedure TMainForm.Bonv_liv_listTableCalcFields(DataSet: TDataSet);
 begin
   Bonv_liv_listTable.FieldValues['PrixVTTC']:=
- (((Bonv_liv_listTable.FieldValues['prixvd_p'] * Bonv_liv_listTable.FieldValues['tvap'])/100) + (Bonv_liv_listTable.FieldValues['prixvd_p'])) ;
+ (((Bonv_liv_listTable.FieldValues['prixvd_p'] * Bonv_liv_listTable.FieldValues['tva_p'])/100) + (Bonv_liv_listTable.FieldValues['prixvd_p'])) ;
 
    Bonv_liv_listTable.FieldValues['MontantHT']:=
  ((Bonv_liv_listTable.FieldValues['prixvd_p'] * Bonv_liv_listTable.FieldValues['qut_p']) * (Bonv_liv_listTable.FieldValues['cond_p']) ) ;
@@ -1286,12 +1303,22 @@ begin
     Bonv_liv_listTable.FieldValues['MontantTVA']:=
  ((Bonv_liv_listTable.FieldValues['MontantTTC']) - (Bonv_liv_listTable.FieldValues['MontantHT'])) ;
 
+
+    Bonv_liv_listTable.FieldValues['MontantAHT']:=
+ ((Bonv_liv_listTable.FieldValues['prixht_p'] * Bonv_liv_listTable.FieldValues['qut_p']) * (Bonv_liv_listTable.FieldValues['cond_p']) ) ;
+
+     Bonv_liv_listTable.FieldValues['Marge']:=
+((((Bonv_liv_listTable.FieldValues['MontantHT']) - (Bonv_liv_listTable.FieldValues['MontantAHT'])) / (Bonv_liv_listTable.FieldValues['MontantAHT']) ) * 100) ;
+
+    Bonv_liv_listTable.FieldValues['MargeM']:=
+ ((Bonv_liv_listTable.FieldValues['MontantHT']) - (Bonv_liv_listTable.FieldValues['MontantAHT'])) ;
+
 end;
 
 procedure TMainForm.Bonv_liv_listTableAfterRefresh(DataSet: TDataSet);
-var TotalHT,TotalTVA,TVA,TotalTTC,LeReste,Regle: Currency;
+var TotalHT,TotalTVA,TVA,TotalTTC,LeReste,Regle,Marge: Currency;
   begin
-              if Assigned(BonLivGestionF) then
+       if Assigned(BonLivGestionF) then
        begin
 
       MainForm.Bonv_liv_listTable.DisableControls;
@@ -1302,7 +1329,8 @@ var TotalHT,TotalTVA,TVA,TotalTTC,LeReste,Regle: Currency;
         TotalHT:= TotalHT + (MainForm.Bonv_liv_listTable.FieldValues['MontantHT'] );
         TotalTVA:= TotalTVA + MainForm.Bonv_liv_listTable.FieldValues['MontantTVA'];
         TotalTTC:= TotalTTC + MainForm.Bonv_liv_listTable.FieldValues['MontantTTC'];
-        TVA:=TVA + MainForm.Bonv_liv_listTable.FieldValues['tvap'] ;
+        TVA:=TVA + MainForm.Bonv_liv_listTable.FieldValues['tva_p'] ;
+        Marge:=Marge + MainForm.Bonv_liv_listTable.FieldValues['MargeM'] ;
         LeReste:= TotalTTC - StrToCurr(StringReplace(BonLivGestionF.BonLivRegleLbl.Caption, #32, '', [rfReplaceAll]))  ;
         MainForm.Bonv_liv_listTable.Next;
       end;
@@ -1323,6 +1351,7 @@ var TotalHT,TotalTVA,TVA,TotalTTC,LeReste,Regle: Currency;
     BonLivGestionF.BonLTotalTTCNewLbl.Caption :=  CurrToStrF(((TotalTTC)),ffNumber,2) ;
     BonLivGestionF.BonLTotalHTNewLbl.Caption :=   CurrToStrF(((TotalHT)),ffNumber,2) ;
     BonLivGestionF.TotalTVANewLbl.Caption :=      CurrToStrF(((TotalTVA)),ffNumber,2) ;
+    BonLivGestionF.BonLivTotalMargeLbl.Caption := CurrToStrF(((Marge)),ffNumber,2) ;
 
     if MainForm.Bonv_livTable.FieldValues['montver_bvliv']<> Null then
     begin
@@ -1381,7 +1410,7 @@ begin
 end;
 
 procedure TMainForm.Bonv_fac_listTableAfterRefresh(DataSet: TDataSet);
-var TotalHT,TotalTVA,TVA,TotalTTC,LeReste,Regle,TTCbeforeTimber,TimberFV,TTCafterTimber: Currency;
+var TotalHT,TotalTVA,TVA,TotalTTC,LeReste,Regle,TTCbeforeTimber,TimberFV,TTCafterTimber,Marge: Currency;
   begin
       if Assigned(BonFacVGestionF) then
        begin
@@ -1394,7 +1423,8 @@ var TotalHT,TotalTVA,TVA,TotalTTC,LeReste,Regle,TTCbeforeTimber,TimberFV,TTCafte
         TotalHT:= TotalHT + (MainForm.Bonv_fac_listTable.FieldValues['MontantHT'] );
         TotalTVA:= TotalTVA + MainForm.Bonv_fac_listTable.FieldValues['MontantTVA'];
         TotalTTC:= TotalTTC + MainForm.Bonv_fac_listTable.FieldValues['MontantTTC'];
-        TVA:=TVA + MainForm.Bonv_fac_listTable.FieldValues['tvap'] ;
+        TVA:=TVA + MainForm.Bonv_fac_listTable.FieldValues['tva_p'] ;
+        Marge:=Marge + MainForm.Bonv_fac_listTable.FieldValues['MargeM'] ;
         LeReste:= TotalTTC - StrToCurr(StringReplace(BonFacVGestionF.BonFacVRegleLbl.Caption, #32, '', [rfReplaceAll]))  ;
         MainForm.Bonv_fac_listTable.Next;
       end;
@@ -1414,6 +1444,7 @@ var TotalHT,TotalTVA,TVA,TotalTTC,LeReste,Regle,TTCbeforeTimber,TimberFV,TTCafte
     BonFacVGestionF.BonFVTotalTTCNewLbl.Caption :=  CurrToStrF(((TotalTTC)),ffNumber,2) ;
     BonFacVGestionF.BonFVTotalHTNewLbl.Caption :=   CurrToStrF(((TotalHT)),ffNumber,2) ;
     BonFacVGestionF.TotalTVANewLbl.Caption :=      CurrToStrF(((TotalTVA)),ffNumber,2) ;
+    BonFacVGestionF.BonFacVTotalMargeLbl.Caption :=    CurrToStrF((Marge),ffNumber,2) ;
 
     if MainForm.Bonv_facTable.FieldValues['montver_bvfac']<> Null then
     begin
@@ -1458,7 +1489,7 @@ procedure TMainForm.Bonv_fac_listTableCalcFields(DataSet: TDataSet);
 begin
 
   Bonv_Fac_listTable.FieldValues['PrixVTTC']:=
- (((Bonv_Fac_listTable.FieldValues['prixvd_p'] * Bonv_Fac_listTable.FieldValues['tvap'])/100) + (Bonv_Fac_listTable.FieldValues['prixvd_p'])) ;
+ (((Bonv_Fac_listTable.FieldValues['prixvd_p'] * Bonv_Fac_listTable.FieldValues['tva_p'])/100) + (Bonv_Fac_listTable.FieldValues['prixvd_p'])) ;
 
    Bonv_Fac_listTable.FieldValues['MontantHT']:=
  ((Bonv_Fac_listTable.FieldValues['prixvd_p'] * Bonv_Fac_listTable.FieldValues['qut_p']) * (Bonv_Fac_listTable.FieldValues['cond_p']) ) ;
@@ -1471,6 +1502,14 @@ begin
     Bonv_Fac_listTable.FieldValues['MontantTVA']:=
  ((Bonv_Fac_listTable.FieldValues['MontantTTC']) - (Bonv_Fac_listTable.FieldValues['MontantHT'])) ;
 
+     Bonv_Fac_listTable.FieldValues['MontantAHT']:=
+ ((Bonv_Fac_listTable.FieldValues['prixht_p'] * Bonv_Fac_listTable.FieldValues['qut_p']) * (Bonv_Fac_listTable.FieldValues['cond_p']) ) ;
+
+     Bonv_Fac_listTable.FieldValues['Marge']:=
+((((Bonv_Fac_listTable.FieldValues['MontantHT']) - (Bonv_Fac_listTable.FieldValues['MontantAHT'])) / (Bonv_Fac_listTable.FieldValues['MontantAHT']) ) * 100) ;
+
+    Bonv_Fac_listTable.FieldValues['MargeM']:=
+ ((Bonv_Fac_listTable.FieldValues['MontantHT']) - (Bonv_Fac_listTable.FieldValues['MontantAHT'])) ;
 end;
 
 procedure TMainForm.Bonv_facTableCreditCalcFields(DataSet: TDataSet);
@@ -1550,7 +1589,7 @@ var TotalHT,TotalTVA,TVA,TotalTTC,LeReste,Regle,TTCbeforeTimber,TimberFA,TTCafte
         TotalHT:= TotalHT + (MainForm.Bona_fac_listTable.FieldValues['MontantHT'] );
         TotalTVA:= TotalTVA + MainForm.Bona_fac_listTable.FieldValues['MontantTVA'];
         TotalTTC:= TotalTTC + MainForm.Bona_fac_listTable.FieldValues['MontantTTC'];
-        TVA:=TVA + MainForm.Bona_fac_listTable.FieldValues['tvap'] ;
+        TVA:=TVA + MainForm.Bona_fac_listTable.FieldValues['tva_p'] ;
         LeReste:= TotalTTC - StrToCurr(StringReplace(BonFacAGestionF.BonFacARegleLbl.Caption, #32, '', [rfReplaceAll]))  ;
         MainForm.Bona_fac_listTable.Next;
       end;
@@ -1612,7 +1651,7 @@ end;
 procedure TMainForm.Bona_fac_listTableCalcFields(DataSet: TDataSet);
 begin
   Bona_fac_listTable.FieldValues['PrixVTTC']:=
- (((Bona_fac_listTable.FieldValues['prixht_p'] * Bona_fac_listTable.FieldValues['tvap'])/100) + (Bona_fac_listTable.FieldValues['prixht_p'])) ;
+ (((Bona_fac_listTable.FieldValues['prixht_p'] * Bona_fac_listTable.FieldValues['tva_p'])/100) + (Bona_fac_listTable.FieldValues['prixht_p'])) ;
 
    Bona_fac_listTable.FieldValues['MontantHT']:=
  ((Bona_fac_listTable.FieldValues['prixht_p'] * Bona_fac_listTable.FieldValues['qut_p']) * (Bona_fac_listTable.FieldValues['cond_p']) ) ;
@@ -1775,7 +1814,7 @@ begin
 end;
 
 procedure TMainForm.Bonv_ctr_listTableAfterRefresh(DataSet: TDataSet);
-var TotalHT,TotalTVA,TVA,TotalTTC,LeRendu,Regle: Currency;
+var TotalHT,TotalTVA,TVA,TotalTTC,LeRendu,Regle,Marge: Currency;
   begin
    if Assigned(BonCtrGestionF) then
   begin
@@ -1788,7 +1827,8 @@ var TotalHT,TotalTVA,TVA,TotalTTC,LeRendu,Regle: Currency;
         TotalHT:= TotalHT + (MainForm.Bonv_ctr_listTable.FieldValues['MontantHT'] );
         TotalTVA:= TotalTVA + MainForm.Bonv_ctr_listTable.FieldValues['MontantTVA'];
         TotalTTC:= TotalTTC + MainForm.Bonv_ctr_listTable.FieldValues['MontantTTC'];
-        TVA:=TVA + MainForm.Bonv_ctr_listTable.FieldValues['tvap'] ;
+        TVA:=TVA + MainForm.Bonv_ctr_listTable.FieldValues['tva_p'] ;
+         Marge:=Marge + MainForm.Bonv_ctr_listTable.FieldValues['MargeM'] ;
         LeRendu:=  (StrToCurr(StringReplace(BonCtrGestionF.BonCtrRegleLbl.Caption, #32, '', [rfReplaceAll]))) - TotalTTC  ;
         MainForm.Bonv_ctr_listTable.Next;
       end;
@@ -1815,9 +1855,10 @@ var TotalHT,TotalTVA,TVA,TotalTTC,LeRendu,Regle: Currency;
     end;
 
 
-    BonCtrGestionF.BonCTotalTTCNewLbl.Caption :=  CurrToStrF(((TotalTTC)),ffNumber,2) ;
+   BonCtrGestionF.BonCTotalTTCNewLbl.Caption :=  CurrToStrF(((TotalTTC)),ffNumber,2) ;
    BonCtrGestionF.BonCTotalHTNewLbl.Caption :=   CurrToStrF(((TotalHT)),ffNumber,2) ;
    BonCtrGestionF.TotalTVANewLbl.Caption :=      CurrToStrF(((TotalTVA)),ffNumber,2) ;
+   BonCtrGestionF.BonCTRTotalMargeLbl.Caption :=  CurrToStrF(((Marge)),ffNumber,2) ;
 
     if MainForm.Bonv_ctrTable.FieldValues['montver_bvctr']<> Null then
     begin
@@ -1841,7 +1882,7 @@ end;
 procedure TMainForm.Bonv_ctr_listTableCalcFields(DataSet: TDataSet);
 begin
   Bonv_ctr_listTable.FieldValues['PrixVTTC']:=
- (((Bonv_ctr_listTable.FieldValues['prixvd_p'] * Bonv_ctr_listTable.FieldValues['tvap'])/100) + (Bonv_ctr_listTable.FieldValues['prixvd_p'])) ;
+ (((Bonv_ctr_listTable.FieldValues['prixvd_p'] * Bonv_ctr_listTable.FieldValues['tva_p'])/100) + (Bonv_ctr_listTable.FieldValues['prixvd_p'])) ;
 
    Bonv_ctr_listTable.FieldValues['MontantHT']:=
  ((Bonv_ctr_listTable.FieldValues['prixvd_p'] * Bonv_ctr_listTable.FieldValues['qut_p']) * (Bonv_ctr_listTable.FieldValues['cond_p']) ) ;
@@ -1853,6 +1894,15 @@ begin
 
     Bonv_ctr_listTable.FieldValues['MontantTVA']:=
  ((Bonv_ctr_listTable.FieldValues['MontantTTC']) - (Bonv_ctr_listTable.FieldValues['MontantHT'])) ;
+
+      Bonv_ctr_listTable.FieldValues['MontantAHT']:=
+ ((Bonv_ctr_listTable.FieldValues['prixht_p'] * Bonv_ctr_listTable.FieldValues['qut_p']) * (Bonv_ctr_listTable.FieldValues['cond_p']) ) ;
+
+     Bonv_ctr_listTable.FieldValues['Marge']:=
+((((Bonv_ctr_listTable.FieldValues['MontantHT']) - (Bonv_ctr_listTable.FieldValues['MontantAHT'])) / (Bonv_ctr_listTable.FieldValues['MontantAHT']) ) * 100) ;
+
+    Bonv_ctr_listTable.FieldValues['MargeM']:=
+ ((Bonv_ctr_listTable.FieldValues['MontantHT']) - (Bonv_ctr_listTable.FieldValues['MontantAHT'])) ;
 end;
 
 procedure TMainForm.FormShow(Sender: TObject);

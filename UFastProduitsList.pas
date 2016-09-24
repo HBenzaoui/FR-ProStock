@@ -225,6 +225,7 @@ begin
   GrayForms  ;
  MainForm.ProduitTable.Refresh;
  ProduitsListDBGridEh.Refresh;
+
 end;
 
 procedure TFastProduitsListF.FormClose(Sender: TObject;
@@ -244,8 +245,6 @@ begin
 
  end;
 end;
-
-
 
 procedure TFastProduitsListF.OKProduitGBtnClick(Sender: TObject);
 var CodeBR,i,CodeP : Integer;
@@ -296,6 +295,7 @@ begin
              MainForm.Bona_recPlistTable.FieldValues['code_p']:=  MainForm.ProduitTable.FieldValues['code_p'] ;
              MainForm.Bona_recPlistTable.FieldValues['qut_p'] :=  01;
              MainForm.Bona_recPlistTable.FieldValues['prixht_p']:= MainForm.ProduitTable.FieldValues['prixht_p'];
+             MainForm.Bona_recPlistTable.FieldValues['tva_p']:= MainForm.ProduitTable.FieldValues['tva_p'];
              MainForm.Bona_recPlistTable.FieldValues['cond_p']:=  01;
              MainForm.Bona_recPlistTable.Post ;
 
@@ -350,6 +350,8 @@ begin
                 FSplashAddUnite.Tag:=1;
              end;
 
+           MainForm.Bona_recPlistTable.Refresh;
+
     end else
 
     if (OKproduitGBtn.Tag = 1) AND (FastProduitsListF.Tag = 0) then
@@ -386,6 +388,7 @@ begin
              MainForm.Bona_recPlistTable.FieldValues['qut_p'] :=  01;
              MainForm.Bona_recPlistTable.FieldValues['prixht_p']:= MainForm.ProduitTable.FieldValues['prixht_p'];
              MainForm.Bona_recPlistTable.FieldValues['cond_p']:= 01;
+             MainForm.Bona_recPlistTable.FieldValues['tva_p']:= MainForm.ProduitTable.FieldValues['tva_p'];
              MainForm.Bona_recPlistTable.Post ;
            MainForm.Bona_recPlistTable.IndexFieldNames:='code_barec';
            MainForm.Bona_recPlistTable.Last;
@@ -443,6 +446,9 @@ begin
     //--- this tage = 0 is for multi name added by fastproduit----//
           FSplashAddUnite.Tag:=1;
        end;
+
+
+       MainForm.Bona_recPlistTable.Refresh;
     end
      else
 
@@ -509,6 +515,9 @@ begin
              MainForm.Bonv_liv_listTable.FieldValues['code_bvliv']:= MainForm.Bonv_livTable.FieldValues['code_bvliv'];
              MainForm.Bonv_liv_listTable.FieldValues['code_p']:=  MainForm.ProduitTable.FieldValues['code_p'] ;
              MainForm.Bonv_liv_listTable.FieldValues['qut_p'] :=  01;
+             MainForm.Bonv_liv_listTable.FieldValues['cond_p']:=  01;
+             MainForm.Bonv_liv_listTable.FieldValues['tva_p']:= MainForm.ProduitTable.FieldValues['tva_p'];
+
            if  NOT (MainForm.ClientTable.IsEmpty) AND (BonLivGestionF.ClientBonLivGCbx.Text<> '' ) then
            begin
 
@@ -537,9 +546,7 @@ begin
                   MainForm.Bonv_liv_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixvd_p'];
                  end;
 
-             MainForm.Bonv_liv_listTable.FieldValues['cond_p']:=  01;
              MainForm.Bonv_liv_listTable.Post ;
-
 
           MainForm.ClientTable.Active:=false;
           MainForm.ClientTable.SQL.Clear;
@@ -598,6 +605,8 @@ begin
                 FSplashAddUnite.Tag:=1;
              end;
 
+              MainForm.Bonv_liv_listTable.Refresh;
+
     end else
 
     if (OKproduitGBtn.Tag = 1) AND (FastProduitsListF.Tag = 1) then
@@ -643,6 +652,9 @@ begin
              MainForm.Bonv_liv_listTable.FieldValues['code_bvliv']:= MainForm.Bonv_livTable.FieldValues['code_bvliv'];
              MainForm.Bonv_liv_listTable.FieldValues['code_p']:=  MainForm.ProduitTable.FieldValues['code_p'] ;
              MainForm.Bonv_liv_listTable.FieldValues['qut_p'] :=  01;
+             MainForm.Bonv_liv_listTable.FieldValues['cond_p']:= 01;
+             MainForm.Bonv_liv_listTable.FieldValues['tva_p']:= MainForm.ProduitTable.FieldValues['tva_p'];
+
            if  NOT (MainForm.ClientTable.IsEmpty) AND (BonLivGestionF.ClientBonLivGCbx.Text<> '' ) then
            begin
              if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 0 then
@@ -669,8 +681,9 @@ begin
                  begin
                   MainForm.Bonv_liv_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixvd_p'];
                  end;
-             MainForm.Bonv_liv_listTable.FieldValues['cond_p']:= 01;
+
              MainForm.Bonv_liv_listTable.Post ;
+
            MainForm.Bonv_liv_listTable.IndexFieldNames:='code_bvliv';
            MainForm.Bonv_liv_listTable.Last;
            MainForm.Bonv_liv_listTable.EnableControls;
@@ -734,6 +747,8 @@ begin
     //--- this tage = 0 is for multi name added by fastproduit----//
           FSplashAddUnite.Tag:=3;
        end;
+
+       MainForm.Bonv_liv_listTable.Refresh;
     end
      else
 
@@ -802,6 +817,9 @@ begin
              MainForm.Bonv_fac_listTable.FieldValues['code_bvfac']:= MainForm.Bonv_facTable.FieldValues['code_bvfac'];
              MainForm.Bonv_fac_listTable.FieldValues['code_p']:=  MainForm.ProduitTable.FieldValues['code_p'] ;
              MainForm.Bonv_fac_listTable.FieldValues['qut_p'] :=  01;
+             MainForm.Bonv_fac_listTable.FieldValues['cond_p']:=  01;
+             MainForm.Bonv_fac_listTable.FieldValues['tva_p']:= MainForm.ProduitTable.FieldValues['tva_p'];
+
            if  NOT (MainForm.ClientTable.IsEmpty) AND (BonFacVGestionF.ClientBonFacVGCbx.Text<> '' ) then
            begin
              if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 0 then
@@ -828,8 +846,7 @@ begin
                  begin
                   MainForm.Bonv_fac_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixvd_p'];
                  end;
-             MainForm.Bonv_fac_listTable.FieldValues['cond_p']:=  01;
-             MainForm.Bonv_fac_listTable.FieldValues['tva_p']:= MainForm.ProduitTable.FieldValues['tva_p'];
+
              MainForm.Bonv_fac_listTable.Post ;
 
             MainForm.ClientTable.Active:=false;
@@ -888,6 +905,8 @@ begin
                 FSplashAddUnite.Tag:=4;
              end;
 
+             MainForm.Bonv_fac_listTable.Refresh;
+
     end else
 
     if (OKproduitGBtn.Tag = 1) AND (FastProduitsListF.Tag = 2) then
@@ -932,6 +951,9 @@ begin
              MainForm.Bonv_fac_listTable.FieldValues['code_bvfac']:= MainForm.Bonv_facTable.FieldValues['code_bvfac'];
              MainForm.Bonv_fac_listTable.FieldValues['code_p']:=  MainForm.ProduitTable.FieldValues['code_p'] ;
              MainForm.Bonv_fac_listTable.FieldValues['qut_p'] :=  01;
+             MainForm.Bonv_fac_listTable.FieldValues['cond_p']:= 01;
+             MainForm.Bonv_fac_listTable.FieldValues['tva_p']:= MainForm.ProduitTable.FieldValues['tva_p'];
+
            if  NOT (MainForm.ClientTable.IsEmpty) AND (BonFacVGestionF.ClientBonFacVGCbx.Text<> '' ) then
            begin
              if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 0 then
@@ -958,8 +980,7 @@ begin
                  begin
                   MainForm.Bonv_fac_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixvd_p'];
                  end;
-             MainForm.Bonv_fac_listTable.FieldValues['cond_p']:= 01;
-             MainForm.Bonv_fac_listTable.FieldValues['tva_p']:= MainForm.ProduitTable.FieldValues['tva_p'];
+
              MainForm.Bonv_fac_listTable.Post ;
            MainForm.Bonv_fac_listTable.IndexFieldNames:='code_bvfac';
            MainForm.Bonv_fac_listTable.Last;
@@ -1024,6 +1045,8 @@ begin
     //--- this tage = 0 is for multi name added by fastproduit----//
           FSplashAddUnite.Tag:=4;
        end;
+
+       MainForm.Bonv_fac_listTable.Refresh;
     end
      else
 
@@ -1034,12 +1057,7 @@ begin
 
     end;
 
-
-
-
-
-
-          //-------------------------------------------------------------------------------------------------
+    //-------------------------------------------------------------------------------------------------
 
 //---------- from this is to add produit to the facture d''achat with fastform tag = 3-------------------------------------------
 
@@ -1143,6 +1161,9 @@ begin
                 FSplashAddUnite.Tag:=5;
              end;
 
+
+             MainForm.Bona_fac_listTable.Refresh;
+
     end else
 
     if (OKproduitGBtn.Tag = 1) AND (FastProduitsListF.Tag = 3) then
@@ -1237,6 +1258,9 @@ begin
     //--- this tage = 0 is for multi name added by fastproduit----//
           FSplashAddUnite.Tag:=5;
        end;
+
+       MainForm.Bona_fac_listTable.Refresh;
+
     end
      else
 
@@ -1246,13 +1270,7 @@ begin
      CancelProduitGBtnClick(Sender);
 
     end;
-
-
-
-
-
-
-              //-------------------------------------------------------------------------------------------------
+  //-------------------------------------------------------------------------------------------------
 
 //---------- from this is to add produit to the comptoir with fastform tag = 4-------------------------------------------
 
@@ -1300,6 +1318,8 @@ begin
              MainForm.Bonv_ctr_listTable.FieldValues['code_bvctr']:= MainForm.Bonv_ctrTable.FieldValues['code_bvctr'];
              MainForm.Bonv_ctr_listTable.FieldValues['code_p']:=  MainForm.ProduitTable.FieldValues['code_p'] ;
              MainForm.Bonv_ctr_listTable.FieldValues['qut_p'] :=  01;
+             MainForm.Bonv_ctr_listTable.FieldValues['cond_p']:=  01;
+             MainForm.Bonv_ctr_listTable.FieldValues['tva_p']:= MainForm.ProduitTable.FieldValues['tva_p'];
 
            if  NOT (MainForm.ClientTable.IsEmpty) AND ( BonCtrGestionF.ClientBonCtrGCbx.Text<> '' ) then
            begin
@@ -1329,7 +1349,8 @@ begin
                   MainForm.Bonv_ctr_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixvd_p'];
                  end;
 
-             MainForm.Bonv_ctr_listTable.FieldValues['cond_p']:=  01;
+
+
              MainForm.Bonv_ctr_listTable.Post ;
 
       end;
@@ -1383,6 +1404,8 @@ begin
                 FSplashAddUnite.Tag:=6;
              end;
 
+             MainForm.Bonv_ctr_listTable.Refresh;
+
     end else
 
     if (OKproduitGBtn.Tag = 1) AND (FastProduitsListF.Tag = 4) then
@@ -1417,6 +1440,8 @@ begin
              MainForm.Bonv_ctr_listTable.FieldValues['code_bvctr']:= MainForm.Bonv_ctrTable.FieldValues['code_bvctr'];
              MainForm.Bonv_ctr_listTable.FieldValues['code_p']:=  MainForm.ProduitTable.FieldValues['code_p'] ;
              MainForm.Bonv_ctr_listTable.FieldValues['qut_p'] :=  01;
+             MainForm.Bonv_ctr_listTable.FieldValues['cond_p']:= 01;
+             MainForm.Bonv_ctr_listTable.FieldValues['tva_p']:= MainForm.ProduitTable.FieldValues['tva_p'];
 
            if  NOT (MainForm.ClientTable.IsEmpty) AND ( BonCtrGestionF.ClientBonCtrGCbx.Text<> '' ) then
            begin
@@ -1446,7 +1471,7 @@ begin
                   MainForm.Bonv_ctr_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixvd_p'];
                  end;
 
-             MainForm.Bonv_ctr_listTable.FieldValues['cond_p']:= 01;
+
              MainForm.Bonv_ctr_listTable.Post ;
            MainForm.Bonv_ctr_listTable.IndexFieldNames:='code_bvctr';
            MainForm.Bonv_ctr_listTable.Last;
@@ -1504,6 +1529,9 @@ begin
     //--- this tage = 0 is for multi name added by fastproduit----//
           FSplashAddUnite.Tag:=6;
        end;
+
+
+       MainForm.Bonv_ctr_listTable.Refresh;
     end
      else
 

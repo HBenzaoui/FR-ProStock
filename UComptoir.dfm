@@ -83,6 +83,8 @@ object BonCtrGestionF: TBonCtrGestionF
     TitleParams.SortMarkerStyle = smstThemeDefinedEh
     TitleParams.VertLines = True
     VertScrollBar.Width = 15
+    OnCellClick = ProduitsListDBGridEhCellClick
+    OnExit = ProduitsListDBGridEhExit
     OnKeyPress = ProduitsListDBGridEhKeyPress
     Columns = <
       item
@@ -167,6 +169,7 @@ object BonCtrGestionF: TBonCtrGestionF
         Width = 58
       end
       item
+        DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
         FieldName = 'prixvd_p'
@@ -186,6 +189,27 @@ object BonCtrGestionF: TBonCtrGestionF
         Title.Font.Style = []
         Title.Font.Quality = fqProof
         Width = 170
+      end
+      item
+        Alignment = taCenter
+        DynProps = <>
+        EditButtons = <>
+        FieldName = 'tva_p'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 18
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
+        Footers = <>
+        Layout = tlCenter
+        Title.Alignment = taCenter
+        Title.Caption = 'TVA %'
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = 4207405
+        Title.Font.Height = 19
+        Title.Font.Name = 'Helvetica LT Std'
+        Title.Font.Style = []
+        Title.Font.Quality = fqProof
       end
       item
         Alignment = taCenter
@@ -211,6 +235,7 @@ object BonCtrGestionF: TBonCtrGestionF
         Visible = False
       end
       item
+        DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
         FieldName = 'PrixVTTC'
@@ -233,6 +258,7 @@ object BonCtrGestionF: TBonCtrGestionF
         Width = 170
       end
       item
+        DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
         FieldName = 'MontantHT'
@@ -256,6 +282,7 @@ object BonCtrGestionF: TBonCtrGestionF
         Width = 170
       end
       item
+        DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
         FieldName = 'MontantTVA'
@@ -279,6 +306,7 @@ object BonCtrGestionF: TBonCtrGestionF
         Width = 170
       end
       item
+        DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
         FieldName = 'MontantTTC'
@@ -299,6 +327,43 @@ object BonCtrGestionF: TBonCtrGestionF
         Title.Font.Style = []
         Title.Font.Quality = fqProof
         Width = 170
+      end
+      item
+        DisplayFormat = '#,##0.00'
+        DynProps = <>
+        EditButtons = <>
+        FieldName = 'MargeM'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 18
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
+        Footers = <>
+        Layout = tlCenter
+        TextEditing = False
+        Title.Alignment = taCenter
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = 4207405
+        Title.Font.Height = 19
+        Title.Font.Name = 'Helvetica LT Std'
+        Title.Font.Style = []
+        Title.Font.Quality = fqProof
+        Width = 170
+      end
+      item
+        DisplayFormat = '0.00 %'
+        DynProps = <>
+        EditButtons = <>
+        FieldName = 'Marge'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 18
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
+        Footers = <>
+        Layout = tlCenter
+        TextEditing = False
+        Title.Caption = 'Marge %'
       end>
     object RowDetailData: TRowDetailPanelControlEh
     end
@@ -621,6 +686,19 @@ object BonCtrGestionF: TBonCtrGestionF
       Height = 13
       Caption = '0'
       Visible = False
+    end
+    object BonCTRTotalMargeLbl: TLabel
+      Left = 658
+      Top = 61
+      Width = 157
+      Height = 20
+      Caption = 'BonCTRTotalMargeLbl'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 4666873
+      Font.Height = 20
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
     end
     object ProduitBonCtrGCbx: TComboBox
       Left = 107
@@ -1912,44 +1990,45 @@ object BonCtrGestionF: TBonCtrGestionF
       Font.Height = -20
       Font.Name = 'Helvetica LT Std'
       Font.Style = []
-      HorzScrollBar.Tracking = False
       HorzScrollBar.ExtraPanel.NavigatorButtons = []
       HorzScrollBar.ExtraPanel.VisibleItems = []
-      HorzScrollBar.SmoothStep = False
       IndicatorOptions = []
       Options = [dgTitles, dgColumnResize, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit]
       OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghFitRowHeightToText, dghDialogFind, dghColumnResize, dghColumnMove, dghExtendVertLines]
       ParentFont = False
+      ParentShowHint = False
       ReadOnly = True
       RowHeight = 4
       RowLines = 2
+      ShowHint = True
       TabOrder = 4
       TreeViewParams.ShowTreeLines = False
       VertScrollBar.SmoothStep = True
       VertScrollBar.Width = 10
-      OnCellClick = CtrTop10PRODUITDBGridEhCellClick
+      OnDblClick = CtrTop10PRODUITDBGridEhDblClick
       Columns = <
         item
           Alignment = taCenter
           CaseInsensitiveTextSearch = False
           DynProps = <>
           EditButtons = <>
+          EndEllipsis = True
           FieldName = 'nomp'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -16
+          Font.Height = 16
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
           Footers = <>
           Layout = tlCenter
-          Title.Alignment = taCenter
-          Title.Caption = 'Les Produits Populaires'
+          Title.Caption = '       Les Produits Populaires'
           Title.Font.Charset = DEFAULT_CHARSET
           Title.Font.Color = 10379008
           Title.Font.Height = 20
           Title.Font.Name = 'Roboto'
           Title.Font.Style = []
-          Width = 236
+          ToolTips = True
+          Width = 300
           WordWrap = False
         end>
       object RowDetailData: TRowDetailPanelControlEh

@@ -118,6 +118,7 @@ type
     frxPDFExport1: TfrxPDFExport;
     frxBonLivDT: TfrxDBDataset;
     frxClientDB: TfrxDBDataset;
+    BonLivTotalMargeLbl: TLabel;
     procedure FormShow(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
@@ -167,6 +168,8 @@ type
     procedure sSpeedButton2Click(Sender: TObject);
     procedure sSpeedButton1Click(Sender: TObject);
     procedure sSpeedButton3Click(Sender: TObject);
+    procedure ProduitsListDBGridEhCellClick(Column: TColumnEh);
+    procedure ProduitsListDBGridEhExit(Sender: TObject);
   private
     { Private declarations }
     procedure GettingData;
@@ -340,6 +343,7 @@ end;
 
 procedure TBonLivGestionF.FormCloseQuery(Sender: TObject;
   var CanClose: Boolean);
+Var  CodeBL : Integer;
 begin
  if  NOT ProduitsListDBGridEh.DataSource.DataSet.IsEmpty then
   begin
@@ -356,6 +360,8 @@ begin
         begin
          if  (MainForm.Bonv_livTable.FieldByName('valider_bvliv').AsBoolean = false)  then
          begin
+         codeBL:=MainForm.Bonv_livTable.FieldByName('code_bvliv').AsInteger;
+
           MainForm.ClientTable.DisableControls;
           MainForm.ClientTable.Active:=false;
           MainForm.ClientTable.SQL.Clear;
@@ -416,6 +422,12 @@ begin
           MainForm.CompteTable.Active:=True;
           MainForm.CompteTable.EnableControls;
 
+        //------- This is to delete data from tre and reg ih not valide----------------------------------------------
+              MainForm.GstockdcConnection.ExecSQL('DELETE FROM regclient where code_bvliv = ' + IntToStr(codeBL));
+              MainForm.GstockdcConnection.ExecSQL('DELETE FROM opt_cas_bnk where code_bvliv = ' + IntToStr(codeBL));
+              MainForm.RegclientTable.Refresh ;
+              MainForm.Opt_cas_bnk_CaisseTable.Refresh ;
+
          end;
 
         end;
@@ -433,8 +445,9 @@ I : Integer;
   begin
   Cursor := crDefault;
 //  PostMessage((Sender as TComboBox).Handle, CB_SHOWDROPDOWN, 1, 0);
-      ProduitBonLivGCbx.Refresh;
+//      ProduitBonLivGCbx.Refresh;
       ProduitBonLivGCbx.Items.Clear;
+      MainForm.ProduitTable.DisableControls;
       MainForm.ProduitTable.Active:=False;
       MainForm.ProduitTable.SQL.Clear;
       MainForm.ProduitTable.SQL.Text:= 'SELECT * FROM produit ';
@@ -466,6 +479,8 @@ I : Integer;
        MainForm.ProduitTable.Next;
       end;
      end;
+
+     MainForm.ProduitTable.EnableControls;
 
 end;
 
@@ -548,6 +563,8 @@ begin
              MainForm.Bonv_liv_listTable.FieldValues['code_bvliv']:= MainForm.Bonv_livTable.FieldValues['code_bvliv'];
              MainForm.Bonv_liv_listTable.FieldValues['code_p']:=  MainForm.ProduitTable.FieldValues['code_p'] ;
              MainForm.Bonv_liv_listTable.FieldValues['qut_p'] :=  01;
+             MainForm.Bonv_liv_listTable.FieldValues['cond_p']:= 01;
+             MainForm.Bonv_liv_listTable.FieldValues['tva_p']:=  MainForm.ProduitTable.FieldValues['tva_p'] ;
 
            if  NOT (MainForm.ClientTable.IsEmpty) AND (ClientBonLivGCbx.Text<> '' ) then
            begin
@@ -577,7 +594,7 @@ begin
                   MainForm.Bonv_liv_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixvd_p'];
                  end;
 
-             MainForm.Bonv_liv_listTable.FieldValues['cond_p']:= 01;
+
              MainForm.Bonv_liv_listTable.Post ;
              MainForm.Bonv_liv_listTable.IndexFieldNames:='code_bvliv';
 
@@ -690,6 +707,8 @@ begin
              MainForm.Bonv_liv_listTable.FieldValues['code_bvliv']:= MainForm.Bonv_livTable.FieldValues['code_bvliv'];
              MainForm.Bonv_liv_listTable.FieldValues['code_p']:=  MainForm.ProduitTable.FieldValues['code_p'] ;
              MainForm.Bonv_liv_listTable.FieldValues['qut_p'] :=  01;
+             MainForm.Bonv_liv_listTable.FieldValues['cond_p']:= 01;
+             MainForm.Bonv_liv_listTable.FieldValues['tva_p']:=  MainForm.ProduitTable.FieldValues['tva_p'] ;
 
             if  NOT (MainForm.ClientTable.IsEmpty) AND (ClientBonLivGCbx.Text<> '' ) then
            begin
@@ -719,7 +738,7 @@ begin
                   MainForm.Bonv_liv_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixvd_p'];
                  end;
 
-             MainForm.Bonv_liv_listTable.FieldValues['cond_p']:= 01;
+
              MainForm.Bonv_liv_listTable.Post ;
              MainForm.Bonv_liv_listTable.IndexFieldNames:='code_bvliv';
 
@@ -834,6 +853,8 @@ begin
              MainForm.Bonv_liv_listTable.FieldValues['code_bvliv']:= MainForm.Bonv_livTable.FieldValues['code_bvliv'];
              MainForm.Bonv_liv_listTable.FieldValues['code_p']:=  MainForm.ProduitTable.FieldValues['code_p'] ;
              MainForm.Bonv_liv_listTable.FieldValues['qut_p'] :=  01;
+             MainForm.Bonv_liv_listTable.FieldValues['cond_p']:= 01;
+             MainForm.Bonv_liv_listTable.FieldValues['tva_p']:=  MainForm.ProduitTable.FieldValues['tva_p'] ;
            if  NOT (MainForm.ClientTable.IsEmpty) AND (ClientBonLivGCbx.Text<> '' ) then
            begin
 
@@ -861,7 +882,7 @@ begin
                  begin
                   MainForm.Bonv_liv_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixvd_p'];
                  end;
-             MainForm.Bonv_liv_listTable.FieldValues['cond_p']:= 01;
+
              MainForm.Bonv_liv_listTable.Post ;
              MainForm.Bonv_liv_listTable.IndexFieldNames:='code_bvliv';
 
@@ -1917,7 +1938,7 @@ begin
 
 // use this code to rest the old credit to the to the last time before he pay anything in that bon so you can aclculate again
   BonLivGClientOLDCredit.Caption:=
-  CurrToStrF((((MainForm.ClientTable.FieldValues['oldcredit_c'])-(StringReplace(BonLivResteLbl.Caption, #32, '', [rfReplaceAll])))),ffNumber,2);
+  CurrToStrF((((MainForm.ClientTable.FieldValues['credit_c'])-(StringReplace(BonLivResteLbl.Caption, #32, '', [rfReplaceAll])))),ffNumber,2);
 
   BonLivRegleLbl.Caption:=FloatToStrF(0,ffNumber,14,2) ;
   BonLivResteLbl.Caption:= BonLivTotalTTCLbl.Caption;
@@ -1933,20 +1954,20 @@ begin
  //----------------------------------------
 
       begin
+           MainForm.ProduitTable.DisableControls;
            MainForm.ProduitTable.Active:=False;
            MainForm.ProduitTable.SQL.Clear;
            MainForm.ProduitTable.SQL.Text:='SELECT * FROM produit ' ;
            MainForm.ProduitTable.Active:=True;
            Mainform.Sqlquery.Active:=False;
            Mainform.Sqlquery.Sql.Clear;
-           Mainform.Sqlquery.Sql.Text:='SELECT code_bvlivl,code_p,  qut_p, cond_p , prixvd_p FROM bonv_liv_list WHERE code_bvliv =  '
+           Mainform.Sqlquery.Sql.Text:='SELECT code_bvlivl,code_p,  qut_p, cond_p  FROM bonv_liv_list WHERE code_bvliv =  '
                                                  + IntToStr (MainForm.Bonv_livTable.FieldValues['code_bvliv'])
-                                                 + 'GROUP BY code_bvlivl, code_p, qut_p, cond_p,prixvd_p ' ;
+                                                 + 'GROUP BY code_bvlivl, code_p, qut_p, cond_p ' ;
            MainForm.SQLQuery.Active:=True;
            MainForm.SQLQuery.First;
            while  NOT (MainForm.SQLQuery.Eof) do
            begin
-            MainForm.ProduitTable.DisableControls;
             MainForm.ProduitTable.Active:=False;
             MainForm.ProduitTable.SQL.Clear;
             MainForm.ProduitTable.SQL.Text:='SELECT * FROM produit WHERE code_p = ' +QuotedStr(MainForm.SQLQuery.FieldValues['code_p']) ;
@@ -1954,19 +1975,19 @@ begin
             MainForm.ProduitTable.Edit;
             MainForm.ProduitTable.FieldValues['qut_p']:= ( MainForm.ProduitTable.FieldValues['qut_p']
                                                          + ((MainForm.SQLQuery.FieldValues['qut_p']) * ((MainForm.SQLQuery.FieldValues['cond_p']))));
-            MainForm.ProduitTable.FieldValues['prixvd_p']:= MainForm.SQLQuery.FieldValues['prixvd_p'];
+//            MainForm.ProduitTable.FieldValues['prixvd_p']:= MainForm.SQLQuery.FieldValues['prixvd_p'];
             MainForm.ProduitTable.Post;
             MainForm.SQLQuery.Next;
            end;
 
-            MainForm.ProduitTable.Active:=False;
+           MainForm.ProduitTable.Active:=False;
            MainForm.ProduitTable.SQL.Clear;
            MainForm.ProduitTable.SQL.Text:='SELECT * FROM produit ' ;
            MainForm.ProduitTable.Active:=True;
            MainForm.ProduitTable.EnableControls;
            MainForm.SQLQuery.Active:=False;
            MainForm.SQLQuery.SQL.Clear;
-          MainForm.Bonv_livTable.Refresh;
+           MainForm.Bonv_livTable.Refresh;
 
      end;
 
@@ -1980,29 +2001,21 @@ begin
        FSplashVersement:=TFSplashVersement.Create(Application);
        FSplashVersement.Left:=  (MainForm.Left + MainForm.Width div 2) - (FSplashVersement.Width div 2);
        FSplashVersement.Top:=  MainForm.Top + 5 ;
-
       FSplashVersement.OldCreditVersementSLbl.Caption:= BonLivGClientOLDCredit.Caption;
-
 
         FSplashVersement.MontantTTCVersementSLbl.Caption:= FloatToStrF((
              (StrToFloat (StringReplace(BonLivTotalTTCLbl.Caption, #32, '', [rfReplaceAll])))
            //  -
           //   (StrToFloat (StringReplace(BonRecRegleLbl.Caption, #32, '', [rfReplaceAll])))
              ),ffNumber,14,2);
-
         FSplashVersement.VerVersementSEdt.Text:=FloatToStrF((
-
              (StrToFloat (StringReplace(BonLivRegleLbl.Caption, #32, '', [rfReplaceAll])))
              ),ffNumber,14,2);
-
-
         FSplashVersement.Tag := 2 ;
         FSplashVersement.OKVersementSBtn.Tag:= 1 ;
-
        AnimateWindow(FSplashVersement.Handle, 175, AW_VER_POSITIVE OR AW_SLIDE OR AW_ACTIVATE );
        FSplashVersement.Show;
 
-        Timer1.Enabled:=False;
 
     end else
     begin
@@ -2221,6 +2234,16 @@ frxPDFExport1.FileName := 'Bon de Livraison N° '
 frxPDFExport1.EmbeddedFonts:=True;
 
 BonLivPListfrxRprt.Export(frxPDFExport1);
+end;
+
+procedure TBonLivGestionF.ProduitsListDBGridEhCellClick(Column: TColumnEh);
+begin
+Refresh_PreservePosition;
+end;
+
+procedure TBonLivGestionF.ProduitsListDBGridEhExit(Sender: TObject);
+begin
+Refresh_PreservePosition;
 end;
 
 end.

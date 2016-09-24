@@ -226,6 +226,7 @@ type
 
 var
   ProduitGestionF: TProduitGestionF;
+  PAdded : Boolean;
 
 implementation
 
@@ -321,8 +322,13 @@ end;
 
 procedure TProduitGestionF.RandomCBProduitGBtnClick(Sender: TObject);
 var CodeB: String;
-
+    CodeP: Integer;
 begin
+
+ if Tag = 1 then
+ begin
+  CodeP:= MainForm.ProduitTable.FieldByName('code_p').AsInteger;
+ end;
 
    //------ this code is to select the last code_cb in the database and add the value to oune number 1070000000111 then pust it in tyhe code a barre new number
       MainForm.CodebarresTable.Active:= False;
@@ -468,6 +474,16 @@ begin
       CodeBarProduitGEdt.SetFocus;
       MainForm.CodebarresTable.IndexFieldNames:='code_p';
          end;
+         end;
+
+         if Tag = 1 then
+         begin
+         MainForm.ProduitTable.DisableControls;
+         MainForm.ProduitTable.Active:= False;
+         MainForm.ProduitTable.SQL.Text:= 'SELECT * FROM produit WHERE code_p = ' +IntToStr(CodeP);
+         MainForm.ProduitTable.Active:= True;
+         MainForm.ProduitTable.EnableControls;
+
          end;
 
 end;
@@ -716,30 +732,49 @@ begin
 
     if ProduitGestionF.Tag <> 1 then
       begin
-      codeP:= MainForm.ProduitTable.FieldValues['code_p'];
-      MainForm.GstockdcConnection.ExecSQL('DELETE FROM codebarres where codebarres.code_p = ' + IntToStr(codeP));
-      MainForm.ProduitTable.Delete;
+        codeP:= MainForm.ProduitTable.FieldValues['code_p'];
+        MainForm.GstockdcConnection.ExecSQL('DELETE FROM codebarres where codebarres.code_p = ' + IntToStr(codeP));
+        MainForm.ProduitTable.Delete;
+        MainForm.ProduitTable.EnableControls;
+        //--- this is to pervet adding dublicate produit when editing adn creatin codebare
+        if (PAdded = False) AND (ProduitsListF.CodePToUseOut <> 0 )  then
+        begin
+         MainForm.ProduitTable.Locate('code_p',ProduitsListF.CodePToUseOut,[]) ;
+        end;
 
-      end  ;
+      end else
+          begin
 
-    MainForm.ProduitTable.EnableControls;
-//   ProduitsListF.ProduitsListDBGridEh.Enabled:=True;
+           //--- this is to pervet adding dublicate produit when editing adn creatin codebare
+           codeP:= MainForm.ProduitTable.FieldValues['code_p'];
+           MainForm.ProduitTable.DisableControls;
+           MainForm.ProduitTable.Active:= False;
+           MainForm.ProduitTable.SQL.Text:= 'SELECT * FROM produit ';
+           MainForm.ProduitTable.Active:= True;
+           MainForm.ProduitTable.EnableControls;
+
+           MainForm.ProduitTable.Locate('code_p',CodeP,[]) ;
+          end;
+
+    ProduitsListF.CodePToUseOut:= 0;
+    PAdded := False;
     FreeAndNil(ProduitGestionF);
 end;
 
 procedure TProduitGestionF.CodeBarProduitGEdtChange(Sender: TObject);
 begin
 if CodeBarProduitGEdt.Text <> '' then
-begin
-MulteCBProduitGBtn.Enabled:= True;
-////  CodeBarProduitGEdt.BorderStyle:= bsSingle;
-//CodeBarProduitGEdt.StyleElements:= [seClient,seBorder];
-// DuplicatedCodeBarrelbl.Visible:= False;
-// NameCodeBarreErrorP.Visible:= False;
-end
+ begin
+  MulteCBProduitGBtn.Enabled:= True;
+  MulteCBProduitGBtn.ImageIndex:=20;
+  end
 
-else
-MulteCBProduitGBtn.Enabled:= False;
+  else
+  begin
+  MulteCBProduitGBtn.Enabled:= False;
+  MulteCBProduitGBtn.ImageIndex:=38;
+  end;
+
 end;
 
 procedure TProduitGestionF.DatePerProduitGDChange(Sender: TObject);
@@ -798,11 +833,7 @@ begin
    NormalForms;
    ProduitGestionF.Tag := 0 ;
    FreeAndNil(ProduitGestionF);
-     Application.UpdateFormatSettings := false;
-  FormatSettings.DecimalSeparator := ',';
-  FormatSettings.ThousandSeparator := ' ';
-  FormatSettings.CurrencyDecimals := 2;
-  FormatSettings.DateSeparator:= '/';
+
 end;
 
 procedure TProduitGestionF.FormDestroy(Sender: TObject);
@@ -814,6 +845,13 @@ begin
 //  begin
  // ProduitsListF.ProduitsListDBGridEh.SetFocus;
 //  end;
+
+  Application.UpdateFormatSettings := false;
+  FormatSettings.DecimalSeparator := ',';
+  FormatSettings.ThousandSeparator := ' ';
+  FormatSettings.CurrencyDecimals := 2;
+  FormatSettings.DateSeparator:= '/';
+
 end;
 
 procedure TProduitGestionF.FormKeyDown(Sender: TObject; var Key: Word;
@@ -843,7 +881,7 @@ begin
 //  RandomCBProduitGBtn.Tag := 0;
 //   CancelProduitGBtnClick(Sender);
 
-  Close;
+  CancelProduitGBtnClick(Sender);
 
  end;
 
@@ -1182,11 +1220,13 @@ end;
 
 procedure TProduitGestionF.OKProduitGBtnClick(Sender: TObject);
 var
-AlertJours,MinStock,MaxStock,StockIN,StockAlert ,FamP,FamSP,UnitP,FourP,LoucP: Integer;
+AlertJours,MinStock,MaxStock,StockIN,StockAlert ,FamP,FamSP,UnitP,FourP,LoucP,CodeP: Integer;
 //DatePer : TDateTime;
   S : TStream;
   lookupResultNomP,lookupResultRefP : Variant;
+
 begin
+
  if NameProduitGEdt.Text <> '' then
   begin
    if RefProduitGEdt.Text <> '' then
@@ -1206,13 +1246,20 @@ begin
           begin
           if NOT  MainForm.FamproduitTable.Locate('nom_famp', FamilleProduitGCbx.Text, [loCaseInsensitive]) then
             begin
-               with MainForm.FamproduitTable do
-                begin
-                Last;
-                Insert;
-                fieldbyname('nom_famp').Value := FamilleProduitGCbx.Text;
+                with MainForm.FamproduitTable do  begin
+                  if NOT (IsEmpty) then
+                  begin
+                  Last;
+                  FamP:= FieldValues['code_famp'] + 1;
+                  end else
+                      begin
+                       FamP:= 1;
+                      end;
+                Append;
+                fieldbyname('code_famp').AsInteger := FamP;
+                fieldbyname('nom_famp').AsString := FamilleProduitGCbx.Text;
                 post;
-            end;
+             end;
             end;
           end ;
           //----------- use this code to inster new sous famille when just type name it if empty exit-------------
@@ -1220,10 +1267,17 @@ begin
           begin
           if NOT  MainForm.SFamproduitTable.Locate('nom_sfamp', SFamilleProduitGCbx.Text, [loCaseInsensitive]) then
             begin
-                 with MainForm.SFamproduitTable do
-                 begin
-                     Last;
-                    Insert;
+                 with MainForm.SFamproduitTable do  begin
+                  if NOT (IsEmpty) then
+                  begin
+                  Last;
+                  FamSP:= FieldValues['code_sfamp'] + 1;
+                  end else
+                      begin
+                       FamSP:= 1;
+                      end;
+                    Append;
+                    fieldbyname('code_sfamp').AsInteger := FamSP;
                     fieldbyname('nom_sfamp').Value := SFamilleProduitGCbx.Text;
                     post;
                   end;
@@ -1234,12 +1288,19 @@ begin
           begin
           if NOT  MainForm.UniteTable.Locate('nom_u', UniteProduitGCbx.Text, [loCaseInsensitive]) then
             begin
-                 with MainForm.UniteTable do
-                 begin
-                 Last;
-                Insert;
-                fieldbyname('nom_u').Value := UniteProduitGCbx.Text;
-                post;
+                 with MainForm.UniteTable do begin
+                  if NOT (IsEmpty) then
+                  begin
+                  Last;
+                  UnitP:= FieldValues['code_u'] + 1;
+                  end else
+                      begin
+                       UnitP:= 1;
+                      end;
+                   Append;
+                   fieldbyname('code_u').AsInteger := UnitP;
+                   fieldbyname('nom_u').AsString := UniteProduitGCbx.Text;
+                   post;
                   end;
             end;
             end ;
@@ -1249,9 +1310,17 @@ begin
           if NOT  MainForm.LocalisationTable.Locate('nom_l', LocalisationProduitGCbx.Text, [loCaseInsensitive]) then
             begin
                with MainForm.LocalisationTable do  begin
-                   Last;
-                Insert;
-                fieldbyname('nom_l').Value := LocalisationProduitGCbx.Text;
+                  if NOT (IsEmpty) then
+                  begin
+                  Last;
+                  LoucP:= FieldValues['code_l'] + 1;
+                  end else
+                      begin
+                       LoucP:= 1;
+                      end;
+                Append;
+                fieldbyname('code_l').AsInteger :=  LoucP ;
+                fieldbyname('nom_l').AsString := LocalisationProduitGCbx.Text;
                 post;
                 end;
             end ;
@@ -1386,6 +1455,9 @@ begin
            end;
             post;
             Refresh;
+           // Male PAdded tue if user add produit
+            PAdded := True;
+
           end;
            MainForm.ProduitTable.EnableControls;
            MainForm.FamproduitTable.Active := False;
@@ -1683,6 +1755,17 @@ begin
            MainForm.UniteTable.SQL.Clear;
            MainForm.UniteTable.SQL.Text:='Select * FROM unite ' ;
            MainForm.UniteTable.Active:=True;
+
+           //--- this is to pervet adding dublicate produit when editing adn creatin codebare
+           CodeP:= MainForm.ProduitTable.FieldByName('code_p').AsInteger;
+           MainForm.ProduitTable.DisableControls;
+           MainForm.ProduitTable.Active:= False;
+           MainForm.ProduitTable.SQL.Text:= 'SELECT * FROM produit ';
+           MainForm.ProduitTable.Active:= True;
+           MainForm.ProduitTable.EnableControls;
+
+           MainForm.ProduitTable.Locate('code_p',CodeP,[]) ;
+
            end;
           begin
             FSplash := TFSplash.Create(ProduitGestionF);

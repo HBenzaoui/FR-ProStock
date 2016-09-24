@@ -4,7 +4,7 @@ object ProduitGestionF: TProduitGestionF
   BorderStyle = bsDialog
   Caption = 'Nouveau Produit'
   ClientHeight = 668
-  ClientWidth = 686
+  ClientWidth = 685
   Color = clBtnFace
   DoubleBuffered = True
   Font.Charset = DEFAULT_CHARSET
@@ -28,7 +28,7 @@ object ProduitGestionF: TProduitGestionF
   object ProduitGPgControl: TsPageControl
     Left = 0
     Top = 0
-    Width = 686
+    Width = 685
     Height = 614
     ActivePage = GeneralClientGTB
     Align = alClient
@@ -50,7 +50,7 @@ object ProduitGestionF: TProduitGestionF
       object GeneralTB: TPanel
         Left = 0
         Top = 0
-        Width = 678
+        Width = 677
         Height = 579
         Align = alClient
         BevelOuter = bvNone
@@ -59,7 +59,7 @@ object ProduitGestionF: TProduitGestionF
         TabOrder = 0
         StyleElements = []
         DesignSize = (
-          678
+          677
           579)
         object FamilleProduitGLbl: TLabel
           Left = 52
@@ -859,7 +859,7 @@ object ProduitGestionF: TProduitGestionF
           Font.Height = 18
           Font.Name = 'Roboto'
           Font.Style = []
-          ImageIndex = 20
+          ImageIndex = 38
           Images = MainForm.PanelIcons24
           ParentFont = False
           ParentShowHint = False
@@ -910,7 +910,7 @@ object ProduitGestionF: TProduitGestionF
         object LineP: TPanel
           Left = 0
           Top = 236
-          Width = 685
+          Width = 684
           Height = 2
           Anchors = [akLeft, akTop, akRight]
           BevelOuter = bvNone
@@ -1112,7 +1112,7 @@ object ProduitGestionF: TProduitGestionF
         object LineP3: TPanel
           Left = 73
           Top = 270
-          Width = 84
+          Width = 83
           Height = 1
           Anchors = [akLeft, akTop, akRight]
           BevelOuter = bvNone
@@ -1172,7 +1172,7 @@ object ProduitGestionF: TProduitGestionF
         object LineP4: TPanel
           Left = 394
           Top = 271
-          Width = 95
+          Width = 94
           Height = 1
           Anchors = [akLeft, akTop, akRight]
           BevelOuter = bvNone
@@ -1481,7 +1481,7 @@ object ProduitGestionF: TProduitGestionF
         object LineP2: TPanel
           Left = 0
           Top = 475
-          Width = 685
+          Width = 684
           Height = 2
           Anchors = [akLeft, akTop, akRight]
           BevelOuter = bvNone
@@ -1653,10 +1653,14 @@ object ProduitGestionF: TProduitGestionF
     end
     object PlusInfoClientGTB: TsTabSheet
       Caption = 'Plus D'#39'info'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object PlusInfoTB: TPanel
         Left = 0
         Top = 0
-        Width = 678
+        Width = 677
         Height = 579
         Align = alClient
         BevelOuter = bvNone
@@ -1665,7 +1669,7 @@ object ProduitGestionF: TProduitGestionF
         TabOrder = 0
         StyleElements = []
         DesignSize = (
-          678
+          677
           579)
         object ObserClientGLbl: TLabel
           Left = 11
@@ -1869,7 +1873,7 @@ object ProduitGestionF: TProduitGestionF
         object LineP03: TPanel
           Left = 0
           Top = 246
-          Width = 680
+          Width = 679
           Height = 2
           Anchors = [akLeft, akTop, akRight]
           BevelOuter = bvNone
@@ -1945,7 +1949,7 @@ object ProduitGestionF: TProduitGestionF
         object Panel1: TPanel
           Left = 478
           Top = 25
-          Width = 177
+          Width = 176
           Height = 1
           Anchors = [akLeft, akTop, akRight]
           BevelOuter = bvNone
@@ -1959,7 +1963,7 @@ object ProduitGestionF: TProduitGestionF
         object Panel2: TPanel
           Left = 478
           Top = 228
-          Width = 177
+          Width = 176
           Height = 1
           Anchors = [akLeft, akTop, akRight]
           BevelOuter = bvNone
@@ -1973,7 +1977,7 @@ object ProduitGestionF: TProduitGestionF
         object Panel3: TPanel
           Left = 478
           Top = 25
-          Width = 1
+          Width = 0
           Height = 203
           Anchors = [akLeft, akTop, akRight]
           BevelOuter = bvNone
@@ -1987,7 +1991,7 @@ object ProduitGestionF: TProduitGestionF
         object Panel4: TPanel
           Left = 655
           Top = 25
-          Width = 1
+          Width = 0
           Height = 203
           Anchors = [akLeft, akTop, akRight]
           BevelOuter = bvNone
@@ -2004,7 +2008,7 @@ object ProduitGestionF: TProduitGestionF
   object BottomP: TPanel
     Left = 0
     Top = 614
-    Width = 686
+    Width = 685
     Height = 54
     Align = alBottom
     BevelOuter = bvNone

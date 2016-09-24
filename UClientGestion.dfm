@@ -313,7 +313,7 @@ object ClientGestionF: TClientGestionF
           ParentBackground = False
           ParentCtl3D = False
           ShowCaption = False
-          TabOrder = 12
+          TabOrder = 13
           Visible = False
           StyleElements = []
         end
@@ -328,7 +328,7 @@ object ClientGestionF: TClientGestionF
           DoubleBuffered = False
           ParentBackground = False
           ParentDoubleBuffered = False
-          TabOrder = 11
+          TabOrder = 12
           StyleElements = []
         end
         object AcitiviteClientGEdt: TEdit
@@ -376,7 +376,7 @@ object ClientGestionF: TClientGestionF
           Font.Style = []
           ParentDoubleBuffered = False
           ParentFont = False
-          TabOrder = 4
+          TabOrder = 5
           OnKeyDown = FaxClientGEdtKeyDown
           OnKeyPress = Mobile2ClientGEdtKeyPress
         end
@@ -393,7 +393,7 @@ object ClientGestionF: TClientGestionF
           Font.Style = []
           ParentDoubleBuffered = False
           ParentFont = False
-          TabOrder = 8
+          TabOrder = 9
           OnKeyPress = NameClientGEdtKeyPress
         end
         object SiteClientGEdt: TEdit
@@ -409,7 +409,7 @@ object ClientGestionF: TClientGestionF
           Font.Style = []
           ParentDoubleBuffered = False
           ParentFont = False
-          TabOrder = 9
+          TabOrder = 10
           OnKeyPress = NameClientGEdtKeyPress
         end
         object MobileClientGEdt: TEdit
@@ -425,7 +425,7 @@ object ClientGestionF: TClientGestionF
           Font.Style = []
           ParentDoubleBuffered = False
           ParentFont = False
-          TabOrder = 6
+          TabOrder = 7
           OnKeyDown = FaxClientGEdtKeyDown
           OnKeyPress = Mobile2ClientGEdtKeyPress
         end
@@ -442,7 +442,7 @@ object ClientGestionF: TClientGestionF
           Font.Style = []
           ParentDoubleBuffered = False
           ParentFont = False
-          TabOrder = 7
+          TabOrder = 8
           OnKeyDown = FaxClientGEdtKeyDown
           OnKeyPress = Mobile2ClientGEdtKeyPress
         end
@@ -459,7 +459,7 @@ object ClientGestionF: TClientGestionF
           Font.Style = []
           ParentDoubleBuffered = False
           ParentFont = False
-          TabOrder = 5
+          TabOrder = 6
           OnKeyDown = FaxClientGEdtKeyDown
           OnKeyPress = Mobile2ClientGEdtKeyPress
         end
@@ -472,7 +472,7 @@ object ClientGestionF: TClientGestionF
           BevelKind = bkFlat
           BevelOuter = bvSpace
           Ctl3D = True
-          DoubleBuffered = False
+          DoubleBuffered = True
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = 18
@@ -503,7 +503,7 @@ object ClientGestionF: TClientGestionF
           ParentBackground = False
           ParentCtl3D = False
           ParentFont = False
-          TabOrder = 10
+          TabOrder = 11
           StyleElements = []
           BoundLabel.Caption = 'sSlider1'
           BoundLabel.Layout = sclBottomCenter
@@ -543,7 +543,7 @@ object ClientGestionF: TClientGestionF
           Font.Name = 'Roboto'
           Font.Style = []
           ParentFont = False
-          TabOrder = 13
+          TabOrder = 4
           OnDropDown = VilleClientGCbxEnter
           OnEnter = VilleClientGCbxEnter
           OnKeyPress = NameClientGEdtKeyPress
@@ -567,7 +567,7 @@ object ClientGestionF: TClientGestionF
           508
           458)
         object RCClientGLbl: TLabel
-          Left = 26
+          Left = 24
           Top = 18
           Width = 23
           Height = 18
@@ -583,7 +583,7 @@ object ClientGestionF: TClientGestionF
           StyleElements = []
         end
         object NArtClientGLbl: TLabel
-          Left = 266
+          Left = 258
           Top = 18
           Width = 40
           Height = 18
@@ -599,7 +599,7 @@ object ClientGestionF: TClientGestionF
           StyleElements = []
         end
         object NIFClientGLbl: TLabel
-          Left = 22
+          Left = 20
           Top = 64
           Width = 27
           Height = 18
@@ -615,7 +615,7 @@ object ClientGestionF: TClientGestionF
           StyleElements = []
         end
         object NISClientGLbl: TLabel
-          Left = 278
+          Left = 270
           Top = 64
           Width = 28
           Height = 18
@@ -647,7 +647,7 @@ object ClientGestionF: TClientGestionF
           StyleElements = []
         end
         object MaxCreditClientGLbl: TLabel
-          Left = 268
+          Left = 258
           Top = 252
           Width = 77
           Height = 18
@@ -664,7 +664,7 @@ object ClientGestionF: TClientGestionF
           StyleElements = []
         end
         object ModeTarifClientGLbl: TLabel
-          Left = 16
+          Left = 14
           Top = 185
           Width = 99
           Height = 18
@@ -713,7 +713,7 @@ object ClientGestionF: TClientGestionF
           StyleElements = [seClient, seBorder]
         end
         object OldCreditClientGLbl: TLabel
-          Left = 14
+          Left = 12
           Top = 252
           Width = 94
           Height = 18
@@ -729,7 +729,7 @@ object ClientGestionF: TClientGestionF
           StyleElements = []
         end
         object NBankClientGLbl: TLabel
-          Left = 12
+          Left = 10
           Top = 113
           Width = 121
           Height = 18
@@ -745,7 +745,7 @@ object ClientGestionF: TClientGestionF
           StyleElements = []
         end
         object RIBClientGLbl: TLabel
-          Left = 278
+          Left = 270
           Top = 113
           Width = 28
           Height = 18
@@ -775,9 +775,9 @@ object ClientGestionF: TClientGestionF
           StyleElements = []
         end
         object RCClientGEdt: TEdit
-          Left = 62
+          Left = 49
           Top = 15
-          Width = 170
+          Width = 186
           Height = 26
           DoubleBuffered = False
           Font.Charset = DEFAULT_CHARSET
@@ -791,9 +791,9 @@ object ClientGestionF: TClientGestionF
           OnKeyPress = NameClientGEdtKeyPress
         end
         object NArtClientGEdt: TEdit
-          Left = 312
+          Left = 299
           Top = 15
-          Width = 170
+          Width = 186
           Height = 26
           DoubleBuffered = False
           Font.Charset = DEFAULT_CHARSET
@@ -807,9 +807,9 @@ object ClientGestionF: TClientGestionF
           OnKeyPress = NameClientGEdtKeyPress
         end
         object NIFClientGEdt: TEdit
-          Left = 62
+          Left = 49
           Top = 61
-          Width = 170
+          Width = 186
           Height = 26
           DoubleBuffered = False
           Font.Charset = DEFAULT_CHARSET
@@ -823,9 +823,9 @@ object ClientGestionF: TClientGestionF
           OnKeyPress = NameClientGEdtKeyPress
         end
         object NISClientGEdt: TEdit
-          Left = 312
+          Left = 299
           Top = 61
-          Width = 170
+          Width = 186
           Height = 26
           DoubleBuffered = False
           Font.Charset = DEFAULT_CHARSET
@@ -867,9 +867,9 @@ object ClientGestionF: TClientGestionF
           OnKeyPress = NameClientGEdtKeyPress
         end
         object OldCreditClientGEdt: TEdit
-          Left = 62
+          Left = 49
           Top = 275
-          Width = 170
+          Width = 186
           Height = 26
           Alignment = taRightJustify
           DoubleBuffered = False
@@ -887,9 +887,9 @@ object ClientGestionF: TClientGestionF
           OnKeyPress = OldCreditClientGEdtKeyPress
         end
         object MaxCreditClientGEdt: TEdit
-          Left = 314
+          Left = 301
           Top = 275
-          Width = 170
+          Width = 186
           Height = 26
           Alignment = taRightJustify
           DoubleBuffered = False
@@ -908,9 +908,9 @@ object ClientGestionF: TClientGestionF
           OnKeyPress = OldCreditClientGEdtKeyPress
         end
         object ModeTarifClientGCbx: TComboBox
-          Left = 62
+          Left = 49
           Top = 208
-          Width = 170
+          Width = 186
           Height = 26
           Style = csDropDownList
           Font.Charset = DEFAULT_CHARSET
@@ -946,9 +946,9 @@ object ClientGestionF: TClientGestionF
           StyleElements = []
         end
         object NBankClientGEdt: TEdit
-          Left = 62
+          Left = 49
           Top = 136
-          Width = 170
+          Width = 186
           Height = 26
           DoubleBuffered = False
           Font.Charset = DEFAULT_CHARSET
@@ -962,9 +962,9 @@ object ClientGestionF: TClientGestionF
           OnKeyPress = NameClientGEdtKeyPress
         end
         object RIBClientGEdt: TEdit
-          Left = 312
+          Left = 299
           Top = 135
-          Width = 170
+          Width = 186
           Height = 26
           DoubleBuffered = False
           Font.Charset = DEFAULT_CHARSET

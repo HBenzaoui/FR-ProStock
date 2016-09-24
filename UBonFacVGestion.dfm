@@ -739,6 +739,19 @@ object BonFacVGestionF: TBonFacVGestionF
       ParentFont = False
       StyleElements = [seClient, seBorder]
     end
+    object BonFacVTotalMargeLbl: TLabel
+      Left = 658
+      Top = 224
+      Width = 160
+      Height = 20
+      Caption = 'BonFacVTotalMargeLbl'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 4666873
+      Font.Height = 20
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+    end
     object ModepPaiGErrorP: TPanel
       Left = 462
       Top = 124
@@ -1365,6 +1378,8 @@ object BonFacVGestionF: TBonFacVGestionF
     TitleParams.SortMarkerStyle = smstThemeDefinedEh
     TitleParams.VertLines = True
     VertScrollBar.Width = 15
+    OnCellClick = ProduitsListDBGridEhCellClick
+    OnExit = ProduitsListDBGridEhExit
     OnKeyPress = ProduitsListDBGridEhKeyPress
     OnMouseMove = ProduitsListDBGridEhMouseMove
     Columns = <
@@ -1442,6 +1457,7 @@ object BonFacVGestionF: TBonFacVGestionF
         Width = 70
       end
       item
+        DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
         FieldName = 'prixvd_p'
@@ -1464,6 +1480,27 @@ object BonFacVGestionF: TBonFacVGestionF
       end
       item
         Alignment = taCenter
+        DynProps = <>
+        EditButtons = <>
+        FieldName = 'tva_p'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 18
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
+        Footers = <>
+        Layout = tlCenter
+        Title.Alignment = taCenter
+        Title.Caption = 'TVA %'
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = 4207405
+        Title.Font.Height = 19
+        Title.Font.Name = 'Helvetica LT Std'
+        Title.Font.Style = []
+        Title.Font.Quality = fqProof
+      end
+      item
+        Alignment = taCenter
         DropDownBox.ColumnDefValues.Layout = tlCenter
         DropDownBox.Options = []
         DropDownRows = 0
@@ -1477,9 +1514,11 @@ object BonFacVGestionF: TBonFacVGestionF
         ReadOnly = True
         TextEditing = False
         Title.Alignment = taCenter
-        Title.Caption = 'TVA'
+        Title.Caption = 'TVA OLD'
+        Visible = False
       end
       item
+        DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
         FieldName = 'PrixATTC'
@@ -1502,6 +1541,7 @@ object BonFacVGestionF: TBonFacVGestionF
         Width = 170
       end
       item
+        DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
         FieldName = 'MontantHT'
@@ -1524,6 +1564,7 @@ object BonFacVGestionF: TBonFacVGestionF
         Width = 170
       end
       item
+        DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
         FieldName = 'MontantTVA'
@@ -1546,6 +1587,7 @@ object BonFacVGestionF: TBonFacVGestionF
         Width = 170
       end
       item
+        DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
         FieldName = 'MontantTTC'
@@ -1566,6 +1608,50 @@ object BonFacVGestionF: TBonFacVGestionF
         Title.Font.Style = []
         Title.Font.Quality = fqProof
         Width = 170
+      end
+      item
+        DynProps = <>
+        EditButtons = <>
+        FieldName = 'MargeM'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 18
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
+        Footers = <>
+        Layout = tlCenter
+        TextEditing = False
+        Title.Alignment = taCenter
+        Title.Caption = 'Marge'
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = 4207405
+        Title.Font.Height = 19
+        Title.Font.Name = 'Helvetica LT Std'
+        Title.Font.Style = []
+        Title.Font.Quality = fqProof
+        Width = 170
+      end
+      item
+        DisplayFormat = '0.00 %'
+        DynProps = <>
+        EditButtons = <>
+        FieldName = 'Marge'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 18
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
+        Footers = <>
+        Layout = tlCenter
+        TextEditing = False
+        Title.Alignment = taCenter
+        Title.Caption = 'Marge %'
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = 4207405
+        Title.Font.Height = 19
+        Title.Font.Name = 'Helvetica LT Std'
+        Title.Font.Style = []
+        Title.Font.Quality = fqProof
       end>
     object RowDetailData: TRowDetailPanelControlEh
     end

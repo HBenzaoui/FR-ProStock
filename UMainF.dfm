@@ -20520,6 +20520,7 @@ object MainForm: TMainForm
     Top = 105
   end
   object ClientTable: TFDQuery
+    Active = True
     FilterOptions = [foCaseInsensitive]
     IndexFieldNames = 'code_c'
     Connection = GstockdcConnection
@@ -20669,6 +20670,7 @@ object MainForm: TMainForm
     Top = 154
   end
   object FournisseurTable: TFDQuery
+    Active = True
     FilterOptions = [foCaseInsensitive]
     IndexFieldNames = 'code_f'
     Connection = GstockdcConnection
@@ -20817,6 +20819,7 @@ object MainForm: TMainForm
     Top = 182
   end
   object ProduitTable: TFDQuery
+    Active = True
     OnCalcFields = ProduitTableCalcFields
     FilterOptions = [foCaseInsensitive]
     IndexFieldNames = 'code_p'
@@ -21031,6 +21034,7 @@ object MainForm: TMainForm
     end
   end
   object UniteTable: TFDQuery
+    Active = True
     FilterOptions = [foCaseInsensitive]
     IndexFieldNames = 'code_u'
     Connection = GstockdcConnection
@@ -21040,6 +21044,7 @@ object MainForm: TMainForm
     Top = 347
   end
   object SfamproduitTable: TFDQuery
+    Active = True
     FilterOptions = [foCaseInsensitive]
     IndexFieldNames = 'code_sfamp'
     Connection = GstockdcConnection
@@ -21049,6 +21054,7 @@ object MainForm: TMainForm
     Top = 472
   end
   object FamproduitTable: TFDQuery
+    Active = True
     FilterOptions = [foCaseInsensitive]
     IndexFieldNames = 'code_famp'
     Connection = GstockdcConnection
@@ -21068,6 +21074,7 @@ object MainForm: TMainForm
     Top = 528
   end
   object LocalisationTable: TFDQuery
+    Active = True
     IndexFieldNames = 'code_l'
     Connection = GstockdcConnection
     SQL.Strings = (
@@ -22850,6 +22857,7 @@ object MainForm: TMainForm
     end
   end
   object Bona_recPlistTable: TFDQuery
+    Active = True
     AfterRefresh = Bona_recPlistTableAfterRefresh
     OnCalcFields = Bona_recPlistTableCalcFields
     FilterOptions = [foCaseInsensitive]
@@ -22860,7 +22868,7 @@ object MainForm: TMainForm
     SQL.Strings = (
       'SELECT * FROM bona_rec_list')
     Left = 137
-    Top = 540
+    Top = 542
     object Bona_recPlistTablecode_barecl: TIntegerField
       FieldName = 'code_barecl'
       Origin = 'code_barecl'
@@ -22935,6 +22943,10 @@ object MainForm: TMainForm
       FieldKind = fkCalculated
       FieldName = 'TVA'
       Calculated = True
+    end
+    object Bona_recPlistTabletva_p: TSmallintField
+      FieldName = 'tva_p'
+      Origin = 'tva_p'
     end
   end
   object FDQuery2: TFDQuery
@@ -34745,8 +34757,13 @@ object MainForm: TMainForm
       FieldKind = fkInternalCalc
       FieldName = 'NeTHT'
     end
+    object Bonv_livTablemarge_bvliv: TCurrencyField
+      FieldName = 'marge_bvliv'
+      Origin = 'marge_bvliv'
+    end
   end
   object Bonv_liv_listTable: TFDQuery
+    Active = True
     AfterRefresh = Bonv_liv_listTableAfterRefresh
     OnCalcFields = Bonv_liv_listTableCalcFields
     FilterOptions = [foCaseInsensitive]
@@ -34757,7 +34774,7 @@ object MainForm: TMainForm
     SQL.Strings = (
       'SELECT * FROM bonv_liv_list')
     Left = 475
-    Top = 536
+    Top = 538
     object Bonv_liv_listTablecode_bvlivl: TIntegerField
       FieldName = 'code_bvlivl'
       Origin = 'code_bvlivl'
@@ -34832,6 +34849,31 @@ object MainForm: TMainForm
       FieldKind = fkCalculated
       FieldName = 'TVA'
       Calculated = True
+    end
+    object Bonv_liv_listTabletva_p: TSmallintField
+      FieldName = 'tva_p'
+      Origin = 'tva_p'
+    end
+    object Bonv_liv_listTableMarge: TCurrencyField
+      FieldKind = fkInternalCalc
+      FieldName = 'Marge'
+    end
+    object Bonv_liv_listTableMontantAHT: TCurrencyField
+      FieldKind = fkInternalCalc
+      FieldName = 'MontantAHT'
+    end
+    object Bonv_liv_listTableprixht_p: TCurrencyField
+      FieldKind = fkLookup
+      FieldName = 'prixht_p'
+      LookupDataSet = ProduitTable
+      LookupKeyFields = 'code_p'
+      LookupResultField = 'prixht_p'
+      KeyFields = 'code_p'
+      Lookup = True
+    end
+    object Bonv_liv_listTableMargeM: TCurrencyField
+      FieldKind = fkInternalCalc
+      FieldName = 'MargeM'
     end
   end
   object Bona_facTable: TFDQuery
@@ -35110,6 +35152,7 @@ object MainForm: TMainForm
     end
   end
   object Bonv_fac_listTable: TFDQuery
+    Active = True
     AfterRefresh = Bonv_fac_listTableAfterRefresh
     OnCalcFields = Bonv_fac_listTableCalcFields
     FilterOptions = [foCaseInsensitive]
@@ -35199,6 +35242,27 @@ object MainForm: TMainForm
     object Bonv_fac_listTabletva_p: TSmallintField
       FieldName = 'tva_p'
       Origin = 'tva_p'
+    end
+    object Bonv_fac_listTableMarge: TCurrencyField
+      FieldKind = fkInternalCalc
+      FieldName = 'Marge'
+    end
+    object Bonv_fac_listTableMontantAHT: TCurrencyField
+      FieldKind = fkInternalCalc
+      FieldName = 'MontantAHT'
+    end
+    object Bonv_fac_listTableprixht_p: TCurrencyField
+      FieldKind = fkLookup
+      FieldName = 'prixht_p'
+      LookupDataSet = ProduitTable
+      LookupKeyFields = 'code_p'
+      LookupResultField = 'prixht_p'
+      KeyFields = 'code_p'
+      Lookup = True
+    end
+    object Bonv_fac_listTableMargeM: TCurrencyField
+      FieldKind = fkInternalCalc
+      FieldName = 'MargeM'
     end
   end
   object Bonv_facTable: TFDQuery
@@ -35337,6 +35401,10 @@ object MainForm: TMainForm
     object Bonv_facTableNetTTC: TCurrencyField
       FieldKind = fkInternalCalc
       FieldName = 'NetTTC'
+    end
+    object Bonv_facTablemarge_bvfac: TCurrencyField
+      FieldName = 'marge_bvfac'
+      Origin = 'marge_bvfac'
     end
   end
   object WilayasDataS: TDataSource
@@ -35929,6 +35997,7 @@ object MainForm: TMainForm
       FF00FF000000FF00FF00FFFF0000FFFFFF0000000000}
   end
   object Bonv_ctrTable: TFDQuery
+    Active = True
     OnCalcFields = Bonv_ctrTableCalcFields
     FilterOptions = [foCaseInsensitive]
     IndexFieldNames = 'code_bvctr'
@@ -36025,8 +36094,13 @@ object MainForm: TMainForm
       FieldKind = fkInternalCalc
       FieldName = 'NeTHT'
     end
+    object Bonv_ctrTablemarge_bvctr: TCurrencyField
+      FieldName = 'marge_bvctr'
+      Origin = 'marge_bvctr'
+    end
   end
   object Bonv_ctr_listTable: TFDQuery
+    Active = True
     AfterRefresh = Bonv_ctr_listTableAfterRefresh
     OnCalcFields = Bonv_ctr_listTableCalcFields
     FilterOptions = [foCaseInsensitive]
@@ -36109,6 +36183,31 @@ object MainForm: TMainForm
     object Bonv_ctr_listTableTVA: TCurrencyField
       FieldKind = fkInternalCalc
       FieldName = 'TVA'
+    end
+    object Bonv_ctr_listTabletva_p: TSmallintField
+      FieldName = 'tva_p'
+      Origin = 'tva_p'
+    end
+    object Bonv_ctr_listTableMarge: TCurrencyField
+      FieldKind = fkInternalCalc
+      FieldName = 'Marge'
+    end
+    object Bonv_ctr_listTableMontantAHT: TCurrencyField
+      FieldKind = fkInternalCalc
+      FieldName = 'MontantAHT'
+    end
+    object Bonv_ctr_listTableprixht_p: TCurrencyField
+      FieldKind = fkLookup
+      FieldName = 'prixht_p'
+      LookupDataSet = ProduitTable
+      LookupKeyFields = 'code_p'
+      LookupResultField = 'prixht_p'
+      KeyFields = 'code_p'
+      Lookup = True
+    end
+    object Bonv_ctr_listTableMargeM: TCurrencyField
+      FieldKind = fkInternalCalc
+      FieldName = 'MargeM'
     end
   end
   object Bonv_ctrTableCredit: TFDQuery
@@ -36223,6 +36322,11 @@ object MainForm: TMainForm
     end
   end
   object GstockdcConnection: TFDConnection
+    Params.Strings = (
+      'Database=GSTOCKDC'
+      'User_Name=postgres'
+      'DriverID=pG')
+    Connected = True
     LoginPrompt = False
     Left = 51
     Top = 112
@@ -36437,6 +36541,7 @@ object MainForm: TMainForm
     Top = 264
   end
   object UsersTable: TFDQuery
+    Active = True
     FilterOptions = [foCaseInsensitive]
     IndexFieldNames = 'code_ur'
     Connection = GstockdcConnection
