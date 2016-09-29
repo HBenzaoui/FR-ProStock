@@ -619,8 +619,13 @@ begin
           MainForm.Bona_recTable.Edit;
           MainForm.Bona_recTable.FieldValues['code_f']:= MainForm.FournisseurTable.FieldByName('code_f').AsInteger;
           MainForm.Bona_recTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
-          MainForm.Bona_recTable.FieldValues['date_barec']:= DateOf(Today);
-          MainForm.Bona_recTable.FieldValues['time_barec']:=TimeOf(Now);
+
+          if BonRecGestionF.Tag = 0 then
+          begin
+          MainForm.Bona_recTable.FieldValues['date_barec']:= BonRecGestionF.DateBonRecGD.DateTime;
+           MainForm.Bona_recTable.FieldValues['time_barec']:=TimeOf(Now);
+          end;
+
           MainForm.Bona_recTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
           MainForm.Bona_recTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
           MainForm.Bona_recTable.FieldValues['obser_barec']:= BonRecGestionF.ObserBonRecGMem.Text;
@@ -1133,8 +1138,11 @@ begin
           MainForm.Bonv_livTable.Edit;
           MainForm.Bonv_livTable.FieldValues['code_c']:= MainForm.ClientTable.FieldByName('code_c').AsInteger;
           MainForm.Bonv_livTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
-          MainForm.Bonv_livTable.FieldValues['date_bvliv']:= DateOf(Today);
+          if BonLivGestionF.Tag = 0 then
+          begin
+          MainForm.Bonv_livTable.FieldByName('date_bvliv').AsDateTime:= BonLivGestionF.DateBonLivGD.DateTime;
           MainForm.Bonv_livTable.FieldValues['time_bvliv']:=TimeOf(Now);
+          end;
           MainForm.Bonv_livTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
           MainForm.Bonv_livTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
           MainForm.Bonv_livTable.FieldValues['obser_bvliv']:= BonLivGestionF.ObserBonLivGMem.Text;
@@ -1227,8 +1235,6 @@ begin
 
             MainForm.RegclientTable.Post;
             MainForm.RegclientTable.Refresh;
-
-
 
           end else
               begin
@@ -1573,8 +1579,6 @@ begin
 
 //     BonCtrGestionF.BonCtrGClientNEWCredit.Caption := ResteVersementSLbl.Caption;
 
-
-
 //--- this is for adding to the priduit
       begin
            MainForm.ProduitTable.DisableControls;
@@ -1621,13 +1625,14 @@ begin
           MainForm.ClientTable.SQL.Text:='Select * FROM client WHERE LOWER(nom_c) LIKE LOWER('+ QuotedStr(BonCtrGestionF.ClientBonCtrGCbx.Text )+')'  ;
           MainForm.ClientTable.Active:=True;
 
-
-
           MainForm.Bonv_ctrTable.Edit;
           MainForm.Bonv_ctrTable.FieldValues['code_c']:= MainForm.ClientTable.FieldByName('code_c').AsInteger;
           MainForm.Bonv_ctrTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
-          MainForm.Bonv_ctrTable.FieldValues['date_bvctr']:= DateOf(Today);
-          MainForm.Bonv_ctrTable.FieldValues['time_bvctr']:=TimeOf(Now);
+          if BonCtrGestionF.Tag = 0 then
+          begin
+           MainForm.Bonv_ctrTable.FieldByName('date_bvctr').AsDateTime:= BonCtrGestionF.DateBonCtrGD.DateTime;
+           MainForm.Bonv_ctrTable.FieldValues['time_bvctr']:=TimeOf(Now);
+          end;
           MainForm.Bonv_ctrTable.FieldByName('montht_bvctr').AsCurrency:= StrToCurr(StringReplace(BonCtrGestionF.BonCtrTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
           if BonCtrGestionF.RemiseBonCtrGEdt.Text<>'' then
           begin
@@ -1644,7 +1649,6 @@ begin
 
           MainForm.Bonv_ctrTable.Post;
 
-
                  DisableBonCtr;
 
                  BonCtrGestionF.Timer1.Enabled:=False;
@@ -1660,7 +1664,6 @@ begin
            FSplashVersement.Release;
 
            sndPlaySound('C:\Windows\Media\speech on.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
-
 
               //-----------------------------------------------------------------------------------------------------------------------------------------------------------
         if (VerVersementSEdt.Text <> '' ) AND (VerVersementSEdt.Text <> '0' ) AND ((StrToCurr(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll])))<> 0 )
@@ -1812,7 +1815,6 @@ begin
                   MainForm.Opt_cas_bnk_CaisseTable.Post;
                   MainForm.Opt_cas_bnk_CaisseTable.Refresh;
                   MainForm.Opt_cas_bnk_BankTable.Refresh;
-
 
                   MainForm.Opt_cas_bnk_CaisseTable.Active:=false;
                   MainForm.Opt_cas_bnk_CaisseTable.SQL.Clear;

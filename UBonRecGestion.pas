@@ -129,7 +129,6 @@ type
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);
     procedure FournisseurBonRecGCbxExit(Sender: TObject);
-    procedure DateBonRecGDExit(Sender: TObject);
     procedure AdvToolButton4Click(Sender: TObject);
     procedure ListAddProduitBonRecGBtnClick(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
@@ -956,15 +955,6 @@ begin
 
 end;
 
-procedure TBonRecGestionF.DateBonRecGDExit(Sender: TObject);
-begin
-
-          MainForm.Bona_recTable.Edit;
-          MainForm.Bona_recTable.FieldValues['date_barec']:= DateBonRecGD.Date;
-          MainForm.Bona_recTable.Post;
-
-end;
-
 procedure TBonRecGestionF.AdvToolButton4Click(Sender: TObject);
 begin
 BonRecF.AddBARecBtnClick(Sender);
@@ -1036,6 +1026,7 @@ procedure TBonRecGestionF.FormCloseQuery(Sender: TObject;
           MainForm.Bona_recTable.Edit;
           MainForm.Bona_recTable.FieldValues['code_f']:= MainForm.FournisseurTable.FieldByName('code_f').AsInteger;
           MainForm.Bona_recTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
+//          MainForm.Bona_recTable.FieldByName('date_bafac').AsDateTime:= DateBonRecGD.DateTime;
           MainForm.Bona_recTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
           MainForm.Bona_recTable.FieldValues['obser_barec']:= ObserBonRecGMem.Text;
           MainForm.Bona_recTable.FieldValues['num_cheque_barec']:= NChequeBonRecGCbx.Text;

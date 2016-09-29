@@ -2223,8 +2223,11 @@ begin
           MainForm.Bonv_facTable.Edit;
           MainForm.Bonv_facTable.FieldValues['code_c']:= MainForm.ClientTable.FieldByName('code_c').AsInteger;
           MainForm.Bonv_facTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
-          MainForm.Bonv_facTable.FieldValues['date_bvfac']:= DateOf(Today);
+          if Tag = 0 then
+          begin
+          MainForm.Bonv_facTable.FieldByName('date_bvfac').AsDateTime:= DateBonFacVGD.DateTime;
           MainForm.Bonv_facTable.FieldValues['time_bvfac']:=TimeOf(Now);
+          end;
           MainForm.Bonv_facTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
           MainForm.Bonv_facTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
           MainForm.Bonv_facTable.FieldValues['obser_bvfac']:= ObserBonFacVGMem.Text;

@@ -2375,8 +2375,6 @@ var CodeOCB,CodeRF : Integer;
        Timer1.Enabled:= False;
        Label20.Visible:= False;
 
-
-
      sndPlaySound('C:\Windows\Media\speech on.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
 
 //--- this is for adding to the priduit
@@ -2441,6 +2439,11 @@ var CodeOCB,CodeRF : Integer;
           MainForm.Bonv_ctrTable.FieldByName('marge_bvctr').AsCurrency:=StrToCurr(StringReplace(BonCTRTotalMargeLbl.Caption, #32, '', [rfReplaceAll]));
           MainForm.Bonv_ctrTable.FieldByName('valider_bvctr').AsBoolean:= True;
           MainForm.Bonv_ctrTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption) ;
+          if Tag = 0 then
+          begin
+           MainForm.Bonv_ctrTable.FieldByName('date_bvctr').AsDateTime:= BonCtrGestionF.DateBonCtrGD.DateTime;
+           MainForm.Bonv_ctrTable.FieldValues['time_bvctr']:=TimeOf(Now);
+          end;
 
           MainForm.Bonv_ctrTable.Post;
   //------------------------------------------------------------------------------------------------------------------------------------------------------

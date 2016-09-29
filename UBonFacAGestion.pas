@@ -916,6 +916,11 @@ begin
           MainForm.Bona_facTable.Edit;
           MainForm.Bona_facTable.FieldValues['code_f']:= MainForm.FournisseurTable.FieldByName('code_f').AsInteger;
           MainForm.Bona_facTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
+          if Tag = 0 then
+          begin
+          MainForm.Bona_facTable.FieldByName('date_bafac').AsDateTime:= DateBonFacAGD.DateTime;
+          MainForm.Bona_facTable.FieldValues['time_bafac']:=TimeOf(Now);
+          end;
           MainForm.Bona_facTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
           MainForm.Bona_facTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
           MainForm.Bona_facTable.FieldValues['obser_bafac']:= ObserBonFacAGMem.Text;

@@ -1677,8 +1677,6 @@ object BonCtrGestionF: TBonCtrGestionF
         Color = 4666873
         ParentBackground = False
         TabOrder = 0
-        ExplicitLeft = -30
-        ExplicitTop = 44
       end
       object Panel25: TPanel
         Left = 0

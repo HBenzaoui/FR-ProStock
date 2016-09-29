@@ -934,7 +934,6 @@ object BonRecGestionF: TBonRecGestionF
       Font.Style = []
       ParentFont = False
       TabOrder = 8
-      OnExit = DateBonRecGDExit
     end
     object FournisseurBonRecGCbx: TComboBox
       Left = 463
