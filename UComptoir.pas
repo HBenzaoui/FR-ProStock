@@ -117,6 +117,8 @@ type
     APrintBVCtrBonCtrGSlider: TsSlider;
     ComptoirTicketfrxRprt: TfrxReport;
     BonCTRTotalMargeLbl: TLabel;
+    RequiredClientGlbl: TLabel;
+    NameClientGErrorP: TPanel;
     procedure FormShow(Sender: TObject);
     procedure RemiseBonCtrGEdtDblClick(Sender: TObject);
     procedure ShowKeyBoardBonCtrGBtnClick(Sender: TObject);
@@ -859,8 +861,11 @@ begin
       ClientBonCtrGCbx.SetFocus;
       CanClose := false;
     end else
-        begin
-          CodeCTR := MainForm.Bonv_ctrTable.FieldByName('code_bvctr').AsInteger;
+    begin
+      if  RequiredClientGlbl.Visible <> True then
+     begin
+
+         CodeCTR := MainForm.Bonv_ctrTable.FieldByName('code_bvctr').AsInteger;
 
          if  (MainForm.Bonv_ctrTable.FieldByName('valider_bvctr').AsBoolean = false)  then
          begin
@@ -903,7 +908,16 @@ begin
             MainForm.Opt_cas_bnk_CaisseTable.Refresh ;
 
          end;
-
+           end else
+               begin
+                  sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+                  ClientBonCtrGCbx.StyleElements:= [];
+                  RequiredClientGlbl.Caption:= 'Ce Client est bloqué' ;
+                  RequiredClientGlbl.Visible:= True;
+                  NameClientGErrorP.Visible:= True;
+                  ClientBonCtrGCbx.SetFocus;
+                  CanClose:= False;
+               end;
 
         end;
   end  else
@@ -918,13 +932,13 @@ var
 I : Integer;
   begin
 
+          ClientBonCtrGCbx.Items.Clear;
+          MainForm.ClientTable.DisableControls;
           MainForm.ClientTable.Active:=false;
           MainForm.ClientTable.SQL.Clear;
           MainForm.ClientTable.SQL.Text:='Select * FROM client '  ;
           MainForm.ClientTable.Active:=True;
 
-       MainForm.ClientTable.Refresh;
-       ClientBonCtrGCbx.Items.Clear;
        MainForm.ClientTable.first;
 
      for I := 0 to MainForm.ClientTable.RecordCount - 1 do
@@ -933,11 +947,16 @@ I : Integer;
           ClientBonCtrGCbx.Items.Add(MainForm.ClientTable.FieldByName('nom_c').AsString);
        MainForm.ClientTable.Next;
       end;
+
+     MainForm.ClientTable.EnableControls;
 end;
 
 procedure TBonCtrGestionF.ClientBonCtrGCbxChange(Sender: TObject);
-begin
-Label17.Caption:=ClientBonCtrGCbx.Text;
+begin    
+ if RequiredClientGlbl.Visible <> True then
+ begin
+  Label17.Caption:=ClientBonCtrGCbx.Text;
+ end;
 end;
 
 procedure TBonCtrGestionF.ClientBonCtrGCbxExit(Sender: TObject);
@@ -953,6 +972,9 @@ begin
       MainForm.ClientTable.SQL.Clear;
       MainForm.ClientTable.SQL.Text:='Select * FROM client WHERE LOWER(nom_c) LIKE LOWER('+ QuotedStr( ClientBonCtrGCbx.Text )+')'  ;
       MainForm.ClientTable.Active:=True;
+
+            if MainForm.ClientTable.FieldByName('activ_c').AsBoolean <> False then
+      begin
 
       if (MainForm.ClientTable.IsEmpty) then
       begin
@@ -1009,6 +1031,21 @@ begin
 //      ValiderBVlivBonCtrGBtn.Enabled:= True;
 //      ValiderBVlivBonCtrGBtn.ImageIndex:=12;
 //      end;
+
+
+
+            ClientBonCtrGCbx.StyleElements:= [seFont,seBorder,seBorder];
+            RequiredClientGlbl.Visible:= False;
+            NameClientGErrorP.Visible:= False;
+         end else
+             begin
+              sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+              ClientBonCtrGCbx.StyleElements:= [];
+              RequiredClientGlbl.Caption:='Ce Client est bloqué';
+              RequiredClientGlbl.Visible:= True;
+              NameClientGErrorP.Visible:= True;
+              ClientBonCtrGCbx.SetFocus;
+             end;
 
     end else
     begin
@@ -2286,6 +2323,9 @@ procedure TBonCtrGestionF.ValiderBVCtrBonCtrGBtnClick(Sender: TObject);
 begin
 //    if ClientBonCtrGCbx.Text <> '' then
 //    begin
+
+           if  RequiredClientGlbl.Visible <> True then
+      begin
            //-------- Show the splash screan for the adding comptes ---------//
        FSplashVersement:=TFSplashVersement.Create(Application);
        FSplashVersement.Width:=561;
@@ -2313,11 +2353,24 @@ begin
     //  AnimateWindow(FSplashVersement.Handle, 175, AW_VER_POSITIVE OR AW_BLEND OR AW_ACTIVATE );
        FormStyle:=fsNormal;
        FSplashVersement.Show;
+
+      end else
+          begin
+              sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+              ClientBonCtrGCbx.StyleElements:= [];
+              RequiredClientGlbl.Visible:= True;
+              NameClientGErrorP.Visible:= True;
+              ClientBonCtrGCbx.SetFocus;
+          end;
 end;
 
 procedure TBonCtrGestionF.ExValiderBVCtrBonCtrGBtnClick(Sender: TObject);
 var CodeOCB,CodeRF : Integer;
  begin
+
+        if RequiredClientGlbl.Visible <> True then
+        begin
+
        FSplashVersement.DisableBonCtr;
        Timer1.Enabled:= False;
        Label20.Visible:= False;
@@ -2646,6 +2699,15 @@ var CodeOCB,CodeRF : Integer;
            begin
            PrintTicketBVCtrBonCtrGBtnClick(Sender);
            end;
+
+        end  else
+             begin
+                  sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+                  ClientBonCtrGCbx.StyleElements:= [];
+                  RequiredClientGlbl.Visible:= True;
+                  NameClientGErrorP.Visible:= True;
+                  ClientBonCtrGCbx.SetFocus;
+             end;
 
 
 end;

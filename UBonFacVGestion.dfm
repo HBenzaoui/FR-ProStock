@@ -511,9 +511,9 @@ object BonFacVGestionF: TBonFacVGestionF
       TMSStyle = 0
     end
     object RequiredClientGlbl: TLabel
-      Left = 534
+      Left = 463
       Top = 67
-      Width = 267
+      Width = 411
       Height = 30
       Alignment = taCenter
       AutoSize = False
@@ -751,6 +751,7 @@ object BonFacVGestionF: TBonFacVGestionF
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
+      Visible = False
     end
     object ModepPaiGErrorP: TPanel
       Left = 462

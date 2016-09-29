@@ -511,10 +511,10 @@ object BonLivGestionF: TBonLivGestionF
       TMSStyle = 0
     end
     object RequiredClientGlbl: TLabel
-      Left = 534
+      Left = 463
       Top = 67
-      Width = 267
-      Height = 30
+      Width = 411
+      Height = 21
       Alignment = taCenter
       AutoSize = False
       Caption = 'S'#39'il vous pla'#238't entrer le nom de le Client'
@@ -719,6 +719,7 @@ object BonLivGestionF: TBonLivGestionF
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
+      Visible = False
     end
     object NameClientGErrorP: TPanel
       Left = 461

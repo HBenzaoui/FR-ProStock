@@ -720,16 +720,14 @@ procedure TBonRecGestionF.FournisseurBonRecGCbxEnter(Sender: TObject);
 var
 I : Integer;
   begin
-
+          FournisseurBonRecGCbx.Items.Clear;
+          MainForm.FournisseurTable.DisableControls;
           MainForm.FournisseurTable.Active:=false;
           MainForm.FournisseurTable.SQL.Clear;
           MainForm.FournisseurTable.SQL.Text:='Select * FROM fournisseur '  ;
           MainForm.FournisseurTable.Active:=True;
 
-       MainForm.FournisseurTable.Refresh;
-       FournisseurBonRecGCbx.Items.Clear;
        MainForm.FournisseurTable.first;
-
 
      for I := 0 to MainForm.FournisseurTable.RecordCount - 1 do
      if MainForm.FournisseurTable.FieldByName('nom_f').IsNull = False then
@@ -737,6 +735,8 @@ I : Integer;
           FournisseurBonRecGCbx.Items.Add(MainForm.FournisseurTable.FieldByName('nom_f').AsString);
        MainForm.FournisseurTable.Next;
       end;
+
+      MainForm.FournisseurTable.EnableControls;
   end;
 
 
@@ -840,6 +840,9 @@ begin
       MainForm.FournisseurTable.Active:=True;
       OLDCreditFINI:= MainForm.FournisseurTable.FieldByName('oldcredit_f').AsCurrency ;
 
+     if MainForm.FournisseurTable.FieldByName('activ_f').AsBoolean <> False then
+     begin
+
       if (MainForm.FournisseurTable.IsEmpty) then
       begin
        FournisseurBonRecGCbx.Text := '';
@@ -931,6 +934,20 @@ begin
 
       MainForm.Bona_recPlistTable.Refresh;
 
+        FournisseurBonRecGCbx.StyleElements:= [seFont,seBorder,seBorder];
+        RequiredFourGlbl.Visible:= False;
+        NameFourGErrorP.Visible:= False;
+
+       end else
+           begin
+            sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+            FournisseurBonRecGCbx.StyleElements:= [];
+            RequiredFourGlbl.Caption:='Ce Fournisseur est bloqué';
+            RequiredFourGlbl.Visible:= True;
+            NameFourGErrorP.Visible:= True;
+            FournisseurBonRecGCbx.SetFocus;
+           end;
+
     end else
     begin
      BonRecGFourOLDCredit.Caption:= FloatToStrF(0,ffNumber,14,2) ;
@@ -982,13 +999,16 @@ procedure TBonRecGestionF.FormCloseQuery(Sender: TObject;
     begin
       sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
       FournisseurBonRecGCbx.StyleElements:= [];
+      RequiredFourGlbl.Caption:= 'S''il vous plaît entrer le nom de le Fournisseur' ;
       RequiredFourGlbl.Visible:= True;
       NameFourGErrorP.Visible:= True;
 
       FournisseurBonRecGCbx.SetFocus;
       CanClose := false;
     end else
-        begin
+      begin
+       if RequiredFourGlbl.Visible <> True then
+       begin
          if  (MainForm.Bona_recTable.FieldByName('valider_barec').AsBoolean = false)  then
          begin
           codeBR:= MainForm.Bona_recTable.FieldByName('code_barec').AsInteger;
@@ -1060,7 +1080,16 @@ procedure TBonRecGestionF.FormCloseQuery(Sender: TObject;
               MainForm.Opt_cas_bnk_CaisseTable.Refresh ;
 
           end;
-
+          end else
+              begin
+                sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+                FournisseurBonRecGCbx.StyleElements:= [];
+                RequiredFourGlbl.Caption:= 'Ce Fournisseur est bloqué' ;
+                RequiredFourGlbl.Visible:= True;
+                NameFourGErrorP.Visible:= True;
+                FournisseurBonRecGCbx.SetFocus;
+                CanClose:= False;
+              end;
         end;
   end  else
   begin
@@ -1359,7 +1388,8 @@ procedure TBonRecGestionF.ValiderBARecBonRecGBtnClick(Sender: TObject);
 begin
     if FournisseurBonRecGCbx.Text <> '' then
     begin
-
+             if  RequiredFourGlbl.Visible <> True then
+      begin
 
            //-------- Show the splash screan for the adding comptes ---------//
        FSplashVersement:=TFSplashVersement.Create(self);
@@ -1387,11 +1417,21 @@ begin
        FSplashVersement.Show;
 
 
+       end else
+           begin
+              sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+              FournisseurBonRecGCbx.StyleElements:= [];
+              RequiredFourGlbl.Caption:= 'Ce Fournisseur est bloqué' ;
+              RequiredFourGlbl.Visible:= True;
+              NameFourGErrorP.Visible:= True;
+              FournisseurBonRecGCbx.SetFocus;
+           end;
 
     end else
     begin
       sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
       FournisseurBonRecGCbx.StyleElements:= [];
+      RequiredFourGlbl.Caption:= 'S''il vous plaît entrer le nom de le Fournisseur' ;
       RequiredFourGlbl.Visible:= True;
       NameFourGErrorP.Visible:= True;
 

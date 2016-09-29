@@ -321,6 +321,7 @@ begin
     begin
       sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
       FourBonFacAGCbx.StyleElements:= [];
+      RequiredFourGlbl.Caption:= 'S''il vous plaît entrer le nom de le Fournisseur' ;
       RequiredFourGlbl.Visible:= True;
       NameFourGErrorP.Visible:= True;
 
@@ -328,6 +329,10 @@ begin
       CanClose := false;
     end else
         begin
+                if RequiredFourGlbl.Visible <> True then
+               begin
+
+
          CodeFA := MainForm.Bona_facTable.FieldByName('code_bafac').AsInteger;
 
           if  (MainForm.Bona_facTable.FieldByName('valider_bafac').AsBoolean = false)  then
@@ -404,6 +409,18 @@ begin
             MainForm.Opt_cas_bnk_CaisseTable.Refresh ;
 
          end;
+
+              end else
+                begin
+                  sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+                  FourBonFacAGCbx.StyleElements:= [];
+                  RequiredFourGlbl.Caption:= 'Ce Fournisseur est bloqué' ;
+                  RequiredFourGlbl.Visible:= True;
+                  NameFourGErrorP.Visible:= True;
+                  FourBonFacAGCbx.SetFocus;
+                  CanClose:= False;
+
+                end;
 
         end;
   end  else
@@ -766,6 +783,10 @@ begin
 
      if FourBonFacAGCbx.Text <> '' then
     begin
+                 if RequiredFourGlbl.Visible <> True then
+      begin
+
+
    if ModePaieBonFacAGCbx.Text <> '' then
     begin
 
@@ -776,6 +797,7 @@ begin
       MainForm.FournisseurTable.SQL.Clear;
       MainForm.FournisseurTable.SQL.Text:='Select * FROM fournisseur WHERE LOWER(nom_f) LIKE LOWER('+ QuotedStr( FourBonFacAGCbx.Text )+')'  ;
       MainForm.FournisseurTable.Active:=True;
+
 
       if (MainForm.FournisseurTable.IsEmpty) then
       begin
@@ -1309,10 +1331,20 @@ begin
             ModePaieBonFacAGCbx.SetFocus;
            end;
 
+                  end else
+                begin
+                  sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+                  FourBonFacAGCbx.StyleElements:= [];
+                  RequiredFourGlbl.Caption:= 'Ce Fournisseur est bloqué' ;
+                  RequiredFourGlbl.Visible:= True;
+                  NameFourGErrorP.Visible:= True;
+                  FourBonFacAGCbx.SetFocus;
+                end;
   end else
         begin
           sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
           FourBonFacAGCbx.StyleElements:= [];
+          RequiredFourGlbl.Caption:= 'S''il vous plaît entrer le nom de le Fournisseur' ;
           RequiredFourGlbl.Visible:= True;
           NameFourGErrorP.Visible:= True;
 
@@ -1342,6 +1374,9 @@ begin
       MainForm.FournisseurTable.SQL.Text:='Select * FROM fournisseur WHERE LOWER(nom_f) LIKE LOWER('+ QuotedStr( FourBonFacAGCbx.Text )+')'  ;
       MainForm.FournisseurTable.Active:=True;
       OLDCreditFINI:= MainForm.FournisseurTable.FieldByName('oldcredit_f').AsCurrency;
+
+      if MainForm.FournisseurTable.FieldByName('activ_f').AsBoolean <> False then
+      begin
 
       if (MainForm.FournisseurTable.IsEmpty) then
       begin
@@ -1430,6 +1465,20 @@ begin
 
       MainForm.Bona_fac_listTable.Refresh;
 
+            FourBonFacAGCbx.StyleElements:= [seFont,seBorder,seBorder];
+            RequiredFourGlbl.Visible:= False;
+            NameFourGErrorP.Visible:= False;
+
+       end else
+           begin
+            sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+            FourBonFacAGCbx.StyleElements:= [];
+            RequiredFourGlbl.Caption:='Ce Fournisseur est bloqué';
+            RequiredFourGlbl.Visible:= True;
+            NameFourGErrorP.Visible:= True;
+            FourBonFacAGCbx.SetFocus;
+           end;
+
     end else
     begin
 
@@ -1445,14 +1494,13 @@ procedure TBonFacAGestionF.FourBonFacAGCbxEnter(Sender: TObject);
 var
 I : Integer;
   begin
-
+        FourBonFacAGCbx.Items.Clear;
+        MainForm.FournisseurTable.DisableControls;
         MainForm.FournisseurTable.Active:=false;
         MainForm.FournisseurTable.SQL.Clear;
         MainForm.FournisseurTable.SQL.Text:='Select * FROM fournisseur '  ;
         MainForm.FournisseurTable.Active:=True;
 
-       MainForm.FournisseurTable.Refresh;
-       FourBonFacAGCbx.Items.Clear;
        MainForm.FournisseurTable.first;
 
      for I := 0 to MainForm.FournisseurTable.RecordCount - 1 do
@@ -1461,6 +1509,8 @@ I : Integer;
           FourBonFacAGCbx.Items.Add(MainForm.FournisseurTable.FieldByName('nom_f').AsString);
        MainForm.FournisseurTable.Next;
       end;
+
+      MainForm.FournisseurTable.EnableControls;
 end;
 
 procedure TBonFacAGestionF.FourBonFacAGCbxKeyPress(Sender: TObject;

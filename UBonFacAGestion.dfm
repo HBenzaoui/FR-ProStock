@@ -512,9 +512,9 @@ object BonFacAGestionF: TBonFacAGestionF
       TMSStyle = 0
     end
     object RequiredFourGlbl: TLabel
-      Left = 534
+      Left = 463
       Top = 66
-      Width = 267
+      Width = 409
       Height = 30
       Alignment = taCenter
       AutoSize = False

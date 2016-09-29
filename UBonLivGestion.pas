@@ -351,16 +351,19 @@ begin
     begin
       sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
       ClientBonLivGCbx.StyleElements:= [];
+      RequiredClientGlbl.Caption:= 'S''il vous plaît entrer le nom de le Client' ;
       RequiredClientGlbl.Visible:= True;
       NameClientGErrorP.Visible:= True;
 
       ClientBonLivGCbx.SetFocus;
       CanClose := false;
     end else
-        begin
+    begin
+         if RequiredClientGlbl.Visible <> True then
+         begin
          if  (MainForm.Bonv_livTable.FieldByName('valider_bvliv').AsBoolean = false)  then
          begin
-         codeBL:=MainForm.Bonv_livTable.FieldByName('code_bvliv').AsInteger;
+          codeBL:=MainForm.Bonv_livTable.FieldByName('code_bvliv').AsInteger;
 
           MainForm.ClientTable.DisableControls;
           MainForm.ClientTable.Active:=false;
@@ -430,7 +433,19 @@ begin
 
          end;
 
-        end;
+       end else
+           begin
+            sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+            ClientBonLivGCbx.StyleElements:= [];
+            RequiredClientGlbl.Caption:= 'Ce Client est bloqué' ;
+            RequiredClientGlbl.Visible:= True;
+            NameClientGErrorP.Visible:= True;
+
+            ClientBonLivGCbx.SetFocus;
+            CanClose:= False;
+           end;
+
+    end;
   end  else
   begin
 
@@ -974,14 +989,16 @@ var
 I : Integer;
   begin
 
+          ClientBonLivGCbx.Items.Clear;
+          MainForm.ClientTable.DisableControls;
           MainForm.ClientTable.Active:=false;
           MainForm.ClientTable.SQL.Clear;
           MainForm.ClientTable.SQL.Text:='Select * FROM client '  ;
           MainForm.ClientTable.Active:=True;
 
-       MainForm.ClientTable.Refresh;
-       ClientBonLivGCbx.Items.Clear;
-       MainForm.ClientTable.first;
+//       MainForm.ClientTable.Refresh;
+
+         MainForm.ClientTable.first;
 
      for I := 0 to MainForm.ClientTable.RecordCount - 1 do
      if MainForm.ClientTable.FieldByName('nom_c').IsNull = False then
@@ -989,6 +1006,8 @@ I : Integer;
           ClientBonLivGCbx.Items.Add(MainForm.ClientTable.FieldByName('nom_c').AsString);
        MainForm.ClientTable.Next;
       end;
+
+        MainForm.ClientTable.EnableControls;
 end;
 
 procedure TBonLivGestionF.ClientBonLivGCbxKeyPress(Sender: TObject;
@@ -1015,95 +1034,111 @@ begin
       MainForm.ClientTable.Active:=True;
       OLDCreditCINI:=MainForm.ClientTable.FieldByName('oldcredit_c').AsCurrency;
 
-
-      if (MainForm.ClientTable.IsEmpty) then
+      if MainForm.ClientTable.FieldByName('activ_c').AsBoolean <> False then
       begin
-       ClientBonLivGCbx.Text := '';
-       BonLivGClientOLDCredit.Caption:= FloatToStrF(0,ffNumber,14,2) ;
-       BonLivGClientNEWCredit.Caption:=BonLivGClientOLDCredit.Caption;
-       exit;
-      end;
-      CodeC:= MainForm.ClientTable.FieldValues['code_c'] ;
 
-      MainForm.Bonv_livTableCredit.DisableControls;
-      MainForm.Bonv_livTableCredit.Active:=false;
-      MainForm.Bonv_livTableCredit.SQL.Clear;
-      MainForm.Bonv_livTableCredit.SQL.Text:='Select * FROM bonv_liv WHERE valider_bvliv = true AND code_c = '+ IntToStr( CodeC )+' ORDER BY code_bvliv '  ;
-      MainForm.Bonv_livTableCredit.Active:=True;
-
-      while NOT (MainForm.Bonv_livTableCredit.Eof) do
-     begin
-     OLDCreditC := OLDCreditC + MainForm.Bonv_livTableCredit.FieldValues['MontantRes'];
-     MainForm.Bonv_livTableCredit.Next;
-     end;
-      MainForm.Bonv_livTableCredit.EnableControls;
-
-
-                 MainForm.RegclientTable.DisableControls;
-      MainForm.RegclientTable.Active:=false;
-      MainForm.RegclientTable.SQL.Clear;
-      MainForm.RegclientTable.SQL.Text:='Select * FROM regclient WHERE bon_or_no_rc = 1 AND code_c = '+ IntToStr( CodeC )+' ORDER BY code_rc '  ;
-      MainForm.RegclientTable.Active:=True;
-
-     while NOT (MainForm.RegclientTable.Eof) do
-     begin
-     RegCCreditC := RegCCreditC + MainForm.RegclientTable.FieldValues['montver_rc'];
-     MainForm.RegclientTable.Next;
-     end;
-
-      if NOT (MainForm.Bonv_livTableCredit.IsEmpty ) OR NOT (MainForm.RegclientTable.IsEmpty) OR NOT (OLDCreditCINI = 0) then
-      begin
-       MainForm.Bonv_livTableCredit.last;
-       BonLivGClientOLDCredit.Caption:= CurrToStrF(((OLDCreditC - RegCCreditC) + OLDCreditCINI ),ffNumber,2) ;
-
-       if NOT (BonLivPListDataS.DataSet.IsEmpty) then
+        if (MainForm.ClientTable.IsEmpty) then
         begin
-        if Tag = 0 then
-         begin
-         BonLivGClientNEWCredit.Caption:=
-         CurrToStrF((MainForm.Bonv_livTableCredit.FieldByName('MontantRes').AsCurrency ) + StrToCurr(StringReplace(BonLivResteLbl.Caption, #32, '', [rfReplaceAll])),ffNumber,2);//  anyways i'm software developer
-         end else
-             begin
-              BonLivGClientNEWCredit.Caption:=
-              CurrToStrF((MainForm.Bonv_livTableCredit.FieldByName('MontantRes').AsCurrency ) + StrToCurr(StringReplace(BonLivTotalTTCLbl.Caption, #32, '', [rfReplaceAll])),ffNumber,2);//  anyways i'm software developer
-
-
-             end;
-
+         ClientBonLivGCbx.Text := '';
+         BonLivGClientOLDCredit.Caption:= FloatToStrF(0,ffNumber,14,2) ;
+         BonLivGClientNEWCredit.Caption:=BonLivGClientOLDCredit.Caption;
+         exit;
         end;
-        end else
+        CodeC:= MainForm.ClientTable.FieldValues['code_c'] ;
+
+        MainForm.Bonv_livTableCredit.DisableControls;
+        MainForm.Bonv_livTableCredit.Active:=false;
+        MainForm.Bonv_livTableCredit.SQL.Clear;
+        MainForm.Bonv_livTableCredit.SQL.Text:='Select * FROM bonv_liv WHERE valider_bvliv = true AND code_c = '+ IntToStr( CodeC )+' ORDER BY code_bvliv '  ;
+        MainForm.Bonv_livTableCredit.Active:=True;
+
+        while NOT (MainForm.Bonv_livTableCredit.Eof) do
+       begin
+       OLDCreditC := OLDCreditC + MainForm.Bonv_livTableCredit.FieldValues['MontantRes'];
+       MainForm.Bonv_livTableCredit.Next;
+       end;
+        MainForm.Bonv_livTableCredit.EnableControls;
+
+
+                   MainForm.RegclientTable.DisableControls;
+        MainForm.RegclientTable.Active:=false;
+        MainForm.RegclientTable.SQL.Clear;
+        MainForm.RegclientTable.SQL.Text:='Select * FROM regclient WHERE bon_or_no_rc = 1 AND code_c = '+ IntToStr( CodeC )+' ORDER BY code_rc '  ;
+        MainForm.RegclientTable.Active:=True;
+
+       while NOT (MainForm.RegclientTable.Eof) do
+       begin
+       RegCCreditC := RegCCreditC + MainForm.RegclientTable.FieldValues['montver_rc'];
+       MainForm.RegclientTable.Next;
+       end;
+
+        if NOT (MainForm.Bonv_livTableCredit.IsEmpty ) OR NOT (MainForm.RegclientTable.IsEmpty) OR NOT (OLDCreditCINI = 0) then
         begin
-         BonLivGClientOLDCredit.Caption:= CurrToStrF(0,ffNumber,2) ;
+         MainForm.Bonv_livTableCredit.last;
+         BonLivGClientOLDCredit.Caption:= CurrToStrF(((OLDCreditC - RegCCreditC) + OLDCreditCINI ),ffNumber,2) ;
+
+         if NOT (BonLivPListDataS.DataSet.IsEmpty) then
+          begin
+          if Tag = 0 then
+           begin
+           BonLivGClientNEWCredit.Caption:=
+           CurrToStrF((MainForm.Bonv_livTableCredit.FieldByName('MontantRes').AsCurrency ) + StrToCurr(StringReplace(BonLivResteLbl.Caption, #32, '', [rfReplaceAll])),ffNumber,2);//  anyways i'm software developer
+           end else
+               begin
+                BonLivGClientNEWCredit.Caption:=
+                CurrToStrF((MainForm.Bonv_livTableCredit.FieldByName('MontantRes').AsCurrency ) + StrToCurr(StringReplace(BonLivTotalTTCLbl.Caption, #32, '', [rfReplaceAll])),ffNumber,2);//  anyways i'm software developer
+
+
+               end;
+
+          end;
+          end else
+          begin
+           BonLivGClientOLDCredit.Caption:= CurrToStrF(0,ffNumber,2) ;
+          end;
+
+
+        MainForm.Bonv_livTableCredit.DisableControls;
+        MainForm.Bonv_livTableCredit.Active:=false;
+        MainForm.Bonv_livTableCredit.SQL.Clear;
+        MainForm.Bonv_livTableCredit.SQL.Text:='Select * FROM bonv_liv '  ;
+        MainForm.Bonv_livTableCredit.Active:=True;
+        MainForm.Bonv_livTableCredit.last;
+        MainForm.Bonv_livTableCredit.EnableControls;
+
+
+        MainForm.RegclientTable.Active:=false;
+        MainForm.RegclientTable.SQL.Clear;
+        MainForm.RegclientTable.SQL.Text:='Select * FROM regclient ORDER BY time_rc '  ;
+        MainForm.RegclientTable.Active:=True;
+        MainForm.RegclientTable.EnableControls;
+
+        MainForm.ClientTable.Active:=false;
+        MainForm.ClientTable.SQL.Clear;
+        MainForm.ClientTable.SQL.Text:='Select * FROM client' ;
+        MainForm.ClientTable.Active:=True;
+        MainForm.ClientTable.EnableControls;
+        if NOT (BonLivPListDataS.DataSet.IsEmpty) AND NOT (MainForm.Bonv_livTable.FieldByName('valider_bvliv').AsBoolean = true) then
+        begin
+        ValiderBVlivBonLivGBtn.Enabled:= True;
+        ValiderBVlivBonLivGBtn.ImageIndex:=12;
         end;
-
-
-      MainForm.Bonv_livTableCredit.DisableControls;
-      MainForm.Bonv_livTableCredit.Active:=false;
-      MainForm.Bonv_livTableCredit.SQL.Clear;
-      MainForm.Bonv_livTableCredit.SQL.Text:='Select * FROM bonv_liv '  ;
-      MainForm.Bonv_livTableCredit.Active:=True;
-      MainForm.Bonv_livTableCredit.last;
-      MainForm.Bonv_livTableCredit.EnableControls;
-
-
-      MainForm.RegclientTable.Active:=false;
-      MainForm.RegclientTable.SQL.Clear;
-      MainForm.RegclientTable.SQL.Text:='Select * FROM regclient ORDER BY time_rc '  ;
-      MainForm.RegclientTable.Active:=True;
-      MainForm.RegclientTable.EnableControls;
-
-      MainForm.ClientTable.Active:=false;
-      MainForm.ClientTable.SQL.Clear;
-      MainForm.ClientTable.SQL.Text:='Select * FROM client' ;
-      MainForm.ClientTable.Active:=True;
-      MainForm.ClientTable.EnableControls;
-      if NOT (BonLivPListDataS.DataSet.IsEmpty) AND NOT (MainForm.Bonv_livTable.FieldByName('valider_bvliv').AsBoolean = true) then
-      begin
-      ValiderBVlivBonLivGBtn.Enabled:= True;
-      ValiderBVlivBonLivGBtn.ImageIndex:=12;
-      end;
 
       MainForm.Bonv_liv_listTable.Refresh;
+
+            ClientBonLivGCbx.StyleElements:= [seFont,seBorder,seBorder];
+            RequiredClientGlbl.Visible:= False;
+            NameClientGErrorP.Visible:= False;
+
+      end else
+          begin
+            sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+            ClientBonLivGCbx.StyleElements:= [];
+            RequiredClientGlbl.Caption:='Ce Client est bloqué';
+            RequiredClientGlbl.Visible:= True;
+            NameClientGErrorP.Visible:= True;
+            ClientBonLivGCbx.SetFocus;
+          end;
 
     end else
     begin
@@ -1123,9 +1158,11 @@ end;
 procedure TBonLivGestionF.ClientBonLivGCbxChange(Sender: TObject);
 begin
 // use this code to make mode pai espece
+
       ModePaieBonLivGCbxDropDown(Self);
       ModePaieBonLivGCbx.ItemIndex:=0;
       ModePaieBonLivGCbxClick(Self) ;
+
 end;
 
 procedure TBonLivGestionF.ModePaieBonLivGCbxDropDown(Sender: TObject);
@@ -1997,6 +2034,9 @@ procedure TBonLivGestionF.ValiderBVlivBonLivGBtnClick(Sender: TObject);
 begin
     if ClientBonLivGCbx.Text <> '' then
     begin
+
+      if  RequiredClientGlbl.Visible <> True then
+      begin
            //-------- Show the splash screan for the adding comptes ---------//
        FSplashVersement:=TFSplashVersement.Create(Application);
        FSplashVersement.Left:=  (MainForm.Left + MainForm.Width div 2) - (FSplashVersement.Width div 2);
@@ -2016,11 +2056,24 @@ begin
        AnimateWindow(FSplashVersement.Handle, 175, AW_VER_POSITIVE OR AW_SLIDE OR AW_ACTIVATE );
        FSplashVersement.Show;
 
+      end  else
+           begin
+
+              sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+              ClientBonLivGCbx.StyleElements:= [];
+              RequiredClientGlbl.Caption:= 'Ce Client est bloqué' ;
+              RequiredClientGlbl.Visible:= True;
+              NameClientGErrorP.Visible:= True;
+              ClientBonLivGCbx.SetFocus;
+
+           end;
+
 
     end else
     begin
       sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
       ClientBonLivGCbx.StyleElements:= [];
+      RequiredClientGlbl.Caption:= 'S''il vous plaît entrer le nom de le Client' ;
       RequiredClientGlbl.Visible:= True;
       NameClientGErrorP.Visible:= True;
 

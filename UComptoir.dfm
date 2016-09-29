@@ -342,6 +342,7 @@ object BonCtrGestionF: TBonCtrGestionF
         Layout = tlCenter
         TextEditing = False
         Title.Alignment = taCenter
+        Title.Caption = 'Marge'
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = 4207405
         Title.Font.Height = 19
@@ -699,6 +700,7 @@ object BonCtrGestionF: TBonCtrGestionF
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
+      Visible = False
     end
     object ProduitBonCtrGCbx: TComboBox
       Left = 107
@@ -1628,6 +1630,43 @@ object BonCtrGestionF: TBonCtrGestionF
         Version = '1.6.1.1'
         TMSStyle = 0
       end
+      object RequiredClientGlbl: TLabel
+        Left = 54
+        Top = 1
+        Width = 159
+        Height = 21
+        Alignment = taCenter
+        AutoSize = False
+        Caption = 'Ce Client est bloqu'#233
+        Color = clBtnFace
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4666873
+        Font.Height = 14
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
+        ParentColor = False
+        ParentFont = False
+        Visible = False
+        WordWrap = True
+        StyleElements = [seClient, seBorder]
+      end
+      object NameClientGErrorP: TPanel
+        Left = 52
+        Top = 14
+        Width = 164
+        Height = 34
+        BevelOuter = bvNone
+        BevelWidth = 2
+        Color = 8421631
+        Ctl3D = False
+        FullRepaint = False
+        ParentBackground = False
+        ParentCtl3D = False
+        ShowCaption = False
+        TabOrder = 3
+        Visible = False
+        StyleElements = []
+      end
       object Panel24: TPanel
         Left = 0
         Top = 60
@@ -1638,6 +1677,8 @@ object BonCtrGestionF: TBonCtrGestionF
         Color = 4666873
         ParentBackground = False
         TabOrder = 0
+        ExplicitLeft = -30
+        ExplicitTop = 44
       end
       object Panel25: TPanel
         Left = 0
@@ -1667,6 +1708,7 @@ object BonCtrGestionF: TBonCtrGestionF
         TabOrder = 2
         Text = 'Comptoir'
         OnChange = ClientBonCtrGCbxChange
+        OnClick = ClientBonCtrGCbxExit
         OnDropDown = ClientBonCtrGCbxDropDown
         OnEnter = ClientBonCtrGCbxDropDown
         OnExit = ClientBonCtrGCbxExit

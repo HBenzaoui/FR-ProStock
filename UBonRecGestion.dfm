@@ -513,10 +513,11 @@ object BonRecGestionF: TBonRecGestionF
       TMSStyle = 0
     end
     object RequiredFourGlbl: TLabel
-      Left = 534
+      Left = 463
       Top = 66
-      Width = 267
+      Width = 406
       Height = 30
+      Alignment = taCenter
       AutoSize = False
       Caption = 'S'#39'il vous pla'#238't entrer le nom de le Fournisseur'
       Color = clBtnFace
@@ -1542,6 +1543,221 @@ object BonRecGestionF: TBonRecGestionF
         ReadOnly = True
         TextEditing = False
         Title.Alignment = taCenter
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = 4207405
+        Title.Font.Height = 19
+        Title.Font.Name = 'Helvetica LT Std'
+        Title.Font.Style = []
+        Title.Font.Quality = fqProof
+        Width = 170
+      end
+      item
+        Alignment = taRightJustify
+        DynProps = <>
+        EditButtons = <>
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 18
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
+        Footers = <>
+        Layout = tlCenter
+        Title.Alignment = taCenter
+        Title.Caption = 'Prix V D'#233'taillant'
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = 4207405
+        Title.Font.Height = 19
+        Title.Font.Name = 'Helvetica LT Std'
+        Title.Font.Style = []
+        Title.Font.Quality = fqProof
+        Width = 170
+      end
+      item
+        Alignment = taRightJustify
+        DisplayFormat = '0.00 %'
+        DynProps = <>
+        EditButtons = <>
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 18
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
+        Footers = <>
+        Layout = tlCenter
+        Title.Alignment = taCenter
+        Title.Caption = 'Marge D'#233'taillant %'
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = 4207405
+        Title.Font.Height = 19
+        Title.Font.Name = 'Helvetica LT Std'
+        Title.Font.Style = []
+        Title.Font.Quality = fqProof
+        Width = 170
+      end
+      item
+        Alignment = taRightJustify
+        DynProps = <>
+        EditButtons = <>
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 18
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
+        Footers = <>
+        Layout = tlCenter
+        Title.Alignment = taCenter
+        Title.Caption = 'Prix V Revendeur'
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = 4207405
+        Title.Font.Height = 19
+        Title.Font.Name = 'Helvetica LT Std'
+        Title.Font.Style = []
+        Title.Font.Quality = fqProof
+        Width = 170
+      end
+      item
+        Alignment = taRightJustify
+        DisplayFormat = '0.00 %'
+        DynProps = <>
+        EditButtons = <>
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 18
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
+        Footers = <>
+        Layout = tlCenter
+        Title.Alignment = taCenter
+        Title.Caption = 'Marge Revendeur %'
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = 4207405
+        Title.Font.Height = 19
+        Title.Font.Name = 'Helvetica LT Std'
+        Title.Font.Style = []
+        Title.Font.Quality = fqProof
+        Width = 170
+      end
+      item
+        Alignment = taRightJustify
+        DynProps = <>
+        EditButtons = <>
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 18
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
+        Footers = <>
+        Layout = tlCenter
+        Title.Alignment = taCenter
+        Title.Caption = 'Prix V Gros'
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = 4207405
+        Title.Font.Height = 19
+        Title.Font.Name = 'Helvetica LT Std'
+        Title.Font.Style = []
+        Title.Font.Quality = fqProof
+        Width = 170
+      end
+      item
+        Alignment = taRightJustify
+        DisplayFormat = '0.00 %'
+        DynProps = <>
+        EditButtons = <>
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 18
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
+        Footers = <>
+        Layout = tlCenter
+        Title.Alignment = taCenter
+        Title.Caption = 'Marge Gros %'
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = 4207405
+        Title.Font.Height = 19
+        Title.Font.Name = 'Helvetica LT Std'
+        Title.Font.Style = []
+        Title.Font.Quality = fqProof
+        Width = 170
+      end
+      item
+        Alignment = taRightJustify
+        DynProps = <>
+        EditButtons = <>
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 18
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
+        Footers = <>
+        Layout = tlCenter
+        Title.Alignment = taCenter
+        Title.Caption = 'Prix V Autre 1'
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = 4207405
+        Title.Font.Height = 19
+        Title.Font.Name = 'Helvetica LT Std'
+        Title.Font.Style = []
+        Title.Font.Quality = fqProof
+        Width = 170
+      end
+      item
+        Alignment = taRightJustify
+        DisplayFormat = '0.00 %'
+        DynProps = <>
+        EditButtons = <>
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 18
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
+        Footers = <>
+        Layout = tlCenter
+        Title.Alignment = taCenter
+        Title.Caption = 'Marge Autre 1 %'
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = 4207405
+        Title.Font.Height = 19
+        Title.Font.Name = 'Helvetica LT Std'
+        Title.Font.Style = []
+        Title.Font.Quality = fqProof
+        Width = 170
+      end
+      item
+        Alignment = taRightJustify
+        DynProps = <>
+        EditButtons = <>
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 18
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
+        Footers = <>
+        Layout = tlCenter
+        Title.Alignment = taCenter
+        Title.Caption = 'Prix V Autre 2'
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = 4207405
+        Title.Font.Height = 19
+        Title.Font.Name = 'Helvetica LT Std'
+        Title.Font.Style = []
+        Title.Font.Quality = fqProof
+        Width = 170
+      end
+      item
+        Alignment = taRightJustify
+        DisplayFormat = '0.00 %'
+        DynProps = <>
+        EditButtons = <>
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 18
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
+        Footers = <>
+        Layout = tlCenter
+        Title.Alignment = taCenter
+        Title.Caption = 'Marge Autre 2 %'
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = 4207405
         Title.Font.Height = 19
