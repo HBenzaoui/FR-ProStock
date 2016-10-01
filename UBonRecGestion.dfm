@@ -187,8 +187,8 @@ object BonRecGestionF: TBonRecGestionF
     object Label5: TLabel
       Left = 16
       Top = 63
-      Width = 35
-      Height = 20
+      Width = 34
+      Height = 19
       Caption = 'Date'
       Color = 15722984
       Font.Charset = DEFAULT_CHARSET
@@ -203,8 +203,8 @@ object BonRecGestionF: TBonRecGestionF
     object Label6: TLabel
       Left = 15
       Top = 23
-      Width = 152
-      Height = 20
+      Width = 153
+      Height = 19
       Caption = 'Bon de R'#233'ception N'#176
       Color = 15722984
       Font.Charset = DEFAULT_CHARSET
@@ -219,7 +219,7 @@ object BonRecGestionF: TBonRecGestionF
     object NumBonRecGEdt: TLabel
       Left = 170
       Top = 22
-      Width = 130
+      Width = 131
       Height = 22
       Caption = 'BR2016/00001'
       Color = 15722984
@@ -316,7 +316,7 @@ object BonRecGestionF: TBonRecGestionF
     object Label7: TLabel
       Left = 414
       Top = 132
-      Width = 43
+      Width = 44
       Height = 18
       Caption = 'Mode:'
       Color = 4207405
@@ -364,7 +364,7 @@ object BonRecGestionF: TBonRecGestionF
     object Label16: TLabel
       Left = 657
       Top = 132
-      Width = 57
+      Width = 60
       Height = 18
       Caption = 'Compte:'
       Color = 4207405
@@ -651,7 +651,7 @@ object BonRecGestionF: TBonRecGestionF
     object Label23: TLabel
       Left = 380
       Top = 177
-      Width = 77
+      Width = 80
       Height = 18
       Caption = 'N'#176' Ch'#233'que:'
       Color = 4207405
@@ -667,8 +667,8 @@ object BonRecGestionF: TBonRecGestionF
     object ObserBonRecGLbl: TLabel
       Left = 15
       Top = 99
-      Width = 102
-      Height = 20
+      Width = 99
+      Height = 19
       Caption = 'Observations:'
       Color = 4207405
       Font.Charset = DEFAULT_CHARSET
@@ -1322,6 +1322,7 @@ object BonRecGestionF: TBonRecGestionF
     TitleParams.VertLines = True
     VertScrollBar.Width = 15
     OnCellClick = ProduitsListDBGridEhCellClick
+    OnDrawColumnCell = ProduitsListDBGridEhDrawColumnCell
     OnExit = ProduitsListDBGridEhExit
     OnKeyPress = ProduitsListDBGridEhKeyPress
     Columns = <
@@ -1421,6 +1422,7 @@ object BonRecGestionF: TBonRecGestionF
       end
       item
         Alignment = taCenter
+        DisplayFormat = '0.00 %'
         DynProps = <>
         EditButtons = <>
         FieldName = 'tva_p'
@@ -1528,6 +1530,7 @@ object BonRecGestionF: TBonRecGestionF
         Width = 170
       end
       item
+        Color = 15722984
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
@@ -1551,9 +1554,9 @@ object BonRecGestionF: TBonRecGestionF
         Width = 170
       end
       item
-        Alignment = taRightJustify
         DynProps = <>
         EditButtons = <>
+        FieldName = 'prixvd_p'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
         Font.Height = 18
@@ -1562,7 +1565,7 @@ object BonRecGestionF: TBonRecGestionF
         Footers = <>
         Layout = tlCenter
         Title.Alignment = taCenter
-        Title.Caption = 'Prix V D'#233'taillant'
+        Title.Caption = 'Prix V HT D'#233'taillant'
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = 4207405
         Title.Font.Height = 19
@@ -1572,10 +1575,10 @@ object BonRecGestionF: TBonRecGestionF
         Width = 170
       end
       item
-        Alignment = taRightJustify
         DisplayFormat = '0.00 %'
         DynProps = <>
         EditButtons = <>
+        FieldName = 'MargeD'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
         Font.Height = 18
@@ -1583,6 +1586,7 @@ object BonRecGestionF: TBonRecGestionF
         Font.Style = []
         Footers = <>
         Layout = tlCenter
+        TextEditing = False
         Title.Alignment = taCenter
         Title.Caption = 'Marge D'#233'taillant %'
         Title.Font.Charset = DEFAULT_CHARSET
@@ -1594,9 +1598,9 @@ object BonRecGestionF: TBonRecGestionF
         Width = 170
       end
       item
-        Alignment = taRightJustify
         DynProps = <>
         EditButtons = <>
+        FieldName = 'prixvr_p'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
         Font.Height = 18
@@ -1605,7 +1609,7 @@ object BonRecGestionF: TBonRecGestionF
         Footers = <>
         Layout = tlCenter
         Title.Alignment = taCenter
-        Title.Caption = 'Prix V Revendeur'
+        Title.Caption = 'Prix V HT Revendeur'
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = 4207405
         Title.Font.Height = 19
@@ -1615,10 +1619,10 @@ object BonRecGestionF: TBonRecGestionF
         Width = 170
       end
       item
-        Alignment = taRightJustify
         DisplayFormat = '0.00 %'
         DynProps = <>
         EditButtons = <>
+        FieldName = 'MargeR'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
         Font.Height = 18
@@ -1626,6 +1630,7 @@ object BonRecGestionF: TBonRecGestionF
         Font.Style = []
         Footers = <>
         Layout = tlCenter
+        TextEditing = False
         Title.Alignment = taCenter
         Title.Caption = 'Marge Revendeur %'
         Title.Font.Charset = DEFAULT_CHARSET
@@ -1637,9 +1642,9 @@ object BonRecGestionF: TBonRecGestionF
         Width = 170
       end
       item
-        Alignment = taRightJustify
         DynProps = <>
         EditButtons = <>
+        FieldName = 'prixvg_p'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
         Font.Height = 18
@@ -1648,7 +1653,7 @@ object BonRecGestionF: TBonRecGestionF
         Footers = <>
         Layout = tlCenter
         Title.Alignment = taCenter
-        Title.Caption = 'Prix V Gros'
+        Title.Caption = 'Prix V HT Gros'
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = 4207405
         Title.Font.Height = 19
@@ -1658,10 +1663,10 @@ object BonRecGestionF: TBonRecGestionF
         Width = 170
       end
       item
-        Alignment = taRightJustify
         DisplayFormat = '0.00 %'
         DynProps = <>
         EditButtons = <>
+        FieldName = 'MargeG'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
         Font.Height = 18
@@ -1669,6 +1674,7 @@ object BonRecGestionF: TBonRecGestionF
         Font.Style = []
         Footers = <>
         Layout = tlCenter
+        TextEditing = False
         Title.Alignment = taCenter
         Title.Caption = 'Marge Gros %'
         Title.Font.Charset = DEFAULT_CHARSET
@@ -1680,9 +1686,9 @@ object BonRecGestionF: TBonRecGestionF
         Width = 170
       end
       item
-        Alignment = taRightJustify
         DynProps = <>
         EditButtons = <>
+        FieldName = 'prixva_p'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
         Font.Height = 18
@@ -1691,7 +1697,7 @@ object BonRecGestionF: TBonRecGestionF
         Footers = <>
         Layout = tlCenter
         Title.Alignment = taCenter
-        Title.Caption = 'Prix V Autre 1'
+        Title.Caption = 'Prix V HT Autre 1'
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = 4207405
         Title.Font.Height = 19
@@ -1701,10 +1707,10 @@ object BonRecGestionF: TBonRecGestionF
         Width = 170
       end
       item
-        Alignment = taRightJustify
         DisplayFormat = '0.00 %'
         DynProps = <>
         EditButtons = <>
+        FieldName = 'MargeA'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
         Font.Height = 18
@@ -1712,6 +1718,7 @@ object BonRecGestionF: TBonRecGestionF
         Font.Style = []
         Footers = <>
         Layout = tlCenter
+        TextEditing = False
         Title.Alignment = taCenter
         Title.Caption = 'Marge Autre 1 %'
         Title.Font.Charset = DEFAULT_CHARSET
@@ -1723,9 +1730,9 @@ object BonRecGestionF: TBonRecGestionF
         Width = 170
       end
       item
-        Alignment = taRightJustify
         DynProps = <>
         EditButtons = <>
+        FieldName = 'prixva2_p'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
         Font.Height = 18
@@ -1734,7 +1741,7 @@ object BonRecGestionF: TBonRecGestionF
         Footers = <>
         Layout = tlCenter
         Title.Alignment = taCenter
-        Title.Caption = 'Prix V Autre 2'
+        Title.Caption = 'Prix V  HT Autre 2'
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = 4207405
         Title.Font.Height = 19
@@ -1744,10 +1751,10 @@ object BonRecGestionF: TBonRecGestionF
         Width = 170
       end
       item
-        Alignment = taRightJustify
         DisplayFormat = '0.00 %'
         DynProps = <>
         EditButtons = <>
+        FieldName = 'MargeA2'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
         Font.Height = 18
@@ -1755,6 +1762,7 @@ object BonRecGestionF: TBonRecGestionF
         Font.Style = []
         Footers = <>
         Layout = tlCenter
+        TextEditing = False
         Title.Alignment = taCenter
         Title.Caption = 'Marge Autre 2 %'
         Title.Font.Charset = DEFAULT_CHARSET
@@ -1810,7 +1818,7 @@ object BonRecGestionF: TBonRecGestionF
     object label13: TLabel
       Left = 612
       Top = 9
-      Width = 47
+      Width = 52
       Height = 21
       Caption = 'R'#233'gl'#233':'
       Color = clWhite
@@ -1826,7 +1834,7 @@ object BonRecGestionF: TBonRecGestionF
     object label12: TLabel
       Left = 612
       Top = 76
-      Width = 71
+      Width = 77
       Height = 21
       Caption = 'Le Reste:'
       Color = clWhite
@@ -1842,7 +1850,7 @@ object BonRecGestionF: TBonRecGestionF
     object Label1: TLabel
       Left = 413
       Top = 9
-      Width = 80
+      Width = 82
       Height = 21
       Caption = 'Total TVA:'
       Color = clWhite
@@ -1858,7 +1866,7 @@ object BonRecGestionF: TBonRecGestionF
     object Label2: TLabel
       Left = 12
       Top = 9
-      Width = 70
+      Width = 72
       Height = 21
       Caption = 'Total HT:'
       Color = clWhite
@@ -1999,7 +2007,7 @@ object BonRecGestionF: TBonRecGestionF
     object Label10: TLabel
       Left = 412
       Top = 76
-      Width = 79
+      Width = 86
       Height = 21
       Caption = 'Total TTC:'
       Color = 15722984
@@ -2015,7 +2023,7 @@ object BonRecGestionF: TBonRecGestionF
     object Label3: TLabel
       Left = 212
       Top = 83
-      Width = 58
+      Width = 60
       Height = 21
       Caption = 'Timber:'
       Color = clWhite
@@ -2034,7 +2042,7 @@ object BonRecGestionF: TBonRecGestionF
       Left = 392
       Top = 85
       Width = 10
-      Height = 17
+      Height = 16
       Margins.Left = 0
       Margins.Top = 0
       Margins.Right = 0
@@ -2059,7 +2067,7 @@ object BonRecGestionF: TBonRecGestionF
       Left = 392
       Top = 11
       Width = 10
-      Height = 17
+      Height = 16
       Margins.Left = 0
       Margins.Top = 0
       Margins.Right = 0
@@ -2081,7 +2089,7 @@ object BonRecGestionF: TBonRecGestionF
     object Label14: TLabel
       Left = 212
       Top = 9
-      Width = 61
+      Width = 65
       Height = 21
       Caption = 'Remise:'
       Color = 14727239

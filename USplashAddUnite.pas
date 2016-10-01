@@ -174,6 +174,11 @@ begin
        MainForm.Bona_recPlistTable.FieldValues['prixht_p']:= MainForm.ProduitTable.FieldValues['prixht_p'];
        MainForm.Bona_recPlistTable.FieldValues['cond_p']:= 01;
        MainForm.Bona_recPlistTable.FieldValues['tva_p']:= MainForm.ProduitTable.FieldValues['tva_p'];
+       MainForm.Bona_recPlistTable.FieldByName('prixvd_p').AsCurrency:=  MainForm.ProduitTable.FieldByName('prixvd_p').AsCurrency;
+       MainForm.Bona_recPlistTable.FieldByName('prixvr_p').AsCurrency:=  MainForm.ProduitTable.FieldByName('prixvr_p').AsCurrency;
+       MainForm.Bona_recPlistTable.FieldByName('prixvg_p').AsCurrency:=  MainForm.ProduitTable.FieldByName('prixvg_p').AsCurrency;
+       MainForm.Bona_recPlistTable.FieldByName('prixva_p').AsCurrency:=  MainForm.ProduitTable.FieldByName('prixva_p').AsCurrency;
+       MainForm.Bona_recPlistTable.FieldByName('prixva2_p').AsCurrency:= MainForm.ProduitTable.FieldByName('prixva2_p').AsCurrency;
        MainForm.Bona_recPlistTable.Post ;
        MainForm.Bona_recPlistTable.IndexFieldNames:='code_barec';
 
@@ -575,6 +580,11 @@ begin
        MainForm.Bona_fac_listTable.FieldValues['prixht_p']:= MainForm.ProduitTable.FieldValues['prixht_p'];
        MainForm.Bona_fac_listTable.FieldValues['cond_p']:= 01;
        MainForm.Bona_fac_listTable.FieldValues['tva_p']:= MainForm.ProduitTable.FieldValues['tva_p'];
+       MainForm.Bona_fac_listTable.FieldByName('prixvd_p').AsCurrency:=  MainForm.ProduitTable.FieldByName('prixvd_p').AsCurrency;
+       MainForm.Bona_fac_listTable.FieldByName('prixvr_p').AsCurrency:=  MainForm.ProduitTable.FieldByName('prixvr_p').AsCurrency;
+       MainForm.Bona_fac_listTable.FieldByName('prixvg_p').AsCurrency:=  MainForm.ProduitTable.FieldByName('prixvg_p').AsCurrency;
+       MainForm.Bona_fac_listTable.FieldByName('prixva_p').AsCurrency:=  MainForm.ProduitTable.FieldByName('prixva_p').AsCurrency;
+       MainForm.Bona_fac_listTable.FieldByName('prixva2_p').AsCurrency:= MainForm.ProduitTable.FieldByName('prixva2_p').AsCurrency;
        MainForm.Bona_fac_listTable.Post ;
        MainForm.Bona_fac_listTable.IndexFieldNames:='code_bafac';
 

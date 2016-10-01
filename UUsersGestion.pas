@@ -53,7 +53,6 @@ type
     L09: TLabel;
     UserEroorGLbl: TLabel;
     UserNameGErrorP: TPanel;
-    RequiredStarProduitGLbl: TLabel;
     PassEroorGLbl: TLabel;
     PassNameGErrorP: TPanel;
     PassCheckGErrorP: TPanel;

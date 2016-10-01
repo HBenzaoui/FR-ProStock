@@ -22857,7 +22857,6 @@ object MainForm: TMainForm
     end
   end
   object Bona_recPlistTable: TFDQuery
-    Active = True
     AfterRefresh = Bona_recPlistTableAfterRefresh
     OnCalcFields = Bona_recPlistTableCalcFields
     FilterOptions = [foCaseInsensitive]
@@ -22947,6 +22946,46 @@ object MainForm: TMainForm
     object Bona_recPlistTabletva_p: TSmallintField
       FieldName = 'tva_p'
       Origin = 'tva_p'
+    end
+    object Bona_recPlistTableprixvd_p: TCurrencyField
+      FieldName = 'prixvd_p'
+      Origin = 'prixvd_p'
+    end
+    object Bona_recPlistTableMargeD: TCurrencyField
+      FieldKind = fkInternalCalc
+      FieldName = 'MargeD'
+    end
+    object Bona_recPlistTableprixvr_p: TCurrencyField
+      FieldName = 'prixvr_p'
+      Origin = 'prixvr_p'
+    end
+    object Bona_recPlistTableMargeR: TCurrencyField
+      FieldKind = fkInternalCalc
+      FieldName = 'MargeR'
+    end
+    object Bona_recPlistTableprixvg_p: TCurrencyField
+      FieldName = 'prixvg_p'
+      Origin = 'prixvg_p'
+    end
+    object Bona_recPlistTableMargeG: TCurrencyField
+      FieldKind = fkInternalCalc
+      FieldName = 'MargeG'
+    end
+    object Bona_recPlistTableprixva_p: TCurrencyField
+      FieldName = 'prixva_p'
+      Origin = 'prixva_p'
+    end
+    object Bona_recPlistTableMargeA: TCurrencyField
+      FieldKind = fkInternalCalc
+      FieldName = 'MargeA'
+    end
+    object Bona_recPlistTableprixva2_p: TCurrencyField
+      FieldName = 'prixva2_p'
+      Origin = 'prixva2_p'
+    end
+    object Bona_recPlistTableMargeA2: TCurrencyField
+      FieldKind = fkInternalCalc
+      FieldName = 'MargeA2'
     end
   end
   object FDQuery2: TFDQuery
@@ -35104,6 +35143,46 @@ object MainForm: TMainForm
     object Bona_fac_listTabletva_p: TIntegerField
       FieldName = 'tva_p'
       Origin = 'tva_p'
+    end
+    object Bona_fac_listTableprixvd_p: TCurrencyField
+      FieldName = 'prixvd_p'
+      Origin = 'prixvd_p'
+    end
+    object Bona_fac_listTableMargeD: TCurrencyField
+      FieldKind = fkInternalCalc
+      FieldName = 'MargeD'
+    end
+    object Bona_fac_listTableprixvr_p: TCurrencyField
+      FieldName = 'prixvr_p'
+      Origin = 'prixvr_p'
+    end
+    object Bona_fac_listTableMargeR: TCurrencyField
+      FieldKind = fkInternalCalc
+      FieldName = 'MargeR'
+    end
+    object Bona_fac_listTableprixvg_p: TCurrencyField
+      FieldName = 'prixvg_p'
+      Origin = 'prixvg_p'
+    end
+    object Bona_fac_listTableMargeG: TCurrencyField
+      FieldKind = fkInternalCalc
+      FieldName = 'MargeG'
+    end
+    object Bona_fac_listTableprixva_p: TCurrencyField
+      FieldName = 'prixva_p'
+      Origin = 'prixva_p'
+    end
+    object Bona_fac_listTableMargeA: TCurrencyField
+      FieldKind = fkInternalCalc
+      FieldName = 'MargeA'
+    end
+    object Bona_fac_listTableprixva2_p: TCurrencyField
+      FieldName = 'prixva2_p'
+      Origin = 'prixva2_p'
+    end
+    object Bona_fac_listTableMargeA2: TCurrencyField
+      FieldKind = fkInternalCalc
+      FieldName = 'MargeA2'
     end
   end
   object WilayasTable: TFDQuery

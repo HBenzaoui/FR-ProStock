@@ -708,6 +708,26 @@ type
     Bonv_ctr_listTableprixht_p: TCurrencyField;
     Bonv_ctr_listTableMargeM: TCurrencyField;
     Bonv_ctrTablemarge_bvctr: TCurrencyField;
+    Bona_recPlistTableprixvd_p: TCurrencyField;
+    Bona_recPlistTableprixvr_p: TCurrencyField;
+    Bona_recPlistTableprixvg_p: TCurrencyField;
+    Bona_recPlistTableprixva_p: TCurrencyField;
+    Bona_recPlistTableprixva2_p: TCurrencyField;
+    Bona_fac_listTableprixvd_p: TCurrencyField;
+    Bona_fac_listTableprixvr_p: TCurrencyField;
+    Bona_fac_listTableprixvg_p: TCurrencyField;
+    Bona_fac_listTableprixva_p: TCurrencyField;
+    Bona_fac_listTableprixva2_p: TCurrencyField;
+    Bona_recPlistTableMargeD: TCurrencyField;
+    Bona_recPlistTableMargeR: TCurrencyField;
+    Bona_recPlistTableMargeG: TCurrencyField;
+    Bona_recPlistTableMargeA: TCurrencyField;
+    Bona_recPlistTableMargeA2: TCurrencyField;
+    Bona_fac_listTableMargeD: TCurrencyField;
+    Bona_fac_listTableMargeR: TCurrencyField;
+    Bona_fac_listTableMargeG: TCurrencyField;
+    Bona_fac_listTableMargeA: TCurrencyField;
+    Bona_fac_listTableMargeA2: TCurrencyField;
     procedure ClientMainFBtnClick(Sender: TObject);
     procedure FourMainFBtnClick(Sender: TObject);
     procedure ProduitMainFBtnClick(Sender: TObject);
@@ -970,7 +990,6 @@ FDPhysPgDriverLink1.VendorLib:= 'C:\Program Files (x86)\PostgreSQL\9.6\bin\libpq
 //   if NOT fileexists('Config') then
 //   begin
 
-
 //    FDScriptCreateTables.ExecuteAll;
 //     Sleep(2000);      // just for the first time
 
@@ -982,11 +1001,7 @@ FDPhysPgDriverLink1.VendorLib:= 'C:\Program Files (x86)\PostgreSQL\9.6\bin\libpq
 //    Ini.Free;
 //  end;
 
-
      // Enable this is only for releasing
-
-
-
 
   Application.UpdateFormatSettings := false;
   FormatSettings.DecimalSeparator := ',';
@@ -998,8 +1013,6 @@ FDPhysPgDriverLink1.VendorLib:= 'C:\Program Files (x86)\PostgreSQL\9.6\bin\libpq
   Height:= Screen.Height - 50;
 
 //  Label2.Caption:=#174;
-
-
 end;
 
 procedure TMainForm.ProduitTableCalcFields(DataSet: TDataSet);
@@ -1038,9 +1051,36 @@ begin
    Bona_recPlistTable.FieldValues['MontantTTC']:=
  ((Bona_recPlistTable.FieldValues['PrixATTC'] * Bona_recPlistTable.FieldValues['qut_p']) * (Bona_recPlistTable.FieldValues['cond_p']) ) ;
 
-
     Bona_recPlistTable.FieldValues['MontantTVA']:=
  ((Bona_recPlistTable.FieldValues['MontantTTC']) - (Bona_recPlistTable.FieldValues['MontantHT'])) ;
+
+
+ if  Bona_recPlistTable.FieldValues['prixvd_p'] <> 0 then
+ begin
+      Bona_recPlistTable.FieldValues['MargeD']:=
+((((Bona_recPlistTable.FieldValues['prixvd_p']) - (Bona_recPlistTable.FieldValues['prixht_p'])) / (Bona_recPlistTable.FieldValues['prixht_p']) ) * 100) ;
+ end;
+
+  if  Bona_recPlistTable.FieldValues['prixvr_p'] <> 0 then
+ begin
+      Bona_recPlistTable.FieldValues['MargeR']:=
+((((Bona_recPlistTable.FieldValues['prixvr_p']) - (Bona_recPlistTable.FieldValues['prixht_p'])) / (Bona_recPlistTable.FieldValues['prixht_p']) ) * 100) ;
+ end;
+   if  Bona_recPlistTable.FieldValues['prixvg_p'] <> 0 then
+ begin
+      Bona_recPlistTable.FieldValues['MargeG']:=
+((((Bona_recPlistTable.FieldValues['prixvg_p']) - (Bona_recPlistTable.FieldValues['prixht_p'])) / (Bona_recPlistTable.FieldValues['prixht_p']) ) * 100) ;
+ end;
+   if  Bona_recPlistTable.FieldValues['prixva_p'] <> 0 then
+ begin
+      Bona_recPlistTable.FieldValues['MargeA']:=
+((((Bona_recPlistTable.FieldValues['prixva_p']) - (Bona_recPlistTable.FieldValues['prixht_p'])) / (Bona_recPlistTable.FieldValues['prixht_p']) ) * 100) ;
+ end;
+   if  Bona_recPlistTable.FieldValues['prixva2_p'] <> 0 then
+ begin
+      Bona_recPlistTable.FieldValues['MargeA2']:=
+((((Bona_recPlistTable.FieldValues['prixva2_p']) - (Bona_recPlistTable.FieldValues['prixht_p'])) / (Bona_recPlistTable.FieldValues['prixht_p']) ) * 100) ;
+ end;
 
 end;
 
@@ -1663,6 +1703,35 @@ begin
 
     Bona_fac_listTable.FieldValues['MontantTVA']:=
  ((Bona_fac_listTable.FieldValues['MontantTTC']) - (Bona_fac_listTable.FieldValues['MontantHT'])) ;
+
+   if  Bona_recPlistTable.FieldValues['prixvd_p'] <> 0 then
+ begin
+       Bona_fac_listTable.FieldValues['MargeD']:=
+((((Bona_fac_listTable.FieldValues['prixvd_p']) - (Bona_fac_listTable.FieldValues['prixht_p'])) / (Bona_fac_listTable.FieldValues['prixht_p']) ) * 100) ;
+ end;
+   if  Bona_recPlistTable.FieldValues['prixvr_p'] <> 0 then
+ begin
+      Bona_fac_listTable.FieldValues['MargeR']:=
+((((Bona_fac_listTable.FieldValues['prixvr_p']) - (Bona_fac_listTable.FieldValues['prixht_p'])) / (Bona_fac_listTable.FieldValues['prixht_p']) ) * 100) ;
+ end;
+   if  Bona_recPlistTable.FieldValues['prixvg_p'] <> 0 then
+ begin
+      Bona_fac_listTable.FieldValues['MargeG']:=
+((((Bona_fac_listTable.FieldValues['prixvg_p']) - (Bona_fac_listTable.FieldValues['prixht_p'])) / (Bona_fac_listTable.FieldValues['prixht_p']) ) * 100) ;
+ end;
+   if  Bona_recPlistTable.FieldValues['prixva_p'] <> 0 then
+ begin
+      Bona_fac_listTable.FieldValues['MargeA']:=
+((((Bona_fac_listTable.FieldValues['prixva_p']) - (Bona_fac_listTable.FieldValues['prixht_p'])) / (Bona_fac_listTable.FieldValues['prixht_p']) ) * 100) ;
+ end;
+   if  Bona_recPlistTable.FieldValues['prixva2_p'] <> 0 then
+ begin
+      Bona_fac_listTable.FieldValues['MargeA2']:=
+((((Bona_fac_listTable.FieldValues['prixva2_p']) - (Bona_fac_listTable.FieldValues['prixht_p'])) / (Bona_fac_listTable.FieldValues['prixht_p']) ) * 100) ;
+ end;
+
+
+
 end;
 
 procedure TMainForm.Bona_facTableCreditCalcFields(DataSet: TDataSet);

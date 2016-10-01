@@ -174,6 +174,9 @@ type
     procedure sSpeedButton4Click(Sender: TObject);
     procedure sSpeedButton6Click(Sender: TObject);
     procedure ProduitsListDBGridEhCellClick(Column: TColumnEh);
+    procedure ProduitsListDBGridEhDrawColumnCell(Sender: TObject;
+      const Rect: TRect; DataCol: Integer; Column: TColumnEh;
+      State: TGridDrawState);
   private
     procedure GettingData;
     { Private declarations }
@@ -404,6 +407,11 @@ begin
              MainForm.Bona_recPlistTable.FieldValues['prixht_p']:= MainForm.ProduitTable.FieldValues['prixht_p'];
              MainForm.Bona_recPlistTable.FieldValues['cond_p']:= 01;
              MainForm.Bona_recPlistTable.FieldValues['tva_p']:= MainForm.ProduitTable.FieldValues['tva_p'];
+             MainForm.Bona_recPlistTable.FieldByName('prixvd_p').AsCurrency:=  MainForm.ProduitTable.FieldByName('prixvd_p').AsCurrency;
+             MainForm.Bona_recPlistTable.FieldByName('prixvr_p').AsCurrency:=  MainForm.ProduitTable.FieldByName('prixvr_p').AsCurrency;
+             MainForm.Bona_recPlistTable.FieldByName('prixvg_p').AsCurrency:=  MainForm.ProduitTable.FieldByName('prixvg_p').AsCurrency;
+             MainForm.Bona_recPlistTable.FieldByName('prixva_p').AsCurrency:=  MainForm.ProduitTable.FieldByName('prixva_p').AsCurrency;
+             MainForm.Bona_recPlistTable.FieldByName('prixva2_p').AsCurrency:= MainForm.ProduitTable.FieldByName('prixva2_p').AsCurrency;
              MainForm.Bona_recPlistTable.Post ;
              MainForm.Bona_recPlistTable.IndexFieldNames:='code_barec';
 
@@ -512,6 +520,11 @@ begin
              MainForm.Bona_recPlistTable.FieldValues['prixht_p']:= MainForm.ProduitTable.FieldValues['prixht_p'];
              MainForm.Bona_recPlistTable.FieldValues['cond_p']:= 01;
              MainForm.Bona_recPlistTable.FieldValues['tva_p']:= MainForm.ProduitTable.FieldValues['tva_p'];
+             MainForm.Bona_recPlistTable.FieldByName('prixvd_p').AsCurrency:=  MainForm.ProduitTable.FieldByName('prixvd_p').AsCurrency;
+             MainForm.Bona_recPlistTable.FieldByName('prixvr_p').AsCurrency:=  MainForm.ProduitTable.FieldByName('prixvr_p').AsCurrency;
+             MainForm.Bona_recPlistTable.FieldByName('prixvg_p').AsCurrency:=  MainForm.ProduitTable.FieldByName('prixvg_p').AsCurrency;
+             MainForm.Bona_recPlistTable.FieldByName('prixva_p').AsCurrency:=  MainForm.ProduitTable.FieldByName('prixva_p').AsCurrency;
+             MainForm.Bona_recPlistTable.FieldByName('prixva2_p').AsCurrency:= MainForm.ProduitTable.FieldByName('prixva2_p').AsCurrency;
              MainForm.Bona_recPlistTable.Post ;
              MainForm.Bona_recPlistTable.IndexFieldNames:='code_barec';
 
@@ -629,6 +642,11 @@ begin
              MainForm.Bona_recPlistTable.FieldValues['prixht_p']:= MainForm.ProduitTable.FieldValues['prixht_p'];
              MainForm.Bona_recPlistTable.FieldValues['cond_p']:= 01;
              MainForm.Bona_recPlistTable.FieldValues['tva_p']:= MainForm.ProduitTable.FieldValues['tva_p'];
+             MainForm.Bona_recPlistTable.FieldByName('prixvd_p').AsCurrency:=  MainForm.ProduitTable.FieldByName('prixvd_p').AsCurrency;
+             MainForm.Bona_recPlistTable.FieldByName('prixvr_p').AsCurrency:=  MainForm.ProduitTable.FieldByName('prixvr_p').AsCurrency;
+             MainForm.Bona_recPlistTable.FieldByName('prixvg_p').AsCurrency:=  MainForm.ProduitTable.FieldByName('prixvg_p').AsCurrency;
+             MainForm.Bona_recPlistTable.FieldByName('prixva_p').AsCurrency:=  MainForm.ProduitTable.FieldByName('prixva_p').AsCurrency;
+             MainForm.Bona_recPlistTable.FieldByName('prixva2_p').AsCurrency:= MainForm.ProduitTable.FieldByName('prixva2_p').AsCurrency;
              MainForm.Bona_recPlistTable.Post ;
              MainForm.Bona_recPlistTable.IndexFieldNames:='code_barec';
 
@@ -962,18 +980,15 @@ end;
 
 procedure TBonRecGestionF.ListAddProduitBonRecGBtnClick(Sender: TObject);
 begin
-
 //-------- use this code to start creating th form-----//
   MainForm.ProduitTable.Filtered:=False;
   FastProduitsListF := TFastProduitsListF.Create(Application);
-
 
 //-------- Show the splash screan for the produit familly to add new one---------//
   FastProduitsListF.Left := (Screen.Width div 2) - (FastProduitsListF.Width div 2);
   FastProduitsListF.Top := (Screen.Height div 2) - (FastProduitsListF.Height div 2);
   FastProduitsListF.Show;
   FastProduitsListF.ResearchProduitsEdt.SetFocus;
-
 
  // FastProduitsListF.OKproduitGBtn.Enabled:=False;
 //  produitGestionF.CancelProduitGBtn.Tag:=0;
@@ -1020,7 +1035,6 @@ procedure TBonRecGestionF.FormCloseQuery(Sender: TObject;
           MainForm.CompteTable.SQL.Clear;
           MainForm.CompteTable.SQL.Text:='Select * FROM compte WHERE LOWER(nom_cmpt) LIKE LOWER('+ QuotedStr( CompteBonRecGCbx.Text )+')'  ;
           MainForm.CompteTable.Active:=True;
-
 
           MainForm.Bona_recTable.DisableControls;
           MainForm.Bona_recTable.Edit;
@@ -2141,6 +2155,35 @@ end;
 procedure TBonRecGestionF.ProduitsListDBGridEhCellClick(Column: TColumnEh);
 begin
 Refresh_PreservePosition;
+end;
+
+procedure TBonRecGestionF.ProduitsListDBGridEhDrawColumnCell(Sender: TObject;
+  const Rect: TRect; DataCol: Integer; Column: TColumnEh;
+  State: TGridDrawState);
+begin
+//  {  if gdFocused in State then
+//      begin
+// // ProduitsListDBGridEh.Canvas.DrawFocusRect(Rect);
+//    ProduitsListDBGridEh.Canvas.Brush.Color:=clAqua;
+//       end;  }
+//
+////------ use this code to high light the selected row in dbgrid----//
+// if gdSelected in State then
+//begin
+//   ProduitsListDBGridEh.Canvas.Brush.Color:=$00FFE8CD;
+//   ProduitsListDBGridEh.DefaultDrawColumnCell(Rect, DataCol, Column, State);
+//end;
+//
+//  if  (MainForm.Bona_recPlistTable.FieldByName('prixht_p').AsCurrency > MainForm.Bona_recPlistTable.FieldByName('prixvd_p').AsCurrency )
+//    OR(MainForm.Bona_recPlistTable.FieldByName('prixht_p').AsCurrency > MainForm.Bona_recPlistTable.FieldByName('prixvr_p').AsCurrency )
+//    OR(MainForm.Bona_recPlistTable.FieldByName('prixht_p').AsCurrency > MainForm.Bona_recPlistTable.FieldByName('prixvg_p').AsCurrency )
+//    OR(MainForm.Bona_recPlistTable.FieldByName('prixht_p').AsCurrency > MainForm.Bona_recPlistTable.FieldByName('prixva_p').AsCurrency )
+//    OR(MainForm.Bona_recPlistTable.FieldByName('prixht_p').AsCurrency > MainForm.Bona_recPlistTable.FieldByName('prixva2_p').AsCurrency )
+//         then
+// begin
+// ProduitsListDBGridEh.Canvas.Font.Color:=$004735F9;
+// ProduitsListDBGridEh.DefaultDrawColumnCell(Rect, DataCol, Column, State);
+// end;
 end;
 
 end.

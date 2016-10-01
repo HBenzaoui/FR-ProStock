@@ -186,8 +186,8 @@ object BonLivGestionF: TBonLivGestionF
     object Label5: TLabel
       Left = 16
       Top = 63
-      Width = 35
-      Height = 20
+      Width = 34
+      Height = 19
       Caption = 'Date'
       Color = 15722984
       Font.Charset = DEFAULT_CHARSET
@@ -202,8 +202,8 @@ object BonLivGestionF: TBonLivGestionF
     object Label6: TLabel
       Left = 16
       Top = 24
-      Width = 144
-      Height = 20
+      Width = 145
+      Height = 19
       Caption = 'Bon de Livraison N'#176
       Color = 15722984
       Font.Charset = DEFAULT_CHARSET
@@ -265,7 +265,7 @@ object BonLivGestionF: TBonLivGestionF
     object Label8: TLabel
       Left = 414
       Top = 87
-      Width = 43
+      Width = 44
       Height = 18
       Caption = 'Client:'
       Color = 4207405
@@ -314,7 +314,7 @@ object BonLivGestionF: TBonLivGestionF
     object Label7: TLabel
       Left = 414
       Top = 132
-      Width = 43
+      Width = 44
       Height = 18
       Caption = 'Mode:'
       Color = 4207405
@@ -362,7 +362,7 @@ object BonLivGestionF: TBonLivGestionF
     object Label16: TLabel
       Left = 657
       Top = 132
-      Width = 57
+      Width = 60
       Height = 18
       Caption = 'Compte:'
       Color = 4207405
@@ -649,7 +649,7 @@ object BonLivGestionF: TBonLivGestionF
     object Label19: TLabel
       Left = 380
       Top = 177
-      Width = 77
+      Width = 80
       Height = 18
       Caption = 'N'#176' Ch'#233'que:'
       Color = 4207405
@@ -665,8 +665,8 @@ object BonLivGestionF: TBonLivGestionF
     object ObserBonLivGLbl: TLabel
       Left = 15
       Top = 99
-      Width = 102
-      Height = 20
+      Width = 99
+      Height = 19
       Caption = 'Observations:'
       Color = 4207405
       Font.Charset = DEFAULT_CHARSET
@@ -1463,6 +1463,7 @@ object BonLivGestionF: TBonLivGestionF
       end
       item
         Alignment = taCenter
+        DisplayFormat = '0.00 %'
         DynProps = <>
         EditButtons = <>
         FieldName = 'tva_p'
@@ -1552,6 +1553,7 @@ object BonLivGestionF: TBonLivGestionF
         Width = 170
       end
       item
+        Color = 15722984
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
@@ -1665,7 +1667,7 @@ object BonLivGestionF: TBonLivGestionF
     object label13: TLabel
       Left = 612
       Top = 9
-      Width = 47
+      Width = 52
       Height = 21
       Caption = 'R'#233'gl'#233':'
       Color = clWhite
@@ -1681,7 +1683,7 @@ object BonLivGestionF: TBonLivGestionF
     object label12: TLabel
       Left = 612
       Top = 76
-      Width = 71
+      Width = 77
       Height = 21
       Caption = 'Le Reste:'
       Color = clWhite
@@ -1697,7 +1699,7 @@ object BonLivGestionF: TBonLivGestionF
     object Label1: TLabel
       Left = 413
       Top = 9
-      Width = 80
+      Width = 82
       Height = 21
       Caption = 'Total TVA:'
       Color = clWhite
@@ -1713,7 +1715,7 @@ object BonLivGestionF: TBonLivGestionF
     object Label2: TLabel
       Left = 12
       Top = 9
-      Width = 70
+      Width = 72
       Height = 21
       Caption = 'Total HT:'
       Color = clWhite
@@ -1854,7 +1856,7 @@ object BonLivGestionF: TBonLivGestionF
     object Label10: TLabel
       Left = 412
       Top = 76
-      Width = 79
+      Width = 86
       Height = 21
       Caption = 'Total TTC:'
       Color = 15722984
@@ -1870,7 +1872,7 @@ object BonLivGestionF: TBonLivGestionF
     object Label3: TLabel
       Left = 212
       Top = 83
-      Width = 58
+      Width = 60
       Height = 21
       Caption = 'Timber:'
       Color = clWhite
@@ -1889,7 +1891,7 @@ object BonLivGestionF: TBonLivGestionF
       Left = 392
       Top = 85
       Width = 10
-      Height = 17
+      Height = 16
       Margins.Left = 0
       Margins.Top = 0
       Margins.Right = 0
@@ -1914,7 +1916,7 @@ object BonLivGestionF: TBonLivGestionF
       Left = 392
       Top = 11
       Width = 10
-      Height = 17
+      Height = 16
       Margins.Left = 0
       Margins.Top = 0
       Margins.Right = 0
@@ -1936,7 +1938,7 @@ object BonLivGestionF: TBonLivGestionF
     object Label14: TLabel
       Left = 212
       Top = 9
-      Width = 61
+      Width = 65
       Height = 21
       Caption = 'Remise:'
       Color = 14727239

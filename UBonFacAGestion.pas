@@ -173,6 +173,9 @@ type
     procedure sSpeedButton3Click(Sender: TObject);
     procedure ProduitsListDBGridEhCellClick(Column: TColumnEh);
     procedure ProduitsListDBGridEhExit(Sender: TObject);
+    procedure ProduitsListDBGridEhDrawColumnCell(Sender: TObject;
+      const Rect: TRect; DataCol: Integer; Column: TColumnEh;
+      State: TGridDrawState);
   private
     procedure GettingData;
     { Private declarations }
@@ -862,9 +865,9 @@ begin
            MainForm.ProduitTable.Active:=True;
            Mainform.Sqlquery.Active:=False;
            Mainform.Sqlquery.Sql.Clear;
-           Mainform.Sqlquery.Sql.Text:='SELECT code_bafacl,code_p,  qut_p, cond_p , prixht_p,tva_p FROM bona_fac_list WHERE code_bafac =  '
+           Mainform.Sqlquery.Sql.Text:='SELECT code_bafacl,code_p,  qut_p, cond_p , prixht_p,tva_p,prixvd_p,prixvr_p,prixvg_p,prixva_p,prixva2_p FROM bona_fac_list WHERE code_bafac =  '
                                                  + IntToStr (MainForm.Bona_facTable.FieldValues['code_bafac'])
-                                                 + 'GROUP BY code_bafacl, code_p, qut_p, cond_p,prixht_p,tva_p ' ;
+                                                 + 'GROUP BY code_bafacl, code_p, qut_p, cond_p,prixht_p,tva_p,prixvd_p,prixvr_p,prixvg_p,prixva_p,prixva2_p' ;
            MainForm.SQLQuery.Active:=True;
            MainForm.SQLQuery.First;
            while  NOT (MainForm.SQLQuery.Eof) do
@@ -879,6 +882,11 @@ begin
                                                          + ((MainForm.SQLQuery.FieldValues['qut_p']) * ((MainForm.SQLQuery.FieldValues['cond_p']))));
             MainForm.ProduitTable.FieldValues['prixht_p']:= MainForm.SQLQuery.FieldValues['prixht_p'];
             MainForm.ProduitTable.FieldValues['tva_p']:= MainForm.SQLQuery.FieldValues['tva_p'];
+            MainForm.ProduitTable.FieldByName('prixvd_p').AsCurrency:=  MainForm.SQLQuery.FieldByName('prixvd_p').AsCurrency;
+            MainForm.ProduitTable.FieldByName('prixvr_p').AsCurrency:=  MainForm.SQLQuery.FieldByName('prixvr_p').AsCurrency;
+            MainForm.ProduitTable.FieldByName('prixvg_p').AsCurrency:=  MainForm.SQLQuery.FieldByName('prixvg_p').AsCurrency;
+            MainForm.ProduitTable.FieldByName('prixva_p').AsCurrency:=  MainForm.SQLQuery.FieldByName('prixva_p').AsCurrency;
+            MainForm.ProduitTable.FieldByName('prixva2_p').AsCurrency:= MainForm.SQLQuery.FieldByName('prixva2_p').AsCurrency;
             MainForm.ProduitTable.Post;
             MainForm.SQLQuery.Next;
            end;
@@ -1741,9 +1749,13 @@ if key = #13 then
              MainForm.Bona_fac_listTable.FieldValues['prixht_p']:= MainForm.ProduitTable.FieldValues['prixht_p'];
              MainForm.Bona_fac_listTable.FieldValues['cond_p']:= 01;
              MainForm.Bona_fac_listTable.FieldValues['tva_p']:= MainForm.ProduitTable.FieldValues['tva_p'];
+             MainForm.Bona_fac_listTable.FieldByName('prixvd_p').AsCurrency:=  MainForm.ProduitTable.FieldByName('prixvd_p').AsCurrency;
+             MainForm.Bona_fac_listTable.FieldByName('prixvr_p').AsCurrency:=  MainForm.ProduitTable.FieldByName('prixvr_p').AsCurrency;
+             MainForm.Bona_fac_listTable.FieldByName('prixvg_p').AsCurrency:=  MainForm.ProduitTable.FieldByName('prixvg_p').AsCurrency;
+             MainForm.Bona_fac_listTable.FieldByName('prixva_p').AsCurrency:=  MainForm.ProduitTable.FieldByName('prixva_p').AsCurrency;
+             MainForm.Bona_fac_listTable.FieldByName('prixva2_p').AsCurrency:= MainForm.ProduitTable.FieldByName('prixva2_p').AsCurrency;
              MainForm.Bona_fac_listTable.Post ;
              MainForm.Bona_fac_listTable.IndexFieldNames:='code_bafac';
-
             MainForm.Bona_fac_listTable.Active:=False;
             MainForm.Bona_fac_listTable.SQL.Clear;
             MainForm.Bona_fac_listTable.SQL.Text:= 'SELECT * FROM bona_fac_list WHERE code_bafac = ' + QuotedStr(IntToStr(MainForm.Bona_facTable.FieldValues['code_bafac']));
@@ -1849,6 +1861,11 @@ if key = #13 then
              MainForm.Bona_fac_listTable.FieldValues['prixht_p']:= MainForm.ProduitTable.FieldValues['prixht_p'];
              MainForm.Bona_fac_listTable.FieldValues['cond_p']:= 01;
              MainForm.Bona_fac_listTable.FieldValues['tva_p']:= MainForm.ProduitTable.FieldValues['tva_p'];
+             MainForm.Bona_fac_listTable.FieldByName('prixvd_p').AsCurrency:=  MainForm.ProduitTable.FieldByName('prixvd_p').AsCurrency;
+             MainForm.Bona_fac_listTable.FieldByName('prixvr_p').AsCurrency:=  MainForm.ProduitTable.FieldByName('prixvr_p').AsCurrency;
+             MainForm.Bona_fac_listTable.FieldByName('prixvg_p').AsCurrency:=  MainForm.ProduitTable.FieldByName('prixvg_p').AsCurrency;
+             MainForm.Bona_fac_listTable.FieldByName('prixva_p').AsCurrency:=  MainForm.ProduitTable.FieldByName('prixva_p').AsCurrency;
+             MainForm.Bona_fac_listTable.FieldByName('prixva2_p').AsCurrency:= MainForm.ProduitTable.FieldByName('prixva2_p').AsCurrency;
              MainForm.Bona_fac_listTable.Post ;
              MainForm.Bona_fac_listTable.IndexFieldNames:='code_bafac';
 
@@ -1966,6 +1983,11 @@ if key = #13 then
              MainForm.Bona_fac_listTable.FieldValues['prixht_p']:= MainForm.ProduitTable.FieldValues['prixht_p'];
              MainForm.Bona_fac_listTable.FieldValues['cond_p']:= 01;
              MainForm.Bona_fac_listTable.FieldValues['tva_p']:= MainForm.ProduitTable.FieldValues['tva_p'];
+             MainForm.Bona_fac_listTable.FieldByName('prixvd_p').AsCurrency:=  MainForm.ProduitTable.FieldByName('prixvd_p').AsCurrency;
+             MainForm.Bona_fac_listTable.FieldByName('prixvr_p').AsCurrency:=  MainForm.ProduitTable.FieldByName('prixvr_p').AsCurrency;
+             MainForm.Bona_fac_listTable.FieldByName('prixvg_p').AsCurrency:=  MainForm.ProduitTable.FieldByName('prixvg_p').AsCurrency;
+             MainForm.Bona_fac_listTable.FieldByName('prixva_p').AsCurrency:=  MainForm.ProduitTable.FieldByName('prixva_p').AsCurrency;
+             MainForm.Bona_fac_listTable.FieldByName('prixva2_p').AsCurrency:= MainForm.ProduitTable.FieldByName('prixva2_p').AsCurrency;
              MainForm.Bona_fac_listTable.Post ;
              MainForm.Bona_fac_listTable.IndexFieldNames:='code_bafac';
 
@@ -2775,6 +2797,36 @@ end;
 procedure TBonFacAGestionF.ProduitsListDBGridEhExit(Sender: TObject);
 begin
   Refresh_PreservePosition;
+end;
+
+procedure TBonFacAGestionF.ProduitsListDBGridEhDrawColumnCell(Sender: TObject;
+  const Rect: TRect; DataCol: Integer; Column: TColumnEh;
+  State: TGridDrawState);
+begin
+//  {  if gdFocused in State then
+//      begin
+// // ProduitsListDBGridEh.Canvas.DrawFocusRect(Rect);
+//    ProduitsListDBGridEh.Canvas.Brush.Color:=clAqua;
+//       end;  }
+//
+////------ use this code to high light the selected row in dbgrid----//
+// if gdSelected in State then
+//begin
+//   ProduitsListDBGridEh.Canvas.Brush.Color:=$00FFE8CD;
+//   ProduitsListDBGridEh.DefaultDrawColumnCell(Rect, DataCol, Column, State);
+//end;
+//
+//  if  (MainForm.Bona_fac_listTable.FieldByName('prixht_p').AsCurrency > MainForm.Bona_fac_listTable.FieldByName('prixvd_p').AsCurrency )
+//    OR(MainForm.Bona_fac_listTable.FieldByName('prixht_p').AsCurrency > MainForm.Bona_fac_listTable.FieldByName('prixvr_p').AsCurrency )
+//    OR(MainForm.Bona_fac_listTable.FieldByName('prixht_p').AsCurrency > MainForm.Bona_fac_listTable.FieldByName('prixvg_p').AsCurrency )
+//    OR(MainForm.Bona_fac_listTable.FieldByName('prixht_p').AsCurrency > MainForm.Bona_fac_listTable.FieldByName('prixva_p').AsCurrency )
+//    OR(MainForm.Bona_fac_listTable.FieldByName('prixht_p').AsCurrency > MainForm.Bona_fac_listTable.FieldByName('prixva2_p').AsCurrency )
+//         then
+// begin
+// ProduitsListDBGridEh.Canvas.Font.Color:=$004735F9;
+// ProduitsListDBGridEh.DefaultDrawColumnCell(Rect, DataCol, Column, State);
+// end;
+
 end;
 
 end.

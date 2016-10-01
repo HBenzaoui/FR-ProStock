@@ -561,9 +561,9 @@ begin
            MainForm.ProduitTable.Active:=True;
            Mainform.Sqlquery.Active:=False;
            Mainform.Sqlquery.Sql.Clear;
-           Mainform.Sqlquery.Sql.Text:='SELECT code_barecl,code_p,  qut_p, cond_p , prixht_p,tva_p FROM bona_rec_list WHERE code_barec =  '
+           Mainform.Sqlquery.Sql.Text:='SELECT code_barecl,code_p,  qut_p, cond_p , prixht_p,tva_p,prixvd_p,prixvr_p,prixvg_p,prixva_p,prixva2_p FROM bona_rec_list WHERE code_barec =  '
                                                  + IntToStr (MainForm.Bona_recTable.FieldValues['code_barec'])
-                                                 + 'GROUP BY code_barecl, code_p, qut_p, cond_p,prixht_p,tva_p ' ;
+                                                 + 'GROUP BY code_barecl, code_p, qut_p, cond_p,prixht_p,tva_p,prixvd_p,prixvr_p,prixvg_p,prixva_p,prixva2_p' ;
            MainForm.SQLQuery.Active:=True;
            MainForm.SQLQuery.First;
 
@@ -579,6 +579,11 @@ begin
                                                          + MainForm.ProduitTable.FieldValues['qut_p']);
             MainForm.ProduitTable.FieldValues['prixht_p']:= MainForm.SQLQuery.FieldValues['prixht_p'];
             MainForm.ProduitTable.FieldValues['tva_p']:= MainForm.SQLQuery.FieldValues['tva_p'];
+            MainForm.ProduitTable.FieldByName('prixvd_p').AsCurrency:=  MainForm.SQLQuery.FieldByName('prixvd_p').AsCurrency;
+            MainForm.ProduitTable.FieldByName('prixvr_p').AsCurrency:=  MainForm.SQLQuery.FieldByName('prixvr_p').AsCurrency;
+            MainForm.ProduitTable.FieldByName('prixvg_p').AsCurrency:=  MainForm.SQLQuery.FieldByName('prixvg_p').AsCurrency;
+            MainForm.ProduitTable.FieldByName('prixva_p').AsCurrency:=  MainForm.SQLQuery.FieldByName('prixva_p').AsCurrency;
+            MainForm.ProduitTable.FieldByName('prixva2_p').AsCurrency:= MainForm.SQLQuery.FieldByName('prixva2_p').AsCurrency;
             MainForm.ProduitTable.Post;
             MainForm.SQLQuery.Next;
            end;

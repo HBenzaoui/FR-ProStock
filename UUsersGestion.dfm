@@ -669,22 +669,6 @@ object UsersGestionF: TUsersGestionF
       WordWrap = True
       StyleElements = [seClient, seBorder]
     end
-    object RequiredStarProduitGLbl: TLabel
-      Left = 419
-      Top = 78
-      Width = 8
-      Height = 22
-      Caption = '*'
-      Color = clBtnFace
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = 4666873
-      Font.Height = 22
-      Font.Name = 'Roboto'
-      Font.Style = [fsBold]
-      ParentColor = False
-      ParentFont = False
-      StyleElements = [seClient, seBorder]
-    end
     object PassEroorGLbl: TLabel
       Left = 24
       Top = 108
@@ -703,22 +687,6 @@ object UsersGestionF: TUsersGestionF
       ParentFont = False
       Visible = False
       WordWrap = True
-      StyleElements = [seClient, seBorder]
-    end
-    object Label6: TLabel
-      Left = 419
-      Top = 125
-      Width = 8
-      Height = 22
-      Caption = '*'
-      Color = clBtnFace
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = 4666873
-      Font.Height = 22
-      Font.Name = 'Roboto'
-      Font.Style = [fsBold]
-      ParentColor = False
-      ParentFont = False
       StyleElements = [seClient, seBorder]
     end
     object PassCheckEroorGLbl: TLabel

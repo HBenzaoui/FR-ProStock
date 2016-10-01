@@ -86,6 +86,7 @@ object BonCtrGestionF: TBonCtrGestionF
     OnCellClick = ProduitsListDBGridEhCellClick
     OnExit = ProduitsListDBGridEhExit
     OnKeyPress = ProduitsListDBGridEhKeyPress
+    OnMouseMove = ProduitsListDBGridEhMouseMove
     Columns = <
       item
         Alignment = taCenter
@@ -192,6 +193,7 @@ object BonCtrGestionF: TBonCtrGestionF
       end
       item
         Alignment = taCenter
+        DisplayFormat = '0.00 %'
         DynProps = <>
         EditButtons = <>
         FieldName = 'tva_p'
@@ -306,6 +308,7 @@ object BonCtrGestionF: TBonCtrGestionF
         Width = 170
       end
       item
+        Color = 15722984
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
@@ -714,12 +717,16 @@ object BonCtrGestionF: TBonCtrGestionF
       Font.Name = 'Helvetica LT Std'
       Font.Style = []
       ParentFont = False
+      ParentShowHint = False
+      ShowHint = True
       Sorted = True
       TabOrder = 0
+      OnDblClick = ProduitBonCtrGCbxDblClick
       OnDropDown = ProduitBonCtrGCbxDropDown
       OnEnter = ProduitBonCtrGCbxDropDown
       OnExit = ProduitBonCtrGCbxExit
       OnKeyPress = ProduitBonCtrGCbxKeyPress
+      OnMouseEnter = ProduitBonCtrGCbxMouseEnter
     end
     object Panel6: TPanel
       Left = 0
@@ -1228,7 +1235,7 @@ object BonCtrGestionF: TBonCtrGestionF
       object RegleVersementSGLbl: TLabel
         Left = 3
         Top = 6
-        Width = 90
+        Width = 80
         Height = 14
         Anchors = [akLeft, akBottom]
         Caption = 'impression Auto:'
@@ -1271,10 +1278,10 @@ object BonCtrGestionF: TBonCtrGestionF
         StyleElements = []
       end
       object APrintBVCtrBonCtrGSlider: TsSlider
-        Left = 96
-        Top = 3
-        Width = 31
-        Height = 18
+        Left = 93
+        Top = 5
+        Width = 38
+        Height = 16
         Anchors = [akLeft, akBottom]
         BevelOuter = bvNone
         BiDiMode = bdLeftToRight
@@ -1587,7 +1594,7 @@ object BonCtrGestionF: TBonCtrGestionF
         Left = 8
         Top = 22
         Width = 44
-        Height = 19
+        Height = 18
         Caption = 'Client:'
         Color = 4207405
         Font.Charset = DEFAULT_CHARSET
@@ -1725,7 +1732,7 @@ object BonCtrGestionF: TBonCtrGestionF
       object Label18: TLabel
         Left = 8
         Top = 7
-        Width = 71
+        Width = 70
         Height = 21
         Caption = 'Montant:'
         Font.Charset = DEFAULT_CHARSET
@@ -1739,7 +1746,7 @@ object BonCtrGestionF: TBonCtrGestionF
         Left = 226
         Top = 3
         Width = 14
-        Height = 30
+        Height = 28
         Alignment = taRightJustify
         Caption = '0'
         Font.Charset = DEFAULT_CHARSET
@@ -1752,7 +1759,7 @@ object BonCtrGestionF: TBonCtrGestionF
       object Labell20: TLabel
         Left = 8
         Top = 82
-        Width = 48
+        Width = 50
         Height = 21
         Caption = 'Verse:'
         Font.Charset = DEFAULT_CHARSET
@@ -1766,7 +1773,7 @@ object BonCtrGestionF: TBonCtrGestionF
         Left = 226
         Top = 78
         Width = 14
-        Height = 30
+        Height = 28
         Alignment = taRightJustify
         Caption = '0'
         Font.Charset = DEFAULT_CHARSET
@@ -1779,7 +1786,7 @@ object BonCtrGestionF: TBonCtrGestionF
       object Label22: TLabel
         Left = 8
         Top = 44
-        Width = 61
+        Width = 65
         Height = 21
         Caption = 'Remise:'
         Font.Charset = DEFAULT_CHARSET
@@ -1792,7 +1799,7 @@ object BonCtrGestionF: TBonCtrGestionF
       object Label23: TLabel
         Left = 8
         Top = 119
-        Width = 54
+        Width = 58
         Height = 21
         Caption = 'Rendu:'
         Font.Charset = DEFAULT_CHARSET
@@ -1806,7 +1813,7 @@ object BonCtrGestionF: TBonCtrGestionF
         Left = 226
         Top = 115
         Width = 14
-        Height = 30
+        Height = 28
         Alignment = taRightJustify
         Caption = '0'
         Font.Charset = DEFAULT_CHARSET
@@ -1821,7 +1828,7 @@ object BonCtrGestionF: TBonCtrGestionF
         Left = 230
         Top = 46
         Width = 10
-        Height = 17
+        Height = 16
         Margins.Left = 0
         Margins.Top = 0
         Margins.Right = 0
@@ -1875,9 +1882,13 @@ object BonCtrGestionF: TBonCtrGestionF
         Font.Style = []
         MaxLength = 5
         ParentFont = False
+        ParentShowHint = False
+        ShowHint = True
         TabOrder = 2
         OnChange = RemisePerctageBonCtrGEdtChange
+        OnDblClick = RemisePerctageBonCtrGEdtDblClick
         OnKeyPress = RemisePerctageBonCtrGEdtKeyPress
+        OnMouseEnter = RemisePerctageBonCtrGEdtMouseEnter
       end
       object RemiseBonCtrGEdt: TEdit
         Left = 75
@@ -1892,10 +1903,13 @@ object BonCtrGestionF: TBonCtrGestionF
         Font.Style = []
         MaxLength = 5
         ParentFont = False
+        ParentShowHint = False
+        ShowHint = True
         TabOrder = 3
         OnChange = RemiseBonCtrGEdtChange
         OnDblClick = RemiseBonCtrGEdtDblClick
         OnKeyPress = RemisePerctageBonCtrGEdtKeyPress
+        OnMouseEnter = RemiseBonCtrGEdtMouseEnter
       end
     end
     object Panel2: TPanel
@@ -1911,7 +1925,7 @@ object BonCtrGestionF: TBonCtrGestionF
       object Label2: TLabel
         Left = 8
         Top = 7
-        Width = 58
+        Width = 62
         Height = 21
         Caption = 'Bon N'#176':'
         Font.Charset = DEFAULT_CHARSET
@@ -1922,9 +1936,9 @@ object BonCtrGestionF: TBonCtrGestionF
         ParentFont = False
       end
       object NumBonCtrGEdt: TLabel
-        Left = 236
+        Left = 235
         Top = 7
-        Width = 4
+        Width = 5
         Height = 21
         Alignment = taRightJustify
         Font.Charset = DEFAULT_CHARSET
@@ -1937,7 +1951,7 @@ object BonCtrGestionF: TBonCtrGestionF
       object Label4: TLabel
         Left = 8
         Top = 80
-        Width = 41
+        Width = 43
         Height = 21
         Caption = 'Date:'
         Font.Charset = DEFAULT_CHARSET
@@ -1950,7 +1964,7 @@ object BonCtrGestionF: TBonCtrGestionF
       object Label7: TLabel
         Left = 8
         Top = 44
-        Width = 50
+        Width = 54
         Height = 21
         Caption = 'Heure:'
         Font.Charset = DEFAULT_CHARSET
@@ -1961,9 +1975,9 @@ object BonCtrGestionF: TBonCtrGestionF
         ParentFont = False
       end
       object HourBonCtrGD: TLabel
-        Left = 236
+        Left = 235
         Top = 44
-        Width = 4
+        Width = 5
         Height = 21
         Alignment = taRightJustify
         Font.Charset = DEFAULT_CHARSET

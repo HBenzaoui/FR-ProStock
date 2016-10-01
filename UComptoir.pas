@@ -164,6 +164,13 @@ type
     procedure ProduitsListDBGridEhCellClick(Column: TColumnEh);
     procedure ProduitsListDBGridEhExit(Sender: TObject);
     procedure CtrTop10PRODUITDBGridEhDblClick(Sender: TObject);
+    procedure ProduitsListDBGridEhMouseMove(Sender: TObject; Shift: TShiftState;
+      X, Y: Integer);
+    procedure ProduitBonCtrGCbxMouseEnter(Sender: TObject);
+    procedure RemiseBonCtrGEdtMouseEnter(Sender: TObject);
+    procedure RemisePerctageBonCtrGEdtMouseEnter(Sender: TObject);
+    procedure ProduitBonCtrGCbxDblClick(Sender: TObject);
+    procedure RemisePerctageBonCtrGEdtDblClick(Sender: TObject);
   private
     procedure GettingData;
     { Private declarations }
@@ -388,7 +395,7 @@ var    SEInfo: TShellExecuteInfo;
 //  ShowMessage('Calculator terminated') ;
   end
   else
-  ShowMessage('Error starting Calc!') ;
+  ShowMessage('Error starting Keyboard!') ;
 
           if not Wow64EnableWow64FsRedirection(Wow64FsEnableRedirection) then
        RaiseLastOSError;
@@ -2873,6 +2880,98 @@ begin
         MainForm.ProduitTable.Active:=True;
 
      end;
+end;
+
+// use this procedure to show hin when mouse move on the grid ------------------
+Procedure ChangeHint(C: TControl; Const Hint: String; p: TPoint);
+var
+  OldHint: String;
+begin
+  OldHint := C.Hint;
+  if Hint <> OldHint then
+  begin
+    C.Hint := Hint;
+    Application.ActivateHint(p);
+  end;
+end;
+
+procedure TBonCtrGestionF.ProduitsListDBGridEhMouseMove(Sender: TObject;
+  Shift: TShiftState; X, Y: Integer);
+begin
+if NOT (MainForm.Bonv_ctr_listTable.IsEmpty) then
+  begin
+    MainForm.ProduitTable.DisableControls;
+    MainForm.ProduitTable.Active:=False;
+    MainForm.ProduitTable.SQL.Clear;
+    MainForm.ProduitTable.SQL.Text:='SELECT * FROM produit WHERE code_p = ' +IntToStr(MainForm.Bonv_ctr_listTable.FieldValues['code_p']);
+    MainForm.ProduitTable.Active:=True;
+
+
+    //ProduitsListDBGridEh.hint:= ('Prix seuil de vente: '+MainForm.ProduitTable.FieldByName('prixht_p').AsString+FormatSettings.DecimalSeparator+'00'  )     ;
+       Application.HintPause := 3000;      // 250 mSec before hint is shown
+     Application.HintHidePause := 5000;
+   ProduitsListDBGridEh.ShowHint:= True;
+
+     ChangeHint(TDBGridEh(Sender),
+      ( 'Dés: '+ (MainForm.ProduitTable.FieldValues['nom_p'])
+       + sLineBreak +
+         'Prix HT= '+ CurrToStrF((MainForm.ProduitTable.FieldValues['prixht_p']),ffNumber,2)
+       + sLineBreak +
+         'Prix TTC= '+ CurrToStrF((MainForm.ProduitTable.FieldValues['PrixATTC']),ffNumber,2)
+       ),
+       TDBGridEh(Sender).ClientToScreen(Point(X, Y)));
+
+
+     MainForm.ProduitTable.Active:=False;
+    MainForm.ProduitTable.SQL.Clear;
+    MainForm.ProduitTable.SQL.Text:='SELECT * FROM produit';
+    MainForm.ProduitTable.Active:=True ;
+    MainForm.ProduitTable.EnableControls;
+  end;
+end;
+
+procedure TBonCtrGestionF.ProduitBonCtrGCbxMouseEnter(Sender: TObject);
+begin
+   Application.HintPause := 500;      // 250 mSec before hint is shown
+   Application.HintHidePause := 5000;
+   ProduitBonCtrGCbx.ShowHint:= True;
+   ProduitBonCtrGCbx.Hint:='Double-cliquez ici pour afficher le clavier';
+end;
+
+procedure TBonCtrGestionF.RemiseBonCtrGEdtMouseEnter(Sender: TObject);
+begin
+   Application.HintPause := 500;      // 250 mSec before hint is shown
+   Application.HintHidePause := 5000;
+   RemiseBonCtrGEdt.ShowHint:= True;
+   RemiseBonCtrGEdt.Hint:='Double-cliquez ici pour afficher le clavier';
+end;
+
+procedure TBonCtrGestionF.RemisePerctageBonCtrGEdtMouseEnter(Sender: TObject);
+begin
+   Application.HintPause := 500;      // 250 mSec before hint is shown
+   Application.HintHidePause := 5000;
+   RemisePerctageBonCtrGEdt.ShowHint:= True;
+   RemisePerctageBonCtrGEdt.Hint:='Double-cliquez ici pour afficher le clavier';
+end;
+
+procedure TBonCtrGestionF.ProduitBonCtrGCbxDblClick(Sender: TObject);
+begin
+try
+  ShowKeyBoardBonCtrGBtnClick(Sender);
+//  ProduitBonCtrGCbx.SetFocus
+finally
+ ProduitBonCtrGCbx.SetFocus
+end;
+end;
+
+procedure TBonCtrGestionF.RemisePerctageBonCtrGEdtDblClick(Sender: TObject);
+begin
+try
+  ShowKeyBoardBonCtrGBtnClick(Sender);
+//  RemisePerctageBonCtrGEdt.SetFocus
+finally
+ RemisePerctageBonCtrGEdt.SetFocus
+end;
 end;
 
 end.
