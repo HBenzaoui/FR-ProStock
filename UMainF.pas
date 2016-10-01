@@ -728,6 +728,7 @@ type
     Bona_fac_listTableMargeG: TCurrencyField;
     Bona_fac_listTableMargeA: TCurrencyField;
     Bona_fac_listTableMargeA2: TCurrencyField;
+    ProduitTableQutDispo: TFloatField;
     procedure ClientMainFBtnClick(Sender: TObject);
     procedure FourMainFBtnClick(Sender: TObject);
     procedure ProduitMainFBtnClick(Sender: TObject);
@@ -1036,6 +1037,10 @@ begin
 
   ProduitTable.FieldValues['PrixVTTCA2']:=
  (((ProduitTable.FieldValues['prixva2_p'] * ProduitTable.FieldValues['tva_p'])/100) + (ProduitTable.FieldValues['prixva2_p'])) ;
+
+    ProduitTable.FieldValues['QutDispo']:=
+ (ProduitTable.FieldValues['qut_p'] + ProduitTable.FieldValues['qutini_p']);
+
 
 end;
 
@@ -1347,11 +1352,15 @@ begin
     Bonv_liv_listTable.FieldValues['MontantAHT']:=
  ((Bonv_liv_listTable.FieldValues['prixht_p'] * Bonv_liv_listTable.FieldValues['qut_p']) * (Bonv_liv_listTable.FieldValues['cond_p']) ) ;
 
+  if  Bonv_liv_listTable.FieldValues['prixvd_p'] <> 0 then
+ begin
      Bonv_liv_listTable.FieldValues['Marge']:=
 ((((Bonv_liv_listTable.FieldValues['MontantHT']) - (Bonv_liv_listTable.FieldValues['MontantAHT'])) / (Bonv_liv_listTable.FieldValues['MontantAHT']) ) * 100) ;
-
+  end;
     Bonv_liv_listTable.FieldValues['MargeM']:=
  ((Bonv_liv_listTable.FieldValues['MontantHT']) - (Bonv_liv_listTable.FieldValues['MontantAHT'])) ;
+
+
 
 end;
 
@@ -1545,8 +1554,11 @@ begin
      Bonv_Fac_listTable.FieldValues['MontantAHT']:=
  ((Bonv_Fac_listTable.FieldValues['prixht_p'] * Bonv_Fac_listTable.FieldValues['qut_p']) * (Bonv_Fac_listTable.FieldValues['cond_p']) ) ;
 
+   if  Bonv_Fac_listTable.FieldValues['prixvd_p'] <> 0 then
+ begin
      Bonv_Fac_listTable.FieldValues['Marge']:=
 ((((Bonv_Fac_listTable.FieldValues['MontantHT']) - (Bonv_Fac_listTable.FieldValues['MontantAHT'])) / (Bonv_Fac_listTable.FieldValues['MontantAHT']) ) * 100) ;
+ end;
 
     Bonv_Fac_listTable.FieldValues['MargeM']:=
  ((Bonv_Fac_listTable.FieldValues['MontantHT']) - (Bonv_Fac_listTable.FieldValues['MontantAHT'])) ;
@@ -1704,27 +1716,27 @@ begin
     Bona_fac_listTable.FieldValues['MontantTVA']:=
  ((Bona_fac_listTable.FieldValues['MontantTTC']) - (Bona_fac_listTable.FieldValues['MontantHT'])) ;
 
-   if  Bona_recPlistTable.FieldValues['prixvd_p'] <> 0 then
+   if  Bona_fac_listTable.FieldValues['prixvd_p'] <> 0 then
  begin
        Bona_fac_listTable.FieldValues['MargeD']:=
 ((((Bona_fac_listTable.FieldValues['prixvd_p']) - (Bona_fac_listTable.FieldValues['prixht_p'])) / (Bona_fac_listTable.FieldValues['prixht_p']) ) * 100) ;
  end;
-   if  Bona_recPlistTable.FieldValues['prixvr_p'] <> 0 then
+   if  Bona_fac_listTable.FieldValues['prixvr_p'] <> 0 then
  begin
       Bona_fac_listTable.FieldValues['MargeR']:=
 ((((Bona_fac_listTable.FieldValues['prixvr_p']) - (Bona_fac_listTable.FieldValues['prixht_p'])) / (Bona_fac_listTable.FieldValues['prixht_p']) ) * 100) ;
  end;
-   if  Bona_recPlistTable.FieldValues['prixvg_p'] <> 0 then
+   if  Bona_fac_listTable.FieldValues['prixvg_p'] <> 0 then
  begin
       Bona_fac_listTable.FieldValues['MargeG']:=
 ((((Bona_fac_listTable.FieldValues['prixvg_p']) - (Bona_fac_listTable.FieldValues['prixht_p'])) / (Bona_fac_listTable.FieldValues['prixht_p']) ) * 100) ;
  end;
-   if  Bona_recPlistTable.FieldValues['prixva_p'] <> 0 then
+   if  Bona_fac_listTable.FieldValues['prixva_p'] <> 0 then
  begin
       Bona_fac_listTable.FieldValues['MargeA']:=
 ((((Bona_fac_listTable.FieldValues['prixva_p']) - (Bona_fac_listTable.FieldValues['prixht_p'])) / (Bona_fac_listTable.FieldValues['prixht_p']) ) * 100) ;
  end;
-   if  Bona_recPlistTable.FieldValues['prixva2_p'] <> 0 then
+   if  Bona_fac_listTable.FieldValues['prixva2_p'] <> 0 then
  begin
       Bona_fac_listTable.FieldValues['MargeA2']:=
 ((((Bona_fac_listTable.FieldValues['prixva2_p']) - (Bona_fac_listTable.FieldValues['prixht_p'])) / (Bona_fac_listTable.FieldValues['prixht_p']) ) * 100) ;
@@ -1967,8 +1979,11 @@ begin
       Bonv_ctr_listTable.FieldValues['MontantAHT']:=
  ((Bonv_ctr_listTable.FieldValues['prixht_p'] * Bonv_ctr_listTable.FieldValues['qut_p']) * (Bonv_ctr_listTable.FieldValues['cond_p']) ) ;
 
+    if  Bonv_ctr_listTable.FieldValues['prixvd_p'] <> 0 then
+ begin
      Bonv_ctr_listTable.FieldValues['Marge']:=
 ((((Bonv_ctr_listTable.FieldValues['MontantHT']) - (Bonv_ctr_listTable.FieldValues['MontantAHT'])) / (Bonv_ctr_listTable.FieldValues['MontantAHT']) ) * 100) ;
+ end;
 
     Bonv_ctr_listTable.FieldValues['MargeM']:=
  ((Bonv_ctr_listTable.FieldValues['MontantHT']) - (Bonv_ctr_listTable.FieldValues['MontantAHT'])) ;

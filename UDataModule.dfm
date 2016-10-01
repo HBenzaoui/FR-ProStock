@@ -69,7 +69,7 @@ object DataModuleF: TDataModuleF
   object TotalProduit: TFDQuery
     Connection = MainForm.GstockdcConnection
     SQL.Strings = (
-      'SELECT   SUM(qut_p) as totat'
+      'SELECT   SUM(qut_p) + SUM(qutini_p) as totat'
       'FROM produit')
     Left = 750
     Top = 76

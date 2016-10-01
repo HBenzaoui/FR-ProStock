@@ -1139,9 +1139,9 @@ begin
 
 
     BonRecGOLDStock.Caption:=
-     floatTostrF((MainForm.ProduitTable.FieldValues['qut_p']),ffNumber,14,2);
+     floatTostrF((MainForm.ProduitTable.FieldValues['QutDispo']),ffNumber,14,2);
     BonRecGNEWStock.Caption:=
-     floatTostrF(((MainForm.ProduitTable.FieldValues['qut_p'])+((MainForm.Bona_recPlistTable.FieldValues['qut_p']) * (MainForm.Bona_recPlistTable.FieldValues['cond_p']))),ffNumber,14,2);
+     floatTostrF(((MainForm.ProduitTable.FieldValues['QutDispo'])+((MainForm.Bona_recPlistTable.FieldValues['qut_p']) * (MainForm.Bona_recPlistTable.FieldValues['cond_p']))),ffNumber,14,2);
 
 //     if(StrToFloat (StringReplace(BonRecGNEWStock.Caption, #32, '', [rfReplaceAll])))  < 0 then
 //    begin

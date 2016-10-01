@@ -1414,9 +1414,9 @@ begin
     MainForm.ProduitTable.Active:=True;
 
     BonLivGOLDStock.Caption:=
-      floatTostrF((MainForm.ProduitTable.FieldValues['qut_p']),ffNumber,14,2);
+      floatTostrF((MainForm.ProduitTable.FieldValues['QutDispo']),ffNumber,14,2);
     BonLivGNEWStock.Caption:=
-      floatTostrF(((MainForm.ProduitTable.FieldValues['qut_p'])-((MainForm.Bonv_liv_listTable.FieldValues['qut_p'])*(MainForm.Bonv_liv_listTable.FieldValues['cond_p']))),ffNumber,14,2);
+      floatTostrF(((MainForm.ProduitTable.FieldValues['QutDispo'])-((MainForm.Bonv_liv_listTable.FieldValues['qut_p'])*(MainForm.Bonv_liv_listTable.FieldValues['cond_p']))),ffNumber,14,2);
 
     if(StrToFloat (StringReplace(BonLivGNEWStock.Caption, #32, '', [rfReplaceAll])))  < 0 then
     begin

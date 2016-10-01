@@ -1,7 +1,7 @@
 object DashboardF: TDashboardF
   Left = 0
   Top = 0
-  Caption = 'Tableau de bord'
+  Caption = 'Tableau de Bord'
   ClientHeight = 566
   ClientWidth = 1045
   Color = 15855852
@@ -317,7 +317,6 @@ object DashboardF: TDashboardF
   OldCreateOrder = False
   Visible = True
   OnClose = FormClose
-  OnCreate = FormCreate
   OnPaint = FormShow
   OnShow = FormShow
   PixelsPerInch = 96

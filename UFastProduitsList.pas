@@ -114,14 +114,14 @@ begin
 end;
 
 //------ use this code to orange the produit with 0 or null in prix achate ----//
-  if  (MainForm.ProduitTable.FieldValues['prixht_p'] = 0) OR (MainForm.ProduitTable.FieldValues['qut_p'] = null)   then
+  if  (MainForm.ProduitTable.FieldValues['prixht_p'] = 0)   then
  begin
  ProduitsListDBGridEh.Canvas.Font.Color:=$000099FF;
  ProduitsListDBGridEh.DefaultDrawColumnCell(Rect, DataCol, Column, State);
  end;
 
  //------ use this code to red the produit with 0 or null in stock----//
- if  (MainForm.ProduitTable.FieldValues['qut_p'] = 0) OR (MainForm.ProduitTable.FieldValues['qut_p'] = null)   then
+ if  (MainForm.ProduitTable.FieldValues['QutDispo'] = 0)   then
  begin
  ProduitsListDBGridEh.Canvas.Font.Color:=$004735F9;
  ProduitsListDBGridEh.DefaultDrawColumnCell(Rect, DataCol, Column, State);

@@ -1456,7 +1456,7 @@ object BonFacAGestionF: TBonFacAGestionF
         Footers = <>
         Layout = tlCenter
         Title.Alignment = taCenter
-        Title.Caption = 'PRIX HT'
+        Title.Caption = 'Prix A HT'
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = 4207405
         Title.Font.Height = 19
@@ -1599,6 +1599,7 @@ object BonFacAGestionF: TBonFacAGestionF
         Width = 170
       end
       item
+        DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
         FieldName = 'prixvd_p'
@@ -1643,6 +1644,7 @@ object BonFacAGestionF: TBonFacAGestionF
         Width = 170
       end
       item
+        DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
         FieldName = 'prixvr_p'
@@ -1687,6 +1689,7 @@ object BonFacAGestionF: TBonFacAGestionF
         Width = 170
       end
       item
+        DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
         FieldName = 'prixvg_p'
@@ -1731,6 +1734,7 @@ object BonFacAGestionF: TBonFacAGestionF
         Width = 170
       end
       item
+        DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
         FieldName = 'prixva_p'
@@ -1775,6 +1779,7 @@ object BonFacAGestionF: TBonFacAGestionF
         Width = 170
       end
       item
+        DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
         FieldName = 'prixva2_p'

@@ -20526,7 +20526,7 @@ object MainForm: TMainForm
     SQL.Strings = (
       'SELECT * FROM client '
       '')
-    Left = 44
+    Left = 46
     Top = 158
     object ClientTablenom_c: TWideStringField
       FieldName = 'nom_c'
@@ -21028,6 +21028,10 @@ object MainForm: TMainForm
     object ProduitTablequtini_p: TFloatField
       FieldName = 'qutini_p'
       Origin = 'qutini_p'
+    end
+    object ProduitTableQutDispo: TFloatField
+      FieldKind = fkInternalCalc
+      FieldName = 'QutDispo'
     end
   end
   object UniteTable: TFDQuery
@@ -36394,6 +36398,7 @@ object MainForm: TMainForm
       'Database=GSTOCKDC'
       'User_Name=postgres'
       'DriverID=pG')
+    Connected = True
     LoginPrompt = False
     Left = 51
     Top = 112
@@ -45202,8 +45207,8 @@ object MainForm: TMainForm
   end
   object BonFacAListDataS: TDataSource
     DataSet = Bona_facTable
-    Left = 346
-    Top = 564
+    Left = 276
+    Top = 374
   end
   object BonLivListDataS: TDataSource
     DataSet = Bonv_livTable

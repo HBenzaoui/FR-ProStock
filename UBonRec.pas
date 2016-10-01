@@ -338,64 +338,72 @@ begin
 
 if NOT (MainForm.Bona_recTable.IsEmpty) then
  begin
-    MainForm.Bona_recPlistTable.Active:=True;
+    if  (MainForm.Bona_recTable.FieldByName('valider_barec').AsBoolean <> True ) then
+    begin
+     MainForm.Bona_recPlistTable.Active:=True;
 
-  if NOT (MainForm.Bona_recPlistTable.IsEmpty) then
-   begin
+      if NOT (MainForm.Bona_recPlistTable.IsEmpty) then
+       begin
 
-         FSplashAddUnite:=TFSplashAddUnite.Create(BonRecF);
-      FSplashAddUnite.Width:=300;
-      FSplashAddUnite.Height:=160;
-      FSplashAddUnite.Panel1.Color:=  $004735F9;
-      FSplashAddUnite.LineP.Top:= (FSplashAddUnite.Height) - 44  ;
-      FSplashAddUnite.OKAddUniteSBtn.Top:= (FSplashAddUnite.Height) - 36;
-      FSplashAddUnite.Image1.Left:= 1;
-      FSplashAddUnite.OKAddUniteSBtn.ImageIndex:=17;
-      FSplashAddUnite.CancelAddUniteSBtn.Top:=(FSplashAddUnite.Height) - 36;
-      FSplashAddUnite.OKAddUniteSBtn.Left:=(FSplashAddUnite.Width div 4) - (FSplashAddUnite.OKAddUniteSBtn.Width div 2) + 18;
-      FSplashAddUnite.CancelAddUniteSBtn.Left:= ((FSplashAddUnite.Width div 2 )+((FSplashAddUnite.Width div 2)div 2 ) ) - (FSplashAddUnite.CancelAddUniteSBtn.Width div 2) - 18;
-      FSplashAddUnite.NameAddUniteSLbl.Caption:='Ėtes-vous sûr de vouloir supprimer'+sLineBreak+sLineBreak+ 'les piéces d''achat sèlèctionnèes? ';
-      FSplashAddUnite.NameAddUniteSLbl.Top:= (FSplashAddUnite.Panel1.Height) + 10 ;
-      FSplashAddUnite.NameAddUniteSLbl.Font.Height:=16;
-      FSplashAddUnite.Image1.Visible:=True;
-      FSplashAddUnite.Image1.Top:= (FSplashAddUnite.Height div 2) - (FSplashAddUnite.Image1.Height div 2 ) ;
-      FSplashAddUnite.FormCaptionAddUniteSLbl.Caption:='Suppression de Bon';
-      FSplashAddUnite.FormCaptionAddUniteSLbl.Font.Color:=clWhite;
-      FSplashAddUnite.FormCaptionAddUniteSLbl.Left:=( FSplashAddUnite.Width div 2) -  ( FSplashAddUnite.FormCaptionAddUniteSLbl.Width div 2);
-      FSplashAddUnite.NameAddUniteSEdt.Visible:=False;
-      FSplashAddUnite.RequiredStarAddUniteSLbl.Visible:=False;
-      FSplashAddUnite.NameAddUniteSLbl.Left:=( FSplashAddUnite.Width div 2) - ( FSplashAddUnite.NameAddUniteSLbl.Width div 2) + (FSplashAddUnite.Image1.Width div 2);
-      FSplashAddUnite.Left:=  (MainForm.Left + MainForm.Width div 2) - (FSplashAddUnite.Width div 2);
-      FSplashAddUnite.Top:=   MainForm.Top + 5;
+             FSplashAddUnite:=TFSplashAddUnite.Create(BonRecF);
+          FSplashAddUnite.Width:=300;
+          FSplashAddUnite.Height:=160;
+          FSplashAddUnite.Panel1.Color:=  $004735F9;
+          FSplashAddUnite.LineP.Top:= (FSplashAddUnite.Height) - 44  ;
+          FSplashAddUnite.OKAddUniteSBtn.Top:= (FSplashAddUnite.Height) - 36;
+          FSplashAddUnite.Image1.Left:= 1;
+          FSplashAddUnite.OKAddUniteSBtn.ImageIndex:=17;
+          FSplashAddUnite.CancelAddUniteSBtn.Top:=(FSplashAddUnite.Height) - 36;
+          FSplashAddUnite.OKAddUniteSBtn.Left:=(FSplashAddUnite.Width div 4) - (FSplashAddUnite.OKAddUniteSBtn.Width div 2) + 18;
+          FSplashAddUnite.CancelAddUniteSBtn.Left:= ((FSplashAddUnite.Width div 2 )+((FSplashAddUnite.Width div 2)div 2 ) ) - (FSplashAddUnite.CancelAddUniteSBtn.Width div 2) - 18;
+          FSplashAddUnite.NameAddUniteSLbl.Caption:='Ėtes-vous sûr de vouloir supprimer'+sLineBreak+sLineBreak+ 'les piéces d''achat sèlèctionnèes? ';
+          FSplashAddUnite.NameAddUniteSLbl.Top:= (FSplashAddUnite.Panel1.Height) + 10 ;
+          FSplashAddUnite.NameAddUniteSLbl.Font.Height:=16;
+          FSplashAddUnite.Image1.Visible:=True;
+          FSplashAddUnite.Image1.Top:= (FSplashAddUnite.Height div 2) - (FSplashAddUnite.Image1.Height div 2 ) ;
+          FSplashAddUnite.FormCaptionAddUniteSLbl.Caption:='Suppression de Bon';
+          FSplashAddUnite.FormCaptionAddUniteSLbl.Font.Color:=clWhite;
+          FSplashAddUnite.FormCaptionAddUniteSLbl.Left:=( FSplashAddUnite.Width div 2) -  ( FSplashAddUnite.FormCaptionAddUniteSLbl.Width div 2);
+          FSplashAddUnite.NameAddUniteSEdt.Visible:=False;
+          FSplashAddUnite.RequiredStarAddUniteSLbl.Visible:=False;
+          FSplashAddUnite.NameAddUniteSLbl.Left:=( FSplashAddUnite.Width div 2) - ( FSplashAddUnite.NameAddUniteSLbl.Width div 2) + (FSplashAddUnite.Image1.Width div 2);
+          FSplashAddUnite.Left:=  (MainForm.Left + MainForm.Width div 2) - (FSplashAddUnite.Width div 2);
+          FSplashAddUnite.Top:=   MainForm.Top + 5;
 
-      AnimateWindow(FSplashAddUnite.Handle, 175, AW_VER_POSITIVE OR AW_SLIDE OR AW_ACTIVATE );
-      FSplashAddUnite.Show;
-      FSplashAddUnite.OKAddUniteSBtn.Enabled:=True;
-      FSplashAddUnite.OKAddUniteSBtn.Tag:= 8 ;
-     end
-      else
-      begin
-              MainForm.Bona_recTable.Delete ;
-        GrayForms;
-        FSplash := TFSplash.Create(Self);
-        try
-          FSplash.Left := Screen.Width div 2 - (FSplash.Width div 2);
-          FSplash.Top := 0;
+          AnimateWindow(FSplashAddUnite.Handle, 175, AW_VER_POSITIVE OR AW_SLIDE OR AW_ACTIVATE );
+          FSplashAddUnite.Show;
+          FSplashAddUnite.OKAddUniteSBtn.Enabled:=True;
+          FSplashAddUnite.OKAddUniteSBtn.Tag:= 8 ;
+         end
+          else
+          begin
+                  MainForm.Bona_recTable.Delete ;
+            GrayForms;
+            FSplash := TFSplash.Create(Self);
+            try
+              FSplash.Left := Screen.Width div 2 - (FSplash.Width div 2);
+              FSplash.Top := 0;
 
-          FSplash.Label1.Caption:='  Suppression avec succés';
-          FSplash.Color:= $004735F9;
-          AnimateWindow(FSplash.Handle, 150, AW_VER_POSITIVE OR AW_SLIDE OR AW_ACTIVATE);
-          sleep(250);
-          AnimateWindow(FSplash.Handle, 150, AW_VER_NEGATIVE OR
-            AW_SLIDE OR AW_HIDE);
-        finally
-          FSplash.free;
+              FSplash.Label1.Caption:='  Suppression avec succés';
+              FSplash.Color:= $004735F9;
+              AnimateWindow(FSplash.Handle, 150, AW_VER_POSITIVE OR AW_SLIDE OR AW_ACTIVATE);
+              sleep(250);
+              AnimateWindow(FSplash.Handle, 150, AW_VER_NEGATIVE OR
+                AW_SLIDE OR AW_HIDE);
+            finally
+              FSplash.free;
 
-        end;
+            end;
 
-        sndPlaySound('C:\Windows\Media\speech off.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
-        NormalForms;
-      end;
+            sndPlaySound('C:\Windows\Media\speech off.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+            NormalForms;
+          end;
+
+
+       end else
+           begin
+            sndPlaySound('C:\Windows\Media\chord.wav', SND_NODEFAULT Or SND_ASYNC Or  SND_RING);
+           end;
 
  end;
 

@@ -87,7 +87,7 @@ implementation
 
 {$R *.dfm}
 
-uses
+uses MMSystem,
   UMainF, UProduitGestion, USplashPrinting;
 
 function GridSelectAll(ProduitsListDBGridEh: TDBGridEh): Longint;
@@ -168,6 +168,29 @@ procedure TProduitsListF.DeleteProduitsBtnClick(Sender: TObject);
 Var NomP: String;
 begin
 
+// ------ this code is to check if the produit are in bons if it is the user cant delte it ------------
+  MainForm.SQLQuery.Active:= False;
+  MainForm.SQLQuery.SQL.Clear;
+  MainForm.SQLQuery.SQL.Text:=
+  'select * '
+ +  'from (   '
+ +   'select code_p as code_p from bona_fac_list '
+ +   'union all '
+ +   'select code_p from bona_rec_list '
+ +   'union all '
+ +   'select code_p from bonv_ctr_list '
+ +   'union all '
+ +   'select code_p from bonv_fac_list '
+ +   'union all '
+ +   'select code_p from bonv_liv_list '
+ +     ') a '
+ +     'where code_p = '+IntToStr(MainForm.ProduitTable.FieldByName('code_p').AsInteger) ;
+
+  MainForm.SQLQuery.Active:= True;
+
+ if MainForm.SQLQuery.IsEmpty then
+ begin
+
   if NOT (MainForm.ProduitTable.IsEmpty) Then
   begin
     FSplashAddUnite:=TFSplashAddUnite.Create(ProduitsListF);
@@ -207,6 +230,11 @@ begin
     FSplashAddUnite.OKAddUniteSBtn.Tag:= 4 ;
 
   end;
+
+  end else
+      begin
+         sndPlaySound('C:\Windows\Media\chord.wav', SND_NODEFAULT Or SND_ASYNC Or  SND_RING);
+      end;
 end;
 
 procedure TProduitsListF.EditProduitsBtnClick(Sender: TObject);
@@ -492,13 +520,13 @@ begin
    ProduitsListDBGridEh.DefaultDrawColumnCell(Rect, DataCol, Column, State);
 end;
 
-  if  (MainForm.ProduitTable.FieldValues['prixht_p'] = 0) OR (MainForm.ProduitTable.FieldValues['qut_p'] = null)   then
+  if  (MainForm.ProduitTable.FieldValues['prixht_p'] = 0)    then
  begin
  ProduitsListDBGridEh.Canvas.Font.Color:=$000099FF;
  ProduitsListDBGridEh.DefaultDrawColumnCell(Rect, DataCol, Column, State);
  end;
  //------ use this code to red the produit with 0 or null in stock----//
- if  (MainForm.ProduitTable.FieldValues['qut_p'] = 0) AND (MainForm.ProduitTable.FieldValues['qutini_p'] = 0)   then
+ if  (MainForm.ProduitTable.FieldValues['QutDispo'] = 0)  then
  begin
  ProduitsListDBGridEh.Canvas.Font.Color:=$004735F9;
  ProduitsListDBGridEh.DefaultDrawColumnCell(Rect, DataCol, Column, State);

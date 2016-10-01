@@ -672,10 +672,10 @@ object ProduitsListF: TProduitsListF
       item
         Alignment = taCenter
         Color = 15722984
-        DisplayFormat = '0.00 '
+        DisplayFormat = '0.00'
         DynProps = <>
         EditButtons = <>
-        FieldName = 'qut_p'
+        FieldName = 'QutDispo'
         Footers = <>
         Layout = tlCenter
         MinWidth = 100

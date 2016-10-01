@@ -1452,7 +1452,7 @@ object BonLivGestionF: TBonLivGestionF
         Footers = <>
         Layout = tlCenter
         Title.Alignment = taCenter
-        Title.Caption = 'PRIX HT'
+        Title.Caption = 'Prix V HT'
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = 4207405
         Title.Font.Height = 19

@@ -1105,8 +1105,8 @@ begin
     MainForm.ProduitTable.SQL.Text:='SELECT * FROM produit WHERE code_p = ' +IntToStr(MainForm.Bonv_ctr_listTable.FieldValues['code_p']);
     MainForm.ProduitTable.Active:=True;
 
-    BonCtrGOLDStock.Caption:=  floatTostrF((MainForm.ProduitTable.FieldValues['qut_p']),ffNumber,14,2);
-    BonCtrGNEWStock.Caption:=  floatTostrF(((MainForm.ProduitTable.FieldValues['qut_p'])-(MainForm.Bonv_ctr_listTable.FieldValues['qut_p'])),ffNumber,14,2);
+    BonCtrGOLDStock.Caption:=  floatTostrF((MainForm.ProduitTable.FieldValues['QutDispo']),ffNumber,14,2);
+    BonCtrGNEWStock.Caption:=  floatTostrF(((MainForm.ProduitTable.FieldValues['QutDispo'])-(MainForm.Bonv_ctr_listTable.FieldValues['qut_p'] * MainForm.Bonv_ctr_listTable.FieldValues['cond_p'] )),ffNumber,14,2);
 
     if(StrToFloat (StringReplace(BonCtrGNEWStock.Caption, #32, '', [rfReplaceAll])))  < 0 then
     begin

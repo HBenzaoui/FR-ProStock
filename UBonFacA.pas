@@ -376,6 +376,8 @@ procedure TBonFacAF.DeleteBAFacBtnClick(Sender: TObject);
 begin
  if NOT (MainForm.Bona_facTable.IsEmpty) then
  begin
+    if  (MainForm.Bona_facTable.FieldByName('valider_bafac').AsBoolean <> True ) then
+    begin
     MainForm.Bona_fac_listTable.Active:=True;
 
   if NOT (MainForm.Bona_fac_listTable.IsEmpty) then
@@ -435,7 +437,12 @@ begin
         sndPlaySound('C:\Windows\Media\speech off.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
         NormalForms;
       end;
-       end;
+       end else
+           begin
+             sndPlaySound('C:\Windows\Media\chord.wav', SND_NODEFAULT Or SND_ASYNC Or  SND_RING);
+           end;
+
+ end;
 end;
 
 procedure TBonFacAF.BAFacListDBGridEhDblClick(Sender: TObject);

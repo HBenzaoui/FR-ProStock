@@ -182,7 +182,7 @@ object BonCtrGestionF: TBonCtrGestionF
         Footers = <>
         Layout = tlCenter
         Title.Alignment = taCenter
-        Title.Caption = 'PRIX HT'
+        Title.Caption = 'Prix V HT'
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = 4207405
         Title.Font.Height = 19
@@ -367,6 +367,7 @@ object BonCtrGestionF: TBonCtrGestionF
         Footers = <>
         Layout = tlCenter
         TextEditing = False
+        Title.Alignment = taCenter
         Title.Caption = 'Marge %'
       end>
     object RowDetailData: TRowDetailPanelControlEh

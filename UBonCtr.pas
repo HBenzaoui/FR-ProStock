@@ -246,6 +246,8 @@ procedure TBonCtrF.DeleteBVCtrBtnClick(Sender: TObject);
 begin
 if NOT (MainForm.Bonv_ctrTable.IsEmpty) then
  begin
+     if  (MainForm.Bonv_ctrTable.FieldByName('valider_bvctr').AsBoolean <> True ) then
+    begin
     MainForm.Bonv_ctr_listTable.Active:= True;
 
   if NOT (MainForm.Bonv_ctr_listTable.IsEmpty) then
@@ -304,6 +306,11 @@ if NOT (MainForm.Bonv_ctrTable.IsEmpty) then
         sndPlaySound('C:\Windows\Media\speech off.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
         NormalForms;
       end;
+
+    end else
+        begin
+          sndPlaySound('C:\Windows\Media\chord.wav', SND_NODEFAULT Or SND_ASYNC Or  SND_RING);
+        end;
 end;
 end;
 

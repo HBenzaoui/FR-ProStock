@@ -410,9 +410,10 @@ object FastProduitsListF: TFastProduitsListF
       end
       item
         Alignment = taCenter
+        DisplayFormat = '0.00'
         DynProps = <>
         EditButtons = <>
-        FieldName = 'qut_p'
+        FieldName = 'QutDispo'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 2497560
         Font.Height = 24
@@ -516,6 +517,7 @@ object FastProduitsListF: TFastProduitsListF
         Width = 150
       end
       item
+        DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
         FieldName = 'prixht_p'
@@ -534,6 +536,7 @@ object FastProduitsListF: TFastProduitsListF
         Title.Font.Name = 'Helvetica LT Std'
         Title.Font.Style = []
         Title.Font.Quality = fqProof
+        Width = 130
       end
       item
         DynProps = <>
@@ -578,6 +581,7 @@ object FastProduitsListF: TFastProduitsListF
         Width = 50
       end
       item
+        DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
         FieldName = 'PrixATTC'
@@ -597,7 +601,63 @@ object FastProduitsListF: TFastProduitsListF
         Title.Font.Name = 'Helvetica LT Std'
         Title.Font.Style = []
         Title.Font.Quality = fqProof
-        Width = 131
+        Width = 130
+      end
+      item
+        DisplayFormat = '#,##0.00'
+        DynProps = <>
+        EditButtons = <>
+        FieldName = 'PrixVTTCD'
+        Footers = <>
+        Layout = tlCenter
+        Title.Alignment = taCenter
+        Title.Caption = 'PrixV TTC D'
+        Width = 130
+      end
+      item
+        DisplayFormat = '#,##0.00'
+        DynProps = <>
+        EditButtons = <>
+        FieldName = 'PrixVTTCR'
+        Footers = <>
+        Layout = tlCenter
+        Title.Alignment = taCenter
+        Title.Caption = 'PrixV TTC R'
+        Width = 130
+      end
+      item
+        DisplayFormat = '#,##0.00'
+        DynProps = <>
+        EditButtons = <>
+        FieldName = 'PrixVTTCG'
+        Footers = <>
+        Layout = tlCenter
+        Title.Alignment = taCenter
+        Title.Caption = 'PrixV TTC G'
+        Width = 130
+      end
+      item
+        DisplayFormat = '#,##0.00'
+        DynProps = <>
+        EditButtons = <>
+        FieldName = 'PrixVTTCA'
+        Footers = <>
+        Layout = tlCenter
+        Title.Alignment = taCenter
+        Title.Caption = 'PrixV TTC A'
+        Width = 130
+      end
+      item
+        Alignment = taRightJustify
+        DisplayFormat = '#,##0.00'
+        DynProps = <>
+        EditButtons = <>
+        FieldName = 'PrixVTTC2'
+        Footers = <>
+        Layout = tlCenter
+        Title.Alignment = taCenter
+        Title.Caption = 'PrixV TTC A2'
+        Width = 130
       end
       item
         Alignment = taCenter

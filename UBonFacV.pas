@@ -385,6 +385,8 @@ procedure TBonFacVF.DeleteBVFacBtnClick(Sender: TObject);
 begin
  if NOT (MainForm.Bonv_facTable.IsEmpty) then
  begin
+   if  (MainForm.Bonv_facTable.FieldByName('valider_bvfac').AsBoolean <> True ) then
+    begin
      MainForm.Bonv_fac_listTable.Active:=True;
 
   if NOT (MainForm.Bonv_fac_listTable.IsEmpty) then
@@ -440,7 +442,12 @@ begin
 
         sndPlaySound('C:\Windows\Media\speech off.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
         NormalForms;
-      end;
+      end
+
+    end else
+        begin
+           sndPlaySound('C:\Windows\Media\chord.wav', SND_NODEFAULT Or SND_ASYNC Or  SND_RING);
+        end;
        end;
 end;
 

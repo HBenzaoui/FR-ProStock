@@ -96,7 +96,6 @@ type
     ChartAnimation2: TTeeAnimationTool;
     Series2: TBarSeries;
     procedure FormShow(Sender: TObject);
-    procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     procedure Selecting_Only_Valide_Bons;
@@ -218,6 +217,7 @@ begin
 
   if NOT (MainForm.ProduitTable.IsEmpty) then
   begin
+   DataModuleF.TotalProduit.Refresh;
   NProduitTotalDashBLbl.Caption:= (DataModuleF.TotalProduit.FieldValues['totat']);
   end;
 
@@ -1169,6 +1169,7 @@ end;
 
 procedure TDashboardF.FormShow(Sender: TObject);
 begin
+GettingData;
 MonthsData;
     with PieSeries1 do
     begin
@@ -1180,8 +1181,8 @@ MonthsData;
       Add(  StrToInt(NFADashBLbl.Caption),  'FCA',  $004444FF ) ;
     end;
 
-  TTask.Run ( procedure
-            begin
+//  TTask.Run ( procedure
+//            begin
 
              if NOT Assigned(DashboardF) then
               begin
@@ -1190,13 +1191,8 @@ MonthsData;
               TeeAnimationTool2.play;
 
               end;
-            end);
+//            end);
 end;
-
-procedure TDashboardF.FormCreate(Sender: TObject);
-begin
-GettingData;
-end;
 
 procedure TDashboardF.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
