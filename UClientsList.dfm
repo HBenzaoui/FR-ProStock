@@ -817,7 +817,7 @@ object ClientListF: TClientListF
     object ResearchClientsLbl: TLabel
       Left = 24
       Top = 32
-      Width = 73
+      Width = 75
       Height = 18
       Caption = 'Recherche'
       Color = 15722984

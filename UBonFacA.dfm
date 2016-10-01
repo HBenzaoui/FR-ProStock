@@ -449,7 +449,7 @@ object BonFacAF: TBonFacAF
         Footers = <>
         Layout = tlCenter
         Title.Alignment = taCenter
-        Title.Caption = 'Houre'
+        Title.Caption = 'Heure'
         Title.EndEllipsis = True
         Title.ToolTips = True
         Width = 113
@@ -779,7 +779,7 @@ object BonFacAF: TBonFacAF
     object Label1: TLabel
       Left = 352
       Top = 14
-      Width = 23
+      Width = 24
       Height = 18
       Caption = 'Du:'
       Color = 15722984
@@ -795,7 +795,7 @@ object BonFacAF: TBonFacAF
     object Label2: TLabel
       Left = 353
       Top = 49
-      Width = 22
+      Width = 23
       Height = 18
       Caption = 'Au:'
       Color = 15722984

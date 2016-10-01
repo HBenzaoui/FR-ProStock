@@ -1564,13 +1564,20 @@ begin
           begin
           if NOT  MainForm.FamproduitTable.Locate('nom_famp', FamilleProduitGCbx.Text, [loCaseInsensitive]) then
             begin
-               with MainForm.FamproduitTable do
-                begin
-                Last;
-                Insert;
-                fieldbyname('nom_famp').Value := FamilleProduitGCbx.Text;
+               with MainForm.FamproduitTable do begin
+                  if NOT (IsEmpty) then
+                  begin
+                  Last;
+                  FamP:= FieldValues['code_famp'] + 1;
+                  end else
+                      begin
+                       FamP:= 1;
+                      end;
+                Append;
+                fieldbyname('code_famp').AsInteger := FamP;
+                fieldbyname('nom_famp').AsString := FamilleProduitGCbx.Text;
                 post;
-            end;
+             end;
             end;
           end ;
           //----------- use this code to inster new sous famille when just type name it if empty exit-------------
@@ -1578,10 +1585,17 @@ begin
           begin
           if NOT  MainForm.SFamproduitTable.Locate('nom_sfamp', SFamilleProduitGCbx.Text, [loCaseInsensitive]) then
             begin
-                 with MainForm.SFamproduitTable do
-                 begin
-                     Last;
-                    Insert;
+                 with MainForm.SFamproduitTable do begin
+                  if NOT (IsEmpty) then
+                  begin
+                  Last;
+                  FamSP:= FieldValues['code_sfamp'] + 1;
+                  end else
+                      begin
+                       FamSP:= 1;
+                      end;
+                    Append;
+                    fieldbyname('code_sfamp').AsInteger := FamSP;
                     fieldbyname('nom_sfamp').Value := SFamilleProduitGCbx.Text;
                     post;
                   end;
@@ -1592,12 +1606,19 @@ begin
           begin
           if NOT  MainForm.UniteTable.Locate('nom_u', UniteProduitGCbx.Text, [loCaseInsensitive]) then
             begin
-                 with MainForm.UniteTable do
-                 begin
-                 Last;
-                Insert;
-                fieldbyname('nom_u').Value := UniteProduitGCbx.Text;
-                post;
+                 with MainForm.UniteTable do begin
+                  if NOT (IsEmpty) then
+                  begin
+                  Last;
+                  UnitP:= FieldValues['code_u'] + 1;
+                  end else
+                      begin
+                       UnitP:= 1;
+                      end;
+                   Append;
+                   fieldbyname('code_u').AsInteger := UnitP;
+                   fieldbyname('nom_u').AsString := UniteProduitGCbx.Text;
+                   post;
                   end;
             end;
             end ;
@@ -1607,9 +1628,17 @@ begin
           if NOT  MainForm.LocalisationTable.Locate('nom_l', LocalisationProduitGCbx.Text, [loCaseInsensitive]) then
             begin
                with MainForm.LocalisationTable do  begin
-                   Last;
-                Insert;
-                fieldbyname('nom_l').Value := LocalisationProduitGCbx.Text;
+                  if NOT (IsEmpty) then
+                  begin
+                  Last;
+                  LoucP:= FieldValues['code_l'] + 1;
+                  end else
+                      begin
+                       LoucP:= 1;
+                      end;
+                Append;
+                fieldbyname('code_l').AsInteger :=  LoucP ;
+                fieldbyname('nom_l').AsString := LocalisationProduitGCbx.Text;
                 post;
                 end;
             end ;

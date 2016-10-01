@@ -450,7 +450,7 @@ object BonRecF: TBonRecF
         Footers = <>
         Layout = tlCenter
         Title.Alignment = taCenter
-        Title.Caption = 'Houre'
+        Title.Caption = 'Heure'
         Title.EndEllipsis = True
         Title.ToolTips = True
         Width = 113
@@ -768,7 +768,7 @@ object BonRecF: TBonRecF
     object Label1: TLabel
       Left = 355
       Top = 14
-      Width = 23
+      Width = 24
       Height = 18
       Caption = 'Du:'
       Color = 15722984
@@ -784,7 +784,7 @@ object BonRecF: TBonRecF
     object Label2: TLabel
       Left = 356
       Top = 49
-      Width = 22
+      Width = 23
       Height = 18
       Caption = 'Au:'
       Color = 15722984

@@ -974,7 +974,7 @@ FDPhysPgDriverLink1.VendorLib:= 'C:\Program Files (x86)\PostgreSQL\9.6\bin\libpq
 
 //  sCmd := Pwidechar(GetCurrentDir+ '\bin\pg_s.bat' );                // Eable this is only for releasing
 //  ShellExecute(0, 'open', PChar(sCmd) , PChar(sCmd), nil, SW_HIDE);  // Eable this is only for releasing
-
+//
 //  Sleep(5000);                                                       // Eable this is only for releasing
 
   GstockdcConnection.DriverName := 'PG';
@@ -990,7 +990,7 @@ FDPhysPgDriverLink1.VendorLib:= 'C:\Program Files (x86)\PostgreSQL\9.6\bin\libpq
 //   if NOT fileexists('Config') then
 //   begin
 
-//    FDScriptCreateTables.ExecuteAll;
+//    FDScriptCreateTables.ExecuteAll;                                // Eable this is only for releasing
 //     Sleep(2000);      // just for the first time
 
 //   end;

@@ -206,7 +206,7 @@ begin
       'SELECT * FROM client  WHERE activ_c = true ORDER BY code_c';
       MainForm.ClientTable.Active := true;
 
-     ActifClientsLbl.Caption := IntToStr(MainForm.ClientTable.RecordCount);
+     ActifClientsLbl.Caption := IntToStr(MainForm.ClientTable.RecordCount - 1); // -1 is to not calculate the Comptoir
 
       MainForm.ClientTable.Active := false;
       MainForm.ClientTable.SQL.Clear;
@@ -223,7 +223,7 @@ begin
       'SELECT * FROM client ORDER BY code_c ';
       MainForm.ClientTable.Active := true;
 
-      ToutClientsLbl.Caption :=   IntToStr(MainForm.ClientTable.RecordCount);
+      ToutClientsLbl.Caption :=   IntToStr(MainForm.ClientTable.RecordCount - 1);  // -1 is to not calculate the Comptoir
 
 
 
@@ -283,8 +283,10 @@ begin
     end;
    end;
 
- end;
-
+ end else
+      begin
+         sndPlaySound('C:\Windows\Media\chord.wav', SND_NODEFAULT Or SND_ASYNC Or  SND_RING);
+      end;
 
 end;
 
@@ -412,7 +414,7 @@ begin
       'SELECT * FROM client  WHERE activ_c = true ORDER BY code_c';
       MainForm.ClientTable.Active := true;
 
-     ActifClientsLbl.Caption :=  IntToStr(MainForm.ClientTable.RecordCount);
+     ActifClientsLbl.Caption :=  IntToStr(MainForm.ClientTable.RecordCount - 1);  // -1 is to not calculate the Comptoir
 
       MainForm.ClientTable.Active := false;
       MainForm.ClientTable.SQL.Clear;
@@ -428,7 +430,7 @@ begin
       'SELECT * FROM client ORDER BY code_c ';
       MainForm.ClientTable.Active := true;
 
-      ToutClientsLbl.Caption :=  IntToStr(MainForm.ClientTable.RecordCount);
+      ToutClientsLbl.Caption :=  IntToStr(MainForm.ClientTable.RecordCount - 1); // -1 is to not calculate the Comptoir
 
 
 

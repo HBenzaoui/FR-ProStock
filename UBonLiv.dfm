@@ -438,7 +438,7 @@ object BonLivF: TBonLivF
     object ResearchBALivLbl: TLabel
       Left = 10
       Top = 38
-      Width = 73
+      Width = 75
       Height = 18
       Caption = 'Recherche'
       Color = 15722984
@@ -496,7 +496,7 @@ object BonLivF: TBonLivF
     object Label1: TLabel
       Left = 345
       Top = 14
-      Width = 23
+      Width = 24
       Height = 18
       Caption = 'Du:'
       Color = 15722984
@@ -512,7 +512,7 @@ object BonLivF: TBonLivF
     object Label2: TLabel
       Left = 346
       Top = 49
-      Width = 22
+      Width = 23
       Height = 18
       Caption = 'Au:'
       Color = 15722984
@@ -966,7 +966,7 @@ object BonLivF: TBonLivF
         Footers = <>
         Layout = tlCenter
         Title.Alignment = taCenter
-        Title.Caption = 'Houre'
+        Title.Caption = 'Heure'
         Title.EndEllipsis = True
         Title.ToolTips = True
         Width = 113

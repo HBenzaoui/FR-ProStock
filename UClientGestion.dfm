@@ -61,7 +61,7 @@ object ClientGestionF: TClientGestionF
         object WilayaClientGLbl: TLabel
           Left = 18
           Top = 226
-          Width = 49
+          Width = 51
           Height = 18
           Caption = 'Wilaya:'
           Color = 4207405
@@ -77,7 +77,7 @@ object ClientGestionF: TClientGestionF
         object VilleClientGLbl: TLabel
           Left = 288
           Top = 227
-          Width = 33
+          Width = 34
           Height = 18
           Caption = 'Ville:'
           Color = 4207405
@@ -93,7 +93,7 @@ object ClientGestionF: TClientGestionF
         object ActiveClientGLbl: TLabel
           Left = 30
           Top = 15
-          Width = 89
+          Width = 90
           Height = 18
           Caption = 'Client Active:'
           Color = 4207405
@@ -141,7 +141,7 @@ object ClientGestionF: TClientGestionF
         object AdrClientGLbl: TLabel
           Left = 8
           Top = 172
-          Width = 59
+          Width = 63
           Height = 18
           Caption = 'Adresse:'
           Color = 4207405
@@ -173,7 +173,7 @@ object ClientGestionF: TClientGestionF
         object SiteClientGLbl: TLabel
           Left = 257
           Top = 414
-          Width = 64
+          Width = 69
           Height = 18
           Caption = 'Site Web:'
           Color = 4207405
@@ -189,7 +189,7 @@ object ClientGestionF: TClientGestionF
         object EmailClientGLbl: TLabel
           Left = 19
           Top = 414
-          Width = 41
+          Width = 44
           Height = 18
           Caption = 'Email:'
           Color = 4207405
@@ -221,7 +221,7 @@ object ClientGestionF: TClientGestionF
         object Mobile2ClientGLbl: TLabel
           Left = 262
           Top = 360
-          Width = 59
+          Width = 60
           Height = 18
           Caption = 'Mobile2:'
           Color = 4207405
@@ -237,7 +237,7 @@ object ClientGestionF: TClientGestionF
         object FaxClientGLbl: TLabel
           Left = 293
           Top = 306
-          Width = 28
+          Width = 30
           Height = 18
           Caption = 'Fax:'
           Color = 4207405
@@ -253,7 +253,7 @@ object ClientGestionF: TClientGestionF
         object RequiredStarClientGLbl: TLabel
           Left = 500
           Top = 62
-          Width = 8
+          Width = 7
           Height = 22
           Caption = '*'
           Color = clBtnFace
@@ -269,7 +269,7 @@ object ClientGestionF: TClientGestionF
         object RequiredClientGlbl: TLabel
           Left = 194
           Top = 38
-          Width = 139
+          Width = 134
           Height = 32
           Caption = 'S'#39'il vous pla'#238't entrer un nom'
           Color = clBtnFace
@@ -287,7 +287,7 @@ object ClientGestionF: TClientGestionF
         object ActiveClientGOuiOuNon: TLabel
           Left = 171
           Top = 18
-          Width = 18
+          Width = 16
           Height = 14
           Caption = 'Oui'
           Color = 4207405
@@ -569,7 +569,7 @@ object ClientGestionF: TClientGestionF
         object RCClientGLbl: TLabel
           Left = 24
           Top = 18
-          Width = 23
+          Width = 27
           Height = 18
           Caption = 'RC:'
           Color = 4207405
@@ -585,7 +585,7 @@ object ClientGestionF: TClientGestionF
         object NArtClientGLbl: TLabel
           Left = 258
           Top = 18
-          Width = 40
+          Width = 41
           Height = 18
           Caption = 'N'#176'Art:'
           Color = 4207405
@@ -601,7 +601,7 @@ object ClientGestionF: TClientGestionF
         object NIFClientGLbl: TLabel
           Left = 20
           Top = 64
-          Width = 27
+          Width = 28
           Height = 18
           Caption = 'NIF:'
           Color = 4207405
@@ -617,7 +617,7 @@ object ClientGestionF: TClientGestionF
         object NISClientGLbl: TLabel
           Left = 270
           Top = 64
-          Width = 28
+          Width = 29
           Height = 18
           Caption = 'NIS:'
           Color = 4207405
@@ -633,7 +633,7 @@ object ClientGestionF: TClientGestionF
         object ObserClientGLbl: TLabel
           Left = 16
           Top = 324
-          Width = 95
+          Width = 96
           Height = 18
           Caption = 'Observations:'
           Color = 4207405
@@ -649,7 +649,7 @@ object ClientGestionF: TClientGestionF
         object MaxCreditClientGLbl: TLabel
           Left = 258
           Top = 252
-          Width = 77
+          Width = 80
           Height = 18
           Caption = 'Cr'#233'dit Max:'
           Color = 4207405
@@ -715,7 +715,7 @@ object ClientGestionF: TClientGestionF
         object OldCreditClientGLbl: TLabel
           Left = 12
           Top = 252
-          Width = 94
+          Width = 95
           Height = 18
           Caption = 'Ancien cr'#233'dit:'
           Color = 4207405
@@ -731,7 +731,7 @@ object ClientGestionF: TClientGestionF
         object NBankClientGLbl: TLabel
           Left = 10
           Top = 113
-          Width = 121
+          Width = 127
           Height = 18
           Caption = 'Compte Bancaire:'
           Color = 4207405
@@ -747,7 +747,7 @@ object ClientGestionF: TClientGestionF
         object RIBClientGLbl: TLabel
           Left = 270
           Top = 113
-          Width = 28
+          Width = 29
           Height = 18
           Caption = 'RIB:'
           Color = 4207405

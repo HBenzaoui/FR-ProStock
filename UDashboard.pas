@@ -95,7 +95,6 @@ type
     ChartAnimation1: TSeriesAnimationTool;
     ChartAnimation2: TTeeAnimationTool;
     Series2: TBarSeries;
-    ChartTool1: TMarksTipTool;
     procedure FormShow(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -202,7 +201,7 @@ var i,MyMax, TopbonLivC,TopbonCtrC,TopbonFacC ,TopbonLivVerC,TopbonCtrVerC,Topbo
     a : TArray<Integer>;
 begin
 
-  NClientDashBLbl.Caption:=   IntToStr(MainForm.ClientTable.RecordCount);
+  NClientDashBLbl.Caption:=   IntToStr(MainForm.ClientTable.RecordCount - 1);   // -1 is to not calculate the Comptoir
   NFourDashBLbl.Caption:=     IntToStr(MainForm.FournisseurTable.RecordCount);
   NProduitDashBLbl.Caption:=  IntToStr(MainForm.ProduitTable.RecordCount);
 
@@ -217,8 +216,10 @@ begin
   Selecting_All_Bons;
 
 
-
+  if NOT (MainForm.ProduitTable.IsEmpty) then
+  begin
   NProduitTotalDashBLbl.Caption:= (DataModuleF.TotalProduit.FieldValues['totat']);
+  end;
 
 
    //---- this is the show the best seller client-------------------------
@@ -449,6 +450,7 @@ procedure TDashboardF.MonthsData;
        b[10] := 0; b[11] := 0;
         with DataModuleF.ToatalVerMonthAREC do
         begin
+        Refresh;
           Filtered := False;
           Filter := 'mon = 01';
           Filtered := True;
@@ -470,6 +472,7 @@ procedure TDashboardF.MonthsData;
           b[2] := FieldByName('sales').AsCurrency;
           with DataModuleF.ToatalVerMonthAREC do
         begin
+        Refresh;
           Filtered := False;
           Filter := 'mon = 01';
           Filtered := True;
@@ -578,6 +581,7 @@ procedure TDashboardF.MonthsData;
 
           with DataModuleF.ToatalVerMonthAFAC do
          begin
+         Refresh;
           Filtered := False;
           Filter := 'mon = 01';
           Filtered := True;
@@ -601,6 +605,7 @@ procedure TDashboardF.MonthsData;
           b[3] := b[3]+ FieldByName('sales').AsCurrency;
           with DataModuleF.ToatalVerMonthAFAC do
          begin
+         Refresh;
           Filtered := False;
           Filter := 'mon = 01';
           Filtered := True;
@@ -726,6 +731,7 @@ procedure TDashboardF.MonthsData;
        b[10] := 0; b[11] := 0;
        with DataModuleF.ToatalVerMonthVLIV do
         begin
+        Refresh;
           Filtered := False;
           Filter := 'mon = 01';
           Filtered := True;
@@ -789,6 +795,7 @@ procedure TDashboardF.MonthsData;
         end;
           with DataModuleF.ToatalVerMonthVFAC do
          begin
+         Refresh;
           Filtered := False;
           Filter := 'mon = 01';
           Filtered := True;
@@ -853,6 +860,7 @@ procedure TDashboardF.MonthsData;
 
           with DataModuleF.ToatalVerMonthVCTR do
          begin
+         Refresh;
           Filtered := False;
           Filter := 'mon = 01';
           Filtered := True;
@@ -927,6 +935,7 @@ procedure TDashboardF.MonthsData;
 
           with DataModuleF.ToatalVerMonthVLIV do
         begin
+        Refresh;
           Filtered := False;
           Filter := 'mon = 01';
           Filtered := True;
@@ -996,6 +1005,7 @@ procedure TDashboardF.MonthsData;
 
           with DataModuleF.ToatalVerMonthVFAC do
          begin
+         Refresh;
           Filtered := False;
           Filter := 'mon = 01';
           Filtered := True;
@@ -1065,6 +1075,7 @@ procedure TDashboardF.MonthsData;
 
           with DataModuleF.ToatalVerMonthVCTR do
          begin
+         Refresh;
           Filtered := False;
           Filter := 'mon = 01';
           Filtered := True;
@@ -1169,8 +1180,8 @@ MonthsData;
       Add(  StrToInt(NFADashBLbl.Caption),  'FCA',  $004444FF ) ;
     end;
 
-//  TTask.Run ( procedure
-//            begin
+  TTask.Run ( procedure
+            begin
 
              if NOT Assigned(DashboardF) then
               begin
@@ -1179,7 +1190,7 @@ MonthsData;
               TeeAnimationTool2.play;
 
               end;
-//            end);
+            end);
 end;
 
 procedure TDashboardF.FormCreate(Sender: TObject);

@@ -845,12 +845,26 @@ begin
 
  end;
 
-  if (key = #13) OR (key = #32) then
+
+ if    (OKAddUniteSBtn.Tag <> 0) AND (OKAddUniteSBtn.Tag <> 1) AND (OKAddUniteSBtn.Tag <> 2) AND (OKAddUniteSBtn.Tag <> 3) AND (OKAddUniteSBtn.Tag <> 28)
+   AND (OKAddUniteSBtn.Tag <> 7) AND (OKAddUniteSBtn.Tag <> 11)AND (OKAddUniteSBtn.Tag <> 18)AND (OKAddUniteSBtn.Tag <> 19)  then
+ begin
+    if (key = #13) OR (key = #32) then
  begin
 
    OKAddUniteSBtnClick(Sender);
 
  end;
+ end else
+     begin
+          if (key = #13)  then
+       begin
+
+         OKAddUniteSBtnClick(Sender);
+
+       end;
+     end;
+;
 
 end;
 

@@ -214,6 +214,7 @@ var
   S: TMemoryStream;
   Jpg: TJPEGImage;
 begin
+  if NOT MainForm.ProduitTable.IsEmpty then
   begin
       //----------------- Show the splash screan for the produit familly to add new one---------//
     ProduitGestionF := TProduitGestionF.Create(ProduitsListF);

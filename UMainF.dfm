@@ -20520,7 +20520,6 @@ object MainForm: TMainForm
     Top = 105
   end
   object ClientTable: TFDQuery
-    Active = True
     FilterOptions = [foCaseInsensitive]
     IndexFieldNames = 'code_c'
     Connection = GstockdcConnection
@@ -20670,7 +20669,6 @@ object MainForm: TMainForm
     Top = 154
   end
   object FournisseurTable: TFDQuery
-    Active = True
     FilterOptions = [foCaseInsensitive]
     IndexFieldNames = 'code_f'
     Connection = GstockdcConnection
@@ -20819,7 +20817,6 @@ object MainForm: TMainForm
     Top = 182
   end
   object ProduitTable: TFDQuery
-    Active = True
     OnCalcFields = ProduitTableCalcFields
     FilterOptions = [foCaseInsensitive]
     IndexFieldNames = 'code_p'
@@ -21034,7 +21031,6 @@ object MainForm: TMainForm
     end
   end
   object UniteTable: TFDQuery
-    Active = True
     FilterOptions = [foCaseInsensitive]
     IndexFieldNames = 'code_u'
     Connection = GstockdcConnection
@@ -21044,7 +21040,6 @@ object MainForm: TMainForm
     Top = 347
   end
   object SfamproduitTable: TFDQuery
-    Active = True
     FilterOptions = [foCaseInsensitive]
     IndexFieldNames = 'code_sfamp'
     Connection = GstockdcConnection
@@ -21054,7 +21049,6 @@ object MainForm: TMainForm
     Top = 472
   end
   object FamproduitTable: TFDQuery
-    Active = True
     FilterOptions = [foCaseInsensitive]
     IndexFieldNames = 'code_famp'
     Connection = GstockdcConnection
@@ -21074,7 +21068,6 @@ object MainForm: TMainForm
     Top = 528
   end
   object LocalisationTable: TFDQuery
-    Active = True
     IndexFieldNames = 'code_l'
     Connection = GstockdcConnection
     SQL.Strings = (
@@ -34802,7 +34795,6 @@ object MainForm: TMainForm
     end
   end
   object Bonv_liv_listTable: TFDQuery
-    Active = True
     AfterRefresh = Bonv_liv_listTableAfterRefresh
     OnCalcFields = Bonv_liv_listTableCalcFields
     FilterOptions = [foCaseInsensitive]
@@ -35231,7 +35223,6 @@ object MainForm: TMainForm
     end
   end
   object Bonv_fac_listTable: TFDQuery
-    Active = True
     AfterRefresh = Bonv_fac_listTableAfterRefresh
     OnCalcFields = Bonv_fac_listTableCalcFields
     FilterOptions = [foCaseInsensitive]
@@ -36076,7 +36067,6 @@ object MainForm: TMainForm
       FF00FF000000FF00FF00FFFF0000FFFFFF0000000000}
   end
   object Bonv_ctrTable: TFDQuery
-    Active = True
     OnCalcFields = Bonv_ctrTableCalcFields
     FilterOptions = [foCaseInsensitive]
     IndexFieldNames = 'code_bvctr'
@@ -36179,7 +36169,6 @@ object MainForm: TMainForm
     end
   end
   object Bonv_ctr_listTable: TFDQuery
-    Active = True
     AfterRefresh = Bonv_ctr_listTableAfterRefresh
     OnCalcFields = Bonv_ctr_listTableCalcFields
     FilterOptions = [foCaseInsensitive]
@@ -36405,7 +36394,6 @@ object MainForm: TMainForm
       'Database=GSTOCKDC'
       'User_Name=postgres'
       'DriverID=pG')
-    Connected = True
     LoginPrompt = False
     Left = 51
     Top = 112
@@ -36620,7 +36608,6 @@ object MainForm: TMainForm
     Top = 264
   end
   object UsersTable: TFDQuery
-    Active = True
     FilterOptions = [foCaseInsensitive]
     IndexFieldNames = 'code_ur'
     Connection = GstockdcConnection
@@ -39179,7 +39166,7 @@ object MainForm: TMainForm
           'Target Server Version : 90600'
           'File Encoding         : 65001'
           ''
-          'Date: 2016-09-21 16:21:45'
+          'Date: 2016-10-01 12:42:06'
           '*/'
           ''
           ''
@@ -39244,7 +39231,12 @@ object MainForm: TMainForm
           '"prixht_p" money DEFAULT 0,'
           '"cond_p" int4,'
           '"code_p" int4,'
-          '"tva_p" int2'
+          '"tva_p" int2 DEFAULT 0,'
+          '"prixvd_p" money DEFAULT 0,'
+          '"prixvr_p" money DEFAULT 0,'
+          '"prixvg_p" money DEFAULT 0,'
+          '"prixva_p" money DEFAULT 0,'
+          '"prixva2_p" money DEFAULT 0'
           ')'
           'WITH (OIDS=FALSE)'
           ''
@@ -39296,7 +39288,13 @@ object MainForm: TMainForm
           '"qut_p" float8 DEFAULT 0,'
           '"prixht_p" money DEFAULT 0,'
           '"cond_p" int4,'
-          '"code_p" int4'
+          '"code_p" int4,'
+          '"tva_p" int2 DEFAULT 0,'
+          '"prixvd_p" money DEFAULT 0,'
+          '"prixvr_p" money DEFAULT 0,'
+          '"prixvg_p" money DEFAULT 0,'
+          '"prixva_p" money DEFAULT 0,'
+          '"prixva2_p" money DEFAULT 0'
           ')'
           'WITH (OIDS=FALSE)'
           ''
@@ -39323,7 +39321,8 @@ object MainForm: TMainForm
           '"obser_bvctr" text COLLATE "default",'
           '"montttc_bvctr" money DEFAULT 0,'
           '"remise_bvctr" money DEFAULT 0,'
-          '"code_ur" int4'
+          '"code_ur" int4,'
+          '"marge_bvctr" money DEFAULT 0'
           ')'
           'WITH (OIDS=FALSE)'
           ''
@@ -39344,7 +39343,8 @@ object MainForm: TMainForm
           '"qut_p" float8 DEFAULT 0,'
           '"prixvd_p" money DEFAULT 0,'
           '"cond_p" int4,'
-          '"code_p" int4'
+          '"code_p" int4,'
+          '"tva_p" int2 DEFAULT 0'
           ')'
           'WITH (OIDS=FALSE)'
           ''
@@ -39375,7 +39375,8 @@ object MainForm: TMainForm
           '"code_mdpai" int2,'
           '"code_cmpt" int2,'
           '"timber_bvfac" money DEFAULT 0,'
-          '"code_ur" int4'
+          '"code_ur" int4,'
+          '"marge_bvfac" money DEFAULT 0'
           ')'
           'WITH (OIDS=FALSE)'
           ''
@@ -39397,7 +39398,7 @@ object MainForm: TMainForm
           '"prixvd_p" money DEFAULT 0,'
           '"cond_p" int4,'
           '"code_p" int4,'
-          '"tva_p" int2'
+          '"tva_p" int2 DEFAULT 0'
           ')'
           'WITH (OIDS=FALSE)'
           ''
@@ -39427,7 +39428,8 @@ object MainForm: TMainForm
           '"num_cheque_bvliv" varchar(50) COLLATE "default",'
           '"code_mdpai" int2,'
           '"code_cmpt" int2,'
-          '"code_ur" int4'
+          '"code_ur" int4,'
+          '"marge_bvliv" money DEFAULT 0'
           ')'
           'WITH (OIDS=FALSE)'
           ''
@@ -39448,7 +39450,8 @@ object MainForm: TMainForm
           '"qut_p" float8 DEFAULT 0,'
           '"prixvd_p" money DEFAULT 0,'
           '"cond_p" int4,'
-          '"code_p" int4'
+          '"code_p" int4,'
+          '"tva_p" int2 DEFAULT 0'
           ')'
           'WITH (OIDS=FALSE)'
           ''
@@ -44578,8 +44581,8 @@ object MainForm: TMainForm
           '-- ----------------------------'
           'BEGIN;'
           
-            'INSERT INTO "compte" VALUES ('#39'1'#39', '#39'Caisse'#39', '#39'00001'#39', '#39'f'#39', '#39'$0.00' +
-            #39', '#39'2016-01-01'#39');'
+            'INSERT INTO "compte" VALUES ('#39'1'#39', '#39'Caisse'#39', '#39'00001'#39', '#39'f'#39', '#39'$200.' +
+            '00'#39', '#39'2016-01-01'#39');'
           
             'INSERT INTO "compte" VALUES ('#39'2'#39', '#39'Banque'#39', '#39'00002'#39', '#39't'#39', '#39'$0.00' +
             #39', '#39'2016-01-01'#39');'
@@ -44835,6 +44838,9 @@ object MainForm: TMainForm
           '-- Records of sfamproduit'
           '-- ----------------------------'
           'BEGIN;'
+          'INSERT INTO "sfamproduit" VALUES ('#39'1'#39', '#39'asdas'#39');'
+          'INSERT INTO "sfamproduit" VALUES ('#39'2'#39', '#39'das'#39');'
+          'INSERT INTO "sfamproduit" VALUES ('#39'3'#39', '#39'sdf'#39');'
           'COMMIT;'
           ''
           '-- ----------------------------'
@@ -44963,21 +44969,6 @@ object MainForm: TMainForm
           'INSERT INTO "wilayas" VALUES ('#39'47'#39', '#39'Gharda'#239'a'#39');'
           'INSERT INTO "wilayas" VALUES ('#39'48'#39', '#39'Relizane'#39');'
           'COMMIT;'
-          ''
-          '-- ----------------------------'
-          '-- View structure for clientv'
-          '-- ----------------------------'
-          'CREATE OR REPLACE VIEW "clientv" AS '
-          
-            ' SELECT client.nom_c,'#10'    client.adr_c,'#10'    client.ville_c,'#10'    ' +
-            'client.fix_c,'#10'    client.mob_c,'#10'    client.email_c,'#10'    client.w' +
-            'illaya_c,'#10'    client.fax_c,'#10'    client.activ_c,'#10'    client.logo_' +
-            'c,'#10'    client.mob2_c,'#10'    client.rc_c,'#10'    client.nif_c,'#10'    cli' +
-            'ent.nart_c,'#10'    client.nis_c,'#10'    client.obser_c,'#10'    client.nba' +
-            'nk_c,'#10'    client.rib_c,'#10'    client.activite_c,'#10'    client.pays_c' +
-            ','#10'    client.siteweb_c,'#10'    client.oldcredit_c,'#10'    client.maxcr' +
-            'edit_c,'#10'    client.code_c'#10'   FROM client'#10'  WHERE (client.nom_c I' +
-            'S NULL);'
           ''
           '-- ----------------------------'
           '-- Function structure for truncate_tables'

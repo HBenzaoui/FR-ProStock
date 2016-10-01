@@ -391,6 +391,8 @@ begin
           fieldbyname('obser_c').Value := ObserClientGMem.Text;
           post;
         end;
+
+        MainForm.ClientTable.Refresh;
     end;
 
   // --------------- adding from the bon_liv  panel----
@@ -594,6 +596,8 @@ begin
       end;
 
     end;
+
+
     ClientGestionF.ClientGPgControl.TabIndex := 0;
     Close;
     NameClientGEdt.BorderStyle := bsSingle;
@@ -604,7 +608,7 @@ begin
       SND_RING);
 
 
-     if OKClientGBtn.Tag = 0 OR 1 then
+     if (OKClientGBtn.Tag = 0) OR (OKClientGBtn.Tag = 1) then
      begin
 
        MainForm.ClientTable.DisableControls;
@@ -616,7 +620,7 @@ begin
       MainForm.ClientTable.Active := true;
 
      ClientListF.ActifClientsLbl.Caption :=
-     IntToStr(MainForm.ClientTable.RecordCount);
+     IntToStr(MainForm.ClientTable.RecordCount - 1); // -1 is to not calculate the Comptoir
 
       MainForm.ClientTable.Active := false;
       MainForm.ClientTable.SQL.Clear;
@@ -635,7 +639,7 @@ begin
       MainForm.ClientTable.Active := true;
 
       ClientListF.ToutClientsLbl.Caption :=
-      IntToStr(MainForm.ClientTable.RecordCount);
+      IntToStr(MainForm.ClientTable.RecordCount - 1);  // -1 is to not calculate the Comptoir
 
 
 
