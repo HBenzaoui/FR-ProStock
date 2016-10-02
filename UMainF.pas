@@ -972,11 +972,11 @@ Screen.MenuFont.Color:= $0040332D ;
 FDPhysPgDriverLink1.VendorLib:= 'C:\Program Files (x86)\PostgreSQL\9.6\bin\libpq.dll' ; // Eable this is only for Debuggin
 
 //FDPhysPgDriverLink1.VendorLib:= GetCurrentDir+'\bin\libpq.dll' ;    // Eable this is only for releasing
-
+//
 //  sCmd := Pwidechar(GetCurrentDir+ '\bin\pg_s.bat' );                // Eable this is only for releasing
 //  ShellExecute(0, 'open', PChar(sCmd) , PChar(sCmd), nil, SW_HIDE);  // Eable this is only for releasing
-//
-//  Sleep(5000);                                                       // Eable this is only for releasing
+////
+////  Sleep(5000);                                                       // Eable this is only for releasing
 
   GstockdcConnection.DriverName := 'PG';
   GstockdcConnection.Params.Values['Server'] :='localhost';
@@ -987,12 +987,17 @@ FDPhysPgDriverLink1.VendorLib:= 'C:\Program Files (x86)\PostgreSQL\9.6\bin\libpq
 
    GstockdcConnection.Params.Values['Database'] := 'GSTOCKDC';
    GstockdcConnection.Connected:= True;
+//    Sleep(2000);                                                    // Eable this is only for releasing
+
 
 //   if NOT fileexists('Config') then
 //   begin
 
+
 //    FDScriptCreateTables.ExecuteAll;                                // Eable this is only for releasing
-//     Sleep(2000);      // just for the first time
+//     Sleep(2000);      // just for the first time                   // Eable this is only for releasing
+
+
 
 //   end;
 
@@ -2746,8 +2751,8 @@ begin
    GstockdcConnection.Connected:= False;
    DataModuleF.GstockdcConnection02.Connected:= False;
 
-//   KillTask('postgres.exe');
-//   KillTask('cmd.exe');
+   KillTask('postgres.exe');
+   KillTask('cmd.exe');
 
 end;
 

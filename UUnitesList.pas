@@ -39,7 +39,7 @@ var
 
 implementation
 
-uses   Winapi.MMSystem,
+uses   Winapi.MMSystem,Threading,
   UMainF, USplash, USplashAddUnite;
 
 {$R *.dfm}
@@ -88,8 +88,19 @@ procedure TUnitesListF.AdvToolButton3Click(Sender: TObject);
 begin
   if NOT (MainForm.UniteTable.IsEmpty) then
      begin
-     MainForm.UniteTable.Delete;
 
+     MainForm.SQLQuery.Active:= False;
+     MainForm.SQLQuery.SQL.Clear;
+     MainForm.SQLQuery.SQL.Text:= 'SELECT code_u FROM produit WHERE code_u = '
+     +IntToStr(MainForm.UniteTable.FieldByName('code_u').AsInteger);
+     MainForm.SQLQuery.Active:= True;
+
+      if  (MainForm.SQLQuery.IsEmpty)  then
+     begin
+       MainForm.UniteTable.Delete;
+
+        TTask.Run ( procedure
+        begin
           FSplash := TFSplash.Create(UnitesListF);
           try
             FSplash.Left := Screen.Width div 2 - (FSplash.Width div 2);
@@ -105,14 +116,28 @@ begin
             FSplash.free;
 
           end;
+          end);
       sndPlaySound('C:\Windows\Media\speech off.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+      end else
+          begin
+            sndPlaySound('C:\Windows\Media\chord.wav', SND_NODEFAULT Or SND_ASYNC Or  SND_RING);
+          end;
    end;
+
+        //--dicconet when finish the quiry ---
+      MainForm.SQLQuery.Active:= False;
 end;
 
 procedure TUnitesListF.AdvToolButton1Click(Sender: TObject);
 begin
+ResearchUniteEdt.Text:='';
+
 //-------- Show the splash screan for the produit Unite  to add new one---------//
   FSplashAddUnite:=TFSplashAddUnite.Create(UnitesListF);
+
+  FSplashAddUnite.OKAddUniteSBtn.Tag:= 2 ;
+  FSplashAddUnite.Image1.Tag:= 0 ;
+
   FSplashAddUnite.Panel1.Color:= $0028CAFE;
   FSplashAddUnite.LineP.Color:= $0028CAFE;
   FSplashAddUnite.Left:=  (UnitesListF.Left + UnitesListF.Width div 2) - (FSplashAddUnite.Width div 2);
@@ -121,9 +146,10 @@ begin
   FSplashAddUnite.Image1.ImageIndex:=6;
 
   AnimateWindow(FSplashAddUnite.Handle, 175, AW_VER_POSITIVE OR AW_SLIDE OR AW_ACTIVATE );
+
   FSplashAddUnite.Show;
   FSplashAddUnite.NameAddUniteSEdt.SetFocus;
-  FSplashAddUnite.OKAddUniteSBtn.Tag:= 2 ;
+
 end;
 
 procedure TUnitesListF.AdvToolButton2Click(Sender: TObject);
@@ -132,6 +158,10 @@ if NOT (MainForm.UniteTable.IsEmpty) then
 begin
   //-------- Show the splash screan for the produit Unite  to add new one---------//
   FSplashAddUnite:=TFSplashAddUnite.Create(UnitesListF);
+
+  FSplashAddUnite.OKAddUniteSBtn.Tag:= 2 ;
+  FSplashAddUnite.Image1.Tag:= 1;
+
   FSplashAddUnite.Panel1.Color:= $0028CAFE;
   FSplashAddUnite.LineP.Color:= $0028CAFE;
   FSplashAddUnite.Left:=  (UnitesListF.Left + UnitesListF.Width div 2) - (FSplashAddUnite.Width div 2);
@@ -144,10 +174,10 @@ begin
   FSplashAddUnite.NameAddUniteSEdt.Text:= MainForm.UniteTable.FieldByName('nom_u').AsString;
 
   AnimateWindow(FSplashAddUnite.Handle, 175, AW_VER_POSITIVE OR AW_SLIDE OR AW_ACTIVATE );
+
   FSplashAddUnite.Show;
   FSplashAddUnite.NameAddUniteSEdt.SetFocus;
-  FSplashAddUnite.OKAddUniteSBtn.Tag:= 2 ;
-  FSplashAddUnite.Image1.Tag:= 1;
+
 end;
 end;
 

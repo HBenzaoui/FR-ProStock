@@ -235,6 +235,8 @@ begin
       begin
          sndPlaySound('C:\Windows\Media\chord.wav', SND_NODEFAULT Or SND_ASYNC Or  SND_RING);
       end;
+     //--dicconet when finish the quiry ---
+      MainForm.SQLQuery.Active:= False;
 end;
 
 procedure TProduitsListF.EditProduitsBtnClick(Sender: TObject);

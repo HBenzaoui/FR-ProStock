@@ -29,7 +29,6 @@ type
     procedure FormDestroy(Sender: TObject);
     procedure CancelAddUniteSBtnClick(Sender: TObject);
     procedure OKAddUniteSBtnClick(Sender: TObject);
-    procedure NameAddUniteSEdtKeyPress(Sender: TObject; var Key: Char);
     procedure FormShow(Sender: TObject);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
     procedure CompteAddUniteSCbxEnter(Sender: TObject);
@@ -851,7 +850,7 @@ begin
  begin
     if (key = #13) OR (key = #32) then
  begin
-
+     key := #0;
    OKAddUniteSBtnClick(Sender);
 
  end;
@@ -859,7 +858,7 @@ begin
      begin
           if (key = #13)  then
        begin
-
+          key := #0;
          OKAddUniteSBtnClick(Sender);
 
        end;
@@ -883,31 +882,6 @@ begin
   NameAddUniteSErrorP.Visible:= False;
 end;
 
-procedure TFSplashAddUnite.NameAddUniteSEdtKeyPress(Sender: TObject;
-  var Key: Char);
-begin
-//---- close the form when i press Esc -----//
-
-  if key = #27 then
- begin
- key := #0;
-  CancelAddUniteSBtnClick(Sender);
-
-
- end;
-
- //---- jump to the next edit when i press enter-----//
-
-if key = #13 then
-
-begin
- key := #0;
-OKAddUniteSBtnClick(Sender);
-
-end;
-
-end;
-
 procedure TFSplashAddUnite.OKAddUniteSBtnClick(Sender: TObject);
 var codeP,CodeMDPai,codeBR,CodeF,CodeUNIT: Integer;
 
@@ -918,7 +892,10 @@ begin
       if NameAddUniteSEdt.Text <> '' then
    begin
         with MainForm.FamproduitTable do  begin
-             if NOT (IsEmpty) then
+
+          if Image1.Tag = 0 then
+         begin
+            if NOT (IsEmpty) then
             begin
             Last;
             CodeUNIT:= FieldValues['code_famp'] + 1;
@@ -926,8 +903,6 @@ begin
                 begin
                  CodeUNIT:= 1;
                 end;
-          if Image1.Tag = 0 then
-         begin
           Append;
           fieldbyname('code_famp').Value := CodeUNIT;
           fieldbyname('nom_famp').Value := NameAddUniteSEdt.Text;
@@ -971,16 +946,16 @@ begin
      if NameAddUniteSEdt.Text <> '' then
    begin
          with MainForm.SfamproduitTable do  begin
-           if NOT (IsEmpty) then
-          begin
-          Last;
-          CodeUNIT:= FieldValues['code_sfamp'] + 1;
-          end else
-              begin
-               CodeUNIT:= 1;
-              end;
-            if Image1.Tag = 0 then
+           if Image1.Tag = 0 then
            begin
+            if NOT (IsEmpty) then
+            begin
+            Last;
+            CodeUNIT:= FieldValues['code_sfamp'] + 1;
+            end else
+                begin
+                 CodeUNIT:= 1;
+                end;
             Append;
             fieldbyname('code_sfamp').Value := CodeUNIT;
             fieldbyname('nom_sfamp').Value := NameAddUniteSEdt.Text;
@@ -1027,16 +1002,16 @@ begin
     if NameAddUniteSEdt.Text <> '' then
   begin
         with MainForm.UniteTable do  begin
-         if NOT (IsEmpty) then
-        begin
-        Last;
-        CodeUNIT:= FieldValues['code_u'] + 1;
-        end else
-            begin
-             CodeUNIT:= 1;
-            end;
           if Image1.Tag = 0 then
          begin
+          if NOT (IsEmpty) then
+          begin
+          Last;
+          CodeUNIT:= FieldValues['code_u'] + 1;
+          end else
+              begin
+               CodeUNIT:= 1;
+              end;
           Append;
           fieldbyname('code_u').Value := CodeUNIT;
           fieldbyname('nom_u').Value := NameAddUniteSEdt.Text;
@@ -1082,21 +1057,20 @@ begin
     if NameAddUniteSEdt.Text <> '' then
    begin
         with MainForm.LocalisationTable do  begin
-         if NOT (IsEmpty) then
-        begin
-        Last;
-        CodeUNIT:= FieldValues['code_l'] + 1;
-        end else
-            begin
-             CodeUNIT:= 1;
-            end;
           if Image1.Tag = 0 then
          begin
+          if NOT (IsEmpty) then
+          begin
+          Last;
+          CodeUNIT:= FieldValues['code_l'] + 1;
+          end else
+              begin
+               CodeUNIT:= 1;
+              end;
           Append;
           fieldbyname('code_l').Value := CodeUNIT;
           fieldbyname('nom_l').Value := NameAddUniteSEdt.Text;
           post;
-
            end;
          if Image1.Tag = 1 then
          begin
@@ -2103,10 +2077,10 @@ begin
 
 
      //---- this tag = 30 is for adding the   ------///
-   if OKAddUniteSBtn.Tag = 30 then
-   begin
-
-   end;
+//   if OKAddUniteSBtn.Tag = 30 then
+//   begin
+//
+//   end;
 
 
 

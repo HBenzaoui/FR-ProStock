@@ -39,7 +39,7 @@ var
 
 implementation
 
-uses Winapi.MMSystem,
+uses Winapi.MMSystem,Threading,
   UMainF, USplash, USplashAddUnite;
 
 {$R *.dfm}
@@ -86,10 +86,23 @@ end;
 
 procedure TLocaleListF.AdvToolButton3Click(Sender: TObject);
 begin
+
   if NOT (MainForm.LocalisationTable.IsEmpty) then
      begin
-     MainForm.LocalisationTable.Delete;
 
+     MainForm.SQLQuery.Active:= False;
+     MainForm.SQLQuery.SQL.Clear;
+     MainForm.SQLQuery.SQL.Text:= 'SELECT code_l FROM produit WHERE code_l = '
+     +IntToStr(MainForm.LocalisationTable.FieldByName('code_l').AsInteger);
+     MainForm.SQLQuery.Active:= True;
+
+      if  (MainForm.SQLQuery.IsEmpty)  then
+     begin
+
+       MainForm.LocalisationTable.Delete;
+
+        TTask.Run ( procedure
+        begin
           FSplash := TFSplash.Create(LocaleListF);
           try
             FSplash.Left := Screen.Width div 2 - (FSplash.Width div 2);
@@ -103,17 +116,29 @@ begin
               AW_SLIDE OR AW_HIDE);
           finally
             FSplash.free;
-
           end;
-      sndPlaySound('C:\Windows\Media\speech off.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+          end);
+       sndPlaySound('C:\Windows\Media\speech off.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+       end else
+           begin
+             sndPlaySound('C:\Windows\Media\chord.wav', SND_NODEFAULT Or SND_ASYNC Or  SND_RING);
+           end;
    end;
+
+        //--dicconet when finish the quiry ---
+      MainForm.SQLQuery.Active:= False;
 end;
 
 procedure TLocaleListF.AdvToolButton1Click(Sender: TObject);
 begin
+ResearchLocaleEdt.Text:='';
 //-------- Show the splash screan for the produit Localisation to add new one---------//
 
   FSplashAddUnite:=TFSplashAddUnite.Create(LocaleListF);
+
+  FSplashAddUnite.OKAddUniteSBtn.Tag:= 3 ;
+  FSplashAddUnite.Image1.Tag:= 0 ;
+
   FSplashAddUnite.Width:= 355;
   FSplashAddUnite.Panel1.Color:= $000098FF;
   FSplashAddUnite.LineP.Color:= $000098FF;
@@ -136,9 +161,10 @@ begin
   FSplashAddUnite.NameAddUniteSErrorP.Left:= (FSplashAddUnite.NameAddUniteSEdt.Left) - 1;
 
   AnimateWindow(FSplashAddUnite.Handle, 175, AW_VER_POSITIVE OR AW_SLIDE OR AW_ACTIVATE );
+
   FSplashAddUnite.Show;
   FSplashAddUnite.NameAddUniteSEdt.SetFocus;
-  FSplashAddUnite.OKAddUniteSBtn.Tag:= 3 ;
+  ;
 end;
 
 procedure TLocaleListF.AdvToolButton2Click(Sender: TObject);
@@ -147,6 +173,10 @@ begin
  if NOT (MainForm.LocalisationTable.IsEmpty) then
  begin
   FSplashAddUnite:=TFSplashAddUnite.Create(LocaleListF);
+
+  FSplashAddUnite.OKAddUniteSBtn.Tag:= 3 ;
+  FSplashAddUnite.Image1.Tag:= 1 ;
+
   FSplashAddUnite.Width:= 355;
   FSplashAddUnite.Panel1.Color:= $000098FF;
   FSplashAddUnite.LineP.Color:= $000098FF;
@@ -171,10 +201,11 @@ begin
   FSplashAddUnite.NameAddUniteSEdt.Text:= MainForm.LocalisationTable.FieldByName('nom_l').AsString;
 
   AnimateWindow(FSplashAddUnite.Handle, 175, AW_VER_POSITIVE OR AW_SLIDE OR AW_ACTIVATE );
+
   FSplashAddUnite.Show;
   FSplashAddUnite.NameAddUniteSEdt.SetFocus;
-  FSplashAddUnite.OKAddUniteSBtn.Tag:= 3 ;
-  FSplashAddUnite.Image1.Tag:= 1 ;
+
+
 
  end;
 end;

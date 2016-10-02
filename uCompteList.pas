@@ -41,7 +41,7 @@ implementation
 {$R *.dfm}
 
 
-uses UMainF,USplashAddCompte, USplash,Winapi.MMSystem;
+uses UMainF,USplashAddCompte, USplash,Winapi.MMSystem,Threading;
 
 procedure TCompteListF.OKAddCompteSBtnClick(Sender: TObject);
 begin
@@ -101,7 +101,6 @@ begin
                                                            end;
     FSplashAddCompte.SoldeAddCompteSCbx.Text:= MainForm.CompteTable.FieldByName('oldcredit_cmpt').AsString;
 
-
     FSplashAddCompte.Show;
     FSplashAddCompte.NameAddCompteSEdt.SetFocus;
 
@@ -119,17 +118,18 @@ begin
   if NOT (MainForm.CompteTable.IsEmpty) then
      begin
 
-
      MainForm.Opt_cas_bnk_CaisseTable.Active:= False;
      MainForm.Opt_cas_bnk_CaisseTable.SQL.clear;
      MainForm.Opt_cas_bnk_CaisseTable.SQL.Text:=
      'SELECT * FROM opt_cas_bnk where code_cmpt = '+ IntToStr(MainForm.CompteTable.FieldByName('code_cmpt').AsInteger) ;
      MainForm.Opt_cas_bnk_CaisseTable.Active:= True;
+
     if  MainForm.Opt_cas_bnk_CaisseTable.IsEmpty then
     begin
+      MainForm.CompteTable.Delete;
 
-     MainForm.CompteTable.Delete;
-
+        TTask.Run ( procedure
+        begin
           FSplash := TFSplash.Create(CompteListF);
           try
             FSplash.Left := Screen.Width div 2 - (FSplash.Width div 2);
@@ -145,22 +145,22 @@ begin
             FSplash.free;
 
           end;
+          end);
       sndPlaySound('C:\Windows\Media\speech off.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
 
      MainForm.Opt_cas_bnk_CaisseTable.Active:= False;
      MainForm.Opt_cas_bnk_CaisseTable.SQL.clear;
      MainForm.Opt_cas_bnk_CaisseTable.SQL.Text:= 'SELECT * FROM opt_cas_bnk where nature_ocb = false ';
      MainForm.Opt_cas_bnk_CaisseTable.Active:= True;
-
     end else
         begin
            sndPlaySound('C:\Windows\Media\chord.wav', SND_NODEFAULT Or SND_ASYNC Or  SND_RING);
         end;
-
-
    end;
-
-  end;
+  end else
+      begin
+        sndPlaySound('C:\Windows\Media\chord.wav', SND_NODEFAULT Or SND_ASYNC Or  SND_RING);
+      end;
 end;
 
 end.

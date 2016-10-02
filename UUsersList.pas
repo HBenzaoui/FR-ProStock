@@ -39,7 +39,7 @@ var
 
 implementation
 
-uses    Winapi.MMSystem,
+uses    Winapi.MMSystem,Threading,
   UMainF, UClientGestion, UUsersGestion, USplash;
 
 {$R *.dfm}
@@ -72,6 +72,8 @@ end;
 
 procedure TUsersListF.AdvToolButton1Click(Sender: TObject);
 begin
+          ResearchUsersEdt.Text:='';
+
             UsersGestionF:=TUsersGestionF.Create(UsersListF);
 //            UsersGestionF.TypeUserGCbxChange(Sender);
             UsersGestionF.Left:=  (Screen.Width div 2 ) - (UsersGestionF.Width div 2)    ;
@@ -126,6 +128,8 @@ begin
      begin
      MainForm.UsersTable.Delete;
 
+        TTask.Run ( procedure
+        begin
           FSplash := TFSplash.Create(UsersListF);
           try
             FSplash.Left := Screen.Width div 2 - (FSplash.Width div 2);
@@ -139,8 +143,9 @@ begin
               AW_SLIDE OR AW_HIDE);
           finally
             FSplash.free;
-
           end;
+          end);
+
       sndPlaySound('C:\Windows\Media\speech off.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
 
    end;

@@ -74,8 +74,13 @@ end;
 
 procedure TFamPListF.AdvToolButton1Click(Sender: TObject);
 begin
+ResearchFamPEdt.Text:='';
 //-------- Show the splash screan for the produit familly to add new one---------//
   FSplashAddUnite:=TFSplashAddUnite.Create(FamPListF);
+
+  FSplashAddUnite.OKAddUniteSBtn.Tag:= 0 ;
+  FSplashAddUnite.Image1.Tag:= 0 ;
+
   FSplashAddUnite.Width:= 330;
   FSplashAddUnite.Panel1.Color:= $00B0279C;
   FSplashAddUnite.LineP.Color:= $00B0279C;
@@ -99,10 +104,10 @@ begin
 //       begin
           AnimateWindow(FSplashAddUnite.Handle, 175, AW_VER_POSITIVE OR AW_SLIDE OR AW_ACTIVATE );
 //       end);
+
   FSplashAddUnite.Show;
   FSplashAddUnite.NameAddUniteSEdt.SetFocus;
-  FSplashAddUnite.OKAddUniteSBtn.Tag:= 0 ;
-  FSplashAddUnite.Image1.Tag:= 0 ;
+
 end;
 
 procedure TFamPListF.AdvToolButton2Click(Sender: TObject);
@@ -111,6 +116,10 @@ begin
   if NOT (MainForm.FamproduitTable.IsEmpty) then
 begin
   FSplashAddUnite:=TFSplashAddUnite.Create(FamPListF);
+
+  FSplashAddUnite.OKAddUniteSBtn.Tag:= 0 ;
+  FSplashAddUnite.Image1.Tag:= 1 ;
+
   FSplashAddUnite.Width:= 330;
   FSplashAddUnite.Panel1.Color:= $00B0279C;
   FSplashAddUnite.LineP.Color:= $00B0279C;
@@ -135,8 +144,7 @@ begin
   AnimateWindow(FSplashAddUnite.Handle, 175, AW_VER_POSITIVE OR AW_SLIDE OR AW_ACTIVATE );
   FSplashAddUnite.Show;
   FSplashAddUnite.NameAddUniteSEdt.SetFocus;
-  FSplashAddUnite.OKAddUniteSBtn.Tag:= 0 ;
-  FSplashAddUnite.Image1.Tag:= 1 ;
+
 
  end;
 end;
@@ -146,13 +154,20 @@ begin
 
   if NOT (MainForm.FamproduitTable.IsEmpty) then
      begin
-     MainForm.FamproduitTable.Delete;
 
+     MainForm.SQLQuery.Active:= False;
+     MainForm.SQLQuery.SQL.Clear;
+     MainForm.SQLQuery.SQL.Text:= 'SELECT code_famp FROM produit WHERE code_famp = '
+     +IntToStr(MainForm.FamproduitTable.FieldByName('code_famp').AsInteger);
+     MainForm.SQLQuery.Active:= True;
 
-    TTask.Run ( procedure
+    if  (MainForm.SQLQuery.IsEmpty)  then
+     begin
+        MainForm.FamproduitTable.Delete;
+
+        TTask.Run ( procedure
             begin
-
-            FSplash := TFSplash.Create(FamPListF);
+            FSplash := TFSplash.Create(FamPListF);
             try
               FSplash.Left := Screen.Width div 2 - (FSplash.Width div 2);
               FSplash.Top := 0;
@@ -169,8 +184,15 @@ begin
             end;
           end);
 
-      sndPlaySound('C:\Windows\Media\speech off.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+         sndPlaySound('C:\Windows\Media\speech off.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+      end else
+          begin
+            sndPlaySound('C:\Windows\Media\chord.wav', SND_NODEFAULT Or SND_ASYNC Or  SND_RING);
+          end;
    end;
+
+        //--dicconet when finish the quiry ---
+      MainForm.SQLQuery.Active:= False;
 
 end;
 

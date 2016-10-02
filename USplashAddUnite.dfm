@@ -290,7 +290,6 @@ object FSplashAddUnite: TFSplashAddUnite
     TabOrder = 2
     StyleElements = [seClient, seBorder]
     OnChange = NameAddUniteSEdtChange
-    OnKeyPress = NameAddUniteSEdtKeyPress
   end
   object CompteAddUniteSCbx: TComboBox
     Left = 106

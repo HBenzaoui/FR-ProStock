@@ -44586,8 +44586,8 @@ object MainForm: TMainForm
           '-- ----------------------------'
           'BEGIN;'
           
-            'INSERT INTO "compte" VALUES ('#39'1'#39', '#39'Caisse'#39', '#39'00001'#39', '#39'f'#39', '#39'$200.' +
-            '00'#39', '#39'2016-01-01'#39');'
+            'INSERT INTO "compte" VALUES ('#39'1'#39', '#39'Caisse'#39', '#39'00001'#39', '#39'f'#39', '#39'$0.00' +
+            #39', '#39'2016-01-01'#39');'
           
             'INSERT INTO "compte" VALUES ('#39'2'#39', '#39'Banque'#39', '#39'00002'#39', '#39't'#39', '#39'$0.00' +
             #39', '#39'2016-01-01'#39');'
@@ -44843,9 +44843,6 @@ object MainForm: TMainForm
           '-- Records of sfamproduit'
           '-- ----------------------------'
           'BEGIN;'
-          'INSERT INTO "sfamproduit" VALUES ('#39'1'#39', '#39'asdas'#39');'
-          'INSERT INTO "sfamproduit" VALUES ('#39'2'#39', '#39'das'#39');'
-          'INSERT INTO "sfamproduit" VALUES ('#39'3'#39', '#39'sdf'#39');'
           'COMMIT;'
           ''
           '-- ----------------------------'

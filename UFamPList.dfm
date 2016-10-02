@@ -121,7 +121,7 @@ object FamPListF: TFamPListF
   object Label1: TLabel
     Left = 8
     Top = 101
-    Width = 57
+    Width = 60
     Height = 18
     Caption = 'Compte:'
     Color = clWhite

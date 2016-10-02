@@ -39,7 +39,7 @@ var
 
 implementation
 
-uses  Winapi.MMSystem,
+uses  Winapi.MMSystem,Threading,
   UMainF, USplash, USplashAddUnite;
 
 {$R *.dfm}
@@ -88,8 +88,19 @@ procedure TSFamPListF.AdvToolButton3Click(Sender: TObject);
 begin
   if NOT (MainForm.SfamproduitTable.IsEmpty) then
      begin
-     MainForm.SfamproduitTable.Delete;
 
+     MainForm.SQLQuery.Active:= False;
+     MainForm.SQLQuery.SQL.Clear;
+     MainForm.SQLQuery.SQL.Text:= 'SELECT code_sfamp FROM produit WHERE code_sfamp = '
+     +IntToStr(MainForm.SfamproduitTable.FieldByName('code_sfamp').AsInteger);
+     MainForm.SQLQuery.Active:= True;
+
+      if  (MainForm.SQLQuery.IsEmpty)  then
+     begin
+        MainForm.SfamproduitTable.Delete;
+
+        TTask.Run ( procedure
+        begin
           FSplash := TFSplash.Create(SFamPListF);
           try
             FSplash.Left := Screen.Width div 2 - (FSplash.Width div 2);
@@ -105,15 +116,28 @@ begin
             FSplash.free;
 
           end;
-      sndPlaySound('C:\Windows\Media\speech off.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+          end);
+          sndPlaySound('C:\Windows\Media\speech off.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+      end else
+          begin
+           sndPlaySound('C:\Windows\Media\chord.wav', SND_NODEFAULT Or SND_ASYNC Or  SND_RING);
+          end;
    end;
+
+        //--dicconet when finish the quiry ---
+      MainForm.SQLQuery.Active:= False;
 end;
 
 procedure TSFamPListF.AdvToolButton1Click(Sender: TObject);
 begin
-//-------- Show the splash screan for the produit Sous familly to add new one---------//
 
+    ResearchSFamPEdt.Text:='';
+//-------- Show the splash screan for the produit Sous familly to add new one---------//
     FSplashAddUnite:=TFSplashAddUnite.Create(SFamPListF);
+
+    FSplashAddUnite.OKAddUniteSBtn.Tag:= 1 ;
+    FSplashAddUnite.Image1.Tag:= 0 ;
+
     FSplashAddUnite.Width:= 355;
     FSplashAddUnite.Panel1.Color:= $00F8CA90;
     FSplashAddUnite.LineP.Color:= $00F8CA90;
@@ -137,9 +161,10 @@ begin
     FSplashAddUnite.NameAddUniteSErrorP.Left:= (FSplashAddUnite.NameAddUniteSEdt.Left) - 1;
 
     AnimateWindow(FSplashAddUnite.Handle, 175, AW_VER_POSITIVE OR AW_SLIDE OR AW_ACTIVATE );
+
     FSplashAddUnite.Show;
     FSplashAddUnite.NameAddUniteSEdt.SetFocus;
-    FSplashAddUnite.OKAddUniteSBtn.Tag:= 1 ;
+
 end;
 
 procedure TSFamPListF.AdvToolButton2Click(Sender: TObject);
@@ -148,6 +173,10 @@ begin
   if NOT (MainForm.SFamproduitTable.IsEmpty) then
 begin
       FSplashAddUnite:=TFSplashAddUnite.Create(SFamPListF);
+
+    FSplashAddUnite.OKAddUniteSBtn.Tag:= 1 ;
+    FSplashAddUnite.Image1.Tag:= 1 ;
+
     FSplashAddUnite.Width:= 355;
     FSplashAddUnite.Panel1.Color:= $00F8CA90;
     FSplashAddUnite.LineP.Color:= $00F8CA90;
@@ -171,12 +200,11 @@ begin
     FSplashAddUnite.NameAddUniteSErrorP.Left:= (FSplashAddUnite.NameAddUniteSEdt.Left) - 1;
 
   FSplashAddUnite.NameAddUniteSEdt.Text:= MainForm.SFamproduitTable.FieldByName('nom_sfamp').AsString;
-
     AnimateWindow(FSplashAddUnite.Handle, 175, AW_VER_POSITIVE OR AW_SLIDE OR AW_ACTIVATE );
+
     FSplashAddUnite.Show;
     FSplashAddUnite.NameAddUniteSEdt.SetFocus;
-    FSplashAddUnite.OKAddUniteSBtn.Tag:= 1 ;
-    FSplashAddUnite.Image1.Tag:= 1 ;
+
 
  end;
 end;

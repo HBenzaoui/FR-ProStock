@@ -120,7 +120,7 @@ object UsersListF: TUsersListF
   object Label1: TLabel
     Left = 8
     Top = 105
-    Width = 74
+    Width = 73
     Height = 18
     Caption = 'Utilisateur:'
     Color = clWhite

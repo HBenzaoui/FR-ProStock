@@ -120,7 +120,7 @@ object ModePaieListF: TModePaieListF
   object Label1: TLabel
     Left = 8
     Top = 101
-    Width = 43
+    Width = 44
     Height = 18
     Caption = 'Mode:'
     Color = clWhite

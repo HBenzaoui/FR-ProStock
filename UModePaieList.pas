@@ -40,15 +40,19 @@ var
 
 implementation
 
-uses  Winapi.MMSystem,
+uses  Winapi.MMSystem,Threading,
   UMainF, USplashAddUnite, UClientGestion,USplash;
 
 {$R *.dfm}
 
 procedure TModePaieListF.AdvToolButton1Click(Sender: TObject);
 begin
+ResearchModePaiEdt.Text:='';
    //-------- Show the splash screan for the mode de paiement ---------//
     FSplashAddUnite:=TFSplashAddUnite.Create(Application);
+
+    FSplashAddUnite.OKAddUniteSBtn.Tag:= 28 ;
+
     FSplashAddUnite.Width:=330;
     FSplashAddUnite.Height:=185;
     FSplashAddUnite.NameAddUniteSLbl.Left:= 11;
@@ -73,7 +77,7 @@ begin
     AnimateWindow(FSplashAddUnite.Handle, 175, AW_VER_POSITIVE OR AW_SLIDE OR AW_ACTIVATE );
     FSplashAddUnite.Show;
     FSplashAddUnite.NameAddUniteSEdt.SetFocus;
-    FSplashAddUnite.OKAddUniteSBtn.Tag:= 28 ;
+
 
 //    FSplashAddUnite.RequiredStarAddUniteSLbl.Tag := 1;
 end;
@@ -101,6 +105,9 @@ begin
     (MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger  <> 4) then
     begin
     FSplashAddUnite:=TFSplashAddUnite.Create(Application);
+
+    FSplashAddUnite.OKAddUniteSBtn.Tag:= 29 ;
+
     FSplashAddUnite.Width:=330;
     FSplashAddUnite.Height:=185;
     FSplashAddUnite.NameAddUniteSLbl.Left:= 11;
@@ -141,7 +148,6 @@ begin
     AnimateWindow(FSplashAddUnite.Handle, 175, AW_VER_POSITIVE OR AW_SLIDE OR AW_ACTIVATE );
     FSplashAddUnite.Show;
     FSplashAddUnite.NameAddUniteSEdt.SetFocus;
-    FSplashAddUnite.OKAddUniteSBtn.Tag:= 29 ;
 
 //    FSplashAddUnite.RequiredStarAddUniteSLbl.Tag := 1;
 
@@ -161,33 +167,61 @@ begin
       (MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger  <> 3) AND
       (MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger  <> 4) then
   begin
-  if NOT (MainForm.Mode_paiementTable.IsEmpty) then
-     begin
-     MainForm.Mode_paiementTable.Delete;
+    if NOT (MainForm.Mode_paiementTable.IsEmpty) then
+       begin
+         // ------ this code is to check if the mode paiment is used in bons if it is the user cant delete it ------------
+          MainForm.SQLQuery.Active:= False;
+          MainForm.SQLQuery.SQL.Clear;
+          MainForm.SQLQuery.SQL.Text:=
+          'select * '
+         +  'from (   '
+         +   'select code_mdpai as code_mdpai from bona_fac '
+         +   'union all '
+         +   'select code_mdpai from bona_rec '
+         +   'union all '
+         +   'select code_mdpai from bonv_fac '
+         +   'union all '
+         +   'select code_mdpai from bonv_liv '
+         +     ') a '
+         +     'where code_mdpai = '+IntToStr(MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger) ;
 
-          FSplash := TFSplash.Create(ModePaieListF);
-          try
-            FSplash.Left := Screen.Width div 2 - (FSplash.Width div 2);
-            FSplash.Top := 0;
+      MainForm.SQLQuery.Active:= True;
 
-            FSplash.Label1.Caption:='  Suppression avec succés';
-            FSplash.Color:= $004735F9;
-            AnimateWindow(FSplash.Handle, 150, AW_VER_POSITIVE OR AW_SLIDE OR AW_ACTIVATE);
-            sleep(250);
-            AnimateWindow(FSplash.Handle, 150, AW_VER_NEGATIVE OR
-              AW_SLIDE OR AW_HIDE);
-          finally
-            FSplash.free;
+      if MainForm.SQLQuery.IsEmpty then
+        begin
+          MainForm.Mode_paiementTable.Delete;
 
-          end;
-      sndPlaySound('C:\Windows\Media\speech off.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+          TTask.Run ( procedure
+          begin
+            FSplash := TFSplash.Create(ModePaieListF);
+            try
+              FSplash.Left := Screen.Width div 2 - (FSplash.Width div 2);
+              FSplash.Top := 0;
 
-   end;
+              FSplash.Label1.Caption:='  Suppression avec succés';
+              FSplash.Color:= $004735F9;
+              AnimateWindow(FSplash.Handle, 150, AW_VER_POSITIVE OR AW_SLIDE OR AW_ACTIVATE);
+              sleep(250);
+              AnimateWindow(FSplash.Handle, 150, AW_VER_NEGATIVE OR
+                AW_SLIDE OR AW_HIDE);
+            finally
+              FSplash.free;
+            end;
+            end);
 
+        sndPlaySound('C:\Windows\Media\speech off.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+        end else
+            begin
+               sndPlaySound('C:\Windows\Media\chord.wav', SND_NODEFAULT Or SND_ASYNC Or  SND_RING);
+            end;
+     end;
   end else
       begin
         sndPlaySound('C:\Windows\Media\chord.wav', SND_NODEFAULT Or SND_ASYNC Or  SND_RING);
       end;
+
+     //--dicconet when finish the quiry ---
+      MainForm.SQLQuery.Active:= False;
 end;
 
 procedure TModePaieListF.ResearchModePaiEdtChange(Sender: TObject);
