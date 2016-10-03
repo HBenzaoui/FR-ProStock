@@ -137,10 +137,10 @@ object DataModuleF: TDataModuleF
       'select to_char(date_bvliv,'#39'mm'#39') as mon,'
       '       extract(year from date_bvliv) as yyyy,'
       '       sum("montver_bvliv") as "sales"'
-      'from bonv_liv'
-      'group by 1,2')
-    Left = 646
-    Top = 222
+      'from bonv_liv WHERE valider_bvliv = true'
+      ' group by 1,2')
+    Left = 186
+    Top = 434
     object ToatalVerMonthVLIVmon: TStringField
       AutoGenerateValue = arDefault
       FieldName = 'mon'
@@ -163,8 +163,8 @@ object DataModuleF: TDataModuleF
   end
   object GstockdcConnection02: TFDConnection
     LoginPrompt = False
-    Left = 501
-    Top = 246
+    Left = 69
+    Top = 488
   end
   object ToatalVerMonthVCTR: TFDQuery
     Connection = GstockdcConnection02
@@ -179,10 +179,10 @@ object DataModuleF: TDataModuleF
       'select to_char(date_bvctr,'#39'mm'#39') as mon,'
       '       extract(year from date_bvctr) as yyyy,'
       '       sum("montver_bvctr") as "sales"'
-      'from bonv_ctr'
-      'group by 1,2')
-    Left = 646
-    Top = 334
+      'from bonv_ctr WHERE valider_bvctr = true'
+      ' group by 1,2')
+    Left = 186
+    Top = 546
     object StringField1: TStringField
       AutoGenerateValue = arDefault
       FieldName = 'mon'
@@ -216,10 +216,10 @@ object DataModuleF: TDataModuleF
       'select to_char(date_bvfac,'#39'mm'#39') as mon,'
       '       extract(year from date_bvfac) as yyyy,'
       '       sum("montver_bvfac") as "sales"'
-      'from bonv_fac'
-      'group by 1,2')
-    Left = 646
-    Top = 278
+      'from bonv_fac WHERE valider_bvfac = true'
+      ' group by 1,2')
+    Left = 186
+    Top = 490
     object StringField2: TStringField
       AutoGenerateValue = arDefault
       FieldName = 'mon'
@@ -253,10 +253,10 @@ object DataModuleF: TDataModuleF
       'select to_char(date_barec,'#39'mm'#39') as mon,'
       '       extract(year from date_barec) as yyyy,'
       '       sum("montver_barec") as "sales"'
-      'from bona_rec'
-      'group by 1,2')
-    Left = 746
-    Top = 140
+      'from bona_rec WHERE valider_barec = true'
+      ' group by 1,2')
+    Left = 324
+    Top = 444
     object StringField3: TStringField
       AutoGenerateValue = arDefault
       FieldName = 'mon'
@@ -290,10 +290,10 @@ object DataModuleF: TDataModuleF
       'select to_char(date_bafac,'#39'mm'#39') as mon,'
       '       extract(year from date_bafac) as yyyy,'
       '       sum("montver_bafac") as "sales"'
-      'from bona_fac'
-      'group by 1,2')
-    Left = 746
-    Top = 196
+      'from bona_fac WHERE valider_bafac = true'
+      ' group by 1,2')
+    Left = 324
+    Top = 500
     object StringField4: TStringField
       AutoGenerateValue = arDefault
       FieldName = 'mon'

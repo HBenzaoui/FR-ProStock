@@ -251,6 +251,8 @@ var CodeBR,i,CodeP : Integer;
     NomP: string;
     lookupResultRefP : Variant;
 begin
+   if NOT (MainForm.ProduitTable.IsEmpty) then
+    begin
 //----- this tag is for multiple products ------//
     if (OKProduitGBtn.Tag = 0) AND (FastProduitsListF.Tag = 0) then
     begin
@@ -1559,6 +1561,8 @@ begin
     if (OKProduitGBtn.Tag = 2) AND (FastProduitsListF.Tag = 4)  then
     begin
      CancelProduitGBtnClick(Sender);
+
+    end;
 
     end;
 

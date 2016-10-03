@@ -530,7 +530,7 @@ object DashboardF: TDashboardF
         StyleElements = []
       end
       object Label12: TLabel
-        Left = 300
+        Left = 299
         Top = 85
         Width = 86
         Height = 16
@@ -565,7 +565,7 @@ object DashboardF: TDashboardF
         StyleElements = []
       end
       object Label14: TLabel
-        Left = 268
+        Left = 270
         Top = 130
         Width = 115
         Height = 16
@@ -600,7 +600,7 @@ object DashboardF: TDashboardF
         StyleElements = []
       end
       object Label16: TLabel
-        Left = 230
+        Left = 238
         Top = 245
         Width = 147
         Height = 16
@@ -617,7 +617,7 @@ object DashboardF: TDashboardF
         StyleElements = []
       end
       object Label17: TLabel
-        Left = 247
+        Left = 252
         Top = 210
         Width = 133
         Height = 16
@@ -634,7 +634,7 @@ object DashboardF: TDashboardF
         StyleElements = []
       end
       object Label18: TLabel
-        Left = 227
+        Left = 232
         Top = 182
         Width = 153
         Height = 16
@@ -930,7 +930,7 @@ object DashboardF: TDashboardF
         StyleElements = []
       end
       object Label5: TLabel
-        Left = 9
+        Left = 17
         Top = 141
         Width = 152
         Height = 16
@@ -978,11 +978,11 @@ object DashboardF: TDashboardF
         StyleElements = []
       end
       object Label9: TLabel
-        Left = 12
+        Left = 14
         Top = 187
         Width = 155
         Height = 16
-        Caption = 'N'#176' des Bons de Comptoir :'
+        Caption = 'N'#176' des Bons au Comptoir :'
         Color = 4207405
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
@@ -1026,7 +1026,7 @@ object DashboardF: TDashboardF
         StyleElements = []
       end
       object Label13: TLabel
-        Left = 32
+        Left = 37
         Top = 235
         Width = 132
         Height = 16
@@ -1074,7 +1074,7 @@ object DashboardF: TDashboardF
         StyleElements = []
       end
       object Label20: TLabel
-        Left = 48
+        Left = 49
         Top = 259
         Width = 120
         Height = 16

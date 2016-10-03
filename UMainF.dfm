@@ -36362,37 +36362,6 @@ object MainForm: TMainForm
       FieldName = 'NEWTTC'
     end
   end
-  object Bonv_ctr_Top10produit: TFDQuery
-    Connection = GstockdcConnection
-    SQL.Strings = (
-      '-- This quiery will select the top 5 seled prudect '
-      'SELECT  code_p, SUM(qut_p)'
-      'FROM bonv_ctr_list'
-      'GROUP BY code_p'
-      'ORDER BY sum(qut_p) DESC LIMIT 10'
-      '')
-    Left = 378
-    Top = 480
-    object Bonv_ctr_Top10produitcode_p: TIntegerField
-      FieldName = 'code_p'
-      Origin = 'code_p'
-    end
-    object Bonv_ctr_Top10produitsum: TFloatField
-      AutoGenerateValue = arDefault
-      FieldName = 'sum'
-      Origin = 'sum'
-      ReadOnly = True
-    end
-    object Bonv_ctr_Top10produitnomp: TStringField
-      FieldKind = fkLookup
-      FieldName = 'nomp'
-      LookupDataSet = ProduitTable
-      LookupKeyFields = 'code_p'
-      LookupResultField = 'nom_p'
-      KeyFields = 'code_p'
-      Lookup = True
-    end
-  end
   object GstockdcConnection: TFDConnection
     Params.Strings = (
       'Database=GSTOCKDC'

@@ -200,6 +200,8 @@ var i,MyMax, TopbonLivC,TopbonCtrC,TopbonFacC ,TopbonLivVerC,TopbonCtrVerC,Topbo
     a : TArray<Integer>;
 begin
 
+  DataModuleF.Top5produit.Refresh;
+
   NClientDashBLbl.Caption:=   IntToStr(MainForm.ClientTable.RecordCount - 1);   // -1 is to not calculate the Comptoir
   NFourDashBLbl.Caption:=     IntToStr(MainForm.FournisseurTable.RecordCount);
   NProduitDashBLbl.Caption:=  IntToStr(MainForm.ProduitTable.RecordCount);
@@ -214,13 +216,14 @@ begin
 
   Selecting_All_Bons;
 
-
+  DataModuleF.TotalProduit.Refresh;
   if NOT (MainForm.ProduitTable.IsEmpty) then
   begin
-   DataModuleF.TotalProduit.Refresh;
-  NProduitTotalDashBLbl.Caption:= (DataModuleF.TotalProduit.FieldValues['totat']);
-  end;
-
+   NProduitTotalDashBLbl.Caption:= (DataModuleF.TotalProduit.FieldValues['totat']);
+  end else
+      begin
+       NProduitTotalDashBLbl.Caption:='0';
+      end;
 
    //---- this is the show the best seller client-------------------------
    begin
@@ -228,38 +231,84 @@ begin
      DataModuleF.TopClient.Active:=False;
      DataModuleF.TopClient.SQL.Clear;
      DataModuleF.TopClient.SQL.Text:=
-      'SELECT code_c, COUNT(code_c) AS best_client FROM  bonv_liv GROUP BY code_c ORDER BY best_client DESC  LIMIT    1;' ;
+      'SELECT code_c, COUNT(code_c) AS best_client FROM bonv_liv WHERE valider_bvliv = true GROUP BY code_c ORDER BY best_client DESC  LIMIT 2;' ;
      DataModuleF.TopClient.Active:=True;
 
+//     TopbonLivC:=  DataModuleF.TopClient.FieldByName('code_c').AsInteger;
+
+//---this is to avoid Comptoir From the calculation----------------
+     if DataModuleF.TopClient.FieldByName('code_c').AsInteger <> 1 then
+     begin
      TopbonLivC:=  DataModuleF.TopClient.FieldByName('code_c').AsInteger;
+     end else
+         begin
+           if DataModuleF.TopClient.RecordCount > 1 then
+            begin
+             DataModuleF.TopClient.Next;
+             TopbonLivC:=  DataModuleF.TopClient.FieldByName('code_c').AsInteger;
+            end else
+                begin
+                  TopbonLivC:=0;
+                end;
+           end;
 
+     DataModuleF.TopClient.Active:=False;
+     DataModuleF.TopClient.SQL.Clear;
+     DataModuleF.TopClient.SQL.Text:=
+      'SELECT code_c, COUNT(code_c) AS best_client FROM bonv_ctr WHERE valider_bvctr = true GROUP BY code_c ORDER BY best_client DESC  LIMIT 2;' ;
+     DataModuleF.TopClient.Active:=True;
 
-//     DataModuleF.TopClient.Active:=False;
-//     DataModuleF.TopClient.SQL.Clear;
-//     DataModuleF.TopClient.SQL.Text:=
-//      'SELECT code_c, COUNT(code_c) AS best_client FROM  bonv_ctr GROUP BY code_c ORDER BY best_client DESC  LIMIT    1;' ;
-//     DataModuleF.TopClient.Active:=True;
-//
 //     TopbonCtrC:=  DataModuleF.TopClient.FieldByName('code_c').AsInteger;
+
+//---this is to avoid Comptoir From the calculation----------------
+     if DataModuleF.TopClient.FieldByName('code_c').AsInteger <> 1 then
+     begin
+     TopbonCtrC:=  DataModuleF.TopClient.FieldByName('code_c').AsInteger;
+     end else
+         begin
+           if DataModuleF.TopClient.RecordCount > 1 then
+            begin
+             DataModuleF.TopClient.Next;
+             TopbonCtrC:=  DataModuleF.TopClient.FieldByName('code_c').AsInteger;
+            end else
+                begin
+                  TopbonCtrC:=0;
+                end;
+           end;
 
 
      DataModuleF.TopClient.Active:=False;
      DataModuleF.TopClient.SQL.Clear;
      DataModuleF.TopClient.SQL.Text:=
-      'SELECT code_c, COUNT(code_c) AS best_client FROM  bonv_fac GROUP BY code_c ORDER BY best_client DESC  LIMIT    1;' ;
+      'SELECT code_c, COUNT(code_c) AS best_client FROM  bonv_fac WHERE valider_bvfac = true GROUP BY code_c ORDER BY best_client DESC  LIMIT 2;' ;
      DataModuleF.TopClient.Active:=True;
 
+//     TopbonFacC:=  DataModuleF.TopClient.FieldByName('code_c').AsInteger;
+
+     //---this is to avoid Comptoir From the calculation----------------
+     if DataModuleF.TopClient.FieldByName('code_c').AsInteger <> 1 then
+     begin
      TopbonFacC:=  DataModuleF.TopClient.FieldByName('code_c').AsInteger;
+     end else
+         begin
+           if DataModuleF.TopClient.RecordCount > 1 then
+            begin
+             DataModuleF.TopClient.Next;
+             TopbonFacC:=  DataModuleF.TopClient.FieldByName('code_c').AsInteger;
+            end else
+                begin
+                  TopbonFacC:=0;
+                end;
+           end;
 
 
-       a := TArray<Integer>.Create(TopbonLivC//,TopbonCtrC
+       a := TArray<Integer>.Create(TopbonLivC,TopbonCtrC
                                               ,TopbonFacC);
 
-       for I := 0 to 1 do   // change it to 2 when adding CTR bons
+       for I := 0 to 2 do   // change it to 2 when adding CTR bons OR 1 if we dont want CTR
         begin
             if a[i] >= MyMax then
-           MyMax := a[i];
-
+            MyMax := a[i];
         end;
 
       MainForm.ClientTable.DisableControls;
@@ -281,45 +330,90 @@ begin
      DataModuleF.TopVerClient.Active:=False;
      DataModuleF.TopVerClient.SQL.Clear;
      DataModuleF.TopVerClient.SQL.Text:=
-      'SELECT code_c, MAX(montver_bvliv) FROM bonv_liv GROUP BY code_c ORDER BY MAX(montver_bvliv) DESC LIMIT 1;' ;
+      'SELECT code_c, MAX(montver_bvliv) FROM bonv_liv WHERE valider_bvliv = true GROUP BY code_c ORDER BY MAX(montver_bvliv) DESC LIMIT 2;' ;
      DataModuleF.TopVerClient.Active:=True;
 
+//   TopbonLivVerC:=  DataModuleF.TopVerClient.FieldByName('code_c').AsInteger
+
+//---this is to avoid Comptoir From the calculation----------------
+     if DataModuleF.TopVerClient.FieldByName('code_c').AsInteger <> 1 then
+     begin
      TopbonLivVerC:=  DataModuleF.TopVerClient.FieldByName('code_c').AsInteger;
-
-
-//     DataModuleF.TopVerClient.Active:=False;
-//     DataModuleF.TopVerClient.SQL.Clear;
-//     DataModuleF.TopVerClient.SQL.Text:=
-//      'SELECT code_c, MAX(montver_bvctr) FROM bonv_ctr GROUP BY code_c ORDER BY MAX(montver_bvctr) DESC LIMIT 1;;' ;
-//     DataModuleF.TopVerClient.Active:=True;
-//
-//     TopbonCtrVerC:=  DataModuleF.TopVerClient.FieldByName('code_c').AsInteger;
+     end else
+         begin
+           if DataModuleF.TopVerClient.RecordCount > 1 then
+            begin
+             DataModuleF.TopVerClient.Next;
+             TopbonLivVerC:=  DataModuleF.TopVerClient.FieldByName('code_c').AsInteger;
+            end else
+                begin
+                  TopbonLivVerC:=0;
+                end;
+           end;
 
 
      DataModuleF.TopVerClient.Active:=False;
      DataModuleF.TopVerClient.SQL.Clear;
      DataModuleF.TopVerClient.SQL.Text:=
-      'SELECT code_c, MAX(montver_bvfac) FROM bonv_fac GROUP BY code_c ORDER BY MAX(montver_bvfac) DESC LIMIT 1;' ;
+      'SELECT code_c, MAX(montver_bvctr) FROM bonv_ctr WHERE valider_bvctr = true GROUP BY code_c ORDER BY MAX(montver_bvctr) DESC LIMIT 2;' ;
      DataModuleF.TopVerClient.Active:=True;
 
+//     TopbonCtrVerC:=  DataModuleF.TopVerClient.FieldByName('code_c').AsInteger;
+
+//---this is to avoid Comptoir From the calculation----------------
+          if DataModuleF.TopVerClient.FieldByName('code_c').AsInteger <> 1 then
+     begin
+     TopbonCtrVerC:=  DataModuleF.TopVerClient.FieldByName('code_c').AsInteger;
+     end else
+         begin
+           if DataModuleF.TopVerClient.RecordCount > 1 then
+            begin
+             DataModuleF.TopVerClient.Next;
+             TopbonCtrVerC:=  DataModuleF.TopVerClient.FieldByName('code_c').AsInteger;
+            end else
+                begin
+                  TopbonCtrVerC:=0;
+                end;
+           end;
+
+
+     DataModuleF.TopVerClient.Active:=False;
+     DataModuleF.TopVerClient.SQL.Clear;
+     DataModuleF.TopVerClient.SQL.Text:=
+      'SELECT code_c, MAX(montver_bvfac) FROM bonv_fac WHERE valider_bvfac = true GROUP BY code_c ORDER BY MAX(montver_bvfac) DESC LIMIT 2;' ;
+     DataModuleF.TopVerClient.Active:=True;
+
+//     TopbonFacVerC:=  DataModuleF.TopVerClient.FieldByName('code_c').AsInteger;
+
+//---this is to avoid Comptoir From the calculation----------------
+     if DataModuleF.TopVerClient.FieldByName('code_c').AsInteger <> 1 then
+     begin
      TopbonFacVerC:=  DataModuleF.TopVerClient.FieldByName('code_c').AsInteger;
+     end else
+         begin
+           if DataModuleF.TopVerClient.RecordCount > 1 then
+            begin
+             DataModuleF.TopVerClient.Next;
+             TopbonFacVerC:=  DataModuleF.TopVerClient.FieldByName('code_c').AsInteger;
+            end else
+                begin
+                  TopbonFacVerC:=0;
+                end;
+           end;
 
-
-       a := TArray<Integer>.Create(TopbonLivVerC//,TopbonCtrVerC
+       a := TArray<Integer>.Create(TopbonLivVerC,TopbonCtrVerC
                                     ,TopbonFacVerC);
 
-       for I := 0 to 1 do   // change it to 2 when adding CTR bons
+       for I := 0 to 2 do   // change it to 2 when adding CTR bons OR 1 if we dont want CTR
         begin
             if a[i] >= MyMax then
-           MyMax := a[i];
-
+            MyMax := a[i];
         end;
 
       MainForm.ClientTable.Active:=False;
       MainForm.ClientTable.SQL.Clear;
       MainForm.ClientTable.SQL.Text:='SELECT * from client where code_c = '+ IntToStr(MyMax) ;
       MainForm.ClientTable.Active:=True;
-
 
       TopMoneyClientDashBLbl.Caption:=    MainForm.ClientTable.FieldByName('nom_c').AsString;
        MyMax:=0;
@@ -336,7 +430,7 @@ begin
      DataModuleF.TopFour.Active:=False;
      DataModuleF.TopFour.SQL.Clear;
      DataModuleF.TopFour.SQL.Text:=
-      'SELECT code_f, COUNT(code_f) AS best_four FROM  bona_rec GROUP BY code_f ORDER BY best_four DESC  LIMIT    1;' ;
+      'SELECT code_f, COUNT(code_f) AS best_four FROM bona_rec WHERE valider_barec = true GROUP BY code_f ORDER BY best_four DESC LIMIT 1;' ;
      DataModuleF.TopFour.Active:=True;
 
      TopbonRecF:=  DataModuleF.TopFour.FieldByName('code_f').AsInteger;
@@ -345,19 +439,17 @@ begin
      DataModuleF.TopFour.Active:=False;
      DataModuleF.TopFour.SQL.Clear;
      DataModuleF.TopFour.SQL.Text:=
-      'SELECT code_f, COUNT(code_f) AS best_four FROM  bona_fac GROUP BY code_f ORDER BY best_four DESC  LIMIT    1;' ;
+      'SELECT code_f, COUNT(code_f) AS best_four FROM bona_fac WHERE valider_bafac = true GROUP BY code_f ORDER BY best_four DESC LIMIT 1;' ;
      DataModuleF.TopFour.Active:=True;
 
      TopbonFacF:=  DataModuleF.TopFour.FieldByName('code_f').AsInteger;
-
 
        a := TArray<Integer>.Create(TopbonRecF ,TopbonFacF);
 
        for I := 0 to 1 do
         begin
             if a[i] >= MyMax then
-           MyMax := a[i];
-
+            MyMax := a[i];
         end;
 
       MainForm.FournisseurTable.DisableControls;
@@ -377,7 +469,7 @@ begin
      DataModuleF.TopVerClient.Active:=False;
      DataModuleF.TopVerClient.SQL.Clear;
      DataModuleF.TopVerClient.SQL.Text:=
-      'SELECT code_f, MAX(montver_barec) FROM bona_rec GROUP BY code_f ORDER BY MAX(montver_barec) DESC LIMIT 1;' ;
+      'SELECT code_f, MAX(montver_barec) FROM bona_rec WHERE valider_barec = true GROUP BY code_f ORDER BY MAX(montver_barec) DESC LIMIT 1;' ;
      DataModuleF.TopVerClient.Active:=True;
 
      TopbonRecVerF:=  DataModuleF.TopVerClient.FieldByName('code_f').AsInteger;
@@ -386,19 +478,17 @@ begin
      DataModuleF.TopVerClient.Active:=False;
      DataModuleF.TopVerClient.SQL.Clear;
      DataModuleF.TopVerClient.SQL.Text:=
-      'SELECT code_f, MAX(montver_bafac) FROM bona_fac GROUP BY code_f ORDER BY MAX(montver_bafac) DESC LIMIT 1;' ;
+      'SELECT code_f, MAX(montver_bafac) FROM bona_fac WHERE valider_bafac = true GROUP BY code_f ORDER BY MAX(montver_bafac) DESC LIMIT 1;' ;
      DataModuleF.TopVerClient.Active:=True;
 
      TopbonFacVerF:=  DataModuleF.TopVerClient.FieldByName('code_f').AsInteger;
-
 
        a := TArray<Integer>.Create(TopbonRecVerF ,TopbonFacVerF);
 
        for I := 0 to 1 do
         begin
             if a[i] >= MyMax then
-           MyMax := a[i];
-
+            MyMax := a[i];
         end;
 
       MainForm.FournisseurTable.Active:=False;
@@ -411,12 +501,10 @@ begin
       MyMax:=0;
    end;
 
-
   NameCompanyDashBLbl.Caption:=   MainForm.CompanyTable.FieldByName('nom_comp').AsString;
   TelCompanyDashBLbl.Caption:=    MainForm.CompanyTable.FieldByName('fix_comp').AsString;
   MobileCompanyDashBLbl.Caption:= MainForm.CompanyTable.FieldByName('mob_comp').AsString;
   AdrCompanyDashBLbl.Caption:=    MainForm.CompanyTable.FieldByName('adr_comp').AsString;
-
 
   MainForm.ClientTable.Active:=False;
   MainForm.ClientTable.SQL.Clear;
@@ -424,20 +512,13 @@ begin
   MainForm.ClientTable.Active:=True;
   MainForm.ClientTable.EnableControls;
 
-
   MainForm.FournisseurTable.Active:=False;
   MainForm.FournisseurTable.SQL.Clear;
   MainForm.FournisseurTable.SQL.Text:='SELECT * from fournisseur ' ;
   MainForm.FournisseurTable.Active:=True;
   MainForm.FournisseurTable.EnableControls;
 
-
 end;
-
-
-
-
-
 
 procedure TDashboardF.MonthsData;
   var
@@ -1199,4 +1280,4 @@ begin
  FreeAndNil(DashboardF);
 end;
 
-End.
+end.

@@ -259,7 +259,8 @@ object CompteListF: TCompteListF
         Font.Style = []
         Footers = <>
         Layout = tlCenter
-        Title.Caption = '                         Les Comptes'
+        Title.Alignment = taCenter
+        Title.Caption = 'Les Comptes'
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = 10379008
         Title.Font.Height = 20

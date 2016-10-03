@@ -389,7 +389,7 @@ object BonCtrGestionF: TBonCtrGestionF
       115)
     object Label6: TLabel
       Left = 9
-      Top = 33
+      Top = 59
       Width = 92
       Height = 18
       Anchors = [akLeft, akBottom]
@@ -406,7 +406,7 @@ object BonCtrGestionF: TBonCtrGestionF
     end
     object ListAddProduitBonCtrGBtn: TAdvToolButton
       Left = 917
-      Top = 23
+      Top = 49
       Width = 71
       Height = 38
       Cursor = crHandPoint
@@ -435,12 +435,11 @@ object BonCtrGestionF: TBonCtrGestionF
       Spacing = -1
       OnClick = ListAddProduitBonCtrGBtnClick
       Version = '1.6.1.1'
-      ExplicitLeft = 532
       TMSStyle = 0
     end
     object NewAddProduitBonCtrGBtn: TAdvToolButton
       Left = 995
-      Top = 23
+      Top = 49
       Width = 100
       Height = 38
       Cursor = crHandPoint
@@ -469,12 +468,11 @@ object BonCtrGestionF: TBonCtrGestionF
       Spacing = -1
       OnClick = NewAddProduitBonCtrGBtnClick
       Version = '1.6.1.1'
-      ExplicitLeft = 610
       TMSStyle = 0
     end
     object EnterAddProduitBonCtrGBtn: TAdvToolButton
       Left = 871
-      Top = 23
+      Top = 49
       Width = 38
       Height = 38
       Cursor = crHandPoint
@@ -502,7 +500,6 @@ object BonCtrGestionF: TBonCtrGestionF
       Spacing = -1
       OnClick = EnterAddProduitBonCtrGBtnClick
       Version = '1.6.1.1'
-      ExplicitLeft = 486
       TMSStyle = 0
     end
     object Label20: TLabel
@@ -529,8 +526,8 @@ object BonCtrGestionF: TBonCtrGestionF
       ExplicitWidth = 373
     end
     object ClearProduitBonCtrGBtn: TsSpeedButton
-      Left = 921
-      Top = 79
+      Left = 924
+      Top = 2
       Width = 30
       Height = 30
       Hint = 'Modifer'
@@ -542,11 +539,10 @@ object BonCtrGestionF: TBonCtrGestionF
       SkinData.SkinSection = 'SPEEDBUTTON'
       Images = MainForm.PanelIcons24
       ImageIndex = 16
-      ExplicitLeft = 536
     end
     object ShowCalculaturBonCtrGBtn: TsSpeedButton
-      Left = 957
-      Top = 79
+      Left = 960
+      Top = 2
       Width = 30
       Height = 30
       Hint = 'Modifer'
@@ -557,11 +553,10 @@ object BonCtrGestionF: TBonCtrGestionF
       SkinData.SkinSection = 'SPEEDBUTTON'
       Images = MainForm.PanelIcons24
       ImageIndex = 24
-      ExplicitLeft = 572
     end
     object ShowKeyBoardBonCtrGBtn: TsSpeedButton
-      Left = 993
-      Top = 79
+      Left = 996
+      Top = 2
       Width = 30
       Height = 30
       Hint = 'Modifer'
@@ -572,11 +567,10 @@ object BonCtrGestionF: TBonCtrGestionF
       SkinData.SkinSection = 'SPEEDBUTTON'
       Images = MainForm.PanelIcons24
       ImageIndex = 43
-      ExplicitLeft = 608
     end
     object DeleteProduitBonCtrGBtn: TsSpeedButton
-      Left = 885
-      Top = 79
+      Left = 888
+      Top = 2
       Width = 30
       Height = 30
       Hint = 'Modifer'
@@ -588,11 +582,10 @@ object BonCtrGestionF: TBonCtrGestionF
       SkinData.SkinSection = 'SPEEDBUTTON'
       Images = MainForm.PanelIcons24
       ImageIndex = 14
-      ExplicitLeft = 500
     end
     object CloseBonCtrGBtn: TsSpeedButton
-      Left = 1065
-      Top = 79
+      Left = 1068
+      Top = 2
       Width = 30
       Height = 30
       Hint = 'Modifer'
@@ -603,11 +596,10 @@ object BonCtrGestionF: TBonCtrGestionF
       SkinData.SkinSection = 'SPEEDBUTTON'
       Images = MainForm.PanelIcons24
       ImageIndex = 45
-      ExplicitLeft = 680
     end
     object MinimizeBonCtrGBtn: TsSpeedButton
-      Left = 1029
-      Top = 79
+      Left = 1032
+      Top = 2
       Width = 30
       Height = 30
       Hint = 'Modifer'
@@ -618,11 +610,10 @@ object BonCtrGestionF: TBonCtrGestionF
       SkinData.SkinSection = 'SPEEDBUTTON'
       Images = MainForm.PanelIcons24
       ImageIndex = 44
-      ExplicitLeft = 644
     end
     object sImage1: TsImage
       Left = 839
-      Top = 3
+      Top = 29
       Width = 26
       Height = 20
       Anchors = [akRight, akBottom]
@@ -634,11 +625,10 @@ object BonCtrGestionF: TBonCtrGestionF
       ImageIndex = 46
       Images = MainForm.PanelIcons24
       SkinData.SkinSection = 'CHECKBOX'
-      ExplicitLeft = 454
     end
     object sImage2: TsImage
       Left = 814
-      Top = 3
+      Top = 29
       Width = 26
       Height = 20
       Anchors = [akRight, akBottom]
@@ -650,7 +640,6 @@ object BonCtrGestionF: TBonCtrGestionF
       ImageIndex = 47
       Images = MainForm.PanelIcons24
       SkinData.SkinSection = 'CHECKBOX'
-      ExplicitLeft = 429
     end
     object BonCRemiseHTNewLbl: TLabel
       Left = 8
@@ -693,8 +682,8 @@ object BonCtrGestionF: TBonCtrGestionF
       Visible = False
     end
     object BonCTRTotalMargeLbl: TLabel
-      Left = 658
-      Top = 61
+      Left = 634
+      Top = 0
       Width = 157
       Height = 20
       Caption = 'BonCTRTotalMargeLbl'
@@ -708,7 +697,7 @@ object BonCtrGestionF: TBonCtrGestionF
     end
     object ProduitBonCtrGCbx: TComboBox
       Left = 107
-      Top = 23
+      Top = 49
       Width = 758
       Height = 38
       Anchors = [akLeft, akRight, akBottom]
@@ -2104,7 +2093,7 @@ object BonCtrGestionF: TBonCtrGestionF
     Top = 540
   end
   object BonCtrTop10produit: TDataSource
-    DataSet = MainForm.Bonv_ctr_Top10produit
+    DataSet = DataModuleF.Top5produit
     Left = 1240
     Top = 543
   end

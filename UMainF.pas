@@ -530,9 +530,6 @@ type
     N16: TMenuItem;
     N17: TMenuItem;
     H1: TMenuItem;
-    Bonv_ctr_Top10produit: TFDQuery;
-    Bonv_ctr_Top10produitcode_p: TIntegerField;
-    Bonv_ctr_Top10produitnomp: TStringField;
     GstockdcConnection: TFDConnection;
     Opt_cas_bnk_CaisseTable: TFDQuery;
     Opt_cas_bnk_BankTable: TFDQuery;
@@ -671,7 +668,6 @@ type
     Bona_fac_listTablequt_p: TFloatField;
     Bonv_liv_listTablequt_p: TFloatField;
     Bonv_ctr_listTablequt_p: TFloatField;
-    Bonv_ctr_Top10produitsum: TFloatField;
     dxTabbedMDIManager1: TdxTabbedMDIManager;
     ProduitListDataS: TDataSource;
     BonRecListDataS: TDataSource;
@@ -1299,20 +1295,19 @@ end;
 
 procedure TMainForm.FormDestroy(Sender: TObject);
 var
-HTaskbar:HWND;
-OldVal:LongInt;
-begin
-//Find handle of TASKBAR
-HTaskBar:=FindWindow('Shell_TrayWnd',nil);
-//Turn SYSTEM KEYS Back ON,Only Win 95/98/ME
-SystemParametersInfo(97,Word(False),@OldVal,0);
-//Enable the taskbar
-EnableWindow(HTaskBar,True);
-//Show the taskbar
-ShowWindow(HTaskbar,SW_SHOW);
+   HTaskbar:HWND;
+   OldVal:LongInt;
+  begin
+  //Find handle of TASKBAR
+  HTaskBar:=FindWindow('Shell_TrayWnd',nil);
+  //Turn SYSTEM KEYS Back ON,Only Win 95/98/ME
+  SystemParametersInfo(97,Word(False),@OldVal,0);
+  //Enable the taskbar
+  EnableWindow(HTaskBar,True);
+  //Show the taskbar
+  ShowWindow(HTaskbar,SW_SHOW);
 
-
-end;
+ end;
 
 procedure TMainForm.Bonv_livTableCalcFields(DataSet: TDataSet);
 begin
@@ -2011,7 +2006,7 @@ begin
     Bonv_fac_listTable.Active := True;
     Bonv_ctrTable.Active := True;
     Bonv_ctr_listTable.Active := True;
-    Bonv_ctr_Top10produit.Active := True;
+//    Bonv_ctr_Top10produit.Active := True;
     Mode_paiementTable.Active := True;
     CompteTable.Active := True;
     FamproduitTable.Active := True;

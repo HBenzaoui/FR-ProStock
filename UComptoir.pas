@@ -185,7 +185,7 @@ var
 implementation
 
 {$R *.dfm}
-uses  Printers,StringTool,IniFiles,
+uses  Printers,StringTool,IniFiles,UDataModule,
  Winapi.ShellAPI, UMainF, UProduitsList, UBonCtr, USplashAddUnite,UProduitGestion,
   UFastProduitsList, USplashVersement, UOptions;
 
@@ -790,7 +790,7 @@ begin
           MainForm.ProduitTable.Active := True;
 
          MainForm.Bonv_ctr_listTable.Refresh;
-         MainForm.Bonv_ctr_Top10produit.Refresh;
+        DataModuleF.Top5produit.Refresh;
         ProduitBonCtrGCbx.AutoDropDown:=False;
          ProduitBonCtrGCbx.SelectAll;
 
@@ -1188,7 +1188,7 @@ procedure TBonCtrGestionF.ProduitsListDBGridEhKeyPress(Sender: TObject;
 begin
 if (Key=#13 ) OR (Key=#9) then
   begin
-         MainForm.Bonv_ctr_Top10produit.Refresh;
+         DataModuleF.Top5produit.Refresh;
          Refresh_PreservePosition;
    with TDBGridEh(Sender) do
       begin
@@ -1204,7 +1204,7 @@ procedure TBonCtrGestionF.DeleteProduitBonCtrGBtnClick(Sender: TObject);
 begin
  if  MainForm.Bonv_ctr_listTable.RecordCount = 1 then
  begin
-    MainForm.Bonv_ctr_Top10produit.Refresh;
+    DataModuleF.Top5produit.Refresh;
 
     MainForm.Bonv_ctr_listTable.DisableControls;
    // MainForm.Bonv_ctr_listTable.Refresh;
@@ -2331,44 +2331,45 @@ begin
 //    if ClientBonCtrGCbx.Text <> '' then
 //    begin
 
-           if  RequiredClientGlbl.Visible <> True then
+       if  RequiredClientGlbl.Visible <> True then
+  begin
+       //-------- Show the splash screan for the adding comptes ---------//
+   FSplashVersement:=TFSplashVersement.Create(Application);
+   FSplashVersement.Width:=561;
+   FSplashVersement.Label3.Caption:='Remise:';
+   FSplashVersement.Label8.Caption:='Montant:';
+   FSplashVersement.Label10.Caption:='Rendu:';
+
+   FSplashVersement.Left:=  (MainForm.Left + MainForm.Width div 2) - (FSplashVersement.Width div 2);
+   FSplashVersement.Top:=  (MainForm.Top + MainForm.Height div 2) - (FSplashVersement.Height div 2);
+
+   if RemiseBonCtrGEdt.Text <> '' then
+   begin
+   FSplashVersement.OldCreditVersementSLbl.Caption:= FloatToStrF(((StrToFloat (StringReplace(RemiseBonCtrGEdt.Text, #32, '', [rfReplaceAll])))),ffNumber,14,2);
+   end else
+       begin
+         FSplashVersement.OldCreditVersementSLbl.Caption:= FloatToStrF(0,ffNumber,14,2);
+       end;
+      FSplashVersement.MontantTTCVersementSLbl.Caption:= FloatToStrF((
+           (StrToFloat (StringReplace(BonCTotalTTCNewLbl.Caption, #32, '', [rfReplaceAll])))
+         //  -
+      //   (StrToFloat (StringReplace(BonRecRegleLbl.Caption, #32, '', [rfReplaceAll])))
+         ),ffNumber,14,2);
+    FSplashVersement.Tag := 3 ;
+    FSplashVersement.OKVersementSBtn.Tag:= 3 ;
+//  AnimateWindow(FSplashVersement.Handle, 175, AW_VER_POSITIVE OR AW_BLEND OR AW_ACTIVATE );
+   FormStyle:=fsNormal;
+   FSplashVersement.Show;
+
+  end else
       begin
-           //-------- Show the splash screan for the adding comptes ---------//
-       FSplashVersement:=TFSplashVersement.Create(Application);
-       FSplashVersement.Width:=561;
-       FSplashVersement.Label3.Caption:='Remise:';
-       FSplashVersement.Label8.Caption:='Montant:';
-       FSplashVersement.Label10.Caption:='Rendu:';
+          sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+          ClientBonCtrGCbx.StyleElements:= [];
+          RequiredClientGlbl.Visible:= True;
+          NameClientGErrorP.Visible:= True;
+          ClientBonCtrGCbx.SetFocus;
+      end;
 
-       FSplashVersement.Left:=  (MainForm.Left + MainForm.Width div 2) - (FSplashVersement.Width div 2);
-       FSplashVersement.Top:=  (MainForm.Top + MainForm.Height div 2) - (FSplashVersement.Height div 2);
-
-     if RemiseBonCtrGEdt.Text <> '' then
-     begin
-     FSplashVersement.OldCreditVersementSLbl.Caption:= FloatToStrF(((StrToFloat (StringReplace(RemiseBonCtrGEdt.Text, #32, '', [rfReplaceAll])))),ffNumber,14,2);
-     end else
-         begin
-           FSplashVersement.OldCreditVersementSLbl.Caption:= FloatToStrF(0,ffNumber,14,2);
-         end;
-        FSplashVersement.MontantTTCVersementSLbl.Caption:= FloatToStrF((
-             (StrToFloat (StringReplace(BonCTotalTTCNewLbl.Caption, #32, '', [rfReplaceAll])))
-           //  -
-          //   (StrToFloat (StringReplace(BonRecRegleLbl.Caption, #32, '', [rfReplaceAll])))
-             ),ffNumber,14,2);
-        FSplashVersement.Tag := 3 ;
-        FSplashVersement.OKVersementSBtn.Tag:= 3 ;
-    //  AnimateWindow(FSplashVersement.Handle, 175, AW_VER_POSITIVE OR AW_BLEND OR AW_ACTIVATE );
-       FormStyle:=fsNormal;
-       FSplashVersement.Show;
-
-      end else
-          begin
-              sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
-              ClientBonCtrGCbx.StyleElements:= [];
-              RequiredClientGlbl.Visible:= True;
-              NameClientGErrorP.Visible:= True;
-              ClientBonCtrGCbx.SetFocus;
-          end;
 end;
 
 procedure TBonCtrGestionF.ExValiderBVCtrBonCtrGBtnClick(Sender: TObject);
@@ -2414,12 +2415,13 @@ var CodeOCB,CodeRF : Integer;
 
            MainForm.ProduitTable.Active:=False;
            MainForm.ProduitTable.SQL.Clear;
-           MainForm.ProduitTable.SQL.Text:='SELECT * FROM produit ' ;
+           MainForm.ProduitTable.SQL.Text:='SELECT * FROM produit' ;
            MainForm.ProduitTable.Active:=True;
            MainForm.ProduitTable.EnableControls;
            MainForm.SQLQuery.Active:=False;
            MainForm.SQLQuery.SQL.Clear;
            MainForm.Bonv_ctrTable.Refresh;
+           DataModuleF.Top5produit.Refresh;
      end;
 //--- this is to set the bon ctrration fileds
      begin
@@ -2741,7 +2743,7 @@ begin
         begin
 
 
-        CodeP:= MainForm.Bonv_ctr_Top10produit.FieldByName('code_p').AsInteger ;
+        CodeP:= DataModuleF.Top5produit.FieldByName('code_p').AsInteger ;
 
         MainForm.ProduitTable.Active:=false;
         MainForm.ProduitTable.SQL.Clear;

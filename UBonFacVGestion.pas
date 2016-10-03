@@ -191,7 +191,7 @@ implementation
 
 uses StringTool,
   UMainF, USplashVersement, UBonFacV, UFastProduitsList, UProduitsList,
-  USplashAddUnite, UClientsList, UClientGestion, USplashAddCompte;
+  USplashAddUnite, UClientsList, UClientGestion, USplashAddCompte, UDataModule;
 
 {$R *.dfm}
 procedure TBonFacVGestionF.EnableBonFacV;
@@ -2198,6 +2198,7 @@ begin
            MainForm.SQLQuery.Active:=False;
            MainForm.SQLQuery.SQL.Clear;
           MainForm.Bonv_facTable.Refresh;
+          DataModuleF.Top5produit.Refresh;
 
      end;
 //--- this is to set the facture de vente fileds

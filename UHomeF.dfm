@@ -518,7 +518,7 @@ object HomeF: THomeF
         ColorHot = clBtnFace
         ColorChecked = clNone
         DropDownSplit = False
-        Caption = 'Bon de livration'
+        Caption = 'Bon de Livration'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
         Font.Height = 20
@@ -897,7 +897,7 @@ object HomeF: THomeF
         ColorHot = clBtnFace
         ColorChecked = clNone
         DropDownSplit = False
-        Caption = 'Liste des produits'
+        Caption = 'Liste des Produits'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
         Font.Height = 20

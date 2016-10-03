@@ -48,7 +48,7 @@ implementation
 
 uses Contnrs, Types, UProduitGestion, UMainF, UBonRecGestion, UFastProduitsList,
   USplashAddCompte, UBonLivGestion, UBonFacVGestion, UBonFacAGestion,
-  UComptoir, UReglementCGestion, UReglementFGestion;
+  UComptoir, UReglementCGestion, UReglementFGestion, UDataModule;
 
 var
   gGrayForms: TComponentList;
@@ -654,7 +654,7 @@ begin
            begin
             MainForm.ProduitTable.Active:=False;
             MainForm.ProduitTable.SQL.Clear;
-            MainForm.ProduitTable.SQL.Text:= 'SELECT * FROM produit where code_p = '+ IntToStr(MainForm.Bonv_ctr_Top10produit.FieldByName('code_p').AsInteger );
+            MainForm.ProduitTable.SQL.Text:= 'SELECT * FROM produit where code_p = '+ IntToStr(DataModuleF.Top5produit.FieldByName('code_p').AsInteger );
             MainForm.ProduitTable.Active:=True;
            end;
 

@@ -69,7 +69,7 @@ implementation
 
 uses
   UMainF, UClientGestion, UBonRecGestion, UBonLivGestion, UBonFacVGestion,
-  UBonFacAGestion, UComptoir;
+  UBonFacAGestion, UComptoir, UDataModule;
 
 {$R *.dfm}
 
@@ -597,6 +597,7 @@ begin
            MainForm.SQLQuery.Active:=False;
            MainForm.SQLQuery.SQL.Clear;
            MainForm.Bona_recTable.Refresh;
+           DataModuleF.Top5produit.Refresh;
 
      end;
 //--- this is to set the bon reception fileds
@@ -1118,6 +1119,7 @@ begin
            MainForm.SQLQuery.Active:=False;
            MainForm.SQLQuery.SQL.Clear;
            MainForm.Bonv_livTable.Refresh;
+           DataModuleF.Top5produit.Refresh;
 
      end;
 //--- this is to set the bon livration fileds
@@ -1620,6 +1622,7 @@ begin
            MainForm.SQLQuery.Active:=False;
            MainForm.SQLQuery.SQL.Clear;
            MainForm.Bonv_ctrTable.Refresh;
+           DataModuleF.Top5produit.Refresh;
 
      end;
 //--- this is to set the bon ctrration fileds
