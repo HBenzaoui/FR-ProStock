@@ -623,28 +623,28 @@ object BonLivGestionF: TBonLivGestionF
       Pen.Color = 4666873
     end
     object BonLTotalTTCNewLbl: TLabel
-      Left = 304
+      Left = 266
       Top = 51
-      Width = 6
+      Width = 71
       Height = 13
+      AutoSize = False
       Caption = '0'
-      Visible = False
     end
     object BonLTotalHTNewLbl: TLabel
-      Left = 304
+      Left = 266
       Top = 75
-      Width = 6
+      Width = 71
       Height = 13
+      AutoSize = False
       Caption = '0'
-      Visible = False
     end
     object TotalTVANewLbl: TLabel
-      Left = 304
-      Top = 108
-      Width = 6
+      Left = 266
+      Top = 103
+      Width = 53
       Height = 13
+      AutoSize = False
       Caption = '0'
-      Visible = False
     end
     object Label19: TLabel
       Left = 380
@@ -679,12 +679,12 @@ object BonLivGestionF: TBonLivGestionF
       StyleElements = []
     end
     object BonLRemiseHTNewLbl: TLabel
-      Left = 225
-      Top = 90
-      Width = 6
+      Left = 189
+      Top = 100
+      Width = 44
       Height = 13
+      AutoSize = False
       Caption = '0'
-      Visible = False
     end
     object ValiderBVLivBonLivGLbl: TLabel
       Left = 903
@@ -719,7 +719,6 @@ object BonLivGestionF: TBonLivGestionF
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
-      Visible = False
     end
     object NameClientGErrorP: TPanel
       Left = 461
@@ -1007,7 +1006,7 @@ object BonLivGestionF: TBonLivGestionF
       Width = 115
       Height = 17
       Anchors = [akLeft, akBottom]
-      Caption = 'par D'#233'signation'
+      Caption = 'Par D'#233'signation'
       Checked = True
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
@@ -1020,12 +1019,12 @@ object BonLivGestionF: TBonLivGestionF
       StyleElements = []
     end
     object ResherchPARCBProduitsRdioBtn: TRadioButton
-      Left = 372
-      Top = 230
+      Left = 371
+      Top = 229
       Width = 120
       Height = 17
       Anchors = [akLeft, akBottom]
-      Caption = 'par Code a Barre'
+      Caption = 'Par Code a Barre'
       Color = 15722984
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
@@ -1055,7 +1054,7 @@ object BonLivGestionF: TBonLivGestionF
       Width = 106
       Height = 17
       Anchors = [akLeft, akBottom]
-      Caption = 'par R'#233'f'#233'rence'
+      Caption = 'Par R'#233'f'#233'rence'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
       Font.Height = 16
@@ -2222,7 +2221,7 @@ object BonLivGestionF: TBonLivGestionF
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 42576.399521435200000000
-    ReportOptions.LastChange = 42621.407037418980000000
+    ReportOptions.LastChange = 42647.661076527780000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       ''
@@ -2701,6 +2700,8 @@ object BonLivGestionF: TBonLivGestionF
           DataField = 'prixvd_p'
           DataSet = frxBonLivPListDB
           DataSetName = 'frxBonLivPListDB'
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -15
@@ -2720,6 +2721,8 @@ object BonLivGestionF: TBonLivGestionF
           DataField = 'MontantHT'
           DataSet = frxBonLivPListDB
           DataSetName = 'frxBonLivPListDB'
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -15
@@ -2835,6 +2838,8 @@ object BonLivGestionF: TBonLivGestionF
           DataField = 'remise_bvliv'
           DataSet = frxBonLivDT
           DataSetName = 'frxBonLivDT'
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -15
@@ -2854,6 +2859,8 @@ object BonLivGestionF: TBonLivGestionF
           DataField = 'montht_bvliv'
           DataSet = frxBonLivDT
           DataSetName = 'frxBonLivDT'
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -15
@@ -2873,6 +2880,8 @@ object BonLivGestionF: TBonLivGestionF
           DataField = 'MontantTVA'
           DataSet = frxBonLivDT
           DataSetName = 'frxBonLivDT'
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -15
@@ -2892,6 +2901,8 @@ object BonLivGestionF: TBonLivGestionF
           DataField = 'montttc_bvliv'
           DataSet = frxBonLivDT
           DataSetName = 'frxBonLivDT'
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -15
@@ -2912,6 +2923,8 @@ object BonLivGestionF: TBonLivGestionF
           DataField = 'NeTHT'
           DataSet = frxBonLivDT
           DataSetName = 'frxBonLivDT'
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -15

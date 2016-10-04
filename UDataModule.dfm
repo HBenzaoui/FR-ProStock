@@ -3,7 +3,7 @@ object DataModuleF: TDataModuleF
   OnCreate = DataModuleCreate
   Height = 665
   Width = 1100
-  object Top5produit: TFDQuery
+  object Top5produitOLD: TFDQuery
     Connection = MainForm.GstockdcConnection
     SQL.Strings = (
       '-- This quiery will select the top 5 seled prudect '
@@ -13,19 +13,19 @@ object DataModuleF: TDataModuleF
       'ORDER BY sum(qut_p) DESC LIMIT 5'
       ''
       '')
-    Left = 750
-    Top = 12
-    object Top5produitcode_p: TIntegerField
+    Left = 914
+    Top = 16
+    object Top5produitOLDcode_p: TIntegerField
       FieldName = 'code_p'
       Origin = 'code_p'
     end
-    object Top5produitsum: TFloatField
+    object Top5produitOLDsum: TFloatField
       AutoGenerateValue = arDefault
       FieldName = 'sum'
       Origin = 'sum'
       ReadOnly = True
     end
-    object Top5produitnomp: TStringField
+    object Top5produitOLDnomp: TStringField
       FieldKind = fkLookup
       FieldName = 'nomp'
       LookupDataSet = MainForm.ProduitTable
@@ -311,6 +311,60 @@ object DataModuleF: TDataModuleF
       AutoGenerateValue = arDefault
       FieldName = 'sales'
       Origin = 'sales'
+      ReadOnly = True
+    end
+  end
+  object Top5produit: TFDQuery
+    Connection = MainForm.GstockdcConnection
+    SQL.Strings = (
+      '-- This quiery will select the top 5 seled prudect '
+      '  SELECT code_p, SUM(total) as totalALL '
+      '  FROM (   '
+      
+        '  SELECT code_p as code_p, SUM(qut_p) AS total FROM bonv_ctr_lis' +
+        't d '
+      '  INNER JOIN bonv_ctr p ON d.code_bvctr = p.code_bvctr '
+      '  WHERE valider_bvctr = true '
+      '  GROUP BY code_p,qut_p'
+      
+        '----------------------------------------------------------------' +
+        '-------'
+      '  UNION ALL '
+      '  SELECT code_p, SUM(qut_p) as total FROM bonv_fac_list a'
+      '  INNER JOIN bonv_fac c ON a.code_bvfac = c.code_bvfac '
+      '  WHERE valider_bvfac = true '
+      '  GROUP BY code_p,qut_p'
+      
+        '----------------------------------------------------------------' +
+        '-------'
+      '  UNION ALL '
+      '  SELECT code_p, SUM(qut_p) as total FROM bonv_liv_list e'
+      '  INNER JOIN bonv_liv f ON e.code_bvliv = f.code_bvliv '
+      '  WHERE valider_bvliv = true '
+      '  GROUP BY code_p,qut_p'
+      '      ) a '
+      '      GROUP BY  code_p'#9' '
+      '      ORDER BY  totalALL  DESC '
+      '      LIMIT 5 ;')
+    Left = 762
+    Top = 12
+    object IntegerField1: TIntegerField
+      FieldName = 'code_p'
+      Origin = 'code_p'
+    end
+    object StringField5: TStringField
+      FieldKind = fkLookup
+      FieldName = 'nomp'
+      LookupDataSet = MainForm.ProduitTable
+      LookupKeyFields = 'code_p'
+      LookupResultField = 'nom_p'
+      KeyFields = 'code_p'
+      Lookup = True
+    end
+    object Top5produittotalall: TFloatField
+      AutoGenerateValue = arDefault
+      FieldName = 'totalall'
+      Origin = 'totalall'
       ReadOnly = True
     end
   end

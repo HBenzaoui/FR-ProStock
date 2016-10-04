@@ -171,6 +171,7 @@ type
     procedure RemisePerctageBonCtrGEdtMouseEnter(Sender: TObject);
     procedure ProduitBonCtrGCbxDblClick(Sender: TObject);
     procedure RemisePerctageBonCtrGEdtDblClick(Sender: TObject);
+    procedure FormPaint(Sender: TObject);
   private
     procedure GettingData;
     { Private declarations }
@@ -2974,6 +2975,11 @@ try
 finally
  RemisePerctageBonCtrGEdt.SetFocus
 end;
+end;
+
+procedure TBonCtrGestionF.FormPaint(Sender: TObject);
+begin
+DataModuleF.Top5produit.Refresh;
 end;
 
 end.

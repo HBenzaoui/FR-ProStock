@@ -417,16 +417,15 @@ object ProduitsListF: TProduitsListF
       end
       item
         Alignment = taCenter
+        DisplayFormat = '0.00 %'
         DynProps = <>
         EditButtons = <>
         FieldName = 'tva_p'
         Footers = <>
         Layout = tlCenter
-        MaxWidth = 50
-        MinWidth = 50
         Title.Alignment = taCenter
-        Title.Caption = 'TVA'
-        Width = 50
+        Title.Caption = 'TVA %'
+        Width = 70
       end
       item
         DynProps = <>
@@ -1125,7 +1124,7 @@ object ProduitsListF: TProduitsListF
       Top = 11
       Width = 142
       Height = 17
-      Caption = 'par D'#233'signation ou R'#233'f'
+      Caption = 'Par D'#233'signation ou R'#233'f'
       Checked = True
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -1142,7 +1141,7 @@ object ProduitsListF: TProduitsListF
       Top = 12
       Width = 108
       Height = 17
-      Caption = 'par Code a Barre'
+      Caption = 'Par Code a Barre'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = 14
@@ -2201,7 +2200,7 @@ object ProduitsListF: TProduitsListF
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 42576.399521435200000000
-    ReportOptions.LastChange = 42582.498964919000000000
+    ReportOptions.LastChange = 42647.692617731480000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       ''
@@ -2597,7 +2596,7 @@ object ProduitsListF: TProduitsListF
           DataField = 'prixvd_p'
           DataSet = frxProduitListDB
           DataSetName = 'frxProduitDB'
-          DisplayFormat.FormatStr = '%2.2m'
+          DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -2618,7 +2617,7 @@ object ProduitsListF: TProduitsListF
           StretchMode = smActualHeight
           DataSet = frxProduitListDB
           DataSetName = 'frxProduitDB'
-          DisplayFormat.FormatStr = '%2.2m'
+          DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -2639,6 +2638,8 @@ object ProduitsListF: TProduitsListF
           StretchMode = smActualHeight
           DataSet = frxProduitListDB
           DataSetName = 'frxProduitDB'
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -12

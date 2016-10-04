@@ -172,13 +172,28 @@ begin
 
  if not FournisseursListDBGridEh.DataSource.DataSet.IsEmpty then
    begin
-   GrayForms;
+         // ------ this code is to check if the produit are in bons if it is the user cant delte it ------------
+      MainForm.SQLQuery.Active:= False;
+      MainForm.SQLQuery.SQL.Clear;
+      MainForm.SQLQuery.SQL.Text:=
+      'select * '
+     +  'from (   '
+     +   'select code_f as code_f from bona_rec '
+     +   'union all '
+     +   'select code_f from bona_fac '
+     +     ') a '
+     +     'where code_f = '+IntToStr(MainForm.FournisseurTable.FieldByName('code_f').AsInteger) ;
+
+      MainForm.SQLQuery.Active:= True;
+   if MainForm.SQLQuery.IsEmpty then
+   begin
+
+    GrayForms;
      with MainForm.FournisseurTable do  begin
 
-
-   if MyMessageDlg('Ėtes-vous sûr de vouloir supprimer le Fournisseur : '+ sLineBreak +  QuotedStr(fieldbyname('nom_f').Value) , mtConfirmation, [mbYes,mbNo], ['Oui','Non'],'Attention', mbNo )  = mrYes then
+    if MyMessageDlg('Ėtes-vous sûr de vouloir supprimer le Fournisseur : '
+       + sLineBreak +  QuotedStr(fieldbyname('nom_f').Value) , mtConfirmation, [mbYes,mbNo], ['Oui','Non'],'Attention', mbNo )  = mrYes then
        begin
-
 
       MainForm.FournisseurTable.Delete;
 
@@ -201,7 +216,6 @@ begin
       MainForm.FournisseurTable.Active := true;
 
       PassifFournisseursLbl.Caption :=IntToStr(MainForm.FournisseurTable.RecordCount);
-
 
       MainForm.FournisseurTable.Active := false;
       MainForm.FournisseurTable.SQL.Clear;
@@ -240,8 +254,6 @@ begin
 
       MainForm.FournisseurTable.EnableControls;
 
-
-
       FSplash := TFSplash.Create(FournisseurListF);
       try
         FSplash.Left := Screen.Width div 2 - (FSplash.Width div 2);
@@ -255,23 +267,17 @@ begin
           AW_SLIDE OR AW_HIDE);
       finally
         FSplash.free;
-
       end;
-
         NormalForms;
         sndPlaySound('C:\Windows\Media\speech off.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
-
-    end
-    else
-
+    end     else
      NormalForms
-
     end;
-
-
+     end else
+         begin
+            sndPlaySound('C:\Windows\Media\chord.wav', SND_NODEFAULT Or SND_ASYNC Or  SND_RING);
+         end;
  end;
-
-
 end;
 
 procedure TFournisseurListF.EditFournisseursBtnClick(Sender: TObject);

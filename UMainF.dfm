@@ -748,6 +748,15 @@ object MainForm: TMainForm
       Visible = False
       OnClick = Button16Click
     end
+    object inserdata: TButton
+      Left = 770
+      Top = 39
+      Width = 75
+      Height = 25
+      Caption = 'inserdata'
+      TabOrder = 15
+      OnClick = inserdataClick
+    end
   end
   object SplitView1: TSplitView
     Left = 0
@@ -787,6 +796,12 @@ object MainForm: TMainForm
       ShowHint = False
       TabOrder = 0
       SkinData.SkinSection = 'BAR'
+      AnimationSteps = 0
+      TitleFont.Charset = DEFAULT_CHARSET
+      TitleFont.Color = clWindowText
+      TitleFont.Height = -11
+      TitleFont.Name = 'Tahoma'
+      TitleFont.Style = []
       BorderWidth = 1
       ActiveFrameIndex = -1
       TitleHeight = 25
@@ -20669,6 +20684,7 @@ object MainForm: TMainForm
     Top = 154
   end
   object FournisseurTable: TFDQuery
+    Active = True
     FilterOptions = [foCaseInsensitive]
     IndexFieldNames = 'code_f'
     Connection = GstockdcConnection
@@ -20817,6 +20833,7 @@ object MainForm: TMainForm
     Top = 182
   end
   object ProduitTable: TFDQuery
+    Active = True
     OnCalcFields = ProduitTableCalcFields
     FilterOptions = [foCaseInsensitive]
     IndexFieldNames = 'code_p'
@@ -20824,7 +20841,7 @@ object MainForm: TMainForm
     SQL.Strings = (
       'SELECT * FROM produit ORDER BY code_p')
     Left = 44
-    Top = 284
+    Top = 286
     object ProduitTablecode_p: TIntegerField
       FieldName = 'code_p'
       Origin = 'code_p'
@@ -20885,11 +20902,6 @@ object MainForm: TMainForm
     object ProduitTableprixht_p: TCurrencyField
       FieldName = 'prixht_p'
       Origin = 'prixht_p'
-    end
-    object ProduitTabletva_p: TWideStringField
-      FieldName = 'tva_p'
-      Origin = 'tva_p'
-      Size = 6
     end
     object ProduitTableprixvd_p: TCurrencyField
       FieldName = 'prixvd_p'
@@ -21033,8 +21045,13 @@ object MainForm: TMainForm
       FieldKind = fkInternalCalc
       FieldName = 'QutDispo'
     end
+    object ProduitTabletva_p: TSmallintField
+      FieldName = 'tva_p'
+      Origin = 'tva_p'
+    end
   end
   object UniteTable: TFDQuery
+    Active = True
     FilterOptions = [foCaseInsensitive]
     IndexFieldNames = 'code_u'
     Connection = GstockdcConnection
@@ -21044,6 +21061,7 @@ object MainForm: TMainForm
     Top = 347
   end
   object SfamproduitTable: TFDQuery
+    Active = True
     FilterOptions = [foCaseInsensitive]
     IndexFieldNames = 'code_sfamp'
     Connection = GstockdcConnection
@@ -21053,6 +21071,7 @@ object MainForm: TMainForm
     Top = 472
   end
   object FamproduitTable: TFDQuery
+    Active = True
     FilterOptions = [foCaseInsensitive]
     IndexFieldNames = 'code_famp'
     Connection = GstockdcConnection
@@ -21072,6 +21091,7 @@ object MainForm: TMainForm
     Top = 528
   end
   object LocalisationTable: TFDQuery
+    Active = True
     IndexFieldNames = 'code_l'
     Connection = GstockdcConnection
     SQL.Strings = (
@@ -39122,7 +39142,7 @@ object MainForm: TMainForm
     Left = 346
     Top = 129
   end
-  object FDScriptCreateTables: TFDScript
+  object CreateTablesFDScript: TFDScript
     SQLScripts = <
       item
         Name = 'CreateTables'
@@ -45110,7 +45130,7 @@ object MainForm: TMainForm
     Left = 485
     Top = 104
   end
-  object FDScript1: TFDScript
+  object DropDatabaseFDScript: TFDScript
     SQLScripts = <
       item
         Name = 'drop'
@@ -45138,8 +45158,8 @@ object MainForm: TMainForm
     ResourceOptions.AssignedValues = [rvMacroCreate, rvMacroExpand, rvDirectExecute, rvPersistent]
     ResourceOptions.MacroCreate = False
     ResourceOptions.DirectExecute = True
-    Left = 680
-    Top = 184
+    Left = 614
+    Top = 92
   end
   object BonCtrListDataS: TDataSource
     DataSet = Bonv_ctrTable
@@ -45804,5 +45824,50 @@ object MainForm: TMainForm
       0000000000000000000000000000000000000000000000008000008000000080
       8000800000008000800080800000C0C0C000808080000000FF0000FF000000FF
       FF00FF000000FF00FF00FFFF0000FFFFFF0000000000}
+  end
+  object FDScript1: TFDScript
+    SQLScripts = <
+      item
+        Name = 'insert'
+        SQL.Strings = (
+          
+            'INSERT INTO "client" VALUES ('#39'Comptoir'#39', '#39#39', '#39#39', '#39'              ' +
+            ' '#39', '#39'               '#39', '#39#39', '#39#39', '#39'               '#39', '#39't'#39', null, '#39'  ' +
+            '             '#39', '#39'                         '#39', '#39'                  ' +
+            '       '#39', '#39'                         '#39', '#39'                        ' +
+            ' '#39', '#39#39', '#39'                         '#39', '#39'                         '#39 +
+            ', '#39'                                        '#39', null, '#39#39', '#39'$0.00'#39',' +
+            ' '#39'$0.00'#39', '#39'1'#39', '#39'0'#39', '#39'$0.00'#39');'
+          
+            'INSERT INTO "public"."fournisseur" ("code_f", "nom_f", "adr_f", ' +
+            '"ville_f", "willaya_f", "pays_f", "fix_f", "mob_f", "mob2_f", "f' +
+            'ax_f", "email_f", "obser_f", "logo_f", "activ_f", "rc_f", "nif_f' +
+            '", "nart_f", "nis_f", "nbank_f", "rib_f", "siteweb_f", "oldcredi' +
+            't_f", "maxcredit_f", "credit_f") VALUES ('#39'1'#39', '#39'Test'#39', '#39'         ' +
+            '                                         '#39', '#39'                   ' +
+            '      '#39', '#39'                         '#39', NULL, '#39'               '#39', '#39 +
+            '               '#39', '#39'               '#39', '#39'               '#39', '#39'       ' +
+            '                                 '#39', '#39'                           ' +
+            '                                                                ' +
+            '                                                                ' +
+            '                                                                ' +
+            '                               '#39', NULL, '#39't'#39', '#39'                  ' +
+            '       '#39', '#39'                         '#39', '#39'                        ' +
+            ' '#39', '#39'                         '#39', '#39'                         '#39', '#39' ' +
+            '                        '#39', '#39'                                    ' +
+            ' '
+          '   '#39', '#39'$0.00'#39', '#39'$0.00'#39', '#39'$0.00'#39');')
+      end>
+    Connection = GstockdcConnection
+    Params = <>
+    Macros = <>
+    FetchOptions.AssignedValues = [evItems, evAutoClose, evAutoFetchAll]
+    FetchOptions.AutoClose = False
+    FetchOptions.Items = [fiBlobs, fiDetails]
+    ResourceOptions.AssignedValues = [rvMacroCreate, rvMacroExpand, rvDirectExecute, rvPersistent]
+    ResourceOptions.MacroCreate = False
+    ResourceOptions.DirectExecute = True
+    Left = 650
+    Top = 264
   end
 end

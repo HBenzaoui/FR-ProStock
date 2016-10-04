@@ -317,6 +317,7 @@ object ReglementFListF: TReglementFListF
   OldCreateOrder = False
   Visible = True
   OnClose = FormClose
+  OnPaint = FormPaint
   OnShow = FormShow
   DesignSize = (
     1191
@@ -438,7 +439,7 @@ object ReglementFListF: TReglementFListF
     object ResearchBACtrLbl: TLabel
       Left = 10
       Top = 38
-      Width = 73
+      Width = 75
       Height = 18
       Caption = 'Recherche'
       Color = 15722984
@@ -496,7 +497,7 @@ object ReglementFListF: TReglementFListF
     object Label1: TLabel
       Left = 345
       Top = 14
-      Width = 23
+      Width = 24
       Height = 18
       Caption = 'Du:'
       Color = 15722984
@@ -512,7 +513,7 @@ object ReglementFListF: TReglementFListF
     object Label2: TLabel
       Left = 346
       Top = 49
-      Width = 22
+      Width = 23
       Height = 18
       Caption = 'Au:'
       Color = 15722984
@@ -771,7 +772,7 @@ object ReglementFListF: TReglementFListF
       Width = 131
       Height = 17
       Anchors = [akLeft, akBottom]
-      Caption = 'par N'#176' de R'#232'glement'
+      Caption = 'Par N'#176' de R'#232'glement'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
       Font.Height = 16
@@ -787,7 +788,7 @@ object ReglementFListF: TReglementFListF
       Width = 115
       Height = 17
       Anchors = [akLeft, akBottom]
-      Caption = 'par Fournisseur'
+      Caption = 'Par Fournisseur'
       Checked = True
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
@@ -965,7 +966,7 @@ object ReglementFListF: TReglementFListF
         Footers = <>
         Layout = tlCenter
         Title.Alignment = taCenter
-        Title.Caption = 'Houre'
+        Title.Caption = 'Heure'
         Title.EndEllipsis = True
         Title.ToolTips = True
         Width = 113
@@ -1414,8 +1415,6 @@ object ReglementFListF: TReglementFListF
           Top = 1.000000000000000000
           Width = 457.323130000000000000
           Height = 18.897650000000000000
-          DataSet = ReglementCListF.frxRegCListDB
-          DataSetName = 'frxRegCListDB'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -9

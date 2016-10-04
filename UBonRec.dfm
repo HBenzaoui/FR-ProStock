@@ -1043,7 +1043,7 @@ object BonRecF: TBonRecF
       Width = 115
       Height = 17
       Anchors = [akLeft, akBottom]
-      Caption = 'par Fournisseur'
+      Caption = 'Par Fournisseur'
       Checked = True
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
@@ -1061,7 +1061,7 @@ object BonRecF: TBonRecF
       Width = 101
       Height = 17
       Anchors = [akLeft, akBottom]
-      Caption = 'par N'#176' de Bon'
+      Caption = 'Par N'#176' de Bon'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
       Font.Height = 16
@@ -1198,7 +1198,7 @@ object BonRecF: TBonRecF
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 42576.399521435200000000
-    ReportOptions.LastChange = 42617.789440162040000000
+    ReportOptions.LastChange = 42647.658829594900000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       ''
@@ -1680,7 +1680,7 @@ object BonRecF: TBonRecF
           Height = 18.897650000000000000
           DataSet = frxBonRecDB
           DataSetName = 'frxBonRecDB'
-          DisplayFormat.FormatStr = '%2.2m'
+          DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1700,7 +1700,7 @@ object BonRecF: TBonRecF
           Height = 18.897650000000000000
           DataSet = frxBonRecDB
           DataSetName = 'frxBonRecDB'
-          DisplayFormat.FormatStr = '%2.2m'
+          DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1720,7 +1720,7 @@ object BonRecF: TBonRecF
           Height = 18.897650000000000000
           DataSet = frxBonRecDB
           DataSetName = 'frxBonRecDB'
-          DisplayFormat.FormatStr = '%2.2m'
+          DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1740,7 +1740,7 @@ object BonRecF: TBonRecF
           Height = 18.897650000000000000
           DataSet = frxBonRecDB
           DataSetName = 'frxBonRecDB'
-          DisplayFormat.FormatStr = '%2.2m'
+          DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1760,7 +1760,7 @@ object BonRecF: TBonRecF
           Height = 18.897650000000000000
           DataSet = frxBonRecDB
           DataSetName = 'frxBonRecDB'
-          DisplayFormat.FormatStr = '%2.2m'
+          DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1780,7 +1780,7 @@ object BonRecF: TBonRecF
           Height = 18.897650000000000000
           DataSet = frxBonRecDB
           DataSetName = 'frxBonRecDB'
-          DisplayFormat.FormatStr = '%2.2m'
+          DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1800,7 +1800,7 @@ object BonRecF: TBonRecF
           Height = 18.897650000000000000
           DataSet = frxBonRecDB
           DataSetName = 'frxBonRecDB'
-          DisplayFormat.FormatStr = '%2.2m'
+          DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1824,7 +1824,7 @@ object BonRecF: TBonRecF
           Top = 0.377952760000000000
           Width = 94.488250000000000000
           Height = 22.677180000000000000
-          DisplayFormat.FormatStr = '%2.2m'
+          DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1843,7 +1843,7 @@ object BonRecF: TBonRecF
           Top = 0.377952760000000000
           Width = 94.488250000000000000
           Height = 22.677180000000000000
-          DisplayFormat.FormatStr = '%2.2m'
+          DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1862,7 +1862,7 @@ object BonRecF: TBonRecF
           Top = 0.377952760000000000
           Width = 94.488250000000000000
           Height = 22.677180000000000000
-          DisplayFormat.FormatStr = '%2.2m'
+          DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1881,7 +1881,7 @@ object BonRecF: TBonRecF
           Top = 0.377952760000000000
           Width = 94.488250000000000000
           Height = 22.677180000000000000
-          DisplayFormat.FormatStr = '%2.2m'
+          DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1900,7 +1900,7 @@ object BonRecF: TBonRecF
           Top = 0.377952760000000000
           Width = 94.488250000000000000
           Height = 22.677180000000000000
-          DisplayFormat.FormatStr = '%2.2m'
+          DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1919,7 +1919,7 @@ object BonRecF: TBonRecF
           Top = 0.377952760000000000
           Width = 94.488250000000000000
           Height = 22.677180000000000000
-          DisplayFormat.FormatStr = '%2.2m'
+          DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1938,7 +1938,7 @@ object BonRecF: TBonRecF
           Top = 0.377952760000000000
           Width = 94.488250000000000000
           Height = 22.677180000000000000
-          DisplayFormat.FormatStr = '%2.2m'
+          DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack

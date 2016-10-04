@@ -18,6 +18,7 @@ object BonCtrGestionF: TBonCtrGestionF
   OnClose = FormClose
   OnCloseQuery = FormCloseQuery
   OnCreate = FormCreate
+  OnPaint = FormPaint
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
@@ -2197,79 +2198,43 @@ object BonCtrGestionF: TBonCtrGestionF
     PrintOptions.PrintOnSheet = 0
     PrintOptions.ShowDialog = False
     ReportOptions.CreateDate = 41863.570242476900000000
-    ReportOptions.LastChange = 42587.037063171290000000
+    ReportOptions.LastChange = 42647.665211296300000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       '//procedure Page1OnBeforePrint(Sender: TfrxComponent);'
       '//begin'
       '//if <S_BL1."CLIENT"> = '#39'VENTE-COMPTOIR'#39' then'
       '//    begin'
-      
-        '//    memo1.Visible := True;                                    ' +
-        '           '
-      
-        '//    memo3.Visible := True;                                    ' +
-        '           '
-      
-        '//    memo6.Visible := True;                                    ' +
-        '           '
+      '//    memo1.Visible := True;'
+      '//    memo3.Visible := True;'
+      '//    memo6.Visible := True;'
       '//    memo7.Visible := True;'
-      
-        '//    memo14.Visible := False;                                  ' +
-        '             '
-      
-        '//    memo15.Visible := False;                                  ' +
-        '             '
-      
-        '//    memo16.Visible := False;                                  ' +
-        '             '
+      '//    memo14.Visible := False;'
+      '//    memo15.Visible := False;'
+      '//    memo16.Visible := False;'
       '//    memo17.Visible := False;'
-      
-        '//    memo19.Visible := False;                                  ' +
-        '             '
-      
-        '//    memo20.Visible := False;                                  ' +
-        '             '
-      
-        '//    memo21.Visible := False;                                  ' +
-        '             '
+      '//    memo19.Visible := False;'
+      '//    memo20.Visible := False;'
+      '//    memo21.Visible := False;'
       '//    memo22.Visible := False;'
       '//    end'
       '//    else'
       '//    begin'
-      
-        '//    memo1.Visible := False;                                   ' +
-        '            '
-      
-        '//    memo3.Visible := False;                                   ' +
-        '            '
-      
-        '//    memo6.Visible := False;                                   ' +
-        '            '
+      '//    memo1.Visible := False;'
+      '//    memo3.Visible := False;'
+      '//    memo6.Visible := False;'
       '//    memo7.Visible := False;'
-      
-        '//    memo14.Visible := True;                                   ' +
-        '            '
-      
-        '//    memo15.Visible := True;                                   ' +
-        '            '
-      
-        '//    memo16.Visible := True;                                   ' +
-        '            '
+      '//    memo14.Visible := True;'
+      '//    memo15.Visible := True;'
+      '//    memo16.Visible := True;'
       '//    memo17.Visible := True;'
-      
-        '//    memo19.Visible := True;                                   ' +
-        '            '
-      
-        '//    memo20.Visible := True;                                   ' +
-        '            '
-      
-        '//    memo21.Visible := True;                                   ' +
-        '            '
+      '//    memo19.Visible := True;'
+      '//    memo20.Visible := True;'
+      '//    memo21.Visible := True;'
       '//    memo22.Visible := True;'
-      '//    end;                '
+      '//    end;'
       '//end;'
-      '   '
+      ''
       '//procedure ADR_FRSOnAfterPrint(Sender: TfrxComponent);'
       '//begin'
       '//end;'
@@ -2278,8 +2243,7 @@ object BonCtrGestionF: TBonCtrGestionF
       '//begin'
       
         '//MEMO7.Text :=FormatFloat('#39'# ### ### #00.00'#39',<S_BL1."VERSER">-<' +
-        'S_BL1."TTC">);                                                  ' +
-        '          '
+        'S_BL1."TTC">);'
       '//end;'
       ''
       '//procedure Footer1OnAfterPrint(Sender: TfrxComponent);'
@@ -2291,46 +2255,42 @@ object BonCtrGestionF: TBonCtrGestionF
       '//begin'
       
         '//IF <TAGS>=1 THEN MEMO11.TEXT:='#39'Bon de livraison n'#176':'#39'+<PREFIX_L' +
-        '>+<S_BL1."NUM_BON">+<PREFIX_R>;  '
+        '>+<S_BL1."NUM_BON">+<PREFIX_R>;'
       
         '//IF <TAGS>=2 THEN MEMO11.TEXT:='#39'Bon de retour  n'#176':'#39'+<PREFIX_L>+' +
-        '<S_BL1."NUM_BON">+<PREFIX_R>;  '
+        '<S_BL1."NUM_BON">+<PREFIX_R>;'
       
         '//IF <TAGS>=3 THEN MEMO11.TEXT:='#39'Bon de commande n'#176':'#39'+<PREFIX_L>' +
-        '+<S_BL1."NUM_BON">+<PREFIX_R>;  '
+        '+<S_BL1."NUM_BON">+<PREFIX_R>;'
       '//end;'
       ''
       '//procedure PageHeader1OnBeforePrint(Sender: TfrxComponent);'
       '//begin'
       '//IF <PAGE> > 1 THEN  PageHeader1.VISIBLE:=FALSE'
-      '//              ELSE  PageHeader1.VISIBLE:=TRUE;               '
+      '//              ELSE  PageHeader1.VISIBLE:=TRUE;'
       ''
       '//end;'
       ''
       '//procedure ReportTitle1OnBeforePrint(Sender: TfrxComponent);'
       '//begin'
       '///if <S_ENTREP."LOGO"> = '#39#39' then ReportTitle1.visible := false'
-      
-        '//                          else ReportTitle1.visible := true;  ' +
-        '                                                                ' +
-        '                                              '
+      '//                          else ReportTitle1.visible := true;'
       '//end;'
       ''
       '//procedure Memo22OnBeforePrint(Sender: TfrxComponent);'
       '//begin'
       
         '//IF <TAGS>=1 THEN MEMO22.TEXT:=FormatFloat('#39'# ### ##0.00'#39',<S_BL' +
-        '1."ANCIEN_SOLDE">+<S_BL1."TTC">-<S_BL1."VERSER">)  ;  '
+        '1."ANCIEN_SOLDE">+<S_BL1."TTC">-<S_BL1."VERSER">)  ;'
       
         '//IF <TAGS>=2 THEN MEMO22.TEXT:=FormatFloat('#39'# ### ##0.00'#39',<S_BL' +
         '1."ANCIEN_SOLDE">-<S_BL1."TTC">-<S_BL1."VERSER">) ;'
       '//end;'
       ''
       'begin'
-      '//Page1.LeftMargin:=<MARGE_IMP>                        '
-      '    '
-      'end.  '
-      '      ')
+      '//Page1.LeftMargin:=<MARGE_IMP>'
+      ''
+      'end.')
     Left = 72
     Top = 344
     Datasets = <

@@ -82,6 +82,7 @@ type
     procedure sSpeedButton2Click(Sender: TObject);
     procedure sSpeedButton1Click(Sender: TObject);
     procedure sSpeedButton3Click(Sender: TObject);
+    procedure FormPaint(Sender: TObject);
   private
     procedure GettingData;
     { Private declarations }
@@ -132,7 +133,8 @@ end;
 procedure TClientListF.EditClientsBtnClick(Sender: TObject);
 begin
       //----------------- Show the splash screan for the produit familly to add new one---------//
-
+   if NOT (MainForm.ClientTable.FieldByName('code_c').AsInteger = 1) then
+ begin
          ClientGestionF:=TClientGestionF.Create(ClientListF);
 
          ClientGestionF.Left:=  ( Screen.Width div 2 ) - (ClientGestionF.Width div 2)    ;
@@ -147,7 +149,6 @@ begin
        //  MainForm.ClientTable.Refresh;
 
     if not ClientsListDBGridEh.DataSource.DataSet.IsEmpty then
-
      begin
      //----------------- SHOW THE DATA ON THE CLIENT GESTION PANEL -----------------------------//
          with MainForm.ClientTable do begin
@@ -178,6 +179,11 @@ begin
             ClientGestionF.NameClientGEdt.SelStart :=  ClientGestionF.NameClientGEdt.GetTextLen ;
            end ;
    end;
+
+ end else
+     begin
+       sndPlaySound('C:\Windows\Media\chord.wav', SND_NODEFAULT Or SND_ASYNC Or  SND_RING);
+     end;
 end;
 
 procedure TClientListF.DeleteClientsBtnClick(Sender: TObject);
@@ -186,103 +192,122 @@ begin
  begin
   if not ClientsListDBGridEh.DataSource.DataSet.IsEmpty then
    begin
-    GrayForms;
-     with MainForm.ClientTable do  begin
+      // ------ this code is to check if the produit are in bons if it is the user cant delte it ------------
+      MainForm.SQLQuery.Active:= False;
+      MainForm.SQLQuery.SQL.Clear;
+      MainForm.SQLQuery.SQL.Text:=
+      'select * '
+     +  'from (   '
+     +   'select code_c as code_c from bonv_liv '
+     +   'union all '
+     +   'select code_c from bonv_fac '
+     +   'union all '
+     +   'select code_c from bonv_ctr '
+     +     ') a '
+     +     'where code_c = '+IntToStr(MainForm.ClientTable.FieldByName('code_c').AsInteger) ;
+
+      MainForm.SQLQuery.Active:= True;
+
+     if MainForm.SQLQuery.IsEmpty then
+     begin
+
+       GrayForms;
+       with MainForm.ClientTable do  begin
 
 
-    if MyMessageDlg('Ėtes-vous sûr de vouloir supprimer le client : '+ sLineBreak +  QuotedStr(fieldbyname('nom_c').Value) , mtConfirmation, [mbYes,mbNo], ['Oui','Non'],'Attention', mbNo )  = mrYes then
-       begin
+       if MyMessageDlg('Ėtes-vous sûr de vouloir supprimer le client : '+ sLineBreak +  QuotedStr(fieldbyname('nom_c').Value) , mtConfirmation, [mbYes,mbNo], ['Oui','Non'],'Attention', mbNo )  = mrYes then
+         begin
 
+        MainForm.ClientTable.Delete;
 
-      MainForm.ClientTable.Delete;
+        MainForm.ClientTable.Refresh;
 
-      MainForm.ClientTable.Refresh;
+       MainForm.ClientTable.DisableControls;
 
-    MainForm.ClientTable.DisableControls;
-
-      MainForm.ClientTable.Active := false;
-      MainForm.ClientTable.SQL.Clear;
-      MainForm.ClientTable.SQL.Text :=
-      'SELECT * FROM client  WHERE activ_c = true ORDER BY code_c';
-      MainForm.ClientTable.Active := true;
-
-     ActifClientsLbl.Caption := IntToStr(MainForm.ClientTable.RecordCount - 1); // -1 is to not calculate the Comptoir
-
-      MainForm.ClientTable.Active := false;
-      MainForm.ClientTable.SQL.Clear;
-      MainForm.ClientTable.SQL.Text :=
-      'SELECT * FROM client WHERE activ_c = false ORDER BY code_c';
-      MainForm.ClientTable.Active := true;
-
-      PassifClientsLbl.Caption := IntToStr(MainForm.ClientTable.RecordCount);
-
-
-      MainForm.ClientTable.Active := false;
-      MainForm.ClientTable.SQL.Clear;
-      MainForm.ClientTable.SQL.Text :=
-      'SELECT * FROM client ORDER BY code_c ';
-      MainForm.ClientTable.Active := true;
-
-      ToutClientsLbl.Caption :=   IntToStr(MainForm.ClientTable.RecordCount - 1);  // -1 is to not calculate the Comptoir
-
-
-
-      if ActifClientsRdioBtn.Checked then
-       begin
         MainForm.ClientTable.Active := false;
         MainForm.ClientTable.SQL.Clear;
         MainForm.ClientTable.SQL.Text :=
         'SELECT * FROM client  WHERE activ_c = true ORDER BY code_c';
         MainForm.ClientTable.Active := true;
-       end;
 
-       if PassifClientsRdioBtn.Checked then
-       begin
+       ActifClientsLbl.Caption := IntToStr(MainForm.ClientTable.RecordCount - 1); // -1 is to not calculate the Comptoir
+
         MainForm.ClientTable.Active := false;
         MainForm.ClientTable.SQL.Clear;
         MainForm.ClientTable.SQL.Text :=
-        'SELECT * FROM client  WHERE activ_c = false ORDER BY code_c';
+        'SELECT * FROM client WHERE activ_c = false ORDER BY code_c';
         MainForm.ClientTable.Active := true;
-       end;
 
-       if toutClientsRdioBtn.Checked then
-       begin
+        PassifClientsLbl.Caption := IntToStr(MainForm.ClientTable.RecordCount);
+
         MainForm.ClientTable.Active := false;
         MainForm.ClientTable.SQL.Clear;
         MainForm.ClientTable.SQL.Text :=
-        'SELECT * FROM client ORDER BY code_c';
+        'SELECT * FROM client ORDER BY code_c ';
         MainForm.ClientTable.Active := true;
-       end;
 
-      MainForm.ClientTable.EnableControls;
+        ToutClientsLbl.Caption :=   IntToStr(MainForm.ClientTable.RecordCount - 1);  // -1 is to not calculate the Comptoir
 
-      FSplash := TFSplash.Create(ClientListF);
-      try
-        FSplash.Left := Screen.Width div 2 - (FSplash.Width div 2);
-        FSplash.Top := 0;
+        if ActifClientsRdioBtn.Checked then
+         begin
+          MainForm.ClientTable.Active := false;
+          MainForm.ClientTable.SQL.Clear;
+          MainForm.ClientTable.SQL.Text :=
+          'SELECT * FROM client  WHERE activ_c = true ORDER BY code_c';
+          MainForm.ClientTable.Active := true;
+         end;
 
-        FSplash.Label1.Caption:='  Suppression avec succés';
-        FSplash.Color:= $004735F9;
-        AnimateWindow(FSplash.Handle, 150, AW_VER_POSITIVE OR AW_SLIDE OR AW_ACTIVATE);
-        sleep(250);
-        AnimateWindow(FSplash.Handle, 150, AW_VER_NEGATIVE OR
-          AW_SLIDE OR AW_HIDE);
-      finally
-        FSplash.free;
+         if PassifClientsRdioBtn.Checked then
+         begin
+          MainForm.ClientTable.Active := false;
+          MainForm.ClientTable.SQL.Clear;
+          MainForm.ClientTable.SQL.Text :=
+          'SELECT * FROM client  WHERE activ_c = false ORDER BY code_c';
+          MainForm.ClientTable.Active := true;
+         end;
+
+         if toutClientsRdioBtn.Checked then
+         begin
+          MainForm.ClientTable.Active := false;
+          MainForm.ClientTable.SQL.Clear;
+          MainForm.ClientTable.SQL.Text :=
+          'SELECT * FROM client ORDER BY code_c';
+          MainForm.ClientTable.Active := true;
+         end;
+
+        MainForm.ClientTable.EnableControls;
+
+        FSplash := TFSplash.Create(ClientListF);
+        try
+          FSplash.Left := Screen.Width div 2 - (FSplash.Width div 2);
+          FSplash.Top := 0;
+
+          FSplash.Label1.Caption:='  Suppression avec succés';
+          FSplash.Color:= $004735F9;
+          AnimateWindow(FSplash.Handle, 150, AW_VER_POSITIVE OR AW_SLIDE OR AW_ACTIVATE);
+          sleep(250);
+          AnimateWindow(FSplash.Handle, 150, AW_VER_NEGATIVE OR
+            AW_SLIDE OR AW_HIDE);
+        finally
+          FSplash.free;
+
+        end;
+
+          NormalForms;
+          sndPlaySound('C:\Windows\Media\speech off.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+
+      end
+      else
+
+       NormalForms
 
       end;
 
-        NormalForms;
-        sndPlaySound('C:\Windows\Media\speech off.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
-
-    end
-    else
-
-     NormalForms
-
-    end;
+     end else
+         begin
+              sndPlaySound('C:\Windows\Media\chord.wav', SND_NODEFAULT Or SND_ASYNC Or  SND_RING);
+         end;
    end;
-
  end else
       begin
          sndPlaySound('C:\Windows\Media\chord.wav', SND_NODEFAULT Or SND_ASYNC Or  SND_RING);
@@ -658,6 +683,11 @@ frxPDFExport1.FileName := 'Etat liste des Client';
 ClientListfrxRprt.Export(frxPDFExport1);
 
 MainForm.ClientTable.EnableControls;
+end;
+
+procedure TClientListF.FormPaint(Sender: TObject);
+begin
+MainForm.ClientTable.Refresh;
 end;
 
 end.

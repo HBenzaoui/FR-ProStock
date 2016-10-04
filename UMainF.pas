@@ -110,7 +110,6 @@ type
     ProduitTabledateperiss_p: TDateField;
     ProduitTablealertdays_p: TSmallintField;
     ProduitTableprixht_p: TCurrencyField;
-    ProduitTabletva_p: TWideStringField;
     ProduitTableprixvd_p: TCurrencyField;
     ProduitTableprixvr_p: TCurrencyField;
     ProduitTableprixvg_p: TCurrencyField;
@@ -659,8 +658,8 @@ type
     produit_ur: TCheckBox;
     faceIcon68: TsAlphaImageList;
     CompanyTable: TFDQuery;
-    FDScriptCreateTables: TFDScript;
-    FDScript1: TFDScript;
+    CreateTablesFDScript: TFDScript;
+    DropDatabaseFDScript: TFDScript;
     BonCtrListDataS: TDataSource;
     UserNameLbl: TLabel;
     Bonv_fac_listTablequt_p: TFloatField;
@@ -725,6 +724,9 @@ type
     Bona_fac_listTableMargeA: TCurrencyField;
     Bona_fac_listTableMargeA2: TCurrencyField;
     ProduitTableQutDispo: TFloatField;
+    FDScript1: TFDScript;
+    inserdata: TButton;
+    ProduitTabletva_p: TSmallintField;
     procedure ClientMainFBtnClick(Sender: TObject);
     procedure FourMainFBtnClick(Sender: TObject);
     procedure ProduitMainFBtnClick(Sender: TObject);
@@ -812,6 +814,7 @@ type
     procedure SFamPMainFMmnClick(Sender: TObject);
     procedure UniteMainFMmnClick(Sender: TObject);
     procedure LocalMainFMmnClick(Sender: TObject);
+    procedure inserdataClick(Sender: TObject);
   private
 
     TimerStart: TDateTime;
@@ -968,11 +971,10 @@ Screen.MenuFont.Color:= $0040332D ;
 FDPhysPgDriverLink1.VendorLib:= 'C:\Program Files (x86)\PostgreSQL\9.6\bin\libpq.dll' ; // Eable this is only for Debuggin
 
 //FDPhysPgDriverLink1.VendorLib:= GetCurrentDir+'\bin\libpq.dll' ;    // Eable this is only for releasing
-//
+
 //  sCmd := Pwidechar(GetCurrentDir+ '\bin\pg_s.bat' );                // Eable this is only for releasing
 //  ShellExecute(0, 'open', PChar(sCmd) , PChar(sCmd), nil, SW_HIDE);  // Eable this is only for releasing
-////
-////  Sleep(5000);                                                       // Eable this is only for releasing
+
 
   GstockdcConnection.DriverName := 'PG';
   GstockdcConnection.Params.Values['Server'] :='localhost';
@@ -990,7 +992,7 @@ FDPhysPgDriverLink1.VendorLib:= 'C:\Program Files (x86)\PostgreSQL\9.6\bin\libpq
 //   begin
 
 
-//    FDScriptCreateTables.ExecuteAll;                                // Eable this is only for releasing
+//    CreateTablesFDScript.ExecuteAll;                                // Eable this is only for releasing
 //     Sleep(2000);      // just for the first time                   // Eable this is only for releasing
 
 
@@ -1115,7 +1117,7 @@ end;
 
 procedure TMainForm.Button1Click(Sender: TObject);
 begin
-FDScript1.ExecuteAll;
+DropDatabaseFDScript.ExecuteAll;
 end;
 
 procedure TMainForm.Button2Click(Sender: TObject);
@@ -2746,8 +2748,8 @@ begin
    GstockdcConnection.Connected:= False;
    DataModuleF.GstockdcConnection02.Connected:= False;
 
-   KillTask('postgres.exe');
-   KillTask('cmd.exe');
+//   KillTask('postgres.exe');                                    // Eable this is only for releasing
+//   KillTask('cmd.exe');                                         // Eable this is only for releasing
 
 end;
 
@@ -2839,6 +2841,11 @@ begin
             LocaleListF.Top:=   (Screen.Height div 2) - (LocaleListF.Height div 2)    ;
 
             LocaleListF.ShowModal;
+end;
+
+procedure TMainForm.inserdataClick(Sender: TObject);
+begin
+FDScript1.ExecuteAll;
 end;
 
 End.

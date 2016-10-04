@@ -771,7 +771,7 @@ object BonLivF: TBonLivF
       Width = 101
       Height = 17
       Anchors = [akLeft, akBottom]
-      Caption = 'par N'#176' de Bon'
+      Caption = 'Par N'#176' de Bon'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
       Font.Height = 16
@@ -787,7 +787,7 @@ object BonLivF: TBonLivF
       Width = 115
       Height = 17
       Anchors = [akLeft, akBottom]
-      Caption = 'par Client'
+      Caption = 'Par Client'
       Checked = True
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
@@ -1208,7 +1208,7 @@ object BonLivF: TBonLivF
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 42576.399521435200000000
-    ReportOptions.LastChange = 42582.506963009260000000
+    ReportOptions.LastChange = 42647.661737754630000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       ''
@@ -1685,6 +1685,8 @@ object BonLivF: TBonLivF
           DataField = 'montht_bvliv'
           DataSet = frxBonLivDB
           DataSetName = 'frxBonLivDB'
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -12
@@ -1704,6 +1706,8 @@ object BonLivF: TBonLivF
           DataField = 'remise_bvliv'
           DataSet = frxBonLivDB
           DataSetName = 'frxBonLivDB'
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -12
@@ -1723,6 +1727,8 @@ object BonLivF: TBonLivF
           DataField = 'MontantTVA'
           DataSet = frxBonLivDB
           DataSetName = 'frxBonLivDB'
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -12
@@ -1742,6 +1748,8 @@ object BonLivF: TBonLivF
           DataField = 'montttc_bvliv'
           DataSet = frxBonLivDB
           DataSetName = 'frxBonLivDB'
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -12
@@ -1761,6 +1769,8 @@ object BonLivF: TBonLivF
           DataField = 'montver_bvliv'
           DataSet = frxBonLivDB
           DataSetName = 'frxBonLivDB'
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -12
@@ -1780,6 +1790,8 @@ object BonLivF: TBonLivF
           DataField = 'MontantRes'
           DataSet = frxBonLivDB
           DataSetName = 'frxBonLivDB'
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -12
@@ -1799,6 +1811,8 @@ object BonLivF: TBonLivF
           DataField = 'NeTHT'
           DataSet = frxBonLivDB
           DataSetName = 'frxBonLivDB'
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -12
@@ -1821,7 +1835,7 @@ object BonLivF: TBonLivF
           Top = 0.377952760000000000
           Width = 94.488250000000000000
           Height = 22.677180000000000000
-          DisplayFormat.FormatStr = '%2.2m'
+          DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1840,7 +1854,7 @@ object BonLivF: TBonLivF
           Top = 0.377952760000000000
           Width = 94.488250000000000000
           Height = 22.677180000000000000
-          DisplayFormat.FormatStr = '%2.2m'
+          DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1859,7 +1873,7 @@ object BonLivF: TBonLivF
           Top = 0.377952760000000000
           Width = 94.488250000000000000
           Height = 22.677180000000000000
-          DisplayFormat.FormatStr = '%2.2m'
+          DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1878,7 +1892,7 @@ object BonLivF: TBonLivF
           Top = 0.377952760000000000
           Width = 94.488250000000000000
           Height = 22.677180000000000000
-          DisplayFormat.FormatStr = '%2.2m'
+          DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1897,7 +1911,7 @@ object BonLivF: TBonLivF
           Top = 0.377952760000000000
           Width = 94.488250000000000000
           Height = 22.677180000000000000
-          DisplayFormat.FormatStr = '%2.2m'
+          DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1916,7 +1930,7 @@ object BonLivF: TBonLivF
           Top = 0.377952760000000000
           Width = 94.488250000000000000
           Height = 22.677180000000000000
-          DisplayFormat.FormatStr = '%2.2m'
+          DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1935,7 +1949,7 @@ object BonLivF: TBonLivF
           Top = 0.377952760000000000
           Width = 94.488250000000000000
           Height = 22.677180000000000000
-          DisplayFormat.FormatStr = '%2.2m'
+          DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack

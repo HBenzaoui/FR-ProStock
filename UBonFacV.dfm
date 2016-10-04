@@ -1065,7 +1065,7 @@ object BonFacVF: TBonFacVF
       Width = 115
       Height = 17
       Anchors = [akLeft, akBottom]
-      Caption = 'par Client'
+      Caption = 'Par Client'
       Checked = True
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
@@ -1083,7 +1083,7 @@ object BonFacVF: TBonFacVF
       Width = 123
       Height = 17
       Anchors = [akLeft, akBottom]
-      Caption = 'par N'#176' de Facture'
+      Caption = 'Par N'#176' de Facture'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
       Font.Height = 16
@@ -1142,7 +1142,7 @@ object BonFacVF: TBonFacVF
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 42576.399521435200000000
-    ReportOptions.LastChange = 42582.507665613430000000
+    ReportOptions.LastChange = 42647.663199907410000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       ''
@@ -1644,6 +1644,8 @@ object BonFacVF: TBonFacVF
           DataField = 'montht_bvfac'
           DataSet = frxBonFacVDB
           DataSetName = 'frxBonFacVDB'
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -11
@@ -1663,6 +1665,8 @@ object BonFacVF: TBonFacVF
           DataField = 'remise_bvfac'
           DataSet = frxBonFacVDB
           DataSetName = 'frxBonFacVDB'
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -11
@@ -1682,6 +1686,8 @@ object BonFacVF: TBonFacVF
           DataField = 'MontantTVA'
           DataSet = frxBonFacVDB
           DataSetName = 'frxBonFacVDB'
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -11
@@ -1701,6 +1707,8 @@ object BonFacVF: TBonFacVF
           DataField = 'montttc_bvfac'
           DataSet = frxBonFacVDB
           DataSetName = 'frxBonFacVDB'
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -11
@@ -1720,6 +1728,8 @@ object BonFacVF: TBonFacVF
           DataField = 'montver_bvfac'
           DataSet = frxBonFacVDB
           DataSetName = 'frxBonFacVDB'
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -11
@@ -1739,6 +1749,8 @@ object BonFacVF: TBonFacVF
           DataField = 'MontantRes'
           DataSet = frxBonFacVDB
           DataSetName = 'frxBonFacVDB'
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -11
@@ -1758,6 +1770,8 @@ object BonFacVF: TBonFacVF
           DataField = 'NeTHT'
           DataSet = frxBonFacVDB
           DataSetName = 'frxBonFacVDB'
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -11
@@ -1776,7 +1790,7 @@ object BonFacVF: TBonFacVF
           Height = 18.897650000000000000
           DataSet = frxBonFacVDB
           DataSetName = 'frxBonFacVDB'
-          DisplayFormat.FormatStr = '%2.2m'
+          DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1800,7 +1814,7 @@ object BonFacVF: TBonFacVF
           Top = 0.377952760000000000
           Width = 94.488250000000000000
           Height = 22.677180000000000000
-          DisplayFormat.FormatStr = '%2.2m'
+          DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1819,7 +1833,7 @@ object BonFacVF: TBonFacVF
           Top = 0.377952760000000000
           Width = 94.488250000000000000
           Height = 22.677180000000000000
-          DisplayFormat.FormatStr = '%2.2m'
+          DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1838,7 +1852,7 @@ object BonFacVF: TBonFacVF
           Top = 0.377952760000000000
           Width = 94.488250000000000000
           Height = 22.677180000000000000
-          DisplayFormat.FormatStr = '%2.2m'
+          DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1857,7 +1871,7 @@ object BonFacVF: TBonFacVF
           Top = 0.377952760000000000
           Width = 90.708720000000000000
           Height = 22.677180000000000000
-          DisplayFormat.FormatStr = '%2.2m'
+          DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1876,7 +1890,7 @@ object BonFacVF: TBonFacVF
           Top = 0.377952760000000000
           Width = 94.488250000000000000
           Height = 22.677180000000000000
-          DisplayFormat.FormatStr = '%2.2m'
+          DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1895,7 +1909,7 @@ object BonFacVF: TBonFacVF
           Top = 0.377952760000000000
           Width = 94.488250000000000000
           Height = 22.677180000000000000
-          DisplayFormat.FormatStr = '%2.2m'
+          DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1914,7 +1928,7 @@ object BonFacVF: TBonFacVF
           Top = 0.377952760000000000
           Width = 86.929190000000000000
           Height = 22.677180000000000000
-          DisplayFormat.FormatStr = '%2.2m'
+          DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1950,7 +1964,7 @@ object BonFacVF: TBonFacVF
           Top = 0.377952760000000000
           Width = 86.929128980000000000
           Height = 22.677180000000000000
-          DisplayFormat.FormatStr = '%2.2m'
+          DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack

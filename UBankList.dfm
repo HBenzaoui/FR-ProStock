@@ -403,7 +403,7 @@ object BankListF: TBankListF
     object Label1: TLabel
       Left = 744
       Top = 13
-      Width = 23
+      Width = 24
       Height = 18
       Anchors = [akTop, akRight]
       Caption = 'Du:'
@@ -420,7 +420,7 @@ object BankListF: TBankListF
     object Label2: TLabel
       Left = 745
       Top = 48
-      Width = 22
+      Width = 23
       Height = 18
       Anchors = [akTop, akRight]
       Caption = 'Au:'
@@ -821,7 +821,7 @@ object BankListF: TBankListF
         Footers = <>
         Layout = tlCenter
         Title.Alignment = taCenter
-        Title.Caption = 'Houre'
+        Title.Caption = 'Heure'
         Title.EndEllipsis = True
         Title.ToolTips = True
         Width = 132
@@ -1094,7 +1094,7 @@ object BankListF: TBankListF
     object Label4: TLabel
       Left = 9
       Top = 12
-      Width = 99
+      Width = 102
       Height = 21
       Caption = 'Solde Initial :'
       Color = clWhite
@@ -1129,7 +1129,7 @@ object BankListF: TBankListF
     object Label5: TLabel
       Left = 326
       Top = 12
-      Width = 155
+      Width = 165
       Height = 21
       Caption = 'Solde de la p'#233'riode :'
       Color = clWhite
@@ -1196,7 +1196,7 @@ object BankListF: TBankListF
     object Label6: TLabel
       Left = 886
       Top = 12
-      Width = 52
+      Width = 56
       Height = 21
       Anchors = [akTop, akRight]
       Caption = 'Solde :'
@@ -1298,7 +1298,7 @@ object BankListF: TBankListF
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 42576.399521435200000000
-    ReportOptions.LastChange = 42621.423502708330000000
+    ReportOptions.LastChange = 42647.693638634260000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       ''
@@ -1707,7 +1707,7 @@ object BankListF: TBankListF
           DataField = 'decaiss_ocb'
           DataSet = frxBankListDB
           DataSetName = 'frxBBankDB'
-          DisplayFormat.FormatStr = '%2.2m'
+          DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1728,7 +1728,7 @@ object BankListF: TBankListF
           DataField = 'encaiss_ocb'
           DataSet = frxBankListDB
           DataSetName = 'frxBBankDB'
-          DisplayFormat.FormatStr = '%2.2m'
+          DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1749,6 +1749,8 @@ object BankListF: TBankListF
           DataField = 'MP'
           DataSet = frxBankListDB
           DataSetName = 'frxBBankDB'
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -12
@@ -1771,7 +1773,7 @@ object BankListF: TBankListF
           Top = 0.377952760000000000
           Width = 151.559055120000000000
           Height = 22.677180000000000000
-          DisplayFormat.FormatStr = '%2.2m'
+          DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1790,7 +1792,7 @@ object BankListF: TBankListF
           Top = 0.377952760000000000
           Width = 151.559055120000000000
           Height = 22.677180000000000000
-          DisplayFormat.FormatStr = '%2.2m'
+          DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1826,7 +1828,7 @@ object BankListF: TBankListF
           Top = 41.677180000000000000
           Width = 302.362400000000000000
           Height = 22.677180000000000000
-          DisplayFormat.FormatStr = '%2.2m'
+          DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1860,7 +1862,7 @@ object BankListF: TBankListF
           Top = 64.354360000000000000
           Width = 302.362400000000000000
           Height = 22.677180000000000000
-          DisplayFormat.FormatStr = '%2.2m'
+          DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1894,7 +1896,7 @@ object BankListF: TBankListF
           Top = 87.031540000000000000
           Width = 302.362400000000000000
           Height = 22.677180000000000000
-          DisplayFormat.FormatStr = '%2.2m'
+          DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack

@@ -319,6 +319,7 @@ object ClientListF: TClientListF
   Visible = True
   StyleElements = []
   OnClose = FormClose
+  OnPaint = FormPaint
   OnShow = FormShow
   DesignSize = (
     1362

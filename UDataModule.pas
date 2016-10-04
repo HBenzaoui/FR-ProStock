@@ -12,14 +12,14 @@ uses
 
 type
   TDataModuleF = class(TDataModule)
-    Top5produit: TFDQuery;
+    Top5produitOLD: TFDQuery;
     TopClient: TFDQuery;
     TopClientcode_c: TIntegerField;
     TopClientbest_client: TLargeintField;
     TopClientnomclient: TStringField;
     TotalProduit: TFDQuery;
     TotalProduittotat: TFloatField;
-    Top5produitnomp: TStringField;
+    Top5produitOLDnomp: TStringField;
     TopVerClient: TFDQuery;
     TopFour: TFDQuery;
     TopVerFour: TFDQuery;
@@ -46,8 +46,12 @@ type
     StringField4: TStringField;
     FloatField4: TFloatField;
     CurrencyField4: TCurrencyField;
-    Top5produitcode_p: TIntegerField;
-    Top5produitsum: TFloatField;
+    Top5produitOLDcode_p: TIntegerField;
+    Top5produitOLDsum: TFloatField;
+    Top5produit: TFDQuery;
+    IntegerField1: TIntegerField;
+    StringField5: TStringField;
+    Top5produittotalall: TFloatField;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
@@ -79,7 +83,7 @@ begin
   GstockdcConnection02.LoginPrompt := False;
 
 
-// FDScript1.ExecuteAll;
+// CreateTablesFDScript.ExecuteAll;
 
  GstockdcConnection02.Params.Values['Database'] := 'GSTOCKDC';
  GstockdcConnection02.Connected:= True;

@@ -789,7 +789,7 @@ object FournisseurListF: TFournisseurListF
     object ResearchFournisseursLbl: TLabel
       Left = 24
       Top = 32
-      Width = 73
+      Width = 75
       Height = 18
       Caption = 'Recherche'
       Color = 15722984

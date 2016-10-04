@@ -438,7 +438,7 @@ object ReglementCListF: TReglementCListF
     object ResearchBACtrLbl: TLabel
       Left = 10
       Top = 38
-      Width = 73
+      Width = 75
       Height = 18
       Caption = 'Recherche'
       Color = 15722984
@@ -496,7 +496,7 @@ object ReglementCListF: TReglementCListF
     object Label1: TLabel
       Left = 345
       Top = 14
-      Width = 23
+      Width = 24
       Height = 18
       Caption = 'Du:'
       Color = 15722984
@@ -512,7 +512,7 @@ object ReglementCListF: TReglementCListF
     object Label2: TLabel
       Left = 346
       Top = 49
-      Width = 22
+      Width = 23
       Height = 18
       Caption = 'Au:'
       Color = 15722984
@@ -771,7 +771,7 @@ object ReglementCListF: TReglementCListF
       Width = 131
       Height = 17
       Anchors = [akLeft, akBottom]
-      Caption = 'par N'#176' de R'#232'glement'
+      Caption = 'Par N'#176' de R'#232'glement'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
       Font.Height = 16
@@ -787,7 +787,7 @@ object ReglementCListF: TReglementCListF
       Width = 85
       Height = 17
       Anchors = [akLeft, akBottom]
-      Caption = 'par Client'
+      Caption = 'Par Client'
       Checked = True
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
@@ -966,7 +966,7 @@ object ReglementCListF: TReglementCListF
         Footers = <>
         Layout = tlCenter
         Title.Alignment = taCenter
-        Title.Caption = 'Houre'
+        Title.Caption = 'Heure'
         Title.EndEllipsis = True
         Title.ToolTips = True
         Width = 113

@@ -60,6 +60,7 @@ type
     procedure sSpeedButton1Click(Sender: TObject);
     procedure sSpeedButton2Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure FormPaint(Sender: TObject);
   private
     procedure GettingData;
     { Private declarations }
@@ -448,6 +449,11 @@ procedure TReglementFListF.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
 Action:= caFree;
 ReglementFListF:= nil;
+end;
+
+procedure TReglementFListF.FormPaint(Sender: TObject);
+begin
+MainForm.FournisseurTable.Refresh;
 end;
 
 end.

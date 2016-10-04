@@ -1273,6 +1273,7 @@ MonthsData;
 
               end;
 //            end);
+
 end;
 
 procedure TDashboardF.FormClose(Sender: TObject; var Action: TCloseAction);
