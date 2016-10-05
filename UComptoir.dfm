@@ -1406,7 +1406,7 @@ object BonCtrGestionF: TBonCtrGestionF
           BorderDownColor = 7854350
           BorderHotColor = 4666873
           Color = 15722984
-          ColorDown = 15722984
+          ColorDown = 7854350
           ColorHot = 15722984
           ColorChecked = clNone
           DropDownSplit = False
@@ -1417,8 +1417,8 @@ object BonCtrGestionF: TBonCtrGestionF
           Font.Height = 18
           Font.Name = 'Roboto'
           Font.Style = []
-          ImageIndex = 28
-          Images = MainForm.PanelIcons24
+          ImageIndex = 8
+          Images = MainForm.ComptoiIcons48
           ParentFont = False
           ParentShowHint = False
           Shaded = False
@@ -1445,7 +1445,7 @@ object BonCtrGestionF: TBonCtrGestionF
           BorderDownColor = 7854350
           BorderHotColor = 4666873
           Color = 15722984
-          ColorDown = 15722984
+          ColorDown = 7854350
           ColorHot = 15722984
           ColorChecked = clNone
           DropDownSplit = False
@@ -1456,8 +1456,8 @@ object BonCtrGestionF: TBonCtrGestionF
           Font.Height = 18
           Font.Name = 'Roboto'
           Font.Style = []
-          ImageIndex = 29
-          Images = MainForm.PanelIcons24
+          ImageIndex = 10
+          Images = MainForm.ComptoiIcons48
           ParentFont = False
           ParentShowHint = False
           Shaded = False
@@ -1485,7 +1485,7 @@ object BonCtrGestionF: TBonCtrGestionF
           BorderDownColor = 7854350
           BorderHotColor = 4666873
           Color = 15722984
-          ColorDown = 15722984
+          ColorDown = 7854350
           ColorHot = 15722984
           ColorChecked = clNone
           DropDownSplit = False
@@ -1496,8 +1496,8 @@ object BonCtrGestionF: TBonCtrGestionF
           Font.Height = 18
           Font.Name = 'Roboto'
           Font.Style = []
-          ImageIndex = 30
-          Images = MainForm.PanelIcons24
+          ImageIndex = 12
+          Images = MainForm.ComptoiIcons48
           ParentFont = False
           ParentShowHint = False
           Shaded = False
@@ -1525,7 +1525,7 @@ object BonCtrGestionF: TBonCtrGestionF
           BorderDownColor = 7854350
           BorderHotColor = 4666873
           Color = 15722984
-          ColorDown = 15722984
+          ColorDown = 7854350
           ColorHot = 15722984
           ColorChecked = clNone
           DropDownSplit = False
@@ -1536,8 +1536,8 @@ object BonCtrGestionF: TBonCtrGestionF
           Font.Height = 18
           Font.Name = 'Roboto'
           Font.Style = []
-          ImageIndex = 30
-          Images = MainForm.PanelIcons24
+          ImageIndex = 14
+          Images = MainForm.ComptoiIcons48
           ParentFont = False
           ParentShowHint = False
           Shaded = False

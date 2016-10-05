@@ -213,15 +213,14 @@ begin
  procedure TBonCtrGestionF.EnableBonCtr;
  begin
           AddBVCtrBonCtrGBtn.Enabled:= False;
-          AddBVCtrBonCtrGBtn.Enabled:= False;
-          AddBVCtrBonCtrGBtn.ImageIndex:=28;// 4 For D.ImageIndex:=28;// 4 For D.Enabled:= False;
+          AddBVCtrBonCtrGBtn.ImageIndex:=8;// 7 For D
 //          PrintTicketBVCtrBonCtrGBtn.ImageIndex:=28;// 4 For D
           EditBVCtrBonCtrGBtn.Enabled:= False;
-          EditBVCtrBonCtrGBtn.ImageIndex:=29;// 5 for D
+          EditBVCtrBonCtrGBtn.ImageIndex:=10;// 9 for D
           ValiderBVCtrBonCtrGBtn.Enabled:= True;
-          ValiderBVCtrBonCtrGBtn.ImageIndex:=12;//30 for D
+          ValiderBVCtrBonCtrGBtn.ImageIndex:=11;//12 for D
           ExValiderBVCtrBonCtrGBtn.Enabled:= True;
-          ExValiderBVCtrBonCtrGBtn.ImageIndex:=12;//30 for D
+          ExValiderBVCtrBonCtrGBtn.ImageIndex:=13;//14 for D
 
 
 
@@ -1088,9 +1087,9 @@ begin
     if (ClientBonCtrGCbx.Text<>'') AND (MainForm.Bonv_ctrTable.FieldByName('valider_bvctr').AsBoolean <> True)  then
     begin
     ValiderBVCtrBonCtrGBtn.Enabled:= True;
-    ValiderBVCtrBonCtrGBtn.ImageIndex:=12;
+    ValiderBVCtrBonCtrGBtn.ImageIndex:=11;
     ExValiderBVCtrBonCtrGBtn.Enabled:= True;
-    ExValiderBVCtrBonCtrGBtn.ImageIndex:=12;
+    ExValiderBVCtrBonCtrGBtn.ImageIndex:=13;
     end;
 
     RemisePerctageBonCtrGEdt.Enabled:=True;
@@ -1137,9 +1136,9 @@ begin
     Labell20.Visible:= False;
 
     ValiderBVCtrBonCtrGBtn.Enabled:= False;
-    ValiderBVCtrBonCtrGBtn.ImageIndex:=30;
+    ValiderBVCtrBonCtrGBtn.ImageIndex:=12;
     ExValiderBVCtrBonCtrGBtn.Enabled:= False;
-    ExValiderBVCtrBonCtrGBtn.ImageIndex:=30;
+    ExValiderBVCtrBonCtrGBtn.ImageIndex:=14;
 
     RemisePerctageBonCtrGEdt.Enabled:=False;
     RemiseBonCtrGEdt.Enabled:=False;
@@ -2329,8 +2328,8 @@ end;
 
 procedure TBonCtrGestionF.ValiderBVCtrBonCtrGBtnClick(Sender: TObject);
 begin
-//    if ClientBonCtrGCbx.Text <> '' then
-//    begin
+  if NOT (MainForm.Bonv_ctr_listTable.IsEmpty) then
+  begin
 
        if  RequiredClientGlbl.Visible <> True then
   begin
@@ -2371,11 +2370,15 @@ begin
           ClientBonCtrGCbx.SetFocus;
       end;
 
+
+  end;
 end;
 
 procedure TBonCtrGestionF.ExValiderBVCtrBonCtrGBtnClick(Sender: TObject);
 var CodeOCB,CodeRF : Integer;
  begin
+  if NOT (MainForm.Bonv_ctr_listTable.IsEmpty) then
+  begin
 
         if RequiredClientGlbl.Visible <> True then
         begin
@@ -2546,7 +2549,6 @@ var CodeOCB,CodeRF : Integer;
 
                         MainForm.RegclientTable.FieldByName('montver_rc').AsCurrency:=StrToCurr(StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
 
-
                         MainForm.RegclientTable.Post;
                         MainForm.RegclientTable.Refresh;
 
@@ -2557,9 +2559,7 @@ var CodeOCB,CodeRF : Integer;
                 MainForm.RegclientTable.SQL.Text:='SELECT * FROM regclient ';
                 MainForm.RegclientTable.Active:=True;
                 MainForm.RegclientTable.EnableControls;
-
               end;
-
         end;
     //-----------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -2600,7 +2600,6 @@ var CodeOCB,CodeRF : Integer;
 
                      MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=1 ;
 
-
                     MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_cmpt']:=MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
                     MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nature_ocb']:= MainForm.CompteTable.FieldByName('nature_cmpt').AsBoolean;
                     MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption) ;
@@ -2624,8 +2623,6 @@ var CodeOCB,CodeRF : Integer;
                   MainForm.Opt_cas_bnk_CaisseTable.SQL.Clear;
                   MainForm.Opt_cas_bnk_CaisseTable.SQL.Text:='SELECT * FROM opt_cas_bnk WHERE code_bvctr ='+IntToStr(MainForm.Bonv_ctrTable.FieldValues['code_bvctr']) ;
                   MainForm.Opt_cas_bnk_CaisseTable.Active:=True;
-
-
 
                   if NOT (MainForm.Opt_cas_bnk_CaisseTable.IsEmpty) then
                   
@@ -2657,7 +2654,6 @@ var CodeOCB,CodeRF : Integer;
                           MainForm.Opt_cas_bnk_CaisseTable.SQL.Text:='SELECT * FROM opt_cas_bnk' ;
                           MainForm.Opt_cas_bnk_CaisseTable.Active:=True;
 
-
                           if NOT (MainForm.Opt_cas_bnk_CaisseTable.IsEmpty) then
                           begin
                           MainForm.Opt_cas_bnk_CaisseTable.Last;
@@ -2677,7 +2673,6 @@ var CodeOCB,CodeRF : Integer;
 
                              MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=1 ;
 
-
                             MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_cmpt']:=MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
                             MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nature_ocb']:= MainForm.CompteTable.FieldByName('nature_cmpt').AsBoolean;
                             MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption) ;
@@ -2694,25 +2689,19 @@ var CodeOCB,CodeRF : Integer;
                             MainForm.Opt_cas_bnk_CaisseTable.Active:=True;
                       end;
 
-
                     MainForm.Opt_cas_bnk_CaisseTable.Active:=false;
                     MainForm.Opt_cas_bnk_CaisseTable.SQL.Clear;
                     MainForm.Opt_cas_bnk_CaisseTable.SQL.Text:='SELECT * FROM opt_cas_bnk where nature_ocb = false' ;
                     MainForm.Opt_cas_bnk_CaisseTable.Active:=True;
                     MainForm.Opt_cas_bnk_CaisseTable.EnableControls;
                 end;
-
          end;
-
-
        end;
-
 
            if APrintBVCtrBonCtrGSlider.SliderOn = True then
            begin
            PrintTicketBVCtrBonCtrGBtnClick(Sender);
            end;
-
         end  else
              begin
                   sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
@@ -2722,7 +2711,7 @@ var CodeOCB,CodeRF : Integer;
                   ClientBonCtrGCbx.SetFocus;
              end;
 
-
+       end;
 end;
 
 procedure TBonCtrGestionF.ProduitsListDBGridEhCellClick(Column: TColumnEh);

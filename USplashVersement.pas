@@ -129,13 +129,13 @@ begin
 
 
           BonCtrGestionF.AddBVCtrBonCtrGBtn.Enabled:= True;
-          BonCtrGestionF.AddBVCtrBonCtrGBtn.ImageIndex:=4;// 28 For A
+          BonCtrGestionF.AddBVCtrBonCtrGBtn.ImageIndex:=7;// 8 For A
           BonCtrGestionF.EditBVCtrBonCtrGBtn.Enabled:= True;
-          BonCtrGestionF.EditBVCtrBonCtrGBtn.ImageIndex:=5; // 29 For A
+          BonCtrGestionF.EditBVCtrBonCtrGBtn.ImageIndex:=9; // 10 For A
           BonCtrGestionF.ValiderBVCtrBonCtrGBtn.Enabled:= False;
-          BonCtrGestionF.ValiderBVCtrBonCtrGBtn.ImageIndex:=30; // 12 For A
+          BonCtrGestionF.ValiderBVCtrBonCtrGBtn.ImageIndex:=12; // 11 For A
           BonCtrGestionF.ExValiderBVCtrBonCtrGBtn.Enabled:= False;
-          BonCtrGestionF.ExValiderBVCtrBonCtrGBtn.ImageIndex:=30;//30 for D
+          BonCtrGestionF.ExValiderBVCtrBonCtrGBtn.ImageIndex:=14;//13 for D
 end;
 
 procedure TFSplashVersement.DisableBonFacA;
