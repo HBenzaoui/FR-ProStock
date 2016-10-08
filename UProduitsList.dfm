@@ -799,7 +799,7 @@ object ProduitsListF: TProduitsListF
       ShowHint = True
       Spacing = -1
       OnClick = EditProduitsBtnClick
-      Version = '1.6.1.1'
+      Version = '1.6.1.2'
       TMSStyle = 0
     end
     object DeleteProduitsBtn: TAdvToolButton
@@ -831,7 +831,7 @@ object ProduitsListF: TProduitsListF
       ShowHint = True
       Spacing = -2
       OnClick = DeleteProduitsBtnClick
-      Version = '1.6.1.1'
+      Version = '1.6.1.2'
       TMSStyle = 0
     end
     object AddProduitsBtn: TAdvToolButton
@@ -863,7 +863,7 @@ object ProduitsListF: TProduitsListF
       ShowHint = True
       Spacing = -1
       OnClick = AddProduitsBtnClick
-      Version = '1.6.1.1'
+      Version = '1.6.1.2'
       TMSStyle = 0
     end
     object ResearchProduitsLbl: TLabel
@@ -893,8 +893,8 @@ object ProduitsListF: TProduitsListF
       ShowHint = True
       OnClick = sSpeedButton1Click
       SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
       ImageIndex = 7
+      Images = MainForm.PanelIcons24
     end
     object sSpeedButton2: TsSpeedButton
       Left = 939
@@ -907,8 +907,8 @@ object ProduitsListF: TProduitsListF
       ShowHint = True
       OnClick = sSpeedButton2Click
       SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
       ImageIndex = 8
+      Images = MainForm.PanelIcons24
     end
     object sSpeedButton3: TsSpeedButton
       Left = 1048
@@ -921,8 +921,8 @@ object ProduitsListF: TProduitsListF
       ShowHint = True
       OnClick = sSpeedButton3Click
       SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
       ImageIndex = 9
+      Images = MainForm.PanelIcons24
     end
     object sSpeedButton4: TsSpeedButton
       Left = 975
@@ -935,8 +935,8 @@ object ProduitsListF: TProduitsListF
       ShowHint = True
       OnClick = sSpeedButton4Click
       SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
       ImageIndex = 48
+      Images = MainForm.PanelIcons24
     end
     object ArrowsPnl: TPanel
       Left = 442
@@ -965,8 +965,8 @@ object ProduitsListF: TProduitsListF
         ShowHint = True
         OnClick = LastClientbtnClick
         SkinData.SkinSection = 'SPEEDBUTTON'
-        Images = MainForm.PanelIcons24
         ImageIndex = 3
+        Images = MainForm.PanelIcons24
       end
       object NextClientbtn: TsSpeedButton
         Left = 69
@@ -978,8 +978,8 @@ object ProduitsListF: TProduitsListF
         ShowHint = True
         OnClick = NextClientbtnClick
         SkinData.SkinSection = 'SPEEDBUTTON'
-        Images = MainForm.PanelIcons24
         ImageIndex = 2
+        Images = MainForm.PanelIcons24
         ShowCaption = False
       end
       object PreviosClientbtn: TsSpeedButton
@@ -992,8 +992,8 @@ object ProduitsListF: TProduitsListF
         ShowHint = True
         OnClick = PreviosClientbtnClick
         SkinData.SkinSection = 'SPEEDBUTTON'
-        Images = MainForm.PanelIcons24
         ImageIndex = 1
+        Images = MainForm.PanelIcons24
       end
       object FisrtClientbtn: TsSpeedButton
         Left = 9
@@ -1005,8 +1005,8 @@ object ProduitsListF: TProduitsListF
         ShowHint = True
         OnClick = FisrtClientbtnClick
         SkinData.SkinSection = 'SPEEDBUTTON'
-        Images = MainForm.PanelIcons24
         ImageIndex = 0
+        Images = MainForm.PanelIcons24
         ShowCaption = False
       end
     end
@@ -2192,7 +2192,7 @@ object ProduitsListF: TProduitsListF
       FF00FF000000FF00FF00FFFF0000FFFFFF0000000000}
   end
   object ProduitListfrxRprt: TfrxReport
-    Version = '5.4.6'
+    Version = '5.5'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]

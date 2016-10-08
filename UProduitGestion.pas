@@ -1553,16 +1553,30 @@ begin
        end else if ProduitGestionF.Tag = 1 then
 
        begin
+             //////////////////
             //////////////////
             //////////////////
             //////////////////
             //////////////////
-            //////////////////
+         CodeP:= MainForm.ProduitTable.FieldByName('code_p').AsInteger;
+
+       //---- WE need to use difrent sqlQuery to check if the same name and ref are not used twice
+           MainForm.SQLQuery.Active:= False;
+           MainForm.SQLQuery.SQL.Clear;
+           MainForm.SQLQuery.SQL.Text:= 'SELECT * FROM produit WHERE code_p <> '+IntToStr(CodeP);
+           MainForm.SQLQuery.Active:= True;
+
+               lookupResultNomP := MainForm.SQLQuery.Lookup('nom_p',(NameProduitGEdt.Text ),'nom_p');
+     if  VarIsnull( lookupResultNomP) then
+      begin
+        lookupResultRefP := MainForm.SQLQuery.Lookup('refer_p',(RefProduitGEdt.Text ),'refer_p');
+       if  VarIsnull(lookupResultRefP) then
+        begin
 
            //----------- use this code to inster new famille when just type name it if empty exit-------------
           if FamilleProduitGCbx.Text <> '' then
           begin
-          if NOT  MainForm.FamproduitTable.Locate('nom_famp', FamilleProduitGCbx.Text, [loCaseInsensitive]) then
+          if NOT  (MainForm.FamproduitTable.Locate('nom_famp', FamilleProduitGCbx.Text, [loCaseInsensitive]))    then
             begin
                with MainForm.FamproduitTable do begin
                   if NOT (IsEmpty) then
@@ -1786,7 +1800,7 @@ begin
            MainForm.UniteTable.Active:=True;
 
            //--- this is to pervet adding dublicate produit when editing adn creatin codebare
-           CodeP:= MainForm.ProduitTable.FieldByName('code_p').AsInteger;
+//           CodeP:= MainForm.ProduitTable.FieldByName('code_p').AsInteger;
            MainForm.ProduitTable.DisableControls;
            MainForm.ProduitTable.Active:= False;
            MainForm.ProduitTable.SQL.Text:= 'SELECT * FROM produit ';
@@ -1820,6 +1834,55 @@ begin
             //////////////////
             //////////////////
             //////////////////
+
+           end else // End of lookup  ref_p
+        try
+          RefProduitGEdt.BorderStyle:= bsNone;
+          RefProduitGEdt.StyleElements:= [];
+          RequiredRefProduitGlbl.Caption:='Réference Produit Existe Déja !!';
+
+          RequiredRefProduitGlbl.Visible:= True;
+          RefProduitGErrorP.Visible:= True;
+          sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+          OKProduitGBtn.Enabled := False;
+          OKProduitGBtn.ImageIndex := 18;
+
+          NameProduitGEdt.BorderStyle:= bsSingle;
+          NameProduitGEdt.StyleElements:= [seClient,seBorder];
+          RequiredProduitGlbl.Visible:= False;
+          NameProduitGErrorP.Visible:= False;
+          exit;
+        finally
+                ProduitGPgControl.TabIndex:= 0;
+                RefProduitGEdt.SetFocus;
+        end;
+              end else  // End of lookup nom_p
+            try
+          NameProduitGEdt.BorderStyle:= bsNone;
+          NameProduitGEdt.StyleElements:= [];
+          RequiredProduitGlbl.Caption:='Désignation Produit Existe Déja !!';
+          RequiredProduitGlbl.Visible:= True;
+          NameProduitGErrorP.Visible:= True;
+          sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+          OKProduitGBtn.Enabled := False;
+          OKProduitGBtn.ImageIndex := 18;
+
+          RefProduitGEdt.BorderStyle:= bsSingle;
+          RefProduitGEdt.StyleElements:= [seClient,seBorder];
+          RequiredRefProduitGlbl.Visible:= False;
+          RefProduitGErrorP.Visible:= False;
+           exit;
+         finally
+                ProduitGPgControl.TabIndex:= 0;
+                NameProduitGEdt.SetFocus;
+        end;
+
+
+                   MainForm.SQLQuery.Active:= False;
+              MainForm.SQLQuery.SQL.Clear;
+//           MainForm.SQLQuery.SQL.Text:= 'SELECT * FROM produit WHERE code_p <> '+IntToStr(CodeP);
+//           MainForm.SQLQuery.Active:= True;
+
 
         end;
 

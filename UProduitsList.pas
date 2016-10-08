@@ -522,13 +522,13 @@ begin
    ProduitsListDBGridEh.DefaultDrawColumnCell(Rect, DataCol, Column, State);
 end;
 
-  if  (MainForm.ProduitTable.FieldValues['prixht_p'] = 0)    then
+  if  (MainForm.ProduitTable.FieldValues['prixht_p'] <= 0) then
  begin
  ProduitsListDBGridEh.Canvas.Font.Color:=$000099FF;
  ProduitsListDBGridEh.DefaultDrawColumnCell(Rect, DataCol, Column, State);
  end;
  //------ use this code to red the produit with 0 or null in stock----//
- if  (MainForm.ProduitTable.FieldValues['QutDispo'] = 0)  then
+ if  (MainForm.ProduitTable.FieldValues['QutDispo'] <= 0) then
  begin
  ProduitsListDBGridEh.Canvas.Font.Color:=$004735F9;
  ProduitsListDBGridEh.DefaultDrawColumnCell(Rect, DataCol, Column, State);

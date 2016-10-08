@@ -75,7 +75,7 @@ object MainForm: TMainForm
       Rounded = True
       Spacing = -2
       OnClick = BoardMainFBtnClick
-      Version = '1.6.1.1'
+      Version = '1.6.1.2'
       TMSStyle = 0
     end
     object ClientMainFBtn: TAdvToolButton
@@ -104,7 +104,7 @@ object MainForm: TMainForm
       Rounded = True
       Spacing = -2
       OnClick = ClientMainFBtnClick
-      Version = '1.6.1.1'
+      Version = '1.6.1.2'
       TMSStyle = 0
     end
     object FourMainFBtn: TAdvToolButton
@@ -133,7 +133,7 @@ object MainForm: TMainForm
       Rounded = True
       Spacing = -2
       OnClick = FourMainFBtnClick
-      Version = '1.6.1.1'
+      Version = '1.6.1.2'
       TMSStyle = 0
     end
     object BLMainFBtn: TAdvToolButton
@@ -162,7 +162,7 @@ object MainForm: TMainForm
       Rounded = True
       Spacing = -2
       OnClick = BLMainFBtnClick
-      Version = '1.6.1.1'
+      Version = '1.6.1.2'
       TMSStyle = 0
     end
     object BRMainFBtn: TAdvToolButton
@@ -191,7 +191,7 @@ object MainForm: TMainForm
       Rounded = True
       Spacing = -2
       OnClick = BRMainFBtnClick
-      Version = '1.6.1.1'
+      Version = '1.6.1.2'
       TMSStyle = 0
     end
     object ComptoirMainFBtn: TAdvToolButton
@@ -220,7 +220,7 @@ object MainForm: TMainForm
       Rounded = True
       Spacing = -2
       OnClick = ComptoirMainFBtnClick
-      Version = '1.6.1.1'
+      Version = '1.6.1.2'
       TMSStyle = 0
     end
     object ProduitMainFBtn: TAdvToolButton
@@ -249,7 +249,7 @@ object MainForm: TMainForm
       Rounded = True
       Spacing = -2
       OnClick = ProduitMainFBtnClick
-      Version = '1.6.1.1'
+      Version = '1.6.1.2'
       TMSStyle = 0
     end
     object CaisseMainFBtn: TAdvToolButton
@@ -278,7 +278,7 @@ object MainForm: TMainForm
       Rounded = True
       Spacing = -2
       OnClick = CaisseMainFBtnClick
-      Version = '1.6.1.1'
+      Version = '1.6.1.2'
       TMSStyle = 0
     end
     object AdvToolButton10: TAdvToolButton
@@ -307,7 +307,7 @@ object MainForm: TMainForm
       ParentFont = False
       Rounded = True
       Spacing = -2
-      Version = '1.6.1.1'
+      Version = '1.6.1.2'
       TMSStyle = 0
     end
     object AdvToolButton11: TAdvToolButton
@@ -336,7 +336,7 @@ object MainForm: TMainForm
       ParentFont = False
       Rounded = True
       Spacing = -2
-      Version = '1.6.1.1'
+      Version = '1.6.1.2'
       TMSStyle = 0
     end
     object AdvToolButton7: TAdvToolButton
@@ -365,7 +365,7 @@ object MainForm: TMainForm
       ParentFont = False
       Rounded = True
       Spacing = -2
-      Version = '1.6.1.1'
+      Version = '1.6.1.2'
       ExplicitLeft = 1252
       TMSStyle = 0
     end
@@ -395,7 +395,7 @@ object MainForm: TMainForm
       ParentFont = False
       Rounded = True
       Spacing = -2
-      Version = '1.6.1.1'
+      Version = '1.6.1.2'
       TMSStyle = 0
     end
     object Label2: TLabel
@@ -796,16 +796,11 @@ object MainForm: TMainForm
       ShowHint = False
       TabOrder = 0
       SkinData.SkinSection = 'BAR'
-      AnimationSteps = 0
-      TitleFont.Charset = DEFAULT_CHARSET
-      TitleFont.Color = clWindowText
-      TitleFont.Height = -11
-      TitleFont.Name = 'Tahoma'
-      TitleFont.Style = []
       BorderWidth = 1
       ActiveFrameIndex = -1
       TitleHeight = 25
       Spacing = 1
+      Animation = False
       AutoFrameSize = False
       Images = TopPanelImageListMainForma
       Items = <
@@ -20490,12 +20485,13 @@ object MainForm: TMainForm
           491F7EAC9EE003BB019D7108CE9B54FF0F00E27303FE4EC0899A000000004945
           4E44AE426082FFEEC7B6}
       end>
+    MenuSupport.IcoLineSkin = 'ICOLINE'
+    MenuSupport.UseExtraLine = True
     MenuSupport.ExtraLineFont.Charset = RUSSIAN_CHARSET
     MenuSupport.ExtraLineFont.Color = clWindowText
     MenuSupport.ExtraLineFont.Height = -17
     MenuSupport.ExtraLineFont.Name = 'Comic Sans MS'
     MenuSupport.ExtraLineFont.Style = [fsItalic]
-    MenuSupport.UseExtraLine = True
     Options.ChangeSysColors = True
     Options.NativeBordersMaximized = True
     Options.OptimizingPriority = opMemory
@@ -20680,6 +20676,7 @@ object MainForm: TMainForm
     end
   end
   object FDPhysPgDriverLink1: TFDPhysPgDriverLink
+    VendorLib = 'C:\Program Files (x86)\PostgreSQL\9.6\bin\libpq.dll'
     Left = 600
     Top = 154
   end
@@ -20841,7 +20838,7 @@ object MainForm: TMainForm
     SQL.Strings = (
       'SELECT * FROM produit ORDER BY code_p')
     Left = 44
-    Top = 286
+    Top = 284
     object ProduitTablecode_p: TIntegerField
       FieldName = 'code_p'
       Origin = 'code_p'
@@ -38954,7 +38951,7 @@ object MainForm: TMainForm
     Connected = True
     LoginPrompt = False
     Left = 51
-    Top = 112
+    Top = 110
   end
   object Opt_cas_bnk_CaisseTable: TFDQuery
     FilterOptions = [foCaseInsensitive]

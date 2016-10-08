@@ -17,7 +17,7 @@ uses
   FireDAC.Phys.SQLiteDef, FireDAC.Stan.ExprFuncs, FireDAC.Comp.UI,
   FireDAC.FMXUI.Wait, FireDAC.ConsoleUI.Wait, DBGridEhGrouping, ToolCtrlsEh,
   DBGridEhToolCtrls, DynVarsEh, EhLibVCL, GridsEh, DBAxisGridsEh, DBGridEh,
-  ChromeTabs,  Vcl.StdCtrls, FireDAC.VCLUI.Script,
+    Vcl.StdCtrls, FireDAC.VCLUI.Script,
   FireDAC.Comp.ScriptCommands, FireDAC.Stan.Util, FireDAC.Comp.Script,
   Vcl.Touch.Keyboard, sStatusBar, cxPC, dxSkinsCore, dxSkinBlack, dxSkinBlue,
   dxSkinBlueprint, dxSkinCaramel, dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide,
@@ -32,7 +32,9 @@ uses
   dxSkinSharp, dxSkinSharpPlus, dxSkinSilver, dxSkinSpringTime, dxSkinStardust,
   dxSkinSummer2008, dxSkinTheAsphaltWorld, dxSkinsDefaultPainters,
   dxSkinValentine, dxSkinVS2010, dxSkinWhiteprint, dxSkinXmas2008Blue,
-  dxSkinscxPCPainter, dxBarBuiltInMenu, cxClasses, dxTabbedMDI;
+  dxSkinscxPCPainter, dxBarBuiltInMenu, cxClasses, dxTabbedMDI,
+  dxSkinOffice2016Colorful, dxSkinOffice2016Dark, dxSkinVisualStudio2013Blue,
+  dxSkinVisualStudio2013Dark, dxSkinVisualStudio2013Light;
 
   procedure GrayForms;
   procedure NormalForms;
