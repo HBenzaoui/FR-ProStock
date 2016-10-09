@@ -28,6 +28,10 @@ type
     procedure AdvToolButton3Click(Sender: TObject);
     procedure AdvToolButton1Click(Sender: TObject);
     procedure AdvToolButton2Click(Sender: TObject);
+    procedure CompteDBGridEhKeyPress(Sender: TObject; var Key: Char);
+    procedure CompteDBGridEhKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure CompteDBGridEhDblClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -122,11 +126,62 @@ begin
        end else
            begin
              sndPlaySound('C:\Windows\Media\chord.wav', SND_NODEFAULT Or SND_ASYNC Or  SND_RING);
+             TTask.Run ( procedure
+             begin
+              FSplash := TFSplash.Create(nil);
+               try
+                 FSplash.Left := MainForm.Width - FSplash.Width - 15 ;                   
+                 FSplash.Top := (MainForm.Height - FSplash.Height ) - 15 ;
+                  FSplash.Label1.Font.Height:=21;
+                 FSplash.Label1.Caption:='Suppressions ne sont pas autorisés!';
+                 FSplash.Color:= $004735F9;
+                 AnimateWindow(FSplash.Handle, 100, AW_HOR_NEGATIVE OR AW_SLIDE OR AW_ACTIVATE);
+                 sleep(700);
+                 AnimateWindow(FSplash.Handle, 100, AW_HOR_POSITIVE OR
+                   AW_SLIDE OR AW_HIDE);
+               finally
+                 FSplash.free;
+               end;
+             end);
            end;
    end;
 
         //--dicconet when finish the quiry ---
       MainForm.SQLQuery.Active:= False;
+end;
+
+procedure TLocaleListF.CompteDBGridEhDblClick(Sender: TObject);
+begin
+//------ use this code to make the clock just on the grid not the title -----/
+if CompteDBGridEh.ScreenToClient(Mouse.CursorPos).Y>25 then
+begin
+  AdvToolButton2Click(Sender) ;
+end;
+end;
+
+procedure TLocaleListF.CompteDBGridEhKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  if not CompteDBGridEh.DataSource.DataSet.IsEmpty then
+  begin
+    if key = VK_DELETE then
+  AdvToolButton3Click(Sender) ;
+  end else exit
+end;
+
+procedure TLocaleListF.CompteDBGridEhKeyPress(Sender: TObject; var Key: Char);
+begin
+  if Key in ['n'] then
+    AdvToolButton1Click(Sender);
+  if Key in ['r'] then
+    ResearchLocaleEdt.SetFocus;
+  if not CompteDBGridEh.DataSource.DataSet.IsEmpty then
+  begin
+  if Key in ['s' ] then
+  AdvToolButton3Click(Sender) ;
+    if Key in ['m'] then
+      AdvToolButton2Click(Sender);
+  end  else   Exit;
 end;
 
 procedure TLocaleListF.AdvToolButton1Click(Sender: TObject);

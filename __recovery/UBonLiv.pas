@@ -1,4 +1,4 @@
-﻿unit UBonLiv;
+unit UBonLiv;
 
 interface
 
@@ -46,6 +46,7 @@ type
     frxPDFExport1: TfrxPDFExport;
     frxBonLivDB: TfrxDBDataset;
     BonLivfrxRprt: TfrxReport;
+    AdvToolButton1: TAdvToolButton;
     procedure ResearchBVLivEdtChange(Sender: TObject);
     procedure FisrtBARecbtnClick(Sender: TObject);
     procedure PreviosBARecbtnClick(Sender: TObject);

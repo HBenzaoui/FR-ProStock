@@ -97,7 +97,7 @@ implementation
 
 {$R *.dfm}
 
-uses UMainF,   UClientGestion, USplash;
+uses UMainF,   UClientGestion, USplash,System.Threading;
 
 
 //----- this is a function for custome  Messagedlg  French Caption and buttons and default NON --------//
@@ -153,28 +153,28 @@ begin
      //----------------- SHOW THE DATA ON THE CLIENT GESTION PANEL -----------------------------//
          with MainForm.ClientTable do begin
             ClientGestionF.ActiveClientGSlider.SliderOn:=  FieldValues['activ_c'];
-            ClientGestionF.NameClientGEdt.Text:= fieldbyname('nom_c').Value;
-            ClientGestionF.AcitiviteClientGEdt.Text:= fieldbyname('activite_c').Value;
-            ClientGestionF.AdrClientGEdt.Text:= fieldbyname('adr_c').Value;
-            ClientGestionF.WilayaClientGCbx.Text:= fieldbyname('willaya_c').Value;
-            ClientGestionF.VilleClientGCbx.Text:= fieldbyname('ville_c').Value;
-            ClientGestionF.FixClientGEdt.Text:= fieldbyname('fix_c').Value;
-            ClientGestionF.FaxClientGEdt.Text:= fieldbyname('fax_c').Value;
-            ClientGestionF.MobileClientGEdt.Text:= fieldbyname('mob_c').Value;
-            ClientGestionF.MobileClientGEdt.Text:= fieldbyname('mob2_c').Value;
-            ClientGestionF.EmailClientGEdt.Text:= fieldbyname('email_c').Value;
-            ClientGestionF.SiteClientGEdt.Text:= fieldbyname('siteWeb_c').Value;
+            ClientGestionF.NameClientGEdt.Text:= fieldbyname('nom_c').AsString;
+            ClientGestionF.AcitiviteClientGEdt.Text:= fieldbyname('activite_c').AsString;
+            ClientGestionF.AdrClientGEdt.Text:= fieldbyname('adr_c').AsString;
+            ClientGestionF.WilayaClientGCbx.Text:= fieldbyname('willaya_c').AsString;
+            ClientGestionF.VilleClientGCbx.Text:= fieldbyname('ville_c').AsString;
+            ClientGestionF.FixClientGEdt.Text:= fieldbyname('fix_c').AsString;
+            ClientGestionF.FaxClientGEdt.Text:= fieldbyname('fax_c').AsString;
+            ClientGestionF.MobileClientGEdt.Text:= fieldbyname('mob_c').AsString;
+            ClientGestionF.MobileClientGEdt.Text:= fieldbyname('mob2_c').AsString;
+            ClientGestionF.EmailClientGEdt.Text:= fieldbyname('email_c').AsString;
+            ClientGestionF.SiteClientGEdt.Text:= fieldbyname('siteWeb_c').AsString;
 
-            ClientGestionF.RCClientGEdt.Text:= fieldbyname('rc_c').Value;
-            ClientGestionF.NArtClientGEdt.Text:= fieldbyname('nart_c').Value;
-            ClientGestionF.NIFClientGEdt.Text:= fieldbyname('nif_c').Value;
-            ClientGestionF.NISClientGEdt.Text:= fieldbyname('nis_c').Value;
-            ClientGestionF.NBankClientGEdt.Text:= fieldbyname('nbank_c').Value;
-            ClientGestionF.RIBClientGEdt.Text:= fieldbyname('rib_c').Value;
+            ClientGestionF.RCClientGEdt.Text:= fieldbyname('rc_c').AsString;
+            ClientGestionF.NArtClientGEdt.Text:= fieldbyname('nart_c').AsString;
+            ClientGestionF.NIFClientGEdt.Text:= fieldbyname('nif_c').AsString;
+            ClientGestionF.NISClientGEdt.Text:= fieldbyname('nis_c').AsString;
+            ClientGestionF.NBankClientGEdt.Text:= fieldbyname('nbank_c').AsString;
+            ClientGestionF.RIBClientGEdt.Text:= fieldbyname('rib_c').AsString;
             ClientGestionF.OldCreditClientGEdt.Text:= CurrToStrF( fieldbyname('oldcredit_c').Value,ffNumber, 2);
             ClientGestionF.MaxCreditClientGEdt.Text:= CurrToStrF( fieldbyname('maxcredit_c').Value,ffNumber, 2);
             ClientGestionF.ModeTarifClientGCbx.ItemIndex:= fieldbyname('tarification_c').AsInteger;
-            ClientGestionF.ObserClientGMem.Text:= fieldbyname('obser_c').Value;
+            ClientGestionF.ObserClientGMem.Text:= fieldbyname('obser_c').AsString;
              //----- this is to move the coursour to the last  --------------------------------------------------------
             ClientGestionF.NameClientGEdt.SelStart :=  ClientGestionF.NameClientGEdt.GetTextLen ;
            end ;
@@ -305,12 +305,47 @@ begin
 
      end else
          begin
-              sndPlaySound('C:\Windows\Media\chord.wav', SND_NODEFAULT Or SND_ASYNC Or  SND_RING);
+            sndPlaySound('C:\Windows\Media\chord.wav', SND_NODEFAULT Or SND_ASYNC Or  SND_RING);
+            TTask.Run ( procedure
+            begin
+             FSplash := TFSplash.Create(nil);
+              try
+                FSplash.Left := MainForm.Width - FSplash.Width - 15 ;                   
+                FSplash.Top := (MainForm.Height - FSplash.Height ) - 15 ;
+                 FSplash.Label1.Font.Height:=21;
+                FSplash.Label1.Caption:='Suppressions ne sont pas autorisés!';
+                FSplash.Color:= $004735F9;
+                AnimateWindow(FSplash.Handle, 100, AW_HOR_NEGATIVE OR AW_SLIDE OR AW_ACTIVATE);
+                sleep(700);
+                AnimateWindow(FSplash.Handle, 100, AW_HOR_POSITIVE OR
+                  AW_SLIDE OR AW_HIDE);
+              finally
+                FSplash.free;
+              end;
+            end);
+            
          end;
    end;
  end else
       begin
          sndPlaySound('C:\Windows\Media\chord.wav', SND_NODEFAULT Or SND_ASYNC Or  SND_RING);
+           TTask.Run ( procedure
+            begin
+             FSplash := TFSplash.Create(nil);
+              try
+                FSplash.Left := MainForm.Width - FSplash.Width - 15 ;                   
+                FSplash.Top := (MainForm.Height - FSplash.Height ) - 15 ;
+                 FSplash.Label1.Font.Height:=21;
+                FSplash.Label1.Caption:='Suppressions ne sont pas autorisés!';
+                FSplash.Color:= $004735F9;
+                AnimateWindow(FSplash.Handle, 100, AW_HOR_NEGATIVE OR AW_SLIDE OR AW_ACTIVATE);
+                sleep(700);
+                AnimateWindow(FSplash.Handle, 100, AW_HOR_POSITIVE OR
+                  AW_SLIDE OR AW_HIDE);
+              finally
+                FSplash.free;
+              end;
+            end);
       end;
 
 end;
@@ -345,9 +380,19 @@ if  ClientListDataS.DataSet = MainForm.ClientTable then
  begin
 
 //------ use this code to red the produit with 0 or null in stock----//
- if MainForm.ClientTable.FieldByName('credit_c').AsCurrency > 0     then
+ if (MainForm.ClientTable.FieldByName('credit_c').AsCurrency 
+   + MainForm.ClientTable.FieldByName('oldcredit_c').AsCurrency   ) > 0      then
  begin
  ClientsListDBGridEh.Canvas.Font.Color:=$004735F9;//   Brush.Color:=clRed;
+ ClientsListDBGridEh.DefaultDrawColumnCell(Rect, DataCol, Column, State);
+ end;
+
+
+ //------ use this code to red the produit with 0 or null in stock----//
+ if (MainForm.ClientTable.FieldByName('credit_c').AsCurrency 
+   + MainForm.ClientTable.FieldByName('oldcredit_c').AsCurrency   ) < 0     then
+ begin
+ ClientsListDBGridEh.Canvas.Font.Color:=$00519509;//   Brush.Color:=green;
  ClientsListDBGridEh.DefaultDrawColumnCell(Rect, DataCol, Column, State);
  end;
  end;
@@ -356,47 +401,26 @@ end;
 procedure TClientListF.ClientsListDBGridEhKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
-
 if not ClientsListDBGridEh.DataSource.DataSet.IsEmpty then
-
 begin
   if key = VK_DELETE  then
-
   DeleteClientsBtnClick(Sender) ;
-
 end else exit
-
 end;
 
 procedure TClientListF.ClientsListDBGridEhKeyPress(Sender: TObject; var Key: Char);
 begin
-
-
    if Key in ['n'] then
-
   AddClientsBtnClick(Sender) ;
-
-
    if Key in ['r'] then
-
     ResearchClientsEdt.SetFocus ;
-
 if not ClientsListDBGridEh.DataSource.DataSet.IsEmpty then
-
   begin
-
   if Key in ['s' ] then
-
   DeleteClientsBtnClick(Sender) ;
-
-
    if Key in ['m'] then
-
   EditClientsBtnClick(Sender) ;
-
-
   end else Exit ;
-
   end;
 
 procedure TClientListF.ClientsListDBGridEhTitleBtnClick(Sender: TObject;

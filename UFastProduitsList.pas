@@ -135,7 +135,6 @@ begin
   if Key in ['r'] then
   begin
     ResearchProduitsEdt.SetFocus;
-
   end;
     if Key = #13 then
   begin

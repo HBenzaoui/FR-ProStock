@@ -345,8 +345,8 @@ object BonRecF: TBonRecF
     FixedColor = clWindow
     Font.Charset = DEFAULT_CHARSET
     Font.Color = 4207405
-    Font.Height = 24
-    Font.Name = 'Segoe UI'
+    Font.Height = 18
+    Font.Name = 'Helvetica LT Std'
     Font.Style = []
     GridLineParams.DataHorzLines = True
     GridLineParams.DataVertLines = True
@@ -386,6 +386,8 @@ object BonRecF: TBonRecF
     VertScrollBar.Width = 15
     OnDblClick = BARecListDBGridEhDblClick
     OnDrawColumnCell = BARecListDBGridEhDrawColumnCell
+    OnKeyDown = BARecListDBGridEhKeyDown
+    OnKeyPress = BARecListDBGridEhKeyPress
     Columns = <
       item
         Alignment = taCenter
@@ -411,6 +413,7 @@ object BonRecF: TBonRecF
         Title.Font.Quality = fqProof
         Title.ToolTips = True
         Width = 24
+        WordWrap = False
       end
       item
         DynProps = <>
@@ -428,6 +431,7 @@ object BonRecF: TBonRecF
         Title.EndEllipsis = True
         Title.ToolTips = True
         Width = 150
+        WordWrap = False
       end
       item
         Alignment = taCenter
@@ -441,6 +445,7 @@ object BonRecF: TBonRecF
         Title.EndEllipsis = True
         Title.ToolTips = True
         Width = 113
+        WordWrap = False
       end
       item
         Alignment = taCenter
@@ -454,6 +459,7 @@ object BonRecF: TBonRecF
         Title.EndEllipsis = True
         Title.ToolTips = True
         Width = 113
+        WordWrap = False
       end
       item
         DynProps = <>
@@ -465,7 +471,8 @@ object BonRecF: TBonRecF
         Title.Caption = 'Fournisseur'
         Title.EndEllipsis = True
         Title.ToolTips = True
-        Width = 200
+        Width = 300
+        WordWrap = False
       end
       item
         Checkboxes = False
@@ -484,6 +491,7 @@ object BonRecF: TBonRecF
         Title.Alignment = taCenter
         Title.Caption = 'MP'
         Width = 28
+        WordWrap = False
       end
       item
         DisplayFormat = '#,##0.00'
@@ -498,6 +506,7 @@ object BonRecF: TBonRecF
         Title.EndEllipsis = True
         Title.ToolTips = True
         Width = 150
+        WordWrap = False
       end
       item
         DisplayFormat = '#,##0.00'
@@ -512,6 +521,7 @@ object BonRecF: TBonRecF
         Title.EndEllipsis = True
         Title.ToolTips = True
         Width = 150
+        WordWrap = False
       end
       item
         DisplayFormat = '#,##0.00'
@@ -524,6 +534,7 @@ object BonRecF: TBonRecF
         Title.Alignment = taCenter
         Title.Caption = 'Net a Payer HT'
         Width = 150
+        WordWrap = False
       end
       item
         DisplayFormat = '#,##0.00'
@@ -538,6 +549,7 @@ object BonRecF: TBonRecF
         Title.EndEllipsis = True
         Title.ToolTips = True
         Width = 150
+        WordWrap = False
       end
       item
         DisplayFormat = '#,##0.00'
@@ -551,6 +563,7 @@ object BonRecF: TBonRecF
         Title.EndEllipsis = True
         Title.ToolTips = True
         Width = 150
+        WordWrap = False
       end
       item
         DisplayFormat = '#,##0.00'
@@ -565,6 +578,7 @@ object BonRecF: TBonRecF
         Title.EndEllipsis = True
         Title.ToolTips = True
         Width = 150
+        WordWrap = False
       end
       item
         DisplayFormat = '#,##0.00'
@@ -579,6 +593,7 @@ object BonRecF: TBonRecF
         Title.EndEllipsis = True
         Title.ToolTips = True
         Width = 150
+        WordWrap = False
       end
       item
         Alignment = taCenter
@@ -640,7 +655,7 @@ object BonRecF: TBonRecF
       ShowHint = True
       Spacing = -1
       OnClick = EditBARecBtnClick
-      Version = '1.6.1.1'
+      Version = '1.6.1.2'
       TMSStyle = 0
     end
     object DeleteBARecBtn: TAdvToolButton
@@ -672,7 +687,7 @@ object BonRecF: TBonRecF
       ShowHint = True
       Spacing = -2
       OnClick = DeleteBARecBtnClick
-      Version = '1.6.1.1'
+      Version = '1.6.1.2'
       TMSStyle = 0
     end
     object AddBARecBtn: TAdvToolButton
@@ -704,7 +719,7 @@ object BonRecF: TBonRecF
       ShowHint = True
       Spacing = -1
       OnClick = AddBARecBtnClick
-      Version = '1.6.1.1'
+      Version = '1.6.1.2'
       TMSStyle = 0
     end
     object ResearchBARecLbl: TLabel
@@ -734,8 +749,8 @@ object BonRecF: TBonRecF
       ShowHint = True
       OnClick = sSpeedButton1Click
       SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
       ImageIndex = 7
+      Images = MainForm.PanelIcons24
     end
     object sSpeedButton2: TsSpeedButton
       Left = 1074
@@ -748,8 +763,8 @@ object BonRecF: TBonRecF
       ShowHint = True
       OnClick = sSpeedButton2Click
       SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
       ImageIndex = 8
+      Images = MainForm.PanelIcons24
     end
     object sSpeedButton3: TsSpeedButton
       Left = 1146
@@ -762,13 +777,13 @@ object BonRecF: TBonRecF
       ShowHint = True
       OnClick = sSpeedButton3Click
       SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
       ImageIndex = 9
+      Images = MainForm.PanelIcons24
     end
     object Label1: TLabel
       Left = 355
       Top = 14
-      Width = 24
+      Width = 23
       Height = 18
       Caption = 'Du:'
       Color = 15722984
@@ -784,7 +799,7 @@ object BonRecF: TBonRecF
     object Label2: TLabel
       Left = 356
       Top = 49
-      Width = 23
+      Width = 22
       Height = 18
       Caption = 'Au:'
       Color = 15722984
@@ -824,8 +839,8 @@ object BonRecF: TBonRecF
         ShowHint = True
         OnClick = LastBARecbtnClick
         SkinData.SkinSection = 'SPEEDBUTTON'
-        Images = MainForm.PanelIcons24
         ImageIndex = 3
+        Images = MainForm.PanelIcons24
       end
       object NextBARecbtn: TsSpeedButton
         Left = 69
@@ -837,8 +852,8 @@ object BonRecF: TBonRecF
         ShowHint = True
         OnClick = NextBARecbtnClick
         SkinData.SkinSection = 'SPEEDBUTTON'
-        Images = MainForm.PanelIcons24
         ImageIndex = 2
+        Images = MainForm.PanelIcons24
         ShowCaption = False
       end
       object PreviosBARecbtn: TsSpeedButton
@@ -851,8 +866,8 @@ object BonRecF: TBonRecF
         ShowHint = True
         OnClick = PreviosBARecbtnClick
         SkinData.SkinSection = 'SPEEDBUTTON'
-        Images = MainForm.PanelIcons24
         ImageIndex = 1
+        Images = MainForm.PanelIcons24
       end
       object FisrtBARecbtn: TsSpeedButton
         Left = 9
@@ -864,8 +879,8 @@ object BonRecF: TBonRecF
         ShowHint = True
         OnClick = FisrtBARecbtnClick
         SkinData.SkinSection = 'SPEEDBUTTON'
-        Images = MainForm.PanelIcons24
         ImageIndex = 0
+        Images = MainForm.PanelIcons24
         ShowCaption = False
       end
     end
@@ -1190,7 +1205,7 @@ object BonRecF: TBonRecF
     Top = 480
   end
   object BonRecfrxRprt: TfrxReport
-    Version = '5.4.6'
+    Version = '5.5'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]

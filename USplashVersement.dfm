@@ -127,7 +127,7 @@ object FSplashVersement: TFSplashVersement
     ShowHint = True
     Spacing = 10
     OnClick = OKVersementSBtnClick
-    Version = '1.6.1.1'
+    Version = '1.6.1.2'
     TMSStyle = 0
   end
   object CancelVersementSBtn: TAdvToolButton
@@ -159,7 +159,7 @@ object FSplashVersement: TFSplashVersement
     ShowHint = True
     Spacing = -1
     OnClick = CancelVersementSBtnClick
-    Version = '1.6.1.1'
+    Version = '1.6.1.2'
     ExplicitTop = 381
     TMSStyle = 0
   end
@@ -216,7 +216,7 @@ object FSplashVersement: TFSplashVersement
   object RequiredStarVerVersementSLbl: TLabel
     Left = 294
     Top = 258
-    Width = 7
+    Width = 8
     Height = 22
     Anchors = [akLeft, akBottom]
     Caption = '*'
@@ -233,7 +233,7 @@ object FSplashVersement: TFSplashVersement
   object RegleVersementSGLbl: TLabel
     Left = 228
     Top = 228
-    Width = 30
+    Width = 32
     Height = 14
     Anchors = [akLeft, akBottom]
     Caption = 'R'#232'gl'#233':'

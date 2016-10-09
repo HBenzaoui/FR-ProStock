@@ -8,8 +8,8 @@ object FournisseurListF: TFournisseurListF
   DoubleBuffered = True
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -11
-  Font.Name = 'Tahoma'
+  Font.Height = 18
+  Font.Name = 'Helvetica LT Std'
   Font.Style = []
   FormStyle = fsMDIChild
   Icon.Data = {
@@ -324,7 +324,7 @@ object FournisseurListF: TFournisseurListF
     1362
     741)
   PixelsPerInch = 96
-  TextHeight = 13
+  TextHeight = 18
   object FournisseursListDBGridEh: TDBGridEh
     Left = 0
     Top = 82
@@ -345,8 +345,8 @@ object FournisseurListF: TFournisseurListF
     EditActions = [geaSelectAllEh]
     Font.Charset = DEFAULT_CHARSET
     Font.Color = 4207405
-    Font.Height = 24
-    Font.Name = 'Segoe UI'
+    Font.Height = 18
+    Font.Name = 'Helvetica LT Std'
     Font.Style = []
     GridLineParams.DataHorzLines = True
     GridLineParams.DataVertLines = True
@@ -409,6 +409,7 @@ object FournisseurListF: TFournisseurListF
         Title.EndEllipsis = True
         Title.ToolTips = True
         Width = 16
+        WordWrap = False
       end
       item
         Alignment = taCenter
@@ -417,12 +418,12 @@ object FournisseurListF: TFournisseurListF
         FieldName = 'code_f'
         Footers = <>
         Layout = tlCenter
-        MinWidth = 130
         Title.Alignment = taCenter
-        Title.Caption = 'Code Fournisseur'
+        Title.Caption = 'N'#176' Fournisseur'
         Title.EndEllipsis = True
         Title.ToolTips = True
-        Width = 130
+        Width = 110
+        WordWrap = False
       end
       item
         DynProps = <>
@@ -435,7 +436,8 @@ object FournisseurListF: TFournisseurListF
         Title.Caption = 'Nom du Fournisseur'
         Title.EndEllipsis = True
         Title.ToolTips = True
-        Width = 250
+        Width = 400
+        WordWrap = False
       end
       item
         Alignment = taCenter
@@ -449,6 +451,7 @@ object FournisseurListF: TFournisseurListF
         Title.EndEllipsis = True
         Title.ToolTips = True
         Width = 130
+        WordWrap = False
       end
       item
         Alignment = taCenter
@@ -462,6 +465,7 @@ object FournisseurListF: TFournisseurListF
         Title.EndEllipsis = True
         Title.ToolTips = True
         Width = 130
+        WordWrap = False
       end
       item
         Alignment = taCenter
@@ -475,6 +479,7 @@ object FournisseurListF: TFournisseurListF
         Title.EndEllipsis = True
         Title.ToolTips = True
         Width = 130
+        WordWrap = False
       end
       item
         Alignment = taCenter
@@ -488,6 +493,7 @@ object FournisseurListF: TFournisseurListF
         Title.EndEllipsis = True
         Title.ToolTips = True
         Width = 130
+        WordWrap = False
       end
       item
         Alignment = taCenter
@@ -501,6 +507,7 @@ object FournisseurListF: TFournisseurListF
         Title.EndEllipsis = True
         Title.ToolTips = True
         Width = 130
+        WordWrap = False
       end
       item
         Alignment = taCenter
@@ -514,6 +521,7 @@ object FournisseurListF: TFournisseurListF
         Title.EndEllipsis = True
         Title.ToolTips = True
         Width = 130
+        WordWrap = False
       end
       item
         Alignment = taCenter
@@ -527,6 +535,7 @@ object FournisseurListF: TFournisseurListF
         Title.EndEllipsis = True
         Title.ToolTips = True
         Width = 130
+        WordWrap = False
       end
       item
         Alignment = taCenter
@@ -540,6 +549,7 @@ object FournisseurListF: TFournisseurListF
         Title.EndEllipsis = True
         Title.ToolTips = True
         Width = 130
+        WordWrap = False
       end
       item
         Alignment = taCenter
@@ -553,6 +563,7 @@ object FournisseurListF: TFournisseurListF
         Title.EndEllipsis = True
         Title.ToolTips = True
         Width = 130
+        WordWrap = False
       end
       item
         Alignment = taCenter
@@ -566,6 +577,7 @@ object FournisseurListF: TFournisseurListF
         Title.EndEllipsis = True
         Title.ToolTips = True
         Width = 130
+        WordWrap = False
       end
       item
         Alignment = taCenter
@@ -579,6 +591,7 @@ object FournisseurListF: TFournisseurListF
         Title.EndEllipsis = True
         Title.ToolTips = True
         Width = 130
+        WordWrap = False
       end
       item
         Alignment = taCenter
@@ -592,6 +605,7 @@ object FournisseurListF: TFournisseurListF
         Title.EndEllipsis = True
         Title.ToolTips = True
         Width = 130
+        WordWrap = False
       end
       item
         Alignment = taCenter
@@ -605,6 +619,7 @@ object FournisseurListF: TFournisseurListF
         Title.EndEllipsis = True
         Title.ToolTips = True
         Width = 130
+        WordWrap = False
       end
       item
         Alignment = taCenter
@@ -618,6 +633,7 @@ object FournisseurListF: TFournisseurListF
         Title.EndEllipsis = True
         Title.ToolTips = True
         Width = 130
+        WordWrap = False
       end
       item
         Alignment = taCenter
@@ -631,6 +647,7 @@ object FournisseurListF: TFournisseurListF
         Title.EndEllipsis = True
         Title.ToolTips = True
         Width = 130
+        WordWrap = False
       end
       item
         DisplayFormat = '#,##0.00'
@@ -644,6 +661,7 @@ object FournisseurListF: TFournisseurListF
         Title.EndEllipsis = True
         Title.ToolTips = True
         Width = 130
+        WordWrap = False
       end
       item
         DisplayFormat = '#,##0.00'
@@ -657,6 +675,7 @@ object FournisseurListF: TFournisseurListF
         Title.EndEllipsis = True
         Title.ToolTips = True
         Width = 130
+        WordWrap = False
       end
       item
         DisplayFormat = '#,##0.00'
@@ -670,6 +689,7 @@ object FournisseurListF: TFournisseurListF
         Title.EndEllipsis = True
         Title.ToolTips = True
         Width = 130
+        WordWrap = False
       end>
     object RowDetailData: TRowDetailPanelControlEh
     end
@@ -719,7 +739,7 @@ object FournisseurListF: TFournisseurListF
       ShowHint = True
       Spacing = -1
       OnClick = EditFournisseursBtnClick
-      Version = '1.6.1.1'
+      Version = '1.6.1.2'
       TMSStyle = 0
     end
     object DeleteFournisseursBtn: TAdvToolButton
@@ -751,7 +771,7 @@ object FournisseurListF: TFournisseurListF
       ShowHint = True
       Spacing = -2
       OnClick = DeleteFournisseursBtnClick
-      Version = '1.6.1.1'
+      Version = '1.6.1.2'
       TMSStyle = 0
     end
     object AddFournisseursBtn: TAdvToolButton
@@ -783,13 +803,13 @@ object FournisseurListF: TFournisseurListF
       ShowHint = True
       Spacing = -1
       OnClick = AddFournisseursBtnClick
-      Version = '1.6.1.1'
+      Version = '1.6.1.2'
       TMSStyle = 0
     end
     object ResearchFournisseursLbl: TLabel
       Left = 24
       Top = 32
-      Width = 75
+      Width = 73
       Height = 18
       Caption = 'Recherche'
       Color = 15722984
@@ -812,8 +832,8 @@ object FournisseurListF: TFournisseurListF
       ShowHint = True
       OnClick = sSpeedButton1Click
       SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
       ImageIndex = 7
+      Images = MainForm.PanelIcons24
     end
     object sSpeedButton2: TsSpeedButton
       Left = 879
@@ -825,8 +845,8 @@ object FournisseurListF: TFournisseurListF
       ShowHint = True
       OnClick = sSpeedButton2Click
       SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
       ImageIndex = 8
+      Images = MainForm.PanelIcons24
     end
     object toutFournisseursLbl: TLabel
       Left = 1298
@@ -924,8 +944,8 @@ object FournisseurListF: TFournisseurListF
       Visible = False
       OnClick = sSpeedButton3Click
       SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
       ImageIndex = 9
+      Images = MainForm.PanelIcons24
     end
     object ArrowsPnl: TPanel
       Left = 378
@@ -954,8 +974,8 @@ object FournisseurListF: TFournisseurListF
         ShowHint = True
         OnClick = LastClientbtnClick
         SkinData.SkinSection = 'SPEEDBUTTON'
-        Images = MainForm.PanelIcons24
         ImageIndex = 3
+        Images = MainForm.PanelIcons24
       end
       object NextClientbtn: TsSpeedButton
         Left = 69
@@ -967,8 +987,8 @@ object FournisseurListF: TFournisseurListF
         ShowHint = True
         OnClick = NextClientbtnClick
         SkinData.SkinSection = 'SPEEDBUTTON'
-        Images = MainForm.PanelIcons24
         ImageIndex = 2
+        Images = MainForm.PanelIcons24
         ShowCaption = False
       end
       object PreviosClientbtn: TsSpeedButton
@@ -981,8 +1001,8 @@ object FournisseurListF: TFournisseurListF
         ShowHint = True
         OnClick = PreviosClientbtnClick
         SkinData.SkinSection = 'SPEEDBUTTON'
-        Images = MainForm.PanelIcons24
         ImageIndex = 1
+        Images = MainForm.PanelIcons24
       end
       object FisrtFournisseursbtn: TsSpeedButton
         Left = 9
@@ -994,8 +1014,8 @@ object FournisseurListF: TFournisseurListF
         ShowHint = True
         OnClick = FisrtFournisseursbtnClick
         SkinData.SkinSection = 'SPEEDBUTTON'
-        Images = MainForm.PanelIcons24
         ImageIndex = 0
+        Images = MainForm.PanelIcons24
         ShowCaption = False
       end
     end
@@ -1181,16 +1201,6 @@ object FournisseurListF: TFournisseurListF
       TabOrder = 9
       StyleElements = []
     end
-    object Button1: TButton
-      Left = 336
-      Top = 56
-      Width = 75
-      Height = 25
-      Caption = 'Button1'
-      TabOrder = 10
-      Visible = False
-      OnClick = Button1Click
-    end
   end
   object Panel3: TPanel
     Left = 0
@@ -1286,7 +1296,7 @@ object FournisseurListF: TFournisseurListF
     Top = 304
   end
   object FourListfrxRprt: TfrxReport
-    Version = '5.4.6'
+    Version = '5.5'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -1294,7 +1304,7 @@ object FournisseurListF: TFournisseurListF
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 42576.399521435200000000
-    ReportOptions.LastChange = 42613.658715416670000000
+    ReportOptions.LastChange = 42656.061263414350000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       ''
@@ -1615,6 +1625,7 @@ object FournisseurListF: TFournisseurListF
         DataSet = frxFournisseurListDB
         DataSetName = 'frxFournisseurDB'
         RowCount = 0
+        Stretched = True
         object Shape1: TfrxShapeView
           Top = 21.236240000000000000
           Width = 1046.929810000000000000
@@ -1626,6 +1637,7 @@ object FournisseurListF: TFournisseurListF
           Top = 0.779530000000000000
           Width = 298.960891100000000000
           Height = 18.897650000000000000
+          StretchMode = smActualHeight
           DataField = 'nom_f'
           DataSet = frxFournisseurListDB
           DataSetName = 'frxFournisseurDB'

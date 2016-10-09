@@ -368,7 +368,7 @@ object BonLivF: TBonLivF
       ShowHint = True
       Spacing = -1
       OnClick = EditBVLivBtnClick
-      Version = '1.6.1.1'
+      Version = '1.6.1.2'
       TMSStyle = 0
     end
     object DeleteBVLivBtn: TAdvToolButton
@@ -400,7 +400,7 @@ object BonLivF: TBonLivF
       ShowHint = True
       Spacing = -2
       OnClick = DeleteBVLivBtnClick
-      Version = '1.6.1.1'
+      Version = '1.6.1.2'
       TMSStyle = 0
     end
     object AddBVLivBtn: TAdvToolButton
@@ -432,13 +432,13 @@ object BonLivF: TBonLivF
       ShowHint = True
       Spacing = -1
       OnClick = AddBVLivBtnClick
-      Version = '1.6.1.1'
+      Version = '1.6.1.2'
       TMSStyle = 0
     end
     object ResearchBALivLbl: TLabel
       Left = 10
       Top = 38
-      Width = 75
+      Width = 73
       Height = 18
       Caption = 'Recherche'
       Color = 15722984
@@ -462,8 +462,8 @@ object BonLivF: TBonLivF
       ShowHint = True
       OnClick = sSpeedButton1Click
       SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
       ImageIndex = 7
+      Images = MainForm.PanelIcons24
     end
     object sSpeedButton2: TsSpeedButton
       Left = 1074
@@ -476,8 +476,8 @@ object BonLivF: TBonLivF
       ShowHint = True
       OnClick = sSpeedButton2Click
       SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
       ImageIndex = 8
+      Images = MainForm.PanelIcons24
     end
     object sSpeedButton3: TsSpeedButton
       Left = 1146
@@ -490,13 +490,13 @@ object BonLivF: TBonLivF
       ShowHint = True
       OnClick = sSpeedButton3Click
       SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
       ImageIndex = 9
+      Images = MainForm.PanelIcons24
     end
     object Label1: TLabel
       Left = 345
       Top = 14
-      Width = 24
+      Width = 23
       Height = 18
       Caption = 'Du:'
       Color = 15722984
@@ -512,7 +512,7 @@ object BonLivF: TBonLivF
     object Label2: TLabel
       Left = 346
       Top = 49
-      Width = 23
+      Width = 22
       Height = 18
       Caption = 'Au:'
       Color = 15722984
@@ -552,8 +552,8 @@ object BonLivF: TBonLivF
         ShowHint = True
         OnClick = LastBARecbtnClick
         SkinData.SkinSection = 'SPEEDBUTTON'
-        Images = MainForm.PanelIcons24
         ImageIndex = 3
+        Images = MainForm.PanelIcons24
       end
       object NextBARecbtn: TsSpeedButton
         Left = 69
@@ -565,8 +565,8 @@ object BonLivF: TBonLivF
         ShowHint = True
         OnClick = NextBARecbtnClick
         SkinData.SkinSection = 'SPEEDBUTTON'
-        Images = MainForm.PanelIcons24
         ImageIndex = 2
+        Images = MainForm.PanelIcons24
         ShowCaption = False
       end
       object PreviosBARecbtn: TsSpeedButton
@@ -579,8 +579,8 @@ object BonLivF: TBonLivF
         ShowHint = True
         OnClick = PreviosBARecbtnClick
         SkinData.SkinSection = 'SPEEDBUTTON'
-        Images = MainForm.PanelIcons24
         ImageIndex = 1
+        Images = MainForm.PanelIcons24
       end
       object FisrtBARecbtn: TsSpeedButton
         Left = 9
@@ -592,8 +592,8 @@ object BonLivF: TBonLivF
         ShowHint = True
         OnClick = FisrtBARecbtnClick
         SkinData.SkinSection = 'SPEEDBUTTON'
-        Images = MainForm.PanelIcons24
         ImageIndex = 0
+        Images = MainForm.PanelIcons24
         ShowCaption = False
       end
     end
@@ -861,8 +861,8 @@ object BonLivF: TBonLivF
     FixedColor = clWindow
     Font.Charset = DEFAULT_CHARSET
     Font.Color = 4207405
-    Font.Height = 24
-    Font.Name = 'Segoe UI'
+    Font.Height = 18
+    Font.Name = 'Helvetica LT Std'
     Font.Style = []
     GridLineParams.DataHorzLines = True
     GridLineParams.DataVertLines = True
@@ -902,6 +902,8 @@ object BonLivF: TBonLivF
     VertScrollBar.Width = 15
     OnDblClick = BVLivListDBGridEhDblClick
     OnDrawColumnCell = BVLivListDBGridEhDrawColumnCell
+    OnKeyDown = BVLivListDBGridEhKeyDown
+    OnKeyPress = BVLivListDBGridEhKeyPress
     Columns = <
       item
         Alignment = taCenter
@@ -927,6 +929,7 @@ object BonLivF: TBonLivF
         Title.Font.Quality = fqProof
         Title.ToolTips = True
         Width = 24
+        WordWrap = False
       end
       item
         DynProps = <>
@@ -944,6 +947,7 @@ object BonLivF: TBonLivF
         Title.EndEllipsis = True
         Title.ToolTips = True
         Width = 150
+        WordWrap = False
       end
       item
         Alignment = taCenter
@@ -957,6 +961,7 @@ object BonLivF: TBonLivF
         Title.EndEllipsis = True
         Title.ToolTips = True
         Width = 113
+        WordWrap = False
       end
       item
         Alignment = taCenter
@@ -970,6 +975,7 @@ object BonLivF: TBonLivF
         Title.EndEllipsis = True
         Title.ToolTips = True
         Width = 113
+        WordWrap = False
       end
       item
         DynProps = <>
@@ -981,7 +987,8 @@ object BonLivF: TBonLivF
         Title.Caption = 'Client'
         Title.EndEllipsis = True
         Title.ToolTips = True
-        Width = 200
+        Width = 300
+        WordWrap = False
       end
       item
         Checkboxes = False
@@ -1000,6 +1007,7 @@ object BonLivF: TBonLivF
         Title.Alignment = taCenter
         Title.Caption = 'MP'
         Width = 28
+        WordWrap = False
       end
       item
         DisplayFormat = '#,##0.00'
@@ -1014,6 +1022,7 @@ object BonLivF: TBonLivF
         Title.EndEllipsis = True
         Title.ToolTips = True
         Width = 150
+        WordWrap = False
       end
       item
         DisplayFormat = '#,##0.00'
@@ -1028,6 +1037,7 @@ object BonLivF: TBonLivF
         Title.EndEllipsis = True
         Title.ToolTips = True
         Width = 150
+        WordWrap = False
       end
       item
         DisplayFormat = '#,##0.00'
@@ -1040,6 +1050,7 @@ object BonLivF: TBonLivF
         Title.Alignment = taCenter
         Title.Caption = 'Net a Payer HT'
         Width = 150
+        WordWrap = False
       end
       item
         DisplayFormat = '#,##0.00'
@@ -1054,6 +1065,7 @@ object BonLivF: TBonLivF
         Title.EndEllipsis = True
         Title.ToolTips = True
         Width = 150
+        WordWrap = False
       end
       item
         DisplayFormat = '#,##0.00'
@@ -1067,6 +1079,7 @@ object BonLivF: TBonLivF
         Title.EndEllipsis = True
         Title.ToolTips = True
         Width = 150
+        WordWrap = False
       end
       item
         DisplayFormat = '#,##0.00'
@@ -1081,6 +1094,7 @@ object BonLivF: TBonLivF
         Title.EndEllipsis = True
         Title.ToolTips = True
         Width = 150
+        WordWrap = False
       end
       item
         DisplayFormat = '#,##0.00'
@@ -1095,6 +1109,7 @@ object BonLivF: TBonLivF
         Title.EndEllipsis = True
         Title.ToolTips = True
         Width = 150
+        WordWrap = False
       end
       item
         DisplayFormat = '#,##0.00'
@@ -1106,6 +1121,7 @@ object BonLivF: TBonLivF
         Title.Alignment = taCenter
         Title.Caption = 'Marge'
         Width = 150
+        WordWrap = False
       end
       item
         Alignment = taCenter
@@ -1200,7 +1216,7 @@ object BonLivF: TBonLivF
     Top = 392
   end
   object BonLivfrxRprt: TfrxReport
-    Version = '5.4.6'
+    Version = '5.5'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]

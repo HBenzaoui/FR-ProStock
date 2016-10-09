@@ -172,6 +172,7 @@ type
     procedure ProduitBonCtrGCbxDblClick(Sender: TObject);
     procedure RemisePerctageBonCtrGEdtDblClick(Sender: TObject);
     procedure FormPaint(Sender: TObject);
+    procedure AddClientBonCtrGBtnClick(Sender: TObject);
   private
     procedure GettingData;
     { Private declarations }
@@ -188,7 +189,7 @@ implementation
 {$R *.dfm}
 uses  Printers,StringTool,IniFiles,UDataModule,
  Winapi.ShellAPI, UMainF, UProduitsList, UBonCtr, USplashAddUnite,UProduitGestion,
-  UFastProduitsList, USplashVersement, UOptions;
+  UFastProduitsList, USplashVersement, UOptions, UClientGestion, UClientsList;
 
 
 procedure Refresh_PreservePosition;
@@ -295,7 +296,8 @@ begin
 
  CodeBL:= MainForm.Bonv_ctrTable.FieldValues['code_bvctr']   ;
  NumBonCtrGEdt.Caption := 'CT'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5, CodeBL]);
-  if MainForm.Bonv_ctrTable.FieldValues['code_c'] <> null then
+  if (MainForm.Bonv_ctrTable.FieldByName('code_c').AsInteger <> null)
+ AND (MainForm.Bonv_ctrTable.FieldByName('code_c').AsInteger <> 0)  then
  begin
    ClientBonCtrGCbx.Text:= MainForm.Bonv_ctrTable.FieldValues['clientbvctr'];
    ProduitBonCtrGCbx.SetFocus;
@@ -489,10 +491,9 @@ begin
 end;
 
 procedure TBonCtrGestionF.NewAddProduitBonCtrGBtnClick(Sender: TObject);
-var
-  codeP, refnum: integer;
 begin
   FormStyle:=fsNormal;
+
 
   ProduitsListF.AddProduitsBtnClick(Sender);
 end;
@@ -858,6 +859,7 @@ procedure TBonCtrGestionF.FormCloseQuery(Sender: TObject;
 
 Var   CodeCTR : Integer;
 begin
+CodeCTR := MainForm.Bonv_ctrTable.FieldByName('code_bvctr').AsInteger;
  if  NOT ProduitsListDBGridEh.DataSource.DataSet.IsEmpty then
   begin
     if ClientBonCtrGCbx.Text = '' then
@@ -871,8 +873,6 @@ begin
     begin
       if  RequiredClientGlbl.Visible <> True then
      begin
-
-         CodeCTR := MainForm.Bonv_ctrTable.FieldByName('code_bvctr').AsInteger;
 
          if  (MainForm.Bonv_ctrTable.FieldByName('valider_bvctr').AsBoolean = false)  then
          begin
@@ -930,6 +930,46 @@ begin
   end  else
   begin
 
+       if  (MainForm.Bonv_ctrTable.FieldByName('valider_bvctr').AsBoolean = false)  then
+         begin
+          MainForm.ClientTable.DisableControls;
+          MainForm.ClientTable.Active:=false;
+          MainForm.ClientTable.SQL.Clear;
+          MainForm.ClientTable.SQL.Text:='Select * FROM client WHERE LOWER(nom_c) LIKE LOWER('+ QuotedStr( ClientBonCtrGCbx.Text )+')'  ;
+          MainForm.ClientTable.Active:=True;
+
+          MainForm.Bonv_ctrTable.DisableControls;
+          MainForm.Bonv_ctrTable.Edit;
+          MainForm.Bonv_ctrTable.FieldValues['code_c']:= MainForm.ClientTable.FieldByName('code_c').AsInteger;
+
+          if RemiseBonCtrGEdt.Text<>'' then
+          begin
+             MainForm.Bonv_ctrTable.FieldByName('remise_bvctr').AsCurrency:=StrToCurr(StringReplace(RemiseBonCtrGEdt.Text, #32, '', [rfReplaceAll]));
+          end else begin
+                    MainForm.Bonv_ctrTable.FieldByName('remise_bvctr').AsCurrency:=0;
+                   end;
+
+          MainForm.Bonv_ctrTable.FieldByName('montver_bvctr').AsCurrency:=StrToCurr(StringReplace(BonCtrRegleLbl.Caption, #32, '', [rfReplaceAll]));
+          MainForm.Bonv_ctrTable.FieldByName('montttc_bvctr').AsCurrency:=StrToCurr(StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
+
+          MainForm.Bonv_ctrTable.Post;
+          MainForm.Bonv_ctrTable.EnableControls;
+
+          MainForm.ClientTable.Active:=false;
+          MainForm.ClientTable.SQL.Clear;
+          MainForm.ClientTable.SQL.Text:='Select * FROM client' ;
+          MainForm.ClientTable.Active:=True;
+          MainForm.ClientTable.EnableControls;
+
+            //------- This is to delete data from tre and reg ih not valide----------------------------------------------
+            MainForm.GstockdcConnection.ExecSQL('DELETE FROM regclient where code_bvctr = ' + IntToStr(CodeCTR));
+            MainForm.GstockdcConnection.ExecSQL('DELETE FROM opt_cas_bnk where code_bvctr = ' + IntToStr(CodeCTR));
+            MainForm.RegclientTable.Refresh ;
+            MainForm.Opt_cas_bnk_CaisseTable.Refresh ;
+
+         end;
+
+
      CanClose:= True;
   end;
 end;
@@ -979,7 +1019,8 @@ begin
       MainForm.ClientTable.SQL.Clear;
       MainForm.ClientTable.SQL.Text:='Select * FROM client WHERE LOWER(nom_c) LIKE LOWER('+ QuotedStr( ClientBonCtrGCbx.Text )+')'  ;
       MainForm.ClientTable.Active:=True;
-
+          if NOT MainForm.ClientTable.IsEmpty then
+     begin
             if MainForm.ClientTable.FieldByName('activ_c').AsBoolean <> False then
       begin
 
@@ -1053,7 +1094,15 @@ begin
               NameClientGErrorP.Visible:= True;
               ClientBonCtrGCbx.SetFocus;
              end;
-
+         end else
+              begin
+                ClientBonCtrGCbx.Text:= 'Comptoir';
+                MainForm.ClientTable.Active:=false;
+                MainForm.ClientTable.SQL.Clear;
+                MainForm.ClientTable.SQL.Text:='Select * FROM client' ;
+                MainForm.ClientTable.Active:=True;
+                MainForm.ClientTable.EnableControls;
+              end;
     end else
     begin
      ClientBonCtrGCbx.Text:= 'Comptoir';
@@ -1092,8 +1141,7 @@ begin
     ExValiderBVCtrBonCtrGBtn.ImageIndex:=13;
     end;
 
-    RemisePerctageBonCtrGEdt.Enabled:=True;
-    RemiseBonCtrGEdt.Enabled:=True;
+
     //RemiseTypeBonCtrGCbx.Enabled:= True;
 
    if MainForm.Bonv_ctrTable.FieldValues['valider_bvctr'] <> True then
@@ -1123,7 +1171,8 @@ begin
     MainForm.ProduitTable.Active:=True;
     MainForm.ProduitTable.EnableControls;
 
-
+    RemisePerctageBonCtrGEdt.Enabled:=True;
+    RemiseBonCtrGEdt.Enabled:=True;
 
    end;
      ProduitsListDBGridEh.ReadOnly:=False;
@@ -2125,28 +2174,31 @@ end;
 
 procedure TBonCtrGestionF.PrintTicketBVCtrBonCtrGBtnClick(Sender: TObject);
 begin
+MainForm.Bonv_ctr_listTable.DisableControls;
     ComptoirTicketfrxRprt.PrepareReport;
     GettingData;
     ComptoirTicketfrxRprt.PrintOptions.ShowDialog := False;
     ComptoirTicketfrxRprt.PrepareReport;
 //    ComptoirTicketfrxRprt.PrintOptions.Printer:= FOptions.PrintersListFOptionCaisseCbx.Text ;
     ComptoirTicketfrxRprt.Print;
+MainForm.Bonv_ctr_listTable.EnableControls;
 end;
 
 procedure TBonCtrGestionF.sSpeedButton1Click(Sender: TObject);
 begin
     GettingData;
-
+MainForm.Bonv_ctr_listTable.DisableControls;
 ComptoirTicketfrxRprt.PrepareReport;
 frxXLSExport1.FileName := 'Ticket De Caisse N° '
   +IntToStr(YearOf(Today)) + '-' + Format('%.*d', [5,(MainForm.Bonv_ctrTable.FieldByName('code_bvctr').AsInteger)]);
 ComptoirTicketfrxRprt.Export(frxXLSExport1);
+MainForm.Bonv_ctr_listTable.EnableControls;
 end;
 
 procedure TBonCtrGestionF.sSpeedButton2Click(Sender: TObject);
 begin
  GettingData;
-
+MainForm.Bonv_ctr_listTable.DisableControls;
 ComptoirTicketfrxRprt.PrepareReport;
 
 frxPDFExport1.FileName := 'Ticket De Caisse N° '
@@ -2155,6 +2207,7 @@ frxPDFExport1.FileName := 'Ticket De Caisse N° '
 frxPDFExport1.EmbeddedFonts:=True;
 
 ComptoirTicketfrxRprt.Export(frxPDFExport1);
+MainForm.Bonv_ctr_listTable.EnableControls;
 end;
 
 procedure TBonCtrGestionF.AddBVCtrBonCtrGBtnClick(Sender: TObject);
@@ -2250,14 +2303,20 @@ begin
 
 end;
 
+procedure TBonCtrGestionF.AddClientBonCtrGBtnClick(Sender: TObject);
+begin
+FormStyle:=fsNormal;
+ClientListF.AddClientsBtnClick(Sender);
+ClientGestionF.OKClientGBtn.Tag := 5 ;
+ClientBonCtrGCbx.StyleElements:= [seFont,seBorder,seBorder];
+RequiredClientGlbl.Visible:= False;
+NameClientGErrorP.Visible:= False;
+end;
+
 procedure TBonCtrGestionF.EditBVCtrBonCtrGBtnClick(Sender: TObject);
 begin
 
-//      MainForm.ClientTable.DisableControls;
-//      MainForm.ClientTable.Active:=false;
-//      MainForm.ClientTable.SQL.Clear;
-//      MainForm.ClientTable.SQL.Text:='Select * FROM client WHERE LOWER(nom_c) LIKE LOWER('+ QuotedStr( ClientBonCtrGCbx.Text )+')'  ;
-//      MainForm.ClientTable.Active:=True;
+
  // this is to enable the componets to edit the bon
 
   EnableBonCtr;
@@ -2269,21 +2328,38 @@ begin
   MainForm.Bonv_ctrTable.Post;
   end;
 
+  if ClientBonCtrGCbx.Text <> 'Comptoir' then
+  begin
+      MainForm.ClientTable.DisableControls;
+      MainForm.ClientTable.Active:=false;
+      MainForm.ClientTable.SQL.Clear;
+      MainForm.ClientTable.SQL.Text:='Select * FROM client WHERE LOWER(nom_c) LIKE LOWER('+ QuotedStr( ClientBonCtrGCbx.Text )+')'  ;
+      MainForm.ClientTable.Active:=True;
 
 // use this code to rest the old credit to the to the last time before he pay anything in that bon so you can aclculate again
 //  BonCtrGClientOLDCredit.Caption:=
 //  CurrToStrF((((MainForm.ClientTable.FieldValues['oldcredit_c'])-(StringReplace(BonCtrResteLbl.Caption, #32, '', [rfReplaceAll])))),ffNumber,2);
+
+//      if (MainForm.ClientTable.FieldByName('code_c').AsInteger <> 1) then
+//      begin
+      MainForm.ClientTable.Edit;
+      MainForm.ClientTable.FieldByName('credit_c').AsCurrency:= (MainForm.ClientTable.FieldByName('credit_c').AsCurrency) - ((-1)* MainForm.Bonv_ctrTable.FieldByName('MontantRen').AsCurrency);
+      MainForm.ClientTable.Post;
+//      end;
+
+      MainForm.ClientTable.Active:=false;
+      MainForm.ClientTable.SQL.Clear;
+      MainForm.ClientTable.SQL.Text:='Select * FROM client '  ;
+      MainForm.ClientTable.Active:=True;
+      MainForm.ClientTable.EnableControls ;
+ end;
 
   BonCtrRegleLbl.Caption:=FloatToStrF(0,ffNumber,14,2) ;
   BonCtrRenduLbl.Caption:= FloatToStrF(0,ffNumber,14,2);
 
 
 
-//      MainForm.ClientTable.Active:=false;
-//      MainForm.ClientTable.SQL.Clear;
-//      MainForm.ClientTable.SQL.Text:='Select * FROM client '  ;
-//      MainForm.ClientTable.Active:=True;
-//      MainForm.ClientTable.EnableControls ;
+
 
  //----------------------------------------
 

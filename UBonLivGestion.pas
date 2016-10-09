@@ -186,7 +186,7 @@ implementation
 uses   WinSpool,
 
   StringTool, UMainF, USplashAddUnite, UClientsList, UClientGestion, USplashAddCompte,
-  UFastProduitsList, UProduitsList, USplashVersement, UBonLiv;
+  UFastProduitsList, UProduitsList, USplashVersement, UBonLiv, UProduitGestion;
 
   {$R *.dfm}
 
@@ -284,7 +284,8 @@ begin
       BonLivGClientNEWCredit.Caption:= FloatToStrF(StrToFloat(BonLivGClientNEWCredit.Caption),ffNumber,14,2) ;
  CodeBL:= MainForm.Bonv_livTable.FieldValues['code_bvliv']   ;
     NumBonLivGEdt.Caption := 'BL'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5, CodeBL]);
-  if MainForm.Bonv_livTable.FieldValues['code_c'] <> null then
+  if (MainForm.Bonv_livTable.FieldByName('code_c').AsInteger <> null)
+  AND(MainForm.Bonv_livTable.FieldByName('code_c').AsInteger <> 0) then
  begin
    ClientBonLivGCbx.Text:= MainForm.Bonv_livTable.FieldValues['clientbvliv'];
    ProduitBonLivGCbx.SetFocus;
@@ -345,6 +346,7 @@ procedure TBonLivGestionF.FormCloseQuery(Sender: TObject;
   var CanClose: Boolean);
 Var  CodeBL : Integer;
 begin
+codeBL:=MainForm.Bonv_livTable.FieldByName('code_bvliv').AsInteger;
  if  NOT ProduitsListDBGridEh.DataSource.DataSet.IsEmpty then
   begin
     if ClientBonLivGCbx.Text = '' then
@@ -363,8 +365,6 @@ begin
          begin
          if  (MainForm.Bonv_livTable.FieldByName('valider_bvliv').AsBoolean = false)  then
          begin
-          codeBL:=MainForm.Bonv_livTable.FieldByName('code_bvliv').AsInteger;
-
           MainForm.ClientTable.DisableControls;
           MainForm.ClientTable.Active:=false;
           MainForm.ClientTable.SQL.Clear;
@@ -448,6 +448,78 @@ begin
     end;
   end  else
   begin
+
+          if  (MainForm.Bonv_livTable.FieldByName('valider_bvliv').AsBoolean = false)  then
+         begin
+//          codeBL:=MainForm.Bonv_livTable.FieldByName('code_bvliv').AsInteger;
+
+          MainForm.ClientTable.DisableControls;
+          MainForm.ClientTable.Active:=false;
+          MainForm.ClientTable.SQL.Clear;
+          MainForm.ClientTable.SQL.Text:='Select * FROM client WHERE LOWER(nom_c) LIKE LOWER('+ QuotedStr( ClientBonLivGCbx.Text )+')'  ;
+          MainForm.ClientTable.Active:=True;
+
+          MainForm.Mode_paiementTable.DisableControls;
+          MainForm.Mode_paiementTable.Active:=false;
+          MainForm.Mode_paiementTable.SQL.Clear;
+          MainForm.Mode_paiementTable.SQL.Text:='Select * FROM mode_paiement WHERE LOWER(nom_mdpai) LIKE LOWER('+ QuotedStr( ModePaieBonLivGCbx.Text )+')'  ;
+          MainForm.Mode_paiementTable.Active:=True;
+
+          MainForm.CompteTable.DisableControls;
+          MainForm.CompteTable.Active:=false;
+          MainForm.CompteTable.SQL.Clear;
+          MainForm.CompteTable.SQL.Text:='Select * FROM compte WHERE LOWER(nom_cmpt) LIKE LOWER('+ QuotedStr( CompteBonLivGCbx.Text )+')'  ;
+          MainForm.CompteTable.Active:=True;
+
+
+          MainForm.Bonv_livTable.DisableControls;
+          MainForm.Bonv_livTable.Edit;
+          MainForm.Bonv_livTable.FieldValues['code_c']:= MainForm.ClientTable.FieldByName('code_c').AsInteger;
+          MainForm.Bonv_livTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
+          MainForm.Bonv_livTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
+          MainForm.Bonv_livTable.FieldValues['obser_bvliv']:= ObserBonLivGMem.Text;
+          MainForm.Bonv_livTable.FieldValues['num_cheque_bvliv']:= NChequeBonLivGCbx.Text;
+          MainForm.Bonv_livTable.FieldByName('montht_bvliv').AsCurrency:= StrToCurr(StringReplace(BonLivTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
+
+          if RemiseBonLivGEdt.Text<>'' then
+          begin
+             MainForm.Bonv_livTable.FieldByName('remise_bvliv').AsCurrency:=StrToCurr(StringReplace(RemiseBonLivGEdt.Text, #32, '', [rfReplaceAll]));
+          end else begin
+                    MainForm.Bonv_livTable.FieldByName('remise_bvliv').AsCurrency:=0;
+                   end;
+
+
+          MainForm.Bonv_livTable.FieldByName('montver_bvliv').AsCurrency:=StrToCurr(StringReplace(BonLivRegleLbl.Caption, #32, '', [rfReplaceAll]));
+          MainForm.Bonv_livTable.FieldByName('montttc_bvliv').AsCurrency:=StrToCurr(StringReplace(BonLivTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
+
+          MainForm.Bonv_livTable.Post;
+          MainForm.Bonv_livTable.EnableControls;
+
+          MainForm.ClientTable.Active:=false;
+          MainForm.ClientTable.SQL.Clear;
+          MainForm.ClientTable.SQL.Text:='Select * FROM client' ;
+          MainForm.ClientTable.Active:=True;
+          MainForm.ClientTable.EnableControls;
+
+          MainForm.Mode_paiementTable.Active:=false;
+          MainForm.Mode_paiementTable.SQL.Clear;
+          MainForm.Mode_paiementTable.SQL.Text:='Select * FROM mode_paiement' ;
+          MainForm.Mode_paiementTable.Active:=True;
+          MainForm.Mode_paiementTable.EnableControls;
+
+          MainForm.CompteTable.Active:=false;
+          MainForm.CompteTable.SQL.Clear;
+          MainForm.CompteTable.SQL.Text:='Select * FROM compte' ;
+          MainForm.CompteTable.Active:=True;
+          MainForm.CompteTable.EnableControls;
+
+        //------- This is to delete data from tre and reg ih not valide----------------------------------------------
+              MainForm.GstockdcConnection.ExecSQL('DELETE FROM regclient where code_bvliv = ' + IntToStr(codeBL));
+              MainForm.GstockdcConnection.ExecSQL('DELETE FROM opt_cas_bnk where code_bvliv = ' + IntToStr(codeBL));
+              MainForm.RegclientTable.Refresh ;
+              MainForm.Opt_cas_bnk_CaisseTable.Refresh ;
+
+         end;
 
      CanClose:= True;
   end;
@@ -1032,6 +1104,9 @@ begin
       MainForm.ClientTable.SQL.Clear;
       MainForm.ClientTable.SQL.Text:='Select * FROM client WHERE LOWER(nom_c) LIKE LOWER('+ QuotedStr( ClientBonLivGCbx.Text )+')'  ;
       MainForm.ClientTable.Active:=True;
+
+     if NOT MainForm.ClientTable.IsEmpty then
+     begin
       OLDCreditCINI:=MainForm.ClientTable.FieldByName('oldcredit_c').AsCurrency;
 
       if MainForm.ClientTable.FieldByName('activ_c').AsBoolean <> False then
@@ -1139,7 +1214,15 @@ begin
             NameClientGErrorP.Visible:= True;
             ClientBonLivGCbx.SetFocus;
           end;
-
+          end else
+              begin
+                ClientBonLivGCbx.Text:= '';
+                MainForm.ClientTable.Active:=false;
+                MainForm.ClientTable.SQL.Clear;
+                MainForm.ClientTable.SQL.Text:='Select * FROM client' ;
+                MainForm.ClientTable.Active:=True;
+                MainForm.ClientTable.EnableControls;
+              end;
     end else
     begin
      ClientBonLivGCbx.Text:= 'Comptoir';
@@ -1246,6 +1329,9 @@ procedure TBonLivGestionF.AddClientBonLivGBtnClick(Sender: TObject);
 begin
 ClientListF.AddClientsBtnClick(Sender);
 ClientGestionF.OKClientGBtn.Tag := 3 ;
+ClientBonLivGCbx.StyleElements:= [seFont,seBorder,seBorder];
+RequiredClientGlbl.Visible:= False;
+NameClientGErrorP.Visible:= False;
 end;
 
 procedure TBonLivGestionF.AddModePaieBonLivGBtnClick(Sender: TObject);
@@ -1400,10 +1486,6 @@ begin
     ValiderBVLivBonLivGBtn.ImageIndex:=12;
     end;
 
-    RemisePerctageBonLivGEdt.Enabled:=True;
-    RemiseBonLivGEdt.Enabled:=True;
-    RemiseTypeBonLivGCbx.Enabled:= True;
-
    if MainForm.Bonv_livTable.FieldValues['valider_bvliv'] <> True then
    begin
 
@@ -1432,6 +1514,10 @@ begin
     MainForm.ProduitTable.SQL.Text:='SELECT * FROM produit ';
     MainForm.ProduitTable.Active:=True;
     MainForm.ProduitTable.EnableControls;
+
+    RemisePerctageBonLivGEdt.Enabled:=True;
+    RemiseBonLivGEdt.Enabled:=True;
+    RemiseTypeBonLivGCbx.Enabled:= True;    
 
    end;
      ProduitsListDBGridEh.ReadOnly:=False;
@@ -1977,6 +2063,13 @@ begin
   BonLivGClientOLDCredit.Caption:=
   CurrToStrF((((MainForm.ClientTable.FieldValues['credit_c'])-(StringReplace(BonLivResteLbl.Caption, #32, '', [rfReplaceAll])))),ffNumber,2);
 
+      if  (MainForm.ClientTable.FieldByName('code_c').AsInteger <> 1) then
+      begin
+      MainForm.ClientTable.Edit;
+      MainForm.ClientTable.FieldByName('credit_c').AsCurrency:= (MainForm.ClientTable.FieldByName('credit_c').AsCurrency) - (MainForm.Bonv_livTable.FieldByName('MontantRes').AsCurrency);
+      MainForm.ClientTable.Post;
+      end;
+
   BonLivRegleLbl.Caption:=FloatToStrF(0,ffNumber,14,2) ;
   BonLivResteLbl.Caption:= BonLivTotalTTCLbl.Caption;
 
@@ -2248,7 +2341,7 @@ begin
 
 procedure TBonLivGestionF.sSpeedButton2Click(Sender: TObject);
 begin
-
+MainForm.Bonv_liv_listTable.DisableControls;
  GettingData;
 
 BonLivPListfrxRprt.PrepareReport;
@@ -2256,18 +2349,20 @@ BonLivPListfrxRprt.PrepareReport;
 BonLivPListfrxRprt.ShowReport;
 
 //BonLivPListfrxRprt.Print;   // this is to print directly
+MainForm.Bonv_liv_listTable.EnableControls;
 
 end;
 
 procedure TBonLivGestionF.sSpeedButton1Click(Sender: TObject);
 begin
-
+MainForm.Bonv_liv_listTable.DisableControls;
    GettingData;
 
 BonLivPListfrxRprt.PrepareReport;
 frxXLSExport1.FileName := 'Bon de Livraison N° '
   +IntToStr(YearOf(Today)) + '-' + Format('%.*d', [5,(MainForm.Bonv_livTable.FieldByName('code_bvliv').AsInteger)]);
 BonLivPListfrxRprt.Export(frxXLSExport1);
+MainForm.Bonv_liv_listTable.EnableControls;
 //EmptyLines: = True;
 //OpenExcelAfterExport: = True;
 //PageBreaks: = False;
@@ -2278,7 +2373,7 @@ end;
 procedure TBonLivGestionF.sSpeedButton3Click(Sender: TObject);
 begin
  GettingData;
-
+ MainForm.Bonv_liv_listTable.DisableControls;
 BonLivPListfrxRprt.PrepareReport;
 
 frxPDFExport1.FileName := 'Bon de Livraison N° '
@@ -2287,6 +2382,7 @@ frxPDFExport1.FileName := 'Bon de Livraison N° '
 frxPDFExport1.EmbeddedFonts:=True;
 
 BonLivPListfrxRprt.Export(frxPDFExport1);
+MainForm.Bonv_liv_listTable.EnableControls;
 end;
 
 procedure TBonLivGestionF.ProduitsListDBGridEhCellClick(Column: TColumnEh);

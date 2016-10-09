@@ -17,10 +17,12 @@ object FSplash: TFSplash
   PixelsPerInch = 96
   TextHeight = 13
   object Label1: TLabel
-    Left = 18
-    Top = 7
-    Width = 264
-    Height = 26
+    Left = 0
+    Top = 0
+    Width = 300
+    Height = 40
+    Align = alClient
+    Alignment = taCenter
     Caption = 'Register Correctement Cr'#233#233
     Color = 7854350
     Font.Charset = DEFAULT_CHARSET
@@ -31,6 +33,11 @@ object FSplash: TFSplash
     Font.Quality = fqAntialiased
     ParentColor = False
     ParentFont = False
+    Layout = tlCenter
     StyleElements = []
+    ExplicitLeft = 18
+    ExplicitTop = 7
+    ExplicitWidth = 264
+    ExplicitHeight = 26
   end
 end

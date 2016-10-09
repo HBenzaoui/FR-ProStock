@@ -46,7 +46,6 @@ type
     Panel2: TPanel;
     FournisseurListDataS: TDataSource;
     Panel3: TPanel;
-    Button1: TButton;
     sSpeedButton3: TsSpeedButton;
     frxPDFExport1: TfrxPDFExport;
     frxXLSExport1: TfrxXLSExport;
@@ -75,7 +74,6 @@ type
       const Rect: TRect; DataCol: Integer; Column: TColumnEh;
       State: TGridDrawState);
     procedure FormCreate(Sender: TObject);
-    procedure Button1Click(Sender: TObject);
     procedure sSpeedButton2Click(Sender: TObject);
     procedure sSpeedButton1Click(Sender: TObject);
     procedure sSpeedButton3Click(Sender: TObject);
@@ -93,7 +91,7 @@ implementation
 
 {$R *.dfm}
 
-uses UMainF, UFournisseurGestion, USplash, UClientGestion;
+uses UMainF, UFournisseurGestion, USplash, UClientGestion,Threading;
 
 //----- this is a function for custome  Messagedlg  French Caption and buttons and default NON --------//
 
@@ -157,12 +155,6 @@ begin
     FournisseurGestionF.Show;
     FournisseurGestionF.NameFournisseurGEdt.SetFocus;
     FournisseurGestionF.OKFournisseurGBtn.Tag:= 0 ;
-end;
-
-procedure TFournisseurListF.Button1Click(Sender: TObject);
-begin
-//FreeAndNil(FournisseurListF);
-//FreeAndNil(MainForm.TabSheetFournisseur);
 end;
 
 procedure TFournisseurListF.DeleteFournisseursBtnClick(Sender: TObject);
@@ -276,6 +268,23 @@ begin
      end else
          begin
             sndPlaySound('C:\Windows\Media\chord.wav', SND_NODEFAULT Or SND_ASYNC Or  SND_RING);
+            TTask.Run ( procedure
+            begin
+             FSplash := TFSplash.Create(nil);
+              try
+                FSplash.Left := MainForm.Width - FSplash.Width - 15 ;                   
+                FSplash.Top := (MainForm.Height - FSplash.Height ) - 15 ;
+                 FSplash.Label1.Font.Height:=21;
+                FSplash.Label1.Caption:='Suppressions ne sont pas autorisés!';
+                FSplash.Color:= $004735F9;
+                AnimateWindow(FSplash.Handle, 100, AW_HOR_NEGATIVE OR AW_SLIDE OR AW_ACTIVATE);
+                sleep(700);
+                AnimateWindow(FSplash.Handle, 100, AW_HOR_POSITIVE OR
+                  AW_SLIDE OR AW_HIDE);
+              finally
+                FSplash.free;
+              end;
+            end);
          end;
  end;
 end;
@@ -441,9 +450,17 @@ end;
 //------ use this code to red the produit with 0 or null in stock----//
 if  FournisseurListDataS.DataSet = MainForm.FournisseurTable then
 begin
- if MainForm.FournisseurTable.FieldByName('credit_f').AsCurrency > 0     then
+ if (MainForm.FournisseurTable.FieldByName('credit_f').AsCurrency 
+    +MainForm.FournisseurTable.FieldByName('oldcredit_f').AsCurrency ) > 0     then
  begin
  FournisseursListDBGridEh.Canvas.Font.Color:=$004735F9;//   Brush.Color:=clRed;
+ FournisseursListDBGridEh.DefaultDrawColumnCell(Rect, DataCol, Column, State);
+ end;
+
+  if (MainForm.FournisseurTable.FieldByName('credit_f').AsCurrency 
+    +MainForm.FournisseurTable.FieldByName('oldcredit_f').AsCurrency ) < 0     then
+ begin
+ FournisseursListDBGridEh.Canvas.Font.Color:=$00519509;//   Brush.Color:=clgreen;
  FournisseursListDBGridEh.DefaultDrawColumnCell(Rect, DataCol, Column, State);
  end;
 end;
@@ -452,48 +469,27 @@ end;
 procedure TFournisseurListF.FournisseursListDBGridEhKeyDown(Sender: TObject;
   var Key: Word; Shift: TShiftState);
 begin
-
 if not FournisseursListDBGridEh.DataSource.DataSet.IsEmpty then
-
 begin
   if key = VK_DELETE  then
-
   DeleteFournisseursBtnClick(Sender) ;
-
 end else exit
-
 end;
 
 procedure TFournisseurListF.FournisseursListDBGridEhKeyPress(Sender: TObject;
   var Key: Char);
 begin
-
-
    if Key in ['n'] then
-
   AddFournisseursBtnClick(Sender) ;
-
-
    if Key in ['r'] then
-
     ResearchFournisseurEdt.SetFocus ;
-
 if not FournisseursListDBGridEh.DataSource.DataSet.IsEmpty then
-
   begin
-
   if Key in ['s' ] then
-
   DeleteFournisseursBtnClick(Sender) ;
-
-
    if Key in ['m'] then
-
   EditFournisseursBtnClick(Sender) ;
-
-
   end else Exit ;
-
 end;
 
 procedure TFournisseurListF.FournisseursListDBGridEhTitleBtnClick(

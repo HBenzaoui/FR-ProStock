@@ -105,7 +105,14 @@ object BonCtrGestionF: TBonCtrGestionF
         TextEditing = False
         Title.Alignment = taCenter
         Title.Caption = 'R'#233'ference'
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = 4207405
+        Title.Font.Height = 19
+        Title.Font.Name = 'Helvetica LT Std'
+        Title.Font.Style = []
+        Title.Font.Quality = fqProof
         Width = 106
+        WordWrap = False
       end
       item
         DynProps = <>
@@ -122,7 +129,14 @@ object BonCtrGestionF: TBonCtrGestionF
         TextEditing = False
         Title.Alignment = taCenter
         Title.Caption = 'D'#233'signation'
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = 4207405
+        Title.Font.Height = 19
+        Title.Font.Name = 'Helvetica LT Std'
+        Title.Font.Style = []
+        Title.Font.Quality = fqProof
         Width = 338
+        WordWrap = False
       end
       item
         Alignment = taCenter
@@ -147,6 +161,7 @@ object BonCtrGestionF: TBonCtrGestionF
         Title.Font.Style = []
         Title.Font.Quality = fqProof
         Width = 78
+        WordWrap = False
       end
       item
         Alignment = taCenter
@@ -169,6 +184,7 @@ object BonCtrGestionF: TBonCtrGestionF
         Title.Font.Style = []
         Title.Font.Quality = fqProof
         Width = 58
+        WordWrap = False
       end
       item
         DisplayFormat = '#,##0.00'
@@ -191,6 +207,7 @@ object BonCtrGestionF: TBonCtrGestionF
         Title.Font.Style = []
         Title.Font.Quality = fqProof
         Width = 170
+        WordWrap = False
       end
       item
         Alignment = taCenter
@@ -213,6 +230,7 @@ object BonCtrGestionF: TBonCtrGestionF
         Title.Font.Name = 'Helvetica LT Std'
         Title.Font.Style = []
         Title.Font.Quality = fqProof
+        WordWrap = False
       end
       item
         Alignment = taCenter
@@ -235,7 +253,14 @@ object BonCtrGestionF: TBonCtrGestionF
         TextEditing = False
         Title.Alignment = taCenter
         Title.Caption = 'TVA'
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = 4207405
+        Title.Font.Height = 19
+        Title.Font.Name = 'Helvetica LT Std'
+        Title.Font.Style = []
+        Title.Font.Quality = fqProof
         Visible = False
+        WordWrap = False
       end
       item
         DisplayFormat = '#,##0.00'
@@ -259,6 +284,7 @@ object BonCtrGestionF: TBonCtrGestionF
         Title.Font.Quality = fqProof
         Visible = False
         Width = 170
+        WordWrap = False
       end
       item
         DisplayFormat = '#,##0.00'
@@ -283,6 +309,7 @@ object BonCtrGestionF: TBonCtrGestionF
         Title.Font.Quality = fqProof
         Visible = False
         Width = 170
+        WordWrap = False
       end
       item
         DisplayFormat = '#,##0.00'
@@ -307,6 +334,7 @@ object BonCtrGestionF: TBonCtrGestionF
         Title.Font.Quality = fqProof
         Visible = False
         Width = 170
+        WordWrap = False
       end
       item
         Color = 15722984
@@ -331,6 +359,7 @@ object BonCtrGestionF: TBonCtrGestionF
         Title.Font.Style = []
         Title.Font.Quality = fqProof
         Width = 170
+        WordWrap = False
       end
       item
         DisplayFormat = '#,##0.00'
@@ -354,6 +383,7 @@ object BonCtrGestionF: TBonCtrGestionF
         Title.Font.Style = []
         Title.Font.Quality = fqProof
         Width = 170
+        WordWrap = False
       end
       item
         DisplayFormat = '0.00 %'
@@ -370,6 +400,13 @@ object BonCtrGestionF: TBonCtrGestionF
         TextEditing = False
         Title.Alignment = taCenter
         Title.Caption = 'Marge %'
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = 4207405
+        Title.Font.Height = 19
+        Title.Font.Name = 'Helvetica LT Std'
+        Title.Font.Style = []
+        Title.Font.Quality = fqProof
+        WordWrap = False
       end>
     object RowDetailData: TRowDetailPanelControlEh
     end
@@ -435,7 +472,7 @@ object BonCtrGestionF: TBonCtrGestionF
       ShowHint = True
       Spacing = -1
       OnClick = ListAddProduitBonCtrGBtnClick
-      Version = '1.6.1.1'
+      Version = '1.6.1.2'
       TMSStyle = 0
     end
     object NewAddProduitBonCtrGBtn: TAdvToolButton
@@ -468,7 +505,7 @@ object BonCtrGestionF: TBonCtrGestionF
       ShowHint = True
       Spacing = -1
       OnClick = NewAddProduitBonCtrGBtnClick
-      Version = '1.6.1.1'
+      Version = '1.6.1.2'
       TMSStyle = 0
     end
     object EnterAddProduitBonCtrGBtn: TAdvToolButton
@@ -500,7 +537,7 @@ object BonCtrGestionF: TBonCtrGestionF
       ShowHint = True
       Spacing = -1
       OnClick = EnterAddProduitBonCtrGBtnClick
-      Version = '1.6.1.1'
+      Version = '1.6.1.2'
       TMSStyle = 0
     end
     object Label20: TLabel
@@ -538,8 +575,8 @@ object BonCtrGestionF: TBonCtrGestionF
       Visible = False
       OnClick = ClearProduitBonCtrGBtnClick
       SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
       ImageIndex = 16
+      Images = MainForm.PanelIcons24
     end
     object ShowCalculaturBonCtrGBtn: TsSpeedButton
       Left = 960
@@ -552,8 +589,8 @@ object BonCtrGestionF: TBonCtrGestionF
       ShowHint = True
       OnClick = ShowCalculaturBonCtrGBtnClick
       SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
       ImageIndex = 24
+      Images = MainForm.PanelIcons24
     end
     object ShowKeyBoardBonCtrGBtn: TsSpeedButton
       Left = 996
@@ -566,8 +603,8 @@ object BonCtrGestionF: TBonCtrGestionF
       ShowHint = True
       OnClick = ShowKeyBoardBonCtrGBtnClick
       SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
       ImageIndex = 43
+      Images = MainForm.PanelIcons24
     end
     object DeleteProduitBonCtrGBtn: TsSpeedButton
       Left = 888
@@ -581,8 +618,8 @@ object BonCtrGestionF: TBonCtrGestionF
       Visible = False
       OnClick = DeleteProduitBonCtrGBtnClick
       SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
       ImageIndex = 14
+      Images = MainForm.PanelIcons24
     end
     object CloseBonCtrGBtn: TsSpeedButton
       Left = 1068
@@ -595,8 +632,8 @@ object BonCtrGestionF: TBonCtrGestionF
       ShowHint = True
       OnClick = CloseBonCtrGBtnClick
       SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
       ImageIndex = 45
+      Images = MainForm.PanelIcons24
     end
     object MinimizeBonCtrGBtn: TsSpeedButton
       Left = 1032
@@ -609,8 +646,8 @@ object BonCtrGestionF: TBonCtrGestionF
       ShowHint = True
       OnClick = MinimizeBonCtrGBtnClick
       SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
       ImageIndex = 44
+      Images = MainForm.PanelIcons24
     end
     object sImage1: TsImage
       Left = 839
@@ -726,7 +763,7 @@ object BonCtrGestionF: TBonCtrGestionF
       Height = 2
       Align = alBottom
       BevelOuter = bvNone
-      Color = 4666873
+      Color = 52377
       ParentBackground = False
       TabOrder = 1
     end
@@ -898,7 +935,7 @@ object BonCtrGestionF: TBonCtrGestionF
       Height = 2
       Align = alBottom
       BevelOuter = bvNone
-      Color = 4666873
+      Color = 52377
       ParentBackground = False
       TabOrder = 0
     end
@@ -910,7 +947,7 @@ object BonCtrGestionF: TBonCtrGestionF
     Height = 471
     Align = alRight
     BevelOuter = bvNone
-    Color = 4666873
+    Color = 52377
     ParentBackground = False
     TabOrder = 3
   end
@@ -921,7 +958,7 @@ object BonCtrGestionF: TBonCtrGestionF
     Height = 2
     Align = alBottom
     BevelOuter = bvNone
-    Color = 4666873
+    Color = 52377
     ParentBackground = False
     TabOrder = 4
   end
@@ -932,7 +969,7 @@ object BonCtrGestionF: TBonCtrGestionF
     Height = 471
     Align = alLeft
     BevelOuter = bvNone
-    Color = 4666873
+    Color = 52377
     ParentBackground = False
     TabOrder = 2
   end
@@ -974,8 +1011,8 @@ object BonCtrGestionF: TBonCtrGestionF
         ShowHint = True
         OnClick = sSpeedButton4Click
         SkinData.SkinSection = 'SPEEDBUTTON'
-        Images = MainForm.ComptoiIcons48
         ImageIndex = 3
+        Images = MainForm.ComptoiIcons48
       end
       object sSpeedButton5: TsSpeedButton
         Left = 89
@@ -987,8 +1024,8 @@ object BonCtrGestionF: TBonCtrGestionF
         ShowHint = True
         OnClick = sSpeedButton5Click
         SkinData.SkinSection = 'SPEEDBUTTON'
-        Images = MainForm.ComptoiIcons48
         ImageIndex = 2
+        Images = MainForm.ComptoiIcons48
         ShowCaption = False
       end
       object sSpeedButton6: TsSpeedButton
@@ -1001,8 +1038,8 @@ object BonCtrGestionF: TBonCtrGestionF
         ShowHint = True
         OnClick = sSpeedButton6Click
         SkinData.SkinSection = 'SPEEDBUTTON'
-        Images = MainForm.ComptoiIcons48
         ImageIndex = 1
+        Images = MainForm.ComptoiIcons48
       end
       object sSpeedButton7: TsSpeedButton
         Left = 3
@@ -1014,8 +1051,8 @@ object BonCtrGestionF: TBonCtrGestionF
         ShowHint = True
         OnClick = sSpeedButton7Click
         SkinData.SkinSection = 'SPEEDBUTTON'
-        Images = MainForm.ComptoiIcons48
         ImageIndex = 0
+        Images = MainForm.ComptoiIcons48
         ShowCaption = False
       end
       object Panel14: TPanel
@@ -1028,7 +1065,7 @@ object BonCtrGestionF: TBonCtrGestionF
         BevelEdges = []
         BevelOuter = bvNone
         BiDiMode = bdLeftToRight
-        Color = 4666873
+        Color = 52377
         Ctl3D = True
         DoubleBuffered = False
         Font.Charset = DEFAULT_CHARSET
@@ -1054,7 +1091,7 @@ object BonCtrGestionF: TBonCtrGestionF
       Height = 2
       Align = alTop
       BevelOuter = bvNone
-      Color = 4666873
+      Color = 52377
       ParentBackground = False
       TabOrder = 1
     end
@@ -1068,7 +1105,7 @@ object BonCtrGestionF: TBonCtrGestionF
       BevelEdges = []
       BevelOuter = bvNone
       BiDiMode = bdLeftToRight
-      Color = 4666873
+      Color = 52377
       Ctl3D = True
       DoubleBuffered = False
       Font.Charset = DEFAULT_CHARSET
@@ -1146,7 +1183,7 @@ object BonCtrGestionF: TBonCtrGestionF
         BevelEdges = []
         BevelOuter = bvNone
         BiDiMode = bdLeftToRight
-        Color = 4666873
+        Color = 52377
         Ctl3D = True
         DoubleBuffered = False
         Font.Charset = DEFAULT_CHARSET
@@ -1189,8 +1226,8 @@ object BonCtrGestionF: TBonCtrGestionF
         ShowHint = True
         OnClick = sSpeedButton2Click
         SkinData.SkinSection = 'SPEEDBUTTON'
-        Images = MainForm.ComptoiIcons48
         ImageIndex = 6
+        Images = MainForm.ComptoiIcons48
         ExplicitLeft = 102
       end
       object sSpeedButton1: TsSpeedButton
@@ -1204,8 +1241,8 @@ object BonCtrGestionF: TBonCtrGestionF
         ShowHint = True
         OnClick = sSpeedButton1Click
         SkinData.SkinSection = 'SPEEDBUTTON'
-        Images = MainForm.ComptoiIcons48
         ImageIndex = 5
+        Images = MainForm.ComptoiIcons48
         ExplicitLeft = 59
       end
       object PrintTicketBVCtrBonCtrGBtn: TsSpeedButton
@@ -1219,14 +1256,14 @@ object BonCtrGestionF: TBonCtrGestionF
         ShowHint = True
         OnClick = PrintTicketBVCtrBonCtrGBtnClick
         SkinData.SkinSection = 'SPEEDBUTTON'
-        Images = MainForm.ComptoiIcons48
         ImageIndex = 4
+        Images = MainForm.ComptoiIcons48
         ExplicitLeft = 16
       end
       object RegleVersementSGLbl: TLabel
         Left = 3
         Top = 6
-        Width = 80
+        Width = 90
         Height = 14
         Anchors = [akLeft, akBottom]
         Caption = 'impression Auto:'
@@ -1250,7 +1287,7 @@ object BonCtrGestionF: TBonCtrGestionF
         BevelEdges = []
         BevelOuter = bvNone
         BiDiMode = bdLeftToRight
-        Color = 4666873
+        Color = 52377
         Ctl3D = True
         DoubleBuffered = False
         Font.Charset = DEFAULT_CHARSET
@@ -1311,7 +1348,7 @@ object BonCtrGestionF: TBonCtrGestionF
       BevelEdges = []
       BevelOuter = bvNone
       BiDiMode = bdLeftToRight
-      Color = 4666873
+      Color = 52377
       Ctl3D = True
       DoubleBuffered = False
       Font.Charset = DEFAULT_CHARSET
@@ -1425,7 +1462,7 @@ object BonCtrGestionF: TBonCtrGestionF
           ShowHint = True
           Spacing = -1
           OnClick = AddBVCtrBonCtrGBtnClick
-          Version = '1.6.1.1'
+          Version = '1.6.1.2'
           TMSStyle = 0
         end
         object EditBVCtrBonCtrGBtn: TAdvToolButton
@@ -1464,7 +1501,7 @@ object BonCtrGestionF: TBonCtrGestionF
           ShowHint = True
           Spacing = -1
           OnClick = EditBVCtrBonCtrGBtnClick
-          Version = '1.6.1.1'
+          Version = '1.6.1.2'
           ExplicitWidth = 220
           TMSStyle = 0
         end
@@ -1504,7 +1541,7 @@ object BonCtrGestionF: TBonCtrGestionF
           ShowHint = True
           Spacing = -1
           OnClick = ValiderBVCtrBonCtrGBtnClick
-          Version = '1.6.1.1'
+          Version = '1.6.1.2'
           ExplicitWidth = 220
           TMSStyle = 0
         end
@@ -1544,7 +1581,7 @@ object BonCtrGestionF: TBonCtrGestionF
           ShowHint = True
           Spacing = -1
           OnClick = ExValiderBVCtrBonCtrGBtnClick
-          Version = '1.6.1.1'
+          Version = '1.6.1.2'
           TMSStyle = 0
         end
       end
@@ -1567,7 +1604,7 @@ object BonCtrGestionF: TBonCtrGestionF
       Height = 139
       Align = alLeft
       BevelOuter = bvNone
-      Color = 4666873
+      Color = 52377
       ParentBackground = False
       TabOrder = 0
     end
@@ -1585,7 +1622,7 @@ object BonCtrGestionF: TBonCtrGestionF
         Left = 8
         Top = 22
         Width = 44
-        Height = 18
+        Height = 19
         Caption = 'Client:'
         Color = 4207405
         Font.Charset = DEFAULT_CHARSET
@@ -1625,7 +1662,8 @@ object BonCtrGestionF: TBonCtrGestionF
         Shaded = False
         ShowHint = True
         Spacing = -1
-        Version = '1.6.1.1'
+        OnClick = AddClientBonCtrGBtnClick
+        Version = '1.6.1.2'
         TMSStyle = 0
       end
       object RequiredClientGlbl: TLabel
@@ -1672,7 +1710,7 @@ object BonCtrGestionF: TBonCtrGestionF
         Height = 2
         Align = alBottom
         BevelOuter = bvNone
-        Color = 4666873
+        Color = 52377
         ParentBackground = False
         TabOrder = 0
       end
@@ -1683,7 +1721,7 @@ object BonCtrGestionF: TBonCtrGestionF
         Height = 60
         Align = alLeft
         BevelOuter = bvNone
-        Color = 4666873
+        Color = 52377
         ParentBackground = False
         TabOrder = 1
       end
@@ -1723,7 +1761,7 @@ object BonCtrGestionF: TBonCtrGestionF
       object Label18: TLabel
         Left = 8
         Top = 7
-        Width = 70
+        Width = 71
         Height = 21
         Caption = 'Montant:'
         Font.Charset = DEFAULT_CHARSET
@@ -1737,7 +1775,7 @@ object BonCtrGestionF: TBonCtrGestionF
         Left = 226
         Top = 3
         Width = 14
-        Height = 28
+        Height = 30
         Alignment = taRightJustify
         Caption = '0'
         Font.Charset = DEFAULT_CHARSET
@@ -1750,7 +1788,7 @@ object BonCtrGestionF: TBonCtrGestionF
       object Labell20: TLabel
         Left = 8
         Top = 82
-        Width = 50
+        Width = 48
         Height = 21
         Caption = 'Verse:'
         Font.Charset = DEFAULT_CHARSET
@@ -1764,7 +1802,7 @@ object BonCtrGestionF: TBonCtrGestionF
         Left = 226
         Top = 78
         Width = 14
-        Height = 28
+        Height = 30
         Alignment = taRightJustify
         Caption = '0'
         Font.Charset = DEFAULT_CHARSET
@@ -1777,7 +1815,7 @@ object BonCtrGestionF: TBonCtrGestionF
       object Label22: TLabel
         Left = 8
         Top = 44
-        Width = 65
+        Width = 61
         Height = 21
         Caption = 'Remise:'
         Font.Charset = DEFAULT_CHARSET
@@ -1790,7 +1828,7 @@ object BonCtrGestionF: TBonCtrGestionF
       object Label23: TLabel
         Left = 8
         Top = 119
-        Width = 58
+        Width = 54
         Height = 21
         Caption = 'Rendu:'
         Font.Charset = DEFAULT_CHARSET
@@ -1804,7 +1842,7 @@ object BonCtrGestionF: TBonCtrGestionF
         Left = 226
         Top = 115
         Width = 14
-        Height = 28
+        Height = 30
         Alignment = taRightJustify
         Caption = '0'
         Font.Charset = DEFAULT_CHARSET
@@ -1819,7 +1857,7 @@ object BonCtrGestionF: TBonCtrGestionF
         Left = 230
         Top = 46
         Width = 10
-        Height = 16
+        Height = 17
         Margins.Left = 0
         Margins.Top = 0
         Margins.Right = 0
@@ -1845,7 +1883,7 @@ object BonCtrGestionF: TBonCtrGestionF
         Height = 2
         Align = alBottom
         BevelOuter = bvNone
-        Color = 4666873
+        Color = 52377
         ParentBackground = False
         TabOrder = 0
       end
@@ -1856,7 +1894,7 @@ object BonCtrGestionF: TBonCtrGestionF
         Height = 153
         Align = alLeft
         BevelOuter = bvNone
-        Color = 4666873
+        Color = 52377
         ParentBackground = False
         TabOrder = 1
       end
@@ -1916,7 +1954,7 @@ object BonCtrGestionF: TBonCtrGestionF
       object Label2: TLabel
         Left = 8
         Top = 7
-        Width = 62
+        Width = 58
         Height = 21
         Caption = 'Bon N'#176':'
         Font.Charset = DEFAULT_CHARSET
@@ -1927,9 +1965,9 @@ object BonCtrGestionF: TBonCtrGestionF
         ParentFont = False
       end
       object NumBonCtrGEdt: TLabel
-        Left = 235
+        Left = 236
         Top = 7
-        Width = 5
+        Width = 4
         Height = 21
         Alignment = taRightJustify
         Font.Charset = DEFAULT_CHARSET
@@ -1942,7 +1980,7 @@ object BonCtrGestionF: TBonCtrGestionF
       object Label4: TLabel
         Left = 8
         Top = 80
-        Width = 43
+        Width = 41
         Height = 21
         Caption = 'Date:'
         Font.Charset = DEFAULT_CHARSET
@@ -1955,7 +1993,7 @@ object BonCtrGestionF: TBonCtrGestionF
       object Label7: TLabel
         Left = 8
         Top = 44
-        Width = 54
+        Width = 50
         Height = 21
         Caption = 'Heure:'
         Font.Charset = DEFAULT_CHARSET
@@ -1966,9 +2004,9 @@ object BonCtrGestionF: TBonCtrGestionF
         ParentFont = False
       end
       object HourBonCtrGD: TLabel
-        Left = 235
+        Left = 236
         Top = 44
-        Width = 5
+        Width = 4
         Height = 21
         Alignment = taRightJustify
         Font.Charset = DEFAULT_CHARSET
@@ -1985,7 +2023,7 @@ object BonCtrGestionF: TBonCtrGestionF
         Height = 2
         Align = alBottom
         BevelOuter = bvNone
-        Color = 4666873
+        Color = 52377
         ParentBackground = False
         TabOrder = 0
       end
@@ -1996,7 +2034,7 @@ object BonCtrGestionF: TBonCtrGestionF
         Height = 113
         Align = alLeft
         BevelOuter = bvNone
-        Color = 4666873
+        Color = 52377
         ParentBackground = False
         TabOrder = 1
       end
@@ -2074,7 +2112,7 @@ object BonCtrGestionF: TBonCtrGestionF
           Title.Font.Style = []
           ToolTips = True
           Width = 300
-          WordWrap = False
+          WordWrap = True
         end>
       object RowDetailData: TRowDetailPanelControlEh
       end
@@ -2189,7 +2227,7 @@ object BonCtrGestionF: TBonCtrGestionF
     Top = 512
   end
   object ComptoirTicketfrxRprt: TfrxReport
-    Version = '5.4.6'
+    Version = '5.5'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick, pbNoClose, pbNoFullScreen, pbNoEmail]
@@ -2198,7 +2236,7 @@ object BonCtrGestionF: TBonCtrGestionF
     PrintOptions.PrintOnSheet = 0
     PrintOptions.ShowDialog = False
     ReportOptions.CreateDate = 41863.570242476900000000
-    ReportOptions.LastChange = 42647.665211296300000000
+    ReportOptions.LastChange = 42655.059784629630000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       '//procedure Page1OnBeforePrint(Sender: TfrxComponent);'
@@ -2322,22 +2360,24 @@ object BonCtrGestionF: TBonCtrGestionF
         Font.Height = -9
         Font.Name = 'Arial'
         Font.Style = [fsBold]
-        Height = 28.826840000000000000
+        Height = 28.708720000000000000
         ParentFont = False
         Top = 173.858380000000000000
         Width = 275.905690000000000000
         OnBeforePrint = 'PageHeader1OnBeforePrint'
+        Stretched = True
         object Memo18: TfrxMemoView
           Left = 208.031496060000000000
-          Top = 15.976377950000000000
+          Top = 8.976377950000000000
           Width = 60.472443390000000000
-          Height = 11.716535430000000000
+          Height = 19.275595430000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -15
           Font.Name = 'Merchant Copy'
           Font.Style = [fsBold]
           Frame.Style = fsDashDot
+          GapY = 4.000000000000000000
           HAlign = haRight
           Memo.UTF8W = (
             'TOTAL')
@@ -2345,15 +2385,16 @@ object BonCtrGestionF: TBonCtrGestionF
         end
         object Memo4: TfrxMemoView
           Left = 148.960730000000000000
-          Top = 15.976377950000000000
+          Top = 8.976377950000000000
           Width = 58.582677170000000000
-          Height = 11.716535430000000000
+          Height = 19.275595430000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -15
           Font.Name = 'Merchant Copy'
           Font.Style = [fsBold]
           Frame.Style = fsDashDot
+          GapY = 4.000000000000000000
           HAlign = haRight
           Memo.UTF8W = (
             'P.U')
@@ -2361,15 +2402,16 @@ object BonCtrGestionF: TBonCtrGestionF
         end
         object Memo5: TfrxMemoView
           Left = 109.385924410000000000
-          Top = 15.976377950000000000
+          Top = 8.976377950000000000
           Width = 39.685036930000000000
-          Height = 11.716535430000000000
+          Height = 19.275595430000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -15
           Font.Name = 'Merchant Copy'
           Font.Style = [fsBold]
           Frame.Style = fsDashDot
+          GapY = 4.000000000000000000
           HAlign = haCenter
           Memo.UTF8W = (
             'QTE')
@@ -2377,15 +2419,16 @@ object BonCtrGestionF: TBonCtrGestionF
         end
         object Memo2: TfrxMemoView
           Left = 1.889763780000000000
-          Top = 15.976377950000000000
+          Top = 8.976377950000000000
           Width = 108.094478430000000000
-          Height = 11.716535430000000000
+          Height = 19.275595430000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -15
           Font.Name = 'Merchant Copy'
           Font.Style = [fsBold]
           Frame.Style = fsDash
+          GapY = 4.000000000000000000
           Memo.UTF8W = (
             'DESCRIPTION')
           ParentFont = False
@@ -2536,6 +2579,7 @@ object BonCtrGestionF: TBonCtrGestionF
         Width = 275.905690000000000000
         OnAfterPrint = 'Footer1OnAfterPrint'
         OnBeforePrint = 'Footer1OnBeforePrint'
+        Stretched = True
         object Memo61: TfrxMemoView
           Left = 139.070914960000000000
           Top = 4.425191970000000000
@@ -2766,9 +2810,10 @@ object BonCtrGestionF: TBonCtrGestionF
         end
         object Memo10: TfrxMemoView
           Left = 4.000000000000000000
-          Top = 127.504020000000000000
+          Top = 125.504020000000000000
           Width = 264.567100000000000000
-          Height = 15.118105350000000000
+          Height = 18.897635350000000000
+          StretchMode = smActualHeight
           DataSetName = 'S_CONFIG'
           Font.Charset = ANSI_CHARSET
           Font.Color = clWindowText
@@ -2786,6 +2831,7 @@ object BonCtrGestionF: TBonCtrGestionF
           Width = 64.251985590000000000
           Height = 11.716535430000000000
           OnBeforePrint = 'Memo11OnBeforePrint'
+          StretchMode = smActualHeight
           DataSet = frxComptoirDB
           DataSetName = 'frxComptoirDB'
           Font.Charset = DEFAULT_CHARSET
@@ -2802,6 +2848,7 @@ object BonCtrGestionF: TBonCtrGestionF
           Top = 147.110287480000000000
           Width = 49.133890000000000000
           Height = 11.716535430000000000
+          StretchMode = smActualHeight
           DataSet = frxComptoirDB
           DataSetName = 'frxComptoirDB'
           DisplayFormat.FormatStr = 'dd/mm/yyyy'
@@ -2820,6 +2867,7 @@ object BonCtrGestionF: TBonCtrGestionF
           Top = 147.110287480000000000
           Width = 64.252010000000000000
           Height = 11.716535430000000000
+          StretchMode = smActualHeight
           DataSet = frxComptoirDB
           DataSetName = 'frxComptoirDB'
           Font.Charset = DEFAULT_CHARSET
@@ -2850,6 +2898,7 @@ object BonCtrGestionF: TBonCtrGestionF
           Top = 147.110287480000000000
           Width = 69.921264720000000000
           Height = 11.716535430000000000
+          StretchMode = smActualHeight
           DataSet = frxComptoirDB
           DataSetName = 'frxComptoirDB'
           Font.Charset = DEFAULT_CHARSET
@@ -2878,6 +2927,7 @@ object BonCtrGestionF: TBonCtrGestionF
           Left = 3.779530000000000000
           Top = 108.826840000000000000
           Width = 264.567100000000000000
+          StretchMode = smActualHeight
           Color = clBlack
           Frame.Style = fsDash
           Frame.Typ = [ftTop]
@@ -2892,6 +2942,7 @@ object BonCtrGestionF: TBonCtrGestionF
           Left = 3.779530000000000000
           Top = 125.724490000000000000
           Width = 264.567100000000000000
+          StretchMode = smActualHeight
           Color = clBlack
           Frame.Style = fsDash
           Frame.Typ = [ftTop]
@@ -2950,6 +3001,7 @@ object BonCtrGestionF: TBonCtrGestionF
           Top = 147.110287480000000000
           Width = 27.212598430000000000
           Height = 11.716535430000000000
+          StretchMode = smActualHeight
           DataSet = frxComptoirDB
           DataSetName = 'frxComptoirDB'
           DisplayFormat.FormatStr = 'hh:mm'
@@ -2970,6 +3022,7 @@ object BonCtrGestionF: TBonCtrGestionF
         Top = 18.897650000000000000
         Width = 275.905690000000000000
         OnBeforePrint = 'ReportTitle1OnBeforePrint'
+        Stretched = True
         object Name: TfrxMemoView
           Align = baCenter
           Left = 7.559060000000000000

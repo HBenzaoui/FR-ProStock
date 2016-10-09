@@ -312,7 +312,6 @@ type
     Bonv_liv_listTableMontantTTC: TCurrencyField;
     Bonv_liv_listTablenomp: TStringField;
     Bonv_liv_listTablereferp: TStringField;
-    Bonv_liv_listTabletvap: TIntegerField;
     Bonv_liv_listTableTVA: TSingleField;
     Bonv_livTableCredit: TFDQuery;
     IntegerField3: TIntegerField;
@@ -399,7 +398,6 @@ type
     Bonv_fac_listTableMontantTTC: TCurrencyField;
     Bonv_fac_listTablenomp: TStringField;
     Bonv_fac_listTablereferp: TStringField;
-    Bonv_fac_listTabletvap: TIntegerField;
     Bonv_fac_listTableTVA: TSingleField;
     Button10: TButton;
     Bonv_fac_listTableprixvd_p: TCurrencyField;
@@ -419,12 +417,10 @@ type
     ClientTableadr_c: TWideStringField;
     ClientTableville_c: TWideStringField;
     ClientTablefix_c: TWideStringField;
-    ClientTablemob_c: TWideStringField;
     ClientTableemail_c: TWideStringField;
     ClientTablewillaya_c: TWideStringField;
     ClientTablefax_c: TWideStringField;
     ClientTableactiv_c: TBooleanField;
-    ClientTablelogo_c: TBlobField;
     ClientTablemob2_c: TWideStringField;
     ClientTablerc_c: TWideStringField;
     ClientTablenif_c: TWideStringField;
@@ -434,7 +430,6 @@ type
     ClientTablenbank_c: TWideStringField;
     ClientTablerib_c: TWideStringField;
     ClientTableactivite_c: TWideStringField;
-    ClientTablepays_c: TWideStringField;
     ClientTablesiteweb_c: TWideStringField;
     ClientTableoldcredit_c: TCurrencyField;
     ClientTablemaxcredit_c: TCurrencyField;
@@ -445,14 +440,12 @@ type
     FournisseurTableadr_f: TWideStringField;
     FournisseurTableville_f: TWideStringField;
     FournisseurTablewillaya_f: TWideStringField;
-    FournisseurTablepays_f: TWideStringField;
     FournisseurTablefix_f: TWideStringField;
     FournisseurTablemob_f: TWideStringField;
     FournisseurTablemob2_f: TWideStringField;
     FournisseurTablefax_f: TWideStringField;
     FournisseurTableemail_f: TWideStringField;
     FournisseurTableobser_f: TWideStringField;
-    FournisseurTablelogo_f: TBlobField;
     FournisseurTableactiv_f: TBooleanField;
     FournisseurTablerc_f: TWideStringField;
     FournisseurTablenif_f: TWideStringField;
@@ -519,7 +512,6 @@ type
     Bonv_ctr_listTableMontantTTC: TCurrencyField;
     Bonv_ctr_listTablenomp: TStringField;
     Bonv_ctr_listTablereferp: TStringField;
-    Bonv_ctr_listTabletvap: TCurrencyField;
     Bonv_ctr_listTableTVA: TCurrencyField;
     N14: TMenuItem;
     Ajouterunrglementclient1: TMenuItem;
@@ -688,8 +680,6 @@ type
     unit_ur: TCheckBox;
     local_ur: TCheckBox;
     Bona_recPlistTabletva_p: TSmallintField;
-    Bonv_liv_listTabletva_p: TSmallintField;
-    Bonv_ctr_listTabletva_p: TSmallintField;
     Bonv_liv_listTableMarge: TCurrencyField;
     Bonv_liv_listTableMontantAHT: TCurrencyField;
     Bonv_liv_listTableprixht_p: TCurrencyField;
@@ -728,7 +718,10 @@ type
     ProduitTableQutDispo: TFloatField;
     FDScript1: TFDScript;
     inserdata: TButton;
+    Bonv_liv_listTabletva_p: TSmallintField;
+    Bonv_ctr_listTabletva_p: TSmallintField;
     ProduitTabletva_p: TSmallintField;
+    ClientTablemob_c: TWideStringField;
     procedure ClientMainFBtnClick(Sender: TObject);
     procedure FourMainFBtnClick(Sender: TObject);
     procedure ProduitMainFBtnClick(Sender: TObject);
@@ -895,6 +888,37 @@ begin
   FreeAndNil(gGrayForms);
 end;
 
+function ExeAndWait(ExeNameAndParams: string; ncmdShow: Integer = SW_SHOWNORMAL): Integer;
+var
+    StartupInfo: TStartupInfo;
+    ProcessInformation: TProcessInformation;
+    Res: Bool;
+    lpExitCode: DWORD;
+begin
+    with StartupInfo do //you can play with this structure
+    begin
+        cb := SizeOf(TStartupInfo);
+        lpReserved := nil;
+        lpDesktop := nil;
+        lpTitle := nil;
+        dwFlags := STARTF_USESHOWWINDOW;
+        wShowWindow := ncmdShow;
+        cbReserved2 := 0;
+        lpReserved2 := nil;
+    end;
+    Res := CreateProcess(nil, PChar(ExeNameAndParams), nil, nil, True,
+        CREATE_DEFAULT_ERROR_MODE
+        or NORMAL_PRIORITY_CLASS, nil, nil, StartupInfo, ProcessInformation);
+    while True do
+    begin
+        GetExitCodeProcess(ProcessInformation.hProcess, lpExitCode);
+        if lpExitCode <> STILL_ACTIVE then
+            Break;
+        Application.ProcessMessages;
+    end;
+    Result := Integer(lpExitCode);
+end;
+
 
 procedure TMainForm.ClientMainFBtnClick(Sender: TObject);
 begin
@@ -971,12 +995,12 @@ Screen.MenuFont.Height := 15;
 Screen.MenuFont.Color:= $0040332D ;
 
 FDPhysPgDriverLink1.VendorLib:= 'C:\Program Files (x86)\PostgreSQL\9.6\bin\libpq.dll' ; // Eable this is only for Debuggin
-
 //FDPhysPgDriverLink1.VendorLib:= GetCurrentDir+'\bin\libpq.dll' ;    // Eable this is only for releasing
-
 //  sCmd := Pwidechar(GetCurrentDir+ '\bin\pg_s.bat' );                // Eable this is only for releasing
-//  ShellExecute(0, 'open', PChar(sCmd) , PChar(sCmd), nil, SW_HIDE);  // Eable this is only for releasing
+//  ShellExecute(0, 'open', PChar(sCmd) , PChar(sCmd), nil, SW_HIDE);  // Eable this is only for releasing 1 OR 2
+//  Sleep(1500);                                                       // Eable this is only for releasing
 
+//  ExeAndWait( GetCurrentDir+ '\bin\pg_s.bat', SW_HIDE);              // Eable this is only for releasing 1 OR 2
 
   GstockdcConnection.DriverName := 'PG';
   GstockdcConnection.Params.Values['Server'] :='localhost';
@@ -987,17 +1011,12 @@ FDPhysPgDriverLink1.VendorLib:= 'C:\Program Files (x86)\PostgreSQL\9.6\bin\libpq
 
    GstockdcConnection.Params.Values['Database'] := 'GSTOCKDC';
    GstockdcConnection.Connected:= True;
-//    Sleep(2000);                                                    // Eable this is only for releasing
-
 
 //   if NOT fileexists('Config') then
 //   begin
 
-
-//    CreateTablesFDScript.ExecuteAll;                                // Eable this is only for releasing
-//     Sleep(2000);      // just for the first time                   // Eable this is only for releasing
-
-
+//   CreateTablesFDScript.ExecuteAll;                                // Eable this is only for releasing
+//   Sleep(2000);      // just for the first time                   // Eable this is only for releasing
 
 //   end;
 
@@ -1006,8 +1025,6 @@ FDPhysPgDriverLink1.VendorLib:= 'C:\Program Files (x86)\PostgreSQL\9.6\bin\libpq
 //    Ini.WriteBool(Caption,   'DB', True);
 //    Ini.Free;
 //  end;
-
-     // Enable this is only for releasing
 
   Application.UpdateFormatSettings := false;
   FormatSettings.DecimalSeparator := ',';
@@ -1067,29 +1084,58 @@ begin
 
  if  Bona_recPlistTable.FieldValues['prixvd_p'] <> 0 then
  begin
+  if  Bona_recPlistTable.FieldValues['prixht_p'] <> 0 then
+ begin
       Bona_recPlistTable.FieldValues['MargeD']:=
 ((((Bona_recPlistTable.FieldValues['prixvd_p']) - (Bona_recPlistTable.FieldValues['prixht_p'])) / (Bona_recPlistTable.FieldValues['prixht_p']) ) * 100) ;
+ end else
+     begin
+      Bona_recPlistTable.FieldValues['MargeD']:= 100; 
+     end;
  end;
 
   if  Bona_recPlistTable.FieldValues['prixvr_p'] <> 0 then
  begin
+   if  Bona_recPlistTable.FieldValues['prixht_p'] <> 0 then  begin
       Bona_recPlistTable.FieldValues['MargeR']:=
 ((((Bona_recPlistTable.FieldValues['prixvr_p']) - (Bona_recPlistTable.FieldValues['prixht_p'])) / (Bona_recPlistTable.FieldValues['prixht_p']) ) * 100) ;
+ end  else
+      begin
+        Bona_recPlistTable.FieldValues['MargeR']:= 100;
+      end;
  end;
    if  Bona_recPlistTable.FieldValues['prixvg_p'] <> 0 then
  begin
+    if  Bona_recPlistTable.FieldValues['prixht_p'] <> 0 then
+ begin
       Bona_recPlistTable.FieldValues['MargeG']:=
 ((((Bona_recPlistTable.FieldValues['prixvg_p']) - (Bona_recPlistTable.FieldValues['prixht_p'])) / (Bona_recPlistTable.FieldValues['prixht_p']) ) * 100) ;
+ end else
+     begin
+         Bona_recPlistTable.FieldValues['MargeG']:= 100;
+     end;
  end;
    if  Bona_recPlistTable.FieldValues['prixva_p'] <> 0 then
  begin
+    if  Bona_recPlistTable.FieldValues['prixht_p'] <> 0 then
+ begin
       Bona_recPlistTable.FieldValues['MargeA']:=
 ((((Bona_recPlistTable.FieldValues['prixva_p']) - (Bona_recPlistTable.FieldValues['prixht_p'])) / (Bona_recPlistTable.FieldValues['prixht_p']) ) * 100) ;
+ end else
+     begin
+       Bona_recPlistTable.FieldValues['MargeA']:= 100;
+     end;
  end;
    if  Bona_recPlistTable.FieldValues['prixva2_p'] <> 0 then
  begin
+    if  Bona_recPlistTable.FieldValues['prixht_p'] <> 0 then
+ begin
       Bona_recPlistTable.FieldValues['MargeA2']:=
 ((((Bona_recPlistTable.FieldValues['prixva2_p']) - (Bona_recPlistTable.FieldValues['prixht_p'])) / (Bona_recPlistTable.FieldValues['prixht_p']) ) * 100) ;
+ end else
+     begin
+       Bona_recPlistTable.FieldValues['MargeA2']:= 100;
+     end;
  end;
 
 end;
@@ -1358,8 +1404,13 @@ begin
 
   if  Bonv_liv_listTable.FieldValues['prixvd_p'] <> 0 then
  begin
+    if  Bonv_liv_listTable.FieldValues['MontantAHT'] <> 0 then begin
      Bonv_liv_listTable.FieldValues['Marge']:=
 ((((Bonv_liv_listTable.FieldValues['MontantHT']) - (Bonv_liv_listTable.FieldValues['MontantAHT'])) / (Bonv_liv_listTable.FieldValues['MontantAHT']) ) * 100) ;
+    end else
+        begin
+          Bonv_liv_listTable.FieldValues['Marge']:=100;
+        end;
   end;
     Bonv_liv_listTable.FieldValues['MargeM']:=
  ((Bonv_liv_listTable.FieldValues['MontantHT']) - (Bonv_liv_listTable.FieldValues['MontantAHT'])) ;
@@ -1560,8 +1611,13 @@ begin
 
    if  Bonv_Fac_listTable.FieldValues['prixvd_p'] <> 0 then
  begin
+ if  Bonv_Fac_listTable.FieldValues['MontantAHT'] <> 0 then begin
      Bonv_Fac_listTable.FieldValues['Marge']:=
 ((((Bonv_Fac_listTable.FieldValues['MontantHT']) - (Bonv_Fac_listTable.FieldValues['MontantAHT'])) / (Bonv_Fac_listTable.FieldValues['MontantAHT']) ) * 100) ;
+ end else
+     begin
+        Bonv_Fac_listTable.FieldValues['Marge']:= 100;
+     end;
  end;
 
     Bonv_Fac_listTable.FieldValues['MargeM']:=
@@ -1722,28 +1778,58 @@ begin
 
    if  Bona_fac_listTable.FieldValues['prixvd_p'] <> 0 then
  begin
+    if  Bona_fac_listTable.FieldValues['prixht_p'] <> 0 then
+ begin
        Bona_fac_listTable.FieldValues['MargeD']:=
 ((((Bona_fac_listTable.FieldValues['prixvd_p']) - (Bona_fac_listTable.FieldValues['prixht_p'])) / (Bona_fac_listTable.FieldValues['prixht_p']) ) * 100) ;
+ end else
+     begin
+        Bona_fac_listTable.FieldValues['MargeD']:= 100;
+     end;
  end;
    if  Bona_fac_listTable.FieldValues['prixvr_p'] <> 0 then
  begin
+    if  Bona_fac_listTable.FieldValues['prixht_p'] <> 0 then
+ begin
       Bona_fac_listTable.FieldValues['MargeR']:=
 ((((Bona_fac_listTable.FieldValues['prixvr_p']) - (Bona_fac_listTable.FieldValues['prixht_p'])) / (Bona_fac_listTable.FieldValues['prixht_p']) ) * 100) ;
+ end else
+     begin
+      Bona_fac_listTable.FieldValues['MargeR']:= 100; 
+     end;
  end;
    if  Bona_fac_listTable.FieldValues['prixvg_p'] <> 0 then
  begin
+    if  Bona_fac_listTable.FieldValues['prixht_p'] <> 0 then
+ begin
       Bona_fac_listTable.FieldValues['MargeG']:=
 ((((Bona_fac_listTable.FieldValues['prixvg_p']) - (Bona_fac_listTable.FieldValues['prixht_p'])) / (Bona_fac_listTable.FieldValues['prixht_p']) ) * 100) ;
+ end else
+     begin
+      Bona_fac_listTable.FieldValues['MargeG']:= 100; 
+     end;
  end;
    if  Bona_fac_listTable.FieldValues['prixva_p'] <> 0 then
  begin
+    if  Bona_fac_listTable.FieldValues['prixht_p'] <> 0 then
+ begin
       Bona_fac_listTable.FieldValues['MargeA']:=
 ((((Bona_fac_listTable.FieldValues['prixva_p']) - (Bona_fac_listTable.FieldValues['prixht_p'])) / (Bona_fac_listTable.FieldValues['prixht_p']) ) * 100) ;
+ end else
+     begin
+       Bona_fac_listTable.FieldValues['MargeA']:= 100; 
+     end;
  end;
    if  Bona_fac_listTable.FieldValues['prixva2_p'] <> 0 then
  begin
+    if  Bona_fac_listTable.FieldValues['prixht_p'] <> 0 then
+ begin
       Bona_fac_listTable.FieldValues['MargeA2']:=
 ((((Bona_fac_listTable.FieldValues['prixva2_p']) - (Bona_fac_listTable.FieldValues['prixht_p'])) / (Bona_fac_listTable.FieldValues['prixht_p']) ) * 100) ;
+ end else
+     begin
+       Bona_fac_listTable.FieldValues['MargeA2']:=100;
+     end;
  end;
 
 
@@ -1873,15 +1959,15 @@ begin
 ((Bonv_ctrTable.FieldValues['montttc_bvctr']) - ((Bonv_ctrTable.FieldValues['montht_bvctr'])-(Bonv_ctrTable.FieldValues['remise_bvctr']))) ;
 
 
- if (Bonv_ctrTable.FieldValues['montver_bvctr']) > (Bonv_ctrTable.FieldValues['montttc_bvctr']) then
+// if (Bonv_ctrTable.FieldValues['montver_bvctr']) > (Bonv_ctrTable.FieldValues['montttc_bvctr']) then
 
  begin
     Bonv_ctrTable.FieldValues['MontantRen']:=
   ((Bonv_ctrTable.FieldValues['montver_bvctr']) - (Bonv_ctrTable.FieldValues['montttc_bvctr'])) ;
- end else
-     begin
-      Bonv_ctrTable.FieldValues['MontantRen']:=0;
-     end;
+ end;// else
+//     begin
+   //   Bonv_ctrTable.FieldValues['MontantRen']:=0;
+   //  end;
 
   if ((Bonv_ctrTable.FieldByName('remise_bvctr').AsCurrency) <> 0 ) AND  ((Bonv_ctrTable.FieldByName('montht_bvctr').AsCurrency) <> 0) then
   begin
@@ -1903,10 +1989,8 @@ var TotalHT,TotalTVA,TVA,TotalTTC,LeRendu,Regle,Marge: Currency;
   begin
    if Assigned(BonCtrGestionF) then
   begin
-
       MainForm.Bonv_ctr_listTable.DisableControls;
       MainForm.Bonv_ctr_listTable.First;
-
       while not MainForm.Bonv_ctr_listTable.Eof do
       begin
         TotalHT:= TotalHT + (MainForm.Bonv_ctr_listTable.FieldValues['MontantHT'] );
@@ -1924,7 +2008,6 @@ var TotalHT,TotalTVA,TVA,TotalTTC,LeRendu,Regle,Marge: Currency;
 
          MainForm.Bonv_ctr_listTable.EnableControls;
 
-
   MainForm.Bonv_ctr_listTable.EnableControls;
 
    BonCtrGestionF.BonCtrTotalHTLbl.Caption :=    CurrToStrF((TotalHT),ffNumber,2) ;
@@ -1938,7 +2021,6 @@ var TotalHT,TotalTVA,TVA,TotalTTC,LeRendu,Regle,Marge: Currency;
     begin
        BonCtrGestionF.BonCtrRenduLbl.Caption :=     CurrToStrF((0),ffNumber,2) ;
     end;
-
 
    BonCtrGestionF.BonCTotalTTCNewLbl.Caption :=  CurrToStrF(((TotalTTC)),ffNumber,2) ;
    BonCtrGestionF.BonCTotalHTNewLbl.Caption :=   CurrToStrF(((TotalHT)),ffNumber,2) ;
@@ -1972,10 +2054,8 @@ begin
    Bonv_ctr_listTable.FieldValues['MontantHT']:=
  ((Bonv_ctr_listTable.FieldValues['prixvd_p'] * Bonv_ctr_listTable.FieldValues['qut_p']) * (Bonv_ctr_listTable.FieldValues['cond_p']) ) ;
 
-
    Bonv_ctr_listTable.FieldValues['MontantTTC']:=
  ((Bonv_ctr_listTable.FieldValues['PrixVTTC'] * Bonv_ctr_listTable.FieldValues['qut_p']) * (Bonv_ctr_listTable.FieldValues['cond_p']) ) ;
-
 
     Bonv_ctr_listTable.FieldValues['MontantTVA']:=
  ((Bonv_ctr_listTable.FieldValues['MontantTTC']) - (Bonv_ctr_listTable.FieldValues['MontantHT'])) ;
@@ -1985,8 +2065,13 @@ begin
 
     if  Bonv_ctr_listTable.FieldValues['prixvd_p'] <> 0 then
  begin
+ if  Bonv_ctr_listTable.FieldValues['MontantAHT'] <> 0 then  begin
      Bonv_ctr_listTable.FieldValues['Marge']:=
 ((((Bonv_ctr_listTable.FieldValues['MontantHT']) - (Bonv_ctr_listTable.FieldValues['MontantAHT'])) / (Bonv_ctr_listTable.FieldValues['MontantAHT']) ) * 100) ;
+ end else
+     begin
+      Bonv_ctr_listTable.FieldValues['Marge']:= 100; 
+     end;
  end;
 
     Bonv_ctr_listTable.FieldValues['MargeM']:=
@@ -2030,7 +2115,6 @@ begin
     RegfournisseurTable.Active := True;
 
     CompanyTable.Active := True;
-
 
     if UserTypeLbl.Caption <> '0' then
       begin

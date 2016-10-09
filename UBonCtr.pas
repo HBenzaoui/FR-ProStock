@@ -59,6 +59,12 @@ type
     procedure sSpeedButton1Click(Sender: TObject);
     procedure sSpeedButton3Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure BVCtrListDBGridEhDrawColumnCell(Sender: TObject;
+      const Rect: TRect; DataCol: Integer; Column: TColumnEh;
+      State: TGridDrawState);
+    procedure BVCtrListDBGridEhKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure BVCtrListDBGridEhKeyPress(Sender: TObject; var Key: Char);
   private
     procedure GettingData;
     { Private declarations }
@@ -72,7 +78,7 @@ var
 implementation
 
 uses
-  UMainF, USplashVersement, UComptoir, USplashAddUnite, USplash,
+  UMainF, USplashVersement, UComptoir, USplashAddUnite, USplash,Threading,
   UClientGestion;
 
 {$R *.dfm}
@@ -82,15 +88,15 @@ var
   codeCT : integer;
 
   begin
-  MainForm.Bonv_ctr_listTable.Active:=False;
- MainForm.Bonv_ctr_listTable.IndexFieldNames:='';
- MainForm.Bonv_CtrTable.DisableControls;
-MainForm.Bonv_CtrTable.Active:= False;
-MainForm.Bonv_CtrTable.SQL.clear;
-mainform.Bonv_CtrTable.sql.Text:='SELECT * FROM bonv_ctr ';
-MainForm.Bonv_CtrTable.Active:= True;
-//MainForm.Bonv_CtrTable.EnableControls;
 
+   MainForm.Bonv_ctr_listTable.Active:=False;
+   MainForm.Bonv_ctr_listTable.IndexFieldNames:='';
+   MainForm.Bonv_CtrTable.DisableControls;
+   MainForm.Bonv_CtrTable.Active:= False;
+   MainForm.Bonv_CtrTable.SQL.clear;
+   mainform.Bonv_CtrTable.sql.Text:='SELECT * FROM bonv_ctr ';
+   MainForm.Bonv_CtrTable.Active:= True;
+//MainForm.Bonv_CtrTable.EnableControls;
 
 MainForm.ProduitTable.DisableControls;
 
@@ -310,6 +316,23 @@ if NOT (MainForm.Bonv_ctrTable.IsEmpty) then
     end else
         begin
           sndPlaySound('C:\Windows\Media\chord.wav', SND_NODEFAULT Or SND_ASYNC Or  SND_RING);
+          TTask.Run ( procedure
+          begin
+           FSplash := TFSplash.Create(nil);
+            try
+              FSplash.Left := MainForm.Width - FSplash.Width - 15 ;                   
+              FSplash.Top := (MainForm.Height - FSplash.Height ) - 15 ;
+               FSplash.Label1.Font.Height:=21;
+              FSplash.Label1.Caption:='Suppressions ne sont pas autorisés!';
+              FSplash.Color:= $004735F9;
+              AnimateWindow(FSplash.Handle, 100, AW_HOR_NEGATIVE OR AW_SLIDE OR AW_ACTIVATE);
+              sleep(700);
+              AnimateWindow(FSplash.Handle, 100, AW_HOR_POSITIVE OR
+                AW_SLIDE OR AW_HIDE);
+            finally
+              FSplash.free;
+            end;
+          end);
         end;
 end;
 end;
@@ -404,6 +427,49 @@ if BvCtrListDBGridEh.ScreenToClient(Mouse.CursorPos).Y>25 then
 begin
   BonCtrF.EditBVCtrBtnClick(Sender) ;
 end;
+end;
+
+procedure TBonCtrF.BVCtrListDBGridEhDrawColumnCell(Sender: TObject;
+  const Rect: TRect; DataCol: Integer; Column: TColumnEh;
+  State: TGridDrawState);
+begin
+ if gdSelected in State then
+begin
+   BVCtrListDBGridEh.Canvas.Brush.Color:=$00FFE8CD;
+   BVCtrListDBGridEh.DefaultDrawColumnCell(Rect, DataCol, Column, State);
+end;
+
+ if  (MainForm.Bonv_ctrTable.FieldValues['MontantRen'] < 0)    then
+ begin
+ BVCtrListDBGridEh.Canvas.Font.Color:=$004735F9;
+ BVCtrListDBGridEh.DefaultDrawColumnCell(Rect, DataCol, Column, State);
+ end;
+
+end;
+
+procedure TBonCtrF.BVCtrListDBGridEhKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  if not BVCtrListDBGridEh.DataSource.DataSet.IsEmpty then
+  begin
+    if key = VK_DELETE then
+  DeleteBVCtrBtnClick(Sender) ;
+  end else exit
+end;
+
+procedure TBonCtrF.BVCtrListDBGridEhKeyPress(Sender: TObject; var Key: Char);
+begin
+  if Key in ['n'] then
+    AddBVCtrBtnClick(Sender);
+  if Key in ['r'] then
+    ResearchBVCtrEdt.SetFocus;
+  if not BVCtrListDBGridEh.DataSource.DataSet.IsEmpty then
+  begin
+  if Key in ['s' ] then
+  DeleteBVCtrBtnClick(Sender) ;
+    if Key in ['m'] then
+      EditBVCtrBtnClick(Sender);
+  end else Exit;
 end;
 
 procedure TBonCtrF.GettingData;

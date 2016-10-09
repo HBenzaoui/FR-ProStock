@@ -116,7 +116,7 @@ var
 implementation
 
 uses   UMainF, UClientsList, USplash, UBonLivGestion,
-  UBonFacVGestion, UReglementCList,  UReglementCGestion;
+  UBonFacVGestion, UReglementCList,  UReglementCGestion, UBonCtr, UComptoir;
 
 {$R *.dfm}
 
@@ -304,23 +304,23 @@ begin
           Append;
           fieldbyname('code_c').AsInteger:= CodeC;
           FieldValues['activ_c'] := ActiveClientGSlider.SliderOn;
-          fieldbyname('nom_c').Value := NameClientGEdt.Text;
-          fieldbyname('activite_c').Value := AcitiviteClientGEdt.Text;
-          fieldbyname('adr_c').Value := AdrClientGEdt.Text;
-          fieldbyname('willaya_c').Value := WilayaClientGCbx.Text;
-          fieldbyname('ville_c').Value := VilleClientGCbx.Text;
-          fieldbyname('fix_c').Value := FixClientGEdt.Text;
-          fieldbyname('fax_c').Value := FaxClientGEdt.Text;
-          fieldbyname('mob_c').Value := MobileClientGEdt.Text;
-          fieldbyname('mob2_c').Value := MobileClientGEdt.Text;
-          fieldbyname('email_c').Value := EmailClientGEdt.Text;
-          fieldbyname('siteweb_c').Value := SiteClientGEdt.Text;
-          fieldbyname('rc_c').Value := RCClientGEdt.Text;
-          fieldbyname('nart_c').Value := NArtClientGEdt.Text;
-          fieldbyname('nif_c').Value := NIFClientGEdt.Text;
-          fieldbyname('nis_c').Value := NISClientGEdt.Text;
-          fieldbyname('nbank_c').Value := NBankClientGEdt.Text;
-          fieldbyname('rib_c').Value := RIBClientGEdt.Text;
+          fieldbyname('nom_c').AsString := NameClientGEdt.Text;
+          fieldbyname('activite_c').AsString := AcitiviteClientGEdt.Text;
+          fieldbyname('adr_c').AsString := AdrClientGEdt.Text;
+          fieldbyname('willaya_c').AsString := WilayaClientGCbx.Text;
+          fieldbyname('ville_c').AsString := VilleClientGCbx.Text;
+          fieldbyname('fix_c').AsString := FixClientGEdt.Text;
+          fieldbyname('fax_c').AsString := FaxClientGEdt.Text;
+          fieldbyname('mob_c').AsString := MobileClientGEdt.Text;
+          fieldbyname('mob2_c').AsString := MobileClientGEdt.Text;
+          fieldbyname('email_c').AsString := EmailClientGEdt.Text;
+          fieldbyname('siteweb_c').AsString := SiteClientGEdt.Text;
+          fieldbyname('rc_c').AsString := RCClientGEdt.Text;
+          fieldbyname('nart_c').AsString := NArtClientGEdt.Text;
+          fieldbyname('nif_c').AsString := NIFClientGEdt.Text;
+          fieldbyname('nis_c').AsString := NISClientGEdt.Text;
+          fieldbyname('nbank_c').AsString := NBankClientGEdt.Text;
+          fieldbyname('rib_c').AsString := RIBClientGEdt.Text;
           if OldCreditClientGEdt.Text <> '' then
           begin
             fieldbyname('oldcredit_c').Value := StrToCurr(StringReplace(OldCreditClientGEdt.Text, #32, '', [rfReplaceAll]));
@@ -353,24 +353,24 @@ begin
         begin
           Edit;
           FieldValues['activ_c'] := ActiveClientGSlider.SliderOn;
-          fieldbyname('nom_c').Value := NameClientGEdt.Text;
-          fieldbyname('activite_c').Value := AcitiviteClientGEdt.Text;
-          fieldbyname('adr_c').Value := AdrClientGEdt.Text;
-          fieldbyname('willaya_c').Value := WilayaClientGCbx.Text;
-          fieldbyname('ville_c').Value := VilleClientGCbx.Text;
-          fieldbyname('fix_c').Value := FixClientGEdt.Text;
-          fieldbyname('fax_c').Value := FaxClientGEdt.Text;
-          fieldbyname('mob_c').Value := MobileClientGEdt.Text;
-          fieldbyname('mob2_c').Value := MobileClientGEdt.Text;
-          fieldbyname('email_c').Value := EmailClientGEdt.Text;
-          fieldbyname('siteweb_c').Value := SiteClientGEdt.Text;
+          fieldbyname('nom_c').AsString := NameClientGEdt.Text;
+          fieldbyname('activite_c').AsString := AcitiviteClientGEdt.Text;
+          fieldbyname('adr_c').AsString := AdrClientGEdt.Text;
+          fieldbyname('willaya_c').AsString := WilayaClientGCbx.Text;
+          fieldbyname('ville_c').AsString := VilleClientGCbx.Text;
+          fieldbyname('fix_c').AsString := FixClientGEdt.Text;
+          fieldbyname('fax_c').AsString := FaxClientGEdt.Text;
+          fieldbyname('mob_c').AsString := MobileClientGEdt.Text;
+          fieldbyname('mob2_c').AsString := MobileClientGEdt.Text;
+          fieldbyname('email_c').AsString := EmailClientGEdt.Text;
+          fieldbyname('siteweb_c').AsString := SiteClientGEdt.Text;
 
-          fieldbyname('rc_c').Value := RCClientGEdt.Text;
-          fieldbyname('nart_c').Value := NArtClientGEdt.Text;
-          fieldbyname('nif_c').Value := NIFClientGEdt.Text;
-          fieldbyname('nis_c').Value := NISClientGEdt.Text;
-          fieldbyname('nbank_c').Value := NBankClientGEdt.Text;
-          fieldbyname('rib_c').Value := RIBClientGEdt.Text;
+          fieldbyname('rc_c').AsString := RCClientGEdt.Text;
+          fieldbyname('nart_c').AsString := NArtClientGEdt.Text;
+          fieldbyname('nif_c').AsString := NIFClientGEdt.Text;
+          fieldbyname('nis_c').AsString := NISClientGEdt.Text;
+          fieldbyname('nbank_c').AsString := NBankClientGEdt.Text;
+          fieldbyname('rib_c').AsString := RIBClientGEdt.Text;
           if OldCreditClientGEdt.Text <> '' then
           begin
             fieldbyname('oldcredit_c').Value := StrToCurr(StringReplace(OldCreditClientGEdt.Text, #32, '', [rfReplaceAll]));
@@ -412,22 +412,23 @@ begin
         Append;
         FieldValues['code_c'] := CodeC;
         FieldValues['activ_c'] := ActiveClientGSlider.SliderOn;
-        fieldbyname('nom_c').Value := NameClientGEdt.Text;
-        fieldbyname('adr_c').Value := AdrClientGEdt.Text;
-        fieldbyname('willaya_c').Value := WilayaClientGCbx.Text;
-        fieldbyname('ville_c').Value := VilleClientGCbx.Text;
-        fieldbyname('fix_c').Value := FixClientGEdt.Text;
-        fieldbyname('fax_c').Value := FaxClientGEdt.Text;
-        fieldbyname('mob_c').Value := MobileClientGEdt.Text;
-        fieldbyname('mob2_c').Value := MobileClientGEdt.Text;
-        fieldbyname('email_c').Value := EmailClientGEdt.Text;
-        fieldbyname('siteweb_c').Value := SiteClientGEdt.Text;
-        fieldbyname('rc_c').Value := RCClientGEdt.Text;
-        fieldbyname('nart_c').Value := NArtClientGEdt.Text;
-        fieldbyname('nif_c').Value := NIFClientGEdt.Text;
-        fieldbyname('nis_c').Value := NISClientGEdt.Text;
-        fieldbyname('nbank_c').Value := NBankClientGEdt.Text;
-        fieldbyname('rib_c').Value := RIBClientGEdt.Text;
+        fieldbyname('nom_c').AsString := NameClientGEdt.Text;
+        fieldbyname('activite_c').AsString := AcitiviteClientGEdt.Text;
+        fieldbyname('adr_c').AsString := AdrClientGEdt.Text;
+        fieldbyname('willaya_c').AsString := WilayaClientGCbx.Text;
+        fieldbyname('ville_c').AsString := VilleClientGCbx.Text;
+        fieldbyname('fix_c').AsString := FixClientGEdt.Text;
+        fieldbyname('fax_c').AsString := FaxClientGEdt.Text;
+        fieldbyname('mob_c').AsString := MobileClientGEdt.Text;
+        fieldbyname('mob2_c').AsString := MobileClientGEdt.Text;
+        fieldbyname('email_c').AsString := EmailClientGEdt.Text;
+        fieldbyname('siteweb_c').AsString := SiteClientGEdt.Text;
+        fieldbyname('rc_c').AsString := RCClientGEdt.Text;
+        fieldbyname('nart_c').AsString := NArtClientGEdt.Text;
+        fieldbyname('nif_c').AsString := NIFClientGEdt.Text;
+        fieldbyname('nis_c').AsString := NISClientGEdt.Text;
+        fieldbyname('nbank_c').AsString := NBankClientGEdt.Text;
+        fieldbyname('rib_c').AsString := RIBClientGEdt.Text;
         if OldCreditClientGEdt.Text <> '' then
         begin
           fieldbyname('oldcredit_c').Value :=
@@ -454,7 +455,7 @@ begin
       BonLivGestionF.ClientBonLivGCbx.Text := NameClientGEdt.Text;
       BonLivGestionF.ClientBonLivGCbx.SetFocus;
 
-
+                                                              
     end;
 
   // --------------- adding from the facutre de vente  panel----
@@ -474,6 +475,7 @@ begin
         FieldValues['code_c'] := CodeC;
         FieldValues['activ_c'] := ActiveClientGSlider.SliderOn;
         fieldbyname('nom_c').Value := NameClientGEdt.Text;
+        fieldbyname('activite_c').AsString := AcitiviteClientGEdt.Text;
         fieldbyname('adr_c').Value := AdrClientGEdt.Text;
         fieldbyname('willaya_c').Value := WilayaClientGCbx.Text;
         fieldbyname('ville_c').Value := VilleClientGCbx.Text;
@@ -536,6 +538,7 @@ begin
         FieldValues['code_c'] := CodeC;
         FieldValues['activ_c'] := ActiveClientGSlider.SliderOn;
         fieldbyname('nom_c').Value := NameClientGEdt.Text;
+        fieldbyname('activite_c').AsString := AcitiviteClientGEdt.Text;
         fieldbyname('adr_c').Value := AdrClientGEdt.Text;
         fieldbyname('willaya_c').Value := WilayaClientGCbx.Text;
         fieldbyname('ville_c').Value := VilleClientGCbx.Text;
@@ -579,6 +582,68 @@ begin
 
 
     end;
+
+
+      // --------------- adding from the Comptoir panel----
+         if OKClientGBtn.Tag = 6 then
+    begin
+      with MainForm.ClientTable do
+      begin
+               if NOT (MainForm.ClientTable.IsEmpty) then
+          begin
+          MainForm.ClientTable.Last;
+          CodeC:= MainForm.ClientTable.FieldValues['code_c'] + 1;
+          end else
+              begin
+               CodeC:= 1;
+              end;
+        Append;
+        FieldValues['code_c'] := CodeC;
+        FieldValues['activ_c'] := ActiveClientGSlider.SliderOn;
+        fieldbyname('nom_c').Value := NameClientGEdt.Text;
+        fieldbyname('activite_c').AsString := AcitiviteClientGEdt.Text;
+        fieldbyname('adr_c').Value := AdrClientGEdt.Text;
+        fieldbyname('willaya_c').Value := WilayaClientGCbx.Text;
+        fieldbyname('ville_c').Value := VilleClientGCbx.Text;
+        fieldbyname('fix_c').Value := FixClientGEdt.Text;
+        fieldbyname('fax_c').Value := FaxClientGEdt.Text;
+        fieldbyname('mob_c').Value := MobileClientGEdt.Text;
+        fieldbyname('mob2_c').Value := MobileClientGEdt.Text;
+        fieldbyname('email_c').Value := EmailClientGEdt.Text;
+        fieldbyname('siteweb_c').Value := SiteClientGEdt.Text;
+        fieldbyname('rc_c').Value := RCClientGEdt.Text;
+        fieldbyname('nart_c').Value := NArtClientGEdt.Text;
+        fieldbyname('nif_c').Value := NIFClientGEdt.Text;
+        fieldbyname('nis_c').Value := NISClientGEdt.Text;
+        fieldbyname('nbank_c').Value := NBankClientGEdt.Text;
+        fieldbyname('rib_c').Value := RIBClientGEdt.Text;
+        if OldCreditClientGEdt.Text <> '' then
+        begin
+          fieldbyname('oldcredit_c').Value :=
+            Trim(OldCreditClientGEdt.Text);
+        end
+        else
+        begin
+          fieldbyname('oldcredit_c').Value := StrToInt('0')
+        end;
+        if MaxCreditClientGEdt.Text <> '' then
+        begin
+          fieldbyname('maxcredit_c').Value :=
+            Trim(MaxCreditClientGEdt.Text);
+        end
+        else
+        begin
+          fieldbyname('maxcredit_c').Value := StrToInt('0')
+        end;
+        fieldbyname('obser_c').Value := ObserClientGMem.Text;
+        post;
+      end;
+      MainForm.ClientTable.Refresh;
+      MainForm.ClientTable.Last;
+      BonCtrGestionF.ClientBonCtrGCbx.Text := NameClientGEdt.Text;
+      BonCtrGestionF.ClientBonCtrGCbx.SetFocus;
+    end;
+    
 
     begin
       FSplash := TFSplash.Create(Application);

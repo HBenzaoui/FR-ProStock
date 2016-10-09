@@ -70,7 +70,7 @@ object FSplashAddUnite: TFSplashAddUnite
     ShowHint = True
     Spacing = 10
     OnClick = OKAddUniteSBtnClick
-    Version = '1.6.1.1'
+    Version = '1.6.1.2'
     TMSStyle = 0
   end
   object CancelAddUniteSBtn: TAdvToolButton
@@ -102,7 +102,7 @@ object FSplashAddUnite: TFSplashAddUnite
     ShowHint = True
     Spacing = -1
     OnClick = CancelAddUniteSBtnClick
-    Version = '1.6.1.1'
+    Version = '1.6.1.2'
     TMSStyle = 0
   end
   object RequiredAddUniteSlbl: TLabel
@@ -129,7 +129,7 @@ object FSplashAddUnite: TFSplashAddUnite
   object RequiredStarAddUniteSLbl: TLabel
     Left = 298
     Top = 64
-    Width = 7
+    Width = 8
     Height = 22
     Caption = '*'
     Color = clBtnFace
@@ -186,13 +186,13 @@ object FSplashAddUnite: TFSplashAddUnite
     Spacing = -1
     Visible = False
     OnClick = CompteAddUniteSBtnClick
-    Version = '1.6.1.1'
+    Version = '1.6.1.2'
     TMSStyle = 0
   end
   object CompteAddUniteSLbl: TLabel
     Left = 44
     Top = 107
-    Width = 60
+    Width = 57
     Height = 18
     Caption = 'Compte:'
     Color = 4207405
@@ -240,7 +240,7 @@ object FSplashAddUnite: TFSplashAddUnite
     object FormCaptionAddUniteSLbl: TLabel
       Left = 99
       Top = 10
-      Width = 119
+      Width = 116
       Height = 24
       Caption = 'Ajouter Unite'
       Color = 4207405

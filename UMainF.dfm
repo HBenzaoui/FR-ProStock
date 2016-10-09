@@ -749,12 +749,13 @@ object MainForm: TMainForm
       OnClick = Button16Click
     end
     object inserdata: TButton
-      Left = 770
+      Left = 772
       Top = 39
       Width = 75
       Height = 25
       Caption = 'inserdata'
       TabOrder = 15
+      Visible = False
       OnClick = inserdataClick
     end
   end
@@ -20542,7 +20543,7 @@ object MainForm: TMainForm
     object ClientTablenom_c: TWideStringField
       FieldName = 'nom_c'
       Origin = 'nom_c'
-      Size = 40
+      Size = 60
     end
     object ClientTableadr_c: TWideStringField
       FieldName = 'adr_c'
@@ -20554,15 +20555,14 @@ object MainForm: TMainForm
       Origin = 'ville_c'
       Size = 25
     end
-    object ClientTablefix_c: TWideStringField
-      FieldName = 'fix_c'
-      Origin = 'fix_c'
-      FixedChar = True
-      Size = 15
-    end
     object ClientTablemob_c: TWideStringField
       FieldName = 'mob_c'
       Origin = 'mob_c'
+      Size = 8190
+    end
+    object ClientTablefix_c: TWideStringField
+      FieldName = 'fix_c'
+      Origin = 'fix_c'
       FixedChar = True
       Size = 15
     end
@@ -20585,10 +20585,6 @@ object MainForm: TMainForm
     object ClientTableactiv_c: TBooleanField
       FieldName = 'activ_c'
       Origin = 'activ_c'
-    end
-    object ClientTablelogo_c: TBlobField
-      FieldName = 'logo_c'
-      Origin = 'logo_c'
     end
     object ClientTablemob2_c: TWideStringField
       FieldName = 'mob2_c'
@@ -20643,11 +20639,6 @@ object MainForm: TMainForm
       FixedChar = True
       Size = 40
     end
-    object ClientTablepays_c: TWideStringField
-      FieldName = 'pays_c'
-      Origin = 'pays_c'
-      Size = 25
-    end
     object ClientTablesiteweb_c: TWideStringField
       FieldName = 'siteweb_c'
       Origin = 'siteweb_c'
@@ -20676,12 +20667,10 @@ object MainForm: TMainForm
     end
   end
   object FDPhysPgDriverLink1: TFDPhysPgDriverLink
-    VendorLib = 'C:\Program Files (x86)\PostgreSQL\9.6\bin\libpq.dll'
     Left = 600
     Top = 154
   end
   object FournisseurTable: TFDQuery
-    Active = True
     FilterOptions = [foCaseInsensitive]
     IndexFieldNames = 'code_f'
     Connection = GstockdcConnection
@@ -20697,7 +20686,7 @@ object MainForm: TMainForm
     object FournisseurTablenom_f: TWideStringField
       FieldName = 'nom_f'
       Origin = 'nom_f'
-      Size = 40
+      Size = 60
     end
     object FournisseurTableadr_f: TWideStringField
       DisplayWidth = 60
@@ -20715,12 +20704,6 @@ object MainForm: TMainForm
     object FournisseurTablewillaya_f: TWideStringField
       FieldName = 'willaya_f'
       Origin = 'willaya_f'
-      FixedChar = True
-      Size = 25
-    end
-    object FournisseurTablepays_f: TWideStringField
-      FieldName = 'pays_f'
-      Origin = 'pays_f'
       FixedChar = True
       Size = 25
     end
@@ -20759,10 +20742,6 @@ object MainForm: TMainForm
       Origin = 'obser_f'
       FixedChar = True
       Size = 250
-    end
-    object FournisseurTablelogo_f: TBlobField
-      FieldName = 'logo_f'
-      Origin = 'logo_f'
     end
     object FournisseurTableactiv_f: TBooleanField
       FieldName = 'activ_f'
@@ -20830,15 +20809,14 @@ object MainForm: TMainForm
     Top = 182
   end
   object ProduitTable: TFDQuery
-    Active = True
     OnCalcFields = ProduitTableCalcFields
     FilterOptions = [foCaseInsensitive]
     IndexFieldNames = 'code_p'
     Connection = GstockdcConnection
     SQL.Strings = (
       'SELECT * FROM produit ORDER BY code_p')
-    Left = 44
-    Top = 284
+    Left = 48
+    Top = 292
     object ProduitTablecode_p: TIntegerField
       FieldName = 'code_p'
       Origin = 'code_p'
@@ -21048,34 +21026,31 @@ object MainForm: TMainForm
     end
   end
   object UniteTable: TFDQuery
-    Active = True
     FilterOptions = [foCaseInsensitive]
     IndexFieldNames = 'code_u'
     Connection = GstockdcConnection
     SQL.Strings = (
       'SELECT * FROM unite')
     Left = 44
-    Top = 347
+    Top = 349
   end
   object SfamproduitTable: TFDQuery
-    Active = True
     FilterOptions = [foCaseInsensitive]
     IndexFieldNames = 'code_sfamp'
     Connection = GstockdcConnection
     SQL.Strings = (
       'SELECT * FROM sfamproduit')
     Left = 48
-    Top = 472
+    Top = 474
   end
   object FamproduitTable: TFDQuery
-    Active = True
     FilterOptions = [foCaseInsensitive]
     IndexFieldNames = 'code_famp'
     Connection = GstockdcConnection
     SQL.Strings = (
       'SELECT * FROM famproduit')
     Left = 48
-    Top = 415
+    Top = 417
   end
   object CodebarresTable: TFDQuery
     IndexFieldNames = 'code_p'
@@ -21088,7 +21063,6 @@ object MainForm: TMainForm
     Top = 528
   end
   object LocalisationTable: TFDQuery
-    Active = True
     IndexFieldNames = 'code_l'
     Connection = GstockdcConnection
     SQL.Strings = (
@@ -34888,23 +34862,10 @@ object MainForm: TMainForm
       KeyFields = 'code_p'
       Lookup = True
     end
-    object Bonv_liv_listTabletvap: TIntegerField
-      FieldKind = fkLookup
-      FieldName = 'tvap'
-      LookupDataSet = ProduitTable
-      LookupKeyFields = 'code_p'
-      LookupResultField = 'tva_p'
-      KeyFields = 'code_p'
-      Lookup = True
-    end
     object Bonv_liv_listTableTVA: TSingleField
       FieldKind = fkCalculated
       FieldName = 'TVA'
       Calculated = True
-    end
-    object Bonv_liv_listTabletva_p: TSmallintField
-      FieldName = 'tva_p'
-      Origin = 'tva_p'
     end
     object Bonv_liv_listTableMarge: TCurrencyField
       FieldKind = fkInternalCalc
@@ -34926,6 +34887,10 @@ object MainForm: TMainForm
     object Bonv_liv_listTableMargeM: TCurrencyField
       FieldKind = fkInternalCalc
       FieldName = 'MargeM'
+    end
+    object Bonv_liv_listTabletva_p: TSmallintField
+      FieldName = 'tva_p'
+      Origin = 'tva_p'
     end
   end
   object Bona_facTable: TFDQuery
@@ -35313,15 +35278,6 @@ object MainForm: TMainForm
       LookupDataSet = ProduitTable
       LookupKeyFields = 'code_p'
       LookupResultField = 'refer_p'
-      KeyFields = 'code_p'
-      Lookup = True
-    end
-    object Bonv_fac_listTabletvap: TIntegerField
-      FieldKind = fkLookup
-      FieldName = 'tvap'
-      LookupDataSet = ProduitTable
-      LookupKeyFields = 'code_p'
-      LookupResultField = 'tva_p'
       KeyFields = 'code_p'
       Lookup = True
     end
@@ -38824,22 +38780,9 @@ object MainForm: TMainForm
       KeyFields = 'code_p'
       Lookup = True
     end
-    object Bonv_ctr_listTabletvap: TCurrencyField
-      FieldKind = fkLookup
-      FieldName = 'tvap'
-      LookupDataSet = ProduitTable
-      LookupKeyFields = 'code_p'
-      LookupResultField = 'tva_p'
-      KeyFields = 'code_p'
-      Lookup = True
-    end
     object Bonv_ctr_listTableTVA: TCurrencyField
       FieldKind = fkInternalCalc
       FieldName = 'TVA'
-    end
-    object Bonv_ctr_listTabletva_p: TSmallintField
-      FieldName = 'tva_p'
-      Origin = 'tva_p'
     end
     object Bonv_ctr_listTableMarge: TCurrencyField
       FieldKind = fkInternalCalc
@@ -38861,6 +38804,10 @@ object MainForm: TMainForm
     object Bonv_ctr_listTableMargeM: TCurrencyField
       FieldKind = fkInternalCalc
       FieldName = 'MargeM'
+    end
+    object Bonv_ctr_listTabletva_p: TSmallintField
+      FieldName = 'tva_p'
+      Origin = 'tva_p'
     end
   end
   object Bonv_ctrTableCredit: TFDQuery
@@ -38948,10 +38895,9 @@ object MainForm: TMainForm
       'Database=GSTOCKDC'
       'User_Name=postgres'
       'DriverID=pG')
-    Connected = True
     LoginPrompt = False
-    Left = 51
-    Top = 110
+    Left = 53
+    Top = 114
   end
   object Opt_cas_bnk_CaisseTable: TFDQuery
     FilterOptions = [foCaseInsensitive]
@@ -42030,8 +41976,7 @@ object MainForm: TMainForm
           '"email_c" varchar(40) COLLATE "default",'
           '"willaya_c" varchar(25) COLLATE "default",'
           '"fax_c" char(15) COLLATE "default",'
-          '"activ_c" bool,'
-          '"logo_c" bytea,'
+          '"activ_c" bool DEFAULT true,'
           '"mob2_c" char(15) COLLATE "default",'
           '"rc_c" char(25) COLLATE "default",'
           '"nif_c" char(25) COLLATE "default",'
@@ -42041,7 +41986,6 @@ object MainForm: TMainForm
           '"nbank_c" char(25) COLLATE "default",'
           '"rib_c" char(25) COLLATE "default",'
           '"activite_c" char(40) COLLATE "default",'
-          '"pays_c" varchar(25) COLLATE "default",'
           '"siteweb_c" varchar(40) COLLATE "default",'
           '"oldcredit_c" money DEFAULT 0,'
           '"maxcredit_c" money DEFAULT 0,'
@@ -47174,15 +47118,13 @@ object MainForm: TMainForm
           '"adr_f" char(50) COLLATE "default",'
           '"ville_f" char(25) COLLATE "default",'
           '"willaya_f" char(25) COLLATE "default",'
-          '"pays_f" char(25) COLLATE "default",'
           '"fix_f" char(15) COLLATE "default",'
           '"mob_f" char(15) COLLATE "default",'
           '"mob2_f" char(15) COLLATE "default",'
           '"fax_f" char(15) COLLATE "default",'
           '"email_f" char(40) COLLATE "default",'
           '"obser_f" char(250) COLLATE "default",'
-          '"logo_f" bytea,'
-          '"activ_f" bool,'
+          '"activ_f" bool DEFAULT true,'
           '"rc_f" char(25) COLLATE "default",'
           '"nif_f" char(25) COLLATE "default",'
           '"nart_f" char(25) COLLATE "default",'
@@ -47297,7 +47239,7 @@ object MainForm: TMainForm
           '"dateperiss_p" date,'
           '"alertdays_p" int2 DEFAULT 0,'
           '"prixht_p" money DEFAULT 0,'
-          '"tva_p" varchar(6) COLLATE "default" DEFAULT 0,'
+          '"tva_p" int2 DEFAULT 0,'
           '"prixvd_p" money DEFAULT 0,'
           '"prixvr_p" money DEFAULT 0,'
           '"prixvg_p" money DEFAULT 0,'

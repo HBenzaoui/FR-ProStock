@@ -216,17 +216,19 @@ type
     procedure PrixVHTA2ProduitEdtKeyPress(Sender: TObject; var Key: Char);
     procedure PrixVTTCA2ProduitEdtKeyPress(Sender: TObject; var Key: Char);
     procedure MargeA2ProduitEdtKeyPress(Sender: TObject; var Key: Char);
+
   private
     { Private declarations }
      lastkey:char;
 
   public
     { Public declarations }
+    PAdded : Boolean;
   end;
 
 var
   ProduitGestionF: TProduitGestionF;
-  PAdded : Boolean;
+
 
 implementation
 
@@ -235,7 +237,7 @@ implementation
 uses UClientGestion, UMainF, USplashAddUnite, UFournisseurList,
   USplashAddCodeBarre, math, UFournisseurGestion, USplash, UProduitsList
 
-  ;
+  , UComptoir, UBonFacAGestion, UBonFacVGestion, UBonLivGestion, UBonRecGestion;
 
 
 //----------- use this procedure to set center aligment text for the combobox---////
@@ -737,10 +739,14 @@ begin
         MainForm.ProduitTable.Delete;
         MainForm.ProduitTable.EnableControls;
         //--- this is to pervet adding dublicate produit when editing adn creatin codebare
+       if NOT (Assigned(BonCtrGestionF)) AND NOT (Assigned(BonLivGestionF)) AND NOT (Assigned(BonFacVGestionF))
+          AND NOT (Assigned(BonRecGestionF)) AND NOT (Assigned(BonFacAGestionF))  then
+        begin
         if (PAdded = False) AND (ProduitsListF.CodePToUseOut <> 0 )  then
         begin
          MainForm.ProduitTable.Locate('code_p',ProduitsListF.CodePToUseOut,[]) ;
         end;
+       end;
 
       end else
           begin
@@ -755,8 +761,12 @@ begin
 
            MainForm.ProduitTable.Locate('code_p',CodeP,[]) ;
           end;
-
+          
+   if NOT (Assigned(BonCtrGestionF)) AND NOT (Assigned(BonLivGestionF)) AND NOT (Assigned(BonFacVGestionF))  /// To make sure access voltation wont show
+      AND NOT (Assigned(BonRecGestionF)) AND NOT (Assigned(BonFacAGestionF))  then                           /// where we are in bons not produit list
+    begin
     ProduitsListF.CodePToUseOut:= 0;
+    end;
     PAdded := False;
     FreeAndNil(ProduitGestionF);
 end;
@@ -1235,10 +1245,10 @@ begin
     if ProduitGestionF.Tag = 0 then
      begin
 
-     lookupResultNomP := MainForm.ProduitTable.Lookup('nom_p',(NameProduitGEdt.Text ),'nom_p');
+     lookupResultNomP := MainForm.ProduitTable.Lookup('LOWER(nom_p)',(LowerCase( NameProduitGEdt.Text)),'nom_p');
      if  VarIsnull( lookupResultNomP) then
       begin
-        lookupResultRefP := MainForm.ProduitTable.Lookup('refer_p',(RefProduitGEdt.Text ),'refer_p');
+        lookupResultRefP := MainForm.ProduitTable.Lookup('LOWER(refer_p)',(LowerCase(RefProduitGEdt.Text)),'refer_p');
        if  VarIsnull(lookupResultRefP) then
         begin
            //----------- use this code to inster new famille when just type name it if empty exit-------------
@@ -1555,7 +1565,7 @@ begin
        begin
              //////////////////
             //////////////////
-            //////////////////
+            //////////////////         LOWER(nom_p)',(LowerCase
             //////////////////
             //////////////////
          CodeP:= MainForm.ProduitTable.FieldByName('code_p').AsInteger;
@@ -1566,10 +1576,10 @@ begin
            MainForm.SQLQuery.SQL.Text:= 'SELECT * FROM produit WHERE code_p <> '+IntToStr(CodeP);
            MainForm.SQLQuery.Active:= True;
 
-               lookupResultNomP := MainForm.SQLQuery.Lookup('nom_p',(NameProduitGEdt.Text ),'nom_p');
+               lookupResultNomP := MainForm.SQLQuery.Lookup('LOWER(nom_p)',(LowerCase(NameProduitGEdt.Text)),'nom_p');
      if  VarIsnull( lookupResultNomP) then
       begin
-        lookupResultRefP := MainForm.SQLQuery.Lookup('refer_p',(RefProduitGEdt.Text ),'refer_p');
+        lookupResultRefP := MainForm.SQLQuery.Lookup('LOWER(refer_p)',(LowerCase(RefProduitGEdt.Text)),'refer_p');
        if  VarIsnull(lookupResultRefP) then
         begin
 

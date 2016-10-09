@@ -51,7 +51,7 @@ object FamPListF: TFamPListF
     ShowHint = True
     Spacing = -1
     OnClick = AdvToolButton1Click
-    Version = '1.6.1.1'
+    Version = '1.6.1.2'
     TMSStyle = 0
   end
   object AdvToolButton2: TAdvToolButton
@@ -83,7 +83,7 @@ object FamPListF: TFamPListF
     ShowHint = True
     Spacing = -1
     OnClick = AdvToolButton2Click
-    Version = '1.6.1.1'
+    Version = '1.6.1.2'
     TMSStyle = 0
   end
   object AdvToolButton3: TAdvToolButton
@@ -115,13 +115,13 @@ object FamPListF: TFamPListF
     ShowHint = True
     Spacing = -2
     OnClick = AdvToolButton3Click
-    Version = '1.6.1.1'
+    Version = '1.6.1.2'
     TMSStyle = 0
   end
   object Label1: TLabel
     Left = 8
     Top = 101
-    Width = 60
+    Width = 57
     Height = 18
     Caption = 'Compte:'
     Color = clWhite
@@ -199,7 +199,7 @@ object FamPListF: TFamPListF
       ShowHint = True
       Spacing = -1
       OnClick = OKAddCompteSBtnClick
-      Version = '1.6.1.1'
+      Version = '1.6.1.2'
       TMSStyle = 0
     end
   end
@@ -247,6 +247,9 @@ object FamPListF: TFamPListF
     TreeViewParams.ShowTreeLines = False
     VertScrollBar.SmoothStep = True
     VertScrollBar.Width = 10
+    OnDblClick = CompteDBGridEhDblClick
+    OnKeyDown = CompteDBGridEhKeyDown
+    OnKeyPress = CompteDBGridEhKeyPress
     Columns = <
       item
         Alignment = taCenter

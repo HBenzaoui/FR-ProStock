@@ -369,7 +369,7 @@ object ReglementFListF: TReglementFListF
       ShowHint = True
       Spacing = -1
       OnClick = EditBARecBtnClick
-      Version = '1.6.1.1'
+      Version = '1.6.1.2'
       TMSStyle = 0
     end
     object DeleteBARecBtn: TAdvToolButton
@@ -401,7 +401,7 @@ object ReglementFListF: TReglementFListF
       ShowHint = True
       Spacing = -2
       OnClick = DeleteBARecBtnClick
-      Version = '1.6.1.1'
+      Version = '1.6.1.2'
       TMSStyle = 0
     end
     object AddBARecBtn: TAdvToolButton
@@ -433,13 +433,13 @@ object ReglementFListF: TReglementFListF
       ShowHint = True
       Spacing = -1
       OnClick = AddBARecBtnClick
-      Version = '1.6.1.1'
+      Version = '1.6.1.2'
       TMSStyle = 0
     end
     object ResearchBACtrLbl: TLabel
       Left = 10
       Top = 38
-      Width = 75
+      Width = 73
       Height = 18
       Caption = 'Recherche'
       Color = 15722984
@@ -463,8 +463,8 @@ object ReglementFListF: TReglementFListF
       ShowHint = True
       OnClick = sSpeedButton1Click
       SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
       ImageIndex = 7
+      Images = MainForm.PanelIcons24
     end
     object sSpeedButton2: TsSpeedButton
       Left = 1074
@@ -477,8 +477,8 @@ object ReglementFListF: TReglementFListF
       ShowHint = True
       OnClick = sSpeedButton2Click
       SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
       ImageIndex = 8
+      Images = MainForm.PanelIcons24
     end
     object sSpeedButton3: TsSpeedButton
       Left = 1146
@@ -491,13 +491,13 @@ object ReglementFListF: TReglementFListF
       ShowHint = True
       OnClick = sSpeedButton3Click
       SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
       ImageIndex = 9
+      Images = MainForm.PanelIcons24
     end
     object Label1: TLabel
       Left = 345
       Top = 14
-      Width = 24
+      Width = 23
       Height = 18
       Caption = 'Du:'
       Color = 15722984
@@ -513,7 +513,7 @@ object ReglementFListF: TReglementFListF
     object Label2: TLabel
       Left = 346
       Top = 49
-      Width = 23
+      Width = 22
       Height = 18
       Caption = 'Au:'
       Color = 15722984
@@ -553,8 +553,8 @@ object ReglementFListF: TReglementFListF
         ShowHint = True
         OnClick = LastBARecbtnClick
         SkinData.SkinSection = 'SPEEDBUTTON'
-        Images = MainForm.PanelIcons24
         ImageIndex = 3
+        Images = MainForm.PanelIcons24
       end
       object NextBARecbtn: TsSpeedButton
         Left = 69
@@ -566,8 +566,8 @@ object ReglementFListF: TReglementFListF
         ShowHint = True
         OnClick = NextBARecbtnClick
         SkinData.SkinSection = 'SPEEDBUTTON'
-        Images = MainForm.PanelIcons24
         ImageIndex = 2
+        Images = MainForm.PanelIcons24
         ShowCaption = False
       end
       object PreviosBARecbtn: TsSpeedButton
@@ -580,8 +580,8 @@ object ReglementFListF: TReglementFListF
         ShowHint = True
         OnClick = PreviosBARecbtnClick
         SkinData.SkinSection = 'SPEEDBUTTON'
-        Images = MainForm.PanelIcons24
         ImageIndex = 1
+        Images = MainForm.PanelIcons24
       end
       object FisrtBARecbtn: TsSpeedButton
         Left = 9
@@ -593,8 +593,8 @@ object ReglementFListF: TReglementFListF
         ShowHint = True
         OnClick = FisrtBARecbtnClick
         SkinData.SkinSection = 'SPEEDBUTTON'
-        Images = MainForm.PanelIcons24
         ImageIndex = 0
+        Images = MainForm.PanelIcons24
         ShowCaption = False
       end
     end
@@ -842,7 +842,7 @@ object ReglementFListF: TReglementFListF
   end
   object BARecListDBGridEh: TDBGridEh
     Left = 0
-    Top = 79
+    Top = 82
     Width = 1191
     Height = 659
     Anchors = [akLeft, akTop, akRight, akBottom]
@@ -901,6 +901,9 @@ object ReglementFListF: TReglementFListF
     TitleParams.SortMarkerStyle = smstThemeDefinedEh
     TitleParams.VertLines = True
     VertScrollBar.Width = 15
+    OnDblClick = BARecListDBGridEhDblClick
+    OnKeyDown = BARecListDBGridEhKeyDown
+    OnKeyPress = BARecListDBGridEhKeyPress
     Columns = <
       item
         Alignment = taCenter
@@ -927,6 +930,7 @@ object ReglementFListF: TReglementFListF
         Title.Font.Quality = fqProof
         Title.ToolTips = True
         Width = 24
+        WordWrap = False
       end
       item
         DynProps = <>
@@ -944,6 +948,7 @@ object ReglementFListF: TReglementFListF
         Title.EndEllipsis = True
         Title.ToolTips = True
         Width = 150
+        WordWrap = False
       end
       item
         Alignment = taCenter
@@ -957,6 +962,7 @@ object ReglementFListF: TReglementFListF
         Title.EndEllipsis = True
         Title.ToolTips = True
         Width = 113
+        WordWrap = False
       end
       item
         Alignment = taCenter
@@ -970,6 +976,7 @@ object ReglementFListF: TReglementFListF
         Title.EndEllipsis = True
         Title.ToolTips = True
         Width = 113
+        WordWrap = False
       end
       item
         DynProps = <>
@@ -981,7 +988,8 @@ object ReglementFListF: TReglementFListF
         Title.Caption = 'Fournisseur'
         Title.EndEllipsis = True
         Title.ToolTips = True
-        Width = 200
+        Width = 300
+        WordWrap = False
       end
       item
         Checkboxes = False
@@ -1000,6 +1008,7 @@ object ReglementFListF: TReglementFListF
         Title.Alignment = taCenter
         Title.Caption = 'MP'
         Width = 28
+        WordWrap = False
       end
       item
         DisplayFormat = '#,##0.00'
@@ -1014,6 +1023,7 @@ object ReglementFListF: TReglementFListF
         Title.EndEllipsis = True
         Title.ToolTips = True
         Width = 180
+        WordWrap = False
       end
       item
         DisplayFormat = '#,##0.00'
@@ -1029,6 +1039,7 @@ object ReglementFListF: TReglementFListF
         Title.ToolTips = True
         Visible = False
         Width = 150
+        WordWrap = False
       end
       item
         DisplayFormat = '#,##0.00'
@@ -1037,6 +1048,7 @@ object ReglementFListF: TReglementFListF
         FieldName = 'RemisePerc'
         Footers = <>
         Visible = False
+        WordWrap = False
       end
       item
         DisplayFormat = '#,##0.00'
@@ -1052,6 +1064,7 @@ object ReglementFListF: TReglementFListF
         Title.ToolTips = True
         Visible = False
         Width = 150
+        WordWrap = False
       end
       item
         DisplayFormat = '#,##0.00'
@@ -1066,6 +1079,7 @@ object ReglementFListF: TReglementFListF
         Title.ToolTips = True
         Visible = False
         Width = 150
+        WordWrap = False
       end
       item
         DisplayFormat = '#,##0.00'
@@ -1081,6 +1095,7 @@ object ReglementFListF: TReglementFListF
         Title.ToolTips = True
         Visible = False
         Width = 150
+        WordWrap = False
       end
       item
         DisplayFormat = '#,##0.00'
@@ -1096,6 +1111,7 @@ object ReglementFListF: TReglementFListF
         Title.ToolTips = True
         Visible = False
         Width = 150
+        WordWrap = False
       end
       item
         Alignment = taCenter
@@ -1117,7 +1133,7 @@ object ReglementFListF: TReglementFListF
     Top = 672
   end
   object RegFListfrxRprt: TfrxReport
-    Version = '5.4.6'
+    Version = '5.5'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -1125,7 +1141,7 @@ object ReglementFListF: TReglementFListF
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 42576.399521435200000000
-    ReportOptions.LastChange = 42582.663143622680000000
+    ReportOptions.LastChange = 42656.061742175920000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       ''
@@ -1439,6 +1455,7 @@ object ReglementFListF: TReglementFListF
         DataSet = frxRegFListDB
         DataSetName = 'frxRegFListDB'
         RowCount = 0
+        Stretched = True
         object Shape1: TfrxShapeView
           Top = 21.236240000000000000
           Width = 1046.929810000000000000
@@ -1489,6 +1506,7 @@ object ReglementFListF: TReglementFListF
           Top = 0.779530000000000000
           Width = 306.519951100000000000
           Height = 18.897650000000000000
+          StretchMode = smActualHeight
           DataField = 'FourRF'
           DataSet = frxRegFListDB
           DataSetName = 'frxRegFListDB'

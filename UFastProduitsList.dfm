@@ -77,7 +77,7 @@ object FastProduitsListF: TFastProduitsListF
       ShowHint = True
       Spacing = -1
       OnClick = CancelProduitGBtnClick
-      Version = '1.6.1.1'
+      Version = '1.6.1.2'
       TMSStyle = 0
     end
     object OKProduitGBtn: TAdvToolButton
@@ -110,7 +110,7 @@ object FastProduitsListF: TFastProduitsListF
       ShowHint = True
       Spacing = 10
       OnClick = OKProduitGBtnClick
-      Version = '1.6.1.1'
+      Version = '1.6.1.2'
       TMSStyle = 0
     end
     object LastClientbtn: TsSpeedButton
@@ -123,8 +123,8 @@ object FastProduitsListF: TFastProduitsListF
       ShowHint = True
       OnClick = LastClientbtnClick
       SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
       ImageIndex = 3
+      Images = MainForm.PanelIcons24
     end
     object NextClientbtn: TsSpeedButton
       Left = 594
@@ -136,8 +136,8 @@ object FastProduitsListF: TFastProduitsListF
       ShowHint = True
       OnClick = NextClientbtnClick
       SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
       ImageIndex = 2
+      Images = MainForm.PanelIcons24
       ShowCaption = False
     end
     object PreviosClientbtn: TsSpeedButton
@@ -150,8 +150,8 @@ object FastProduitsListF: TFastProduitsListF
       ShowHint = True
       OnClick = PreviosClientbtnClick
       SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
       ImageIndex = 1
+      Images = MainForm.PanelIcons24
     end
     object FisrtClientbtn: TsSpeedButton
       Left = 534
@@ -163,8 +163,8 @@ object FastProduitsListF: TFastProduitsListF
       ShowHint = True
       OnClick = FisrtClientbtnClick
       SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
       ImageIndex = 0
+      Images = MainForm.PanelIcons24
       ShowCaption = False
     end
     object LineP: TPanel
@@ -384,6 +384,7 @@ object FastProduitsListF: TFastProduitsListF
         Title.Font.Style = []
         Title.Font.Quality = fqProof
         Width = 120
+        WordWrap = False
       end
       item
         DynProps = <>
@@ -396,7 +397,6 @@ object FastProduitsListF: TFastProduitsListF
         Font.Style = []
         Footers = <>
         Layout = tlCenter
-        MaxWidth = 300
         MinWidth = 150
         Title.Alignment = taCenter
         Title.Caption = 'D'#233'signation'
@@ -406,7 +406,8 @@ object FastProduitsListF: TFastProduitsListF
         Title.Font.Name = 'Helvetica LT Std'
         Title.Font.Style = []
         Title.Font.Quality = fqProof
-        Width = 239
+        Width = 500
+        WordWrap = False
       end
       item
         Alignment = taCenter
@@ -432,6 +433,7 @@ object FastProduitsListF: TFastProduitsListF
         Title.Font.Style = []
         Title.Font.Quality = fqProof
         Width = 100
+        WordWrap = False
       end
       item
         Alignment = taCenter
@@ -454,6 +456,7 @@ object FastProduitsListF: TFastProduitsListF
         Title.Font.Style = []
         Title.Font.Quality = fqProof
         Width = 73
+        WordWrap = False
       end
       item
         Alignment = taCenter
@@ -471,6 +474,7 @@ object FastProduitsListF: TFastProduitsListF
         Title.Font.Style = []
         Title.Font.Quality = fqProof
         Width = 150
+        WordWrap = False
       end
       item
         DynProps = <>
@@ -493,6 +497,7 @@ object FastProduitsListF: TFastProduitsListF
         Title.Font.Quality = fqProof
         Visible = False
         Width = 150
+        WordWrap = False
       end
       item
         Alignment = taCenter
@@ -515,6 +520,7 @@ object FastProduitsListF: TFastProduitsListF
         Title.Font.Style = []
         Title.Font.Quality = fqProof
         Width = 150
+        WordWrap = False
       end
       item
         DisplayFormat = '#,##0.00'
@@ -537,6 +543,7 @@ object FastProduitsListF: TFastProduitsListF
         Title.Font.Style = []
         Title.Font.Quality = fqProof
         Width = 130
+        WordWrap = False
       end
       item
         DynProps = <>
@@ -557,6 +564,7 @@ object FastProduitsListF: TFastProduitsListF
         Title.Font.Style = []
         Title.Font.Quality = fqProof
         Visible = False
+        WordWrap = False
       end
       item
         Alignment = taCenter
@@ -579,6 +587,7 @@ object FastProduitsListF: TFastProduitsListF
         Title.Font.Style = []
         Title.Font.Quality = fqProof
         Width = 50
+        WordWrap = False
       end
       item
         DisplayFormat = '#,##0.00'
@@ -602,6 +611,7 @@ object FastProduitsListF: TFastProduitsListF
         Title.Font.Style = []
         Title.Font.Quality = fqProof
         Width = 130
+        WordWrap = False
       end
       item
         DisplayFormat = '#,##0.00'
@@ -613,6 +623,7 @@ object FastProduitsListF: TFastProduitsListF
         Title.Alignment = taCenter
         Title.Caption = 'PrixV TTC D'
         Width = 130
+        WordWrap = False
       end
       item
         DisplayFormat = '#,##0.00'
@@ -624,6 +635,7 @@ object FastProduitsListF: TFastProduitsListF
         Title.Alignment = taCenter
         Title.Caption = 'PrixV TTC R'
         Width = 130
+        WordWrap = False
       end
       item
         DisplayFormat = '#,##0.00'
@@ -635,6 +647,7 @@ object FastProduitsListF: TFastProduitsListF
         Title.Alignment = taCenter
         Title.Caption = 'PrixV TTC G'
         Width = 130
+        WordWrap = False
       end
       item
         DisplayFormat = '#,##0.00'
@@ -646,6 +659,7 @@ object FastProduitsListF: TFastProduitsListF
         Title.Alignment = taCenter
         Title.Caption = 'PrixV TTC A'
         Width = 130
+        WordWrap = False
       end
       item
         Alignment = taRightJustify
@@ -658,6 +672,7 @@ object FastProduitsListF: TFastProduitsListF
         Title.Alignment = taCenter
         Title.Caption = 'PrixV TTC A2'
         Width = 130
+        WordWrap = False
       end
       item
         Alignment = taCenter
@@ -680,6 +695,7 @@ object FastProduitsListF: TFastProduitsListF
         Title.Font.Style = []
         Title.Font.Quality = fqProof
         Width = 170
+        WordWrap = False
       end>
     object RowDetailData: TRowDetailPanelControlEh
     end

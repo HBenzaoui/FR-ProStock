@@ -192,7 +192,7 @@ implementation
 uses  StringTool,
   UMainF, USplashVersement, UBonFacA, USplashAddUnite, UProduitsList,
   UFournisseurList, UFournisseurGestion, USplashAddCompte, UFastProduitsList,
-  UDataModule;
+  UDataModule, UProduitGestion;
 
 {$R *.dfm}
 
@@ -319,6 +319,7 @@ procedure TBonFacAGestionF.FormCloseQuery(Sender: TObject;
 
  Var CodeFA :Integer;
 begin
+CodeFA := MainForm.Bona_facTable.FieldByName('code_bafac').AsInteger;
  if  NOT ProduitsListDBGridEh.DataSource.DataSet.IsEmpty then
   begin
     if FourBonFacAGCbx.Text = '' then
@@ -337,7 +338,6 @@ begin
                begin
 
 
-         CodeFA := MainForm.Bona_facTable.FieldByName('code_bafac').AsInteger;
 
           if  (MainForm.Bona_facTable.FieldByName('valider_bafac').AsBoolean = false)  then
          begin
@@ -430,6 +430,82 @@ begin
   end  else
   begin
 
+      if  (MainForm.Bona_facTable.FieldByName('valider_bafac').AsBoolean = false)  then
+         begin
+          MainForm.FournisseurTable.DisableControls;
+          MainForm.FournisseurTable.Active:=false;
+          MainForm.FournisseurTable.SQL.Clear;
+          MainForm.FournisseurTable.SQL.Text:='Select * FROM fournisseur WHERE LOWER(nom_f) LIKE LOWER('+ QuotedStr( FourBonFacAGCbx.Text )+')'  ;
+          MainForm.FournisseurTable.Active:=True;
+
+          MainForm.Mode_paiementTable.DisableControls;
+          MainForm.Mode_paiementTable.Active:=false;
+          MainForm.Mode_paiementTable.SQL.Clear;
+          MainForm.Mode_paiementTable.SQL.Text:='Select * FROM mode_paiement WHERE LOWER(nom_mdpai) LIKE LOWER('+ QuotedStr( ModePaieBonFacAGCbx.Text )+')'  ;
+          MainForm.Mode_paiementTable.Active:=True;
+
+          MainForm.CompteTable.DisableControls;
+          MainForm.CompteTable.Active:=false;
+          MainForm.CompteTable.SQL.Clear;
+          MainForm.CompteTable.SQL.Text:='Select * FROM compte WHERE LOWER(nom_cmpt) LIKE LOWER('+ QuotedStr( CompteBonFacAGCbx.Text )+')'  ;
+          MainForm.CompteTable.Active:=True;
+
+
+          MainForm.Bona_facTable.DisableControls;
+          MainForm.Bona_facTable.Edit;
+          MainForm.Bona_facTable.FieldValues['code_f']:= MainForm.FournisseurTable.FieldByName('code_f').AsInteger;
+          MainForm.Bona_facTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
+          MainForm.Bona_facTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
+          MainForm.Bona_facTable.FieldValues['obser_bafac']:= ObserBonFacAGMem.Text;
+          MainForm.Bona_facTable.FieldValues['num_cheque_bafac']:= NChequeBonFacAGCbx.Text;
+          MainForm.Bona_facTable.FieldByName('montht_bafac').AsCurrency:= StrToCurr(StringReplace(BonFacATotalHTLbl.Caption, #32, '', [rfReplaceAll]));
+
+          if RemiseBonFacAGEdt.Text<>'' then
+          begin
+             MainForm.Bona_facTable.FieldByName('remise_bafac').AsCurrency:=StrToCurr(StringReplace(RemiseBonFacAGEdt.Text, #32, '', [rfReplaceAll]));
+          end else begin
+                    MainForm.Bona_facTable.FieldByName('remise_bafac').AsCurrency:=0;
+                   end;
+
+
+          MainForm.Bona_facTable.FieldByName('montver_bafac').AsCurrency:=StrToCurr(StringReplace(BonFacARegleLbl.Caption, #32, '', [rfReplaceAll]));
+          MainForm.Bona_facTable.FieldByName('montttc_bafac').AsCurrency:=StrToCurr(StringReplace(BonFacATotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
+
+          if TimberBonFacAGEdt.Visible = True then
+          begin
+          MainForm.Bona_facTable.FieldByName('timber_bafac').AsCurrency:=StrToCurr(StringReplace(TimberBonFacAGEdt.Text, #32, '', [rfReplaceAll]));
+          end;
+
+          MainForm.Bona_facTable.Post;
+          MainForm.Bona_facTable.EnableControls;
+
+          MainForm.FournisseurTable.Active:=false;
+          MainForm.FournisseurTable.SQL.Clear;
+          MainForm.FournisseurTable.SQL.Text:='Select * FROM fournisseur' ;
+          MainForm.FournisseurTable.Active:=True;
+          MainForm.FournisseurTable.EnableControls;
+
+          MainForm.Mode_paiementTable.Active:=false;
+          MainForm.Mode_paiementTable.SQL.Clear;
+          MainForm.Mode_paiementTable.SQL.Text:='Select * FROM mode_paiement' ;
+          MainForm.Mode_paiementTable.Active:=True;
+          MainForm.Mode_paiementTable.EnableControls;
+
+          MainForm.CompteTable.Active:=false;
+          MainForm.CompteTable.SQL.Clear;
+          MainForm.CompteTable.SQL.Text:='Select * FROM compte' ;
+          MainForm.CompteTable.Active:=True;
+          MainForm.CompteTable.EnableControls;
+
+            //------- This is to delete data from tre and reg ih not valide----------------------------------------------
+            MainForm.GstockdcConnection.ExecSQL('DELETE FROM regfournisseur where code_bafac = ' + IntToStr(CodeFA));
+            MainForm.GstockdcConnection.ExecSQL('DELETE FROM opt_cas_bnk where code_bafac = ' + IntToStr(CodeFA));
+            MainForm.RegfournisseurTable.Refresh ;
+            MainForm.Opt_cas_bnk_CaisseTable.Refresh ;
+
+         end;
+
+
      CanClose:= True;
   end;
 end;
@@ -452,7 +528,8 @@ begin
       BonFacAGFourNEWCredit.Caption:= FloatToStrF(StrToFloat(BonFacAGFourNEWCredit.Caption),ffNumber,14,2) ;
  CodeFA:= MainForm.Bona_facTable.FieldValues['code_bafac']   ;
     NumBonFacAGEdt.Caption := 'FA'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5, CodeFA]);
-  if MainForm.Bona_facTable.FieldValues['code_f'] <> null then
+ if (MainForm.Bona_facTable.FieldByName('code_f').AsInteger <> null)
+AND (MainForm.Bona_facTable.FieldByName('code_f').AsInteger <> 0)  then
  begin
    FourBonFacAGCbx.Text:= MainForm.Bona_facTable.FieldValues['fourbafac'];
    ProduitBonFacAGCbx.SetFocus;
@@ -717,7 +794,6 @@ begin
   MainForm.Bona_facTable.Post;
   end;
 
-
 // use this code to rest the old credit to the to the last time before he pay anything in that bon so you can aclculate again
   BonFacAGFourOLDCredit.Caption:=
   CurrToStrF((((MainForm.FournisseurTable.FieldValues['credit_f'])-(StringReplace(BonFacAResteLbl.Caption, #32, '', [rfReplaceAll])))),ffNumber,2);
@@ -725,16 +801,12 @@ begin
   BonFacARegleLbl.Caption:=FloatToStrF(0,ffNumber,14,2) ;
   BonFacAResteLbl.Caption:= BonFacATotalTTCLbl.Caption;
 
-
-
       MainForm.FournisseurTable.Active:=false;
       MainForm.FournisseurTable.SQL.Clear;
       MainForm.FournisseurTable.SQL.Text:='Select * FROM fournisseur '  ;
       MainForm.FournisseurTable.Active:=True;
       MainForm.FournisseurTable.EnableControls ;
-
  //----------------------------------------
-
       begin
            MainForm.ProduitTable.DisableControls;
            MainForm.ProduitTable.Active:=False;
@@ -774,7 +846,6 @@ begin
           MainForm.Bona_facTable.Refresh;
 
      end;
-
 
   //---thise is to visivle timber after edit and calculate it----//
      ModePaieBonFacAGCbxClick(Sender);
@@ -1388,6 +1459,8 @@ begin
       MainForm.FournisseurTable.SQL.Clear;
       MainForm.FournisseurTable.SQL.Text:='Select * FROM fournisseur WHERE LOWER(nom_f) LIKE LOWER('+ QuotedStr( FourBonFacAGCbx.Text )+')'  ;
       MainForm.FournisseurTable.Active:=True;
+     if NOT  MainForm.FournisseurTable.IsEmpty then
+     begin
       OLDCreditFINI:= MainForm.FournisseurTable.FieldByName('oldcredit_f').AsCurrency;
 
       if MainForm.FournisseurTable.FieldByName('activ_f').AsBoolean <> False then
@@ -1492,6 +1565,17 @@ begin
             RequiredFourGlbl.Visible:= True;
             NameFourGErrorP.Visible:= True;
             FourBonFacAGCbx.SetFocus;
+           end;
+
+           end else
+           begin
+              FourBonFacAGCbx.Text:='';
+
+              MainForm.FournisseurTable.Active:=false;
+              MainForm.FournisseurTable.SQL.Clear;
+              MainForm.FournisseurTable.SQL.Text:='Select * FROM fournisseur' ;
+              MainForm.FournisseurTable.Active:=True;
+              MainForm.FournisseurTable.EnableControls;
            end;
 
     end else
@@ -2174,10 +2258,6 @@ begin
     ValiderBAFacBonFacAGBtn.ImageIndex:=12;
     end;
 
-    RemisePerctageBonFacAGEdt.Enabled:=True;
-    RemiseBonFacAGEdt.Enabled:=True;
-    RemiseTypeBonFacAGCbx.Enabled:= True;
-
    if MainForm.Bona_facTable.FieldValues['valider_bafac'] <> True then
    begin
 
@@ -2206,6 +2286,10 @@ begin
     MainForm.ProduitTable.SQL.Text:='SELECT * FROM produit ';
     MainForm.ProduitTable.Active:=True;
     MainForm.ProduitTable.EnableControls;
+
+    RemisePerctageBonFacAGEdt.Enabled:=True;
+    RemiseBonFacAGEdt.Enabled:=True;
+    RemiseTypeBonFacAGCbx.Enabled:= True;    
 
    end;
      ProduitsListDBGridEh.ReadOnly:=False;
@@ -2516,6 +2600,9 @@ procedure TBonFacAGestionF.AddFourBonFacAGBtnClick(Sender: TObject);
 begin
 FournisseurListF.AddFournisseursBtnClick(Sender);
 FournisseurGestionF.OKFournisseurGBtn.Tag := 4 ;
+FourBonFacAGCbx.StyleElements:= [seFont,seBorder,seBorder];
+RequiredFourGlbl.Visible:= False;
+NameFourGErrorP.Visible:= False;
 end;
 
 procedure TBonFacAGestionF.AddModePaieBonFacAGBtnClick(Sender: TObject);
@@ -2762,25 +2849,27 @@ begin
 procedure TBonFacAGestionF.sSpeedButton2Click(Sender: TObject);
 begin
  GettingData;
-
+MainForm.Bona_fac_listTable.DisableControls;
 BonFacAPListfrxRprt.PrepareReport;
 BonFacAPListfrxRprt.ShowReport;
+MainForm.Bona_fac_listTable.EnableControls;
 end;
 
 procedure TBonFacAGestionF.sSpeedButton1Click(Sender: TObject);
 begin
    GettingData;
-
+ MainForm.Bona_fac_listTable.DisableControls;
 BonFacAPListfrxRprt.PrepareReport;
 frxXLSExport1.FileName := 'Facture D''achat N° '
   +IntToStr(YearOf(Today)) + '-' + Format('%.*d', [5,(MainForm.Bona_facTable.FieldByName('code_bafac').AsInteger)]);
 BonFacAPListfrxRprt.Export(frxXLSExport1);
+MainForm.Bona_fac_listTable.EnableControls;
 end;
 
 procedure TBonFacAGestionF.sSpeedButton3Click(Sender: TObject);
 begin
  GettingData;
-
+MainForm.Bona_fac_listTable.DisableControls;
 BonFacAPListfrxRprt.PrepareReport;
 
 frxPDFExport1.FileName := 'Facture D''achat N° '
@@ -2789,6 +2878,7 @@ frxPDFExport1.FileName := 'Facture D''achat N° '
 frxPDFExport1.EmbeddedFonts:=True;
 
 BonFacAPListfrxRprt.Export(frxPDFExport1);
+MainForm.Bona_fac_listTable.EnableControls;
 end;
 
 procedure TBonFacAGestionF.ProduitsListDBGridEhCellClick(Column: TColumnEh);
@@ -2832,3 +2922,4 @@ begin
 end;
 
 end.
+

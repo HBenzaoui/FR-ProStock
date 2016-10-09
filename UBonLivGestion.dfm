@@ -87,7 +87,7 @@ object BonLivGestionF: TBonLivGestionF
       ShowHint = True
       Spacing = -1
       OnClick = EditBVlivBonLivGBtnClick
-      Version = '1.6.1.1'
+      Version = '1.6.1.2'
       TMSStyle = 0
     end
     object AddBVlivBonLivGBtn: TAdvToolButton
@@ -120,7 +120,7 @@ object BonLivGestionF: TBonLivGestionF
       ShowHint = True
       Spacing = -1
       OnClick = AddBVlivBonLivGBtnClick
-      Version = '1.6.1.1'
+      Version = '1.6.1.2'
       TMSStyle = 0
     end
     object Label4: TLabel
@@ -152,8 +152,8 @@ object BonLivGestionF: TBonLivGestionF
       ShowHint = True
       OnClick = sSpeedButton1Click
       SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
       ImageIndex = 7
+      Images = MainForm.PanelIcons24
     end
     object sSpeedButton2: TsSpeedButton
       Left = 969
@@ -166,8 +166,8 @@ object BonLivGestionF: TBonLivGestionF
       ShowHint = True
       OnClick = sSpeedButton2Click
       SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
       ImageIndex = 8
+      Images = MainForm.PanelIcons24
     end
     object sSpeedButton3: TsSpeedButton
       Left = 1041
@@ -180,14 +180,14 @@ object BonLivGestionF: TBonLivGestionF
       ShowHint = True
       OnClick = sSpeedButton3Click
       SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
       ImageIndex = 9
+      Images = MainForm.PanelIcons24
     end
     object Label5: TLabel
       Left = 16
       Top = 63
-      Width = 34
-      Height = 19
+      Width = 35
+      Height = 20
       Caption = 'Date'
       Color = 15722984
       Font.Charset = DEFAULT_CHARSET
@@ -202,8 +202,8 @@ object BonLivGestionF: TBonLivGestionF
     object Label6: TLabel
       Left = 16
       Top = 24
-      Width = 145
-      Height = 19
+      Width = 144
+      Height = 20
       Caption = 'Bon de Livraison N'#176
       Color = 15722984
       Font.Charset = DEFAULT_CHARSET
@@ -259,13 +259,13 @@ object BonLivGestionF: TBonLivGestionF
       ShowHint = True
       Spacing = -1
       OnClick = AddClientBonLivGBtnClick
-      Version = '1.6.1.1'
+      Version = '1.6.1.2'
       TMSStyle = 0
     end
     object Label8: TLabel
       Left = 414
       Top = 87
-      Width = 44
+      Width = 43
       Height = 18
       Caption = 'Client:'
       Color = 4207405
@@ -308,13 +308,13 @@ object BonLivGestionF: TBonLivGestionF
       ShowHint = True
       Spacing = -1
       OnClick = ValiderBVlivBonLivGBtnClick
-      Version = '1.6.1.1'
+      Version = '1.6.1.2'
       TMSStyle = 0
     end
     object Label7: TLabel
       Left = 414
       Top = 132
-      Width = 44
+      Width = 43
       Height = 18
       Caption = 'Mode:'
       Color = 4207405
@@ -356,13 +356,13 @@ object BonLivGestionF: TBonLivGestionF
       ShowHint = True
       Spacing = -1
       OnClick = AddModePaieBonLivGBtnClick
-      Version = '1.6.1.1'
+      Version = '1.6.1.2'
       TMSStyle = 0
     end
     object Label16: TLabel
       Left = 657
       Top = 132
-      Width = 60
+      Width = 57
       Height = 18
       Caption = 'Compte:'
       Color = 4207405
@@ -404,7 +404,7 @@ object BonLivGestionF: TBonLivGestionF
       ShowHint = True
       Spacing = -1
       OnClick = AddCompteBonLivGBtnClick
-      Version = '1.6.1.1'
+      Version = '1.6.1.2'
       TMSStyle = 0
     end
     object ListAddProduitBonLivGBtn: TAdvToolButton
@@ -437,7 +437,7 @@ object BonLivGestionF: TBonLivGestionF
       ShowHint = True
       Spacing = -1
       OnClick = ListAddProduitBonLivGBtnClick
-      Version = '1.6.1.1'
+      Version = '1.6.1.2'
       ExplicitTop = 229
       TMSStyle = 0
     end
@@ -472,7 +472,7 @@ object BonLivGestionF: TBonLivGestionF
       Spacing = -1
       Visible = False
       OnClick = DeleteProduitBonLivGBtnClick
-      Version = '1.6.1.1'
+      Version = '1.6.1.2'
       ExplicitTop = 231
       TMSStyle = 0
     end
@@ -506,7 +506,7 @@ object BonLivGestionF: TBonLivGestionF
       ShowHint = True
       Spacing = -1
       OnClick = NewAddProduitBonLivGBtnClick
-      Version = '1.6.1.1'
+      Version = '1.6.1.2'
       ExplicitTop = 229
       TMSStyle = 0
     end
@@ -559,7 +559,7 @@ object BonLivGestionF: TBonLivGestionF
       ShowHint = True
       Spacing = -1
       OnClick = EnterAddProduitBonLivGBtnClick
-      Version = '1.6.1.1'
+      Version = '1.6.1.2'
       ExplicitTop = 229
       TMSStyle = 0
     end
@@ -594,7 +594,7 @@ object BonLivGestionF: TBonLivGestionF
       Spacing = -1
       Visible = False
       OnClick = ClearProduitBonLivGBtnClick
-      Version = '1.6.1.1'
+      Version = '1.6.1.2'
       ExplicitTop = 231
       TMSStyle = 0
     end
@@ -629,6 +629,7 @@ object BonLivGestionF: TBonLivGestionF
       Height = 13
       AutoSize = False
       Caption = '0'
+      Visible = False
     end
     object BonLTotalHTNewLbl: TLabel
       Left = 266
@@ -637,6 +638,7 @@ object BonLivGestionF: TBonLivGestionF
       Height = 13
       AutoSize = False
       Caption = '0'
+      Visible = False
     end
     object TotalTVANewLbl: TLabel
       Left = 266
@@ -645,11 +647,12 @@ object BonLivGestionF: TBonLivGestionF
       Height = 13
       AutoSize = False
       Caption = '0'
+      Visible = False
     end
     object Label19: TLabel
       Left = 380
       Top = 177
-      Width = 80
+      Width = 77
       Height = 18
       Caption = 'N'#176' Ch'#233'que:'
       Color = 4207405
@@ -665,8 +668,8 @@ object BonLivGestionF: TBonLivGestionF
     object ObserBonLivGLbl: TLabel
       Left = 15
       Top = 99
-      Width = 99
-      Height = 19
+      Width = 102
+      Height = 20
       Caption = 'Observations:'
       Color = 4207405
       Font.Charset = DEFAULT_CHARSET
@@ -685,6 +688,7 @@ object BonLivGestionF: TBonLivGestionF
       Height = 13
       AutoSize = False
       Caption = '0'
+      Visible = False
     end
     object ValiderBVLivBonLivGLbl: TLabel
       Left = 903
@@ -719,6 +723,7 @@ object BonLivGestionF: TBonLivGestionF
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
+      Visible = False
     end
     object NameClientGErrorP: TPanel
       Left = 461
@@ -764,8 +769,8 @@ object BonLivGestionF: TBonLivGestionF
         ShowHint = True
         OnClick = sSpeedButton4Click
         SkinData.SkinSection = 'SPEEDBUTTON'
-        Images = MainForm.PanelIcons24
         ImageIndex = 3
+        Images = MainForm.PanelIcons24
       end
       object sSpeedButton5: TsSpeedButton
         Left = 69
@@ -777,8 +782,8 @@ object BonLivGestionF: TBonLivGestionF
         ShowHint = True
         OnClick = sSpeedButton5Click
         SkinData.SkinSection = 'SPEEDBUTTON'
-        Images = MainForm.PanelIcons24
         ImageIndex = 2
+        Images = MainForm.PanelIcons24
         ShowCaption = False
       end
       object sSpeedButton6: TsSpeedButton
@@ -791,8 +796,8 @@ object BonLivGestionF: TBonLivGestionF
         ShowHint = True
         OnClick = sSpeedButton6Click
         SkinData.SkinSection = 'SPEEDBUTTON'
-        Images = MainForm.PanelIcons24
         ImageIndex = 1
+        Images = MainForm.PanelIcons24
       end
       object sSpeedButton7: TsSpeedButton
         Left = 9
@@ -804,8 +809,8 @@ object BonLivGestionF: TBonLivGestionF
         ShowHint = True
         OnClick = sSpeedButton7Click
         SkinData.SkinSection = 'SPEEDBUTTON'
-        Images = MainForm.PanelIcons24
         ImageIndex = 0
+        Images = MainForm.PanelIcons24
         ShowCaption = False
       end
     end
@@ -1349,6 +1354,12 @@ object BonLivGestionF: TBonLivGestionF
         TextEditing = False
         Title.Alignment = taCenter
         Title.Caption = 'R'#233'ference'
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = 4207405
+        Title.Font.Height = 19
+        Title.Font.Name = 'Helvetica LT Std'
+        Title.Font.Style = []
+        Title.Font.Quality = fqProof
         Width = 150
       end
       item
@@ -1366,6 +1377,12 @@ object BonLivGestionF: TBonLivGestionF
         TextEditing = False
         Title.Alignment = taCenter
         Title.Caption = 'D'#233'signation'
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = 4207405
+        Title.Font.Height = 19
+        Title.Font.Name = 'Helvetica LT Std'
+        Title.Font.Style = []
+        Title.Font.Quality = fqProof
         Width = 500
       end
       item
@@ -1436,6 +1453,12 @@ object BonLivGestionF: TBonLivGestionF
         TextEditing = False
         Title.Alignment = taCenter
         Title.Caption = 'TVA OLD'
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = 4207405
+        Title.Font.Height = 19
+        Title.Font.Name = 'Helvetica LT Std'
+        Title.Font.Style = []
+        Title.Font.Quality = fqProof
         Visible = False
       end
       item
@@ -1666,7 +1689,7 @@ object BonLivGestionF: TBonLivGestionF
     object label13: TLabel
       Left = 612
       Top = 9
-      Width = 52
+      Width = 47
       Height = 21
       Caption = 'R'#233'gl'#233':'
       Color = clWhite
@@ -1682,7 +1705,7 @@ object BonLivGestionF: TBonLivGestionF
     object label12: TLabel
       Left = 612
       Top = 76
-      Width = 77
+      Width = 71
       Height = 21
       Caption = 'Le Reste:'
       Color = clWhite
@@ -1698,7 +1721,7 @@ object BonLivGestionF: TBonLivGestionF
     object Label1: TLabel
       Left = 413
       Top = 9
-      Width = 82
+      Width = 80
       Height = 21
       Caption = 'Total TVA:'
       Color = clWhite
@@ -1714,7 +1737,7 @@ object BonLivGestionF: TBonLivGestionF
     object Label2: TLabel
       Left = 12
       Top = 9
-      Width = 72
+      Width = 70
       Height = 21
       Caption = 'Total HT:'
       Color = clWhite
@@ -1855,7 +1878,7 @@ object BonLivGestionF: TBonLivGestionF
     object Label10: TLabel
       Left = 412
       Top = 76
-      Width = 86
+      Width = 79
       Height = 21
       Caption = 'Total TTC:'
       Color = 15722984
@@ -1871,7 +1894,7 @@ object BonLivGestionF: TBonLivGestionF
     object Label3: TLabel
       Left = 212
       Top = 83
-      Width = 60
+      Width = 58
       Height = 21
       Caption = 'Timber:'
       Color = clWhite
@@ -1890,7 +1913,7 @@ object BonLivGestionF: TBonLivGestionF
       Left = 392
       Top = 85
       Width = 10
-      Height = 16
+      Height = 17
       Margins.Left = 0
       Margins.Top = 0
       Margins.Right = 0
@@ -1915,7 +1938,7 @@ object BonLivGestionF: TBonLivGestionF
       Left = 392
       Top = 11
       Width = 10
-      Height = 16
+      Height = 17
       Margins.Left = 0
       Margins.Top = 0
       Margins.Right = 0
@@ -1937,7 +1960,7 @@ object BonLivGestionF: TBonLivGestionF
     object Label14: TLabel
       Left = 212
       Top = 9
-      Width = 65
+      Width = 61
       Height = 21
       Caption = 'Remise:'
       Color = 14727239
@@ -2213,7 +2236,7 @@ object BonLivGestionF: TBonLivGestionF
     Top = 480
   end
   object BonLivPListfrxRprt: TfrxReport
-    Version = '5.4.6'
+    Version = '5.5'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -2221,7 +2244,7 @@ object BonLivGestionF: TBonLivGestionF
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 42576.399521435200000000
-    ReportOptions.LastChange = 42647.661076527780000000
+    ReportOptions.LastChange = 42654.968267569440000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       ''
@@ -2640,11 +2663,13 @@ object BonLivGestionF: TBonLivGestionF
         DataSet = frxBonLivPListDB
         DataSetName = 'frxBonLivPListDB'
         RowCount = 0
+        Stretched = True
         object frxDBDataset1nomp: TfrxMemoView
           Left = 49.133890000000000000
           Top = 3.559060000000000000
           Width = 291.023810000000000000
           Height = 18.897650000000000000
+          StretchMode = smActualHeight
           DataField = 'nomp'
           DataSet = frxBonLivPListDB
           DataSetName = 'frxBonLivPListDB'

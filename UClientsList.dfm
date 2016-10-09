@@ -348,8 +348,8 @@ object ClientListF: TClientListF
     FixedColor = clWindow
     Font.Charset = DEFAULT_CHARSET
     Font.Color = 4207405
-    Font.Height = 24
-    Font.Name = 'Segoe UI'
+    Font.Height = 18
+    Font.Name = 'Helvetica LT Std'
     Font.Style = []
     GridLineParams.DataHorzLines = True
     GridLineParams.DataVertLines = True
@@ -414,6 +414,7 @@ object ClientListF: TClientListF
         Title.ToolTips = True
         Title.ShowImageAndText = False
         Width = 16
+        WordWrap = False
       end
       item
         Alignment = taCenter
@@ -426,10 +427,11 @@ object ClientListF: TClientListF
         Layout = tlCenter
         MinWidth = 100
         Title.Alignment = taCenter
-        Title.Caption = 'Code Client'
+        Title.Caption = 'N'#176' Client'
         Title.EndEllipsis = True
         Title.ToolTips = True
-        Width = 100
+        Width = 110
+        WordWrap = False
       end
       item
         DynProps = <>
@@ -442,7 +444,8 @@ object ClientListF: TClientListF
         Title.Caption = 'Nom du Client'
         Title.EndEllipsis = True
         Title.ToolTips = True
-        Width = 250
+        Width = 400
+        WordWrap = False
       end
       item
         DynProps = <>
@@ -455,6 +458,7 @@ object ClientListF: TClientListF
         Title.EndEllipsis = True
         Title.ToolTips = True
         Width = 130
+        WordWrap = False
       end
       item
         DynProps = <>
@@ -471,6 +475,7 @@ object ClientListF: TClientListF
         Title.Alignment = taCenter
         Title.Caption = 'Nature'
         Width = 49
+        WordWrap = False
       end
       item
         Alignment = taCenter
@@ -484,6 +489,7 @@ object ClientListF: TClientListF
         Title.EndEllipsis = True
         Title.ToolTips = True
         Width = 130
+        WordWrap = False
       end
       item
         Alignment = taCenter
@@ -497,6 +503,7 @@ object ClientListF: TClientListF
         Title.EndEllipsis = True
         Title.ToolTips = True
         Width = 130
+        WordWrap = False
       end
       item
         Alignment = taCenter
@@ -510,6 +517,7 @@ object ClientListF: TClientListF
         Title.EndEllipsis = True
         Title.ToolTips = True
         Width = 130
+        WordWrap = False
       end
       item
         Alignment = taCenter
@@ -523,6 +531,7 @@ object ClientListF: TClientListF
         Title.EndEllipsis = True
         Title.ToolTips = True
         Width = 130
+        WordWrap = False
       end
       item
         DynProps = <>
@@ -535,6 +544,7 @@ object ClientListF: TClientListF
         Title.EndEllipsis = True
         Title.ToolTips = True
         Width = 130
+        WordWrap = False
       end
       item
         DynProps = <>
@@ -547,6 +557,7 @@ object ClientListF: TClientListF
         Title.EndEllipsis = True
         Title.ToolTips = True
         Width = 130
+        WordWrap = False
       end
       item
         DynProps = <>
@@ -559,6 +570,7 @@ object ClientListF: TClientListF
         Title.EndEllipsis = True
         Title.ToolTips = True
         Width = 130
+        WordWrap = False
       end
       item
         DynProps = <>
@@ -571,6 +583,7 @@ object ClientListF: TClientListF
         Title.EndEllipsis = True
         Title.ToolTips = True
         Width = 130
+        WordWrap = False
       end
       item
         DynProps = <>
@@ -583,6 +596,7 @@ object ClientListF: TClientListF
         Title.EndEllipsis = True
         Title.ToolTips = True
         Width = 130
+        WordWrap = False
       end
       item
         Alignment = taCenter
@@ -596,6 +610,7 @@ object ClientListF: TClientListF
         Title.EndEllipsis = True
         Title.ToolTips = True
         Width = 130
+        WordWrap = False
       end
       item
         Alignment = taCenter
@@ -609,6 +624,7 @@ object ClientListF: TClientListF
         Title.EndEllipsis = True
         Title.ToolTips = True
         Width = 130
+        WordWrap = False
       end
       item
         Alignment = taCenter
@@ -622,6 +638,7 @@ object ClientListF: TClientListF
         Title.EndEllipsis = True
         Title.ToolTips = True
         Width = 130
+        WordWrap = False
       end
       item
         Alignment = taCenter
@@ -635,6 +652,7 @@ object ClientListF: TClientListF
         Title.EndEllipsis = True
         Title.ToolTips = True
         Width = 130
+        WordWrap = False
       end
       item
         Alignment = taCenter
@@ -648,6 +666,7 @@ object ClientListF: TClientListF
         Title.EndEllipsis = True
         Title.ToolTips = True
         Width = 130
+        WordWrap = False
       end
       item
         Alignment = taCenter
@@ -661,6 +680,7 @@ object ClientListF: TClientListF
         Title.EndEllipsis = True
         Title.ToolTips = True
         Width = 130
+        WordWrap = False
       end
       item
         DisplayFormat = '#,##0.00'
@@ -674,6 +694,7 @@ object ClientListF: TClientListF
         Title.EndEllipsis = True
         Title.ToolTips = True
         Width = 130
+        WordWrap = False
       end
       item
         DisplayFormat = '#,##0.00'
@@ -686,6 +707,7 @@ object ClientListF: TClientListF
         Title.Caption = 'Cr'#233'dit'
         Title.ToolTips = True
         Width = 130
+        WordWrap = False
       end
       item
         DisplayFormat = '#,##0.00'
@@ -699,6 +721,7 @@ object ClientListF: TClientListF
         Title.EndEllipsis = True
         Title.ToolTips = True
         Width = 130
+        WordWrap = False
       end>
     object RowDetailData: TRowDetailPanelControlEh
     end
@@ -748,7 +771,7 @@ object ClientListF: TClientListF
       ShowHint = True
       Spacing = -1
       OnClick = EditClientsBtnClick
-      Version = '1.6.1.1'
+      Version = '1.6.1.2'
       TMSStyle = 0
     end
     object DeleteClientsBtn: TAdvToolButton
@@ -780,7 +803,7 @@ object ClientListF: TClientListF
       ShowHint = True
       Spacing = -2
       OnClick = DeleteClientsBtnClick
-      Version = '1.6.1.1'
+      Version = '1.6.1.2'
       TMSStyle = 0
     end
     object AddClientsBtn: TAdvToolButton
@@ -812,13 +835,13 @@ object ClientListF: TClientListF
       ShowHint = True
       Spacing = -1
       OnClick = AddClientsBtnClick
-      Version = '1.6.1.1'
+      Version = '1.6.1.2'
       TMSStyle = 0
     end
     object ResearchClientsLbl: TLabel
       Left = 24
       Top = 32
-      Width = 75
+      Width = 73
       Height = 18
       Caption = 'Recherche'
       Color = 15722984
@@ -841,8 +864,8 @@ object ClientListF: TClientListF
       ShowHint = True
       OnClick = sSpeedButton1Click
       SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
       ImageIndex = 7
+      Images = MainForm.PanelIcons24
     end
     object sSpeedButton2: TsSpeedButton
       Left = 879
@@ -854,8 +877,8 @@ object ClientListF: TClientListF
       ShowHint = True
       OnClick = sSpeedButton2Click
       SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
       ImageIndex = 8
+      Images = MainForm.PanelIcons24
     end
     object toutClientsLbl: TLabel
       Left = 1236
@@ -953,8 +976,8 @@ object ClientListF: TClientListF
       Visible = False
       OnClick = sSpeedButton3Click
       SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
       ImageIndex = 9
+      Images = MainForm.PanelIcons24
     end
     object ArrowsPnl: TPanel
       Left = 378
@@ -983,8 +1006,8 @@ object ClientListF: TClientListF
         ShowHint = True
         OnClick = LastClientbtnClick
         SkinData.SkinSection = 'SPEEDBUTTON'
-        Images = MainForm.PanelIcons24
         ImageIndex = 3
+        Images = MainForm.PanelIcons24
       end
       object NextClientbtn: TsSpeedButton
         Left = 69
@@ -996,8 +1019,8 @@ object ClientListF: TClientListF
         ShowHint = True
         OnClick = NextClientbtnClick
         SkinData.SkinSection = 'SPEEDBUTTON'
-        Images = MainForm.PanelIcons24
         ImageIndex = 2
+        Images = MainForm.PanelIcons24
         ShowCaption = False
       end
       object PreviosClientbtn: TsSpeedButton
@@ -1010,8 +1033,8 @@ object ClientListF: TClientListF
         ShowHint = True
         OnClick = PreviosClientbtnClick
         SkinData.SkinSection = 'SPEEDBUTTON'
-        Images = MainForm.PanelIcons24
         ImageIndex = 1
+        Images = MainForm.PanelIcons24
       end
       object FisrtClientbtn: TsSpeedButton
         Left = 9
@@ -1023,8 +1046,8 @@ object ClientListF: TClientListF
         ShowHint = True
         OnClick = FisrtClientbtnClick
         SkinData.SkinSection = 'SPEEDBUTTON'
-        Images = MainForm.PanelIcons24
         ImageIndex = 0
+        Images = MainForm.PanelIcons24
         ShowCaption = False
       end
     end
@@ -1307,7 +1330,7 @@ object ClientListF: TClientListF
     Top = 320
   end
   object ClientListfrxRprt: TfrxReport
-    Version = '5.4.6'
+    Version = '5.5'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]

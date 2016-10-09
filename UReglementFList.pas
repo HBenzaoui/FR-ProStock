@@ -61,6 +61,10 @@ type
     procedure sSpeedButton2Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormPaint(Sender: TObject);
+    procedure BARecListDBGridEhDblClick(Sender: TObject);
+    procedure BARecListDBGridEhKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure BARecListDBGridEhKeyPress(Sender: TObject; var Key: Char);
   private
     procedure GettingData;
     { Private declarations }
@@ -73,9 +77,9 @@ var
 
 implementation
 
-uses   Winapi.MMSystem,
+uses   Winapi.MMSystem,Threading,
   UReglementFGestion, UMainF, UBonRec, UBonFacA, UBonRecGestion,
-  USplashVersement, USplashAddUnite;
+  USplashVersement, USplashAddUnite, USplash;
 
 {$R *.dfm}
 
@@ -299,8 +303,25 @@ if NOT (MainForm.RegfournisseurTable.IsEmpty) then
 
      end else
          begin
-           sndPlaySound('C:\Windows\Media\chord.wav', SND_NODEFAULT Or SND_ASYNC Or  SND_RING);
-         end;
+           sndPlaySound('C:\Windows\Media\chord.wav', SND_NODEFAULT Or SND_ASYNC Or  SND_RING); 
+           TTask.Run ( procedure
+           begin
+            FSplash := TFSplash.Create(nil);
+             try
+               FSplash.Left := MainForm.Width - FSplash.Width - 15 ;                   
+               FSplash.Top := (MainForm.Height - FSplash.Height ) - 15 ;
+                FSplash.Label1.Font.Height:=21;
+               FSplash.Label1.Caption:='Suppressions ne sont pas autorisés!';
+               FSplash.Color:= $004735F9;
+               AnimateWindow(FSplash.Handle, 100, AW_HOR_NEGATIVE OR AW_SLIDE OR AW_ACTIVATE);
+               sleep(700);
+               AnimateWindow(FSplash.Handle, 100, AW_HOR_POSITIVE OR
+                 AW_SLIDE OR AW_HIDE);
+             finally
+               FSplash.free;
+             end;
+           end);
+           end;
 
  end;
 end;
@@ -354,6 +375,41 @@ begin
 
 
      end;
+end;
+
+procedure TReglementFListF.BARecListDBGridEhDblClick(Sender: TObject);
+begin
+//------ use this code to make the clock just on the grid not the title -----/
+if BARecListDBGridEh.ScreenToClient(Mouse.CursorPos).Y>25 then
+begin
+  EditBARecBtnClick(Sender) ;
+end;
+end;
+
+procedure TReglementFListF.BARecListDBGridEhKeyDown(Sender: TObject;
+  var Key: Word; Shift: TShiftState);
+begin
+  if not BARecListDBGridEh.DataSource.DataSet.IsEmpty then
+  begin
+    if key = VK_DELETE then
+  DeleteBARecBtnClick(Sender) ;
+  end else exit
+end;
+
+procedure TReglementFListF.BARecListDBGridEhKeyPress(Sender: TObject;
+  var Key: Char);
+begin
+  if Key in ['n'] then
+    AddBARecBtnClick(Sender);
+  if Key in ['r'] then
+    ResearchRegFEdt.SetFocus;
+  if not BARecListDBGridEh.DataSource.DataSet.IsEmpty then
+  begin
+  if Key in ['s' ] then
+  DeleteBARecBtnClick(Sender) ;
+    if Key in ['m'] then
+      EditBARecBtnClick(Sender);
+  end else Exit;
 end;
 
 procedure TReglementFListF.DateStartRegFDChange(Sender: TObject);

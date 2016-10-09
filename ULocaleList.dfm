@@ -50,7 +50,7 @@ object LocaleListF: TLocaleListF
     ShowHint = True
     Spacing = -1
     OnClick = AdvToolButton1Click
-    Version = '1.6.1.1'
+    Version = '1.6.1.2'
     TMSStyle = 0
   end
   object AdvToolButton2: TAdvToolButton
@@ -82,7 +82,7 @@ object LocaleListF: TLocaleListF
     ShowHint = True
     Spacing = -1
     OnClick = AdvToolButton2Click
-    Version = '1.6.1.1'
+    Version = '1.6.1.2'
     TMSStyle = 0
   end
   object AdvToolButton3: TAdvToolButton
@@ -114,7 +114,7 @@ object LocaleListF: TLocaleListF
     ShowHint = True
     Spacing = -2
     OnClick = AdvToolButton3Click
-    Version = '1.6.1.1'
+    Version = '1.6.1.2'
     TMSStyle = 0
   end
   object Label1: TLabel
@@ -198,7 +198,7 @@ object LocaleListF: TLocaleListF
       ShowHint = True
       Spacing = -1
       OnClick = OKAddCompteSBtnClick
-      Version = '1.6.1.1'
+      Version = '1.6.1.2'
       TMSStyle = 0
     end
   end
@@ -246,6 +246,9 @@ object LocaleListF: TLocaleListF
     TreeViewParams.ShowTreeLines = False
     VertScrollBar.SmoothStep = True
     VertScrollBar.Width = 10
+    OnDblClick = CompteDBGridEhDblClick
+    OnKeyDown = CompteDBGridEhKeyDown
+    OnKeyPress = CompteDBGridEhKeyPress
     Columns = <
       item
         Alignment = taCenter

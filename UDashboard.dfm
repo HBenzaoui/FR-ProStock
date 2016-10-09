@@ -317,8 +317,7 @@ object DashboardF: TDashboardF
   OldCreateOrder = False
   Visible = True
   OnClose = FormClose
-  OnPaint = FormShow
-  OnShow = FormShow
+  OnPaint = FormPaint
   PixelsPerInch = 96
   TextHeight = 13
   object GridPanel1: TGridPanel
@@ -418,7 +417,7 @@ object DashboardF: TDashboardF
       object Label6: TLabel
         Left = 13
         Top = 228
-        Width = 63
+        Width = 59
         Height = 18
         Caption = 'Adresse:'
         Color = 4207405
@@ -434,7 +433,7 @@ object DashboardF: TDashboardF
       object NameCompanyDashBLbl: TLabel
         Left = 43
         Top = 93
-        Width = 35
+        Width = 49
         Height = 18
         Caption = '-------'
         Color = 4207405
@@ -450,7 +449,7 @@ object DashboardF: TDashboardF
       object TelCompanyDashBLbl: TLabel
         Left = 43
         Top = 145
-        Width = 35
+        Width = 49
         Height = 18
         Caption = '-------'
         Color = 4207405
@@ -466,7 +465,7 @@ object DashboardF: TDashboardF
       object MobileCompanyDashBLbl: TLabel
         Left = 43
         Top = 197
-        Width = 35
+        Width = 49
         Height = 18
         Caption = '-------'
         Color = 4207405
@@ -482,7 +481,7 @@ object DashboardF: TDashboardF
       object AdrCompanyDashBLbl: TLabel
         Left = 43
         Top = 249
-        Width = 35
+        Width = 49
         Height = 18
         Caption = '-------'
         Color = 4207405
@@ -497,8 +496,8 @@ object DashboardF: TDashboardF
       end
       object NClient: TLabel
         Left = 267
-        Top = 51
-        Width = 118
+        Top = 43
+        Width = 120
         Height = 16
         Anchors = [akTop, akRight]
         Caption = 'Nombre des Clients:'
@@ -514,10 +513,11 @@ object DashboardF: TDashboardF
       end
       object NClientDashBLbl: TLabel
         Left = 391
-        Top = 51
-        Width = 35
+        Top = 43
+        Width = 125
         Height = 18
         Anchors = [akTop, akRight]
+        AutoSize = False
         Caption = '-------'
         Color = 4207405
         Font.Charset = DEFAULT_CHARSET
@@ -530,9 +530,9 @@ object DashboardF: TDashboardF
         StyleElements = []
       end
       object Label12: TLabel
-        Left = 299
-        Top = 85
-        Width = 86
+        Left = 300
+        Top = 99
+        Width = 87
         Height = 16
         Anchors = [akTop, akRight]
         Caption = 'Meilleur Client:'
@@ -548,9 +548,10 @@ object DashboardF: TDashboardF
       end
       object TopAchatClientDashBLbl: TLabel
         Left = 391
-        Top = 85
+        Top = 99
         Width = 125
         Height = 42
+        Hint = 'Exact'
         Anchors = [akTop, akRight]
         AutoSize = False
         Caption = '-------'
@@ -562,12 +563,14 @@ object DashboardF: TDashboardF
         Font.Style = [fsBold]
         ParentColor = False
         ParentFont = False
+        ParentShowHint = False
+        ShowHint = True
         StyleElements = []
       end
       object Label14: TLabel
-        Left = 270
-        Top = 130
-        Width = 115
+        Left = 268
+        Top = 136
+        Width = 119
         Height = 16
         Anchors = [akTop, akRight]
         Caption = 'Meilleur Versement:'
@@ -583,7 +586,7 @@ object DashboardF: TDashboardF
       end
       object TopMoneyClientDashBLbl: TLabel
         Left = 391
-        Top = 130
+        Top = 136
         Width = 125
         Height = 40
         Anchors = [akTop, akRight]
@@ -600,9 +603,9 @@ object DashboardF: TDashboardF
         StyleElements = []
       end
       object Label16: TLabel
-        Left = 238
+        Left = 230
         Top = 245
-        Width = 147
+        Width = 157
         Height = 16
         Anchors = [akTop, akRight]
         Caption = 'Top montant Fournisseur:'
@@ -617,9 +620,9 @@ object DashboardF: TDashboardF
         StyleElements = []
       end
       object Label17: TLabel
-        Left = 252
+        Left = 247
         Top = 210
-        Width = 133
+        Width = 140
         Height = 16
         Anchors = [akTop, akRight]
         Caption = 'Top Achat Fournisseur:'
@@ -634,9 +637,9 @@ object DashboardF: TDashboardF
         StyleElements = []
       end
       object Label18: TLabel
-        Left = 232
+        Left = 227
         Top = 182
-        Width = 153
+        Width = 160
         Height = 16
         Anchors = [akTop, akRight]
         Caption = 'Nombre des Fournisseurs:'
@@ -653,7 +656,7 @@ object DashboardF: TDashboardF
       object NFourDashBLbl: TLabel
         Left = 391
         Top = 182
-        Width = 35
+        Width = 49
         Height = 18
         Anchors = [akTop, akRight]
         Caption = '-------'
@@ -697,6 +700,41 @@ object DashboardF: TDashboardF
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
         Font.Height = 16
+        Font.Name = 'Roboto'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+        StyleElements = []
+      end
+      object Label1: TLabel
+        Left = 256
+        Top = 70
+        Width = 131
+        Height = 16
+        Anchors = [akTop, akRight]
+        Caption = 'Clients ont des dettes:'
+        Color = 4207405
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 16
+        Font.Name = 'Roboto'
+        Font.Style = []
+        ParentColor = False
+        ParentFont = False
+        StyleElements = []
+      end
+      object NClientHaveCreditsDashBLbl: TLabel
+        Left = 391
+        Top = 70
+        Width = 125
+        Height = 18
+        Anchors = [akTop, akRight]
+        AutoSize = False
+        Caption = '-------'
+        Color = 4207405
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 18
         Font.Name = 'Roboto'
         Font.Style = [fsBold]
         ParentColor = False
@@ -836,7 +874,7 @@ object DashboardF: TDashboardF
       object Label22: TLabel
         Left = 35
         Top = 63
-        Width = 112
+        Width = 117
         Height = 16
         Caption = 'Nombre de Produit:'
         Color = 4207405
@@ -852,7 +890,7 @@ object DashboardF: TDashboardF
       object NProduitDashBLbl: TLabel
         Left = 160
         Top = 63
-        Width = 35
+        Width = 49
         Height = 18
         Caption = '-------'
         Color = 4207405
@@ -868,7 +906,7 @@ object DashboardF: TDashboardF
       object Label24: TLabel
         Left = 7
         Top = 88
-        Width = 140
+        Width = 145
         Height = 16
         Caption = 'Nombre Total sur Stock:'
         Color = 4207405
@@ -884,7 +922,7 @@ object DashboardF: TDashboardF
       object NProduitTotalDashBLbl: TLabel
         Left = 160
         Top = 88
-        Width = 35
+        Width = 49
         Height = 18
         Caption = '-------'
         Color = 4207405
@@ -900,7 +938,7 @@ object DashboardF: TDashboardF
       object Label26: TLabel
         Left = 6
         Top = 121
-        Width = 68
+        Width = 66
         Height = 16
         Caption = 'Les Ventes'
         Color = 4207405
@@ -916,7 +954,7 @@ object DashboardF: TDashboardF
       object NBLDashBLbl: TLabel
         Left = 176
         Top = 141
-        Width = 35
+        Width = 49
         Height = 18
         Caption = '-------'
         Color = 4207405
@@ -932,7 +970,7 @@ object DashboardF: TDashboardF
       object Label5: TLabel
         Left = 17
         Top = 141
-        Width = 152
+        Width = 159
         Height = 16
         Caption = 'Nombre de Bons Livration:'
         Color = 4207405
@@ -948,7 +986,7 @@ object DashboardF: TDashboardF
       object Label7: TLabel
         Left = 41
         Top = 164
-        Width = 128
+        Width = 127
         Height = 16
         Caption = 'N'#176' Factures de Vente:'
         Color = 4207405
@@ -964,7 +1002,7 @@ object DashboardF: TDashboardF
       object NFVDashBLbl: TLabel
         Left = 176
         Top = 164
-        Width = 35
+        Width = 49
         Height = 18
         Caption = '-------'
         Color = 4207405
@@ -980,7 +1018,7 @@ object DashboardF: TDashboardF
       object Label9: TLabel
         Left = 14
         Top = 187
-        Width = 155
+        Width = 156
         Height = 16
         Caption = 'N'#176' des Bons au Comptoir :'
         Color = 4207405
@@ -996,7 +1034,7 @@ object DashboardF: TDashboardF
       object NCTRDashBLbl: TLabel
         Left = 176
         Top = 187
-        Width = 35
+        Width = 49
         Height = 18
         Caption = '-------'
         Color = 4207405
@@ -1012,7 +1050,7 @@ object DashboardF: TDashboardF
       object Label11: TLabel
         Left = 6
         Top = 217
-        Width = 68
+        Width = 66
         Height = 16
         Caption = 'Les Achats'
         Color = 4207405
@@ -1028,7 +1066,7 @@ object DashboardF: TDashboardF
       object Label13: TLabel
         Left = 37
         Top = 235
-        Width = 132
+        Width = 136
         Height = 16
         Caption = 'N'#176' des bons r'#233'ception:'
         Color = 4207405
@@ -1044,7 +1082,7 @@ object DashboardF: TDashboardF
       object NBRDashBLbl: TLabel
         Left = 176
         Top = 235
-        Width = 35
+        Width = 49
         Height = 18
         Caption = '-------'
         Color = 4207405
@@ -1060,7 +1098,7 @@ object DashboardF: TDashboardF
       object NFADashBLbl: TLabel
         Left = 176
         Top = 259
-        Width = 35
+        Width = 49
         Height = 18
         Caption = '-------'
         Color = 4207405
@@ -1219,6 +1257,7 @@ object DashboardF: TDashboardF
             Font.Style = []
             Footers = <>
             Layout = tlCenter
+            TextEditing = False
             Title.Alignment = taCenter
             Title.Caption = 'Top 5 Produits'
             Title.Font.Charset = DEFAULT_CHARSET
@@ -1226,8 +1265,9 @@ object DashboardF: TDashboardF
             Title.Font.Height = 16
             Title.Font.Name = 'Roboto'
             Title.Font.Style = [fsBold]
+            ToolTips = True
             Width = 266
-            WordWrap = False
+            WordWrap = True
           end>
         object RowDetailData: TRowDetailPanelControlEh
         end

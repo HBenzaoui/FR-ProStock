@@ -369,8 +369,8 @@ object BankListF: TBankListF
       ShowHint = True
       OnClick = sSpeedButton1Click
       SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
       ImageIndex = 7
+      Images = MainForm.PanelIcons24
     end
     object sSpeedButton2: TsSpeedButton
       Left = 1074
@@ -383,8 +383,8 @@ object BankListF: TBankListF
       ShowHint = True
       OnClick = sSpeedButton2Click
       SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
       ImageIndex = 8
+      Images = MainForm.PanelIcons24
     end
     object sSpeedButton3: TsSpeedButton
       Left = 1146
@@ -397,13 +397,13 @@ object BankListF: TBankListF
       ShowHint = True
       OnClick = sSpeedButton3Click
       SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
       ImageIndex = 9
+      Images = MainForm.PanelIcons24
     end
     object Label1: TLabel
       Left = 744
       Top = 13
-      Width = 24
+      Width = 23
       Height = 18
       Anchors = [akTop, akRight]
       Caption = 'Du:'
@@ -420,7 +420,7 @@ object BankListF: TBankListF
     object Label2: TLabel
       Left = 745
       Top = 48
-      Width = 23
+      Width = 22
       Height = 18
       Anchors = [akTop, akRight]
       Caption = 'Au:'
@@ -477,8 +477,8 @@ object BankListF: TBankListF
         ParentShowHint = False
         ShowHint = True
         SkinData.SkinSection = 'SPEEDBUTTON'
-        Images = MainForm.PanelIcons24
         ImageIndex = 3
+        Images = MainForm.PanelIcons24
       end
       object NextBankbtn: TsSpeedButton
         Left = 69
@@ -489,8 +489,8 @@ object BankListF: TBankListF
         ParentShowHint = False
         ShowHint = True
         SkinData.SkinSection = 'SPEEDBUTTON'
-        Images = MainForm.PanelIcons24
         ImageIndex = 2
+        Images = MainForm.PanelIcons24
         ShowCaption = False
       end
       object PreviosBankbtn: TsSpeedButton
@@ -502,8 +502,8 @@ object BankListF: TBankListF
         ParentShowHint = False
         ShowHint = True
         SkinData.SkinSection = 'SPEEDBUTTON'
-        Images = MainForm.PanelIcons24
         ImageIndex = 1
+        Images = MainForm.PanelIcons24
       end
       object FisrtBankbtn: TsSpeedButton
         Left = 9
@@ -514,8 +514,8 @@ object BankListF: TBankListF
         ParentShowHint = False
         ShowHint = True
         SkinData.SkinSection = 'SPEEDBUTTON'
-        Images = MainForm.PanelIcons24
         ImageIndex = 0
+        Images = MainForm.PanelIcons24
         ShowCaption = False
       end
     end
@@ -730,8 +730,8 @@ object BankListF: TBankListF
     FixedColor = clWindow
     Font.Charset = DEFAULT_CHARSET
     Font.Color = 4207405
-    Font.Height = 24
-    Font.Name = 'Segoe UI'
+    Font.Height = 18
+    Font.Name = 'Helvetica LT Std'
     Font.Style = []
     FooterRowCount = 1
     FooterParams.FillStyle = cfstSolidEh
@@ -773,6 +773,7 @@ object BankListF: TBankListF
     TitleParams.SortMarkerStyle = smstThemeDefinedEh
     TitleParams.VertLines = True
     VertScrollBar.Width = 15
+    OnDrawColumnCell = CaisseListDBGridEhDrawColumnCell
     Columns = <
       item
         Alignment = taCenter
@@ -799,6 +800,7 @@ object BankListF: TBankListF
         Title.ToolTips = True
         Visible = False
         Width = 24
+        WordWrap = False
       end
       item
         Alignment = taCenter
@@ -812,6 +814,7 @@ object BankListF: TBankListF
         Title.EndEllipsis = True
         Title.ToolTips = True
         Width = 113
+        WordWrap = False
       end
       item
         Alignment = taCenter
@@ -825,6 +828,7 @@ object BankListF: TBankListF
         Title.EndEllipsis = True
         Title.ToolTips = True
         Width = 132
+        WordWrap = False
       end
       item
         DynProps = <>
@@ -842,6 +846,7 @@ object BankListF: TBankListF
         Title.EndEllipsis = True
         Title.ToolTips = True
         Width = 400
+        WordWrap = False
       end
       item
         DynProps = <>
@@ -859,7 +864,8 @@ object BankListF: TBankListF
         Title.Caption = 'Tiers'
         Title.EndEllipsis = True
         Title.ToolTips = True
-        Width = 200
+        Width = 300
+        WordWrap = False
       end
       item
         Checkboxes = False
@@ -881,6 +887,7 @@ object BankListF: TBankListF
         Title.Alignment = taCenter
         Title.Caption = 'MP'
         Width = 28
+        WordWrap = False
       end
       item
         Color = 14210301
@@ -914,6 +921,7 @@ object BankListF: TBankListF
         Title.EndEllipsis = True
         Title.ToolTips = True
         Width = 200
+        WordWrap = False
       end
       item
         Color = 14612166
@@ -948,6 +956,7 @@ object BankListF: TBankListF
         Title.EndEllipsis = True
         Title.ToolTips = True
         Width = 200
+        WordWrap = False
       end
       item
         DisplayFormat = '#,##0.00'
@@ -956,6 +965,7 @@ object BankListF: TBankListF
         FieldName = 'RemisePerc'
         Footers = <>
         Visible = False
+        WordWrap = False
       end
       item
         DisplayFormat = '#,##0.00'
@@ -969,6 +979,7 @@ object BankListF: TBankListF
         Title.Caption = 'Timber Fiscal'
         Visible = False
         Width = 150
+        WordWrap = False
       end
       item
         DisplayFormat = '#,##0.00'
@@ -984,6 +995,7 @@ object BankListF: TBankListF
         Title.ToolTips = True
         Visible = False
         Width = 150
+        WordWrap = False
       end
       item
         DisplayFormat = '#,##0.00'
@@ -998,6 +1010,7 @@ object BankListF: TBankListF
         Title.ToolTips = True
         Visible = False
         Width = 150
+        WordWrap = False
       end
       item
         DisplayFormat = '#,##0.00'
@@ -1013,6 +1026,7 @@ object BankListF: TBankListF
         Title.ToolTips = True
         Visible = False
         Width = 150
+        WordWrap = False
       end
       item
         DisplayFormat = '#,##0.00'
@@ -1028,6 +1042,7 @@ object BankListF: TBankListF
         Title.ToolTips = True
         Visible = False
         Width = 150
+        WordWrap = False
       end
       item
         Alignment = taCenter
@@ -1094,7 +1109,7 @@ object BankListF: TBankListF
     object Label4: TLabel
       Left = 9
       Top = 12
-      Width = 102
+      Width = 99
       Height = 21
       Caption = 'Solde Initial :'
       Color = clWhite
@@ -1129,7 +1144,7 @@ object BankListF: TBankListF
     object Label5: TLabel
       Left = 326
       Top = 12
-      Width = 165
+      Width = 155
       Height = 21
       Caption = 'Solde de la p'#233'riode :'
       Color = clWhite
@@ -1196,7 +1211,7 @@ object BankListF: TBankListF
     object Label6: TLabel
       Left = 886
       Top = 12
-      Width = 56
+      Width = 52
       Height = 21
       Anchors = [akTop, akRight]
       Caption = 'Solde :'
@@ -1290,7 +1305,7 @@ object BankListF: TBankListF
     Top = 480
   end
   object BAnkListfrxRprt: TfrxReport
-    Version = '5.4.6'
+    Version = '5.5'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]

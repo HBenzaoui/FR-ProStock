@@ -342,6 +342,7 @@ end;
 
 procedure TUsersGestionF.OKUserGEdtClick(Sender: TObject);
 Var CodeUR : Integer;
+lookupResultNomUR : Variant;
 begin
   if NameUserGEdt.Text <> '' then
    begin
@@ -352,17 +353,64 @@ begin
             if PassUserGEdt.Text = PassChkUserGEdt.Text then
              begin
                if Tag = 0 then
-                    begin
-                      if NOT (MainForm.UsersTable.IsEmpty) then
+                begin
+
+                  lookupResultNomUR := MainForm.UsersTable.Lookup('LOWER(nom_ur)',(LowerCase(NameUserGEdt.Text)),'nom_ur');
+                 if  VarIsnull( lookupResultNomUR) then
+                  begin
+
+                  if NOT (MainForm.UsersTable.IsEmpty) then
+                  begin
+                  MainForm.UsersTable.Last;
+                  CodeUR:= MainForm.UsersTable.FieldValues['code_ur'] + 1;
+                  end else
                       begin
-                      MainForm.UsersTable.Last;
-                      CodeUR:= MainForm.UsersTable.FieldValues['code_ur'] + 1;
-                      end else
-                          begin
-                           CodeUR:= 1;
-                          end;
-                      MainForm.UsersTable.Append;
-                      MainForm.UsersTable.FieldValues['code_ur']:= CodeUR;
+                       CodeUR:= 1;
+                      end;
+                  MainForm.UsersTable.Append;
+                  MainForm.UsersTable.FieldValues['code_ur']:= CodeUR;
+                  MainForm.UsersTable.FieldValues['nom_ur']:= NameUserGEdt.Text;
+                  MainForm.UsersTable.FieldValues['password_ur']:= PassUserGEdt.Text;
+                  MainForm.UsersTable.FieldValues['type_ur']:= TypeUserGCbx.ItemIndex;
+                  MainForm.UsersTable.FieldValues['bl_ur']:=BLSdr.SliderOn;
+                  MainForm.UsersTable.FieldValues['fcv_ur']:=FCVSdr.SliderOn;
+                  MainForm.UsersTable.FieldValues['rgc_ur']:=RGCSdr.SliderOn;
+                  MainForm.UsersTable.FieldValues['br_ur']:=BRSdr.SliderOn;
+                  MainForm.UsersTable.FieldValues['fca_ur']:=FCASdr.SliderOn;
+                  MainForm.UsersTable.FieldValues['rgf_ur']:=RGFSdr.SliderOn;
+                  MainForm.UsersTable.FieldValues['caisse_ur']:=CaisseSdr.SliderOn;
+                  MainForm.UsersTable.FieldValues['bank_ur']:=BankSdr.SliderOn;
+                  MainForm.UsersTable.FieldValues['client_ur']:=ClientSdr.SliderOn;
+                  MainForm.UsersTable.FieldValues['four_ur']:=FourSdr.SliderOn;
+                  MainForm.UsersTable.FieldValues['ctr_ur']:=CtrSdr.SliderOn;
+                  MainForm.UsersTable.FieldValues['produit_ur']:=ProduitSdr.SliderOn;
+                  MainForm.UsersTable.FieldValues['famp_ur']:=FamPSdr.SliderOn;
+                  MainForm.UsersTable.FieldValues['sfamp_ur']:=SFamPSdr.SliderOn;
+                  MainForm.UsersTable.FieldValues['mdpai_ur']:=MPSdr.SliderOn;
+                  MainForm.UsersTable.FieldValues['cmpt_ur']:=ComptesSdr.SliderOn;
+                  MainForm.UsersTable.FieldValues['unit_ur']:=UnitSdr.SliderOn;
+                  MainForm.UsersTable.FieldValues['local_ur']:=LocalSdr.SliderOn;
+                  MainForm.UsersTable.Post;
+
+
+                MainForm.UsersTable.Refresh;
+                sndPlaySound('C:\Windows\Media\speech on.wav', SND_NODEFAULT Or SND_ASYNC Or  SND_RING);
+                Close;
+                 end else
+                     begin
+                      NameUserGEdt.BorderStyle := bsNone;
+                      NameUserGEdt.StyleElements := [];
+                      UserNameGErrorP.Visible:= True;
+                      UserEroorGlbl.Caption:= 'Nom d''utilisateur Existe Déja !!';
+                      UserEroorGlbl.Visible:= True;
+                      sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+                      NameUserGEdt.SetFocus;
+
+                     end;
+
+                end else
+                    begin
+                      MainForm.UsersTable.Edit;
                       MainForm.UsersTable.FieldValues['nom_ur']:= NameUserGEdt.Text;
                       MainForm.UsersTable.FieldValues['password_ur']:= PassUserGEdt.Text;
                       MainForm.UsersTable.FieldValues['type_ur']:= TypeUserGCbx.ItemIndex;
@@ -384,38 +432,15 @@ begin
                       MainForm.UsersTable.FieldValues['cmpt_ur']:=ComptesSdr.SliderOn;
                       MainForm.UsersTable.FieldValues['unit_ur']:=UnitSdr.SliderOn;
                       MainForm.UsersTable.FieldValues['local_ur']:=LocalSdr.SliderOn;
+
                       MainForm.UsersTable.Post;
-                    end else
-                        begin
-                            MainForm.UsersTable.Edit;
-                            MainForm.UsersTable.FieldValues['nom_ur']:= NameUserGEdt.Text;
-                            MainForm.UsersTable.FieldValues['password_ur']:= PassUserGEdt.Text;
-                            MainForm.UsersTable.FieldValues['type_ur']:= TypeUserGCbx.ItemIndex;
-                            MainForm.UsersTable.FieldValues['bl_ur']:=BLSdr.SliderOn;
-                            MainForm.UsersTable.FieldValues['fcv_ur']:=FCVSdr.SliderOn;
-                            MainForm.UsersTable.FieldValues['rgc_ur']:=RGCSdr.SliderOn;
-                            MainForm.UsersTable.FieldValues['br_ur']:=BRSdr.SliderOn;
-                            MainForm.UsersTable.FieldValues['fca_ur']:=FCASdr.SliderOn;
-                            MainForm.UsersTable.FieldValues['rgf_ur']:=RGFSdr.SliderOn;
-                            MainForm.UsersTable.FieldValues['caisse_ur']:=CaisseSdr.SliderOn;
-                            MainForm.UsersTable.FieldValues['bank_ur']:=BankSdr.SliderOn;
-                            MainForm.UsersTable.FieldValues['client_ur']:=ClientSdr.SliderOn;
-                            MainForm.UsersTable.FieldValues['four_ur']:=FourSdr.SliderOn;
-                            MainForm.UsersTable.FieldValues['ctr_ur']:=CtrSdr.SliderOn;
-                            MainForm.UsersTable.FieldValues['produit_ur']:=ProduitSdr.SliderOn;
-                            MainForm.UsersTable.FieldValues['famp_ur']:=FamPSdr.SliderOn;
-                            MainForm.UsersTable.FieldValues['sfamp_ur']:=SFamPSdr.SliderOn;
-                            MainForm.UsersTable.FieldValues['mdpai_ur']:=MPSdr.SliderOn;
-                            MainForm.UsersTable.FieldValues['cmpt_ur']:=ComptesSdr.SliderOn;
-                            MainForm.UsersTable.FieldValues['unit_ur']:=UnitSdr.SliderOn;
-                            MainForm.UsersTable.FieldValues['local_ur']:=LocalSdr.SliderOn;
 
-                            MainForm.UsersTable.Post;
-                        end;
 
-                    MainForm.UsersTable.Refresh;
-                    sndPlaySound('C:\Windows\Media\speech on.wav', SND_NODEFAULT Or SND_ASYNC Or  SND_RING);
-                    Close;
+                MainForm.UsersTable.Refresh;
+                sndPlaySound('C:\Windows\Media\speech on.wav', SND_NODEFAULT Or SND_ASYNC Or  SND_RING);
+                Close;
+                    end;
+
 
              end else
                  begin
@@ -467,6 +492,7 @@ begin
               NameUserGEdt.BorderStyle := bsNone;
               NameUserGEdt.StyleElements := [];
               UserNameGErrorP.Visible:= True;
+              UserEroorGlbl.Caption:= 'S''il vous plaît entrer un Nom';
               UserEroorGlbl.Visible:= True;
               sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
               NameUserGEdt.SetFocus;

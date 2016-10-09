@@ -87,7 +87,7 @@ object BonFacAGestionF: TBonFacAGestionF
       ShowHint = True
       Spacing = -1
       OnClick = EditBAFacBonFacAGBtnClick
-      Version = '1.6.1.1'
+      Version = '1.6.1.2'
       TMSStyle = 0
     end
     object AddBAFacBonFacAGBtn: TAdvToolButton
@@ -120,7 +120,7 @@ object BonFacAGestionF: TBonFacAGestionF
       ShowHint = True
       Spacing = -1
       OnClick = AddBAFacBonFacAGBtnClick
-      Version = '1.6.1.1'
+      Version = '1.6.1.2'
       TMSStyle = 0
     end
     object Label3: TLabel
@@ -152,8 +152,8 @@ object BonFacAGestionF: TBonFacAGestionF
       ShowHint = True
       OnClick = sSpeedButton1Click
       SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
       ImageIndex = 7
+      Images = MainForm.PanelIcons24
     end
     object sSpeedButton2: TsSpeedButton
       Left = 969
@@ -166,8 +166,8 @@ object BonFacAGestionF: TBonFacAGestionF
       ShowHint = True
       OnClick = sSpeedButton2Click
       SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
       ImageIndex = 8
+      Images = MainForm.PanelIcons24
     end
     object sSpeedButton3: TsSpeedButton
       Left = 1041
@@ -180,14 +180,14 @@ object BonFacAGestionF: TBonFacAGestionF
       ShowHint = True
       OnClick = sSpeedButton3Click
       SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
       ImageIndex = 9
+      Images = MainForm.PanelIcons24
     end
     object Label4: TLabel
       Left = 16
       Top = 63
-      Width = 34
-      Height = 19
+      Width = 35
+      Height = 20
       Caption = 'Date'
       Color = 15722984
       Font.Charset = DEFAULT_CHARSET
@@ -202,8 +202,8 @@ object BonFacAGestionF: TBonFacAGestionF
     object Label5: TLabel
       Left = 15
       Top = 23
-      Width = 138
-      Height = 19
+      Width = 140
+      Height = 20
       Caption = 'Facture d'#39'Achat N'#176
       Color = 15722984
       Font.Charset = DEFAULT_CHARSET
@@ -260,7 +260,7 @@ object BonFacAGestionF: TBonFacAGestionF
       ShowHint = True
       Spacing = -1
       OnClick = AddFourBonFacAGBtnClick
-      Version = '1.6.1.1'
+      Version = '1.6.1.2'
       TMSStyle = 0
     end
     object Label6: TLabel
@@ -309,13 +309,13 @@ object BonFacAGestionF: TBonFacAGestionF
       ShowHint = True
       Spacing = -1
       OnClick = ValiderBAFacBonFacAGBtnClick
-      Version = '1.6.1.1'
+      Version = '1.6.1.2'
       TMSStyle = 0
     end
     object Label7: TLabel
       Left = 414
       Top = 132
-      Width = 44
+      Width = 43
       Height = 18
       Caption = 'Mode:'
       Color = 4207405
@@ -357,13 +357,13 @@ object BonFacAGestionF: TBonFacAGestionF
       ShowHint = True
       Spacing = -1
       OnClick = AddModePaieBonFacAGBtnClick
-      Version = '1.6.1.1'
+      Version = '1.6.1.2'
       TMSStyle = 0
     end
     object Label8: TLabel
       Left = 657
       Top = 132
-      Width = 60
+      Width = 57
       Height = 18
       Caption = 'Compte:'
       Color = 4207405
@@ -405,7 +405,7 @@ object BonFacAGestionF: TBonFacAGestionF
       ShowHint = True
       Spacing = -1
       OnClick = AddCompteBonFacAGBtnClick
-      Version = '1.6.1.1'
+      Version = '1.6.1.2'
       TMSStyle = 0
     end
     object ListAddProduitBonFacAGBtn: TAdvToolButton
@@ -438,7 +438,7 @@ object BonFacAGestionF: TBonFacAGestionF
       ShowHint = True
       Spacing = -1
       OnClick = ListAddProduitBonFacAGBtnClick
-      Version = '1.6.1.1'
+      Version = '1.6.1.2'
       ExplicitTop = 229
       TMSStyle = 0
     end
@@ -473,7 +473,7 @@ object BonFacAGestionF: TBonFacAGestionF
       Spacing = -1
       Visible = False
       OnClick = DeleteProduitBonFacAGBtnClick
-      Version = '1.6.1.1'
+      Version = '1.6.1.2'
       ExplicitTop = 231
       TMSStyle = 0
     end
@@ -507,7 +507,7 @@ object BonFacAGestionF: TBonFacAGestionF
       ShowHint = True
       Spacing = -1
       OnClick = NewAddProduitBonFacAGBtnClick
-      Version = '1.6.1.1'
+      Version = '1.6.1.2'
       ExplicitTop = 229
       TMSStyle = 0
     end
@@ -560,7 +560,7 @@ object BonFacAGestionF: TBonFacAGestionF
       ShowHint = True
       Spacing = -1
       OnClick = EnterAddProduitBonFacAGBtnClick
-      Version = '1.6.1.1'
+      Version = '1.6.1.2'
       ExplicitTop = 229
       TMSStyle = 0
     end
@@ -595,7 +595,7 @@ object BonFacAGestionF: TBonFacAGestionF
       Spacing = -1
       Visible = False
       OnClick = ClearProduitBonFacAGBtnClick
-      Version = '1.6.1.1'
+      Version = '1.6.1.2'
       ExplicitTop = 231
       TMSStyle = 0
     end
@@ -650,7 +650,7 @@ object BonFacAGestionF: TBonFacAGestionF
     object Label9: TLabel
       Left = 380
       Top = 177
-      Width = 80
+      Width = 77
       Height = 18
       Caption = 'N'#176' Ch'#233'que:'
       Color = 4207405
@@ -666,8 +666,8 @@ object BonFacAGestionF: TBonFacAGestionF
     object ObserBonFacAGLbl: TLabel
       Left = 15
       Top = 99
-      Width = 99
-      Height = 19
+      Width = 102
+      Height = 20
       Caption = 'Observations:'
       Color = 4207405
       Font.Charset = DEFAULT_CHARSET
@@ -711,7 +711,7 @@ object BonFacAGestionF: TBonFacAGestionF
     object RequiredStarProduitGLbl: TLabel
       Left = 615
       Top = 133
-      Width = 5
+      Width = 6
       Height = 16
       Caption = '*'
       Color = clBtnFace
@@ -727,7 +727,7 @@ object BonFacAGestionF: TBonFacAGestionF
     object Label21: TLabel
       Left = 872
       Top = 90
-      Width = 5
+      Width = 6
       Height = 16
       Caption = '*'
       Color = clBtnFace
@@ -801,8 +801,8 @@ object BonFacAGestionF: TBonFacAGestionF
         ShowHint = True
         OnClick = sSpeedButton4Click
         SkinData.SkinSection = 'SPEEDBUTTON'
-        Images = MainForm.PanelIcons24
         ImageIndex = 3
+        Images = MainForm.PanelIcons24
       end
       object sSpeedButton5: TsSpeedButton
         Left = 69
@@ -814,8 +814,8 @@ object BonFacAGestionF: TBonFacAGestionF
         ShowHint = True
         OnClick = sSpeedButton5Click
         SkinData.SkinSection = 'SPEEDBUTTON'
-        Images = MainForm.PanelIcons24
         ImageIndex = 2
+        Images = MainForm.PanelIcons24
         ShowCaption = False
       end
       object sSpeedButton6: TsSpeedButton
@@ -828,8 +828,8 @@ object BonFacAGestionF: TBonFacAGestionF
         ShowHint = True
         OnClick = sSpeedButton6Click
         SkinData.SkinSection = 'SPEEDBUTTON'
-        Images = MainForm.PanelIcons24
         ImageIndex = 1
+        Images = MainForm.PanelIcons24
       end
       object sSpeedButton7: TsSpeedButton
         Left = 9
@@ -841,8 +841,8 @@ object BonFacAGestionF: TBonFacAGestionF
         ShowHint = True
         OnClick = sSpeedButton7Click
         SkinData.SkinSection = 'SPEEDBUTTON'
-        Images = MainForm.PanelIcons24
         ImageIndex = 0
+        Images = MainForm.PanelIcons24
         ShowCaption = False
       end
     end
@@ -1382,7 +1382,14 @@ object BonFacAGestionF: TBonFacAGestionF
         TextEditing = False
         Title.Alignment = taCenter
         Title.Caption = 'R'#233'ference'
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = 4207405
+        Title.Font.Height = 19
+        Title.Font.Name = 'Helvetica LT Std'
+        Title.Font.Style = []
+        Title.Font.Quality = fqProof
         Width = 150
+        WordWrap = False
       end
       item
         DynProps = <>
@@ -1394,7 +1401,14 @@ object BonFacAGestionF: TBonFacAGestionF
         TextEditing = False
         Title.Alignment = taCenter
         Title.Caption = 'D'#233'signation'
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = 4207405
+        Title.Font.Height = 19
+        Title.Font.Name = 'Helvetica LT Std'
+        Title.Font.Style = []
+        Title.Font.Quality = fqProof
         Width = 500
+        WordWrap = False
       end
       item
         Alignment = taCenter
@@ -1420,6 +1434,7 @@ object BonFacAGestionF: TBonFacAGestionF
         Title.Font.Style = []
         Title.Font.Quality = fqProof
         Width = 100
+        WordWrap = False
       end
       item
         Alignment = taCenter
@@ -1442,6 +1457,7 @@ object BonFacAGestionF: TBonFacAGestionF
         Title.Font.Style = []
         Title.Font.Quality = fqProof
         Width = 70
+        WordWrap = False
       end
       item
         DisplayFormat = '#,##0.00'
@@ -1464,6 +1480,7 @@ object BonFacAGestionF: TBonFacAGestionF
         Title.Font.Style = []
         Title.Font.Quality = fqProof
         Width = 170
+        WordWrap = False
       end
       item
         Alignment = taCenter
@@ -1486,6 +1503,7 @@ object BonFacAGestionF: TBonFacAGestionF
         Title.Font.Name = 'Helvetica LT Std'
         Title.Font.Style = []
         Title.Font.Quality = fqProof
+        WordWrap = False
       end
       item
         Alignment = taCenter
@@ -1503,7 +1521,14 @@ object BonFacAGestionF: TBonFacAGestionF
         TextEditing = False
         Title.Alignment = taCenter
         Title.Caption = 'TVA OLD'
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = 4207405
+        Title.Font.Height = 19
+        Title.Font.Name = 'Helvetica LT Std'
+        Title.Font.Style = []
+        Title.Font.Quality = fqProof
         Visible = False
+        WordWrap = False
       end
       item
         DisplayFormat = '#,##0.00'
@@ -1527,6 +1552,7 @@ object BonFacAGestionF: TBonFacAGestionF
         Title.Font.Quality = fqProof
         Visible = False
         Width = 170
+        WordWrap = False
       end
       item
         DisplayFormat = '#,##0.00'
@@ -1550,6 +1576,7 @@ object BonFacAGestionF: TBonFacAGestionF
         Title.Font.Style = []
         Title.Font.Quality = fqProof
         Width = 170
+        WordWrap = False
       end
       item
         DisplayFormat = '#,##0.00'
@@ -1573,6 +1600,7 @@ object BonFacAGestionF: TBonFacAGestionF
         Title.Font.Style = []
         Title.Font.Quality = fqProof
         Width = 170
+        WordWrap = False
       end
       item
         Color = 15722984
@@ -1597,6 +1625,7 @@ object BonFacAGestionF: TBonFacAGestionF
         Title.Font.Style = []
         Title.Font.Quality = fqProof
         Width = 170
+        WordWrap = False
       end
       item
         DisplayFormat = '#,##0.00'
@@ -1619,6 +1648,7 @@ object BonFacAGestionF: TBonFacAGestionF
         Title.Font.Style = []
         Title.Font.Quality = fqProof
         Width = 170
+        WordWrap = False
       end
       item
         DisplayFormat = '0.00 %'
@@ -1642,6 +1672,7 @@ object BonFacAGestionF: TBonFacAGestionF
         Title.Font.Style = []
         Title.Font.Quality = fqProof
         Width = 170
+        WordWrap = False
       end
       item
         DisplayFormat = '#,##0.00'
@@ -1664,6 +1695,7 @@ object BonFacAGestionF: TBonFacAGestionF
         Title.Font.Style = []
         Title.Font.Quality = fqProof
         Width = 170
+        WordWrap = False
       end
       item
         DisplayFormat = '0.00 %'
@@ -1687,6 +1719,7 @@ object BonFacAGestionF: TBonFacAGestionF
         Title.Font.Style = []
         Title.Font.Quality = fqProof
         Width = 170
+        WordWrap = False
       end
       item
         DisplayFormat = '#,##0.00'
@@ -1709,6 +1742,7 @@ object BonFacAGestionF: TBonFacAGestionF
         Title.Font.Style = []
         Title.Font.Quality = fqProof
         Width = 170
+        WordWrap = False
       end
       item
         DisplayFormat = '0.00 %'
@@ -1732,6 +1766,7 @@ object BonFacAGestionF: TBonFacAGestionF
         Title.Font.Style = []
         Title.Font.Quality = fqProof
         Width = 170
+        WordWrap = False
       end
       item
         DisplayFormat = '#,##0.00'
@@ -1754,6 +1789,7 @@ object BonFacAGestionF: TBonFacAGestionF
         Title.Font.Style = []
         Title.Font.Quality = fqProof
         Width = 170
+        WordWrap = False
       end
       item
         DisplayFormat = '0.00 %'
@@ -1777,6 +1813,7 @@ object BonFacAGestionF: TBonFacAGestionF
         Title.Font.Style = []
         Title.Font.Quality = fqProof
         Width = 170
+        WordWrap = False
       end
       item
         DisplayFormat = '#,##0.00'
@@ -1799,6 +1836,7 @@ object BonFacAGestionF: TBonFacAGestionF
         Title.Font.Style = []
         Title.Font.Quality = fqProof
         Width = 170
+        WordWrap = False
       end
       item
         DisplayFormat = '0.00 %'
@@ -1822,6 +1860,7 @@ object BonFacAGestionF: TBonFacAGestionF
         Title.Font.Style = []
         Title.Font.Quality = fqProof
         Width = 170
+        WordWrap = False
       end>
     object RowDetailData: TRowDetailPanelControlEh
     end
@@ -1868,7 +1907,7 @@ object BonFacAGestionF: TBonFacAGestionF
     object label13: TLabel
       Left = 612
       Top = 9
-      Width = 52
+      Width = 47
       Height = 21
       Caption = 'R'#233'gl'#233':'
       Color = clWhite
@@ -1884,7 +1923,7 @@ object BonFacAGestionF: TBonFacAGestionF
     object label12: TLabel
       Left = 612
       Top = 76
-      Width = 77
+      Width = 71
       Height = 21
       Caption = 'Le Reste:'
       Color = clWhite
@@ -1900,7 +1939,7 @@ object BonFacAGestionF: TBonFacAGestionF
     object Label1: TLabel
       Left = 413
       Top = 9
-      Width = 82
+      Width = 80
       Height = 21
       Caption = 'Total TVA:'
       Color = clWhite
@@ -1916,7 +1955,7 @@ object BonFacAGestionF: TBonFacAGestionF
     object Label2: TLabel
       Left = 12
       Top = 9
-      Width = 72
+      Width = 70
       Height = 21
       Caption = 'Total HT:'
       Color = clWhite
@@ -2057,7 +2096,7 @@ object BonFacAGestionF: TBonFacAGestionF
     object Label10: TLabel
       Left = 412
       Top = 76
-      Width = 86
+      Width = 79
       Height = 21
       Caption = 'Total TTC:'
       Color = 15722984
@@ -2073,7 +2112,7 @@ object BonFacAGestionF: TBonFacAGestionF
     object TimberBonFacAGlbl: TLabel
       Left = 212
       Top = 83
-      Width = 60
+      Width = 58
       Height = 21
       Caption = 'Timber:'
       Color = clWhite
@@ -2092,7 +2131,7 @@ object BonFacAGestionF: TBonFacAGestionF
       Left = 392
       Top = 85
       Width = 10
-      Height = 16
+      Height = 17
       Margins.Left = 0
       Margins.Top = 0
       Margins.Right = 0
@@ -2117,7 +2156,7 @@ object BonFacAGestionF: TBonFacAGestionF
       Left = 392
       Top = 11
       Width = 10
-      Height = 16
+      Height = 17
       Margins.Left = 0
       Margins.Top = 0
       Margins.Right = 0
@@ -2139,7 +2178,7 @@ object BonFacAGestionF: TBonFacAGestionF
     object Label14: TLabel
       Left = 212
       Top = 9
-      Width = 65
+      Width = 61
       Height = 21
       Caption = 'Remise:'
       Color = 14727239
@@ -2554,7 +2593,7 @@ object BonFacAGestionF: TBonFacAGestionF
     Top = 480
   end
   object BonFacAPListfrxRprt: TfrxReport
-    Version = '5.4.6'
+    Version = '5.5'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -2562,7 +2601,7 @@ object BonFacAGestionF: TBonFacAGestionF
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 42576.399521435200000000
-    ReportOptions.LastChange = 42647.662641643520000000
+    ReportOptions.LastChange = 42654.970655208330000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       ''
@@ -3112,11 +3151,13 @@ object BonFacAGestionF: TBonFacAGestionF
         DataSet = frxBonFacAPListDB
         DataSetName = 'frxBonFacAPListDB'
         RowCount = 0
+        Stretched = True
         object frxDBDataset1nomp: TfrxMemoView
           Left = 11.133890000000000000
           Top = 3.559060000000000000
           Width = 264.567100000000000000
           Height = 18.897650000000000000
+          StretchMode = smActualHeight
           DataField = 'nomp'
           DataSet = frxBonFacAPListDB
           DataSetName = 'frxBonFacAPListDB'

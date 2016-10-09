@@ -44,6 +44,8 @@ object ClientGestionF: TClientGestionF
     TabsLineSkin = 'BAR'
     object GeneralClientGTB: TsTabSheet
       Caption = 'G'#233'n'#233'ral'
+      SkinData.CustomColor = False
+      SkinData.CustomFont = False
       object GeneralTB: TPanel
         Left = 0
         Top = 0
@@ -61,7 +63,7 @@ object ClientGestionF: TClientGestionF
         object WilayaClientGLbl: TLabel
           Left = 18
           Top = 226
-          Width = 51
+          Width = 49
           Height = 18
           Caption = 'Wilaya:'
           Color = 4207405
@@ -77,7 +79,7 @@ object ClientGestionF: TClientGestionF
         object VilleClientGLbl: TLabel
           Left = 288
           Top = 227
-          Width = 34
+          Width = 33
           Height = 18
           Caption = 'Ville:'
           Color = 4207405
@@ -93,7 +95,7 @@ object ClientGestionF: TClientGestionF
         object ActiveClientGLbl: TLabel
           Left = 30
           Top = 15
-          Width = 90
+          Width = 89
           Height = 18
           Caption = 'Client Active:'
           Color = 4207405
@@ -141,7 +143,7 @@ object ClientGestionF: TClientGestionF
         object AdrClientGLbl: TLabel
           Left = 8
           Top = 172
-          Width = 63
+          Width = 59
           Height = 18
           Caption = 'Adresse:'
           Color = 4207405
@@ -173,7 +175,7 @@ object ClientGestionF: TClientGestionF
         object SiteClientGLbl: TLabel
           Left = 257
           Top = 414
-          Width = 69
+          Width = 64
           Height = 18
           Caption = 'Site Web:'
           Color = 4207405
@@ -189,7 +191,7 @@ object ClientGestionF: TClientGestionF
         object EmailClientGLbl: TLabel
           Left = 19
           Top = 414
-          Width = 44
+          Width = 41
           Height = 18
           Caption = 'Email:'
           Color = 4207405
@@ -221,7 +223,7 @@ object ClientGestionF: TClientGestionF
         object Mobile2ClientGLbl: TLabel
           Left = 262
           Top = 360
-          Width = 60
+          Width = 59
           Height = 18
           Caption = 'Mobile2:'
           Color = 4207405
@@ -237,7 +239,7 @@ object ClientGestionF: TClientGestionF
         object FaxClientGLbl: TLabel
           Left = 293
           Top = 306
-          Width = 30
+          Width = 28
           Height = 18
           Caption = 'Fax:'
           Color = 4207405
@@ -253,7 +255,7 @@ object ClientGestionF: TClientGestionF
         object RequiredStarClientGLbl: TLabel
           Left = 500
           Top = 62
-          Width = 7
+          Width = 8
           Height = 22
           Caption = '*'
           Color = clBtnFace
@@ -269,7 +271,7 @@ object ClientGestionF: TClientGestionF
         object RequiredClientGlbl: TLabel
           Left = 194
           Top = 38
-          Width = 134
+          Width = 120
           Height = 32
           Caption = 'S'#39'il vous pla'#238't entrer un nom'
           Color = clBtnFace
@@ -287,7 +289,7 @@ object ClientGestionF: TClientGestionF
         object ActiveClientGOuiOuNon: TLabel
           Left = 171
           Top = 18
-          Width = 16
+          Width = 18
           Height = 14
           Caption = 'Oui'
           Color = 4207405
@@ -552,6 +554,8 @@ object ClientGestionF: TClientGestionF
     end
     object PlusInfoClientGTB: TsTabSheet
       Caption = 'Plus D'#39'info'
+      SkinData.CustomColor = False
+      SkinData.CustomFont = False
       object PlusInfoTB: TPanel
         Left = 0
         Top = 0
@@ -569,7 +573,7 @@ object ClientGestionF: TClientGestionF
         object RCClientGLbl: TLabel
           Left = 24
           Top = 18
-          Width = 27
+          Width = 23
           Height = 18
           Caption = 'RC:'
           Color = 4207405
@@ -585,7 +589,7 @@ object ClientGestionF: TClientGestionF
         object NArtClientGLbl: TLabel
           Left = 258
           Top = 18
-          Width = 41
+          Width = 40
           Height = 18
           Caption = 'N'#176'Art:'
           Color = 4207405
@@ -601,7 +605,7 @@ object ClientGestionF: TClientGestionF
         object NIFClientGLbl: TLabel
           Left = 20
           Top = 64
-          Width = 28
+          Width = 27
           Height = 18
           Caption = 'NIF:'
           Color = 4207405
@@ -617,7 +621,7 @@ object ClientGestionF: TClientGestionF
         object NISClientGLbl: TLabel
           Left = 270
           Top = 64
-          Width = 29
+          Width = 28
           Height = 18
           Caption = 'NIS:'
           Color = 4207405
@@ -633,7 +637,7 @@ object ClientGestionF: TClientGestionF
         object ObserClientGLbl: TLabel
           Left = 16
           Top = 324
-          Width = 96
+          Width = 95
           Height = 18
           Caption = 'Observations:'
           Color = 4207405
@@ -649,7 +653,7 @@ object ClientGestionF: TClientGestionF
         object MaxCreditClientGLbl: TLabel
           Left = 258
           Top = 252
-          Width = 80
+          Width = 77
           Height = 18
           Caption = 'Cr'#233'dit Max:'
           Color = 4207405
@@ -715,7 +719,7 @@ object ClientGestionF: TClientGestionF
         object OldCreditClientGLbl: TLabel
           Left = 12
           Top = 252
-          Width = 95
+          Width = 94
           Height = 18
           Caption = 'Ancien cr'#233'dit:'
           Color = 4207405
@@ -731,7 +735,7 @@ object ClientGestionF: TClientGestionF
         object NBankClientGLbl: TLabel
           Left = 10
           Top = 113
-          Width = 127
+          Width = 121
           Height = 18
           Caption = 'Compte Bancaire:'
           Color = 4207405
@@ -747,7 +751,7 @@ object ClientGestionF: TClientGestionF
         object RIBClientGLbl: TLabel
           Left = 270
           Top = 113
-          Width = 29
+          Width = 28
           Height = 18
           Caption = 'RIB:'
           Color = 4207405
@@ -1024,7 +1028,7 @@ object ClientGestionF: TClientGestionF
       ShowHint = True
       Spacing = 10
       OnClick = OKClientGBtnClick
-      Version = '1.6.1.1'
+      Version = '1.6.1.2'
       TMSStyle = 0
     end
     object CancelClientGBtn: TAdvToolButton
@@ -1055,7 +1059,7 @@ object ClientGestionF: TClientGestionF
       ShowHint = True
       Spacing = -1
       OnClick = CancelClientGBtnClick
-      Version = '1.6.1.1'
+      Version = '1.6.1.2'
       TMSStyle = 0
     end
   end

@@ -60,6 +60,10 @@ type
     procedure sSpeedButton1Click(Sender: TObject);
     procedure sSpeedButton3Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure BVLivListDBGridEhDblClick(Sender: TObject);
+    procedure BVLivListDBGridEhKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure BVLivListDBGridEhKeyPress(Sender: TObject; var Key: Char);
   private
     procedure GettingData;
     { Private declarations }
@@ -72,8 +76,8 @@ var
 
 implementation
 
-uses Winapi.MMSystem,
-  UReglementCGestion, UMainF, USplashAddUnite;
+uses Winapi.MMSystem,Threading,
+  UReglementCGestion, UMainF, USplashAddUnite, USplash;
 
 {$R *.dfm}
 
@@ -149,6 +153,41 @@ begin
 
 
      end;
+end;
+
+procedure TReglementCListF.BVLivListDBGridEhDblClick(Sender: TObject);
+begin
+//------ use this code to make the clock just on the grid not the title -----/
+if BVLivListDBGridEh.ScreenToClient(Mouse.CursorPos).Y>25 then
+begin
+  EditBARecBtnClick(Sender) ;
+end;
+end;
+
+procedure TReglementCListF.BVLivListDBGridEhKeyDown(Sender: TObject;
+  var Key: Word; Shift: TShiftState);
+begin
+  if not BVLivListDBGridEh.DataSource.DataSet.IsEmpty then
+  begin
+    if key = VK_DELETE then
+  DeleteBARecBtnClick(Sender) ;
+  end else exit
+end;
+
+procedure TReglementCListF.BVLivListDBGridEhKeyPress(Sender: TObject;
+  var Key: Char);
+begin
+  if Key in ['n'] then
+    AddBARecBtnClick(Sender);
+  if Key in ['r'] then
+    ResearchRegCEdt.SetFocus;
+  if not BVLivListDBGridEh.DataSource.DataSet.IsEmpty then
+  begin
+  if Key in ['s' ] then
+  DeleteBARecBtnClick(Sender) ;
+    if Key in ['m'] then
+      EditBARecBtnClick(Sender);
+  end else Exit;
 end;
 
 procedure TReglementCListF.DateStartRegCDChange(Sender: TObject);
@@ -386,6 +425,23 @@ begin
      end else
          begin
            sndPlaySound('C:\Windows\Media\chord.wav', SND_NODEFAULT Or SND_ASYNC Or  SND_RING);
+           TTask.Run ( procedure
+           begin
+            FSplash := TFSplash.Create(nil);
+             try
+               FSplash.Left := MainForm.Width - FSplash.Width - 15 ;                   
+               FSplash.Top := (MainForm.Height - FSplash.Height ) - 15 ;
+                FSplash.Label1.Font.Height:=21;
+               FSplash.Label1.Caption:='Suppressions ne sont pas autorisés!';
+               FSplash.Color:= $004735F9;
+               AnimateWindow(FSplash.Handle, 100, AW_HOR_NEGATIVE OR AW_SLIDE OR AW_ACTIVATE);
+               sleep(700);
+               AnimateWindow(FSplash.Handle, 100, AW_HOR_POSITIVE OR
+                 AW_SLIDE OR AW_HIDE);
+             finally
+               FSplash.free;
+             end;
+           end);
          end;
 
  end;

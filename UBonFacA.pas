@@ -62,6 +62,9 @@ type
     procedure sSpeedButton3Click(Sender: TObject);
     procedure sSpeedButton2Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure BAFacListDBGridEhKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure BAFacListDBGridEhKeyPress(Sender: TObject; var Key: Char);
   private
     procedure GettingData;
     { Private declarations }
@@ -75,7 +78,7 @@ var
 implementation
 
 uses
-  UMainF, UBonFacAGestion, USplashVersement, USplashAddUnite, UClientGestion,
+  UMainF, UBonFacAGestion, USplashVersement, USplashAddUnite, UClientGestion,Threading,
   USplash;
 
 {$R *.dfm}
@@ -440,6 +443,23 @@ begin
        end else
            begin
              sndPlaySound('C:\Windows\Media\chord.wav', SND_NODEFAULT Or SND_ASYNC Or  SND_RING);
+             TTask.Run ( procedure
+             begin
+              FSplash := TFSplash.Create(nil);
+               try
+                 FSplash.Left := MainForm.Width - FSplash.Width - 15 ;                   
+                 FSplash.Top := (MainForm.Height - FSplash.Height ) - 15 ;
+                  FSplash.Label1.Font.Height:=21;
+                 FSplash.Label1.Caption:='Suppressions ne sont pas autorisés!';
+                 FSplash.Color:= $004735F9;
+                 AnimateWindow(FSplash.Handle, 100, AW_HOR_NEGATIVE OR AW_SLIDE OR AW_ACTIVATE);
+                 sleep(700);
+                 AnimateWindow(FSplash.Handle, 100, AW_HOR_POSITIVE OR
+                   AW_SLIDE OR AW_HIDE);
+               finally
+                 FSplash.free;
+               end;
+             end);
            end;
 
  end;
@@ -451,6 +471,31 @@ if BAFacListDBGridEh.ScreenToClient(Mouse.CursorPos).Y>25 then
 begin
   BonFacAF.EditBAFacBtnClick(Sender) ;
 end;
+end;
+
+procedure TBonFacAF.BAFacListDBGridEhKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  if not BAFacListDBGridEh.DataSource.DataSet.IsEmpty then
+  begin
+    if key = VK_DELETE then
+  DeleteBAFacBtnClick(Sender) ;
+  end else exit
+end;
+
+procedure TBonFacAF.BAFacListDBGridEhKeyPress(Sender: TObject; var Key: Char);
+begin
+  if Key in ['n'] then
+    AddBAFacBtnClick(Sender);
+  if Key in ['r'] then
+    ResearchBAFacEdt.SetFocus;
+  if not BAFacListDBGridEh.DataSource.DataSet.IsEmpty then
+  begin
+  if Key in ['s' ] then
+  DeleteBAFacBtnClick(Sender) ;
+    if Key in ['m'] then
+      EditBAFacBtnClick(Sender);
+  end else Exit;
 end;
 
 procedure TBonFacAF.GettingData;

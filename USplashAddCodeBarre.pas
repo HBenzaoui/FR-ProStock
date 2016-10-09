@@ -570,12 +570,9 @@ procedure TFSplashAddCodeBarre.CodeBarresDBGridEhKeyDown(Sender: TObject;
   var Key: Word; Shift: TShiftState);
 begin
 if not CodeBarresDBGridEh.DataSource.DataSet.IsEmpty then
-
 begin
   if key = VK_DELETE  then
-
   DeleteCBAddCodeBarreSBtnClick(Sender);
-
 end else exit
 end;
 
@@ -583,14 +580,9 @@ procedure TFSplashAddCodeBarre.CodeBarresDBGridEhKeyPress(Sender: TObject;
   var Key: Char);
 begin
 if not CodeBarresDBGridEh.DataSource.DataSet.IsEmpty then
-
   begin
-
   if Key in ['s' ] then
-
   DeleteCBAddCodeBarreSBtnClick(Sender);
-
-
   end else Exit ;
 end;
 

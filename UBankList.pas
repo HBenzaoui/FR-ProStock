@@ -59,6 +59,9 @@ type
     procedure sSpeedButton1Click(Sender: TObject);
     procedure sSpeedButton3Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure CaisseListDBGridEhDrawColumnCell(Sender: TObject;
+      const Rect: TRect; DataCol: Integer; Column: TColumnEh;
+      State: TGridDrawState);
   private
     procedure GettingData;
     { Private declarations }
@@ -170,6 +173,32 @@ begin
         end;
      end;
      BankListCbx.Items.Add('Tous');
+end;
+
+procedure TBankListF.CaisseListDBGridEhDrawColumnCell(Sender: TObject;
+  const Rect: TRect; DataCol: Integer; Column: TColumnEh;
+  State: TGridDrawState);
+begin
+  {  if gdFocused in State then
+      begin
+ // ProduitsListDBGridEh.Canvas.DrawFocusRect(Rect);
+    ProduitsListDBGridEh.Canvas.Brush.Color:=clAqua;
+       end;  }
+
+//------ use this code to high light the selected row in dbgrid----//
+ if gdSelected in State then
+begin
+   CaisseListDBGridEh.Canvas.Brush.Color:=$00FFE8CD;
+   CaisseListDBGridEh.DefaultDrawColumnCell(Rect, DataCol, Column, State);
+end;
+
+ //------ use this code to red the produit with 0 or null in stock----//    decaiss_ocb
+ if  (MainForm.Opt_cas_bnk_BankTable.FieldValues['decaiss_ocb'] <= 0)
+ AND (MainForm.Opt_cas_bnk_BankTable.FieldValues['encaiss_ocb'] <= 0) then
+ begin
+ CaisseListDBGridEh.Canvas.Font.Color:=$004735F9;
+ CaisseListDBGridEh.DefaultDrawColumnCell(Rect, DataCol, Column, State);
+ end;
 end;
 
 procedure TBankListF.DaysBankListCbxChange(Sender: TObject);

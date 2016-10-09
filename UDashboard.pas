@@ -95,8 +95,10 @@ type
     ChartAnimation1: TSeriesAnimationTool;
     ChartAnimation2: TTeeAnimationTool;
     Series2: TBarSeries;
-    procedure FormShow(Sender: TObject);
+    Label1: TLabel;
+    NClientHaveCreditsDashBLbl: TLabel;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure FormPaint(Sender: TObject);
   private
     procedure Selecting_Only_Valide_Bons;
     procedure Selecting_All_Bons;
@@ -225,9 +227,24 @@ begin
        NProduitTotalDashBLbl.Caption:='0';
       end;
 
+
+
+
+      MainForm.SQLQuery.Active:=False;
+      MainForm.SQLQuery.SQL.Clear;
+      MainForm.SQLQuery.SQL.Text:='SELECT * FROM client WHERE code_c <> 1 AND (oldcredit_c + credit_c) > ''0'' ';
+      MainForm.SQLQuery.Active:=True;
+
+      NClientHaveCreditsDashBLbl.Caption:= IntToStr( MainForm.SQLQuery.RecordCount);
+
+      MainForm.SQLQuery.Active:=False;
+      MainForm.SQLQuery.SQL.Clear;
+      
    //---- this is the show the best seller client-------------------------
    begin
-
+   
+     MyMax:=0;
+     
      DataModuleF.TopClient.Active:=False;
      DataModuleF.TopClient.SQL.Clear;
      DataModuleF.TopClient.SQL.Text:=
@@ -276,7 +293,6 @@ begin
                 end;
            end;
 
-
      DataModuleF.TopClient.Active:=False;
      DataModuleF.TopClient.SQL.Clear;
      DataModuleF.TopClient.SQL.Text:=
@@ -302,8 +318,7 @@ begin
            end;
 
 
-       a := TArray<Integer>.Create(TopbonLivC,TopbonCtrC
-                                              ,TopbonFacC);
+       a := TArray<Integer>.Create(TopbonLivC,TopbonCtrC,TopbonFacC);
 
        for I := 0 to 2 do   // change it to 2 when adding CTR bons OR 1 if we dont want CTR
         begin
@@ -317,9 +332,7 @@ begin
       MainForm.ClientTable.SQL.Text:='SELECT * from client where code_c = '+ IntToStr(MyMax) ;
       MainForm.ClientTable.Active:=True;
 
-
      TopAchatClientDashBLbl.Caption:=    MainForm.ClientTable.FieldByName('nom_c').AsString;
-
      MyMax:=0;
 
    end;
@@ -418,15 +431,11 @@ begin
       TopMoneyClientDashBLbl.Caption:=    MainForm.ClientTable.FieldByName('nom_c').AsString;
        MyMax:=0;
    end;
-
-
 //---------------------------------------------------------------------------------------------------
 //---------------------------------------------------------------------------------------------------
-
-
    //---- this is the show the best achter fournisseur-------------------------
    begin
-
+   
      DataModuleF.TopFour.Active:=False;
      DataModuleF.TopFour.SQL.Clear;
      DataModuleF.TopFour.SQL.Text:=
@@ -434,7 +443,6 @@ begin
      DataModuleF.TopFour.Active:=True;
 
      TopbonRecF:=  DataModuleF.TopFour.FieldByName('code_f').AsInteger;
-
 
      DataModuleF.TopFour.Active:=False;
      DataModuleF.TopFour.SQL.Clear;
@@ -458,7 +466,6 @@ begin
       MainForm.FournisseurTable.SQL.Text:='SELECT * from fournisseur where code_f = '+ IntToStr(MyMax) ;
       MainForm.FournisseurTable.Active:=True;
 
-
      TopAchatFourDashBLbl.Caption:=    MainForm.FournisseurTable.FieldByName('nom_f').AsString;
      MyMax:=0;
    end;
@@ -473,7 +480,6 @@ begin
      DataModuleF.TopVerClient.Active:=True;
 
      TopbonRecVerF:=  DataModuleF.TopVerClient.FieldByName('code_f').AsInteger;
-
 
      DataModuleF.TopVerClient.Active:=False;
      DataModuleF.TopVerClient.SQL.Clear;
@@ -1248,33 +1254,30 @@ end;
 
   end;
 
-procedure TDashboardF.FormShow(Sender: TObject);
+procedure TDashboardF.FormPaint(Sender: TObject);
 begin
-GettingData;
+ GettingData;
 MonthsData;
     with PieSeries1 do
     begin
       Clear;
-      Add(  StrToInt(NBLDashBLbl.Caption),  'BL' ,  $00E5B533 ) ;
+      Add(  StrToInt(NBLDashBLbl.Caption),  'BL' ,  $004444FF ) ; 
       Add(  StrToInt(NFVDashBLbl.Caption),  'FCV',  $00CC66AA ) ;
       Add(  StrToInt(NCTRDashBLbl.Caption), 'BCTR', $0000CC99 ) ;
-      Add(  StrToInt(NBRDashBLbl.Caption),  'BR',   $0033BBFF ) ;
-      Add(  StrToInt(NFADashBLbl.Caption),  'FCA',  $004444FF ) ;
+      Add(  StrToInt(NBRDashBLbl.Caption),  'BR',   $00E5B533 ) ;
+      Add(  StrToInt(NFADashBLbl.Caption),  'FCA',  $0033BBFF ) ;       
     end;
 
-//  TTask.Run ( procedure
-//            begin
-
+  TTask.Run ( procedure
+            begin
              if NOT Assigned(DashboardF) then
               begin
               ChartAnimation1.Play;
               TeeAnimationTool1.Play;
               TeeAnimationTool2.play;
-
               end;
-//            end);
-
-end;
+            end);
+end;
 
 procedure TDashboardF.FormClose(Sender: TObject; var Action: TCloseAction);
 begin

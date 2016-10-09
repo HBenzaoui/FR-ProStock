@@ -1986,7 +1986,7 @@ object UsersGestionF: TUsersGestionF
       ShowHint = True
       Spacing = -1
       OnClick = OKUserGEdtClick
-      Version = '1.6.1.1'
+      Version = '1.6.1.2'
       TMSStyle = 0
     end
   end

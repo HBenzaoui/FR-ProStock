@@ -164,7 +164,7 @@ object DataModuleF: TDataModuleF
   object GstockdcConnection02: TFDConnection
     LoginPrompt = False
     Left = 69
-    Top = 488
+    Top = 490
   end
   object ToatalVerMonthVCTR: TFDQuery
     Connection = GstockdcConnection02

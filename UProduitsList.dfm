@@ -344,7 +344,7 @@ object ProduitsListF: TProduitsListF
     FixedColor = clWindow
     Font.Charset = DEFAULT_CHARSET
     Font.Color = 4207405
-    Font.Height = 24
+    Font.Height = 18
     Font.Name = 'Segoe UI'
     Font.Style = []
     GridLineParams.DataHorzLines = True
@@ -395,6 +395,11 @@ object ProduitsListF: TProduitsListF
         DynProps = <>
         EditButtons = <>
         FieldName = 'refer_p'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 18
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
         Footers = <>
         Layout = tlCenter
         MaxWidth = 120
@@ -402,18 +407,25 @@ object ProduitsListF: TProduitsListF
         Title.Alignment = taCenter
         Title.Caption = 'R'#233'ference'
         Width = 120
+        WordWrap = False
       end
       item
         DynProps = <>
         EditButtons = <>
         FieldName = 'nom_p'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 18
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
         Footers = <>
         Layout = tlCenter
         MaxWidth = -1
         MinWidth = 150
         Title.Alignment = taCenter
         Title.Caption = 'D'#233'signation'
-        Width = 300
+        Width = 500
+        WordWrap = False
       end
       item
         Alignment = taCenter
@@ -421,73 +433,115 @@ object ProduitsListF: TProduitsListF
         DynProps = <>
         EditButtons = <>
         FieldName = 'tva_p'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 18
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
         Footers = <>
         Layout = tlCenter
         Title.Alignment = taCenter
         Title.Caption = 'TVA %'
         Width = 70
+        WordWrap = False
       end
       item
         DynProps = <>
         EditButtons = <>
         FieldName = 'code_famp'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 18
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
         Footers = <>
         Layout = tlCenter
         Title.Alignment = taCenter
         Title.Caption = 'Famille'
         Visible = False
         Width = 150
+        WordWrap = False
       end
       item
         Alignment = taCenter
         DynProps = <>
         EditButtons = <>
         FieldName = 'famp'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 18
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
         Footers = <>
         Layout = tlCenter
         Title.Alignment = taCenter
         Title.Caption = 'Famille'
         Width = 150
+        WordWrap = False
       end
       item
         DynProps = <>
         EditButtons = <>
         FieldName = 'code_sfamp'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 18
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
         Footers = <>
         Layout = tlCenter
         Title.Alignment = taCenter
         Title.Caption = 'Souse Famille'
         Visible = False
         Width = 150
+        WordWrap = False
       end
       item
         Alignment = taCenter
         DynProps = <>
         EditButtons = <>
         FieldName = 'sfamp'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 18
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
         Footers = <>
         Layout = tlCenter
         Title.Alignment = taCenter
         Title.Caption = 'Sous Famille'
         Width = 150
+        WordWrap = False
       end
       item
         DynProps = <>
         EditButtons = <>
         FieldName = 'prixht_p'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 18
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
         Footers = <>
         Layout = tlCenter
         Title.Alignment = taCenter
         Visible = False
+        WordWrap = False
       end
       item
         DynProps = <>
         EditButtons = <>
         FieldName = 'alertqut_p'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 18
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
         Footers = <>
         Layout = tlCenter
         Title.Alignment = taCenter
         Visible = False
+        WordWrap = False
       end
       item
         DisplayFormat = '#,##0.00'
@@ -496,8 +550,8 @@ object ProduitsListF: TProduitsListF
         FieldName = 'PrixATTC'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 5345802
-        Font.Height = 24
-        Font.Name = 'Segoe UI'
+        Font.Height = 18
+        Font.Name = 'Helvetica LT Std'
         Font.Style = []
         Font.Quality = fqProof
         Footers = <>
@@ -505,6 +559,7 @@ object ProduitsListF: TProduitsListF
         Title.Alignment = taCenter
         Visible = False
         Width = 131
+        WordWrap = False
       end
       item
         DisplayFormat = '#,##0.00'
@@ -513,8 +568,8 @@ object ProduitsListF: TProduitsListF
         FieldName = 'prixvd_p'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
-        Font.Height = 24
-        Font.Name = 'Segoe UI'
+        Font.Height = 18
+        Font.Name = 'Helvetica LT Std'
         Font.Style = []
         Font.Quality = fqProof
         Footers = <>
@@ -523,6 +578,7 @@ object ProduitsListF: TProduitsListF
         Title.Alignment = taCenter
         Title.Caption = 'PrixVHT D'#233'tail'
         Width = 130
+        WordWrap = False
       end
       item
         DisplayFormat = '#,##0.00'
@@ -531,8 +587,8 @@ object ProduitsListF: TProduitsListF
         FieldName = 'PrixVTTCD'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
-        Font.Height = 24
-        Font.Name = 'Segoe UI'
+        Font.Height = 18
+        Font.Name = 'Helvetica LT Std'
         Font.Style = []
         Font.Quality = fqProof
         Footers = <>
@@ -543,6 +599,7 @@ object ProduitsListF: TProduitsListF
         Title.EndEllipsis = True
         Title.ToolTips = True
         Width = 130
+        WordWrap = False
       end
       item
         DisplayFormat = '#,##0.00'
@@ -551,8 +608,8 @@ object ProduitsListF: TProduitsListF
         FieldName = 'prixvr_p'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
-        Font.Height = 24
-        Font.Name = 'Segoe UI'
+        Font.Height = 18
+        Font.Name = 'Helvetica LT Std'
         Font.Style = []
         Font.Quality = fqProof
         Footers = <>
@@ -561,6 +618,7 @@ object ProduitsListF: TProduitsListF
         Title.Alignment = taCenter
         Title.Caption = 'PrixVHT Rev'
         Width = 130
+        WordWrap = False
       end
       item
         DisplayFormat = '#,##0.00'
@@ -569,8 +627,8 @@ object ProduitsListF: TProduitsListF
         FieldName = 'PrixVTTCR'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
-        Font.Height = 24
-        Font.Name = 'Segoe UI'
+        Font.Height = 18
+        Font.Name = 'Helvetica LT Std'
         Font.Style = []
         Font.Quality = fqProof
         Footers = <>
@@ -579,6 +637,7 @@ object ProduitsListF: TProduitsListF
         Title.Alignment = taCenter
         Title.Caption = 'PrixVTTC Rev'
         Width = 130
+        WordWrap = False
       end
       item
         DisplayFormat = '#,##0.00'
@@ -587,8 +646,8 @@ object ProduitsListF: TProduitsListF
         FieldName = 'prixvg_p'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
-        Font.Height = 24
-        Font.Name = 'Segoe UI'
+        Font.Height = 18
+        Font.Name = 'Helvetica LT Std'
         Font.Style = []
         Font.Quality = fqProof
         Footers = <>
@@ -597,6 +656,7 @@ object ProduitsListF: TProduitsListF
         Title.Alignment = taCenter
         Title.Caption = 'PrixVHT Gros'
         Width = 130
+        WordWrap = False
       end
       item
         DisplayFormat = '#,##0.00'
@@ -605,8 +665,8 @@ object ProduitsListF: TProduitsListF
         FieldName = 'PrixVTTCG'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
-        Font.Height = 24
-        Font.Name = 'Segoe UI'
+        Font.Height = 18
+        Font.Name = 'Helvetica LT Std'
         Font.Style = []
         Font.Quality = fqProof
         Footers = <>
@@ -615,58 +675,89 @@ object ProduitsListF: TProduitsListF
         Title.Alignment = taCenter
         Title.Caption = 'PrixVTTC Gros'
         Width = 130
+        WordWrap = False
       end
       item
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
         FieldName = 'prixva_p'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 18
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
         Footers = <>
         Layout = tlCenter
         Title.Alignment = taCenter
         Visible = False
         Width = 130
+        WordWrap = False
       end
       item
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
         FieldName = 'PrixVTTCA'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 18
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
         Footers = <>
         Layout = tlCenter
         Title.Alignment = taCenter
         Visible = False
         Width = 130
+        WordWrap = False
       end
       item
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
         FieldName = 'prixva2_p'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 18
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
         Footers = <>
         Layout = tlCenter
         Title.Alignment = taCenter
         Visible = False
         Width = 130
+        WordWrap = False
       end
       item
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
         FieldName = 'PrixVTTCA2'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 18
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
         Footers = <>
         Layout = tlCenter
         Title.Alignment = taCenter
         Visible = False
         Width = 130
+        WordWrap = False
       end
       item
         DisplayFormat = '0.00 '
         DynProps = <>
         EditButtons = <>
         FieldName = 'QUT'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 18
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
         Footers = <>
         Visible = False
+        WordWrap = False
       end
       item
         Alignment = taCenter
@@ -675,81 +766,129 @@ object ProduitsListF: TProduitsListF
         DynProps = <>
         EditButtons = <>
         FieldName = 'QutDispo'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 18
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
         Footers = <>
         Layout = tlCenter
         MinWidth = 100
         Title.Alignment = taCenter
         Title.Caption = 'Stock'
         Width = 150
+        WordWrap = False
       end
       item
         Alignment = taCenter
         DynProps = <>
         EditButtons = <>
         FieldName = 'unit'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 18
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
         Footers = <>
         Layout = tlCenter
         Title.Alignment = taCenter
         Title.Caption = 'Unit'#233
+        WordWrap = False
       end
       item
         Alignment = taCenter
         DynProps = <>
         EditButtons = <>
         FieldName = 'fourp'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 18
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
         Footers = <>
         Layout = tlCenter
         Title.Alignment = taCenter
         Title.Caption = 'Fournisseur'
         Width = 200
+        WordWrap = False
       end
       item
         DynProps = <>
         EditButtons = <>
         FieldName = 'code_f'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 18
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
         Footers = <>
         Layout = tlCenter
         Title.Alignment = taCenter
         Visible = False
+        WordWrap = False
       end
       item
         DynProps = <>
         EditButtons = <>
         FieldName = 'perissable_p'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 18
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
         Footers = <>
         Layout = tlCenter
         Title.Alignment = taCenter
         Visible = False
         Width = 100
+        WordWrap = False
       end
       item
         DynProps = <>
         EditButtons = <>
         FieldName = 'dateperiss_p'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 18
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
         Footers = <>
         Layout = tlCenter
         Title.Alignment = taCenter
         Visible = False
+        WordWrap = False
       end
       item
         DynProps = <>
         EditButtons = <>
         FieldName = 'alertdays_p'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 18
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
         Footers = <>
         Layout = tlCenter
         Title.Alignment = taCenter
         Visible = False
+        WordWrap = False
       end
       item
         Alignment = taCenter
         DynProps = <>
         EditButtons = <>
         FieldName = 'local'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 18
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
         Footers = <>
         Layout = tlCenter
         Title.Alignment = taCenter
         Title.Caption = 'Localisation'
         Width = 150
+        WordWrap = False
       end>
     object RowDetailData: TRowDetailPanelControlEh
     end

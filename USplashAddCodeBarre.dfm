@@ -48,7 +48,7 @@ object FSplashAddCodeBarre: TFSplashAddCodeBarre
     ShowHint = True
     Spacing = -1
     OnClick = OKAddUniteSBtnClick
-    Version = '1.6.1.1'
+    Version = '1.6.1.2'
     TMSStyle = 0
   end
   object AddCBAddCodeBarreSBtn: TAdvToolButton
@@ -78,7 +78,7 @@ object FSplashAddCodeBarre: TFSplashAddCodeBarre
     ShowHint = True
     Spacing = -1
     OnClick = AddCBAddCodeBarreSBtnClick
-    Version = '1.6.1.1'
+    Version = '1.6.1.2'
     TMSStyle = 0
   end
   object DeleteCBAddCodeBarreSBtn: TAdvToolButton
@@ -108,7 +108,7 @@ object FSplashAddCodeBarre: TFSplashAddCodeBarre
     ShowHint = True
     Spacing = -1
     OnClick = DeleteCBAddCodeBarreSBtnClick
-    Version = '1.6.1.1'
+    Version = '1.6.1.2'
     TMSStyle = 0
   end
   object NumberCBAddCodeBarreSLbl: TLabel
@@ -153,7 +153,7 @@ object FSplashAddCodeBarre: TFSplashAddCodeBarre
     ShowHint = True
     Spacing = -1
     OnClick = RandomCBAddCodeBarreSBtnClick
-    Version = '1.6.1.1'
+    Version = '1.6.1.2'
     TMSStyle = 0
   end
   object DuplicatedCodeBarrelbl: TLabel

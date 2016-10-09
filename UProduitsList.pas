@@ -76,8 +76,8 @@ type
   public
     { Public declarations }
 
-    CodePToUseOut : Integer;
-
+    CodePToUseOut : Integer  ;
+// const   CodePToUseOut = 0;
   end;
 
 var
@@ -87,8 +87,8 @@ implementation
 
 {$R *.dfm}
 
-uses MMSystem,
-  UMainF, UProduitGestion, USplashPrinting;
+uses MMSystem,Threading,
+  UMainF, UProduitGestion, USplashPrinting, USplash;
 
 function GridSelectAll(ProduitsListDBGridEh: TDBGridEh): Longint;
 begin
@@ -234,6 +234,23 @@ begin
   end else
       begin
          sndPlaySound('C:\Windows\Media\chord.wav', SND_NODEFAULT Or SND_ASYNC Or  SND_RING);
+         TTask.Run ( procedure
+         begin
+          FSplash := TFSplash.Create(nil);
+           try
+             FSplash.Left := MainForm.Width - FSplash.Width - 15 ;                   
+             FSplash.Top := (MainForm.Height - FSplash.Height ) - 15 ;
+              FSplash.Label1.Font.Height:=21;
+             FSplash.Label1.Caption:='Suppressions ne sont pas autorisés!';
+             FSplash.Color:= $004735F9;
+             AnimateWindow(FSplash.Handle, 100, AW_HOR_NEGATIVE OR AW_SLIDE OR AW_ACTIVATE);
+             sleep(700);
+             AnimateWindow(FSplash.Handle, 100, AW_HOR_POSITIVE OR
+               AW_SLIDE OR AW_HIDE);
+           finally
+             FSplash.free;
+           end;
+         end);
       end;
      //--dicconet when finish the quiry ---
       MainForm.SQLQuery.Active:= False;
@@ -540,38 +557,23 @@ begin
   if not ProduitsListDBGridEh.DataSource.DataSet.IsEmpty then
   begin
     if key = VK_DELETE then
-
   DeleteProduitsBtnClick(Sender) ;
-
-  end
-  else
-    exit
-
-end;
+  end else exit
+ end;
 
 procedure TProduitsListF.ProduitsListDBGridEhKeyPress(Sender: TObject; var Key: Char);
 begin
-
   if Key in ['n'] then
     AddProduitsBtnClick(Sender);
-
   if Key in ['r'] then
     ResearchProduitsEdt.SetFocus;
-
   if not ProduitsListDBGridEh.DataSource.DataSet.IsEmpty then
   begin
-
   if Key in ['s' ] then
-
   DeleteProduitsBtnClick(Sender) ;
-
-
     if Key in ['m'] then
       EditProduitsBtnClick(Sender);
-
-  end
-  else
-    Exit;
+  end else Exit;
 end;
 
 procedure TProduitsListF.ProduitsListDBGridEhMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
