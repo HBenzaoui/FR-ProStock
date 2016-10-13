@@ -807,7 +807,7 @@ object FournisseurListF: TFournisseurListF
       TMSStyle = 0
     end
     object ResearchFournisseursLbl: TLabel
-      Left = 24
+      Left = 14
       Top = 32
       Width = 73
       Height = 18
@@ -947,77 +947,59 @@ object FournisseurListF: TFournisseurListF
       ImageIndex = 9
       Images = MainForm.PanelIcons24
     end
-    object ArrowsPnl: TPanel
-      Left = 378
-      Top = 29
-      Width = 132
-      Height = 25
-      BevelEdges = []
-      BevelKind = bkFlat
-      BevelOuter = bvNone
-      Color = 15722984
-      Ctl3D = True
-      DoubleBuffered = False
-      FullRepaint = False
-      ParentBackground = False
-      ParentCtl3D = False
-      ParentDoubleBuffered = False
-      TabOrder = 1
-      StyleElements = []
-      object LastClientbtn: TsSpeedButton
-        Left = 99
-        Top = 0
-        Width = 24
-        Height = 24
-        Hint = 'Modifer'
-        ParentShowHint = False
-        ShowHint = True
-        OnClick = LastClientbtnClick
-        SkinData.SkinSection = 'SPEEDBUTTON'
-        ImageIndex = 3
-        Images = MainForm.PanelIcons24
-      end
-      object NextClientbtn: TsSpeedButton
-        Left = 69
-        Top = 0
-        Width = 24
-        Height = 24
-        Hint = 'Detaill'
-        ParentShowHint = False
-        ShowHint = True
-        OnClick = NextClientbtnClick
-        SkinData.SkinSection = 'SPEEDBUTTON'
-        ImageIndex = 2
-        Images = MainForm.PanelIcons24
-        ShowCaption = False
-      end
-      object PreviosClientbtn: TsSpeedButton
-        Left = 39
-        Top = 0
-        Width = 24
-        Height = 24
-        Hint = 'Modifer'
-        ParentShowHint = False
-        ShowHint = True
-        OnClick = PreviosClientbtnClick
-        SkinData.SkinSection = 'SPEEDBUTTON'
-        ImageIndex = 1
-        Images = MainForm.PanelIcons24
-      end
-      object FisrtFournisseursbtn: TsSpeedButton
-        Left = 9
-        Top = 0
-        Width = 24
-        Height = 24
-        Hint = 'Detaill'
-        ParentShowHint = False
-        ShowHint = True
-        OnClick = FisrtFournisseursbtnClick
-        SkinData.SkinSection = 'SPEEDBUTTON'
-        ImageIndex = 0
-        Images = MainForm.PanelIcons24
-        ShowCaption = False
-      end
+    object LastClientbtn: TsSpeedButton
+      Left = 481
+      Top = 26
+      Width = 30
+      Height = 30
+      Hint = 'Modifer'
+      ParentShowHint = False
+      ShowHint = True
+      OnClick = LastClientbtnClick
+      SkinData.SkinSection = 'SPEEDBUTTON'
+      ImageIndex = 3
+      Images = MainForm.PanelIcons24
+    end
+    object NextClientbtn: TsSpeedButton
+      Left = 447
+      Top = 26
+      Width = 30
+      Height = 30
+      Hint = 'Detaill'
+      ParentShowHint = False
+      ShowHint = True
+      OnClick = NextClientbtnClick
+      SkinData.SkinSection = 'SPEEDBUTTON'
+      ImageIndex = 2
+      Images = MainForm.PanelIcons24
+      ShowCaption = False
+    end
+    object FisrtFournisseursbtn: TsSpeedButton
+      Left = 379
+      Top = 26
+      Width = 30
+      Height = 30
+      Hint = 'Detaill'
+      ParentShowHint = False
+      ShowHint = True
+      OnClick = FisrtFournisseursbtnClick
+      SkinData.SkinSection = 'SPEEDBUTTON'
+      ImageIndex = 0
+      Images = MainForm.PanelIcons24
+      ShowCaption = False
+    end
+    object PreviosClientbtn: TsSpeedButton
+      Left = 413
+      Top = 26
+      Width = 30
+      Height = 30
+      Hint = 'Modifer'
+      ParentShowHint = False
+      ShowHint = True
+      OnClick = PreviosClientbtnClick
+      SkinData.SkinSection = 'SPEEDBUTTON'
+      ImageIndex = 1
+      Images = MainForm.PanelIcons24
     end
     object LineP: TPanel
       Left = 0
@@ -1028,7 +1010,7 @@ object FournisseurListF: TFournisseurListF
       BevelOuter = bvNone
       Color = 10379008
       ParentBackground = False
-      TabOrder = 2
+      TabOrder = 1
       StyleElements = []
     end
     object Panel1: TPanel
@@ -1055,7 +1037,7 @@ object FournisseurListF: TFournisseurListF
       ParentFont = False
       ParentShowHint = False
       ShowHint = False
-      TabOrder = 3
+      TabOrder = 2
       StyleElements = []
     end
     object S01: TPanel
@@ -1082,7 +1064,7 @@ object FournisseurListF: TFournisseurListF
       ParentFont = False
       ParentShowHint = False
       ShowHint = False
-      TabOrder = 4
+      TabOrder = 3
       StyleElements = []
     end
     object S02: TPanel
@@ -1109,11 +1091,11 @@ object FournisseurListF: TFournisseurListF
       ParentFont = False
       ParentShowHint = False
       ShowHint = False
-      TabOrder = 5
+      TabOrder = 4
       StyleElements = []
     end
     object ResearchFournisseurEdt: TSearchBox
-      Left = 103
+      Left = 93
       Top = 28
       Width = 270
       Height = 26
@@ -1140,7 +1122,7 @@ object FournisseurListF: TFournisseurListF
       Font.Name = 'Roboto'
       Font.Style = []
       ParentFont = False
-      TabOrder = 6
+      TabOrder = 5
       TabStop = True
       OnClick = ActifFournisseursRdioBtnClick
     end
@@ -1156,7 +1138,7 @@ object FournisseurListF: TFournisseurListF
       Font.Name = 'Roboto'
       Font.Style = []
       ParentFont = False
-      TabOrder = 7
+      TabOrder = 6
       OnClick = PassifFournisseursRdioBtnClick
     end
     object toutFournisseursRdioBtn: TRadioButton
@@ -1171,11 +1153,38 @@ object FournisseurListF: TFournisseurListF
       Font.Name = 'Roboto'
       Font.Style = []
       ParentFont = False
-      TabOrder = 8
+      TabOrder = 7
       OnClick = toutFournisseursRdioBtnClick
     end
     object Panel2: TPanel
       Left = 1132
+      Top = 21
+      Width = 1
+      Height = 40
+      ParentCustomHint = False
+      BevelEdges = []
+      BevelOuter = bvNone
+      BiDiMode = bdLeftToRight
+      Color = 15970832
+      Ctl3D = True
+      DoubleBuffered = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentBiDiMode = False
+      ParentBackground = False
+      ParentCtl3D = False
+      ParentDoubleBuffered = False
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = False
+      TabOrder = 8
+      StyleElements = []
+    end
+    object Panel4: TPanel
+      Left = 372
       Top = 21
       Width = 1
       Height = 40

@@ -34,7 +34,7 @@ uses
   dxSkinValentine, dxSkinVS2010, dxSkinWhiteprint, dxSkinXmas2008Blue,
   dxSkinscxPCPainter, dxBarBuiltInMenu, cxClasses, dxTabbedMDI,
   dxSkinOffice2016Colorful, dxSkinOffice2016Dark, dxSkinVisualStudio2013Blue,
-  dxSkinVisualStudio2013Dark, dxSkinVisualStudio2013Light;
+  dxSkinVisualStudio2013Dark, dxSkinVisualStudio2013Light, acImage;
 
   procedure GrayForms;
   procedure NormalForms;
@@ -722,6 +722,9 @@ type
     Bonv_ctr_listTabletva_p: TSmallintField;
     ProduitTabletva_p: TSmallintField;
     ClientTablemob_c: TWideStringField;
+    PanelIcons16: TsAlphaImageList;
+    BackUp: TButton;
+    sImage1: TsImage;
     procedure ClientMainFBtnClick(Sender: TObject);
     procedure FourMainFBtnClick(Sender: TObject);
     procedure ProduitMainFBtnClick(Sender: TObject);
@@ -810,6 +813,7 @@ type
     procedure UniteMainFMmnClick(Sender: TObject);
     procedure LocalMainFMmnClick(Sender: TObject);
     procedure inserdataClick(Sender: TObject);
+    procedure BackUpClick(Sender: TObject);
   private
 
     TimerStart: TDateTime;
@@ -968,8 +972,7 @@ procedure TMainForm.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
 //var
 //  msg: String;
 begin
-
-
+ 
 // msg:='You have not saved. Do you really want to close?';
 //
 //  if MessageDlg(msg, mtConfirmation, [mbOk, mbCancel], 0) = mrCancel then
@@ -983,8 +986,7 @@ begin
 ////      GstockdcConnection.ExecSQL('VACUUM') ;
 //      CanClose := True;
 //    end;
-
-
+ 
 end;
 
 procedure TMainForm.FormCreate(Sender: TObject);
@@ -2696,6 +2698,15 @@ end;
 procedure TMainForm.CaisseFaceBtnClick(Sender: TObject);
 begin
 CaisseMainFMnmClick(Sender);
+end;
+
+procedure TMainForm.BackUpClick(Sender: TObject);
+var sCmd: string;
+begin
+//  ExeAndWait('C:\Program Files (x86)\PostgreSQL\9.6\bin\pg_dump', SW_SHOW);
+  sCmd := Pwidechar('C:\Program Files (x86)\PostgreSQL\9.6\bin\pg_dump' );                // Eable this is only for releasing
+  ShellExecute(0, 'open', PChar(sCmd) , PChar(sCmd), nil, SW_SHOW);  // Eable this is only for releasing 1 OR 2
+
 end;
 
 procedure TMainForm.BankFaceBtnClick(Sender: TObject);

@@ -3,7 +3,7 @@ object FastProduitsListF: TFastProduitsListF
   Top = 0
   BorderStyle = bsDialog
   ClientHeight = 516
-  ClientWidth = 879
+  ClientWidth = 894
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -23,7 +23,7 @@ object FastProduitsListF: TFastProduitsListF
   object TopP: TPanel
     Left = 0
     Top = 0
-    Width = 879
+    Width = 894
     Height = 65
     Align = alTop
     BevelOuter = bvNone
@@ -33,6 +33,7 @@ object FastProduitsListF: TFastProduitsListF
     ParentDoubleBuffered = False
     TabOrder = 0
     StyleElements = []
+    ExplicitWidth = 879
     object ResearchProduitsLbl: TLabel
       Left = 7
       Top = 22
@@ -50,7 +51,7 @@ object FastProduitsListF: TFastProduitsListF
       StyleElements = []
     end
     object CancelProduitGBtn: TAdvToolButton
-      Left = 768
+      Left = 786
       Top = 17
       Width = 100
       Height = 30
@@ -82,7 +83,7 @@ object FastProduitsListF: TFastProduitsListF
     end
     object OKProduitGBtn: TAdvToolButton
       Tag = 1
-      Left = 662
+      Left = 680
       Top = 17
       Width = 100
       Height = 30
@@ -114,10 +115,10 @@ object FastProduitsListF: TFastProduitsListF
       TMSStyle = 0
     end
     object LastClientbtn: TsSpeedButton
-      Left = 624
-      Top = 19
-      Width = 24
-      Height = 24
+      Left = 634
+      Top = 17
+      Width = 30
+      Height = 30
       Hint = 'Modifer'
       ParentShowHint = False
       ShowHint = True
@@ -127,10 +128,10 @@ object FastProduitsListF: TFastProduitsListF
       Images = MainForm.PanelIcons24
     end
     object NextClientbtn: TsSpeedButton
-      Left = 594
-      Top = 19
-      Width = 24
-      Height = 24
+      Left = 600
+      Top = 17
+      Width = 30
+      Height = 30
       Hint = 'Detaill'
       ParentShowHint = False
       ShowHint = True
@@ -141,10 +142,10 @@ object FastProduitsListF: TFastProduitsListF
       ShowCaption = False
     end
     object PreviosClientbtn: TsSpeedButton
-      Left = 564
-      Top = 19
-      Width = 24
-      Height = 24
+      Left = 566
+      Top = 17
+      Width = 30
+      Height = 30
       Hint = 'Modifer'
       ParentShowHint = False
       ShowHint = True
@@ -154,10 +155,10 @@ object FastProduitsListF: TFastProduitsListF
       Images = MainForm.PanelIcons24
     end
     object FisrtClientbtn: TsSpeedButton
-      Left = 534
-      Top = 19
-      Width = 24
-      Height = 24
+      Left = 532
+      Top = 17
+      Width = 30
+      Height = 30
       Hint = 'Detaill'
       ParentShowHint = False
       ShowHint = True
@@ -170,7 +171,7 @@ object FastProduitsListF: TFastProduitsListF
     object LineP: TPanel
       Left = 0
       Top = 63
-      Width = 879
+      Width = 894
       Height = 2
       Align = alBottom
       BevelOuter = bvNone
@@ -178,9 +179,10 @@ object FastProduitsListF: TFastProduitsListF
       ParentBackground = False
       TabOrder = 1
       StyleElements = []
+      ExplicitWidth = 879
     end
     object S02: TPanel
-      Left = 654
+      Left = 670
       Top = 11
       Width = 1
       Height = 40
@@ -207,7 +209,7 @@ object FastProduitsListF: TFastProduitsListF
       StyleElements = []
     end
     object ResearchProduitsEdt: TSearchBox
-      Left = 91
+      Left = 87
       Top = 16
       Width = 267
       Height = 30
@@ -255,7 +257,7 @@ object FastProduitsListF: TFastProduitsListF
       OnClick = ResherchPARDCodProduitsRdioBtnClick
     end
     object Panel2: TPanel
-      Left = 527
+      Left = 526
       Top = 11
       Width = 1
       Height = 40
@@ -297,7 +299,7 @@ object FastProduitsListF: TFastProduitsListF
   object ProduitsListDBGridEh: TDBGridEh
     Left = 1
     Top = 65
-    Width = 878
+    Width = 893
     Height = 451
     Align = alClient
     Border.Color = 4207405

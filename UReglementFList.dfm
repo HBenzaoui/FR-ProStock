@@ -341,7 +341,7 @@ object ReglementFListF: TReglementFListF
       1191
       82)
     object EditBARecBtn: TAdvToolButton
-      Left = 791
+      Left = 802
       Top = 26
       Width = 100
       Height = 30
@@ -373,7 +373,7 @@ object ReglementFListF: TReglementFListF
       TMSStyle = 0
     end
     object DeleteBARecBtn: TAdvToolButton
-      Left = 897
+      Left = 908
       Top = 26
       Width = 100
       Height = 30
@@ -405,7 +405,7 @@ object ReglementFListF: TReglementFListF
       TMSStyle = 0
     end
     object AddBARecBtn: TAdvToolButton
-      Left = 685
+      Left = 696
       Top = 26
       Width = 100
       Height = 30
@@ -453,7 +453,7 @@ object ReglementFListF: TReglementFListF
       StyleElements = []
     end
     object sSpeedButton1: TsSpeedButton
-      Left = 1110
+      Left = 1120
       Top = 26
       Width = 30
       Height = 30
@@ -467,7 +467,7 @@ object ReglementFListF: TReglementFListF
       Images = MainForm.PanelIcons24
     end
     object sSpeedButton2: TsSpeedButton
-      Left = 1074
+      Left = 1086
       Top = 26
       Width = 30
       Height = 30
@@ -481,7 +481,7 @@ object ReglementFListF: TReglementFListF
       Images = MainForm.PanelIcons24
     end
     object sSpeedButton3: TsSpeedButton
-      Left = 1146
+      Left = 1154
       Top = 26
       Width = 30
       Height = 30
@@ -526,77 +526,123 @@ object ReglementFListF: TReglementFListF
       ParentFont = False
       StyleElements = []
     end
-    object ArrowsPnl: TPanel
-      Left = 527
-      Top = 29
-      Width = 132
-      Height = 25
-      BevelEdges = []
-      BevelKind = bkFlat
-      BevelOuter = bvNone
+    object LastBARecbtn: TsSpeedButton
+      Left = 593
+      Top = 26
+      Width = 30
+      Height = 30
+      Hint = 'Modifer'
+      ParentShowHint = False
+      ShowHint = True
+      OnClick = LastBARecbtnClick
+      SkinData.SkinSection = 'SPEEDBUTTON'
+      ImageIndex = 3
+      Images = MainForm.PanelIcons24
+    end
+    object NextBARecbtn: TsSpeedButton
+      Left = 559
+      Top = 26
+      Width = 30
+      Height = 30
+      Hint = 'Detaill'
+      ParentShowHint = False
+      ShowHint = True
+      OnClick = NextBARecbtnClick
+      SkinData.SkinSection = 'SPEEDBUTTON'
+      ImageIndex = 2
+      Images = MainForm.PanelIcons24
+      ShowCaption = False
+    end
+    object PreviosBARecbtn: TsSpeedButton
+      Left = 525
+      Top = 26
+      Width = 30
+      Height = 30
+      Hint = 'Modifer'
+      ParentShowHint = False
+      ShowHint = True
+      OnClick = PreviosBARecbtnClick
+      SkinData.SkinSection = 'SPEEDBUTTON'
+      ImageIndex = 1
+      Images = MainForm.PanelIcons24
+    end
+    object FisrtBARecbtn: TsSpeedButton
+      Left = 491
+      Top = 26
+      Width = 30
+      Height = 30
+      Hint = 'Detaill'
+      ParentShowHint = False
+      ShowHint = True
+      OnClick = FisrtBARecbtnClick
+      SkinData.SkinSection = 'SPEEDBUTTON'
+      ImageIndex = 0
+      Images = MainForm.PanelIcons24
+      ShowCaption = False
+    end
+    object FilterBVLivBtn: TAdvToolButton
+      Left = 628
+      Top = 26
+      Width = 55
+      Height = 30
+      Cursor = crHandPoint
+      AutoThemeAdapt = False
+      BorderColor = 7854350
+      BorderDownColor = 7854350
+      BorderHotColor = 4666873
       Color = 15722984
-      Ctl3D = True
-      DoubleBuffered = False
-      FullRepaint = False
-      ParentBackground = False
-      ParentCtl3D = False
-      ParentDoubleBuffered = False
-      TabOrder = 1
-      StyleElements = []
-      object LastBARecbtn: TsSpeedButton
-        Left = 99
-        Top = 0
-        Width = 24
-        Height = 24
-        Hint = 'Modifer'
-        ParentShowHint = False
-        ShowHint = True
-        OnClick = LastBARecbtnClick
-        SkinData.SkinSection = 'SPEEDBUTTON'
-        ImageIndex = 3
-        Images = MainForm.PanelIcons24
-      end
-      object NextBARecbtn: TsSpeedButton
-        Left = 69
-        Top = 0
-        Width = 24
-        Height = 24
-        Hint = 'Detaill'
-        ParentShowHint = False
-        ShowHint = True
-        OnClick = NextBARecbtnClick
-        SkinData.SkinSection = 'SPEEDBUTTON'
-        ImageIndex = 2
-        Images = MainForm.PanelIcons24
-        ShowCaption = False
-      end
-      object PreviosBARecbtn: TsSpeedButton
-        Left = 39
-        Top = 0
-        Width = 24
-        Height = 24
-        Hint = 'Modifer'
-        ParentShowHint = False
-        ShowHint = True
-        OnClick = PreviosBARecbtnClick
-        SkinData.SkinSection = 'SPEEDBUTTON'
-        ImageIndex = 1
-        Images = MainForm.PanelIcons24
-      end
-      object FisrtBARecbtn: TsSpeedButton
-        Left = 9
-        Top = 0
-        Width = 24
-        Height = 24
-        Hint = 'Detaill'
-        ParentShowHint = False
-        ShowHint = True
-        OnClick = FisrtBARecbtnClick
-        SkinData.SkinSection = 'SPEEDBUTTON'
-        ImageIndex = 0
-        Images = MainForm.PanelIcons24
-        ShowCaption = False
-      end
+      ColorDown = 7854350
+      ColorHot = 15722984
+      ColorChecked = clNone
+      DropDownButton = True
+      DropDownMenu = FilterBVLivPMenu
+      DropDownSplit = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 4207405
+      Font.Height = 14
+      Font.Name = 'Roboto'
+      Font.Style = []
+      ImageIndex = 49
+      Images = MainForm.PanelIcons24
+      Layout = blGlyphRight
+      ParentFont = False
+      ParentShowHint = False
+      PopupMenu = FilterBVLivPMenu
+      Shaded = False
+      ShowHint = True
+      Spacing = -1
+      Version = '1.6.1.2'
+      TMSStyle = 0
+    end
+    object sImage2: TsImage
+      Left = 646
+      Top = 6
+      Width = 16
+      Height = 16
+      Center = True
+      Picture.Data = {07544269746D617000000000}
+      Proportional = True
+      Stretch = True
+      Transparent = True
+      Visible = False
+      ImageIndex = 13
+      Images = MainForm.PanelIcons16
+      SkinData.SkinSection = 'CHECKBOX'
+    end
+    object sImage1: TsImage
+      Left = 630
+      Top = 6
+      Width = 16
+      Height = 16
+      Center = True
+      Picture.Data = {07544269746D617000000000}
+      Proportional = True
+      Stretch = True
+      Transparent = True
+      Visible = False
+      ImageIndex = 20
+      Images = MainForm.PanelIcons16
+      SkinData.SkinSection = 'CHECKBOX'
     end
     object LineP: TPanel
       Left = 0
@@ -607,7 +653,7 @@ object ReglementFListF: TReglementFListF
       BevelOuter = bvNone
       Color = 7854350
       ParentBackground = False
-      TabOrder = 2
+      TabOrder = 1
       StyleElements = []
     end
     object Panel1: TPanel
@@ -635,11 +681,11 @@ object ReglementFListF: TReglementFListF
       ParentFont = False
       ParentShowHint = False
       ShowHint = False
-      TabOrder = 3
+      TabOrder = 2
       StyleElements = []
     end
     object S01: TPanel
-      Left = 1059
+      Left = 1079
       Top = 21
       Width = 1
       Height = 40
@@ -663,11 +709,52 @@ object ReglementFListF: TReglementFListF
       ParentFont = False
       ParentShowHint = False
       ShowHint = False
-      TabOrder = 4
+      TabOrder = 3
       StyleElements = []
     end
     object S02: TPanel
-      Left = 667
+      Left = 689
+      Top = 21
+      Width = 1
+      Height = 40
+      ParentCustomHint = False
+      BevelEdges = []
+      BevelOuter = bvNone
+      BiDiMode = bdLeftToRight
+      Color = 10379008
+      Ctl3D = True
+      DoubleBuffered = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentBiDiMode = False
+      ParentBackground = False
+      ParentCtl3D = False
+      ParentDoubleBuffered = False
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = False
+      TabOrder = 4
+      StyleElements = []
+    end
+    object ResearchRegFEdt: TSearchBox
+      Left = 91
+      Top = 34
+      Width = 242
+      Height = 30
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 4207405
+      Font.Height = 22
+      Font.Name = 'Helvetica LT Std'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 0
+      OnChange = ResearchRegFEdtChange
+    end
+    object Panel2: TPanel
+      Left = 485
       Top = 21
       Width = 1
       Height = 40
@@ -693,51 +780,26 @@ object ReglementFListF: TReglementFListF
       TabOrder = 5
       StyleElements = []
     end
-    object ResearchRegFEdt: TSearchBox
-      Left = 91
-      Top = 34
-      Width = 242
-      Height = 30
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = 4207405
-      Font.Height = 22
-      Font.Name = 'Helvetica LT Std'
-      Font.Style = []
-      ParentFont = False
-      TabOrder = 0
-      OnChange = ResearchRegFEdtChange
-    end
-    object Panel2: TPanel
-      Left = 520
-      Top = 21
-      Width = 1
-      Height = 40
-      ParentCustomHint = False
-      BevelEdges = []
-      BevelOuter = bvNone
-      BiDiMode = bdLeftToRight
-      Color = 10379008
-      Ctl3D = True
-      DoubleBuffered = False
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -11
-      Font.Name = 'Tahoma'
-      Font.Style = []
-      ParentBiDiMode = False
-      ParentBackground = False
-      ParentCtl3D = False
-      ParentDoubleBuffered = False
-      ParentFont = False
-      ParentShowHint = False
-      ShowHint = False
-      TabOrder = 6
-      StyleElements = []
-    end
     object DateEndRegFD: TDateTimePicker
       Left = 374
       Top = 44
-      Width = 120
+      Width = 104
+      Height = 29
+      Date = 42435.595104571760000000
+      Time = 42435.595104571760000000
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 4207405
+      Font.Height = 22
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 6
+      OnChange = DateStartRegFDChange
+    end
+    object DateStartRegFD: TDateTimePicker
+      Left = 374
+      Top = 9
+      Width = 104
       Height = 29
       Date = 42435.595104571760000000
       Time = 42435.595104571760000000
@@ -748,22 +810,6 @@ object ReglementFListF: TReglementFListF
       Font.Style = []
       ParentFont = False
       TabOrder = 7
-      OnChange = DateStartRegFDChange
-    end
-    object DateStartRegFD: TDateTimePicker
-      Left = 374
-      Top = 9
-      Width = 120
-      Height = 29
-      Date = 42435.595104571760000000
-      Time = 42435.595104571760000000
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = 4207405
-      Font.Height = 22
-      Font.Name = 'Segoe UI'
-      Font.Style = []
-      ParentFont = False
-      TabOrder = 8
       OnChange = DateStartRegFDChange
     end
     object ResherchRegFNumBRdioBtn: TRadioButton
@@ -779,7 +825,7 @@ object ReglementFListF: TReglementFListF
       Font.Name = 'Roboto'
       Font.Style = []
       ParentFont = False
-      TabOrder = 9
+      TabOrder = 8
       StyleElements = []
     end
     object ResherchRegFFourRdioBtn: TRadioButton
@@ -796,12 +842,12 @@ object ReglementFListF: TReglementFListF
       Font.Name = 'Roboto'
       Font.Style = []
       ParentFont = False
-      TabOrder = 10
+      TabOrder = 9
       TabStop = True
       StyleElements = []
     end
     object Panel4: TPanel
-      Left = 1014
+      Left = 1015
       Top = 21
       Width = 1
       Height = 40
@@ -824,7 +870,7 @@ object ReglementFListF: TReglementFListF
       ParentFont = False
       ParentShowHint = False
       ShowHint = False
-      TabOrder = 11
+      TabOrder = 10
       StyleElements = []
     end
   end
@@ -862,14 +908,13 @@ object ReglementFListF: TReglementFListF
     FixedColor = clWindow
     Font.Charset = DEFAULT_CHARSET
     Font.Color = 4207405
-    Font.Height = 24
-    Font.Name = 'Segoe UI'
+    Font.Height = -16
+    Font.Name = 'Helvetica LT Std'
     Font.Style = []
     GridLineParams.DataHorzLines = True
     GridLineParams.DataVertLines = True
     HorzScrollBar.ExtraPanel.NavigatorButtons = [nbFirstEh, nbPriorEh, nbNextEh, nbLastEh, nbRefreshEh]
     HorzScrollBar.ExtraPanel.Visible = True
-    HorzScrollBar.ExtraPanel.VisibleItems = [gsbiNavigator, gsbiSelAggregationInfoEh]
     HorzScrollBar.Height = 15
     IndicatorOptions = []
     IndicatorParams.Color = clBtnFace
@@ -1724,5 +1769,108 @@ object ReglementFListF: TReglementFListF
     PdfA = False
     Left = 408
     Top = 480
+  end
+  object FilterBVLivPMenu: TPopupMenu
+    Images = MainForm.PanelIcons16
+    Left = 868
+    Top = 162
+    object F1: TMenuItem
+      Caption = 'Filter par le Source'
+      SubMenuImages = MainForm.PanelIcons16
+      ImageIndex = 1
+      object ValideFilterBVLivPMenu: TMenuItem
+        AutoCheck = True
+        Caption = 'Bon de Reception'
+        ImageIndex = 20
+        RadioItem = True
+        OnClick = ValideFilterBVLivPMenuClick
+      end
+      object NotValideFilterBVLivPMenu: TMenuItem
+        AutoCheck = True
+        Caption = 'Facture d'#39'Achat'
+        ImageIndex = 21
+        RadioItem = True
+        OnClick = NotValideFilterBVLivPMenuClick
+      end
+      object V1: TMenuItem
+        AutoCheck = True
+        Caption = 'Vente au Comptoir'
+        ImageIndex = 22
+        RadioItem = True
+        Visible = False
+        OnClick = V1Click
+      end
+      object N2: TMenuItem
+        Caption = '-'
+        RadioItem = True
+      end
+      object ClearValideFilterBVLivPMenu: TMenuItem
+        AutoCheck = True
+        Caption = 'Tout'
+        Checked = True
+        ImageIndex = 2
+        RadioItem = True
+        OnClick = ClearValideFilterBVLivPMenuClick
+      end
+    end
+    object F2: TMenuItem
+      Caption = 'Filter par le Mode de Paiment'
+      SubMenuImages = MainForm.PanelIcons16
+      ImageIndex = 1
+      object EspeceMPFilterBVLivPMenu: TMenuItem
+        AutoCheck = True
+        Caption = 'Esp'#232'ce'
+        ImageIndex = 5
+        RadioItem = True
+        OnClick = EspeceMPFilterBVLivPMenuClick
+      end
+      object ChequeMPFilterBVLivPMenu: TMenuItem
+        AutoCheck = True
+        Caption = 'Ch'#232'que'
+        ImageIndex = 6
+        RadioItem = True
+        OnClick = ChequeMPFilterBVLivPMenuClick
+      end
+      object ATermeMPFilterBVLivPMenu: TMenuItem
+        AutoCheck = True
+        Caption = #192' Terme'
+        ImageIndex = 7
+        RadioItem = True
+        OnClick = ATermeMPFilterBVLivPMenuClick
+      end
+      object VirmentMPFilterBVLivPMenu: TMenuItem
+        AutoCheck = True
+        Caption = 'Virement'
+        ImageIndex = 8
+        RadioItem = True
+        OnClick = VirmentMPFilterBVLivPMenuClick
+      end
+      object N3: TMenuItem
+        AutoCheck = True
+        Caption = '-'
+        RadioItem = True
+      end
+      object ClearMPFilterBVLivPMenu: TMenuItem
+        AutoCheck = True
+        Caption = 'Tout'
+        Checked = True
+        ImageIndex = 2
+        RadioItem = True
+        OnClick = ClearMPFilterBVLivPMenuClick
+      end
+    end
+    object N5: TMenuItem
+      Caption = '-'
+      Checked = True
+      SubMenuImages = MainForm.PanelIcons16
+    end
+    object ClearFilterBVLivPMenu: TMenuItem
+      AutoCheck = True
+      Caption = 'Tout'
+      Checked = True
+      SubMenuImages = MainForm.PanelIcons16
+      ImageIndex = 2
+      OnClick = ClearFilterBVLivPMenuClick
+    end
   end
 end

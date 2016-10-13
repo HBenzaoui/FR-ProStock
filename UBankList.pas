@@ -8,7 +8,8 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, DBGridEhGrouping, ToolCtrlsEh,
   DBGridEhToolCtrls, DynVarsEh, Data.DB, Vcl.StdCtrls, Vcl.ComCtrls,
   Vcl.Buttons, sSpeedButton, Vcl.ExtCtrls, EhLibVCL, GridsEh, DBAxisGridsEh,
-  DBGridEh, frxClass, frxExportPDF, frxExportXLS, frxDBSet;
+  DBGridEh, frxClass, frxExportPDF, frxExportXLS, frxDBSet, AdvToolBtn, acImage,
+  Vcl.Menus;
 
 type
   TBankListF = class(TForm)
@@ -20,11 +21,6 @@ type
     Label1: TLabel;
     Label2: TLabel;
     Label3: TLabel;
-    ArrowsPnl: TPanel;
-    LastBBankbtn: TsSpeedButton;
-    NextBankbtn: TsSpeedButton;
-    PreviosBankbtn: TsSpeedButton;
-    FisrtBankbtn: TsSpeedButton;
     LineP: TPanel;
     Panel1: TPanel;
     S01: TPanel;
@@ -50,6 +46,45 @@ type
     frxXLSExport1: TfrxXLSExport;
     frxPDFExport1: TfrxPDFExport;
     BAnkListfrxRprt: TfrxReport;
+    FisrtBankbtn: TsSpeedButton;
+    PreviosBankbtn: TsSpeedButton;
+    NextBankbtn: TsSpeedButton;
+    LastBBankbtn: TsSpeedButton;
+    FilterBVLivBtn: TAdvToolButton;
+    sImage1: TsImage;
+    sImage2: TsImage;
+    Panel5: TPanel;
+    Panel6: TPanel;
+    Panel7: TPanel;
+    FilterBVLivPMenu: TPopupMenu;
+    F1: TMenuItem;
+    ValideFilterBVLivPMenu: TMenuItem;
+    NotValideFilterBVLivPMenu: TMenuItem;
+    N2: TMenuItem;
+    ClearValideFilterBVLivPMenu: TMenuItem;
+    F3: TMenuItem;
+    RegleFilterBVLivPMenu: TMenuItem;
+    NoTRegleFilterBVLivPMenu: TMenuItem;
+    N1: TMenuItem;
+    ClearRegleFilterBVLivPMenu: TMenuItem;
+    F2: TMenuItem;
+    ChequeMPFilterBVLivPMenu: TMenuItem;
+    EspeceMPFilterBVLivPMenu: TMenuItem;
+    N3: TMenuItem;
+    ClearMPFilterBVLivPMenu: TMenuItem;
+    FilterparlesFactures1: TMenuItem;
+    BondeLivration1: TMenuItem;
+    BondeReception1: TMenuItem;
+    V1: TMenuItem;
+    N6: TMenuItem;
+    ClearBRFilterPMenu: TMenuItem;
+    FilterparlePrixDeVente1: TMenuItem;
+    T2: TMenuItem;
+    N0TVA1: TMenuItem;
+    N4: TMenuItem;
+    ClearTVAFilterPMenu: TMenuItem;
+    N5: TMenuItem;
+    ClearFilterBVLivPMenu: TMenuItem;
     procedure FormShow(Sender: TObject);
     procedure BankListCbxDropDown(Sender: TObject);
     procedure DaysBankListCbxChange(Sender: TObject);
@@ -62,8 +97,43 @@ type
     procedure CaisseListDBGridEhDrawColumnCell(Sender: TObject;
       const Rect: TRect; DataCol: Integer; Column: TColumnEh;
       State: TGridDrawState);
+    procedure FisrtBankbtnClick(Sender: TObject);
+    procedure PreviosBankbtnClick(Sender: TObject);
+    procedure NextBankbtnClick(Sender: TObject);
+    procedure LastBBankbtnClick(Sender: TObject);
+    procedure ValideFilterBVLivPMenuClick(Sender: TObject);
+    procedure NotValideFilterBVLivPMenuClick(Sender: TObject);
+    procedure ClearValideFilterBVLivPMenuClick(Sender: TObject);
+    procedure RegleFilterBVLivPMenuClick(Sender: TObject);
+    procedure NoTRegleFilterBVLivPMenuClick(Sender: TObject);
+    procedure ChequeMPFilterBVLivPMenuClick(Sender: TObject);
+    procedure EspeceMPFilterBVLivPMenuClick(Sender: TObject);
+    procedure ClearMPFilterBVLivPMenuClick(Sender: TObject);
+    procedure BondeLivration1Click(Sender: TObject);
+    procedure BondeReception1Click(Sender: TObject);
+    procedure V1Click(Sender: TObject);
+    procedure ClearBRFilterPMenuClick(Sender: TObject);
+    procedure T2Click(Sender: TObject);
+    procedure N0TVA1Click(Sender: TObject);
+    procedure ClearFilterBVLivPMenuClick(Sender: TObject);
+    procedure ClearRegleFilterBVLivPMenuClick(Sender: TObject);
+    procedure ClearTVAFilterPMenuClick(Sender: TObject);
   private
     procedure GettingData;
+    procedure FilteredColor;
+    procedure NOT_FilteredColor;
+    procedure Select_ALL;
+    procedure Select_BL;
+    procedure Select_BR;
+    procedure Select_CTR;
+    procedure Select_Deca;
+    procedure Select_Enca;
+    procedure Select_FacA;
+    procedure Select_FacV;
+    procedure Select_MP_Virement;
+    procedure Select_MP_Cheque;
+    procedure Select_RegC;
+    procedure Select_RegF;
     { Private declarations }
   public
     { Public declarations }
@@ -78,6 +148,163 @@ uses
   UMainF;
 
 {$R *.dfm}
+
+
+//-------------Filtring procedures-----------------//
+
+procedure TBankListF.Select_ALL;
+begin
+MainForm.Opt_cas_bnk_BankTable.DisableControls;
+MainForm.Opt_cas_bnk_BankTable.Active:= False;
+MainForm.Opt_cas_bnk_BankTable.SQL.clear;
+mainform.Opt_cas_bnk_BankTable.sql.Text:='SELECT * FROM opt_cas_bnk WHERE nature_ocb = true ';
+MainForm.Opt_cas_bnk_BankTable.Active:= True;
+MainForm.Opt_cas_bnk_BankTable.EnableControls;
+end;
+
+
+procedure TBankListF.Select_Deca;
+begin
+MainForm.Opt_cas_bnk_BankTable.DisableControls;
+MainForm.Opt_cas_bnk_BankTable.Active:= False;
+MainForm.Opt_cas_bnk_BankTable.SQL.clear;
+mainform.Opt_cas_bnk_BankTable.sql.Text:='SELECT * FROM opt_cas_bnk WHERE nature_ocb = true AND decaiss_ocb <> ''0'' ';
+MainForm.Opt_cas_bnk_BankTable.Active:= True;
+MainForm.Opt_cas_bnk_BankTable.EnableControls;
+end;
+
+
+procedure TBankListF.Select_Enca;
+begin
+MainForm.Opt_cas_bnk_BankTable.DisableControls;
+MainForm.Opt_cas_bnk_BankTable.Active:= False;
+MainForm.Opt_cas_bnk_BankTable.SQL.clear;
+mainform.Opt_cas_bnk_BankTable.sql.Text:='SELECT * FROM opt_cas_bnk WHERE nature_ocb = true AND encaiss_ocb <> ''0'' ';
+MainForm.Opt_cas_bnk_BankTable.Active:= True;
+MainForm.Opt_cas_bnk_BankTable.EnableControls;
+end;
+
+procedure TBankListF.Select_MP_Cheque;
+begin
+MainForm.Opt_cas_bnk_BankTable.DisableControls;
+MainForm.Opt_cas_bnk_BankTable.Active:= False;
+MainForm.Opt_cas_bnk_BankTable.SQL.clear;
+mainform.Opt_cas_bnk_BankTable.sql.Text:= 'SELECT * FROM opt_cas_bnk WHERE nature_ocb = true AND code_mdpai = 2 ';
+MainForm.Opt_cas_bnk_BankTable.Active:= True;
+MainForm.Opt_cas_bnk_BankTable.EnableControls;
+end;
+
+
+procedure TBankListF.Select_MP_Virement;
+begin
+MainForm.Opt_cas_bnk_BankTable.DisableControls;
+MainForm.Opt_cas_bnk_BankTable.Active:= False;
+MainForm.Opt_cas_bnk_BankTable.SQL.clear;
+mainform.Opt_cas_bnk_BankTable.sql.Text:=  'SELECT * FROM opt_cas_bnk WHERE nature_ocb = true AND code_mdpai = 4 ';
+MainForm.Opt_cas_bnk_BankTable.Active:= True;
+MainForm.Opt_cas_bnk_BankTable.EnableControls;
+end;
+
+
+
+procedure TBankListF.Select_BL;
+begin
+MainForm.Opt_cas_bnk_BankTable.DisableControls;
+MainForm.Opt_cas_bnk_BankTable.Active:= False;
+MainForm.Opt_cas_bnk_BankTable.SQL.clear;
+mainform.Opt_cas_bnk_BankTable.sql.Text:='SELECT * FROM opt_cas_bnk WHERE nature_ocb = true AND code_bvliv <> ''0'' ';
+MainForm.Opt_cas_bnk_BankTable.Active:= True;
+MainForm.Opt_cas_bnk_BankTable.EnableControls;
+end;
+
+
+procedure TBankListF.Select_CTR;
+begin
+MainForm.Opt_cas_bnk_BankTable.DisableControls;
+MainForm.Opt_cas_bnk_BankTable.Active:= False;
+MainForm.Opt_cas_bnk_BankTable.SQL.clear;
+mainform.Opt_cas_bnk_BankTable.sql.Text:='SELECT * FROM opt_cas_bnk WHERE nature_ocb = true AND code_bvctr <> ''0'' ';
+MainForm.Opt_cas_bnk_BankTable.Active:= True;
+MainForm.Opt_cas_bnk_BankTable.EnableControls;
+end;
+
+
+
+procedure TBankListF.Select_FacV;
+begin
+MainForm.Opt_cas_bnk_BankTable.DisableControls;
+MainForm.Opt_cas_bnk_BankTable.Active:= False;
+MainForm.Opt_cas_bnk_BankTable.SQL.clear;
+mainform.Opt_cas_bnk_BankTable.sql.Text:='SELECT * FROM opt_cas_bnk WHERE nature_ocb = true AND code_bvfac <> ''0'' ';
+MainForm.Opt_cas_bnk_BankTable.Active:= True;
+MainForm.Opt_cas_bnk_BankTable.EnableControls;
+end;
+
+
+
+procedure TBankListF.Select_BR;
+begin
+MainForm.Opt_cas_bnk_BankTable.DisableControls;
+MainForm.Opt_cas_bnk_BankTable.Active:= False;
+MainForm.Opt_cas_bnk_BankTable.SQL.clear;
+mainform.Opt_cas_bnk_BankTable.sql.Text:='SELECT * FROM opt_cas_bnk WHERE nature_ocb = true AND code_barec <> ''0'' ';
+MainForm.Opt_cas_bnk_BankTable.Active:= True;
+MainForm.Opt_cas_bnk_BankTable.EnableControls;
+end;
+
+
+procedure TBankListF.Select_FacA;              
+begin
+
+MainForm.Opt_cas_bnk_BankTable.DisableControls;
+MainForm.Opt_cas_bnk_BankTable.Active:= False;
+MainForm.Opt_cas_bnk_BankTable.SQL.clear;
+mainform.Opt_cas_bnk_BankTable.sql.Text:='SELECT * FROM opt_cas_bnk WHERE nature_ocb = true AND code_bafac <> ''0'' ';
+MainForm.Opt_cas_bnk_BankTable.Active:= True;
+MainForm.Opt_cas_bnk_BankTable.EnableControls;
+
+end;
+
+procedure TBankListF.Select_RegC;
+begin
+
+MainForm.Opt_cas_bnk_BankTable.DisableControls;
+MainForm.Opt_cas_bnk_BankTable.Active:= False;
+MainForm.Opt_cas_bnk_BankTable.SQL.clear;
+mainform.Opt_cas_bnk_BankTable.sql.Text:='SELECT * FROM opt_cas_bnk WHERE nature_ocb = true AND code_rc <> ''0'' ';
+MainForm.Opt_cas_bnk_BankTable.Active:= True;
+MainForm.Opt_cas_bnk_BankTable.EnableControls;
+
+end;
+
+procedure TBankListF.Select_RegF;
+begin
+
+MainForm.Opt_cas_bnk_BankTable.DisableControls;
+MainForm.Opt_cas_bnk_BankTable.Active:= False;
+MainForm.Opt_cas_bnk_BankTable.SQL.clear;
+mainform.Opt_cas_bnk_BankTable.sql.Text:='SELECT * FROM opt_cas_bnk WHERE nature_ocb = true AND code_rf <> ''0'' ';
+MainForm.Opt_cas_bnk_BankTable.Active:= True;
+MainForm.Opt_cas_bnk_BankTable.EnableControls;
+
+end;
+
+
+procedure TBankListF.FilteredColor;
+begin
+ FilterBVLivBtn.Color:= $0077D90E; 
+ FilterBVLivBtn.ColorHot:=  $0080FF00;
+ FilterBVLivBtn.BorderHotColor:= $00EFE9E8;
+end;
+
+procedure TBankListF.NOT_FilteredColor;
+begin
+ FilterBVLivBtn.Color:= $00EFE9E8;
+ FilterBVLivBtn.ColorHot:= $00EFE9E8; 
+ FilterBVLivBtn.BorderHotColor:= $004735F9;
+end;
+
+
 
 procedure TBankListF.FormShow(Sender: TObject);
 Var TotalEncaiss,TotalDecaiss,cmptsum,TotalSoldComptEnc,TotalSoldComptDic : Currency;
@@ -104,7 +331,6 @@ begin
 
           MainForm.Opt_cas_bnk_BankTable.Next;
         end;
-
 
                MainForm.CompteTable.DisableControls;
                MainForm.CompteTable.Active:=False;
@@ -175,6 +401,52 @@ begin
      BankListCbx.Items.Add('Tous');
 end;
 
+procedure TBankListF.BondeLivration1Click(Sender: TObject);
+begin
+ClearValideFilterBVLivPMenuClick(Sender);
+ClearRegleFilterBVLivPMenuClick(Sender);
+ClearTVAFilterPMenuClick(Sender);
+ClearMPFilterBVLivPMenuClick(Sender);
+
+ClearValideFilterBVLivPMenu.Checked:= True;
+ClearRegleFilterBVLivPMenu.Checked:= True;
+ClearTVAFilterPMenu.Checked:= True;
+ClearMPFilterBVLivPMenu.Checked:= True;
+
+
+
+  sImage1.ImageIndex:=20;
+  sImage1.Visible:= True;
+  sImage2.ImageIndex:=15;
+  sImage2.Visible:= True;
+  FilterBVLivBtn.ImageIndex:=50;
+  FilteredColor;
+  Select_BL;
+  ClearFilterBVLivPMenu.Checked:= False;
+end;
+
+procedure TBankListF.BondeReception1Click(Sender: TObject);
+begin
+ClearValideFilterBVLivPMenuClick(Sender);
+ClearRegleFilterBVLivPMenuClick(Sender);
+ClearTVAFilterPMenuClick(Sender);
+ClearMPFilterBVLivPMenuClick(Sender);
+
+ClearValideFilterBVLivPMenu.Checked:= True;
+ClearRegleFilterBVLivPMenu.Checked:= True;
+ClearTVAFilterPMenu.Checked:= True;
+ClearMPFilterBVLivPMenu.Checked:= True;
+
+  sImage1.ImageIndex:=21;
+  sImage1.Visible:= True;
+  sImage2.ImageIndex:=15;
+  sImage2.Visible:= True;  
+  FilterBVLivBtn.ImageIndex:=50;
+  FilteredColor;
+  Select_FacV;
+  ClearFilterBVLivPMenu.Checked:= False;
+end;
+
 procedure TBankListF.CaisseListDBGridEhDrawColumnCell(Sender: TObject;
   const Rect: TRect; DataCol: Integer; Column: TColumnEh;
   State: TGridDrawState);
@@ -199,6 +471,91 @@ end;
  CaisseListDBGridEh.Canvas.Font.Color:=$004735F9;
  CaisseListDBGridEh.DefaultDrawColumnCell(Rect, DataCol, Column, State);
  end;
+end;
+
+procedure TBankListF.ChequeMPFilterBVLivPMenuClick(Sender: TObject);
+begin
+  ClearValideFilterBVLivPMenuClick(Sender);
+  ClearTVAFilterPMenuClick(Sender);
+  ClearBRFilterPMenuClick(Sender);
+  ClearRegleFilterBVLivPMenuClick(Sender);  
+                                             
+ClearValideFilterBVLivPMenu.Checked:= True;
+ClearTVAFilterPMenu.Checked:= True;
+ClearBRFilterPMenu.Checked:= True;
+ClearRegleFilterBVLivPMenu.Checked:= True;
+  
+  sImage1.ImageIndex:=20;
+  sImage1.Visible:= True;
+  sImage2.ImageIndex:=13;
+  sImage2.Visible:= True;
+  FilterBVLivBtn.ImageIndex:=50;
+  FilteredColor;
+  Select_BR;
+  ClearFilterBVLivPMenu.Checked:= False;
+end;
+
+procedure TBankListF.ClearBRFilterPMenuClick(Sender: TObject);
+begin
+//  ClearValideFilterBVLivPMenuClick(Sender);
+  sImage1.Visible:= False;
+  sImage2.Visible:= False;
+  FilterBVLivBtn.ImageIndex:=49;
+  NOT_FilteredColor;
+  Select_ALL;
+end;
+
+procedure TBankListF.ClearFilterBVLivPMenuClick(Sender: TObject);
+begin
+  MainForm.ProduitTable.Filtered:=False;
+  Select_ALL;
+  sImage1.Visible:= False;
+  sImage2.Visible:= False;
+  NOT_FilteredColor;
+  FilterBVLivBtn.ImageIndex:=49;
+  ClearValideFilterBVLivPMenu.Checked := True;
+  ClearRegleFilterBVLivPMenu.Checked := True;
+  ClearMPFilterBVLivPMenu.Checked := True;
+  ClearTVAFilterPMenu.Checked := True;
+end;
+
+procedure TBankListF.ClearMPFilterBVLivPMenuClick(Sender: TObject);
+begin
+//  ClearValideFilterBVLivPMenuClick(Sender);
+  sImage1.Visible:= False;
+  sImage2.Visible:= False;
+  FilterBVLivBtn.ImageIndex:=49;
+  NOT_FilteredColor;
+  Select_ALL;
+end;
+
+procedure TBankListF.ClearRegleFilterBVLivPMenuClick(Sender: TObject);
+begin
+//  ClearValideFilterBVLivPMenuClick(Sender);
+  sImage1.Visible:= False;
+  FilterBVLivBtn.ImageIndex:=49;
+  NOT_FilteredColor;
+  Select_ALL;
+  ClearRegleFilterBVLivPMenu.Checked:= True;
+end;
+
+procedure TBankListF.ClearTVAFilterPMenuClick(Sender: TObject);
+begin
+//  ClearValideFilterBVLivPMenuClick(Sender);
+  sImage1.Visible:= False;
+  sImage2.Visible:= False;
+  FilterBVLivBtn.ImageIndex:=49;
+  NOT_FilteredColor;
+  Select_ALL;
+end;
+
+procedure TBankListF.ClearValideFilterBVLivPMenuClick(Sender: TObject);
+begin
+  MainForm.Opt_cas_bnk_CaisseTable.Filtered:=False;
+  Select_ALL;
+  sImage1.Visible:= False;
+  NOT_FilteredColor;
+  FilterBVLivBtn.ImageIndex:=49;
 end;
 
 procedure TBankListF.DaysBankListCbxChange(Sender: TObject);
@@ -242,6 +599,28 @@ begin
     end;
 
      BankListCbxChange(Sender);
+end;
+
+procedure TBankListF.EspeceMPFilterBVLivPMenuClick(Sender: TObject);
+begin
+  ClearValideFilterBVLivPMenuClick(Sender);
+  ClearTVAFilterPMenuClick(Sender);
+  ClearBRFilterPMenuClick(Sender);
+  ClearRegleFilterBVLivPMenuClick(Sender);
+
+ClearValideFilterBVLivPMenu.Checked:= True;
+ClearTVAFilterPMenu.Checked:= True;
+ClearBRFilterPMenu.Checked:= True;
+ClearRegleFilterBVLivPMenu.Checked:= True;
+  
+  sImage1.ImageIndex:=21;
+  sImage1.Visible:= True;
+  sImage2.ImageIndex:=13;
+  sImage2.Visible:= True;
+  FilterBVLivBtn.ImageIndex:=50;
+  FilteredColor;
+  Select_FacA;
+  ClearFilterBVLivPMenu.Checked:= False;
 end;
 
 procedure TBankListF.BankListCbxChange(Sender: TObject);
@@ -436,6 +815,105 @@ begin
 
 end;
 
+procedure TBankListF.LastBBankbtnClick(Sender: TObject);
+begin
+MainForm.Opt_cas_bnk_BankTable.Last;
+end;
+
+procedure TBankListF.N0TVA1Click(Sender: TObject);
+begin
+ClearValideFilterBVLivPMenuClick(Sender);
+ClearRegleFilterBVLivPMenuClick(Sender);
+ClearBRFilterPMenuClick(Sender);
+ClearMPFilterBVLivPMenuClick(Sender);
+
+ClearValideFilterBVLivPMenu.Checked:= True;
+ClearRegleFilterBVLivPMenu.Checked:= True;
+ClearBRFilterPMenu.Checked:= True;
+ClearMPFilterBVLivPMenu.Checked:= True;
+
+  sImage1.ImageIndex:=25;
+  sImage1.Visible:= True;
+  sImage2.ImageIndex:=24;
+  sImage2.Visible:= True;
+  FilterBVLivBtn.ImageIndex:=50;
+  FilteredColor;
+  Select_RegF;
+  ClearFilterBVLivPMenu.Checked:= False;
+end;
+
+procedure TBankListF.NextBankbtnClick(Sender: TObject);
+begin
+MainForm.Opt_cas_bnk_BankTable.Next;
+end;
+
+procedure TBankListF.NoTRegleFilterBVLivPMenuClick(Sender: TObject);
+begin
+  ClearValideFilterBVLivPMenuClick(Sender);
+  ClearMPFilterBVLivPMenuClick(Sender);
+  ClearTVAFilterPMenuClick(Sender);
+  ClearBRFilterPMenuClick(Sender);
+
+ClearValideFilterBVLivPMenu.Checked:= True;
+ClearMPFilterBVLivPMenu.Checked:= True;
+ClearTVAFilterPMenu.Checked:= True;
+ClearBRFilterPMenu.Checked := True;
+  
+  sImage1.ImageIndex:=8;
+  sImage1.Visible:= True;
+  FilterBVLivBtn.ImageIndex:=50;
+  FilteredColor;
+  Select_MP_Virement;
+  ClearFilterBVLivPMenu.Checked:= False;
+end;
+
+procedure TBankListF.NotValideFilterBVLivPMenuClick(Sender: TObject);
+begin
+ClearRegleFilterBVLivPMenuClick(Sender);
+ClearMPFilterBVLivPMenuClick(Sender);
+ClearTVAFilterPMenuClick(Sender);
+ClearBRFilterPMenuClick(Sender);
+
+ClearRegleFilterBVLivPMenu.Checked:= True;
+ClearMPFilterBVLivPMenu.Checked:= True;
+ClearTVAFilterPMenu.Checked:= True;
+ClearBRFilterPMenu.Checked := True;
+
+  FilterBVLivBtn.ImageIndex:=50;
+  MainForm.ProduitTable.Filtered:= False;
+  Select_All;
+  Select_Enca;
+  sImage1.ImageIndex:=19;
+  sImage1.Visible:= True;
+  FilteredColor;
+  ClearFilterBVLivPMenu.Checked:= False;
+end;
+
+procedure TBankListF.PreviosBankbtnClick(Sender: TObject);
+begin
+MainForm.Opt_cas_bnk_BankTable.Prior;
+end;
+
+procedure TBankListF.RegleFilterBVLivPMenuClick(Sender: TObject);
+begin
+  ClearValideFilterBVLivPMenuClick(Sender);
+  ClearMPFilterBVLivPMenuClick(Sender);
+  ClearTVAFilterPMenuClick(Sender);
+  ClearBRFilterPMenuClick(Sender);
+                                             
+ClearValideFilterBVLivPMenu.Checked:= True;
+ClearMPFilterBVLivPMenu.Checked:= True;
+ClearTVAFilterPMenu.Checked:= True;
+ClearBRFilterPMenu.Checked := True;
+  
+  sImage1.ImageIndex:=6;
+  sImage1.Visible:= True;
+  FilterBVLivBtn.ImageIndex:=50;
+  FilteredColor;
+  Select_MP_Cheque;
+  ClearFilterBVLivPMenu.Checked:= False;
+end;
+
 procedure TBankListF.sSpeedButton2Click(Sender: TObject);
 begin
   MainForm.Opt_cas_bnk_BankTable.DisableControls;
@@ -473,6 +951,77 @@ BankListfrxRprt.Export(frxPDFExport1);
 
 
 MainForm.Opt_cas_bnk_BankTable.EnableControls;
+end;
+
+procedure TBankListF.T2Click(Sender: TObject);
+begin
+ClearValideFilterBVLivPMenuClick(Sender);
+ClearRegleFilterBVLivPMenuClick(Sender);
+ClearBRFilterPMenuClick(Sender);
+ClearMPFilterBVLivPMenuClick(Sender);
+
+ClearValideFilterBVLivPMenu.Checked:= True;
+ClearRegleFilterBVLivPMenu.Checked:= True;
+ClearBRFilterPMenu.Checked:= True;
+ClearMPFilterBVLivPMenu.Checked:= True;
+
+  sImage1.ImageIndex:=25;
+  sImage1.Visible:= True;
+  sImage2.ImageIndex:=23;
+  sImage2.Visible:= True;
+  FilterBVLivBtn.ImageIndex:=50;
+  FilteredColor;
+  Select_RegC;
+  ClearFilterBVLivPMenu.Checked:= False;
+end;
+
+procedure TBankListF.V1Click(Sender: TObject);
+begin
+ClearValideFilterBVLivPMenuClick(Sender);
+ClearRegleFilterBVLivPMenuClick(Sender);
+ClearTVAFilterPMenuClick(Sender);
+ClearMPFilterBVLivPMenuClick(Sender);
+
+ClearValideFilterBVLivPMenu.Checked:= True;
+ClearRegleFilterBVLivPMenu.Checked:= True;
+ClearTVAFilterPMenu.Checked:= True;
+ClearMPFilterBVLivPMenu.Checked:= True;
+
+  sImage1.ImageIndex:=22;
+  sImage1.Visible:= True;
+  sImage2.ImageIndex:=15;
+  sImage2.Visible:= True;  
+  FilterBVLivBtn.ImageIndex:=50;
+  FilteredColor;
+  Select_CTR;
+  ClearFilterBVLivPMenu.Checked:= False;
+end;
+
+procedure TBankListF.ValideFilterBVLivPMenuClick(Sender: TObject);
+begin
+ClearRegleFilterBVLivPMenuClick(Sender);
+ClearMPFilterBVLivPMenuClick(Sender);
+ClearTVAFilterPMenuClick(Sender);
+ClearBRFilterPMenuClick(Sender);
+
+ClearRegleFilterBVLivPMenu.Checked:= True;
+ClearMPFilterBVLivPMenu.Checked:= True;
+ClearTVAFilterPMenu.Checked:= True;
+ClearBRFilterPMenu.Checked:= True;
+
+ FilterBVLivBtn.ImageIndex:=50;
+ MainForm.ProduitTable.Filtered:= False;
+ Select_ALL;
+ Select_Deca;
+ sImage1.ImageIndex:=18;
+ sImage1.Visible:= True;
+ FilteredColor;
+ ClearFilterBVLivPMenu.Checked:= False;
+end;
+
+procedure TBankListF.FisrtBankbtnClick(Sender: TObject);
+begin
+ MainForm.Opt_cas_bnk_BankTable.First;
 end;
 
 procedure TBankListF.FormClose(Sender: TObject; var Action: TCloseAction);

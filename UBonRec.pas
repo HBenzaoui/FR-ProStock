@@ -12,7 +12,8 @@ uses
   Vcl.ComCtrls, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
   FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
   FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Comp.Client,
-  Vcl.AppEvnts, frxExportPDF, frxClass, frxExportXLS, frxDBSet ;
+  Vcl.AppEvnts, frxExportPDF, frxClass, frxExportXLS, frxDBSet, acImage,
+  Vcl.Menus ;
 
 type
   TBonRecF = class(TForm)
@@ -25,11 +26,6 @@ type
     sSpeedButton1: TsSpeedButton;
     sSpeedButton2: TsSpeedButton;
     sSpeedButton3: TsSpeedButton;
-    ArrowsPnl: TPanel;
-    LastBARecbtn: TsSpeedButton;
-    NextBARecbtn: TsSpeedButton;
-    PreviosBARecbtn: TsSpeedButton;
-    FisrtBARecbtn: TsSpeedButton;
     LineP: TPanel;
     Panel1: TPanel;
     S01: TPanel;
@@ -48,6 +44,34 @@ type
     frxXLSExport1: TfrxXLSExport;
     frxPDFExport1: TfrxPDFExport;
     BonRecfrxRprt: TfrxReport;
+    PreviosBARecbtn: TsSpeedButton;
+    NextBARecbtn: TsSpeedButton;
+    LastBARecbtn: TsSpeedButton;
+    FisrtBARecbtn: TsSpeedButton;
+    FilterBVLivBtn: TAdvToolButton;
+    sImage1: TsImage;
+    sImage6: TsImage;
+    sImage2: TsImage;
+    FilterBVLivPMenu: TPopupMenu;
+    F1: TMenuItem;
+    ValideFilterBVLivPMenu: TMenuItem;
+    NotValideFilterBVLivPMenu: TMenuItem;
+    N2: TMenuItem;
+    ClearValideFilterBVLivPMenu: TMenuItem;
+    F3: TMenuItem;
+    RegleFilterBVLivPMenu: TMenuItem;
+    NoTRegleFilterBVLivPMenu: TMenuItem;
+    N1: TMenuItem;
+    ClearRegleFilterBVLivPMenu: TMenuItem;
+    F2: TMenuItem;
+    EspeceMPFilterBVLivPMenu: TMenuItem;
+    ChequeMPFilterBVLivPMenu: TMenuItem;
+    ATermeMPFilterBVLivPMenu: TMenuItem;
+    VirmentMPFilterBVLivPMenu: TMenuItem;
+    N3: TMenuItem;
+    ClearMPFilterBVLivPMenu: TMenuItem;
+    N5: TMenuItem;
+    ClearFilterBVLivPMenu: TMenuItem;
     procedure AddBARecBtnClick(Sender: TObject);
     procedure FisrtBARecbtnClick(Sender: TObject);
     procedure LastBARecbtnClick(Sender: TObject);
@@ -69,9 +93,40 @@ type
     procedure BARecListDBGridEhKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure BARecListDBGridEhKeyPress(Sender: TObject; var Key: Char);
+    procedure ValideFilterBVLivPMenuClick(Sender: TObject);
+    procedure NotValideFilterBVLivPMenuClick(Sender: TObject);
+    procedure ClearValideFilterBVLivPMenuClick(Sender: TObject);
+    procedure RegleFilterBVLivPMenuClick(Sender: TObject);
+    procedure NoTRegleFilterBVLivPMenuClick(Sender: TObject);
+    procedure ClearRegleFilterBVLivPMenuClick(Sender: TObject);
+    procedure EspeceMPFilterBVLivPMenuClick(Sender: TObject);
+    procedure ChequeMPFilterBVLivPMenuClick(Sender: TObject);
+    procedure ATermeMPFilterBVLivPMenuClick(Sender: TObject);
+    procedure VirmentMPFilterBVLivPMenuClick(Sender: TObject);
+    procedure ClearMPFilterBVLivPMenuClick(Sender: TObject);
+    procedure ClearFilterBVLivPMenuClick(Sender: TObject);
 
   private
     procedure GettingData;
+    procedure FilteredColor;
+    procedure NOT_FilteredColor;
+    procedure Select_ALL;
+    procedure Select_ATerme;
+    procedure Select_Cheque;
+    procedure Select_Escpace;
+    procedure Select_NOT_Regle;
+    procedure Select_NOT_Valid;
+    procedure Select_NOT_Valid_ATerme;
+    procedure Select_NOT_Valid_Cheque;
+    procedure Select_NOT_Valid_Escpace;
+    procedure Select_NOT_Valid_Virment;
+    procedure Select_Regle;
+    procedure Select_Valid;
+    procedure Select_Valid_ATerme;
+    procedure Select_Valid_Cheque;
+    procedure Select_Valid_Escpace;
+    procedure Select_Valid_Virment;
+    procedure Select_Virment;
     { Private declarations }
   public
     { Public declarations }
@@ -88,12 +143,196 @@ uses UMainF, UBonRecGestion, USplashVersement, USplashAddUnite, USplash,Threadin
 
 {$R *.dfm}
 
+
+procedure TBonRecF.Select_ALL;
+begin
+MainForm.Bona_recTable.DisableControls;
+MainForm.Bona_recTable.Active:= False;
+MainForm.Bona_recTable.SQL.clear;
+mainform.Bona_recTable.sql.Text:='SELECT * FROM bona_rec WHERE date_barec BETWEEN '''+(DateToStr(DateStartBARecD.Date))+ ''' AND ''' +(DateToStr(DateEndBARecD.Date))+'''';
+MainForm.Bona_recTable.Active:= True;
+MainForm.Bona_recTable.EnableControls;
+end;
+
+procedure TBonRecF.Select_Valid;
+begin
+MainForm.Bona_recTable.DisableControls;
+MainForm.Bona_recTable.Active:= False;
+MainForm.Bona_recTable.SQL.clear;
+mainform.Bona_recTable.sql.Text:='SELECT * FROM bona_rec WHERE valider_barec = true AND date_barec BETWEEN '''+(DateToStr(DateStartBARecD.Date))+ ''' AND ''' +(DateToStr(DateEndBARecD.Date))+'''';
+MainForm.Bona_recTable.Active:= True;
+MainForm.Bona_recTable.EnableControls;
+end;
+
+procedure TBonRecF.Select_NOT_Valid;
+begin
+MainForm.Bona_recTable.DisableControls;
+MainForm.Bona_recTable.Active:= False;
+MainForm.Bona_recTable.SQL.clear;
+mainform.Bona_recTable.sql.Text:='SELECT * FROM bona_rec WHERE valider_barec = false AND date_barec BETWEEN '''+(DateToStr(DateStartBARecD.Date))+ ''' AND ''' +(DateToStr(DateEndBARecD.Date))+'''';
+MainForm.Bona_recTable.Active:= True;
+MainForm.Bona_recTable.EnableControls;
+end;
+
+procedure TBonRecF.Select_Escpace;
+begin
+MainForm.Bona_recTable.DisableControls;
+MainForm.Bona_recTable.Active:= False;
+MainForm.Bona_recTable.SQL.clear;
+mainform.Bona_recTable.sql.Text:='SELECT * FROM bona_rec WHERE code_mdpai = 1 AND date_barec BETWEEN '''+(DateToStr(DateStartBARecD.Date))+ ''' AND ''' +(DateToStr(DateEndBARecD.Date))+'''';
+MainForm.Bona_recTable.Active:= True;
+MainForm.Bona_recTable.EnableControls;
+end;
+
+procedure TBonRecF.Select_Cheque;
+begin
+MainForm.Bona_recTable.DisableControls;
+MainForm.Bona_recTable.Active:= False;
+MainForm.Bona_recTable.SQL.clear;
+mainform.Bona_recTable.sql.Text:='SELECT * FROM bona_rec WHERE code_mdpai = 2 AND date_barec BETWEEN '''+(DateToStr(DateStartBARecD.Date))+ ''' AND ''' +(DateToStr(DateEndBARecD.Date))+'''';
+MainForm.Bona_recTable.Active:= True;
+MainForm.Bona_recTable.EnableControls;
+end;
+
+procedure TBonRecF.Select_ATerme;
+begin
+MainForm.Bona_recTable.DisableControls;
+MainForm.Bona_recTable.Active:= False;
+MainForm.Bona_recTable.SQL.clear;
+mainform.Bona_recTable.sql.Text:='SELECT * FROM bona_rec WHERE code_mdpai = 3 AND date_barec BETWEEN '''+(DateToStr(DateStartBARecD.Date))+ ''' AND ''' +(DateToStr(DateEndBARecD.Date))+'''';
+MainForm.Bona_recTable.Active:= True;
+MainForm.Bona_recTable.EnableControls;
+end;
+
+procedure TBonRecF.Select_Virment;
+begin
+MainForm.Bona_recTable.DisableControls;
+MainForm.Bona_recTable.Active:= False;
+MainForm.Bona_recTable.SQL.clear;
+mainform.Bona_recTable.sql.Text:='SELECT * FROM bona_rec WHERE code_mdpai = 4 AND date_barec BETWEEN '''+(DateToStr(DateStartBARecD.Date))+ ''' AND ''' +(DateToStr(DateEndBARecD.Date))+'''';
+MainForm.Bona_recTable.Active:= True;
+MainForm.Bona_recTable.EnableControls;
+end;
+
+procedure TBonRecF.Select_Valid_Escpace;
+begin
+MainForm.Bona_recTable.DisableControls;
+MainForm.Bona_recTable.Active:= False;
+MainForm.Bona_recTable.SQL.clear;
+mainform.Bona_recTable.sql.Text:='SELECT * FROM bona_rec WHERE valider_barec = true AND code_mdpai = 1 AND date_barec BETWEEN '''+(DateToStr(DateStartBARecD.Date))+ ''' AND ''' +(DateToStr(DateEndBARecD.Date))+'''';
+MainForm.Bona_recTable.Active:= True;
+MainForm.Bona_recTable.EnableControls;
+end;
+
+procedure TBonRecF.Select_Valid_Cheque;
+begin
+MainForm.Bona_recTable.DisableControls;
+MainForm.Bona_recTable.Active:= False;
+MainForm.Bona_recTable.SQL.clear;
+mainform.Bona_recTable.sql.Text:='SELECT * FROM bona_rec WHERE valider_barec = true AND code_mdpai = 2 AND date_barec BETWEEN '''+(DateToStr(DateStartBARecD.Date))+ ''' AND ''' +(DateToStr(DateEndBARecD.Date))+'''';
+MainForm.Bona_recTable.Active:= True;
+MainForm.Bona_recTable.EnableControls;
+end;
+
+procedure TBonRecF.Select_Valid_ATerme;
+begin
+MainForm.Bona_recTable.DisableControls;
+MainForm.Bona_recTable.Active:= False;
+MainForm.Bona_recTable.SQL.clear;
+mainform.Bona_recTable.sql.Text:='SELECT * FROM bona_rec WHERE valider_barec = true AND code_mdpai = 3 AND date_barec BETWEEN '''+(DateToStr(DateStartBARecD.Date))+ ''' AND ''' +(DateToStr(DateEndBARecD.Date))+'''';
+MainForm.Bona_recTable.Active:= True;
+MainForm.Bona_recTable.EnableControls;
+end;
+
+procedure TBonRecF.Select_Valid_Virment;
+begin
+MainForm.Bona_recTable.DisableControls;
+MainForm.Bona_recTable.Active:= False;
+MainForm.Bona_recTable.SQL.clear;
+mainform.Bona_recTable.sql.Text:='SELECT * FROM bona_rec WHERE valider_barec = true AND code_mdpai = 4 AND date_barec BETWEEN '''+(DateToStr(DateStartBARecD.Date))+ ''' AND ''' +(DateToStr(DateEndBARecD.Date))+'''';
+MainForm.Bona_recTable.Active:= True;
+MainForm.Bona_recTable.EnableControls;
+end;
+
+procedure TBonRecF.Select_NOT_Valid_Escpace;
+begin
+MainForm.Bona_recTable.DisableControls;
+MainForm.Bona_recTable.Active:= False;
+MainForm.Bona_recTable.SQL.clear;
+mainform.Bona_recTable.sql.Text:='SELECT * FROM bona_rec WHERE valider_barec = false AND code_mdpai = 1';
+MainForm.Bona_recTable.Active:= True;
+MainForm.Bona_recTable.EnableControls;
+end;
+
+procedure TBonRecF.Select_NOT_Valid_Cheque;
+begin
+MainForm.Bona_recTable.DisableControls;
+MainForm.Bona_recTable.Active:= False;
+MainForm.Bona_recTable.SQL.clear;
+mainform.Bona_recTable.sql.Text:='SELECT * FROM bona_rec WHERE valider_barec = false AND code_mdpai = 2 AND date_barec BETWEEN '''+(DateToStr(DateStartBARecD.Date))+ ''' AND ''' +(DateToStr(DateEndBARecD.Date))+'''';
+MainForm.Bona_recTable.Active:= True;
+MainForm.Bona_recTable.EnableControls;
+end;
+
+procedure TBonRecF.Select_NOT_Valid_ATerme;
+begin
+MainForm.Bona_recTable.DisableControls;
+MainForm.Bona_recTable.Active:= False;
+MainForm.Bona_recTable.SQL.clear;
+mainform.Bona_recTable.sql.Text:='SELECT * FROM bona_rec WHERE valider_barec = false AND code_mdpai = 3 AND date_barec BETWEEN '''+(DateToStr(DateStartBARecD.Date))+ ''' AND ''' +(DateToStr(DateEndBARecD.Date))+'''';
+MainForm.Bona_recTable.Active:= True;
+MainForm.Bona_recTable.EnableControls;
+end;
+
+procedure TBonRecF.Select_NOT_Valid_Virment;
+begin
+MainForm.Bona_recTable.DisableControls;
+MainForm.Bona_recTable.Active:= False;
+MainForm.Bona_recTable.SQL.clear;
+mainform.Bona_recTable.sql.Text:='SELECT * FROM bona_rec WHERE valider_barec = false AND code_mdpai = 4 AND date_barec BETWEEN '''+(DateToStr(DateStartBARecD.Date))+ ''' AND ''' +(DateToStr(DateEndBARecD.Date))+'''';
+MainForm.Bona_recTable.Active:= True;
+MainForm.Bona_recTable.EnableControls;
+end;
+
+procedure TBonRecF.Select_Regle;
+begin
+  MainForm.Bona_recTable.Filtered := False;
+  MainForm.Bona_recTable.Filter:='MontantRes <= 0 ';
+  MainForm.Bona_recTable.Filtered:=True;
+end;
+
+procedure TBonRecF.Select_NOT_Regle;
+begin
+  MainForm.Bona_recTable.Filtered := False;
+  MainForm.Bona_recTable.Filter:='MontantRes > 0 ';
+  MainForm.Bona_recTable.Filtered:=True;
+end;
+
+procedure TBonRecF.FilteredColor;
+begin
+ FilterBVLivBtn.Color:= $0077D90E; 
+ FilterBVLivBtn.ColorHot:=  $0080FF00;
+ FilterBVLivBtn.BorderHotColor:= $00EFE9E8;
+end;
+
+procedure TBonRecF.NOT_FilteredColor;
+begin
+ FilterBVLivBtn.Color:= $00EFE9E8;
+ FilterBVLivBtn.ColorHot:= $00EFE9E8; 
+ FilterBVLivBtn.BorderHotColor:= $004735F9;
+end;
+
+
+
+
 procedure TBonRecF.AddBARecBtnClick(Sender: TObject);
 var
   codeBR : integer;
 
 //  MyForm :TBonRecGestionF;
 begin
+ClearFilterBVLivPMenuClick(Sender);
+
   MainForm.Bona_recPlistTable.Active:=False;
   MainForm.Bona_recPlistTable.IndexFieldNames:='';
   MainForm.Bona_recTable.DisableControls;
@@ -189,6 +428,75 @@ begin
 BARecListDBGridEh.DataSource.DataSet.Next;
 end;
 
+procedure TBonRecF.NoTRegleFilterBVLivPMenuClick(Sender: TObject);
+begin
+FilterBVLivBtn.ImageIndex:=50;
+MainForm.Bona_recTable.Filtered:= False;
+Select_Valid;
+Select_NOT_Regle;
+sImage1.ImageIndex:=3;
+sImage1.Visible:= True;
+sImage6.ImageIndex:=10;
+sImage6.Visible:=True;
+F1.Enabled:= False;
+FilteredColor;
+ ATermeMPFilterBVLivPMenu.Enabled:= True;
+ ClearValideFilterBVLivPMenu.Checked := True;
+
+    if (sImage2.Visible = True)  then
+   begin 
+     if sImage2.ImageIndex = 5 then
+    begin
+     Select_Valid_Escpace;
+     Select_NOT_Regle;
+    end;
+      if sImage2.ImageIndex = 6 then
+    begin
+    Select_Valid_Cheque;
+    Select_NOT_Regle;
+    end;
+      if sImage2.ImageIndex = 7 then
+    begin
+    Select_Valid_ATerme;
+    Select_NOT_Regle;
+    end;
+      if sImage2.ImageIndex = 8 then
+    begin
+    Select_Valid_Virment;
+    Select_NOT_Regle;
+    end;
+  end;
+end;
+
+procedure TBonRecF.NotValideFilterBVLivPMenuClick(Sender: TObject);
+begin
+  sImage1.ImageIndex:=4;
+  sImage1.Visible:= True;
+  FilterBVLivBtn.ImageIndex:=50;
+  FilteredColor;
+  ClearFilterBVLivPMenu.Checked:= False;
+  Select_NOT_Valid;
+   if (sImage2.Visible = True)  then
+  begin
+   if sImage2.ImageIndex = 5 then
+  begin
+   Select_NOT_Valid_Escpace;
+  end;
+    if sImage2.ImageIndex = 6 then
+  begin
+  Select_NOT_Valid_Cheque;
+  end;
+    if sImage2.ImageIndex = 7 then
+  begin
+  Select_NOT_Valid_ATerme;
+  end;
+    if sImage2.ImageIndex = 8 then
+  begin
+  Select_NOT_Valid_Virment;
+  end;
+  end; 
+end;
+
 procedure TBonRecF.BARecListDBGridEhDrawColumnCell(Sender: TObject;
   const Rect: TRect; DataCol: Integer; Column: TColumnEh;
   State: TGridDrawState);
@@ -237,6 +545,173 @@ begin
   end else Exit;
 end;
 
+procedure TBonRecF.ChequeMPFilterBVLivPMenuClick(Sender: TObject);
+begin
+FilterBVLivBtn.ImageIndex:=50;
+sImage1.ImageIndex:=3;
+sImage1.Visible:=True;
+sImage2.ImageIndex:=6;
+sImage2.Visible:=True;
+RegleFilterBVLivPMenu.Enabled:= True;
+
+FilteredColor;
+Select_Valid_Cheque;
+
+  if sImage6.Visible = True then
+   begin
+   MainForm.Bona_recTable.Filtered:= False;
+    if RegleFilterBVLivPMenu.Checked then
+    begin
+     Select_Regle; 
+    end;
+     if NoTRegleFilterBVLivPMenu.Checked then
+    begin
+     Select_NOT_Regle; 
+    end;
+  end;
+end;
+
+procedure TBonRecF.ClearFilterBVLivPMenuClick(Sender: TObject);
+begin
+sImage1.Visible:= False;
+sImage2.Visible:= False;
+sImage6.Visible:= False;
+F1.Enabled:= True;
+FilterBVLivBtn.ImageIndex:=49;
+NOT_FilteredColor;
+ClearValideFilterBVLivPMenu.Checked:= True;
+ClearMPFilterBVLivPMenu.Checked:= True;
+ClearFilterBVLivPMenu.Checked:= True;
+ClearRegleFilterBVLivPMenu.Checked:= True;
+MainForm.Bona_recTable.Filtered:= False;
+Select_ALL;
+ ATermeMPFilterBVLivPMenu.Enabled:= True;
+end;
+
+procedure TBonRecF.ClearMPFilterBVLivPMenuClick(Sender: TObject);
+begin
+ sImage2.Visible:= False;
+ RegleFilterBVLivPMenu.Enabled:= True;
+
+ if sImage6.Visible = False then
+ begin
+  sImage1.Visible:= False;
+  Select_ALL;
+  NOT_FilteredColor;
+  FilterBVLivBtn.ImageIndex := 50;
+ end else
+  begin
+    if sImage6.ImageIndex = 9 then
+    begin
+     FilteredColor;
+     FilterBVLivBtn.ImageIndex:=49;
+     MainForm.Bona_recTable.Filtered := False;
+     Select_Valid;
+     Select_Regle;
+    end;
+    if sImage6.ImageIndex = 10 then
+    begin
+     FilteredColor;    
+     FilterBVLivBtn.ImageIndex:=49;
+     MainForm.Bona_recTable.Filtered := False;
+     Select_Valid;
+     Select_NOT_Regle;
+    end;
+  end;
+end;
+
+procedure TBonRecF.ClearRegleFilterBVLivPMenuClick(Sender: TObject);
+begin
+ MainForm.Bona_recTable.Filtered:=False;
+ //Select_ALL;
+ sImage1.Visible:= False;
+ sImage6.Visible:= False;
+ F1.Enabled:= True;
+ ATermeMPFilterBVLivPMenu.Enabled:= True;
+ if sImage2.Visible = False then
+ begin
+  NOT_FilteredColor;
+  FilterBVLivBtn.ImageIndex:=50;
+ end else
+  begin
+    if sImage2.ImageIndex = 5 then
+    begin
+    FilterBVLivBtn.ImageIndex:=49;
+     Select_NOT_Valid_Escpace;
+    end;
+      if sImage2.ImageIndex = 6 then
+    begin
+    FilterBVLivBtn.ImageIndex:=49;
+    Select_NOT_Valid_Cheque;
+    end;
+      if sImage2.ImageIndex = 7 then
+    begin
+    FilterBVLivBtn.ImageIndex:=49;
+    Select_NOT_Valid_ATerme;
+    end;
+      if sImage2.ImageIndex = 8 then
+    begin
+    FilterBVLivBtn.ImageIndex:=49;
+    Select_NOT_Valid_Virment;
+    end;  
+  end;  
+   if sImage1.Visible = False then
+ begin
+  NOT_FilteredColor;
+  FilterBVLivBtn.ImageIndex:=50;
+  MainForm.Bona_recTable.Filtered := false;
+  Select_ALL;
+  
+  end  else
+  begin
+      if sImage1.ImageIndex = 3 then
+    begin
+    FilteredColor;
+    FilterBVLivBtn.ImageIndex:=49;
+    Select_Valid;
+    end;
+      if sImage1.ImageIndex = 4 then
+    begin
+    FilteredColor;
+    FilterBVLivBtn.ImageIndex:=49;
+    Select_NOT_Valid;
+    end; 
+  end;
+end;
+
+procedure TBonRecF.ClearValideFilterBVLivPMenuClick(Sender: TObject);
+begin
+  if (sImage2.Visible = False)  then
+  begin
+  FilterBVLivBtn.ImageIndex:=50;
+  sImage1.Visible:= False;
+  Select_ALL;
+  NOT_FilteredColor;
+  end else
+  begin
+   if sImage2.ImageIndex = 5 then
+  begin
+  FilterBVLivBtn.ImageIndex:=49;
+   Select_NOT_Valid_Escpace;
+  end;
+    if sImage2.ImageIndex = 6 then
+  begin
+  FilterBVLivBtn.ImageIndex:=49;
+  Select_NOT_Valid_Cheque;
+  end;
+    if sImage2.ImageIndex = 7 then
+  begin
+  FilterBVLivBtn.ImageIndex:=49;
+  Select_NOT_Valid_ATerme;
+  end;
+    if sImage2.ImageIndex = 8 then
+  begin
+  FilterBVLivBtn.ImageIndex:=49;
+  Select_NOT_Valid_Virment;
+  end;
+  end;
+end;
+
 procedure TBonRecF.EditBARecBtnClick(Sender: TObject);
 var
  CodeF : Integer;
@@ -261,7 +736,7 @@ var
 
 
 //      BonRecGestionF := TBonRecGestionF.Create(BonRecF);
-       MainForm.Bona_recTable.Refresh;
+//       MainForm.Bona_recTable.Refresh;
        BonRecGestionF.NumBonRecGEdt.Caption := MainForm.Bona_recTable.FieldValues['num_barec'];
        BonRecGestionF.DateBonRecGD.Date:= MainForm.Bona_recTable.FieldValues['date_barec'];
        if (MainForm.Bona_recTable.FieldValues['code_f']<> null) and (MainForm.Bona_recTable.FieldValues['code_f']<> 0) then
@@ -360,6 +835,31 @@ var
 
   end;
  end;
+
+procedure TBonRecF.EspeceMPFilterBVLivPMenuClick(Sender: TObject);
+begin
+FilterBVLivBtn.ImageIndex:=50;
+sImage1.ImageIndex:=3;
+sImage1.Visible:=True;
+sImage2.ImageIndex:=5;
+sImage2.Visible:=True;
+RegleFilterBVLivPMenu.Enabled:= True;
+
+FilteredColor;
+Select_Valid_Escpace;
+if sImage6.Visible = True  then 
+ begin
+  MainForm.Bona_recTable.Filtered:= False;
+  if RegleFilterBVLivPMenu.Checked then
+  begin
+   Select_Regle;
+  end;
+   if NoTRegleFilterBVLivPMenu.Checked then
+  begin
+   Select_NOT_Regle; 
+  end;
+ end;
+end;
 
 procedure TBonRecF.DeleteBARecBtnClick(Sender: TObject);
 begin
@@ -471,6 +971,43 @@ begin
 end;
 
 
+
+procedure TBonRecF.RegleFilterBVLivPMenuClick(Sender: TObject);
+begin
+ FilterBVLivBtn.ImageIndex:=50;
+ MainForm.Bona_recTable.Filtered:= False;
+ Select_Valid;
+ Select_Regle;
+ sImage1.ImageIndex:=3;
+ sImage1.Visible:= True;
+ sImage6.ImageIndex:=9;
+ sImage6.Visible:=True;
+ F1.Enabled:= False;
+ FilteredColor;
+ ATermeMPFilterBVLivPMenu.Enabled:= False;
+ ClearValideFilterBVLivPMenu.Checked := True;
+
+   if (sImage2.Visible = True)  then
+   begin 
+
+     if sImage2.ImageIndex = 5 then
+    begin
+     Select_Valid_Escpace;
+    end;
+      if sImage2.ImageIndex = 6 then
+    begin
+    Select_Valid_Cheque;
+    end;
+      if sImage2.ImageIndex = 7 then
+    begin
+    Select_Valid_ATerme;
+    end;
+      if sImage2.ImageIndex = 8 then
+    begin
+    Select_Valid_Virment;
+    end;
+  end;
+end;
 
 procedure TBonRecF.ResearchBARecEdtChange(Sender: TObject);
 
@@ -633,6 +1170,88 @@ BonRecfrxRprt.Export(frxPDFExport1);
 
 
 MainForm.Bona_recTable.EnableControls;
+end;
+
+procedure TBonRecF.ValideFilterBVLivPMenuClick(Sender: TObject);
+begin
+  sImage1.ImageIndex:=3;
+  sImage1.Visible:= True;
+  FilterBVLivBtn.ImageIndex:=50;
+  FilteredColor;
+  ClearFilterBVLivPMenu.Checked:= False;
+  Select_Valid;
+ if (sImage2.Visible = True)  then
+  begin
+//  Select_Valid;
+    if sImage2.ImageIndex = 5 then
+    begin
+     Select_Valid_Escpace;
+    end;
+      if sImage2.ImageIndex = 6 then
+    begin
+    Select_Valid_Cheque;
+    end;
+      if sImage2.ImageIndex = 7 then
+    begin
+    Select_Valid_ATerme;
+    end;
+      if sImage2.ImageIndex = 8 then
+    begin
+    Select_Valid_Virment;
+    end;
+  end; 
+end;
+
+procedure TBonRecF.VirmentMPFilterBVLivPMenuClick(Sender: TObject);
+begin
+FilterBVLivBtn.ImageIndex:=50;
+sImage1.ImageIndex:=3;
+sImage1.Visible:=True;
+sImage2.ImageIndex:=8;
+sImage2.Visible:=True;
+RegleFilterBVLivPMenu.Enabled:= True;
+
+FilteredColor;
+Select_Valid_Virment;
+
+  if sImage6.Visible = True then
+   begin
+   MainForm.Bona_recTable.Filtered:= False;
+    if RegleFilterBVLivPMenu.Checked then
+    begin
+     Select_Regle; 
+    end;
+     if NoTRegleFilterBVLivPMenu.Checked then
+    begin
+     Select_NOT_Regle; 
+    end;
+  end;
+end;
+
+procedure TBonRecF.ATermeMPFilterBVLivPMenuClick(Sender: TObject);
+begin
+FilterBVLivBtn.ImageIndex:=50;
+sImage1.ImageIndex:=3;
+sImage1.Visible:=True;
+sImage2.ImageIndex:=7;
+sImage2.Visible:=True;
+RegleFilterBVLivPMenu.Enabled:= False;
+FilteredColor;
+Select_Valid_ATerme;
+  if sImage6.Visible = True then
+   begin
+   MainForm.Bona_recTable.Filtered:= False;
+    if RegleFilterBVLivPMenu.Checked then
+    begin
+     
+     Select_Regle; 
+     
+    end;
+     if NoTRegleFilterBVLivPMenu.Checked then
+    begin
+     Select_NOT_Regle; 
+    end;
+  end;
 end;
 
 procedure TBonRecF.BARecListDBGridEhDblClick(Sender: TObject);

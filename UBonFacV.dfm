@@ -345,14 +345,13 @@ object BonFacVF: TBonFacVF
     FixedColor = clWindow
     Font.Charset = DEFAULT_CHARSET
     Font.Color = 4207405
-    Font.Height = 18
+    Font.Height = -16
     Font.Name = 'Helvetica LT Std'
     Font.Style = []
     GridLineParams.DataHorzLines = True
     GridLineParams.DataVertLines = True
     HorzScrollBar.ExtraPanel.NavigatorButtons = [nbFirstEh, nbPriorEh, nbNextEh, nbLastEh, nbRefreshEh]
     HorzScrollBar.ExtraPanel.Visible = True
-    HorzScrollBar.ExtraPanel.VisibleItems = [gsbiNavigator, gsbiSelAggregationInfoEh]
     HorzScrollBar.Height = 15
     IndicatorOptions = []
     IndicatorParams.Color = clBtnFace
@@ -651,7 +650,7 @@ object BonFacVF: TBonFacVF
       1191
       82)
     object EditBVFacBtn: TAdvToolButton
-      Left = 797
+      Left = 801
       Top = 26
       Width = 100
       Height = 30
@@ -683,7 +682,7 @@ object BonFacVF: TBonFacVF
       TMSStyle = 0
     end
     object DeleteBVFacBtn: TAdvToolButton
-      Left = 903
+      Left = 907
       Top = 26
       Width = 100
       Height = 30
@@ -715,7 +714,7 @@ object BonFacVF: TBonFacVF
       TMSStyle = 0
     end
     object AddBVFacBtn: TAdvToolButton
-      Left = 691
+      Left = 695
       Top = 25
       Width = 100
       Height = 30
@@ -763,7 +762,7 @@ object BonFacVF: TBonFacVF
       StyleElements = []
     end
     object sSpeedButton1: TsSpeedButton
-      Left = 1110
+      Left = 1121
       Top = 26
       Width = 30
       Height = 30
@@ -777,7 +776,7 @@ object BonFacVF: TBonFacVF
       Images = MainForm.PanelIcons24
     end
     object sSpeedButton2: TsSpeedButton
-      Left = 1074
+      Left = 1087
       Top = 26
       Width = 30
       Height = 30
@@ -791,7 +790,7 @@ object BonFacVF: TBonFacVF
       Images = MainForm.PanelIcons24
     end
     object sSpeedButton3: TsSpeedButton
-      Left = 1146
+      Left = 1155
       Top = 26
       Width = 30
       Height = 30
@@ -805,7 +804,7 @@ object BonFacVF: TBonFacVF
       Images = MainForm.PanelIcons24
     end
     object Label1: TLabel
-      Left = 352
+      Left = 346
       Top = 14
       Width = 23
       Height = 18
@@ -821,7 +820,7 @@ object BonFacVF: TBonFacVF
       StyleElements = []
     end
     object Label2: TLabel
-      Left = 353
+      Left = 347
       Top = 49
       Width = 22
       Height = 18
@@ -836,77 +835,138 @@ object BonFacVF: TBonFacVF
       ParentFont = False
       StyleElements = []
     end
-    object ArrowsPnl: TPanel
-      Left = 533
-      Top = 29
-      Width = 132
-      Height = 25
-      BevelEdges = []
-      BevelKind = bkFlat
-      BevelOuter = bvNone
+    object FisrtBVFacbtn: TsSpeedButton
+      Left = 491
+      Top = 26
+      Width = 30
+      Height = 30
+      Hint = 'Detaill'
+      ParentShowHint = False
+      ShowHint = True
+      OnClick = FisrtBVFacbtnClick
+      SkinData.SkinSection = 'SPEEDBUTTON'
+      ImageIndex = 0
+      Images = MainForm.PanelIcons24
+      ShowCaption = False
+    end
+    object PreviosBVFacbtn: TsSpeedButton
+      Left = 525
+      Top = 26
+      Width = 30
+      Height = 30
+      Hint = 'Modifer'
+      ParentShowHint = False
+      ShowHint = True
+      OnClick = PreviosBVFacbtnClick
+      SkinData.SkinSection = 'SPEEDBUTTON'
+      ImageIndex = 1
+      Images = MainForm.PanelIcons24
+    end
+    object NextBVFacbtn: TsSpeedButton
+      Left = 559
+      Top = 26
+      Width = 30
+      Height = 30
+      Hint = 'Detaill'
+      ParentShowHint = False
+      ShowHint = True
+      OnClick = NextBVFacbtnClick
+      SkinData.SkinSection = 'SPEEDBUTTON'
+      ImageIndex = 2
+      Images = MainForm.PanelIcons24
+      ShowCaption = False
+    end
+    object LastBVFacbtn: TsSpeedButton
+      Left = 593
+      Top = 26
+      Width = 30
+      Height = 30
+      Hint = 'Modifer'
+      ParentShowHint = False
+      ShowHint = True
+      OnClick = LastBVFacbtnClick
+      SkinData.SkinSection = 'SPEEDBUTTON'
+      ImageIndex = 3
+      Images = MainForm.PanelIcons24
+    end
+    object FilterBVLivBtn: TAdvToolButton
+      Left = 628
+      Top = 26
+      Width = 55
+      Height = 30
+      Cursor = crHandPoint
+      AutoThemeAdapt = False
+      BorderColor = 7854350
+      BorderDownColor = 7854350
+      BorderHotColor = 4666873
       Color = 15722984
-      Ctl3D = True
-      DoubleBuffered = False
-      FullRepaint = False
-      ParentBackground = False
-      ParentCtl3D = False
-      ParentDoubleBuffered = False
-      TabOrder = 1
-      StyleElements = []
-      object LastBVFacbtn: TsSpeedButton
-        Left = 99
-        Top = 0
-        Width = 24
-        Height = 24
-        Hint = 'Modifer'
-        ParentShowHint = False
-        ShowHint = True
-        OnClick = LastBVFacbtnClick
-        SkinData.SkinSection = 'SPEEDBUTTON'
-        ImageIndex = 3
-        Images = MainForm.PanelIcons24
-      end
-      object NextBVFacbtn: TsSpeedButton
-        Left = 69
-        Top = 0
-        Width = 24
-        Height = 24
-        Hint = 'Detaill'
-        ParentShowHint = False
-        ShowHint = True
-        OnClick = NextBVFacbtnClick
-        SkinData.SkinSection = 'SPEEDBUTTON'
-        ImageIndex = 2
-        Images = MainForm.PanelIcons24
-        ShowCaption = False
-      end
-      object PreviosBVFacbtn: TsSpeedButton
-        Left = 39
-        Top = 0
-        Width = 24
-        Height = 24
-        Hint = 'Modifer'
-        ParentShowHint = False
-        ShowHint = True
-        OnClick = PreviosBVFacbtnClick
-        SkinData.SkinSection = 'SPEEDBUTTON'
-        ImageIndex = 1
-        Images = MainForm.PanelIcons24
-      end
-      object FisrtBVFacbtn: TsSpeedButton
-        Left = 9
-        Top = 0
-        Width = 24
-        Height = 24
-        Hint = 'Detaill'
-        ParentShowHint = False
-        ShowHint = True
-        OnClick = FisrtBVFacbtnClick
-        SkinData.SkinSection = 'SPEEDBUTTON'
-        ImageIndex = 0
-        Images = MainForm.PanelIcons24
-        ShowCaption = False
-      end
+      ColorDown = 7854350
+      ColorHot = 15722984
+      ColorChecked = clNone
+      DropDownButton = True
+      DropDownMenu = FilterBVLivPMenu
+      DropDownSplit = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 4207405
+      Font.Height = 14
+      Font.Name = 'Roboto'
+      Font.Style = []
+      ImageIndex = 49
+      Images = MainForm.PanelIcons24
+      Layout = blGlyphRight
+      ParentFont = False
+      ParentShowHint = False
+      PopupMenu = FilterBVLivPMenu
+      Shaded = False
+      ShowHint = True
+      Spacing = -1
+      Version = '1.6.1.2'
+      TMSStyle = 0
+    end
+    object sImage1: TsImage
+      Left = 630
+      Top = 6
+      Width = 16
+      Height = 16
+      Center = True
+      Picture.Data = {07544269746D617000000000}
+      Proportional = True
+      Stretch = True
+      Transparent = True
+      Visible = False
+      ImageIndex = 3
+      Images = MainForm.PanelIcons16
+      SkinData.SkinSection = 'CHECKBOX'
+    end
+    object sImage6: TsImage
+      Left = 646
+      Top = 6
+      Width = 16
+      Height = 16
+      Center = True
+      Picture.Data = {07544269746D617000000000}
+      Proportional = True
+      Stretch = True
+      Transparent = True
+      Visible = False
+      ImageIndex = 9
+      Images = MainForm.PanelIcons16
+      SkinData.SkinSection = 'CHECKBOX'
+    end
+    object sImage2: TsImage
+      Left = 662
+      Top = 6
+      Width = 16
+      Height = 16
+      Center = True
+      Picture.Data = {07544269746D617000000000}
+      Proportional = True
+      Stretch = True
+      Transparent = True
+      Visible = False
+      ImageIndex = 5
+      Images = MainForm.PanelIcons16
+      SkinData.SkinSection = 'CHECKBOX'
     end
     object LineP: TPanel
       Left = 0
@@ -917,7 +977,7 @@ object BonFacVF: TBonFacVF
       BevelOuter = bvNone
       Color = 7854350
       ParentBackground = False
-      TabOrder = 2
+      TabOrder = 1
       StyleElements = []
     end
     object Panel1: TPanel
@@ -945,11 +1005,11 @@ object BonFacVF: TBonFacVF
       ParentFont = False
       ParentShowHint = False
       ShowHint = False
-      TabOrder = 3
+      TabOrder = 2
       StyleElements = []
     end
     object S01: TPanel
-      Left = 1059
+      Left = 1081
       Top = 21
       Width = 1
       Height = 40
@@ -973,11 +1033,52 @@ object BonFacVF: TBonFacVF
       ParentFont = False
       ParentShowHint = False
       ShowHint = False
-      TabOrder = 4
+      TabOrder = 3
       StyleElements = []
     end
     object S02: TPanel
-      Left = 673
+      Left = 688
+      Top = 21
+      Width = 1
+      Height = 40
+      ParentCustomHint = False
+      BevelEdges = []
+      BevelOuter = bvNone
+      BiDiMode = bdLeftToRight
+      Color = 11544476
+      Ctl3D = True
+      DoubleBuffered = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentBiDiMode = False
+      ParentBackground = False
+      ParentCtl3D = False
+      ParentDoubleBuffered = False
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = False
+      TabOrder = 4
+      StyleElements = []
+    end
+    object ResearchBVFacEdt: TSearchBox
+      Left = 92
+      Top = 34
+      Width = 242
+      Height = 30
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 4207405
+      Font.Height = 22
+      Font.Name = 'Helvetica LT Std'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 0
+      OnChange = ResearchBVFacEdtChange
+    end
+    object Panel2: TPanel
+      Left = 485
       Top = 21
       Width = 1
       Height = 40
@@ -1003,51 +1104,26 @@ object BonFacVF: TBonFacVF
       TabOrder = 5
       StyleElements = []
     end
-    object ResearchBVFacEdt: TSearchBox
-      Left = 92
-      Top = 34
-      Width = 242
-      Height = 30
+    object DateEndBVFacD: TDateTimePicker
+      Left = 375
+      Top = 44
+      Width = 104
+      Height = 29
+      Date = 42435.595104571760000000
+      Time = 42435.595104571760000000
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 4207405
       Font.Height = 22
-      Font.Name = 'Helvetica LT Std'
+      Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
-      TabOrder = 0
-      OnChange = ResearchBVFacEdtChange
-    end
-    object Panel2: TPanel
-      Left = 526
-      Top = 21
-      Width = 1
-      Height = 40
-      ParentCustomHint = False
-      BevelEdges = []
-      BevelOuter = bvNone
-      BiDiMode = bdLeftToRight
-      Color = 11544476
-      Ctl3D = True
-      DoubleBuffered = False
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -11
-      Font.Name = 'Tahoma'
-      Font.Style = []
-      ParentBiDiMode = False
-      ParentBackground = False
-      ParentCtl3D = False
-      ParentDoubleBuffered = False
-      ParentFont = False
-      ParentShowHint = False
-      ShowHint = False
       TabOrder = 6
-      StyleElements = []
+      OnChange = DateStartBVFacDChange
     end
-    object DateEndBVFacD: TDateTimePicker
-      Left = 381
-      Top = 44
-      Width = 120
+    object DateStartBVFacD: TDateTimePicker
+      Left = 375
+      Top = 9
+      Width = 104
       Height = 29
       Date = 42435.595104571760000000
       Time = 42435.595104571760000000
@@ -1058,22 +1134,6 @@ object BonFacVF: TBonFacVF
       Font.Style = []
       ParentFont = False
       TabOrder = 7
-      OnChange = DateStartBVFacDChange
-    end
-    object DateStartBVFacD: TDateTimePicker
-      Left = 381
-      Top = 9
-      Width = 120
-      Height = 29
-      Date = 42435.595104571760000000
-      Time = 42435.595104571760000000
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = 4207405
-      Font.Height = 22
-      Font.Name = 'Segoe UI'
-      Font.Style = []
-      ParentFont = False
-      TabOrder = 8
       OnChange = DateStartBVFacDChange
     end
     object ResherchBFVClientRdioBtn: TRadioButton
@@ -1090,7 +1150,7 @@ object BonFacVF: TBonFacVF
       Font.Name = 'Roboto'
       Font.Style = []
       ParentFont = False
-      TabOrder = 9
+      TabOrder = 8
       TabStop = True
       StyleElements = []
     end
@@ -1107,11 +1167,11 @@ object BonFacVF: TBonFacVF
       Font.Name = 'Roboto'
       Font.Style = []
       ParentFont = False
-      TabOrder = 10
+      TabOrder = 9
       StyleElements = []
     end
     object Panel4: TPanel
-      Left = 1020
+      Left = 1013
       Top = 21
       Width = 1
       Height = 40
@@ -1134,7 +1194,7 @@ object BonFacVF: TBonFacVF
       ParentFont = False
       ParentShowHint = False
       ShowHint = False
-      TabOrder = 11
+      TabOrder = 10
       StyleElements = []
     end
   end
@@ -2075,5 +2135,130 @@ object BonFacVF: TBonFacVF
     PdfA = False
     Left = 408
     Top = 480
+  end
+  object FilterBVLivPMenu: TPopupMenu
+    Images = MainForm.PanelIcons16
+    Left = 790
+    Top = 144
+    object F1: TMenuItem
+      Caption = 'Filter par la Validation'
+      SubMenuImages = MainForm.PanelIcons16
+      ImageIndex = 1
+      object ValideFilterBVLivPMenu: TMenuItem
+        AutoCheck = True
+        Caption = 'Valide'
+        ImageIndex = 3
+        RadioItem = True
+        OnClick = ValideFilterBVLivPMenuClick
+      end
+      object NotValideFilterBVLivPMenu: TMenuItem
+        AutoCheck = True
+        Caption = 'Pas Valide'
+        ImageIndex = 4
+        RadioItem = True
+        OnClick = NotValideFilterBVLivPMenuClick
+      end
+      object N2: TMenuItem
+        Caption = '-'
+        RadioItem = True
+      end
+      object ClearValideFilterBVLivPMenu: TMenuItem
+        AutoCheck = True
+        Caption = 'Tout'
+        Checked = True
+        ImageIndex = 2
+        RadioItem = True
+        OnClick = ClearValideFilterBVLivPMenuClick
+      end
+    end
+    object F3: TMenuItem
+      Caption = 'Filter par la R'#232'glement'
+      ImageIndex = 1
+      object RegleFilterBVLivPMenu: TMenuItem
+        AutoCheck = True
+        Caption = 'Regle'
+        ImageIndex = 9
+        RadioItem = True
+        OnClick = RegleFilterBVLivPMenuClick
+      end
+      object NoTRegleFilterBVLivPMenu: TMenuItem
+        AutoCheck = True
+        Caption = 'Pas Regle'
+        ImageIndex = 10
+        RadioItem = True
+        OnClick = NoTRegleFilterBVLivPMenuClick
+      end
+      object N1: TMenuItem
+        Caption = '-'
+        RadioItem = True
+      end
+      object ClearRegleFilterBVLivPMenu: TMenuItem
+        AutoCheck = True
+        Caption = 'Tout'
+        Checked = True
+        ImageIndex = 2
+        RadioItem = True
+        OnClick = ClearRegleFilterBVLivPMenuClick
+      end
+    end
+    object F2: TMenuItem
+      Caption = 'Filter par le Mode de Paiment'
+      SubMenuImages = MainForm.PanelIcons16
+      ImageIndex = 1
+      object EspeceMPFilterBVLivPMenu: TMenuItem
+        AutoCheck = True
+        Caption = 'Esp'#232'ce'
+        ImageIndex = 5
+        RadioItem = True
+        OnClick = EspeceMPFilterBVLivPMenuClick
+      end
+      object ChequeMPFilterBVLivPMenu: TMenuItem
+        AutoCheck = True
+        Caption = 'Ch'#232'que'
+        ImageIndex = 6
+        RadioItem = True
+        OnClick = ChequeMPFilterBVLivPMenuClick
+      end
+      object ATermeMPFilterBVLivPMenu: TMenuItem
+        AutoCheck = True
+        Caption = #192' Terme'
+        ImageIndex = 7
+        RadioItem = True
+        OnClick = ATermeMPFilterBVLivPMenuClick
+      end
+      object VirmentMPFilterBVLivPMenu: TMenuItem
+        AutoCheck = True
+        Caption = 'Virement'
+        ImageIndex = 8
+        RadioItem = True
+        OnClick = VirmentMPFilterBVLivPMenuClick
+      end
+      object N3: TMenuItem
+        AutoCheck = True
+        Caption = '-'
+        RadioItem = True
+      end
+      object ClearMPFilterBVLivPMenu: TMenuItem
+        AutoCheck = True
+        Caption = 'Tout'
+        Checked = True
+        ImageIndex = 2
+        RadioItem = True
+        OnClick = ClearMPFilterBVLivPMenuClick
+      end
+    end
+    object N5: TMenuItem
+      Caption = '-'
+      Checked = True
+      SubMenuImages = MainForm.PanelIcons16
+    end
+    object ClearFilterBVLivPMenu: TMenuItem
+      AutoCheck = True
+      Caption = 'Tout'
+      Checked = True
+      SubMenuImages = MainForm.PanelIcons16
+      ImageIndex = 2
+      OnClick = ClearFilterBVLivPMenuClick
+    end
   end
 end

@@ -27,11 +27,6 @@ type
     DeleteClientsBtn: TAdvToolButton;
     sSpeedButton1: TsSpeedButton;
     sSpeedButton2: TsSpeedButton;
-    ArrowsPnl: TPanel;
-    LastClientbtn: TsSpeedButton;
-    NextClientbtn: TsSpeedButton;
-    PreviosClientbtn: TsSpeedButton;
-    FisrtClientbtn: TsSpeedButton;
     LineP: TPanel;
     S02: TPanel;
     S01: TPanel;
@@ -56,6 +51,11 @@ type
     frxXLSExport1: TfrxXLSExport;
     frxClientListDB: TfrxDBDataset;
     ClientListfrxRprt: TfrxReport;
+    Panel4: TPanel;
+    FisrtClientbtn: TsSpeedButton;
+    PreviosClientbtn: TsSpeedButton;
+    NextClientbtn: TsSpeedButton;
+    LastClientbtn: TsSpeedButton;
     procedure AddClientsBtnClick(Sender: TObject);
     procedure EditClientsBtnClick(Sender: TObject);
     procedure ResearchClientsEdtChange(Sender: TObject);

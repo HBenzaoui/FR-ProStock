@@ -9,7 +9,8 @@ uses
   acAlphaImageList, Vcl.ComCtrls, Vcl.StdCtrls, Vcl.WinXCtrls, Vcl.Buttons,
   sSpeedButton, AdvToolBtn, Vcl.ExtCtrls, EhLibVCL, GridsEh, DBAxisGridsEh,
   DBGridEh,
-  System.DateUtils, frxClass, frxDBSet, frxExportPDF, frxExportXLS
+  System.DateUtils, frxClass, frxDBSet, frxExportPDF, frxExportXLS, Vcl.Menus,
+  acImage
   ;
 
 type
@@ -24,11 +25,6 @@ type
     sSpeedButton3: TsSpeedButton;
     Label1: TLabel;
     Label2: TLabel;
-    ArrowsPnl: TPanel;
-    LastBARecbtn: TsSpeedButton;
-    NextBARecbtn: TsSpeedButton;
-    PreviosBARecbtn: TsSpeedButton;
-    FisrtBARecbtn: TsSpeedButton;
     LineP: TPanel;
     Panel1: TPanel;
     S01: TPanel;
@@ -46,6 +42,34 @@ type
     frxPDFExport1: TfrxPDFExport;
     frxBonLivDB: TfrxDBDataset;
     BonLivfrxRprt: TfrxReport;
+    FilterBVLivBtn: TAdvToolButton;
+    FilterBVLivPMenu: TPopupMenu;
+    F1: TMenuItem;
+    F2: TMenuItem;
+    ValideFilterBVLivPMenu: TMenuItem;
+    NotValideFilterBVLivPMenu: TMenuItem;
+    N2: TMenuItem;
+    ClearValideFilterBVLivPMenu: TMenuItem;
+    EspeceMPFilterBVLivPMenu: TMenuItem;
+    ChequeMPFilterBVLivPMenu: TMenuItem;
+    ATermeMPFilterBVLivPMenu: TMenuItem;
+    VirmentMPFilterBVLivPMenu: TMenuItem;
+    N3: TMenuItem;
+    ClearMPFilterBVLivPMenu: TMenuItem;
+    LastBARecbtn: TsSpeedButton;
+    NextBARecbtn: TsSpeedButton;
+    PreviosBARecbtn: TsSpeedButton;
+    FisrtBARecbtn: TsSpeedButton;
+    N5: TMenuItem;
+    ClearFilterBVLivPMenu: TMenuItem;
+    sImage1: TsImage;
+    sImage2: TsImage;
+    F3: TMenuItem;
+    NoTRegleFilterBVLivPMenu: TMenuItem;
+    N1: TMenuItem;
+    ClearRegleFilterBVLivPMenu: TMenuItem;
+    RegleFilterBVLivPMenu: TMenuItem;
+    sImage6: TsImage;
     procedure ResearchBVLivEdtChange(Sender: TObject);
     procedure FisrtBARecbtnClick(Sender: TObject);
     procedure PreviosBARecbtnClick(Sender: TObject);
@@ -67,8 +91,39 @@ type
     procedure BVLivListDBGridEhKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure BVLivListDBGridEhKeyPress(Sender: TObject; var Key: Char);
+    procedure ValideFilterBVLivPMenuClick(Sender: TObject);
+    procedure NotValideFilterBVLivPMenuClick(Sender: TObject);
+    procedure ClearValideFilterBVLivPMenuClick(Sender: TObject);
+    procedure ClearFilterBVLivPMenuClick(Sender: TObject);
+    procedure RegleFilterBVLivPMenuClick(Sender: TObject);
+    procedure NoTRegleFilterBVLivPMenuClick(Sender: TObject);
+    procedure ClearRegleFilterBVLivPMenuClick(Sender: TObject);
+    procedure EspeceMPFilterBVLivPMenuClick(Sender: TObject);
+    procedure ChequeMPFilterBVLivPMenuClick(Sender: TObject);
+    procedure ATermeMPFilterBVLivPMenuClick(Sender: TObject);
+    procedure VirmentMPFilterBVLivPMenuClick(Sender: TObject);
+    procedure ClearMPFilterBVLivPMenuClick(Sender: TObject);
   private
     procedure GettingData;
+    procedure Select_ALL;
+    procedure Select_Valid;
+    procedure Select_NOT_Valid;
+    procedure Select_Escpace;
+    procedure Select_Cheque;
+    procedure Select_ATerme;
+    procedure Select_Virment;
+    procedure Select_Valid_ATerme;
+    procedure Select_Valid_Cheque;
+    procedure Select_Valid_Escpace;
+    procedure Select_Valid_Virment;
+    procedure Select_NOT_Valid_ATerme;
+    procedure Select_NOT_Valid_Cheque;
+    procedure Select_NOT_Valid_Escpace;
+    procedure Select_NOT_Valid_Virment;
+    procedure Select_NOT_Regle;
+    procedure Select_Regle;
+    procedure FilteredColor;
+    procedure NOT_FilteredColor;
     { Private declarations }
   public
     { Public declarations }
@@ -84,6 +139,226 @@ uses
   USplashVersement;
 
 {$R *.dfm}
+
+//-------------Filtring procedures-----------------//
+
+procedure TBonLivF.Select_ALL;
+begin
+MainForm.Bonv_livTable.DisableControls;
+MainForm.Bonv_livTable.Active:= False;
+MainForm.Bonv_livTable.SQL.clear;
+mainform.Bonv_livTable.sql.Text:='SELECT * FROM bonv_liv WHERE date_bvliv BETWEEN '''+(DateToStr(DateStartBVLivD.Date))+ ''' AND ''' +(DateToStr(DateEndBVLivD.Date))+'''';
+MainForm.Bonv_livTable.Active:= True;
+MainForm.Bonv_livTable.EnableControls;
+end;
+
+procedure TBonLivF.Select_Valid;
+begin
+MainForm.Bonv_livTable.DisableControls;
+MainForm.Bonv_livTable.Active:= False;
+MainForm.Bonv_livTable.SQL.clear;
+mainform.Bonv_livTable.sql.Text:='SELECT * FROM bonv_liv WHERE valider_bvliv = true AND date_bvliv BETWEEN '''+(DateToStr(DateStartBVLivD.Date))+ ''' AND ''' +(DateToStr(DateEndBVLivD.Date))+'''';
+MainForm.Bonv_livTable.Active:= True;
+MainForm.Bonv_livTable.EnableControls;
+end;
+
+procedure TBonLivF.Select_NOT_Valid;
+begin
+MainForm.Bonv_livTable.DisableControls;
+MainForm.Bonv_livTable.Active:= False;
+MainForm.Bonv_livTable.SQL.clear;
+mainform.Bonv_livTable.sql.Text:='SELECT * FROM bonv_liv WHERE valider_bvliv = false AND date_bvliv BETWEEN '''+(DateToStr(DateStartBVLivD.Date))+ ''' AND ''' +(DateToStr(DateEndBVLivD.Date))+'''';
+MainForm.Bonv_livTable.Active:= True;
+MainForm.Bonv_livTable.EnableControls;
+end;
+
+procedure TBonLivF.Select_Escpace;
+begin
+MainForm.Bonv_livTable.DisableControls;
+MainForm.Bonv_livTable.Active:= False;
+MainForm.Bonv_livTable.SQL.clear;
+mainform.Bonv_livTable.sql.Text:='SELECT * FROM bonv_liv WHERE code_mdpai = 1 AND date_bvliv BETWEEN '''+(DateToStr(DateStartBVLivD.Date))+ ''' AND ''' +(DateToStr(DateEndBVLivD.Date))+'''';
+MainForm.Bonv_livTable.Active:= True;
+MainForm.Bonv_livTable.EnableControls;
+end;
+
+procedure TBonLivF.Select_Cheque;
+begin
+MainForm.Bonv_livTable.DisableControls;
+MainForm.Bonv_livTable.Active:= False;
+MainForm.Bonv_livTable.SQL.clear;
+mainform.Bonv_livTable.sql.Text:='SELECT * FROM bonv_liv WHERE code_mdpai = 2 AND date_bvliv BETWEEN '''+(DateToStr(DateStartBVLivD.Date))+ ''' AND ''' +(DateToStr(DateEndBVLivD.Date))+'''';
+MainForm.Bonv_livTable.Active:= True;
+MainForm.Bonv_livTable.EnableControls;
+end;
+
+procedure TBonLivF.Select_ATerme;
+begin
+MainForm.Bonv_livTable.DisableControls;
+MainForm.Bonv_livTable.Active:= False;
+MainForm.Bonv_livTable.SQL.clear;
+mainform.Bonv_livTable.sql.Text:='SELECT * FROM bonv_liv WHERE code_mdpai = 3 AND date_bvliv BETWEEN '''+(DateToStr(DateStartBVLivD.Date))+ ''' AND ''' +(DateToStr(DateEndBVLivD.Date))+'''';
+MainForm.Bonv_livTable.Active:= True;
+MainForm.Bonv_livTable.EnableControls;
+end;
+
+procedure TBonLivF.Select_Virment;
+begin
+MainForm.Bonv_livTable.DisableControls;
+MainForm.Bonv_livTable.Active:= False;
+MainForm.Bonv_livTable.SQL.clear;
+mainform.Bonv_livTable.sql.Text:='SELECT * FROM bonv_liv WHERE code_mdpai = 4 AND date_bvliv BETWEEN '''+(DateToStr(DateStartBVLivD.Date))+ ''' AND ''' +(DateToStr(DateEndBVLivD.Date))+'''';
+MainForm.Bonv_livTable.Active:= True;
+MainForm.Bonv_livTable.EnableControls;
+end;
+
+procedure TBonLivF.Select_Valid_Escpace;
+begin
+MainForm.Bonv_livTable.DisableControls;
+MainForm.Bonv_livTable.Active:= False;
+MainForm.Bonv_livTable.SQL.clear;
+mainform.Bonv_livTable.sql.Text:='SELECT * FROM bonv_liv WHERE valider_bvliv = true AND code_mdpai = 1 AND date_bvliv BETWEEN '''+(DateToStr(DateStartBVLivD.Date))+ ''' AND ''' +(DateToStr(DateEndBVLivD.Date))+'''';
+MainForm.Bonv_livTable.Active:= True;
+MainForm.Bonv_livTable.EnableControls;
+end;
+
+procedure TBonLivF.Select_Valid_Cheque;
+begin
+MainForm.Bonv_livTable.DisableControls;
+MainForm.Bonv_livTable.Active:= False;
+MainForm.Bonv_livTable.SQL.clear;
+mainform.Bonv_livTable.sql.Text:='SELECT * FROM bonv_liv WHERE valider_bvliv = true AND code_mdpai = 2 AND date_bvliv BETWEEN '''+(DateToStr(DateStartBVLivD.Date))+ ''' AND ''' +(DateToStr(DateEndBVLivD.Date))+'''';
+MainForm.Bonv_livTable.Active:= True;
+MainForm.Bonv_livTable.EnableControls;
+end;
+
+procedure TBonLivF.Select_Valid_ATerme;
+begin
+MainForm.Bonv_livTable.DisableControls;
+MainForm.Bonv_livTable.Active:= False;
+MainForm.Bonv_livTable.SQL.clear;
+mainform.Bonv_livTable.sql.Text:='SELECT * FROM bonv_liv WHERE valider_bvliv = true AND code_mdpai = 3 AND date_bvliv BETWEEN '''+(DateToStr(DateStartBVLivD.Date))+ ''' AND ''' +(DateToStr(DateEndBVLivD.Date))+'''';
+MainForm.Bonv_livTable.Active:= True;
+MainForm.Bonv_livTable.EnableControls;
+end;
+
+procedure TBonLivF.Select_Valid_Virment;
+begin
+MainForm.Bonv_livTable.DisableControls;
+MainForm.Bonv_livTable.Active:= False;
+MainForm.Bonv_livTable.SQL.clear;
+mainform.Bonv_livTable.sql.Text:='SELECT * FROM bonv_liv WHERE valider_bvliv = true AND code_mdpai = 4 AND date_bvliv BETWEEN '''+(DateToStr(DateStartBVLivD.Date))+ ''' AND ''' +(DateToStr(DateEndBVLivD.Date))+'''';
+MainForm.Bonv_livTable.Active:= True;
+MainForm.Bonv_livTable.EnableControls;
+end;
+
+procedure TBonLivF.Select_NOT_Valid_Escpace;
+begin
+MainForm.Bonv_livTable.DisableControls;
+MainForm.Bonv_livTable.Active:= False;
+MainForm.Bonv_livTable.SQL.clear;
+mainform.Bonv_livTable.sql.Text:='SELECT * FROM bonv_liv WHERE valider_bvliv = false AND code_mdpai = 1';
+MainForm.Bonv_livTable.Active:= True;
+MainForm.Bonv_livTable.EnableControls;
+end;
+
+procedure TBonLivF.Select_NOT_Valid_Cheque;
+begin
+MainForm.Bonv_livTable.DisableControls;
+MainForm.Bonv_livTable.Active:= False;
+MainForm.Bonv_livTable.SQL.clear;
+mainform.Bonv_livTable.sql.Text:='SELECT * FROM bonv_liv WHERE valider_bvliv = false AND code_mdpai = 2 AND date_bvliv BETWEEN '''+(DateToStr(DateStartBVLivD.Date))+ ''' AND ''' +(DateToStr(DateEndBVLivD.Date))+'''';
+MainForm.Bonv_livTable.Active:= True;
+MainForm.Bonv_livTable.EnableControls;
+end;
+
+procedure TBonLivF.Select_NOT_Valid_ATerme;
+begin
+MainForm.Bonv_livTable.DisableControls;
+MainForm.Bonv_livTable.Active:= False;
+MainForm.Bonv_livTable.SQL.clear;
+mainform.Bonv_livTable.sql.Text:='SELECT * FROM bonv_liv WHERE valider_bvliv = false AND code_mdpai = 3 AND date_bvliv BETWEEN '''+(DateToStr(DateStartBVLivD.Date))+ ''' AND ''' +(DateToStr(DateEndBVLivD.Date))+'''';
+MainForm.Bonv_livTable.Active:= True;
+MainForm.Bonv_livTable.EnableControls;
+end;
+
+procedure TBonLivF.Select_NOT_Valid_Virment;
+begin
+MainForm.Bonv_livTable.DisableControls;
+MainForm.Bonv_livTable.Active:= False;
+MainForm.Bonv_livTable.SQL.clear;
+mainform.Bonv_livTable.sql.Text:='SELECT * FROM bonv_liv WHERE valider_bvliv = false AND code_mdpai = 4 AND date_bvliv BETWEEN '''+(DateToStr(DateStartBVLivD.Date))+ ''' AND ''' +(DateToStr(DateEndBVLivD.Date))+'''';
+MainForm.Bonv_livTable.Active:= True;
+MainForm.Bonv_livTable.EnableControls;
+end;
+
+procedure TBonLivF.Select_Regle;
+begin
+  MainForm.Bonv_livTable.Filtered := False;
+  MainForm.Bonv_livTable.Filter:='MontantRes <= 0 ';
+  MainForm.Bonv_livTable.Filtered:=True;
+end;
+
+procedure TBonLivF.Select_NOT_Regle;
+begin
+  MainForm.Bonv_livTable.Filtered := False;
+  MainForm.Bonv_livTable.Filter:='MontantRes > 0 ';
+  MainForm.Bonv_livTable.Filtered:=True;
+end;
+
+procedure TBonLivF.FilteredColor;
+begin
+ FilterBVLivBtn.Color:= $0077D90E; 
+ FilterBVLivBtn.ColorHot:=  $0080FF00;
+ FilterBVLivBtn.BorderHotColor:= $00EFE9E8;
+end;
+
+procedure TBonLivF.NOT_FilteredColor;
+begin
+ FilterBVLivBtn.Color:= $00EFE9E8;
+ FilterBVLivBtn.ColorHot:= $00EFE9E8; 
+ FilterBVLivBtn.BorderHotColor:= $004735F9;
+end;
+
+
+procedure TBonLivF.RegleFilterBVLivPMenuClick(Sender: TObject);
+begin
+ FilterBVLivBtn.ImageIndex:=50;
+ MainForm.Bonv_livTable.Filtered:= False;
+ Select_Valid;
+ Select_Regle;
+ sImage1.ImageIndex:=3;
+ sImage1.Visible:= True;
+ sImage6.ImageIndex:=9;
+ sImage6.Visible:=True;
+ F1.Enabled:= False;
+ FilteredColor;
+ ATermeMPFilterBVLivPMenu.Enabled:= False;
+ ClearValideFilterBVLivPMenu.Checked := True;
+
+   if (sImage2.Visible = True)  then
+   begin 
+
+     if sImage2.ImageIndex = 5 then
+    begin
+     Select_Valid_Escpace;
+    end;
+      if sImage2.ImageIndex = 6 then
+    begin
+    Select_Valid_Cheque;
+    end;
+      if sImage2.ImageIndex = 7 then
+    begin
+    Select_Valid_ATerme;
+    end;
+      if sImage2.ImageIndex = 8 then
+    begin
+    Select_Valid_Virment;
+    end;
+  end;
+ 
+ 
+end;
 
 procedure TBonLivF.ResearchBVLivEdtChange(Sender: TObject);
 begin
@@ -148,6 +423,76 @@ begin
 MainForm.Bonv_livTable.Next;
 end;
 
+procedure TBonLivF.NoTRegleFilterBVLivPMenuClick(Sender: TObject);
+begin
+FilterBVLivBtn.ImageIndex:=50;
+MainForm.Bonv_livTable.Filtered:= False;
+Select_Valid;
+Select_NOT_Regle;
+sImage1.ImageIndex:=3;
+sImage1.Visible:= True;
+sImage6.ImageIndex:=10;
+sImage6.Visible:=True;
+F1.Enabled:= False;
+FilteredColor;
+ ATermeMPFilterBVLivPMenu.Enabled:= True;
+ ClearValideFilterBVLivPMenu.Checked := True;
+
+    if (sImage2.Visible = True)  then
+   begin 
+     if sImage2.ImageIndex = 5 then
+    begin
+     Select_Valid_Escpace;
+     Select_NOT_Regle;
+    end;
+      if sImage2.ImageIndex = 6 then
+    begin
+    Select_Valid_Cheque;
+    Select_NOT_Regle;
+    end;
+      if sImage2.ImageIndex = 7 then
+    begin
+    Select_Valid_ATerme;
+    Select_NOT_Regle;
+    end;
+      if sImage2.ImageIndex = 8 then
+    begin
+    Select_Valid_Virment;
+    Select_NOT_Regle;
+    end;
+  end;
+ 
+end;
+
+procedure TBonLivF.NotValideFilterBVLivPMenuClick(Sender: TObject);
+begin
+  sImage1.ImageIndex:=4;
+  sImage1.Visible:= True;
+  FilterBVLivBtn.ImageIndex:=50;
+  FilteredColor;
+  ClearFilterBVLivPMenu.Checked:= False;
+  Select_NOT_Valid;
+   if (sImage2.Visible = True)  then
+  begin
+   if sImage2.ImageIndex = 5 then
+  begin
+   Select_NOT_Valid_Escpace;
+  end;
+    if sImage2.ImageIndex = 6 then
+  begin
+  Select_NOT_Valid_Cheque;
+  end;
+    if sImage2.ImageIndex = 7 then
+  begin
+  Select_NOT_Valid_ATerme;
+  end;
+    if sImage2.ImageIndex = 8 then
+  begin
+  Select_NOT_Valid_Virment;
+  end;
+  end; 
+end;
+
 procedure TBonLivF.LastBARecbtnClick(Sender: TObject);
 begin
 MainForm.Bonv_livTable.Last;
@@ -158,6 +503,8 @@ var
   codeBL : integer;
 
 begin
+ClearFilterBVLivPMenuClick(Sender);
+
 MainForm.Bonv_liv_listTable.Active:= False;
 MainForm.Bonv_liv_listTable.IndexFieldNames:='';
 MainForm.Bonv_livTable.DisableControls;
@@ -345,12 +692,11 @@ begin
 
      MainForm.Bonv_liv_listTable.IndexFieldNames:='code_bvliv';
 
-
         BonLivGestionF := TBonLivGestionF.Create(nil);
     try
       MainForm.Bonv_liv_listTable.Active := True;
-       MainForm.Bonv_livTable.Refresh;
-       BonLivGestionF.NumBonLivGEdt.Caption := MainForm.Bonv_livTable.FieldValues['num_bvliv'];
+//       MainForm.Bonv_livTable.Refresh;
+       BonLivGestionF.NumBonLivGEdt.Caption := MainForm.Bonv_livTable.FieldByName('num_bvliv').AsString;
        BonLivGestionF.DateBonLivGD.Date:= MainForm.Bonv_livTable.FieldValues['date_bvliv'];
        if (MainForm.Bonv_livTable.FieldValues['code_c']<> null) and (MainForm.Bonv_livTable.FieldValues['code_c']<> 0) then
        begin
@@ -441,6 +787,31 @@ begin
  end;
 end;
 
+procedure TBonLivF.EspeceMPFilterBVLivPMenuClick(Sender: TObject);
+begin
+FilterBVLivBtn.ImageIndex:=50;
+sImage1.ImageIndex:=3;
+sImage1.Visible:=True;
+sImage2.ImageIndex:=5;
+sImage2.Visible:=True;
+RegleFilterBVLivPMenu.Enabled:= True;
+
+FilteredColor;
+Select_Valid_Escpace;
+if sImage6.Visible = True  then 
+ begin
+  MainForm.Bonv_livTable.Filtered:= False;
+  if RegleFilterBVLivPMenu.Checked then
+  begin
+   Select_Regle;
+  end;
+   if NoTRegleFilterBVLivPMenu.Checked then
+  begin
+   Select_NOT_Regle; 
+  end;
+ end;
+end;
+
 procedure TBonLivF.BVLivListDBGridEhDrawColumnCell(Sender: TObject;
   const Rect: TRect; DataCol: Integer; Column: TColumnEh;
   State: TGridDrawState);
@@ -486,6 +857,175 @@ begin
     if Key in ['m'] then
       EditBVLivBtnClick(Sender);
   end else Exit;
+end;
+
+procedure TBonLivF.ChequeMPFilterBVLivPMenuClick(Sender: TObject);
+begin  
+FilterBVLivBtn.ImageIndex:=50;
+sImage1.ImageIndex:=3;
+sImage1.Visible:=True;
+sImage2.ImageIndex:=6;
+sImage2.Visible:=True;
+RegleFilterBVLivPMenu.Enabled:= True;
+
+FilteredColor;
+Select_Valid_Cheque;
+
+  if sImage6.Visible = True then
+   begin
+   MainForm.Bonv_livTable.Filtered:= False;
+    if RegleFilterBVLivPMenu.Checked then
+    begin
+     Select_Regle; 
+    end;
+     if NoTRegleFilterBVLivPMenu.Checked then
+    begin
+     Select_NOT_Regle; 
+    end;
+  end;
+end;
+
+procedure TBonLivF.ClearFilterBVLivPMenuClick(Sender: TObject);
+begin
+sImage1.Visible:= False;
+sImage2.Visible:= False;
+sImage6.Visible:= False;
+F1.Enabled:= True;
+FilterBVLivBtn.ImageIndex:=49;
+NOT_FilteredColor;
+ClearValideFilterBVLivPMenu.Checked:= True;
+ClearMPFilterBVLivPMenu.Checked:= True;
+ClearFilterBVLivPMenu.Checked:= True;
+ClearRegleFilterBVLivPMenu.Checked:= True;
+MainForm.Bonv_livTable.Filtered:= False;
+Select_ALL;
+ ATermeMPFilterBVLivPMenu.Enabled:= True;
+end;
+
+procedure TBonLivF.ClearMPFilterBVLivPMenuClick(Sender: TObject);
+begin
+ sImage2.Visible:= False;
+ RegleFilterBVLivPMenu.Enabled:= True;
+
+ if sImage6.Visible = False then
+ begin
+  sImage1.Visible:= False;
+  Select_ALL;
+  NOT_FilteredColor;
+  FilterBVLivBtn.ImageIndex := 50;
+ end else
+  begin
+    if sImage6.ImageIndex = 9 then
+    begin
+     FilteredColor;
+     FilterBVLivBtn.ImageIndex:=49;
+     MainForm.Bonv_livTable.Filtered := False;
+     Select_Valid;
+     Select_Regle;
+    end;
+    if sImage6.ImageIndex = 10 then
+    begin
+     FilteredColor;    
+     FilterBVLivBtn.ImageIndex:=49;
+     MainForm.Bonv_livTable.Filtered := False;
+     Select_Valid;
+     Select_NOT_Regle;
+    end;
+  end;
+
+end;
+
+procedure TBonLivF.ClearRegleFilterBVLivPMenuClick(Sender: TObject);
+begin
+ MainForm.Bonv_livTable.Filtered:=False;
+ //Select_ALL;
+ sImage1.Visible:= False;
+ sImage6.Visible:= False;
+ F1.Enabled:= True;
+ ATermeMPFilterBVLivPMenu.Enabled:= True;
+ if sImage2.Visible = False then
+ begin
+  NOT_FilteredColor;
+  FilterBVLivBtn.ImageIndex:=50;
+ end else
+  begin
+    if sImage2.ImageIndex = 5 then
+    begin
+    FilterBVLivBtn.ImageIndex:=49;
+     Select_NOT_Valid_Escpace;
+    end;
+      if sImage2.ImageIndex = 6 then
+    begin
+    FilterBVLivBtn.ImageIndex:=49;
+    Select_NOT_Valid_Cheque;
+    end;
+      if sImage2.ImageIndex = 7 then
+    begin
+    FilterBVLivBtn.ImageIndex:=49;
+    Select_NOT_Valid_ATerme;
+    end;
+      if sImage2.ImageIndex = 8 then
+    begin
+    FilterBVLivBtn.ImageIndex:=49;
+    Select_NOT_Valid_Virment;
+    end;  
+  end;  
+   if sImage1.Visible = False then
+ begin
+  NOT_FilteredColor;
+  FilterBVLivBtn.ImageIndex:=50;
+  MainForm.Bonv_livTable.Filtered := false;
+  Select_ALL;
+  
+  end  else
+  begin
+      if sImage1.ImageIndex = 3 then
+    begin
+    FilteredColor;
+    FilterBVLivBtn.ImageIndex:=49;
+    Select_Valid;
+    end;
+      if sImage1.ImageIndex = 4 then
+    begin
+    FilteredColor;
+    FilterBVLivBtn.ImageIndex:=49;
+    Select_NOT_Valid;
+    end; 
+  end;
+
+end;
+
+procedure TBonLivF.ClearValideFilterBVLivPMenuClick(Sender: TObject);
+begin
+  if (sImage2.Visible = False)  then
+  begin
+  FilterBVLivBtn.ImageIndex:=50;
+  sImage1.Visible:= False;
+  Select_ALL;
+  NOT_FilteredColor;
+  end else
+  begin
+   if sImage2.ImageIndex = 5 then
+  begin
+  FilterBVLivBtn.ImageIndex:=49;
+   Select_NOT_Valid_Escpace;
+  end;
+    if sImage2.ImageIndex = 6 then
+  begin
+  FilterBVLivBtn.ImageIndex:=49;
+  Select_NOT_Valid_Cheque;
+  end;
+    if sImage2.ImageIndex = 7 then
+  begin
+  FilterBVLivBtn.ImageIndex:=49;
+  Select_NOT_Valid_ATerme;
+  end;
+    if sImage2.ImageIndex = 8 then
+  begin
+  FilterBVLivBtn.ImageIndex:=49;
+  Select_NOT_Valid_Virment;
+  end;
+  end;
 end;
 
 procedure TBonLivF.DateStartBVLivDChange(Sender: TObject);
@@ -543,6 +1083,63 @@ BonLivfrxRprt.Export(frxPDFExport1);
 MainForm.Bonv_livTable.EnableControls;
 end;
 
+procedure TBonLivF.ValideFilterBVLivPMenuClick(Sender: TObject);
+begin
+  sImage1.ImageIndex:=3;
+  sImage1.Visible:= True;
+  FilterBVLivBtn.ImageIndex:=50;
+  FilteredColor;
+  ClearFilterBVLivPMenu.Checked:= False;
+  Select_Valid;
+ if (sImage2.Visible = True)  then
+  begin
+//  Select_Valid;
+    if sImage2.ImageIndex = 5 then
+    begin
+     Select_Valid_Escpace;
+    end;
+      if sImage2.ImageIndex = 6 then
+    begin
+    Select_Valid_Cheque;
+    end;
+      if sImage2.ImageIndex = 7 then
+    begin
+    Select_Valid_ATerme;
+    end;
+      if sImage2.ImageIndex = 8 then
+    begin
+    Select_Valid_Virment;
+    end;
+  end; 
+
+end;
+
+procedure TBonLivF.VirmentMPFilterBVLivPMenuClick(Sender: TObject);
+begin
+FilterBVLivBtn.ImageIndex:=50;
+sImage1.ImageIndex:=3;
+sImage1.Visible:=True;
+sImage2.ImageIndex:=8;
+sImage2.Visible:=True;
+RegleFilterBVLivPMenu.Enabled:= True;
+
+FilteredColor;
+Select_Valid_Virment;
+
+  if sImage6.Visible = True then
+   begin
+   MainForm.Bonv_livTable.Filtered:= False;
+    if RegleFilterBVLivPMenu.Checked then
+    begin
+     Select_Regle; 
+    end;
+     if NoTRegleFilterBVLivPMenu.Checked then
+    begin
+     Select_NOT_Regle; 
+    end;
+  end;
+end;
+
 procedure TBonLivF.sSpeedButton1Click(Sender: TObject);
 begin
 MainForm.Bonv_livTable.DisableControls;
@@ -554,6 +1151,32 @@ frxXLSExport1.FileName := 'liste des BL';
 BonLivfrxRprt.Export(frxXLSExport1);
 
 MainForm.Bonv_livTable.EnableControls;
+end;
+
+procedure TBonLivF.ATermeMPFilterBVLivPMenuClick(Sender: TObject);
+begin
+FilterBVLivBtn.ImageIndex:=50;
+sImage1.ImageIndex:=3;
+sImage1.Visible:=True;
+sImage2.ImageIndex:=7;
+sImage2.Visible:=True;
+RegleFilterBVLivPMenu.Enabled:= False;
+FilteredColor;
+Select_Valid_ATerme;
+  if sImage6.Visible = True then
+   begin
+   MainForm.Bonv_livTable.Filtered:= False;
+    if RegleFilterBVLivPMenu.Checked then
+    begin
+     
+     Select_Regle; 
+     
+    end;
+     if NoTRegleFilterBVLivPMenu.Checked then
+    begin
+     Select_NOT_Regle; 
+    end;
+  end;
 end;
 
 procedure TBonLivF.BVLivListDBGridEhDblClick(Sender: TObject);

@@ -328,7 +328,7 @@ object CaisseListF: TCaisseListF
     Left = 0
     Top = 82
     Width = 1191
-    Height = 609
+    Height = 608
     Anchors = [akLeft, akTop, akRight, akBottom]
     Border.Color = 4207405
     Border.ExtendedDraw = False
@@ -346,7 +346,7 @@ object CaisseListF: TCaisseListF
     FixedColor = clWindow
     Font.Charset = DEFAULT_CHARSET
     Font.Color = 4207405
-    Font.Height = 18
+    Font.Height = -16
     Font.Name = 'Helvetica LT Std'
     Font.Style = []
     FooterRowCount = 1
@@ -355,7 +355,6 @@ object CaisseListF: TCaisseListF
     GridLineParams.DataVertLines = True
     HorzScrollBar.ExtraPanel.NavigatorButtons = [nbFirstEh, nbPriorEh, nbNextEh, nbLastEh, nbRefreshEh]
     HorzScrollBar.ExtraPanel.Visible = True
-    HorzScrollBar.ExtraPanel.VisibleItems = [gsbiNavigator, gsbiSelAggregationInfoEh]
     HorzScrollBar.Height = 15
     IndicatorOptions = []
     IndicatorParams.Color = clBtnFace
@@ -675,379 +674,6 @@ object CaisseListF: TCaisseListF
     object RowDetailData: TRowDetailPanelControlEh
     end
   end
-  object TopP: TPanel
-    Left = 0
-    Top = 0
-    Width = 1191
-    Height = 82
-    Align = alTop
-    BevelOuter = bvNone
-    Color = 15722984
-    DoubleBuffered = True
-    ParentBackground = False
-    ParentDoubleBuffered = False
-    TabOrder = 1
-    StyleElements = []
-    DesignSize = (
-      1191
-      82)
-    object PeriodCaiseeListLbl: TLabel
-      Left = 462
-      Top = 32
-      Width = 59
-      Height = 18
-      Anchors = [akTop, akRight]
-      Caption = 'P'#233'riode:'
-      Color = 15722984
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = 4207405
-      Font.Height = 19
-      Font.Name = 'Helvetica LT Std'
-      Font.Style = []
-      ParentColor = False
-      ParentFont = False
-      StyleElements = []
-    end
-    object sSpeedButton1: TsSpeedButton
-      Left = 1110
-      Top = 26
-      Width = 30
-      Height = 30
-      Hint = 'Modifer'
-      Anchors = [akTop, akRight]
-      ParentShowHint = False
-      ShowHint = True
-      OnClick = sSpeedButton1Click
-      SkinData.SkinSection = 'SPEEDBUTTON'
-      ImageIndex = 7
-      Images = MainForm.PanelIcons24
-    end
-    object sSpeedButton2: TsSpeedButton
-      Left = 1074
-      Top = 26
-      Width = 30
-      Height = 30
-      Hint = 'Modifer'
-      Anchors = [akTop, akRight]
-      ParentShowHint = False
-      ShowHint = True
-      OnClick = sSpeedButton2Click
-      SkinData.SkinSection = 'SPEEDBUTTON'
-      ImageIndex = 8
-      Images = MainForm.PanelIcons24
-    end
-    object sSpeedButton3: TsSpeedButton
-      Left = 1146
-      Top = 26
-      Width = 30
-      Height = 30
-      Hint = 'Modifer'
-      Anchors = [akTop, akRight]
-      ParentShowHint = False
-      ShowHint = True
-      OnClick = sSpeedButton3Click
-      SkinData.SkinSection = 'SPEEDBUTTON'
-      ImageIndex = 9
-      Images = MainForm.PanelIcons24
-    end
-    object Label1: TLabel
-      Left = 744
-      Top = 13
-      Width = 23
-      Height = 18
-      Anchors = [akTop, akRight]
-      Caption = 'Du:'
-      Color = 15722984
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = 4207405
-      Font.Height = 18
-      Font.Name = 'Roboto'
-      Font.Style = []
-      ParentColor = False
-      ParentFont = False
-      StyleElements = []
-    end
-    object Label2: TLabel
-      Left = 745
-      Top = 48
-      Width = 22
-      Height = 18
-      Anchors = [akTop, akRight]
-      Caption = 'Au:'
-      Color = 15722984
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = 4207405
-      Font.Height = 18
-      Font.Name = 'Roboto'
-      Font.Style = []
-      ParentColor = False
-      ParentFont = False
-      StyleElements = []
-    end
-    object Label3: TLabel
-      Left = 22
-      Top = 33
-      Width = 92
-      Height = 18
-      Caption = 'Les Caisses:'
-      Color = 15722984
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = 4207405
-      Font.Height = 19
-      Font.Name = 'Helvetica LT Std'
-      Font.Style = []
-      ParentColor = False
-      ParentFont = False
-      StyleElements = []
-    end
-    object ArrowsPnl: TPanel
-      Left = 921
-      Top = 29
-      Width = 132
-      Height = 25
-      Anchors = [akTop, akRight]
-      BevelEdges = []
-      BevelKind = bkFlat
-      BevelOuter = bvNone
-      Color = 15722984
-      Ctl3D = True
-      DoubleBuffered = False
-      FullRepaint = False
-      ParentBackground = False
-      ParentCtl3D = False
-      ParentDoubleBuffered = False
-      TabOrder = 1
-      StyleElements = []
-      object LastCaiseebtn: TsSpeedButton
-        Left = 99
-        Top = 0
-        Width = 24
-        Height = 24
-        Hint = 'Modifer'
-        ParentShowHint = False
-        ShowHint = True
-        SkinData.SkinSection = 'SPEEDBUTTON'
-        ImageIndex = 3
-        Images = MainForm.PanelIcons24
-      end
-      object NextCaiseebtn: TsSpeedButton
-        Left = 69
-        Top = 0
-        Width = 24
-        Height = 24
-        Hint = 'Detaill'
-        ParentShowHint = False
-        ShowHint = True
-        SkinData.SkinSection = 'SPEEDBUTTON'
-        ImageIndex = 2
-        Images = MainForm.PanelIcons24
-        ShowCaption = False
-      end
-      object PreviosCaiseebtn: TsSpeedButton
-        Left = 39
-        Top = 0
-        Width = 24
-        Height = 24
-        Hint = 'Modifer'
-        ParentShowHint = False
-        ShowHint = True
-        SkinData.SkinSection = 'SPEEDBUTTON'
-        ImageIndex = 1
-        Images = MainForm.PanelIcons24
-      end
-      object FisrtCaiseebtn: TsSpeedButton
-        Left = 9
-        Top = 0
-        Width = 24
-        Height = 24
-        Hint = 'Detaill'
-        ParentShowHint = False
-        ShowHint = True
-        SkinData.SkinSection = 'SPEEDBUTTON'
-        ImageIndex = 0
-        Images = MainForm.PanelIcons24
-        ShowCaption = False
-      end
-    end
-    object LineP: TPanel
-      Left = 0
-      Top = 80
-      Width = 1207
-      Height = 2
-      Anchors = [akLeft, akTop, akRight]
-      BevelOuter = bvNone
-      Color = 7854350
-      ParentBackground = False
-      TabOrder = 2
-      StyleElements = []
-    end
-    object Panel1: TPanel
-      Left = 1189
-      Top = 21
-      Width = 1
-      Height = 40
-      ParentCustomHint = False
-      Anchors = [akTop, akRight]
-      BevelEdges = []
-      BevelOuter = bvNone
-      BiDiMode = bdLeftToRight
-      Color = 4207405
-      Ctl3D = True
-      DoubleBuffered = False
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -11
-      Font.Name = 'Tahoma'
-      Font.Style = []
-      ParentBiDiMode = False
-      ParentBackground = False
-      ParentCtl3D = False
-      ParentDoubleBuffered = False
-      ParentFont = False
-      ParentShowHint = False
-      ShowHint = False
-      TabOrder = 3
-      StyleElements = []
-    end
-    object S01: TPanel
-      Left = 1059
-      Top = 21
-      Width = 1
-      Height = 40
-      ParentCustomHint = False
-      Anchors = [akTop, akRight]
-      BevelEdges = []
-      BevelOuter = bvNone
-      BiDiMode = bdLeftToRight
-      Color = 4207405
-      Ctl3D = True
-      DoubleBuffered = False
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -11
-      Font.Name = 'Tahoma'
-      Font.Style = []
-      ParentBiDiMode = False
-      ParentBackground = False
-      ParentCtl3D = False
-      ParentDoubleBuffered = False
-      ParentFont = False
-      ParentShowHint = False
-      ShowHint = False
-      TabOrder = 4
-      StyleElements = []
-    end
-    object Panel2: TPanel
-      Left = 914
-      Top = 21
-      Width = 1
-      Height = 40
-      ParentCustomHint = False
-      Anchors = [akTop, akRight]
-      BevelEdges = []
-      BevelOuter = bvNone
-      BiDiMode = bdLeftToRight
-      Color = 4207405
-      Ctl3D = True
-      DoubleBuffered = False
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -11
-      Font.Name = 'Tahoma'
-      Font.Style = []
-      ParentBiDiMode = False
-      ParentBackground = False
-      ParentCtl3D = False
-      ParentDoubleBuffered = False
-      ParentFont = False
-      ParentShowHint = False
-      ShowHint = False
-      TabOrder = 5
-      StyleElements = []
-    end
-    object DateEndCaisseListD: TDateTimePicker
-      Left = 773
-      Top = 43
-      Width = 120
-      Height = 29
-      Anchors = [akTop, akRight]
-      Date = 42435.595104571760000000
-      Time = 42435.595104571760000000
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = 4207405
-      Font.Height = 22
-      Font.Name = 'Segoe UI'
-      Font.Style = []
-      ParentFont = False
-      TabOrder = 6
-      OnChange = DateStartCaisseListDChange
-    end
-    object DateStartCaisseListD: TDateTimePicker
-      Left = 773
-      Top = 8
-      Width = 120
-      Height = 29
-      Anchors = [akTop, akRight]
-      Date = 42435.595104571760000000
-      Time = 42435.595104571760000000
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = 4207405
-      Font.Height = 22
-      Font.Name = 'Segoe UI'
-      Font.Style = []
-      ParentFont = False
-      TabOrder = 7
-      OnChange = DateStartCaisseListDChange
-    end
-    object DaysCaisseListCbx: TComboBox
-      Left = 527
-      Top = 26
-      Width = 189
-      Height = 30
-      Style = csDropDownList
-      Anchors = [akTop, akRight]
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = 22
-      Font.Name = 'Helvetica LT Std'
-      Font.Style = []
-      ItemIndex = 2
-      ParentColor = True
-      ParentFont = False
-      TabOrder = 0
-      Text = 'Mois en cours'
-      StyleElements = []
-      OnChange = DaysCaisseListCbxChange
-      Items.Strings = (
-        'Aujourd'#39'hui'
-        'Hier'
-        'Mois en cours'
-        'Cette Ann'#233'e'
-        'Toutes')
-    end
-    object CaisseListCbx: TComboBox
-      Left = 120
-      Top = 27
-      Width = 200
-      Height = 30
-      Style = csDropDownList
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = 22
-      Font.Name = 'Helvetica LT Std'
-      Font.Style = []
-      ItemIndex = 0
-      ParentColor = True
-      ParentFont = False
-      TabOrder = 8
-      Text = 'Tous'
-      StyleElements = []
-      OnChange = CaisseListCbxChange
-      OnDropDown = CaisseListCbxDropDown
-      Items.Strings = (
-        'Tous')
-    end
-  end
   object Panel3: TPanel
     Left = 0
     Top = 82
@@ -1057,7 +683,7 @@ object CaisseListF: TCaisseListF
     BevelOuter = bvNone
     Color = 7854350
     ParentBackground = False
-    TabOrder = 2
+    TabOrder = 1
     StyleElements = []
   end
   object Panel4: TPanel
@@ -1069,7 +695,7 @@ object CaisseListF: TCaisseListF
     BevelOuter = bvNone
     Color = 4207405
     ParentBackground = False
-    TabOrder = 3
+    TabOrder = 2
     DesignSize = (
       1191
       47)
@@ -1224,6 +850,502 @@ object CaisseListF: TCaisseListF
       Font.Style = []
       ParentColor = False
       ParentFont = False
+      StyleElements = []
+    end
+  end
+  object TopP: TPanel
+    Left = 0
+    Top = 0
+    Width = 1191
+    Height = 82
+    Align = alTop
+    BevelOuter = bvNone
+    Color = 15722984
+    DoubleBuffered = True
+    ParentBackground = False
+    ParentDoubleBuffered = False
+    TabOrder = 3
+    StyleElements = []
+    DesignSize = (
+      1191
+      82)
+    object PeriodCaiseeListLbl: TLabel
+      Left = 334
+      Top = 32
+      Width = 59
+      Height = 18
+      Caption = 'P'#233'riode:'
+      Color = 15722984
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 4207405
+      Font.Height = 19
+      Font.Name = 'Helvetica LT Std'
+      Font.Style = []
+      ParentColor = False
+      ParentFont = False
+      StyleElements = []
+    end
+    object sSpeedButton1: TsSpeedButton
+      Left = 1121
+      Top = 26
+      Width = 30
+      Height = 30
+      Hint = 'Modifer'
+      Anchors = [akTop, akRight]
+      ParentShowHint = False
+      ShowHint = True
+      OnClick = sSpeedButton1Click
+      SkinData.SkinSection = 'SPEEDBUTTON'
+      ImageIndex = 7
+      Images = MainForm.PanelIcons24
+    end
+    object sSpeedButton2: TsSpeedButton
+      Left = 1087
+      Top = 26
+      Width = 30
+      Height = 30
+      Hint = 'Modifer'
+      Anchors = [akTop, akRight]
+      ParentShowHint = False
+      ShowHint = True
+      OnClick = sSpeedButton2Click
+      SkinData.SkinSection = 'SPEEDBUTTON'
+      ImageIndex = 8
+      Images = MainForm.PanelIcons24
+    end
+    object sSpeedButton3: TsSpeedButton
+      Left = 1155
+      Top = 26
+      Width = 30
+      Height = 30
+      Hint = 'Modifer'
+      Anchors = [akTop, akRight]
+      ParentShowHint = False
+      ShowHint = True
+      OnClick = sSpeedButton3Click
+      SkinData.SkinSection = 'SPEEDBUTTON'
+      ImageIndex = 9
+      Images = MainForm.PanelIcons24
+    end
+    object Label1: TLabel
+      Left = 607
+      Top = 13
+      Width = 23
+      Height = 18
+      Caption = 'Du:'
+      Color = 15722984
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 4207405
+      Font.Height = 18
+      Font.Name = 'Roboto'
+      Font.Style = []
+      ParentColor = False
+      ParentFont = False
+      StyleElements = []
+    end
+    object Label2: TLabel
+      Left = 608
+      Top = 48
+      Width = 22
+      Height = 18
+      Caption = 'Au:'
+      Color = 15722984
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 4207405
+      Font.Height = 18
+      Font.Name = 'Roboto'
+      Font.Style = []
+      ParentColor = False
+      ParentFont = False
+      StyleElements = []
+    end
+    object Label3: TLabel
+      Left = 14
+      Top = 33
+      Width = 92
+      Height = 18
+      Caption = 'Les Caisses:'
+      Color = 15722984
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 4207405
+      Font.Height = 19
+      Font.Name = 'Helvetica LT Std'
+      Font.Style = []
+      ParentColor = False
+      ParentFont = False
+      StyleElements = []
+    end
+    object NextCaiseebtn: TsSpeedButton
+      Left = 826
+      Top = 27
+      Width = 30
+      Height = 30
+      Hint = 'Detaill'
+      ParentShowHint = False
+      ShowHint = True
+      OnClick = NextCaiseebtnClick
+      SkinData.SkinSection = 'SPEEDBUTTON'
+      ImageIndex = 2
+      Images = MainForm.PanelIcons24
+      ShowCaption = False
+    end
+    object PreviosCaiseebtn: TsSpeedButton
+      Left = 792
+      Top = 27
+      Width = 30
+      Height = 30
+      Hint = 'Modifer'
+      ParentShowHint = False
+      ShowHint = True
+      OnClick = PreviosCaiseebtnClick
+      SkinData.SkinSection = 'SPEEDBUTTON'
+      ImageIndex = 1
+      Images = MainForm.PanelIcons24
+    end
+    object FisrtCaiseebtn: TsSpeedButton
+      Left = 758
+      Top = 27
+      Width = 30
+      Height = 30
+      Hint = 'Detaill'
+      ParentShowHint = False
+      ShowHint = True
+      OnClick = FisrtCaiseebtnClick
+      SkinData.SkinSection = 'SPEEDBUTTON'
+      ImageIndex = 0
+      Images = MainForm.PanelIcons24
+      ShowCaption = False
+    end
+    object LastCaiseebtn: TsSpeedButton
+      Left = 860
+      Top = 27
+      Width = 30
+      Height = 30
+      Hint = 'Modifer'
+      ParentShowHint = False
+      ShowHint = True
+      OnClick = LastCaiseebtnClick
+      SkinData.SkinSection = 'SPEEDBUTTON'
+      ImageIndex = 3
+      Images = MainForm.PanelIcons24
+    end
+    object FilterBVLivBtn: TAdvToolButton
+      Left = 894
+      Top = 27
+      Width = 55
+      Height = 30
+      Cursor = crHandPoint
+      AutoThemeAdapt = False
+      BorderColor = 7854350
+      BorderDownColor = 7854350
+      BorderHotColor = 4666873
+      Color = 15722984
+      ColorDown = 7854350
+      ColorHot = 15722984
+      ColorChecked = clNone
+      DropDownButton = True
+      DropDownMenu = FilterBVLivPMenu
+      DropDownSplit = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 4207405
+      Font.Height = 14
+      Font.Name = 'Roboto'
+      Font.Style = []
+      ImageIndex = 49
+      Images = MainForm.PanelIcons24
+      Layout = blGlyphRight
+      ParentFont = False
+      ParentShowHint = False
+      PopupMenu = FilterBVLivPMenu
+      Shaded = False
+      ShowHint = True
+      Spacing = -1
+      Version = '1.6.1.2'
+      TMSStyle = 0
+    end
+    object sImage2: TsImage
+      Left = 912
+      Top = 6
+      Width = 16
+      Height = 16
+      Center = True
+      Picture.Data = {07544269746D617000000000}
+      Proportional = True
+      Stretch = True
+      Transparent = True
+      Visible = False
+      ImageIndex = 13
+      Images = MainForm.PanelIcons16
+      SkinData.SkinSection = 'CHECKBOX'
+    end
+    object sImage1: TsImage
+      Left = 896
+      Top = 6
+      Width = 16
+      Height = 16
+      Center = True
+      Picture.Data = {07544269746D617000000000}
+      Proportional = True
+      Stretch = True
+      Transparent = True
+      Visible = False
+      ImageIndex = 18
+      Images = MainForm.PanelIcons16
+      SkinData.SkinSection = 'CHECKBOX'
+    end
+    object LineP: TPanel
+      Left = 0
+      Top = 80
+      Width = 1207
+      Height = 2
+      Anchors = [akLeft, akTop, akRight]
+      BevelOuter = bvNone
+      Color = 7854350
+      ParentBackground = False
+      TabOrder = 1
+      StyleElements = []
+    end
+    object Panel1: TPanel
+      Left = 1189
+      Top = 21
+      Width = 1
+      Height = 40
+      ParentCustomHint = False
+      Anchors = [akTop, akRight]
+      BevelEdges = []
+      BevelOuter = bvNone
+      BiDiMode = bdLeftToRight
+      Color = 4207405
+      Ctl3D = True
+      DoubleBuffered = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentBiDiMode = False
+      ParentBackground = False
+      ParentCtl3D = False
+      ParentDoubleBuffered = False
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = False
+      TabOrder = 2
+      StyleElements = []
+    end
+    object S01: TPanel
+      Left = 1080
+      Top = 21
+      Width = 1
+      Height = 40
+      ParentCustomHint = False
+      Anchors = [akTop, akRight]
+      BevelEdges = []
+      BevelOuter = bvNone
+      BiDiMode = bdLeftToRight
+      Color = 4207405
+      Ctl3D = True
+      DoubleBuffered = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentBiDiMode = False
+      ParentBackground = False
+      ParentCtl3D = False
+      ParentDoubleBuffered = False
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = False
+      TabOrder = 3
+      StyleElements = []
+    end
+    object Panel2: TPanel
+      Left = 749
+      Top = 21
+      Width = 1
+      Height = 40
+      ParentCustomHint = False
+      BevelEdges = []
+      BevelOuter = bvNone
+      BiDiMode = bdLeftToRight
+      Color = 4207405
+      Ctl3D = True
+      DoubleBuffered = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentBiDiMode = False
+      ParentBackground = False
+      ParentCtl3D = False
+      ParentDoubleBuffered = False
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = False
+      TabOrder = 4
+      StyleElements = []
+    end
+    object DateEndCaisseListD: TDateTimePicker
+      Left = 636
+      Top = 43
+      Width = 104
+      Height = 29
+      Date = 42435.595104571760000000
+      Time = 42435.595104571760000000
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 4207405
+      Font.Height = 22
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 5
+      OnChange = DateStartCaisseListDChange
+    end
+    object DateStartCaisseListD: TDateTimePicker
+      Left = 636
+      Top = 8
+      Width = 104
+      Height = 29
+      Date = 42435.595104571760000000
+      Time = 42435.595104571760000000
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 4207405
+      Font.Height = 22
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 6
+      OnChange = DateStartCaisseListDChange
+    end
+    object DaysCaisseListCbx: TComboBox
+      Left = 399
+      Top = 26
+      Width = 189
+      Height = 30
+      Style = csDropDownList
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = 22
+      Font.Name = 'Helvetica LT Std'
+      Font.Style = []
+      ItemIndex = 2
+      ParentColor = True
+      ParentFont = False
+      TabOrder = 0
+      Text = 'Mois en cours'
+      StyleElements = []
+      OnChange = DaysCaisseListCbxChange
+      Items.Strings = (
+        'Aujourd'#39'hui'
+        'Hier'
+        'Mois en cours'
+        'Cette Ann'#233'e'
+        'Toutes')
+    end
+    object CaisseListCbx: TComboBox
+      Left = 112
+      Top = 27
+      Width = 200
+      Height = 30
+      Style = csDropDownList
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = 22
+      Font.Name = 'Helvetica LT Std'
+      Font.Style = []
+      ItemIndex = 0
+      ParentColor = True
+      ParentFont = False
+      TabOrder = 7
+      Text = 'Tous'
+      StyleElements = []
+      OnChange = CaisseListCbxChange
+      OnDropDown = CaisseListCbxDropDown
+      Items.Strings = (
+        'Tous')
+    end
+    object Panel5: TPanel
+      Left = 324
+      Top = 21
+      Width = 1
+      Height = 40
+      ParentCustomHint = False
+      BevelEdges = []
+      BevelOuter = bvNone
+      BiDiMode = bdLeftToRight
+      Color = 4207405
+      Ctl3D = True
+      DoubleBuffered = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentBiDiMode = False
+      ParentBackground = False
+      ParentCtl3D = False
+      ParentDoubleBuffered = False
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = False
+      TabOrder = 8
+      StyleElements = []
+    end
+    object Panel6: TPanel
+      Left = 598
+      Top = 21
+      Width = 1
+      Height = 40
+      ParentCustomHint = False
+      BevelEdges = []
+      BevelOuter = bvNone
+      BiDiMode = bdLeftToRight
+      Color = 4207405
+      Ctl3D = True
+      DoubleBuffered = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentBiDiMode = False
+      ParentBackground = False
+      ParentCtl3D = False
+      ParentDoubleBuffered = False
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = False
+      TabOrder = 9
+      StyleElements = []
+    end
+    object Panel7: TPanel
+      Left = 959
+      Top = 21
+      Width = 1
+      Height = 40
+      ParentCustomHint = False
+      BevelEdges = []
+      BevelOuter = bvNone
+      BiDiMode = bdLeftToRight
+      Color = 4207405
+      Ctl3D = True
+      DoubleBuffered = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentBiDiMode = False
+      ParentBackground = False
+      ParentCtl3D = False
+      ParentDoubleBuffered = False
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = False
+      TabOrder = 10
       StyleElements = []
     end
   end
@@ -1945,5 +2067,180 @@ object CaisseListF: TCaisseListF
     PdfA = False
     Left = 408
     Top = 480
+  end
+  object FilterBVLivPMenu: TPopupMenu
+    Images = MainForm.PanelIcons16
+    Left = 1058
+    Top = 144
+    object F1: TMenuItem
+      Caption = 'Filter par la Transaction'
+      SubMenuImages = MainForm.PanelIcons16
+      ImageIndex = 1
+      object ValideFilterBVLivPMenu: TMenuItem
+        AutoCheck = True
+        Caption = 'D'#233'caissement'
+        ImageIndex = 18
+        RadioItem = True
+        OnClick = ValideFilterBVLivPMenuClick
+      end
+      object NotValideFilterBVLivPMenu: TMenuItem
+        AutoCheck = True
+        Caption = 'Encaissement'
+        ImageIndex = 19
+        RadioItem = True
+        OnClick = NotValideFilterBVLivPMenuClick
+      end
+      object N2: TMenuItem
+        Caption = '-'
+        RadioItem = True
+      end
+      object ClearValideFilterBVLivPMenu: TMenuItem
+        AutoCheck = True
+        Caption = 'Tout'
+        Checked = True
+        ImageIndex = 2
+        RadioItem = True
+        OnClick = ClearValideFilterBVLivPMenuClick
+      end
+    end
+    object F3: TMenuItem
+      Caption = 'Filter par le Mode de Paiment'
+      ImageIndex = 1
+      object RegleFilterBVLivPMenu: TMenuItem
+        AutoCheck = True
+        Caption = 'Esp'#232'ce'
+        ImageIndex = 5
+        RadioItem = True
+        OnClick = RegleFilterBVLivPMenuClick
+      end
+      object NoTRegleFilterBVLivPMenu: TMenuItem
+        AutoCheck = True
+        Caption = #192' Terme'
+        ImageIndex = 7
+        RadioItem = True
+        OnClick = NoTRegleFilterBVLivPMenuClick
+      end
+      object N1: TMenuItem
+        Caption = '-'
+        RadioItem = True
+      end
+      object ClearRegleFilterBVLivPMenu: TMenuItem
+        AutoCheck = True
+        Caption = 'Tout'
+        Checked = True
+        ImageIndex = 2
+        RadioItem = True
+        OnClick = ClearRegleFilterBVLivPMenuClick
+      end
+    end
+    object F2: TMenuItem
+      Caption = 'Filter par les Achats'
+      SubMenuImages = MainForm.PanelIcons16
+      ImageIndex = 1
+      object ChequeMPFilterBVLivPMenu: TMenuItem
+        AutoCheck = True
+        Caption = 'Bon de Reception'
+        ImageIndex = 20
+        RadioItem = True
+        OnClick = ChequeMPFilterBVLivPMenuClick
+      end
+      object EspeceMPFilterBVLivPMenu: TMenuItem
+        AutoCheck = True
+        Caption = 'Facture d'#39'Achat'
+        ImageIndex = 21
+        RadioItem = True
+        OnClick = EspeceMPFilterBVLivPMenuClick
+      end
+      object N3: TMenuItem
+        AutoCheck = True
+        Caption = '-'
+      end
+      object ClearMPFilterBVLivPMenu: TMenuItem
+        AutoCheck = True
+        Caption = 'Tout'
+        Checked = True
+        ImageIndex = 2
+        RadioItem = True
+        OnClick = ClearMPFilterBVLivPMenuClick
+      end
+    end
+    object FilterparlesFactures1: TMenuItem
+      Caption = 'Filter par les Ventes'
+      ImageIndex = 1
+      object BondeLivration1: TMenuItem
+        AutoCheck = True
+        Caption = 'Bon de Livration'
+        ImageIndex = 20
+        RadioItem = True
+        OnClick = BondeLivration1Click
+      end
+      object BondeReception1: TMenuItem
+        AutoCheck = True
+        Caption = 'Facture de Vente'
+        ImageIndex = 21
+        RadioItem = True
+        OnClick = BondeReception1Click
+      end
+      object V1: TMenuItem
+        AutoCheck = True
+        Caption = 'Vente au Comptoir'
+        ImageIndex = 22
+        RadioItem = True
+        OnClick = V1Click
+      end
+      object N6: TMenuItem
+        Caption = '-'
+      end
+      object ClearBRFilterPMenu: TMenuItem
+        AutoCheck = True
+        Caption = 'Tout'
+        Checked = True
+        ImageIndex = 2
+        RadioItem = True
+        OnClick = ClearBRFilterPMenuClick
+      end
+    end
+    object FilterparlePrixDeVente1: TMenuItem
+      Caption = 'Filter par les Reglement'
+      ImageIndex = 1
+      object T2: TMenuItem
+        AutoCheck = True
+        Caption = 'Reglemnt Clinet'
+        ImageIndex = 23
+        RadioItem = True
+        OnClick = T2Click
+      end
+      object N0TVA1: TMenuItem
+        AutoCheck = True
+        Caption = 'Reglemnt Fourniessure'
+        ImageIndex = 24
+        RadioItem = True
+        OnClick = N0TVA1Click
+      end
+      object N4: TMenuItem
+        Caption = '-'
+      end
+      object ClearTVAFilterPMenu: TMenuItem
+        AutoCheck = True
+        Caption = 'Tout'
+        Checked = True
+        ImageIndex = 2
+        RadioItem = True
+        OnClick = ClearTVAFilterPMenuClick
+      end
+    end
+    object N5: TMenuItem
+      Caption = '-'
+      Checked = True
+      SubMenuImages = MainForm.PanelIcons16
+    end
+    object ClearFilterBVLivPMenu: TMenuItem
+      AutoCheck = True
+      Caption = 'Tout'
+      Checked = True
+      SubMenuImages = MainForm.PanelIcons16
+      ImageIndex = 2
+      OnClick = ClearFilterBVLivPMenuClick
+    end
   end
 end

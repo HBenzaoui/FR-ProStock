@@ -13,7 +13,7 @@ uses
   FireDAC.Comp.DataSet, FireDAC.Comp.Client, System.ImageList, Vcl.ImgList,
   acAlphaImageList, Vcl.StdCtrls, Vcl.WinXCtrls, Vcl.Buttons, sSpeedButton,
   AdvToolBtn, Vcl.ExtCtrls, EhLibVCL, GridsEh, DBAxisGridsEh, Data.SqlExpr, Vcl.Imaging.jpeg,
-  DBGridEh, frxExportPDF, frxClass, frxExportXLS, frxDBSet;
+  DBGridEh, frxExportPDF, frxClass, frxExportXLS, frxDBSet, acImage, Vcl.Menus;
 
 type
   TProduitsListF = class(TForm)
@@ -25,11 +25,6 @@ type
     sSpeedButton1: TsSpeedButton;
     sSpeedButton2: TsSpeedButton;
     ResearchProduitsLbl: TLabel;
-    ArrowsPnl: TPanel;
-    LastClientbtn: TsSpeedButton;
-    NextClientbtn: TsSpeedButton;
-    PreviosClientbtn: TsSpeedButton;
-    FisrtClientbtn: TsSpeedButton;
     LineP: TPanel;
     Panel1: TPanel;
     S01: TPanel;
@@ -47,6 +42,37 @@ type
     frxXLSExport1: TfrxXLSExport;
     frxPDFExport1: TfrxPDFExport;
     sSpeedButton4: TsSpeedButton;
+    sSpeedButton5: TsSpeedButton;
+    sSpeedButton6: TsSpeedButton;
+    sSpeedButton7: TsSpeedButton;
+    sSpeedButton8: TsSpeedButton;
+    sImage1: TsImage;
+    FilterBVLivBtn: TAdvToolButton;
+    FilterBVLivPMenu: TPopupMenu;
+    F1: TMenuItem;
+    ValideFilterBVLivPMenu: TMenuItem;
+    NotValideFilterBVLivPMenu: TMenuItem;
+    N2: TMenuItem;
+    ClearValideFilterBVLivPMenu: TMenuItem;
+    F3: TMenuItem;
+    RegleFilterBVLivPMenu: TMenuItem;
+    NoTRegleFilterBVLivPMenu: TMenuItem;
+    N1: TMenuItem;
+    ClearRegleFilterBVLivPMenu: TMenuItem;
+    F2: TMenuItem;
+    EspeceMPFilterBVLivPMenu: TMenuItem;
+    ChequeMPFilterBVLivPMenu: TMenuItem;
+    N3: TMenuItem;
+    ClearMPFilterBVLivPMenu: TMenuItem;
+    N5: TMenuItem;
+    ClearFilterBVLivPMenu: TMenuItem;
+    FilterparlePrixDeVente1: TMenuItem;
+    N4: TMenuItem;
+    ClearTVAFilterPMenu: TMenuItem;
+    T2: TMenuItem;
+    N0TVA1: TMenuItem;
+    N0TVA2: TMenuItem;
+    TVAFilterLbl: TLabel;
     procedure AddProduitsBtnClick(Sender: TObject);
     procedure ProduitsListDBGridEhMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
     procedure ProduitsListDBGridEhDrawColumnCell(Sender: TObject; const Rect: TRect; DataCol: Integer; Column: TColumnEh; State: TGridDrawState);
@@ -70,8 +96,34 @@ type
     procedure sSpeedButton3Click(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure sSpeedButton4Click(Sender: TObject);
+    procedure ValideFilterBVLivPMenuClick(Sender: TObject);
+    procedure NotValideFilterBVLivPMenuClick(Sender: TObject);
+    procedure ClearValideFilterBVLivPMenuClick(Sender: TObject);
+    procedure RegleFilterBVLivPMenuClick(Sender: TObject);
+    procedure EspeceMPFilterBVLivPMenuClick(Sender: TObject);
+    procedure ChequeMPFilterBVLivPMenuClick(Sender: TObject);
+    procedure NoTRegleFilterBVLivPMenuClick(Sender: TObject);
+    procedure ClearRegleFilterBVLivPMenuClick(Sender: TObject);
+    procedure ClearMPFilterBVLivPMenuClick(Sender: TObject);
+    procedure T2Click(Sender: TObject);
+    procedure N0TVA1Click(Sender: TObject);
+    procedure N0TVA2Click(Sender: TObject);
+    procedure ClearTVAFilterPMenuClick(Sender: TObject);
+    procedure ClearFilterBVLivPMenuClick(Sender: TObject);
   private
     procedure GettingData;
+    procedure FilteredColor;
+    procedure NOT_FilteredColor;
+    procedure Select_ALL;
+    procedure Select_StoCK_Dispo;
+    procedure Select_StoCK_NOT_Dispo;
+    procedure Select_PRIX_ACHAT_NOT;
+    procedure Select_PRIX_ACHAT_WITH;
+    procedure Select_PRIX_VENT_WITH;
+    procedure Select_PRIX_VENT_NOT;
+    procedure Select_0_TVA;
+    procedure Select_17_TVA;
+    procedure Select_7_TVA;
     { Private declarations }
   public
     { Public declarations }
@@ -85,10 +137,152 @@ var
 
 implementation
 
-{$R *.dfm}
 
 uses MMSystem,Threading,
   UMainF, UProduitGestion, USplashPrinting, USplash;
+
+{$R *.dfm}
+
+
+//-------------Filtring procedures-----------------//
+
+procedure TProduitsListF.Select_ALL;
+begin
+MainForm.ProduitTable.DisableControls;
+MainForm.ProduitTable.Active:= False;
+MainForm.ProduitTable.SQL.clear;
+mainform.ProduitTable.sql.Text:='SELECT * FROM produit ';
+MainForm.ProduitTable.Active:= True;
+MainForm.ProduitTable.EnableControls;
+end;
+
+
+procedure TProduitsListF.Select_PRIX_ACHAT_WITH;
+begin
+MainForm.ProduitTable.DisableControls;
+MainForm.ProduitTable.Active:= False;
+MainForm.ProduitTable.SQL.clear;
+mainform.ProduitTable.sql.Text:='SELECT * FROM produit WHERE prixht_p <> ''0'' ';
+MainForm.ProduitTable.Active:= True;
+MainForm.ProduitTable.EnableControls;
+end;
+
+
+procedure TProduitsListF.Select_PRIX_ACHAT_NOT;
+begin
+MainForm.ProduitTable.DisableControls;
+MainForm.ProduitTable.Active:= False;
+MainForm.ProduitTable.SQL.clear;
+mainform.ProduitTable.sql.Text:='SELECT * FROM produit WHERE prixht_p = ''0'' ';
+MainForm.ProduitTable.Active:= True;
+MainForm.ProduitTable.EnableControls;
+end;
+
+procedure TProduitsListF.Select_PRIX_VENT_WITH;
+begin
+MainForm.ProduitTable.DisableControls;
+MainForm.ProduitTable.Active:= False;
+MainForm.ProduitTable.SQL.clear;
+mainform.ProduitTable.sql.Text:=
+'SELECT * FROM produit WHERE prixvd_p <> ''0'' OR prixvr_p <> ''0'' OR prixvg_p <> ''0'' OR prixva_p <> ''0'' OR prixva2_p <> ''0'' ';
+MainForm.ProduitTable.Active:= True;
+MainForm.ProduitTable.EnableControls;
+end;
+
+
+procedure TProduitsListF.Select_PRIX_VENT_NOT;
+begin
+MainForm.ProduitTable.DisableControls;
+MainForm.ProduitTable.Active:= False;
+MainForm.ProduitTable.SQL.clear;
+mainform.ProduitTable.sql.Text:=
+'SELECT * FROM produit WHERE prixvd_p = ''0'' AND prixvr_p = ''0'' AND prixvg_p = ''0'' AND prixva_p = ''0'' AND prixva2_p = ''0'' ';
+MainForm.ProduitTable.Active:= True;
+MainForm.ProduitTable.EnableControls;
+end;
+
+
+
+procedure TProduitsListF.Select_0_TVA;
+begin
+MainForm.ProduitTable.DisableControls;
+MainForm.ProduitTable.Active:= False;
+MainForm.ProduitTable.SQL.clear;
+mainform.ProduitTable.sql.Text:='SELECT * FROM produit WHERE tva_p = ''0'' ';
+MainForm.ProduitTable.Active:= True;
+MainForm.ProduitTable.EnableControls;
+end;
+
+
+
+procedure TProduitsListF.Select_7_TVA;
+begin
+MainForm.ProduitTable.DisableControls;
+MainForm.ProduitTable.Active:= False;
+MainForm.ProduitTable.SQL.clear;
+mainform.ProduitTable.sql.Text:='SELECT * FROM produit WHERE tva_p = ''7'' ';
+MainForm.ProduitTable.Active:= True;
+MainForm.ProduitTable.EnableControls;
+end;
+
+
+procedure TProduitsListF.Select_17_TVA;
+begin
+MainForm.ProduitTable.DisableControls;
+MainForm.ProduitTable.Active:= False;
+MainForm.ProduitTable.SQL.clear;
+mainform.ProduitTable.sql.Text:='SELECT * FROM produit WHERE tva_p = ''17'' ';
+MainForm.ProduitTable.Active:= True;
+MainForm.ProduitTable.EnableControls;
+end;
+
+
+procedure TProduitsListF.Select_StoCK_Dispo;              
+begin
+//  MainForm.ProduitTable.Filtered := False;
+//  MainForm.ProduitTable.Filter:='[QutDispo] > 0 ';
+//  MainForm.ProduitTable.Filtered:=True;
+
+
+MainForm.ProduitTable.DisableControls;
+MainForm.ProduitTable.Active:= False;
+MainForm.ProduitTable.SQL.clear;
+mainform.ProduitTable.sql.Text:='SELECT * FROM produit WHERE (qut_p + qutini_p) > ''0'' ';
+MainForm.ProduitTable.Active:= True;
+MainForm.ProduitTable.EnableControls;
+
+end;
+
+procedure TProduitsListF.Select_StoCK_NOT_Dispo;
+begin
+//  MainForm.ProduitTable.Filtered := False;
+//  MainForm.ProduitTable.Filter:='[QutDispo] <= 0 ';
+//  MainForm.ProduitTable.Filtered:=True;
+
+MainForm.ProduitTable.DisableControls;
+MainForm.ProduitTable.Active:= False;
+MainForm.ProduitTable.SQL.clear;
+mainform.ProduitTable.sql.Text:='SELECT * FROM produit WHERE (qut_p + qutini_p) <= ''0'' ';
+MainForm.ProduitTable.Active:= True;
+MainForm.ProduitTable.EnableControls;
+
+end;
+
+
+procedure TProduitsListF.FilteredColor;
+begin
+ FilterBVLivBtn.Color:= $0077D90E; 
+ FilterBVLivBtn.ColorHot:=  $0080FF00;
+ FilterBVLivBtn.BorderHotColor:= $00EFE9E8;
+end;
+
+procedure TProduitsListF.NOT_FilteredColor;
+begin
+ FilterBVLivBtn.Color:= $00EFE9E8;
+ FilterBVLivBtn.ColorHot:= $00EFE9E8; 
+ FilterBVLivBtn.BorderHotColor:= $004735F9;
+end;
+
 
 function GridSelectAll(ProduitsListDBGridEh: TDBGridEh): Longint;
 begin
@@ -115,6 +309,9 @@ procedure TProduitsListF.AddProduitsBtnClick(Sender: TObject);
 var
   codeP, refnum: integer;
 begin
+
+   ClearFilterBVLivPMenuClick(Sender);
+   
    //thise is to back the same row if we didnt add anything
    if Assigned (ProduitsListF) then
    begin
@@ -495,6 +692,24 @@ begin
   end;
 end;
 
+procedure TProduitsListF.EspeceMPFilterBVLivPMenuClick(Sender: TObject);
+begin
+ClearValideFilterBVLivPMenuClick(Sender);
+ClearRegleFilterBVLivPMenuClick(Sender);
+ClearTVAFilterPMenuClick(Sender);
+
+ClearValideFilterBVLivPMenu.Checked:= True;
+ClearRegleFilterBVLivPMenu.Checked:= True;
+ClearTVAFilterPMenu.Checked:= True;
+
+  sImage1.ImageIndex:=15;
+  sImage1.Visible:= True;
+  FilterBVLivBtn.ImageIndex:=50;
+  FilteredColor;
+  Select_PRIX_VENT_WITH;
+  ClearFilterBVLivPMenu.Checked:= False;
+end;
+
 procedure TProduitsListF.FisrtClientbtnClick(Sender: TObject);
 begin
   MainForm.ProduitTable.First;
@@ -505,9 +720,88 @@ begin
   MainForm.ProduitTable.Last;
 end;
 
+procedure TProduitsListF.N0TVA1Click(Sender: TObject);
+begin
+ClearValideFilterBVLivPMenuClick(Sender);
+ClearRegleFilterBVLivPMenuClick(Sender);
+ClearMPFilterBVLivPMenuClick(Sender);
+
+ClearValideFilterBVLivPMenu.Checked:= True;
+ClearRegleFilterBVLivPMenu.Checked:= True;
+ClearMPFilterBVLivPMenu.Checked:= True;
+
+  TVAFilterLbl.Caption:='7';
+  TVAFilterLbl.Visible := True;
+  sImage1.ImageIndex:= 17;
+  sImage1.Visible:= True;
+  FilterBVLivBtn.ImageIndex:=50;
+  FilteredColor;
+  Select_7_TVA;
+  ClearFilterBVLivPMenu.Checked:= False;
+end;
+
+procedure TProduitsListF.N0TVA2Click(Sender: TObject);
+begin
+ClearValideFilterBVLivPMenuClick(Sender);
+ClearRegleFilterBVLivPMenuClick(Sender);
+ClearMPFilterBVLivPMenuClick(Sender);
+
+ClearValideFilterBVLivPMenu.Checked:= True;
+ClearRegleFilterBVLivPMenu.Checked:= True;
+ClearMPFilterBVLivPMenu.Checked:= True;
+
+  TVAFilterLbl.Caption:='17';
+  TVAFilterLbl.Visible := True;
+  sImage1.ImageIndex:= 17;
+  sImage1.Visible:= True;
+  FilterBVLivBtn.ImageIndex:=50;
+  FilteredColor;
+  Select_17_TVA;
+  ClearFilterBVLivPMenu.Checked:= False;
+end;
+
 procedure TProduitsListF.NextClientbtnClick(Sender: TObject);
 begin
   MainForm.ProduitTable.Next;
+end;
+
+procedure TProduitsListF.NoTRegleFilterBVLivPMenuClick(Sender: TObject);
+begin
+  ClearValideFilterBVLivPMenuClick(Sender);
+  ClearMPFilterBVLivPMenuClick(Sender);
+  ClearTVAFilterPMenuClick(Sender);
+
+ClearValideFilterBVLivPMenu.Checked:= True;
+ClearMPFilterBVLivPMenu.Checked:= True;
+ClearTVAFilterPMenu.Checked:= True;
+  
+  sImage1.ImageIndex:=14;
+  sImage1.Visible:= True;
+  FilterBVLivBtn.ImageIndex:=50;
+  FilteredColor;
+  Select_PRIX_ACHAT_NOT;
+  ClearFilterBVLivPMenu.Checked:= False;
+end;
+
+procedure TProduitsListF.NotValideFilterBVLivPMenuClick(Sender: TObject);
+begin
+ClearRegleFilterBVLivPMenuClick(Sender);
+ClearMPFilterBVLivPMenuClick(Sender);
+ClearTVAFilterPMenuClick(Sender);
+
+ClearRegleFilterBVLivPMenu.Checked:= True;
+ClearMPFilterBVLivPMenu.Checked:= True;
+ClearTVAFilterPMenu.Checked:= True;
+
+  FilterBVLivBtn.ImageIndex:=50;
+  MainForm.ProduitTable.Filtered:= False;
+  Select_All;
+  Select_StoCK_NOT_Dispo;
+  sImage1.ImageIndex:=12;
+  sImage1.Visible:= True;
+  FilteredColor;
+  ClearFilterBVLivPMenu.Checked:= False;
+
 end;
 
 procedure TProduitsListF.PreviosClientbtnClick(Sender: TObject);
@@ -592,6 +886,25 @@ end;
 procedure TProduitsListF.ProduitsListDBGridEhTitleBtnClick(Sender: TObject; ACol: Integer; Column: TColumnEh);
 begin
   MainForm.ProduitTable.IndexesActive := false;
+
+end;
+
+procedure TProduitsListF.RegleFilterBVLivPMenuClick(Sender: TObject);
+begin
+  ClearValideFilterBVLivPMenuClick(Sender);
+  ClearMPFilterBVLivPMenuClick(Sender);
+  ClearTVAFilterPMenuClick(Sender);
+                                             
+ClearValideFilterBVLivPMenu.Checked:= True;
+ClearMPFilterBVLivPMenu.Checked:= True;
+ClearTVAFilterPMenu.Checked:= True;
+  
+  sImage1.ImageIndex:=13;
+  sImage1.Visible:= True;
+  FilterBVLivBtn.ImageIndex:=50;
+  FilteredColor;
+  Select_PRIX_ACHAT_WITH;
+  ClearFilterBVLivPMenu.Checked:= False;
 
 end;
 
@@ -720,6 +1033,72 @@ begin
 //frxProduitListDB.load
 end;
 
+procedure TProduitsListF.ChequeMPFilterBVLivPMenuClick(Sender: TObject);
+begin
+ClearValideFilterBVLivPMenuClick(Sender);
+ClearRegleFilterBVLivPMenuClick(Sender);
+ClearTVAFilterPMenuClick(Sender);
+
+ClearValideFilterBVLivPMenu.Checked:= True;
+ClearRegleFilterBVLivPMenu.Checked:= True;
+ClearTVAFilterPMenu.Checked:= True;
+
+  sImage1.ImageIndex:=16;
+  sImage1.Visible:= True;
+  FilterBVLivBtn.ImageIndex:=50;
+  FilteredColor;
+  Select_PRIX_VENT_NOT;
+  ClearFilterBVLivPMenu.Checked:= False;
+end;
+
+procedure TProduitsListF.ClearFilterBVLivPMenuClick(Sender: TObject);
+begin
+
+
+  MainForm.ProduitTable.Filtered:=False;
+  Select_ALL;
+  sImage1.Visible:= False;
+//  sImage2.Visible:= False;
+//  sImage3.Visible:= False;
+//  sImage4.Visible:= False;
+  TVAFilterLbl.Visible:= False;
+  NOT_FilteredColor;
+  FilterBVLivBtn.ImageIndex:=49;
+  ClearValideFilterBVLivPMenu.Checked := True;
+  ClearRegleFilterBVLivPMenu.Checked := True;
+  ClearMPFilterBVLivPMenu.Checked := True;
+  ClearTVAFilterPMenu.Checked := True;
+
+
+end;
+
+procedure TProduitsListF.ClearMPFilterBVLivPMenuClick(Sender: TObject);
+begin
+//  ClearValideFilterBVLivPMenuClick(Sender);
+  sImage1.Visible:= False;
+  FilterBVLivBtn.ImageIndex:=49;
+  NOT_FilteredColor;
+  Select_ALL;
+end;
+
+procedure TProduitsListF.ClearRegleFilterBVLivPMenuClick(Sender: TObject);
+begin
+//  ClearValideFilterBVLivPMenuClick(Sender);
+  sImage1.Visible:= False;
+  FilterBVLivBtn.ImageIndex:=49;
+  NOT_FilteredColor;
+  Select_ALL;
+end;
+
+procedure TProduitsListF.ClearValideFilterBVLivPMenuClick(Sender: TObject);
+begin
+  MainForm.ProduitTable.Filtered:=False;
+  Select_ALL;
+  sImage1.Visible:= False;
+  NOT_FilteredColor;
+  FilterBVLivBtn.ImageIndex:=49;
+end;
+
 procedure TProduitsListF.sSpeedButton4Click(Sender: TObject);
 begin
 
@@ -744,6 +1123,58 @@ begin
 
 //FSplashPrinting.Position:= poScreenCenter;
 //FSplashPrinting.ShowModal;
+end;
+
+procedure TProduitsListF.ClearTVAFilterPMenuClick(Sender: TObject);
+begin
+//  ClearValideFilterBVLivPMenuClick(Sender);
+  TVAFilterLbl.Visible := False;
+  sImage1.Visible:= False;
+  FilterBVLivBtn.ImageIndex:=49;
+  NOT_FilteredColor;
+  Select_ALL;
+end;
+
+procedure TProduitsListF.T2Click(Sender: TObject);
+begin
+ClearValideFilterBVLivPMenuClick(Sender);
+ClearRegleFilterBVLivPMenuClick(Sender);
+ClearMPFilterBVLivPMenuClick(Sender);
+
+ClearValideFilterBVLivPMenu.Checked:= True;
+ClearRegleFilterBVLivPMenu.Checked:= True;
+ClearMPFilterBVLivPMenu.Checked:= True;
+
+  TVAFilterLbl.Caption:='0';
+  TVAFilterLbl.Visible := True;
+  sImage1.ImageIndex:= 17;
+  sImage1.Visible:= True;
+  FilterBVLivBtn.ImageIndex:=50;
+  FilteredColor;
+  Select_0_TVA;
+  ClearFilterBVLivPMenu.Checked:= False;
+  
+end;
+
+procedure TProduitsListF.ValideFilterBVLivPMenuClick(Sender: TObject);
+begin
+ClearRegleFilterBVLivPMenuClick(Sender);
+ClearMPFilterBVLivPMenuClick(Sender);
+ClearTVAFilterPMenuClick(Sender);
+
+ClearRegleFilterBVLivPMenu.Checked:= True;
+ClearMPFilterBVLivPMenu.Checked:= True;
+ClearTVAFilterPMenu.Checked:= True;
+
+ FilterBVLivBtn.ImageIndex:=50;
+ MainForm.ProduitTable.Filtered:= False;
+ Select_ALL;
+ Select_StoCK_Dispo;
+ sImage1.ImageIndex:=11;
+ sImage1.Visible:= True;
+ FilteredColor;
+ ClearFilterBVLivPMenu.Checked:= False;
+
 end;
 
 end.

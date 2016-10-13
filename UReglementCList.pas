@@ -9,7 +9,7 @@ uses
   DBGridEhToolCtrls, DynVarsEh, Data.DB, EhLibVCL, GridsEh, DBAxisGridsEh,
   DBGridEh, Vcl.StdCtrls, Vcl.ComCtrls, Vcl.WinXCtrls, Vcl.Buttons,
   sSpeedButton, AdvToolBtn, Vcl.ExtCtrls, frxExportPDF, frxClass, frxExportXLS,
-  frxDBSet;
+  frxDBSet, acImage, Vcl.Menus;
 
 type
   TReglementCListF = class(TForm)
@@ -23,11 +23,6 @@ type
     sSpeedButton3: TsSpeedButton;
     Label1: TLabel;
     Label2: TLabel;
-    ArrowsPnl: TPanel;
-    LastBARecbtn: TsSpeedButton;
-    NextBARecbtn: TsSpeedButton;
-    PreviosBARecbtn: TsSpeedButton;
-    FisrtBARecbtn: TsSpeedButton;
     LineP: TPanel;
     Panel1: TPanel;
     S01: TPanel;
@@ -46,6 +41,29 @@ type
     frxRegCListDB: TfrxDBDataset;
     frxXLSExport1: TfrxXLSExport;
     frxPDFExport1: TfrxPDFExport;
+    FisrtBARecbtn: TsSpeedButton;
+    PreviosBARecbtn: TsSpeedButton;
+    NextBARecbtn: TsSpeedButton;
+    LastBARecbtn: TsSpeedButton;
+    FilterBVLivBtn: TAdvToolButton;
+    sImage2: TsImage;
+    sImage1: TsImage;
+    FilterBVLivPMenu: TPopupMenu;
+    F1: TMenuItem;
+    ValideFilterBVLivPMenu: TMenuItem;
+    NotValideFilterBVLivPMenu: TMenuItem;
+    N2: TMenuItem;
+    ClearValideFilterBVLivPMenu: TMenuItem;
+    F2: TMenuItem;
+    EspeceMPFilterBVLivPMenu: TMenuItem;
+    ChequeMPFilterBVLivPMenu: TMenuItem;
+    ATermeMPFilterBVLivPMenu: TMenuItem;
+    VirmentMPFilterBVLivPMenu: TMenuItem;
+    N3: TMenuItem;
+    ClearMPFilterBVLivPMenu: TMenuItem;
+    N5: TMenuItem;
+    ClearFilterBVLivPMenu: TMenuItem;
+    V1: TMenuItem;
     procedure AddBARecBtnClick(Sender: TObject);
     procedure ResearchRegCEdtChange(Sender: TObject);
     procedure DateStartRegCDChange(Sender: TObject);
@@ -64,8 +82,28 @@ type
     procedure BVLivListDBGridEhKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure BVLivListDBGridEhKeyPress(Sender: TObject; var Key: Char);
+    procedure ValideFilterBVLivPMenuClick(Sender: TObject);
+    procedure NotValideFilterBVLivPMenuClick(Sender: TObject);
+    procedure V1Click(Sender: TObject);
+    procedure ClearValideFilterBVLivPMenuClick(Sender: TObject);
+    procedure EspeceMPFilterBVLivPMenuClick(Sender: TObject);
+    procedure ChequeMPFilterBVLivPMenuClick(Sender: TObject);
+    procedure ATermeMPFilterBVLivPMenuClick(Sender: TObject);
+    procedure VirmentMPFilterBVLivPMenuClick(Sender: TObject);
+    procedure ClearMPFilterBVLivPMenuClick(Sender: TObject);
+    procedure ClearFilterBVLivPMenuClick(Sender: TObject);
   private
     procedure GettingData;
+    procedure FilteredColor;
+    procedure NOT_FilteredColor;
+    procedure Select_ALL;
+    procedure Select_MP_ATerme;
+    procedure Select_BL;
+    procedure Select_MP_Cheque;
+    procedure Select_CTR;
+    procedure Select_MP_Escpace;
+    procedure Select_FacV;
+    procedure Select_MP_Virment;
     { Private declarations }
   public
     { Public declarations }
@@ -80,6 +118,112 @@ uses Winapi.MMSystem,Threading,
   UReglementCGestion, UMainF, USplashAddUnite, USplash;
 
 {$R *.dfm}
+
+
+
+//-------------Filtring procedures-----------------//
+
+procedure TReglementCListF.Select_ALL;
+begin
+MainForm.RegclientTable.DisableControls;
+MainForm.RegclientTable.Active:= False;
+MainForm.RegclientTable.SQL.clear;
+mainform.RegclientTable.sql.Text:='SELECT * FROM regclient WHERE date_rc BETWEEN '''+(DateToStr(DateStartRegCD.Date))+ ''' AND ''' +(DateToStr(DateEndRegCD.Date))+'''';
+MainForm.RegclientTable.Active:= True;
+MainForm.RegclientTable.EnableControls;
+end;
+
+
+procedure TReglementCListF.Select_BL;
+begin
+MainForm.RegclientTable.DisableControls;
+MainForm.RegclientTable.Active:= False;
+MainForm.RegclientTable.SQL.clear;
+mainform.RegclientTable.sql.Text:='SELECT * FROM regclient WHERE code_bvliv <> ''0'' AND date_rc BETWEEN '''+(DateToStr(DateStartRegCD.Date))+ ''' AND ''' +(DateToStr(DateEndRegCD.Date))+'''';
+MainForm.RegclientTable.Active:= True;
+MainForm.RegclientTable.EnableControls;
+end;
+
+
+procedure TReglementCListF.Select_CTR;
+begin
+MainForm.RegclientTable.DisableControls;
+MainForm.RegclientTable.Active:= False;
+MainForm.RegclientTable.SQL.clear;
+mainform.RegclientTable.sql.Text:='SELECT * FROM regclient WHERE code_bvctr <> ''0'' AND date_rc BETWEEN '''+(DateToStr(DateStartRegCD.Date))+ ''' AND ''' +(DateToStr(DateEndRegCD.Date))+'''';
+MainForm.RegclientTable.Active:= True;
+MainForm.RegclientTable.EnableControls;
+end;
+
+
+
+procedure TReglementCListF.Select_FacV;
+begin
+MainForm.RegclientTable.DisableControls;
+MainForm.RegclientTable.Active:= False;
+MainForm.RegclientTable.SQL.clear;
+mainform.RegclientTable.sql.Text:='SELECT * FROM regclient WHERE code_bvfac <> ''0'' AND date_rc BETWEEN '''+(DateToStr(DateStartRegCD.Date))+ ''' AND ''' +(DateToStr(DateEndRegCD.Date))+'''';
+MainForm.RegclientTable.Active:= True;
+MainForm.RegclientTable.EnableControls;
+end;
+
+
+procedure TReglementCListF.Select_MP_Escpace;
+begin
+MainForm.RegclientTable.DisableControls;
+MainForm.RegclientTable.Active:= False;
+MainForm.RegclientTable.SQL.clear;
+mainform.RegclientTable.sql.Text:='SELECT * FROM regclient WHERE code_mdpai = 1 AND date_rc BETWEEN '''+(DateToStr(DateStartRegCD.Date))+ ''' AND ''' +(DateToStr(DateEndRegCD.Date))+'''';
+MainForm.RegclientTable.Active:= True;
+MainForm.RegclientTable.EnableControls;
+end;
+
+procedure TReglementCListF.Select_MP_Cheque;
+begin
+MainForm.RegclientTable.DisableControls;
+MainForm.RegclientTable.Active:= False;
+MainForm.RegclientTable.SQL.clear;
+mainform.RegclientTable.sql.Text:='SELECT * FROM regclient WHERE code_mdpai = 2 AND date_rc BETWEEN '''+(DateToStr(DateStartRegCD.Date))+ ''' AND ''' +(DateToStr(DateEndRegCD.Date))+'''';
+MainForm.RegclientTable.Active:= True;
+MainForm.RegclientTable.EnableControls;
+end;
+
+procedure TReglementCListF.Select_MP_ATerme;
+begin
+MainForm.RegclientTable.DisableControls;
+MainForm.RegclientTable.Active:= False;
+MainForm.RegclientTable.SQL.clear;
+mainform.RegclientTable.sql.Text:='SELECT * FROM regclient WHERE code_mdpai = 3 AND date_rc BETWEEN '''+(DateToStr(DateStartRegCD.Date))+ ''' AND ''' +(DateToStr(DateEndRegCD.Date))+'''';
+MainForm.RegclientTable.Active:= True;
+MainForm.RegclientTable.EnableControls;
+end;
+
+procedure TReglementCListF.Select_MP_Virment;
+begin
+MainForm.RegclientTable.DisableControls;
+MainForm.RegclientTable.Active:= False;
+MainForm.RegclientTable.SQL.clear;
+mainform.RegclientTable.sql.Text:='SELECT * FROM regclient WHERE code_mdpai = 4 AND date_rc BETWEEN '''+(DateToStr(DateStartRegCD.Date))+ ''' AND ''' +(DateToStr(DateEndRegCD.Date))+'''';
+MainForm.RegclientTable.Active:= True;
+MainForm.RegclientTable.EnableControls;
+end;
+
+
+
+procedure TReglementCListF.FilteredColor;
+begin
+ FilterBVLivBtn.Color:= $0077D90E; 
+ FilterBVLivBtn.ColorHot:=  $0080FF00;
+ FilterBVLivBtn.BorderHotColor:= $00EFE9E8;
+end;
+
+procedure TReglementCListF.NOT_FilteredColor;
+begin
+ FilterBVLivBtn.Color:= $00EFE9E8;
+ FilterBVLivBtn.ColorHot:= $00EFE9E8; 
+ FilterBVLivBtn.BorderHotColor:= $004735F9;
+end;
+
 
 procedure TReglementCListF.AddBARecBtnClick(Sender: TObject);
   begin
@@ -155,6 +299,20 @@ begin
      end;
 end;
 
+procedure TReglementCListF.ATermeMPFilterBVLivPMenuClick(Sender: TObject);
+begin
+  ClearValideFilterBVLivPMenuClick(Sender);
+
+ClearValideFilterBVLivPMenu.Checked:= True;
+  
+  sImage1.ImageIndex:=7;
+  sImage1.Visible:= True;
+  FilterBVLivBtn.ImageIndex:=50;
+  FilteredColor;
+  Select_MP_ATerme;
+  ClearFilterBVLivPMenu.Checked:= False;
+end;
+
 procedure TReglementCListF.BVLivListDBGridEhDblClick(Sender: TObject);
 begin
 //------ use this code to make the clock just on the grid not the title -----/
@@ -190,6 +348,53 @@ begin
   end else Exit;
 end;
 
+procedure TReglementCListF.ChequeMPFilterBVLivPMenuClick(Sender: TObject);
+begin
+  ClearValideFilterBVLivPMenuClick(Sender);
+
+ClearValideFilterBVLivPMenu.Checked:= True;
+  
+  sImage1.ImageIndex:=7;
+  sImage1.Visible:= True;
+  FilterBVLivBtn.ImageIndex:=50;
+  FilteredColor;
+  Select_MP_Cheque;
+  ClearFilterBVLivPMenu.Checked:= False;
+end;
+
+procedure TReglementCListF.ClearFilterBVLivPMenuClick(Sender: TObject);
+begin
+  MainForm.ProduitTable.Filtered:=False;
+  Select_ALL;
+  sImage1.Visible:= False;
+  sImage2.Visible:= False;
+  NOT_FilteredColor;
+  FilterBVLivBtn.ImageIndex:=49;
+  ClearValideFilterBVLivPMenu.Checked := True;
+  ClearMPFilterBVLivPMenu.Checked := True;
+end;
+
+procedure TReglementCListF.ClearMPFilterBVLivPMenuClick(Sender: TObject);
+begin
+//  ClearValideFilterBVLivPMenuClick(Sender);
+  sImage1.Visible:= False;
+  FilterBVLivBtn.ImageIndex:=49;
+  NOT_FilteredColor;
+  Select_ALL;
+  ClearFilterBVLivPMenu.Checked:= True;
+end;
+
+procedure TReglementCListF.ClearValideFilterBVLivPMenuClick(Sender: TObject);
+begin
+//  ClearValideFilterBVLivPMenuClick(Sender);
+  sImage1.Visible:= False;
+  sImage2.Visible:= False;
+  FilterBVLivBtn.ImageIndex:=49;
+  NOT_FilteredColor;
+  Select_ALL;
+  ClearFilterBVLivPMenu.Checked:= True;
+end;
+
 procedure TReglementCListF.DateStartRegCDChange(Sender: TObject);
 begin
 MainForm.RegclientTable.DisableControls;
@@ -221,6 +426,22 @@ end;
 procedure TReglementCListF.NextBARecbtnClick(Sender: TObject);
 begin
  MainForm.RegclientTable.Next;
+end;
+
+procedure TReglementCListF.NotValideFilterBVLivPMenuClick(Sender: TObject);
+begin
+ClearMPFilterBVLivPMenuClick(Sender);
+
+ClearMPFilterBVLivPMenu.Checked:= True;
+
+  sImage1.ImageIndex:=21;
+  sImage1.Visible:= True;
+  sImage2.ImageIndex:=15;
+  sImage2.Visible:= True;  
+  FilterBVLivBtn.ImageIndex:=50;
+  FilteredColor;
+  Select_FacV;
+  ClearFilterBVLivPMenu.Checked:= False;
 end;
 
 procedure TReglementCListF.LastBARecbtnClick(Sender: TObject);
@@ -386,6 +607,20 @@ if MainForm.RegclientTable.FieldValues['bon_or_no_rf'] = 2 then
 
 end;
 
+procedure TReglementCListF.EspeceMPFilterBVLivPMenuClick(Sender: TObject);
+begin
+  ClearValideFilterBVLivPMenuClick(Sender);
+                                             
+ClearValideFilterBVLivPMenu.Checked:= True;
+  
+  sImage1.ImageIndex:=5;
+  sImage1.Visible:= True;
+  FilterBVLivBtn.ImageIndex:=50;
+  FilteredColor;
+  Select_MP_Escpace;
+  ClearFilterBVLivPMenu.Checked:= False;
+end;
+
 procedure TReglementCListF.DeleteBARecBtnClick(Sender: TObject);
 begin
  if NOT (MainForm.RegclientTable.IsEmpty) then
@@ -496,6 +731,52 @@ RegCListfrxRprt.Export(frxPDFExport1);
 
 
 MainForm.RegclientTable.EnableControls;
+end;
+
+procedure TReglementCListF.V1Click(Sender: TObject);
+begin
+ClearMPFilterBVLivPMenuClick(Sender);
+
+ClearMPFilterBVLivPMenu.Checked:= True;
+
+  sImage1.ImageIndex:=22;
+  sImage1.Visible:= True;
+  sImage2.ImageIndex:=15;
+  sImage2.Visible:= True;  
+  FilterBVLivBtn.ImageIndex:=50;
+  FilteredColor;
+  Select_CTR;
+  ClearFilterBVLivPMenu.Checked:= False;
+end;
+
+procedure TReglementCListF.ValideFilterBVLivPMenuClick(Sender: TObject);
+begin
+ClearMPFilterBVLivPMenuClick(Sender);
+
+ClearMPFilterBVLivPMenu.Checked:= True;
+
+  sImage1.ImageIndex:=20;
+  sImage1.Visible:= True;
+  sImage2.ImageIndex:=15;
+  sImage2.Visible:= True;
+  FilterBVLivBtn.ImageIndex:=50;
+  FilteredColor;
+  Select_BL;
+  ClearFilterBVLivPMenu.Checked:= False;
+end;
+
+procedure TReglementCListF.VirmentMPFilterBVLivPMenuClick(Sender: TObject);
+begin
+  ClearValideFilterBVLivPMenuClick(Sender);
+
+ClearValideFilterBVLivPMenu.Checked:= True;
+  
+  sImage1.ImageIndex:=7;
+  sImage1.Visible:= True;
+  FilterBVLivBtn.ImageIndex:=50;
+  FilteredColor;
+  Select_MP_Virment;
+  ClearFilterBVLivPMenu.Checked:= False;
 end;
 
 procedure TReglementCListF.FormClose(Sender: TObject; var Action: TCloseAction);

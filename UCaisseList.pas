@@ -8,34 +8,14 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, DBGridEhGrouping, ToolCtrlsEh,
   DBGridEhToolCtrls, DynVarsEh, Data.DB, Vcl.StdCtrls, Vcl.ComCtrls,
   Vcl.WinXCtrls, Vcl.Buttons, sSpeedButton, Vcl.ExtCtrls, EhLibVCL, GridsEh,
-  DBAxisGridsEh, DBGridEh, frxExportPDF, frxClass, frxExportXLS, frxDBSet;
+  DBAxisGridsEh, DBGridEh, frxExportPDF, frxClass, frxExportXLS, frxDBSet,
+  AdvToolBtn, acImage, Vcl.Menus;
 
 type
   TCaisseListF = class(TForm)
     CaisseListDBGridEh: TDBGridEh;
-    TopP: TPanel;
-    PeriodCaiseeListLbl: TLabel;
-    sSpeedButton1: TsSpeedButton;
-    sSpeedButton2: TsSpeedButton;
-    sSpeedButton3: TsSpeedButton;
-    Label1: TLabel;
-    Label2: TLabel;
-    ArrowsPnl: TPanel;
-    LastCaiseebtn: TsSpeedButton;
-    NextCaiseebtn: TsSpeedButton;
-    PreviosCaiseebtn: TsSpeedButton;
-    FisrtCaiseebtn: TsSpeedButton;
-    LineP: TPanel;
-    Panel1: TPanel;
-    S01: TPanel;
-    Panel2: TPanel;
-    DateEndCaisseListD: TDateTimePicker;
-    DateStartCaisseListD: TDateTimePicker;
     Panel3: TPanel;
     CaisseListDataS: TDataSource;
-    DaysCaisseListCbx: TComboBox;
-    CaisseListCbx: TComboBox;
-    Label3: TLabel;
     Panel4: TPanel;
     Shape1: TShape;
     SoldIniCaisseListLbl: TLabel;
@@ -50,6 +30,61 @@ type
     frxCaisseListDB: TfrxDBDataset;
     frxXLSExport1: TfrxXLSExport;
     frxPDFExport1: TfrxPDFExport;
+    TopP: TPanel;
+    PeriodCaiseeListLbl: TLabel;
+    sSpeedButton1: TsSpeedButton;
+    sSpeedButton2: TsSpeedButton;
+    sSpeedButton3: TsSpeedButton;
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    NextCaiseebtn: TsSpeedButton;
+    PreviosCaiseebtn: TsSpeedButton;
+    FisrtCaiseebtn: TsSpeedButton;
+    LastCaiseebtn: TsSpeedButton;
+    FilterBVLivBtn: TAdvToolButton;
+    LineP: TPanel;
+    Panel1: TPanel;
+    S01: TPanel;
+    Panel2: TPanel;
+    DateEndCaisseListD: TDateTimePicker;
+    DateStartCaisseListD: TDateTimePicker;
+    DaysCaisseListCbx: TComboBox;
+    CaisseListCbx: TComboBox;
+    sImage2: TsImage;
+    sImage1: TsImage;
+    FilterBVLivPMenu: TPopupMenu;
+    F1: TMenuItem;
+    ValideFilterBVLivPMenu: TMenuItem;
+    NotValideFilterBVLivPMenu: TMenuItem;
+    N2: TMenuItem;
+    ClearValideFilterBVLivPMenu: TMenuItem;
+    F3: TMenuItem;
+    RegleFilterBVLivPMenu: TMenuItem;
+    NoTRegleFilterBVLivPMenu: TMenuItem;
+    N1: TMenuItem;
+    ClearRegleFilterBVLivPMenu: TMenuItem;
+    F2: TMenuItem;
+    EspeceMPFilterBVLivPMenu: TMenuItem;
+    ChequeMPFilterBVLivPMenu: TMenuItem;
+    N3: TMenuItem;
+    ClearMPFilterBVLivPMenu: TMenuItem;
+    FilterparlePrixDeVente1: TMenuItem;
+    T2: TMenuItem;
+    N0TVA1: TMenuItem;
+    N4: TMenuItem;
+    ClearTVAFilterPMenu: TMenuItem;
+    N5: TMenuItem;
+    ClearFilterBVLivPMenu: TMenuItem;
+    FilterparlesFactures1: TMenuItem;
+    BondeLivration1: TMenuItem;
+    BondeReception1: TMenuItem;
+    ClearBRFilterPMenu: TMenuItem;
+    N6: TMenuItem;
+    V1: TMenuItem;
+    Panel5: TPanel;
+    Panel6: TPanel;
+    Panel7: TPanel;
     procedure CaisseListCbxDropDown(Sender: TObject);
     procedure CaisseListCbxChange(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -62,8 +97,44 @@ type
     procedure CaisseListDBGridEhDrawColumnCell(Sender: TObject;
       const Rect: TRect; DataCol: Integer; Column: TColumnEh;
       State: TGridDrawState);
+    procedure FisrtCaiseebtnClick(Sender: TObject);
+    procedure PreviosCaiseebtnClick(Sender: TObject);
+    procedure NextCaiseebtnClick(Sender: TObject);
+    procedure LastCaiseebtnClick(Sender: TObject);
+    procedure ValideFilterBVLivPMenuClick(Sender: TObject);
+    procedure NotValideFilterBVLivPMenuClick(Sender: TObject);
+    procedure ClearValideFilterBVLivPMenuClick(Sender: TObject);
+    procedure RegleFilterBVLivPMenuClick(Sender: TObject);
+    procedure NoTRegleFilterBVLivPMenuClick(Sender: TObject);
+    procedure ClearRegleFilterBVLivPMenuClick(Sender: TObject);
+    procedure ChequeMPFilterBVLivPMenuClick(Sender: TObject);
+    procedure EspeceMPFilterBVLivPMenuClick(Sender: TObject);
+    procedure ClearMPFilterBVLivPMenuClick(Sender: TObject);
+    procedure BondeLivration1Click(Sender: TObject);
+    procedure BondeReception1Click(Sender: TObject);
+    procedure V1Click(Sender: TObject);
+    procedure ClearBRFilterPMenuClick(Sender: TObject);
+    procedure T2Click(Sender: TObject);
+    procedure N0TVA1Click(Sender: TObject);
+    procedure ClearTVAFilterPMenuClick(Sender: TObject);
+    procedure ClearFilterBVLivPMenuClick(Sender: TObject);
   private
     procedure GettingData;
+    procedure FilteredColor;
+    procedure NOT_FilteredColor;
+    procedure Select_ALL;
+    procedure Select_BL;
+    procedure Select_BR;
+    procedure Select_CTR;
+    procedure Select_Deca;
+    procedure Select_Enca;
+    procedure Select_FacA;
+    procedure Select_FacV;
+    procedure Select_MP_ATerme;
+    procedure Select_MP_Escpace;
+    procedure Select_RegC;
+    procedure Select_RegF;
+    procedure CearTVAFilterPMenuClick(Sender: TObject);
     { Private declarations }
   public
     { Public declarations }
@@ -78,6 +149,166 @@ uses
   UMainF;
 
 {$R *.dfm}
+
+
+
+
+//-------------Filtring procedures-----------------//
+
+procedure TCaisseListF.Select_ALL;
+begin
+MainForm.Opt_cas_bnk_CaisseTable.DisableControls;
+MainForm.Opt_cas_bnk_CaisseTable.Active:= False;
+MainForm.Opt_cas_bnk_CaisseTable.SQL.clear;
+mainform.Opt_cas_bnk_CaisseTable.sql.Text:='SELECT * FROM opt_cas_bnk WHERE nature_ocb = false ';
+MainForm.Opt_cas_bnk_CaisseTable.Active:= True;
+MainForm.Opt_cas_bnk_CaisseTable.EnableControls;
+end;
+
+
+procedure TCaisseListF.Select_Deca;
+begin
+MainForm.Opt_cas_bnk_CaisseTable.DisableControls;
+MainForm.Opt_cas_bnk_CaisseTable.Active:= False;
+MainForm.Opt_cas_bnk_CaisseTable.SQL.clear;
+mainform.Opt_cas_bnk_CaisseTable.sql.Text:='SELECT * FROM opt_cas_bnk WHERE nature_ocb = false AND decaiss_ocb <> ''0'' ';
+MainForm.Opt_cas_bnk_CaisseTable.Active:= True;
+MainForm.Opt_cas_bnk_CaisseTable.EnableControls;
+end;
+
+
+procedure TCaisseListF.Select_Enca;
+begin
+MainForm.Opt_cas_bnk_CaisseTable.DisableControls;
+MainForm.Opt_cas_bnk_CaisseTable.Active:= False;
+MainForm.Opt_cas_bnk_CaisseTable.SQL.clear;
+mainform.Opt_cas_bnk_CaisseTable.sql.Text:='SELECT * FROM opt_cas_bnk WHERE nature_ocb = false AND encaiss_ocb <> ''0'' ';
+MainForm.Opt_cas_bnk_CaisseTable.Active:= True;
+MainForm.Opt_cas_bnk_CaisseTable.EnableControls;
+end;
+
+procedure TCaisseListF.Select_MP_Escpace;
+begin
+MainForm.Opt_cas_bnk_CaisseTable.DisableControls;
+MainForm.Opt_cas_bnk_CaisseTable.Active:= False;
+MainForm.Opt_cas_bnk_CaisseTable.SQL.clear;
+mainform.Opt_cas_bnk_CaisseTable.sql.Text:= 'SELECT * FROM opt_cas_bnk WHERE nature_ocb = false AND code_mdpai = 1 ';
+MainForm.Opt_cas_bnk_CaisseTable.Active:= True;
+MainForm.Opt_cas_bnk_CaisseTable.EnableControls;
+end;
+
+
+procedure TCaisseListF.Select_MP_ATerme;
+begin
+MainForm.Opt_cas_bnk_CaisseTable.DisableControls;
+MainForm.Opt_cas_bnk_CaisseTable.Active:= False;
+MainForm.Opt_cas_bnk_CaisseTable.SQL.clear;
+mainform.Opt_cas_bnk_CaisseTable.sql.Text:=  'SELECT * FROM opt_cas_bnk WHERE nature_ocb = false AND code_mdpai = 3 ';
+MainForm.Opt_cas_bnk_CaisseTable.Active:= True;
+MainForm.Opt_cas_bnk_CaisseTable.EnableControls;
+end;
+
+
+
+procedure TCaisseListF.Select_BL;
+begin
+MainForm.Opt_cas_bnk_CaisseTable.DisableControls;
+MainForm.Opt_cas_bnk_CaisseTable.Active:= False;
+MainForm.Opt_cas_bnk_CaisseTable.SQL.clear;
+mainform.Opt_cas_bnk_CaisseTable.sql.Text:='SELECT * FROM opt_cas_bnk WHERE nature_ocb = false AND code_bvliv <> ''0'' ';
+MainForm.Opt_cas_bnk_CaisseTable.Active:= True;
+MainForm.Opt_cas_bnk_CaisseTable.EnableControls;
+end;
+
+
+procedure TCaisseListF.Select_CTR;
+begin
+MainForm.Opt_cas_bnk_CaisseTable.DisableControls;
+MainForm.Opt_cas_bnk_CaisseTable.Active:= False;
+MainForm.Opt_cas_bnk_CaisseTable.SQL.clear;
+mainform.Opt_cas_bnk_CaisseTable.sql.Text:='SELECT * FROM opt_cas_bnk WHERE nature_ocb = false AND code_bvctr <> ''0'' ';
+MainForm.Opt_cas_bnk_CaisseTable.Active:= True;
+MainForm.Opt_cas_bnk_CaisseTable.EnableControls;
+end;
+
+
+
+procedure TCaisseListF.Select_FacV;
+begin
+MainForm.Opt_cas_bnk_CaisseTable.DisableControls;
+MainForm.Opt_cas_bnk_CaisseTable.Active:= False;
+MainForm.Opt_cas_bnk_CaisseTable.SQL.clear;
+mainform.Opt_cas_bnk_CaisseTable.sql.Text:='SELECT * FROM opt_cas_bnk WHERE nature_ocb = false AND code_bvfac <> ''0'' ';
+MainForm.Opt_cas_bnk_CaisseTable.Active:= True;
+MainForm.Opt_cas_bnk_CaisseTable.EnableControls;
+end;
+
+
+
+procedure TCaisseListF.Select_BR;
+begin
+MainForm.Opt_cas_bnk_CaisseTable.DisableControls;
+MainForm.Opt_cas_bnk_CaisseTable.Active:= False;
+MainForm.Opt_cas_bnk_CaisseTable.SQL.clear;
+mainform.Opt_cas_bnk_CaisseTable.sql.Text:='SELECT * FROM opt_cas_bnk WHERE nature_ocb = false AND code_barec <> ''0'' ';
+MainForm.Opt_cas_bnk_CaisseTable.Active:= True;
+MainForm.Opt_cas_bnk_CaisseTable.EnableControls;
+end;
+
+
+procedure TCaisseListF.Select_FacA;              
+begin
+
+MainForm.Opt_cas_bnk_CaisseTable.DisableControls;
+MainForm.Opt_cas_bnk_CaisseTable.Active:= False;
+MainForm.Opt_cas_bnk_CaisseTable.SQL.clear;
+mainform.Opt_cas_bnk_CaisseTable.sql.Text:='SELECT * FROM opt_cas_bnk WHERE nature_ocb = false AND code_bafac <> ''0'' ';
+MainForm.Opt_cas_bnk_CaisseTable.Active:= True;
+MainForm.Opt_cas_bnk_CaisseTable.EnableControls;
+
+end;
+
+procedure TCaisseListF.Select_RegC;
+begin
+
+MainForm.Opt_cas_bnk_CaisseTable.DisableControls;
+MainForm.Opt_cas_bnk_CaisseTable.Active:= False;
+MainForm.Opt_cas_bnk_CaisseTable.SQL.clear;
+mainform.Opt_cas_bnk_CaisseTable.sql.Text:='SELECT * FROM opt_cas_bnk WHERE nature_ocb = false AND code_rc <> ''0'' ';
+MainForm.Opt_cas_bnk_CaisseTable.Active:= True;
+MainForm.Opt_cas_bnk_CaisseTable.EnableControls;
+
+end;
+
+procedure TCaisseListF.Select_RegF;
+begin
+
+MainForm.Opt_cas_bnk_CaisseTable.DisableControls;
+MainForm.Opt_cas_bnk_CaisseTable.Active:= False;
+MainForm.Opt_cas_bnk_CaisseTable.SQL.clear;
+mainform.Opt_cas_bnk_CaisseTable.sql.Text:='SELECT * FROM opt_cas_bnk WHERE nature_ocb = false AND code_rf <> ''0'' ';
+MainForm.Opt_cas_bnk_CaisseTable.Active:= True;
+MainForm.Opt_cas_bnk_CaisseTable.EnableControls;
+
+end;
+
+
+procedure TCaisseListF.FilteredColor;
+begin
+ FilterBVLivBtn.Color:= $0077D90E; 
+ FilterBVLivBtn.ColorHot:=  $0080FF00;
+ FilterBVLivBtn.BorderHotColor:= $00EFE9E8;
+end;
+
+procedure TCaisseListF.NOT_FilteredColor;
+begin
+ FilterBVLivBtn.Color:= $00EFE9E8;
+ FilterBVLivBtn.ColorHot:= $00EFE9E8; 
+ FilterBVLivBtn.BorderHotColor:= $004735F9;
+end;
+
+
+
 
 procedure TCaisseListF.CaisseListCbxDropDown(Sender: TObject);
 Var I: Integer;
@@ -128,6 +359,144 @@ end;
  CaisseListDBGridEh.Canvas.Font.Color:=$004735F9;
  CaisseListDBGridEh.DefaultDrawColumnCell(Rect, DataCol, Column, State);
  end;
+end;
+
+procedure TCaisseListF.ChequeMPFilterBVLivPMenuClick(Sender: TObject);
+begin
+  ClearValideFilterBVLivPMenuClick(Sender);
+  ClearTVAFilterPMenuClick(Sender);
+  ClearBRFilterPMenuClick(Sender);
+  ClearRegleFilterBVLivPMenuClick(Sender);  
+                                             
+ClearValideFilterBVLivPMenu.Checked:= True;
+ClearTVAFilterPMenu.Checked:= True;
+ClearBRFilterPMenu.Checked:= True;
+ClearRegleFilterBVLivPMenu.Checked:= True;
+  
+  sImage1.ImageIndex:=20;
+  sImage1.Visible:= True;
+  sImage2.ImageIndex:=13;
+  sImage2.Visible:= True;
+  FilterBVLivBtn.ImageIndex:=50;
+  FilteredColor;
+  Select_BR;
+  ClearFilterBVLivPMenu.Checked:= False;
+end;
+
+procedure TCaisseListF.ClearFilterBVLivPMenuClick(Sender: TObject);
+begin
+  MainForm.ProduitTable.Filtered:=False;
+  Select_ALL;
+  sImage1.Visible:= False;
+  sImage2.Visible:= False;
+  NOT_FilteredColor;
+  FilterBVLivBtn.ImageIndex:=49;
+  ClearValideFilterBVLivPMenu.Checked := True;
+  ClearRegleFilterBVLivPMenu.Checked := True;
+  ClearMPFilterBVLivPMenu.Checked := True;
+  ClearTVAFilterPMenu.Checked := True;
+end;
+
+procedure TCaisseListF.ClearMPFilterBVLivPMenuClick(Sender: TObject);
+begin
+//  ClearValideFilterBVLivPMenuClick(Sender);
+  sImage1.Visible:= False;
+  sImage2.Visible:= False;
+  FilterBVLivBtn.ImageIndex:=49;
+  NOT_FilteredColor;
+  Select_ALL;
+end;
+
+
+procedure TCaisseListF.ClearRegleFilterBVLivPMenuClick(Sender: TObject);
+begin
+//  ClearValideFilterBVLivPMenuClick(Sender);
+  sImage1.Visible:= False;
+  FilterBVLivBtn.ImageIndex:=49;
+  NOT_FilteredColor;
+  Select_ALL;
+  ClearRegleFilterBVLivPMenu.Checked:= True;
+end;
+
+
+procedure TCaisseListF.ClearTVAFilterPMenuClick(Sender: TObject);
+begin
+//  ClearValideFilterBVLivPMenuClick(Sender);
+  sImage1.Visible:= False;
+  sImage2.Visible:= False;
+  FilterBVLivBtn.ImageIndex:=49;
+  NOT_FilteredColor;
+  Select_ALL;
+end;
+
+procedure TCaisseListF.CearTVAFilterPMenuClick(Sender: TObject);
+begin
+
+end;
+
+procedure TCaisseListF.ClearValideFilterBVLivPMenuClick(Sender: TObject);
+begin
+  MainForm.Opt_cas_bnk_CaisseTable.Filtered:=False;
+  Select_ALL;
+  sImage1.Visible:= False;
+  NOT_FilteredColor;
+  FilterBVLivBtn.ImageIndex:=49;
+end;
+
+procedure TCaisseListF.BondeLivration1Click(Sender: TObject);
+begin
+ClearValideFilterBVLivPMenuClick(Sender);
+ClearRegleFilterBVLivPMenuClick(Sender);
+ClearTVAFilterPMenuClick(Sender);
+ClearMPFilterBVLivPMenuClick(Sender);
+
+ClearValideFilterBVLivPMenu.Checked:= True;
+ClearRegleFilterBVLivPMenu.Checked:= True;
+ClearTVAFilterPMenu.Checked:= True;
+ClearMPFilterBVLivPMenu.Checked:= True;
+
+
+
+  sImage1.ImageIndex:=20;
+  sImage1.Visible:= True;
+  sImage2.ImageIndex:=15;
+  sImage2.Visible:= True;
+  FilterBVLivBtn.ImageIndex:=50;
+  FilteredColor;
+  Select_BL;
+  ClearFilterBVLivPMenu.Checked:= False;
+end;
+
+procedure TCaisseListF.BondeReception1Click(Sender: TObject);
+begin
+ClearValideFilterBVLivPMenuClick(Sender);
+ClearRegleFilterBVLivPMenuClick(Sender);
+ClearTVAFilterPMenuClick(Sender);
+ClearMPFilterBVLivPMenuClick(Sender);
+
+ClearValideFilterBVLivPMenu.Checked:= True;
+ClearRegleFilterBVLivPMenu.Checked:= True;
+ClearTVAFilterPMenu.Checked:= True;
+ClearMPFilterBVLivPMenu.Checked:= True;
+
+  sImage1.ImageIndex:=21;
+  sImage1.Visible:= True;
+  sImage2.ImageIndex:=15;
+  sImage2.Visible:= True;  
+  FilterBVLivBtn.ImageIndex:=50;
+  FilteredColor;
+  Select_FacV;
+  ClearFilterBVLivPMenu.Checked:= False;
+end;
+
+procedure TCaisseListF.ClearBRFilterPMenuClick(Sender: TObject);
+begin
+//  ClearValideFilterBVLivPMenuClick(Sender);
+  sImage1.Visible:= False;
+  sImage2.Visible:= False;
+  FilterBVLivBtn.ImageIndex:=49;
+  NOT_FilteredColor;
+  Select_ALL;
 end;
 
 procedure TCaisseListF.CaisseListCbxChange(Sender: TObject);
@@ -414,6 +783,28 @@ begin
 
 end;
 
+procedure TCaisseListF.EspeceMPFilterBVLivPMenuClick(Sender: TObject);
+begin
+  ClearValideFilterBVLivPMenuClick(Sender);
+  ClearTVAFilterPMenuClick(Sender);
+  ClearBRFilterPMenuClick(Sender);
+  ClearRegleFilterBVLivPMenuClick(Sender);
+
+ClearValideFilterBVLivPMenu.Checked:= True;
+ClearTVAFilterPMenu.Checked:= True;
+ClearBRFilterPMenu.Checked:= True;
+ClearRegleFilterBVLivPMenu.Checked:= True;
+  
+  sImage1.ImageIndex:=21;
+  sImage1.Visible:= True;
+  sImage2.ImageIndex:=13;
+  sImage2.Visible:= True;
+  FilterBVLivBtn.ImageIndex:=50;
+  FilteredColor;
+  Select_FacA;
+  ClearFilterBVLivPMenu.Checked:= False;
+end;
+
 procedure TCaisseListF.DateStartCaisseListDChange(Sender: TObject);
 
   begin
@@ -442,6 +833,105 @@ begin
     SoldeTotal:= CaisseListfrxRprt.FindObject('SoldeTotal') as TfrxMemoView;
   SoldeTotal.Text:= SoldTotalCaisseListLbl.Caption;
 
+end;
+
+procedure TCaisseListF.LastCaiseebtnClick(Sender: TObject);
+begin
+ MainForm.Opt_cas_bnk_CaisseTable.Last;
+end;
+
+procedure TCaisseListF.N0TVA1Click(Sender: TObject);
+begin
+ClearValideFilterBVLivPMenuClick(Sender);
+ClearRegleFilterBVLivPMenuClick(Sender);
+ClearBRFilterPMenuClick(Sender);
+ClearMPFilterBVLivPMenuClick(Sender);
+
+ClearValideFilterBVLivPMenu.Checked:= True;
+ClearRegleFilterBVLivPMenu.Checked:= True;
+ClearBRFilterPMenu.Checked:= True;
+ClearMPFilterBVLivPMenu.Checked:= True;
+
+  sImage1.ImageIndex:=25;
+  sImage1.Visible:= True;
+  sImage2.ImageIndex:=24;
+  sImage2.Visible:= True;
+  FilterBVLivBtn.ImageIndex:=50;
+  FilteredColor;
+  Select_RegF;
+  ClearFilterBVLivPMenu.Checked:= False;
+end;
+
+procedure TCaisseListF.NextCaiseebtnClick(Sender: TObject);
+begin
+ MainForm.Opt_cas_bnk_CaisseTable.Next;
+end;
+
+procedure TCaisseListF.NoTRegleFilterBVLivPMenuClick(Sender: TObject);
+begin
+  ClearValideFilterBVLivPMenuClick(Sender);
+  ClearMPFilterBVLivPMenuClick(Sender);
+  ClearTVAFilterPMenuClick(Sender);
+  ClearBRFilterPMenuClick(Sender);
+
+ClearValideFilterBVLivPMenu.Checked:= True;
+ClearMPFilterBVLivPMenu.Checked:= True;
+ClearTVAFilterPMenu.Checked:= True;
+ClearBRFilterPMenu.Checked := True;
+  
+  sImage1.ImageIndex:=7;
+  sImage1.Visible:= True;
+  FilterBVLivBtn.ImageIndex:=50;
+  FilteredColor;
+  Select_MP_ATerme;
+  ClearFilterBVLivPMenu.Checked:= False;
+end;
+
+procedure TCaisseListF.NotValideFilterBVLivPMenuClick(Sender: TObject);
+begin
+ClearRegleFilterBVLivPMenuClick(Sender);
+ClearMPFilterBVLivPMenuClick(Sender);
+ClearTVAFilterPMenuClick(Sender);
+ClearBRFilterPMenuClick(Sender);
+
+ClearRegleFilterBVLivPMenu.Checked:= True;
+ClearMPFilterBVLivPMenu.Checked:= True;
+ClearTVAFilterPMenu.Checked:= True;
+ClearBRFilterPMenu.Checked := True;
+
+  FilterBVLivBtn.ImageIndex:=50;
+  MainForm.ProduitTable.Filtered:= False;
+  Select_All;
+  Select_Enca;
+  sImage1.ImageIndex:=19;
+  sImage1.Visible:= True;
+  FilteredColor;
+  ClearFilterBVLivPMenu.Checked:= False;
+end;
+
+procedure TCaisseListF.PreviosCaiseebtnClick(Sender: TObject);
+begin
+ MainForm.Opt_cas_bnk_CaisseTable.Prior;
+end;
+
+procedure TCaisseListF.RegleFilterBVLivPMenuClick(Sender: TObject);
+begin
+  ClearValideFilterBVLivPMenuClick(Sender);
+  ClearMPFilterBVLivPMenuClick(Sender);
+  ClearTVAFilterPMenuClick(Sender);
+  ClearBRFilterPMenuClick(Sender);
+                                             
+ClearValideFilterBVLivPMenu.Checked:= True;
+ClearMPFilterBVLivPMenu.Checked:= True;
+ClearTVAFilterPMenu.Checked:= True;
+ClearBRFilterPMenu.Checked := True;
+  
+  sImage1.ImageIndex:=5;
+  sImage1.Visible:= True;
+  FilterBVLivBtn.ImageIndex:=50;
+  FilteredColor;
+  Select_MP_Escpace;
+  ClearFilterBVLivPMenu.Checked:= False;
 end;
 
 procedure TCaisseListF.sSpeedButton2Click(Sender: TObject);
@@ -483,6 +973,77 @@ CaisseListfrxRprt.Export(frxPDFExport1);
 
 
 MainForm.Opt_cas_bnk_CaisseTable.EnableControls;
+end;
+
+procedure TCaisseListF.T2Click(Sender: TObject);
+begin
+ClearValideFilterBVLivPMenuClick(Sender);
+ClearRegleFilterBVLivPMenuClick(Sender);
+ClearBRFilterPMenuClick(Sender);
+ClearMPFilterBVLivPMenuClick(Sender);
+
+ClearValideFilterBVLivPMenu.Checked:= True;
+ClearRegleFilterBVLivPMenu.Checked:= True;
+ClearBRFilterPMenu.Checked:= True;
+ClearMPFilterBVLivPMenu.Checked:= True;
+
+  sImage1.ImageIndex:=25;
+  sImage1.Visible:= True;
+  sImage2.ImageIndex:=23;
+  sImage2.Visible:= True;
+  FilterBVLivBtn.ImageIndex:=50;
+  FilteredColor;
+  Select_RegC;
+  ClearFilterBVLivPMenu.Checked:= False;
+end;
+
+procedure TCaisseListF.V1Click(Sender: TObject);
+begin
+ClearValideFilterBVLivPMenuClick(Sender);
+ClearRegleFilterBVLivPMenuClick(Sender);
+ClearTVAFilterPMenuClick(Sender);
+ClearMPFilterBVLivPMenuClick(Sender);
+
+ClearValideFilterBVLivPMenu.Checked:= True;
+ClearRegleFilterBVLivPMenu.Checked:= True;
+ClearTVAFilterPMenu.Checked:= True;
+ClearMPFilterBVLivPMenu.Checked:= True;
+
+  sImage1.ImageIndex:=22;
+  sImage1.Visible:= True;
+  sImage2.ImageIndex:=15;
+  sImage2.Visible:= True;  
+  FilterBVLivBtn.ImageIndex:=50;
+  FilteredColor;
+  Select_CTR;
+  ClearFilterBVLivPMenu.Checked:= False;
+end;
+
+procedure TCaisseListF.ValideFilterBVLivPMenuClick(Sender: TObject);
+begin
+ClearRegleFilterBVLivPMenuClick(Sender);
+ClearMPFilterBVLivPMenuClick(Sender);
+ClearTVAFilterPMenuClick(Sender);
+ClearBRFilterPMenuClick(Sender);
+
+ClearRegleFilterBVLivPMenu.Checked:= True;
+ClearMPFilterBVLivPMenu.Checked:= True;
+ClearTVAFilterPMenu.Checked:= True;
+ClearBRFilterPMenu.Checked:= True;
+
+ FilterBVLivBtn.ImageIndex:=50;
+ MainForm.ProduitTable.Filtered:= False;
+ Select_ALL;
+ Select_Deca;
+ sImage1.ImageIndex:=18;
+ sImage1.Visible:= True;
+ FilteredColor;
+ ClearFilterBVLivPMenu.Checked:= False;
+end;
+
+procedure TCaisseListF.FisrtCaiseebtnClick(Sender: TObject);
+begin
+ MainForm.Opt_cas_bnk_CaisseTable.First;
 end;
 
 procedure TCaisseListF.FormClose(Sender: TObject; var Action: TCloseAction);

@@ -30,11 +30,6 @@ type
     PassifFournisseursLbl: TLabel;
     Label5: TLabel;
     ActifFournisseursLbl: TLabel;
-    ArrowsPnl: TPanel;
-    LastClientbtn: TsSpeedButton;
-    NextClientbtn: TsSpeedButton;
-    PreviosClientbtn: TsSpeedButton;
-    FisrtFournisseursbtn: TsSpeedButton;
     LineP: TPanel;
     Panel1: TPanel;
     S01: TPanel;
@@ -51,6 +46,11 @@ type
     frxXLSExport1: TfrxXLSExport;
     frxFournisseurListDB: TfrxDBDataset;
     FourListfrxRprt: TfrxReport;
+    LastClientbtn: TsSpeedButton;
+    NextClientbtn: TsSpeedButton;
+    FisrtFournisseursbtn: TsSpeedButton;
+    PreviosClientbtn: TsSpeedButton;
+    Panel4: TPanel;
     procedure ResearchFournisseurEdtKeyPress(Sender: TObject; var Key: Char);
     procedure ResearchFournisseurEdtChange(Sender: TObject);
     procedure FisrtFournisseursbtnClick(Sender: TObject);
