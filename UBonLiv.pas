@@ -654,8 +654,8 @@ if NOT (MainForm.Bonv_livTable.IsEmpty) then
   end  else
      begin
        sndPlaySound('C:\Windows\Media\chord.wav', SND_NODEFAULT Or SND_ASYNC Or  SND_RING);
-       TTask.Run ( procedure
-       begin
+//       TTask.Run ( procedure
+//       begin
          FSplash := TFSplash.Create(nil);
          try
            FSplash.Left := MainForm.Width - FSplash.Width - 15 ;                   
@@ -670,7 +670,7 @@ if NOT (MainForm.Bonv_livTable.IsEmpty) then
          finally
            FSplash.free;
          end;
-       end);
+//       end);
      end;
 
  end;

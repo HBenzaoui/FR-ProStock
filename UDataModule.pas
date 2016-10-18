@@ -73,6 +73,9 @@ uses
 
 procedure TDataModuleF.DataModuleCreate(Sender: TObject);
 begin
+
+//if MainForm.sImage1.Tag = 0 then
+ begin
   GstockdcConnection02.DriverName := 'PG';
   GstockdcConnection02.Params.Values['Server'] :='localhost'; // your server name'';
 //  GstockdcConnection02.Params.Values['Database'] := 'GSTOCKDC';
@@ -100,6 +103,37 @@ begin
   ToatalVerMonthVCTR.Active:= True;
   ToatalVerMonthAREC.Active:= True;
   ToatalVerMonthAFAC.Active:= True;
+ end;
+// end else
+//     begin
+//         GstockdcConnection02.DriverName := 'PG';
+//        GstockdcConnection02.Params.Values['Server'] :='localhost'; // your server name'';
+//      //  GstockdcConnection02.Params.Values['Database'] := 'GSTOCKDC';
+//        GstockdcConnection02.Params.Values['user_name'] := 'postgres';    // adjust to suit
+//        GstockdcConnection02.Params.Values['password'] := ''; // ditto
+//        GstockdcConnection02.Params.Values['Port'] := '5432';
+//        GstockdcConnection02.Params.Values['CharacterSet'] := 'SQL_ASCII';
+//        GstockdcConnection02.LoginPrompt := False;
+//
+//
+//      // CreateTablesFDScript.ExecuteAll;
+//
+//       GstockdcConnection02.Params.Values['Database'] := 'GSTOCKDC2';
+//       GstockdcConnection02.Connected:= True;
+//
+//
+//        TopClient.Active:= True;
+//        TopFour.Active:= True;
+//        TopVerClient.Active:= True;
+//        TopVerFour.Active:= True;
+//        Top5produit.Active:= True;
+//        TotalProduit.Active:= True;
+//        ToatalVerMonthVLIV.Active:= True;
+//        ToatalVerMonthVFAC.Active:= True;
+//        ToatalVerMonthVCTR.Active:= True;
+//        ToatalVerMonthAREC.Active:= True;
+//        ToatalVerMonthAFAC.Active:= True;
+//     end;
 
 
 

@@ -1186,7 +1186,7 @@ object ReglementCListF: TReglementCListF
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 42576.399521435200000000
-    ReportOptions.LastChange = 42582.662739456020000000
+    ReportOptions.LastChange = 42663.582383182870000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       ''
@@ -1592,10 +1592,9 @@ object ReglementCListF: TReglementCListF
           Top = 0.779530000000000000
           Width = 196.913415120000000000
           Height = 18.897650000000000000
-          DataField = 'montver_rc'
           DataSet = frxRegCListDB
           DataSetName = 'frxRegCListDB'
-          DisplayFormat.FormatStr = '%2.2m'
+          DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1638,7 +1637,7 @@ object ReglementCListF: TReglementCListF
           Top = 0.377952760000000000
           Width = 196.913415120000000000
           Height = 26.456710000000000000
-          DisplayFormat.FormatStr = '%2.2m'
+          DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack

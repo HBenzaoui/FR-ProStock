@@ -550,7 +550,7 @@ object DashboardF: TDashboardF
         Left = 391
         Top = 99
         Width = 125
-        Height = 42
+        Height = 34
         Hint = 'Exact'
         Anchors = [akTop, akRight]
         AutoSize = False
@@ -560,11 +560,12 @@ object DashboardF: TDashboardF
         Font.Color = 4207405
         Font.Height = 16
         Font.Name = 'Roboto'
-        Font.Style = [fsBold]
+        Font.Style = []
         ParentColor = False
         ParentFont = False
         ParentShowHint = False
         ShowHint = True
+        WordWrap = True
         StyleElements = []
       end
       object Label14: TLabel
@@ -586,9 +587,9 @@ object DashboardF: TDashboardF
       end
       object TopMoneyClientDashBLbl: TLabel
         Left = 391
-        Top = 136
+        Top = 138
         Width = 125
-        Height = 40
+        Height = 35
         Anchors = [akTop, akRight]
         AutoSize = False
         Caption = '-------'
@@ -597,9 +598,10 @@ object DashboardF: TDashboardF
         Font.Color = 4207405
         Font.Height = 16
         Font.Name = 'Roboto'
-        Font.Style = [fsBold]
+        Font.Style = []
         ParentColor = False
         ParentFont = False
+        WordWrap = True
         StyleElements = []
       end
       object Label16: TLabel
@@ -686,11 +688,12 @@ object DashboardF: TDashboardF
         Font.Style = [fsBold]
         ParentColor = False
         ParentFont = False
+        WordWrap = True
         StyleElements = []
       end
       object TopMoneyFourDashBLbl: TLabel
         Left = 391
-        Top = 245
+        Top = 247
         Width = 125
         Height = 31
         Anchors = [akTop, akRight]
@@ -704,6 +707,7 @@ object DashboardF: TDashboardF
         Font.Style = [fsBold]
         ParentColor = False
         ParentFont = False
+        WordWrap = True
         StyleElements = []
       end
       object Label1: TLabel

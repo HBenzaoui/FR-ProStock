@@ -1118,7 +1118,7 @@ object ProduitsListF: TProduitsListF
       ShowCaption = False
     end
     object sSpeedButton8: TsSpeedButton
-      Left = 506
+      Left = 504
       Top = 26
       Width = 30
       Height = 30
@@ -2383,7 +2383,7 @@ object ProduitsListF: TProduitsListF
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 42576.399521435200000000
-    ReportOptions.LastChange = 42647.692617731480000000
+    ReportOptions.LastChange = 42663.583965324080000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       ''
@@ -2766,7 +2766,7 @@ object ProduitsListF: TProduitsListF
           Font.Style = []
           HAlign = haCenter
           Memo.UTF8W = (
-            '[frxProduitDB."qut_p"]')
+            '[frxProduitDB."QutDispo"]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -2776,7 +2776,6 @@ object ProduitsListF: TProduitsListF
           Width = 139.842519690000000000
           Height = 18.897650000000000000
           StretchMode = smActualHeight
-          DataField = 'prixvd_p'
           DataSet = frxProduitListDB
           DataSetName = 'frxProduitDB'
           DisplayFormat.FormatStr = '%2.2n'
@@ -2916,7 +2915,6 @@ object ProduitsListF: TProduitsListF
       'dateperiss_p=dateperiss_p'
       'alertdays_p=alertdays_p'
       'prixht_p=prixht_p'
-      'tva_p=tva_p'
       'prixvd_p=prixvd_p'
       'prixvr_p=prixvr_p'
       'prixvg_p=prixvg_p'
@@ -2939,7 +2937,9 @@ object ProduitsListF: TProduitsListF
       'qut_p=qut_p'
       'qutmax_p=qutmax_p'
       'qutmin_p=qutmin_p'
-      'qutini_p=qutini_p')
+      'qutini_p=qutini_p'
+      'QutDispo=QutDispo'
+      'tva_p=tva_p')
     DataSource = MainForm.ProduitListDataS
     BCDToCurrency = False
     Left = 240

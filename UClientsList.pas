@@ -56,6 +56,7 @@ type
     PreviosClientbtn: TsSpeedButton;
     NextClientbtn: TsSpeedButton;
     LastClientbtn: TsSpeedButton;
+    Panel5: TPanel;
     procedure AddClientsBtnClick(Sender: TObject);
     procedure EditClientsBtnClick(Sender: TObject);
     procedure ResearchClientsEdtChange(Sender: TObject);
@@ -187,11 +188,14 @@ begin
 end;
 
 procedure TClientListF.DeleteClientsBtnClick(Sender: TObject);
+Var CodeC :Integer;
 begin
  if NOT (MainForm.ClientTable.FieldByName('code_c').AsInteger = 1) then
  begin
   if not ClientsListDBGridEh.DataSource.DataSet.IsEmpty then
    begin
+      CodeC:= MainForm.ClientTable.FieldByName('code_c').AsInteger;
+    
       // ------ this code is to check if the produit are in bons if it is the user cant delte it ------------
       MainForm.SQLQuery.Active:= False;
       MainForm.SQLQuery.SQL.Clear;
@@ -296,6 +300,7 @@ begin
           NormalForms;
           sndPlaySound('C:\Windows\Media\speech off.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
 
+            MainForm.ClientTable.FindNearest([CodeC]);
       end
       else
 
@@ -306,8 +311,8 @@ begin
      end else
          begin
             sndPlaySound('C:\Windows\Media\chord.wav', SND_NODEFAULT Or SND_ASYNC Or  SND_RING);
-            TTask.Run ( procedure
-            begin
+//            TTask.Run ( procedure
+//            begin
              FSplash := TFSplash.Create(nil);
               try
                 FSplash.Left := MainForm.Width - FSplash.Width - 15 ;                   
@@ -322,7 +327,7 @@ begin
               finally
                 FSplash.free;
               end;
-            end);
+//            end);
             
          end;
    end;

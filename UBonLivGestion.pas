@@ -119,6 +119,7 @@ type
     frxBonLivDT: TfrxDBDataset;
     frxClientDB: TfrxDBDataset;
     BonLivTotalMargeLbl: TLabel;
+    sImage1: TsImage;
     procedure FormShow(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
@@ -300,6 +301,9 @@ begin
      BonLivGClientOLDCredit.Caption:= FloatToStrF(StrToFloat(StringReplace(BonLivGClientOLDCredit.Caption, #32, '', [rfReplaceAll])),ffNumber,14,2) ;
      BonLivGClientNEWCredit.Caption:= FloatToStrF(StrToFloat(StringReplace(BonLivGClientNEWCredit.Caption, #32, '', [rfReplaceAll])),ffNumber,14,2) ;
   end;
+
+
+  sImage1.ImageIndex:= MainForm.sImage1.ImageIndex;
 end;
 
 procedure TBonLivGestionF.FormClose(Sender: TObject; var Action: TCloseAction);

@@ -121,6 +121,28 @@ begin
   begin
   if NOT (MainForm.CompteTable.IsEmpty) then
      begin
+              // ------ this code is to check if the mode paiment is used in bons if it is the user cant delete it ------------
+          MainForm.SQLQuery.Active:= False;
+          MainForm.SQLQuery.SQL.Clear;
+          MainForm.SQLQuery.SQL.Text:=
+          'select * '
+         +  'from (   '
+         +   'select code_cmpt as code_cmpt from bona_fac '
+         +   'union all '
+         +   'select code_cmpt from bona_rec '
+         +   'union all '
+         +   'select code_cmpt from bonv_fac '
+         +   'union all '
+         +   'select code_cmpt from bonv_liv '
+         +   'union all '
+         +   'select code_cmpt from regclient '
+         +   'union all '
+         +   'select code_cmpt from regfournisseur '
+         +     ') a '
+         +     'where code_cmpt = '+IntToStr(MainForm.CompteTable.FieldByName('code_cmpt').AsInteger) ;
+
+      MainForm.SQLQuery.Active:= True;
+      
 
      MainForm.Opt_cas_bnk_CaisseTable.Active:= False;
      MainForm.Opt_cas_bnk_CaisseTable.SQL.clear;
@@ -128,12 +150,12 @@ begin
      'SELECT * FROM opt_cas_bnk where code_cmpt = '+ IntToStr(MainForm.CompteTable.FieldByName('code_cmpt').AsInteger) ;
      MainForm.Opt_cas_bnk_CaisseTable.Active:= True;
 
-    if  MainForm.Opt_cas_bnk_CaisseTable.IsEmpty then
+    if  (MainForm.Opt_cas_bnk_CaisseTable.IsEmpty) AND  (MainForm.SQLQuery.IsEmpty) then
     begin
       MainForm.CompteTable.Delete;
 
-        TTask.Run ( procedure
-        begin
+//        TTask.Run ( procedure
+//        begin
           FSplash := TFSplash.Create(CompteListF);
           try
             FSplash.Left := Screen.Width div 2 - (FSplash.Width div 2);
@@ -149,7 +171,7 @@ begin
             FSplash.free;
 
           end;
-          end);
+//          end);
       sndPlaySound('C:\Windows\Media\speech off.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
 
      MainForm.Opt_cas_bnk_CaisseTable.Active:= False;
@@ -164,8 +186,8 @@ begin
   end else
       begin
         sndPlaySound('C:\Windows\Media\chord.wav', SND_NODEFAULT Or SND_ASYNC Or  SND_RING);
-        TTask.Run ( procedure
-        begin
+//        TTask.Run ( procedure
+//        begin
          FSplash := TFSplash.Create(nil);
           try
             FSplash.Left := MainForm.Width - FSplash.Width - 15 ;                   
@@ -180,8 +202,10 @@ begin
           finally
             FSplash.free;
           end;
-        end);
+//        end);
       end;
+
+       MainForm.SQLQuery.Active:= False;
 end;
 
 procedure TCompteListF.CompteDBGridEhDblClick(Sender: TObject);

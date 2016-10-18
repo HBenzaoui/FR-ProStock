@@ -1268,15 +1268,15 @@ MonthsData;
       Add(  StrToInt(NFADashBLbl.Caption),  'FCA',  $0033BBFF ) ;       
     end;
 
-  TTask.Run ( procedure
-            begin
+//  TTask.Run ( procedure
+//            begin
              if NOT Assigned(DashboardF) then
               begin
               ChartAnimation1.Play;
               TeeAnimationTool1.Play;
               TeeAnimationTool2.play;
               end;
-            end);
+//            end);
 end;
 
 procedure TDashboardF.FormClose(Sender: TObject; var Action: TCloseAction);

@@ -51,6 +51,7 @@ type
     FisrtFournisseursbtn: TsSpeedButton;
     PreviosClientbtn: TsSpeedButton;
     Panel4: TPanel;
+    Panel5: TPanel;
     procedure ResearchFournisseurEdtKeyPress(Sender: TObject; var Key: Char);
     procedure ResearchFournisseurEdtChange(Sender: TObject);
     procedure FisrtFournisseursbtnClick(Sender: TObject);
@@ -158,12 +159,14 @@ begin
 end;
 
 procedure TFournisseurListF.DeleteFournisseursBtnClick(Sender: TObject);
+Var CodeF : integer;
 begin
 
 //-------------------------------------------------------------------------------------------------
 
  if not FournisseursListDBGridEh.DataSource.DataSet.IsEmpty then
    begin
+   CodeF:= MainForm.FournisseurTable.FieldByName('code_f').AsInteger ;
          // ------ this code is to check if the produit are in bons if it is the user cant delte it ------------
       MainForm.SQLQuery.Active:= False;
       MainForm.SQLQuery.SQL.Clear;
@@ -262,14 +265,17 @@ begin
       end;
         NormalForms;
         sndPlaySound('C:\Windows\Media\speech off.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+
+       MainForm.FournisseurTable.FindNearest([CodeF]);
+        
     end     else
      NormalForms
     end;
      end else
          begin
             sndPlaySound('C:\Windows\Media\chord.wav', SND_NODEFAULT Or SND_ASYNC Or  SND_RING);
-            TTask.Run ( procedure
-            begin
+//            TTask.Run ( procedure
+//            begin
              FSplash := TFSplash.Create(nil);
               try
                 FSplash.Left := MainForm.Width - FSplash.Width - 15 ;                   
@@ -284,7 +290,7 @@ begin
               finally
                 FSplash.free;
               end;
-            end);
+//            end);
          end;
  end;
 end;

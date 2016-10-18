@@ -186,6 +186,10 @@ begin
          +   'select code_mdpai from bonv_fac '
          +   'union all '
          +   'select code_mdpai from bonv_liv '
+         +   'union all '
+         +   'select code_mdpai from regclient '
+         +   'union all '
+         +   'select code_mdpai from regfournisseur '
          +     ') a '
          +     'where code_mdpai = '+IntToStr(MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger) ;
 
@@ -195,9 +199,9 @@ begin
         begin
           MainForm.Mode_paiementTable.Delete;
 
-          TTask.Run ( procedure
-          begin
-            FSplash := TFSplash.Create(ModePaieListF);
+//          TTask.Run ( procedure
+//          begin
+            FSplash := TFSplash.Create(ModePaieListF);
             try
               FSplash.Left := Screen.Width div 2 - (FSplash.Width div 2);
               FSplash.Top := 0;
@@ -211,14 +215,14 @@ begin
             finally
               FSplash.free;
             end;
-            end);
+//            end);
 
         sndPlaySound('C:\Windows\Media\speech off.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
         end else
             begin
                sndPlaySound('C:\Windows\Media\chord.wav', SND_NODEFAULT Or SND_ASYNC Or  SND_RING);
-               TTask.Run ( procedure
-               begin
+//               TTask.Run ( procedure
+//               begin
                 FSplash := TFSplash.Create(nil);
                  try
                    FSplash.Left := MainForm.Width - FSplash.Width - 15 ;                   
@@ -233,7 +237,7 @@ begin
                  finally
                    FSplash.free;
                  end;
-               end);
+//               end);
             end;
      end;
   end else

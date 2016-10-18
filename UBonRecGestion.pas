@@ -121,6 +121,7 @@ type
     frxXLSExport1: TfrxXLSExport;
     frxPDFExport1: TfrxPDFExport;
     BonRecPListfrxRprt: TfrxReport;
+    sImage1: TsImage;
     procedure ProduitBonRecGCbxEnter(Sender: TObject);
     procedure ResherchPARDesProduitsRdioBtnClick(Sender: TObject);
     procedure ResherchPARCBProduitsRdioBtnClick(Sender: TObject);
@@ -839,8 +840,7 @@ begin
   FournisseurBonRecGCbx.SetFocus;
  end;
 
-
-
+  sImage1.ImageIndex:= MainForm.sImage1.ImageIndex;
  end;
 
 procedure TBonRecGestionF.FournisseurBonRecGCbxExit(Sender: TObject);
@@ -2287,9 +2287,3 @@ begin
 end;
 
 end.
-
-
-
-
-
-

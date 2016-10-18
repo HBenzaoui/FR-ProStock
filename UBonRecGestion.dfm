@@ -2252,6 +2252,21 @@ object BonRecGestionF: TBonRecGestionF
       Layout = tlCenter
       StyleElements = []
     end
+    object sImage1: TsImage
+      Tag = 1
+      Left = 186
+      Top = 129
+      Width = 16
+      Height = 16
+      Center = True
+      Picture.Data = {07544269746D617000000000}
+      Proportional = True
+      Stretch = True
+      Transparent = True
+      ImageIndex = 3
+      Images = MainForm.PanelIcons16
+      SkinData.SkinSection = 'CHECKBOX'
+    end
     object Panel14: TPanel
       Left = 0
       Top = 73

@@ -122,6 +122,7 @@ type
     frxXLSExport1: TfrxXLSExport;
     frxPDFExport1: TfrxPDFExport;
     BonFacAPListfrxRprt: TfrxReport;
+    sImage1: TsImage;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure FormShow(Sender: TObject);
@@ -544,6 +545,9 @@ AND (MainForm.Bona_facTable.FieldByName('code_f').AsInteger <> 0)  then
        BonFacAGFourOLDCredit.Caption:= FloatToStrF(StrToFloat(StringReplace(BonFacAGFourOLDCredit.Caption, #32, '', [rfReplaceAll])),ffNumber,14,2) ;
        BonFacAGFourNEWCredit.Caption:= FloatToStrF(StrToFloat(StringReplace(BonFacAGFourNEWCredit.Caption, #32, '', [rfReplaceAll])),ffNumber,14,2) ;
   end;
+
+
+  sImage1.ImageIndex:= MainForm.sImage1.ImageIndex;
 end;
 
 procedure TBonFacAGestionF.sSpeedButton7Click(Sender: TObject);

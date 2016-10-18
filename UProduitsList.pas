@@ -431,8 +431,8 @@ begin
   end else
       begin
          sndPlaySound('C:\Windows\Media\chord.wav', SND_NODEFAULT Or SND_ASYNC Or  SND_RING);
-         TTask.Run ( procedure
-         begin
+//         TTask.Run ( procedure
+//         begin
           FSplash := TFSplash.Create(nil);
            try
              FSplash.Left := MainForm.Width - FSplash.Width - 15 ;                   
@@ -447,7 +447,7 @@ begin
            finally
              FSplash.free;
            end;
-         end);
+//         end);
       end;
      //--dicconet when finish the quiry ---
       MainForm.SQLQuery.Active:= False;
@@ -977,6 +977,8 @@ end;
 
 procedure TProduitsListF.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
+MainForm.ProduitTable.Filtered:= False;
+Select_ALL;
 FreeAndNil(ProduitsListF);
 end;
 

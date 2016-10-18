@@ -34,7 +34,8 @@ uses
   dxSkinValentine, dxSkinVS2010, dxSkinWhiteprint, dxSkinXmas2008Blue,
   dxSkinscxPCPainter, dxBarBuiltInMenu, cxClasses, dxTabbedMDI,
   dxSkinOffice2016Colorful, dxSkinOffice2016Dark, dxSkinVisualStudio2013Blue,
-  dxSkinVisualStudio2013Dark, dxSkinVisualStudio2013Light, acImage;
+  dxSkinVisualStudio2013Dark, dxSkinVisualStudio2013Light, acImage, cxGraphics,
+  cxControls, cxLookAndFeels, cxLookAndFeelPainters, dxActivityIndicator;
 
   procedure GrayForms;
   procedure NormalForms;
@@ -716,8 +717,6 @@ type
     Bona_fac_listTableMargeA: TCurrencyField;
     Bona_fac_listTableMargeA2: TCurrencyField;
     ProduitTableQutDispo: TFloatField;
-    FDScript1: TFDScript;
-    inserdata: TButton;
     Bonv_liv_listTabletva_p: TSmallintField;
     Bonv_ctr_listTabletva_p: TSmallintField;
     ProduitTabletva_p: TSmallintField;
@@ -725,6 +724,11 @@ type
     PanelIcons16: TsAlphaImageList;
     BackUp: TButton;
     sImage1: TsImage;
+    N18: TMenuItem;
+    SwitchDBMAinFMnu: TMenuItem;
+    dxActivityIndicator1: TdxActivityIndicator;
+    InsertDataFDScript: TFDScript;
+    CreatDB: TButton;
     procedure ClientMainFBtnClick(Sender: TObject);
     procedure FourMainFBtnClick(Sender: TObject);
     procedure ProduitMainFBtnClick(Sender: TObject);
@@ -765,7 +769,7 @@ type
     procedure Bona_facTableCreditCalcFields(DataSet: TDataSet);
     procedure FactureAMainFMnmClick(Sender: TObject);
     procedure Button12Click(Sender: TObject);
-    procedure Button13Click(Sender: TObject);
+    procedure dddClick(Sender: TObject);
     procedure Button14Click(Sender: TObject);
     procedure Button15Click(Sender: TObject);
     procedure Button16Click(Sender: TObject);
@@ -812,8 +816,10 @@ type
     procedure SFamPMainFMmnClick(Sender: TObject);
     procedure UniteMainFMmnClick(Sender: TObject);
     procedure LocalMainFMmnClick(Sender: TObject);
-    procedure inserdataClick(Sender: TObject);
     procedure BackUpClick(Sender: TObject);
+    procedure SwitchDBMAinFMnuClick(Sender: TObject);
+    procedure Timer2Timer(Sender: TObject);
+    procedure CreatDBClick(Sender: TObject);
   private
 
     TimerStart: TDateTime;
@@ -993,6 +999,18 @@ procedure TMainForm.FormCreate(Sender: TObject);
 var sCmd: string;
 Ini: TIniFile;
 begin
+
+  Application.UpdateFormatSettings := false;
+  FormatSettings.DecimalSeparator := ',';
+  FormatSettings.ThousandSeparator := ' ';
+  FormatSettings.CurrencyDecimals := 2;
+  FormatSettings.DateSeparator:= '/';
+  FormatSettings.ShortTimeFormat:= 'dd/M/yyyy';
+
+  
+
+
+  
 Screen.MenuFont.Height := 15;
 Screen.MenuFont.Color:= $0040332D ;
 
@@ -1001,7 +1019,9 @@ FDPhysPgDriverLink1.VendorLib:= 'C:\Program Files (x86)\PostgreSQL\9.6\bin\libpq
 //  sCmd := Pwidechar(GetCurrentDir+ '\bin\pg_s.bat' );                // Eable this is only for releasing
 //  ShellExecute(0, 'open', PChar(sCmd) , PChar(sCmd), nil, SW_HIDE);  // Eable this is only for releasing 1 OR 2
 //  Sleep(1500);                                                       // Eable this is only for releasing
-
+//
+//
+//  
 //  ExeAndWait( GetCurrentDir+ '\bin\pg_s.bat', SW_HIDE);              // Eable this is only for releasing 1 OR 2
 
   GstockdcConnection.DriverName := 'PG';
@@ -1017,7 +1037,11 @@ FDPhysPgDriverLink1.VendorLib:= 'C:\Program Files (x86)\PostgreSQL\9.6\bin\libpq
 //   if NOT fileexists('Config') then
 //   begin
 
-//   CreateTablesFDScript.ExecuteAll;                                // Eable this is only for releasing
+
+//  CreateTablesFDScript.ExecuteAll;                                 // Eable this is only for releasing
+//  InsertDataFDScript.ExecuteAll;                                   // Eable this is only for releasing
+
+     
 //   Sleep(2000);      // just for the first time                   // Eable this is only for releasing
 
 //   end;
@@ -1028,16 +1052,17 @@ FDPhysPgDriverLink1.VendorLib:= 'C:\Program Files (x86)\PostgreSQL\9.6\bin\libpq
 //    Ini.Free;
 //  end;
 
-  Application.UpdateFormatSettings := false;
-  FormatSettings.DecimalSeparator := ',';
-  FormatSettings.ThousandSeparator := ' ';
-  FormatSettings.CurrencyDecimals := 2;
-  FormatSettings.DateSeparator:= '/';
+
 
   Width:= Screen.Width;
   Height:= Screen.Height - 50;
 
 //  Label2.Caption:=#174;
+
+
+
+
+
 end;
 
 procedure TMainForm.ProduitTableCalcFields(DataSet: TDataSet);
@@ -1862,7 +1887,17 @@ begin
 //FactureAMainFMnmClick(Sender);
 end;
 
-procedure TMainForm.Button13Click(Sender: TObject);
+procedure TMainForm.CreatDBClick(Sender: TObject);
+begin
+  GstockdcConnection.ExecSQL('CREATE DATABASE "GSTOCKDCDC007" ' 
+  + ' WITH OWNER = postgres '
+  + ' ENCODING = ''UTF8'' ' 
+  + ' TABLESPACE = pg_default '
+  + ' CONNECTION LIMIT = - 1 '
+        );  
+end;
+
+procedure TMainForm.dddClick(Sender: TObject);
 begin
 ProduitsListF.Close;
 end;
@@ -2082,11 +2117,9 @@ end;
 
 procedure TMainForm.FormShow(Sender: TObject);
 begin
-//      GstockdcConnection.Connected := True;
     ProduitTable.Active := True;
     ClientTable.Active := True;
     FournisseurTable.Active := True;
-
     Bona_recTable.Active := True;
     Bona_recPlistTable.Active := True;
     Bona_facTable.Active := True;
@@ -2097,7 +2130,6 @@ begin
     Bonv_fac_listTable.Active := True;
     Bonv_ctrTable.Active := True;
     Bonv_ctr_listTable.Active := True;
-//    Bonv_ctr_Top10produit.Active := True;
     Mode_paiementTable.Active := True;
     CompteTable.Active := True;
     FamproduitTable.Active := True;
@@ -2107,15 +2139,11 @@ begin
     UniteTable.Active := True;
     WilayasTable.Active := True;
     CommunesTable.Active := True;
-
     Opt_cas_bnk_CaisseTable.Active := True;
     Opt_cas_bnk_BankTable.Active := True;
-
     UsersTable.Active := True;
-
     RegclientTable.Active := True;
     RegfournisseurTable.Active := True;
-
     CompanyTable.Active := True;
 
     if UserTypeLbl.Caption <> '0' then
@@ -2508,6 +2536,11 @@ begin
 //      StatuBar.Panels[1].Text:=TimeToStr(Time);
 end;
 
+procedure TMainForm.Timer2Timer(Sender: TObject);
+begin
+   dxActivityIndicator1.Visible := True;
+end;
+
 procedure TMainForm.UsersGMainFMnmClick(Sender: TObject);
 begin
   //-------- Show the splash screan for the produit familly to add new one---------//
@@ -2889,6 +2922,163 @@ begin
             FamPListF.Show;
 end;
 
+procedure TMainForm.SwitchDBMAinFMnuClick(Sender: TObject);
+begin
+
+    
+   if sImage1.Tag = 0 then
+   begin
+           GstockdcConnection.Connected:= False;
+      GstockdcConnection.DriverName := 'PG';
+      GstockdcConnection.Params.Values['Server'] :='localhost';
+      GstockdcConnection.Params.Values['user_name'] := 'postgres';
+      GstockdcConnection.Params.Values['password'] := ''; // ditto
+      GstockdcConnection.Params.Values['Port'] := '5432';
+      GstockdcConnection.LoginPrompt := False;
+
+      GstockdcConnection.Params.Values['Database'] := 'GSTOCKDC';
+      GstockdcConnection.Connected:= True;
+
+//  CreateTablesFDScript.ExecuteAll;                                              // Eable this is only for releasing
+//  InsertDataFDScript.ExecuteAll;                                                // Eable this is only for releasing
+
+    ProduitTable.Active := True;
+    ClientTable.Active := True;
+    FournisseurTable.Active := True;
+    Bona_recTable.Active := True;
+    Bona_recPlistTable.Active := True;
+    Bona_facTable.Active := True;
+    Bona_fac_listTable.Active := True;
+    Bonv_livTable.Active := True;
+    Bonv_liv_listTable.Active := True;
+    Bonv_facTable.Active := True;
+    Bonv_fac_listTable.Active := True;
+    Bonv_ctrTable.Active := True;
+    Bonv_ctr_listTable.Active := True;
+    Mode_paiementTable.Active := True;
+    CompteTable.Active := True;
+    FamproduitTable.Active := True;
+    SfamproduitTable.Active := True;
+    CodebarresTable.Active := True;
+    LocalisationTable.Active := True;
+    UniteTable.Active := True;
+    WilayasTable.Active := True;
+    CommunesTable.Active := True;
+    Opt_cas_bnk_CaisseTable.Active := True;
+    Opt_cas_bnk_BankTable.Active := True;
+    UsersTable.Active := True;
+    RegclientTable.Active := True;
+    RegfournisseurTable.Active := True;
+    CompanyTable.Active := True;
+    
+      //--------------------data moder changer------------///
+      DataModuleF.GstockdcConnection02.DriverName := 'PG';
+      DataModuleF.GstockdcConnection02.Params.Values['Server'] :='localhost'; // your server name'';
+      DataModuleF.GstockdcConnection02.Params.Values['user_name'] := 'postgres';    // adjust to suit
+      DataModuleF.GstockdcConnection02.Params.Values['password'] := ''; // ditto
+      DataModuleF.GstockdcConnection02.Params.Values['Port'] := '5432';
+      DataModuleF.GstockdcConnection02.Params.Values['CharacterSet'] := 'SQL_ASCII';
+      DataModuleF.GstockdcConnection02.LoginPrompt := False;
+
+
+      DataModuleF.GstockdcConnection02.Params.Values['Database'] := 'GSTOCKDC';
+      DataModuleF.GstockdcConnection02.Connected:= True;
+
+      DataModuleF.TopClient.Active:= True;
+      DataModuleF.TopFour.Active:= True;
+      DataModuleF.TopVerClient.Active:= True;
+      DataModuleF.TopVerFour.Active:= True;
+      DataModuleF.Top5produit.Active:= True;
+      DataModuleF.TotalProduit.Active:= True;
+      DataModuleF.ToatalVerMonthVLIV.Active:= True;
+      DataModuleF.ToatalVerMonthVFAC.Active:= True;
+      DataModuleF.ToatalVerMonthVCTR.Active:= True;
+      DataModuleF.ToatalVerMonthAREC.Active:= True;
+      DataModuleF.ToatalVerMonthAFAC.Active:= True;
+
+      sImage1.ImageIndex:=4;
+      sImage1.Tag := 1;
+
+   
+   end else
+   begin
+
+    
+      GstockdcConnection.Connected:= False;
+      GstockdcConnection.DriverName := 'PG';
+      GstockdcConnection.Params.Values['Server'] :='localhost';
+      GstockdcConnection.Params.Values['user_name'] := 'postgres';
+      GstockdcConnection.Params.Values['password'] := ''; // ditto
+      GstockdcConnection.Params.Values['Port'] := '5432';
+      GstockdcConnection.LoginPrompt := False;
+
+      GstockdcConnection.Params.Values['Database'] := 'GSTOCKDC2';
+      GstockdcConnection.Connected:= True;
+
+//  CreateTablesFDScript.ExecuteAll;                                              // Eable this is only for releasing
+//  InsertDataFDScript.ExecuteAll;                                                // Eable this is only for releasing
+
+    ProduitTable.Active := True;
+    ClientTable.Active := True;
+    FournisseurTable.Active := True;
+    Bona_recTable.Active := True;
+    Bona_recPlistTable.Active := True;
+    Bona_facTable.Active := True;
+    Bona_fac_listTable.Active := True;
+    Bonv_livTable.Active := True;
+    Bonv_liv_listTable.Active := True;
+    Bonv_facTable.Active := True;
+    Bonv_fac_listTable.Active := True;
+    Bonv_ctrTable.Active := True;
+    Bonv_ctr_listTable.Active := True;
+    Mode_paiementTable.Active := True;
+    CompteTable.Active := True;
+    FamproduitTable.Active := True;
+    SfamproduitTable.Active := True;
+    CodebarresTable.Active := True;
+    LocalisationTable.Active := True;
+    UniteTable.Active := True;
+    WilayasTable.Active := True;
+    CommunesTable.Active := True;
+    Opt_cas_bnk_CaisseTable.Active := True;
+    Opt_cas_bnk_BankTable.Active := True;
+    UsersTable.Active := True;
+    RegclientTable.Active := True;
+    RegfournisseurTable.Active := True;
+    CompanyTable.Active := True;
+    
+      //--------------------data moder changer------------///
+      DataModuleF.GstockdcConnection02.DriverName := 'PG';
+      DataModuleF.GstockdcConnection02.Params.Values['Server'] :='localhost'; // your server name'';
+      DataModuleF.GstockdcConnection02.Params.Values['user_name'] := 'postgres';    // adjust to suit
+      DataModuleF.GstockdcConnection02.Params.Values['password'] := ''; // ditto
+      DataModuleF.GstockdcConnection02.Params.Values['Port'] := '5432';
+      DataModuleF.GstockdcConnection02.Params.Values['CharacterSet'] := 'SQL_ASCII';
+      DataModuleF.GstockdcConnection02.LoginPrompt := False;
+
+
+      DataModuleF.GstockdcConnection02.Params.Values['Database'] := 'GSTOCKDC2';
+      DataModuleF.GstockdcConnection02.Connected:= True;
+
+      DataModuleF.TopClient.Active:= True;
+      DataModuleF.TopFour.Active:= True;
+      DataModuleF.TopVerClient.Active:= True;
+      DataModuleF.TopVerFour.Active:= True;
+      DataModuleF.Top5produit.Active:= True;
+      DataModuleF.TotalProduit.Active:= True;
+      DataModuleF.ToatalVerMonthVLIV.Active:= True;
+      DataModuleF.ToatalVerMonthVFAC.Active:= True;
+      DataModuleF.ToatalVerMonthVCTR.Active:= True;
+      DataModuleF.ToatalVerMonthAREC.Active:= True;
+      DataModuleF.ToatalVerMonthAFAC.Active:= True;
+
+      sImage1.ImageIndex:=3;
+      sImage1.Tag := 0;
+
+     end;
+   
+end;
+
 procedure TMainForm.SFamPMainFMmnClick(Sender: TObject);
 begin
   //-------- Show the splash screan for the produit familly to add new one---------//
@@ -2938,11 +3128,6 @@ begin
             LocaleListF.Top:=   (Screen.Height div 2) - (LocaleListF.Height div 2)    ;
 
             LocaleListF.ShowModal;
-end;
-
-procedure TMainForm.inserdataClick(Sender: TObject);
-begin
-FDScript1.ExecuteAll;
 end;
 
 End.

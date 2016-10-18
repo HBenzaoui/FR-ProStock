@@ -739,8 +739,6 @@ object ClientListF: TClientListF
     ParentDoubleBuffered = False
     TabOrder = 1
     StyleElements = []
-    ExplicitLeft = -26
-    ExplicitTop = 2
     DesignSize = (
       1362
       82)
@@ -857,11 +855,12 @@ object ClientListF: TClientListF
       StyleElements = []
     end
     object sSpeedButton1: TsSpeedButton
-      Left = 915
+      Left = 1325
       Top = 26
       Width = 30
       Height = 30
       Hint = 'Modifer'
+      Anchors = [akTop, akRight]
       ParentShowHint = False
       ShowHint = True
       OnClick = sSpeedButton1Click
@@ -870,11 +869,12 @@ object ClientListF: TClientListF
       Images = MainForm.PanelIcons24
     end
     object sSpeedButton2: TsSpeedButton
-      Left = 879
+      Left = 1291
       Top = 26
       Width = 30
       Height = 30
       Hint = 'Modifer'
+      Anchors = [akTop, akRight]
       ParentShowHint = False
       ShowHint = True
       OnClick = sSpeedButton2Click
@@ -883,7 +883,7 @@ object ClientListF: TClientListF
       Images = MainForm.PanelIcons24
     end
     object toutClientsLbl: TLabel
-      Left = 1236
+      Left = 1140
       Top = 54
       Width = 57
       Height = 16
@@ -897,7 +897,7 @@ object ClientListF: TClientListF
       ParentFont = False
     end
     object Label2: TLabel
-      Left = 1116
+      Left = 1020
       Top = 54
       Width = 95
       Height = 16
@@ -911,7 +911,7 @@ object ClientListF: TClientListF
       ParentFont = False
     end
     object Label3: TLabel
-      Left = 1116
+      Left = 1020
       Top = 32
       Width = 114
       Height = 16
@@ -925,7 +925,7 @@ object ClientListF: TClientListF
       ParentFont = False
     end
     object PassifClientsLbl: TLabel
-      Left = 1236
+      Left = 1140
       Top = 32
       Width = 57
       Height = 16
@@ -939,7 +939,7 @@ object ClientListF: TClientListF
       ParentFont = False
     end
     object Label5: TLabel
-      Left = 1116
+      Left = 1020
       Top = 10
       Width = 87
       Height = 16
@@ -953,7 +953,7 @@ object ClientListF: TClientListF
       ParentFont = False
     end
     object ActifClientsLbl: TLabel
-      Left = 1236
+      Left = 1140
       Top = 10
       Width = 57
       Height = 16
@@ -1048,7 +1048,7 @@ object ClientListF: TClientListF
       StyleElements = []
     end
     object Panel1: TPanel
-      Left = 960
+      Left = 864
       Top = 21
       Width = 1
       Height = 40
@@ -1075,11 +1075,12 @@ object ClientListF: TClientListF
       StyleElements = []
     end
     object S01: TPanel
-      Left = 864
+      Left = 1285
       Top = 21
       Width = 1
       Height = 40
       ParentCustomHint = False
+      Anchors = [akTop, akRight]
       BevelEdges = []
       BevelOuter = bvNone
       BiDiMode = bdLeftToRight
@@ -1144,7 +1145,7 @@ object ClientListF: TClientListF
       OnKeyPress = ResearchClientsEdtKeyPress
     end
     object ActifClientsRdioBtn: TRadioButton
-      Left = 976
+      Left = 880
       Top = 8
       Width = 102
       Height = 17
@@ -1161,7 +1162,7 @@ object ClientListF: TClientListF
       OnClick = ActifClientsRdioBtnClick
     end
     object PassifClientsRdioBtn: TRadioButton
-      Left = 976
+      Left = 880
       Top = 32
       Width = 113
       Height = 17
@@ -1176,7 +1177,7 @@ object ClientListF: TClientListF
       OnClick = PassifClientsRdioBtnClick
     end
     object toutClientsRdioBtn: TRadioButton
-      Left = 976
+      Left = 880
       Top = 56
       Width = 113
       Height = 17
@@ -1191,7 +1192,7 @@ object ClientListF: TClientListF
       OnClick = toutClientsRdioBtnClick
     end
     object Panel2: TPanel
-      Left = 1100
+      Left = 1004
       Top = 21
       Width = 1
       Height = 40
@@ -1215,6 +1216,34 @@ object ClientListF: TClientListF
       ParentShowHint = False
       ShowHint = False
       TabOrder = 8
+      StyleElements = []
+    end
+    object Panel5: TPanel
+      Left = 1361
+      Top = 25
+      Width = 1
+      Height = 40
+      ParentCustomHint = False
+      Anchors = [akTop, akRight]
+      BevelEdges = []
+      BevelOuter = bvNone
+      BiDiMode = bdLeftToRight
+      Color = 15970832
+      Ctl3D = True
+      DoubleBuffered = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentBiDiMode = False
+      ParentBackground = False
+      ParentCtl3D = False
+      ParentDoubleBuffered = False
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = False
+      TabOrder = 9
       StyleElements = []
     end
   end
@@ -1349,7 +1378,7 @@ object ClientListF: TClientListF
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 42576.399521435200000000
-    ReportOptions.LastChange = 42582.608203159730000000
+    ReportOptions.LastChange = 42663.580936562500000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       ''
@@ -1738,10 +1767,9 @@ object ClientListF: TClientListF
           Top = 0.779530000000000000
           Width = 132.283464570000000000
           Height = 18.897650000000000000
-          DataField = 'oldcredit_c'
           DataSet = frxClientListDB
           DataSetName = 'frxClientDB'
-          DisplayFormat.FormatStr = '%2.2m'
+          DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1807,7 +1835,7 @@ object ClientListF: TClientListF
           Top = 0.377952760000000000
           Width = 151.559055120000000000
           Height = 22.677180000000000000
-          DisplayFormat.FormatStr = '%2.2m'
+          DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack

@@ -96,7 +96,7 @@ type
     CtrTop10PRODUITDBGridEh: TDBGridEh;
     CloseBonCtrGBtn: TsSpeedButton;
     MinimizeBonCtrGBtn: TsSpeedButton;
-    sImage1: TsImage;
+    sImage3: TsImage;
     sImage2: TsImage;
     BonCRemiseHTNewLbl: TLabel;
     TotalTVANewLbl: TLabel;
@@ -119,6 +119,7 @@ type
     BonCTRTotalMargeLbl: TLabel;
     RequiredClientGlbl: TLabel;
     NameClientGErrorP: TPanel;
+    sImage1: TsImage;
     procedure FormShow(Sender: TObject);
     procedure RemiseBonCtrGEdtDblClick(Sender: TObject);
     procedure ShowKeyBoardBonCtrGBtnClick(Sender: TObject);
@@ -279,40 +280,41 @@ begin
 
 // APrintBVCtrBonCtrGSlider.SliderOn :=  FOptions.APrintOptionGSlider.SliderOn;
 
+  begin
 
-begin
+  // use this tage when i click AddBVCtrBonRecGBtn bon button
+   if Tag=0 then
+   begin
+   DateBonCtrGD.Date:=EncodeDate (YearOf(Now),MonthOf(Now),DayOf(Now));
 
-// use this tage when i click AddBVCtrBonRecGBtn bon button
- if Tag=0 then
- begin
- DateBonCtrGD.Date:=EncodeDate (YearOf(Now),MonthOf(Now),DayOf(Now));
+  //-- use this code to make the montants look lake money values-------//
 
-//-- use this code to make the montants look lake money values-------//
+        BonCtrTotalTTCLbl.Caption :=      FloatToStrF(StrToFloat(BonCtrTotalTTCLbl.Caption),ffNumber,14,2) ;
+        BonCTotalTTCNewLbl.Caption :=      FloatToStrF(StrToFloat(BonCTotalTTCNewLbl.Caption),ffNumber,14,2) ;
+        BonCtrRenduLbl.Caption :=         FloatToStrF(StrToFloat(BonCtrRenduLbl.Caption),ffNumber,14,2) ;
+        BonCtrRegleLbl.Caption :=         FloatToStrF(StrToFloat(BonCtrRegleLbl.Caption),ffNumber,14,2) ;
 
-      BonCtrTotalTTCLbl.Caption :=      FloatToStrF(StrToFloat(BonCtrTotalTTCLbl.Caption),ffNumber,14,2) ;
-      BonCTotalTTCNewLbl.Caption :=      FloatToStrF(StrToFloat(BonCTotalTTCNewLbl.Caption),ffNumber,14,2) ;
-      BonCtrRenduLbl.Caption :=         FloatToStrF(StrToFloat(BonCtrRenduLbl.Caption),ffNumber,14,2) ;
-      BonCtrRegleLbl.Caption :=         FloatToStrF(StrToFloat(BonCtrRegleLbl.Caption),ffNumber,14,2) ;
-
- CodeBL:= MainForm.Bonv_ctrTable.FieldValues['code_bvctr']   ;
- NumBonCtrGEdt.Caption := 'CT'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5, CodeBL]);
-  if (MainForm.Bonv_ctrTable.FieldByName('code_c').AsInteger <> null)
- AND (MainForm.Bonv_ctrTable.FieldByName('code_c').AsInteger <> 0)  then
- begin
-   ClientBonCtrGCbx.Text:= MainForm.Bonv_ctrTable.FieldValues['clientbvctr'];
-   ProduitBonCtrGCbx.SetFocus;
- end else
-     begin
-       ProduitBonCtrGCbx.SetFocus;
-     end;
- end;
-// use this tage when i click on edit button for bon
- if Tag = 1 then
- begin
-//     BonCtrGClientOLDCredit.Caption:= FloatToStrF(StrToFloat(StringReplace(BonCtrGClientOLDCredit.Caption, #32, '', [rfReplaceAll])),ffNumber,14,2) ;
-//     BonCtrGClientNEWCredit.Caption:= FloatToStrF(StrToFloat(StringReplace(BonCtrGClientNEWCredit.Caption, #32, '', [rfReplaceAll])),ffNumber,14,2) ;
+   CodeBL:= MainForm.Bonv_ctrTable.FieldValues['code_bvctr']   ;
+   NumBonCtrGEdt.Caption := 'CT'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5, CodeBL]);
+    if (MainForm.Bonv_ctrTable.FieldByName('code_c').AsInteger <> null)
+   AND (MainForm.Bonv_ctrTable.FieldByName('code_c').AsInteger <> 0)  then
+   begin
+     ClientBonCtrGCbx.Text:= MainForm.Bonv_ctrTable.FieldValues['clientbvctr'];
+     ProduitBonCtrGCbx.SetFocus;
+   end else
+       begin
+         ProduitBonCtrGCbx.SetFocus;
+       end;
+   end;
+  // use this tage when i click on edit button for bon
+   if Tag = 1 then
+   begin
+  //     BonCtrGClientOLDCredit.Caption:= FloatToStrF(StrToFloat(StringReplace(BonCtrGClientOLDCredit.Caption, #32, '', [rfReplaceAll])),ffNumber,14,2) ;
+  //     BonCtrGClientNEWCredit.Caption:= FloatToStrF(StrToFloat(StringReplace(BonCtrGClientNEWCredit.Caption, #32, '', [rfReplaceAll])),ffNumber,14,2) ;
+    end;
   end;
-end;
+
+  sImage1.ImageIndex:= MainForm.sImage1.ImageIndex;
 
 end;
 

@@ -649,7 +649,7 @@ object BonCtrGestionF: TBonCtrGestionF
       ImageIndex = 44
       Images = MainForm.PanelIcons24
     end
-    object sImage1: TsImage
+    object sImage3: TsImage
       Left = 839
       Top = 29
       Width = 26
@@ -927,6 +927,21 @@ object BonCtrGestionF: TBonCtrGestionF
       Layout = tlCenter
       StyleElements = []
       ExplicitLeft = 936
+    end
+    object sImage1: TsImage
+      Tag = 1
+      Left = 1
+      Top = 113
+      Width = 16
+      Height = 16
+      Center = True
+      Picture.Data = {07544269746D617000000000}
+      Proportional = True
+      Stretch = True
+      Transparent = True
+      ImageIndex = 3
+      Images = MainForm.PanelIcons16
+      SkinData.SkinSection = 'CHECKBOX'
     end
     object Panel3: TPanel
       Left = 0

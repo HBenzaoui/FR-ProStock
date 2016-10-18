@@ -123,6 +123,7 @@ type
     frxBonFacVPListDB: TfrxDBDataset;
     BonFacVPListfrxRprt: TfrxReport;
     BonFacVTotalMargeLbl: TLabel;
+    sImage1: TsImage;
     procedure FormShow(Sender: TObject);
     procedure sSpeedButton7Click(Sender: TObject);
     procedure sSpeedButton6Click(Sender: TObject);
@@ -318,6 +319,9 @@ begin
      BonFacVGClientOLDCredit.Caption:= FloatToStrF(StrToFloat(StringReplace(BonFacVGClientOLDCredit.Caption, #32, '', [rfReplaceAll])),ffNumber,14,2) ;
      BonFacVGClientNEWCredit.Caption:= FloatToStrF(StrToFloat(StringReplace(BonFacVGClientNEWCredit.Caption, #32, '', [rfReplaceAll])),ffNumber,14,2) ;
   end;
+
+
+  sImage1.ImageIndex:= MainForm.sImage1.ImageIndex;
 
 end;
 
