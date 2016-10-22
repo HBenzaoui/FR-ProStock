@@ -218,8 +218,9 @@ object BonLivGestionF: TBonLivGestionF
     object NumBonLivGEdt: TLabel
       Left = 163
       Top = 22
-      Width = 5
+      Width = 184
       Height = 22
+      AutoSize = False
       Color = 15722984
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 10379008
@@ -725,6 +726,60 @@ object BonLivGestionF: TBonLivGestionF
       ParentFont = False
       Visible = False
     end
+    object sSpeedButton7: TsSpeedButton
+      Left = 362
+      Top = 18
+      Width = 30
+      Height = 30
+      Hint = 'Detaill'
+      ParentShowHint = False
+      ShowHint = True
+      OnClick = sSpeedButton7Click
+      SkinData.SkinSection = 'SPEEDBUTTON'
+      ImageIndex = 0
+      Images = MainForm.PanelIcons24
+      ShowCaption = False
+    end
+    object sSpeedButton6: TsSpeedButton
+      Left = 396
+      Top = 18
+      Width = 30
+      Height = 30
+      Hint = 'Modifer'
+      ParentShowHint = False
+      ShowHint = True
+      OnClick = sSpeedButton6Click
+      SkinData.SkinSection = 'SPEEDBUTTON'
+      ImageIndex = 1
+      Images = MainForm.PanelIcons24
+    end
+    object sSpeedButton5: TsSpeedButton
+      Left = 430
+      Top = 18
+      Width = 30
+      Height = 30
+      Hint = 'Detaill'
+      ParentShowHint = False
+      ShowHint = True
+      OnClick = sSpeedButton5Click
+      SkinData.SkinSection = 'SPEEDBUTTON'
+      ImageIndex = 2
+      Images = MainForm.PanelIcons24
+      ShowCaption = False
+    end
+    object sSpeedButton4: TsSpeedButton
+      Left = 464
+      Top = 18
+      Width = 30
+      Height = 30
+      Hint = 'Modifer'
+      ParentShowHint = False
+      ShowHint = True
+      OnClick = sSpeedButton4Click
+      SkinData.SkinSection = 'SPEEDBUTTON'
+      ImageIndex = 3
+      Images = MainForm.PanelIcons24
+    end
     object NameClientGErrorP: TPanel
       Left = 461
       Top = 81
@@ -738,81 +793,9 @@ object BonLivGestionF: TBonLivGestionF
       ParentBackground = False
       ParentCtl3D = False
       ShowCaption = False
-      TabOrder = 18
+      TabOrder = 17
       Visible = False
       StyleElements = []
-    end
-    object Panel6: TPanel
-      Left = 362
-      Top = 21
-      Width = 132
-      Height = 25
-      BevelEdges = []
-      BevelKind = bkFlat
-      BevelOuter = bvNone
-      Color = 15722984
-      Ctl3D = True
-      DoubleBuffered = False
-      FullRepaint = False
-      ParentBackground = False
-      ParentCtl3D = False
-      ParentDoubleBuffered = False
-      TabOrder = 2
-      StyleElements = []
-      object sSpeedButton4: TsSpeedButton
-        Left = 99
-        Top = 0
-        Width = 24
-        Height = 24
-        Hint = 'Modifer'
-        ParentShowHint = False
-        ShowHint = True
-        OnClick = sSpeedButton4Click
-        SkinData.SkinSection = 'SPEEDBUTTON'
-        ImageIndex = 3
-        Images = MainForm.PanelIcons24
-      end
-      object sSpeedButton5: TsSpeedButton
-        Left = 69
-        Top = 0
-        Width = 24
-        Height = 24
-        Hint = 'Detaill'
-        ParentShowHint = False
-        ShowHint = True
-        OnClick = sSpeedButton5Click
-        SkinData.SkinSection = 'SPEEDBUTTON'
-        ImageIndex = 2
-        Images = MainForm.PanelIcons24
-        ShowCaption = False
-      end
-      object sSpeedButton6: TsSpeedButton
-        Left = 39
-        Top = 0
-        Width = 24
-        Height = 24
-        Hint = 'Modifer'
-        ParentShowHint = False
-        ShowHint = True
-        OnClick = sSpeedButton6Click
-        SkinData.SkinSection = 'SPEEDBUTTON'
-        ImageIndex = 1
-        Images = MainForm.PanelIcons24
-      end
-      object sSpeedButton7: TsSpeedButton
-        Left = 9
-        Top = 0
-        Width = 24
-        Height = 24
-        Hint = 'Detaill'
-        ParentShowHint = False
-        ShowHint = True
-        OnClick = sSpeedButton7Click
-        SkinData.SkinSection = 'SPEEDBUTTON'
-        ImageIndex = 0
-        Images = MainForm.PanelIcons24
-        ShowCaption = False
-      end
     end
     object Panel7: TPanel
       Left = 355
@@ -823,7 +806,7 @@ object BonLivGestionF: TBonLivGestionF
       BevelOuter = bvNone
       Color = 4666873
       ParentBackground = False
-      TabOrder = 3
+      TabOrder = 2
       StyleElements = []
     end
     object Panel8: TPanel
@@ -851,7 +834,7 @@ object BonLivGestionF: TBonLivGestionF
       ParentFont = False
       ParentShowHint = False
       ShowHint = False
-      TabOrder = 4
+      TabOrder = 3
       StyleElements = []
     end
     object Panel9: TPanel
@@ -879,7 +862,7 @@ object BonLivGestionF: TBonLivGestionF
       ParentFont = False
       ParentShowHint = False
       ShowHint = False
-      TabOrder = 5
+      TabOrder = 4
       StyleElements = []
     end
     object Panel10: TPanel
@@ -906,7 +889,7 @@ object BonLivGestionF: TBonLivGestionF
       ParentFont = False
       ParentShowHint = False
       ShowHint = False
-      TabOrder = 6
+      TabOrder = 5
       StyleElements = []
     end
     object Panel11: TPanel
@@ -933,7 +916,7 @@ object BonLivGestionF: TBonLivGestionF
       ParentFont = False
       ParentShowHint = False
       ShowHint = False
-      TabOrder = 7
+      TabOrder = 6
       StyleElements = []
     end
     object DateBonLivGD: TDateTimePicker
@@ -949,7 +932,7 @@ object BonLivGestionF: TBonLivGestionF
       Font.Name = 'Helvetica LT Std'
       Font.Style = []
       ParentFont = False
-      TabOrder = 8
+      TabOrder = 7
     end
     object ClientBonLivGCbx: TComboBox
       Left = 463
@@ -982,7 +965,7 @@ object BonLivGestionF: TBonLivGestionF
       BevelOuter = bvNone
       Color = 4666873
       ParentBackground = False
-      TabOrder = 9
+      TabOrder = 8
       StyleElements = []
     end
     object ProduitBonLivGCbx: TComboBox
@@ -1019,7 +1002,7 @@ object BonLivGestionF: TBonLivGestionF
       Font.Name = 'Roboto'
       Font.Style = []
       ParentFont = False
-      TabOrder = 10
+      TabOrder = 9
       TabStop = True
       StyleElements = []
     end
@@ -1038,7 +1021,7 @@ object BonLivGestionF: TBonLivGestionF
       Font.Style = []
       ParentColor = False
       ParentFont = False
-      TabOrder = 11
+      TabOrder = 10
       StyleElements = []
     end
     object Panel2: TPanel
@@ -1050,7 +1033,7 @@ object BonLivGestionF: TBonLivGestionF
       BevelOuter = bvNone
       Color = 7854350
       ParentBackground = False
-      TabOrder = 12
+      TabOrder = 11
       StyleElements = []
     end
     object ResherchPARRefProduitsRdioBtn: TRadioButton
@@ -1066,7 +1049,7 @@ object BonLivGestionF: TBonLivGestionF
       Font.Name = 'Roboto'
       Font.Style = []
       ParentFont = False
-      TabOrder = 13
+      TabOrder = 12
       StyleElements = []
     end
     object Panel13: TPanel
@@ -1093,7 +1076,7 @@ object BonLivGestionF: TBonLivGestionF
       ParentFont = False
       ParentShowHint = False
       ShowHint = False
-      TabOrder = 14
+      TabOrder = 13
       StyleElements = []
     end
     object ModePaieBonLivGCbx: TComboBox
@@ -1107,7 +1090,7 @@ object BonLivGestionF: TBonLivGestionF
       Font.Name = 'Helvetica LT Std'
       Font.Style = []
       ParentFont = False
-      TabOrder = 15
+      TabOrder = 14
       OnClick = ModePaieBonLivGCbxClick
       OnDropDown = ModePaieBonLivGCbxDropDown
       OnEnter = ModePaieBonLivGCbxClick
@@ -1129,7 +1112,7 @@ object BonLivGestionF: TBonLivGestionF
       Font.Name = 'Helvetica LT Std'
       Font.Style = []
       ParentFont = False
-      TabOrder = 16
+      TabOrder = 15
       OnChange = CompteBonLivGCbxChange
       OnDropDown = CompteBonLivGCbxEnter
       OnEnter = CompteBonLivGCbxEnter
@@ -1143,7 +1126,7 @@ object BonLivGestionF: TBonLivGestionF
       BevelOuter = bvNone
       Color = 4207405
       ParentBackground = False
-      TabOrder = 17
+      TabOrder = 16
       StyleElements = []
       DesignSize = (
         186
@@ -1256,7 +1239,7 @@ object BonLivGestionF: TBonLivGestionF
       Font.Name = 'Helvetica LT Std'
       Font.Style = []
       ParentFont = False
-      TabOrder = 19
+      TabOrder = 18
     end
     object ObserBonLivGMem: TMemo
       Left = 24
@@ -1269,7 +1252,7 @@ object BonLivGestionF: TBonLivGestionF
       Font.Name = 'Roboto'
       Font.Style = []
       ParentFont = False
-      TabOrder = 20
+      TabOrder = 19
     end
   end
   object ProduitsListDBGridEh: TDBGridEh

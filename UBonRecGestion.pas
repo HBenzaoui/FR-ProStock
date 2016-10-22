@@ -33,11 +33,6 @@ type
     NumBonRecGEdt: TLabel;
     AddFourBonRecGBtn: TAdvToolButton;
     Label8: TLabel;
-    Panel6: TPanel;
-    sSpeedButton7: TsSpeedButton;
-    sSpeedButton8: TsSpeedButton;
-    sSpeedButton9: TsSpeedButton;
-    sSpeedButton10: TsSpeedButton;
     Panel7: TPanel;
     Panel8: TPanel;
     Panel9: TPanel;
@@ -122,6 +117,10 @@ type
     frxPDFExport1: TfrxPDFExport;
     BonRecPListfrxRprt: TfrxReport;
     sImage1: TsImage;
+    sSpeedButton9: TsSpeedButton;
+    sSpeedButton8: TsSpeedButton;
+    sSpeedButton10: TsSpeedButton;
+    sSpeedButton7: TsSpeedButton;
     procedure ProduitBonRecGCbxEnter(Sender: TObject);
     procedure ResherchPARDesProduitsRdioBtnClick(Sender: TObject);
     procedure ResherchPARCBProduitsRdioBtnClick(Sender: TObject);
@@ -2003,6 +2002,8 @@ begin
   BonRecResteLbl.Caption:=CurrToStrF(((MainForm.Bona_recTable.FieldValues['MontantRes'])),ffNumber,2) ;
   end;
 
+  NumBonRecGEdt.Caption:= MainForm.Bona_recTable.FieldByName('num_barec').AsString;
+
 end;
 
 procedure TBonRecGestionF.sSpeedButton9Click(Sender: TObject);
@@ -2039,6 +2040,7 @@ begin
 BonRecResteLbl.Caption:=CurrToStrF(((MainForm.Bona_recTable.FieldValues['MontantRes'])),ffNumber,2) ;
 end;
 
+ NumBonRecGEdt.Caption:= MainForm.Bona_recTable.FieldByName('num_barec').AsString;
 end;
 
 procedure TBonRecGestionF.sSpeedButton8Click(Sender: TObject);
@@ -2073,6 +2075,8 @@ if  (MainForm.Bona_recTable.FieldValues['MontantRes']<>null)  then
 begin
 BonRecResteLbl.Caption:=CurrToStrF(((MainForm.Bona_recTable.FieldValues['MontantRes'])),ffNumber,2) ;
 end;
+
+ NumBonRecGEdt.Caption:= MainForm.Bona_recTable.FieldByName('num_barec').AsString;
 end;
 
 procedure TBonRecGestionF.sSpeedButton7Click(Sender: TObject);
@@ -2107,6 +2111,8 @@ if  (MainForm.Bona_recTable.FieldValues['MontantRes']<>null)  then
 begin
 BonRecResteLbl.Caption:=CurrToStrF(((MainForm.Bona_recTable.FieldValues['MontantRes'])),ffNumber,2) ;
 end;
+
+ NumBonRecGEdt.Caption:= MainForm.Bona_recTable.FieldByName('num_barec').AsString;
 end;
 
 procedure TBonRecGestionF.FournisseurBonRecGCbxChange(Sender: TObject);

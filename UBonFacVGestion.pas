@@ -50,11 +50,6 @@ type
     BonFVRemiseHTNewLbl: TLabel;
     ValiderBVFacBonFacVGLbl: TLabel;
     NameClientGErrorP: TPanel;
-    Panel6: TPanel;
-    sSpeedButton4: TsSpeedButton;
-    sSpeedButton5: TsSpeedButton;
-    sSpeedButton6: TsSpeedButton;
-    sSpeedButton7: TsSpeedButton;
     Panel7: TPanel;
     Panel8: TPanel;
     Panel9: TPanel;
@@ -124,6 +119,10 @@ type
     BonFacVPListfrxRprt: TfrxReport;
     BonFacVTotalMargeLbl: TLabel;
     sImage1: TsImage;
+    sSpeedButton7: TsSpeedButton;
+    sSpeedButton6: TsSpeedButton;
+    sSpeedButton5: TsSpeedButton;
+    sSpeedButton4: TsSpeedButton;
     procedure FormShow(Sender: TObject);
     procedure sSpeedButton7Click(Sender: TObject);
     procedure sSpeedButton6Click(Sender: TObject);
@@ -358,6 +357,8 @@ begin
   begin
   BonFacVResteLbl.Caption:=CurrToStrF(((MainForm.Bonv_facTable.FieldValues['MontantRes'])),ffNumber,2) ;
   end;
+
+  NumBonFacVGEdt.Caption:= MainForm.Bonv_facTable.FieldByName('num_bvfac').AsString;
 end;
 
 procedure TBonFacVGestionF.sSpeedButton6Click(Sender: TObject);
@@ -393,6 +394,8 @@ begin
   begin
   BonFacVResteLbl.Caption:=CurrToStrF(((MainForm.Bonv_facTable.FieldValues['MontantRes'])),ffNumber,2) ;
   end;
+
+  NumBonFacVGEdt.Caption:= MainForm.Bonv_facTable.FieldByName('num_bvfac').AsString;
 end;
 
 procedure TBonFacVGestionF.sSpeedButton5Click(Sender: TObject);
@@ -428,6 +431,8 @@ begin
   begin
   BonFacVResteLbl.Caption:=CurrToStrF(((MainForm.Bonv_facTable.FieldValues['MontantRes'])),ffNumber,2) ;
   end;
+
+  NumBonFacVGEdt.Caption:= MainForm.Bonv_facTable.FieldByName('num_bvfac').AsString;
 end;
 
 procedure TBonFacVGestionF.sSpeedButton4Click(Sender: TObject);
@@ -463,6 +468,8 @@ begin
   begin
   BonFacVResteLbl.Caption:=CurrToStrF(((MainForm.Bonv_facTable.FieldValues['MontantRes'])),ffNumber,2) ;
   end;
+
+  NumBonFacVGEdt.Caption:= MainForm.Bonv_facTable.FieldByName('num_bvfac').AsString;
 end;
 
 procedure TBonFacVGestionF.AddBVFacBonFacVGBtnClick(Sender: TObject);

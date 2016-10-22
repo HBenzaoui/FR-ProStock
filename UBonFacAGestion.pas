@@ -50,11 +50,6 @@ type
     BonFARemiseHTNewLbl: TLabel;
     ValiderBAFacBonFacAGLbl: TLabel;
     NameFourGErrorP: TPanel;
-    Panel6: TPanel;
-    sSpeedButton4: TsSpeedButton;
-    sSpeedButton5: TsSpeedButton;
-    sSpeedButton6: TsSpeedButton;
-    sSpeedButton7: TsSpeedButton;
     Panel7: TPanel;
     Panel8: TPanel;
     Panel9: TPanel;
@@ -123,6 +118,10 @@ type
     frxPDFExport1: TfrxPDFExport;
     BonFacAPListfrxRprt: TfrxReport;
     sImage1: TsImage;
+    sSpeedButton4: TsSpeedButton;
+    sSpeedButton5: TsSpeedButton;
+    sSpeedButton6: TsSpeedButton;
+    sSpeedButton7: TsSpeedButton;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure FormShow(Sender: TObject);
@@ -583,6 +582,8 @@ begin
   begin
   BonFacAResteLbl.Caption:=CurrToStrF(((MainForm.Bona_facTable.FieldValues['MontantRes'])),ffNumber,2) ;
   end;
+
+  NumBonFacAGEdt.Caption:= MainForm.Bona_facTable.FieldByName('num_bafac').AsString;
 end;
 
 procedure TBonFacAGestionF.sSpeedButton6Click(Sender: TObject);
@@ -618,6 +619,8 @@ begin
   begin
   BonFacAResteLbl.Caption:=CurrToStrF(((MainForm.Bona_facTable.FieldValues['MontantRes'])),ffNumber,2) ;
   end;
+
+  NumBonFacAGEdt.Caption:= MainForm.Bona_facTable.FieldByName('num_bafac').AsString;
 end;
 
 procedure TBonFacAGestionF.sSpeedButton5Click(Sender: TObject);
@@ -653,6 +656,8 @@ begin
   begin
   BonFacAResteLbl.Caption:=CurrToStrF(((MainForm.Bona_facTable.FieldValues['MontantRes'])),ffNumber,2) ;
   end;
+
+  NumBonFacAGEdt.Caption:= MainForm.Bona_facTable.FieldByName('num_bafac').AsString;
 end;
 
 procedure TBonFacAGestionF.sSpeedButton4Click(Sender: TObject);
@@ -688,6 +693,8 @@ begin
   begin
   BonFacAResteLbl.Caption:=CurrToStrF(((MainForm.Bona_facTable.FieldValues['MontantRes'])),ffNumber,2) ;
   end;
+
+  NumBonFacAGEdt.Caption:= MainForm.Bona_facTable.FieldByName('num_bafac').AsString;
 end;
 
 procedure TBonFacAGestionF.AddBAFacBonFacAGBtnClick(Sender: TObject);

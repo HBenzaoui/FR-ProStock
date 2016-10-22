@@ -110,6 +110,7 @@ type
     procedure N0TVA2Click(Sender: TObject);
     procedure ClearTVAFilterPMenuClick(Sender: TObject);
     procedure ClearFilterBVLivPMenuClick(Sender: TObject);
+    procedure ProduitsListDBGridEhSortMarkingChanged(Sender: TObject);
   private
     procedure GettingData;
     procedure FilteredColor;
@@ -310,11 +311,10 @@ var
   codeP, refnum: integer;
 begin
 
-   ClearFilterBVLivPMenuClick(Sender);
-   
-   //thise is to back the same row if we didnt add anything
-   if Assigned (ProduitsListF) then
+ if Assigned (ProduitsListF) then
    begin
+    ClearFilterBVLivPMenuClick(Sender);
+   //thise is to back the same row if we didnt add anything
    if not  MainForm.ProduitTable.IsEmpty then
    begin
    CodePToUseOut :=   MainForm.ProduitTable.FieldByName('code_p').AsInteger;
@@ -881,6 +881,12 @@ begin
 //    ProduitsListDBGridEh.DataSource.DataSet.MoveBy
 //        (gc.Y - TDBGridEh(ProduitsListDBGridEh).Row);
 //  end;
+end;
+
+procedure TProduitsListF.ProduitsListDBGridEhSortMarkingChanged(
+  Sender: TObject);
+begin
+ProduitsListDBGridEh.DefaultApplySorting;
 end;
 
 procedure TProduitsListF.ProduitsListDBGridEhTitleBtnClick(Sender: TObject; ACol: Integer; Column: TColumnEh);

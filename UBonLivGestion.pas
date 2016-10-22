@@ -49,11 +49,6 @@ type
     BonLRemiseHTNewLbl: TLabel;
     ValiderBVLivBonLivGLbl: TLabel;
     NameClientGErrorP: TPanel;
-    Panel6: TPanel;
-    sSpeedButton4: TsSpeedButton;
-    sSpeedButton5: TsSpeedButton;
-    sSpeedButton6: TsSpeedButton;
-    sSpeedButton7: TsSpeedButton;
     Panel7: TPanel;
     Panel8: TPanel;
     Panel9: TPanel;
@@ -120,6 +115,10 @@ type
     frxClientDB: TfrxDBDataset;
     BonLivTotalMargeLbl: TLabel;
     sImage1: TsImage;
+    sSpeedButton7: TsSpeedButton;
+    sSpeedButton6: TsSpeedButton;
+    sSpeedButton5: TsSpeedButton;
+    sSpeedButton4: TsSpeedButton;
     procedure FormShow(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
@@ -1846,6 +1845,8 @@ begin
   begin
   BonLivResteLbl.Caption:=CurrToStrF(((MainForm.Bonv_livTable.FieldValues['MontantRes'])),ffNumber,2) ;
   end;
+
+   NumBonLivGEdt.Caption:= MainForm.Bonv_livTable.FieldByName('num_bvliv').AsString;
 end;
 
 procedure TBonLivGestionF.sSpeedButton6Click(Sender: TObject);
@@ -1881,6 +1882,8 @@ begin
   begin
   BonLivResteLbl.Caption:=CurrToStrF(((MainForm.Bonv_livTable.FieldValues['MontantRes'])),ffNumber,2) ;
   end;
+
+  NumBonLivGEdt.Caption:= MainForm.Bonv_livTable.FieldByName('num_bvliv').AsString;
 end;
 
 procedure TBonLivGestionF.sSpeedButton5Click(Sender: TObject);
@@ -1916,6 +1919,8 @@ begin
   begin
   BonLivResteLbl.Caption:=CurrToStrF(((MainForm.Bonv_livTable.FieldValues['MontantRes'])),ffNumber,2) ;
   end;
+
+  NumBonLivGEdt.Caption:= MainForm.Bonv_livTable.FieldByName('num_bvliv').AsString;
 end;
 
 procedure TBonLivGestionF.sSpeedButton4Click(Sender: TObject);
@@ -1951,6 +1956,8 @@ begin
   begin
   BonLivResteLbl.Caption:=CurrToStrF(((MainForm.Bonv_livTable.FieldValues['MontantRes'])),ffNumber,2) ;
   end;
+
+  NumBonLivGEdt.Caption:= MainForm.Bonv_livTable.FieldByName('num_bvliv').AsString;
 end;
 
 procedure TBonLivGestionF.AddBVlivBonLivGBtnClick(Sender: TObject);

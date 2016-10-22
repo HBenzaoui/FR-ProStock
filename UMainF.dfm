@@ -20860,7 +20860,7 @@ object MainForm: TMainForm
     IndexFieldNames = 'code_p'
     Connection = GstockdcConnection
     SQL.Strings = (
-      'SELECT * FROM produit ORDER BY code_p')
+      'SELECT * FROM produit ')
     Left = 48
     Top = 292
     object ProduitTablecode_p: TIntegerField
