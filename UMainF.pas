@@ -722,13 +722,17 @@ type
     ProduitTabletva_p: TSmallintField;
     ClientTablemob_c: TWideStringField;
     PanelIcons16: TsAlphaImageList;
-    BackUp: TButton;
     sImage1: TsImage;
     N18: TMenuItem;
     SwitchDBMAinFMnu: TMenuItem;
     dxActivityIndicator1: TdxActivityIndicator;
     InsertDataFDScript: TFDScript;
     CreatDB: TButton;
+    BackupDbSDlg: TSaveDialog;
+    B3: TMenuItem;
+    Restaurer1: TMenuItem;
+    N19: TMenuItem;
+    rparation1: TMenuItem;
     procedure ClientMainFBtnClick(Sender: TObject);
     procedure FourMainFBtnClick(Sender: TObject);
     procedure ProduitMainFBtnClick(Sender: TObject);
@@ -816,10 +820,10 @@ type
     procedure SFamPMainFMmnClick(Sender: TObject);
     procedure UniteMainFMmnClick(Sender: TObject);
     procedure LocalMainFMmnClick(Sender: TObject);
-    procedure BackUpClick(Sender: TObject);
     procedure SwitchDBMAinFMnuClick(Sender: TObject);
     procedure Timer2Timer(Sender: TObject);
     procedure CreatDBClick(Sender: TObject);
+    procedure B3Click(Sender: TObject);
   private
 
     TimerStart: TDateTime;
@@ -2733,13 +2737,24 @@ begin
 CaisseMainFMnmClick(Sender);
 end;
 
-procedure TMainForm.BackUpClick(Sender: TObject);
-var sCmd: string;
+procedure TMainForm.B3Click(Sender: TObject);
+var
+ BackupTask: ITask;
 begin
-//  ExeAndWait('C:\Program Files (x86)\PostgreSQL\9.6\bin\pg_dump', SW_SHOW);
-  sCmd := Pwidechar('C:\Program Files (x86)\PostgreSQL\9.6\bin\pg_dump' );                // Eable this is only for releasing
-  ShellExecute(0, 'open', PChar(sCmd) , PChar(sCmd), nil, SW_SHOW);  // Eable this is only for releasing 1 OR 2
+  BackupDbSDlg.FileName:= DateToStr(Today) ;
+ if  BackupDbSDlg.Execute then
+ begin
+     BackupTask := TTask.Create (procedure ()
+   begin
+    
+    ShellExecute(0,'open',PChar('cmd.exe '),
+    pchar('/c "C:\Program Files (x86)\PostgreSQL\9.6\bin\pg_dump.exe" -U postgres -F t GSTOCKDC > ' +
+    BackupDbSDlg.FileName  + '.backup'),nil,SW_SHOW);
+   
+   end);
+  BackupTask.Start;
 
+ end;
 end;
 
 procedure TMainForm.BankFaceBtnClick(Sender: TObject);
