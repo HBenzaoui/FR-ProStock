@@ -11,7 +11,23 @@ uses
   System.Rtti, System.Bindings.Outputs, Vcl.Bind.Editors, Data.Bind.Components,
   Data.Bind.DBScope, Data.DB, EhLibVCL, GridsEh, DBAxisGridsEh, DBGridEh,
   Vcl.StdCtrls, Vcl.ComCtrls, Vcl.ExtCtrls, acImage, Vcl.Buttons, sSpeedButton,
-  AdvToolBtn, frxClass, frxDBSet, frxExportXLS, frxExportPDF;
+  AdvToolBtn, frxClass, frxDBSet, frxExportXLS, frxExportPDF, cxGraphics,
+  cxControls, cxLookAndFeels, cxLookAndFeelPainters, cxContainer, cxEdit,
+  dxSkinsCore, dxSkinBlack, dxSkinBlue, dxSkinBlueprint, dxSkinCaramel,
+  dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide, dxSkinDevExpressDarkStyle,
+  dxSkinDevExpressStyle, dxSkinFoggy, dxSkinGlassOceans, dxSkinHighContrast,
+  dxSkiniMaginary, dxSkinLilian, dxSkinLiquidSky, dxSkinLondonLiquidSky,
+  dxSkinMcSkin, dxSkinMetropolis, dxSkinMetropolisDark, dxSkinMoneyTwins,
+  dxSkinOffice2007Black, dxSkinOffice2007Blue, dxSkinOffice2007Green,
+  dxSkinOffice2007Pink, dxSkinOffice2007Silver, dxSkinOffice2010Black,
+  dxSkinOffice2010Blue, dxSkinOffice2010Silver, dxSkinOffice2013DarkGray,
+  dxSkinOffice2013LightGray, dxSkinOffice2013White, dxSkinOffice2016Colorful,
+  dxSkinOffice2016Dark, dxSkinPumpkin, dxSkinSeven, dxSkinSevenClassic,
+  dxSkinSharp, dxSkinSharpPlus, dxSkinSilver, dxSkinSpringTime, dxSkinStardust,
+  dxSkinSummer2008, dxSkinTheAsphaltWorld, dxSkinsDefaultPainters,
+  dxSkinValentine, dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
+  dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
+  dxSkinXmas2008Blue, cxTextEdit, cxMaskEdit, cxDropDownEdit;
 
 type
   TBonFacVGestionF = class(TForm)
@@ -58,7 +74,6 @@ type
     DateBonFacVGD: TDateTimePicker;
     ClientBonFacVGCbx: TComboBox;
     Panel12: TPanel;
-    ProduitBonFacVGCbx: TComboBox;
     ResherchPARDesProduitsRdioBtn: TRadioButton;
     ResherchPARCBProduitsRdioBtn: TRadioButton;
     Panel2: TPanel;
@@ -123,6 +138,7 @@ type
     sSpeedButton6: TsSpeedButton;
     sSpeedButton5: TsSpeedButton;
     sSpeedButton4: TsSpeedButton;
+    ProduitBonFacVGCbx: TcxComboBox;
     procedure FormShow(Sender: TObject);
     procedure sSpeedButton7Click(Sender: TObject);
     procedure sSpeedButton6Click(Sender: TObject);
@@ -650,7 +666,7 @@ I : Integer;
   Cursor := crDefault;
 //  PostMessage((Sender as TComboBox).Handle, CB_SHOWDROPDOWN, 1, 0);
 //      ProduitBonFacVGCbx.Refresh;
-      ProduitBonFacVGCbx.Items.Clear;
+      ProduitBonFacVGCbx.Properties.Items.Clear;
       MainForm.ProduitTable.DisableControls;
       MainForm.ProduitTable.Active:=False;
       MainForm.ProduitTable.SQL.Clear;
@@ -668,7 +684,7 @@ I : Integer;
      for I := 0 to MainForm.ProduitTable.RecordCount - 1 do
      if ( MainForm.ProduitTable.FieldByName('nom_p').IsNull = False )  then
      begin
-       ProduitBonFacVGCbx.Items.Add(MainForm.ProduitTable.FieldByName('nom_p').AsString);
+       ProduitBonFacVGCbx.Properties.Items.Add(MainForm.ProduitTable.FieldByName('nom_p').AsString);
        MainForm.ProduitTable.Next;
       end;
      end;
@@ -679,7 +695,7 @@ I : Integer;
      for I := 0 to MainForm.ProduitTable.RecordCount - 1 do
      if( MainForm.ProduitTable.FieldByName('refer_p').IsNull = False )  then
      begin
-          ProduitBonFacVGCbx.Items.Add(MainForm.ProduitTable.FieldByName('refer_p').AsString);
+          ProduitBonFacVGCbx.Properties.Items.Add(MainForm.ProduitTable.FieldByName('refer_p').AsString);
        MainForm.ProduitTable.Next;
       end;
      end;
@@ -692,14 +708,14 @@ procedure TBonFacVGestionF.ProduitBonFacVGCbxKeyDown(Sender: TObject;
 begin
  if ResherchPARCBProduitsRdioBtn.Checked = False then
   begin
-  ProduitBonFacVGCbx.AutoDropDown:= True;
+//  ProduitBonFacVGCbx.AutoDropDown:= True;
   end;
 end;
 
 procedure TBonFacVGestionF.ProduitBonFacVGCbxExit(Sender: TObject);
 begin
 ProduitBonFacVGCbx.Text:='';
-ProduitBonFacVGCbx.AutoDropDown:=False;
+//ProduitBonFacVGCbx.AutoDropDown:=False;
 end;
 
 procedure TBonFacVGestionF.ProduitBonFacVGCbxKeyPress(Sender: TObject;
@@ -1168,7 +1184,7 @@ begin
           MainForm.ProduitTable.Active := True;
 
          MainForm.Bonv_fac_listTable.Refresh;
-        ProduitBonFacVGCbx.AutoDropDown:=False;
+//        ProduitBonFacVGCbx.AutoDropDown:=False;
          ProduitBonFacVGCbx.SelectAll;
 
      end;

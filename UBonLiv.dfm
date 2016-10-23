@@ -970,6 +970,7 @@ object BonLivF: TBonLivF
     OnDrawColumnCell = BVLivListDBGridEhDrawColumnCell
     OnKeyDown = BVLivListDBGridEhKeyDown
     OnKeyPress = BVLivListDBGridEhKeyPress
+    OnSortMarkingChanged = BVLivListDBGridEhSortMarkingChanged
     Columns = <
       item
         Alignment = taCenter

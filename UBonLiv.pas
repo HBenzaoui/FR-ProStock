@@ -103,6 +103,7 @@ type
     procedure ATermeMPFilterBVLivPMenuClick(Sender: TObject);
     procedure VirmentMPFilterBVLivPMenuClick(Sender: TObject);
     procedure ClearMPFilterBVLivPMenuClick(Sender: TObject);
+    procedure BVLivListDBGridEhSortMarkingChanged(Sender: TObject);
   private
     procedure GettingData;
     procedure Select_ALL;
@@ -857,6 +858,11 @@ begin
     if Key in ['m'] then
       EditBVLivBtnClick(Sender);
   end else Exit;
+end;
+
+procedure TBonLivF.BVLivListDBGridEhSortMarkingChanged(Sender: TObject);
+begin
+BVLivListDBGridEh.DefaultApplySorting;
 end;
 
 procedure TBonLivF.ChequeMPFilterBVLivPMenuClick(Sender: TObject);

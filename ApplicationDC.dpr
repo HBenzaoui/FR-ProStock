@@ -1,7 +1,9 @@
 program ApplicationDC;
 
 uses
-  Vcl.Forms,Windows, SysUtils,
+  Vcl.Forms,
+  Windows,
+  SysUtils,
   UMainF in 'UMainF.pas' {MainForm},
   UClientsList in 'UClientsList.pas' {ClientListF},
   Vcl.Themes,

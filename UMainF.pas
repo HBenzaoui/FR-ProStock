@@ -1018,7 +1018,7 @@ FDPhysPgDriverLink1.VendorLib:= 'C:\Program Files (x86)\PostgreSQL\9.6\bin\libpq
 //FDPhysPgDriverLink1.VendorLib:= GetCurrentDir+'\bin\libpq.dll' ;    // Eable this is only for releasing
 //  sCmd := Pwidechar(GetCurrentDir+ '\bin\pg_s.bat' );                // Eable this is only for releasing
 //  ShellExecute(0, 'open', PChar(sCmd) , PChar(sCmd), nil, SW_HIDE);  // Eable this is only for releasing 1 OR 2
-//  Sleep(1500);                                                       // Eable this is only for releasing
+//  Sleep(2000);                                                       // Eable this is only for releasing
 //
 //
 //  
@@ -1038,8 +1038,8 @@ FDPhysPgDriverLink1.VendorLib:= 'C:\Program Files (x86)\PostgreSQL\9.6\bin\libpq
 //   begin
 
 
-//  CreateTablesFDScript.ExecuteAll;                                 // Eable this is only for releasing
-//  InsertDataFDScript.ExecuteAll;                                   // Eable this is only for releasing
+  CreateTablesFDScript.ExecuteAll;                                 // Eable this is only for releasing
+  InsertDataFDScript.ExecuteAll;                                   // Eable this is only for releasing
 
      
 //   Sleep(2000);      // just for the first time                   // Eable this is only for releasing

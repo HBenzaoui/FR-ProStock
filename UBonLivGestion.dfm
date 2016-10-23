@@ -968,26 +968,6 @@ object BonLivGestionF: TBonLivGestionF
       TabOrder = 8
       StyleElements = []
     end
-    object ProduitBonLivGCbx: TComboBox
-      Left = 107
-      Top = 261
-      Width = 386
-      Height = 30
-      Anchors = [akLeft, akBottom]
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = 22
-      Font.Name = 'Helvetica LT Std'
-      Font.Style = []
-      ParentFont = False
-      Sorted = True
-      TabOrder = 1
-      OnDropDown = ProduitBonLivGCbxEnter
-      OnEnter = ProduitBonLivGCbxEnter
-      OnExit = ProduitBonLivGCbxExit
-      OnKeyDown = ProduitBonLivGCbxKeyDown
-      OnKeyPress = ProduitBonLivGCbxKeyPress
-    end
     object ResherchPARDesProduitsRdioBtn: TRadioButton
       Left = 107
       Top = 230
@@ -1253,6 +1233,26 @@ object BonLivGestionF: TBonLivGestionF
       Font.Style = []
       ParentFont = False
       TabOrder = 19
+    end
+    object ProduitBonLivGCbx: TcxComboBox
+      Left = 107
+      Top = 261
+      Anchors = [akLeft, akBottom]
+      AutoSize = False
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = 22
+      Style.Font.Name = 'Helvetica LT Std'
+      Style.Font.Style = []
+      Style.IsFontAssigned = True
+      TabOrder = 1
+      OnEnter = cxComboBox1Enter
+      OnExit = ProduitBonLivGCbxExit
+      OnKeyDown = ProduitBonLivGCbxKeyDown
+      OnKeyPress = ProduitBonLivGCbxKeyPress
+      Height = 30
+      Width = 386
     end
   end
   object ProduitsListDBGridEh: TDBGridEh

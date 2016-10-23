@@ -11,7 +11,23 @@ uses
   System.DateUtils, Data.Bind.EngExt, Vcl.Bind.DBEngExt, System.Rtti,
   System.Bindings.Outputs, Vcl.Bind.Editors, Data.Bind.Components,
   Data.Bind.DBScope, frxClass, frxDBSet, frxExportXLS, frxExportPDF, sPanel,
-  acSlider;
+  acSlider, cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters,
+  cxContainer, cxEdit, dxSkinsCore, dxSkinBlack, dxSkinBlue, dxSkinBlueprint,
+  dxSkinCaramel, dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide,
+  dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle, dxSkinFoggy,
+  dxSkinGlassOceans, dxSkinHighContrast, dxSkiniMaginary, dxSkinLilian,
+  dxSkinLiquidSky, dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMetropolis,
+  dxSkinMetropolisDark, dxSkinMoneyTwins, dxSkinOffice2007Black,
+  dxSkinOffice2007Blue, dxSkinOffice2007Green, dxSkinOffice2007Pink,
+  dxSkinOffice2007Silver, dxSkinOffice2010Black, dxSkinOffice2010Blue,
+  dxSkinOffice2010Silver, dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray,
+  dxSkinOffice2013White, dxSkinOffice2016Colorful, dxSkinOffice2016Dark,
+  dxSkinPumpkin, dxSkinSeven, dxSkinSevenClassic, dxSkinSharp, dxSkinSharpPlus,
+  dxSkinSilver, dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008,
+  dxSkinTheAsphaltWorld, dxSkinsDefaultPainters, dxSkinValentine,
+  dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
+  dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
+  dxSkinXmas2008Blue, cxTextEdit, cxMaskEdit, cxDropDownEdit;
 
 type
   TBonCtrGestionF = class(TForm)
@@ -22,7 +38,6 @@ type
     Panel5: TPanel;
     Panel6: TPanel;
     Label6: TLabel;
-    ProduitBonCtrGCbx: TComboBox;
     EnterAddProduitBonCtrGBtn: TAdvToolButton;
     ListAddProduitBonCtrGBtn: TAdvToolButton;
     NewAddProduitBonCtrGBtn: TAdvToolButton;
@@ -120,6 +135,7 @@ type
     RequiredClientGlbl: TLabel;
     NameClientGErrorP: TPanel;
     sImage1: TsImage;
+    ProduitBonCtrGCbx: TcxComboBox;
     procedure FormShow(Sender: TObject);
     procedure RemiseBonCtrGEdtDblClick(Sender: TObject);
     procedure ShowKeyBoardBonCtrGBtnClick(Sender: TObject);
@@ -174,6 +190,7 @@ type
     procedure RemisePerctageBonCtrGEdtDblClick(Sender: TObject);
     procedure FormPaint(Sender: TObject);
     procedure AddClientBonCtrGBtnClick(Sender: TObject);
+    procedure ProduitBonCtrGCbxEnter(Sender: TObject);
   private
     procedure GettingData;
     { Private declarations }
@@ -422,7 +439,7 @@ I : Integer;
   Cursor := crDefault;
 //  PostMessage((Sender as TComboBox).Handle, CB_SHOWDROPDOWN, 1, 0);
 //      ProduitBonCtrGCbx.Refresh;
-      ProduitBonCtrGCbx.Items.Clear;
+      ProduitBonCtrGCbx.Properties.Items.Clear;
       MainForm.ProduitTable.DisableControls;
       MainForm.ProduitTable.Active:=False;
       MainForm.ProduitTable.SQL.Clear;
@@ -440,7 +457,7 @@ I : Integer;
      for I := 0 to MainForm.ProduitTable.RecordCount - 1 do
      if ( MainForm.ProduitTable.FieldByName('nom_p').IsNull = False )  then
      begin
-       ProduitBonCtrGCbx.Items.Add(MainForm.ProduitTable.FieldByName('nom_p').AsString);
+       ProduitBonCtrGCbx.Properties.Items.Add(MainForm.ProduitTable.FieldByName('nom_p').AsString);
        MainForm.ProduitTable.Next;
       end;
      end;
@@ -460,10 +477,56 @@ I : Integer;
       }
 end;
 
+procedure TBonCtrGestionF.ProduitBonCtrGCbxEnter(Sender: TObject);
+var
+I : Integer;
+  begin
+  Cursor := crDefault;
+//  PostMessage((Sender as TComboBox).Handle, CB_SHOWDROPDOWN, 1, 0);
+//      ProduitBonCtrGCbx.Refresh;
+      ProduitBonCtrGCbx.Properties.Items.Clear;
+      MainForm.ProduitTable.DisableControls;
+      MainForm.ProduitTable.Active:=False;
+      MainForm.ProduitTable.SQL.Clear;
+      MainForm.ProduitTable.SQL.Text:= 'SELECT * FROM produit ';
+      MainForm.ProduitTable.Active := True;
+
+      MainForm.ProduitTable.Refresh;
+
+
+      MainForm.ProduitTable.first;
+
+   //  if ResherchPARDesProduitsRdioBtn.Checked then
+     begin
+
+     for I := 0 to MainForm.ProduitTable.RecordCount - 1 do
+     if ( MainForm.ProduitTable.FieldByName('nom_p').IsNull = False )  then
+     begin
+       ProduitBonCtrGCbx.Properties.Items.Add(MainForm.ProduitTable.FieldByName('nom_p').AsString);
+       MainForm.ProduitTable.Next;
+      end;
+     end;
+
+     MainForm.ProduitTable.EnableControls;
+
+ {     if ResherchPARRefProduitsRdioBtn.Checked then
+     begin
+
+     for I := 0 to MainForm.ProduitTable.RecordCount - 1 do
+     if( MainForm.ProduitTable.FieldByName('refer_p').IsNull = False )  then
+     begin
+          ProduitBonCtrGCbx.Items.Add(MainForm.ProduitTable.FieldByName('refer_p').AsString);
+       MainForm.ProduitTable.Next;
+      end;
+     end;
+      }
+
+end;
+
 procedure TBonCtrGestionF.ProduitBonCtrGCbxExit(Sender: TObject);
 begin
 ProduitBonCtrGCbx.Text:='';
-ProduitBonCtrGCbx.AutoDropDown:=False;
+//ProduitBonCtrGCbx.AutoDropDown:=False;
 end;
 
 procedure TBonCtrGestionF.CloseBonCtrGBtnClick(Sender: TObject);
@@ -794,7 +857,7 @@ begin
 
          MainForm.Bonv_ctr_listTable.Refresh;
         DataModuleF.Top5produit.Refresh;
-        ProduitBonCtrGCbx.AutoDropDown:=False;
+//        ProduitBonCtrGCbx.AutoDropDown:=False;
          ProduitBonCtrGCbx.SelectAll;
 
      end;

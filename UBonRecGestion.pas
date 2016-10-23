@@ -15,7 +15,23 @@ uses
   EhLibFireDAC,
   sComboBox, Data.Bind.EngExt, Vcl.Bind.DBEngExt, System.Rtti,
   System.Bindings.Outputs, Vcl.Bind.Editors, Data.Bind.Components,
-  Data.Bind.DBScope, frxClass, frxExportPDF, frxExportXLS, frxDBSet;
+  Data.Bind.DBScope, frxClass, frxExportPDF, frxExportXLS, frxDBSet, cxGraphics,
+  cxControls, cxLookAndFeels, cxLookAndFeelPainters, cxContainer, cxEdit,
+  dxSkinsCore, dxSkinBlack, dxSkinBlue, dxSkinBlueprint, dxSkinCaramel,
+  dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide, dxSkinDevExpressDarkStyle,
+  dxSkinDevExpressStyle, dxSkinFoggy, dxSkinGlassOceans, dxSkinHighContrast,
+  dxSkiniMaginary, dxSkinLilian, dxSkinLiquidSky, dxSkinLondonLiquidSky,
+  dxSkinMcSkin, dxSkinMetropolis, dxSkinMetropolisDark, dxSkinMoneyTwins,
+  dxSkinOffice2007Black, dxSkinOffice2007Blue, dxSkinOffice2007Green,
+  dxSkinOffice2007Pink, dxSkinOffice2007Silver, dxSkinOffice2010Black,
+  dxSkinOffice2010Blue, dxSkinOffice2010Silver, dxSkinOffice2013DarkGray,
+  dxSkinOffice2013LightGray, dxSkinOffice2013White, dxSkinOffice2016Colorful,
+  dxSkinOffice2016Dark, dxSkinPumpkin, dxSkinSeven, dxSkinSevenClassic,
+  dxSkinSharp, dxSkinSharpPlus, dxSkinSilver, dxSkinSpringTime, dxSkinStardust,
+  dxSkinSummer2008, dxSkinTheAsphaltWorld, dxSkinsDefaultPainters,
+  dxSkinValentine, dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
+  dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
+  dxSkinXmas2008Blue, cxTextEdit, cxMaskEdit, cxDropDownEdit;
 
 type
   TBonRecGestionF = class(TForm)
@@ -41,7 +57,6 @@ type
     DateBonRecGD: TDateTimePicker;
     FournisseurBonRecGCbx: TComboBox;
     Panel12: TPanel;
-    ProduitBonRecGCbx: TComboBox;
     ResherchPARDesProduitsRdioBtn: TRadioButton;
     ResherchPARCBProduitsRdioBtn: TRadioButton;
     ValiderBARecBonRecGBtn: TAdvToolButton;
@@ -121,6 +136,7 @@ type
     sSpeedButton8: TsSpeedButton;
     sSpeedButton10: TsSpeedButton;
     sSpeedButton7: TsSpeedButton;
+    ProduitBonRecGCbx: TcxComboBox;
     procedure ProduitBonRecGCbxEnter(Sender: TObject);
     procedure ResherchPARDesProduitsRdioBtnClick(Sender: TObject);
     procedure ResherchPARCBProduitsRdioBtnClick(Sender: TObject);
@@ -293,7 +309,7 @@ I : Integer;
   Cursor := crDefault;
 //  PostMessage((Sender as TComboBox).Handle, CB_SHOWDROPDOWN, 1, 0);
 //      ProduitBonRecGCbx.Refresh;
-      ProduitBonRecGCbx.Items.Clear;
+      ProduitBonRecGCbx.Properties.Items.Clear;
       MainForm.ProduitTable.DisableControls;
       MainForm.ProduitTable.Active:=False;
       MainForm.ProduitTable.SQL.Clear;
@@ -311,7 +327,7 @@ I : Integer;
      for I := 0 to MainForm.ProduitTable.RecordCount - 1 do
      if ( MainForm.ProduitTable.FieldByName('nom_p').IsNull = False )  then
      begin
-       ProduitBonRecGCbx.Items.Add(MainForm.ProduitTable.FieldByName('nom_p').AsString);
+       ProduitBonRecGCbx.Properties.Items.Add(MainForm.ProduitTable.FieldByName('nom_p').AsString);
        MainForm.ProduitTable.Next;
       end;
      end;
@@ -322,7 +338,7 @@ I : Integer;
      for I := 0 to MainForm.ProduitTable.RecordCount - 1 do
      if( MainForm.ProduitTable.FieldByName('refer_p').IsNull = False )  then
      begin
-          ProduitBonRecGCbx.Items.Add(MainForm.ProduitTable.FieldByName('refer_p').AsString);
+          ProduitBonRecGCbx.Properties.Items.Add(MainForm.ProduitTable.FieldByName('refer_p').AsString);
        MainForm.ProduitTable.Next;
       end;
      end;
@@ -348,7 +364,7 @@ procedure TBonRecGestionF.ProduitBonRecGCbxKeyDown(Sender: TObject;
 begin
  if ResherchPARCBProduitsRdioBtn.Checked = False then
   begin
-  ProduitBonRecGCbx.AutoDropDown:= True;
+//  ProduitBonRecGCbx.AutoDropDown:= True;
   end;
 
 end;
@@ -724,7 +740,7 @@ begin
           MainForm.ProduitTable.Active := True;
 
          MainForm.Bona_recPlistTable.Refresh;
-        ProduitBonRecGCbx.AutoDropDown:=False;
+//        ProduitBonRecGCbx.AutoDropDown:=False;
          ProduitBonRecGCbx.SelectAll;
 
      end;
@@ -1192,7 +1208,7 @@ end;
 procedure TBonRecGestionF.ProduitBonRecGCbxExit(Sender: TObject);
 begin
 ProduitBonRecGCbx.Text:='';
-ProduitBonRecGCbx.AutoDropDown:=False;
+//ProduitBonRecGCbx.AutoDropDown:=False;
 end;
 
 procedure TBonRecGestionF.BonRecPListDataSDataChange(Sender: TObject;

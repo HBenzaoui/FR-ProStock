@@ -10,7 +10,23 @@ uses
   Vcl.ComCtrls, Vcl.Buttons, sSpeedButton, AdvToolBtn, Vcl.ExtCtrls,
   Data.Bind.EngExt, Vcl.Bind.DBEngExt, System.Rtti, System.Bindings.Outputs,
   Vcl.Bind.Editors, Data.Bind.Components, Data.Bind.DBScope, acImage, frxClass,
-  frxDBSet, frxExportXLS, frxExportPDF;
+  frxDBSet, frxExportXLS, frxExportPDF, cxGraphics, cxControls, cxLookAndFeels,
+  cxLookAndFeelPainters, cxContainer, cxEdit, dxSkinsCore, dxSkinBlack,
+  dxSkinBlue, dxSkinBlueprint, dxSkinCaramel, dxSkinCoffee, dxSkinDarkRoom,
+  dxSkinDarkSide, dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle, dxSkinFoggy,
+  dxSkinGlassOceans, dxSkinHighContrast, dxSkiniMaginary, dxSkinLilian,
+  dxSkinLiquidSky, dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMetropolis,
+  dxSkinMetropolisDark, dxSkinMoneyTwins, dxSkinOffice2007Black,
+  dxSkinOffice2007Blue, dxSkinOffice2007Green, dxSkinOffice2007Pink,
+  dxSkinOffice2007Silver, dxSkinOffice2010Black, dxSkinOffice2010Blue,
+  dxSkinOffice2010Silver, dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray,
+  dxSkinOffice2013White, dxSkinOffice2016Colorful, dxSkinOffice2016Dark,
+  dxSkinPumpkin, dxSkinSeven, dxSkinSevenClassic, dxSkinSharp, dxSkinSharpPlus,
+  dxSkinSilver, dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008,
+  dxSkinTheAsphaltWorld, dxSkinsDefaultPainters, dxSkinValentine,
+  dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
+  dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
+  dxSkinXmas2008Blue, cxTextEdit, cxMaskEdit, cxDropDownEdit;
 
 type
   TBonLivGestionF = class(TForm)
@@ -57,7 +73,6 @@ type
     DateBonLivGD: TDateTimePicker;
     ClientBonLivGCbx: TComboBox;
     Panel12: TPanel;
-    ProduitBonLivGCbx: TComboBox;
     ResherchPARDesProduitsRdioBtn: TRadioButton;
     ResherchPARCBProduitsRdioBtn: TRadioButton;
     Panel2: TPanel;
@@ -119,6 +134,7 @@ type
     sSpeedButton6: TsSpeedButton;
     sSpeedButton5: TsSpeedButton;
     sSpeedButton4: TsSpeedButton;
+    ProduitBonLivGCbx: TcxComboBox;
     procedure FormShow(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
@@ -170,6 +186,7 @@ type
     procedure sSpeedButton3Click(Sender: TObject);
     procedure ProduitsListDBGridEhCellClick(Column: TColumnEh);
     procedure ProduitsListDBGridEhExit(Sender: TObject);
+    procedure cxComboBox1Enter(Sender: TObject);
   private
     { Private declarations }
     procedure GettingData;
@@ -536,7 +553,7 @@ I : Integer;
   Cursor := crDefault;
 //  PostMessage((Sender as TComboBox).Handle, CB_SHOWDROPDOWN, 1, 0);
 //      ProduitBonLivGCbx.Refresh;
-      ProduitBonLivGCbx.Items.Clear;
+      ProduitBonLivGCbx.Properties.Items.Clear;
       MainForm.ProduitTable.DisableControls;
       MainForm.ProduitTable.Active:=False;
       MainForm.ProduitTable.SQL.Clear;
@@ -554,7 +571,7 @@ I : Integer;
      for I := 0 to MainForm.ProduitTable.RecordCount - 1 do
      if ( MainForm.ProduitTable.FieldByName('nom_p').IsNull = False )  then
      begin
-       ProduitBonLivGCbx.Items.Add(MainForm.ProduitTable.FieldByName('nom_p').AsString);
+       ProduitBonLivGCbx.Properties.Items.Add(MainForm.ProduitTable.FieldByName('nom_p').AsString);
        MainForm.ProduitTable.Next;
       end;
      end;
@@ -565,7 +582,7 @@ I : Integer;
      for I := 0 to MainForm.ProduitTable.RecordCount - 1 do
      if( MainForm.ProduitTable.FieldByName('refer_p').IsNull = False )  then
      begin
-          ProduitBonLivGCbx.Items.Add(MainForm.ProduitTable.FieldByName('refer_p').AsString);
+          ProduitBonLivGCbx.Properties.Items.Add(MainForm.ProduitTable.FieldByName('refer_p').AsString);
        MainForm.ProduitTable.Next;
       end;
      end;
@@ -577,7 +594,7 @@ end;
 procedure TBonLivGestionF.ProduitBonLivGCbxExit(Sender: TObject);
 begin
 ProduitBonLivGCbx.Text:='';
-ProduitBonLivGCbx.AutoDropDown:=False;
+//ProduitBonLivGCbx.AutoDropDown:=False;
 end;
 
 procedure TBonLivGestionF.ProduitBonLivGCbxKeyDown(Sender: TObject;
@@ -585,7 +602,7 @@ procedure TBonLivGestionF.ProduitBonLivGCbxKeyDown(Sender: TObject;
 begin
  if ResherchPARCBProduitsRdioBtn.Checked = False then
   begin
-  ProduitBonLivGCbx.AutoDropDown:= True;
+//  ProduitBonLivGCbx.AutoDropDown:= True;
   end;
 
 end;
@@ -1050,7 +1067,7 @@ begin
           MainForm.ProduitTable.Active := True;
 
          MainForm.Bonv_liv_listTable.Refresh;
-        ProduitBonLivGCbx.AutoDropDown:=False;
+//        ProduitBonLivGCbx.AutoDropDown:=False;
          ProduitBonLivGCbx.SelectAll;
 
      end;
@@ -1326,6 +1343,51 @@ begin
        MainForm.CompteTable.Next;
       end;
      end;
+end;
+
+procedure TBonLivGestionF.cxComboBox1Enter(Sender: TObject);
+var
+I : Integer;
+  begin
+  Cursor := crDefault;
+//  PostMessage((Sender as TComboBox).Handle, CB_SHOWDROPDOWN, 1, 0);
+//      ProduitBonLivGCbx.Refresh;
+      ProduitBonLivGCbx.Properties.Items.Clear;
+      MainForm.ProduitTable.DisableControls;
+      MainForm.ProduitTable.Active:=False;
+      MainForm.ProduitTable.SQL.Clear;
+      MainForm.ProduitTable.SQL.Text:= 'SELECT * FROM produit ';
+      MainForm.ProduitTable.Active := True;
+
+      MainForm.ProduitTable.Refresh;
+
+
+      MainForm.ProduitTable.first;
+
+     if ResherchPARDesProduitsRdioBtn.Checked then
+     begin
+
+     for I := 0 to MainForm.ProduitTable.RecordCount - 1 do
+     if ( MainForm.ProduitTable.FieldByName('nom_p').IsNull = False )  then
+     begin
+       ProduitBonLivGCbx.Properties.Items.Add(MainForm.ProduitTable.FieldByName('nom_p').AsString);
+       MainForm.ProduitTable.Next;
+      end;
+     end;
+
+      if ResherchPARRefProduitsRdioBtn.Checked then
+     begin
+
+     for I := 0 to MainForm.ProduitTable.RecordCount - 1 do
+     if( MainForm.ProduitTable.FieldByName('refer_p').IsNull = False )  then
+     begin
+          ProduitBonLivGCbx.Properties.Items.Add(MainForm.ProduitTable.FieldByName('refer_p').AsString);
+       MainForm.ProduitTable.Next;
+      end;
+     end;
+
+     MainForm.ProduitTable.EnableControls;
+
 end;
 
 procedure TBonLivGestionF.AddClientBonLivGBtnClick(Sender: TObject);

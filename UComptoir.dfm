@@ -733,29 +733,6 @@ object BonCtrGestionF: TBonCtrGestionF
       ParentFont = False
       Visible = False
     end
-    object ProduitBonCtrGCbx: TComboBox
-      Left = 107
-      Top = 49
-      Width = 758
-      Height = 38
-      Anchors = [akLeft, akRight, akBottom]
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = 30
-      Font.Name = 'Helvetica LT Std'
-      Font.Style = []
-      ParentFont = False
-      ParentShowHint = False
-      ShowHint = True
-      Sorted = True
-      TabOrder = 0
-      OnDblClick = ProduitBonCtrGCbxDblClick
-      OnDropDown = ProduitBonCtrGCbxDropDown
-      OnEnter = ProduitBonCtrGCbxDropDown
-      OnExit = ProduitBonCtrGCbxExit
-      OnKeyPress = ProduitBonCtrGCbxKeyPress
-      OnMouseEnter = ProduitBonCtrGCbxMouseEnter
-    end
     object Panel6: TPanel
       Left = 0
       Top = 113
@@ -777,6 +754,29 @@ object BonCtrGestionF: TBonCtrGestionF
       Color = 4666873
       ParentBackground = False
       TabOrder = 2
+    end
+    object ProduitBonCtrGCbx: TcxComboBox
+      Left = 107
+      Top = 49
+      Anchors = [akLeft, akRight, akBottom]
+      AutoSize = False
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = True
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = 24
+      Style.Font.Name = 'Helvetica LT Std'
+      Style.Font.Style = []
+      Style.IsFontAssigned = True
+      TabOrder = 0
+      OnDblClick = ProduitBonCtrGCbxDblClick
+      OnEnter = ProduitBonCtrGCbxEnter
+      OnExit = ProduitBonCtrGCbxExit
+      OnKeyPress = ProduitBonCtrGCbxKeyPress
+      OnMouseEnter = ProduitBonCtrGCbxMouseEnter
+      Height = 38
+      Width = 758
     end
   end
   object Panel1: TPanel
