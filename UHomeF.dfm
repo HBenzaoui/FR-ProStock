@@ -5,6 +5,7 @@ object HomeF: THomeF
   ClientHeight = 571
   ClientWidth = 969
   Color = clBtnFace
+  DoubleBuffered = True
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
@@ -533,7 +534,7 @@ object HomeF: THomeF
         ShowHint = True
         Spacing = 10
         OnClick = BLFaceBtnClick
-        Version = '1.6.1.1'
+        Version = '1.6.1.2'
         TMSStyle = 0
       end
       object FCVFaceBtn: TAdvToolButton
@@ -567,7 +568,7 @@ object HomeF: THomeF
         ShowHint = True
         Spacing = 10
         OnClick = FCVFaceBtnClick
-        Version = '1.6.1.1'
+        Version = '1.6.1.2'
         TMSStyle = 0
       end
       object CTRFaceBtn: TAdvToolButton
@@ -601,7 +602,7 @@ object HomeF: THomeF
         ShowHint = True
         Spacing = 10
         OnClick = CTRFaceBtnClick
-        Version = '1.6.1.1'
+        Version = '1.6.1.2'
         TMSStyle = 0
       end
       object BRFaceBtn: TAdvToolButton
@@ -635,7 +636,7 @@ object HomeF: THomeF
         ShowHint = True
         Spacing = 10
         OnClick = BRFaceBtnClick
-        Version = '1.6.1.1'
+        Version = '1.6.1.2'
         ExplicitTop = 230
         TMSStyle = 0
       end
@@ -670,7 +671,7 @@ object HomeF: THomeF
         ShowHint = True
         Spacing = 10
         OnClick = FCAFaceBtnClick
-        Version = '1.6.1.1'
+        Version = '1.6.1.2'
         TMSStyle = 0
       end
       object AdvToolButton1: TAdvToolButton
@@ -703,7 +704,7 @@ object HomeF: THomeF
         ShowHint = True
         Spacing = 10
         Visible = False
-        Version = '1.6.1.1'
+        Version = '1.6.1.2'
         ExplicitTop = 230
         TMSStyle = 0
       end
@@ -738,7 +739,7 @@ object HomeF: THomeF
         ShowHint = True
         Spacing = 10
         OnClick = CaisseFaceBtnClick
-        Version = '1.6.1.1'
+        Version = '1.6.1.2'
         ExplicitTop = 357
         TMSStyle = 0
       end
@@ -773,7 +774,7 @@ object HomeF: THomeF
         ShowHint = True
         Spacing = 10
         OnClick = BankFaceBtnClick
-        Version = '1.6.1.1'
+        Version = '1.6.1.2'
         ExplicitTop = 357
         TMSStyle = 0
       end
@@ -807,7 +808,7 @@ object HomeF: THomeF
         ShowHint = True
         Spacing = 10
         Visible = False
-        Version = '1.6.1.1'
+        Version = '1.6.1.2'
         ExplicitTop = 357
         TMSStyle = 0
       end
@@ -842,7 +843,7 @@ object HomeF: THomeF
         ShowHint = True
         Spacing = 10
         OnClick = ClientFaceBtnClick
-        Version = '1.6.1.1'
+        Version = '1.6.1.2'
         ExplicitTop = 484
         TMSStyle = 0
       end
@@ -877,7 +878,7 @@ object HomeF: THomeF
         ShowHint = True
         Spacing = 10
         OnClick = FourFaceBtnClick
-        Version = '1.6.1.1'
+        Version = '1.6.1.2'
         ExplicitTop = 484
         TMSStyle = 0
       end
@@ -912,7 +913,7 @@ object HomeF: THomeF
         ShowHint = True
         Spacing = 10
         OnClick = ProduitFaceBtnClick
-        Version = '1.6.1.1'
+        Version = '1.6.1.2'
         ExplicitTop = 484
         TMSStyle = 0
       end

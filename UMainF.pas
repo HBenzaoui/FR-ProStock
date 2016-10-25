@@ -2,7 +2,7 @@ unit UMainF;
 
 interface
 
-uses
+uses 
   Winapi.Windows,
   System.DateUtils,MMSystem,
    Winapi.Messages, System.SysUtils,System.Math, System.Variants, System.Classes, Vcl.Graphics,
@@ -725,7 +725,6 @@ type
     sImage1: TsImage;
     N18: TMenuItem;
     SwitchDBMAinFMnu: TMenuItem;
-    dxActivityIndicator1: TdxActivityIndicator;
     InsertDataFDScript: TFDScript;
     CreatDB: TButton;
     BackupDbSDlg: TSaveDialog;
@@ -733,6 +732,9 @@ type
     Restaurer1: TMenuItem;
     N19: TMenuItem;
     rparation1: TMenuItem;
+    RestoreDbODlg: TOpenDialog;
+    Timer2: TTimer;
+    dxActivityIndicator1: TdxActivityIndicator;
     procedure ClientMainFBtnClick(Sender: TObject);
     procedure FourMainFBtnClick(Sender: TObject);
     procedure ProduitMainFBtnClick(Sender: TObject);
@@ -821,12 +823,14 @@ type
     procedure UniteMainFMmnClick(Sender: TObject);
     procedure LocalMainFMmnClick(Sender: TObject);
     procedure SwitchDBMAinFMnuClick(Sender: TObject);
-    procedure Timer2Timer(Sender: TObject);
     procedure CreatDBClick(Sender: TObject);
     procedure B3Click(Sender: TObject);
+    procedure rparation1Click(Sender: TObject);
   private
 
     TimerStart: TDateTime;
+    procedure ActiveTables;
+    procedure InactiveTables;
    public
      procedure WMUserCloseTab(var Message: TMessage); message
     WM_USER_CLOSETAB;
@@ -841,13 +845,14 @@ implementation
 
 {$R *.dfm}
 
-uses TlHelp32,Contnrs,System.Threading,IniFiles,
+uses   
+ TlHelp32,Contnrs,System.Threading,IniFiles,
    UClientsList, UFournisseurList, UProduitsList, UBonRec, UBonRecGestion,
   USplashAddUnite, UBonLiv, UBonLivGestion, UBonFacVGestion, UBonFacV,
   UBonFacAGestion, UBonFacA, UComptoir,ShellAPI, UBonCtr, UCaisseList,
   UBankList, UUsersList, UUsersGestion, UReglementFList, UReglementCList,
   UOptions, UModePaieList, UDashboard,uCompteList, UFamPList, USFamPList,
-  UUnitesList, ULocaleList, UHomeF, UDataModule;
+  UUnitesList, ULocaleList, UHomeF, UDataModule, USplash, UWorkingSplash;
 
   var
     gGrayForms: TComponentList;
@@ -2540,11 +2545,6 @@ begin
 //      StatuBar.Panels[1].Text:=TimeToStr(Time);
 end;
 
-procedure TMainForm.Timer2Timer(Sender: TObject);
-begin
-   dxActivityIndicator1.Visible := True;
-end;
-
 procedure TMainForm.UsersGMainFMnmClick(Sender: TObject);
 begin
   //-------- Show the splash screan for the produit familly to add new one---------//
@@ -2566,6 +2566,145 @@ if Not Assigned(ReglementFListF) then
                                         begin
                                           ReglementFListF.Show
                                         end;
+end;
+
+
+procedure TMainForm.InactiveTables;
+begin
+      ProduitTable.Active := False;
+      ClientTable.Active := False;
+      FournisseurTable.Active := False;
+      Bona_recTable.Active := False;
+      Bona_recPlistTable.Active := False;
+      Bona_facTable.Active := False;
+      Bona_fac_listTable.Active := False;
+      Bonv_livTable.Active := False;
+      Bonv_liv_listTable.Active := False;
+      Bonv_facTable.Active := False;
+      Bonv_fac_listTable.Active := False;
+      Bonv_ctrTable.Active := False;
+      Bonv_ctr_listTable.Active := False;
+      Mode_paiementTable.Active := False;
+      CompteTable.Active := False;
+      FamproduitTable.Active := False;
+      SfamproduitTable.Active := False;
+      CodebarresTable.Active := False;
+      LocalisationTable.Active := False;
+      UniteTable.Active := False;
+      WilayasTable.Active := False;
+      CommunesTable.Active := False;
+      Opt_cas_bnk_CaisseTable.Active := False;
+      Opt_cas_bnk_BankTable.Active := False;
+      UsersTable.Active := False;
+      RegclientTable.Active := False;
+      RegfournisseurTable.Active := False;
+      CompanyTable.Active := False;
+      
+      DataModuleF.TopClient.Active:= False;
+      DataModuleF.TopFour.Active:= False;
+      DataModuleF.TopVerClient.Active:= False;
+      DataModuleF.TopVerFour.Active:= False;
+      DataModuleF.Top5produit.Active:= False;
+      DataModuleF.TotalProduit.Active:= False;
+      DataModuleF.ToatalVerMonthVLIV.Active:= False;
+      DataModuleF.ToatalVerMonthVFAC.Active:= False;
+      DataModuleF.ToatalVerMonthVCTR.Active:= False;
+      DataModuleF.ToatalVerMonthAREC.Active:= False;
+      DataModuleF.ToatalVerMonthAFAC.Active:= False;
+end;
+
+procedure TMainForm.ActiveTables;
+begin
+      ProduitTable.Active := True;
+      ClientTable.Active := True;
+      FournisseurTable.Active := True;
+      Bona_recTable.Active := True;
+      Bona_recPlistTable.Active := True;
+      Bona_facTable.Active := True;
+      Bona_fac_listTable.Active := True;
+      Bonv_livTable.Active := True;
+      Bonv_liv_listTable.Active := True;
+      Bonv_facTable.Active := True;
+      Bonv_fac_listTable.Active := True;
+      Bonv_ctrTable.Active := True;
+      Bonv_ctr_listTable.Active := True;
+      Mode_paiementTable.Active := True;
+      CompteTable.Active := True;
+      FamproduitTable.Active := True;
+      SfamproduitTable.Active := True;
+      CodebarresTable.Active := True;
+      LocalisationTable.Active := True;
+      UniteTable.Active := True;
+      WilayasTable.Active := True;
+      CommunesTable.Active := True;
+      Opt_cas_bnk_CaisseTable.Active := True;
+      Opt_cas_bnk_BankTable.Active := True;
+      UsersTable.Active := True;
+      RegclientTable.Active := True;
+      RegfournisseurTable.Active := True;
+      CompanyTable.Active := True;
+      
+      DataModuleF.TopClient.Active:= True;
+      DataModuleF.TopFour.Active:= True;
+      DataModuleF.TopVerClient.Active:= True;
+      DataModuleF.TopVerFour.Active:= True;
+      DataModuleF.Top5produit.Active:= True;
+      DataModuleF.TotalProduit.Active:= True;
+      DataModuleF.ToatalVerMonthVLIV.Active:= True;
+      DataModuleF.ToatalVerMonthVFAC.Active:= True;
+      DataModuleF.ToatalVerMonthVCTR.Active:= True;
+      DataModuleF.ToatalVerMonthAREC.Active:= True;
+      DataModuleF.ToatalVerMonthAFAC.Active:= True;
+end;
+
+
+
+
+
+procedure TMainForm.rparation1Click(Sender: TObject);
+var
+ BackupTask,BackupTask2: ITask;
+begin
+             GrayForms;
+            FWorkingSplash := TFWorkingSplash.Create(MainForm);
+            FWorkingSplash.dxActivityIndicator1.Active:= True;
+            FWorkingSplash.Left := Screen.Width div 2 - (FWorkingSplash.Width div 2);
+            FWorkingSplash.Top :=  (Screen.Height- FWorkingSplash.Height) div 2;
+            FWorkingSplash.Show; 
+          
+ 
+   BackupTask := TTask.Create (procedure ()
+   begin
+        
+//        InactiveTables;
+//        dxActivityIndicator1.Active:= True;
+
+        SQLQuery.Active:= False;
+        SQLQuery.SQL.Clear;
+        SQLQuery.SQL.Text:= 'VACUUM FULL';
+        SQLQuery.ResourceOptions.CmdExecMode := amAsync;
+        SQLQuery.ExecSQL;
+
+            
+        while SQLQuery.Command.State = csExecuting  do
+        begin
+//          dxActivityIndicator1.Active:= True;
+
+        end;
+         SQLQuery.ResourceOptions.CmdExecMode  := amBlocking;
+        SQLQuery.ResourceOptions.CmdExecTimeout :=$FFFFFFFF ; 
+//        ActiveTables;
+          FWorkingSplash.Close;
+          NormalForms;
+
+//         dxActivityIndicator1.Active:= False;
+
+        SQLQuery.Active:= False;
+        SQLQuery.SQL.Clear;
+   end);
+          BackupTask.Start;
+
+      
 end;
 
 procedure TMainForm.RGClientMainFMnmClick(Sender: TObject);
@@ -2741,6 +2880,7 @@ procedure TMainForm.B3Click(Sender: TObject);
 var
  BackupTask: ITask;
 begin
+   
   BackupDbSDlg.FileName:= DateToStr(Today) ;
  if  BackupDbSDlg.Execute then
  begin
@@ -2748,13 +2888,14 @@ begin
    begin
     
     ShellExecute(0,'open',PChar('cmd.exe '),
-    pchar('/c "C:\Program Files (x86)\PostgreSQL\9.6\bin\pg_dump.exe" -U postgres -F t GSTOCKDC > ' +
-    BackupDbSDlg.FileName  + '.backup'),nil,SW_SHOW);
+    pchar('/c "C:\Program Files (x86)\PostgreSQL\9.6\bin\pg_dump.exe" -U postgres -F c GSTOCKDC > ' +
+    BackupDbSDlg.FileName  + '.backup'),nil,SW_HIDE);
    
    end);
   BackupTask.Start;
 
  end;
+
 end;
 
 procedure TMainForm.BankFaceBtnClick(Sender: TObject);
@@ -3091,6 +3232,14 @@ begin
       sImage1.Tag := 0;
 
      end;
+   
+
+   if Assigned(DashboardF) then
+   begin
+     DashboardF.OnPaint(Sender)
+   end;
+   
+
    
 end;
 

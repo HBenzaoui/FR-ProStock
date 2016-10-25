@@ -763,7 +763,7 @@ object MainForm: TMainForm
     Left = 0
     Top = 71
     Width = 0
-    Height = 577
+    Height = 579
     Color = 12148480
     Opened = False
     OpenedWidth = 150
@@ -774,7 +774,7 @@ object MainForm: TMainForm
       Left = 0
       Top = 0
       Width = 0
-      Height = 577
+      Height = 579
       ParentCustomHint = False
       HorzScrollBar.Visible = False
       VertScrollBar.Range = 220
@@ -1253,15 +1253,16 @@ object MainForm: TMainForm
   end
   object dxActivityIndicator1: TdxActivityIndicator
     Left = 0
-    Top = 648
+    Top = 650
     Width = 969
-    Height = 10
+    Height = 8
     Align = alBottom
     LookAndFeel.NativeStyle = False
-    LookAndFeel.SkinName = 'Office2010Blue'
     PropertiesClassName = 'TdxActivityIndicatorHorizontalDotsProperties'
-    Properties.AnimationTime = 1800
-    Visible = False
+    Properties.OverlayColor = -2629917
+    Properties.DotColor = -16687201
+    Properties.DotCount = 7
+    Transparent = True
   end
   object MainMenu1: TMainMenu
     Images = MainMenuImageListMainFormaa
@@ -1273,14 +1274,16 @@ object MainForm: TMainForm
       object OptionMainFMnm: TMenuItem
         Caption = 'Configuration'
         ImageIndex = 13
+        ShortCut = 16463
         OnClick = OptionMainFMnmClick
       end
       object N6: TMenuItem
         Caption = '-'
       end
       object UsersGMainFMnm: TMenuItem
-        Caption = 'Gestion Des Utilisateurs'
+        Caption = 'Gestion Des Utilisateurs   '
         ImageIndex = 14
+        ShortCut = 16469
         OnClick = UsersGMainFMnmClick
       end
       object N18: TMenuItem
@@ -1296,18 +1299,19 @@ object MainForm: TMainForm
         Caption = 'R'#233'par'#233
         ImageIndex = 27
         ShortCut = 16466
+        OnClick = rparation1Click
       end
       object N19: TMenuItem
         Caption = '-'
       end
       object B3: TMenuItem
-        Caption = 'Sauvegarder'
+        Caption = 'Sauvegarder...   '
         ImageIndex = 28
         ShortCut = 24659
         OnClick = B3Click
       end
       object Restaurer1: TMenuItem
-        Caption = 'Restaurer'
+        Caption = 'Restaurer...   '
         ImageIndex = 29
         ShortCut = 24658
       end
@@ -1317,6 +1321,7 @@ object MainForm: TMainForm
       object Q1: TMenuItem
         Caption = 'Quitter'
         ImageIndex = 12
+        ShortCut = 32883
       end
     end
     object A1: TMenuItem
@@ -53108,5 +53113,16 @@ object MainForm: TMainForm
     Filter = 'Backup files (*.Backup)|*.Backup'
     Left = 722
     Top = 166
+  end
+  object RestoreDbODlg: TOpenDialog
+    Filter = 'Backup files (*.Backup)|*.Backup'
+    Left = 718
+    Top = 210
+  end
+  object Timer2: TTimer
+    Enabled = False
+    Interval = 7000
+    Left = 916
+    Top = 130
   end
 end

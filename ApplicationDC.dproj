@@ -5,7 +5,7 @@
         <FrameworkType>VCL</FrameworkType>
         <MainSource>ApplicationDC.dpr</MainSource>
         <Base>True</Base>
-        <Config Condition="'$(Config)'==''">Release</Config>
+        <Config Condition="'$(Config)'==''">Debug</Config>
         <Platform Condition="'$(Platform)'==''">Win32</Platform>
         <TargetedPlatforms>1</TargetedPlatforms>
         <AppType>Application</AppType>
@@ -221,6 +221,10 @@
         </DCCReference>
         <DCCReference Include="UUnitesList.pas">
             <Form>UnitesListF</Form>
+        </DCCReference>
+        <DCCReference Include="UWorkingSplash.pas">
+            <Form>FWorkingSplash</Form>
+            <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
