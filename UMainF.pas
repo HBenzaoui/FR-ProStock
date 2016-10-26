@@ -735,6 +735,8 @@ type
     RestoreDbODlg: TOpenDialog;
     Timer2: TTimer;
     dxActivityIndicator1: TdxActivityIndicator;
+    N20: TMenuItem;
+    Rpar1: TMenuItem;
     procedure ClientMainFBtnClick(Sender: TObject);
     procedure FourMainFBtnClick(Sender: TObject);
     procedure ProduitMainFBtnClick(Sender: TObject);
@@ -826,6 +828,9 @@ type
     procedure CreatDBClick(Sender: TObject);
     procedure B3Click(Sender: TObject);
     procedure rparation1Click(Sender: TObject);
+    procedure Rpar1Click(Sender: TObject);
+    procedure Restaurer1Click(Sender: TObject);
+    procedure Q1Click(Sender: TObject);
   private
 
     TimerStart: TDateTime;
@@ -884,7 +889,7 @@ begin
           gGrayForms.Add(wForm);
           wForm.Position := poOwnerFormCenter;
           wForm.AlphaBlend := true;
-          wForm.AlphaBlendValue := 150;
+          wForm.AlphaBlendValue := 80;
           wForm.Color := clBlack;
           wForm.BorderStyle := bsNone;
           wForm.StyleElements := [];
@@ -1100,6 +1105,11 @@ begin
  (ProduitTable.FieldValues['qut_p'] + ProduitTable.FieldValues['qutini_p']);
 
 
+end;
+
+procedure TMainForm.Q1Click(Sender: TObject);
+begin
+Close;
 end;
 
 procedure TMainForm.Bona_recPlistTableCalcFields(DataSet: TDataSet);
@@ -2569,6 +2579,51 @@ if Not Assigned(ReglementFListF) then
 end;
 
 
+procedure TMainForm.Rpar1Click(Sender: TObject);
+var
+ BackupTask: ITask;
+begin
+             GrayForms;
+            FWorkingSplash := TFWorkingSplash.Create(MainForm);
+            FWorkingSplash.dxActivityIndicator1.Active:= True;
+            FWorkingSplash.Left := Screen.Width div 2 - (FWorkingSplash.Width div 2);
+            FWorkingSplash.Top :=  (Screen.Height- FWorkingSplash.Height) div 2;
+            FWorkingSplash.Show; 
+          
+ 
+   BackupTask := TTask.Create (procedure ()
+   begin
+        
+//        InactiveTables;
+//        dxActivityIndicator1.Active:= True;
+
+        SQLQuery.Active:= False;
+        SQLQuery.SQL.Clear;
+        SQLQuery.SQL.Text:= 'VACUUM';
+        SQLQuery.ResourceOptions.CmdExecMode := amAsync;
+        SQLQuery.ExecSQL;
+
+            
+        while SQLQuery.Command.State = csExecuting  do
+        begin
+//          dxActivityIndicator1.Active:= True;
+
+        end;
+         SQLQuery.ResourceOptions.CmdExecMode  := amBlocking;
+        SQLQuery.ResourceOptions.CmdExecTimeout :=$FFFFFFFF ; 
+//        ActiveTables;
+          FWorkingSplash.Close;
+          NormalForms;
+
+//         dxActivityIndicator1.Active:= False;
+
+        SQLQuery.Active:= False;
+        SQLQuery.SQL.Clear;
+   end);
+          BackupTask.Start;
+
+end;
+
 procedure TMainForm.InactiveTables;
 begin
       ProduitTable.Active := False;
@@ -2663,7 +2718,7 @@ end;
 
 procedure TMainForm.rparation1Click(Sender: TObject);
 var
- BackupTask,BackupTask2: ITask;
+ BackupTask: ITask;
 begin
              GrayForms;
             FWorkingSplash := TFWorkingSplash.Create(MainForm);
@@ -2833,6 +2888,55 @@ begin
 //      end;
 end;
 
+procedure TMainForm.Restaurer1Click(Sender: TObject);
+var
+ RestoreTask: ITask;
+ Backupname,input,cmd,PathRS,NamePathRS : string;
+ StartInfo: TStartupInfo;
+ ProcInfo: TProcessInformation;
+ CreateOk: boolean;
+
+begin
+  
+  RestoreDbODlg.FileName:= 'Backup_Le_' +
+   IntToStr(DayOf(Today)) +'-'+ IntToStr(MonthOf(Today))+ '-'+ IntToStr(YearOf(Today)) ;
+ if  RestoreDbODlg.Execute then
+ begin
+
+  { fill with known state }
+  FillChar(StartInfo, SizeOf(TStartupInfo), #0);
+  FillChar(ProcInfo, SizeOf(TProcessInformation), #0);
+  StartInfo.cb := SizeOf(TStartupInfo);
+  StartInfo.dwFlags := STARTF_USESHOWWINDOW or STARTF_FORCEONFEEDBACK;
+  NamePathRS:=  StringReplace((ExtractFileName(RestoreDbODlg.FileName)) , #32 , '_', [rfReplaceAll]) ;
+  
+  PathRS :=ExtractFilePath(RestoreDbODlg.FileName);
+  cmd := 'C:\Windows\System32\cmd.exe';
+  //debug
+  input := '/c "C:\Program Files (x86)\PostgreSQL\9.6\bin\pg_restore.exe" --username postgres --dbname=testes --no-password --clean '+ NamePathRS;
+
+   RestoreTask := TTask.Create (procedure ()
+   begin
+
+     CreateOk := CreateProcess(PChar(cmd), PChar(input), nil, nil, false, CREATE_NEW_PROCESS_GROUP + NORMAL_PRIORITY_CLASS, nil,
+     Pchar(PathRS), StartInfo, ProcInfo);
+  { check to see if successful }
+  if CreateOk then
+//     may or may not be needed. Usually wait for child processes
+    WaitForSingleObject(ProcInfo.hProcess, INFINITE);
+    CloseHandle(ProcInfo.hProcess);
+    CloseHandle(ProcInfo.hThread);
+      RestoreDbODlg.FileName:='';
+      
+   end);
+  RestoreTask.Start;
+ 
+
+ end;   
+
+ 
+end;
+
 procedure TMainForm.CtrMainFMmnClick(Sender: TObject);
 begin
      if Not Assigned(BonCtrF) then
@@ -2879,18 +2983,46 @@ end;
 procedure TMainForm.B3Click(Sender: TObject);
 var
  BackupTask: ITask;
+ Backupname,PathBC,NamePathBC,input,cmd : string;
+
+  StartInfo: TStartupInfo;
+  ProcInfo: TProcessInformation;
+  CreateOk: boolean;
+  AppDone    : DWord;
+
 begin
-   
-  BackupDbSDlg.FileName:= DateToStr(Today) ;
+  
+   BackupDbSDlg.FileName:= 'Backup_Le_' +
+   IntToStr(DayOf(Today)) +'-'+ IntToStr(MonthOf(Today))+ '-'+ IntToStr(YearOf(Today)) ;
  if  BackupDbSDlg.Execute then
  begin
-     BackupTask := TTask.Create (procedure ()
+
+  { fill with known state }
+  FillChar(StartInfo, SizeOf(TStartupInfo), #0);
+  FillChar(ProcInfo, SizeOf(TProcessInformation), #0);
+  StartInfo.cb := SizeOf(TStartupInfo);
+  StartInfo.dwFlags := STARTF_USESHOWWINDOW or STARTF_FORCEONFEEDBACK;
+  NamePathBC:=  StringReplace((ExtractFileName(BackupDbSDlg.FileName)) , #32 , '_', [rfReplaceAll]) +'.backup' ;
+  
+  PathBC :=ExtractFilePath(BackupDbSDlg.FileName);
+  cmd := 'C:\Windows\System32\cmd.exe';
+  //debug
+  input := '/c "C:\Program Files (x86)\PostgreSQL\9.6\bin\pg_dump.exe" -U postgres -F c GSTOCKDC > '+ NamePathBC;
+
+   BackupTask := TTask.Create (procedure ()
    begin
-    
-    ShellExecute(0,'open',PChar('cmd.exe '),
-    pchar('/c "C:\Program Files (x86)\PostgreSQL\9.6\bin\pg_dump.exe" -U postgres -F c GSTOCKDC > ' +
-    BackupDbSDlg.FileName  + '.backup'),nil,SW_HIDE);
-   
+
+     CreateOk := CreateProcess(PChar(cmd), PChar(input), nil, nil, false, CREATE_NEW_PROCESS_GROUP + NORMAL_PRIORITY_CLASS, nil,
+     Pchar(PathBC), StartInfo, ProcInfo);
+  { check to see if successful }
+  if CreateOk then
+//     may or may not be needed. Usually wait for child processes
+    begin
+        WaitForSingleObject(ProcInfo.hProcess, INFINITE);
+        CloseHandle(ProcInfo.hProcess);
+        CloseHandle(ProcInfo.hThread);
+    end;
+    BackupDbSDlg.FileName:='';
    end);
   BackupTask.Start;
 

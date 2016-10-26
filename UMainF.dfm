@@ -1295,11 +1295,20 @@ object MainForm: TMainForm
         ShortCut = 16452
         OnClick = SwitchDBMAinFMnuClick
       end
+      object N20: TMenuItem
+        Caption = '-'
+      end
       object rparation1: TMenuItem
-        Caption = 'R'#233'par'#233
+        Caption = 'R'#233'paration'
         ImageIndex = 27
         ShortCut = 16466
         OnClick = rparation1Click
+      end
+      object Rpar1: TMenuItem
+        Caption = 'R'#233'paration Compl'#232'te'
+        ShortCut = 49234
+        Visible = False
+        OnClick = Rpar1Click
       end
       object N19: TMenuItem
         Caption = '-'
@@ -1314,6 +1323,7 @@ object MainForm: TMainForm
         Caption = 'Restaurer...   '
         ImageIndex = 29
         ShortCut = 24658
+        OnClick = Restaurer1Click
       end
       object N7: TMenuItem
         Caption = '-'
@@ -1322,6 +1332,7 @@ object MainForm: TMainForm
         Caption = 'Quitter'
         ImageIndex = 12
         ShortCut = 32883
+        OnClick = Q1Click
       end
     end
     object A1: TMenuItem
@@ -53111,6 +53122,7 @@ object MainForm: TMainForm
   end
   object BackupDbSDlg: TSaveDialog
     Filter = 'Backup files (*.Backup)|*.Backup'
+    Options = [ofReadOnly, ofOverwritePrompt, ofHideReadOnly, ofEnableSizing]
     Left = 722
     Top = 166
   end
