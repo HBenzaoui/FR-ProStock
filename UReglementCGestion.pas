@@ -83,6 +83,7 @@ begin
 GrayForms;
     if Tag = 0 then
     begin
+    DateRegCGD.Date:=EncodeDate (YearOf(Now),MonthOf(Now),DayOf(Now));
     RegCGClientOLDCredit.Caption :=      FloatToStrF(StrToFloat(RegCGClientOLDCredit.Caption),ffNumber,14,2) ;
     RegCGClientNEWCredit.Caption :=      FloatToStrF(StrToFloat(RegCGClientNEWCredit.Caption),ffNumber,14,2) ;
     end;

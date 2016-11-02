@@ -912,6 +912,9 @@ ClearTVAFilterPMenu.Checked:= True;
   Select_PRIX_ACHAT_WITH;
   ClearFilterBVLivPMenu.Checked:= False;
 
+  ProduitsListDBGridEh.Columns[9].Visible := True;
+  ProduitsListDBGridEh.Columns[10].Visible := True;
+
 end;
 
 procedure TProduitsListF.ResearchProduitsEdtChange(Sender: TObject);
@@ -1076,7 +1079,9 @@ begin
   ClearRegleFilterBVLivPMenu.Checked := True;
   ClearMPFilterBVLivPMenu.Checked := True;
   ClearTVAFilterPMenu.Checked := True;
-
+  
+  ProduitsListDBGridEh.Columns[9].Visible := False;
+  ProduitsListDBGridEh.Columns[10].Visible := False;
 
 end;
 
@@ -1096,6 +1101,9 @@ begin
   FilterBVLivBtn.ImageIndex:=49;
   NOT_FilteredColor;
   Select_ALL;
+  
+  ProduitsListDBGridEh.Columns[9].Visible := False;
+  ProduitsListDBGridEh.Columns[10].Visible := False;
 end;
 
 procedure TProduitsListF.ClearValideFilterBVLivPMenuClick(Sender: TObject);

@@ -163,7 +163,7 @@ object ReglementFGestionF: TReglementFGestionF
     ShowHint = True
     Spacing = -1
     OnClick = AddFourRegFGBtnClick
-    Version = '1.6.1.1'
+    Version = '1.6.1.2'
     TMSStyle = 0
   end
   object AddCompteRegFGBtn: TAdvToolButton
@@ -195,7 +195,7 @@ object ReglementFGestionF: TReglementFGestionF
     ShowHint = True
     Spacing = -1
     OnClick = AddCompteRegFGBtnClick
-    Version = '1.6.1.1'
+    Version = '1.6.1.2'
     TMSStyle = 0
   end
   object Label3: TLabel
@@ -243,7 +243,7 @@ object ReglementFGestionF: TReglementFGestionF
     ShowHint = True
     Spacing = -1
     OnClick = AddModePaieRegFGBtnClick
-    Version = '1.6.1.1'
+    Version = '1.6.1.2'
     TMSStyle = 0
   end
   object Label4: TLabel
@@ -334,7 +334,7 @@ object ReglementFGestionF: TReglementFGestionF
     ShowHint = True
     Spacing = 10
     OnClick = OKRegFGBtnClick
-    Version = '1.6.1.1'
+    Version = '1.6.1.2'
     TMSStyle = 0
   end
   object CancelRegFGBtn: TAdvToolButton
@@ -365,7 +365,7 @@ object ReglementFGestionF: TReglementFGestionF
     ShowHint = True
     Spacing = -1
     OnClick = CancelRegFGBtnClick
-    Version = '1.6.1.1'
+    Version = '1.6.1.2'
     TMSStyle = 0
   end
   object label13: TLabel

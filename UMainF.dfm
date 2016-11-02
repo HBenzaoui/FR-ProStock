@@ -20614,7 +20614,7 @@ object MainForm: TMainForm
     object ClientTablenom_c: TWideStringField
       FieldName = 'nom_c'
       Origin = 'nom_c'
-      Size = 60
+      Size = 100
     end
     object ClientTableadr_c: TWideStringField
       FieldName = 'adr_c'
@@ -20757,7 +20757,7 @@ object MainForm: TMainForm
     object FournisseurTablenom_f: TWideStringField
       FieldName = 'nom_f'
       Origin = 'nom_f'
-      Size = 60
+      Size = 100
     end
     object FournisseurTableadr_f: TWideStringField
       DisplayWidth = 60
@@ -42792,7 +42792,7 @@ object MainForm: TMainForm
   end
   object AddUnitCompteDataS: TDataSource
     DataSet = CompteTable
-    Left = 756
+    Left = 754
     Top = 509
   end
   object GridIconsComptes20: TsAlphaImageList

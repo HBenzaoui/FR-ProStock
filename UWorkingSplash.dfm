@@ -25,5 +25,6 @@ object FWorkingSplash: TFWorkingSplash
     Height = 92
     Align = alClient
     PropertiesClassName = 'TdxActivityIndicatorElasticCircleProperties'
+    Properties.ArcColor = -13079109
   end
 end

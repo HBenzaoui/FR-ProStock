@@ -794,23 +794,25 @@ procedure TDashboardF.MonthsData;
         end;
 
 
+    //------ Thise Series1 is for Achats------/
     with Series1 do
     begin
       Clear;
-      Add(  b[0],   'Jan' , $00E5B533 ) ;
-      Add(  b[1],   'Fev',  $00E5B533 ) ;
-      Add(  b[2],   'Mar',  $00E5B533 ) ;
-      Add(  b[3],   'Avr',  $00E5B533 ) ;
-      Add(  b[4],   'Mai',  $00E5B533 ) ;
-      Add(  b[5],   'Jui' , $00E5B533 ) ;
-      Add(  b[6],   'Jul',  $00E5B533 ) ;
-      Add(  b[7],   'Aou',  $00E5B533 ) ;
-      Add(  b[8],   'Sep',  $00E5B533 ) ;
-      Add(  b[9],   'Oct',  $00E5B533 ) ;
-      Add(  b[10],  'Nov',  $00E5B533 ) ;
-      Add(  b[11],  'Dec',  $00E5B533 ) ;
+      Add(  b[0],   'Jan' , $00813AE1 ) ;
+      Add(  b[1],   'Fev',  $00813AE1 ) ;
+      Add(  b[2],   'Mar',  $00813AE1 ) ;
+      Add(  b[3],   'Avr',  $00813AE1 ) ;
+      Add(  b[4],   'Mai',  $00813AE1 ) ;
+      Add(  b[5],   'Jui' , $00813AE1 ) ;
+      Add(  b[6],   'Jul',  $00813AE1 ) ;
+      Add(  b[7],   'Aou',  $00813AE1 ) ;
+      Add(  b[8],   'Sep',  $00813AE1 ) ;
+      Add(  b[9],   'Oct',  $00813AE1 ) ;
+      Add(  b[10],  'Nov',  $00813AE1 ) ;
+      Add(  b[11],  'Dec',  $00813AE1 ) ;  //--- this is thye old colcor $00E5B533
 
     end;
+
 
   //----------- calculte the VENTES--------------------
        b[0] := 0; b[1] := 0; b[2] := 0; b[3] := 0; b[4] := 0;
@@ -1227,27 +1229,24 @@ procedure TDashboardF.MonthsData;
 
         end;
 
-
+   //------ Thise Series2 is for ventes------/
     with Series2 do
     begin
       Clear;
-      Add(  b[0],   'Jan' , $00CC3399 ) ;
-      Add(  b[1],   'Fev',  $00CC3399 ) ;
-      Add(  b[2],   'Mar',  $00CC3399 ) ;
-      Add(  b[3],   'Avr',  $00CC3399 ) ;
-      Add(  b[4],   'Mai',  $00CC3399 ) ;
-      Add(  b[5],   'Jui' , $00CC3399 ) ;
-      Add(  b[6],   'Jul',  $00CC3399 ) ;
-      Add(  b[7],   'Aou',  $00CC3399 ) ;
-      Add(  b[8],   'Sep',  $00CC3399 ) ;
-      Add(  b[9],   'Oct',  $00CC3399 ) ;
-      Add(  b[10],  'Nov',  $00CC3399 ) ;
-      Add(  b[11],  'Dec',  $00CC3399 ) ;
+      Add(  b[0],   'Jan' , $00CBA016 ) ;
+      Add(  b[1],   'Fev',  $00CBA016 ) ;
+      Add(  b[2],   'Mar',  $00CBA016 ) ;
+      Add(  b[3],   'Avr',  $00CBA016 ) ;
+      Add(  b[4],   'Mai',  $00CBA016 ) ;
+      Add(  b[5],   'Jui' , $00CBA016 ) ;
+      Add(  b[6],   'Jul',  $00CBA016 ) ;
+      Add(  b[7],   'Aou',  $00CBA016 ) ;
+      Add(  b[8],   'Sep',  $00CBA016 ) ;
+      Add(  b[9],   'Oct',  $00CBA016 ) ;
+      Add(  b[10],  'Nov',  $00CBA016 ) ;
+      Add(  b[11],  'Dec',  $00CBA016 ) ;  //--- this is thye old colcor $00CC3399
 
     end;
-
-
-
 
 
 end;
@@ -1261,11 +1260,19 @@ MonthsData;
     with PieSeries1 do
     begin
       Clear;
-      Add(  StrToInt(NBLDashBLbl.Caption),  'BL' ,  $004444FF ) ; 
-      Add(  StrToInt(NFVDashBLbl.Caption),  'FCV',  $00CC66AA ) ;
-      Add(  StrToInt(NCTRDashBLbl.Caption), 'BCTR', $0000CC99 ) ;
-      Add(  StrToInt(NBRDashBLbl.Caption),  'BR',   $00E5B533 ) ;
-      Add(  StrToInt(NFADashBLbl.Caption),  'FCA',  $0033BBFF ) ;       
+//      Add(  StrToInt(NBLDashBLbl.Caption),  'BL' ,  $004444FF ) ; 
+//      Add(  StrToInt(NFVDashBLbl.Caption),  'FCV',  $00CC66AA ) ;
+//      Add(  StrToInt(NCTRDashBLbl.Caption), 'BCTR', $0000CC99 ) ;
+//      Add(  StrToInt(NBRDashBLbl.Caption),  'BR',   $00E5B533 ) ;
+//      Add(  StrToInt(NFADashBLbl.Caption),  'FCA',  $0033BBFF ) ; 
+
+
+
+      Add(  StrToInt(NBLDashBLbl.Caption),  'BL' ,  $00CBA016 ) ; 
+      Add(  StrToInt(NFVDashBLbl.Caption),  'FCV',  $00BFC86B ) ;
+      Add(  StrToInt(NCTRDashBLbl.Caption), 'BCTR', $0083CAF4 ) ;
+      Add(  StrToInt(NBRDashBLbl.Caption),  'BR',   $00813AE1 ) ;
+      Add(  StrToInt(NFADashBLbl.Caption),  'FCA',  $00A674EB ) ;       
     end;
 
 //  TTask.Run ( procedure

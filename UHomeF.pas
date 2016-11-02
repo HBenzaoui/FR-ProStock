@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, AdvToolBtn, Vcl.ExtCtrls, Vcl.StdCtrls,
-  dxGDIPlusClasses;
+  dxGDIPlusClasses, acPNG;
 
 type
   THomeF = class(TForm)

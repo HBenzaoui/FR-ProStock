@@ -547,9 +547,26 @@ object ProduitsListF: TProduitsListF
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
+        FieldName = 'prixht_p'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 18
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
+        Footers = <>
+        Layout = tlCenter
+        Title.Alignment = taCenter
+        Title.Caption = 'PrixAHT'
+        Visible = False
+        Width = 130
+      end
+      item
+        DisplayFormat = '#,##0.00'
+        DynProps = <>
+        EditButtons = <>
         FieldName = 'PrixATTC'
         Font.Charset = DEFAULT_CHARSET
-        Font.Color = 5345802
+        Font.Color = 4207405
         Font.Height = 18
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
@@ -558,7 +575,7 @@ object ProduitsListF: TProduitsListF
         Layout = tlCenter
         Title.Alignment = taCenter
         Visible = False
-        Width = 131
+        Width = 130
         WordWrap = False
       end
       item

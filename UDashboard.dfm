@@ -1507,6 +1507,7 @@ object DashboardF: TDashboardF
           Marks.Callout.Arrow.Visible = False
           Marks.Clip = True
           PercentFormat = '##0.##,%'
+          SeriesColor = 8469217
           Title = 'Les Achat'
           BarStyle = bsRoundRectangle
           BarWidthPercent = 80
@@ -1535,7 +1536,7 @@ object DashboardF: TDashboardF
           Marks.Callout.Arrow.Visible = False
           Marks.Clip = True
           PercentFormat = '##0.##,%'
-          SeriesColor = 13382553
+          SeriesColor = 13344790
           Title = 'Les Ventes'
           BarStyle = bsRoundRectangle
           BarWidthPercent = 80

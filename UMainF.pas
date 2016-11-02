@@ -836,6 +836,7 @@ type
     TimerStart: TDateTime;
     procedure ActiveTables;
     procedure InactiveTables;
+    procedure RerfreshTables;
    public
      procedure WMUserCloseTab(var Message: TMessage); message
     WM_USER_CLOSETAB;
@@ -1021,8 +1022,6 @@ begin
   FormatSettings.DateSeparator:= '/';
   FormatSettings.ShortTimeFormat:= 'dd/M/yyyy';
 
-  
-
 
   
 Screen.MenuFont.Height := 15;
@@ -1033,9 +1032,9 @@ FDPhysPgDriverLink1.VendorLib:= 'C:\Program Files (x86)\PostgreSQL\9.6\bin\libpq
 //  sCmd := Pwidechar(GetCurrentDir+ '\bin\pg_s.bat' );                // Eable this is only for releasing
 //  ShellExecute(0, 'open', PChar(sCmd) , PChar(sCmd), nil, SW_HIDE);  // Eable this is only for releasing 1 OR 2
 //  Sleep(2000);                                                       // Eable this is only for releasing
-//
-//
-//  
+
+
+  
 //  ExeAndWait( GetCurrentDir+ '\bin\pg_s.bat', SW_HIDE);              // Eable this is only for releasing 1 OR 2
 
   GstockdcConnection.DriverName := 'PG';
@@ -2713,7 +2712,50 @@ begin
 end;
 
 
-
+   
+ procedure TMainForm.RerfreshTables;
+begin
+      ProduitTable.Refresh;
+      ClientTable.Refresh  ;
+      FournisseurTable.Refresh ;
+      Bona_recTable.Refresh  ;
+      Bona_recPlistTable.Refresh;
+      Bona_facTable.Refresh  ;
+      Bona_fac_listTable.Refresh  ;
+      Bonv_livTable.Refresh ;
+      Bonv_liv_listTable.Refresh  ;
+      Bonv_facTable.Refresh ;
+      Bonv_fac_listTable.Refresh  ;
+      Bonv_ctrTable.Refresh ;
+      Bonv_ctr_listTable.Refresh ;
+      Mode_paiementTable.Refresh;
+      CompteTable.Refresh ;
+      FamproduitTable.Refresh  ;
+      SfamproduitTable.Refresh ;
+      CodebarresTable.Refresh ;
+      LocalisationTable.Refresh;
+      UniteTable.Refresh ;
+      WilayasTable.Refresh  ;
+      CommunesTable.Refresh ;
+      Opt_cas_bnk_CaisseTable.Refresh  ;
+      Opt_cas_bnk_BankTable.Refresh;
+      UsersTable.Refresh ;
+      RegclientTable.Refresh ;
+      RegfournisseurTable.Refresh ;
+      CompanyTable.Refresh ;
+      
+      DataModuleF.TopClient.Refresh ;
+      DataModuleF.TopFour.Refresh ;
+      DataModuleF.TopVerClient.Refresh ;
+      DataModuleF.TopVerFour.Refresh ;
+      DataModuleF.Top5produit.Refresh;
+      DataModuleF.TotalProduit.Refresh ;
+      DataModuleF.ToatalVerMonthVLIV.Refresh;
+      DataModuleF.ToatalVerMonthVFAC.Refresh;
+      DataModuleF.ToatalVerMonthVCTR.Refresh;
+      DataModuleF.ToatalVerMonthAREC.Refresh;
+      DataModuleF.ToatalVerMonthAFAC.Refresh;
+end;
 
 
 procedure TMainForm.rparation1Click(Sender: TObject);
@@ -2890,7 +2932,7 @@ end;
 
 procedure TMainForm.Restaurer1Click(Sender: TObject);
 var
- RestoreTask: ITask;
+ RestoreTask,ShowTask: ITask;
  Backupname,input,cmd,PathRS,NamePathRS : string;
  StartInfo: TStartupInfo;
  ProcInfo: TProcessInformation;
@@ -2902,7 +2944,19 @@ begin
    IntToStr(DayOf(Today)) +'-'+ IntToStr(MonthOf(Today))+ '-'+ IntToStr(YearOf(Today)) ;
  if  RestoreDbODlg.Execute then
  begin
+//  ShowTask:= TTask.Create (procedure ()
+//   begin
+        GrayForms;
+    FWorkingSplash := TFWorkingSplash.Create(MainForm);
+    FWorkingSplash.dxActivityIndicator1.Active:= True;
+    FWorkingSplash.Left := Screen.Width div 2 - (FWorkingSplash.Width div 2);
+    FWorkingSplash.Top :=  (Screen.Height- FWorkingSplash.Height) div 2;
+    FWorkingSplash.Show; 
+//   end);
+//    ShowTask.Start;
 
+            
+//  InactiveTables;
   { fill with known state }
   FillChar(StartInfo, SizeOf(TStartupInfo), #0);
   FillChar(ProcInfo, SizeOf(TProcessInformation), #0);
@@ -2913,28 +2967,39 @@ begin
   PathRS :=ExtractFilePath(RestoreDbODlg.FileName);
   cmd := 'C:\Windows\System32\cmd.exe';
   //debug
-  input := '/c "C:\Program Files (x86)\PostgreSQL\9.6\bin\pg_restore.exe" --username postgres --dbname=testes --no-password --clean '+ NamePathRS;
-
+  input := '/c "C:\Program Files (x86)\PostgreSQL\9.6\bin\pg_restore.exe" --username postgres --dbname='+ GstockdcConnection.Params.Database +' --no-password --clean '+ NamePathRS;
+//input := '/c "'+GetCurrentDir+'\bin\pg_restore.exe" --username postgres --dbname='+ GstockdcConnection.Params.Database +' --no-password --clean '+ NamePathRS;// Eable this is only for releasing
    RestoreTask := TTask.Create (procedure ()
    begin
-
+     GstockdcConnection.Connected:= False;
+     
      CreateOk := CreateProcess(PChar(cmd), PChar(input), nil, nil, false, CREATE_NEW_PROCESS_GROUP + NORMAL_PRIORITY_CLASS, nil,
      Pchar(PathRS), StartInfo, ProcInfo);
   { check to see if successful }
-  if CreateOk then
+//  if CreateOk then
 //     may or may not be needed. Usually wait for child processes
     WaitForSingleObject(ProcInfo.hProcess, INFINITE);
-    CloseHandle(ProcInfo.hProcess);
-    CloseHandle(ProcInfo.hThread);
-      RestoreDbODlg.FileName:='';
+//    CloseHandle(ProcInfo.hProcess);
+//    CloseHandle(ProcInfo.hThread);
+//          RestoreTask.CheckCanceled;
+            GstockdcConnection.Connected:= True;
+      ActiveTables;  
+//      RerfreshTables;
+      FWorkingSplash.Close;
+      NormalForms;
       
+ 
+
+      RestoreDbODlg.FileName:='';
+
    end);
   RestoreTask.Start;
- 
+  
+
 
  end;   
-
- 
+//  ActiveTables;  
+//  RerfreshTables;
 end;
 
 procedure TMainForm.CtrMainFMmnClick(Sender: TObject);
@@ -3007,7 +3072,8 @@ begin
   PathBC :=ExtractFilePath(BackupDbSDlg.FileName);
   cmd := 'C:\Windows\System32\cmd.exe';
   //debug
-  input := '/c "C:\Program Files (x86)\PostgreSQL\9.6\bin\pg_dump.exe" -U postgres -F c GSTOCKDC > '+ NamePathBC;
+  input := '/c "C:\Program Files (x86)\PostgreSQL\9.6\bin\pg_dump.exe" -U postgres -F c '+ GstockdcConnection.Params.Database +' > '+ NamePathBC;
+//input := '/c "'+GetCurrentDir+'\bin\pg_dump.exe" -U postgres -F c '+ GstockdcConnection.Params.Database +' > '+ NamePathBC;// Eable this is only for releasing
 
    BackupTask := TTask.Create (procedure ()
    begin
@@ -3227,8 +3293,8 @@ begin
       GstockdcConnection.Params.Values['Database'] := 'GSTOCKDC';
       GstockdcConnection.Connected:= True;
 
-//  CreateTablesFDScript.ExecuteAll;                                              // Eable this is only for releasing
-//  InsertDataFDScript.ExecuteAll;                                                // Eable this is only for releasing
+  CreateTablesFDScript.ExecuteAll;                                              // Eable this is only for releasing
+  InsertDataFDScript.ExecuteAll;                                                // Eable this is only for releasing
 
     ProduitTable.Active := True;
     ClientTable.Active := True;
@@ -3303,8 +3369,8 @@ begin
       GstockdcConnection.Params.Values['Database'] := 'GSTOCKDC2';
       GstockdcConnection.Connected:= True;
 
-//  CreateTablesFDScript.ExecuteAll;                                              // Eable this is only for releasing
-//  InsertDataFDScript.ExecuteAll;                                                // Eable this is only for releasing
+  CreateTablesFDScript.ExecuteAll;                                              // Eable this is only for releasing
+  InsertDataFDScript.ExecuteAll;                                                // Eable this is only for releasing
 
     ProduitTable.Active := True;
     ClientTable.Active := True;

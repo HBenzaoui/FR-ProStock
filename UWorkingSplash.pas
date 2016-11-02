@@ -41,6 +41,7 @@ implementation
 
 {$R *.dfm}
 
+
 procedure TFWorkingSplash.CreateParams(var Params: TCreateParams);
 begin
 //  inherited;
