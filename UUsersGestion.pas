@@ -118,7 +118,7 @@ var
 implementation
 
 uses  Winapi.MMSystem,Contnrs,
-  UClientGestion, UMainF;
+  UClientGestion, UMainF, UDataModule;
 
 {$R *.dfm}
 
@@ -355,45 +355,45 @@ begin
                if Tag = 0 then
                 begin
 
-                  lookupResultNomUR := MainForm.UsersTable.Lookup('LOWER(nom_ur)',(LowerCase(NameUserGEdt.Text)),'nom_ur');
+                  lookupResultNomUR := DataModuleF.UsersTable.Lookup('LOWER(nom_ur)',(LowerCase(NameUserGEdt.Text)),'nom_ur');
                  if  VarIsnull( lookupResultNomUR) then
                   begin
 
-                  if NOT (MainForm.UsersTable.IsEmpty) then
+                  if NOT (DataModuleF.UsersTable.IsEmpty) then
                   begin
-                  MainForm.UsersTable.Last;
-                  CodeUR:= MainForm.UsersTable.FieldValues['code_ur'] + 1;
+                  DataModuleF.UsersTable.Last;
+                  CodeUR:= DataModuleF.UsersTable.FieldValues['code_ur'] + 1;
                   end else
                       begin
                        CodeUR:= 1;
                       end;
-                  MainForm.UsersTable.Append;
-                  MainForm.UsersTable.FieldValues['code_ur']:= CodeUR;
-                  MainForm.UsersTable.FieldValues['nom_ur']:= NameUserGEdt.Text;
-                  MainForm.UsersTable.FieldValues['password_ur']:= PassUserGEdt.Text;
-                  MainForm.UsersTable.FieldValues['type_ur']:= TypeUserGCbx.ItemIndex;
-                  MainForm.UsersTable.FieldValues['bl_ur']:=BLSdr.SliderOn;
-                  MainForm.UsersTable.FieldValues['fcv_ur']:=FCVSdr.SliderOn;
-                  MainForm.UsersTable.FieldValues['rgc_ur']:=RGCSdr.SliderOn;
-                  MainForm.UsersTable.FieldValues['br_ur']:=BRSdr.SliderOn;
-                  MainForm.UsersTable.FieldValues['fca_ur']:=FCASdr.SliderOn;
-                  MainForm.UsersTable.FieldValues['rgf_ur']:=RGFSdr.SliderOn;
-                  MainForm.UsersTable.FieldValues['caisse_ur']:=CaisseSdr.SliderOn;
-                  MainForm.UsersTable.FieldValues['bank_ur']:=BankSdr.SliderOn;
-                  MainForm.UsersTable.FieldValues['client_ur']:=ClientSdr.SliderOn;
-                  MainForm.UsersTable.FieldValues['four_ur']:=FourSdr.SliderOn;
-                  MainForm.UsersTable.FieldValues['ctr_ur']:=CtrSdr.SliderOn;
-                  MainForm.UsersTable.FieldValues['produit_ur']:=ProduitSdr.SliderOn;
-                  MainForm.UsersTable.FieldValues['famp_ur']:=FamPSdr.SliderOn;
-                  MainForm.UsersTable.FieldValues['sfamp_ur']:=SFamPSdr.SliderOn;
-                  MainForm.UsersTable.FieldValues['mdpai_ur']:=MPSdr.SliderOn;
-                  MainForm.UsersTable.FieldValues['cmpt_ur']:=ComptesSdr.SliderOn;
-                  MainForm.UsersTable.FieldValues['unit_ur']:=UnitSdr.SliderOn;
-                  MainForm.UsersTable.FieldValues['local_ur']:=LocalSdr.SliderOn;
-                  MainForm.UsersTable.Post;
+                  DataModuleF.UsersTable.Append;
+                  DataModuleF.UsersTable.FieldValues['code_ur']:= CodeUR;
+                  DataModuleF.UsersTable.FieldValues['nom_ur']:= NameUserGEdt.Text;
+                  DataModuleF.UsersTable.FieldValues['password_ur']:= PassUserGEdt.Text;
+                  DataModuleF.UsersTable.FieldValues['type_ur']:= TypeUserGCbx.ItemIndex;
+                  DataModuleF.UsersTable.FieldValues['bl_ur']:=BLSdr.SliderOn;
+                  DataModuleF.UsersTable.FieldValues['fcv_ur']:=FCVSdr.SliderOn;
+                  DataModuleF.UsersTable.FieldValues['rgc_ur']:=RGCSdr.SliderOn;
+                  DataModuleF.UsersTable.FieldValues['br_ur']:=BRSdr.SliderOn;
+                  DataModuleF.UsersTable.FieldValues['fca_ur']:=FCASdr.SliderOn;
+                  DataModuleF.UsersTable.FieldValues['rgf_ur']:=RGFSdr.SliderOn;
+                  DataModuleF.UsersTable.FieldValues['caisse_ur']:=CaisseSdr.SliderOn;
+                  DataModuleF.UsersTable.FieldValues['bank_ur']:=BankSdr.SliderOn;
+                  DataModuleF.UsersTable.FieldValues['client_ur']:=ClientSdr.SliderOn;
+                  DataModuleF.UsersTable.FieldValues['four_ur']:=FourSdr.SliderOn;
+                  DataModuleF.UsersTable.FieldValues['ctr_ur']:=CtrSdr.SliderOn;
+                  DataModuleF.UsersTable.FieldValues['produit_ur']:=ProduitSdr.SliderOn;
+                  DataModuleF.UsersTable.FieldValues['famp_ur']:=FamPSdr.SliderOn;
+                  DataModuleF.UsersTable.FieldValues['sfamp_ur']:=SFamPSdr.SliderOn;
+                  DataModuleF.UsersTable.FieldValues['mdpai_ur']:=MPSdr.SliderOn;
+                  DataModuleF.UsersTable.FieldValues['cmpt_ur']:=ComptesSdr.SliderOn;
+                  DataModuleF.UsersTable.FieldValues['unit_ur']:=UnitSdr.SliderOn;
+                  DataModuleF.UsersTable.FieldValues['local_ur']:=LocalSdr.SliderOn;
+                  DataModuleF.UsersTable.Post;
 
 
-                MainForm.UsersTable.Refresh;
+                DataModuleF.UsersTable.Refresh;
                 sndPlaySound('C:\Windows\Media\speech on.wav', SND_NODEFAULT Or SND_ASYNC Or  SND_RING);
                 Close;
                  end else
@@ -410,33 +410,33 @@ begin
 
                 end else
                     begin
-                      MainForm.UsersTable.Edit;
-                      MainForm.UsersTable.FieldValues['nom_ur']:= NameUserGEdt.Text;
-                      MainForm.UsersTable.FieldValues['password_ur']:= PassUserGEdt.Text;
-                      MainForm.UsersTable.FieldValues['type_ur']:= TypeUserGCbx.ItemIndex;
-                      MainForm.UsersTable.FieldValues['bl_ur']:=BLSdr.SliderOn;
-                      MainForm.UsersTable.FieldValues['fcv_ur']:=FCVSdr.SliderOn;
-                      MainForm.UsersTable.FieldValues['rgc_ur']:=RGCSdr.SliderOn;
-                      MainForm.UsersTable.FieldValues['br_ur']:=BRSdr.SliderOn;
-                      MainForm.UsersTable.FieldValues['fca_ur']:=FCASdr.SliderOn;
-                      MainForm.UsersTable.FieldValues['rgf_ur']:=RGFSdr.SliderOn;
-                      MainForm.UsersTable.FieldValues['caisse_ur']:=CaisseSdr.SliderOn;
-                      MainForm.UsersTable.FieldValues['bank_ur']:=BankSdr.SliderOn;
-                      MainForm.UsersTable.FieldValues['client_ur']:=ClientSdr.SliderOn;
-                      MainForm.UsersTable.FieldValues['four_ur']:=FourSdr.SliderOn;
-                      MainForm.UsersTable.FieldValues['ctr_ur']:=CtrSdr.SliderOn;
-                      MainForm.UsersTable.FieldValues['produit_ur']:=ProduitSdr.SliderOn;
-                      MainForm.UsersTable.FieldValues['famp_ur']:=FamPSdr.SliderOn;
-                      MainForm.UsersTable.FieldValues['sfamp_ur']:=SFamPSdr.SliderOn;
-                      MainForm.UsersTable.FieldValues['mdpai_ur']:=MPSdr.SliderOn;
-                      MainForm.UsersTable.FieldValues['cmpt_ur']:=ComptesSdr.SliderOn;
-                      MainForm.UsersTable.FieldValues['unit_ur']:=UnitSdr.SliderOn;
-                      MainForm.UsersTable.FieldValues['local_ur']:=LocalSdr.SliderOn;
+                      DataModuleF.UsersTable.Edit;
+                      DataModuleF.UsersTable.FieldValues['nom_ur']:= NameUserGEdt.Text;
+                      DataModuleF.UsersTable.FieldValues['password_ur']:= PassUserGEdt.Text;
+                      DataModuleF.UsersTable.FieldValues['type_ur']:= TypeUserGCbx.ItemIndex;
+                      DataModuleF.UsersTable.FieldValues['bl_ur']:=BLSdr.SliderOn;
+                      DataModuleF.UsersTable.FieldValues['fcv_ur']:=FCVSdr.SliderOn;
+                      DataModuleF.UsersTable.FieldValues['rgc_ur']:=RGCSdr.SliderOn;
+                      DataModuleF.UsersTable.FieldValues['br_ur']:=BRSdr.SliderOn;
+                      DataModuleF.UsersTable.FieldValues['fca_ur']:=FCASdr.SliderOn;
+                      DataModuleF.UsersTable.FieldValues['rgf_ur']:=RGFSdr.SliderOn;
+                      DataModuleF.UsersTable.FieldValues['caisse_ur']:=CaisseSdr.SliderOn;
+                      DataModuleF.UsersTable.FieldValues['bank_ur']:=BankSdr.SliderOn;
+                      DataModuleF.UsersTable.FieldValues['client_ur']:=ClientSdr.SliderOn;
+                      DataModuleF.UsersTable.FieldValues['four_ur']:=FourSdr.SliderOn;
+                      DataModuleF.UsersTable.FieldValues['ctr_ur']:=CtrSdr.SliderOn;
+                      DataModuleF.UsersTable.FieldValues['produit_ur']:=ProduitSdr.SliderOn;
+                      DataModuleF.UsersTable.FieldValues['famp_ur']:=FamPSdr.SliderOn;
+                      DataModuleF.UsersTable.FieldValues['sfamp_ur']:=SFamPSdr.SliderOn;
+                      DataModuleF.UsersTable.FieldValues['mdpai_ur']:=MPSdr.SliderOn;
+                      DataModuleF.UsersTable.FieldValues['cmpt_ur']:=ComptesSdr.SliderOn;
+                      DataModuleF.UsersTable.FieldValues['unit_ur']:=UnitSdr.SliderOn;
+                      DataModuleF.UsersTable.FieldValues['local_ur']:=LocalSdr.SliderOn;
 
-                      MainForm.UsersTable.Post;
+                      DataModuleF.UsersTable.Post;
 
 
-                MainForm.UsersTable.Refresh;
+                DataModuleF.UsersTable.Refresh;
                 sndPlaySound('C:\Windows\Media\speech on.wav', SND_NODEFAULT Or SND_ASYNC Or  SND_RING);
                 Close;
                     end;

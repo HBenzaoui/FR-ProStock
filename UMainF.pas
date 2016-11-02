@@ -531,14 +531,12 @@ type
     Button18: TButton;
     StatuBar: TsStatusBar;
     Timer1: TTimer;
-    UsersTable: TFDQuery;
     GridIconsUR36: TsAlphaImageList;
     Bonv_ctrTablecode_ur: TIntegerField;
     Bonv_ctrTableAgnet: TStringField;
     Opt_cas_bnk_CaisseTableAgnet: TStringField;
     Opt_cas_bnk_BankTableAgnet: TStringField;
     Bona_recTablecode_ur: TIntegerField;
-    Bona_recTableAgnet: TStringField;
     Bona_facTablecode_ur: TIntegerField;
     Bona_facTableAgnet: TStringField;
     Bonv_livTablecode_ur: TIntegerField;
@@ -737,6 +735,7 @@ type
     dxActivityIndicator1: TdxActivityIndicator;
     N20: TMenuItem;
     Rpar1: TMenuItem;
+    Bona_recTableAgnet: TStringField;
     procedure ClientMainFBtnClick(Sender: TObject);
     procedure FourMainFBtnClick(Sender: TObject);
     procedure ProduitMainFBtnClick(Sender: TObject);
@@ -1050,7 +1049,7 @@ FDPhysPgDriverLink1.VendorLib:= 'C:\Program Files (x86)\PostgreSQL\9.6\bin\libpq
 //   if NOT fileexists('Config') then
 //   begin
 
-
+//    CreateTablesFDScript.SQLScripts[0];                                 // Eable this is only for releasing
   CreateTablesFDScript.ExecuteAll;                                 // Eable this is only for releasing
   InsertDataFDScript.ExecuteAll;                                   // Eable this is only for releasing
 
@@ -1907,12 +1906,56 @@ end;
 
 procedure TMainForm.CreatDBClick(Sender: TObject);
 begin
-  GstockdcConnection.ExecSQL('CREATE DATABASE "GSTOCKDCDC007" ' 
-  + ' WITH OWNER = postgres '
-  + ' ENCODING = ''UTF8'' ' 
-  + ' TABLESPACE = pg_default '
-  + ' CONNECTION LIMIT = - 1 '
-        );  
+//  GstockdcConnection.ExecSQL('CREATE DATABASE "GSTOCKDCDC007" ' 
+//  + ' WITH OWNER = postgres '
+//  + ' ENCODING = ''UTF8'' ' 
+//  + ' TABLESPACE = pg_default '
+//  + ' CONNECTION LIMIT = - 1 '
+//        );
+
+
+//    DataModuleF.PSDBConfigConnection.ExecSQL('CREATE TABLE "users" ( '
+//   +' "code_ur" int4 NOT NULL, '
+//   +' "nom_ur" varchar(40) COLLATE "default", '
+//   +' "password_ur" varchar(32) COLLATE "default", '
+//   +' "bl_ur" bool, '
+//   +' "fcv_ur" bool, '
+//   +' "rgc_ur" bool, '
+//   +' "br_ur" bool, '
+//   +' "fca_ur" bool, '
+//   +' "rgf_ur" bool, '
+//   +' "caisse_ur" bool, '
+//   +' "bank_ur" bool, '
+//   +' "client_ur" bool, '
+//   +' "four_ur" bool, '
+//   +' "type_ur" int2 DEFAULT 0, '
+//   +' "ctr_ur" bool, '
+//   +' "produit_ur" bool, '
+//   +' "famp_ur" bool, '
+//   +' "sfamp_ur" bool, '
+//   +' "mdpai_ur" bool, '
+//   +' "cmpt_ur" bool, '
+//   +' "unit_ur" bool, '
+//   +' "local_ur" bool ) '
+//   +' WITH (OIDS=FALSE); '
+//   +' COMMENT ON COLUMN "users"."ctr_ur" IS '' '' ;' 
+//
+//   );
+//
+//  if DataModuleF.UsersTable.IsEmpty then
+//  begin
+//    DataModuleF.PSDBConfigConnection.ExecSQL(' INSERT INTO "public"."users" ("code_ur", "nom_ur",'
+//   +' "password_ur", "bl_ur", "fcv_ur", "rgc_ur", "br_ur", "fca_ur", '
+//   +' "rgf_ur", "caisse_ur", "bank_ur", "client_ur", "four_ur", "type_ur",'
+//   +' "ctr_ur", "produit_ur", "famp_ur", "sfamp_ur", "mdpai_ur", "cmpt_ur",'
+//   +' "unit_ur", "local_ur") VALUES '
+//   +' (''1'', ''Admin'', ''admin'', ''t'', ''t'', ''t'', ''t'', ''t'', ''t'', ''t'', ''t'', ''t'', '
+//   +' ''t'', ''0'', ''t'', ''t'', ''t'', ''t'', ''t'', ''t'', ''t'', ''t''); '
+//    );
+//  end;
+//     DataModuleF.UsersTable.Active := True;
+
+  
 end;
 
 procedure TMainForm.dddClick(Sender: TObject);
@@ -2159,7 +2202,7 @@ begin
     CommunesTable.Active := True;
     Opt_cas_bnk_CaisseTable.Active := True;
     Opt_cas_bnk_BankTable.Active := True;
-    UsersTable.Active := True;
+//    DataModuleF.UsersTable.Active := True;
     RegclientTable.Active := True;
     RegfournisseurTable.Active := True;
     CompanyTable.Active := True;
@@ -2649,7 +2692,7 @@ begin
       CommunesTable.Active := False;
       Opt_cas_bnk_CaisseTable.Active := False;
       Opt_cas_bnk_BankTable.Active := False;
-      UsersTable.Active := False;
+//      DataModuleF.UsersTable.Active := False;
       RegclientTable.Active := False;
       RegfournisseurTable.Active := False;
       CompanyTable.Active := False;
@@ -2693,7 +2736,7 @@ begin
       CommunesTable.Active := True;
       Opt_cas_bnk_CaisseTable.Active := True;
       Opt_cas_bnk_BankTable.Active := True;
-      UsersTable.Active := True;
+//      DataModuleF.UsersTable.Active := True;
       RegclientTable.Active := True;
       RegfournisseurTable.Active := True;
       CompanyTable.Active := True;
@@ -2739,7 +2782,7 @@ begin
       CommunesTable.Refresh ;
       Opt_cas_bnk_CaisseTable.Refresh  ;
       Opt_cas_bnk_BankTable.Refresh;
-      UsersTable.Refresh ;
+//      DataModuleF.UsersTable.Refresh ;
       RegclientTable.Refresh ;
       RegfournisseurTable.Refresh ;
       CompanyTable.Refresh ;
@@ -3320,7 +3363,7 @@ begin
     CommunesTable.Active := True;
     Opt_cas_bnk_CaisseTable.Active := True;
     Opt_cas_bnk_BankTable.Active := True;
-    UsersTable.Active := True;
+//    DataModuleF.UsersTable.Active := True;
     RegclientTable.Active := True;
     RegfournisseurTable.Active := True;
     CompanyTable.Active := True;
@@ -3396,7 +3439,7 @@ begin
     CommunesTable.Active := True;
     Opt_cas_bnk_CaisseTable.Active := True;
     Opt_cas_bnk_BankTable.Active := True;
-    UsersTable.Active := True;
+//    DataModuleF.UsersTable.Active := True;
     RegclientTable.Active := True;
     RegfournisseurTable.Active := True;
     CompanyTable.Active := True;

@@ -368,4 +368,90 @@ object DataModuleF: TDataModuleF
       ReadOnly = True
     end
   end
+  object PSDBConfigConnection: TFDConnection
+    Params.Strings = (
+      'Database=PSDBConfig'
+      'User_Name=postgres'
+      'DriverID=pG')
+    Connected = True
+    LoginPrompt = False
+    Left = 77
+    Top = 22
+  end
+  object UsersTable: TFDQuery
+    FilterOptions = [foCaseInsensitive]
+    IndexFieldNames = 'code_ur'
+    Connection = PSDBConfigConnection
+    SQL.Strings = (
+      'SELECT * FROM users')
+    Left = 94
+    Top = 113
+  end
+  object CreatAndaddAdmin: TFDScript
+    SQLScripts = <
+      item
+        Name = 'CreateTable'
+        SQL.Strings = (
+          'CREATE TABLE "users" ('
+          '"code_ur" int4 NOT NULL,'
+          '"nom_ur" varchar(40) COLLATE "default",'
+          '"password_ur" varchar(32) COLLATE "default",'
+          '"bl_ur" bool,'
+          '"fcv_ur" bool,'
+          '"rgc_ur" bool,'
+          '"br_ur" bool,'
+          '"fca_ur" bool,'
+          '"rgf_ur" bool,'
+          '"caisse_ur" bool,'
+          '"bank_ur" bool,'
+          '"client_ur" bool,'
+          '"four_ur" bool,'
+          '"type_ur" int2 DEFAULT 0,'
+          '"ctr_ur" bool,'
+          '"produit_ur" bool,'
+          '"famp_ur" bool,'
+          '"sfamp_ur" bool,'
+          '"mdpai_ur" bool,'
+          '"cmpt_ur" bool,'
+          '"unit_ur" bool,'
+          '"local_ur" bool'
+          ')'
+          'WITH (OIDS=FALSE)'
+          ''
+          ';'
+          'COMMENT ON COLUMN "users"."ctr_ur" IS '#39
+          #39';')
+      end>
+    Connection = PSDBConfigConnection
+    Params = <>
+    Macros = <>
+    FetchOptions.AssignedValues = [evItems, evAutoClose, evAutoFetchAll]
+    FetchOptions.AutoClose = False
+    FetchOptions.Items = [fiBlobs, fiDetails]
+    ResourceOptions.AssignedValues = [rvMacroCreate, rvMacroExpand, rvDirectExecute, rvPersistent]
+    ResourceOptions.MacroCreate = False
+    ResourceOptions.DirectExecute = True
+    Left = 256
+    Top = 42
+  end
+  object AddAdminUser: TFDScript
+    SQLScripts = <
+      item
+        Name = 'AddAdmin'
+        SQL.Strings = (
+          
+            'INSERT INTO "public"."users" ("code_ur", "nom_ur", "password_ur"' +
+            ', "bl_ur", "fcv_ur", "rgc_ur", "br_ur", "fca_ur", "rgf_ur", "cai' +
+            'sse_ur", "bank_ur", "client_ur", "four_ur", "type_ur", "ctr_ur",' +
+            ' "produit_ur", "famp_ur", "sfamp_ur", "mdpai_ur", "cmpt_ur", "un' +
+            'it_ur", "local_ur") VALUES ('#39'1'#39', '#39'Admin'#39', '#39'admin'#39', '#39't'#39', '#39't'#39', '#39't'#39 +
+            ', '#39't'#39', '#39't'#39', '#39't'#39', '#39't'#39', '#39't'#39', '#39't'#39', '#39't'#39', '#39'0'#39', '#39't'#39', '#39't'#39', '#39't'#39', '#39't'#39', '#39't' +
+            #39', '#39't'#39', '#39't'#39', '#39't'#39');')
+      end>
+    Connection = PSDBConfigConnection
+    Params = <>
+    Macros = <>
+    Left = 388
+    Top = 42
+  end
 end

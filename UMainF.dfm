@@ -22975,15 +22975,6 @@ object MainForm: TMainForm
       FieldName = 'code_ur'
       Origin = 'code_ur'
     end
-    object Bona_recTableAgnet: TStringField
-      FieldKind = fkLookup
-      FieldName = 'Agnet'
-      LookupDataSet = UsersTable
-      LookupKeyFields = 'code_ur'
-      LookupResultField = 'nom_ur'
-      KeyFields = 'code_ur'
-      Lookup = True
-    end
     object Bona_recTablebon_or_no_barec: TBooleanField
       FieldName = 'bon_or_no_barec'
       Origin = 'bon_or_no_barec'
@@ -22991,6 +22982,15 @@ object MainForm: TMainForm
     object Bona_recTableNeTHT: TCurrencyField
       FieldKind = fkInternalCalc
       FieldName = 'NeTHT'
+    end
+    object Bona_recTableAgnet: TStringField
+      FieldKind = fkLookup
+      FieldName = 'Agnet'
+      LookupDataSet = DataModuleF.UsersTable
+      LookupKeyFields = 'code_ur'
+      LookupResultField = 'nom_ur'
+      KeyFields = 'code_ur'
+      Lookup = True
     end
   end
   object Bona_recPlistTable: TFDQuery
@@ -34956,7 +34956,7 @@ object MainForm: TMainForm
     object Bonv_livTableAgnet: TStringField
       FieldKind = fkLookup
       FieldName = 'Agnet'
-      LookupDataSet = UsersTable
+      LookupDataSet = DataModuleF.UsersTable
       LookupKeyFields = 'code_ur'
       LookupResultField = 'nom_ur'
       KeyFields = 'code_ur'
@@ -35082,8 +35082,8 @@ object MainForm: TMainForm
     Connection = GstockdcConnection
     SQL.Strings = (
       'SELECT * FROM bona_fac')
-    Left = 282
-    Top = 487
+    Left = 276
+    Top = 495
     object Bona_facTablecode_bafac: TIntegerField
       FieldName = 'code_bafac'
       Origin = 'code_bafac'
@@ -35198,7 +35198,7 @@ object MainForm: TMainForm
     object Bona_facTableAgnet: TStringField
       FieldKind = fkLookup
       FieldName = 'Agnet'
-      LookupDataSet = UsersTable
+      LookupDataSet = DataModuleF.UsersTable
       LookupKeyFields = 'code_ur'
       LookupResultField = 'nom_ur'
       KeyFields = 'code_ur'
@@ -35617,7 +35617,7 @@ object MainForm: TMainForm
     object Bonv_facTableAgnet: TStringField
       FieldKind = fkLookup
       FieldName = 'Agnet'
-      LookupDataSet = UsersTable
+      LookupDataSet = DataModuleF.UsersTable
       LookupKeyFields = 'code_ur'
       LookupResultField = 'nom_ur'
       KeyFields = 'code_ur'
@@ -38740,6 +38740,27 @@ object MainForm: TMainForm
           D3E40330E67FB86D08CCF655979299A79BF27EADEFDAAC00967C8102338FF7A3
           C077BF7DF4A8EF1ADD00260078CCBCD0979D7A003300B28EE30CF7ABC01280DB
           BDCEF37B004378C4CABE55B09D0000000049454E44AE426082}
+      end
+      item
+        ImageFormat = ifPNG
+        ImageName = 'receipt-48'
+        ImgData = {
+          89504E470D0A1A0A0000000D49484452000000300000003008060000005702F9
+          870000000473424954080808087C08648800000006624B474400FF00FF00FFA0
+          BDA793000000097048597300000DD700000DD70142289B780000001974455874
+          536F667477617265007777772E696E6B73636170652E6F72679BEE3C1A000001
+          534944415468DEED99B18E82401086E9AFBEDC1B5C71E55577C5E52C542B0B0B
+          1BD54A9EC187B2B2B1322646A389127D024D688CEA3B9871075C45020AE28292
+          BFF88B9D8199FF6387A5402322ED95A501000000087FD368BAE90F8D75C6191B
+          CCD7EF2363DB0A9B63718C7331026CC9966D683CD995C57A778E07CB49E3329E
+          00C06305000000206680FF522790BCCC7AE501E0A77CBDFE96AB369AF98ADECE
+          55F495AA11E2DA560FEE257A3E04A050D3FF44E1A510492904706AC9BD23011C
+          CDEF5D8529C808DD32EB75ADBB0FF7BE05717D6C5C4F3E01006B27AE8D932F00
+          CFA14FC1B846E82CE125FC0ED82FEC45A1CFEF1F4BAA00647D775FF6127E07C4
+          89F02C00ECE51E00F203502DAFDE00485A004805C06CF11B8B000000000000DF
+          01002801E8747B649AE649BC8E9A33BE8A441FD99378AD0CC069422A6ACE695E
+          0A00A90578F97700C72800F09B150000481DC001E0D2C6DD04A6C83D00000000
+          49454E44AE426082}
       end>
     Left = 904
     Top = 488
@@ -38837,7 +38858,7 @@ object MainForm: TMainForm
     object Bonv_ctrTableAgnet: TStringField
       FieldKind = fkLookup
       FieldName = 'Agnet'
-      LookupDataSet = UsersTable
+      LookupDataSet = DataModuleF.UsersTable
       LookupKeyFields = 'code_ur'
       LookupResultField = 'nom_ur'
       KeyFields = 'code_ur'
@@ -39053,7 +39074,7 @@ object MainForm: TMainForm
     object Opt_cas_bnk_CaisseTableAgnet: TStringField
       FieldKind = fkLookup
       FieldName = 'Agnet'
-      LookupDataSet = UsersTable
+      LookupDataSet = DataModuleF.UsersTable
       LookupKeyFields = 'code_ur'
       LookupResultField = 'nom_ur'
       KeyFields = 'code_ur'
@@ -39155,7 +39176,7 @@ object MainForm: TMainForm
     object Opt_cas_bnk_BankTableAgnet: TStringField
       FieldKind = fkLookup
       FieldName = 'Agnet'
-      LookupDataSet = UsersTable
+      LookupDataSet = DataModuleF.UsersTable
       LookupKeyFields = 'code_ur'
       LookupResultField = 'nom_ur'
       KeyFields = 'code_ur'
@@ -39250,15 +39271,6 @@ object MainForm: TMainForm
     OnTimer = Timer1Timer
     Left = 912
     Top = 264
-  end
-  object UsersTable: TFDQuery
-    FilterOptions = [foCaseInsensitive]
-    IndexFieldNames = 'code_ur'
-    Connection = GstockdcConnection
-    SQL.Strings = (
-      'SELECT * FROM users')
-    Left = 118
-    Top = 119
   end
   object GridIconsUR36: TsAlphaImageList
     Height = 36
@@ -39854,7 +39866,7 @@ object MainForm: TMainForm
     object RegclientTableAgent: TStringField
       FieldKind = fkLookup
       FieldName = 'Agent'
-      LookupDataSet = UsersTable
+      LookupDataSet = DataModuleF.UsersTable
       LookupKeyFields = 'code_ur'
       LookupResultField = 'nom_ur'
       KeyFields = 'code_ur'
@@ -39955,7 +39967,7 @@ object MainForm: TMainForm
     object RegfournisseurTableAgent: TStringField
       FieldKind = fkLookup
       FieldName = 'Agent'
-      LookupDataSet = UsersTable
+      LookupDataSet = DataModuleF.UsersTable
       LookupKeyFields = 'code_ur'
       LookupResultField = 'nom_ur'
       KeyFields = 'code_ur'
@@ -42483,50 +42495,6 @@ object MainForm: TMainForm
           ''
           ';'
           ''
-          '-- ----------------------------'
-          '-- Records of unite'
-          '-- ----------------------------'
-          '--BEGIN;'
-          '--COMMIT;'
-          ''
-          '-- ----------------------------'
-          '-- Table structure for users'
-          '-- ----------------------------'
-          'CREATE TABLE "users" ('
-          '"code_ur" int4 NOT NULL,'
-          '"nom_ur" varchar(40) COLLATE "default",'
-          '"password_ur" varchar(32) COLLATE "default",'
-          '"bl_ur" bool,'
-          '"fcv_ur" bool,'
-          '"rgc_ur" bool,'
-          '"br_ur" bool,'
-          '"fca_ur" bool,'
-          '"rgf_ur" bool,'
-          '"caisse_ur" bool,'
-          '"bank_ur" bool,'
-          '"client_ur" bool,'
-          '"four_ur" bool,'
-          '"type_ur" int2 DEFAULT 0,'
-          '"ctr_ur" bool,'
-          '"produit_ur" bool,'
-          '"famp_ur" bool,'
-          '"sfamp_ur" bool,'
-          '"mdpai_ur" bool,'
-          '"cmpt_ur" bool,'
-          '"unit_ur" bool,'
-          '"local_ur" bool'
-          ')'
-          'WITH (OIDS=FALSE)'
-          ''
-          ';'
-          'COMMENT ON COLUMN "users"."ctr_ur" IS '#39
-          #39';'
-          ''
-          '-- ----------------------------'
-          '-- Records of users'
-          '-- ----------------------------'
-          '--BEGIN;'
-          '--COMMIT;'
           ''
           '-- ----------------------------'
           '-- Table structure for wilayas'
@@ -42692,10 +42660,6 @@ object MainForm: TMainForm
           '-- ----------------------------'
           'ALTER TABLE "unite" ADD PRIMARY KEY ("code_u");'
           ''
-          '-- ----------------------------'
-          '-- Primary Key structure for table users'
-          '-- ----------------------------'
-          'ALTER TABLE "users" ADD PRIMARY KEY ("code_ur");'
           ''
           '-- ----------------------------'
           '-- Primary Key structure for table wilayas'
@@ -47270,14 +47234,7 @@ object MainForm: TMainForm
             #39#39', '#39#39', '#39#39', '#39#39', '#39#39', '#39#39', '#39't'#39', '#39#39', '#39#39', '#39#39', '#39#39', '#39#39', '#39#39', '#39#39', '#39#39', '#39#39',' +
             ' '#39#39', '#39'0'#39', '#39'0'#39', '#39'1'#39', '#39'0'#39', '#39'0'#39');'
           ''
-          
-            'INSERT INTO "public"."users" ("code_ur", "nom_ur", "password_ur"' +
-            ', "bl_ur", "fcv_ur", "rgc_ur", "br_ur", "fca_ur", "rgf_ur", "cai' +
-            'sse_ur", "bank_ur", "client_ur", "four_ur", "type_ur", "ctr_ur",' +
-            ' "produit_ur", "famp_ur", "sfamp_ur", "mdpai_ur", "cmpt_ur", "un' +
-            'it_ur", "local_ur") VALUES ('#39'1'#39', '#39'Admin'#39', '#39'admin'#39', '#39't'#39', '#39't'#39', '#39't'#39 +
-            ', '#39't'#39', '#39't'#39', '#39't'#39', '#39't'#39', '#39't'#39', '#39't'#39', '#39't'#39', '#39'0'#39', '#39't'#39', '#39't'#39', '#39't'#39', '#39't'#39', '#39't' +
-            #39', '#39't'#39', '#39't'#39', '#39't'#39');'
+          ''
           ''
           
             'INSERT INTO "public"."compte" ("code_cmpt", "nom_cmpt", "refer_c' +

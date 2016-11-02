@@ -8,7 +8,8 @@ uses
   FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, Data.DB,
   FireDAC.Comp.DataSet, FireDAC.Comp.Client, FireDAC.UI.Intf, FireDAC.Stan.Def,
   FireDAC.Stan.Pool, FireDAC.Phys, FireDAC.Phys.PG, FireDAC.Phys.PGDef,
-  FireDAC.VCLUI.Wait;
+  FireDAC.VCLUI.Wait, FireDAC.Comp.ScriptCommands, FireDAC.Stan.Util,
+  FireDAC.Comp.Script;
 
 type
   TDataModuleF = class(TDataModule)
@@ -52,6 +53,10 @@ type
     IntegerField1: TIntegerField;
     StringField5: TStringField;
     Top5produittotalall: TFloatField;
+    PSDBConfigConnection: TFDConnection;
+    UsersTable: TFDQuery;
+    CreatAndaddAdmin: TFDScript;
+    AddAdminUser: TFDScript;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
@@ -90,7 +95,14 @@ begin
 
  GstockdcConnection02.Params.Values['Database'] := 'GSTOCKDC';
  GstockdcConnection02.Connected:= True;
-
+ 
+  CreatAndaddAdmin.ExecuteAll;
+  UsersTable.Active:= True;
+  if UsersTable.IsEmpty then
+  begin
+   AddAdminUser.ExecuteAll; 
+  end;
+  
 
   TopClient.Active:= True;
   TopFour.Active:= True;

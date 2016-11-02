@@ -44,7 +44,7 @@ var
 implementation
 
 uses    Winapi.MMSystem,Threading,
-  UMainF, UClientGestion, UUsersGestion, USplash;
+  UMainF, UClientGestion, UUsersGestion, USplash, UDataModule;
 
 {$R *.dfm}
 
@@ -92,31 +92,31 @@ begin
         UsersGestionF.Left:=  (Screen.Width div 2 ) - (UsersGestionF.Width div 2);
         UsersGestionF.Top:=   (Screen.Height div 2) - (UsersGestionF.Height div 2);
 
-        UsersGestionF.NameUserGEdt.Text:= MainForm.UsersTable.FieldValues['nom_ur'] ;
-        UsersGestionF.PassUserGEdt.Text:= MainForm.UsersTable.FieldValues['password_ur'];
-        UsersGestionF.PassChkUserGEdt.Text:= MainForm.UsersTable.FieldValues['password_ur'];
-        UsersGestionF.TypeUserGCbx.ItemIndex:=  MainForm.UsersTable.FieldValues['type_ur'];
+        UsersGestionF.NameUserGEdt.Text:= DataModuleF.UsersTable.FieldValues['nom_ur'] ;
+        UsersGestionF.PassUserGEdt.Text:= DataModuleF.UsersTable.FieldValues['password_ur'];
+        UsersGestionF.PassChkUserGEdt.Text:= DataModuleF.UsersTable.FieldValues['password_ur'];
+        UsersGestionF.TypeUserGCbx.ItemIndex:=  DataModuleF.UsersTable.FieldValues['type_ur'];
 
         UsersGestionF.TypeUserGCbxClick(Sender);
 
-        UsersGestionF.BLSdr.SliderOn:=  MainForm.UsersTable.FieldValues['bl_ur'];
-        UsersGestionF.FCVSdr.SliderOn:=  MainForm.UsersTable.FieldValues['fcv_ur'];
-        UsersGestionF.RGCSdr.SliderOn:=  MainForm.UsersTable.FieldValues['rgc_ur'];
-        UsersGestionF.BRSdr.SliderOn:=  MainForm.UsersTable.FieldValues['br_ur'];
-        UsersGestionF.FCASdr.SliderOn:=  MainForm.UsersTable.FieldValues['fca_ur'];
-        UsersGestionF.RGFSdr.SliderOn:=  MainForm.UsersTable.FieldValues['rgf_ur'];
-        UsersGestionF.CaisseSdr.SliderOn:=  MainForm.UsersTable.FieldValues['caisse_ur'];
-        UsersGestionF.BankSdr.SliderOn:=  MainForm.UsersTable.FieldValues['bank_ur'];
-        UsersGestionF.ClientSdr.SliderOn:=  MainForm.UsersTable.FieldValues['client_ur'];
-        UsersGestionF.FourSdr.SliderOn:=  MainForm.UsersTable.FieldValues['four_ur'];
-        UsersGestionF.CtrSdr.SliderOn:=  MainForm.UsersTable.FieldValues['ctr_ur'];
-        UsersGestionF.ProduitSdr.SliderOn:=  MainForm.UsersTable.FieldValues['produit_ur'];
-        UsersGestionF.FamPSdr.SliderOn  :=  MainForm.UsersTable.FieldValues['famp_ur'];
-        UsersGestionF.SFamPSdr.SliderOn:=  MainForm.UsersTable.FieldValues['sfamp_ur'];
-        UsersGestionF.MPSdr.SliderOn:=  MainForm.UsersTable.FieldValues['mdpai_ur'];
-        UsersGestionF.ComptesSdr.SliderOn:=  MainForm.UsersTable.FieldValues['cmpt_ur'];
-        UsersGestionF.UnitSdr.SliderOn:=  MainForm.UsersTable.FieldValues['unit_ur'];
-        UsersGestionF.LocalSdr.SliderOn:=  MainForm.UsersTable.FieldValues['local_ur'];
+        UsersGestionF.BLSdr.SliderOn:=  DataModuleF.UsersTable.FieldValues['bl_ur'];
+        UsersGestionF.FCVSdr.SliderOn:=  DataModuleF.UsersTable.FieldValues['fcv_ur'];
+        UsersGestionF.RGCSdr.SliderOn:=  DataModuleF.UsersTable.FieldValues['rgc_ur'];
+        UsersGestionF.BRSdr.SliderOn:=  DataModuleF.UsersTable.FieldValues['br_ur'];
+        UsersGestionF.FCASdr.SliderOn:=  DataModuleF.UsersTable.FieldValues['fca_ur'];
+        UsersGestionF.RGFSdr.SliderOn:=  DataModuleF.UsersTable.FieldValues['rgf_ur'];
+        UsersGestionF.CaisseSdr.SliderOn:=  DataModuleF.UsersTable.FieldValues['caisse_ur'];
+        UsersGestionF.BankSdr.SliderOn:=  DataModuleF.UsersTable.FieldValues['bank_ur'];
+        UsersGestionF.ClientSdr.SliderOn:=  DataModuleF.UsersTable.FieldValues['client_ur'];
+        UsersGestionF.FourSdr.SliderOn:=  DataModuleF.UsersTable.FieldValues['four_ur'];
+        UsersGestionF.CtrSdr.SliderOn:=  DataModuleF.UsersTable.FieldValues['ctr_ur'];
+        UsersGestionF.ProduitSdr.SliderOn:=  DataModuleF.UsersTable.FieldValues['produit_ur'];
+        UsersGestionF.FamPSdr.SliderOn  :=  DataModuleF.UsersTable.FieldValues['famp_ur'];
+        UsersGestionF.SFamPSdr.SliderOn:=  DataModuleF.UsersTable.FieldValues['sfamp_ur'];
+        UsersGestionF.MPSdr.SliderOn:=  DataModuleF.UsersTable.FieldValues['mdpai_ur'];
+        UsersGestionF.ComptesSdr.SliderOn:=  DataModuleF.UsersTable.FieldValues['cmpt_ur'];
+        UsersGestionF.UnitSdr.SliderOn:=  DataModuleF.UsersTable.FieldValues['unit_ur'];
+        UsersGestionF.LocalSdr.SliderOn:=  DataModuleF.UsersTable.FieldValues['local_ur'];
 
         UsersGestionF.Tag := 1;
         UsersGestionF.ShowModal;
@@ -126,11 +126,11 @@ end;
 
 procedure TUsersListF.AdvToolButton3Click(Sender: TObject);
 begin
-  if NOT (MainForm.UsersTable.FieldByName('code_ur').AsInteger = 1) then
+  if NOT (DataModuleF.UsersTable.FieldByName('code_ur').AsInteger = 1) then
   begin
-  if NOT (MainForm.UsersTable.IsEmpty) then
+  if NOT (DataModuleF.UsersTable.IsEmpty) then
      begin
-     MainForm.UsersTable.Delete;
+     DataModuleF.UsersTable.Delete;
 
 //        TTask.Run ( procedure
 //        begin
@@ -218,12 +218,12 @@ procedure TUsersListF.ResearchUsersEdtChange(Sender: TObject);
 begin
   if (ResearchUsersEdt.text <> '') then
       begin
-      MainForm.UsersTable.Filtered:=false;
-      MainForm.UsersTable.Filter := '[nom_ur] LIKE ' + quotedstr(  '%'+  ResearchUsersEdt.Text +'%');
-      MainForm.UsersTable.Filtered :=True;
+      DataModuleF.UsersTable.Filtered:=false;
+      DataModuleF.UsersTable.Filter := '[nom_ur] LIKE ' + quotedstr(  '%'+  ResearchUsersEdt.Text +'%');
+      DataModuleF.UsersTable.Filtered :=True;
     end  else
       begin
-        MainForm.UsersTable.Filtered := False;
+        DataModuleF.UsersTable.Filtered := False;
        end;
 end;
 

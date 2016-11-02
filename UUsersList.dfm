@@ -307,7 +307,6 @@ object UsersListF: TUsersListF
     OnChange = ResearchUsersEdtChange
   end
   object UsersListDataS: TDataSource
-    DataSet = MainForm.UsersTable
     Left = 336
     Top = 424
   end

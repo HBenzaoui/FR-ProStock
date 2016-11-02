@@ -1271,7 +1271,7 @@ object BonCtrGestionF: TBonCtrGestionF
         ShowHint = True
         OnClick = PrintTicketBVCtrBonCtrGBtnClick
         SkinData.SkinSection = 'SPEEDBUTTON'
-        ImageIndex = 4
+        ImageIndex = 15
         Images = MainForm.ComptoiIcons48
         ExplicitLeft = 16
       end
