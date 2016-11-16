@@ -49,7 +49,8 @@ uses
   USFamPList in 'USFamPList.pas' {SFamPListF},
   ULocaleList in 'ULocaleList.pas' {LocaleListF},
   UUnitesList in 'UUnitesList.pas' {UnitesListF},
-  UWorkingSplash in 'UWorkingSplash.pas' {FWorkingSplash};
+  UWorkingSplash in 'UWorkingSplash.pas' {FWorkingSplash},
+  ULogoSplashForm in 'ULogoSplashForm.pas' {LogoSplashF};
 
 {$R *.res}
 
@@ -86,10 +87,10 @@ begin
 
 //ReportMemoryLeaksOnShutdown:=True;
   Application.Initialize;
+  Application.ShowMainForm:=False; 
   Application.MainFormOnTaskbar := False;
   Application.CreateForm(TMainForm, MainForm);
   Application.CreateForm(TFOptions, FOptions);
-  Application.CreateForm(TDataModuleF, DataModuleF);
   Application.CreateForm(THomeF, HomeF);
   Application.CreateForm(TFWorkingSplash, FWorkingSplash);
   Application.Run;

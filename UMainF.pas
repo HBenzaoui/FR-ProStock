@@ -735,7 +735,7 @@ type
     dxActivityIndicator1: TdxActivityIndicator;
     N20: TMenuItem;
     Rpar1: TMenuItem;
-    Bona_recTableAgnet: TStringField;
+    Bona_recTableAgent: TStringField;
     procedure ClientMainFBtnClick(Sender: TObject);
     procedure FourMainFBtnClick(Sender: TObject);
     procedure ProduitMainFBtnClick(Sender: TObject);
@@ -833,10 +833,13 @@ type
   private
 
     TimerStart: TDateTime;
-    procedure ActiveTables;
-    procedure InactiveTables;
+//    procedure ActiveTables;
+//    procedure InactiveTables;
     procedure RerfreshTables;
    public
+    procedure ActiveTables;
+    procedure InactiveTables;
+    
      procedure WMUserCloseTab(var Message: TMessage); message
     WM_USER_CLOSETAB;
 
@@ -857,7 +860,8 @@ uses
   UBonFacAGestion, UBonFacA, UComptoir,ShellAPI, UBonCtr, UCaisseList,
   UBankList, UUsersList, UUsersGestion, UReglementFList, UReglementCList,
   UOptions, UModePaieList, UDashboard,uCompteList, UFamPList, USFamPList,
-  UUnitesList, ULocaleList, UHomeF, UDataModule, USplash, UWorkingSplash;
+  UUnitesList, ULocaleList, UHomeF, UDataModule, USplash, UWorkingSplash,
+  ULogoSplashForm;
 
   var
     gGrayForms: TComponentList;
@@ -1026,34 +1030,36 @@ begin
 Screen.MenuFont.Height := 15;
 Screen.MenuFont.Color:= $0040332D ;
 
-FDPhysPgDriverLink1.VendorLib:= 'C:\Program Files (x86)\PostgreSQL\9.6\bin\libpq.dll' ; // Eable this is only for Debuggin
-//FDPhysPgDriverLink1.VendorLib:= GetCurrentDir+'\bin\libpq.dll' ;    // Eable this is only for releasing
-//  sCmd := Pwidechar(GetCurrentDir+ '\bin\pg_s.bat' );                // Eable this is only for releasing
-//  ShellExecute(0, 'open', PChar(sCmd) , PChar(sCmd), nil, SW_HIDE);  // Eable this is only for releasing 1 OR 2
-//  Sleep(2000);                                                       // Eable this is only for releasing
-
-
-  
-//  ExeAndWait( GetCurrentDir+ '\bin\pg_s.bat', SW_HIDE);              // Eable this is only for releasing 1 OR 2
-
-  GstockdcConnection.DriverName := 'PG';
-  GstockdcConnection.Params.Values['Server'] :='localhost';
-  GstockdcConnection.Params.Values['user_name'] := 'postgres';
-  GstockdcConnection.Params.Values['password'] := ''; // ditto
-  GstockdcConnection.Params.Values['Port'] := '5432';
-  GstockdcConnection.LoginPrompt := False;
-
-   GstockdcConnection.Params.Values['Database'] := 'GSTOCKDC';
-   GstockdcConnection.Connected:= True;
-
-//   if NOT fileexists('Config') then
-//   begin
-
-//    CreateTablesFDScript.SQLScripts[0];                                 // Eable this is only for releasing
-  CreateTablesFDScript.ExecuteAll;                                 // Eable this is only for releasing
-  InsertDataFDScript.ExecuteAll;                                   // Eable this is only for releasing
-
-     
+//FDPhysPgDriverLink1.VendorLib:= 'C:\Program Files (x86)\PostgreSQL\9.6\bin\libpq.dll' ; // Eable this is only for Debuggin
+////FDPhysPgDriverLink1.VendorLib:= GetCurrentDir+'\bin\libpq.dll' ;    // Eable this is only for releasing
+////  sCmd := Pwidechar(GetCurrentDir+ '\bin\pg_s.bat' );                // Eable this is only for releasing
+////  ShellExecute(0, 'open', PChar(sCmd) , PChar(sCmd), nil, SW_HIDE);  // Eable this is only for releasing 1 OR 2
+////  Sleep(2000);                                                       // Eable this is only for releasing
+//
+//
+//  
+////  ExeAndWait( GetCurrentDir+ '\bin\pg_s.bat', SW_HIDE);              // Eable this is only for releasing 1 OR 2
+//
+//  GstockdcConnection.DriverName := 'PG';
+//  GstockdcConnection.Params.Values['Server'] :='localhost';
+//  GstockdcConnection.Params.Values['user_name'] := 'postgres';
+//  GstockdcConnection.Params.Values['password'] := ''; // ditto
+//  GstockdcConnection.Params.Values['Port'] := '5432';
+//  GstockdcConnection.LoginPrompt := False;
+//
+//   GstockdcConnection.Params.Values['Database'] := 'GSTOCKDC';
+//   GstockdcConnection.Connected:= True;
+//
+////   if NOT fileexists('Config') then
+////   begin
+//
+////    CreateTablesFDScript.SQLScripts[0];                          // Eable this is only for releasing
+//  CreateTablesFDScript.ExecuteAll;                                 // Eable this is only for releasing
+//  InsertDataFDScript.ExecuteAll;                                   // Eable this is only for releasing
+//  
+//  
+//  DataModuleF := TDataModuleF.Create(nil);
+//  ActiveTables;
 //   Sleep(2000);      // just for the first time                   // Eable this is only for releasing
 
 //   end;
@@ -1072,7 +1078,10 @@ FDPhysPgDriverLink1.VendorLib:= 'C:\Program Files (x86)\PostgreSQL\9.6\bin\libpq
 //  Label2.Caption:=#174;
 
 
-
+    MainForm.Visible:=False;
+//    Application.CreateForm(TLogoSplashF, LogoSplashF);
+    LogoSplashF := TLogoSplashF.Create(Application);
+    LogoSplashF.Show;
 
 
 end;
@@ -2178,34 +2187,33 @@ end;
 
 procedure TMainForm.FormShow(Sender: TObject);
 begin
-    ProduitTable.Active := True;
-    ClientTable.Active := True;
-    FournisseurTable.Active := True;
-    Bona_recTable.Active := True;
-    Bona_recPlistTable.Active := True;
-    Bona_facTable.Active := True;
-    Bona_fac_listTable.Active := True;
-    Bonv_livTable.Active := True;
-    Bonv_liv_listTable.Active := True;
-    Bonv_facTable.Active := True;
-    Bonv_fac_listTable.Active := True;
-    Bonv_ctrTable.Active := True;
-    Bonv_ctr_listTable.Active := True;
-    Mode_paiementTable.Active := True;
-    CompteTable.Active := True;
-    FamproduitTable.Active := True;
-    SfamproduitTable.Active := True;
-    CodebarresTable.Active := True;
-    LocalisationTable.Active := True;
-    UniteTable.Active := True;
-    WilayasTable.Active := True;
-    CommunesTable.Active := True;
-    Opt_cas_bnk_CaisseTable.Active := True;
-    Opt_cas_bnk_BankTable.Active := True;
-//    DataModuleF.UsersTable.Active := True;
-    RegclientTable.Active := True;
-    RegfournisseurTable.Active := True;
-    CompanyTable.Active := True;
+ 
+ begin
+ 
+  MainForm.FDPhysPgDriverLink1.VendorLib:= 'C:\Program Files (x86)\PostgreSQL\9.6\bin\libpq.dll' ; // Eable this is only for Debuggin
+//   FDPhysPgDriverLink1.VendorLib:= GetCurrentDir+'\bin\libpq.dll' ;    // Eable this is only for releasing
+  
+   GstockdcConnection.DriverName := 'PG';
+   GstockdcConnection.Params.Values['Server'] :='localhost';
+   GstockdcConnection.Params.Values['user_name'] := 'postgres';
+   GstockdcConnection.Params.Values['password'] := ''; // ditto
+   GstockdcConnection.Params.Values['Port'] := '5432';
+   GstockdcConnection.LoginPrompt := False;
+
+   GstockdcConnection.Params.Values['Database'] := 'GSTOCKDC';
+   GstockdcConnection.Connected:= True;
+
+    CreateTablesFDScript.ExecuteAll;                                 // Eable this is only for releasing
+    InsertDataFDScript.ExecuteAll;                                   // Eable this is only for releasing
+  
+  
+    DataModuleF := TDataModuleF.Create(Application);
+    ActiveTables;  
+  
+  end;
+
+  
+   
 
     if UserTypeLbl.Caption <> '0' then
       begin
@@ -2666,6 +2674,8 @@ begin
 
 end;
 
+
+
 procedure TMainForm.InactiveTables;
 begin
       ProduitTable.Active := False;
@@ -2712,6 +2722,11 @@ end;
 
 procedure TMainForm.ActiveTables;
 begin
+
+      
+    
+       DataModuleF.UsersTable.Active := True;
+
       ProduitTable.Active := True;
       ClientTable.Active := True;
       FournisseurTable.Active := True;
@@ -2736,7 +2751,7 @@ begin
       CommunesTable.Active := True;
       Opt_cas_bnk_CaisseTable.Active := True;
       Opt_cas_bnk_BankTable.Active := True;
-//      DataModuleF.UsersTable.Active := True;
+     
       RegclientTable.Active := True;
       RegfournisseurTable.Active := True;
       CompanyTable.Active := True;
@@ -3270,10 +3285,24 @@ begin
 end;
 
 procedure TMainForm.FormClose(Sender: TObject; var Action: TCloseAction);
+var
+  I: Integer;
 begin
+  for I := dxTabbedMDIManager1.TabProperties.PageCount - 1 downto 0 do
+    dxTabbedMDIManager1.TabProperties.Pages[I].MDIChild.Close;
 
+  
+ 
+//   if Assigned(DashboardF) then
+//   begin
+//    DashboardF.Close;
+//   end;
+//
+   InactiveTables;
    GstockdcConnection.Connected:= False;
    DataModuleF.GstockdcConnection02.Connected:= False;
+   DataModuleF.PSDBConfigConnection.Connected:= False;
+
 
 //   KillTask('postgres.exe');                                    // Eable this is only for releasing
 //   KillTask('cmd.exe');                                         // Eable this is only for releasing

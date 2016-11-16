@@ -1293,6 +1293,7 @@ object MainForm: TMainForm
         Caption = 'Switch Dossier'
         ImageIndex = 26
         ShortCut = 16452
+        Visible = False
         OnClick = SwitchDBMAinFMnuClick
       end
       object N20: TMenuItem
@@ -22983,9 +22984,9 @@ object MainForm: TMainForm
       FieldKind = fkInternalCalc
       FieldName = 'NeTHT'
     end
-    object Bona_recTableAgnet: TStringField
+    object Bona_recTableAgent: TStringField
       FieldKind = fkLookup
-      FieldName = 'Agnet'
+      FieldName = 'Agent'
       LookupDataSet = DataModuleF.UsersTable
       LookupKeyFields = 'code_ur'
       LookupResultField = 'nom_ur'
