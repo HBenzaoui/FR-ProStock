@@ -831,7 +831,10 @@ type
     procedure Restaurer1Click(Sender: TObject);
     procedure Q1Click(Sender: TObject);
   private
-
+   //---- this to value of changege we need it to check if theuser changed something
+     CountInsert,CountUpdate,CountDelete   : Int64;
+     CountInsertCheck,CountUpdateCheck,CountDeleteCheck :Int64; 
+     
     TimerStart: TDateTime;
 //    procedure ActiveTables;
 //    procedure InactiveTables;
@@ -993,23 +996,41 @@ if Not Assigned(BonRecF) then
 end;
 
 procedure TMainForm.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
-//var
-//  msg: String;
+var
+  msg: String;
+  
 begin
- 
-// msg:='You have not saved. Do you really want to close?';
-//
-//  if MessageDlg(msg, mtConfirmation, [mbOk, mbCancel], 0) = mrCancel then
-//   begin CanClose := false end
-//    else
-//    begin
-//
-////      KillTask('postgres.exe');
-////      KillTask('cmd.exe');
-//
-////      GstockdcConnection.ExecSQL('VACUUM') ;
-//      CanClose := True;
-//    end;
+//--- this is to check if the values chnages and there is changes in database
+  SQLQuery.Active:= False;
+  SQLQuery.SQL.Clear;   
+  SQLQuery.SQL.Text:= ' SELECT datname, tup_inserted, tup_updated, tup_deleted '
+  +' FROM pg_stat_database WHERE datname = ' +QuotedStr(GstockdcConnection.Params.Database);
+  SQLQuery.Active:= True;
+
+  CountInsertCheck:= SQLQuery.FieldByName('tup_inserted').AsInteger;
+  CountUpdateCheck:= SQLQuery.FieldByName('tup_updated').AsInteger;
+  CountDeleteCheck:= SQLQuery.FieldByName('tup_deleted').AsInteger;
+
+  SQLQuery.SQL.Clear;    
+  SQLQuery.Active:= False;
+
+
+
+  if (CountInsertCheck <> CountInsert) 
+  OR (CountUpdateCheck <> CountUpdate)
+  OR (CountDeleteCheck <> CountDelete) then
+  
+ begin
+  GrayForms;
+  msg:='Vous n''avez pas sauvé. Voulez-vous vraiment fermer?';
+
+  if MessageDlg(msg, mtConfirmation, [mbOk, mbCancel], 0) = mrCancel then
+   begin CanClose := false; NormalForms end
+    else
+    begin
+      CanClose := True;
+    end;
+ end;
  
 end;
 
@@ -2203,8 +2224,8 @@ begin
    GstockdcConnection.Params.Values['Database'] := 'GSTOCKDC';
    GstockdcConnection.Connected:= True;
 
-    CreateTablesFDScript.ExecuteAll;                                 // Eable this is only for releasing
-    InsertDataFDScript.ExecuteAll;                                   // Eable this is only for releasing
+//    CreateTablesFDScript.ExecuteAll;                                 // Eable this is only for releasing
+//    InsertDataFDScript.ExecuteAll;                                   // Eable this is only for releasing
   
   
     DataModuleF := TDataModuleF.Create(Application);
@@ -2212,9 +2233,24 @@ begin
   
   end;
 
-  
-   
 
+//-----this is the set the value of transactions at first start----
+  SQLQuery.Active:= False;
+  SQLQuery.SQL.Clear;   
+  SQLQuery.SQL.Text:= ' SELECT datname, tup_inserted, tup_updated, tup_deleted '
+  +' FROM pg_stat_database WHERE datname = ' +QuotedStr(GstockdcConnection.Params.Database);
+  SQLQuery.Active:= True;
+
+  CountInsert:= SQLQuery.FieldByName('tup_inserted').AsInteger;
+  CountUpdate:= SQLQuery.FieldByName('tup_updated').AsInteger;
+  CountDelete:= SQLQuery.FieldByName('tup_deleted').AsInteger;
+
+  SQLQuery.SQL.Clear;    
+  SQLQuery.Active:= False;
+
+
+  
+  
     if UserTypeLbl.Caption <> '0' then
       begin
 
@@ -3147,8 +3183,23 @@ begin
         CloseHandle(ProcInfo.hThread);
     end;
     BackupDbSDlg.FileName:='';
+
    end);
   BackupTask.Start;
+
+      //-----this is to reset the transatctions values as it in database----
+      SQLQuery.Active:= False;
+      SQLQuery.SQL.Clear;   
+      SQLQuery.SQL.Text:= ' SELECT datname, tup_inserted, tup_updated, tup_deleted '
+      +' FROM pg_stat_database WHERE datname = ' +QuotedStr(GstockdcConnection.Params.Database);
+      SQLQuery.Active:= True;
+
+      CountInsert:= SQLQuery.FieldByName('tup_inserted').AsInteger;
+      CountUpdate:= SQLQuery.FieldByName('tup_updated').AsInteger;
+      CountDelete:= SQLQuery.FieldByName('tup_deleted').AsInteger;
+
+      SQLQuery.SQL.Clear;    
+      SQLQuery.Active:= False;
 
  end;
 
@@ -3287,12 +3338,11 @@ end;
 procedure TMainForm.FormClose(Sender: TObject; var Action: TCloseAction);
 var
   I: Integer;
+
 begin
   for I := dxTabbedMDIManager1.TabProperties.PageCount - 1 downto 0 do
     dxTabbedMDIManager1.TabProperties.Pages[I].MDIChild.Close;
-
-  
- 
+    
 //   if Assigned(DashboardF) then
 //   begin
 //    DashboardF.Close;
@@ -3509,7 +3559,21 @@ begin
      DashboardF.OnPaint(Sender)
    end;
    
+   //-----this is the set the value of transactions at first start----
+  SQLQuery.Active:= False;
+  SQLQuery.SQL.Clear;   
+  SQLQuery.SQL.Text:= ' SELECT datname, tup_inserted, tup_updated, tup_deleted '
+  +' FROM pg_stat_database WHERE datname = ' +QuotedStr(GstockdcConnection.Params.Database);
+  SQLQuery.Active:= True;
 
+  CountInsert:= SQLQuery.FieldByName('tup_inserted').AsInteger;
+  CountUpdate:= SQLQuery.FieldByName('tup_updated').AsInteger;
+  CountDelete:= SQLQuery.FieldByName('tup_deleted').AsInteger;
+
+  SQLQuery.SQL.Clear;    
+  SQLQuery.Active:= False;
+
+  
    
 end;
 

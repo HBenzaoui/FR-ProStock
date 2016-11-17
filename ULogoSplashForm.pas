@@ -154,18 +154,17 @@ Left:= (Screen.Height-Height) div 2;
   ProgressBar1.Position := 0;
   Label2.Caption := 'Waiting...';
 
-//    sCmd := Pwidechar(GetCurrentDir+ '\bin\pg_s.bat' );                // Eable this is only for releasing
-//    ShellExecute(0, 'open', PChar(sCmd) , PChar(sCmd), nil, SW_HIDE);  // Eable this is only for releasing 1 OR 2
 
+//      sCmd := Pwidechar(GetCurrentDir+ '\bin\pg_s.bat' );                // Eable this is only for releasing 
+//    ShellExecute(0, 'open', PChar(sCmd) , PChar(sCmd), nil, SW_HIDE);  // Eable this is only for releasing 1 OR 2 
 
- 
 
 end;
 
 procedure TLogoSplashF.FormShow(Sender: TObject);
 //var i : Integer;
- var sCmd: string;
-Ini: TIniFile;
+ var 
+ Ini: TIniFile;
 begin
 Timer3.Enabled:= True;
 
@@ -231,13 +230,11 @@ begin
   else begin
   dxActivityIndicator1.Active:= False;
     ProgressBar1.Position := 100;
-    Label4.Caption := 'Done!';
+    Label4.Caption := 'Terminé!';
     Timer4.Enabled := false;
     Label5.Caption:= '100';
-    Label5.Left:=42;
-    Label5.top:=Label5.top - 1 ;
-    Label6.Left:=63;
-    Label6.top:=Label6.top - 1 ;
+    Label5.Left:=62;
+    Label6.Left:=83;
 //    Sleep(500);
    Label1Click(Sender);
 
