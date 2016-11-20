@@ -35,14 +35,13 @@ type
     Label5: TLabel;
     Label6: TLabel;
     Timer3: TTimer;
-    Panel1: TPanel;
-    Label1: TLabel;
     Button1: TButton;
     ProgressBar1: TProgressBar;
     Timer4: TTimer;
     Label2: TLabel;
-    Label7: TLabel;
     sImage2: TsImage;
+    Label7: TLabel;
+    Label1: TLabel;
     procedure Timer1Timer(Sender: TObject);
     procedure Timer2Timer(Sender: TObject);
     procedure Label1Click(Sender: TObject);

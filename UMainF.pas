@@ -736,6 +736,7 @@ type
     N20: TMenuItem;
     Rpar1: TMenuItem;
     Bona_recTableAgent: TStringField;
+    Button13: TButton;
     procedure ClientMainFBtnClick(Sender: TObject);
     procedure FourMainFBtnClick(Sender: TObject);
     procedure ProduitMainFBtnClick(Sender: TObject);
@@ -830,6 +831,7 @@ type
     procedure Rpar1Click(Sender: TObject);
     procedure Restaurer1Click(Sender: TObject);
     procedure Q1Click(Sender: TObject);
+    procedure Button13Click(Sender: TObject);
   private
    //---- this to value of changege we need it to check if theuser changed something
      CountInsert,CountUpdate,CountDelete   : Int64;
@@ -1051,45 +1053,7 @@ begin
 Screen.MenuFont.Height := 15;
 Screen.MenuFont.Color:= $0040332D ;
 
-//FDPhysPgDriverLink1.VendorLib:= 'C:\Program Files (x86)\PostgreSQL\9.6\bin\libpq.dll' ; // Eable this is only for Debuggin
-////FDPhysPgDriverLink1.VendorLib:= GetCurrentDir+'\bin\libpq.dll' ;    // Eable this is only for releasing
-////  sCmd := Pwidechar(GetCurrentDir+ '\bin\pg_s.bat' );                // Eable this is only for releasing
-////  ShellExecute(0, 'open', PChar(sCmd) , PChar(sCmd), nil, SW_HIDE);  // Eable this is only for releasing 1 OR 2
-////  Sleep(2000);                                                       // Eable this is only for releasing
-//
-//
-//  
-////  ExeAndWait( GetCurrentDir+ '\bin\pg_s.bat', SW_HIDE);              // Eable this is only for releasing 1 OR 2
-//
-//  GstockdcConnection.DriverName := 'PG';
-//  GstockdcConnection.Params.Values['Server'] :='localhost';
-//  GstockdcConnection.Params.Values['user_name'] := 'postgres';
-//  GstockdcConnection.Params.Values['password'] := ''; // ditto
-//  GstockdcConnection.Params.Values['Port'] := '5432';
-//  GstockdcConnection.LoginPrompt := False;
-//
-//   GstockdcConnection.Params.Values['Database'] := 'GSTOCKDC';
-//   GstockdcConnection.Connected:= True;
-//
-////   if NOT fileexists('Config') then
-////   begin
-//
-////    CreateTablesFDScript.SQLScripts[0];                          // Eable this is only for releasing
-//  CreateTablesFDScript.ExecuteAll;                                 // Eable this is only for releasing
-//  InsertDataFDScript.ExecuteAll;                                   // Eable this is only for releasing
-//  
-//  
-//  DataModuleF := TDataModuleF.Create(nil);
-//  ActiveTables;
-//   Sleep(2000);      // just for the first time                   // Eable this is only for releasing
 
-//   end;
-
-//  begin
-//    Ini := TIniFile.Create(ChangeFileExt(Application.ExeName,'.ini'));
-//    Ini.WriteBool(Caption,   'DB', True);
-//    Ini.Free;
-//  end;
 
 
 
@@ -1934,6 +1898,12 @@ begin
 //FactureAMainFMnmClick(Sender);
 end;
 
+procedure TMainForm.Button13Click(Sender: TObject);
+begin
+ GrayForms;
+ DataModuleF.LoginDC1.Execute;
+end;
+
 procedure TMainForm.CreatDBClick(Sender: TObject);
 begin
 //  GstockdcConnection.ExecSQL('CREATE DATABASE "GSTOCKDCDC007" ' 
@@ -2230,8 +2200,14 @@ begin
   
     DataModuleF := TDataModuleF.Create(Application);
     ActiveTables;  
-  
+
+     GrayForms;
+     DataModuleF.LoginDC1.Execute;
+
   end;
+
+
+  
 
 
 //-----this is the set the value of transactions at first start----

@@ -1264,6 +1264,15 @@ object MainForm: TMainForm
     Properties.DotCount = 7
     Transparent = True
   end
+  object Button13: TButton
+    Left = 548
+    Top = 20
+    Width = 75
+    Height = 25
+    Caption = 'Button13'
+    TabOrder = 18
+    OnClick = Button13Click
+  end
   object MainMenu1: TMainMenu
     Images = MainMenuImageListMainFormaa
     OwnerDraw = True
@@ -23129,7 +23138,7 @@ object MainForm: TMainForm
   object FDQuery2: TFDQuery
     FilterOptions = [foCaseInsensitive]
     Connection = GstockdcConnection
-    Left = 188
+    Left = 189
     Top = 94
   end
   object PanelIcons24: TsAlphaImageList

@@ -9,7 +9,7 @@ uses
   FireDAC.Comp.DataSet, FireDAC.Comp.Client, FireDAC.UI.Intf, FireDAC.Stan.Def,
   FireDAC.Stan.Pool, FireDAC.Phys, FireDAC.Phys.PG, FireDAC.Phys.PGDef,
   FireDAC.VCLUI.Wait, FireDAC.Comp.ScriptCommands, FireDAC.Stan.Util,
-  FireDAC.Comp.Script;
+  FireDAC.Comp.Script, LoginDC;
 
 type
   TDataModuleF = class(TDataModule)
@@ -57,6 +57,8 @@ type
     UsersTable: TFDQuery;
     CreatAndaddAdmin: TFDScript;
     AddAdminUser: TFDScript;
+    LoginDC1: TLoginDC;
+    UsersTableDs: TDataSource;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }

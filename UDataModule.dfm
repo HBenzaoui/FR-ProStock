@@ -384,8 +384,8 @@ object DataModuleF: TDataModuleF
     Connection = PSDBConfigConnection
     SQL.Strings = (
       'SELECT * FROM users')
-    Left = 94
-    Top = 113
+    Left = 80
+    Top = 91
   end
   object CreatAndaddAdmin: TFDScript
     SQLScripts = <
@@ -453,5 +453,15 @@ object DataModuleF: TDataModuleF
     Macros = <>
     Left = 388
     Top = 42
+  end
+  object LoginDC1: TLoginDC
+    DataSource = UsersTableDs
+    Left = 78
+    Top = 208
+  end
+  object UsersTableDs: TDataSource
+    DataSet = UsersTable
+    Left = 80
+    Top = 150
   end
 end
