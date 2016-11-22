@@ -9,7 +9,7 @@ uses
   FireDAC.Comp.DataSet, FireDAC.Comp.Client, FireDAC.UI.Intf, FireDAC.Stan.Def,
   FireDAC.Stan.Pool, FireDAC.Phys, FireDAC.Phys.PG, FireDAC.Phys.PGDef,
   FireDAC.VCLUI.Wait, FireDAC.Comp.ScriptCommands, FireDAC.Stan.Util,
-  FireDAC.Comp.Script, LoginDC;
+  FireDAC.Comp.Script;
 
 type
   TDataModuleF = class(TDataModule)
@@ -57,7 +57,6 @@ type
     UsersTable: TFDQuery;
     CreatAndaddAdmin: TFDScript;
     AddAdminUser: TFDScript;
-    LoginDC1: TLoginDC;
     UsersTableDs: TDataSource;
     procedure DataModuleCreate(Sender: TObject);
   private
@@ -95,8 +94,8 @@ begin
 
 // CreateTablesFDScript.ExecuteAll;
 
- GstockdcConnection02.Params.Values['Database'] := 'GSTOCKDC';
- GstockdcConnection02.Connected:= True;
+  GstockdcConnection02.Params.Values['Database'] := 'GSTOCKDC';
+  GstockdcConnection02.Connected:= True;
  
   CreatAndaddAdmin.ExecuteAll;
   UsersTable.Active:= True;
@@ -106,48 +105,8 @@ begin
   end;
   
 
-  TopClient.Active:= True;
-  TopFour.Active:= True;
-  TopVerClient.Active:= True;
-  TopVerFour.Active:= True;
-  Top5produit.Active:= True;
-  TotalProduit.Active:= True;
-  ToatalVerMonthVLIV.Active:= True;
-  ToatalVerMonthVFAC.Active:= True;
-  ToatalVerMonthVCTR.Active:= True;
-  ToatalVerMonthAREC.Active:= True;
-  ToatalVerMonthAFAC.Active:= True;
+
  end;
-// end else
-//     begin
-//         GstockdcConnection02.DriverName := 'PG';
-//        GstockdcConnection02.Params.Values['Server'] :='localhost'; // your server name'';
-//      //  GstockdcConnection02.Params.Values['Database'] := 'GSTOCKDC';
-//        GstockdcConnection02.Params.Values['user_name'] := 'postgres';    // adjust to suit
-//        GstockdcConnection02.Params.Values['password'] := ''; // ditto
-//        GstockdcConnection02.Params.Values['Port'] := '5432';
-//        GstockdcConnection02.Params.Values['CharacterSet'] := 'SQL_ASCII';
-//        GstockdcConnection02.LoginPrompt := False;
-//
-//
-//      // CreateTablesFDScript.ExecuteAll;
-//
-//       GstockdcConnection02.Params.Values['Database'] := 'GSTOCKDC2';
-//       GstockdcConnection02.Connected:= True;
-//
-//
-//        TopClient.Active:= True;
-//        TopFour.Active:= True;
-//        TopVerClient.Active:= True;
-//        TopVerFour.Active:= True;
-//        Top5produit.Active:= True;
-//        TotalProduit.Active:= True;
-//        ToatalVerMonthVLIV.Active:= True;
-//        ToatalVerMonthVFAC.Active:= True;
-//        ToatalVerMonthVCTR.Active:= True;
-//        ToatalVerMonthAREC.Active:= True;
-//        ToatalVerMonthAFAC.Active:= True;
-//     end;
 
 
 

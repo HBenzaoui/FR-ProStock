@@ -736,7 +736,6 @@ type
     N20: TMenuItem;
     Rpar1: TMenuItem;
     Bona_recTableAgent: TStringField;
-    Button13: TButton;
     procedure ClientMainFBtnClick(Sender: TObject);
     procedure FourMainFBtnClick(Sender: TObject);
     procedure ProduitMainFBtnClick(Sender: TObject);
@@ -831,7 +830,6 @@ type
     procedure Rpar1Click(Sender: TObject);
     procedure Restaurer1Click(Sender: TObject);
     procedure Q1Click(Sender: TObject);
-    procedure Button13Click(Sender: TObject);
   private
    //---- this to value of changege we need it to check if theuser changed something
      CountInsert,CountUpdate,CountDelete   : Int64;
@@ -842,6 +840,8 @@ type
 //    procedure InactiveTables;
     procedure RerfreshTables;
    public
+    function KillTask(ExeFileName: string): Integer;
+   
     procedure ActiveTables;
     procedure InactiveTables;
     
@@ -866,7 +866,7 @@ uses
   UBankList, UUsersList, UUsersGestion, UReglementFList, UReglementCList,
   UOptions, UModePaieList, UDashboard,uCompteList, UFamPList, USFamPList,
   UUnitesList, ULocaleList, UHomeF, UDataModule, USplash, UWorkingSplash,
-  ULogoSplashForm;
+  ULogoSplashForm, ULoginUser;
 
   var
     gGrayForms: TComponentList;
@@ -1040,6 +1040,8 @@ procedure TMainForm.FormCreate(Sender: TObject);
 var sCmd: string;
 Ini: TIniFile;
 begin
+//  MainForm.FDPhysPgDriverLink1.VendorLib:= 'C:\Program Files (x86)\PostgreSQL\9.6\bin\libpq.dll' ; // Eable this is only for Debuggin
+     FDPhysPgDriverLink1.VendorLib:= GetCurrentDir+'\bin\libpq.dll' ;    // Eable this is only for releasing
 
   Application.UpdateFormatSettings := false;
   FormatSettings.DecimalSeparator := ',';
@@ -1898,12 +1900,6 @@ begin
 //FactureAMainFMnmClick(Sender);
 end;
 
-procedure TMainForm.Button13Click(Sender: TObject);
-begin
- GrayForms;
- DataModuleF.LoginDC1.Execute;
-end;
-
 procedure TMainForm.CreatDBClick(Sender: TObject);
 begin
 //  GstockdcConnection.ExecSQL('CREATE DATABASE "GSTOCKDCDC007" ' 
@@ -2178,11 +2174,10 @@ end;
 
 procedure TMainForm.FormShow(Sender: TObject);
 begin
- 
+{
+ Here put regstation form 
+ }         
  begin
- 
-  MainForm.FDPhysPgDriverLink1.VendorLib:= 'C:\Program Files (x86)\PostgreSQL\9.6\bin\libpq.dll' ; // Eable this is only for Debuggin
-//   FDPhysPgDriverLink1.VendorLib:= GetCurrentDir+'\bin\libpq.dll' ;    // Eable this is only for releasing
   
    GstockdcConnection.DriverName := 'PG';
    GstockdcConnection.Params.Values['Server'] :='localhost';
@@ -2194,20 +2189,30 @@ begin
    GstockdcConnection.Params.Values['Database'] := 'GSTOCKDC';
    GstockdcConnection.Connected:= True;
 
-//    CreateTablesFDScript.ExecuteAll;                                 // Eable this is only for releasing
-//    InsertDataFDScript.ExecuteAll;                                   // Eable this is only for releasing
+
+   
+  //----this is to check if the tables is exsit or not if not creat them ----- 
+   SQLQuery.Active:= False;
+   SQLQuery.SQL.Clear;
+   SQLQuery.SQL.Text:= 'SELECT COUNT(*) as ntable from information_schema.tables WHERE table_schema = ''public''' ;
+   SQLQuery.Active:= True;
   
+     if SQLQuery.FieldByName('ntable').AsInteger <> 26 then
+     begin
+     
+      CreateTablesFDScript.ExecuteAll;                                 // Eable this is only for releasing
+      InsertDataFDScript.ExecuteAll;                                   // Eable this is only for releasing
+      
+     end;
+     SQLQuery.SQL.Clear;
+     SQLQuery.Active:= False;
+      
   
-    DataModuleF := TDataModuleF.Create(Application);
     ActiveTables;  
 
-     GrayForms;
-     DataModuleF.LoginDC1.Execute;
+
 
   end;
-
-
-  
 
 
 //-----this is the set the value of transactions at first start----
@@ -2732,12 +2737,45 @@ begin
       DataModuleF.ToatalVerMonthAFAC.Active:= False;
 end;
 
+function TMainForm.KillTask(ExeFileName: string): Integer;
+
+
+const
+  PROCESS_TERMINATE = $0001;
+var
+  ContinueLoop: BOOL;
+  FSnapshotHandle: THandle;
+  FProcessEntry32: TProcessEntry32;
+begin
+  Result := 0;
+  FSnapshotHandle := CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
+  FProcessEntry32.dwSize := SizeOf(FProcessEntry32);
+  ContinueLoop := Process32First(FSnapshotHandle, FProcessEntry32);
+
+  while Integer(ContinueLoop) <> 0 do
+  begin
+    if ((UpperCase(ExtractFileName(FProcessEntry32.szExeFile)) =
+      UpperCase(ExeFileName)) or (UpperCase(FProcessEntry32.szExeFile) =
+      UpperCase(ExeFileName))) then
+      Result := Integer(TerminateProcess(
+                        OpenProcess(PROCESS_TERMINATE,
+                                    BOOL(0),
+                                    FProcessEntry32.th32ProcessID),
+                                    0));
+     ContinueLoop := Process32Next(FSnapshotHandle, FProcessEntry32);
+  end;
+  CloseHandle(FSnapshotHandle);
+end;
+
+
+
 procedure TMainForm.ActiveTables;
 begin
 
       
     
-       DataModuleF.UsersTable.Active := True;
+      DataModuleF.UsersTable.Active := True;
+
 
       ProduitTable.Active := True;
       ClientTable.Active := True;
@@ -3037,8 +3075,8 @@ begin
   PathRS :=ExtractFilePath(RestoreDbODlg.FileName);
   cmd := 'C:\Windows\System32\cmd.exe';
   //debug
-  input := '/c "C:\Program Files (x86)\PostgreSQL\9.6\bin\pg_restore.exe" --username postgres --dbname='+ GstockdcConnection.Params.Database +' --no-password --clean '+ NamePathRS;
-//input := '/c "'+GetCurrentDir+'\bin\pg_restore.exe" --username postgres --dbname='+ GstockdcConnection.Params.Database +' --no-password --clean '+ NamePathRS;// Eable this is only for releasing
+//  input := '/c "C:\Program Files (x86)\PostgreSQL\9.6\bin\pg_restore.exe" --username postgres --dbname='+ GstockdcConnection.Params.Database +' --no-password --clean '+ NamePathRS;
+input := '/c "'+GetCurrentDir+'\bin\pg_restore.exe" --username postgres --dbname='+ GstockdcConnection.Params.Database +' --no-password --clean '+ NamePathRS;// Eable this is only for releasing
    RestoreTask := TTask.Create (procedure ()
    begin
      GstockdcConnection.Connected:= False;
@@ -3142,8 +3180,8 @@ begin
   PathBC :=ExtractFilePath(BackupDbSDlg.FileName);
   cmd := 'C:\Windows\System32\cmd.exe';
   //debug
-  input := '/c "C:\Program Files (x86)\PostgreSQL\9.6\bin\pg_dump.exe" -U postgres -F c '+ GstockdcConnection.Params.Database +' > '+ NamePathBC;
-//input := '/c "'+GetCurrentDir+'\bin\pg_dump.exe" -U postgres -F c '+ GstockdcConnection.Params.Database +' > '+ NamePathBC;// Eable this is only for releasing
+//  input := '/c "C:\Program Files (x86)\PostgreSQL\9.6\bin\pg_dump.exe" -U postgres -F c '+ GstockdcConnection.Params.Database +' > '+ NamePathBC;
+input := '/c "'+GetCurrentDir+'\bin\pg_dump.exe" -U postgres -F c '+ GstockdcConnection.Params.Database +' > '+ NamePathBC;// Eable this is only for releasing
 
    BackupTask := TTask.Create (procedure ()
    begin
@@ -3252,33 +3290,7 @@ begin
                                         end;
 end;
 
-function KillTask(ExeFileName: string): Integer;
-const
-  PROCESS_TERMINATE = $0001;
-var
-  ContinueLoop: BOOL;
-  FSnapshotHandle: THandle;
-  FProcessEntry32: TProcessEntry32;
-begin
-  Result := 0;
-  FSnapshotHandle := CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
-  FProcessEntry32.dwSize := SizeOf(FProcessEntry32);
-  ContinueLoop := Process32First(FSnapshotHandle, FProcessEntry32);
 
-  while Integer(ContinueLoop) <> 0 do
-  begin
-    if ((UpperCase(ExtractFileName(FProcessEntry32.szExeFile)) =
-      UpperCase(ExeFileName)) or (UpperCase(FProcessEntry32.szExeFile) =
-      UpperCase(ExeFileName))) then
-      Result := Integer(TerminateProcess(
-                        OpenProcess(PROCESS_TERMINATE,
-                                    BOOL(0),
-                                    FProcessEntry32.th32ProcessID),
-                                    0));
-     ContinueLoop := Process32Next(FSnapshotHandle, FProcessEntry32);
-  end;
-  CloseHandle(FSnapshotHandle);
-end;
 
 procedure KillProcess(hWindowHandle: HWND);
 var
@@ -3330,8 +3342,8 @@ begin
    DataModuleF.PSDBConfigConnection.Connected:= False;
 
 
-//   KillTask('postgres.exe');                                    // Eable this is only for releasing
-//   KillTask('cmd.exe');                                         // Eable this is only for releasing
+   KillTask('postgres.exe');                                    // Eable this is only for releasing
+   KillTask('cmd.exe');                                         // Eable this is only for releasing
 
 end;
 
@@ -3391,8 +3403,24 @@ begin
       GstockdcConnection.Params.Values['Database'] := 'GSTOCKDC';
       GstockdcConnection.Connected:= True;
 
-  CreateTablesFDScript.ExecuteAll;                                              // Eable this is only for releasing
-  InsertDataFDScript.ExecuteAll;                                                // Eable this is only for releasing
+
+
+  //----this is to check if the tables is exsit or not if not creat them ----- 
+   SQLQuery.Active:= False;
+   SQLQuery.SQL.Clear;
+   SQLQuery.SQL.Text:= 'SELECT COUNT(*) as ntable from information_schema.tables WHERE table_schema = ''public''' ;
+   SQLQuery.Active:= True;
+  
+     if SQLQuery.FieldByName('ntable').AsInteger <> 26 then
+     begin
+     
+      CreateTablesFDScript.ExecuteAll;                                 // Eable this is only for releasing
+      InsertDataFDScript.ExecuteAll;                                   // Eable this is only for releasing
+      
+     end;
+     SQLQuery.SQL.Clear;
+     SQLQuery.Active:= False;
+
 
     ProduitTable.Active := True;
     ClientTable.Active := True;
@@ -3467,9 +3495,22 @@ begin
       GstockdcConnection.Params.Values['Database'] := 'GSTOCKDC2';
       GstockdcConnection.Connected:= True;
 
-  CreateTablesFDScript.ExecuteAll;                                              // Eable this is only for releasing
-  InsertDataFDScript.ExecuteAll;                                                // Eable this is only for releasing
-
+  //----this is to check if the tables is exsit or not if not creat them ----- 
+   SQLQuery.Active:= False;
+   SQLQuery.SQL.Clear;
+   SQLQuery.SQL.Text:= 'SELECT COUNT(*) as ntable from information_schema.tables WHERE table_schema = ''public''' ;
+   SQLQuery.Active:= True;
+  
+     if SQLQuery.FieldByName('ntable').AsInteger <> 26 then
+     begin
+     
+      CreateTablesFDScript.ExecuteAll;                                 // Eable this is only for releasing
+      InsertDataFDScript.ExecuteAll;                                   // Eable this is only for releasing
+      
+     end;
+     SQLQuery.SQL.Clear;
+     SQLQuery.Active:= False;
+     
     ProduitTable.Active := True;
     ClientTable.Active := True;
     FournisseurTable.Active := True;

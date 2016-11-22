@@ -50,7 +50,8 @@ uses
   ULocaleList in 'ULocaleList.pas' {LocaleListF},
   UUnitesList in 'UUnitesList.pas' {UnitesListF},
   UWorkingSplash in 'UWorkingSplash.pas' {FWorkingSplash},
-  ULogoSplashForm in 'ULogoSplashForm.pas' {LogoSplashF};
+  ULogoSplashForm in 'ULogoSplashForm.pas' {LogoSplashF},
+  ULoginUser in 'ULoginUser.pas' {LoginUserF};
 
 {$R *.res}
 

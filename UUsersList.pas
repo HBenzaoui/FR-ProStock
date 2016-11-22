@@ -92,10 +92,10 @@ begin
         UsersGestionF.Left:=  (Screen.Width div 2 ) - (UsersGestionF.Width div 2);
         UsersGestionF.Top:=   (Screen.Height div 2) - (UsersGestionF.Height div 2);
 
-        UsersGestionF.NameUserGEdt.Text:= DataModuleF.UsersTable.FieldValues['nom_ur'] ;
-        UsersGestionF.PassUserGEdt.Text:= DataModuleF.UsersTable.FieldValues['password_ur'];
-        UsersGestionF.PassChkUserGEdt.Text:= DataModuleF.UsersTable.FieldValues['password_ur'];
-        UsersGestionF.TypeUserGCbx.ItemIndex:=  DataModuleF.UsersTable.FieldValues['type_ur'];
+        UsersGestionF.NameUserGEdt.Text:= DataModuleF.UsersTable.FieldByName('nom_ur').AsString;
+        UsersGestionF.PassUserGEdt.Text:= DataModuleF.UsersTable.FieldByName('password_ur').AsString;
+        UsersGestionF.PassChkUserGEdt.Text:= DataModuleF.UsersTable.FieldByName('password_ur').AsString;
+        UsersGestionF.TypeUserGCbx.ItemIndex:=  DataModuleF.UsersTable.FieldByName('type_ur').AsInteger;
 
         UsersGestionF.TypeUserGCbxClick(Sender);
 

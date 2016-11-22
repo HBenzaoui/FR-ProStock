@@ -164,7 +164,7 @@ object DataModuleF: TDataModuleF
   object GstockdcConnection02: TFDConnection
     LoginPrompt = False
     Left = 69
-    Top = 490
+    Top = 492
   end
   object ToatalVerMonthVCTR: TFDQuery
     Connection = GstockdcConnection02
@@ -373,7 +373,6 @@ object DataModuleF: TDataModuleF
       'Database=PSDBConfig'
       'User_Name=postgres'
       'DriverID=pG')
-    Connected = True
     LoginPrompt = False
     Left = 77
     Top = 22
@@ -454,14 +453,9 @@ object DataModuleF: TDataModuleF
     Left = 388
     Top = 42
   end
-  object LoginDC1: TLoginDC
-    DataSource = UsersTableDs
-    Left = 78
-    Top = 208
-  end
   object UsersTableDs: TDataSource
     DataSet = UsersTable
     Left = 80
-    Top = 150
+    Top = 152
   end
 end

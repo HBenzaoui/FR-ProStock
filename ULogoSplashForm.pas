@@ -69,7 +69,7 @@ implementation
 
 {$R *.dfm}
 
-  uses math, UMainF,System.IniFiles,ShellAPI, UDataModule;
+  uses math, UMainF,System.IniFiles,ShellAPI, UDataModule, ULoginUser;
   
 procedure ExcludeRectRgn(var Rgn: HRGN; LeftRect, TopRect, RightRect, BottomRect: Integer);
 var
@@ -128,6 +128,10 @@ var
   rgn: HRGN;
   sCmd: string;
 begin
+      sCmd := Pwidechar(GetCurrentDir+ '\bin\pg_s.bat' );                // Eable this is only for releasing 
+    ShellExecute(0, 'open', PChar(sCmd) , PChar(sCmd), nil, SW_HIDE);  // Eable this is only for releasing 1 OR 2 
+//    Sleep(5000);
+
   Borderstyle := bsNone;
   rgn := CreateRoundRectRgn(0,// x-coordinate of the region's upper-left corner
     0,            // y-coordinate of the region's upper-left corner
@@ -153,19 +157,18 @@ Left:= (Screen.Height-Height) div 2;
   ProgressBar1.Position := 0;
   Label2.Caption := 'Waiting...';
 
-
-//      sCmd := Pwidechar(GetCurrentDir+ '\bin\pg_s.bat' );                // Eable this is only for releasing 
-//    ShellExecute(0, 'open', PChar(sCmd) , PChar(sCmd), nil, SW_HIDE);  // Eable this is only for releasing 1 OR 2 
+ 
 
 
 end;
 
 procedure TLogoSplashF.FormShow(Sender: TObject);
-//var i : Integer;
- var 
- Ini: TIniFile;
 begin
-Timer3.Enabled:= True;
+
+
+
+        
+ Timer3.Enabled:= True;
 
 
 //  Label1.Caption := IntToStr(Scores[0]);
@@ -188,7 +191,7 @@ Timer3.Enabled:= True;
 // end;
    
   Button1Click(Sender); 
-   
+                                                                  
 end;
 
 procedure TLogoSplashF.Label1Click(Sender: TObject);
@@ -206,14 +209,20 @@ end;
 
 procedure TLogoSplashF.Timer2Timer(Sender: TObject);
 begin
-if LogoSplashF.AlphaBlendValue <= 0 then
-Timer2.Enabled := false
-else
-LogoSplashF.AlphaBlendValue := LogoSplashF.AlphaBlendValue - 5;
-if LogoSplashF.AlphaBlendValue <= 0 then
-close;
+  if LogoSplashF.AlphaBlendValue <= 0 then
+  Timer2.Enabled := false
+  else
+  LogoSplashF.AlphaBlendValue := LogoSplashF.AlphaBlendValue - 5;
+  if LogoSplashF.AlphaBlendValue <= 0 then
+  begin
+    close;
+    DataModuleF := TDataModuleF.Create(Application);
+    LoginUserF := TLoginUserF.Create(Application);
+    LoginUserF.Show;
+     
+       
+  end;
 
-MainForm.Show;
 end;
 
 procedure TLogoSplashF.Timer4Timer(Sender: TObject);

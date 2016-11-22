@@ -307,6 +307,7 @@ object UsersListF: TUsersListF
     OnChange = ResearchUsersEdtChange
   end
   object UsersListDataS: TDataSource
+    DataSet = DataModuleF.UsersTable
     Left = 336
     Top = 424
   end
