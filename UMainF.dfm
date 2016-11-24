@@ -1,7 +1,7 @@
 object MainForm: TMainForm
   Left = 1954
   Top = 106
-  Caption = 'Application'
+  Caption = 'ProStock'
   ClientHeight = 678
   ClientWidth = 969
   Color = clBtnFace
@@ -757,6 +757,15 @@ object MainForm: TMainForm
       TabOrder = 15
       Visible = False
       OnClick = CreatDBClick
+    end
+    object Button13: TButton
+      Left = 590
+      Top = 26
+      Width = 75
+      Height = 25
+      Caption = 'Button13'
+      TabOrder = 16
+      OnClick = Button13Click
     end
   end
   object SplitView1: TSplitView

@@ -736,6 +736,7 @@ type
     N20: TMenuItem;
     Rpar1: TMenuItem;
     Bona_recTableAgent: TStringField;
+    Button13: TButton;
     procedure ClientMainFBtnClick(Sender: TObject);
     procedure FourMainFBtnClick(Sender: TObject);
     procedure ProduitMainFBtnClick(Sender: TObject);
@@ -830,6 +831,7 @@ type
     procedure Rpar1Click(Sender: TObject);
     procedure Restaurer1Click(Sender: TObject);
     procedure Q1Click(Sender: TObject);
+    procedure Button13Click(Sender: TObject);
   private
    //---- this to value of changege we need it to check if theuser changed something
      CountInsert,CountUpdate,CountDelete   : Int64;
@@ -866,7 +868,7 @@ uses
   UBankList, UUsersList, UUsersGestion, UReglementFList, UReglementCList,
   UOptions, UModePaieList, UDashboard,uCompteList, UFamPList, USFamPList,
   UUnitesList, ULocaleList, UHomeF, UDataModule, USplash, UWorkingSplash,
-  ULogoSplashForm, ULoginUser;
+  ULogoSplashForm, ULoginUser, ULogin;
 
   var
     gGrayForms: TComponentList;
@@ -1898,6 +1900,11 @@ end;
 procedure TMainForm.Button12Click(Sender: TObject);
 begin
 //FactureAMainFMnmClick(Sender);
+end;
+
+procedure TMainForm.Button13Click(Sender: TObject);
+begin
+LoginF.Show;
 end;
 
 procedure TMainForm.CreatDBClick(Sender: TObject);

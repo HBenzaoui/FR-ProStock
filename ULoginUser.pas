@@ -62,7 +62,7 @@ implementation
 {$R *.dfm}
 
 
-uses UMainF, UDataModule,System.Contnrs;
+uses UMainF, UDataModule,System.Contnrs, ULogin;
 
 
   var
@@ -204,10 +204,24 @@ begin
 //         LoginUserF.Close;
 //         Hide;
                
-         MainForm.Show;
-                                                                                                    
+         if LoginF.Label1.Caption = 'R' then
+         begin
+          Close; 
+          MainForm.Show;
+                                                                                                   
 //                  LoginUserF.Close;
-         LoginUserF.Close;
+         
+         
+         end else
+             begin
+              Close;
+              LoginF.Top:=  (Screen.Width-Width)  div 2;
+              LoginF.Left:= (Screen.Height-Height) div 2;
+              LoginF.Show;
+               
+             end;
+     
+
 
 //        Close;
 //         Hide;
@@ -242,6 +256,11 @@ begin
      DataModuleF.UsersTable.SQL.Text:= 'SELECT * FROM users ';
      DataModuleF.UsersTable.Active := True;
      DataModuleF.UsersTable.EnableControls;
+
+
+
+     
+     
 end;
 
 procedure TLoginUserF.UserCbxChange(Sender: TObject);

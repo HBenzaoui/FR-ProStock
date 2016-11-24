@@ -758,8 +758,8 @@ object LoginUserF: TLoginUserF
       BorderHotColor = 4666873
       Color = 15722984
       ColorTo = 15722984
-      ColorDown = 7854350
-      ColorDownTo = 7854350
+      ColorDown = 4666873
+      ColorDownTo = 4666873
       ColorHot = 15722984
       ColorHotTo = 15722984
       ColorChecked = 15722984

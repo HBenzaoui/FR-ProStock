@@ -210,18 +210,21 @@ end;
 procedure TLogoSplashF.Timer2Timer(Sender: TObject);
 begin
   if LogoSplashF.AlphaBlendValue <= 0 then
-  Timer2.Enabled := false
-  else
-  LogoSplashF.AlphaBlendValue := LogoSplashF.AlphaBlendValue - 5;
-  if LogoSplashF.AlphaBlendValue <= 0 then
   begin
-    close;
+    Timer2.Enabled := false;
+      close;
     DataModuleF := TDataModuleF.Create(Application);
     LoginUserF := TLoginUserF.Create(Application);
-    LoginUserF.Show;
-     
-       
-  end;
+    LoginUserF.Show
+  end
+  else
+  LogoSplashF.AlphaBlendValue := LogoSplashF.AlphaBlendValue - 5;
+//  if LogoSplashF.AlphaBlendValue <= 0 then
+//  begin
+//
+//     
+//
+//  end;
 
 end;
 

@@ -51,7 +51,8 @@ uses
   UUnitesList in 'UUnitesList.pas' {UnitesListF},
   UWorkingSplash in 'UWorkingSplash.pas' {FWorkingSplash},
   ULogoSplashForm in 'ULogoSplashForm.pas' {LogoSplashF},
-  ULoginUser in 'ULoginUser.pas' {LoginUserF};
+  ULoginUser in 'ULoginUser.pas' {LoginUserF},
+  ULogin in 'ULogin.pas' {LoginF};
 
 {$R *.res}
 
@@ -94,5 +95,6 @@ begin
   Application.CreateForm(TFOptions, FOptions);
   Application.CreateForm(THomeF, HomeF);
   Application.CreateForm(TFWorkingSplash, FWorkingSplash);
+  Application.CreateForm(TLoginF, LoginF);
   Application.Run;
 end.
