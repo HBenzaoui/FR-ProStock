@@ -283,9 +283,9 @@ object FOptions: TFOptions
     object Label5: TLabel
       Left = 8
       Top = 0
-      Width = 88
+      Width = 99
       Height = 24
-      Caption = 'Enterpris'
+      Caption = 'Enterprise'
       Color = 4207405
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 4207405
@@ -296,11 +296,11 @@ object FOptions: TFOptions
       ParentFont = False
     end
     object Label6: TLabel
-      Left = 28
+      Left = 21
       Top = 32
-      Width = 100
+      Width = 107
       Height = 16
-      Caption = 'Nom d'#39'enterpris:'
+      Caption = 'Nom d'#39'enterprise:'
       Color = 4207405
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 4207405
@@ -388,7 +388,7 @@ object FOptions: TFOptions
       ShowHint = True
       Spacing = -1
       Visible = False
-      Version = '1.6.1.1'
+      Version = '1.6.1.2'
       TMSStyle = 0
     end
     object ImageEditProduitGBtn: TAdvToolButton
@@ -420,7 +420,7 @@ object FOptions: TFOptions
       ShowHint = True
       Spacing = -1
       Visible = False
-      Version = '1.6.1.1'
+      Version = '1.6.1.2'
       TMSStyle = 0
     end
     object Label10: TLabel
@@ -605,7 +605,7 @@ object FOptions: TFOptions
       ShowHint = True
       Spacing = -1
       OnClick = OKFPrintingBtnClick
-      Version = '1.6.1.1'
+      Version = '1.6.1.2'
       TMSStyle = 0
     end
   end

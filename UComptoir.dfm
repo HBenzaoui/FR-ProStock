@@ -583,7 +583,7 @@ object BonCtrGestionF: TBonCtrGestionF
       Top = 2
       Width = 30
       Height = 30
-      Hint = 'Modifer'
+      Hint = 'Calculatrice'
       Anchors = [akTop, akRight]
       ParentShowHint = False
       ShowHint = True
@@ -597,7 +597,7 @@ object BonCtrGestionF: TBonCtrGestionF
       Top = 2
       Width = 30
       Height = 30
-      Hint = 'Modifer'
+      Hint = 'Clavier'
       Anchors = [akTop, akRight]
       ParentShowHint = False
       ShowHint = True
@@ -626,7 +626,7 @@ object BonCtrGestionF: TBonCtrGestionF
       Top = 2
       Width = 30
       Height = 30
-      Hint = 'Modifer'
+      Hint = 'Ferm'#233'r'
       Anchors = [akTop, akRight]
       ParentShowHint = False
       ShowHint = True
@@ -640,7 +640,7 @@ object BonCtrGestionF: TBonCtrGestionF
       Top = 2
       Width = 30
       Height = 30
-      Hint = 'Modifer'
+      Hint = 'Minimiser'
       Anchors = [akTop, akRight]
       ParentShowHint = False
       ShowHint = True
@@ -1235,7 +1235,6 @@ object BonCtrGestionF: TBonCtrGestionF
         Top = 27
         Width = 40
         Height = 40
-        Hint = 'Modifer'
         Anchors = [akTop, akRight]
         ParentShowHint = False
         ShowHint = True
@@ -1250,7 +1249,6 @@ object BonCtrGestionF: TBonCtrGestionF
         Top = 27
         Width = 40
         Height = 40
-        Hint = 'Modifer'
         Anchors = [akTop, akRight]
         ParentShowHint = False
         ShowHint = True
@@ -1265,7 +1263,6 @@ object BonCtrGestionF: TBonCtrGestionF
         Top = 27
         Width = 40
         Height = 40
-        Hint = 'Modifer'
         Anchors = [akTop, akRight]
         ParentShowHint = False
         ShowHint = True
@@ -1281,7 +1278,7 @@ object BonCtrGestionF: TBonCtrGestionF
         Width = 90
         Height = 14
         Anchors = [akLeft, akBottom]
-        Caption = 'impression Auto:'
+        Caption = 'Impression Auto:'
         Color = 4207405
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405

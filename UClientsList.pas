@@ -415,15 +415,15 @@ end;
 
 procedure TClientListF.ClientsListDBGridEhKeyPress(Sender: TObject; var Key: Char);
 begin
-   if Key in ['n'] then
+   if Key in ['n','N'] then
   AddClientsBtnClick(Sender) ;
-   if Key in ['r'] then
+   if Key in ['r','R'] then
     ResearchClientsEdt.SetFocus ;
 if not ClientsListDBGridEh.DataSource.DataSet.IsEmpty then
   begin
-  if Key in ['s' ] then
+  if Key in ['s','S'] then
   DeleteClientsBtnClick(Sender) ;
-   if Key in ['m'] then
+   if Key in ['m','M'] then
   EditClientsBtnClick(Sender) ;
   end else Exit ;
   end;

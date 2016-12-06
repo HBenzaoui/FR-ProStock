@@ -170,9 +170,8 @@ ProcessRights;
   end
   else
   begin 
-   MainForm.Caption:= StringReplace(MainForm.Caption, '[DEMO]', '', [rfReplaceAll]);
+   MainForm.Caption:= StringReplace(MainForm.Caption, '[DEMO]', '', [rfReplaceAll]);   
    MainForm.Show;
-   
    Close;
   end;
    
@@ -253,7 +252,10 @@ end;
 procedure TLoginF.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
 NormalFormsL;
-Application.Terminate
+if MainForm.Visible =  False then
+begin
+Application.Terminate ;
+end;
 end;
 
 procedure TLoginF.FormCreate(Sender: TObject);

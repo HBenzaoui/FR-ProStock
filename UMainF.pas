@@ -2521,8 +2521,8 @@ begin
          end;
 
 
-
-
+  HomeF.Label1.Caption:='Bonjour '+DataModuleF.UsersTable.FieldByName('nom_ur').AsString;
+   UserNameLbl.Caption:=DataModuleF.UsersTable.FieldByName('nom_ur').AsString;
 end;
 
 procedure TMainForm.N17Click(Sender: TObject);
@@ -2559,7 +2559,6 @@ end;
 procedure TMainForm.BankMainFMnmClick(Sender: TObject);
 begin
 if Not Assigned(BankListF) then
-
      BankListF:= TBankListF.Create(Application) else
                                         begin
                                           BankListF.Show
@@ -2602,14 +2601,14 @@ begin
 
 
 
-begin
-try
-MyForm:=TBonRecGestionF.Create(nil);
-MyForm.ShowModal;
-finally
-MyForm.Free;
-end;
-end;
+  begin
+  try
+  MyForm:=TBonRecGestionF.Create(nil);
+  MyForm.ShowModal;
+  finally
+  MyForm.Free;
+  end;
+  end;
 
 
 end;
@@ -3338,6 +3337,8 @@ begin
   for I := dxTabbedMDIManager1.TabProperties.PageCount - 1 downto 0 do
     dxTabbedMDIManager1.TabProperties.Pages[I].MDIChild.Close;
     
+    Sleep(500);
+    
 //   if Assigned(DashboardF) then
 //   begin
 //    DashboardF.Close;
@@ -3348,6 +3349,7 @@ begin
    DataModuleF.GstockdcConnection02.Connected:= False;
    DataModuleF.PSDBConfigConnection.Connected:= False;
 
+   Sleep(500);
 
    KillTask('postgres.exe');                                    // Eable this is only for releasing
    KillTask('cmd.exe');                                         // Eable this is only for releasing

@@ -887,15 +887,15 @@ end;
 
 procedure TBonFacAF.BAFacListDBGridEhKeyPress(Sender: TObject; var Key: Char);
 begin
-  if Key in ['n'] then
+  if Key in ['n','N'] then
     AddBAFacBtnClick(Sender);
-  if Key in ['r'] then
+  if Key in ['r','R'] then
     ResearchBAFacEdt.SetFocus;
   if not BAFacListDBGridEh.DataSource.DataSet.IsEmpty then
   begin
-  if Key in ['s' ] then
+  if Key in ['s','S'] then
   DeleteBAFacBtnClick(Sender) ;
-    if Key in ['m'] then
+    if Key in ['m','M'] then
       EditBAFacBtnClick(Sender);
   end else Exit;
 end;

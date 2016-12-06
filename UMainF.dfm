@@ -415,7 +415,7 @@ object MainForm: TMainForm
       BevelEdges = []
       BevelOuter = bvNone
       BiDiMode = bdLeftToRight
-      Color = 15970832
+      Color = 13344790
       Ctl3D = True
       DoubleBuffered = False
       Font.Charset = DEFAULT_CHARSET
@@ -442,7 +442,7 @@ object MainForm: TMainForm
       BevelEdges = []
       BevelOuter = bvNone
       BiDiMode = bdLeftToRight
-      Color = 15970832
+      Color = 13344790
       Ctl3D = True
       DoubleBuffered = False
       Font.Charset = DEFAULT_CHARSET
@@ -469,7 +469,7 @@ object MainForm: TMainForm
       BevelEdges = []
       BevelOuter = bvNone
       BiDiMode = bdLeftToRight
-      Color = 15970832
+      Color = 13344790
       Ctl3D = True
       DoubleBuffered = False
       Font.Charset = DEFAULT_CHARSET
@@ -496,7 +496,7 @@ object MainForm: TMainForm
       BevelEdges = []
       BevelOuter = bvNone
       BiDiMode = bdLeftToRight
-      Color = 15970832
+      Color = 13344790
       Ctl3D = True
       DoubleBuffered = False
       Font.Charset = DEFAULT_CHARSET
@@ -523,7 +523,7 @@ object MainForm: TMainForm
       BevelEdges = []
       BevelOuter = bvNone
       BiDiMode = bdLeftToRight
-      Color = 15970832
+      Color = 13344790
       Ctl3D = True
       DoubleBuffered = False
       Font.Charset = DEFAULT_CHARSET
@@ -551,7 +551,7 @@ object MainForm: TMainForm
       BevelEdges = []
       BevelOuter = bvNone
       BiDiMode = bdLeftToRight
-      Color = 15970832
+      Color = 13344790
       Ctl3D = True
       DoubleBuffered = False
       Font.Charset = DEFAULT_CHARSET
@@ -578,7 +578,7 @@ object MainForm: TMainForm
       BevelEdges = []
       BevelOuter = bvNone
       BiDiMode = bdLeftToRight
-      Color = 15970832
+      Color = 13344790
       Ctl3D = True
       DoubleBuffered = False
       Font.Charset = DEFAULT_CHARSET
@@ -605,7 +605,7 @@ object MainForm: TMainForm
       BevelEdges = []
       BevelOuter = bvNone
       BiDiMode = bdLeftToRight
-      Color = 15970832
+      Color = 13344790
       Ctl3D = True
       DoubleBuffered = False
       Font.Charset = DEFAULT_CHARSET
@@ -633,7 +633,7 @@ object MainForm: TMainForm
       BevelEdges = []
       BevelOuter = bvNone
       BiDiMode = bdLeftToRight
-      Color = 15970832
+      Color = 13344790
       Ctl3D = True
       DoubleBuffered = False
       Font.Charset = DEFAULT_CHARSET
@@ -661,7 +661,7 @@ object MainForm: TMainForm
       BevelEdges = []
       BevelOuter = bvNone
       BiDiMode = bdLeftToRight
-      Color = 15970832
+      Color = 13344790
       Ctl3D = True
       DoubleBuffered = False
       Font.Charset = DEFAULT_CHARSET
@@ -689,7 +689,7 @@ object MainForm: TMainForm
       BevelEdges = []
       BevelOuter = bvNone
       BiDiMode = bdLeftToRight
-      Color = 15970832
+      Color = 13344790
       Ctl3D = True
       DoubleBuffered = False
       Font.Charset = DEFAULT_CHARSET
@@ -759,12 +759,13 @@ object MainForm: TMainForm
       OnClick = CreatDBClick
     end
     object Button13: TButton
-      Left = 590
-      Top = 26
+      Left = 601
+      Top = 7
       Width = 75
       Height = 25
-      Caption = 'Button13'
+      Caption = 'regisetremove'
       TabOrder = 16
+      Visible = False
       OnClick = Button13Click
     end
   end
@@ -1373,12 +1374,12 @@ object MainForm: TMainForm
         OnClick = ProduitMainFMmnClick
       end
       object FamPMainFMmn: TMenuItem
-        Caption = 'Familles Articles'
+        Caption = 'Familles D'#39'Articles'
         ImageIndex = 15
         OnClick = FamPMainFMmnClick
       end
       object SFamPMainFMmn: TMenuItem
-        Caption = 'Sous Familles Articles'
+        Caption = 'Sous Familles D'#39'Articles'
         ImageIndex = 15
         OnClick = SFamPMainFMmnClick
       end
@@ -1418,7 +1419,7 @@ object MainForm: TMainForm
         Caption = '-'
       end
       object UniteMainFMmn: TMenuItem
-        Caption = 'Unites'
+        Caption = 'Unit'#233's'
         ImageIndex = 25
         OnClick = UniteMainFMmnClick
       end
@@ -1462,7 +1463,7 @@ object MainForm: TMainForm
         Caption = '-'
       end
       object RGFourMainFMnm: TMenuItem
-        Caption = 'R'#232'glement Fournisseur'
+        Caption = 'R'#232'glement de Fournisseur'
         ImageIndex = 24
         OnClick = RGFourMainFMnmClick
       end
@@ -1509,7 +1510,7 @@ object MainForm: TMainForm
         Caption = '-'
       end
       object RGClientMainFMnm: TMenuItem
-        Caption = 'R'#232'glement Client'
+        Caption = 'R'#232'glement de Client'
         ImageIndex = 24
         OnClick = RGClientMainFMnmClick
       end

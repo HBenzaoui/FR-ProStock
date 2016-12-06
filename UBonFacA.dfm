@@ -425,7 +425,7 @@ object BonFacAF: TBonFacAF
         Footers = <>
         Layout = tlCenter
         Title.Alignment = taCenter
-        Title.Caption = 'N'#176' de Facture'
+        Title.Caption = 'N'#176' du Facture'
         Title.EndEllipsis = True
         Title.ToolTips = True
         Width = 150
@@ -530,7 +530,7 @@ object BonFacAF: TBonFacAF
         Layout = tlCenter
         MinWidth = 150
         Title.Alignment = taCenter
-        Title.Caption = 'Net a Payer HT'
+        Title.Caption = 'Net '#226' Payer HT'
         Width = 150
         WordWrap = False
       end
@@ -600,7 +600,7 @@ object BonFacAF: TBonFacAF
         Layout = tlCenter
         MinWidth = 150
         Title.Alignment = taCenter
-        Title.Caption = 'Montant Reste'
+        Title.Caption = 'Montant Rest'#233
         Title.EndEllipsis = True
         Title.ToolTips = True
         Width = 150
@@ -734,11 +734,11 @@ object BonFacAF: TBonFacAF
       TMSStyle = 0
     end
     object ResearchBARecLbl: TLabel
-      Left = 8
+      Left = 6
       Top = 40
-      Width = 78
+      Width = 83
       Height = 18
-      Caption = 'Recherche'
+      Caption = 'Rechercher'
       Color = 15722984
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 4207405
@@ -754,7 +754,6 @@ object BonFacAF: TBonFacAF
       Top = 26
       Width = 30
       Height = 30
-      Hint = 'Modifer'
       Anchors = [akTop, akRight]
       ParentShowHint = False
       ShowHint = True
@@ -768,7 +767,6 @@ object BonFacAF: TBonFacAF
       Top = 26
       Width = 30
       Height = 30
-      Hint = 'Modifer'
       Anchors = [akTop, akRight]
       ParentShowHint = False
       ShowHint = True
@@ -782,7 +780,6 @@ object BonFacAF: TBonFacAF
       Top = 26
       Width = 30
       Height = 30
-      Hint = 'Modifer'
       Anchors = [akTop, akRight]
       ParentShowHint = False
       ShowHint = True
@@ -828,7 +825,6 @@ object BonFacAF: TBonFacAF
       Top = 26
       Width = 30
       Height = 30
-      Hint = 'Detaill'
       ParentShowHint = False
       ShowHint = True
       OnClick = FisrtBAFacbtnClick
@@ -842,7 +838,6 @@ object BonFacAF: TBonFacAF
       Top = 26
       Width = 30
       Height = 30
-      Hint = 'Modifer'
       ParentShowHint = False
       ShowHint = True
       OnClick = PreviosBAFacbtnClick
@@ -855,7 +850,6 @@ object BonFacAF: TBonFacAF
       Top = 26
       Width = 30
       Height = 30
-      Hint = 'Detaill'
       ParentShowHint = False
       ShowHint = True
       OnClick = NextBAFacbtnClick
@@ -869,7 +863,6 @@ object BonFacAF: TBonFacAF
       Top = 26
       Width = 30
       Height = 30
-      Hint = 'Modifer'
       ParentShowHint = False
       ShowHint = True
       OnClick = LastBAFacbtnClick

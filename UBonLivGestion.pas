@@ -29,7 +29,7 @@ uses
   dxSkinXmas2008Blue, cxTextEdit, cxMaskEdit, cxDropDownEdit;
 
 type
-  TBonLivGestionF = class(TForm)
+  TBonLivGestionF  = class(TForm)
     Panel3: TPanel;
     TopP2: TPanel;
     Shape1: TShape;
@@ -196,7 +196,7 @@ type
   end;
 
 var
-  BonLivGestionF: TBonLivGestionF;
+  BonLivGestionF : TBonLivGestionF ;
 
 implementation
 
@@ -227,7 +227,7 @@ begin
      end;
  end;
 
- procedure TBonLivGestionF.EnableBonLiv;
+ procedure TBonLivGestionF .EnableBonLiv;
   begin
       AddBVLivBonLivGBtn.Enabled:= False;
       AddBVLivBonLivGBtn.ImageIndex:=28;// 4 For D
@@ -282,7 +282,7 @@ begin
       ValiderBVLivBonLivGLbl.Caption:='Ce bon n''est pas encore Validé';// 'Ce bon est Valid' for D
   end;
 
-procedure TBonLivGestionF.FormShow(Sender: TObject);
+procedure TBonLivGestionF .FormShow(Sender: TObject);
 var CodeBL: Integer;
 begin
 
@@ -322,7 +322,7 @@ begin
   sImage1.ImageIndex:= MainForm.sImage1.ImageIndex;
 end;
 
-procedure TBonLivGestionF.FormClose(Sender: TObject; var Action: TCloseAction);
+procedure TBonLivGestionF .FormClose(Sender: TObject; var Action: TCloseAction);
 begin
  if ValiderBVlivBonLivGImg.ImageIndex = 1 then
   begin
@@ -362,7 +362,7 @@ begin
 //  FormatSettings.DecimalSeparator := '.';
 end;
 
-procedure TBonLivGestionF.FormCloseQuery(Sender: TObject;
+procedure TBonLivGestionF .FormCloseQuery(Sender: TObject;
   var CanClose: Boolean);
 Var  CodeBL : Integer;
 begin
@@ -546,7 +546,7 @@ codeBL:=MainForm.Bonv_livTable.FieldByName('code_bvliv').AsInteger;
 
 end;
 
-procedure TBonLivGestionF.ProduitBonLivGCbxEnter(Sender: TObject);
+procedure TBonLivGestionF .ProduitBonLivGCbxEnter(Sender: TObject);
 var
 I : Integer;
   begin
@@ -591,13 +591,13 @@ I : Integer;
 
 end;
 
-procedure TBonLivGestionF.ProduitBonLivGCbxExit(Sender: TObject);
+procedure TBonLivGestionF .ProduitBonLivGCbxExit(Sender: TObject);
 begin
 ProduitBonLivGCbx.Text:='';
 //ProduitBonLivGCbx.AutoDropDown:=False;
 end;
 
-procedure TBonLivGestionF.ProduitBonLivGCbxKeyDown(Sender: TObject;
+procedure TBonLivGestionF .ProduitBonLivGCbxKeyDown(Sender: TObject;
   var Key: Word; Shift: TShiftState);
 begin
  if ResherchPARCBProduitsRdioBtn.Checked = False then
@@ -607,7 +607,7 @@ begin
 
 end;
 
-procedure TBonLivGestionF.ProduitBonLivGCbxKeyPress(Sender: TObject;
+procedure TBonLivGestionF .ProduitBonLivGCbxKeyPress(Sender: TObject;
   var Key: Char);
   var CodeBL,CodeCB,CodeP : Integer;
       lookupResultRefP : Variant;
@@ -1076,7 +1076,7 @@ begin
 
 end;
 
-procedure TBonLivGestionF.ClientBonLivGCbxEnter(Sender: TObject);
+procedure TBonLivGestionF .ClientBonLivGCbxEnter(Sender: TObject);
 var
 I : Integer;
   begin
@@ -1102,7 +1102,7 @@ I : Integer;
         MainForm.ClientTable.EnableControls;
 end;
 
-procedure TBonLivGestionF.ClientBonLivGCbxKeyPress(Sender: TObject;
+procedure TBonLivGestionF .ClientBonLivGCbxKeyPress(Sender: TObject;
   var Key: Char);
 begin
   if Key = #13 then
@@ -1112,7 +1112,7 @@ begin
     end;
 end;
 
-procedure TBonLivGestionF.ClientBonLivGCbxExit(Sender: TObject);
+procedure TBonLivGestionF .ClientBonLivGCbxExit(Sender: TObject);
 var CodeC: Integer;
 OLDCreditC,RegCCreditC,OLDCreditCINI : Currency;
 begin
@@ -1258,7 +1258,7 @@ begin
      end;
 end;
 
-procedure TBonLivGestionF.ClientBonLivGCbxChange(Sender: TObject);
+procedure TBonLivGestionF .ClientBonLivGCbxChange(Sender: TObject);
 begin
 // use this code to make mode pai espece
 
@@ -1268,7 +1268,7 @@ begin
 
 end;
 
-procedure TBonLivGestionF.ModePaieBonLivGCbxDropDown(Sender: TObject);
+procedure TBonLivGestionF .ModePaieBonLivGCbxDropDown(Sender: TObject);
 Var I: Integer;
 begin
       MainForm.Mode_paiementTable.Active:=False;
@@ -1291,7 +1291,7 @@ begin
      end;
 end;
 
-procedure TBonLivGestionF.ModePaieBonLivGCbxClick(Sender: TObject);
+procedure TBonLivGestionF .ModePaieBonLivGCbxClick(Sender: TObject);
 begin
   if ModePaieBonLivGCbx.Text <> '' then
   begin
@@ -1317,12 +1317,12 @@ begin
   end;
 end;
 
-procedure TBonLivGestionF.CompteBonLivGCbxChange(Sender: TObject);
+procedure TBonLivGestionF .CompteBonLivGCbxChange(Sender: TObject);
 begin
 CompteBonLivGCbx.AutoDropDown:=True;
 end;
 
-procedure TBonLivGestionF.CompteBonLivGCbxEnter(Sender: TObject);
+procedure TBonLivGestionF .CompteBonLivGCbxEnter(Sender: TObject);
 Var I: Integer;
 begin
       MainForm.CompteTable.Active:=False;
@@ -1345,7 +1345,7 @@ begin
      end;
 end;
 
-procedure TBonLivGestionF.cxComboBox1Enter(Sender: TObject);
+procedure TBonLivGestionF .cxComboBox1Enter(Sender: TObject);
 var
 I : Integer;
   begin
@@ -1390,7 +1390,7 @@ I : Integer;
 
 end;
 
-procedure TBonLivGestionF.AddClientBonLivGBtnClick(Sender: TObject);
+procedure TBonLivGestionF .AddClientBonLivGBtnClick(Sender: TObject);
 begin
 ClientListF.AddClientsBtnClick(Sender);
 ClientGestionF.OKClientGBtn.Tag := 3 ;
@@ -1399,7 +1399,7 @@ RequiredClientGlbl.Visible:= False;
 NameClientGErrorP.Visible:= False;
 end;
 
-procedure TBonLivGestionF.AddModePaieBonLivGBtnClick(Sender: TObject);
+procedure TBonLivGestionF .AddModePaieBonLivGBtnClick(Sender: TObject);
 begin
    //-------- Show the splash screan for the mode de paiement ---------//
     FSplashAddUnite:=TFSplashAddUnite.Create(Application);
@@ -1430,7 +1430,7 @@ begin
     FSplashAddUnite.OKAddUniteSBtn.Tag:= 11 ;
 end;
 
-procedure TBonLivGestionF.AddCompteBonLivGBtnClick(Sender: TObject);
+procedure TBonLivGestionF .AddCompteBonLivGBtnClick(Sender: TObject);
 begin
    //-------- Show the splash screan for the adding comptes ---------//
     FSplashAddCompte:=TFSplashAddCompte.Create(Application);
@@ -1442,14 +1442,14 @@ begin
     FSplashAddCompte.OKAddCompteSBtn.Tag:= 2 ;
 end;
 
-procedure TBonLivGestionF.EnterAddProduitBonLivGBtnClick(Sender: TObject);
+procedure TBonLivGestionF .EnterAddProduitBonLivGBtnClick(Sender: TObject);
 var key : char  ;
 begin
 key := #13;
 ProduitBonLivGCbxKeyPress(Sender, key);
 end;
 
-procedure TBonLivGestionF.ListAddProduitBonLivGBtnClick(Sender: TObject);
+procedure TBonLivGestionF .ListAddProduitBonLivGBtnClick(Sender: TObject);
 begin
 //-------- use this code to start creating th form-----//
   MainForm.ProduitTable.Filtered:=False;
@@ -1467,12 +1467,12 @@ begin
  // produitGestionF.CancelProduitGBtn.Tag:=0;
 end;
 
-procedure TBonLivGestionF.NewAddProduitBonLivGBtnClick(Sender: TObject);
+procedure TBonLivGestionF .NewAddProduitBonLivGBtnClick(Sender: TObject);
 begin
 ProduitsListF.AddProduitsBtnClick(Sender);
 end;
 
-procedure TBonLivGestionF.DeleteProduitBonLivGBtnClick(Sender: TObject);
+procedure TBonLivGestionF .DeleteProduitBonLivGBtnClick(Sender: TObject);
 begin
  if  MainForm.Bonv_liv_listTable.RecordCount = 1 then
  begin
@@ -1505,7 +1505,7 @@ begin
      end;
 end;
 
-procedure TBonLivGestionF.ClearProduitBonLivGBtnClick(Sender: TObject);
+procedure TBonLivGestionF .ClearProduitBonLivGBtnClick(Sender: TObject);
 begin
   FSplashAddUnite:=TFSplashAddUnite.Create(Application);
   FSplashAddUnite.Width:=350;
@@ -1537,7 +1537,7 @@ begin
   FSplashAddUnite.OKAddUniteSBtn.Tag:= 12 ;
 end;
 
-procedure TBonLivGestionF.BonLivPListDataSDataChange(Sender: TObject;
+procedure TBonLivGestionF .BonLivPListDataSDataChange(Sender: TObject;
   Field: TField);
 begin
   if NOT BonLivPListDataS.DataSet.IsEmpty then
@@ -1610,13 +1610,13 @@ begin
   end;
 end;
 
-procedure TBonLivGestionF.RemiseTypeBonLivGCbxChange(Sender: TObject);
+procedure TBonLivGestionF .RemiseTypeBonLivGCbxChange(Sender: TObject);
 begin
 RemiseBonLivGEdt.Text:='';
 RemisePerctageBonLivGEdt.Text:='';
 end;
 
-procedure TBonLivGestionF.RemisePerctageBonLivGEdtChange(Sender: TObject);
+procedure TBonLivGestionF .RemisePerctageBonLivGEdtChange(Sender: TObject);
 var BonLTotalHT,RemisePerctageBonLiv,TotalTVANet,NewHT,NewTVA,NewTTC,Remise,OldTTC,OldClientCredit : Currency;
 begin
 //------ this is to set the remise on tyhe prix HT ---------//
@@ -1766,20 +1766,20 @@ begin
       end;
 end;
 
-procedure TBonLivGestionF.RemisePerctageBonLivGEdtClick(Sender: TObject);
+procedure TBonLivGestionF .RemisePerctageBonLivGEdtClick(Sender: TObject);
 begin
 //----- use this code to delte the blanks from the Tedit when enter that will avoide the not foit point error --///
 RemisePerctageBonLivGEdt.Text := StringReplace(RemisePerctageBonLivGEdt.Text, #32, '', [rfReplaceAll]);
 RemisePerctageBonLivGEdt.SelectAll;
 end;
 
-procedure TBonLivGestionF.RemisePerctageBonLivGEdtEnter(Sender: TObject);
+procedure TBonLivGestionF .RemisePerctageBonLivGEdtEnter(Sender: TObject);
 begin
 MainForm.Bonv_liv_listTable.Refresh;
  RemisePerctageBonLivGEdtChange(Sender);
 end;
 
-procedure TBonLivGestionF.RemisePerctageBonLivGEdtKeyPress(Sender: TObject;
+procedure TBonLivGestionF .RemisePerctageBonLivGEdtKeyPress(Sender: TObject;
   var Key: Char);
 const
   N = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0',',','.', Char(VK_back)];
@@ -1798,7 +1798,7 @@ begin
   end;
 end;
 
-procedure TBonLivGestionF.RemiseBonLivGEdtKeyPress(Sender: TObject;
+procedure TBonLivGestionF .RemiseBonLivGEdtKeyPress(Sender: TObject;
   var Key: Char);
 const
   N = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0',',','.', Char(VK_back)];
@@ -1810,7 +1810,7 @@ begin
   end;
 end;
 
-procedure TBonLivGestionF.RemiseBonLivGEdtExit(Sender: TObject);
+procedure TBonLivGestionF .RemiseBonLivGEdtExit(Sender: TObject);
 var
 RemiseBonLivG: Currency;
 begin
@@ -1820,20 +1820,20 @@ begin
   RemiseBonLivGEdt.Text := FloatToStrF(RemiseBonLivG,ffNumber,14,2);
   end;
 end;
-procedure TBonLivGestionF.RemiseBonLivGEdtEnter(Sender: TObject);
+procedure TBonLivGestionF .RemiseBonLivGEdtEnter(Sender: TObject);
 begin
 MainForm.Bonv_liv_listTable.Refresh;
  RemisePerctageBonLivGEdtChange(Sender);
 end;
 
-procedure TBonLivGestionF.RemiseBonLivGEdtClick(Sender: TObject);
+procedure TBonLivGestionF .RemiseBonLivGEdtClick(Sender: TObject);
 begin
 //----- use this code to delte the blanks from the Tedit when enter that will avoide the not foit point error --///
 RemiseBonLivGEdt.Text := StringReplace(RemiseBonLivGEdt.Text, #32, '', [rfReplaceAll]);
 RemiseBonLivGEdt.SelectAll;
 end;
 
-procedure TBonLivGestionF.RemiseBonLivGEdtChange(Sender: TObject);
+procedure TBonLivGestionF .RemiseBonLivGEdtChange(Sender: TObject);
 var RemiseBonLivG,BonLTotalHT,BonLTotalTVA,OLDTTC : Currency;
 begin
 if RemiseBonLivGEdt.Focused then
@@ -1874,7 +1874,7 @@ if RemiseBonLivGEdt.Focused then
  end;
 end;
 
-procedure TBonLivGestionF.sSpeedButton7Click(Sender: TObject);
+procedure TBonLivGestionF .sSpeedButton7Click(Sender: TObject);
 begin
   MainForm.Bonv_livTable.First;
   MainForm.Bonv_livTable.Refresh;
@@ -1911,7 +1911,7 @@ begin
    NumBonLivGEdt.Caption:= MainForm.Bonv_livTable.FieldByName('num_bvliv').AsString;
 end;
 
-procedure TBonLivGestionF.sSpeedButton6Click(Sender: TObject);
+procedure TBonLivGestionF .sSpeedButton6Click(Sender: TObject);
 begin
   MainForm.Bonv_livTable.Prior;
   MainForm.Bonv_livTable.Refresh;
@@ -1948,7 +1948,7 @@ begin
   NumBonLivGEdt.Caption:= MainForm.Bonv_livTable.FieldByName('num_bvliv').AsString;
 end;
 
-procedure TBonLivGestionF.sSpeedButton5Click(Sender: TObject);
+procedure TBonLivGestionF .sSpeedButton5Click(Sender: TObject);
 begin
   MainForm.Bonv_livTable.Next;
   MainForm.Bonv_livTable.Refresh;
@@ -1985,7 +1985,7 @@ begin
   NumBonLivGEdt.Caption:= MainForm.Bonv_livTable.FieldByName('num_bvliv').AsString;
 end;
 
-procedure TBonLivGestionF.sSpeedButton4Click(Sender: TObject);
+procedure TBonLivGestionF .sSpeedButton4Click(Sender: TObject);
 begin
   MainForm.Bonv_livTable.Last;
   MainForm.Bonv_livTable.Refresh;
@@ -2022,7 +2022,7 @@ begin
   NumBonLivGEdt.Caption:= MainForm.Bonv_livTable.FieldByName('num_bvliv').AsString;
 end;
 
-procedure TBonLivGestionF.AddBVlivBonLivGBtnClick(Sender: TObject);
+procedure TBonLivGestionF .AddBVlivBonLivGBtnClick(Sender: TObject);
 var
   codeBL,CodeCB : integer;
 begin
@@ -2112,7 +2112,7 @@ begin
 
 end;
 
-procedure TBonLivGestionF.EditBVlivBonLivGBtnClick(Sender: TObject);
+procedure TBonLivGestionF .EditBVlivBonLivGBtnClick(Sender: TObject);
 begin
 
       MainForm.ClientTable.DisableControls;
@@ -2196,7 +2196,7 @@ begin
 
 end;
 
-procedure TBonLivGestionF.ValiderBVlivBonLivGBtnClick(Sender: TObject);
+procedure TBonLivGestionF .ValiderBVlivBonLivGBtnClick(Sender: TObject);
 begin
     if ClientBonLivGCbx.Text <> '' then
     begin
@@ -2248,7 +2248,7 @@ begin
 
 end;
 
-procedure TBonLivGestionF.ProduitsListDBGridEhKeyPress(Sender: TObject;
+procedure TBonLivGestionF .ProduitsListDBGridEhKeyPress(Sender: TObject;
   var Key: Char);
 begin
 if (Key=#13 ) OR (Key=#9) then
@@ -2278,7 +2278,7 @@ begin
 end;
 
 
-procedure TBonLivGestionF.ProduitsListDBGridEhMouseMove(Sender: TObject;
+procedure TBonLivGestionF .ProduitsListDBGridEhMouseMove(Sender: TObject;
   Shift: TShiftState; X, Y: Integer);
 
 begin
@@ -2315,7 +2315,7 @@ if NOT (MainForm.Bonv_liv_listTable.IsEmpty) then
 
 end;
 
-procedure TBonLivGestionF.Timer1Timer(Sender: TObject);
+procedure TBonLivGestionF .Timer1Timer(Sender: TObject);
 begin
 if label20.Visible=True then
    label20.Visible:=False
@@ -2363,7 +2363,7 @@ ClosePrinter(Handle);
 end;
 
 
-procedure TBonLivGestionF.GettingData;
+procedure TBonLivGestionF .GettingData;
 
  var
   MoneyWordRX,NumRX,DateRX,NameRX,AdrRX,VilleRX,WilayaRX,MPRX,NCHeqRX : TfrxMemoView;
@@ -2412,7 +2412,7 @@ begin
 
  end;
 
-procedure TBonLivGestionF.sSpeedButton2Click(Sender: TObject);
+procedure TBonLivGestionF .sSpeedButton2Click(Sender: TObject);
 begin
 MainForm.Bonv_liv_listTable.DisableControls;
  GettingData;
@@ -2426,7 +2426,7 @@ MainForm.Bonv_liv_listTable.EnableControls;
 
 end;
 
-procedure TBonLivGestionF.sSpeedButton1Click(Sender: TObject);
+procedure TBonLivGestionF .sSpeedButton1Click(Sender: TObject);
 begin
 MainForm.Bonv_liv_listTable.DisableControls;
    GettingData;
@@ -2458,12 +2458,12 @@ BonLivPListfrxRprt.Export(frxPDFExport1);
 MainForm.Bonv_liv_listTable.EnableControls;
 end;
 
-procedure TBonLivGestionF.ProduitsListDBGridEhCellClick(Column: TColumnEh);
+procedure TBonLivGestionF .ProduitsListDBGridEhCellClick(Column: TColumnEh);
 begin
 Refresh_PreservePosition;
 end;
 
-procedure TBonLivGestionF.ProduitsListDBGridEhExit(Sender: TObject);
+procedure TBonLivGestionF .ProduitsListDBGridEhExit(Sender: TObject);
 begin
 Refresh_PreservePosition;
 end;

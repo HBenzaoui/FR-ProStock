@@ -121,9 +121,9 @@ object FamPListF: TFamPListF
   object Label1: TLabel
     Left = 8
     Top = 101
-    Width = 57
+    Width = 53
     Height = 18
-    Caption = 'Compte:'
+    Caption = 'Famille:'
     Color = clWhite
     Font.Charset = DEFAULT_CHARSET
     Font.Color = 4207405
@@ -141,7 +141,7 @@ object FamPListF: TFamPListF
     Height = 45
     Anchors = [akLeft, akTop, akRight]
     BevelOuter = bvNone
-    Caption = 'Les Familles Articles'
+    Caption = 'Les Familles D'#39'Articles'
     Color = 11544476
     DoubleBuffered = True
     Font.Charset = DEFAULT_CHARSET

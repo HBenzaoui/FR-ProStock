@@ -18,7 +18,7 @@ uses
   USplashAddCodeBarre in 'USplashAddCodeBarre.pas' {FSplashAddCodeBarre},
   UBonRec in 'UBonRec.pas' {BonRecF},
   UBonRecGestion in 'UBonRecGestion.pas' {BonRecGestionF},
-  UBonLivGestion in 'UBonLivGestion.pas' {BonLivGestionF},
+  UBonLivGestion in 'UBonLivGestion.pas' {adadad},
   UBonLiv in 'UBonLiv.pas' {BonLivF},
   UComptoir in 'UComptoir.pas' {BonCtrGestionF},
   UFastProduitsList in 'UFastProduitsList.pas' {FastProduitsListF},

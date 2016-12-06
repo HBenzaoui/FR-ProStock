@@ -485,15 +485,15 @@ end;
 procedure TFournisseurListF.FournisseursListDBGridEhKeyPress(Sender: TObject;
   var Key: Char);
 begin
-   if Key in ['n'] then
+   if Key in ['n','N'] then
   AddFournisseursBtnClick(Sender) ;
-   if Key in ['r'] then
+   if Key in ['r','R'] then
     ResearchFournisseurEdt.SetFocus ;
 if not FournisseursListDBGridEh.DataSource.DataSet.IsEmpty then
   begin
-  if Key in ['s' ] then
+  if Key in ['s','S'] then
   DeleteFournisseursBtnClick(Sender) ;
-   if Key in ['m'] then
+   if Key in ['m','M'] then
   EditFournisseursBtnClick(Sender) ;
   end else Exit ;
 end;

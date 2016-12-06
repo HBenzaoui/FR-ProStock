@@ -1455,6 +1455,7 @@ object LoginF: TLoginF
     Width = 31
     Height = 13
     Caption = 'Label1'
+    Visible = False
   end
   object sImage6: TsImage
     Left = 81
@@ -2058,6 +2059,7 @@ object LoginF: TLoginF
     Height = 18
     Caption = 'Button1'
     TabOrder = 2
+    Visible = False
     OnClick = Button1Click
   end
   object LoginFmx: TmxProtector
@@ -2068,6 +2070,7 @@ object LoginF: TLoginF
     Expiration = 42740.607651898150000000
     MaxStartNumber = 0
     MaxDayNumber = 0
+    UserName = '1051759700221-PS-57-WD-WX41A15PKHD7'
     Version = '1.31'
     OnInvalidSerialNumber = LoginFmxInvalidSerialNumber
     OnGetSerialNumber = LoginFmxGetSerialNumber

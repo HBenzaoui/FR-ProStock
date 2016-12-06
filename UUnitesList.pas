@@ -174,15 +174,15 @@ end;
 
 procedure TUnitesListF.CompteDBGridEhKeyPress(Sender: TObject; var Key: Char);
 begin
-  if Key in ['n'] then
+  if Key in ['n','N'] then
     AdvToolButton1Click(Sender);
-  if Key in ['r'] then
+  if Key in ['r','R'] then
     ResearchUniteEdt.SetFocus;
   if not CompteDBGridEh.DataSource.DataSet.IsEmpty then
   begin
-  if Key in ['s' ] then
+  if Key in ['s','S'] then
   AdvToolButton3Click(Sender) ;
-    if Key in ['m'] then
+    if Key in ['m','M'] then
       AdvToolButton2Click(Sender);
   end  else   Exit;
 end;

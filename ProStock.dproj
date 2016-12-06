@@ -133,7 +133,7 @@
             <Form>BonRecGestionF</Form>
         </DCCReference>
         <DCCReference Include="UBonLivGestion.pas">
-            <Form>BonLivGestionF</Form>
+            <Form>adadad</Form>
         </DCCReference>
         <DCCReference Include="UBonLiv.pas">
             <Form>BonLivF</Form>

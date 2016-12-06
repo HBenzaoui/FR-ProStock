@@ -122,7 +122,7 @@ object UnitesListF: TUnitesListF
     Top = 101
     Width = 40
     Height = 18
-    Caption = 'Unite:'
+    Caption = 'Unit'#233':'
     Color = clWhite
     Font.Charset = DEFAULT_CHARSET
     Font.Color = 4207405
@@ -140,7 +140,7 @@ object UnitesListF: TUnitesListF
     Height = 45
     Anchors = [akLeft, akTop, akRight]
     BevelOuter = bvNone
-    Caption = 'Les Unites'
+    Caption = 'Les Unit'#233's'
     Color = 2673406
     DoubleBuffered = True
     Font.Charset = DEFAULT_CHARSET
@@ -264,7 +264,7 @@ object UnitesListF: TUnitesListF
         Footers = <>
         Layout = tlCenter
         Title.Alignment = taCenter
-        Title.Caption = 'Les Unites'
+        Title.Caption = 'Les Unit'#233's'
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = 10379008
         Title.Font.Height = 20

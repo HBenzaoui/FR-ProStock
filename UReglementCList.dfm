@@ -436,11 +436,11 @@ object ReglementCListF: TReglementCListF
       TMSStyle = 0
     end
     object ResearchBACtrLbl: TLabel
-      Left = 10
+      Left = 8
       Top = 38
-      Width = 73
+      Width = 78
       Height = 18
-      Caption = 'Recherche'
+      Caption = 'Rechercher'
       Color = 15722984
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 4207405
@@ -456,7 +456,6 @@ object ReglementCListF: TReglementCListF
       Top = 26
       Width = 30
       Height = 30
-      Hint = 'Modifer'
       Anchors = [akTop, akRight]
       ParentShowHint = False
       ShowHint = True
@@ -470,7 +469,6 @@ object ReglementCListF: TReglementCListF
       Top = 26
       Width = 30
       Height = 30
-      Hint = 'Modifer'
       Anchors = [akTop, akRight]
       ParentShowHint = False
       ShowHint = True
@@ -484,7 +482,6 @@ object ReglementCListF: TReglementCListF
       Top = 26
       Width = 30
       Height = 30
-      Hint = 'Modifer'
       Anchors = [akTop, akRight]
       ParentShowHint = False
       ShowHint = True
@@ -530,7 +527,6 @@ object ReglementCListF: TReglementCListF
       Top = 26
       Width = 30
       Height = 30
-      Hint = 'Detaill'
       ParentShowHint = False
       ShowHint = True
       OnClick = FisrtBARecbtnClick
@@ -544,7 +540,6 @@ object ReglementCListF: TReglementCListF
       Top = 26
       Width = 30
       Height = 30
-      Hint = 'Modifer'
       ParentShowHint = False
       ShowHint = True
       OnClick = PreviosBARecbtnClick
@@ -557,7 +552,6 @@ object ReglementCListF: TReglementCListF
       Top = 26
       Width = 30
       Height = 30
-      Hint = 'Detaill'
       ParentShowHint = False
       ShowHint = True
       OnClick = NextBARecbtnClick
@@ -571,7 +565,6 @@ object ReglementCListF: TReglementCListF
       Top = 26
       Width = 30
       Height = 30
-      Hint = 'Modifer'
       ParentShowHint = False
       ShowHint = True
       OnClick = LastBARecbtnClick

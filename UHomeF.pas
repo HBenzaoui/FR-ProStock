@@ -51,7 +51,7 @@ uses
   UMainF, UClientsList, UFournisseurList, UProduitsList, UBonRec,
    UBonLiv,  UBonFacV,  UBonFacA, UComptoir, UBonCtr, UCaisseList,
   UBankList, UUsersList,  UReglementFList, UReglementCList,
-    UDashboard;
+    UDashboard, UDataModule;
 
 
 procedure THomeF.BLFaceBtnClick(Sender: TObject);

@@ -847,15 +847,15 @@ end;
 
 procedure TBonLivF.BVLivListDBGridEhKeyPress(Sender: TObject; var Key: Char);
 begin
-  if Key in ['n'] then
+  if Key in ['n','N'] then
     AddBVLivBtnClick(Sender);
-  if Key in ['r'] then
+  if Key in ['r','R'] then
     ResearchBVLivEdt.SetFocus;
   if not BVLivListDBGridEh.DataSource.DataSet.IsEmpty then
   begin
-  if Key in ['s' ] then
+  if Key in ['s','S'] then
   DeleteBVLivBtnClick(Sender) ;
-    if Key in ['m'] then
+    if Key in ['m','M'] then
       EditBVLivBtnClick(Sender);
   end else Exit;
 end;

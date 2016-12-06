@@ -427,7 +427,7 @@ object ClientListF: TClientListF
         Layout = tlCenter
         MinWidth = 100
         Title.Alignment = taCenter
-        Title.Caption = 'N'#176' Client'
+        Title.Caption = 'N'#176
         Title.EndEllipsis = True
         Title.ToolTips = True
         Width = 110
@@ -454,7 +454,7 @@ object ClientListF: TClientListF
         Footers = <>
         Layout = tlCenter
         Title.Alignment = taCenter
-        Title.Caption = 'L'#39'Activit'#233
+        Title.Caption = 'Activit'#233
         Title.EndEllipsis = True
         Title.ToolTips = True
         Width = 130
@@ -553,7 +553,7 @@ object ClientListF: TClientListF
         Footers = <>
         Layout = tlCenter
         Title.Alignment = taCenter
-        Title.Caption = 'La Ville'
+        Title.Caption = 'Ville'
         Title.EndEllipsis = True
         Title.ToolTips = True
         Width = 130
@@ -566,7 +566,7 @@ object ClientListF: TClientListF
         Footers = <>
         Layout = tlCenter
         Title.Alignment = taCenter
-        Title.Caption = 'La Willaya'
+        Title.Caption = 'Willaya'
         Title.EndEllipsis = True
         Title.ToolTips = True
         Width = 130
@@ -606,7 +606,7 @@ object ClientListF: TClientListF
         Footers = <>
         Layout = tlCenter
         Title.Alignment = taCenter
-        Title.Caption = 'Registre Commerce'
+        Title.Caption = 'R.C'
         Title.EndEllipsis = True
         Title.ToolTips = True
         Width = 130
@@ -839,11 +839,11 @@ object ClientListF: TClientListF
       TMSStyle = 0
     end
     object ResearchClientsLbl: TLabel
-      Left = 14
+      Left = 12
       Top = 32
-      Width = 73
+      Width = 78
       Height = 18
-      Caption = 'Recherche'
+      Caption = 'Rechercher'
       Color = 15722984
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 4207405
@@ -859,7 +859,6 @@ object ClientListF: TClientListF
       Top = 26
       Width = 30
       Height = 30
-      Hint = 'Modifer'
       Anchors = [akTop, akRight]
       ParentShowHint = False
       ShowHint = True
@@ -873,7 +872,6 @@ object ClientListF: TClientListF
       Top = 26
       Width = 30
       Height = 30
-      Hint = 'Modifer'
       Anchors = [akTop, akRight]
       ParentShowHint = False
       ShowHint = True
@@ -944,7 +942,7 @@ object ClientListF: TClientListF
       Width = 87
       Height = 16
       AutoSize = False
-      Caption = 'Les Client Actif'
+      Caption = 'Les Client Actifs'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 4207405
       Font.Height = 16
@@ -986,7 +984,6 @@ object ClientListF: TClientListF
       Top = 26
       Width = 30
       Height = 30
-      Hint = 'Detaill'
       ParentShowHint = False
       ShowHint = True
       OnClick = FisrtClientbtnClick
@@ -1000,7 +997,6 @@ object ClientListF: TClientListF
       Top = 26
       Width = 30
       Height = 30
-      Hint = 'Modifer'
       ParentShowHint = False
       ShowHint = True
       OnClick = PreviosClientbtnClick
@@ -1013,7 +1009,6 @@ object ClientListF: TClientListF
       Top = 26
       Width = 30
       Height = 30
-      Hint = 'Detaill'
       ParentShowHint = False
       ShowHint = True
       OnClick = NextClientbtnClick
@@ -1027,7 +1022,6 @@ object ClientListF: TClientListF
       Top = 26
       Width = 30
       Height = 30
-      Hint = 'Modifer'
       ParentShowHint = False
       ShowHint = True
       OnClick = LastClientbtnClick
@@ -1149,7 +1143,7 @@ object ClientListF: TClientListF
       Top = 8
       Width = 102
       Height = 17
-      Caption = 'Les Client Actif'
+      Caption = 'Les Client Actifs'
       Checked = True
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText

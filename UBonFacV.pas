@@ -886,15 +886,15 @@ end;
 
 procedure TBonFacVF.BVFacListDBGridEhKeyPress(Sender: TObject; var Key: Char);
 begin
-  if Key in ['n'] then
+  if Key in ['n','N'] then
     AddBVFacBtnClick(Sender);
-  if Key in ['r'] then
+  if Key in ['r','R'] then
     ResearchBVFacEdt.SetFocus;
   if not BVFacListDBGridEh.DataSource.DataSet.IsEmpty then
   begin
-  if Key in ['s' ] then
+  if Key in ['s','S'] then
   DeleteBVFacBtnClick(Sender) ;
-    if Key in ['m'] then
+    if Key in ['m','M'] then
       EditBVFacBtnClick(Sender);
   end else Exit;
 end;

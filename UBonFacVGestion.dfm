@@ -146,7 +146,6 @@ object BonFacVGestionF: TBonFacVGestionF
       Top = 18
       Width = 30
       Height = 30
-      Hint = 'Modifer'
       Anchors = [akTop, akRight]
       ParentShowHint = False
       ShowHint = True
@@ -160,7 +159,6 @@ object BonFacVGestionF: TBonFacVGestionF
       Top = 18
       Width = 30
       Height = 30
-      Hint = 'Modifer'
       Anchors = [akTop, akRight]
       ParentShowHint = False
       ShowHint = True
@@ -174,7 +172,6 @@ object BonFacVGestionF: TBonFacVGestionF
       Top = 18
       Width = 30
       Height = 30
-      Hint = 'Modifer'
       Anchors = [akTop, akRight]
       ParentShowHint = False
       ShowHint = True
@@ -759,7 +756,6 @@ object BonFacVGestionF: TBonFacVGestionF
       Top = 18
       Width = 30
       Height = 30
-      Hint = 'Detaill'
       ParentShowHint = False
       ShowHint = True
       OnClick = sSpeedButton7Click
@@ -773,7 +769,6 @@ object BonFacVGestionF: TBonFacVGestionF
       Top = 18
       Width = 30
       Height = 30
-      Hint = 'Modifer'
       ParentShowHint = False
       ShowHint = True
       OnClick = sSpeedButton6Click
@@ -786,7 +781,6 @@ object BonFacVGestionF: TBonFacVGestionF
       Top = 18
       Width = 30
       Height = 30
-      Hint = 'Detaill'
       ParentShowHint = False
       ShowHint = True
       OnClick = sSpeedButton5Click
@@ -800,7 +794,6 @@ object BonFacVGestionF: TBonFacVGestionF
       Top = 18
       Width = 30
       Height = 30
-      Hint = 'Modifer'
       ParentShowHint = False
       ShowHint = True
       OnClick = sSpeedButton4Click
@@ -1037,7 +1030,7 @@ object BonFacVGestionF: TBonFacVGestionF
       Width = 120
       Height = 17
       Anchors = [akLeft, akBottom]
-      Caption = 'Par Code a Barre'
+      Caption = 'Par Code '#226' Barre'
       Color = 15722984
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite

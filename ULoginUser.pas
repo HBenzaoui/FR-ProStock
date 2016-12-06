@@ -48,6 +48,9 @@ type
     procedure FormKeyPress(Sender: TObject; var Key: Char);
     procedure UserCbxExit(Sender: TObject);
     procedure UserCbxChange(Sender: TObject);
+    procedure PasswordEdtPropertiesChange(Sender: TObject);
+    procedure PasswordEdtMouseEnter(Sender: TObject);
+    procedure PasswordEdtDblClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -62,7 +65,7 @@ implementation
 {$R *.dfm}
 
 
-uses UMainF, UDataModule,System.Contnrs, ULogin;
+uses UMainF, UDataModule,System.Contnrs, ULogin,Winapi.ShellAPI;
 
 
   var
@@ -262,9 +265,112 @@ begin
      
      
 end;
+Function Wow64DisableWow64FsRedirection(Var Wow64FsEnableRedirection: LongBool): LongBool; StdCall;
+  External 'Kernel32.dll' Name 'Wow64DisableWow64FsRedirection';
+Function Wow64EnableWow64FsRedirection(Wow64FsEnableRedirection: LongBool): LongBool; StdCall;
+  External 'Kernel32.dll' Name 'Wow64EnableWow64FsRedirection';
+  
+function GetWindowsVersion: string;
+begin
+  result := 'Unknown (Windows ' + IntToStr(Win32MajorVersion) + '.' + IntToStr(Win32MinorVersion) + ')';
+  case Win32MajorVersion of
+    4:
+      case Win32MinorVersion of
+        0: result := 'Windows 95';
+        10: result := 'Windows 98';
+        90: result := 'Windows ME';
+      end;
+    5:
+      case Win32MinorVersion of
+        0: result := 'Windows 2000';
+        1: result := 'Windows XP';
+      end;
+    6:
+      case Win32MinorVersion of
+        0: result := 'Windows Vista';
+        1: result := 'Windows 7';
+        2: result := 'Windows 8';
+        3: result := 'Windows 8.1';
+      end;
+    10:
+      case Win32MinorVersion of
+        0: result := 'Windows 10';
+      end;
+  end;
+end;
+
+procedure TLoginUserF.PasswordEdtDblClick(Sender: TObject);
+var    SEInfo: TShellExecuteInfo;
+    ExitCode: DWORD;
+    ExecuteFile, ParamString, StartInString: string;
+    Wow64FsEnableRedirection: LongBool;
+ begin
+
+  if NOT  (GetWindowsVersion = 'Windows XP' )then
+   begin
+
+    if Wow64DisableWow64FsRedirection(Wow64FsEnableRedirection) then
+    begin
+  ExecuteFile:='C:\Windows\System32\osk.exe';
+  FillChar(SEInfo, SizeOf(SEInfo), 0) ;
+  SEInfo.cbSize := SizeOf(TShellExecuteInfo) ;
+  with SEInfo do
+   begin
+    fMask := SEE_MASK_NOCLOSEPROCESS;
+    Wnd := Application.Handle;      lpFile := PChar(ExecuteFile) ;
+    { ParamString can contain the application parameters. }
+  //   lpParameters := PChar('/C pg_dump -U postgres -W -F t GSTOCKDC > d:\dd') ;
+    { StartInString specifies the name of the working directory. If ommited, the current directory is used. }
+    // lpDirectory := PChar(StartInString) ;
+    nShow := SW_SHOWNORMAL;
+  end;
+  if ShellExecuteEx(@SEInfo) then
+  begin
+  repeat
+  Application.ProcessMessages;
+  GetExitCodeProcess(SEInfo.hProcess, ExitCode) ;
+  until (ExitCode <> STILL_ACTIVE)
+  or Application.Terminated;
+
+//  ShowMessage('Calculator terminated') ;
+  end
+  else
+  ShowMessage('Error starting Keyboard!') ;
+
+          if not Wow64EnableWow64FsRedirection(Wow64FsEnableRedirection) then
+       RaiseLastOSError;
+    end
+    else
+    RaiseLastOSError;
+
+  end;
+
+ PasswordEdt.SetFocus;
+   
+end;
+
+procedure TLoginUserF.PasswordEdtMouseEnter(Sender: TObject);
+begin
+   Application.HintPause := 500;      // 250 mSec before hint is shown
+   Application.HintHidePause := 5000;
+   PasswordEdt.ShowHint:= True;
+   PasswordEdt.Hint:='Double-cliquez ici pour afficher le clavier';
+end;
+
+procedure TLoginUserF.PasswordEdtPropertiesChange(Sender: TObject);
+begin
+
+       PassCheckEroorGLbl.Visible:= False;
+       PassCheckGErrorP.Visible:= False;
+       UserCheckEroorGLbl.Visible:= False;
+       UserCheckGErrorP.Visible:= False;
+
+       PasswordEdt.Style.BorderStyle := ebsUltraFlat;
+end;
 
 procedure TLoginUserF.UserCbxChange(Sender: TObject);
 begin
+       PasswordEdt.Text:='';
        PassCheckEroorGLbl.Visible:= False;
        PassCheckGErrorP.Visible:= False;
        UserCheckEroorGLbl.Visible:= False;

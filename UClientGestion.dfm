@@ -95,9 +95,9 @@ object ClientGestionF: TClientGestionF
         object ActiveClientGLbl: TLabel
           Left = 30
           Top = 15
-          Width = 89
+          Width = 78
           Height = 18
-          Caption = 'Client Active:'
+          Caption = 'Client Actif:'
           Color = 4207405
           Font.Charset = DEFAULT_CHARSET
           Font.Color = 4207405
@@ -269,10 +269,12 @@ object ClientGestionF: TClientGestionF
           StyleElements = [seClient, seBorder]
         end
         object RequiredClientGlbl: TLabel
-          Left = 194
+          Left = 73
           Top = 38
-          Width = 120
-          Height = 32
+          Width = 425
+          Height = 16
+          Alignment = taCenter
+          AutoSize = False
           Caption = 'S'#39'il vous pla'#238't entrer un nom'
           Color = clBtnFace
           Font.Charset = DEFAULT_CHARSET
@@ -287,7 +289,7 @@ object ClientGestionF: TClientGestionF
           StyleElements = [seClient, seBorder]
         end
         object ActiveClientGOuiOuNon: TLabel
-          Left = 171
+          Left = 162
           Top = 18
           Width = 18
           Height = 14
@@ -489,7 +491,7 @@ object ClientGestionF: TClientGestionF
           OnKeyPress = NameClientGEdtKeyPress
         end
         object ActiveClientGSlider: TsSlider
-          Left = 125
+          Left = 116
           Top = 17
           Width = 40
           Height = 16

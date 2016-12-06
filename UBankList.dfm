@@ -362,7 +362,6 @@ object BankListF: TBankListF
       Top = 26
       Width = 30
       Height = 30
-      Hint = 'Modifer'
       Anchors = [akTop, akRight]
       ParentShowHint = False
       ShowHint = True
@@ -376,7 +375,6 @@ object BankListF: TBankListF
       Top = 26
       Width = 30
       Height = 30
-      Hint = 'Modifer'
       Anchors = [akTop, akRight]
       ParentShowHint = False
       ShowHint = True
@@ -390,7 +388,6 @@ object BankListF: TBankListF
       Top = 26
       Width = 30
       Height = 30
-      Hint = 'Modifer'
       Anchors = [akTop, akRight]
       ParentShowHint = False
       ShowHint = True
@@ -452,7 +449,6 @@ object BankListF: TBankListF
       Top = 27
       Width = 30
       Height = 30
-      Hint = 'Detaill'
       ParentShowHint = False
       ShowHint = True
       OnClick = FisrtBankbtnClick
@@ -466,7 +462,6 @@ object BankListF: TBankListF
       Top = 27
       Width = 30
       Height = 30
-      Hint = 'Modifer'
       ParentShowHint = False
       ShowHint = True
       OnClick = PreviosBankbtnClick
@@ -479,7 +474,6 @@ object BankListF: TBankListF
       Top = 27
       Width = 30
       Height = 30
-      Hint = 'Detaill'
       ParentShowHint = False
       ShowHint = True
       OnClick = NextBankbtnClick
@@ -493,7 +487,6 @@ object BankListF: TBankListF
       Top = 27
       Width = 30
       Height = 30
-      Hint = 'Modifer'
       ParentShowHint = False
       ShowHint = True
       OnClick = LastBBankbtnClick

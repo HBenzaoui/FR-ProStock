@@ -157,11 +157,13 @@ object FSplashAddCodeBarre: TFSplashAddCodeBarre
     TMSStyle = 0
   end
   object DuplicatedCodeBarrelbl: TLabel
-    Left = 28
+    Left = 12
     Top = 47
-    Width = 131
+    Width = 163
     Height = 13
-    Caption = 'le code Barre est existent d'#233'j'#224
+    Alignment = taCenter
+    AutoSize = False
+    Caption = 'le code '#226' Barre est existent d'#233'j'#224
     Color = clBtnFace
     Font.Charset = DEFAULT_CHARSET
     Font.Color = 4666873
@@ -223,11 +225,11 @@ object FSplashAddCodeBarre: TFSplashAddCodeBarre
     TabOrder = 0
     StyleElements = []
     object FormCaptionAddUniteSLbl: TLabel
-      Left = 38
+      Left = 40
       Top = 10
       Width = 151
       Height = 22
-      Caption = 'Multi Code a barre'
+      Caption = 'Multi Code '#226' barre'
       Color = 15722984
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 15722984
@@ -335,7 +337,7 @@ object FSplashAddCodeBarre: TFSplashAddCodeBarre
         MaxWidth = 184
         MinWidth = 184
         Title.Alignment = taCenter
-        Title.Caption = 'Les Codes A barres'
+        Title.Caption = 'Les Codes '#226' barres'
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = 10379008
         Title.Font.Height = 20

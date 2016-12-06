@@ -419,7 +419,7 @@ object FournisseurListF: TFournisseurListF
         Footers = <>
         Layout = tlCenter
         Title.Alignment = taCenter
-        Title.Caption = 'N'#176' Fournisseur'
+        Title.Caption = 'N'#176
         Title.EndEllipsis = True
         Title.ToolTips = True
         Width = 110
@@ -517,7 +517,7 @@ object FournisseurListF: TFournisseurListF
         Footers = <>
         Layout = tlCenter
         Title.Alignment = taCenter
-        Title.Caption = 'La Ville'
+        Title.Caption = 'Ville'
         Title.EndEllipsis = True
         Title.ToolTips = True
         Width = 130
@@ -531,7 +531,7 @@ object FournisseurListF: TFournisseurListF
         Footers = <>
         Layout = tlCenter
         Title.Alignment = taCenter
-        Title.Caption = 'La Willaya'
+        Title.Caption = 'Willaya'
         Title.EndEllipsis = True
         Title.ToolTips = True
         Width = 130
@@ -573,7 +573,7 @@ object FournisseurListF: TFournisseurListF
         Footers = <>
         Layout = tlCenter
         Title.Alignment = taCenter
-        Title.Caption = 'Registre Commerce'
+        Title.Caption = 'R.C'
         Title.EndEllipsis = True
         Title.ToolTips = True
         Width = 130
@@ -807,11 +807,11 @@ object FournisseurListF: TFournisseurListF
       TMSStyle = 0
     end
     object ResearchFournisseursLbl: TLabel
-      Left = 14
+      Left = 12
       Top = 32
-      Width = 73
+      Width = 78
       Height = 18
-      Caption = 'Recherche'
+      Caption = 'Rechercher'
       Color = 15722984
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 4207405
@@ -827,7 +827,6 @@ object FournisseurListF: TFournisseurListF
       Top = 26
       Width = 30
       Height = 30
-      Hint = 'Modifer'
       Anchors = [akTop, akRight]
       ParentShowHint = False
       ShowHint = True
@@ -841,7 +840,6 @@ object FournisseurListF: TFournisseurListF
       Top = 26
       Width = 30
       Height = 30
-      Hint = 'Modifer'
       Anchors = [akTop, akRight]
       ParentShowHint = False
       ShowHint = True
@@ -912,7 +910,7 @@ object FournisseurListF: TFournisseurListF
       Width = 141
       Height = 16
       AutoSize = False
-      Caption = 'Les Fournisseurs Actif'
+      Caption = 'Les Fournisseurs Actifs'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 4207405
       Font.Height = 16
@@ -954,7 +952,6 @@ object FournisseurListF: TFournisseurListF
       Top = 26
       Width = 30
       Height = 30
-      Hint = 'Modifer'
       ParentShowHint = False
       ShowHint = True
       OnClick = LastClientbtnClick
@@ -967,7 +964,6 @@ object FournisseurListF: TFournisseurListF
       Top = 26
       Width = 30
       Height = 30
-      Hint = 'Detaill'
       ParentShowHint = False
       ShowHint = True
       OnClick = NextClientbtnClick
@@ -981,7 +977,6 @@ object FournisseurListF: TFournisseurListF
       Top = 26
       Width = 30
       Height = 30
-      Hint = 'Detaill'
       ParentShowHint = False
       ShowHint = True
       OnClick = FisrtFournisseursbtnClick
@@ -995,7 +990,6 @@ object FournisseurListF: TFournisseurListF
       Top = 26
       Width = 30
       Height = 30
-      Hint = 'Modifer'
       ParentShowHint = False
       ShowHint = True
       OnClick = PreviosClientbtnClick
@@ -1117,7 +1111,7 @@ object FournisseurListF: TFournisseurListF
       Top = 8
       Width = 139
       Height = 17
-      Caption = 'Les Fournisseurs Actif'
+      Caption = 'Les Fournisseurs Actifs'
       Checked = True
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText

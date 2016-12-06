@@ -132,7 +132,7 @@ end;
 
 procedure TFastProduitsListF.ProduitsListDBGridEhKeyPress(Sender: TObject; var Key: Char);
 begin
-  if Key in ['r'] then
+  if Key in ['r','R'] then
   begin
     ResearchProduitsEdt.SetFocus;
   end;

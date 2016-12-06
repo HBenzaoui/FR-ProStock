@@ -706,6 +706,7 @@ object LoginUserF: TLoginUserF
       Top = 3
       Width = 100
       Height = 30
+      Cursor = crHandPoint
       AutoThemeAdapt = False
       Color = 7854350
       ColorTo = 7854350
@@ -752,6 +753,7 @@ object LoginUserF: TLoginUserF
       Top = 3
       Width = 100
       Height = 30
+      Cursor = crHandPoint
       AutoThemeAdapt = False
       BorderColor = 8819962
       BorderDownColor = 15722984
@@ -808,7 +810,7 @@ object LoginUserF: TLoginUserF
     ParentFont = False
     Properties.EchoMode = eemPassword
     Properties.PasswordChar = #8226
-    Properties.OnChange = UserCbxChange
+    Properties.OnChange = PasswordEdtPropertiesChange
     Style.BorderStyle = ebsUltraFlat
     Style.Font.Charset = DEFAULT_CHARSET
     Style.Font.Color = clWindowText
@@ -817,6 +819,8 @@ object LoginUserF: TLoginUserF
     Style.Font.Style = []
     Style.IsFontAssigned = True
     TabOrder = 0
+    OnDblClick = PasswordEdtDblClick
+    OnMouseEnter = PasswordEdtMouseEnter
     Width = 207
   end
 end

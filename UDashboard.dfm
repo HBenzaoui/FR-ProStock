@@ -369,9 +369,9 @@ object DashboardF: TDashboardF
       object Label2: TLabel
         Left = 13
         Top = 67
-        Width = 114
+        Width = 122
         Height = 18
-        Caption = 'Nom d'#39'enterpris:'
+        Caption = 'Nom d'#39'enterprise:'
         Color = 4207405
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
@@ -752,7 +752,7 @@ object DashboardF: TDashboardF
         Height = 32
         Align = alTop
         BevelOuter = bvNone
-        Caption = 'Enterpris'
+        Caption = 'Enterprise'
         Color = 2497560
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWhite
@@ -876,11 +876,11 @@ object DashboardF: TDashboardF
         523
         289)
       object Label22: TLabel
-        Left = 35
-        Top = 63
-        Width = 117
+        Left = 77
+        Top = 65
+        Width = 92
         Height = 16
-        Caption = 'Nombre de Produit:'
+        Caption = 'N'#176'  de Produits:'
         Color = 4207405
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
@@ -892,8 +892,8 @@ object DashboardF: TDashboardF
         StyleElements = []
       end
       object NProduitDashBLbl: TLabel
-        Left = 160
-        Top = 63
+        Left = 175
+        Top = 64
         Width = 49
         Height = 18
         Caption = '-------'
@@ -908,15 +908,15 @@ object DashboardF: TDashboardF
         StyleElements = []
       end
       object Label24: TLabel
-        Left = 7
-        Top = 88
-        Width = 145
-        Height = 16
-        Caption = 'Nombre Total sur Stock:'
+        Left = 9
+        Top = 89
+        Width = 160
+        Height = 15
+        Caption = 'N'#176' de Produit Total en Stock:'
         Color = 4207405
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
-        Font.Height = 16
+        Font.Height = 15
         Font.Name = 'Roboto'
         Font.Style = []
         ParentColor = False
@@ -924,8 +924,8 @@ object DashboardF: TDashboardF
         StyleElements = []
       end
       object NProduitTotalDashBLbl: TLabel
-        Left = 160
-        Top = 88
+        Left = 175
+        Top = 89
         Width = 49
         Height = 18
         Caption = '-------'
@@ -972,11 +972,11 @@ object DashboardF: TDashboardF
         StyleElements = []
       end
       object Label5: TLabel
-        Left = 17
+        Left = 26
         Top = 141
-        Width = 159
+        Width = 142
         Height = 16
-        Caption = 'Nombre de Bons Livration:'
+        Caption = 'N'#176' de Bons de Livration:'
         Color = 4207405
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
@@ -1020,11 +1020,11 @@ object DashboardF: TDashboardF
         StyleElements = []
       end
       object Label9: TLabel
-        Left = 14
-        Top = 187
-        Width = 156
+        Left = 15
+        Top = 188
+        Width = 153
         Height = 16
-        Caption = 'N'#176' des Bons au Comptoir :'
+        Caption = 'N'#176' des Bons au Comptoir:'
         Color = 4207405
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
@@ -1068,11 +1068,11 @@ object DashboardF: TDashboardF
         StyleElements = []
       end
       object Label13: TLabel
-        Left = 37
-        Top = 235
-        Width = 136
+        Left = 12
+        Top = 236
+        Width = 157
         Height = 16
-        Caption = 'N'#176' des bons r'#233'ception:'
+        Caption = 'N'#176' des bons de R'#233'ception:'
         Color = 4207405
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405

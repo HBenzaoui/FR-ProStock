@@ -890,7 +890,6 @@ object CaisseListF: TCaisseListF
       Top = 26
       Width = 30
       Height = 30
-      Hint = 'Modifer'
       Anchors = [akTop, akRight]
       ParentShowHint = False
       ShowHint = True
@@ -904,7 +903,6 @@ object CaisseListF: TCaisseListF
       Top = 26
       Width = 30
       Height = 30
-      Hint = 'Modifer'
       Anchors = [akTop, akRight]
       ParentShowHint = False
       ShowHint = True
@@ -918,7 +916,6 @@ object CaisseListF: TCaisseListF
       Top = 26
       Width = 30
       Height = 30
-      Hint = 'Modifer'
       Anchors = [akTop, akRight]
       ParentShowHint = False
       ShowHint = True
@@ -980,7 +977,6 @@ object CaisseListF: TCaisseListF
       Top = 27
       Width = 30
       Height = 30
-      Hint = 'Detaill'
       ParentShowHint = False
       ShowHint = True
       OnClick = NextCaiseebtnClick
@@ -994,7 +990,6 @@ object CaisseListF: TCaisseListF
       Top = 27
       Width = 30
       Height = 30
-      Hint = 'Modifer'
       ParentShowHint = False
       ShowHint = True
       OnClick = PreviosCaiseebtnClick
@@ -1007,7 +1002,6 @@ object CaisseListF: TCaisseListF
       Top = 27
       Width = 30
       Height = 30
-      Hint = 'Detaill'
       ParentShowHint = False
       ShowHint = True
       OnClick = FisrtCaiseebtnClick
@@ -1021,7 +1015,6 @@ object CaisseListF: TCaisseListF
       Top = 27
       Width = 30
       Height = 30
-      Hint = 'Modifer'
       ParentShowHint = False
       ShowHint = True
       OnClick = LastCaiseebtnClick

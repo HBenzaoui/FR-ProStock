@@ -118,15 +118,15 @@ object SFamPListF: TSFamPListF
     TMSStyle = 0
   end
   object Label1: TLabel
-    Left = 8
+    Left = 6
     Top = 101
-    Width = 57
-    Height = 18
-    Caption = 'Compte:'
+    Width = 56
+    Height = 16
+    Caption = 'S Famille:'
     Color = clWhite
     Font.Charset = DEFAULT_CHARSET
     Font.Color = 4207405
-    Font.Height = 18
+    Font.Height = 16
     Font.Name = 'Roboto'
     Font.Style = []
     ParentColor = False
@@ -140,7 +140,7 @@ object SFamPListF: TSFamPListF
     Height = 45
     Anchors = [akLeft, akTop, akRight]
     BevelOuter = bvNone
-    Caption = 'Les Sous Familles Articles'
+    Caption = 'Les Sous Familles D'#39'Articles'
     Color = 16304784
     DoubleBuffered = True
     Font.Charset = DEFAULT_CHARSET

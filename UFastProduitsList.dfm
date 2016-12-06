@@ -33,13 +33,12 @@ object FastProduitsListF: TFastProduitsListF
     ParentDoubleBuffered = False
     TabOrder = 0
     StyleElements = []
-    ExplicitWidth = 879
     object ResearchProduitsLbl: TLabel
-      Left = 7
-      Top = 22
-      Width = 78
+      Left = 2
+      Top = 21
+      Width = 83
       Height = 18
-      Caption = 'Recherche'
+      Caption = 'Rechercher'
       Color = 15722984
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 4207405
@@ -119,7 +118,6 @@ object FastProduitsListF: TFastProduitsListF
       Top = 17
       Width = 30
       Height = 30
-      Hint = 'Modifer'
       ParentShowHint = False
       ShowHint = True
       OnClick = LastClientbtnClick
@@ -132,7 +130,6 @@ object FastProduitsListF: TFastProduitsListF
       Top = 17
       Width = 30
       Height = 30
-      Hint = 'Detaill'
       ParentShowHint = False
       ShowHint = True
       OnClick = NextClientbtnClick
@@ -146,7 +143,6 @@ object FastProduitsListF: TFastProduitsListF
       Top = 17
       Width = 30
       Height = 30
-      Hint = 'Modifer'
       ParentShowHint = False
       ShowHint = True
       OnClick = PreviosClientbtnClick
@@ -159,7 +155,6 @@ object FastProduitsListF: TFastProduitsListF
       Top = 17
       Width = 30
       Height = 30
-      Hint = 'Detaill'
       ParentShowHint = False
       ShowHint = True
       OnClick = FisrtClientbtnClick
@@ -179,7 +174,6 @@ object FastProduitsListF: TFastProduitsListF
       ParentBackground = False
       TabOrder = 1
       StyleElements = []
-      ExplicitWidth = 879
     end
     object S02: TPanel
       Left = 670
@@ -246,7 +240,7 @@ object FastProduitsListF: TFastProduitsListF
       Top = 36
       Width = 139
       Height = 17
-      Caption = 'Par Code a Barre'
+      Caption = 'Par Code '#226' Barre'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = 15

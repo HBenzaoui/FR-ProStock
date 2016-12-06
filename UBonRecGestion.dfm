@@ -147,7 +147,6 @@ object BonRecGestionF: TBonRecGestionF
       Top = 18
       Width = 30
       Height = 30
-      Hint = 'Modifer'
       Anchors = [akTop, akRight]
       ParentShowHint = False
       ShowHint = True
@@ -161,7 +160,6 @@ object BonRecGestionF: TBonRecGestionF
       Top = 18
       Width = 30
       Height = 30
-      Hint = 'Modifer'
       Anchors = [akTop, akRight]
       ParentShowHint = False
       ShowHint = True
@@ -175,7 +173,6 @@ object BonRecGestionF: TBonRecGestionF
       Top = 18
       Width = 30
       Height = 30
-      Hint = 'Modifer'
       Anchors = [akTop, akRight]
       ParentShowHint = False
       ShowHint = True
@@ -715,7 +712,6 @@ object BonRecGestionF: TBonRecGestionF
       Top = 18
       Width = 30
       Height = 30
-      Hint = 'Modifer'
       ParentShowHint = False
       ShowHint = True
       OnClick = sSpeedButton9Click
@@ -728,7 +724,6 @@ object BonRecGestionF: TBonRecGestionF
       Top = 18
       Width = 30
       Height = 30
-      Hint = 'Detaill'
       ParentShowHint = False
       ShowHint = True
       OnClick = sSpeedButton8Click
@@ -742,7 +737,6 @@ object BonRecGestionF: TBonRecGestionF
       Top = 18
       Width = 30
       Height = 30
-      Hint = 'Detaill'
       ParentShowHint = False
       ShowHint = True
       OnClick = sSpeedButton10Click
@@ -756,7 +750,6 @@ object BonRecGestionF: TBonRecGestionF
       Top = 18
       Width = 30
       Height = 30
-      Hint = 'Modifer'
       ParentShowHint = False
       ShowHint = True
       OnClick = sSpeedButton7Click
@@ -977,7 +970,7 @@ object BonRecGestionF: TBonRecGestionF
       Width = 120
       Height = 17
       Anchors = [akLeft, akBottom]
-      Caption = 'Par Code a Barre'
+      Caption = 'Par Code '#226' Barre'
       Color = 15722984
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite

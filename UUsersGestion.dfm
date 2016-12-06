@@ -114,9 +114,9 @@ object UsersGestionF: TUsersGestionF
     object Label5: TLabel
       Left = 18
       Top = 199
-      Width = 50
+      Width = 33
       Height = 16
-      Caption = 'Le Type:'
+      Caption = 'Type:'
       Color = 4207405
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 4207405

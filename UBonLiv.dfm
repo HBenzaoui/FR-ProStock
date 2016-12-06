@@ -436,11 +436,11 @@ object BonLivF: TBonLivF
       TMSStyle = 0
     end
     object ResearchBALivLbl: TLabel
-      Left = 10
+      Left = 8
       Top = 38
-      Width = 73
+      Width = 78
       Height = 18
-      Caption = 'Recherche'
+      Caption = 'Rechercher'
       Color = 15722984
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 4207405
@@ -456,7 +456,6 @@ object BonLivF: TBonLivF
       Top = 26
       Width = 30
       Height = 30
-      Hint = 'Modifer'
       Anchors = [akTop, akRight]
       ParentShowHint = False
       ShowHint = True
@@ -470,7 +469,6 @@ object BonLivF: TBonLivF
       Top = 26
       Width = 30
       Height = 30
-      Hint = 'Modifer'
       Anchors = [akTop, akRight]
       ParentShowHint = False
       ShowHint = True
@@ -484,7 +482,6 @@ object BonLivF: TBonLivF
       Top = 26
       Width = 30
       Height = 30
-      Hint = 'Modifer'
       Anchors = [akTop, akRight]
       ParentShowHint = False
       ShowHint = True
@@ -564,7 +561,6 @@ object BonLivF: TBonLivF
       Top = 26
       Width = 30
       Height = 30
-      Hint = 'Detaill'
       ParentShowHint = False
       ShowHint = True
       OnClick = FisrtBARecbtnClick
@@ -578,7 +574,6 @@ object BonLivF: TBonLivF
       Top = 26
       Width = 30
       Height = 30
-      Hint = 'Modifer'
       ParentShowHint = False
       ShowHint = True
       OnClick = LastBARecbtnClick
@@ -591,7 +586,6 @@ object BonLivF: TBonLivF
       Top = 26
       Width = 30
       Height = 30
-      Hint = 'Detaill'
       ParentShowHint = False
       ShowHint = True
       OnClick = NextBARecbtnClick
@@ -605,7 +599,6 @@ object BonLivF: TBonLivF
       Top = 26
       Width = 30
       Height = 30
-      Hint = 'Modifer'
       ParentShowHint = False
       ShowHint = True
       OnClick = PreviosBARecbtnClick
@@ -1010,7 +1003,7 @@ object BonLivF: TBonLivF
         Footers = <>
         Layout = tlCenter
         Title.Alignment = taCenter
-        Title.Caption = 'N'#176' de bon'
+        Title.Caption = 'N'#176' du bon'
         Title.EndEllipsis = True
         Title.ToolTips = True
         Width = 150
@@ -1115,7 +1108,7 @@ object BonLivF: TBonLivF
         Layout = tlCenter
         MinWidth = 150
         Title.Alignment = taCenter
-        Title.Caption = 'Net a Payer HT'
+        Title.Caption = 'Net '#226' Payer HT'
         Width = 150
         WordWrap = False
       end
@@ -1172,7 +1165,7 @@ object BonLivF: TBonLivF
         Layout = tlCenter
         MinWidth = 150
         Title.Alignment = taCenter
-        Title.Caption = 'Montant Reste'
+        Title.Caption = 'Montant Rest'#233
         Title.EndEllipsis = True
         Title.ToolTips = True
         Width = 150

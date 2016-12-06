@@ -49,10 +49,6 @@ object ProduitGestionF: TProduitGestionF
       Caption = 'G'#233'n'#233'ral'
       SkinData.CustomColor = False
       SkinData.CustomFont = False
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object GeneralTB: TPanel
         Left = 0
         Top = 0
@@ -187,7 +183,7 @@ object ProduitGestionF: TProduitGestionF
           Top = 155
           Width = 40
           Height = 18
-          Caption = 'Unite:'
+          Caption = 'Unit'#233':'
           Color = 4207405
           Font.Charset = DEFAULT_CHARSET
           Font.Color = 4207405
@@ -673,7 +669,7 @@ object ProduitGestionF: TProduitGestionF
           Top = 18
           Width = 91
           Height = 18
-          Caption = 'Code a Barre:'
+          Caption = 'Code '#226' Barre:'
           Color = 4207405
           Font.Charset = DEFAULT_CHARSET
           Font.Color = 4207405
@@ -1661,10 +1657,6 @@ object ProduitGestionF: TProduitGestionF
       Caption = 'Plus D'#39'info'
       SkinData.CustomColor = False
       SkinData.CustomFont = False
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object PlusInfoTB: TPanel
         Left = 0
         Top = 0

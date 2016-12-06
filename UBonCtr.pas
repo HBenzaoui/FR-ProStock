@@ -856,15 +856,15 @@ end;
 
 procedure TBonCtrF.BVCtrListDBGridEhKeyPress(Sender: TObject; var Key: Char);
 begin
-  if Key in ['n'] then
+  if Key in ['n','N'] then
     AddBVCtrBtnClick(Sender);
-  if Key in ['r'] then
+  if Key in ['r','R'] then
     ResearchBVCtrEdt.SetFocus;
   if not BVCtrListDBGridEh.DataSource.DataSet.IsEmpty then
   begin
-  if Key in ['s' ] then
+  if Key in ['s','S'] then
   DeleteBVCtrBtnClick(Sender) ;
-    if Key in ['m'] then
+    if Key in ['m','M'] then
       EditBVCtrBtnClick(Sender);
   end else Exit;
 end;

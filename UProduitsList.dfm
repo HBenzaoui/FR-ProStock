@@ -1023,11 +1023,11 @@ object ProduitsListF: TProduitsListF
       TMSStyle = 0
     end
     object ResearchProduitsLbl: TLabel
-      Left = 5
+      Left = 3
       Top = 42
-      Width = 78
+      Width = 83
       Height = 18
-      Caption = 'Recherche'
+      Caption = 'Rechercher'
       Color = 15722984
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 4207405
@@ -1043,7 +1043,6 @@ object ProduitsListF: TProduitsListF
       Top = 26
       Width = 30
       Height = 30
-      Hint = 'Modifer'
       Anchors = [akTop, akRight]
       ParentShowHint = False
       ShowHint = True
@@ -1057,7 +1056,6 @@ object ProduitsListF: TProduitsListF
       Top = 26
       Width = 30
       Height = 30
-      Hint = 'Modifer'
       Anchors = [akTop, akRight]
       ParentShowHint = False
       ShowHint = True
@@ -1071,7 +1069,6 @@ object ProduitsListF: TProduitsListF
       Top = 26
       Width = 30
       Height = 30
-      Hint = 'Modifer'
       Anchors = [akTop, akRight]
       ParentShowHint = False
       ShowHint = True
@@ -1085,7 +1082,6 @@ object ProduitsListF: TProduitsListF
       Top = 26
       Width = 30
       Height = 30
-      Hint = 'Modifer'
       Anchors = [akTop, akRight]
       ParentShowHint = False
       ShowHint = True
@@ -1099,7 +1095,6 @@ object ProduitsListF: TProduitsListF
       Top = 26
       Width = 30
       Height = 30
-      Hint = 'Detaill'
       ParentShowHint = False
       ShowHint = True
       OnClick = FisrtClientbtnClick
@@ -1113,7 +1108,6 @@ object ProduitsListF: TProduitsListF
       Top = 26
       Width = 30
       Height = 30
-      Hint = 'Modifer'
       ParentShowHint = False
       ShowHint = True
       OnClick = PreviosClientbtnClick
@@ -1126,7 +1120,6 @@ object ProduitsListF: TProduitsListF
       Top = 26
       Width = 30
       Height = 30
-      Hint = 'Detaill'
       ParentShowHint = False
       ShowHint = True
       OnClick = NextClientbtnClick
@@ -1140,7 +1133,6 @@ object ProduitsListF: TProduitsListF
       Top = 26
       Width = 30
       Height = 30
-      Hint = 'Modifer'
       ParentShowHint = False
       ShowHint = True
       OnClick = LastClientbtnClick
@@ -1343,7 +1335,7 @@ object ProduitsListF: TProduitsListF
       Top = 12
       Width = 108
       Height = 17
-      Caption = 'Par Code a Barre'
+      Caption = 'Par Code '#226' Barre'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = 14

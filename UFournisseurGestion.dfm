@@ -44,6 +44,8 @@ object FournisseurGestionF: TFournisseurGestionF
     TabsLineSkin = 'BAR'
     object GeneralClientGTB: TsTabSheet
       Caption = 'G'#233'n'#233'ral'
+      SkinData.CustomColor = False
+      SkinData.CustomFont = False
       object GeneralTB: TPanel
         Left = 0
         Top = 0
@@ -93,9 +95,9 @@ object FournisseurGestionF: TFournisseurGestionF
         object ActiveFournisseurGLbl: TLabel
           Left = 11
           Top = 15
-          Width = 132
+          Width = 121
           Height = 18
-          Caption = 'Fournisseur Active:'
+          Caption = 'Fournisseur Actif:'
           Color = 4207405
           Font.Charset = DEFAULT_CHARSET
           Font.Color = 4207405
@@ -271,7 +273,7 @@ object FournisseurGestionF: TFournisseurGestionF
           StyleElements = [seClient, seBorder]
         end
         object ActiveFournisseurGOuiOuNon: TLabel
-          Left = 192
+          Left = 184
           Top = 18
           Width = 18
           Height = 14
@@ -458,7 +460,7 @@ object FournisseurGestionF: TFournisseurGestionF
           OnKeyPress = NameFournisseurGEdtKeyPress
         end
         object ActiveFournisseurGSlider: TsSlider
-          Left = 146
+          Left = 138
           Top = 17
           Width = 40
           Height = 16
@@ -571,6 +573,8 @@ object FournisseurGestionF: TFournisseurGestionF
     end
     object PlusInfoClientGTB: TsTabSheet
       Caption = 'Plus D'#39'info'
+      SkinData.CustomColor = False
+      SkinData.CustomFont = False
       object PlusInfoTB: TPanel
         Left = 0
         Top = 0
@@ -996,7 +1000,7 @@ object FournisseurGestionF: TFournisseurGestionF
       ShowHint = True
       Spacing = 10
       OnClick = OKFournisseurGBtnClick
-      Version = '1.6.1.1'
+      Version = '1.6.1.2'
       TMSStyle = 0
     end
     object CancelFournisseurGBtn: TAdvToolButton
@@ -1027,7 +1031,7 @@ object FournisseurGestionF: TFournisseurGestionF
       ShowHint = True
       Spacing = -1
       OnClick = CancelFournisseurGBtnClick
-      Version = '1.6.1.1'
+      Version = '1.6.1.2'
       TMSStyle = 0
     end
   end
