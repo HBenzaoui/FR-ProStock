@@ -1,4 +1,4 @@
-object adadad: Tadadad
+object BonLivGestionF: TBonLivGestionF
   Left = 0
   Top = 0
   Caption = 'Bon de Livraison'

@@ -414,6 +414,11 @@ begin
                   CodeBR:= MainForm.Bona_recPlistTable.FieldValues['code_barecl'] + 1 ;
                  end;
 
+                 if MainForm.ProduitTable.FieldByName('perissable_p').AsBoolean = True then
+                 begin
+                   ProduitsListDBGridEh.Columns[4].Visible := True
+                 end;
+
              MainForm.Bona_recPlistTable.Last;
              MainForm.Bona_recPlistTable.Append;
              MainForm.Bona_recPlistTable.FieldValues['code_barecl']:= CodeBR ;
@@ -428,6 +433,10 @@ begin
              MainForm.Bona_recPlistTable.FieldByName('prixvg_p').AsCurrency:=  MainForm.ProduitTable.FieldByName('prixvg_p').AsCurrency;
              MainForm.Bona_recPlistTable.FieldByName('prixva_p').AsCurrency:=  MainForm.ProduitTable.FieldByName('prixva_p').AsCurrency;
              MainForm.Bona_recPlistTable.FieldByName('prixva2_p').AsCurrency:= MainForm.ProduitTable.FieldByName('prixva2_p').AsCurrency;
+
+             MainForm.Bona_recPlistTable.FieldValues['qutinstock_p']:= 
+             (MainForm.Bona_recPlistTable.FieldValues['qut_p'])*(MainForm.Bona_recPlistTable.FieldValues['cond_p']);     
+             
              MainForm.Bona_recPlistTable.Post ;
              MainForm.Bona_recPlistTable.IndexFieldNames:='code_barec';
 
@@ -528,6 +537,12 @@ begin
                 MainForm.Bona_recPlistTable.Last;
                 CodeBR:= MainForm.Bona_recPlistTable.FieldValues['code_barecl'] + 1 ;
                end;
+
+                 if MainForm.ProduitTable.FieldByName('perissable_p').AsBoolean = True then
+                 begin
+                   ProduitsListDBGridEh.Columns[4].Visible := True
+                 end;
+                                
              MainForm.Bona_recPlistTable.Insert;
              MainForm.Bona_recPlistTable.FieldValues['code_barecl']:= CodeBR ;
              MainForm.Bona_recPlistTable.FieldValues['code_barec']:= MainForm.Bona_recTable.FieldValues['code_barec'];
@@ -541,6 +556,10 @@ begin
              MainForm.Bona_recPlistTable.FieldByName('prixvg_p').AsCurrency:=  MainForm.ProduitTable.FieldByName('prixvg_p').AsCurrency;
              MainForm.Bona_recPlistTable.FieldByName('prixva_p').AsCurrency:=  MainForm.ProduitTable.FieldByName('prixva_p').AsCurrency;
              MainForm.Bona_recPlistTable.FieldByName('prixva2_p').AsCurrency:= MainForm.ProduitTable.FieldByName('prixva2_p').AsCurrency;
+
+              MainForm.Bona_recPlistTable.FieldValues['qutinstock_p']:= 
+             (MainForm.Bona_recPlistTable.FieldValues['qut_p'])*(MainForm.Bona_recPlistTable.FieldValues['cond_p']);     
+             
              MainForm.Bona_recPlistTable.Post ;
              MainForm.Bona_recPlistTable.IndexFieldNames:='code_barec';
 
@@ -649,6 +668,11 @@ begin
                 MainForm.Bona_recPlistTable.Last;
                 CodeBR:= MainForm.Bona_recPlistTable.FieldValues['code_barecl'] + 1 ;
                end;
+               
+                 if MainForm.ProduitTable.FieldByName('perissable_p').AsBoolean = True then
+                 begin
+                   ProduitsListDBGridEh.Columns[4].Visible := True
+                 end;               
 
              MainForm.Bona_recPlistTable.Insert;
              MainForm.Bona_recPlistTable.FieldValues['code_barecl']:= CodeBR ;
@@ -663,6 +687,10 @@ begin
              MainForm.Bona_recPlistTable.FieldByName('prixvg_p').AsCurrency:=  MainForm.ProduitTable.FieldByName('prixvg_p').AsCurrency;
              MainForm.Bona_recPlistTable.FieldByName('prixva_p').AsCurrency:=  MainForm.ProduitTable.FieldByName('prixva_p').AsCurrency;
              MainForm.Bona_recPlistTable.FieldByName('prixva2_p').AsCurrency:= MainForm.ProduitTable.FieldByName('prixva2_p').AsCurrency;
+
+             MainForm.Bona_recPlistTable.FieldValues['qutinstock_p']:= 
+             (MainForm.Bona_recPlistTable.FieldValues['qut_p'])*(MainForm.Bona_recPlistTable.FieldValues['cond_p']);             
+             
              MainForm.Bona_recPlistTable.Post ;
              MainForm.Bona_recPlistTable.IndexFieldNames:='code_barec';
 

@@ -35,7 +35,7 @@ uses
   dxSkinscxPCPainter, dxBarBuiltInMenu, cxClasses, dxTabbedMDI,
   dxSkinOffice2016Colorful, dxSkinOffice2016Dark, dxSkinVisualStudio2013Blue,
   dxSkinVisualStudio2013Dark, dxSkinVisualStudio2013Light, acImage, cxGraphics,
-  cxControls, cxLookAndFeels, cxLookAndFeelPainters, dxActivityIndicator;
+  cxControls, cxLookAndFeels, cxLookAndFeelPainters, dxActivityIndicator, acPNG;
 
   procedure GrayForms;
   procedure NormalForms;
@@ -87,7 +87,7 @@ type
     S07: TPanel;
     AdvToolButton7: TAdvToolButton;
     S05: TPanel;
-    AdvToolButton12: TAdvToolButton;
+    CnotificationMainFBtn: TAdvToolButton;
     S06: TPanel;
     S08: TPanel;
     Sbottom: TPanel;
@@ -737,6 +737,12 @@ type
     Rpar1: TMenuItem;
     Bona_recTableAgent: TStringField;
     Button13: TButton;
+    CNotificationLbl: TLabel;
+    CNotificationPaintBox: TPaintBox;
+    Bona_fac_listTabledateperiss_p: TDateField;
+    Bona_fac_listTablequtinstock_p: TFloatField;
+    Bona_recPlistTabledateperiss_p: TDateField;
+    Bona_recPlistTablequtinstock_p: TFloatField;
     procedure ClientMainFBtnClick(Sender: TObject);
     procedure FourMainFBtnClick(Sender: TObject);
     procedure ProduitMainFBtnClick(Sender: TObject);
@@ -832,6 +838,8 @@ type
     procedure Restaurer1Click(Sender: TObject);
     procedure Q1Click(Sender: TObject);
     procedure Button13Click(Sender: TObject);
+    procedure CnotificationMainFBtnClick(Sender: TObject);
+    procedure CNotificationPaintBoxPaint(Sender: TObject);
   private
    //---- this to value of changege we need it to check if theuser changed something
      CountInsert,CountUpdate,CountDelete   : Int64;
@@ -841,6 +849,7 @@ type
 //    procedure ActiveTables;
 //    procedure InactiveTables;
     procedure RerfreshTables;
+    procedure RefreshCNotification;
    public
     function KillTask(ExeFileName: string): Integer;
    
@@ -860,7 +869,7 @@ implementation
 
 {$R *.dfm}
 
-uses   
+uses   Vcl.Direct2D,Character, 
  TlHelp32,Contnrs,System.Threading,IniFiles,
    UClientsList, UFournisseurList, UProduitsList, UBonRec, UBonRecGestion,
   USplashAddUnite, UBonLiv, UBonLivGestion, UBonFacVGestion, UBonFacV,
@@ -868,7 +877,7 @@ uses
   UBankList, UUsersList, UUsersGestion, UReglementFList, UReglementCList,
   UOptions, UModePaieList, UDashboard,uCompteList, UFamPList, USFamPList,
   UUnitesList, ULocaleList, UHomeF, UDataModule, USplash, UWorkingSplash,
-  ULogoSplashForm, ULoginUser, ULogin;
+  ULogoSplashForm, ULoginUser, ULogin, UCNotifications;
 
   var
     gGrayForms: TComponentList;
@@ -2179,6 +2188,17 @@ begin
  ((Bonv_ctr_listTable.FieldValues['MontantHT']) - (Bonv_ctr_listTable.FieldValues['MontantAHT'])) ;
 end;
 
+
+function NonWhiteSpaceCharacterCount(const str: string): Integer;
+var
+  c: Char;
+begin
+  Result := 0;
+  for c in str do
+    if not Character.IsWhiteSpace(c) then
+      inc(Result);
+end;
+
 procedure TMainForm.FormShow(Sender: TObject);
 begin
 {
@@ -2523,6 +2543,53 @@ begin
 
   HomeF.Label1.Caption:='Bonjour '+DataModuleF.UsersTable.FieldByName('nom_ur').AsString;
    UserNameLbl.Caption:=DataModuleF.UsersTable.FieldByName('nom_ur').AsString;
+
+    RefreshCNotification;
+   
+   
+end;
+
+
+procedure TMainForm.RefreshCNotification;
+begin
+
+  DataModuleF.PZeroQCnotif.Active:= True;
+  DataModuleF.PCloseZeroQCnotif.Active:= True;
+  DataModuleF.PMoreMaxQCnotif.Active:= True;
+//  DataModuleF.PCloseDiedCnotif.Active:= True;
+//  DataModuleF.PDiedCnotif.Active:= True;
+  
+  DataModuleF.PZeroQCnotif.Refresh;
+  DataModuleF.PCloseZeroQCnotif.Refresh;
+  DataModuleF.PMoreMaxQCnotif.Refresh;
+//  DataModuleF.PCloseDiedCnotif.Refresh;
+//  DataModuleF.PDiedCnotif.Refresh;
+
+   CNotificationLbl.Caption:= IntToStr
+  ( DataModuleF.PZeroQCnotif.RecordCount + DataModuleF.PCloseZeroQCnotif.RecordCount + DataModuleF.PMoreMaxQCnotif.RecordCount +
+  DataModuleF.PCloseDiedCnotif.RecordCount + DataModuleF.PDiedCnotif.RecordCount ) ;
+
+
+  if CNotificationLbl.Caption <> '0'  then
+  begin
+
+   CNotificationPaintBox.Visible:= True;
+   CNotificationLbl.Visible:= True;
+  end;
+
+   if NonWhiteSpaceCharacterCount(CNotificationLbl.Caption) > 2 then
+   begin
+
+    CNotificationLbl.Font.Size := CNotificationLbl.Font.Size - 1 ; 
+    CNotificationLbl.Top:=  CNotificationLbl.Top  + 1;
+   end;
+
+   if NonWhiteSpaceCharacterCount(CNotificationLbl.Caption) > 3 then
+   begin
+
+    CNotificationLbl.Font.Size := CNotificationLbl.Font.Size - 2 ; 
+    CNotificationLbl.Top:=  CNotificationLbl.Top  + 2;
+   end;
 end;
 
 procedure TMainForm.N17Click(Sender: TObject);
@@ -2741,6 +2808,12 @@ begin
       DataModuleF.ToatalVerMonthVCTR.Active:= False;
       DataModuleF.ToatalVerMonthAREC.Active:= False;
       DataModuleF.ToatalVerMonthAFAC.Active:= False;
+
+      DataModuleF.PZeroQCnotif.Active:= False;
+      DataModuleF.PCloseZeroQCnotif.Active:= False;
+      DataModuleF.PMoreMaxQCnotif.Active:= False;
+//      DataModuleF.PCloseDiedCnotif.Active:= False;
+//      DataModuleF.PDiedCnotif.Active:= False;
 end;
 
 function TMainForm.KillTask(ExeFileName: string): Integer;
@@ -2823,6 +2896,14 @@ begin
       DataModuleF.ToatalVerMonthVCTR.Active:= True;
       DataModuleF.ToatalVerMonthAREC.Active:= True;
       DataModuleF.ToatalVerMonthAFAC.Active:= True;
+
+      DataModuleF.PZeroQCnotif.Active:= True;
+      DataModuleF.PCloseZeroQCnotif.Active:= True;
+      DataModuleF.PMoreMaxQCnotif.Active:= True;
+//      DataModuleF.PCloseDiedCnotif.Active:= True;
+//      DataModuleF.PDiedCnotif.Active:= True;
+
+      
 end;
 
 
@@ -2869,6 +2950,12 @@ begin
       DataModuleF.ToatalVerMonthVCTR.Refresh;
       DataModuleF.ToatalVerMonthAREC.Refresh;
       DataModuleF.ToatalVerMonthAFAC.Refresh;
+
+      DataModuleF.PZeroQCnotif.Refresh;
+      DataModuleF.PCloseZeroQCnotif.Refresh;
+      DataModuleF.PMoreMaxQCnotif.Refresh;
+//      DataModuleF.PCloseDiedCnotif.Refresh;
+//      DataModuleF.PDiedCnotif.Refresh;
 end;
 
 
@@ -3149,6 +3236,27 @@ begin
 FourMainFBtnClick(Sender);
 end;
 
+procedure TMainForm.CNotificationPaintBoxPaint(Sender: TObject);
+var
+  D2DCanvas: TDirect2DCanvas;
+begin
+  if TDirect2DCanvas.Supported then
+  begin
+    D2DCanvas := TDirect2DCanvas.Create(CNotificationPaintBox.Canvas,CNotificationPaintBox.ClientRect);
+    D2DCanvas.BeginDraw;
+    try
+//      D2DCanvas.Pen.Style := psClear;
+      D2DCanvas.Pen.Color := clNone;
+      D2DCanvas.Ellipse(19,19,CNotificationPaintBox.Width - 19,CNotificationPaintBox.Height - 19);
+
+    finally
+      D2DCanvas.EndDraw;
+      D2DCanvas.Free;
+    end;
+  end;
+
+end;
+
 procedure TMainForm.ProduitFaceBtnClick(Sender: TObject);
 begin
 ProduitMainFBtnClick(Sender);
@@ -3157,6 +3265,20 @@ end;
 procedure TMainForm.CaisseFaceBtnClick(Sender: TObject);
 begin
 CaisseMainFMnmClick(Sender);
+end;
+
+procedure TMainForm.CnotificationMainFBtnClick(Sender: TObject);
+begin
+
+CNotificationPaintBox.Visible:= False;
+CNotificationLbl.Visible:= False;
+
+if Not Assigned(CNotificationsF) then
+
+     CNotificationsF:= TCNotificationsF.Create(Application) else
+                                        begin
+                                          CNotificationsF.Show
+                                        end;
 end;
 
 procedure TMainForm.B3Click(Sender: TObject);
@@ -3351,8 +3473,8 @@ begin
 
    Sleep(500);
 
-   KillTask('postgres.exe');                                    // Eable this is only for releasing
-   KillTask('cmd.exe');                                         // Eable this is only for releasing
+//   KillTask('postgres.exe');                                    // Eable this is only for releasing
+//   KillTask('cmd.exe');                                         // Eable this is only for releasing
 
 end;
 

@@ -1390,6 +1390,19 @@ object BonRecGestionF: TBonRecGestionF
         WordWrap = False
       end
       item
+        Alignment = taCenter
+        DisplayFormat = 'dd/mm/yyyy'
+        DynProps = <>
+        EditButtons = <>
+        FieldName = 'dateperiss_p'
+        Footers = <>
+        Layout = tlCenter
+        Title.Alignment = taCenter
+        Title.Caption = 'Date.Exp'
+        Visible = False
+        Width = 120
+      end
+      item
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>

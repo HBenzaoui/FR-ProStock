@@ -794,6 +794,9 @@ begin
 
             end;
 
+
+                 sndPlaySound('C:\Windows\Media\speech on.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+
      end else
      begin
 

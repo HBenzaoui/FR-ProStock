@@ -18,7 +18,7 @@ uses
   USplashAddCodeBarre in 'USplashAddCodeBarre.pas' {FSplashAddCodeBarre},
   UBonRec in 'UBonRec.pas' {BonRecF},
   UBonRecGestion in 'UBonRecGestion.pas' {BonRecGestionF},
-  UBonLivGestion in 'UBonLivGestion.pas' {adadad},
+  UBonLivGestion in 'UBonLivGestion.pas' {BonLivGestionF},
   UBonLiv in 'UBonLiv.pas' {BonLivF},
   UComptoir in 'UComptoir.pas' {BonCtrGestionF},
   UFastProduitsList in 'UFastProduitsList.pas' {FastProduitsListF},
@@ -52,7 +52,8 @@ uses
   UWorkingSplash in 'UWorkingSplash.pas' {FWorkingSplash},
   ULogoSplashForm in 'ULogoSplashForm.pas' {LogoSplashF},
   ULoginUser in 'ULoginUser.pas' {LoginUserF},
-  ULogin in 'ULogin.pas' {LoginF};
+  ULogin in 'ULogin.pas' {LoginF},
+  UCNotifications in 'UCNotifications.pas' {CNotificationsF};
 
 {$R *.res}
 

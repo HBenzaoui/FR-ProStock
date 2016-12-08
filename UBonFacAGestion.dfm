@@ -1436,6 +1436,19 @@ object BonFacAGestionF: TBonFacAGestionF
         WordWrap = False
       end
       item
+        Alignment = taCenter
+        DisplayFormat = 'dd/mm/yyyy'
+        DynProps = <>
+        EditButtons = <>
+        FieldName = 'dateperiss_p'
+        Footers = <>
+        Layout = tlCenter
+        Title.Alignment = taCenter
+        Title.Caption = 'Date.Exp'
+        Visible = False
+        Width = 120
+      end
+      item
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
@@ -2438,7 +2451,7 @@ object BonFacAGestionF: TBonFacAGestionF
     DataSet = MainForm.Bona_fac_listTable
     OnDataChange = BonFacAPListDataSDataChange
     Left = 984
-    Top = 480
+    Top = 482
   end
   object Timer1: TTimer
     Enabled = False

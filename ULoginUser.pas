@@ -147,7 +147,8 @@ begin
 
      //FreeAndNil(Self);
       NormalFormsLUR;
-      LoginUserF.Close;
+//      LoginUserF.Close;
+      CancelBtnClick(Sender);
 
      end;
 

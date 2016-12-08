@@ -67,7 +67,7 @@ implementation
 
 uses
   UMainF, UProduitGestion, USplashAddUnite, UClientGestion, UBonRecGestion,
-  UBonLivGestion, UBonFacVGestion, UComptoir;
+  UBonLivGestion, UBonFacVGestion, UComptoir,  UBonFacAGestion;
 
 
 procedure TFastProduitsListF.FisrtClientbtnClick(Sender: TObject);
@@ -289,6 +289,11 @@ begin
                 CodeBR:= MainForm.Bona_recPlistTable.FieldValues['code_barecl'] + 1 ;
                end;
 
+                 if MainForm.ProduitTable.FieldByName('perissable_p').AsBoolean = True then
+                 begin
+                  BonRecGestionF.ProduitsListDBGridEh.Columns[4].Visible := True
+                 end;               
+
              MainForm.Bona_recPlistTable.Last;
              MainForm.Bona_recPlistTable.Append;
              MainForm.Bona_recPlistTable.FieldValues['code_barecl']:= CodeBR ;
@@ -303,6 +308,10 @@ begin
              MainForm.Bona_recPlistTable.FieldByName('prixva_p').AsCurrency:=  MainForm.ProduitTable.FieldByName('prixva_p').AsCurrency;
              MainForm.Bona_recPlistTable.FieldByName('prixva2_p').AsCurrency:= MainForm.ProduitTable.FieldByName('prixva2_p').AsCurrency;
              MainForm.Bona_recPlistTable.FieldValues['cond_p']:=  01;
+             
+             MainForm.Bona_recPlistTable.FieldValues['qutinstock_p']:= 
+             (MainForm.Bona_recPlistTable.FieldValues['qut_p'])*(MainForm.Bona_recPlistTable.FieldValues['cond_p']);    
+             
              MainForm.Bona_recPlistTable.Post ;
 
       end;
@@ -386,6 +395,12 @@ begin
                 MainForm.Bona_recPlistTable.Last;
                 CodeBR:= MainForm.Bona_recPlistTable.FieldValues['code_barecl'] + 1 ;
                end;
+
+                 if MainForm.ProduitTable.FieldByName('perissable_p').AsBoolean = True then
+                 begin
+                  BonRecGestionF.ProduitsListDBGridEh.Columns[4].Visible := True
+                 end;   
+                 
              MainForm.Bona_recPlistTable.Last;
              MainForm.Bona_recPlistTable.Append;
              MainForm.Bona_recPlistTable.FieldValues['code_barecl']:= CodeBR ;
@@ -400,6 +415,10 @@ begin
              MainForm.Bona_recPlistTable.FieldByName('prixvg_p').AsCurrency:=  MainForm.ProduitTable.FieldByName('prixvg_p').AsCurrency;
              MainForm.Bona_recPlistTable.FieldByName('prixva_p').AsCurrency:=  MainForm.ProduitTable.FieldByName('prixva_p').AsCurrency;
              MainForm.Bona_recPlistTable.FieldByName('prixva2_p').AsCurrency:= MainForm.ProduitTable.FieldByName('prixva2_p').AsCurrency;
+
+             MainForm.Bona_recPlistTable.FieldValues['qutinstock_p']:= 
+             (MainForm.Bona_recPlistTable.FieldValues['qut_p'])*(MainForm.Bona_recPlistTable.FieldValues['cond_p']);                 
+             
              MainForm.Bona_recPlistTable.Post ;
            MainForm.Bona_recPlistTable.IndexFieldNames:='code_barec';
            MainForm.Bona_recPlistTable.Last;
@@ -1109,6 +1128,11 @@ begin
                 MainForm.Bona_fac_listTable.Last;
                 CodeBR:= MainForm.Bona_fac_listTable.FieldValues['code_bafacl'] + 1 ;
                end;
+               
+                 if MainForm.ProduitTable.FieldByName('perissable_p').AsBoolean = True then
+                 begin
+                   BonFacAGestionF.ProduitsListDBGridEh.Columns[4].Visible := True
+                 end;
 
              MainForm.Bona_fac_listTable.Last;
              MainForm.Bona_fac_listTable.Append;
@@ -1124,6 +1148,10 @@ begin
              MainForm.Bona_fac_listTable.FieldByName('prixvg_p').AsCurrency:=  MainForm.ProduitTable.FieldByName('prixvg_p').AsCurrency;
              MainForm.Bona_fac_listTable.FieldByName('prixva_p').AsCurrency:=  MainForm.ProduitTable.FieldByName('prixva_p').AsCurrency;
              MainForm.Bona_fac_listTable.FieldByName('prixva2_p').AsCurrency:= MainForm.ProduitTable.FieldByName('prixva2_p').AsCurrency;
+
+              MainForm.Bona_fac_listTable.FieldValues['qutinstock_p']:= 
+             (MainForm.Bona_fac_listTable.FieldValues['qut_p'])*(MainForm.Bona_fac_listTable.FieldValues['cond_p']);
+             
              MainForm.Bona_fac_listTable.Post ;
 
       end;
@@ -1208,6 +1236,12 @@ begin
                 MainForm.Bona_fac_listTable.Last;
                 CodeBR:= MainForm.Bona_fac_listTable.FieldValues['code_bafacl'] + 1 ;
                end;
+               
+                 if MainForm.ProduitTable.FieldByName('perissable_p').AsBoolean = True then
+                 begin
+                   BonFacAGestionF.ProduitsListDBGridEh.Columns[4].Visible := True
+                 end;
+                 
              MainForm.Bona_fac_listTable.Last;
              MainForm.Bona_fac_listTable.Append;
              MainForm.Bona_fac_listTable.FieldValues['code_bafacl']:= CodeBR ;
@@ -1222,6 +1256,10 @@ begin
              MainForm.Bona_fac_listTable.FieldByName('prixvg_p').AsCurrency:=  MainForm.ProduitTable.FieldByName('prixvg_p').AsCurrency;
              MainForm.Bona_fac_listTable.FieldByName('prixva_p').AsCurrency:=  MainForm.ProduitTable.FieldByName('prixva_p').AsCurrency;
              MainForm.Bona_fac_listTable.FieldByName('prixva2_p').AsCurrency:= MainForm.ProduitTable.FieldByName('prixva2_p').AsCurrency;
+
+              MainForm.Bona_fac_listTable.FieldValues['qutinstock_p']:= 
+             (MainForm.Bona_fac_listTable.FieldValues['qut_p'])*(MainForm.Bona_fac_listTable.FieldValues['cond_p']);
+             
              MainForm.Bona_fac_listTable.Post ;
            MainForm.Bona_fac_listTable.IndexFieldNames:='code_bafac';
            MainForm.Bona_fac_listTable.Last;
@@ -1607,4 +1645,3 @@ begin
 end;
 
 end.
-

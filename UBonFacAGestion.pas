@@ -964,9 +964,9 @@ begin
            MainForm.ProduitTable.Active:=True;
            Mainform.Sqlquery.Active:=False;
            Mainform.Sqlquery.Sql.Clear;
-           Mainform.Sqlquery.Sql.Text:='SELECT code_bafacl,code_p,  qut_p, cond_p , prixht_p,tva_p,prixvd_p,prixvr_p,prixvg_p,prixva_p,prixva2_p FROM bona_fac_list WHERE code_bafac =  '
+           Mainform.Sqlquery.Sql.Text:='SELECT code_bafacl,code_p,  qut_p, cond_p , prixht_p,tva_p,prixvd_p,prixvr_p,prixvg_p,prixva_p,prixva2_p,qutinstock_p FROM bona_fac_list WHERE code_bafac =  '
                                                  + IntToStr (MainForm.Bona_facTable.FieldValues['code_bafac'])
-                                                 + 'GROUP BY code_bafacl, code_p, qut_p, cond_p,prixht_p,tva_p,prixvd_p,prixvr_p,prixvg_p,prixva_p,prixva2_p' ;
+                                                 + 'GROUP BY code_bafacl, code_p, qut_p, cond_p,prixht_p,tva_p,prixvd_p,prixvr_p,prixvg_p,prixva_p,prixva2_p,qutinstock_p' ;
            MainForm.SQLQuery.Active:=True;
            MainForm.SQLQuery.First;
            while  NOT (MainForm.SQLQuery.Eof) do
@@ -987,6 +987,12 @@ begin
             MainForm.ProduitTable.FieldByName('prixva_p').AsCurrency:=  MainForm.SQLQuery.FieldByName('prixva_p').AsCurrency;
             MainForm.ProduitTable.FieldByName('prixva2_p').AsCurrency:= MainForm.SQLQuery.FieldByName('prixva2_p').AsCurrency;
             MainForm.ProduitTable.Post;
+
+             MainForm.SQLQuery.Edit;   
+             MainForm.SQLQuery.FieldValues['qutinstock_p']:= 
+             (MainForm.SQLQuery.FieldValues['qut_p'])*(MainForm.SQLQuery.FieldValues['cond_p']);
+             MainForm.SQLQuery.Post;  
+    
             MainForm.SQLQuery.Next;
            end;
 
@@ -1853,6 +1859,11 @@ if key = #13 then
                   CodeFA:= MainForm.Bona_fac_listTable.FieldValues['code_bafacl'] + 1 ;
                  end;
 
+                 if MainForm.ProduitTable.FieldByName('perissable_p').AsBoolean = True then
+                 begin
+                   ProduitsListDBGridEh.Columns[4].Visible := True
+                 end;
+                 
              MainForm.Bona_fac_listTable.Last;
              MainForm.Bona_fac_listTable.Append;
              MainForm.Bona_fac_listTable.FieldValues['code_bafacl']:= CodeFA ;
@@ -1867,6 +1878,10 @@ if key = #13 then
              MainForm.Bona_fac_listTable.FieldByName('prixvg_p').AsCurrency:=  MainForm.ProduitTable.FieldByName('prixvg_p').AsCurrency;
              MainForm.Bona_fac_listTable.FieldByName('prixva_p').AsCurrency:=  MainForm.ProduitTable.FieldByName('prixva_p').AsCurrency;
              MainForm.Bona_fac_listTable.FieldByName('prixva2_p').AsCurrency:= MainForm.ProduitTable.FieldByName('prixva2_p').AsCurrency;
+             
+             MainForm.Bona_fac_listTable.FieldValues['qutinstock_p']:= 
+             (MainForm.Bona_fac_listTable.FieldValues['qut_p'])*(MainForm.Bona_fac_listTable.FieldValues['cond_p']);
+              
              MainForm.Bona_fac_listTable.Post ;
              MainForm.Bona_fac_listTable.IndexFieldNames:='code_bafac';
             MainForm.Bona_fac_listTable.Active:=False;
@@ -1965,7 +1980,16 @@ if key = #13 then
                begin
                 MainForm.Bona_fac_listTable.Last;
                 CodeFA:= MainForm.Bona_fac_listTable.FieldValues['code_bafacl'] + 1 ;
-               end;
+               end;                     if MainForm.ProduitTable.FieldByName('perissable_p').AsBoolean = True then
+                 begin
+                   ProduitsListDBGridEh.Columns[4].Visible := True
+                 end;
+
+                 if MainForm.ProduitTable.FieldByName('perissable_p').AsBoolean = True then                 
+                 begin
+                   ProduitsListDBGridEh.Columns[4].Visible := True
+                 end;
+                 
              MainForm.Bona_fac_listTable.Insert;
              MainForm.Bona_fac_listTable.FieldValues['code_bafacl']:= CodeFA ;
              MainForm.Bona_fac_listTable.FieldValues['code_bafac']:= MainForm.Bona_facTable.FieldValues['code_bafac'];
@@ -1979,6 +2003,10 @@ if key = #13 then
              MainForm.Bona_fac_listTable.FieldByName('prixvg_p').AsCurrency:=  MainForm.ProduitTable.FieldByName('prixvg_p').AsCurrency;
              MainForm.Bona_fac_listTable.FieldByName('prixva_p').AsCurrency:=  MainForm.ProduitTable.FieldByName('prixva_p').AsCurrency;
              MainForm.Bona_fac_listTable.FieldByName('prixva2_p').AsCurrency:= MainForm.ProduitTable.FieldByName('prixva2_p').AsCurrency;
+
+             MainForm.Bona_fac_listTable.FieldValues['qutinstock_p']:= 
+             (MainForm.Bona_fac_listTable.FieldValues['qut_p'])*(MainForm.Bona_fac_listTable.FieldValues['cond_p']);
+             
              MainForm.Bona_fac_listTable.Post ;
              MainForm.Bona_fac_listTable.IndexFieldNames:='code_bafac';
 
@@ -2088,6 +2116,11 @@ if key = #13 then
                 CodeFA:= MainForm.Bona_fac_listTable.FieldValues['code_bafacl'] + 1 ;
                end;
 
+                 if MainForm.ProduitTable.FieldByName('perissable_p').AsBoolean = True then
+                 begin
+                   ProduitsListDBGridEh.Columns[4].Visible := True
+                 end;
+
              MainForm.Bona_fac_listTable.Insert;
              MainForm.Bona_fac_listTable.FieldValues['code_bafacl']:= CodeFA ;
              MainForm.Bona_fac_listTable.FieldValues['code_bafac']:= MainForm.Bona_facTable.FieldValues['code_bafac'];
@@ -2101,6 +2134,10 @@ if key = #13 then
              MainForm.Bona_fac_listTable.FieldByName('prixvg_p').AsCurrency:=  MainForm.ProduitTable.FieldByName('prixvg_p').AsCurrency;
              MainForm.Bona_fac_listTable.FieldByName('prixva_p').AsCurrency:=  MainForm.ProduitTable.FieldByName('prixva_p').AsCurrency;
              MainForm.Bona_fac_listTable.FieldByName('prixva2_p').AsCurrency:= MainForm.ProduitTable.FieldByName('prixva2_p').AsCurrency;
+
+             MainForm.Bona_fac_listTable.FieldValues['qutinstock_p']:= 
+             (MainForm.Bona_fac_listTable.FieldValues['qut_p'])*(MainForm.Bona_fac_listTable.FieldValues['cond_p']);
+             
              MainForm.Bona_fac_listTable.Post ;
              MainForm.Bona_fac_listTable.IndexFieldNames:='code_bafac';
 
@@ -2299,6 +2336,8 @@ begin
     BonFacAGNEWStock.Caption:=
       floatTostrF(((MainForm.ProduitTable.FieldValues['QutDispo'])+((MainForm.Bona_fac_listTable.FieldValues['qut_p'])*(MainForm.Bona_fac_listTable.FieldValues['cond_p']))),ffNumber,14,2);
 
+
+             
     if(StrToFloat (StringReplace(BonFacAGNEWStock.Caption, #32, '', [rfReplaceAll])))  < 0 then
     begin
      Timer1.Enabled:= true;

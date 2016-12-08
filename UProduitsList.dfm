@@ -792,7 +792,7 @@ object ProduitsListF: TProduitsListF
         Layout = tlCenter
         MinWidth = 100
         Title.Alignment = taCenter
-        Title.Caption = 'Stock'
+        Title.Caption = 'Q.Dispo'
         Width = 150
         WordWrap = False
       end
