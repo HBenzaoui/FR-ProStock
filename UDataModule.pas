@@ -196,6 +196,11 @@ type
     PMoreMaxQCnotifqutini_p: TFloatField;
     PMoreMaxQCnotifQutDispo: TFloatField;
     PMoreMaxQCnotiftva_p: TSmallintField;
+    PerisablePListTable: TFDQuery;
+    PerisablePListTablecode_bafac: TIntegerField;
+    PerisablePListTablecode_p: TIntegerField;
+    PerisablePListTablecode_p_1: TIntegerField;
+    PerisablePListTablecode_p_2: TIntegerField;
     procedure DataModuleCreate(Sender: TObject);
     procedure PZeroQCnotifCalcFields(DataSet: TDataSet);
     procedure PCloseZeroQCnotifCalcFields(DataSet: TDataSet);

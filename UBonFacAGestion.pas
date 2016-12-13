@@ -1923,7 +1923,7 @@ if key = #13 then
       FSplashAddUnite.CancelAddUniteSBtn.Left:= ((FSplashAddUnite.Width div 2 )+((FSplashAddUnite.Width div 2)div 2 ) ) - (FSplashAddUnite.CancelAddUniteSBtn.Width div 2) - 15;
       if  MainForm.Bona_fac_listTable.FieldValues['code_p'] <> NULL then
       begin
-      NomP:=   MainForm.ProduitTable.FieldValues['nom_p'];
+        NomP:=   MainForm.ProduitTable.FieldValues['nom_p'];
       end else begin
         NomP:='';
       end;

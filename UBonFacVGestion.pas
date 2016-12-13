@@ -775,6 +775,14 @@ begin
                   CodeFV:= MainForm.Bonv_fac_listTable.FieldValues['code_bvfacl'] + 1 ;
                  end;
 
+                 if MainForm.ProduitTable.FieldByName('perissable_p').AsBoolean = True then
+                 begin
+                 
+//                   ProduitsListDBGridEh.Columns[4].Visible := True
+//
+                   
+                 end;
+
              MainForm.Bonv_fac_listTable.Last;
              MainForm.Bonv_fac_listTable.Append;
              MainForm.Bonv_fac_listTable.FieldValues['code_bvfacl']:= CodeFV ;

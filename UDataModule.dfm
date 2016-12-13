@@ -1204,4 +1204,41 @@ object DataModuleF: TDataModuleF
     Left = 830
     Top = 458
   end
+  object PerisablePListTable: TFDQuery
+    Connection = MainForm.GstockdcConnection
+    SQL.Strings = (
+      
+        'SELECT code_bafac,code_p,code_p,code_p FROM bona_fac_list GROUP ' +
+        'by code_bafac,code_p,code_p,code_p'
+      'UNION ALL '
+      
+        'SELECT code_barec,code_p,code_p,code_p FROM bona_rec_list GROUP ' +
+        'by code_barec,code_p,code_p,code_p')
+    Left = 238
+    Top = 152
+    object PerisablePListTablecode_bafac: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'code_bafac'
+      Origin = 'code_bafac'
+      ReadOnly = True
+    end
+    object PerisablePListTablecode_p: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'code_p'
+      Origin = 'code_p'
+      ReadOnly = True
+    end
+    object PerisablePListTablecode_p_1: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'code_p_1'
+      Origin = 'code_p'
+      ReadOnly = True
+    end
+    object PerisablePListTablecode_p_2: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'code_p_2'
+      Origin = 'code_p'
+      ReadOnly = True
+    end
+  end
 end
