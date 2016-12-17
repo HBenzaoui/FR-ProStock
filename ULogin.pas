@@ -74,7 +74,7 @@ implementation
 
 
   uses
-      ActiveX,
+      ActiveX,IdGlobal, IdHash, IdHashMessageDigest,
       ComObj, UMainF,System.Contnrs,Winapi.MMSystem, ULoginUser, USplash;
       
     var
@@ -258,17 +258,37 @@ Application.Terminate ;
 end;
 end;
 
+function MD5String(str: String): String;
+begin
+  with TIdHashMessageDigest5.Create do
+    try
+      Result := HashStringAsHex(str);
+    finally
+      Free;
+    end;
+end;
+
 procedure TLoginF.FormCreate(Sender: TObject);
  var
       x:string;
       Y:string;
+      HashedeSrial:string;
     begin
       FSWbemLocator := CreateOleObject('WbemScripting.SWbemLocator');
       FWMIService   := FSWbemLocator.ConnectServer('localhost', 'root\CIMV2', '', '');
       X:=GetWMIstring('Win32_BIOS','SerialNumber');
       Y:=GetWMIstring('Win32_PhysicalMedia','SerialNumber');
 
-   cxTextEdit114.Text:= StringReplace(( X+'-PS-57-'+Y ), #32 , '', [rfReplaceAll]);
+     HashedeSrial:= StringReplace(( X+'-PS-57-'+Y ), #32 , '', [rfReplaceAll]);
+     HashedeSrial:= MD5String(HashedeSrial); 
+     Insert('-',HashedeSrial,6);
+     Insert('-',HashedeSrial,12);
+     Insert('-',HashedeSrial,18);
+     Insert('-',HashedeSrial,24);
+     Insert('-',HashedeSrial,30);
+     Insert('-',HashedeSrial,36);
+
+   cxTextEdit114.Text:= HashedeSrial;
    
   ProcessRights;
   if label1.Caption = 'R' then
