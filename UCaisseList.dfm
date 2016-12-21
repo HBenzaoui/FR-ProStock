@@ -1257,6 +1257,8 @@ object CaisseListF: TCaisseListF
       StyleElements = []
       OnChange = CaisseListCbxChange
       OnDropDown = CaisseListCbxDropDown
+      OnExit = CaisseListCbxExit
+      OnMouseLeave = CaisseListCbxExit
       Items.Strings = (
         'Tous')
     end

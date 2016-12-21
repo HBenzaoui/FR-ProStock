@@ -333,7 +333,6 @@ object FournisseurGestionF: TFournisseurGestionF
           ParentDoubleBuffered = False
           ParentFont = False
           TabOrder = 1
-          OnKeyPress = NameFournisseurGEdtKeyPress
         end
         object FixFournisseurGEdt: TEdit
           Left = 66
@@ -350,7 +349,6 @@ object FournisseurGestionF: TFournisseurGestionF
           ParentFont = False
           TabOrder = 4
           OnKeyDown = FixFournisseurGEdtKeyDown
-          OnKeyPress = NameFournisseurGEdtKeyPress
         end
         object EmailFournisseurGEdt: TEdit
           Left = 66
@@ -366,7 +364,6 @@ object FournisseurGestionF: TFournisseurGestionF
           ParentDoubleBuffered = False
           ParentFont = False
           TabOrder = 8
-          OnKeyPress = NameFournisseurGEdtKeyPress
         end
         object SiteFournisseurGEdt: TEdit
           Left = 327
@@ -382,7 +379,6 @@ object FournisseurGestionF: TFournisseurGestionF
           ParentDoubleBuffered = False
           ParentFont = False
           TabOrder = 9
-          OnKeyPress = NameFournisseurGEdtKeyPress
         end
         object MobileFournisseurGEdt: TEdit
           Left = 66
@@ -399,7 +395,6 @@ object FournisseurGestionF: TFournisseurGestionF
           ParentFont = False
           TabOrder = 6
           OnKeyDown = FixFournisseurGEdtKeyDown
-          OnKeyPress = NameFournisseurGEdtKeyPress
         end
         object Mobile2FournisseurGEdt: TEdit
           Left = 327
@@ -416,7 +411,6 @@ object FournisseurGestionF: TFournisseurGestionF
           ParentFont = False
           TabOrder = 7
           OnKeyDown = FixFournisseurGEdtKeyDown
-          OnKeyPress = NameFournisseurGEdtKeyPress
         end
         object FaxFournisseurGEdt: TEdit
           Left = 327
@@ -433,7 +427,6 @@ object FournisseurGestionF: TFournisseurGestionF
           ParentFont = False
           TabOrder = 5
           OnKeyDown = FixFournisseurGEdtKeyDown
-          OnKeyPress = NameFournisseurGEdtKeyPress
         end
         object NameFournisseurGEdt: TEdit
           Left = 73
@@ -457,7 +450,6 @@ object FournisseurGestionF: TFournisseurGestionF
           TabOrder = 0
           StyleElements = [seClient, seBorder]
           OnChange = NameFournisseurGEdtChange
-          OnKeyPress = NameFournisseurGEdtKeyPress
         end
         object ActiveFournisseurGSlider: TsSlider
           Left = 138
@@ -502,7 +494,6 @@ object FournisseurGestionF: TFournisseurGestionF
           TabOrder = 2
           OnDropDown = WilayaFournisseurGCbxEnter
           OnEnter = WilayaFournisseurGCbxEnter
-          OnKeyPress = NameFournisseurGEdtKeyPress
           Items.Strings = (
             'Adrar'
             'A'#239'n-Defla'
@@ -567,7 +558,6 @@ object FournisseurGestionF: TFournisseurGestionF
           TabOrder = 3
           OnDropDown = VilleFournisseurGCbxEnter
           OnEnter = VilleFournisseurGCbxEnter
-          OnKeyPress = NameFournisseurGEdtKeyPress
         end
       end
     end

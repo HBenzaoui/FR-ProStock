@@ -91,7 +91,6 @@ type
     procedure FormKeyPress(Sender: TObject; var Key: Char);
     procedure MaxCreditFournisseurGEdtClick(Sender: TObject);
     procedure OldCreditFournisseurGEdtClick(Sender: TObject);
-    procedure NameFournisseurGEdtKeyPress(Sender: TObject; var Key: Char);
   private
     { Private declarations }
   public
@@ -903,6 +902,13 @@ begin
   CancelFournisseurGBtnClick(Sender);
 
  end;
+
+   if key = #13 then
+  begin
+   key := #0;
+   OKFournisseurGBtnClick(Sender);
+
+  end;
 end;
 
 procedure TFournisseurGestionF.MaxCreditFournisseurGEdtClick(Sender: TObject);
@@ -917,16 +923,6 @@ begin
 //----- use this code to delte the blanks from the Tedit when enter that will avoide the not foit point error --///
 OldCreditFournisseurGEdt.Text := StringReplace(OldCreditFournisseurGEdt.Text, #32, '', [rfReplaceAll]);
 OldCreditFournisseurGEdt.SelectAll;
-end;
-
-procedure TFournisseurGestionF.NameFournisseurGEdtKeyPress(Sender: TObject;
-  var Key: Char);
-begin
- if Key = #13 then
-  begin
-    Key := #0;
-    SelectNext(ActiveControl as TWinControl, true, true);
-  end;
 end;
 
 end.

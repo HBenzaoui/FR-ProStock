@@ -53,7 +53,14 @@ uses
   ULogoSplashForm in 'ULogoSplashForm.pas' {LogoSplashF},
   ULoginUser in 'ULoginUser.pas' {LoginUserF},
   ULogin in 'ULogin.pas' {LoginF},
-  UCNotifications in 'UCNotifications.pas' {CNotificationsF};
+  UCNotifications in 'UCNotifications.pas' {CNotificationsF},
+  UChargesFList in 'UChargesFList.pas' {ChargesFListF},
+  UPertesFList in 'UPertesFList.pas' {PertesFListF},
+  UChargesGestion in 'UChargesGestion.pas' {ChargesGestionF},
+  UPertesGestion in 'UPertesGestion.pas' {PertesGestionF},
+  UTypeChargeList in 'UTypeChargeList.pas' {TypeChargeListF},
+  USTypeChargeList in 'USTypeChargeList.pas' {STypeChargeListF},
+  UTypePerteList in 'UTypePerteList.pas' {TypePerteListF};
 
 {$R *.res}
 

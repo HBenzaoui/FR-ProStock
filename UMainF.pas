@@ -743,6 +743,15 @@ type
     Bona_fac_listTablequtinstock_p: TFloatField;
     Bona_recPlistTabledateperiss_p: TDateField;
     Bona_recPlistTablequtinstock_p: TFloatField;
+    L1: TMenuItem;
+    ListedetypesdeCharge1: TMenuItem;
+    ListedetypesdeCharge2: TMenuItem;
+    L3: TMenuItem;
+    L4: TMenuItem;
+    N22: TMenuItem;
+    N23: TMenuItem;
+    Opt_cas_bnk_CaisseTablecode_ch: TIntegerField;
+    Opt_cas_bnk_BankTablecode_ch: TIntegerField;
     procedure ClientMainFBtnClick(Sender: TObject);
     procedure FourMainFBtnClick(Sender: TObject);
     procedure ProduitMainFBtnClick(Sender: TObject);
@@ -840,6 +849,11 @@ type
     procedure Button13Click(Sender: TObject);
     procedure CnotificationMainFBtnClick(Sender: TObject);
     procedure CNotificationPaintBoxPaint(Sender: TObject);
+    procedure L3Click(Sender: TObject);
+    procedure L4Click(Sender: TObject);
+    procedure L1Click(Sender: TObject);
+    procedure ListedetypesdeCharge1Click(Sender: TObject);
+    procedure ListedetypesdeCharge2Click(Sender: TObject);
   private
    //---- this to value of changege we need it to check if theuser changed something
      CountInsert,CountUpdate,CountDelete   : Int64;
@@ -877,7 +891,8 @@ uses   Vcl.Direct2D,Character,
   UBankList, UUsersList, UUsersGestion, UReglementFList, UReglementCList,
   UOptions, UModePaieList, UDashboard,uCompteList, UFamPList, USFamPList,
   UUnitesList, ULocaleList, UHomeF, UDataModule, USplash, UWorkingSplash,
-  ULogoSplashForm, ULoginUser, ULogin, UCNotifications;
+  ULogoSplashForm, ULoginUser, ULogin, UCNotifications, UChargesFList,
+  UPertesFList, USTypeChargeList, UTypeChargeList, UTypePerteList;
 
   var
     gGrayForms: TComponentList;
@@ -2570,26 +2585,27 @@ begin
   DataModuleF.PCloseDiedCnotif.RecordCount + DataModuleF.PDiedCnotif.RecordCount ) ;
 
 
-  if CNotificationLbl.Caption <> '0'  then
-  begin
+    if CNotificationLbl.Caption <> '0'  then
+    begin
 
-   CNotificationPaintBox.Visible:= True;
-   CNotificationLbl.Visible:= True;
-  end;
+     CNotificationPaintBox.Visible:= True;
+     CNotificationLbl.Visible:= True;
+    end;
 
-   if NonWhiteSpaceCharacterCount(CNotificationLbl.Caption) > 2 then
-   begin
+    if NonWhiteSpaceCharacterCount(CNotificationLbl.Caption) > 2 then
+    begin
 
-    CNotificationLbl.Font.Size := CNotificationLbl.Font.Size - 1 ; 
-    CNotificationLbl.Top:=  CNotificationLbl.Top  + 1;
-   end;
+     CNotificationLbl.Font.Size := CNotificationLbl.Font.Size - 1 ; 
+     CNotificationLbl.Top:=  CNotificationLbl.Top  + 1;
+    end;
 
-   if NonWhiteSpaceCharacterCount(CNotificationLbl.Caption) > 3 then
-   begin
+    if NonWhiteSpaceCharacterCount(CNotificationLbl.Caption) > 3 then
+    begin
 
-    CNotificationLbl.Font.Size := CNotificationLbl.Font.Size - 2 ; 
-    CNotificationLbl.Top:=  CNotificationLbl.Top  + 2;
-   end;
+     CNotificationLbl.Font.Size := CNotificationLbl.Font.Size - 2 ; 
+     CNotificationLbl.Top:=  CNotificationLbl.Top  + 2;
+    end;
+   
 end;
 
 procedure TMainForm.N17Click(Sender: TObject);
@@ -2814,6 +2830,14 @@ begin
       DataModuleF.PMoreMaxQCnotif.Active:= False;
 //      DataModuleF.PCloseDiedCnotif.Active:= False;
 //      DataModuleF.PDiedCnotif.Active:= False;
+
+
+
+      DataModuleF.ChargesTable.Active:= False;
+      DataModuleF.Charge_typeTable.Active:= False;
+      DataModuleF.Charge_s_typeTable.Active:= False;
+      DataModuleF.PertesTable.Active:= False;
+      DataModuleF.Perte_typeTable.Active:= False;
 end;
 
 function TMainForm.KillTask(ExeFileName: string): Integer;
@@ -2903,6 +2927,14 @@ begin
 //      DataModuleF.PCloseDiedCnotif.Active:= True;
 //      DataModuleF.PDiedCnotif.Active:= True;
 
+
+
+      DataModuleF.ChargesTable.Active:= True;
+      DataModuleF.Charge_typeTable.Active:= True;
+      DataModuleF.Charge_s_typeTable.Active:= True;
+      DataModuleF.PertesTable.Active:= True;
+      DataModuleF.Perte_typeTable.Active:= True;
+
       
 end;
 
@@ -2956,6 +2988,14 @@ begin
       DataModuleF.PMoreMaxQCnotif.Refresh;
 //      DataModuleF.PCloseDiedCnotif.Refresh;
 //      DataModuleF.PDiedCnotif.Refresh;
+
+
+
+      DataModuleF.ChargesTable.Refresh;
+      DataModuleF.Charge_typeTable.Refresh;
+      DataModuleF.Charge_s_typeTable.Refresh;
+      DataModuleF.PertesTable.Refresh;
+      DataModuleF.Perte_typeTable.Refresh;
 end;
 
 
@@ -3757,6 +3797,74 @@ begin
             UnitesListF.Top:=   (Screen.Height div 2) - (UnitesListF.Height div 2)    ;
 
             UnitesListF.ShowModal;
+end;
+
+procedure TMainForm.L1Click(Sender: TObject);
+begin
+  //-------- Show the splash screan for the type charge to add new one---------//
+
+            DataModuleF.Charge_typeTable.Active:= False;
+            DataModuleF.Charge_typeTable.SQL.Clear;
+            DataModuleF.Charge_typeTable.SQL.Text:= 'SELECT * FROM charge_type';
+            DataModuleF.Charge_typeTable.Active:= True;
+
+            TypeChargeListF:=TTypeChargeListF.Create(Application);
+            TypeChargeListF.Left:=  (Screen.Width div 2 ) - (TypeChargeListF.Width div 2)    ;
+            TypeChargeListF.Top:=   (Screen.Height div 2) - (TypeChargeListF.Height div 2)    ;
+
+            TypeChargeListF.Show;
+end;
+
+procedure TMainForm.L3Click(Sender: TObject);
+begin
+if Not Assigned(ChargesFListF) then
+
+     ChargesFListF:= TChargesFListF.Create(Application) else
+                                        begin
+                                          ChargesFListF.Show
+                                        end;
+end;
+
+procedure TMainForm.L4Click(Sender: TObject);
+begin
+if Not Assigned(PertesFListF) then
+
+     PertesFListF:= TPertesFListF.Create(Application) else
+                                        begin
+                                          PertesFListF.Show
+                                        end;
+end;
+
+procedure TMainForm.ListedetypesdeCharge1Click(Sender: TObject);
+begin
+  //-------- Show the splash screan for the sous type charge to add new one---------//
+
+            DataModuleF.Charge_s_typeTable.Active:= False;
+            DataModuleF.Charge_s_typeTable.SQL.Clear;
+            DataModuleF.Charge_s_typeTable.SQL.Text:= 'SELECT * FROM charge_s_type';
+            DataModuleF.Charge_s_typeTable.Active:= True;
+
+            STypeChargeListF:=TSTypeChargeListF.Create(Application);
+            STypeChargeListF.Left:=  (Screen.Width div 2 ) - (STypeChargeListF.Width div 2)    ;
+            STypeChargeListF.Top:=   (Screen.Height div 2) - (STypeChargeListF.Height div 2)    ;
+
+            STypeChargeListF.Show;
+end;
+
+procedure TMainForm.ListedetypesdeCharge2Click(Sender: TObject);
+begin
+  //-------- Show the splash screan for the sous type charge to add new one---------//
+
+            DataModuleF.Perte_typeTable.Active:= False;
+            DataModuleF.Perte_typeTable.SQL.Clear;
+            DataModuleF.Perte_typeTable.SQL.Text:= 'SELECT * FROM perte_type';
+            DataModuleF.Perte_typeTable.Active:= True;
+
+            TypePerteListF:=TTypePerteListF.Create(Application);
+            TypePerteListF.Left:=  (Screen.Width div 2 ) - (TypePerteListF.Width div 2)    ;
+            TypePerteListF.Top:=   (Screen.Height div 2) - (TypePerteListF.Height div 2)    ;
+
+            TypePerteListF.Show;
 end;
 
 procedure TMainForm.LocalMainFMmnClick(Sender: TObject);

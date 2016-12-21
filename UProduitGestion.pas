@@ -237,7 +237,8 @@ implementation
 uses UClientGestion, UMainF, USplashAddUnite, UFournisseurList,
   USplashAddCodeBarre, math, UFournisseurGestion, USplash, UProduitsList
 
-  , UComptoir, UBonFacAGestion, UBonFacVGestion, UBonLivGestion, UBonRecGestion;
+  , UComptoir, UBonFacAGestion, UBonFacVGestion, UBonLivGestion, UBonRecGestion,
+  UPertesGestion;
 
 
 //----------- use this procedure to set center aligment text for the combobox---////
@@ -509,8 +510,8 @@ begin
 
     FSplashAddUnite:=TFSplashAddUnite.Create(ProduitGestionF);
     FSplashAddUnite.Width:= 355;
-    FSplashAddUnite.Panel1.Color:= $00F8CA90;
-    FSplashAddUnite.LineP.Color:= $00F8CA90;
+    FSplashAddUnite.Panel1.Color:= $005F1AD8;
+    FSplashAddUnite.LineP.Color:= $005F100F8CA90;
     FSplashAddUnite.FormCaptionAddUniteSLbl.Font.Color:= $0040332D;
     FSplashAddUnite.OKAddUniteSBtn.Left:=(FSplashAddUnite.Width div 4) - (FSplashAddUnite.OKAddUniteSBtn.Width div 2) + 20 ;
     FSplashAddUnite.CancelAddUniteSBtn.Left:= ((FSplashAddUnite.Width div 2 )+((FSplashAddUnite.Width div 2)div 2 ) ) - (FSplashAddUnite.CancelAddUniteSBtn.Width div 2) - 20;
@@ -740,7 +741,7 @@ begin
         MainForm.ProduitTable.EnableControls;
         //--- this is to pervet adding dublicate produit when editing adn creatin codebare
        if NOT (Assigned(BonCtrGestionF)) AND NOT (Assigned(BonLivGestionF)) AND NOT (Assigned(BonFacVGestionF))
-          AND NOT (Assigned(BonRecGestionF)) AND NOT (Assigned(BonFacAGestionF))  then
+          AND NOT (Assigned(BonRecGestionF)) AND NOT (Assigned(BonFacAGestionF)) AND NOT (Assigned(PertesGestionF))  then
         begin
         if (PAdded = False) AND (ProduitsListF.CodePToUseOut <> 0 )  then
         begin
@@ -763,7 +764,7 @@ begin
           end;
           
    if NOT (Assigned(BonCtrGestionF)) AND NOT (Assigned(BonLivGestionF)) AND NOT (Assigned(BonFacVGestionF))  /// To make sure access voltation wont show
-      AND NOT (Assigned(BonRecGestionF)) AND NOT (Assigned(BonFacAGestionF))  then                           /// where we are in bons not produit list
+      AND NOT (Assigned(BonRecGestionF)) AND NOT (Assigned(BonFacAGestionF)) AND NOT (Assigned(PertesGestionF))  then                           /// where we are in bons not produit list
     begin
     ProduitsListF.CodePToUseOut:= 0;
     end;
@@ -894,6 +895,13 @@ begin
   CancelProduitGBtnClick(Sender);
 
  end;
+
+ if key = #13 then
+  begin
+   key := #0;
+   OKProduitGBtnClick(Sender);
+
+  end;
 
 end;
 
@@ -1219,13 +1227,13 @@ begin
 
  //---- jump to the next edit when i press enter-----//
 
-if key = #13 then
-
-begin
- key := #0;
- SelectNext(ActiveControl as TWinControl, True,True );
-
-end;
+//if key = #13 then
+//
+//begin
+// key := #0;
+// SelectNext(ActiveControl as TWinControl, True,True );
+//
+//end;
 end;
 
 procedure TProduitGestionF.OKProduitGBtnClick(Sender: TObject);

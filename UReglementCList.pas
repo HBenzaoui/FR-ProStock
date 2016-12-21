@@ -468,10 +468,6 @@ var
    if NOT (MainForm.RegclientTable.IsEmpty) Then
    begin
 
-     MainForm.RegclientTable.Refresh;
-
-//      ReglementCGestionF := TBonRecGestionF.Create(BonRecF);
-       MainForm.RegclientTable.Refresh;
        ReglementCGestionF.NumRegCGEdt.Caption := MainForm.RegclientTable.FieldValues['nom_rc'];
        ReglementCGestionF.DateRegCGD.Date:= MainForm.RegclientTable.FieldValues['date_rc'];
        if (MainForm.RegclientTable.FieldValues['code_c']<> null) and (MainForm.RegclientTable.FieldValues['code_c']<> 0) then
@@ -638,12 +634,12 @@ begin
       FSplashAddUnite.CancelAddUniteSBtn.Top:=(FSplashAddUnite.Height) - 36;
       FSplashAddUnite.OKAddUniteSBtn.Left:=(FSplashAddUnite.Width div 4) - (FSplashAddUnite.OKAddUniteSBtn.Width div 2) + 18;
       FSplashAddUnite.CancelAddUniteSBtn.Left:= ((FSplashAddUnite.Width div 2 )+((FSplashAddUnite.Width div 2)div 2 ) ) - (FSplashAddUnite.CancelAddUniteSBtn.Width div 2) - 18;
-      FSplashAddUnite.NameAddUniteSLbl.Caption:='Ėtes-vous sûr de vouloir supprimer'+sLineBreak+sLineBreak+ 'le Versement ';
+      FSplashAddUnite.NameAddUniteSLbl.Caption:='Ėtes-vous sûr de vouloir supprimer'+sLineBreak+sLineBreak+ 'le Versement ?';
       FSplashAddUnite.NameAddUniteSLbl.Top:= (FSplashAddUnite.Panel1.Height) + 10 ;
       FSplashAddUnite.NameAddUniteSLbl.Font.Height:=16;
       FSplashAddUnite.Image1.Visible:=True;
       FSplashAddUnite.Image1.Top:= (FSplashAddUnite.Height div 2) - (FSplashAddUnite.Image1.Height div 2 ) ;
-      FSplashAddUnite.FormCaptionAddUniteSLbl.Caption:='Suppression de Bon';
+      FSplashAddUnite.FormCaptionAddUniteSLbl.Caption:='Suppression de Règlement';
       FSplashAddUnite.FormCaptionAddUniteSLbl.Font.Color:=clWhite;
       FSplashAddUnite.FormCaptionAddUniteSLbl.Left:=( FSplashAddUnite.Width div 2) -  ( FSplashAddUnite.FormCaptionAddUniteSLbl.Width div 2);
       FSplashAddUnite.NameAddUniteSEdt.Visible:=False;
@@ -786,3 +782,4 @@ ReglementCListF:= nil;
 end;
 
 end.
+

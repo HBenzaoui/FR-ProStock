@@ -48,7 +48,8 @@ implementation
 
 uses Contnrs, Types, UProduitGestion, UMainF, UBonRecGestion, UFastProduitsList,
   USplashAddCompte, UBonLivGestion, UBonFacVGestion, UBonFacAGestion,
-  UComptoir, UReglementCGestion, UReglementFGestion, UDataModule;
+  UComptoir, UReglementCGestion, UReglementFGestion, UDataModule,
+  UChargesGestion, UChargesFList, UPertesGestion;
 
 var
   gGrayForms: TComponentList;
@@ -2076,14 +2077,188 @@ begin
    end;
 
 
-     //---- this tag = 30 is for adding the   ------///
-//   if OKAddUniteSBtn.Tag = 30 then
-//   begin
-//
-//   end;
+  //---This TAG = 30 for Add in Charge type--///
+  if OKAddUniteSBtn.Tag = 30 then
+  begin
+      if NameAddUniteSEdt.Text <> '' then
+   begin
+        with DataModuleF.Charge_typeTable do  begin
+
+          if Image1.Tag = 0 then
+         begin
+            if NOT (IsEmpty) then
+            begin
+            Last;
+            CodeUNIT:= FieldValues['code_cht'] + 1;
+            end else
+                begin
+                 CodeUNIT:= 1;
+                end;
+          Append;
+          fieldbyname('code_cht').Value := CodeUNIT;
+          fieldbyname('nom_cht').Value := NameAddUniteSEdt.Text;
+          post;
+
+           end;
+         if Image1.Tag = 1 then
+         begin
+          Edit;
+          fieldbyname('nom_cht').Value := NameAddUniteSEdt.Text;
+          post;
+           end;
+           end;
+        NameAddUniteSErrorP.Visible:=False;
+       RequiredAddUniteSlbl.Visible:=False;
+       AnimateWindow(FSplashAddUnite.Handle, 175, AW_VER_NEGATIVE OR AW_SLIDE OR AW_HIDE);
+       FSplashAddUnite.Release;
+       sndPlaySound('C:\Windows\Media\speech on.wav', SND_NODEFAULT Or SND_ASYNC Or  SND_RING);
+
+       if Assigned(ChargesGestionF) then
+       begin
+        ChargesGestionF.TypeChargeGCbx.Text:= NameAddUniteSEdt.Text;
+        ChargesGestionF.TypeChargeGCbx.SetFocus;
+        end;   end   else
+       try
+       NameAddUniteSEdt.BorderStyle:= bsNone;
+      NameAddUniteSEdt.StyleElements:= [];
+      RequiredAddUniteSlbl.Visible:= True;
+      NameAddUniteSErrorP.Visible:= True;
+      sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+     OKAddUniteSBtn.Enabled := False;
+     OKAddUniteSBtn.ImageIndex := 18;
+      finally
+      NameAddUniteSEdt.SetFocus;
+    end;
+  end;
 
 
+    //---This TAG = 31 for Add in sous type charge--///
+  if OKAddUniteSBtn.Tag = 31 then
+  begin
+     if NameAddUniteSEdt.Text <> '' then
+   begin
+        with DataModuleF.Charge_s_typeTable do  begin
 
+          if Image1.Tag = 0 then
+         begin
+            if NOT (IsEmpty) then
+            begin
+            Last;
+            CodeUNIT:= FieldValues['code_chst'] + 1;
+            end else
+                begin
+                 CodeUNIT:= 1;
+                end;
+          Append;
+          fieldbyname('code_chst').Value := CodeUNIT;
+          fieldbyname('nom_chst').Value := NameAddUniteSEdt.Text;
+          post;
+
+           end;
+         if Image1.Tag = 1 then
+         begin
+          Edit;
+          fieldbyname('nom_chst').Value := NameAddUniteSEdt.Text;
+          post;
+           end;
+           end;
+        NameAddUniteSErrorP.Visible:=False;
+       RequiredAddUniteSlbl.Visible:=False;
+       AnimateWindow(FSplashAddUnite.Handle, 175, AW_VER_NEGATIVE OR AW_SLIDE OR AW_HIDE);
+       FSplashAddUnite.Release;
+       sndPlaySound('C:\Windows\Media\speech on.wav', SND_NODEFAULT Or SND_ASYNC Or  SND_RING);
+
+       if Assigned(ChargesGestionF) then
+       begin
+        ChargesGestionF.STypeChargeGCbx.Text:= NameAddUniteSEdt.Text;
+        ChargesGestionF.STypeChargeGCbx.SetFocus;
+        end;   end   else
+       try
+       NameAddUniteSEdt.BorderStyle:= bsNone;
+      NameAddUniteSEdt.StyleElements:= [];
+      RequiredAddUniteSlbl.Visible:= True;
+      NameAddUniteSErrorP.Visible:= True;
+      sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+     OKAddUniteSBtn.Enabled := False;
+     OKAddUniteSBtn.ImageIndex := 18;
+      finally
+      NameAddUniteSEdt.SetFocus;
+    end;
+  end;
+
+
+            //---- this tag = 32 is for Delleting Charge  ------///
+   if OKAddUniteSBtn.Tag = 32 then
+   begin
+      CodeF:=  DataModuleF.ChargesTable.FieldValues['code_ch'];
+
+        MainForm.SQLQuery.ExecSQL('DELETE FROM charges WHERE code_ch = ' +IntToStr(DataModuleF.ChargesTable.FieldByName('code_ch').AsInteger));
+        MainForm.SQLQuery.ExecSQL('DELETE FROM opt_cas_bnk WHERE code_ch = ' +IntToStr(DataModuleF.ChargesTable.FieldByName('code_ch').AsInteger));
+//        DataModuleF.ChargesTable.Refresh;
+        DataModuleF.ChargesTable.Close;
+        DataModuleF.ChargesTable.Open;
+        MainForm.Opt_cas_bnk_CaisseTable.Refresh;
+//        ChargesFListF.ChargesListDBGridEh.Refresh;
+
+   sndPlaySound('C:\Windows\Media\recycle.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+     AnimateWindow(FSplashAddUnite.Handle, 175, AW_VER_NEGATIVE OR AW_SLIDE OR AW_HIDE);
+    FSplashAddUnite.Release;
+   end;
+
+
+     //---This TAG = 33 for Add in Perte type--///
+  if OKAddUniteSBtn.Tag = 33 then
+  begin
+      if NameAddUniteSEdt.Text <> '' then
+   begin
+        with DataModuleF.Perte_typeTable do  begin
+
+          if Image1.Tag = 0 then
+         begin
+            if NOT (IsEmpty) then
+            begin
+            Last;
+            CodeUNIT:= FieldValues['code_prt'] + 1;
+            end else
+                begin
+                 CodeUNIT:= 1;
+                end;
+          Append;
+          fieldbyname('code_prt').Value := CodeUNIT;
+          fieldbyname('nom_prt').Value := NameAddUniteSEdt.Text;
+          post;
+
+           end;
+         if Image1.Tag = 1 then
+         begin
+          Edit;
+          fieldbyname('nom_prt').Value := NameAddUniteSEdt.Text;
+          post;
+           end;
+           end;
+        NameAddUniteSErrorP.Visible:=False;
+       RequiredAddUniteSlbl.Visible:=False;
+       AnimateWindow(FSplashAddUnite.Handle, 175, AW_VER_NEGATIVE OR AW_SLIDE OR AW_HIDE);
+       FSplashAddUnite.Release;
+       sndPlaySound('C:\Windows\Media\speech on.wav', SND_NODEFAULT Or SND_ASYNC Or  SND_RING);
+
+       if Assigned(PertesGestionF) then
+       begin
+        PertesGestionF.TypePerteGCbx.Text:= NameAddUniteSEdt.Text;
+        PertesGestionF.TypePerteGCbx.SetFocus;
+        end;   end   else
+       try
+       NameAddUniteSEdt.BorderStyle:= bsNone;
+      NameAddUniteSEdt.StyleElements:= [];
+      RequiredAddUniteSlbl.Visible:= True;
+      NameAddUniteSErrorP.Visible:= True;
+      sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+     OKAddUniteSBtn.Enabled := False;
+     OKAddUniteSBtn.ImageIndex := 18;
+      finally
+      NameAddUniteSEdt.SetFocus;
+    end;
+  end;
 
 
 end;
@@ -2122,5 +2297,3 @@ begin
 end;
 
 end.
-
-

@@ -1986,7 +1986,7 @@ object LoginF: TLoginF
   object PassCheckEroorGLbl: TLabel
     Left = 121
     Top = 47
-    Width = 414
+    Width = 384
     Height = 15
     Alignment = taCenter
     AutoSize = False
@@ -2070,7 +2070,7 @@ object LoginF: TLoginF
     Expiration = 42740.607651898150000000
     MaxStartNumber = 0
     MaxDayNumber = 0
-    UserName = '1051759700221-PS-57-WD-WX41A15PKHD7'
+    UserName = '4AB4C-CE7ED-9DAFC-71ED8-C6B7B-C9312-DC'
     Version = '1.31'
     OnInvalidSerialNumber = LoginFmxInvalidSerialNumber
     OnGetSerialNumber = LoginFmxGetSerialNumber

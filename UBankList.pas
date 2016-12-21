@@ -118,6 +118,7 @@ type
     procedure ClearFilterBVLivPMenuClick(Sender: TObject);
     procedure ClearRegleFilterBVLivPMenuClick(Sender: TObject);
     procedure ClearTVAFilterPMenuClick(Sender: TObject);
+    procedure BankListCbxExit(Sender: TObject);
   private
     procedure GettingData;
     procedure FilteredColor;
@@ -399,6 +400,12 @@ begin
         end;
      end;
      BankListCbx.Items.Add('Tous');
+end;
+
+procedure TBankListF.BankListCbxExit(Sender: TObject);
+begin
+  if BankListCbx.ItemIndex = -1 then
+   BankListCbx.ItemIndex := BankListCbx.Items.Count -1;
 end;
 
 procedure TBankListF.BondeLivration1Click(Sender: TObject);

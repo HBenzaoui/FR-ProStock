@@ -362,6 +362,14 @@ begin
   close;
 
  end;
+
+ if key = #13 then
+
+  begin
+   key := #0;
+   OKFPrintingBtnClick(Sender);
+
+  end;
 end;
 
 End.

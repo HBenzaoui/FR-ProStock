@@ -32,6 +32,7 @@ object DataModuleF: TDataModuleF
       LookupKeyFields = 'code_p'
       LookupResultField = 'nom_p'
       KeyFields = 'code_p'
+      Size = 150
       Lookup = True
     end
   end
@@ -63,6 +64,7 @@ object DataModuleF: TDataModuleF
       LookupKeyFields = 'code_c'
       LookupResultField = 'nom_c'
       KeyFields = 'code_c'
+      Size = 100
       Lookup = True
     end
   end
@@ -359,6 +361,7 @@ object DataModuleF: TDataModuleF
       LookupKeyFields = 'code_p'
       LookupResultField = 'nom_p'
       KeyFields = 'code_p'
+      Size = 150
       Lookup = True
     end
     object Top5produittotalall: TFloatField
@@ -373,11 +376,13 @@ object DataModuleF: TDataModuleF
       'Database=PSDBConfig'
       'User_Name=postgres'
       'DriverID=pG')
+    Connected = True
     LoginPrompt = False
     Left = 77
     Top = 22
   end
   object UsersTable: TFDQuery
+    Active = True
     FilterOptions = [foCaseInsensitive]
     IndexFieldNames = 'code_ur'
     Connection = PSDBConfigConnection
@@ -463,8 +468,8 @@ object DataModuleF: TDataModuleF
     Connection = MainForm.GstockdcConnection
     SQL.Strings = (
       'SELECT * FROM produit WHERE (qut_p + qutini_p) <= 0')
-    Left = 712
-    Top = 242
+    Left = 854
+    Top = 252
     object PZeroQCnotifcode_p: TIntegerField
       FieldName = 'code_p'
       Origin = 'code_p'
@@ -681,8 +686,8 @@ object DataModuleF: TDataModuleF
         'SELECT * FROM produit WHERE (qut_p + qutini_p) <= qutmin_p AND q' +
         'utmin_p <> 0'
       '')
-    Left = 710
-    Top = 298
+    Left = 852
+    Top = 308
     object PCloseZeroQCnotifcode_p: TIntegerField
       FieldName = 'code_p'
       Origin = 'code_p'
@@ -898,8 +903,8 @@ object DataModuleF: TDataModuleF
       
         'SELECT * FROM produit WHERE (qut_p + qutini_p) >= qutmax_p AND q' +
         'utmax_p <> 0')
-    Left = 710
-    Top = 352
+    Left = 852
+    Top = 362
     object PMoreMaxQCnotifcode_p: TIntegerField
       FieldName = 'code_p'
       Origin = 'code_p'
@@ -1121,8 +1126,8 @@ object DataModuleF: TDataModuleF
       '      WHERE perissable_p = true '
       '  AND (dateperiss_p - current_date) <= alertdays_p'
       '  AND (qut_p + qutini_p) <> 0')
-    Left = 712
-    Top = 404
+    Left = 854
+    Top = 414
     object PCloseDiedCnotifcode_p: TIntegerField
       FieldName = 'code_p'
       Origin = 'code_p'
@@ -1176,33 +1181,33 @@ object DataModuleF: TDataModuleF
   object PDiedCnotif: TFDQuery
     OnCalcFields = PDiedCnotifCalcFields
     Connection = MainForm.GstockdcConnection
-    Left = 710
-    Top = 458
+    Left = 852
+    Top = 468
   end
   object PZeroQCnotifDS: TDataSource
     DataSet = PZeroQCnotif
-    Left = 824
-    Top = 240
+    Left = 966
+    Top = 250
   end
   object PCloseZeroQCnotifDS: TDataSource
     DataSet = PCloseZeroQCnotif
-    Left = 826
-    Top = 300
+    Left = 968
+    Top = 310
   end
   object PMoreMaxQCnotifDS: TDataSource
     DataSet = PMoreMaxQCnotif
-    Left = 830
-    Top = 350
+    Left = 972
+    Top = 360
   end
   object PCloseDiedCnotifDS: TDataSource
     DataSet = PCloseDiedCnotif
-    Left = 830
-    Top = 406
+    Left = 972
+    Top = 416
   end
   object PDiedCnotifDS: TDataSource
     DataSet = PDiedCnotif
-    Left = 830
-    Top = 458
+    Left = 972
+    Top = 468
   end
   object PerisablePListTable: TFDQuery
     Connection = MainForm.GstockdcConnection
@@ -1240,5 +1245,274 @@ object DataModuleF: TDataModuleF
       Origin = 'code_p'
       ReadOnly = True
     end
+  end
+  object ChargesTable: TFDQuery
+    FilterOptions = [foCaseInsensitive]
+    IndexFieldNames = 'code_ch'
+    Connection = MainForm.GstockdcConnection
+    SQL.Strings = (
+      'SELECT * FROM charges')
+    Left = 567
+    Top = 249
+    object ChargesTablecode_ch: TIntegerField
+      FieldName = 'code_ch'
+      Origin = 'code_ch'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+    end
+    object ChargesTablenom_ch: TWideStringField
+      FieldName = 'nom_ch'
+      Origin = 'nom_ch'
+      Size = 8190
+    end
+    object ChargesTabledate_ch: TDateField
+      FieldName = 'date_ch'
+      Origin = 'date_ch'
+    end
+    object ChargesTabletime_ch: TTimeField
+      FieldName = 'time_ch'
+      Origin = 'time_ch'
+    end
+    object ChargesTablemontht_ch: TCurrencyField
+      FieldName = 'montht_ch'
+      Origin = 'montht_ch'
+    end
+    object ChargesTableobser_ch: TWideMemoField
+      FieldName = 'obser_ch'
+      Origin = 'obser_ch'
+      BlobType = ftWideMemo
+    end
+    object ChargesTablemonttva_ch: TCurrencyField
+      FieldName = 'monttva_ch'
+      Origin = 'monttva_ch'
+    end
+    object ChargesTablemontttc_ch: TCurrencyField
+      FieldName = 'montttc_ch'
+      Origin = 'montttc_ch'
+    end
+    object ChargesTablenum_cheque_ch: TWideStringField
+      FieldName = 'num_cheque_ch'
+      Origin = 'num_cheque_ch'
+      Size = 8190
+    end
+    object ChargesTablecode_mdpai: TSmallintField
+      FieldName = 'code_mdpai'
+      Origin = 'code_mdpai'
+    end
+    object ChargesTablecode_cmpt: TSmallintField
+      FieldName = 'code_cmpt'
+      Origin = 'code_cmpt'
+    end
+    object ChargesTablecode_ur: TIntegerField
+      FieldName = 'code_ur'
+      Origin = 'code_ur'
+    end
+    object ChargesTabletimber_ch: TCurrencyField
+      FieldName = 'timber_ch'
+      Origin = 'timber_ch'
+    end
+    object ChargesTableCompte: TStringField
+      FieldKind = fkLookup
+      FieldName = 'Compte'
+      LookupDataSet = MainForm.CompteTable
+      LookupKeyFields = 'code_cmpt'
+      LookupResultField = 'nom_cmpt'
+      KeyFields = 'code_cmpt'
+      Size = 50
+      Lookup = True
+    end
+    object ChargesTablecode_cht: TSmallintField
+      FieldName = 'code_cht'
+      Origin = 'code_cht'
+    end
+    object ChargesTablecode_chst: TSmallintField
+      FieldName = 'code_chst'
+      Origin = 'code_chst'
+    end
+    object ChargesTableCHType: TStringField
+      FieldKind = fkLookup
+      FieldName = 'CHType'
+      LookupDataSet = Charge_typeTable
+      LookupKeyFields = 'code_cht'
+      LookupResultField = 'nom_cht'
+      KeyFields = 'code_cht'
+      Lookup = True
+    end
+    object ChargesTableCHSType: TStringField
+      FieldKind = fkLookup
+      FieldName = 'CHSType'
+      LookupDataSet = Charge_s_typeTable
+      LookupKeyFields = 'code_chst'
+      LookupResultField = 'nom_chst'
+      KeyFields = 'code_chst'
+      Lookup = True
+    end
+    object ChargesTablerefer_ch: TWideStringField
+      FieldName = 'refer_ch'
+      Origin = 'refer_ch'
+      Size = 8190
+    end
+    object ChargesTableAgent: TStringField
+      FieldKind = fkLookup
+      FieldName = 'Agent'
+      LookupDataSet = UsersTable
+      LookupKeyFields = 'code_ur'
+      LookupResultField = 'nom_ur'
+      KeyFields = 'code_ur'
+      Size = 50
+      Lookup = True
+    end
+  end
+  object Charge_typeTable: TFDQuery
+    FilterOptions = [foCaseInsensitive]
+    IndexFieldNames = 'code_cht'
+    Connection = MainForm.GstockdcConnection
+    SQL.Strings = (
+      'SELECT * FROM charge_type')
+    Left = 568
+    Top = 303
+    object Charge_typeTablecode_cht: TSmallintField
+      FieldName = 'code_cht'
+      Origin = 'code_cht'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+    end
+    object Charge_typeTablenom_cht: TWideStringField
+      FieldName = 'nom_cht'
+      Origin = 'nom_cht'
+      Size = 8190
+    end
+  end
+  object Charge_s_typeTable: TFDQuery
+    FilterOptions = [foCaseInsensitive]
+    IndexFieldNames = 'code_chst'
+    Connection = MainForm.GstockdcConnection
+    SQL.Strings = (
+      'SELECT * FROM charge_s_type')
+    Left = 568
+    Top = 352
+    object Charge_s_typeTablecode_chst: TSmallintField
+      FieldName = 'code_chst'
+      Origin = 'code_chst'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+    end
+    object Charge_s_typeTablenom_chst: TWideStringField
+      FieldName = 'nom_chst'
+      Origin = 'nom_chst'
+      Size = 8190
+    end
+  end
+  object PertesTable: TFDQuery
+    FilterOptions = [foCaseInsensitive]
+    IndexFieldNames = 'code_pr'
+    Connection = MainForm.GstockdcConnection
+    SQL.Strings = (
+      'SELECT * FROM pertes')
+    Left = 569
+    Top = 428
+    object PertesTablecode_pr: TIntegerField
+      FieldName = 'code_pr'
+      Origin = 'code_pr'
+    end
+    object PertesTabledate_pr: TDateField
+      FieldName = 'date_pr'
+      Origin = 'date_pr'
+    end
+    object PertesTabletime_pr: TTimeField
+      FieldName = 'time_pr'
+      Origin = 'time_pr'
+    end
+    object PertesTablecode_p: TIntegerField
+      FieldName = 'code_p'
+      Origin = 'code_p'
+    end
+    object PertesTablequt_p: TFloatField
+      FieldName = 'qut_p'
+      Origin = 'qut_p'
+    end
+    object PertesTablecond_p: TIntegerField
+      FieldName = 'cond_p'
+      Origin = 'cond_p'
+    end
+    object PertesTableprixht_p: TCurrencyField
+      FieldName = 'prixht_p'
+      Origin = 'prixht_p'
+    end
+    object PertesTabletva_p: TSmallintField
+      FieldName = 'tva_p'
+      Origin = 'tva_p'
+    end
+    object PertesTablecode_ur: TIntegerField
+      FieldName = 'code_ur'
+      Origin = 'code_ur'
+    end
+    object PertesTablecode_prt: TSmallintField
+      FieldName = 'code_prt'
+      Origin = 'code_prt'
+    end
+    object PertesTablePRType: TStringField
+      FieldKind = fkLookup
+      FieldName = 'PRType'
+      LookupDataSet = Perte_typeTable
+      LookupKeyFields = 'code_prt'
+      LookupResultField = 'nom_prt'
+      KeyFields = 'code_prt'
+      Lookup = True
+    end
+    object PertesTablenomp: TStringField
+      FieldKind = fkLookup
+      FieldName = 'nomp'
+      LookupDataSet = MainForm.ProduitTable
+      LookupKeyFields = 'code_p'
+      LookupResultField = 'nom_p'
+      KeyFields = 'code_p'
+      Lookup = True
+    end
+    object PertesTablereferp: TStringField
+      FieldKind = fkLookup
+      FieldName = 'referp'
+      LookupDataSet = MainForm.ProduitTable
+      LookupKeyFields = 'code_p'
+      LookupResultField = 'refer_p'
+      KeyFields = 'code_p'
+      Lookup = True
+    end
+    object PertesTableMontantHT: TCurrencyField
+      FieldKind = fkInternalCalc
+      FieldName = 'MontantHT'
+    end
+    object PertesTableMontantTVA: TCurrencyField
+      FieldKind = fkInternalCalc
+      FieldName = 'MontantTVA'
+    end
+    object PertesTableMontantTTC: TCurrencyField
+      FieldKind = fkInternalCalc
+      FieldName = 'MontantTTC'
+    end
+    object PertesTableAgent: TStringField
+      FieldKind = fkLookup
+      FieldName = 'Agent'
+      LookupDataSet = UsersTable
+      LookupKeyFields = 'code_ur'
+      LookupResultField = 'nom_ur'
+      KeyFields = 'code_ur'
+      Lookup = True
+    end
+    object PertesTablerefer_pr: TWideStringField
+      FieldName = 'refer_pr'
+      Origin = 'refer_pr'
+      Size = 8190
+    end
+    object PertesTablePrixATTC: TCurrencyField
+      FieldKind = fkInternalCalc
+      FieldName = 'PrixATTC'
+    end
+  end
+  object Perte_typeTable: TFDQuery
+    FilterOptions = [foCaseInsensitive]
+    IndexFieldNames = 'code_prt'
+    Connection = MainForm.GstockdcConnection
+    SQL.Strings = (
+      'SELECT * FROM perte_type')
+    Left = 571
+    Top = 478
   end
 end

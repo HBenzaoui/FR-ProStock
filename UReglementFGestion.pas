@@ -111,6 +111,13 @@ begin
   Close;
 
  end;
+
+ if key = #13 then
+begin
+ key := #0;
+ OKRegFGBtnClick(Sender);
+
+end;
 end;
 
 procedure TReglementFGestionF.CancelRegFGBtnClick(Sender: TObject);
@@ -286,13 +293,13 @@ begin
 
   end;
 
-  if key = #13 then
-
-begin
- key := #0;
- OKRegFGBtnClick(Sender);
-
-end;
+//  if key = #13 then
+//
+//begin
+// key := #0;
+// OKRegFGBtnClick(Sender);
+//
+//end;
 
 end;
 
@@ -349,7 +356,7 @@ begin
           MainForm.RegfournisseurTable.FieldValues['code_rf']:= CodeRF;
           MainForm.RegfournisseurTable.FieldValues['nom_rf']:= NumRegFGEdt.Caption;
           MainForm.RegfournisseurTable.FieldValues['code_f']:= MainForm.FournisseurTable.FieldByName('code_f').AsInteger;
-          MainForm.RegfournisseurTable.FieldValues['date_rf']:= DateOf(Today);
+          MainForm.RegfournisseurTable.FieldValues['date_rf']:= DateRegFGD.Date;
           MainForm.RegfournisseurTable.FieldValues['time_rf']:=TimeOf(Now);
           MainForm.RegfournisseurTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
           MainForm.RegfournisseurTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
@@ -384,8 +391,8 @@ begin
                 MainForm.RegfournisseurTable.Edit;
                 MainForm.RegfournisseurTable.FieldValues['nom_rf']:= NumRegFGEdt.Caption;
                 MainForm.RegfournisseurTable.FieldValues['code_f']:= MainForm.FournisseurTable.FieldByName('code_f').AsInteger;
-                MainForm.RegfournisseurTable.FieldValues['date_rf']:= DateOf(Today);
-                MainForm.RegfournisseurTable.FieldValues['time_rf']:=TimeOf(Now);
+//                MainForm.RegfournisseurTable.FieldValues['date_rf']:= DateOf(Today);
+//                MainForm.RegfournisseurTable.FieldValues['time_rf']:=TimeOf(Now);
                 MainForm.RegfournisseurTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
                 MainForm.RegfournisseurTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
                 MainForm.RegfournisseurTable.FieldValues['obser_rf']:= ReglementFGestionF.ObserRegFGMem.Text;
@@ -433,6 +440,9 @@ begin
           //--- this is for adding the money to the caisse----
          begin
 
+          if Tag = 0 then
+          begin
+         
           MainForm.Opt_cas_bnk_CaisseTable.DisableControls;
           MainForm.Opt_cas_bnk_CaisseTable.Active:=false;
           MainForm.Opt_cas_bnk_CaisseTable.SQL.Clear;
@@ -486,6 +496,68 @@ begin
             MainForm.Opt_cas_bnk_CaisseTable.SQL.Text:='SELECT * FROM opt_cas_bnk where nature_ocb = false' ;
             MainForm.Opt_cas_bnk_CaisseTable.Active:=True;
             MainForm.Opt_cas_bnk_CaisseTable.EnableControls;
+
+
+            end else
+                begin
+
+                 
+                  MainForm.Opt_cas_bnk_CaisseTable.DisableControls;
+                  MainForm.Opt_cas_bnk_CaisseTable.Active:=false;
+                  MainForm.Opt_cas_bnk_CaisseTable.SQL.Clear;
+                  MainForm.Opt_cas_bnk_CaisseTable.SQL.Text:='SELECT * FROM opt_cas_bnk' ;
+                  MainForm.Opt_cas_bnk_CaisseTable.Active:=True;
+
+
+                  if NOT (MainForm.Opt_cas_bnk_CaisseTable.IsEmpty) then
+                  begin
+                  MainForm.Opt_cas_bnk_CaisseTable.Last;
+                  CodeOCB:= MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ocb'] + 1;
+                  end else
+                      begin
+                       CodeOCB:= 1;
+                      end;
+
+                    MainForm.Opt_cas_bnk_CaisseTable.Edit;
+//                    MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ocb']:= CodeOCB;
+                    MainForm.Opt_cas_bnk_CaisseTable.FieldValues['date_ocb']:= DateOf(Today);
+                    MainForm.Opt_cas_bnk_CaisseTable.FieldValues['time_ocb']:= TimeOf(Now);;
+                    MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nom_ocb']:= 'Versement au Fournisseur Pièce N° '+ReglementFGestionF.NumRegFGEdt.Caption;
+                    MainForm.Opt_cas_bnk_CaisseTable.FieldValues['third_ocb']:= ReglementFGestionF.FournisseurRegFGCbx.Text;
+              //      MainForm.Opt_cas_bnk_CaisseTable.FieldValues['encaiss_ocb']:= StrToCurr(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll]));
+                   MainForm.Opt_cas_bnk_CaisseTable.FieldValues['decaiss_ocb']:= StrToCurr(StringReplace(VerRegFGEdt.Text, #32, '', [rfReplaceAll]));
+
+                     if (LowerCase(ReglementFGestionF.ModePaieRegFGCbx.Text)='espèce') OR (LowerCase(ReglementFGestionF.ModePaieRegFGCbx.Text)='espece') then
+                    begin
+                     MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=1 ;
+                    end;
+                     if (LowerCase(ReglementFGestionF.ModePaieRegFGCbx.Text)='chèque') OR (LowerCase(ReglementFGestionF.ModePaieRegFGCbx.Text)='cheque') then
+                    begin
+                     MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=2 ;
+                    end;
+                    if (LowerCase(ReglementFGestionF.ModePaieRegFGCbx.Text)='à terme' ) OR (LowerCase(ReglementFGestionF.ModePaieRegFGCbx.Text)='a terme' )
+                       OR (LowerCase(ReglementFGestionF.ModePaieRegFGCbx.Text)='À terme' ) then
+                    begin
+                     MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=3 ;
+                    end;
+
+                    MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_cmpt']:=MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
+                    MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nature_ocb']:= MainForm.CompteTable.FieldByName('nature_cmpt').AsBoolean;
+                    MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_rf']:= MainForm.RegfournisseurTable.FieldByName('code_rf').AsInteger;
+
+                    MainForm.Opt_cas_bnk_CaisseTable.Post;
+                    MainForm.Opt_cas_bnk_CaisseTable.Refresh;
+                    MainForm.Opt_cas_bnk_BankTable.Refresh;
+
+
+                    MainForm.Opt_cas_bnk_CaisseTable.Active:=false;
+                    MainForm.Opt_cas_bnk_CaisseTable.SQL.Clear;
+                    MainForm.Opt_cas_bnk_CaisseTable.SQL.Text:='SELECT * FROM opt_cas_bnk where nature_ocb = false' ;
+                    MainForm.Opt_cas_bnk_CaisseTable.Active:=True;
+                    MainForm.Opt_cas_bnk_CaisseTable.EnableControls;
+
+                  
+                end;
 
          end;
 
@@ -566,20 +638,20 @@ begin
 
 
 
-      MainForm.RegfournisseurTable.DisableControls;
-      MainForm.RegfournisseurTable.Active:=false;
-      MainForm.RegfournisseurTable.SQL.Clear;
-      MainForm.RegfournisseurTable.SQL.Text:='Select * FROM regfournisseur WHERE bon_or_no_rf = 1 AND code_f = '+ IntToStr( CodeF )+' ORDER BY code_rf '  ;
-      MainForm.RegfournisseurTable.Active:=True;
+      MainForm.SQLQuery.DisableControls;
+      MainForm.SQLQuery.Active:=false;
+      MainForm.SQLQuery.SQL.Clear;
+      MainForm.SQLQuery.SQL.Text:='Select * FROM regfournisseur WHERE bon_or_no_rf = 1 AND code_f = '+ IntToStr( CodeF )+' ORDER BY code_rf '  ;
+      MainForm.SQLQuery.Active:=True;
 
-     while NOT (MainForm.RegfournisseurTable.Eof) do
+     while NOT (MainForm.SQLQuery.Eof) do
      begin
-     RegFCreditF := RegFCreditF + MainForm.RegfournisseurTable.FieldValues['montver_rf'];
-     MainForm.RegfournisseurTable.Next;
+     RegFCreditF := RegFCreditF + MainForm.SQLQuery.FieldValues['montver_rf'];
+     MainForm.SQLQuery.Next;
      end;
 
 
-      if NOT (MainForm.Bona_recTableCredit.IsEmpty ) OR NOT (MainForm.RegfournisseurTable.IsEmpty ) OR NOT (OLDCreditFINI = 0) then
+      if NOT (MainForm.Bona_recTableCredit.IsEmpty ) OR NOT (MainForm.SQLQuery.IsEmpty ) OR NOT (OLDCreditFINI = 0) then
       begin
        MainForm.Bona_recTableCredit.last;
        RegFGFourOLDCredit.Caption:= CurrToStrF(((OLDCreditC - RegFCreditF) + OLDCreditFINI),ffNumber,2) ;
@@ -603,11 +675,8 @@ begin
       MainForm.FournisseurTable.EnableControls;
 
 
-      MainForm.RegfournisseurTable.Active:=false;
-      MainForm.RegfournisseurTable.SQL.Clear;
-      MainForm.RegfournisseurTable.SQL.Text:='Select * FROM regfournisseur '  ;
-      MainForm.RegfournisseurTable.Active:=True;
-      MainForm.RegfournisseurTable.EnableControls;
+      MainForm.SQLQuery.Active:=false;
+      MainForm.SQLQuery.SQL.Clear;
 
     end else
     begin

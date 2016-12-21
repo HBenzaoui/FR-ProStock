@@ -514,7 +514,7 @@ begin
      end;
 
 
-     if (key = #13) AND (NameUserGEdt.Text <>'') AND (PassUserGEdt.Text <> '') AND (PassChkUserGEdt.Text<> '') then
+     if (key = #13)  then
      begin
      key := #0;
 

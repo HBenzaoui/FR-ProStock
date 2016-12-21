@@ -727,6 +727,8 @@ object BankListF: TBankListF
       Text = 'Tous'
       OnChange = BankListCbxChange
       OnDropDown = BankListCbxDropDown
+      OnExit = BankListCbxExit
+      OnMouseLeave = BankListCbxExit
       Items.Strings = (
         'Tous')
     end

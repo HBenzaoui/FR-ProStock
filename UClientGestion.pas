@@ -268,11 +268,11 @@ begin
     Close;
   end;
   // ---- jump to the next edit when i press enter-----//
-  if Key = #13 then
-  begin
-    Key := #0;
-    SelectNext(ActiveControl as TWinControl, true, true);
-  end;
+//  if Key = #13 then
+//  begin
+//    Key := #0;
+//    SelectNext(ActiveControl as TWinControl, true, true);
+//  end;
 
 end;
 
@@ -872,6 +872,13 @@ begin
   CancelClientGBtnClick(Sender);
 
  end;
+
+  if key = #13 then
+   begin
+   key := #0;
+   OKClientGBtnClick(Sender);
+
+  end;
 end;
 
 procedure TClientGestionF.FormCreate(Sender: TObject);

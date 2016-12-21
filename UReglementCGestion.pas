@@ -112,6 +112,14 @@ begin
   Close;
 
  end;
+
+ if key = #13 then
+
+  begin
+   key := #0;
+   OKRegCGBtnClick(Sender);
+
+  end;
 end;
 
 procedure TReglementCGestionF.CancelRegCGBtnClick(Sender: TObject);
@@ -288,21 +296,21 @@ begin
       MainForm.Bonv_livTableCredit.EnableControls;
 
 
-      MainForm.RegclientTable.DisableControls;
-      MainForm.RegclientTable.Active:=false;
-      MainForm.RegclientTable.SQL.Clear;
-      MainForm.RegclientTable.SQL.Text:='Select * FROM regclient WHERE bon_or_no_rc = 1 AND code_c = '+ IntToStr( CodeC )+' ORDER BY code_rc '  ;
-      MainForm.RegclientTable.Active:=True;
+      MainForm.SQLQuery.DisableControls;
+      MainForm.SQLQuery.Active:=false;
+      MainForm.SQLQuery.SQL.Clear;
+      MainForm.SQLQuery.SQL.Text:='Select * FROM regclient WHERE bon_or_no_rc = 1 AND code_c = '+ IntToStr( CodeC )+' ORDER BY code_rc '  ;
+      MainForm.SQLQuery.Active:=True;
 
-     while NOT (MainForm.RegclientTable.Eof) do
+     while NOT (MainForm.SQLQuery.Eof) do
      begin
-     RegCCreditC := RegCCreditC + MainForm.RegclientTable.FieldValues['montver_rc'];
-     MainForm.RegclientTable.Next;
+     RegCCreditC := RegCCreditC + MainForm.SQLQuery.FieldValues['montver_rc'];
+     MainForm.SQLQuery.Next;
      end;
 
 
 
-      if NOT (MainForm.Bonv_livTableCredit.IsEmpty ) OR NOT (MainForm.RegclientTable.IsEmpty) OR NOT (OLDCreditCINI = 0)  then
+      if NOT (MainForm.Bonv_livTableCredit.IsEmpty ) OR NOT (MainForm.SQLQuery.IsEmpty) OR NOT (OLDCreditCINI = 0)  then
       begin
        MainForm.Bonv_livTableCredit.last;
        RegCGClientOLDCredit.Caption:= CurrToStrF(((OLDCreditC - RegCCreditC) + OLDCreditCINI ),ffNumber,2) ;
@@ -321,11 +329,8 @@ begin
 
 
 
-            MainForm.RegclientTable.Active:=false;
-      MainForm.RegclientTable.SQL.Clear;
-      MainForm.RegclientTable.SQL.Text:='Select * FROM regclient '  ;
-      MainForm.RegclientTable.Active:=True;
-      MainForm.RegclientTable.EnableControls;
+      MainForm.SQLQuery.Active:=false;
+      MainForm.SQLQuery.SQL.Clear;
 
       MainForm.ClientTable.Active:=false;
       MainForm.ClientTable.SQL.Clear;
@@ -364,15 +369,6 @@ begin
   begin
 
     key :=  #44;
-
-  end;
-
-
-if key = #13 then
-
-  begin
-   key := #0;
-   OKRegCGBtnClick(Sender);
 
   end;
 
@@ -455,7 +451,7 @@ begin
             MainForm.RegclientTable.FieldValues['code_rc']:= CodeRF;
             MainForm.RegclientTable.FieldValues['nom_rc']:= NumRegCGEdt.Caption;
             MainForm.RegclientTable.FieldValues['code_c']:= MainForm.ClientTable.FieldByName('code_c').AsInteger;
-            MainForm.RegclientTable.FieldValues['date_rc']:= DateOf(Today);
+            MainForm.RegclientTable.FieldValues['date_rc']:= DateRegCGD.Date;;
             MainForm.RegclientTable.FieldValues['time_rc']:=TimeOf(Now);
             MainForm.RegclientTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
             MainForm.RegclientTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
@@ -491,8 +487,8 @@ begin
 //                MainForm.RegclientTable.FieldValues['code_rc']:= CodeRF;
                   MainForm.RegclientTable.FieldValues['nom_rc']:= NumRegCGEdt.Caption;
                   MainForm.RegclientTable.FieldValues['code_c']:= MainForm.ClientTable.FieldByName('code_c').AsInteger;
-                  MainForm.RegclientTable.FieldValues['date_rc']:= DateOf(Today);
-                  MainForm.RegclientTable.FieldValues['time_rc']:=TimeOf(Now);
+//                  MainForm.RegclientTable.FieldValues['date_rc']:= DateOf(Today);
+//                  MainForm.RegclientTable.FieldValues['time_rc']:=TimeOf(Now);
                   MainForm.RegclientTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
                   MainForm.RegclientTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
                   MainForm.RegclientTable.FieldValues['obser_rc']:= ReglementCGestionF.ObserRegCGMem.Text;

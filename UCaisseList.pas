@@ -118,6 +118,7 @@ type
     procedure N0TVA1Click(Sender: TObject);
     procedure ClearTVAFilterPMenuClick(Sender: TObject);
     procedure ClearFilterBVLivPMenuClick(Sender: TObject);
+    procedure CaisseListCbxExit(Sender: TObject);
   private
     procedure GettingData;
     procedure FilteredColor;
@@ -333,6 +334,12 @@ begin
      end;
      CaisseListCbx.Items.Add('Tous');
 
+end;
+
+procedure TCaisseListF.CaisseListCbxExit(Sender: TObject);
+begin
+if CaisseListCbx.ItemIndex = -1 then
+   CaisseListCbx.ItemIndex := CaisseListCbx.Items.Count -1;
 end;
 
 procedure TCaisseListF.CaisseListDBGridEhDrawColumnCell(Sender: TObject;

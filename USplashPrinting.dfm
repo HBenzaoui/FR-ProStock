@@ -127,13 +127,13 @@ object FSplashPrinting: TFSplashPrinting
     ShowHint = True
     Spacing = -1
     OnClick = OKFPrintingBtnClick
-    Version = '1.6.1.1'
+    Version = '1.6.1.2'
     ExplicitTop = 259
     TMSStyle = 0
   end
   object PrintFPrintingBtn: TsSpeedButton
     Left = 507
-    Top = 205
+    Top = 204
     Width = 27
     Height = 27
     Cursor = crHandPoint
@@ -142,8 +142,8 @@ object FSplashPrinting: TFSplashPrinting
     ShowHint = True
     OnClick = PrintFPrintingBtnClick
     SkinData.SkinSection = 'SPEEDBUTTON'
-    Images = MainForm.PanelIcons24
     ImageIndex = 48
+    Images = MainForm.PanelIcons24
   end
   object SetDeafultFPrintingBtn: TAdvToolButton
     Left = 323
@@ -176,7 +176,7 @@ object FSplashPrinting: TFSplashPrinting
     Spacing = -1
     Visible = False
     OnClick = SetDeafultFPrintingBtnClick
-    Version = '1.6.1.1'
+    Version = '1.6.1.2'
     TMSStyle = 0
   end
   object PrintTicketfrxPreview: TfrxPreview
@@ -243,7 +243,7 @@ object FSplashPrinting: TFSplashPrinting
     Font.Style = []
     ItemIndex = 0
     ParentFont = False
-    TabOrder = 2
+    TabOrder = 3
     Text = '40X20 Code 128 avec prix'
     OnChange = FormatFPrintingCbxChange
     Items.Strings = (
@@ -271,7 +271,7 @@ object FSplashPrinting: TFSplashPrinting
     ParentCtl3D = False
     ParentDoubleBuffered = False
     ParentFont = False
-    TabOrder = 0
+    TabOrder = 1
     StyleElements = [seClient, seBorder]
     OnChange = TitleFPrintingEdtChange
   end
@@ -287,7 +287,7 @@ object FSplashPrinting: TFSplashPrinting
     Font.Name = 'Helvetica LT Std'
     Font.Style = []
     ParentFont = False
-    TabOrder = 1
+    TabOrder = 2
   end
   object PrixFPrintingCbx: TComboBox
     Left = 145
@@ -302,7 +302,7 @@ object FSplashPrinting: TFSplashPrinting
     Font.Style = []
     ItemIndex = 0
     ParentFont = False
-    TabOrder = 3
+    TabOrder = 4
     Text = 'Prix D'#233'tail'
     OnChange = PrixFPrintingCbxChange
     Items.Strings = (
@@ -326,14 +326,14 @@ object FSplashPrinting: TFSplashPrinting
     Font.Style = []
     NumbersOnly = True
     ParentFont = False
-    TabOrder = 4
+    TabOrder = 0
     Text = '1'
     MaxValue = 0
     MinValue = 1
     Value = 1
   end
   object PrintTicketfrxRprt: TfrxReport
-    Version = '5.4.6'
+    Version = '5.5'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     Preview = PrintTicketfrxPreview
@@ -530,7 +530,7 @@ object FSplashPrinting: TFSplashPrinting
     Top = 56
   end
   object frxReport2: TfrxReport
-    Version = '5.4.6'
+    Version = '5.5'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     Preview = PrintTicketfrxPreview
@@ -641,7 +641,7 @@ object FSplashPrinting: TFSplashPrinting
     end
   end
   object frxReport1: TfrxReport
-    Version = '5.4.6'
+    Version = '5.5'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     Preview = PrintTicketfrxPreview
@@ -771,7 +771,7 @@ object FSplashPrinting: TFSplashPrinting
     end
   end
   object frxReport3: TfrxReport
-    Version = '5.4.6'
+    Version = '5.5'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     Preview = PrintTicketfrxPreview
@@ -887,7 +887,7 @@ object FSplashPrinting: TFSplashPrinting
     end
   end
   object frxReport4: TfrxReport
-    Version = '5.4.6'
+    Version = '5.5'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     Preview = PrintTicketfrxPreview

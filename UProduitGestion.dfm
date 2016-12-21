@@ -49,10 +49,6 @@ object ProduitGestionF: TProduitGestionF
       Caption = 'G'#233'n'#233'ral'
       SkinData.CustomColor = False
       SkinData.CustomFont = False
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object GeneralTB: TPanel
         Left = 0
         Top = 0
@@ -880,7 +876,7 @@ object ProduitGestionF: TProduitGestionF
         object RequiredRefProduitGlbl: TLabel
           Left = 109
           Top = -2
-          Width = 180
+          Width = 149
           Height = 15
           AutoSize = False
           Caption = 'R'#233'ference Produit Existe D'#233'ja !!'
@@ -1661,10 +1657,6 @@ object ProduitGestionF: TProduitGestionF
       Caption = 'Plus D'#39'info'
       SkinData.CustomColor = False
       SkinData.CustomFont = False
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object PlusInfoTB: TPanel
         Left = 0
         Top = 0

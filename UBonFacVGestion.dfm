@@ -3031,7 +3031,7 @@ object BonFacVGestionF: TBonFacVGestionF
           Top = 3.559060000000000000
           Width = 147.401574800000000000
           Height = 18.897650000000000000
-          DataField = 'MontantHT'
+          DataField = 'prixvd_p'
           DataSet = frxBonFacVPListDB
           DataSetName = 'frxBonFacVPListDB'
           DisplayFormat.FormatStr = '%2.2n'
@@ -3043,7 +3043,7 @@ object BonFacVGestionF: TBonFacVGestionF
           Font.Style = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonFacVPListDB."MontantHT"]')
+            '[frxBonFacVPListDB."prixvd_p"]')
           ParentFont = False
           VAlign = vaCenter
         end

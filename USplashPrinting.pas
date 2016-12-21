@@ -150,6 +150,12 @@ begin
   OKFPrintingBtnClick(Sender);
 
  end;
+ 
+   if key = #13 then
+  begin
+   key := #0;
+   PrintFPrintingBtnClick(Sender);
+  end;
 end;
 
 procedure TFSplashPrinting.FormatFPrintingCbxChange(Sender: TObject);

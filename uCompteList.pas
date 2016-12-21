@@ -66,6 +66,11 @@ begin
       Close;
 
      end;
+  if key = #13 then
+  begin
+   key := #0;
+   OKAddCompteSBtnClick(Sender);
+  end;
 end;
 
 procedure TCompteListF.FormShow(Sender: TObject);

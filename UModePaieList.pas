@@ -323,11 +323,15 @@ procedure TModePaieListF.FormKeyPress(Sender: TObject; var Key: Char);
 begin
      if key = #27 then
      begin
-     key := #0;
-
+      key := #0;
       Close;
-
      end;
+
+  if key = #13 then
+  begin
+   key := #0;
+   OKAddUniteSBtnClick(Sender);
+  end;
 
 end;
 
