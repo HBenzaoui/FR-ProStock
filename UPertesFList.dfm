@@ -772,6 +772,7 @@ object PertesFListF: TPertesFListF
       ParentFont = False
       TabOrder = 8
       StyleElements = []
+      OnClick = ResherchPerteRdioBtnClick
     end
     object ResherchPerteRdioBtn: TRadioButton
       Left = 72
@@ -790,6 +791,7 @@ object PertesFListF: TPertesFListF
       TabOrder = 9
       TabStop = True
       StyleElements = []
+      OnClick = ResherchPerteRdioBtnClick
     end
     object Panel4: TPanel
       Left = 1075
@@ -834,7 +836,11 @@ object PertesFListF: TPertesFListF
       ParentFont = False
       TabOrder = 11
       Text = 'Tous'
+      OnChange = TypePerteListCbxChange
       OnDropDown = TypePerteListCbxDropDown
+      OnEnter = TypePerteListCbxDropDown
+      OnExit = TypePerteListCbxExit
+      OnMouseLeave = TypePerteListCbxExit
       Items.Strings = (
         'Tous')
     end

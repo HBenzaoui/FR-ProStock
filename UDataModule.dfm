@@ -317,7 +317,6 @@ object DataModuleF: TDataModuleF
     end
   end
   object Top5produit: TFDQuery
-    Active = True
     Connection = MainForm.GstockdcConnection
     SQL.Strings = (
       '-- This quiery will select the top 5 seled prudect '
@@ -1248,6 +1247,7 @@ object DataModuleF: TDataModuleF
     end
   end
   object ChargesTable: TFDQuery
+    Active = True
     FilterOptions = [foCaseInsensitive]
     IndexFieldNames = 'code_ch'
     Connection = MainForm.GstockdcConnection
@@ -1364,6 +1364,7 @@ object DataModuleF: TDataModuleF
     end
   end
   object Charge_typeTable: TFDQuery
+    Active = True
     FilterOptions = [foCaseInsensitive]
     IndexFieldNames = 'code_cht'
     Connection = MainForm.GstockdcConnection
@@ -1383,6 +1384,7 @@ object DataModuleF: TDataModuleF
     end
   end
   object Charge_s_typeTable: TFDQuery
+    Active = True
     FilterOptions = [foCaseInsensitive]
     IndexFieldNames = 'code_chst'
     Connection = MainForm.GstockdcConnection

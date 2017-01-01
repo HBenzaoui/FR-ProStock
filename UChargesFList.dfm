@@ -1390,14 +1390,14 @@ object ChargesFListF: TChargesFListF
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 42576.399521435200000000
-    ReportOptions.LastChange = 42663.582383182870000000
+    ReportOptions.LastChange = 42737.053941643520000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       ''
       'begin'
       ''
       'end.')
-    Left = 224
+    Left = 526
     Top = 296
     Datasets = <
       item
@@ -1508,14 +1508,14 @@ object ChargesFListF: TChargesFListF
           Frame.Typ = [ftBottom]
           HAlign = haCenter
           Memo.UTF8W = (
-            #201'tat liste de reglement Clients')
+            #201'tat liste de Charges')
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo2: TfrxMemoView
-          Left = 189.000000000000000000
+          Left = 113.409400000000000000
           Top = 60.313571820000000000
-          Width = 132.283550000000000000
+          Width = 86.929190000000000000
           Height = 28.174678180000000000
           AllowExpressions = False
           Font.Charset = DEFAULT_CHARSET
@@ -1531,7 +1531,7 @@ object ChargesFListF: TChargesFListF
         end
         object Memo5: TfrxMemoView
           Top = 60.313571820000000000
-          Width = 189.181200000000000000
+          Width = 113.385826770000000000
           Height = 28.174678180000000000
           AllowExpressions = False
           Font.Charset = DEFAULT_CHARSET
@@ -1542,7 +1542,7 @@ object ChargesFListF: TChargesFListF
           Fill.BackColor = 13948116
           HAlign = haCenter
           Memo.UTF8W = (
-            'N'#176' De Pi'#233'ce')
+            'N'#176' De Charge')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -1563,9 +1563,9 @@ object ChargesFListF: TChargesFListF
           VAlign = vaCenter
         end
         object Memo3: TfrxMemoView
-          Left = 450.716921100000000000
+          Left = 200.079011100000000000
           Top = 60.313571820000000000
-          Width = 306.346630000000000000
+          Width = 238.315090000000000000
           Height = 28.174678180000000000
           AllowExpressions = False
           Font.Charset = DEFAULT_CHARSET
@@ -1576,32 +1576,14 @@ object ChargesFListF: TChargesFListF
           Fill.BackColor = 13948116
           HAlign = haCenter
           Memo.UTF8W = (
-            'Client')
-          ParentFont = False
-          VAlign = vaCenter
-        end
-        object Memo6: TfrxMemoView
-          Left = 318.590551180000000000
-          Top = 60.313571820000000000
-          Width = 132.488250000000000000
-          Height = 28.174678180000000000
-          AllowExpressions = False
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -11
-          Font.Name = 'Gotham Rounded Light'
-          Font.Style = [fsBold]
-          Fill.BackColor = 13948116
-          HAlign = haCenter
-          Memo.UTF8W = (
-            'Houre')
+            'D'#233'signation')
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo8: TfrxMemoView
-          Left = 851.669921100000000000
+          Left = 671.220941100000000000
           Top = 60.313571820000000000
-          Width = 196.740260000000000000
+          Width = 94.488188980000000000
           Height = 28.174678180000000000
           AllowExpressions = False
           Font.Charset = DEFAULT_CHARSET
@@ -1612,14 +1594,50 @@ object ChargesFListF: TChargesFListF
           Fill.BackColor = 13948116
           HAlign = haCenter
           Memo.UTF8W = (
-            'Montant')
+            'Montant HT')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo15: TfrxMemoView
+          Left = 437.732691100000000000
+          Top = 60.472480000000000000
+          Width = 117.370130000000000000
+          Height = 28.174678180000000000
+          AllowExpressions = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Gotham Rounded Light'
+          Font.Style = [fsBold]
+          Fill.BackColor = 13948116
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'Type de Charge')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo17: TfrxMemoView
+          Left = 554.677651100000000000
+          Top = 60.472480000000000000
+          Width = 117.370130000000000000
+          Height = 28.174678180000000000
+          AllowExpressions = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Gotham Rounded Light'
+          Font.Style = [fsBold]
+          Fill.BackColor = 13948116
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'S.Type de Charge')
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo10: TfrxMemoView
-          Left = 754.733001100000000000
-          Top = 60.313571820000000000
-          Width = 98.472480000000000000
+          Left = 764.913891100000000000
+          Top = 60.472480000000000000
+          Width = 94.488188980000000000
           Height = 28.174678180000000000
           AllowExpressions = False
           Font.Charset = DEFAULT_CHARSET
@@ -1630,7 +1648,43 @@ object ChargesFListF: TChargesFListF
           Fill.BackColor = 13948116
           HAlign = haCenter
           Memo.UTF8W = (
-            'Modalit'#233)
+            'Montant TVA')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo22: TfrxMemoView
+          Left = 858.402141100000000000
+          Top = 60.472480000000000000
+          Width = 94.488188980000000000
+          Height = 28.174678180000000000
+          AllowExpressions = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Gotham Rounded Light'
+          Font.Style = [fsBold]
+          Fill.BackColor = 13948116
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'Timber')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo6: TfrxMemoView
+          Left = 951.299791100000000000
+          Top = 60.472480000000000000
+          Width = 94.488188980000000000
+          Height = 28.174678180000000000
+          AllowExpressions = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Gotham Rounded Light'
+          Font.Style = [fsBold]
+          Fill.BackColor = 13948116
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'Montant TTC')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -1713,11 +1767,11 @@ object ChargesFListF: TChargesFListF
           Frame.Color = 13948116
         end
         object frxBonLivDBnum_bvfac: TfrxMemoView
-          Left = 189.000000000000000000
+          Left = 113.409400000000000000
           Top = 0.779530000000000000
-          Width = 131.149601420000000000
+          Width = 85.795241420000000000
           Height = 18.897650000000000000
-          DataField = 'date_rc'
+          DataField = 'date_ch'
           DataSet = frxChargeListDB
           DataSetName = 'frxChargeListDB'
           DisplayFormat.FormatStr = 'mm/dd/yyyy'
@@ -1729,16 +1783,16 @@ object ChargesFListF: TChargesFListF
           Font.Style = []
           HAlign = haCenter
           Memo.UTF8W = (
-            '[frxChargeListDB."date_rc"]')
+            '[frxChargeListDB."date_ch"]')
           ParentFont = False
           VAlign = vaCenter
         end
         object frxBonLivDBclientbvfac: TfrxMemoView
-          Left = 20.000000000000000000
+          Left = 9.102350000000000000
           Top = 0.779530000000000000
-          Width = 170.456871100000000000
+          Width = 102.047236770000000000
           Height = 18.897650000000000000
-          DataField = 'nom_rc'
+          DataField = 'refer_ch'
           DataSet = frxChargeListDB
           DataSetName = 'frxChargeListDB'
           Font.Charset = DEFAULT_CHARSET
@@ -1747,16 +1801,16 @@ object ChargesFListF: TChargesFListF
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
           Memo.UTF8W = (
-            '[frxChargeListDB."nom_rc"]')
+            '[frxChargeListDB."refer_ch"]')
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo4: TfrxMemoView
-          Left = 450.543600000000000000
+          Left = 199.905690000000000000
           Top = 0.779530000000000000
-          Width = 306.519951100000000000
+          Width = 238.488411100000000000
           Height = 18.897650000000000000
-          DataField = 'ClientrRC'
+          DataField = 'nom_ch'
           DataSet = frxChargeListDB
           DataSetName = 'frxChargeListDB'
           Font.Charset = DEFAULT_CHARSET
@@ -1766,36 +1820,16 @@ object ChargesFListF: TChargesFListF
           Font.Style = []
           HAlign = haCenter
           Memo.UTF8W = (
-            '[frxChargeListDB."ClientrRC"]')
-          ParentFont = False
-          VAlign = vaCenter
-        end
-        object Memo7: TfrxMemoView
-          Left = 318.590551180000000000
-          Top = 0.779530000000000000
-          Width = 132.661405120000000000
-          Height = 18.897650000000000000
-          DataField = 'time_rc'
-          DataSet = frxChargeListDB
-          DataSetName = 'frxChargeListDB'
-          DisplayFormat.FormatStr = 'hh:mm:ss'
-          DisplayFormat.Kind = fkDateTime
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Helvetica LT Std'
-          Font.Style = []
-          HAlign = haCenter
-          Memo.UTF8W = (
-            '[frxChargeListDB."time_rc"]')
+            '[frxChargeListDB."nom_ch"]')
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo9: TfrxMemoView
-          Left = 851.496600000000000000
+          Left = 671.047620000000000000
           Top = 0.779530000000000000
-          Width = 196.913415120000000000
+          Width = 94.488188980000000000
           Height = 18.897650000000000000
+          DataField = 'montht_ch'
           DataSet = frxChargeListDB
           DataSetName = 'frxChargeListDB'
           DisplayFormat.FormatStr = '%2.2n'
@@ -1807,16 +1841,16 @@ object ChargesFListF: TChargesFListF
           Font.Style = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxRegCListDB."montver_rc"]')
+            '[frxChargeListDB."montht_ch"]')
           ParentFont = False
           VAlign = vaCenter
         end
-        object Memo11: TfrxMemoView
-          Left = 754.559680000000000000
-          Top = 0.779530000000000000
-          Width = 98.645801100000000000
+        object Memo16: TfrxMemoView
+          Left = 437.559370000000000000
+          Top = 0.938438180000000000
+          Width = 117.543451100000000000
           Height = 18.897650000000000000
-          DataField = 'MP'
+          DataField = 'CHType'
           DataSet = frxChargeListDB
           DataSetName = 'frxChargeListDB'
           Font.Charset = DEFAULT_CHARSET
@@ -1826,7 +1860,89 @@ object ChargesFListF: TChargesFListF
           Font.Style = []
           HAlign = haCenter
           Memo.UTF8W = (
-            '[frxChargeListDB."MP"]')
+            '[frxChargeListDB."CHType"]')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo19: TfrxMemoView
+          Left = 554.504330000000000000
+          Top = 0.938438180000000000
+          Width = 117.543451100000000000
+          Height = 18.897650000000000000
+          DataField = 'CHSType'
+          DataSet = frxChargeListDB
+          DataSetName = 'frxChargeListDB'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = []
+          HAlign = haCenter
+          Memo.UTF8W = (
+            '[frxChargeListDB."CHSType"]')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo11: TfrxMemoView
+          Left = 764.740570000000000000
+          Top = 0.938438180000000000
+          Width = 94.488188980000000000
+          Height = 18.897650000000000000
+          DataField = 'monttva_ch'
+          DataSet = frxChargeListDB
+          DataSetName = 'frxChargeListDB'
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[frxChargeListDB."monttva_ch"]')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo23: TfrxMemoView
+          Left = 859.228820000000000000
+          Top = 0.938438180000000000
+          Width = 94.488188980000000000
+          Height = 18.897650000000000000
+          DataField = 'timber_ch'
+          DataSet = frxChargeListDB
+          DataSetName = 'frxChargeListDB'
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[frxChargeListDB."timber_ch"]')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo7: TfrxMemoView
+          Left = 952.126470000000000000
+          Top = 0.938438180000000000
+          Width = 94.488188980000000000
+          Height = 18.897650000000000000
+          DataField = 'montttc_ch'
+          DataSet = frxChargeListDB
+          DataSetName = 'frxChargeListDB'
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[frxChargeListDB."montttc_ch"]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -1837,9 +1953,9 @@ object ChargesFListF: TChargesFListF
         Top = 211.653680000000000000
         Width = 1046.929810000000000000
         object Memo18: TfrxMemoView
-          Left = 851.189550000000000000
+          Left = 671.047620000000000000
           Top = 0.377952760000000000
-          Width = 196.913415120000000000
+          Width = 94.488188980000000000
           Height = 26.456710000000000000
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
@@ -1851,12 +1967,12 @@ object ChargesFListF: TChargesFListF
           Fill.BackColor = 13948116
           HAlign = haRight
           Memo.UTF8W = (
-            '[SUM(<frxRegCListDB."montver_rc">,MasterData1)]')
+            '[SUM(<frxChargeListDB."montht_ch">,MasterData1)]')
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo20: TfrxMemoView
-          Left = 760.740570000000000000
+          Left = 580.559370000000000000
           Top = 0.377952760000000000
           Width = 90.708720000000000000
           Height = 26.456710000000000000
@@ -1900,6 +2016,63 @@ object ChargesFListF: TChargesFListF
           ParentFont = False
           VAlign = vaCenter
         end
+        object Memo21: TfrxMemoView
+          Left = 764.913891100000000000
+          Top = 0.536860940000000000
+          Width = 94.488188980000000000
+          Height = 26.456710000000000000
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = [fsBold]
+          Fill.BackColor = 13948116
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[SUM(<frxChargeListDB."monttva_ch">,MasterData1)]')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo24: TfrxMemoView
+          Left = 859.228820000000000000
+          Top = 0.536860940000000000
+          Width = 94.488188980000000000
+          Height = 26.456710000000000000
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = [fsBold]
+          Fill.BackColor = 13948116
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[SUM(<frxChargeListDB."timber_ch">,MasterData1)]')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo25: TfrxMemoView
+          Left = 952.126470000000000000
+          Top = 0.536860940000000000
+          Width = 94.488188980000000000
+          Height = 26.456710000000000000
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = [fsBold]
+          Fill.BackColor = 13948116
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[SUM(<frxChargeListDB."montttc_ch">,MasterData1)]')
+          ParentFont = False
+          VAlign = vaCenter
+        end
       end
     end
   end
@@ -1920,12 +2093,13 @@ object ChargesFListF: TChargesFListF
       'code_cmpt=code_cmpt'
       'code_ur=code_ur'
       'timber_ch=timber_ch'
-      'Agent=Agent'
       'Compte=Compte'
       'code_cht=code_cht'
       'code_chst=code_chst'
       'CHType=CHType'
-      'CHSType=CHSType')
+      'CHSType=CHSType'
+      'refer_ch=refer_ch'
+      'Agent=Agent')
     DataSource = ChargeListDataS
     BCDToCurrency = False
     Left = 248

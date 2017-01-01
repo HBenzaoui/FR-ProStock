@@ -923,14 +923,8 @@ var  CodeCB : Integer;
 begin
 
  //----------- Searching in databese-------------------//
-      MainForm.SQLQuery.Active:=False;
-      MainForm.SQLQuery.SQL.Clear;
-      MainForm.SQLQuery.SQL.Text:='SELECT nom_cb,code_p FROM codebarres WHERE nom_cb LIKE ' +''+ QuotedStr( ResearchProduitsEdt.Text )+'' ;
-      MainForm.SQLQuery.Active:=True;
-      if MainForm.SQLQuery.FieldValues['code_p'] <> null then
-     begin
-      CodeCB:=MainForm.SQLQuery.FieldValues['code_p'];
-     end;
+
+
     if ResherchPARDesProduitsRdioBtn.Checked then
     if (ResearchProduitsEdt.text <> '') then
     begin
@@ -946,6 +940,14 @@ begin
   if ResherchPARDCodProduitsRdioBtn.Checked then
     if (ResearchProduitsEdt.text <> '') then
     begin
+      MainForm.SQLQuery.Active:=False;
+      MainForm.SQLQuery.SQL.Clear;
+      MainForm.SQLQuery.SQL.Text:='SELECT nom_cb,code_p FROM codebarres WHERE nom_cb LIKE ' +''+ QuotedStr( ResearchProduitsEdt.Text )+'' ;
+      MainForm.SQLQuery.Active:=True;
+      if MainForm.SQLQuery.FieldValues['code_p'] <> null then
+     begin
+      CodeCB:=MainForm.SQLQuery.FieldValues['code_p'];
+     end;
       MainForm.ProduitTable.Filtered := false;
       MainForm.ProduitTable.Filter := '[codebar_p] LIKE ' + quotedstr('%' + ResearchProduitsEdt.Text + '%')  + ' OR [code_p] = '+ IntToStr(CodeCB) ;
       MainForm.ProduitTable.Filtered := True;
@@ -954,7 +956,8 @@ begin
     begin
       MainForm.ProduitTable.Filtered := false;
     end;
-
+   MainForm.SQLQuery.Active:=False;
+   MainForm.SQLQuery.SQL.Clear;
 end;
 
 procedure TProduitsListF.ResearchProduitsEdtKeyPress(Sender: TObject; var Key: Char);

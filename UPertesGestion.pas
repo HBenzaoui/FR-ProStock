@@ -578,21 +578,24 @@ begin
      begin
      PrixHTTotalPerteGEdt.Text   := FloatToStrF((NEWPAHT),ffNumber,14,2);   
      PrixTTCTotalPerteGEdt.Text  := FloatToStrF((NEWPATTC),ffNumber,14,2);  
-     PerteGNEWStockEdt.Text := FloatToStrF((StrToFloat(PerteGOLDStockEdt.Text)-StrToFloat(QuantityPerteGEdt.Text) ),ffNumber,14,2);
-     end else
+     if PerteGOLDStockEdt.Text<>'' then
+     PerteGNEWStockEdt.Text := FloatToStrF((StrToFloat(StringReplace(PerteGOLDStockEdt.Text, #32, '', [rfReplaceAll]))-StrToFloat(StringReplace(QuantityPerteGEdt.Text, #32, '', [rfReplaceAll])) ),ffNumber,14,2);
+     end else                                         
          begin
            PrixHTTotalPerteGEdt.Text   := FloatToStrF((NEWPAHT),ffNumber,14,2);   
            PrixTTCTotalPerteGEdt.Text  := FloatToStrF((NEWPATTC),ffNumber,14,2);  
-           PerteGNEWStockEdt.Text := FloatToStrF((StrToFloat(PerteGOLDStockEdt.Text)-StrToFloat(QuantityPerteGEdt.Text) ),ffNumber,14,2); 
+           if PerteGOLDStockEdt.Text<>'' then
+           PerteGNEWStockEdt.Text := FloatToStrF((StrToFloat(StringReplace(PerteGOLDStockEdt.Text, #32, '', [rfReplaceAll]))-StrToFloat(StringReplace(QuantityPerteGEdt.Text, #32, '', [rfReplaceAll])) ),ffNumber,14,2); 
          end;
-      
+                                                                 
    end else
        begin
         PrixHTTotalPerteGEdt.Text   := FloatToStrF(0,ffNumber,14,2);   
         PrixTTCTotalPerteGEdt.Text  := FloatToStrF(0,ffNumber,14,2);  
-        PerteGNEWStockEdt.Text := FloatToStrF((StrToFloat(PerteGOLDStockEdt.Text)),ffNumber,14,2)  
+        if PerteGOLDStockEdt.Text<>'' then
+        PerteGNEWStockEdt.Text := FloatToStrF((StrToFloat(StringReplace(PerteGOLDStockEdt.Text, #32, '', [rfReplaceAll]))),ffNumber,14,2)  
        end;
-
+                                                          
  if (NamePerteGCbx.Text <> '')  then  
  begin
      OKPerteGBtn.Enabled := true;

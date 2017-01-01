@@ -62,6 +62,9 @@ type
       Shift: TShiftState);
     procedure DeleteBARecBtnClick(Sender: TObject);
     procedure PertesListDBGridEhKeyPress(Sender: TObject; var Key: Char);
+    procedure TypePerteListCbxChange(Sender: TObject);
+    procedure TypePerteListCbxExit(Sender: TObject);
+    procedure ResherchPerteRdioBtnClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -294,8 +297,111 @@ DataModuleF.PertesTable.Prior;
 end;
 
 procedure TPertesFListF.ResearchPerteEdtChange(Sender: TObject);
+Var CodeCB : Integer;
 begin
-//
+ //----------- Searching in databese-------------------//
+
+ TypePerteListCbx.ItemIndex  := TypePerteListCbx.Items.Count -1;
+ TypePerteListCbx.Repaint;
+
+    if ResearchPerteEdt.Text<>'' then
+    begin
+
+      if ResherchPerteRdioBtn.Checked then
+      begin
+
+
+          DataModuleF.PertesTable.DisableControls;
+          DataModuleF.PertesTable.Active:=False;
+          DataModuleF.PertesTable.SQL.Clear;
+          DataModuleF.PertesTable.SQL.Text:='SELECT * FROM pertes WHERE code_p IN( SELECT code_p FROM produit WHERE LOWER(nom_p) LIKE LOWER' +'('''+'%'+(ResearchPerteEdt.Text)+'%'+''')' +')';
+          DataModuleF.PertesTable.Active:=True;
+          DataModuleF.PertesTable.EnableControls;
+
+
+      end;
+      if ResherchPerteNumBRdioBtn.Checked then
+      begin
+          MainForm.SQLQuery.Active:=False;
+          MainForm.SQLQuery.SQL.Clear;
+          MainForm.SQLQuery.SQL.Text:='SELECT code_p,codebar_p FROM produit WHERE codebar_p LIKE ' +''+ QuotedStr( ResearchPerteEdt.Text )+' GROUP BY code_p,codebar_p' ;
+          MainForm.SQLQuery.Active:=True;
+          if NOT MainForm.SQLQuery.IsEmpty then
+          begin
+           CodeCB:=MainForm.SQLQuery.FieldValues['code_p'];
+          end else
+              begin
+                MainForm.SQLQuery.Active:=False;
+                MainForm.SQLQuery.SQL.Clear;
+                MainForm.SQLQuery.SQL.Text:='SELECT nom_cb,code_p FROM codebarres WHERE nom_cb LIKE ' +''+ QuotedStr( ResearchPerteEdt.Text )+'' ;
+                MainForm.SQLQuery.Active:=True;
+                if NOT MainForm.SQLQuery.IsEmpty then
+                begin
+                 CodeCB:=MainForm.SQLQuery.FieldValues['code_p'];
+                end
+              end;
+          
+        DataModuleF.PertesTable.DisableControls;
+        DataModuleF.PertesTable.Active:=False;
+        DataModuleF.PertesTable.SQL.Clear;
+        DataModuleF.PertesTable.SQL.Text:='SELECT * FROM pertes WHERE code_p = ' + IntToStr(CodeCB) ;
+        DataModuleF.PertesTable.Active:=True;
+        DataModuleF.PertesTable.EnableControls;
+      end;
+
+    end else
+     begin
+        DataModuleF.PertesTable.DisableControls;
+        DataModuleF.PertesTable.Active:=False;
+        DataModuleF.PertesTable.SQL.Clear;
+        DataModuleF.PertesTable.SQL.Text:='SELECT * FROM pertes ' ;
+        DataModuleF.PertesTable.Active:=True;
+        DataModuleF.PertesTable.EnableControls;
+
+     end;
+
+    MainForm.SQLQuery.Active:=False;
+   MainForm.SQLQuery.SQL.Clear;
+end;
+
+procedure TPertesFListF.ResherchPerteRdioBtnClick(Sender: TObject);
+begin
+ResearchPerteEdt.Clear;
+ResearchPerteEdt.SetFocus;
+end;
+
+procedure TPertesFListF.TypePerteListCbxChange(Sender: TObject);
+
+Var
+CodeTPR : Integer;
+begin
+if (TypePerteListCbx.Text <> 'Tous')  then
+  begin
+
+               DataModuleF.Perte_typeTable.DisableControls;
+               DataModuleF.Perte_typeTable.Active:=False;
+               DataModuleF.Perte_typeTable.SQL.Clear;
+               DataModuleF.Perte_typeTable.SQL.Text:='select * FROM perte_type where LOWER(nom_prt) LIKE LOWER('''+TypePerteListCbx.Text+''')';
+               DataModuleF.Perte_typeTable.Active:=True;
+               CodeTPR:=DataModuleF.Perte_typeTable.FieldByName('code_prt').AsInteger;
+               DataModuleF.Perte_typeTable.EnableControls;
+
+  
+               DataModuleF.PertesTable.DisableControls;
+               DataModuleF.PertesTable.Active:=False;
+               DataModuleF.PertesTable.SQL.Clear;
+               DataModuleF.PertesTable.SQL.Text:='select * FROM pertes where code_prt = '+ IntToStr(CodeTPR);
+               DataModuleF.PertesTable.Active:=True;
+               DataModuleF.PertesTable.EnableControls;
+  end else
+      begin
+               DataModuleF.PertesTable.DisableControls;
+               DataModuleF.PertesTable.Active:=False;
+               DataModuleF.PertesTable.SQL.Clear;
+               DataModuleF.PertesTable.SQL.Text:='select * FROM pertes ';
+               DataModuleF.PertesTable.Active:=True;
+               DataModuleF.PertesTable.EnableControls;
+      end;
 end;
 
 procedure TPertesFListF.TypePerteListCbxDropDown(Sender: TObject);
@@ -319,6 +425,12 @@ I : Integer;
       end;
 
       TypePerteListCbx.Items.Add('Tous');
+end;
+
+procedure TPertesFListF.TypePerteListCbxExit(Sender: TObject);
+begin
+if TypePerteListCbx.ItemIndex = -1 then
+   TypePerteListCbx.ItemIndex := TypePerteListCbx.Items.Count -1;
 end;
 
 end.
