@@ -48,6 +48,7 @@ object BonCtrGestionF: TBonCtrGestionF
     Font.Height = -11
     Font.Name = 'Tahoma'
     Font.Style = []
+    FrozenCols = 2
     GridLineParams.DataHorzLines = True
     GridLineParams.DataVertLines = True
     HorzScrollBar.ExtraPanel.NavigatorButtons = [nbFirstEh, nbPriorEh, nbNextEh, nbLastEh, nbRefreshEh]

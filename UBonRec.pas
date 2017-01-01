@@ -72,6 +72,7 @@ type
     ClearMPFilterBVLivPMenu: TMenuItem;
     N5: TMenuItem;
     ClearFilterBVLivPMenu: TMenuItem;
+    SumGirdBARecBtn: TAdvToolButton;
     procedure AddBARecBtnClick(Sender: TObject);
     procedure FisrtBARecbtnClick(Sender: TObject);
     procedure LastBARecbtnClick(Sender: TObject);
@@ -105,6 +106,7 @@ type
     procedure VirmentMPFilterBVLivPMenuClick(Sender: TObject);
     procedure ClearMPFilterBVLivPMenuClick(Sender: TObject);
     procedure ClearFilterBVLivPMenuClick(Sender: TObject);
+    procedure SumGirdBARecBtnClick(Sender: TObject);
 
   private
     procedure GettingData;
@@ -1226,6 +1228,19 @@ Select_Valid_Virment;
      Select_NOT_Regle; 
     end;
   end;
+end;
+
+procedure TBonRecF.SumGirdBARecBtnClick(Sender: TObject);
+begin
+  if SumGirdBARecBtn.Tag = 0 then
+  begin
+    BARecListDBGridEh.FooterRowCount:=1;
+    SumGirdBARecBtn.Tag := 1;
+  end else
+      begin
+        BARecListDBGridEh.FooterRowCount:=0;
+        SumGirdBARecBtn.Tag := 0;
+      end;
 end;
 
 procedure TBonRecF.ATermeMPFilterBVLivPMenuClick(Sender: TObject);

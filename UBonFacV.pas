@@ -70,6 +70,7 @@ type
     ClearMPFilterBVLivPMenu: TMenuItem;
     N5: TMenuItem;
     ClearFilterBVLivPMenu: TMenuItem;
+    SumGirdBBVFacBtn: TAdvToolButton;
     procedure AddBVFacBtnClick(Sender: TObject);
     procedure DateStartBVFacDChange(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -100,6 +101,7 @@ type
     procedure VirmentMPFilterBVLivPMenuClick(Sender: TObject);
     procedure ClearMPFilterBVLivPMenuClick(Sender: TObject);
     procedure ClearFilterBVLivPMenuClick(Sender: TObject);
+    procedure SumGirdBBVFacBtnClick(Sender: TObject);
   private
     procedure GettingData;
     procedure FilteredColor;
@@ -1115,6 +1117,19 @@ BonFacVfrxRprt.Export(frxPDFExport1);
 
 
 MainForm.Bonv_facTable.EnableControls;
+end;
+
+procedure TBonFacVF.SumGirdBBVFacBtnClick(Sender: TObject);
+begin
+  if SumGirdBBVFacBtn.Tag = 0 then
+  begin
+    BVFacListDBGridEh.FooterRowCount:=1;
+    SumGirdBBVFacBtn.Tag := 1;
+  end else
+      begin
+        BVFacListDBGridEh.FooterRowCount:=0;
+        SumGirdBBVFacBtn.Tag := 0;
+      end;
 end;
 
 procedure TBonFacVF.ValideFilterBVLivPMenuClick(Sender: TObject);

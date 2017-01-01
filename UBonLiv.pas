@@ -70,6 +70,7 @@ type
     ClearRegleFilterBVLivPMenu: TMenuItem;
     RegleFilterBVLivPMenu: TMenuItem;
     sImage6: TsImage;
+    SumGirdBBVlivBtn: TAdvToolButton;
     procedure ResearchBVLivEdtChange(Sender: TObject);
     procedure FisrtBARecbtnClick(Sender: TObject);
     procedure PreviosBARecbtnClick(Sender: TObject);
@@ -104,6 +105,7 @@ type
     procedure VirmentMPFilterBVLivPMenuClick(Sender: TObject);
     procedure ClearMPFilterBVLivPMenuClick(Sender: TObject);
     procedure BVLivListDBGridEhSortMarkingChanged(Sender: TObject);
+    procedure SumGirdBBVlivBtnClick(Sender: TObject);
   private
     procedure GettingData;
     procedure Select_ALL;
@@ -1087,6 +1089,19 @@ BonLivfrxRprt.Export(frxPDFExport1);
 
 
 MainForm.Bonv_livTable.EnableControls;
+end;
+
+procedure TBonLivF.SumGirdBBVlivBtnClick(Sender: TObject);
+begin
+  if SumGirdBBVlivBtn.Tag = 0 then
+  begin
+    BVlivListDBGridEh.FooterRowCount:=1;
+    SumGirdBBVlivBtn.Tag := 1;
+  end else
+      begin
+        BVlivListDBGridEh.FooterRowCount:=0;
+        SumGirdBBVlivBtn.Tag := 0;
+      end;
 end;
 
 procedure TBonLivF.ValideFilterBVLivPMenuClick(Sender: TObject);

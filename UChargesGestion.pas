@@ -97,7 +97,7 @@ implementation
 {$R *.dfm}
 
 uses System.DateUtils,Winapi.MMSystem,Data.DB,
-UMainF, UDataModule, USplashAddUnite;
+UMainF, UDataModule, USplashAddUnite, USplash;
 
 procedure TChargesGestionF.AddSousTypeChargeGBtnClick(Sender: TObject);
 begin
@@ -250,14 +250,6 @@ GrayForms  ;
     if tag = 0 then
     begin
     DateChargeGD.Date:=EncodeDate (YearOf(Now),MonthOf(Now),DayOf(Now));
-//    RegFGFourOLDCredit.Caption :=      FloatToStrF(StrToFloat(RegFGFourOLDCredit.Caption),ffNumber,14,2) ;
-//    RegFGFourNEWCredit.Caption :=      FloatToStrF(StrToFloat(RegFGFourNEWCredit.Caption),ffNumber,14,2) ;
-    end;
-
-    if Tag = 1 then
-    begin
-//      FournisseurRegFGCbxChange(Sender);
-//      ReglementFGestionF.VerRegFGEdt.SetFocus;
     end;
 end;
 
@@ -896,6 +888,20 @@ begin
            DataModuleF.Charge_typeTable.Refresh;
            DataModuleF.Charge_s_typeTable.Refresh;
            DataModuleF.ChargesTable.Refresh;
+
+
+          begin
+            FSplash := TFSplash.Create(ChargesGestionF);
+            try
+              FSplash.Left := Screen.Width div 2 - (FSplash.Width div 2);
+              FSplash.Top := 0;
+              AnimateWindow(FSplash.Handle, 150, AW_VER_POSITIVE OR AW_SLIDE OR  AW_ACTIVATE);
+              sleep(250);
+              AnimateWindow(FSplash.Handle, 150, AW_VER_NEGATIVE OR AW_SLIDE OR AW_HIDE);
+            finally
+              FSplash.free;
+            end;
+          end;
 
           sndPlaySound('C:\Windows\Media\speech on.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
           Close;

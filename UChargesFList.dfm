@@ -914,11 +914,12 @@ object ChargesFListF: TChargesFListF
     FixedColor = clWindow
     Font.Charset = DEFAULT_CHARSET
     Font.Color = 4207405
-    Font.Height = -16
-    Font.Name = 'Helvetica LT Std'
+    Font.Height = 18
+    Font.Name = 'Segoe UI'
     Font.Style = []
     FooterRowCount = 1
     FooterParams.FillStyle = cfstSolidEh
+    FrozenCols = 1
     GridLineParams.DataHorzLines = True
     GridLineParams.DataVertLines = True
     HorzScrollBar.ExtraPanel.NavigatorButtons = [nbFirstEh, nbPriorEh, nbNextEh, nbLastEh, nbRefreshEh]
@@ -937,7 +938,7 @@ object ChargesFListF: TChargesFListF
     ParentFont = False
     ParentShowHint = False
     RowDetailPanel.Color = clBtnFace
-    RowHeight = 30
+    RowHeight = 25
     SearchPanel.FilterOnTyping = True
     ShowHint = True
     SumList.Active = True
@@ -966,6 +967,11 @@ object ChargesFListF: TChargesFListF
         DynProps = <>
         EditButtons = <>
         FieldName = 'refer_ch'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 16
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
         Footers = <>
         Layout = tlCenter
         ReadOnly = True
@@ -984,32 +990,56 @@ object ChargesFListF: TChargesFListF
       end
       item
         Alignment = taCenter
+        DisplayFormat = 'DD/MM/YYYY'
         DynProps = <>
         EditButtons = <>
         FieldName = 'date_ch'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 16
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
         Footers = <>
         Layout = tlCenter
         ReadOnly = True
         Title.Alignment = taCenter
         Title.Caption = 'Date'
         Title.EndEllipsis = True
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = 4207405
+        Title.Font.Height = 18
+        Title.Font.Name = 'Helvetica LT Std'
+        Title.Font.Style = []
+        Title.Font.Quality = fqProof
         Title.ToolTips = True
-        Width = 113
+        Width = 90
         WordWrap = False
       end
       item
         Alignment = taCenter
+        DisplayFormat = 'HH:MM:SS'
         DynProps = <>
         EditButtons = <>
         FieldName = 'time_ch'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 16
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
         Footers = <>
         Layout = tlCenter
         ReadOnly = True
         Title.Alignment = taCenter
         Title.Caption = 'Heure'
         Title.EndEllipsis = True
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = 4207405
+        Title.Font.Height = 18
+        Title.Font.Name = 'Helvetica LT Std'
+        Title.Font.Style = []
+        Title.Font.Quality = fqProof
         Title.ToolTips = True
-        Width = 132
+        Width = 100
         WordWrap = False
       end
       item
@@ -1017,8 +1047,8 @@ object ChargesFListF: TChargesFListF
         EditButtons = <>
         FieldName = 'nom_ch'
         Font.Charset = DEFAULT_CHARSET
-        Font.Color = clBlack
-        Font.Height = 18
+        Font.Color = 4207405
+        Font.Height = 16
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
         Footers = <>
@@ -1026,8 +1056,14 @@ object ChargesFListF: TChargesFListF
         Title.Alignment = taCenter
         Title.Caption = 'D'#233'signation'
         Title.EndEllipsis = True
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = 4207405
+        Title.Font.Height = 18
+        Title.Font.Name = 'Helvetica LT Std'
+        Title.Font.Style = []
+        Title.Font.Quality = fqProof
         Title.ToolTips = True
-        Width = 300
+        Width = 250
         WordWrap = False
       end
       item
@@ -1037,14 +1073,20 @@ object ChargesFListF: TChargesFListF
         FieldName = 'CHType'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
-        Font.Height = 18
+        Font.Height = 16
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
         Footers = <>
         Layout = tlCenter
         Title.Alignment = taCenter
         Title.Caption = 'Type de Charge'
-        Width = 200
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = 4207405
+        Title.Font.Height = 18
+        Title.Font.Name = 'Helvetica LT Std'
+        Title.Font.Style = []
+        Title.Font.Quality = fqProof
+        Width = 180
         WordWrap = False
       end
       item
@@ -1054,13 +1096,18 @@ object ChargesFListF: TChargesFListF
         FieldName = 'CHSType'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
-        Font.Height = 18
+        Font.Height = 16
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
         Footers = <
           item
             Alignment = taRightJustify
-            Color = 14276563
+            Color = 15722984
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = 4207405
+            Font.Height = 18
+            Font.Name = 'Helvetica LT Std'
+            Font.Style = [fsBold]
             Value = 'Total:'
             ValueType = fvtStaticText
           end>
@@ -1068,8 +1115,14 @@ object ChargesFListF: TChargesFListF
         Title.Alignment = taCenter
         Title.Caption = 'Sous Type de Charge'
         Title.EndEllipsis = True
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = 4207405
+        Title.Font.Height = 18
+        Title.Font.Name = 'Helvetica LT Std'
+        Title.Font.Style = []
+        Title.Font.Quality = fqProof
         Title.ToolTips = True
-        Width = 200
+        Width = 180
         WordWrap = False
       end
       item
@@ -1077,9 +1130,14 @@ object ChargesFListF: TChargesFListF
         DynProps = <>
         EditButtons = <>
         FieldName = 'code_mdpai'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 16
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
         Footers = <
           item
-            Color = 14276563
+            Color = 15722984
           end>
         ImageList = MainForm.GridIconsMP20
         KeyList.Strings = (
@@ -1091,6 +1149,12 @@ object ChargesFListF: TChargesFListF
         ReadOnly = True
         Title.Alignment = taCenter
         Title.Caption = 'MP'
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = 4207405
+        Title.Font.Height = 18
+        Title.Font.Name = 'Helvetica LT Std'
+        Title.Font.Style = []
+        Title.Font.Quality = fqProof
         Width = 28
         WordWrap = False
       end
@@ -1100,30 +1164,32 @@ object ChargesFListF: TChargesFListF
         EditButtons = <>
         FieldName = 'montht_ch'
         Font.Charset = DEFAULT_CHARSET
-        Font.Color = clBlack
-        Font.Height = 24
-        Font.Name = 'Segoe UI'
+        Font.Color = 4207405
+        Font.Height = 16
+        Font.Name = 'Helvetica LT Std'
         Font.Style = []
         Footers = <
           item
-            Color = 14276563
-            DisplayFormat = '#,##0.00'
+            Color = 15722984
             FieldName = 'montht_ch'
             Font.Charset = DEFAULT_CHARSET
             Font.Color = 4207405
-            Font.Height = 22
-            Font.Name = 'Segoe UI'
+            Font.Height = 18
+            Font.Name = 'Helvetica LT Std'
             Font.Style = [fsBold]
             ValueType = fvtSum
-          end
-          item
-            FieldName = 'decaiss_ocb'
           end>
         Layout = tlCenter
         MinWidth = 150
         Title.Alignment = taCenter
         Title.Caption = 'Montant HT'
         Title.EndEllipsis = True
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = 4207405
+        Title.Font.Height = 18
+        Title.Font.Name = 'Helvetica LT Std'
+        Title.Font.Style = []
+        Title.Font.Quality = fqProof
         Title.ToolTips = True
         Width = 150
         WordWrap = False
@@ -1134,30 +1200,32 @@ object ChargesFListF: TChargesFListF
         EditButtons = <>
         FieldName = 'monttva_ch'
         Font.Charset = DEFAULT_CHARSET
-        Font.Color = clBlack
-        Font.Height = 24
-        Font.Name = 'Segoe UI'
+        Font.Color = 4207405
+        Font.Height = 16
+        Font.Name = 'Helvetica LT Std'
         Font.Style = []
         Footers = <
           item
-            Color = 14276563
-            DisplayFormat = '#,##0.00'
+            Color = 15722984
             FieldName = 'monttva_ch'
             Font.Charset = DEFAULT_CHARSET
             Font.Color = 4207405
-            Font.Height = 22
-            Font.Name = 'Segoe UI'
+            Font.Height = 18
+            Font.Name = 'Helvetica LT Std'
             Font.Style = [fsBold]
             ValueType = fvtSum
-          end
-          item
-            ValueType = fvtFieldValue
           end>
         Layout = tlCenter
         MinWidth = 150
         Title.Alignment = taCenter
         Title.Caption = 'Montant TVA'
         Title.EndEllipsis = True
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = 4207405
+        Title.Font.Height = 18
+        Title.Font.Name = 'Helvetica LT Std'
+        Title.Font.Style = []
+        Title.Font.Quality = fqProof
         Title.ToolTips = True
         Width = 150
         WordWrap = False
@@ -1169,29 +1237,30 @@ object ChargesFListF: TChargesFListF
         FieldName = 'timber_ch'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
-        Font.Height = 24
-        Font.Name = 'Segoe UI'
+        Font.Height = 16
+        Font.Name = 'Helvetica LT Std'
         Font.Style = []
         Footers = <
           item
-            Color = 14276563
-            DisplayFormat = '#,##0.00'
+            Color = 15722984
             FieldName = 'timber_ch'
             Font.Charset = DEFAULT_CHARSET
             Font.Color = 4207405
-            Font.Height = 22
-            Font.Name = 'Segoe UI'
+            Font.Height = 18
+            Font.Name = 'Helvetica LT Std'
             Font.Style = [fsBold]
             ValueType = fvtSum
-          end
-          item
-            FieldName = 'timber_ch'
-            ValueType = fvtFieldValue
           end>
         Layout = tlCenter
         MinWidth = 150
         Title.Alignment = taCenter
         Title.Caption = 'Timber Fiscal'
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = 4207405
+        Title.Font.Height = 18
+        Title.Font.Name = 'Helvetica LT Std'
+        Title.Font.Style = []
+        Title.Font.Quality = fqProof
         Width = 150
         WordWrap = False
       end
@@ -1202,18 +1271,17 @@ object ChargesFListF: TChargesFListF
         FieldName = 'montttc_ch'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
-        Font.Height = 24
-        Font.Name = 'Segoe UI'
+        Font.Height = 16
+        Font.Name = 'Helvetica LT Std'
         Font.Style = []
         Footers = <
           item
-            Color = 14276563
-            DisplayFormat = '#,##0.00'
+            Color = 15722984
             FieldName = 'montttc_ch'
             Font.Charset = DEFAULT_CHARSET
             Font.Color = 4207405
-            Font.Height = 22
-            Font.Name = 'Segoe UI'
+            Font.Height = 18
+            Font.Name = 'Helvetica LT Std'
             Font.Style = [fsBold]
             ValueType = fvtSum
           end>
@@ -1221,8 +1289,14 @@ object ChargesFListF: TChargesFListF
         Title.Alignment = taCenter
         Title.Caption = 'Montant TTC'
         Title.EndEllipsis = True
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = 4207405
+        Title.Font.Height = 18
+        Title.Font.Name = 'Helvetica LT Std'
+        Title.Font.Style = []
+        Title.Font.Quality = fqProof
         Title.ToolTips = True
-        Width = 130
+        Width = 150
         WordWrap = False
       end
       item
@@ -1232,7 +1306,7 @@ object ChargesFListF: TChargesFListF
         FieldName = 'Compte'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
-        Font.Height = 18
+        Font.Height = 16
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
         Footers = <>
@@ -1240,6 +1314,12 @@ object ChargesFListF: TChargesFListF
         MinWidth = 150
         Title.Alignment = taCenter
         Title.EndEllipsis = True
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = 4207405
+        Title.Font.Height = 18
+        Title.Font.Name = 'Helvetica LT Std'
+        Title.Font.Style = []
+        Title.Font.Quality = fqProof
         Title.ToolTips = True
         Width = 200
         WordWrap = False
@@ -1249,12 +1329,23 @@ object ChargesFListF: TChargesFListF
         DynProps = <>
         EditButtons = <>
         FieldName = 'MontantRes'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 16
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
         Footers = <>
         Layout = tlCenter
         MinWidth = 150
         Title.Alignment = taCenter
         Title.Caption = 'Montant Reste'
         Title.EndEllipsis = True
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = 4207405
+        Title.Font.Height = 18
+        Title.Font.Name = 'Helvetica LT Std'
+        Title.Font.Style = []
+        Title.Font.Quality = fqProof
         Title.ToolTips = True
         Visible = False
         Width = 150
@@ -1267,12 +1358,18 @@ object ChargesFListF: TChargesFListF
         FieldName = 'Agent'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
-        Font.Height = 18
+        Font.Height = 16
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
         Footers = <>
         Layout = tlCenter
         Title.Alignment = taCenter
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = 4207405
+        Title.Font.Height = 18
+        Title.Font.Name = 'Helvetica LT Std'
+        Title.Font.Style = []
+        Title.Font.Quality = fqProof
         Width = 150
         WordWrap = False
       end>

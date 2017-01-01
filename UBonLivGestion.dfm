@@ -1273,6 +1273,7 @@ object BonLivGestionF: TBonLivGestionF
     Font.Height = -11
     Font.Name = 'Tahoma'
     Font.Style = []
+    FrozenCols = 2
     GridLineParams.DataHorzLines = True
     GridLineParams.DataVertLines = True
     HorzScrollBar.ExtraPanel.NavigatorButtons = [nbFirstEh, nbPriorEh, nbNextEh, nbLastEh, nbRefreshEh]
@@ -1292,7 +1293,7 @@ object BonLivGestionF: TBonLivGestionF
     ParentFont = False
     ParentShowHint = False
     RowDetailPanel.Color = clBtnFace
-    RowHeight = 35
+    RowHeight = 30
     SearchPanel.FilterOnTyping = True
     ShowHint = False
     TabOrder = 2
@@ -1359,7 +1360,7 @@ object BonLivGestionF: TBonLivGestionF
         Title.Font.Name = 'Helvetica LT Std'
         Title.Font.Style = []
         Title.Font.Quality = fqProof
-        Width = 500
+        Width = 450
       end
       item
         Alignment = taCenter

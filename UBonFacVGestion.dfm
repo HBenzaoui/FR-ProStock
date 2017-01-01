@@ -1319,6 +1319,7 @@ object BonFacVGestionF: TBonFacVGestionF
     Font.Height = 19
     Font.Name = 'Helvetica LT Std'
     Font.Style = []
+    FrozenCols = 2
     GridLineParams.DataHorzLines = True
     GridLineParams.DataVertLines = True
     HorzScrollBar.ExtraPanel.NavigatorButtons = [nbFirstEh, nbPriorEh, nbNextEh, nbLastEh, nbRefreshEh]
@@ -1338,7 +1339,7 @@ object BonFacVGestionF: TBonFacVGestionF
     ParentFont = False
     ParentShowHint = False
     RowDetailPanel.Color = clBtnFace
-    RowHeight = 35
+    RowHeight = 30
     SearchPanel.FilterOnTyping = True
     ShowHint = True
     TabOrder = 2
@@ -1365,6 +1366,11 @@ object BonFacVGestionF: TBonFacVGestionF
         DynProps = <>
         EditButtons = <>
         FieldName = 'referp'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 18
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
         Footers = <>
         Layout = tlCenter
         ReadOnly = True
@@ -1384,6 +1390,11 @@ object BonFacVGestionF: TBonFacVGestionF
         DynProps = <>
         EditButtons = <>
         FieldName = 'nomp'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 18
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
         Footers = <>
         Layout = tlCenter
         ReadOnly = True
@@ -1396,7 +1407,7 @@ object BonFacVGestionF: TBonFacVGestionF
         Title.Font.Name = 'Helvetica LT Std'
         Title.Font.Style = []
         Title.Font.Quality = fqProof
-        Width = 500
+        Width = 450
         WordWrap = False
       end
       item
@@ -1505,6 +1516,11 @@ object BonFacVGestionF: TBonFacVGestionF
         DynProps = <>
         EditButtons = <>
         FieldName = 'tvap'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 18
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
         Footers = <>
         Layout = tlCenter
         ReadOnly = True

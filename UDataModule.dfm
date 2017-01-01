@@ -317,6 +317,7 @@ object DataModuleF: TDataModuleF
     end
   end
   object Top5produit: TFDQuery
+    Active = True
     Connection = MainForm.GstockdcConnection
     SQL.Strings = (
       '-- This quiery will select the top 5 seled prudect '
@@ -1401,6 +1402,7 @@ object DataModuleF: TDataModuleF
     end
   end
   object PertesTable: TFDQuery
+    OnCalcFields = PertesTableCalcFields
     FilterOptions = [foCaseInsensitive]
     IndexFieldNames = 'code_pr'
     Connection = MainForm.GstockdcConnection
@@ -1427,10 +1429,6 @@ object DataModuleF: TDataModuleF
     object PertesTablequt_p: TFloatField
       FieldName = 'qut_p'
       Origin = 'qut_p'
-    end
-    object PertesTablecond_p: TIntegerField
-      FieldName = 'cond_p'
-      Origin = 'cond_p'
     end
     object PertesTableprixht_p: TCurrencyField
       FieldName = 'prixht_p'
@@ -1504,6 +1502,11 @@ object DataModuleF: TDataModuleF
     object PertesTablePrixATTC: TCurrencyField
       FieldKind = fkInternalCalc
       FieldName = 'PrixATTC'
+    end
+    object PertesTableobser_pr: TWideMemoField
+      FieldName = 'obser_pr'
+      Origin = 'obser_pr'
+      BlobType = ftWideMemo
     end
   end
   object Perte_typeTable: TFDQuery

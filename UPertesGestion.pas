@@ -37,7 +37,7 @@ type
     RefPerteGLbl: TLabel;
     NumPerteGEdt: TLabel;
     DatePerteGD: TDateTimePicker;
-    ObserPerteMem: TMemo;
+    ObserPerteGMem: TMemo;
     LineP: TPanel;
     BottomP: TPanel;
     OKPerteGBtn: TAdvToolButton;
@@ -52,13 +52,17 @@ type
     RequiredStarPerteGLbl: TLabel;
     Label3: TLabel;
     Label4: TLabel;
-    PrixHTPerteGEdt: TEdit;
-    PrixTTCPerteGEdt: TEdit;
+    PrixHTTotalPerteGEdt: TEdit;
+    PrixTTCTotalPerteGEdt: TEdit;
     AddProduitPerteGBtn: TAdvToolButton;
     QuantityPerteGEdt: TEdit;
     QuantityPerteGErrorP: TPanel;
     RequiredQuantityPerteGlbl: TLabel;
     Label7: TLabel;
+    Label6: TLabel;
+    PrixHTPerteGEdt: TEdit;
+    Label8: TLabel;
+    PrixTTCPerteGEdt: TEdit;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
@@ -75,6 +79,8 @@ type
     procedure NamePerteGCbxExit(Sender: TObject);
     procedure AddTypePerteGBtnClick(Sender: TObject);
     procedure AddProduitPerteGBtnClick(Sender: TObject);
+    procedure ListAddProduitPerteGBtnClick(Sender: TObject);
+    procedure QuantityPerteGEdtEnter(Sender: TObject);
   private
     { Private declarations }
      CodeP,TVAP : Integer;
@@ -92,7 +98,7 @@ implementation
 {$R *.dfm}
 
 uses System.DateUtils,Winapi.MMSystem,Data.DB, System.Contnrs,
-UMainF, UDataModule, USplashAddUnite, UProduitsList;
+UMainF, UDataModule, USplashAddUnite, UProduitsList, USplash, UFastProduitsList;
 
 
   var
@@ -241,20 +247,40 @@ PerteGrayForms  ;
     if tag = 0 then
     begin
     DatePerteGD.Date:=EncodeDate (YearOf(Now),MonthOf(Now),DayOf(Now));
-//    RegFGFourOLDCredit.Caption :=      FloatToStrF(StrToFloat(RegFGFourOLDCredit.Caption),ffNumber,14,2) ;
-//    RegFGFourNEWCredit.Caption :=      FloatToStrF(StrToFloat(RegFGFourNEWCredit.Caption),ffNumber,14,2) ;
+    end;
+    
+    if tag = 1 then
+    begin
+    QuantityPerteGEdt.SetFocus;
     end;
 
-    if Tag = 1 then
-    begin
-//      FournisseurRegFGCbxChange(Sender);
-//      ReglementFGestionF.VerRegFGEdt.SetFocus;
-    end;
+end;
+
+procedure TPertesGestionF.ListAddProduitPerteGBtnClick(Sender: TObject);
+begin
+//-------- use this code to start creating th form-----//
+  MainForm.ProduitTable.Filtered:=False;
+  FastProduitsListF := TFastProduitsListF.Create(Application);
+
+//-------- Show the splash screan for the produit familly to add new one---------//
+  FastProduitsListF.Left := (Screen.Width div 2) - (FastProduitsListF.Width div 2);
+  FastProduitsListF.Top := (Screen.Height div 2) - (FastProduitsListF.Height div 2);
+  FastProduitsListF.Tag := 5;
+  FastProduitsListF.ProduitsListDBGridEh.IndicatorOptions:=[];
+  FastProduitsListF.Show;
+  FastProduitsListF.ResearchProduitsEdt.SetFocus;
+  //use this tag = 1 for adding from bon livration
+  
+
+ // FastProduitsListF.OKproduitGBtn.Enabled:=False;
+ // produitGestionF.CancelProduitGBtn.Tag:=0;
 end;
 
 procedure TPertesGestionF.NamePerteGCbxEnter(Sender: TObject);
 var
 I : Integer;
+  begin
+  if Tag = 0 then
   begin
   Cursor := crDefault;
 //  PostMessage((Sender as TComboBox).Handle, CB_SHOWDROPDOWN, 1, 0);
@@ -279,6 +305,7 @@ I : Integer;
       end;
 
      MainForm.ProduitTable.EnableControls;
+  end;
 
 end;
 
@@ -286,28 +313,30 @@ end;
 
 procedure TPertesGestionF.NamePerteGCbxExit(Sender: TObject);
 begin
-// if NamePerteGCbx.Text<>'' then
-//
-// begin
-//   if PrixHTPerteGEdt.Text <>'' then
-//   begin
-//   FirstPrixHTPerte:=StrToFloat (StringReplace(PrixHTPerteGEdt.Text, #32, '', [rfReplaceAll]));
-//   end;
-//      if PrixTTCPerteGEdt.Text <>'' then
-//   begin
-//   FirstPrixTTCPerte:=StrToFloat (StringReplace(PrixTTCPerteGEdt.Text, #32, '', [rfReplaceAll]));
-//   end;
-//      if PerteGOLDStockEdt.Text <>'' then
-//   begin
-//   FirstQuantityOLDPerte:=StrToFloat (StringReplace(PerteGOLDStockEdt.Text, #32, '', [rfReplaceAll]));
-//   end;         
-// end;
+ if NamePerteGCbx.Text<>'' then
+
+ begin
+   if PrixHTPerteGEdt.Text <>'' then
+   begin
+   FirstPrixHTPerte:=StrToFloat (StringReplace(PrixHTPerteGEdt.Text, #32, '', [rfReplaceAll]));
+   end;
+      if PrixTTCPerteGEdt.Text <>'' then
+   begin
+   FirstPrixTTCPerte:=StrToFloat (StringReplace(PrixTTCPerteGEdt.Text, #32, '', [rfReplaceAll]));
+   end;
+      if PerteGOLDStockEdt.Text <>'' then
+   begin
+   FirstQuantityOLDPerte:=StrToFloat (StringReplace(PerteGOLDStockEdt.Text, #32, '', [rfReplaceAll]));
+   end;         
+ end;
    
 end;
 
 procedure TPertesGestionF.NamePerteGCbxPropertiesChange(Sender: TObject);
 
 begin
+ if Tag = 0 then
+ begin
   CodeP:=0;
   TVAP:=0;
   MainForm.SQLQuery.Active:=False;
@@ -319,34 +348,91 @@ begin
   begin
   CodeP:= MainForm.SQLQuery.FieldByName('code_p').AsInteger ;
   TVAP:= MainForm.SQLQuery.FieldByName('tva_p').AsInteger ;
-
+  FirstPrixHTPerte:=MainForm.SQLQuery.FieldByName('prixht_p').AsCurrency;
 
   PrixHTPerteGEdt.Text:=  CurrToStrF(MainForm.SQLQuery.FieldValues['prixht_p'], ffNumber, 2);
   PrixTTCPerteGEdt.Text:= 
   CurrToStrF(( (((MainForm.SQLQuery.FieldValues['prixht_p'] * TVAP)/100) + (MainForm.SQLQuery.FieldValues['prixht_p']))), ffNumber, 2);
+  
+   PrixHTTotalPerteGEdt.Text := FloatToStrF(0, ffNumber,14, 2);
+   PrixTTCTotalPerteGEdt.Text:= FloatToStrF(0, ffNumber,14, 2);
+
+  if Tag = 0 then
+  begin
   PerteGOLDStockEdt.Text:= FloatToStrF((MainForm.SQLQuery.FieldValues['qut_p'] + MainForm.SQLQuery.FieldValues['qutini_p']), ffNumber,14, 2) ;
   PerteGNEWStockEdt.Text:= FloatToStrF((MainForm.SQLQuery.FieldValues['qut_p'] + MainForm.SQLQuery.FieldValues['qutini_p']), ffNumber,14, 2) ;
+  end else
+      begin
+        PerteGOLDStockEdt.Text:= FloatToStrF((MainForm.SQLQuery.FieldValues['qut_p'] + MainForm.SQLQuery.FieldValues['qutini_p'] + DataModuleF.PertesTable.FieldValues['qut_p']), ffNumber,14, 2) ;
+        PerteGNEWStockEdt.Text:= FloatToStrF((MainForm.SQLQuery.FieldValues['qut_p'] + MainForm.SQLQuery.FieldValues['qutini_p'] + DataModuleF.PertesTable.FieldValues['qut_p']), ffNumber,14, 2) ;  
+      end;
   end;
 
   MainForm.SQLQuery.Active:=False;
   MainForm.SQLQuery.SQL.Clear;
+
+  QuantityPerteGEdt.Text:= '';
+  
+// if (QuantityPerteGEdt.Text <> '')  then  
+// begin
+//     OKPerteGBtn.Enabled := true;
+//     OKPerteGBtn.ImageIndex := 17;
+// end;
+  
+  NamePerteGCbx.Style.BorderStyle:= ebsUltraFlat;
+  NamePerteGCbx.StyleElements:= [seClient,seBorder];
+  RequiredPerteGlbl.Visible:= False;
+  NamePerteGErrorP.Visible:= False;
+ end;
       
 end;
 
 procedure TPertesGestionF.OKPerteGBtnClick(Sender: TObject);
-var CodePR : Integer;
+var CodePR,PRTypeP : Integer;
 begin
 if NamePerteGCbx.Text <>'' then
  begin
 
-   if QuantityPerteGEdt.Text <>'' then
+   if (QuantityPerteGEdt.Text <>'') AND (StrToFloat(QuantityPerteGEdt.Text) <> 0)  then
    begin
+               //----------- use this code to inster new type when just type name it if empty exit-------------
+          if TypePerteGCbx.Text <> '' then
+          begin
+          if NOT  DataModuleF.Perte_typeTable.Locate('nom_prt', TypePerteGCbx.Text, [loCaseInsensitive]) then
+            begin
+                with DataModuleF.Perte_typeTable do  begin
+                  if NOT (IsEmpty) then
+                  begin
+                  Last;
+                  PRTypeP:= FieldValues['code_prt'] + 1;
+                  end else
+                      begin
+                       PRTypeP:= 1;
+                      end;
+                Append;
+                fieldbyname('code_prt').AsInteger := PRTypeP;
+                fieldbyname('nom_prt').AsString := TypePerteGCbx.Text;
+                post;
+             end;
+            end;
+          end ;
+          //----------- Making produit family integer in produit database table and read it as string from Combobox-------------
+          DataModuleF.Perte_typeTable.Active:=false;
+          DataModuleF.Perte_typeTable.SQL.Clear;
+          DataModuleF.Perte_typeTable.SQL.Text:='Select * FROM perte_type WHERE LOWER(nom_prt) LIKE LOWER('+ QuotedStr( TypePerteGCbx.Text )+')'  ;
+          DataModuleF.Perte_typeTable.Active:=True;
+          PRTypeP:= DataModuleF.Perte_typeTable.FieldByName('code_prt').AsInteger;
 
-            DataModuleF.PertesTable.DisableControls;
-            DataModuleF.PertesTable.Active:=False;
-            DataModuleF.PertesTable.SQL.Clear;
-            DataModuleF.PertesTable.SQL.Text:= 'SELECT * FROM pertes ORDER by code_pr' ;
-            DataModuleF.PertesTable.Active:=True;
+       
+     if Tag = 0 then
+     begin
+
+        DataModuleF.PertesTable.DisableControls;
+        DataModuleF.PertesTable.Active:=False;
+        DataModuleF.PertesTable.SQL.Clear;
+        DataModuleF.PertesTable.SQL.Text:= 'SELECT * FROM pertes ORDER by code_pr' ;
+        DataModuleF.PertesTable.Active:=True;
+            
 
             DataModuleF.PertesTable.Last;
              if  DataModuleF.PertesTable.IsEmpty then
@@ -362,18 +448,90 @@ if NamePerteGCbx.Text <>'' then
              DataModuleF.PertesTable.Last;
              DataModuleF.PertesTable.Append;
              DataModuleF.PertesTable.FieldValues['code_pr']:= CodePR ;
+             DataModuleF.PertesTable.FieldValues['refer_pr']:= NumPerteGEdt.Caption;
+             DataModuleF.PertesTable.FieldValues['date_pr']:= DatePerteGD.Date;
+             DataModuleF.PertesTable.FieldValues['time_pr']:=TimeOf(Now);
              DataModuleF.PertesTable.FieldValues['code_p']:=  CodeP ;
              DataModuleF.PertesTable.FieldValues['qut_p'] :=  StrToFloat(QuantityPerteGEdt.Text);
+             DataModuleF.PertesTable.FieldValues['prixht_p'] := FirstPrixHTPerte ;
              DataModuleF.PertesTable.FieldValues['tva_p']:=   TVAP;
+             DataModuleF.PertesTable.FieldValues['obser_pr']:=   ObserPerteGMem.Text;
+             DataModuleF.PertesTable.fieldbyname('code_prt').Value  := PRTypeP;
+             DataModuleF.PertesTable.FieldValues['code_ur']:= StrToInt( MainForm.UserIDLbl.Caption);     
     
              DataModuleF.PertesTable.Post ;
 
              DataModuleF.PertesTable.EnableControls;
-             DataModuleF.PertesTable.Last;
+             DataModuleF.PertesTable.Last;  
+
+             //--- this is for take from the stock
+             MainForm.SQLQuery.Active:= False;
+             MainForm.SQLQuery.SQL.Clear;
+             MainForm.SQLQuery.SQL.Text:='SELECT code_p, qut_p FROM produit WHERE code_p = ' +IntToStr(CodeP) + ' GROUP BY code_p, qut_p'  ;
+             MainForm.SQLQuery.Active:= True;
+
+             MainForm.SQLQuery.Edit;
+             MainForm.SQLQuery.FieldValues['qut_p']:= ( MainForm.SQLQuery.FieldValues['qut_p'] - StrToFloat(QuantityPerteGEdt.Text));
+             MainForm.SQLQuery.Post;
+
+             MainForm.SQLQuery.Active:=False;
+             MainForm.SQLQuery.SQL.Clear;
+             MainForm.ProduitTable.Refresh;
+
+       end else
+           begin
+                        //--- this is for take from the stock
+             MainForm.SQLQuery.Active:= False;
+             MainForm.SQLQuery.SQL.Clear;
+             MainForm.SQLQuery.SQL.Text:='SELECT code_p, qut_p  FROM produit WHERE code_p = ' +IntToStr(CodeP) + ' GROUP BY code_p, qut_p'  ;
+             MainForm.SQLQuery.Active:= True;
+             
+             MainForm.SQLQuery.Edit;
+             MainForm.SQLQuery.FieldValues['qut_p']:=
+             (( DataModuleF.PertesTable.FieldValues['qut_p'] + MainForm.SQLQuery.FieldValues['qut_p']) - StrToFloat(QuantityPerteGEdt.Text));
+             MainForm.SQLQuery.Post;
+             
+             DataModuleF.PertesTable.Edit;
+             DataModuleF.PertesTable.FieldValues['refer_pr']:= NumPerteGEdt.Caption;
+             DataModuleF.PertesTable.FieldValues['date_pr']:= DatePerteGD.Date;
+             DataModuleF.PertesTable.FieldValues['time_pr']:=TimeOf(Now);
+             DataModuleF.PertesTable.FieldValues['code_p']:=  CodeP ;
+             DataModuleF.PertesTable.FieldValues['qut_p'] :=  StrToFloat(QuantityPerteGEdt.Text);
+             DataModuleF.PertesTable.FieldValues['prixht_p'] := FirstPrixHTPerte ;
+             DataModuleF.PertesTable.FieldValues['tva_p']:=   TVAP;
+             DataModuleF.PertesTable.FieldValues['obser_pr']:=   ObserPerteGMem.Text;
+             DataModuleF.PertesTable.fieldbyname('code_prt').Value  := PRTypeP;
+             DataModuleF.PertesTable.FieldValues['code_ur']:= StrToInt( MainForm.UserIDLbl.Caption);     
+    
+             DataModuleF.PertesTable.Post ;
+
+
+
+             MainForm.SQLQuery.Active:=False;
+             MainForm.SQLQuery.SQL.Clear;
+             MainForm.ProduitTable.Refresh;
+             
+           end;
+   
+          begin
+            FSplash := TFSplash.Create(PertesGestionF);
+            try
+              FSplash.Left := Screen.Width div 2 - (FSplash.Width div 2);
+              FSplash.Top := 0;
+              AnimateWindow(FSplash.Handle, 150, AW_VER_POSITIVE OR AW_SLIDE OR  AW_ACTIVATE);
+              sleep(250);
+              AnimateWindow(FSplash.Handle, 150, AW_VER_NEGATIVE OR AW_SLIDE OR AW_HIDE);
+            finally
+              FSplash.free;
+            end;
+          end;
+          sndPlaySound('C:\Windows\Media\speech on.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+          Close;
 
    end else
        begin
             try
+            QuantityPerteGEdt.Text:='';
             QuantityPerteGEdt.BorderStyle := bsNone;
             QuantityPerteGEdt.StyleElements := [];
             RequiredQuantityPerteGlbl.Visible := true;
@@ -408,7 +566,6 @@ procedure TPertesGestionF.QuantityPerteGEdtChange(Sender: TObject);
 var
 QuantityPerte,NEWPAHT,NEWPATTC,NEWQUNT : Currency; 
 begin
-
                                  
    if QuantityPerteGEdt.Text<>'' then
    begin
@@ -417,18 +574,41 @@ begin
      NEWPAHT:=  FirstPrixHTPerte * QuantityPerte;
      NEWPATTC:= FirstPrixTTCPerte * QuantityPerte;  
      NEWQUNT:=  FirstQuantityOLDPerte - QuantityPerte;
-   
-     PrixHTPerteGEdt.Text   := FloatToStrF((NEWPAHT),ffNumber,14,2);   
-     PrixTTCPerteGEdt.Text  := FloatToStrF((NEWPATTC),ffNumber,14,2);  
-     PerteGNEWStockEdt.Text := FloatToStrF((NEWQUNT),ffNumber,14,2);
+     if Tag = 0 then
+     begin
+     PrixHTTotalPerteGEdt.Text   := FloatToStrF((NEWPAHT),ffNumber,14,2);   
+     PrixTTCTotalPerteGEdt.Text  := FloatToStrF((NEWPATTC),ffNumber,14,2);  
+     PerteGNEWStockEdt.Text := FloatToStrF((StrToFloat(PerteGOLDStockEdt.Text)-StrToFloat(QuantityPerteGEdt.Text) ),ffNumber,14,2);
+     end else
+         begin
+           PrixHTTotalPerteGEdt.Text   := FloatToStrF((NEWPAHT),ffNumber,14,2);   
+           PrixTTCTotalPerteGEdt.Text  := FloatToStrF((NEWPATTC),ffNumber,14,2);  
+           PerteGNEWStockEdt.Text := FloatToStrF((StrToFloat(PerteGOLDStockEdt.Text)-StrToFloat(QuantityPerteGEdt.Text) ),ffNumber,14,2); 
+         end;
       
    end else
        begin
-        PrixHTPerteGEdt.Text   := FloatToStrF((FirstPrixHTPerte),ffNumber,14,2);   
-        PrixTTCPerteGEdt.Text  := FloatToStrF((FirstPrixTTCPerte),ffNumber,14,2);  
-        PerteGNEWStockEdt.Text := FloatToStrF((FirstQuantityOLDPerte),ffNumber,14,2)  
+        PrixHTTotalPerteGEdt.Text   := FloatToStrF(0,ffNumber,14,2);   
+        PrixTTCTotalPerteGEdt.Text  := FloatToStrF(0,ffNumber,14,2);  
+        PerteGNEWStockEdt.Text := FloatToStrF((StrToFloat(PerteGOLDStockEdt.Text)),ffNumber,14,2)  
        end;
 
+ if (NamePerteGCbx.Text <> '')  then  
+ begin
+     OKPerteGBtn.Enabled := true;
+     OKPerteGBtn.ImageIndex := 17;
+ end;
+  
+  QuantityPerteGEdt.BorderStyle:= bsSingle;
+  QuantityPerteGEdt.StyleElements:= [seClient,seBorder];
+  RequiredQuantityPerteGlbl.Visible:= False;
+  QuantityPerteGErrorP.Visible:= False;
+       
+end;
+
+procedure TPertesGestionF.QuantityPerteGEdtEnter(Sender: TObject);
+begin
+NamePerteGCbxExit(Sender);
 end;
 
 procedure TPertesGestionF.QuantityPerteGEdtExit(Sender: TObject);
@@ -436,7 +616,7 @@ var
 QuantityPerte: Currency;
 begin
 
-  if QuantityPerteGEdt.Text<>'' then
+  if QuantityPerteGEdt.Text<>'' then                     
   begin
   QuantityPerte:=StrToFloat(StringReplace(QuantityPerteGEdt.Text, #32, '', [rfReplaceAll]));
   QuantityPerteGEdt.Text := FloatToStrF(QuantityPerte,ffNumber,14,2);

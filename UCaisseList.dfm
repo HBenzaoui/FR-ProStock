@@ -346,8 +346,8 @@ object CaisseListF: TCaisseListF
     FixedColor = clWindow
     Font.Charset = DEFAULT_CHARSET
     Font.Color = 4207405
-    Font.Height = -16
-    Font.Name = 'Helvetica LT Std'
+    Font.Height = 18
+    Font.Name = 'Segoe UI'
     Font.Style = []
     FooterRowCount = 1
     FooterParams.FillStyle = cfstSolidEh
@@ -369,7 +369,7 @@ object CaisseListF: TCaisseListF
     ParentFont = False
     ParentShowHint = False
     RowDetailPanel.Color = clBtnFace
-    RowHeight = 30
+    RowHeight = 25
     SearchPanel.FilterOnTyping = True
     ShowHint = True
     SumList.Active = True
@@ -396,6 +396,11 @@ object CaisseListF: TCaisseListF
         DynProps = <>
         EditButtons = <>
         FieldName = 'valider_bvfac'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 16
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
         Footers = <>
         ImageList = MainForm.GridIcons13
         KeyList.Strings = (
@@ -419,30 +424,54 @@ object CaisseListF: TCaisseListF
       end
       item
         Alignment = taCenter
+        DisplayFormat = 'DD/MM/YYYY'
         DynProps = <>
         EditButtons = <>
         FieldName = 'date_ocb'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 16
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
         Footers = <>
         Layout = tlCenter
         Title.Alignment = taCenter
         Title.Caption = 'Date'
         Title.EndEllipsis = True
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = 4207405
+        Title.Font.Height = 18
+        Title.Font.Name = 'Helvetica LT Std'
+        Title.Font.Style = []
+        Title.Font.Quality = fqProof
         Title.ToolTips = True
-        Width = 113
+        Width = 100
         WordWrap = False
       end
       item
         Alignment = taCenter
+        DisplayFormat = 'HH:MM:SS'
         DynProps = <>
         EditButtons = <>
         FieldName = 'time_ocb'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 16
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
         Footers = <>
         Layout = tlCenter
         Title.Alignment = taCenter
         Title.Caption = 'Heure'
         Title.EndEllipsis = True
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = 4207405
+        Title.Font.Height = 18
+        Title.Font.Name = 'Helvetica LT Std'
+        Title.Font.Style = []
+        Title.Font.Quality = fqProof
         Title.ToolTips = True
-        Width = 132
+        Width = 100
         WordWrap = False
       end
       item
@@ -450,8 +479,8 @@ object CaisseListF: TCaisseListF
         EditButtons = <>
         FieldName = 'nom_ocb'
         Font.Charset = DEFAULT_CHARSET
-        Font.Color = clBlack
-        Font.Height = 18
+        Font.Color = 4207405
+        Font.Height = 16
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
         Footers = <>
@@ -459,18 +488,34 @@ object CaisseListF: TCaisseListF
         Title.Alignment = taCenter
         Title.Caption = 'Description'
         Title.EndEllipsis = True
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = 4207405
+        Title.Font.Height = 18
+        Title.Font.Name = 'Helvetica LT Std'
+        Title.Font.Style = []
+        Title.Font.Quality = fqProof
         Title.ToolTips = True
-        Width = 400
+        Width = 370
         WordWrap = False
       end
       item
         DynProps = <>
         EditButtons = <>
         FieldName = 'third_ocb'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 16
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
         Footers = <
           item
             Alignment = taRightJustify
-            Color = 14276563
+            Color = 15722984
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = 4207405
+            Font.Height = 18
+            Font.Name = 'Helvetica LT Std'
+            Font.Style = [fsBold]
             Value = 'Total:'
             ValueType = fvtStaticText
           end>
@@ -478,8 +523,14 @@ object CaisseListF: TCaisseListF
         Title.Alignment = taCenter
         Title.Caption = 'Tiers'
         Title.EndEllipsis = True
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = 4207405
+        Title.Font.Height = 18
+        Title.Font.Name = 'Helvetica LT Std'
+        Title.Font.Style = []
+        Title.Font.Quality = fqProof
         Title.ToolTips = True
-        Width = 300
+        Width = 250
         WordWrap = False
       end
       item
@@ -487,9 +538,19 @@ object CaisseListF: TCaisseListF
         DynProps = <>
         EditButtons = <>
         FieldName = 'code_mdpai'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 16
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
         Footers = <
           item
-            Color = 14276563
+            Color = 15722984
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = 4207405
+            Font.Height = 18
+            Font.Name = 'Helvetica LT Std'
+            Font.Style = []
           end>
         ImageList = MainForm.GridIconsMP20
         KeyList.Strings = (
@@ -501,74 +562,83 @@ object CaisseListF: TCaisseListF
         ReadOnly = True
         Title.Alignment = taCenter
         Title.Caption = 'MP'
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = 4207405
+        Title.Font.Height = 18
+        Title.Font.Name = 'Helvetica LT Std'
+        Title.Font.Style = []
+        Title.Font.Quality = fqProof
         Width = 28
         WordWrap = False
       end
       item
-        Color = 14210301
+        Color = 14535415
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
         FieldName = 'decaiss_ocb'
         Font.Charset = DEFAULT_CHARSET
-        Font.Color = clBlack
-        Font.Height = 24
-        Font.Name = 'Segoe UI'
+        Font.Color = 4207405
+        Font.Height = 16
+        Font.Name = 'Helvetica LT Std'
         Font.Style = []
         Footers = <
           item
-            Color = 4666873
-            DisplayFormat = '#,##0.00'
+            Color = 10908906
             Font.Charset = DEFAULT_CHARSET
-            Font.Color = 15722984
-            Font.Height = 22
-            Font.Name = 'Segoe UI'
+            Font.Color = 4207405
+            Font.Height = 18
+            Font.Name = 'Helvetica LT Std'
             Font.Style = [fsBold]
             ValueType = fvtSum
-          end
-          item
-            FieldName = 'decaiss_ocb'
           end>
         Layout = tlCenter
         MinWidth = 150
         Title.Alignment = taCenter
         Title.Caption = 'D'#233'caissement'
         Title.EndEllipsis = True
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = 4207405
+        Title.Font.Height = 18
+        Title.Font.Name = 'Helvetica LT Std'
+        Title.Font.Style = []
+        Title.Font.Quality = fqProof
         Title.ToolTips = True
         Width = 200
         WordWrap = False
       end
       item
-        Color = 14612166
+        Color = 14936255
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
         FieldName = 'encaiss_ocb'
         Font.Charset = DEFAULT_CHARSET
-        Font.Color = clBlack
-        Font.Height = 24
-        Font.Name = 'Segoe UI'
+        Font.Color = 4207405
+        Font.Height = 16
+        Font.Name = 'Helvetica LT Std'
         Font.Style = []
         Footers = <
           item
-            Color = 7854350
-            DisplayFormat = '#,##0.00'
+            Color = 12568683
             Font.Charset = DEFAULT_CHARSET
             Font.Color = 4207405
-            Font.Height = 22
-            Font.Name = 'Segoe UI'
+            Font.Height = 18
+            Font.Name = 'Helvetica LT Std'
             Font.Style = [fsBold]
             ValueType = fvtSum
-          end
-          item
-            FieldName = 'encaiss_ocb'
-            ValueType = fvtFieldValue
           end>
         Layout = tlCenter
         MinWidth = 150
         Title.Alignment = taCenter
         Title.Caption = 'Encaissement'
         Title.EndEllipsis = True
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = 4207405
+        Title.Font.Height = 18
+        Title.Font.Name = 'Helvetica LT Std'
+        Title.Font.Style = []
+        Title.Font.Quality = fqProof
         Title.ToolTips = True
         Width = 200
         WordWrap = False
@@ -578,7 +648,18 @@ object CaisseListF: TCaisseListF
         DynProps = <>
         EditButtons = <>
         FieldName = 'RemisePerc'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 16
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
         Footers = <>
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = 4207405
+        Title.Font.Height = 18
+        Title.Font.Name = 'Helvetica LT Std'
+        Title.Font.Style = []
+        Title.Font.Quality = fqProof
         Visible = False
         WordWrap = False
       end
@@ -587,11 +668,22 @@ object CaisseListF: TCaisseListF
         DynProps = <>
         EditButtons = <>
         FieldName = 'timber_bvfac'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 16
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
         Footers = <>
         Layout = tlCenter
         MinWidth = 150
         Title.Alignment = taCenter
         Title.Caption = 'Timber Fiscal'
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = 4207405
+        Title.Font.Height = 18
+        Title.Font.Name = 'Helvetica LT Std'
+        Title.Font.Style = []
+        Title.Font.Quality = fqProof
         Visible = False
         Width = 150
         WordWrap = False
@@ -601,12 +693,23 @@ object CaisseListF: TCaisseListF
         DynProps = <>
         EditButtons = <>
         FieldName = 'MontantTVA'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 16
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
         Footers = <>
         Layout = tlCenter
         MinWidth = 150
         Title.Alignment = taCenter
         Title.Caption = 'Montant TVA'
         Title.EndEllipsis = True
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = 4207405
+        Title.Font.Height = 18
+        Title.Font.Name = 'Helvetica LT Std'
+        Title.Font.Style = []
+        Title.Font.Quality = fqProof
         Title.ToolTips = True
         Visible = False
         Width = 150
@@ -617,11 +720,22 @@ object CaisseListF: TCaisseListF
         DynProps = <>
         EditButtons = <>
         FieldName = 'montttc_bvfac'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 16
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
         Footers = <>
         Layout = tlCenter
         Title.Alignment = taCenter
         Title.Caption = 'Montant TTC'
         Title.EndEllipsis = True
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = 4207405
+        Title.Font.Height = 18
+        Title.Font.Name = 'Helvetica LT Std'
+        Title.Font.Style = []
+        Title.Font.Quality = fqProof
         Title.ToolTips = True
         Visible = False
         Width = 150
@@ -632,12 +746,23 @@ object CaisseListF: TCaisseListF
         DynProps = <>
         EditButtons = <>
         FieldName = 'montver_bvfac'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 16
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
         Footers = <>
         Layout = tlCenter
         MinWidth = 150
         Title.Alignment = taCenter
         Title.Caption = 'Montant Vers'#233
         Title.EndEllipsis = True
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = 4207405
+        Title.Font.Height = 18
+        Title.Font.Name = 'Helvetica LT Std'
+        Title.Font.Style = []
+        Title.Font.Quality = fqProof
         Title.ToolTips = True
         Visible = False
         Width = 150
@@ -648,12 +773,23 @@ object CaisseListF: TCaisseListF
         DynProps = <>
         EditButtons = <>
         FieldName = 'MontantRes'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 16
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
         Footers = <>
         Layout = tlCenter
         MinWidth = 150
         Title.Alignment = taCenter
         Title.Caption = 'Montant Reste'
         Title.EndEllipsis = True
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = 4207405
+        Title.Font.Height = 18
+        Title.Font.Name = 'Helvetica LT Std'
+        Title.Font.Style = []
+        Title.Font.Quality = fqProof
         Title.ToolTips = True
         Visible = False
         Width = 150
@@ -664,10 +800,21 @@ object CaisseListF: TCaisseListF
         DynProps = <>
         EditButtons = <>
         FieldName = 'Agnet'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 16
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
         Footers = <>
         Layout = tlCenter
         Title.Alignment = taCenter
         Title.Caption = 'Agent'
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = 4207405
+        Title.Font.Height = 18
+        Title.Font.Name = 'Helvetica LT Std'
+        Title.Font.Style = []
+        Title.Font.Quality = fqProof
         Width = 150
         WordWrap = False
       end>

@@ -3,7 +3,7 @@ object PertesGestionF: TPertesGestionF
   Top = 0
   BorderStyle = bsDialog
   Caption = 'Nouveau Perte'
-  ClientHeight = 411
+  ClientHeight = 447
   ClientWidth = 606
   Color = clWhite
   Font.Charset = DEFAULT_CHARSET
@@ -21,14 +21,14 @@ object PertesGestionF: TPertesGestionF
   OnShow = FormShow
   DesignSize = (
     606
-    411)
+    447)
   PixelsPerInch = 96
   TextHeight = 13
   object Label7: TLabel
     Left = 298
     Top = 124
-    Width = 12
-    Height = 23
+    Width = 8
+    Height = 22
     Caption = '*'
     Color = clBtnFace
     Font.Charset = DEFAULT_CHARSET
@@ -194,7 +194,7 @@ object PertesGestionF: TPertesGestionF
   end
   object MontantAHTPerteLbl: TLabel
     Left = 3
-    Top = 310
+    Top = 351
     Width = 90
     Height = 18
     Caption = 'Stock Actuel:'
@@ -209,8 +209,8 @@ object PertesGestionF: TPertesGestionF
     StyleElements = []
   end
   object Label2: TLabel
-    Left = 284
-    Top = 310
+    Left = 285
+    Top = 351
     Width = 109
     Height = 18
     Caption = 'Nouveau Stock:'
@@ -285,6 +285,7 @@ object PertesGestionF: TPertesGestionF
     Shaded = False
     ShowHint = True
     Spacing = -1
+    OnClick = ListAddProduitPerteGBtnClick
     Version = '1.6.1.2'
     TMSStyle = 0
   end
@@ -336,11 +337,11 @@ object PertesGestionF: TPertesGestionF
     StyleElements = [seClient, seBorder]
   end
   object Label3: TLabel
-    Left = 25
-    Top = 180
-    Width = 68
+    Left = 7
+    Top = 303
+    Width = 86
     Height = 18
-    Caption = 'Prix.A.HT:'
+    Caption = 'Montant.HT:'
     Color = 4207405
     Font.Charset = DEFAULT_CHARSET
     Font.Color = 4207405
@@ -352,11 +353,11 @@ object PertesGestionF: TPertesGestionF
     StyleElements = []
   end
   object Label4: TLabel
-    Left = 299
-    Top = 180
-    Width = 75
+    Left = 293
+    Top = 303
+    Width = 101
     Height = 18
-    Caption = 'Prix.A.TTC:'
+    Caption = 'Monatant.TTC:'
     Color = 4207405
     Font.Charset = DEFAULT_CHARSET
     Font.Color = 4207405
@@ -398,6 +399,38 @@ object PertesGestionF: TPertesGestionF
     OnClick = AddProduitPerteGBtnClick
     Version = '1.6.1.2'
     TMSStyle = 0
+  end
+  object Label6: TLabel
+    Left = 26
+    Top = 179
+    Width = 68
+    Height = 18
+    Caption = 'Prix.A.HT:'
+    Color = 4207405
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = 4207405
+    Font.Height = 18
+    Font.Name = 'Roboto'
+    Font.Style = []
+    ParentColor = False
+    ParentFont = False
+    StyleElements = []
+  end
+  object Label8: TLabel
+    Left = 299
+    Top = 179
+    Width = 75
+    Height = 18
+    Caption = 'Prix.A.TTC:'
+    Color = 4207405
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = 4207405
+    Font.Height = 18
+    Font.Name = 'Roboto'
+    Font.Style = []
+    ParentColor = False
+    ParentFont = False
+    StyleElements = []
   end
   object QuantityPerteGErrorP: TPanel
     Left = 93
@@ -463,10 +496,10 @@ object PertesGestionF: TPertesGestionF
     ParentFont = False
     TabOrder = 4
   end
-  object ObserPerteMem: TMemo
+  object ObserPerteGMem: TMemo
     Left = 95
     Top = 227
-    Width = 481
+    Width = 482
     Height = 26
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -490,7 +523,7 @@ object PertesGestionF: TPertesGestionF
   end
   object BottomP: TPanel
     Left = 0
-    Top = 357
+    Top = 393
     Width = 606
     Height = 54
     Align = alBottom
@@ -568,7 +601,7 @@ object PertesGestionF: TPertesGestionF
   end
   object PerteGOLDStockEdt: TEdit
     Left = 95
-    Top = 306
+    Top = 347
     Width = 180
     Height = 26
     TabStop = False
@@ -588,8 +621,8 @@ object PertesGestionF: TPertesGestionF
     TabOrder = 7
   end
   object PerteGNEWStockEdt: TEdit
-    Left = 396
-    Top = 306
+    Left = 397
+    Top = 347
     Width = 180
     Height = 26
     TabStop = False
@@ -626,10 +659,10 @@ object PertesGestionF: TPertesGestionF
     Height = 26
     Width = 398
   end
-  object PrixHTPerteGEdt: TEdit
+  object PrixHTTotalPerteGEdt: TEdit
     Left = 95
-    Top = 176
-    Width = 200
+    Top = 299
+    Width = 180
     Height = 26
     TabStop = False
     Alignment = taRightJustify
@@ -647,10 +680,10 @@ object PertesGestionF: TPertesGestionF
     ReadOnly = True
     TabOrder = 10
   end
-  object PrixTTCPerteGEdt: TEdit
-    Left = 376
-    Top = 176
-    Width = 200
+  object PrixTTCTotalPerteGEdt: TEdit
+    Left = 397
+    Top = 299
+    Width = 180
     Height = 26
     TabStop = False
     Alignment = taRightJustify
@@ -685,7 +718,50 @@ object PertesGestionF: TPertesGestionF
     ParentFont = False
     TabOrder = 1
     OnChange = QuantityPerteGEdtChange
+    OnEnter = QuantityPerteGEdtEnter
     OnExit = QuantityPerteGEdtExit
     OnKeyPress = QuantityPerteGEdtKeyPress
+  end
+  object PrixHTPerteGEdt: TEdit
+    Left = 96
+    Top = 175
+    Width = 199
+    Height = 26
+    TabStop = False
+    Alignment = taRightJustify
+    AutoSelect = False
+    Color = 15722984
+    DoubleBuffered = True
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = -1
+    Font.Height = 18
+    Font.Name = 'Helvetica LT Std'
+    Font.Style = []
+    MaxLength = 14
+    ParentDoubleBuffered = False
+    ParentFont = False
+    ReadOnly = True
+    TabOrder = 13
+  end
+  object PrixTTCPerteGEdt: TEdit
+    Left = 377
+    Top = 175
+    Width = 200
+    Height = 26
+    TabStop = False
+    Alignment = taRightJustify
+    AutoSelect = False
+    Color = 15722984
+    DoubleBuffered = True
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = -1
+    Font.Height = 18
+    Font.Name = 'Helvetica LT Std'
+    Font.Style = []
+    MaxLength = 14
+    ParentDoubleBuffered = False
+    ParentFont = False
+    ReadOnly = True
+    TabOrder = 14
   end
 end

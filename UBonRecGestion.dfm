@@ -1260,6 +1260,7 @@ object BonRecGestionF: TBonRecGestionF
     Font.Height = 19
     Font.Name = 'Helvetica LT Std'
     Font.Style = []
+    FrozenCols = 2
     GridLineParams.DataHorzLines = True
     GridLineParams.DataVertLines = True
     HorzScrollBar.ExtraPanel.NavigatorButtons = [nbFirstEh, nbPriorEh, nbNextEh, nbLastEh, nbRefreshEh]
@@ -1279,7 +1280,7 @@ object BonRecGestionF: TBonRecGestionF
     ParentFont = False
     ParentShowHint = False
     RowDetailPanel.Color = clBtnFace
-    RowHeight = 35
+    RowHeight = 30
     SearchPanel.FilterOnTyping = True
     ShowHint = True
     TabOrder = 2
@@ -1306,6 +1307,11 @@ object BonRecGestionF: TBonRecGestionF
         DynProps = <>
         EditButtons = <>
         FieldName = 'referp'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 18
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
         Footers = <>
         Layout = tlCenter
         ReadOnly = True
@@ -1325,6 +1331,11 @@ object BonRecGestionF: TBonRecGestionF
         DynProps = <>
         EditButtons = <>
         FieldName = 'nomp'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 18
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
         Footers = <>
         Layout = tlCenter
         ReadOnly = True
@@ -1337,7 +1348,7 @@ object BonRecGestionF: TBonRecGestionF
         Title.Font.Name = 'Helvetica LT Std'
         Title.Font.Style = []
         Title.Font.Quality = fqProof
-        Width = 500
+        Width = 450
         WordWrap = False
       end
       item
@@ -1395,10 +1406,21 @@ object BonRecGestionF: TBonRecGestionF
         DynProps = <>
         EditButtons = <>
         FieldName = 'dateperiss_p'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 18
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
         Footers = <>
         Layout = tlCenter
         Title.Alignment = taCenter
         Title.Caption = 'Date.Exp'
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = 4207405
+        Title.Font.Height = 19
+        Title.Font.Name = 'Helvetica LT Std'
+        Title.Font.Style = []
+        Title.Font.Quality = fqProof
         Visible = False
         Width = 120
       end
@@ -1458,6 +1480,11 @@ object BonRecGestionF: TBonRecGestionF
         DynProps = <>
         EditButtons = <>
         FieldName = 'tvap'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 18
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
         Footers = <>
         Layout = tlCenter
         ReadOnly = True

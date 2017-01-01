@@ -67,7 +67,7 @@ implementation
 
 uses
   UMainF, UProduitGestion, USplashAddUnite, UClientGestion, UBonRecGestion,
-  UBonLivGestion, UBonFacVGestion, UComptoir,  UBonFacAGestion;
+  UBonLivGestion, UBonFacVGestion, UComptoir,  UBonFacAGestion, UPertesGestion;
 
 
 procedure TFastProduitsListF.FisrtClientbtnClick(Sender: TObject);
@@ -1595,11 +1595,21 @@ begin
      else
 
 
-    if (OKProduitGBtn.Tag = 2) AND (FastProduitsListF.Tag = 4)  then
-    begin
-     CancelProduitGBtnClick(Sender);
+      if (OKProduitGBtn.Tag = 2) AND (FastProduitsListF.Tag = 4)  then
+      begin
+       CancelProduitGBtnClick(Sender);
 
-    end;
+      end;
+
+    
+    //--- this tage = 5 is for select produit for Perte----//
+      if Tag = 5 then
+      begin
+
+       PertesGestionF.NamePerteGCbx.Text:= MainForm.ProduitTable.FieldByName('nom_p').AsString;
+       Close; 
+      
+      end;
 
     end;
 

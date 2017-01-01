@@ -368,11 +368,12 @@ object PertesFListF: TPertesFListF
       Shaded = False
       ShowHint = True
       Spacing = -1
+      OnClick = EditBARecBtnClick
       Version = '1.6.1.2'
       TMSStyle = 0
     end
     object DeleteBARecBtn: TAdvToolButton
-      Left = 967
+      Left = 966
       Top = 26
       Width = 100
       Height = 30
@@ -399,6 +400,7 @@ object PertesFListF: TPertesFListF
       Shaded = False
       ShowHint = True
       Spacing = -2
+      OnClick = DeleteBARecBtnClick
       Version = '1.6.1.2'
       TMSStyle = 0
     end
@@ -871,11 +873,17 @@ object PertesFListF: TPertesFListF
     FixedColor = clWindow
     Font.Charset = DEFAULT_CHARSET
     Font.Color = 4207405
-    Font.Height = -16
-    Font.Name = 'Helvetica LT Std'
+    Font.Height = 18
+    Font.Name = 'Segoe UI'
     Font.Style = []
     FooterRowCount = 1
-    FooterParams.FillStyle = cfstSolidEh
+    FooterParams.Font.Charset = DEFAULT_CHARSET
+    FooterParams.Font.Color = 4207405
+    FooterParams.Font.Height = 18
+    FooterParams.Font.Name = 'Helvetica LT Std'
+    FooterParams.Font.Style = [fsBold]
+    FooterParams.ParentFont = False
+    FrozenCols = 1
     GridLineParams.DataHorzLines = True
     GridLineParams.DataVertLines = True
     HorzScrollBar.ExtraPanel.NavigatorButtons = [nbFirstEh, nbPriorEh, nbNextEh, nbLastEh, nbRefreshEh]
@@ -894,7 +902,7 @@ object PertesFListF: TPertesFListF
     ParentFont = False
     ParentShowHint = False
     RowDetailPanel.Color = clBtnFace
-    RowHeight = 30
+    RowHeight = 25
     SearchPanel.FilterOnTyping = True
     ShowHint = True
     SumList.Active = True
@@ -913,6 +921,9 @@ object PertesFListF: TPertesFListF
     TitleParams.SortMarkerStyle = smstThemeDefinedEh
     TitleParams.VertLines = True
     VertScrollBar.Width = 15
+    OnDblClick = PertesListDBGridEhDblClick
+    OnKeyDown = PertesListDBGridEhKeyDown
+    OnKeyPress = PertesListDBGridEhKeyPress
     Columns = <
       item
         Alignment = taCenter
@@ -920,6 +931,11 @@ object PertesFListF: TPertesFListF
         DynProps = <>
         EditButtons = <>
         FieldName = 'refer_pr'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 16
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
         Footers = <>
         Layout = tlCenter
         ReadOnly = True
@@ -938,32 +954,102 @@ object PertesFListF: TPertesFListF
       end
       item
         Alignment = taCenter
+        DisplayFormat = 'DD/MM/YYYY'
         DynProps = <>
         EditButtons = <>
         FieldName = 'date_pr'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 16
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
         Footers = <>
         Layout = tlCenter
         ReadOnly = True
         Title.Alignment = taCenter
         Title.Caption = 'Date'
         Title.EndEllipsis = True
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = 4207405
+        Title.Font.Height = 18
+        Title.Font.Name = 'Helvetica LT Std'
+        Title.Font.Style = []
+        Title.Font.Quality = fqProof
         Title.ToolTips = True
-        Width = 113
+        Width = 90
         WordWrap = False
       end
       item
         Alignment = taCenter
+        DisplayFormat = 'HH:MM:SS'
         DynProps = <>
         EditButtons = <>
         FieldName = 'time_pr'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 16
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
         Footers = <>
         Layout = tlCenter
         ReadOnly = True
         Title.Alignment = taCenter
         Title.Caption = 'Heure'
         Title.EndEllipsis = True
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = 4207405
+        Title.Font.Height = 18
+        Title.Font.Name = 'Helvetica LT Std'
+        Title.Font.Style = []
+        Title.Font.Quality = fqProof
         Title.ToolTips = True
-        Width = 132
+        Width = 90
+        WordWrap = False
+      end
+      item
+        Alignment = taCenter
+        DynProps = <>
+        EditButtons = <>
+        FieldName = 'referp'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 16
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
+        Footers = <>
+        Layout = tlCenter
+        Title.Alignment = taCenter
+        Title.Caption = 'R'#233'ference.P'
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = 4207405
+        Title.Font.Height = 18
+        Title.Font.Name = 'Helvetica LT Std'
+        Title.Font.Style = []
+        Title.Font.Quality = fqProof
+        Width = 120
+      end
+      item
+        DynProps = <>
+        EditButtons = <>
+        FieldName = 'nomp'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 16
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
+        Footers = <>
+        Layout = tlCenter
+        Title.Alignment = taCenter
+        Title.Caption = 'D'#233'signation'
+        Title.EndEllipsis = True
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = 4207405
+        Title.Font.Height = 18
+        Title.Font.Name = 'Helvetica LT Std'
+        Title.Font.Style = []
+        Title.Font.Quality = fqProof
+        Title.ToolTips = True
+        Width = 300
         WordWrap = False
       end
       item
@@ -973,43 +1059,20 @@ object PertesFListF: TPertesFListF
         FieldName = 'PRType'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
-        Font.Height = 18
+        Font.Height = 16
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
         Footers = <>
         Layout = tlCenter
         Title.Alignment = taCenter
         Title.Caption = 'Type de Perte'
-        Width = 250
-        WordWrap = False
-      end
-      item
-        Alignment = taCenter
-        DynProps = <>
-        EditButtons = <>
-        FieldName = 'referp'
-        Footers = <>
-        Layout = tlCenter
-        Title.Alignment = taCenter
-        Title.Caption = 'R'#233'ference.P'
-        Width = 120
-      end
-      item
-        DynProps = <>
-        EditButtons = <>
-        FieldName = 'nomp'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clBlack
-        Font.Height = 18
-        Font.Name = 'Helvetica LT Std'
-        Font.Style = []
-        Footers = <>
-        Layout = tlCenter
-        Title.Alignment = taCenter
-        Title.Caption = 'D'#233'signation'
-        Title.EndEllipsis = True
-        Title.ToolTips = True
-        Width = 300
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = 4207405
+        Title.Font.Height = 18
+        Title.Font.Name = 'Helvetica LT Std'
+        Title.Font.Style = []
+        Title.Font.Quality = fqProof
+        Width = 170
         WordWrap = False
       end
       item
@@ -1018,9 +1081,9 @@ object PertesFListF: TPertesFListF
         EditButtons = <>
         FieldName = 'prixht_p'
         Font.Charset = DEFAULT_CHARSET
-        Font.Color = clBlack
-        Font.Height = 24
-        Font.Name = 'Segoe UI'
+        Font.Color = 4207405
+        Font.Height = 16
+        Font.Name = 'Helvetica LT Std'
         Font.Style = []
         Footers = <>
         Layout = tlCenter
@@ -1028,6 +1091,12 @@ object PertesFListF: TPertesFListF
         Title.Alignment = taCenter
         Title.Caption = 'Prix.A.HT'
         Title.EndEllipsis = True
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = 4207405
+        Title.Font.Height = 18
+        Title.Font.Name = 'Helvetica LT Std'
+        Title.Font.Style = []
+        Title.Font.Quality = fqProof
         Title.ToolTips = True
         Width = 150
         WordWrap = False
@@ -1038,25 +1107,41 @@ object PertesFListF: TPertesFListF
         DynProps = <>
         EditButtons = <>
         FieldName = 'tva_p'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 16
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
         Footers = <>
         Layout = tlCenter
         Title.Alignment = taCenter
         Title.Caption = 'TVA %'
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = 4207405
+        Title.Font.Height = 18
+        Title.Font.Name = 'Helvetica LT Std'
+        Title.Font.Style = []
+        Title.Font.Quality = fqProof
         Width = 70
       end
       item
-        DisplayFormat = '150'
+        DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
         FieldName = 'PrixATTC'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
-        Font.Height = 18
+        Font.Height = 16
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
+        Footer.Font.Charset = DEFAULT_CHARSET
+        Footer.Font.Color = 4207405
+        Footer.Font.Height = 16
+        Footer.Font.Name = 'Helvetica LT Std'
+        Footer.Font.Style = [fsBold]
         Footers = <
           item
-            Color = 14276563
+            Color = 15722984
             Value = 'Total:'
             ValueType = fvtStaticText
           end>
@@ -1064,6 +1149,12 @@ object PertesFListF: TPertesFListF
         Title.Alignment = taCenter
         Title.Caption = 'Prix.A.TTC'
         Title.EndEllipsis = True
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = 4207405
+        Title.Font.Height = 18
+        Title.Font.Name = 'Helvetica LT Std'
+        Title.Font.Style = []
+        Title.Font.Quality = fqProof
         Title.ToolTips = True
         Width = 150
         WordWrap = False
@@ -1074,21 +1165,32 @@ object PertesFListF: TPertesFListF
         DynProps = <>
         EditButtons = <>
         FieldName = 'qut_p'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 16
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
+        Footer.Font.Charset = DEFAULT_CHARSET
+        Footer.Font.Color = 4207405
+        Footer.Font.Height = 16
+        Footer.Font.Name = 'Helvetica LT Std'
+        Footer.Font.Style = [fsBold]
         Footers = <
           item
-            Color = 14276563
+            Color = 15722984
             DisplayFormat = '0.00'
             FieldName = 'qut_p'
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = 4207405
-            Font.Height = 22
-            Font.Name = 'Segoe UI'
-            Font.Style = [fsBold]
             ValueType = fvtSum
           end>
         Layout = tlCenter
         Title.Alignment = taCenter
         Title.Caption = 'Quantit'#233
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = 4207405
+        Title.Font.Height = 18
+        Title.Font.Name = 'Helvetica LT Std'
+        Title.Font.Style = []
+        Title.Font.Quality = fqProof
         Width = 130
       end
       item
@@ -1098,29 +1200,30 @@ object PertesFListF: TPertesFListF
         FieldName = 'MontantHT'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
-        Font.Height = 24
-        Font.Name = 'Segoe UI'
+        Font.Height = 16
+        Font.Name = 'Helvetica LT Std'
         Font.Style = []
+        Footer.Font.Charset = DEFAULT_CHARSET
+        Footer.Font.Color = 4207405
+        Footer.Font.Height = 16
+        Footer.Font.Name = 'Helvetica LT Std'
+        Footer.Font.Style = [fsBold]
         Footers = <
           item
-            Color = 14276563
-            DisplayFormat = '#,##0.00'
+            Color = 15722984
             FieldName = 'MontantHT'
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = 4207405
-            Font.Height = 22
-            Font.Name = 'Segoe UI'
-            Font.Style = [fsBold]
             ValueType = fvtSum
-          end
-          item
-            FieldName = 'timber_ch'
-            ValueType = fvtFieldValue
           end>
         Layout = tlCenter
         MinWidth = 150
         Title.Alignment = taCenter
         Title.Caption = 'Monatant HT'
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = 4207405
+        Title.Font.Height = 18
+        Title.Font.Name = 'Helvetica LT Std'
+        Title.Font.Style = []
+        Title.Font.Quality = fqProof
         Width = 150
         WordWrap = False
       end
@@ -1130,30 +1233,32 @@ object PertesFListF: TPertesFListF
         EditButtons = <>
         FieldName = 'MontantTVA'
         Font.Charset = DEFAULT_CHARSET
-        Font.Color = clBlack
-        Font.Height = 24
-        Font.Name = 'Segoe UI'
+        Font.Color = 4207405
+        Font.Height = 16
+        Font.Name = 'Helvetica LT Std'
         Font.Style = []
+        Footer.Font.Charset = DEFAULT_CHARSET
+        Footer.Font.Color = 4207405
+        Footer.Font.Height = 16
+        Footer.Font.Name = 'Helvetica LT Std'
+        Footer.Font.Style = [fsBold]
         Footers = <
           item
-            Color = 14276563
-            DisplayFormat = '#,##0.00'
+            Color = 15722984
             FieldName = 'MontantTVA'
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = 4207405
-            Font.Height = 22
-            Font.Name = 'Segoe UI'
-            Font.Style = [fsBold]
             ValueType = fvtSum
-          end
-          item
-            ValueType = fvtFieldValue
           end>
         Layout = tlCenter
         MinWidth = 150
         Title.Alignment = taCenter
         Title.Caption = 'Montant TVA'
         Title.EndEllipsis = True
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = 4207405
+        Title.Font.Height = 18
+        Title.Font.Name = 'Helvetica LT Std'
+        Title.Font.Style = []
+        Title.Font.Quality = fqProof
         Title.ToolTips = True
         Width = 150
         WordWrap = False
@@ -1165,27 +1270,32 @@ object PertesFListF: TPertesFListF
         FieldName = 'MontantTTC'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
-        Font.Height = 24
-        Font.Name = 'Segoe UI'
+        Font.Height = 16
+        Font.Name = 'Helvetica LT Std'
         Font.Style = []
+        Footer.Font.Charset = DEFAULT_CHARSET
+        Footer.Font.Color = 4207405
+        Footer.Font.Height = 16
+        Footer.Font.Name = 'Helvetica LT Std'
+        Footer.Font.Style = [fsBold]
         Footers = <
           item
-            Color = 14276563
-            DisplayFormat = '#,##0.00'
+            Color = 15722984
             FieldName = 'MontantTTC'
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = 4207405
-            Font.Height = 22
-            Font.Name = 'Segoe UI'
-            Font.Style = [fsBold]
             ValueType = fvtSum
           end>
         Layout = tlCenter
         Title.Alignment = taCenter
         Title.Caption = 'Montant TTC'
         Title.EndEllipsis = True
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = 4207405
+        Title.Font.Height = 18
+        Title.Font.Name = 'Helvetica LT Std'
+        Title.Font.Style = []
+        Title.Font.Quality = fqProof
         Title.ToolTips = True
-        Width = 130
+        Width = 150
         WordWrap = False
       end
       item
@@ -1195,12 +1305,18 @@ object PertesFListF: TPertesFListF
         FieldName = 'Agent'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
-        Font.Height = 18
+        Font.Height = 16
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
         Footers = <>
         Layout = tlCenter
         Title.Alignment = taCenter
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = 4207405
+        Title.Font.Height = 18
+        Title.Font.Name = 'Helvetica LT Std'
+        Title.Font.Style = []
+        Title.Font.Quality = fqProof
         Width = 150
         WordWrap = False
       end>

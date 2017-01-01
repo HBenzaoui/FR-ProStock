@@ -2200,7 +2200,7 @@ begin
         MainForm.Opt_cas_bnk_CaisseTable.Refresh;
 //        ChargesFListF.ChargesListDBGridEh.Refresh;
 
-   sndPlaySound('C:\Windows\Media\recycle.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+   sndPlaySound('C:\Windows\Media\speech off.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
      AnimateWindow(FSplashAddUnite.Handle, 175, AW_VER_NEGATIVE OR AW_SLIDE OR AW_HIDE);
     FSplashAddUnite.Release;
    end;
@@ -2260,6 +2260,33 @@ begin
     end;
   end;
 
+ //---- this tag = 34 is for Delleting Perte  ------///
+   if OKAddUniteSBtn.Tag = 34 then
+   begin
+      CodeF:=  DataModuleF.PertesTable.FieldValues['code_pr'];
+      CodeP:=  DataModuleF.PertesTable.FieldByName('code_p').AsInteger ;
+
+             MainForm.SQLQuery.Active:= False;
+             MainForm.SQLQuery.SQL.Clear;
+             MainForm.SQLQuery.SQL.Text:='SELECT code_p, qut_p FROM produit WHERE code_p = ' +IntToStr(CodeP) + ' GROUP BY code_p, qut_p'  ;
+             MainForm.SQLQuery.Active:= True;
+             
+             MainForm.SQLQuery.Edit;
+             MainForm.SQLQuery.FieldValues['qut_p']:= (MainForm.SQLQuery.FieldValues['qut_p'] + DataModuleF.PertesTable.FieldValues['qut_p'] );
+             MainForm.SQLQuery.Post;
+             
+             MainForm.SQLQuery.Active:=False;
+             MainForm.SQLQuery.SQL.Clear;
+
+        MainForm.SQLQuery.ExecSQL('DELETE FROM pertes WHERE code_pr = ' +IntToStr(DataModuleF.PertesTable.FieldByName('code_pr').AsInteger));
+        
+        DataModuleF.PertesTable.Close;
+        DataModuleF.PertesTable.Open;
+
+   sndPlaySound('C:\Windows\Media\speech off.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+     AnimateWindow(FSplashAddUnite.Handle, 175, AW_VER_NEGATIVE OR AW_SLIDE OR AW_HIDE);
+    FSplashAddUnite.Release;
+   end;
 
 end;
 

@@ -223,7 +223,6 @@ type
     PertesTabletime_pr: TTimeField;
     PertesTablecode_p: TIntegerField;
     PertesTablequt_p: TFloatField;
-    PertesTablecond_p: TIntegerField;
     PertesTableprixht_p: TCurrencyField;
     PertesTabletva_p: TSmallintField;
     PertesTablecode_ur: TIntegerField;
@@ -249,12 +248,14 @@ type
     PertesTablerefer_pr: TWideStringField;
     ChargesTableAgent: TStringField;
     PertesTablePrixATTC: TCurrencyField;
+    PertesTableobser_pr: TWideMemoField;
     procedure DataModuleCreate(Sender: TObject);
     procedure PZeroQCnotifCalcFields(DataSet: TDataSet);
     procedure PCloseZeroQCnotifCalcFields(DataSet: TDataSet);
     procedure PMoreMaxQCnotifCalcFields(DataSet: TDataSet);
     procedure PCloseDiedCnotifCalcFields(DataSet: TDataSet);
     procedure PDiedCnotifCalcFields(DataSet: TDataSet);
+    procedure PertesTableCalcFields(DataSet: TDataSet);
   private
     { Private declarations }
   public
@@ -326,6 +327,23 @@ procedure TDataModuleF.PDiedCnotifCalcFields(DataSet: TDataSet);
 begin
     PDiedCnotif.FieldValues['QutDispo']:=
  (PDiedCnotif.FieldValues['qut_p'] + PDiedCnotif.FieldValues['qutini_p']);
+end;
+
+procedure TDataModuleF.PertesTableCalcFields(DataSet: TDataSet);
+begin
+  PertesTable.FieldValues['PrixATTC']:=
+ (((PertesTable.FieldValues['prixht_p'] * PertesTable.FieldValues['tva_p'])/100) + (PertesTable.FieldValues['prixht_p'])) ;
+
+  PertesTable.FieldValues['MontantHT']:=
+ (PertesTable.FieldValues['prixht_p'] * PertesTable.FieldValues['qut_p'] ) ;
+ 
+  PertesTable.FieldValues['MontantTTC']:=
+ (PertesTable.FieldValues['PrixATTC'] * PertesTable.FieldValues['qut_p'] ) ;
+
+   PertesTable.FieldValues['MontantTVA']:=
+ ((PertesTable.FieldValues['MontantTTC']) - (PertesTable.FieldValues['MontantHT'])) ;
+
+ 
 end;
 
 procedure TDataModuleF.PMoreMaxQCnotifCalcFields(DataSet: TDataSet);
