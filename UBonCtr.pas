@@ -9,7 +9,7 @@ uses
   DBGridEh, Vcl.StdCtrls, Vcl.ComCtrls, Vcl.WinXCtrls, Vcl.Buttons,
   sSpeedButton, AdvToolBtn, Vcl.ExtCtrls,
   System.DateUtils, frxExportPDF, frxClass, frxExportXLS, frxDBSet, acImage,
-  Vcl.Menus;
+  Vcl.Menus, sStatusBar;
 
 type
   TBonCtrF = class(TForm)
@@ -68,6 +68,8 @@ type
     ClearMPFilterBVLivPMenu: TMenuItem;
     N5: TMenuItem;
     ClearFilterBVLivPMenu: TMenuItem;
+    StatuBar: TsStatusBar;
+    sImage3: TsImage;
     SumGirdBVCtrBtn: TAdvToolButton;
     procedure AddBVCtrBtnClick(Sender: TObject);
     procedure EditBVCtrBtnClick(Sender: TObject);

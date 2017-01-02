@@ -1074,7 +1074,7 @@ begin
   FormatSettings.ThousandSeparator := ' ';
   FormatSettings.CurrencyDecimals := 2;
   FormatSettings.DateSeparator:= '/';
-  FormatSettings.ShortTimeFormat:= 'dd/M/yyyy';
+  FormatSettings.ShortDateFormat:= 'dd/M/yyyy';
 
 
   

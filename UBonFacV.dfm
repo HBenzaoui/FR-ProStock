@@ -327,7 +327,7 @@ object BonFacVF: TBonFacVF
     Left = 0
     Top = 80
     Width = 1191
-    Height = 659
+    Height = 641
     Anchors = [akLeft, akTop, akRight, akBottom]
     Border.Color = 4207405
     Border.ExtendedDraw = False
@@ -1239,39 +1239,6 @@ object BonFacVF: TBonFacVF
       Images = MainForm.PanelIcons16
       SkinData.SkinSection = 'CHECKBOX'
     end
-    object SumGirdBBVFacBtn: TAdvToolButton
-      Left = 1170
-      Top = 60
-      Width = 15
-      Height = 20
-      Cursor = crHandPoint
-      Hint = 'Totaux'
-      Anchors = [akRight, akBottom]
-      AutoThemeAdapt = False
-      BorderColor = 15722984
-      BorderDownColor = 15722984
-      BorderHotColor = 7854350
-      Color = 15722984
-      ColorDown = 15722984
-      ColorHot = 15722984
-      ColorChecked = clNone
-      DropDownSplit = False
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = 4207405
-      Font.Height = 18
-      Font.Name = 'Roboto'
-      Font.Style = []
-      ImageIndex = 26
-      Images = MainForm.PanelIcons16
-      ParentFont = False
-      ParentShowHint = False
-      Shaded = False
-      ShowHint = True
-      Spacing = -2
-      OnClick = SumGirdBBVFacBtnClick
-      Version = '1.6.1.2'
-      TMSStyle = 0
-    end
     object LineP: TPanel
       Left = 0
       Top = 80
@@ -1506,13 +1473,87 @@ object BonFacVF: TBonFacVF
     Left = 0
     Top = 82
     Width = 1
-    Height = 659
+    Height = 639
     Align = alLeft
     BevelOuter = bvNone
     Color = 7854350
     ParentBackground = False
     TabOrder = 2
     StyleElements = []
+    ExplicitHeight = 659
+  end
+  object StatuBar: TsStatusBar
+    Left = 0
+    Top = 721
+    Width = 1191
+    Height = 20
+    BiDiMode = bdLeftToRight
+    Panels = <
+      item
+        Alignment = taRightJustify
+        Bevel = pbRaised
+        Style = psOwnerDraw
+        Width = 110
+      end
+      item
+        Style = psOwnerDraw
+        Width = 50
+      end>
+    ParentBiDiMode = False
+    SizeGrip = False
+    SkinData.SkinSection = 'MENUITEM'
+    ExplicitTop = 716
+    DesignSize = (
+      1191
+      20)
+    object sImage3: TsImage
+      Tag = 1
+      Left = 250
+      Top = 3
+      Width = 16
+      Height = 16
+      Center = True
+      Picture.Data = {07544269746D617000000000}
+      Proportional = True
+      Stretch = True
+      Transparent = True
+      ImageIndex = 4
+      SkinData.SkinSection = 'CHECKBOX'
+    end
+    object SumGirdBBVFacBtn: TAdvToolButton
+      Left = 112
+      Top = 0
+      Width = 26
+      Height = 20
+      Cursor = crHandPoint
+      Hint = 'Totaux'
+      Anchors = [akRight]
+      AutoThemeAdapt = False
+      BorderColor = 15722984
+      BorderDownColor = 15722984
+      BorderHotColor = 14079702
+      Color = 15722984
+      ColorDown = 15722984
+      ColorHot = 14079702
+      ColorHotTo = 14079702
+      ColorChecked = clNone
+      DropDownSplit = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 4207405
+      Font.Height = 18
+      Font.Name = 'Roboto'
+      Font.Style = []
+      ImageIndex = 26
+      Images = MainForm.PanelIcons16
+      ParentFont = False
+      ParentShowHint = False
+      Shaded = False
+      ShowHint = True
+      Spacing = -2
+      OnClick = SumGirdBBVFacBtnClick
+      Version = '1.6.1.2'
+      TMSStyle = 0
+    end
   end
   object BonFacVfrxRprt: TfrxReport
     Version = '5.5'

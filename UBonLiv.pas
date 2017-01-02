@@ -10,7 +10,7 @@ uses
   sSpeedButton, AdvToolBtn, Vcl.ExtCtrls, EhLibVCL, GridsEh, DBAxisGridsEh,
   DBGridEh,
   System.DateUtils, frxClass, frxDBSet, frxExportPDF, frxExportXLS, Vcl.Menus,
-  acImage
+  acImage, sStatusBar
   ;
 
 type
@@ -70,6 +70,8 @@ type
     ClearRegleFilterBVLivPMenu: TMenuItem;
     RegleFilterBVLivPMenu: TMenuItem;
     sImage6: TsImage;
+    StatuBar: TsStatusBar;
+    sImage3: TsImage;
     SumGirdBBVlivBtn: TAdvToolButton;
     procedure ResearchBVLivEdtChange(Sender: TObject);
     procedure FisrtBARecbtnClick(Sender: TObject);

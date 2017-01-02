@@ -13,7 +13,7 @@ uses
   FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
   FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Comp.Client,
   Vcl.AppEvnts, frxExportPDF, frxClass, frxExportXLS, frxDBSet, acImage,
-  Vcl.Menus ;
+  Vcl.Menus, sStatusBar ;
 
 type
   TBonRecF = class(TForm)
@@ -72,6 +72,8 @@ type
     ClearMPFilterBVLivPMenu: TMenuItem;
     N5: TMenuItem;
     ClearFilterBVLivPMenu: TMenuItem;
+    StatuBar: TsStatusBar;
+    sImage3: TsImage;
     SumGirdBARecBtn: TAdvToolButton;
     procedure AddBARecBtnClick(Sender: TObject);
     procedure FisrtBARecbtnClick(Sender: TObject);

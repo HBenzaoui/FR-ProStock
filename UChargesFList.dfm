@@ -471,9 +471,11 @@ object ChargesFListF: TChargesFListF
       Height = 30
       Anchors = [akTop, akRight]
       ParentShowHint = False
+      PopupMenu = PopupMenu1
       ShowHint = True
       ButtonStyle = tbsDropDown
       SkinData.SkinSection = 'SPEEDBUTTON'
+      DropdownMenu = PopupMenu1
       ImageIndex = 8
       Images = MainForm.PanelIcons24
     end
@@ -2148,5 +2150,16 @@ object ChargesFListF: TChargesFListF
     PdfA = False
     Left = 408
     Top = 480
+  end
+  object PopupMenu1: TPopupMenu
+    OwnerDraw = True
+    Left = 986
+    Top = 138
+    object P1: TMenuItem
+      Caption = 'Print Bon Charge'
+    end
+    object P2: TMenuItem
+      Caption = 'Print Liste de Charges'
+    end
   end
 end

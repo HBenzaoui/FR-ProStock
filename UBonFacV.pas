@@ -11,7 +11,7 @@ uses
   DBGridEhToolCtrls, DynVarsEh, Data.DB, Vcl.StdCtrls, Vcl.ComCtrls,
   Vcl.WinXCtrls, Vcl.Buttons, sSpeedButton, AdvToolBtn, Vcl.ExtCtrls, EhLibVCL,
   GridsEh, DBAxisGridsEh, DBGridEh, frxExportPDF, frxClass, frxExportXLS,
-  frxDBSet, acImage, Vcl.Menus;
+  frxDBSet, acImage, Vcl.Menus, sStatusBar;
 
 type
   TBonFacVF = class(TForm)
@@ -70,6 +70,8 @@ type
     ClearMPFilterBVLivPMenu: TMenuItem;
     N5: TMenuItem;
     ClearFilterBVLivPMenu: TMenuItem;
+    StatuBar: TsStatusBar;
+    sImage3: TsImage;
     SumGirdBBVFacBtn: TAdvToolButton;
     procedure AddBVFacBtnClick(Sender: TObject);
     procedure DateStartBVFacDChange(Sender: TObject);

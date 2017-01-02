@@ -64,6 +64,9 @@ type
     Panel4: TPanel;
     TypeChargeListCbx: TComboBox;
     STypeChargeListCbx: TComboBox;
+    PopupMenu1: TPopupMenu;
+    P1: TMenuItem;
+    P2: TMenuItem;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure AddBARecBtnClick(Sender: TObject);
     procedure FisrtBARecbtnClick(Sender: TObject);
