@@ -1019,8 +1019,8 @@ object CaisseListF: TCaisseListF
     object PeriodCaiseeListLbl: TLabel
       Left = 334
       Top = 32
-      Width = 59
-      Height = 18
+      Width = 62
+      Height = 19
       Caption = 'P'#233'riode:'
       Color = 15722984
       Font.Charset = DEFAULT_CHARSET
@@ -1042,8 +1042,8 @@ object CaisseListF: TCaisseListF
       ShowHint = True
       OnClick = sSpeedButton1Click
       SkinData.SkinSection = 'SPEEDBUTTON'
-      ImageIndex = 7
       Images = MainForm.PanelIcons24
+      ImageIndex = 7
     end
     object sSpeedButton2: TsSpeedButton
       Left = 1087
@@ -1055,8 +1055,8 @@ object CaisseListF: TCaisseListF
       ShowHint = True
       OnClick = sSpeedButton2Click
       SkinData.SkinSection = 'SPEEDBUTTON'
-      ImageIndex = 8
       Images = MainForm.PanelIcons24
+      ImageIndex = 8
     end
     object sSpeedButton3: TsSpeedButton
       Left = 1155
@@ -1068,8 +1068,8 @@ object CaisseListF: TCaisseListF
       ShowHint = True
       OnClick = sSpeedButton3Click
       SkinData.SkinSection = 'SPEEDBUTTON'
-      ImageIndex = 9
       Images = MainForm.PanelIcons24
+      ImageIndex = 9
     end
     object Label1: TLabel
       Left = 607
@@ -1106,8 +1106,8 @@ object CaisseListF: TCaisseListF
     object Label3: TLabel
       Left = 14
       Top = 33
-      Width = 92
-      Height = 18
+      Width = 94
+      Height = 19
       Caption = 'Les Caisses:'
       Color = 15722984
       Font.Charset = DEFAULT_CHARSET
@@ -1128,8 +1128,8 @@ object CaisseListF: TCaisseListF
       ShowHint = True
       OnClick = NextCaiseebtnClick
       SkinData.SkinSection = 'SPEEDBUTTON'
-      ImageIndex = 2
       Images = MainForm.PanelIcons24
+      ImageIndex = 2
       ShowCaption = False
     end
     object PreviosCaiseebtn: TsSpeedButton
@@ -1141,8 +1141,8 @@ object CaisseListF: TCaisseListF
       ShowHint = True
       OnClick = PreviosCaiseebtnClick
       SkinData.SkinSection = 'SPEEDBUTTON'
-      ImageIndex = 1
       Images = MainForm.PanelIcons24
+      ImageIndex = 1
     end
     object FisrtCaiseebtn: TsSpeedButton
       Left = 758
@@ -1153,8 +1153,8 @@ object CaisseListF: TCaisseListF
       ShowHint = True
       OnClick = FisrtCaiseebtnClick
       SkinData.SkinSection = 'SPEEDBUTTON'
-      ImageIndex = 0
       Images = MainForm.PanelIcons24
+      ImageIndex = 0
       ShowCaption = False
     end
     object LastCaiseebtn: TsSpeedButton
@@ -1166,8 +1166,8 @@ object CaisseListF: TCaisseListF
       ShowHint = True
       OnClick = LastCaiseebtnClick
       SkinData.SkinSection = 'SPEEDBUTTON'
-      ImageIndex = 3
       Images = MainForm.PanelIcons24
+      ImageIndex = 3
     end
     object FilterBVLivBtn: TAdvToolButton
       Left = 894
@@ -1497,7 +1497,7 @@ object CaisseListF: TCaisseListF
     Top = 568
   end
   object CaisseListfrxRprt: TfrxReport
-    Version = '5.5'
+    Version = '5.4.6'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]

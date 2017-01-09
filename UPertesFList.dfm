@@ -453,44 +453,43 @@ object PertesFListF: TPertesFListF
       StyleElements = []
     end
     object sSpeedButton1: TsSpeedButton
-      Left = 1122
+      Left = 1119
       Top = 26
       Width = 33
       Height = 30
       Anchors = [akTop, akRight]
       ParentShowHint = False
       ShowHint = True
+      OnClick = sSpeedButton1Click
       SkinData.SkinSection = 'SPEEDBUTTON'
-      ImageIndex = 7
       Images = MainForm.PanelIcons24
-      ExplicitLeft = 1120
+      ImageIndex = 7
     end
     object sSpeedButton2: TsSpeedButton
-      Left = 1080
+      Left = 1082
       Top = 26
-      Width = 39
+      Width = 33
       Height = 30
       Anchors = [akTop, akRight]
       ParentShowHint = False
       ShowHint = True
-      ButtonStyle = tbsDropDown
+      OnClick = sSpeedButton2Click
       SkinData.SkinSection = 'SPEEDBUTTON'
-      ImageIndex = 8
       Images = MainForm.PanelIcons24
-      ExplicitLeft = 1078
+      ImageIndex = 8
     end
     object sSpeedButton3: TsSpeedButton
-      Left = 1158
+      Left = 1156
       Top = 26
       Width = 30
       Height = 30
       Anchors = [akTop, akRight]
       ParentShowHint = False
       ShowHint = True
+      OnClick = sSpeedButton3Click
       SkinData.SkinSection = 'SPEEDBUTTON'
-      ImageIndex = 9
       Images = MainForm.PanelIcons24
-      ExplicitLeft = 1156
+      ImageIndex = 9
     end
     object Label1: TLabel
       Left = 314
@@ -533,8 +532,8 @@ object PertesFListF: TPertesFListF
       ShowHint = True
       OnClick = FisrtBARecbtnClick
       SkinData.SkinSection = 'SPEEDBUTTON'
-      ImageIndex = 0
       Images = MainForm.PanelIcons24
+      ImageIndex = 0
       ShowCaption = False
     end
     object PreviosBARecbtn: TsSpeedButton
@@ -546,8 +545,8 @@ object PertesFListF: TPertesFListF
       ShowHint = True
       OnClick = PreviosBARecbtnClick
       SkinData.SkinSection = 'SPEEDBUTTON'
-      ImageIndex = 1
       Images = MainForm.PanelIcons24
+      ImageIndex = 1
     end
     object NextBARecbtn: TsSpeedButton
       Left = 521
@@ -558,8 +557,8 @@ object PertesFListF: TPertesFListF
       ShowHint = True
       OnClick = NextBARecbtnClick
       SkinData.SkinSection = 'SPEEDBUTTON'
-      ImageIndex = 2
       Images = MainForm.PanelIcons24
+      ImageIndex = 2
       ShowCaption = False
     end
     object LastBARecbtn: TsSpeedButton
@@ -571,13 +570,13 @@ object PertesFListF: TPertesFListF
       ShowHint = True
       OnClick = LastBARecbtnClick
       SkinData.SkinSection = 'SPEEDBUTTON'
-      ImageIndex = 3
       Images = MainForm.PanelIcons24
+      ImageIndex = 3
     end
     object PeriodCaiseeListLbl: TLabel
       Left = 597
       Top = 32
-      Width = 34
+      Width = 31
       Height = 16
       Caption = 'Type:'
       Color = 15722984
@@ -1334,8 +1333,8 @@ object PertesFListF: TPertesFListF
     Left = 1116
     Top = 618
   end
-  object ChargeListfrxRprt: TfrxReport
-    Version = '5.5'
+  object PerteListfrxRprt: TfrxReport
+    Version = '5.4.6'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -1343,7 +1342,7 @@ object PertesFListF: TPertesFListF
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 42576.399521435200000000
-    ReportOptions.LastChange = 42663.582383182870000000
+    ReportOptions.LastChange = 42744.729824791700000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       ''
@@ -1354,8 +1353,8 @@ object PertesFListF: TPertesFListF
     Top = 296
     Datasets = <
       item
-        DataSet = frxChargeListDB
-        DataSetName = 'frxChargeListDB'
+        DataSet = frxPerteListDB
+        DataSetName = 'frxPerteListDB'
       end>
     Variables = <>
     Style = <
@@ -1427,7 +1426,7 @@ object PertesFListF: TPertesFListF
       BottomMargin = 10.000000000000000000
       object PageHeader1: TfrxPageHeader
         FillType = ftBrush
-        Height = 88.488250000000000000
+        Height = 111.165430000000000000
         Top = 18.897650000000000000
         Width = 1046.929810000000000000
         object PreiodRX: TfrxMemoView
@@ -1461,14 +1460,14 @@ object PertesFListF: TPertesFListF
           Frame.Typ = [ftBottom]
           HAlign = haCenter
           Memo.UTF8W = (
-            #201'tat liste de reglement Clients')
+            #201'tat liste de Pertes')
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo2: TfrxMemoView
-          Left = 189.000000000000000000
-          Top = 60.313571820000000000
-          Width = 132.283550000000000000
+          Left = 113.409400000000000000
+          Top = 83.313571820000000000
+          Width = 86.929190000000000000
           Height = 28.174678180000000000
           AllowExpressions = False
           Font.Charset = DEFAULT_CHARSET
@@ -1483,8 +1482,8 @@ object PertesFListF: TPertesFListF
           VAlign = vaCenter
         end
         object Memo5: TfrxMemoView
-          Top = 60.313571820000000000
-          Width = 189.181200000000000000
+          Top = 83.313571820000000000
+          Width = 113.385826770000000000
           Height = 28.174678180000000000
           AllowExpressions = False
           Font.Charset = DEFAULT_CHARSET
@@ -1495,7 +1494,7 @@ object PertesFListF: TPertesFListF
           Fill.BackColor = 13948116
           HAlign = haCenter
           Memo.UTF8W = (
-            'N'#176' De Pi'#233'ce')
+            'N'#176' De Perte')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -1516,9 +1515,9 @@ object PertesFListF: TPertesFListF
           VAlign = vaCenter
         end
         object Memo3: TfrxMemoView
-          Left = 450.716921100000000000
-          Top = 60.313571820000000000
-          Width = 306.346630000000000000
+          Left = 306.079011100000000000
+          Top = 83.313571820000000000
+          Width = 238.315090000000000000
           Height = 28.174678180000000000
           AllowExpressions = False
           Font.Charset = DEFAULT_CHARSET
@@ -1529,32 +1528,14 @@ object PertesFListF: TPertesFListF
           Fill.BackColor = 13948116
           HAlign = haCenter
           Memo.UTF8W = (
-            'Client')
-          ParentFont = False
-          VAlign = vaCenter
-        end
-        object Memo6: TfrxMemoView
-          Left = 318.590551180000000000
-          Top = 60.313571820000000000
-          Width = 132.488250000000000000
-          Height = 28.174678180000000000
-          AllowExpressions = False
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -11
-          Font.Name = 'Gotham Rounded Light'
-          Font.Style = [fsBold]
-          Fill.BackColor = 13948116
-          HAlign = haCenter
-          Memo.UTF8W = (
-            'Houre')
+            'D'#233'signation')
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo8: TfrxMemoView
-          Left = 851.669921100000000000
-          Top = 60.313571820000000000
-          Width = 196.740260000000000000
+          Left = 763.220941100000000000
+          Top = 83.313571820000000000
+          Width = 94.488188980000000000
           Height = 28.174678180000000000
           AllowExpressions = False
           Font.Charset = DEFAULT_CHARSET
@@ -1565,14 +1546,50 @@ object PertesFListF: TPertesFListF
           Fill.BackColor = 13948116
           HAlign = haCenter
           Memo.UTF8W = (
-            'Montant')
+            'Montant HT')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo15: TfrxMemoView
+          Left = 543.732691100000000000
+          Top = 83.472480000000000000
+          Width = 124.929190000000000000
+          Height = 28.174678180000000000
+          AllowExpressions = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Gotham Rounded Light'
+          Font.Style = [fsBold]
+          Fill.BackColor = 13948116
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'Type de Perte')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo17: TfrxMemoView
+          Left = 668.677651100000000000
+          Top = 83.472480000000000000
+          Width = 94.488188980000000000
+          Height = 28.174678180000000000
+          AllowExpressions = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Gotham Rounded Light'
+          Font.Style = [fsBold]
+          Fill.BackColor = 13948116
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'Qt'#233)
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo10: TfrxMemoView
-          Left = 754.733001100000000000
-          Top = 60.313571820000000000
-          Width = 98.472480000000000000
+          Left = 856.913891100000000000
+          Top = 83.472480000000000000
+          Width = 94.488188980000000000
           Height = 28.174678180000000000
           AllowExpressions = False
           Font.Charset = DEFAULT_CHARSET
@@ -1583,7 +1600,60 @@ object PertesFListF: TPertesFListF
           Fill.BackColor = 13948116
           HAlign = haCenter
           Memo.UTF8W = (
-            'Modalit'#233)
+            'Montant TVA')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo6: TfrxMemoView
+          Left = 951.299791100000000000
+          Top = 83.472480000000000000
+          Width = 94.488188980000000000
+          Height = 28.174678180000000000
+          AllowExpressions = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Gotham Rounded Light'
+          Font.Style = [fsBold]
+          Fill.BackColor = 13948116
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'Montant TTC')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Caisse: TfrxMemoView
+          Align = baCenter
+          Left = 302.992321665000000000
+          Top = 56.692950000000000000
+          Width = 440.945166670000000000
+          Height = 21.417336670000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -12
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = [fsBold]
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'Caisse :')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo23: TfrxMemoView
+          Left = 199.488411100000000000
+          Top = 83.149660000000000000
+          Width = 109.811070000000000000
+          Height = 28.174678180000000000
+          AllowExpressions = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Gotham Rounded Light'
+          Font.Style = [fsBold]
+          Fill.BackColor = 13948116
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'R'#233'ference.P')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -1591,7 +1661,7 @@ object PertesFListF: TPertesFListF
       object PageFooter1: TfrxPageFooter
         FillType = ftBrush
         Height = 22.677180000000000000
-        Top = 298.582870000000000000
+        Top = 321.260050000000000000
         Width = 1046.929810000000000000
         object Page: TfrxMemoView
           Left = 899.528140000000000000
@@ -1633,8 +1703,6 @@ object PertesFListF: TPertesFListF
           Top = 1.000000000000000000
           Width = 457.323130000000000000
           Height = 18.897650000000000000
-          DataSet = frxChargeListDB
-          DataSetName = 'frxChargeListDB'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -9
@@ -1654,10 +1722,10 @@ object PertesFListF: TPertesFListF
       object MasterData1: TfrxMasterData
         FillType = ftBrush
         Height = 21.236240000000000000
-        Top = 166.299320000000000000
+        Top = 188.976500000000000000
         Width = 1046.929810000000000000
-        DataSet = frxChargeListDB
-        DataSetName = 'frxChargeListDB'
+        DataSet = frxPerteListDB
+        DataSetName = 'frxPerteListDB'
         RowCount = 0
         object Shape1: TfrxShapeView
           Top = 21.236240000000000000
@@ -1666,13 +1734,13 @@ object PertesFListF: TPertesFListF
           Frame.Color = 13948116
         end
         object frxBonLivDBnum_bvfac: TfrxMemoView
-          Left = 189.000000000000000000
+          Left = 113.409400000000000000
           Top = 0.779530000000000000
-          Width = 131.149601420000000000
+          Width = 85.795241420000000000
           Height = 18.897650000000000000
-          DataField = 'date_rc'
-          DataSet = frxChargeListDB
-          DataSetName = 'frxChargeListDB'
+          DataField = 'date_pr'
+          DataSet = frxPerteListDB
+          DataSetName = 'frxPerteListDB'
           DisplayFormat.FormatStr = 'mm/dd/yyyy'
           DisplayFormat.Kind = fkDateTime
           Font.Charset = DEFAULT_CHARSET
@@ -1682,36 +1750,36 @@ object PertesFListF: TPertesFListF
           Font.Style = []
           HAlign = haCenter
           Memo.UTF8W = (
-            '[frxChargeListDB."date_rc"]')
+            '[frxPerteListDB."date_pr"]')
           ParentFont = False
           VAlign = vaCenter
         end
         object frxBonLivDBclientbvfac: TfrxMemoView
-          Left = 20.000000000000000000
+          Left = 9.102350000000000000
           Top = 0.779530000000000000
-          Width = 170.456871100000000000
+          Width = 102.047236770000000000
           Height = 18.897650000000000000
-          DataField = 'nom_rc'
-          DataSet = frxChargeListDB
-          DataSetName = 'frxChargeListDB'
+          DataField = 'refer_pr'
+          DataSet = frxPerteListDB
+          DataSetName = 'frxPerteListDB'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
           Memo.UTF8W = (
-            '[frxChargeListDB."nom_rc"]')
+            '[frxPerteListDB."refer_pr"]')
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo4: TfrxMemoView
-          Left = 450.543600000000000000
+          Left = 305.905690000000000000
           Top = 0.779530000000000000
-          Width = 306.519951100000000000
+          Width = 238.488411100000000000
           Height = 18.897650000000000000
-          DataField = 'ClientrRC'
-          DataSet = frxChargeListDB
-          DataSetName = 'frxChargeListDB'
+          DataField = 'nomp'
+          DataSet = frxPerteListDB
+          DataSetName = 'frxPerteListDB'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -1719,38 +1787,18 @@ object PertesFListF: TPertesFListF
           Font.Style = []
           HAlign = haCenter
           Memo.UTF8W = (
-            '[frxChargeListDB."ClientrRC"]')
-          ParentFont = False
-          VAlign = vaCenter
-        end
-        object Memo7: TfrxMemoView
-          Left = 318.590551180000000000
-          Top = 0.779530000000000000
-          Width = 132.661405120000000000
-          Height = 18.897650000000000000
-          DataField = 'time_rc'
-          DataSet = frxChargeListDB
-          DataSetName = 'frxChargeListDB'
-          DisplayFormat.FormatStr = 'hh:mm:ss'
-          DisplayFormat.Kind = fkDateTime
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Helvetica LT Std'
-          Font.Style = []
-          HAlign = haCenter
-          Memo.UTF8W = (
-            '[frxChargeListDB."time_rc"]')
+            '[frxPerteListDB."nomp"]')
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo9: TfrxMemoView
-          Left = 851.496600000000000000
+          Left = 763.047620000000000000
           Top = 0.779530000000000000
-          Width = 196.913415120000000000
+          Width = 94.488188980000000000
           Height = 18.897650000000000000
-          DataSet = frxChargeListDB
-          DataSetName = 'frxChargeListDB'
+          DataField = 'MontantHT'
+          DataSet = frxPerteListDB
+          DataSetName = 'frxPerteListDB'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -1760,18 +1808,18 @@ object PertesFListF: TPertesFListF
           Font.Style = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxRegCListDB."montver_rc"]')
+            '[frxPerteListDB."MontantHT"]')
           ParentFont = False
           VAlign = vaCenter
         end
-        object Memo11: TfrxMemoView
-          Left = 754.559680000000000000
-          Top = 0.779530000000000000
-          Width = 98.645801100000000000
+        object Memo16: TfrxMemoView
+          Left = 543.559370000000000000
+          Top = 0.938438180000000000
+          Width = 125.102511100000000000
           Height = 18.897650000000000000
-          DataField = 'MP'
-          DataSet = frxChargeListDB
-          DataSetName = 'frxChargeListDB'
+          DataField = 'PRType'
+          DataSet = frxPerteListDB
+          DataSetName = 'frxPerteListDB'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -1779,7 +1827,87 @@ object PertesFListF: TPertesFListF
           Font.Style = []
           HAlign = haCenter
           Memo.UTF8W = (
-            '[frxChargeListDB."MP"]')
+            '[frxPerteListDB."PRType"]')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo19: TfrxMemoView
+          Left = 668.504330000000000000
+          Top = 0.938438180000000000
+          Width = 94.488188980000000000
+          Height = 18.897650000000000000
+          DataField = 'qut_p'
+          DataSet = frxPerteListDB
+          DataSetName = 'frxPerteListDB'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = []
+          HAlign = haCenter
+          Memo.UTF8W = (
+            '[frxPerteListDB."qut_p"]')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo11: TfrxMemoView
+          Left = 856.740570000000000000
+          Top = 0.938438180000000000
+          Width = 94.488188980000000000
+          Height = 18.897650000000000000
+          DataField = 'MontantTVA'
+          DataSet = frxPerteListDB
+          DataSetName = 'frxPerteListDB'
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[frxPerteListDB."MontantTVA"]')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo7: TfrxMemoView
+          Left = 952.126470000000000000
+          Top = 0.938438180000000000
+          Width = 94.488188980000000000
+          Height = 18.897650000000000000
+          DataField = 'MontantTTC'
+          DataSet = frxPerteListDB
+          DataSetName = 'frxPerteListDB'
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[frxPerteListDB."MontantTTC"]')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo24: TfrxMemoView
+          Left = 199.315090000000000000
+          Top = 0.615618180000000000
+          Width = 109.984391100000000000
+          Height = 18.897650000000000000
+          DataField = 'referp'
+          DataSet = frxPerteListDB
+          DataSetName = 'frxPerteListDB'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = []
+          HAlign = haCenter
+          Memo.UTF8W = (
+            '[frxPerteListDB."referp"]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -1787,12 +1915,12 @@ object PertesFListF: TPertesFListF
       object Footer1: TfrxFooter
         FillType = ftBrush
         Height = 26.834662760000000000
-        Top = 211.653680000000000000
+        Top = 234.330860000000000000
         Width = 1046.929810000000000000
         object Memo18: TfrxMemoView
-          Left = 851.189550000000000000
+          Left = 763.047620000000000000
           Top = 0.377952760000000000
-          Width = 196.913415120000000000
+          Width = 94.488188980000000000
           Height = 26.456710000000000000
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
@@ -1804,14 +1932,14 @@ object PertesFListF: TPertesFListF
           Fill.BackColor = 13948116
           HAlign = haRight
           Memo.UTF8W = (
-            '[SUM(<frxRegCListDB."montver_rc">,MasterData1)]')
+            '[SUM(<frxPerteListDB."MontantHT">,MasterData1)]')
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo20: TfrxMemoView
-          Left = 760.740570000000000000
+          Left = 543.937391100000000000
           Top = 0.377952760000000000
-          Width = 90.708720000000000000
+          Width = 124.724490000000000000
           Height = 26.456710000000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1849,39 +1977,95 @@ object PertesFListF: TPertesFListF
           Font.Style = [fsBold]
           HAlign = haRight
           Memo.UTF8W = (
-            'Number de reglements :')
+            'Number des Pertes :')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo21: TfrxMemoView
+          Left = 856.913891100000000000
+          Top = 0.536860940000000000
+          Width = 94.488188980000000000
+          Height = 26.456710000000000000
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = [fsBold]
+          Fill.BackColor = 13948116
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[SUM(<frxPerteListDB."MontantTVA">,MasterData1)]')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo25: TfrxMemoView
+          Left = 952.126470000000000000
+          Top = 0.536860940000000000
+          Width = 94.488188980000000000
+          Height = 26.456710000000000000
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = [fsBold]
+          Fill.BackColor = 13948116
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[SUM(<frxPerteListDB."MontantTTC">,MasterData1)]')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo22: TfrxMemoView
+          Left = 668.976810000000000000
+          Width = 94.488188980000000000
+          Height = 26.456710000000000000
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = [fsBold]
+          Fill.BackColor = 13948116
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[SUM(<frxPerteListDB."qut_p">,MasterData1)]')
           ParentFont = False
           VAlign = vaCenter
         end
       end
     end
   end
-  object frxChargeListDB: TfrxDBDataset
-    UserName = 'frxChargeListDB'
+  object frxPerteListDB: TfrxDBDataset
+    UserName = 'frxPerteListDB'
     CloseDataSource = False
     FieldAliases.Strings = (
-      'code_ch=code_ch'
-      'nom_ch=nom_ch'
-      'date_ch=date_ch'
-      'time_ch=time_ch'
-      'montht_ch=montht_ch'
-      'obser_ch=obser_ch'
-      'monttva_ch=monttva_ch'
-      'montttc_ch=montttc_ch'
-      'num_cheque_ch=num_cheque_ch'
-      'code_mdpai=code_mdpai'
-      'code_cmpt=code_cmpt'
+      'code_pr=code_pr'
+      'date_pr=date_pr'
+      'time_pr=time_pr'
+      'code_p=code_p'
+      'qut_p=qut_p'
+      'prixht_p=prixht_p'
+      'tva_p=tva_p'
       'code_ur=code_ur'
-      'timber_ch=timber_ch'
+      'code_prt=code_prt'
+      'PRType=PRType'
+      'nomp=nomp'
+      'referp=referp'
+      'MontantHT=MontantHT'
+      'MontantTVA=MontantTVA'
+      'MontantTTC=MontantTTC'
       'Agent=Agent'
-      'Compte=Compte'
-      'code_cht=code_cht'
-      'code_chst=code_chst'
-      'CHType=CHType'
-      'CHSType=CHSType')
+      'refer_pr=refer_pr'
+      'PrixATTC=PrixATTC'
+      'obser_pr=obser_pr')
     DataSource = PerteListDataS
     BCDToCurrency = False
-    Left = 248
+    Left = 250
     Top = 394
   end
   object frxXLSExport1: TfrxXLSExport

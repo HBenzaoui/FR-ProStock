@@ -630,7 +630,7 @@ object ChargesGestionF: TChargesGestionF
     Left = 492
     Top = 18
     Width = 117
-    Height = 26
+    Height = 27
     Date = 42571.604963831020000000
     Time = 42571.604963831020000000
     Font.Charset = DEFAULT_CHARSET
@@ -842,6 +842,7 @@ object ChargesGestionF: TChargesGestionF
     ParentFont = False
     TabOrder = 9
     OnChange = MontantHTChargeGEdtChange
+    OnClick = MontantTimberChargeGEdtClick
     OnExit = MontantTimberChargeGEdtExit
     OnKeyPress = MontantTimberChargeGEdtKeyPress
   end
@@ -862,6 +863,7 @@ object ChargesGestionF: TChargesGestionF
     ParentFont = False
     TabOrder = 7
     OnChange = MontantHTChargeGEdtChange
+    OnClick = MontantHTChargeGEdtClick
     OnExit = MontantHTChargeGEdtExit
     OnKeyPress = MontantHTChargeGEdtKeyPress
   end
@@ -882,6 +884,7 @@ object ChargesGestionF: TChargesGestionF
     ParentFont = False
     TabOrder = 10
     OnChange = MontantTTCChargeGEdtChange
+    OnClick = MontantTTCChargeGEdtClick
     OnExit = MontantTTCChargeGEdtExit
     OnKeyPress = MontantTTCChargeGEdtKeyPress
   end
@@ -902,6 +905,7 @@ object ChargesGestionF: TChargesGestionF
     ParentFont = False
     TabOrder = 8
     OnChange = MontantHTChargeGEdtChange
+    OnClick = MontantTVAChargeGEdtClick
     OnExit = MontantTVAChargeGEdtExit
     OnKeyPress = MontantTVAChargeGEdtKeyPress
   end

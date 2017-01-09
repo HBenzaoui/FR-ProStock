@@ -1033,7 +1033,7 @@ object ProduitGestionF: TProduitGestionF
           Items.Strings = (
             '0'
             '7'
-            '17')
+            '19')
         end
         object PerProduitGSlider: TsSlider
           Left = 111

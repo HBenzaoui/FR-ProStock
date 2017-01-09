@@ -67,6 +67,7 @@ type
     PopupMenu1: TPopupMenu;
     P1: TMenuItem;
     P2: TMenuItem;
+    ChargefrxRprt: TfrxReport;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure AddBARecBtnClick(Sender: TObject);
     procedure FisrtBARecbtnClick(Sender: TObject);
@@ -87,7 +88,13 @@ type
     procedure ChargesListDBGridEhKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure ChargesListDBGridEhKeyPress(Sender: TObject; var Key: Char);
+    procedure P2Click(Sender: TObject);
+    procedure P1Click(Sender: TObject);
+    procedure sSpeedButton1Click(Sender: TObject);
+    procedure sSpeedButton3Click(Sender: TObject);
   private
+    procedure GettingData;
+    procedure GettingDataRecu;
     { Private declarations }
   public
     { Public declarations }
@@ -100,7 +107,7 @@ implementation
 
 {$R *.dfm}
 
-uses System.DateUtils,
+uses System.DateUtils,Vcl.Imaging.jpeg,StringTool,
 UDataModule, UChargesGestion, UMainF, USplashAddUnite;
 
 
@@ -445,7 +452,7 @@ var
       ChargesGestionF.MontantHTChargeGEdt.Text :=      CurrToStrF(DataModuleF.ChargesTable.FieldValues['montht_ch'], ffNumber, 2);
       ChargesGestionF.MontantTVAChargeGEdt.Text :=     CurrToStrF(DataModuleF.ChargesTable.FieldValues['monttva_ch'], ffNumber, 2);
       ChargesGestionF.MontantTimberChargeGEdt.Text :=  CurrToStrF(DataModuleF.ChargesTable.FieldValues['timber_ch'], ffNumber, 2);
-      ChargesGestionF.MontantTVAChargeGEdt.Text :=     CurrToStrF(DataModuleF.ChargesTable.FieldValues['montttc_ch'], ffNumber, 2);
+      ChargesGestionF.MontantTTCChargeGEdt.Text :=     CurrToStrF(DataModuleF.ChargesTable.FieldValues['montttc_ch'], ffNumber, 2);
 
       ChargesGestionF.Left:=  (Screen.Width div 2 ) - (ChargesGestionF.Width div 2)    ;
       ChargesGestionF.Top:=   (Screen.Height div 2) - (ChargesGestionF.Height div 2)    ;
@@ -488,6 +495,113 @@ begin
 DataModuleF.ChargesTable.Next;
 end;
 
+
+procedure TChargesFListF.GettingData;
+var
+  PreiodRX,Agent,Caisse: TfrxMemoView;
+begin
+  PreiodRX:= ChargeListfrxRprt.FindObject('PreiodRX') as TfrxMemoView;
+  PreiodRX.Text:= 'Période du : ' + DateToStr(DateStartChargeD.Date) + ' au ' + DateToStr(DateEndChargeD.Date) ;
+
+  Caisse:= ChargeListfrxRprt.FindObject('Caisse') as TfrxMemoView;
+  Caisse.Text:= 'Type : ' + TypeChargeListCbx.Text + '  |  S.Type : '+STypeChargeListCbx.Text  ;
+
+      Agent:= ChargeListfrxRprt.FindObject('Agent') as TfrxMemoView;
+  Agent.Text:= MainForm.UserNameLbl.Caption ;
+  end;
+
+
+
+procedure TChargesFListF.GettingDataRecu;
+var
+  Name,Tel,Mob,Adr,MoneyWordRX : TfrxMemoView;
+  str1 : string;
+
+  Logo : TfrxPictureView;
+    S: TMemoryStream;
+  Jpg: TJPEGImage;
+begin
+
+
+
+  if NOT (MainForm.CompanyTable.IsEmpty) then
+  begin
+
+    Name:= ChargefrxRprt.FindObject('Name') as TfrxMemoView;
+    Name.Text:= MainForm.CompanyTable.FieldByName('nom_comp').AsString ;
+    Name.Visible:=True;
+
+    Tel:= ChargefrxRprt.FindObject('Tel') as TfrxMemoView;
+    Tel.Text:= MainForm.CompanyTable.FieldByName('fix_comp').AsString ;
+    Tel.Visible:=True;
+
+      Mob:= ChargefrxRprt.FindObject('Mob') as TfrxMemoView;
+    Mob.Text:= MainForm.CompanyTable.FieldByName('mob_comp').AsString ;
+    Mob.Visible:=True;
+
+      Adr:= ChargefrxRprt.FindObject('Adr') as TfrxMemoView;
+    Adr.Text:= MainForm.CompanyTable.FieldByName('adr_comp').AsString ;
+    Adr.Visible:=True;
+
+      Logo:= ChargefrxRprt.FindObject('Logo') as TfrxPictureView;
+      Logo.Visible:=True;
+
+        if (MainForm.CompanyTable.fieldbyname('logo_comp').Value <> null) then
+      begin
+              S := TMemoryStream.Create;
+          try
+            TBlobField(MainForm.CompanyTable.FieldByName('logo_comp')).SaveToStream(S);
+            S.Position := 0;
+            Jpg := TJPEGImage.Create;
+            try
+              Jpg.LoadFromStream(S);
+              Logo.Picture.Assign(Jpg);
+                finally
+              Jpg.Free;
+            end;
+          finally
+            S.Free;
+          end;
+
+           end;
+
+  end;
+
+
+
+      str1:='';
+    str1:= MontantEnToutesLettres(DataModuleF.ChargesTable.FieldByName('montttc_ch').AsCurrency);
+    str1[1] := Upcase(str1[1]);
+    MoneyWordRX := ChargefrxRprt.FindObject('MoneyWordRX') as TfrxMemoView;
+    MoneyWordRX.Text:='';
+    MoneyWordRX.Text :=str1;// StringReplace(ObserBonLivGLbl.Caption, '%my_str%', 'new string', [rfReplaceAll]);
+
+end;
+
+procedure TChargesFListF.P1Click(Sender: TObject);
+begin
+  DataModuleF.ChargesTable.DisableControls;
+   ChargefrxRprt.PrepareReport;
+   GettingDataRecu;
+
+  ChargefrxRprt.PrepareReport;
+  ChargefrxRprt.ShowReport;
+
+  DataModuleF.ChargesTable.EnableControls;
+end;
+
+procedure TChargesFListF.P2Click(Sender: TObject);
+begin
+  DataModuleF.ChargesTable.DisableControls;
+   ChargeListfrxRprt.PrepareReport;
+   GettingData;
+
+  ChargeListfrxRprt.PrepareReport;
+  ChargeListfrxRprt.ShowReport;
+
+  DataModuleF.ChargesTable.EnableControls;
+end;
+
 procedure TChargesFListF.PreviosBARecbtnClick(Sender: TObject);
 begin
 DataModuleF.ChargesTable.Prior;
@@ -527,4 +641,30 @@ begin
      end;
 end;
 
-end. 
+procedure TChargesFListF.sSpeedButton1Click(Sender: TObject);
+begin
+DataModuleF.ChargesTable.DisableControls;
+
+    GettingData;
+
+ChargeListfrxRprt.PrepareReport;
+frxXLSExport1.FileName := 'Etat de Charges';
+ChargeListfrxRprt.Export(frxXLSExport1);
+
+DataModuleF.ChargesTable.EnableControls;
+end;
+
+procedure TChargesFListF.sSpeedButton3Click(Sender: TObject);
+begin
+DataModuleF.ChargesTable.DisableControls;
+
+    GettingData;
+
+ChargeListfrxRprt.PrepareReport;
+frxPDFExport1.FileName := 'Etat de Charges';
+ChargeListfrxRprt.Export(frxPDFExport1);
+
+DataModuleF.ChargesTable.EnableControls;
+end;
+
+end.

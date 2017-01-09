@@ -83,6 +83,10 @@ type
     procedure ModePaieChargeGCbxChange(Sender: TObject);
     procedure MontantTTCChargeGEdtChange(Sender: TObject);
     procedure MontantHTChargeGEdtChange(Sender: TObject);
+    procedure MontantHTChargeGEdtClick(Sender: TObject);
+    procedure MontantTVAChargeGEdtClick(Sender: TObject);
+    procedure MontantTimberChargeGEdtClick(Sender: TObject);
+    procedure MontantTTCChargeGEdtClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -346,6 +350,13 @@ begin
    MontantTTCChargeGEdt.Text := FloatToStrF((MontantHTCharge + MontantTVACharge + MontantTimberCharge),ffNumber,14,2);
 end;
 
+procedure TChargesGestionF.MontantHTChargeGEdtClick(Sender: TObject);
+begin
+//----- use this code to delte the blanks from the Tedit when enter that will avoide the not foit point error --///
+MontantHTChargeGEdt.Text := StringReplace(MontantHTChargeGEdt.Text, #32, '', [rfReplaceAll]);
+MontantHTChargeGEdt.SelectAll;
+end;
+
 procedure TChargesGestionF.MontantHTChargeGEdtExit(Sender: TObject);
 var
 MontantHTCharge: Currency;
@@ -379,6 +390,13 @@ begin
       Key := #0;
   end;
 
+end;
+
+procedure TChargesGestionF.MontantTimberChargeGEdtClick(Sender: TObject);
+begin
+//----- use this code to delte the blanks from the Tedit when enter that will avoide the not foit point error --///
+MontantTimberChargeGEdt.Text := StringReplace(MontantTimberChargeGEdt.Text, #32, '', [rfReplaceAll]);
+MontantTimberChargeGEdt.SelectAll;
 end;
 
 procedure TChargesGestionF.MontantTimberChargeGEdtExit(Sender: TObject);
@@ -430,6 +448,13 @@ begin
   MontantTTCChargeGErrorP.Visible:= False;
 end;
 
+procedure TChargesGestionF.MontantTTCChargeGEdtClick(Sender: TObject);
+begin
+//----- use this code to delte the blanks from the Tedit when enter that will avoide the not foit point error --///
+MontantTTCChargeGEdt.Text := StringReplace(MontantTTCChargeGEdt.Text, #32, '', [rfReplaceAll]);
+MontantTTCChargeGEdt.SelectAll;
+end;
+
 procedure TChargesGestionF.MontantTTCChargeGEdtExit(Sender: TObject);
 var
 MontantTTCCharge: Currency;
@@ -463,6 +488,13 @@ begin
       Key := #0;
   end;
 
+end;
+
+procedure TChargesGestionF.MontantTVAChargeGEdtClick(Sender: TObject);
+begin
+//----- use this code to delte the blanks from the Tedit when enter that will avoide the not foit point error --///
+MontantTVAChargeGEdt.Text := StringReplace(MontantTVAChargeGEdt.Text, #32, '', [rfReplaceAll]);
+MontantTVAChargeGEdt.SelectAll;
 end;
 
 procedure TChargesGestionF.MontantTVAChargeGEdtExit(Sender: TObject);

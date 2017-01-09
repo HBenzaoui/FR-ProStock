@@ -854,6 +854,7 @@ type
     procedure L1Click(Sender: TObject);
     procedure ListedetypesdeCharge1Click(Sender: TObject);
     procedure ListedetypesdeCharge2Click(Sender: TObject);
+    procedure FDPhysPgDriverLink1DriverCreated(Sender: TObject);
   private
    //---- this to value of changege we need it to check if theuser changed something
      CountInsert,CountUpdate,CountDelete   : Int64;
@@ -1075,6 +1076,8 @@ begin
   FormatSettings.CurrencyDecimals := 2;
   FormatSettings.DateSeparator:= '/';
   FormatSettings.ShortDateFormat:= 'dd/M/yyyy';
+  FormatSettings.CurrencyString:= '';
+  FormatSettings.CurrencyFormat:= 1;
 
 
   
@@ -3402,6 +3405,11 @@ procedure TMainForm.FCVFaceBtnClick(Sender: TObject);
 begin
 FactureV2MainFMnmClick(Sender);
 BonFacVF.AddBVFacBtnClick(Sender);
+end;
+
+procedure TMainForm.FDPhysPgDriverLink1DriverCreated(Sender: TObject);
+begin
+//C:\Program Files (x86)\PostgreSQL\9.6\bin\libpq.dll
 end;
 
 procedure TMainForm.BRFaceBtnClick(Sender: TObject);

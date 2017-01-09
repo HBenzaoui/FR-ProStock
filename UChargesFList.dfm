@@ -460,9 +460,10 @@ object ChargesFListF: TChargesFListF
       Anchors = [akTop, akRight]
       ParentShowHint = False
       ShowHint = True
+      OnClick = sSpeedButton1Click
       SkinData.SkinSection = 'SPEEDBUTTON'
-      ImageIndex = 7
       Images = MainForm.PanelIcons24
+      ImageIndex = 7
     end
     object sSpeedButton2: TsSpeedButton
       Left = 1078
@@ -476,8 +477,8 @@ object ChargesFListF: TChargesFListF
       ButtonStyle = tbsDropDown
       SkinData.SkinSection = 'SPEEDBUTTON'
       DropdownMenu = PopupMenu1
-      ImageIndex = 8
       Images = MainForm.PanelIcons24
+      ImageIndex = 8
     end
     object sSpeedButton3: TsSpeedButton
       Left = 1156
@@ -487,9 +488,10 @@ object ChargesFListF: TChargesFListF
       Anchors = [akTop, akRight]
       ParentShowHint = False
       ShowHint = True
+      OnClick = sSpeedButton3Click
       SkinData.SkinSection = 'SPEEDBUTTON'
-      ImageIndex = 9
       Images = MainForm.PanelIcons24
+      ImageIndex = 9
     end
     object Label1: TLabel
       Left = 314
@@ -532,8 +534,8 @@ object ChargesFListF: TChargesFListF
       ShowHint = True
       OnClick = FisrtBARecbtnClick
       SkinData.SkinSection = 'SPEEDBUTTON'
-      ImageIndex = 0
       Images = MainForm.PanelIcons24
+      ImageIndex = 0
       ShowCaption = False
     end
     object PreviosBARecbtn: TsSpeedButton
@@ -545,8 +547,8 @@ object ChargesFListF: TChargesFListF
       ShowHint = True
       OnClick = PreviosBARecbtnClick
       SkinData.SkinSection = 'SPEEDBUTTON'
-      ImageIndex = 1
       Images = MainForm.PanelIcons24
+      ImageIndex = 1
     end
     object NextBARecbtn: TsSpeedButton
       Left = 521
@@ -557,8 +559,8 @@ object ChargesFListF: TChargesFListF
       ShowHint = True
       OnClick = NextBARecbtnClick
       SkinData.SkinSection = 'SPEEDBUTTON'
-      ImageIndex = 2
       Images = MainForm.PanelIcons24
+      ImageIndex = 2
       ShowCaption = False
     end
     object LastBARecbtn: TsSpeedButton
@@ -570,13 +572,13 @@ object ChargesFListF: TChargesFListF
       ShowHint = True
       OnClick = LastBARecbtnClick
       SkinData.SkinSection = 'SPEEDBUTTON'
-      ImageIndex = 3
       Images = MainForm.PanelIcons24
+      ImageIndex = 3
     end
     object PeriodCaiseeListLbl: TLabel
       Left = 600
       Top = 15
-      Width = 34
+      Width = 31
       Height = 16
       Caption = 'Type:'
       Color = 15722984
@@ -592,7 +594,7 @@ object ChargesFListF: TChargesFListF
     object Label3: TLabel
       Left = 587
       Top = 50
-      Width = 47
+      Width = 44
       Height = 16
       Caption = 'S.Type:'
       Color = 15722984
@@ -1384,7 +1386,7 @@ object ChargesFListF: TChargesFListF
     Top = 618
   end
   object ChargeListfrxRprt: TfrxReport
-    Version = '5.5'
+    Version = '5.4.6'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -1392,15 +1394,15 @@ object ChargesFListF: TChargesFListF
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 42576.399521435200000000
-    ReportOptions.LastChange = 42737.053941643520000000
+    ReportOptions.LastChange = 42744.707717083340000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       ''
       'begin'
       ''
       'end.')
-    Left = 526
-    Top = 296
+    Left = 278
+    Top = 246
     Datasets = <
       item
         DataSet = frxChargeListDB
@@ -1476,7 +1478,7 @@ object ChargesFListF: TChargesFListF
       BottomMargin = 10.000000000000000000
       object PageHeader1: TfrxPageHeader
         FillType = ftBrush
-        Height = 88.488250000000000000
+        Height = 111.165430000000000000
         Top = 18.897650000000000000
         Width = 1046.929810000000000000
         object PreiodRX: TfrxMemoView
@@ -1516,7 +1518,7 @@ object ChargesFListF: TChargesFListF
         end
         object Memo2: TfrxMemoView
           Left = 113.409400000000000000
-          Top = 60.313571820000000000
+          Top = 83.313571820000000000
           Width = 86.929190000000000000
           Height = 28.174678180000000000
           AllowExpressions = False
@@ -1532,7 +1534,7 @@ object ChargesFListF: TChargesFListF
           VAlign = vaCenter
         end
         object Memo5: TfrxMemoView
-          Top = 60.313571820000000000
+          Top = 83.313571820000000000
           Width = 113.385826770000000000
           Height = 28.174678180000000000
           AllowExpressions = False
@@ -1566,7 +1568,7 @@ object ChargesFListF: TChargesFListF
         end
         object Memo3: TfrxMemoView
           Left = 200.079011100000000000
-          Top = 60.313571820000000000
+          Top = 83.313571820000000000
           Width = 238.315090000000000000
           Height = 28.174678180000000000
           AllowExpressions = False
@@ -1584,7 +1586,7 @@ object ChargesFListF: TChargesFListF
         end
         object Memo8: TfrxMemoView
           Left = 671.220941100000000000
-          Top = 60.313571820000000000
+          Top = 83.313571820000000000
           Width = 94.488188980000000000
           Height = 28.174678180000000000
           AllowExpressions = False
@@ -1602,7 +1604,7 @@ object ChargesFListF: TChargesFListF
         end
         object Memo15: TfrxMemoView
           Left = 437.732691100000000000
-          Top = 60.472480000000000000
+          Top = 83.472480000000000000
           Width = 117.370130000000000000
           Height = 28.174678180000000000
           AllowExpressions = False
@@ -1620,7 +1622,7 @@ object ChargesFListF: TChargesFListF
         end
         object Memo17: TfrxMemoView
           Left = 554.677651100000000000
-          Top = 60.472480000000000000
+          Top = 83.472480000000000000
           Width = 117.370130000000000000
           Height = 28.174678180000000000
           AllowExpressions = False
@@ -1638,7 +1640,7 @@ object ChargesFListF: TChargesFListF
         end
         object Memo10: TfrxMemoView
           Left = 764.913891100000000000
-          Top = 60.472480000000000000
+          Top = 83.472480000000000000
           Width = 94.488188980000000000
           Height = 28.174678180000000000
           AllowExpressions = False
@@ -1656,7 +1658,7 @@ object ChargesFListF: TChargesFListF
         end
         object Memo22: TfrxMemoView
           Left = 858.402141100000000000
-          Top = 60.472480000000000000
+          Top = 83.472480000000000000
           Width = 94.488188980000000000
           Height = 28.174678180000000000
           AllowExpressions = False
@@ -1674,7 +1676,7 @@ object ChargesFListF: TChargesFListF
         end
         object Memo6: TfrxMemoView
           Left = 951.299791100000000000
-          Top = 60.472480000000000000
+          Top = 83.472480000000000000
           Width = 94.488188980000000000
           Height = 28.174678180000000000
           AllowExpressions = False
@@ -1690,11 +1692,28 @@ object ChargesFListF: TChargesFListF
           ParentFont = False
           VAlign = vaCenter
         end
+        object Caisse: TfrxMemoView
+          Align = baCenter
+          Left = 302.992321665000000000
+          Top = 56.692950000000000000
+          Width = 440.945166670000000000
+          Height = 21.417336670000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -12
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = [fsBold]
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'Caisse :')
+          ParentFont = False
+          VAlign = vaCenter
+        end
       end
       object PageFooter1: TfrxPageFooter
         FillType = ftBrush
         Height = 22.677180000000000000
-        Top = 298.582870000000000000
+        Top = 321.260050000000000000
         Width = 1046.929810000000000000
         object Page: TfrxMemoView
           Left = 899.528140000000000000
@@ -1757,7 +1776,7 @@ object ChargesFListF: TChargesFListF
       object MasterData1: TfrxMasterData
         FillType = ftBrush
         Height = 21.236240000000000000
-        Top = 166.299320000000000000
+        Top = 188.976500000000000000
         Width = 1046.929810000000000000
         DataSet = frxChargeListDB
         DataSetName = 'frxChargeListDB'
@@ -1952,7 +1971,7 @@ object ChargesFListF: TChargesFListF
       object Footer1: TfrxFooter
         FillType = ftBrush
         Height = 26.834662760000000000
-        Top = 211.653680000000000000
+        Top = 234.330860000000000000
         Width = 1046.929810000000000000
         object Memo18: TfrxMemoView
           Left = 671.047620000000000000
@@ -2014,7 +2033,7 @@ object ChargesFListF: TChargesFListF
           Font.Style = [fsBold]
           HAlign = haRight
           Memo.UTF8W = (
-            'Number de reglements :')
+            'Number des Charges :')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -2154,12 +2173,494 @@ object ChargesFListF: TChargesFListF
   object PopupMenu1: TPopupMenu
     OwnerDraw = True
     Left = 986
-    Top = 138
+    Top = 140
     object P1: TMenuItem
       Caption = 'Print Bon Charge'
+      OnClick = P1Click
     end
     object P2: TMenuItem
       Caption = 'Print Liste de Charges'
+      OnClick = P2Click
+    end
+  end
+  object ChargefrxRprt: TfrxReport
+    Version = '5.4.6'
+    DotMatrixReport = False
+    IniFile = '\Software\Fast Reports'
+    PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
+    PreviewOptions.Zoom = 1.000000000000000000
+    PrintOptions.Printer = 'Default'
+    PrintOptions.PrintOnSheet = 0
+    ReportOptions.CreateDate = 42576.399521435200000000
+    ReportOptions.LastChange = 42744.700686724540000000
+    ScriptLanguage = 'PascalScript'
+    ScriptText.Strings = (
+      ''
+      'begin'
+      ''
+      'end.')
+    Left = 276
+    Top = 308
+    Datasets = <
+      item
+        DataSet = frxChargeListDB
+        DataSetName = 'frxChargeListDB'
+      end>
+    Variables = <>
+    Style = <
+      item
+        Name = 'Title'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -16
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+        Fill.BackColor = 14211288
+      end
+      item
+        Name = 'Header'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+        Fill.BackColor = 15790320
+      end
+      item
+        Name = 'Group header'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+        Fill.BackColor = 15790320
+      end
+      item
+        Name = 'Data'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Arial'
+        Font.Style = []
+      end
+      item
+        Name = 'Group footer'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Arial'
+        Font.Style = []
+        Frame.Typ = [ftTop]
+      end
+      item
+        Name = 'Header line'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Arial'
+        Font.Style = []
+        Frame.Width = 2.000000000000000000
+      end>
+    object Data: TfrxDataPage
+      Height = 1000.000000000000000000
+      Width = 1000.000000000000000000
+    end
+    object Page1: TfrxReportPage
+      PaperWidth = 210.000000000000000000
+      PaperHeight = 148.500000000000000000
+      PaperSize = 256
+      LeftMargin = 10.000000000000000000
+      RightMargin = 10.000000000000000000
+      TopMargin = 10.000000000000000000
+      BottomMargin = 10.000000000000000000
+      object PageHeader1: TfrxPageHeader
+        FillType = ftBrush
+        Height = 462.661720000000000000
+        Top = 18.897650000000000000
+        Width = 718.110700000000000000
+        object Memo1: TfrxMemoView
+          Align = baCenter
+          Left = 253.934498330000000000
+          Top = 84.228406670000000000
+          Width = 210.241703340000000000
+          Height = 36.535456670000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -24
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = [fsBold]
+          Frame.Typ = [ftBottom]
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'Re'#231'u de Paiement')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo2: TfrxMemoView
+          Left = 3.779530000000000000
+          Top = 163.960730000000000000
+          Width = 123.312513340000000000
+          Height = 28.976396670000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -15
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = []
+          Memo.UTF8W = (
+            'Nous soussign'#233's:')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo3: TfrxMemoView
+          Left = 128.092043340000000000
+          Top = 167.960730000000000000
+          Width = 573.076583340000000000
+          Height = 21.417336670000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -15
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = [fsBold]
+          Frame.Style = fsDot
+          Frame.Typ = [ftBottom]
+          Frame.Width = 0.100000000000000000
+          Memo.UTF8W = (
+            'Nous soussign'#233's:')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo4: TfrxMemoView
+          Left = 3.779530000000000000
+          Top = 201.315090000000000000
+          Width = 217.800763340000000000
+          Height = 28.976396670000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -15
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = []
+          Memo.UTF8W = (
+            'Certifions avoir pay'#233' en date du:')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo5: TfrxMemoView
+          Left = 225.359823340000000000
+          Top = 208.874150000000000000
+          Width = 77.958153340000000000
+          Height = 13.858276670000000000
+          DisplayFormat.Kind = fkDateTime
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -15
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = [fsBold]
+          Frame.Style = fsDot
+          Frame.Typ = [ftBottom]
+          Frame.Width = 0.100000000000000000
+          Memo.UTF8W = (
+            '[frxChargeListDB."date_ch"]')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo6: TfrxMemoView
+          Left = 309.921460000000000000
+          Top = 201.315090000000000000
+          Width = 96.855803340000000000
+          Height = 28.976396670000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -15
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = []
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'La somme de:')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo7: TfrxMemoView
+          Left = 411.556793340000000000
+          Top = 208.874150000000000000
+          Width = 289.611833340000000000
+          Height = 13.858276670000000000
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -15
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = [fsBold]
+          Frame.Style = fsDot
+          Frame.Typ = [ftBottom]
+          Frame.Width = 0.100000000000000000
+          HAlign = haCenter
+          Memo.UTF8W = (
+            '[frxChargeListDB."montttc_ch"]')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo9: TfrxMemoView
+          Left = 3.779530000000000000
+          Top = 270.685220000000000000
+          Width = 40.162853340000000000
+          Height = 28.976396670000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -15
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = []
+          Memo.UTF8W = (
+            'Motif:')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo10: TfrxMemoView
+          Left = 44.942383340000000000
+          Top = 274.685220000000000000
+          Width = 656.226243340000000000
+          Height = 21.417336670000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -15
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = [fsBold]
+          Frame.Style = fsDot
+          Frame.Typ = [ftBottom]
+          Frame.Width = 0.100000000000000000
+          Memo.UTF8W = (
+            '[frxChargeListDB."nom_ch"]')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo11: TfrxMemoView
+          Left = 3.779530000000000000
+          Top = 311.260050000000000000
+          Width = 96.855803340000000000
+          Height = 28.976396670000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -15
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = []
+          Memo.UTF8W = (
+            'Observations:')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo12: TfrxMemoView
+          Left = 101.635333340000000000
+          Top = 315.260050000000000000
+          Width = 599.533293340000000000
+          Height = 21.417336670000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -15
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = []
+          Frame.Style = fsDot
+          Frame.Typ = [ftBottom]
+          Frame.Width = 0.100000000000000000
+          Memo.UTF8W = (
+            '[frxChargeListDB."obser_ch"]')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo13: TfrxMemoView
+          Left = 3.779530000000000000
+          Top = 348.834880000000000000
+          Width = 361.422903340000000000
+          Height = 28.976396670000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = []
+          Memo.UTF8W = (
+            'Ce re'#231'u est '#233'tabli pour servir et valoir ce que de droit.')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo14: TfrxMemoView
+          Left = 63.031540000000000000
+          Top = 386.189240000000000000
+          Width = 96.855803340000000000
+          Height = 28.976396670000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -15
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = [fsUnderline]
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'Signature')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo15: TfrxMemoView
+          Left = 287.165909870000000000
+          Top = 386.189240000000000000
+          Width = 143.778880260000000000
+          Height = 28.976396670000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -15
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = [fsUnderline]
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'Signature b'#233'nificiaire')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo17: TfrxMemoView
+          Left = 3.779530000000000000
+          Top = 128.165430000000000000
+          Width = 28.824263340000000000
+          Height = 28.976396670000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -15
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = []
+          Memo.UTF8W = (
+            'N'#176' :')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo18: TfrxMemoView
+          Left = 33.603793340000000000
+          Top = 132.165430000000000000
+          Width = 119.532983340000000000
+          Height = 21.417336670000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = [fsBold]
+          Frame.Style = fsDot
+          Frame.Typ = [ftBottom]
+          Frame.Width = 0.100000000000000000
+          HAlign = haCenter
+          Memo.UTF8W = (
+            '[frxChargeListDB."refer_ch"]')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Name: TfrxMemoView
+          Left = 4.889765000000000000
+          Top = 2.220545670000000000
+          Width = 260.787570000000000000
+          Height = 22.677165350000000000
+          Visible = False
+          DataSetName = 'S_CONFIG'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -15
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = [fsBold]
+          Memo.UTF8W = (
+            'Name')
+          ParentFont = False
+        end
+        object Logo: TfrxPictureView
+          Left = 476.220780000000000000
+          Top = 2.220545670000000000
+          Width = 234.330860000000000000
+          Height = 64.251936770000000000
+          Visible = False
+          Center = True
+          DataField = 'LOGO'
+          DataSetName = 'S_ENTREP'
+          HightQuality = False
+          Transparent = True
+          TransparentColor = clWhite
+        end
+        object Tel: TfrxMemoView
+          Left = 6.015750630000000000
+          Top = 29.236240000000000000
+          Width = 149.055214370000000000
+          Height = 15.118105350000000000
+          Visible = False
+          DataSetName = 'S_CONFIG'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -15
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = [fsBold]
+          Memo.UTF8W = (
+            'Tel:')
+          ParentFont = False
+        end
+        object Mob: TfrxMemoView
+          Left = 6.015750630000000000
+          Top = 51.913420000000000000
+          Width = 148.913400470000000000
+          Height = 15.118105350000000000
+          Visible = False
+          DataSetName = 'S_CONFIG'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -15
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = [fsBold]
+          Memo.UTF8W = (
+            'Mob:')
+          ParentFont = False
+        end
+        object Adr: TfrxMemoView
+          Left = 4.889765000000000000
+          Top = 73.811070000000000000
+          Width = 215.433210000000000000
+          Height = 34.015755350000000000
+          Visible = False
+          StretchMode = smActualHeight
+          DataSetName = 'S_CONFIG'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -15
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = [fsBold]
+          Memo.UTF8W = (
+            'Adr')
+          ParentFont = False
+        end
+        object MoneyWordRX: TfrxMemoView
+          Left = 7.779530000000000000
+          Top = 241.110390000000000000
+          Width = 689.764187170000000000
+          Height = 15.118120000000000000
+          StretchMode = smActualHeight
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -15
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = [fsBold]
+          Frame.Style = fsDot
+          Frame.Typ = [ftBottom]
+          Frame.Width = 0.100000000000000000
+          Memo.UTF8W = (
+            'Moeny in words')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo16: TfrxMemoView
+          Left = 548.811380000000000000
+          Top = 386.189240000000000000
+          Width = 115.753453340000000000
+          Height = 28.976396670000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -15
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = [fsUnderline]
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'Signature g'#233'rant')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+      end
     end
   end
 end

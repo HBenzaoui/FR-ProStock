@@ -378,7 +378,7 @@ object DataModuleF: TDataModuleF
       'DriverID=pG')
     Connected = True
     LoginPrompt = False
-    Left = 77
+    Left = 79
     Top = 22
   end
   object UsersTable: TFDQuery
@@ -1247,7 +1247,6 @@ object DataModuleF: TDataModuleF
     end
   end
   object ChargesTable: TFDQuery
-    Active = True
     FilterOptions = [foCaseInsensitive]
     IndexFieldNames = 'code_ch'
     Connection = MainForm.GstockdcConnection
@@ -1364,7 +1363,6 @@ object DataModuleF: TDataModuleF
     end
   end
   object Charge_typeTable: TFDQuery
-    Active = True
     FilterOptions = [foCaseInsensitive]
     IndexFieldNames = 'code_cht'
     Connection = MainForm.GstockdcConnection
@@ -1384,7 +1382,6 @@ object DataModuleF: TDataModuleF
     end
   end
   object Charge_s_typeTable: TFDQuery
-    Active = True
     FilterOptions = [foCaseInsensitive]
     IndexFieldNames = 'code_chst'
     Connection = MainForm.GstockdcConnection
@@ -1404,6 +1401,7 @@ object DataModuleF: TDataModuleF
     end
   end
   object PertesTable: TFDQuery
+    Active = True
     OnCalcFields = PertesTableCalcFields
     FilterOptions = [foCaseInsensitive]
     IndexFieldNames = 'code_pr'
@@ -1512,6 +1510,7 @@ object DataModuleF: TDataModuleF
     end
   end
   object Perte_typeTable: TFDQuery
+    Active = True
     FilterOptions = [foCaseInsensitive]
     IndexFieldNames = 'code_prt'
     Connection = MainForm.GstockdcConnection

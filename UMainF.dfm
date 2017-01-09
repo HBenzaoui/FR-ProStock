@@ -1093,7 +1093,7 @@ object MainForm: TMainForm
       Height = 15
       Caption = 'Admin'
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWhite
+      Font.Color = clWindowText
       Font.Height = 15
       Font.Name = 'Segoe UI'
       Font.Style = []
@@ -21153,7 +21153,6 @@ object MainForm: TMainForm
           4E44AE426082FFEEC7B6}
       end>
     MenuSupport.IcoLineSkin = 'ICOLINE'
-    MenuSupport.UseExtraLine = True
     MenuSupport.ExtraLineFont.Charset = RUSSIAN_CHARSET
     MenuSupport.ExtraLineFont.Color = clWindowText
     MenuSupport.ExtraLineFont.Height = -17
@@ -21332,6 +21331,8 @@ object MainForm: TMainForm
     end
   end
   object FDPhysPgDriverLink1: TFDPhysPgDriverLink
+    VendorLib = 'C:\Program Files (x86)\PostgreSQL\9.6\bin\libpq.dll'
+    OnDriverCreated = FDPhysPgDriverLink1DriverCreated
     Left = 600
     Top = 154
   end

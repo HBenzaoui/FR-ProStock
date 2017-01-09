@@ -429,8 +429,8 @@ object BonCtrGestionF: TBonCtrGestionF
     object Label6: TLabel
       Left = 9
       Top = 59
-      Width = 92
-      Height = 18
+      Width = 96
+      Height = 19
       Anchors = [akLeft, akBottom]
       Caption = 'Les Produits:'
       Color = 15722984
@@ -576,8 +576,8 @@ object BonCtrGestionF: TBonCtrGestionF
       Visible = False
       OnClick = ClearProduitBonCtrGBtnClick
       SkinData.SkinSection = 'SPEEDBUTTON'
-      ImageIndex = 16
       Images = MainForm.PanelIcons24
+      ImageIndex = 16
     end
     object ShowCalculaturBonCtrGBtn: TsSpeedButton
       Left = 960
@@ -590,8 +590,8 @@ object BonCtrGestionF: TBonCtrGestionF
       ShowHint = True
       OnClick = ShowCalculaturBonCtrGBtnClick
       SkinData.SkinSection = 'SPEEDBUTTON'
-      ImageIndex = 24
       Images = MainForm.PanelIcons24
+      ImageIndex = 24
     end
     object ShowKeyBoardBonCtrGBtn: TsSpeedButton
       Left = 996
@@ -604,8 +604,8 @@ object BonCtrGestionF: TBonCtrGestionF
       ShowHint = True
       OnClick = ShowKeyBoardBonCtrGBtnClick
       SkinData.SkinSection = 'SPEEDBUTTON'
-      ImageIndex = 43
       Images = MainForm.PanelIcons24
+      ImageIndex = 43
     end
     object DeleteProduitBonCtrGBtn: TsSpeedButton
       Left = 888
@@ -619,8 +619,8 @@ object BonCtrGestionF: TBonCtrGestionF
       Visible = False
       OnClick = DeleteProduitBonCtrGBtnClick
       SkinData.SkinSection = 'SPEEDBUTTON'
-      ImageIndex = 14
       Images = MainForm.PanelIcons24
+      ImageIndex = 14
     end
     object CloseBonCtrGBtn: TsSpeedButton
       Left = 1068
@@ -633,8 +633,8 @@ object BonCtrGestionF: TBonCtrGestionF
       ShowHint = True
       OnClick = CloseBonCtrGBtnClick
       SkinData.SkinSection = 'SPEEDBUTTON'
-      ImageIndex = 45
       Images = MainForm.PanelIcons24
+      ImageIndex = 45
     end
     object MinimizeBonCtrGBtn: TsSpeedButton
       Left = 1032
@@ -647,8 +647,8 @@ object BonCtrGestionF: TBonCtrGestionF
       ShowHint = True
       OnClick = MinimizeBonCtrGBtnClick
       SkinData.SkinSection = 'SPEEDBUTTON'
-      ImageIndex = 44
       Images = MainForm.PanelIcons24
+      ImageIndex = 44
     end
     object sImage3: TsImage
       Left = 839
@@ -814,7 +814,7 @@ object BonCtrGestionF: TBonCtrGestionF
     object Label1: TLabel
       Left = 5
       Top = 4
-      Width = 70
+      Width = 75
       Height = 28
       Caption = 'Total'
       Font.Charset = DEFAULT_CHARSET
@@ -825,9 +825,9 @@ object BonCtrGestionF: TBonCtrGestionF
       ParentFont = False
     end
     object Label17: TLabel
-      Left = 1233
+      Left = 1226
       Top = 4
-      Width = 106
+      Width = 113
       Height = 28
       Anchors = [akTop, akRight]
       BiDiMode = bdRightToLeft
@@ -839,7 +839,6 @@ object BonCtrGestionF: TBonCtrGestionF
       Font.Style = [fsBold]
       ParentBiDiMode = False
       ParentFont = False
-      ExplicitLeft = 848
     end
     object Label10: TLabel
       Left = 1259
@@ -1027,8 +1026,8 @@ object BonCtrGestionF: TBonCtrGestionF
         ShowHint = True
         OnClick = sSpeedButton4Click
         SkinData.SkinSection = 'SPEEDBUTTON'
-        ImageIndex = 3
         Images = MainForm.ComptoiIcons48
+        ImageIndex = 3
       end
       object sSpeedButton5: TsSpeedButton
         Left = 89
@@ -1040,8 +1039,8 @@ object BonCtrGestionF: TBonCtrGestionF
         ShowHint = True
         OnClick = sSpeedButton5Click
         SkinData.SkinSection = 'SPEEDBUTTON'
-        ImageIndex = 2
         Images = MainForm.ComptoiIcons48
+        ImageIndex = 2
         ShowCaption = False
       end
       object sSpeedButton6: TsSpeedButton
@@ -1054,8 +1053,8 @@ object BonCtrGestionF: TBonCtrGestionF
         ShowHint = True
         OnClick = sSpeedButton6Click
         SkinData.SkinSection = 'SPEEDBUTTON'
-        ImageIndex = 1
         Images = MainForm.ComptoiIcons48
+        ImageIndex = 1
       end
       object sSpeedButton7: TsSpeedButton
         Left = 3
@@ -1067,8 +1066,8 @@ object BonCtrGestionF: TBonCtrGestionF
         ShowHint = True
         OnClick = sSpeedButton7Click
         SkinData.SkinSection = 'SPEEDBUTTON'
-        ImageIndex = 0
         Images = MainForm.ComptoiIcons48
+        ImageIndex = 0
         ShowCaption = False
       end
       object Panel14: TPanel
@@ -1241,8 +1240,8 @@ object BonCtrGestionF: TBonCtrGestionF
         ShowHint = True
         OnClick = sSpeedButton2Click
         SkinData.SkinSection = 'SPEEDBUTTON'
-        ImageIndex = 6
         Images = MainForm.ComptoiIcons48
+        ImageIndex = 6
         ExplicitLeft = 102
       end
       object sSpeedButton1: TsSpeedButton
@@ -1255,8 +1254,8 @@ object BonCtrGestionF: TBonCtrGestionF
         ShowHint = True
         OnClick = sSpeedButton1Click
         SkinData.SkinSection = 'SPEEDBUTTON'
-        ImageIndex = 5
         Images = MainForm.ComptoiIcons48
+        ImageIndex = 5
         ExplicitLeft = 59
       end
       object PrintTicketBVCtrBonCtrGBtn: TsSpeedButton
@@ -1269,8 +1268,8 @@ object BonCtrGestionF: TBonCtrGestionF
         ShowHint = True
         OnClick = PrintTicketBVCtrBonCtrGBtnClick
         SkinData.SkinSection = 'SPEEDBUTTON'
-        ImageIndex = 15
         Images = MainForm.ComptoiIcons48
+        ImageIndex = 15
         ExplicitLeft = 16
       end
       object RegleVersementSGLbl: TLabel
@@ -2055,7 +2054,7 @@ object BonCtrGestionF: TBonCtrGestionF
         Left = 116
         Top = 77
         Width = 124
-        Height = 26
+        Height = 27
         Date = 42592.456630983800000000
         Time = 42592.456630983800000000
         Font.Charset = DEFAULT_CHARSET

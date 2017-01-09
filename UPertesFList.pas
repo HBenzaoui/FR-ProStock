@@ -42,8 +42,8 @@ type
     Panel3: TPanel;
     PertesListDBGridEh: TDBGridEh;
     PerteListDataS: TDataSource;
-    ChargeListfrxRprt: TfrxReport;
-    frxChargeListDB: TfrxDBDataset;
+    PerteListfrxRprt: TfrxReport;
+    frxPerteListDB: TfrxDBDataset;
     frxXLSExport1: TfrxXLSExport;
     frxPDFExport1: TfrxPDFExport;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -65,7 +65,11 @@ type
     procedure TypePerteListCbxChange(Sender: TObject);
     procedure TypePerteListCbxExit(Sender: TObject);
     procedure ResherchPerteRdioBtnClick(Sender: TObject);
+    procedure sSpeedButton2Click(Sender: TObject);
+    procedure sSpeedButton1Click(Sender: TObject);
+    procedure sSpeedButton3Click(Sender: TObject);
   private
+    procedure GettingData;
     { Private declarations }
   public
     { Public declarations }
@@ -368,6 +372,58 @@ procedure TPertesFListF.ResherchPerteRdioBtnClick(Sender: TObject);
 begin
 ResearchPerteEdt.Clear;
 ResearchPerteEdt.SetFocus;
+end;
+
+procedure TPertesFListF.GettingData;
+var
+  PreiodRX,Agent,Caisse: TfrxMemoView;
+begin
+  PreiodRX:= PerteListfrxRprt.FindObject('PreiodRX') as TfrxMemoView;
+  PreiodRX.Text:= 'Période du : ' + DateToStr(DateStartPerteD.Date) + ' au ' + DateToStr(DateEndPerteD.Date) ;
+
+  Caisse:= PerteListfrxRprt.FindObject('Caisse') as TfrxMemoView;
+  Caisse.Text:= 'Type : ' + TypePerteListCbx.Text   ;
+
+      Agent:= PerteListfrxRprt.FindObject('Agent') as TfrxMemoView;
+  Agent.Text:= MainForm.UserNameLbl.Caption ;
+  end;
+
+procedure TPertesFListF.sSpeedButton1Click(Sender: TObject);
+begin
+DataModuleF.PertesTable.DisableControls;
+
+    GettingData;
+
+PerteListfrxRprt.PrepareReport;
+frxXLSExport1.FileName := 'Etat de Pertes';
+PerteListfrxRprt.Export(frxXLSExport1);
+
+DataModuleF.PertesTable.EnableControls;
+end;
+
+procedure TPertesFListF.sSpeedButton2Click(Sender: TObject);
+begin
+  DataModuleF.PertesTable.DisableControls;
+   PerteListfrxRprt.PrepareReport;
+   GettingData;
+
+  PerteListfrxRprt.PrepareReport;
+  PerteListfrxRprt.ShowReport;
+
+  DataModuleF.PertesTable.EnableControls;
+end;
+
+procedure TPertesFListF.sSpeedButton3Click(Sender: TObject);
+begin
+DataModuleF.PertesTable.DisableControls;
+
+    GettingData;
+
+PerteListfrxRprt.PrepareReport;
+frxPDFExport1.FileName := 'Etat de Pertes';
+PerteListfrxRprt.Export(frxPDFExport1);
+
+DataModuleF.PertesTable.EnableControls;
 end;
 
 procedure TPertesFListF.TypePerteListCbxChange(Sender: TObject);

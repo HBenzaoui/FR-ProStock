@@ -126,8 +126,8 @@ object BonFacVGestionF: TBonFacVGestionF
     object Label4: TLabel
       Left = 9
       Top = 268
-      Width = 92
-      Height = 18
+      Width = 96
+      Height = 19
       Anchors = [akLeft, akBottom]
       Caption = 'Les Produits:'
       Color = 15722984
@@ -139,7 +139,6 @@ object BonFacVGestionF: TBonFacVGestionF
       ParentColor = False
       ParentFont = False
       StyleElements = []
-      ExplicitTop = 236
     end
     object sSpeedButton1: TsSpeedButton
       Left = 1005
@@ -151,8 +150,8 @@ object BonFacVGestionF: TBonFacVGestionF
       ShowHint = True
       OnClick = sSpeedButton1Click
       SkinData.SkinSection = 'SPEEDBUTTON'
-      ImageIndex = 7
       Images = MainForm.PanelIcons24
+      ImageIndex = 7
     end
     object sSpeedButton2: TsSpeedButton
       Left = 969
@@ -164,8 +163,8 @@ object BonFacVGestionF: TBonFacVGestionF
       ShowHint = True
       OnClick = sSpeedButton2Click
       SkinData.SkinSection = 'SPEEDBUTTON'
-      ImageIndex = 8
       Images = MainForm.PanelIcons24
+      ImageIndex = 8
     end
     object sSpeedButton3: TsSpeedButton
       Left = 1041
@@ -177,8 +176,8 @@ object BonFacVGestionF: TBonFacVGestionF
       ShowHint = True
       OnClick = sSpeedButton3Click
       SkinData.SkinSection = 'SPEEDBUTTON'
-      ImageIndex = 9
       Images = MainForm.PanelIcons24
+      ImageIndex = 9
     end
     object Label5: TLabel
       Left = 16
@@ -760,8 +759,8 @@ object BonFacVGestionF: TBonFacVGestionF
       ShowHint = True
       OnClick = sSpeedButton7Click
       SkinData.SkinSection = 'SPEEDBUTTON'
-      ImageIndex = 0
       Images = MainForm.PanelIcons24
+      ImageIndex = 0
       ShowCaption = False
     end
     object sSpeedButton6: TsSpeedButton
@@ -773,8 +772,8 @@ object BonFacVGestionF: TBonFacVGestionF
       ShowHint = True
       OnClick = sSpeedButton6Click
       SkinData.SkinSection = 'SPEEDBUTTON'
-      ImageIndex = 1
       Images = MainForm.PanelIcons24
+      ImageIndex = 1
     end
     object sSpeedButton5: TsSpeedButton
       Left = 431
@@ -785,8 +784,8 @@ object BonFacVGestionF: TBonFacVGestionF
       ShowHint = True
       OnClick = sSpeedButton5Click
       SkinData.SkinSection = 'SPEEDBUTTON'
-      ImageIndex = 2
       Images = MainForm.PanelIcons24
+      ImageIndex = 2
       ShowCaption = False
     end
     object sSpeedButton4: TsSpeedButton
@@ -798,8 +797,8 @@ object BonFacVGestionF: TBonFacVGestionF
       ShowHint = True
       OnClick = sSpeedButton4Click
       SkinData.SkinSection = 'SPEEDBUTTON'
-      ImageIndex = 3
       Images = MainForm.PanelIcons24
+      ImageIndex = 3
     end
     object ModepPaiGErrorP: TPanel
       Left = 462
@@ -961,7 +960,7 @@ object BonFacVGestionF: TBonFacVGestionF
       Left = 73
       Top = 60
       Width = 124
-      Height = 26
+      Height = 27
       Date = 42581.592857268520000000
       Time = 42581.592857268520000000
       Font.Charset = DEFAULT_CHARSET
@@ -1203,7 +1202,7 @@ object BonFacVGestionF: TBonFacVGestionF
       object Label18: TLabel
         Left = 6
         Top = 78
-        Width = 101
+        Width = 90
         Height = 16
         Anchors = [akTop, akRight]
         Caption = 'Nouveau Solde:'
@@ -1220,7 +1219,7 @@ object BonFacVGestionF: TBonFacVGestionF
       object Label17: TLabel
         Left = 6
         Top = 6
-        Width = 87
+        Width = 81
         Height = 16
         Anchors = [akTop, akRight]
         Caption = 'Ancien Solde:'
@@ -2012,8 +2011,8 @@ object BonFacVGestionF: TBonFacVGestionF
     object Label15: TLabel
       Left = 12
       Top = 77
-      Width = 137
-      Height = 102
+      Width = 139
+      Height = 99
       Caption = 'Facture de'#13#10'Vente'#13#10
       Color = 15722984
       Font.Charset = DEFAULT_CHARSET
@@ -2429,8 +2428,6 @@ object BonFacVGestionF: TBonFacVGestionF
   end
   object BonFacVPListfrxRprt: TfrxReport
     Version = '5.5'
-    DataSet = frxBonFacVDT
-    DataSetName = 'frxBonFacVDB'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
