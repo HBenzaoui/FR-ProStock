@@ -26,7 +26,7 @@ object FSplashAddCompte: TFSplashAddCompte
     Left = 78
     Top = 94
     Width = 38
-    Height = 18
+    Height = 19
     Caption = 'Nom:'
     Color = 4207405
     Font.Charset = DEFAULT_CHARSET
@@ -69,7 +69,7 @@ object FSplashAddCompte: TFSplashAddCompte
     ShowHint = True
     Spacing = 10
     OnClick = OKAddCompteSBtnClick
-    Version = '1.6.1.1'
+    Version = '1.6.1.2'
     TMSStyle = 0
   end
   object CancelAddCompteSBtn: TAdvToolButton
@@ -101,7 +101,7 @@ object FSplashAddCompte: TFSplashAddCompte
     ShowHint = True
     Spacing = -1
     OnClick = CancelAddCompteSBtnClick
-    Version = '1.6.1.1'
+    Version = '1.6.1.2'
     ExplicitTop = 219
     TMSStyle = 0
   end
@@ -176,7 +176,7 @@ object FSplashAddCompte: TFSplashAddCompte
     Left = 63
     Top = 55
     Width = 56
-    Height = 18
+    Height = 19
     Caption = 'Num'#233'o:'
     Color = 4207405
     Font.Charset = DEFAULT_CHARSET
@@ -191,8 +191,8 @@ object FSplashAddCompte: TFSplashAddCompte
   object Label2: TLabel
     Left = 28
     Top = 170
-    Width = 88
-    Height = 18
+    Width = 89
+    Height = 19
     Caption = 'Solde Initial:'
     Color = 4207405
     Font.Charset = DEFAULT_CHARSET
@@ -326,7 +326,7 @@ object FSplashAddCompte: TFSplashAddCompte
     ParentCtl3D = False
     ParentDoubleBuffered = False
     ParentFont = False
-    TabOrder = 5
+    TabOrder = 6
     StyleElements = [seClient, seBorder]
     OnKeyDown = NumAddCompteSEdtKeyDown
   end
@@ -348,7 +348,7 @@ object FSplashAddCompte: TFSplashAddCompte
     ParentCtl3D = False
     ParentDoubleBuffered = False
     ParentFont = False
-    TabOrder = 6
+    TabOrder = 5
     StyleElements = [seClient, seBorder]
     OnExit = SoldeAddCompteSCbxExit
     OnKeyDown = NumAddCompteSEdtKeyDown

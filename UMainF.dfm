@@ -1093,7 +1093,7 @@ object MainForm: TMainForm
       Height = 15
       Caption = 'Admin'
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
+      Font.Color = clWhite
       Font.Height = 15
       Font.Name = 'Segoe UI'
       Font.Style = []
@@ -1537,9 +1537,9 @@ object MainForm: TMainForm
         Caption = '-'
       end
       object F6: TMenuItem
-        Caption = 'Facture Proforma'
+        Caption = 'Devis/Facture Proforma'
         ImageIndex = 9
-        Visible = False
+        OnClick = F6Click
       end
       object B4: TMenuItem
         Caption = 'Bon de Commande Client'
@@ -42956,6 +42956,59 @@ object MainForm: TMainForm
           '--BEGIN;'
           '--COMMIT;'
           ''
+          ''
+          '-- ----------------------------'
+          '-- Table structure for bonp_fac'
+          '-- ----------------------------'
+          'CREATE TABLE "bonp_fac" ('
+          '"code_bpfac" int4 NOT NULL,'
+          '"date_bpfac" date,'
+          '"time_bpfac" time(6),'
+          '"code_c" int4,'
+          '"montht_bpfac" money DEFAULT 0,'
+          '"montver_bpfac" money DEFAULT 0,'
+          '"valider_bpfac" bool DEFAULT false,'
+          '"num_bpfac" varchar COLLATE "default",'
+          '"obser_bpfac" text COLLATE "default",'
+          '"montttc_bpfac" money DEFAULT 0,'
+          '"remise_bpfac" money DEFAULT 0,'
+          '"code_ur" int4,'
+          '"marge_bpfac" money DEFAULT 0,'
+          '"timber_bpfac" money DEFAULT 0'
+          ')'
+          'WITH (OIDS=FALSE)'
+          ''
+          ';'
+          ''
+          '-- ----------------------------'
+          '-- Records of bonp_fac'
+          '-- ----------------------------'
+          'BEGIN;'
+          'COMMIT;'
+          ''
+          '-- ----------------------------'
+          '-- Table structure for bonp_fac_list'
+          '-- ----------------------------'
+          'CREATE TABLE "bonp_fac_list" ('
+          '"code_bpfacl" int4 NOT NULL,'
+          '"code_bpfac" int4,'
+          '"qut_p" float8 DEFAULT 0,'
+          '"prixvd_p" money DEFAULT 0,'
+          '"cond_p" int4,'
+          '"code_p" int4,'
+          '"tva_p" int2 DEFAULT 0'
+          ')'
+          'WITH (OIDS=FALSE)'
+          ''
+          ';'
+          ''
+          '-- ----------------------------'
+          '-- Records of bonp_fac_list'
+          '-- ----------------------------'
+          'BEGIN;'
+          'COMMIT;'
+          ''
+          ''
           '-- ----------------------------'
           '-- Table structure for bonv_ctr'
           '-- ----------------------------'
@@ -54716,5 +54769,222 @@ object MainForm: TMainForm
     Interval = 7000
     Left = 916
     Top = 130
+  end
+  object Bonp_facTable: TFDQuery
+    OnCalcFields = Bonp_facTableCalcFields
+    FilterOptions = [foCaseInsensitive]
+    IndexFieldNames = 'code_bpfac'
+    Connection = GstockdcConnection
+    SQL.Strings = (
+      'SELECT * FROM bonp_fac')
+    Left = 378
+    Top = 503
+    object Bonp_facTablecode_bpfac: TIntegerField
+      FieldName = 'code_bpfac'
+      Origin = 'code_bpfac'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+    end
+    object Bonp_facTabledate_bpfac: TDateField
+      FieldName = 'date_bpfac'
+      Origin = 'date_bpfac'
+    end
+    object Bonp_facTabletime_bpfac: TTimeField
+      FieldName = 'time_bpfac'
+      Origin = 'time_bpfac'
+    end
+    object Bonp_facTablecode_c: TIntegerField
+      FieldName = 'code_c'
+      Origin = 'code_c'
+    end
+    object Bonp_facTablemontht_bpfac: TCurrencyField
+      FieldName = 'montht_bpfac'
+      Origin = 'montht_bpfac'
+    end
+    object Bonp_facTablemontver_bpfac: TCurrencyField
+      FieldName = 'montver_bpfac'
+      Origin = 'montver_bpfac'
+    end
+    object Bonp_facTablevalider_bpfac: TBooleanField
+      FieldName = 'valider_bpfac'
+      Origin = 'valider_bpfac'
+    end
+    object Bonp_facTablenum_bpfac: TWideStringField
+      FieldName = 'num_bpfac'
+      Origin = 'num_bpfac'
+      Size = 8190
+    end
+    object Bonp_facTableclientbvfac: TStringField
+      FieldKind = fkLookup
+      FieldName = 'clientbvfac'
+      LookupDataSet = ClientTable
+      LookupKeyFields = 'code_c'
+      LookupResultField = 'nom_c'
+      KeyFields = 'code_c'
+      Lookup = True
+    end
+    object Bonp_facTableMontantTVA: TCurrencyField
+      FieldKind = fkInternalCalc
+      FieldName = 'MontantTVA'
+    end
+    object Bonp_facTableMontantRes: TCurrencyField
+      FieldKind = fkInternalCalc
+      FieldName = 'MontantRes'
+    end
+    object Bonp_facTableobser_bpfac: TWideMemoField
+      FieldName = 'obser_bpfac'
+      Origin = 'obser_bpfac'
+      BlobType = ftWideMemo
+    end
+    object Bonp_facTablemontttc_bpfac: TCurrencyField
+      FieldName = 'montttc_bpfac'
+      Origin = 'montttc_bpfac'
+    end
+    object Bonp_facTableremise_bpfac: TCurrencyField
+      FieldName = 'remise_bpfac'
+      Origin = 'remise_bpfac'
+    end
+    object Bonp_facTableRemisePerc: TCurrencyField
+      FieldKind = fkInternalCalc
+      FieldName = 'RemisePerc'
+    end
+    object Bonp_facTableNEWTTC: TCurrencyField
+      FieldKind = fkInternalCalc
+      FieldName = 'NEWTTC'
+    end
+    object Bonp_facTabletimber_bpfac: TCurrencyField
+      FieldName = 'timber_bpfac'
+      Origin = 'timber_bpfac'
+    end
+    object Bonp_facTableNeTHT: TCurrencyField
+      FieldKind = fkInternalCalc
+      FieldName = 'NeTHT'
+    end
+    object Bonp_facTableNetTTC: TCurrencyField
+      FieldKind = fkInternalCalc
+      FieldName = 'NetTTC'
+    end
+    object Bonp_facTablemarge_bpfac: TCurrencyField
+      FieldName = 'marge_bpfac'
+      Origin = 'marge_bpfac'
+    end
+    object Bonp_facTablecode_ur: TIntegerField
+      FieldName = 'code_ur'
+      Origin = 'code_ur'
+    end
+    object Bonp_facTableAgent: TStringField
+      FieldKind = fkLookup
+      FieldName = 'Agent'
+      LookupDataSet = DataModuleF.UsersTable
+      LookupKeyFields = 'code_ur'
+      LookupResultField = 'nom_ur'
+      KeyFields = 'code_ur'
+      Lookup = True
+    end
+  end
+  object Bonp_fac_listTable: TFDQuery
+    AfterRefresh = Bonp_fac_listTableAfterRefresh
+    OnCalcFields = Bonp_fac_listTableCalcFields
+    FilterOptions = [foCaseInsensitive]
+    IndexFieldNames = 'code_bpfac'
+    MasterSource = BonFacPListDataS
+    MasterFields = 'code_bpfac'
+    Connection = GstockdcConnection
+    SQL.Strings = (
+      'SELECT * FROM bonp_fac_list')
+    Left = 379
+    Top = 559
+    object Bonp_fac_listTablecode_bpfacl: TIntegerField
+      FieldName = 'code_bpfacl'
+      Origin = 'code_bpfacl'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+    end
+    object Bonp_fac_listTablecode_bpfac: TIntegerField
+      FieldName = 'code_bpfac'
+      Origin = 'code_bpfac'
+    end
+    object Bonp_fac_listTablequt_p: TFloatField
+      FieldName = 'qut_p'
+      Origin = 'qut_p'
+    end
+    object Bonp_fac_listTableprixvd_p: TCurrencyField
+      FieldName = 'prixvd_p'
+      Origin = 'prixvd_p'
+    end
+    object Bonp_fac_listTablecond_p: TIntegerField
+      FieldName = 'cond_p'
+      Origin = 'cond_p'
+    end
+    object Bonp_fac_listTablePrixVTTC: TCurrencyField
+      FieldKind = fkInternalCalc
+      FieldName = 'PrixVTTC'
+    end
+    object Bonp_fac_listTableMontantHT: TCurrencyField
+      FieldKind = fkInternalCalc
+      FieldName = 'MontantHT'
+    end
+    object Bonp_fac_listTableMontantTVA: TCurrencyField
+      FieldKind = fkInternalCalc
+      FieldName = 'MontantTVA'
+    end
+    object Bonp_fac_listTableMontantTTC: TCurrencyField
+      FieldKind = fkInternalCalc
+      FieldName = 'MontantTTC'
+    end
+    object Bonp_fac_listTablecode_p: TIntegerField
+      FieldName = 'code_p'
+      Origin = 'code_p'
+    end
+    object Bonp_fac_listTablenomp: TStringField
+      FieldKind = fkLookup
+      FieldName = 'nomp'
+      LookupDataSet = ProduitTable
+      LookupKeyFields = 'code_p'
+      LookupResultField = 'nom_p'
+      KeyFields = 'code_p'
+      Lookup = True
+    end
+    object Bonp_fac_listTablereferp: TStringField
+      FieldKind = fkLookup
+      FieldName = 'referp'
+      LookupDataSet = ProduitTable
+      LookupKeyFields = 'code_p'
+      LookupResultField = 'refer_p'
+      KeyFields = 'code_p'
+      Lookup = True
+    end
+    object Bonp_fac_listTableTVA: TCurrencyField
+      FieldKind = fkInternalCalc
+      FieldName = 'TVA'
+    end
+    object Bonp_fac_listTabletva_p: TSmallintField
+      FieldName = 'tva_p'
+      Origin = 'tva_p'
+    end
+    object Bonp_fac_listTableMarge: TCurrencyField
+      FieldKind = fkInternalCalc
+      FieldName = 'Marge'
+    end
+    object Bonp_fac_listTableMontantAHT: TCurrencyField
+      FieldKind = fkInternalCalc
+      FieldName = 'MontantAHT'
+    end
+    object Bonp_fac_listTableprixht_p: TCurrencyField
+      FieldKind = fkLookup
+      FieldName = 'prixht_p'
+      LookupDataSet = ProduitTable
+      LookupKeyFields = 'code_p'
+      LookupResultField = 'prixht_p'
+      KeyFields = 'code_p'
+      Lookup = True
+    end
+    object Bonp_fac_listTableMargeM: TCurrencyField
+      FieldKind = fkInternalCalc
+      FieldName = 'MargeM'
+    end
+  end
+  object BonFacPListDataS: TDataSource
+    DataSet = Bonp_facTable
+    Left = 382
+    Top = 606
   end
 end

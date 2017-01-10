@@ -116,7 +116,8 @@ var
 implementation
 
 uses   UMainF, UClientsList, USplash, UBonLivGestion,
-  UBonFacVGestion, UReglementCList,  UReglementCGestion, UBonCtr, UComptoir;
+  UBonFacVGestion, UReglementCList,  UReglementCGestion, UBonCtr, UComptoir,
+  UBonFacP, UBonFacPGestion;
 
 {$R *.dfm}
 
@@ -642,6 +643,69 @@ begin
       MainForm.ClientTable.Last;
       BonCtrGestionF.ClientBonCtrGCbx.Text := NameClientGEdt.Text;
       BonCtrGestionF.ClientBonCtrGCbx.SetFocus;
+    end;
+
+
+    // --------------- adding from the facutre Proforma  panel----
+         if OKClientGBtn.Tag = 7 then
+    begin
+      with MainForm.ClientTable do
+      begin
+               if NOT (MainForm.ClientTable.IsEmpty) then
+          begin
+          MainForm.ClientTable.Last;
+          CodeC:= MainForm.ClientTable.FieldValues['code_c'] + 1;
+          end else
+              begin
+               CodeC:= 1;
+              end;
+        Append;
+        FieldValues['code_c'] := CodeC;
+        FieldValues['activ_c'] := ActiveClientGSlider.SliderOn;
+        fieldbyname('nom_c').Value := NameClientGEdt.Text;
+        fieldbyname('activite_c').AsString := AcitiviteClientGEdt.Text;
+        fieldbyname('adr_c').Value := AdrClientGEdt.Text;
+        fieldbyname('willaya_c').Value := WilayaClientGCbx.Text;
+        fieldbyname('ville_c').Value := VilleClientGCbx.Text;
+        fieldbyname('fix_c').Value := FixClientGEdt.Text;
+        fieldbyname('fax_c').Value := FaxClientGEdt.Text;
+        fieldbyname('mob_c').Value := MobileClientGEdt.Text;
+        fieldbyname('mob2_c').Value := MobileClientGEdt.Text;
+        fieldbyname('email_c').Value := EmailClientGEdt.Text;
+        fieldbyname('siteweb_c').Value := SiteClientGEdt.Text;
+        fieldbyname('rc_c').Value := RCClientGEdt.Text;
+        fieldbyname('nart_c').Value := NArtClientGEdt.Text;
+        fieldbyname('nif_c').Value := NIFClientGEdt.Text;
+        fieldbyname('nis_c').Value := NISClientGEdt.Text;
+        fieldbyname('nbank_c').Value := NBankClientGEdt.Text;
+        fieldbyname('rib_c').Value := RIBClientGEdt.Text;
+        if OldCreditClientGEdt.Text <> '' then
+        begin
+          fieldbyname('oldcredit_c').Value :=
+            Trim(OldCreditClientGEdt.Text);
+        end
+        else
+        begin
+          fieldbyname('oldcredit_c').Value := StrToInt('0')
+        end;
+        if MaxCreditClientGEdt.Text <> '' then
+        begin
+          fieldbyname('maxcredit_c').Value :=
+            Trim(MaxCreditClientGEdt.Text);
+        end
+        else
+        begin
+          fieldbyname('maxcredit_c').Value := StrToInt('0')
+        end;
+        fieldbyname('obser_c').Value := ObserClientGMem.Text;
+        post;
+      end;
+      MainForm.ClientTable.Refresh;
+      MainForm.ClientTable.Last;
+      BonFacPGestionF.ClientBonFacVGCbx.Text := NameClientGEdt.Text;
+      BonFacPGestionF.ClientBonFacVGCbx.SetFocus;
+
+
     end;
     
 

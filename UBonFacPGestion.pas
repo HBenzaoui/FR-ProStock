@@ -1,4 +1,4 @@
-unit UBonFacVGestion;
+unit UBonFacPGestion;
 
 interface
 
@@ -30,7 +30,7 @@ uses
   dxSkinXmas2008Blue, cxTextEdit, cxMaskEdit, cxDropDownEdit;
 
 type
-  TBonFacVGestionF = class(TForm)
+  TBonFacPGestionF = class(TForm)
     Panel3: TPanel;
     TopP2: TPanel;
     Shape1: TShape;
@@ -129,9 +129,9 @@ type
     frxPDFExport1: TfrxPDFExport;
     frxXLSExport1: TfrxXLSExport;
     frxClientDB: TfrxDBDataset;
-    frxBonFacVDT: TfrxDBDataset;
-    frxBonFacVPListDB: TfrxDBDataset;
-    BonFacVPListfrxRprt: TfrxReport;
+    frxBonFacPDT: TfrxDBDataset;
+    frxBonFacPPListDB: TfrxDBDataset;
+    BonFacPPListfrxRprt: TfrxReport;
     BonFacVTotalMargeLbl: TLabel;
     sImage1: TsImage;
     sSpeedButton7: TsSpeedButton;
@@ -197,21 +197,21 @@ type
     { Private declarations }
   public
     { Public declarations }
-    procedure EnableBonFacV;
+    procedure EnableBonFacP;
   end;
 
 var
-  BonFacVGestionF: TBonFacVGestionF;
+  BonFacPGestionF: TBonFacPGestionF;
 
 implementation
 
 uses StringTool,
-  UMainF, USplashVersement, UBonFacV, UFastProduitsList, UProduitsList,
+  UMainF, USplashVersement, UFastProduitsList, UProduitsList,
   USplashAddUnite, UClientsList, UClientGestion, USplashAddCompte, UDataModule,
   UProduitGestion;
 
 {$R *.dfm}
-procedure TBonFacVGestionF.EnableBonFacV;
+procedure TBonFacPGestionF.EnableBonFacP;
 begin
    AddBVFacBonFacVGBtn.Enabled:= False;
    AddBVFacBonFacVGBtn.ImageIndex:=28;// 4 For D
@@ -273,8 +273,8 @@ procedure Refresh_PreservePosition;
  row: integer;   recNo: integer;
  ds : TDataSet;
 begin
-   ds := TDBGridEh(BonFacVGestionF.ProduitsListDBGridEh).DataSource.DataSet;
-   rowDelta := -1 + TDBGridEh(BonFacVGestionF.ProduitsListDBGridEh).Row;
+   ds := TDBGridEh(BonFacPGestionF.ProduitsListDBGridEh).DataSource.DataSet;
+   rowDelta := -1 + TDBGridEh(BonFacPGestionF.ProduitsListDBGridEh).Row;
    row := ds.RecNo;
    ds.Refresh;
    with ds do   begin
@@ -299,7 +299,7 @@ begin
   end;
 end;
 
-procedure TBonFacVGestionF.FormShow(Sender: TObject);
+procedure TBonFacPGestionF.FormShow(Sender: TObject);
 var CodeFV: Integer;
 begin
 
@@ -316,12 +316,12 @@ begin
    BonFacVRegleLbl.Caption :=         FloatToStrF(StrToFloat(BonFacVRegleLbl.Caption),ffNumber,14,2) ;
    BonFacVGClientOLDCredit.Caption:= FloatToStrF(StrToFloat(BonFacVGClientOLDCredit.Caption),ffNumber,14,2) ;
    BonFacVGClientNEWCredit.Caption:= FloatToStrF(StrToFloat(BonFacVGClientNEWCredit.Caption),ffNumber,14,2) ;
- CodeFV:= MainForm.Bonv_facTable.FieldValues['code_bvfac']   ;
- NumBonFacVGEdt.Caption := 'FV'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5, CodeFV]);
-  if (MainForm.Bonv_facTable.FieldByName('code_c').AsInteger <> null) 
- AND (MainForm.Bonv_facTable.FieldByName('code_c').AsInteger <> 0) then
+ CodeFV:= MainForm.Bonp_facTable.FieldValues['code_bpfac']   ;
+ NumBonFacVGEdt.Caption := 'FP'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5, CodeFV]);
+  if (MainForm.Bonp_facTable.FieldByName('code_c').AsInteger <> null)
+ AND (MainForm.Bonp_facTable.FieldByName('code_c').AsInteger <> 0) then
  begin
-   ClientBonFacVGCbx.Text:= MainForm.Bonv_facTable.FieldValues['clientbvfac'];
+   ClientBonFacVGCbx.Text:= MainForm.Bonp_facTable.FieldValues['clientbvfac'];
    ProduitBonFacVGCbx.SetFocus;
  end else
      begin
@@ -340,155 +340,155 @@ begin
 
 end;
 
-procedure TBonFacVGestionF.sSpeedButton7Click(Sender: TObject);
+procedure TBonFacPGestionF.sSpeedButton7Click(Sender: TObject);
 begin
-  MainForm.Bonv_facTable.First;
-  MainForm.Bonv_facTable.Refresh;
-  MainForm.Bonv_fac_listTable.Refresh;
+  MainForm.Bonp_facTable.First;
+  MainForm.Bonp_facTable.Refresh;
+  MainForm.Bonp_fac_listTable.Refresh;
 
-  if MainForm.Bonv_facTable.FieldValues['valider_bvfac'] = True then
+  if MainForm.Bonp_facTable.FieldValues['valider_bpfac'] = True then
   begin
        FSplashVersement.DisableBonFacV;
   end;
-  if MainForm.Bonv_facTable.FieldValues['valider_bvfac'] = False then
+  if MainForm.Bonp_facTable.FieldValues['valider_bpfac'] = False then
    begin
-     EnableBonFacV;
+     EnableBonFacP;
     end;
 
 
-  if (MainForm.Bonv_facTable.FieldValues['code_c']<> 0) AND (MainForm.Bonv_facTable.FieldValues['code_c']<> null) then
+  if (MainForm.Bonp_facTable.FieldValues['code_c']<> 0) AND (MainForm.Bonp_facTable.FieldValues['code_c']<> null) then
   begin
-  ClientBonFacVGCbx.Text:=MainForm.Bonv_facTable.FieldValues['clientbvfac'];
+  ClientBonFacVGCbx.Text:=MainForm.Bonp_facTable.FieldValues['clientbvfac'];
   end;
-  if (MainForm.Bonv_facTable.FieldValues['code_mdpai']<> 0) AND (MainForm.Bonv_facTable.FieldValues['code_mdpai']<>null)  then
+//  if (MainForm.Bonp_facTable.FieldValues['code_mdpai']<> 0) AND (MainForm.Bonp_facTable.FieldValues['code_mdpai']<>null)  then
+//  begin
+//  ModePaieBonFacVGCbx.Text:=MainForm.Bonp_facTable.FieldValues['ModePaie'];
+//  end;
+//  if (MainForm.Bonp_facTable.FieldValues['code_cmpt']<> 0) AND (MainForm.Bonp_facTable.FieldValues['code_cmpt']<>null)  then
+//  begin
+//  CompteBonFacVGCbx.Text:=MainForm.Bonp_facTable.FieldValues['Compte'];
+//  end;
+
+  if  (MainForm.Bonp_facTable.FieldValues['MontantRes']<>null)  then
   begin
-  ModePaieBonFacVGCbx.Text:=MainForm.Bonv_facTable.FieldValues['ModePaie'];
-  end;
-  if (MainForm.Bonv_facTable.FieldValues['code_cmpt']<> 0) AND (MainForm.Bonv_facTable.FieldValues['code_cmpt']<>null)  then
-  begin
-  CompteBonFacVGCbx.Text:=MainForm.Bonv_facTable.FieldValues['Compte'];
+  BonFacVResteLbl.Caption:=CurrToStrF(((MainForm.Bonp_facTable.FieldValues['MontantRes'])),ffNumber,2) ;
   end;
 
-  if  (MainForm.Bonv_facTable.FieldValues['MontantRes']<>null)  then
-  begin
-  BonFacVResteLbl.Caption:=CurrToStrF(((MainForm.Bonv_facTable.FieldValues['MontantRes'])),ffNumber,2) ;
-  end;
-
-  NumBonFacVGEdt.Caption:= MainForm.Bonv_facTable.FieldByName('num_bvfac').AsString;
+  NumBonFacVGEdt.Caption:= MainForm.Bonp_facTable.FieldByName('num_bpfac').AsString;
 end;
 
-procedure TBonFacVGestionF.sSpeedButton6Click(Sender: TObject);
+procedure TBonFacPGestionF.sSpeedButton6Click(Sender: TObject);
 begin
-  MainForm.Bonv_facTable.Prior;
-  MainForm.Bonv_facTable.Refresh;
-  MainForm.Bonv_fac_listTable.Refresh;
+  MainForm.Bonp_facTable.Prior;
+  MainForm.Bonp_facTable.Refresh;
+  MainForm.Bonp_fac_listTable.Refresh;
 
-  if MainForm.Bonv_facTable.FieldValues['valider_bvfac'] = True then
+  if MainForm.Bonp_facTable.FieldValues['valider_bpfac'] = True then
   begin
        FSplashVersement.DisableBonFacV;
   end;
-  if MainForm.Bonv_facTable.FieldValues['valider_bvfac'] = False then
+  if MainForm.Bonp_facTable.FieldValues['valider_bpfac'] = False then
    begin
-     EnableBonFacV;
+     EnableBonFacP;
     end;
 
 
-  if (MainForm.Bonv_facTable.FieldValues['code_c']<> 0) AND (MainForm.Bonv_facTable.FieldValues['code_c']<> null) then
+  if (MainForm.Bonp_facTable.FieldValues['code_c']<> 0) AND (MainForm.Bonp_facTable.FieldValues['code_c']<> null) then
   begin
-  ClientBonFacVGCbx.Text:=MainForm.Bonv_facTable.FieldValues['clientbvfac'];
+  ClientBonFacVGCbx.Text:=MainForm.Bonp_facTable.FieldValues['clientbvfac'];
   end;
-  if (MainForm.Bonv_facTable.FieldValues['code_mdpai']<> 0) AND (MainForm.Bonv_facTable.FieldValues['code_mdpai']<>null)  then
+//  if (MainForm.Bonp_facTable.FieldValues['code_mdpai']<> 0) AND (MainForm.Bonp_facTable.FieldValues['code_mdpai']<>null)  then
+//  begin
+//  ModePaieBonFacVGCbx.Text:=MainForm.Bonp_facTable.FieldValues['ModePaie'];
+//  end;
+//  if (MainForm.Bonp_facTable.FieldValues['code_cmpt']<> 0) AND (MainForm.Bonp_facTable.FieldValues['code_cmpt']<>null)  then
+//  begin
+//  CompteBonFacVGCbx.Text:=MainForm.Bonp_facTable.FieldValues['Compte'];
+//  end;
+
+  if  (MainForm.Bonp_facTable.FieldValues['MontantRes']<>null)  then
   begin
-  ModePaieBonFacVGCbx.Text:=MainForm.Bonv_facTable.FieldValues['ModePaie'];
-  end;
-  if (MainForm.Bonv_facTable.FieldValues['code_cmpt']<> 0) AND (MainForm.Bonv_facTable.FieldValues['code_cmpt']<>null)  then
-  begin
-  CompteBonFacVGCbx.Text:=MainForm.Bonv_facTable.FieldValues['Compte'];
+  BonFacVResteLbl.Caption:=CurrToStrF(((MainForm.Bonp_facTable.FieldValues['MontantRes'])),ffNumber,2) ;
   end;
 
-  if  (MainForm.Bonv_facTable.FieldValues['MontantRes']<>null)  then
-  begin
-  BonFacVResteLbl.Caption:=CurrToStrF(((MainForm.Bonv_facTable.FieldValues['MontantRes'])),ffNumber,2) ;
-  end;
-
-  NumBonFacVGEdt.Caption:= MainForm.Bonv_facTable.FieldByName('num_bvfac').AsString;
+  NumBonFacVGEdt.Caption:= MainForm.Bonp_facTable.FieldByName('num_bpfac').AsString;
 end;
 
-procedure TBonFacVGestionF.sSpeedButton5Click(Sender: TObject);
+procedure TBonFacPGestionF.sSpeedButton5Click(Sender: TObject);
 begin
-  MainForm.Bonv_facTable.Next;
-  MainForm.Bonv_facTable.Refresh;
-  MainForm.Bonv_fac_listTable.Refresh;
+  MainForm.Bonp_facTable.Next;
+  MainForm.Bonp_facTable.Refresh;
+  MainForm.Bonp_fac_listTable.Refresh;
 
-  if MainForm.Bonv_facTable.FieldValues['valider_bvfac'] = True then
+  if MainForm.Bonp_facTable.FieldValues['valider_bpfac'] = True then
   begin
        FSplashVersement.DisableBonFacV;
   end;
-  if MainForm.Bonv_facTable.FieldValues['valider_bvfac'] = False then
+  if MainForm.Bonp_facTable.FieldValues['valider_bpfac'] = False then
    begin
-     EnableBonFacV;
+     EnableBonFacP;
     end;
 
 
-  if (MainForm.Bonv_facTable.FieldValues['code_c']<> 0) AND (MainForm.Bonv_facTable.FieldValues['code_c']<> null) then
+  if (MainForm.Bonp_facTable.FieldValues['code_c']<> 0) AND (MainForm.Bonp_facTable.FieldValues['code_c']<> null) then
   begin
-  ClientBonFacVGCbx.Text:=MainForm.Bonv_facTable.FieldValues['clientbvfac'];
+  ClientBonFacVGCbx.Text:=MainForm.Bonp_facTable.FieldValues['clientbvfac'];
   end;
-  if (MainForm.Bonv_facTable.FieldValues['code_mdpai']<> 0) AND (MainForm.Bonv_facTable.FieldValues['code_mdpai']<>null)  then
+//  if (MainForm.Bonp_facTable.FieldValues['code_mdpai']<> 0) AND (MainForm.Bonp_facTable.FieldValues['code_mdpai']<>null)  then
+//  begin
+//  ModePaieBonFacVGCbx.Text:=MainForm.Bonp_facTable.FieldValues['ModePaie'];
+//  end;
+//  if (MainForm.Bonp_facTable.FieldValues['code_cmpt']<> 0) AND (MainForm.Bonp_facTable.FieldValues['code_cmpt']<>null)  then
+//  begin
+//  CompteBonFacVGCbx.Text:=MainForm.Bonp_facTable.FieldValues['Compte'];
+//  end;
+
+  if  (MainForm.Bonp_facTable.FieldValues['MontantRes']<>null)  then
   begin
-  ModePaieBonFacVGCbx.Text:=MainForm.Bonv_facTable.FieldValues['ModePaie'];
-  end;
-  if (MainForm.Bonv_facTable.FieldValues['code_cmpt']<> 0) AND (MainForm.Bonv_facTable.FieldValues['code_cmpt']<>null)  then
-  begin
-  CompteBonFacVGCbx.Text:=MainForm.Bonv_facTable.FieldValues['Compte'];
+  BonFacVResteLbl.Caption:=CurrToStrF(((MainForm.Bonp_facTable.FieldValues['MontantRes'])),ffNumber,2) ;
   end;
 
-  if  (MainForm.Bonv_facTable.FieldValues['MontantRes']<>null)  then
-  begin
-  BonFacVResteLbl.Caption:=CurrToStrF(((MainForm.Bonv_facTable.FieldValues['MontantRes'])),ffNumber,2) ;
-  end;
-
-  NumBonFacVGEdt.Caption:= MainForm.Bonv_facTable.FieldByName('num_bvfac').AsString;
+  NumBonFacVGEdt.Caption:= MainForm.Bonp_facTable.FieldByName('num_bpfac').AsString;
 end;
 
-procedure TBonFacVGestionF.sSpeedButton4Click(Sender: TObject);
+procedure TBonFacPGestionF.sSpeedButton4Click(Sender: TObject);
 begin
-  MainForm.Bonv_facTable.Last;
-  MainForm.Bonv_facTable.Refresh;
-  MainForm.Bonv_fac_listTable.Refresh;
+  MainForm.Bonp_facTable.Last;
+  MainForm.Bonp_facTable.Refresh;
+  MainForm.Bonp_fac_listTable.Refresh;
 
-  if MainForm.Bonv_facTable.FieldValues['valider_bvfac'] = True then
+  if MainForm.Bonp_facTable.FieldValues['valider_bpfac'] = True then
   begin
        FSplashVersement.DisableBonFacV;
   end;
-  if MainForm.Bonv_facTable.FieldValues['valider_bvfac'] = False then
+  if MainForm.Bonp_facTable.FieldValues['valider_bpfac'] = False then
    begin
-     EnableBonFacV;
+     EnableBonFacP;
     end;
 
 
-  if (MainForm.Bonv_facTable.FieldValues['code_c']<> 0) AND (MainForm.Bonv_facTable.FieldValues['code_c']<> null) then
+  if (MainForm.Bonp_facTable.FieldValues['code_c']<> 0) AND (MainForm.Bonp_facTable.FieldValues['code_c']<> null) then
   begin
-  ClientBonFacVGCbx.Text:=MainForm.Bonv_facTable.FieldValues['clientbvfac'];
+  ClientBonFacVGCbx.Text:=MainForm.Bonp_facTable.FieldValues['clientbvfac'];
   end;
-  if (MainForm.Bonv_facTable.FieldValues['code_mdpai']<> 0) AND (MainForm.Bonv_facTable.FieldValues['code_mdpai']<>null)  then
+//  if (MainForm.Bonp_facTable.FieldValues['code_mdpai']<> 0) AND (MainForm.Bonp_facTable.FieldValues['code_mdpai']<>null)  then
+//  begin
+//  ModePaieBonFacVGCbx.Text:=MainForm.Bonp_facTable.FieldValues['ModePaie'];
+//  end;
+//  if (MainForm.Bonp_facTable.FieldValues['code_cmpt']<> 0) AND (MainForm.Bonp_facTable.FieldValues['code_cmpt']<>null)  then
+//  begin
+//  CompteBonFacVGCbx.Text:=MainForm.Bonp_facTable.FieldValues['Compte'];
+//  end;
+
+  if  (MainForm.Bonp_facTable.FieldValues['MontantRes']<>null)  then
   begin
-  ModePaieBonFacVGCbx.Text:=MainForm.Bonv_facTable.FieldValues['ModePaie'];
-  end;
-  if (MainForm.Bonv_facTable.FieldValues['code_cmpt']<> 0) AND (MainForm.Bonv_facTable.FieldValues['code_cmpt']<>null)  then
-  begin
-  CompteBonFacVGCbx.Text:=MainForm.Bonv_facTable.FieldValues['Compte'];
+  BonFacVResteLbl.Caption:=CurrToStrF(((MainForm.Bonp_facTable.FieldValues['MontantRes'])),ffNumber,2) ;
   end;
 
-  if  (MainForm.Bonv_facTable.FieldValues['MontantRes']<>null)  then
-  begin
-  BonFacVResteLbl.Caption:=CurrToStrF(((MainForm.Bonv_facTable.FieldValues['MontantRes'])),ffNumber,2) ;
-  end;
-
-  NumBonFacVGEdt.Caption:= MainForm.Bonv_facTable.FieldByName('num_bvfac').AsString;
+  NumBonFacVGEdt.Caption:= MainForm.Bonp_facTable.FieldByName('num_bpfac').AsString;
 end;
 
-procedure TBonFacVGestionF.AddBVFacBonFacVGBtnClick(Sender: TObject);
+procedure TBonFacPGestionF.AddBVFacBonFacVGBtnClick(Sender: TObject);
 var
   codeFV,CodeCB : integer;
 begin
@@ -503,8 +503,8 @@ begin
 
    MainForm.ProduitTable.Refresh;
    MainForm.ClientTable.Refresh;
-   MainForm.Bonv_FacTable.Refresh;
-   MainForm.Bonv_Fac_listTable.Refresh;
+   MainForm.Bonp_facTable.Refresh;
+   MainForm.Bonp_fac_listTable.Refresh;
    MainForm.Mode_paiementTable.Refresh;
    MainForm.CompteTable.Refresh;
    BonFacVPListDataS.DataSet.Refresh;
@@ -514,41 +514,41 @@ begin
      ModePaieBonFacVGCbx.Refresh;
      CompteBonFacVGCbx.Refresh;
 
-     EnableBonFacV;
+     EnableBonFacP;
 
  codeFV:= 0;
    //   BonRecGestionF := TBonRecGestionF.Create(BonRecGestionF);
-     if MainForm.Bonv_facTable.RecordCount <= 0 then
+     if MainForm.Bonp_facTable.RecordCount <= 0 then
       begin
 
-        MainForm.Bonv_facTable.Insert;
-        MainForm.Bonv_facTable.FieldValues['code_bvfac']:=1;
-        MainForm.Bonv_facTable.FieldValues['num_bvfac']:= 'FV'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5, 1]);
-        MainForm.Bonv_facTable.FieldValues['date_bvfac']:= DateOf(Today);
-        MainForm.Bonv_facTable.FieldValues['time_bvfac']:=TimeOf(Now);
-        MainForm.Bonv_facTable.Post;
-        codeFV := MainForm.Bonv_facTable.FieldValues['code_bvfac'];
+        MainForm.Bonp_facTable.Insert;
+        MainForm.Bonp_facTable.FieldValues['code_bpfac']:=1;
+        MainForm.Bonp_facTable.FieldValues['num_bpfac']:= 'FP'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5, 1]);
+        MainForm.Bonp_facTable.FieldValues['date_bpfac']:= DateOf(Today);
+        MainForm.Bonp_facTable.FieldValues['time_bpfac']:=TimeOf(Now);
+        MainForm.Bonp_facTable.Post;
+        codeFV := MainForm.Bonp_facTable.FieldValues['code_bpfac'];
       end else
           begin
-            MainForm.Bonv_facTable.Last;
-            codeFV := MainForm.Bonv_facTable.FieldValues['code_bvfac'];
-            MainForm.Bonv_fac_listTable.Active:=False;
-            MainForm.Bonv_fac_listTable.SQL.Clear;
-            MainForm.Bonv_fac_listTable.SQL.Text:= 'SELECT * FROM bonv_fac_list WHERE code_bvfac = ' + QuotedStr(IntToStr(codeFV));
-            MainForm.Bonv_fac_listTable.Active:=True;
+            MainForm.Bonp_facTable.Last;
+            codeFV := MainForm.Bonp_facTable.FieldValues['code_bpfac'];
+            MainForm.Bonp_fac_listTable.Active:=False;
+            MainForm.Bonp_fac_listTable.SQL.Clear;
+            MainForm.Bonp_fac_listTable.SQL.Text:= 'SELECT * FROM bonp_fac_list WHERE code_bpfac = ' + QuotedStr(IntToStr(codeFV));
+            MainForm.Bonp_fac_listTable.Active:=True;
 
-           if MainForm.Bonv_fac_listTable.RecordCount <= 0 then
+           if MainForm.Bonp_fac_listTable.RecordCount <= 0 then
            begin
-           codeFV := MainForm.Bonv_facTable.FieldValues['code_bvfac'];
+           codeFV := MainForm.Bonp_facTable.FieldValues['code_bpfac'];
            end else
            begin
 
-           MainForm.Bonv_facTable.Insert;
-           MainForm.Bonv_facTable.FieldValues['code_bvfac']:= codeFV + 1;
-           MainForm.Bonv_facTable.FieldValues['num_bvfac']:=  'FV'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5,(codeFV + 1)]);
-           MainForm.Bonv_facTable.FieldValues['date_bvfac']:= DateOf(Today);
-           MainForm.Bonv_facTable.FieldValues['time_bvfac']:= TimeOf(Now);
-           MainForm.Bonv_facTable.Post;
+           MainForm.Bonp_facTable.Insert;
+           MainForm.Bonp_facTable.FieldValues['code_bpfac']:= codeFV + 1;
+           MainForm.Bonp_facTable.FieldValues['num_bpfac']:=  'FP'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5,(codeFV + 1)]);
+           MainForm.Bonp_facTable.FieldValues['date_bpfac']:= DateOf(Today);
+           MainForm.Bonp_facTable.FieldValues['time_bpfac']:= TimeOf(Now);
+           MainForm.Bonp_facTable.Post;
 
            end;
             ProduitsListDBGridEh.DataSource.DataSet.EnableControls;
@@ -566,18 +566,18 @@ begin
     BonFacVGClientOLDCredit.Caption:= FloatToStrF(0,ffNumber,14,2) ;
     BonFacVGClientNEWCredit.Caption:= FloatToStrF(0,ffNumber,14,2) ;
 
- CodeCB:= MainForm.Bonv_FacTable.FieldValues['code_bvfac']   ;
- NumBonFacVGEdt.Caption := 'FV'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5, CodeCB]);
+ CodeCB:= MainForm.Bonp_facTable.FieldValues['code_bpfac']   ;
+ NumBonFacVGEdt.Caption := 'FP'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5, CodeCB]);
 
      ClientBonFacVGCbx.SetFocus;
 
      Tag :=0;
 
-     MainForm.Bonv_fac_listTable.Refresh;
+     MainForm.Bonp_fac_listTable.Refresh;
 
 end;
 
-procedure TBonFacVGestionF.EditBVFacBonFacVGBtnClick(Sender: TObject);
+procedure TBonFacPGestionF.EditBVFacBonFacVGBtnClick(Sender: TObject);
 begin
 
       MainForm.ClientTable.DisableControls;
@@ -587,13 +587,13 @@ begin
       MainForm.ClientTable.Active:=True;
  // this is to enable the componets to edit the bon
 
-  EnableBonFacV;
+  EnableBonFacP;
 
  // this is to unvalider the bon
   begin
-  MainForm.Bonv_facTable.Edit;
-  MainForm.Bonv_facTable.FieldByName('valider_bvfac').AsBoolean:= False;
-  MainForm.Bonv_facTable.Post;
+  MainForm.Bonp_facTable.Edit;
+  MainForm.Bonp_facTable.FieldByName('valider_bpfac').AsBoolean:= False;
+  MainForm.Bonp_facTable.Post;
   end;
 
 
@@ -622,9 +622,9 @@ begin
            MainForm.ProduitTable.Active:=True;
            Mainform.Sqlquery.Active:=False;
            Mainform.Sqlquery.Sql.Clear;
-           Mainform.Sqlquery.Sql.Text:='SELECT code_bvfacl,code_p,  qut_p, cond_p  FROM bonv_fac_list WHERE code_bvfac =  '
-                                                 + IntToStr (MainForm.Bonv_facTable.FieldValues['code_bvfac'])
-                                                 + 'GROUP BY code_bvfacl, code_p, qut_p, cond_p ' ;
+           Mainform.Sqlquery.Sql.Text:='SELECT code_bpfacl,code_p,  qut_p, cond_p  FROM bonp_fac_list WHERE code_bpfac =  '
+                                                 + IntToStr (MainForm.Bonp_facTable.FieldValues['code_bpfac'])
+                                                 + 'GROUP BY code_bpfacl, code_p, qut_p, cond_p ' ;
            MainForm.SQLQuery.Active:=True;
            MainForm.SQLQuery.First;
            while  NOT (MainForm.SQLQuery.Eof) do
@@ -648,7 +648,7 @@ begin
            MainForm.ProduitTable.EnableControls;
            MainForm.SQLQuery.Active:=False;
            MainForm.SQLQuery.SQL.Clear;
-           MainForm.Bonv_facTable.Refresh;
+           MainForm.Bonp_facTable.Refresh;
 
      end;
 
@@ -659,7 +659,7 @@ begin
 
 end;
 
-procedure TBonFacVGestionF.ProduitBonFacVGCbxEnter(Sender: TObject);
+procedure TBonFacPGestionF.ProduitBonFacVGCbxEnter(Sender: TObject);
 var
 I : Integer;
   begin
@@ -703,7 +703,7 @@ I : Integer;
      MainForm.ProduitTable.EnableControls;
 end;
 
-procedure TBonFacVGestionF.ProduitBonFacVGCbxKeyDown(Sender: TObject;
+procedure TBonFacPGestionF.ProduitBonFacVGCbxKeyDown(Sender: TObject;
   var Key: Word; Shift: TShiftState);
 begin
  if ResherchPARCBProduitsRdioBtn.Checked = False then
@@ -712,13 +712,13 @@ begin
   end;
 end;
 
-procedure TBonFacVGestionF.ProduitBonFacVGCbxExit(Sender: TObject);
+procedure TBonFacPGestionF.ProduitBonFacVGCbxExit(Sender: TObject);
 begin
 ProduitBonFacVGCbx.Text:='';
 //ProduitBonFacVGCbx.AutoDropDown:=False;
 end;
 
-procedure TBonFacVGestionF.ProduitBonFacVGCbxKeyPress(Sender: TObject;
+procedure TBonFacPGestionF.ProduitBonFacVGCbxKeyPress(Sender: TObject;
   var Key: Char);
 
   var CodeFV,CodeCB : Integer;
@@ -750,29 +750,29 @@ begin
         MainForm.ProduitTable.Active:=True;
         CodeP:= MainForm.ProduitTable.FieldByName('code_p').AsInteger ;
 
-         lookupResultRefP := MainForm.Bonv_fac_listTable.Lookup('code_p',(CodeP),'code_p');
+         lookupResultRefP := MainForm.Bonp_fac_listTable.Lookup('code_p',(CodeP),'code_p');
          if VarIsnull( lookupResultRefP) then
          begin
 
             if  MainForm.ProduitTable.RecordCount > 0  then
           begin
 
-            MainForm.Bonv_fac_listTable.DisableControls;
-            MainForm.Bonv_fac_listTable.IndexFieldNames:='';
-            MainForm.Bonv_fac_listTable.Active:=False;
-            MainForm.Bonv_fac_listTable.SQL.Clear;
-            MainForm.Bonv_fac_listTable.SQL.Text:= 'SELECT * FROM bonv_fac_list ORDER by code_bvfacl' ;
-            MainForm.Bonv_fac_listTable.Active:=True;
+            MainForm.Bonp_fac_listTable.DisableControls;
+            MainForm.Bonp_fac_listTable.IndexFieldNames:='';
+            MainForm.Bonp_fac_listTable.Active:=False;
+            MainForm.Bonp_fac_listTable.SQL.Clear;
+            MainForm.Bonp_fac_listTable.SQL.Text:= 'SELECT * FROM bonp_fac_list ORDER by code_bpfacl' ;
+            MainForm.Bonp_fac_listTable.Active:=True;
 
-            MainForm.Bonv_fac_listTable.Last;
-             if  MainForm.Bonv_fac_listTable.IsEmpty then
+            MainForm.Bonp_fac_listTable.Last;
+             if  MainForm.Bonp_fac_listTable.IsEmpty then
              begin
-               MainForm.Bonv_fac_listTable.Last;
+               MainForm.Bonp_fac_listTable.Last;
                CodeFV := 1;
              end else
                  begin
-                  MainForm.Bonv_fac_listTable.Last;
-                  CodeFV:= MainForm.Bonv_fac_listTable.FieldValues['code_bvfacl'] + 1 ;
+                  MainForm.Bonp_fac_listTable.Last;
+                  CodeFV:= MainForm.Bonp_fac_listTable.FieldValues['code_bpfacl'] + 1 ;
                  end;
 
                  if MainForm.ProduitTable.FieldByName('perissable_p').AsBoolean = True then
@@ -783,50 +783,50 @@ begin
                    
                  end;
 
-             MainForm.Bonv_fac_listTable.Last;
-             MainForm.Bonv_fac_listTable.Append;
-             MainForm.Bonv_fac_listTable.FieldValues['code_bvfacl']:= CodeFV ;
-             MainForm.Bonv_fac_listTable.FieldValues['code_bvfac']:= MainForm.Bonv_facTable.FieldValues['code_bvfac'];
-             MainForm.Bonv_fac_listTable.FieldValues['code_p']:=  MainForm.ProduitTable.FieldValues['code_p'] ;
-             MainForm.Bonv_fac_listTable.FieldValues['qut_p'] :=  01;
-             MainForm.Bonv_fac_listTable.FieldValues['cond_p']:= 01;
-             MainForm.Bonv_fac_listTable.FieldValues['tva_p']:= MainForm.ProduitTable.FieldValues['tva_p'];
+             MainForm.Bonp_fac_listTable.Last;
+             MainForm.Bonp_fac_listTable.Append;
+             MainForm.Bonp_fac_listTable.FieldValues['code_bpfacl']:= CodeFV ;
+             MainForm.Bonp_fac_listTable.FieldValues['code_bpfac']:= MainForm.Bonp_facTable.FieldValues['code_bpfac'];
+             MainForm.Bonp_fac_listTable.FieldValues['code_p']:=  MainForm.ProduitTable.FieldValues['code_p'] ;
+             MainForm.Bonp_fac_listTable.FieldValues['qut_p'] :=  01;
+             MainForm.Bonp_fac_listTable.FieldValues['cond_p']:= 01;
+             MainForm.Bonp_fac_listTable.FieldValues['tva_p']:= MainForm.ProduitTable.FieldValues['tva_p'];
 
            if  NOT (MainForm.ClientTable.IsEmpty) AND (ClientBonFacVGCbx.Text<> '' ) then
            begin
              if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 0 then
              begin
-             MainForm.Bonv_fac_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixvd_p'];
+             MainForm.Bonp_fac_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixvd_p'];
              end;
              if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 1 then
              begin
-             MainForm.Bonv_fac_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixvr_p'];
+             MainForm.Bonp_fac_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixvr_p'];
              end;
              if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 2 then
              begin
-             MainForm.Bonv_fac_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixvg_p'];
+             MainForm.Bonp_fac_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixvg_p'];
              end;
              if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 3 then
              begin
-             MainForm.Bonv_fac_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixva_p'];
+             MainForm.Bonp_fac_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixva_p'];
              end;
              if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 4 then
              begin
-             MainForm.Bonv_fac_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixva2_p'];
+             MainForm.Bonp_fac_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixva2_p'];
              end;
              end else
                  begin
-                  MainForm.Bonv_fac_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixvd_p'];
+                  MainForm.Bonp_fac_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixvd_p'];
                  end;
 
 
-             MainForm.Bonv_fac_listTable.Post ;
-             MainForm.Bonv_fac_listTable.IndexFieldNames:='code_bvfac';
+             MainForm.Bonp_fac_listTable.Post ;
+             MainForm.Bonp_fac_listTable.IndexFieldNames:='code_bpfac';
 
-            MainForm.Bonv_fac_listTable.Active:=False;
-            MainForm.Bonv_fac_listTable.SQL.Clear;
-            MainForm.Bonv_fac_listTable.SQL.Text:= 'SELECT * FROM bonv_fac_list WHERE code_bvfac = ' + QuotedStr(IntToStr(MainForm.Bonv_facTable.FieldValues['code_bvfac']));
-            MainForm.Bonv_fac_listTable.Active:=True;
+            MainForm.Bonp_fac_listTable.Active:=False;
+            MainForm.Bonp_fac_listTable.SQL.Clear;
+            MainForm.Bonp_fac_listTable.SQL.Text:= 'SELECT * FROM bonp_fac_list WHERE code_bpfac = ' + QuotedStr(IntToStr(MainForm.Bonp_facTable.FieldValues['code_bpfac']));
+            MainForm.Bonp_fac_listTable.Active:=True;
 
             ProduitBonFacVGCbx.Text:='';
             ProduitsListDBGridEh.SetFocus;
@@ -834,8 +834,8 @@ begin
            ProduitsListDBGridEh.SelectedIndex:=2;
            ProduitsListDBGridEh.EditorMode:=True;
 
-           MainForm.Bonv_fac_listTable.EnableControls;
-           MainForm.Bonv_fac_listTable.Last;
+           MainForm.Bonp_fac_listTable.EnableControls;
+           MainForm.Bonp_fac_listTable.Last;
            if ClientBonFacVGCbx.Text<>'' then
             begin
             ValiderBVFacBonFacVGBtn.Enabled:= True;
@@ -864,7 +864,7 @@ begin
       FSplashAddUnite.CancelAddUniteSBtn.Top:=(FSplashAddUnite.Height) - 36;
       FSplashAddUnite.OKAddUniteSBtn.Left:=(FSplashAddUnite.Width div 4) - (FSplashAddUnite.OKAddUniteSBtn.Width div 2) + 15;
       FSplashAddUnite.CancelAddUniteSBtn.Left:= ((FSplashAddUnite.Width div 2 )+((FSplashAddUnite.Width div 2)div 2 ) ) - (FSplashAddUnite.CancelAddUniteSBtn.Width div 2) - 15;
-      if  MainForm.Bonv_fac_listTable.FieldValues['code_p'] <> NULL then
+      if  MainForm.Bonp_fac_listTable.FieldValues['code_p'] <> NULL then
       begin
       NomP:=   MainForm.ProduitTable.FieldValues['nom_p'];
       end else begin
@@ -887,11 +887,11 @@ begin
 
       FSplashAddUnite.CancelAddUniteSBtn.Caption:='Ignorer' ;
       FSplashAddUnite.OKAddUniteSBtn.Enabled:=True;
-      FSplashAddUnite.OKAddUniteSBtn.Tag:= 15 ;
+      FSplashAddUnite.OKAddUniteSBtn.Tag:= 37 ;
       AnimateWindow(FSplashAddUnite.Handle, 175, AW_VER_POSITIVE OR AW_SLIDE OR AW_ACTIVATE );
        FSplashAddUnite.Show;
     //--- this tage = 0 is for multi name added by produit combobox----//
-       FSplashAddUnite.Tag:=3;
+       FSplashAddUnite.Tag:=6;
      end;
 
      end;
@@ -904,70 +904,70 @@ begin
             MainForm.ProduitTable.Active:=True;
             CodeP:= MainForm.ProduitTable.FieldByName('code_p').AsInteger ;
 
-         lookupResultRefP := MainForm.Bonv_fac_listTable.Lookup('code_p',(CodeP),'code_p');
+         lookupResultRefP := MainForm.Bonp_fac_listTable.Lookup('code_p',(CodeP),'code_p');
          if VarIsnull( lookupResultRefP) then
          begin
        if  MainForm.ProduitTable.RecordCount > 0  then
           begin
 
-            MainForm.Bonv_fac_listTable.DisableControls;
-            MainForm.Bonv_fac_listTable.IndexFieldNames:='';
-            MainForm.Bonv_fac_listTable.Active:=False;
-            MainForm.Bonv_fac_listTable.SQL.Clear;
-            MainForm.Bonv_fac_listTable.SQL.Text:= 'SELECT * FROM bonv_fac_list' ;
-            MainForm.Bonv_fac_listTable.Active:=True;
-           if  MainForm.Bonv_fac_listTable.RecordCount <= 0 then
+            MainForm.Bonp_fac_listTable.DisableControls;
+            MainForm.Bonp_fac_listTable.IndexFieldNames:='';
+            MainForm.Bonp_fac_listTable.Active:=False;
+            MainForm.Bonp_fac_listTable.SQL.Clear;
+            MainForm.Bonp_fac_listTable.SQL.Text:= 'SELECT * FROM bonp_fac_list' ;
+            MainForm.Bonp_fac_listTable.Active:=True;
+           if  MainForm.Bonp_fac_listTable.RecordCount <= 0 then
            begin
              CodeFV := 1;
            end else
                begin
-                MainForm.Bonv_fac_listTable.Last;
-                CodeFV:= MainForm.Bonv_fac_listTable.FieldValues['code_bvfacl'] + 1 ;
+                MainForm.Bonp_fac_listTable.Last;
+                CodeFV:= MainForm.Bonp_fac_listTable.FieldValues['code_bpfacl'] + 1 ;
                end;
-             MainForm.Bonv_fac_listTable.Insert;
-             MainForm.Bonv_fac_listTable.FieldValues['code_bvfacl']:= CodeFV ;
-             MainForm.Bonv_fac_listTable.FieldValues['code_bvfac']:= MainForm.Bonv_facTable.FieldValues['code_bvfac'];
-             MainForm.Bonv_fac_listTable.FieldValues['code_p']:=  MainForm.ProduitTable.FieldValues['code_p'] ;
-             MainForm.Bonv_fac_listTable.FieldValues['qut_p'] :=  01;
-             MainForm.Bonv_fac_listTable.FieldValues['cond_p']:= 01;
-             MainForm.Bonv_fac_listTable.FieldValues['tva_p']:= MainForm.ProduitTable.FieldValues['tva_p'];
+             MainForm.Bonp_fac_listTable.Insert;
+             MainForm.Bonp_fac_listTable.FieldValues['code_bpfacl']:= CodeFV ;
+             MainForm.Bonp_fac_listTable.FieldValues['code_bpfac']:= MainForm.Bonp_facTable.FieldValues['code_bpfac'];
+             MainForm.Bonp_fac_listTable.FieldValues['code_p']:=  MainForm.ProduitTable.FieldValues['code_p'] ;
+             MainForm.Bonp_fac_listTable.FieldValues['qut_p'] :=  01;
+             MainForm.Bonp_fac_listTable.FieldValues['cond_p']:= 01;
+             MainForm.Bonp_fac_listTable.FieldValues['tva_p']:= MainForm.ProduitTable.FieldValues['tva_p'];
 
            if  NOT (MainForm.ClientTable.IsEmpty) AND (ClientBonFacVGCbx.Text<> '' ) then
            begin
              if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 0 then
              begin
-             MainForm.Bonv_fac_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixvd_p'];
+             MainForm.Bonp_fac_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixvd_p'];
              end;
              if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 1 then
              begin
-             MainForm.Bonv_fac_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixvr_p'];
+             MainForm.Bonp_fac_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixvr_p'];
              end;
              if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 2 then
              begin
-             MainForm.Bonv_fac_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixvg_p'];
+             MainForm.Bonp_fac_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixvg_p'];
              end;
              if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 3 then
              begin
-             MainForm.Bonv_fac_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixva_p'];
+             MainForm.Bonp_fac_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixva_p'];
              end;
              if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 4 then
              begin
-             MainForm.Bonv_fac_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixva2_p'];
+             MainForm.Bonp_fac_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixva2_p'];
              end;
              end else
                  begin
-                  MainForm.Bonv_fac_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixvd_p'];
+                  MainForm.Bonp_fac_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixvd_p'];
                  end;
 
 
-             MainForm.Bonv_fac_listTable.Post ;
-             MainForm.Bonv_fac_listTable.IndexFieldNames:='code_bvfac';
+             MainForm.Bonp_fac_listTable.Post ;
+             MainForm.Bonp_fac_listTable.IndexFieldNames:='code_bpfac';
 
-            MainForm.Bonv_fac_listTable.Active:=False;
-            MainForm.Bonv_fac_listTable.SQL.Clear;
-            MainForm.Bonv_fac_listTable.SQL.Text:= 'SELECT * FROM bonv_fac_list WHERE code_bvfac = ' + QuotedStr(IntToStr(MainForm.Bonv_facTable.FieldValues['code_bvfac']));
-            MainForm.Bonv_fac_listTable.Active:=True;
-            MainForm.Bonv_fac_listTable.EnableControls;
+            MainForm.Bonp_fac_listTable.Active:=False;
+            MainForm.Bonp_fac_listTable.SQL.Clear;
+            MainForm.Bonp_fac_listTable.SQL.Text:= 'SELECT * FROM bonp_fac_list WHERE code_bpfac = ' + QuotedStr(IntToStr(MainForm.Bonp_facTable.FieldValues['code_bpfac']));
+            MainForm.Bonp_fac_listTable.Active:=True;
+            MainForm.Bonp_fac_listTable.EnableControls;
 
             ProduitBonFacVGCbx.Text:='';
             ProduitsListDBGridEh.SetFocus;
@@ -975,8 +975,8 @@ begin
            ProduitsListDBGridEh.SelectedIndex:=2;
            ProduitsListDBGridEh.EditorMode:=True;
 
-           MainForm.Bonv_fac_listTable.EnableControls;
-            MainForm.Bonv_fac_listTable.Last;
+           MainForm.Bonp_fac_listTable.EnableControls;
+            MainForm.Bonp_fac_listTable.Last;
             if ClientBonFacVGCbx.Text<>'' then
               begin
               ValiderBVFacBonFacVGBtn.Enabled:= True;
@@ -1004,7 +1004,7 @@ begin
             FSplashAddUnite.CancelAddUniteSBtn.Top:=(FSplashAddUnite.Height) - 36;
             FSplashAddUnite.OKAddUniteSBtn.Left:=(FSplashAddUnite.Width div 4) - (FSplashAddUnite.OKAddUniteSBtn.Width div 2) + 15;
             FSplashAddUnite.CancelAddUniteSBtn.Left:= ((FSplashAddUnite.Width div 2 )+((FSplashAddUnite.Width div 2)div 2 ) ) - (FSplashAddUnite.CancelAddUniteSBtn.Width div 2) - 15;
-            if  MainForm.Bonv_fac_listTable.FieldValues['code_p'] <> NULL then
+            if  MainForm.Bonp_fac_listTable.FieldValues['code_p'] <> NULL then
             begin
             NomP:=   MainForm.ProduitTable.FieldValues['nom_p'];
             end else begin
@@ -1026,11 +1026,11 @@ begin
             FSplashAddUnite.Top:=   MainForm.Top + 5;
             FSplashAddUnite.CancelAddUniteSBtn.Caption:='Ignorer' ;
             FSplashAddUnite.OKAddUniteSBtn.Enabled:=True;
-            FSplashAddUnite.OKAddUniteSBtn.Tag:= 15 ;
+            FSplashAddUnite.OKAddUniteSBtn.Tag:= 37 ;
             AnimateWindow(FSplashAddUnite.Handle, 175, AW_VER_POSITIVE OR AW_SLIDE OR AW_ACTIVATE );
              FSplashAddUnite.Show;
           //--- this tage = 3 is for multi name added by produit combobox----//
-             FSplashAddUnite.Tag:=3;
+             FSplashAddUnite.Tag:=6;
          end;
     end;
  //---------------------------------------------------------------------------------------------
@@ -1054,70 +1054,70 @@ begin
      if  (MainForm.ProduitTable.RecordCount > 0 )   then
       begin
 
-         lookupResultRefP := MainForm.Bonv_fac_listTable.Lookup('code_p',(CodeP),'code_p');
+         lookupResultRefP := MainForm.Bonp_fac_listTable.Lookup('code_p',(CodeP),'code_p');
          if VarIsnull( lookupResultRefP) then
          begin
 
-            MainForm.Bonv_fac_listTable.DisableControls;
-            MainForm.Bonv_fac_listTable.IndexFieldNames:='';
-            MainForm.Bonv_fac_listTable.Active:=False;
-            MainForm.Bonv_fac_listTable.SQL.Clear;
-            MainForm.Bonv_fac_listTable.SQL.Text:= 'SELECT * FROM bonv_fac_list' ;
-            MainForm.Bonv_fac_listTable.Active:=True;
+            MainForm.Bonp_fac_listTable.DisableControls;
+            MainForm.Bonp_fac_listTable.IndexFieldNames:='';
+            MainForm.Bonp_fac_listTable.Active:=False;
+            MainForm.Bonp_fac_listTable.SQL.Clear;
+            MainForm.Bonp_fac_listTable.SQL.Text:= 'SELECT * FROM bonp_fac_list' ;
+            MainForm.Bonp_fac_listTable.Active:=True;
 
-           if  MainForm.Bonv_fac_listTable.RecordCount <= 0 then
+           if  MainForm.Bonp_fac_listTable.RecordCount <= 0 then
            begin
              CodeFV := 1;
            end else
                begin
-                MainForm.Bonv_fac_listTable.Last;
-                CodeFV:= MainForm.Bonv_fac_listTable.FieldValues['code_bvfacl'] + 1 ;
+                MainForm.Bonp_fac_listTable.Last;
+                CodeFV:= MainForm.Bonp_fac_listTable.FieldValues['code_bpfacl'] + 1 ;
                end;
 
-             MainForm.Bonv_fac_listTable.Insert;
-             MainForm.Bonv_fac_listTable.FieldValues['code_bvfacl']:= CodeFV ;
-             MainForm.Bonv_fac_listTable.FieldValues['code_bvfac']:= MainForm.Bonv_facTable.FieldValues['code_bvfac'];
-             MainForm.Bonv_fac_listTable.FieldValues['code_p']:=  MainForm.ProduitTable.FieldValues['code_p'] ;
-             MainForm.Bonv_fac_listTable.FieldValues['qut_p'] :=  01;
-             MainForm.Bonv_fac_listTable.FieldValues['cond_p']:= 01;
-             MainForm.Bonv_fac_listTable.FieldValues['tva_p']:= MainForm.ProduitTable.FieldValues['tva_p'];
+             MainForm.Bonp_fac_listTable.Insert;
+             MainForm.Bonp_fac_listTable.FieldValues['code_bpfacl']:= CodeFV ;
+             MainForm.Bonp_fac_listTable.FieldValues['code_bpfac']:= MainForm.Bonp_facTable.FieldValues['code_bpfac'];
+             MainForm.Bonp_fac_listTable.FieldValues['code_p']:=  MainForm.ProduitTable.FieldValues['code_p'] ;
+             MainForm.Bonp_fac_listTable.FieldValues['qut_p'] :=  01;
+             MainForm.Bonp_fac_listTable.FieldValues['cond_p']:= 01;
+             MainForm.Bonp_fac_listTable.FieldValues['tva_p']:= MainForm.ProduitTable.FieldValues['tva_p'];
 
            if  NOT (MainForm.ClientTable.IsEmpty) AND (ClientBonFacVGCbx.Text<> '' ) then
            begin
              if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 0 then
              begin
-             MainForm.Bonv_fac_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixvd_p'];
+             MainForm.Bonp_fac_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixvd_p'];
              end;
              if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 1 then
              begin
-             MainForm.Bonv_fac_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixvr_p'];
+             MainForm.Bonp_fac_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixvr_p'];
              end;
              if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 2 then
              begin
-             MainForm.Bonv_fac_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixvg_p'];
+             MainForm.Bonp_fac_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixvg_p'];
              end;
              if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 3 then
              begin
-             MainForm.Bonv_fac_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixva_p'];
+             MainForm.Bonp_fac_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixva_p'];
              end;
              if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 4 then
              begin
-             MainForm.Bonv_fac_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixva2_p'];
+             MainForm.Bonp_fac_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixva2_p'];
              end;
              end else
                  begin
-                  MainForm.Bonv_fac_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixvd_p'];
+                  MainForm.Bonp_fac_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixvd_p'];
                  end;
 
 
-             MainForm.Bonv_fac_listTable.Post ;
-             MainForm.Bonv_fac_listTable.IndexFieldNames:='code_bvfac';
+             MainForm.Bonp_fac_listTable.Post ;
+             MainForm.Bonp_fac_listTable.IndexFieldNames:='code_bpfac';
 
-             MainForm.Bonv_fac_listTable.Active:=False;
-             MainForm.Bonv_fac_listTable.SQL.Clear;
-             MainForm.Bonv_fac_listTable.SQL.Text:= 'SELECT * FROM bonv_fac_list WHERE code_bvfac = ' + QuotedStr(IntToStr(MainForm.Bonv_facTable.FieldValues['code_bvfac']));
-             MainForm.Bonv_fac_listTable.Active:=True;
-             MainForm.Bonv_fac_listTable.EnableControls;
+             MainForm.Bonp_fac_listTable.Active:=False;
+             MainForm.Bonp_fac_listTable.SQL.Clear;
+             MainForm.Bonp_fac_listTable.SQL.Text:= 'SELECT * FROM bonp_fac_list WHERE code_bpfac = ' + QuotedStr(IntToStr(MainForm.Bonp_facTable.FieldValues['code_bpfac']));
+             MainForm.Bonp_fac_listTable.Active:=True;
+             MainForm.Bonp_fac_listTable.EnableControls;
 
             ProduitBonFacVGCbx.Text:='';
             ProduitsListDBGridEh.SetFocus;
@@ -1125,8 +1125,8 @@ begin
            ProduitsListDBGridEh.SelectedIndex:=2;
            ProduitsListDBGridEh.EditorMode:=True;
 
-           MainForm.Bonv_fac_listTable.EnableControls;
-            MainForm.Bonv_fac_listTable.Last;
+           MainForm.Bonp_fac_listTable.EnableControls;
+            MainForm.Bonp_fac_listTable.Last;
             if ClientBonFacVGCbx.Text<>'' then
               begin
               ValiderBVFacBonFacVGBtn.Enabled:= True;
@@ -1155,7 +1155,7 @@ begin
             FSplashAddUnite.CancelAddUniteSBtn.Top:=(FSplashAddUnite.Height) - 36;
             FSplashAddUnite.OKAddUniteSBtn.Left:=(FSplashAddUnite.Width div 4) - (FSplashAddUnite.OKAddUniteSBtn.Width div 2) + 15;
             FSplashAddUnite.CancelAddUniteSBtn.Left:= ((FSplashAddUnite.Width div 2 )+((FSplashAddUnite.Width div 2)div 2 ) ) - (FSplashAddUnite.CancelAddUniteSBtn.Width div 2) - 15;
-            if  MainForm.Bonv_fac_listTable.FieldValues['code_p'] <> NULL then
+            if  MainForm.Bonp_fac_listTable.FieldValues['code_p'] <> NULL then
             begin
             NomP:=   MainForm.ProduitTable.FieldValues['nom_p'];
             end else begin
@@ -1177,11 +1177,11 @@ begin
             FSplashAddUnite.Top:=   MainForm.Top + 5;
             FSplashAddUnite.CancelAddUniteSBtn.Caption:='Ignorer' ;
             FSplashAddUnite.OKAddUniteSBtn.Enabled:=True;
-            FSplashAddUnite.OKAddUniteSBtn.Tag:= 15 ;
+            FSplashAddUnite.OKAddUniteSBtn.Tag:= 37 ;
             AnimateWindow(FSplashAddUnite.Handle, 175, AW_VER_POSITIVE OR AW_SLIDE OR AW_ACTIVATE );
              FSplashAddUnite.Show;
           //--- this tage = 0 is for multi name added by produit combobox----//
-             FSplashAddUnite.Tag:=3;
+             FSplashAddUnite.Tag:=6;
              end;
           end;
 
@@ -1191,23 +1191,23 @@ begin
           MainForm.ProduitTable.SQL.Text:= 'SELECT * FROM produit';
           MainForm.ProduitTable.Active := True;
 
-         MainForm.Bonv_fac_listTable.Refresh;
+         MainForm.Bonp_fac_listTable.Refresh;
 //        ProduitBonFacVGCbx.AutoDropDown:=False;
          ProduitBonFacVGCbx.SelectAll;
 
      end;
-     MainForm.Bonv_fac_listTable.Last;
+     MainForm.Bonp_fac_listTable.Last;
  end;
 end;
 
-procedure TBonFacVGestionF.EnterAddProduitBonFacVGBtnClick(Sender: TObject);
+procedure TBonFacPGestionF.EnterAddProduitBonFacVGBtnClick(Sender: TObject);
 var key : char  ;
 begin
 key := #13;
 ProduitBonFacVGCbxKeyPress(Sender, key);
 end;
 
-procedure TBonFacVGestionF.ListAddProduitBonFacVGBtnClick(Sender: TObject);
+procedure TBonFacPGestionF.ListAddProduitBonFacVGBtnClick(Sender: TObject);
 begin
 
 //-------- use this code to start creating th form-----//
@@ -1220,25 +1220,25 @@ begin
   FastProduitsListF.Top := (Screen.Height div 2) - (FastProduitsListF.Height div 2);
   FastProduitsListF.Show;
   FastProduitsListF.ResearchProduitsEdt.SetFocus;
-//---------Use this tag = 2 for adding from facture de vente
-  FastProduitsListF.Tag := 2;
+//---------Use this tag = 2 for adding from facture Proforma
+  FastProduitsListF.Tag := 6;
 
  end;
 
-procedure TBonFacVGestionF.NewAddProduitBonFacVGBtnClick(Sender: TObject);
+procedure TBonFacPGestionF.NewAddProduitBonFacVGBtnClick(Sender: TObject);
 begin
 ProduitsListF.AddProduitsBtnClick(Sender);
 end;
 
-procedure TBonFacVGestionF.DeleteProduitBonFacVGBtnClick(Sender: TObject);
+procedure TBonFacPGestionF.DeleteProduitBonFacVGBtnClick(Sender: TObject);
 begin
- if  MainForm.Bonv_fac_listTable.RecordCount = 1 then
+ if  MainForm.Bonp_fac_listTable.RecordCount = 1 then
  begin
-    MainForm.Bonv_fac_listTable.DisableControls;
-    MainForm.Bonv_fac_listTable.Refresh;
-    MainForm.Bonv_fac_listTable.Delete;
+    MainForm.Bonp_fac_listTable.DisableControls;
+    MainForm.Bonp_fac_listTable.Refresh;
+    MainForm.Bonp_fac_listTable.Delete;
     ProduitsListDBGridEh.Refresh;
-    MainForm.Bonv_fac_listTable.EnableControls;
+    MainForm.Bonp_fac_listTable.EnableControls;
     ClientBonFacVGCbx.StyleElements:= [];
     RequiredClientGlbl.Visible:= False;
     NameClientGErrorP.Visible:= False;
@@ -1249,21 +1249,21 @@ begin
     BonFacVResteLbl.Caption:=FloatToStrF(0, ffNumber, 14, 2);
     BonFacVGClientNEWCredit.Caption:= BonFacVTotalTTCLbl.Caption;
  end else
- if MainForm.Bonv_fac_listTable.RecordCount <= 0 then
+ if MainForm.Bonp_fac_listTable.RecordCount <= 0 then
  begin
   exit;
  end
  else
      begin
-      MainForm.Bonv_fac_listTable.DisableControls;
-      MainForm.Bonv_fac_listTable.Delete;
+      MainForm.Bonp_fac_listTable.DisableControls;
+      MainForm.Bonp_fac_listTable.Delete;
       ProduitsListDBGridEh.Refresh;
-      MainForm.Bonv_fac_listTable.Refresh;
-      MainForm.Bonv_fac_listTable.EnableControls;
+      MainForm.Bonp_fac_listTable.Refresh;
+      MainForm.Bonp_fac_listTable.EnableControls;
      end;
 end;
 
-procedure TBonFacVGestionF.ClearProduitBonFacVGBtnClick(Sender: TObject);
+procedure TBonFacPGestionF.ClearProduitBonFacVGBtnClick(Sender: TObject);
 begin
   FSplashAddUnite:=TFSplashAddUnite.Create(Application);
   FSplashAddUnite.Width:=350;
@@ -1292,18 +1292,18 @@ begin
   AnimateWindow(FSplashAddUnite.Handle, 175, AW_VER_POSITIVE OR AW_SLIDE OR AW_ACTIVATE );
   FSplashAddUnite.Show;
   FSplashAddUnite.OKAddUniteSBtn.Enabled:=True;
-  FSplashAddUnite.OKAddUniteSBtn.Tag:= 14 ;
+  FSplashAddUnite.OKAddUniteSBtn.Tag:= 36 ;
 end;
 
-procedure TBonFacVGestionF.ProduitsListDBGridEhMouseMove(Sender: TObject;
+procedure TBonFacPGestionF.ProduitsListDBGridEhMouseMove(Sender: TObject;
   Shift: TShiftState; X, Y: Integer);
 begin
-if NOT (MainForm.Bonv_fac_listTable.IsEmpty) then
+if NOT (MainForm.Bonp_fac_listTable.IsEmpty) then
   begin
     MainForm.ProduitTable.DisableControls;
     MainForm.ProduitTable.Active:=False;
     MainForm.ProduitTable.SQL.Clear;
-    MainForm.ProduitTable.SQL.Text:='SELECT * FROM produit WHERE code_p = ' +IntToStr(MainForm.Bonv_fac_listTable.FieldValues['code_p']);
+    MainForm.ProduitTable.SQL.Text:='SELECT * FROM produit WHERE code_p = ' +IntToStr(MainForm.Bonp_fac_listTable.FieldValues['code_p']);
     MainForm.ProduitTable.Active:=True;
 
 
@@ -1330,7 +1330,7 @@ if NOT (MainForm.Bonv_fac_listTable.IsEmpty) then
   end;
 end;
 
-procedure TBonFacVGestionF.ProduitsListDBGridEhKeyPress(Sender: TObject;
+procedure TBonFacPGestionF.ProduitsListDBGridEhKeyPress(Sender: TObject;
   var Key: Char);
 begin
 if (Key=#13 ) OR (Key=#9) then
@@ -1346,7 +1346,7 @@ if (Key=#13 ) OR (Key=#9) then
    end;
 end;
 
-procedure TBonFacVGestionF.BonFacVPListDataSDataChange(Sender: TObject;
+procedure TBonFacPGestionF.BonFacVPListDataSDataChange(Sender: TObject;
   Field: TField);
 var  TimberFV,TTCbeforeTimber,TTCafterTimber: Currency;
 begin
@@ -1355,26 +1355,26 @@ begin
     DeleteProduitBonFacVGBtn.Visible:= True;
     ClearProduitBonFacVGBtn.Visible:= True;
 
-    if (ClientBonFacVGCbx.Text<>'') AND  (MainForm.Bonv_facTable.FieldByName('valider_bvfac').AsBoolean <> True)  then
+    if (ClientBonFacVGCbx.Text<>'') AND  (MainForm.Bonp_facTable.FieldByName('valider_bpfac').AsBoolean <> True)  then
     begin
     ValiderBVFacBonFacVGBtn.Enabled:= True;
     ValiderBVFacBonFacVGBtn.ImageIndex:=12;
     end;
 
-   if MainForm.Bonv_facTable.FieldValues['valider_bvfac'] <> True then
+   if MainForm.Bonp_facTable.FieldValues['valider_bpfac'] <> True then
    begin
 
     MainForm.ProduitTable.DisableControls;
     MainForm.ProduitTable.Active:=False;
     MainForm.ProduitTable.SQL.Clear;
-    MainForm.ProduitTable.SQL.Text:='SELECT * FROM produit WHERE code_p = ' +IntToStr(MainForm.Bonv_fac_listTable.FieldValues['code_p']);
+    MainForm.ProduitTable.SQL.Text:='SELECT * FROM produit WHERE code_p = ' +IntToStr(MainForm.Bonp_fac_listTable.FieldValues['code_p']);
     MainForm.ProduitTable.Active:=True;
 
     BonFacVGOLDStock.Caption:=
       floatTostrF((MainForm.ProduitTable.FieldValues['QutDispo']),ffNumber,14,2);
       
     BonFacVGNEWStock.Caption:=
-      floatTostrF(((MainForm.ProduitTable.FieldValues['QutDispo'])-((MainForm.Bonv_fac_listTable.FieldValues['qut_p'])*(MainForm.Bonv_fac_listTable.FieldValues['cond_p']))),ffNumber,14,2);
+      floatTostrF(((MainForm.ProduitTable.FieldValues['QutDispo'])-((MainForm.Bonp_fac_listTable.FieldValues['qut_p'])*(MainForm.Bonp_fac_listTable.FieldValues['cond_p']))),ffNumber,14,2);
 
 
     if(StrToFloat (StringReplace(BonFacVGNEWStock.Caption, #32, '', [rfReplaceAll])))  < 0 then
@@ -1421,7 +1421,7 @@ begin
   end;
 end;
 
-procedure TBonFacVGestionF.Timer1Timer(Sender: TObject);
+procedure TBonFacPGestionF.Timer1Timer(Sender: TObject);
 begin
 if label20.Visible=True then
    label20.Visible:=False
@@ -1429,7 +1429,7 @@ else
    label20.Visible:=True;
 end;
 
-procedure TBonFacVGestionF.ClientBonFacVGCbxChange(Sender: TObject);
+procedure TBonFacPGestionF.ClientBonFacVGCbxChange(Sender: TObject);
 
 begin
 // use this code to make mode pai espece
@@ -1439,7 +1439,7 @@ begin
 end;
 
 
-procedure TBonFacVGestionF.ModePaieBonFacVGCbxDropDown(Sender: TObject);
+procedure TBonFacPGestionF.ModePaieBonFacVGCbxDropDown(Sender: TObject);
 Var I: Integer;
 begin
       MainForm.Mode_paiementTable.Active:=False;
@@ -1463,7 +1463,7 @@ begin
  ModePaieBonFacVGCbxChange(Sender);
 end;
 
-procedure TBonFacVGestionF.ModePaieBonFacVGCbxClick(Sender: TObject);
+procedure TBonFacPGestionF.ModePaieBonFacVGCbxClick(Sender: TObject);
 begin
   if ModePaieBonFacVGCbx.Text <> '' then
   begin
@@ -1490,7 +1490,7 @@ begin
   end;
 end;
 
-procedure TBonFacVGestionF.ClientBonFacVGCbxEnter(Sender: TObject);
+procedure TBonFacPGestionF.ClientBonFacVGCbxEnter(Sender: TObject);
 var
 I : Integer;
   begin
@@ -1514,7 +1514,7 @@ I : Integer;
 
 end;
 
-procedure TBonFacVGestionF.ClientBonFacVGCbxExit(Sender: TObject);
+procedure TBonFacPGestionF.ClientBonFacVGCbxExit(Sender: TObject);
 var CodeC: Integer;
 OLDCreditC,RegCCreditC,OLDCreditCINI : Currency;
 begin
@@ -1611,7 +1611,7 @@ begin
         ValiderBVFacBonFacVGBtn.ImageIndex:=12;
         end;
 
-        MainForm.Bonv_fac_listTable.Refresh;
+        MainForm.Bonp_fac_listTable.Refresh;
 
             ClientBonFacVGCbx.StyleElements:= [seFont,seBorder,seBorder];
             RequiredClientGlbl.Visible:= False;
@@ -1653,7 +1653,7 @@ begin
 
 end;
 
-procedure TBonFacVGestionF.CompteBonFacVGCbxEnter(Sender: TObject);
+procedure TBonFacPGestionF.CompteBonFacVGCbxEnter(Sender: TObject);
 
 Var I: Integer;
 begin
@@ -1677,7 +1677,7 @@ begin
      end;
 end;
 
-procedure TBonFacVGestionF.ClientBonFacVGCbxKeyPress(Sender: TObject;
+procedure TBonFacPGestionF.ClientBonFacVGCbxKeyPress(Sender: TObject;
   var Key: Char);
 begin
   if Key = #13 then
@@ -1687,19 +1687,19 @@ begin
     end;
 end;
 
-procedure TBonFacVGestionF.CompteBonFacVGCbxChange(Sender: TObject);
+procedure TBonFacPGestionF.CompteBonFacVGCbxChange(Sender: TObject);
 begin
 CompteBonFacVGCbx.AutoDropDown:=True;
 end;
 
-procedure TBonFacVGestionF.RemiseTypeBonFacVGCbxChange(Sender: TObject);
+procedure TBonFacPGestionF.RemiseTypeBonFacVGCbxChange(Sender: TObject);
 begin
 RemiseBonFacVGEdt.Text:='';
 RemisePerctageBonFacVGEdt.Text:='';
-MainForm.Bonv_fac_listTable.Refresh;
+MainForm.Bonp_fac_listTable.Refresh;
 end;
 
-procedure TBonFacVGestionF.RemisePerctageBonFacVGEdtChange(Sender: TObject);
+procedure TBonFacPGestionF.RemisePerctageBonFacVGEdtChange(Sender: TObject);
 var BonFVTotalHT,RemisePerctageBonFacV,TotalTVANet,NewHT,NewTVA,NewTTC,Remise,OldTTC,OldClientCredit,Timber : Currency;
 begin
 //------ this is to set the remise on tyhe prix HT ---------//
@@ -1785,7 +1785,7 @@ begin
             NewTTC:=StrToFloat (StringReplace(BonFacVTotalTTCLbl.Caption , #32, '', [rfReplaceAll]));
             end;
           BonFacVGClientNEWCredit.Caption:=  FloatToStrF((NewTTC + OldClientCredit),ffNumber,14,2);
-          MainForm.Bonv_fac_listTable.Refresh;
+          MainForm.Bonp_fac_listTable.Refresh;
           end;
        end;
        //------ this is to set the remise on the prix TTC only ---------//
@@ -1858,26 +1858,26 @@ begin
               NewTTC:=StrToFloat (StringReplace(BonFacVTotalTTCLbl.Caption , #32, '', [rfReplaceAll]));
               end;
              BonFacVGClientNEWCredit.Caption:=  FloatToStrF((NewTTC + OldClientCredit),ffNumber,14,2);
-             MainForm.Bonv_fac_listTable.Refresh;
+             MainForm.Bonp_fac_listTable.Refresh;
             end;
       end;
 
 end;
 
-procedure TBonFacVGestionF.RemisePerctageBonFacVGEdtClick(Sender: TObject);
+procedure TBonFacPGestionF.RemisePerctageBonFacVGEdtClick(Sender: TObject);
 begin
 //----- use this code to delte the blanks from the Tedit when enter that will avoide the not foit point error --///
 RemisePerctageBonFacVGEdt.Text := StringReplace(RemisePerctageBonFacVGEdt.Text, #32, '', [rfReplaceAll]);
 RemisePerctageBonFacvGEdt.SelectAll;
 end;
 
-procedure TBonFacVGestionF.RemisePerctageBonFacVGEdtEnter(Sender: TObject);
+procedure TBonFacPGestionF.RemisePerctageBonFacVGEdtEnter(Sender: TObject);
 begin
-MainForm.Bonv_fac_listTable.Refresh;
+MainForm.Bonp_fac_listTable.Refresh;
  RemisePerctageBonFacVGEdtChange(Sender);
 end;
 
-procedure TBonFacVGestionF.RemisePerctageBonFacVGEdtKeyPress(Sender: TObject;
+procedure TBonFacPGestionF.RemisePerctageBonFacVGEdtKeyPress(Sender: TObject;
   var Key: Char);
 const
   N = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0',',','.', Char(VK_back)];
@@ -1888,7 +1888,7 @@ begin
   end;
 end;
 
-procedure TBonFacVGestionF.RemiseBonFacVGEdtChange(Sender: TObject);
+procedure TBonFacPGestionF.RemiseBonFacVGEdtChange(Sender: TObject);
 var RemiseBonFacVG,BonFVTotalHT,BonFVTotalTVA,OLDTTC : Currency;
 begin
 if RemiseBonFacVGEdt.Focused then
@@ -1896,7 +1896,7 @@ if RemiseBonFacVGEdt.Focused then
       if RemiseBonFacVGEdt.Text<>'' then
      begin
      RemiseBonFacVG:=StrToFloat (StringReplace(RemiseBonFacVGEdt.Text, #32, '', [rfReplaceAll]));
-    // MainForm.Bonv_fac_listTable.Refresh;
+    // MainForm.Bonp_fac_listTable.Refresh;
      end;
      if (RemiseBonFacVGEdt.Text<>'') AND (RemiseBonFacVG<>0) then
     begin
@@ -1926,25 +1926,25 @@ if RemiseBonFacVGEdt.Focused then
           BonFVRemiseHTNewLbl.Caption:='0';
           RemisePerctageBonFacVGEdt.Text:='';
           BonFVTotalHTNewLbl.Caption:=BonFacVTotalHTLbl.Caption;
-          MainForm.Bonv_fac_listTable.Refresh;
+          MainForm.Bonp_fac_listTable.Refresh;
         end;
  end;
 end;
 
-procedure TBonFacVGestionF.RemiseBonFacVGEdtClick(Sender: TObject);
+procedure TBonFacPGestionF.RemiseBonFacVGEdtClick(Sender: TObject);
 begin
 //----- use this code to delte the blanks from the Tedit when enter that will avoide the not foit point error --///
 RemiseBonFacVGEdt.Text := StringReplace(RemiseBonFacVGEdt.Text, #32, '', [rfReplaceAll]);
 RemiseBonFacVGEdt.SelectAll;
 end;
 
-procedure TBonFacVGestionF.RemiseBonFacVGEdtEnter(Sender: TObject);
+procedure TBonFacPGestionF.RemiseBonFacVGEdtEnter(Sender: TObject);
 begin
-MainForm.Bonv_fac_listTable.Refresh;
+MainForm.Bonp_fac_listTable.Refresh;
  RemisePerctageBonFacVGEdtChange(Sender);
 end;
 
-procedure TBonFacVGestionF.RemiseBonFacVGEdtExit(Sender: TObject);
+procedure TBonFacPGestionF.RemiseBonFacVGEdtExit(Sender: TObject);
 var
 RemiseBonFacVG: Currency;
 begin
@@ -1955,7 +1955,7 @@ begin
   end;
 end;
 
-procedure TBonFacVGestionF.RemiseBonFacVGEdtKeyPress(Sender: TObject;
+procedure TBonFacPGestionF.RemiseBonFacVGEdtKeyPress(Sender: TObject;
   var Key: Char);
 const
   N = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0',',','.', Char(VK_back)];
@@ -1974,14 +1974,14 @@ begin
   end;
 end;
 
-procedure TBonFacVGestionF.FormClose(Sender: TObject; var Action: TCloseAction);
+procedure TBonFacPGestionF.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
  if ValiderBVFacBonFacVGImg.ImageIndex = 1 then
   begin
 
-    MainForm.Bonv_facTable.Refresh;
+    MainForm.Bonp_facTable.Refresh;
 
-    MainForm.Bonv_fac_listTable.Refresh;
+    MainForm.Bonp_fac_listTable.Refresh;
   end;
 
           MainForm.ClientTable.Active:=false;
@@ -1990,36 +1990,36 @@ begin
           MainForm.ClientTable.Active:=True;
           MainForm.ClientTable.EnableControls;
 
-          MainForm.Mode_paiementTable.Active:=false;
-          MainForm.Mode_paiementTable.SQL.Clear;
-          MainForm.Mode_paiementTable.SQL.Text:='Select * FROM mode_paiement' ;
-          MainForm.Mode_paiementTable.Active:=True;
-          MainForm.Mode_paiementTable.EnableControls;
+//          MainForm.Mode_paiementTable.Active:=false;
+//          MainForm.Mode_paiementTable.SQL.Clear;
+//          MainForm.Mode_paiementTable.SQL.Text:='Select * FROM mode_paiement' ;
+//          MainForm.Mode_paiementTable.Active:=True;
+//          MainForm.Mode_paiementTable.EnableControls;
+//
+//          MainForm.CompteTable.Active:=false;
+//          MainForm.CompteTable.SQL.Clear;
+//          MainForm.CompteTable.SQL.Text:='Select * FROM compte' ;
+//          MainForm.CompteTable.Active:=True;
+//          MainForm.CompteTable.EnableControls;
 
-          MainForm.CompteTable.Active:=false;
-          MainForm.CompteTable.SQL.Clear;
-          MainForm.CompteTable.SQL.Text:='Select * FROM compte' ;
-          MainForm.CompteTable.Active:=True;
-          MainForm.CompteTable.EnableControls;
 
+          MainForm.Bonp_fac_listTable.Active:=false;
+          MainForm.Bonp_fac_listTable.SQL.Clear;
+          MainForm.Bonp_fac_listTable.SQL.Text:='Select * FROM bonp_fac_list' ;
+          MainForm.Bonp_fac_listTable.Active:=True;
+          MainForm.Bonp_fac_listTable.EnableControls;
 
-          MainForm.Bonv_fac_listTable.Active:=false;
-          MainForm.Bonv_fac_listTable.SQL.Clear;
-          MainForm.Bonv_fac_listTable.SQL.Text:='Select * FROM bonv_fac_list' ;
-          MainForm.Bonv_fac_listTable.Active:=True;
-          MainForm.Bonv_fac_listTable.EnableControls;
-
-  MainForm.Bonv_fac_listTable.IndexFieldNames:='code_bvfac';
+  MainForm.Bonp_fac_listTable.IndexFieldNames:='code_bpfac';
 
 //  FormatSettings.DecimalSeparator := '.';
 end;
 
-procedure TBonFacVGestionF.FormCloseQuery(Sender: TObject;
+procedure TBonFacPGestionF.FormCloseQuery(Sender: TObject;
   var CanClose: Boolean);
 
   var CodeFV : Integer;
 begin
- CodeFV := MainForm.Bonv_facTable.FieldByName('code_bvfac').AsInteger;
+ CodeFV := MainForm.Bonp_facTable.FieldByName('code_bpfac').AsInteger;
  if  NOT ProduitsListDBGridEh.DataSource.DataSet.IsEmpty then
   begin
     if ClientBonFacVGCbx.Text = '' then
@@ -2037,7 +2037,7 @@ begin
          if RequiredClientGlbl.Visible <> True then
          begin
 
-         if  (MainForm.Bonv_facTable.FieldByName('valider_bvfac').AsBoolean = false)  then
+         if  (MainForm.Bonp_facTable.FieldByName('valider_bpfac').AsBoolean = false)  then
          begin
           MainForm.ClientTable.DisableControls;
           MainForm.ClientTable.Active:=false;
@@ -2045,45 +2045,45 @@ begin
           MainForm.ClientTable.SQL.Text:='Select * FROM client WHERE LOWER(nom_c) LIKE LOWER('+ QuotedStr( ClientBonFacVGCbx.Text )+')'  ;
           MainForm.ClientTable.Active:=True;
 
-          MainForm.Mode_paiementTable.DisableControls;
-          MainForm.Mode_paiementTable.Active:=false;
-          MainForm.Mode_paiementTable.SQL.Clear;
-          MainForm.Mode_paiementTable.SQL.Text:='Select * FROM mode_paiement WHERE LOWER(nom_mdpai) LIKE LOWER('+ QuotedStr( ModePaieBonFacVGCbx.Text )+')'  ;
-          MainForm.Mode_paiementTable.Active:=True;
+//          MainForm.Mode_paiementTable.DisableControls;
+//          MainForm.Mode_paiementTable.Active:=false;
+//          MainForm.Mode_paiementTable.SQL.Clear;
+//          MainForm.Mode_paiementTable.SQL.Text:='Select * FROM mode_paiement WHERE LOWER(nom_mdpai) LIKE LOWER('+ QuotedStr( ModePaieBonFacVGCbx.Text )+')'  ;
+//          MainForm.Mode_paiementTable.Active:=True;
+//
+//          MainForm.CompteTable.DisableControls;
+//          MainForm.CompteTable.Active:=false;
+//          MainForm.CompteTable.SQL.Clear;
+//          MainForm.CompteTable.SQL.Text:='Select * FROM compte WHERE LOWER(nom_cmpt) LIKE LOWER('+ QuotedStr( CompteBonFacVGCbx.Text )+')'  ;
+//          MainForm.CompteTable.Active:=True;
 
-          MainForm.CompteTable.DisableControls;
-          MainForm.CompteTable.Active:=false;
-          MainForm.CompteTable.SQL.Clear;
-          MainForm.CompteTable.SQL.Text:='Select * FROM compte WHERE LOWER(nom_cmpt) LIKE LOWER('+ QuotedStr( CompteBonFacVGCbx.Text )+')'  ;
-          MainForm.CompteTable.Active:=True;
 
-
-          MainForm.Bonv_facTable.DisableControls;
-          MainForm.Bonv_facTable.Edit;
-          MainForm.Bonv_facTable.FieldValues['code_c']:= MainForm.ClientTable.FieldByName('code_c').AsInteger;
-          MainForm.Bonv_facTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
-          MainForm.Bonv_facTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
-          MainForm.Bonv_facTable.FieldValues['obser_bvfac']:= ObserBonFacVGMem.Text;
-          MainForm.Bonv_facTable.FieldValues['num_cheque_bvfac']:= NChequeBonFacVGCbx.Text;
-          MainForm.Bonv_facTable.FieldByName('montht_bvfac').AsCurrency:= StrToCurr(StringReplace(BonFacVTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
+          MainForm.Bonp_facTable.DisableControls;
+          MainForm.Bonp_facTable.Edit;
+          MainForm.Bonp_facTable.FieldValues['code_c']:= MainForm.ClientTable.FieldByName('code_c').AsInteger;
+//          MainForm.Bonp_facTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
+//          MainForm.Bonp_facTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
+          MainForm.Bonp_facTable.FieldValues['obser_bpfac']:= ObserBonFacVGMem.Text;
+//          MainForm.Bonp_facTable.FieldValues['num_cheque_bvfac']:= NChequeBonFacVGCbx.Text;
+          MainForm.Bonp_facTable.FieldByName('montht_bpfac').AsCurrency:= StrToCurr(StringReplace(BonFacVTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
 
           if RemiseBonFacVGEdt.Text<>'' then
           begin
-             MainForm.Bonv_facTable.FieldByName('remise_bvfac').AsCurrency:=StrToCurr(StringReplace(RemiseBonFacVGEdt.Text, #32, '', [rfReplaceAll]));
+             MainForm.Bonp_facTable.FieldByName('remise_bpfac').AsCurrency:=StrToCurr(StringReplace(RemiseBonFacVGEdt.Text, #32, '', [rfReplaceAll]));
           end else begin
-                    MainForm.Bonv_facTable.FieldByName('remise_bvfac').AsCurrency:=0;
+                    MainForm.Bonp_facTable.FieldByName('remise_bpfac').AsCurrency:=0;
                 end;
 
-          MainForm.Bonv_facTable.FieldByName('montver_bvfac').AsCurrency:=StrToCurr(StringReplace(BonFacVRegleLbl.Caption, #32, '', [rfReplaceAll]));
-          MainForm.Bonv_facTable.FieldByName('montttc_bvfac').AsCurrency:=StrToCurr(StringReplace(BonFacVTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
+          MainForm.Bonp_facTable.FieldByName('montver_bpfac').AsCurrency:=StrToCurr(StringReplace(BonFacVRegleLbl.Caption, #32, '', [rfReplaceAll]));
+          MainForm.Bonp_facTable.FieldByName('montttc_bpfac').AsCurrency:=StrToCurr(StringReplace(BonFacVTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
 
           if TimberBonFacVGEdt.Visible = True then
           begin
-           MainForm.Bonv_facTable.FieldByName('timber_bvfac').AsCurrency:=StrToCurr(StringReplace(TimberBonFacVGEdt.Text, #32, '', [rfReplaceAll]));
+           MainForm.Bonp_facTable.FieldByName('timber_bpfac').AsCurrency:=StrToCurr(StringReplace(TimberBonFacVGEdt.Text, #32, '', [rfReplaceAll]));
           end;
 
-            MainForm.Bonv_facTable.Post;
-            MainForm.Bonv_facTable.EnableControls;
+            MainForm.Bonp_facTable.Post;
+            MainForm.Bonp_facTable.EnableControls;
 
             MainForm.ClientTable.Active:=false;
             MainForm.ClientTable.SQL.Clear;
@@ -2091,23 +2091,23 @@ begin
             MainForm.ClientTable.Active:=True;
             MainForm.ClientTable.EnableControls;
 
-            MainForm.Mode_paiementTable.Active:=false;
-            MainForm.Mode_paiementTable.SQL.Clear;
-            MainForm.Mode_paiementTable.SQL.Text:='Select * FROM mode_paiement' ;
-            MainForm.Mode_paiementTable.Active:=True;
-            MainForm.Mode_paiementTable.EnableControls;
-
-            MainForm.CompteTable.Active:=false;
-            MainForm.CompteTable.SQL.Clear;
-            MainForm.CompteTable.SQL.Text:='Select * FROM compte' ;
-            MainForm.CompteTable.Active:=True;
-            MainForm.CompteTable.EnableControls;
+//            MainForm.Mode_paiementTable.Active:=false;
+//            MainForm.Mode_paiementTable.SQL.Clear;
+//            MainForm.Mode_paiementTable.SQL.Text:='Select * FROM mode_paiement' ;
+//            MainForm.Mode_paiementTable.Active:=True;
+//            MainForm.Mode_paiementTable.EnableControls;
+//
+//            MainForm.CompteTable.Active:=false;
+//            MainForm.CompteTable.SQL.Clear;
+//            MainForm.CompteTable.SQL.Text:='Select * FROM compte' ;
+//            MainForm.CompteTable.Active:=True;
+//            MainForm.CompteTable.EnableControls;
 
             //------- This is to delete data from tre and reg ih not valide----------------------------------------------
-            MainForm.GstockdcConnection.ExecSQL('DELETE FROM regclient where code_bvfac = ' + IntToStr(codeFV));
-            MainForm.GstockdcConnection.ExecSQL('DELETE FROM opt_cas_bnk where code_bvfac = ' + IntToStr(codeFV));
-            MainForm.RegclientTable.Refresh ;
-            MainForm.Opt_cas_bnk_CaisseTable.Refresh ;
+//            MainForm.GstockdcConnection.ExecSQL('DELETE FROM regclient where code_bpfac = ' + IntToStr(codeFV));
+//            MainForm.GstockdcConnection.ExecSQL('DELETE FROM opt_cas_bnk where code_bpfac = ' + IntToStr(codeFV));
+//            MainForm.RegclientTable.Refresh ;
+//            MainForm.Opt_cas_bnk_CaisseTable.Refresh ;
 
          end;
 
@@ -2129,7 +2129,7 @@ begin
   end  else
   begin
 
-         if  (MainForm.Bonv_facTable.FieldByName('valider_bvfac').AsBoolean = false)  then
+         if  (MainForm.Bonp_facTable.FieldByName('valider_bpfac').AsBoolean = false)  then
          begin
           MainForm.ClientTable.DisableControls;
           MainForm.ClientTable.Active:=false;
@@ -2137,44 +2137,44 @@ begin
           MainForm.ClientTable.SQL.Text:='Select * FROM client WHERE LOWER(nom_c) LIKE LOWER('+ QuotedStr( ClientBonFacVGCbx.Text )+')'  ;
           MainForm.ClientTable.Active:=True;
 
-          MainForm.Mode_paiementTable.DisableControls;
-          MainForm.Mode_paiementTable.Active:=false;
-          MainForm.Mode_paiementTable.SQL.Clear;
-          MainForm.Mode_paiementTable.SQL.Text:='Select * FROM mode_paiement WHERE LOWER(nom_mdpai) LIKE LOWER('+ QuotedStr( ModePaieBonFacVGCbx.Text )+')'  ;
-          MainForm.Mode_paiementTable.Active:=True;
+//          MainForm.Mode_paiementTable.DisableControls;
+//          MainForm.Mode_paiementTable.Active:=false;
+//          MainForm.Mode_paiementTable.SQL.Clear;
+//          MainForm.Mode_paiementTable.SQL.Text:='Select * FROM mode_paiement WHERE LOWER(nom_mdpai) LIKE LOWER('+ QuotedStr( ModePaieBonFacVGCbx.Text )+')'  ;
+//          MainForm.Mode_paiementTable.Active:=True;
+//
+//          MainForm.CompteTable.DisableControls;
+//          MainForm.CompteTable.Active:=false;
+//          MainForm.CompteTable.SQL.Clear;
+//          MainForm.CompteTable.SQL.Text:='Select * FROM compte WHERE LOWER(nom_cmpt) LIKE LOWER('+ QuotedStr( CompteBonFacVGCbx.Text )+')'  ;
+//          MainForm.CompteTable.Active:=True;
 
-          MainForm.CompteTable.DisableControls;
-          MainForm.CompteTable.Active:=false;
-          MainForm.CompteTable.SQL.Clear;
-          MainForm.CompteTable.SQL.Text:='Select * FROM compte WHERE LOWER(nom_cmpt) LIKE LOWER('+ QuotedStr( CompteBonFacVGCbx.Text )+')'  ;
-          MainForm.CompteTable.Active:=True;
-
-          MainForm.Bonv_facTable.DisableControls;
-          MainForm.Bonv_facTable.Edit;
-          MainForm.Bonv_facTable.FieldValues['code_c']:= MainForm.ClientTable.FieldByName('code_c').AsInteger;
-          MainForm.Bonv_facTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
-          MainForm.Bonv_facTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
-          MainForm.Bonv_facTable.FieldValues['obser_bvfac']:= ObserBonFacVGMem.Text;
-          MainForm.Bonv_facTable.FieldValues['num_cheque_bvfac']:= NChequeBonFacVGCbx.Text;
-          MainForm.Bonv_facTable.FieldByName('montht_bvfac').AsCurrency:= StrToCurr(StringReplace(BonFacVTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
+          MainForm.Bonp_facTable.DisableControls;
+          MainForm.Bonp_facTable.Edit;
+          MainForm.Bonp_facTable.FieldValues['code_c']:= MainForm.ClientTable.FieldByName('code_c').AsInteger;
+//          MainForm.Bonp_facTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
+//          MainForm.Bonp_facTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
+          MainForm.Bonp_facTable.FieldValues['obser_bpfac']:= ObserBonFacVGMem.Text;
+//          MainForm.Bonp_facTable.FieldValues['num_cheque_bvfac']:= NChequeBonFacVGCbx.Text;
+          MainForm.Bonp_facTable.FieldByName('montht_bpfac').AsCurrency:= StrToCurr(StringReplace(BonFacVTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
 
           if RemiseBonFacVGEdt.Text<>'' then
           begin
-             MainForm.Bonv_facTable.FieldByName('remise_bvfac').AsCurrency:=StrToCurr(StringReplace(RemiseBonFacVGEdt.Text, #32, '', [rfReplaceAll]));
+             MainForm.Bonp_facTable.FieldByName('remise_bpfac').AsCurrency:=StrToCurr(StringReplace(RemiseBonFacVGEdt.Text, #32, '', [rfReplaceAll]));
           end else begin
-                    MainForm.Bonv_facTable.FieldByName('remise_bvfac').AsCurrency:=0;
+                    MainForm.Bonp_facTable.FieldByName('remise_bpfac').AsCurrency:=0;
                 end;
 
-          MainForm.Bonv_facTable.FieldByName('montver_bvfac').AsCurrency:=StrToCurr(StringReplace(BonFacVRegleLbl.Caption, #32, '', [rfReplaceAll]));
-          MainForm.Bonv_facTable.FieldByName('montttc_bvfac').AsCurrency:=StrToCurr(StringReplace(BonFacVTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
+          MainForm.Bonp_facTable.FieldByName('montver_bpfac').AsCurrency:=StrToCurr(StringReplace(BonFacVRegleLbl.Caption, #32, '', [rfReplaceAll]));
+          MainForm.Bonp_facTable.FieldByName('montttc_bpfac').AsCurrency:=StrToCurr(StringReplace(BonFacVTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
 
           if TimberBonFacVGEdt.Visible = True then
           begin
-           MainForm.Bonv_facTable.FieldByName('timber_bvfac').AsCurrency:=StrToCurr(StringReplace(TimberBonFacVGEdt.Text, #32, '', [rfReplaceAll]));
+           MainForm.Bonp_facTable.FieldByName('timber_bpfac').AsCurrency:=StrToCurr(StringReplace(TimberBonFacVGEdt.Text, #32, '', [rfReplaceAll]));
           end;
 
-            MainForm.Bonv_facTable.Post;
-            MainForm.Bonv_facTable.EnableControls;
+            MainForm.Bonp_facTable.Post;
+            MainForm.Bonp_facTable.EnableControls;
 
             MainForm.ClientTable.Active:=false;
             MainForm.ClientTable.SQL.Clear;
@@ -2182,23 +2182,23 @@ begin
             MainForm.ClientTable.Active:=True;
             MainForm.ClientTable.EnableControls;
 
-            MainForm.Mode_paiementTable.Active:=false;
-            MainForm.Mode_paiementTable.SQL.Clear;
-            MainForm.Mode_paiementTable.SQL.Text:='Select * FROM mode_paiement' ;
-            MainForm.Mode_paiementTable.Active:=True;
-            MainForm.Mode_paiementTable.EnableControls;
-
-            MainForm.CompteTable.Active:=false;
-            MainForm.CompteTable.SQL.Clear;
-            MainForm.CompteTable.SQL.Text:='Select * FROM compte' ;
-            MainForm.CompteTable.Active:=True;
-            MainForm.CompteTable.EnableControls;
+//            MainForm.Mode_paiementTable.Active:=false;
+//            MainForm.Mode_paiementTable.SQL.Clear;
+//            MainForm.Mode_paiementTable.SQL.Text:='Select * FROM mode_paiement' ;
+//            MainForm.Mode_paiementTable.Active:=True;
+//            MainForm.Mode_paiementTable.EnableControls;
+//
+//            MainForm.CompteTable.Active:=false;
+//            MainForm.CompteTable.SQL.Clear;
+//            MainForm.CompteTable.SQL.Text:='Select * FROM compte' ;
+//            MainForm.CompteTable.Active:=True;
+//            MainForm.CompteTable.EnableControls;
 
             //------- This is to delete data from tre and reg ih not valide----------------------------------------------
-            MainForm.GstockdcConnection.ExecSQL('DELETE FROM regclient where code_bvfac = ' + IntToStr(codeFV));
-            MainForm.GstockdcConnection.ExecSQL('DELETE FROM opt_cas_bnk where code_bvfac = ' + IntToStr(codeFV));
-            MainForm.RegclientTable.Refresh ;
-            MainForm.Opt_cas_bnk_CaisseTable.Refresh ;
+//            MainForm.GstockdcConnection.ExecSQL('DELETE FROM regclient where code_bpfac = ' + IntToStr(codeFV));
+//            MainForm.GstockdcConnection.ExecSQL('DELETE FROM opt_cas_bnk where code_bpfac = ' + IntToStr(codeFV));
+//            MainForm.RegclientTable.Refresh ;
+//            MainForm.Opt_cas_bnk_CaisseTable.Refresh ;
 
          end;
 
@@ -2206,7 +2206,7 @@ begin
   end;
 end;
 
-procedure TBonFacVGestionF.ValiderBVFacBonFacVGBtnClick(Sender: TObject);
+procedure TBonFacPGestionF.ValiderBVFacBonFacVGBtnClick(Sender: TObject);
 var CodeOCB,CodeRF : Integer;
 begin
         if ClientBonFacVGCbx.Text <> '' then
@@ -2214,8 +2214,8 @@ begin
              if RequiredClientGlbl.Visible <> True then
         begin
 
-   if ModePaieBonFacVGCbx.Text <> '' then
-    begin
+//   if ModePaieBonFacVGCbx.Text <> '' then
+//    begin
 
 //           ClientBonFacVGCbxChange(Sender);
       MainForm.ClientTable.DisableControls;
@@ -2246,35 +2246,35 @@ begin
 
       //----------------------------------------------------------------------------
 
-       MainForm.Mode_paiementTable.DisableControls;
-      MainForm.Mode_paiementTable.Active:=false;
-      MainForm.Mode_paiementTable.SQL.Clear;
-      MainForm.Mode_paiementTable.SQL.Text:='Select * FROM mode_paiement WHERE LOWER(nom_mdpai) LIKE LOWER('+ QuotedStr( ModePaieBonFacVGCbx.Text )+')'  ;
-      MainForm.Mode_paiementTable.Active:=True;
-
-        if (MainForm.Mode_paiementTable.IsEmpty) then
-        begin
-         ModePaieBonFacVGCbx.Text := '';
-         sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
-        ModePaieBonFacVGCbx.StyleElements:= [];
-        ModepPaiGErrorP.Visible:= True;
-
-        ModePaieBonFacVGCbx.SetFocus;
-         exit;
-        end;
-
-           MainForm.Mode_paiementTable.Active:=false;
-      MainForm.Mode_paiementTable.SQL.Clear;
-      MainForm.Mode_paiementTable.SQL.Text:='Select * FROM mode_paiement' ;
-      MainForm.Mode_paiementTable.Active:=True;
-      MainForm.Mode_paiementTable.EnableControls;
+//       MainForm.Mode_paiementTable.DisableControls;
+//      MainForm.Mode_paiementTable.Active:=false;
+//      MainForm.Mode_paiementTable.SQL.Clear;
+//      MainForm.Mode_paiementTable.SQL.Text:='Select * FROM mode_paiement WHERE LOWER(nom_mdpai) LIKE LOWER('+ QuotedStr( ModePaieBonFacVGCbx.Text )+')'  ;
+//      MainForm.Mode_paiementTable.Active:=True;
+//
+//        if (MainForm.Mode_paiementTable.IsEmpty) then
+//        begin
+//         ModePaieBonFacVGCbx.Text := '';
+//         sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+//        ModePaieBonFacVGCbx.StyleElements:= [];
+//        ModepPaiGErrorP.Visible:= True;
+//
+//        ModePaieBonFacVGCbx.SetFocus;
+//         exit;
+//        end;
+//
+//           MainForm.Mode_paiementTable.Active:=false;
+//      MainForm.Mode_paiementTable.SQL.Clear;
+//      MainForm.Mode_paiementTable.SQL.Text:='Select * FROM mode_paiement' ;
+//      MainForm.Mode_paiementTable.Active:=True;
+//      MainForm.Mode_paiementTable.EnableControls;
 
 
 
      BonFacVRegleLbl.Caption:=  FloatToStrF(StrToFloat(StringReplace(BonFacVTotalTTCLbl.Caption, #32, '', [rfReplaceAll])),ffNumber,14,2);
      BonFacVResteLbl.Caption := FloatToStrF(0,ffNumber,14,2);
 
-       FSplashVersement.DisableBonFacV;
+       FSplashVersement.DisableBonFacP;
 
        Timer1.Enabled:=False;
        Label20.Visible:=False;
@@ -2290,22 +2290,22 @@ begin
            MainForm.ProduitTable.Active:=True;
            Mainform.Sqlquery.Active:=False;
            Mainform.Sqlquery.Sql.Clear;
-           Mainform.Sqlquery.Sql.Text:='SELECT code_bvfacl,code_p,  qut_p, cond_p , prixvd_p,tva_p FROM bonv_fac_list WHERE code_bvfac =  '
-                                                 + IntToStr (MainForm.Bonv_facTable.FieldValues['code_bvfac'])
-                                                 + 'GROUP BY code_bvfacl, code_p, qut_p, cond_p,prixvd_p,tva_p ' ;
+           Mainform.Sqlquery.Sql.Text:='SELECT code_bpfacl,code_p,  qut_p, cond_p , prixvd_p,tva_p FROM bonp_fac_list WHERE code_bpfac =  '
+                                                 + IntToStr (MainForm.Bonp_facTable.FieldValues['code_bpfac'])
+                                                 + 'GROUP BY code_bpfacl, code_p, qut_p, cond_p,prixvd_p,tva_p ' ;
            MainForm.SQLQuery.Active:=True;
            MainForm.SQLQuery.First;
            while  NOT (MainForm.SQLQuery.Eof) do
            begin
-            MainForm.ProduitTable.Active:=False;
-            MainForm.ProduitTable.SQL.Clear;
-            MainForm.ProduitTable.SQL.Text:='SELECT * FROM produit WHERE code_p = ' +QuotedStr(MainForm.SQLQuery.FieldValues['code_p']) ;
-            MainForm.ProduitTable.Active:=True;
-            MainForm.ProduitTable.Edit;
-            MainForm.ProduitTable.FieldValues['qut_p']:= ( MainForm.ProduitTable.FieldValues['qut_p']
-                                                         - ((MainForm.SQLQuery.FieldValues['qut_p']) * ((MainForm.SQLQuery.FieldValues['cond_p']))));
-            MainForm.ProduitTable.FieldValues['tva_p']:= MainForm.SQLQuery.FieldValues['tva_p'];
-            MainForm.ProduitTable.Post;
+//            MainForm.ProduitTable.Active:=False;
+//            MainForm.ProduitTable.SQL.Clear;
+//            MainForm.ProduitTable.SQL.Text:='SELECT * FROM produit WHERE code_p = ' +QuotedStr(MainForm.SQLQuery.FieldValues['code_p']) ;
+//            MainForm.ProduitTable.Active:=True;
+//            MainForm.ProduitTable.Edit;
+//            MainForm.ProduitTable.FieldValues['qut_p']:= ( MainForm.ProduitTable.FieldValues['qut_p']
+//                                                         - ((MainForm.SQLQuery.FieldValues['qut_p']) * ((MainForm.SQLQuery.FieldValues['cond_p']))));
+//            MainForm.ProduitTable.FieldValues['tva_p']:= MainForm.SQLQuery.FieldValues['tva_p'];
+//            MainForm.ProduitTable.Post;
             MainForm.SQLQuery.Next;
            end;
 
@@ -2316,7 +2316,7 @@ begin
            MainForm.ProduitTable.EnableControls;
            MainForm.SQLQuery.Active:=False;
            MainForm.SQLQuery.SQL.Clear;
-          MainForm.Bonv_facTable.Refresh;
+          MainForm.Bonp_facTable.Refresh;
           DataModuleF.Top5produit.Refresh;
 
      end;
@@ -2328,231 +2328,73 @@ begin
           MainForm.ClientTable.SQL.Text:='Select * FROM client WHERE LOWER(nom_c) LIKE LOWER('+ QuotedStr(ClientBonFacVGCbx.Text )+')'  ;
           MainForm.ClientTable.Active:=True;
 
-          MainForm.Mode_paiementTable.DisableControls;
-          MainForm.Mode_paiementTable.Active:=false;
-          MainForm.Mode_paiementTable.SQL.Clear;
-          MainForm.Mode_paiementTable.SQL.Text:='Select * FROM mode_paiement WHERE LOWER(nom_mdpai) LIKE LOWER('+ QuotedStr(ModePaieBonFacVGCbx.Text )+')'  ;
-          MainForm.Mode_paiementTable.Active:=True;
+//          MainForm.Mode_paiementTable.DisableControls;
+//          MainForm.Mode_paiementTable.Active:=false;
+//          MainForm.Mode_paiementTable.SQL.Clear;
+//          MainForm.Mode_paiementTable.SQL.Text:='Select * FROM mode_paiement WHERE LOWER(nom_mdpai) LIKE LOWER('+ QuotedStr(ModePaieBonFacVGCbx.Text )+')'  ;
+//          MainForm.Mode_paiementTable.Active:=True;
+//
+//          MainForm.CompteTable.DisableControls;
+//          MainForm.CompteTable.Active:=false;
+//          MainForm.CompteTable.SQL.Clear;
+//          MainForm.CompteTable.SQL.Text:='Select * FROM compte WHERE LOWER(nom_cmpt) LIKE LOWER('+ QuotedStr(CompteBonFacVGCbx.Text )+')'  ;
+//          MainForm.CompteTable.Active:=True;
 
-          MainForm.CompteTable.DisableControls;
-          MainForm.CompteTable.Active:=false;
-          MainForm.CompteTable.SQL.Clear;
-          MainForm.CompteTable.SQL.Text:='Select * FROM compte WHERE LOWER(nom_cmpt) LIKE LOWER('+ QuotedStr(CompteBonFacVGCbx.Text )+')'  ;
-          MainForm.CompteTable.Active:=True;
-
-          MainForm.Bonv_facTable.Edit;
-          MainForm.Bonv_facTable.FieldValues['code_c']:= MainForm.ClientTable.FieldByName('code_c').AsInteger;
-          MainForm.Bonv_facTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
+          MainForm.Bonp_facTable.Edit;
+          MainForm.Bonp_facTable.FieldValues['code_c']:= MainForm.ClientTable.FieldByName('code_c').AsInteger;
+          MainForm.Bonp_facTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
           if Tag = 0 then
           begin
-          MainForm.Bonv_facTable.FieldByName('date_bvfac').AsDateTime:= DateBonFacVGD.DateTime;
-          MainForm.Bonv_facTable.FieldValues['time_bvfac']:=TimeOf(Now);
+          MainForm.Bonp_facTable.FieldByName('date_bpfac').AsDateTime:= DateBonFacVGD.DateTime;
+          MainForm.Bonp_facTable.FieldValues['time_bpfac']:=TimeOf(Now);
           end;
-          MainForm.Bonv_facTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
-          MainForm.Bonv_facTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
-          MainForm.Bonv_facTable.FieldValues['obser_bvfac']:= ObserBonFacVGMem.Text;
-          MainForm.Bonv_facTable.FieldValues['num_cheque_bvfac']:= NChequeBonFacVGCbx.Text;
-          MainForm.Bonv_facTable.FieldByName('montht_bvfac').AsCurrency:= StrToCurr(StringReplace(BonFacVTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
+//          MainForm.Bonp_facTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
+//          MainForm.Bonp_facTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
+          MainForm.Bonp_facTable.FieldValues['obser_bpfac']:= ObserBonFacVGMem.Text;
+//          MainForm.Bonp_facTable.FieldValues['num_cheque_bvfac']:= NChequeBonFacVGCbx.Text;
+          MainForm.Bonp_facTable.FieldByName('montht_bpfac').AsCurrency:= StrToCurr(StringReplace(BonFacVTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
 
           if TimberBonFacVGEdt.Visible = True then
           begin
-          MainForm.Bonv_facTable.FieldByName('timber_bvfac').AsCurrency:= StrToCurr(StringReplace(TimberBonFacVGEdt.Text, #32, '', [rfReplaceAll]));
+          MainForm.Bonp_facTable.FieldByName('timber_bpfac').AsCurrency:= StrToCurr(StringReplace(TimberBonFacVGEdt.Text, #32, '', [rfReplaceAll]));
 
           end;
 
           if RemiseBonFAcVGEdt.Text<>'' then
           begin
-          MainForm.Bonv_facTable.FieldByName('remise_bvfac').AsCurrency:=StrToCurr(StringReplace(RemiseBonFacVGEdt.Text, #32, '', [rfReplaceAll]));
+          MainForm.Bonp_facTable.FieldByName('remise_bpfac').AsCurrency:=StrToCurr(StringReplace(RemiseBonFacVGEdt.Text, #32, '', [rfReplaceAll]));
           end else begin
-                    MainForm.Bonv_facTable.FieldByName('remise_bvfac').AsCurrency:=0;
+                    MainForm.Bonp_facTable.FieldByName('remise_bpfac').AsCurrency:=0;
                    end;
 
-          MainForm.Bonv_facTable.FieldByName('montver_bvfac').AsCurrency:=StrToCurr(StringReplace(BonFacVTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
-          MainForm.Bonv_facTable.FieldByName('montttc_bvfac').AsCurrency:=StrToCurr(StringReplace(BonFacVTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
-          MainForm.Bonv_facTable.FieldByName('marge_bvfac').AsCurrency:=StrToCurr(StringReplace(BonFacVTotalMargeLbl.Caption, #32, '', [rfReplaceAll]));
-          MainForm.Bonv_facTable.FieldByName('valider_bvfac').AsBoolean:= True;
+          MainForm.Bonp_facTable.FieldByName('montver_bpfac').AsCurrency:=StrToCurr(StringReplace(BonFacVTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
+          MainForm.Bonp_facTable.FieldByName('montttc_bpfac').AsCurrency:=StrToCurr(StringReplace(BonFacVTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
+          MainForm.Bonp_facTable.FieldByName('marge_bpfac').AsCurrency:=StrToCurr(StringReplace(BonFacVTotalMargeLbl.Caption, #32, '', [rfReplaceAll]));
+          MainForm.Bonp_facTable.FieldByName('valider_bpfac').AsBoolean:= True;
 
-          if (LowerCase(ModePaieBonFacVGCbx.Text)='espèce') OR (LowerCase(ModePaieBonFacVGCbx.Text)='espece') then
-          begin
-           MainForm.Bonv_facTable.FieldValues['code_mdpai']:=1 ;
-          end;
-           if (LowerCase(ModePaieBonFacVGCbx.Text)='chèque') OR (LowerCase(ModePaieBonFacVGCbx.Text)='cheque') then
-          begin
-           MainForm.Bonv_facTable.FieldValues['code_mdpai']:=2 ;
-          end;
-          if (LowerCase(ModePaieBonFAcVGCbx.Text)='à terme' ) OR (LowerCase(ModePaieBonFacVGCbx.Text)='a terme' )
-             OR (LowerCase(ModePaieBonFacVGCbx.Text)='À terme' ) then
-          begin
-           MainForm.Bonv_facTable.FieldValues['code_mdpai']:=3 ;
-          end;
-          if (LowerCase(ModePaieBonFacVGCbx.Text)='virement' ) then
-          begin
-           MainForm.Bonv_facTable.FieldValues['code_mdpai']:=4 ;
-          end;
+//          if (LowerCase(ModePaieBonFacVGCbx.Text)='espèce') OR (LowerCase(ModePaieBonFacVGCbx.Text)='espece') then
+//          begin
+//           MainForm.Bonp_facTable.FieldValues['code_mdpai']:=1 ;
+//          end;
+//           if (LowerCase(ModePaieBonFacVGCbx.Text)='chèque') OR (LowerCase(ModePaieBonFacVGCbx.Text)='cheque') then
+//          begin
+//           MainForm.Bonp_facTable.FieldValues['code_mdpai']:=2 ;
+//          end;
+//          if (LowerCase(ModePaieBonFAcVGCbx.Text)='à terme' ) OR (LowerCase(ModePaieBonFacVGCbx.Text)='a terme' )
+//             OR (LowerCase(ModePaieBonFacVGCbx.Text)='À terme' ) then
+//          begin
+//           MainForm.Bonp_facTable.FieldValues['code_mdpai']:=3 ;
+//          end;
+//          if (LowerCase(ModePaieBonFacVGCbx.Text)='virement' ) then
+//          begin
+//           MainForm.Bonp_facTable.FieldValues['code_mdpai']:=4 ;
+//          end;
 
-          MainForm.Bonv_facTable.Post;
+          MainForm.Bonp_facTable.Post;
 
               //-----------------------------------------------------------------------------------------------------------------------------------------------------------
 
-        begin
-         if Tag = 0 then
-         begin
-          if NOT (MainForm.RegclientTable.IsEmpty) then
-          begin
-          MainForm.RegclientTable.Last;
-          CodeRF:= MainForm.RegclientTable.FieldValues['code_rc'] + 1;
-          end else
-              begin
-               CodeRF:= 1;
-              end;
 
-
-            MainForm.RegclientTable.Append;
-            MainForm.RegclientTable.FieldValues['code_rc']:= CodeRF;
-            MainForm.RegclientTable.FieldValues['code_bvfac']:= MainForm.Bonv_facTable.FieldValues['code_bvfac'];
-            MainForm.RegclientTable.FieldValues['nom_rc']:= NumBonFacVGEdt.Caption;
-            MainForm.RegclientTable.FieldValues['code_c']:= MainForm.ClientTable.FieldByName('code_c').AsInteger;
-            MainForm.RegclientTable.FieldValues['date_rc']:= DateOf(Today);
-            MainForm.RegclientTable.FieldValues['time_rc']:=TimeOf(Now);
-            MainForm.RegclientTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
-            MainForm.RegclientTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
-            MainForm.RegclientTable.FieldValues['obser_rc']:= ObserBonFacVGMem.Text;
-            MainForm.RegclientTable.FieldValues['num_cheque_rc']:= NChequeBonFacVGCbx.Text;
-            MainForm.RegclientTable.FieldValues['bon_or_no_rc']:= 3;
-            MainForm.RegclientTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
-
-            MainForm.RegclientTable.FieldByName('montver_rc').AsCurrency:=StrToCurr(StringReplace(BonFacVTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
-
-            if (LowerCase(ModePaieBonFacVGCbx.Text)='espèce') OR (LowerCase(ModePaieBonFacVGCbx.Text)='espece') then
-            begin
-             MainForm.RegclientTable.FieldValues['code_mdpai']:=1 ;
-            end;
-             if (LowerCase(ModePaieBonFacVGCbx.Text)='chèque') OR (LowerCase(ModePaieBonFacVGCbx.Text)='cheque') then
-            begin
-             MainForm.RegclientTable.FieldValues['code_mdpai']:=2 ;
-            end;
-            if (LowerCase(ModePaieBonFacVGCbx.Text)='à terme' ) OR (LowerCase(ModePaieBonFacVGCbx.Text)='a terme' )
-               OR (LowerCase(ModePaieBonFacVGCbx.Text)='À terme' ) then
-            begin
-             MainForm.RegclientTable.FieldValues['code_mdpai']:=3 ;
-            end;
-            if (LowerCase(ModePaieBonFacVGCbx.Text)='virement' ) then
-            begin
-             MainForm.RegclientTable.FieldValues['code_mdpai']:=4 ;
-            end;
-
-            MainForm.RegclientTable.Post;
-            MainForm.RegclientTable.Refresh;
-
-          end else
-              begin
-                MainForm.RegclientTable.DisableControls;
-                MainForm.RegclientTable.Active:=false;
-                MainForm.RegclientTable.SQL.Clear;
-                MainForm.RegclientTable.SQL.Text:='SELECT * FROM regclient WHERE code_bvfac ='+IntToStr(MainForm.Bonv_facTable.FieldValues['code_bvfac']) ;
-                MainForm.RegclientTable.Active:=True;
-
-                if NOT ( MainForm.RegclientTable.IsEmpty) then
-                begin
-
-                  MainForm.RegclientTable.Edit;
-                  MainForm.RegclientTable.FieldValues['code_bvfac']:= MainForm.Bonv_facTable.FieldValues['code_bvfac'];
-                  MainForm.RegclientTable.FieldValues['nom_rc']:= NumBonFacVGEdt.Caption;
-                  MainForm.RegclientTable.FieldValues['code_c']:= MainForm.ClientTable.FieldByName('code_c').AsInteger;
-                  MainForm.RegclientTable.FieldValues['date_rc']:= DateOf(Today);
-                  MainForm.RegclientTable.FieldValues['time_rc']:=TimeOf(Now);
-                  MainForm.RegclientTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
-                  MainForm.RegclientTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
-                  MainForm.RegclientTable.FieldValues['obser_rc']:= ObserBonFacVGMem.Text;
-                  MainForm.RegclientTable.FieldValues['num_cheque_rc']:= NChequeBonFacVGCbx.Text;
-                  MainForm.RegclientTable.FieldValues['bon_or_no_rc']:= 3;
-                  MainForm.RegclientTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
-
-                  MainForm.RegclientTable.FieldByName('montver_rc').AsCurrency:=StrToCurr(StringReplace(BonFacVTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
-
-                  if (LowerCase(ModePaieBonFacVGCbx.Text)='espèce') OR (LowerCase(ModePaieBonFacVGCbx.Text)='espece') then
-                  begin
-                   MainForm.RegclientTable.FieldValues['code_mdpai']:=1 ;
-                  end;
-                   if (LowerCase(ModePaieBonFacVGCbx.Text)='chèque') OR (LowerCase(ModePaieBonFacVGCbx.Text)='cheque') then
-                  begin
-                   MainForm.RegclientTable.FieldValues['code_mdpai']:=2 ;
-                  end;
-                  if (LowerCase(ModePaieBonFacVGCbx.Text)='à terme' ) OR (LowerCase(ModePaieBonFacVGCbx.Text)='a terme' )
-                     OR (LowerCase(ModePaieBonFacVGCbx.Text)='À terme' ) then
-                  begin
-                   MainForm.RegclientTable.FieldValues['code_mdpai']:=3 ;
-                  end;
-                  if (LowerCase(ModePaieBonFacVGCbx.Text)='virement' ) then
-                  begin
-                   MainForm.RegclientTable.FieldValues['code_mdpai']:=4 ;
-                  end;
-
-                  MainForm.RegclientTable.Post;
-                  MainForm.RegclientTable.Refresh;
-
-                end else
-                    begin
-                     MainForm.RegclientTable.Active:=false;
-                     MainForm.RegclientTable.SQL.Clear;
-                     MainForm.RegclientTable.SQL.Text:='SELECT * FROM regclient ';
-                     MainForm.RegclientTable.Active:=True;
-                       if NOT (MainForm.RegclientTable.IsEmpty) then
-                        begin
-                        MainForm.RegclientTable.Last;
-                        CodeRF:= MainForm.RegclientTable.FieldValues['code_rc'] + 1;
-                        end else
-                            begin
-                             CodeRF:= 1;
-                            end;
-
-                          MainForm.RegclientTable.Append;
-                          MainForm.RegclientTable.FieldValues['code_rc']:= CodeRF;
-                          MainForm.RegclientTable.FieldValues['code_bvfac']:= MainForm.Bonv_facTable.FieldValues['code_bvfac'];
-                          MainForm.RegclientTable.FieldValues['nom_rc']:= NumBonFacVGEdt.Caption;
-                          MainForm.RegclientTable.FieldValues['code_c']:= MainForm.ClientTable.FieldByName('code_c').AsInteger;
-                          MainForm.RegclientTable.FieldValues['date_rc']:= DateOf(Today);
-                          MainForm.RegclientTable.FieldValues['time_rc']:=TimeOf(Now);
-                          MainForm.RegclientTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
-                          MainForm.RegclientTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
-                          MainForm.RegclientTable.FieldValues['obser_rc']:= ObserBonFacVGMem.Text;
-                          MainForm.RegclientTable.FieldValues['num_cheque_rc']:= NChequeBonFacVGCbx.Text;
-                          MainForm.RegclientTable.FieldValues['bon_or_no_rc']:= 3;
-                          MainForm.RegclientTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
-
-                          MainForm.RegclientTable.FieldByName('montver_rc').AsCurrency:=StrToCurr(StringReplace(BonFacVTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
-
-                          if (LowerCase(ModePaieBonFacVGCbx.Text)='espèce') OR (LowerCase(ModePaieBonFacVGCbx.Text)='espece') then
-                          begin
-                           MainForm.RegclientTable.FieldValues['code_mdpai']:=1 ;
-                          end;
-                           if (LowerCase(ModePaieBonFacVGCbx.Text)='chèque') OR (LowerCase(ModePaieBonFacVGCbx.Text)='cheque') then
-                          begin
-                           MainForm.RegclientTable.FieldValues['code_mdpai']:=2 ;
-                          end;
-                          if (LowerCase(ModePaieBonFacVGCbx.Text)='à terme' ) OR (LowerCase(ModePaieBonFacVGCbx.Text)='a terme' )
-                             OR (LowerCase(ModePaieBonFacVGCbx.Text)='À terme' ) then
-                          begin
-                           MainForm.RegclientTable.FieldValues['code_mdpai']:=3 ;
-                          end;
-                          if (LowerCase(ModePaieBonFacVGCbx.Text)='virement' ) then
-                          begin
-                           MainForm.RegclientTable.FieldValues['code_mdpai']:=4 ;
-                          end;
-
-                          MainForm.RegclientTable.Post;
-                          MainForm.RegclientTable.Refresh;
-                    end;
-
-                MainForm.RegclientTable.Active:=false;
-                MainForm.RegclientTable.SQL.Clear;
-                MainForm.RegclientTable.SQL.Text:='SELECT * FROM regclient ';
-                MainForm.RegclientTable.Active:=True;
-                 MainForm.RegclientTable.EnableControls;
-
-              end;
-
-        end;
 
               //-----------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -2564,209 +2406,34 @@ begin
 
 
           //--- this is for adding the money to the caisse----
-       begin
-
-        if Tag = 0 then
-          begin
-              MainForm.Opt_cas_bnk_CaisseTable.DisableControls;
-              MainForm.Opt_cas_bnk_CaisseTable.Active:=false;
-              MainForm.Opt_cas_bnk_CaisseTable.SQL.Clear;
-              MainForm.Opt_cas_bnk_CaisseTable.SQL.Text:='SELECT * FROM opt_cas_bnk' ;
-              MainForm.Opt_cas_bnk_CaisseTable.Active:=True;
-
-
-            if NOT (MainForm.Opt_cas_bnk_CaisseTable.IsEmpty) then
-            begin
-            MainForm.Opt_cas_bnk_CaisseTable.Last;
-            CodeOCB:= MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ocb'] + 1;
-            end else
-                begin
-                 CodeOCB:= 1;
-                end;
-
-
-              MainForm.Opt_cas_bnk_CaisseTable.Append;
-              MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ocb']:= CodeOCB;
-              MainForm.Opt_cas_bnk_CaisseTable.FieldValues['date_ocb']:= DateOf(Today);
-              MainForm.Opt_cas_bnk_CaisseTable.FieldValues['time_ocb']:= TimeOf(Now);;
-              MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nom_ocb']:= 'Règlement  Pièce N° '+NumBonFacVGEdt.Caption;
-              MainForm.Opt_cas_bnk_CaisseTable.FieldValues['third_ocb']:= ClientBonFacVGCbx.Text;
-              MainForm.Opt_cas_bnk_CaisseTable.FieldValues['encaiss_ocb']:= StrToCurr(StringReplace(BonFacVTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));;
-      //        MainForm.Opt_cas_bnk_CaisseTable.FieldValues['decaiss_ocb']:= ;
-
-               if (LowerCase(ModePaieBonFacVGCbx.Text)='espèce') OR (LowerCase(ModePaieBonFacVGCbx.Text)='espece') then
-              begin
-               MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=1 ;
-              end;
-               if (LowerCase(ModePaieBonFacVGCbx.Text)='chèque') OR (LowerCase(ModePaieBonFacVGCbx.Text)='cheque') then
-              begin
-               MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=2 ;
-              end;
-              if (LowerCase(ModePaieBonFAcVGCbx.Text)='à terme' ) OR (LowerCase(ModePaieBonFacVGCbx.Text)='a terme' )
-                 OR (LowerCase(ModePaieBonFacVGCbx.Text)='À terme' ) then
-              begin
-               MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=3 ;
-              end;
-              if (LowerCase(ModePaieBonFacVGCbx.Text)='virement' ) then
-              begin
-               MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=4 ;
-              end;
-
-              MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_cmpt']:=MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
-              MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nature_ocb']:= MainForm.CompteTable.FieldByName('nature_cmpt').AsBoolean;
-              MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_bvfac']:= MainForm.Bonv_facTable.FieldByName('code_bvfac').AsInteger;
-              MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ur']:=  StrToInt(MainForm.UserIDLbl.Caption);
-
-              MainForm.Opt_cas_bnk_CaisseTable.Post;
-              MainForm.Opt_cas_bnk_CaisseTable.Refresh;
-              MainForm.Opt_cas_bnk_BankTable.Refresh;
-
-
-              MainForm.Opt_cas_bnk_CaisseTable.Active:=false;
-              MainForm.Opt_cas_bnk_CaisseTable.SQL.Clear;
-              MainForm.Opt_cas_bnk_CaisseTable.SQL.Text:='SELECT * FROM opt_cas_bnk where nature_ocb = false' ;
-              MainForm.Opt_cas_bnk_CaisseTable.Active:=True;
-              MainForm.Opt_cas_bnk_CaisseTable.EnableControls;
-
-          end else
-              begin
-                          MainForm.Opt_cas_bnk_CaisseTable.DisableControls;
-                    MainForm.Opt_cas_bnk_CaisseTable.Active:=false;
-                    MainForm.Opt_cas_bnk_CaisseTable.SQL.Clear;
-                    MainForm.Opt_cas_bnk_CaisseTable.SQL.Text:='SELECT * FROM opt_cas_bnk WHERE code_bvfac ='+IntToStr(MainForm.Bonv_facTable.FieldByName('code_bvfac').AsInteger) ;
-                    MainForm.Opt_cas_bnk_CaisseTable.Active:=True;
-                   if NOT (MainForm.Opt_cas_bnk_CaisseTable.IsEmpty) then
-                   begin
-                    MainForm.Opt_cas_bnk_CaisseTable.Edit;
-                    MainForm.Opt_cas_bnk_CaisseTable.FieldValues['date_ocb']:= DateOf(Today);
-                    MainForm.Opt_cas_bnk_CaisseTable.FieldValues['time_ocb']:= TimeOf(Now);;
-                    MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nom_ocb']:= 'Règlement  Pièce N° '+NumBonFacVGEdt.Caption;
-                    MainForm.Opt_cas_bnk_CaisseTable.FieldValues['third_ocb']:= ClientBonFacVGCbx.Text;
-                    MainForm.Opt_cas_bnk_CaisseTable.FieldValues['encaiss_ocb']:= StrToCurr(StringReplace(BonFacVTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));;
-            //        MainForm.Opt_cas_bnk_CaisseTable.FieldValues['decaiss_ocb']:= ;
-
-                     if (LowerCase(ModePaieBonFacVGCbx.Text)='espèce') OR (LowerCase(ModePaieBonFacVGCbx.Text)='espece') then
-                    begin
-                     MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=1 ;
-                    end;
-                     if (LowerCase(ModePaieBonFacVGCbx.Text)='chèque') OR (LowerCase(ModePaieBonFacVGCbx.Text)='cheque') then
-                    begin
-                     MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=2 ;
-                    end;
-                    if (LowerCase(ModePaieBonFAcVGCbx.Text)='à terme' ) OR (LowerCase(ModePaieBonFacVGCbx.Text)='a terme' )
-                       OR (LowerCase(ModePaieBonFacVGCbx.Text)='À terme' ) then
-                    begin
-                     MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=3 ;
-                    end;
-                    if (LowerCase(ModePaieBonFacVGCbx.Text)='virement' ) then
-                    begin
-                     MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=4 ;
-                    end;
-
-                    MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_cmpt']:=MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
-                    MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nature_ocb']:= MainForm.CompteTable.FieldByName('nature_cmpt').AsBoolean;
-                    MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_bvfac']:= MainForm.Bonv_facTable.FieldByName('code_bvfac').AsInteger;
-                    MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ur']:=  StrToInt(MainForm.UserIDLbl.Caption);
-
-                    MainForm.Opt_cas_bnk_CaisseTable.Post;
-                    MainForm.Opt_cas_bnk_CaisseTable.Refresh;
-                    MainForm.Opt_cas_bnk_BankTable.Refresh;
-
-                   end else
-                       begin
-                          MainForm.Opt_cas_bnk_CaisseTable.Active:=false;
-                          MainForm.Opt_cas_bnk_CaisseTable.SQL.Clear;
-                          MainForm.Opt_cas_bnk_CaisseTable.SQL.Text:='SELECT * FROM opt_cas_bnk' ;
-                          MainForm.Opt_cas_bnk_CaisseTable.Active:=True;
-
-                        if NOT (MainForm.Opt_cas_bnk_CaisseTable.IsEmpty) then
-                        begin
-                        MainForm.Opt_cas_bnk_CaisseTable.Last;
-                        CodeOCB:= MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ocb'] + 1;
-                        end else
-                            begin
-                             CodeOCB:= 1;
-                            end;
-
-                          MainForm.Opt_cas_bnk_CaisseTable.Append;
-                          MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ocb']:= CodeOCB;
-                          MainForm.Opt_cas_bnk_CaisseTable.FieldValues['date_ocb']:= DateOf(Today);
-                          MainForm.Opt_cas_bnk_CaisseTable.FieldValues['time_ocb']:= TimeOf(Now);;
-                          MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nom_ocb']:= 'Règlement  Pièce N° '+NumBonFacVGEdt.Caption;
-                          MainForm.Opt_cas_bnk_CaisseTable.FieldValues['third_ocb']:= ClientBonFacVGCbx.Text;
-                          MainForm.Opt_cas_bnk_CaisseTable.FieldValues['encaiss_ocb']:= StrToCurr(StringReplace(BonFacVTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));;
-                  //        MainForm.Opt_cas_bnk_CaisseTable.FieldValues['decaiss_ocb']:= ;
-
-                           if (LowerCase(ModePaieBonFacVGCbx.Text)='espèce') OR (LowerCase(ModePaieBonFacVGCbx.Text)='espece') then
-                          begin
-                           MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=1 ;
-                          end;
-                           if (LowerCase(ModePaieBonFacVGCbx.Text)='chèque') OR (LowerCase(ModePaieBonFacVGCbx.Text)='cheque') then
-                          begin
-                           MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=2 ;
-                          end;
-                          if (LowerCase(ModePaieBonFAcVGCbx.Text)='à terme' ) OR (LowerCase(ModePaieBonFacVGCbx.Text)='a terme' )
-                             OR (LowerCase(ModePaieBonFacVGCbx.Text)='À terme' ) then
-                          begin
-                           MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=3 ;
-                          end;
-                          if (LowerCase(ModePaieBonFacVGCbx.Text)='virement' ) then
-                          begin
-                           MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=4 ;
-                          end;
-
-                          MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_cmpt']:=MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
-                          MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nature_ocb']:= MainForm.CompteTable.FieldByName('nature_cmpt').AsBoolean;
-                          MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_bvfac']:= MainForm.Bonv_facTable.FieldByName('code_bvfac').AsInteger;
-                          MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ur']:=  StrToInt(MainForm.UserIDLbl.Caption);
-
-                          MainForm.Opt_cas_bnk_CaisseTable.Post;
-                          MainForm.Opt_cas_bnk_CaisseTable.Refresh;
-                          MainForm.Opt_cas_bnk_BankTable.Refresh;
-
-                          MainForm.Opt_cas_bnk_CaisseTable.Active:=false;
-                          MainForm.Opt_cas_bnk_CaisseTable.SQL.Clear;
-                          MainForm.Opt_cas_bnk_CaisseTable.SQL.Text:='SELECT * FROM opt_cas_bnk where nature_ocb = false' ;
-                          MainForm.Opt_cas_bnk_CaisseTable.Active:=True;
-
-                       end;
-
-                    MainForm.Opt_cas_bnk_CaisseTable.Active:=false;
-                    MainForm.Opt_cas_bnk_CaisseTable.SQL.Clear;
-                    MainForm.Opt_cas_bnk_CaisseTable.SQL.Text:='SELECT * FROM opt_cas_bnk where nature_ocb = false' ;
-                    MainForm.Opt_cas_bnk_CaisseTable.Active:=True;
-                    MainForm.Opt_cas_bnk_CaisseTable.EnableControls;
-              end;
-
-
-       end;
 
 
 
-          MainForm.Mode_paiementTable.Active:=false;
-          MainForm.Mode_paiementTable.SQL.Clear;
-          MainForm.Mode_paiementTable.SQL.Text:='Select * FROM mode_paiement' ;
-          MainForm.Mode_paiementTable.Active:=True;
-          MainForm.Mode_paiementTable.EnableControls;
 
-          MainForm.CompteTable.Active:=false;
-          MainForm.CompteTable.SQL.Clear;
-          MainForm.CompteTable.SQL.Text:='Select * FROM compte' ;
-          MainForm.CompteTable.Active:=True;
-          MainForm.CompteTable.EnableControls;
+//          MainForm.Mode_paiementTable.Active:=false;
+//          MainForm.Mode_paiementTable.SQL.Clear;
+//          MainForm.Mode_paiementTable.SQL.Text:='Select * FROM mode_paiement' ;
+//          MainForm.Mode_paiementTable.Active:=True;
+//          MainForm.Mode_paiementTable.EnableControls;
+//
+//          MainForm.CompteTable.Active:=false;
+//          MainForm.CompteTable.SQL.Clear;
+//          MainForm.CompteTable.SQL.Text:='Select * FROM compte' ;
+//          MainForm.CompteTable.Active:=True;
+//          MainForm.CompteTable.EnableControls;
        end;
 
 
 
 
-       end else
-           begin
-               sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
-            ModePaieBonFacVGCbx.StyleElements:= [];
-//            RequiredFourGlbl.Visible:= True;
-            ModepPaiGErrorP.Visible:= True;
-            ModePaieBonFacVGCbx.SetFocus;
-           end;
+//       end else
+//           begin
+//               sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+//            ModePaieBonFacVGCbx.StyleElements:= [];
+////            RequiredFourGlbl.Visible:= True;
+//            ModepPaiGErrorP.Visible:= True;
+//            ModePaieBonFacVGCbx.SetFocus;
+//           end;
 
 
 
@@ -2795,35 +2462,35 @@ begin
 
 end;
 
-procedure TBonFacVGestionF.ModePaieBonFacVGCbxChange(Sender: TObject);
+procedure TBonFacPGestionF.ModePaieBonFacVGCbxChange(Sender: TObject);
 begin
-  if (LowerCase(ModePaieBonFacVGCbx.Text)='espèce') OR (LowerCase(ModePaieBonFacVGCbx.Text)='espece') then
-  begin
-  TimberPerctageBonFacVGEdt.Visible:= True;
-  TimberBonFacVGEdt.Visible:= True;
-  TimberPerctageBonFacVGLbl.Visible:= True;
-  TimberBonFacVGlbl.Visible:= True;
-  end else
-      begin
-        TimberPerctageBonFacVGEdt.Visible:= False;
-        TimberBonFacVGEdt.Visible:= False;
-        TimberPerctageBonFacVGLbl.Visible:= False;
-        TimberBonFacVGlbl.Visible:= False;
-      end;
-
-    MainForm.Bonv_fac_listTable.Refresh;
+//  if (LowerCase(ModePaieBonFacVGCbx.Text)='espèce') OR (LowerCase(ModePaieBonFacVGCbx.Text)='espece') then
+//  begin
+//  TimberPerctageBonFacVGEdt.Visible:= True;
+//  TimberBonFacVGEdt.Visible:= True;
+//  TimberPerctageBonFacVGLbl.Visible:= True;
+//  TimberBonFacVGlbl.Visible:= True;
+//  end else
+//      begin
+//        TimberPerctageBonFacVGEdt.Visible:= False;
+//        TimberBonFacVGEdt.Visible:= False;
+//        TimberPerctageBonFacVGLbl.Visible:= False;
+//        TimberBonFacVGlbl.Visible:= False;
+//      end;
+//
+//    MainForm.Bonp_fac_listTable.Refresh;
  end;
 
-procedure TBonFacVGestionF.AddClientBonFacVGBtnClick(Sender: TObject);
+procedure TBonFacPGestionF.AddClientBonFacVGBtnClick(Sender: TObject);
 begin
 ClientListF.AddClientsBtnClick(Sender);
-ClientGestionF.OKClientGBtn.Tag := 4 ;
+ClientGestionF.OKClientGBtn.Tag := 7 ;
 ClientBonFacVGCbx.StyleElements:= [seFont,seBorder,seBorder];
 RequiredClientGlbl.Visible:= False;
 NameClientGErrorP.Visible:= False;
 end;
 
-procedure TBonFacVGestionF.AddModePaieBonFacVGBtnClick(Sender: TObject);
+procedure TBonFacPGestionF.AddModePaieBonFacVGBtnClick(Sender: TObject);
 begin
    //-------- Show the splash screan for the mode de paiement ---------//
     FSplashAddUnite:=TFSplashAddUnite.Create(Application);
@@ -2854,10 +2521,10 @@ begin
     FSplashAddUnite.OKAddUniteSBtn.Tag:= 18 ;
 end;
 
-procedure TBonFacVGestionF.AddCompteBonFacVGBtnClick(Sender: TObject);
+procedure TBonFacPGestionF.AddCompteBonFacVGBtnClick(Sender: TObject);
 begin
    //-------- Show the splash screan for the adding comptes ---------//
-    FSplashAddCompte:=TFSplashAddCompte.Create(BonfaCvGestionF);
+    FSplashAddCompte:=TFSplashAddCompte.Create(BonFacPGestionF);
     FSplashAddCompte.Left:=  (MainForm.Left + MainForm.Width div 2) - (FSplashAddCompte.Width div 2);
     FSplashAddCompte.Top:=  MainForm.Top + 5 ;
     AnimateWindow(FSplashAddCompte.Handle, 175, AW_VER_POSITIVE OR AW_SLIDE OR AW_ACTIVATE );
@@ -2866,60 +2533,60 @@ begin
     FSplashAddCompte.OKAddCompteSBtn.Tag:= 3 ;
 end;
 
-procedure TBonFacVGestionF.FormCreate(Sender: TObject);
+procedure TBonFacPGestionF.FormCreate(Sender: TObject);
 begin
-MainForm.Bonv_fac_listTable.Active:=True;
+MainForm.Bonp_fac_listTable.Active:=True;
 end;
 
 
-procedure TBonFacVGestionF.GettingData;
+procedure TBonFacPGestionF.GettingData;
 
  var
   MoneyWordRX,NumRX,DateRX,NameRX,AdrRX,VilleRX,WilayaRX,MPRX,NCHeqRX,
   TauxTVA17,TauxTVA7,TauxTVA19,MontantTVA17,MontantTVA7,MontantTVA19,RC,NArt,NIF,NIS : TfrxMemoView;
 
   str1 : string;
-  Taux17,Taux7,Taux19,Montant17,Montant7,Montant19,RemisePerctageBonFacV : Currency;
+  Taux17,Taux7,Montant17,Montant7,Montant19,RemisePerctageBonFacV : Currency;
 begin
   str1:= MontantEnToutesLettres(StrToFloat(StringReplace(BonFacVTotalTTCLbl.Caption, #32, '', [rfReplaceAll])));
   str1[1] := Upcase(str1[1]);
-  MoneyWordRX := BonFacVPListfrxRprt.FindObject('MoneyWordRX') as TfrxMemoView;
+  MoneyWordRX := BonFacPPListfrxRprt.FindObject('MoneyWordRX') as TfrxMemoView;
   MoneyWordRX.Text :=str1;// StringReplace(ObserBonLivGLbl.Caption, '%my_str%', 'new string', [rfReplaceAll]);
 
-  NumRX:= BonFacVPListfrxRprt.FindObject('NumRX') as TfrxMemoView;
+  NumRX:= BonFacPPListfrxRprt.FindObject('NumRX') as TfrxMemoView;
   NumRX.Text:= NumBonFacVGEdt.Caption;
 
-    DateRX:= BonFacVPListfrxRprt.FindObject('DateRX') as TfrxMemoView;
+    DateRX:= BonFacPPListfrxRprt.FindObject('DateRX') as TfrxMemoView;
   DateRX.Text:= DateToStr(DateBonFacVGD.Date);
 
-      NameRX:= BonFacVPListfrxRprt.FindObject('NameRX') as TfrxMemoView;
+      NameRX:= BonFacPPListfrxRprt.FindObject('NameRX') as TfrxMemoView;
   NameRX.Text:= ClientBonFacVGCbx.Text;
 
     MainForm.ClientTable.Active:=False;
     MainForm.ClientTable.SQL.Clear;
-    MainForm.ClientTable.SQL.Text:='SELECT * FROM client WHERE code_c ='+ IntToStr(MainForm.Bonv_facTable.FieldByName('code_c').AsInteger);
+    MainForm.ClientTable.SQL.Text:='SELECT * FROM client WHERE code_c ='+ IntToStr(MainForm.Bonp_facTable.FieldByName('code_c').AsInteger);
     MainForm.ClientTable.Active:=True;
 
 
-    AdrRX:= BonFacVPListfrxRprt.FindObject('AdrRX') as TfrxMemoView;
+    AdrRX:= BonFacPPListfrxRprt.FindObject('AdrRX') as TfrxMemoView;
   AdrRX.Text:= MainForm.ClientTable.FieldByName('adr_c').AsString;
 
-    VilleRX:= BonFacVPListfrxRprt.FindObject('VilleRX') as TfrxMemoView;
+    VilleRX:= BonFacPPListfrxRprt.FindObject('VilleRX') as TfrxMemoView;
   VilleRX.Text:= MainForm.ClientTable.FieldByName('ville_c').AsString;
 
-    WilayaRX:= BonFacVPListfrxRprt.FindObject('WilayaRX') as TfrxMemoView;
+    WilayaRX:= BonFacPPListfrxRprt.FindObject('WilayaRX') as TfrxMemoView;
   WilayaRX.Text:=  MainForm.ClientTable.FieldByName('willaya_c').AsString;
 
-      RC:= BonFacVPListfrxRprt.FindObject('RC') as TfrxMemoView;
+      RC:= BonFacPPListfrxRprt.FindObject('RC') as TfrxMemoView;
   RC.Text:= MainForm.ClientTable.FieldByName('rc_c').AsString;
 
-    NArt:= BonFacVPListfrxRprt.FindObject('NArt') as TfrxMemoView;
+    NArt:= BonFacPPListfrxRprt.FindObject('NArt') as TfrxMemoView;
   NArt.Text:= MainForm.ClientTable.FieldByName('nart_c').AsString;
 
-    NIF:= BonFacVPListfrxRprt.FindObject('NIF') as TfrxMemoView;
+    NIF:= BonFacPPListfrxRprt.FindObject('NIF') as TfrxMemoView;
   NIF.Text:=  MainForm.ClientTable.FieldByName('nif_c').AsString;
 
-      NIS:= BonFacVPListfrxRprt.FindObject('NIS') as TfrxMemoView;
+      NIS:= BonFacPPListfrxRprt.FindObject('NIS') as TfrxMemoView;
   NIS.Text:=  MainForm.ClientTable.FieldByName('nis_c').AsString;
 
     MainForm.ClientTable.Active:=False;
@@ -2929,29 +2596,29 @@ begin
 
 
          begin
-      MainForm.Bonv_fac_listTable.DisableControls;
+      MainForm.Bonp_fac_listTable.DisableControls;
 
         begin
-           MainForm.Bonv_fac_listTable.Active:=false;
-           MainForm.Bonv_fac_listTable.SQL.Clear;
-           MainForm.Bonv_fac_listTable.SQL.Text:='Select * FROM bonv_fac_list WHERE tva_p = 17' ;
-           MainForm.Bonv_fac_listTable.Active:=True;
-            if NOT (MainForm.Bonv_fac_listTable.IsEmpty) then
+           MainForm.Bonp_fac_listTable.Active:=false;
+           MainForm.Bonp_fac_listTable.SQL.Clear;
+           MainForm.Bonp_fac_listTable.SQL.Text:='Select * FROM bonp_fac_list WHERE tva_p = 17' ;
+           MainForm.Bonp_fac_listTable.Active:=True;
+            if NOT (MainForm.Bonp_fac_listTable.IsEmpty) then
            begin
 
-            MainForm.Bonv_fac_listTable.First;
+            MainForm.Bonp_fac_listTable.First;
 
-            while not MainForm.Bonv_fac_listTable.Eof do
+            while not MainForm.Bonp_fac_listTable.Eof do
             begin
-              Montant17:= Montant17 + MainForm.Bonv_fac_listTable.FieldValues['MontantTVA'];
-              MainForm.Bonv_fac_listTable.Next;
+              Montant17:= Montant17 + MainForm.Bonp_fac_listTable.FieldValues['MontantTVA'];
+              MainForm.Bonp_fac_listTable.Next;
             end;
 
-             TauxTVA17:= BonFacVPListfrxRprt.FindObject('TauxTVA17') as TfrxMemoView;
+             TauxTVA17:= BonFacPPListfrxRprt.FindObject('TauxTVA17') as TfrxMemoView;
              TauxTVA17.Text:=  '17 %';
              TauxTVA17.Visible:=True;
 
-             MontantTVA17:= BonFacVPListfrxRprt.FindObject('MontantTVA17') as TfrxMemoView;
+             MontantTVA17:= BonFacPPListfrxRprt.FindObject('MontantTVA17') as TfrxMemoView;
                          if RemisePerctageBonFacVGEdt.Text <> '' then
             begin
             RemisePerctageBonFacV:=StrToFloat(StringReplace(RemisePerctageBonFacVGEdt.Text, #32, '', [rfReplaceAll]));
@@ -2969,25 +2636,25 @@ begin
             end;
         end;
         begin
-           MainForm.Bonv_fac_listTable.Active:=false;
-           MainForm.Bonv_fac_listTable.SQL.Clear;
-           MainForm.Bonv_fac_listTable.SQL.Text:='Select * FROM bonv_fac_list WHERE tva_p = 7' ;
-           MainForm.Bonv_fac_listTable.Active:=True;
-          if NOT (MainForm.Bonv_fac_listTable.IsEmpty) then
+           MainForm.Bonp_fac_listTable.Active:=false;
+           MainForm.Bonp_fac_listTable.SQL.Clear;
+           MainForm.Bonp_fac_listTable.SQL.Text:='Select * FROM bonp_fac_list WHERE tva_p = 7' ;
+           MainForm.Bonp_fac_listTable.Active:=True;
+          if NOT (MainForm.Bonp_fac_listTable.IsEmpty) then
            begin
 
-            MainForm.Bonv_fac_listTable.First;
+            MainForm.Bonp_fac_listTable.First;
 
-            while not MainForm.Bonv_fac_listTable.Eof do
+            while not MainForm.Bonp_fac_listTable.Eof do
             begin
-              Montant7:= Montant7 + MainForm.Bonv_fac_listTable.FieldValues['MontantTVA'];
-              MainForm.Bonv_fac_listTable.Next;
+              Montant7:= Montant7 + MainForm.Bonp_fac_listTable.FieldValues['MontantTVA'];
+              MainForm.Bonp_fac_listTable.Next;
             end;
-             TauxTVA7:= BonFacvPListfrxRprt.FindObject('TauxTVA7') as TfrxMemoView;
+             TauxTVA7:= BonFacPPListfrxRprt.FindObject('TauxTVA7') as TfrxMemoView;
              TauxTVA7.Text:=  '7 %';
              TauxTVA7.Visible:=True;
 
-             MontantTVA7:= BonFacVPListfrxRprt.FindObject('MontantTVA7') as TfrxMemoView;
+             MontantTVA7:= BonFacPPListfrxRprt.FindObject('MontantTVA7') as TfrxMemoView;
 
             if RemisePerctageBonFacVGEdt.Text <> '' then
             begin
@@ -3007,25 +2674,25 @@ begin
         end;
 
         begin
-           MainForm.Bonv_fac_listTable.Active:=false;
-           MainForm.Bonv_fac_listTable.SQL.Clear;
-           MainForm.Bonv_fac_listTable.SQL.Text:='Select * FROM bonv_fac_list WHERE tva_p = 19' ;
-           MainForm.Bonv_fac_listTable.Active:=True;
-          if NOT (MainForm.Bonv_fac_listTable.IsEmpty) then
+           MainForm.Bonp_fac_listTable.Active:=false;
+           MainForm.Bonp_fac_listTable.SQL.Clear;
+           MainForm.Bonp_fac_listTable.SQL.Text:='Select * FROM bonp_fac_list WHERE tva_p = 19' ;
+           MainForm.Bonp_fac_listTable.Active:=True;
+          if NOT (MainForm.Bonp_fac_listTable.IsEmpty) then
            begin
 
-            MainForm.Bonv_fac_listTable.First;
+            MainForm.Bonp_fac_listTable.First;
 
-            while not MainForm.Bonv_fac_listTable.Eof do
+            while not MainForm.Bonp_fac_listTable.Eof do
             begin
-              Montant19:= Montant19 + MainForm.Bonv_fac_listTable.FieldValues['MontantTVA'];
-              MainForm.Bonv_fac_listTable.Next;
+              Montant19:= Montant19 + MainForm.Bonp_fac_listTable.FieldValues['MontantTVA'];
+              MainForm.Bonp_fac_listTable.Next;
             end;
-             TauxTVA19:= BonFacVPListfrxRprt.FindObject('TauxTVA19') as TfrxMemoView;
+             TauxTVA19:= BonFacPPListfrxRprt.FindObject('TauxTVA19') as TfrxMemoView;
              TauxTVA19.Text:=  '19 %';
              TauxTVA19.Visible:=True;
 
-             MontantTVA19:= BonFacVPListfrxRprt.FindObject('MontantTVA19') as TfrxMemoView;
+             MontantTVA19:= BonFacPPListfrxRprt.FindObject('MontantTVA19') as TfrxMemoView;
 
             if RemisePerctageBonFacVGEdt.Text <> '' then
             begin
@@ -3043,64 +2710,63 @@ begin
                  MontantTVA19.Visible:=True;
             end;
         end;
-
-             MainForm.Bonv_fac_listTable.Active:=false;
-             MainForm.Bonv_fac_listTable.SQL.Clear;
-             MainForm.Bonv_fac_listTable.SQL.Text:='Select * FROM bonv_fac_list ORDER BY code_bvfacl ' ;
-             MainForm.Bonv_fac_listTable.Active:=True;
-         MainForm.Bonv_fac_listTable.EnableControls;
+             MainForm.Bonp_fac_listTable.Active:=false;
+             MainForm.Bonp_fac_listTable.SQL.Clear;
+             MainForm.Bonp_fac_listTable.SQL.Text:='Select * FROM bonp_fac_list ORDER BY code_bpfacl ' ;
+             MainForm.Bonp_fac_listTable.Active:=True;
+         MainForm.Bonp_fac_listTable.EnableControls;
      end;
 
 
-    MPRX:= BonFacVPListfrxRprt.FindObject('MPRX') as TfrxMemoView;
+    MPRX:= BonFacPPListfrxRprt.FindObject('MPRX') as TfrxMemoView;
   MPRX.Text:= ModePaieBonFacVGCbx.Text;
 
-    NCHeqRX:= BonFacVPListfrxRprt.FindObject('NCHeqRX') as TfrxMemoView;
+    NCHeqRX:= BonFacPPListfrxRprt.FindObject('NCHeqRX') as TfrxMemoView;
   NCHeqRX.Text:= NChequeBonFacVGCbx.Text;
 
  end;
 
-procedure TBonFacVGestionF.sSpeedButton2Click(Sender: TObject);
+procedure TBonFacPGestionF.sSpeedButton2Click(Sender: TObject);
 begin
  GettingData;
-MainForm.Bonv_fac_listTable.DisableControls;
-BonFacVPListfrxRprt.PrepareReport;
-BonFacVPListfrxRprt.ShowReport;
-MainForm.Bonv_fac_listTable.EnableControls;
+MainForm.Bonp_fac_listTable.DisableControls;
+BonFacPPListfrxRprt.PrepareReport;
+BonFacPPListfrxRprt.ShowReport;
+MainForm.Bonp_fac_listTable.EnableControls;
 end;
 
-procedure TBonFacVGestionF.sSpeedButton1Click(Sender: TObject);
+procedure TBonFacPGestionF.sSpeedButton1Click(Sender: TObject);
 begin
    GettingData;
-MainForm.Bonv_fac_listTable.DisableControls;
-BonFacVPListfrxRprt.PrepareReport;
-frxXLSExport1.FileName := 'Facture de Vente N° '
-  +IntToStr(YearOf(Today)) + '-' + Format('%.*d', [5,(MainForm.Bonv_facTable.FieldByName('code_bvfac').AsInteger)]);
-BonFacVPListfrxRprt.Export(frxXLSExport1);
-MainForm.Bonv_fac_listTable.EnableControls;
+MainForm.Bonp_fac_listTable.DisableControls;
+BonFacPPListfrxRprt.PrepareReport;
+frxXLSExport1.FileName := 'Facture Proforma N° '
+  +IntToStr(YearOf(Today)) + '-' + Format('%.*d', [5,(MainForm.Bonp_facTable.FieldByName('code_bpfac').AsInteger)]);
+BonFacPPListfrxRprt.Export(frxXLSExport1);
+MainForm.Bonp_fac_listTable.EnableControls;
 end;
 
-procedure TBonFacVGestionF.sSpeedButton3Click(Sender: TObject);
+procedure TBonFacPGestionF.sSpeedButton3Click(Sender: TObject);
 begin
  GettingData;
-MainForm.Bonv_fac_listTable.DisableControls;
-BonFacVPListfrxRprt.PrepareReport;
+MainForm.Bonp_fac_listTable.DisableControls;
+BonFacPPListfrxRprt.PrepareReport;
 
-frxPDFExport1.FileName := 'Facture de Vente N° '
-  +IntToStr(YearOf(Today)) + '-' + Format('%.*d', [5,(MainForm.Bonv_facTable.FieldByName('code_bvfac').AsInteger)]);
+frxPDFExport1.FileName := 'Facture Proforma N° '
+  +IntToStr(YearOf(Today)) + '-' + Format('%.*d', [5,(MainForm.Bonp_facTable.FieldByName('code_bpfac').AsInteger)]);
 
 frxPDFExport1.EmbeddedFonts:=True;
 
-BonFacVPListfrxRprt.Export(frxPDFExport1);
-MainForm.Bonv_fac_listTable.EnableControls;
+BonFacPPListfrxRprt.Export(frxPDFExport1);
+MainForm.Bonp_fac_listTable.EnableControls;
 end;
 
-procedure TBonFacVGestionF.ProduitsListDBGridEhCellClick(Column: TColumnEh);
+procedure TBonFacPGestionF.ProduitsListDBGridEhCellClick(Column: TColumnEh);
 begin
 Refresh_PreservePosition;
 end;
 
-procedure TBonFacVGestionF.ProduitsListDBGridEhExit(Sender: TObject);
+procedure TBonFacPGestionF.ProduitsListDBGridEhExit(Sender: TObject);
 begin
 Refresh_PreservePosition;
 end;

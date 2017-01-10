@@ -839,7 +839,13 @@ begin
     MainForm.GstockdcConnection.ExecSQL('DELETE FROM codebarres where codebarres.code_p = ' + IntToStr(codeP));
     MainForm.ProduitTable.Delete ;
     end;
-   MainForm.ProduitTable.EnableControls;
+
+//    MainForm.ProduitTable.DisableControls;
+    MainForm.ProduitTable.Active:= False;
+    MainForm.ProduitTable.SQL.Text:= 'SELECT * FROM produit ';
+    MainForm.ProduitTable.Active:= True;
+    MainForm.ProduitTable.EnableControls;
+
 //   ProduitsListF.ProduitsListDBGridEh.Enabled:=True;
    NormalForms;
    ProduitGestionF.Tag := 0 ;

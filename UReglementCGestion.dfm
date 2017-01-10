@@ -489,7 +489,7 @@ object ReglementCGestionF: TReglementCGestionF
     Left = 65
     Top = 58
     Width = 124
-    Height = 26
+    Height = 27
     Date = 42565.478213819440000000
     Time = 42565.478213819440000000
     Font.Charset = DEFAULT_CHARSET

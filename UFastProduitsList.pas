@@ -67,7 +67,8 @@ implementation
 
 uses
   UMainF, UProduitGestion, USplashAddUnite, UClientGestion, UBonRecGestion,
-  UBonLivGestion, UBonFacVGestion, UComptoir,  UBonFacAGestion, UPertesGestion;
+  UBonLivGestion, UBonFacVGestion, UComptoir,  UBonFacAGestion, UPertesGestion,
+  UBonFacPGestion;
 
 
 procedure TFastProduitsListF.FisrtClientbtnClick(Sender: TObject);
@@ -1601,6 +1602,8 @@ begin
 
       end;
 
+//--------------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------------
     
     //--- this tage = 5 is for select produit for Perte----//
       if Tag = 5 then
@@ -1610,6 +1613,313 @@ begin
        Close; 
       
       end;
+
+
+
+
+
+
+
+      //-------------------------------------------------------------------------------------------------
+
+//---------- from this is to add produit to the facture PROFORMA with fastform tag = 2-------------------------------------------
+
+  //----- this tag is for multiple products ------//
+
+     if (OKProduitGBtn.Tag = 0) AND (FastProduitsListF.Tag = 6) then
+    begin
+
+    CodeP:= MainForm.ProduitTable.FieldByName('code_p').AsInteger ;
+    lookupResultRefP := MainForm.Bonp_fac_listTable.Lookup('code_p',(CodeP),'code_p');
+     if VarIsnull( lookupResultRefP) then
+     begin
+
+         if BonFacPGestionF.ClientBonFacVGCbx.Text<> '' then
+       begin
+         MainForm.ClientTable.DisableControls;
+         MainForm.ClientTable.Active:=false;
+         MainForm.ClientTable.SQL.Clear;
+         MainForm.ClientTable.SQL.Text:='Select * FROM client WHERE LOWER(nom_c) LIKE LOWER('+ QuotedStr( BonFacPGestionF.ClientBonFacVGCbx.Text )+')'  ;
+         MainForm.ClientTable.Active:=True;
+       end;
+
+      MainForm.ProduitTable.DisableControls;
+
+      MainForm.Bonp_fac_listTable.DisableControls;
+      MainForm.Bonp_fac_listTable.IndexFieldNames:='';
+      MainForm.Bonp_fac_listTable.Active:=False;
+      MainForm.Bonp_fac_listTable.SQL.Clear;
+      MainForm.Bonp_fac_listTable.SQL.Text:= 'SELECT * FROM bonp_fac_list ORDER by code_bpfacl' ;
+      MainForm.Bonp_fac_listTable.Active:=True;
+      MainForm.Bonp_fac_listTable.Last;
+
+//----- use this code to select more than one produit ------//
+      if ProduitsListDBGridEh.SelectedRows.Count > 0 then
+      with ProduitsListDBGridEh.DataSource.DataSet do
+      for i:=0 to ProduitsListDBGridEh.SelectedRows.Count-1 do
+      begin
+      //   while ProduitsListDBGridEh.SelectedRows. do
+
+        GotoBookmark(ProduitsListDBGridEh.SelectedRows.Items[i]);
+           if  MainForm.Bonp_fac_listTable.IsEmpty then
+           begin
+             MainForm.Bonp_fac_listTable.Last;
+             CodeBR := 1;
+           end else
+               begin
+                MainForm.Bonp_fac_listTable.Last;
+                CodeBR:= MainForm.Bonp_fac_listTable.FieldValues['code_bpfacl'] + 1 ;
+               end;
+
+             MainForm.Bonp_fac_listTable.Last;
+             MainForm.Bonp_fac_listTable.Append;
+             MainForm.Bonp_fac_listTable.FieldValues['code_bpfacl']:= CodeBR ;
+             MainForm.Bonp_fac_listTable.FieldValues['code_bpfac']:= MainForm.Bonp_facTable.FieldValues['code_bpfac'];
+             MainForm.Bonp_fac_listTable.FieldValues['code_p']:=  MainForm.ProduitTable.FieldValues['code_p'] ;
+             MainForm.Bonp_fac_listTable.FieldValues['qut_p'] :=  01;
+             MainForm.Bonp_fac_listTable.FieldValues['cond_p']:=  01;
+             MainForm.Bonp_fac_listTable.FieldValues['tva_p']:= MainForm.ProduitTable.FieldValues['tva_p'];
+
+           if  NOT (MainForm.ClientTable.IsEmpty) AND (BonFacPGestionF.ClientBonFacVGCbx.Text<> '' ) then
+           begin
+             if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 0 then
+             begin
+             MainForm.Bonp_fac_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixvd_p'];
+             end;
+             if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 1 then
+             begin
+             MainForm.Bonp_fac_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixvr_p'];
+             end;
+             if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 2 then
+             begin
+             MainForm.Bonp_fac_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixvg_p'];
+             end;
+             if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 3 then
+             begin
+             MainForm.Bonp_fac_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixva_p'];
+             end;
+             if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 4 then
+             begin
+             MainForm.Bonp_fac_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixva2_p'];
+             end;
+             end else
+                 begin
+                  MainForm.Bonp_fac_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixvd_p'];
+                 end;
+
+             MainForm.Bonp_fac_listTable.Post ;
+
+            MainForm.ClientTable.Active:=false;
+            MainForm.ClientTable.SQL.Clear;
+            MainForm.ClientTable.SQL.Text:='Select * FROM client' ;
+            MainForm.ClientTable.Active:=True;
+            MainForm.ClientTable.EnableControls;
+      end;
+           ProduitsListDBGridEh.SelectedRows.Clear;
+           MainForm.Bonp_fac_listTable.IndexFieldNames:='code_bpfac';
+           MainForm.Bonp_fac_listTable.Last;
+           MainForm.Bonp_fac_listTable.EnableControls;
+           MainForm.ProduitTable.EnableControls;
+           OKProduitGBtn.Tag:=2;
+         end else
+             begin
+                FSplashAddUnite:=TFSplashAddUnite.Create(FastProduitsListF);
+                FSplashAddUnite.Image1.ImageIndex:=3;
+                FSplashAddUnite.Width:=300;
+                FSplashAddUnite.Height:=160;
+                FSplashAddUnite.Panel1.Color:= $0028CAFE;
+                FSplashAddUnite.Color:= $00EFE9E8;
+                FSplashAddUnite.LineP.Color:=$0028CAFE;
+                FSplashAddUnite.LineP.Top:= (FSplashAddUnite.Height) - 44  ;
+                FSplashAddUnite.OKAddUniteSBtn.Top:= (FSplashAddUnite.Height) - 36;
+                FSplashAddUnite.OKAddUniteSBtn.ImageIndex:=17;
+                FSplashAddUnite.CancelAddUniteSBtn.Top:=(FSplashAddUnite.Height) - 36;
+                FSplashAddUnite.OKAddUniteSBtn.Left:=(FSplashAddUnite.Width div 4) - (FSplashAddUnite.OKAddUniteSBtn.Width div 2) + 15;
+                FSplashAddUnite.CancelAddUniteSBtn.Left:= ((FSplashAddUnite.Width div 2 )+((FSplashAddUnite.Width div 2)div 2 ) ) - (FSplashAddUnite.CancelAddUniteSBtn.Width div 2) - 15;
+                if  MainForm.Bonp_fac_listTable.FieldValues['code_p'] <> NULL then
+                begin
+                NomP:=   MainForm.ProduitTable.FieldValues['nom_p'];
+                end else begin
+                NomP:='';
+                end;
+                FSplashAddUnite.NameAddUniteSLbl.Caption:='Article déja inséré : '+ sLineBreak +  sLineBreak + QuotedStr(NomP);
+                FSplashAddUnite.NameAddUniteSLbl.Font.Height:= 22;
+                FSplashAddUnite.NameAddUniteSLbl.Top:= (FSplashAddUnite.Panel1.Height) + 10 ;
+                FSplashAddUnite.NameAddUniteSLbl.Font.Height:=18;
+                FSplashAddUnite.Image1.Visible:=True;
+                FSplashAddUnite.Image1.Top:= (FSplashAddUnite.Height div 2) - (FSplashAddUnite.Image1.Height div 2 ) ;
+                FSplashAddUnite.FormCaptionAddUniteSLbl.Caption:='Attention...';
+                FSplashAddUnite.FormCaptionAddUniteSLbl.Font.Color:=$0040332D;
+                FSplashAddUnite.FormCaptionAddUniteSLbl.Left:=( FSplashAddUnite.Width div 2) -  ( FSplashAddUnite.FormCaptionAddUniteSLbl.Width div 2);
+                FSplashAddUnite.NameAddUniteSEdt.Visible:=False;
+                FSplashAddUnite.RequiredStarAddUniteSLbl.Visible:=False;
+                FSplashAddUnite.NameAddUniteSLbl.Left:= FSplashAddUnite.Image1.Left + FSplashAddUnite.Image1.Width + 10;
+                FSplashAddUnite.Left:=  (MainForm.Left + MainForm.Width div 2) - (FSplashAddUnite.Width div 2);
+                FSplashAddUnite.Top:=   MainForm.Top + 5;
+                FSplashAddUnite.CancelAddUniteSBtn.Caption:='Ignorer' ;
+                FSplashAddUnite.OKAddUniteSBtn.Enabled:=True;
+                FSplashAddUnite.OKAddUniteSBtn.Tag:= 37 ;
+                AnimateWindow(FSplashAddUnite.Handle, 175, AW_VER_POSITIVE OR AW_SLIDE OR AW_ACTIVATE );
+                FSplashAddUnite.Show;
+                //--- this tage = 0 is for multi name added by fastproduitx----//
+                FSplashAddUnite.Tag:=7;
+             end;
+
+             MainForm.Bonp_fac_listTable.Refresh;
+
+    end else
+
+    if (OKproduitGBtn.Tag = 1) AND (FastProduitsListF.Tag = 6) then
+    begin
+
+        CodeP:= MainForm.ProduitTable.FieldByName('code_p').AsInteger ;
+
+           lookupResultRefP := MainForm.Bonp_fac_listTable.Lookup('code_p',(CodeP),'code_p');
+         if VarIsnull( lookupResultRefP) then
+         begin
+     MainForm.ProduitTable.DisableControls;
+
+        if BonFacPGestionF.ClientBonFacVGCbx.Text<> '' then
+       begin
+         MainForm.ClientTable.DisableControls;
+         MainForm.ClientTable.Active:=false;
+         MainForm.ClientTable.SQL.Clear;
+         MainForm.ClientTable.SQL.Text:='Select * FROM client WHERE LOWER(nom_c) LIKE LOWER('+ QuotedStr( BonFacPGestionF.ClientBonFacVGCbx.Text )+')'  ;
+         MainForm.ClientTable.Active:=True;
+       end;
+
+      MainForm.Bonp_fac_listTable.DisableControls;
+      MainForm.Bonp_fac_listTable.IndexFieldNames:='';
+      MainForm.Bonp_fac_listTable.Active:=False;
+      MainForm.Bonp_fac_listTable.SQL.Clear;
+      MainForm.Bonp_fac_listTable.SQL.Text:= 'SELECT * FROM bonp_fac_list ORDER by code_bpfacl' ;
+      MainForm.Bonp_fac_listTable.Active:=True;
+      MainForm.Bonp_fac_listTable.Last;
+           if  MainForm.Bonp_fac_listTable.IsEmpty then
+           begin
+             MainForm.Bonp_fac_listTable.Last;
+             CodeBR := 1;
+           end else
+               begin
+                MainForm.Bonp_fac_listTable.Last;
+                CodeBR:= MainForm.Bonp_fac_listTable.FieldValues['code_bpfacl'] + 1 ;
+               end;
+
+             MainForm.Bonp_fac_listTable.Last;
+             MainForm.Bonp_fac_listTable.Append;
+             MainForm.Bonp_fac_listTable.FieldValues['code_bpfacl']:= CodeBR ;
+             MainForm.Bonp_fac_listTable.FieldValues['code_bpfac']:= MainForm.Bonp_facTable.FieldValues['code_bpfac'];
+             MainForm.Bonp_fac_listTable.FieldValues['code_p']:=  MainForm.ProduitTable.FieldValues['code_p'] ;
+             MainForm.Bonp_fac_listTable.FieldValues['qut_p'] :=  01;
+             MainForm.Bonp_fac_listTable.FieldValues['cond_p']:= 01;
+             MainForm.Bonp_fac_listTable.FieldValues['tva_p']:= MainForm.ProduitTable.FieldValues['tva_p'];
+
+           if  NOT (MainForm.ClientTable.IsEmpty) AND (BonFacPGestionF.ClientBonFacVGCbx.Text<> '' ) then
+           begin
+             if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 0 then
+             begin
+             MainForm.Bonp_fac_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixvd_p'];
+             end;
+             if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 1 then
+             begin
+             MainForm.Bonp_fac_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixvr_p'];
+             end;
+             if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 2 then
+             begin
+             MainForm.Bonp_fac_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixvg_p'];
+             end;
+             if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 3 then
+             begin
+             MainForm.Bonp_fac_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixva_p'];
+             end;
+             if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 4 then
+             begin
+             MainForm.Bonp_fac_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixva2_p'];
+             end;
+             end else
+                 begin
+                  MainForm.Bonp_fac_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixvd_p'];
+                 end;
+
+             MainForm.Bonp_fac_listTable.Post ;
+           MainForm.Bonp_fac_listTable.IndexFieldNames:='code_bpfac';
+           MainForm.Bonp_fac_listTable.Last;
+           MainForm.Bonp_fac_listTable.EnableControls;
+           MainForm.ProduitTable.EnableControls;
+          MainForm.Bonp_fac_listTable.Active:=False;
+          MainForm.Bonp_fac_listTable.SQL.Clear;
+          MainForm.Bonp_fac_listTable.SQL.Text:= 'SELECT * FROM bonp_fac_list WHERE code_bpfac = ' + QuotedStr(IntToStr(MainForm.Bonp_facTable.FieldValues['code_bpfac']));
+          MainForm.Bonp_fac_listTable.Active:=True;
+          MainForm.ProduitTable.Filtered:=False;
+
+            MainForm.ClientTable.Active:=false;
+            MainForm.ClientTable.SQL.Clear;
+            MainForm.ClientTable.SQL.Text:='Select * FROM client' ;
+            MainForm.ClientTable.Active:=True;
+            MainForm.ClientTable.EnableControls;
+
+          Close;
+
+   end else
+       begin
+          FSplashAddUnite:=TFSplashAddUnite.Create(FastProduitsListF);
+          FSplashAddUnite.Image1.ImageIndex:=3;
+          FSplashAddUnite.Width:=300;
+          FSplashAddUnite.Height:=160;
+          FSplashAddUnite.Panel1.Color:=  $0028CAFE;
+          FSplashAddUnite.Color:= $00EFE9E8;
+          FSplashAddUnite.LineP.Color:=$0028CAFE;
+          FSplashAddUnite.LineP.Top:= (FSplashAddUnite.Height) - 44  ;
+          FSplashAddUnite.OKAddUniteSBtn.Top:= (FSplashAddUnite.Height) - 36;
+          FSplashAddUnite.OKAddUniteSBtn.Left:=(FSplashAddUnite.Width div 4) - (FSplashAddUnite.OKAddUniteSBtn.Width div 2) + 15;
+          FSplashAddUnite.CancelAddUniteSBtn.Left:= ((FSplashAddUnite.Width div 2 )+((FSplashAddUnite.Width div 2)div 2 ) ) - (FSplashAddUnite.CancelAddUniteSBtn.Width div 2) - 15;
+          FSplashAddUnite.OKAddUniteSBtn.ImageIndex:=17;
+          FSplashAddUnite.CancelAddUniteSBtn.Top:=(FSplashAddUnite.Height) - 36;
+          FSplashAddUnite.OKAddUniteSBtn.Left:=(FSplashAddUnite.Width div 4) - (FSplashAddUnite.OKAddUniteSBtn.Width div 2);
+          FSplashAddUnite.CancelAddUniteSBtn.Left:= ((FSplashAddUnite.Width div 2 )+((FSplashAddUnite.Width div 2)div 2 ) ) - (FSplashAddUnite.CancelAddUniteSBtn.Width div 2);
+          if  MainForm.Bonv_fac_listTable.FieldValues['code_p'] <> NULL then
+          begin
+          NomP:=   MainForm.ProduitTable.FieldValues['nom_p']
+          end else begin
+            NomP:='';
+          end;
+          FSplashAddUnite.NameAddUniteSLbl.Caption:='Article déja inséré : '+ sLineBreak +  sLineBreak + QuotedStr(NomP);
+          FSplashAddUnite.NameAddUniteSLbl.Font.Height:= 22;
+          FSplashAddUnite.NameAddUniteSLbl.Top:= (FSplashAddUnite.Panel1.Height) + 10 ;
+          FSplashAddUnite.NameAddUniteSLbl.Font.Height:=18;
+          FSplashAddUnite.Image1.Visible:=True;
+          FSplashAddUnite.Image1.Top:= (FSplashAddUnite.Height div 2) - (FSplashAddUnite.Image1.Height div 2 ) ;
+          FSplashAddUnite.FormCaptionAddUniteSLbl.Caption:='Attention...';
+          FSplashAddUnite.FormCaptionAddUniteSLbl.Font.Color:=$0040332D;
+          FSplashAddUnite.FormCaptionAddUniteSLbl.Left:=( FSplashAddUnite.Width div 2) -  ( FSplashAddUnite.FormCaptionAddUniteSLbl.Width div 2);
+          FSplashAddUnite.NameAddUniteSEdt.Visible:=False;
+          FSplashAddUnite.RequiredStarAddUniteSLbl.Visible:=False;
+          FSplashAddUnite.NameAddUniteSLbl.Left:= FSplashAddUnite.Image1.Left + FSplashAddUnite.Image1.Width + 10;
+          FSplashAddUnite.Left:=  (MainForm.Left + MainForm.Width div 2) - (FSplashAddUnite.Width div 2);
+          FSplashAddUnite.Top:=   MainForm.Top + 5;
+          FSplashAddUnite.CancelAddUniteSBtn.Caption:='Ignorer' ;
+          FSplashAddUnite.OKAddUniteSBtn.Enabled:=True;
+          FSplashAddUnite.OKAddUniteSBtn.Tag:= 37 ;
+          AnimateWindow(FSplashAddUnite.Handle, 175, AW_VER_POSITIVE OR AW_SLIDE OR AW_ACTIVATE );
+          FSplashAddUnite.Show;
+    //--- this tage = 0 is for multi name added by fastproduit----//
+          FSplashAddUnite.Tag:=7;
+       end;
+
+       MainForm.Bonv_fac_listTable.Refresh;
+    end
+     else
+
+
+    if (OKProduitGBtn.Tag = 2) AND (FastProduitsListF.Tag = 6)  then
+    begin
+     CancelProduitGBtnClick(Sender);
+
+    end;
+
+
+
+
 
     end;
 

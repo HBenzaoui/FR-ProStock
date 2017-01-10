@@ -36,8 +36,8 @@ object FastProduitsListF: TFastProduitsListF
     object ResearchProduitsLbl: TLabel
       Left = 2
       Top = 21
-      Width = 83
-      Height = 18
+      Width = 86
+      Height = 19
       Caption = 'Rechercher'
       Color = 15722984
       Font.Charset = DEFAULT_CHARSET
@@ -122,8 +122,8 @@ object FastProduitsListF: TFastProduitsListF
       ShowHint = True
       OnClick = LastClientbtnClick
       SkinData.SkinSection = 'SPEEDBUTTON'
-      ImageIndex = 3
       Images = MainForm.PanelIcons24
+      ImageIndex = 3
     end
     object NextClientbtn: TsSpeedButton
       Left = 600
@@ -134,8 +134,8 @@ object FastProduitsListF: TFastProduitsListF
       ShowHint = True
       OnClick = NextClientbtnClick
       SkinData.SkinSection = 'SPEEDBUTTON'
-      ImageIndex = 2
       Images = MainForm.PanelIcons24
+      ImageIndex = 2
       ShowCaption = False
     end
     object PreviosClientbtn: TsSpeedButton
@@ -147,8 +147,8 @@ object FastProduitsListF: TFastProduitsListF
       ShowHint = True
       OnClick = PreviosClientbtnClick
       SkinData.SkinSection = 'SPEEDBUTTON'
-      ImageIndex = 1
       Images = MainForm.PanelIcons24
+      ImageIndex = 1
     end
     object FisrtClientbtn: TsSpeedButton
       Left = 532
@@ -159,8 +159,8 @@ object FastProduitsListF: TFastProduitsListF
       ShowHint = True
       OnClick = FisrtClientbtnClick
       SkinData.SkinSection = 'SPEEDBUTTON'
-      ImageIndex = 0
       Images = MainForm.PanelIcons24
+      ImageIndex = 0
       ShowCaption = False
     end
     object LineP: TPanel

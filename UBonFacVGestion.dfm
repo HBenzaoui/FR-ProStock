@@ -2427,7 +2427,7 @@ object BonFacVGestionF: TBonFacVGestionF
     Top = 384
   end
   object BonFacVPListfrxRprt: TfrxReport
-    Version = '5.5'
+    Version = '5.4.6'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -2435,7 +2435,7 @@ object BonFacVGestionF: TBonFacVGestionF
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 42576.399521435200000000
-    ReportOptions.LastChange = 42654.969868344910000000
+    ReportOptions.LastChange = 42745.970541458340000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       ''
@@ -3541,12 +3541,10 @@ object BonFacVGestionF: TBonFacVGestionF
         end
         object TauxTVA7: TfrxMemoView
           Left = 3.779530000000000000
-          Top = 85.795275590000000000
+          Top = 84.118095590000000000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
           Visible = False
-          DataSet = BonFacAGestionF.frxBonRecDT
-          DataSetName = 'frxBonFacADB'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -3562,12 +3560,10 @@ object BonFacVGestionF: TBonFacVGestionF
         end
         object TauxTVA17: TfrxMemoView
           Left = 3.779530000000000000
-          Top = 56.692913390000000000
+          Top = 111.708683390000000000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
           Visible = False
-          DataSet = BonFacAGestionF.frxBonRecDT
-          DataSetName = 'frxBonFacADB'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -3583,12 +3579,10 @@ object BonFacVGestionF: TBonFacVGestionF
         end
         object MontantTVA7: TfrxMemoView
           Left = 98.267780000000000000
-          Top = 85.795275590000000000
+          Top = 84.118095590000000000
           Width = 166.299320000000000000
           Height = 18.897650000000000000
           Visible = False
-          DataSet = BonFacAGestionF.frxBonRecDT
-          DataSetName = 'frxBonFacADB'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -3604,12 +3598,48 @@ object BonFacVGestionF: TBonFacVGestionF
         end
         object MontantTVA17: TfrxMemoView
           Left = 98.267780000000000000
-          Top = 56.692913390000000000
+          Top = 111.708683390000000000
           Width = 166.299320000000000000
           Height = 18.897650000000000000
           Visible = False
-          DataSet = BonFacAGestionF.frxBonRecDT
-          DataSetName = 'frxBonFacADB'
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = []
+          HAlign = haCenter
+          Memo.UTF8W = (
+            '0,00')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object TauxTVA19: TfrxMemoView
+          Left = 3.779530000000000000
+          Top = 55.692950000000000000
+          Width = 94.488250000000000000
+          Height = 18.897650000000000000
+          Visible = False
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = []
+          HAlign = haCenter
+          Memo.UTF8W = (
+            '0')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object MontantTVA19: TfrxMemoView
+          Left = 98.267780000000000000
+          Top = 55.692950000000000000
+          Width = 166.299320000000000000
+          Height = 18.897650000000000000
+          Visible = False
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET

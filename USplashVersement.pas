@@ -50,6 +50,7 @@ type
       var CanChange: Boolean);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
+
     { Private declarations }
 
   public
@@ -59,6 +60,7 @@ type
     procedure DisableBonFacV;
     procedure DisableBonFacA;
     procedure DisableBonCtr;
+    procedure DisableBonFacP;
 
   end;
 
@@ -69,7 +71,7 @@ implementation
 
 uses
   UMainF, UClientGestion, UBonRecGestion, UBonLivGestion, UBonFacVGestion,
-  UBonFacAGestion, UComptoir, UDataModule;
+  UBonFacAGestion, UComptoir, UDataModule, UBonFacPGestion;
 
 {$R *.dfm}
 
@@ -372,6 +374,68 @@ begin
           BonFacVGestionF.ValiderBVFacBonFacVGBtn.Enabled:= False;
           BonFacVGestionF.ValiderBVFacBonFacVGBtn.ImageIndex:=30; // 12 For A
 end;
+
+
+
+
+
+procedure TFSplashVersement.DisableBonFacP ;
+begin
+
+
+          BonFacPGestionF.DateBonFacVGD.Enabled:= False;
+          BonFacPGestionF.ObserBonFacVGMem.Enabled:= False;
+          BonFacPGestionF.ClientBonFacVGCbx.Enabled:= False;
+          BonFacPGestionF.AddClientBonFacVGBtn.Enabled:= False ; //
+          BonFacPGestionF.AddClientBonFacVGBtn.ImageIndex:=35;//10 fo A
+          BonFacPGestionF.ModePaieBonFacVGCbx.Enabled:= False;
+          BonFacPGestionF.AddModePaieBonFacVGBtn.Enabled:= False ;
+          BonFacPGestionF.AddModePaieBonFacVGBtn.ImageIndex:=35;//10 fo A
+          BonFacPGestionF.CompteBonFacVGCbx.Enabled:= False;
+          BonFacPGestionF.AddCompteBonFacVGBtn.Enabled:= False ;
+          BonFacPGestionF.AddCompteBonFacVGBtn.ImageIndex:=35;//10 fo A
+          BonFacPGestionF.NChequeBonFacVGCbx.Enabled:= False;
+          BonFacPGestionF.ProduitBonFacVGCbx.Enabled:= False;
+          BonFacPGestionF.EnterAddProduitBonFacVGBtn.Enabled:= False;
+          BonFacPGestionF.EnterAddProduitBonFacVGBtn.ImageIndex:=40;//15 fo A
+          BonFacPGestionF.ListAddProduitBonFacVGBtn.Enabled:= False;
+          BonFacPGestionF.ListAddProduitBonFacVGBtn.ImageIndex:=41;//13 fo A
+          BonFacPGestionF.NewAddProduitBonFacVGBtn.Enabled:= False;
+          BonFacPGestionF.NewAddProduitBonFacVGBtn.ImageIndex:=28;//4 fo A
+          BonFacPGestionF.DeleteProduitBonFacVGBtn.Enabled:= False;
+          BonFacPGestionF.DeleteProduitBonFacVGBtn.ImageIndex:=36;//14 fo A
+          BonFacPGestionF.ClearProduitBonFacVGBtn.Enabled:= False;
+          BonFacPGestionF.ClearProduitBonFacVGBtn.ImageIndex:=39;//16 fo A
+          BonFacPGestionF.ProduitsListDBGridEh.DataSource.DataSet.DisableControls;//EnableControls    For A
+          BonFacPGestionF.ProduitsListDBGridEh.Columns[2].TextEditing :=False;//True for A
+          BonFacPGestionF.ProduitsListDBGridEh.Columns[3].TextEditing:=False;//True for A
+          BonFacPGestionF.ProduitsListDBGridEh.Columns[4].TextEditing:=False;//True for A
+          BonFacPGestionF.ProduitsListDBGridEh.Options:=
+          BonFacPGestionF.ProduitsListDBGridEh.Options + [dgRowSelect]-[dgAlwaysShowSelection]-[dgMultiSelect] ; //flip + and -  for A
+          BonFacPGestionF.ProduitsListDBGridEh.Color:= $00EFE9E8;// clWhite for A
+          BonFacPGestionF.ProduitsListDBGridEh.FixedColor:=$00D9D7D3;//clwindow for A
+          BonFacPGestionF.ProduitsListDBGridEh.EvenRowColor:=$00D9D7D3;//clwindow for A
+          BonFacPGestionF.RemisePerctageBonFacVGEdt.Enabled:=False;//True for A
+          BonFacPGestionF.RemiseBonFacVGEdt.Enabled:=False;//True for A
+          BonFacPGestionF.RemiseTypeBonFacVGCbx.Enabled:= False;//True for A;
+
+          BonFacPGestionF.ResherchPARDesProduitsRdioBtn.Enabled:= False;//True for A
+          BonFacPGestionF.ResherchPARRefProduitsRdioBtn.Enabled:= False;//True for A                                   Ce bon n'est pas encore validé
+          BonFacPGestionF.ResherchPARCBProduitsRdioBtn.Enabled:= False;//True for A
+
+          BonFacPGestionF.ValiderBVFacBonFacVGImg.ImageIndex:=0;//1 fo A
+          BonFacPGestionF.ValiderBVFacBonFacVGLbl.Color:=$004AC38B;// $007374FF for A
+          BonFacPGestionF.ValiderBVFacBonFacVGLbl.Font.Color:= clBlack;// clWhite for A
+          BonFacPGestionF.ValiderBVFacBonFacVGLbl.Caption:='Ce Facture est Validé';// 'Ce bon n''est pas encore Validé' for A
+
+          BonFacPGestionF.AddBVFacBonFacVGBtn.Enabled:= True;
+          BonFacPGestionF.AddBVFacBonFacVGBtn.ImageIndex:=4;// 28 For A
+          BonFacPGestionF.EditBVFacBonFacVGBtn.Enabled:= True;
+          BonFacPGestionF.EditBVFacBonFacVGBtn.ImageIndex:=5; // 29 For A
+          BonFacPGestionF.ValiderBVFacBonFacVGBtn.Enabled:= False;
+          BonFacPGestionF.ValiderBVFacBonFacVGBtn.ImageIndex:=30; // 12 For A
+end;
+
 
 procedure TFSplashVersement.FormShow(Sender: TObject);
  var OLDCredit,TotalTTC: Currency;

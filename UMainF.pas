@@ -752,6 +752,49 @@ type
     N23: TMenuItem;
     Opt_cas_bnk_CaisseTablecode_ch: TIntegerField;
     Opt_cas_bnk_BankTablecode_ch: TIntegerField;
+    Bonp_facTable: TFDQuery;
+    Bonp_fac_listTable: TFDQuery;
+    BonFacPListDataS: TDataSource;
+    Bonp_facTablecode_bpfac: TIntegerField;
+    Bonp_facTabledate_bpfac: TDateField;
+    Bonp_facTabletime_bpfac: TTimeField;
+    Bonp_facTablecode_c: TIntegerField;
+    Bonp_facTablemontht_bpfac: TCurrencyField;
+    Bonp_facTablemontver_bpfac: TCurrencyField;
+    Bonp_facTablevalider_bpfac: TBooleanField;
+    Bonp_facTablenum_bpfac: TWideStringField;
+    Bonp_facTableobser_bpfac: TWideMemoField;
+    Bonp_facTablemontttc_bpfac: TCurrencyField;
+    Bonp_facTableremise_bpfac: TCurrencyField;
+    Bonp_facTablemarge_bpfac: TCurrencyField;
+    Bonp_fac_listTablecode_bpfacl: TIntegerField;
+    Bonp_fac_listTablecode_bpfac: TIntegerField;
+    Bonp_fac_listTablequt_p: TFloatField;
+    Bonp_fac_listTableprixvd_p: TCurrencyField;
+    Bonp_fac_listTablecond_p: TIntegerField;
+    Bonp_fac_listTablecode_p: TIntegerField;
+    Bonp_fac_listTabletva_p: TSmallintField;
+    Bonp_facTableclientbvfac: TStringField;
+    Bonp_facTableMontantTVA: TCurrencyField;
+    Bonp_facTableMontantRes: TCurrencyField;
+    Bonp_facTableRemisePerc: TCurrencyField;
+    Bonp_facTableNEWTTC: TCurrencyField;
+    Bonp_facTableNeTHT: TCurrencyField;
+    Bonp_facTableNetTTC: TCurrencyField;
+    Bonp_fac_listTablePrixVTTC: TCurrencyField;
+    Bonp_fac_listTableMontantHT: TCurrencyField;
+    Bonp_fac_listTableMontantTVA: TCurrencyField;
+    Bonp_fac_listTableMontantTTC: TCurrencyField;
+    Bonp_fac_listTablenomp: TStringField;
+    Bonp_fac_listTablereferp: TStringField;
+    Bonp_fac_listTableTVA: TCurrencyField;
+    Bonp_fac_listTableMarge: TCurrencyField;
+    Bonp_fac_listTableMontantAHT: TCurrencyField;
+    Bonp_fac_listTableprixht_p: TCurrencyField;
+    Bonp_fac_listTableMargeM: TCurrencyField;
+    Bonp_facTabletimber_bpfac: TCurrencyField;
+    Bonp_facTablecode_ur: TIntegerField;
+    Bonp_facTableAgent: TStringField;
     procedure ClientMainFBtnClick(Sender: TObject);
     procedure FourMainFBtnClick(Sender: TObject);
     procedure ProduitMainFBtnClick(Sender: TObject);
@@ -855,6 +898,10 @@ type
     procedure ListedetypesdeCharge1Click(Sender: TObject);
     procedure ListedetypesdeCharge2Click(Sender: TObject);
     procedure FDPhysPgDriverLink1DriverCreated(Sender: TObject);
+    procedure F6Click(Sender: TObject);
+    procedure Bonp_facTableCalcFields(DataSet: TDataSet);
+    procedure Bonp_fac_listTableCalcFields(DataSet: TDataSet);
+    procedure Bonp_fac_listTableAfterRefresh(DataSet: TDataSet);
   private
    //---- this to value of changege we need it to check if theuser changed something
      CountInsert,CountUpdate,CountDelete   : Int64;
@@ -893,7 +940,8 @@ uses   Vcl.Direct2D,Character,
   UOptions, UModePaieList, UDashboard,uCompteList, UFamPList, USFamPList,
   UUnitesList, ULocaleList, UHomeF, UDataModule, USplash, UWorkingSplash,
   ULogoSplashForm, ULoginUser, ULogin, UCNotifications, UChargesFList,
-  UPertesFList, USTypeChargeList, UTypeChargeList, UTypePerteList;
+  UPertesFList, USTypeChargeList, UTypeChargeList, UTypePerteList,
+  UBonFacPGestion, UBonFacP;
 
   var
     gGrayForms: TComponentList;
@@ -1395,6 +1443,144 @@ begin
 
   Bona_recTableCredit.FieldValues['MontantRes']:=
 ((Bona_recTableCredit.FieldValues['montttc_barec']) - (Bona_recTableCredit.FieldValues['montver_barec'])) ;
+end;
+
+procedure TMainForm.Bonp_facTableCalcFields(DataSet: TDataSet);
+begin
+ Bonp_facTable.FieldValues['MontantTVA']:=
+((Bonp_facTable.FieldValues['montttc_bpfac']) - ((Bonp_facTable.FieldValues['montht_bpfac'])-(Bonp_facTable.FieldValues['remise_bpfac']))) - ((Bonp_facTable.FieldValues['timber_bpfac']));
+
+  Bonp_facTable.FieldValues['MontantRes']:=
+((Bonp_facTable.FieldValues['montttc_bpfac']) - (Bonp_facTable.FieldValues['montver_bpfac'])) ;
+
+  if ((Bonp_facTable.FieldByName('remise_bpfac').AsCurrency) <> 0 ) AND  ((Bonp_facTable.FieldByName('montht_bpfac').AsCurrency) <> 0) then
+  begin
+    Bonp_facTable.FieldValues['RemisePerc']:=
+    ((Bonp_facTable.FieldValues['remise_bpfac'] / Bonp_facTable.FieldValues['montht_bpfac']) * 100) ;
+  end else
+      begin
+
+         Bonp_facTable.FieldValues['RemisePerc']:=0;
+      end;
+
+
+      Bonp_facTable.FieldValues['NeTHT']:=
+    ((Bonp_facTable.FieldValues['montht_bpfac']) - (Bonp_facTable.FieldValues['remise_bpfac'])) ;
+
+         Bonp_facTable.FieldValues['NetTTC']:=
+          ((Bonp_facTable.FieldValues['montttc_bpfac']) - ((Bonp_facTable.FieldValues['timber_bpfac'])) ) ;
+
+end;
+
+procedure TMainForm.Bonp_fac_listTableAfterRefresh(DataSet: TDataSet);
+var TotalHT,TotalTVA,TVA,TotalTTC,LeReste,Regle,TTCbeforeTimber,TimberFV,TTCafterTimber,Marge: Currency;
+  begin
+      if Assigned(BonFacPGestionF) then
+       begin
+
+      MainForm.Bonp_fac_listTable.DisableControls;
+      MainForm.Bonp_fac_listTable.First;
+
+      while not MainForm.Bonp_fac_listTable.Eof do
+      begin
+        TotalHT:= TotalHT + (MainForm.Bonp_fac_listTable.FieldValues['MontantHT'] );
+        TotalTVA:= TotalTVA + MainForm.Bonp_fac_listTable.FieldValues['MontantTVA'];
+        TotalTTC:= TotalTTC + MainForm.Bonp_fac_listTable.FieldValues['MontantTTC'];
+        TVA:=TVA + MainForm.Bonp_fac_listTable.FieldValues['tva_p'] ;
+        Marge:=Marge + MainForm.Bonp_fac_listTable.FieldValues['MargeM'] ;
+        LeReste:= TotalTTC - StrToCurr(StringReplace(BonFacPGestionF.BonFacVRegleLbl.Caption, #32, '', [rfReplaceAll]))  ;
+        MainForm.Bonp_fac_listTable.Next;
+      end;
+         MainForm.Bonp_fac_listTable.Active:=false;
+         MainForm.Bonp_fac_listTable.SQL.Clear;
+         MainForm.Bonp_fac_listTable.SQL.Text:='Select * FROM bonp_fac_list ORDER BY code_bpfacl ' ;
+         MainForm.Bonp_fac_listTable.Active:=True;
+
+         MainForm.Bonp_fac_listTable.EnableControls;
+
+  MainForm.Bonp_fac_listTable.EnableControls;
+
+    BonFacPGestionF.BonFacVTotalHTLbl.Caption :=    CurrToStrF((TotalHT),ffNumber,2) ;
+    BonFacPGestionF.BonFacVTotalTVALbl.Caption :=   CurrToStrF((TotalTVA),ffNumber,2) ;
+    BonFacPGestionF.BonFacVTotalTTCLbl.Caption :=   CurrToStrF((TotalTTC),ffNumber,2) ;
+    BonFacPGestionF.BonFacVResteLbl.Caption :=      CurrToStrF((LeReste),ffNumber,2) ;
+    BonFacPGestionF.BonFVTotalTTCNewLbl.Caption :=  CurrToStrF(((TotalTTC)),ffNumber,2) ;
+    BonFacPGestionF.BonFVTotalHTNewLbl.Caption :=   CurrToStrF(((TotalHT)),ffNumber,2) ;
+    BonFacPGestionF.TotalTVANewLbl.Caption :=      CurrToStrF(((TotalTVA)),ffNumber,2) ;
+    BonFacPGestionF.BonFacVTotalMargeLbl.Caption :=    CurrToStrF((Marge),ffNumber,2) ;
+
+    if MainForm.Bonp_facTable.FieldValues['montver_bpfac']<> Null then
+    begin
+    Regle:= MainForm.Bonp_facTable.FieldValues['montver_bpfac'];
+    BonFacPGestionF.BonFacVRegleLbl.Caption :=      CurrToStrF(((Regle)),ffNumber,2) ;
+    end;
+
+    if NOT (Bonp_fac_listTable.IsEmpty) then
+
+    if BonFacPGestionF.ClientBonFacVGCbx.Text<>'' then
+    begin
+    BonFacPGestionF.BonFacVGClientNEWCredit.Caption:=
+    CurrToStrF((LeReste + ((StrToCurr(StringReplace(BonFacPGestionF.BonFacVGClientOLDCredit.Caption, #32, '', [rfReplaceAll]))))),ffNumber,2) ;
+    end ;
+
+//              if BonFacPGestionF.ModePaieBonFacVGCbx.Text<>'' then
+//         begin
+//          if BonFacPGestionF.TimberPerctageBonFacVGEdt.Visible = True then
+//          begin
+//            TTCbeforeTimber:= StrToFloat (StringReplace(BonFacPGestionF.BonFacVTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
+//            TimberFV:= (TTCbeforeTimber/100);
+//            if TimberFV < 2500 then
+//            begin
+//            TTCafterTimber:= (TTCbeforeTimber + TimberFV);
+//            BonFacPGestionF.TimberBonFacVGEdt.Text:=  FloatToStrF(TimberFV,ffNumber,14,2);
+//            end else
+//                begin
+//                  BonFacPGestionF.TimberBonFacVGEdt.Text:=  FloatToStrF(2500,ffNumber,14,2);
+//                  TTCafterTimber:= (TTCbeforeTimber + 2500);
+//                end;
+//                BonFacPGestionF.BonFacVTotalTTCLbl.Caption:=  FloatToStrF(TTCafterTimber,ffNumber,14,2);
+//          end;
+//          end;
+
+        BonFacPGestionF.RemisePerctageBonFacVGEdt.Text:='';
+
+       end;
+
+end;
+
+procedure TMainForm.Bonp_fac_listTableCalcFields(DataSet: TDataSet);
+begin
+
+  Bonp_Fac_listTable.FieldValues['PrixVTTC']:=
+ (((Bonp_Fac_listTable.FieldValues['prixvd_p'] * Bonp_Fac_listTable.FieldValues['tva_p'])/100) + (Bonp_Fac_listTable.FieldValues['prixvd_p'])) ;
+
+   Bonp_Fac_listTable.FieldValues['MontantHT']:=
+ ((Bonp_Fac_listTable.FieldValues['prixvd_p'] * Bonp_Fac_listTable.FieldValues['qut_p']) * (Bonp_Fac_listTable.FieldValues['cond_p']) ) ;
+
+
+   Bonp_Fac_listTable.FieldValues['MontantTTC']:=
+ ((Bonp_Fac_listTable.FieldValues['PrixVTTC'] * Bonp_Fac_listTable.FieldValues['qut_p']) * (Bonp_Fac_listTable.FieldValues['cond_p']) ) ;
+
+
+    Bonp_Fac_listTable.FieldValues['MontantTVA']:=
+ ((Bonp_Fac_listTable.FieldValues['MontantTTC']) - (Bonp_Fac_listTable.FieldValues['MontantHT'])) ;
+
+     Bonp_Fac_listTable.FieldValues['MontantAHT']:=
+ ((Bonp_Fac_listTable.FieldValues['prixht_p'] * Bonp_Fac_listTable.FieldValues['qut_p']) * (Bonp_Fac_listTable.FieldValues['cond_p']) ) ;
+
+   if  Bonp_Fac_listTable.FieldValues['prixvd_p'] <> 0 then
+ begin
+ if  Bonp_Fac_listTable.FieldValues['MontantAHT'] <> 0 then begin
+     Bonp_Fac_listTable.FieldValues['Marge']:=
+((((Bonp_Fac_listTable.FieldValues['MontantHT']) - (Bonp_Fac_listTable.FieldValues['MontantAHT'])) / (Bonp_Fac_listTable.FieldValues['MontantAHT']) ) * 100) ;
+ end else
+     begin
+        Bonp_Fac_listTable.FieldValues['Marge']:= 100;
+     end;
+ end;
+
+    Bonp_Fac_listTable.FieldValues['MargeM']:=
+ ((Bonp_Fac_listTable.FieldValues['MontantHT']) - (Bonp_Fac_listTable.FieldValues['MontantAHT'])) ;
 end;
 
 procedure TMainForm.BLMainFMmnClick(Sender: TObject);
@@ -1912,6 +2098,16 @@ begin
 
   Bona_FacTableCredit.FieldValues['MontantRes']:=
 ((Bona_FacTableCredit.FieldValues['montttc_bafac']) - (Bona_FacTableCredit.FieldValues['montver_bafac'])) ;
+end;
+
+procedure TMainForm.F6Click(Sender: TObject);
+begin
+if Not Assigned(BonFacPF) then
+
+     BonFacPF:= TBonFacPF.Create(Application) else
+                                        begin
+                                          BonFacPF.Show
+                                        end;
 end;
 
 procedure TMainForm.FactureAMainFMnmClick(Sender: TObject);

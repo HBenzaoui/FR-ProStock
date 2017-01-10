@@ -382,7 +382,6 @@ object DataModuleF: TDataModuleF
     Top = 22
   end
   object UsersTable: TFDQuery
-    Active = True
     FilterOptions = [foCaseInsensitive]
     IndexFieldNames = 'code_ur'
     Connection = PSDBConfigConnection
@@ -390,6 +389,96 @@ object DataModuleF: TDataModuleF
       'SELECT * FROM users')
     Left = 80
     Top = 91
+    object UsersTablecode_ur: TIntegerField
+      FieldName = 'code_ur'
+      Origin = 'code_ur'
+    end
+    object UsersTablenom_ur: TWideStringField
+      FieldName = 'nom_ur'
+      Origin = 'nom_ur'
+      Size = 40
+    end
+    object UsersTablepassword_ur: TWideStringField
+      FieldName = 'password_ur'
+      Origin = 'password_ur'
+      Size = 32
+    end
+    object UsersTablebl_ur: TBooleanField
+      FieldName = 'bl_ur'
+      Origin = 'bl_ur'
+    end
+    object UsersTablefcv_ur: TBooleanField
+      FieldName = 'fcv_ur'
+      Origin = 'fcv_ur'
+    end
+    object UsersTablergc_ur: TBooleanField
+      FieldName = 'rgc_ur'
+      Origin = 'rgc_ur'
+    end
+    object UsersTablebr_ur: TBooleanField
+      FieldName = 'br_ur'
+      Origin = 'br_ur'
+    end
+    object UsersTablefca_ur: TBooleanField
+      FieldName = 'fca_ur'
+      Origin = 'fca_ur'
+    end
+    object UsersTablergf_ur: TBooleanField
+      FieldName = 'rgf_ur'
+      Origin = 'rgf_ur'
+    end
+    object UsersTablecaisse_ur: TBooleanField
+      FieldName = 'caisse_ur'
+      Origin = 'caisse_ur'
+    end
+    object UsersTablebank_ur: TBooleanField
+      FieldName = 'bank_ur'
+      Origin = 'bank_ur'
+    end
+    object UsersTableclient_ur: TBooleanField
+      FieldName = 'client_ur'
+      Origin = 'client_ur'
+    end
+    object UsersTablefour_ur: TBooleanField
+      FieldName = 'four_ur'
+      Origin = 'four_ur'
+    end
+    object UsersTabletype_ur: TSmallintField
+      FieldName = 'type_ur'
+      Origin = 'type_ur'
+    end
+    object UsersTablectr_ur: TBooleanField
+      FieldName = 'ctr_ur'
+      Origin = 'ctr_ur'
+    end
+    object UsersTableproduit_ur: TBooleanField
+      FieldName = 'produit_ur'
+      Origin = 'produit_ur'
+    end
+    object UsersTablefamp_ur: TBooleanField
+      FieldName = 'famp_ur'
+      Origin = 'famp_ur'
+    end
+    object UsersTablesfamp_ur: TBooleanField
+      FieldName = 'sfamp_ur'
+      Origin = 'sfamp_ur'
+    end
+    object UsersTablemdpai_ur: TBooleanField
+      FieldName = 'mdpai_ur'
+      Origin = 'mdpai_ur'
+    end
+    object UsersTablecmpt_ur: TBooleanField
+      FieldName = 'cmpt_ur'
+      Origin = 'cmpt_ur'
+    end
+    object UsersTableunit_ur: TBooleanField
+      FieldName = 'unit_ur'
+      Origin = 'unit_ur'
+    end
+    object UsersTablelocal_ur: TBooleanField
+      FieldName = 'local_ur'
+      Origin = 'local_ur'
+    end
   end
   object CreatAndaddAdmin: TFDScript
     SQLScripts = <

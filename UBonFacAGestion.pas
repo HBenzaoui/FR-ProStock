@@ -2760,10 +2760,10 @@ procedure TBonFacAGestionF.GettingData;
 
  var
   MoneyWordRX,NumRX,DateRX,NameRX,AdrRX,VilleRX,WilayaRX,MPRX,NCHeqRX,
-  TauxTVA17,TauxTVA7,MontantTVA17,MontantTVA7,RC,NArt,NIF,NIS : TfrxMemoView;
+  TauxTVA17,TauxTVA7,TauxTVA19,MontantTVA17,MontantTVA7,MontantTVA19,RC,NArt,NIF,NIS : TfrxMemoView;
 
   str1 : string;
-  Taux17,Taux7,Montant17,Montant7,RemisePerctageBonFacA : Currency;
+  Taux17,Taux7,Taux19,Montant17,Montant7,Montant19,RemisePerctageBonFacA : Currency;
 
 begin
   str1:= MontantEnToutesLettres(StrToFloat(StringReplace(BonFacATotalTTCLbl.Caption, #32, '', [rfReplaceAll])));
@@ -2894,6 +2894,44 @@ begin
                  end;
 
                  MontantTVA7.Visible:=True;
+            end;
+        end;
+
+        begin
+           MainForm.Bona_fac_listTable.Active:=false;
+           MainForm.Bona_fac_listTable.SQL.Clear;
+           MainForm.Bona_fac_listTable.SQL.Text:='Select * FROM bona_fac_list WHERE tva_p = 19' ;
+           MainForm.Bona_fac_listTable.Active:=True;
+          if NOT (MainForm.Bona_fac_listTable.IsEmpty) then
+           begin
+
+            MainForm.Bona_fac_listTable.First;
+
+            while not MainForm.Bona_fac_listTable.Eof do
+            begin
+              Montant19:= Montant19 + MainForm.Bona_fac_listTable.FieldValues['MontantTVA'];
+              MainForm.Bona_fac_listTable.Next;
+            end;
+             TauxTVA19:= BonFacAPListfrxRprt.FindObject('TauxTVA19') as TfrxMemoView;
+             TauxTVA19.Text:=  '19 %';
+             TauxTVA19.Visible:=True;
+
+             MontantTVA19:= BonFacAPListfrxRprt.FindObject('MontantTVA19') as TfrxMemoView;
+
+            if RemisePerctageBonFacAGEdt.Text <> '' then
+            begin
+            RemisePerctageBonFacA:=StrToFloat(StringReplace(RemisePerctageBonFacAGEdt.Text, #32, '', [rfReplaceAll]));
+            end;
+
+             if (RemisePerctageBonFacAGEdt.Text = '') OR (RemisePerctageBonFacA = 0) then
+             begin
+             MontantTVA19.Text:= floatToStrF(Montant19,ffNumber,14,2);
+             end else
+                 begin
+                   MontantTVA19.Text:=   floatToStrF((Montant19 - (Montant19*RemisePerctageBonFacA)/100) ,ffNumber,14,2);
+                 end;
+
+                 MontantTVA19.Visible:=True;
             end;
         end;
              MainForm.Bona_fac_listTable.Active:=false;

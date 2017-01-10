@@ -1,7 +1,7 @@
-object BonFacAGestionF: TBonFacAGestionF
+object BonFacPGestionF: TBonFacPGestionF
   Left = 0
   Top = 0
-  Caption = 'Facture D'#39'Achat'
+  Caption = 'Facture Proforma'
   ClientHeight = 702
   ClientWidth = 1089
   Color = clBtnFace
@@ -55,9 +55,9 @@ object BonFacAGestionF: TBonFacAGestionF
       Width = 340
       Height = 187
       Brush.Color = 15722984
-      Pen.Color = 1752319
+      Pen.Color = 12568683
     end
-    object EditBAFacBonFacAGBtn: TAdvToolButton
+    object EditBVFacBonFacVGBtn: TAdvToolButton
       Left = 626
       Top = 18
       Width = 100
@@ -86,11 +86,11 @@ object BonFacAGestionF: TBonFacAGestionF
       Shaded = False
       ShowHint = True
       Spacing = -1
-      OnClick = EditBAFacBonFacAGBtnClick
+      OnClick = EditBVFacBonFacVGBtnClick
       Version = '1.6.1.2'
       TMSStyle = 0
     end
-    object AddBAFacBonFacAGBtn: TAdvToolButton
+    object AddBVFacBonFacVGBtn: TAdvToolButton
       Left = 520
       Top = 18
       Width = 100
@@ -119,11 +119,11 @@ object BonFacAGestionF: TBonFacAGestionF
       Shaded = False
       ShowHint = True
       Spacing = -1
-      OnClick = AddBAFacBonFacAGBtnClick
+      OnClick = AddBVFacBonFacVGBtnClick
       Version = '1.6.1.2'
       TMSStyle = 0
     end
-    object Label3: TLabel
+    object Label4: TLabel
       Left = 9
       Top = 268
       Width = 96
@@ -179,7 +179,7 @@ object BonFacAGestionF: TBonFacAGestionF
       Images = MainForm.PanelIcons24
       ImageIndex = 9
     end
-    object Label4: TLabel
+    object Label5: TLabel
       Left = 16
       Top = 63
       Width = 35
@@ -195,12 +195,12 @@ object BonFacAGestionF: TBonFacAGestionF
       ParentFont = False
       StyleElements = []
     end
-    object Label5: TLabel
-      Left = 15
+    object Label6: TLabel
+      Left = 11
       Top = 23
-      Width = 140
+      Width = 153
       Height = 20
-      Caption = 'Facture d'#39'Achat N'#176
+      Caption = 'Facture Proforma N'#176
       Color = 15722984
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 4207405
@@ -211,13 +211,12 @@ object BonFacAGestionF: TBonFacAGestionF
       ParentFont = False
       StyleElements = []
     end
-    object NumBonFacAGEdt: TLabel
-      Left = 159
+    object NumBonFacVGEdt: TLabel
+      Left = 166
       Top = 22
-      Width = 188
+      Width = 181
       Height = 22
       AutoSize = False
-      Caption = 'FA2016/00001'
       Color = 15722984
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 10379008
@@ -228,7 +227,7 @@ object BonFacAGestionF: TBonFacAGestionF
       ParentFont = False
       StyleElements = []
     end
-    object AddFourBonFacAGBtn: TAdvToolButton
+    object AddClientBonFacVGBtn: TAdvToolButton
       Left = 875
       Top = 85
       Width = 26
@@ -256,16 +255,16 @@ object BonFacAGestionF: TBonFacAGestionF
       Shaded = False
       ShowHint = True
       Spacing = -1
-      OnClick = AddFourBonFacAGBtnClick
+      OnClick = AddClientBonFacVGBtnClick
       Version = '1.6.1.2'
       TMSStyle = 0
     end
-    object Label6: TLabel
-      Left = 371
+    object Label8: TLabel
+      Left = 414
       Top = 87
-      Width = 86
+      Width = 43
       Height = 18
-      Caption = 'Fournisseur:'
+      Caption = 'Client:'
       Color = 4207405
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 4207405
@@ -276,7 +275,7 @@ object BonFacAGestionF: TBonFacAGestionF
       ParentFont = False
       StyleElements = []
     end
-    object ValiderBAFacBonFacAGBtn: TAdvToolButton
+    object ValiderBVFacBonFacVGBtn: TAdvToolButton
       Left = 732
       Top = 18
       Width = 100
@@ -305,7 +304,7 @@ object BonFacAGestionF: TBonFacAGestionF
       Shaded = False
       ShowHint = True
       Spacing = -1
-      OnClick = ValiderBAFacBonFacAGBtnClick
+      OnClick = ValiderBVFacBonFacVGBtnClick
       Version = '1.6.1.2'
       TMSStyle = 0
     end
@@ -323,9 +322,10 @@ object BonFacAGestionF: TBonFacAGestionF
       Font.Style = []
       ParentColor = False
       ParentFont = False
+      Visible = False
       StyleElements = []
     end
-    object AddModePaieBonFacAGBtn: TAdvToolButton
+    object AddModePaieBonFacVGBtn: TAdvToolButton
       Left = 618
       Top = 128
       Width = 26
@@ -353,11 +353,12 @@ object BonFacAGestionF: TBonFacAGestionF
       Shaded = False
       ShowHint = True
       Spacing = -1
-      OnClick = AddModePaieBonFacAGBtnClick
+      Visible = False
+      OnClick = AddModePaieBonFacVGBtnClick
       Version = '1.6.1.2'
       TMSStyle = 0
     end
-    object Label8: TLabel
+    object Label16: TLabel
       Left = 657
       Top = 132
       Width = 57
@@ -371,9 +372,10 @@ object BonFacAGestionF: TBonFacAGestionF
       Font.Style = []
       ParentColor = False
       ParentFont = False
+      Visible = False
       StyleElements = []
     end
-    object AddCompteBonFacAGBtn: TAdvToolButton
+    object AddCompteBonFacVGBtn: TAdvToolButton
       Left = 875
       Top = 128
       Width = 26
@@ -401,11 +403,12 @@ object BonFacAGestionF: TBonFacAGestionF
       Shaded = False
       ShowHint = True
       Spacing = -1
-      OnClick = AddCompteBonFacAGBtnClick
+      Visible = False
+      OnClick = AddCompteBonFacVGBtnClick
       Version = '1.6.1.2'
       TMSStyle = 0
     end
-    object ListAddProduitBonFacAGBtn: TAdvToolButton
+    object ListAddProduitBonFacVGBtn: TAdvToolButton
       Left = 539
       Top = 261
       Width = 71
@@ -434,12 +437,12 @@ object BonFacAGestionF: TBonFacAGestionF
       Shaded = False
       ShowHint = True
       Spacing = -1
-      OnClick = ListAddProduitBonFacAGBtnClick
+      OnClick = ListAddProduitBonFacVGBtnClick
       Version = '1.6.1.2'
       ExplicitTop = 229
       TMSStyle = 0
     end
-    object DeleteProduitBonFacAGBtn: TAdvToolButton
+    object DeleteProduitBonFacVGBtn: TAdvToolButton
       Left = 724
       Top = 263
       Width = 26
@@ -469,12 +472,12 @@ object BonFacAGestionF: TBonFacAGestionF
       ShowHint = True
       Spacing = -1
       Visible = False
-      OnClick = DeleteProduitBonFacAGBtnClick
+      OnClick = DeleteProduitBonFacVGBtnClick
       Version = '1.6.1.2'
       ExplicitTop = 231
       TMSStyle = 0
     end
-    object NewAddProduitBonFacAGBtn: TAdvToolButton
+    object NewAddProduitBonFacVGBtn: TAdvToolButton
       Left = 617
       Top = 261
       Width = 100
@@ -503,19 +506,19 @@ object BonFacAGestionF: TBonFacAGestionF
       Shaded = False
       ShowHint = True
       Spacing = -1
-      OnClick = NewAddProduitBonFacAGBtnClick
+      OnClick = NewAddProduitBonFacVGBtnClick
       Version = '1.6.1.2'
       ExplicitTop = 229
       TMSStyle = 0
     end
-    object RequiredFourGlbl: TLabel
+    object RequiredClientGlbl: TLabel
       Left = 463
-      Top = 66
-      Width = 409
+      Top = 67
+      Width = 411
       Height = 30
       Alignment = taCenter
       AutoSize = False
-      Caption = 'S'#39'il vous pla'#238't entrer le nom de le Fournisseur'
+      Caption = 'S'#39'il vous pla'#238't entrer le nom de le Client'
       Color = clBtnFace
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 4666873
@@ -528,7 +531,7 @@ object BonFacAGestionF: TBonFacAGestionF
       WordWrap = True
       StyleElements = [seClient, seBorder]
     end
-    object EnterAddProduitBonFacAGBtn: TAdvToolButton
+    object EnterAddProduitBonFacVGBtn: TAdvToolButton
       Left = 499
       Top = 261
       Width = 34
@@ -556,12 +559,12 @@ object BonFacAGestionF: TBonFacAGestionF
       Shaded = False
       ShowHint = True
       Spacing = -1
-      OnClick = EnterAddProduitBonFacAGBtnClick
+      OnClick = EnterAddProduitBonFacVGBtnClick
       Version = '1.6.1.2'
       ExplicitTop = 229
       TMSStyle = 0
     end
-    object ClearProduitBonFacAGBtn: TAdvToolButton
+    object ClearProduitBonFacVGBtn: TAdvToolButton
       Left = 756
       Top = 263
       Width = 26
@@ -591,12 +594,12 @@ object BonFacAGestionF: TBonFacAGestionF
       ShowHint = True
       Spacing = -1
       Visible = False
-      OnClick = ClearProduitBonFacAGBtnClick
+      OnClick = ClearProduitBonFacVGBtnClick
       Version = '1.6.1.2'
       ExplicitTop = 231
       TMSStyle = 0
     end
-    object ValiderBAFacBonFacAGImg: TsImage
+    object ValiderBVFacBonFacVGImg: TsImage
       Left = 966
       Top = 230
       Width = 69
@@ -618,18 +621,18 @@ object BonFacAGestionF: TBonFacAGestionF
       Height = 148
       Anchors = [akTop, akRight]
       Brush.Color = 4207405
-      Pen.Color = 1752319
+      Pen.Color = 12568683
     end
-    object BonFATotalTTCNewLbl: TLabel
+    object BonFVTotalTTCNewLbl: TLabel
       Left = 304
-      Top = 54
+      Top = 51
       Width = 6
       Height = 13
       Caption = '0'
       Visible = False
     end
-    object BonFATotalHTNewLbl: TLabel
-      Left = 304
+    object BonFVTotalHTNewLbl: TLabel
+      Left = 305
       Top = 75
       Width = 6
       Height = 13
@@ -644,7 +647,7 @@ object BonFacAGestionF: TBonFacAGestionF
       Caption = '0'
       Visible = False
     end
-    object Label9: TLabel
+    object Label19: TLabel
       Left = 380
       Top = 177
       Width = 77
@@ -658,9 +661,10 @@ object BonFacAGestionF: TBonFacAGestionF
       Font.Style = []
       ParentColor = False
       ParentFont = False
+      Visible = False
       StyleElements = []
     end
-    object ObserBonFacAGLbl: TLabel
+    object ObserBonFacVGLbl: TLabel
       Left = 15
       Top = 99
       Width = 102
@@ -676,7 +680,7 @@ object BonFacAGestionF: TBonFacAGestionF
       ParentFont = False
       StyleElements = []
     end
-    object BonFARemiseHTNewLbl: TLabel
+    object BonFVRemiseHTNewLbl: TLabel
       Left = 225
       Top = 90
       Width = 6
@@ -684,7 +688,7 @@ object BonFacAGestionF: TBonFacAGestionF
       Caption = '0'
       Visible = False
     end
-    object ValiderBAFacBonFacAGLbl: TLabel
+    object ValiderBVFacBonFacVGLbl: TLabel
       Left = 903
       Top = 213
       Width = 186
@@ -719,9 +723,10 @@ object BonFacAGestionF: TBonFacAGestionF
       Font.Style = [fsBold]
       ParentColor = False
       ParentFont = False
+      Visible = False
       StyleElements = [seClient, seBorder]
     end
-    object Label21: TLabel
+    object Label3: TLabel
       Left = 872
       Top = 90
       Width = 6
@@ -737,29 +742,31 @@ object BonFacAGestionF: TBonFacAGestionF
       ParentFont = False
       StyleElements = [seClient, seBorder]
     end
-    object sSpeedButton4: TsSpeedButton
-      Left = 465
-      Top = 18
-      Width = 30
-      Height = 30
-      ParentShowHint = False
-      ShowHint = True
-      OnClick = sSpeedButton4Click
-      SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
-      ImageIndex = 3
+    object BonFacVTotalMargeLbl: TLabel
+      Left = 658
+      Top = 224
+      Width = 160
+      Height = 20
+      Caption = 'BonFacVTotalMargeLbl'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 4666873
+      Font.Height = 20
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      Visible = False
     end
-    object sSpeedButton5: TsSpeedButton
-      Left = 431
+    object sSpeedButton7: TsSpeedButton
+      Left = 363
       Top = 18
       Width = 30
       Height = 30
       ParentShowHint = False
       ShowHint = True
-      OnClick = sSpeedButton5Click
+      OnClick = sSpeedButton7Click
       SkinData.SkinSection = 'SPEEDBUTTON'
       Images = MainForm.PanelIcons24
-      ImageIndex = 2
+      ImageIndex = 0
       ShowCaption = False
     end
     object sSpeedButton6: TsSpeedButton
@@ -774,18 +781,30 @@ object BonFacAGestionF: TBonFacAGestionF
       Images = MainForm.PanelIcons24
       ImageIndex = 1
     end
-    object sSpeedButton7: TsSpeedButton
-      Left = 363
+    object sSpeedButton5: TsSpeedButton
+      Left = 431
       Top = 18
       Width = 30
       Height = 30
       ParentShowHint = False
       ShowHint = True
-      OnClick = sSpeedButton7Click
+      OnClick = sSpeedButton5Click
       SkinData.SkinSection = 'SPEEDBUTTON'
       Images = MainForm.PanelIcons24
-      ImageIndex = 0
+      ImageIndex = 2
       ShowCaption = False
+    end
+    object sSpeedButton4: TsSpeedButton
+      Left = 465
+      Top = 18
+      Width = 30
+      Height = 30
+      ParentShowHint = False
+      ShowHint = True
+      OnClick = sSpeedButton4Click
+      SkinData.SkinSection = 'SPEEDBUTTON'
+      Images = MainForm.PanelIcons24
+      ImageIndex = 3
     end
     object ModepPaiGErrorP: TPanel
       Left = 462
@@ -804,7 +823,7 @@ object BonFacAGestionF: TBonFacAGestionF
       Visible = False
       StyleElements = []
     end
-    object NameFourGErrorP: TPanel
+    object NameClientGErrorP: TPanel
       Left = 461
       Top = 81
       Width = 413
@@ -828,7 +847,7 @@ object BonFacAGestionF: TBonFacAGestionF
       Height = 2
       Anchors = [akLeft, akTop, akRight]
       BevelOuter = bvNone
-      Color = 1752319
+      Color = 12568683
       ParentBackground = False
       TabOrder = 2
       StyleElements = []
@@ -843,7 +862,7 @@ object BonFacAGestionF: TBonFacAGestionF
       BevelEdges = []
       BevelOuter = bvNone
       BiDiMode = bdLeftToRight
-      Color = 1752319
+      Color = 12568683
       Ctl3D = True
       DoubleBuffered = False
       Font.Charset = DEFAULT_CHARSET
@@ -871,7 +890,7 @@ object BonFacAGestionF: TBonFacAGestionF
       BevelEdges = []
       BevelOuter = bvNone
       BiDiMode = bdLeftToRight
-      Color = 1752319
+      Color = 12568683
       Ctl3D = True
       DoubleBuffered = False
       Font.Charset = DEFAULT_CHARSET
@@ -898,7 +917,7 @@ object BonFacAGestionF: TBonFacAGestionF
       BevelEdges = []
       BevelOuter = bvNone
       BiDiMode = bdLeftToRight
-      Color = 1752319
+      Color = 12568683
       Ctl3D = True
       DoubleBuffered = False
       Font.Charset = DEFAULT_CHARSET
@@ -925,7 +944,7 @@ object BonFacAGestionF: TBonFacAGestionF
       BevelEdges = []
       BevelOuter = bvNone
       BiDiMode = bdLeftToRight
-      Color = 1752319
+      Color = 12568683
       Ctl3D = True
       DoubleBuffered = False
       Font.Charset = DEFAULT_CHARSET
@@ -943,13 +962,13 @@ object BonFacAGestionF: TBonFacAGestionF
       TabOrder = 6
       StyleElements = []
     end
-    object DateBonFacAGD: TDateTimePicker
+    object DateBonFacVGD: TDateTimePicker
       Left = 73
       Top = 60
       Width = 124
       Height = 27
-      Date = 42515.000000000000000000
-      Time = 42515.000000000000000000
+      Date = 42581.592857268520000000
+      Time = 42581.592857268520000000
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 4207405
       Font.Height = 19
@@ -958,7 +977,7 @@ object BonFacAGestionF: TBonFacAGestionF
       ParentFont = False
       TabOrder = 7
     end
-    object FourBonFacAGCbx: TComboBox
+    object ClientBonFacVGCbx: TComboBox
       Left = 463
       Top = 83
       Width = 409
@@ -973,12 +992,12 @@ object BonFacAGestionF: TBonFacAGestionF
       ParentFont = False
       Sorted = True
       TabOrder = 0
-      OnChange = FourBonFacAGCbxChange
-      OnClick = FourBonFacAGCbxExit
-      OnDropDown = FourBonFacAGCbxEnter
-      OnEnter = FourBonFacAGCbxEnter
-      OnExit = FourBonFacAGCbxExit
-      OnKeyPress = FourBonFacAGCbxKeyPress
+      OnChange = ClientBonFacVGCbxChange
+      OnClick = ClientBonFacVGCbxExit
+      OnDropDown = ClientBonFacVGCbxEnter
+      OnEnter = ClientBonFacVGCbxEnter
+      OnExit = ClientBonFacVGCbxExit
+      OnKeyPress = ClientBonFacVGCbxKeyPress
     end
     object Panel12: TPanel
       Left = 0
@@ -987,7 +1006,7 @@ object BonFacAGestionF: TBonFacAGestionF
       Height = 2
       Anchors = [akLeft, akTop, akRight]
       BevelOuter = bvNone
-      Color = 1752319
+      Color = 12568683
       ParentBackground = False
       TabOrder = 8
       StyleElements = []
@@ -998,7 +1017,7 @@ object BonFacAGestionF: TBonFacAGestionF
       Width = 115
       Height = 17
       Anchors = [akLeft, akBottom]
-      Caption = 'par D'#233'signation'
+      Caption = 'Par D'#233'signation'
       Checked = True
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
@@ -1016,7 +1035,7 @@ object BonFacAGestionF: TBonFacAGestionF
       Width = 120
       Height = 17
       Anchors = [akLeft, akBottom]
-      Caption = 'par Code '#226' Barre'
+      Caption = 'Par Code '#226' Barre'
       Color = 15722984
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
@@ -1046,7 +1065,7 @@ object BonFacAGestionF: TBonFacAGestionF
       Width = 106
       Height = 17
       Anchors = [akLeft, akBottom]
-      Caption = 'par R'#233'f'#233'rence'
+      Caption = 'Par R'#233'f'#233'rence'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
       Font.Height = 16
@@ -1065,7 +1084,7 @@ object BonFacAGestionF: TBonFacAGestionF
       BevelEdges = []
       BevelOuter = bvNone
       BiDiMode = bdLeftToRight
-      Color = 1752319
+      Color = 12568683
       Ctl3D = True
       DoubleBuffered = False
       Font.Charset = DEFAULT_CHARSET
@@ -1083,7 +1102,7 @@ object BonFacAGestionF: TBonFacAGestionF
       TabOrder = 13
       StyleElements = []
     end
-    object ModePaieBonFacAGCbx: TComboBox
+    object ModePaieBonFacVGCbx: TComboBox
       Left = 463
       Top = 126
       Width = 152
@@ -1095,18 +1114,19 @@ object BonFacAGestionF: TBonFacAGestionF
       Font.Style = []
       ParentFont = False
       TabOrder = 14
-      OnChange = ModePaieBonFacAGCbxChange
-      OnClick = ModePaieBonFacAGCbxClick
-      OnDropDown = ModePaieBonFacAGCbxDropDown
-      OnEnter = ModePaieBonFacAGCbxClick
-      OnExit = ModePaieBonFacAGCbxClick
-      OnSelect = ModePaieBonFacAGCbxClick
+      Visible = False
+      OnChange = ModePaieBonFacVGCbxChange
+      OnClick = ModePaieBonFacVGCbxClick
+      OnDropDown = ModePaieBonFacVGCbxDropDown
+      OnEnter = ModePaieBonFacVGCbxClick
+      OnExit = ModePaieBonFacVGCbxClick
+      OnSelect = ModePaieBonFacVGCbxClick
       Items.Strings = (
         'Esp'#232'ce'
         'ch'#232'que '
         '')
     end
-    object CompteBonFacAGCbx: TComboBox
+    object CompteBonFacVGCbx: TComboBox
       Left = 720
       Top = 126
       Width = 152
@@ -1118,12 +1138,13 @@ object BonFacAGestionF: TBonFacAGestionF
       Font.Style = []
       ParentFont = False
       TabOrder = 15
-      OnChange = CompteBonFacAGCbxChange
-      OnDropDown = CompteBonFacAGCbxEnter
-      OnEnter = CompteBonFacAGCbxEnter
+      Visible = False
+      OnChange = CompteBonFacVGCbxChange
+      OnDropDown = CompteBonFacVGCbxEnter
+      OnEnter = CompteBonFacVGCbxEnter
     end
     object Panel5: TPanel
-      Left = 903
+      Left = 902
       Top = 67
       Width = 186
       Height = 140
@@ -1136,7 +1157,7 @@ object BonFacAGestionF: TBonFacAGestionF
       DesignSize = (
         186
         140)
-      object BonFacAGFourOLDCredit: TLabel
+      object BonFacVGClientOLDCredit: TLabel
         AlignWithMargins = True
         Left = 7
         Top = 37
@@ -1161,7 +1182,7 @@ object BonFacAGestionF: TBonFacAGestionF
         Layout = tlCenter
         StyleElements = []
       end
-      object BonFacAGFourNEWCredit: TLabel
+      object BonFacVGClientNEWCredit: TLabel
         AlignWithMargins = True
         Left = 7
         Top = 112
@@ -1186,7 +1207,7 @@ object BonFacAGestionF: TBonFacAGestionF
         Layout = tlCenter
         StyleElements = []
       end
-      object Label16: TLabel
+      object Label18: TLabel
         Left = 6
         Top = 78
         Width = 90
@@ -1227,13 +1248,13 @@ object BonFacAGestionF: TBonFacAGestionF
         Height = 1
         Anchors = [akLeft, akTop, akRight]
         BevelOuter = bvLowered
-        Color = 1752319
+        Color = 12568683
         ParentBackground = False
         TabOrder = 0
         StyleElements = []
       end
     end
-    object NChequeBonFacAGCbx: TEdit
+    object NChequeBonFacVGCbx: TEdit
       Left = 463
       Top = 170
       Width = 409
@@ -1245,8 +1266,9 @@ object BonFacAGestionF: TBonFacAGestionF
       Font.Style = []
       ParentFont = False
       TabOrder = 18
+      Visible = False
     end
-    object ObserBonFacAGMem: TMemo
+    object ObserBonFacVGMem: TMemo
       Left = 24
       Top = 124
       Width = 307
@@ -1259,7 +1281,7 @@ object BonFacAGestionF: TBonFacAGestionF
       ParentFont = False
       TabOrder = 19
     end
-    object ProduitBonFacAGCbx: TcxComboBox
+    object ProduitBonFacVGCbx: TcxComboBox
       Left = 107
       Top = 261
       Anchors = [akLeft, akBottom]
@@ -1272,10 +1294,10 @@ object BonFacAGestionF: TBonFacAGestionF
       Style.Font.Style = []
       Style.IsFontAssigned = True
       TabOrder = 1
-      OnEnter = ProduitBonFacAGCbxEnter
-      OnExit = ProduitBonFacAGCbxExit
-      OnKeyDown = ProduitBonFacAGCbxKeyDown
-      OnKeyPress = ProduitBonFacAGCbxKeyPress
+      OnEnter = ProduitBonFacVGCbxEnter
+      OnExit = ProduitBonFacVGCbxExit
+      OnKeyDown = ProduitBonFacVGCbxKeyDown
+      OnKeyPress = ProduitBonFacVGCbxKeyPress
       Height = 30
       Width = 386
     end
@@ -1295,7 +1317,7 @@ object BonFacAGestionF: TBonFacAGestionF
     ColumnDefValues.ToolTips = True
     Ctl3D = True
     DataGrouping.Active = True
-    DataSource = BonFacAPListDataS
+    DataSource = BonFacVPListDataS
     DynProps = <>
     EditActions = [geaSelectAllEh]
     EvenRowColor = clWindow
@@ -1343,9 +1365,9 @@ object BonFacAGestionF: TBonFacAGestionF
     TitleParams.VertLines = True
     VertScrollBar.Width = 15
     OnCellClick = ProduitsListDBGridEhCellClick
-    OnDrawColumnCell = ProduitsListDBGridEhDrawColumnCell
     OnExit = ProduitsListDBGridEhExit
     OnKeyPress = ProduitsListDBGridEhKeyPress
+    OnMouseMove = ProduitsListDBGridEhMouseMove
     Columns = <
       item
         Alignment = taCenter
@@ -1409,6 +1431,7 @@ object BonFacAGestionF: TBonFacAGestionF
         Font.Style = []
         Footers = <>
         Layout = tlCenter
+        LimitTextToListValues = False
         MaxWidth = 100
         MinWidth = 100
         Title.Alignment = taCenter
@@ -1446,34 +1469,10 @@ object BonFacAGestionF: TBonFacAGestionF
         WordWrap = False
       end
       item
-        Alignment = taCenter
-        DisplayFormat = 'dd/mm/yyyy'
-        DynProps = <>
-        EditButtons = <>
-        FieldName = 'dateperiss_p'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = 4207405
-        Font.Height = 18
-        Font.Name = 'Helvetica LT Std'
-        Font.Style = []
-        Footers = <>
-        Layout = tlCenter
-        Title.Alignment = taCenter
-        Title.Caption = 'Date.Exp'
-        Title.Font.Charset = DEFAULT_CHARSET
-        Title.Font.Color = 4207405
-        Title.Font.Height = 19
-        Title.Font.Name = 'Helvetica LT Std'
-        Title.Font.Style = []
-        Title.Font.Quality = fqProof
-        Visible = False
-        Width = 120
-      end
-      item
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
-        FieldName = 'prixht_p'
+        FieldName = 'prixvd_p'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
         Font.Height = 18
@@ -1482,7 +1481,7 @@ object BonFacAGestionF: TBonFacAGestionF
         Footers = <>
         Layout = tlCenter
         Title.Alignment = taCenter
-        Title.Caption = 'Prix A HT'
+        Title.Caption = 'Prix V HT'
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = 4207405
         Title.Font.Height = 19
@@ -1643,10 +1642,10 @@ object BonFacAGestionF: TBonFacAGestionF
         WordWrap = False
       end
       item
-        DisplayFormat = '#,##0.00'
+        DisplayFormat = 'S'
         DynProps = <>
         EditButtons = <>
-        FieldName = 'prixvd_p'
+        FieldName = 'MargeM'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
         Font.Height = 18
@@ -1654,8 +1653,9 @@ object BonFacAGestionF: TBonFacAGestionF
         Font.Style = []
         Footers = <>
         Layout = tlCenter
+        TextEditing = False
         Title.Alignment = taCenter
-        Title.Caption = 'Prix V HT D'#233'taillant'
+        Title.Caption = 'Marge'
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = 4207405
         Title.Font.Height = 19
@@ -1669,7 +1669,7 @@ object BonFacAGestionF: TBonFacAGestionF
         DisplayFormat = '0.00 %'
         DynProps = <>
         EditButtons = <>
-        FieldName = 'MargeD'
+        FieldName = 'Marge'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
         Font.Height = 18
@@ -1679,202 +1679,13 @@ object BonFacAGestionF: TBonFacAGestionF
         Layout = tlCenter
         TextEditing = False
         Title.Alignment = taCenter
-        Title.Caption = 'Marge D'#233'taillant %'
+        Title.Caption = 'Marge %'
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = 4207405
         Title.Font.Height = 19
         Title.Font.Name = 'Helvetica LT Std'
         Title.Font.Style = []
         Title.Font.Quality = fqProof
-        Width = 170
-        WordWrap = False
-      end
-      item
-        DisplayFormat = '#,##0.00'
-        DynProps = <>
-        EditButtons = <>
-        FieldName = 'prixvr_p'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = 4207405
-        Font.Height = 18
-        Font.Name = 'Helvetica LT Std'
-        Font.Style = []
-        Footers = <>
-        Layout = tlCenter
-        Title.Alignment = taCenter
-        Title.Caption = 'Prix V HT Revendeur'
-        Title.Font.Charset = DEFAULT_CHARSET
-        Title.Font.Color = 4207405
-        Title.Font.Height = 19
-        Title.Font.Name = 'Helvetica LT Std'
-        Title.Font.Style = []
-        Title.Font.Quality = fqProof
-        Width = 170
-        WordWrap = False
-      end
-      item
-        DisplayFormat = '0.00 %'
-        DynProps = <>
-        EditButtons = <>
-        FieldName = 'MargeR'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = 4207405
-        Font.Height = 18
-        Font.Name = 'Helvetica LT Std'
-        Font.Style = []
-        Footers = <>
-        Layout = tlCenter
-        TextEditing = False
-        Title.Alignment = taCenter
-        Title.Caption = 'Marge Revendeur %'
-        Title.Font.Charset = DEFAULT_CHARSET
-        Title.Font.Color = 4207405
-        Title.Font.Height = 19
-        Title.Font.Name = 'Helvetica LT Std'
-        Title.Font.Style = []
-        Title.Font.Quality = fqProof
-        Width = 170
-        WordWrap = False
-      end
-      item
-        DisplayFormat = '#,##0.00'
-        DynProps = <>
-        EditButtons = <>
-        FieldName = 'prixvg_p'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = 4207405
-        Font.Height = 18
-        Font.Name = 'Helvetica LT Std'
-        Font.Style = []
-        Footers = <>
-        Layout = tlCenter
-        Title.Alignment = taCenter
-        Title.Caption = 'Prix V HT Gros'
-        Title.Font.Charset = DEFAULT_CHARSET
-        Title.Font.Color = 4207405
-        Title.Font.Height = 19
-        Title.Font.Name = 'Helvetica LT Std'
-        Title.Font.Style = []
-        Title.Font.Quality = fqProof
-        Width = 170
-        WordWrap = False
-      end
-      item
-        DisplayFormat = '0.00 %'
-        DynProps = <>
-        EditButtons = <>
-        FieldName = 'MargeG'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = 4207405
-        Font.Height = 18
-        Font.Name = 'Helvetica LT Std'
-        Font.Style = []
-        Footers = <>
-        Layout = tlCenter
-        TextEditing = False
-        Title.Alignment = taCenter
-        Title.Caption = 'Marge Gros %'
-        Title.Font.Charset = DEFAULT_CHARSET
-        Title.Font.Color = 4207405
-        Title.Font.Height = 19
-        Title.Font.Name = 'Helvetica LT Std'
-        Title.Font.Style = []
-        Title.Font.Quality = fqProof
-        Width = 170
-        WordWrap = False
-      end
-      item
-        DisplayFormat = '#,##0.00'
-        DynProps = <>
-        EditButtons = <>
-        FieldName = 'prixva_p'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = 4207405
-        Font.Height = 18
-        Font.Name = 'Helvetica LT Std'
-        Font.Style = []
-        Footers = <>
-        Layout = tlCenter
-        Title.Alignment = taCenter
-        Title.Caption = 'Prix V HT Autre 1'
-        Title.Font.Charset = DEFAULT_CHARSET
-        Title.Font.Color = 4207405
-        Title.Font.Height = 19
-        Title.Font.Name = 'Helvetica LT Std'
-        Title.Font.Style = []
-        Title.Font.Quality = fqProof
-        Width = 170
-        WordWrap = False
-      end
-      item
-        DisplayFormat = '0.00 %'
-        DynProps = <>
-        EditButtons = <>
-        FieldName = 'MargeA'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = 4207405
-        Font.Height = 18
-        Font.Name = 'Helvetica LT Std'
-        Font.Style = []
-        Footers = <>
-        Layout = tlCenter
-        TextEditing = False
-        Title.Alignment = taCenter
-        Title.Caption = 'Marge Autre 1 %'
-        Title.Font.Charset = DEFAULT_CHARSET
-        Title.Font.Color = 4207405
-        Title.Font.Height = 19
-        Title.Font.Name = 'Helvetica LT Std'
-        Title.Font.Style = []
-        Title.Font.Quality = fqProof
-        Width = 170
-        WordWrap = False
-      end
-      item
-        DisplayFormat = '#,##0.00'
-        DynProps = <>
-        EditButtons = <>
-        FieldName = 'prixva2_p'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = 4207405
-        Font.Height = 18
-        Font.Name = 'Helvetica LT Std'
-        Font.Style = []
-        Footers = <>
-        Layout = tlCenter
-        Title.Alignment = taCenter
-        Title.Caption = 'Prix V  HT Autre 2'
-        Title.Font.Charset = DEFAULT_CHARSET
-        Title.Font.Color = 4207405
-        Title.Font.Height = 19
-        Title.Font.Name = 'Helvetica LT Std'
-        Title.Font.Style = []
-        Title.Font.Quality = fqProof
-        Width = 170
-        WordWrap = False
-      end
-      item
-        DisplayFormat = '0.00 %'
-        DynProps = <>
-        EditButtons = <>
-        FieldName = 'MargeA2'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = 4207405
-        Font.Height = 18
-        Font.Name = 'Helvetica LT Std'
-        Font.Style = []
-        Footers = <>
-        Layout = tlCenter
-        TextEditing = False
-        Title.Alignment = taCenter
-        Title.Caption = 'Marge Autre 2 %'
-        Title.Font.Charset = DEFAULT_CHARSET
-        Title.Font.Color = 4207405
-        Title.Font.Height = 19
-        Title.Font.Name = 'Helvetica LT Std'
-        Title.Font.Style = []
-        Title.Font.Quality = fqProof
-        Width = 170
         WordWrap = False
       end>
     object RowDetailData: TRowDetailPanelControlEh
@@ -1901,7 +1712,7 @@ object BonFacAGestionF: TBonFacAGestionF
       Height = 149
       Anchors = [akLeft, akTop, akRight]
       Brush.Color = 4207405
-      Pen.Color = 1752319
+      Pen.Color = 12568683
     end
     object Shape3: TShape
       Left = 404
@@ -1909,7 +1720,7 @@ object BonFacAGestionF: TBonFacAGestionF
       Width = 199
       Height = 149
       Brush.Color = 4207405
-      Pen.Color = 1752319
+      Pen.Color = 12568683
     end
     object Shape2: TShape
       Left = 0
@@ -1917,7 +1728,7 @@ object BonFacAGestionF: TBonFacAGestionF
       Width = 205
       Height = 149
       Brush.Color = 4207405
-      Pen.Color = 1752319
+      Pen.Color = 12568683
     end
     object label13: TLabel
       Left = 612
@@ -1983,7 +1794,7 @@ object BonFacAGestionF: TBonFacAGestionF
       ParentFont = False
       StyleElements = []
     end
-    object BonFacATotalTVALbl: TLabel
+    object BonFacVTotalTVALbl: TLabel
       AlignWithMargins = True
       Left = 404
       Top = 41
@@ -2008,7 +1819,7 @@ object BonFacAGestionF: TBonFacAGestionF
       Layout = tlCenter
       StyleElements = []
     end
-    object BonFacARegleLbl: TLabel
+    object BonFacVRegleLbl: TLabel
       AlignWithMargins = True
       Left = 602
       Top = 41
@@ -2033,7 +1844,7 @@ object BonFacAGestionF: TBonFacAGestionF
       Layout = tlCenter
       StyleElements = []
     end
-    object BonFacAResteLbl: TLabel
+    object BonFacVResteLbl: TLabel
       AlignWithMargins = True
       Left = 602
       Top = 108
@@ -2058,7 +1869,7 @@ object BonFacAGestionF: TBonFacAGestionF
       Layout = tlCenter
       StyleElements = []
     end
-    object BonFacATotalHTLbl: TLabel
+    object BonFacVTotalHTLbl: TLabel
       AlignWithMargins = True
       Left = -3
       Top = 41
@@ -2083,7 +1894,7 @@ object BonFacAGestionF: TBonFacAGestionF
       Layout = tlCenter
       StyleElements = []
     end
-    object BonFacATotalTTCLbl: TLabel
+    object BonFacVTotalTTCLbl: TLabel
       AlignWithMargins = True
       Left = 404
       Top = 108
@@ -2124,7 +1935,7 @@ object BonFacAGestionF: TBonFacAGestionF
       ParentFont = False
       StyleElements = []
     end
-    object TimberBonFacAGlbl: TLabel
+    object TimberBonFacVGlbl: TLabel
       Left = 212
       Top = 83
       Width = 58
@@ -2141,7 +1952,7 @@ object BonFacAGestionF: TBonFacAGestionF
       Visible = False
       StyleElements = []
     end
-    object TimberPerctageBonFacAGLbl: TLabel
+    object TimberPerctageBonFacVGLbl: TLabel
       AlignWithMargins = True
       Left = 392
       Top = 85
@@ -2209,9 +2020,9 @@ object BonFacAGestionF: TBonFacAGestionF
     object Label15: TLabel
       Left = 12
       Top = 77
-      Width = 101
+      Width = 120
       Height = 99
-      Caption = 'Facture'#13#10'D'#39'Achat'#13#10
+      Caption = 'Facture '#13#10'Proforma'#13#10
       Color = 15722984
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
@@ -2222,7 +2033,7 @@ object BonFacAGestionF: TBonFacAGestionF
       ParentFont = False
       StyleElements = []
     end
-    object Label18: TLabel
+    object Label21: TLabel
       Left = 804
       Top = 9
       Width = 280
@@ -2241,7 +2052,7 @@ object BonFacAGestionF: TBonFacAGestionF
       ParentFont = False
       StyleElements = []
     end
-    object BonFacAGOLDStock: TLabel
+    object BonFacVGOLDStock: TLabel
       AlignWithMargins = True
       Left = 804
       Top = 37
@@ -2267,7 +2078,7 @@ object BonFacAGestionF: TBonFacAGestionF
       Layout = tlCenter
       StyleElements = []
     end
-    object Label19: TLabel
+    object Label22: TLabel
       Left = 804
       Top = 68
       Width = 280
@@ -2286,7 +2097,7 @@ object BonFacAGestionF: TBonFacAGestionF
       ParentFont = False
       StyleElements = []
     end
-    object BonFacAGNEWStock: TLabel
+    object BonFacVGNEWStock: TLabel
       AlignWithMargins = True
       Left = 804
       Top = 93
@@ -2355,20 +2166,19 @@ object BonFacAGestionF: TBonFacAGestionF
       Width = 803
       Height = 1
       BevelOuter = bvLowered
-      Color = 1752319
+      Color = 12568683
       DoubleBuffered = True
       ParentBackground = False
       ParentDoubleBuffered = False
       TabOrder = 0
       StyleElements = []
     end
-    object TimberPerctageBonFacAGEdt: TEdit
+    object TimberPerctageBonFacVGEdt: TEdit
       Left = 340
       Top = 81
       Width = 50
       Height = 26
       Alignment = taRightJustify
-      Enabled = False
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = 18
@@ -2380,7 +2190,7 @@ object BonFacAGestionF: TBonFacAGestionF
       Text = '01'
       Visible = False
     end
-    object TimberBonFacAGEdt: TEdit
+    object TimberBonFacVGEdt: TEdit
       Left = 276
       Top = 115
       Width = 114
@@ -2396,7 +2206,7 @@ object BonFacAGestionF: TBonFacAGestionF
       TabOrder = 2
       Visible = False
     end
-    object RemisePerctageBonFacAGEdt: TEdit
+    object RemisePerctageBonFacVGEdt: TEdit
       Left = 340
       Top = 7
       Width = 50
@@ -2411,12 +2221,12 @@ object BonFacAGestionF: TBonFacAGestionF
       MaxLength = 5
       ParentFont = False
       TabOrder = 3
-      OnChange = RemisePerctageBonFacAGEdtChange
-      OnClick = RemisePerctageBonFacAGEdtClick
-      OnEnter = RemisePerctageBonFacAGEdtEnter
-      OnKeyPress = RemisePerctageBonFacAGEdtKeyPress
+      OnChange = RemisePerctageBonFacVGEdtChange
+      OnClick = RemisePerctageBonFacVGEdtClick
+      OnEnter = RemisePerctageBonFacVGEdtEnter
+      OnKeyPress = RemisePerctageBonFacVGEdtKeyPress
     end
-    object RemiseBonFacAGEdt: TEdit
+    object RemiseBonFacVGEdt: TEdit
       Left = 276
       Top = 41
       Width = 114
@@ -2431,11 +2241,11 @@ object BonFacAGestionF: TBonFacAGestionF
       MaxLength = -1
       ParentFont = False
       TabOrder = 4
-      OnChange = RemiseBonFacAGEdtChange
-      OnClick = RemiseBonFacAGEdtClick
-      OnEnter = RemiseBonFacAGEdtEnter
-      OnExit = RemiseBonFacAGEdtExit
-      OnKeyPress = RemiseBonFacAGEdtKeyPress
+      OnChange = RemiseBonFacVGEdtChange
+      OnClick = RemiseBonFacVGEdtClick
+      OnEnter = RemiseBonFacVGEdtEnter
+      OnExit = RemiseBonFacVGEdtExit
+      OnKeyPress = RemiseBonFacVGEdtKeyPress
     end
     object Panel1: TPanel
       Left = 204
@@ -2443,14 +2253,14 @@ object BonFacAGestionF: TBonFacAGestionF
       Width = 599
       Height = 1
       BevelOuter = bvLowered
-      Color = 1752319
+      Color = 11544476
       DoubleBuffered = True
       ParentBackground = False
       ParentDoubleBuffered = False
       TabOrder = 5
       StyleElements = []
     end
-    object RemiseTypeBonFacAGCbx: TComboBox
+    object RemiseTypeBonFacVGCbx: TComboBox
       Left = 276
       Top = 8
       Width = 52
@@ -2467,17 +2277,17 @@ object BonFacAGestionF: TBonFacAGestionF
       TabOrder = 6
       Text = 'HT'
       StyleElements = [seClient, seBorder]
-      OnChange = RemiseTypeBonFacAGCbxChange
+      OnChange = RemiseTypeBonFacVGCbxChange
       Items.Strings = (
         'HT'
         'TTC')
     end
   end
-  object BonFacAPListDataS: TDataSource
-    DataSet = MainForm.Bona_fac_listTable
-    OnDataChange = BonFacAPListDataSDataChange
-    Left = 984
-    Top = 482
+  object BonFacVPListDataS: TDataSource
+    DataSet = MainForm.Bonp_fac_listTable
+    OnDataChange = BonFacVPListDataSDataChange
+    Left = 944
+    Top = 488
   end
   object Timer1: TTimer
     Enabled = False
@@ -2485,116 +2295,6 @@ object BonFacAGestionF: TBonFacAGestionF
     OnTimer = Timer1Timer
     Left = 864
     Top = 432
-  end
-  object frxBonFacAPListDB: TfrxDBDataset
-    UserName = 'frxBonFacAPListDB'
-    CloseDataSource = False
-    FieldAliases.Strings = (
-      'code_bafacl=code_bafacl'
-      'code_bafac=code_bafac'
-      'qut_p=qut_p'
-      'prixht_p=prixht_p'
-      'cond_p=cond_p'
-      'PrixVTTC=PrixVTTC'
-      'MontantHT=MontantHT'
-      'MontantTVA=MontantTVA'
-      'MontantTTC=MontantTTC'
-      'code_p=code_p'
-      'nomp=nomp'
-      'referp=referp'
-      'tvap=tvap'
-      'TVA=TVA'
-      'tva_p=tva_p')
-    DataSource = BonFacAPListDataS
-    BCDToCurrency = False
-    Left = 248
-    Top = 384
-  end
-  object frxBonRecDT: TfrxDBDataset
-    UserName = 'frxBonFacADB'
-    CloseDataSource = False
-    FieldAliases.Strings = (
-      'code_bafac=code_bafac'
-      'date_bafac=date_bafac'
-      'time_bafac=time_bafac'
-      'code_f=code_f'
-      'montht_bafac=montht_bafac'
-      'montver_bafac=montver_bafac'
-      'valider_bafac=valider_bafac'
-      'num_bafac=num_bafac'
-      'fourbafac=fourbafac'
-      'MontantTVA=MontantTVA'
-      'MontantRes=MontantRes'
-      'obser_bafac=obser_bafac'
-      'montttc_bafac=montttc_bafac'
-      'remise_bafac=remise_bafac'
-      'num_cheque_bafac=num_cheque_bafac'
-      'code_mdpai=code_mdpai'
-      'code_cmpt=code_cmpt'
-      'NEWTTC=NEWTTC'
-      'RemisePerc=RemisePerc'
-      'Compte=Compte'
-      'ModePaie=ModePaie'
-      'timber_bafac=timber_bafac'
-      'code_ur=code_ur'
-      'Agnet=Agnet'
-      'NeTHT=NeTHT'
-      'NetTTC=NetTTC')
-    DataSet = MainForm.Bona_facTable
-    BCDToCurrency = False
-    Left = 248
-    Top = 432
-  end
-  object frxFourDB: TfrxDBDataset
-    UserName = 'frxFourDB'
-    CloseDataSource = False
-    FieldAliases.Strings = (
-      'code_f=code_f'
-      'nom_f=nom_f'
-      'adr_f=adr_f'
-      'ville_f=ville_f'
-      'willaya_f=willaya_f'
-      'pays_f=pays_f'
-      'fix_f=fix_f'
-      'mob_f=mob_f'
-      'mob2_f=mob2_f'
-      'fax_f=fax_f'
-      'email_f=email_f'
-      'obser_f=obser_f'
-      'logo_f=logo_f'
-      'activ_f=activ_f'
-      'rc_f=rc_f'
-      'nif_f=nif_f'
-      'nart_f=nart_f'
-      'nis_f=nis_f'
-      'nbank_f=nbank_f'
-      'rib_f=rib_f'
-      'siteweb_f=siteweb_f'
-      'oldcredit_f=oldcredit_f'
-      'maxcredit_f=maxcredit_f')
-    DataSet = MainForm.FournisseurTable
-    BCDToCurrency = False
-    Left = 248
-    Top = 480
-  end
-  object frxXLSExport1: TfrxXLSExport
-    UseFileCache = True
-    ShowProgress = True
-    OverwritePrompt = True
-    DataOnly = False
-    ExportEMF = False
-    ExportPictures = False
-    OpenExcelAfterExport = True
-    Wysiwyg = False
-    AsText = False
-    Background = False
-    FastExport = True
-    PageBreaks = False
-    EmptyLines = False
-    SuppressPageHeadersFooters = False
-    GridLines = False
-    Left = 344
-    Top = 480
   end
   object frxPDFExport1: TfrxPDFExport
     UseFileCache = True
@@ -2622,7 +2322,117 @@ object BonFacAGestionF: TBonFacAGestionF
     Left = 408
     Top = 480
   end
-  object BonFacAPListfrxRprt: TfrxReport
+  object frxXLSExport1: TfrxXLSExport
+    UseFileCache = True
+    ShowProgress = True
+    OverwritePrompt = True
+    DataOnly = False
+    ExportEMF = False
+    ExportPictures = False
+    OpenExcelAfterExport = True
+    Wysiwyg = False
+    AsText = False
+    Background = False
+    FastExport = True
+    PageBreaks = False
+    EmptyLines = False
+    SuppressPageHeadersFooters = False
+    GridLines = False
+    Left = 344
+    Top = 480
+  end
+  object frxClientDB: TfrxDBDataset
+    UserName = 'frxClientDB'
+    CloseDataSource = False
+    FieldAliases.Strings = (
+      'nom_c=nom_c'
+      'adr_c=adr_c'
+      'ville_c=ville_c'
+      'mob_c=mob_c'
+      'fix_c=fix_c'
+      'email_c=email_c'
+      'willaya_c=willaya_c'
+      'fax_c=fax_c'
+      'activ_c=activ_c'
+      'mob2_c=mob2_c'
+      'rc_c=rc_c'
+      'nif_c=nif_c'
+      'nart_c=nart_c'
+      'nis_c=nis_c'
+      'obser_c=obser_c'
+      'nbank_c=nbank_c'
+      'rib_c=rib_c'
+      'activite_c=activite_c'
+      'siteweb_c=siteweb_c'
+      'oldcredit_c=oldcredit_c'
+      'maxcredit_c=maxcredit_c'
+      'code_c=code_c'
+      'tarification_c=tarification_c'
+      'credit_c=credit_c')
+    DataSet = MainForm.ClientTable
+    BCDToCurrency = False
+    Left = 248
+    Top = 480
+  end
+  object frxBonFacPDT: TfrxDBDataset
+    UserName = 'frxBonFacPDB'
+    CloseDataSource = False
+    FieldAliases.Strings = (
+      'code_bpfac=code_bpfac'
+      'date_bpfac=date_bpfac'
+      'time_bpfac=time_bpfac'
+      'code_c=code_c'
+      'montht_bpfac=montht_bpfac'
+      'montver_bpfac=montver_bpfac'
+      'valider_bpfac=valider_bpfac'
+      'num_bpfac=num_bpfac'
+      'clientbvfac=clientbvfac'
+      'MontantTVA=MontantTVA'
+      'MontantRes=MontantRes'
+      'obser_bpfac=obser_bpfac'
+      'montttc_bpfac=montttc_bpfac'
+      'remise_bpfac=remise_bpfac'
+      'RemisePerc=RemisePerc'
+      'NEWTTC=NEWTTC'
+      'timber_bpfac=timber_bpfac'
+      'Agent=Agent'
+      'NeTHT=NeTHT'
+      'NetTTC=NetTTC'
+      'marge_bpfac=marge_bpfac'
+      'code_ur=code_ur')
+    DataSet = MainForm.Bonp_facTable
+    BCDToCurrency = False
+    Left = 248
+    Top = 432
+  end
+  object frxBonFacPPListDB: TfrxDBDataset
+    UserName = 'frxBonFacPPListDB'
+    CloseDataSource = False
+    FieldAliases.Strings = (
+      'code_bpfacl=code_bpfacl'
+      'code_bpfac=code_bpfac'
+      'qut_p=qut_p'
+      'prixvd_p=prixvd_p'
+      'cond_p=cond_p'
+      'PrixVTTC=PrixVTTC'
+      'MontantHT=MontantHT'
+      'MontantTVA=MontantTVA'
+      'MontantTTC=MontantTTC'
+      'code_p=code_p'
+      'nomp=nomp'
+      'referp=referp'
+      'TVA=TVA'
+      'tva_p=tva_p'
+      'Marge=Marge'
+      'MontantAHT=MontantAHT'
+      'prixht_p=prixht_p'
+      'MargeM=MargeM')
+    DataSource = BonFacVPListDataS
+    BCDToCurrency = False
+    Left = 248
+    Top = 384
+  end
+  object BonFacPPListfrxRprt: TfrxReport
     Version = '5.4.6'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
@@ -2631,27 +2441,27 @@ object BonFacAGestionF: TBonFacAGestionF
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 42576.399521435200000000
-    ReportOptions.LastChange = 42745.971524456020000000
+    ReportOptions.LastChange = 42745.955390833300000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       ''
       'begin'
       ''
       'end.')
-    Left = 248
+    Left = 256
     Top = 328
     Datasets = <
       item
-        DataSet = frxBonRecDT
-        DataSetName = 'frxBonFacADB'
+        DataSet = frxBonFacPDT
+        DataSetName = 'frxBonFacPDB'
       end
       item
-        DataSet = frxBonFacAPListDB
-        DataSetName = 'frxBonFacAPListDB'
+        DataSet = frxBonFacPPListDB
+        DataSetName = 'frxBonFacPPListDB'
       end
       item
-        DataSet = frxFourDB
-        DataSetName = 'frxFourDB'
+        DataSet = frxClientDB
+        DataSetName = 'frxClientDB'
       end>
     Variables = <>
     Style = <
@@ -2721,7 +2531,7 @@ object BonFacAGestionF: TBonFacAGestionF
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
       VGuides.Strings = (
-        '404,40971')
+        '400,63018')
       object PageFooter1: TfrxPageFooter
         FillType = ftBrush
         Height = 21.057381430000000000
@@ -2754,16 +2564,15 @@ object BonFacAGestionF: TBonFacAGestionF
           Top = 0.779530000000000000
           Width = 302.362400000000000000
           Height = 18.897650000000000000
-          DataField = 'Agnet'
-          DataSet = frxBonRecDT
-          DataSetName = 'frxBonFacADB'
+          DataSet = frxBonFacPDT
+          DataSetName = 'frxBonFacPDB'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -9
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
           Memo.UTF8W = (
-            '[frxBonFacADB."Agnet"]')
+            '[frxBonFacPDB."Agent"]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -2795,9 +2604,9 @@ object BonFacAGestionF: TBonFacAGestionF
         Top = 18.897650000000000000
         Width = 718.110700000000000000
         object Memo3: TfrxMemoView
-          Left = 275.732530000000000000
+          Left = 272.157700000000000000
           Top = 294.425196850000000000
-          Width = 68.031503390000000000
+          Width = 68.031496060000000000
           Height = 28.346456690000000000
           AllowExpressions = False
           Font.Charset = DEFAULT_CHARSET
@@ -2813,9 +2622,9 @@ object BonFacAGestionF: TBonFacAGestionF
           VAlign = vaCenter
         end
         object Memo4: TfrxMemoView
-          Top = 294.425196850394000000
+          Top = 294.425196850000000000
           Width = 19.584837270000000000
-          Height = 28.346456692913400000
+          Height = 28.346456690000000000
           AllowExpressions = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -2830,10 +2639,10 @@ object BonFacAGestionF: TBonFacAGestionF
           VAlign = vaCenter
         end
         object Memo6: TfrxMemoView
-          Left = 571.929500000000000000
-          Top = 294.425196850394000000
+          Left = 570.504330000000000000
+          Top = 294.425196850000000000
           Width = 147.401574800000000000
-          Height = 28.346456692913400000
+          Height = 28.346456690000000000
           AllowExpressions = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -2848,9 +2657,9 @@ object BonFacAGestionF: TBonFacAGestionF
           VAlign = vaCenter
         end
         object Memo5: TfrxMemoView
-          Left = 343.661720000000000000
+          Left = 339.748300000000000000
           Top = 294.425196850000000000
-          Width = 147.401574800000000000
+          Width = 151.181104800000000000
           Height = 28.346456690000000000
           AllowExpressions = False
           Font.Charset = DEFAULT_CHARSET
@@ -2868,7 +2677,7 @@ object BonFacAGestionF: TBonFacAGestionF
         object Memo2: TfrxMemoView
           Left = 18.692950000000000000
           Top = 294.425196850000000000
-          Width = 257.695227270000000000
+          Width = 257.763779530000000000
           Height = 28.346456690000000000
           AllowExpressions = False
           Font.Charset = DEFAULT_CHARSET
@@ -2884,8 +2693,8 @@ object BonFacAGestionF: TBonFacAGestionF
           VAlign = vaCenter
         end
         object Memo20: TfrxMemoView
-          Left = 358.897650000000000000
-          Top = 106.504020000000000000
+          Left = 357.897650000000000000
+          Top = 106.582677165354000000
           Width = 52.652762760000000000
           Height = 15.639434480000000000
           Font.Charset = DEFAULT_CHARSET
@@ -2899,7 +2708,7 @@ object BonFacAGestionF: TBonFacAGestionF
           VAlign = vaCenter
         end
         object Memo21: TfrxMemoView
-          Left = 358.897650000000000000
+          Left = 357.897650000000000000
           Top = 49.031540000000000000
           Width = 44.667172730000000000
           Height = 39.169674550000000000
@@ -2914,7 +2723,7 @@ object BonFacAGestionF: TBonFacAGestionF
           VAlign = vaCenter
         end
         object NumRX: TfrxMemoView
-          Left = 411.811070000000000000
+          Left = 410.811070000000000000
           Top = 49.031540000000000000
           Width = 305.454742730000000000
           Height = 39.169674550000000000
@@ -2929,8 +2738,8 @@ object BonFacAGestionF: TBonFacAGestionF
           VAlign = vaCenter
         end
         object DateRX: TfrxMemoView
-          Left = 411.811070000000000000
-          Top = 106.504020000000000000
+          Left = 410.811070000000000000
+          Top = 106.582677165354000000
           Width = 305.881272760000000000
           Height = 15.639434480000000000
           Font.Charset = DEFAULT_CHARSET
@@ -2956,7 +2765,7 @@ object BonFacAGestionF: TBonFacAGestionF
           Fill.BackColor = 13948116
           HAlign = haCenter
           Memo.UTF8W = (
-            'Fournisseur :')
+            'Client :')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -2971,7 +2780,7 @@ object BonFacAGestionF: TBonFacAGestionF
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
           Memo.UTF8W = (
-            'Name Four')
+            'Name Client')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -3023,7 +2832,7 @@ object BonFacAGestionF: TBonFacAGestionF
         object Shape5: TfrxShapeView
           Left = 115.000310000000000000
           Top = 129.713385830000000000
-          Width = 604.724800000000000000
+          Width = 600.945270000000000000
           Height = 2.645669290000000000
           Fill.BackColor = 13948116
           Fill.ForeColor = clNone
@@ -3031,9 +2840,9 @@ object BonFacAGestionF: TBonFacAGestionF
           Frame.ShadowColor = 13948116
         end
         object Memo1: TfrxMemoView
-          Left = 489.795610000000000000
+          Left = 487.575140000000000000
           Top = 294.425196850000000000
-          Width = 83.149591650000000000
+          Width = 83.149606300000000000
           Height = 28.346456690000000000
           AllowExpressions = False
           Font.Charset = DEFAULT_CHARSET
@@ -3049,7 +2858,7 @@ object BonFacAGestionF: TBonFacAGestionF
           VAlign = vaCenter
         end
         object RC: TfrxMemoView
-          Left = 451.409710000000000000
+          Left = 448.583180000000000000
           Top = 148.960730000000000000
           Width = 268.085972760000000000
           Height = 23.198494480000000000
@@ -3064,7 +2873,7 @@ object BonFacAGestionF: TBonFacAGestionF
           VAlign = vaCenter
         end
         object NArt: TfrxMemoView
-          Left = 451.409710000000000000
+          Left = 448.583180000000000000
           Top = 183.976500000000000000
           Width = 268.085972760000000000
           Height = 23.198494480000000000
@@ -3079,7 +2888,7 @@ object BonFacAGestionF: TBonFacAGestionF
           VAlign = vaCenter
         end
         object NIF: TfrxMemoView
-          Left = 451.409710000000000000
+          Left = 448.583180000000000000
           Top = 217.212740000000000000
           Width = 268.085972760000000000
           Height = 23.198494480000000000
@@ -3094,7 +2903,7 @@ object BonFacAGestionF: TBonFacAGestionF
           VAlign = vaCenter
         end
         object NIS: TfrxMemoView
-          Left = 451.409710000000000000
+          Left = 448.583180000000000000
           Top = 250.448980000000000000
           Width = 268.085972760000000000
           Height = 23.198494480000000000
@@ -3108,8 +2917,8 @@ object BonFacAGestionF: TBonFacAGestionF
           ParentFont = False
           VAlign = vaCenter
         end
-        object Memo18: TfrxMemoView
-          Left = 403.875067240000000000
+        object Memo31: TfrxMemoView
+          Left = 401.048537240000000000
           Top = 148.960730000000000000
           Width = 45.093702760000000000
           Height = 23.198494480000000000
@@ -3124,8 +2933,8 @@ object BonFacAGestionF: TBonFacAGestionF
           ParentFont = False
           VAlign = vaCenter
         end
-        object Memo22: TfrxMemoView
-          Left = 392.897650000000000000
+        object Memo32: TfrxMemoView
+          Left = 390.071120000000000000
           Top = 183.976500000000000000
           Width = 56.432292760000000000
           Height = 23.198494480000000000
@@ -3140,8 +2949,8 @@ object BonFacAGestionF: TBonFacAGestionF
           ParentFont = False
           VAlign = vaCenter
         end
-        object Memo23: TfrxMemoView
-          Left = 403.236240000000000000
+        object Memo33: TfrxMemoView
+          Left = 400.409710000000000000
           Top = 217.212740000000000000
           Width = 45.093702760000000000
           Height = 23.198494480000000000
@@ -3156,8 +2965,8 @@ object BonFacAGestionF: TBonFacAGestionF
           ParentFont = False
           VAlign = vaCenter
         end
-        object Memo25: TfrxMemoView
-          Left = 403.236240000000000000
+        object Memo34: TfrxMemoView
+          Left = 400.409710000000000000
           Top = 250.448980000000000000
           Width = 45.093702760000000000
           Height = 23.198494480000000000
@@ -3178,26 +2987,26 @@ object BonFacAGestionF: TBonFacAGestionF
         Height = 24.566929130000000000
         Top = 404.409710000000000000
         Width = 718.110700000000000000
-        DataSet = frxBonFacAPListDB
-        DataSetName = 'frxBonFacAPListDB'
+        DataSet = frxBonFacPPListDB
+        DataSetName = 'frxBonFacPPListDB'
         RowCount = 0
         Stretched = True
         object frxDBDataset1nomp: TfrxMemoView
-          Left = 11.133890000000000000
+          Left = 12.133890000000000000
           Top = 3.559060000000000000
-          Width = 264.567100000000000000
+          Width = 257.763779530000000000
           Height = 18.897650000000000000
           StretchMode = smActualHeight
           DataField = 'nomp'
-          DataSet = frxBonFacAPListDB
-          DataSetName = 'frxBonFacAPListDB'
+          DataSet = frxBonFacPPListDB
+          DataSetName = 'frxBonFacPPListDB'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -12
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
           Memo.UTF8W = (
-            '[frxBonFacAPListDB."nomp"]')
+            '[frxBonFacPPListDB."nomp"]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -3217,13 +3026,13 @@ object BonFacAGestionF: TBonFacAGestionF
           VAlign = vaCenter
         end
         object frxDBDataset1qut_p: TfrxMemoView
-          Left = 275.732530000000000000
+          Left = 272.157700000000000000
           Top = 3.559060000000000000
-          Width = 68.031503390000000000
+          Width = 68.031496060000000000
           Height = 18.897650000000000000
           DataField = 'qut_p'
-          DataSet = frxBonFacAPListDB
-          DataSetName = 'frxBonFacAPListDB'
+          DataSet = frxBonFacPPListDB
+          DataSetName = 'frxBonFacPPListDB'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -12
@@ -3231,17 +3040,18 @@ object BonFacAGestionF: TBonFacAGestionF
           Font.Style = []
           HAlign = haCenter
           Memo.UTF8W = (
-            '[frxBonFacAPListDB."qut_p"]')
+            '[frxBonFacPPListDB."qut_p"]')
           ParentFont = False
           VAlign = vaCenter
         end
         object frxDBDataset1prixvd_p: TfrxMemoView
-          Left = 343.661720000000000000
+          Left = 339.748300000000000000
           Top = 3.559060000000000000
           Width = 147.401574800000000000
           Height = 18.897650000000000000
-          DataSet = frxBonFacAPListDB
-          DataSetName = 'frxBonFacAPListDB'
+          DataField = 'prixvd_p'
+          DataSet = frxBonFacPPListDB
+          DataSetName = 'frxBonFacPPListDB'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -3251,17 +3061,18 @@ object BonFacAGestionF: TBonFacAGestionF
           Font.Style = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonFacAPListDB."prixht_p"]')
+            '[frxBonFacPPListDB."prixvd_p"]')
           ParentFont = False
           VAlign = vaCenter
         end
         object frxDBDataset1MontantHT: TfrxMemoView
-          Left = 571.929500000000000000
+          Left = 570.504330000000000000
           Top = 3.559060000000000000
           Width = 147.401574800000000000
           Height = 18.897650000000000000
-          DataSet = frxBonFacAPListDB
-          DataSetName = 'frxBonFacAPListDB'
+          DataField = 'MontantHT'
+          DataSet = frxBonFacPPListDB
+          DataSetName = 'frxBonFacPPListDB'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -3271,18 +3082,18 @@ object BonFacAGestionF: TBonFacAGestionF
           Font.Style = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonFacAPListDB."MontantHT"]')
+            '[frxBonFacPPListDB."MontantHT"]')
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo16: TfrxMemoView
-          Left = 491.362199840000000000
+          Left = 485.582669840000000000
           Top = 3.439370080000000000
-          Width = 79.370095830000000000
+          Width = 83.149606300000000000
           Height = 18.897650000000000000
           DataField = 'tva_p'
-          DataSet = frxBonFacAPListDB
-          DataSetName = 'frxBonFacAPListDB'
+          DataSet = frxBonFacPPListDB
+          DataSetName = 'frxBonFacPPListDB'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -3292,7 +3103,7 @@ object BonFacAGestionF: TBonFacAGestionF
           Font.Style = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonFacAPListDB."tva_p"]')
+            '[frxBonFacPPListDB."tva_p"]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -3404,9 +3215,8 @@ object BonFacAGestionF: TBonFacAGestionF
           Top = 60.472480000000000000
           Width = 151.181200000000000000
           Height = 18.897650000000000000
-          DataField = 'remise_bafac'
-          DataSet = frxBonRecDT
-          DataSetName = 'frxBonFacADB'
+          DataSet = frxBonFacPDT
+          DataSetName = 'frxBonFacPDB'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -3416,7 +3226,7 @@ object BonFacAGestionF: TBonFacAGestionF
           Font.Style = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonFacADB."remise_bafac"]')
+            '[frxBonFacPDB."remise_bpfac"]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -3425,8 +3235,8 @@ object BonFacAGestionF: TBonFacAGestionF
           Top = 31.236240000000000000
           Width = 151.181200000000000000
           Height = 18.897650000000000000
-          DataSet = frxBonRecDT
-          DataSetName = 'frxBonFacADB'
+          DataSet = frxBonFacPDT
+          DataSetName = 'frxBonFacPDB'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -3436,7 +3246,7 @@ object BonFacAGestionF: TBonFacAGestionF
           Font.Style = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonFacADB."montht_bafac"]')
+            '[frxBonFacPDB."montht_bpfac"]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -3445,8 +3255,8 @@ object BonFacAGestionF: TBonFacAGestionF
           Top = 120.944960000000000000
           Width = 151.181200000000000000
           Height = 18.897650000000000000
-          DataSet = frxBonRecDT
-          DataSetName = 'frxBonFacADB'
+          DataSet = frxBonFacPDT
+          DataSetName = 'frxBonFacPDB'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -3456,17 +3266,17 @@ object BonFacAGestionF: TBonFacAGestionF
           Font.Style = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonFacADB."MontantTVA"]')
+            '[frxBonFacPDB."MontantTVA"]')
           ParentFont = False
           VAlign = vaCenter
         end
         object frxBonLivDTmontttc_bvliv: TfrxMemoView
           Left = 563.149970000000000000
-          Top = 203.181200000000000000
+          Top = 203.338582680000000000
           Width = 154.960730000000000000
           Height = 31.370086060000000000
-          DataSet = frxBonRecDT
-          DataSetName = 'frxBonFacADB'
+          DataSet = frxBonFacPDT
+          DataSetName = 'frxBonFacPDB'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -3477,7 +3287,7 @@ object BonFacAGestionF: TBonFacAGestionF
           Fill.BackColor = 13948116
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonFacADB."montttc_bafac"]')
+            '[frxBonFacPDB."montttc_bpfac"]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -3486,8 +3296,8 @@ object BonFacAGestionF: TBonFacAGestionF
           Top = 90.708720000000000000
           Width = 151.181200000000000000
           Height = 18.897650000000000000
-          DataSet = frxBonRecDT
-          DataSetName = 'frxBonFacADB'
+          DataSet = frxBonFacPDT
+          DataSetName = 'frxBonFacPDB'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -3497,7 +3307,7 @@ object BonFacAGestionF: TBonFacAGestionF
           Font.Style = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonFacADB."NeTHT"]')
+            '[frxBonFacPDB."NeTHT"]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -3546,10 +3356,11 @@ object BonFacAGestionF: TBonFacAGestionF
           ParentFont = False
         end
         object Memo15: TfrxMemoView
-          Left = 7.559060000000000000
-          Top = 165.519790000000000000
+          Left = 3.779530000000000000
+          Top = 165.543307090000000000
           Width = 101.786652760000000000
           Height = 15.639434480000000000
+          Visible = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -11
@@ -3561,10 +3372,11 @@ object BonFacAGestionF: TBonFacAGestionF
           VAlign = vaCenter
         end
         object MPRX: TfrxMemoView
-          Left = 130.842610000000000000
-          Top = 163.519790000000000000
+          Left = 127.063080000000000000
+          Top = 165.543307090000000000
           Width = 252.541322730000000000
           Height = 20.272024550000000000
+          Visible = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -11
@@ -3576,10 +3388,11 @@ object BonFacAGestionF: TBonFacAGestionF
           VAlign = vaCenter
         end
         object Memo17: TfrxMemoView
-          Left = 7.559060000000000000
-          Top = 202.315090000000000000
+          Left = 3.779530000000000000
+          Top = 202.204724410000000000
           Width = 120.684302760000000000
           Height = 15.639434480000000000
+          Visible = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -11
@@ -3591,10 +3404,11 @@ object BonFacAGestionF: TBonFacAGestionF
           VAlign = vaCenter
         end
         object NCHeqRX: TfrxMemoView
-          Left = 130.842610000000000000
-          Top = 200.315090000000000000
+          Left = 127.063080000000000000
+          Top = 202.204724410000000000
           Width = 252.541322730000000000
           Height = 20.272024550000000000
+          Visible = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -11
@@ -3610,8 +3424,8 @@ object BonFacAGestionF: TBonFacAGestionF
           Top = 58.960629920000000000
           Width = 60.472480000000000000
           Height = 18.897650000000000000
-          DataSet = frxBonRecDT
-          DataSetName = 'frxBonFacADB'
+          DataSet = frxBonFacPDT
+          DataSetName = 'frxBonFacPDB'
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -3621,7 +3435,7 @@ object BonFacAGestionF: TBonFacAGestionF
           Font.Style = []
           HAlign = haCenter
           Memo.UTF8W = (
-            '([frxBonFacADB."RemisePerc"]%)')
+            '([frxBonFacPDB."RemisePerc"]%)')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -3646,8 +3460,8 @@ object BonFacAGestionF: TBonFacAGestionF
           Top = 151.181200000000000000
           Width = 151.181200000000000000
           Height = 18.897650000000000000
-          DataSet = frxBonRecDT
-          DataSetName = 'frxBonFacADB'
+          DataSet = frxBonFacPDT
+          DataSetName = 'frxBonFacPDB'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -3657,7 +3471,7 @@ object BonFacAGestionF: TBonFacAGestionF
           Font.Style = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonFacADB."NetTTC"]')
+            '[frxBonFacPDB."NetTTC"]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -3682,8 +3496,8 @@ object BonFacAGestionF: TBonFacAGestionF
           Top = 177.637910000000000000
           Width = 151.181200000000000000
           Height = 18.897650000000000000
-          DataSet = frxBonRecDT
-          DataSetName = 'frxBonFacADB'
+          DataSet = frxBonFacPDT
+          DataSetName = 'frxBonFacPDB'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -3693,12 +3507,12 @@ object BonFacAGestionF: TBonFacAGestionF
           Font.Style = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonFacADB."timber_bafac"]')
+            '[frxBonFacPDB."timber_bpfac"]')
           ParentFont = False
           VAlign = vaCenter
         end
-        object Memo31: TfrxMemoView
-          Top = 20.409448820000000000
+        object Memo35: TfrxMemoView
+          Top = 20.409448818897600000
           Width = 99.721445380000000000
           Height = 28.346456690000000000
           Font.Charset = DEFAULT_CHARSET
@@ -3713,13 +3527,11 @@ object BonFacAGestionF: TBonFacAGestionF
           ParentFont = False
           VAlign = vaCenter
         end
-        object Memo32: TfrxMemoView
+        object Memo36: TfrxMemoView
           Left = 98.267780000000000000
           Top = 20.409448820000000000
           Width = 166.299224800000000000
           Height = 28.346456690000000000
-          DataSet = frxBonRecDT
-          DataSetName = 'frxBonFacADB'
           DisplayFormat.FormatStr = '%2.2m'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -3736,7 +3548,7 @@ object BonFacAGestionF: TBonFacAGestionF
         end
         object TauxTVA7: TfrxMemoView
           Left = 3.779530000000000000
-          Top = 84.118095590000000000
+          Top = 85.118095590000000000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
           Visible = False
@@ -3755,7 +3567,7 @@ object BonFacAGestionF: TBonFacAGestionF
         end
         object TauxTVA17: TfrxMemoView
           Left = 3.779530000000000000
-          Top = 111.708683390000000000
+          Top = 112.708683390000000000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
           Visible = False
@@ -3774,7 +3586,7 @@ object BonFacAGestionF: TBonFacAGestionF
         end
         object MontantTVA7: TfrxMemoView
           Left = 98.267780000000000000
-          Top = 84.118095590000000000
+          Top = 85.118095590000000000
           Width = 166.299320000000000000
           Height = 18.897650000000000000
           Visible = False
@@ -3793,7 +3605,7 @@ object BonFacAGestionF: TBonFacAGestionF
         end
         object MontantTVA17: TfrxMemoView
           Left = 98.267780000000000000
-          Top = 111.708683390000000000
+          Top = 112.708683390000000000
           Width = 166.299320000000000000
           Height = 18.897650000000000000
           Visible = False
@@ -3812,7 +3624,7 @@ object BonFacAGestionF: TBonFacAGestionF
         end
         object TauxTVA19: TfrxMemoView
           Left = 3.779530000000000000
-          Top = 55.692950000000000000
+          Top = 56.692950000000000000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
           Visible = False
@@ -3831,7 +3643,7 @@ object BonFacAGestionF: TBonFacAGestionF
         end
         object MontantTVA19: TfrxMemoView
           Left = 98.267780000000000000
-          Top = 55.692950000000000000
+          Top = 56.692950000000000000
           Width = 166.299320000000000000
           Height = 18.897650000000000000
           Visible = False
@@ -3850,9 +3662,9 @@ object BonFacAGestionF: TBonFacAGestionF
         end
       end
       object Memo19: TfrxMemoView
-        Left = 358.897650000000000000
+        Left = 351.220470000000000000
         Top = 18.795300000000000000
-        Width = 343.250042730000000000
+        Width = 365.927222730000000000
         Height = 39.169674550000000000
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4144959
@@ -3860,7 +3672,7 @@ object BonFacAGestionF: TBonFacAGestionF
         Font.Name = 'Helvetica LT Std'
         Font.Style = [fsBold]
         Memo.UTF8W = (
-          'FACTURE D'#39'ACHAT')
+          'FACTURE PROFORMA')
         ParentFont = False
         VAlign = vaCenter
       end

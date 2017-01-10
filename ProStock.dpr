@@ -60,7 +60,9 @@ uses
   UPertesGestion in 'UPertesGestion.pas' {PertesGestionF},
   UTypeChargeList in 'UTypeChargeList.pas' {TypeChargeListF},
   USTypeChargeList in 'USTypeChargeList.pas' {STypeChargeListF},
-  UTypePerteList in 'UTypePerteList.pas' {TypePerteListF};
+  UTypePerteList in 'UTypePerteList.pas' {TypePerteListF},
+  UBonFacPGestion in 'UBonFacPGestion.pas' {BonFacPGestionF},
+  UBonFacP in 'UBonFacP.pas' {BonFacPF};
 
 {$R *.res}
 

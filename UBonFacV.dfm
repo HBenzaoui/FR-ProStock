@@ -1026,8 +1026,8 @@ object BonFacVF: TBonFacVF
     object ResearchBARecLbl: TLabel
       Left = 6
       Top = 40
-      Width = 83
-      Height = 18
+      Width = 86
+      Height = 19
       Caption = 'Rechercher'
       Color = 15722984
       Font.Charset = DEFAULT_CHARSET
@@ -1049,8 +1049,8 @@ object BonFacVF: TBonFacVF
       ShowHint = True
       OnClick = sSpeedButton1Click
       SkinData.SkinSection = 'SPEEDBUTTON'
-      ImageIndex = 7
       Images = MainForm.PanelIcons24
+      ImageIndex = 7
     end
     object sSpeedButton2: TsSpeedButton
       Left = 1087
@@ -1062,8 +1062,8 @@ object BonFacVF: TBonFacVF
       ShowHint = True
       OnClick = sSpeedButton2Click
       SkinData.SkinSection = 'SPEEDBUTTON'
-      ImageIndex = 8
       Images = MainForm.PanelIcons24
+      ImageIndex = 8
     end
     object sSpeedButton3: TsSpeedButton
       Left = 1155
@@ -1075,8 +1075,8 @@ object BonFacVF: TBonFacVF
       ShowHint = True
       OnClick = sSpeedButton3Click
       SkinData.SkinSection = 'SPEEDBUTTON'
-      ImageIndex = 9
       Images = MainForm.PanelIcons24
+      ImageIndex = 9
     end
     object Label1: TLabel
       Left = 346
@@ -1119,8 +1119,8 @@ object BonFacVF: TBonFacVF
       ShowHint = True
       OnClick = FisrtBVFacbtnClick
       SkinData.SkinSection = 'SPEEDBUTTON'
-      ImageIndex = 0
       Images = MainForm.PanelIcons24
+      ImageIndex = 0
       ShowCaption = False
     end
     object PreviosBVFacbtn: TsSpeedButton
@@ -1132,8 +1132,8 @@ object BonFacVF: TBonFacVF
       ShowHint = True
       OnClick = PreviosBVFacbtnClick
       SkinData.SkinSection = 'SPEEDBUTTON'
-      ImageIndex = 1
       Images = MainForm.PanelIcons24
+      ImageIndex = 1
     end
     object NextBVFacbtn: TsSpeedButton
       Left = 559
@@ -1144,8 +1144,8 @@ object BonFacVF: TBonFacVF
       ShowHint = True
       OnClick = NextBVFacbtnClick
       SkinData.SkinSection = 'SPEEDBUTTON'
-      ImageIndex = 2
       Images = MainForm.PanelIcons24
+      ImageIndex = 2
       ShowCaption = False
     end
     object LastBVFacbtn: TsSpeedButton
@@ -1157,8 +1157,8 @@ object BonFacVF: TBonFacVF
       ShowHint = True
       OnClick = LastBVFacbtnClick
       SkinData.SkinSection = 'SPEEDBUTTON'
-      ImageIndex = 3
       Images = MainForm.PanelIcons24
+      ImageIndex = 3
     end
     object FilterBVLivBtn: TAdvToolButton
       Left = 628
@@ -1556,7 +1556,7 @@ object BonFacVF: TBonFacVF
     end
   end
   object BonFacVfrxRprt: TfrxReport
-    Version = '5.5'
+    Version = '5.4.6'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]

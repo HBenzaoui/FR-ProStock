@@ -49,7 +49,7 @@ implementation
 uses Contnrs, Types, UProduitGestion, UMainF, UBonRecGestion, UFastProduitsList,
   USplashAddCompte, UBonLivGestion, UBonFacVGestion, UBonFacAGestion,
   UComptoir, UReglementCGestion, UReglementFGestion, UDataModule,
-  UChargesGestion, UChargesFList, UPertesGestion;
+  UChargesGestion, UChargesFList, UPertesGestion, UBonFacPGestion;
 
 var
   gGrayForms: TComponentList;
@@ -786,6 +786,155 @@ begin
    end else
 
 
+
+    //---------- THIS TAG OKBTN = 37 AND FSPLSH = 6 IS FOR INGORING WHEN ADDING FROM BON FACTURE PROFORMA--------
+//-------------------------------------------------------------------------------------------------------------
+   if OKAddUniteSBtn.Tag = 37 then
+   begin
+     if FSplashAddUnite.Tag = 6 then
+     begin
+     if BonFacPGestionF.ResherchPARDesProduitsRdioBtn.Checked then
+      begin
+      MainForm.ProduitTable.Active:=False;
+      MainForm.ProduitTable.SQL.Clear;
+      MainForm.ProduitTable.SQL.Text:= 'SELECT * FROM produit WHERE LOWER(nom_p) LIKE LOWER('+QuotedStr(BonFacPGestionF.ProduitBonFacVGCbx.Text)+')' ;
+      MainForm.ProduitTable.Active:=True;
+      end;
+     if BonFacPGestionF.ResherchPARRefProduitsRdioBtn.Checked then
+      begin
+       MainForm.ProduitTable.Active:=False;
+       MainForm.ProduitTable.SQL.Clear;
+       MainForm.ProduitTable.SQL.Text:= 'SELECT * FROM produit WHERE LOWER(refer_p) LIKE LOWER('+QuotedStr(BonFacPGestionF.ProduitBonFacVGCbx.Text)+')' ;
+       MainForm.ProduitTable.Active:=True;
+      end;
+      if BonFacPGestionF.ResherchPARCBProduitsRdioBtn.Checked then
+      begin
+        MainForm.SQLQuery.Active:=False;
+        MainForm.SQLQuery.SQL.Clear;
+        MainForm.SQLQuery.SQL.Text:='SELECT nom_cb,code_p FROM codebarres WHERE LOWER(nom_cb) LIKE LOWER(' +''+ QuotedStr( BonFacPGestionF.ProduitBonFacVGCbx.Text )+')' ;
+        MainForm.SQLQuery.Active:=True;
+        if MainForm.SQLQuery.FieldValues['code_p'] <> null then
+        begin
+        CodeCB:=MainForm.SQLQuery.FieldValues['code_p'];
+        end;
+        MainForm.ProduitTable.Active:=False;
+        MainForm.ProduitTable.SQL.Clear;
+        MainForm.ProduitTable.SQL.Text:= 'SELECT * FROM produit WHERE code_p = '+QuotedStr(IntToStr(CodeCB)) +'OR'+ ' LOWER(codebar_p) LIKE LOWER(' + QuotedStr(BonFacPGestionF.ProduitBonFacVGCbx.Text)+')';
+        MainForm.ProduitTable.Active:=True;
+      end;
+     end;
+       MainForm.Bonp_fac_listTable.DisableControls;
+        MainForm.Bonp_fac_listTable.IndexFieldNames:='';
+        MainForm.Bonp_fac_listTable.Active:=False;
+        MainForm.Bonp_fac_listTable.SQL.Clear;
+        MainForm.Bonp_fac_listTable.SQL.Text:= 'SELECT * FROM bonp_fac_list ORDER by code_bpfacl' ;
+        MainForm.Bonp_fac_listTable.Active:=True;
+     //   MainForm.Bonv_fac_listTable.Last;
+
+
+
+        if BonFacPGestionF.ClientBonFacVGCbx.Text<> '' then
+       begin
+         MainForm.ClientTable.DisableControls;
+         MainForm.ClientTable.Active:=false;
+         MainForm.ClientTable.SQL.Clear;
+         MainForm.ClientTable.SQL.Text:='Select * FROM client WHERE LOWER(nom_c) LIKE LOWER('+ QuotedStr( BonFacPGestionF.ClientBonFacVGCbx.Text )+')'  ;
+         MainForm.ClientTable.Active:=True;
+        end;
+
+       if  MainForm.Bonp_fac_listTable.IsEmpty then
+       begin
+         MainForm.Bonp_fac_listTable.Last;
+         CodeBR := 1;
+       end else
+           begin
+            MainForm.Bonp_fac_listTable.Last;
+            CodeBR:= MainForm.Bonp_fac_listTable.FieldValues['code_bpfacl'] + 1 ;
+           end;
+
+       MainForm.Bonp_fac_listTable.Last;
+       MainForm.Bonp_fac_listTable.Append;
+       MainForm.Bonp_fac_listTable.FieldValues['code_bpfacl']:= CodeBR;
+       MainForm.Bonp_fac_listTable.FieldValues['code_bpfac']:= MainForm.Bonp_facTable.FieldValues['code_bpfac'];
+       MainForm.Bonp_fac_listTable.FieldValues['code_p']:=  MainForm.ProduitTable.FieldValues['code_p'] ;
+       MainForm.Bonp_fac_listTable.FieldValues['qut_p'] :=  01;
+       MainForm.Bonp_fac_listTable.FieldValues['cond_p']:= 01;
+       MainForm.Bonp_fac_listTable.FieldValues['tva_p']:= MainForm.ProduitTable.FieldValues['tva_p'];
+
+       if  NOT (MainForm.ClientTable.IsEmpty) AND (BonFacPGestionF.ClientBonFacVGCbx.Text<> '' ) then
+       begin
+         if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 0 then
+         begin
+         MainForm.Bonp_fac_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixvd_p'];
+         end;
+         if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 1 then
+         begin
+         MainForm.Bonp_fac_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixvr_p'];
+         end;
+         if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 2 then
+         begin
+         MainForm.Bonp_fac_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixvg_p'];
+         end;
+         if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 3 then
+         begin
+         MainForm.Bonp_fac_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixva_p'];
+         end;
+         if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 4 then
+         begin
+         MainForm.Bonp_fac_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixva2_p'];
+         end;
+         end else
+             begin
+              MainForm.Bonp_fac_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixvd_p'];
+             end;
+
+       MainForm.Bonp_fac_listTable.Post ;
+       MainForm.Bonp_fac_listTable.IndexFieldNames:='code_bpfac';
+
+       MainForm.Bonp_fac_listTable.Active:=False;
+       MainForm.Bonp_fac_listTable.SQL.Clear;
+       MainForm.Bonp_fac_listTable.SQL.Text:= 'SELECT * FROM bonp_fac_list WHERE code_bpfac = ' + QuotedStr(IntToStr(MainForm.Bonp_facTable.FieldValues['code_bpfac']));
+       MainForm.Bonp_fac_listTable.Active:=True;
+
+       BonFacPGestionF.ProduitBonFacVGCbx.Text:='';
+
+       BonFacPGestionF.ProduitsListDBGridEh.SelectedIndex:=2;
+       BonFacPGestionF.ProduitsListDBGridEh.EditorMode:=True;
+
+       MainForm.Bonp_fac_listTable.Last;
+
+       MainForm.ProduitTable.Active:=False;
+       MainForm.ProduitTable.SQL.Clear;
+       MainForm.ProduitTable.SQL.Text:= 'SELECT * FROM produit';
+       MainForm.ProduitTable.Active := True;
+
+       MainForm.Bonp_fac_listTable.Refresh;
+       MainForm.Bonp_fac_listTable.Last;
+       MainForm.Bonp_fac_listTable.EnableControls;
+
+
+       AnimateWindow(FSplashAddUnite.Handle, 175, AW_VER_NEGATIVE OR AW_SLIDE OR AW_HIDE);
+       FSplashAddUnite.Release;
+       if FSplashAddUnite.Tag = 7 then
+       begin
+         FastProduitsListF.BringToFront;
+         FastProduitsListF.SetFocus;
+         FastProduitsListF.ResearchProduitsEdt.SelectAll;
+       end;
+      if FSplashAddUnite.Tag = 6 then
+       begin
+        BonFacPGestionF.ProduitsListDBGridEh.SetFocus;
+       end;
+
+        MainForm.ClientTable.Active:=false;
+        MainForm.ClientTable.SQL.Clear;
+        MainForm.ClientTable.SQL.Text:='Select * FROM client' ;
+        MainForm.ClientTable.Active:=True;
+        MainForm.ClientTable.EnableControls;
+
+   end else
+
+
 //------------------------------------------------------------------------------------------
        if CancelAddUniteSBtn.Tag= 0 then
 
@@ -1451,7 +1600,7 @@ begin
 
    end;
 
-    //---- this tag = 15 is for adding or ingeoring the same produit in facture de vente  ------///
+    //---- this tag = 15 is for adding or ingeoring the same produit in facture de vente ------///
    if OKAddUniteSBtn.Tag = 15 then
    begin
 
@@ -2287,6 +2436,77 @@ begin
      AnimateWindow(FSplashAddUnite.Handle, 175, AW_VER_NEGATIVE OR AW_SLIDE OR AW_HIDE);
     FSplashAddUnite.Release;
    end;
+
+
+
+
+   //---- this tag = 35 is for deleting facture Proforma ------///
+   if OKAddUniteSBtn.Tag = 35 then
+   begin
+               //    MainForm.ProduitTable.Last ;
+      //------ this is a executable SQL use it for quick delete code barres in the DB when we cancel
+      codeBR:= MainForm.Bonp_facTable.FieldValues['code_bpfac'];
+      //----- this is to delte the old ciredit when we delte the bon liv
+//      if (MainForm.Bonv_facTable.FieldByName('code_c').AsInteger <> 0) AND (MainForm.Bonv_facTable.FieldByName('code_c').AsInteger <> null)  then
+//      begin
+//      CodeF:=  MainForm.Bonv_facTable.FieldByName('code_c').AsInteger;
+//      end;
+
+//      MainForm.ClientTable.DisableControls;
+//      MainForm.ClientTable.Active:= false;
+//      MainForm.ClientTable.SQL.Clear;
+//      MainForm.ClientTable.SQL.Text:= 'SELECT * FROM client WHERE code_c ='+ Inttostr(codeF) ;
+//      MainForm.ClientTable.Active:= True;
+//
+//      if MainForm.ClientTable.FieldValues['credit_c'] <> 0 then
+//      begin
+//      MainForm.ClientTable.Edit;
+//      MainForm.ClientTable.FieldByName('credit_c').AsCurrency:= (MainForm.ClientTable.FieldByName('credit_c').AsCurrency) - (MainForm.Bonv_facTable.FieldByName('MontantRes').AsCurrency);
+//      MainForm.ClientTable.Post;
+//      end;
+
+      MainForm.GstockdcConnection.ExecSQL('DELETE FROM bonp_fac_list where code_bpfac = ' + IntToStr(codeBR));
+//      MainForm.GstockdcConnection.ExecSQL('DELETE FROM regclient where code_bvfac = ' + IntToStr(codeBR));
+//      MainForm.GstockdcConnection.ExecSQL('DELETE FROM opt_cas_bnk where code_bvfac = ' + IntToStr(codeBR));
+      MainForm.Bonp_facTable.Delete ;
+      MainForm.Bonp_facTable.Refresh ;
+//      MainForm.RegclientTable.Refresh ;
+//      MainForm.Opt_cas_bnk_CaisseTable.Refresh ;
+
+//      MainForm.ClientTable.Active:= false;
+//      MainForm.ClientTable.SQL.Clear;
+//      MainForm.ClientTable.SQL.Text:= 'SELECT * FROM client ';
+//      MainForm.ClientTable.Active:= True;
+//
+//      MainForm.ClientTable.EnableControls;
+
+    sndPlaySound('C:\Windows\Media\speech off.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+          AnimateWindow(FSplashAddUnite.Handle, 175, AW_VER_NEGATIVE OR AW_SLIDE OR AW_HIDE);
+      FSplashAddUnite.Release;
+   end;
+
+    //---- this tag = 36 is for empty the facture Proforma------///
+   if OKAddUniteSBtn.Tag = 36 then
+   begin
+     MainForm.SQLQuery.ExecSQL('DELETE FROM bonp_fac_list WHERE code_bpfac = ' +QuotedStr(IntToStr(MainForm.Bonp_facTable.FieldByName('code_bpfac').AsInteger)));
+   MainForm.Bonp_fac_listTable.Refresh;
+   BonFacPGestionF.BonFacVGClientNEWCredit.Caption:= BonFacPGestionF.BonFacVTotalTTCLbl.Caption;
+   sndPlaySound('C:\Windows\Media\recycle.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+     AnimateWindow(FSplashAddUnite.Handle, 175, AW_VER_NEGATIVE OR AW_SLIDE OR AW_HIDE);
+    FSplashAddUnite.Release;
+
+   end;
+
+
+
+       //---- this tag = 37 is for adding or ingeoring the same produit in facture  proforma ------///
+   if OKAddUniteSBtn.Tag = 37 then
+   begin
+    AnimateWindow(FSplashAddUnite.Handle, 175, AW_VER_NEGATIVE OR AW_SLIDE OR AW_HIDE);
+    FSplashAddUnite.Release;
+
+   end;
+
 
 end;
 
