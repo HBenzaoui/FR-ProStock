@@ -127,8 +127,8 @@ object BonRecGestionF: TBonRecGestionF
     object Label4: TLabel
       Left = 9
       Top = 268
-      Width = 92
-      Height = 18
+      Width = 96
+      Height = 19
       Anchors = [akLeft, akBottom]
       Caption = 'Les Produits:'
       Color = 15722984
@@ -140,7 +140,6 @@ object BonRecGestionF: TBonRecGestionF
       ParentColor = False
       ParentFont = False
       StyleElements = []
-      ExplicitTop = 236
     end
     object sSpeedButton4: TsSpeedButton
       Left = 1005
@@ -152,8 +151,8 @@ object BonRecGestionF: TBonRecGestionF
       ShowHint = True
       OnClick = sSpeedButton4Click
       SkinData.SkinSection = 'SPEEDBUTTON'
-      ImageIndex = 7
       Images = MainForm.PanelIcons24
+      ImageIndex = 7
     end
     object sSpeedButton5: TsSpeedButton
       Left = 969
@@ -165,8 +164,8 @@ object BonRecGestionF: TBonRecGestionF
       ShowHint = True
       OnClick = sSpeedButton5Click
       SkinData.SkinSection = 'SPEEDBUTTON'
-      ImageIndex = 8
       Images = MainForm.PanelIcons24
+      ImageIndex = 8
     end
     object sSpeedButton6: TsSpeedButton
       Left = 1041
@@ -178,8 +177,8 @@ object BonRecGestionF: TBonRecGestionF
       ShowHint = True
       OnClick = sSpeedButton6Click
       SkinData.SkinSection = 'SPEEDBUTTON'
-      ImageIndex = 9
       Images = MainForm.PanelIcons24
+      ImageIndex = 9
     end
     object Label5: TLabel
       Left = 16
@@ -716,8 +715,8 @@ object BonRecGestionF: TBonRecGestionF
       ShowHint = True
       OnClick = sSpeedButton9Click
       SkinData.SkinSection = 'SPEEDBUTTON'
-      ImageIndex = 1
       Images = MainForm.PanelIcons24
+      ImageIndex = 1
     end
     object sSpeedButton8: TsSpeedButton
       Left = 431
@@ -728,8 +727,8 @@ object BonRecGestionF: TBonRecGestionF
       ShowHint = True
       OnClick = sSpeedButton8Click
       SkinData.SkinSection = 'SPEEDBUTTON'
-      ImageIndex = 2
       Images = MainForm.PanelIcons24
+      ImageIndex = 2
       ShowCaption = False
     end
     object sSpeedButton10: TsSpeedButton
@@ -741,8 +740,8 @@ object BonRecGestionF: TBonRecGestionF
       ShowHint = True
       OnClick = sSpeedButton10Click
       SkinData.SkinSection = 'SPEEDBUTTON'
-      ImageIndex = 0
       Images = MainForm.PanelIcons24
+      ImageIndex = 0
       ShowCaption = False
     end
     object sSpeedButton7: TsSpeedButton
@@ -754,8 +753,8 @@ object BonRecGestionF: TBonRecGestionF
       ShowHint = True
       OnClick = sSpeedButton7Click
       SkinData.SkinSection = 'SPEEDBUTTON'
-      ImageIndex = 3
       Images = MainForm.PanelIcons24
+      ImageIndex = 3
     end
     object NameFourGErrorP: TPanel
       Left = 461
@@ -900,7 +899,7 @@ object BonRecGestionF: TBonRecGestionF
       Left = 73
       Top = 60
       Width = 124
-      Height = 26
+      Height = 27
       Date = 42583.000000000000000000
       Time = 42583.000000000000000000
       Font.Charset = DEFAULT_CHARSET
@@ -1144,7 +1143,7 @@ object BonRecGestionF: TBonRecGestionF
       object Label18: TLabel
         Left = 6
         Top = 78
-        Width = 101
+        Width = 90
         Height = 16
         Anchors = [akTop, akRight]
         Caption = 'Nouveau Solde:'
@@ -1161,7 +1160,7 @@ object BonRecGestionF: TBonRecGestionF
       object Label17: TLabel
         Left = 6
         Top = 6
-        Width = 87
+        Width = 81
         Height = 16
         Anchors = [akTop, akRight]
         Caption = 'Ancien Solde:'
@@ -2164,8 +2163,8 @@ object BonRecGestionF: TBonRecGestionF
     object Label15: TLabel
       Left = 12
       Top = 77
-      Width = 129
-      Height = 68
+      Width = 131
+      Height = 66
       Caption = 'Bon de '#13#10'R'#233'ception'
       Color = 15722984
       Font.Charset = DEFAULT_CHARSET
@@ -2437,9 +2436,9 @@ object BonRecGestionF: TBonRecGestionF
       'NEWTTC=NEWTTC'
       'code_f=code_f'
       'code_ur=code_ur'
-      'Agnet=Agnet'
       'bon_or_no_barec=bon_or_no_barec'
-      'NeTHT=NeTHT')
+      'NeTHT=NeTHT'
+      'Agent=Agent')
     DataSet = MainForm.Bona_recTable
     BCDToCurrency = False
     Left = 248
@@ -2462,7 +2461,20 @@ object BonRecGestionF: TBonRecGestionF
       'nomp=nomp'
       'referp=referp'
       'tvap=tvap'
-      'TVA=TVA')
+      'TVA=TVA'
+      'tva_p=tva_p'
+      'prixvd_p=prixvd_p'
+      'MargeD=MargeD'
+      'prixvr_p=prixvr_p'
+      'MargeR=MargeR'
+      'prixvg_p=prixvg_p'
+      'MargeG=MargeG'
+      'prixva_p=prixva_p'
+      'MargeA=MargeA'
+      'prixva2_p=prixva2_p'
+      'MargeA2=MargeA2'
+      'dateperiss_p=dateperiss_p'
+      'qutinstock_p=qutinstock_p')
     DataSource = BonRecPListDataS
     BCDToCurrency = False
     Left = 248
@@ -2477,14 +2489,12 @@ object BonRecGestionF: TBonRecGestionF
       'adr_f=adr_f'
       'ville_f=ville_f'
       'willaya_f=willaya_f'
-      'pays_f=pays_f'
       'fix_f=fix_f'
       'mob_f=mob_f'
       'mob2_f=mob2_f'
       'fax_f=fax_f'
       'email_f=email_f'
       'obser_f=obser_f'
-      'logo_f=logo_f'
       'activ_f=activ_f'
       'rc_f=rc_f'
       'nif_f=nif_f'
@@ -2494,7 +2504,8 @@ object BonRecGestionF: TBonRecGestionF
       'rib_f=rib_f'
       'siteweb_f=siteweb_f'
       'oldcredit_f=oldcredit_f'
-      'maxcredit_f=maxcredit_f')
+      'maxcredit_f=maxcredit_f'
+      'credit_f=credit_f')
     DataSet = MainForm.FournisseurTable
     BCDToCurrency = False
     Left = 248
@@ -2546,7 +2557,7 @@ object BonRecGestionF: TBonRecGestionF
     Top = 480
   end
   object BonRecPListfrxRprt: TfrxReport
-    Version = '5.5'
+    Version = '5.4.6'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -2554,7 +2565,7 @@ object BonRecGestionF: TBonRecGestionF
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 42576.399521435200000000
-    ReportOptions.LastChange = 42654.968890231480000000
+    ReportOptions.LastChange = 42746.101836296290000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       ''
@@ -2646,7 +2657,7 @@ object BonRecGestionF: TBonRecGestionF
       object PageFooter1: TfrxPageFooter
         FillType = ftBrush
         Height = 21.057381430000000000
-        Top = 759.685530000000000000
+        Top = 850.394250000000000000
         Width = 718.110700000000000000
         object Memo7: TfrxMemoView
           Left = 3.779530000000000000
@@ -2670,23 +2681,6 @@ object BonRecGestionF: TBonRecGestionF
           Fill.ForeColor = clNone
           Frame.Color = clNone
         end
-        object frxDBDataset2Agnet: TfrxMemoView
-          Left = 35.574830000000000000
-          Top = 0.779530000000000000
-          Width = 302.362400000000000000
-          Height = 18.897650000000000000
-          DataSet = frxBonRecDT
-          DataSetName = 'frxBonRecDB'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -9
-          Font.Name = 'Helvetica LT Std'
-          Font.Style = []
-          Memo.UTF8W = (
-            '[frxBonRecDB."Agnet"]')
-          ParentFont = False
-          VAlign = vaCenter
-        end
         object Page: TfrxMemoView
           Left = 570.929500000000000000
           Top = 1.000000000000000000
@@ -2708,15 +2702,32 @@ object BonRecGestionF: TBonRecGestionF
             item
             end>
         end
+        object frxDBDataset2Agnet: TfrxMemoView
+          Left = 39.354360000000000000
+          Top = 1.159731430000000000
+          Width = 302.362400000000000000
+          Height = 18.897650000000000000
+          DataSet = BonLivGestionF.frxBonLivDT
+          DataSetName = 'frxBonLivDT'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -9
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = []
+          Memo.UTF8W = (
+            '[frxBonRecDB."Agent"]')
+          ParentFont = False
+          VAlign = vaCenter
+        end
       end
       object PageHeader1: TfrxPageHeader
         FillType = ftBrush
-        Height = 322.978018180000000000
+        Height = 416.978018180000000000
         Top = 18.897650000000000000
         Width = 718.110700000000000000
         object Memo3: TfrxMemoView
           Left = 340.157700000000000000
-          Top = 294.315090000000000000
+          Top = 388.803340000000000000
           Width = 76.277787270000000000
           Height = 28.174678180000000000
           AllowExpressions = False
@@ -2733,7 +2744,7 @@ object BonRecGestionF: TBonRecGestionF
           VAlign = vaCenter
         end
         object Memo4: TfrxMemoView
-          Top = 294.315090000000000000
+          Top = 388.803340000000000000
           Width = 57.380137270000000000
           Height = 28.174678180000000000
           AllowExpressions = False
@@ -2751,7 +2762,7 @@ object BonRecGestionF: TBonRecGestionF
         end
         object Memo6: TfrxMemoView
           Left = 566.929500000000000000
-          Top = 294.315090000000000000
+          Top = 388.803340000000000000
           Width = 151.868387270000000000
           Height = 28.174678180000000000
           AllowExpressions = False
@@ -2769,7 +2780,7 @@ object BonRecGestionF: TBonRecGestionF
         end
         object Memo5: TfrxMemoView
           Left = 415.748300000000000000
-          Top = 294.315090000000000000
+          Top = 388.803340000000000000
           Width = 151.868387270000000000
           Height = 28.174678180000000000
           AllowExpressions = False
@@ -2787,7 +2798,7 @@ object BonRecGestionF: TBonRecGestionF
         end
         object Memo2: TfrxMemoView
           Left = 56.692950000000000000
-          Top = 294.315090000000000000
+          Top = 388.803340000000000000
           Width = 284.151937270000000000
           Height = 28.174678180000000000
           AllowExpressions = False
@@ -2804,8 +2815,8 @@ object BonRecGestionF: TBonRecGestionF
           VAlign = vaCenter
         end
         object Memo19: TfrxMemoView
-          Left = 18.897650000000000000
-          Top = 18.897650000000000000
+          Left = 355.275820000000000000
+          Top = 11.338590000000000000
           Width = 343.250042730000000000
           Height = 39.169674550000000000
           Font.Charset = DEFAULT_CHARSET
@@ -2819,8 +2830,8 @@ object BonRecGestionF: TBonRecGestionF
           VAlign = vaCenter
         end
         object Memo20: TfrxMemoView
-          Left = 18.897650000000000000
-          Top = 128.504020000000000000
+          Left = 355.275820000000000000
+          Top = 120.944960000000000000
           Width = 52.652762760000000000
           Height = 15.639434480000000000
           Font.Charset = DEFAULT_CHARSET
@@ -2834,8 +2845,8 @@ object BonRecGestionF: TBonRecGestionF
           VAlign = vaCenter
         end
         object Memo21: TfrxMemoView
-          Left = 18.897650000000000000
-          Top = 68.031540000000000000
+          Left = 355.275820000000000000
+          Top = 60.472480000000000000
           Width = 44.667172730000000000
           Height = 39.169674550000000000
           Font.Charset = DEFAULT_CHARSET
@@ -2849,8 +2860,8 @@ object BonRecGestionF: TBonRecGestionF
           VAlign = vaCenter
         end
         object NumRX: TfrxMemoView
-          Left = 71.811070000000000000
-          Top = 68.031540000000000000
+          Left = 408.189240000000000000
+          Top = 60.472480000000000000
           Width = 305.454742730000000000
           Height = 39.169674550000000000
           Font.Charset = DEFAULT_CHARSET
@@ -2864,8 +2875,8 @@ object BonRecGestionF: TBonRecGestionF
           VAlign = vaCenter
         end
         object DateRX: TfrxMemoView
-          Left = 71.811070000000000000
-          Top = 128.504020000000000000
+          Left = 408.189240000000000000
+          Top = 120.944960000000000000
           Width = 305.881272760000000000
           Height = 15.639434480000000000
           Font.Charset = DEFAULT_CHARSET
@@ -2879,8 +2890,8 @@ object BonRecGestionF: TBonRecGestionF
           VAlign = vaCenter
         end
         object Memo24: TfrxMemoView
-          Left = 377.953000000000000000
-          Top = 104.165430000000000000
+          Left = 8.559060000000000000
+          Top = 206.212740000000000000
           Width = 114.073087270000000000
           Height = 28.724409450000000000
           Font.Charset = DEFAULT_CHARSET
@@ -2896,8 +2907,8 @@ object BonRecGestionF: TBonRecGestionF
           VAlign = vaCenter
         end
         object NameRX: TfrxMemoView
-          Left = 377.953000000000000000
-          Top = 148.960730000000000000
+          Left = 8.559060000000000000
+          Top = 251.008040000000000000
           Width = 339.897042760000000000
           Height = 23.198494480000000000
           Font.Charset = DEFAULT_CHARSET
@@ -2911,8 +2922,8 @@ object BonRecGestionF: TBonRecGestionF
           VAlign = vaCenter
         end
         object AdrRX: TfrxMemoView
-          Left = 377.953000000000000000
-          Top = 183.976500000000000000
+          Left = 8.559060000000000000
+          Top = 286.023810000000000000
           Width = 339.897042760000000000
           Height = 23.198494480000000000
           Font.Charset = DEFAULT_CHARSET
@@ -2926,8 +2937,8 @@ object BonRecGestionF: TBonRecGestionF
           VAlign = vaCenter
         end
         object VilleRX: TfrxMemoView
-          Left = 377.953000000000000000
-          Top = 217.212740000000000000
+          Left = 8.559060000000000000
+          Top = 319.260050000000000000
           Width = 339.897042760000000000
           Height = 23.198494480000000000
           Font.Charset = DEFAULT_CHARSET
@@ -2941,8 +2952,8 @@ object BonRecGestionF: TBonRecGestionF
           VAlign = vaCenter
         end
         object WilayaRX: TfrxMemoView
-          Left = 377.953000000000000000
-          Top = 250.448980000000000000
+          Left = 8.559060000000000000
+          Top = 352.496290000000000000
           Width = 339.897042760000000000
           Height = 23.198494480000000000
           Font.Charset = DEFAULT_CHARSET
@@ -2956,20 +2967,98 @@ object BonRecGestionF: TBonRecGestionF
           VAlign = vaCenter
         end
         object Shape5: TfrxShapeView
-          Left = 480.000310000000000000
-          Top = 129.713385830000000000
-          Width = 238.110390000000000000
+          Left = 110.606370000000000000
+          Top = 231.760695830000000000
+          Width = 608.503939450000000000
           Height = 2.645669290000000000
           Fill.BackColor = 13948116
           Fill.ForeColor = clNone
           Frame.Color = 13948116
           Frame.ShadowColor = 13948116
         end
+        object Name: TfrxMemoView
+          Left = 7.559060000000000000
+          Top = 89.472480000000000000
+          Width = 328.819110000000000000
+          Height = 22.677165350000000000
+          Visible = False
+          DataSetName = 'S_CONFIG'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -16
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = []
+          Memo.UTF8W = (
+            'Name')
+          ParentFont = False
+        end
+        object Tel: TfrxMemoView
+          Left = 8.685045630000000000
+          Top = 115.488174330000000000
+          Width = 326.693124370000000000
+          Height = 22.677165350000000000
+          Visible = False
+          DataSetName = 'S_CONFIG'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -16
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = []
+          Memo.UTF8W = (
+            'Tel:')
+          ParentFont = False
+        end
+        object Mob: TfrxMemoView
+          Left = 8.685045630000000000
+          Top = 141.165354330000000000
+          Width = 326.551310470000000000
+          Height = 22.677165350000000000
+          Visible = False
+          DataSetName = 'S_CONFIG'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -16
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = []
+          Memo.UTF8W = (
+            'Mob:')
+          ParentFont = False
+        end
+        object Adr: TfrxMemoView
+          Left = 7.559060000000000000
+          Top = 167.063004330000000000
+          Width = 328.819110000000000000
+          Height = 34.015755350000000000
+          Visible = False
+          StretchMode = smActualHeight
+          DataSetName = 'S_CONFIG'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -16
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = []
+          Memo.UTF8W = (
+            'Adr')
+          ParentFont = False
+        end
+        object Logo: TfrxPictureView
+          Align = baLeft
+          Top = 11.338590000000000000
+          Width = 234.330860000000000000
+          Height = 64.251936770000000000
+          Visible = False
+          Center = True
+          DataField = 'LOGO'
+          DataSetName = 'S_ENTREP'
+          HightQuality = False
+          Transparent = True
+          TransparentColor = clWhite
+        end
       end
       object MasterData1: TfrxMasterData
         FillType = ftBrush
         Height = 24.566929130000000000
-        Top = 404.409710000000000000
+        Top = 495.118430000000000000
         Width = 718.110700000000000000
         DataSet = frxBonRecPListDB
         DataSetName = 'frxBonRecPListDB'
@@ -3070,7 +3159,7 @@ object BonRecGestionF: TBonRecGestionF
       object Footer1: TfrxFooter
         FillType = ftBrush
         Height = 245.515545460000000000
-        Top = 453.543600000000000000
+        Top = 544.252320000000000000
         Width = 718.110700000000000000
         object Shape3: TfrxShapeView
           Top = 179.315090000000000000

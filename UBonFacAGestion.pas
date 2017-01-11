@@ -205,7 +205,7 @@ var
 
 implementation
 
-uses  StringTool,
+uses  StringTool,Vcl.Imaging.jpeg,
   UMainF, USplashVersement, UBonFacA, USplashAddUnite, UProduitsList,
   UFournisseurList, UFournisseurGestion, USplashAddCompte, UFastProduitsList,
   UDataModule, UProduitGestion;
@@ -2765,7 +2765,56 @@ procedure TBonFacAGestionF.GettingData;
   str1 : string;
   Taux17,Taux7,Taux19,Montant17,Montant7,Montant19,RemisePerctageBonFacA : Currency;
 
+    Name,Tel,Mob,Adr : TfrxMemoView;
+
+  Logo : TfrxPictureView;
+    S: TMemoryStream;
+  Jpg: TJPEGImage;
 begin
+
+  if NOT (MainForm.CompanyTable.IsEmpty) then
+  begin
+
+    Name:= BonFacAPListfrxRprt.FindObject('Name') as TfrxMemoView;
+    Name.Text:= MainForm.CompanyTable.FieldByName('nom_comp').AsString ;
+    Name.Visible:=True;
+
+    Tel:= BonFacAPListfrxRprt.FindObject('Tel') as TfrxMemoView;
+    Tel.Text:= MainForm.CompanyTable.FieldByName('fix_comp').AsString ;
+    Tel.Visible:=True;
+
+      Mob:= BonFacAPListfrxRprt.FindObject('Mob') as TfrxMemoView;
+    Mob.Text:= MainForm.CompanyTable.FieldByName('mob_comp').AsString ;
+    Mob.Visible:=True;
+
+      Adr:= BonFacAPListfrxRprt.FindObject('Adr') as TfrxMemoView;
+    Adr.Text:= MainForm.CompanyTable.FieldByName('adr_comp').AsString ;
+    Adr.Visible:=True;
+
+      Logo:= BonFacAPListfrxRprt.FindObject('Logo') as TfrxPictureView;
+      Logo.Visible:=True;
+
+        if (MainForm.CompanyTable.fieldbyname('logo_comp').Value <> null) then
+      begin
+              S := TMemoryStream.Create;
+          try
+            TBlobField(MainForm.CompanyTable.FieldByName('logo_comp')).SaveToStream(S);
+            S.Position := 0;
+            Jpg := TJPEGImage.Create;
+            try
+              Jpg.LoadFromStream(S);
+              Logo.Picture.Assign(Jpg);
+                finally
+              Jpg.Free;
+            end;
+          finally
+            S.Free;
+          end;
+
+           end;
+
+  end;
+
   str1:= MontantEnToutesLettres(StrToFloat(StringReplace(BonFacATotalTTCLbl.Caption, #32, '', [rfReplaceAll])));
   str1[1] := Upcase(str1[1]);
   MoneyWordRX := BonFacAPListfrxRprt.FindObject('MoneyWordRX') as TfrxMemoView;

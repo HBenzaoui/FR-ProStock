@@ -376,7 +376,6 @@ object DataModuleF: TDataModuleF
       'Database=PSDBConfig'
       'User_Name=postgres'
       'DriverID=pG')
-    Connected = True
     LoginPrompt = False
     Left = 79
     Top = 22
@@ -1490,7 +1489,6 @@ object DataModuleF: TDataModuleF
     end
   end
   object PertesTable: TFDQuery
-    Active = True
     OnCalcFields = PertesTableCalcFields
     FilterOptions = [foCaseInsensitive]
     IndexFieldNames = 'code_pr'
@@ -1599,7 +1597,6 @@ object DataModuleF: TDataModuleF
     end
   end
   object Perte_typeTable: TFDQuery
-    Active = True
     FilterOptions = [foCaseInsensitive]
     IndexFieldNames = 'code_prt'
     Connection = MainForm.GstockdcConnection

@@ -40040,7 +40040,7 @@ object MainForm: TMainForm
       'DriverID=pG')
     LoginPrompt = False
     Left = 59
-    Top = 120
+    Top = 122
   end
   object Opt_cas_bnk_CaisseTable: TFDQuery
     FilterOptions = [foCaseInsensitive]

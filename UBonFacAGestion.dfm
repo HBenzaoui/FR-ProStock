@@ -2631,7 +2631,7 @@ object BonFacAGestionF: TBonFacAGestionF
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 42576.399521435200000000
-    ReportOptions.LastChange = 42745.971524456020000000
+    ReportOptions.LastChange = 42746.084584629630000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       ''
@@ -2725,7 +2725,7 @@ object BonFacAGestionF: TBonFacAGestionF
       object PageFooter1: TfrxPageFooter
         FillType = ftBrush
         Height = 21.057381430000000000
-        Top = 812.598950000000000000
+        Top = 907.087200000000000000
         Width = 718.110700000000000000
         object Memo7: TfrxMemoView
           Left = 3.779530000000000000
@@ -2791,12 +2791,12 @@ object BonFacAGestionF: TBonFacAGestionF
       end
       object PageHeader1: TfrxPageHeader
         FillType = ftBrush
-        Height = 322.978018180000000000
+        Height = 418.771653540000000000
         Top = 18.897650000000000000
         Width = 718.110700000000000000
         object Memo3: TfrxMemoView
           Left = 275.732530000000000000
-          Top = 294.425196850000000000
+          Top = 389.425196850000000000
           Width = 68.031503390000000000
           Height = 28.346456690000000000
           AllowExpressions = False
@@ -2813,9 +2813,9 @@ object BonFacAGestionF: TBonFacAGestionF
           VAlign = vaCenter
         end
         object Memo4: TfrxMemoView
-          Top = 294.425196850394000000
+          Top = 389.425196850000000000
           Width = 19.584837270000000000
-          Height = 28.346456692913400000
+          Height = 28.346456690000000000
           AllowExpressions = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -2831,9 +2831,9 @@ object BonFacAGestionF: TBonFacAGestionF
         end
         object Memo6: TfrxMemoView
           Left = 571.929500000000000000
-          Top = 294.425196850394000000
+          Top = 389.425196850000000000
           Width = 147.401574800000000000
-          Height = 28.346456692913400000
+          Height = 28.346456690000000000
           AllowExpressions = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -2849,7 +2849,7 @@ object BonFacAGestionF: TBonFacAGestionF
         end
         object Memo5: TfrxMemoView
           Left = 343.661720000000000000
-          Top = 294.425196850000000000
+          Top = 389.425196850000000000
           Width = 147.401574800000000000
           Height = 28.346456690000000000
           AllowExpressions = False
@@ -2867,7 +2867,7 @@ object BonFacAGestionF: TBonFacAGestionF
         end
         object Memo2: TfrxMemoView
           Left = 18.692950000000000000
-          Top = 294.425196850000000000
+          Top = 389.425196850000000000
           Width = 257.695227270000000000
           Height = 28.346456690000000000
           AllowExpressions = False
@@ -2885,7 +2885,7 @@ object BonFacAGestionF: TBonFacAGestionF
         end
         object Memo20: TfrxMemoView
           Left = 358.897650000000000000
-          Top = 106.504020000000000000
+          Top = 114.504020000000000000
           Width = 52.652762760000000000
           Height = 15.639434480000000000
           Font.Charset = DEFAULT_CHARSET
@@ -2900,7 +2900,7 @@ object BonFacAGestionF: TBonFacAGestionF
         end
         object Memo21: TfrxMemoView
           Left = 358.897650000000000000
-          Top = 49.031540000000000000
+          Top = 57.031540000000000000
           Width = 44.667172730000000000
           Height = 39.169674550000000000
           Font.Charset = DEFAULT_CHARSET
@@ -2915,7 +2915,7 @@ object BonFacAGestionF: TBonFacAGestionF
         end
         object NumRX: TfrxMemoView
           Left = 411.811070000000000000
-          Top = 49.031540000000000000
+          Top = 57.031540000000000000
           Width = 305.454742730000000000
           Height = 39.169674550000000000
           Font.Charset = DEFAULT_CHARSET
@@ -2930,7 +2930,7 @@ object BonFacAGestionF: TBonFacAGestionF
         end
         object DateRX: TfrxMemoView
           Left = 411.811070000000000000
-          Top = 106.504020000000000000
+          Top = 114.504020000000000000
           Width = 305.881272760000000000
           Height = 15.639434480000000000
           Font.Charset = DEFAULT_CHARSET
@@ -2945,7 +2945,7 @@ object BonFacAGestionF: TBonFacAGestionF
         end
         object Memo24: TfrxMemoView
           Left = 12.953000000000000000
-          Top = 104.165430000000000000
+          Top = 199.165430000000000000
           Width = 114.073087270000000000
           Height = 28.724409450000000000
           Font.Charset = DEFAULT_CHARSET
@@ -2962,7 +2962,7 @@ object BonFacAGestionF: TBonFacAGestionF
         end
         object NameRX: TfrxMemoView
           Left = 12.953000000000000000
-          Top = 148.960730000000000000
+          Top = 243.960730000000000000
           Width = 377.692342760000000000
           Height = 23.198494480000000000
           Font.Charset = DEFAULT_CHARSET
@@ -2977,7 +2977,7 @@ object BonFacAGestionF: TBonFacAGestionF
         end
         object AdrRX: TfrxMemoView
           Left = 12.953000000000000000
-          Top = 183.976500000000000000
+          Top = 278.976500000000000000
           Width = 377.692342760000000000
           Height = 23.198494480000000000
           Font.Charset = DEFAULT_CHARSET
@@ -2992,7 +2992,7 @@ object BonFacAGestionF: TBonFacAGestionF
         end
         object VilleRX: TfrxMemoView
           Left = 12.953000000000000000
-          Top = 217.212740000000000000
+          Top = 312.212740000000000000
           Width = 377.692342760000000000
           Height = 23.198494480000000000
           Font.Charset = DEFAULT_CHARSET
@@ -3007,7 +3007,7 @@ object BonFacAGestionF: TBonFacAGestionF
         end
         object WilayaRX: TfrxMemoView
           Left = 12.953000000000000000
-          Top = 250.448980000000000000
+          Top = 345.448980000000000000
           Width = 377.692342760000000000
           Height = 23.198494480000000000
           Font.Charset = DEFAULT_CHARSET
@@ -3022,7 +3022,7 @@ object BonFacAGestionF: TBonFacAGestionF
         end
         object Shape5: TfrxShapeView
           Left = 115.000310000000000000
-          Top = 129.713385830000000000
+          Top = 225.244170160000000000
           Width = 604.724800000000000000
           Height = 2.645669290000000000
           Fill.BackColor = 13948116
@@ -3032,7 +3032,7 @@ object BonFacAGestionF: TBonFacAGestionF
         end
         object Memo1: TfrxMemoView
           Left = 489.795610000000000000
-          Top = 294.425196850000000000
+          Top = 389.425196850000000000
           Width = 83.149591650000000000
           Height = 28.346456690000000000
           AllowExpressions = False
@@ -3050,7 +3050,7 @@ object BonFacAGestionF: TBonFacAGestionF
         end
         object RC: TfrxMemoView
           Left = 451.409710000000000000
-          Top = 148.960730000000000000
+          Top = 243.960730000000000000
           Width = 268.085972760000000000
           Height = 23.198494480000000000
           Font.Charset = DEFAULT_CHARSET
@@ -3065,7 +3065,7 @@ object BonFacAGestionF: TBonFacAGestionF
         end
         object NArt: TfrxMemoView
           Left = 451.409710000000000000
-          Top = 183.976500000000000000
+          Top = 278.976500000000000000
           Width = 268.085972760000000000
           Height = 23.198494480000000000
           Font.Charset = DEFAULT_CHARSET
@@ -3080,7 +3080,7 @@ object BonFacAGestionF: TBonFacAGestionF
         end
         object NIF: TfrxMemoView
           Left = 451.409710000000000000
-          Top = 217.212740000000000000
+          Top = 312.212740000000000000
           Width = 268.085972760000000000
           Height = 23.198494480000000000
           Font.Charset = DEFAULT_CHARSET
@@ -3095,7 +3095,7 @@ object BonFacAGestionF: TBonFacAGestionF
         end
         object NIS: TfrxMemoView
           Left = 451.409710000000000000
-          Top = 250.448980000000000000
+          Top = 345.448980000000000000
           Width = 268.085972760000000000
           Height = 23.198494480000000000
           Font.Charset = DEFAULT_CHARSET
@@ -3110,7 +3110,7 @@ object BonFacAGestionF: TBonFacAGestionF
         end
         object Memo18: TfrxMemoView
           Left = 403.875067240000000000
-          Top = 148.960730000000000000
+          Top = 243.960730000000000000
           Width = 45.093702760000000000
           Height = 23.198494480000000000
           Font.Charset = DEFAULT_CHARSET
@@ -3126,7 +3126,7 @@ object BonFacAGestionF: TBonFacAGestionF
         end
         object Memo22: TfrxMemoView
           Left = 392.897650000000000000
-          Top = 183.976500000000000000
+          Top = 278.976500000000000000
           Width = 56.432292760000000000
           Height = 23.198494480000000000
           Font.Charset = DEFAULT_CHARSET
@@ -3142,7 +3142,7 @@ object BonFacAGestionF: TBonFacAGestionF
         end
         object Memo23: TfrxMemoView
           Left = 403.236240000000000000
-          Top = 217.212740000000000000
+          Top = 312.212740000000000000
           Width = 45.093702760000000000
           Height = 23.198494480000000000
           Font.Charset = DEFAULT_CHARSET
@@ -3158,7 +3158,7 @@ object BonFacAGestionF: TBonFacAGestionF
         end
         object Memo25: TfrxMemoView
           Left = 403.236240000000000000
-          Top = 250.448980000000000000
+          Top = 345.448980000000000000
           Width = 45.093702760000000000
           Height = 23.198494480000000000
           Font.Charset = DEFAULT_CHARSET
@@ -3172,11 +3172,104 @@ object BonFacAGestionF: TBonFacAGestionF
           ParentFont = False
           VAlign = vaCenter
         end
+        object Memo19: TfrxMemoView
+          Left = 358.897650000000000000
+          Top = 7.897650000000000000
+          Width = 343.250042730000000000
+          Height = 39.169674550000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 4144959
+          Font.Height = -33
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = [fsBold]
+          Memo.UTF8W = (
+            'FACTURE D'#39'ACHAT')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Name: TfrxMemoView
+          Left = 15.118120000000000000
+          Top = 85.692950000000000000
+          Width = 328.819110000000000000
+          Height = 22.677165350000000000
+          Visible = False
+          DataSetName = 'S_CONFIG'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -16
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = []
+          Memo.UTF8W = (
+            'Name')
+          ParentFont = False
+        end
+        object Tel: TfrxMemoView
+          Left = 16.244105630000000000
+          Top = 111.708644330000000000
+          Width = 326.693124370000000000
+          Height = 22.677165350000000000
+          Visible = False
+          DataSetName = 'S_CONFIG'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -16
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = []
+          Memo.UTF8W = (
+            'Tel:')
+          ParentFont = False
+        end
+        object Mob: TfrxMemoView
+          Left = 16.244105630000000000
+          Top = 137.385824330000000000
+          Width = 326.551310470000000000
+          Height = 22.677165350000000000
+          Visible = False
+          DataSetName = 'S_CONFIG'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -16
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = []
+          Memo.UTF8W = (
+            'Mob:')
+          ParentFont = False
+        end
+        object Adr: TfrxMemoView
+          Left = 15.118120000000000000
+          Top = 163.283474330000000000
+          Width = 328.819110000000000000
+          Height = 34.015755350000000000
+          Visible = False
+          StretchMode = smActualHeight
+          DataSetName = 'S_CONFIG'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -16
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = []
+          Memo.UTF8W = (
+            'Adr')
+          ParentFont = False
+        end
+        object Logo: TfrxPictureView
+          Align = baLeft
+          Top = 7.559060000000000000
+          Width = 234.330860000000000000
+          Height = 64.251936770000000000
+          Visible = False
+          Center = True
+          DataField = 'LOGO'
+          DataSetName = 'S_ENTREP'
+          HightQuality = False
+          Transparent = True
+          TransparentColor = clWhite
+        end
       end
       object MasterData1: TfrxMasterData
         FillType = ftBrush
         Height = 24.566929130000000000
-        Top = 404.409710000000000000
+        Top = 498.897960000000000000
         Width = 718.110700000000000000
         DataSet = frxBonFacAPListDB
         DataSetName = 'frxBonFacAPListDB'
@@ -3300,7 +3393,7 @@ object BonFacAGestionF: TBonFacAGestionF
       object Footer1: TfrxFooter
         FillType = ftBrush
         Height = 297.295075460000000000
-        Top = 453.543600000000000000
+        Top = 548.031850000000000000
         Width = 718.110700000000000000
         object Shape3: TfrxShapeView
           Top = 231.315090000000000000
@@ -3848,21 +3941,6 @@ object BonFacAGestionF: TBonFacAGestionF
           ParentFont = False
           VAlign = vaCenter
         end
-      end
-      object Memo19: TfrxMemoView
-        Left = 358.897650000000000000
-        Top = 18.795300000000000000
-        Width = 343.250042730000000000
-        Height = 39.169674550000000000
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = 4144959
-        Font.Height = -33
-        Font.Name = 'Helvetica LT Std'
-        Font.Style = [fsBold]
-        Memo.UTF8W = (
-          'FACTURE D'#39'ACHAT')
-        ParentFont = False
-        VAlign = vaCenter
       end
     end
   end
