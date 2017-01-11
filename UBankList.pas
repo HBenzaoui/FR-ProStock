@@ -3,13 +3,13 @@ unit UBankList;
 interface
 
 uses
-  Winapi.Windows,DateUtils,
+  Winapi.Windows,DateUtils,EhLibFireDAC,
    Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, DBGridEhGrouping, ToolCtrlsEh,
   DBGridEhToolCtrls, DynVarsEh, Data.DB, Vcl.StdCtrls, Vcl.ComCtrls,
   Vcl.Buttons, sSpeedButton, Vcl.ExtCtrls, EhLibVCL, GridsEh, DBAxisGridsEh,
   DBGridEh, frxClass, frxExportPDF, frxExportXLS, frxDBSet, AdvToolBtn, acImage,
-  Vcl.Menus;
+  Vcl.Menus, sStatusBar;
 
 type
   TBankListF = class(TForm)
@@ -85,6 +85,9 @@ type
     ClearTVAFilterPMenu: TMenuItem;
     N5: TMenuItem;
     ClearFilterBVLivPMenu: TMenuItem;
+    StatuBar: TsStatusBar;
+    SumGirdProduitBtn: TAdvToolButton;
+    RefreshGirdBtn: TAdvToolButton;
     procedure FormShow(Sender: TObject);
     procedure BankListCbxDropDown(Sender: TObject);
     procedure DaysBankListCbxChange(Sender: TObject);
@@ -119,6 +122,7 @@ type
     procedure ClearRegleFilterBVLivPMenuClick(Sender: TObject);
     procedure ClearTVAFilterPMenuClick(Sender: TObject);
     procedure BankListCbxExit(Sender: TObject);
+    procedure RefreshGirdBtnClick(Sender: TObject);
   private
     procedure GettingData;
     procedure FilteredColor;
@@ -899,6 +903,12 @@ end;
 procedure TBankListF.PreviosBankbtnClick(Sender: TObject);
 begin
 MainForm.Opt_cas_bnk_BankTable.Prior;
+end;
+
+procedure TBankListF.RefreshGirdBtnClick(Sender: TObject);
+begin
+MainForm.Opt_cas_bnk_BankTable.Close;
+MainForm.Opt_cas_bnk_BankTable.Open;
 end;
 
 procedure TBankListF.RegleFilterBVLivPMenuClick(Sender: TObject);

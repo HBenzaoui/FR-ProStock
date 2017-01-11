@@ -62,7 +62,8 @@ uses
   USTypeChargeList in 'USTypeChargeList.pas' {STypeChargeListF},
   UTypePerteList in 'UTypePerteList.pas' {TypePerteListF},
   UBonFacPGestion in 'UBonFacPGestion.pas' {BonFacPGestionF},
-  UBonFacP in 'UBonFacP.pas' {BonFacPF};
+  UBonFacP in 'UBonFacP.pas' {BonFacPF},
+  UTransferComptesGestion in 'UTransferComptesGestion.pas' {TransferComptesGestionF};
 
 {$R *.res}
 

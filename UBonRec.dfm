@@ -368,7 +368,7 @@ object BonRecF: TBonRecF
     IndicatorTitle.TitleButton = True
     OddRowColor = 16315635
     Options = [dgTitles, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
-    OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghDialogFind, dghColumnResize, dghColumnMove, dghHotTrack, dghExtendVertLines]
+    OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghAutoSortMarking, dghDialogFind, dghColumnResize, dghColumnMove, dghHotTrack, dghExtendVertLines]
     ParentCtl3D = False
     ParentFont = False
     ParentShowHint = False
@@ -858,7 +858,7 @@ object BonRecF: TBonRecF
     Height = 82
     Align = alTop
     BevelOuter = bvNone
-    Color = 15722984
+    Color = 15527148
     DoubleBuffered = True
     ParentBackground = False
     ParentDoubleBuffered = False
@@ -1287,6 +1287,7 @@ object BonRecF: TBonRecF
       ParentFont = False
       TabOrder = 0
       OnChange = ResearchBARecEdtChange
+      OnKeyPress = ResearchBARecEdtKeyPress
     end
     object Panel2: TPanel
       Left = 485
@@ -1420,7 +1421,6 @@ object BonRecF: TBonRecF
     ParentBackground = False
     TabOrder = 2
     StyleElements = []
-    ExplicitHeight = 659
   end
   object StatuBar: TsStatusBar
     Left = 0
@@ -1442,26 +1442,11 @@ object BonRecF: TBonRecF
     ParentBiDiMode = False
     SizeGrip = False
     SkinData.SkinSection = 'MENUITEM'
-    ExplicitTop = 716
     DesignSize = (
       1191
       20)
-    object sImage3: TsImage
-      Tag = 1
-      Left = 250
-      Top = 3
-      Width = 16
-      Height = 16
-      Center = True
-      Picture.Data = {07544269746D617000000000}
-      Proportional = True
-      Stretch = True
-      Transparent = True
-      ImageIndex = 4
-      SkinData.SkinSection = 'CHECKBOX'
-    end
     object SumGirdBARecBtn: TAdvToolButton
-      Left = 112
+      Left = 141
       Top = 0
       Width = 26
       Height = 20
@@ -1491,6 +1476,40 @@ object BonRecF: TBonRecF
       ShowHint = True
       Spacing = -2
       OnClick = SumGirdBARecBtnClick
+      Version = '1.6.1.2'
+      TMSStyle = 0
+    end
+    object RefreshGirdBtn: TAdvToolButton
+      Left = 112
+      Top = 0
+      Width = 26
+      Height = 20
+      Cursor = crHandPoint
+      Hint = 'Rafra'#238'chir'
+      Anchors = [akRight]
+      AutoThemeAdapt = False
+      BorderColor = 15722984
+      BorderDownColor = 15722984
+      BorderHotColor = 14079702
+      Color = 15722984
+      ColorDown = 15722984
+      ColorHot = 14079702
+      ColorHotTo = 14079702
+      ColorChecked = clNone
+      DropDownSplit = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 4207405
+      Font.Height = 18
+      Font.Name = 'Roboto'
+      Font.Style = []
+      ImageIndex = 27
+      Images = MainForm.PanelIcons16
+      ParentFont = False
+      ParentShowHint = False
+      Shaded = False
+      ShowHint = True
+      Spacing = -2
+      OnClick = RefreshGirdBtnClick
       Version = '1.6.1.2'
       TMSStyle = 0
     end

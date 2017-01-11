@@ -331,7 +331,7 @@ object ReglementFListF: TReglementFListF
     Height = 82
     Align = alTop
     BevelOuter = bvNone
-    Color = 15722984
+    Color = 15527148
     DoubleBuffered = True
     ParentBackground = False
     ParentDoubleBuffered = False
@@ -462,8 +462,8 @@ object ReglementFListF: TReglementFListF
       ShowHint = True
       OnClick = sSpeedButton1Click
       SkinData.SkinSection = 'SPEEDBUTTON'
-      ImageIndex = 7
       Images = MainForm.PanelIcons24
+      ImageIndex = 7
     end
     object sSpeedButton2: TsSpeedButton
       Left = 1086
@@ -475,8 +475,8 @@ object ReglementFListF: TReglementFListF
       ShowHint = True
       OnClick = sSpeedButton2Click
       SkinData.SkinSection = 'SPEEDBUTTON'
-      ImageIndex = 8
       Images = MainForm.PanelIcons24
+      ImageIndex = 8
     end
     object sSpeedButton3: TsSpeedButton
       Left = 1154
@@ -488,8 +488,8 @@ object ReglementFListF: TReglementFListF
       ShowHint = True
       OnClick = sSpeedButton3Click
       SkinData.SkinSection = 'SPEEDBUTTON'
-      ImageIndex = 9
       Images = MainForm.PanelIcons24
+      ImageIndex = 9
     end
     object Label1: TLabel
       Left = 345
@@ -532,8 +532,8 @@ object ReglementFListF: TReglementFListF
       ShowHint = True
       OnClick = LastBARecbtnClick
       SkinData.SkinSection = 'SPEEDBUTTON'
-      ImageIndex = 3
       Images = MainForm.PanelIcons24
+      ImageIndex = 3
     end
     object NextBARecbtn: TsSpeedButton
       Left = 559
@@ -544,8 +544,8 @@ object ReglementFListF: TReglementFListF
       ShowHint = True
       OnClick = NextBARecbtnClick
       SkinData.SkinSection = 'SPEEDBUTTON'
-      ImageIndex = 2
       Images = MainForm.PanelIcons24
+      ImageIndex = 2
       ShowCaption = False
     end
     object PreviosBARecbtn: TsSpeedButton
@@ -557,8 +557,8 @@ object ReglementFListF: TReglementFListF
       ShowHint = True
       OnClick = PreviosBARecbtnClick
       SkinData.SkinSection = 'SPEEDBUTTON'
-      ImageIndex = 1
       Images = MainForm.PanelIcons24
+      ImageIndex = 1
     end
     object FisrtBARecbtn: TsSpeedButton
       Left = 491
@@ -569,8 +569,8 @@ object ReglementFListF: TReglementFListF
       ShowHint = True
       OnClick = FisrtBARecbtnClick
       SkinData.SkinSection = 'SPEEDBUTTON'
-      ImageIndex = 0
       Images = MainForm.PanelIcons24
+      ImageIndex = 0
       ShowCaption = False
     end
     object FilterBVLivBtn: TAdvToolButton
@@ -745,6 +745,7 @@ object ReglementFListF: TReglementFListF
       ParentFont = False
       TabOrder = 0
       OnChange = ResearchRegFEdtChange
+      OnKeyPress = ResearchRegFEdtKeyPress
     end
     object Panel2: TPanel
       Left = 485
@@ -871,7 +872,7 @@ object ReglementFListF: TReglementFListF
     Left = 0
     Top = 82
     Width = 1
-    Height = 659
+    Height = 639
     Align = alLeft
     BevelOuter = bvNone
     Color = 7854350
@@ -883,7 +884,7 @@ object ReglementFListF: TReglementFListF
     Left = 0
     Top = 82
     Width = 1191
-    Height = 659
+    Height = 637
     Anchors = [akLeft, akTop, akRight, akBottom]
     Border.Color = 4207405
     Border.ExtendedDraw = False
@@ -926,6 +927,7 @@ object ReglementFListF: TReglementFListF
     RowHeight = 25
     SearchPanel.FilterOnTyping = True
     ShowHint = True
+    SumList.Active = True
     TabOrder = 2
     TitleParams.BorderInFillStyle = True
     TitleParams.FillStyle = cfstThemedEh
@@ -1061,6 +1063,15 @@ object ReglementFListF: TReglementFListF
         Font.Height = 16
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
+        Footer.Alignment = taRightJustify
+        Footer.Color = 15722984
+        Footer.Font.Charset = DEFAULT_CHARSET
+        Footer.Font.Color = 4207405
+        Footer.Font.Height = 18
+        Footer.Font.Name = 'Helvetica LT Std'
+        Footer.Font.Style = [fsBold]
+        Footer.Value = 'Total:'
+        Footer.ValueType = fvtStaticText
         Footers = <>
         Layout = tlCenter
         Title.Alignment = taCenter
@@ -1086,6 +1097,12 @@ object ReglementFListF: TReglementFListF
         Font.Height = 16
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
+        Footer.Color = 15722984
+        Footer.Font.Charset = DEFAULT_CHARSET
+        Footer.Font.Color = 4207405
+        Footer.Font.Height = 18
+        Footer.Font.Name = 'Helvetica LT Std'
+        Footer.Font.Style = []
         Footers = <>
         ImageList = MainForm.GridIconsMP20
         KeyList.Strings = (
@@ -1116,6 +1133,15 @@ object ReglementFListF: TReglementFListF
         Font.Height = 16
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
+        Footer.Color = 15722984
+        Footer.DisplayFormat = '#,##0.00'
+        Footer.FieldName = 'montver_rf'
+        Footer.Font.Charset = DEFAULT_CHARSET
+        Footer.Font.Color = 4207405
+        Footer.Font.Height = 18
+        Footer.Font.Name = 'Helvetica LT Std'
+        Footer.Font.Style = [fsBold]
+        Footer.ValueType = fvtSum
         Footers = <>
         Layout = tlCenter
         MinWidth = 150
@@ -1311,13 +1337,105 @@ object ReglementFListF: TReglementFListF
     object RowDetailData: TRowDetailPanelControlEh
     end
   end
+  object StatuBar: TsStatusBar
+    Left = 0
+    Top = 721
+    Width = 1191
+    Height = 20
+    BiDiMode = bdLeftToRight
+    Panels = <
+      item
+        Alignment = taRightJustify
+        Bevel = pbRaised
+        Style = psOwnerDraw
+        Width = 110
+      end
+      item
+        Style = psOwnerDraw
+        Width = 50
+      end>
+    ParentBiDiMode = False
+    SizeGrip = False
+    SkinData.SkinSection = 'MENUITEM'
+    DesignSize = (
+      1191
+      20)
+    object SumGirdProduitBtn: TAdvToolButton
+      Left = 141
+      Top = 0
+      Width = 26
+      Height = 20
+      Cursor = crHandPoint
+      Hint = 'Totaux'
+      Anchors = [akRight]
+      AutoThemeAdapt = False
+      BorderColor = 15722984
+      BorderDownColor = 15722984
+      BorderHotColor = 14079702
+      Color = 15722984
+      ColorDown = 15722984
+      ColorHot = 14079702
+      ColorHotTo = 14079702
+      ColorChecked = clNone
+      DropDownSplit = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 4207405
+      Font.Height = 18
+      Font.Name = 'Roboto'
+      Font.Style = []
+      ImageIndex = 26
+      Images = MainForm.PanelIcons16
+      ParentFont = False
+      ParentShowHint = False
+      Shaded = False
+      ShowHint = True
+      Spacing = -2
+      OnClick = SumGirdProduitBtnClick
+      Version = '1.6.1.2'
+      TMSStyle = 0
+    end
+    object RefreshGirdBtn: TAdvToolButton
+      Left = 112
+      Top = 0
+      Width = 26
+      Height = 20
+      Cursor = crHandPoint
+      Hint = 'Rafra'#238'chir'
+      Anchors = [akRight]
+      AutoThemeAdapt = False
+      BorderColor = 15722984
+      BorderDownColor = 15722984
+      BorderHotColor = 14079702
+      Color = 15722984
+      ColorDown = 15722984
+      ColorHot = 14079702
+      ColorHotTo = 14079702
+      ColorChecked = clNone
+      DropDownSplit = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 4207405
+      Font.Height = 18
+      Font.Name = 'Roboto'
+      Font.Style = []
+      ImageIndex = 27
+      Images = MainForm.PanelIcons16
+      ParentFont = False
+      ParentShowHint = False
+      Shaded = False
+      ShowHint = True
+      Spacing = -2
+      OnClick = RefreshGirdBtnClick
+      Version = '1.6.1.2'
+      TMSStyle = 0
+    end
+  end
   object RegFListDataS: TDataSource
     DataSet = MainForm.RegfournisseurTable
     Left = 1128
     Top = 672
   end
   object RegFListfrxRprt: TfrxReport
-    Version = '5.5'
+    Version = '5.4.6'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]

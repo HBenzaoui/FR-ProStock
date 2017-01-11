@@ -9,7 +9,7 @@ uses
   DBGridEhToolCtrls, DynVarsEh, Data.DB, EhLibVCL, GridsEh, DBAxisGridsEh,
   DBGridEh, Vcl.StdCtrls, Vcl.ComCtrls, Vcl.WinXCtrls, Vcl.Buttons,
   sSpeedButton, AdvToolBtn, Vcl.ExtCtrls, frxExportPDF, frxClass, frxExportXLS,
-  frxDBSet, acImage, Vcl.Menus;
+  frxDBSet, acImage, Vcl.Menus, sStatusBar;
 
 type
   TReglementCListF = class(TForm)
@@ -64,6 +64,9 @@ type
     N5: TMenuItem;
     ClearFilterBVLivPMenu: TMenuItem;
     V1: TMenuItem;
+    StatuBar: TsStatusBar;
+    SumGirdProduitBtn: TAdvToolButton;
+    RefreshGirdBtn: TAdvToolButton;
     procedure AddBARecBtnClick(Sender: TObject);
     procedure ResearchRegCEdtChange(Sender: TObject);
     procedure DateStartRegCDChange(Sender: TObject);
@@ -92,6 +95,9 @@ type
     procedure VirmentMPFilterBVLivPMenuClick(Sender: TObject);
     procedure ClearMPFilterBVLivPMenuClick(Sender: TObject);
     procedure ClearFilterBVLivPMenuClick(Sender: TObject);
+    procedure RefreshGirdBtnClick(Sender: TObject);
+    procedure SumGirdProduitBtnClick(Sender: TObject);
+    procedure ResearchRegCEdtKeyPress(Sender: TObject; var Key: Char);
   private
     procedure GettingData;
     procedure FilteredColor;
@@ -248,6 +254,12 @@ procedure TReglementCListF.AddBARecBtnClick(Sender: TObject);
               ReglementCGestionF.OKRegCGBtn.Tag:= 0 ;
   end;
 
+procedure TReglementCListF.RefreshGirdBtnClick(Sender: TObject);
+begin
+MainForm.RegclientTable.Close;
+MainForm.RegclientTable.Open;
+end;
+
 procedure TReglementCListF.ResearchRegCEdtChange(Sender: TObject);
 begin
  //----------- Searching in databese-------------------//
@@ -297,6 +309,70 @@ begin
 
 
      end;
+end;
+
+procedure TReglementCListF.ResearchRegCEdtKeyPress(Sender: TObject;
+  var Key: Char);
+const
+  N = [    Char(VK_ESCAPE)];
+begin
+
+  if(Key in N) then
+  begin
+   key := #0  ;
+    ResearchRegCEdt.Text:= '';
+
+  end;
+  if key = #13 then
+  begin
+   key := #0;
+
+    if ResearchRegCEdt.Text<>'' then
+    begin
+
+          if ResherchRegCClientRdioBtn.Checked then
+          begin
+          MainForm.RegclientTable.DisableControls;
+          MainForm.RegclientTable.Active:=False;
+          MainForm.RegclientTable.SQL.Clear;
+          MainForm.RegclientTable.SQL.Text:='SELECT * FROM regclient WHERE code_c IN( SELECT code_c FROM client WHERE LOWER(nom_c) LIKE LOWER' +'('''+(ResearchRegCEdt.Text)+''')' +')';
+          MainForm.RegclientTable.Active:=True;
+          MainForm.RegclientTable.EnableControls;
+
+          end;
+
+          if ResherchRegCNumBRdioBtn.Checked then
+          begin
+          MainForm.RegclientTable.DisableControls;
+          MainForm.RegclientTable.Active:=False;
+          MainForm.RegclientTable.SQL.Clear;
+          MainForm.RegclientTable.SQL.Text:='SELECT * FROM regclient WHERE LOWER(nom_rc) LIKE LOWER' +'('''+(ResearchRegCEdt.Text)+''')' ;
+          MainForm.RegclientTable.Active:=True;
+          MainForm.RegclientTable.EnableControls;
+          end;
+
+
+    end else
+     begin
+          MainForm.RegclientTable.DisableControls;
+          MainForm.RegclientTable.Active:=False;
+          MainForm.RegclientTable.SQL.Clear;
+          MainForm.RegclientTable.SQL.Text:='SELECT * FROM regclient ' ;
+          MainForm.RegclientTable.Active:=True;
+          MainForm.RegclientTable.EnableControls;
+
+
+          MainForm.ClientTable.DisableControls;
+          MainForm.ClientTable.Active:=False;
+          MainForm.ClientTable.SQL.Clear;
+          MainForm.ClientTable.SQL.Text:='SELECT * FROM client ' ;
+          MainForm.ClientTable.Active:=True;
+          MainForm.ClientTable.EnableControls;
+
+
+
+     end;
+  end;
 end;
 
 procedure TReglementCListF.ATermeMPFilterBVLivPMenuClick(Sender: TObject);
@@ -727,6 +803,19 @@ RegCListfrxRprt.Export(frxPDFExport1);
 
 
 MainForm.RegclientTable.EnableControls;
+end;
+
+procedure TReglementCListF.SumGirdProduitBtnClick(Sender: TObject);
+begin
+  if SumGirdProduitBtn.Tag = 0 then
+  begin
+    BVLivListDBGridEh.FooterRowCount:=1;
+    SumGirdProduitBtn.Tag := 1;
+  end else
+      begin
+        BVLivListDBGridEh.FooterRowCount:=0;
+        SumGirdProduitBtn.Tag := 0;
+      end;
 end;
 
 procedure TReglementCListF.V1Click(Sender: TObject);

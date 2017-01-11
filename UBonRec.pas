@@ -73,8 +73,8 @@ type
     N5: TMenuItem;
     ClearFilterBVLivPMenu: TMenuItem;
     StatuBar: TsStatusBar;
-    sImage3: TsImage;
     SumGirdBARecBtn: TAdvToolButton;
+    RefreshGirdBtn: TAdvToolButton;
     procedure AddBARecBtnClick(Sender: TObject);
     procedure FisrtBARecbtnClick(Sender: TObject);
     procedure LastBARecbtnClick(Sender: TObject);
@@ -109,6 +109,8 @@ type
     procedure ClearMPFilterBVLivPMenuClick(Sender: TObject);
     procedure ClearFilterBVLivPMenuClick(Sender: TObject);
     procedure SumGirdBARecBtnClick(Sender: TObject);
+    procedure RefreshGirdBtnClick(Sender: TObject);
+    procedure ResearchBARecEdtKeyPress(Sender: TObject; var Key: Char);
 
   private
     procedure GettingData;
@@ -719,6 +721,7 @@ end;
 procedure TBonRecF.EditBARecBtnClick(Sender: TObject);
 var
  CodeF : Integer;
+
  begin
     if NOT (MainForm.Bona_recTable.IsEmpty) Then
    begin
@@ -727,68 +730,62 @@ var
    begin
 
     MainForm.Bona_recPlistTable.Active:=False;
-    MainForm.Bona_recPlistTable.IndexFieldNames:='code_barec';
-    BonRecGestionF := TBonRecGestionF.Create(nil);
-    try
-
-      if Assigned(BonRecF) then
-    begin
-    ResearchBARecEdt.Text:='';
-    end;
-
-     MainForm.Bona_recTable.Refresh;
 
 
-//      BonRecGestionF := TBonRecGestionF.Create(BonRecF);
-//       MainForm.Bona_recTable.Refresh;
-       BonRecGestionF.NumBonRecGEdt.Caption := MainForm.Bona_recTable.FieldValues['num_barec'];
-       BonRecGestionF.DateBonRecGD.Date:= MainForm.Bona_recTable.FieldValues['date_barec'];
-       if (MainForm.Bona_recTable.FieldValues['code_f']<> null) and (MainForm.Bona_recTable.FieldValues['code_f']<> 0) then
-       begin
-       CodeF:=MainForm.Bona_recTable.FieldValues['code_f'];
-       BonRecGestionF.FournisseurBonRecGCbx.Text:= MainForm.Bona_recTable.FieldValues['fourbarec'];
-         MainForm.FournisseurTable.Active:=false;
-         MainForm.FournisseurTable.SQL.Clear;
-         MainForm.FournisseurTable.SQL.Text:='Select * FROM fournisseur WHERE code_f ='+(IntToStr( CodeF ) ) ;
-         MainForm.FournisseurTable.Active:=True;
-         BonRecGestionF.BonRecGFourOLDCredit.Caption:= CurrToStrF(MainForm.FournisseurTable.FieldValues['oldcredit_f'],ffNumber,2);
-         MainForm.FournisseurTable.Active:=false;
-         MainForm.FournisseurTable.SQL.Clear;
-         MainForm.FournisseurTable.SQL.Text:='Select * FROM fournisseur ' ;
-         MainForm.FournisseurTable.Active:=True;
-        end;
+      MainForm.Bona_recPlistTable.IndexFieldNames:='code_barec';
 
-       if (MainForm.Bona_recTable.FieldValues['code_mdpai']<> null ) AND (MainForm.Bona_recTable.FieldValues['code_mdpai']<> 0) then
-       begin
-       CodeF:=MainForm.Bona_recTable.FieldValues['code_mdpai'];
-         MainForm.Mode_paiementTable.Active:=false;
-         MainForm.Mode_paiementTable.SQL.Clear;
-         MainForm.Mode_paiementTable.SQL.Text:='Select * FROM mode_paiement WHERE code_mdpai ='+(IntToStr( CodeF ) ) ;
-         MainForm.Mode_paiementTable.Active:=True;
-         BonRecGestionF.ModePaieBonRecGCbx.Text:= MainForm.Mode_paiementTable.FieldValues['nom_mdpai'];
-         MainForm.Mode_paiementTable.Active:=false;
-         MainForm.Mode_paiementTable.SQL.Clear;
-         MainForm.Mode_paiementTable.SQL.Text:='SELECT * FROM mode_paiement ' ;
-         MainForm.Mode_paiementTable.Active:=True;
+      BonRecGestionF := TBonRecGestionF.Create(nil);
+      try
 
-       end;
-       if (MainForm.Bona_recTable.FieldValues['code_cmpt']<> null) AND (MainForm.Bona_recTable.FieldValues['code_cmpt']<> 0) then
-       begin
-       CodeF:=MainForm.Bona_recTable.FieldValues['code_cmpt'];
-         MainForm.CompteTable.Active:=false;
-         MainForm.CompteTable.SQL.Clear;
-         MainForm.CompteTable.SQL.Text:='Select * FROM compte WHERE code_cmpt ='+(IntToStr( CodeF ) ) ;
-         MainForm.CompteTable.Active:=True;
-         BonRecGestionF.CompteBonRecGCbx.Text:= MainForm.CompteTable.FieldValues['nom_cmpt'];
-         MainForm.CompteTable.Active:=false;
-         MainForm.CompteTable.SQL.Clear;
-         MainForm.CompteTable.SQL.Text:='SELECT * FROM compte ' ;
-         MainForm.CompteTable.Active:=True;
-       end;
-       if MainForm.Bona_recTable.FieldValues['num_cheque_barec']<> null then
-       begin
-        BonRecGestionF.NChequeBonRecGCbx.Text:= MainForm.Bona_recTable.FieldValues['num_cheque_barec'];
-       end;
+
+         BonRecGestionF.NumBonRecGEdt.Caption := MainForm.Bona_recTable.FieldValues['num_barec'];
+         BonRecGestionF.DateBonRecGD.Date:= MainForm.Bona_recTable.FieldValues['date_barec'];
+         if (MainForm.Bona_recTable.FieldValues['code_f']<> null) and (MainForm.Bona_recTable.FieldValues['code_f']<> 0) then
+         begin
+         CodeF:=MainForm.Bona_recTable.FieldValues['code_f'];
+         BonRecGestionF.FournisseurBonRecGCbx.Text:= MainForm.Bona_recTable.FieldValues['fourbarec'];
+           MainForm.FournisseurTable.Active:=false;
+           MainForm.FournisseurTable.SQL.Clear;
+           MainForm.FournisseurTable.SQL.Text:='Select * FROM fournisseur WHERE code_f ='+(IntToStr( CodeF ) ) ;
+           MainForm.FournisseurTable.Active:=True;
+           BonRecGestionF.BonRecGFourOLDCredit.Caption:= CurrToStrF(MainForm.FournisseurTable.FieldValues['oldcredit_f'],ffNumber,2);
+           MainForm.FournisseurTable.Active:=false;
+           MainForm.FournisseurTable.SQL.Clear;
+           MainForm.FournisseurTable.SQL.Text:='Select * FROM fournisseur ' ;
+           MainForm.FournisseurTable.Active:=True;
+          end;
+
+         if (MainForm.Bona_recTable.FieldValues['code_mdpai']<> null ) AND (MainForm.Bona_recTable.FieldValues['code_mdpai']<> 0) then
+         begin
+         CodeF:=MainForm.Bona_recTable.FieldValues['code_mdpai'];
+           MainForm.Mode_paiementTable.Active:=false;
+           MainForm.Mode_paiementTable.SQL.Clear;
+           MainForm.Mode_paiementTable.SQL.Text:='Select * FROM mode_paiement WHERE code_mdpai ='+(IntToStr( CodeF ) ) ;
+           MainForm.Mode_paiementTable.Active:=True;
+           BonRecGestionF.ModePaieBonRecGCbx.Text:= MainForm.Mode_paiementTable.FieldValues['nom_mdpai'];
+           MainForm.Mode_paiementTable.Active:=false;
+           MainForm.Mode_paiementTable.SQL.Clear;
+           MainForm.Mode_paiementTable.SQL.Text:='SELECT * FROM mode_paiement ' ;
+           MainForm.Mode_paiementTable.Active:=True;
+
+         end;
+         if (MainForm.Bona_recTable.FieldValues['code_cmpt']<> null) AND (MainForm.Bona_recTable.FieldValues['code_cmpt']<> 0) then
+         begin
+         CodeF:=MainForm.Bona_recTable.FieldValues['code_cmpt'];
+           MainForm.CompteTable.Active:=false;
+           MainForm.CompteTable.SQL.Clear;
+           MainForm.CompteTable.SQL.Text:='Select * FROM compte WHERE code_cmpt ='+(IntToStr( CodeF ) ) ;
+           MainForm.CompteTable.Active:=True;
+           BonRecGestionF.CompteBonRecGCbx.Text:= MainForm.CompteTable.FieldValues['nom_cmpt'];
+           MainForm.CompteTable.Active:=false;
+           MainForm.CompteTable.SQL.Clear;
+           MainForm.CompteTable.SQL.Text:='SELECT * FROM compte ' ;
+           MainForm.CompteTable.Active:=True;
+         end;
+         if MainForm.Bona_recTable.FieldValues['num_cheque_barec']<> null then
+         begin
+          BonRecGestionF.NChequeBonRecGCbx.Text:= MainForm.Bona_recTable.FieldValues['num_cheque_barec'];
+         end;
 
 
 
@@ -797,7 +794,6 @@ var
       BonRecGestionF.RemisePerctageBonRecGEdt.Text :=     CurrToStrF(MainForm.Bona_recTable.FieldValues['RemisePerc'], ffNumber, 2);
       BonRecGestionF.RemiseBonRecGEdt.Text :=     CurrToStrF(MainForm.Bona_recTable.FieldValues['remise_barec'], ffNumber, 2);
      end;
-
     BonRecGestionF.BonRecTotalHTLbl.Caption :=    CurrToStrF(MainForm.Bona_recTable.FieldValues['montht_barec'], ffNumber, 2);
 
     BonRecGestionF.BonRecTotalTVALbl.Caption :=   CurrToStrF(MainForm.Bona_recTable.FieldValues['MontantTVA'], ffNumber, 2);
@@ -821,15 +817,8 @@ var
 
 
       finally
-
       BonRecGestionF.Free;
-
-        MainForm.Bona_recTable.Active:= False;
-        MainForm.Bona_recTable.SQL.clear;
-        mainform.Bona_recTable.sql.Text:='SELECT * FROM bona_rec ' ;
-        MainForm.Bona_recTable.Active:= True;
-        MainForm.Bona_recTable.EnableControls;
-     end;
+      end;
 
 
      end else
@@ -976,6 +965,12 @@ end;
 
 
 
+procedure TBonRecF.RefreshGirdBtnClick(Sender: TObject);
+begin
+MainForm.Bona_recTable.Close;
+MainForm.Bona_recTable.Open;
+end;
+
 procedure TBonRecF.RegleFilterBVLivPMenuClick(Sender: TObject);
 begin
  FilterBVLivBtn.ImageIndex:=50;
@@ -1044,52 +1039,6 @@ begin
           end;
 
 
-     { MainForm.FournisseurTable.DisableControls;
-      MainForm.FournisseurTable.Active:=False;
-      MainForm.FournisseurTable.SQL.Clear;
-      MainForm.FournisseurTable.SQL.Text:='SELECT nom_f,code_f FROM fournisseur WHERE LOWER(nom_f) LIKE LOWER' +'('''+'%'+(ResearchBARecEdt.Text)+'%'+''')' +'ORDER BY code_f' ;
-      MainForm.FournisseurTable.Active:=True;
-      MainForm.FournisseurTable.EnableControls;
-
-      if NOT(MainForm.FournisseurTable.IsEmpty) then
-      begin
-         SetLength(MyArray, MainForm.FournisseurTable.RecordCount);
-
-
-        MainForm.FournisseurTable.First;
-       while NOT(MainForm.FournisseurTable.Eof) do
-         begin
-
-          CodeF:= MainForm.FournisseurTable.FieldValues['code_F'];
-          MainForm.Bona_recTable.DisableControls;
-          MainForm.Bona_recTable.Active:=False;
-          MainForm.Bona_recTable.SQL.Clear;
-          MainForm.Bona_recTable.SQL.Text:='SELECT * FROM bona_rec WHERE code_f = ' + IntToStr(CodeF) ;
-          MainForm.Bona_recTable.Active:=True;
-          MainForm.Bona_recTable.EnableControls;
-
-
-          MainForm.FournisseurTable.Next;
-         end;
-
-      end else
-          begin
-          MainForm.FournisseurTable.DisableControls;
-          MainForm.FournisseurTable.Active:=False;
-          MainForm.FournisseurTable.SQL.Clear;
-          MainForm.FournisseurTable.SQL.Text:='SELECT * FROM fournisseur ' ;
-          MainForm.FournisseurTable.Active:=True;
-          MainForm.FournisseurTable.EnableControls;
-
-          MainForm.Bona_recTable.DisableControls;
-          MainForm.Bona_recTable.Active:=False;
-          MainForm.Bona_recTable.SQL.Clear;
-//          MainForm.Bona_recTable.SQL.Text:='SELECT * FROM bona_rec ' ;
-//          MainForm.Bona_recTable.Active:=True;
-          MainForm.Bona_recTable.EnableControls;
-
-          end;
-               }
     end else
      begin
           MainForm.FournisseurTable.DisableControls;
@@ -1107,6 +1056,73 @@ begin
           MainForm.Bona_recTable.EnableControls;
 
      end;
+
+end;
+
+procedure TBonRecF.ResearchBARecEdtKeyPress(Sender: TObject; var Key: Char);
+var  CodeCB : Integer;
+const
+  N =[Char(VK_ESCAPE)];
+begin
+
+  if (Key in N) then
+  begin
+    key := #0;
+    ResearchBARecEdt.Text := '';
+
+  end;
+
+    if key = #13 then
+  begin
+   key := #0;
+
+
+    //----------- Searching in databese-------------------//
+
+    if ResearchBARecEdt.Text<>'' then
+    begin
+
+          if ResherchBARFourRdioBtn.Checked then
+          begin
+          MainForm.Bona_recTable.DisableControls;
+          MainForm.Bona_recTable.Active:=False;
+          MainForm.Bona_recTable.SQL.Clear;
+          MainForm.Bona_recTable.SQL.Text:='SELECT * FROM bona_rec WHERE code_f IN( SELECT code_f FROM fournisseur WHERE LOWER(nom_f) LIKE LOWER' +'('''+(ResearchBARecEdt.Text+'%')+''')' +')';
+          MainForm.Bona_recTable.Active:=True;
+          MainForm.Bona_recTable.EnableControls;
+
+          end;
+
+          if ResherchBARNumBRdioBtn.Checked then
+          begin
+          MainForm.Bona_recTable.DisableControls;
+          MainForm.Bona_recTable.Active:=False;
+          MainForm.Bona_recTable.SQL.Clear;
+          MainForm.Bona_recTable.SQL.Text:='SELECT * FROM bona_rec WHERE LOWER(num_barec) LIKE LOWER' +'('''+(ResearchBARecEdt.Text+'%')+''')' ;
+          MainForm.Bona_recTable.Active:=True;
+          MainForm.Bona_recTable.EnableControls;
+          end;
+
+
+    end else
+     begin
+          MainForm.FournisseurTable.DisableControls;
+          MainForm.FournisseurTable.Active:=False;
+          MainForm.FournisseurTable.SQL.Clear;
+          MainForm.FournisseurTable.SQL.Text:='SELECT * FROM fournisseur ' ;
+          MainForm.FournisseurTable.Active:=True;
+          MainForm.FournisseurTable.EnableControls;
+
+          MainForm.Bona_recTable.DisableControls;
+          MainForm.Bona_recTable.Active:=False;
+          MainForm.Bona_recTable.SQL.Clear;
+          MainForm.Bona_recTable.SQL.Text:='SELECT * FROM bona_rec WHERE bon_or_no_barec = true ' ;
+          MainForm.Bona_recTable.Active:=True;
+          MainForm.Bona_recTable.EnableControls;
+
+     end;
+
+end;
 
 end;
 

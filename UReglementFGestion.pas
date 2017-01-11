@@ -505,18 +505,17 @@ begin
                   MainForm.Opt_cas_bnk_CaisseTable.DisableControls;
                   MainForm.Opt_cas_bnk_CaisseTable.Active:=false;
                   MainForm.Opt_cas_bnk_CaisseTable.SQL.Clear;
-                  MainForm.Opt_cas_bnk_CaisseTable.SQL.Text:='SELECT * FROM opt_cas_bnk' ;
+                  MainForm.Opt_cas_bnk_CaisseTable.SQL.Text:='SELECT * FROM opt_cas_bnk WHERE code_rf ='+IntToStr(MainForm.RegfournisseurTable.FieldByName('code_rf').AsInteger) ; ;
                   MainForm.Opt_cas_bnk_CaisseTable.Active:=True;
 
-
-                  if NOT (MainForm.Opt_cas_bnk_CaisseTable.IsEmpty) then
-                  begin
-                  MainForm.Opt_cas_bnk_CaisseTable.Last;
-                  CodeOCB:= MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ocb'] + 1;
-                  end else
-                      begin
-                       CodeOCB:= 1;
-                      end;
+//                  if NOT (MainForm.Opt_cas_bnk_CaisseTable.IsEmpty) then
+//                  begin
+//                  MainForm.Opt_cas_bnk_CaisseTable.Last;
+//                  CodeOCB:= MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ocb'] + 1;
+//                  end else
+//                      begin
+//                       CodeOCB:= 1;
+//                      end;
 
                     MainForm.Opt_cas_bnk_CaisseTable.Edit;
 //                    MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ocb']:= CodeOCB;

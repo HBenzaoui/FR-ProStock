@@ -857,7 +857,7 @@ object BonFacAF: TBonFacAF
     Height = 82
     Align = alTop
     BevelOuter = bvNone
-    Color = 15722984
+    Color = 15527148
     DoubleBuffered = True
     ParentBackground = False
     ParentDoubleBuffered = False
@@ -965,8 +965,8 @@ object BonFacAF: TBonFacAF
     object ResearchBARecLbl: TLabel
       Left = 6
       Top = 40
-      Width = 83
-      Height = 18
+      Width = 86
+      Height = 19
       Caption = 'Rechercher'
       Color = 15722984
       Font.Charset = DEFAULT_CHARSET
@@ -988,8 +988,8 @@ object BonFacAF: TBonFacAF
       ShowHint = True
       OnClick = sSpeedButton1Click
       SkinData.SkinSection = 'SPEEDBUTTON'
-      ImageIndex = 7
       Images = MainForm.PanelIcons24
+      ImageIndex = 7
     end
     object sSpeedButton2: TsSpeedButton
       Left = 1087
@@ -1001,8 +1001,8 @@ object BonFacAF: TBonFacAF
       ShowHint = True
       OnClick = sSpeedButton2Click
       SkinData.SkinSection = 'SPEEDBUTTON'
-      ImageIndex = 8
       Images = MainForm.PanelIcons24
+      ImageIndex = 8
     end
     object sSpeedButton3: TsSpeedButton
       Left = 1155
@@ -1014,8 +1014,8 @@ object BonFacAF: TBonFacAF
       ShowHint = True
       OnClick = sSpeedButton3Click
       SkinData.SkinSection = 'SPEEDBUTTON'
-      ImageIndex = 9
       Images = MainForm.PanelIcons24
+      ImageIndex = 9
     end
     object Label1: TLabel
       Left = 346
@@ -1058,8 +1058,8 @@ object BonFacAF: TBonFacAF
       ShowHint = True
       OnClick = FisrtBAFacbtnClick
       SkinData.SkinSection = 'SPEEDBUTTON'
-      ImageIndex = 0
       Images = MainForm.PanelIcons24
+      ImageIndex = 0
       ShowCaption = False
     end
     object PreviosBAFacbtn: TsSpeedButton
@@ -1071,8 +1071,8 @@ object BonFacAF: TBonFacAF
       ShowHint = True
       OnClick = PreviosBAFacbtnClick
       SkinData.SkinSection = 'SPEEDBUTTON'
-      ImageIndex = 1
       Images = MainForm.PanelIcons24
+      ImageIndex = 1
     end
     object NextBAFacbtn: TsSpeedButton
       Left = 559
@@ -1083,8 +1083,8 @@ object BonFacAF: TBonFacAF
       ShowHint = True
       OnClick = NextBAFacbtnClick
       SkinData.SkinSection = 'SPEEDBUTTON'
-      ImageIndex = 2
       Images = MainForm.PanelIcons24
+      ImageIndex = 2
       ShowCaption = False
     end
     object LastBAFacbtn: TsSpeedButton
@@ -1096,8 +1096,8 @@ object BonFacAF: TBonFacAF
       ShowHint = True
       OnClick = LastBAFacbtnClick
       SkinData.SkinSection = 'SPEEDBUTTON'
-      ImageIndex = 3
       Images = MainForm.PanelIcons24
+      ImageIndex = 3
     end
     object FilterBVLivBtn: TAdvToolButton
       Left = 628
@@ -1286,6 +1286,7 @@ object BonFacAF: TBonFacAF
       ParentFont = False
       TabOrder = 0
       OnChange = ResearchBAFacEdtChange
+      OnKeyPress = ResearchBAFacEdtKeyPress
     end
     object Panel2: TPanel
       Left = 485
@@ -1419,7 +1420,6 @@ object BonFacAF: TBonFacAF
     ParentBackground = False
     TabOrder = 2
     StyleElements = []
-    ExplicitHeight = 659
   end
   object StatuBar: TsStatusBar
     Left = 0
@@ -1441,26 +1441,11 @@ object BonFacAF: TBonFacAF
     ParentBiDiMode = False
     SizeGrip = False
     SkinData.SkinSection = 'MENUITEM'
-    ExplicitTop = 716
     DesignSize = (
       1191
       20)
-    object sImage3: TsImage
-      Tag = 1
-      Left = 250
-      Top = 3
-      Width = 16
-      Height = 16
-      Center = True
-      Picture.Data = {07544269746D617000000000}
-      Proportional = True
-      Stretch = True
-      Transparent = True
-      ImageIndex = 4
-      SkinData.SkinSection = 'CHECKBOX'
-    end
     object SumGirdBAFacBtn: TAdvToolButton
-      Left = 112
+      Left = 141
       Top = 0
       Width = 26
       Height = 20
@@ -1493,9 +1478,43 @@ object BonFacAF: TBonFacAF
       Version = '1.6.1.2'
       TMSStyle = 0
     end
+    object RefreshGirdBtn: TAdvToolButton
+      Left = 112
+      Top = 0
+      Width = 26
+      Height = 20
+      Cursor = crHandPoint
+      Hint = 'Rafra'#238'chir'
+      Anchors = [akRight]
+      AutoThemeAdapt = False
+      BorderColor = 15722984
+      BorderDownColor = 15722984
+      BorderHotColor = 14079702
+      Color = 15722984
+      ColorDown = 15722984
+      ColorHot = 14079702
+      ColorHotTo = 14079702
+      ColorChecked = clNone
+      DropDownSplit = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 4207405
+      Font.Height = 18
+      Font.Name = 'Roboto'
+      Font.Style = []
+      ImageIndex = 27
+      Images = MainForm.PanelIcons16
+      ParentFont = False
+      ParentShowHint = False
+      Shaded = False
+      ShowHint = True
+      Spacing = -2
+      OnClick = RefreshGirdBtnClick
+      Version = '1.6.1.2'
+      TMSStyle = 0
+    end
   end
   object BonFacAfrxRprt: TfrxReport
-    Version = '5.5'
+    Version = '5.4.6'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]

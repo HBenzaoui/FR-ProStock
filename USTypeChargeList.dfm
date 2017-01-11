@@ -4,7 +4,7 @@ object STypeChargeListF: TSTypeChargeListF
   BorderStyle = bsDialog
   ClientHeight = 488
   ClientWidth = 326
-  Color = clBtnFace
+  Color = 15527148
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11

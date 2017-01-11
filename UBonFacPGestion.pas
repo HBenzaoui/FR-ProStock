@@ -139,6 +139,8 @@ type
     sSpeedButton5: TsSpeedButton;
     sSpeedButton4: TsSpeedButton;
     ProduitBonFacVGCbx: TcxComboBox;
+    Label9: TLabel;
+    Panel6: TPanel;
     procedure FormShow(Sender: TObject);
     procedure sSpeedButton7Click(Sender: TObject);
     procedure sSpeedButton6Click(Sender: TObject);
@@ -192,6 +194,7 @@ type
     procedure sSpeedButton3Click(Sender: TObject);
     procedure ProduitsListDBGridEhCellClick(Column: TColumnEh);
     procedure ProduitsListDBGridEhExit(Sender: TObject);
+    procedure FormKeyPress(Sender: TObject; var Key: Char);
   private
     procedure GettingData;
     { Private declarations }
@@ -2539,6 +2542,17 @@ MainForm.Bonp_fac_listTable.Active:=True;
 end;
 
 
+procedure TBonFacPGestionF.FormKeyPress(Sender: TObject; var Key: Char);
+begin
+     if key = #27 then
+ begin
+  key := #0;
+
+  Close;
+
+ end;
+end;
+
 procedure TBonFacPGestionF.GettingData;
 
  var
@@ -2627,17 +2641,17 @@ begin
     WilayaRX:= BonFacPPListfrxRprt.FindObject('WilayaRX') as TfrxMemoView;
   WilayaRX.Text:=  MainForm.ClientTable.FieldByName('willaya_c').AsString;
 
-      RC:= BonFacPPListfrxRprt.FindObject('RC') as TfrxMemoView;
-  RC.Text:= MainForm.ClientTable.FieldByName('rc_c').AsString;
-
-    NArt:= BonFacPPListfrxRprt.FindObject('NArt') as TfrxMemoView;
-  NArt.Text:= MainForm.ClientTable.FieldByName('nart_c').AsString;
-
-    NIF:= BonFacPPListfrxRprt.FindObject('NIF') as TfrxMemoView;
-  NIF.Text:=  MainForm.ClientTable.FieldByName('nif_c').AsString;
-
-      NIS:= BonFacPPListfrxRprt.FindObject('NIS') as TfrxMemoView;
-  NIS.Text:=  MainForm.ClientTable.FieldByName('nis_c').AsString;
+//      RC:= BonFacPPListfrxRprt.FindObject('RC') as TfrxMemoView;
+//  RC.Text:= MainForm.ClientTable.FieldByName('rc_c').AsString;
+//
+//    NArt:= BonFacPPListfrxRprt.FindObject('NArt') as TfrxMemoView;
+//  NArt.Text:= MainForm.ClientTable.FieldByName('nart_c').AsString;
+//
+//    NIF:= BonFacPPListfrxRprt.FindObject('NIF') as TfrxMemoView;
+//  NIF.Text:=  MainForm.ClientTable.FieldByName('nif_c').AsString;
+//
+//      NIS:= BonFacPPListfrxRprt.FindObject('NIS') as TfrxMemoView;
+//  NIS.Text:=  MainForm.ClientTable.FieldByName('nis_c').AsString;
 
     MainForm.ClientTable.Active:=False;
     MainForm.ClientTable.SQL.Clear;

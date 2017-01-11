@@ -5,7 +5,7 @@ object FSplashAddCompte: TFSplashAddCompte
   Caption = 'FSplashAddCompte'
   ClientHeight = 240
   ClientWidth = 330
-  Color = 15722984
+  Color = 15527148
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11

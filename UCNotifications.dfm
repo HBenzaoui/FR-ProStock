@@ -5,7 +5,7 @@ object CNotificationsF: TCNotificationsF
   Caption = 'Centre de Notifications'
   ClientHeight = 741
   ClientWidth = 1191
-  Color = clBtnFace
+  Color = 15527148
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11

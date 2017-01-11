@@ -9,7 +9,7 @@ uses
   DBGridEhToolCtrls, DynVarsEh, Data.DB, EhLibVCL, GridsEh, DBAxisGridsEh,
   DBGridEh, Vcl.StdCtrls, Vcl.ComCtrls, Vcl.WinXCtrls, Vcl.Buttons,
   sSpeedButton, AdvToolBtn, Vcl.ExtCtrls, frxExportPDF, frxClass, frxExportXLS,
-  frxDBSet, acImage, Vcl.Menus;
+  frxDBSet, acImage, Vcl.Menus, sStatusBar;
 
 type
   TReglementFListF = class(TForm)
@@ -64,6 +64,9 @@ type
     ClearMPFilterBVLivPMenu: TMenuItem;
     N5: TMenuItem;
     ClearFilterBVLivPMenu: TMenuItem;
+    StatuBar: TsStatusBar;
+    SumGirdProduitBtn: TAdvToolButton;
+    RefreshGirdBtn: TAdvToolButton;
     procedure AddBARecBtnClick(Sender: TObject);
     procedure EditBARecBtnClick(Sender: TObject);
     procedure DeleteBARecBtnClick(Sender: TObject);
@@ -93,6 +96,9 @@ type
     procedure VirmentMPFilterBVLivPMenuClick(Sender: TObject);
     procedure ClearMPFilterBVLivPMenuClick(Sender: TObject);
     procedure ClearFilterBVLivPMenuClick(Sender: TObject);
+    procedure RefreshGirdBtnClick(Sender: TObject);
+    procedure SumGirdProduitBtnClick(Sender: TObject);
+    procedure ResearchRegFEdtKeyPress(Sender: TObject; var Key: Char);
   private
     procedure GettingData;
     procedure FilteredColor;
@@ -483,6 +489,12 @@ if NOT (MainForm.RegfournisseurTable.IsEmpty) then
  end;
 end;
 
+procedure TReglementFListF.RefreshGirdBtnClick(Sender: TObject);
+begin
+MainForm.RegfournisseurTable.Close;
+MainForm.RegfournisseurTable.Open;
+end;
+
 procedure TReglementFListF.ResearchRegFEdtChange(Sender: TObject);
 begin
  //----------- Searching in databese-------------------//
@@ -532,6 +544,75 @@ begin
 
 
      end;
+end;
+
+procedure TReglementFListF.ResearchRegFEdtKeyPress(Sender: TObject;
+  var Key: Char);
+const
+  N = [    Char(VK_ESCAPE)];
+begin
+
+  if(Key in N) then
+  begin
+   key := #0  ;
+    ResearchRegFEdt.Text:= '';
+
+  end;
+  if key = #13 then
+  begin
+   key := #0;
+
+
+        if ResearchRegFEdt.Text<>'' then
+    begin
+
+          if ResherchRegFFourRdioBtn.Checked then
+          begin
+          MainForm.RegfournisseurTable.DisableControls;
+          MainForm.RegfournisseurTable.Active:=False;
+          MainForm.RegfournisseurTable.SQL.Clear;
+          MainForm.RegfournisseurTable.SQL.Text:='SELECT * FROM regfournisseur WHERE code_f IN( SELECT code_f FROM fournisseur WHERE LOWER(nom_f) LIKE LOWER' +'('''+(ResearchRegFEdt.Text)+''')' +')';
+          MainForm.RegfournisseurTable.Active:=True;
+          MainForm.RegfournisseurTable.EnableControls;
+
+          end;
+
+          if ResherchRegFNumBRdioBtn.Checked then
+          begin
+          MainForm.RegfournisseurTable.DisableControls;
+          MainForm.RegfournisseurTable.Active:=False;
+          MainForm.RegfournisseurTable.SQL.Clear;
+          MainForm.RegfournisseurTable.SQL.Text:='SELECT * FROM regfournisseur WHERE LOWER(nom_rf) LIKE LOWER' +'('''+(ResearchRegFEdt.Text)+''')' ;
+          MainForm.RegfournisseurTable.Active:=True;
+          MainForm.RegfournisseurTable.EnableControls;
+          end;
+
+
+    end else
+     begin
+          MainForm.RegfournisseurTable.DisableControls;
+          MainForm.RegfournisseurTable.Active:=False;
+          MainForm.RegfournisseurTable.SQL.Clear;
+          MainForm.RegfournisseurTable.SQL.Text:='SELECT * FROM regfournisseur ' ;
+          MainForm.RegfournisseurTable.Active:=True;
+          MainForm.RegfournisseurTable.EnableControls;
+
+
+          MainForm.FournisseurTable.DisableControls;
+          MainForm.FournisseurTable.Active:=False;
+          MainForm.FournisseurTable.SQL.Clear;
+          MainForm.FournisseurTable.SQL.Text:='SELECT * FROM fournisseur ' ;
+          MainForm.FournisseurTable.Active:=True;
+          MainForm.FournisseurTable.EnableControls;
+
+
+
+     end;
+
+
+
+
+  end;
 end;
 
 procedure TReglementFListF.ATermeMPFilterBVLivPMenuClick(Sender: TObject);
@@ -738,6 +819,19 @@ RegFListfrxRprt.Export(frxPDFExport1);
 
 
 MainForm.RegfournisseurTable.EnableControls;
+end;
+
+procedure TReglementFListF.SumGirdProduitBtnClick(Sender: TObject);
+begin
+  if SumGirdProduitBtn.Tag = 0 then
+  begin
+    BARecListDBGridEh.FooterRowCount:=1;
+    SumGirdProduitBtn.Tag := 1;
+  end else
+      begin
+        BARecListDBGridEh.FooterRowCount:=0;
+        SumGirdProduitBtn.Tag := 0;
+      end;
 end;
 
 procedure TReglementFListF.V1Click(Sender: TObject);

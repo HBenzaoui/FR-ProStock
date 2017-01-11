@@ -5,7 +5,7 @@ object ReglementFGestionF: TReglementFGestionF
   Caption = 'R'#232'glement Fournisseur'
   ClientHeight = 403
   ClientWidth = 540
-  Color = clBtnFace
+  Color = 15527148
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
@@ -25,7 +25,7 @@ object ReglementFGestionF: TReglementFGestionF
     Width = 540
     Height = 97
     Align = alTop
-    Brush.Color = 15722984
+    Brush.Color = 15527148
     Pen.Color = 10379008
     ExplicitLeft = 8
     ExplicitTop = 1
@@ -37,7 +37,7 @@ object ReglementFGestionF: TReglementFGestionF
     Width = 540
     Height = 160
     Align = alTop
-    Brush.Color = 15722984
+    Brush.Color = 15527148
     Pen.Color = 10379008
     ExplicitLeft = -1
   end
@@ -487,7 +487,7 @@ object ReglementFGestionF: TReglementFGestionF
     Left = 65
     Top = 58
     Width = 124
-    Height = 26
+    Height = 27
     Date = 42565.478213819440000000
     Time = 42565.478213819440000000
     Font.Charset = DEFAULT_CHARSET
@@ -630,7 +630,7 @@ object ReglementFGestionF: TReglementFGestionF
     Left = 188
     Top = 296
     Width = 164
-    Height = 28
+    Height = 27
     Alignment = taRightJustify
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText

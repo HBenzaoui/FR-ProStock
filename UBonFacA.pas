@@ -71,8 +71,8 @@ type
     N5: TMenuItem;
     ClearFilterBVLivPMenu: TMenuItem;
     StatuBar: TsStatusBar;
-    sImage3: TsImage;
     SumGirdBAFacBtn: TAdvToolButton;
+    RefreshGirdBtn: TAdvToolButton;
     procedure FisrtBAFacbtnClick(Sender: TObject);
     procedure PreviosBAFacbtnClick(Sender: TObject);
     procedure NextBAFacbtnClick(Sender: TObject);
@@ -104,6 +104,8 @@ type
     procedure ClearMPFilterBVLivPMenuClick(Sender: TObject);
     procedure ClearFilterBVLivPMenuClick(Sender: TObject);
     procedure SumGirdBAFacBtnClick(Sender: TObject);
+    procedure RefreshGirdBtnClick(Sender: TObject);
+    procedure ResearchBAFacEdtKeyPress(Sender: TObject; var Key: Char);
   private
     procedure GettingData;
     procedure FilteredColor;
@@ -418,6 +420,12 @@ begin
 MainForm.Bona_facTable.Last;
 end;
 
+procedure TBonFacAF.RefreshGirdBtnClick(Sender: TObject);
+begin
+MainForm.Bona_FacTable.Close;
+MainForm.Bona_FacTable.Open;
+end;
+
 procedure TBonFacAF.RegleFilterBVLivPMenuClick(Sender: TObject);
 begin
  FilterBVLivBtn.ImageIndex:=50;
@@ -501,6 +509,73 @@ begin
             MainForm.Bona_FacTable.EnableControls;
 
      end;
+end;
+
+procedure TBonFacAF.ResearchBAFacEdtKeyPress(Sender: TObject; var Key: Char);
+var  CodeCB : Integer;
+const
+  N =[Char(VK_ESCAPE)];
+begin
+
+  if (Key in N) then
+  begin
+    key := #0;
+    ResearchBAFacEdt.Text := '';
+
+  end;
+
+    if key = #13 then
+  begin
+   key := #0;
+
+
+ //----------- Searching in databese-------------------//
+
+    if ResearchBAFacEdt.Text<>'' then
+    begin
+
+          if ResherchBFAFourRdioBtn.Checked then
+          begin
+            MainForm.Bona_FacTable.DisableControls;
+            MainForm.Bona_FacTable.Active:=False;
+            MainForm.Bona_FacTable.SQL.Clear;
+            MainForm.Bona_FacTable.SQL.Text:='SELECT * FROM bona_fac WHERE code_f IN( SELECT code_f FROM client WHERE LOWER(nom_f) LIKE LOWER' +'('''+(ResearchBAFacEdt.Text+'%')+''')' +')';
+            MainForm.Bona_FacTable.Active:=True;
+            MainForm.Bona_FacTable.EnableControls;
+
+          end;
+
+          if ResherchBFANumBRdioBtn.Checked then
+          begin
+            MainForm.Bona_FacTable.DisableControls;
+            MainForm.Bona_FacTable.Active:=False;
+            MainForm.Bona_FacTable.SQL.Clear;
+            MainForm.Bona_FacTable.SQL.Text:='SELECT * FROM bona_fac WHERE LOWER(num_bafac) LIKE LOWER' +'('''+(ResearchBAFacEdt.Text+'%')+''')' ;
+            MainForm.Bona_FacTable.Active:=True;
+            MainForm.Bona_FacTable.EnableControls;
+          end;
+
+
+    end else
+     begin
+            MainForm.FournisseurTable.DisableControls;
+            MainForm.FournisseurTable.Active:=False;
+            MainForm.FournisseurTable.SQL.Clear;
+            MainForm.FournisseurTable.SQL.Text:='SELECT * FROM fournisseur ' ;
+            MainForm.FournisseurTable.Active:=True;
+            MainForm.FournisseurTable.EnableControls;
+
+            MainForm.Bona_FacTable.DisableControls;
+            MainForm.Bona_FacTable.Active:=False;
+            MainForm.Bona_FacTable.SQL.Clear;
+            MainForm.Bona_FacTable.SQL.Text:='SELECT * FROM bona_fac ' ;
+            MainForm.Bona_FacTable.Active:=True;
+            MainForm.Bona_FacTable.EnableControls;
+
+     end;
+
+end;
+
 end;
 
 procedure TBonFacAF.DateStartBAFacDChange(Sender: TObject);

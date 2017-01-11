@@ -91,6 +91,7 @@ type
     procedure FormKeyPress(Sender: TObject; var Key: Char);
     procedure MaxCreditFournisseurGEdtClick(Sender: TObject);
     procedure OldCreditFournisseurGEdtClick(Sender: TObject);
+    procedure OldCreditFournisseurGEdtKeyPress(Sender: TObject; var Key: Char);
   private
     { Private declarations }
   public
@@ -280,18 +281,20 @@ procedure TFournisseurGestionF.MaxCreditFournisseurGEdtKeyPress(Sender: TObject;
   var Key: Char);
 const
   N = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0',',','.', Char(VK_back)];
-  F = ['.'];
+   F = ['.'];
 begin
-
   if not(Key in N) then
   begin
      key := #0;
   end;
-  if (Key in F) then
+
+   if (Key in F) then
   begin
-
     key :=  #44;
-
+  end;
+  if (Key = ',') AND (Pos(Key, (MaxCreditFournisseurGEdt.Text)) > 0) Then
+  begin
+      Key := #0;
   end;
 end;
 
@@ -803,6 +806,28 @@ begin
   OldCreditFournisseur:=StrToFloat(StringReplace(OldCreditFournisseurGEdt.Text, #32, '', [rfReplaceAll]));
   OldCreditFournisseurGEdt.Text := FloatToStrF(OldCreditFournisseur,ffNumber,14,2);
   end;
+end;
+
+procedure TFournisseurGestionF.OldCreditFournisseurGEdtKeyPress(Sender: TObject;
+  var Key: Char);
+const
+  N = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0',',','.', Char(VK_back)];
+   F = ['.'];
+begin
+  if not(Key in N) then
+  begin
+     key := #0;
+  end;
+
+   if (Key in F) then
+  begin
+    key :=  #44;
+  end;
+  if (Key = ',') AND (Pos(Key, (OldCreditFournisseurGEdt.Text)) > 0) Then
+  begin
+      Key := #0;
+  end;
+
 end;
 
 procedure TFournisseurGestionF.WilayaFournisseurGCbxEnter(Sender: TObject);

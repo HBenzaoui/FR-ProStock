@@ -138,6 +138,10 @@ type
     sSpeedButton6: TsSpeedButton;
     sSpeedButton7: TsSpeedButton;
     ProduitBonFacAGCbx: TcxComboBox;
+    Label22: TLabel;
+    CompteGErrorP: TPanel;
+    RequiredMPGlbl: TLabel;
+    RequiredCompteGlbl: TLabel;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure FormShow(Sender: TObject);
@@ -192,6 +196,7 @@ type
     procedure ProduitsListDBGridEhDrawColumnCell(Sender: TObject;
       const Rect: TRect; DataCol: Integer; Column: TColumnEh;
       State: TGridDrawState);
+    procedure FormKeyPress(Sender: TObject; var Key: Char);
   private
     procedure GettingData;
     { Private declarations }
@@ -350,10 +355,32 @@ CodeFA := MainForm.Bona_facTable.FieldByName('code_bafac').AsInteger;
       CanClose := false;
     end else
         begin
-                if RequiredFourGlbl.Visible <> True then
-               begin
+   if ModePaieBonFacAGCbx.Text = '' then
+    begin
+      sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+      ModePaieBonFacAGCbx.StyleElements:= [];
+      RequiredMPGlbl.Visible:= True;
+      ModepPaiGErrorP.Visible:= True;
 
+      ModePaieBonFacAGCbx.SetFocus;
+      CanClose := false;
+   end else
+   begin
 
+     if CompteBonFacAGCbx.Text = '' then
+     begin
+        sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+        CompteBonFacAGCbx.StyleElements:= [];
+        RequiredCompteGlbl.Visible:= True;
+        CompteGErrorP.Visible:= True;
+
+        CompteBonFacAGCbx.SetFocus;
+        CanClose := false;
+     end else
+     begin
+         //---------------------------------------------------
+         if RequiredFourGlbl.Visible <> True then
+         begin
 
           if  (MainForm.Bona_facTable.FieldByName('valider_bafac').AsBoolean = false)  then
          begin
@@ -441,6 +468,11 @@ CodeFA := MainForm.Bona_facTable.FieldByName('code_bafac').AsInteger;
                   CanClose:= False;
 
                 end;
+          //---------------------------------------------------
+
+     end;
+
+       end;
 
         end;
   end  else
@@ -883,15 +915,14 @@ procedure TBonFacAGestionF.ValiderBAFacBonFacAGBtnClick(Sender: TObject);
 var CodeOCB,CodeRF : Integer;
 begin
 
-     if FourBonFacAGCbx.Text <> '' then
-    begin
-                 if RequiredFourGlbl.Visible <> True then
-      begin
-
-
+ if FourBonFacAGCbx.Text <> '' then
+ begin
+  if RequiredFourGlbl.Visible <> True then
+  begin
    if ModePaieBonFacAGCbx.Text <> '' then
+   begin
+    if CompteBonFacAGCbx.Text <> '' then
     begin
-
 
  //      FourBonFacAGCbxChange(Sender);
       MainForm.FournisseurTable.DisableControls;
@@ -1439,13 +1470,22 @@ begin
           MainForm.CompteTable.EnableControls;
        end;
 
+        //-----------------------------------------------------------------------------
 
+     end else
+         begin
+          sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+          CompteBonFacAGCbx.StyleElements:= [];
+          RequiredCompteGlbl.Visible:= True;
+          CompteGErrorP.Visible:= True;
+          CompteBonFacAGCbx.SetFocus;
+         end;
 
        end else
            begin
                sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
             ModePaieBonFacAGCbx.StyleElements:= [];
-//            RequiredFourGlbl.Visible:= True;
+            RequiredMPGlbl.Visible:= True;
             ModepPaiGErrorP.Visible:= True;
             ModePaieBonFacAGCbx.SetFocus;
            end;
@@ -1672,6 +1712,10 @@ begin
         TimberBonFacAGlbl.Visible:= False;
       end;
    MainForm.Bona_fac_listTable.Refresh;
+
+
+   RequiredMPGlbl.Visible:= False;
+   ModepPaiGErrorP.Visible:= False;
 end;
 
 procedure TBonFacAGestionF.ModePaieBonFacAGCbxClick(Sender: TObject);
@@ -1728,6 +1772,9 @@ end;
 procedure TBonFacAGestionF.CompteBonFacAGCbxChange(Sender: TObject);
 begin
 CompteBonFacAGCbx.AutoDropDown:=True;
+
+RequiredCompteGlbl.Visible:= False;
+CompteGErrorP.Visible:= False;
 end;
 
 procedure TBonFacAGestionF.CompteBonFacAGCbxEnter(Sender: TObject);
@@ -2755,6 +2802,17 @@ begin
 MainForm.Bona_fac_listTable.Active:= True;
 end;
 
+
+procedure TBonFacAGestionF.FormKeyPress(Sender: TObject; var Key: Char);
+begin
+     if key = #27 then
+ begin
+  key := #0;
+
+  Close;
+
+ end;
+end;
 
 procedure TBonFacAGestionF.GettingData;
 

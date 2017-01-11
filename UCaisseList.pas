@@ -3,13 +3,13 @@ unit UCaisseList;
 interface
 
 uses
-  Winapi.Windows,DateUtils,
+  Winapi.Windows,DateUtils, EhLibFireDAC,
    Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, DBGridEhGrouping, ToolCtrlsEh,
   DBGridEhToolCtrls, DynVarsEh, Data.DB, Vcl.StdCtrls, Vcl.ComCtrls,
   Vcl.WinXCtrls, Vcl.Buttons, sSpeedButton, Vcl.ExtCtrls, EhLibVCL, GridsEh,
   DBAxisGridsEh, DBGridEh, frxExportPDF, frxClass, frxExportXLS, frxDBSet,
-  AdvToolBtn, acImage, Vcl.Menus;
+  AdvToolBtn, acImage, Vcl.Menus, sStatusBar;
 
 type
   TCaisseListF = class(TForm)
@@ -85,6 +85,9 @@ type
     Panel5: TPanel;
     Panel6: TPanel;
     Panel7: TPanel;
+    StatuBar: TsStatusBar;
+    SumGirdProduitBtn: TAdvToolButton;
+    RefreshGirdBtn: TAdvToolButton;
     procedure CaisseListCbxDropDown(Sender: TObject);
     procedure CaisseListCbxChange(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -119,6 +122,7 @@ type
     procedure ClearTVAFilterPMenuClick(Sender: TObject);
     procedure ClearFilterBVLivPMenuClick(Sender: TObject);
     procedure CaisseListCbxExit(Sender: TObject);
+    procedure RefreshGirdBtnClick(Sender: TObject);
   private
     procedure GettingData;
     procedure FilteredColor;
@@ -919,6 +923,12 @@ end;
 procedure TCaisseListF.PreviosCaiseebtnClick(Sender: TObject);
 begin
  MainForm.Opt_cas_bnk_CaisseTable.Prior;
+end;
+
+procedure TCaisseListF.RefreshGirdBtnClick(Sender: TObject);
+begin
+MainForm.Opt_cas_bnk_CaisseTable.Close;
+MainForm.Opt_cas_bnk_CaisseTable.Open;
 end;
 
 procedure TCaisseListF.RegleFilterBVLivPMenuClick(Sender: TObject);

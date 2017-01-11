@@ -13,7 +13,8 @@ uses
   FireDAC.Comp.DataSet, FireDAC.Comp.Client, System.ImageList, Vcl.ImgList,
   acAlphaImageList, Vcl.StdCtrls, Vcl.WinXCtrls, Vcl.Buttons, sSpeedButton,
   AdvToolBtn, Vcl.ExtCtrls, EhLibVCL, GridsEh, DBAxisGridsEh, Data.SqlExpr, Vcl.Imaging.jpeg,
-  DBGridEh, frxExportPDF, frxClass, frxExportXLS, frxDBSet, acImage, Vcl.Menus;
+  DBGridEh, frxExportPDF, frxClass, frxExportXLS, frxDBSet, acImage, Vcl.Menus,
+  Vcl.ComCtrls, sStatusBar;
 
 type
   TProduitsListF = class(TForm)
@@ -73,6 +74,9 @@ type
     N0TVA1: TMenuItem;
     N0TVA2: TMenuItem;
     TVAFilterLbl: TLabel;
+    StatuBar: TsStatusBar;
+    SumGirdProduitBtn: TAdvToolButton;
+    RefreshGirdBtn: TAdvToolButton;
     procedure AddProduitsBtnClick(Sender: TObject);
     procedure ProduitsListDBGridEhMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
     procedure ProduitsListDBGridEhDrawColumnCell(Sender: TObject; const Rect: TRect; DataCol: Integer; Column: TColumnEh; State: TGridDrawState);
@@ -111,6 +115,8 @@ type
     procedure ClearTVAFilterPMenuClick(Sender: TObject);
     procedure ClearFilterBVLivPMenuClick(Sender: TObject);
     procedure ProduitsListDBGridEhSortMarkingChanged(Sender: TObject);
+    procedure SumGirdProduitBtnClick(Sender: TObject);
+    procedure RefreshGirdBtnClick(Sender: TObject);
   private
     procedure GettingData;
     procedure FilteredColor;
@@ -232,7 +238,7 @@ begin
 MainForm.ProduitTable.DisableControls;
 MainForm.ProduitTable.Active:= False;
 MainForm.ProduitTable.SQL.clear;
-mainform.ProduitTable.sql.Text:='SELECT * FROM produit WHERE tva_p = ''17'' ';
+mainform.ProduitTable.sql.Text:='SELECT * FROM produit WHERE tva_p = ''19'' ';
 MainForm.ProduitTable.Active:= True;
 MainForm.ProduitTable.EnableControls;
 end;
@@ -750,7 +756,7 @@ ClearValideFilterBVLivPMenu.Checked:= True;
 ClearRegleFilterBVLivPMenu.Checked:= True;
 ClearMPFilterBVLivPMenu.Checked:= True;
 
-  TVAFilterLbl.Caption:='17';
+  TVAFilterLbl.Caption:='19';
   TVAFilterLbl.Visible := True;
   sImage1.ImageIndex:= 17;
   sImage1.Visible:= True;
@@ -895,6 +901,12 @@ begin
 
 end;
 
+procedure TProduitsListF.RefreshGirdBtnClick(Sender: TObject);
+begin
+MainForm.ProduitTable.Close;
+MainForm.ProduitTable.Open;
+end;
+
 procedure TProduitsListF.RegleFilterBVLivPMenuClick(Sender: TObject);
 begin
   ClearValideFilterBVLivPMenuClick(Sender);
@@ -914,6 +926,7 @@ ClearTVAFilterPMenu.Checked:= True;
 
   ProduitsListDBGridEh.Columns[9].Visible := True;
   ProduitsListDBGridEh.Columns[10].Visible := True;
+  ProduitsListDBGridEh.Columns[11].Visible := True;
 
 end;
 
@@ -961,6 +974,7 @@ begin
 end;
 
 procedure TProduitsListF.ResearchProduitsEdtKeyPress(Sender: TObject; var Key: Char);
+var  CodeCB : Integer;
 const
   N =[Char(VK_ESCAPE)];
 begin
@@ -971,6 +985,47 @@ begin
     ResearchProduitsEdt.Text := '';
 
   end;
+
+    if key = #13 then
+  begin
+   key := #0;
+
+
+      if ResherchPARDesProduitsRdioBtn.Checked then
+    if (ResearchProduitsEdt.text <> '') then
+    begin
+      MainForm.ProduitTable.Filtered := false;
+      MainForm.ProduitTable.Filter := '[nom_p] LIKE ' + quotedstr(ResearchProduitsEdt.Text+'%' ) + ' OR '+
+     '[refer_p] LIKE ' + quotedstr(ResearchProduitsEdt.Text+'%' ) ;
+      MainForm.ProduitTable.Filtered := True;
+    end
+    else
+    begin
+     MainForm.ProduitTable.Filtered := false;
+    end;
+  if ResherchPARDCodProduitsRdioBtn.Checked then
+    if (ResearchProduitsEdt.text <> '') then
+    begin
+      MainForm.SQLQuery.Active:=False;
+      MainForm.SQLQuery.SQL.Clear;
+      MainForm.SQLQuery.SQL.Text:='SELECT nom_cb,code_p FROM codebarres WHERE nom_cb LIKE ' +''+ QuotedStr( ResearchProduitsEdt.Text+'%' )+'' ;
+      MainForm.SQLQuery.Active:=True;
+      if MainForm.SQLQuery.FieldValues['code_p'] <> null then
+     begin
+      CodeCB:=MainForm.SQLQuery.FieldValues['code_p'];
+     end;
+      MainForm.ProduitTable.Filtered := false;
+      MainForm.ProduitTable.Filter := '[codebar_p] LIKE ' + quotedstr(ResearchProduitsEdt.Text+'%' )  + ' OR [code_p] = '+ IntToStr(CodeCB) ;
+      MainForm.ProduitTable.Filtered := True;
+    end
+    else
+    begin
+      MainForm.ProduitTable.Filtered := false;
+    end;
+   MainForm.SQLQuery.Active:=False;
+   MainForm.SQLQuery.SQL.Clear;
+
+end;
 
 end;
 
@@ -1085,6 +1140,7 @@ begin
   
   ProduitsListDBGridEh.Columns[9].Visible := False;
   ProduitsListDBGridEh.Columns[10].Visible := False;
+  ProduitsListDBGridEh.Columns[11].Visible := False;
 
 end;
 
@@ -1107,6 +1163,7 @@ begin
   
   ProduitsListDBGridEh.Columns[9].Visible := False;
   ProduitsListDBGridEh.Columns[10].Visible := False;
+  ProduitsListDBGridEh.Columns[11].Visible := False;
 end;
 
 procedure TProduitsListF.ClearValideFilterBVLivPMenuClick(Sender: TObject);
@@ -1142,6 +1199,19 @@ begin
 
 //FSplashPrinting.Position:= poScreenCenter;
 //FSplashPrinting.ShowModal;
+end;
+
+procedure TProduitsListF.SumGirdProduitBtnClick(Sender: TObject);
+begin
+  if SumGirdProduitBtn.Tag = 0 then
+  begin
+    ProduitsListDBGridEh.FooterRowCount:=1;
+    SumGirdProduitBtn.Tag := 1;
+  end else
+      begin
+        ProduitsListDBGridEh.FooterRowCount:=0;
+        SumGirdProduitBtn.Tag := 0;
+      end;
 end;
 
 procedure TProduitsListF.ClearTVAFilterPMenuClick(Sender: TObject);

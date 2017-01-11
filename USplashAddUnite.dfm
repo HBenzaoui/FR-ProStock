@@ -5,7 +5,7 @@ object FSplashAddUnite: TFSplashAddUnite
   Caption = 'FSplashAddUnite'
   ClientHeight = 147
   ClientWidth = 313
-  Color = 15722984
+  Color = 15527148
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11

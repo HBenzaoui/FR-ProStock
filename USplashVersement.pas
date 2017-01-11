@@ -574,6 +574,9 @@ begin
 end;
 
 procedure TFSplashVersement.FormKeyPress(Sender: TObject; var Key: Char);
+Const
+ F = ['r','R'];
+Var CanChange  : Boolean;
 begin
 
  if (key = #27) then
@@ -585,6 +588,31 @@ begin
  begin
    OKVersementSBtnClick(Sender);
  end;
+
+
+  if (key in F) then
+ begin
+  key := #0;
+
+    if RegleVersementSGSlider.Tag = 0 then
+    begin
+      CanChange:= True;
+      RegleVersementSGSliderChanging(Sender, CanChange);
+      RegleVersementSGSlider.SliderOn:= True;
+      RegleVersementSGSlider.Tag := 1
+    end else
+        begin
+          CanChange:= False;
+          RegleVersementSGSliderChanging(Sender, CanChange);
+          RegleVersementSGSlider.SliderOn:= False;
+          RegleVersementSGSlider.Tag := 0
+        end;
+
+
+ end;
+
+
+
 end;
 
 procedure TFSplashVersement.OKVersementSBtnClick(Sender: TObject);

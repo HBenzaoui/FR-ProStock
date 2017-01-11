@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, AdvToolBtn, Vcl.ExtCtrls, Vcl.StdCtrls,
-  dxGDIPlusClasses, acPNG;
+  dxGDIPlusClasses, acPNG, acImage;
 
 type
   THomeF = class(TForm)
@@ -14,7 +14,6 @@ type
     GridPanel1: TGridPanel;
     BLFaceBtn: TAdvToolButton;
     FCVFaceBtn: TAdvToolButton;
-    CTRFaceBtn: TAdvToolButton;
     BRFaceBtn: TAdvToolButton;
     FCAFaceBtn: TAdvToolButton;
     AdvToolButton1: TAdvToolButton;
@@ -25,6 +24,11 @@ type
     FourFaceBtn: TAdvToolButton;
     ProduitFaceBtn: TAdvToolButton;
     Image2: TImage;
+    sImage2: TsImage;
+    CTRFaceBtn: TAdvToolButton;
+    FCPFaceBtn: TAdvToolButton;
+    Image1: TImage;
+    Image3: TImage;
     procedure BLFaceBtnClick(Sender: TObject);
     procedure FCVFaceBtnClick(Sender: TObject);
     procedure CTRFaceBtnClick(Sender: TObject);
@@ -35,6 +39,7 @@ type
     procedure ClientFaceBtnClick(Sender: TObject);
     procedure FourFaceBtnClick(Sender: TObject);
     procedure ProduitFaceBtnClick(Sender: TObject);
+    procedure FCPFaceBtnClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -51,7 +56,7 @@ uses
   UMainF, UClientsList, UFournisseurList, UProduitsList, UBonRec,
    UBonLiv,  UBonFacV,  UBonFacA, UComptoir, UBonCtr, UCaisseList,
   UBankList, UUsersList,  UReglementFList, UReglementCList,
-    UDashboard, UDataModule;
+    UDashboard, UDataModule, UBonFacP;
 
 
 procedure THomeF.BLFaceBtnClick(Sender: TObject);
@@ -81,6 +86,12 @@ procedure THomeF.FCAFaceBtnClick(Sender: TObject);
 begin
 MainForm.FactureAMainFMnmClick(Sender);
 BonFacAF.AddBAFacBtnClick(Sender);
+end;
+
+procedure THomeF.FCPFaceBtnClick(Sender: TObject);
+begin
+MainForm.FactureP2MainFMnmClick(Sender);
+BonFacPF.AddBVFacBtnClick(Sender);
 end;
 
 procedure THomeF.CaisseFaceBtnClick(Sender: TObject);

@@ -1348,9 +1348,10 @@ object DataModuleF: TDataModuleF
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
     end
     object ChargesTablenom_ch: TWideStringField
+      DisplayWidth = 200
       FieldName = 'nom_ch'
       Origin = 'nom_ch'
-      Size = 8190
+      Size = 200
     end
     object ChargesTabledate_ch: TDateField
       FieldName = 'date_ch'
@@ -1378,9 +1379,10 @@ object DataModuleF: TDataModuleF
       Origin = 'montttc_ch'
     end
     object ChargesTablenum_cheque_ch: TWideStringField
+      DisplayWidth = 200
       FieldName = 'num_cheque_ch'
       Origin = 'num_cheque_ch'
-      Size = 8190
+      Size = 200
     end
     object ChargesTablecode_mdpai: TSmallintField
       FieldName = 'code_mdpai'
@@ -1423,6 +1425,7 @@ object DataModuleF: TDataModuleF
       LookupKeyFields = 'code_cht'
       LookupResultField = 'nom_cht'
       KeyFields = 'code_cht'
+      Size = 50
       Lookup = True
     end
     object ChargesTableCHSType: TStringField
@@ -1432,12 +1435,13 @@ object DataModuleF: TDataModuleF
       LookupKeyFields = 'code_chst'
       LookupResultField = 'nom_chst'
       KeyFields = 'code_chst'
+      Size = 50
       Lookup = True
     end
     object ChargesTablerefer_ch: TWideStringField
       FieldName = 'refer_ch'
       Origin = 'refer_ch'
-      Size = 8190
+      Size = 200
     end
     object ChargesTableAgent: TStringField
       FieldKind = fkLookup
@@ -1466,7 +1470,7 @@ object DataModuleF: TDataModuleF
     object Charge_typeTablenom_cht: TWideStringField
       FieldName = 'nom_cht'
       Origin = 'nom_cht'
-      Size = 8190
+      Size = 200
     end
   end
   object Charge_s_typeTable: TFDQuery
@@ -1540,6 +1544,7 @@ object DataModuleF: TDataModuleF
       LookupKeyFields = 'code_prt'
       LookupResultField = 'nom_prt'
       KeyFields = 'code_prt'
+      Size = 50
       Lookup = True
     end
     object PertesTablenomp: TStringField
@@ -1549,6 +1554,7 @@ object DataModuleF: TDataModuleF
       LookupKeyFields = 'code_p'
       LookupResultField = 'nom_p'
       KeyFields = 'code_p'
+      Size = 150
       Lookup = True
     end
     object PertesTablereferp: TStringField
@@ -1579,12 +1585,13 @@ object DataModuleF: TDataModuleF
       LookupKeyFields = 'code_ur'
       LookupResultField = 'nom_ur'
       KeyFields = 'code_ur'
+      Size = 50
       Lookup = True
     end
     object PertesTablerefer_pr: TWideStringField
       FieldName = 'refer_pr'
       Origin = 'refer_pr'
-      Size = 8190
+      Size = 200
     end
     object PertesTablePrixATTC: TCurrencyField
       FieldKind = fkInternalCalc

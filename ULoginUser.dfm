@@ -5,7 +5,7 @@ object LoginUserF: TLoginUserF
   Caption = 'LoginUserF'
   ClientHeight = 200
   ClientWidth = 398
-  Color = 15722984
+  Color = 15527148
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
@@ -798,7 +798,6 @@ object LoginUserF: TLoginUserF
     ParentDoubleBuffered = False
     ParentFont = False
     TabOrder = 1
-    Text = 'Admin'
     StyleElements = [seClient, seBorder]
     OnChange = UserCbxChange
     OnEnter = UserCbxEnter

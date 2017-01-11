@@ -24,7 +24,7 @@ uses
   dxSkinXmas2008Blue, cxTextEdit, cxMaskEdit, cxDropDownEdit, Vcl.Menus,
   frxExportPDF, frxClass, frxExportXLS, frxDBSet, Data.DB, EhLibVCL, GridsEh,
   DBAxisGridsEh, DBGridEh, Vcl.StdCtrls, Vcl.ComCtrls, Vcl.WinXCtrls,
-  Vcl.Buttons, sSpeedButton, AdvToolBtn, Vcl.ExtCtrls;
+  Vcl.Buttons, sSpeedButton, AdvToolBtn, Vcl.ExtCtrls, sStatusBar;
 
 type
   TChargesFListF = class(TForm)
@@ -68,6 +68,9 @@ type
     P1: TMenuItem;
     P2: TMenuItem;
     ChargefrxRprt: TfrxReport;
+    StatuBar: TsStatusBar;
+    SumGirdProduitBtn: TAdvToolButton;
+    RefreshGirdBtn: TAdvToolButton;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure AddBARecBtnClick(Sender: TObject);
     procedure FisrtBARecbtnClick(Sender: TObject);
@@ -92,6 +95,8 @@ type
     procedure P1Click(Sender: TObject);
     procedure sSpeedButton1Click(Sender: TObject);
     procedure sSpeedButton3Click(Sender: TObject);
+    procedure RefreshGirdBtnClick(Sender: TObject);
+    procedure SumGirdProduitBtnClick(Sender: TObject);
   private
     procedure GettingData;
     procedure GettingDataRecu;
@@ -278,6 +283,19 @@ procedure TChargesFListF.STypeChargeListCbxExit(Sender: TObject);
 begin
 if STypeChargeListCbx.ItemIndex = -1 then
    STypeChargeListCbx.ItemIndex := STypeChargeListCbx.Items.Count -1;
+end;
+
+procedure TChargesFListF.SumGirdProduitBtnClick(Sender: TObject);
+begin
+  if SumGirdProduitBtn.Tag = 0 then
+  begin
+    ChargesListDBGridEh.FooterRowCount:=1;
+    SumGirdProduitBtn.Tag := 1;
+  end else
+      begin
+        ChargesListDBGridEh.FooterRowCount:=0;
+        SumGirdProduitBtn.Tag := 0;
+      end;
 end;
 
 procedure TChargesFListF.ChargesListDBGridEhDblClick(Sender: TObject);
@@ -605,6 +623,12 @@ end;
 procedure TChargesFListF.PreviosBARecbtnClick(Sender: TObject);
 begin
 DataModuleF.ChargesTable.Prior;
+end;
+
+procedure TChargesFListF.RefreshGirdBtnClick(Sender: TObject);
+begin
+DataModuleF.ChargesTable.Close;
+DataModuleF.ChargesTable.Open;
 end;
 
 procedure TChargesFListF.ResearchChargeEdtChange(Sender: TObject);

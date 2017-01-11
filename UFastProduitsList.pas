@@ -56,6 +56,7 @@ type
     { Private declarations }
   public
     { Public declarations }
+    CodePForFastPList: Integer;
   end;
 
 var
@@ -152,7 +153,7 @@ end;
 procedure TFastProduitsListF.ResearchProduitsEdtChange(Sender: TObject);
 var  CodeCB : Integer;
 begin
- 
+
  //----------- Searching in databese-------------------//
       MainForm.SQLQuery.Active:=False;
       MainForm.SQLQuery.SQL.Clear;
@@ -253,11 +254,17 @@ var CodeBR,i,CodeP : Integer;
 begin
    if NOT (MainForm.ProduitTable.IsEmpty) then
     begin
+
+    CodePForFastPList:=MainForm.ProduitTable.FieldValues['code_p'];
+
 //----- this tag is for multiple products ------//
     if (OKProduitGBtn.Tag = 0) AND (FastProduitsListF.Tag = 0) then
     begin
 
     CodeP:= MainForm.ProduitTable.FieldByName('code_p').AsInteger ;
+     ResearchProduitsEdt.Text:='';
+     ResearchProduitsEdt.SetFocus;
+     MainForm.ProduitTable.Filtered := false;
     lookupResultRefP := MainForm.Bona_recPlistTable.Lookup('code_p',(CodeP),'code_p');
      if VarIsnull( lookupResultRefP) then
      begin
@@ -339,7 +346,7 @@ begin
                 FSplashAddUnite.CancelAddUniteSBtn.Left:= ((FSplashAddUnite.Width div 2 )+((FSplashAddUnite.Width div 2)div 2 ) ) - (FSplashAddUnite.CancelAddUniteSBtn.Width div 2) - 15;
                 if  MainForm.Bona_recPlistTable.FieldValues['code_p'] <> NULL then
                 begin
-                NomP:=   MainForm.ProduitTable.FieldValues['nom_p']
+                NomP:=   MainForm.ProduitTable.FieldValues['nom_p'];
                 end else begin
                 NomP:='';
                 end;
@@ -425,11 +432,12 @@ begin
            MainForm.Bona_recPlistTable.Last;
            MainForm.Bona_recPlistTable.EnableControls;
            MainForm.ProduitTable.EnableControls;
+           MainForm.ProduitTable.Filtered:=False;
           MainForm.Bona_recPlistTable.Active:=False;
           MainForm.Bona_recPlistTable.SQL.Clear;
           MainForm.Bona_recPlistTable.SQL.Text:= 'SELECT * FROM bona_rec_list WHERE code_barec = ' + QuotedStr(IntToStr(MainForm.Bona_recTable.FieldValues['code_barec']));
           MainForm.Bona_recPlistTable.Active:=True;
-          MainForm.ProduitTable.Filtered:=False;
+
           Close;
 
    end else
@@ -498,19 +506,22 @@ begin
     begin
 
     CodeP:= MainForm.ProduitTable.FieldByName('code_p').AsInteger ;
+     ResearchProduitsEdt.Text:='';
+     ResearchProduitsEdt.SetFocus;
+     MainForm.ProduitTable.Filtered := false;
     lookupResultRefP := MainForm.Bonv_liv_listTable.Lookup('code_p',(CodeP),'code_p');
      if VarIsnull( lookupResultRefP) then
      begin
 
       MainForm.ProduitTable.DisableControls;
 
-      MainForm.Bonv_liv_listTable.DisableControls;
-      MainForm.Bonv_liv_listTable.IndexFieldNames:='';
-      MainForm.Bonv_liv_listTable.Active:=False;
-      MainForm.Bonv_liv_listTable.SQL.Clear;
-      MainForm.Bonv_liv_listTable.SQL.Text:= 'SELECT * FROM bonv_liv_list ORDER by code_bvlivl' ;
-      MainForm.Bonv_liv_listTable.Active:=True;
-      MainForm.Bonv_liv_listTable.Last;
+      MainForm.SQLQuery.DisableControls;
+      MainForm.SQLQuery.IndexFieldNames:='';
+      MainForm.SQLQuery.Active:=False;
+      MainForm.SQLQuery.SQL.Clear;
+      MainForm.SQLQuery.SQL.Text:= 'SELECT * FROM bonv_liv_list ORDER by code_bvlivl' ;
+      MainForm.SQLQuery.Active:=True;
+      MainForm.SQLQuery.Last;
 
 //----- use this code to select more than one produit ------//
       if ProduitsListDBGridEh.SelectedRows.Count > 0 then
@@ -530,54 +541,54 @@ begin
          end;
 
         GotoBookmark(ProduitsListDBGridEh.SelectedRows.Items[i]);
-           if  MainForm.Bonv_liv_listTable.IsEmpty then
+           if  MainForm.SQLQuery.IsEmpty then
            begin
-             MainForm.Bonv_liv_listTable.Last;
+             MainForm.SQLQuery.Last;
              CodeBR := 1;
            end else
                begin
-                MainForm.Bonv_liv_listTable.Last;
-                CodeBR:= MainForm.Bonv_liv_listTable.FieldValues['code_bvlivl'] + 1 ;
+                MainForm.SQLQuery.Last;
+                CodeBR:= MainForm.SQLQuery.FieldByName('code_bvlivl').AsInteger + 1 ;
                end;
 
-             MainForm.Bonv_liv_listTable.Last;
-             MainForm.Bonv_liv_listTable.Append;
-             MainForm.Bonv_liv_listTable.FieldValues['code_bvlivl']:= CodeBR ;
-             MainForm.Bonv_liv_listTable.FieldValues['code_bvliv']:= MainForm.Bonv_livTable.FieldValues['code_bvliv'];
-             MainForm.Bonv_liv_listTable.FieldValues['code_p']:=  MainForm.ProduitTable.FieldValues['code_p'] ;
-             MainForm.Bonv_liv_listTable.FieldValues['qut_p'] :=  01;
-             MainForm.Bonv_liv_listTable.FieldValues['cond_p']:=  01;
-             MainForm.Bonv_liv_listTable.FieldValues['tva_p']:= MainForm.ProduitTable.FieldValues['tva_p'];
+             MainForm.SQLQuery.Last;
+             MainForm.SQLQuery.Append;
+             MainForm.SQLQuery.FieldByName('code_bvlivl').AsInteger:= CodeBR ;
+             MainForm.SQLQuery.FieldByName('code_bvliv').AsInteger:= MainForm.Bonv_livTable.FieldByName('code_bvliv').AsInteger;
+             MainForm.SQLQuery.FieldByName('code_p').AsInteger:=  MainForm.ProduitTable.FieldByName('code_p').AsInteger ;
+             MainForm.SQLQuery.FieldByName('qut_p').AsFloat :=  01;
+             MainForm.SQLQuery.FieldByName('cond_p').AsInteger:=  01;
+             MainForm.SQLQuery.FieldByName('tva_p').AsInteger:= MainForm.ProduitTable.FieldByName('tva_p').AsInteger;
 
            if  NOT (MainForm.ClientTable.IsEmpty) AND (BonLivGestionF.ClientBonLivGCbx.Text<> '' ) then
            begin
 
              if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 0 then
              begin
-             MainForm.Bonv_liv_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixvd_p'];
+             MainForm.SQLQuery.FieldByName('prixvd_p').AsCurrency:= MainForm.ProduitTable.FieldByName('prixvd_p').AsCurrency;
              end;
              if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 1 then
              begin
-             MainForm.Bonv_liv_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixvr_p'];
+             MainForm.SQLQuery.FieldByName('prixvd_p').AsCurrency:= MainForm.ProduitTable.FieldByName('prixvr_p').AsCurrency;
              end;
              if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 2 then
              begin
-             MainForm.Bonv_liv_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixvg_p'];
+             MainForm.SQLQuery.FieldByName('prixvd_p').AsCurrency:= MainForm.ProduitTable.FieldByName('prixvg_p').AsCurrency;
              end;
              if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 3 then
              begin
-             MainForm.Bonv_liv_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixva_p'];
+             MainForm.SQLQuery.FieldByName('prixvd_p').AsCurrency:= MainForm.ProduitTable.FieldByName('prixva_p').AsCurrency;
              end;
              if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 4 then
              begin
-             MainForm.Bonv_liv_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixva2_p'];
+             MainForm.SQLQuery.FieldByName('prixvd_p').AsCurrency:= MainForm.ProduitTable.FieldByName('prixva2_p').AsCurrency;
              end;
              end else
                  begin
-                  MainForm.Bonv_liv_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixvd_p'];
+                  MainForm.SQLQuery.FieldByName('prixvd_p').AsCurrency:= MainForm.ProduitTable.FieldByName('prixvd_p').AsCurrency;
                  end;
 
-             MainForm.Bonv_liv_listTable.Post ;
+             MainForm.SQLQuery.Post ;
 
           MainForm.ClientTable.Active:=false;
           MainForm.ClientTable.SQL.Clear;
@@ -585,11 +596,14 @@ begin
           MainForm.ClientTable.Active:=True;
           MainForm.ClientTable.EnableControls;
 
+//          MainForm.Bonv_liv_listTable.Next;
       end;
            ProduitsListDBGridEh.SelectedRows.Clear;
-           MainForm.Bonv_liv_listTable.IndexFieldNames:='code_bvliv';
+//           MainForm.Bonv_liv_listTable.Refresh;
+//           MainForm.Bonv_liv_listTable.IndexFieldNames:='code_bvliv';
+           MainForm.Bonv_liv_listTable.Filtered:= False;
            MainForm.Bonv_liv_listTable.Last;
-           MainForm.Bonv_liv_listTable.EnableControls;
+//           MainForm.Bonv_liv_listTable.EnableControls;
            MainForm.ProduitTable.EnableControls;
            OKProduitGBtn.Tag:=2;
          end else
@@ -719,6 +733,7 @@ begin
            MainForm.Bonv_liv_listTable.Last;
            MainForm.Bonv_liv_listTable.EnableControls;
            MainForm.ProduitTable.EnableControls;
+           MainForm.ProduitTable.Filtered:=False;
            MainForm.Bonv_liv_listTable.Active:=False;
            MainForm.Bonv_liv_listTable.SQL.Clear;
            MainForm.Bonv_liv_listTable.SQL.Text:= 'SELECT * FROM bonv_liv_list WHERE code_bvliv = ' + QuotedStr(IntToStr(MainForm.Bonv_livTable.FieldValues['code_bvliv']));
@@ -730,7 +745,7 @@ begin
           MainForm.ClientTable.Active:=True;
           MainForm.ClientTable.EnableControls;
 
-          MainForm.ProduitTable.Filtered:=False;
+
           Close;
 
      end else
@@ -801,6 +816,9 @@ begin
     begin
 
     CodeP:= MainForm.ProduitTable.FieldByName('code_p').AsInteger ;
+     ResearchProduitsEdt.Text:='';
+     ResearchProduitsEdt.SetFocus;
+     MainForm.ProduitTable.Filtered := false;
     lookupResultRefP := MainForm.Bonv_fac_listTable.Lookup('code_p',(CodeP),'code_p');
      if VarIsnull( lookupResultRefP) then
      begin
@@ -1017,11 +1035,12 @@ begin
            MainForm.Bonv_fac_listTable.Last;
            MainForm.Bonv_fac_listTable.EnableControls;
            MainForm.ProduitTable.EnableControls;
+           MainForm.ProduitTable.Filtered:=False;
           MainForm.Bonv_fac_listTable.Active:=False;
           MainForm.Bonv_fac_listTable.SQL.Clear;
           MainForm.Bonv_fac_listTable.SQL.Text:= 'SELECT * FROM bonv_fac_list WHERE code_bvfac = ' + QuotedStr(IntToStr(MainForm.Bonv_facTable.FieldValues['code_bvfac']));
           MainForm.Bonv_fac_listTable.Active:=True;
-          MainForm.ProduitTable.Filtered:=False;
+
 
             MainForm.ClientTable.Active:=false;
             MainForm.ClientTable.SQL.Clear;
@@ -1098,6 +1117,9 @@ begin
     begin
 
     CodeP:= MainForm.ProduitTable.FieldByName('code_p').AsInteger ;
+     ResearchProduitsEdt.Text:='';
+     ResearchProduitsEdt.SetFocus;
+     MainForm.ProduitTable.Filtered := false;
     lookupResultRefP := MainForm.Bona_fac_listTable.Lookup('code_p',(CodeP),'code_p');
      if VarIsnull( lookupResultRefP) then
      begin
@@ -1266,11 +1288,12 @@ begin
            MainForm.Bona_fac_listTable.Last;
            MainForm.Bona_fac_listTable.EnableControls;
            MainForm.ProduitTable.EnableControls;
+           MainForm.ProduitTable.Filtered:=False;
           MainForm.Bona_fac_listTable.Active:=False;
           MainForm.Bona_fac_listTable.SQL.Clear;
           MainForm.Bona_fac_listTable.SQL.Text:= 'SELECT * FROM bona_fac_list WHERE code_bafac = ' + QuotedStr(IntToStr(MainForm.Bona_facTable.FieldValues['code_bafac']));
           MainForm.Bona_fac_listTable.Active:=True;
-          MainForm.ProduitTable.Filtered:=False;
+
           Close;
 
    end else
@@ -1340,6 +1363,9 @@ begin
     begin
 
     CodeP:= MainForm.ProduitTable.FieldByName('code_p').AsInteger ;
+     ResearchProduitsEdt.Text:='';
+     ResearchProduitsEdt.SetFocus;
+     MainForm.ProduitTable.Filtered := false;
     lookupResultRefP := MainForm.Bonv_ctr_listTable.Lookup('code_p',(CodeP),'code_p');
      if VarIsnull( lookupResultRefP) then
      begin
@@ -1537,11 +1563,12 @@ begin
            MainForm.Bonv_ctr_listTable.Last;
            MainForm.Bonv_ctr_listTable.EnableControls;
            MainForm.ProduitTable.EnableControls;
+           MainForm.ProduitTable.Filtered:=False;
           MainForm.Bonv_ctr_listTable.Active:=False;
           MainForm.Bonv_ctr_listTable.SQL.Clear;
           MainForm.Bonv_ctr_listTable.SQL.Text:= 'SELECT * FROM bonv_ctr_list WHERE code_bvctr = ' + QuotedStr(IntToStr(MainForm.Bonv_ctrTable.FieldValues['code_bvctr']));
           MainForm.Bonv_ctr_listTable.Active:=True;
-          MainForm.ProduitTable.Filtered:=False;
+
           Close;
 
    end else
@@ -1630,6 +1657,9 @@ begin
     begin
 
     CodeP:= MainForm.ProduitTable.FieldByName('code_p').AsInteger ;
+     ResearchProduitsEdt.Text:='';
+     ResearchProduitsEdt.SetFocus;
+     MainForm.ProduitTable.Filtered := false;
     lookupResultRefP := MainForm.Bonp_fac_listTable.Lookup('code_p',(CodeP),'code_p');
      if VarIsnull( lookupResultRefP) then
      begin
@@ -1846,11 +1876,12 @@ begin
            MainForm.Bonp_fac_listTable.Last;
            MainForm.Bonp_fac_listTable.EnableControls;
            MainForm.ProduitTable.EnableControls;
+           MainForm.ProduitTable.Filtered:=False;
           MainForm.Bonp_fac_listTable.Active:=False;
           MainForm.Bonp_fac_listTable.SQL.Clear;
           MainForm.Bonp_fac_listTable.SQL.Text:= 'SELECT * FROM bonp_fac_list WHERE code_bpfac = ' + QuotedStr(IntToStr(MainForm.Bonp_facTable.FieldValues['code_bpfac']));
           MainForm.Bonp_fac_listTable.Active:=True;
-          MainForm.ProduitTable.Filtered:=False;
+
 
             MainForm.ClientTable.Active:=false;
             MainForm.ClientTable.SQL.Clear;

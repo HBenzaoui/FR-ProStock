@@ -102,6 +102,7 @@ type
     procedure FormCreate(Sender: TObject);
     procedure OldCreditClientGEdtClick(Sender: TObject);
     procedure MaxCreditClientGEdtClick(Sender: TObject);
+    procedure MaxCreditClientGEdtKeyPress(Sender: TObject; var Key: Char);
 
   private
     { Private declarations }
@@ -170,18 +171,20 @@ procedure TClientGestionF.OldCreditClientGEdtKeyPress(Sender: TObject;
   var Key: Char);
 const
   N = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0',',','.', Char(VK_back)];
-  F = ['.'];
+   F = ['.'];
 begin
-
   if not(Key in N) then
   begin
      key := #0;
   end;
-  if (Key in F) then
+
+   if (Key in F) then
   begin
-
     key :=  #44;
-
+  end;
+  if (Key = ',') AND (Pos(Key, (OldCreditClientGEdt.Text)) > 0) Then
+  begin
+      Key := #0;
   end;
 end;
 
@@ -837,6 +840,28 @@ begin
   begin
   MaxCredit:=StrToFloat(StringReplace(MaxCreditClientGEdt.Text, #32, '', [rfReplaceAll]));
   MaxCreditClientGEdt.Text := FloatToStrF(MaxCredit,ffNumber,14,2);
+  end;
+end;
+
+procedure TClientGestionF.MaxCreditClientGEdtKeyPress(Sender: TObject;
+  var Key: Char);
+
+const
+  N = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0',',','.', Char(VK_back)];
+   F = ['.'];
+begin
+  if not(Key in N) then
+  begin
+     key := #0;
+  end;
+
+   if (Key in F) then
+  begin
+    key :=  #44;
+  end;
+  if (Key = ',') AND (Pos(Key, (MaxCreditClientGEdt.Text)) > 0) Then
+  begin
+      Key := #0;
   end;
 end;
 

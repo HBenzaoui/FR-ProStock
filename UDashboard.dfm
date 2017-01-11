@@ -1814,7 +1814,7 @@ object DashboardF: TDashboardF
     Caption = 'Charts'
     Color = 10379008
     Font.Charset = DEFAULT_CHARSET
-    Font.Color = 15722984
+    Font.Color = 15527148
     Font.Height = 18
     Font.Name = 'Roboto'
     Font.Style = [fsBold]

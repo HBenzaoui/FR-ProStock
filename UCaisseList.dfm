@@ -328,7 +328,7 @@ object CaisseListF: TCaisseListF
     Left = 0
     Top = 82
     Width = 1191
-    Height = 608
+    Height = 603
     Anchors = [akLeft, akTop, akRight, akBottom]
     Border.Color = 4207405
     Border.ExtendedDraw = False
@@ -364,7 +364,7 @@ object CaisseListF: TCaisseListF
     IndicatorTitle.TitleButton = True
     OddRowColor = 16315635
     Options = [dgTitles, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
-    OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghDialogFind, dghColumnResize, dghColumnMove, dghHotTrack, dghExtendVertLines]
+    OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghAutoSortMarking, dghDialogFind, dghColumnResize, dghColumnMove, dghHotTrack, dghExtendVertLines]
     ParentCtl3D = False
     ParentFont = False
     ParentShowHint = False
@@ -825,7 +825,7 @@ object CaisseListF: TCaisseListF
     Left = 0
     Top = 82
     Width = 1
-    Height = 612
+    Height = 604
     Align = alLeft
     BevelOuter = bvNone
     Color = 7854350
@@ -835,9 +835,9 @@ object CaisseListF: TCaisseListF
   end
   object Panel4: TPanel
     Left = 0
-    Top = 694
+    Top = 686
     Width = 1191
-    Height = 47
+    Height = 35
     Align = alBottom
     BevelOuter = bvNone
     Color = 4207405
@@ -845,20 +845,21 @@ object CaisseListF: TCaisseListF
     TabOrder = 2
     DesignSize = (
       1191
-      47)
+      35)
     object Shape1: TShape
       Left = 0
       Top = 0
       Width = 320
-      Height = 47
+      Height = 35
       Align = alLeft
       Brush.Color = 4207405
       Pen.Color = 4666873
+      ExplicitHeight = 47
     end
     object SoldIniCaisseListLbl: TLabel
       AlignWithMargins = True
       Left = 98
-      Top = 10
+      Top = 5
       Width = 211
       Height = 25
       Margins.Left = 0
@@ -871,9 +872,9 @@ object CaisseListF: TCaisseListF
       Color = 15722984
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 7854350
-      Font.Height = 25
+      Font.Height = 20
       Font.Name = 'Helvetica LT Std'
-      Font.Style = [fsBold]
+      Font.Style = [fsBold, fsItalic]
       ParentBiDiMode = False
       ParentColor = False
       ParentFont = False
@@ -882,16 +883,16 @@ object CaisseListF: TCaisseListF
     end
     object Label4: TLabel
       Left = 9
-      Top = 12
-      Width = 99
-      Height = 21
+      Top = 9
+      Width = 82
+      Height = 17
       Caption = 'Solde Initial :'
       Color = clWhite
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
-      Font.Height = 21
-      Font.Name = 'Roboto'
-      Font.Style = []
+      Font.Height = 17
+      Font.Name = 'Helvetica LT Std'
+      Font.Style = [fsItalic]
       ParentColor = False
       ParentFont = False
       StyleElements = []
@@ -900,33 +901,35 @@ object CaisseListF: TCaisseListF
       Left = 880
       Top = 0
       Width = 311
-      Height = 47
+      Height = 35
       Align = alRight
       Brush.Color = 4207405
       Pen.Color = 4666873
+      ExplicitHeight = 47
     end
     object Shape3: TShape
       Left = 320
       Top = 0
       Width = 560
-      Height = 47
+      Height = 35
       Align = alClient
       Brush.Color = 4207405
       Pen.Color = 4666873
       ExplicitWidth = 377
+      ExplicitHeight = 47
     end
     object Label5: TLabel
       Left = 326
-      Top = 12
-      Width = 155
-      Height = 21
+      Top = 9
+      Width = 132
+      Height = 17
       Caption = 'Solde de la p'#233'riode :'
       Color = clWhite
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
-      Font.Height = 21
-      Font.Name = 'Roboto'
-      Font.Style = []
+      Font.Height = 17
+      Font.Name = 'Helvetica LT Std'
+      Font.Style = [fsItalic]
       ParentColor = False
       ParentFont = False
       StyleElements = []
@@ -934,7 +937,7 @@ object CaisseListF: TCaisseListF
     object SoldPeriodeCaisseListLbl: TLabel
       AlignWithMargins = True
       Left = 480
-      Top = 10
+      Top = 5
       Width = 209
       Height = 25
       Margins.Left = 0
@@ -947,9 +950,9 @@ object CaisseListF: TCaisseListF
       Color = 15722984
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 1752319
-      Font.Height = 25
+      Font.Height = 20
       Font.Name = 'Helvetica LT Std'
-      Font.Style = [fsBold]
+      Font.Style = [fsBold, fsItalic]
       ParentBiDiMode = False
       ParentColor = False
       ParentFont = False
@@ -959,7 +962,7 @@ object CaisseListF: TCaisseListF
     object SoldTotalCaisseListLbl: TLabel
       AlignWithMargins = True
       Left = 972
-      Top = 10
+      Top = 5
       Width = 211
       Height = 25
       Margins.Left = 0
@@ -973,9 +976,9 @@ object CaisseListF: TCaisseListF
       Color = 15722984
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 16771277
-      Font.Height = 25
+      Font.Height = 20
       Font.Name = 'Helvetica LT Std'
-      Font.Style = [fsBold]
+      Font.Style = [fsBold, fsItalic]
       ParentBiDiMode = False
       ParentColor = False
       ParentFont = False
@@ -984,17 +987,17 @@ object CaisseListF: TCaisseListF
     end
     object Label8: TLabel
       Left = 886
-      Top = 12
-      Width = 52
-      Height = 21
+      Top = 9
+      Width = 45
+      Height = 17
       Anchors = [akTop, akRight]
       Caption = 'Solde :'
       Color = clWhite
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
-      Font.Height = 21
-      Font.Name = 'Roboto'
-      Font.Style = []
+      Font.Height = 17
+      Font.Name = 'Helvetica LT Std'
+      Font.Style = [fsItalic]
       ParentColor = False
       ParentFont = False
       StyleElements = []
@@ -1007,7 +1010,7 @@ object CaisseListF: TCaisseListF
     Height = 82
     Align = alTop
     BevelOuter = bvNone
-    Color = 15722984
+    Color = 15527148
     DoubleBuffered = True
     ParentBackground = False
     ParentDoubleBuffered = False
@@ -1489,6 +1492,98 @@ object CaisseListF: TCaisseListF
       ShowHint = False
       TabOrder = 10
       StyleElements = []
+    end
+  end
+  object StatuBar: TsStatusBar
+    Left = 0
+    Top = 721
+    Width = 1191
+    Height = 20
+    BiDiMode = bdLeftToRight
+    Panels = <
+      item
+        Alignment = taRightJustify
+        Bevel = pbRaised
+        Style = psOwnerDraw
+        Width = 110
+      end
+      item
+        Style = psOwnerDraw
+        Width = 50
+      end>
+    ParentBiDiMode = False
+    SizeGrip = False
+    SkinData.SkinSection = 'MENUITEM'
+    DesignSize = (
+      1191
+      20)
+    object SumGirdProduitBtn: TAdvToolButton
+      Left = 141
+      Top = 0
+      Width = 26
+      Height = 20
+      Cursor = crHandPoint
+      Hint = 'Totaux'
+      Anchors = [akRight]
+      AutoThemeAdapt = False
+      BorderColor = 15722984
+      BorderDownColor = 15722984
+      BorderHotColor = 14079702
+      Color = 15722984
+      ColorDown = 15722984
+      ColorHot = 14079702
+      ColorHotTo = 14079702
+      ColorChecked = clNone
+      DropDownSplit = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 4207405
+      Font.Height = 18
+      Font.Name = 'Roboto'
+      Font.Style = []
+      ImageIndex = 26
+      Images = MainForm.PanelIcons16
+      ParentFont = False
+      ParentShowHint = False
+      Shaded = False
+      ShowHint = True
+      Spacing = -2
+      Visible = False
+      Version = '1.6.1.2'
+      TMSStyle = 0
+    end
+    object RefreshGirdBtn: TAdvToolButton
+      Left = 112
+      Top = 0
+      Width = 26
+      Height = 20
+      Cursor = crHandPoint
+      Hint = 'Rafra'#238'chir'
+      Anchors = [akRight]
+      AutoThemeAdapt = False
+      BorderColor = 15722984
+      BorderDownColor = 15722984
+      BorderHotColor = 14079702
+      Color = 15722984
+      ColorDown = 15722984
+      ColorHot = 14079702
+      ColorHotTo = 14079702
+      ColorChecked = clNone
+      DropDownSplit = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 4207405
+      Font.Height = 18
+      Font.Name = 'Roboto'
+      Font.Style = []
+      ImageIndex = 27
+      Images = MainForm.PanelIcons16
+      ParentFont = False
+      ParentShowHint = False
+      Shaded = False
+      ShowHint = True
+      Spacing = -2
+      OnClick = RefreshGirdBtnClick
+      Version = '1.6.1.2'
+      TMSStyle = 0
     end
   end
   object CaisseListDataS: TDataSource

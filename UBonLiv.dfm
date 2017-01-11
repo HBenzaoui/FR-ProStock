@@ -330,7 +330,7 @@ object BonLivF: TBonLivF
     Height = 82
     Align = alTop
     BevelOuter = bvNone
-    Color = 15722984
+    Color = 15527148
     DoubleBuffered = True
     ParentBackground = False
     ParentDoubleBuffered = False
@@ -461,8 +461,8 @@ object BonLivF: TBonLivF
       ShowHint = True
       OnClick = sSpeedButton1Click
       SkinData.SkinSection = 'SPEEDBUTTON'
-      ImageIndex = 7
       Images = MainForm.PanelIcons24
+      ImageIndex = 7
     end
     object sSpeedButton2: TsSpeedButton
       Left = 1087
@@ -474,8 +474,8 @@ object BonLivF: TBonLivF
       ShowHint = True
       OnClick = sSpeedButton2Click
       SkinData.SkinSection = 'SPEEDBUTTON'
-      ImageIndex = 8
       Images = MainForm.PanelIcons24
+      ImageIndex = 8
     end
     object sSpeedButton3: TsSpeedButton
       Left = 1155
@@ -487,8 +487,8 @@ object BonLivF: TBonLivF
       ShowHint = True
       OnClick = sSpeedButton3Click
       SkinData.SkinSection = 'SPEEDBUTTON'
-      ImageIndex = 9
       Images = MainForm.PanelIcons24
+      ImageIndex = 9
     end
     object Label1: TLabel
       Left = 345
@@ -565,8 +565,8 @@ object BonLivF: TBonLivF
       ShowHint = True
       OnClick = FisrtBARecbtnClick
       SkinData.SkinSection = 'SPEEDBUTTON'
-      ImageIndex = 0
       Images = MainForm.PanelIcons24
+      ImageIndex = 0
       ShowCaption = False
     end
     object LastBARecbtn: TsSpeedButton
@@ -578,8 +578,8 @@ object BonLivF: TBonLivF
       ShowHint = True
       OnClick = LastBARecbtnClick
       SkinData.SkinSection = 'SPEEDBUTTON'
-      ImageIndex = 3
       Images = MainForm.PanelIcons24
+      ImageIndex = 3
     end
     object NextBARecbtn: TsSpeedButton
       Left = 559
@@ -590,8 +590,8 @@ object BonLivF: TBonLivF
       ShowHint = True
       OnClick = NextBARecbtnClick
       SkinData.SkinSection = 'SPEEDBUTTON'
-      ImageIndex = 2
       Images = MainForm.PanelIcons24
+      ImageIndex = 2
       ShowCaption = False
     end
     object PreviosBARecbtn: TsSpeedButton
@@ -603,8 +603,8 @@ object BonLivF: TBonLivF
       ShowHint = True
       OnClick = PreviosBARecbtnClick
       SkinData.SkinSection = 'SPEEDBUTTON'
-      ImageIndex = 1
       Images = MainForm.PanelIcons24
+      ImageIndex = 1
     end
     object sImage1: TsImage
       Left = 630
@@ -759,6 +759,7 @@ object BonLivF: TBonLivF
       ParentFont = False
       TabOrder = 0
       OnChange = ResearchBVLivEdtChange
+      OnKeyPress = ResearchBVLivEdtKeyPress
     end
     object Panel2: TPanel
       Left = 485
@@ -938,7 +939,7 @@ object BonLivF: TBonLivF
     IndicatorTitle.TitleButton = True
     OddRowColor = 16315635
     Options = [dgTitles, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
-    OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghDialogFind, dghColumnResize, dghColumnMove, dghHotTrack, dghExtendVertLines]
+    OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghAutoSortMarking, dghDialogFind, dghColumnResize, dghColumnMove, dghHotTrack, dghExtendVertLines]
     ParentCtl3D = False
     ParentFont = False
     ParentShowHint = False
@@ -1475,22 +1476,8 @@ object BonLivF: TBonLivF
     DesignSize = (
       1191
       20)
-    object sImage3: TsImage
-      Tag = 1
-      Left = 250
-      Top = 3
-      Width = 16
-      Height = 16
-      Center = True
-      Picture.Data = {07544269746D617000000000}
-      Proportional = True
-      Stretch = True
-      Transparent = True
-      ImageIndex = 4
-      SkinData.SkinSection = 'CHECKBOX'
-    end
     object SumGirdBBVlivBtn: TAdvToolButton
-      Left = 112
+      Left = 141
       Top = 0
       Width = 26
       Height = 20
@@ -1520,6 +1507,40 @@ object BonLivF: TBonLivF
       ShowHint = True
       Spacing = -2
       OnClick = SumGirdBBVlivBtnClick
+      Version = '1.6.1.2'
+      TMSStyle = 0
+    end
+    object RefreshGirdBtn: TAdvToolButton
+      Left = 112
+      Top = 0
+      Width = 26
+      Height = 20
+      Cursor = crHandPoint
+      Hint = 'Rafra'#238'chir'
+      Anchors = [akRight]
+      AutoThemeAdapt = False
+      BorderColor = 15722984
+      BorderDownColor = 15722984
+      BorderHotColor = 14079702
+      Color = 15722984
+      ColorDown = 15722984
+      ColorHot = 14079702
+      ColorHotTo = 14079702
+      ColorChecked = clNone
+      DropDownSplit = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 4207405
+      Font.Height = 18
+      Font.Name = 'Roboto'
+      Font.Style = []
+      ImageIndex = 27
+      Images = MainForm.PanelIcons16
+      ParentFont = False
+      ParentShowHint = False
+      Shaded = False
+      ShowHint = True
+      Spacing = -2
+      OnClick = RefreshGirdBtnClick
       Version = '1.6.1.2'
       TMSStyle = 0
     end
@@ -1602,7 +1623,7 @@ object BonLivF: TBonLivF
     Top = 392
   end
   object BonLivfrxRprt: TfrxReport
-    Version = '5.5'
+    Version = '5.4.6'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]

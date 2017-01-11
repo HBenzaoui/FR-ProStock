@@ -17,7 +17,7 @@ uses
   Vcl.ImgList, acAlphaImageList, EhLibVCL, GridsEh, DBAxisGridsEh, DBGridEh,
   Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.Buttons, sSpeedButton, AdvToolBtn,
   Vcl.WinXCtrls, REST.Backend.EMSServices, REST.Backend.EMSFireDAC, frxClass,
-  frxDBSet, frxExportXLS, frxExportPDF  ;
+  frxDBSet, frxExportXLS, frxExportPDF, acImage, Vcl.ComCtrls, sStatusBar  ;
 
 type
   TClientListF = class(TForm)
@@ -57,6 +57,9 @@ type
     NextClientbtn: TsSpeedButton;
     LastClientbtn: TsSpeedButton;
     Panel5: TPanel;
+    StatuBar: TsStatusBar;
+    SumGirdBBVlivBtn: TAdvToolButton;
+    RefreshGirdBtn: TAdvToolButton;
     procedure AddClientsBtnClick(Sender: TObject);
     procedure EditClientsBtnClick(Sender: TObject);
     procedure ResearchClientsEdtChange(Sender: TObject);
@@ -84,6 +87,8 @@ type
     procedure sSpeedButton1Click(Sender: TObject);
     procedure sSpeedButton3Click(Sender: TObject);
     procedure FormPaint(Sender: TObject);
+    procedure SumGirdBBVlivBtnClick(Sender: TObject);
+    procedure RefreshGirdBtnClick(Sender: TObject);
   private
     procedure GettingData;
     { Private declarations }
@@ -609,6 +614,12 @@ begin
 
 end;
 
+procedure TClientListF.RefreshGirdBtnClick(Sender: TObject);
+begin
+MainForm.ClientTable.Close;
+MainForm.ClientTable.Open;
+end;
+
 procedure TClientListF.ResearchClientsEdtChange(Sender: TObject);
 begin
   if (ResearchClientsEdt.text <> '') then
@@ -634,6 +645,21 @@ begin
    key := #0  ;
     ResearchClientsEdt.Text:= '';
 
+  end;
+
+    if key = #13 then
+  begin
+   key := #0;
+
+    if (ResearchClientsEdt.text <> '') then
+      begin
+      MainForm.ClientTable.Filtered:=false;
+      MainForm.ClientTable.Filter := '[nom_c] LIKE ' + quotedstr(ResearchClientsEdt.Text+'%' );
+      MainForm.ClientTable.Filtered :=True;
+    end  else
+      begin
+        MainForm.ClientTable.Filtered := False;
+       end;
   end;
 
 end;
@@ -712,6 +738,19 @@ frxPDFExport1.FileName := 'Etat liste des Client';
 ClientListfrxRprt.Export(frxPDFExport1);
 
 MainForm.ClientTable.EnableControls;
+end;
+
+procedure TClientListF.SumGirdBBVlivBtnClick(Sender: TObject);
+begin
+  if SumGirdBBVlivBtn.Tag = 0 then
+  begin
+    ClientsListDBGridEh.FooterRowCount:=1;
+    SumGirdBBVlivBtn.Tag := 1;
+  end else
+      begin
+        ClientsListDBGridEh.FooterRowCount:=0;
+        SumGirdBBVlivBtn.Tag := 0;
+      end;
 end;
 
 procedure TClientListF.FormPaint(Sender: TObject);

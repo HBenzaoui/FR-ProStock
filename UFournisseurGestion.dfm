@@ -876,7 +876,7 @@ object FournisseurGestionF: TFournisseurGestionF
           OnClick = OldCreditFournisseurGEdtClick
           OnExit = OldCreditFournisseurGEdtExit
           OnKeyDown = MaxCreditFournisseurGEdtKeyDown
-          OnKeyPress = MaxCreditFournisseurGEdtKeyPress
+          OnKeyPress = OldCreditFournisseurGEdtKeyPress
         end
         object MaxCreditFournisseurGEdt: TEdit
           Left = 299

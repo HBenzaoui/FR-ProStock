@@ -71,8 +71,8 @@ type
     N5: TMenuItem;
     ClearFilterBVLivPMenu: TMenuItem;
     StatuBar: TsStatusBar;
-    sImage3: TsImage;
     SumGirdBBVFacBtn: TAdvToolButton;
+    RefreshGirdBtn: TAdvToolButton;
     procedure AddBVFacBtnClick(Sender: TObject);
     procedure DateStartBVFacDChange(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -104,6 +104,8 @@ type
     procedure ClearMPFilterBVLivPMenuClick(Sender: TObject);
     procedure ClearFilterBVLivPMenuClick(Sender: TObject);
     procedure SumGirdBBVFacBtnClick(Sender: TObject);
+    procedure RefreshGirdBtnClick(Sender: TObject);
+    procedure ResearchBVFacEdtKeyPress(Sender: TObject; var Key: Char);
   private
     procedure GettingData;
     procedure FilteredColor;
@@ -527,6 +529,12 @@ begin
 MainForm.Bonv_facTable.Last;
 end;
 
+procedure TBonFacVF.RefreshGirdBtnClick(Sender: TObject);
+begin
+MainForm.Bonv_facTable.Close;
+MainForm.Bonv_facTable.Open;
+end;
+
 procedure TBonFacVF.RegleFilterBVLivPMenuClick(Sender: TObject);
 begin
  FilterBVLivBtn.ImageIndex:=50;
@@ -610,6 +618,73 @@ begin
           MainForm.Bonv_FacTable.EnableControls;
 
      end;
+end;
+
+procedure TBonFacVF.ResearchBVFacEdtKeyPress(Sender: TObject; var Key: Char);
+var  CodeCB : Integer;
+const
+  N =[Char(VK_ESCAPE)];
+begin
+
+  if (Key in N) then
+  begin
+    key := #0;
+    ResearchBVFacEdt.Text := '';
+
+  end;
+
+    if key = #13 then
+  begin
+   key := #0;
+
+
+    //----------- Searching in databese-------------------//
+
+    if ResearchBVFacEdt.Text<>'' then
+    begin
+
+          if ResherchBFVClientRdioBtn.Checked then
+          begin
+          MainForm.Bonv_FacTable.DisableControls;
+          MainForm.Bonv_FacTable.Active:=False;
+          MainForm.Bonv_FacTable.SQL.Clear;
+          MainForm.Bonv_FacTable.SQL.Text:='SELECT * FROM bonv_fac WHERE code_c IN( SELECT code_c FROM client WHERE LOWER(nom_c) LIKE LOWER' +'('''+(ResearchBVFacEdt.Text+'%')+''')' +')';
+          MainForm.Bonv_FacTable.Active:=True;
+          MainForm.Bonv_FacTable.EnableControls;
+
+          end;
+
+          if ResherchBFVNumBRdioBtn.Checked then
+          begin
+          MainForm.Bonv_FacTable.DisableControls;
+          MainForm.Bonv_FacTable.Active:=False;
+          MainForm.Bonv_FacTable.SQL.Clear;
+          MainForm.Bonv_FacTable.SQL.Text:='SELECT * FROM bonv_fac WHERE LOWER(num_bvfac) LIKE LOWER' +'('''+(ResearchBVFacEdt.Text+'%')+''')' ;
+          MainForm.Bonv_FacTable.Active:=True;
+          MainForm.Bonv_FacTable.EnableControls;
+          end;
+
+
+    end else
+     begin
+          MainForm.ClientTable.DisableControls;
+          MainForm.ClientTable.Active:=False;
+          MainForm.ClientTable.SQL.Clear;
+          MainForm.ClientTable.SQL.Text:='SELECT * FROM client ' ;
+          MainForm.ClientTable.Active:=True;
+          MainForm.ClientTable.EnableControls;
+
+          MainForm.Bonv_FacTable.DisableControls;
+          MainForm.Bonv_FacTable.Active:=False;
+          MainForm.Bonv_FacTable.SQL.Clear;
+          MainForm.Bonv_FacTable.SQL.Text:='SELECT * FROM bonv_fac ' ;
+          MainForm.Bonv_FacTable.Active:=True;
+          MainForm.Bonv_FacTable.EnableControls;
+
+     end;
+
+end;
+
 end;
 
 procedure TBonFacVF.EditBVFacBtnClick(Sender: TObject);
@@ -1196,4 +1271,3 @@ begin
 end;
 
 end.
-

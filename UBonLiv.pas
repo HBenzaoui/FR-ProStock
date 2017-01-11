@@ -8,7 +8,7 @@ uses
   DBGridEhToolCtrls, DynVarsEh, Data.DB, System.ImageList, Vcl.ImgList,
   acAlphaImageList, Vcl.ComCtrls, Vcl.StdCtrls, Vcl.WinXCtrls, Vcl.Buttons,
   sSpeedButton, AdvToolBtn, Vcl.ExtCtrls, EhLibVCL, GridsEh, DBAxisGridsEh,
-  DBGridEh,
+  DBGridEh,EhLibFireDAC,
   System.DateUtils, frxClass, frxDBSet, frxExportPDF, frxExportXLS, Vcl.Menus,
   acImage, sStatusBar
   ;
@@ -71,8 +71,8 @@ type
     RegleFilterBVLivPMenu: TMenuItem;
     sImage6: TsImage;
     StatuBar: TsStatusBar;
-    sImage3: TsImage;
     SumGirdBBVlivBtn: TAdvToolButton;
+    RefreshGirdBtn: TAdvToolButton;
     procedure ResearchBVLivEdtChange(Sender: TObject);
     procedure FisrtBARecbtnClick(Sender: TObject);
     procedure PreviosBARecbtnClick(Sender: TObject);
@@ -108,6 +108,8 @@ type
     procedure ClearMPFilterBVLivPMenuClick(Sender: TObject);
     procedure BVLivListDBGridEhSortMarkingChanged(Sender: TObject);
     procedure SumGirdBBVlivBtnClick(Sender: TObject);
+    procedure RefreshGirdBtnClick(Sender: TObject);
+    procedure ResearchBVLivEdtKeyPress(Sender: TObject; var Key: Char);
   private
     procedure GettingData;
     procedure Select_ALL;
@@ -326,6 +328,12 @@ begin
 end;
 
 
+procedure TBonLivF.RefreshGirdBtnClick(Sender: TObject);
+begin
+MainForm.Bonv_livTable.Close;
+MainForm.Bonv_livTable.Open;
+end;
+
 procedure TBonLivF.RegleFilterBVLivPMenuClick(Sender: TObject);
 begin
  FilterBVLivBtn.ImageIndex:=50;
@@ -411,6 +419,71 @@ begin
           MainForm.Bonv_livTable.EnableControls;
 
      end;
+end;
+
+procedure TBonLivF.ResearchBVLivEdtKeyPress(Sender: TObject; var Key: Char);
+var  CodeCB : Integer;
+const
+  N =[Char(VK_ESCAPE)];
+begin
+
+  if (Key in N) then
+  begin
+    key := #0;
+    ResearchBVLivEdt.Text := '';
+
+  end;
+
+    if key = #13 then
+  begin
+   key := #0;
+
+ //----------- Searching in databese-------------------//
+
+    if ResearchBVLIVEdt.Text<>'' then
+    begin
+
+          if ResherchBVlClientRdioBtn.Checked then
+          begin
+          MainForm.Bonv_livTable.DisableControls;
+          MainForm.Bonv_livTable.Active:=False;
+          MainForm.Bonv_livTable.SQL.Clear;
+          MainForm.Bonv_livTable.SQL.Text:='SELECT * FROM bonv_liv WHERE code_c IN( SELECT code_c FROM client WHERE LOWER(nom_c) LIKE LOWER' +'('''+(ResearchBVLIVEdt.Text+'%')+''')' +')';
+          MainForm.Bonv_livTable.Active:=True;
+          MainForm.Bonv_livTable.EnableControls;
+
+          end;
+
+          if ResherchBVLNumBRdioBtn.Checked then
+          begin
+          MainForm.Bonv_livTable.DisableControls;
+          MainForm.Bonv_livTable.Active:=False;
+          MainForm.Bonv_livTable.SQL.Clear;
+          MainForm.Bonv_livTable.SQL.Text:='SELECT * FROM bonv_liv WHERE LOWER(num_bvliv) LIKE LOWER' +'('''+(ResearchBVLIVEdt.Text+'%')+''')' ;
+          MainForm.Bonv_livTable.Active:=True;
+          MainForm.Bonv_livTable.EnableControls;
+          end;
+
+
+    end else
+     begin
+          MainForm.ClientTable.DisableControls;
+          MainForm.ClientTable.Active:=False;
+          MainForm.ClientTable.SQL.Clear;
+          MainForm.ClientTable.SQL.Text:='SELECT * FROM client ' ;
+          MainForm.ClientTable.Active:=True;
+          MainForm.ClientTable.EnableControls;
+
+          MainForm.Bonv_livTable.DisableControls;
+          MainForm.Bonv_livTable.Active:=False;
+          MainForm.Bonv_livTable.SQL.Clear;
+          MainForm.Bonv_livTable.SQL.Text:='SELECT * FROM bonv_liv ' ;
+          MainForm.Bonv_livTable.Active:=True;
+          MainForm.Bonv_livTable.EnableControls;
+
+     end;
+end;
+
 end;
 
 procedure TBonLivF.FisrtBARecbtnClick(Sender: TObject);

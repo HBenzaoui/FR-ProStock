@@ -147,7 +147,7 @@ type
     FacturedAvoirVente: TMenuItem;
     B4: TMenuItem;
     BLMainFMmn: TMenuItem;
-    F6: TMenuItem;
+    FactureP2MainFMnm: TMenuItem;
     FactureV2MainFMnm: TMenuItem;
     MainMenuImageListMainFormaa: TsAlphaImageList;
     CtrMainFMmn: TMenuItem;
@@ -649,7 +649,7 @@ type
     four_ur: TCheckBox;
     ctr_ur: TCheckBox;
     produit_ur: TCheckBox;
-    faceIcon68: TsAlphaImageList;
+    faceIcon52: TsAlphaImageList;
     CompanyTable: TFDQuery;
     CreateTablesFDScript: TFDScript;
     DropDatabaseFDScript: TFDScript;
@@ -795,6 +795,8 @@ type
     Bonp_facTabletimber_bpfac: TCurrencyField;
     Bonp_facTablecode_ur: TIntegerField;
     Bonp_facTableAgent: TStringField;
+    ProduitTableValueStock: TCurrencyField;
+    N21: TMenuItem;
     procedure ClientMainFBtnClick(Sender: TObject);
     procedure FourMainFBtnClick(Sender: TObject);
     procedure ProduitMainFBtnClick(Sender: TObject);
@@ -898,10 +900,11 @@ type
     procedure ListedetypesdeCharge1Click(Sender: TObject);
     procedure ListedetypesdeCharge2Click(Sender: TObject);
     procedure FDPhysPgDriverLink1DriverCreated(Sender: TObject);
-    procedure F6Click(Sender: TObject);
+    procedure FactureP2MainFMnmClick(Sender: TObject);
     procedure Bonp_facTableCalcFields(DataSet: TDataSet);
     procedure Bonp_fac_listTableCalcFields(DataSet: TDataSet);
     procedure Bonp_fac_listTableAfterRefresh(DataSet: TDataSet);
+    procedure T3Click(Sender: TObject);
   private
    //---- this to value of changege we need it to check if theuser changed something
      CountInsert,CountUpdate,CountDelete   : Int64;
@@ -917,7 +920,7 @@ type
    
     procedure ActiveTables;
     procedure InactiveTables;
-    
+
      procedure WMUserCloseTab(var Message: TMessage); message
     WM_USER_CLOSETAB;
 
@@ -941,7 +944,7 @@ uses   Vcl.Direct2D,Character,
   UUnitesList, ULocaleList, UHomeF, UDataModule, USplash, UWorkingSplash,
   ULogoSplashForm, ULoginUser, ULogin, UCNotifications, UChargesFList,
   UPertesFList, USTypeChargeList, UTypeChargeList, UTypePerteList,
-  UBonFacPGestion, UBonFacP;
+  UBonFacPGestion, UBonFacP, UTransferComptesGestion;
 
   var
     gGrayForms: TComponentList;
@@ -1123,7 +1126,7 @@ begin
   FormatSettings.ThousandSeparator := ' ';
   FormatSettings.CurrencyDecimals := 2;
   FormatSettings.DateSeparator:= '/';
-  FormatSettings.ShortDateFormat:= 'dd/M/yyyy';
+  FormatSettings.ShortDateFormat:= 'dd/mm/yyyy';
   FormatSettings.CurrencyString:= '';
   FormatSettings.CurrencyFormat:= 1;
 
@@ -1174,6 +1177,10 @@ begin
 
     ProduitTable.FieldValues['QutDispo']:=
  (ProduitTable.FieldValues['qut_p'] + ProduitTable.FieldValues['qutini_p']);
+
+
+     ProduitTable.FieldValues['ValueStock']:=
+ (ProduitTable.FieldValues['QutDispo'] * ProduitTable.FieldValues['prixht_p']);
 
 
 end;
@@ -1685,11 +1692,11 @@ var TotalHT,TotalTVA,TVA,TotalTTC,LeReste,Regle,Marge: Currency;
 
       while not MainForm.Bonv_liv_listTable.Eof do
       begin
-        TotalHT:= TotalHT + (MainForm.Bonv_liv_listTable.FieldValues['MontantHT'] );
-        TotalTVA:= TotalTVA + MainForm.Bonv_liv_listTable.FieldValues['MontantTVA'];
-        TotalTTC:= TotalTTC + MainForm.Bonv_liv_listTable.FieldValues['MontantTTC'];
-        TVA:=TVA + MainForm.Bonv_liv_listTable.FieldValues['tva_p'] ;
-        Marge:=Marge + MainForm.Bonv_liv_listTable.FieldValues['MargeM'] ;
+        TotalHT:= TotalHT + (MainForm.Bonv_liv_listTable.FieldByName('MontantHT').AsCurrency );
+        TotalTVA:= TotalTVA + MainForm.Bonv_liv_listTable.FieldByName('MontantTVA').AsCurrency;
+        TotalTTC:= TotalTTC + MainForm.Bonv_liv_listTable.FieldByName('MontantTTC').AsCurrency;
+        TVA:=TVA + MainForm.Bonv_liv_listTable.FieldByName('tva_p').AsInteger;
+        Marge:=Marge + MainForm.Bonv_liv_listTable.FieldByName('MargeM').AsCurrency ;
         LeReste:= TotalTTC - StrToCurr(StringReplace(BonLivGestionF.BonLivRegleLbl.Caption, #32, '', [rfReplaceAll]))  ;
         MainForm.Bonv_liv_listTable.Next;
       end;
@@ -1712,9 +1719,9 @@ var TotalHT,TotalTVA,TVA,TotalTTC,LeReste,Regle,Marge: Currency;
     BonLivGestionF.TotalTVANewLbl.Caption :=      CurrToStrF(((TotalTVA)),ffNumber,2) ;
     BonLivGestionF.BonLivTotalMargeLbl.Caption := CurrToStrF(((Marge)),ffNumber,2) ;
 
-    if MainForm.Bonv_livTable.FieldValues['montver_bvliv']<> Null then
+    if MainForm.Bonv_livTable.FieldByName('montver_bvliv').AsCurrency<> Null then
     begin
-    Regle:= MainForm.Bonv_livTable.FieldValues['montver_bvliv'];
+    Regle:= MainForm.Bonv_livTable.FieldByName('montver_bvliv').AsCurrency;
     BonLivGestionF.BonLivRegleLbl.Caption :=      CurrToStrF(((Regle)),ffNumber,2) ;
     end;
 
@@ -2100,7 +2107,7 @@ begin
 ((Bona_FacTableCredit.FieldValues['montttc_bafac']) - (Bona_FacTableCredit.FieldValues['montver_bafac'])) ;
 end;
 
-procedure TMainForm.F6Click(Sender: TObject);
+procedure TMainForm.FactureP2MainFMnmClick(Sender: TObject);
 begin
 if Not Assigned(BonFacPF) then
 
@@ -2758,6 +2765,17 @@ begin
   HomeF.Label1.Caption:='Bonjour '+DataModuleF.UsersTable.FieldByName('nom_ur').AsString;
    UserNameLbl.Caption:=DataModuleF.UsersTable.FieldByName('nom_ur').AsString;
 
+   while HomeF.Label1.Width > 180  do
+    begin
+     HomeF.Label1.Font.Height:= HomeF.Label1.Font.Height - 2 ;
+     HomeF.Label1.Top:= HomeF.Label1.Top + 1
+    end;
+
+//   if HomeF.Label1.Width > 180 then
+//    begin
+//     HomeF.Label1.Font.Height:= HomeF.Label1.Font.Height - 2
+//    end;
+
     RefreshCNotification;
    
    
@@ -2900,6 +2918,16 @@ begin
  TimerStart := now();
  Timer1.interval := 500;
  Timer1.enabled  := True;
+end;
+
+procedure TMainForm.T3Click(Sender: TObject);
+begin
+if Not Assigned(TransferComptesGestionF) then
+
+     TransferComptesGestionF:= TTransferComptesGestionF.Create(Application) else
+                                        begin
+                                          TransferComptesGestionF.Show
+                                        end;
 end;
 
 procedure TMainForm.Timer1Timer(Sender: TObject);
@@ -3851,6 +3879,15 @@ begin
       DataModuleF.ToatalVerMonthAREC.Active:= True;
       DataModuleF.ToatalVerMonthAFAC.Active:= True;
 
+
+      DataModuleF.ChargesTable.Active:= True;
+      DataModuleF.Charge_typeTable.Active:= True;
+      DataModuleF.Charge_s_typeTable.Active:= True;
+      DataModuleF.PertesTable.Active:= True;
+      DataModuleF.Perte_typeTable.Active:= True;
+
+
+
       sImage1.ImageIndex:=4;
       sImage1.Tag := 1;
 
@@ -3939,6 +3976,13 @@ begin
       DataModuleF.ToatalVerMonthVCTR.Active:= True;
       DataModuleF.ToatalVerMonthAREC.Active:= True;
       DataModuleF.ToatalVerMonthAFAC.Active:= True;
+
+
+      DataModuleF.ChargesTable.Active:= True;
+      DataModuleF.Charge_typeTable.Active:= True;
+      DataModuleF.Charge_s_typeTable.Active:= True;
+      DataModuleF.PertesTable.Active:= True;
+      DataModuleF.Perte_typeTable.Active:= True;
 
       sImage1.ImageIndex:=3;
       sImage1.Tag := 0;

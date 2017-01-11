@@ -12,7 +12,8 @@ uses
   FireDAC.Comp.DataSet, FireDAC.Comp.Client, System.ImageList, Vcl.ImgList,
   acAlphaImageList, Vcl.StdCtrls, Vcl.WinXCtrls, Vcl.Buttons, sSpeedButton,
   AdvToolBtn, Vcl.ExtCtrls, EhLibVCL, GridsEh, DBAxisGridsEh, DBGridEh,
-  frxClass, frxDBSet, frxExportXLS, frxExportPDF;
+  frxClass, frxDBSet, frxExportXLS, frxExportPDF, acImage, Vcl.ComCtrls,
+  sStatusBar;
 
 type
   TFournisseurListF = class(TForm)
@@ -52,6 +53,9 @@ type
     PreviosClientbtn: TsSpeedButton;
     Panel4: TPanel;
     Panel5: TPanel;
+    StatuBar: TsStatusBar;
+    SumGirdBBVlivBtn: TAdvToolButton;
+    RefreshGirdBtn: TAdvToolButton;
     procedure ResearchFournisseurEdtKeyPress(Sender: TObject; var Key: Char);
     procedure ResearchFournisseurEdtChange(Sender: TObject);
     procedure FisrtFournisseursbtnClick(Sender: TObject);
@@ -78,6 +82,8 @@ type
     procedure sSpeedButton2Click(Sender: TObject);
     procedure sSpeedButton1Click(Sender: TObject);
     procedure sSpeedButton3Click(Sender: TObject);
+    procedure SumGirdBBVlivBtnClick(Sender: TObject);
+    procedure RefreshGirdBtnClick(Sender: TObject);
   private
     procedure GettingData;
     { Private declarations }
@@ -543,6 +549,12 @@ begin
         MainForm.FournisseurTable.Prior;
 end;
 
+procedure TFournisseurListF.RefreshGirdBtnClick(Sender: TObject);
+begin
+MainForm.FournisseurTable.Close;
+MainForm.FournisseurTable.Open;
+end;
+
 procedure TFournisseurListF.ResearchFournisseurEdtChange(Sender: TObject);
 begin
       if (ResearchFournisseurEdt.text <> '') then
@@ -576,6 +588,22 @@ begin
 
   end;
 
+
+
+    if key = #13 then
+  begin
+   key := #0;
+
+    if (ResearchFournisseurEdt.text <> '') then
+      begin
+      MainForm.FournisseurTable.Filtered:=false;
+      MainForm.FournisseurTable.Filter := '[nom_f] LIKE ' + quotedstr(ResearchFournisseurEdt.Text +'%');
+      MainForm.FournisseurTable.Filtered :=True;
+    end  else
+      begin
+        MainForm.FournisseurTable.Filtered := False;
+       end;
+  end;
 end;
 
 procedure TFournisseurListF.toutFournisseursRdioBtnClick(Sender: TObject);
@@ -668,6 +696,19 @@ frxPDFExport1.FileName := 'Etat liste des Fournisseurs';
 FourListfrxRprt.Export(frxPDFExport1);
 
 MainForm.FournisseurTable.EnableControls;
+end;
+
+procedure TFournisseurListF.SumGirdBBVlivBtnClick(Sender: TObject);
+begin
+  if SumGirdBBVlivBtn.Tag = 0 then
+  begin
+    FournisseursListDBGridEh.FooterRowCount:=1;
+    SumGirdBBVlivBtn.Tag := 1;
+  end else
+      begin
+        FournisseursListDBGridEh.FooterRowCount:=0;
+        SumGirdBBVlivBtn.Tag := 0;
+      end;
 end;
 
 end.

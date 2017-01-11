@@ -164,6 +164,8 @@ end;
 procedure TLoginUserF.FormShow(Sender: TObject);
 begin
 GrayFormsLUR;
+UserCbxEnter(Sender);
+UserCbx.ItemIndex:=0;
 end;
 
 procedure TLoginUserF.LoginBtnClick(Sender: TObject);

@@ -5,7 +5,7 @@ object ProduitGestionF: TProduitGestionF
   Caption = 'Nouveau Produit'
   ClientHeight = 668
   ClientWidth = 685
-  Color = clBtnFace
+  Color = 15527148
   DoubleBuffered = True
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -1657,6 +1657,10 @@ object ProduitGestionF: TProduitGestionF
       Caption = 'Plus D'#39'info'
       SkinData.CustomColor = False
       SkinData.CustomFont = False
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object PlusInfoTB: TPanel
         Left = 0
         Top = 0

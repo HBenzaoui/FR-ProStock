@@ -331,7 +331,7 @@ object PertesFListF: TPertesFListF
     Height = 82
     Align = alTop
     BevelOuter = bvNone
-    Color = 15722984
+    Color = 15527148
     DoubleBuffered = True
     ParentBackground = False
     ParentDoubleBuffered = False
@@ -848,19 +848,20 @@ object PertesFListF: TPertesFListF
     Left = 0
     Top = 82
     Width = 1
-    Height = 659
+    Height = 639
     Align = alLeft
     BevelOuter = bvNone
     Color = 8637171
     ParentBackground = False
     TabOrder = 1
     StyleElements = []
+    ExplicitHeight = 659
   end
   object PertesListDBGridEh: TDBGridEh
     Left = 0
     Top = 84
     Width = 1191
-    Height = 657
+    Height = 634
     Anchors = [akLeft, akTop, akRight, akBottom]
     Border.Color = 4207405
     Border.ExtendedDraw = False
@@ -881,7 +882,6 @@ object PertesFListF: TPertesFListF
     Font.Height = 18
     Font.Name = 'Segoe UI'
     Font.Style = []
-    FooterRowCount = 1
     FooterParams.Font.Charset = DEFAULT_CHARSET
     FooterParams.Font.Color = 4207405
     FooterParams.Font.Height = 18
@@ -1326,6 +1326,99 @@ object PertesFListF: TPertesFListF
         WordWrap = False
       end>
     object RowDetailData: TRowDetailPanelControlEh
+    end
+  end
+  object StatuBar: TsStatusBar
+    Left = 0
+    Top = 721
+    Width = 1193
+    Height = 20
+    BiDiMode = bdLeftToRight
+    Panels = <
+      item
+        Alignment = taRightJustify
+        Bevel = pbRaised
+        Style = psOwnerDraw
+        Width = 110
+      end
+      item
+        Style = psOwnerDraw
+        Width = 50
+      end>
+    ParentBiDiMode = False
+    SizeGrip = False
+    SkinData.SkinSection = 'MENUITEM'
+    ExplicitWidth = 1089
+    DesignSize = (
+      1193
+      20)
+    object SumGirdProduitBtn: TAdvToolButton
+      Left = 141
+      Top = 0
+      Width = 26
+      Height = 20
+      Cursor = crHandPoint
+      Hint = 'Totaux'
+      Anchors = [akRight]
+      AutoThemeAdapt = False
+      BorderColor = 15722984
+      BorderDownColor = 15722984
+      BorderHotColor = 14079702
+      Color = 15722984
+      ColorDown = 15722984
+      ColorHot = 14079702
+      ColorHotTo = 14079702
+      ColorChecked = clNone
+      DropDownSplit = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 4207405
+      Font.Height = 18
+      Font.Name = 'Roboto'
+      Font.Style = []
+      ImageIndex = 26
+      Images = MainForm.PanelIcons16
+      ParentFont = False
+      ParentShowHint = False
+      Shaded = False
+      ShowHint = True
+      Spacing = -2
+      OnClick = SumGirdProduitBtnClick
+      Version = '1.6.1.2'
+      TMSStyle = 0
+    end
+    object RefreshGirdBtn: TAdvToolButton
+      Left = 112
+      Top = 0
+      Width = 26
+      Height = 20
+      Cursor = crHandPoint
+      Hint = 'Rafra'#238'chir'
+      Anchors = [akRight]
+      AutoThemeAdapt = False
+      BorderColor = 15722984
+      BorderDownColor = 15722984
+      BorderHotColor = 14079702
+      Color = 15722984
+      ColorDown = 15722984
+      ColorHot = 14079702
+      ColorHotTo = 14079702
+      ColorChecked = clNone
+      DropDownSplit = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 4207405
+      Font.Height = 18
+      Font.Name = 'Roboto'
+      Font.Style = []
+      ImageIndex = 27
+      Images = MainForm.PanelIcons16
+      ParentFont = False
+      ParentShowHint = False
+      Shaded = False
+      ShowHint = True
+      Spacing = -2
+      OnClick = RefreshGirdBtnClick
+      Version = '1.6.1.2'
+      TMSStyle = 0
     end
   end
   object PerteListDataS: TDataSource

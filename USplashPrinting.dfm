@@ -5,7 +5,7 @@ object FSplashPrinting: TFSplashPrinting
   Caption = 'FSplashPrinting'
   ClientHeight = 291
   ClientWidth = 546
-  Color = 15722984
+  Color = 15527148
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
@@ -25,8 +25,8 @@ object FSplashPrinting: TFSplashPrinting
   object NameAddCompteSLbl: TLabel
     Left = 56
     Top = 112
-    Width = 83
-    Height = 18
+    Width = 86
+    Height = 19
     Caption = 'Imprimante:'
     Color = 4207405
     Font.Charset = DEFAULT_CHARSET
@@ -71,7 +71,7 @@ object FSplashPrinting: TFSplashPrinting
     Left = 103
     Top = 64
     Width = 36
-    Height = 18
+    Height = 19
     Caption = 'Titre:'
     Color = 4207405
     Font.Charset = DEFAULT_CHARSET
@@ -86,8 +86,8 @@ object FSplashPrinting: TFSplashPrinting
   object Label2: TLabel
     Left = 43
     Top = 209
-    Width = 96
-    Height = 18
+    Width = 99
+    Height = 19
     Caption = 'Prix de vente:'
     Color = 4207405
     Font.Charset = DEFAULT_CHARSET
@@ -142,8 +142,8 @@ object FSplashPrinting: TFSplashPrinting
     ShowHint = True
     OnClick = PrintFPrintingBtnClick
     SkinData.SkinSection = 'SPEEDBUTTON'
-    ImageIndex = 48
     Images = MainForm.PanelIcons24
+    ImageIndex = 48
   end
   object SetDeafultFPrintingBtn: TAdvToolButton
     Left = 323
@@ -316,7 +316,7 @@ object FSplashPrinting: TFSplashPrinting
     Left = 364
     Top = 205
     Width = 137
-    Height = 26
+    Height = 21
     Alignment = taRightJustify
     Color = clWhite
     Font.Charset = DEFAULT_CHARSET
@@ -333,7 +333,7 @@ object FSplashPrinting: TFSplashPrinting
     Value = 1
   end
   object PrintTicketfrxRprt: TfrxReport
-    Version = '5.5'
+    Version = '5.4.6'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     Preview = PrintTicketfrxPreview
@@ -530,7 +530,7 @@ object FSplashPrinting: TFSplashPrinting
     Top = 56
   end
   object frxReport2: TfrxReport
-    Version = '5.5'
+    Version = '5.4.6'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     Preview = PrintTicketfrxPreview
@@ -641,7 +641,7 @@ object FSplashPrinting: TFSplashPrinting
     end
   end
   object frxReport1: TfrxReport
-    Version = '5.5'
+    Version = '5.4.6'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     Preview = PrintTicketfrxPreview
@@ -771,7 +771,7 @@ object FSplashPrinting: TFSplashPrinting
     end
   end
   object frxReport3: TfrxReport
-    Version = '5.5'
+    Version = '5.4.6'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     Preview = PrintTicketfrxPreview
@@ -887,7 +887,7 @@ object FSplashPrinting: TFSplashPrinting
     end
   end
   object frxReport4: TfrxReport
-    Version = '5.5'
+    Version = '5.4.6'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     Preview = PrintTicketfrxPreview

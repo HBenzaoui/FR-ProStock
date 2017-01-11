@@ -330,7 +330,7 @@ object ClientListF: TClientListF
     Left = 0
     Top = 83
     Width = 1362
-    Height = 659
+    Height = 637
     Anchors = [akLeft, akTop, akRight, akBottom]
     Border.Color = 4207405
     Border.ExtendedDraw = False
@@ -375,6 +375,7 @@ object ClientListF: TClientListF
     RowHeight = 25
     SearchPanel.FilterOnTyping = True
     ShowHint = True
+    SumList.Active = True
     TabOrder = 0
     TitleParams.BorderInFillStyle = True
     TitleParams.FillStyle = cfstThemedEh
@@ -438,7 +439,6 @@ object ClientListF: TClientListF
         Font.Height = 16
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
-        Footer.ValueType = fvtCount
         Footers = <>
         Layout = tlCenter
         Title.Alignment = taCenter
@@ -868,6 +868,15 @@ object ClientListF: TClientListF
         Font.Height = 16
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
+        Footer.Alignment = taRightJustify
+        Footer.Color = 15722984
+        Footer.Font.Charset = DEFAULT_CHARSET
+        Footer.Font.Color = 4207405
+        Footer.Font.Height = 18
+        Footer.Font.Name = 'Helvetica LT Std'
+        Footer.Font.Style = [fsBold]
+        Footer.Value = 'Total:'
+        Footer.ValueType = fvtStaticText
         Footers = <>
         Layout = tlCenter
         Title.Alignment = taCenter
@@ -892,6 +901,14 @@ object ClientListF: TClientListF
         Font.Height = 16
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
+        Footer.Color = 15722984
+        Footer.DisplayFormat = '#,##0.00'
+        Footer.Font.Charset = DEFAULT_CHARSET
+        Footer.Font.Color = 4207405
+        Footer.Font.Height = 18
+        Footer.Font.Name = 'Helvetica LT Std'
+        Footer.Font.Style = [fsBold]
+        Footer.ValueType = fvtSum
         Footers = <>
         Layout = tlCenter
         Title.Alignment = taCenter
@@ -916,6 +933,14 @@ object ClientListF: TClientListF
         Font.Height = 16
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
+        Footer.Color = 15722984
+        Footer.DisplayFormat = '#,##0.00'
+        Footer.Font.Charset = DEFAULT_CHARSET
+        Footer.Font.Color = 4207405
+        Footer.Font.Height = 18
+        Footer.Font.Name = 'Helvetica LT Std'
+        Footer.Font.Style = [fsBold]
+        Footer.ValueType = fvtSum
         Footers = <>
         Layout = tlCenter
         Title.Alignment = taCenter
@@ -963,7 +988,7 @@ object ClientListF: TClientListF
     Height = 82
     Align = alTop
     BevelOuter = bvNone
-    Color = 15722984
+    Color = 15527148
     DoubleBuffered = True
     ParentBackground = False
     ParentDoubleBuffered = False
@@ -1094,8 +1119,8 @@ object ClientListF: TClientListF
       ShowHint = True
       OnClick = sSpeedButton1Click
       SkinData.SkinSection = 'SPEEDBUTTON'
-      ImageIndex = 7
       Images = MainForm.PanelIcons24
+      ImageIndex = 7
     end
     object sSpeedButton2: TsSpeedButton
       Left = 1291
@@ -1107,8 +1132,8 @@ object ClientListF: TClientListF
       ShowHint = True
       OnClick = sSpeedButton2Click
       SkinData.SkinSection = 'SPEEDBUTTON'
-      ImageIndex = 8
       Images = MainForm.PanelIcons24
+      ImageIndex = 8
     end
     object toutClientsLbl: TLabel
       Left = 1140
@@ -1206,8 +1231,8 @@ object ClientListF: TClientListF
       Visible = False
       OnClick = sSpeedButton3Click
       SkinData.SkinSection = 'SPEEDBUTTON'
-      ImageIndex = 9
       Images = MainForm.PanelIcons24
+      ImageIndex = 9
     end
     object FisrtClientbtn: TsSpeedButton
       Left = 378
@@ -1218,8 +1243,8 @@ object ClientListF: TClientListF
       ShowHint = True
       OnClick = FisrtClientbtnClick
       SkinData.SkinSection = 'SPEEDBUTTON'
-      ImageIndex = 0
       Images = MainForm.PanelIcons24
+      ImageIndex = 0
       ShowCaption = False
     end
     object PreviosClientbtn: TsSpeedButton
@@ -1231,8 +1256,8 @@ object ClientListF: TClientListF
       ShowHint = True
       OnClick = PreviosClientbtnClick
       SkinData.SkinSection = 'SPEEDBUTTON'
-      ImageIndex = 1
       Images = MainForm.PanelIcons24
+      ImageIndex = 1
     end
     object NextClientbtn: TsSpeedButton
       Left = 446
@@ -1243,8 +1268,8 @@ object ClientListF: TClientListF
       ShowHint = True
       OnClick = NextClientbtnClick
       SkinData.SkinSection = 'SPEEDBUTTON'
-      ImageIndex = 2
       Images = MainForm.PanelIcons24
+      ImageIndex = 2
       ShowCaption = False
     end
     object LastClientbtn: TsSpeedButton
@@ -1256,8 +1281,8 @@ object ClientListF: TClientListF
       ShowHint = True
       OnClick = LastClientbtnClick
       SkinData.SkinSection = 'SPEEDBUTTON'
-      ImageIndex = 3
       Images = MainForm.PanelIcons24
+      ImageIndex = 3
     end
     object LineP: TPanel
       Left = 0
@@ -1475,7 +1500,7 @@ object ClientListF: TClientListF
     Left = 0
     Top = 82
     Width = 1
-    Height = 659
+    Height = 639
     Align = alLeft
     BevelOuter = bvNone
     Color = 11544476
@@ -1509,6 +1534,98 @@ object ClientListF: TClientListF
     ShowHint = False
     TabOrder = 3
     StyleElements = []
+  end
+  object StatuBar: TsStatusBar
+    Left = 0
+    Top = 721
+    Width = 1362
+    Height = 20
+    BiDiMode = bdLeftToRight
+    Panels = <
+      item
+        Alignment = taRightJustify
+        Bevel = pbRaised
+        Style = psOwnerDraw
+        Width = 110
+      end
+      item
+        Style = psOwnerDraw
+        Width = 50
+      end>
+    ParentBiDiMode = False
+    SizeGrip = False
+    SkinData.SkinSection = 'MENUITEM'
+    DesignSize = (
+      1362
+      20)
+    object SumGirdBBVlivBtn: TAdvToolButton
+      Left = 141
+      Top = 0
+      Width = 26
+      Height = 20
+      Cursor = crHandPoint
+      Hint = 'Totaux'
+      Anchors = [akRight]
+      AutoThemeAdapt = False
+      BorderColor = 15722984
+      BorderDownColor = 15722984
+      BorderHotColor = 14079702
+      Color = 15722984
+      ColorDown = 15722984
+      ColorHot = 14079702
+      ColorHotTo = 14079702
+      ColorChecked = clNone
+      DropDownSplit = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 4207405
+      Font.Height = 18
+      Font.Name = 'Roboto'
+      Font.Style = []
+      ImageIndex = 26
+      Images = MainForm.PanelIcons16
+      ParentFont = False
+      ParentShowHint = False
+      Shaded = False
+      ShowHint = True
+      Spacing = -2
+      OnClick = SumGirdBBVlivBtnClick
+      Version = '1.6.1.2'
+      TMSStyle = 0
+    end
+    object RefreshGirdBtn: TAdvToolButton
+      Left = 109
+      Top = 0
+      Width = 26
+      Height = 20
+      Cursor = crHandPoint
+      Hint = 'Totaux'
+      Anchors = [akRight]
+      AutoThemeAdapt = False
+      BorderColor = 15722984
+      BorderDownColor = 15722984
+      BorderHotColor = 14079702
+      Color = 15722984
+      ColorDown = 15722984
+      ColorHot = 14079702
+      ColorHotTo = 14079702
+      ColorChecked = clNone
+      DropDownSplit = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 4207405
+      Font.Height = 18
+      Font.Name = 'Roboto'
+      Font.Style = []
+      ImageIndex = 27
+      Images = MainForm.PanelIcons16
+      ParentFont = False
+      ParentShowHint = False
+      Shaded = False
+      ShowHint = True
+      Spacing = -2
+      OnClick = RefreshGirdBtnClick
+      Version = '1.6.1.2'
+      TMSStyle = 0
+    end
   end
   object ClientListDataS: TDataSource
     DataSet = MainForm.ClientTable
@@ -1594,7 +1711,7 @@ object ClientListF: TClientListF
     Top = 320
   end
   object ClientListfrxRprt: TfrxReport
-    Version = '5.5'
+    Version = '5.4.6'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]

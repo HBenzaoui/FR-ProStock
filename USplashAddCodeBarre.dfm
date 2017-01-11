@@ -4,7 +4,7 @@ object FSplashAddCodeBarre: TFSplashAddCodeBarre
   BorderStyle = bsNone
   ClientHeight = 386
   ClientWidth = 226
-  Color = 15722984
+  Color = 15527148
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11

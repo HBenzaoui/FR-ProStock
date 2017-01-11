@@ -4,7 +4,7 @@ object UsersListF: TUsersListF
   BorderStyle = bsDialog
   ClientHeight = 558
   ClientWidth = 452
-  Color = clBtnFace
+  Color = 15527148
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11

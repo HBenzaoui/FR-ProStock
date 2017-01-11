@@ -31,7 +31,7 @@ uses
   dxSkinSummer2008, dxSkinTheAsphaltWorld, dxSkinsDefaultPainters,
   dxSkinValentine, dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
   dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
-  dxSkinXmas2008Blue, cxTextEdit, cxMaskEdit, cxDropDownEdit;
+  dxSkinXmas2008Blue, cxTextEdit, cxMaskEdit, cxDropDownEdit, Vcl.Menus;
 
 type
   TBonRecGestionF = class(TForm)
@@ -137,6 +137,17 @@ type
     sSpeedButton10: TsSpeedButton;
     sSpeedButton7: TsSpeedButton;
     ProduitBonRecGCbx: TcxComboBox;
+    PopupMenu1: TPopupMenu;
+    B1: TMenuItem;
+    BondeRception1: TMenuItem;
+    BonRecPListSanTAXfrxRprt: TfrxReport;
+    RequiredStarProduitGLbl: TLabel;
+    ModepPaiGErrorP: TPanel;
+    Label22: TLabel;
+    CompteGErrorP: TPanel;
+    Label21: TLabel;
+    RequiredMPGlbl: TLabel;
+    RequiredCompteGlbl: TLabel;
     procedure ProduitBonRecGCbxEnter(Sender: TObject);
     procedure ResherchPARDesProduitsRdioBtnClick(Sender: TObject);
     procedure ResherchPARCBProduitsRdioBtnClick(Sender: TObject);
@@ -186,15 +197,19 @@ type
     procedure ProduitsListDBGridEhExit(Sender: TObject);
     procedure ProduitsListDBGridEhKeyPress(Sender: TObject; var Key: Char);
     procedure FormCreate(Sender: TObject);
-    procedure sSpeedButton5Click(Sender: TObject);
     procedure sSpeedButton4Click(Sender: TObject);
     procedure sSpeedButton6Click(Sender: TObject);
     procedure ProduitsListDBGridEhCellClick(Column: TColumnEh);
     procedure ProduitsListDBGridEhDrawColumnCell(Sender: TObject;
       const Rect: TRect; DataCol: Integer; Column: TColumnEh;
       State: TGridDrawState);
+    procedure B1Click(Sender: TObject);
+    procedure BondeRception1Click(Sender: TObject);
+    procedure FormKeyPress(Sender: TObject; var Key: Char);
+    procedure ModePaieBonRecGCbxChange(Sender: TObject);
   private
     procedure GettingData;
+    procedure GettingDataSansTax;
     { Private declarations }
   public
     { Public declarations }
@@ -803,7 +818,6 @@ I : Integer;
 
 procedure TBonRecGestionF.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-
  if ValiderBARecBonRecGImg.ImageIndex = 1 then
   begin
 
@@ -844,20 +858,12 @@ begin
  end;
 
 procedure TBonRecGestionF.FormShow(Sender: TObject);
-
 var CodeCB: Integer;
 begin
-// use this tage when i click on edit button for bon
- if Tag = 1 then
- begin
-     BonRecGFourOLDCredit.Caption:= FloatToStrF(StrToFloat(StringReplace(BonRecGFourOLDCredit.Caption, #32, '', [rfReplaceAll])),ffNumber,14,2) ;
-     BonRecGFourNEWCredit.Caption:= FloatToStrF(StrToFloat(StringReplace(BonRecGFourNEWCredit.Caption, #32, '', [rfReplaceAll])),ffNumber,14,2) ;
-  end;
-
-
 // use this tage when i click AddBARecBonRecGBtn bon button
  if Tag = 0 then
  begin
+
     DateBonRecGD.Date:=EncodeDate (YearOf(Now),MonthOf(Now),DayOf(Now));
 //-- use this code to make the montants look lake money values-------//
     BonRecTotalHTLbl.Caption :=       FloatToStrF(StrToFloat(BonRecTotalHTLbl.Caption),ffNumber,14,2) ;
@@ -877,11 +883,16 @@ begin
    ProduitBonRecGCbx.SetFocus;
  end else
      begin
-   //    FournisseurBonRecGCbx.SetFocus;
+       FournisseurBonRecGCbx.SetFocus;
      end;
-
-  FournisseurBonRecGCbx.SetFocus;
  end;
+// use this tage when i click on edit button for bon
+ if Tag = 1 then
+ begin
+     BonRecGFourOLDCredit.Caption:= FloatToStrF(StrToFloat(StringReplace(BonRecGFourOLDCredit.Caption, #32, '', [rfReplaceAll])),ffNumber,14,2) ;
+     BonRecGFourNEWCredit.Caption:= FloatToStrF(StrToFloat(StringReplace(BonRecGFourNEWCredit.Caption, #32, '', [rfReplaceAll])),ffNumber,14,2) ;
+  end;
+
 
   sImage1.ImageIndex:= MainForm.sImage1.ImageIndex;
  end;
@@ -1068,96 +1079,135 @@ procedure TBonRecGestionF.FormCloseQuery(Sender: TObject;
 
       FournisseurBonRecGCbx.SetFocus;
       CanClose := false;
-    end else
-      begin
-       if RequiredFourGlbl.Visible <> True then
+  end else
+    begin
+
+     if ModePaieBonRecGCbx.Text = '' then
+     begin
+        sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+        ModePaieBonRecGCbx.StyleElements:= [];
+        RequiredMPGlbl.Visible:= True;
+        ModepPaiGErrorP.Visible:= True;
+
+        ModePaieBonRecGCbx.SetFocus;
+        CanClose := false;
+     end else
+     begin
+
+       if CompteBonRecGCbx.Text = '' then
        begin
-         if  (MainForm.Bona_recTable.FieldByName('valider_barec').AsBoolean = false)  then
-         begin
-          MainForm.FournisseurTable.DisableControls;
-          MainForm.FournisseurTable.Active:=false;
-          MainForm.FournisseurTable.SQL.Clear;
-          MainForm.FournisseurTable.SQL.Text:='Select * FROM fournisseur WHERE LOWER(nom_f) LIKE LOWER('+ QuotedStr( FournisseurBonRecGCbx.Text )+')'  ;
-          MainForm.FournisseurTable.Active:=True;
+          sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+          CompteBonRecGCbx.StyleElements:= [];
+          RequiredCompteGlbl.Visible:= True;
+          CompteGErrorP.Visible:= True;
 
-          MainForm.Mode_paiementTable.DisableControls;
-          MainForm.Mode_paiementTable.Active:=false;
-          MainForm.Mode_paiementTable.SQL.Clear;
-          MainForm.Mode_paiementTable.SQL.Text:='Select * FROM mode_paiement WHERE LOWER(nom_mdpai) LIKE LOWER('+ QuotedStr( ModePaieBonRecGCbx.Text )+')'  ;
-          MainForm.Mode_paiementTable.Active:=True;
+          CompteBonRecGCbx.SetFocus;
+          CanClose := false;
+       end else
+       begin
 
-          MainForm.CompteTable.DisableControls;
-          MainForm.CompteTable.Active:=false;
-          MainForm.CompteTable.SQL.Clear;
-          MainForm.CompteTable.SQL.Text:='Select * FROM compte WHERE LOWER(nom_cmpt) LIKE LOWER('+ QuotedStr( CompteBonRecGCbx.Text )+')'  ;
-          MainForm.CompteTable.Active:=True;
+         //---------------------------------------------------
+         if RequiredFourGlbl.Visible <> True then
+           begin
+             if  (MainForm.Bona_recTable.FieldByName('valider_barec').AsBoolean = false)  then
+             begin
+              MainForm.FournisseurTable.DisableControls;
+              MainForm.FournisseurTable.Active:=false;
+              MainForm.FournisseurTable.SQL.Clear;
+              MainForm.FournisseurTable.SQL.Text:='Select * FROM fournisseur WHERE LOWER(nom_f) LIKE LOWER('+ QuotedStr( FournisseurBonRecGCbx.Text )+')'  ;
+              MainForm.FournisseurTable.Active:=True;
 
-          MainForm.Bona_recTable.DisableControls;
-          MainForm.Bona_recTable.Edit;
-          MainForm.Bona_recTable.FieldValues['code_f']:= MainForm.FournisseurTable.FieldByName('code_f').AsInteger;
-          MainForm.Bona_recTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
-//          MainForm.Bona_recTable.FieldByName('date_bafac').AsDateTime:= DateBonRecGD.DateTime;
-          MainForm.Bona_recTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
-          MainForm.Bona_recTable.FieldValues['obser_barec']:= ObserBonRecGMem.Text;
-          MainForm.Bona_recTable.FieldValues['num_cheque_barec']:= NChequeBonRecGCbx.Text;
-          MainForm.Bona_recTable.FieldByName('montht_barec').AsCurrency:= StrToCurr(StringReplace(BonRecTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
+              MainForm.Mode_paiementTable.DisableControls;
+              MainForm.Mode_paiementTable.Active:=false;
+              MainForm.Mode_paiementTable.SQL.Clear;
+              MainForm.Mode_paiementTable.SQL.Text:='Select * FROM mode_paiement WHERE LOWER(nom_mdpai) LIKE LOWER('+ QuotedStr( ModePaieBonRecGCbx.Text )+')'  ;
+              MainForm.Mode_paiementTable.Active:=True;
 
-          if RemiseBonRecGEdt.Text<>'' then
-          begin
-             MainForm.Bona_recTable.FieldByName('remise_barec').AsCurrency:=StrToCurr(StringReplace(RemiseBonRecGEdt.Text, #32, '', [rfReplaceAll]));
-          end else begin
-                    MainForm.Bona_recTable.FieldByName('remise_barec').AsCurrency:=0;
-                   end;
+              MainForm.CompteTable.DisableControls;
+              MainForm.CompteTable.Active:=false;
+              MainForm.CompteTable.SQL.Clear;
+              MainForm.CompteTable.SQL.Text:='Select * FROM compte WHERE LOWER(nom_cmpt) LIKE LOWER('+ QuotedStr( CompteBonRecGCbx.Text )+')'  ;
+              MainForm.CompteTable.Active:=True;
 
 
-          MainForm.Bona_recTable.FieldByName('montver_barec').AsCurrency:=StrToCurr(StringReplace(BonRecRegleLbl.Caption, #32, '', [rfReplaceAll]));
-          MainForm.Bona_recTable.FieldByName('montttc_barec').AsCurrency:=StrToCurr(StringReplace(BonRecTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
+              MainForm.Bona_recTable.DisableControls;
+              MainForm.Bona_recTable.Edit;
+              MainForm.Bona_recTable.FieldValues['code_f']:= MainForm.FournisseurTable.FieldByName('code_f').AsInteger;
+              MainForm.Bona_recTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
+              MainForm.Bona_recTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
+              MainForm.Bona_recTable.FieldValues['obser_barec']:= ObserBonRecGMem.Text;
+              MainForm.Bona_recTable.FieldValues['num_cheque_barec']:= NChequeBonRecGCbx.Text;
+              MainForm.Bona_recTable.FieldByName('montht_barec').AsCurrency:= StrToCurr(StringReplace(BonRecTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
 
-          MainForm.Bona_recTable.Post;
-          MainForm.Bona_recTable.EnableControls;
-
-          MainForm.FournisseurTable.Active:=false;
-          MainForm.FournisseurTable.SQL.Clear;
-          MainForm.FournisseurTable.SQL.Text:='Select * FROM fournisseur' ;
-          MainForm.FournisseurTable.Active:=True;
-          MainForm.FournisseurTable.EnableControls;
-
-          MainForm.Mode_paiementTable.Active:=false;
-          MainForm.Mode_paiementTable.SQL.Clear;
-          MainForm.Mode_paiementTable.SQL.Text:='Select * FROM mode_paiement' ;
-          MainForm.Mode_paiementTable.Active:=True;
-          MainForm.Mode_paiementTable.EnableControls;
-
-          MainForm.CompteTable.Active:=false;
-          MainForm.CompteTable.SQL.Clear;
-          MainForm.CompteTable.SQL.Text:='Select * FROM compte' ;
-          MainForm.CompteTable.Active:=True;
-          MainForm.CompteTable.EnableControls;
-
-        //------- This is to delete data from tre and reg ih not valide----------------------------------------------
-              MainForm.GstockdcConnection.ExecSQL('DELETE FROM regfournisseur where code_barec = ' + IntToStr(codeBR));
-              MainForm.GstockdcConnection.ExecSQL('DELETE FROM opt_cas_bnk where code_barec = ' + IntToStr(codeBR));
-              MainForm.RegfournisseurTable.Refresh ;
-              MainForm.Opt_cas_bnk_CaisseTable.Refresh ;
-
-          end;
-          end else
+              if RemiseBonRecGEdt.Text<>'' then
               begin
-                sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
-                FournisseurBonRecGCbx.StyleElements:= [];
-                RequiredFourGlbl.Caption:= 'Ce Fournisseur est bloqué' ;
-                RequiredFourGlbl.Visible:= True;
-                NameFourGErrorP.Visible:= True;
-                FournisseurBonRecGCbx.SetFocus;
-                CanClose:= False;
+                 MainForm.Bona_recTable.FieldByName('remise_barec').AsCurrency:=StrToCurr(StringReplace(RemiseBonRecGEdt.Text, #32, '', [rfReplaceAll]));
+              end else begin
+                        MainForm.Bona_recTable.FieldByName('remise_barec').AsCurrency:=0;
+                       end;
+
+
+              MainForm.Bona_recTable.FieldByName('montver_barec').AsCurrency:=StrToCurr(StringReplace(BonRecRegleLbl.Caption, #32, '', [rfReplaceAll]));
+              MainForm.Bona_recTable.FieldByName('montttc_barec').AsCurrency:=StrToCurr(StringReplace(BonRecTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
+
+              MainForm.Bona_recTable.Post;
+              MainForm.Bona_recTable.EnableControls;
+
+              MainForm.FournisseurTable.Active:=false;
+              MainForm.FournisseurTable.SQL.Clear;
+              MainForm.FournisseurTable.SQL.Text:='Select * FROM fournisseur' ;
+              MainForm.FournisseurTable.Active:=True;
+              MainForm.FournisseurTable.EnableControls;
+
+              MainForm.Mode_paiementTable.Active:=false;
+              MainForm.Mode_paiementTable.SQL.Clear;
+              MainForm.Mode_paiementTable.SQL.Text:='Select * FROM mode_paiement' ;
+              MainForm.Mode_paiementTable.Active:=True;
+              MainForm.Mode_paiementTable.EnableControls;
+
+              MainForm.CompteTable.Active:=false;
+              MainForm.CompteTable.SQL.Clear;
+              MainForm.CompteTable.SQL.Text:='Select * FROM compte' ;
+              MainForm.CompteTable.Active:=True;
+              MainForm.CompteTable.EnableControls;
+
+            //------- This is to delete data from tre and reg ih not valide----------------------------------------------
+                  MainForm.GstockdcConnection.ExecSQL('DELETE FROM regfournisseur where code_barec = ' + IntToStr(codeBR));
+                  MainForm.GstockdcConnection.ExecSQL('DELETE FROM opt_cas_bnk where code_barec = ' + IntToStr(codeBR));
+                  MainForm.RegfournisseurTable.Refresh ;
+                  MainForm.Opt_cas_bnk_CaisseTable.Refresh ;
+
               end;
+
+              end else
+                  begin
+                    sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+                    FournisseurBonRecGCbx.StyleElements:= [];
+                    RequiredFourGlbl.Caption:= 'Ce Fournisseur est bloqué' ;
+                    RequiredFourGlbl.Visible:= True;
+                    NameFourGErrorP.Visible:= True;
+
+                    FournisseurBonRecGCbx.SetFocus;
+                    CanClose:= False;
+                  end;
+          //---------------------------------------------------
+
+
         end;
+
+
+
+        end;
+
+
+
+      end;
   end  else
   begin
 
-     if  (MainForm.Bona_recTable.FieldByName('valider_barec').AsBoolean = false)  then
+          if  (MainForm.Bona_recTable.FieldByName('valider_barec').AsBoolean = false)  then
          begin
-          codeBR:= MainForm.Bona_recTable.FieldByName('code_barec').AsInteger;
+//          codeBR:= MainForm.Bona_recTable.FieldByName('code_barec').AsInteger;
 
           MainForm.FournisseurTable.DisableControls;
           MainForm.FournisseurTable.Active:=false;
@@ -1177,11 +1227,11 @@ procedure TBonRecGestionF.FormCloseQuery(Sender: TObject;
           MainForm.CompteTable.SQL.Text:='Select * FROM compte WHERE LOWER(nom_cmpt) LIKE LOWER('+ QuotedStr( CompteBonRecGCbx.Text )+')'  ;
           MainForm.CompteTable.Active:=True;
 
+
           MainForm.Bona_recTable.DisableControls;
           MainForm.Bona_recTable.Edit;
           MainForm.Bona_recTable.FieldValues['code_f']:= MainForm.FournisseurTable.FieldByName('code_f').AsInteger;
           MainForm.Bona_recTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
-//          MainForm.Bona_recTable.FieldByName('date_bafac').AsDateTime:= DateBonRecGD.DateTime;
           MainForm.Bona_recTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
           MainForm.Bona_recTable.FieldValues['obser_barec']:= ObserBonRecGMem.Text;
           MainForm.Bona_recTable.FieldValues['num_cheque_barec']:= NChequeBonRecGCbx.Text;
@@ -1237,6 +1287,24 @@ procedure TBonRecGestionF.ProduitBonRecGCbxExit(Sender: TObject);
 begin
 ProduitBonRecGCbx.Text:='';
 //ProduitBonRecGCbx.AutoDropDown:=False;
+end;
+
+procedure TBonRecGestionF.B1Click(Sender: TObject);
+begin
+ GettingData;
+MainForm.Bona_recPlistTable.DisableControls;
+BonRecPListfrxRprt.PrepareReport;
+BonRecPListfrxRprt.ShowReport;
+MainForm.Bona_recPlistTable.EnableControls;
+end;
+
+procedure TBonRecGestionF.BondeRception1Click(Sender: TObject);
+begin
+ GettingDataSansTax;
+MainForm.Bona_recPlistTable.DisableControls;
+BonRecPListSanTAXfrxRprt.PrepareReport;
+BonRecPListSanTAXfrxRprt.ShowReport;
+MainForm.Bona_recPlistTable.EnableControls;
 end;
 
 procedure TBonRecGestionF.BonRecPListDataSDataChange(Sender: TObject;
@@ -1468,6 +1536,12 @@ RequiredFourGlbl.Visible:= False;
 NameFourGErrorP.Visible:= False;
 end;
 
+procedure TBonRecGestionF.ModePaieBonRecGCbxChange(Sender: TObject);
+begin
+RequiredMPGlbl.Visible:= False;
+ModepPaiGErrorP.Visible:= False;
+end;
+
 procedure TBonRecGestionF.ModePaieBonRecGCbxClick(Sender: TObject);
 begin
   if ModePaieBonRecGCbx.Text <> '' then
@@ -1492,6 +1566,10 @@ begin
     MainForm.CompteTable.EnableControls;
 
   end;
+
+
+
+  ModePaieBonRecGCbxChange(Sender);
 end;
 
 procedure TBonRecGestionF.ModePaieBonRecGCbxDropDown(Sender: TObject);
@@ -1520,13 +1598,24 @@ end;
 procedure TBonRecGestionF.CompteBonRecGCbxChange(Sender: TObject);
 begin
 CompteBonRecGCbx.AutoDropDown:=True;
+
+RequiredCompteGlbl.Visible:= False;
+CompteGErrorP.Visible:= False;
 end;
 
 procedure TBonRecGestionF.ValiderBARecBonRecGBtnClick(Sender: TObject);
 begin
-    if FournisseurBonRecGCbx.Text <> '' then
+  if FournisseurBonRecGCbx.Text <> '' then
+  begin
+
+   if ModePaieBonRecGCbx.Text <> '' then
+   begin
+
+    if CompteBonRecGCbx.Text <> '' then
     begin
-             if  RequiredFourGlbl.Visible <> True then
+
+
+      if  RequiredFourGlbl.Visible <> True then
       begin
 
            //-------- Show the splash screan for the adding comptes ---------//
@@ -1564,6 +1653,26 @@ begin
               NameFourGErrorP.Visible:= True;
               FournisseurBonRecGCbx.SetFocus;
            end;
+
+          end else
+              begin
+                sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+                CompteBonRecGCbx.StyleElements:= [];
+                RequiredCompteGlbl.Visible:= True;
+                CompteGErrorP.Visible:= True;
+                CompteBonRecGCbx.SetFocus;
+              end;
+
+     end else
+     begin
+
+            sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+            ModePaieBonRecGCbx.StyleElements:= [];
+            RequiredMPGlbl.Visible:= True;
+            ModepPaiGErrorP.Visible:= True;
+            ModePaieBonRecGCbx.SetFocus;
+
+     end;
 
     end else
     begin
@@ -2216,6 +2325,115 @@ begin
 MainForm.Bona_recPlistTable.Active:=True;
 end;
 
+
+
+
+procedure TBonRecGestionF.FormKeyPress(Sender: TObject; var Key: Char);
+begin
+     if key = #27 then
+ begin
+  key := #0;
+
+  Close;
+
+ end;
+end;
+
+procedure TBonRecGestionF.GettingDataSansTax;
+ var
+  MoneyWordRX,NumRX,DateRX,NameRX,AdrRX,VilleRX,WilayaRX,MPRX,NCHeqRX : TfrxMemoView;
+  str1 : string;
+    Name,Tel,Mob,Adr : TfrxMemoView;
+  Logo : TfrxPictureView;
+    S: TMemoryStream;
+  Jpg: TJPEGImage;
+begin
+
+  if NOT (MainForm.CompanyTable.IsEmpty) then
+  begin
+
+    Name:= BonRecPListSanTAXfrxRprt.FindObject('Name') as TfrxMemoView;
+    Name.Text:= MainForm.CompanyTable.FieldByName('nom_comp').AsString ;
+    Name.Visible:=True;
+
+    Tel:= BonRecPListSanTAXfrxRprt.FindObject('Tel') as TfrxMemoView;
+    Tel.Text:= MainForm.CompanyTable.FieldByName('fix_comp').AsString ;
+    Tel.Visible:=True;
+
+      Mob:= BonRecPListSanTAXfrxRprt.FindObject('Mob') as TfrxMemoView;
+    Mob.Text:= MainForm.CompanyTable.FieldByName('mob_comp').AsString ;
+    Mob.Visible:=True;
+
+      Adr:= BonRecPListSanTAXfrxRprt.FindObject('Adr') as TfrxMemoView;
+    Adr.Text:= MainForm.CompanyTable.FieldByName('adr_comp').AsString ;
+    Adr.Visible:=True;
+
+      Logo:= BonRecPListSanTAXfrxRprt.FindObject('Logo') as TfrxPictureView;
+      Logo.Visible:=True;
+
+        if (MainForm.CompanyTable.fieldbyname('logo_comp').Value <> null) then
+      begin
+              S := TMemoryStream.Create;
+          try
+            TBlobField(MainForm.CompanyTable.FieldByName('logo_comp')).SaveToStream(S);
+            S.Position := 0;
+            Jpg := TJPEGImage.Create;
+            try
+              Jpg.LoadFromStream(S);
+              Logo.Picture.Assign(Jpg);
+                finally
+              Jpg.Free;
+            end;
+          finally
+            S.Free;
+          end;
+
+           end;
+
+  end;
+
+  str1:= MontantEnToutesLettres(StrToFloat(StringReplace(BonRecTotalTTCLbl.Caption, #32, '', [rfReplaceAll])));
+  str1[1] := Upcase(str1[1]);
+  MoneyWordRX := BonRecPListSanTAXfrxRprt.FindObject('MoneyWordRX') as TfrxMemoView;
+  MoneyWordRX.Text :=str1;// StringReplace(ObserBonLivGLbl.Caption, '%my_str%', 'new string', [rfReplaceAll]);
+
+  NumRX:= BonRecPListSanTAXfrxRprt.FindObject('NumRX') as TfrxMemoView;
+  NumRX.Text:= NumBonRecGEdt.Caption;
+
+    DateRX:= BonRecPListSanTAXfrxRprt.FindObject('DateRX') as TfrxMemoView;
+  DateRX.Text:= DateToStr(DateBonRecGD.Date);
+
+      NameRX:= BonRecPListSanTAXfrxRprt.FindObject('NameRX') as TfrxMemoView;
+  NameRX.Text:= FournisseurBonRecGCbx.Text;
+
+    MainForm.FournisseurTable.Active:=False;
+    MainForm.FournisseurTable.SQL.Clear;
+    MainForm.FournisseurTable.SQL.Text:='SELECT * FROM fournisseur WHERE code_f ='+ IntToStr(MainForm.Bona_recTable.FieldByName('code_f').AsInteger);
+    MainForm.FournisseurTable.Active:=True;
+
+
+    AdrRX:= BonRecPListSanTAXfrxRprt.FindObject('AdrRX') as TfrxMemoView;
+  AdrRX.Text:= MainForm.FournisseurTable.FieldByName('adr_f').AsString;
+
+    VilleRX:= BonRecPListSanTAXfrxRprt.FindObject('VilleRX') as TfrxMemoView;
+  VilleRX.Text:= MainForm.FournisseurTable.FieldByName('ville_f').AsString;
+
+    WilayaRX:= BonRecPListSanTAXfrxRprt.FindObject('WilayaRX') as TfrxMemoView;
+  WilayaRX.Text:=  MainForm.FournisseurTable.FieldByName('willaya_f').AsString;
+
+    MainForm.FournisseurTable.Active:=False;
+    MainForm.FournisseurTable.SQL.Clear;
+    MainForm.FournisseurTable.SQL.Text:='SELECT * FROM fournisseur ';
+    MainForm.FournisseurTable.Active:=True;
+
+    MPRX:= BonRecPListSanTAXfrxRprt.FindObject('MPRX') as TfrxMemoView;
+  MPRX.Text:= ModePaieBonRecGCbx.Text;
+
+    NCHeqRX:= BonRecPListSanTAXfrxRprt.FindObject('NCHeqRX') as TfrxMemoView;
+  NCHeqRX.Text:= NChequeBonRecGCbx.Text;
+
+ end;
+
 procedure TBonRecGestionF.GettingData;
 
  var
@@ -2315,15 +2533,6 @@ begin
 
  end;
 
-
-procedure TBonRecGestionF.sSpeedButton5Click(Sender: TObject);
-begin
- GettingData;
-MainForm.Bona_recPlistTable.DisableControls;
-BonRecPListfrxRprt.PrepareReport;
-BonRecPListfrxRprt.ShowReport;
-MainForm.Bona_recPlistTable.EnableControls;
-end;
 
 procedure TBonRecGestionF.sSpeedButton4Click(Sender: TObject);
 begin

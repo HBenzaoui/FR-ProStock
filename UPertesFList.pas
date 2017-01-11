@@ -8,7 +8,7 @@ uses
   DBGridEhToolCtrls, DynVarsEh, frxExportPDF, frxClass, frxExportXLS, frxDBSet,
   Data.DB, EhLibVCL, GridsEh, DBAxisGridsEh, DBGridEh, Vcl.StdCtrls,
   Vcl.ComCtrls, Vcl.WinXCtrls, Vcl.Buttons, sSpeedButton, AdvToolBtn,
-  Vcl.ExtCtrls;
+  Vcl.ExtCtrls, sStatusBar;
 
 type
   TPertesFListF = class(TForm)
@@ -46,6 +46,9 @@ type
     frxPerteListDB: TfrxDBDataset;
     frxXLSExport1: TfrxXLSExport;
     frxPDFExport1: TfrxPDFExport;
+    StatuBar: TsStatusBar;
+    SumGirdProduitBtn: TAdvToolButton;
+    RefreshGirdBtn: TAdvToolButton;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);
     procedure DateStartPerteDChange(Sender: TObject);
@@ -68,6 +71,8 @@ type
     procedure sSpeedButton2Click(Sender: TObject);
     procedure sSpeedButton1Click(Sender: TObject);
     procedure sSpeedButton3Click(Sender: TObject);
+    procedure RefreshGirdBtnClick(Sender: TObject);
+    procedure SumGirdProduitBtnClick(Sender: TObject);
   private
     procedure GettingData;
     { Private declarations }
@@ -300,6 +305,12 @@ begin
 DataModuleF.PertesTable.Prior;
 end;
 
+procedure TPertesFListF.RefreshGirdBtnClick(Sender: TObject);
+begin
+DataModuleF.PertesTable.Close;
+DataModuleF.PertesTable.Open;
+end;
+
 procedure TPertesFListF.ResearchPerteEdtChange(Sender: TObject);
 Var CodeCB : Integer;
 begin
@@ -424,6 +435,19 @@ frxPDFExport1.FileName := 'Etat de Pertes';
 PerteListfrxRprt.Export(frxPDFExport1);
 
 DataModuleF.PertesTable.EnableControls;
+end;
+
+procedure TPertesFListF.SumGirdProduitBtnClick(Sender: TObject);
+begin
+  if SumGirdProduitBtn.Tag = 0 then
+  begin
+    PertesListDBGridEh.FooterRowCount:=1;
+    SumGirdProduitBtn.Tag := 1;
+  end else
+      begin
+        PertesListDBGridEh.FooterRowCount:=0;
+        SumGirdProduitBtn.Tag := 0;
+      end;
 end;
 
 procedure TPertesFListF.TypePerteListCbxChange(Sender: TObject);

@@ -27,7 +27,7 @@ object ClientGestionF: TClientGestionF
     Top = 0
     Width = 516
     Height = 493
-    ActivePage = GeneralClientGTB
+    ActivePage = PlusInfoClientGTB
     Align = alClient
     DoubleBuffered = True
     Font.Charset = DEFAULT_CHARSET
@@ -46,10 +46,6 @@ object ClientGestionF: TClientGestionF
       Caption = 'G'#233'n'#233'ral'
       SkinData.CustomColor = False
       SkinData.CustomFont = False
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object GeneralTB: TPanel
         Left = 0
         Top = 0
@@ -562,10 +558,6 @@ object ClientGestionF: TClientGestionF
       Caption = 'Plus D'#39'info'
       SkinData.CustomColor = False
       SkinData.CustomFont = False
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object PlusInfoTB: TPanel
         Left = 0
         Top = 0
@@ -919,7 +911,7 @@ object ClientGestionF: TClientGestionF
           OnClick = MaxCreditClientGEdtClick
           OnExit = MaxCreditClientGEdtExit
           OnKeyDown = OldCreditClientGEdtKeyDown
-          OnKeyPress = OldCreditClientGEdtKeyPress
+          OnKeyPress = MaxCreditClientGEdtKeyPress
         end
         object ModeTarifClientGCbx: TComboBox
           Left = 49

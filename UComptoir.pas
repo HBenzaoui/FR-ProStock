@@ -191,6 +191,7 @@ type
     procedure FormPaint(Sender: TObject);
     procedure AddClientBonCtrGBtnClick(Sender: TObject);
     procedure ProduitBonCtrGCbxEnter(Sender: TObject);
+    procedure FormKeyPress(Sender: TObject; var Key: Char);
   private
     procedure GettingData;
     { Private declarations }
@@ -2153,6 +2154,20 @@ var CodeOCB,CodeRF : Integer;
 procedure TBonCtrGestionF.FormCreate(Sender: TObject);
 begin
 MainForm.Bonv_ctr_listTable.Active:=True;
+end;
+
+procedure TBonCtrGestionF.FormKeyPress(Sender: TObject; var Key: Char);
+begin
+
+
+     if key = #27 then
+ begin
+  key := #0;
+
+ CloseBonCtrGBtnClick(Sender);
+//  Close;
+
+ end;
 end;
 
 procedure TBonCtrGestionF.RemisePerctageBonCtrGEdtKeyPress(Sender: TObject;

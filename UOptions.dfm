@@ -4,7 +4,7 @@ object FOptions: TFOptions
   BorderStyle = bsDialog
   ClientHeight = 674
   ClientWidth = 448
-  Color = clBtnFace
+  Color = 15527148
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
@@ -30,7 +30,7 @@ object FOptions: TFOptions
     Color = 4207405
     DoubleBuffered = True
     Font.Charset = DEFAULT_CHARSET
-    Font.Color = 15722984
+    Font.Color = 15527148
     Font.Height = 27
     Font.Name = 'Roboto'
     Font.Style = []
@@ -65,7 +65,7 @@ object FOptions: TFOptions
     object Label1: TLabel
       Left = 8
       Top = 3
-      Width = 107
+      Width = 104
       Height = 24
       Caption = 'Impression'
       Color = 4207405
@@ -283,7 +283,7 @@ object FOptions: TFOptions
     object Label5: TLabel
       Left = 8
       Top = 0
-      Width = 99
+      Width = 98
       Height = 24
       Caption = 'Enterprise'
       Color = 4207405

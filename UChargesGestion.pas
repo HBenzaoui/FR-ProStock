@@ -574,16 +574,8 @@ begin
           MainForm.CompteTable.SQL.Text:='Select * FROM compte WHERE LOWER(nom_cmpt) LIKE LOWER('+ QuotedStr(CompteChargeGCbx.Text )+')'  ;
           MainForm.CompteTable.Active:=True;
 
-          // --- This TAG is for adding---//
-     if Tag = 0 then
-     begin
-      DataModuleF.ChargesTable.Active := false;
-      DataModuleF.ChargesTable.SQL.Clear;
-      DataModuleF.ChargesTable.SQL.Text :=
-     'SELECT * FROM charges ORDER BY code_ch';
-      DataModuleF.ChargesTable.Active := true;
 
-           //----------- use this code to inster new type when just type name it if empty exit-------------
+            //----------- use this code to inster new type when just type name it if empty exit-------------
           if TypeChargeGCbx.Text <> '' then
           begin
           if NOT  DataModuleF.Charge_typeTable.Locate('nom_cht', TypeChargeGCbx.Text, [loCaseInsensitive]) then
@@ -641,6 +633,17 @@ begin
           DataModuleF.Charge_s_typeTable.SQL.Text:='Select * FROM charge_s_type WHERE LOWER(nom_chst) LIKE LOWER('+ QuotedStr( STypeChargeGCbx.Text )+')'  ;
           DataModuleF.Charge_s_typeTable.Active:=True;
           CHSTypeC:= DataModuleF.Charge_s_typeTable.FieldByName('code_chst').AsInteger;
+
+          // --- This TAG is for adding---//
+     if Tag = 0 then
+     begin
+      DataModuleF.ChargesTable.Active := false;
+      DataModuleF.ChargesTable.SQL.Clear;
+      DataModuleF.ChargesTable.SQL.Text :=
+     'SELECT * FROM charges ORDER BY code_ch';
+      DataModuleF.ChargesTable.Active := true;
+
+
 
       with DataModuleF.ChargesTable do
       begin
@@ -840,18 +843,18 @@ begin
                   MainForm.Opt_cas_bnk_CaisseTable.DisableControls;
                   MainForm.Opt_cas_bnk_CaisseTable.Active:=false;
                   MainForm.Opt_cas_bnk_CaisseTable.SQL.Clear;
-                  MainForm.Opt_cas_bnk_CaisseTable.SQL.Text:='SELECT * FROM opt_cas_bnk' ;
+                  MainForm.Opt_cas_bnk_CaisseTable.SQL.Text:='SELECT * FROM opt_cas_bnk WHERE code_ch ='+IntToStr(DataModuleF.ChargesTable.FieldByName('code_ch').AsInteger) ;
                   MainForm.Opt_cas_bnk_CaisseTable.Active:=True;
 
 
-                  if NOT (MainForm.Opt_cas_bnk_CaisseTable.IsEmpty) then
-                  begin
-                  MainForm.Opt_cas_bnk_CaisseTable.Last;
-                  CodeOCB:= MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ocb'] + 1;
-                  end else
-                      begin
-                       CodeOCB:= 1;
-                      end;
+//                  if NOT (MainForm.Opt_cas_bnk_CaisseTable.IsEmpty) then
+//                  begin
+//                  MainForm.Opt_cas_bnk_CaisseTable.Last;
+//                  CodeOCB:= MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ocb'] + 1;
+//                  end else
+//                      begin
+//                       CodeOCB:= 1;
+//                      end;
 
                     MainForm.Opt_cas_bnk_CaisseTable.Edit;
 //                    MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ocb']:= CodeOCB;

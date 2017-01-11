@@ -69,8 +69,8 @@ type
     N5: TMenuItem;
     ClearFilterBVLivPMenu: TMenuItem;
     StatuBar: TsStatusBar;
-    sImage3: TsImage;
     SumGirdBVCtrBtn: TAdvToolButton;
+    RefreshGirdBtn: TAdvToolButton;
     procedure AddBVCtrBtnClick(Sender: TObject);
     procedure EditBVCtrBtnClick(Sender: TObject);
     procedure DeleteBVCtrBtnClick(Sender: TObject);
@@ -105,6 +105,8 @@ type
     procedure ClearMPFilterBVLivPMenuClick(Sender: TObject);
     procedure ClearFilterBVLivPMenuClick(Sender: TObject);
     procedure SumGirdBVCtrBtnClick(Sender: TObject);
+    procedure RefreshGirdBtnClick(Sender: TObject);
+    procedure ResearchBVCtrEdtKeyPress(Sender: TObject; var Key: Char);
   private
     procedure GettingData;
     procedure FilteredColor;
@@ -706,6 +708,12 @@ begin
 MainForm.Bonv_ctrTable.Last;
 end;
 
+procedure TBonCtrF.RefreshGirdBtnClick(Sender: TObject);
+begin
+MainForm.Bonv_ctrTable.Close;
+MainForm.Bonv_ctrTable.Open;
+end;
+
 procedure TBonCtrF.RegleFilterBVLivPMenuClick(Sender: TObject);
 begin
  FilterBVLivBtn.ImageIndex:=50;
@@ -787,6 +795,71 @@ begin
           MainForm.Bonv_ctrTable.EnableControls;
 
      end;
+end;
+
+procedure TBonCtrF.ResearchBVCtrEdtKeyPress(Sender: TObject; var Key: Char);
+var  CodeCB : Integer;
+const
+  N =[Char(VK_ESCAPE)];
+begin
+
+  if (Key in N) then
+  begin
+    key := #0;
+    ResearchBVCtrEdt.Text := '';
+
+  end;
+
+    if key = #13 then
+  begin
+   key := #0;
+
+
+ //----------- Searching in databese-------------------//
+
+    if ResearchBVCtrEdt.Text<>'' then
+    begin
+
+          if ResherchBVCTClientRdioBtn.Checked then
+          begin
+          MainForm.Bonv_ctrTable.DisableControls;
+          MainForm.Bonv_ctrTable.Active:=False;
+          MainForm.Bonv_ctrTable.SQL.Clear;
+          MainForm.Bonv_ctrTable.SQL.Text:='SELECT * FROM bonv_ctr WHERE code_c IN( SELECT code_c FROM client WHERE LOWER(nom_c) LIKE LOWER' +'('''+(ResearchBVCtrEdt.Text+'%')+''')' +')';
+          MainForm.Bonv_ctrTable.Active:=True;
+          MainForm.Bonv_ctrTable.EnableControls;
+          end;
+
+          if ResherchBVCTNumBRdioBtn.Checked then
+          begin
+          MainForm.Bonv_ctrTable.DisableControls;
+          MainForm.Bonv_ctrTable.Active:=False;
+          MainForm.Bonv_ctrTable.SQL.Clear;
+          MainForm.Bonv_ctrTable.SQL.Text:='SELECT * FROM bonv_ctr WHERE LOWER(num_bvctr) LIKE LOWER' +'('''+(ResearchBVCtrEdt.Text+'%')+''')' ;
+          MainForm.Bonv_ctrTable.Active:=True;
+          MainForm.Bonv_ctrTable.EnableControls;
+          end;
+
+    end else
+     begin
+          MainForm.ClientTable.DisableControls;
+          MainForm.ClientTable.Active:=False;
+          MainForm.ClientTable.SQL.Clear;
+          MainForm.ClientTable.SQL.Text:='SELECT * FROM client ' ;
+          MainForm.ClientTable.Active:=True;
+          MainForm.ClientTable.EnableControls;
+
+          MainForm.Bonv_ctrTable.DisableControls;
+          MainForm.Bonv_ctrTable.Active:=False;
+          MainForm.Bonv_ctrTable.SQL.Clear;
+          MainForm.Bonv_ctrTable.SQL.Text:='SELECT * FROM bonv_ctr ' ;
+          MainForm.Bonv_ctrTable.Active:=True;
+          MainForm.Bonv_ctrTable.EnableControls;
+
+     end;
+
+end;
+
 end;
 
 procedure TBonCtrF.FormShow(Sender: TObject);

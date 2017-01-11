@@ -139,6 +139,10 @@ type
     sSpeedButton5: TsSpeedButton;
     sSpeedButton4: TsSpeedButton;
     ProduitBonFacVGCbx: TcxComboBox;
+    Label9: TLabel;
+    CompteGErrorP: TPanel;
+    RequiredMPGlbl: TLabel;
+    RequiredCompteGlbl: TLabel;
     procedure FormShow(Sender: TObject);
     procedure sSpeedButton7Click(Sender: TObject);
     procedure sSpeedButton6Click(Sender: TObject);
@@ -192,6 +196,7 @@ type
     procedure sSpeedButton3Click(Sender: TObject);
     procedure ProduitsListDBGridEhCellClick(Column: TColumnEh);
     procedure ProduitsListDBGridEhExit(Sender: TObject);
+    procedure FormKeyPress(Sender: TObject; var Key: Char);
   private
     procedure GettingData;
     { Private declarations }
@@ -1690,6 +1695,9 @@ end;
 procedure TBonFacVGestionF.CompteBonFacVGCbxChange(Sender: TObject);
 begin
 CompteBonFacVGCbx.AutoDropDown:=True;
+
+RequiredCompteGlbl.Visible:= False;
+CompteGErrorP.Visible:= False;
 end;
 
 procedure TBonFacVGestionF.RemiseTypeBonFacVGCbxChange(Sender: TObject);
@@ -2032,8 +2040,35 @@ begin
 
       ClientBonFacVGCbx.SetFocus;
       CanClose := false;
-    end else
-        begin
+   end else
+    begin
+      if ModePaieBonFacVGCbx.Text = '' then
+      begin
+        sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+        ModePaieBonFacVGCbx.StyleElements:= [];
+        RequiredMPGlbl.Visible:= True;
+        ModepPaiGErrorP.Visible:= True;
+
+        ModePaieBonFacVGCbx.SetFocus;
+        CanClose := false;
+      end else
+       begin
+
+
+     if CompteBonFacVGCbx.Text = '' then
+     begin
+        sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+        CompteBonFacVGCbx.StyleElements:= [];
+        RequiredCompteGlbl.Visible:= True;
+        CompteGErrorP.Visible:= True;
+
+        CompteBonFacVGCbx.SetFocus;
+        CanClose := false;
+     end else
+     begin
+
+
+        //---------------------------------------------------
          if RequiredClientGlbl.Visible <> True then
          begin
 
@@ -2124,7 +2159,10 @@ begin
                   CanClose:= False;
 
                end;
+           //---------------------------------------------------
 
+     end;
+           end;
         end;
   end  else
   begin
@@ -2216,6 +2254,9 @@ begin
 
    if ModePaieBonFacVGCbx.Text <> '' then
     begin
+
+     if CompteBonFacVGCbx.Text <> '' then
+     begin
 
 //           ClientBonFacVGCbxChange(Sender);
       MainForm.ClientTable.DisableControls;
@@ -2630,7 +2671,7 @@ begin
 
           end else
               begin
-                          MainForm.Opt_cas_bnk_CaisseTable.DisableControls;
+                    MainForm.Opt_cas_bnk_CaisseTable.DisableControls;
                     MainForm.Opt_cas_bnk_CaisseTable.Active:=false;
                     MainForm.Opt_cas_bnk_CaisseTable.SQL.Clear;
                     MainForm.Opt_cas_bnk_CaisseTable.SQL.Text:='SELECT * FROM opt_cas_bnk WHERE code_bvfac ='+IntToStr(MainForm.Bonv_facTable.FieldByName('code_bvfac').AsInteger) ;
@@ -2756,14 +2797,21 @@ begin
           MainForm.CompteTable.EnableControls;
        end;
 
+        //-------------------------------------------------------------------------------
 
-
-
+          end else
+         begin
+            sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+            CompteBonFacVGCbx.StyleElements:= [];
+            RequiredCompteGlbl.Visible:= True;
+            CompteGErrorP.Visible:= True;
+            CompteBonFacVGCbx.SetFocus;
+         end;
        end else
            begin
                sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
             ModePaieBonFacVGCbx.StyleElements:= [];
-//            RequiredFourGlbl.Visible:= True;
+            RequiredMPGlbl.Visible:= True;
             ModepPaiGErrorP.Visible:= True;
             ModePaieBonFacVGCbx.SetFocus;
            end;
@@ -2812,6 +2860,10 @@ begin
       end;
 
     MainForm.Bonv_fac_listTable.Refresh;
+
+
+    RequiredMPGlbl.Visible:= False;
+    ModepPaiGErrorP.Visible:= False;
  end;
 
 procedure TBonFacVGestionF.AddClientBonFacVGBtnClick(Sender: TObject);
@@ -2871,6 +2923,17 @@ begin
 MainForm.Bonv_fac_listTable.Active:=True;
 end;
 
+
+procedure TBonFacVGestionF.FormKeyPress(Sender: TObject; var Key: Char);
+begin
+     if key = #27 then
+ begin
+  key := #0;
+
+  Close;
+
+ end;
+end;
 
 procedure TBonFacVGestionF.GettingData;
 

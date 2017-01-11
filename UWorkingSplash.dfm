@@ -5,7 +5,7 @@ object FWorkingSplash: TFWorkingSplash
   Caption = 'FWorkingSplash'
   ClientHeight = 92
   ClientWidth = 187
-  Color = 15790320
+  Color = 15527148
   Enabled = False
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
