@@ -27,7 +27,7 @@ uses
   dxSkinSummer2008, dxSkinTheAsphaltWorld, dxSkinsDefaultPainters,
   dxSkinValentine, dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
   dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
-  dxSkinXmas2008Blue, cxTextEdit, cxMaskEdit, cxDropDownEdit;
+  dxSkinXmas2008Blue, cxTextEdit, cxMaskEdit, cxDropDownEdit, Vcl.Menus;
 
 type
   TBonFacAGestionF = class(TForm)
@@ -142,6 +142,9 @@ type
     CompteGErrorP: TPanel;
     RequiredMPGlbl: TLabel;
     RequiredCompteGlbl: TLabel;
+    PopupMenu1: TPopupMenu;
+    B1: TMenuItem;
+    BondeCaisseSimple2: TMenuItem;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure FormShow(Sender: TObject);
@@ -188,7 +191,6 @@ type
     procedure ListAddProduitBonFacAGBtnClick(Sender: TObject);
     procedure ProduitsListDBGridEhKeyPress(Sender: TObject; var Key: Char);
     procedure FormCreate(Sender: TObject);
-    procedure sSpeedButton2Click(Sender: TObject);
     procedure sSpeedButton1Click(Sender: TObject);
     procedure sSpeedButton3Click(Sender: TObject);
     procedure ProduitsListDBGridEhCellClick(Column: TColumnEh);
@@ -197,6 +199,8 @@ type
       const Rect: TRect; DataCol: Integer; Column: TColumnEh;
       State: TGridDrawState);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
+    procedure B1Click(Sender: TObject);
+    procedure BondeCaisseSimple2Click(Sender: TObject);
   private
     procedure GettingData;
     { Private declarations }
@@ -2354,6 +2358,58 @@ else
    label20.Visible:=True;
 end;
 
+procedure TBonFacAGestionF.B1Click(Sender: TObject);
+ var
+NEWCredit,OLDCredit,NEWCreditLbl,OLDCreditLbl  : TfrxMemoView;
+LineCredit,LineCreditTop :TfrxShapeView;
+begin
+MainForm.Bona_fac_listTable.DisableControls;
+ GettingData;
+
+  OLDCredit:= BonFacAPListfrxRprt.FindObject('OLDCredit') as TfrxMemoView;
+  OLDCredit.Visible:= False;
+  NEWCredit:= BonFacAPListfrxRprt.FindObject('NEWCredit') as TfrxMemoView;
+  NEWCredit.Visible:= False;
+  OLDCreditLbl:= BonFacAPListfrxRprt.FindObject('OLDCreditLbl') as TfrxMemoView;
+  OLDCreditLbl.Visible:= False;
+  NEWCreditLbl:= BonFacAPListfrxRprt.FindObject('NEWCreditLbl') as TfrxMemoView;
+  NEWCreditLbl.Visible:= False;
+  LineCredit:= BonFacAPListfrxRprt.FindObject('LineCredit') as TfrxShapeView;
+  LineCredit.Visible:= False;
+  LineCreditTop:= BonFacAPListfrxRprt.FindObject('LineCreditTop') as TfrxShapeView;
+  LineCreditTop.Visible:= False;
+
+BonFacAPListfrxRprt.PrepareReport;
+BonFacAPListfrxRprt.ShowReport;
+MainForm.Bona_fac_listTable.EnableControls;
+end;
+
+procedure TBonFacAGestionF.BondeCaisseSimple2Click(Sender: TObject);
+ var
+NEWCredit,OLDCredit,NEWCreditLbl,OLDCreditLbl  : TfrxMemoView;
+LineCredit,LineCreditTop :TfrxShapeView;
+begin
+MainForm.Bona_fac_listTable.DisableControls;
+ GettingData;
+
+  OLDCredit:= BonFacAPListfrxRprt.FindObject('OLDCredit') as TfrxMemoView;
+  OLDCredit.Visible:= True;
+  NEWCredit:= BonFacAPListfrxRprt.FindObject('NEWCredit') as TfrxMemoView;
+  NEWCredit.Visible:= True;
+  OLDCreditLbl:= BonFacAPListfrxRprt.FindObject('OLDCreditLbl') as TfrxMemoView;
+  OLDCreditLbl.Visible:= True;
+  NEWCreditLbl:= BonFacAPListfrxRprt.FindObject('NEWCreditLbl') as TfrxMemoView;
+  NEWCreditLbl.Visible:= True;
+  LineCredit:= BonFacAPListfrxRprt.FindObject('LineCredit') as TfrxShapeView;
+  LineCredit.Visible:= False;
+  LineCreditTop:= BonFacAPListfrxRprt.FindObject('LineCreditTop') as TfrxShapeView;
+  LineCreditTop.Visible:= False;
+
+BonFacAPListfrxRprt.PrepareReport;
+BonFacAPListfrxRprt.ShowReport;
+MainForm.Bona_fac_listTable.EnableControls;
+end;
+
 procedure TBonFacAGestionF.BonFacAPListDataSDataChange(Sender: TObject;
   Field: TField);
 var  TTCbeforeTimber,TTCafterTimber: Currency;
@@ -2815,16 +2871,12 @@ begin
 end;
 
 procedure TBonFacAGestionF.GettingData;
-
  var
   MoneyWordRX,NumRX,DateRX,NameRX,AdrRX,VilleRX,WilayaRX,MPRX,NCHeqRX,
-  TauxTVA17,TauxTVA7,TauxTVA19,MontantTVA17,MontantTVA7,MontantTVA19,RC,NArt,NIF,NIS : TfrxMemoView;
-
+  TauxTVA17,TauxTVA7,TauxTVA19,MontantTVA17,MontantTVA7,MontantTVA19,RC,NArt,NIF,NIS,NEWCredit,OLDCredit : TfrxMemoView;
   str1 : string;
   Taux17,Taux7,Taux19,Montant17,Montant7,Montant19,RemisePerctageBonFacA : Currency;
-
     Name,Tel,Mob,Adr : TfrxMemoView;
-
   Logo : TfrxPictureView;
     S: TMemoryStream;
   Jpg: TJPEGImage;
@@ -3055,16 +3107,14 @@ begin
     NCHeqRX:= BonFacAPListfrxRprt.FindObject('NCHeqRX') as TfrxMemoView;
   NCHeqRX.Text:= NChequeBonFacAGCbx.Text;
 
- end;
+              OLDCredit:= BonFacAPListfrxRprt.FindObject('OLDCredit') as TfrxMemoView;
+  OLDCredit.Text:= BonFacAGFourOLDCredit.Caption;
 
-procedure TBonFacAGestionF.sSpeedButton2Click(Sender: TObject);
-begin
- GettingData;
-MainForm.Bona_fac_listTable.DisableControls;
-BonFacAPListfrxRprt.PrepareReport;
-BonFacAPListfrxRprt.ShowReport;
-MainForm.Bona_fac_listTable.EnableControls;
-end;
+
+      NEWCredit:= BonFacAPListfrxRprt.FindObject('NEWCredit') as TfrxMemoView;
+  NEWCredit.Text:= BonFacAGFourNEWCredit.Caption;
+
+ end;
 
 procedure TBonFacAGestionF.sSpeedButton1Click(Sender: TObject);
 begin

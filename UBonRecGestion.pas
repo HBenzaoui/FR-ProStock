@@ -148,6 +148,9 @@ type
     Label21: TLabel;
     RequiredMPGlbl: TLabel;
     RequiredCompteGlbl: TLabel;
+    N1: TMenuItem;
+    Bonderception2: TMenuItem;
+    Bonderceptionhorstaxe1: TMenuItem;
     procedure ProduitBonRecGCbxEnter(Sender: TObject);
     procedure ResherchPARDesProduitsRdioBtnClick(Sender: TObject);
     procedure ResherchPARCBProduitsRdioBtnClick(Sender: TObject);
@@ -207,6 +210,8 @@ type
     procedure BondeRception1Click(Sender: TObject);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
     procedure ModePaieBonRecGCbxChange(Sender: TObject);
+    procedure Bonderception2Click(Sender: TObject);
+    procedure Bonderceptionhorstaxe1Click(Sender: TObject);
   private
     procedure GettingData;
     procedure GettingDataSansTax;
@@ -1290,18 +1295,96 @@ ProduitBonRecGCbx.Text:='';
 end;
 
 procedure TBonRecGestionF.B1Click(Sender: TObject);
+ var
+NEWCredit,OLDCredit,NEWCreditLbl,OLDCreditLbl  : TfrxMemoView;
+LineCredit :TfrxShapeView;
 begin
- GettingData;
 MainForm.Bona_recPlistTable.DisableControls;
+ GettingData;
+
+   OLDCredit:= BonRecPListfrxRprt.FindObject('OLDCredit') as TfrxMemoView;
+  OLDCredit.Visible:= True;
+  NEWCredit:= BonRecPListfrxRprt.FindObject('NEWCredit') as TfrxMemoView;
+  NEWCredit.Visible:= True;
+  OLDCreditLbl:= BonRecPListfrxRprt.FindObject('OLDCreditLbl') as TfrxMemoView;
+  OLDCreditLbl.Visible:= True;
+  NEWCreditLbl:= BonRecPListfrxRprt.FindObject('NEWCreditLbl') as TfrxMemoView;
+  NEWCreditLbl.Visible:= True;
+  LineCredit:= BonRecPListfrxRprt.FindObject('LineCredit') as TfrxShapeView;
+  LineCredit.Visible:= True;
+
 BonRecPListfrxRprt.PrepareReport;
 BonRecPListfrxRprt.ShowReport;
 MainForm.Bona_recPlistTable.EnableControls;
 end;
 
 procedure TBonRecGestionF.BondeRception1Click(Sender: TObject);
+ var
+NEWCredit,OLDCredit,NEWCreditLbl,OLDCreditLbl  : TfrxMemoView;
+LineCredit :TfrxShapeView;
 begin
- GettingDataSansTax;
 MainForm.Bona_recPlistTable.DisableControls;
+ GettingDataSansTax;
+
+   OLDCredit:= BonRecPListSanTAXfrxRprt.FindObject('OLDCredit') as TfrxMemoView;
+  OLDCredit.Visible:= True;
+  NEWCredit:= BonRecPListSanTAXfrxRprt.FindObject('NEWCredit') as TfrxMemoView;
+  NEWCredit.Visible:= True;
+  OLDCreditLbl:= BonRecPListSanTAXfrxRprt.FindObject('OLDCreditLbl') as TfrxMemoView;
+  OLDCreditLbl.Visible:= True;
+  NEWCreditLbl:= BonRecPListSanTAXfrxRprt.FindObject('NEWCreditLbl') as TfrxMemoView;
+  NEWCreditLbl.Visible:= True;
+  LineCredit:= BonRecPListSanTAXfrxRprt.FindObject('LineCredit') as TfrxShapeView;
+  LineCredit.Visible:= True;
+
+BonRecPListSanTAXfrxRprt.PrepareReport;
+BonRecPListSanTAXfrxRprt.ShowReport;
+MainForm.Bona_recPlistTable.EnableControls;
+end;
+
+procedure TBonRecGestionF.Bonderception2Click(Sender: TObject);
+ var
+NEWCredit,OLDCredit,NEWCreditLbl,OLDCreditLbl  : TfrxMemoView;
+LineCredit :TfrxShapeView;
+begin
+MainForm.Bona_recPlistTable.DisableControls;
+ GettingData;
+
+   OLDCredit:= BonRecPListfrxRprt.FindObject('OLDCredit') as TfrxMemoView;
+  OLDCredit.Visible:= False;
+  NEWCredit:= BonRecPListfrxRprt.FindObject('NEWCredit') as TfrxMemoView;
+  NEWCredit.Visible:= False;
+  OLDCreditLbl:= BonRecPListfrxRprt.FindObject('OLDCreditLbl') as TfrxMemoView;
+  OLDCreditLbl.Visible:= False;
+  NEWCreditLbl:= BonRecPListfrxRprt.FindObject('NEWCreditLbl') as TfrxMemoView;
+  NEWCreditLbl.Visible:= False;
+  LineCredit:= BonRecPListfrxRprt.FindObject('LineCredit') as TfrxShapeView;
+  LineCredit.Visible:= False;
+
+BonRecPListfrxRprt.PrepareReport;
+BonRecPListfrxRprt.ShowReport;
+MainForm.Bona_recPlistTable.EnableControls;
+end;
+
+procedure TBonRecGestionF.Bonderceptionhorstaxe1Click(Sender: TObject);
+ var
+NEWCredit,OLDCredit,NEWCreditLbl,OLDCreditLbl  : TfrxMemoView;
+LineCredit :TfrxShapeView;
+begin
+MainForm.Bona_recPlistTable.DisableControls;
+ GettingDataSansTax;
+
+   OLDCredit:= BonRecPListSanTAXfrxRprt.FindObject('OLDCredit') as TfrxMemoView;
+  OLDCredit.Visible:= False;
+  NEWCredit:= BonRecPListSanTAXfrxRprt.FindObject('NEWCredit') as TfrxMemoView;
+  NEWCredit.Visible:= False;
+  OLDCreditLbl:= BonRecPListSanTAXfrxRprt.FindObject('OLDCreditLbl') as TfrxMemoView;
+  OLDCreditLbl.Visible:= False;
+  NEWCreditLbl:= BonRecPListSanTAXfrxRprt.FindObject('NEWCreditLbl') as TfrxMemoView;
+  NEWCreditLbl.Visible:= False;
+  LineCredit:= BonRecPListSanTAXfrxRprt.FindObject('LineCredit') as TfrxShapeView;
+  LineCredit.Visible:= False;
+
 BonRecPListSanTAXfrxRprt.PrepareReport;
 BonRecPListSanTAXfrxRprt.ShowReport;
 MainForm.Bona_recPlistTable.EnableControls;
@@ -2341,7 +2424,7 @@ end;
 
 procedure TBonRecGestionF.GettingDataSansTax;
  var
-  MoneyWordRX,NumRX,DateRX,NameRX,AdrRX,VilleRX,WilayaRX,MPRX,NCHeqRX : TfrxMemoView;
+  MoneyWordRX,NumRX,DateRX,NameRX,AdrRX,VilleRX,WilayaRX,MPRX,NCHeqRX,NEWCredit,OLDCredit  : TfrxMemoView;
   str1 : string;
     Name,Tel,Mob,Adr : TfrxMemoView;
   Logo : TfrxPictureView;
@@ -2432,17 +2515,20 @@ begin
     NCHeqRX:= BonRecPListSanTAXfrxRprt.FindObject('NCHeqRX') as TfrxMemoView;
   NCHeqRX.Text:= NChequeBonRecGCbx.Text;
 
+          OLDCredit:= BonRecPListfrxRprt.FindObject('OLDCredit') as TfrxMemoView;
+  OLDCredit.Text:= BonRecGFourOLDCredit.Caption;
+
+
+      NEWCredit:= BonRecPListfrxRprt.FindObject('NEWCredit') as TfrxMemoView;
+  NEWCredit.Text:= BonRecGFourNEWCredit.Caption;
+
  end;
 
 procedure TBonRecGestionF.GettingData;
-
  var
-  MoneyWordRX,NumRX,DateRX,NameRX,AdrRX,VilleRX,WilayaRX,MPRX,NCHeqRX : TfrxMemoView;
-
+  MoneyWordRX,NumRX,DateRX,NameRX,AdrRX,VilleRX,WilayaRX,MPRX,NCHeqRX,NEWCredit,OLDCredit  : TfrxMemoView;
   str1 : string;
-
     Name,Tel,Mob,Adr : TfrxMemoView;
-
   Logo : TfrxPictureView;
     S: TMemoryStream;
   Jpg: TJPEGImage;
@@ -2530,6 +2616,14 @@ begin
 
     NCHeqRX:= BonRecPListfrxRprt.FindObject('NCHeqRX') as TfrxMemoView;
   NCHeqRX.Text:= NChequeBonRecGCbx.Text;
+
+
+        OLDCredit:= BonRecPListfrxRprt.FindObject('OLDCredit') as TfrxMemoView;
+  OLDCredit.Text:= BonRecGFourOLDCredit.Caption;
+
+
+      NEWCredit:= BonRecPListfrxRprt.FindObject('NEWCredit') as TfrxMemoView;
+  NEWCredit.Text:= BonRecGFourNEWCredit.Caption;
 
  end;
 

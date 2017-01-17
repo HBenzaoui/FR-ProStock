@@ -1203,7 +1203,6 @@ object ProduitsListF: TProduitsListF
     Height = 82
     Align = alTop
     BevelOuter = bvNone
-    Caption = 'admin'
     Color = 15527148
     DoubleBuffered = True
     ParentBackground = False

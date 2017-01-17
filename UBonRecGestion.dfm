@@ -2994,7 +2994,7 @@ object BonRecGestionF: TBonRecGestionF
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 42576.399521435200000000
-    ReportOptions.LastChange = 42746.101836296300000000
+    ReportOptions.LastChange = 42751.695852245370000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       ''
@@ -3841,66 +3841,6 @@ object BonRecGestionF: TBonRecGestionF
             'Arr'#233't'#233'e la pr'#233'sente facture a la somme de :')
           ParentFont = False
         end
-        object Memo15: TfrxMemoView
-          Left = 3.779530000000000000
-          Top = 29.456710000000000000
-          Width = 101.786652760000000000
-          Height = 15.639434480000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -11
-          Font.Name = 'Arial'
-          Font.Style = []
-          Memo.UTF8W = (
-            'Mode de paiement :')
-          ParentFont = False
-          VAlign = vaCenter
-        end
-        object MPRX: TfrxMemoView
-          Left = 127.063080000000000000
-          Top = 27.456710000000000000
-          Width = 252.541322730000000000
-          Height = 20.272024550000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -11
-          Font.Name = 'Arial'
-          Font.Style = [fsBold]
-          Memo.UTF8W = (
-            'Esp'#233'ce')
-          ParentFont = False
-          VAlign = vaCenter
-        end
-        object Memo17: TfrxMemoView
-          Left = 3.779530000000000000
-          Top = 66.252010000000000000
-          Width = 120.684302760000000000
-          Height = 15.639434480000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -11
-          Font.Name = 'Arial'
-          Font.Style = []
-          Memo.UTF8W = (
-            'N'#176' ch'#233'que ou virement :')
-          ParentFont = False
-          VAlign = vaCenter
-        end
-        object NCHeqRX: TfrxMemoView
-          Left = 127.063080000000000000
-          Top = 64.252010000000000000
-          Width = 252.541322730000000000
-          Height = 20.272024550000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -11
-          Font.Name = 'Arial'
-          Font.Style = [fsBold]
-          Memo.UTF8W = (
-            '000000000000')
-          ParentFont = False
-          VAlign = vaCenter
-        end
         object frxBonRecDBRemisePerc: TfrxMemoView
           Left = 500.354670000000000000
           Top = 58.960629920000000000
@@ -3921,6 +3861,140 @@ object BonRecGestionF: TBonRecGestionF
           ParentFont = False
           VAlign = vaCenter
         end
+        object Memo15: TfrxMemoView
+          Left = 18.897650000000000000
+          Top = 93.677180000000000000
+          Width = 128.243362760000000000
+          Height = 15.639434480000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            'Mode de paiement :')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object MPRX: TfrxMemoView
+          Left = 148.283550000000000000
+          Top = 92.360884960000000000
+          Width = 260.100382730000000000
+          Height = 20.272024550000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = []
+          Memo.UTF8W = (
+            'Esp'#233'ce')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo17: TfrxMemoView
+          Top = 120.472480000000000000
+          Width = 147.141012760000000000
+          Height = 15.639434480000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            'N'#176' ch'#233'que ou virement :')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object NCHeqRX: TfrxMemoView
+          Left = 148.283550000000000000
+          Top = 119.156184970000000000
+          Width = 260.100382730000000000
+          Height = 20.272024550000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = []
+          Memo.UTF8W = (
+            '000000000000')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object OLDCreditLbl: TfrxMemoView
+          Left = 51.338590000000000000
+          Top = 28.456710000000000000
+          Width = 98.007122760000000000
+          Height = 15.639434480000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            'Ancien cr'#233'dit :')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object OLDCredit: TfrxMemoView
+          Left = 151.047310000000000000
+          Top = 26.456710000000000000
+          Width = 131.596362730000000000
+          Height = 20.272024550000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            '0,00')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object NEWCreditLbl: TfrxMemoView
+          Left = 40.000000000000000000
+          Top = 54.252010000000000000
+          Width = 109.345712760000000000
+          Height = 15.639434480000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            'Nouveau cr'#233'dit :')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object NEWCredit: TfrxMemoView
+          Left = 151.047310000000000000
+          Top = 52.252010000000000000
+          Width = 131.596362730000000000
+          Height = 20.272024550000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            '0,00')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object LineCredit: TfrxShapeView
+          Left = -3.779530000000000000
+          Top = 81.803198430000000000
+          Width = 287.244084720000000000
+          Height = 0.566931570000000000
+          Fill.BackColor = 13948116
+          Fill.ForeColor = clNone
+          Frame.Color = 13948116
+        end
       end
     end
   end
@@ -3928,12 +4002,27 @@ object BonRecGestionF: TBonRecGestionF
     Left = 914
     Top = 18
     object B1: TMenuItem
-      Caption = 'Bon de R'#233'ception'
+      Caption = 'Bon de r'#233'ception'
+      ImageIndex = 32
       OnClick = B1Click
     end
     object BondeRception1: TMenuItem
-      Caption = 'Bon de R'#233'ception hors taxe'
+      Caption = 'Bon de r'#233'ception hors taxe'
+      ImageIndex = 32
       OnClick = BondeRception1Click
+    end
+    object N1: TMenuItem
+      Caption = '-'
+    end
+    object Bonderception2: TMenuItem
+      Caption = 'Bon de r'#233'ception sans les cr'#233'dits'
+      ImageIndex = 32
+      OnClick = Bonderception2Click
+    end
+    object Bonderceptionhorstaxe1: TMenuItem
+      Caption = 'Bon de r'#233'ception hors taxe sans les cr'#233'dits'
+      ImageIndex = 32
+      OnClick = Bonderceptionhorstaxe1Click
     end
   end
   object BonRecPListSanTAXfrxRprt: TfrxReport
@@ -3945,7 +4034,7 @@ object BonRecGestionF: TBonRecGestionF
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 42576.399521435200000000
-    ReportOptions.LastChange = 42750.437994791670000000
+    ReportOptions.LastChange = 42750.437994791700000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       ''
@@ -4037,7 +4126,7 @@ object BonRecGestionF: TBonRecGestionF
       object PageFooter1: TfrxPageFooter
         FillType = ftBrush
         Height = 21.057381430000000000
-        Top = 786.142240000000000000
+        Top = 808.819420000000000000
         Width = 718.110700000000000000
         object Memo7: TfrxMemoView
           Left = 3.779530000000000000
@@ -4538,11 +4627,11 @@ object BonRecGestionF: TBonRecGestionF
       end
       object Footer1: TfrxFooter
         FillType = ftBrush
-        Height = 182.685137010000000000
+        Height = 204.956485460000000000
         Top = 544.252320000000000000
         Width = 718.110700000000000000
         object Shape3: TfrxShapeView
-          Top = 112.315090000000000000
+          Top = 140.315090000000000000
           Width = 718.110700000000000000
           Height = 3.212598430000000000
           Fill.BackColor = 13948116
@@ -4551,7 +4640,7 @@ object BonRecGestionF: TBonRecGestionF
         end
         object Shape4: TfrxShapeView
           Left = 566.929500000000000000
-          Top = 151.315058270000000000
+          Top = 112.181203660000000000
           Width = 151.181200000000000000
           Height = 31.370078740000000000
           Fill.BackColor = 13948116
@@ -4584,7 +4673,7 @@ object BonRecGestionF: TBonRecGestionF
         end
         object Memo9: TfrxMemoView
           Left = 415.748300000000000000
-          Top = 60.472480000000000000
+          Top = 71.472480000000000000
           Width = 148.855335380000000000
           Height = 16.281052310000000000
           Font.Charset = DEFAULT_CHARSET
@@ -4600,7 +4689,7 @@ object BonRecGestionF: TBonRecGestionF
         end
         object Memo12: TfrxMemoView
           Left = 415.748300000000000000
-          Top = 84.181200000000000000
+          Top = 112.181200000000000000
           Width = 148.855335380000000000
           Height = 31.399172310000000000
           Font.Charset = DEFAULT_CHARSET
@@ -4617,7 +4706,7 @@ object BonRecGestionF: TBonRecGestionF
         end
         object frxBonLivDTremise_bvliv: TfrxMemoView
           Left = 566.929500000000000000
-          Top = 60.472480000000000000
+          Top = 71.472480000000000000
           Width = 147.401670000000000000
           Height = 18.897650000000000000
           DataSet = frxBonRecDT
@@ -4657,7 +4746,7 @@ object BonRecGestionF: TBonRecGestionF
         end
         object frxBonLivDTmontttc_bvliv: TfrxMemoView
           Left = 563.149970000000000000
-          Top = 84.181200000000000000
+          Top = 112.181200000000000000
           Width = 151.181200000000000000
           Height = 31.370086060000000000
           DataSet = frxBonRecDT
@@ -4678,7 +4767,7 @@ object BonRecGestionF: TBonRecGestionF
         end
         object MoneyWordRX: TfrxMemoView
           Left = 3.779530000000000000
-          Top = 145.345870910000000000
+          Top = 173.345870910000000000
           Width = 562.462782730000000000
           Height = 31.610614550000000000
           Font.Charset = DEFAULT_CHARSET
@@ -4693,7 +4782,7 @@ object BonRecGestionF: TBonRecGestionF
         end
         object Memo14: TfrxMemoView
           Left = 566.992270000000000000
-          Top = 122.196970000000000000
+          Top = 150.196970000000000000
           Width = 132.022892760000000000
           Height = 15.639434480000000000
           Font.Charset = DEFAULT_CHARSET
@@ -4708,7 +4797,7 @@ object BonRecGestionF: TBonRecGestionF
           VAlign = vaCenter
         end
         object Memo13: TfrxMemoView
-          Top = 122.414998280000000000
+          Top = 150.414998280000000000
           Width = 218.952082760000000000
           Height = 15.639434480000000000
           Font.Charset = DEFAULT_CHARSET
@@ -4720,69 +4809,9 @@ object BonRecGestionF: TBonRecGestionF
             'Arr'#233't'#233'e la pr'#233'sente facture a la somme de :')
           ParentFont = False
         end
-        object Memo15: TfrxMemoView
-          Left = 3.779530000000000000
-          Top = 29.456710000000000000
-          Width = 101.786652760000000000
-          Height = 15.639434480000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -11
-          Font.Name = 'Arial'
-          Font.Style = []
-          Memo.UTF8W = (
-            'Mode de paiement :')
-          ParentFont = False
-          VAlign = vaCenter
-        end
-        object MPRX: TfrxMemoView
-          Left = 127.063080000000000000
-          Top = 27.456710000000000000
-          Width = 252.541322730000000000
-          Height = 20.272024550000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -11
-          Font.Name = 'Arial'
-          Font.Style = [fsBold]
-          Memo.UTF8W = (
-            'Esp'#233'ce')
-          ParentFont = False
-          VAlign = vaCenter
-        end
-        object Memo17: TfrxMemoView
-          Left = 3.779530000000000000
-          Top = 66.252010000000000000
-          Width = 120.684302760000000000
-          Height = 15.639434480000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -11
-          Font.Name = 'Arial'
-          Font.Style = []
-          Memo.UTF8W = (
-            'N'#176' ch'#233'que ou virement :')
-          ParentFont = False
-          VAlign = vaCenter
-        end
-        object NCHeqRX: TfrxMemoView
-          Left = 127.063080000000000000
-          Top = 64.252010000000000000
-          Width = 252.541322730000000000
-          Height = 20.272024550000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -11
-          Font.Name = 'Arial'
-          Font.Style = [fsBold]
-          Memo.UTF8W = (
-            '000000000000')
-          ParentFont = False
-          VAlign = vaCenter
-        end
         object frxBonRecDBRemisePerc: TfrxMemoView
           Left = 500.354670000000000000
-          Top = 58.960629920000000000
+          Top = 69.960629920000000000
           Width = 60.472480000000000000
           Height = 18.897650000000000000
           DataSet = frxBonRecDT
@@ -4799,6 +4828,140 @@ object BonRecGestionF: TBonRecGestionF
             '([frxBonRecDB."RemisePerc"]%)')
           ParentFont = False
           VAlign = vaCenter
+        end
+        object Memo15: TfrxMemoView
+          Left = 18.897650000000000000
+          Top = 89.897650000000000000
+          Width = 128.243362760000000000
+          Height = 15.639434480000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            'Mode de paiement :')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object MPRX: TfrxMemoView
+          Left = 148.283550000000000000
+          Top = 88.581354960000000000
+          Width = 260.100382730000000000
+          Height = 20.272024550000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = []
+          Memo.UTF8W = (
+            'Esp'#233'ce')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo17: TfrxMemoView
+          Top = 116.692950000000000000
+          Width = 147.141012760000000000
+          Height = 15.639434480000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            'N'#176' ch'#233'que ou virement :')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object NCHeqRX: TfrxMemoView
+          Left = 148.283550000000000000
+          Top = 115.376654970000000000
+          Width = 260.100382730000000000
+          Height = 20.272024550000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = []
+          Memo.UTF8W = (
+            '000000000000')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object OLDCreditLbl: TfrxMemoView
+          Left = 51.338590000000000000
+          Top = 24.677180000000000000
+          Width = 98.007122760000000000
+          Height = 15.639434480000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            'Ancien cr'#233'dit :')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object OLDCredit: TfrxMemoView
+          Left = 151.047310000000000000
+          Top = 22.677180000000000000
+          Width = 131.596362730000000000
+          Height = 20.272024550000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            '0,00')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object NEWCreditLbl: TfrxMemoView
+          Left = 40.000000000000000000
+          Top = 50.472480000000000000
+          Width = 109.345712760000000000
+          Height = 15.639434480000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            'Nouveau cr'#233'dit :')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object NEWCredit: TfrxMemoView
+          Left = 151.047310000000000000
+          Top = 48.472480000000000000
+          Width = 131.596362730000000000
+          Height = 20.272024550000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            '0,00')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object LineCredit: TfrxShapeView
+          Left = -3.779530000000000000
+          Top = 78.023668430000000000
+          Width = 287.244084720000000000
+          Height = 0.566931570000000000
+          Fill.BackColor = 13948116
+          Fill.ForeColor = clNone
+          Frame.Color = 13948116
         end
       end
     end
