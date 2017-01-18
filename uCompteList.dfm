@@ -214,6 +214,7 @@ object CompteListF: TCompteListF
     Font.Style = []
     ParentFont = False
     TabOrder = 2
+    OnChange = ResearchCompteEdtChange
   end
   object CompteDBGridEh: TDBGridEh
     AlignWithMargins = True

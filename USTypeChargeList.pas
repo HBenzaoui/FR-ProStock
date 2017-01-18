@@ -215,6 +215,7 @@ end;
 procedure TSTypeChargeListF.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
+DataModuleF.Charge_s_typeTable.Filtered := False;
 NormalForms;
 end;
 
@@ -242,6 +243,7 @@ end;
 
 procedure TSTypeChargeListF.OKAddCompteSBtnClick(Sender: TObject);
 begin
+ DataModuleF.Charge_s_typeTable.Filtered := False;
 Close;
 end;
 

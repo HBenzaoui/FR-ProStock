@@ -1392,6 +1392,7 @@ end;
 procedure TBonCtrGestionF.ListAddProduitBonCtrGBtnClick(Sender: TObject);
 begin
 //-------- use this code to start creating th form-----//
+  ProduitBonCtrGCbx.Text:='';
   MainForm.ProduitTable.Filtered:=False;
   FastProduitsListF := TFastProduitsListF.Create(Application);
   FastProduitsListF.Tag := 4;

@@ -485,6 +485,7 @@ begin
             MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_cmpt']:=MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
             MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nature_ocb']:= MainForm.CompteTable.FieldByName('nature_cmpt').AsBoolean;
             MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_rf']:= MainForm.RegfournisseurTable.FieldByName('code_rf').AsInteger;
+            MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ur']:=  StrToInt(MainForm.UserIDLbl.Caption);
 
             MainForm.Opt_cas_bnk_CaisseTable.Post;
             MainForm.Opt_cas_bnk_CaisseTable.Refresh;
@@ -543,6 +544,7 @@ begin
                     MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_cmpt']:=MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
                     MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nature_ocb']:= MainForm.CompteTable.FieldByName('nature_cmpt').AsBoolean;
                     MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_rf']:= MainForm.RegfournisseurTable.FieldByName('code_rf').AsInteger;
+                    MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ur']:=  StrToInt(MainForm.UserIDLbl.Caption);
 
                     MainForm.Opt_cas_bnk_CaisseTable.Post;
                     MainForm.Opt_cas_bnk_CaisseTable.Refresh;

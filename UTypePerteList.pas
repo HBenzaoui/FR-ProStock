@@ -214,6 +214,7 @@ end;
 
 procedure TTypePerteListF.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
+DataModuleF.Perte_typeTable.Filtered := False;
 NormalForms;
 end;
 
@@ -241,6 +242,7 @@ end;
 
 procedure TTypePerteListF.OKAddCompteSBtnClick(Sender: TObject);
 begin
+DataModuleF.Perte_typeTable.Filtered := False;
 Close;
 end;
 

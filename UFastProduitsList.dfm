@@ -203,8 +203,8 @@ object FastProduitsListF: TFastProduitsListF
       StyleElements = []
     end
     object ResearchProduitsEdt: TSearchBox
-      Left = 87
-      Top = 16
+      Left = 89
+      Top = 14
       Width = 267
       Height = 30
       Font.Charset = DEFAULT_CHARSET

@@ -1535,6 +1535,7 @@ end;
 procedure TBonLivGestionF .ListAddProduitBonLivGBtnClick(Sender: TObject);
 begin
 //-------- use this code to start creating th form-----//
+  ProduitBonLivGCbx.Text:='';
   MainForm.ProduitTable.Filtered:=False;
   FastProduitsListF := TFastProduitsListF.Create(Application);
 

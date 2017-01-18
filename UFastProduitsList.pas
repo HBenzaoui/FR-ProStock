@@ -232,6 +232,7 @@ end;
 procedure TFastProduitsListF.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
+MainForm.ProduitTable.Filtered := false;
 NormalForms  ;
 //FreeAndNil(FastProduitsListF);
 end;
@@ -241,6 +242,9 @@ begin
      if key = #27 then
  begin
   key := #0;
+
+  MainForm.ProduitTable.Filtered:=False;
+  ResearchProduitsEdt.Text:='';
 
   Close;
 
@@ -1981,8 +1985,10 @@ end;
 
 procedure TFastProduitsListF.CancelProduitGBtnClick(Sender: TObject);
 begin
-Close;
 MainForm.ProduitTable.Filtered:=False;
+  ResearchProduitsEdt.Text:='';
+Close;
+
 end;
 
 procedure TFastProduitsListF.ResearchProduitsEdtEnter(Sender: TObject);

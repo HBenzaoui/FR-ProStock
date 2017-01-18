@@ -86,7 +86,7 @@ type
     Panel6: TPanel;
     Panel7: TPanel;
     StatuBar: TsStatusBar;
-    SumGirdProduitBtn: TAdvToolButton;
+    PaidOnlyCaisseBtn: TAdvToolButton;
     RefreshGirdBtn: TAdvToolButton;
     procedure CaisseListCbxDropDown(Sender: TObject);
     procedure CaisseListCbxChange(Sender: TObject);
@@ -123,6 +123,7 @@ type
     procedure ClearFilterBVLivPMenuClick(Sender: TObject);
     procedure CaisseListCbxExit(Sender: TObject);
     procedure RefreshGirdBtnClick(Sender: TObject);
+    procedure PaidOnlyCaisseBtnClick(Sender: TObject);
   private
     procedure GettingData;
     procedure FilteredColor;
@@ -992,6 +993,33 @@ CaisseListfrxRprt.Export(frxPDFExport1);
 MainForm.Opt_cas_bnk_CaisseTable.EnableControls;
 end;
 
+procedure TCaisseListF.PaidOnlyCaisseBtnClick(Sender: TObject);
+begin
+  if PaidOnlyCaisseBtn.Tag = 0 then
+  begin
+
+    MainForm.Opt_cas_bnk_CaisseTable.DisableControls;
+    MainForm.Opt_cas_bnk_CaisseTable.Filtered:= False;
+    mainform.Opt_cas_bnk_CaisseTable.Filter := 'decaiss_ocb <> 0 OR encaiss_ocb <> 0';// + quotedstr('%' + ResearchProduitsEdt.Text + '%')  + ' OR [code_p] = '+ IntToStr(CodeCB) ;
+    MainForm.Opt_cas_bnk_CaisseTable.Filtered:= True;
+    MainForm.Opt_cas_bnk_CaisseTable.EnableControls;
+
+    PaidOnlyCaisseBtn.Tag := 1;
+    PaidOnlyCaisseBtn.ImageIndex:=25;
+    PaidOnlyCaisseBtn.Hint:='Tout';
+  end else
+      begin
+
+        MainForm.Opt_cas_bnk_CaisseTable.DisableControls;
+        MainForm.Opt_cas_bnk_CaisseTable.Filtered := false;
+        MainForm.Opt_cas_bnk_CaisseTable.EnableControls;
+
+        PaidOnlyCaisseBtn.Tag := 0;
+        PaidOnlyCaisseBtn.ImageIndex:=28;
+        PaidOnlyCaisseBtn.Hint:='Payé seulement';
+      end;
+end;
+
 procedure TCaisseListF.T2Click(Sender: TObject);
 begin
 ClearValideFilterBVLivPMenuClick(Sender);
@@ -1065,6 +1093,7 @@ end;
 
 procedure TCaisseListF.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
+PaidOnlyCaisseBtnClick(Sender);
  FreeAndNil(CaisseListF);
 end;
 

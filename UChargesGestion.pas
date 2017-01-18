@@ -5,7 +5,23 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls,
-  Vcl.ComCtrls, AdvToolBtn, Vcl.Buttons, sSpeedButton;
+  Vcl.ComCtrls, AdvToolBtn, Vcl.Buttons, sSpeedButton, cxGraphics, cxControls,
+  cxLookAndFeels, cxLookAndFeelPainters, cxContainer, cxEdit, dxSkinsCore,
+  dxSkinBlack, dxSkinBlue, dxSkinBlueprint, dxSkinCaramel, dxSkinCoffee,
+  dxSkinDarkRoom, dxSkinDarkSide, dxSkinDevExpressDarkStyle,
+  dxSkinDevExpressStyle, dxSkinFoggy, dxSkinGlassOceans, dxSkinHighContrast,
+  dxSkiniMaginary, dxSkinLilian, dxSkinLiquidSky, dxSkinLondonLiquidSky,
+  dxSkinMcSkin, dxSkinMetropolis, dxSkinMetropolisDark, dxSkinMoneyTwins,
+  dxSkinOffice2007Black, dxSkinOffice2007Blue, dxSkinOffice2007Green,
+  dxSkinOffice2007Pink, dxSkinOffice2007Silver, dxSkinOffice2010Black,
+  dxSkinOffice2010Blue, dxSkinOffice2010Silver, dxSkinOffice2013DarkGray,
+  dxSkinOffice2013LightGray, dxSkinOffice2013White, dxSkinOffice2016Colorful,
+  dxSkinOffice2016Dark, dxSkinPumpkin, dxSkinSeven, dxSkinSevenClassic,
+  dxSkinSharp, dxSkinSharpPlus, dxSkinSilver, dxSkinSpringTime, dxSkinStardust,
+  dxSkinSummer2008, dxSkinTheAsphaltWorld, dxSkinsDefaultPainters,
+  dxSkinValentine, dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
+  dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
+  dxSkinXmas2008Blue, cxTextEdit, cxMaskEdit, cxDropDownEdit;
 
 type
   TChargesGestionF = class(TForm)
@@ -21,7 +37,6 @@ type
     STypeChargeGCbx: TComboBox;
     AddSousTypeChargeGBtn: TAdvToolButton;
     NameChargeGLbl: TLabel;
-    NameChargeGEdt: TEdit;
     RequiredChargeGlbl: TLabel;
     NameChargeGErrorP: TPanel;
     Label19: TLabel;
@@ -56,6 +71,7 @@ type
     Label9: TLabel;
     MontantTTCChargeGErrorP: TPanel;
     RequiredMontantTTCChargeGlbl: TLabel;
+    NameChargeGEdt: TcxComboBox;
     procedure FormShow(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
@@ -87,6 +103,8 @@ type
     procedure MontantTVAChargeGEdtClick(Sender: TObject);
     procedure MontantTimberChargeGEdtClick(Sender: TObject);
     procedure MontantTTCChargeGEdtClick(Sender: TObject);
+    procedure NamePerteGCbxPropertiesChange(Sender: TObject);
+    procedure NameChargeGEdtEnter(Sender: TObject);
   private
     { Private declarations }
   public
@@ -534,13 +552,60 @@ end;
 
 procedure TChargesGestionF.NameChargeGEdtChange(Sender: TObject);
 begin
- if (ModePaieChargeGCbx.Text <> '') AND (CompteChargeGCbx.Text <> '') AND (MontantTTCChargeGEdt.Text <> '')  then  
+ if (ModePaieChargeGCbx.Text <> '') AND (CompteChargeGCbx.Text <> '') AND (MontantTTCChargeGEdt.Text <> '')  then
  begin
      OKChargeGBtn.Enabled := true;
      OKChargeGBtn.ImageIndex := 17;
  end;
-  
-  NameChargeGEdt.BorderStyle:= bsSingle;
+
+  NameChargeGEdt.Style.BorderStyle:= ebsSingle;
+  NameChargeGEdt.StyleElements:= [seClient,seBorder];
+  RequiredChargeGlbl.Visible:= False;
+  NameChargeGErrorP.Visible:= False;
+end;
+
+procedure TChargesGestionF.NameChargeGEdtEnter(Sender: TObject);
+
+var
+I : Integer;
+  begin
+  if Tag = 0 then
+  begin
+  Cursor := crDefault;
+//  PostMessage((Sender as TComboBox).Handle, CB_SHOWDROPDOWN, 1, 0);
+//      ProduitBonLivGCbx.Refresh;
+      NameChargeGEdt.Properties.Items.Clear;
+      MainForm.SQLQuery.Active:=False;
+      MainForm.SQLQuery.SQL.Clear;
+      MainForm.SQLQuery.SQL.Text:= 'SELECT MIN(code_ch) AS code_ch, nom_ch FROM charges GROUP BY nom_ch ORDER BY code_ch ';
+      MainForm.SQLQuery.Active := True;
+
+      MainForm.SQLQuery.Refresh;
+
+      MainForm.SQLQuery.first;
+
+
+     for I := 0 to MainForm.SQLQuery.RecordCount - 1 do
+     if ( MainForm.SQLQuery.FieldByName('nom_ch').IsNull = False )  then
+     begin
+       NameChargeGEdt.Properties.Items.Add(MainForm.SQLQuery.FieldByName('nom_ch').AsString);
+       MainForm.SQLQuery.Next;
+      end;
+
+      MainForm.SQLQuery.Active:=False;
+      MainForm.SQLQuery.SQL.Clear;
+  end;
+end;
+
+procedure TChargesGestionF.NamePerteGCbxPropertiesChange(Sender: TObject);
+begin
+ if (ModePaieChargeGCbx.Text <> '') AND (CompteChargeGCbx.Text <> '') AND (MontantTTCChargeGEdt.Text <> '')  then
+ begin
+     OKChargeGBtn.Enabled := true;
+     OKChargeGBtn.ImageIndex := 17;
+ end;
+
+  NameChargeGEdt.Style.BorderStyle:= ebsSingle;
   NameChargeGEdt.StyleElements:= [seClient,seBorder];
   RequiredChargeGlbl.Visible:= False;
   NameChargeGErrorP.Visible:= False;
@@ -823,6 +888,7 @@ begin
             MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_cmpt']:=MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
             MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nature_ocb']:= MainForm.CompteTable.FieldByName('nature_cmpt').AsBoolean;
             MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ch']:= DataModuleF.ChargesTable.FieldByName('code_ch').AsInteger;
+            MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ur']:=  StrToInt(MainForm.UserIDLbl.Caption);
 
             MainForm.Opt_cas_bnk_CaisseTable.Post;
             MainForm.Opt_cas_bnk_CaisseTable.Refresh;
@@ -882,6 +948,7 @@ begin
                     MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_cmpt']:=MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
                     MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nature_ocb']:= MainForm.CompteTable.FieldByName('nature_cmpt').AsBoolean;
                     MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ch']:=  DataModuleF.ChargesTable.FieldByName('code_ch').AsInteger;
+                    MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ur']:=  StrToInt(MainForm.UserIDLbl.Caption);
 
                     MainForm.Opt_cas_bnk_CaisseTable.Post;
                     MainForm.Opt_cas_bnk_CaisseTable.Refresh;
@@ -994,7 +1061,7 @@ begin
        end
   else
     try
-      NameChargeGEdt.BorderStyle := bsNone;
+      NameChargeGEdt.Style.BorderStyle := ebsNone;
       NameChargeGEdt.StyleElements := [];
       RequiredChargeGlbl.Visible := true;
       NameChargeGErrorP.Visible := true;

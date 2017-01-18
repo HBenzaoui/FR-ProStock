@@ -51,6 +51,7 @@ uses  Winapi.MMSystem, Threading,
 
 procedure TFamPListF.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
+MainForm.FamproduitTable.Filtered := False;
 NormalForms;
 end;
 
@@ -59,7 +60,7 @@ begin
      if key = #27 then
      begin
      key := #0;
-
+      MainForm.FamproduitTable.Filtered := False;
       Close;
 
      end;
@@ -74,6 +75,7 @@ end;
 
 procedure TFamPListF.OKAddCompteSBtnClick(Sender: TObject);
 begin
+MainForm.FamproduitTable.Filtered := False;
 Close;
 end;
 

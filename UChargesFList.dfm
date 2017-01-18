@@ -1355,6 +1355,30 @@ object ChargesFListF: TChargesFListF
         Width = 150
         WordWrap = False
       end
+	  item
+        Alignment = taCenter
+        DynProps = <>
+        EditButtons = <>
+        FieldName = 'obser_ch'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 16
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
+        Footers = <>
+        Layout = tlCenter
+        Title.Alignment = taCenter
+		Title.Caption = 'Observations'
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = 4207405
+        Title.Font.Height = 18
+        Title.Font.Name = 'Helvetica LT Std'
+        Title.Font.Style = []
+        Title.Font.Quality = fqProof
+        Width = 200
+        WordWrap = False
+		Visible = True
+	  end
       item
         Alignment = taCenter
         DynProps = <>

@@ -50,6 +50,7 @@ uses   Winapi.MMSystem,Threading,
 
 procedure TUnitesListF.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
+MainForm.UniteTable.Filtered := False;
 NormalForms;
 end;
 
@@ -58,7 +59,7 @@ begin
      if key = #27 then
      begin
      key := #0;
-
+      MainForm.UniteTable.Filtered := False;
       Close;
 
      end;
@@ -72,6 +73,7 @@ end;
 
 procedure TUnitesListF.OKAddCompteSBtnClick(Sender: TObject);
 begin
+MainForm.UniteTable.Filtered := False;
 Close;
 end;
 

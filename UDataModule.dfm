@@ -1338,10 +1338,17 @@ object DataModuleF: TDataModuleF
     FilterOptions = [foCaseInsensitive]
     IndexFieldNames = 'code_ch'
     Connection = MainForm.GstockdcConnection
+    FormatOptions.AssignedValues = [fvMapRules]
+    FormatOptions.OwnMapRules = True
+    FormatOptions.MapRules = <
+      item
+        SourceDataType = dtWideMemo
+        TargetDataType = dtWideString
+      end>
     SQL.Strings = (
       'SELECT * FROM charges')
     Left = 567
-    Top = 249
+    Top = 251
     object ChargesTablecode_ch: TIntegerField
       FieldName = 'code_ch'
       Origin = 'code_ch'
@@ -1361,14 +1368,14 @@ object DataModuleF: TDataModuleF
       FieldName = 'time_ch'
       Origin = 'time_ch'
     end
+    object ChargesTableobser_ch: TWideStringField
+      FieldName = 'obser_ch'
+      Origin = 'obser_ch'
+      Size = 200
+    end
     object ChargesTablemontht_ch: TCurrencyField
       FieldName = 'montht_ch'
       Origin = 'montht_ch'
-    end
-    object ChargesTableobser_ch: TWideMemoField
-      FieldName = 'obser_ch'
-      Origin = 'obser_ch'
-      BlobType = ftWideMemo
     end
     object ChargesTablemonttva_ch: TCurrencyField
       FieldName = 'monttva_ch'

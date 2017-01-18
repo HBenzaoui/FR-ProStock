@@ -55,11 +55,13 @@ end;
 
 procedure TUsersListF.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
+DataModuleF.UsersTable.Filtered := False;
 NormalForms;
 end;
 
 procedure TUsersListF.OKAddUniteSBtnClick(Sender: TObject);
 begin
+DataModuleF.UsersTable.Filtered := False;
 Close;
 end;
 
@@ -68,7 +70,7 @@ begin
      if key = #27 then
  begin
  key := #0;
-
+  DataModuleF.UsersTable.Filtered := False;
   Close;
 
  end;

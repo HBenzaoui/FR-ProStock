@@ -170,7 +170,7 @@ object STypeChargeListF: TSTypeChargeListF
     object OKAddCompteSBtn: TAdvToolButton
       Tag = 2
       Left = 46
-      Top = 12
+      Top = 14
       Width = 233
       Height = 30
       Cursor = crHandPoint

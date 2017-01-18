@@ -859,7 +859,7 @@ object CaisseListF: TCaisseListF
     object SoldIniCaisseListLbl: TLabel
       AlignWithMargins = True
       Left = 98
-      Top = 5
+      Top = 4
       Width = 211
       Height = 25
       Margins.Left = 0
@@ -1517,13 +1517,13 @@ object CaisseListF: TCaisseListF
     DesignSize = (
       1191
       20)
-    object SumGirdProduitBtn: TAdvToolButton
+    object PaidOnlyCaisseBtn: TAdvToolButton
       Left = 141
       Top = 0
       Width = 26
       Height = 20
       Cursor = crHandPoint
-      Hint = 'Totaux'
+      Hint = 'Pay'#233' seulement'
       Anchors = [akRight]
       AutoThemeAdapt = False
       BorderColor = 15722984
@@ -1540,14 +1540,14 @@ object CaisseListF: TCaisseListF
       Font.Height = 18
       Font.Name = 'Roboto'
       Font.Style = []
-      ImageIndex = 26
+      ImageIndex = 28
       Images = MainForm.PanelIcons16
       ParentFont = False
       ParentShowHint = False
       Shaded = False
       ShowHint = True
       Spacing = -2
-      Visible = False
+      OnClick = PaidOnlyCaisseBtnClick
       Version = '1.6.1.2'
       TMSStyle = 0
     end

@@ -96,8 +96,8 @@ end;
 
 procedure TModePaieListF.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
+MainForm.Mode_paiementTable.Filtered := False;
 NormalForms;
-//MainForm.Mode_paiementTable.IndexesActive:= True;
 end;
 
 procedure TModePaieListF.AdvToolButton2Click(Sender: TObject);
@@ -316,6 +316,7 @@ end;
 
 procedure TModePaieListF.OKAddUniteSBtnClick(Sender: TObject);
 begin
+MainForm.Mode_paiementTable.Filtered := False;
 Close;
 end;
 

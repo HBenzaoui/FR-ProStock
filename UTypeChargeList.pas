@@ -215,6 +215,7 @@ end;
 
 procedure TTypeChargeListF.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
+DataModuleF.Charge_typeTable.Filtered := False;
 NormalForms;
 end;
 
@@ -223,7 +224,7 @@ begin
      if key = #27 then
      begin
      key := #0;
-
+      DataModuleF.Charge_typeTable.Filtered := False;
       Close;
 
      end;
@@ -242,6 +243,7 @@ end;
 
 procedure TTypeChargeListF.OKAddCompteSBtnClick(Sender: TObject);
 begin
+DataModuleF.Charge_typeTable.Filtered := False;
 Close;
 end;
 

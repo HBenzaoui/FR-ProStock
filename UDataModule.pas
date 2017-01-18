@@ -211,7 +211,6 @@ type
     ChargesTabledate_ch: TDateField;
     ChargesTabletime_ch: TTimeField;
     ChargesTablemontht_ch: TCurrencyField;
-    ChargesTableobser_ch: TWideMemoField;
     ChargesTablemontttc_ch: TCurrencyField;
     ChargesTablenum_cheque_ch: TWideStringField;
     ChargesTablecode_mdpai: TSmallintField;
@@ -271,6 +270,7 @@ type
     UsersTablecmpt_ur: TBooleanField;
     UsersTableunit_ur: TBooleanField;
     UsersTablelocal_ur: TBooleanField;
+    ChargesTableobser_ch: TWideStringField;
     procedure DataModuleCreate(Sender: TObject);
     procedure PZeroQCnotifCalcFields(DataSet: TDataSet);
     procedure PCloseZeroQCnotifCalcFields(DataSet: TDataSet);

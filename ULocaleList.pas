@@ -50,6 +50,7 @@ uses Winapi.MMSystem,Threading,
 
 procedure TLocaleListF.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
+MainForm.LocalisationTable.Filtered := False;
 NormalForms;
 end;
 
@@ -58,7 +59,7 @@ begin
      if key = #27 then
      begin
      key := #0;
-
+      MainForm.LocalisationTable.Filtered := False;
       Close;
 
      end;
@@ -72,6 +73,7 @@ end;
 
 procedure TLocaleListF.OKAddCompteSBtnClick(Sender: TObject);
 begin
+MainForm.LocalisationTable.Filtered := False;
 Close;
 end;
 

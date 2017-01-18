@@ -50,7 +50,9 @@ uses  Winapi.MMSystem,Threading,
 
 procedure TSFamPListF.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
+MainForm.SfamproduitTable.Filtered := False;
 NormalForms;
+
 end;
 
 procedure TSFamPListF.FormKeyPress(Sender: TObject; var Key: Char);
@@ -58,7 +60,7 @@ begin
      if key = #27 then
      begin
      key := #0;
-
+      MainForm.SfamproduitTable.Filtered := False;
       Close;
 
      end;
@@ -72,6 +74,7 @@ end;
 
 procedure TSFamPListF.OKAddCompteSBtnClick(Sender: TObject);
 begin
+MainForm.SfamproduitTable.Filtered := False;
 Close;
 end;
 

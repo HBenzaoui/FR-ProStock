@@ -31,6 +31,7 @@ type
     procedure CompteDBGridEhKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure CompteDBGridEhKeyPress(Sender: TObject; var Key: Char);
+    procedure ResearchCompteEdtChange(Sender: TObject);
   private
     { Private declarations }
   public
@@ -49,11 +50,26 @@ uses UMainF,USplashAddCompte, USplash,Winapi.MMSystem,Threading;
 
 procedure TCompteListF.OKAddCompteSBtnClick(Sender: TObject);
 begin
+MainForm.CompteTable.Filtered := False;
 Close;
+end;
+
+procedure TCompteListF.ResearchCompteEdtChange(Sender: TObject);
+begin
+  if (ResearchCompteEdt.text <> '') then
+      begin
+      MainForm.CompteTable.Filtered:=false;
+      MainForm.CompteTable.Filter := '[nom_cmpt] LIKE ' + quotedstr(  '%'+  ResearchCompteEdt.Text +'%');
+      MainForm.CompteTable.Filtered :=True;
+    end  else
+      begin
+        MainForm.CompteTable.Filtered := False;
+       end;
 end;
 
 procedure TCompteListF.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
+MainForm.CompteTable.Filtered := False;
 NormalForms;
 end;
 
@@ -62,7 +78,7 @@ begin
      if key = #27 then
      begin
      key := #0;
-
+      MainForm.CompteTable.Filtered := False;
       Close;
 
      end;

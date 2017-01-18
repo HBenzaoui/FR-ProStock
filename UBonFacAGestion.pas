@@ -2821,6 +2821,7 @@ procedure TBonFacAGestionF.ListAddProduitBonFacAGBtnClick(Sender: TObject);
 begin
 
 //-------- use this code to start creating th form-----//
+  ProduitBonFacAGCbx.Text:='';
   MainForm.ProduitTable.Filtered:=False;
   FastProduitsListF := TFastProduitsListF.Create(Application);
 
