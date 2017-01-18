@@ -63,7 +63,8 @@ uses
   UTypePerteList in 'UTypePerteList.pas' {TypePerteListF},
   UBonFacPGestion in 'UBonFacPGestion.pas' {BonFacPGestionF},
   UBonFacP in 'UBonFacP.pas' {BonFacPF},
-  UTransferComptesGestion in 'UTransferComptesGestion.pas' {TransferComptesGestionF};
+  UTransferComptesGestion in 'UTransferComptesGestion.pas' {TransferComptesGestionF},
+  UTransferListGestion in 'UTransferListGestion.pas' {TransferListGestionF};
 
 {$R *.res}
 

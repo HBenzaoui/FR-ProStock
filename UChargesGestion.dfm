@@ -160,6 +160,7 @@ object ChargesGestionF: TChargesGestionF
     Shaded = False
     ShowHint = True
     Spacing = -1
+    OnClick = AddModePaieChargeGBtnClick
     Version = '1.6.1.2'
     TMSStyle = 0
   end
@@ -355,6 +356,7 @@ object ChargesGestionF: TChargesGestionF
     Shaded = False
     ShowHint = True
     Spacing = -1
+    OnClick = AddCompteChargeGBtnClick
     Version = '1.6.1.2'
     TMSStyle = 0
   end
@@ -548,7 +550,7 @@ object ChargesGestionF: TChargesGestionF
     ParentBackground = False
     ParentCtl3D = False
     ShowCaption = False
-    TabOrder = 16
+    TabOrder = 17
     Visible = False
     StyleElements = []
   end
@@ -565,7 +567,7 @@ object ChargesGestionF: TChargesGestionF
     ParentBackground = False
     ParentCtl3D = False
     ShowCaption = False
-    TabOrder = 15
+    TabOrder = 16
     Visible = False
     StyleElements = []
   end
@@ -582,7 +584,7 @@ object ChargesGestionF: TChargesGestionF
     ParentBackground = False
     ParentCtl3D = False
     ShowCaption = False
-    TabOrder = 14
+    TabOrder = 15
     Visible = False
     StyleElements = []
   end
@@ -599,7 +601,7 @@ object ChargesGestionF: TChargesGestionF
     ParentBackground = False
     ParentCtl3D = False
     ShowCaption = False
-    TabOrder = 11
+    TabOrder = 12
     Visible = False
     StyleElements = []
   end
@@ -614,7 +616,7 @@ object ChargesGestionF: TChargesGestionF
     Font.Name = 'Helvetica LT Std'
     Font.Style = []
     ParentFont = False
-    TabOrder = 2
+    TabOrder = 3
     OnChange = ModePaieChargeGCbxChange
     OnClick = ModePaieChargeGCbxClick
     OnDropDown = ModePaieChargeGCbxDropDown
@@ -639,7 +641,7 @@ object ChargesGestionF: TChargesGestionF
     Font.Name = 'Helvetica LT Std'
     Font.Style = []
     ParentFont = False
-    TabOrder = 10
+    TabOrder = 11
   end
   object TypeChargeGCbx: TComboBox
     Left = 95
@@ -652,7 +654,7 @@ object ChargesGestionF: TChargesGestionF
     Font.Name = 'Helvetica LT Std'
     Font.Style = []
     ParentFont = False
-    TabOrder = 0
+    TabOrder = 1
     OnDropDown = TypeChargeGCbxEnter
     OnEnter = TypeChargeGCbxEnter
   end
@@ -667,7 +669,7 @@ object ChargesGestionF: TChargesGestionF
     Font.Name = 'Helvetica LT Std'
     Font.Style = []
     ParentFont = False
-    TabOrder = 1
+    TabOrder = 2
     OnDropDown = STypeChargeGCbxEnter
     OnEnter = STypeChargeGCbxEnter
   end
@@ -682,7 +684,7 @@ object ChargesGestionF: TChargesGestionF
     Font.Name = 'Helvetica LT Std'
     Font.Style = []
     ParentFont = False
-    TabOrder = 4
+    TabOrder = 5
   end
   object CompteChargeGCbx: TComboBox
     Left = 406
@@ -695,7 +697,7 @@ object ChargesGestionF: TChargesGestionF
     Font.Name = 'Helvetica LT Std'
     Font.Style = []
     ParentFont = False
-    TabOrder = 3
+    TabOrder = 4
     OnChange = CompteChargeGCbxChange
     OnDropDown = CompteChargeGCbxDropDown
     OnEnter = CompteChargeGCbxDropDown
@@ -711,7 +713,7 @@ object ChargesGestionF: TChargesGestionF
     Font.Name = 'Roboto'
     Font.Style = []
     ParentFont = False
-    TabOrder = 5
+    TabOrder = 6
   end
   object LineP: TPanel
     Left = 1
@@ -722,7 +724,7 @@ object ChargesGestionF: TChargesGestionF
     BevelOuter = bvNone
     Color = 8637171
     ParentBackground = False
-    TabOrder = 13
+    TabOrder = 14
     StyleElements = []
   end
   object BottomP: TPanel
@@ -736,7 +738,7 @@ object ChargesGestionF: TChargesGestionF
     DoubleBuffered = True
     ParentBackground = False
     ParentDoubleBuffered = False
-    TabOrder = 12
+    TabOrder = 13
     StyleElements = []
     object OKChargeGBtn: TAdvToolButton
       Left = 186
@@ -818,7 +820,7 @@ object ChargesGestionF: TChargesGestionF
     MaxLength = 14
     ParentDoubleBuffered = False
     ParentFont = False
-    TabOrder = 8
+    TabOrder = 9
     OnChange = MontantHTChargeGEdtChange
     OnClick = MontantTimberChargeGEdtClick
     OnExit = MontantTimberChargeGEdtExit
@@ -839,7 +841,7 @@ object ChargesGestionF: TChargesGestionF
     MaxLength = 14
     ParentDoubleBuffered = False
     ParentFont = False
-    TabOrder = 6
+    TabOrder = 7
     OnChange = MontantHTChargeGEdtChange
     OnClick = MontantHTChargeGEdtClick
     OnExit = MontantHTChargeGEdtExit
@@ -860,7 +862,7 @@ object ChargesGestionF: TChargesGestionF
     MaxLength = 14
     ParentDoubleBuffered = False
     ParentFont = False
-    TabOrder = 9
+    TabOrder = 10
     OnChange = MontantTTCChargeGEdtChange
     OnClick = MontantTTCChargeGEdtClick
     OnExit = MontantTTCChargeGEdtExit
@@ -881,7 +883,7 @@ object ChargesGestionF: TChargesGestionF
     MaxLength = 14
     ParentDoubleBuffered = False
     ParentFont = False
-    TabOrder = 7
+    TabOrder = 8
     OnChange = MontantHTChargeGEdtChange
     OnClick = MontantTVAChargeGEdtClick
     OnExit = MontantTVAChargeGEdtExit
@@ -900,7 +902,7 @@ object ChargesGestionF: TChargesGestionF
     Style.Font.Name = 'Helvetica LT Std'
     Style.Font.Style = []
     Style.IsFontAssigned = True
-    TabOrder = 17
+    TabOrder = 0
     OnEnter = NameChargeGEdtEnter
     Height = 26
     Width = 513

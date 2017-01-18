@@ -120,7 +120,8 @@ procedure TChargesFListF.AddBARecBtnClick(Sender: TObject);
 begin
   //-------- Show the splash screan for the produit familly to add new one---------//
 
-            ChargesGestionF:=TChargesGestionF.Create(ChargesFListF);
+   ChargesGestionF := TChargesGestionF.Create(nil);
+  try
 
       DataModuleF.ChargesTable.DisableControls;
       DataModuleF.ChargesTable.Last;
@@ -129,14 +130,17 @@ begin
       DataModuleF.ChargesTable.EnableControls;
 
 
-     //       ClientGestionF.BringToFront;
-            ChargesGestionF.Left:=  (Screen.Width div 2 ) - (ChargesGestionF.Width div 2)    ;
-            ChargesGestionF.Top:=   (Screen.Height div 2) - (ChargesGestionF.Height div 2)    ;
+        //     ClientGestionF.BringToFront;
+        ChargesGestionF.Left:=  (Screen.Width div 2 ) - (ChargesGestionF.Width div 2)    ;
+        ChargesGestionF.Top:=   (Screen.Height div 2) - (ChargesGestionF.Height div 2)    ;
         //    MainForm.Align:= alClient;
-         //   AnimateWindow(ClientGestionF.Handle, 250, AW_VER_NEGATIVE OR AW_BLEND OR AW_ACTIVATE );
-            ChargesGestionF.OKChargeGBtn.Tag:= 0 ;
-            ChargesGestionF.Show;
-            ChargesGestionF.NameChargeGEdt.SetFocus;
+        //   AnimateWindow(ClientGestionF.Handle, 250, AW_VER_NEGATIVE OR AW_BLEND OR AW_ACTIVATE );
+        ChargesGestionF.OKChargeGBtn.Tag:= 0 ;
+        ChargesGestionF.ShowModal;
+        //    ChargesGestionF.NameChargeGEdt.SetFocus;
+  finally
+     FreeAndNil(ChargesGestionF);
+  end;
             
 end;
 
@@ -649,6 +653,16 @@ begin
         DataModuleF.ChargesTable.Active:=False;
         DataModuleF.ChargesTable.SQL.Clear;
         DataModuleF.ChargesTable.SQL.Text:='SELECT * FROM charges WHERE nom_ch LIKE LOWER' +'('''+'%'+(ResearchChargeEdt.Text)+'%'+''')' ;
+        DataModuleF.ChargesTable.Active:=True;
+        DataModuleF.ChargesTable.EnableControls;
+      end;
+
+      if ResherchRegCNumBRdioBtn.Checked then
+      begin
+        DataModuleF.ChargesTable.DisableControls;
+        DataModuleF.ChargesTable.Active:=False;
+        DataModuleF.ChargesTable.SQL.Clear;
+        DataModuleF.ChargesTable.SQL.Text:='SELECT * FROM charges WHERE obser_ch LIKE LOWER' +'('''+'%'+(ResearchChargeEdt.Text)+'%'+''')' ;
         DataModuleF.ChargesTable.Active:=True;
         DataModuleF.ChargesTable.EnableControls;
       end;

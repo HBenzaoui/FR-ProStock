@@ -128,6 +128,11 @@ var
   rgn: HRGN;
   sCmd: string;
 begin
+//  MainForm.KillTask('postgres.exe');                                    // Eable this is only for releasing
+//  MainForm.KillTask('cmd.exe');                                         // Eable this is only for releasing
+
+
+
       sCmd := Pwidechar(GetCurrentDir+ '\bin\pg_s.bat' );                // Eable this is only for releasing 
     ShellExecute(0, 'open', PChar(sCmd) , PChar(sCmd), nil, SW_HIDE);  // Eable this is only for releasing 1 OR 2 
 //    Sleep(5000);

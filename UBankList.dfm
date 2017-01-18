@@ -430,7 +430,7 @@ object BankListF: TBankListF
     end
     object Label3: TLabel
       Left = 22
-      Top = 32
+      Top = 29
       Width = 179
       Height = 19
       Caption = 'Les Comptes Bancaires:'
@@ -655,15 +655,15 @@ object BankListF: TBankListF
     end
     object DateEndBankListD: TDateTimePicker
       Left = 722
-      Top = 43
+      Top = 44
       Width = 104
-      Height = 29
+      Height = 25
       Date = 42435.595104571760000000
       Time = 42435.595104571760000000
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 4207405
-      Font.Height = 22
-      Font.Name = 'Segoe UI'
+      Font.Height = 17
+      Font.Name = 'Helvetica LT Std'
       Font.Style = []
       ParentFont = False
       TabOrder = 5
@@ -671,15 +671,15 @@ object BankListF: TBankListF
     end
     object DateStartBankListD: TDateTimePicker
       Left = 722
-      Top = 8
+      Top = 9
       Width = 104
-      Height = 29
+      Height = 25
       Date = 42435.595104571760000000
       Time = 42435.595104571760000000
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 4207405
-      Font.Height = 22
-      Font.Name = 'Segoe UI'
+      Font.Height = 17
+      Font.Name = 'Helvetica LT Std'
       Font.Style = []
       ParentFont = False
       TabOrder = 6
@@ -687,13 +687,13 @@ object BankListF: TBankListF
     end
     object DaysBankListCbx: TComboBox
       Left = 486
-      Top = 26
+      Top = 28
       Width = 189
-      Height = 30
+      Height = 27
       Style = csDropDownList
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = 22
+      Font.Height = 20
       Font.Name = 'Helvetica LT Std'
       Font.Style = []
       ItemIndex = 2
@@ -711,13 +711,13 @@ object BankListF: TBankListF
     end
     object BankListCbx: TComboBox
       Left = 202
-      Top = 26
+      Top = 25
       Width = 200
-      Height = 30
+      Height = 27
       Style = csDropDownList
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = 22
+      Font.Height = 20
       Font.Name = 'Helvetica LT Std'
       Font.Style = []
       ItemIndex = 0
@@ -818,7 +818,7 @@ object BankListF: TBankListF
     Left = 0
     Top = 82
     Width = 1
-    Height = 604
+    Height = 611
     Align = alLeft
     BevelOuter = bvNone
     Color = 7854350
@@ -830,7 +830,7 @@ object BankListF: TBankListF
     Left = 0
     Top = 82
     Width = 1191
-    Height = 603
+    Height = 612
     Anchors = [akLeft, akTop, akRight, akBottom]
     Border.Color = 4207405
     Border.ExtendedDraw = False
@@ -1325,9 +1325,9 @@ object BankListF: TBankListF
   end
   object Panel4: TPanel
     Left = 0
-    Top = 686
+    Top = 693
     Width = 1191
-    Height = 35
+    Height = 28
     Align = alBottom
     BevelOuter = bvNone
     Color = 4207405
@@ -1335,12 +1335,12 @@ object BankListF: TBankListF
     TabOrder = 3
     DesignSize = (
       1191
-      35)
+      28)
     object Shape1: TShape
       Left = 0
       Top = 0
       Width = 320
-      Height = 35
+      Height = 28
       Align = alLeft
       Brush.Color = 4207405
       Pen.Color = 4666873
@@ -1350,7 +1350,7 @@ object BankListF: TBankListF
     object SoldIniBankListLbl: TLabel
       AlignWithMargins = True
       Left = 98
-      Top = 5
+      Top = 1
       Width = 211
       Height = 25
       Margins.Left = 0
@@ -1374,7 +1374,7 @@ object BankListF: TBankListF
     end
     object Label4: TLabel
       Left = 9
-      Top = 9
+      Top = 5
       Width = 82
       Height = 17
       Caption = 'Solde Initial :'
@@ -1392,17 +1392,18 @@ object BankListF: TBankListF
       Left = 880
       Top = 0
       Width = 311
-      Height = 35
+      Height = 28
       Align = alRight
       Brush.Color = 4207405
       Pen.Color = 4666873
-      ExplicitHeight = 47
+      ExplicitLeft = 879
+      ExplicitTop = -2
     end
     object Shape3: TShape
       Left = 320
       Top = 0
       Width = 560
-      Height = 35
+      Height = 28
       Align = alClient
       Brush.Color = 4207405
       Pen.Color = 4666873
@@ -1411,7 +1412,7 @@ object BankListF: TBankListF
     end
     object Label5: TLabel
       Left = 326
-      Top = 9
+      Top = 5
       Width = 132
       Height = 17
       Caption = 'Solde de la p'#233'riode :'
@@ -1428,7 +1429,7 @@ object BankListF: TBankListF
     object SoldPeriodeBankListLbl: TLabel
       AlignWithMargins = True
       Left = 480
-      Top = 5
+      Top = 1
       Width = 209
       Height = 25
       Margins.Left = 0
@@ -1453,7 +1454,7 @@ object BankListF: TBankListF
     object SoldTotalBankListLbl: TLabel
       AlignWithMargins = True
       Left = 972
-      Top = 5
+      Top = 1
       Width = 211
       Height = 25
       Margins.Left = 0
@@ -1478,7 +1479,7 @@ object BankListF: TBankListF
     end
     object Label6: TLabel
       Left = 886
-      Top = 9
+      Top = 5
       Width = 45
       Height = 17
       Anchors = [akTop, akRight]
@@ -1517,7 +1518,7 @@ object BankListF: TBankListF
     DesignSize = (
       1191
       20)
-    object SumGirdProduitBtn: TAdvToolButton
+    object PaidOnlyCaisseBtn: TAdvToolButton
       Left = 141
       Top = 0
       Width = 26
@@ -1540,14 +1541,14 @@ object BankListF: TBankListF
       Font.Height = 18
       Font.Name = 'Roboto'
       Font.Style = []
-      ImageIndex = 26
+      ImageIndex = 28
       Images = MainForm.PanelIcons16
       ParentFont = False
       ParentShowHint = False
       Shaded = False
       ShowHint = True
       Spacing = -2
-      Visible = False
+      OnClick = PaidOnlyCaisseBtnClick
       Version = '1.6.1.2'
       TMSStyle = 0
     end

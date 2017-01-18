@@ -117,6 +117,7 @@ type
     procedure ProduitsListDBGridEhSortMarkingChanged(Sender: TObject);
     procedure SumGirdProduitBtnClick(Sender: TObject);
     procedure RefreshGirdBtnClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     procedure GettingData;
     procedure FilteredColor;
@@ -1050,7 +1051,12 @@ FreeAndNil(ProduitsListF);
 end;
 
 
-  procedure TProduitsListF.GettingData;
+  procedure TProduitsListF.FormShow(Sender: TObject);
+begin
+ResearchProduitsEdt.SetFocus;
+end;
+
+procedure TProduitsListF.GettingData;
 var
   Agent,Actif,Passif,Tout,Four : TfrxMemoView;
 begin

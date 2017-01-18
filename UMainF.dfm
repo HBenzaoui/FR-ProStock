@@ -740,6 +740,7 @@ object MainForm: TMainForm
       Width = 31
       Height = 13
       Caption = 'Label1'
+      Visible = False
     end
     object S01: TPanel
       Left = 104
@@ -21592,11 +21593,6 @@ object MainForm: TMainForm
       FixedChar = True
       Size = 25
     end
-    object ClientTableobser_c: TWideMemoField
-      FieldName = 'obser_c'
-      Origin = 'obser_c'
-      BlobType = ftWideMemo
-    end
     object ClientTablenbank_c: TWideStringField
       FieldName = 'nbank_c'
       Origin = 'nbank_c'
@@ -21640,6 +21636,11 @@ object MainForm: TMainForm
     object ClientTablecredit_c: TCurrencyField
       FieldName = 'credit_c'
       Origin = 'credit_c'
+    end
+    object ClientTableobser_c: TWideStringField
+      FieldName = 'obser_c'
+      Origin = 'obser_c'
+      Size = 200
     end
   end
   object FDPhysPgDriverLink1: TFDPhysPgDriverLink
@@ -21715,12 +21716,6 @@ object MainForm: TMainForm
       FixedChar = True
       Size = 40
     end
-    object FournisseurTableobser_f: TWideStringField
-      FieldName = 'obser_f'
-      Origin = 'obser_f'
-      FixedChar = True
-      Size = 250
-    end
     object FournisseurTableactiv_f: TBooleanField
       FieldName = 'activ_f'
       Origin = 'activ_f'
@@ -21779,6 +21774,11 @@ object MainForm: TMainForm
       FieldName = 'credit_f'
       Origin = 'credit_f'
     end
+    object FournisseurTableobser_f: TWideStringField
+      FieldName = 'obser_f'
+      Origin = 'obser_f'
+      Size = 200
+    end
   end
   object FDGUIxWaitCursor1: TFDGUIxWaitCursor
     Provider = 'Forms'
@@ -21830,11 +21830,6 @@ object MainForm: TMainForm
     object ProduitTablecode_f: TIntegerField
       FieldName = 'code_f'
       Origin = 'code_f'
-    end
-    object ProduitTableobser_p: TWideMemoField
-      FieldName = 'obser_p'
-      Origin = 'obser_p'
-      BlobType = ftWideMemo
     end
     object ProduitTablelogo_p: TBlobField
       FieldName = 'logo_p'
@@ -22005,6 +22000,11 @@ object MainForm: TMainForm
     object ProduitTableValueStock: TCurrencyField
       FieldKind = fkInternalCalc
       FieldName = 'ValueStock'
+    end
+    object ProduitTableobser_p: TWideStringField
+      FieldName = 'obser_p'
+      Origin = 'obser_p'
+      Size = 200
     end
   end
   object UniteTable: TFDQuery
@@ -23891,11 +23891,6 @@ object MainForm: TMainForm
       FieldKind = fkInternalCalc
       FieldName = 'MontantRes'
     end
-    object Bona_recTableobser_barec: TWideMemoField
-      FieldName = 'obser_barec'
-      Origin = 'obser_barec'
-      BlobType = ftWideMemo
-    end
     object Bona_recTablemonttc_barec: TCurrencyField
       FieldName = 'montttc_barec'
     end
@@ -23968,6 +23963,11 @@ object MainForm: TMainForm
       KeyFields = 'code_ur'
       Size = 50
       Lookup = True
+    end
+    object Bona_recTableobser_barec: TWideStringField
+      FieldName = 'obser_barec'
+      Origin = 'obser_barec'
+      Size = 200
     end
   end
   object Bona_recPlistTable: TFDQuery
@@ -36077,11 +36077,6 @@ object MainForm: TMainForm
       FieldKind = fkInternalCalc
       FieldName = 'MontantRes'
     end
-    object WideMemoField1: TWideMemoField
-      FieldName = 'obser_barec'
-      Origin = 'obser_barec'
-      BlobType = ftWideMemo
-    end
     object CurrencyField5: TCurrencyField
       FieldName = 'montttc_barec'
     end
@@ -36127,6 +36122,11 @@ object MainForm: TMainForm
     object Bona_recTableCreditbon_or_no_barec: TBooleanField
       FieldName = 'bon_or_no_barec'
       Origin = 'bon_or_no_barec'
+    end
+    object Bona_recTableCreditobser_barec: TWideStringField
+      FieldName = 'obser_barec'
+      Origin = 'obser_barec'
+      Size = 200
     end
   end
   object Bonv_livTable: TFDQuery
@@ -36188,11 +36188,6 @@ object MainForm: TMainForm
     object Bonv_livTableMontantRes: TCurrencyField
       FieldKind = fkInternalCalc
       FieldName = 'MontantRes'
-    end
-    object Bonv_livTableobser_bvliv: TWideMemoField
-      FieldName = 'obser_bvliv'
-      Origin = 'obser_bvliv'
-      BlobType = ftWideMemo
     end
     object Bonv_livTablemontttc_bvliv: TCurrencyField
       FieldName = 'montttc_bvliv'
@@ -36263,6 +36258,11 @@ object MainForm: TMainForm
     object Bonv_livTablemarge_bvliv: TCurrencyField
       FieldName = 'marge_bvliv'
       Origin = 'marge_bvliv'
+    end
+    object Bonv_livTableobser_bvliv: TWideStringField
+      FieldName = 'obser_bvliv'
+      Origin = 'obser_bvliv'
+      Size = 200
     end
   end
   object Bonv_liv_listTable: TFDQuery
@@ -36429,11 +36429,6 @@ object MainForm: TMainForm
       FieldKind = fkInternalCalc
       FieldName = 'MontantRes'
     end
-    object Bona_facTableobser_bafac: TWideMemoField
-      FieldName = 'obser_bafac'
-      Origin = 'obser_bafac'
-      BlobType = ftWideMemo
-    end
     object Bona_facTablemontttc_bafac: TCurrencyField
       FieldName = 'montttc_bafac'
       Origin = 'montttc_bafac'
@@ -36507,6 +36502,11 @@ object MainForm: TMainForm
     object Bona_facTableNetTTC: TCurrencyField
       FieldKind = fkInternalCalc
       FieldName = 'NetTTC'
+    end
+    object Bona_facTableobser_bafac: TWideStringField
+      FieldName = 'obser_bafac'
+      Origin = 'obser_bafac'
+      Size = 200
     end
   end
   object Bona_fac_listTable: TFDQuery
@@ -36858,11 +36858,6 @@ object MainForm: TMainForm
       FieldKind = fkInternalCalc
       FieldName = 'MontantRes'
     end
-    object Bonv_facTableobser_bvfac: TWideMemoField
-      FieldName = 'obser_bvfac'
-      Origin = 'obser_bvfac'
-      BlobType = ftWideMemo
-    end
     object Bonv_facTablemontttc_bvfac: TCurrencyField
       FieldName = 'montttc_bvfac'
       Origin = 'montttc_bvfac'
@@ -36941,6 +36936,11 @@ object MainForm: TMainForm
       FieldName = 'marge_bvfac'
       Origin = 'marge_bvfac'
     end
+    object Bonv_facTableobser_bvfac: TWideStringField
+      FieldName = 'obser_bvfac'
+      Origin = 'obser_bvfac'
+      Size = 200
+    end
   end
   object WilayasDataS: TDataSource
     DataSet = WilayasTable
@@ -37007,11 +37007,6 @@ object MainForm: TMainForm
       FieldKind = fkInternalCalc
       FieldName = 'MontantRes'
     end
-    object WideMemoField2: TWideMemoField
-      FieldName = 'obser_bvliv'
-      Origin = 'obser_bvliv'
-      BlobType = ftWideMemo
-    end
     object CurrencyField11: TCurrencyField
       FieldName = 'montttc_bvliv'
       Origin = 'montttc_bvliv'
@@ -37050,6 +37045,19 @@ object MainForm: TMainForm
       LookupResultField = 'nom_cmpt'
       KeyFields = 'code_cmpt'
       Lookup = True
+    end
+    object Bonv_livTableCreditobser_bvliv: TWideStringField
+      FieldName = 'obser_bvliv'
+      Origin = 'obser_bvliv'
+      Size = 200
+    end
+    object Bonv_livTableCreditcode_ur: TIntegerField
+      FieldName = 'code_ur'
+      Origin = 'code_ur'
+    end
+    object Bonv_livTableCreditmarge_bvliv: TCurrencyField
+      FieldName = 'marge_bvliv'
+      Origin = 'marge_bvliv'
     end
   end
   object Bona_facTableCredit: TFDQuery
@@ -37112,11 +37120,6 @@ object MainForm: TMainForm
       FieldKind = fkInternalCalc
       FieldName = 'MontantRes'
     end
-    object WideMemoField3: TWideMemoField
-      FieldName = 'obser_bafac'
-      Origin = 'obser_bafac'
-      BlobType = ftWideMemo
-    end
     object CurrencyField17: TCurrencyField
       FieldName = 'montttc_bafac'
       Origin = 'montttc_bafac'
@@ -37155,6 +37158,19 @@ object MainForm: TMainForm
       LookupResultField = 'nom_cmpt'
       KeyFields = 'code_cmpt'
       Lookup = True
+    end
+    object Bona_facTableCreditobser_bafac: TWideStringField
+      FieldName = 'obser_bafac'
+      Origin = 'obser_bafac'
+      Size = 200
+    end
+    object Bona_facTableCredittimber_bafac: TCurrencyField
+      FieldName = 'timber_bafac'
+      Origin = 'timber_bafac'
+    end
+    object Bona_facTableCreditcode_ur: TIntegerField
+      FieldName = 'code_ur'
+      Origin = 'code_ur'
     end
   end
   object Bonv_facTableCredit: TFDQuery
@@ -37217,11 +37233,6 @@ object MainForm: TMainForm
       FieldKind = fkInternalCalc
       FieldName = 'MontantRes'
     end
-    object WideMemoField4: TWideMemoField
-      FieldName = 'obser_bvfac'
-      Origin = 'obser_bvfac'
-      BlobType = ftWideMemo
-    end
     object CurrencyField23: TCurrencyField
       FieldName = 'montttc_bvfac'
       Origin = 'montttc_bvfac'
@@ -37260,6 +37271,23 @@ object MainForm: TMainForm
       LookupResultField = 'nom_cmpt'
       KeyFields = 'code_cmpt'
       Lookup = True
+    end
+    object Bonv_facTableCreditobser_bvfac: TWideStringField
+      FieldName = 'obser_bvfac'
+      Origin = 'obser_bvfac'
+      Size = 200
+    end
+    object Bonv_facTableCredittimber_bvfac: TCurrencyField
+      FieldName = 'timber_bvfac'
+      Origin = 'timber_bvfac'
+    end
+    object Bonv_facTableCreditcode_ur: TIntegerField
+      FieldName = 'code_ur'
+      Origin = 'code_ur'
+    end
+    object Bonv_facTableCreditmarge_bvfac: TCurrencyField
+      FieldName = 'marge_bvfac'
+      Origin = 'marge_bvfac'
     end
   end
   object GridIconsClientNature20: TsAlphaImageList
@@ -40119,11 +40147,6 @@ object MainForm: TMainForm
       FieldName = 'num_bvctr'
       Origin = 'num_bvctr'
     end
-    object Bonv_ctrTableobser_bvctr: TWideMemoField
-      FieldName = 'obser_bvctr'
-      Origin = 'obser_bvctr'
-      BlobType = ftWideMemo
-    end
     object Bonv_ctrTableclientbvctr: TStringField
       FieldKind = fkLookup
       FieldName = 'clientbvctr'
@@ -40179,6 +40202,11 @@ object MainForm: TMainForm
     object Bonv_ctrTablemarge_bvctr: TCurrencyField
       FieldName = 'marge_bvctr'
       Origin = 'marge_bvctr'
+    end
+    object Bonv_ctrTableobser_bvctr: TWideStringField
+      FieldName = 'obser_bvctr'
+      Origin = 'obser_bvctr'
+      Size = 200
     end
   end
   object Bonv_ctr_listTable: TFDQuery
@@ -40324,11 +40352,6 @@ object MainForm: TMainForm
       FieldName = 'num_bvctr'
       Origin = 'num_bvctr'
     end
-    object WideMemoField5: TWideMemoField
-      FieldName = 'obser_bvctr'
-      Origin = 'obser_bvctr'
-      BlobType = ftWideMemo
-    end
     object StringField13: TStringField
       FieldKind = fkLookup
       FieldName = 'clientbvctr'
@@ -40362,15 +40385,35 @@ object MainForm: TMainForm
       FieldKind = fkInternalCalc
       FieldName = 'NEWTTC'
     end
+    object Bonv_ctrTableCreditobser_bvctr: TWideStringField
+      FieldName = 'obser_bvctr'
+      Origin = 'obser_bvctr'
+      Size = 200
+    end
+    object Bonv_ctrTableCreditcode_ur: TIntegerField
+      FieldName = 'code_ur'
+      Origin = 'code_ur'
+    end
+    object Bonv_ctrTableCreditmarge_bvctr: TCurrencyField
+      FieldName = 'marge_bvctr'
+      Origin = 'marge_bvctr'
+    end
   end
   object GstockdcConnection: TFDConnection
     Params.Strings = (
       'Database=GSTOCKDC'
       'User_Name=postgres'
       'DriverID=pG')
+    FormatOptions.AssignedValues = [fvMapRules]
+    FormatOptions.OwnMapRules = True
+    FormatOptions.MapRules = <
+      item
+        SourceDataType = dtWideMemo
+        TargetDataType = dtWideString
+      end>
     LoginPrompt = False
-    Left = 61
-    Top = 124
+    Left = 65
+    Top = 128
   end
   object Opt_cas_bnk_CaisseTable: TFDQuery
     FilterOptions = [foCaseInsensitive]
@@ -40480,6 +40523,10 @@ object MainForm: TMainForm
       FieldName = 'code_ch'
       Origin = 'code_ch'
     end
+    object Opt_cas_bnk_CaisseTablecode_transfer: TIntegerField
+      FieldName = 'code_transfer'
+      Origin = 'code_transfer'
+    end
   end
   object Opt_cas_bnk_BankTable: TFDQuery
     FilterOptions = [foCaseInsensitive]
@@ -40587,6 +40634,10 @@ object MainForm: TMainForm
     object Opt_cas_bnk_BankTablecode_ch: TIntegerField
       FieldName = 'code_ch'
       Origin = 'code_ch'
+    end
+    object Opt_cas_bnk_BankTablecode_transfer: TIntegerField
+      FieldName = 'code_transfer'
+      Origin = 'code_transfer'
     end
   end
   object Timer1: TTimer
@@ -41136,7 +41187,7 @@ object MainForm: TMainForm
     SQL.Strings = (
       'SELECT * FROM regclient ')
     Left = 146
-    Top = 354
+    Top = 356
     object RegclientTablecode_rc: TIntegerField
       FieldName = 'code_rc'
       Origin = 'code_rc'
@@ -41196,11 +41247,6 @@ object MainForm: TMainForm
       Size = 50
       Lookup = True
     end
-    object RegclientTableobser_rc: TWideMemoField
-      FieldName = 'obser_rc'
-      Origin = 'obser_rc'
-      BlobType = ftWideMemo
-    end
     object RegclientTablecode_cmpt: TIntegerField
       FieldName = 'code_cmpt'
       Origin = 'code_cmpt'
@@ -41229,6 +41275,11 @@ object MainForm: TMainForm
       LookupResultField = 'nom_mdpai'
       KeyFields = 'code_mdpai'
       Lookup = True
+    end
+    object RegclientTableobser_rc: TWideStringField
+      FieldName = 'obser_rc'
+      Origin = 'obser_rc'
+      Size = 200
     end
   end
   object RegfournisseurTable: TFDQuery
@@ -41299,11 +41350,6 @@ object MainForm: TMainForm
       Size = 50
       Lookup = True
     end
-    object RegfournisseurTableobser_rf: TWideMemoField
-      FieldName = 'obser_rf'
-      Origin = 'obser_rf'
-      BlobType = ftWideMemo
-    end
     object RegfournisseurTablecode_cmpt: TIntegerField
       FieldName = 'code_cmpt'
       Origin = 'code_cmpt'
@@ -41328,6 +41374,11 @@ object MainForm: TMainForm
       LookupResultField = 'nom_mdpai'
       KeyFields = 'code_mdpai'
       Lookup = True
+    end
+    object RegfournisseurTableobser_rf: TWideStringField
+      FieldName = 'obser_rf'
+      Origin = 'obser_rf'
+      Size = 200
     end
   end
   object GriDRegIcons20: TsAlphaImageList
@@ -43827,7 +43878,8 @@ object MainForm: TMainForm
           '"code_bvctr" int4 DEFAULT 0,'
           '"code_rc" int4 DEFAULT 0,'
           '"code_rf" int DEFAULT 0,'
-          '"code_ch" int DEFAULT 0'
+          '"code_ch" int DEFAULT 0,'
+          '"code_transfer" int DEFAULT 0'
           ')'
           'WITH (OIDS=FALSE)'
           ''
@@ -44001,6 +44053,32 @@ object MainForm: TMainForm
           '-- ----------------------------'
           '--BEGIN;'
           '--COMMIT;'
+          ''
+          '-- ----------------------------'
+          '-- Table structure for transfer_comptes'
+          '-- ----------------------------'
+          'CREATE TABLE "transfer_comptes" ('
+          '"code_transfer" int4 DEFAULT 0 NOT NULL,'
+          '"date_transfer" date,'
+          '"time_transfer" time(6),'
+          '"refer_transfer" varchar COLLATE "default",'
+          '"mont_transfer" money DEFAULT 0,'
+          '"obser_transfer" text COLLATE "default",'
+          '"num_cheque_transfer" varchar COLLATE "default",'
+          '"code_mdpai" int2,'
+          '"code_cmpts" int2,'
+          '"code_cmptd" int2,'
+          '"code_ur" int4'
+          ')'
+          'WITH (OIDS=FALSE)'
+          ''
+          ';'
+          ''
+          '-- ----------------------------'
+          '-- Records of transfer_comptes'
+          '-- ----------------------------'
+          'BEGIN;'
+          'COMMIT;'
           ''
           '-- ----------------------------'
           '-- Table structure for unite'
@@ -55637,8 +55715,8 @@ object MainForm: TMainForm
     Connection = GstockdcConnection
     SQL.Strings = (
       'SELECT * FROM bonp_fac')
-    Left = 378
-    Top = 503
+    Left = 380
+    Top = 505
     object Bonp_facTablecode_bpfac: TIntegerField
       FieldName = 'code_bpfac'
       Origin = 'code_bpfac'
@@ -55690,11 +55768,6 @@ object MainForm: TMainForm
       FieldKind = fkInternalCalc
       FieldName = 'MontantRes'
     end
-    object Bonp_facTableobser_bpfac: TWideMemoField
-      FieldName = 'obser_bpfac'
-      Origin = 'obser_bpfac'
-      BlobType = ftWideMemo
-    end
     object Bonp_facTablemontttc_bpfac: TCurrencyField
       FieldName = 'montttc_bpfac'
       Origin = 'montttc_bpfac'
@@ -55740,6 +55813,11 @@ object MainForm: TMainForm
       KeyFields = 'code_ur'
       Size = 50
       Lookup = True
+    end
+    object Bonp_facTableobser_bpfac: TWideStringField
+      FieldName = 'obser_bpfac'
+      Origin = 'obser_bpfac'
+      Size = 200
     end
   end
   object Bonp_fac_listTable: TFDQuery

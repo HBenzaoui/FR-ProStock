@@ -317,6 +317,7 @@ object ProduitsListF: TProduitsListF
   OldCreateOrder = False
   Visible = True
   OnClose = FormClose
+  OnShow = FormShow
   DesignSize = (
     1089
     741)

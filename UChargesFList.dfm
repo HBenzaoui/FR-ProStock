@@ -788,7 +788,6 @@ object ChargesFListF: TChargesFListF
       Font.Style = []
       ParentFont = False
       TabOrder = 8
-      Visible = False
       StyleElements = []
     end
     object ResherchChargeRdioBtn: TRadioButton
@@ -895,7 +894,6 @@ object ChargesFListF: TChargesFListF
     ParentBackground = False
     TabOrder = 1
     StyleElements = []
-    ExplicitHeight = 659
   end
   object ChargesListDBGridEh: TDBGridEh
     Left = 0
@@ -1355,7 +1353,7 @@ object ChargesFListF: TChargesFListF
         Width = 150
         WordWrap = False
       end
-	  item
+      item
         Alignment = taCenter
         DynProps = <>
         EditButtons = <>
@@ -1368,7 +1366,7 @@ object ChargesFListF: TChargesFListF
         Footers = <>
         Layout = tlCenter
         Title.Alignment = taCenter
-		Title.Caption = 'Observations'
+        Title.Caption = 'Observations'
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = 4207405
         Title.Font.Height = 18
@@ -1377,8 +1375,7 @@ object ChargesFListF: TChargesFListF
         Title.Font.Quality = fqProof
         Width = 200
         WordWrap = False
-		Visible = True
-	  end
+      end
       item
         Alignment = taCenter
         DynProps = <>
@@ -1424,7 +1421,6 @@ object ChargesFListF: TChargesFListF
     ParentBiDiMode = False
     SizeGrip = False
     SkinData.SkinSection = 'MENUITEM'
-    ExplicitWidth = 1089
     DesignSize = (
       1191
       20)

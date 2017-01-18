@@ -53,7 +53,7 @@ procedure TModePaieListF.AdvToolButton1Click(Sender: TObject);
 begin
 ResearchModePaiEdt.Text:='';
    //-------- Show the splash screan for the mode de paiement ---------//
-    FSplashAddUnite:=TFSplashAddUnite.Create(Application);
+    FSplashAddUnite:=TFSplashAddUnite.Create(ModePaieListF);
 
     FSplashAddUnite.OKAddUniteSBtn.Tag:= 28 ;
 
@@ -108,7 +108,7 @@ begin
     (MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger  <> 3) AND
     (MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger  <> 4) then
     begin
-    FSplashAddUnite:=TFSplashAddUnite.Create(Application);
+    FSplashAddUnite:=TFSplashAddUnite.Create(ModePaieListF);
 
     FSplashAddUnite.OKAddUniteSBtn.Tag:= 29 ;
 

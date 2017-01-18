@@ -86,7 +86,7 @@ type
     N5: TMenuItem;
     ClearFilterBVLivPMenu: TMenuItem;
     StatuBar: TsStatusBar;
-    SumGirdProduitBtn: TAdvToolButton;
+    PaidOnlyCaisseBtn: TAdvToolButton;
     RefreshGirdBtn: TAdvToolButton;
     procedure FormShow(Sender: TObject);
     procedure BankListCbxDropDown(Sender: TObject);
@@ -123,6 +123,7 @@ type
     procedure ClearTVAFilterPMenuClick(Sender: TObject);
     procedure BankListCbxExit(Sender: TObject);
     procedure RefreshGirdBtnClick(Sender: TObject);
+    procedure PaidOnlyCaisseBtnClick(Sender: TObject);
   private
     procedure GettingData;
     procedure FilteredColor;
@@ -378,7 +379,12 @@ begin
 
            MainForm.Opt_cas_bnk_BankTable.EnableControls;
            MainForm.CompteTable.EnableControls;
- end;
+ end else
+     begin
+       DaysBankListCbxChange(Sender);
+       BankListCbxChange(Sender);
+
+     end;
 
 end;
 
@@ -898,6 +904,33 @@ ClearBRFilterPMenu.Checked := True;
   sImage1.Visible:= True;
   FilteredColor;
   ClearFilterBVLivPMenu.Checked:= False;
+end;
+
+procedure TBankListF.PaidOnlyCaisseBtnClick(Sender: TObject);
+begin
+  if PaidOnlyCaisseBtn.Tag = 0 then
+  begin
+
+    MainForm.Opt_cas_bnk_BankTable.DisableControls;
+    MainForm.Opt_cas_bnk_BankTable.Filtered:= False;
+    mainform.Opt_cas_bnk_BankTable.Filter := 'decaiss_ocb <> 0 OR encaiss_ocb <> 0';// + quotedstr('%' + ResearchProduitsEdt.Text + '%')  + ' OR [code_p] = '+ IntToStr(CodeCB) ;
+    MainForm.Opt_cas_bnk_BankTable.Filtered:= True;
+    MainForm.Opt_cas_bnk_BankTable.EnableControls;
+
+    PaidOnlyCaisseBtn.Tag := 1;
+    PaidOnlyCaisseBtn.ImageIndex:=25;
+    PaidOnlyCaisseBtn.Hint:='Tout';
+  end else
+      begin
+
+        MainForm.Opt_cas_bnk_BankTable.DisableControls;
+        MainForm.Opt_cas_bnk_BankTable.Filtered := false;
+        MainForm.Opt_cas_bnk_BankTable.EnableControls;
+
+        PaidOnlyCaisseBtn.Tag := 0;
+        PaidOnlyCaisseBtn.ImageIndex:=28;
+        PaidOnlyCaisseBtn.Hint:='Payé seulement';
+      end;
 end;
 
 procedure TBankListF.PreviosBankbtnClick(Sender: TObject);

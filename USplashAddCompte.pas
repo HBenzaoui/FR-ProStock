@@ -34,8 +34,6 @@ type
     procedure OKAddCompteSBtnClick(Sender: TObject);
     procedure NameAddCompteSEdtChange(Sender: TObject);
     procedure SoldeAddCompteSCbxKeyPress(Sender: TObject; var Key: Char);
-    procedure NumAddCompteSEdtKeyDown(Sender: TObject; var Key: Word;
-      Shift: TShiftState);
     procedure SoldeAddCompteSCbxExit(Sender: TObject);
   private
     { Private declarations }
@@ -50,7 +48,8 @@ implementation
 
 uses
   UMainF,Contnrs, UClientGestion, USplashAddUnite, UBonRecGestion, UBonLivGestion,
-  UBonFacVGestion, UBonFacAGestion, UReglementCGestion, UReglementFGestion;
+  UBonFacVGestion, UBonFacAGestion, UReglementCGestion, UReglementFGestion,
+  UChargesGestion, UTransferComptesGestion;
 
 {$R *.dfm}
 
@@ -147,6 +146,7 @@ begin
 
   if key = #13 then
  begin
+   key := #0;
 
    OKAddCompteSBtnClick(Sender);
 
@@ -649,6 +649,163 @@ begin
 
 
 
+          //----- use this tag for adding from the charge------//
+ if OKAddCompteSBtn.Tag = 9 then
+  begin
+   if NameAddCompteSEdt.Text <> '' then
+    begin
+             with MainForm.CompteTable do  begin
+               if NOT (MainForm.CompteTable.IsEmpty) then
+              begin
+              MainForm.CompteTable.Last;
+              CodeCompte:= MainForm.CompteTable.FieldValues['code_cmpt'] + 1;
+              end else
+                  begin
+                   CodeCompte:= 1;
+                  end;
+              Append;
+              fieldbyname('code_cmpt').AsInteger:= CodeCompte;
+              fieldbyname('nom_cmpt').AsString := NameAddCompteSEdt.Text;
+              fieldbyname('refer_cmpt').AsString := NumAddCompteSEdt.Text;
+              if NatureAddCompteSCbx.ItemIndex = 0 then
+                 fieldbyname('nature_cmpt').AsBoolean:= False else begin fieldbyname('nature_cmpt').AsBoolean:= True end;
+              if SoldeAddCompteSCbx.Text<>'' then
+              begin
+              FieldValues['oldcredit_cmpt']:=Trim(SoldeAddCompteSCbx.Text) end else
+              begin FieldValues['oldcredit_cmpt']:=StrToInt('0')end;
+              fieldbyname('date_cmpt').Value := Now;
+              post;
+               end;
+          NameAddCompteSErrorP.Visible:=False;
+         RequiredAddCompteSlbl.Visible:=False;
+         AnimateWindow(FSplashAddCompte.Handle, 175, AW_VER_NEGATIVE OR AW_SLIDE OR AW_HIDE);
+         FSplashAddCompte.Release;
+         ChargesGestionF.CompteChargeGCbx.Text:= NameAddCompteSEdt.Text;
+         ChargesGestionF.CompteChargeGCbx.SetFocus;
+         MainForm.CompteTable.Refresh;
+         MainForm.Mode_paiementTable.Refresh;
+     end
+        else
+       try
+       NameAddCompteSEdt.BorderStyle:= bsNone;
+      NameAddCompteSEdt.StyleElements:= [];
+      RequiredAddCompteSlbl.Visible:= True;
+      NameAddCompteSErrorP.Visible:= True;
+      sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+     OKAddCompteSBtn.Enabled := False;
+     OKAddCompteSBtn.ImageIndex := 18;
+      finally
+      NameAddCompteSEdt.SetFocus;
+    end;
+  end;
+
+
+
+  //----- use this tag for adding from the transfer enter les comptes ///Compte source//------//
+ if OKAddCompteSBtn.Tag = 10 then
+  begin
+   if NameAddCompteSEdt.Text <> '' then
+    begin
+             with MainForm.CompteTable do  begin
+               if NOT (MainForm.CompteTable.IsEmpty) then
+              begin
+              MainForm.CompteTable.Last;
+              CodeCompte:= MainForm.CompteTable.FieldValues['code_cmpt'] + 1;
+              end else
+                  begin
+                   CodeCompte:= 1;
+                  end;
+              Append;
+              fieldbyname('code_cmpt').AsInteger:= CodeCompte;
+              fieldbyname('nom_cmpt').AsString := NameAddCompteSEdt.Text;
+              fieldbyname('refer_cmpt').AsString := NumAddCompteSEdt.Text;
+              if NatureAddCompteSCbx.ItemIndex = 0 then
+                 fieldbyname('nature_cmpt').AsBoolean:= False else begin fieldbyname('nature_cmpt').AsBoolean:= True end;
+              if SoldeAddCompteSCbx.Text<>'' then
+              begin
+              FieldValues['oldcredit_cmpt']:=Trim(SoldeAddCompteSCbx.Text) end else
+              begin FieldValues['oldcredit_cmpt']:=StrToInt('0')end;
+              fieldbyname('date_cmpt').Value := Now;
+              post;
+               end;
+          NameAddCompteSErrorP.Visible:=False;
+         RequiredAddCompteSlbl.Visible:=False;
+         AnimateWindow(FSplashAddCompte.Handle, 175, AW_VER_NEGATIVE OR AW_SLIDE OR AW_HIDE);
+         FSplashAddCompte.Release;
+         TransferComptesGestionF.CompteSourceTransfeGCbx.Text:= NameAddCompteSEdt.Text;
+         TransferComptesGestionF.CompteSourceTransfeGCbx.SetFocus;
+         TransferComptesGestionF.CompteSourceTransfeGCbxChange(Sender);
+         MainForm.CompteTable.Refresh;
+         MainForm.Mode_paiementTable.Refresh;
+     end
+        else
+       try
+       NameAddCompteSEdt.BorderStyle:= bsNone;
+      NameAddCompteSEdt.StyleElements:= [];
+      RequiredAddCompteSlbl.Visible:= True;
+      NameAddCompteSErrorP.Visible:= True;
+      sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+     OKAddCompteSBtn.Enabled := False;
+     OKAddCompteSBtn.ImageIndex := 18;
+      finally
+      NameAddCompteSEdt.SetFocus;
+    end;
+  end;
+
+
+    //----- use this tag for adding from the transfer enter les comptes ///Compte distinations//------//
+ if OKAddCompteSBtn.Tag = 11 then
+  begin
+   if NameAddCompteSEdt.Text <> '' then
+    begin
+             with MainForm.CompteTable do  begin
+               if NOT (MainForm.CompteTable.IsEmpty) then
+              begin
+              MainForm.CompteTable.Last;
+              CodeCompte:= MainForm.CompteTable.FieldValues['code_cmpt'] + 1;
+              end else
+                  begin
+                   CodeCompte:= 1;
+                  end;
+              Append;
+              fieldbyname('code_cmpt').AsInteger:= CodeCompte;
+              fieldbyname('nom_cmpt').AsString := NameAddCompteSEdt.Text;
+              fieldbyname('refer_cmpt').AsString := NumAddCompteSEdt.Text;
+              if NatureAddCompteSCbx.ItemIndex = 0 then
+                 fieldbyname('nature_cmpt').AsBoolean:= False else begin fieldbyname('nature_cmpt').AsBoolean:= True end;
+              if SoldeAddCompteSCbx.Text<>'' then
+              begin
+              FieldValues['oldcredit_cmpt']:=Trim(SoldeAddCompteSCbx.Text) end else
+              begin FieldValues['oldcredit_cmpt']:=StrToInt('0')end;
+              fieldbyname('date_cmpt').Value := Now;
+              post;
+               end;
+          NameAddCompteSErrorP.Visible:=False;
+         RequiredAddCompteSlbl.Visible:=False;
+         AnimateWindow(FSplashAddCompte.Handle, 175, AW_VER_NEGATIVE OR AW_SLIDE OR AW_HIDE);
+         FSplashAddCompte.Release;
+         TransferComptesGestionF.CompteDisTransfeGCbx.Text:= NameAddCompteSEdt.Text;
+         TransferComptesGestionF.CompteDisTransfeGCbx.SetFocus;
+         TransferComptesGestionF.CompteDisTransfeGCbxChange(Sender);
+         MainForm.CompteTable.Refresh;
+         MainForm.Mode_paiementTable.Refresh;
+     end
+        else
+       try
+       NameAddCompteSEdt.BorderStyle:= bsNone;
+      NameAddCompteSEdt.StyleElements:= [];
+      RequiredAddCompteSlbl.Visible:= True;
+      NameAddCompteSErrorP.Visible:= True;
+      sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+     OKAddCompteSBtn.Enabled := False;
+     OKAddCompteSBtn.ImageIndex := 18;
+      finally
+      NameAddCompteSEdt.SetFocus;
+    end;
+  end;
+
+
+
 end;
 
 procedure TFSplashAddCompte.NameAddCompteSEdtChange(Sender: TObject);
@@ -681,13 +838,6 @@ begin
   begin
       Key := #0;
   end;
-end;
-
-procedure TFSplashAddCompte.NumAddCompteSEdtKeyDown(Sender: TObject;
-  var Key: Word; Shift: TShiftState);
-begin
-if key = VK_RETURN then
-SelectNext(ActiveControl as TWinControl, True,True );
 end;
 
 procedure TFSplashAddCompte.SoldeAddCompteSCbxExit(Sender: TObject);

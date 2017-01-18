@@ -3,7 +3,7 @@ object TransferComptesGestionF: TTransferComptesGestionF
   Top = 0
   BorderStyle = bsDialog
   Caption = 'Transfert enter Les Comptes'
-  ClientHeight = 398
+  ClientHeight = 519
   ClientWidth = 540
   Color = 15527148
   Font.Charset = DEFAULT_CHARSET
@@ -19,12 +19,12 @@ object TransferComptesGestionF: TTransferComptesGestionF
   OnShow = FormShow
   DesignSize = (
     540
-    398)
+    519)
   PixelsPerInch = 96
   TextHeight = 13
   object Label2: TLabel
     Left = 103
-    Top = 238
+    Top = 369
     Width = 39
     Height = 20
     Caption = 'Date:'
@@ -40,7 +40,7 @@ object TransferComptesGestionF: TTransferComptesGestionF
   end
   object ObserRegFGLbl: TLabel
     Left = 40
-    Top = 274
+    Top = 405
     Width = 102
     Height = 20
     Caption = 'Observations:'
@@ -54,9 +54,9 @@ object TransferComptesGestionF: TTransferComptesGestionF
     ParentFont = False
     StyleElements = []
   end
-  object RequiredFourGlbl: TLabel
+  object RequiredCompteSourceTransfeGlbl: TLabel
     Left = 146
-    Top = 46
+    Top = 66
     Width = 359
     Height = 30
     Alignment = taCenter
@@ -76,7 +76,7 @@ object TransferComptesGestionF: TTransferComptesGestionF
   end
   object AddCompte1TransfeGBtn: TAdvToolButton
     Left = 511
-    Top = 65
+    Top = 83
     Width = 26
     Height = 26
     Cursor = crHandPoint
@@ -102,12 +102,13 @@ object TransferComptesGestionF: TTransferComptesGestionF
     Shaded = False
     ShowHint = True
     Spacing = -1
+    OnClick = AddCompte1TransfeGBtnClick
     Version = '1.6.1.2'
     TMSStyle = 0
   end
   object Label5: TLabel
     Left = 34
-    Top = 68
+    Top = 86
     Width = 108
     Height = 18
     Caption = 'Compte source:'
@@ -123,7 +124,7 @@ object TransferComptesGestionF: TTransferComptesGestionF
   end
   object Shape4: TShape
     Left = 0
-    Top = 344
+    Top = 465
     Width = 540
     Height = 54
     Align = alBottom
@@ -131,9 +132,9 @@ object TransferComptesGestionF: TTransferComptesGestionF
     Pen.Color = 10379008
     ExplicitTop = 382
   end
-  object Label1: TLabel
+  object RequiredCompteDisTransfeGlbl: TLabel
     Left = 148
-    Top = 174
+    Top = 176
     Width = 357
     Height = 30
     Alignment = taCenter
@@ -153,7 +154,7 @@ object TransferComptesGestionF: TTransferComptesGestionF
   end
   object Label3: TLabel
     Left = 3
-    Top = 197
+    Top = 196
     Width = 139
     Height = 18
     Caption = 'Compte destination:'
@@ -169,7 +170,7 @@ object TransferComptesGestionF: TTransferComptesGestionF
   end
   object AddCompte2TransfeGBtn: TAdvToolButton
     Left = 511
-    Top = 193
+    Top = 192
     Width = 26
     Height = 26
     Cursor = crHandPoint
@@ -195,12 +196,13 @@ object TransferComptesGestionF: TTransferComptesGestionF
     Shaded = False
     ShowHint = True
     Spacing = -1
+    OnClick = AddCompte2TransfeGBtnClick
     Version = '1.6.1.2'
     TMSStyle = 0
   end
   object OKTransferGBtn: TAdvToolButton
-    Left = 137
-    Top = 356
+    Left = 135
+    Top = 477
     Width = 100
     Height = 30
     Cursor = crHandPoint
@@ -230,11 +232,12 @@ object TransferComptesGestionF: TTransferComptesGestionF
     Spacing = 10
     OnClick = OKTransferGBtnClick
     Version = '1.6.1.2'
+    ExplicitTop = 462
     TMSStyle = 0
   end
   object CancelTransferGBtn: TAdvToolButton
     Left = 303
-    Top = 356
+    Top = 477
     Width = 100
     Height = 30
     Cursor = crHandPoint
@@ -260,53 +263,55 @@ object TransferComptesGestionF: TTransferComptesGestionF
     Rounded = True
     ShowHint = True
     Spacing = -1
+    OnClick = CancelTransferGBtnClick
     Version = '1.6.1.2'
+    ExplicitTop = 356
     TMSStyle = 0
   end
   object label12: TLabel
     Left = 367
-    Top = 111
-    Width = 115
-    Height = 16
+    Top = 123
+    Width = 136
+    Height = 18
     Caption = 'Le montant r'#233'serv'#233':'
     Color = clWhite
     Font.Charset = DEFAULT_CHARSET
     Font.Color = 4207405
-    Font.Height = 16
-    Font.Name = 'Helvetica LT Std'
-    Font.Style = [fsItalic]
+    Font.Height = 18
+    Font.Name = 'Roboto'
+    Font.Style = []
     ParentColor = False
     ParentFont = False
     StyleElements = []
   end
   object label13: TLabel
     Left = 190
-    Top = 111
-    Width = 139
-    Height = 16
+    Top = 123
+    Width = 164
+    Height = 18
     Caption = 'Le montant '#224' transf'#233'rer:'
     Color = clWhite
     Font.Charset = DEFAULT_CHARSET
     Font.Color = 4207405
-    Font.Height = 16
-    Font.Name = 'Helvetica LT Std'
-    Font.Style = [fsItalic]
+    Font.Height = 18
+    Font.Name = 'Roboto'
+    Font.Style = []
     ParentColor = False
     ParentFont = False
     StyleElements = []
   end
   object Label7: TLabel
     Left = 10
-    Top = 111
-    Width = 30
-    Height = 16
-    Caption = 'Sold:'
+    Top = 123
+    Width = 43
+    Height = 18
+    Caption = 'Solde:'
     Color = 4207405
     Font.Charset = DEFAULT_CHARSET
     Font.Color = 4207405
-    Font.Height = 16
-    Font.Name = 'Helvetica LT Std'
-    Font.Style = [fsItalic]
+    Font.Height = 18
+    Font.Name = 'Roboto'
+    Font.Style = []
     ParentColor = False
     ParentFont = False
     StyleElements = []
@@ -314,22 +319,19 @@ object TransferComptesGestionF: TTransferComptesGestionF
   object CompteSOLDTransferLbl: TLabel
     AlignWithMargins = True
     Left = 0
-    Top = 130
-    Width = 175
+    Top = 140
+    Width = 180
     Height = 37
-    Margins.Left = 0
-    Margins.Top = 0
-    Margins.Right = 0
     Alignment = taRightJustify
     AutoSize = False
     BiDiMode = bdLeftToRight
-    Caption = '0,00'
+    Caption = '0'
     Color = 15722984
     Font.Charset = DEFAULT_CHARSET
-    Font.Color = 4207405
-    Font.Height = 25
+    Font.Color = 4666873
+    Font.Height = 22
     Font.Name = 'Helvetica LT Std'
-    Font.Style = [fsBold]
+    Font.Style = [fsBold, fsItalic]
     ParentBiDiMode = False
     ParentColor = False
     ParentFont = False
@@ -338,7 +340,7 @@ object TransferComptesGestionF: TTransferComptesGestionF
   end
   object Label4: TLabel
     Left = 506
-    Top = 70
+    Top = 88
     Width = 6
     Height = 16
     Caption = '*'
@@ -354,23 +356,7 @@ object TransferComptesGestionF: TTransferComptesGestionF
   end
   object Label6: TLabel
     Left = 354
-    Top = 140
-    Width = 6
-    Height = 16
-    Caption = '*'
-    Color = clBtnFace
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = 4666873
-    Font.Height = 16
-    Font.Name = 'Roboto'
-    Font.Style = [fsBold]
-    ParentColor = False
-    ParentFont = False
-    StyleElements = [seClient, seBorder]
-  end
-  object Label8: TLabel
-    Left = 534
-    Top = 139
+    Top = 150
     Width = 6
     Height = 16
     Caption = '*'
@@ -386,7 +372,7 @@ object TransferComptesGestionF: TTransferComptesGestionF
   end
   object Label9: TLabel
     Left = 506
-    Top = 198
+    Top = 197
     Width = 6
     Height = 16
     Caption = '*'
@@ -400,11 +386,220 @@ object TransferComptesGestionF: TTransferComptesGestionF
     ParentFont = False
     StyleElements = [seClient, seBorder]
   end
-  object Panel4: TPanel
-    Left = 368
-    Top = 132
-    Width = 167
-    Height = 32
+  object Label1: TLabel
+    Left = 16
+    Top = 289
+    Width = 124
+    Height = 18
+    Caption = 'Mode de paiment:'
+    Color = 4207405
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = 4207405
+    Font.Height = 18
+    Font.Name = 'Roboto'
+    Font.Style = []
+    ParentColor = False
+    ParentFont = False
+    StyleElements = []
+  end
+  object AddModePaieRegCGBtn: TAdvToolButton
+    Left = 303
+    Top = 286
+    Width = 26
+    Height = 26
+    Cursor = crHandPoint
+    AutoThemeAdapt = False
+    BorderColor = 15722984
+    BorderDownColor = 7854350
+    BorderHotColor = 15970832
+    Color = 15722984
+    ColorDown = 7854350
+    ColorHot = clBtnFace
+    ColorChecked = clNone
+    DropDownSplit = False
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = 4207405
+    Font.Height = 18
+    Font.Name = 'Roboto'
+    Font.Style = []
+    ImageIndex = 10
+    Images = MainForm.PanelIcons24
+    ParentFont = False
+    ParentShowHint = False
+    Rounded = True
+    Shaded = False
+    ShowHint = True
+    Spacing = -1
+    OnClick = AddModePaieRegCGBtnClick
+    Version = '1.6.1.2'
+    TMSStyle = 0
+  end
+  object Label10: TLabel
+    Left = 298
+    Top = 292
+    Width = 5
+    Height = 15
+    Caption = '*'
+    Color = clBtnFace
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = 4666873
+    Font.Height = 15
+    Font.Name = 'Roboto'
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+    StyleElements = [seClient, seBorder]
+  end
+  object RequiredMPGlbl: TLabel
+    Left = 106
+    Top = 271
+    Width = 231
+    Height = 15
+    Alignment = taCenter
+    AutoSize = False
+    Caption = 'S'#39'il vous pla'#238't s'#233'lectionner le Mode de Paiement'
+    Color = clBtnFace
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = 4666873
+    Font.Height = 14
+    Font.Name = 'Helvetica LT Std'
+    Font.Style = []
+    ParentColor = False
+    ParentFont = False
+    Visible = False
+    WordWrap = True
+    StyleElements = [seClient, seBorder]
+  end
+  object Label19: TLabel
+    Left = 65
+    Top = 330
+    Width = 77
+    Height = 18
+    Caption = 'N'#176' Ch'#233'que:'
+    Color = 4207405
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = 4207405
+    Font.Height = 18
+    Font.Name = 'Roboto'
+    Font.Style = []
+    ParentColor = False
+    ParentFont = False
+    StyleElements = []
+  end
+  object RefChargeGLbl: TLabel
+    Left = 50
+    Top = 51
+    Width = 92
+    Height = 18
+    Caption = 'Op'#233'ration N'#176':'
+    Color = 4207405
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = 4207405
+    Font.Height = 18
+    Font.Name = 'Roboto'
+    Font.Style = []
+    ParentColor = False
+    ParentFont = False
+    StyleElements = []
+  end
+  object NumTransferGEdt: TLabel
+    Left = 146
+    Top = 49
+    Width = 184
+    Height = 22
+    AutoSize = False
+    Caption = '0001/2016'
+    Color = 15722984
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = 10379008
+    Font.Height = 22
+    Font.Name = 'Roboto'
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+    StyleElements = []
+  end
+  object Label14: TLabel
+    Left = 274
+    Top = 232
+    Width = 163
+    Height = 18
+    Caption = 'Solde apr'#232's le transfert:'
+    Color = clWhite
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = 4207405
+    Font.Height = 18
+    Font.Name = 'Roboto'
+    Font.Style = []
+    ParentColor = False
+    ParentFont = False
+    StyleElements = []
+  end
+  object Label15: TLabel
+    Left = 4
+    Top = 232
+    Width = 159
+    Height = 18
+    Caption = 'Solde avant le transfert'
+    Color = 4207405
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = 4207405
+    Font.Height = 18
+    Font.Name = 'Roboto'
+    Font.Style = []
+    ParentColor = False
+    ParentFont = False
+    StyleElements = []
+  end
+  object CompteSOLDBeforeTransferLbl: TLabel
+    AlignWithMargins = True
+    Left = 2
+    Top = 245
+    Width = 261
+    Height = 27
+    Alignment = taRightJustify
+    AutoSize = False
+    BiDiMode = bdLeftToRight
+    Caption = '0'
+    Color = 15722984
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = 4666873
+    Font.Height = 22
+    Font.Name = 'Helvetica LT Std'
+    Font.Style = [fsBold, fsItalic]
+    ParentBiDiMode = False
+    ParentColor = False
+    ParentFont = False
+    Layout = tlCenter
+    StyleElements = []
+  end
+  object CompteSOLDAfterTransferLbl: TLabel
+    AlignWithMargins = True
+    Left = 269
+    Top = 247
+    Width = 263
+    Height = 27
+    Alignment = taRightJustify
+    AutoSize = False
+    BiDiMode = bdLeftToRight
+    Caption = '0'
+    Color = 15722984
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = 7854350
+    Font.Height = 22
+    Font.Name = 'Helvetica LT Std'
+    Font.Style = [fsBold, fsItalic]
+    ParentBiDiMode = False
+    ParentColor = False
+    ParentFont = False
+    Layout = tlCenter
+    StyleElements = []
+  end
+  object MPTransferGErrorP: TPanel
+    Left = 144
+    Top = 284
+    Width = 156
+    Height = 30
     BevelOuter = bvNone
     BevelWidth = 2
     Color = 8421631
@@ -413,15 +608,15 @@ object TransferComptesGestionF: TTransferComptesGestionF
     ParentBackground = False
     ParentCtl3D = False
     ShowCaption = False
-    TabOrder = 11
+    TabOrder = 16
     Visible = False
     StyleElements = []
   end
-  object RegFGErrorP: TPanel
-    Left = 188
-    Top = 132
-    Width = 167
-    Height = 32
+  object TranferTransferErrorP: TPanel
+    Left = 187
+    Top = 143
+    Width = 168
+    Height = 29
     BevelOuter = bvNone
     BevelWidth = 2
     Color = 8421631
@@ -430,13 +625,13 @@ object TransferComptesGestionF: TTransferComptesGestionF
     ParentBackground = False
     ParentCtl3D = False
     ShowCaption = False
-    TabOrder = 6
+    TabOrder = 8
     Visible = False
     StyleElements = []
   end
   object DateTransferGD: TDateTimePicker
     Left = 146
-    Top = 234
+    Top = 365
     Width = 124
     Height = 27
     Date = 42565.478213819440000000
@@ -447,86 +642,26 @@ object TransferComptesGestionF: TTransferComptesGestionF
     Font.Name = 'Helvetica LT Std'
     Font.Style = []
     ParentFont = False
-    TabOrder = 4
+    TabOrder = 6
   end
   object ObserTransferGMem: TMemo
     Left = 146
-    Top = 274
+    Top = 405
     Width = 361
-    Height = 59
+    Height = 50
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
-    Font.Height = 18
+    Font.Height = 20
     Font.Name = 'Roboto'
     Font.Style = []
     ParentFont = False
-    TabOrder = 5
-  end
-  object NameFourGErrorP: TPanel
-    Left = 144
-    Top = 61
-    Width = 363
-    Height = 34
-    BevelOuter = bvNone
-    BevelWidth = 2
-    Color = 8421631
-    Ctl3D = False
-    FullRepaint = False
-    ParentBackground = False
-    ParentCtl3D = False
-    ShowCaption = False
     TabOrder = 7
-    Visible = False
-    StyleElements = []
   end
-  object CompteSourceTransfeGCbx: TComboBox
-    Left = 146
-    Top = 63
-    Width = 359
-    Height = 30
-    Ctl3D = True
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
-    Font.Height = 22
-    Font.Name = 'Helvetica LT Std'
-    Font.Style = []
-    ParentCtl3D = False
-    ParentFont = False
-    Sorted = True
-    TabOrder = 0
-  end
-  object Panel2: TPanel
-    Left = 182
-    Top = 108
-    Width = 1
-    Height = 66
-    ParentCustomHint = False
-    BevelEdges = []
-    BevelOuter = bvNone
-    BiDiMode = bdLeftToRight
-    Color = 11544220
-    Ctl3D = True
-    DoubleBuffered = False
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -11
-    Font.Name = 'Tahoma'
-    Font.Style = []
-    ParentBiDiMode = False
-    ParentBackground = False
-    ParentCtl3D = False
-    ParentDoubleBuffered = False
-    ParentFont = False
-    ParentShowHint = False
-    ShowHint = False
-    TabOrder = 8
-    StyleElements = []
-  end
-  object Panel3: TPanel
+  object CompteSourceTransfeErrorP: TPanel
     Left = 144
-    Top = 189
+    Top = 79
     Width = 363
-    Height = 34
+    Height = 31
     BevelOuter = bvNone
     BevelWidth = 2
     Color = 8421631
@@ -539,27 +674,28 @@ object TransferComptesGestionF: TTransferComptesGestionF
     Visible = False
     StyleElements = []
   end
-  object CompteDisTransfeGCbx: TComboBox
+  object CompteSourceTransfeGCbx: TComboBox
     Left = 146
-    Top = 191
+    Top = 81
     Width = 359
-    Height = 30
+    Height = 27
     Ctl3D = True
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
-    Font.Height = 22
+    Font.Height = 20
     Font.Name = 'Helvetica LT Std'
     Font.Style = []
     ParentCtl3D = False
     ParentFont = False
-    Sorted = True
-    TabOrder = 3
+    TabOrder = 0
+    OnChange = CompteSourceTransfeGCbxChange
+    OnEnter = CompteSourceTransfeGCbxEnter
   end
-  object Panel1: TPanel
-    Left = 361
-    Top = 108
+  object Panel2: TPanel
+    Left = 182
+    Top = 120
     Width = 1
-    Height = 66
+    Height = 58
     ParentCustomHint = False
     BevelEdges = []
     BevelOuter = bvNone
@@ -582,59 +718,45 @@ object TransferComptesGestionF: TTransferComptesGestionF
     TabOrder = 10
     StyleElements = []
   end
-  object CompteTranferTransferLblEdt: TEdit
-    Left = 190
-    Top = 134
-    Width = 164
-    Height = 27
-    Alignment = taRightJustify
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
-    Font.Height = 20
-    Font.Name = 'Helvetica LT Std'
-    Font.Style = []
-    MaxLength = -1
-    ParentFont = False
-    TabOrder = 1
-  end
-  object CompteRestTransferLblEdt: TEdit
-    Left = 369
-    Top = 134
-    Width = 164
-    Height = 27
-    Alignment = taRightJustify
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
-    Font.Height = 20
-    Font.Name = 'Helvetica LT Std'
-    Font.Style = []
-    MaxLength = -1
-    ParentFont = False
-    TabOrder = 2
-  end
-  object Panel5: TPanel
-    Left = 0
-    Top = 0
-    Width = 540
-    Height = 45
-    Align = alTop
+  object CompteDisTransfeErrorP: TPanel
+    Left = 144
+    Top = 189
+    Width = 363
+    Height = 31
     BevelOuter = bvNone
-    Caption = 'Transfert d'#39'argent entre comptes'
-    Color = 4207405
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWhite
-    Font.Height = 22
-    Font.Name = 'Roboto'
-    Font.Style = []
+    BevelWidth = 2
+    Color = 8421631
+    Ctl3D = False
+    FullRepaint = False
     ParentBackground = False
-    ParentFont = False
-    TabOrder = 12
+    ParentCtl3D = False
+    ShowCaption = False
+    TabOrder = 11
+    Visible = False
+    StyleElements = []
   end
-  object Panel6: TPanel
-    Left = 0
-    Top = 108
-    Width = 540
-    Height = 1
+  object CompteDisTransfeGCbx: TComboBox
+    Left = 146
+    Top = 191
+    Width = 359
+    Height = 27
+    Ctl3D = True
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = 20
+    Font.Name = 'Helvetica LT Std'
+    Font.Style = []
+    ParentCtl3D = False
+    ParentFont = False
+    TabOrder = 3
+    OnChange = CompteDisTransfeGCbxChange
+    OnEnter = CompteDisTransfeGCbxEnter
+  end
+  object Panel1: TPanel
+    Left = 361
+    Top = 120
+    Width = 1
+    Height = 58
     ParentCustomHint = False
     BevelEdges = []
     BevelOuter = bvNone
@@ -654,12 +776,72 @@ object TransferComptesGestionF: TTransferComptesGestionF
     ParentFont = False
     ParentShowHint = False
     ShowHint = False
-    TabOrder = 13
+    TabOrder = 12
     StyleElements = []
   end
-  object Panel7: TPanel
+  object TranferTransferEdt: TEdit
+    Left = 189
+    Top = 144
+    Width = 164
+    Height = 27
+    Alignment = taRightJustify
+    Enabled = False
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = 20
+    Font.Name = 'Helvetica LT Std'
+    Font.Style = []
+    MaxLength = -1
+    ParentFont = False
+    TabOrder = 1
+    Text = '0'
+    OnChange = TranferTransferEdtChange
+    OnClick = TranferTransferEdtClick
+    OnExit = TranferTransferEdtExit
+    OnKeyPress = TranferTransferEdtKeyPress
+  end
+  object RestTransferEdt: TEdit
+    Left = 369
+    Top = 144
+    Width = 164
+    Height = 27
+    Alignment = taRightJustify
+    Enabled = False
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = 20
+    Font.Name = 'Helvetica LT Std'
+    Font.Style = []
+    MaxLength = -1
+    ParentFont = False
+    TabOrder = 2
+    Text = '0'
+    OnChange = RestTransferEdtChange
+    OnClick = RestTransferEdtClick
+    OnExit = RestTransferEdtExit
+    OnKeyPress = RestTransferEdtKeyPress
+  end
+  object Panel5: TPanel
     Left = 0
-    Top = 174
+    Top = 0
+    Width = 540
+    Height = 45
+    Align = alTop
+    BevelOuter = bvNone
+    Caption = 'Transfert d'#39'argent entre comptes'
+    Color = 4207405
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWhite
+    Font.Height = 22
+    Font.Name = 'Roboto'
+    Font.Style = []
+    ParentBackground = False
+    ParentFont = False
+    TabOrder = 13
+  end
+  object Panel6: TPanel
+    Left = 0
+    Top = 120
     Width = 540
     Height = 1
     ParentCustomHint = False
@@ -682,6 +864,146 @@ object TransferComptesGestionF: TTransferComptesGestionF
     ParentShowHint = False
     ShowHint = False
     TabOrder = 14
+    StyleElements = []
+  end
+  object Panel7: TPanel
+    Left = 0
+    Top = 177
+    Width = 540
+    Height = 1
+    ParentCustomHint = False
+    BevelEdges = []
+    BevelOuter = bvNone
+    BiDiMode = bdLeftToRight
+    Color = 11544220
+    Ctl3D = True
+    DoubleBuffered = False
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentBiDiMode = False
+    ParentBackground = False
+    ParentCtl3D = False
+    ParentDoubleBuffered = False
+    ParentFont = False
+    ParentShowHint = False
+    ShowHint = False
+    TabOrder = 15
+    StyleElements = []
+  end
+  object ModePaieTransferGCbx: TComboBox
+    Left = 146
+    Top = 285
+    Width = 152
+    Height = 27
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = 20
+    Font.Name = 'Helvetica LT Std'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 4
+    OnChange = ModePaieTransferGCbxChange
+    OnDropDown = ModePaieTransferGCbxDropDown
+    Items.Strings = (
+      'Esp'#232'ce'
+      'ch'#232'que '
+      '')
+  end
+  object NChequeTransferGCbx: TEdit
+    Left = 146
+    Top = 324
+    Width = 357
+    Height = 27
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = 20
+    Font.Name = 'Helvetica LT Std'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 5
+  end
+  object Panel4: TPanel
+    Left = 269
+    Top = 229
+    Width = 1
+    Height = 43
+    ParentCustomHint = False
+    BevelEdges = []
+    BevelOuter = bvNone
+    BiDiMode = bdLeftToRight
+    Color = 11544220
+    Ctl3D = True
+    DoubleBuffered = False
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentBiDiMode = False
+    ParentBackground = False
+    ParentCtl3D = False
+    ParentDoubleBuffered = False
+    ParentFont = False
+    ParentShowHint = False
+    ShowHint = False
+    TabOrder = 17
+    StyleElements = []
+  end
+  object Panel9: TPanel
+    Left = 0
+    Top = 229
+    Width = 540
+    Height = 1
+    ParentCustomHint = False
+    BevelEdges = []
+    BevelOuter = bvNone
+    BiDiMode = bdLeftToRight
+    Color = 11544220
+    Ctl3D = True
+    DoubleBuffered = False
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentBiDiMode = False
+    ParentBackground = False
+    ParentCtl3D = False
+    ParentDoubleBuffered = False
+    ParentFont = False
+    ParentShowHint = False
+    ShowHint = False
+    TabOrder = 18
+    StyleElements = []
+  end
+  object Panel10: TPanel
+    Left = 0
+    Top = 272
+    Width = 540
+    Height = 1
+    ParentCustomHint = False
+    BevelEdges = []
+    BevelOuter = bvNone
+    BiDiMode = bdLeftToRight
+    Color = 11544220
+    Ctl3D = True
+    DoubleBuffered = False
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentBiDiMode = False
+    ParentBackground = False
+    ParentCtl3D = False
+    ParentDoubleBuffered = False
+    ParentFont = False
+    ParentShowHint = False
+    ShowHint = False
+    TabOrder = 19
     StyleElements = []
   end
 end

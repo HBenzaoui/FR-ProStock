@@ -107,7 +107,6 @@ type
     ProduitTablecode_famp: TIntegerField;
     ProduitTablealertqut_p: TIntegerField;
     ProduitTablecode_f: TIntegerField;
-    ProduitTableobser_p: TWideMemoField;
     ProduitTablelogo_p: TBlobField;
     ProduitTableperissable_p: TBooleanField;
     ProduitTabledateperiss_p: TDateField;
@@ -164,7 +163,6 @@ type
     Bona_recTableMontantTVA: TCurrencyField;
     Bona_recTableMontantVer: TCurrencyField;
     Bona_recPlistTable: TFDQuery;
-    Bona_recTableobser_barec: TWideMemoField;
     Bona_recPlistTablecode_barecl: TIntegerField;
     Bona_recPlistTablecode_barec: TIntegerField;
     Bona_recPlistTableprixht_p: TCurrencyField;
@@ -223,7 +221,6 @@ type
     StringField1: TStringField;
     CurrencyField3: TCurrencyField;
     CurrencyField4: TCurrencyField;
-    WideMemoField1: TWideMemoField;
     CurrencyField5: TCurrencyField;
     CurrencyField6: TCurrencyField;
     WideStringField2: TWideStringField;
@@ -243,7 +240,6 @@ type
     Bonv_livTablemontver_bvliv: TCurrencyField;
     Bonv_livTablevalider_bvliv: TBooleanField;
     Bonv_livTablenum_bvliv: TWideStringField;
-    Bonv_livTableobser_bvliv: TWideMemoField;
     Bonv_livTablemontttc_bvliv: TCurrencyField;
     Bonv_livTableremise_bvliv: TCurrencyField;
     Bonv_livTablenum_cheque_bvliv: TWideStringField;
@@ -263,7 +259,6 @@ type
     Bona_facTablemontver_bafac: TCurrencyField;
     Bona_facTablevalider_bafac: TBooleanField;
     Bona_facTablenum_bafac: TWideStringField;
-    Bona_facTableobser_bafac: TWideMemoField;
     Bona_facTablemontttc_bafac: TCurrencyField;
     Bona_facTableremise_bafac: TCurrencyField;
     Bona_facTablenum_cheque_bafac: TWideStringField;
@@ -290,7 +285,6 @@ type
     Bonv_facTablemontver_bvfac: TCurrencyField;
     Bonv_facTablevalider_bvfac: TBooleanField;
     Bonv_facTablenum_bvfac: TWideStringField;
-    Bonv_facTableobser_bvfac: TWideMemoField;
     Bonv_facTablemontttc_bvfac: TCurrencyField;
     Bonv_facTableremise_bvfac: TCurrencyField;
     Bonv_facTablenum_cheque_bvfac: TWideStringField;
@@ -325,7 +319,6 @@ type
     StringField4: TStringField;
     CurrencyField9: TCurrencyField;
     CurrencyField10: TCurrencyField;
-    WideMemoField2: TWideMemoField;
     CurrencyField11: TCurrencyField;
     CurrencyField12: TCurrencyField;
     WideStringField4: TWideStringField;
@@ -352,7 +345,6 @@ type
     StringField7: TStringField;
     CurrencyField15: TCurrencyField;
     CurrencyField16: TCurrencyField;
-    WideMemoField3: TWideMemoField;
     CurrencyField17: TCurrencyField;
     CurrencyField18: TCurrencyField;
     WideStringField6: TWideStringField;
@@ -378,7 +370,6 @@ type
     StringField10: TStringField;
     CurrencyField21: TCurrencyField;
     CurrencyField22: TCurrencyField;
-    WideMemoField4: TWideMemoField;
     CurrencyField23: TCurrencyField;
     CurrencyField24: TCurrencyField;
     WideStringField8: TWideStringField;
@@ -427,7 +418,6 @@ type
     ClientTablenif_c: TWideStringField;
     ClientTablenart_c: TWideStringField;
     ClientTablenis_c: TWideStringField;
-    ClientTableobser_c: TWideMemoField;
     ClientTablenbank_c: TWideStringField;
     ClientTablerib_c: TWideStringField;
     ClientTableactivite_c: TWideStringField;
@@ -446,7 +436,6 @@ type
     FournisseurTablemob2_f: TWideStringField;
     FournisseurTablefax_f: TWideStringField;
     FournisseurTableemail_f: TWideStringField;
-    FournisseurTableobser_f: TWideStringField;
     FournisseurTableactiv_f: TBooleanField;
     FournisseurTablerc_f: TWideStringField;
     FournisseurTablenif_f: TWideStringField;
@@ -478,7 +467,6 @@ type
     Bonv_ctrTablemontver_bvctr: TCurrencyField;
     Bonv_ctrTablevalider_bvctr: TBooleanField;
     Bonv_ctrTablenum_bvctr: TWideStringField;
-    Bonv_ctrTableobser_bvctr: TWideMemoField;
     Bonv_ctrTablemontttc_bvctr: TCurrencyField;
     Bonv_ctrTableremise_bvctr: TCurrencyField;
     Bonv_ctrTableclientbvctr: TStringField;
@@ -495,7 +483,6 @@ type
     CurrencyField26: TCurrencyField;
     BooleanField5: TBooleanField;
     WideStringField9: TWideStringField;
-    WideMemoField5: TWideMemoField;
     StringField13: TStringField;
     CurrencyField27: TCurrencyField;
     CurrencyField28: TCurrencyField;
@@ -591,8 +578,6 @@ type
     RegfournisseurTableFourRF: TStringField;
     RegclientTableAgent: TStringField;
     RegfournisseurTableAgent: TStringField;
-    RegfournisseurTableobser_rf: TWideMemoField;
-    RegclientTableobser_rc: TWideMemoField;
     Bona_recTablebon_or_no_barec: TBooleanField;
     RegfournisseurTablecode_cmpt: TIntegerField;
     RegclientTablecode_cmpt: TIntegerField;
@@ -763,7 +748,6 @@ type
     Bonp_facTablemontver_bpfac: TCurrencyField;
     Bonp_facTablevalider_bpfac: TBooleanField;
     Bonp_facTablenum_bpfac: TWideStringField;
-    Bonp_facTableobser_bpfac: TWideMemoField;
     Bonp_facTablemontttc_bpfac: TCurrencyField;
     Bonp_facTableremise_bpfac: TCurrencyField;
     Bonp_facTablemarge_bpfac: TCurrencyField;
@@ -798,6 +782,33 @@ type
     ProduitTableValueStock: TCurrencyField;
     N21: TMenuItem;
     Label1: TLabel;
+    Opt_cas_bnk_CaisseTablecode_transfer: TIntegerField;
+    Opt_cas_bnk_BankTablecode_transfer: TIntegerField;
+    ProduitTableobser_p: TWideStringField;
+    ClientTableobser_c: TWideStringField;
+    FournisseurTableobser_f: TWideStringField;
+    Bona_recTableobser_barec: TWideStringField;
+    Bona_facTableobser_bafac: TWideStringField;
+    Bonv_livTableobser_bvliv: TWideStringField;
+    Bonv_facTableobser_bvfac: TWideStringField;
+    Bonv_ctrTableobser_bvctr: TWideStringField;
+    RegclientTableobser_rc: TWideStringField;
+    RegfournisseurTableobser_rf: TWideStringField;
+    Bonp_facTableobser_bpfac: TWideStringField;
+    Bona_recTableCreditobser_barec: TWideStringField;
+    Bona_facTableCreditobser_bafac: TWideStringField;
+    Bona_facTableCredittimber_bafac: TCurrencyField;
+    Bona_facTableCreditcode_ur: TIntegerField;
+    Bonv_livTableCreditobser_bvliv: TWideStringField;
+    Bonv_livTableCreditcode_ur: TIntegerField;
+    Bonv_livTableCreditmarge_bvliv: TCurrencyField;
+    Bonv_facTableCreditobser_bvfac: TWideStringField;
+    Bonv_facTableCredittimber_bvfac: TCurrencyField;
+    Bonv_facTableCreditcode_ur: TIntegerField;
+    Bonv_facTableCreditmarge_bvfac: TCurrencyField;
+    Bonv_ctrTableCreditobser_bvctr: TWideStringField;
+    Bonv_ctrTableCreditcode_ur: TIntegerField;
+    Bonv_ctrTableCreditmarge_bvctr: TCurrencyField;
     procedure ClientMainFBtnClick(Sender: TObject);
     procedure FourMainFBtnClick(Sender: TObject);
     procedure ProduitMainFBtnClick(Sender: TObject);
@@ -945,7 +956,7 @@ uses   Vcl.Direct2D,Character,
   UUnitesList, ULocaleList, UHomeF, UDataModule, USplash, UWorkingSplash,
   ULogoSplashForm, ULoginUser, ULogin, UCNotifications, UChargesFList,
   UPertesFList, USTypeChargeList, UTypeChargeList, UTypePerteList,
-  UBonFacPGestion, UBonFacP, UTransferComptesGestion;
+  UBonFacPGestion, UBonFacP, UTransferComptesGestion, UTransferListGestion;
 
   var
     gGrayForms: TComponentList;
@@ -2941,22 +2952,15 @@ end;
 
 procedure TMainForm.T3Click(Sender: TObject);
 begin
-//if Not Assigned(TransferComptesGestionF) then
-//
-//     TransferComptesGestionF:= TTransferComptesGestionF.Create(nil) else
-//                                        begin
-//                                          TransferComptesGestionF.Show
-//                                        end;
-
 
  //-------- Show the splash screan for the TransferComptesGestionF---------//
 
+  if Not Assigned(TransferListGestionF) then
 
-      TransferComptesGestionF:=TTransferComptesGestionF.Create(nil);
-      TransferComptesGestionF.Left:=  (Screen.Width div 2 ) - (TransferComptesGestionF.Width div 2)    ;
-      TransferComptesGestionF.Top:=   (Screen.Height div 2) - (TransferComptesGestionF.Height div 2)    ;
-
-      TransferComptesGestionF.Show;
+     TransferListGestionF:= TTransferListGestionF.Create(Application) else
+                                        begin
+                                          TransferListGestionF.Show
+                                        end;
 
 end;
 
@@ -3039,63 +3043,6 @@ end;
 
 
 
-procedure TMainForm.InactiveTables;
-begin
-      ProduitTable.Active := False;
-      ClientTable.Active := False;
-      FournisseurTable.Active := False;
-      Bona_recTable.Active := False;
-      Bona_recPlistTable.Active := False;
-      Bona_facTable.Active := False;
-      Bona_fac_listTable.Active := False;
-      Bonv_livTable.Active := False;
-      Bonv_liv_listTable.Active := False;
-      Bonv_facTable.Active := False;
-      Bonv_fac_listTable.Active := False;
-      Bonv_ctrTable.Active := False;
-      Bonv_ctr_listTable.Active := False;
-      Mode_paiementTable.Active := False;
-      CompteTable.Active := False;
-      FamproduitTable.Active := False;
-      SfamproduitTable.Active := False;
-      CodebarresTable.Active := False;
-      LocalisationTable.Active := False;
-      UniteTable.Active := False;
-      WilayasTable.Active := False;
-      CommunesTable.Active := False;
-      Opt_cas_bnk_CaisseTable.Active := False;
-      Opt_cas_bnk_BankTable.Active := False;
-//      DataModuleF.UsersTable.Active := False;
-      RegclientTable.Active := False;
-      RegfournisseurTable.Active := False;
-      CompanyTable.Active := False;
-      
-      DataModuleF.TopClient.Active:= False;
-      DataModuleF.TopFour.Active:= False;
-      DataModuleF.TopVerClient.Active:= False;
-      DataModuleF.TopVerFour.Active:= False;
-      DataModuleF.Top5produit.Active:= False;
-      DataModuleF.TotalProduit.Active:= False;
-      DataModuleF.ToatalVerMonthVLIV.Active:= False;
-      DataModuleF.ToatalVerMonthVFAC.Active:= False;
-      DataModuleF.ToatalVerMonthVCTR.Active:= False;
-      DataModuleF.ToatalVerMonthAREC.Active:= False;
-      DataModuleF.ToatalVerMonthAFAC.Active:= False;
-
-      DataModuleF.PZeroQCnotif.Active:= False;
-      DataModuleF.PCloseZeroQCnotif.Active:= False;
-      DataModuleF.PMoreMaxQCnotif.Active:= False;
-//      DataModuleF.PCloseDiedCnotif.Active:= False;
-//      DataModuleF.PDiedCnotif.Active:= False;
-
-
-
-      DataModuleF.ChargesTable.Active:= False;
-      DataModuleF.Charge_typeTable.Active:= False;
-      DataModuleF.Charge_s_typeTable.Active:= False;
-      DataModuleF.PertesTable.Active:= False;
-      DataModuleF.Perte_typeTable.Active:= False;
-end;
 
 function TMainForm.KillTask(ExeFileName: string): Integer;
 
@@ -3128,6 +3075,66 @@ begin
 end;
 
 
+
+procedure TMainForm.InactiveTables;
+begin
+      ProduitTable.Active := False;
+      ClientTable.Active := False;
+      FournisseurTable.Active := False;
+      Bona_recTable.Active := False;
+      Bona_recPlistTable.Active := False;
+      Bona_facTable.Active := False;
+      Bona_fac_listTable.Active := False;
+      Bonv_livTable.Active := False;
+      Bonv_liv_listTable.Active := False;
+      Bonv_facTable.Active := False;
+      Bonv_fac_listTable.Active := False;
+      Bonv_ctrTable.Active := False;
+      Bonv_ctr_listTable.Active := False;
+      Mode_paiementTable.Active := False;
+      CompteTable.Active := False;
+      FamproduitTable.Active := False;
+      SfamproduitTable.Active := False;
+      CodebarresTable.Active := False;
+      LocalisationTable.Active := False;
+      UniteTable.Active := False;
+      WilayasTable.Active := False;
+      CommunesTable.Active := False;
+      Opt_cas_bnk_CaisseTable.Active := False;
+      Opt_cas_bnk_BankTable.Active := False;
+//      DataModuleF.UsersTable.Active := False;
+      RegclientTable.Active := False;
+      RegfournisseurTable.Active := False;
+      CompanyTable.Active := False;
+
+      DataModuleF.TopClient.Active:= False;
+      DataModuleF.TopFour.Active:= False;
+      DataModuleF.TopVerClient.Active:= False;
+      DataModuleF.TopVerFour.Active:= False;
+      DataModuleF.Top5produit.Active:= False;
+      DataModuleF.TotalProduit.Active:= False;
+      DataModuleF.ToatalVerMonthVLIV.Active:= False;
+      DataModuleF.ToatalVerMonthVFAC.Active:= False;
+      DataModuleF.ToatalVerMonthVCTR.Active:= False;
+      DataModuleF.ToatalVerMonthAREC.Active:= False;
+      DataModuleF.ToatalVerMonthAFAC.Active:= False;
+
+      DataModuleF.PZeroQCnotif.Active:= False;
+      DataModuleF.PCloseZeroQCnotif.Active:= False;
+      DataModuleF.PMoreMaxQCnotif.Active:= False;
+//      DataModuleF.PCloseDiedCnotif.Active:= False;
+//      DataModuleF.PDiedCnotif.Active:= False;
+
+
+
+      DataModuleF.ChargesTable.Active:= False;
+      DataModuleF.Charge_typeTable.Active:= False;
+      DataModuleF.Charge_s_typeTable.Active:= False;
+      DataModuleF.PertesTable.Active:= False;
+      DataModuleF.Perte_typeTable.Active:= False;
+
+      DataModuleF.Transfer_comptesTable.Active:= False;
+end;
 
 procedure TMainForm.ActiveTables;
 begin
@@ -3192,6 +3199,8 @@ begin
       DataModuleF.PertesTable.Active:= True;
       DataModuleF.Perte_typeTable.Active:= True;
 
+      DataModuleF.Transfer_comptesTable.Active:= True;
+
       
 end;
 
@@ -3253,6 +3262,8 @@ begin
       DataModuleF.Charge_s_typeTable.Refresh;
       DataModuleF.PertesTable.Refresh;
       DataModuleF.Perte_typeTable.Refresh;
+
+      DataModuleF.Transfer_comptesTable.Refresh;
 end;
 
 
@@ -3916,6 +3927,8 @@ begin
       DataModuleF.PertesTable.Active:= True;
       DataModuleF.Perte_typeTable.Active:= True;
 
+      DataModuleF.Transfer_comptesTable.Active:= True;
+
 
 
       sImage1.ImageIndex:=4;
@@ -4014,6 +4027,8 @@ begin
       DataModuleF.PertesTable.Active:= True;
       DataModuleF.Perte_typeTable.Active:= True;
 
+      DataModuleF.Transfer_comptesTable.Active:= True;
+
       sImage1.ImageIndex:=3;
       sImage1.Tag := 0;
 
@@ -4023,6 +4038,16 @@ begin
    if Assigned(DashboardF) then
    begin
      DashboardF.OnPaint(Sender)
+   end;
+
+   if Assigned(CaisseListF) then
+   begin
+     CaisseListF.OnPaint(Sender)
+   end;
+
+   if Assigned(BankListF) then
+   begin
+     BankListF.OnPaint(Sender)
    end;
    
    //-----this is the set the value of transactions at first start----

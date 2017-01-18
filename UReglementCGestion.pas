@@ -560,6 +560,7 @@ begin
                 MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_rc']:= MainForm.RegclientTable.FieldValues['code_rc'];
                 MainForm.Opt_cas_bnk_CaisseTable.FieldValues['date_ocb']:= DateOf(Today);
                 MainForm.Opt_cas_bnk_CaisseTable.FieldValues['time_ocb']:= TimeOf(Now);;
+                MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
                 MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nom_ocb']:= 'Versement au Client Pièce N° '+ReglementCGestionF.NumRegCGEdt.Caption;
                 MainForm.Opt_cas_bnk_CaisseTable.FieldValues['third_ocb']:= ReglementCGestionF.ClientRegCGCbx.Text;
                 MainForm.Opt_cas_bnk_CaisseTable.FieldValues['encaiss_ocb']:= StrToCurr(StringReplace(VerRegCGEdt.Text, #32, '', [rfReplaceAll]));
@@ -607,7 +608,8 @@ begin
 //                MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ocb']:= CodeOCB;
                 MainForm.Opt_cas_bnk_CaisseTable.FieldValues['date_ocb']:= DateOf(Today);
                 MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_rc']:= MainForm.RegclientTable.FieldValues['code_rc'];
-                MainForm.Opt_cas_bnk_CaisseTable.FieldValues['time_ocb']:= TimeOf(Now);;
+                MainForm.Opt_cas_bnk_CaisseTable.FieldValues['time_ocb']:= TimeOf(Now);
+                MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
                 MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nom_ocb']:= 'Versement au Client Pièce N° '+ReglementCGestionF.NumRegCGEdt.Caption;
                 MainForm.Opt_cas_bnk_CaisseTable.FieldValues['third_ocb']:= ReglementCGestionF.ClientRegCGCbx.Text;
                 MainForm.Opt_cas_bnk_CaisseTable.FieldValues['encaiss_ocb']:= StrToCurr(StringReplace(VerRegCGEdt.Text, #32, '', [rfReplaceAll]));

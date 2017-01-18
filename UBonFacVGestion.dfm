@@ -330,7 +330,7 @@ object BonFacVGestionF: TBonFacVGestionF
     Left = 0
     Top = 304
     Width = 2
-    Height = 249
+    Height = 278
     Align = alLeft
     BevelOuter = bvNone
     Color = 7854350
@@ -1677,7 +1677,7 @@ object BonFacVGestionF: TBonFacVGestionF
     Left = 2
     Top = 304
     Width = 1086
-    Height = 250
+    Height = 277
     Anchors = [akLeft, akTop, akRight, akBottom]
     Border.Color = 4207405
     Border.ExtendedDraw = False
@@ -1718,7 +1718,7 @@ object BonFacVGestionF: TBonFacVGestionF
     ParentFont = False
     ParentShowHint = False
     RowDetailPanel.Color = clBtnFace
-    RowHeight = 30
+    RowHeight = 25
     SearchPanel.FilterOnTyping = True
     ShowHint = True
     TabOrder = 2
@@ -1747,7 +1747,7 @@ object BonFacVGestionF: TBonFacVGestionF
         FieldName = 'referp'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
-        Font.Height = 17
+        Font.Height = 16
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
         Footers = <>
@@ -1771,7 +1771,7 @@ object BonFacVGestionF: TBonFacVGestionF
         FieldName = 'nomp'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
-        Font.Height = 17
+        Font.Height = 16
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
         Footers = <>
@@ -1797,7 +1797,7 @@ object BonFacVGestionF: TBonFacVGestionF
         FieldName = 'qut_p'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
-        Font.Height = 17
+        Font.Height = 16
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
         Footers = <>
@@ -1823,7 +1823,7 @@ object BonFacVGestionF: TBonFacVGestionF
         FieldName = 'cond_p'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
-        Font.Height = 17
+        Font.Height = 16
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
         Footers = <>
@@ -1846,7 +1846,7 @@ object BonFacVGestionF: TBonFacVGestionF
         FieldName = 'prixvd_p'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
-        Font.Height = 17
+        Font.Height = 16
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
         Footers = <>
@@ -1870,7 +1870,7 @@ object BonFacVGestionF: TBonFacVGestionF
         FieldName = 'tva_p'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
-        Font.Height = 17
+        Font.Height = 16
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
         Footers = <>
@@ -1897,7 +1897,7 @@ object BonFacVGestionF: TBonFacVGestionF
         FieldName = 'tvap'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
-        Font.Height = 17
+        Font.Height = 16
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
         Footers = <>
@@ -1922,7 +1922,7 @@ object BonFacVGestionF: TBonFacVGestionF
         FieldName = 'PrixATTC'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 5345802
-        Font.Height = 17
+        Font.Height = 16
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
         Font.Quality = fqProof
@@ -1946,7 +1946,7 @@ object BonFacVGestionF: TBonFacVGestionF
         FieldName = 'MontantHT'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
-        Font.Height = 17
+        Font.Height = 16
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
         Footers = <>
@@ -1970,7 +1970,7 @@ object BonFacVGestionF: TBonFacVGestionF
         FieldName = 'MontantTVA'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
-        Font.Height = 17
+        Font.Height = 16
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
         Footers = <>
@@ -1995,7 +1995,7 @@ object BonFacVGestionF: TBonFacVGestionF
         FieldName = 'MontantTTC'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
-        Font.Height = 17
+        Font.Height = 16
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
         Footers = <>
@@ -2019,7 +2019,7 @@ object BonFacVGestionF: TBonFacVGestionF
         FieldName = 'MargeM'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
-        Font.Height = 17
+        Font.Height = 16
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
         Footers = <>
@@ -2043,7 +2043,7 @@ object BonFacVGestionF: TBonFacVGestionF
         FieldName = 'Marge'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
-        Font.Height = 17
+        Font.Height = 16
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
         Footers = <>
@@ -2064,9 +2064,9 @@ object BonFacVGestionF: TBonFacVGestionF
   end
   object Panel4: TPanel
     Left = 0
-    Top = 553
+    Top = 582
     Width = 1089
-    Height = 149
+    Height = 120
     Align = alBottom
     BevelOuter = bvNone
     Color = 4207405
@@ -2075,12 +2075,12 @@ object BonFacVGestionF: TBonFacVGestionF
     StyleElements = []
     DesignSize = (
       1089
-      149)
+      120)
     object Shape4: TShape
       Left = 802
       Top = 0
       Width = 287
-      Height = 149
+      Height = 120
       Anchors = [akLeft, akTop, akRight]
       Brush.Color = 4207405
       Pen.Color = 11544476
@@ -2089,7 +2089,7 @@ object BonFacVGestionF: TBonFacVGestionF
       Left = 404
       Top = 0
       Width = 199
-      Height = 149
+      Height = 120
       Brush.Color = 4207405
       Pen.Color = 11544476
     end
@@ -2097,70 +2097,70 @@ object BonFacVGestionF: TBonFacVGestionF
       Left = 0
       Top = 0
       Width = 205
-      Height = 149
+      Height = 120
       Brush.Color = 4207405
       Pen.Color = 11544476
     end
     object label13: TLabel
       Left = 612
-      Top = 9
-      Width = 47
-      Height = 21
+      Top = 6
+      Width = 42
+      Height = 17
       Caption = 'R'#233'gl'#233':'
       Color = clWhite
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
-      Font.Height = 21
-      Font.Name = 'Roboto'
-      Font.Style = []
+      Font.Height = 17
+      Font.Name = 'Helvetica LT Std'
+      Font.Style = [fsItalic]
       ParentColor = False
       ParentFont = False
       StyleElements = []
     end
     object label12: TLabel
       Left = 612
-      Top = 76
-      Width = 71
-      Height = 21
+      Top = 64
+      Width = 63
+      Height = 17
       Caption = 'Le Reste:'
       Color = clWhite
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
-      Font.Height = 21
-      Font.Name = 'Roboto'
-      Font.Style = []
+      Font.Height = 17
+      Font.Name = 'Helvetica LT Std'
+      Font.Style = [fsItalic]
       ParentColor = False
       ParentFont = False
       StyleElements = []
     end
     object Label1: TLabel
       Left = 413
-      Top = 9
-      Width = 80
-      Height = 21
+      Top = 6
+      Width = 67
+      Height = 17
       Caption = 'Total TVA:'
       Color = clWhite
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
-      Font.Height = 21
-      Font.Name = 'Roboto'
-      Font.Style = []
+      Font.Height = 17
+      Font.Name = 'Helvetica LT Std'
+      Font.Style = [fsItalic]
       ParentColor = False
       ParentFont = False
       StyleElements = []
     end
     object Label2: TLabel
       Left = 12
-      Top = 9
-      Width = 70
-      Height = 21
+      Top = 6
+      Width = 58
+      Height = 17
       Caption = 'Total HT:'
       Color = clWhite
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
-      Font.Height = 21
-      Font.Name = 'Roboto'
-      Font.Style = []
+      Font.Height = 17
+      Font.Name = 'Helvetica LT Std'
+      Font.Style = [fsItalic]
       ParentColor = False
       ParentFont = False
       StyleElements = []
@@ -2168,7 +2168,7 @@ object BonFacVGestionF: TBonFacVGestionF
     object BonFacVTotalTVALbl: TLabel
       AlignWithMargins = True
       Left = 404
-      Top = 41
+      Top = 30
       Width = 192
       Height = 25
       Margins.Left = 0
@@ -2181,9 +2181,9 @@ object BonFacVGestionF: TBonFacVGestionF
       Color = 15722984
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 5425663
-      Font.Height = 25
+      Font.Height = 20
       Font.Name = 'Helvetica LT Std'
-      Font.Style = [fsBold]
+      Font.Style = [fsBold, fsItalic]
       ParentBiDiMode = False
       ParentColor = False
       ParentFont = False
@@ -2193,7 +2193,7 @@ object BonFacVGestionF: TBonFacVGestionF
     object BonFacVRegleLbl: TLabel
       AlignWithMargins = True
       Left = 602
-      Top = 41
+      Top = 30
       Width = 194
       Height = 25
       Margins.Left = 0
@@ -2206,9 +2206,9 @@ object BonFacVGestionF: TBonFacVGestionF
       Color = 15722984
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 14727239
-      Font.Height = 25
+      Font.Height = 20
       Font.Name = 'Helvetica LT Std'
-      Font.Style = [fsBold]
+      Font.Style = [fsBold, fsItalic]
       ParentBiDiMode = False
       ParentColor = False
       ParentFont = False
@@ -2218,7 +2218,7 @@ object BonFacVGestionF: TBonFacVGestionF
     object BonFacVResteLbl: TLabel
       AlignWithMargins = True
       Left = 602
-      Top = 108
+      Top = 83
       Width = 193
       Height = 37
       Margins.Left = 0
@@ -2231,9 +2231,9 @@ object BonFacVGestionF: TBonFacVGestionF
       Color = 15722984
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 7566591
-      Font.Height = 25
+      Font.Height = 20
       Font.Name = 'Helvetica LT Std'
-      Font.Style = [fsBold]
+      Font.Style = [fsBold, fsItalic]
       ParentBiDiMode = False
       ParentColor = False
       ParentFont = False
@@ -2243,7 +2243,7 @@ object BonFacVGestionF: TBonFacVGestionF
     object BonFacVTotalHTLbl: TLabel
       AlignWithMargins = True
       Left = -3
-      Top = 41
+      Top = 30
       Width = 200
       Height = 25
       Margins.Left = 0
@@ -2256,9 +2256,9 @@ object BonFacVGestionF: TBonFacVGestionF
       Color = 15722984
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 7854350
-      Font.Height = 25
+      Font.Height = 20
       Font.Name = 'Helvetica LT Std'
-      Font.Style = [fsBold]
+      Font.Style = [fsBold, fsItalic]
       ParentBiDiMode = False
       ParentColor = False
       ParentFont = False
@@ -2268,7 +2268,7 @@ object BonFacVGestionF: TBonFacVGestionF
     object BonFacVTotalTTCLbl: TLabel
       AlignWithMargins = True
       Left = 404
-      Top = 108
+      Top = 83
       Width = 192
       Height = 37
       Margins.Left = 0
@@ -2281,9 +2281,9 @@ object BonFacVGestionF: TBonFacVGestionF
       Color = 15722984
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 16771277
-      Font.Height = 25
+      Font.Height = 20
       Font.Name = 'Helvetica LT Std'
-      Font.Style = [fsBold]
+      Font.Style = [fsBold, fsItalic]
       ParentBiDiMode = False
       ParentColor = False
       ParentFont = False
@@ -2292,32 +2292,32 @@ object BonFacVGestionF: TBonFacVGestionF
     end
     object Label10: TLabel
       Left = 412
-      Top = 76
-      Width = 79
-      Height = 21
+      Top = 64
+      Width = 68
+      Height = 17
       Caption = 'Total TTC:'
       Color = 15722984
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
-      Font.Height = 21
-      Font.Name = 'Roboto'
-      Font.Style = []
+      Font.Height = 17
+      Font.Name = 'Helvetica LT Std'
+      Font.Style = [fsItalic]
       ParentColor = False
       ParentFont = False
       StyleElements = []
     end
     object TimberBonFacVGlbl: TLabel
       Left = 212
-      Top = 83
-      Width = 58
-      Height = 21
+      Top = 64
+      Width = 50
+      Height = 17
       Caption = 'Timber:'
       Color = clWhite
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 7566591
-      Font.Height = 21
-      Font.Name = 'Roboto'
-      Font.Style = []
+      Font.Height = 17
+      Font.Name = 'Helvetica LT Std'
+      Font.Style = [fsItalic]
       ParentColor = False
       ParentFont = False
       Visible = False
@@ -2326,7 +2326,7 @@ object BonFacVGestionF: TBonFacVGestionF
     object TimberPerctageBonFacVGLbl: TLabel
       AlignWithMargins = True
       Left = 392
-      Top = 85
+      Top = 67
       Width = 10
       Height = 17
       Margins.Left = 0
@@ -2351,7 +2351,7 @@ object BonFacVGestionF: TBonFacVGestionF
     object Label11: TLabel
       AlignWithMargins = True
       Left = 392
-      Top = 11
+      Top = 6
       Width = 10
       Height = 17
       Margins.Left = 0
@@ -2374,30 +2374,30 @@ object BonFacVGestionF: TBonFacVGestionF
     end
     object Label14: TLabel
       Left = 212
-      Top = 9
-      Width = 61
-      Height = 21
+      Top = 6
+      Width = 55
+      Height = 17
       Caption = 'Remise:'
       Color = 14727239
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 14727239
-      Font.Height = 21
-      Font.Name = 'Roboto'
-      Font.Style = []
+      Font.Height = 17
+      Font.Name = 'Helvetica LT Std'
+      Font.Style = [fsItalic]
       ParentColor = False
       ParentFont = False
       StyleElements = []
     end
     object Label15: TLabel
       Left = 12
-      Top = 77
-      Width = 139
-      Height = 99
+      Top = 62
+      Width = 116
+      Height = 81
       Caption = 'Facture de'#13#10'Vente'#13#10
       Color = 15722984
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
-      Font.Height = -29
+      Font.Height = -24
       Font.Name = 'Helvetica LT Std'
       Font.Style = []
       ParentColor = False
@@ -2406,7 +2406,7 @@ object BonFacVGestionF: TBonFacVGestionF
     end
     object Label21: TLabel
       Left = 804
-      Top = 9
+      Top = 4
       Width = 280
       Height = 21
       Alignment = taCenter
@@ -2416,9 +2416,9 @@ object BonFacVGestionF: TBonFacVGestionF
       Color = clWhite
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
-      Font.Height = 21
-      Font.Name = 'Roboto'
-      Font.Style = []
+      Font.Height = 17
+      Font.Name = 'Helvetica LT Std'
+      Font.Style = [fsItalic]
       ParentColor = False
       ParentFont = False
       StyleElements = []
@@ -2426,7 +2426,7 @@ object BonFacVGestionF: TBonFacVGestionF
     object BonFacVGOLDStock: TLabel
       AlignWithMargins = True
       Left = 804
-      Top = 37
+      Top = 24
       Width = 280
       Height = 25
       Margins.Left = 0
@@ -2440,9 +2440,9 @@ object BonFacVGestionF: TBonFacVGestionF
       Color = 15722984
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 15722984
-      Font.Height = 25
+      Font.Height = 20
       Font.Name = 'Helvetica LT Std'
-      Font.Style = [fsBold]
+      Font.Style = [fsBold, fsItalic]
       ParentBiDiMode = False
       ParentColor = False
       ParentFont = False
@@ -2451,7 +2451,7 @@ object BonFacVGestionF: TBonFacVGestionF
     end
     object Label22: TLabel
       Left = 804
-      Top = 68
+      Top = 48
       Width = 280
       Height = 21
       Alignment = taCenter
@@ -2461,9 +2461,9 @@ object BonFacVGestionF: TBonFacVGestionF
       Color = clWhite
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
-      Font.Height = 21
-      Font.Name = 'Roboto'
-      Font.Style = []
+      Font.Height = 17
+      Font.Name = 'Helvetica LT Std'
+      Font.Style = [fsItalic]
       ParentColor = False
       ParentFont = False
       StyleElements = []
@@ -2471,7 +2471,7 @@ object BonFacVGestionF: TBonFacVGestionF
     object BonFacVGNEWStock: TLabel
       AlignWithMargins = True
       Left = 804
-      Top = 93
+      Top = 65
       Width = 280
       Height = 29
       Margins.Left = 0
@@ -2485,9 +2485,9 @@ object BonFacVGestionF: TBonFacVGestionF
       Color = 4207405
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 3854249
-      Font.Height = 25
+      Font.Height = 20
       Font.Name = 'Helvetica LT Std'
-      Font.Style = [fsBold]
+      Font.Style = [fsBold, fsItalic]
       ParentBiDiMode = False
       ParentColor = False
       ParentFont = False
@@ -2496,9 +2496,9 @@ object BonFacVGestionF: TBonFacVGestionF
     end
     object Label20: TLabel
       Left = 803
-      Top = 124
+      Top = 100
       Width = 285
-      Height = 25
+      Height = 20
       Alignment = taCenter
       Anchors = [akLeft, akRight, akBottom]
       AutoSize = False
@@ -2506,7 +2506,7 @@ object BonFacVGestionF: TBonFacVGestionF
       Color = 4666873
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
-      Font.Height = 17
+      Font.Height = 16
       Font.Name = 'Helvetica LT Std'
       Font.Style = []
       ParentColor = False
@@ -2519,7 +2519,7 @@ object BonFacVGestionF: TBonFacVGestionF
     object sImage1: TsImage
       Tag = 1
       Left = 186
-      Top = 129
+      Top = 100
       Width = 16
       Height = 16
       Center = True
@@ -2533,7 +2533,7 @@ object BonFacVGestionF: TBonFacVGestionF
     end
     object Panel14: TPanel
       Left = 0
-      Top = 73
+      Top = 59
       Width = 803
       Height = 1
       BevelOuter = bvLowered
@@ -2546,16 +2546,16 @@ object BonFacVGestionF: TBonFacVGestionF
     end
     object TimberPerctageBonFacVGEdt: TEdit
       Left = 340
-      Top = 81
+      Top = 63
       Width = 50
-      Height = 26
+      Height = 24
       Alignment = taRightJustify
       Enabled = False
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = 18
+      Font.Height = 16
       Font.Name = 'Helvetica LT Std'
-      Font.Style = []
+      Font.Style = [fsItalic]
       MaxLength = 5
       ParentFont = False
       TabOrder = 1
@@ -2564,32 +2564,32 @@ object BonFacVGestionF: TBonFacVGestionF
     end
     object TimberBonFacVGEdt: TEdit
       Left = 276
-      Top = 115
+      Top = 89
       Width = 114
-      Height = 26
+      Height = 24
       Alignment = taRightJustify
       Enabled = False
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = 18
+      Font.Height = 16
       Font.Name = 'Helvetica LT Std'
-      Font.Style = []
+      Font.Style = [fsItalic]
       ParentFont = False
       TabOrder = 2
       Visible = False
     end
     object RemisePerctageBonFacVGEdt: TEdit
       Left = 340
-      Top = 7
+      Top = 3
       Width = 50
-      Height = 26
+      Height = 24
       Alignment = taRightJustify
       Enabled = False
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = 18
+      Font.Height = 16
       Font.Name = 'Helvetica LT Std'
-      Font.Style = []
+      Font.Style = [fsItalic]
       MaxLength = 5
       ParentFont = False
       TabOrder = 3
@@ -2600,16 +2600,16 @@ object BonFacVGestionF: TBonFacVGestionF
     end
     object RemiseBonFacVGEdt: TEdit
       Left = 276
-      Top = 41
+      Top = 31
       Width = 114
-      Height = 26
+      Height = 24
       Alignment = taRightJustify
       Enabled = False
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = 18
+      Font.Height = 16
       Font.Name = 'Helvetica LT Std'
-      Font.Style = []
+      Font.Style = [fsItalic]
       MaxLength = -1
       ParentFont = False
       TabOrder = 4
@@ -2621,7 +2621,7 @@ object BonFacVGestionF: TBonFacVGestionF
     end
     object Panel1: TPanel
       Left = 204
-      Top = 148
+      Top = 120
       Width = 599
       Height = 1
       BevelOuter = bvLowered
@@ -2634,7 +2634,7 @@ object BonFacVGestionF: TBonFacVGestionF
     end
     object RemiseTypeBonFacVGCbx: TComboBox
       Left = 276
-      Top = 8
+      Top = 3
       Width = 52
       Height = 24
       Style = csDropDownList
@@ -2643,7 +2643,7 @@ object BonFacVGestionF: TBonFacVGestionF
       Font.Color = clWindowText
       Font.Height = 16
       Font.Name = 'Helvetica LT Std'
-      Font.Style = []
+      Font.Style = [fsItalic]
       ItemIndex = 0
       ParentFont = False
       TabOrder = 6

@@ -746,7 +746,12 @@ begin
            MainForm.Opt_cas_bnk_CaisseTable.EnableControls;
            MainForm.CompteTable.EnableControls;
 
- end;
+ end else
+     begin
+       DaysCaisseListCbxChange(Sender);
+       CaisseListCbxChange(Sender);
+
+     end;
 end;
 
 procedure TCaisseListF.DaysCaisseListCbxChange(Sender: TObject);

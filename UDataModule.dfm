@@ -594,11 +594,6 @@ object DataModuleF: TDataModuleF
       FieldName = 'code_f'
       Origin = 'code_f'
     end
-    object PZeroQCnotifobser_p: TWideMemoField
-      FieldName = 'obser_p'
-      Origin = 'obser_p'
-      BlobType = ftWideMemo
-    end
     object PZeroQCnotiflogo_p: TBlobField
       FieldName = 'logo_p'
       Origin = 'logo_p'
@@ -765,6 +760,11 @@ object DataModuleF: TDataModuleF
       FieldName = 'tva_p'
       Origin = 'tva_p'
     end
+    object PZeroQCnotifobser_p: TWideStringField
+      FieldName = 'obser_p'
+      Origin = 'obser_p'
+      Size = 200
+    end
   end
   object PCloseZeroQCnotif: TFDQuery
     OnCalcFields = PCloseZeroQCnotifCalcFields
@@ -811,11 +811,6 @@ object DataModuleF: TDataModuleF
     object PCloseZeroQCnotifcode_f: TIntegerField
       FieldName = 'code_f'
       Origin = 'code_f'
-    end
-    object PCloseZeroQCnotifobser_p: TWideMemoField
-      FieldName = 'obser_p'
-      Origin = 'obser_p'
-      BlobType = ftWideMemo
     end
     object PCloseZeroQCnotiflogo_p: TBlobField
       FieldName = 'logo_p'
@@ -983,6 +978,11 @@ object DataModuleF: TDataModuleF
       FieldName = 'tva_p'
       Origin = 'tva_p'
     end
+    object PCloseZeroQCnotifobser_p: TWideStringField
+      FieldName = 'obser_p'
+      Origin = 'obser_p'
+      Size = 200
+    end
   end
   object PMoreMaxQCnotif: TFDQuery
     OnCalcFields = PMoreMaxQCnotifCalcFields
@@ -1028,11 +1028,6 @@ object DataModuleF: TDataModuleF
     object PMoreMaxQCnotifcode_f: TIntegerField
       FieldName = 'code_f'
       Origin = 'code_f'
-    end
-    object PMoreMaxQCnotifobser_p: TWideMemoField
-      FieldName = 'obser_p'
-      Origin = 'obser_p'
-      BlobType = ftWideMemo
     end
     object PMoreMaxQCnotiflogo_p: TBlobField
       FieldName = 'logo_p'
@@ -1200,6 +1195,11 @@ object DataModuleF: TDataModuleF
       FieldName = 'tva_p'
       Origin = 'tva_p'
     end
+    object PMoreMaxQCnotifobser_p: TWideStringField
+      FieldName = 'obser_p'
+      Origin = 'obser_p'
+      Size = 200
+    end
   end
   object PCloseDiedCnotif: TFDQuery
     OnCalcFields = PCloseDiedCnotifCalcFields
@@ -1264,6 +1264,14 @@ object DataModuleF: TDataModuleF
       FieldName = 'daysleft'
       Origin = 'daysleft'
       ReadOnly = True
+    end
+    object PCloseDiedCnotifqut_p: TFloatField
+      FieldName = 'qut_p'
+      Origin = 'qut_p'
+    end
+    object PCloseDiedCnotifqutini_p: TFloatField
+      FieldName = 'qutini_p'
+      Origin = 'qutini_p'
     end
   end
   object PDiedCnotif: TFDQuery
@@ -1348,7 +1356,7 @@ object DataModuleF: TDataModuleF
     SQL.Strings = (
       'SELECT * FROM charges')
     Left = 567
-    Top = 251
+    Top = 253
     object ChargesTablecode_ch: TIntegerField
       FieldName = 'code_ch'
       Origin = 'code_ch'
@@ -1367,11 +1375,6 @@ object DataModuleF: TDataModuleF
     object ChargesTabletime_ch: TTimeField
       FieldName = 'time_ch'
       Origin = 'time_ch'
-    end
-    object ChargesTableobser_ch: TWideStringField
-      FieldName = 'obser_ch'
-      Origin = 'obser_ch'
-      Size = 200
     end
     object ChargesTablemontht_ch: TCurrencyField
       FieldName = 'montht_ch'
@@ -1459,6 +1462,11 @@ object DataModuleF: TDataModuleF
       KeyFields = 'code_ur'
       Size = 50
       Lookup = True
+    end
+    object ChargesTableobser_ch: TWideStringField
+      FieldName = 'obser_ch'
+      Origin = 'obser_ch'
+      Size = 200
     end
   end
   object Charge_typeTable: TFDQuery
@@ -1604,10 +1612,10 @@ object DataModuleF: TDataModuleF
       FieldKind = fkInternalCalc
       FieldName = 'PrixATTC'
     end
-    object PertesTableobser_pr: TWideMemoField
+    object PertesTableobser_pr: TWideStringField
       FieldName = 'obser_pr'
       Origin = 'obser_pr'
-      BlobType = ftWideMemo
+      Size = 200
     end
   end
   object Perte_typeTable: TFDQuery
@@ -1618,5 +1626,95 @@ object DataModuleF: TDataModuleF
       'SELECT * FROM perte_type')
     Left = 571
     Top = 478
+  end
+  object Transfer_comptesTable: TFDQuery
+    FilterOptions = [foCaseInsensitive]
+    Connection = MainForm.GstockdcConnection
+    FormatOptions.AssignedValues = [fvMapRules]
+    FormatOptions.OwnMapRules = True
+    FormatOptions.MapRules = <
+      item
+        SourceDataType = dtWideMemo
+        TargetDataType = dtWideString
+      end>
+    SQL.Strings = (
+      'SELECT * FROM transfer_comptes')
+    Left = 364
+    Top = 296
+    object Transfer_comptesTablecode_transfer: TIntegerField
+      FieldName = 'code_transfer'
+      Origin = 'code_transfer'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+    end
+    object Transfer_comptesTabledate_transfer: TDateField
+      FieldName = 'date_transfer'
+      Origin = 'date_transfer'
+    end
+    object Transfer_comptesTabletime_transfer: TTimeField
+      FieldName = 'time_transfer'
+      Origin = 'time_transfer'
+    end
+    object Transfer_comptesTablerefer_transfer: TWideStringField
+      FieldName = 'refer_transfer'
+      Origin = 'refer_transfer'
+      Size = 8190
+    end
+    object Transfer_comptesTablemont_transfer: TCurrencyField
+      FieldName = 'mont_transfer'
+      Origin = 'mont_transfer'
+    end
+    object Transfer_comptesTablenum_cheque_transfer: TWideStringField
+      FieldName = 'num_cheque_transfer'
+      Origin = 'num_cheque_transfer'
+      Size = 200
+    end
+    object Transfer_comptesTablecode_mdpai: TSmallintField
+      FieldName = 'code_mdpai'
+      Origin = 'code_mdpai'
+    end
+    object Transfer_comptesTablecode_cmpts: TSmallintField
+      FieldName = 'code_cmpts'
+      Origin = 'code_cmpts'
+    end
+    object Transfer_comptesTablecode_cmptd: TSmallintField
+      FieldName = 'code_cmptd'
+      Origin = 'code_cmptd'
+    end
+    object Transfer_comptesTablecode_ur: TIntegerField
+      FieldName = 'code_ur'
+      Origin = 'code_ur'
+    end
+    object Transfer_comptesTableCompteSource: TStringField
+      FieldKind = fkLookup
+      FieldName = 'CompteSource'
+      LookupDataSet = MainForm.CompteTable
+      LookupKeyFields = 'code_cmpt'
+      LookupResultField = 'nom_cmpt'
+      KeyFields = 'code_cmpts'
+      Lookup = True
+    end
+    object Transfer_comptesTableCompteDis: TStringField
+      FieldKind = fkLookup
+      FieldName = 'CompteDis'
+      LookupDataSet = MainForm.CompteTable
+      LookupKeyFields = 'code_cmpt'
+      LookupResultField = 'nom_cmpt'
+      KeyFields = 'code_cmptd'
+      Lookup = True
+    end
+    object Transfer_comptesTableAgent: TStringField
+      FieldKind = fkLookup
+      FieldName = 'Agent'
+      LookupDataSet = UsersTable
+      LookupKeyFields = 'code_ur'
+      LookupResultField = 'nom_ur'
+      KeyFields = 'code_ur'
+      Lookup = True
+    end
+    object Transfer_comptesTableobser_transfer: TWideStringField
+      FieldName = 'obser_transfer'
+      Origin = 'obser_transfer'
+      Size = 200
+    end
   end
 end

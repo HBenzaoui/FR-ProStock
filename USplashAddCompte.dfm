@@ -217,7 +217,7 @@ object FSplashAddCompte: TFSplashAddCompte
     ParentBackground = False
     ParentCtl3D = False
     ShowCaption = False
-    TabOrder = 0
+    TabOrder = 4
     Visible = False
     StyleElements = []
   end
@@ -232,7 +232,7 @@ object FSplashAddCompte: TFSplashAddCompte
     DoubleBuffered = True
     ParentBackground = False
     ParentDoubleBuffered = False
-    TabOrder = 1
+    TabOrder = 5
     StyleElements = []
     object FormCaptionAddUniteSLbl: TLabel
       Left = 97
@@ -262,7 +262,7 @@ object FSplashAddCompte: TFSplashAddCompte
     DoubleBuffered = True
     ParentBackground = False
     ParentDoubleBuffered = False
-    TabOrder = 2
+    TabOrder = 6
     StyleElements = []
   end
   object NameAddCompteSEdt: TEdit
@@ -283,10 +283,9 @@ object FSplashAddCompte: TFSplashAddCompte
     ParentCtl3D = False
     ParentDoubleBuffered = False
     ParentFont = False
-    TabOrder = 3
+    TabOrder = 0
     StyleElements = [seClient, seBorder]
     OnChange = NameAddCompteSEdtChange
-    OnKeyDown = NumAddCompteSEdtKeyDown
   end
   object NatureAddCompteSCbx: TComboBox
     Left = 125
@@ -301,9 +300,8 @@ object FSplashAddCompte: TFSplashAddCompte
     Font.Style = []
     ItemIndex = 0
     ParentFont = False
-    TabOrder = 4
+    TabOrder = 1
     Text = 'Caisse'
-    OnKeyDown = NumAddCompteSEdtKeyDown
     Items.Strings = (
       'Caisse'
       'Banque')
@@ -326,9 +324,8 @@ object FSplashAddCompte: TFSplashAddCompte
     ParentCtl3D = False
     ParentDoubleBuffered = False
     ParentFont = False
-    TabOrder = 6
+    TabOrder = 3
     StyleElements = [seClient, seBorder]
-    OnKeyDown = NumAddCompteSEdtKeyDown
   end
   object SoldeAddCompteSCbx: TEdit
     Left = 125
@@ -348,10 +345,9 @@ object FSplashAddCompte: TFSplashAddCompte
     ParentCtl3D = False
     ParentDoubleBuffered = False
     ParentFont = False
-    TabOrder = 5
+    TabOrder = 2
     StyleElements = [seClient, seBorder]
     OnExit = SoldeAddCompteSCbxExit
-    OnKeyDown = NumAddCompteSEdtKeyDown
     OnKeyPress = SoldeAddCompteSCbxKeyPress
   end
 end

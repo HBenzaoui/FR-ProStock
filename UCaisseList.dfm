@@ -328,7 +328,7 @@ object CaisseListF: TCaisseListF
     Left = 0
     Top = 82
     Width = 1191
-    Height = 603
+    Height = 612
     Anchors = [akLeft, akTop, akRight, akBottom]
     Border.Color = 4207405
     Border.ExtendedDraw = False
@@ -825,7 +825,7 @@ object CaisseListF: TCaisseListF
     Left = 0
     Top = 82
     Width = 1
-    Height = 604
+    Height = 611
     Align = alLeft
     BevelOuter = bvNone
     Color = 7854350
@@ -835,9 +835,9 @@ object CaisseListF: TCaisseListF
   end
   object Panel4: TPanel
     Left = 0
-    Top = 686
+    Top = 693
     Width = 1191
-    Height = 35
+    Height = 28
     Align = alBottom
     BevelOuter = bvNone
     Color = 4207405
@@ -845,12 +845,12 @@ object CaisseListF: TCaisseListF
     TabOrder = 2
     DesignSize = (
       1191
-      35)
+      28)
     object Shape1: TShape
       Left = 0
       Top = 0
       Width = 320
-      Height = 35
+      Height = 28
       Align = alLeft
       Brush.Color = 4207405
       Pen.Color = 4666873
@@ -859,7 +859,7 @@ object CaisseListF: TCaisseListF
     object SoldIniCaisseListLbl: TLabel
       AlignWithMargins = True
       Left = 98
-      Top = 4
+      Top = 1
       Width = 211
       Height = 25
       Margins.Left = 0
@@ -883,7 +883,7 @@ object CaisseListF: TCaisseListF
     end
     object Label4: TLabel
       Left = 9
-      Top = 9
+      Top = 5
       Width = 82
       Height = 17
       Caption = 'Solde Initial :'
@@ -901,7 +901,7 @@ object CaisseListF: TCaisseListF
       Left = 880
       Top = 0
       Width = 311
-      Height = 35
+      Height = 28
       Align = alRight
       Brush.Color = 4207405
       Pen.Color = 4666873
@@ -911,7 +911,7 @@ object CaisseListF: TCaisseListF
       Left = 320
       Top = 0
       Width = 560
-      Height = 35
+      Height = 28
       Align = alClient
       Brush.Color = 4207405
       Pen.Color = 4666873
@@ -920,7 +920,7 @@ object CaisseListF: TCaisseListF
     end
     object Label5: TLabel
       Left = 326
-      Top = 9
+      Top = 5
       Width = 132
       Height = 17
       Caption = 'Solde de la p'#233'riode :'
@@ -937,7 +937,7 @@ object CaisseListF: TCaisseListF
     object SoldPeriodeCaisseListLbl: TLabel
       AlignWithMargins = True
       Left = 480
-      Top = 5
+      Top = 1
       Width = 209
       Height = 25
       Margins.Left = 0
@@ -962,7 +962,7 @@ object CaisseListF: TCaisseListF
     object SoldTotalCaisseListLbl: TLabel
       AlignWithMargins = True
       Left = 972
-      Top = 5
+      Top = 1
       Width = 211
       Height = 25
       Margins.Left = 0
@@ -987,7 +987,7 @@ object CaisseListF: TCaisseListF
     end
     object Label8: TLabel
       Left = 886
-      Top = 9
+      Top = 5
       Width = 45
       Height = 17
       Anchors = [akTop, akRight]
@@ -1107,8 +1107,8 @@ object CaisseListF: TCaisseListF
       StyleElements = []
     end
     object Label3: TLabel
-      Left = 14
-      Top = 33
+      Left = 12
+      Top = 30
       Width = 94
       Height = 19
       Caption = 'Les Caisses:'
@@ -1333,15 +1333,15 @@ object CaisseListF: TCaisseListF
     end
     object DateEndCaisseListD: TDateTimePicker
       Left = 636
-      Top = 43
+      Top = 44
       Width = 104
-      Height = 29
+      Height = 25
       Date = 42435.595104571760000000
       Time = 42435.595104571760000000
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 4207405
-      Font.Height = 22
-      Font.Name = 'Segoe UI'
+      Font.Height = 17
+      Font.Name = 'Helvetica LT Std'
       Font.Style = []
       ParentFont = False
       TabOrder = 5
@@ -1349,15 +1349,15 @@ object CaisseListF: TCaisseListF
     end
     object DateStartCaisseListD: TDateTimePicker
       Left = 636
-      Top = 8
+      Top = 9
       Width = 104
-      Height = 29
+      Height = 25
       Date = 42435.595104571760000000
       Time = 42435.595104571760000000
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 4207405
-      Font.Height = 22
-      Font.Name = 'Segoe UI'
+      Font.Height = 17
+      Font.Name = 'Helvetica LT Std'
       Font.Style = []
       ParentFont = False
       TabOrder = 6
@@ -1365,13 +1365,13 @@ object CaisseListF: TCaisseListF
     end
     object DaysCaisseListCbx: TComboBox
       Left = 399
-      Top = 26
+      Top = 28
       Width = 189
-      Height = 30
+      Height = 27
       Style = csDropDownList
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = 22
+      Font.Height = 20
       Font.Name = 'Helvetica LT Std'
       Font.Style = []
       ItemIndex = 2
@@ -1390,13 +1390,13 @@ object CaisseListF: TCaisseListF
     end
     object CaisseListCbx: TComboBox
       Left = 112
-      Top = 27
+      Top = 26
       Width = 200
-      Height = 30
+      Height = 27
       Style = csDropDownList
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = 22
+      Font.Height = 20
       Font.Name = 'Helvetica LT Std'
       Font.Style = []
       ItemIndex = 0

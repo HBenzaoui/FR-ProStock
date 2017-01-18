@@ -105,6 +105,8 @@ type
     procedure MontantTTCChargeGEdtClick(Sender: TObject);
     procedure NamePerteGCbxPropertiesChange(Sender: TObject);
     procedure NameChargeGEdtEnter(Sender: TObject);
+    procedure AddModePaieChargeGBtnClick(Sender: TObject);
+    procedure AddCompteChargeGBtnClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -119,7 +121,50 @@ implementation
 {$R *.dfm}
 
 uses System.DateUtils,Winapi.MMSystem,Data.DB,
-UMainF, UDataModule, USplashAddUnite, USplash;
+UMainF, UDataModule, USplashAddUnite, USplash, USplashAddCompte;
+
+procedure TChargesGestionF.AddCompteChargeGBtnClick(Sender: TObject);
+begin
+   //-------- Show the splash screan for the adding comptes ---------//
+    FSplashAddCompte:=TFSplashAddCompte.Create(ChargesGestionF);
+    FSplashAddCompte.Left:=  (MainForm.Left + MainForm.Width div 2) - (FSplashAddCompte.Width div 2);
+    FSplashAddCompte.Top:=  MainForm.Top + 5 ;
+    AnimateWindow(FSplashAddCompte.Handle, 175, AW_VER_POSITIVE OR AW_SLIDE OR AW_ACTIVATE );
+    FSplashAddCompte.Show;
+    FSplashAddCompte.NameAddCompteSEdt.SetFocus;
+    FSplashAddCompte.OKAddCompteSBtn.Tag:= 9 ;//
+end;
+
+procedure TChargesGestionF.AddModePaieChargeGBtnClick(Sender: TObject);
+begin
+   //-------- Show the splash screan for the mode de paiement ---------//
+    FSplashAddUnite:=TFSplashAddUnite.Create(ChargesGestionF);
+    FSplashAddUnite.Width:=330;
+    FSplashAddUnite.Height:=185;
+    FSplashAddUnite.NameAddUniteSLbl.Left:= 11;
+    FSplashAddUnite.NameAddUniteSEdt.Left:=FSplashAddUnite.CompteAddUniteSCbx.Left;
+    FSplashAddUnite.RequiredStarAddUniteSLbl.Left:= FSplashAddUnite.NameAddUniteSEdt.Left + FSplashAddUnite.NameAddUniteSEdt.Width+ 2;
+    FSplashAddUnite.NameAddUniteSErrorP.Left:= (FSplashAddUnite.NameAddUniteSEdt.Left) - 1;
+    FSplashAddUnite.OKAddUniteSBtn.Left:=(FSplashAddUnite.Width div 4) - (FSplashAddUnite.OKAddUniteSBtn.Width div 2) + 18 ;
+    FSplashAddUnite.CancelAddUniteSBtn.Left:= ((FSplashAddUnite.Width div 2 )+((FSplashAddUnite.Width div 2)div 2 ) ) - (FSplashAddUnite.CancelAddUniteSBtn.Width div 2) - 18;
+    FSplashAddUnite.CompteAddUniteSLbl.Visible:=True;
+    FSplashAddUnite.CompteAddUniteSCbx.Visible:=True;
+    FSplashAddUnite.CompteAddUniteSBtn.Visible:=True;
+    FSplashAddUnite.Panel1.Color:= $0040332D ;
+    FSplashAddUnite.LineP.Color:= $0040332D  ;
+    FSplashAddUnite.NameAddUniteSLbl.Caption:='Designation:';
+    FSplashAddUnite.RequiredAddUniteSlbl.Caption:='S''il vous plaît entrer le Designation' ;
+    FSplashAddUnite.FormCaptionAddUniteSLbl.Caption:='Ajouter Mode de Paiement';
+    FSplashAddUnite.FormCaptionAddUniteSLbl.Font.Color:= $00EFE9E8;
+    FSplashAddUnite.RequiredStarAddUniteSLbl.Left:= FSplashAddUnite.NameAddUniteSEdt.Left + FSplashAddUnite.NameAddUniteSEdt.Width + 5;
+    FSplashAddUnite.FormCaptionAddUniteSLbl.Left:=( FSplashAddUnite.Width div 2) -  ( FSplashAddUnite.FormCaptionAddUniteSLbl.Width div 2);
+    FSplashAddUnite.Left:=  (MainForm.Left + MainForm.Width div 2) - (FSplashAddUnite.Width div 2);
+    FSplashAddUnite.Top:=   MainForm.Top + 5;
+    AnimateWindow(FSplashAddUnite.Handle, 175, AW_VER_POSITIVE OR AW_SLIDE OR AW_ACTIVATE );
+    FSplashAddUnite.Show;
+    FSplashAddUnite.NameAddUniteSEdt.SetFocus;
+    FSplashAddUnite.OKAddUniteSBtn.Tag:= 38 ;//
+end;
 
 procedure TChargesGestionF.AddSousTypeChargeGBtnClick(Sender: TObject);
 begin
@@ -226,9 +271,9 @@ end;
 procedure TChargesGestionF.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
 NormalForms  ;
-if Tag = 0 then
-
-FreeAndNil(ChargesGestionF);
+//if Tag = 0 then
+//
+//FreeAndNil(ChargesGestionF);
 end;
 
 procedure TChargesGestionF.FormCreate(Sender: TObject);
@@ -865,7 +910,8 @@ begin
             MainForm.Opt_cas_bnk_CaisseTable.Append;
             MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ocb']:= CodeOCB;
             MainForm.Opt_cas_bnk_CaisseTable.FieldValues['date_ocb']:= DateOf(Today);
-            MainForm.Opt_cas_bnk_CaisseTable.FieldValues['time_ocb']:= TimeOf(Now);;
+            MainForm.Opt_cas_bnk_CaisseTable.FieldValues['time_ocb']:= TimeOf(Now);
+            MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
             MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nom_ocb']:= 'Paiement de Charge Pièce N° '+NumChargeGEdt.Caption;
             MainForm.Opt_cas_bnk_CaisseTable.FieldValues['third_ocb']:= MainForm.UserNameLbl.Caption;
       //      MainForm.Opt_cas_bnk_CaisseTable.FieldValues['encaiss_ocb']:= StrToCurr(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll]));
