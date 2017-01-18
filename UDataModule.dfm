@@ -377,7 +377,7 @@ object DataModuleF: TDataModuleF
       'User_Name=postgres'
       'DriverID=pG')
     LoginPrompt = False
-    Left = 81
+    Left = 83
     Top = 22
   end
   object UsersTable: TFDQuery

@@ -734,6 +734,13 @@ object MainForm: TMainForm
       ParentFont = False
       Visible = False
     end
+    object Label1: TLabel
+      Left = 832
+      Top = 7
+      Width = 31
+      Height = 13
+      Caption = 'Label1'
+    end
     object S01: TPanel
       Left = 104
       Top = 8

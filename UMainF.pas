@@ -797,6 +797,7 @@ type
     Bonp_facTableAgent: TStringField;
     ProduitTableValueStock: TCurrencyField;
     N21: TMenuItem;
+    Label1: TLabel;
     procedure ClientMainFBtnClick(Sender: TObject);
     procedure FourMainFBtnClick(Sender: TObject);
     procedure ProduitMainFBtnClick(Sender: TObject);
@@ -998,6 +999,21 @@ procedure NormalForms;
 begin
   FreeAndNil(gGrayForms);
 end;
+
+
+
+function MemoryUsed: cardinal;
+var
+    st: TMemoryManagerState;
+    sb: TSmallBlockTypeState;
+begin
+    GetMemoryManagerState(st);
+    result := st.TotalAllocatedMediumBlockSize + st.TotalAllocatedLargeBlockSize;
+    for sb in st.SmallBlockTypeStates do begin
+        result := result + sb.UseableBlockSize * sb.AllocatedBlockCount;
+    end;
+end;
+
 
 function ExeAndWait(ExeNameAndParams: string; ncmdShow: Integer = SW_SHOWNORMAL): Integer;
 var
@@ -2777,7 +2793,10 @@ begin
 //    end;
 
     RefreshCNotification;
-   
+
+
+
+   Label1.Caption:= FloatToStr(MemoryUsed)
    
 end;
 
@@ -2922,12 +2941,23 @@ end;
 
 procedure TMainForm.T3Click(Sender: TObject);
 begin
-if Not Assigned(TransferComptesGestionF) then
+//if Not Assigned(TransferComptesGestionF) then
+//
+//     TransferComptesGestionF:= TTransferComptesGestionF.Create(nil) else
+//                                        begin
+//                                          TransferComptesGestionF.Show
+//                                        end;
 
-     TransferComptesGestionF:= TTransferComptesGestionF.Create(Application) else
-                                        begin
-                                          TransferComptesGestionF.Show
-                                        end;
+
+ //-------- Show the splash screan for the TransferComptesGestionF---------//
+
+
+      TransferComptesGestionF:=TTransferComptesGestionF.Create(nil);
+      TransferComptesGestionF.Left:=  (Screen.Width div 2 ) - (TransferComptesGestionF.Width div 2)    ;
+      TransferComptesGestionF.Top:=   (Screen.Height div 2) - (TransferComptesGestionF.Height div 2)    ;
+
+      TransferComptesGestionF.Show;
+
 end;
 
 procedure TMainForm.Timer1Timer(Sender: TObject);
