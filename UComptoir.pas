@@ -217,17 +217,23 @@ procedure Refresh_PreservePosition;
  row: integer;   recNo: integer;
  ds : TDataSet;
 begin
+
+   BonCtrGestionF.ProduitsListDBGridEh.DataSource.DataSet.DisableControls;
+
    ds := TDBGridEh(BonCtrGestionF.ProduitsListDBGridEh).DataSource.DataSet;
    rowDelta := -1 + TDBGridEh(BonCtrGestionF.ProduitsListDBGridEh).Row;
    row := ds.RecNo;
    ds.Refresh;
    with ds do   begin
-     DisableControls;
+//     DisableControls;
      RecNo := row;
      MoveBy(-rowDelta) ;
      MoveBy(rowDelta) ;
-     EnableControls;
+//     EnableControls;
      end;
+
+
+   BonCtrGestionF.ProduitsListDBGridEh.DataSource.DataSet.EnableControls;
  end;
 
  procedure TBonCtrGestionF.EnableBonCtr;
@@ -2155,6 +2161,11 @@ var CodeOCB,CodeRF : Integer;
 procedure TBonCtrGestionF.FormCreate(Sender: TObject);
 begin
 MainForm.Bonv_ctr_listTable.Active:=True;
+if Assigned(ProduitsListF) then
+  begin
+   ProduitsListF.ResearchProduitsEdt.Text:='';
+   MainForm.ProduitTable.Filtered:= False;
+   end;
 end;
 
 procedure TBonCtrGestionF.FormKeyPress(Sender: TObject; var Key: Char);

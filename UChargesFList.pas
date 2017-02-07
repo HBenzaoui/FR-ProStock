@@ -33,9 +33,6 @@ type
     DeleteBARecBtn: TAdvToolButton;
     AddBARecBtn: TAdvToolButton;
     ResearchBACtrLbl: TLabel;
-    sSpeedButton1: TsSpeedButton;
-    sSpeedButton2: TsSpeedButton;
-    sSpeedButton3: TsSpeedButton;
     Label1: TLabel;
     Label2: TLabel;
     FisrtBARecbtn: TsSpeedButton;
@@ -43,7 +40,6 @@ type
     NextBARecbtn: TsSpeedButton;
     LastBARecbtn: TsSpeedButton;
     LineP: TPanel;
-    Panel1: TPanel;
     S01: TPanel;
     S02: TPanel;
     ResearchChargeEdt: TSearchBox;
@@ -61,7 +57,6 @@ type
     PeriodCaiseeListLbl: TLabel;
     Label3: TLabel;
     ChargesListDBGridEh: TDBGridEh;
-    Panel4: TPanel;
     TypeChargeListCbx: TComboBox;
     STypeChargeListCbx: TComboBox;
     PopupMenu1: TPopupMenu;
@@ -71,6 +66,11 @@ type
     StatuBar: TsStatusBar;
     SumGirdProduitBtn: TAdvToolButton;
     RefreshGirdBtn: TAdvToolButton;
+    Panel5: TPanel;
+    AdvToolButton1: TAdvToolButton;
+    AdvToolButton2: TAdvToolButton;
+    AdvToolButton3: TAdvToolButton;
+    Panel6: TPanel;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure AddBARecBtnClick(Sender: TObject);
     procedure FisrtBARecbtnClick(Sender: TObject);
@@ -93,10 +93,10 @@ type
     procedure ChargesListDBGridEhKeyPress(Sender: TObject; var Key: Char);
     procedure P2Click(Sender: TObject);
     procedure P1Click(Sender: TObject);
-    procedure sSpeedButton1Click(Sender: TObject);
-    procedure sSpeedButton3Click(Sender: TObject);
     procedure RefreshGirdBtnClick(Sender: TObject);
     procedure SumGirdProduitBtnClick(Sender: TObject);
+    procedure AdvToolButton1Click(Sender: TObject);
+    procedure AdvToolButton2Click(Sender: TObject);
   private
     procedure GettingData;
     procedure GettingDataRecu;
@@ -300,6 +300,32 @@ begin
         ChargesListDBGridEh.FooterRowCount:=0;
         SumGirdProduitBtn.Tag := 0;
       end;
+end;
+
+procedure TChargesFListF.AdvToolButton1Click(Sender: TObject);
+begin
+DataModuleF.ChargesTable.DisableControls;
+
+    GettingData;
+
+ChargeListfrxRprt.PrepareReport;
+frxXLSExport1.FileName := 'Etat de Charges';
+ChargeListfrxRprt.Export(frxXLSExport1);
+
+DataModuleF.ChargesTable.EnableControls;
+end;
+
+procedure TChargesFListF.AdvToolButton2Click(Sender: TObject);
+begin
+DataModuleF.ChargesTable.DisableControls;
+
+    GettingData;
+
+ChargeListfrxRprt.PrepareReport;
+frxPDFExport1.FileName := 'Etat de Charges';
+ChargeListfrxRprt.Export(frxPDFExport1);
+
+DataModuleF.ChargesTable.EnableControls;
 end;
 
 procedure TChargesFListF.ChargesListDBGridEhDblClick(Sender: TObject);
@@ -677,32 +703,6 @@ begin
         DataModuleF.ChargesTable.EnableControls;
 
      end;
-end;
-
-procedure TChargesFListF.sSpeedButton1Click(Sender: TObject);
-begin
-DataModuleF.ChargesTable.DisableControls;
-
-    GettingData;
-
-ChargeListfrxRprt.PrepareReport;
-frxXLSExport1.FileName := 'Etat de Charges';
-ChargeListfrxRprt.Export(frxXLSExport1);
-
-DataModuleF.ChargesTable.EnableControls;
-end;
-
-procedure TChargesFListF.sSpeedButton3Click(Sender: TObject);
-begin
-DataModuleF.ChargesTable.DisableControls;
-
-    GettingData;
-
-ChargeListfrxRprt.PrepareReport;
-frxPDFExport1.FileName := 'Etat de Charges';
-ChargeListfrxRprt.Export(frxPDFExport1);
-
-DataModuleF.ChargesTable.EnableControls;
 end;
 
 end.

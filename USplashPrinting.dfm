@@ -17,6 +17,7 @@ object FSplashPrinting: TFSplashPrinting
   OnDestroy = FormDestroy
   OnKeyDown = FormKeyDown
   OnKeyPress = FormKeyPress
+  OnShow = FormShow
   DesignSize = (
     546
     291)
@@ -316,7 +317,7 @@ object FSplashPrinting: TFSplashPrinting
     Left = 364
     Top = 205
     Width = 137
-    Height = 21
+    Height = 26
     Alignment = taRightJustify
     Color = clWhite
     Font.Charset = DEFAULT_CHARSET
@@ -410,7 +411,7 @@ object FSplashPrinting: TFSplashPrinting
       object PRODUIT: TfrxMemoView
         Align = baCenter
         Left = 1.322881025000000000
-        Top = 10.582677170000000000
+        Top = 12.582677170000000000
         Width = 148.535437950000000000
         Height = 13.228346460000000000
         DataField = 'nom_p'
@@ -427,6 +428,7 @@ object FSplashPrinting: TFSplashPrinting
         ParentFont = False
       end
       object Name: TfrxMemoView
+        Top = 2.000000000000000000
         Width = 152.314967950000000000
         Height = 10.582677170000000000
         OnBeforePrint = 'TITLEOnBeforePrint'
@@ -439,9 +441,9 @@ object FSplashPrinting: TFSplashPrinting
         ParentFont = False
       end
       object Prix: TfrxMemoView
-        Top = 59.031540000000000000
+        Top = 61.031540000000000000
         Width = 151.181200000000000000
-        Height = 16.629926140000000000
+        Height = 15.118110236220470000
         OnBeforePrint = 'PPA2OnBeforePrint'
         DataSet = frxProduitDB
         DataSetName = 'frxProduitDB'
@@ -459,7 +461,7 @@ object FSplashPrinting: TFSplashPrinting
       object BAR_CODE: TfrxBarCodeView
         Align = baCenter
         Left = 36.090600000000000000
-        Top = 25.338590000000000000
+        Top = 27.338590000000000000
         Width = 79.000000000000000000
         Height = 33.259842520000000000
         OnBeforePrint = 'BAR_CODEOnBeforePrint'

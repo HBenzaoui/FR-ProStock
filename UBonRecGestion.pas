@@ -241,17 +241,22 @@ procedure Refresh_PreservePosition;
  row: integer;   recNo: integer;
  ds : TDataSet;
  begin
- ds := TDBGridEh(BonRecGestionF.ProduitsListDBGridEh).DataSource.DataSet;
- rowDelta := -1 + TDBGridEh(BonRecGestionF.ProduitsListDBGridEh).Row;
- row := ds.RecNo;
- ds.Refresh;
- with ds do   begin
- DisableControls;
- RecNo := row;
- MoveBy(-rowDelta) ;
- MoveBy(rowDelta) ;
- EnableControls;
- end;
+
+   BonRecGestionF.ProduitsListDBGridEh.DataSource.DataSet.DisableControls;
+
+   ds := TDBGridEh(BonRecGestionF.ProduitsListDBGridEh).DataSource.DataSet;
+   rowDelta := -1 + TDBGridEh(BonRecGestionF.ProduitsListDBGridEh).Row;
+   row := ds.RecNo;
+   ds.Refresh;
+   with ds do   begin
+  // DisableControls;
+   RecNo := row;
+   MoveBy(-rowDelta) ;
+   MoveBy(rowDelta) ;
+  // EnableControls;
+   end;
+
+   BonRecGestionF.ProduitsListDBGridEh.DataSource.DataSet.EnableControls;
  end;
 
 procedure TBonRecGestionF.EnableBonRec;
@@ -2407,6 +2412,11 @@ end;
 procedure TBonRecGestionF.FormCreate(Sender: TObject);
 begin
 MainForm.Bona_recPlistTable.Active:=True;
+if Assigned(ProduitsListF) then
+  begin
+   ProduitsListF.ResearchProduitsEdt.Text:='';
+   MainForm.ProduitTable.Filtered:= False;
+   end;
 end;
 
 

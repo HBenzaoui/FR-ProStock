@@ -17,9 +17,6 @@ type
     DeleteBARecBtn: TAdvToolButton;
     AddBARecBtn: TAdvToolButton;
     ResearchBACtrLbl: TLabel;
-    sSpeedButton1: TsSpeedButton;
-    sSpeedButton2: TsSpeedButton;
-    sSpeedButton3: TsSpeedButton;
     Label1: TLabel;
     Label2: TLabel;
     FisrtBARecbtn: TsSpeedButton;
@@ -28,7 +25,6 @@ type
     LastBARecbtn: TsSpeedButton;
     PeriodCaiseeListLbl: TLabel;
     LineP: TPanel;
-    Panel1: TPanel;
     S01: TPanel;
     S02: TPanel;
     ResearchPerteEdt: TSearchBox;
@@ -37,7 +33,6 @@ type
     DateStartPerteD: TDateTimePicker;
     ResherchPerteNumBRdioBtn: TRadioButton;
     ResherchPerteRdioBtn: TRadioButton;
-    Panel4: TPanel;
     TypePerteListCbx: TComboBox;
     Panel3: TPanel;
     PertesListDBGridEh: TDBGridEh;
@@ -49,6 +44,11 @@ type
     StatuBar: TsStatusBar;
     SumGirdProduitBtn: TAdvToolButton;
     RefreshGirdBtn: TAdvToolButton;
+    Panel5: TPanel;
+    AdvToolButton1: TAdvToolButton;
+    AdvToolButton2: TAdvToolButton;
+    AdvToolButton3: TAdvToolButton;
+    Panel6: TPanel;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);
     procedure DateStartPerteDChange(Sender: TObject);
@@ -68,11 +68,11 @@ type
     procedure TypePerteListCbxChange(Sender: TObject);
     procedure TypePerteListCbxExit(Sender: TObject);
     procedure ResherchPerteRdioBtnClick(Sender: TObject);
-    procedure sSpeedButton2Click(Sender: TObject);
-    procedure sSpeedButton1Click(Sender: TObject);
-    procedure sSpeedButton3Click(Sender: TObject);
     procedure RefreshGirdBtnClick(Sender: TObject);
     procedure SumGirdProduitBtnClick(Sender: TObject);
+    procedure AdvToolButton1Click(Sender: TObject);
+    procedure AdvToolButton2Click(Sender: TObject);
+    procedure AdvToolButton3Click(Sender: TObject);
   private
     procedure GettingData;
     { Private declarations }
@@ -112,6 +112,44 @@ begin
   finally
        FreeAndNil(PertesGestionF);
   end;
+end;
+
+procedure TPertesFListF.AdvToolButton1Click(Sender: TObject);
+begin
+DataModuleF.PertesTable.DisableControls;
+
+    GettingData;
+
+PerteListfrxRprt.PrepareReport;
+frxXLSExport1.FileName := 'Etat de Pertes';
+PerteListfrxRprt.Export(frxXLSExport1);
+
+DataModuleF.PertesTable.EnableControls;
+end;
+
+procedure TPertesFListF.AdvToolButton2Click(Sender: TObject);
+begin
+DataModuleF.PertesTable.DisableControls;
+
+    GettingData;
+
+PerteListfrxRprt.PrepareReport;
+frxPDFExport1.FileName := 'Etat de Pertes';
+PerteListfrxRprt.Export(frxPDFExport1);
+
+DataModuleF.PertesTable.EnableControls;
+end;
+
+procedure TPertesFListF.AdvToolButton3Click(Sender: TObject);
+begin
+  DataModuleF.PertesTable.DisableControls;
+   PerteListfrxRprt.PrepareReport;
+   GettingData;
+
+  PerteListfrxRprt.PrepareReport;
+  PerteListfrxRprt.ShowReport;
+
+  DataModuleF.PertesTable.EnableControls;
 end;
 
 procedure TPertesFListF.DateStartPerteDChange(Sender: TObject);
@@ -398,44 +436,6 @@ begin
       Agent:= PerteListfrxRprt.FindObject('Agent') as TfrxMemoView;
   Agent.Text:= MainForm.UserNameLbl.Caption ;
   end;
-
-procedure TPertesFListF.sSpeedButton1Click(Sender: TObject);
-begin
-DataModuleF.PertesTable.DisableControls;
-
-    GettingData;
-
-PerteListfrxRprt.PrepareReport;
-frxXLSExport1.FileName := 'Etat de Pertes';
-PerteListfrxRprt.Export(frxXLSExport1);
-
-DataModuleF.PertesTable.EnableControls;
-end;
-
-procedure TPertesFListF.sSpeedButton2Click(Sender: TObject);
-begin
-  DataModuleF.PertesTable.DisableControls;
-   PerteListfrxRprt.PrepareReport;
-   GettingData;
-
-  PerteListfrxRprt.PrepareReport;
-  PerteListfrxRprt.ShowReport;
-
-  DataModuleF.PertesTable.EnableControls;
-end;
-
-procedure TPertesFListF.sSpeedButton3Click(Sender: TObject);
-begin
-DataModuleF.PertesTable.DisableControls;
-
-    GettingData;
-
-PerteListfrxRprt.PrepareReport;
-frxPDFExport1.FileName := 'Etat de Pertes';
-PerteListfrxRprt.Export(frxPDFExport1);
-
-DataModuleF.PertesTable.EnableControls;
-end;
 
 procedure TPertesFListF.SumGirdProduitBtnClick(Sender: TObject);
 begin

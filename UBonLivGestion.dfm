@@ -3,7 +3,7 @@ object BonLivGestionF: TBonLivGestionF
   Top = 0
   Caption = 'Bon de Livraison'
   ClientHeight = 702
-  ClientWidth = 1089
+  ClientWidth = 1024
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -319,10 +319,11 @@ object BonLivGestionF: TBonLivGestionF
   WindowState = wsMaximized
   OnClose = FormClose
   OnCloseQuery = FormCloseQuery
+  OnCreate = FormCreate
   OnKeyPress = FormKeyPress
   OnShow = FormShow
   DesignSize = (
-    1089
+    1024
     702)
   PixelsPerInch = 96
   TextHeight = 13
@@ -337,12 +338,11 @@ object BonLivGestionF: TBonLivGestionF
     ParentBackground = False
     TabOrder = 0
     StyleElements = []
-    ExplicitHeight = 249
   end
   object TopP2: TPanel
     Left = 0
     Top = 0
-    Width = 1089
+    Width = 1024
     Height = 304
     Align = alTop
     BevelOuter = bvNone
@@ -353,10 +353,10 @@ object BonLivGestionF: TBonLivGestionF
     TabOrder = 1
     StyleElements = []
     DesignSize = (
-      1089
+      1024
       304)
     object Label23: TLabel
-      Left = 872
+      Left = 795
       Top = 135
       Width = 5
       Height = 14
@@ -372,7 +372,7 @@ object BonLivGestionF: TBonLivGestionF
       StyleElements = [seClient, seBorder]
     end
     object RequiredStarProduitGLbl: TLabel
-      Left = 615
+      Left = 536
       Top = 135
       Width = 5
       Height = 14
@@ -390,13 +390,13 @@ object BonLivGestionF: TBonLivGestionF
     object Shape1: TShape
       Left = 7
       Top = 13
-      Width = 340
+      Width = 324
       Height = 187
       Brush.Color = 15527148
       Pen.Color = 4666873
     end
     object EditBVlivBonLivGBtn: TAdvToolButton
-      Left = 626
+      Left = 589
       Top = 18
       Width = 100
       Height = 30
@@ -429,7 +429,7 @@ object BonLivGestionF: TBonLivGestionF
       TMSStyle = 0
     end
     object AddBVlivBonLivGBtn: TAdvToolButton
-      Left = 520
+      Left = 485
       Top = 18
       Width = 100
       Height = 30
@@ -479,7 +479,7 @@ object BonLivGestionF: TBonLivGestionF
       StyleElements = []
     end
     object sSpeedButton1: TsSpeedButton
-      Left = 1010
+      Left = 945
       Top = 18
       Width = 30
       Height = 30
@@ -490,9 +490,10 @@ object BonLivGestionF: TBonLivGestionF
       SkinData.SkinSection = 'SPEEDBUTTON'
       Images = MainForm.PanelIcons24
       ImageIndex = 7
+      ExplicitLeft = 1010
     end
     object sSpeedButton2: TsSpeedButton
-      Left = 965
+      Left = 900
       Top = 18
       Width = 39
       Height = 30
@@ -504,9 +505,10 @@ object BonLivGestionF: TBonLivGestionF
       DropdownMenu = PopupMenu1
       Images = MainForm.PanelIcons24
       ImageIndex = 8
+      ExplicitLeft = 965
     end
     object sSpeedButton3: TsSpeedButton
-      Left = 1046
+      Left = 981
       Top = 18
       Width = 30
       Height = 30
@@ -517,6 +519,7 @@ object BonLivGestionF: TBonLivGestionF
       SkinData.SkinSection = 'SPEEDBUTTON'
       Images = MainForm.PanelIcons24
       ImageIndex = 9
+      ExplicitLeft = 1046
     end
     object Label5: TLabel
       Left = 16
@@ -552,14 +555,15 @@ object BonLivGestionF: TBonLivGestionF
     end
     object NumBonLivGEdt: TLabel
       Left = 163
-      Top = 22
-      Width = 184
+      Top = 25
+      Width = 168
       Height = 22
       AutoSize = False
+      Caption = 'BL2016/12458740'
       Color = 15722984
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 10379008
-      Font.Height = 22
+      Font.Height = -17
       Font.Name = 'Roboto'
       Font.Style = [fsBold]
       ParentColor = False
@@ -567,7 +571,7 @@ object BonLivGestionF: TBonLivGestionF
       StyleElements = []
     end
     object AddClientBonLivGBtn: TAdvToolButton
-      Left = 875
+      Left = 798
       Top = 85
       Width = 26
       Height = 26
@@ -599,7 +603,7 @@ object BonLivGestionF: TBonLivGestionF
       TMSStyle = 0
     end
     object Label8: TLabel
-      Left = 414
+      Left = 383
       Top = 87
       Width = 43
       Height = 18
@@ -615,7 +619,7 @@ object BonLivGestionF: TBonLivGestionF
       StyleElements = []
     end
     object ValiderBVlivBonLivGBtn: TAdvToolButton
-      Left = 732
+      Left = 693
       Top = 17
       Width = 100
       Height = 30
@@ -648,8 +652,8 @@ object BonLivGestionF: TBonLivGestionF
       TMSStyle = 0
     end
     object Label7: TLabel
-      Left = 414
-      Top = 132
+      Left = 383
+      Top = 131
       Width = 43
       Height = 18
       Caption = 'Mode:'
@@ -664,7 +668,7 @@ object BonLivGestionF: TBonLivGestionF
       StyleElements = []
     end
     object AddModePaieBonLivGBtn: TAdvToolButton
-      Left = 618
+      Left = 539
       Top = 128
       Width = 26
       Height = 26
@@ -696,8 +700,8 @@ object BonLivGestionF: TBonLivGestionF
       TMSStyle = 0
     end
     object Label16: TLabel
-      Left = 657
-      Top = 132
+      Left = 574
+      Top = 131
       Width = 57
       Height = 18
       Caption = 'Compte:'
@@ -712,7 +716,7 @@ object BonLivGestionF: TBonLivGestionF
       StyleElements = []
     end
     object AddCompteBonLivGBtn: TAdvToolButton
-      Left = 875
+      Left = 798
       Top = 128
       Width = 26
       Height = 26
@@ -847,7 +851,7 @@ object BonLivGestionF: TBonLivGestionF
       TMSStyle = 0
     end
     object RequiredClientGlbl: TLabel
-      Left = 463
+      Left = 432
       Top = 67
       Width = 411
       Height = 21
@@ -935,7 +939,7 @@ object BonLivGestionF: TBonLivGestionF
       TMSStyle = 0
     end
     object ValiderBVlivBonLivGImg: TsImage
-      Left = 966
+      Left = 901
       Top = 230
       Width = 69
       Height = 72
@@ -948,15 +952,17 @@ object BonLivGestionF: TBonLivGestionF
       ImageIndex = 1
       Images = MainForm.PanelIcons48
       SkinData.SkinSection = 'CHECKBOX'
+      ExplicitLeft = 966
     end
     object Shape5: TShape
-      Left = 903
+      Left = 838
       Top = 65
       Width = 186
       Height = 148
       Anchors = [akTop, akRight]
       Brush.Color = 4207405
       Pen.Color = 4666873
+      ExplicitLeft = 903
     end
     object BonLTotalTTCNewLbl: TLabel
       Left = 266
@@ -986,8 +992,8 @@ object BonLivGestionF: TBonLivGestionF
       Visible = False
     end
     object Label19: TLabel
-      Left = 380
-      Top = 177
+      Left = 349
+      Top = 175
       Width = 77
       Height = 18
       Caption = 'N'#176' Ch'#233'que:'
@@ -1027,7 +1033,7 @@ object BonLivGestionF: TBonLivGestionF
       Visible = False
     end
     object ValiderBVLivBonLivGLbl: TLabel
-      Left = 903
+      Left = 838
       Top = 213
       Width = 186
       Height = 19
@@ -1046,6 +1052,7 @@ object BonLivGestionF: TBonLivGestionF
       Transparent = False
       Layout = tlCenter
       StyleElements = []
+      ExplicitLeft = 903
     end
     object BonLivTotalMargeLbl: TLabel
       Left = 658
@@ -1062,7 +1069,7 @@ object BonLivGestionF: TBonLivGestionF
       Visible = False
     end
     object sSpeedButton7: TsSpeedButton
-      Left = 362
+      Left = 344
       Top = 18
       Width = 30
       Height = 30
@@ -1075,7 +1082,7 @@ object BonLivGestionF: TBonLivGestionF
       ShowCaption = False
     end
     object sSpeedButton6: TsSpeedButton
-      Left = 396
+      Left = 378
       Top = 18
       Width = 30
       Height = 30
@@ -1087,7 +1094,7 @@ object BonLivGestionF: TBonLivGestionF
       ImageIndex = 1
     end
     object sSpeedButton5: TsSpeedButton
-      Left = 430
+      Left = 412
       Top = 18
       Width = 30
       Height = 30
@@ -1100,7 +1107,7 @@ object BonLivGestionF: TBonLivGestionF
       ShowCaption = False
     end
     object sSpeedButton4: TsSpeedButton
-      Left = 464
+      Left = 446
       Top = 18
       Width = 30
       Height = 30
@@ -1112,7 +1119,7 @@ object BonLivGestionF: TBonLivGestionF
       ImageIndex = 3
     end
     object Label24: TLabel
-      Left = 872
+      Left = 795
       Top = 90
       Width = 6
       Height = 16
@@ -1128,8 +1135,8 @@ object BonLivGestionF: TBonLivGestionF
       StyleElements = [seClient, seBorder]
     end
     object RequiredMPGlbl: TLabel
-      Left = 431
-      Top = 113
+      Left = 375
+      Top = 111
       Width = 215
       Height = 15
       Alignment = taCenter
@@ -1148,8 +1155,8 @@ object BonLivGestionF: TBonLivGestionF
       StyleElements = [seClient, seBorder]
     end
     object RequiredCompteGlbl: TLabel
-      Left = 712
-      Top = 113
+      Left = 630
+      Top = 111
       Width = 167
       Height = 15
       Alignment = taCenter
@@ -1168,10 +1175,10 @@ object BonLivGestionF: TBonLivGestionF
       StyleElements = [seClient, seBorder]
     end
     object CompteGErrorP: TPanel
-      Left = 719
-      Top = 124
-      Width = 154
-      Height = 34
+      Left = 632
+      Top = 125
+      Width = 162
+      Height = 29
       BevelOuter = bvNone
       BevelWidth = 2
       Color = 8421631
@@ -1185,10 +1192,10 @@ object BonLivGestionF: TBonLivGestionF
       StyleElements = []
     end
     object ModepPaiGErrorP: TPanel
-      Left = 462
-      Top = 124
-      Width = 154
-      Height = 34
+      Left = 430
+      Top = 125
+      Width = 104
+      Height = 29
       BevelOuter = bvNone
       BevelWidth = 2
       Color = 8421631
@@ -1202,10 +1209,10 @@ object BonLivGestionF: TBonLivGestionF
       StyleElements = []
     end
     object NameClientGErrorP: TPanel
-      Left = 461
-      Top = 80
-      Width = 413
-      Height = 34
+      Left = 431
+      Top = 82
+      Width = 363
+      Height = 29
       BevelOuter = bvNone
       BevelWidth = 2
       Color = 8421631
@@ -1219,9 +1226,9 @@ object BonLivGestionF: TBonLivGestionF
       StyleElements = []
     end
     object Panel7: TPanel
-      Left = 355
+      Left = 337
       Top = 65
-      Width = 548
+      Width = 501
       Height = 2
       Anchors = [akLeft, akTop, akRight]
       BevelOuter = bvNone
@@ -1231,7 +1238,7 @@ object BonLivGestionF: TBonLivGestionF
       StyleElements = []
     end
     object Panel8: TPanel
-      Left = 1085
+      Left = 1020
       Top = 13
       Width = 1
       Height = 40
@@ -1259,7 +1266,7 @@ object BonLivGestionF: TBonLivGestionF
       StyleElements = []
     end
     object Panel9: TPanel
-      Left = 954
+      Left = 889
       Top = 13
       Width = 1
       Height = 40
@@ -1287,7 +1294,7 @@ object BonLivGestionF: TBonLivGestionF
       StyleElements = []
     end
     object Panel10: TPanel
-      Left = 502
+      Left = 480
       Top = 13
       Width = 1
       Height = 40
@@ -1314,7 +1321,7 @@ object BonLivGestionF: TBonLivGestionF
       StyleElements = []
     end
     object Panel11: TPanel
-      Left = 355
+      Left = 338
       Top = 13
       Width = 1
       Height = 40
@@ -1356,14 +1363,14 @@ object BonLivGestionF: TBonLivGestionF
       TabOrder = 7
     end
     object ClientBonLivGCbx: TComboBox
-      Left = 463
+      Left = 432
       Top = 83
-      Width = 409
-      Height = 30
+      Width = 361
+      Height = 27
       Ctl3D = True
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = 22
+      Font.Height = -17
       Font.Name = 'Helvetica LT Std'
       Font.Style = []
       ParentCtl3D = False
@@ -1380,7 +1387,7 @@ object BonLivGestionF: TBonLivGestionF
     object Panel12: TPanel
       Left = 0
       Top = 210
-      Width = 903
+      Width = 838
       Height = 2
       Anchors = [akLeft, akTop, akRight]
       BevelOuter = bvNone
@@ -1428,7 +1435,7 @@ object BonLivGestionF: TBonLivGestionF
     object Panel2: TPanel
       Left = 0
       Top = 302
-      Width = 1089
+      Width = 1024
       Height = 2
       Align = alBottom
       BevelOuter = bvNone
@@ -1454,7 +1461,7 @@ object BonLivGestionF: TBonLivGestionF
       StyleElements = []
     end
     object Panel13: TPanel
-      Left = 355
+      Left = 338
       Top = 81
       Width = 1
       Height = 119
@@ -1481,13 +1488,13 @@ object BonLivGestionF: TBonLivGestionF
       StyleElements = []
     end
     object ModePaieBonLivGCbx: TComboBox
-      Left = 463
+      Left = 432
       Top = 126
-      Width = 152
-      Height = 30
+      Width = 101
+      Height = 27
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = 22
+      Font.Height = -17
       Font.Name = 'Helvetica LT Std'
       Font.Style = []
       ParentFont = False
@@ -1504,13 +1511,13 @@ object BonLivGestionF: TBonLivGestionF
         'Esp'#232'ce')
     end
     object CompteBonLivGCbx: TComboBox
-      Left = 720
+      Left = 633
       Top = 126
-      Width = 152
-      Height = 30
+      Width = 160
+      Height = 27
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = 22
+      Font.Height = -17
       Font.Name = 'Helvetica LT Std'
       Font.Style = []
       ParentFont = False
@@ -1520,7 +1527,7 @@ object BonLivGestionF: TBonLivGestionF
       OnEnter = CompteBonLivGCbxEnter
     end
     object Panel5: TPanel
-      Left = 903
+      Left = 838
       Top = 67
       Width = 186
       Height = 140
@@ -1631,20 +1638,20 @@ object BonLivGestionF: TBonLivGestionF
       end
     end
     object NChequeBonLivGCbx: TEdit
-      Left = 463
+      Left = 432
       Top = 170
-      Width = 409
-      Height = 30
+      Width = 361
+      Height = 27
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = 22
+      Font.Height = -17
       Font.Name = 'Helvetica LT Std'
       Font.Style = []
       ParentFont = False
       TabOrder = 18
     end
     object ObserBonLivGMem: TMemo
-      Left = 24
+      Left = 16
       Top = 124
       Width = 307
       Height = 64
@@ -1680,7 +1687,7 @@ object BonLivGestionF: TBonLivGestionF
   object ProduitsListDBGridEh: TDBGridEh
     Left = 2
     Top = 304
-    Width = 1086
+    Width = 1021
     Height = 277
     Anchors = [akLeft, akTop, akRight, akBottom]
     Border.Color = 4207405
@@ -2057,7 +2064,7 @@ object BonLivGestionF: TBonLivGestionF
   object Panel4: TPanel
     Left = 0
     Top = 582
-    Width = 1089
+    Width = 1024
     Height = 120
     Align = alBottom
     BevelOuter = bvNone
@@ -2066,16 +2073,17 @@ object BonLivGestionF: TBonLivGestionF
     TabOrder = 3
     StyleElements = []
     DesignSize = (
-      1089
+      1024
       120)
     object Shape4: TShape
       Left = 802
       Top = 0
-      Width = 287
+      Width = 222
       Height = 120
       Anchors = [akLeft, akTop, akRight]
       Brush.Color = 4207405
       Pen.Color = 4666873
+      ExplicitWidth = 287
     end
     object Shape3: TShape
       Left = 404
@@ -2384,7 +2392,7 @@ object BonLivGestionF: TBonLivGestionF
       Left = 12
       Top = 62
       Width = 94
-      Height = 55
+      Height = 54
       Caption = 'Bon de '#13#10'Livraison'
       Color = 15722984
       Font.Charset = DEFAULT_CHARSET
@@ -2399,7 +2407,7 @@ object BonLivGestionF: TBonLivGestionF
     object Label21: TLabel
       Left = 804
       Top = 4
-      Width = 280
+      Width = 215
       Height = 21
       Alignment = taCenter
       Anchors = [akLeft, akTop, akRight]
@@ -2414,11 +2422,12 @@ object BonLivGestionF: TBonLivGestionF
       ParentColor = False
       ParentFont = False
       StyleElements = []
+      ExplicitWidth = 280
     end
     object Label22: TLabel
       Left = 804
       Top = 48
-      Width = 280
+      Width = 215
       Height = 21
       Alignment = taCenter
       Anchors = [akLeft, akTop, akRight]
@@ -2433,12 +2442,13 @@ object BonLivGestionF: TBonLivGestionF
       ParentColor = False
       ParentFont = False
       StyleElements = []
+      ExplicitWidth = 280
     end
     object BonLivGOLDStock: TLabel
       AlignWithMargins = True
       Left = 804
       Top = 24
-      Width = 280
+      Width = 215
       Height = 25
       Margins.Left = 0
       Margins.Top = 0
@@ -2459,12 +2469,13 @@ object BonLivGestionF: TBonLivGestionF
       ParentFont = False
       Layout = tlCenter
       StyleElements = []
+      ExplicitWidth = 280
     end
     object BonLivGNEWStock: TLabel
       AlignWithMargins = True
       Left = 804
       Top = 65
-      Width = 280
+      Width = 215
       Height = 29
       Margins.Left = 0
       Margins.Top = 0
@@ -2485,11 +2496,12 @@ object BonLivGestionF: TBonLivGestionF
       ParentFont = False
       Layout = tlCenter
       StyleElements = []
+      ExplicitWidth = 280
     end
     object Label20: TLabel
       Left = 803
       Top = 100
-      Width = 285
+      Width = 220
       Height = 20
       Alignment = taCenter
       Anchors = [akLeft, akRight, akBottom]
@@ -2498,8 +2510,8 @@ object BonLivGestionF: TBonLivGestionF
       Color = 4666873
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
-      Font.Height = 16
-      Font.Name = 'Helvetica LT Std'
+      Font.Height = -11
+      Font.Name = 'Tahoma'
       Font.Style = []
       ParentColor = False
       ParentFont = False
@@ -2507,6 +2519,7 @@ object BonLivGestionF: TBonLivGestionF
       Layout = tlCenter
       Visible = False
       StyleElements = []
+      ExplicitWidth = 285
     end
     object sImage1: TsImage
       Tag = 1
@@ -3771,7 +3784,7 @@ object BonLivGestionF: TBonLivGestionF
     Top = 480
   end
   object PopupMenu1: TPopupMenu
-    Left = 900
+    Left = 804
     Top = 18
     object B1: TMenuItem
       Caption = 'Bon de livraison'

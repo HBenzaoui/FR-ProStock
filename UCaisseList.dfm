@@ -3,7 +3,7 @@ object CaisseListF: TCaisseListF
   Top = 0
   Caption = 'Etat de Caisses'
   ClientHeight = 741
-  ClientWidth = 1191
+  ClientWidth = 1022
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -320,15 +320,15 @@ object CaisseListF: TCaisseListF
   OnPaint = FormShow
   OnShow = FormShow
   DesignSize = (
-    1191
+    1022
     741)
   PixelsPerInch = 96
   TextHeight = 13
   object CaisseListDBGridEh: TDBGridEh
     Left = 0
-    Top = 82
-    Width = 1191
-    Height = 612
+    Top = 68
+    Width = 1022
+    Height = 626
     Anchors = [akLeft, akTop, akRight, akBottom]
     Border.Color = 4207405
     Border.ExtendedDraw = False
@@ -823,28 +823,31 @@ object CaisseListF: TCaisseListF
   end
   object Panel3: TPanel
     Left = 0
-    Top = 82
+    Top = 71
     Width = 1
-    Height = 611
+    Height = 622
     Align = alLeft
     BevelOuter = bvNone
     Color = 7854350
     ParentBackground = False
     TabOrder = 1
     StyleElements = []
+    ExplicitTop = 82
+    ExplicitHeight = 611
   end
   object Panel4: TPanel
     Left = 0
     Top = 693
-    Width = 1191
+    Width = 1022
     Height = 28
     Align = alBottom
     BevelOuter = bvNone
     Color = 4207405
     ParentBackground = False
     TabOrder = 2
+    ExplicitWidth = 968
     DesignSize = (
-      1191
+      1022
       28)
     object Shape1: TShape
       Left = 0
@@ -898,19 +901,20 @@ object CaisseListF: TCaisseListF
       StyleElements = []
     end
     object Shape2: TShape
-      Left = 880
+      Left = 711
       Top = 0
       Width = 311
       Height = 28
       Align = alRight
       Brush.Color = 4207405
       Pen.Color = 4666873
+      ExplicitLeft = 880
       ExplicitHeight = 47
     end
     object Shape3: TShape
       Left = 320
       Top = 0
-      Width = 560
+      Width = 391
       Height = 28
       Align = alClient
       Brush.Color = 4207405
@@ -961,7 +965,7 @@ object CaisseListF: TCaisseListF
     end
     object SoldTotalCaisseListLbl: TLabel
       AlignWithMargins = True
-      Left = 972
+      Left = 803
       Top = 1
       Width = 211
       Height = 25
@@ -984,9 +988,10 @@ object CaisseListF: TCaisseListF
       ParentFont = False
       Layout = tlCenter
       StyleElements = []
+      ExplicitLeft = 972
     end
     object Label8: TLabel
-      Left = 886
+      Left = 717
       Top = 5
       Width = 45
       Height = 17
@@ -1001,13 +1006,14 @@ object CaisseListF: TCaisseListF
       ParentColor = False
       ParentFont = False
       StyleElements = []
+      ExplicitLeft = 886
     end
   end
   object TopP: TPanel
     Left = 0
     Top = 0
-    Width = 1191
-    Height = 82
+    Width = 1022
+    Height = 71
     Align = alTop
     BevelOuter = bvNone
     Color = 15527148
@@ -1016,67 +1022,29 @@ object CaisseListF: TCaisseListF
     ParentDoubleBuffered = False
     TabOrder = 3
     StyleElements = []
+    ExplicitWidth = 968
     DesignSize = (
-      1191
-      82)
+      1022
+      71)
     object PeriodCaiseeListLbl: TLabel
-      Left = 334
-      Top = 32
-      Width = 62
-      Height = 19
+      Left = 314
+      Top = 27
+      Width = 54
+      Height = 17
       Caption = 'P'#233'riode:'
       Color = 15722984
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 4207405
-      Font.Height = 19
+      Font.Height = 17
       Font.Name = 'Helvetica LT Std'
       Font.Style = []
       ParentColor = False
       ParentFont = False
       StyleElements = []
     end
-    object sSpeedButton1: TsSpeedButton
-      Left = 1121
-      Top = 26
-      Width = 30
-      Height = 30
-      Anchors = [akTop, akRight]
-      ParentShowHint = False
-      ShowHint = True
-      OnClick = sSpeedButton1Click
-      SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
-      ImageIndex = 7
-    end
-    object sSpeedButton2: TsSpeedButton
-      Left = 1087
-      Top = 26
-      Width = 30
-      Height = 30
-      Anchors = [akTop, akRight]
-      ParentShowHint = False
-      ShowHint = True
-      OnClick = sSpeedButton2Click
-      SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
-      ImageIndex = 8
-    end
-    object sSpeedButton3: TsSpeedButton
-      Left = 1155
-      Top = 26
-      Width = 30
-      Height = 30
-      Anchors = [akTop, akRight]
-      ParentShowHint = False
-      ShowHint = True
-      OnClick = sSpeedButton3Click
-      SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
-      ImageIndex = 9
-    end
     object Label1: TLabel
-      Left = 607
-      Top = 13
+      Left = 572
+      Top = 10
       Width = 23
       Height = 18
       Caption = 'Du:'
@@ -1091,8 +1059,8 @@ object CaisseListF: TCaisseListF
       StyleElements = []
     end
     object Label2: TLabel
-      Left = 608
-      Top = 48
+      Left = 573
+      Top = 41
       Width = 22
       Height = 18
       Caption = 'Au:'
@@ -1108,14 +1076,14 @@ object CaisseListF: TCaisseListF
     end
     object Label3: TLabel
       Left = 12
-      Top = 30
-      Width = 94
-      Height = 19
+      Top = 27
+      Width = 86
+      Height = 17
       Caption = 'Les Caisses:'
       Color = 15722984
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 4207405
-      Font.Height = 19
+      Font.Height = 17
       Font.Name = 'Helvetica LT Std'
       Font.Style = []
       ParentColor = False
@@ -1123,10 +1091,10 @@ object CaisseListF: TCaisseListF
       StyleElements = []
     end
     object NextCaiseebtn: TsSpeedButton
-      Left = 826
-      Top = 27
-      Width = 30
-      Height = 30
+      Left = 758
+      Top = 23
+      Width = 25
+      Height = 25
       ParentShowHint = False
       ShowHint = True
       OnClick = NextCaiseebtnClick
@@ -1136,10 +1104,10 @@ object CaisseListF: TCaisseListF
       ShowCaption = False
     end
     object PreviosCaiseebtn: TsSpeedButton
-      Left = 792
-      Top = 27
-      Width = 30
-      Height = 30
+      Left = 728
+      Top = 23
+      Width = 25
+      Height = 25
       ParentShowHint = False
       ShowHint = True
       OnClick = PreviosCaiseebtnClick
@@ -1148,10 +1116,10 @@ object CaisseListF: TCaisseListF
       ImageIndex = 1
     end
     object FisrtCaiseebtn: TsSpeedButton
-      Left = 758
-      Top = 27
-      Width = 30
-      Height = 30
+      Left = 698
+      Top = 23
+      Width = 25
+      Height = 25
       ParentShowHint = False
       ShowHint = True
       OnClick = FisrtCaiseebtnClick
@@ -1161,10 +1129,10 @@ object CaisseListF: TCaisseListF
       ShowCaption = False
     end
     object LastCaiseebtn: TsSpeedButton
-      Left = 860
-      Top = 27
-      Width = 30
-      Height = 30
+      Left = 788
+      Top = 23
+      Width = 25
+      Height = 25
       ParentShowHint = False
       ShowHint = True
       OnClick = LastCaiseebtnClick
@@ -1173,10 +1141,10 @@ object CaisseListF: TCaisseListF
       ImageIndex = 3
     end
     object FilterBVLivBtn: TAdvToolButton
-      Left = 894
-      Top = 27
+      Left = 818
+      Top = 23
       Width = 55
-      Height = 30
+      Height = 25
       Cursor = crHandPoint
       AutoThemeAdapt = False
       BorderColor = 7854350
@@ -1207,8 +1175,8 @@ object CaisseListF: TCaisseListF
       TMSStyle = 0
     end
     object sImage2: TsImage
-      Left = 912
-      Top = 6
+      Left = 836
+      Top = 7
       Width = 16
       Height = 16
       Center = True
@@ -1222,8 +1190,8 @@ object CaisseListF: TCaisseListF
       SkinData.SkinSection = 'CHECKBOX'
     end
     object sImage1: TsImage
-      Left = 896
-      Top = 6
+      Left = 820
+      Top = 7
       Width = 16
       Height = 16
       Center = True
@@ -1238,8 +1206,8 @@ object CaisseListF: TCaisseListF
     end
     object LineP: TPanel
       Left = 0
-      Top = 80
-      Width = 1207
+      Top = 69
+      Width = 1038
       Height = 2
       Anchors = [akLeft, akTop, akRight]
       BevelOuter = bvNone
@@ -1247,14 +1215,14 @@ object CaisseListF: TCaisseListF
       ParentBackground = False
       TabOrder = 1
       StyleElements = []
+      ExplicitWidth = 984
     end
-    object Panel1: TPanel
-      Left = 1189
-      Top = 21
+    object Panel2: TPanel
+      Left = 692
+      Top = 16
       Width = 1
       Height = 40
       ParentCustomHint = False
-      Anchors = [akTop, akRight]
       BevelEdges = []
       BevelOuter = bvNone
       BiDiMode = bdLeftToRight
@@ -1276,102 +1244,47 @@ object CaisseListF: TCaisseListF
       TabOrder = 2
       StyleElements = []
     end
-    object S01: TPanel
-      Left = 1080
-      Top = 21
-      Width = 1
-      Height = 40
-      ParentCustomHint = False
-      Anchors = [akTop, akRight]
-      BevelEdges = []
-      BevelOuter = bvNone
-      BiDiMode = bdLeftToRight
-      Color = 4207405
-      Ctl3D = True
-      DoubleBuffered = False
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -11
-      Font.Name = 'Tahoma'
-      Font.Style = []
-      ParentBiDiMode = False
-      ParentBackground = False
-      ParentCtl3D = False
-      ParentDoubleBuffered = False
-      ParentFont = False
-      ParentShowHint = False
-      ShowHint = False
-      TabOrder = 3
-      StyleElements = []
-    end
-    object Panel2: TPanel
-      Left = 749
-      Top = 21
-      Width = 1
-      Height = 40
-      ParentCustomHint = False
-      BevelEdges = []
-      BevelOuter = bvNone
-      BiDiMode = bdLeftToRight
-      Color = 4207405
-      Ctl3D = True
-      DoubleBuffered = False
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -11
-      Font.Name = 'Tahoma'
-      Font.Style = []
-      ParentBiDiMode = False
-      ParentBackground = False
-      ParentCtl3D = False
-      ParentDoubleBuffered = False
-      ParentFont = False
-      ParentShowHint = False
-      ShowHint = False
-      TabOrder = 4
-      StyleElements = []
-    end
     object DateEndCaisseListD: TDateTimePicker
-      Left = 636
-      Top = 44
-      Width = 104
-      Height = 25
+      Left = 600
+      Top = 38
+      Width = 87
+      Height = 24
       Date = 42435.595104571760000000
       Time = 42435.595104571760000000
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 4207405
-      Font.Height = 17
+      Font.Height = 16
       Font.Name = 'Helvetica LT Std'
       Font.Style = []
       ParentFont = False
-      TabOrder = 5
+      TabOrder = 3
       OnChange = DateStartCaisseListDChange
     end
     object DateStartCaisseListD: TDateTimePicker
-      Left = 636
-      Top = 9
-      Width = 104
-      Height = 25
+      Left = 600
+      Top = 7
+      Width = 87
+      Height = 24
       Date = 42435.595104571760000000
       Time = 42435.595104571760000000
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 4207405
-      Font.Height = 17
+      Font.Height = 16
       Font.Name = 'Helvetica LT Std'
       Font.Style = []
       ParentFont = False
-      TabOrder = 6
+      TabOrder = 4
       OnChange = DateStartCaisseListDChange
     end
     object DaysCaisseListCbx: TComboBox
-      Left = 399
-      Top = 28
+      Left = 373
+      Top = 23
       Width = 189
-      Height = 27
+      Height = 25
       Style = csDropDownList
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = 20
+      Font.Height = 17
       Font.Name = 'Helvetica LT Std'
       Font.Style = []
       ItemIndex = 2
@@ -1389,20 +1302,20 @@ object CaisseListF: TCaisseListF
         'Toutes')
     end
     object CaisseListCbx: TComboBox
-      Left = 112
-      Top = 26
+      Left = 103
+      Top = 23
       Width = 200
-      Height = 27
+      Height = 25
       Style = csDropDownList
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = 20
+      Font.Height = 17
       Font.Name = 'Helvetica LT Std'
       Font.Style = []
       ItemIndex = 0
       ParentColor = True
       ParentFont = False
-      TabOrder = 7
+      TabOrder = 5
       Text = 'Tous'
       StyleElements = []
       OnChange = CaisseListCbxChange
@@ -1413,8 +1326,62 @@ object CaisseListF: TCaisseListF
         'Tous')
     end
     object Panel5: TPanel
-      Left = 324
-      Top = 21
+      Left = 308
+      Top = 16
+      Width = 1
+      Height = 40
+      ParentCustomHint = False
+      BevelEdges = []
+      BevelOuter = bvNone
+      BiDiMode = bdLeftToRight
+      Color = 4207405
+      Ctl3D = True
+      DoubleBuffered = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentBiDiMode = False
+      ParentBackground = False
+      ParentCtl3D = False
+      ParentDoubleBuffered = False
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = False
+      TabOrder = 6
+      StyleElements = []
+    end
+    object Panel6: TPanel
+      Left = 567
+      Top = 16
+      Width = 1
+      Height = 40
+      ParentCustomHint = False
+      BevelEdges = []
+      BevelOuter = bvNone
+      BiDiMode = bdLeftToRight
+      Color = 4207405
+      Ctl3D = True
+      DoubleBuffered = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentBiDiMode = False
+      ParentBackground = False
+      ParentCtl3D = False
+      ParentDoubleBuffered = False
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = False
+      TabOrder = 7
+      StyleElements = []
+    end
+    object Panel7: TPanel
+      Left = 878
+      Top = 16
       Width = 1
       Height = 40
       ParentCustomHint = False
@@ -1439,65 +1406,11 @@ object CaisseListF: TCaisseListF
       TabOrder = 8
       StyleElements = []
     end
-    object Panel6: TPanel
-      Left = 598
-      Top = 21
-      Width = 1
-      Height = 40
-      ParentCustomHint = False
-      BevelEdges = []
-      BevelOuter = bvNone
-      BiDiMode = bdLeftToRight
-      Color = 4207405
-      Ctl3D = True
-      DoubleBuffered = False
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -11
-      Font.Name = 'Tahoma'
-      Font.Style = []
-      ParentBiDiMode = False
-      ParentBackground = False
-      ParentCtl3D = False
-      ParentDoubleBuffered = False
-      ParentFont = False
-      ParentShowHint = False
-      ShowHint = False
-      TabOrder = 9
-      StyleElements = []
-    end
-    object Panel7: TPanel
-      Left = 959
-      Top = 21
-      Width = 1
-      Height = 40
-      ParentCustomHint = False
-      BevelEdges = []
-      BevelOuter = bvNone
-      BiDiMode = bdLeftToRight
-      Color = 4207405
-      Ctl3D = True
-      DoubleBuffered = False
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -11
-      Font.Name = 'Tahoma'
-      Font.Style = []
-      ParentBiDiMode = False
-      ParentBackground = False
-      ParentCtl3D = False
-      ParentDoubleBuffered = False
-      ParentFont = False
-      ParentShowHint = False
-      ShowHint = False
-      TabOrder = 10
-      StyleElements = []
-    end
   end
   object StatuBar: TsStatusBar
     Left = 0
     Top = 721
-    Width = 1191
+    Width = 1022
     Height = 20
     BiDiMode = bdLeftToRight
     Panels = <
@@ -1514,8 +1427,9 @@ object CaisseListF: TCaisseListF
     ParentBiDiMode = False
     SizeGrip = False
     SkinData.SkinSection = 'MENUITEM'
+    ExplicitWidth = 968
     DesignSize = (
-      1191
+      1022
       20)
     object PaidOnlyCaisseBtn: TAdvToolButton
       Left = 141
@@ -1585,11 +1499,169 @@ object CaisseListF: TCaisseListF
       Version = '1.6.1.2'
       TMSStyle = 0
     end
+    object AdvToolButton1: TAdvToolButton
+      Left = 175
+      Top = 0
+      Width = 26
+      Height = 20
+      Cursor = crHandPoint
+      Hint = 'Exporter vers Excel'
+      Anchors = [akRight]
+      AutoThemeAdapt = False
+      BorderColor = 15722984
+      BorderDownColor = 15722984
+      BorderHotColor = 14079702
+      Color = 15722984
+      ColorDown = 15722984
+      ColorHot = 14079702
+      ColorHotTo = 14079702
+      ColorChecked = clNone
+      DropDownSplit = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 4207405
+      Font.Height = 18
+      Font.Name = 'Roboto'
+      Font.Style = []
+      ImageIndex = 29
+      Images = MainForm.PanelIcons16
+      ParentFont = False
+      ParentShowHint = False
+      Shaded = False
+      ShowHint = True
+      Spacing = -2
+      OnClick = AdvToolButton1Click
+      Version = '1.6.1.2'
+      TMSStyle = 0
+    end
+    object AdvToolButton2: TAdvToolButton
+      Left = 203
+      Top = 0
+      Width = 26
+      Height = 20
+      Cursor = crHandPoint
+      Hint = 'Exporter vers PDF'
+      Anchors = [akRight]
+      AutoThemeAdapt = False
+      BorderColor = 15722984
+      BorderDownColor = 15722984
+      BorderHotColor = 14079702
+      Color = 15722984
+      ColorDown = 15722984
+      ColorHot = 14079702
+      ColorHotTo = 14079702
+      ColorChecked = clNone
+      DropDownSplit = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 4207405
+      Font.Height = 18
+      Font.Name = 'Roboto'
+      Font.Style = []
+      ImageIndex = 30
+      Images = MainForm.PanelIcons16
+      ParentFont = False
+      ParentShowHint = False
+      Shaded = False
+      ShowHint = True
+      Spacing = -2
+      OnClick = AdvToolButton2Click
+      Version = '1.6.1.2'
+      TMSStyle = 0
+    end
+    object AdvToolButton3: TAdvToolButton
+      Left = 231
+      Top = 0
+      Width = 26
+      Height = 20
+      Cursor = crHandPoint
+      Hint = 'Imprimer'
+      Anchors = [akRight]
+      AutoThemeAdapt = False
+      BorderColor = 15722984
+      BorderDownColor = 15722984
+      BorderHotColor = 14079702
+      Color = 15722984
+      ColorDown = 15722984
+      ColorHot = 14079702
+      ColorHotTo = 14079702
+      ColorChecked = clNone
+      DropDownSplit = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 4207405
+      Font.Height = 18
+      Font.Name = 'Roboto'
+      Font.Style = []
+      ImageIndex = 31
+      Images = MainForm.PanelIcons16
+      ParentFont = False
+      ParentShowHint = False
+      Shaded = False
+      ShowHint = True
+      Spacing = -2
+      OnClick = AdvToolButton3Click
+      Version = '1.6.1.2'
+      TMSStyle = 0
+    end
+    object Panel8: TPanel
+      Left = 170
+      Top = 0
+      Width = 1
+      Height = 20
+      ParentCustomHint = False
+      Anchors = [akTop, akRight]
+      BevelEdges = []
+      BevelOuter = bvNone
+      BiDiMode = bdLeftToRight
+      Color = 13421772
+      Ctl3D = True
+      DoubleBuffered = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentBiDiMode = False
+      ParentBackground = False
+      ParentCtl3D = False
+      ParentDoubleBuffered = False
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = False
+      TabOrder = 0
+      StyleElements = []
+    end
+    object Panel9: TPanel
+      Left = 261
+      Top = 0
+      Width = 1
+      Height = 20
+      ParentCustomHint = False
+      Anchors = [akTop, akRight]
+      BevelEdges = []
+      BevelOuter = bvNone
+      BiDiMode = bdLeftToRight
+      Color = 13421772
+      Ctl3D = True
+      DoubleBuffered = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentBiDiMode = False
+      ParentBackground = False
+      ParentCtl3D = False
+      ParentDoubleBuffered = False
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = False
+      TabOrder = 1
+      StyleElements = []
+    end
   end
   object CaisseListDataS: TDataSource
     DataSet = MainForm.Opt_cas_bnk_CaisseTable
-    Left = 1000
-    Top = 568
+    Left = 842
+    Top = 534
   end
   object CaisseListfrxRprt: TfrxReport
     Version = '5.4.6'
@@ -2307,8 +2379,8 @@ object CaisseListF: TCaisseListF
   end
   object FilterBVLivPMenu: TPopupMenu
     Images = MainForm.PanelIcons16
-    Left = 1058
-    Top = 144
+    Left = 900
+    Top = 110
     object F1: TMenuItem
       Caption = 'Filter par la Transaction'
       SubMenuImages = MainForm.PanelIcons16

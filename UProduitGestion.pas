@@ -933,16 +933,22 @@ I : Integer;
 
        MainForm.FournisseurTable.Refresh;
        FournisseurProduitGCbx.Items.Clear;
-       MainForm.FournisseurTable.Active := True;
-       MainForm.FournisseurTable.first;
+       MainForm.SQLQuery.Active := False;
+       MainForm.SQLQuery.SQL.Clear;
+       MainForm.SQLQuery.SQL.Text:= 'SELECT code_f,nom_f FROM fournisseur GROUP BY code_f,nom_f ';
+       MainForm.SQLQuery.Active := True;
+       MainForm.SQLQuery.first;
 
 
-     for I := 0 to MainForm.FournisseurTable.RecordCount - 1 do
-     if MainForm.FournisseurTable.FieldByName('nom_f').IsNull = False then
+     for I := 0 to MainForm.SQLQuery.RecordCount - 1 do
+     if MainForm.SQLQuery.FieldByName('nom_f').IsNull = False then
      begin
-          FournisseurProduitGCbx.Items.Add(MainForm.FournisseurTable.FieldByName('nom_f').AsString);
-       MainForm.FournisseurTable.Next;
+          FournisseurProduitGCbx.Items.Add(MainForm.SQLQuery.FieldByName('nom_f').AsString);
+       MainForm.SQLQuery.Next;
       end;
+
+       MainForm.SQLQuery.Active := False;
+       MainForm.SQLQuery.SQL.Clear;
   end;
 
 procedure TProduitGestionF.LocalisationProduitGCbxEnter(Sender: TObject);

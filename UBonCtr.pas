@@ -20,14 +20,9 @@ type
     DeleteBVCtrBtn: TAdvToolButton;
     AddBVCtrBtn: TAdvToolButton;
     ResearchBACtrLbl: TLabel;
-    sSpeedButton1: TsSpeedButton;
-    sSpeedButton2: TsSpeedButton;
-    sSpeedButton3: TsSpeedButton;
     Label1: TLabel;
     Label2: TLabel;
     LineP: TPanel;
-    Panel1: TPanel;
-    S01: TPanel;
     S02: TPanel;
     ResearchBVCtrEdt: TSearchBox;
     Panel2: TPanel;
@@ -71,6 +66,11 @@ type
     StatuBar: TsStatusBar;
     SumGirdBVCtrBtn: TAdvToolButton;
     RefreshGirdBtn: TAdvToolButton;
+    Panel5: TPanel;
+    AdvToolButton1: TAdvToolButton;
+    AdvToolButton2: TAdvToolButton;
+    AdvToolButton3: TAdvToolButton;
+    Panel6: TPanel;
     procedure AddBVCtrBtnClick(Sender: TObject);
     procedure EditBVCtrBtnClick(Sender: TObject);
     procedure DeleteBVCtrBtnClick(Sender: TObject);
@@ -82,9 +82,6 @@ type
     procedure ResearchBVCtrEdtChange(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure BVCtrListDBGridEhDblClick(Sender: TObject);
-    procedure sSpeedButton2Click(Sender: TObject);
-    procedure sSpeedButton1Click(Sender: TObject);
-    procedure sSpeedButton3Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure BVCtrListDBGridEhDrawColumnCell(Sender: TObject;
       const Rect: TRect; DataCol: Integer; Column: TColumnEh;
@@ -107,6 +104,9 @@ type
     procedure SumGirdBVCtrBtnClick(Sender: TObject);
     procedure RefreshGirdBtnClick(Sender: TObject);
     procedure ResearchBVCtrEdtKeyPress(Sender: TObject; var Key: Char);
+    procedure AdvToolButton1Click(Sender: TObject);
+    procedure AdvToolButton2Click(Sender: TObject);
+    procedure AdvToolButton3Click(Sender: TObject);
   private
     procedure GettingData;
     procedure FilteredColor;
@@ -869,6 +869,45 @@ begin
   DateStartBVCtrDChange(Sender);
 end;
 
+procedure TBonCtrF.AdvToolButton1Click(Sender: TObject);
+begin
+MainForm.Bonv_ctrTable.DisableControls;
+
+    GettingData;
+
+BonCtrfrxRprt.PrepareReport;
+frxXLSExport1.FileName := 'Listing Comptoir de vente';
+BonCtrfrxRprt.Export(frxXLSExport1);
+
+MainForm.Bonv_ctrTable.EnableControls;
+end;
+
+procedure TBonCtrF.AdvToolButton2Click(Sender: TObject);
+begin
+MainForm.Bonv_ctrTable.DisableControls;
+
+    GettingData;
+
+BonCtrfrxRprt.PrepareReport;
+frxPDFExport1.FileName := 'Listing Comptoir de vente';
+BonCtrfrxRprt.Export(frxPDFExport1);
+
+
+MainForm.Bonv_ctrTable.EnableControls;
+end;
+
+procedure TBonCtrF.AdvToolButton3Click(Sender: TObject);
+begin
+  MainForm.Bonv_ctrTable.DisableControls;
+
+   GettingData;
+
+  BonCtrfrxRprt.PrepareReport;
+  BonCtrfrxRprt.ShowReport;
+
+  MainForm.Bonv_ctrTable.EnableControls;
+end;
+
 procedure TBonCtrF.ATermeMPFilterBVLivPMenuClick(Sender: TObject);
 begin
 FilterBVLivBtn.ImageIndex:=50;
@@ -1122,45 +1161,6 @@ begin
 
   Agent:= BonCtrfrxRprt.FindObject('Agent') as TfrxMemoView;
   Agent.Text:= MainForm.UserNameLbl.Caption ;
-end;
-
-procedure TBonCtrF.sSpeedButton2Click(Sender: TObject);
-begin
-  MainForm.Bonv_ctrTable.DisableControls;
-
-   GettingData;
-
-  BonCtrfrxRprt.PrepareReport;
-  BonCtrfrxRprt.ShowReport;
-
-  MainForm.Bonv_ctrTable.EnableControls;
-end;
-
-procedure TBonCtrF.sSpeedButton1Click(Sender: TObject);
-begin
-MainForm.Bonv_ctrTable.DisableControls;
-
-    GettingData;
-
-BonCtrfrxRprt.PrepareReport;
-frxXLSExport1.FileName := 'Listing Comptoir de vente';
-BonCtrfrxRprt.Export(frxXLSExport1);
-
-MainForm.Bonv_ctrTable.EnableControls;
-end;
-
-procedure TBonCtrF.sSpeedButton3Click(Sender: TObject);
-begin
-MainForm.Bonv_ctrTable.DisableControls;
-
-    GettingData;
-
-BonCtrfrxRprt.PrepareReport;
-frxPDFExport1.FileName := 'Listing Comptoir de vente';
-BonCtrfrxRprt.Export(frxPDFExport1);
-
-
-MainForm.Bonv_ctrTable.EnableControls;
 end;
 
 procedure TBonCtrF.SumGirdBVCtrBtnClick(Sender: TObject);

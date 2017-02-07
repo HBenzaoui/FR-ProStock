@@ -171,7 +171,16 @@ begin
      'SELECT * FROM opt_cas_bnk where code_cmpt = '+ IntToStr(MainForm.CompteTable.FieldByName('code_cmpt').AsInteger) ;
      MainForm.Opt_cas_bnk_CaisseTable.Active:= True;
 
-    if  (MainForm.Opt_cas_bnk_CaisseTable.IsEmpty) AND  (MainForm.SQLQuery.IsEmpty) then
+     MainForm.FDQuery2.Active:= False;
+     MainForm.FDQuery2.SQL.clear;
+     MainForm.FDQuery2.SQL.Text:=
+     'SELECT * FROM transfer_comptes where code_cmpts = '
+     + IntToStr(MainForm.CompteTable.FieldByName('code_cmpt').AsInteger)
+     +' OR code_cmptd = '
+     + IntToStr(MainForm.CompteTable.FieldByName('code_cmpt').AsInteger) ;
+     MainForm.FDQuery2.Active:= True;
+
+    if  (MainForm.Opt_cas_bnk_CaisseTable.IsEmpty) AND  (MainForm.SQLQuery.IsEmpty)  AND  (MainForm.FDQuery2.IsEmpty) then
     begin
       MainForm.CompteTable.Delete;
 
@@ -202,6 +211,20 @@ begin
     end else
         begin
            sndPlaySound('C:\Windows\Media\chord.wav', SND_NODEFAULT Or SND_ASYNC Or  SND_RING);
+           FSplash := TFSplash.Create(nil);
+            try
+              FSplash.Left := MainForm.Width - FSplash.Width - 15 ;
+              FSplash.Top := (MainForm.Height - FSplash.Height ) - 15 ;
+               FSplash.Label1.Font.Height:=21;
+              FSplash.Label1.Caption:='Suppressions ne sont pas autorisés!';
+              FSplash.Color:= $004735F9;
+              AnimateWindow(FSplash.Handle, 100, AW_HOR_NEGATIVE OR AW_SLIDE OR AW_ACTIVATE);
+              sleep(700);
+              AnimateWindow(FSplash.Handle, 100, AW_HOR_POSITIVE OR
+                AW_SLIDE OR AW_HIDE);
+            finally
+              FSplash.free;
+            end;
         end;
    end;
   end else
@@ -227,6 +250,7 @@ begin
       end;
 
        MainForm.SQLQuery.Active:= False;
+       MainForm.FDQuery2.Active:= False;
 end;
 
 procedure TCompteListF.CompteDBGridEhDblClick(Sender: TObject);

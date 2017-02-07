@@ -25,25 +25,19 @@ type
     AddClientsBtn: TAdvToolButton;
     EditClientsBtn: TAdvToolButton;
     DeleteClientsBtn: TAdvToolButton;
-    sSpeedButton1: TsSpeedButton;
-    sSpeedButton2: TsSpeedButton;
     LineP: TPanel;
     S02: TPanel;
-    S01: TPanel;
     Panel1: TPanel;
     ClientsListDBGridEh: TDBGridEh;
     TopP: TPanel;
     ResearchClientsEdt: TSearchBox;
     ClientListDataS: TDataSource;
     toutClientsLbl: TLabel;
-    Label2: TLabel;
     ActifClientsRdioBtn: TRadioButton;
     PassifClientsRdioBtn: TRadioButton;
     toutClientsRdioBtn: TRadioButton;
     Panel2: TPanel;
-    Label3: TLabel;
     PassifClientsLbl: TLabel;
-    Label5: TLabel;
     ActifClientsLbl: TLabel;
     Panel3: TPanel;
     sSpeedButton3: TsSpeedButton;
@@ -56,10 +50,14 @@ type
     PreviosClientbtn: TsSpeedButton;
     NextClientbtn: TsSpeedButton;
     LastClientbtn: TsSpeedButton;
-    Panel5: TPanel;
     StatuBar: TsStatusBar;
     SumGirdBBVlivBtn: TAdvToolButton;
     RefreshGirdBtn: TAdvToolButton;
+    Panel6: TPanel;
+    AdvToolButton1: TAdvToolButton;
+    AdvToolButton2: TAdvToolButton;
+    AdvToolButton3: TAdvToolButton;
+    Panel7: TPanel;
     procedure AddClientsBtnClick(Sender: TObject);
     procedure EditClientsBtnClick(Sender: TObject);
     procedure ResearchClientsEdtChange(Sender: TObject);
@@ -83,12 +81,13 @@ type
     procedure ClientsListDBGridEhDrawColumnCell(Sender: TObject;
       const Rect: TRect; DataCol: Integer; Column: TColumnEh;
       State: TGridDrawState);
-    procedure sSpeedButton2Click(Sender: TObject);
-    procedure sSpeedButton1Click(Sender: TObject);
     procedure sSpeedButton3Click(Sender: TObject);
     procedure FormPaint(Sender: TObject);
     procedure SumGirdBBVlivBtnClick(Sender: TObject);
     procedure RefreshGirdBtnClick(Sender: TObject);
+    procedure AdvToolButton3Click(Sender: TObject);
+    procedure AdvToolButton1Click(Sender: TObject);
+    procedure AdvToolButton2Click(Sender: TObject);
   private
     procedure GettingData;
     { Private declarations }
@@ -551,6 +550,44 @@ begin
 
 end;
 
+procedure TClientListF.AdvToolButton1Click(Sender: TObject);
+begin
+MainForm.ClientTable.DisableControls;
+
+    GettingData;
+
+ClientListfrxRprt.PrepareReport;
+frxXLSExport1.FileName := 'Etat liste des Client';
+ClientListfrxRprt.Export(frxXLSExport1);
+
+MainForm.ClientTable.EnableControls;
+end;
+
+procedure TClientListF.AdvToolButton2Click(Sender: TObject);
+begin
+MainForm.ClientTable.DisableControls;
+
+    GettingData;
+
+ClientListfrxRprt.PrepareReport;
+frxPDFExport1.FileName := 'Etat liste des Client';
+ClientListfrxRprt.Export(frxPDFExport1);
+
+MainForm.ClientTable.EnableControls;
+end;
+
+procedure TClientListF.AdvToolButton3Click(Sender: TObject);
+begin
+  MainForm.ClientTable.DisableControls;
+
+   GettingData;
+
+  ClientListfrxRprt.PrepareReport;
+  ClientListfrxRprt.ShowReport;
+
+  MainForm.ClientTable.EnableControls;
+end;
+
 procedure TClientListF.NextClientbtnClick(Sender: TObject);
 begin
      MainForm.ClientTable.Next;
@@ -700,31 +737,6 @@ begin
       Four.Text:= ToutClientsRdioBtn.Caption
     end;
 
-end;
-
-procedure TClientListF.sSpeedButton2Click(Sender: TObject);
-begin
-  MainForm.ClientTable.DisableControls;
-
-   GettingData;
-
-  ClientListfrxRprt.PrepareReport;
-  ClientListfrxRprt.ShowReport;
-
-  MainForm.ClientTable.EnableControls;
-end;
-
-procedure TClientListF.sSpeedButton1Click(Sender: TObject);
-begin
-MainForm.ClientTable.DisableControls;
-
-    GettingData;
-
-ClientListfrxRprt.PrepareReport;
-frxXLSExport1.FileName := 'Etat liste des Client';
-ClientListfrxRprt.Export(frxXLSExport1);
-
-MainForm.ClientTable.EnableControls;
 end;
 
 procedure TClientListF.sSpeedButton3Click(Sender: TObject);

@@ -21,14 +21,9 @@ type
     DeleteBVFacBtn: TAdvToolButton;
     AddBVFacBtn: TAdvToolButton;
     ResearchBARecLbl: TLabel;
-    sSpeedButton1: TsSpeedButton;
-    sSpeedButton2: TsSpeedButton;
-    sSpeedButton3: TsSpeedButton;
     Label1: TLabel;
     Label2: TLabel;
     LineP: TPanel;
-    Panel1: TPanel;
-    S01: TPanel;
     S02: TPanel;
     ResearchBVFacEdt: TSearchBox;
     Panel2: TPanel;
@@ -73,6 +68,11 @@ type
     StatuBar: TsStatusBar;
     SumGirdBBVFacBtn: TAdvToolButton;
     RefreshGirdBtn: TAdvToolButton;
+    Panel5: TPanel;
+    AdvToolButton1: TAdvToolButton;
+    AdvToolButton2: TAdvToolButton;
+    AdvToolButton3: TAdvToolButton;
+    Panel6: TPanel;
     procedure AddBVFacBtnClick(Sender: TObject);
     procedure DateStartBVFacDChange(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -84,9 +84,6 @@ type
     procedure EditBVFacBtnClick(Sender: TObject);
     procedure DeleteBVFacBtnClick(Sender: TObject);
     procedure BVFacListDBGridEhDblClick(Sender: TObject);
-    procedure sSpeedButton2Click(Sender: TObject);
-    procedure sSpeedButton1Click(Sender: TObject);
-    procedure sSpeedButton3Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure BVFacListDBGridEhKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
@@ -106,6 +103,9 @@ type
     procedure SumGirdBBVFacBtnClick(Sender: TObject);
     procedure RefreshGirdBtnClick(Sender: TObject);
     procedure ResearchBVFacEdtKeyPress(Sender: TObject; var Key: Char);
+    procedure AdvToolButton1Click(Sender: TObject);
+    procedure AdvToolButton2Click(Sender: TObject);
+    procedure AdvToolButton3Click(Sender: TObject);
   private
     procedure GettingData;
     procedure FilteredColor;
@@ -919,6 +919,45 @@ begin
        end;
 end;
 
+procedure TBonFacVF.AdvToolButton1Click(Sender: TObject);
+begin
+MainForm.Bonv_facTable.DisableControls;
+
+    GettingData;
+
+BonFacVfrxRprt.PrepareReport;
+frxXLSExport1.FileName := 'liste des FV';
+BonFacVfrxRprt.Export(frxXLSExport1);
+
+MainForm.Bonv_facTable.EnableControls;
+end;
+
+procedure TBonFacVF.AdvToolButton2Click(Sender: TObject);
+begin
+MainForm.Bonv_facTable.DisableControls;
+
+    GettingData;
+
+BonFacVfrxRprt.PrepareReport;
+frxPDFExport1.FileName := 'liste des FV';
+BonFacVfrxRprt.Export(frxPDFExport1);
+
+
+MainForm.Bonv_facTable.EnableControls;
+end;
+
+procedure TBonFacVF.AdvToolButton3Click(Sender: TObject);
+begin
+  MainForm.Bonv_facTable.DisableControls;
+
+   GettingData;
+
+  BonFacVfrxRprt.PrepareReport;
+  BonFacVfrxRprt.ShowReport;
+
+  MainForm.Bonv_facTable.EnableControls;
+end;
+
 procedure TBonFacVF.ATermeMPFilterBVLivPMenuClick(Sender: TObject);
 begin
 FilterBVLivBtn.ImageIndex:=50;
@@ -1156,45 +1195,6 @@ begin
   Agent.Text:= MainForm.UserNameLbl.Caption ;
 end;
 
-
-procedure TBonFacVF.sSpeedButton2Click(Sender: TObject);
-begin
-  MainForm.Bonv_facTable.DisableControls;
-
-   GettingData;
-
-  BonFacVfrxRprt.PrepareReport;
-  BonFacVfrxRprt.ShowReport;
-
-  MainForm.Bonv_facTable.EnableControls;
-end;
-
-procedure TBonFacVF.sSpeedButton1Click(Sender: TObject);
-begin
-MainForm.Bonv_facTable.DisableControls;
-
-    GettingData;
-
-BonFacVfrxRprt.PrepareReport;
-frxXLSExport1.FileName := 'liste des FV';
-BonFacVfrxRprt.Export(frxXLSExport1);
-
-MainForm.Bonv_facTable.EnableControls;
-end;
-
-procedure TBonFacVF.sSpeedButton3Click(Sender: TObject);
-begin
-MainForm.Bonv_facTable.DisableControls;
-
-    GettingData;
-
-BonFacVfrxRprt.PrepareReport;
-frxPDFExport1.FileName := 'liste des FV';
-BonFacVfrxRprt.Export(frxPDFExport1);
-
-
-MainForm.Bonv_facTable.EnableControls;
-end;
 
 procedure TBonFacVF.SumGirdBBVFacBtnClick(Sender: TObject);
 begin

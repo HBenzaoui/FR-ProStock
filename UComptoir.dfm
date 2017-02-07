@@ -3,7 +3,7 @@ object BonCtrGestionF: TBonCtrGestionF
   Top = 0
   Caption = 'BonCtrGestionF'
   ClientHeight = 702
-  ClientWidth = 1343
+  ClientWidth = 994
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -330,7 +330,7 @@ object BonCtrGestionF: TBonCtrGestionF
   object ProduitsListDBGridEh: TDBGridEh
     Left = 2
     Top = 248
-    Width = 1100
+    Width = 751
     Height = 356
     Align = alCustom
     Anchors = [akLeft, akTop, akRight, akBottom]
@@ -720,7 +720,7 @@ object BonCtrGestionF: TBonCtrGestionF
   object Panel5: TPanel
     Left = 0
     Top = 133
-    Width = 1125
+    Width = 776
     Height = 115
     Align = alCustom
     Anchors = [akLeft, akTop, akRight]
@@ -729,7 +729,7 @@ object BonCtrGestionF: TBonCtrGestionF
     ParentBackground = False
     TabOrder = 1
     DesignSize = (
-      1125
+      776
       115)
     object Label6: TLabel
       Left = 9
@@ -749,7 +749,7 @@ object BonCtrGestionF: TBonCtrGestionF
       StyleElements = []
     end
     object ListAddProduitBonCtrGBtn: TAdvToolButton
-      Left = 917
+      Left = 568
       Top = 49
       Width = 71
       Height = 38
@@ -779,10 +779,11 @@ object BonCtrGestionF: TBonCtrGestionF
       Spacing = -1
       OnClick = ListAddProduitBonCtrGBtnClick
       Version = '1.6.1.2'
+      ExplicitLeft = 917
       TMSStyle = 0
     end
     object NewAddProduitBonCtrGBtn: TAdvToolButton
-      Left = 995
+      Left = 646
       Top = 49
       Width = 100
       Height = 38
@@ -812,10 +813,11 @@ object BonCtrGestionF: TBonCtrGestionF
       Spacing = -1
       OnClick = NewAddProduitBonCtrGBtnClick
       Version = '1.6.1.2'
+      ExplicitLeft = 995
       TMSStyle = 0
     end
     object EnterAddProduitBonCtrGBtn: TAdvToolButton
-      Left = 871
+      Left = 522
       Top = 49
       Width = 38
       Height = 38
@@ -844,12 +846,13 @@ object BonCtrGestionF: TBonCtrGestionF
       Spacing = -1
       OnClick = EnterAddProduitBonCtrGBtnClick
       Version = '1.6.1.2'
+      ExplicitLeft = 871
       TMSStyle = 0
     end
     object Label20: TLabel
       Left = 107
       Top = 87
-      Width = 758
+      Width = 409
       Height = 27
       Alignment = taCenter
       Anchors = [akLeft, akTop, akRight]
@@ -870,7 +873,7 @@ object BonCtrGestionF: TBonCtrGestionF
       ExplicitWidth = 373
     end
     object ClearProduitBonCtrGBtn: TsSpeedButton
-      Left = 924
+      Left = 575
       Top = 2
       Width = 30
       Height = 30
@@ -883,9 +886,10 @@ object BonCtrGestionF: TBonCtrGestionF
       SkinData.SkinSection = 'SPEEDBUTTON'
       Images = MainForm.PanelIcons24
       ImageIndex = 16
+      ExplicitLeft = 924
     end
     object ShowCalculaturBonCtrGBtn: TsSpeedButton
-      Left = 960
+      Left = 611
       Top = 2
       Width = 30
       Height = 30
@@ -897,9 +901,10 @@ object BonCtrGestionF: TBonCtrGestionF
       SkinData.SkinSection = 'SPEEDBUTTON'
       Images = MainForm.PanelIcons24
       ImageIndex = 24
+      ExplicitLeft = 960
     end
     object ShowKeyBoardBonCtrGBtn: TsSpeedButton
-      Left = 996
+      Left = 647
       Top = 2
       Width = 30
       Height = 30
@@ -911,9 +916,10 @@ object BonCtrGestionF: TBonCtrGestionF
       SkinData.SkinSection = 'SPEEDBUTTON'
       Images = MainForm.PanelIcons24
       ImageIndex = 43
+      ExplicitLeft = 996
     end
     object DeleteProduitBonCtrGBtn: TsSpeedButton
-      Left = 888
+      Left = 539
       Top = 2
       Width = 30
       Height = 30
@@ -926,9 +932,10 @@ object BonCtrGestionF: TBonCtrGestionF
       SkinData.SkinSection = 'SPEEDBUTTON'
       Images = MainForm.PanelIcons24
       ImageIndex = 14
+      ExplicitLeft = 888
     end
     object CloseBonCtrGBtn: TsSpeedButton
-      Left = 1068
+      Left = 719
       Top = 2
       Width = 30
       Height = 30
@@ -940,9 +947,10 @@ object BonCtrGestionF: TBonCtrGestionF
       SkinData.SkinSection = 'SPEEDBUTTON'
       Images = MainForm.PanelIcons24
       ImageIndex = 45
+      ExplicitLeft = 1068
     end
     object MinimizeBonCtrGBtn: TsSpeedButton
-      Left = 1032
+      Left = 683
       Top = 2
       Width = 30
       Height = 30
@@ -954,9 +962,10 @@ object BonCtrGestionF: TBonCtrGestionF
       SkinData.SkinSection = 'SPEEDBUTTON'
       Images = MainForm.PanelIcons24
       ImageIndex = 44
+      ExplicitLeft = 1032
     end
     object sImage3: TsImage
-      Left = 839
+      Left = 490
       Top = 29
       Width = 26
       Height = 20
@@ -969,9 +978,10 @@ object BonCtrGestionF: TBonCtrGestionF
       ImageIndex = 46
       Images = MainForm.PanelIcons24
       SkinData.SkinSection = 'CHECKBOX'
+      ExplicitLeft = 839
     end
     object sImage2: TsImage
-      Left = 814
+      Left = 465
       Top = 29
       Width = 26
       Height = 20
@@ -984,6 +994,7 @@ object BonCtrGestionF: TBonCtrGestionF
       ImageIndex = 47
       Images = MainForm.PanelIcons24
       SkinData.SkinSection = 'CHECKBOX'
+      ExplicitLeft = 814
     end
     object BonCRemiseHTNewLbl: TLabel
       Left = 8
@@ -1026,8 +1037,8 @@ object BonCtrGestionF: TBonCtrGestionF
       Visible = False
     end
     object BonCTRTotalMargeLbl: TLabel
-      Left = 634
-      Top = 0
+      Left = 170
+      Top = 2
       Width = 157
       Height = 20
       Caption = 'BonCTRTotalMargeLbl'
@@ -1042,7 +1053,7 @@ object BonCtrGestionF: TBonCtrGestionF
     object Panel6: TPanel
       Left = 0
       Top = 113
-      Width = 1125
+      Width = 776
       Height = 2
       Align = alBottom
       BevelOuter = bvNone
@@ -1082,13 +1093,13 @@ object BonCtrGestionF: TBonCtrGestionF
       OnKeyPress = ProduitBonCtrGCbxKeyPress
       OnMouseEnter = ProduitBonCtrGCbxMouseEnter
       Height = 38
-      Width = 758
+      Width = 409
     end
   end
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 1343
+    Width = 994
     Height = 133
     Align = alTop
     BevelOuter = bvNone
@@ -1096,12 +1107,12 @@ object BonCtrGestionF: TBonCtrGestionF
     ParentBackground = False
     TabOrder = 0
     DesignSize = (
-      1343
+      994
       133)
     object BonCtrTotalTTCLbl: TLabel
       Left = -2
       Top = 19
-      Width = 1255
+      Width = 906
       Height = 118
       Alignment = taCenter
       Anchors = [akLeft, akRight]
@@ -1130,7 +1141,7 @@ object BonCtrGestionF: TBonCtrGestionF
       ParentFont = False
     end
     object Label17: TLabel
-      Left = 1226
+      Left = 877
       Top = 4
       Width = 113
       Height = 28
@@ -1144,9 +1155,10 @@ object BonCtrGestionF: TBonCtrGestionF
       Font.Style = [fsBold]
       ParentBiDiMode = False
       ParentFont = False
+      ExplicitLeft = 1226
     end
     object Label10: TLabel
-      Left = 1259
+      Left = 910
       Top = 44
       Width = 80
       Height = 14
@@ -1166,7 +1178,7 @@ object BonCtrGestionF: TBonCtrGestionF
     end
     object BonCtrGOLDStock: TLabel
       AlignWithMargins = True
-      Left = 1321
+      Left = 972
       Top = 59
       Width = 13
       Height = 25
@@ -1190,7 +1202,7 @@ object BonCtrGestionF: TBonCtrGestionF
       ExplicitLeft = 936
     end
     object Label11: TLabel
-      Left = 1252
+      Left = 903
       Top = 87
       Width = 87
       Height = 14
@@ -1210,7 +1222,7 @@ object BonCtrGestionF: TBonCtrGestionF
     end
     object BonCtrGNEWStock: TLabel
       AlignWithMargins = True
-      Left = 1321
+      Left = 972
       Top = 103
       Width = 13
       Height = 25
@@ -1251,7 +1263,7 @@ object BonCtrGestionF: TBonCtrGestionF
     object Panel3: TPanel
       Left = 0
       Top = 131
-      Width = 1343
+      Width = 994
       Height = 2
       Align = alBottom
       BevelOuter = bvNone
@@ -1261,7 +1273,7 @@ object BonCtrGestionF: TBonCtrGestionF
     end
   end
   object Panel9: TPanel
-    Left = 1342
+    Left = 993
     Top = 133
     Width = 1
     Height = 471
@@ -1274,7 +1286,7 @@ object BonCtrGestionF: TBonCtrGestionF
   object Panel10: TPanel
     Left = 0
     Top = 700
-    Width = 1343
+    Width = 994
     Height = 2
     Align = alBottom
     BevelOuter = bvNone
@@ -1296,7 +1308,7 @@ object BonCtrGestionF: TBonCtrGestionF
   object Panel12: TPanel
     Left = 0
     Top = 604
-    Width = 1343
+    Width = 994
     Height = 96
     Align = alBottom
     BevelOuter = bvNone
@@ -1407,7 +1419,7 @@ object BonCtrGestionF: TBonCtrGestionF
     object Panel11: TPanel
       Left = 0
       Top = 0
-      Width = 1343
+      Width = 994
       Height = 2
       Align = alTop
       BevelOuter = bvNone
@@ -1416,7 +1428,7 @@ object BonCtrGestionF: TBonCtrGestionF
       TabOrder = 1
     end
     object Panel20: TPanel
-      Left = 1099
+      Left = 750
       Top = 2
       Width = 1
       Height = 94
@@ -1444,7 +1456,7 @@ object BonCtrGestionF: TBonCtrGestionF
       StyleElements = []
     end
     object Panel18: TPanel
-      Left = 1100
+      Left = 751
       Top = 2
       Width = 243
       Height = 94
@@ -1523,7 +1535,7 @@ object BonCtrGestionF: TBonCtrGestionF
       end
     end
     object Panel22: TPanel
-      Left = 964
+      Left = 615
       Top = 2
       Width = 135
       Height = 94
@@ -1686,7 +1698,7 @@ object BonCtrGestionF: TBonCtrGestionF
     object Panel17: TPanel
       Left = 179
       Top = 2
-      Width = 785
+      Width = 436
       Height = 94
       Align = alClient
       AutoSize = True
@@ -1697,7 +1709,7 @@ object BonCtrGestionF: TBonCtrGestionF
       object GridPanel1: TGridPanel
         Left = 0
         Top = 0
-        Width = 785
+        Width = 436
         Height = 94
         Align = alClient
         Color = 15527148
@@ -1743,13 +1755,13 @@ object BonCtrGestionF: TBonCtrGestionF
         ShowCaption = False
         TabOrder = 0
         DesignSize = (
-          785
+          436
           94)
         object AddBVCtrBonCtrGBtn: TAdvToolButton
           AlignWithMargins = True
           Left = 5
           Top = 17
-          Width = 190
+          Width = 103
           Height = 55
           Cursor = crHandPoint
           Margins.Left = 4
@@ -1782,13 +1794,14 @@ object BonCtrGestionF: TBonCtrGestionF
           Spacing = -1
           OnClick = AddBVCtrBonCtrGBtnClick
           Version = '1.6.1.2'
+          ExplicitWidth = 190
           TMSStyle = 0
         end
         object EditBVCtrBonCtrGBtn: TAdvToolButton
           AlignWithMargins = True
-          Left = 200
+          Left = 113
           Top = 17
-          Width = 190
+          Width = 103
           Height = 55
           Cursor = crHandPoint
           Margins.Left = 4
@@ -1826,9 +1839,9 @@ object BonCtrGestionF: TBonCtrGestionF
         end
         object ValiderBVCtrBonCtrGBtn: TAdvToolButton
           AlignWithMargins = True
-          Left = 395
+          Left = 221
           Top = 17
-          Width = 190
+          Width = 103
           Height = 55
           Cursor = crHandPoint
           Margins.Left = 4
@@ -1866,9 +1879,9 @@ object BonCtrGestionF: TBonCtrGestionF
         end
         object ExValiderBVCtrBonCtrGBtn: TAdvToolButton
           AlignWithMargins = True
-          Left = 590
+          Left = 329
           Top = 17
-          Width = 193
+          Width = 105
           Height = 55
           Cursor = crHandPoint
           Margins.Left = 4
@@ -1901,13 +1914,14 @@ object BonCtrGestionF: TBonCtrGestionF
           Spacing = -1
           OnClick = ExValiderBVCtrBonCtrGBtnClick
           Version = '1.6.1.2'
+          ExplicitWidth = 193
           TMSStyle = 0
         end
       end
     end
   end
   object right: TPanel
-    Left = 1099
+    Left = 750
     Top = 133
     Width = 243
     Height = 471

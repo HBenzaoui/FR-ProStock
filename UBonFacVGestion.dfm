@@ -3,7 +3,7 @@ object BonFacVGestionF: TBonFacVGestionF
   Top = 0
   Caption = 'Facture de Vente'
   ClientHeight = 702
-  ClientWidth = 1089
+  ClientWidth = 1024
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -322,7 +322,7 @@ object BonFacVGestionF: TBonFacVGestionF
   OnKeyPress = FormKeyPress
   OnShow = FormShow
   DesignSize = (
-    1089
+    1024
     702)
   PixelsPerInch = 96
   TextHeight = 13
@@ -341,7 +341,7 @@ object BonFacVGestionF: TBonFacVGestionF
   object TopP2: TPanel
     Left = 0
     Top = 0
-    Width = 1089
+    Width = 1024
     Height = 304
     Align = alTop
     BevelOuter = bvNone
@@ -351,12 +351,13 @@ object BonFacVGestionF: TBonFacVGestionF
     ParentDoubleBuffered = False
     TabOrder = 1
     StyleElements = []
+    ExplicitWidth = 1089
     DesignSize = (
-      1089
+      1024
       304)
     object Label9: TLabel
-      Left = 872
-      Top = 135
+      Left = 796
+      Top = 133
       Width = 5
       Height = 14
       Caption = '*'
@@ -373,13 +374,13 @@ object BonFacVGestionF: TBonFacVGestionF
     object Shape1: TShape
       Left = 7
       Top = 13
-      Width = 340
+      Width = 324
       Height = 187
       Brush.Color = 15527148
       Pen.Color = 11544476
     end
     object EditBVFacBonFacVGBtn: TAdvToolButton
-      Left = 626
+      Left = 589
       Top = 18
       Width = 100
       Height = 30
@@ -412,7 +413,7 @@ object BonFacVGestionF: TBonFacVGestionF
       TMSStyle = 0
     end
     object AddBVFacBonFacVGBtn: TAdvToolButton
-      Left = 520
+      Left = 485
       Top = 18
       Width = 100
       Height = 30
@@ -462,7 +463,7 @@ object BonFacVGestionF: TBonFacVGestionF
       StyleElements = []
     end
     object sSpeedButton1: TsSpeedButton
-      Left = 1010
+      Left = 945
       Top = 18
       Width = 30
       Height = 30
@@ -473,9 +474,10 @@ object BonFacVGestionF: TBonFacVGestionF
       SkinData.SkinSection = 'SPEEDBUTTON'
       Images = MainForm.PanelIcons24
       ImageIndex = 7
+      ExplicitLeft = 1010
     end
     object sSpeedButton2: TsSpeedButton
-      Left = 965
+      Left = 900
       Top = 18
       Width = 39
       Height = 30
@@ -488,9 +490,10 @@ object BonFacVGestionF: TBonFacVGestionF
       DropdownMenu = PopupMenu1
       Images = MainForm.PanelIcons24
       ImageIndex = 8
+      ExplicitLeft = 965
     end
     object sSpeedButton3: TsSpeedButton
-      Left = 1046
+      Left = 981
       Top = 18
       Width = 30
       Height = 30
@@ -501,6 +504,7 @@ object BonFacVGestionF: TBonFacVGestionF
       SkinData.SkinSection = 'SPEEDBUTTON'
       Images = MainForm.PanelIcons24
       ImageIndex = 9
+      ExplicitLeft = 1046
     end
     object Label5: TLabel
       Left = 16
@@ -536,14 +540,14 @@ object BonFacVGestionF: TBonFacVGestionF
     end
     object NumBonFacVGEdt: TLabel
       Left = 166
-      Top = 22
+      Top = 25
       Width = 181
       Height = 22
       AutoSize = False
       Color = 15722984
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 10379008
-      Font.Height = 22
+      Font.Height = -17
       Font.Name = 'Roboto'
       Font.Style = [fsBold]
       ParentColor = False
@@ -551,8 +555,8 @@ object BonFacVGestionF: TBonFacVGestionF
       StyleElements = []
     end
     object AddClientBonFacVGBtn: TAdvToolButton
-      Left = 875
-      Top = 85
+      Left = 799
+      Top = 83
       Width = 26
       Height = 26
       Cursor = crHandPoint
@@ -583,7 +587,7 @@ object BonFacVGestionF: TBonFacVGestionF
       TMSStyle = 0
     end
     object Label8: TLabel
-      Left = 414
+      Left = 385
       Top = 87
       Width = 43
       Height = 18
@@ -599,7 +603,7 @@ object BonFacVGestionF: TBonFacVGestionF
       StyleElements = []
     end
     object ValiderBVFacBonFacVGBtn: TAdvToolButton
-      Left = 732
+      Left = 693
       Top = 18
       Width = 100
       Height = 30
@@ -632,8 +636,8 @@ object BonFacVGestionF: TBonFacVGestionF
       TMSStyle = 0
     end
     object Label7: TLabel
-      Left = 414
-      Top = 132
+      Left = 385
+      Top = 131
       Width = 43
       Height = 18
       Caption = 'Mode:'
@@ -648,7 +652,7 @@ object BonFacVGestionF: TBonFacVGestionF
       StyleElements = []
     end
     object AddModePaieBonFacVGBtn: TAdvToolButton
-      Left = 618
+      Left = 540
       Top = 128
       Width = 26
       Height = 26
@@ -680,8 +684,8 @@ object BonFacVGestionF: TBonFacVGestionF
       TMSStyle = 0
     end
     object Label16: TLabel
-      Left = 657
-      Top = 132
+      Left = 574
+      Top = 131
       Width = 57
       Height = 18
       Caption = 'Compte:'
@@ -696,8 +700,8 @@ object BonFacVGestionF: TBonFacVGestionF
       StyleElements = []
     end
     object AddCompteBonFacVGBtn: TAdvToolButton
-      Left = 875
-      Top = 128
+      Left = 799
+      Top = 126
       Width = 26
       Height = 26
       Cursor = crHandPoint
@@ -831,7 +835,7 @@ object BonFacVGestionF: TBonFacVGestionF
       TMSStyle = 0
     end
     object RequiredClientGlbl: TLabel
-      Left = 463
+      Left = 407
       Top = 67
       Width = 411
       Height = 30
@@ -919,7 +923,7 @@ object BonFacVGestionF: TBonFacVGestionF
       TMSStyle = 0
     end
     object ValiderBVFacBonFacVGImg: TsImage
-      Left = 966
+      Left = 901
       Top = 230
       Width = 69
       Height = 72
@@ -932,15 +936,17 @@ object BonFacVGestionF: TBonFacVGestionF
       ImageIndex = 1
       Images = MainForm.PanelIcons48
       SkinData.SkinSection = 'CHECKBOX'
+      ExplicitLeft = 966
     end
     object Shape5: TShape
-      Left = 903
+      Left = 838
       Top = 65
       Width = 186
       Height = 148
       Anchors = [akTop, akRight]
       Brush.Color = 4207405
       Pen.Color = 11544476
+      ExplicitLeft = 903
     end
     object BonFVTotalTTCNewLbl: TLabel
       Left = 304
@@ -967,8 +973,8 @@ object BonFacVGestionF: TBonFacVGestionF
       Visible = False
     end
     object Label19: TLabel
-      Left = 380
-      Top = 177
+      Left = 351
+      Top = 175
       Width = 77
       Height = 18
       Caption = 'N'#176' Ch'#233'que:'
@@ -1007,7 +1013,7 @@ object BonFacVGestionF: TBonFacVGestionF
       Visible = False
     end
     object ValiderBVFacBonFacVGLbl: TLabel
-      Left = 903
+      Left = 838
       Top = 213
       Width = 186
       Height = 19
@@ -1026,9 +1032,10 @@ object BonFacVGestionF: TBonFacVGestionF
       Transparent = False
       Layout = tlCenter
       StyleElements = []
+      ExplicitLeft = 903
     end
     object RequiredStarProduitGLbl: TLabel
-      Left = 614
+      Left = 536
       Top = 135
       Width = 5
       Height = 14
@@ -1044,8 +1051,8 @@ object BonFacVGestionF: TBonFacVGestionF
       StyleElements = [seClient, seBorder]
     end
     object Label3: TLabel
-      Left = 872
-      Top = 90
+      Left = 796
+      Top = 88
       Width = 6
       Height = 16
       Caption = '*'
@@ -1074,7 +1081,7 @@ object BonFacVGestionF: TBonFacVGestionF
       Visible = False
     end
     object sSpeedButton7: TsSpeedButton
-      Left = 363
+      Left = 344
       Top = 18
       Width = 30
       Height = 30
@@ -1087,7 +1094,7 @@ object BonFacVGestionF: TBonFacVGestionF
       ShowCaption = False
     end
     object sSpeedButton6: TsSpeedButton
-      Left = 397
+      Left = 378
       Top = 18
       Width = 30
       Height = 30
@@ -1099,7 +1106,7 @@ object BonFacVGestionF: TBonFacVGestionF
       ImageIndex = 1
     end
     object sSpeedButton5: TsSpeedButton
-      Left = 431
+      Left = 412
       Top = 18
       Width = 30
       Height = 30
@@ -1112,7 +1119,7 @@ object BonFacVGestionF: TBonFacVGestionF
       ShowCaption = False
     end
     object sSpeedButton4: TsSpeedButton
-      Left = 465
+      Left = 446
       Top = 18
       Width = 30
       Height = 30
@@ -1124,8 +1131,8 @@ object BonFacVGestionF: TBonFacVGestionF
       ImageIndex = 3
     end
     object RequiredMPGlbl: TLabel
-      Left = 431
-      Top = 113
+      Left = 375
+      Top = 111
       Width = 215
       Height = 15
       Alignment = taCenter
@@ -1144,8 +1151,8 @@ object BonFacVGestionF: TBonFacVGestionF
       StyleElements = [seClient, seBorder]
     end
     object RequiredCompteGlbl: TLabel
-      Left = 712
-      Top = 113
+      Left = 630
+      Top = 111
       Width = 167
       Height = 15
       Alignment = taCenter
@@ -1164,10 +1171,10 @@ object BonFacVGestionF: TBonFacVGestionF
       StyleElements = [seClient, seBorder]
     end
     object CompteGErrorP: TPanel
-      Left = 719
+      Left = 632
       Top = 124
-      Width = 154
-      Height = 34
+      Width = 163
+      Height = 31
       BevelOuter = bvNone
       BevelWidth = 2
       Color = 8421631
@@ -1181,10 +1188,10 @@ object BonFacVGestionF: TBonFacVGestionF
       StyleElements = []
     end
     object ModepPaiGErrorP: TPanel
-      Left = 462
+      Left = 430
       Top = 124
-      Width = 154
-      Height = 34
+      Width = 105
+      Height = 31
       BevelOuter = bvNone
       BevelWidth = 2
       Color = 8421631
@@ -1198,10 +1205,10 @@ object BonFacVGestionF: TBonFacVGestionF
       StyleElements = []
     end
     object NameClientGErrorP: TPanel
-      Left = 461
+      Left = 431
       Top = 81
-      Width = 413
-      Height = 34
+      Width = 364
+      Height = 31
       BevelOuter = bvNone
       BevelWidth = 2
       Color = 8421631
@@ -1217,7 +1224,7 @@ object BonFacVGestionF: TBonFacVGestionF
     object Panel7: TPanel
       Left = 355
       Top = 65
-      Width = 548
+      Width = 483
       Height = 2
       Anchors = [akLeft, akTop, akRight]
       BevelOuter = bvNone
@@ -1225,9 +1232,10 @@ object BonFacVGestionF: TBonFacVGestionF
       ParentBackground = False
       TabOrder = 2
       StyleElements = []
+      ExplicitWidth = 548
     end
     object Panel8: TPanel
-      Left = 1085
+      Left = 1020
       Top = 13
       Width = 1
       Height = 40
@@ -1253,9 +1261,10 @@ object BonFacVGestionF: TBonFacVGestionF
       ShowHint = False
       TabOrder = 3
       StyleElements = []
+      ExplicitLeft = 1085
     end
     object Panel9: TPanel
-      Left = 954
+      Left = 889
       Top = 13
       Width = 1
       Height = 40
@@ -1281,9 +1290,10 @@ object BonFacVGestionF: TBonFacVGestionF
       ShowHint = False
       TabOrder = 4
       StyleElements = []
+      ExplicitLeft = 954
     end
     object Panel10: TPanel
-      Left = 502
+      Left = 480
       Top = 13
       Width = 1
       Height = 40
@@ -1310,7 +1320,7 @@ object BonFacVGestionF: TBonFacVGestionF
       StyleElements = []
     end
     object Panel11: TPanel
-      Left = 355
+      Left = 338
       Top = 13
       Width = 1
       Height = 40
@@ -1352,14 +1362,14 @@ object BonFacVGestionF: TBonFacVGestionF
       TabOrder = 7
     end
     object ClientBonFacVGCbx: TComboBox
-      Left = 463
+      Left = 432
       Top = 83
-      Width = 409
-      Height = 30
+      Width = 361
+      Height = 27
       Ctl3D = True
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = 22
+      Font.Height = -17
       Font.Name = 'Helvetica LT Std'
       Font.Style = []
       ParentCtl3D = False
@@ -1376,7 +1386,7 @@ object BonFacVGestionF: TBonFacVGestionF
     object Panel12: TPanel
       Left = 0
       Top = 210
-      Width = 903
+      Width = 838
       Height = 2
       Anchors = [akLeft, akTop, akRight]
       BevelOuter = bvNone
@@ -1384,6 +1394,7 @@ object BonFacVGestionF: TBonFacVGestionF
       ParentBackground = False
       TabOrder = 8
       StyleElements = []
+      ExplicitWidth = 903
     end
     object ResherchPARDesProduitsRdioBtn: TRadioButton
       Left = 107
@@ -1424,7 +1435,7 @@ object BonFacVGestionF: TBonFacVGestionF
     object Panel2: TPanel
       Left = 0
       Top = 302
-      Width = 1089
+      Width = 1024
       Height = 2
       Align = alBottom
       BevelOuter = bvNone
@@ -1432,6 +1443,7 @@ object BonFacVGestionF: TBonFacVGestionF
       ParentBackground = False
       TabOrder = 11
       StyleElements = []
+      ExplicitWidth = 1089
     end
     object ResherchPARRefProduitsRdioBtn: TRadioButton
       Left = 245
@@ -1450,7 +1462,7 @@ object BonFacVGestionF: TBonFacVGestionF
       StyleElements = []
     end
     object Panel13: TPanel
-      Left = 355
+      Left = 338
       Top = 81
       Width = 1
       Height = 119
@@ -1477,13 +1489,13 @@ object BonFacVGestionF: TBonFacVGestionF
       StyleElements = []
     end
     object ModePaieBonFacVGCbx: TComboBox
-      Left = 463
+      Left = 432
       Top = 126
-      Width = 152
-      Height = 30
+      Width = 101
+      Height = 27
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = 22
+      Font.Height = -17
       Font.Name = 'Helvetica LT Std'
       Font.Style = []
       ParentFont = False
@@ -1500,13 +1512,13 @@ object BonFacVGestionF: TBonFacVGestionF
         '')
     end
     object CompteBonFacVGCbx: TComboBox
-      Left = 720
+      Left = 633
       Top = 126
-      Width = 152
-      Height = 30
+      Width = 160
+      Height = 27
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = 22
+      Font.Height = -17
       Font.Name = 'Helvetica LT Std'
       Font.Style = []
       ParentFont = False
@@ -1516,7 +1528,7 @@ object BonFacVGestionF: TBonFacVGestionF
       OnEnter = CompteBonFacVGCbxEnter
     end
     object Panel5: TPanel
-      Left = 903
+      Left = 838
       Top = 67
       Width = 186
       Height = 140
@@ -1526,6 +1538,7 @@ object BonFacVGestionF: TBonFacVGestionF
       ParentBackground = False
       TabOrder = 16
       StyleElements = []
+      ExplicitLeft = 903
       DesignSize = (
         186
         140)
@@ -1627,20 +1640,20 @@ object BonFacVGestionF: TBonFacVGestionF
       end
     end
     object NChequeBonFacVGCbx: TEdit
-      Left = 463
+      Left = 432
       Top = 170
-      Width = 409
-      Height = 30
+      Width = 361
+      Height = 27
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = 22
+      Font.Height = -17
       Font.Name = 'Helvetica LT Std'
       Font.Style = []
       ParentFont = False
       TabOrder = 18
     end
     object ObserBonFacVGMem: TMemo
-      Left = 24
+      Left = 16
       Top = 124
       Width = 307
       Height = 64
@@ -1676,7 +1689,7 @@ object BonFacVGestionF: TBonFacVGestionF
   object ProduitsListDBGridEh: TDBGridEh
     Left = 2
     Top = 304
-    Width = 1086
+    Width = 1021
     Height = 277
     Anchors = [akLeft, akTop, akRight, akBottom]
     Border.Color = 4207405
@@ -2065,7 +2078,7 @@ object BonFacVGestionF: TBonFacVGestionF
   object Panel4: TPanel
     Left = 0
     Top = 582
-    Width = 1089
+    Width = 1024
     Height = 120
     Align = alBottom
     BevelOuter = bvNone
@@ -2073,17 +2086,19 @@ object BonFacVGestionF: TBonFacVGestionF
     ParentBackground = False
     TabOrder = 3
     StyleElements = []
+    ExplicitWidth = 1089
     DesignSize = (
-      1089
+      1024
       120)
     object Shape4: TShape
       Left = 802
       Top = 0
-      Width = 287
+      Width = 222
       Height = 120
       Anchors = [akLeft, akTop, akRight]
       Brush.Color = 4207405
       Pen.Color = 11544476
+      ExplicitWidth = 287
     end
     object Shape3: TShape
       Left = 404
@@ -2407,7 +2422,7 @@ object BonFacVGestionF: TBonFacVGestionF
     object Label21: TLabel
       Left = 804
       Top = 4
-      Width = 280
+      Width = 215
       Height = 21
       Alignment = taCenter
       Anchors = [akLeft, akTop, akRight]
@@ -2422,12 +2437,13 @@ object BonFacVGestionF: TBonFacVGestionF
       ParentColor = False
       ParentFont = False
       StyleElements = []
+      ExplicitWidth = 280
     end
     object BonFacVGOLDStock: TLabel
       AlignWithMargins = True
       Left = 804
       Top = 24
-      Width = 280
+      Width = 215
       Height = 25
       Margins.Left = 0
       Margins.Top = 0
@@ -2448,11 +2464,12 @@ object BonFacVGestionF: TBonFacVGestionF
       ParentFont = False
       Layout = tlCenter
       StyleElements = []
+      ExplicitWidth = 280
     end
     object Label22: TLabel
       Left = 804
       Top = 48
-      Width = 280
+      Width = 215
       Height = 21
       Alignment = taCenter
       Anchors = [akLeft, akTop, akRight]
@@ -2467,12 +2484,13 @@ object BonFacVGestionF: TBonFacVGestionF
       ParentColor = False
       ParentFont = False
       StyleElements = []
+      ExplicitWidth = 280
     end
     object BonFacVGNEWStock: TLabel
       AlignWithMargins = True
       Left = 804
       Top = 65
-      Width = 280
+      Width = 215
       Height = 29
       Margins.Left = 0
       Margins.Top = 0
@@ -2493,11 +2511,12 @@ object BonFacVGestionF: TBonFacVGestionF
       ParentFont = False
       Layout = tlCenter
       StyleElements = []
+      ExplicitWidth = 280
     end
     object Label20: TLabel
       Left = 803
       Top = 100
-      Width = 285
+      Width = 220
       Height = 20
       Alignment = taCenter
       Anchors = [akLeft, akRight, akBottom]
@@ -2506,8 +2525,8 @@ object BonFacVGestionF: TBonFacVGestionF
       Color = 4666873
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
-      Font.Height = 16
-      Font.Name = 'Helvetica LT Std'
+      Font.Height = -11
+      Font.Name = 'Tahoma'
       Font.Style = []
       ParentColor = False
       ParentFont = False
@@ -2515,6 +2534,7 @@ object BonFacVGestionF: TBonFacVGestionF
       Layout = tlCenter
       Visible = False
       StyleElements = []
+      ExplicitWidth = 285
     end
     object sImage1: TsImage
       Tag = 1
@@ -4213,8 +4233,8 @@ object BonFacVGestionF: TBonFacVGestionF
     end
   end
   object PopupMenu1: TPopupMenu
-    Left = 900
-    Top = 18
+    Left = 812
+    Top = 16
     object B1: TMenuItem
       Caption = 'Facture de vente'
       OnClick = B1Click

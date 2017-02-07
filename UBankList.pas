@@ -15,15 +15,10 @@ type
   TBankListF = class(TForm)
     TopP: TPanel;
     PeriodBankListLbl: TLabel;
-    sSpeedButton1: TsSpeedButton;
-    sSpeedButton2: TsSpeedButton;
-    sSpeedButton3: TsSpeedButton;
     Label1: TLabel;
     Label2: TLabel;
     Label3: TLabel;
     LineP: TPanel;
-    Panel1: TPanel;
-    S01: TPanel;
     Panel2: TPanel;
     DateEndBankListD: TDateTimePicker;
     DateStartBankListD: TDateTimePicker;
@@ -88,14 +83,16 @@ type
     StatuBar: TsStatusBar;
     PaidOnlyCaisseBtn: TAdvToolButton;
     RefreshGirdBtn: TAdvToolButton;
+    Panel8: TPanel;
+    AdvToolButton1: TAdvToolButton;
+    AdvToolButton2: TAdvToolButton;
+    AdvToolButton3: TAdvToolButton;
+    Panel9: TPanel;
     procedure FormShow(Sender: TObject);
     procedure BankListCbxDropDown(Sender: TObject);
     procedure DaysBankListCbxChange(Sender: TObject);
     procedure BankListCbxChange(Sender: TObject);
     procedure DateEndBankListDChange(Sender: TObject);
-    procedure sSpeedButton2Click(Sender: TObject);
-    procedure sSpeedButton1Click(Sender: TObject);
-    procedure sSpeedButton3Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure CaisseListDBGridEhDrawColumnCell(Sender: TObject;
       const Rect: TRect; DataCol: Integer; Column: TColumnEh;
@@ -124,6 +121,9 @@ type
     procedure BankListCbxExit(Sender: TObject);
     procedure RefreshGirdBtnClick(Sender: TObject);
     procedure PaidOnlyCaisseBtnClick(Sender: TObject);
+    procedure AdvToolButton1Click(Sender: TObject);
+    procedure AdvToolButton2Click(Sender: TObject);
+    procedure AdvToolButton3Click(Sender: TObject);
   private
     procedure GettingData;
     procedure FilteredColor;
@@ -640,6 +640,45 @@ ClearRegleFilterBVLivPMenu.Checked:= True;
   ClearFilterBVLivPMenu.Checked:= False;
 end;
 
+procedure TBankListF.AdvToolButton1Click(Sender: TObject);
+begin
+MainForm.Opt_cas_bnk_BankTable.DisableControls;
+
+    GettingData;
+
+BankListfrxRprt.PrepareReport;
+frxXLSExport1.FileName := 'Relevé des Comptes';
+BankListfrxRprt.Export(frxXLSExport1);
+
+MainForm.Opt_cas_bnk_BankTable.EnableControls;
+end;
+
+procedure TBankListF.AdvToolButton2Click(Sender: TObject);
+begin
+MainForm.Opt_cas_bnk_BankTable.DisableControls;
+
+    GettingData;
+
+BankListfrxRprt.PrepareReport;
+frxPDFExport1.FileName := 'Relevé des Comptes';
+BankListfrxRprt.Export(frxPDFExport1);
+
+
+MainForm.Opt_cas_bnk_BankTable.EnableControls;
+end;
+
+procedure TBankListF.AdvToolButton3Click(Sender: TObject);
+begin
+  MainForm.Opt_cas_bnk_BankTable.DisableControls;
+
+   GettingData;
+
+  BankListfrxRprt.PrepareReport;
+  BankListfrxRprt.ShowReport;
+
+  MainForm.Opt_cas_bnk_BankTable.EnableControls;
+end;
+
 procedure TBankListF.BankListCbxChange(Sender: TObject);
 Var TotalEncaiss,TotalDecaiss,cmptsum,TotalSoldComptEnc,TotalSoldComptDic : Currency;
 CodeC : Integer;
@@ -962,45 +1001,6 @@ ClearBRFilterPMenu.Checked := True;
   FilteredColor;
   Select_MP_Cheque;
   ClearFilterBVLivPMenu.Checked:= False;
-end;
-
-procedure TBankListF.sSpeedButton2Click(Sender: TObject);
-begin
-  MainForm.Opt_cas_bnk_BankTable.DisableControls;
-
-   GettingData;
-
-  BankListfrxRprt.PrepareReport;
-  BankListfrxRprt.ShowReport;
-
-  MainForm.Opt_cas_bnk_BankTable.EnableControls;
-end;
-
-procedure TBankListF.sSpeedButton1Click(Sender: TObject);
-begin
-MainForm.Opt_cas_bnk_BankTable.DisableControls;
-
-    GettingData;
-
-BankListfrxRprt.PrepareReport;
-frxXLSExport1.FileName := 'Relevé des Comptes';
-BankListfrxRprt.Export(frxXLSExport1);
-
-MainForm.Opt_cas_bnk_BankTable.EnableControls;
-end;
-
-procedure TBankListF.sSpeedButton3Click(Sender: TObject);
-begin
-MainForm.Opt_cas_bnk_BankTable.DisableControls;
-
-    GettingData;
-
-BankListfrxRprt.PrepareReport;
-frxPDFExport1.FileName := 'Relevé des Comptes';
-BankListfrxRprt.Export(frxPDFExport1);
-
-
-MainForm.Opt_cas_bnk_BankTable.EnableControls;
 end;
 
 procedure TBankListF.T2Click(Sender: TObject);

@@ -43,6 +43,7 @@ type
     procedure PrixFPrintingCbxChange(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
   public
@@ -156,6 +157,11 @@ begin
    key := #0;
    PrintFPrintingBtnClick(Sender);
   end;
+end;
+
+procedure TFSplashPrinting.FormShow(Sender: TObject);
+begin
+PrixFPrintingCbxChange(Sender);
 end;
 
 procedure TFSplashPrinting.FormatFPrintingCbxChange(Sender: TObject);

@@ -282,17 +282,22 @@ procedure Refresh_PreservePosition;
  row: integer;   recNo: integer;
  ds : TDataSet;
 begin
+
+   BonFacVGestionF.ProduitsListDBGridEh.DataSource.DataSet.DisableControls;
+
    ds := TDBGridEh(BonFacVGestionF.ProduitsListDBGridEh).DataSource.DataSet;
    rowDelta := -1 + TDBGridEh(BonFacVGestionF.ProduitsListDBGridEh).Row;
    row := ds.RecNo;
    ds.Refresh;
    with ds do   begin
-     DisableControls;
+//     DisableControls;
      RecNo := row;
      MoveBy(-rowDelta) ;
      MoveBy(rowDelta) ;
-     EnableControls;
+//     EnableControls;
      end;
+
+   BonFacVGestionF.ProduitsListDBGridEh.DataSource.DataSet.EnableControls;
  end;
 
 // use this procedure to show hin when mouse move on the grid ------------------
@@ -2980,6 +2985,11 @@ end;
 procedure TBonFacVGestionF.FormCreate(Sender: TObject);
 begin
 MainForm.Bonv_fac_listTable.Active:=True;
+if Assigned(ProduitsListF) then
+  begin
+   ProduitsListF.ResearchProduitsEdt.Text:='';
+   MainForm.ProduitTable.Filtered:= False;
+   end;
 end;
 
 

@@ -23,17 +23,11 @@ type
     DeleteFournisseursBtn: TAdvToolButton;
     AddFournisseursBtn: TAdvToolButton;
     ResearchFournisseursLbl: TLabel;
-    sSpeedButton1: TsSpeedButton;
-    sSpeedButton2: TsSpeedButton;
     toutFournisseursLbl: TLabel;
-    Label2: TLabel;
-    Label3: TLabel;
     PassifFournisseursLbl: TLabel;
-    Label5: TLabel;
     ActifFournisseursLbl: TLabel;
     LineP: TPanel;
     Panel1: TPanel;
-    S01: TPanel;
     S02: TPanel;
     ResearchFournisseurEdt: TSearchBox;
     ActifFournisseursRdioBtn: TRadioButton;
@@ -52,10 +46,14 @@ type
     FisrtFournisseursbtn: TsSpeedButton;
     PreviosClientbtn: TsSpeedButton;
     Panel4: TPanel;
-    Panel5: TPanel;
     StatuBar: TsStatusBar;
     SumGirdBBVlivBtn: TAdvToolButton;
     RefreshGirdBtn: TAdvToolButton;
+    Panel6: TPanel;
+    AdvToolButton1: TAdvToolButton;
+    AdvToolButton2: TAdvToolButton;
+    AdvToolButton3: TAdvToolButton;
+    Panel7: TPanel;
     procedure ResearchFournisseurEdtKeyPress(Sender: TObject; var Key: Char);
     procedure ResearchFournisseurEdtChange(Sender: TObject);
     procedure FisrtFournisseursbtnClick(Sender: TObject);
@@ -80,10 +78,11 @@ type
       State: TGridDrawState);
     procedure FormCreate(Sender: TObject);
     procedure sSpeedButton2Click(Sender: TObject);
-    procedure sSpeedButton1Click(Sender: TObject);
     procedure sSpeedButton3Click(Sender: TObject);
     procedure SumGirdBBVlivBtnClick(Sender: TObject);
     procedure RefreshGirdBtnClick(Sender: TObject);
+    procedure AdvToolButton1Click(Sender: TObject);
+    procedure AdvToolButton2Click(Sender: TObject);
   private
     procedure GettingData;
     { Private declarations }
@@ -162,6 +161,32 @@ begin
     FournisseurGestionF.Show;
     FournisseurGestionF.NameFournisseurGEdt.SetFocus;
     FournisseurGestionF.OKFournisseurGBtn.Tag:= 0 ;
+end;
+
+procedure TFournisseurListF.AdvToolButton1Click(Sender: TObject);
+begin
+MainForm.FournisseurTable.DisableControls;
+
+    GettingData;
+
+FourListfrxRprt.PrepareReport;
+frxXLSExport1.FileName := 'Etat liste des Fournisseurs';
+FourListfrxRprt.Export(frxXLSExport1);
+
+MainForm.FournisseurTable.EnableControls;
+end;
+
+procedure TFournisseurListF.AdvToolButton2Click(Sender: TObject);
+begin
+MainForm.FournisseurTable.DisableControls;
+
+    GettingData;
+
+FourListfrxRprt.PrepareReport;
+frxPDFExport1.FileName := 'Etat liste des Fournisseurs';
+FourListfrxRprt.Export(frxPDFExport1);
+
+MainForm.FournisseurTable.EnableControls;
 end;
 
 procedure TFournisseurListF.DeleteFournisseursBtnClick(Sender: TObject);
@@ -670,19 +695,6 @@ begin
   FourListfrxRprt.ShowReport;
 
   MainForm.FournisseurTable.EnableControls;
-end;
-
-procedure TFournisseurListF.sSpeedButton1Click(Sender: TObject);
-begin
-MainForm.FournisseurTable.DisableControls;
-
-    GettingData;
-
-FourListfrxRprt.PrepareReport;
-frxXLSExport1.FileName := 'Etat liste des Fournisseurs';
-FourListfrxRprt.Export(frxXLSExport1);
-
-MainForm.FournisseurTable.EnableControls;
 end;
 
 procedure TFournisseurListF.sSpeedButton3Click(Sender: TObject);

@@ -3,7 +3,7 @@ object TransferListGestionF: TTransferListGestionF
   Top = 0
   Caption = 'Liste d'#39'opirations transfer'
   ClientHeight = 741
-  ClientWidth = 1191
+  ClientWidth = 951
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -54,15 +54,15 @@ object TransferListGestionF: TTransferListGestionF
   OnClose = FormClose
   OnShow = FormShow
   DesignSize = (
-    1191
+    951
     741)
   PixelsPerInch = 96
   TextHeight = 13
   object TopP: TPanel
     Left = 0
     Top = 0
-    Width = 1191
-    Height = 82
+    Width = 951
+    Height = 71
     Align = alTop
     BevelOuter = bvNone
     Color = 15527148
@@ -71,12 +71,13 @@ object TransferListGestionF: TTransferListGestionF
     ParentDoubleBuffered = False
     TabOrder = 0
     StyleElements = []
+    ExplicitWidth = 917
     DesignSize = (
-      1191
-      82)
+      951
+      71)
     object EditBARecBtn: TAdvToolButton
-      Left = 701
-      Top = 26
+      Left = 673
+      Top = 21
       Width = 100
       Height = 30
       Cursor = crHandPoint
@@ -108,8 +109,8 @@ object TransferListGestionF: TTransferListGestionF
       TMSStyle = 0
     end
     object DeleteBARecBtn: TAdvToolButton
-      Left = 807
-      Top = 26
+      Left = 778
+      Top = 21
       Width = 100
       Height = 30
       Cursor = crHandPoint
@@ -140,8 +141,8 @@ object TransferListGestionF: TTransferListGestionF
       TMSStyle = 0
     end
     object AddBARecBtn: TAdvToolButton
-      Left = 595
-      Top = 26
+      Left = 568
+      Top = 21
       Width = 100
       Height = 30
       Cursor = crHandPoint
@@ -172,63 +173,25 @@ object TransferListGestionF: TTransferListGestionF
       TMSStyle = 0
     end
     object ResearchBACtrLbl: TLabel
-      Left = 8
-      Top = 38
-      Width = 78
-      Height = 18
+      Left = 6
+      Top = 31
+      Width = 66
+      Height = 16
       Caption = 'Rechercher'
       Color = 15722984
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 4207405
-      Font.Height = 18
-      Font.Name = 'Roboto'
+      Font.Height = 16
+      Font.Name = 'Helvetica LT Std'
       Font.Style = []
       ParentColor = False
       ParentFont = False
       Visible = False
       StyleElements = []
     end
-    object sSpeedButton1: TsSpeedButton
-      Left = 1120
-      Top = 26
-      Width = 33
-      Height = 30
-      Anchors = [akTop, akRight]
-      ParentShowHint = False
-      ShowHint = True
-      SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
-      ImageIndex = 7
-    end
-    object sSpeedButton2: TsSpeedButton
-      Left = 1078
-      Top = 26
-      Width = 39
-      Height = 30
-      Anchors = [akTop, akRight]
-      ParentShowHint = False
-      ShowHint = True
-      ButtonStyle = tbsDropDown
-      SkinData.SkinSection = 'SPEEDBUTTON'
-      DropdownMenu = PopupMenu1
-      Images = MainForm.PanelIcons24
-      ImageIndex = 8
-    end
-    object sSpeedButton3: TsSpeedButton
-      Left = 1156
-      Top = 26
-      Width = 30
-      Height = 30
-      Anchors = [akTop, akRight]
-      ParentShowHint = False
-      ShowHint = True
-      SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
-      ImageIndex = 9
-    end
     object Label1: TLabel
       Left = 314
-      Top = 14
+      Top = 10
       Width = 23
       Height = 18
       Caption = 'Du:'
@@ -244,7 +207,7 @@ object TransferListGestionF: TTransferListGestionF
     end
     object Label2: TLabel
       Left = 315
-      Top = 49
+      Top = 41
       Width = 22
       Height = 18
       Caption = 'Au:'
@@ -259,10 +222,10 @@ object TransferListGestionF: TTransferListGestionF
       StyleElements = []
     end
     object FisrtBARecbtn: TsSpeedButton
-      Left = 453
-      Top = 26
-      Width = 30
-      Height = 30
+      Left = 442
+      Top = 23
+      Width = 25
+      Height = 25
       ParentShowHint = False
       ShowHint = True
       OnClick = FisrtBARecbtnClick
@@ -272,10 +235,10 @@ object TransferListGestionF: TTransferListGestionF
       ShowCaption = False
     end
     object PreviosBARecbtn: TsSpeedButton
-      Left = 487
-      Top = 26
-      Width = 30
-      Height = 30
+      Left = 472
+      Top = 23
+      Width = 25
+      Height = 25
       ParentShowHint = False
       ShowHint = True
       OnClick = PreviosBARecbtnClick
@@ -284,10 +247,10 @@ object TransferListGestionF: TTransferListGestionF
       ImageIndex = 1
     end
     object NextBARecbtn: TsSpeedButton
-      Left = 521
-      Top = 26
-      Width = 30
-      Height = 30
+      Left = 502
+      Top = 23
+      Width = 25
+      Height = 25
       ParentShowHint = False
       ShowHint = True
       OnClick = NextBARecbtnClick
@@ -297,10 +260,10 @@ object TransferListGestionF: TTransferListGestionF
       ShowCaption = False
     end
     object LastBARecbtn: TsSpeedButton
-      Left = 555
-      Top = 26
-      Width = 30
-      Height = 30
+      Left = 532
+      Top = 23
+      Width = 25
+      Height = 25
       ParentShowHint = False
       ShowHint = True
       OnClick = LastBARecbtnClick
@@ -310,8 +273,8 @@ object TransferListGestionF: TTransferListGestionF
     end
     object LineP: TPanel
       Left = 0
-      Top = 80
-      Width = 1207
+      Top = 69
+      Width = 967
       Height = 2
       Anchors = [akLeft, akTop, akRight]
       BevelOuter = bvNone
@@ -319,14 +282,14 @@ object TransferListGestionF: TTransferListGestionF
       ParentBackground = False
       TabOrder = 1
       StyleElements = []
+      ExplicitWidth = 933
     end
-    object Panel1: TPanel
-      Left = 1189
-      Top = 21
+    object S01: TPanel
+      Left = 883
+      Top = 16
       Width = 1
       Height = 40
       ParentCustomHint = False
-      Anchors = [akTop, akRight]
       BevelEdges = []
       BevelOuter = bvNone
       BiDiMode = bdLeftToRight
@@ -348,9 +311,9 @@ object TransferListGestionF: TTransferListGestionF
       TabOrder = 2
       StyleElements = []
     end
-    object S01: TPanel
-      Left = 912
-      Top = 21
+    object S02: TPanel
+      Left = 562
+      Top = 16
       Width = 1
       Height = 40
       ParentCustomHint = False
@@ -375,9 +338,23 @@ object TransferListGestionF: TTransferListGestionF
       TabOrder = 3
       StyleElements = []
     end
-    object S02: TPanel
-      Left = 590
-      Top = 21
+    object ResearchTransferEdt: TSearchBox
+      Left = 76
+      Top = 27
+      Width = 220
+      Height = 25
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 4207405
+      Font.Height = -15
+      Font.Name = 'Helvetica LT Std'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 0
+      OnChange = ResearchTransferEdtChange
+    end
+    object Panel2: TPanel
+      Left = 436
+      Top = 16
       Width = 1
       Height = 40
       ParentCustomHint = False
@@ -402,143 +379,75 @@ object TransferListGestionF: TTransferListGestionF
       TabOrder = 4
       StyleElements = []
     end
-    object ResearchTransferEdt: TSearchBox
-      Left = 90
-      Top = 34
-      Width = 213
-      Height = 30
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = 4207405
-      Font.Height = 22
-      Font.Name = 'Helvetica LT Std'
-      Font.Style = []
-      ParentFont = False
-      TabOrder = 0
-      OnChange = ResearchTransferEdtChange
-    end
-    object Panel2: TPanel
-      Left = 447
-      Top = 21
-      Width = 1
-      Height = 40
-      ParentCustomHint = False
-      BevelEdges = []
-      BevelOuter = bvNone
-      BiDiMode = bdLeftToRight
-      Color = 11544220
-      Ctl3D = True
-      DoubleBuffered = False
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -11
-      Font.Name = 'Tahoma'
-      Font.Style = []
-      ParentBiDiMode = False
-      ParentBackground = False
-      ParentCtl3D = False
-      ParentDoubleBuffered = False
-      ParentFont = False
-      ParentShowHint = False
-      ShowHint = False
-      TabOrder = 5
-      StyleElements = []
-    end
     object DateEndTransferD: TDateTimePicker
       Left = 338
-      Top = 44
-      Width = 104
-      Height = 29
+      Top = 38
+      Width = 87
+      Height = 24
       Date = 42435.595104571760000000
       Time = 42435.595104571760000000
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 4207405
-      Font.Height = 22
-      Font.Name = 'Segoe UI'
+      Font.Height = 16
+      Font.Name = 'Helvetica LT Std'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 5
+      OnChange = DateStartTransferDChange
+    end
+    object DateStartTransferD: TDateTimePicker
+      Left = 338
+      Top = 7
+      Width = 87
+      Height = 24
+      Date = 42435.595104571760000000
+      Time = 42435.595104571760000000
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 4207405
+      Font.Height = 16
+      Font.Name = 'Helvetica LT Std'
       Font.Style = []
       ParentFont = False
       TabOrder = 6
       OnChange = DateStartTransferDChange
     end
-    object DateStartTransferD: TDateTimePicker
-      Left = 338
-      Top = 9
-      Width = 104
-      Height = 29
-      Date = 42435.595104571760000000
-      Time = 42435.595104571760000000
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = 4207405
-      Font.Height = 22
-      Font.Name = 'Segoe UI'
-      Font.Style = []
-      ParentFont = False
-      TabOrder = 7
-      OnChange = DateStartTransferDChange
-    end
     object ResherchTransferRdioBtn: TRadioButton
-      Left = 77
-      Top = 11
+      Left = 76
+      Top = 6
       Width = 117
       Height = 17
-      Anchors = [akLeft, akBottom]
       Caption = 'Par Observation'
       Checked = True
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
-      Font.Height = 16
+      Font.Height = -12
       Font.Name = 'Roboto'
       Font.Style = []
       ParentFont = False
-      TabOrder = 8
+      TabOrder = 7
       TabStop = True
-      StyleElements = []
-    end
-    object Panel4: TPanel
-      Left = 1073
-      Top = 21
-      Width = 1
-      Height = 40
-      ParentCustomHint = False
-      Anchors = [akTop, akRight]
-      BevelEdges = []
-      BevelOuter = bvNone
-      BiDiMode = bdLeftToRight
-      Color = 11544220
-      Ctl3D = True
-      DoubleBuffered = False
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -11
-      Font.Name = 'Tahoma'
-      Font.Style = []
-      ParentBiDiMode = False
-      ParentBackground = False
-      ParentCtl3D = False
-      ParentDoubleBuffered = False
-      ParentFont = False
-      ParentShowHint = False
-      ShowHint = False
-      TabOrder = 9
       StyleElements = []
     end
   end
   object Panel3: TPanel
     Left = 0
-    Top = 82
+    Top = 71
     Width = 1
-    Height = 639
+    Height = 650
     Align = alLeft
     BevelOuter = bvNone
     Color = 8637171
     ParentBackground = False
     TabOrder = 1
     StyleElements = []
+    ExplicitTop = 82
+    ExplicitHeight = 639
   end
   object TransferListDBGridEh: TDBGridEh
     Left = 0
-    Top = 84
-    Width = 1191
-    Height = 636
+    Top = 71
+    Width = 951
+    Height = 649
     Anchors = [akLeft, akTop, akRight, akBottom]
     Border.Color = 4207405
     Border.ExtendedDraw = False
@@ -862,7 +771,7 @@ object TransferListGestionF: TTransferListGestionF
   object StatuBar: TsStatusBar
     Left = 0
     Top = 721
-    Width = 1191
+    Width = 951
     Height = 20
     BiDiMode = bdLeftToRight
     Panels = <
@@ -879,8 +788,9 @@ object TransferListGestionF: TTransferListGestionF
     ParentBiDiMode = False
     SizeGrip = False
     SkinData.SkinSection = 'MENUITEM'
+    ExplicitWidth = 917
     DesignSize = (
-      1191
+      951
       20)
     object SumGirdProduitBtn: TAdvToolButton
       Left = 141
@@ -950,11 +860,170 @@ object TransferListGestionF: TTransferListGestionF
       Version = '1.6.1.2'
       TMSStyle = 0
     end
+    object AdvToolButton1: TAdvToolButton
+      Left = 175
+      Top = 0
+      Width = 26
+      Height = 20
+      Cursor = crHandPoint
+      Hint = 'Exporter vers Excel'
+      Anchors = [akRight]
+      AutoThemeAdapt = False
+      BorderColor = 15722984
+      BorderDownColor = 15722984
+      BorderHotColor = 14079702
+      Color = 15722984
+      ColorDown = 15722984
+      ColorHot = 14079702
+      ColorHotTo = 14079702
+      ColorChecked = clNone
+      DropDownSplit = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 4207405
+      Font.Height = 18
+      Font.Name = 'Roboto'
+      Font.Style = []
+      ImageIndex = 29
+      Images = MainForm.PanelIcons16
+      ParentFont = False
+      ParentShowHint = False
+      Shaded = False
+      ShowHint = True
+      Spacing = -2
+      OnClick = AdvToolButton1Click
+      Version = '1.6.1.2'
+      TMSStyle = 0
+    end
+    object AdvToolButton2: TAdvToolButton
+      Left = 203
+      Top = 0
+      Width = 26
+      Height = 20
+      Cursor = crHandPoint
+      Hint = 'Exporter vers PDF'
+      Anchors = [akRight]
+      AutoThemeAdapt = False
+      BorderColor = 15722984
+      BorderDownColor = 15722984
+      BorderHotColor = 14079702
+      Color = 15722984
+      ColorDown = 15722984
+      ColorHot = 14079702
+      ColorHotTo = 14079702
+      ColorChecked = clNone
+      DropDownSplit = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 4207405
+      Font.Height = 18
+      Font.Name = 'Roboto'
+      Font.Style = []
+      ImageIndex = 30
+      Images = MainForm.PanelIcons16
+      ParentFont = False
+      ParentShowHint = False
+      Shaded = False
+      ShowHint = True
+      Spacing = -2
+      OnClick = AdvToolButton2Click
+      Version = '1.6.1.2'
+      TMSStyle = 0
+    end
+    object AdvToolButton3: TAdvToolButton
+      Left = 231
+      Top = 0
+      Width = 26
+      Height = 20
+      Cursor = crHandPoint
+      Hint = 'Imprimer'
+      Anchors = [akRight]
+      AutoThemeAdapt = False
+      BorderColor = 15722984
+      BorderDownColor = 15722984
+      BorderHotColor = 14079702
+      Color = 15722984
+      ColorDown = 15722984
+      ColorHot = 14079702
+      ColorHotTo = 14079702
+      ColorChecked = clNone
+      DropDownButton = True
+      DropDownMenu = PopupMenu1
+      DropDownSplit = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 4207405
+      Font.Height = 18
+      Font.Name = 'Roboto'
+      Font.Style = []
+      ImageIndex = 31
+      Images = MainForm.PanelIcons16
+      ParentFont = False
+      ParentShowHint = False
+      Shaded = False
+      ShowHint = True
+      Spacing = -2
+      Version = '1.6.1.2'
+      TMSStyle = 0
+    end
+    object Panel5: TPanel
+      Left = 170
+      Top = 0
+      Width = 1
+      Height = 20
+      ParentCustomHint = False
+      Anchors = [akTop, akRight]
+      BevelEdges = []
+      BevelOuter = bvNone
+      BiDiMode = bdLeftToRight
+      Color = 13421772
+      Ctl3D = True
+      DoubleBuffered = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentBiDiMode = False
+      ParentBackground = False
+      ParentCtl3D = False
+      ParentDoubleBuffered = False
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = False
+      TabOrder = 0
+      StyleElements = []
+    end
+    object Panel6: TPanel
+      Left = 261
+      Top = 0
+      Width = 1
+      Height = 20
+      ParentCustomHint = False
+      Anchors = [akTop, akRight]
+      BevelEdges = []
+      BevelOuter = bvNone
+      BiDiMode = bdLeftToRight
+      Color = 13421772
+      Ctl3D = True
+      DoubleBuffered = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentBiDiMode = False
+      ParentBackground = False
+      ParentCtl3D = False
+      ParentDoubleBuffered = False
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = False
+      TabOrder = 1
+      StyleElements = []
+    end
   end
   object TransferListDataS: TDataSource
     DataSet = DataModuleF.Transfer_comptesTable
-    Left = 1116
-    Top = 618
+    Left = 804
+    Top = 620
   end
   object frxTransferListDB: TfrxDBDataset
     UserName = 'frxTransferListDB'
@@ -1561,8 +1630,8 @@ object TransferListGestionF: TTransferListGestionF
     end
   end
   object PopupMenu1: TPopupMenu
-    Left = 1016
-    Top = 98
+    Left = 846
+    Top = 94
     object L1: TMenuItem
       Caption = 'Listing'
       OnClick = L1Click

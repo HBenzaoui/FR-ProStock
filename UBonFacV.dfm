@@ -3,7 +3,7 @@ object BonFacVF: TBonFacVF
   Top = 0
   Caption = 'Facture de Vente'
   ClientHeight = 741
-  ClientWidth = 1191
+  ClientWidth = 951
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -319,15 +319,15 @@ object BonFacVF: TBonFacVF
   OnClose = FormClose
   OnShow = FormShow
   DesignSize = (
-    1191
+    951
     741)
   PixelsPerInch = 96
   TextHeight = 13
   object BVFacListDBGridEh: TDBGridEh
     Left = 0
-    Top = 80
-    Width = 1191
-    Height = 641
+    Top = 71
+    Width = 951
+    Height = 650
     Anchors = [akLeft, akTop, akRight, akBottom]
     Border.Color = 4207405
     Border.ExtendedDraw = False
@@ -914,8 +914,8 @@ object BonFacVF: TBonFacVF
   object TopP: TPanel
     Left = 0
     Top = 0
-    Width = 1191
-    Height = 82
+    Width = 951
+    Height = 71
     Align = alTop
     BevelOuter = bvNone
     Color = 15527148
@@ -924,12 +924,13 @@ object BonFacVF: TBonFacVF
     ParentDoubleBuffered = False
     TabOrder = 1
     StyleElements = []
+    ExplicitWidth = 1020
     DesignSize = (
-      1191
-      82)
+      951
+      71)
     object EditBVFacBtn: TAdvToolButton
-      Left = 801
-      Top = 26
+      Left = 733
+      Top = 21
       Width = 100
       Height = 30
       Cursor = crHandPoint
@@ -960,8 +961,8 @@ object BonFacVF: TBonFacVF
       TMSStyle = 0
     end
     object DeleteBVFacBtn: TAdvToolButton
-      Left = 907
-      Top = 26
+      Left = 838
+      Top = 21
       Width = 100
       Height = 30
       Cursor = crHandPoint
@@ -992,8 +993,8 @@ object BonFacVF: TBonFacVF
       TMSStyle = 0
     end
     object AddBVFacBtn: TAdvToolButton
-      Left = 695
-      Top = 25
+      Left = 628
+      Top = 21
       Width = 100
       Height = 30
       Cursor = crHandPoint
@@ -1025,62 +1026,23 @@ object BonFacVF: TBonFacVF
     end
     object ResearchBARecLbl: TLabel
       Left = 6
-      Top = 40
-      Width = 86
-      Height = 19
+      Top = 31
+      Width = 66
+      Height = 16
       Caption = 'Rechercher'
       Color = 15722984
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 4207405
-      Font.Height = 19
+      Font.Height = 16
       Font.Name = 'Helvetica LT Std'
       Font.Style = []
       ParentColor = False
       ParentFont = False
       StyleElements = []
     end
-    object sSpeedButton1: TsSpeedButton
-      Left = 1121
-      Top = 26
-      Width = 30
-      Height = 30
-      Anchors = [akTop, akRight]
-      ParentShowHint = False
-      ShowHint = True
-      OnClick = sSpeedButton1Click
-      SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
-      ImageIndex = 7
-    end
-    object sSpeedButton2: TsSpeedButton
-      Left = 1087
-      Top = 26
-      Width = 30
-      Height = 30
-      Anchors = [akTop, akRight]
-      ParentShowHint = False
-      ShowHint = True
-      OnClick = sSpeedButton2Click
-      SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
-      ImageIndex = 8
-    end
-    object sSpeedButton3: TsSpeedButton
-      Left = 1155
-      Top = 26
-      Width = 30
-      Height = 30
-      Anchors = [akTop, akRight]
-      ParentShowHint = False
-      ShowHint = True
-      OnClick = sSpeedButton3Click
-      SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
-      ImageIndex = 9
-    end
     object Label1: TLabel
-      Left = 346
-      Top = 14
+      Left = 315
+      Top = 10
       Width = 23
       Height = 18
       Caption = 'Du:'
@@ -1095,8 +1057,8 @@ object BonFacVF: TBonFacVF
       StyleElements = []
     end
     object Label2: TLabel
-      Left = 347
-      Top = 49
+      Left = 316
+      Top = 41
       Width = 22
       Height = 18
       Caption = 'Au:'
@@ -1111,10 +1073,10 @@ object BonFacVF: TBonFacVF
       StyleElements = []
     end
     object FisrtBVFacbtn: TsSpeedButton
-      Left = 491
-      Top = 26
-      Width = 30
-      Height = 30
+      Left = 442
+      Top = 23
+      Width = 25
+      Height = 25
       ParentShowHint = False
       ShowHint = True
       OnClick = FisrtBVFacbtnClick
@@ -1124,10 +1086,10 @@ object BonFacVF: TBonFacVF
       ShowCaption = False
     end
     object PreviosBVFacbtn: TsSpeedButton
-      Left = 525
-      Top = 26
-      Width = 30
-      Height = 30
+      Left = 472
+      Top = 23
+      Width = 25
+      Height = 25
       ParentShowHint = False
       ShowHint = True
       OnClick = PreviosBVFacbtnClick
@@ -1136,10 +1098,10 @@ object BonFacVF: TBonFacVF
       ImageIndex = 1
     end
     object NextBVFacbtn: TsSpeedButton
-      Left = 559
-      Top = 26
-      Width = 30
-      Height = 30
+      Left = 502
+      Top = 23
+      Width = 25
+      Height = 25
       ParentShowHint = False
       ShowHint = True
       OnClick = NextBVFacbtnClick
@@ -1149,10 +1111,10 @@ object BonFacVF: TBonFacVF
       ShowCaption = False
     end
     object LastBVFacbtn: TsSpeedButton
-      Left = 593
-      Top = 26
-      Width = 30
-      Height = 30
+      Left = 532
+      Top = 23
+      Width = 25
+      Height = 25
       ParentShowHint = False
       ShowHint = True
       OnClick = LastBVFacbtnClick
@@ -1161,10 +1123,10 @@ object BonFacVF: TBonFacVF
       ImageIndex = 3
     end
     object FilterBVLivBtn: TAdvToolButton
-      Left = 628
-      Top = 26
+      Left = 562
+      Top = 23
       Width = 55
-      Height = 30
+      Height = 25
       Cursor = crHandPoint
       AutoThemeAdapt = False
       BorderColor = 7854350
@@ -1241,8 +1203,8 @@ object BonFacVF: TBonFacVF
     end
     object LineP: TPanel
       Left = 0
-      Top = 80
-      Width = 1207
+      Top = 69
+      Width = 967
       Height = 2
       Anchors = [akLeft, akTop, akRight]
       BevelOuter = bvNone
@@ -1250,14 +1212,14 @@ object BonFacVF: TBonFacVF
       ParentBackground = False
       TabOrder = 1
       StyleElements = []
+      ExplicitWidth = 1036
     end
-    object Panel1: TPanel
-      Left = 1189
-      Top = 21
+    object S02: TPanel
+      Left = 622
+      Top = 16
       Width = 1
       Height = 40
       ParentCustomHint = False
-      Anchors = [akTop, akRight]
       BevelEdges = []
       BevelOuter = bvNone
       BiDiMode = bdLeftToRight
@@ -1279,13 +1241,27 @@ object BonFacVF: TBonFacVF
       TabOrder = 2
       StyleElements = []
     end
-    object S01: TPanel
-      Left = 1081
-      Top = 21
+    object ResearchBVFacEdt: TSearchBox
+      Left = 76
+      Top = 29
+      Width = 220
+      Height = 25
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 4207405
+      Font.Height = -15
+      Font.Name = 'Helvetica LT Std'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 0
+      OnChange = ResearchBVFacEdtChange
+      OnKeyPress = ResearchBVFacEdtKeyPress
+    end
+    object Panel2: TPanel
+      Left = 436
+      Top = 16
       Width = 1
       Height = 40
       ParentCustomHint = False
-      Anchors = [akTop, akRight]
       BevelEdges = []
       BevelOuter = bvNone
       BiDiMode = bdLeftToRight
@@ -1307,144 +1283,73 @@ object BonFacVF: TBonFacVF
       TabOrder = 3
       StyleElements = []
     end
-    object S02: TPanel
-      Left = 688
-      Top = 21
-      Width = 1
-      Height = 40
-      ParentCustomHint = False
-      BevelEdges = []
-      BevelOuter = bvNone
-      BiDiMode = bdLeftToRight
-      Color = 11544476
-      Ctl3D = True
-      DoubleBuffered = False
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -11
-      Font.Name = 'Tahoma'
-      Font.Style = []
-      ParentBiDiMode = False
-      ParentBackground = False
-      ParentCtl3D = False
-      ParentDoubleBuffered = False
-      ParentFont = False
-      ParentShowHint = False
-      ShowHint = False
-      TabOrder = 4
-      StyleElements = []
-    end
-    object ResearchBVFacEdt: TSearchBox
-      Left = 92
-      Top = 34
-      Width = 242
-      Height = 30
+    object DateEndBVFacD: TDateTimePicker
+      Left = 344
+      Top = 38
+      Width = 87
+      Height = 24
+      Date = 42435.595104571760000000
+      Time = 42435.595104571760000000
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 4207405
-      Font.Height = 22
+      Font.Height = 16
       Font.Name = 'Helvetica LT Std'
       Font.Style = []
       ParentFont = False
-      TabOrder = 0
-      OnChange = ResearchBVFacEdtChange
-      OnKeyPress = ResearchBVFacEdtKeyPress
-    end
-    object Panel2: TPanel
-      Left = 485
-      Top = 21
-      Width = 1
-      Height = 40
-      ParentCustomHint = False
-      BevelEdges = []
-      BevelOuter = bvNone
-      BiDiMode = bdLeftToRight
-      Color = 11544476
-      Ctl3D = True
-      DoubleBuffered = False
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -11
-      Font.Name = 'Tahoma'
-      Font.Style = []
-      ParentBiDiMode = False
-      ParentBackground = False
-      ParentCtl3D = False
-      ParentDoubleBuffered = False
-      ParentFont = False
-      ParentShowHint = False
-      ShowHint = False
-      TabOrder = 5
-      StyleElements = []
-    end
-    object DateEndBVFacD: TDateTimePicker
-      Left = 375
-      Top = 44
-      Width = 104
-      Height = 29
-      Date = 42435.595104571760000000
-      Time = 42435.595104571760000000
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = 4207405
-      Font.Height = 22
-      Font.Name = 'Segoe UI'
-      Font.Style = []
-      ParentFont = False
-      TabOrder = 6
+      TabOrder = 4
       OnChange = DateStartBVFacDChange
     end
     object DateStartBVFacD: TDateTimePicker
-      Left = 375
-      Top = 9
-      Width = 104
-      Height = 29
+      Left = 344
+      Top = 7
+      Width = 87
+      Height = 24
       Date = 42435.595104571760000000
       Time = 42435.595104571760000000
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 4207405
-      Font.Height = 22
-      Font.Name = 'Segoe UI'
+      Font.Height = 16
+      Font.Name = 'Helvetica LT Std'
       Font.Style = []
       ParentFont = False
-      TabOrder = 7
+      TabOrder = 5
       OnChange = DateStartBVFacDChange
     end
     object ResherchBFVClientRdioBtn: TRadioButton
-      Left = 92
-      Top = 11
+      Left = 76
+      Top = 6
       Width = 115
       Height = 17
-      Anchors = [akLeft, akBottom]
       Caption = 'Par Client'
       Checked = True
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
-      Font.Height = 16
+      Font.Height = -12
       Font.Name = 'Roboto'
       Font.Style = []
       ParentFont = False
-      TabOrder = 8
+      TabOrder = 6
       TabStop = True
       StyleElements = []
     end
     object ResherchBFVNumBRdioBtn: TRadioButton
-      Left = 212
-      Top = 11
-      Width = 123
+      Left = 182
+      Top = 6
+      Width = 114
       Height = 17
-      Anchors = [akLeft, akBottom]
       Caption = 'Par N'#176' de Facture'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
-      Font.Height = 16
+      Font.Height = -12
       Font.Name = 'Roboto'
       Font.Style = []
       ParentFont = False
-      TabOrder = 9
+      TabOrder = 7
       StyleElements = []
     end
     object Panel4: TPanel
-      Left = 1013
-      Top = 21
+      Left = 943
+      Top = 16
       Width = 1
       Height = 40
       ParentCustomHint = False
@@ -1466,26 +1371,28 @@ object BonFacVF: TBonFacVF
       ParentFont = False
       ParentShowHint = False
       ShowHint = False
-      TabOrder = 10
+      TabOrder = 8
       StyleElements = []
     end
   end
   object Panel3: TPanel
     Left = 0
-    Top = 82
+    Top = 71
     Width = 1
-    Height = 639
+    Height = 650
     Align = alLeft
     BevelOuter = bvNone
     Color = 7854350
     ParentBackground = False
     TabOrder = 2
     StyleElements = []
+    ExplicitTop = 82
+    ExplicitHeight = 639
   end
   object StatuBar: TsStatusBar
     Left = 0
     Top = 721
-    Width = 1191
+    Width = 951
     Height = 20
     BiDiMode = bdLeftToRight
     Panels = <
@@ -1502,8 +1409,9 @@ object BonFacVF: TBonFacVF
     ParentBiDiMode = False
     SizeGrip = False
     SkinData.SkinSection = 'MENUITEM'
+    ExplicitWidth = 1020
     DesignSize = (
-      1191
+      951
       20)
     object SumGirdBBVFacBtn: TAdvToolButton
       Left = 141
@@ -1572,6 +1480,164 @@ object BonFacVF: TBonFacVF
       OnClick = RefreshGirdBtnClick
       Version = '1.6.1.2'
       TMSStyle = 0
+    end
+    object AdvToolButton1: TAdvToolButton
+      Left = 175
+      Top = 0
+      Width = 26
+      Height = 20
+      Cursor = crHandPoint
+      Hint = 'Exporter vers Excel'
+      Anchors = [akRight]
+      AutoThemeAdapt = False
+      BorderColor = 15722984
+      BorderDownColor = 15722984
+      BorderHotColor = 14079702
+      Color = 15722984
+      ColorDown = 15722984
+      ColorHot = 14079702
+      ColorHotTo = 14079702
+      ColorChecked = clNone
+      DropDownSplit = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 4207405
+      Font.Height = 18
+      Font.Name = 'Roboto'
+      Font.Style = []
+      ImageIndex = 29
+      Images = MainForm.PanelIcons16
+      ParentFont = False
+      ParentShowHint = False
+      Shaded = False
+      ShowHint = True
+      Spacing = -2
+      OnClick = AdvToolButton1Click
+      Version = '1.6.1.2'
+      TMSStyle = 0
+    end
+    object AdvToolButton2: TAdvToolButton
+      Left = 203
+      Top = 0
+      Width = 26
+      Height = 20
+      Cursor = crHandPoint
+      Hint = 'Exporter vers PDF'
+      Anchors = [akRight]
+      AutoThemeAdapt = False
+      BorderColor = 15722984
+      BorderDownColor = 15722984
+      BorderHotColor = 14079702
+      Color = 15722984
+      ColorDown = 15722984
+      ColorHot = 14079702
+      ColorHotTo = 14079702
+      ColorChecked = clNone
+      DropDownSplit = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 4207405
+      Font.Height = 18
+      Font.Name = 'Roboto'
+      Font.Style = []
+      ImageIndex = 30
+      Images = MainForm.PanelIcons16
+      ParentFont = False
+      ParentShowHint = False
+      Shaded = False
+      ShowHint = True
+      Spacing = -2
+      OnClick = AdvToolButton2Click
+      Version = '1.6.1.2'
+      TMSStyle = 0
+    end
+    object AdvToolButton3: TAdvToolButton
+      Left = 231
+      Top = 0
+      Width = 26
+      Height = 20
+      Cursor = crHandPoint
+      Hint = 'Imprimer'
+      Anchors = [akRight]
+      AutoThemeAdapt = False
+      BorderColor = 15722984
+      BorderDownColor = 15722984
+      BorderHotColor = 14079702
+      Color = 15722984
+      ColorDown = 15722984
+      ColorHot = 14079702
+      ColorHotTo = 14079702
+      ColorChecked = clNone
+      DropDownSplit = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 4207405
+      Font.Height = 18
+      Font.Name = 'Roboto'
+      Font.Style = []
+      ImageIndex = 31
+      Images = MainForm.PanelIcons16
+      ParentFont = False
+      ParentShowHint = False
+      Shaded = False
+      ShowHint = True
+      Spacing = -2
+      OnClick = AdvToolButton3Click
+      Version = '1.6.1.2'
+      TMSStyle = 0
+    end
+    object Panel5: TPanel
+      Left = 170
+      Top = 0
+      Width = 1
+      Height = 20
+      ParentCustomHint = False
+      Anchors = [akTop, akRight]
+      BevelEdges = []
+      BevelOuter = bvNone
+      BiDiMode = bdLeftToRight
+      Color = 13421772
+      Ctl3D = True
+      DoubleBuffered = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentBiDiMode = False
+      ParentBackground = False
+      ParentCtl3D = False
+      ParentDoubleBuffered = False
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = False
+      TabOrder = 0
+      StyleElements = []
+    end
+    object Panel6: TPanel
+      Left = 261
+      Top = 0
+      Width = 1
+      Height = 20
+      ParentCustomHint = False
+      Anchors = [akTop, akRight]
+      BevelEdges = []
+      BevelOuter = bvNone
+      BiDiMode = bdLeftToRight
+      Color = 13421772
+      Ctl3D = True
+      DoubleBuffered = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentBiDiMode = False
+      ParentBackground = False
+      ParentCtl3D = False
+      ParentDoubleBuffered = False
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = False
+      TabOrder = 1
+      StyleElements = []
     end
   end
   object BonFacVfrxRprt: TfrxReport

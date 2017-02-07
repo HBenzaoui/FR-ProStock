@@ -20,14 +20,9 @@ type
     DeleteBVLivBtn: TAdvToolButton;
     AddBVLivBtn: TAdvToolButton;
     ResearchBALivLbl: TLabel;
-    sSpeedButton1: TsSpeedButton;
-    sSpeedButton2: TsSpeedButton;
-    sSpeedButton3: TsSpeedButton;
     Label1: TLabel;
     Label2: TLabel;
     LineP: TPanel;
-    Panel1: TPanel;
-    S01: TPanel;
     S02: TPanel;
     ResearchBVLivEdt: TSearchBox;
     Panel2: TPanel;
@@ -73,6 +68,11 @@ type
     StatuBar: TsStatusBar;
     SumGirdBBVlivBtn: TAdvToolButton;
     RefreshGirdBtn: TAdvToolButton;
+    S01: TPanel;
+    Panel1: TPanel;
+    AdvToolButton1: TAdvToolButton;
+    AdvToolButton2: TAdvToolButton;
+    AdvToolButton3: TAdvToolButton;
     procedure ResearchBVLivEdtChange(Sender: TObject);
     procedure FisrtBARecbtnClick(Sender: TObject);
     procedure PreviosBARecbtnClick(Sender: TObject);
@@ -86,9 +86,6 @@ type
       State: TGridDrawState);
     procedure DateStartBVLivDChange(Sender: TObject);
     procedure FormShow(Sender: TObject);
-    procedure sSpeedButton2Click(Sender: TObject);
-    procedure sSpeedButton3Click(Sender: TObject);
-    procedure sSpeedButton1Click(Sender: TObject);
     procedure BVLivListDBGridEhDblClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure BVLivListDBGridEhKeyDown(Sender: TObject; var Key: Word;
@@ -110,6 +107,9 @@ type
     procedure SumGirdBBVlivBtnClick(Sender: TObject);
     procedure RefreshGirdBtnClick(Sender: TObject);
     procedure ResearchBVLivEdtKeyPress(Sender: TObject; var Key: Char);
+    procedure AdvToolButton1Click(Sender: TObject);
+    procedure AdvToolButton2Click(Sender: TObject);
+    procedure AdvToolButton3Click(Sender: TObject);
   private
     procedure GettingData;
     procedure Select_ALL;
@@ -1139,33 +1139,6 @@ begin
   Agent.Text:= MainForm.UserNameLbl.Caption ;
 end;
 
-procedure TBonLivF.sSpeedButton2Click(Sender: TObject);
-begin
-  MainForm.Bonv_livTable.DisableControls;
-
-   GettingData;
-
-  BonLivfrxRprt.PrepareReport;
-  BonLivfrxRprt.ShowReport;
-
-  MainForm.Bonv_livTable.EnableControls;
-end;
-
-procedure TBonLivF.sSpeedButton3Click(Sender: TObject);
-begin
-
-MainForm.Bonv_livTable.DisableControls;
-
-    GettingData;
-
-BonLivfrxRprt.PrepareReport;
-frxPDFExport1.FileName := 'liste des BL';
-BonLivfrxRprt.Export(frxPDFExport1);
-
-
-MainForm.Bonv_livTable.EnableControls;
-end;
-
 procedure TBonLivF.SumGirdBBVlivBtnClick(Sender: TObject);
 begin
   if SumGirdBBVlivBtn.Tag = 0 then
@@ -1236,7 +1209,7 @@ Select_Valid_Virment;
   end;
 end;
 
-procedure TBonLivF.sSpeedButton1Click(Sender: TObject);
+procedure TBonLivF.AdvToolButton1Click(Sender: TObject);
 begin
 MainForm.Bonv_livTable.DisableControls;
 
@@ -1247,6 +1220,32 @@ frxXLSExport1.FileName := 'liste des BL';
 BonLivfrxRprt.Export(frxXLSExport1);
 
 MainForm.Bonv_livTable.EnableControls;
+end;
+
+procedure TBonLivF.AdvToolButton2Click(Sender: TObject);
+begin
+MainForm.Bonv_livTable.DisableControls;
+
+    GettingData;
+
+BonLivfrxRprt.PrepareReport;
+frxPDFExport1.FileName := 'liste des BL';
+BonLivfrxRprt.Export(frxPDFExport1);
+
+
+MainForm.Bonv_livTable.EnableControls;
+end;
+
+procedure TBonLivF.AdvToolButton3Click(Sender: TObject);
+begin
+  MainForm.Bonv_livTable.DisableControls;
+
+   GettingData;
+
+  BonLivfrxRprt.PrepareReport;
+  BonLivfrxRprt.ShowReport;
+
+  MainForm.Bonv_livTable.EnableControls;
 end;
 
 procedure TBonLivF.ATermeMPFilterBVLivPMenuClick(Sender: TObject);

@@ -23,12 +23,7 @@ type
     DeleteBARecBtn: TAdvToolButton;
     AddBARecBtn: TAdvToolButton;
     ResearchBARecLbl: TLabel;
-    sSpeedButton1: TsSpeedButton;
-    sSpeedButton2: TsSpeedButton;
-    sSpeedButton3: TsSpeedButton;
     LineP: TPanel;
-    Panel1: TPanel;
-    S01: TPanel;
     S02: TPanel;
     ResearchBARecEdt: TSearchBox;
     Panel2: TPanel;
@@ -75,6 +70,11 @@ type
     StatuBar: TsStatusBar;
     SumGirdBARecBtn: TAdvToolButton;
     RefreshGirdBtn: TAdvToolButton;
+    Panel5: TPanel;
+    AdvToolButton1: TAdvToolButton;
+    AdvToolButton2: TAdvToolButton;
+    AdvToolButton3: TAdvToolButton;
+    Panel6: TPanel;
     procedure AddBARecBtnClick(Sender: TObject);
     procedure FisrtBARecbtnClick(Sender: TObject);
     procedure LastBARecbtnClick(Sender: TObject);
@@ -88,9 +88,6 @@ type
     procedure ResearchBARecEdtChange(Sender: TObject);
     procedure DateStartBARecDChange(Sender: TObject);
     procedure FormShow(Sender: TObject);
-    procedure sSpeedButton2Click(Sender: TObject);
-    procedure sSpeedButton1Click(Sender: TObject);
-    procedure sSpeedButton3Click(Sender: TObject);
     procedure BARecListDBGridEhDblClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure BARecListDBGridEhKeyDown(Sender: TObject; var Key: Word;
@@ -111,6 +108,9 @@ type
     procedure SumGirdBARecBtnClick(Sender: TObject);
     procedure RefreshGirdBtnClick(Sender: TObject);
     procedure ResearchBARecEdtKeyPress(Sender: TObject; var Key: Char);
+    procedure AdvToolButton1Click(Sender: TObject);
+    procedure AdvToolButton2Click(Sender: TObject);
+    procedure AdvToolButton3Click(Sender: TObject);
 
   private
     procedure GettingData;
@@ -1153,45 +1153,6 @@ begin
     Agent:= BonRecfrxRprt.FindObject('Agent') as TfrxMemoView;
   Agent.Text:= MainForm.UserNameLbl.Caption ;
 end;
-procedure TBonRecF.sSpeedButton2Click(Sender: TObject);
-begin
-  MainForm.Bona_recTable.DisableControls;
-
-   GettingData;
-
-  BonRecfrxRprt.PrepareReport;
-  BonRecfrxRprt.ShowReport;
-
-  MainForm.Bona_recTable.EnableControls;
-end;
-
-procedure TBonRecF.sSpeedButton1Click(Sender: TObject);
-begin
-MainForm.Bona_recTable.DisableControls;
-
-    GettingData;
-
-BonRecfrxRprt.PrepareReport;
-frxXLSExport1.FileName := 'liste des BR';
-BonRecfrxRprt.Export(frxXLSExport1);
-
-MainForm.Bona_recTable.EnableControls;
-end;
-
-procedure TBonRecF.sSpeedButton3Click(Sender: TObject);
-begin
-MainForm.Bona_recTable.DisableControls;
-
-    GettingData;
-
-BonRecfrxRprt.PrepareReport;
-frxPDFExport1.FileName := 'liste des BR';
-BonRecfrxRprt.Export(frxPDFExport1);
-
-
-MainForm.Bona_recTable.EnableControls;
-end;
-
 procedure TBonRecF.ValideFilterBVLivPMenuClick(Sender: TObject);
 begin
   sImage1.ImageIndex:=3;
@@ -1261,6 +1222,45 @@ begin
       end;
 end;
 
+procedure TBonRecF.AdvToolButton1Click(Sender: TObject);
+begin
+MainForm.Bona_recTable.DisableControls;
+
+    GettingData;
+
+BonRecfrxRprt.PrepareReport;
+frxXLSExport1.FileName := 'liste des BR';
+BonRecfrxRprt.Export(frxXLSExport1);
+
+MainForm.Bona_recTable.EnableControls;
+end;
+
+procedure TBonRecF.AdvToolButton2Click(Sender: TObject);
+begin
+MainForm.Bona_recTable.DisableControls;
+
+    GettingData;
+
+BonRecfrxRprt.PrepareReport;
+frxPDFExport1.FileName := 'liste des BR';
+BonRecfrxRprt.Export(frxPDFExport1);
+
+
+MainForm.Bona_recTable.EnableControls;
+end;
+
+procedure TBonRecF.AdvToolButton3Click(Sender: TObject);
+begin
+  MainForm.Bona_recTable.DisableControls;
+
+   GettingData;
+
+  BonRecfrxRprt.PrepareReport;
+  BonRecfrxRprt.ShowReport;
+
+  MainForm.Bona_recTable.EnableControls;
+end;
+
 procedure TBonRecF.ATermeMPFilterBVLivPMenuClick(Sender: TObject);
 begin
 FilterBVLivBtn.ImageIndex:=50;
@@ -1276,7 +1276,7 @@ Select_Valid_ATerme;
    MainForm.Bona_recTable.Filtered:= False;
     if RegleFilterBVLivPMenu.Checked then
     begin
-     
+
      Select_Regle; 
      
     end;

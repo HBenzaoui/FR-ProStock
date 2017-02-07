@@ -211,6 +211,7 @@ type
     procedure BondeLivraison1Click(Sender: TObject);
     procedure BondeLivraisonhorstaxe1Click(Sender: TObject);
     procedure BondeCaisseSimple2Click(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
     procedure GettingData;
@@ -239,17 +240,22 @@ procedure Refresh_PreservePosition;
  row: integer;   recNo: integer;
  ds : TDataSet;
 begin
+
+   BonLivGestionF.ProduitsListDBGridEh.DataSource.DataSet.DisableControls;
+
    ds := TDBGridEh(BonLivGestionF.ProduitsListDBGridEh).DataSource.DataSet;
    rowDelta := -1 + TDBGridEh(BonLivGestionF.ProduitsListDBGridEh).Row;
    row := ds.RecNo;
    ds.Refresh;
    with ds do   begin
-     DisableControls;
+//     DisableControls;
      RecNo := row;
      MoveBy(-rowDelta) ;
      MoveBy(rowDelta) ;
-     EnableControls;
+//     EnableControls;
      end;
+
+   BonLivGestionF.ProduitsListDBGridEh.DataSource.DataSet.EnableControls;
  end;
 
  procedure TBonLivGestionF .EnableBonLiv;
@@ -310,6 +316,7 @@ begin
 procedure TBonLivGestionF .FormShow(Sender: TObject);
 var CodeBL: Integer;
 begin
+
 
  if Tag=0 then
  begin
@@ -606,6 +613,15 @@ codeBL:=MainForm.Bonv_livTable.FieldByName('code_bvliv').AsInteger;
 
 end;
 
+procedure TBonLivGestionF.FormCreate(Sender: TObject);
+begin
+if Assigned(ProduitsListF) then
+  begin
+   ProduitsListF.ResearchProduitsEdt.Text:='';
+   MainForm.ProduitTable.Filtered:= False;
+   end;
+end;
+
 procedure TBonLivGestionF.FormKeyPress(Sender: TObject; var Key: Char);
 begin
      if key = #27 then
@@ -617,7 +633,7 @@ begin
  end;
 end;
 
-procedure TBonLivGestionF .ProduitBonLivGCbxEnter(Sender: TObject);
+procedure TBonLivGestionF.ProduitBonLivGCbxEnter(Sender: TObject);
 var
 I : Integer;
   begin

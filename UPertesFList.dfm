@@ -3,7 +3,7 @@ object PertesFListF: TPertesFListF
   Top = 0
   Caption = 'Les Pertes'
   ClientHeight = 741
-  ClientWidth = 1193
+  ClientWidth = 1022
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -320,15 +320,15 @@ object PertesFListF: TPertesFListF
   OnClose = FormClose
   OnShow = FormShow
   DesignSize = (
-    1193
+    1022
     741)
   PixelsPerInch = 96
   TextHeight = 13
   object TopP: TPanel
     Left = 0
     Top = 0
-    Width = 1193
-    Height = 82
+    Width = 1022
+    Height = 71
     Align = alTop
     BevelOuter = bvNone
     Color = 15527148
@@ -337,12 +337,13 @@ object PertesFListF: TPertesFListF
     ParentDoubleBuffered = False
     TabOrder = 0
     StyleElements = []
+    ExplicitWidth = 1077
     DesignSize = (
-      1193
-      82)
+      1022
+      71)
     object EditBARecBtn: TAdvToolButton
-      Left = 861
-      Top = 26
+      Left = 805
+      Top = 21
       Width = 100
       Height = 30
       Cursor = crHandPoint
@@ -373,8 +374,8 @@ object PertesFListF: TPertesFListF
       TMSStyle = 0
     end
     object DeleteBARecBtn: TAdvToolButton
-      Left = 966
-      Top = 26
+      Left = 910
+      Top = 21
       Width = 100
       Height = 30
       Cursor = crHandPoint
@@ -405,8 +406,8 @@ object PertesFListF: TPertesFListF
       TMSStyle = 0
     end
     object AddBARecBtn: TAdvToolButton
-      Left = 755
-      Top = 26
+      Left = 700
+      Top = 21
       Width = 100
       Height = 30
       Cursor = crHandPoint
@@ -437,63 +438,24 @@ object PertesFListF: TPertesFListF
       TMSStyle = 0
     end
     object ResearchBACtrLbl: TLabel
-      Left = 8
-      Top = 38
-      Width = 78
-      Height = 18
+      Left = 6
+      Top = 31
+      Width = 66
+      Height = 16
       Caption = 'Rechercher'
       Color = 15722984
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 4207405
-      Font.Height = 18
-      Font.Name = 'Roboto'
+      Font.Height = 16
+      Font.Name = 'Helvetica LT Std'
       Font.Style = []
       ParentColor = False
       ParentFont = False
       StyleElements = []
     end
-    object sSpeedButton1: TsSpeedButton
-      Left = 1119
-      Top = 26
-      Width = 33
-      Height = 30
-      Anchors = [akTop, akRight]
-      ParentShowHint = False
-      ShowHint = True
-      OnClick = sSpeedButton1Click
-      SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
-      ImageIndex = 7
-    end
-    object sSpeedButton2: TsSpeedButton
-      Left = 1082
-      Top = 26
-      Width = 33
-      Height = 30
-      Anchors = [akTop, akRight]
-      ParentShowHint = False
-      ShowHint = True
-      OnClick = sSpeedButton2Click
-      SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
-      ImageIndex = 8
-    end
-    object sSpeedButton3: TsSpeedButton
-      Left = 1156
-      Top = 26
-      Width = 30
-      Height = 30
-      Anchors = [akTop, akRight]
-      ParentShowHint = False
-      ShowHint = True
-      OnClick = sSpeedButton3Click
-      SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
-      ImageIndex = 9
-    end
     object Label1: TLabel
-      Left = 314
-      Top = 14
+      Left = 298
+      Top = 10
       Width = 23
       Height = 18
       Caption = 'Du:'
@@ -508,8 +470,8 @@ object PertesFListF: TPertesFListF
       StyleElements = []
     end
     object Label2: TLabel
-      Left = 315
-      Top = 49
+      Left = 299
+      Top = 41
       Width = 22
       Height = 18
       Caption = 'Au:'
@@ -524,10 +486,10 @@ object PertesFListF: TPertesFListF
       StyleElements = []
     end
     object FisrtBARecbtn: TsSpeedButton
-      Left = 453
-      Top = 26
-      Width = 30
-      Height = 30
+      Left = 422
+      Top = 23
+      Width = 25
+      Height = 25
       ParentShowHint = False
       ShowHint = True
       OnClick = FisrtBARecbtnClick
@@ -537,10 +499,10 @@ object PertesFListF: TPertesFListF
       ShowCaption = False
     end
     object PreviosBARecbtn: TsSpeedButton
-      Left = 487
-      Top = 26
-      Width = 30
-      Height = 30
+      Left = 452
+      Top = 23
+      Width = 25
+      Height = 25
       ParentShowHint = False
       ShowHint = True
       OnClick = PreviosBARecbtnClick
@@ -549,10 +511,10 @@ object PertesFListF: TPertesFListF
       ImageIndex = 1
     end
     object NextBARecbtn: TsSpeedButton
-      Left = 521
-      Top = 26
-      Width = 30
-      Height = 30
+      Left = 482
+      Top = 23
+      Width = 25
+      Height = 25
       ParentShowHint = False
       ShowHint = True
       OnClick = NextBARecbtnClick
@@ -562,10 +524,10 @@ object PertesFListF: TPertesFListF
       ShowCaption = False
     end
     object LastBARecbtn: TsSpeedButton
-      Left = 555
-      Top = 26
-      Width = 30
-      Height = 30
+      Left = 512
+      Top = 23
+      Width = 25
+      Height = 25
       ParentShowHint = False
       ShowHint = True
       OnClick = LastBARecbtnClick
@@ -574,8 +536,8 @@ object PertesFListF: TPertesFListF
       ImageIndex = 3
     end
     object PeriodCaiseeListLbl: TLabel
-      Left = 597
-      Top = 32
+      Left = 542
+      Top = 28
       Width = 31
       Height = 16
       Caption = 'Type:'
@@ -591,8 +553,8 @@ object PertesFListF: TPertesFListF
     end
     object LineP: TPanel
       Left = 0
-      Top = 80
-      Width = 1209
+      Top = 69
+      Width = 1038
       Height = 2
       Anchors = [akLeft, akTop, akRight]
       BevelOuter = bvNone
@@ -600,14 +562,14 @@ object PertesFListF: TPertesFListF
       ParentBackground = False
       TabOrder = 1
       StyleElements = []
+      ExplicitWidth = 1093
     end
-    object Panel1: TPanel
-      Left = 1191
-      Top = 21
+    object S01: TPanel
+      Left = 1015
+      Top = 16
       Width = 1
       Height = 40
       ParentCustomHint = False
-      Anchors = [akTop, akRight]
       BevelEdges = []
       BevelOuter = bvNone
       BiDiMode = bdLeftToRight
@@ -629,9 +591,9 @@ object PertesFListF: TPertesFListF
       TabOrder = 2
       StyleElements = []
     end
-    object S01: TPanel
-      Left = 1072
-      Top = 21
+    object S02: TPanel
+      Left = 694
+      Top = 16
       Width = 1
       Height = 40
       ParentCustomHint = False
@@ -656,9 +618,23 @@ object PertesFListF: TPertesFListF
       TabOrder = 3
       StyleElements = []
     end
-    object S02: TPanel
-      Left = 750
-      Top = 21
+    object ResearchPerteEdt: TSearchBox
+      Left = 76
+      Top = 27
+      Width = 211
+      Height = 25
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 4207405
+      Font.Height = -15
+      Font.Name = 'Helvetica LT Std'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 0
+      OnChange = ResearchPerteEdtChange
+    end
+    object Panel2: TPanel
+      Left = 416
+      Top = 16
       Width = 1
       Height = 40
       ParentCustomHint = False
@@ -683,146 +659,75 @@ object PertesFListF: TPertesFListF
       TabOrder = 4
       StyleElements = []
     end
-    object ResearchPerteEdt: TSearchBox
-      Left = 90
-      Top = 34
-      Width = 213
-      Height = 30
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = 4207405
-      Font.Height = 22
-      Font.Name = 'Helvetica LT Std'
-      Font.Style = []
-      ParentFont = False
-      TabOrder = 0
-      OnChange = ResearchPerteEdtChange
-    end
-    object Panel2: TPanel
-      Left = 447
-      Top = 21
-      Width = 1
-      Height = 40
-      ParentCustomHint = False
-      BevelEdges = []
-      BevelOuter = bvNone
-      BiDiMode = bdLeftToRight
-      Color = 8469216
-      Ctl3D = True
-      DoubleBuffered = False
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -11
-      Font.Name = 'Tahoma'
-      Font.Style = []
-      ParentBiDiMode = False
-      ParentBackground = False
-      ParentCtl3D = False
-      ParentDoubleBuffered = False
-      ParentFont = False
-      ParentShowHint = False
-      ShowHint = False
-      TabOrder = 5
-      StyleElements = []
-    end
     object DateEndPerteD: TDateTimePicker
-      Left = 338
-      Top = 44
-      Width = 104
-      Height = 29
+      Left = 324
+      Top = 38
+      Width = 87
+      Height = 24
       Date = 42435.595104571760000000
       Time = 42435.595104571760000000
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 4207405
-      Font.Height = 22
-      Font.Name = 'Segoe UI'
+      Font.Height = 16
+      Font.Name = 'Helvetica LT Std'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 5
+      OnChange = DateStartPerteDChange
+    end
+    object DateStartPerteD: TDateTimePicker
+      Left = 324
+      Top = 7
+      Width = 87
+      Height = 24
+      Date = 42435.595104571760000000
+      Time = 42435.595104571760000000
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 4207405
+      Font.Height = 16
+      Font.Name = 'Helvetica LT Std'
       Font.Style = []
       ParentFont = False
       TabOrder = 6
       OnChange = DateStartPerteDChange
     end
-    object DateStartPerteD: TDateTimePicker
-      Left = 338
-      Top = 9
-      Width = 104
-      Height = 29
-      Date = 42435.595104571760000000
-      Time = 42435.595104571760000000
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = 4207405
-      Font.Height = 22
-      Font.Name = 'Segoe UI'
-      Font.Style = []
-      ParentFont = False
-      TabOrder = 7
-      OnChange = DateStartPerteDChange
-    end
     object ResherchPerteNumBRdioBtn: TRadioButton
-      Left = 190
-      Top = 11
-      Width = 119
+      Left = 180
+      Top = 4
+      Width = 111
       Height = 17
-      Anchors = [akLeft, akBottom]
       Caption = 'Par Code '#226' Barre'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
-      Font.Height = 16
+      Font.Height = -12
       Font.Name = 'Roboto'
       Font.Style = []
       ParentFont = False
-      TabOrder = 8
+      TabOrder = 7
       StyleElements = []
       OnClick = ResherchPerteRdioBtnClick
     end
     object ResherchPerteRdioBtn: TRadioButton
       Left = 72
-      Top = 11
-      Width = 117
+      Top = 6
+      Width = 105
       Height = 17
-      Anchors = [akLeft, akBottom]
       Caption = 'Par D'#233's  ou R'#233'f'
       Checked = True
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
-      Font.Height = 16
+      Font.Height = -12
       Font.Name = 'Roboto'
       Font.Style = []
       ParentFont = False
-      TabOrder = 9
+      TabOrder = 8
       TabStop = True
       StyleElements = []
       OnClick = ResherchPerteRdioBtnClick
     end
-    object Panel4: TPanel
-      Left = 1075
-      Top = 21
-      Width = 1
-      Height = 40
-      ParentCustomHint = False
-      Anchors = [akTop, akRight]
-      BevelEdges = []
-      BevelOuter = bvNone
-      BiDiMode = bdLeftToRight
-      Color = 8469216
-      Ctl3D = True
-      DoubleBuffered = False
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -11
-      Font.Name = 'Tahoma'
-      Font.Style = []
-      ParentBiDiMode = False
-      ParentBackground = False
-      ParentCtl3D = False
-      ParentDoubleBuffered = False
-      ParentFont = False
-      ParentShowHint = False
-      ShowHint = False
-      TabOrder = 10
-      StyleElements = []
-    end
     object TypePerteListCbx: TComboBox
-      Left = 632
-      Top = 29
+      Left = 578
+      Top = 24
       Width = 111
       Height = 24
       Style = csDropDownList
@@ -833,7 +738,7 @@ object PertesFListF: TPertesFListF
       Font.Style = []
       ItemIndex = 0
       ParentFont = False
-      TabOrder = 11
+      TabOrder = 9
       Text = 'Tous'
       OnChange = TypePerteListCbxChange
       OnDropDown = TypePerteListCbxDropDown
@@ -846,22 +751,23 @@ object PertesFListF: TPertesFListF
   end
   object Panel3: TPanel
     Left = 0
-    Top = 82
+    Top = 71
     Width = 1
-    Height = 639
+    Height = 650
     Align = alLeft
     BevelOuter = bvNone
     Color = 8637171
     ParentBackground = False
     TabOrder = 1
     StyleElements = []
-    ExplicitHeight = 659
+    ExplicitTop = 82
+    ExplicitHeight = 639
   end
   object PertesListDBGridEh: TDBGridEh
     Left = 0
-    Top = 84
-    Width = 1191
-    Height = 634
+    Top = 71
+    Width = 1020
+    Height = 647
     Anchors = [akLeft, akTop, akRight, akBottom]
     Border.Color = 4207405
     Border.ExtendedDraw = False
@@ -1331,7 +1237,7 @@ object PertesFListF: TPertesFListF
   object StatuBar: TsStatusBar
     Left = 0
     Top = 721
-    Width = 1193
+    Width = 1022
     Height = 20
     BiDiMode = bdLeftToRight
     Panels = <
@@ -1348,9 +1254,9 @@ object PertesFListF: TPertesFListF
     ParentBiDiMode = False
     SizeGrip = False
     SkinData.SkinSection = 'MENUITEM'
-    ExplicitWidth = 1089
+    ExplicitWidth = 1077
     DesignSize = (
-      1193
+      1022
       20)
     object SumGirdProduitBtn: TAdvToolButton
       Left = 141
@@ -1419,6 +1325,164 @@ object PertesFListF: TPertesFListF
       OnClick = RefreshGirdBtnClick
       Version = '1.6.1.2'
       TMSStyle = 0
+    end
+    object AdvToolButton1: TAdvToolButton
+      Left = 175
+      Top = 0
+      Width = 26
+      Height = 20
+      Cursor = crHandPoint
+      Hint = 'Exporter vers Excel'
+      Anchors = [akRight]
+      AutoThemeAdapt = False
+      BorderColor = 15722984
+      BorderDownColor = 15722984
+      BorderHotColor = 14079702
+      Color = 15722984
+      ColorDown = 15722984
+      ColorHot = 14079702
+      ColorHotTo = 14079702
+      ColorChecked = clNone
+      DropDownSplit = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 4207405
+      Font.Height = 18
+      Font.Name = 'Roboto'
+      Font.Style = []
+      ImageIndex = 29
+      Images = MainForm.PanelIcons16
+      ParentFont = False
+      ParentShowHint = False
+      Shaded = False
+      ShowHint = True
+      Spacing = -2
+      OnClick = AdvToolButton1Click
+      Version = '1.6.1.2'
+      TMSStyle = 0
+    end
+    object AdvToolButton2: TAdvToolButton
+      Left = 203
+      Top = 0
+      Width = 26
+      Height = 20
+      Cursor = crHandPoint
+      Hint = 'Exporter vers PDF'
+      Anchors = [akRight]
+      AutoThemeAdapt = False
+      BorderColor = 15722984
+      BorderDownColor = 15722984
+      BorderHotColor = 14079702
+      Color = 15722984
+      ColorDown = 15722984
+      ColorHot = 14079702
+      ColorHotTo = 14079702
+      ColorChecked = clNone
+      DropDownSplit = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 4207405
+      Font.Height = 18
+      Font.Name = 'Roboto'
+      Font.Style = []
+      ImageIndex = 30
+      Images = MainForm.PanelIcons16
+      ParentFont = False
+      ParentShowHint = False
+      Shaded = False
+      ShowHint = True
+      Spacing = -2
+      OnClick = AdvToolButton2Click
+      Version = '1.6.1.2'
+      TMSStyle = 0
+    end
+    object AdvToolButton3: TAdvToolButton
+      Left = 231
+      Top = 0
+      Width = 26
+      Height = 20
+      Cursor = crHandPoint
+      Hint = 'Imprimer'
+      Anchors = [akRight]
+      AutoThemeAdapt = False
+      BorderColor = 15722984
+      BorderDownColor = 15722984
+      BorderHotColor = 14079702
+      Color = 15722984
+      ColorDown = 15722984
+      ColorHot = 14079702
+      ColorHotTo = 14079702
+      ColorChecked = clNone
+      DropDownSplit = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 4207405
+      Font.Height = 18
+      Font.Name = 'Roboto'
+      Font.Style = []
+      ImageIndex = 31
+      Images = MainForm.PanelIcons16
+      ParentFont = False
+      ParentShowHint = False
+      Shaded = False
+      ShowHint = True
+      Spacing = -2
+      OnClick = AdvToolButton3Click
+      Version = '1.6.1.2'
+      TMSStyle = 0
+    end
+    object Panel5: TPanel
+      Left = 170
+      Top = 0
+      Width = 1
+      Height = 20
+      ParentCustomHint = False
+      Anchors = [akTop, akRight]
+      BevelEdges = []
+      BevelOuter = bvNone
+      BiDiMode = bdLeftToRight
+      Color = 13421772
+      Ctl3D = True
+      DoubleBuffered = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentBiDiMode = False
+      ParentBackground = False
+      ParentCtl3D = False
+      ParentDoubleBuffered = False
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = False
+      TabOrder = 0
+      StyleElements = []
+    end
+    object Panel6: TPanel
+      Left = 261
+      Top = 0
+      Width = 1
+      Height = 20
+      ParentCustomHint = False
+      Anchors = [akTop, akRight]
+      BevelEdges = []
+      BevelOuter = bvNone
+      BiDiMode = bdLeftToRight
+      Color = 13421772
+      Ctl3D = True
+      DoubleBuffered = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentBiDiMode = False
+      ParentBackground = False
+      ParentCtl3D = False
+      ParentDoubleBuffered = False
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = False
+      TabOrder = 1
+      StyleElements = []
     end
   end
   object PerteListDataS: TDataSource

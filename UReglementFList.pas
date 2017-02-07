@@ -18,14 +18,9 @@ type
     DeleteBARecBtn: TAdvToolButton;
     AddBARecBtn: TAdvToolButton;
     ResearchBACtrLbl: TLabel;
-    sSpeedButton1: TsSpeedButton;
-    sSpeedButton2: TsSpeedButton;
-    sSpeedButton3: TsSpeedButton;
     Label1: TLabel;
     Label2: TLabel;
     LineP: TPanel;
-    Panel1: TPanel;
-    S01: TPanel;
     S02: TPanel;
     ResearchRegFEdt: TSearchBox;
     Panel2: TPanel;
@@ -67,6 +62,11 @@ type
     StatuBar: TsStatusBar;
     SumGirdProduitBtn: TAdvToolButton;
     RefreshGirdBtn: TAdvToolButton;
+    Panel5: TPanel;
+    AdvToolButton1: TAdvToolButton;
+    AdvToolButton2: TAdvToolButton;
+    AdvToolButton3: TAdvToolButton;
+    Panel6: TPanel;
     procedure AddBARecBtnClick(Sender: TObject);
     procedure EditBARecBtnClick(Sender: TObject);
     procedure DeleteBARecBtnClick(Sender: TObject);
@@ -77,9 +77,6 @@ type
     procedure PreviosBARecbtnClick(Sender: TObject);
     procedure NextBARecbtnClick(Sender: TObject);
     procedure LastBARecbtnClick(Sender: TObject);
-    procedure sSpeedButton3Click(Sender: TObject);
-    procedure sSpeedButton1Click(Sender: TObject);
-    procedure sSpeedButton2Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormPaint(Sender: TObject);
     procedure BARecListDBGridEhDblClick(Sender: TObject);
@@ -99,6 +96,9 @@ type
     procedure RefreshGirdBtnClick(Sender: TObject);
     procedure SumGirdProduitBtnClick(Sender: TObject);
     procedure ResearchRegFEdtKeyPress(Sender: TObject; var Key: Char);
+    procedure AdvToolButton1Click(Sender: TObject);
+    procedure AdvToolButton2Click(Sender: TObject);
+    procedure AdvToolButton3Click(Sender: TObject);
   private
     procedure GettingData;
     procedure FilteredColor;
@@ -615,6 +615,45 @@ begin
   end;
 end;
 
+procedure TReglementFListF.AdvToolButton1Click(Sender: TObject);
+begin
+MainForm.RegfournisseurTable.DisableControls;
+
+    GettingData;
+
+RegFListfrxRprt.PrepareReport;
+frxXLSExport1.FileName := 'Liste Règlement Fournisseur';
+RegFListfrxRprt.Export(frxXLSExport1);
+
+MainForm.RegfournisseurTable.EnableControls;
+end;
+
+procedure TReglementFListF.AdvToolButton2Click(Sender: TObject);
+begin
+MainForm.RegfournisseurTable.DisableControls;
+
+    GettingData;
+
+RegFListfrxRprt.PrepareReport;
+frxPDFExport1.FileName := 'Liste Règlement Fournisseur';
+RegFListfrxRprt.Export(frxPDFExport1);
+
+
+MainForm.RegfournisseurTable.EnableControls;
+end;
+
+procedure TReglementFListF.AdvToolButton3Click(Sender: TObject);
+begin
+  MainForm.RegfournisseurTable.DisableControls;
+
+   GettingData;
+
+  RegFListfrxRprt.PrepareReport;
+  RegFListfrxRprt.ShowReport;
+
+  MainForm.RegfournisseurTable.EnableControls;
+end;
+
 procedure TReglementFListF.ATermeMPFilterBVLivPMenuClick(Sender: TObject);
 begin
   ClearValideFilterBVLivPMenuClick(Sender);
@@ -781,45 +820,6 @@ begin
   Agent.Text:= MainForm.UserNameLbl.Caption ;
   end;
 
-
-procedure TReglementFListF.sSpeedButton2Click(Sender: TObject);
-begin
-  MainForm.RegfournisseurTable.DisableControls;
-
-   GettingData;
-
-  RegFListfrxRprt.PrepareReport;
-  RegFListfrxRprt.ShowReport;
-
-  MainForm.RegfournisseurTable.EnableControls;
-end;
-
-procedure TReglementFListF.sSpeedButton1Click(Sender: TObject);
-begin
-MainForm.RegfournisseurTable.DisableControls;
-
-    GettingData;
-
-RegFListfrxRprt.PrepareReport;
-frxXLSExport1.FileName := 'Liste Règlement Fournisseur';
-RegFListfrxRprt.Export(frxXLSExport1);
-
-MainForm.RegfournisseurTable.EnableControls;
-end;
-
-procedure TReglementFListF.sSpeedButton3Click(Sender: TObject);
-begin
-MainForm.RegfournisseurTable.DisableControls;
-
-    GettingData;
-
-RegFListfrxRprt.PrepareReport;
-frxPDFExport1.FileName := 'Liste Règlement Fournisseur';
-RegFListfrxRprt.Export(frxPDFExport1);
-
-
-MainForm.RegfournisseurTable.EnableControls;
-end;
 
 procedure TReglementFListF.SumGirdProduitBtnClick(Sender: TObject);
 begin

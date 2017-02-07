@@ -17,9 +17,6 @@ type
     DeleteBARecBtn: TAdvToolButton;
     AddBARecBtn: TAdvToolButton;
     ResearchBACtrLbl: TLabel;
-    sSpeedButton1: TsSpeedButton;
-    sSpeedButton2: TsSpeedButton;
-    sSpeedButton3: TsSpeedButton;
     Label1: TLabel;
     Label2: TLabel;
     FisrtBARecbtn: TsSpeedButton;
@@ -27,7 +24,6 @@ type
     NextBARecbtn: TsSpeedButton;
     LastBARecbtn: TsSpeedButton;
     LineP: TPanel;
-    Panel1: TPanel;
     S01: TPanel;
     S02: TPanel;
     ResearchTransferEdt: TSearchBox;
@@ -35,7 +31,6 @@ type
     DateEndTransferD: TDateTimePicker;
     DateStartTransferD: TDateTimePicker;
     ResherchTransferRdioBtn: TRadioButton;
-    Panel4: TPanel;
     Panel3: TPanel;
     TransferListDBGridEh: TDBGridEh;
     StatuBar: TsStatusBar;
@@ -48,6 +43,11 @@ type
     TransferListfrxRprt: TfrxReport;
     PopupMenu1: TPopupMenu;
     L1: TMenuItem;
+    Panel5: TPanel;
+    AdvToolButton1: TAdvToolButton;
+    AdvToolButton2: TAdvToolButton;
+    AdvToolButton3: TAdvToolButton;
+    Panel6: TPanel;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);
     procedure DateStartTransferDChange(Sender: TObject);
@@ -66,6 +66,8 @@ type
     procedure TransferListDBGridEhKeyPress(Sender: TObject; var Key: Char);
     procedure TransferListDBGridEhDblClick(Sender: TObject);
     procedure L1Click(Sender: TObject);
+    procedure AdvToolButton2Click(Sender: TObject);
+    procedure AdvToolButton1Click(Sender: TObject);
   private
     procedure GettingData;
     { Private declarations }
@@ -141,6 +143,32 @@ begin
 //    if Key in ['m','M'] then
 //      EditBARecBtnClick(Sender);
   end else Exit;
+end;
+
+procedure TTransferListGestionF.AdvToolButton1Click(Sender: TObject);
+begin
+  DataModuleF.Transfer_comptesTable.DisableControls;
+   TransferListfrxRprt.PrepareReport;
+   GettingData;
+
+  TransferListfrxRprt.PrepareReport;
+  frxXLSExport1.FileName := 'listing';
+  TransferListfrxRprt.Export(frxXLSExport1);;
+
+  DataModuleF.Transfer_comptesTable.EnableControls;
+end;
+
+procedure TTransferListGestionF.AdvToolButton2Click(Sender: TObject);
+begin
+  DataModuleF.Transfer_comptesTable.DisableControls;
+   TransferListfrxRprt.PrepareReport;
+   GettingData;
+
+  TransferListfrxRprt.PrepareReport;
+  frxPDFExport1.FileName := 'listing';
+  TransferListfrxRprt.Export(frxPDFExport1);;
+
+  DataModuleF.Transfer_comptesTable.EnableControls;
 end;
 
 procedure TTransferListGestionF.DateStartTransferDChange(Sender: TObject);

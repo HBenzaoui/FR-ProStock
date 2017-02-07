@@ -32,9 +32,6 @@ type
     frxPDFExport1: TfrxPDFExport;
     TopP: TPanel;
     PeriodCaiseeListLbl: TLabel;
-    sSpeedButton1: TsSpeedButton;
-    sSpeedButton2: TsSpeedButton;
-    sSpeedButton3: TsSpeedButton;
     Label1: TLabel;
     Label2: TLabel;
     Label3: TLabel;
@@ -44,8 +41,6 @@ type
     LastCaiseebtn: TsSpeedButton;
     FilterBVLivBtn: TAdvToolButton;
     LineP: TPanel;
-    Panel1: TPanel;
-    S01: TPanel;
     Panel2: TPanel;
     DateEndCaisseListD: TDateTimePicker;
     DateStartCaisseListD: TDateTimePicker;
@@ -88,14 +83,16 @@ type
     StatuBar: TsStatusBar;
     PaidOnlyCaisseBtn: TAdvToolButton;
     RefreshGirdBtn: TAdvToolButton;
+    Panel8: TPanel;
+    AdvToolButton1: TAdvToolButton;
+    AdvToolButton2: TAdvToolButton;
+    AdvToolButton3: TAdvToolButton;
+    Panel9: TPanel;
     procedure CaisseListCbxDropDown(Sender: TObject);
     procedure CaisseListCbxChange(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure DaysCaisseListCbxChange(Sender: TObject);
     procedure DateStartCaisseListDChange(Sender: TObject);
-    procedure sSpeedButton2Click(Sender: TObject);
-    procedure sSpeedButton1Click(Sender: TObject);
-    procedure sSpeedButton3Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure CaisseListDBGridEhDrawColumnCell(Sender: TObject;
       const Rect: TRect; DataCol: Integer; Column: TColumnEh;
@@ -124,6 +121,9 @@ type
     procedure CaisseListCbxExit(Sender: TObject);
     procedure RefreshGirdBtnClick(Sender: TObject);
     procedure PaidOnlyCaisseBtnClick(Sender: TObject);
+    procedure AdvToolButton1Click(Sender: TObject);
+    procedure AdvToolButton2Click(Sender: TObject);
+    procedure AdvToolButton3Click(Sender: TObject);
   private
     procedure GettingData;
     procedure FilteredColor;
@@ -453,6 +453,45 @@ begin
   sImage1.Visible:= False;
   NOT_FilteredColor;
   FilterBVLivBtn.ImageIndex:=49;
+end;
+
+procedure TCaisseListF.AdvToolButton1Click(Sender: TObject);
+begin
+MainForm.Opt_cas_bnk_CaisseTable.DisableControls;
+
+    GettingData;
+
+CaisseListfrxRprt.PrepareReport;
+frxXLSExport1.FileName := 'Etat de la Caisse';
+CaisseListfrxRprt.Export(frxXLSExport1);
+
+MainForm.Opt_cas_bnk_CaisseTable.EnableControls;
+end;
+
+procedure TCaisseListF.AdvToolButton2Click(Sender: TObject);
+begin
+MainForm.Opt_cas_bnk_CaisseTable.DisableControls;
+
+    GettingData;
+
+CaisseListfrxRprt.PrepareReport;
+frxPDFExport1.FileName := 'Etat de la Caisse';
+CaisseListfrxRprt.Export(frxPDFExport1);
+
+
+MainForm.Opt_cas_bnk_CaisseTable.EnableControls;
+end;
+
+procedure TCaisseListF.AdvToolButton3Click(Sender: TObject);
+begin
+  MainForm.Opt_cas_bnk_CaisseTable.DisableControls;
+
+   GettingData;
+
+  CaisseListfrxRprt.PrepareReport;
+  CaisseListfrxRprt.ShowReport;
+
+  MainForm.Opt_cas_bnk_CaisseTable.EnableControls;
 end;
 
 procedure TCaisseListF.BondeLivration1Click(Sender: TObject);
@@ -955,47 +994,6 @@ ClearBRFilterPMenu.Checked := True;
   FilteredColor;
   Select_MP_Escpace;
   ClearFilterBVLivPMenu.Checked:= False;
-end;
-
-procedure TCaisseListF.sSpeedButton2Click(Sender: TObject);
-begin
-  MainForm.Opt_cas_bnk_CaisseTable.DisableControls;
-
-   GettingData;
-
-  CaisseListfrxRprt.PrepareReport;
-  CaisseListfrxRprt.ShowReport;
-
-  MainForm.Opt_cas_bnk_CaisseTable.EnableControls;
-end;
-
-procedure TCaisseListF.sSpeedButton1Click(Sender: TObject);
-begin
-
-MainForm.Opt_cas_bnk_CaisseTable.DisableControls;
-
-    GettingData;
-
-CaisseListfrxRprt.PrepareReport;
-frxXLSExport1.FileName := 'Etat de la Caisse';
-CaisseListfrxRprt.Export(frxXLSExport1);
-
-MainForm.Opt_cas_bnk_CaisseTable.EnableControls;
-
-end;
-
-procedure TCaisseListF.sSpeedButton3Click(Sender: TObject);
-begin
-MainForm.Opt_cas_bnk_CaisseTable.DisableControls;
-
-    GettingData;
-
-CaisseListfrxRprt.PrepareReport;
-frxPDFExport1.FileName := 'Etat de la Caisse';
-CaisseListfrxRprt.Export(frxPDFExport1);
-
-
-MainForm.Opt_cas_bnk_CaisseTable.EnableControls;
 end;
 
 procedure TCaisseListF.PaidOnlyCaisseBtnClick(Sender: TObject);

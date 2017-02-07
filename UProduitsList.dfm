@@ -3,7 +3,7 @@ object ProduitsListF: TProduitsListF
   Top = 0
   Caption = 'Liste des Produits'
   ClientHeight = 741
-  ClientWidth = 1089
+  ClientWidth = 951
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -319,15 +319,15 @@ object ProduitsListF: TProduitsListF
   OnClose = FormClose
   OnShow = FormShow
   DesignSize = (
-    1089
+    951
     741)
   PixelsPerInch = 96
   TextHeight = 13
   object ProduitsListDBGridEh: TDBGridEh
     Left = 0
-    Top = 81
-    Width = 1088
-    Height = 637
+    Top = 71
+    Width = 950
+    Height = 647
     Anchors = [akLeft, akTop, akRight, akBottom]
     Border.Color = 4207405
     Border.ExtendedDraw = False
@@ -1200,8 +1200,8 @@ object ProduitsListF: TProduitsListF
   object TopP: TPanel
     Left = 0
     Top = 0
-    Width = 1089
-    Height = 82
+    Width = 951
+    Height = 71
     Align = alTop
     BevelOuter = bvNone
     Color = 15527148
@@ -1211,11 +1211,11 @@ object ProduitsListF: TProduitsListF
     TabOrder = 1
     StyleElements = []
     DesignSize = (
-      1089
-      82)
+      951
+      71)
     object EditProduitsBtn: TAdvToolButton
-      Left = 717
-      Top = 26
+      Left = 681
+      Top = 21
       Width = 100
       Height = 30
       Cursor = crHandPoint
@@ -1246,8 +1246,8 @@ object ProduitsListF: TProduitsListF
       TMSStyle = 0
     end
     object DeleteProduitsBtn: TAdvToolButton
-      Left = 823
-      Top = 26
+      Left = 786
+      Top = 21
       Width = 100
       Height = 30
       Cursor = crHandPoint
@@ -1278,8 +1278,8 @@ object ProduitsListF: TProduitsListF
       TMSStyle = 0
     end
     object AddProduitsBtn: TAdvToolButton
-      Left = 611
-      Top = 26
+      Left = 576
+      Top = 21
       Width = 100
       Height = 30
       Cursor = crHandPoint
@@ -1310,78 +1310,26 @@ object ProduitsListF: TProduitsListF
       TMSStyle = 0
     end
     object ResearchProduitsLbl: TLabel
-      Left = 3
-      Top = 42
-      Width = 86
-      Height = 19
+      Left = 6
+      Top = 31
+      Width = 66
+      Height = 16
       Caption = 'Rechercher'
       Color = 15722984
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 4207405
-      Font.Height = 19
+      Font.Height = 16
       Font.Name = 'Helvetica LT Std'
       Font.Style = []
       ParentColor = False
       ParentFont = False
       StyleElements = []
     end
-    object sSpeedButton1: TsSpeedButton
-      Left = 1021
-      Top = 26
-      Width = 30
-      Height = 30
-      Anchors = [akTop, akRight]
-      ParentShowHint = False
-      ShowHint = True
-      OnClick = sSpeedButton1Click
-      SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
-      ImageIndex = 7
-    end
-    object sSpeedButton2: TsSpeedButton
-      Left = 957
-      Top = 26
-      Width = 30
-      Height = 30
-      Anchors = [akTop, akRight]
-      ParentShowHint = False
-      ShowHint = True
-      OnClick = sSpeedButton2Click
-      SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
-      ImageIndex = 8
-    end
-    object sSpeedButton3: TsSpeedButton
-      Left = 1053
-      Top = 26
-      Width = 30
-      Height = 30
-      Anchors = [akTop, akRight]
-      ParentShowHint = False
-      ShowHint = True
-      OnClick = sSpeedButton3Click
-      SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
-      ImageIndex = 9
-    end
-    object sSpeedButton4: TsSpeedButton
-      Left = 989
-      Top = 26
-      Width = 30
-      Height = 30
-      Anchors = [akTop, akRight]
-      ParentShowHint = False
-      ShowHint = True
-      OnClick = sSpeedButton4Click
-      SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
-      ImageIndex = 48
-    end
     object sSpeedButton5: TsSpeedButton
-      Left = 402
-      Top = 26
-      Width = 30
-      Height = 30
+      Left = 390
+      Top = 23
+      Width = 25
+      Height = 25
       ParentShowHint = False
       ShowHint = True
       OnClick = FisrtClientbtnClick
@@ -1391,10 +1339,10 @@ object ProduitsListF: TProduitsListF
       ShowCaption = False
     end
     object sSpeedButton6: TsSpeedButton
-      Left = 436
-      Top = 26
-      Width = 30
-      Height = 30
+      Left = 420
+      Top = 23
+      Width = 25
+      Height = 25
       ParentShowHint = False
       ShowHint = True
       OnClick = PreviosClientbtnClick
@@ -1403,10 +1351,10 @@ object ProduitsListF: TProduitsListF
       ImageIndex = 1
     end
     object sSpeedButton7: TsSpeedButton
-      Left = 470
-      Top = 26
-      Width = 30
-      Height = 30
+      Left = 450
+      Top = 23
+      Width = 25
+      Height = 25
       ParentShowHint = False
       ShowHint = True
       OnClick = NextClientbtnClick
@@ -1416,10 +1364,10 @@ object ProduitsListF: TProduitsListF
       ShowCaption = False
     end
     object sSpeedButton8: TsSpeedButton
-      Left = 504
-      Top = 26
-      Width = 30
-      Height = 30
+      Left = 480
+      Top = 23
+      Width = 25
+      Height = 25
       ParentShowHint = False
       ShowHint = True
       OnClick = LastClientbtnClick
@@ -1428,7 +1376,7 @@ object ProduitsListF: TProduitsListF
       ImageIndex = 3
     end
     object sImage1: TsImage
-      Left = 539
+      Left = 512
       Top = 6
       Width = 16
       Height = 16
@@ -1443,10 +1391,10 @@ object ProduitsListF: TProduitsListF
       SkinData.SkinSection = 'CHECKBOX'
     end
     object FilterBVLivBtn: TAdvToolButton
-      Left = 539
-      Top = 26
+      Left = 510
+      Top = 23
       Width = 55
-      Height = 30
+      Height = 25
       Cursor = crHandPoint
       AutoThemeAdapt = False
       BorderColor = 7854350
@@ -1477,7 +1425,7 @@ object ProduitsListF: TProduitsListF
       TMSStyle = 0
     end
     object TVAFilterLbl: TLabel
-      Left = 555
+      Left = 528
       Top = 5
       Width = 6
       Height = 14
@@ -1492,8 +1440,8 @@ object ProduitsListF: TProduitsListF
     end
     object LineP: TPanel
       Left = 0
-      Top = 80
-      Width = 1319
+      Top = 69
+      Width = 1181
       Height = 2
       Anchors = [akLeft, akTop, akRight]
       BevelOuter = bvNone
@@ -1502,13 +1450,12 @@ object ProduitsListF: TProduitsListF
       TabOrder = 1
       StyleElements = []
     end
-    object Panel1: TPanel
-      Left = 1087
-      Top = 21
+    object S02: TPanel
+      Left = 570
+      Top = 16
       Width = 1
       Height = 40
       ParentCustomHint = False
-      Anchors = [akTop, akRight]
       BevelEdges = []
       BevelOuter = bvNone
       BiDiMode = bdLeftToRight
@@ -1530,69 +1477,14 @@ object ProduitsListF: TProduitsListF
       TabOrder = 2
       StyleElements = []
     end
-    object S01: TPanel
-      Left = 951
-      Top = 21
-      Width = 1
-      Height = 40
-      ParentCustomHint = False
-      Anchors = [akTop, akRight]
-      BevelEdges = []
-      BevelOuter = bvNone
-      BiDiMode = bdLeftToRight
-      Color = 15970832
-      Ctl3D = True
-      DoubleBuffered = False
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -11
-      Font.Name = 'Tahoma'
-      Font.Style = []
-      ParentBiDiMode = False
-      ParentBackground = False
-      ParentCtl3D = False
-      ParentDoubleBuffered = False
-      ParentFont = False
-      ParentShowHint = False
-      ShowHint = False
-      TabOrder = 3
-      StyleElements = []
-    end
-    object S02: TPanel
-      Left = 601
-      Top = 21
-      Width = 1
-      Height = 40
-      ParentCustomHint = False
-      BevelEdges = []
-      BevelOuter = bvNone
-      BiDiMode = bdLeftToRight
-      Color = 15970832
-      Ctl3D = True
-      DoubleBuffered = False
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -11
-      Font.Name = 'Tahoma'
-      Font.Style = []
-      ParentBiDiMode = False
-      ParentBackground = False
-      ParentCtl3D = False
-      ParentDoubleBuffered = False
-      ParentFont = False
-      ParentShowHint = False
-      ShowHint = False
-      TabOrder = 4
-      StyleElements = []
-    end
     object ResearchProduitsEdt: TSearchBox
-      Left = 89
-      Top = 35
-      Width = 297
-      Height = 30
+      Left = 76
+      Top = 27
+      Width = 302
+      Height = 25
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 4207405
-      Font.Height = 22
+      Font.Height = -15
       Font.Name = 'Helvetica LT Std'
       Font.Style = []
       ParentFont = False
@@ -1601,40 +1493,40 @@ object ProduitsListF: TProduitsListF
       OnKeyPress = ResearchProduitsEdtKeyPress
     end
     object ResherchPARDesProduitsRdioBtn: TRadioButton
-      Left = 89
-      Top = 11
+      Left = 76
+      Top = 6
       Width = 142
       Height = 17
       Caption = 'Par D'#233'signation ou R'#233'f'
       Checked = True
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = 14
+      Font.Height = -12
       Font.Name = 'Roboto'
       Font.Style = []
       ParentFont = False
-      TabOrder = 5
+      TabOrder = 3
       TabStop = True
       OnClick = ResherchPARDesProduitsRdioBtnClick
     end
     object ResherchPARDCodProduitsRdioBtn: TRadioButton
-      Left = 277
-      Top = 12
+      Left = 268
+      Top = 6
       Width = 108
       Height = 17
       Caption = 'Par Code '#226' Barre'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = 14
+      Font.Height = -12
       Font.Name = 'Roboto'
       Font.Style = []
       ParentFont = False
-      TabOrder = 6
+      TabOrder = 4
       OnClick = ResherchPARDCodProduitsRdioBtnClick
     end
     object Panel2: TPanel
-      Left = 392
-      Top = 21
+      Left = 384
+      Top = 16
       Width = 1
       Height = 40
       ParentCustomHint = False
@@ -1656,12 +1548,12 @@ object ProduitsListF: TProduitsListF
       ParentFont = False
       ParentShowHint = False
       ShowHint = False
-      TabOrder = 7
+      TabOrder = 5
       StyleElements = []
     end
     object Panel4: TPanel
-      Left = 933
-      Top = 21
+      Left = 891
+      Top = 16
       Width = 1
       Height = 40
       ParentCustomHint = False
@@ -1683,15 +1575,15 @@ object ProduitsListF: TProduitsListF
       ParentFont = False
       ParentShowHint = False
       ShowHint = False
-      TabOrder = 8
+      TabOrder = 6
       StyleElements = []
     end
   end
   object Panel3: TPanel
     Left = 0
-    Top = 82
+    Top = 71
     Width = 1
-    Height = 639
+    Height = 650
     Align = alLeft
     BevelOuter = bvNone
     Color = 7854350
@@ -1702,7 +1594,7 @@ object ProduitsListF: TProduitsListF
   object StatuBar: TsStatusBar
     Left = 0
     Top = 721
-    Width = 1089
+    Width = 951
     Height = 20
     BiDiMode = bdLeftToRight
     Panels = <
@@ -1720,7 +1612,7 @@ object ProduitsListF: TProduitsListF
     SizeGrip = False
     SkinData.SkinSection = 'MENUITEM'
     DesignSize = (
-      1089
+      951
       20)
     object SumGirdProduitBtn: TAdvToolButton
       Left = 141
@@ -1789,6 +1681,198 @@ object ProduitsListF: TProduitsListF
       OnClick = RefreshGirdBtnClick
       Version = '1.6.1.2'
       TMSStyle = 0
+    end
+    object AdvToolButton1: TAdvToolButton
+      Left = 175
+      Top = 0
+      Width = 26
+      Height = 20
+      Cursor = crHandPoint
+      Hint = 'Exporter vers Excel'
+      Anchors = [akRight]
+      AutoThemeAdapt = False
+      BorderColor = 15722984
+      BorderDownColor = 15722984
+      BorderHotColor = 14079702
+      Color = 15722984
+      ColorDown = 15722984
+      ColorHot = 14079702
+      ColorHotTo = 14079702
+      ColorChecked = clNone
+      DropDownSplit = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 4207405
+      Font.Height = 18
+      Font.Name = 'Roboto'
+      Font.Style = []
+      ImageIndex = 29
+      Images = MainForm.PanelIcons16
+      ParentFont = False
+      ParentShowHint = False
+      Shaded = False
+      ShowHint = True
+      Spacing = -2
+      OnClick = AdvToolButton1Click
+      Version = '1.6.1.2'
+      TMSStyle = 0
+    end
+    object AdvToolButton2: TAdvToolButton
+      Left = 203
+      Top = 0
+      Width = 26
+      Height = 20
+      Cursor = crHandPoint
+      Hint = 'Exporter vers PDF'
+      Anchors = [akRight]
+      AutoThemeAdapt = False
+      BorderColor = 15722984
+      BorderDownColor = 15722984
+      BorderHotColor = 14079702
+      Color = 15722984
+      ColorDown = 15722984
+      ColorHot = 14079702
+      ColorHotTo = 14079702
+      ColorChecked = clNone
+      DropDownSplit = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 4207405
+      Font.Height = 18
+      Font.Name = 'Roboto'
+      Font.Style = []
+      ImageIndex = 30
+      Images = MainForm.PanelIcons16
+      ParentFont = False
+      ParentShowHint = False
+      Shaded = False
+      ShowHint = True
+      Spacing = -2
+      OnClick = AdvToolButton2Click
+      Version = '1.6.1.2'
+      TMSStyle = 0
+    end
+    object AdvToolButton3: TAdvToolButton
+      Left = 231
+      Top = 0
+      Width = 26
+      Height = 20
+      Cursor = crHandPoint
+      Hint = 'Imprimer'
+      Anchors = [akRight]
+      AutoThemeAdapt = False
+      BorderColor = 15722984
+      BorderDownColor = 15722984
+      BorderHotColor = 14079702
+      Color = 15722984
+      ColorDown = 15722984
+      ColorHot = 14079702
+      ColorHotTo = 14079702
+      ColorChecked = clNone
+      DropDownSplit = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 4207405
+      Font.Height = 18
+      Font.Name = 'Roboto'
+      Font.Style = []
+      ImageIndex = 31
+      Images = MainForm.PanelIcons16
+      ParentFont = False
+      ParentShowHint = False
+      Shaded = False
+      ShowHint = True
+      Spacing = -2
+      OnClick = AdvToolButton3Click
+      Version = '1.6.1.2'
+      TMSStyle = 0
+    end
+    object AdvToolButton4: TAdvToolButton
+      Left = 259
+      Top = 0
+      Width = 26
+      Height = 20
+      Cursor = crHandPoint
+      Hint = 'Imprimer'
+      Anchors = [akRight]
+      AutoThemeAdapt = False
+      BorderColor = 15722984
+      BorderDownColor = 15722984
+      BorderHotColor = 14079702
+      Color = 15722984
+      ColorDown = 15722984
+      ColorHot = 14079702
+      ColorHotTo = 14079702
+      ColorChecked = clNone
+      DropDownSplit = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 4207405
+      Font.Height = 18
+      Font.Name = 'Roboto'
+      Font.Style = []
+      ImageIndex = 32
+      Images = MainForm.PanelIcons16
+      ParentFont = False
+      ParentShowHint = False
+      Shaded = False
+      ShowHint = True
+      Spacing = -2
+      OnClick = AdvToolButton3Click
+      Version = '1.6.1.2'
+      TMSStyle = 0
+    end
+    object Panel5: TPanel
+      Left = 170
+      Top = 0
+      Width = 1
+      Height = 20
+      ParentCustomHint = False
+      Anchors = [akTop, akRight]
+      BevelEdges = []
+      BevelOuter = bvNone
+      BiDiMode = bdLeftToRight
+      Color = 13421772
+      Ctl3D = True
+      DoubleBuffered = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentBiDiMode = False
+      ParentBackground = False
+      ParentCtl3D = False
+      ParentDoubleBuffered = False
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = False
+      TabOrder = 0
+      StyleElements = []
+    end
+    object Panel6: TPanel
+      Left = 289
+      Top = 0
+      Width = 1
+      Height = 20
+      ParentCustomHint = False
+      Anchors = [akTop, akRight]
+      BevelEdges = []
+      BevelOuter = bvNone
+      BiDiMode = bdLeftToRight
+      Color = 13421772
+      Ctl3D = True
+      DoubleBuffered = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentBiDiMode = False
+      ParentBackground = False
+      ParentCtl3D = False
+      ParentDoubleBuffered = False
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = False
+      TabOrder = 1
+      StyleElements = []
     end
   end
   object ProduitListGridImgLst: TsAlphaImageList

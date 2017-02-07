@@ -69,7 +69,7 @@ implementation
 
 {$R *.dfm}
 
-  uses math, UMainF,System.IniFiles,ShellAPI, UDataModule, ULoginUser;
+  uses math, UMainF,System.IniFiles,ShellAPI, UDataModule, ULoginUser,TlHelp32;
   
 procedure ExcludeRectRgn(var Rgn: HRGN; LeftRect, TopRect, RightRect, BottomRect: Integer);
 var
@@ -78,6 +78,30 @@ begin
   RgnEx := CreateRectRgn(LeftRect, TopRect, RightRect, BottomRect);
   CombineRgn(Rgn, Rgn, RgnEx, RGN_OR);
   DeleteObject(RgnEx);
+end;
+
+
+function processExists(exeFileName: string): Boolean;
+var
+  ContinueLoop: BOOL;
+  FSnapshotHandle: THandle;
+  FProcessEntry32: TProcessEntry32;
+begin
+  FSnapshotHandle := CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
+  FProcessEntry32.dwSize := SizeOf(FProcessEntry32);
+  ContinueLoop := Process32First(FSnapshotHandle, FProcessEntry32);
+  Result := False;
+  while Integer(ContinueLoop) <> 0 do
+  begin
+    if ((UpperCase(ExtractFileName(FProcessEntry32.szExeFile)) =
+      UpperCase(ExeFileName)) or (UpperCase(FProcessEntry32.szExeFile) =
+      UpperCase(ExeFileName))) then
+    begin
+      Result := True;
+    end;
+    ContinueLoop := Process32Next(FSnapshotHandle, FProcessEntry32);
+  end;
+  CloseHandle(FSnapshotHandle);
 end;
 
 
@@ -131,11 +155,15 @@ begin
 //  MainForm.KillTask('postgres.exe');                                    // Eable this is only for releasing
 //  MainForm.KillTask('cmd.exe');                                         // Eable this is only for releasing
 
-
-
-      sCmd := Pwidechar(GetCurrentDir+ '\bin\pg_s.bat' );                // Eable this is only for releasing 
-    ShellExecute(0, 'open', PChar(sCmd) , PChar(sCmd), nil, SW_HIDE);  // Eable this is only for releasing 1 OR 2 
+     if NOT processExists('postgres.exe') then
+     begin
+        sCmd := Pwidechar(GetCurrentDir+ '\bin\pg_s.bat' );                // Eable this is only for releasing
+     ShellExecute(0, 'open', PChar(sCmd) , PChar(sCmd), nil, SW_HIDE);  // Eable this is only for releasing 1 OR 2
 //    Sleep(5000);
+
+     end;
+
+
 
   Borderstyle := bsNone;
   rgn := CreateRoundRectRgn(0,// x-coordinate of the region's upper-left corner
@@ -236,10 +264,10 @@ end;
 procedure TLogoSplashF.Timer4Timer(Sender: TObject);
 begin
   mseconds := GetTickCount() - starttime;
-  if (mseconds < 7000) then
+  if (mseconds < 4000) then
   begin
   dxActivityIndicator1.Active:= True;
-    ProgressBar1.Position := Trunc(mseconds / 70);
+    ProgressBar1.Position := Trunc(mseconds / 40);
     if (StrToInt(Label5.Caption) < 90)  then
     Label5.Caption:= IntToStr(2 + Random(3) + ProgressBar1.Position ) else Label5.Caption:= '100';
   end

@@ -1366,7 +1366,7 @@ var TotalHT,TotalTVA,TVA,TotalTTC,LeReste,Regle: Currency;
          MainForm.Bona_recPlistTable.EnableControls;
 
 
-  MainForm.Bona_recPlistTable.EnableControls;
+//  MainForm.Bona_recPlistTable.EnableControls;
 
     BonRecGestionF.BonRecTotalHTLbl.Caption :=    CurrToStrF((TotalHT),ffNumber,2) ;
     BonRecGestionF.BonRecTotalTVALbl.Caption :=   CurrToStrF((TotalTVA),ffNumber,2) ;
@@ -1532,7 +1532,7 @@ var TotalHT,TotalTVA,TVA,TotalTTC,LeReste,Regle,TTCbeforeTimber,TimberFV,TTCafte
 
          MainForm.Bonp_fac_listTable.EnableControls;
 
-  MainForm.Bonp_fac_listTable.EnableControls;
+//  MainForm.Bonp_fac_listTable.EnableControls;
 
     BonFacPGestionF.BonFacVTotalHTLbl.Caption :=    CurrToStrF((TotalHT),ffNumber,2) ;
     BonFacPGestionF.BonFacVTotalTVALbl.Caption :=   CurrToStrF((TotalTVA),ffNumber,2) ;
@@ -1735,7 +1735,7 @@ var TotalHT,TotalTVA,TVA,TotalTTC,LeReste,Regle,Marge: Currency;
          MainForm.Bonv_liv_listTable.EnableControls;
 
 
-  MainForm.Bonv_liv_listTable.EnableControls;
+//  MainForm.Bonv_liv_listTable.EnableControls;
 
     BonLivGestionF.BonLivTotalHTLbl.Caption :=    CurrToStrF((TotalHT),ffNumber,2) ;
     BonLivGestionF.BonLivTotalTVALbl.Caption :=   CurrToStrF((TotalTVA),ffNumber,2) ;
@@ -1828,7 +1828,7 @@ var TotalHT,TotalTVA,TVA,TotalTTC,LeReste,Regle,TTCbeforeTimber,TimberFV,TTCafte
 
          MainForm.Bonv_fac_listTable.EnableControls;
 
-  MainForm.Bonv_fac_listTable.EnableControls;
+//  MainForm.Bonv_fac_listTable.EnableControls;
 
     BonFacVGestionF.BonFacVTotalHTLbl.Caption :=    CurrToStrF((TotalHT),ffNumber,2) ;
     BonFacVGestionF.BonFacVTotalTVALbl.Caption :=   CurrToStrF((TotalTVA),ffNumber,2) ;
@@ -2001,7 +2001,7 @@ var TotalHT,TotalTVA,TVA,TotalTTC,LeReste,Regle,TTCbeforeTimber,TimberFA,TTCafte
 
          MainForm.Bona_fac_listTable.EnableControls;
 
-  MainForm.Bona_fac_listTable.EnableControls;
+//  MainForm.Bona_fac_listTable.EnableControls;
 
     BonFacAGestionF.BonFacATotalHTLbl.Caption :=    CurrToStrF((TotalHT),ffNumber,2) ;
     BonFacAGestionF.BonFacATotalTVALbl.Caption :=   CurrToStrF((TotalTVA),ffNumber,2) ;
@@ -2366,7 +2366,7 @@ var TotalHT,TotalTVA,TVA,TotalTTC,LeRendu,Regle,Marge: Currency;
 
          MainForm.Bonv_ctr_listTable.EnableControls;
 
-  MainForm.Bonv_ctr_listTable.EnableControls;
+//  MainForm.Bonv_ctr_listTable.EnableControls;
 
    BonCtrGestionF.BonCtrTotalHTLbl.Caption :=    CurrToStrF((TotalHT),ffNumber,2) ;
     BonCtrGestionF.BonCtrTotalTVALbl.Caption :=   CurrToStrF((TotalTVA),ffNumber,2) ;
@@ -3836,7 +3836,8 @@ begin
     
    if sImage1.Tag = 0 then
    begin
-           GstockdcConnection.Connected:= False;
+
+      GstockdcConnection.Connected:= False;
       GstockdcConnection.DriverName := 'PG';
       GstockdcConnection.Params.Values['Server'] :='localhost';
       GstockdcConnection.Params.Values['user_name'] := 'postgres';

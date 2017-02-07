@@ -229,17 +229,22 @@ procedure Refresh_PreservePosition;
  row: integer;   recNo: integer;
  ds : TDataSet;
 begin
+
+   BonFacAGestionF.ProduitsListDBGridEh.DataSource.DataSet.DisableControls;
+
    ds := TDBGridEh(BonFacAGestionF.ProduitsListDBGridEh).DataSource.DataSet;
    rowDelta := -1 + TDBGridEh(BonFacAGestionF.ProduitsListDBGridEh).Row;
    row := ds.RecNo;
    ds.Refresh;
    with ds do   begin
-     DisableControls;
+//     DisableControls;
      RecNo := row;
      MoveBy(-rowDelta) ;
      MoveBy(rowDelta) ;
-     EnableControls;
+//     EnableControls;
      end;
+
+   BonFacAGestionF.ProduitsListDBGridEh.DataSource.DataSet.EnableControls;
  end;
 
 
@@ -2859,6 +2864,11 @@ end;
 procedure TBonFacAGestionF.FormCreate(Sender: TObject);
 begin
 MainForm.Bona_fac_listTable.Active:= True;
+if Assigned(ProduitsListF) then
+  begin
+   ProduitsListF.ResearchProduitsEdt.Text:='';
+   MainForm.ProduitTable.Filtered:= False;
+   end;
 end;
 
 

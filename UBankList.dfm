@@ -3,7 +3,7 @@ object BankListF: TBankListF
   Top = 0
   Caption = 'Etat relev'#233' de comptes'
   ClientHeight = 741
-  ClientWidth = 1191
+  ClientWidth = 1022
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -321,15 +321,15 @@ object BankListF: TBankListF
   OnPaint = FormShow
   OnShow = FormShow
   DesignSize = (
-    1191
+    1022
     741)
   PixelsPerInch = 96
   TextHeight = 13
   object TopP: TPanel
     Left = 0
     Top = 0
-    Width = 1191
-    Height = 82
+    Width = 1022
+    Height = 71
     Align = alTop
     BevelOuter = bvNone
     Color = 15527148
@@ -338,67 +338,29 @@ object BankListF: TBankListF
     ParentDoubleBuffered = False
     TabOrder = 0
     StyleElements = []
+    ExplicitWidth = 1045
     DesignSize = (
-      1191
-      82)
+      1022
+      71)
     object PeriodBankListLbl: TLabel
-      Left = 421
-      Top = 32
-      Width = 62
-      Height = 19
+      Left = 390
+      Top = 27
+      Width = 54
+      Height = 17
       Caption = 'P'#233'riode:'
       Color = 15722984
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 4207405
-      Font.Height = 19
+      Font.Height = 17
       Font.Name = 'Helvetica LT Std'
       Font.Style = []
       ParentColor = False
       ParentFont = False
       StyleElements = []
     end
-    object sSpeedButton1: TsSpeedButton
-      Left = 1121
-      Top = 26
-      Width = 30
-      Height = 30
-      Anchors = [akTop, akRight]
-      ParentShowHint = False
-      ShowHint = True
-      OnClick = sSpeedButton1Click
-      SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
-      ImageIndex = 7
-    end
-    object sSpeedButton2: TsSpeedButton
-      Left = 1087
-      Top = 26
-      Width = 30
-      Height = 30
-      Anchors = [akTop, akRight]
-      ParentShowHint = False
-      ShowHint = True
-      OnClick = sSpeedButton2Click
-      SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
-      ImageIndex = 8
-    end
-    object sSpeedButton3: TsSpeedButton
-      Left = 1155
-      Top = 26
-      Width = 30
-      Height = 30
-      Anchors = [akTop, akRight]
-      ParentShowHint = False
-      ShowHint = True
-      OnClick = sSpeedButton3Click
-      SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
-      ImageIndex = 9
-    end
     object Label1: TLabel
-      Left = 693
-      Top = 13
+      Left = 648
+      Top = 10
       Width = 23
       Height = 18
       Caption = 'Du:'
@@ -413,8 +375,8 @@ object BankListF: TBankListF
       StyleElements = []
     end
     object Label2: TLabel
-      Left = 694
-      Top = 48
+      Left = 649
+      Top = 41
       Width = 22
       Height = 18
       Caption = 'Au:'
@@ -429,15 +391,15 @@ object BankListF: TBankListF
       StyleElements = []
     end
     object Label3: TLabel
-      Left = 22
-      Top = 29
-      Width = 179
-      Height = 19
+      Left = 12
+      Top = 27
+      Width = 162
+      Height = 17
       Caption = 'Les Comptes Bancaires:'
       Color = 15722984
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 4207405
-      Font.Height = 19
+      Font.Height = 17
       Font.Name = 'Helvetica LT Std'
       Font.Style = []
       ParentColor = False
@@ -445,10 +407,10 @@ object BankListF: TBankListF
       StyleElements = []
     end
     object FisrtBankbtn: TsSpeedButton
-      Left = 841
-      Top = 27
-      Width = 30
-      Height = 30
+      Left = 774
+      Top = 21
+      Width = 25
+      Height = 25
       ParentShowHint = False
       ShowHint = True
       OnClick = FisrtBankbtnClick
@@ -458,10 +420,10 @@ object BankListF: TBankListF
       ShowCaption = False
     end
     object PreviosBankbtn: TsSpeedButton
-      Left = 875
-      Top = 27
-      Width = 30
-      Height = 30
+      Left = 804
+      Top = 21
+      Width = 25
+      Height = 25
       ParentShowHint = False
       ShowHint = True
       OnClick = PreviosBankbtnClick
@@ -470,10 +432,10 @@ object BankListF: TBankListF
       ImageIndex = 1
     end
     object NextBankbtn: TsSpeedButton
-      Left = 909
-      Top = 27
-      Width = 30
-      Height = 30
+      Left = 834
+      Top = 21
+      Width = 25
+      Height = 25
       ParentShowHint = False
       ShowHint = True
       OnClick = NextBankbtnClick
@@ -483,10 +445,10 @@ object BankListF: TBankListF
       ShowCaption = False
     end
     object LastBBankbtn: TsSpeedButton
-      Left = 943
-      Top = 27
-      Width = 30
-      Height = 30
+      Left = 864
+      Top = 21
+      Width = 25
+      Height = 25
       ParentShowHint = False
       ShowHint = True
       OnClick = LastBBankbtnClick
@@ -495,10 +457,10 @@ object BankListF: TBankListF
       ImageIndex = 3
     end
     object FilterBVLivBtn: TAdvToolButton
-      Left = 977
-      Top = 27
+      Left = 894
+      Top = 21
       Width = 55
-      Height = 30
+      Height = 25
       Cursor = crHandPoint
       AutoThemeAdapt = False
       BorderColor = 7854350
@@ -529,8 +491,8 @@ object BankListF: TBankListF
       TMSStyle = 0
     end
     object sImage1: TsImage
-      Left = 979
-      Top = 6
+      Left = 898
+      Top = 2
       Width = 16
       Height = 16
       Center = True
@@ -544,8 +506,8 @@ object BankListF: TBankListF
       SkinData.SkinSection = 'CHECKBOX'
     end
     object sImage2: TsImage
-      Left = 995
-      Top = 6
+      Left = 914
+      Top = 2
       Width = 16
       Height = 16
       Center = True
@@ -560,8 +522,8 @@ object BankListF: TBankListF
     end
     object LineP: TPanel
       Left = 0
-      Top = 80
-      Width = 1207
+      Top = 69
+      Width = 1038
       Height = 2
       Anchors = [akLeft, akTop, akRight]
       BevelOuter = bvNone
@@ -569,14 +531,14 @@ object BankListF: TBankListF
       ParentBackground = False
       TabOrder = 1
       StyleElements = []
+      ExplicitWidth = 1061
     end
-    object Panel1: TPanel
-      Left = 1189
-      Top = 21
+    object Panel2: TPanel
+      Left = 768
+      Top = 16
       Width = 1
       Height = 40
       ParentCustomHint = False
-      Anchors = [akTop, akRight]
       BevelEdges = []
       BevelOuter = bvNone
       BiDiMode = bdLeftToRight
@@ -598,102 +560,47 @@ object BankListF: TBankListF
       TabOrder = 2
       StyleElements = []
     end
-    object S01: TPanel
-      Left = 1080
-      Top = 21
-      Width = 1
-      Height = 40
-      ParentCustomHint = False
-      Anchors = [akTop, akRight]
-      BevelEdges = []
-      BevelOuter = bvNone
-      BiDiMode = bdLeftToRight
-      Color = 4207405
-      Ctl3D = True
-      DoubleBuffered = False
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -11
-      Font.Name = 'Tahoma'
-      Font.Style = []
-      ParentBiDiMode = False
-      ParentBackground = False
-      ParentCtl3D = False
-      ParentDoubleBuffered = False
-      ParentFont = False
-      ParentShowHint = False
-      ShowHint = False
-      TabOrder = 3
-      StyleElements = []
-    end
-    object Panel2: TPanel
-      Left = 832
-      Top = 21
-      Width = 1
-      Height = 40
-      ParentCustomHint = False
-      BevelEdges = []
-      BevelOuter = bvNone
-      BiDiMode = bdLeftToRight
-      Color = 4207405
-      Ctl3D = True
-      DoubleBuffered = False
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -11
-      Font.Name = 'Tahoma'
-      Font.Style = []
-      ParentBiDiMode = False
-      ParentBackground = False
-      ParentCtl3D = False
-      ParentDoubleBuffered = False
-      ParentFont = False
-      ParentShowHint = False
-      ShowHint = False
-      TabOrder = 4
-      StyleElements = []
-    end
     object DateEndBankListD: TDateTimePicker
-      Left = 722
-      Top = 44
-      Width = 104
-      Height = 25
+      Left = 676
+      Top = 38
+      Width = 87
+      Height = 24
       Date = 42435.595104571760000000
       Time = 42435.595104571760000000
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 4207405
-      Font.Height = 17
+      Font.Height = 16
       Font.Name = 'Helvetica LT Std'
       Font.Style = []
       ParentFont = False
-      TabOrder = 5
+      TabOrder = 3
       OnChange = DateEndBankListDChange
     end
     object DateStartBankListD: TDateTimePicker
-      Left = 722
-      Top = 9
-      Width = 104
-      Height = 25
+      Left = 676
+      Top = 7
+      Width = 87
+      Height = 24
       Date = 42435.595104571760000000
       Time = 42435.595104571760000000
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 4207405
-      Font.Height = 17
+      Font.Height = 16
       Font.Name = 'Helvetica LT Std'
       Font.Style = []
       ParentFont = False
-      TabOrder = 6
+      TabOrder = 4
       OnChange = DateEndBankListDChange
     end
     object DaysBankListCbx: TComboBox
-      Left = 486
-      Top = 28
+      Left = 449
+      Top = 23
       Width = 189
-      Height = 27
+      Height = 25
       Style = csDropDownList
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = 20
+      Font.Height = 17
       Font.Name = 'Helvetica LT Std'
       Font.Style = []
       ItemIndex = 2
@@ -710,20 +617,20 @@ object BankListF: TBankListF
         'Toutes')
     end
     object BankListCbx: TComboBox
-      Left = 202
-      Top = 25
+      Left = 179
+      Top = 23
       Width = 200
-      Height = 27
+      Height = 25
       Style = csDropDownList
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = 20
+      Font.Height = 17
       Font.Name = 'Helvetica LT Std'
       Font.Style = []
       ItemIndex = 0
       ParentColor = True
       ParentFont = False
-      TabOrder = 7
+      TabOrder = 5
       Text = 'Tous'
       OnChange = BankListCbxChange
       OnDropDown = BankListCbxDropDown
@@ -733,8 +640,62 @@ object BankListF: TBankListF
         'Tous')
     end
     object Panel5: TPanel
-      Left = 412
-      Top = 23
+      Left = 384
+      Top = 16
+      Width = 1
+      Height = 40
+      ParentCustomHint = False
+      BevelEdges = []
+      BevelOuter = bvNone
+      BiDiMode = bdLeftToRight
+      Color = 4207405
+      Ctl3D = True
+      DoubleBuffered = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentBiDiMode = False
+      ParentBackground = False
+      ParentCtl3D = False
+      ParentDoubleBuffered = False
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = False
+      TabOrder = 6
+      StyleElements = []
+    end
+    object Panel6: TPanel
+      Left = 643
+      Top = 16
+      Width = 1
+      Height = 40
+      ParentCustomHint = False
+      BevelEdges = []
+      BevelOuter = bvNone
+      BiDiMode = bdLeftToRight
+      Color = 4207405
+      Ctl3D = True
+      DoubleBuffered = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentBiDiMode = False
+      ParentBackground = False
+      ParentCtl3D = False
+      ParentDoubleBuffered = False
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = False
+      TabOrder = 7
+      StyleElements = []
+    end
+    object Panel7: TPanel
+      Left = 954
+      Top = 16
       Width = 1
       Height = 40
       ParentCustomHint = False
@@ -759,78 +720,26 @@ object BankListF: TBankListF
       TabOrder = 8
       StyleElements = []
     end
-    object Panel6: TPanel
-      Left = 684
-      Top = 23
-      Width = 1
-      Height = 40
-      ParentCustomHint = False
-      BevelEdges = []
-      BevelOuter = bvNone
-      BiDiMode = bdLeftToRight
-      Color = 4207405
-      Ctl3D = True
-      DoubleBuffered = False
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -11
-      Font.Name = 'Tahoma'
-      Font.Style = []
-      ParentBiDiMode = False
-      ParentBackground = False
-      ParentCtl3D = False
-      ParentDoubleBuffered = False
-      ParentFont = False
-      ParentShowHint = False
-      ShowHint = False
-      TabOrder = 9
-      StyleElements = []
-    end
-    object Panel7: TPanel
-      Left = 1040
-      Top = 23
-      Width = 1
-      Height = 40
-      ParentCustomHint = False
-      BevelEdges = []
-      BevelOuter = bvNone
-      BiDiMode = bdLeftToRight
-      Color = 4207405
-      Ctl3D = True
-      DoubleBuffered = False
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -11
-      Font.Name = 'Tahoma'
-      Font.Style = []
-      ParentBiDiMode = False
-      ParentBackground = False
-      ParentCtl3D = False
-      ParentDoubleBuffered = False
-      ParentFont = False
-      ParentShowHint = False
-      ShowHint = False
-      TabOrder = 10
-      StyleElements = []
-    end
   end
   object Panel3: TPanel
     Left = 0
-    Top = 82
+    Top = 71
     Width = 1
-    Height = 611
+    Height = 622
     Align = alLeft
     BevelOuter = bvNone
     Color = 7854350
     ParentBackground = False
     TabOrder = 1
     StyleElements = []
+    ExplicitTop = 82
+    ExplicitHeight = 611
   end
   object CaisseListDBGridEh: TDBGridEh
     Left = 0
-    Top = 82
-    Width = 1191
-    Height = 612
+    Top = 71
+    Width = 1022
+    Height = 623
     Anchors = [akLeft, akTop, akRight, akBottom]
     Border.Color = 4207405
     Border.ExtendedDraw = False
@@ -1326,15 +1235,16 @@ object BankListF: TBankListF
   object Panel4: TPanel
     Left = 0
     Top = 693
-    Width = 1191
+    Width = 1022
     Height = 28
     Align = alBottom
     BevelOuter = bvNone
     Color = 4207405
     ParentBackground = False
     TabOrder = 3
+    ExplicitWidth = 1045
     DesignSize = (
-      1191
+      1022
       28)
     object Shape1: TShape
       Left = 0
@@ -1389,7 +1299,7 @@ object BankListF: TBankListF
       StyleElements = []
     end
     object Shape2: TShape
-      Left = 880
+      Left = 711
       Top = 0
       Width = 311
       Height = 28
@@ -1402,7 +1312,7 @@ object BankListF: TBankListF
     object Shape3: TShape
       Left = 320
       Top = 0
-      Width = 560
+      Width = 391
       Height = 28
       Align = alClient
       Brush.Color = 4207405
@@ -1453,7 +1363,7 @@ object BankListF: TBankListF
     end
     object SoldTotalBankListLbl: TLabel
       AlignWithMargins = True
-      Left = 972
+      Left = 803
       Top = 1
       Width = 211
       Height = 25
@@ -1476,9 +1386,10 @@ object BankListF: TBankListF
       ParentFont = False
       Layout = tlCenter
       StyleElements = []
+      ExplicitLeft = 972
     end
     object Label6: TLabel
-      Left = 886
+      Left = 717
       Top = 5
       Width = 45
       Height = 17
@@ -1493,12 +1404,13 @@ object BankListF: TBankListF
       ParentColor = False
       ParentFont = False
       StyleElements = []
+      ExplicitLeft = 886
     end
   end
   object StatuBar: TsStatusBar
     Left = 0
     Top = 721
-    Width = 1191
+    Width = 1022
     Height = 20
     BiDiMode = bdLeftToRight
     Panels = <
@@ -1515,8 +1427,9 @@ object BankListF: TBankListF
     ParentBiDiMode = False
     SizeGrip = False
     SkinData.SkinSection = 'MENUITEM'
+    ExplicitWidth = 1045
     DesignSize = (
-      1191
+      1022
       20)
     object PaidOnlyCaisseBtn: TAdvToolButton
       Left = 141
@@ -1585,6 +1498,164 @@ object BankListF: TBankListF
       OnClick = RefreshGirdBtnClick
       Version = '1.6.1.2'
       TMSStyle = 0
+    end
+    object AdvToolButton1: TAdvToolButton
+      Left = 175
+      Top = 0
+      Width = 26
+      Height = 20
+      Cursor = crHandPoint
+      Hint = 'Exporter vers Excel'
+      Anchors = [akRight]
+      AutoThemeAdapt = False
+      BorderColor = 15722984
+      BorderDownColor = 15722984
+      BorderHotColor = 14079702
+      Color = 15722984
+      ColorDown = 15722984
+      ColorHot = 14079702
+      ColorHotTo = 14079702
+      ColorChecked = clNone
+      DropDownSplit = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 4207405
+      Font.Height = 18
+      Font.Name = 'Roboto'
+      Font.Style = []
+      ImageIndex = 29
+      Images = MainForm.PanelIcons16
+      ParentFont = False
+      ParentShowHint = False
+      Shaded = False
+      ShowHint = True
+      Spacing = -2
+      OnClick = AdvToolButton1Click
+      Version = '1.6.1.2'
+      TMSStyle = 0
+    end
+    object AdvToolButton2: TAdvToolButton
+      Left = 203
+      Top = 0
+      Width = 26
+      Height = 20
+      Cursor = crHandPoint
+      Hint = 'Exporter vers PDF'
+      Anchors = [akRight]
+      AutoThemeAdapt = False
+      BorderColor = 15722984
+      BorderDownColor = 15722984
+      BorderHotColor = 14079702
+      Color = 15722984
+      ColorDown = 15722984
+      ColorHot = 14079702
+      ColorHotTo = 14079702
+      ColorChecked = clNone
+      DropDownSplit = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 4207405
+      Font.Height = 18
+      Font.Name = 'Roboto'
+      Font.Style = []
+      ImageIndex = 30
+      Images = MainForm.PanelIcons16
+      ParentFont = False
+      ParentShowHint = False
+      Shaded = False
+      ShowHint = True
+      Spacing = -2
+      OnClick = AdvToolButton2Click
+      Version = '1.6.1.2'
+      TMSStyle = 0
+    end
+    object AdvToolButton3: TAdvToolButton
+      Left = 231
+      Top = 0
+      Width = 26
+      Height = 20
+      Cursor = crHandPoint
+      Hint = 'Imprimer'
+      Anchors = [akRight]
+      AutoThemeAdapt = False
+      BorderColor = 15722984
+      BorderDownColor = 15722984
+      BorderHotColor = 14079702
+      Color = 15722984
+      ColorDown = 15722984
+      ColorHot = 14079702
+      ColorHotTo = 14079702
+      ColorChecked = clNone
+      DropDownSplit = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 4207405
+      Font.Height = 18
+      Font.Name = 'Roboto'
+      Font.Style = []
+      ImageIndex = 31
+      Images = MainForm.PanelIcons16
+      ParentFont = False
+      ParentShowHint = False
+      Shaded = False
+      ShowHint = True
+      Spacing = -2
+      OnClick = AdvToolButton3Click
+      Version = '1.6.1.2'
+      TMSStyle = 0
+    end
+    object Panel8: TPanel
+      Left = 170
+      Top = 0
+      Width = 1
+      Height = 20
+      ParentCustomHint = False
+      Anchors = [akTop, akRight]
+      BevelEdges = []
+      BevelOuter = bvNone
+      BiDiMode = bdLeftToRight
+      Color = 13421772
+      Ctl3D = True
+      DoubleBuffered = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentBiDiMode = False
+      ParentBackground = False
+      ParentCtl3D = False
+      ParentDoubleBuffered = False
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = False
+      TabOrder = 0
+      StyleElements = []
+    end
+    object Panel9: TPanel
+      Left = 261
+      Top = 0
+      Width = 1
+      Height = 20
+      ParentCustomHint = False
+      Anchors = [akTop, akRight]
+      BevelEdges = []
+      BevelOuter = bvNone
+      BiDiMode = bdLeftToRight
+      Color = 13421772
+      Ctl3D = True
+      DoubleBuffered = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentBiDiMode = False
+      ParentBackground = False
+      ParentCtl3D = False
+      ParentDoubleBuffered = False
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = False
+      TabOrder = 1
+      StyleElements = []
     end
   end
   object BankListDataS: TDataSource

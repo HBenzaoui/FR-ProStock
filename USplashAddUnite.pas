@@ -182,7 +182,13 @@ begin
        MainForm.Bona_recPlistTable.Append;
        MainForm.Bona_recPlistTable.FieldValues['code_barecl']:= CodeBR;
        MainForm.Bona_recPlistTable.FieldValues['code_barec']:= MainForm.Bona_recTable.FieldValues['code_barec'];
-       MainForm.Bona_recPlistTable.FieldValues['code_p']:=  FastProduitsListF.CodePForFastPList;// MainForm.ProduitTable.FieldValues['code_p'] ;
+       if Assigned(FastProduitsListF) then
+       begin
+        MainForm.Bona_recPlistTable.FieldValues['code_p']:=  FastProduitsListF.CodePForFastPList;// MainForm.ProduitTable.FieldValues['code_p'] ;
+       end else
+           begin
+             MainForm.Bona_recPlistTable.FieldValues['code_p']:= MainForm.ProduitTable.FieldValues['code_p'] ;
+           end;
        MainForm.Bona_recPlistTable.FieldValues['qut_p'] :=  01;
        MainForm.Bona_recPlistTable.FieldValues['prixht_p']:= MainForm.ProduitTable.FieldValues['prixht_p'];
        MainForm.Bona_recPlistTable.FieldValues['cond_p']:= 01;
@@ -303,7 +309,13 @@ begin
        MainForm.Bonv_liv_listTable.Append;
        MainForm.Bonv_liv_listTable.FieldValues['code_bvlivl']:= CodeBR;
        MainForm.Bonv_liv_listTable.FieldValues['code_bvliv']:= MainForm.Bonv_livTable.FieldValues['code_bvliv'];
-       MainForm.Bonv_liv_listTable.FieldValues['code_p']:= FastProduitsListF.CodePForFastPList;// MainForm.ProduitTable.FieldValues['code_p'] ;
+       if Assigned(FastProduitsListF) then
+       begin
+        MainForm.Bonv_liv_listTable.FieldValues['code_p']:=  FastProduitsListF.CodePForFastPList;// MainForm.ProduitTable.FieldValues['code_p'] ;
+       end else
+           begin
+             MainForm.Bonv_liv_listTable.FieldValues['code_p']:= MainForm.ProduitTable.FieldValues['code_p'] ;
+           end;
        MainForm.Bonv_liv_listTable.FieldValues['qut_p'] :=  01;
        MainForm.Bonv_liv_listTable.FieldValues['cond_p']:= 01;
        MainForm.Bonv_liv_listTable.FieldValues['tva_p']:= MainForm.ProduitTable.FieldValues['tva_p'];
@@ -452,7 +464,13 @@ begin
        MainForm.Bonv_fac_listTable.Append;
        MainForm.Bonv_fac_listTable.FieldValues['code_bvfacl']:= CodeBR;
        MainForm.Bonv_fac_listTable.FieldValues['code_bvfac']:= MainForm.Bonv_facTable.FieldValues['code_bvfac'];
-       MainForm.Bonv_fac_listTable.FieldValues['code_p']:= FastProduitsListF.CodePForFastPList;// MainForm.ProduitTable.FieldValues['code_p'] ;
+       if Assigned(FastProduitsListF) then
+       begin
+        MainForm.Bonv_fac_listTable.FieldValues['code_p']:=  FastProduitsListF.CodePForFastPList;// MainForm.ProduitTable.FieldValues['code_p'] ;
+       end else
+           begin
+             MainForm.Bonv_fac_listTable.FieldValues['code_p']:= MainForm.ProduitTable.FieldValues['code_p'] ;
+           end;
        MainForm.Bonv_fac_listTable.FieldValues['qut_p'] :=  01;
        MainForm.Bonv_fac_listTable.FieldValues['cond_p']:= 01;
        MainForm.Bonv_fac_listTable.FieldValues['tva_p']:= MainForm.ProduitTable.FieldValues['tva_p'];
@@ -588,7 +606,13 @@ begin
        MainForm.Bona_fac_listTable.Append;
        MainForm.Bona_fac_listTable.FieldValues['code_bafacl']:= CodeBR;
        MainForm.Bona_fac_listTable.FieldValues['code_bafac']:= MainForm.Bona_facTable.FieldValues['code_bafac'];
-       MainForm.Bona_fac_listTable.FieldValues['code_p']:= FastProduitsListF.CodePForFastPList;// MainForm.ProduitTable.FieldValues['code_p'] ;
+       if Assigned(FastProduitsListF) then
+       begin
+        MainForm.Bona_fac_listTable.FieldValues['code_p']:=  FastProduitsListF.CodePForFastPList;// MainForm.ProduitTable.FieldValues['code_p'] ;
+       end else
+           begin
+             MainForm.Bona_fac_listTable.FieldValues['code_p']:= MainForm.ProduitTable.FieldValues['code_p'] ;
+           end;
        MainForm.Bona_fac_listTable.FieldValues['qut_p'] :=  01;
        MainForm.Bona_fac_listTable.FieldValues['prixht_p']:= MainForm.ProduitTable.FieldValues['prixht_p'];
        MainForm.Bona_fac_listTable.FieldValues['cond_p']:= 01;
@@ -718,7 +742,13 @@ begin
        MainForm.Bonv_ctr_listTable.Append;
        MainForm.Bonv_ctr_listTable.FieldValues['code_bvctrl']:= CodeBR;
        MainForm.Bonv_ctr_listTable.FieldValues['code_bvctr']:= MainForm.Bonv_ctrTable.FieldValues['code_bvctr'];
-       MainForm.Bonv_ctr_listTable.FieldValues['code_p']:= FastProduitsListF.CodePForFastPList;// MainForm.ProduitTable.FieldValues['code_p'] ;
+       if Assigned(FastProduitsListF) then
+       begin
+        MainForm.Bonv_ctr_listTable.FieldValues['code_p']:=  FastProduitsListF.CodePForFastPList;// MainForm.ProduitTable.FieldValues['code_p'] ;
+       end else
+           begin
+             MainForm.Bonv_ctr_listTable.FieldValues['code_p']:= MainForm.ProduitTable.FieldValues['code_p'] ;
+           end;
        MainForm.Bonv_ctr_listTable.FieldValues['qut_p'] :=  01;
        MainForm.Bonv_ctr_listTable.FieldValues['cond_p']:= 01;
        MainForm.Bonv_ctr_listTable.FieldValues['tva_p']:= MainForm.ProduitTable.FieldValues['tva_p'];
@@ -869,7 +899,13 @@ begin
        MainForm.Bonp_fac_listTable.Append;
        MainForm.Bonp_fac_listTable.FieldValues['code_bpfacl']:= CodeBR;
        MainForm.Bonp_fac_listTable.FieldValues['code_bpfac']:= MainForm.Bonp_facTable.FieldValues['code_bpfac'];
-       MainForm.Bonp_fac_listTable.FieldValues['code_p']:= FastProduitsListF.CodePForFastPList;// MainForm.ProduitTable.FieldValues['code_p'] ;
+       if Assigned(FastProduitsListF) then
+       begin
+        MainForm.Bonp_fac_listTable.FieldValues['code_p']:=  FastProduitsListF.CodePForFastPList;// MainForm.ProduitTable.FieldValues['code_p'] ;
+       end else
+           begin
+             MainForm.Bonp_fac_listTable.FieldValues['code_p']:= MainForm.ProduitTable.FieldValues['code_p'] ;
+           end;
        MainForm.Bonp_fac_listTable.FieldValues['qut_p'] :=  01;
        MainForm.Bonp_fac_listTable.FieldValues['cond_p']:= 01;
        MainForm.Bonp_fac_listTable.FieldValues['tva_p']:= MainForm.ProduitTable.FieldValues['tva_p'];

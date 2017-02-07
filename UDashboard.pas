@@ -1280,7 +1280,7 @@ MonthsData;
              if NOT Assigned(DashboardF) then
               begin
               ChartAnimation1.Play;
-              TeeAnimationTool1.Play;
+//              TeeAnimationTool1.Play;
               TeeAnimationTool2.play;
               end;
 //            end);

@@ -129,8 +129,8 @@ begin
    DataModuleF.PSDBConfigConnection.Connected:= False;
 
    
-   MainForm.KillTask('postgres.exe');                                    // Eable this is only for releasing
-   MainForm.KillTask('cmd.exe');                                         // Eable this is only for releasing
+//   MainForm.KillTask('postgres.exe');                                    // Eable this is only for releasing
+//   MainForm.KillTask('cmd.exe');                                         // Eable this is only for releasing
 Application.Terminate;
 end;
 
@@ -185,6 +185,7 @@ begin
         begin
          NormalFormsLUR;
 
+         MainForm.UserIDLbl.Caption:= IntToStr( DataModuleF.UsersTable.FieldByName('code_ur').AsInteger);
          MainForm.UserTypeLbl.Caption:= DataModuleF.UsersTable.FieldByName('type_ur').AsString;
          
          MainForm.bl_ur.Checked:= DataModuleF.UsersTable.FieldByName('bl_ur').AsBoolean;

@@ -23,12 +23,8 @@ type
     EditProduitsBtn: TAdvToolButton;
     DeleteProduitsBtn: TAdvToolButton;
     AddProduitsBtn: TAdvToolButton;
-    sSpeedButton1: TsSpeedButton;
-    sSpeedButton2: TsSpeedButton;
     ResearchProduitsLbl: TLabel;
     LineP: TPanel;
-    Panel1: TPanel;
-    S01: TPanel;
     S02: TPanel;
     ResearchProduitsEdt: TSearchBox;
     ResherchPARDesProduitsRdioBtn: TRadioButton;
@@ -36,13 +32,11 @@ type
     Panel2: TPanel;
     ProduitListGridImgLst: TsAlphaImageList;
     Panel3: TPanel;
-    sSpeedButton3: TsSpeedButton;
     Panel4: TPanel;
     ProduitListfrxRprt: TfrxReport;
     frxProduitListDB: TfrxDBDataset;
     frxXLSExport1: TfrxXLSExport;
     frxPDFExport1: TfrxPDFExport;
-    sSpeedButton4: TsSpeedButton;
     sSpeedButton5: TsSpeedButton;
     sSpeedButton6: TsSpeedButton;
     sSpeedButton7: TsSpeedButton;
@@ -77,6 +71,12 @@ type
     StatuBar: TsStatusBar;
     SumGirdProduitBtn: TAdvToolButton;
     RefreshGirdBtn: TAdvToolButton;
+    Panel5: TPanel;
+    AdvToolButton1: TAdvToolButton;
+    AdvToolButton2: TAdvToolButton;
+    AdvToolButton3: TAdvToolButton;
+    Panel6: TPanel;
+    AdvToolButton4: TAdvToolButton;
     procedure AddProduitsBtnClick(Sender: TObject);
     procedure ProduitsListDBGridEhMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
     procedure ProduitsListDBGridEhDrawColumnCell(Sender: TObject; const Rect: TRect; DataCol: Integer; Column: TColumnEh; State: TGridDrawState);
@@ -84,7 +84,6 @@ type
     procedure ProduitsListDBGridEhKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure ProduitsListDBGridEhKeyPress(Sender: TObject; var Key: Char);
     procedure DeleteProduitsBtnClick(Sender: TObject);
-    procedure sSpeedButton2Click(Sender: TObject);
     procedure FisrtClientbtnClick(Sender: TObject);
     procedure LastClientbtnClick(Sender: TObject);
     procedure NextClientbtnClick(Sender: TObject);
@@ -96,8 +95,6 @@ type
     procedure ResherchPARDesProduitsRdioBtnClick(Sender: TObject);
     procedure ResherchPARDCodProduitsRdioBtnClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
-    procedure sSpeedButton1Click(Sender: TObject);
-    procedure sSpeedButton3Click(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure sSpeedButton4Click(Sender: TObject);
     procedure ValideFilterBVLivPMenuClick(Sender: TObject);
@@ -118,6 +115,9 @@ type
     procedure SumGirdProduitBtnClick(Sender: TObject);
     procedure RefreshGirdBtnClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure AdvToolButton1Click(Sender: TObject);
+    procedure AdvToolButton2Click(Sender: TObject);
+    procedure AdvToolButton3Click(Sender: TObject);
   private
     procedure GettingData;
     procedure FilteredColor;
@@ -1065,19 +1065,7 @@ begin
 
 end;
 
-procedure TProduitsListF.sSpeedButton2Click(Sender: TObject);
-begin
-  MainForm.ProduitTable.DisableControls;
-
-   GettingData;
-
-  ProduitListfrxRprt.PrepareReport;
-  ProduitListfrxRprt.ShowReport;
-
-  MainForm.ProduitTable.EnableControls;
-end;
-
-procedure TProduitsListF.sSpeedButton1Click(Sender: TObject);
+procedure TProduitsListF.AdvToolButton1Click(Sender: TObject);
 begin
 MainForm.ProduitTable.DisableControls;
 
@@ -1090,7 +1078,7 @@ ProduitListfrxRprt.Export(frxXLSExport1);
 MainForm.ProduitTable.EnableControls;
 end;
 
-procedure TProduitsListF.sSpeedButton3Click(Sender: TObject);
+procedure TProduitsListF.AdvToolButton2Click(Sender: TObject);
 begin
 MainForm.ProduitTable.DisableControls;
 
@@ -1101,6 +1089,31 @@ frxPDFExport1.FileName := 'Liste Des Produits';
 ProduitListfrxRprt.Export(frxPDFExport1);
 
 MainForm.ProduitTable.EnableControls;
+end;
+
+procedure TProduitsListF.AdvToolButton3Click(Sender: TObject);
+begin
+  if NOT (MainForm.ProduitTable.IsEmpty) Then
+  begin
+    FSplashPrinting:=TFSplashPrinting.Create(Application);
+//    FSplashPrinting.Width:=350;
+//    FSplashPrinting.Height:=160;
+//    FSplashPrinting.Panel1.Color:=  $004735F9;
+//    FSplashPrinting.LineP.Top:= (FSplashPrinting.Height) - 44  ;
+   // FSplashPrinting.Image1.Left:= 1;
+//    FSplashPrinting.Image1.Visible:=True;
+//    FSplashPrinting.Image1.Top:= (FSplashPrinting.Height div 2) - (FSplashPrinting.Image1.Height div 2 ) ;
+    FSplashPrinting.Left:=  (MainForm.Left + MainForm.Width div 2) - (FSplashPrinting.Width div 2);
+    FSplashPrinting.Top:=   MainForm.Top + 5;
+
+    AnimateWindow(FSplashPrinting.Handle, 175, AW_VER_POSITIVE OR AW_SLIDE OR AW_ACTIVATE );
+    FSplashPrinting.Show;
+
+  end;
+
+
+//FSplashPrinting.Position:= poScreenCenter;
+//FSplashPrinting.ShowModal;
 end;
 
 procedure TProduitsListF.Button1Click(Sender: TObject);
