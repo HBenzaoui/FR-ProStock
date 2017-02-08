@@ -4,7 +4,7 @@ object CNotificationsF: TCNotificationsF
   Align = alClient
   Caption = 'Centre de Notifications'
   ClientHeight = 741
-  ClientWidth = 1191
+  ClientWidth = 1084
   Color = 15527148
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -323,7 +323,7 @@ object CNotificationsF: TCNotificationsF
   object ProduitGPgControl: TsPageControl
     Left = 0
     Top = 0
-    Width = 1191
+    Width = 1084
     Height = 741
     ActivePage = PZeroQTB
     Align = alClient
@@ -340,6 +340,7 @@ object CNotificationsF: TCNotificationsF
     TabWidth = 210
     StyleElements = []
     TabsLineSkin = 'BAR'
+    ExplicitWidth = 2012
     object PZeroQTB: TsTabSheet
       Caption = 'Produits '#233'puis'#233's'
       Font.Charset = DEFAULT_CHARSET
@@ -351,12 +352,12 @@ object CNotificationsF: TCNotificationsF
       SkinData.CustomColor = False
       SkinData.CustomFont = False
       DesignSize = (
-        1183
+        1076
         706)
       object LineP: TPanel
         Left = 0
         Top = 0
-        Width = 1183
+        Width = 1076
         Height = 2
         Align = alTop
         BevelOuter = bvNone
@@ -368,7 +369,7 @@ object CNotificationsF: TCNotificationsF
       object ProduitsListDBGridEh: TDBGridEh
         Left = -4
         Top = 3
-        Width = 1187
+        Width = 1080
         Height = 702
         Anchors = [akLeft, akTop, akRight, akBottom]
         Border.Color = 4207405
@@ -408,7 +409,7 @@ object CNotificationsF: TCNotificationsF
         ParentFont = False
         ParentShowHint = False
         RowDetailPanel.Color = clBtnFace
-        RowHeight = 30
+        RowHeight = 27
         SearchPanel.FilterOnTyping = True
         ShowHint = True
         TabOrder = 1
@@ -433,7 +434,7 @@ object CNotificationsF: TCNotificationsF
             FieldName = 'refer_p'
             Font.Charset = DEFAULT_CHARSET
             Font.Color = 4207405
-            Font.Height = 18
+            Font.Height = 16
             Font.Name = 'Helvetica LT Std'
             Font.Style = []
             Footers = <>
@@ -451,7 +452,7 @@ object CNotificationsF: TCNotificationsF
             FieldName = 'nom_p'
             Font.Charset = DEFAULT_CHARSET
             Font.Color = 4207405
-            Font.Height = 18
+            Font.Height = 16
             Font.Name = 'Helvetica LT Std'
             Font.Style = []
             Footers = <>
@@ -506,7 +507,7 @@ object CNotificationsF: TCNotificationsF
             FieldName = 'famp'
             Font.Charset = DEFAULT_CHARSET
             Font.Color = 4207405
-            Font.Height = 18
+            Font.Height = 16
             Font.Name = 'Helvetica LT Std'
             Font.Style = []
             Footers = <>
@@ -540,7 +541,7 @@ object CNotificationsF: TCNotificationsF
             FieldName = 'sfamp'
             Font.Charset = DEFAULT_CHARSET
             Font.Color = 4207405
-            Font.Height = 18
+            Font.Height = 16
             Font.Name = 'Helvetica LT Std'
             Font.Style = []
             Footers = <>
@@ -828,7 +829,7 @@ object CNotificationsF: TCNotificationsF
             FieldName = 'QutDispo'
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWhite
-            Font.Height = 18
+            Font.Height = 16
             Font.Name = 'Helvetica LT Std'
             Font.Style = []
             Footers = <>
@@ -846,7 +847,7 @@ object CNotificationsF: TCNotificationsF
             FieldName = 'unit'
             Font.Charset = DEFAULT_CHARSET
             Font.Color = 4207405
-            Font.Height = 18
+            Font.Height = 16
             Font.Name = 'Helvetica LT Std'
             Font.Style = []
             Footers = <>
@@ -862,7 +863,7 @@ object CNotificationsF: TCNotificationsF
             FieldName = 'fourp'
             Font.Charset = DEFAULT_CHARSET
             Font.Color = 4207405
-            Font.Height = 18
+            Font.Height = 16
             Font.Name = 'Helvetica LT Std'
             Font.Style = []
             Footers = <>
@@ -940,7 +941,7 @@ object CNotificationsF: TCNotificationsF
             FieldName = 'local'
             Font.Charset = DEFAULT_CHARSET
             Font.Color = 4207405
-            Font.Height = 18
+            Font.Height = 16
             Font.Name = 'Helvetica LT Std'
             Font.Style = []
             Footers = <>
@@ -958,13 +959,14 @@ object CNotificationsF: TCNotificationsF
       Caption = 'Produits en voie d'#39#233'puisement'
       SkinData.CustomColor = False
       SkinData.CustomFont = False
+      ExplicitWidth = 2004
       DesignSize = (
-        1183
+        1076
         706)
       object Panel1: TPanel
         Left = 0
         Top = 0
-        Width = 1183
+        Width = 1076
         Height = 2
         Align = alTop
         BevelOuter = bvNone
@@ -972,11 +974,12 @@ object CNotificationsF: TCNotificationsF
         ParentBackground = False
         TabOrder = 0
         StyleElements = []
+        ExplicitWidth = 2004
       end
       object DBGridEh1: TDBGridEh
         Left = -4
         Top = 4
-        Width = 1187
+        Width = 1080
         Height = 702
         Anchors = [akLeft, akTop, akRight, akBottom]
         Border.Color = 4207405
@@ -1041,7 +1044,7 @@ object CNotificationsF: TCNotificationsF
             FieldName = 'refer_p'
             Font.Charset = DEFAULT_CHARSET
             Font.Color = 4207405
-            Font.Height = 18
+            Font.Height = 16
             Font.Name = 'Helvetica LT Std'
             Font.Style = []
             Footers = <>
@@ -1059,7 +1062,7 @@ object CNotificationsF: TCNotificationsF
             FieldName = 'nom_p'
             Font.Charset = DEFAULT_CHARSET
             Font.Color = 4207405
-            Font.Height = 18
+            Font.Height = 16
             Font.Name = 'Helvetica LT Std'
             Font.Style = []
             Footers = <>
@@ -1114,7 +1117,7 @@ object CNotificationsF: TCNotificationsF
             FieldName = 'famp'
             Font.Charset = DEFAULT_CHARSET
             Font.Color = 4207405
-            Font.Height = 18
+            Font.Height = 16
             Font.Name = 'Helvetica LT Std'
             Font.Style = []
             Footers = <>
@@ -1148,7 +1151,7 @@ object CNotificationsF: TCNotificationsF
             FieldName = 'sfamp'
             Font.Charset = DEFAULT_CHARSET
             Font.Color = 4207405
-            Font.Height = 18
+            Font.Height = 16
             Font.Name = 'Helvetica LT Std'
             Font.Style = []
             Footers = <>
@@ -1436,7 +1439,7 @@ object CNotificationsF: TCNotificationsF
             FieldName = 'QutDispo'
             Font.Charset = DEFAULT_CHARSET
             Font.Color = 4207405
-            Font.Height = 18
+            Font.Height = 16
             Font.Name = 'Helvetica LT Std'
             Font.Style = []
             Footers = <>
@@ -1456,7 +1459,7 @@ object CNotificationsF: TCNotificationsF
             FieldName = 'qutmin_p'
             Font.Charset = DEFAULT_CHARSET
             Font.Color = 4207405
-            Font.Height = 18
+            Font.Height = 16
             Font.Name = 'Helvetica LT Std'
             Font.Style = []
             Footers = <>
@@ -1472,7 +1475,7 @@ object CNotificationsF: TCNotificationsF
             FieldName = 'unit'
             Font.Charset = DEFAULT_CHARSET
             Font.Color = 4207405
-            Font.Height = 18
+            Font.Height = 16
             Font.Name = 'Helvetica LT Std'
             Font.Style = []
             Footers = <>
@@ -1488,7 +1491,7 @@ object CNotificationsF: TCNotificationsF
             FieldName = 'fourp'
             Font.Charset = DEFAULT_CHARSET
             Font.Color = 4207405
-            Font.Height = 18
+            Font.Height = 16
             Font.Name = 'Helvetica LT Std'
             Font.Style = []
             Footers = <>
@@ -1566,7 +1569,7 @@ object CNotificationsF: TCNotificationsF
             FieldName = 'local'
             Font.Charset = DEFAULT_CHARSET
             Font.Color = 4207405
-            Font.Height = 18
+            Font.Height = 16
             Font.Name = 'Helvetica LT Std'
             Font.Style = []
             Footers = <>
@@ -1585,12 +1588,12 @@ object CNotificationsF: TCNotificationsF
       SkinData.CustomColor = False
       SkinData.CustomFont = False
       DesignSize = (
-        1183
+        1076
         706)
       object Panel2: TPanel
         Left = 0
         Top = 0
-        Width = 1183
+        Width = 1076
         Height = 2
         Align = alTop
         BevelOuter = bvNone
@@ -1598,11 +1601,12 @@ object CNotificationsF: TCNotificationsF
         ParentBackground = False
         TabOrder = 0
         StyleElements = []
+        ExplicitWidth = 1183
       end
       object DBGridEh2: TDBGridEh
         Left = -4
         Top = 4
-        Width = 1187
+        Width = 1080
         Height = 702
         Anchors = [akLeft, akTop, akRight, akBottom]
         Border.Color = 4207405
@@ -1642,7 +1646,7 @@ object CNotificationsF: TCNotificationsF
         ParentFont = False
         ParentShowHint = False
         RowDetailPanel.Color = clBtnFace
-        RowHeight = 30
+        RowHeight = 27
         SearchPanel.FilterOnTyping = True
         ShowHint = True
         TabOrder = 1
@@ -1667,7 +1671,7 @@ object CNotificationsF: TCNotificationsF
             FieldName = 'refer_p'
             Font.Charset = DEFAULT_CHARSET
             Font.Color = 4207405
-            Font.Height = 18
+            Font.Height = 16
             Font.Name = 'Helvetica LT Std'
             Font.Style = []
             Footers = <>
@@ -1685,7 +1689,7 @@ object CNotificationsF: TCNotificationsF
             FieldName = 'nom_p'
             Font.Charset = DEFAULT_CHARSET
             Font.Color = 4207405
-            Font.Height = 18
+            Font.Height = 16
             Font.Name = 'Helvetica LT Std'
             Font.Style = []
             Footers = <>
@@ -1740,7 +1744,7 @@ object CNotificationsF: TCNotificationsF
             FieldName = 'famp'
             Font.Charset = DEFAULT_CHARSET
             Font.Color = 4207405
-            Font.Height = 18
+            Font.Height = 16
             Font.Name = 'Helvetica LT Std'
             Font.Style = []
             Footers = <>
@@ -1774,7 +1778,7 @@ object CNotificationsF: TCNotificationsF
             FieldName = 'sfamp'
             Font.Charset = DEFAULT_CHARSET
             Font.Color = 4207405
-            Font.Height = 18
+            Font.Height = 16
             Font.Name = 'Helvetica LT Std'
             Font.Style = []
             Footers = <>
@@ -2062,7 +2066,7 @@ object CNotificationsF: TCNotificationsF
             FieldName = 'QutDispo'
             Font.Charset = DEFAULT_CHARSET
             Font.Color = 4207405
-            Font.Height = 18
+            Font.Height = 16
             Font.Name = 'Helvetica LT Std'
             Font.Style = []
             Footers = <>
@@ -2082,7 +2086,7 @@ object CNotificationsF: TCNotificationsF
             FieldName = 'qutmax_p'
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWhite
-            Font.Height = 18
+            Font.Height = 16
             Font.Name = 'Helvetica LT Std'
             Font.Style = []
             Footers = <>
@@ -2098,7 +2102,7 @@ object CNotificationsF: TCNotificationsF
             FieldName = 'unit'
             Font.Charset = DEFAULT_CHARSET
             Font.Color = 4207405
-            Font.Height = 18
+            Font.Height = 16
             Font.Name = 'Helvetica LT Std'
             Font.Style = []
             Footers = <>
@@ -2114,7 +2118,7 @@ object CNotificationsF: TCNotificationsF
             FieldName = 'fourp'
             Font.Charset = DEFAULT_CHARSET
             Font.Color = 4207405
-            Font.Height = 18
+            Font.Height = 16
             Font.Name = 'Helvetica LT Std'
             Font.Style = []
             Footers = <>
@@ -2192,7 +2196,7 @@ object CNotificationsF: TCNotificationsF
             FieldName = 'local'
             Font.Charset = DEFAULT_CHARSET
             Font.Color = 4207405
-            Font.Height = 18
+            Font.Height = 16
             Font.Name = 'Helvetica LT Std'
             Font.Style = []
             Footers = <>
@@ -2211,12 +2215,12 @@ object CNotificationsF: TCNotificationsF
       SkinData.CustomColor = False
       SkinData.CustomFont = False
       DesignSize = (
-        1183
+        1076
         706)
       object Panel3: TPanel
         Left = 0
         Top = 0
-        Width = 1183
+        Width = 1076
         Height = 2
         Align = alTop
         BevelOuter = bvNone
@@ -2224,11 +2228,12 @@ object CNotificationsF: TCNotificationsF
         ParentBackground = False
         TabOrder = 0
         StyleElements = []
+        ExplicitWidth = 1183
       end
       object DBGridEh3: TDBGridEh
         Left = -4
         Top = 4
-        Width = 1187
+        Width = 1080
         Height = 702
         Anchors = [akLeft, akTop, akRight, akBottom]
         Border.Color = 4207405
@@ -2247,8 +2252,8 @@ object CNotificationsF: TCNotificationsF
         FixedColor = clWindow
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
-        Font.Height = 18
-        Font.Name = 'Segoe UI'
+        Font.Height = 16
+        Font.Name = 'Helvetica LT Std'
         Font.Style = []
         GridLineParams.DataHorzLines = True
         GridLineParams.DataVertLines = True
@@ -2268,7 +2273,7 @@ object CNotificationsF: TCNotificationsF
         ParentFont = False
         ParentShowHint = False
         RowDetailPanel.Color = clBtnFace
-        RowHeight = 30
+        RowHeight = 27
         SearchPanel.FilterOnTyping = True
         ShowHint = True
         TabOrder = 1
@@ -2291,11 +2296,6 @@ object CNotificationsF: TCNotificationsF
             DynProps = <>
             EditButtons = <>
             FieldName = 'refer_p'
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = 4207405
-            Font.Height = 18
-            Font.Name = 'Helvetica LT Std'
-            Font.Style = []
             Footers = <>
             Layout = tlCenter
             MaxWidth = 120
@@ -2309,11 +2309,6 @@ object CNotificationsF: TCNotificationsF
             DynProps = <>
             EditButtons = <>
             FieldName = 'nom_p'
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = 4207405
-            Font.Height = 18
-            Font.Name = 'Helvetica LT Std'
-            Font.Style = []
             Footers = <>
             Layout = tlCenter
             MaxWidth = -1
@@ -2364,11 +2359,6 @@ object CNotificationsF: TCNotificationsF
             DynProps = <>
             EditButtons = <>
             FieldName = 'famp'
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = 4207405
-            Font.Height = 18
-            Font.Name = 'Helvetica LT Std'
-            Font.Style = []
             Footers = <>
             Layout = tlCenter
             Title.Alignment = taCenter
@@ -2398,11 +2388,6 @@ object CNotificationsF: TCNotificationsF
             DynProps = <>
             EditButtons = <>
             FieldName = 'sfamp'
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = 4207405
-            Font.Height = 18
-            Font.Name = 'Helvetica LT Std'
-            Font.Style = []
             Footers = <>
             Layout = tlCenter
             Title.Alignment = taCenter
@@ -2686,11 +2671,6 @@ object CNotificationsF: TCNotificationsF
             DynProps = <>
             EditButtons = <>
             FieldName = 'QutDispo'
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = 4207405
-            Font.Height = 18
-            Font.Name = 'Helvetica LT Std'
-            Font.Style = []
             Footers = <>
             Layout = tlCenter
             MinWidth = 100
@@ -2703,46 +2683,47 @@ object CNotificationsF: TCNotificationsF
             DynProps = <>
             EditButtons = <>
             FieldName = 'alertdays_p'
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = 4207405
-            Font.Height = 18
-            Font.Name = 'Helvetica LT Std'
-            Font.Style = []
             Footers = <>
             Layout = tlCenter
             Title.Alignment = taCenter
+            Visible = False
+            Width = 100
             WordWrap = False
           end
           item
+            Alignment = taCenter
+            DisplayFormat = 'DD/MM/YYYY'
             DynProps = <>
             EditButtons = <>
             FieldName = 'dateperiss_p'
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = 4207405
-            Font.Height = 18
-            Font.Name = 'Helvetica LT Std'
-            Font.Style = []
             Footers = <>
             Layout = tlCenter
             Title.Alignment = taCenter
+            Title.Caption = 'Date Exp.'
+            Width = 100
             WordWrap = False
           end
           item
+            Alignment = taCenter
             DynProps = <>
             EditButtons = <>
             FieldName = 'daysleft'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = 4207844
+            Font.Height = 16
+            Font.Name = 'Helvetica LT Std'
+            Font.Style = [fsBold]
             Footers = <>
+            Layout = tlCenter
+            Title.Alignment = taCenter
+            Title.Caption = 'Jours restants'
+            Width = 120
           end
           item
             Alignment = taCenter
             DynProps = <>
             EditButtons = <>
             FieldName = 'unit'
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = 4207405
-            Font.Height = 18
-            Font.Name = 'Helvetica LT Std'
-            Font.Style = []
             Footers = <>
             Layout = tlCenter
             Title.Alignment = taCenter
@@ -2754,11 +2735,6 @@ object CNotificationsF: TCNotificationsF
             DynProps = <>
             EditButtons = <>
             FieldName = 'fourp'
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = 4207405
-            Font.Height = 18
-            Font.Name = 'Helvetica LT Std'
-            Font.Style = []
             Footers = <>
             Layout = tlCenter
             Title.Alignment = taCenter
@@ -2802,11 +2778,6 @@ object CNotificationsF: TCNotificationsF
             DynProps = <>
             EditButtons = <>
             FieldName = 'local'
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = 4207405
-            Font.Height = 18
-            Font.Name = 'Helvetica LT Std'
-            Font.Style = []
             Footers = <>
             Layout = tlCenter
             Title.Alignment = taCenter
@@ -2823,12 +2794,12 @@ object CNotificationsF: TCNotificationsF
       SkinData.CustomColor = False
       SkinData.CustomFont = False
       DesignSize = (
-        1183
+        1076
         706)
       object Panel4: TPanel
         Left = 0
         Top = 0
-        Width = 1183
+        Width = 1076
         Height = 2
         Align = alTop
         BevelOuter = bvNone
@@ -2840,7 +2811,7 @@ object CNotificationsF: TCNotificationsF
       object DBGridEh4: TDBGridEh
         Left = -4
         Top = 4
-        Width = 1187
+        Width = 1080
         Height = 702
         Anchors = [akLeft, akTop, akRight, akBottom]
         Border.Color = 4207405
@@ -2880,7 +2851,7 @@ object CNotificationsF: TCNotificationsF
         ParentFont = False
         ParentShowHint = False
         RowDetailPanel.Color = clBtnFace
-        RowHeight = 30
+        RowHeight = 27
         SearchPanel.FilterOnTyping = True
         ShowHint = True
         TabOrder = 1
@@ -2905,7 +2876,7 @@ object CNotificationsF: TCNotificationsF
             FieldName = 'refer_p'
             Font.Charset = DEFAULT_CHARSET
             Font.Color = 4207405
-            Font.Height = 18
+            Font.Height = 16
             Font.Name = 'Helvetica LT Std'
             Font.Style = []
             Footers = <>
@@ -2923,7 +2894,7 @@ object CNotificationsF: TCNotificationsF
             FieldName = 'nom_p'
             Font.Charset = DEFAULT_CHARSET
             Font.Color = 4207405
-            Font.Height = 18
+            Font.Height = 16
             Font.Name = 'Helvetica LT Std'
             Font.Style = []
             Footers = <>
@@ -2978,7 +2949,7 @@ object CNotificationsF: TCNotificationsF
             FieldName = 'famp'
             Font.Charset = DEFAULT_CHARSET
             Font.Color = 4207405
-            Font.Height = 18
+            Font.Height = 16
             Font.Name = 'Helvetica LT Std'
             Font.Style = []
             Footers = <>
@@ -3012,7 +2983,7 @@ object CNotificationsF: TCNotificationsF
             FieldName = 'sfamp'
             Font.Charset = DEFAULT_CHARSET
             Font.Color = 4207405
-            Font.Height = 18
+            Font.Height = 16
             Font.Name = 'Helvetica LT Std'
             Font.Style = []
             Footers = <>
@@ -3300,7 +3271,7 @@ object CNotificationsF: TCNotificationsF
             FieldName = 'QutDispo'
             Font.Charset = DEFAULT_CHARSET
             Font.Color = 4207405
-            Font.Height = 18
+            Font.Height = 16
             Font.Name = 'Helvetica LT Std'
             Font.Style = []
             Footers = <>
@@ -3318,7 +3289,7 @@ object CNotificationsF: TCNotificationsF
             FieldName = 'unit'
             Font.Charset = DEFAULT_CHARSET
             Font.Color = 4207405
-            Font.Height = 18
+            Font.Height = 16
             Font.Name = 'Helvetica LT Std'
             Font.Style = []
             Footers = <>
@@ -3334,7 +3305,7 @@ object CNotificationsF: TCNotificationsF
             FieldName = 'fourp'
             Font.Charset = DEFAULT_CHARSET
             Font.Color = 4207405
-            Font.Height = 18
+            Font.Height = 16
             Font.Name = 'Helvetica LT Std'
             Font.Style = []
             Footers = <>
@@ -3412,7 +3383,7 @@ object CNotificationsF: TCNotificationsF
             FieldName = 'local'
             Font.Charset = DEFAULT_CHARSET
             Font.Color = 4207405
-            Font.Height = 18
+            Font.Height = 16
             Font.Name = 'Helvetica LT Std'
             Font.Style = []
             Footers = <>

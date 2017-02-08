@@ -318,6 +318,7 @@ object ReglementCListF: TReglementCListF
   Position = poDesigned
   Visible = True
   OnClose = FormClose
+  OnPaint = FormPaint
   OnShow = FormShow
   DesignSize = (
     951
@@ -337,8 +338,6 @@ object ReglementCListF: TReglementCListF
     ParentDoubleBuffered = False
     TabOrder = 0
     StyleElements = []
-    ExplicitTop = 7
-    ExplicitWidth = 1019
     DesignSize = (
       951
       71)
@@ -611,7 +610,6 @@ object ReglementCListF: TReglementCListF
       ParentBackground = False
       TabOrder = 1
       StyleElements = []
-      ExplicitWidth = 1035
     end
     object S02: TPanel
       Left = 622
@@ -785,8 +783,6 @@ object ReglementCListF: TReglementCListF
     ParentBackground = False
     TabOrder = 1
     StyleElements = []
-    ExplicitTop = 82
-    ExplicitHeight = 639
   end
   object BVLivListDBGridEh: TDBGridEh
     Left = 0
@@ -1266,7 +1262,6 @@ object ReglementCListF: TReglementCListF
     ParentBiDiMode = False
     SizeGrip = False
     SkinData.SkinSection = 'MENUITEM'
-    ExplicitWidth = 1019
     DesignSize = (
       951
       20)

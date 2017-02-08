@@ -317,6 +317,7 @@ object BonFacPF: TBonFacPF
   OldCreateOrder = False
   Visible = True
   OnClose = FormClose
+  OnPaint = FormPaint
   OnShow = FormShow
   DesignSize = (
     951
@@ -927,7 +928,6 @@ object BonFacPF: TBonFacPF
     ParentDoubleBuffered = False
     TabOrder = 1
     StyleElements = []
-    ExplicitWidth = 1020
     DesignSize = (
       951
       71)
@@ -1215,7 +1215,6 @@ object BonFacPF: TBonFacPF
       ParentBackground = False
       TabOrder = 1
       StyleElements = []
-      ExplicitWidth = 1036
     end
     object S02: TPanel
       Left = 622
@@ -1389,8 +1388,6 @@ object BonFacPF: TBonFacPF
     ParentBackground = False
     TabOrder = 2
     StyleElements = []
-    ExplicitTop = 82
-    ExplicitHeight = 639
   end
   object StatuBar: TsStatusBar
     Left = 0
@@ -1412,7 +1409,6 @@ object BonFacPF: TBonFacPF
     ParentBiDiMode = False
     SizeGrip = False
     SkinData.SkinSection = 'MENUITEM'
-    ExplicitWidth = 1020
     DesignSize = (
       951
       20)

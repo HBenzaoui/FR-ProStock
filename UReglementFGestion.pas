@@ -130,22 +130,27 @@ var
 I : Integer;
   begin
 
-          MainForm.FournisseurTable.Active:=false;
-          MainForm.FournisseurTable.SQL.Clear;
-          MainForm.FournisseurTable.SQL.Text:='Select * FROM fournisseur '  ;
-          MainForm.FournisseurTable.Active:=True;
+          MainForm.SQLQuery.Active:=false;
+          MainForm.SQLQuery.SQL.Clear;
+          MainForm.SQLQuery.SQL.Text:='Select code_f,nom_f FROM fournisseur '  ;
+          MainForm.SQLQuery.Active:=True;
 
-       MainForm.FournisseurTable.Refresh;
+       MainForm.SQLQuery.Refresh;
        FournisseurRegFGCbx.Items.Clear;
-       MainForm.FournisseurTable.first;
+       MainForm.SQLQuery.first;
 
 
-     for I := 0 to MainForm.FournisseurTable.RecordCount - 1 do
-     if MainForm.FournisseurTable.FieldByName('nom_f').IsNull = False then
+     for I := 0 to MainForm.SQLQuery.RecordCount - 1 do
+     if MainForm.SQLQuery.FieldByName('nom_f').IsNull = False then
      begin
-          FournisseurRegFGCbx.Items.Add(MainForm.FournisseurTable.FieldByName('nom_f').AsString);
-       MainForm.FournisseurTable.Next;
+          FournisseurRegFGCbx.Items.Add(MainForm.SQLQuery.FieldByName('nom_f').AsString);
+       MainForm.SQLQuery.Next;
       end;
+
+          MainForm.SQLQuery.Active:=false;
+          MainForm.SQLQuery.SQL.Clear;
+
+
   end;
 
 
@@ -315,12 +320,21 @@ begin
 
         begin
 
-          MainForm.FournisseurTable.DisableControls;
-          MainForm.FournisseurTable.Active:=false;
-          MainForm.FournisseurTable.SQL.Clear;
-          MainForm.FournisseurTable.SQL.Text:='Select * FROM fournisseur WHERE LOWER(nom_f) LIKE LOWER('+ QuotedStr(ReglementFGestionF.FournisseurRegFGCbx.Text )+')'  ;
-          MainForm.FournisseurTable.Active:=True;
-          CodeF:= MainForm.FournisseurTable.FieldValues['code_f'] ;
+//          MainForm.SQLQuery.DisableControls;
+          MainForm.SQLQuery.Active:=false;
+          MainForm.SQLQuery.SQL.Clear;
+          MainForm.SQLQuery.SQL.Text:='Select * FROM fournisseur WHERE LOWER(nom_f) LIKE LOWER('+ QuotedStr(ReglementFGestionF.FournisseurRegFGCbx.Text )+')'  ;
+          MainForm.SQLQuery.Active:=True;
+          CodeF:= MainForm.SQLQuery.FieldValues['code_f'] ;
+
+
+          if  MainForm.SQLQuery.FieldByName('code_f').AsInteger <> 1 then
+          begin
+          MainForm.SQLQuery.Edit;
+          MainForm.SQLQuery.FieldByName('credit_f').AsCurrency:=  (MainForm.SQLQuery.FieldByName('credit_f').AsCurrency) -
+          ((StrToCurr(StringReplace(VerRegFGEdt.Text, #32, '', [rfReplaceAll]))));
+          MainForm.SQLQuery.Post;
+          end;
 
           MainForm.Mode_paiementTable.DisableControls;
           MainForm.Mode_paiementTable.Active:=false;
@@ -355,7 +369,7 @@ begin
           MainForm.RegfournisseurTable.Append;
           MainForm.RegfournisseurTable.FieldValues['code_rf']:= CodeRF;
           MainForm.RegfournisseurTable.FieldValues['nom_rf']:= NumRegFGEdt.Caption;
-          MainForm.RegfournisseurTable.FieldValues['code_f']:= MainForm.FournisseurTable.FieldByName('code_f').AsInteger;
+          MainForm.RegfournisseurTable.FieldValues['code_f']:= MainForm.SQLQuery.FieldByName('code_f').AsInteger;
           MainForm.RegfournisseurTable.FieldValues['date_rf']:= DateRegFGD.Date;
           MainForm.RegfournisseurTable.FieldValues['time_rf']:=TimeOf(Now);
           MainForm.RegfournisseurTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
@@ -390,7 +404,7 @@ begin
              begin
                 MainForm.RegfournisseurTable.Edit;
                 MainForm.RegfournisseurTable.FieldValues['nom_rf']:= NumRegFGEdt.Caption;
-                MainForm.RegfournisseurTable.FieldValues['code_f']:= MainForm.FournisseurTable.FieldByName('code_f').AsInteger;
+                MainForm.RegfournisseurTable.FieldValues['code_f']:= MainForm.SQLQuery.FieldByName('code_f').AsInteger;
 //                MainForm.RegfournisseurTable.FieldValues['date_rf']:= DateOf(Today);
 //                MainForm.RegfournisseurTable.FieldValues['time_rf']:=TimeOf(Now);
                 MainForm.RegfournisseurTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
@@ -425,17 +439,17 @@ begin
           MainForm.RegfournisseurTable.Refresh;
 //          MainForm.RegfournisseurTable.Open;
 
-          MainForm.FournisseurTable.Edit;
-          MainForm.FournisseurTable.FieldByName('credit_f').AsCurrency:=
+          MainForm.SQLQuery.Edit;
+          MainForm.SQLQuery.FieldByName('credit_f').AsCurrency:=
           ((StrToCurr(StringReplace(RegFGFourNEWCredit.Caption, #32, '', [rfReplaceAll]))));
-          MainForm.FournisseurTable.Post;
+          MainForm.SQLQuery.Post;
 
 
-          MainForm.FournisseurTable.Active:=false;
-          MainForm.FournisseurTable.SQL.Clear;
-          MainForm.FournisseurTable.SQL.Text:='Select * FROM fournisseur' ;
-          MainForm.FournisseurTable.Active:=True;
-          MainForm.FournisseurTable.EnableControls;
+          MainForm.SQLQuery.Active:=false;
+          MainForm.SQLQuery.SQL.Clear;
+//          MainForm.SQLQuery.SQL.Text:='Select * FROM fournisseur' ;
+//          MainForm.SQLQuery.Active:=True;
+//          MainForm.SQLQuery.EnableControls;
 
           //--- this is for adding the money to the caisse----
          begin
@@ -609,21 +623,21 @@ begin
   if FournisseurRegFGCbx.Text <> '' then
     begin
 //     FournisseurRegFGCbxChange(Sender);
-      MainForm.FournisseurTable.DisableControls;
-      MainForm.FournisseurTable.Active:=false;
-      MainForm.FournisseurTable.SQL.Clear;
-      MainForm.FournisseurTable.SQL.Text:='Select * FROM fournisseur WHERE LOWER(nom_f) LIKE LOWER('+ QuotedStr( FournisseurRegFGCbx.Text )+')'  ;
-      MainForm.FournisseurTable.Active:=True;
-      OLDCreditFINI:=MainForm.FournisseurTable.FieldByName('oldcredit_f').AsCurrency;
+//      MainForm.SQLQuery.DisableControls;
+      MainForm.SQLQuery.Active:=false;
+      MainForm.SQLQuery.SQL.Clear;
+      MainForm.SQLQuery.SQL.Text:='Select * FROM fournisseur WHERE LOWER(nom_f) LIKE LOWER('+ QuotedStr( FournisseurRegFGCbx.Text )+')'  ;
+      MainForm.SQLQuery.Active:=True;
+      OLDCreditFINI:=MainForm.SQLQuery.FieldByName('oldcredit_f').AsCurrency;
 
-      if (MainForm.FournisseurTable.IsEmpty) then
+      if (MainForm.SQLQuery.IsEmpty) then
       begin
        FournisseurRegFGCbx.Text := '';
        RegFGFourNEWCredit.Caption:= FloatToStrF(0,ffNumber,14,2) ;
        RegFGFourNEWCredit.Caption:=RegFGFourOLDCredit.Caption;
        exit;
       end;
-      CodeF:= MainForm.FournisseurTable.FieldByName('code_f').AsInteger;
+      CodeF:= MainForm.SQLQuery.FieldByName('code_f').AsInteger;
 
       MainForm.Bona_recTableCredit.DisableControls;
       MainForm.Bona_recTableCredit.Active:=false;
@@ -641,7 +655,7 @@ begin
 
 
 
-      MainForm.SQLQuery.DisableControls;
+//      MainForm.SQLQuery.DisableControls;
       MainForm.SQLQuery.Active:=false;
       MainForm.SQLQuery.SQL.Clear;
       MainForm.SQLQuery.SQL.Text:='Select * FROM regfournisseur WHERE bon_or_no_rf = 1 AND code_f = '+ IntToStr( CodeF )+' ORDER BY code_rf '  ;
@@ -671,11 +685,11 @@ begin
       MainForm.Bona_recTableCredit.last;
       MainForm.Bona_recTableCredit.EnableControls;
 
-      MainForm.FournisseurTable.Active:=false;
-      MainForm.FournisseurTable.SQL.Clear;
-      MainForm.FournisseurTable.SQL.Text:='Select * FROM fournisseur' ;
-      MainForm.FournisseurTable.Active:=True;
-      MainForm.FournisseurTable.EnableControls;
+//      MainForm.SQLQuery.Active:=false;
+//      MainForm.SQLQuery.SQL.Clear;
+//      MainForm.SQLQuery.SQL.Text:='Select * FROM fournisseur' ;
+//      MainForm.SQLQuery.Active:=True;
+//      MainForm.SQLQuery.EnableControls;
 
 
       MainForm.SQLQuery.Active:=false;

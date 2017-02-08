@@ -358,10 +358,13 @@ begin
           begin
             fieldbyname('oldcredit_f').Value :=
             StrToCurr(StringReplace(OldCreditFournisseurGEdt.Text, #32, '', [rfReplaceAll]));
+            fieldbyname('credit_f').Value :=
+            StrToCurr(StringReplace(OldCreditFournisseurGEdt.Text, #32, '', [rfReplaceAll]));
           end
           else
           begin
-            fieldbyname('oldcredit_f').Value := StrToInt('0')
+            fieldbyname('oldcredit_f').Value := StrToInt('0');
+            fieldbyname('credit_f').Value := StrToInt('0');
           end;
           if MaxCreditFournisseurGEdt.Text <> '' then
           begin

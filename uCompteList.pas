@@ -159,6 +159,8 @@ begin
          +   'select code_cmpt from regclient '
          +   'union all '
          +   'select code_cmpt from regfournisseur '
+         +   'union all '
+         +   'select code_mdpai from bonp_fac '
          +     ') a '
          +     'where code_cmpt = '+IntToStr(MainForm.CompteTable.FieldByName('code_cmpt').AsInteger) ;
 

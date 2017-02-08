@@ -106,6 +106,7 @@ type
     procedure AdvToolButton1Click(Sender: TObject);
     procedure AdvToolButton2Click(Sender: TObject);
     procedure AdvToolButton3Click(Sender: TObject);
+    procedure FormPaint(Sender: TObject);
   private
     procedure GettingData;
     procedure FilteredColor;
@@ -301,6 +302,7 @@ begin
   MainForm.Bona_facTable.Filtered := False;
   MainForm.Bona_facTable.Filter:='MontantRes <= 0 ';
   MainForm.Bona_facTable.Filtered:=True;
+  MainForm.Bona_facTable.First;
 end;
 
 procedure TBonFacAF.Select_NOT_Regle;
@@ -308,6 +310,7 @@ begin
   MainForm.Bona_facTable.Filtered := False;
   MainForm.Bona_facTable.Filter:='MontantRes > 0 ';
   MainForm.Bona_facTable.Filtered:=True;
+  MainForm.Bona_facTable.First;
 end;
 
 procedure TBonFacAF.FilteredColor;
@@ -1268,6 +1271,16 @@ end;
 procedure TBonFacAF.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
  FreeAndNil(BonFacAF);
+end;
+
+procedure TBonFacAF.FormPaint(Sender: TObject);
+begin
+  MainForm.FournisseurTable.DisableControls;
+  MainForm.FournisseurTable.Active:=False;
+  MainForm.FournisseurTable.SQL.Clear;
+  MainForm.FournisseurTable.SQL.Text:='SELECT * FROM fournisseur ';
+  MainForm.FournisseurTable.Active:=True;
+  MainForm.FournisseurTable.EnableControls;
 end;
 
 end.

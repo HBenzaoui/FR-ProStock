@@ -319,6 +319,7 @@ object FournisseurListF: TFournisseurListF
   Visible = True
   OnClose = FormClose
   OnCreate = FormCreate
+  OnPaint = FormPaint
   OnShow = FormShow
   DesignSize = (
     1022
@@ -945,7 +946,6 @@ object FournisseurListF: TFournisseurListF
     ParentDoubleBuffered = False
     TabOrder = 1
     StyleElements = []
-    ExplicitWidth = 1243
     DesignSize = (
       1022
       71)
@@ -1180,7 +1180,6 @@ object FournisseurListF: TFournisseurListF
       ParentBackground = False
       TabOrder = 1
       StyleElements = []
-      ExplicitWidth = 1477
     end
     object Panel1: TPanel
       Left = 748
@@ -1385,7 +1384,6 @@ object FournisseurListF: TFournisseurListF
     ParentBiDiMode = False
     SizeGrip = False
     SkinData.SkinSection = 'MENUITEM'
-    ExplicitWidth = 1243
     DesignSize = (
       1022
       20)

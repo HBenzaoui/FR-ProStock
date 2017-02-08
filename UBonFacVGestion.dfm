@@ -351,7 +351,6 @@ object BonFacVGestionF: TBonFacVGestionF
     ParentDoubleBuffered = False
     TabOrder = 1
     StyleElements = []
-    ExplicitWidth = 1089
     DesignSize = (
       1024
       304)
@@ -1232,7 +1231,6 @@ object BonFacVGestionF: TBonFacVGestionF
       ParentBackground = False
       TabOrder = 2
       StyleElements = []
-      ExplicitWidth = 548
     end
     object Panel8: TPanel
       Left = 1020
@@ -1261,7 +1259,6 @@ object BonFacVGestionF: TBonFacVGestionF
       ShowHint = False
       TabOrder = 3
       StyleElements = []
-      ExplicitLeft = 1085
     end
     object Panel9: TPanel
       Left = 889
@@ -1290,7 +1287,6 @@ object BonFacVGestionF: TBonFacVGestionF
       ShowHint = False
       TabOrder = 4
       StyleElements = []
-      ExplicitLeft = 954
     end
     object Panel10: TPanel
       Left = 480
@@ -1394,7 +1390,6 @@ object BonFacVGestionF: TBonFacVGestionF
       ParentBackground = False
       TabOrder = 8
       StyleElements = []
-      ExplicitWidth = 903
     end
     object ResherchPARDesProduitsRdioBtn: TRadioButton
       Left = 107
@@ -1443,7 +1438,6 @@ object BonFacVGestionF: TBonFacVGestionF
       ParentBackground = False
       TabOrder = 11
       StyleElements = []
-      ExplicitWidth = 1089
     end
     object ResherchPARRefProduitsRdioBtn: TRadioButton
       Left = 245
@@ -1538,7 +1532,6 @@ object BonFacVGestionF: TBonFacVGestionF
       ParentBackground = False
       TabOrder = 16
       StyleElements = []
-      ExplicitLeft = 903
       DesignSize = (
         186
         140)
@@ -1726,7 +1719,7 @@ object BonFacVGestionF: TBonFacVGestionF
     IndicatorTitle.UseGlobalMenu = False
     OddRowColor = 16315635
     Options = [dgEditing, dgTitles, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
-    OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghDialogFind, dghShowRecNo, dghColumnResize, dghColumnMove, dghHotTrack, dghExtendVertLines]
+    OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghDialogFind, dghShowRecNo, dghColumnResize, dghColumnMove, dghExtendVertLines]
     ParentCtl3D = False
     ParentFont = False
     ParentShowHint = False
@@ -2086,7 +2079,6 @@ object BonFacVGestionF: TBonFacVGestionF
     ParentBackground = False
     TabOrder = 3
     StyleElements = []
-    ExplicitWidth = 1089
     DesignSize = (
       1024
       120)

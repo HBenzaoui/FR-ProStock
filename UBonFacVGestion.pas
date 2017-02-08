@@ -1562,22 +1562,23 @@ var
 I : Integer;
   begin
         ClientBonFacVGCbx.Items.Clear;
-        MainForm.ClientTable.DisableControls;
-        MainForm.ClientTable.Active:=false;
-        MainForm.ClientTable.SQL.Clear;
-        MainForm.ClientTable.SQL.Text:='Select * FROM client '  ;
-        MainForm.ClientTable.Active:=True;
+//        MainForm.SQLQuery.DisableControls;
+        MainForm.SQLQuery.Active:=false;
+        MainForm.SQLQuery.SQL.Clear;
+        MainForm.SQLQuery.SQL.Text:='Select * FROM client '  ;
+        MainForm.SQLQuery.Active:=True;
 
-       MainForm.ClientTable.first;
+       MainForm.SQLQuery.first;
 
-     for I := 0 to MainForm.ClientTable.RecordCount - 1 do
-     if MainForm.ClientTable.FieldByName('nom_c').IsNull = False then
+     for I := 0 to MainForm.SQLQuery.RecordCount - 1 do
+     if MainForm.SQLQuery.FieldByName('nom_c').IsNull = False then
      begin
-          ClientBonFacVGCbx.Items.Add(MainForm.ClientTable.FieldByName('nom_c').AsString);
-       MainForm.ClientTable.Next;
+          ClientBonFacVGCbx.Items.Add(MainForm.SQLQuery.FieldByName('nom_c').AsString);
+       MainForm.SQLQuery.Next;
       end;
 
-      MainForm.ClientTable.EnableControls;
+        MainForm.SQLQuery.Active:=false;
+        MainForm.SQLQuery.SQL.Clear;
 
 end;
 
@@ -1589,25 +1590,25 @@ begin
   if ClientBonFacVGCbx.Text <> '' then
     begin
      ClientBonFacVGCbxChange(Sender);
-      MainForm.ClientTable.DisableControls;
-      MainForm.ClientTable.Active:=false;
-      MainForm.ClientTable.SQL.Clear;
-      MainForm.ClientTable.SQL.Text:='Select * FROM client WHERE LOWER(nom_c) LIKE LOWER('+ QuotedStr( ClientBonFacVGCbx.Text )+')'  ;
-      MainForm.ClientTable.Active:=True;
-     if NOT MainForm.ClientTable.IsEmpty then
+//      MainForm.SQLQuery.DisableControls;
+      MainForm.SQLQuery.Active:=false;
+      MainForm.SQLQuery.SQL.Clear;
+      MainForm.SQLQuery.SQL.Text:='Select * FROM client WHERE LOWER(nom_c) LIKE LOWER('+ QuotedStr( ClientBonFacVGCbx.Text )+')'  ;
+      MainForm.SQLQuery.Active:=True;
+     if NOT MainForm.SQLQuery.IsEmpty then
      begin
-      OLDCreditCINI:= MainForm.ClientTable.FieldByName('oldcredit_c').AsCurrency;
+      OLDCreditCINI:= MainForm.SQLQuery.FieldByName('oldcredit_c').AsCurrency;
 
-      if MainForm.ClientTable.FieldByName('activ_c').AsBoolean <> False then
+      if MainForm.SQLQuery.FieldByName('activ_c').AsBoolean <> False then
       begin
-          if (MainForm.ClientTable.IsEmpty) then
+          if (MainForm.SQLQuery.IsEmpty) then
           begin
            ClientBonFacVGCbx.Text := '';
            BonFacVGClientOLDCredit.Caption:= FloatToStrF(0,ffNumber,14,2) ;
            BonFacVGClientNEWCredit.Caption:=BonFacVGClientOLDCredit.Caption;
            exit;
           end;
-          CodeC:= MainForm.ClientTable.FieldByName('code_c').AsInteger ;
+          CodeC:= MainForm.SQLQuery.FieldByName('code_c').AsInteger ;
 
           MainForm.Bonv_livTableCredit.DisableControls;
           MainForm.Bonv_livTableCredit.Active:=false;
@@ -1666,11 +1667,11 @@ begin
         MainForm.RegclientTable.Active:=True;
         MainForm.RegclientTable.EnableControls;
 
-        MainForm.ClientTable.Active:=false;
-        MainForm.ClientTable.SQL.Clear;
-        MainForm.ClientTable.SQL.Text:='Select * FROM client' ;
-        MainForm.ClientTable.Active:=True;
-        MainForm.ClientTable.EnableControls;
+        MainForm.SQLQuery.Active:=false;
+        MainForm.SQLQuery.SQL.Clear;
+//        MainForm.SQLQuery.SQL.Text:='Select * FROM client' ;
+//        MainForm.SQLQuery.Active:=True;
+//        MainForm.SQLQuery.EnableControls;
 
         if NOT (BonFacVPListDataS.DataSet.IsEmpty) then
         begin
@@ -1696,11 +1697,11 @@ begin
              end else
               begin
                 ClientBonFacVGCbx.Text:= '';
-                MainForm.ClientTable.Active:=false;
-                MainForm.ClientTable.SQL.Clear;
-                MainForm.ClientTable.SQL.Text:='Select * FROM client' ;
-                MainForm.ClientTable.Active:=True;
-                MainForm.ClientTable.EnableControls;
+                MainForm.SQLQuery.Active:=false;
+                MainForm.SQLQuery.SQL.Clear;
+//                MainForm.SQLQuery.SQL.Text:='Select * FROM client' ;
+//                MainForm.SQLQuery.Active:=True;
+//                MainForm.SQLQuery.EnableControls;
               end;
     end else
     begin
@@ -2321,13 +2322,13 @@ begin
      begin
 
 //           ClientBonFacVGCbxChange(Sender);
-      MainForm.ClientTable.DisableControls;
-      MainForm.ClientTable.Active:=false;
-      MainForm.ClientTable.SQL.Clear;
-      MainForm.ClientTable.SQL.Text:='Select * FROM client WHERE LOWER(nom_c) LIKE LOWER('+ QuotedStr( ClientBonFacVGCbx.Text )+')'  ;
-      MainForm.ClientTable.Active:=True;
+//      MainForm.SQLQuery.DisableControls;
+      MainForm.SQLQuery.Active:=false;
+      MainForm.SQLQuery.SQL.Clear;
+      MainForm.SQLQuery.SQL.Text:='Select * FROM client WHERE LOWER(nom_c) LIKE LOWER('+ QuotedStr( ClientBonFacVGCbx.Text )+')'  ;
+      MainForm.SQLQuery.Active:=True;
 
-        if (MainForm.ClientTable.IsEmpty) then
+        if (MainForm.SQLQuery.IsEmpty) then
         begin
          ClientBonFacVGCbx.Text := '';
          BonFacVGClientOLDCredit.Caption:= FloatToStrF(0,ffNumber,14,2) ;
@@ -2341,11 +2342,11 @@ begin
          exit;
         end;
 
-      MainForm.ClientTable.Active:=false;
-      MainForm.ClientTable.SQL.Clear;
-      MainForm.ClientTable.SQL.Text:='Select * FROM client' ;
-      MainForm.ClientTable.Active:=True;
-      MainForm.ClientTable.EnableControls;
+      MainForm.SQLQuery.Active:=false;
+      MainForm.SQLQuery.SQL.Clear;
+//      MainForm.SQLQuery.SQL.Text:='Select * FROM client' ;
+//      MainForm.SQLQuery.Active:=True;
+//      MainForm.SQLQuery.EnableControls;
 
       //----------------------------------------------------------------------------
 
@@ -2425,11 +2426,11 @@ begin
      end;
 //--- this is to set the facture de vente fileds
      begin
-          MainForm.ClientTable.DisableControls;
-          MainForm.ClientTable.Active:=false;
-          MainForm.ClientTable.SQL.Clear;
-          MainForm.ClientTable.SQL.Text:='Select * FROM client WHERE LOWER(nom_c) LIKE LOWER('+ QuotedStr(ClientBonFacVGCbx.Text )+')'  ;
-          MainForm.ClientTable.Active:=True;
+//          MainForm.SQLQuery.DisableControls;
+          MainForm.SQLQuery.Active:=false;
+          MainForm.SQLQuery.SQL.Clear;
+          MainForm.SQLQuery.SQL.Text:='Select * FROM client WHERE LOWER(nom_c) LIKE LOWER('+ QuotedStr(ClientBonFacVGCbx.Text )+')'  ;
+          MainForm.SQLQuery.Active:=True;
 
           MainForm.Mode_paiementTable.DisableControls;
           MainForm.Mode_paiementTable.Active:=false;
@@ -2444,7 +2445,7 @@ begin
           MainForm.CompteTable.Active:=True;
 
           MainForm.Bonv_facTable.Edit;
-          MainForm.Bonv_facTable.FieldValues['code_c']:= MainForm.ClientTable.FieldByName('code_c').AsInteger;
+          MainForm.Bonv_facTable.FieldValues['code_c']:= MainForm.SQLQuery.FieldByName('code_c').AsInteger;
           MainForm.Bonv_facTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
           if Tag = 0 then
           begin
@@ -2514,7 +2515,7 @@ begin
             MainForm.RegclientTable.FieldValues['code_rc']:= CodeRF;
             MainForm.RegclientTable.FieldValues['code_bvfac']:= MainForm.Bonv_facTable.FieldValues['code_bvfac'];
             MainForm.RegclientTable.FieldValues['nom_rc']:= NumBonFacVGEdt.Caption;
-            MainForm.RegclientTable.FieldValues['code_c']:= MainForm.ClientTable.FieldByName('code_c').AsInteger;
+            MainForm.RegclientTable.FieldValues['code_c']:= MainForm.SQLQuery.FieldByName('code_c').AsInteger;
             MainForm.RegclientTable.FieldValues['date_rc']:= DateOf(Today);
             MainForm.RegclientTable.FieldValues['time_rc']:=TimeOf(Now);
             MainForm.RegclientTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
@@ -2561,7 +2562,7 @@ begin
                   MainForm.RegclientTable.Edit;
                   MainForm.RegclientTable.FieldValues['code_bvfac']:= MainForm.Bonv_facTable.FieldValues['code_bvfac'];
                   MainForm.RegclientTable.FieldValues['nom_rc']:= NumBonFacVGEdt.Caption;
-                  MainForm.RegclientTable.FieldValues['code_c']:= MainForm.ClientTable.FieldByName('code_c').AsInteger;
+                  MainForm.RegclientTable.FieldValues['code_c']:= MainForm.SQLQuery.FieldByName('code_c').AsInteger;
                   MainForm.RegclientTable.FieldValues['date_rc']:= DateOf(Today);
                   MainForm.RegclientTable.FieldValues['time_rc']:=TimeOf(Now);
                   MainForm.RegclientTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
@@ -2613,7 +2614,7 @@ begin
                           MainForm.RegclientTable.FieldValues['code_rc']:= CodeRF;
                           MainForm.RegclientTable.FieldValues['code_bvfac']:= MainForm.Bonv_facTable.FieldValues['code_bvfac'];
                           MainForm.RegclientTable.FieldValues['nom_rc']:= NumBonFacVGEdt.Caption;
-                          MainForm.RegclientTable.FieldValues['code_c']:= MainForm.ClientTable.FieldByName('code_c').AsInteger;
+                          MainForm.RegclientTable.FieldValues['code_c']:= MainForm.SQLQuery.FieldByName('code_c').AsInteger;
                           MainForm.RegclientTable.FieldValues['date_rc']:= DateOf(Today);
                           MainForm.RegclientTable.FieldValues['time_rc']:=TimeOf(Now);
                           MainForm.RegclientTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
@@ -2659,11 +2660,11 @@ begin
 
               //-----------------------------------------------------------------------------------------------------------------------------------------------------------
 
-          MainForm.ClientTable.Active:=false;
-          MainForm.ClientTable.SQL.Clear;
-          MainForm.ClientTable.SQL.Text:='Select * FROM client' ;
-          MainForm.ClientTable.Active:=True;
-          MainForm.ClientTable.EnableControls;
+          MainForm.SQLQuery.Active:=false;
+          MainForm.SQLQuery.SQL.Clear;
+//          MainForm.SQLQuery.SQL.Text:='Select * FROM client' ;
+//          MainForm.SQLQuery.Active:=True;
+//          MainForm.SQLQuery.EnableControls;
 
 
           //--- this is for adding the money to the caisse----
@@ -3073,37 +3074,37 @@ begin
       NameRX:= BonFacVPListfrxRprt.FindObject('NameRX') as TfrxMemoView;
   NameRX.Text:= ClientBonFacVGCbx.Text;
 
-    MainForm.ClientTable.Active:=False;
-    MainForm.ClientTable.SQL.Clear;
-    MainForm.ClientTable.SQL.Text:='SELECT * FROM client WHERE code_c ='+ IntToStr(MainForm.Bonv_facTable.FieldByName('code_c').AsInteger);
-    MainForm.ClientTable.Active:=True;
+    MainForm.SQLQuery.Active:=False;
+    MainForm.SQLQuery.SQL.Clear;
+    MainForm.SQLQuery.SQL.Text:='SELECT * FROM client WHERE code_c ='+ IntToStr(MainForm.Bonv_facTable.FieldByName('code_c').AsInteger);
+    MainForm.SQLQuery.Active:=True;
 
 
     AdrRX:= BonFacVPListfrxRprt.FindObject('AdrRX') as TfrxMemoView;
-  AdrRX.Text:= MainForm.ClientTable.FieldByName('adr_c').AsString;
+  AdrRX.Text:= MainForm.SQLQuery.FieldByName('adr_c').AsString;
 
     VilleRX:= BonFacVPListfrxRprt.FindObject('VilleRX') as TfrxMemoView;
-  VilleRX.Text:= MainForm.ClientTable.FieldByName('ville_c').AsString;
+  VilleRX.Text:= MainForm.SQLQuery.FieldByName('ville_c').AsString;
 
     WilayaRX:= BonFacVPListfrxRprt.FindObject('WilayaRX') as TfrxMemoView;
-  WilayaRX.Text:=  MainForm.ClientTable.FieldByName('willaya_c').AsString;
+  WilayaRX.Text:=  MainForm.SQLQuery.FieldByName('willaya_c').AsString;
 
       RC:= BonFacVPListfrxRprt.FindObject('RC') as TfrxMemoView;
-  RC.Text:= MainForm.ClientTable.FieldByName('rc_c').AsString;
+  RC.Text:= MainForm.SQLQuery.FieldByName('rc_c').AsString;
 
     NArt:= BonFacVPListfrxRprt.FindObject('NArt') as TfrxMemoView;
-  NArt.Text:= MainForm.ClientTable.FieldByName('nart_c').AsString;
+  NArt.Text:= MainForm.SQLQuery.FieldByName('nart_c').AsString;
 
     NIF:= BonFacVPListfrxRprt.FindObject('NIF') as TfrxMemoView;
-  NIF.Text:=  MainForm.ClientTable.FieldByName('nif_c').AsString;
+  NIF.Text:=  MainForm.SQLQuery.FieldByName('nif_c').AsString;
 
       NIS:= BonFacVPListfrxRprt.FindObject('NIS') as TfrxMemoView;
-  NIS.Text:=  MainForm.ClientTable.FieldByName('nis_c').AsString;
+  NIS.Text:=  MainForm.SQLQuery.FieldByName('nis_c').AsString;
 
-    MainForm.ClientTable.Active:=False;
-    MainForm.ClientTable.SQL.Clear;
-    MainForm.ClientTable.SQL.Text:='SELECT * FROM client ';
-    MainForm.ClientTable.Active:=True;
+    MainForm.SQLQuery.Active:=False;
+    MainForm.SQLQuery.SQL.Clear;
+//    MainForm.SQLQuery.SQL.Text:='SELECT * FROM client ';
+//    MainForm.SQLQuery.Active:=True;
 
 
          begin

@@ -337,7 +337,6 @@ object ReglementFListF: TReglementFListF
     ParentDoubleBuffered = False
     TabOrder = 0
     StyleElements = []
-    ExplicitWidth = 1019
     DesignSize = (
       951
       71)
@@ -610,7 +609,6 @@ object ReglementFListF: TReglementFListF
       ParentBackground = False
       TabOrder = 1
       StyleElements = []
-      ExplicitWidth = 1035
     end
     object S02: TPanel
       Left = 622
@@ -784,8 +782,6 @@ object ReglementFListF: TReglementFListF
     ParentBackground = False
     TabOrder = 1
     StyleElements = []
-    ExplicitTop = 82
-    ExplicitHeight = 639
   end
   object BARecListDBGridEh: TDBGridEh
     Left = 0
@@ -1264,7 +1260,6 @@ object ReglementFListF: TReglementFListF
     ParentBiDiMode = False
     SizeGrip = False
     SkinData.SkinSection = 'MENUITEM'
-    ExplicitWidth = 1019
     DesignSize = (
       951
       20)

@@ -994,7 +994,6 @@ object ClientListF: TClientListF
     ParentDoubleBuffered = False
     TabOrder = 1
     StyleElements = []
-    ExplicitWidth = 1183
     DesignSize = (
       1022
       71)
@@ -1229,7 +1228,6 @@ object ClientListF: TClientListF
       ParentBackground = False
       TabOrder = 1
       StyleElements = []
-      ExplicitWidth = 1417
     end
     object Panel1: TPanel
       Left = 748
@@ -1386,8 +1384,6 @@ object ClientListF: TClientListF
     ParentBackground = False
     TabOrder = 2
     StyleElements = []
-    ExplicitTop = 82
-    ExplicitHeight = 639
   end
   object Panel4: TPanel
     Left = 301
@@ -1436,7 +1432,6 @@ object ClientListF: TClientListF
     ParentBiDiMode = False
     SizeGrip = False
     SkinData.SkinSection = 'MENUITEM'
-    ExplicitWidth = 1183
     DesignSize = (
       1022
       20)

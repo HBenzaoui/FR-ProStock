@@ -317,6 +317,7 @@ object BonCtrF: TBonCtrF
   OldCreateOrder = False
   Visible = True
   OnClose = FormClose
+  OnPaint = FormPaint
   OnShow = FormShow
   DesignSize = (
     951
@@ -887,8 +888,6 @@ object BonCtrF: TBonCtrF
     ParentBackground = False
     TabOrder = 1
     StyleElements = []
-    ExplicitTop = 82
-    ExplicitHeight = 639
   end
   object TopP: TPanel
     Left = 0
@@ -903,7 +902,6 @@ object BonCtrF: TBonCtrF
     ParentDoubleBuffered = False
     TabOrder = 2
     StyleElements = []
-    ExplicitWidth = 1023
     DesignSize = (
       951
       71)
@@ -1191,7 +1189,6 @@ object BonCtrF: TBonCtrF
       ParentBackground = False
       TabOrder = 1
       StyleElements = []
-      ExplicitWidth = 1039
     end
     object S02: TPanel
       Left = 622
@@ -1374,7 +1371,6 @@ object BonCtrF: TBonCtrF
     ParentBiDiMode = False
     SizeGrip = False
     SkinData.SkinSection = 'MENUITEM'
-    ExplicitWidth = 1023
     DesignSize = (
       951
       20)

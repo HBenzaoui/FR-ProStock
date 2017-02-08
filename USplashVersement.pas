@@ -693,11 +693,11 @@ begin
      end;
 //--- this is to set the bon reception fileds
      begin
-          MainForm.FournisseurTable.DisableControls;
-          MainForm.FournisseurTable.Active:=false;
-          MainForm.FournisseurTable.SQL.Clear;
-          MainForm.FournisseurTable.SQL.Text:='Select * FROM fournisseur WHERE LOWER(nom_f) LIKE LOWER('+ QuotedStr(BonRecGestionF.FournisseurBonRecGCbx.Text )+')'  ;
-          MainForm.FournisseurTable.Active:=True;
+//          MainForm.SQLQuery.DisableControls;
+          MainForm.SQLQuery.Active:=false;
+          MainForm.SQLQuery.SQL.Clear;
+          MainForm.SQLQuery.SQL.Text:='Select * FROM fournisseur WHERE LOWER(nom_f) LIKE LOWER('+ QuotedStr(BonRecGestionF.FournisseurBonRecGCbx.Text )+')'  ;
+          MainForm.SQLQuery.Active:=True;
 
           MainForm.Mode_paiementTable.DisableControls;
           MainForm.Mode_paiementTable.Active:=false;
@@ -713,7 +713,7 @@ begin
 
      //     MainForm.Bona_recTable.DisableControls;
           MainForm.Bona_recTable.Edit;
-          MainForm.Bona_recTable.FieldValues['code_f']:= MainForm.FournisseurTable.FieldByName('code_f').AsInteger;
+          MainForm.Bona_recTable.FieldValues['code_f']:= MainForm.SQLQuery.FieldByName('code_f').AsInteger;
           MainForm.Bona_recTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
 
           if BonRecGestionF.Tag = 0 then
@@ -778,7 +778,7 @@ begin
             MainForm.RegfournisseurTable.FieldValues['code_rf']:= CodeRF;
             MainForm.RegfournisseurTable.FieldValues['code_barec']:= MainForm.Bona_recTable.FieldValues['code_barec'];
             MainForm.RegfournisseurTable.FieldValues['nom_rf']:= BonRecGestionF.NumBonRecGEdt.Caption;
-            MainForm.RegfournisseurTable.FieldValues['code_f']:= MainForm.FournisseurTable.FieldByName('code_f').AsInteger;
+            MainForm.RegfournisseurTable.FieldValues['code_f']:= MainForm.SQLQuery.FieldByName('code_f').AsInteger;
             MainForm.RegfournisseurTable.FieldValues['date_rf']:= DateOf(Today);
             MainForm.RegfournisseurTable.FieldValues['time_rf']:=TimeOf(Now);
             MainForm.RegfournisseurTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
@@ -824,7 +824,7 @@ begin
                   MainForm.RegfournisseurTable.Edit;
                   MainForm.RegfournisseurTable.FieldValues['code_barec']:= MainForm.Bona_recTable.FieldValues['code_barec'];
                   MainForm.RegfournisseurTable.FieldValues['nom_rf']:= BonRecGestionF.NumBonRecGEdt.Caption;
-                  MainForm.RegfournisseurTable.FieldValues['code_f']:= MainForm.FournisseurTable.FieldByName('code_f').AsInteger;
+                  MainForm.RegfournisseurTable.FieldValues['code_f']:= MainForm.SQLQuery.FieldByName('code_f').AsInteger;
                   MainForm.RegfournisseurTable.FieldValues['date_rf']:= DateOf(Today);
                   MainForm.RegfournisseurTable.FieldValues['time_rf']:=TimeOf(Now);
                   MainForm.RegfournisseurTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
@@ -877,7 +877,7 @@ begin
                             MainForm.RegfournisseurTable.FieldValues['code_rf']:= CodeRF;
                             MainForm.RegfournisseurTable.FieldValues['code_barec']:= MainForm.Bona_recTable.FieldValues['code_barec'];
                             MainForm.RegfournisseurTable.FieldValues['nom_rf']:= BonRecGestionF.NumBonRecGEdt.Caption;
-                            MainForm.RegfournisseurTable.FieldValues['code_f']:= MainForm.FournisseurTable.FieldByName('code_f').AsInteger;
+                            MainForm.RegfournisseurTable.FieldValues['code_f']:= MainForm.SQLQuery.FieldByName('code_f').AsInteger;
                             MainForm.RegfournisseurTable.FieldValues['date_rf']:= DateOf(Today);
                             MainForm.RegfournisseurTable.FieldValues['time_rf']:=TimeOf(Now);
                             MainForm.RegfournisseurTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
@@ -920,16 +920,16 @@ begin
     //-----------------------------------------------------------------------------------------------------------------------------------
           end;
 
-          MainForm.FournisseurTable.Edit;
-          MainForm.FournisseurTable.FieldByName('credit_f').AsCurrency:=
+          MainForm.SQLQuery.Edit;
+          MainForm.SQLQuery.FieldByName('credit_f').AsCurrency:=
           ((StrToCurr(StringReplace(BonRecGestionF.BonRecGFourNEWCredit.Caption, #32, '', [rfReplaceAll]))));
-          MainForm.FournisseurTable.Post;
+          MainForm.SQLQuery.Post;
 
-          MainForm.FournisseurTable.Active:=false;
-          MainForm.FournisseurTable.SQL.Clear;
-          MainForm.FournisseurTable.SQL.Text:='Select * FROM fournisseur' ;
-          MainForm.FournisseurTable.Active:=True;
-          MainForm.FournisseurTable.EnableControls;
+          MainForm.SQLQuery.Active:=false;
+          MainForm.SQLQuery.SQL.Clear;
+//          MainForm.SQLQuery.SQL.Text:='Select * FROM fournisseur' ;
+//          MainForm.SQLQuery.Active:=True;
+//          MainForm.SQLQuery.EnableControls;
 
          //--- this is for adding the money to the caisse----
          begin
@@ -1197,11 +1197,11 @@ begin
      end;
 //--- this is to set the bon livration fileds
      begin
-          MainForm.ClientTable.DisableControls;
-          MainForm.ClientTable.Active:=false;
-          MainForm.ClientTable.SQL.Clear;
-          MainForm.ClientTable.SQL.Text:='Select * FROM client WHERE LOWER(nom_c) LIKE LOWER('+ QuotedStr(BonLivGestionF.ClientBonLivGCbx.Text )+')'  ;
-          MainForm.ClientTable.Active:=True;
+//          MainForm.SQLQuery.DisableControls;
+          MainForm.SQLQuery.Active:=false;
+          MainForm.SQLQuery.SQL.Clear;
+          MainForm.SQLQuery.SQL.Text:='Select * FROM client WHERE LOWER(nom_c) LIKE LOWER('+ QuotedStr(BonLivGestionF.ClientBonLivGCbx.Text )+')'  ;
+          MainForm.SQLQuery.Active:=True;
 
           MainForm.Mode_paiementTable.DisableControls;
           MainForm.Mode_paiementTable.Active:=false;
@@ -1216,7 +1216,7 @@ begin
           MainForm.CompteTable.Active:=True;
 
           MainForm.Bonv_livTable.Edit;
-          MainForm.Bonv_livTable.FieldValues['code_c']:= MainForm.ClientTable.FieldByName('code_c').AsInteger;
+          MainForm.Bonv_livTable.FieldValues['code_c']:= MainForm.SQLQuery.FieldByName('code_c').AsInteger;
           MainForm.Bonv_livTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
           if BonLivGestionF.Tag = 0 then
           begin
@@ -1281,7 +1281,7 @@ begin
             MainForm.RegclientTable.FieldValues['code_rc']:= CodeRF;
             MainForm.RegclientTable.FieldValues['code_bvliv']:= MainForm.Bonv_livTable.FieldValues['code_bvliv'];
             MainForm.RegclientTable.FieldValues['nom_rc']:= BonLivGestionF.NumBonLivGEdt.Caption;
-            MainForm.RegclientTable.FieldValues['code_c']:= MainForm.ClientTable.FieldByName('code_c').AsInteger;
+            MainForm.RegclientTable.FieldValues['code_c']:= MainForm.SQLQuery.FieldByName('code_c').AsInteger;
             MainForm.RegclientTable.FieldValues['date_rc']:= DateOf(Today);
             MainForm.RegclientTable.FieldValues['time_rc']:=TimeOf(Now);
             MainForm.RegclientTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
@@ -1328,7 +1328,7 @@ begin
                   MainForm.RegclientTable.Edit;
                   MainForm.RegclientTable.FieldValues['code_bvliv']:= MainForm.Bonv_livTable.FieldValues['code_bvliv'];
                   MainForm.RegclientTable.FieldValues['nom_rc']:= BonLivGestionF.NumBonLivGEdt.Caption;
-                  MainForm.RegclientTable.FieldValues['code_c']:= MainForm.ClientTable.FieldByName('code_c').AsInteger;
+                  MainForm.RegclientTable.FieldValues['code_c']:= MainForm.SQLQuery.FieldByName('code_c').AsInteger;
                   MainForm.RegclientTable.FieldValues['date_rc']:= DateOf(Today);
                   MainForm.RegclientTable.FieldValues['time_rc']:=TimeOf(Now);
                   MainForm.RegclientTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
@@ -1381,7 +1381,7 @@ begin
                       MainForm.RegclientTable.FieldValues['code_rc']:= CodeRF;
                       MainForm.RegclientTable.FieldValues['code_bvliv']:= MainForm.Bonv_livTable.FieldValues['code_bvliv'];
                       MainForm.RegclientTable.FieldValues['nom_rc']:= BonLivGestionF.NumBonLivGEdt.Caption;
-                      MainForm.RegclientTable.FieldValues['code_c']:= MainForm.ClientTable.FieldByName('code_c').AsInteger;
+                      MainForm.RegclientTable.FieldValues['code_c']:= MainForm.SQLQuery.FieldByName('code_c').AsInteger;
                       MainForm.RegclientTable.FieldValues['date_rc']:= DateOf(Today);
                       MainForm.RegclientTable.FieldValues['time_rc']:=TimeOf(Now);
                       MainForm.RegclientTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
@@ -1428,19 +1428,19 @@ begin
         end;
 
         //-------- this is to set the credit for the client -----------------
-          if  MainForm.ClientTable.FieldByName('code_c').AsInteger <> 1 then
+          if  MainForm.SQLQuery.FieldByName('code_c').AsInteger <> 1 then
           begin
-          MainForm.ClientTable.Edit;
-          MainForm.ClientTable.FieldByName('credit_c').AsCurrency:=
+          MainForm.SQLQuery.Edit;
+          MainForm.SQLQuery.FieldByName('credit_c').AsCurrency:=
           ((StrToCurr(StringReplace(BonLivGestionF.BonLivGClientNEWCredit.Caption, #32, '', [rfReplaceAll]))));
-          MainForm.ClientTable.Post;
+          MainForm.SQLQuery.Post;
           end;
 
-          MainForm.ClientTable.Active:=false;
-          MainForm.ClientTable.SQL.Clear;
-          MainForm.ClientTable.SQL.Text:='Select * FROM client' ;
-          MainForm.ClientTable.Active:=True;
-          MainForm.ClientTable.EnableControls;
+          MainForm.SQLQuery.Active:=false;
+          MainForm.SQLQuery.SQL.Clear;
+//          MainForm.SQLQuery.SQL.Text:='Select * FROM client' ;
+//          MainForm.SQLQuery.Active:=True;
+//          MainForm.SQLQuery.EnableControls;
 
                     //--- this is for adding the money to the caisse----
          begin
@@ -1696,14 +1696,14 @@ begin
      end;
 //--- this is to set the bon ctrration fileds
      begin
-          MainForm.ClientTable.DisableControls;
-          MainForm.ClientTable.Active:=false;
-          MainForm.ClientTable.SQL.Clear;
-          MainForm.ClientTable.SQL.Text:='Select * FROM client WHERE LOWER(nom_c) LIKE LOWER('+ QuotedStr(BonCtrGestionF.ClientBonCtrGCbx.Text )+')'  ;
-          MainForm.ClientTable.Active:=True;
+//          MainForm.SQLQuery.DisableControls;
+          MainForm.SQLQuery.Active:=false;
+          MainForm.SQLQuery.SQL.Clear;
+          MainForm.SQLQuery.SQL.Text:='Select * FROM client WHERE LOWER(nom_c) LIKE LOWER('+ QuotedStr(BonCtrGestionF.ClientBonCtrGCbx.Text )+')'  ;
+          MainForm.SQLQuery.Active:=True;
 
           MainForm.Bonv_ctrTable.Edit;
-          MainForm.Bonv_ctrTable.FieldValues['code_c']:= MainForm.ClientTable.FieldByName('code_c').AsInteger;
+          MainForm.Bonv_ctrTable.FieldValues['code_c']:= MainForm.SQLQuery.FieldByName('code_c').AsInteger;
           MainForm.Bonv_ctrTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
           if BonCtrGestionF.Tag = 0 then
           begin
@@ -1762,7 +1762,7 @@ begin
             MainForm.RegclientTable.FieldValues['code_rc']:= CodeRF;
             MainForm.RegclientTable.FieldValues['code_bvctr']:= MainForm.Bonv_ctrTable.FieldValues['code_bvctr'];
             MainForm.RegclientTable.FieldValues['nom_rc']:= BonCtrGestionF.NumBonCtrGEdt.Caption;
-            MainForm.RegclientTable.FieldValues['code_c']:= MainForm.ClientTable.FieldByName('code_c').AsInteger;
+            MainForm.RegclientTable.FieldValues['code_c']:= MainForm.SQLQuery.FieldByName('code_c').AsInteger;
             MainForm.RegclientTable.FieldValues['date_rc']:= DateOf(Today);
             MainForm.RegclientTable.FieldValues['time_rc']:=TimeOf(Now);
             MainForm.RegclientTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
@@ -1789,7 +1789,7 @@ begin
                   MainForm.RegclientTable.Edit;
                   MainForm.RegclientTable.FieldValues['code_bvctr']:= MainForm.Bonv_ctrTable.FieldValues['code_bvctr'];
                   MainForm.RegclientTable.FieldValues['nom_rc']:= BonCtrGestionF.NumBonCtrGEdt.Caption;
-                  MainForm.RegclientTable.FieldValues['code_c']:= MainForm.ClientTable.FieldByName('code_c').AsInteger;
+                  MainForm.RegclientTable.FieldValues['code_c']:= MainForm.SQLQuery.FieldByName('code_c').AsInteger;
                   MainForm.RegclientTable.FieldValues['date_rc']:= DateOf(Today);
                   MainForm.RegclientTable.FieldValues['time_rc']:=TimeOf(Now);
                   MainForm.RegclientTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
@@ -1822,7 +1822,7 @@ begin
                         MainForm.RegclientTable.FieldValues['code_rc']:= CodeRF;
                         MainForm.RegclientTable.FieldValues['code_bvctr']:= MainForm.Bonv_ctrTable.FieldValues['code_bvctr'];
                         MainForm.RegclientTable.FieldValues['nom_rc']:= BonCtrGestionF.NumBonCtrGEdt.Caption;
-                        MainForm.RegclientTable.FieldValues['code_c']:= MainForm.ClientTable.FieldByName('code_c').AsInteger;
+                        MainForm.RegclientTable.FieldValues['code_c']:= MainForm.SQLQuery.FieldByName('code_c').AsInteger;
                         MainForm.RegclientTable.FieldValues['date_rc']:= DateOf(Today);
                         MainForm.RegclientTable.FieldValues['time_rc']:=TimeOf(Now);
                         MainForm.RegclientTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
@@ -1844,19 +1844,19 @@ begin
         end;
      //-----------------------------------------------------------------------------------------------------------------------------------------------------------
                 //-------- this is to set the credit for the client -----------------
-          if  MainForm.ClientTable.FieldByName('code_c').AsInteger <> 1 then
+          if  MainForm.SQLQuery.FieldByName('code_c').AsInteger <> 1 then
           begin
-          MainForm.ClientTable.Edit;
-          MainForm.ClientTable.FieldByName('credit_c').AsCurrency:= (-1) *
+          MainForm.SQLQuery.Edit;
+          MainForm.SQLQuery.FieldByName('credit_c').AsCurrency:= (-1) *
           ((StrToCurr(StringReplace(BonCtrGestionF.BonCtrRenduLbl.Caption, #32, '', [rfReplaceAll]))));
-          MainForm.ClientTable.Post;
+          MainForm.SQLQuery.Post;
           end;
 
-          MainForm.ClientTable.Active:=false;
-          MainForm.ClientTable.SQL.Clear;
-          MainForm.ClientTable.SQL.Text:='Select * FROM client' ;
-          MainForm.ClientTable.Active:=True;
-          MainForm.ClientTable.EnableControls;
+          MainForm.SQLQuery.Active:=false;
+          MainForm.SQLQuery.SQL.Clear;
+//          MainForm.SQLQuery.SQL.Text:='Select * FROM client' ;
+//          MainForm.SQLQuery.Active:=True;
+//          MainForm.SQLQuery.EnableControls;
 
                               //--- this is for adding the money to the caisse----
          begin

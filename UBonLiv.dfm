@@ -317,6 +317,7 @@ object BonLivF: TBonLivF
   OldCreateOrder = False
   Visible = True
   OnClose = FormClose
+  OnPaint = FormPaint
   OnShow = FormShow
   DesignSize = (
     951
@@ -796,8 +797,6 @@ object BonLivF: TBonLivF
     ParentBackground = False
     TabOrder = 1
     StyleElements = []
-    ExplicitTop = 73
-    ExplicitHeight = 648
   end
   object BVLivListDBGridEh: TDBGridEh
     Left = 0

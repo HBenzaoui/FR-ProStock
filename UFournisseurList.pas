@@ -83,6 +83,7 @@ type
     procedure RefreshGirdBtnClick(Sender: TObject);
     procedure AdvToolButton1Click(Sender: TObject);
     procedure AdvToolButton2Click(Sender: TObject);
+    procedure FormPaint(Sender: TObject);
   private
     procedure GettingData;
     { Private declarations }
@@ -205,6 +206,8 @@ begin
       'select * '
      +  'from (   '
      +   'select code_f as code_f from bona_rec '
+     +   'union all '
+     +   'select code_c from regfournisseur '
      +   'union all '
      +   'select code_f from bona_fac '
      +     ') a '
@@ -393,6 +396,16 @@ begin
 //FournisseursListDBGridEh.Height:= (MainForm.Height) - (FournisseursListDBGridEh.Top)
 end;
 
+procedure TFournisseurListF.FormPaint(Sender: TObject);
+begin
+          MainForm.FournisseurTable.DisableControls;
+          MainForm.FournisseurTable.Active:=False;
+          MainForm.FournisseurTable.SQL.Clear;
+          MainForm.FournisseurTable.SQL.Text:='SELECT * FROM fournisseur ';
+          MainForm.FournisseurTable.Active:=True;
+          MainForm.FournisseurTable.EnableControls;
+end;
+
 procedure TFournisseurListF.FormShow(Sender: TObject);
 begin
 
@@ -487,15 +500,13 @@ end;
 //------ use this code to red the produit with 0 or null in stock----//
 if  FournisseurListDataS.DataSet = MainForm.FournisseurTable then
 begin
- if (MainForm.FournisseurTable.FieldByName('credit_f').AsCurrency 
-    +MainForm.FournisseurTable.FieldByName('oldcredit_f').AsCurrency ) > 0     then
+ if (MainForm.FournisseurTable.FieldByName('credit_f').AsCurrency ) > 0     then
  begin
  FournisseursListDBGridEh.Canvas.Font.Color:=$004735F9;//   Brush.Color:=clRed;
  FournisseursListDBGridEh.DefaultDrawColumnCell(Rect, DataCol, Column, State);
  end;
 
-  if (MainForm.FournisseurTable.FieldByName('credit_f').AsCurrency 
-    +MainForm.FournisseurTable.FieldByName('oldcredit_f').AsCurrency ) < 0     then
+  if (MainForm.FournisseurTable.FieldByName('credit_f').AsCurrency) < 0     then
  begin
  FournisseursListDBGridEh.Canvas.Font.Color:=$00519509;//   Brush.Color:=clgreen;
  FournisseursListDBGridEh.DefaultDrawColumnCell(Rect, DataCol, Column, State);
@@ -582,21 +593,30 @@ end;
 
 procedure TFournisseurListF.ResearchFournisseurEdtChange(Sender: TObject);
 begin
-      if (ResearchFournisseurEdt.text <> '') then
+//      if (ResearchFournisseurEdt.text <> '') then
+//
+//                begin
+//
+//                  MainForm.FournisseurTable.Filtered:=false;
+//                  MainForm.FournisseurTable.Filter := '[nom_f] LIKE ' + quotedstr(  '%'+  ResearchFournisseurEdt.Text +'%');
+//                  MainForm.FournisseurTable.Filtered :=True;
+//
+//                  end
+//                else
+//
+//                    begin
+//                        MainForm.FournisseurTable.Filtered := False;
+//
+//                           end;
 
-                begin
 
-                  MainForm.FournisseurTable.Filtered:=false;
-                  MainForm.FournisseurTable.Filter := '[nom_f] LIKE ' + quotedstr(  '%'+  ResearchFournisseurEdt.Text +'%');
-                  MainForm.FournisseurTable.Filtered :=True;
 
-                  end
-                else
-
-                    begin
-                        MainForm.FournisseurTable.Filtered := False;
-
-                           end;
+          MainForm.FournisseurTable.DisableControls;
+          MainForm.FournisseurTable.Active:=False;
+          MainForm.FournisseurTable.SQL.Clear;
+          MainForm.FournisseurTable.SQL.Text:='SELECT * FROM fournisseur WHERE LOWER(nom_f) LIKE LOWER' +'('''+'%'+(ResearchFournisseurEdt.Text)+'%'+''')' ;
+          MainForm.FournisseurTable.Active:=True;
+          MainForm.FournisseurTable.EnableControls;
 
 end;
 

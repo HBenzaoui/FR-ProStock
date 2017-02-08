@@ -98,6 +98,7 @@ type
     procedure AdvToolButton1Click(Sender: TObject);
     procedure AdvToolButton2Click(Sender: TObject);
     procedure AdvToolButton3Click(Sender: TObject);
+    procedure FormPaint(Sender: TObject);
   private
     procedure GettingData;
     procedure FilteredColor;
@@ -234,6 +235,8 @@ end;
 procedure TReglementCListF.AddBARecBtnClick(Sender: TObject);
   begin
     //-------- Show the splash screan for the produit familly to add new one---------//
+
+      ResearchRegCEdt.Text:='';
 
               ReglementCGestionF:=TReglementCGestionF.Create(ReglementCListF);
 
@@ -868,6 +871,16 @@ procedure TReglementCListF.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
 Action:= caFree;
 ReglementCListF:= nil;
+end;
+
+procedure TReglementCListF.FormPaint(Sender: TObject);
+begin
+          MainForm.ClientTable.DisableControls;
+          MainForm.ClientTable.Active:=False;
+          MainForm.ClientTable.SQL.Clear;
+          MainForm.ClientTable.SQL.Text:='SELECT * FROM client ';
+          MainForm.ClientTable.Active:=True;
+          MainForm.ClientTable.EnableControls;
 end;
 
 end.

@@ -564,27 +564,22 @@ object DataModuleF: TDataModuleF
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
     end
     object PZeroQCnotifnom_p: TWideStringField
-      DisplayWidth = 150
       FieldName = 'nom_p'
       Origin = 'nom_p'
-      Size = 100
+      Size = 8190
     end
     object PZeroQCnotifrefer_p: TWideStringField
       FieldName = 'refer_p'
       Origin = 'refer_p'
+      Size = 8190
     end
-    object PZeroQCnotifcode_u: TSmallintField
-      FieldName = 'code_u'
-      Origin = 'code_u'
-      Visible = False
+    object PZeroQCnotifqut_p: TFloatField
+      FieldName = 'qut_p'
+      Origin = 'qut_p'
     end
     object PZeroQCnotifcode_famp: TIntegerField
       FieldName = 'code_famp'
       Origin = 'code_famp'
-    end
-    object PZeroQCnotifcode_sfamp: TIntegerField
-      FieldName = 'code_sfamp'
-      Origin = 'code_sfamp'
     end
     object PZeroQCnotifalertqut_p: TIntegerField
       FieldName = 'alertqut_p'
@@ -594,9 +589,22 @@ object DataModuleF: TDataModuleF
       FieldName = 'code_f'
       Origin = 'code_f'
     end
+    object PZeroQCnotifobser_p: TWideStringField
+      FieldName = 'obser_p'
+      Origin = 'obser_p'
+      Size = 32767
+    end
     object PZeroQCnotiflogo_p: TBlobField
       FieldName = 'logo_p'
       Origin = 'logo_p'
+    end
+    object PZeroQCnotifcode_l: TIntegerField
+      FieldName = 'code_l'
+      Origin = 'code_l'
+    end
+    object PZeroQCnotifcode_sfamp: TIntegerField
+      FieldName = 'code_sfamp'
+      Origin = 'code_sfamp'
     end
     object PZeroQCnotifperissable_p: TBooleanField
       FieldName = 'perissable_p'
@@ -637,108 +645,7 @@ object DataModuleF: TDataModuleF
     object PZeroQCnotifcodebar_p: TWideStringField
       FieldName = 'codebar_p'
       Origin = 'codebar_p'
-    end
-    object PZeroQCnotifPrixATTC: TSingleField
-      FieldKind = fkCalculated
-      FieldName = 'PrixATTC'
-      currency = True
-      Calculated = True
-    end
-    object PZeroQCnotifPrixVTTCD: TSingleField
-      FieldKind = fkCalculated
-      FieldName = 'PrixVTTCD'
-      Calculated = True
-    end
-    object PZeroQCnotifPrixVTTCR: TSingleField
-      FieldKind = fkCalculated
-      FieldName = 'PrixVTTCR'
-      KeyFields = 'PrixVTTCR'
-      Origin = 'PrixVTTCR'
-      Calculated = True
-    end
-    object PZeroQCnotifPrixVTTCG: TSingleField
-      FieldKind = fkCalculated
-      FieldName = 'PrixVTTCG'
-      KeyFields = 'PrixVTTCG'
-      Origin = 'PrixVTTCG'
-      Calculated = True
-    end
-    object PZeroQCnotifPrixVTTCA: TSingleField
-      FieldKind = fkCalculated
-      FieldName = 'PrixVTTCA'
-      KeyFields = 'PrixVTTCA'
-      Origin = 'PrixVTTCA'
-      Calculated = True
-    end
-    object PZeroQCnotifPrixVTTCA2: TSingleField
-      FieldKind = fkCalculated
-      FieldName = 'PrixVTTCA2'
-      KeyFields = 'PrixVTTCA2'
-      Origin = 'PrixVTTCA2'
-      Calculated = True
-    end
-    object PZeroQCnotiffamp: TStringField
-      FieldKind = fkLookup
-      FieldName = 'famp'
-      LookupDataSet = MainForm.FamproduitTable
-      LookupKeyFields = 'code_famp'
-      LookupResultField = 'nom_famp'
-      KeyFields = 'code_famp'
-      Size = 40
-      Lookup = True
-    end
-    object PZeroQCnotifsfamp: TStringField
-      FieldKind = fkLookup
-      FieldName = 'sfamp'
-      LookupDataSet = MainForm.SfamproduitTable
-      LookupKeyFields = 'code_sfamp'
-      LookupResultField = 'nom_sfamp'
-      KeyFields = 'code_sfamp'
-      Size = 40
-      Lookup = True
-    end
-    object PZeroQCnotiffourp: TStringField
-      FieldKind = fkLookup
-      FieldName = 'fourp'
-      LookupDataSet = MainForm.FournisseurTable
-      LookupKeyFields = 'code_f'
-      LookupResultField = 'nom_f'
-      KeyFields = 'code_f'
-      Size = 40
-      Lookup = True
-    end
-    object PZeroQCnotifcode_l: TIntegerField
-      FieldName = 'code_l'
-      Origin = 'code_l'
-    end
-    object PZeroQCnotiflocal: TStringField
-      FieldKind = fkLookup
-      FieldName = 'local'
-      LookupDataSet = MainForm.LocalisationTable
-      LookupKeyFields = 'code_l'
-      LookupResultField = 'nom_l'
-      KeyFields = 'code_l'
-      Size = 40
-      Lookup = True
-    end
-    object PZeroQCnotifunit: TStringField
-      FieldKind = fkLookup
-      FieldName = 'unit'
-      LookupDataSet = MainForm.UniteTable
-      LookupKeyFields = 'code_u'
-      LookupResultField = 'nom_u'
-      KeyFields = 'code_u'
-      Size = 15
-      Lookup = True
-    end
-    object PZeroQCnotifQUT: TIntegerField
-      FieldKind = fkInternalCalc
-      FieldName = 'QUT'
-    end
-    object PZeroQCnotifqut_p: TFloatField
-      DisplayWidth = 10
-      FieldName = 'qut_p'
-      Origin = 'qut_p'
+      Size = 8190
     end
     object PZeroQCnotifqutmax_p: TFloatField
       FieldName = 'qutmax_p'
@@ -748,22 +655,74 @@ object DataModuleF: TDataModuleF
       FieldName = 'qutmin_p'
       Origin = 'qutmin_p'
     end
+    object PZeroQCnotifcode_u: TSmallintField
+      FieldName = 'code_u'
+      Origin = 'code_u'
+    end
     object PZeroQCnotifqutini_p: TFloatField
       FieldName = 'qutini_p'
       Origin = 'qutini_p'
-    end
-    object PZeroQCnotifQutDispo: TFloatField
-      FieldKind = fkInternalCalc
-      FieldName = 'QutDispo'
     end
     object PZeroQCnotiftva_p: TSmallintField
       FieldName = 'tva_p'
       Origin = 'tva_p'
     end
-    object PZeroQCnotifobser_p: TWideStringField
-      FieldName = 'obser_p'
-      Origin = 'obser_p'
-      Size = 200
+    object PZeroQCnotifQUT: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldKind = fkInternalCalc
+      FieldName = 'QUT'
+      ProviderFlags = []
+    end
+    object PZeroQCnotifQutDispo: TFloatField
+      AutoGenerateValue = arDefault
+      FieldKind = fkInternalCalc
+      FieldName = 'QutDispo'
+      ProviderFlags = []
+    end
+    object PZeroQCnotiffamp: TStringField
+      FieldKind = fkLookup
+      FieldName = 'famp'
+      LookupDataSet = MainForm.FamproduitTable
+      LookupKeyFields = 'code_famp'
+      LookupResultField = 'nom_famp'
+      KeyFields = 'code_famp'
+      Lookup = True
+    end
+    object PZeroQCnotifsfamp: TStringField
+      FieldKind = fkLookup
+      FieldName = 'sfamp'
+      LookupDataSet = MainForm.SfamproduitTable
+      LookupKeyFields = 'code_sfamp'
+      LookupResultField = 'nom_sfamp'
+      KeyFields = 'code_sfamp'
+      Lookup = True
+    end
+    object PZeroQCnotifunit: TStringField
+      FieldKind = fkLookup
+      FieldName = 'unit'
+      LookupDataSet = MainForm.UniteTable
+      LookupKeyFields = 'code_u'
+      LookupResultField = 'nom_u'
+      KeyFields = 'code_u'
+      Lookup = True
+    end
+    object PZeroQCnotiffourp: TStringField
+      FieldKind = fkLookup
+      FieldName = 'fourp'
+      LookupDataSet = MainForm.FournisseurTable
+      LookupKeyFields = 'code_f'
+      LookupResultField = 'nom_f'
+      KeyFields = 'code_f'
+      Lookup = True
+    end
+    object PZeroQCnotiflocal: TStringField
+      FieldKind = fkLookup
+      FieldName = 'local'
+      LookupDataSet = MainForm.LocalisationTable
+      LookupKeyFields = 'code_l'
+      LookupResultField = 'nom_l'
+      KeyFields = 'code_l'
+      Lookup = True
     end
   end
   object PCloseZeroQCnotif: TFDQuery
@@ -782,27 +741,22 @@ object DataModuleF: TDataModuleF
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
     end
     object PCloseZeroQCnotifnom_p: TWideStringField
-      DisplayWidth = 150
       FieldName = 'nom_p'
       Origin = 'nom_p'
-      Size = 100
+      Size = 8190
     end
     object PCloseZeroQCnotifrefer_p: TWideStringField
       FieldName = 'refer_p'
       Origin = 'refer_p'
+      Size = 8190
     end
-    object PCloseZeroQCnotifcode_u: TSmallintField
-      FieldName = 'code_u'
-      Origin = 'code_u'
-      Visible = False
+    object PCloseZeroQCnotifqut_p: TFloatField
+      FieldName = 'qut_p'
+      Origin = 'qut_p'
     end
     object PCloseZeroQCnotifcode_famp: TIntegerField
       FieldName = 'code_famp'
       Origin = 'code_famp'
-    end
-    object PCloseZeroQCnotifcode_sfamp: TIntegerField
-      FieldName = 'code_sfamp'
-      Origin = 'code_sfamp'
     end
     object PCloseZeroQCnotifalertqut_p: TIntegerField
       FieldName = 'alertqut_p'
@@ -812,9 +766,22 @@ object DataModuleF: TDataModuleF
       FieldName = 'code_f'
       Origin = 'code_f'
     end
+    object PCloseZeroQCnotifobser_p: TWideStringField
+      FieldName = 'obser_p'
+      Origin = 'obser_p'
+      Size = 32767
+    end
     object PCloseZeroQCnotiflogo_p: TBlobField
       FieldName = 'logo_p'
       Origin = 'logo_p'
+    end
+    object PCloseZeroQCnotifcode_l: TIntegerField
+      FieldName = 'code_l'
+      Origin = 'code_l'
+    end
+    object PCloseZeroQCnotifcode_sfamp: TIntegerField
+      FieldName = 'code_sfamp'
+      Origin = 'code_sfamp'
     end
     object PCloseZeroQCnotifperissable_p: TBooleanField
       FieldName = 'perissable_p'
@@ -855,108 +822,7 @@ object DataModuleF: TDataModuleF
     object PCloseZeroQCnotifcodebar_p: TWideStringField
       FieldName = 'codebar_p'
       Origin = 'codebar_p'
-    end
-    object PCloseZeroQCnotifPrixATTC: TSingleField
-      FieldKind = fkCalculated
-      FieldName = 'PrixATTC'
-      currency = True
-      Calculated = True
-    end
-    object PCloseZeroQCnotifPrixVTTCD: TSingleField
-      FieldKind = fkCalculated
-      FieldName = 'PrixVTTCD'
-      Calculated = True
-    end
-    object PCloseZeroQCnotifPrixVTTCR: TSingleField
-      FieldKind = fkCalculated
-      FieldName = 'PrixVTTCR'
-      KeyFields = 'PrixVTTCR'
-      Origin = 'PrixVTTCR'
-      Calculated = True
-    end
-    object PCloseZeroQCnotifPrixVTTCG: TSingleField
-      FieldKind = fkCalculated
-      FieldName = 'PrixVTTCG'
-      KeyFields = 'PrixVTTCG'
-      Origin = 'PrixVTTCG'
-      Calculated = True
-    end
-    object PCloseZeroQCnotifPrixVTTCA: TSingleField
-      FieldKind = fkCalculated
-      FieldName = 'PrixVTTCA'
-      KeyFields = 'PrixVTTCA'
-      Origin = 'PrixVTTCA'
-      Calculated = True
-    end
-    object PCloseZeroQCnotifPrixVTTCA2: TSingleField
-      FieldKind = fkCalculated
-      FieldName = 'PrixVTTCA2'
-      KeyFields = 'PrixVTTCA2'
-      Origin = 'PrixVTTCA2'
-      Calculated = True
-    end
-    object PCloseZeroQCnotiffamp: TStringField
-      FieldKind = fkLookup
-      FieldName = 'famp'
-      LookupDataSet = MainForm.FamproduitTable
-      LookupKeyFields = 'code_famp'
-      LookupResultField = 'nom_famp'
-      KeyFields = 'code_famp'
-      Size = 40
-      Lookup = True
-    end
-    object PCloseZeroQCnotifsfamp: TStringField
-      FieldKind = fkLookup
-      FieldName = 'sfamp'
-      LookupDataSet = MainForm.SfamproduitTable
-      LookupKeyFields = 'code_sfamp'
-      LookupResultField = 'nom_sfamp'
-      KeyFields = 'code_sfamp'
-      Size = 40
-      Lookup = True
-    end
-    object PCloseZeroQCnotiffourp: TStringField
-      FieldKind = fkLookup
-      FieldName = 'fourp'
-      LookupDataSet = MainForm.FournisseurTable
-      LookupKeyFields = 'code_f'
-      LookupResultField = 'nom_f'
-      KeyFields = 'code_f'
-      Size = 40
-      Lookup = True
-    end
-    object PCloseZeroQCnotifcode_l: TIntegerField
-      FieldName = 'code_l'
-      Origin = 'code_l'
-    end
-    object PCloseZeroQCnotiflocal: TStringField
-      FieldKind = fkLookup
-      FieldName = 'local'
-      LookupDataSet = MainForm.LocalisationTable
-      LookupKeyFields = 'code_l'
-      LookupResultField = 'nom_l'
-      KeyFields = 'code_l'
-      Size = 40
-      Lookup = True
-    end
-    object PCloseZeroQCnotifunit: TStringField
-      FieldKind = fkLookup
-      FieldName = 'unit'
-      LookupDataSet = MainForm.UniteTable
-      LookupKeyFields = 'code_u'
-      LookupResultField = 'nom_u'
-      KeyFields = 'code_u'
-      Size = 15
-      Lookup = True
-    end
-    object PCloseZeroQCnotifQUT: TIntegerField
-      FieldKind = fkInternalCalc
-      FieldName = 'QUT'
-    end
-    object PCloseZeroQCnotifqut_p: TFloatField
-      DisplayWidth = 10
-      FieldName = 'qut_p'
-      Origin = 'qut_p'
+      Size = 8190
     end
     object PCloseZeroQCnotifqutmax_p: TFloatField
       FieldName = 'qutmax_p'
@@ -966,22 +832,66 @@ object DataModuleF: TDataModuleF
       FieldName = 'qutmin_p'
       Origin = 'qutmin_p'
     end
+    object PCloseZeroQCnotifcode_u: TSmallintField
+      FieldName = 'code_u'
+      Origin = 'code_u'
+    end
     object PCloseZeroQCnotifqutini_p: TFloatField
       FieldName = 'qutini_p'
       Origin = 'qutini_p'
-    end
-    object PCloseZeroQCnotifQutDispo: TFloatField
-      FieldKind = fkInternalCalc
-      FieldName = 'QutDispo'
     end
     object PCloseZeroQCnotiftva_p: TSmallintField
       FieldName = 'tva_p'
       Origin = 'tva_p'
     end
-    object PCloseZeroQCnotifobser_p: TWideStringField
-      FieldName = 'obser_p'
-      Origin = 'obser_p'
-      Size = 200
+    object PCloseZeroQCnotifQutDispo: TFloatField
+      FieldKind = fkInternalCalc
+      FieldName = 'QutDispo'
+    end
+    object PCloseZeroQCnotiffamp: TStringField
+      FieldKind = fkLookup
+      FieldName = 'famp'
+      LookupDataSet = MainForm.FamproduitTable
+      LookupKeyFields = 'code_famp'
+      LookupResultField = 'nom_famp'
+      KeyFields = 'code_famp'
+      Lookup = True
+    end
+    object PCloseZeroQCnotifsfamp: TStringField
+      FieldKind = fkLookup
+      FieldName = 'sfamp'
+      LookupDataSet = MainForm.SfamproduitTable
+      LookupKeyFields = 'code_sfamp'
+      LookupResultField = 'nom_sfamp'
+      KeyFields = 'code_sfamp'
+      Lookup = True
+    end
+    object PCloseZeroQCnotifunit: TStringField
+      FieldKind = fkLookup
+      FieldName = 'unit'
+      LookupDataSet = MainForm.UniteTable
+      LookupKeyFields = 'code_u'
+      LookupResultField = 'nom_u'
+      KeyFields = 'code_u'
+      Lookup = True
+    end
+    object PCloseZeroQCnotiffourp: TStringField
+      FieldKind = fkLookup
+      FieldName = 'fourp'
+      LookupDataSet = MainForm.FournisseurTable
+      LookupKeyFields = 'code_f'
+      LookupResultField = 'nom_f'
+      KeyFields = 'code_f'
+      Lookup = True
+    end
+    object PCloseZeroQCnotiflocal: TStringField
+      FieldKind = fkLookup
+      FieldName = 'local'
+      LookupDataSet = MainForm.LocalisationTable
+      LookupKeyFields = 'code_l'
+      LookupResultField = 'nom_l'
+      KeyFields = 'code_l'
+      Lookup = True
     end
   end
   object PMoreMaxQCnotif: TFDQuery
@@ -999,27 +909,22 @@ object DataModuleF: TDataModuleF
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
     end
     object PMoreMaxQCnotifnom_p: TWideStringField
-      DisplayWidth = 150
       FieldName = 'nom_p'
       Origin = 'nom_p'
-      Size = 100
+      Size = 8190
     end
     object PMoreMaxQCnotifrefer_p: TWideStringField
       FieldName = 'refer_p'
       Origin = 'refer_p'
+      Size = 8190
     end
-    object PMoreMaxQCnotifcode_u: TSmallintField
-      FieldName = 'code_u'
-      Origin = 'code_u'
-      Visible = False
+    object PMoreMaxQCnotifqut_p: TFloatField
+      FieldName = 'qut_p'
+      Origin = 'qut_p'
     end
     object PMoreMaxQCnotifcode_famp: TIntegerField
       FieldName = 'code_famp'
       Origin = 'code_famp'
-    end
-    object PMoreMaxQCnotifcode_sfamp: TIntegerField
-      FieldName = 'code_sfamp'
-      Origin = 'code_sfamp'
     end
     object PMoreMaxQCnotifalertqut_p: TIntegerField
       FieldName = 'alertqut_p'
@@ -1029,9 +934,22 @@ object DataModuleF: TDataModuleF
       FieldName = 'code_f'
       Origin = 'code_f'
     end
+    object PMoreMaxQCnotifobser_p: TWideStringField
+      FieldName = 'obser_p'
+      Origin = 'obser_p'
+      Size = 32767
+    end
     object PMoreMaxQCnotiflogo_p: TBlobField
       FieldName = 'logo_p'
       Origin = 'logo_p'
+    end
+    object PMoreMaxQCnotifcode_l: TIntegerField
+      FieldName = 'code_l'
+      Origin = 'code_l'
+    end
+    object PMoreMaxQCnotifcode_sfamp: TIntegerField
+      FieldName = 'code_sfamp'
+      Origin = 'code_sfamp'
     end
     object PMoreMaxQCnotifperissable_p: TBooleanField
       FieldName = 'perissable_p'
@@ -1072,108 +990,7 @@ object DataModuleF: TDataModuleF
     object PMoreMaxQCnotifcodebar_p: TWideStringField
       FieldName = 'codebar_p'
       Origin = 'codebar_p'
-    end
-    object PMoreMaxQCnotifPrixATTC: TSingleField
-      FieldKind = fkCalculated
-      FieldName = 'PrixATTC'
-      currency = True
-      Calculated = True
-    end
-    object PMoreMaxQCnotifPrixVTTCD: TSingleField
-      FieldKind = fkCalculated
-      FieldName = 'PrixVTTCD'
-      Calculated = True
-    end
-    object PMoreMaxQCnotifPrixVTTCR: TSingleField
-      FieldKind = fkCalculated
-      FieldName = 'PrixVTTCR'
-      KeyFields = 'PrixVTTCR'
-      Origin = 'PrixVTTCR'
-      Calculated = True
-    end
-    object PMoreMaxQCnotifPrixVTTCG: TSingleField
-      FieldKind = fkCalculated
-      FieldName = 'PrixVTTCG'
-      KeyFields = 'PrixVTTCG'
-      Origin = 'PrixVTTCG'
-      Calculated = True
-    end
-    object PMoreMaxQCnotifPrixVTTCA: TSingleField
-      FieldKind = fkCalculated
-      FieldName = 'PrixVTTCA'
-      KeyFields = 'PrixVTTCA'
-      Origin = 'PrixVTTCA'
-      Calculated = True
-    end
-    object PMoreMaxQCnotifPrixVTTCA2: TSingleField
-      FieldKind = fkCalculated
-      FieldName = 'PrixVTTCA2'
-      KeyFields = 'PrixVTTCA2'
-      Origin = 'PrixVTTCA2'
-      Calculated = True
-    end
-    object PMoreMaxQCnotiffamp: TStringField
-      FieldKind = fkLookup
-      FieldName = 'famp'
-      LookupDataSet = MainForm.FamproduitTable
-      LookupKeyFields = 'code_famp'
-      LookupResultField = 'nom_famp'
-      KeyFields = 'code_famp'
-      Size = 40
-      Lookup = True
-    end
-    object PMoreMaxQCnotifsfamp: TStringField
-      FieldKind = fkLookup
-      FieldName = 'sfamp'
-      LookupDataSet = MainForm.SfamproduitTable
-      LookupKeyFields = 'code_sfamp'
-      LookupResultField = 'nom_sfamp'
-      KeyFields = 'code_sfamp'
-      Size = 40
-      Lookup = True
-    end
-    object PMoreMaxQCnotiffourp: TStringField
-      FieldKind = fkLookup
-      FieldName = 'fourp'
-      LookupDataSet = MainForm.FournisseurTable
-      LookupKeyFields = 'code_f'
-      LookupResultField = 'nom_f'
-      KeyFields = 'code_f'
-      Size = 40
-      Lookup = True
-    end
-    object PMoreMaxQCnotifcode_l: TIntegerField
-      FieldName = 'code_l'
-      Origin = 'code_l'
-    end
-    object PMoreMaxQCnotiflocal: TStringField
-      FieldKind = fkLookup
-      FieldName = 'local'
-      LookupDataSet = MainForm.LocalisationTable
-      LookupKeyFields = 'code_l'
-      LookupResultField = 'nom_l'
-      KeyFields = 'code_l'
-      Size = 40
-      Lookup = True
-    end
-    object PMoreMaxQCnotifunit: TStringField
-      FieldKind = fkLookup
-      FieldName = 'unit'
-      LookupDataSet = MainForm.UniteTable
-      LookupKeyFields = 'code_u'
-      LookupResultField = 'nom_u'
-      KeyFields = 'code_u'
-      Size = 15
-      Lookup = True
-    end
-    object PMoreMaxQCnotifQUT: TIntegerField
-      FieldKind = fkInternalCalc
-      FieldName = 'QUT'
-    end
-    object PMoreMaxQCnotifqut_p: TFloatField
-      DisplayWidth = 10
-      FieldName = 'qut_p'
-      Origin = 'qut_p'
+      Size = 8190
     end
     object PMoreMaxQCnotifqutmax_p: TFloatField
       FieldName = 'qutmax_p'
@@ -1183,22 +1000,66 @@ object DataModuleF: TDataModuleF
       FieldName = 'qutmin_p'
       Origin = 'qutmin_p'
     end
+    object PMoreMaxQCnotifcode_u: TSmallintField
+      FieldName = 'code_u'
+      Origin = 'code_u'
+    end
     object PMoreMaxQCnotifqutini_p: TFloatField
       FieldName = 'qutini_p'
       Origin = 'qutini_p'
-    end
-    object PMoreMaxQCnotifQutDispo: TFloatField
-      FieldKind = fkInternalCalc
-      FieldName = 'QutDispo'
     end
     object PMoreMaxQCnotiftva_p: TSmallintField
       FieldName = 'tva_p'
       Origin = 'tva_p'
     end
-    object PMoreMaxQCnotifobser_p: TWideStringField
-      FieldName = 'obser_p'
-      Origin = 'obser_p'
-      Size = 200
+    object PMoreMaxQCnotifQutDispo: TFloatField
+      FieldKind = fkInternalCalc
+      FieldName = 'QutDispo'
+    end
+    object PMoreMaxQCnotiffamp: TStringField
+      FieldKind = fkLookup
+      FieldName = 'famp'
+      LookupDataSet = MainForm.FamproduitTable
+      LookupKeyFields = 'code_famp'
+      LookupResultField = 'nom_famp'
+      KeyFields = 'code_famp'
+      Lookup = True
+    end
+    object PMoreMaxQCnotifsfamp: TStringField
+      FieldKind = fkLookup
+      FieldName = 'sfamp'
+      LookupDataSet = MainForm.SfamproduitTable
+      LookupKeyFields = 'code_sfamp'
+      LookupResultField = 'nom_sfamp'
+      KeyFields = 'code_sfamp'
+      Lookup = True
+    end
+    object PMoreMaxQCnotifunit: TStringField
+      FieldKind = fkLookup
+      FieldName = 'unit'
+      LookupDataSet = MainForm.UniteTable
+      LookupKeyFields = 'code_u'
+      LookupResultField = 'nom_u'
+      KeyFields = 'code_u'
+      Lookup = True
+    end
+    object PMoreMaxQCnotiffourp: TStringField
+      FieldKind = fkLookup
+      FieldName = 'fourp'
+      LookupDataSet = MainForm.FournisseurTable
+      LookupKeyFields = 'code_f'
+      LookupResultField = 'nom_f'
+      KeyFields = 'code_f'
+      Lookup = True
+    end
+    object PMoreMaxQCnotiflocal: TStringField
+      FieldKind = fkLookup
+      FieldName = 'local'
+      LookupDataSet = MainForm.LocalisationTable
+      LookupKeyFields = 'code_l'
+      LookupResultField = 'nom_l'
+      KeyFields = 'code_l'
+      Lookup = True
     end
   end
   object PCloseDiedCnotif: TFDQuery
@@ -1213,7 +1074,8 @@ object DataModuleF: TDataModuleF
       '      FROM produit '
       '      WHERE perissable_p = true '
       '  AND (dateperiss_p - current_date) <= alertdays_p'
-      '  AND (qut_p + qutini_p) <> 0')
+      '  AND (qut_p + qutini_p) <> 0'
+      '  AND (dateperiss_p - current_date) > 0')
     Left = 854
     Top = 414
     object PCloseDiedCnotifcode_p: TIntegerField
@@ -1273,12 +1135,178 @@ object DataModuleF: TDataModuleF
       FieldName = 'qutini_p'
       Origin = 'qutini_p'
     end
+    object PCloseDiedCnotifQutDispo: TFloatField
+      FieldKind = fkInternalCalc
+      FieldName = 'QutDispo'
+    end
+    object PCloseDiedCnotiffamp: TStringField
+      FieldKind = fkLookup
+      FieldName = 'famp'
+      LookupDataSet = MainForm.FamproduitTable
+      LookupKeyFields = 'code_famp'
+      LookupResultField = 'nom_famp'
+      KeyFields = 'code_famp'
+      Lookup = True
+    end
+    object PCloseDiedCnotifsfamp: TStringField
+      FieldKind = fkLookup
+      FieldName = 'sfamp'
+      LookupDataSet = MainForm.SfamproduitTable
+      LookupKeyFields = 'code_sfamp'
+      LookupResultField = 'nom_sfamp'
+      KeyFields = 'code_sfamp'
+      Lookup = True
+    end
+    object PCloseDiedCnotifunit: TStringField
+      FieldKind = fkLookup
+      FieldName = 'unit'
+      LookupDataSet = MainForm.UniteTable
+      LookupKeyFields = 'code_u'
+      LookupResultField = 'nom_u'
+      KeyFields = 'code_u'
+      Lookup = True
+    end
+    object PCloseDiedCnotiffourp: TStringField
+      FieldKind = fkLookup
+      FieldName = 'fourp'
+      LookupDataSet = MainForm.FournisseurTable
+      LookupKeyFields = 'code_f'
+      LookupResultField = 'nom_f'
+      KeyFields = 'code_f'
+      Lookup = True
+    end
+    object PCloseDiedCnotiflocal: TStringField
+      FieldKind = fkLookup
+      FieldName = 'local'
+      LookupDataSet = MainForm.LocalisationTable
+      LookupKeyFields = 'code_l'
+      LookupResultField = 'nom_l'
+      KeyFields = 'code_l'
+      Lookup = True
+    end
   end
   object PDiedCnotif: TFDQuery
     OnCalcFields = PDiedCnotifCalcFields
     Connection = MainForm.GstockdcConnection
+    SQL.Strings = (
+      'SELECT '
+      
+        'code_p,refer_p,nom_p,code_famp,code_sfamp,qut_p,qutini_p,code_f,' +
+        'dateperiss_p,code_u,code_l,alertdays_p,'
+      '(dateperiss_p - current_date) as daysleft '
+      '      FROM produit '
+      '      WHERE perissable_p = true '
+      '  AND (dateperiss_p - current_date) <= alertdays_p'
+      '  AND (qut_p + qutini_p) <> 0'
+      '  AND (dateperiss_p - current_date) <= 0')
     Left = 852
     Top = 468
+    object PDiedCnotifcode_p: TIntegerField
+      FieldName = 'code_p'
+      Origin = 'code_p'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+    end
+    object PDiedCnotifrefer_p: TWideStringField
+      FieldName = 'refer_p'
+      Origin = 'refer_p'
+      Size = 8190
+    end
+    object PDiedCnotifnom_p: TWideStringField
+      FieldName = 'nom_p'
+      Origin = 'nom_p'
+      Size = 8190
+    end
+    object PDiedCnotifcode_famp: TIntegerField
+      FieldName = 'code_famp'
+      Origin = 'code_famp'
+    end
+    object PDiedCnotifcode_sfamp: TIntegerField
+      FieldName = 'code_sfamp'
+      Origin = 'code_sfamp'
+    end
+    object PDiedCnotifqut_p: TFloatField
+      FieldName = 'qut_p'
+      Origin = 'qut_p'
+    end
+    object PDiedCnotifqutini_p: TFloatField
+      FieldName = 'qutini_p'
+      Origin = 'qutini_p'
+    end
+    object PDiedCnotifcode_f: TIntegerField
+      FieldName = 'code_f'
+      Origin = 'code_f'
+    end
+    object PDiedCnotifdateperiss_p: TDateField
+      FieldName = 'dateperiss_p'
+      Origin = 'dateperiss_p'
+    end
+    object PDiedCnotifcode_u: TSmallintField
+      FieldName = 'code_u'
+      Origin = 'code_u'
+    end
+    object PDiedCnotifcode_l: TIntegerField
+      FieldName = 'code_l'
+      Origin = 'code_l'
+    end
+    object PDiedCnotifalertdays_p: TSmallintField
+      FieldName = 'alertdays_p'
+      Origin = 'alertdays_p'
+    end
+    object PDiedCnotifdaysleft: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'daysleft'
+      Origin = 'daysleft'
+      ReadOnly = True
+    end
+    object PDiedCnotifQutDispo: TFloatField
+      FieldKind = fkInternalCalc
+      FieldName = 'QutDispo'
+    end
+    object PDiedCnotiflocal: TStringField
+      FieldKind = fkLookup
+      FieldName = 'local'
+      LookupDataSet = MainForm.LocalisationTable
+      LookupKeyFields = 'code_l'
+      LookupResultField = 'nom_l'
+      KeyFields = 'code_l'
+      Lookup = True
+    end
+    object PDiedCnotiffourp: TStringField
+      FieldKind = fkLookup
+      FieldName = 'fourp'
+      LookupDataSet = MainForm.FournisseurTable
+      LookupKeyFields = 'code_f'
+      LookupResultField = 'nom_f'
+      KeyFields = 'code_f'
+      Lookup = True
+    end
+    object PDiedCnotifunit: TStringField
+      FieldKind = fkLookup
+      FieldName = 'unit'
+      LookupDataSet = MainForm.UniteTable
+      LookupKeyFields = 'code_u'
+      LookupResultField = 'nom_u'
+      KeyFields = 'code_u'
+      Lookup = True
+    end
+    object PDiedCnotifsfamp: TStringField
+      FieldKind = fkLookup
+      FieldName = 'sfamp'
+      LookupDataSet = MainForm.SfamproduitTable
+      LookupKeyFields = 'code_sfamp'
+      LookupResultField = 'nom_sfamp'
+      KeyFields = 'code_sfamp'
+      Lookup = True
+    end
+    object PDiedCnotiffamp: TStringField
+      FieldKind = fkLookup
+      FieldName = 'famp'
+      LookupDataSet = MainForm.FamproduitTable
+      LookupKeyFields = 'code_famp'
+      LookupResultField = 'nom_famp'
+      KeyFields = 'code_famp'
+      Lookup = True
+    end
   end
   object PZeroQCnotifDS: TDataSource
     DataSet = PZeroQCnotif

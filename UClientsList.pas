@@ -210,6 +210,10 @@ begin
      +   'union all '
      +   'select code_c from bonv_fac '
      +   'union all '
+     +   'select code_c from regclient '
+     +   'union all '
+     +   'select code_c from bonp_fac '
+     +   'union all '
      +   'select code_c from bonv_ctr '
      +     ') a '
      +     'where code_c = '+IntToStr(MainForm.ClientTable.FieldByName('code_c').AsInteger) ;
@@ -389,8 +393,7 @@ if  ClientListDataS.DataSet = MainForm.ClientTable then
  begin
 
 //------ use this code to red the produit with 0 or null in stock----//
- if (MainForm.ClientTable.FieldByName('credit_c').AsCurrency 
-   + MainForm.ClientTable.FieldByName('oldcredit_c').AsCurrency   ) > 0      then
+ if (MainForm.ClientTable.FieldByName('credit_c').AsCurrency )> 0      then
  begin
  ClientsListDBGridEh.Canvas.Font.Color:=$004735F9;//   Brush.Color:=clRed;
  ClientsListDBGridEh.DefaultDrawColumnCell(Rect, DataCol, Column, State);
@@ -398,8 +401,7 @@ if  ClientListDataS.DataSet = MainForm.ClientTable then
 
 
  //------ use this code to red the produit with 0 or null in stock----//
- if (MainForm.ClientTable.FieldByName('credit_c').AsCurrency 
-   + MainForm.ClientTable.FieldByName('oldcredit_c').AsCurrency   ) < 0     then
+ if (MainForm.ClientTable.FieldByName('credit_c').AsCurrency ) < 0     then
  begin
  ClientsListDBGridEh.Canvas.Font.Color:=$00519509;//   Brush.Color:=green;
  ClientsListDBGridEh.DefaultDrawColumnCell(Rect, DataCol, Column, State);
@@ -659,15 +661,24 @@ end;
 
 procedure TClientListF.ResearchClientsEdtChange(Sender: TObject);
 begin
-  if (ResearchClientsEdt.text <> '') then
-      begin
-      MainForm.ClientTable.Filtered:=false;
-      MainForm.ClientTable.Filter := '[nom_c] LIKE ' + quotedstr(  '%'+  ResearchClientsEdt.Text +'%');
-      MainForm.ClientTable.Filtered :=True;
-    end  else
-      begin
-        MainForm.ClientTable.Filtered := False;
-       end;
+//  if (ResearchClientsEdt.text <> '') then
+//      begin
+//      MainForm.ClientTable.Filtered:=false;
+//      MainForm.ClientTable.Filter := '[nom_c] LIKE ' + quotedstr(  '%'+  ResearchClientsEdt.Text +'%');
+//      MainForm.ClientTable.Filtered :=True;
+//    end  else
+//      begin
+//        MainForm.ClientTable.Filtered := False;
+//       end;
+
+
+
+          MainForm.ClientTable.DisableControls;
+          MainForm.ClientTable.Active:=False;
+          MainForm.ClientTable.SQL.Clear;
+          MainForm.ClientTable.SQL.Text:='SELECT * FROM client WHERE LOWER(nom_c) LIKE LOWER' +'('''+'%'+(ResearchClientsEdt.Text)+'%'+''')' ;
+          MainForm.ClientTable.Active:=True;
+          MainForm.ClientTable.EnableControls;
 end;
 
 procedure TClientListF.ResearchClientsEdtKeyPress(Sender: TObject;

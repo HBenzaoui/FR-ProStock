@@ -111,6 +111,7 @@ type
     procedure AdvToolButton1Click(Sender: TObject);
     procedure AdvToolButton2Click(Sender: TObject);
     procedure AdvToolButton3Click(Sender: TObject);
+    procedure FormPaint(Sender: TObject);
 
   private
     procedure GettingData;
@@ -305,6 +306,7 @@ begin
   MainForm.Bona_recTable.Filtered := False;
   MainForm.Bona_recTable.Filter:='MontantRes <= 0 ';
   MainForm.Bona_recTable.Filtered:=True;
+  MainForm.Bona_recTable.First;
 end;
 
 procedure TBonRecF.Select_NOT_Regle;
@@ -312,6 +314,7 @@ begin
   MainForm.Bona_recTable.Filtered := False;
   MainForm.Bona_recTable.Filter:='MontantRes > 0 ';
   MainForm.Bona_recTable.Filtered:=True;
+  MainForm.Bona_recTable.First;
 end;
 
 procedure TBonRecF.FilteredColor;
@@ -1298,6 +1301,16 @@ end;
 procedure TBonRecF.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
  FreeAndNil(BonRecF);
+end;
+
+procedure TBonRecF.FormPaint(Sender: TObject);
+begin
+  MainForm.FournisseurTable.DisableControls;
+  MainForm.FournisseurTable.Active:=False;
+  MainForm.FournisseurTable.SQL.Clear;
+  MainForm.FournisseurTable.SQL.Text:='SELECT * FROM fournisseur ';
+  MainForm.FournisseurTable.Active:=True;
+  MainForm.FournisseurTable.EnableControls;
 end;
 
 end.

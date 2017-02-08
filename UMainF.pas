@@ -809,6 +809,7 @@ type
     Bonv_ctrTableCreditobser_bvctr: TWideStringField;
     Bonv_ctrTableCreditcode_ur: TIntegerField;
     Bonv_ctrTableCreditmarge_bvctr: TCurrencyField;
+    ClientTableCredit: TCurrencyField;
     procedure ClientMainFBtnClick(Sender: TObject);
     procedure FourMainFBtnClick(Sender: TObject);
     procedure ProduitMainFBtnClick(Sender: TObject);
@@ -1094,6 +1095,13 @@ end;
 
 procedure TMainForm.BRMainFMmnClick(Sender: TObject);
 begin
+       FournisseurTable.DisableControls;
+       FournisseurTable.Active:=False;
+       FournisseurTable.SQL.Clear;
+       FournisseurTable.SQL.Text:='SELECT * FROM fournisseur ';
+       FournisseurTable.Active:=True;
+       FournisseurTable.EnableControls;
+
 if Not Assigned(BonRecF) then
 
      BonRecF:= TBonRecF.Create(Application) else
@@ -1619,6 +1627,13 @@ end;
 
 procedure TMainForm.BLMainFMmnClick(Sender: TObject);
 begin
+        ClientTable.DisableControls;
+        ClientTable.Active:=False;
+        ClientTable.SQL.Clear;
+        ClientTable.SQL.Text:='SELECT * FROM client ';
+        ClientTable.Active:=True;
+        ClientTable.EnableControls;
+
 if Not Assigned(BonLivF) then
 
      BonLivF:= TBonLivF.Create(Application) else
@@ -1926,6 +1941,13 @@ end;
 procedure TMainForm.FactureV2MainFMnmClick(Sender: TObject);
 begin
 
+        ClientTable.DisableControls;
+        ClientTable.Active:=False;
+        ClientTable.SQL.Clear;
+        ClientTable.SQL.Text:='SELECT * FROM client ';
+        ClientTable.Active:=True;
+        ClientTable.EnableControls;
+
 if Not Assigned(BonFacVF) then
 
      BonFacVF:= TBonFacVF.Create(Application) else
@@ -2136,6 +2158,13 @@ end;
 
 procedure TMainForm.FactureP2MainFMnmClick(Sender: TObject);
 begin
+        ClientTable.DisableControls;
+        ClientTable.Active:=False;
+        ClientTable.SQL.Clear;
+        ClientTable.SQL.Text:='SELECT * FROM client ';
+        ClientTable.Active:=True;
+        ClientTable.EnableControls;
+
 if Not Assigned(BonFacPF) then
 
      BonFacPF:= TBonFacPF.Create(Application) else
@@ -2146,6 +2175,14 @@ end;
 
 procedure TMainForm.FactureAMainFMnmClick(Sender: TObject);
 begin
+
+ FournisseurTable.DisableControls;
+ FournisseurTable.Active:=False;
+ FournisseurTable.SQL.Clear;
+ FournisseurTable.SQL.Text:='SELECT * FROM fournisseur ';
+ FournisseurTable.Active:=True;
+ FournisseurTable.EnableControls;
+
 if Not Assigned(BonFacAF) then
 
      BonFacAF:= TBonFacAF.Create(Application) else
@@ -2818,13 +2855,13 @@ begin
   DataModuleF.PZeroQCnotif.Active:= True;
   DataModuleF.PCloseZeroQCnotif.Active:= True;
   DataModuleF.PMoreMaxQCnotif.Active:= True;
-//  DataModuleF.PCloseDiedCnotif.Active:= True;
+  DataModuleF.PCloseDiedCnotif.Active:= True;
 //  DataModuleF.PDiedCnotif.Active:= True;
   
   DataModuleF.PZeroQCnotif.Refresh;
   DataModuleF.PCloseZeroQCnotif.Refresh;
   DataModuleF.PMoreMaxQCnotif.Refresh;
-//  DataModuleF.PCloseDiedCnotif.Refresh;
+  DataModuleF.PCloseDiedCnotif.Refresh;
 //  DataModuleF.PDiedCnotif.Refresh;
 
    CNotificationLbl.Caption:= IntToStr
@@ -2987,6 +3024,13 @@ end;
 
 procedure TMainForm.RGFourMainFMnmClick(Sender: TObject);
 begin
+       FournisseurTable.DisableControls;
+       FournisseurTable.Active:=False;
+       FournisseurTable.SQL.Clear;
+       FournisseurTable.SQL.Text:='SELECT * FROM fournisseur ';
+       FournisseurTable.Active:=True;
+       FournisseurTable.EnableControls;
+
 if Not Assigned(ReglementFListF) then
 
      ReglementFListF:= TReglementFListF.Create(Application) else
@@ -3122,8 +3166,8 @@ begin
       DataModuleF.PZeroQCnotif.Active:= False;
       DataModuleF.PCloseZeroQCnotif.Active:= False;
       DataModuleF.PMoreMaxQCnotif.Active:= False;
-//      DataModuleF.PCloseDiedCnotif.Active:= False;
-//      DataModuleF.PDiedCnotif.Active:= False;
+      DataModuleF.PCloseDiedCnotif.Active:= False;
+      DataModuleF.PDiedCnotif.Active:= False;
 
 
 
@@ -3188,8 +3232,8 @@ begin
       DataModuleF.PZeroQCnotif.Active:= True;
       DataModuleF.PCloseZeroQCnotif.Active:= True;
       DataModuleF.PMoreMaxQCnotif.Active:= True;
-//      DataModuleF.PCloseDiedCnotif.Active:= True;
-//      DataModuleF.PDiedCnotif.Active:= True;
+      DataModuleF.PCloseDiedCnotif.Active:= True;
+      DataModuleF.PDiedCnotif.Active:= True;
 
 
 
@@ -3252,8 +3296,8 @@ begin
       DataModuleF.PZeroQCnotif.Refresh;
       DataModuleF.PCloseZeroQCnotif.Refresh;
       DataModuleF.PMoreMaxQCnotif.Refresh;
-//      DataModuleF.PCloseDiedCnotif.Refresh;
-//      DataModuleF.PDiedCnotif.Refresh;
+      DataModuleF.PCloseDiedCnotif.Refresh;
+      DataModuleF.PDiedCnotif.Refresh;
 
 
 
@@ -3282,7 +3326,6 @@ begin
    BackupTask := TTask.Create (procedure ()
    begin
         
-//        InactiveTables;
 //        dxActivityIndicator1.Active:= True;
 
         SQLQuery.Active:= False;
@@ -3315,6 +3358,13 @@ end;
 
 procedure TMainForm.RGClientMainFMnmClick(Sender: TObject);
 begin
+        ClientTable.DisableControls;
+        ClientTable.Active:=False;
+        ClientTable.SQL.Clear;
+        ClientTable.SQL.Text:='SELECT * FROM client ';
+        ClientTable.Active:=True;
+        ClientTable.EnableControls;
+
 if Not Assigned(ReglementCListF) then
 
      ReglementCListF:= TReglementCListF.Create(Application) else
@@ -3465,7 +3515,6 @@ begin
 //    ShowTask.Start;
 
             
-//  InactiveTables;
   { fill with known state }
   FillChar(StartInfo, SizeOf(TStartupInfo), #0);
   FillChar(ProcInfo, SizeOf(TProcessInformation), #0);
@@ -3513,6 +3562,14 @@ end;
 
 procedure TMainForm.CtrMainFMmnClick(Sender: TObject);
 begin
+
+        ClientTable.DisableControls;
+        ClientTable.Active:=False;
+        ClientTable.SQL.Clear;
+        ClientTable.SQL.Text:='SELECT * FROM client ';
+        ClientTable.Active:=True;
+        ClientTable.EnableControls;
+
      if Not Assigned(BonCtrF) then
 
      BonCtrF:= TBonCtrF.Create(Application) else

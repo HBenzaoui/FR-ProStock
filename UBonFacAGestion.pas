@@ -934,14 +934,14 @@ begin
     begin
 
  //      FourBonFacAGCbxChange(Sender);
-      MainForm.FournisseurTable.DisableControls;
-      MainForm.FournisseurTable.Active:=false;
-      MainForm.FournisseurTable.SQL.Clear;
-      MainForm.FournisseurTable.SQL.Text:='Select * FROM fournisseur WHERE LOWER(nom_f) LIKE LOWER('+ QuotedStr( FourBonFacAGCbx.Text )+')'  ;
-      MainForm.FournisseurTable.Active:=True;
+//      MainForm.SQLQuery.DisableControls;
+      MainForm.SQLQuery.Active:=false;
+      MainForm.SQLQuery.SQL.Clear;
+      MainForm.SQLQuery.SQL.Text:='Select * FROM fournisseur WHERE LOWER(nom_f) LIKE LOWER('+ QuotedStr( FourBonFacAGCbx.Text )+')'  ;
+      MainForm.SQLQuery.Active:=True;
 
 
-      if (MainForm.FournisseurTable.IsEmpty) then
+      if (MainForm.SQLQuery.IsEmpty) then
       begin
        FourBonFacAGCbx.Text := '';
        BonFacAGFourOLDCredit.Caption:= FloatToStrF(0,ffNumber,14,2) ;
@@ -955,11 +955,11 @@ begin
        exit;
       end;
 
-           MainForm.FournisseurTable.Active:=false;
-      MainForm.FournisseurTable.SQL.Clear;
-      MainForm.FournisseurTable.SQL.Text:='Select * FROM fournisseur' ;
-      MainForm.FournisseurTable.Active:=True;
-      MainForm.FournisseurTable.EnableControls;
+           MainForm.SQLQuery.Active:=false;
+      MainForm.SQLQuery.SQL.Clear;
+//      MainForm.SQLQuery.SQL.Text:='Select * FROM fournisseur' ;
+//      MainForm.SQLQuery.Active:=True;
+//      MainForm.SQLQuery.EnableControls;
 
       //----------------------------------------------------------------------------
 
@@ -1049,11 +1049,11 @@ begin
      end;
 //--- this is to set the facture de vente fileds
      begin
-          MainForm.FournisseurTable.DisableControls;
-          MainForm.FournisseurTable.Active:=false;
-          MainForm.FournisseurTable.SQL.Clear;
-          MainForm.FournisseurTable.SQL.Text:='Select * FROM fournisseur WHERE LOWER(nom_f) LIKE LOWER('+ QuotedStr(FourBonFacAGCbx.Text )+')'  ;
-          MainForm.FournisseurTable.Active:=True;
+//          MainForm.SQLQuery.DisableControls;
+          MainForm.SQLQuery.Active:=false;
+          MainForm.SQLQuery.SQL.Clear;
+          MainForm.SQLQuery.SQL.Text:='Select * FROM fournisseur WHERE LOWER(nom_f) LIKE LOWER('+ QuotedStr(FourBonFacAGCbx.Text )+')'  ;
+          MainForm.SQLQuery.Active:=True;
 
           MainForm.Mode_paiementTable.DisableControls;
           MainForm.Mode_paiementTable.Active:=false;
@@ -1068,7 +1068,7 @@ begin
           MainForm.CompteTable.Active:=True;
 
           MainForm.Bona_facTable.Edit;
-          MainForm.Bona_facTable.FieldValues['code_f']:= MainForm.FournisseurTable.FieldByName('code_f').AsInteger;
+          MainForm.Bona_facTable.FieldValues['code_f']:= MainForm.SQLQuery.FieldByName('code_f').AsInteger;
           MainForm.Bona_facTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
           if Tag = 0 then
           begin
@@ -1138,7 +1138,7 @@ begin
             MainForm.RegfournisseurTable.FieldValues['code_rf']:= CodeRF;
             MainForm.RegfournisseurTable.FieldValues['code_bafac']:= MainForm.Bona_facTable.FieldValues['code_bafac'];
             MainForm.RegfournisseurTable.FieldValues['nom_rf']:= NumBonFacAGEdt.Caption;
-            MainForm.RegfournisseurTable.FieldValues['code_f']:= MainForm.FournisseurTable.FieldByName('code_f').AsInteger;
+            MainForm.RegfournisseurTable.FieldValues['code_f']:= MainForm.SQLQuery.FieldByName('code_f').AsInteger;
             MainForm.RegfournisseurTable.FieldValues['date_rf']:= DateOf(Today);
             MainForm.RegfournisseurTable.FieldValues['time_rf']:=TimeOf(Now);
             MainForm.RegfournisseurTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
@@ -1185,7 +1185,7 @@ begin
                   MainForm.RegfournisseurTable.Edit;
                   MainForm.RegfournisseurTable.FieldValues['code_bafac']:= MainForm.Bona_facTable.FieldValues['code_bafac'];
                   MainForm.RegfournisseurTable.FieldValues['nom_rf']:= NumBonFacAGEdt.Caption;
-                  MainForm.RegfournisseurTable.FieldValues['code_f']:= MainForm.FournisseurTable.FieldByName('code_f').AsInteger;
+                  MainForm.RegfournisseurTable.FieldValues['code_f']:= MainForm.SQLQuery.FieldByName('code_f').AsInteger;
                   MainForm.RegfournisseurTable.FieldValues['date_rf']:= DateOf(Today);
                   MainForm.RegfournisseurTable.FieldValues['time_rf']:=TimeOf(Now);
                   MainForm.RegfournisseurTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
@@ -1235,7 +1235,7 @@ begin
                       MainForm.RegfournisseurTable.FieldValues['code_rf']:= CodeRF;
                       MainForm.RegfournisseurTable.FieldValues['code_bafac']:= MainForm.Bona_facTable.FieldValues['code_bafac'];
                       MainForm.RegfournisseurTable.FieldValues['nom_rf']:= NumBonFacAGEdt.Caption;
-                      MainForm.RegfournisseurTable.FieldValues['code_f']:= MainForm.FournisseurTable.FieldByName('code_f').AsInteger;
+                      MainForm.RegfournisseurTable.FieldValues['code_f']:= MainForm.SQLQuery.FieldByName('code_f').AsInteger;
                       MainForm.RegfournisseurTable.FieldValues['date_rf']:= DateOf(Today);
                       MainForm.RegfournisseurTable.FieldValues['time_rf']:=TimeOf(Now);
                       MainForm.RegfournisseurTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
@@ -1280,11 +1280,11 @@ begin
 
           end;
 
-          MainForm.FournisseurTable.Active:=false;
-          MainForm.FournisseurTable.SQL.Clear;
-          MainForm.FournisseurTable.SQL.Text:='Select * FROM fournisseur' ;
-          MainForm.FournisseurTable.Active:=True;
-          MainForm.FournisseurTable.EnableControls;
+          MainForm.SQLQuery.Active:=false;
+          MainForm.SQLQuery.SQL.Clear;
+//          MainForm.SQLQuery.SQL.Text:='Select * FROM fournisseur' ;
+//          MainForm.SQLQuery.Active:=True;
+//          MainForm.SQLQuery.EnableControls;
 
                         //--- this is for adding the money to the caisse----
          begin
@@ -1538,26 +1538,26 @@ begin
   if FourBonFacAGCbx.Text <> '' then
     begin
      FourBonFacAGCbxChange(Sender);
-      MainForm.FournisseurTable.DisableControls;
-      MainForm.FournisseurTable.Active:=false;
-      MainForm.FournisseurTable.SQL.Clear;
-      MainForm.FournisseurTable.SQL.Text:='Select * FROM fournisseur WHERE LOWER(nom_f) LIKE LOWER('+ QuotedStr( FourBonFacAGCbx.Text )+')'  ;
-      MainForm.FournisseurTable.Active:=True;
-     if NOT  MainForm.FournisseurTable.IsEmpty then
+//      MainForm.SQLQuery.DisableControls;
+      MainForm.SQLQuery.Active:=false;
+      MainForm.SQLQuery.SQL.Clear;
+      MainForm.SQLQuery.SQL.Text:='Select * FROM fournisseur WHERE LOWER(nom_f) LIKE LOWER('+ QuotedStr( FourBonFacAGCbx.Text )+')'  ;
+      MainForm.SQLQuery.Active:=True;
+     if NOT  MainForm.SQLQuery.IsEmpty then
      begin
-      OLDCreditFINI:= MainForm.FournisseurTable.FieldByName('oldcredit_f').AsCurrency;
+      OLDCreditFINI:= MainForm.SQLQuery.FieldByName('oldcredit_f').AsCurrency;
 
-      if MainForm.FournisseurTable.FieldByName('activ_f').AsBoolean <> False then
+      if MainForm.SQLQuery.FieldByName('activ_f').AsBoolean <> False then
       begin
 
-      if (MainForm.FournisseurTable.IsEmpty) then
+      if (MainForm.SQLQuery.IsEmpty) then
       begin
        FourBonFacAGCbx.Text := '';
        BonFacAGFourOLDCredit.Caption:= FloatToStrF(0,ffNumber,14,2) ;
        BonFacAGFourNEWCredit.Caption:=BonFacAGFourOLDCredit.Caption;
        exit;
       end;
-      CodeF:= MainForm.FournisseurTable.FieldByName('code_f').AsInteger ;
+      CodeF:= MainForm.SQLQuery.FieldByName('code_f').AsInteger ;
 
        MainForm.Bona_recTableCredit.DisableControls;
       MainForm.Bona_recTableCredit.Active:=false;
@@ -1623,11 +1623,11 @@ begin
 
 
 
-      MainForm.FournisseurTable.Active:=false;
-      MainForm.FournisseurTable.SQL.Clear;
-      MainForm.FournisseurTable.SQL.Text:='Select * FROM fournisseur' ;
-      MainForm.FournisseurTable.Active:=True;
-      MainForm.FournisseurTable.EnableControls;
+      MainForm.SQLQuery.Active:=false;
+      MainForm.SQLQuery.SQL.Clear;
+//      MainForm.SQLQuery.SQL.Text:='Select * FROM fournisseur' ;
+//      MainForm.SQLQuery.Active:=True;
+//      MainForm.SQLQuery.EnableControls;
 
       if NOT (BonFacAPListDataS.DataSet.IsEmpty) then
       begin
@@ -1655,11 +1655,11 @@ begin
            begin
               FourBonFacAGCbx.Text:='';
 
-              MainForm.FournisseurTable.Active:=false;
-              MainForm.FournisseurTable.SQL.Clear;
-              MainForm.FournisseurTable.SQL.Text:='Select * FROM fournisseur' ;
-              MainForm.FournisseurTable.Active:=True;
-              MainForm.FournisseurTable.EnableControls;
+              MainForm.SQLQuery.Active:=false;
+              MainForm.SQLQuery.SQL.Clear;
+//              MainForm.SQLQuery.SQL.Text:='Select * FROM fournisseur' ;
+//              MainForm.SQLQuery.Active:=True;
+//              MainForm.SQLQuery.EnableControls;
            end;
 
     end else
@@ -1678,22 +1678,23 @@ var
 I : Integer;
   begin
         FourBonFacAGCbx.Items.Clear;
-        MainForm.FournisseurTable.DisableControls;
-        MainForm.FournisseurTable.Active:=false;
-        MainForm.FournisseurTable.SQL.Clear;
-        MainForm.FournisseurTable.SQL.Text:='Select * FROM fournisseur '  ;
-        MainForm.FournisseurTable.Active:=True;
+//        MainForm.SQLQuery.DisableControls;
+        MainForm.SQLQuery.Active:=false;
+        MainForm.SQLQuery.SQL.Clear;
+        MainForm.SQLQuery.SQL.Text:='Select * FROM fournisseur '  ;
+        MainForm.SQLQuery.Active:=True;
 
-       MainForm.FournisseurTable.first;
+       MainForm.SQLQuery.first;
 
-     for I := 0 to MainForm.FournisseurTable.RecordCount - 1 do
-     if MainForm.FournisseurTable.FieldByName('nom_f').IsNull = False then
+     for I := 0 to MainForm.SQLQuery.RecordCount - 1 do
+     if MainForm.SQLQuery.FieldByName('nom_f').IsNull = False then
      begin
-          FourBonFacAGCbx.Items.Add(MainForm.FournisseurTable.FieldByName('nom_f').AsString);
-       MainForm.FournisseurTable.Next;
+          FourBonFacAGCbx.Items.Add(MainForm.SQLQuery.FieldByName('nom_f').AsString);
+       MainForm.SQLQuery.Next;
       end;
 
-      MainForm.FournisseurTable.EnableControls;
+        MainForm.SQLQuery.Active:=false;
+        MainForm.SQLQuery.SQL.Clear;
 end;
 
 procedure TBonFacAGestionF.FourBonFacAGCbxKeyPress(Sender: TObject;

@@ -328,10 +328,12 @@ begin
           if OldCreditClientGEdt.Text <> '' then
           begin
             fieldbyname('oldcredit_c').Value := StrToCurr(StringReplace(OldCreditClientGEdt.Text, #32, '', [rfReplaceAll]));
+            fieldbyname('credit_c').Value := StrToCurr(StringReplace(OldCreditClientGEdt.Text, #32, '', [rfReplaceAll]));
           end
           else
           begin
-            fieldbyname('oldcredit_c').Value := StrToInt('0')
+            fieldbyname('oldcredit_c').Value := StrToInt('0') ;
+            fieldbyname('credit_c').Value := StrToInt('0')
           end;
           if MaxCreditClientGEdt.Text <> '' then
           begin

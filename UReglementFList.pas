@@ -239,6 +239,8 @@ procedure TReglementFListF.AddBARecBtnClick(Sender: TObject);
 begin
   //-------- Show the splash screan for the produit familly to add new one---------//
 
+  ResearchRegFEdt.Text:='';
+
             ReglementFGestionF:=TReglementFGestionF.Create(ReglementFListF);
 
       MainForm.RegfournisseurTable.DisableControls;

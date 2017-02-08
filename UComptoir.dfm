@@ -368,12 +368,12 @@ object BonCtrGestionF: TBonCtrGestionF
     IndicatorTitle.UseGlobalMenu = False
     OddRowColor = 16315635
     Options = [dgEditing, dgTitles, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
-    OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghDialogFind, dghShowRecNo, dghColumnResize, dghColumnMove, dghHotTrack, dghExtendVertLines]
+    OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghDialogFind, dghShowRecNo, dghColumnResize, dghColumnMove, dghExtendVertLines]
     ParentCtl3D = False
     ParentFont = False
     ParentShowHint = False
     RowDetailPanel.Color = clBtnFace
-    RowHeight = 35
+    RowHeight = 30
     SearchPanel.FilterOnTyping = True
     ShowHint = False
     TabOrder = 5
@@ -402,7 +402,7 @@ object BonCtrGestionF: TBonCtrGestionF
         FieldName = 'referp'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
-        Font.Height = 18
+        Font.Height = 16
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
         Footers = <>
@@ -426,7 +426,7 @@ object BonCtrGestionF: TBonCtrGestionF
         FieldName = 'nomp'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
-        Font.Height = 18
+        Font.Height = 16
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
         Footers = <>
@@ -452,7 +452,7 @@ object BonCtrGestionF: TBonCtrGestionF
         FieldName = 'qut_p'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
-        Font.Height = 18
+        Font.Height = 16
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
         Footers = <>
@@ -476,7 +476,7 @@ object BonCtrGestionF: TBonCtrGestionF
         FieldName = 'cond_p'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
-        Font.Height = 18
+        Font.Height = 16
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
         Footers = <>
@@ -499,7 +499,7 @@ object BonCtrGestionF: TBonCtrGestionF
         FieldName = 'prixvd_p'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
-        Font.Height = 18
+        Font.Height = 16
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
         Footers = <>
@@ -523,7 +523,7 @@ object BonCtrGestionF: TBonCtrGestionF
         FieldName = 'tva_p'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
-        Font.Height = 18
+        Font.Height = 16
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
         Footers = <>
@@ -650,7 +650,7 @@ object BonCtrGestionF: TBonCtrGestionF
         FieldName = 'MontantTTC'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
-        Font.Height = 18
+        Font.Height = 16
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
         Footers = <>
@@ -674,7 +674,7 @@ object BonCtrGestionF: TBonCtrGestionF
         FieldName = 'MargeM'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
-        Font.Height = 18
+        Font.Height = 16
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
         Footers = <>
@@ -698,7 +698,7 @@ object BonCtrGestionF: TBonCtrGestionF
         FieldName = 'Marge'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
-        Font.Height = 18
+        Font.Height = 16
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
         Footers = <>
@@ -998,23 +998,23 @@ object BonCtrGestionF: TBonCtrGestionF
     end
     object BonCRemiseHTNewLbl: TLabel
       Left = 8
-      Top = 62
+      Top = 40
       Width = 6
       Height = 13
       Caption = '0'
       Visible = False
     end
     object TotalTVANewLbl: TLabel
-      Left = 32
-      Top = 66
+      Left = 52
+      Top = 40
       Width = 6
       Height = 13
       Caption = '0'
       Visible = False
     end
     object BonCTotalHTNewLbl: TLabel
-      Left = 20
-      Top = 63
+      Left = 28
+      Top = 37
       Width = 6
       Height = 13
       Caption = '0'
@@ -2403,19 +2403,17 @@ object BonCtrGestionF: TBonCtrGestionF
       DynProps = <>
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -20
+      Font.Height = 16
       Font.Name = 'Helvetica LT Std'
       Font.Style = []
       HorzScrollBar.ExtraPanel.NavigatorButtons = []
       HorzScrollBar.ExtraPanel.VisibleItems = []
       IndicatorOptions = []
-      Options = [dgTitles, dgColumnResize, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit]
-      OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghFitRowHeightToText, dghDialogFind, dghColumnResize, dghColumnMove, dghExtendVertLines]
+      Options = [dgTitles, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit]
       ParentFont = False
       ParentShowHint = False
       ReadOnly = True
-      RowHeight = 4
-      RowLines = 2
+      RowHeight = 30
       ShowHint = True
       TabOrder = 4
       TreeViewParams.ShowTreeLines = False
@@ -2430,11 +2428,6 @@ object BonCtrGestionF: TBonCtrGestionF
           EditButtons = <>
           EndEllipsis = True
           FieldName = 'nomp'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = 16
-          Font.Name = 'Helvetica LT Std'
-          Font.Style = []
           Footers = <>
           Layout = tlCenter
           Title.Caption = '       Les Produits Populaires'
@@ -2461,13 +2454,13 @@ object BonCtrGestionF: TBonCtrGestionF
   object BonCtrPListDataS: TDataSource
     DataSet = MainForm.Bonv_ctr_listTable
     OnDataChange = BonCtrPListDataSDataChange
-    Left = 1014
-    Top = 540
+    Left = 658
+    Top = 514
   end
   object BonCtrTop10produit: TDataSource
     DataSet = DataModuleF.Top5produit
-    Left = 1240
-    Top = 543
+    Left = 698
+    Top = 491
   end
   object frxComptoirListPDB: TfrxDBDataset
     UserName = 'frxComptoirListPDB'

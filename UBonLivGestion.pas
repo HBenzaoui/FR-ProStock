@@ -1169,24 +1169,25 @@ I : Integer;
   begin
 
           ClientBonLivGCbx.Items.Clear;
-          MainForm.ClientTable.DisableControls;
-          MainForm.ClientTable.Active:=false;
-          MainForm.ClientTable.SQL.Clear;
-          MainForm.ClientTable.SQL.Text:='Select * FROM client '  ;
-          MainForm.ClientTable.Active:=True;
+//          MainForm.SQLQuery.DisableControls;
+          MainForm.SQLQuery.Active:=false;
+          MainForm.SQLQuery.SQL.Clear;
+          MainForm.SQLQuery.SQL.Text:='Select * FROM client '  ;
+          MainForm.SQLQuery.Active:=True;
 
 //       MainForm.ClientTable.Refresh;
 
-         MainForm.ClientTable.first;
+         MainForm.SQLQuery.first;
 
-     for I := 0 to MainForm.ClientTable.RecordCount - 1 do
-     if MainForm.ClientTable.FieldByName('nom_c').IsNull = False then
+     for I := 0 to MainForm.SQLQuery.RecordCount - 1 do
+     if MainForm.SQLQuery.FieldByName('nom_c').IsNull = False then
      begin
-          ClientBonLivGCbx.Items.Add(MainForm.ClientTable.FieldByName('nom_c').AsString);
-       MainForm.ClientTable.Next;
+          ClientBonLivGCbx.Items.Add(MainForm.SQLQuery.FieldByName('nom_c').AsString);
+       MainForm.SQLQuery.Next;
       end;
 
-        MainForm.ClientTable.EnableControls;
+          MainForm.SQLQuery.Active:=false;
+          MainForm.SQLQuery.SQL.Clear;
 end;
 
 procedure TBonLivGestionF .ClientBonLivGCbxKeyPress(Sender: TObject;
@@ -1206,27 +1207,27 @@ begin
   if ClientBonLivGCbx.Text <> '' then
     begin
       ClientBonLivGCbxChange(Sender);
-      MainForm.ClientTable.DisableControls;
-      MainForm.ClientTable.Active:=false;
-      MainForm.ClientTable.SQL.Clear;
-      MainForm.ClientTable.SQL.Text:='Select * FROM client WHERE LOWER(nom_c) LIKE LOWER('+ QuotedStr( ClientBonLivGCbx.Text )+')'  ;
-      MainForm.ClientTable.Active:=True;
+//      MainForm.SQLQuery.DisableControls;
+      MainForm.SQLQuery.Active:=false;
+      MainForm.SQLQuery.SQL.Clear;
+      MainForm.SQLQuery.SQL.Text:='Select * FROM client WHERE LOWER(nom_c) LIKE LOWER('+ QuotedStr( ClientBonLivGCbx.Text )+')'  ;
+      MainForm.SQLQuery.Active:=True;
 
-     if NOT MainForm.ClientTable.IsEmpty then
+     if NOT MainForm.SQLQuery.IsEmpty then
      begin
-      OLDCreditCINI:=MainForm.ClientTable.FieldByName('oldcredit_c').AsCurrency;
+      OLDCreditCINI:=MainForm.SQLQuery.FieldByName('oldcredit_c').AsCurrency;
 
-      if MainForm.ClientTable.FieldByName('activ_c').AsBoolean <> False then
+      if MainForm.SQLQuery.FieldByName('activ_c').AsBoolean <> False then
       begin
 
-        if (MainForm.ClientTable.IsEmpty) then
+        if (MainForm.SQLQuery.IsEmpty) then
         begin
          ClientBonLivGCbx.Text := '';
          BonLivGClientOLDCredit.Caption:= FloatToStrF(0,ffNumber,14,2) ;
          BonLivGClientNEWCredit.Caption:=BonLivGClientOLDCredit.Caption;
          exit;
         end;
-        CodeC:= MainForm.ClientTable.FieldValues['code_c'] ;
+        CodeC:= MainForm.SQLQuery.FieldValues['code_c'] ;
 
         MainForm.Bonv_livTableCredit.DisableControls;
         MainForm.Bonv_livTableCredit.Active:=false;
@@ -1295,11 +1296,11 @@ begin
         MainForm.RegclientTable.Active:=True;
         MainForm.RegclientTable.EnableControls;
 
-        MainForm.ClientTable.Active:=false;
-        MainForm.ClientTable.SQL.Clear;
-        MainForm.ClientTable.SQL.Text:='Select * FROM client' ;
-        MainForm.ClientTable.Active:=True;
-        MainForm.ClientTable.EnableControls;
+        MainForm.SQLQuery.Active:=false;
+        MainForm.SQLQuery.SQL.Clear;
+//        MainForm.SQLQuery.SQL.Text:='Select * FROM client' ;
+//        MainForm.SQLQuery.Active:=True;
+//        MainForm.SQLQuery.EnableControls;
         if NOT (BonLivPListDataS.DataSet.IsEmpty) AND NOT (MainForm.Bonv_livTable.FieldByName('valider_bvliv').AsBoolean = true) then
         begin
         ValiderBVlivBonLivGBtn.Enabled:= True;
@@ -1324,11 +1325,11 @@ begin
           end else
               begin
                 ClientBonLivGCbx.Text:= '';
-                MainForm.ClientTable.Active:=false;
-                MainForm.ClientTable.SQL.Clear;
-                MainForm.ClientTable.SQL.Text:='Select * FROM client' ;
-                MainForm.ClientTable.Active:=True;
-                MainForm.ClientTable.EnableControls;
+                MainForm.SQLQuery.Active:=false;
+                MainForm.SQLQuery.SQL.Clear;
+//                MainForm.SQLQuery.SQL.Text:='Select * FROM client' ;
+//                MainForm.SQLQuery.Active:=True;
+//                MainForm.SQLQuery.EnableControls;
               end;
     end else
     begin

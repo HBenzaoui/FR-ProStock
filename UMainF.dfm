@@ -21642,6 +21642,10 @@ object MainForm: TMainForm
       Origin = 'obser_c'
       Size = 200
     end
+    object ClientTableCredit: TCurrencyField
+      FieldKind = fkInternalCalc
+      FieldName = 'Credit'
+    end
   end
   object FDPhysPgDriverLink1: TFDPhysPgDriverLink
     VendorLib = 'C:\Program Files (x86)\PostgreSQL\9.6\bin\libpq.dll'
@@ -43954,7 +43958,7 @@ object MainForm: TMainForm
           '"code_sfamp" int4,'
           '"perissable_p" bool DEFAULT false,'
           '"dateperiss_p" date,'
-          '"alertdays_p" int2 DEFAULT 0,'
+          '"alertdays_p" int2 DEFAULT 5,'
           '"prixht_p" money DEFAULT 0,'
           '"prixvd_p" money DEFAULT 0,'
           '"prixvr_p" money DEFAULT 0,'

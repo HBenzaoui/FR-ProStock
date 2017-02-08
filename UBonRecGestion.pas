@@ -807,22 +807,23 @@ var
 I : Integer;
   begin
           FournisseurBonRecGCbx.Items.Clear;
-          MainForm.FournisseurTable.DisableControls;
-          MainForm.FournisseurTable.Active:=false;
-          MainForm.FournisseurTable.SQL.Clear;
-          MainForm.FournisseurTable.SQL.Text:='Select * FROM fournisseur '  ;
-          MainForm.FournisseurTable.Active:=True;
+//          MainForm.SQLQuery.DisableControls;
+          MainForm.SQLQuery.Active:=false;
+          MainForm.SQLQuery.SQL.Clear;
+          MainForm.SQLQuery.SQL.Text:='Select * FROM fournisseur '  ;
+          MainForm.SQLQuery.Active:=True;
 
-       MainForm.FournisseurTable.first;
+       MainForm.SQLQuery.first;
 
-     for I := 0 to MainForm.FournisseurTable.RecordCount - 1 do
-     if MainForm.FournisseurTable.FieldByName('nom_f').IsNull = False then
+     for I := 0 to MainForm.SQLQuery.RecordCount - 1 do
+     if MainForm.SQLQuery.FieldByName('nom_f').IsNull = False then
      begin
-          FournisseurBonRecGCbx.Items.Add(MainForm.FournisseurTable.FieldByName('nom_f').AsString);
-       MainForm.FournisseurTable.Next;
+          FournisseurBonRecGCbx.Items.Add(MainForm.SQLQuery.FieldByName('nom_f').AsString);
+       MainForm.SQLQuery.Next;
       end;
 
-      MainForm.FournisseurTable.EnableControls;
+          MainForm.SQLQuery.Active:=false;
+          MainForm.SQLQuery.SQL.Clear;
   end;
 
 
@@ -915,26 +916,26 @@ begin
   if FournisseurBonRecGCbx.Text <> '' then
     begin
      FournisseurBonRecGCbxChange(Sender);
-      MainForm.FournisseurTable.DisableControls;
-      MainForm.FournisseurTable.Active:=false;
-      MainForm.FournisseurTable.SQL.Clear;
-      MainForm.FournisseurTable.SQL.Text:='Select * FROM fournisseur WHERE LOWER(nom_f) LIKE LOWER('+ QuotedStr( FournisseurBonRecGCbx.Text )+')'  ;
-      MainForm.FournisseurTable.Active:=True;
-      if NOT  MainForm.FournisseurTable.IsEmpty then
+//      MainForm.SQLQuery.DisableControls;
+      MainForm.SQLQuery.Active:=false;
+      MainForm.SQLQuery.SQL.Clear;
+      MainForm.SQLQuery.SQL.Text:='Select * FROM fournisseur WHERE LOWER(nom_f) LIKE LOWER('+ QuotedStr( FournisseurBonRecGCbx.Text )+')'  ;
+      MainForm.SQLQuery.Active:=True;
+      if NOT  MainForm.SQLQuery.IsEmpty then
      begin
-      OLDCreditFINI:= MainForm.FournisseurTable.FieldByName('oldcredit_f').AsCurrency ;
+      OLDCreditFINI:= MainForm.SQLQuery.FieldByName('oldcredit_f').AsCurrency ;
 
-     if MainForm.FournisseurTable.FieldByName('activ_f').AsBoolean <> False then
+     if MainForm.SQLQuery.FieldByName('activ_f').AsBoolean <> False then
      begin
 
-      if (MainForm.FournisseurTable.IsEmpty) then
+      if (MainForm.SQLQuery.IsEmpty) then
       begin
        FournisseurBonRecGCbx.Text := '';
        BonRecGFourOLDCredit.Caption:= FloatToStrF(0,ffNumber,14,2) ;
        BonRecGFourNEWCredit.Caption:=BonRecGFourOLDCredit.Caption;
        exit;
       end;
-      CodeF:= MainForm.FournisseurTable.FieldByName('code_f').AsInteger ;
+      CodeF:= MainForm.SQLQuery.FieldByName('code_f').AsInteger ;
 
 
       MainForm.Bona_recTableCredit.DisableControls;
@@ -1005,11 +1006,11 @@ begin
       MainForm.RegfournisseurTable.EnableControls;
 
 
-      MainForm.FournisseurTable.Active:=false;
-      MainForm.FournisseurTable.SQL.Clear;
-      MainForm.FournisseurTable.SQL.Text:='Select * FROM fournisseur' ;
-      MainForm.FournisseurTable.Active:=True;
-      MainForm.FournisseurTable.EnableControls;
+      MainForm.SQLQuery.Active:=false;
+      MainForm.SQLQuery.SQL.Clear;
+//      MainForm.SQLQuery.SQL.Text:='Select * FROM fournisseur' ;
+//      MainForm.SQLQuery.Active:=True;
+//      MainForm.SQLQuery.EnableControls;
       if NOT (BonRecPListDataS.DataSet.IsEmpty) AND NOT (MainForm.Bona_recTable.FieldByName('valider_barec').AsBoolean = true) then
       begin
       ValiderBARecBonRecGBtn.Enabled:= True;
@@ -1036,11 +1037,11 @@ begin
            begin
              FournisseurBonRecGCbx.Text:='';
 
-              MainForm.FournisseurTable.Active:=false;
-              MainForm.FournisseurTable.SQL.Clear;
-              MainForm.FournisseurTable.SQL.Text:='Select * FROM fournisseur' ;
-              MainForm.FournisseurTable.Active:=True;
-              MainForm.FournisseurTable.EnableControls;
+              MainForm.SQLQuery.Active:=false;
+              MainForm.SQLQuery.SQL.Clear;
+//              MainForm.SQLQuery.SQL.Text:='Select * FROM fournisseur' ;
+//              MainForm.SQLQuery.Active:=True;
+//              MainForm.SQLQuery.EnableControls;
            end;
            
     end else

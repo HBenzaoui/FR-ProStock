@@ -110,6 +110,7 @@ type
     procedure AdvToolButton1Click(Sender: TObject);
     procedure AdvToolButton2Click(Sender: TObject);
     procedure AdvToolButton3Click(Sender: TObject);
+    procedure FormPaint(Sender: TObject);
   private
     procedure GettingData;
     procedure Select_ALL;
@@ -304,6 +305,7 @@ begin
   MainForm.Bonv_livTable.Filtered := False;
   MainForm.Bonv_livTable.Filter:='MontantRes <= 0 ';
   MainForm.Bonv_livTable.Filtered:=True;
+  MainForm.Bonv_livTable.First;
 end;
 
 procedure TBonLivF.Select_NOT_Regle;
@@ -311,6 +313,7 @@ begin
   MainForm.Bonv_livTable.Filtered := False;
   MainForm.Bonv_livTable.Filter:='MontantRes > 0 ';
   MainForm.Bonv_livTable.Filtered:=True;
+  MainForm.Bonv_livTable.First;
 end;
 
 procedure TBonLivF.FilteredColor;
@@ -1285,6 +1288,16 @@ end;
 procedure TBonLivF.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
  FreeAndNil(BonLivF);
+end;
+
+procedure TBonLivF.FormPaint(Sender: TObject);
+begin
+        MainForm.ClientTable.DisableControls;
+        MainForm.ClientTable.Active:=False;
+        MainForm.ClientTable.SQL.Clear;
+        MainForm.ClientTable.SQL.Text:='SELECT * FROM client ';
+        MainForm.ClientTable.Active:=True;
+        MainForm.ClientTable.EnableControls;
 end;
 
 end.
