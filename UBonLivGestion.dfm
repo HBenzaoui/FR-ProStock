@@ -464,8 +464,8 @@ object BonLivGestionF: TBonLivGestionF
     object Label4: TLabel
       Left = 9
       Top = 268
-      Width = 96
-      Height = 19
+      Width = 92
+      Height = 18
       Anchors = [akLeft, akBottom]
       Caption = 'Les Produits:'
       Color = 15722984
@@ -1351,7 +1351,7 @@ object BonLivGestionF: TBonLivGestionF
       Left = 73
       Top = 60
       Width = 124
-      Height = 27
+      Height = 26
       Date = 42571.604963831020000000
       Time = 42571.604963831020000000
       Font.Charset = DEFAULT_CHARSET
@@ -1366,7 +1366,7 @@ object BonLivGestionF: TBonLivGestionF
       Left = 432
       Top = 83
       Width = 361
-      Height = 27
+      Height = 28
       Ctl3D = True
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -1491,7 +1491,7 @@ object BonLivGestionF: TBonLivGestionF
       Left = 432
       Top = 126
       Width = 101
-      Height = 27
+      Height = 28
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -17
@@ -1514,7 +1514,7 @@ object BonLivGestionF: TBonLivGestionF
       Left = 633
       Top = 126
       Width = 160
-      Height = 27
+      Height = 28
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -17
@@ -1593,7 +1593,7 @@ object BonLivGestionF: TBonLivGestionF
       object Label18: TLabel
         Left = 6
         Top = 78
-        Width = 90
+        Width = 101
         Height = 16
         Anchors = [akTop, akRight]
         Caption = 'Nouveau Solde:'
@@ -1610,7 +1610,7 @@ object BonLivGestionF: TBonLivGestionF
       object Label17: TLabel
         Left = 6
         Top = 6
-        Width = 81
+        Width = 87
         Height = 16
         Anchors = [akTop, akRight]
         Caption = 'Ancien Solde:'
@@ -1641,7 +1641,7 @@ object BonLivGestionF: TBonLivGestionF
       Left = 432
       Top = 170
       Width = 361
-      Height = 27
+      Height = 28
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -17
@@ -2136,7 +2136,7 @@ object BonLivGestionF: TBonLivGestionF
     object Label1: TLabel
       Left = 413
       Top = 6
-      Width = 67
+      Width = 65
       Height = 17
       Caption = 'Total TVA:'
       Color = clWhite
@@ -2293,7 +2293,7 @@ object BonLivGestionF: TBonLivGestionF
     object Label10: TLabel
       Left = 412
       Top = 64
-      Width = 68
+      Width = 66
       Height = 17
       Caption = 'Total TTC:'
       Color = 15722984
@@ -2309,7 +2309,7 @@ object BonLivGestionF: TBonLivGestionF
     object Label3: TLabel
       Left = 212
       Top = 64
-      Width = 50
+      Width = 49
       Height = 17
       Caption = 'Timber:'
       Color = clWhite
@@ -2375,7 +2375,7 @@ object BonLivGestionF: TBonLivGestionF
     object Label14: TLabel
       Left = 212
       Top = 6
-      Width = 55
+      Width = 54
       Height = 17
       Caption = 'Remise:'
       Color = 14727239
@@ -2392,7 +2392,7 @@ object BonLivGestionF: TBonLivGestionF
       Left = 12
       Top = 62
       Width = 94
-      Height = 54
+      Height = 56
       Caption = 'Bon de '#13#10'Livraison'
       Color = 15722984
       Font.Charset = DEFAULT_CHARSET

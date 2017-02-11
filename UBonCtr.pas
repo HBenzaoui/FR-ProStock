@@ -480,6 +480,7 @@ begin
        end else
            begin
             BonCtrGestionF.EnableBonCtr;
+            BonCtrGestionF.ProduitBonCtrGCbx.TabOrder:=0;
            end;
 
 

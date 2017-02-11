@@ -747,15 +747,15 @@ var
          begin
          CodeF:=MainForm.Bona_recTable.FieldValues['code_f'];
          BonRecGestionF.FournisseurBonRecGCbx.Text:= MainForm.Bona_recTable.FieldValues['fourbarec'];
-           MainForm.FournisseurTable.Active:=false;
-           MainForm.FournisseurTable.SQL.Clear;
-           MainForm.FournisseurTable.SQL.Text:='Select * FROM fournisseur WHERE code_f ='+(IntToStr( CodeF ) ) ;
-           MainForm.FournisseurTable.Active:=True;
-           BonRecGestionF.BonRecGFourOLDCredit.Caption:= CurrToStrF(MainForm.FournisseurTable.FieldValues['oldcredit_f'],ffNumber,2);
-           MainForm.FournisseurTable.Active:=false;
-           MainForm.FournisseurTable.SQL.Clear;
-           MainForm.FournisseurTable.SQL.Text:='Select * FROM fournisseur ' ;
-           MainForm.FournisseurTable.Active:=True;
+           MainForm.SQLQuery.Active:=false;
+           MainForm.SQLQuery.SQL.Clear;
+           MainForm.SQLQuery.SQL.Text:='Select * FROM fournisseur WHERE code_f ='+(IntToStr( CodeF ) ) ;
+           MainForm.SQLQuery.Active:=True;
+           BonRecGestionF.BonRecGFourOLDCredit.Caption:= CurrToStrF(MainForm.SQLQuery.FieldValues['oldcredit_f'],ffNumber,2);
+           MainForm.SQLQuery.Active:=false;
+           MainForm.SQLQuery.SQL.Clear;
+//           MainForm.SQLQuery.SQL.Text:='Select * FROM fournisseur ' ;
+//           MainForm.SQLQuery.Active:=True;
           end;
 
          if (MainForm.Bona_recTable.FieldValues['code_mdpai']<> null ) AND (MainForm.Bona_recTable.FieldValues['code_mdpai']<> 0) then
@@ -812,6 +812,7 @@ var
        end else
            begin
             BonRecGestionF.EnableBonRec;
+            BonRecGestionF.ProduitBonRecGCbx.TabOrder:=0;
            end;
       BonRecGestionF.Tag:= 1;
       MainForm.Bona_recPlistTable.Refresh;

@@ -592,15 +592,15 @@ var
        begin
        CodeF:=MainForm.RegclientTable.FieldValues['code_c'];
        ReglementCGestionF.ClientRegCGCbx.Text:= MainForm.RegclientTable.FieldValues['ClientrRC'];
-         MainForm.ClientTable.Active:=false;
-         MainForm.ClientTable.SQL.Clear;
-         MainForm.ClientTable.SQL.Text:='Select * FROM client WHERE code_c ='+(IntToStr( CodeF ) ) ;
-         MainForm.ClientTable.Active:=True;
-         ReglementCGestionF.RegCGClientOLDCredit.Caption:= CurrToStrF(MainForm.ClientTable.FieldValues['oldcredit_c'],ffNumber,2);
-         MainForm.ClientTable.Active:=false;
-         MainForm.ClientTable.SQL.Clear;
-         MainForm.ClientTable.SQL.Text:='Select * FROM client ' ;
-         MainForm.ClientTable.Active:=True;
+         MainForm.SQLQuery.Active:=false;
+         MainForm.SQLQuery.SQL.Clear;
+         MainForm.SQLQuery.SQL.Text:='Select * FROM client WHERE code_c ='+(IntToStr( CodeF ) ) ;
+         MainForm.SQLQuery.Active:=True;
+         ReglementCGestionF.RegCGClientOLDCredit.Caption:= CurrToStrF(MainForm.SQLQuery.FieldValues['oldcredit_c'],ffNumber,2);
+         MainForm.SQLQuery.Active:=false;
+         MainForm.SQLQuery.SQL.Clear;
+//         MainForm.SQLQuery.SQL.Text:='Select * FROM client ' ;
+//         MainForm.SQLQuery.Active:=True;
         end;
 
        if (MainForm.RegclientTable.FieldValues['code_mdpai']<> null ) AND (MainForm.RegclientTable.FieldValues['code_mdpai']<> 0) then

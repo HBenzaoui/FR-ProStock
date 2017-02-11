@@ -36372,6 +36372,10 @@ object MainForm: TMainForm
       FieldName = 'tva_p'
       Origin = 'tva_p'
     end
+    object Bonv_liv_listTablecode_barec: TIntegerField
+      FieldName = 'code_barec'
+      Origin = 'code_barec'
+    end
   end
   object Bona_facTable: TFDQuery
     OnCalcFields = Bona_facTableCalcFields
@@ -36800,6 +36804,10 @@ object MainForm: TMainForm
     object Bonv_fac_listTableMargeM: TCurrencyField
       FieldKind = fkInternalCalc
       FieldName = 'MargeM'
+    end
+    object Bonv_fac_listTablecode_bafac: TIntegerField
+      FieldName = 'code_bafac'
+      Origin = 'code_bafac'
     end
   end
   object Bonv_facTable: TFDQuery
@@ -40415,6 +40423,7 @@ object MainForm: TMainForm
         SourceDataType = dtWideMemo
         TargetDataType = dtWideString
       end>
+    Connected = True
     LoginPrompt = False
     Left = 65
     Top = 128
@@ -56511,5 +56520,11 @@ object MainForm: TMainForm
     DataSet = Bonp_facTable
     Left = 382
     Top = 606
+  end
+  object SQLQuery3: TFDQuery
+    FilterOptions = [foCaseInsensitive]
+    Connection = GstockdcConnection
+    Left = 186
+    Top = 206
   end
 end

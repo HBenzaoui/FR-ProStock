@@ -376,11 +376,13 @@ object DataModuleF: TDataModuleF
       'Database=PSDBConfig'
       'User_Name=postgres'
       'DriverID=pG')
+    Connected = True
     LoginPrompt = False
     Left = 83
     Top = 22
   end
   object UsersTable: TFDQuery
+    Active = True
     FilterOptions = [foCaseInsensitive]
     IndexFieldNames = 'code_ur'
     Connection = PSDBConfigConnection
@@ -1743,6 +1745,105 @@ object DataModuleF: TDataModuleF
       FieldName = 'obser_transfer'
       Origin = 'obser_transfer'
       Size = 200
+    end
+  end
+  object PerissBona_recTable: TFDQuery
+    FilterOptions = [foCaseInsensitive]
+    IndexFieldNames = 'dateperiss_p'
+    Connection = MainForm.GstockdcConnection
+    SQL.Strings = (
+      
+        'SELECT code_barec, code_p,qutinstock_p,dateperiss_p,(dateperiss_' +
+        'p - CURRENT_DATE) AS daysleft'
+      'FROM bona_rec_list'
+      'WHERE dateperiss_p is NOT NULL '
+      'AND dateperiss_p > CURRENT_DATE'
+      'AND qutinstock_p <> 0'
+      'AND code_p = 1'
+      'ORDER BY dateperiss_p')
+    Left = 753
+    Top = 410
+    object PerissBona_recTablecode_barec: TIntegerField
+      FieldName = 'code_barec'
+      Origin = 'code_barec'
+    end
+    object PerissBona_recTablecode_p: TIntegerField
+      FieldName = 'code_p'
+      Origin = 'code_p'
+    end
+    object PerissBona_recTablequtinstock_p: TFloatField
+      FieldName = 'qutinstock_p'
+      Origin = 'qutinstock_p'
+    end
+    object PerissBona_recTabledateperiss_p: TDateField
+      FieldName = 'dateperiss_p'
+      Origin = 'dateperiss_p'
+    end
+    object PerissBona_recTabledaysleft: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'daysleft'
+      Origin = 'daysleft'
+      ReadOnly = True
+    end
+    object PerissBona_recTablenumbrec: TStringField
+      FieldKind = fkLookup
+      FieldName = 'numbrec'
+      LookupDataSet = MainForm.Bona_recTable
+      LookupKeyFields = 'code_barec'
+      LookupResultField = 'num_barec'
+      KeyFields = 'code_barec'
+      Lookup = True
+    end
+  end
+  object PerissBona_facTable: TFDQuery
+    FilterOptions = [foCaseInsensitive]
+    IndexFieldNames = 'dateperiss_p'
+    Connection = MainForm.GstockdcConnection
+    SQL.Strings = (
+      
+        'SELECT bona_fac_list.code_bafac, code_p,qutinstock_p,dateperiss_' +
+        'p,(dateperiss_p - CURRENT_DATE) AS daysleft'
+      'FROM bona_fac_list'
+      'JOIN bona_fac ON bona_fac.code_bafac = bona_fac_list.code_bafac'
+      'WHERE bona_fac.valider_bafac = TRUE '
+      'AND dateperiss_p is NOT NULL '
+      'AND dateperiss_p > CURRENT_DATE'
+      'AND qutinstock_p <> 0'
+      'AND code_p = 1'
+      'ORDER BY dateperiss_p'
+      ' ')
+    Left = 761
+    Top = 470
+    object PerissBona_facTablecode_bafac: TIntegerField
+      FieldName = 'code_bafac'
+      Origin = 'code_bafac'
+    end
+    object PerissBona_facTablecode_p: TIntegerField
+      FieldName = 'code_p'
+      Origin = 'code_p'
+    end
+    object PerissBona_facTablequtinstock_p: TFloatField
+      FieldName = 'qutinstock_p'
+      Origin = 'qutinstock_p'
+    end
+    object PerissBona_facTabledateperiss_p: TDateField
+      FieldName = 'dateperiss_p'
+      Origin = 'dateperiss_p'
+    end
+    object PerissBona_facTabledaysleft: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'daysleft'
+      Origin = 'daysleft'
+      ReadOnly = True
+    end
+    object PerissBona_facTablenumfac: TStringField
+      FieldKind = fkLookup
+      FieldName = 'numfac'
+      LookupDataSet = MainForm.Bona_facTable
+      LookupKeyFields = 'code_bafac'
+      LookupResultField = 'num_bafac'
+      KeyFields = 'code_bafac'
+      Lookup = True
     end
   end
 end

@@ -217,7 +217,7 @@ implementation
 uses StringTool,Vcl.Imaging.jpeg,
   UMainF, USplashVersement, UBonFacV, UFastProduitsList, UProduitsList,
   USplashAddUnite, UClientsList, UClientGestion, USplashAddCompte, UDataModule,
-  UProduitGestion;
+  UProduitGestion, UPerissableProduit;
 
 {$R *.dfm}
 procedure TBonFacVGestionF.EnableBonFacV;
@@ -629,39 +629,54 @@ begin
  //----------------------------------------
 
       begin
-           MainForm.ProduitTable.DisableControls;
-           MainForm.ProduitTable.Active:=False;
-           MainForm.ProduitTable.SQL.Clear;
-           MainForm.ProduitTable.SQL.Text:='SELECT * FROM produit ' ;
-           MainForm.ProduitTable.Active:=True;
+//           MainForm.ProduitTable.DisableControls;
+//           MainForm.ProduitTable.Active:=False;
+//           MainForm.ProduitTable.SQL.Clear;
+//           MainForm.ProduitTable.SQL.Text:='SELECT * FROM produit ' ;
+//           MainForm.ProduitTable.Active:=True;
            Mainform.Sqlquery.Active:=False;
            Mainform.Sqlquery.Sql.Clear;
-           Mainform.Sqlquery.Sql.Text:='SELECT code_bvfacl,code_p,  qut_p, cond_p  FROM bonv_fac_list WHERE code_bvfac =  '
+           Mainform.Sqlquery.Sql.Text:='SELECT code_bvfacl,code_p,  qut_p, cond_p,code_bafac  FROM bonv_fac_list WHERE code_bvfac =  '
                                                  + IntToStr (MainForm.Bonv_facTable.FieldValues['code_bvfac'])
-                                                 + 'GROUP BY code_bvfacl, code_p, qut_p, cond_p ' ;
+                                                 + 'GROUP BY code_bvfacl, code_p, qut_p, cond_p,code_bafac ' ;
            MainForm.SQLQuery.Active:=True;
            MainForm.SQLQuery.First;
            while  NOT (MainForm.SQLQuery.Eof) do
            begin
-            MainForm.ProduitTable.Active:=False;
-            MainForm.ProduitTable.SQL.Clear;
-            MainForm.ProduitTable.SQL.Text:='SELECT * FROM produit WHERE code_p = ' +QuotedStr(MainForm.SQLQuery.FieldValues['code_p']) ;
-            MainForm.ProduitTable.Active:=True;
-            MainForm.ProduitTable.Edit;
-            MainForm.ProduitTable.FieldValues['qut_p']:= ( MainForm.ProduitTable.FieldValues['qut_p']
+            MainForm.SQLQuery3.Active:=False;
+            MainForm.SQLQuery3.SQL.Clear;
+            MainForm.SQLQuery3.SQL.Text:='SELECT * FROM produit WHERE code_p = ' +QuotedStr(MainForm.SQLQuery.FieldValues['code_p']) ;
+            MainForm.SQLQuery3.Active:=True;
+            MainForm.SQLQuery3.Edit;
+            MainForm.SQLQuery3.FieldValues['qut_p']:= ( MainForm.SQLQuery3.FieldValues['qut_p']
                                                          + ((MainForm.SQLQuery.FieldValues['qut_p']) * ((MainForm.SQLQuery.FieldValues['cond_p']))));
 //            MainForm.ProduitTable.FieldValues['prixvd_p']:= MainForm.SQLQuery.FieldValues['prixvd_p'];
-            MainForm.ProduitTable.Post;
+            MainForm.SQLQuery3.Post;
+
+            Mainform.FDQuery2.Active:=False;
+            Mainform.FDQuery2.Sql.Clear;
+            Mainform.FDQuery2.Sql.Text:='SELECT code_bafac, code_p,qutinstock_p FROM bona_fac_list  WHERE code_bafac =' +QuotedStr(MainForm.SQLQuery.FieldValues['code_bafac']) ;
+            MainForm.FDQuery2.Active:=True;
+
+            MainForm.FDQuery2.Edit;
+            MainForm.FDQuery2.FieldValues['qutinstock_p']:= ( MainForm.FDQuery2.FieldValues['qutinstock_p']
+                                                         + ((MainForm.SQLQuery.FieldValues['qut_p']) * ((MainForm.SQLQuery.FieldValues['cond_p']))));
+            MainForm.FDQuery2.Post;
+
             MainForm.SQLQuery.Next;
            end;
 
-           MainForm.ProduitTable.Active:=False;
-           MainForm.ProduitTable.SQL.Clear;
-           MainForm.ProduitTable.SQL.Text:='SELECT * FROM produit ' ;
-           MainForm.ProduitTable.Active:=True;
-           MainForm.ProduitTable.EnableControls;
+           MainForm.SQLQuery3.Active:=False;
+           MainForm.SQLQuery3.SQL.Clear;
+//           MainForm.ProduitTable.SQL.Text:='SELECT * FROM produit ' ;
+//           MainForm.ProduitTable.Active:=True;
+//           MainForm.ProduitTable.EnableControls;
+           MainForm.FDQuery2.Active:=False;
+           MainForm.FDQuery2.SQL.Clear;
+
            MainForm.SQLQuery.Active:=False;
            MainForm.SQLQuery.SQL.Clear;
+
            MainForm.Bonv_facTable.Refresh;
 
      end;
@@ -764,6 +779,53 @@ begin
         MainForm.ProduitTable.Active:=True;
         CodeP:= MainForm.ProduitTable.FieldByName('code_p').AsInteger ;
 
+
+//
+//        PerissableProduitF.PerissableProduisDataS.DataSet:= DataModuleF.PerissBona_facTable;
+
+        DataModuleF.PerissBona_facTable.Active:=False;
+        DataModuleF.PerissBona_facTable.SQL.Clear;
+        DataModuleF.PerissBona_facTable.SQL.Text:='  SELECT bona_fac_list.code_bafac, code_p,qutinstock_p,dateperiss_p,(dateperiss_p - CURRENT_DATE) AS daysleft  '
+        +'  FROM bona_fac_list  '
+        +'  JOIN bona_fac ON bona_fac.code_bafac = bona_fac_list.code_bafac '
+        +'  WHERE bona_fac.valider_bafac = TRUE '
+        +'  AND dateperiss_p is NOT NULL '
+        +'  AND dateperiss_p > CURRENT_DATE '
+        +'  AND qutinstock_p <> 0  '
+        +'  AND code_p = ' + IntToStr(CodeP)
+        +'  ORDER BY dateperiss_p ';
+
+//         DataModuleF.PerissBona_recTable.Fields.Clear;
+//         DataModuleF.PerissBona_recTablenumbrec.LookupDataSet:=  MainForm.Bona_facTable;
+//         DataModuleF.PerissBona_recTablecode_barec.FieldName:= 'code_bafac';
+//         DataModuleF.PerissBona_recTablecode_barec.Origin:= 'code_bafac';
+//         DataModuleF.PerissBona_recTablenumbrec.KeyFields:=  'code_bafac';
+//         DataModuleF.PerissBona_recTablenumbrec.LookupKeyFields:= 'code_bafac';
+//         DataModuleF.PerissBona_recTablenumbrec.LookupResultField:= 'num_bafac';
+;
+        DataModuleF.PerissBona_facTable.Active:=True;
+
+
+
+
+
+    if (MainForm.ProduitTable.FieldByName('perissable_p').AsBoolean = True)
+        AND NOT (DataModuleF.PerissBona_facTable.IsEmpty) AND (DataModuleF.PerissBona_facTable.RecordCount > 1) then
+    begin
+
+      PerissableProduitF:=TPerissableProduitF.Create(BonFacVGestionF);
+
+        PerissableProduitF.PerissableProduisDataS.DataSet:= DataModuleF.PerissBona_facTable;
+        PerissableProduitF.ProduitsListDBGridEh.Columns[0].FieldName:='numfac';
+      PerissableProduitF.Left:=  (MainForm.Left + MainForm.Width div 2) - (PerissableProduitF.Width div 2);
+      PerissableProduitF.Top:=   MainForm.Top + 5;
+      AnimateWindow(PerissableProduitF.Handle, 175, AW_VER_POSITIVE OR AW_SLIDE OR AW_ACTIVATE );
+      PerissableProduitF.Tag:=1;
+      PerissableProduitF.Show;
+
+
+    end else
+     begin
          lookupResultRefP := MainForm.Bonv_fac_listTable.Lookup('code_p',(CodeP),'code_p');
          if VarIsnull( lookupResultRefP) then
          begin
@@ -906,6 +968,7 @@ begin
        FSplashAddUnite.Show;
     //--- this tage = 0 is for multi name added by produit combobox----//
        FSplashAddUnite.Tag:=3;
+     end;
      end;
 
      end;
@@ -2387,39 +2450,54 @@ begin
 
 //--- this is for adding to the priduit
       begin
-           MainForm.ProduitTable.DisableControls;
-           MainForm.ProduitTable.Active:=False;
-           MainForm.ProduitTable.SQL.Clear;
-           MainForm.ProduitTable.SQL.Text:='SELECT * FROM produit ' ;
-           MainForm.ProduitTable.Active:=True;
+//           MainForm.ProduitTable.DisableControls;
+//           MainForm.ProduitTable.Active:=False;
+//           MainForm.ProduitTable.SQL.Clear;
+//           MainForm.ProduitTable.SQL.Text:='SELECT * FROM produit ' ;
+//           MainForm.ProduitTable.Active:=True;
            Mainform.Sqlquery.Active:=False;
            Mainform.Sqlquery.Sql.Clear;
-           Mainform.Sqlquery.Sql.Text:='SELECT code_bvfacl,code_p,  qut_p, cond_p , prixvd_p,tva_p FROM bonv_fac_list WHERE code_bvfac =  '
+           Mainform.Sqlquery.Sql.Text:='SELECT code_bvfacl,code_p,  qut_p, cond_p , prixvd_p,tva_p,code_bafac FROM bonv_fac_list WHERE code_bvfac =  '
                                                  + IntToStr (MainForm.Bonv_facTable.FieldValues['code_bvfac'])
-                                                 + 'GROUP BY code_bvfacl, code_p, qut_p, cond_p,prixvd_p,tva_p ' ;
+                                                 + 'GROUP BY code_bvfacl, code_p, qut_p, cond_p,prixvd_p,tva_p,code_bafac ' ;
            MainForm.SQLQuery.Active:=True;
            MainForm.SQLQuery.First;
            while  NOT (MainForm.SQLQuery.Eof) do
            begin
-            MainForm.ProduitTable.Active:=False;
-            MainForm.ProduitTable.SQL.Clear;
-            MainForm.ProduitTable.SQL.Text:='SELECT * FROM produit WHERE code_p = ' +QuotedStr(MainForm.SQLQuery.FieldValues['code_p']) ;
-            MainForm.ProduitTable.Active:=True;
-            MainForm.ProduitTable.Edit;
-            MainForm.ProduitTable.FieldValues['qut_p']:= ( MainForm.ProduitTable.FieldValues['qut_p']
+            MainForm.SQLQuery3.Active:=False;
+            MainForm.SQLQuery3.SQL.Clear;
+            MainForm.SQLQuery3.SQL.Text:='SELECT * FROM produit WHERE code_p = ' +QuotedStr(MainForm.SQLQuery.FieldValues['code_p']) ;
+            MainForm.SQLQuery3.Active:=True;
+            MainForm.SQLQuery3.Edit;
+            MainForm.SQLQuery3.FieldValues['qut_p']:= ( MainForm.SQLQuery3.FieldValues['qut_p']
                                                          - ((MainForm.SQLQuery.FieldValues['qut_p']) * ((MainForm.SQLQuery.FieldValues['cond_p']))));
-            MainForm.ProduitTable.FieldValues['tva_p']:= MainForm.SQLQuery.FieldValues['tva_p'];
-            MainForm.ProduitTable.Post;
+            MainForm.SQLQuery3.FieldValues['tva_p']:= MainForm.SQLQuery.FieldValues['tva_p'];
+            MainForm.SQLQuery3.Post;
+
+            Mainform.FDQuery2.Active:=False;
+            Mainform.FDQuery2.Sql.Clear;
+            Mainform.FDQuery2.Sql.Text:='SELECT code_bafac, code_p,qutinstock_p FROM bona_fac_list  WHERE code_bafac =' +QuotedStr(MainForm.SQLQuery.FieldValues['code_bafac']) ;
+            MainForm.FDQuery2.Active:=True;
+            if NOT (MainForm.FDQuery2.IsEmpty) then
+            begin
+              MainForm.FDQuery2.Edit;
+              MainForm.FDQuery2.FieldValues['qutinstock_p']:= ( MainForm.FDQuery2.FieldValues['qutinstock_p']
+                                                           - ((MainForm.SQLQuery.FieldValues['qut_p']) * ((MainForm.SQLQuery.FieldValues['cond_p']))));
+              MainForm.FDQuery2.Post;
+            end;
+
             MainForm.SQLQuery.Next;
            end;
 
-           MainForm.ProduitTable.Active:=False;
-           MainForm.ProduitTable.SQL.Clear;
-           MainForm.ProduitTable.SQL.Text:='SELECT * FROM produit ' ;
-           MainForm.ProduitTable.Active:=True;
-           MainForm.ProduitTable.EnableControls;
+           MainForm.SQLQuery3.Active:=False;
+           MainForm.SQLQuery3.SQL.Clear;
+//           MainForm.ProduitTable.SQL.Text:='SELECT * FROM produit ' ;
+//           MainForm.ProduitTable.Active:=True;
+//           MainForm.ProduitTable.EnableControls;
            MainForm.SQLQuery.Active:=False;
            MainForm.SQLQuery.SQL.Clear;
+            Mainform.FDQuery2.Active:=False;
+            Mainform.FDQuery2.Sql.Clear;
           MainForm.Bonv_facTable.Refresh;
           DataModuleF.Top5produit.Refresh;
 

@@ -217,7 +217,6 @@ object ProduitGestionF: TProduitGestionF
           Height = 18
           Caption = 'P'#233'rissable:'
           Color = 4207405
-          Enabled = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = 4207405
           Font.Height = 18
@@ -1043,7 +1042,6 @@ object ProduitGestionF: TProduitGestionF
           BevelOuter = bvNone
           BiDiMode = bdLeftToRight
           Ctl3D = False
-          Enabled = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = 4207405
           Font.Height = 12

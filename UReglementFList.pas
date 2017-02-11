@@ -286,15 +286,15 @@ var
        begin
        CodeF:=MainForm.RegfournisseurTable.FieldValues['code_f'];
        ReglementFGestionF.FournisseurRegFGCbx.Text:= MainForm.RegfournisseurTable.FieldValues['FourRF'];
-         MainForm.FournisseurTable.Active:=false;
-         MainForm.FournisseurTable.SQL.Clear;
-         MainForm.FournisseurTable.SQL.Text:='Select * FROM fournisseur WHERE code_f ='+(IntToStr( CodeF ) ) ;
-         MainForm.FournisseurTable.Active:=True;
-         ReglementFGestionF.RegFGFourOLDCredit.Caption:= CurrToStrF(MainForm.FournisseurTable.FieldValues['oldcredit_f'],ffNumber,2);
-         MainForm.FournisseurTable.Active:=false;
-         MainForm.FournisseurTable.SQL.Clear;
-         MainForm.FournisseurTable.SQL.Text:='Select * FROM fournisseur ' ;
-         MainForm.FournisseurTable.Active:=True;
+         MainForm.SQLQuery.Active:=false;
+         MainForm.SQLQuery.SQL.Clear;
+         MainForm.SQLQuery.SQL.Text:='Select * FROM fournisseur WHERE code_f ='+(IntToStr( CodeF ) ) ;
+         MainForm.SQLQuery.Active:=True;
+         ReglementFGestionF.RegFGFourOLDCredit.Caption:= CurrToStrF(MainForm.SQLQuery.FieldValues['oldcredit_f'],ffNumber,2);
+         MainForm.SQLQuery.Active:=false;
+         MainForm.SQLQuery.SQL.Clear;
+//         MainForm.SQLQuery.SQL.Text:='Select * FROM fournisseur ' ;
+//         MainForm.SQLQuery.Active:=True;
         end;
 
        if (MainForm.RegfournisseurTable.FieldValues['code_mdpai']<> null ) AND (MainForm.RegfournisseurTable.FieldValues['code_mdpai']<> 0) then

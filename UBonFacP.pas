@@ -714,15 +714,15 @@ begin
        begin
        CodeC:=MainForm.Bonp_facTable.FieldValues['code_c'];
        BonFacPGestionF.ClientBonFacVGCbx.Text:= MainForm.Bonp_facTable.FieldValues['clientbvfac'];
-         MainForm.ClientTable.Active:=false;
-         MainForm.ClientTable.SQL.Clear;
-         MainForm.ClientTable.SQL.Text:='Select * FROM client WHERE code_c ='+(IntToStr( CodeC ) ) ;
-         MainForm.ClientTable.Active:=True;
-         BonFacPGestionF.BonFacVGClientOLDCredit.Caption:= CurrToStrF(MainForm.ClientTable.FieldValues['oldcredit_c'],ffNumber,2);
-         MainForm.ClientTable.Active:=false;
-         MainForm.ClientTable.SQL.Clear;
-         MainForm.ClientTable.SQL.Text:='Select * FROM client ' ;
-         MainForm.ClientTable.Active:=True;
+         MainForm.SQLQuery.Active:=false;
+         MainForm.SQLQuery.SQL.Clear;
+         MainForm.SQLQuery.SQL.Text:='Select * FROM client WHERE code_c ='+(IntToStr( CodeC ) ) ;
+         MainForm.SQLQuery.Active:=True;
+         BonFacPGestionF.BonFacVGClientOLDCredit.Caption:= CurrToStrF(MainForm.SQLQuery.FieldValues['oldcredit_c'],ffNumber,2);
+         MainForm.SQLQuery.Active:=false;
+         MainForm.SQLQuery.SQL.Clear;
+//         MainForm.SQLQuery.SQL.Text:='Select * FROM client ' ;
+//         MainForm.SQLQuery.Active:=True;
         end;
 
 
@@ -791,6 +791,7 @@ begin
        end else
            begin
             BonFacPGestionF.EnableBonFacP;
+            BonFacPGestionF.ProduitBonFacVGCbx.TabOrder:=0;
            end;
       BonFacPGestionF.Tag:= 1;
        MainForm.bonp_fac_listTable.Refresh;

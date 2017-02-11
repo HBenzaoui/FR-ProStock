@@ -783,15 +783,15 @@ begin
        begin
        CodeC:=MainForm.Bonv_livTable.FieldValues['code_c'];
        BonLivGestionF.ClientBonLivGCbx.Text:= MainForm.Bonv_livTable.FieldValues['clientbvliv'];
-         MainForm.ClientTable.Active:=false;
-         MainForm.ClientTable.SQL.Clear;
-         MainForm.ClientTable.SQL.Text:='Select * FROM client WHERE code_c ='+(IntToStr( CodeC ) ) ;
-         MainForm.ClientTable.Active:=True;
-         BonLivGestionF.BonLivGClientOLDCredit.Caption:= CurrToStrF(MainForm.ClientTable.FieldValues['oldcredit_c'],ffNumber,2);
-         MainForm.ClientTable.Active:=false;
-         MainForm.ClientTable.SQL.Clear;
-         MainForm.ClientTable.SQL.Text:='Select * FROM client ' ;
-         MainForm.ClientTable.Active:=True;
+         MainForm.SQLQuery.Active:=false;
+         MainForm.SQLQuery.SQL.Clear;
+         MainForm.SQLQuery.SQL.Text:='Select * FROM client WHERE code_c ='+(IntToStr( CodeC ) ) ;
+         MainForm.SQLQuery.Active:=True;
+         BonLivGestionF.BonLivGClientOLDCredit.Caption:= CurrToStrF(MainForm.SQLQuery.FieldValues['oldcredit_c'],ffNumber,2);
+         MainForm.SQLQuery.Active:=false;
+         MainForm.SQLQuery.SQL.Clear;
+//         MainForm.SQLQuery.SQL.Text:='Select * FROM client ' ;
+//         MainForm.SQLQuery.Active:=True;
         end;
 
        if (MainForm.Bonv_livTable.FieldValues['code_mdpai']<> null ) AND (MainForm.Bonv_livTable.FieldValues['code_mdpai']<> 0) then
@@ -848,6 +848,8 @@ begin
        end else
            begin
             BonLivGestionF.EnableBonLiv;
+            BonLivGestionF.ProduitBonLivGCbx.TabOrder:=0;
+
            end;
       BonLivGestionF.Tag:= 1;
       MainForm.Bonv_liv_listTable.Refresh;

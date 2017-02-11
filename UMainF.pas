@@ -810,6 +810,9 @@ type
     Bonv_ctrTableCreditcode_ur: TIntegerField;
     Bonv_ctrTableCreditmarge_bvctr: TCurrencyField;
     ClientTableCredit: TCurrencyField;
+    Bonv_liv_listTablecode_barec: TIntegerField;
+    SQLQuery3: TFDQuery;
+    Bonv_fac_listTablecode_bafac: TIntegerField;
     procedure ClientMainFBtnClick(Sender: TObject);
     procedure FourMainFBtnClick(Sender: TObject);
     procedure ProduitMainFBtnClick(Sender: TObject);
@@ -3178,6 +3181,8 @@ begin
       DataModuleF.Perte_typeTable.Active:= False;
 
       DataModuleF.Transfer_comptesTable.Active:= False;
+
+      DataModuleF.PerissBona_recTable.Active:= False;
 end;
 
 procedure TMainForm.ActiveTables;
@@ -3245,7 +3250,9 @@ begin
 
       DataModuleF.Transfer_comptesTable.Active:= True;
 
-      
+      DataModuleF.PerissBona_recTable.Active:= True;
+
+
 end;
 
 
@@ -3308,6 +3315,8 @@ begin
       DataModuleF.Perte_typeTable.Refresh;
 
       DataModuleF.Transfer_comptesTable.Refresh;
+
+      DataModuleF.PerissBona_recTable.Refresh;
 end;
 
 
