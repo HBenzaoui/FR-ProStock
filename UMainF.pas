@@ -813,6 +813,7 @@ type
     Bonv_liv_listTablecode_barec: TIntegerField;
     SQLQuery3: TFDQuery;
     Bonv_fac_listTablecode_bafac: TIntegerField;
+    Bonv_ctr_listTablecode_barec: TIntegerField;
     procedure ClientMainFBtnClick(Sender: TObject);
     procedure FourMainFBtnClick(Sender: TObject);
     procedure ProduitMainFBtnClick(Sender: TObject);
@@ -1651,18 +1652,18 @@ begin
 end;
 
 procedure TMainForm.FormDestroy(Sender: TObject);
-var
-   HTaskbar:HWND;
-   OldVal:LongInt;
+//var
+//   HTaskbar:HWND;
+//   OldVal:LongInt;
   begin
-  //Find handle of TASKBAR
-  HTaskBar:=FindWindow('Shell_TrayWnd',nil);
-  //Turn SYSTEM KEYS Back ON,Only Win 95/98/ME
-  SystemParametersInfo(97,Word(False),@OldVal,0);
-  //Enable the taskbar
-  EnableWindow(HTaskBar,True);
-  //Show the taskbar
-  ShowWindow(HTaskbar,SW_SHOW);
+//  //Find handle of TASKBAR
+//  HTaskBar:=FindWindow('Shell_TrayWnd',nil);
+//  //Turn SYSTEM KEYS Back ON,Only Win 95/98/ME
+//  SystemParametersInfo(97,Word(False),@OldVal,0);
+//  //Enable the taskbar
+//  EnableWindow(HTaskBar,True);
+//  //Show the taskbar
+//  ShowWindow(HTaskbar,SW_SHOW);
 
  end;
 
@@ -3922,7 +3923,7 @@ begin
    SQLQuery.SQL.Text:= 'SELECT COUNT(*) as ntable from information_schema.tables WHERE table_schema = ''public''' ;
    SQLQuery.Active:= True;
   
-     if SQLQuery.FieldByName('ntable').AsInteger <> 26 then
+     if SQLQuery.FieldByName('ntable').AsInteger <> 34 then
      begin
      
       CreateTablesFDScript.ExecuteAll;                                 // Eable this is only for releasing
@@ -4023,7 +4024,7 @@ begin
    SQLQuery.SQL.Text:= 'SELECT COUNT(*) as ntable from information_schema.tables WHERE table_schema = ''public''' ;
    SQLQuery.Active:= True;
   
-     if SQLQuery.FieldByName('ntable').AsInteger <> 26 then
+     if SQLQuery.FieldByName('ntable').AsInteger <> 34 then
      begin
      
       CreateTablesFDScript.ExecuteAll;                                 // Eable this is only for releasing

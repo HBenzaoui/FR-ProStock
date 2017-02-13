@@ -207,7 +207,7 @@ begin
      +  'from (   '
      +   'select code_f as code_f from bona_rec '
      +   'union all '
-     +   'select code_c from regfournisseur '
+     +   'select code_f from regfournisseur '
      +   'union all '
      +   'select code_f from bona_fac '
      +     ') a '

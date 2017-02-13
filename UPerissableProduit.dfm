@@ -318,6 +318,7 @@ object PerissableProduitF: TPerissableProduitF
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   OnKeyPress = FormKeyPress
+  OnShow = FormShow
   DesignSize = (
     495
     313)

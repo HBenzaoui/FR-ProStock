@@ -1118,6 +1118,8 @@ end;
 
 procedure TBonLivF.DateStartBVLivDChange(Sender: TObject);
 begin
+ClearFilterBVLivPMenuClick(Sender);
+
 MainForm.Bonv_livTable.DisableControls;
 MainForm.Bonv_livTable.Active:= False;
 MainForm.Bonv_livTable.SQL.clear;

@@ -21813,6 +21813,7 @@ object MainForm: TMainForm
     object ProduitTablerefer_p: TWideStringField
       FieldName = 'refer_p'
       Origin = 'refer_p'
+      Size = 50
     end
     object ProduitTablecode_u: TSmallintField
       FieldName = 'code_u'
@@ -36279,7 +36280,7 @@ object MainForm: TMainForm
     Connection = GstockdcConnection
     SQL.Strings = (
       'SELECT * FROM bonv_liv_list')
-    Left = 475
+    Left = 477
     Top = 538
     object Bonv_liv_listTablecode_bvlivl: TIntegerField
       FieldName = 'code_bvlivl'
@@ -40322,6 +40323,10 @@ object MainForm: TMainForm
       FieldName = 'tva_p'
       Origin = 'tva_p'
     end
+    object Bonv_ctr_listTablecode_barec: TIntegerField
+      FieldName = 'code_barec'
+      Origin = 'code_barec'
+    end
   end
   object Bonv_ctrTableCredit: TFDQuery
     FilterOptions = [foCaseInsensitive]
@@ -40426,7 +40431,7 @@ object MainForm: TMainForm
     Connected = True
     LoginPrompt = False
     Left = 65
-    Top = 128
+    Top = 130
   end
   object Opt_cas_bnk_CaisseTable: TFDQuery
     FilterOptions = [foCaseInsensitive]
@@ -43466,7 +43471,8 @@ object MainForm: TMainForm
           '"prixvd_p" money DEFAULT 0,'
           '"cond_p" int4,'
           '"code_p" int4,'
-          '"tva_p" int2 DEFAULT 0 NOT NULL'
+          '"tva_p" int2 DEFAULT 0 NOT NULL,'
+          '"code_barec" int4 DEFAULT 0'
           ')'
           'WITH (OIDS=FALSE)'
           ''
@@ -43520,7 +43526,8 @@ object MainForm: TMainForm
           '"prixvd_p" money DEFAULT 0,'
           '"cond_p" int4,'
           '"code_p" int4,'
-          '"tva_p" int2 DEFAULT 0 NOT NULL'
+          '"tva_p" int2 DEFAULT 0 NOT NULL,'
+          '"code_bafac" int4 DEFAULT 0'
           ')'
           'WITH (OIDS=FALSE)'
           ''
@@ -43573,7 +43580,8 @@ object MainForm: TMainForm
           '"prixvd_p" money DEFAULT 0,'
           '"cond_p" int4,'
           '"code_p" int4,'
-          '"tva_p" int2 DEFAULT 0 NOT NULL'
+          '"tva_p" int2 DEFAULT 0 NOT NULL,'
+          '"code_barec" int4 DEFAULT 0'
           ')'
           'WITH (OIDS=FALSE)'
           ''
@@ -43955,34 +43963,33 @@ object MainForm: TMainForm
           ''
           'CREATE TABLE "public"."produit" ('
           '"code_p" int4 NOT NULL,'
-          '"nom_p" varchar COLLATE "default",'
           '"refer_p" varchar COLLATE "default",'
-          '"qut_p" float8 DEFAULT 0,'
-          '"code_famp" int4,'
-          '"alertqut_p" int4 DEFAULT 0,'
-          '"code_f" int4,'
-          '"obser_p" text COLLATE "default",'
-          '"logo_p" bytea,'
-          '"code_l" int4,'
-          '"code_sfamp" int4,'
-          '"perissable_p" bool DEFAULT false,'
-          '"dateperiss_p" date,'
-          '"alertdays_p" int2 DEFAULT 5,'
+          '"nom_p" varchar COLLATE "default",'
+          '"codebar_p" varchar COLLATE "default",'
           '"prixht_p" money DEFAULT 0,'
           '"prixvd_p" money DEFAULT 0,'
           '"prixvr_p" money DEFAULT 0,'
           '"prixvg_p" money DEFAULT 0,'
           '"prixva_p" money DEFAULT 0,'
           '"prixva2_p" money DEFAULT 0,'
-          '"codebar_p" varchar COLLATE "default",'
-          '"qutmax_p" float8 DEFAULT 0,'
+          '"tva_p" int2 DEFAULT 0,'
+          '"qut_p" float8 DEFAULT 0,'
+          '"perissable_p" bool DEFAULT false,'
+          '"alertdays_p" int2 DEFAULT 5,'
           '"qutmin_p" float8 DEFAULT 0,'
+          '"qutmax_p" float8 DEFAULT 0,'
+          '"alertqut_p" int4 DEFAULT 0,'
+          '"obser_p" text COLLATE "default",'
+          '"code_famp" int4,'
+          '"code_f" int4,'
+          '"logo_p" bytea,'
+          '"code_l" int4,'
+          '"code_sfamp" int4,'
+          '"dateperiss_p" date,'
           '"code_u" int2,'
-          '"qutini_p" float8 DEFAULT 0,'
-          '"tva_p" int2 DEFAULT 0'
+          '"qutini_p" float8 DEFAULT 0'
           ')'
           'WITH (OIDS=FALSE)'
-          ''
           ';'
           ''
           '-- ----------------------------'

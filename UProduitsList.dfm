@@ -1312,7 +1312,7 @@ object ProduitsListF: TProduitsListF
     object ResearchProduitsLbl: TLabel
       Left = 6
       Top = 31
-      Width = 66
+      Width = 74
       Height = 16
       Caption = 'Rechercher'
       Color = 15722984
@@ -1428,7 +1428,7 @@ object ProduitsListF: TProduitsListF
       Left = 528
       Top = 5
       Width = 6
-      Height = 14
+      Height = 13
       Caption = '0'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 11544476
@@ -1814,7 +1814,7 @@ object ProduitsListF: TProduitsListF
       Shaded = False
       ShowHint = True
       Spacing = -2
-      OnClick = AdvToolButton3Click
+      OnClick = AdvToolButton4Click
       Version = '1.6.1.2'
       TMSStyle = 0
     end

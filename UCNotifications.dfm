@@ -4,7 +4,7 @@ object CNotificationsF: TCNotificationsF
   Align = alClient
   Caption = 'Centre de Notifications'
   ClientHeight = 741
-  ClientWidth = 1084
+  ClientWidth = 1655
   Color = 15527148
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -323,7 +323,7 @@ object CNotificationsF: TCNotificationsF
   object ProduitGPgControl: TsPageControl
     Left = 0
     Top = 0
-    Width = 1084
+    Width = 1655
     Height = 741
     ActivePage = PZeroQTB
     Align = alClient
@@ -340,7 +340,6 @@ object CNotificationsF: TCNotificationsF
     TabWidth = 210
     StyleElements = []
     TabsLineSkin = 'BAR'
-    ExplicitWidth = 2012
     object PZeroQTB: TsTabSheet
       Caption = 'Produits '#233'puis'#233's'
       Font.Charset = DEFAULT_CHARSET
@@ -352,12 +351,12 @@ object CNotificationsF: TCNotificationsF
       SkinData.CustomColor = False
       SkinData.CustomFont = False
       DesignSize = (
-        1076
+        1647
         706)
       object LineP: TPanel
         Left = 0
         Top = 0
-        Width = 1076
+        Width = 1647
         Height = 2
         Align = alTop
         BevelOuter = bvNone
@@ -369,7 +368,7 @@ object CNotificationsF: TCNotificationsF
       object ProduitsListDBGridEh: TDBGridEh
         Left = -4
         Top = 3
-        Width = 1080
+        Width = 1651
         Height = 702
         Anchors = [akLeft, akTop, akRight, akBottom]
         Border.Color = 4207405
@@ -959,14 +958,13 @@ object CNotificationsF: TCNotificationsF
       Caption = 'Produits en voie d'#39#233'puisement'
       SkinData.CustomColor = False
       SkinData.CustomFont = False
-      ExplicitWidth = 2004
       DesignSize = (
-        1076
+        1647
         706)
       object Panel1: TPanel
         Left = 0
         Top = 0
-        Width = 1076
+        Width = 1647
         Height = 2
         Align = alTop
         BevelOuter = bvNone
@@ -974,12 +972,11 @@ object CNotificationsF: TCNotificationsF
         ParentBackground = False
         TabOrder = 0
         StyleElements = []
-        ExplicitWidth = 2004
       end
       object DBGridEh1: TDBGridEh
         Left = -4
         Top = 4
-        Width = 1080
+        Width = 1651
         Height = 702
         Anchors = [akLeft, akTop, akRight, akBottom]
         Border.Color = 4207405
@@ -1588,12 +1585,12 @@ object CNotificationsF: TCNotificationsF
       SkinData.CustomColor = False
       SkinData.CustomFont = False
       DesignSize = (
-        1076
+        1647
         706)
       object Panel2: TPanel
         Left = 0
         Top = 0
-        Width = 1076
+        Width = 1647
         Height = 2
         Align = alTop
         BevelOuter = bvNone
@@ -1601,12 +1598,11 @@ object CNotificationsF: TCNotificationsF
         ParentBackground = False
         TabOrder = 0
         StyleElements = []
-        ExplicitWidth = 1183
       end
       object DBGridEh2: TDBGridEh
         Left = -4
         Top = 4
-        Width = 1080
+        Width = 1651
         Height = 702
         Anchors = [akLeft, akTop, akRight, akBottom]
         Border.Color = 4207405
@@ -2215,12 +2211,12 @@ object CNotificationsF: TCNotificationsF
       SkinData.CustomColor = False
       SkinData.CustomFont = False
       DesignSize = (
-        1076
+        1647
         706)
       object Panel3: TPanel
         Left = 0
         Top = 0
-        Width = 1076
+        Width = 1647
         Height = 2
         Align = alTop
         BevelOuter = bvNone
@@ -2228,12 +2224,11 @@ object CNotificationsF: TCNotificationsF
         ParentBackground = False
         TabOrder = 0
         StyleElements = []
-        ExplicitWidth = 1183
       end
       object DBGridEh3: TDBGridEh
         Left = -4
         Top = 4
-        Width = 1080
+        Width = 1651
         Height = 702
         Anchors = [akLeft, akTop, akRight, akBottom]
         Border.Color = 4207405
@@ -2295,7 +2290,21 @@ object CNotificationsF: TCNotificationsF
             Alignment = taCenter
             DynProps = <>
             EditButtons = <>
-            FieldName = 'refer_p'
+            FieldName = 'num_barec'
+            Footers = <>
+            Layout = tlCenter
+            MaxWidth = 120
+            MinWidth = 120
+            Title.Alignment = taCenter
+            Title.Caption = 'N'#176' Bon d'#39'achat'
+            Width = 120
+            WordWrap = False
+          end
+          item
+            Alignment = taCenter
+            DynProps = <>
+            EditButtons = <>
+            FieldName = 'referp'
             Footers = <>
             Layout = tlCenter
             MaxWidth = 120
@@ -2308,7 +2317,7 @@ object CNotificationsF: TCNotificationsF
           item
             DynProps = <>
             EditButtons = <>
-            FieldName = 'nom_p'
+            FieldName = 'nomp'
             Footers = <>
             Layout = tlCenter
             MaxWidth = -1
@@ -2670,7 +2679,7 @@ object CNotificationsF: TCNotificationsF
             DisplayFormat = '0.00'
             DynProps = <>
             EditButtons = <>
-            FieldName = 'QutDispo'
+            FieldName = 'nomp'
             Footers = <>
             Layout = tlCenter
             MinWidth = 100
@@ -2794,12 +2803,12 @@ object CNotificationsF: TCNotificationsF
       SkinData.CustomColor = False
       SkinData.CustomFont = False
       DesignSize = (
-        1076
+        1647
         706)
       object Panel4: TPanel
         Left = 0
         Top = 0
-        Width = 1076
+        Width = 1647
         Height = 2
         Align = alTop
         BevelOuter = bvNone
@@ -2811,7 +2820,7 @@ object CNotificationsF: TCNotificationsF
       object DBGridEh4: TDBGridEh
         Left = -4
         Top = 4
-        Width = 1080
+        Width = 1651
         Height = 702
         Anchors = [akLeft, akTop, akRight, akBottom]
         Border.Color = 4207405
@@ -2873,7 +2882,26 @@ object CNotificationsF: TCNotificationsF
             Alignment = taCenter
             DynProps = <>
             EditButtons = <>
-            FieldName = 'refer_p'
+            FieldName = 'num_barec'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = 4207405
+            Font.Height = 16
+            Font.Name = 'Helvetica LT Std'
+            Font.Style = []
+            Footers = <>
+            Layout = tlCenter
+            MaxWidth = 120
+            MinWidth = 120
+            Title.Alignment = taCenter
+            Title.Caption = 'N'#176' Bon d'#39'achat'
+            Width = 120
+            WordWrap = False
+          end
+          item
+            Alignment = taCenter
+            DynProps = <>
+            EditButtons = <>
+            FieldName = 'referp'
             Font.Charset = DEFAULT_CHARSET
             Font.Color = 4207405
             Font.Height = 16
@@ -2891,7 +2919,7 @@ object CNotificationsF: TCNotificationsF
           item
             DynProps = <>
             EditButtons = <>
-            FieldName = 'nom_p'
+            FieldName = 'nomp'
             Font.Charset = DEFAULT_CHARSET
             Font.Color = 4207405
             Font.Height = 16
@@ -3268,7 +3296,7 @@ object CNotificationsF: TCNotificationsF
             DisplayFormat = '0.00'
             DynProps = <>
             EditButtons = <>
-            FieldName = 'QutDispo'
+            FieldName = 'qutinstock_p'
             Font.Charset = DEFAULT_CHARSET
             Font.Color = 4207405
             Font.Height = 16
