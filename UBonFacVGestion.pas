@@ -779,10 +779,6 @@ begin
         MainForm.ProduitTable.Active:=True;
         CodeP:= MainForm.ProduitTable.FieldByName('code_p').AsInteger ;
 
-
-//
-//        PerissableProduitF.PerissableProduisDataS.DataSet:= DataModuleF.PerissBona_facTable;
-
         DataModuleF.PerissBona_facTable.Active:=False;
         DataModuleF.PerissBona_facTable.SQL.Clear;
         DataModuleF.PerissBona_facTable.SQL.Text:='  SELECT bona_fac_list.code_bafac, code_p,qutinstock_p,dateperiss_p,(dateperiss_p - CURRENT_DATE) AS daysleft  '
@@ -791,25 +787,13 @@ begin
         +'  WHERE bona_fac.valider_bafac = TRUE '
         +'  AND dateperiss_p is NOT NULL '
         +'  AND dateperiss_p > CURRENT_DATE '
-        +'  AND qutinstock_p <> 0  '
+        +'  AND qutinstock_p > 0  '
         +'  AND code_p = ' + IntToStr(CodeP)
         +'  ORDER BY dateperiss_p ';
 
-//         DataModuleF.PerissBona_recTable.Fields.Clear;
-//         DataModuleF.PerissBona_recTablenumbrec.LookupDataSet:=  MainForm.Bona_facTable;
-//         DataModuleF.PerissBona_recTablecode_barec.FieldName:= 'code_bafac';
-//         DataModuleF.PerissBona_recTablecode_barec.Origin:= 'code_bafac';
-//         DataModuleF.PerissBona_recTablenumbrec.KeyFields:=  'code_bafac';
-//         DataModuleF.PerissBona_recTablenumbrec.LookupKeyFields:= 'code_bafac';
-//         DataModuleF.PerissBona_recTablenumbrec.LookupResultField:= 'num_bafac';
-;
-        DataModuleF.PerissBona_facTable.Active:=True;
+      DataModuleF.PerissBona_facTable.Active:=True;
 
-
-
-
-
-    if (MainForm.ProduitTable.FieldByName('perissable_p').AsBoolean = True)
+        if (MainForm.ProduitTable.FieldByName('perissable_p').AsBoolean = True)
         AND NOT (DataModuleF.PerissBona_facTable.IsEmpty) AND (DataModuleF.PerissBona_facTable.RecordCount > 1) then
     begin
 
@@ -851,13 +835,6 @@ begin
                   CodeFV:= MainForm.Bonv_fac_listTable.FieldValues['code_bvfacl'] + 1 ;
                  end;
 
-                 if MainForm.ProduitTable.FieldByName('perissable_p').AsBoolean = True then
-                 begin
-                 
-//                   ProduitsListDBGridEh.Columns[4].Visible := True
-//
-                   
-                 end;
 
              MainForm.Bonv_fac_listTable.Last;
              MainForm.Bonv_fac_listTable.Append;
@@ -867,6 +844,11 @@ begin
              MainForm.Bonv_fac_listTable.FieldValues['qut_p'] :=  01;
              MainForm.Bonv_fac_listTable.FieldValues['cond_p']:= 01;
              MainForm.Bonv_fac_listTable.FieldValues['tva_p']:= MainForm.ProduitTable.FieldValues['tva_p'];
+
+             if DataModuleF.PerissBona_facTable.RecordCount = 1 then
+             begin
+              MainForm.Bonv_fac_listTable.FieldValues['code_bafac']:= DataModuleF.PerissBona_facTable.FieldValues['code_bafac'];
+             end;
 
            if  NOT (MainForm.ClientTable.IsEmpty) AND (ClientBonFacVGCbx.Text<> '' ) then
            begin
@@ -981,6 +963,39 @@ begin
             MainForm.ProduitTable.Active:=True;
             CodeP:= MainForm.ProduitTable.FieldByName('code_p').AsInteger ;
 
+
+        DataModuleF.PerissBona_facTable.Active:=False;
+        DataModuleF.PerissBona_facTable.SQL.Clear;
+        DataModuleF.PerissBona_facTable.SQL.Text:='  SELECT bona_fac_list.code_bafac, code_p,qutinstock_p,dateperiss_p,(dateperiss_p - CURRENT_DATE) AS daysleft  '
+        +'  FROM bona_fac_list  '
+        +'  JOIN bona_fac ON bona_fac.code_bafac = bona_fac_list.code_bafac '
+        +'  WHERE bona_fac.valider_bafac = TRUE '
+        +'  AND dateperiss_p is NOT NULL '
+        +'  AND dateperiss_p > CURRENT_DATE '
+        +'  AND qutinstock_p > 0  '
+        +'  AND code_p = ' + IntToStr(CodeP)
+        +'  ORDER BY dateperiss_p ';
+
+        DataModuleF.PerissBona_facTable.Active:=True;
+
+    if (MainForm.ProduitTable.FieldByName('perissable_p').AsBoolean = True)
+        AND NOT (DataModuleF.PerissBona_facTable.IsEmpty) AND (DataModuleF.PerissBona_facTable.RecordCount > 1) then
+    begin
+
+      PerissableProduitF:=TPerissableProduitF.Create(BonFacVGestionF);
+
+        PerissableProduitF.PerissableProduisDataS.DataSet:= DataModuleF.PerissBona_facTable;
+        PerissableProduitF.ProduitsListDBGridEh.Columns[0].FieldName:='numfac';
+      PerissableProduitF.Left:=  (MainForm.Left + MainForm.Width div 2) - (PerissableProduitF.Width div 2);
+      PerissableProduitF.Top:=   MainForm.Top + 5;
+      AnimateWindow(PerissableProduitF.Handle, 175, AW_VER_POSITIVE OR AW_SLIDE OR AW_ACTIVATE );
+      PerissableProduitF.Tag:=1;
+      PerissableProduitF.Show;
+
+
+    end else
+     begin
+
          lookupResultRefP := MainForm.Bonv_fac_listTable.Lookup('code_p',(CodeP),'code_p');
          if VarIsnull( lookupResultRefP) then
          begin
@@ -1008,6 +1023,12 @@ begin
              MainForm.Bonv_fac_listTable.FieldValues['qut_p'] :=  01;
              MainForm.Bonv_fac_listTable.FieldValues['cond_p']:= 01;
              MainForm.Bonv_fac_listTable.FieldValues['tva_p']:= MainForm.ProduitTable.FieldValues['tva_p'];
+
+
+             if DataModuleF.PerissBona_facTable.RecordCount = 1 then
+             begin
+              MainForm.Bonv_fac_listTable.FieldValues['code_bafac']:= DataModuleF.PerissBona_facTable.FieldValues['code_bafac'];
+             end;
 
            if  NOT (MainForm.ClientTable.IsEmpty) AND (ClientBonFacVGCbx.Text<> '' ) then
            begin
@@ -1109,6 +1130,8 @@ begin
           //--- this tage = 3 is for multi name added by produit combobox----//
              FSplashAddUnite.Tag:=3;
          end;
+
+         end;
     end;
  //---------------------------------------------------------------------------------------------
   if ResherchPARCBProduitsRdioBtn.Checked then
@@ -1127,6 +1150,38 @@ begin
     MainForm.ProduitTable.SQL.Text:= 'SELECT * FROM produit WHERE code_p = '+QuotedStr(IntToStr(CodeCB)) +'OR'+ ' LOWER(codebar_p) LIKE LOWER(' + QuotedStr(ProduitBonFacVGCbx.Text)+')';
     MainForm.ProduitTable.Active:=True;
     CodeP:= MainForm.ProduitTable.FieldByName('code_p').AsInteger ;
+
+        DataModuleF.PerissBona_facTable.Active:=False;
+        DataModuleF.PerissBona_facTable.SQL.Clear;
+        DataModuleF.PerissBona_facTable.SQL.Text:='  SELECT bona_fac_list.code_bafac, code_p,qutinstock_p,dateperiss_p,(dateperiss_p - CURRENT_DATE) AS daysleft  '
+        +'  FROM bona_fac_list  '
+        +'  JOIN bona_fac ON bona_fac.code_bafac = bona_fac_list.code_bafac '
+        +'  WHERE bona_fac.valider_bafac = TRUE '
+        +'  AND dateperiss_p is NOT NULL '
+        +'  AND dateperiss_p > CURRENT_DATE '
+        +'  AND qutinstock_p > 0  '
+        +'  AND code_p = ' + IntToStr(CodeP)
+        +'  ORDER BY dateperiss_p ';
+
+        DataModuleF.PerissBona_facTable.Active:=True;
+
+    if (MainForm.ProduitTable.FieldByName('perissable_p').AsBoolean = True)
+        AND NOT (DataModuleF.PerissBona_facTable.IsEmpty) AND (DataModuleF.PerissBona_facTable.RecordCount > 1) then
+    begin
+
+      PerissableProduitF:=TPerissableProduitF.Create(BonFacVGestionF);
+
+        PerissableProduitF.PerissableProduisDataS.DataSet:= DataModuleF.PerissBona_facTable;
+        PerissableProduitF.ProduitsListDBGridEh.Columns[0].FieldName:='numfac';
+      PerissableProduitF.Left:=  (MainForm.Left + MainForm.Width div 2) - (PerissableProduitF.Width div 2);
+      PerissableProduitF.Top:=   MainForm.Top + 5;
+      AnimateWindow(PerissableProduitF.Handle, 175, AW_VER_POSITIVE OR AW_SLIDE OR AW_ACTIVATE );
+      PerissableProduitF.Tag:=1;
+      PerissableProduitF.Show;
+
+
+    end else
+     begin
 
      if  (MainForm.ProduitTable.RecordCount > 0 )   then
       begin
@@ -1158,6 +1213,11 @@ begin
              MainForm.Bonv_fac_listTable.FieldValues['qut_p'] :=  01;
              MainForm.Bonv_fac_listTable.FieldValues['cond_p']:= 01;
              MainForm.Bonv_fac_listTable.FieldValues['tva_p']:= MainForm.ProduitTable.FieldValues['tva_p'];
+
+             if DataModuleF.PerissBona_facTable.RecordCount = 1 then
+             begin
+              MainForm.Bonv_fac_listTable.FieldValues['code_bafac']:= DataModuleF.PerissBona_facTable.FieldValues['code_bafac'];
+             end;
 
            if  NOT (MainForm.ClientTable.IsEmpty) AND (ClientBonFacVGCbx.Text<> '' ) then
            begin
@@ -1260,6 +1320,7 @@ begin
           //--- this tage = 0 is for multi name added by produit combobox----//
              FSplashAddUnite.Tag:=3;
              end;
+          end;
           end;
 
    end;
@@ -2484,6 +2545,8 @@ begin
               MainForm.FDQuery2.FieldValues['qutinstock_p']:= ( MainForm.FDQuery2.FieldValues['qutinstock_p']
                                                            - ((MainForm.SQLQuery.FieldValues['qut_p']) * ((MainForm.SQLQuery.FieldValues['cond_p']))));
               MainForm.FDQuery2.Post;
+
+
             end;
 
             MainForm.SQLQuery.Next;

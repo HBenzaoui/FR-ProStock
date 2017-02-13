@@ -376,13 +376,11 @@ object DataModuleF: TDataModuleF
       'Database=PSDBConfig'
       'User_Name=postgres'
       'DriverID=pG')
-    Connected = True
     LoginPrompt = False
     Left = 83
     Top = 22
   end
   object UsersTable: TFDQuery
-    Active = True
     FilterOptions = [foCaseInsensitive]
     IndexFieldNames = 'code_ur'
     Connection = PSDBConfigConnection
@@ -1068,32 +1066,52 @@ object DataModuleF: TDataModuleF
     OnCalcFields = PCloseDiedCnotifCalcFields
     Connection = MainForm.GstockdcConnection
     SQL.Strings = (
-      'SELECT '
       
-        'code_p,refer_p,nom_p,code_famp,code_sfamp,qut_p,qutini_p,code_f,' +
-        'dateperiss_p,code_u,code_l,alertdays_p,'
-      '(dateperiss_p - current_date) as daysleft '
-      '      FROM produit '
-      '      WHERE perissable_p = true '
-      '  AND (dateperiss_p - current_date) <= alertdays_p'
-      '  AND (qut_p + qutini_p) <> 0'
-      '  AND (dateperiss_p - current_date) > 0')
+        'SELECT bona_rec_list.code_barec, bona_rec.num_barec, bona_rec_li' +
+        'st.code_p,qutinstock_p,bona_rec_list.dateperiss_p,'
+      
+        '(bona_rec_list.dateperiss_p - CURRENT_DATE) AS daysleft,produit.' +
+        'code_famp,produit.code_sfamp,produit.code_l,produit.code_u, bona' +
+        '_rec.code_f,produit.alertdays_p'
+      'FROM bona_rec_list '
+      'JOIN bona_rec ON bona_rec.code_barec = bona_rec_list.code_barec'
+      
+        'JOIN produit as produit ON bona_rec_list.code_p = produit.code_p' +
+        ' '
+      'WHERE bona_rec.valider_barec = TRUE'
+      'AND bona_rec_list.dateperiss_p is NOT NULL'
+      'AND (bona_rec_list.dateperiss_p - CURRENT_DATE) <= alertdays_p'
+      'AND (bona_rec_list.dateperiss_p - CURRENT_DATE) > 0'
+      'AND qutinstock_p > 0 '
+      'AND bona_rec_list.code_p = 1'
+      ''
+      'UNION ALL '
+      ''
+      
+        'SELECT bona_fac_list.code_bafac, bona_fac.num_bafac, bona_fac_li' +
+        'st.code_p,qutinstock_p,bona_fac_list.dateperiss_p,'
+      
+        '(bona_fac_list.dateperiss_p - CURRENT_DATE) AS daysleft2,produit' +
+        '.code_famp,produit.code_sfamp,produit.code_l,produit.code_u, bon' +
+        'a_fac.code_f,produit.alertdays_p'
+      'FROM bona_fac_list'
+      'JOIN bona_fac ON bona_fac.code_bafac = bona_fac_list.code_bafac'
+      
+        'JOIN produit as produit ON bona_fac_list.code_p = produit.code_p' +
+        ' '
+      'WHERE bona_fac.valider_bafac = TRUE '
+      'AND bona_fac_list.dateperiss_p is NOT NULL '
+      'AND (bona_fac_list.dateperiss_p - CURRENT_DATE) <= alertdays_p'
+      'AND (bona_fac_list.dateperiss_p - CURRENT_DATE) > 0'
+      'AND qutinstock_p > 0'
+      'AND bona_fac_list.code_p = 1'
+      'ORDER BY daysleft DESC')
     Left = 854
     Top = 414
     object PCloseDiedCnotifcode_p: TIntegerField
       FieldName = 'code_p'
       Origin = 'code_p'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-    end
-    object PCloseDiedCnotifrefer_p: TWideStringField
-      FieldName = 'refer_p'
-      Origin = 'refer_p'
-      Size = 8190
-    end
-    object PCloseDiedCnotifnom_p: TWideStringField
-      FieldName = 'nom_p'
-      Origin = 'nom_p'
-      Size = 8190
     end
     object PCloseDiedCnotifcode_famp: TIntegerField
       FieldName = 'code_famp'
@@ -1128,18 +1146,6 @@ object DataModuleF: TDataModuleF
       FieldName = 'daysleft'
       Origin = 'daysleft'
       ReadOnly = True
-    end
-    object PCloseDiedCnotifqut_p: TFloatField
-      FieldName = 'qut_p'
-      Origin = 'qut_p'
-    end
-    object PCloseDiedCnotifqutini_p: TFloatField
-      FieldName = 'qutini_p'
-      Origin = 'qutini_p'
-    end
-    object PCloseDiedCnotifQutDispo: TFloatField
-      FieldKind = fkInternalCalc
-      FieldName = 'QutDispo'
     end
     object PCloseDiedCnotiffamp: TStringField
       FieldKind = fkLookup
@@ -1186,37 +1192,94 @@ object DataModuleF: TDataModuleF
       KeyFields = 'code_l'
       Lookup = True
     end
+    object PCloseDiedCnotifcode_barec: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'code_barec'
+      Origin = 'code_barec'
+      ReadOnly = True
+    end
+    object PCloseDiedCnotifnum_barec: TWideStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'num_barec'
+      Origin = 'num_barec'
+      ReadOnly = True
+      Size = 8190
+    end
+    object PCloseDiedCnotifqutinstock_p: TFloatField
+      AutoGenerateValue = arDefault
+      FieldName = 'qutinstock_p'
+      Origin = 'qutinstock_p'
+      ReadOnly = True
+    end
+    object PCloseDiedCnotifnomp: TStringField
+      FieldKind = fkLookup
+      FieldName = 'nomp'
+      LookupDataSet = MainForm.ProduitTable
+      LookupKeyFields = 'code_p'
+      LookupResultField = 'nom_p'
+      KeyFields = 'code_p'
+      Size = 150
+      Lookup = True
+    end
+    object PCloseDiedCnotifreferp: TStringField
+      FieldKind = fkLookup
+      FieldName = 'referp'
+      LookupDataSet = MainForm.ProduitTable
+      LookupKeyFields = 'code_p'
+      LookupResultField = 'refer_p'
+      KeyFields = 'code_p'
+      Lookup = True
+    end
   end
   object PDiedCnotif: TFDQuery
-    OnCalcFields = PDiedCnotifCalcFields
     Connection = MainForm.GstockdcConnection
     SQL.Strings = (
-      'SELECT '
       
-        'code_p,refer_p,nom_p,code_famp,code_sfamp,qut_p,qutini_p,code_f,' +
-        'dateperiss_p,code_u,code_l,alertdays_p,'
-      '(dateperiss_p - current_date) as daysleft '
-      '      FROM produit '
-      '      WHERE perissable_p = true '
-      '  AND (dateperiss_p - current_date) <= alertdays_p'
-      '  AND (qut_p + qutini_p) <> 0'
-      '  AND (dateperiss_p - current_date) <= 0')
+        'SELECT bona_rec_list.code_barec, bona_rec.num_barec, bona_rec_li' +
+        'st.code_p,qutinstock_p,bona_rec_list.dateperiss_p,'
+      
+        '(bona_rec_list.dateperiss_p - CURRENT_DATE) AS daysleft,produit.' +
+        'code_famp,produit.code_sfamp,produit.code_l,produit.code_u, bona' +
+        '_rec.code_f'
+      'FROM bona_rec_list '
+      'JOIN bona_rec ON bona_rec.code_barec = bona_rec_list.code_barec'
+      
+        'JOIN produit as produit ON bona_rec_list.code_p = produit.code_p' +
+        ' '
+      'WHERE bona_rec.valider_barec = TRUE'
+      'AND bona_rec_list.dateperiss_p is NOT NULL'
+      'AND bona_rec_list.dateperiss_p <= CURRENT_DATE '
+      'AND qutinstock_p > 0 '
+      'AND produit.perissable_p = TRUE '
+      'AND bona_rec_list.code_p = 1'
+      ''
+      'UNION ALL '
+      ''
+      
+        'SELECT bona_fac_list.code_bafac, bona_fac.num_bafac, bona_fac_li' +
+        'st.code_p,qutinstock_p,bona_fac_list.dateperiss_p,'
+      
+        '(bona_fac_list.dateperiss_p - CURRENT_DATE) AS daysleft2,produit' +
+        '.code_famp,produit.code_sfamp,produit.code_l,produit.code_u, bon' +
+        'a_fac.code_f'
+      'FROM bona_fac_list'
+      'JOIN bona_fac ON bona_fac.code_bafac = bona_fac_list.code_bafac'
+      
+        'JOIN produit as produit ON bona_fac_list.code_p = produit.code_p' +
+        ' '
+      'WHERE bona_fac.valider_bafac = TRUE '
+      'AND bona_fac_list.dateperiss_p is NOT NULL '
+      'AND bona_fac_list.dateperiss_p <= CURRENT_DATE'
+      'AND qutinstock_p > 0'
+      'AND produit.perissable_p = TRUE '
+      'AND bona_fac_list.code_p = 1'
+      'ORDER BY daysleft DESC')
     Left = 852
-    Top = 468
+    Top = 470
     object PDiedCnotifcode_p: TIntegerField
       FieldName = 'code_p'
       Origin = 'code_p'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-    end
-    object PDiedCnotifrefer_p: TWideStringField
-      FieldName = 'refer_p'
-      Origin = 'refer_p'
-      Size = 8190
-    end
-    object PDiedCnotifnom_p: TWideStringField
-      FieldName = 'nom_p'
-      Origin = 'nom_p'
-      Size = 8190
     end
     object PDiedCnotifcode_famp: TIntegerField
       FieldName = 'code_famp'
@@ -1225,14 +1288,6 @@ object DataModuleF: TDataModuleF
     object PDiedCnotifcode_sfamp: TIntegerField
       FieldName = 'code_sfamp'
       Origin = 'code_sfamp'
-    end
-    object PDiedCnotifqut_p: TFloatField
-      FieldName = 'qut_p'
-      Origin = 'qut_p'
-    end
-    object PDiedCnotifqutini_p: TFloatField
-      FieldName = 'qutini_p'
-      Origin = 'qutini_p'
     end
     object PDiedCnotifcode_f: TIntegerField
       FieldName = 'code_f'
@@ -1250,19 +1305,11 @@ object DataModuleF: TDataModuleF
       FieldName = 'code_l'
       Origin = 'code_l'
     end
-    object PDiedCnotifalertdays_p: TSmallintField
-      FieldName = 'alertdays_p'
-      Origin = 'alertdays_p'
-    end
     object PDiedCnotifdaysleft: TIntegerField
       AutoGenerateValue = arDefault
       FieldName = 'daysleft'
       Origin = 'daysleft'
       ReadOnly = True
-    end
-    object PDiedCnotifQutDispo: TFloatField
-      FieldKind = fkInternalCalc
-      FieldName = 'QutDispo'
     end
     object PDiedCnotiflocal: TStringField
       FieldKind = fkLookup
@@ -1308,6 +1355,44 @@ object DataModuleF: TDataModuleF
       LookupResultField = 'nom_famp'
       KeyFields = 'code_famp'
       Lookup = True
+    end
+    object PDiedCnotifnomp: TStringField
+      FieldKind = fkLookup
+      FieldName = 'nomp'
+      LookupDataSet = MainForm.ProduitTable
+      LookupKeyFields = 'code_p'
+      LookupResultField = 'nom_p'
+      KeyFields = 'code_p'
+      Size = 150
+      Lookup = True
+    end
+    object PDiedCnotifreferp: TStringField
+      FieldKind = fkLookup
+      FieldName = 'referp'
+      LookupDataSet = MainForm.ProduitTable
+      LookupKeyFields = 'code_p'
+      LookupResultField = 'refer_p'
+      KeyFields = 'code_p'
+      Size = 50
+      Lookup = True
+    end
+    object PDiedCnotifcode_barec: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'code_barec'
+      Origin = 'code_barec'
+      ReadOnly = True
+    end
+    object PDiedCnotifnum_barec: TWideStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'num_barec'
+      Origin = 'num_barec'
+      ReadOnly = True
+    end
+    object PDiedCnotifqutinstock_p: TFloatField
+      AutoGenerateValue = arDefault
+      FieldName = 'qutinstock_p'
+      Origin = 'qutinstock_p'
+      ReadOnly = True
     end
   end
   object PZeroQCnotifDS: TDataSource
@@ -1753,14 +1838,16 @@ object DataModuleF: TDataModuleF
     Connection = MainForm.GstockdcConnection
     SQL.Strings = (
       
-        'SELECT code_barec, code_p,qutinstock_p,dateperiss_p,(dateperiss_' +
-        'p - CURRENT_DATE) AS daysleft'
-      'FROM bona_rec_list'
-      'WHERE dateperiss_p is NOT NULL '
-      'AND dateperiss_p > CURRENT_DATE'
-      'AND qutinstock_p <> 0'
+        'SELECT bona_rec_list.code_barec, code_p,qutinstock_p,dateperiss_' +
+        'p,(dateperiss_p - CURRENT_DATE) AS daysleft'
+      'FROM bona_rec_list '
+      'JOIN bona_rec ON bona_rec.code_barec = bona_rec_list.code_barec'
+      'WHERE bona_rec.valider_barec = TRUE'
+      'AND dateperiss_p is NOT NULL'
+      'AND dateperiss_p > CURRENT_DATE '
+      'AND qutinstock_p > 0 '
       'AND code_p = 1'
-      'ORDER BY dateperiss_p')
+      'ORDER BY dateperiss_p ;')
     Left = 753
     Top = 410
     object PerissBona_recTablecode_barec: TIntegerField

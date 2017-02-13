@@ -22,6 +22,7 @@ type
     procedure FormKeyPress(Sender: TObject; var Key: Char);
     procedure ProduitsListDBGridEhKeyPress(Sender: TObject; var Key: Char);
     procedure ProduitsListDBGridEhDblClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
   public
@@ -35,7 +36,8 @@ implementation
 
 {$R *.dfm}
 
-uses UDataModule,System.Contnrs, UBonLivGestion, UMainF, UBonFacVGestion;
+uses UDataModule,System.Contnrs, UBonLivGestion, UMainF, UBonFacVGestion, MMSystem,
+  UComptoir;
 
 
 var
@@ -96,11 +98,24 @@ end;
 
 procedure TPerissableProduitF.FormCreate(Sender: TObject);
 begin
+
+//if Assigned(BonCtrGestionF) AND (Tag = 2)  then
+//begin
+//  SetWindowPos(BonCtrGestionF.Handle, HWND_NOTOPMOST, 0, 0, 0, 0,SWP_NOMOVE or SWP_NOSIZE);
+//end;
+//
+//
 GrayFormsAddPerisable;
 end;
 
 procedure TPerissableProduitF.FormDestroy(Sender: TObject);
 begin
+
+ if Assigned(BonCtrGestionF) then
+ begin
+   SetWindowPos(BonCtrGestionF.Handle,HWND_TOPMOST,0,0,0,0,SWP_NOACTIVATE or SWP_NOMOVE or SWP_NOSIZE);
+ end;
+
 NormalFormsAddPerisable;
 end;
 
@@ -120,6 +135,17 @@ begin
   ProduitsListDBGridEhKeyPress(Sender, key);
 
  end;
+end;
+
+procedure TPerissableProduitF.FormShow(Sender: TObject);
+begin
+if Assigned(BonCtrGestionF) AND (Tag = 2)  then
+begin
+  SetWindowPos(BonCtrGestionF.Handle, HWND_NOTOPMOST, 0, 0, 0, 0,SWP_NOMOVE or SWP_NOSIZE);
+end;
+
+
+//GrayFormsAddPerisable;
 end;
 
 procedure TPerissableProduitF.OKAddUniteSBtnClick(Sender: TObject);
@@ -248,9 +274,11 @@ begin
           BonLivGestionF.ProduitsListDBGridEh.SelectedIndex:=2;
           BonLivGestionF.ProduitsListDBGridEh.EditorMode:=True;
 
+           sndPlaySound('C:\Windows\Media\speech on.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+
          end;
 
-
+     //------------- this tag is for adding perisable to facturaction
         if Tag = 1  then
         begin
 
@@ -351,7 +379,114 @@ begin
           BonFacVGestionF.ProduitsListDBGridEh.SelectedIndex:=2;
           BonFacVGestionF.ProduitsListDBGridEh.EditorMode:=True;
 
+           sndPlaySound('C:\Windows\Media\speech on.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+
         end;
+
+        //---------this tag is for adding persable produit in bon comptoir---------------------
+       if Tag = 2 then
+       begin
+
+             MainForm.SQLQuery.Active:= False;
+             MainForm.SQLQuery.SQL.Clear;
+             MainForm.SQLQuery.SQL.Text:= 'SELECT code_p,tva_p,prixvd_p,prixvr_p,prixvg_p,prixva_p,prixva2_p FROM produit WHERE code_p ='
+             +IntToStr(DataModuleF.PerissBona_recTable.FieldByName('code_p').AsInteger) ;
+             MainForm.SQLQuery.Active:= True;
+
+            CodeP:= MainForm.SQLQuery.FieldByName('code_p').AsInteger ;
+
+
+             if BonCtrGestionF.ClientBonCtrGCbx.Text<> '' then
+           begin
+              MainForm.FDQuery2.Active:=false;
+              MainForm.FDQuery2.SQL.Clear;
+              MainForm.FDQuery2.SQL.Text:='Select * FROM client WHERE LOWER(nom_c) LIKE LOWER('+ QuotedStr( BonCtrGestionF.ClientBonCtrGCbx.Text )+')'  ;
+              MainForm.FDQuery2.Active:=True;
+
+           end;
+
+
+
+          MainForm.Bonv_ctr_listTable.DisableControls;
+          MainForm.Bonv_ctr_listTable.IndexFieldNames:='';
+          MainForm.Bonv_ctr_listTable.Active:=False;
+          MainForm.Bonv_ctr_listTable.SQL.Clear;
+          MainForm.Bonv_ctr_listTable.SQL.Text:= 'SELECT * FROM bonv_ctr_list ORDER by code_bvctrl' ;
+          MainForm.Bonv_ctr_listTable.Active:=True;
+          MainForm.Bonv_ctr_listTable.Last;
+           if  MainForm.Bonv_ctr_listTable.IsEmpty then
+           begin
+             MainForm.Bonv_ctr_listTable.Last;
+             CodeBR := 1;
+           end else
+               begin
+                MainForm.Bonv_ctr_listTable.Last;
+                CodeBR:= MainForm.Bonv_ctr_listTable.FieldValues['code_bvctrl'] + 1 ;
+               end;
+             MainForm.Bonv_ctr_listTable.Last;
+             MainForm.Bonv_ctr_listTable.Append;
+             MainForm.Bonv_ctr_listTable.FieldValues['code_bvctrl']:= CodeBR ;
+             MainForm.Bonv_ctr_listTable.FieldValues['code_bvctr']:= MainForm.Bonv_ctrTable.FieldValues['code_bvctr'];
+             MainForm.Bonv_ctr_listTable.FieldValues['code_p']:=  MainForm.SQLQuery.FieldValues['code_p'] ;
+             MainForm.Bonv_ctr_listTable.FieldValues['qut_p'] :=  01;
+             MainForm.Bonv_ctr_listTable.FieldValues['cond_p']:= 01;
+             MainForm.Bonv_ctr_listTable.FieldValues['tva_p']:= MainForm.SQLQuery.FieldValues['tva_p'];
+             MainForm.Bonv_ctr_listTable.FieldValues['code_barec']:= DataModuleF.PerissBona_recTable.FieldValues['code_barec'];
+
+           if  NOT (MainForm.FDQuery2.IsEmpty) AND (BonCtrGestionF.ClientBonCtrGCbx.Text<> '' ) then
+           begin
+             if MainForm.FDQuery2.FieldByName('tarification_c').AsInteger = 0 then
+             begin
+             MainForm.Bonv_ctr_listTable.FieldValues['prixvd_p']:= MainForm.SQLQuery.FieldValues['prixvd_p'];
+             end;
+             if MainForm.FDQuery2.FieldByName('tarification_c').AsInteger = 1 then
+             begin
+             MainForm.Bonv_ctr_listTable.FieldValues['prixvd_p']:= MainForm.SQLQuery.FieldValues['prixvr_p'];
+             end;
+             if MainForm.FDQuery2.FieldByName('tarification_c').AsInteger = 2 then
+             begin
+             MainForm.Bonv_ctr_listTable.FieldValues['prixvd_p']:= MainForm.SQLQuery.FieldValues['prixvg_p'];
+             end;
+             if MainForm.FDQuery2.FieldByName('tarification_c').AsInteger = 3 then
+             begin
+             MainForm.Bonv_ctr_listTable.FieldValues['prixvd_p']:= MainForm.SQLQuery.FieldValues['prixva_p'];
+             end;
+             if MainForm.FDQuery2.FieldByName('tarification_c').AsInteger = 4 then
+             begin
+             MainForm.Bonv_ctr_listTable.FieldValues['prixvd_p']:= MainForm.SQLQuery.FieldValues['prixva2_p'];
+             end;
+             end else
+                 begin
+                  MainForm.Bonv_ctr_listTable.FieldValues['prixvd_p']:= MainForm.SQLQuery.FieldValues['prixvd_p'];
+                 end;
+
+             MainForm.Bonv_ctr_listTable.Post ;
+
+           MainForm.Bonv_ctr_listTable.IndexFieldNames:='code_bvctr';
+           MainForm.Bonv_ctr_listTable.Last;
+           MainForm.Bonv_ctr_listTable.EnableControls;
+           MainForm.SQLQuery.Active:=False;
+           MainForm.SQLQuery.SQL.Clear;
+           MainForm.Bonv_ctr_listTable.Active:=False;
+           MainForm.Bonv_ctr_listTable.SQL.Clear;
+           MainForm.Bonv_ctr_listTable.SQL.Text:= 'SELECT * FROM bonv_ctr_list WHERE code_bvctr = ' + QuotedStr(IntToStr(MainForm.Bonv_ctrTable.FieldValues['code_bvctr']));
+           MainForm.Bonv_ctr_listTable.Active:=True;
+
+          MainForm.FDQuery2.Active:=false;
+          MainForm.FDQuery2.SQL.Clear;
+
+          OKAddUniteSBtnClick(Sender);
+
+          BonCtrGestionF.ProduitsListDBGridEhExit(Sender);
+          BonCtrGestionF.ProduitBonCtrGCbx.Text:='';
+          BonCtrGestionF.ProduitBonCtrGCbx.SetFocus;
+
+//          BonCtrGestionF.ProduitsListDBGridEh.SelectedIndex:=2;
+          BonCtrGestionF.ProduitsListDBGridEh.EditorMode:=True;
+
+           sndPlaySound('C:\Windows\Media\speech on.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+         end;
+
 
 
      end;

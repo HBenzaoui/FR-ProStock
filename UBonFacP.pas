@@ -428,6 +428,7 @@ end;
 
 procedure TBonFacPF.DateStartBVFacDChange(Sender: TObject);
 begin
+ClearFilterBVLivPMenuClick(Sender);
 MainForm.Bonp_facTable.DisableControls;
 MainForm.Bonp_facTable.Active:= False;
 MainForm.Bonp_facTable.SQL.clear;

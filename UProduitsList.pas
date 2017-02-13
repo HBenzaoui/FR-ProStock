@@ -117,6 +117,7 @@ type
     procedure FormShow(Sender: TObject);
     procedure AdvToolButton1Click(Sender: TObject);
     procedure AdvToolButton2Click(Sender: TObject);
+    procedure AdvToolButton4Click(Sender: TObject);
     procedure AdvToolButton3Click(Sender: TObject);
   private
     procedure GettingData;
@@ -1093,7 +1094,21 @@ end;
 
 procedure TProduitsListF.AdvToolButton3Click(Sender: TObject);
 begin
-  if NOT (MainForm.ProduitTable.IsEmpty) Then
+
+  MainForm.ProduitTable.DisableControls;
+
+   GettingData;
+
+  ProduitListfrxRprt.PrepareReport;
+  ProduitListfrxRprt.ShowReport;
+
+  MainForm.ProduitTable.EnableControls;
+
+end;
+
+procedure TProduitsListF.AdvToolButton4Click(Sender: TObject);
+begin
+ if NOT (MainForm.ProduitTable.IsEmpty) Then
   begin
     FSplashPrinting:=TFSplashPrinting.Create(Application);
 //    FSplashPrinting.Width:=350;

@@ -26,7 +26,7 @@ object FSplashAddUnite: TFSplashAddUnite
     Left = 58
     Top = 66
     Width = 42
-    Height = 19
+    Height = 18
     Caption = 'Unite:'
     Color = 4207405
     Font.Charset = DEFAULT_CHARSET

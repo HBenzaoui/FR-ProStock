@@ -1132,6 +1132,7 @@ end;
 
 procedure TBonRecF.DateStartBARecDChange(Sender: TObject);
 begin
+ClearFilterBVLivPMenuClick(Sender);
 MainForm.Bona_recTable.DisableControls;
 MainForm.Bona_recTable.Active:= False;
 MainForm.Bona_recTable.SQL.clear;

@@ -583,6 +583,7 @@ end;
 
 procedure TBonFacAF.DateStartBAFacDChange(Sender: TObject);
 begin
+ClearFilterBVLivPMenuClick(Sender);
 MainForm.Bona_facTable.DisableControls;
 MainForm.Bona_facTable.Active:= False;
 MainForm.Bona_facTable.SQL.clear;

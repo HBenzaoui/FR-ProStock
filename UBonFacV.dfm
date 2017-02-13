@@ -1027,7 +1027,7 @@ object BonFacVF: TBonFacVF
     object ResearchBARecLbl: TLabel
       Left = 6
       Top = 31
-      Width = 66
+      Width = 74
       Height = 16
       Caption = 'Rechercher'
       Color = 15722984
