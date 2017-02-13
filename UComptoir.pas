@@ -208,7 +208,8 @@ implementation
 {$R *.dfm}
 uses  Printers,StringTool,IniFiles,UDataModule,
  Winapi.ShellAPI, UMainF, UProduitsList, UBonCtr, USplashAddUnite,UProduitGestion,
-  UFastProduitsList, USplashVersement, UOptions, UClientGestion, UClientsList;
+  UFastProduitsList, USplashVersement, UOptions, UClientGestion, UClientsList,
+  UPerissableProduit;
 
 
 procedure Refresh_PreservePosition;
@@ -714,6 +715,36 @@ begin
           CodeP:= MainForm.ProduitTable.FieldByName('code_p').AsInteger ;
         end;
 
+
+        DataModuleF.PerissBona_recTable.Active:=False;
+        DataModuleF.PerissBona_recTable.SQL.Clear;
+        DataModuleF.PerissBona_recTable.SQL.Text:='  SELECT bona_rec_list.code_barec, code_p,qutinstock_p,dateperiss_p,(dateperiss_p - CURRENT_DATE) AS daysleft  '
+        +'  FROM bona_rec_list  '
+        +'  JOIN bona_rec ON bona_rec.code_barec = bona_rec_list.code_barec '
+        +'  WHERE bona_rec.valider_barec = TRUE '
+        +'  AND dateperiss_p is NOT NULL '
+        +'  AND dateperiss_p > CURRENT_DATE '
+        +'  AND qutinstock_p > 0  '
+        +'  AND code_p = ' + IntToStr(CodeP)
+        +'  ORDER BY dateperiss_p ';
+;
+        DataModuleF.PerissBona_recTable.Active:=True;
+
+    if (MainForm.ProduitTable.FieldByName('perissable_p').AsBoolean = True)
+        AND NOT (DataModuleF.PerissBona_recTable.IsEmpty) AND (DataModuleF.PerissBona_recTable.RecordCount > 1) then
+    begin
+
+      PerissableProduitF:=TPerissableProduitF.Create(BonCtrGestionF);
+      PerissableProduitF.Tag:=2;
+      PerissableProduitF.Left:=  (MainForm.Left + MainForm.Width div 2) - (PerissableProduitF.Width div 2);
+      PerissableProduitF.Top:=   MainForm.Top + 5;
+      AnimateWindow(PerissableProduitF.Handle, 175, AW_VER_POSITIVE OR AW_SLIDE OR AW_ACTIVATE );
+
+      PerissableProduitF.Show;
+
+    end else
+     begin
+
          lookupResultRefP := MainForm.Bonv_ctr_listTable.Lookup('code_p',(CodeP),'code_p');
          if VarIsnull( lookupResultRefP) then
          begin
@@ -747,6 +778,11 @@ begin
              MainForm.Bonv_ctr_listTable.FieldValues['qut_p'] :=  01;
              MainForm.Bonv_ctr_listTable.FieldValues['cond_p']:= 01;
              MainForm.Bonv_ctr_listTable.FieldValues['tva_p']:=  MainForm.ProduitTable.FieldValues['tva_p'] ;
+
+             if DataModuleF.PerissBona_recTable.RecordCount = 1 then
+             begin
+              MainForm.Bonv_ctr_listTable.FieldValues['code_barec']:= DataModuleF.PerissBona_recTable.FieldValues['code_barec'];
+             end;
 
            if  NOT (MainForm.ClientTable.IsEmpty) AND (ClientBonCtrGCbx.Text<> '' ) then
            begin
@@ -850,6 +886,7 @@ begin
     //--- this tage = 0 is for multi name added by produit combobox----//
        FSplashAddUnite.Tag:=5;
      end;
+     end;
 
 
       MainForm.ClientTable.Active:=false;
@@ -876,18 +913,18 @@ begin
 end;
 
 procedure TBonCtrGestionF.FormClose(Sender: TObject; var Action: TCloseAction);
-var
-HTaskbar:HWND;
-OldVal:LongInt;
+//var
+//HTaskbar:HWND;
+//OldVal:LongInt;
 begin
 //Find handle of TASKBAR
-HTaskBar:=FindWindow('Shell_TrayWnd',nil);
+//HTaskBar:=FindWindow('Shell_TrayWnd',nil);
 //Turn SYSTEM KEYS Back ON,Only Win 95/98/ME
-SystemParametersInfo(97,Word(False),@OldVal,0);
+//SystemParametersInfo(97,Word(False),@OldVal,0);
 //Enable the taskbar
-EnableWindow(HTaskBar,True);
+//EnableWindow(HTaskBar,True);
 //Show the taskbar
-ShowWindow(HTaskbar,SW_SHOW);
+//ShowWindow(HTaskbar,SW_SHOW);
 
  if ValiderBVCTRBonCtrGImg.ImageIndex = 1 then
   begin
@@ -927,6 +964,8 @@ ShowWindow(HTaskbar,SW_SHOW);
 
 
 //  FormatSettings.DecimalSeparator := '.';
+
+Action := caFree;
 end;
 
 procedure TBonCtrGestionF.FormCloseQuery(Sender: TObject;
@@ -1281,20 +1320,20 @@ begin
 end;
 
 procedure TBonCtrGestionF.FormActivate(Sender: TObject);
-Var
-
-HTaskbar:HWND;
-OldVal:LongInt;
+//Var
+//
+//HTaskbar:HWND;
+//OldVal:LongInt;
 begin
  try
   //Find handle of TASKBAR
-  HTaskBar:=FindWindow('Shell_TrayWnd',nil);
+//  HTaskBar:=FindWindow('Shell_TrayWnd',nil);
   //Turn SYSTEM KEYS off, Only Win 95/98/ME
-  SystemParametersInfo(97,Word(True),@OldVal,0);
+//  SystemParametersInfo(97,Word(True),@OldVal,0);
   //Disable the taskbar
-  EnableWindow(HTaskBar,False);
+//  EnableWindow(HTaskBar,False);
   //Hide the taskbar
-  ShowWindow(HTaskbar,SW_HIDE);
+//  ShowWindow(HTaskbar,SW_HIDE);
  finally
   with BonCtrGestionF do
   begin
@@ -2461,39 +2500,57 @@ begin
  //----------------------------------------
 
       begin
-           MainForm.ProduitTable.DisableControls;
-           MainForm.ProduitTable.Active:=False;
-           MainForm.ProduitTable.SQL.Clear;
-           MainForm.ProduitTable.SQL.Text:='SELECT * FROM produit ' ;
-           MainForm.ProduitTable.Active:=True;
+//           MainForm.ProduitTable.DisableControls;
+//           MainForm.ProduitTable.Active:=False;
+//           MainForm.ProduitTable.SQL.Clear;
+//           MainForm.ProduitTable.SQL.Text:='SELECT * FROM produit ' ;
+//           MainForm.ProduitTable.Active:=True;
            Mainform.Sqlquery.Active:=False;
            Mainform.Sqlquery.Sql.Clear;
-           Mainform.Sqlquery.Sql.Text:='SELECT code_bvctrl,code_p,  qut_p, cond_p  FROM bonv_ctr_list WHERE code_bvctr =  '
+           Mainform.Sqlquery.Sql.Text:='SELECT code_bvctrl,code_p,  qut_p, cond_p,code_barec  FROM bonv_ctr_list WHERE code_bvctr =  '
                                                  + IntToStr (MainForm.Bonv_ctrTable.FieldValues['code_bvctr'])
-                                                 + 'GROUP BY code_bvctrl, code_p, qut_p, cond_p ' ;
+                                                 + 'GROUP BY code_bvctrl, code_p, qut_p, cond_p,code_barec ' ;
            MainForm.SQLQuery.Active:=True;
            MainForm.SQLQuery.First;
            while  NOT (MainForm.SQLQuery.Eof) do
            begin
-            MainForm.ProduitTable.Active:=False;
-            MainForm.ProduitTable.SQL.Clear;
-            MainForm.ProduitTable.SQL.Text:='SELECT * FROM produit WHERE code_p = ' +QuotedStr(MainForm.SQLQuery.FieldValues['code_p']) ;
-            MainForm.ProduitTable.Active:=True;
-            MainForm.ProduitTable.Edit;
-            MainForm.ProduitTable.FieldValues['qut_p']:= ( MainForm.ProduitTable.FieldValues['qut_p']
+            MainForm.SQLQuery3.Active:=False;
+            MainForm.SQLQuery3.SQL.Clear;
+            MainForm.SQLQuery3.SQL.Text:='SELECT * FROM produit WHERE code_p = ' +QuotedStr(MainForm.SQLQuery.FieldValues['code_p']) ;
+            MainForm.SQLQuery3.Active:=True;
+            MainForm.SQLQuery3.Edit;
+            MainForm.SQLQuery3.FieldValues['qut_p']:= ( MainForm.SQLQuery3.FieldValues['qut_p']
                                                          + ((MainForm.SQLQuery.FieldValues['qut_p']) * ((MainForm.SQLQuery.FieldValues['cond_p']))));
 //            MainForm.ProduitTable.FieldValues['prixvd_p']:= MainForm.SQLQuery.FieldValues['prixvd_p'];
-            MainForm.ProduitTable.Post;
+            MainForm.SQLQuery3.Post;
+
+            Mainform.FDQuery2.Active:=False;
+            Mainform.FDQuery2.Sql.Clear;
+            Mainform.FDQuery2.Sql.Text:='SELECT code_barec, code_p,qutinstock_p FROM bona_rec_list  WHERE code_barec =' +QuotedStr(MainForm.SQLQuery.FieldValues['code_barec']) ;
+            MainForm.FDQuery2.Active:=True;
+
+            MainForm.FDQuery2.Edit;
+            MainForm.FDQuery2.FieldValues['qutinstock_p']:= ( MainForm.FDQuery2.FieldValues['qutinstock_p']
+                                                         + ((MainForm.SQLQuery.FieldValues['qut_p']) * ((MainForm.SQLQuery.FieldValues['cond_p']))));
+            MainForm.FDQuery2.Post;
+
             MainForm.SQLQuery.Next;
            end;
 
-           MainForm.ProduitTable.Active:=False;
-           MainForm.ProduitTable.SQL.Clear;
-           MainForm.ProduitTable.SQL.Text:='SELECT * FROM produit ' ;
-           MainForm.ProduitTable.Active:=True;
-           MainForm.ProduitTable.EnableControls;
+//           MainForm.ProduitTable.Active:=False;
+//           MainForm.ProduitTable.SQL.Clear;
+//           MainForm.ProduitTable.SQL.Text:='SELECT * FROM produit ' ;
+//           MainForm.ProduitTable.Active:=True;
+//           MainForm.ProduitTable.EnableControls;
+           MainForm.FDQuery2.Active:=False;
+           MainForm.FDQuery2.SQL.Clear;
+
+           MainForm.SQLQuery3.Active:=False;
+           MainForm.SQLQuery3.SQL.Clear;
+
            MainForm.SQLQuery.Active:=False;
            MainForm.SQLQuery.SQL.Clear;
+
            MainForm.Bonv_ctrTable.Refresh;
 
      end;
@@ -2564,39 +2621,60 @@ var CodeOCB,CodeRF : Integer;
 
 //--- this is for adding to the priduit
       begin
-           MainForm.ProduitTable.DisableControls;
-           MainForm.ProduitTable.Active:=False;
-           MainForm.ProduitTable.SQL.Clear;
-           MainForm.ProduitTable.SQL.Text:='SELECT * FROM produit ' ;
-           MainForm.ProduitTable.Active:=True;
+//           MainForm.ProduitTable.DisableControls;
+//           MainForm.ProduitTable.Active:=False;
+//           MainForm.ProduitTable.SQL.Clear;
+//           MainForm.ProduitTable.SQL.Text:='SELECT * FROM produit ' ;
+//           MainForm.ProduitTable.Active:=True;
            Mainform.Sqlquery.Active:=False;
            Mainform.Sqlquery.Sql.Clear;
-           Mainform.Sqlquery.Sql.Text:='SELECT code_bvctrl,code_p,  qut_p, cond_p , prixvd_p,tva_p FROM bonv_ctr_list WHERE code_bvctr =  '
+           Mainform.Sqlquery.Sql.Text:='SELECT code_bvctrl,code_p,  qut_p, cond_p , prixvd_p,tva_p,code_barec FROM bonv_ctr_list WHERE code_bvctr =  '
                                                  + IntToStr (MainForm.Bonv_ctrTable.FieldValues['code_bvctr'])
-                                                 + 'GROUP BY code_bvctrl, code_p, qut_p, cond_p,prixvd_p,tva_p ' ;
+                                                 + 'GROUP BY code_bvctrl, code_p, qut_p, cond_p,prixvd_p,tva_p,code_barec ' ;
            MainForm.SQLQuery.Active:=True;
            MainForm.SQLQuery.First;
            while  NOT (MainForm.SQLQuery.Eof) do
            begin
-            MainForm.ProduitTable.Active:=False;
-            MainForm.ProduitTable.SQL.Clear;
-            MainForm.ProduitTable.SQL.Text:='SELECT * FROM produit WHERE code_p = ' +QuotedStr(MainForm.SQLQuery.FieldValues['code_p']) ;
-            MainForm.ProduitTable.Active:=True;
-            MainForm.ProduitTable.Edit;
-            MainForm.ProduitTable.FieldValues['qut_p']:= ( MainForm.ProduitTable.FieldValues['qut_p']
+            MainForm.SQLQuery3.Active:=False;
+            MainForm.SQLQuery3.SQL.Clear;
+            MainForm.SQLQuery3.SQL.Text:='SELECT * FROM produit WHERE code_p = ' +QuotedStr(MainForm.SQLQuery.FieldValues['code_p']) ;
+            MainForm.SQLQuery3.Active:=True;
+            MainForm.SQLQuery3.Edit;
+            MainForm.SQLQuery3.FieldValues['qut_p']:= ( MainForm.SQLQuery3.FieldValues['qut_p']
                                                          - ((MainForm.SQLQuery.FieldValues['qut_p']) * ((MainForm.SQLQuery.FieldValues['cond_p']))));
-            MainForm.ProduitTable.FieldValues['tva_p']:= MainForm.SQLQuery.FieldValues['tva_p'];
-            MainForm.ProduitTable.Post;
+            MainForm.SQLQuery3.FieldValues['tva_p']:= MainForm.SQLQuery.FieldValues['tva_p'];
+            MainForm.SQLQuery3.Post;
+
+            Mainform.FDQuery2.Active:=False;
+            Mainform.FDQuery2.Sql.Clear;
+            Mainform.FDQuery2.Sql.Text:='SELECT code_barec, code_p,qutinstock_p FROM bona_rec_list  WHERE code_barec =' +QuotedStr(MainForm.SQLQuery.FieldValues['code_barec']) ;
+            MainForm.FDQuery2.Active:=True;
+            if NOT (MainForm.FDQuery2.IsEmpty) then
+            begin
+              MainForm.FDQuery2.Edit;
+              MainForm.FDQuery2.FieldValues['qutinstock_p'] := ( MainForm.FDQuery2.FieldValues['qutinstock_p']
+                                                              - ((MainForm.SQLQuery.FieldValues['qut_p'] ) * ((MainForm.SQLQuery.FieldValues['cond_p'] ))));
+              MainForm.FDQuery2.Post;
+
+            end;
+
             MainForm.SQLQuery.Next;
            end;
 
-           MainForm.ProduitTable.Active:=False;
-           MainForm.ProduitTable.SQL.Clear;
-           MainForm.ProduitTable.SQL.Text:='SELECT * FROM produit' ;
-           MainForm.ProduitTable.Active:=True;
-           MainForm.ProduitTable.EnableControls;
+//           MainForm.ProduitTable.Active:=False;
+//           MainForm.ProduitTable.SQL.Clear;
+//           MainForm.ProduitTable.SQL.Text:='SELECT * FROM produit' ;
+//           MainForm.ProduitTable.Active:=True;
+//           MainForm.ProduitTable.EnableControls;
            MainForm.SQLQuery.Active:=False;
            MainForm.SQLQuery.SQL.Clear;
+
+            MainForm.SQLQuery3.Active:=False;
+            MainForm.SQLQuery3.SQL.Clear;
+
+            MainForm.FDQuery2.Active:=False;
+            MainForm.FDQuery2.SQL.Clear;
+
            MainForm.Bonv_ctrTable.Refresh;
            DataModuleF.Top5produit.Refresh;
      end;

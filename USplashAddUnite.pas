@@ -1899,7 +1899,7 @@ begin
       MainForm.GstockdcConnection.ExecSQL('DELETE FROM opt_cas_bnk where code_bvctr = ' + IntToStr(codeBR));
       MainForm.Bonv_ctrTable.Delete ;
       MainForm.Bonv_ctrTable.Refresh ;
-      MainForm.Bonv_ctr_listTable.Refresh ;
+//      MainForm.Bonv_ctr_listTable.Refresh ;
       MainForm.RegclientTable.Refresh ;
       MainForm.Opt_cas_bnk_CaisseTable.Refresh ;
 

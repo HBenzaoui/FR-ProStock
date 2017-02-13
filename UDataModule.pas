@@ -69,8 +69,6 @@ type
     PCloseDiedCnotifDS: TDataSource;
     PDiedCnotifDS: TDataSource;
     PCloseDiedCnotifcode_p: TIntegerField;
-    PCloseDiedCnotifrefer_p: TWideStringField;
-    PCloseDiedCnotifnom_p: TWideStringField;
     PCloseDiedCnotifcode_famp: TIntegerField;
     PCloseDiedCnotifcode_sfamp: TIntegerField;
     PCloseDiedCnotifcode_f: TIntegerField;
@@ -169,8 +167,6 @@ type
     ChargesTableobser_ch: TWideStringField;
     PertesTableobser_pr: TWideStringField;
     Transfer_comptesTableobser_transfer: TWideStringField;
-    PCloseDiedCnotifqut_p: TFloatField;
-    PCloseDiedCnotifqutini_p: TFloatField;
     PZeroQCnotifcode_p: TIntegerField;
     PZeroQCnotifnom_p: TWideStringField;
     PZeroQCnotifrefer_p: TWideStringField;
@@ -251,23 +247,16 @@ type
     PMoreMaxQCnotifcode_u: TSmallintField;
     PMoreMaxQCnotifqutini_p: TFloatField;
     PMoreMaxQCnotiftva_p: TSmallintField;
-    PCloseDiedCnotifQutDispo: TFloatField;
     PCloseZeroQCnotifQutDispo: TFloatField;
     PMoreMaxQCnotifQutDispo: TFloatField;
     PDiedCnotifcode_p: TIntegerField;
-    PDiedCnotifrefer_p: TWideStringField;
-    PDiedCnotifnom_p: TWideStringField;
     PDiedCnotifcode_famp: TIntegerField;
     PDiedCnotifcode_sfamp: TIntegerField;
-    PDiedCnotifqut_p: TFloatField;
-    PDiedCnotifqutini_p: TFloatField;
     PDiedCnotifcode_f: TIntegerField;
     PDiedCnotifdateperiss_p: TDateField;
     PDiedCnotifcode_u: TSmallintField;
     PDiedCnotifcode_l: TIntegerField;
-    PDiedCnotifalertdays_p: TSmallintField;
     PDiedCnotifdaysleft: TIntegerField;
-    PDiedCnotifQutDispo: TFloatField;
     PZeroQCnotiffamp: TStringField;
     PZeroQCnotifsfamp: TStringField;
     PZeroQCnotifunit: TStringField;
@@ -307,12 +296,21 @@ type
     PerissBona_facTabledateperiss_p: TDateField;
     PerissBona_facTabledaysleft: TIntegerField;
     PerissBona_facTablenumfac: TStringField;
+    PDiedCnotifnomp: TStringField;
+    PDiedCnotifreferp: TStringField;
+    PDiedCnotifcode_barec: TIntegerField;
+    PDiedCnotifnum_barec: TWideStringField;
+    PDiedCnotifqutinstock_p: TFloatField;
+    PCloseDiedCnotifcode_barec: TIntegerField;
+    PCloseDiedCnotifnum_barec: TWideStringField;
+    PCloseDiedCnotifqutinstock_p: TFloatField;
+    PCloseDiedCnotifnomp: TStringField;
+    PCloseDiedCnotifreferp: TStringField;
     procedure DataModuleCreate(Sender: TObject);
     procedure PZeroQCnotifCalcFields(DataSet: TDataSet);
     procedure PCloseZeroQCnotifCalcFields(DataSet: TDataSet);
     procedure PMoreMaxQCnotifCalcFields(DataSet: TDataSet);
     procedure PCloseDiedCnotifCalcFields(DataSet: TDataSet);
-    procedure PDiedCnotifCalcFields(DataSet: TDataSet);
     procedure PertesTableCalcFields(DataSet: TDataSet);
   private
     { Private declarations }
@@ -363,20 +361,14 @@ end;
 
 procedure TDataModuleF.PCloseDiedCnotifCalcFields(DataSet: TDataSet);
 begin
-    PCloseDiedCnotif.FieldValues['QutDispo']:=
- (PCloseDiedCnotif.FieldValues['qut_p'] + PCloseDiedCnotif.FieldValues['qutini_p']);
+//    PCloseDiedCnotif.FieldValues['QutDispo']:=
+// (PCloseDiedCnotif.FieldValues['qut_p'] + PCloseDiedCnotif.FieldValues['qutini_p']);
 end;
 
 procedure TDataModuleF.PCloseZeroQCnotifCalcFields(DataSet: TDataSet);
 begin
     PCloseZeroQCnotif.FieldValues['QutDispo']:=
  (PCloseZeroQCnotif.FieldValues['qut_p'] + PCloseZeroQCnotif.FieldValues['qutini_p']);
-end;
-
-procedure TDataModuleF.PDiedCnotifCalcFields(DataSet: TDataSet);
-begin
-    PDiedCnotif.FieldValues['QutDispo']:=
- (PDiedCnotif.FieldValues['qut_p'] + PDiedCnotif.FieldValues['qutini_p']);
 end;
 
 procedure TDataModuleF.PertesTableCalcFields(DataSet: TDataSet);

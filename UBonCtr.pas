@@ -561,9 +561,10 @@ if NOT (MainForm.Bonv_ctrTable.IsEmpty) then
       FSplashAddUnite.Top:=   MainForm.Top + 5;
 
       AnimateWindow(FSplashAddUnite.Handle, 175, AW_VER_POSITIVE OR AW_SLIDE OR AW_ACTIVATE );
+      FSplashAddUnite.OKAddUniteSBtn.Tag:= 21 ;
       FSplashAddUnite.Show;
       FSplashAddUnite.OKAddUniteSBtn.Enabled:=True;
-      FSplashAddUnite.OKAddUniteSBtn.Tag:= 21 ;
+
      end
       else
       begin
@@ -615,6 +616,8 @@ end;
 
 procedure TBonCtrF.DateStartBVCtrDChange(Sender: TObject);
 begin
+ClearFilterBVLivPMenuClick(Sender);
+
 MainForm.Bonv_CtrTable.DisableControls;
 MainForm.Bonv_CtrTable.Active:= False;
 MainForm.Bonv_CtrTable.SQL.clear;

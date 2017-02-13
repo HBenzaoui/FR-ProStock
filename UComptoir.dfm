@@ -734,8 +734,8 @@ object BonCtrGestionF: TBonCtrGestionF
     object Label6: TLabel
       Left = 9
       Top = 59
-      Width = 96
-      Height = 19
+      Width = 92
+      Height = 18
       Anchors = [akLeft, akBottom]
       Caption = 'Les Produits:'
       Color = 15722984
@@ -1130,7 +1130,7 @@ object BonCtrGestionF: TBonCtrGestionF
     object Label1: TLabel
       Left = 5
       Top = 4
-      Width = 75
+      Width = 70
       Height = 28
       Caption = 'Total'
       Font.Charset = DEFAULT_CHARSET
@@ -1141,9 +1141,9 @@ object BonCtrGestionF: TBonCtrGestionF
       ParentFont = False
     end
     object Label17: TLabel
-      Left = 877
+      Left = 884
       Top = 4
-      Width = 113
+      Width = 106
       Height = 28
       Anchors = [akTop, akRight]
       BiDiMode = bdRightToLeft
@@ -1155,7 +1155,6 @@ object BonCtrGestionF: TBonCtrGestionF
       Font.Style = [fsBold]
       ParentBiDiMode = False
       ParentFont = False
-      ExplicitLeft = 1226
     end
     object Label10: TLabel
       Left = 910
@@ -2375,7 +2374,7 @@ object BonCtrGestionF: TBonCtrGestionF
         Left = 116
         Top = 77
         Width = 124
-        Height = 27
+        Height = 26
         Date = 42592.456630983800000000
         Time = 42592.456630983800000000
         Font.Charset = DEFAULT_CHARSET

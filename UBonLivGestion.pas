@@ -736,7 +736,7 @@ begin
         +'  WHERE bona_rec.valider_barec = TRUE '
         +'  AND dateperiss_p is NOT NULL '
         +'  AND dateperiss_p > CURRENT_DATE '
-        +'  AND qutinstock_p <> 0  '
+        +'  AND qutinstock_p > 0  '
         +'  AND code_p = ' + IntToStr(CodeP)
         +'  ORDER BY dateperiss_p ';
 ;
@@ -754,10 +754,8 @@ begin
       PerissableProduitF.Tag:=0;
       PerissableProduitF.Show;
 
-
     end else
      begin
-
 
          lookupResultRefP := MainForm.Bonv_liv_listTable.Lookup('code_p',(CodeP),'code_p');
          if VarIsnull( lookupResultRefP) then
@@ -792,6 +790,12 @@ begin
              MainForm.Bonv_liv_listTable.FieldValues['qut_p'] :=  01;
              MainForm.Bonv_liv_listTable.FieldValues['cond_p']:= 01;
              MainForm.Bonv_liv_listTable.FieldValues['tva_p']:=  MainForm.ProduitTable.FieldValues['tva_p'] ;
+
+             if DataModuleF.PerissBona_recTable.RecordCount = 1 then
+             begin
+              MainForm.Bonv_liv_listTable.FieldValues['code_barec']:= DataModuleF.PerissBona_recTable.FieldValues['code_barec'];
+             end;
+
 
            if  NOT (MainForm.ClientTable.IsEmpty) AND (ClientBonLivGCbx.Text<> '' ) then
            begin
@@ -909,10 +913,39 @@ begin
             MainForm.ProduitTable.Active:=True;
             CodeP:= MainForm.ProduitTable.FieldByName('code_p').AsInteger ;
 
+        DataModuleF.PerissBona_recTable.Active:=False;
+        DataModuleF.PerissBona_recTable.SQL.Clear;
+        DataModuleF.PerissBona_recTable.SQL.Text:='  SELECT bona_rec_list.code_barec, code_p,qutinstock_p,dateperiss_p,(dateperiss_p - CURRENT_DATE) AS daysleft  '
+        +'  FROM bona_rec_list  '
+        +'  JOIN bona_rec ON bona_rec.code_barec = bona_rec_list.code_barec '
+        +'  WHERE bona_rec.valider_barec = TRUE '
+        +'  AND dateperiss_p is NOT NULL '
+        +'  AND dateperiss_p > CURRENT_DATE '
+        +'  AND qutinstock_p > 0  '
+        +'  AND code_p = ' + IntToStr(CodeP)
+        +'  ORDER BY dateperiss_p ';
+;
+        DataModuleF.PerissBona_recTable.Active:=True;
+
+
+    if (MainForm.ProduitTable.FieldByName('perissable_p').AsBoolean = True)
+        AND NOT (DataModuleF.PerissBona_recTable.IsEmpty) AND (DataModuleF.PerissBona_recTable.RecordCount > 1) then
+    begin
+
+      PerissableProduitF:=TPerissableProduitF.Create(BonLivGestionF);
+      PerissableProduitF.Left:=  (MainForm.Left + MainForm.Width div 2) - (PerissableProduitF.Width div 2);
+      PerissableProduitF.Top:=   MainForm.Top + 5;
+      AnimateWindow(PerissableProduitF.Handle, 175, AW_VER_POSITIVE OR AW_SLIDE OR AW_ACTIVATE );
+      PerissableProduitF.Tag:=0;
+      PerissableProduitF.Show;
+
+    end else
+     begin
+
          lookupResultRefP := MainForm.Bonv_liv_listTable.Lookup('code_p',(CodeP),'code_p');
          if VarIsnull( lookupResultRefP) then
          begin
-       if  MainForm.ProduitTable.RecordCount > 0  then
+          if  MainForm.ProduitTable.RecordCount > 0  then
           begin
 
             MainForm.Bonv_liv_listTable.DisableControls;
@@ -936,6 +969,12 @@ begin
              MainForm.Bonv_liv_listTable.FieldValues['qut_p'] :=  01;
              MainForm.Bonv_liv_listTable.FieldValues['cond_p']:= 01;
              MainForm.Bonv_liv_listTable.FieldValues['tva_p']:=  MainForm.ProduitTable.FieldValues['tva_p'] ;
+
+
+             if DataModuleF.PerissBona_recTable.RecordCount = 1 then
+             begin
+              MainForm.Bonv_liv_listTable.FieldValues['code_barec']:= DataModuleF.PerissBona_recTable.FieldValues['code_barec'];
+             end;
 
             if  NOT (MainForm.ClientTable.IsEmpty) AND (ClientBonLivGCbx.Text<> '' ) then
            begin
@@ -1033,6 +1072,7 @@ begin
           //--- this tage = 0 is for multi name added by produit combobox----//
              FSplashAddUnite.Tag:=2;
          end;
+         end;
     end;
  //---------------------------------------------------------------------------------------------
   if ResherchPARCBProduitsRdioBtn.Checked then
@@ -1051,6 +1091,34 @@ begin
     MainForm.ProduitTable.SQL.Text:= 'SELECT * FROM produit WHERE code_p = '+QuotedStr(IntToStr(CodeCB)) +'OR'+ ' LOWER(codebar_p) LIKE LOWER(' + QuotedStr(ProduitBonLivGCbx.Text)+')';
     MainForm.ProduitTable.Active:=True;
     CodeP:= MainForm.ProduitTable.FieldByName('code_p').AsInteger ;
+
+        DataModuleF.PerissBona_recTable.Active:=False;
+        DataModuleF.PerissBona_recTable.SQL.Clear;
+        DataModuleF.PerissBona_recTable.SQL.Text:='  SELECT bona_rec_list.code_barec, code_p,qutinstock_p,dateperiss_p,(dateperiss_p - CURRENT_DATE) AS daysleft  '
+        +'  FROM bona_rec_list  '
+        +'  JOIN bona_rec ON bona_rec.code_barec = bona_rec_list.code_barec '
+        +'  WHERE bona_rec.valider_barec = TRUE '
+        +'  AND dateperiss_p is NOT NULL '
+        +'  AND dateperiss_p > CURRENT_DATE '
+        +'  AND qutinstock_p > 0  '
+        +'  AND code_p = ' + IntToStr(CodeP)
+        +'  ORDER BY dateperiss_p ';
+;
+        DataModuleF.PerissBona_recTable.Active:=True;
+
+    if (MainForm.ProduitTable.FieldByName('perissable_p').AsBoolean = True)
+        AND NOT (DataModuleF.PerissBona_recTable.IsEmpty) AND (DataModuleF.PerissBona_recTable.RecordCount > 1) then
+    begin
+
+      PerissableProduitF:=TPerissableProduitF.Create(BonLivGestionF);
+      PerissableProduitF.Left:=  (MainForm.Left + MainForm.Width div 2) - (PerissableProduitF.Width div 2);
+      PerissableProduitF.Top:=   MainForm.Top + 5;
+      AnimateWindow(PerissableProduitF.Handle, 175, AW_VER_POSITIVE OR AW_SLIDE OR AW_ACTIVATE );
+      PerissableProduitF.Tag:=0;
+      PerissableProduitF.Show;
+
+    end else
+     begin
 
      if  (MainForm.ProduitTable.RecordCount > 0 )   then
       begin
@@ -1082,6 +1150,12 @@ begin
              MainForm.Bonv_liv_listTable.FieldValues['qut_p'] :=  01;
              MainForm.Bonv_liv_listTable.FieldValues['cond_p']:= 01;
              MainForm.Bonv_liv_listTable.FieldValues['tva_p']:=  MainForm.ProduitTable.FieldValues['tva_p'] ;
+
+             if DataModuleF.PerissBona_recTable.RecordCount = 1 then
+             begin
+              MainForm.Bonv_liv_listTable.FieldValues['code_barec']:= DataModuleF.PerissBona_recTable.FieldValues['code_barec'];
+             end;
+
            if  NOT (MainForm.ClientTable.IsEmpty) AND (ClientBonLivGCbx.Text<> '' ) then
            begin
 
@@ -1132,12 +1206,12 @@ begin
               ValiderBVLivBonLivGBtn.Enabled:= True;
               ValiderBVLivBonLivGBtn.ImageIndex:=12;
               end;
-         end else
-             begin
+     end else
+         begin
 
            //  ShowMessage(' code bare deja kain : p ');
 
-          FSplashAddUnite:=TFSplashAddUnite.Create(Application);
+            FSplashAddUnite:=TFSplashAddUnite.Create(Application);
             FSplashAddUnite.Image1.ImageIndex:=3;
             FSplashAddUnite.Width:=300;
             FSplashAddUnite.Height:=160;
@@ -1178,6 +1252,7 @@ begin
           //--- this tage = 0 is for multi name added by produit combobox----//
              FSplashAddUnite.Tag:=2;
              end;
+          end;
           end;
 
    end;
