@@ -652,8 +652,10 @@ begin
         begin
           ProduitGestionF.LocalisationProduitGCbx.Text := fieldbyname('local').Value;
         end;
-
+         if (fieldbyname('obser_p').Value <> null) then
+        begin
         ProduitGestionF.ObserProduitGMem.Text := fieldbyname('obser_p').Value;
+        end;
         if (fieldbyname('logo_p').Value <> null) then
         begin
           S := TMemoryStream.Create;

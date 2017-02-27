@@ -348,7 +348,7 @@ var
    MainForm.Bonv_CtrTable.Active:= True;
 //MainForm.Bonv_CtrTable.EnableControls;
 
-MainForm.ProduitTable.DisableControls;
+//MainForm.ProduitTable.DisableControls;
 
 codeCT:= 0;
 
@@ -420,7 +420,7 @@ BonCtrGestionF.Show;
  //     finally
       //  BonCtrGestionF.Free;
   //    end;
-MainForm.ProduitTable.EnableControls;
+//MainForm.ProduitTable.EnableControls;
  MainForm.Bonv_CtrTable.EnableControls;
 
 //MainForm.Bonv_CtrTable.DisableControls;

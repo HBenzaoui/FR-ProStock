@@ -1820,40 +1820,38 @@ I : Integer;
 //  PostMessage((Sender as TComboBox).Handle, CB_SHOWDROPDOWN, 1, 0);
 //      ProduitBonFacAGCbx.Refresh;
       ProduitBonFacAGCbx.Properties.Items.Clear;
-      MainForm.ProduitTable.DisableControls;
-      MainForm.ProduitTable.Active:=False;
-      MainForm.ProduitTable.SQL.Clear;
-      MainForm.ProduitTable.SQL.Text:= 'SELECT * FROM produit ';
-      MainForm.ProduitTable.Active := True;
 
-      MainForm.ProduitTable.Refresh;
+      MainForm.SQLQuery.Active:=False;
+      MainForm.SQLQuery.SQL.Clear;
+      MainForm.SQLQuery.SQL.Text:= 'SELECT code_p,nom_p,refer_p FROM produit ';
+      MainForm.SQLQuery.Active := True;
 
-
-      MainForm.ProduitTable.first;
+      MainForm.SQLQuery.first;
 
      if ResherchPARDesProduitsRdioBtn.Checked then
      begin
 
-     for I := 0 to MainForm.ProduitTable.RecordCount - 1 do
-     if ( MainForm.ProduitTable.FieldByName('nom_p').IsNull = False )  then
+     for I := 0 to MainForm.SQLQuery.RecordCount - 1 do
+     if ( MainForm.SQLQuery.FieldByName('nom_p').IsNull = False )  then
      begin
-       ProduitBonFacAGCbx.Properties.Items.Add(MainForm.ProduitTable.FieldByName('nom_p').AsString);
-       MainForm.ProduitTable.Next;
+       ProduitBonFacAGCbx.Properties.Items.Add(MainForm.SQLQuery.FieldByName('nom_p').AsString);
+       MainForm.SQLQuery.Next;
       end;
      end;
 
       if ResherchPARRefProduitsRdioBtn.Checked then
      begin
 
-     for I := 0 to MainForm.ProduitTable.RecordCount - 1 do
-     if( MainForm.ProduitTable.FieldByName('refer_p').IsNull = False )  then
+     for I := 0 to MainForm.SQLQuery.RecordCount - 1 do
+     if( MainForm.SQLQuery.FieldByName('refer_p').IsNull = False )  then
      begin
-          ProduitBonFacAGCbx.Properties.Items.Add(MainForm.ProduitTable.FieldByName('refer_p').AsString);
-       MainForm.ProduitTable.Next;
+          ProduitBonFacAGCbx.Properties.Items.Add(MainForm.SQLQuery.FieldByName('refer_p').AsString);
+       MainForm.SQLQuery.Next;
       end;
      end;
 
-     MainForm.ProduitTable.EnableControls;
+      MainForm.SQLQuery.Active:=False;
+      MainForm.SQLQuery.SQL.Clear;
 end;
 
 procedure TBonFacAGestionF.ProduitBonFacAGCbxExit(Sender: TObject);

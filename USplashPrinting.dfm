@@ -26,8 +26,8 @@ object FSplashPrinting: TFSplashPrinting
   object NameAddCompteSLbl: TLabel
     Left = 56
     Top = 112
-    Width = 86
-    Height = 19
+    Width = 83
+    Height = 18
     Caption = 'Imprimante:'
     Color = 4207405
     Font.Charset = DEFAULT_CHARSET
@@ -72,7 +72,7 @@ object FSplashPrinting: TFSplashPrinting
     Left = 103
     Top = 64
     Width = 36
-    Height = 19
+    Height = 18
     Caption = 'Titre:'
     Color = 4207405
     Font.Charset = DEFAULT_CHARSET
@@ -87,8 +87,8 @@ object FSplashPrinting: TFSplashPrinting
   object Label2: TLabel
     Left = 43
     Top = 209
-    Width = 99
-    Height = 19
+    Width = 96
+    Height = 18
     Caption = 'Prix de vente:'
     Color = 4207405
     Font.Charset = DEFAULT_CHARSET
@@ -317,7 +317,7 @@ object FSplashPrinting: TFSplashPrinting
     Left = 364
     Top = 205
     Width = 137
-    Height = 26
+    Height = 21
     Alignment = taRightJustify
     Color = clWhite
     Font.Charset = DEFAULT_CHARSET

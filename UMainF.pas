@@ -776,7 +776,6 @@ type
     Bonp_fac_listTableMontantAHT: TCurrencyField;
     Bonp_fac_listTableprixht_p: TCurrencyField;
     Bonp_fac_listTableMargeM: TCurrencyField;
-    Bonp_facTabletimber_bpfac: TCurrencyField;
     Bonp_facTablecode_ur: TIntegerField;
     Bonp_facTableAgent: TStringField;
     ProduitTableValueStock: TCurrencyField;
@@ -814,6 +813,7 @@ type
     SQLQuery3: TFDQuery;
     Bonv_fac_listTablecode_bafac: TIntegerField;
     Bonv_ctr_listTablecode_barec: TIntegerField;
+    Bonp_facTabletimber_bpfac: TCurrencyField;
     procedure ClientMainFBtnClick(Sender: TObject);
     procedure FourMainFBtnClick(Sender: TObject);
     procedure ProduitMainFBtnClick(Sender: TObject);

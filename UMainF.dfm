@@ -40428,7 +40428,6 @@ object MainForm: TMainForm
         SourceDataType = dtWideMemo
         TargetDataType = dtWideString
       end>
-    Connected = True
     LoginPrompt = False
     Left = 65
     Top = 130
@@ -56385,10 +56384,6 @@ object MainForm: TMainForm
       FieldKind = fkInternalCalc
       FieldName = 'NEWTTC'
     end
-    object Bonp_facTabletimber_bpfac: TCurrencyField
-      FieldName = 'timber_bpfac'
-      Origin = 'timber_bpfac'
-    end
     object Bonp_facTableNeTHT: TCurrencyField
       FieldKind = fkInternalCalc
       FieldName = 'NeTHT'
@@ -56419,6 +56414,10 @@ object MainForm: TMainForm
       FieldName = 'obser_bpfac'
       Origin = 'obser_bpfac'
       Size = 200
+    end
+    object Bonp_facTabletimber_bpfac: TCurrencyField
+      FieldName = 'timber_bpfac'
+      Origin = 'timber_bpfac'
     end
   end
   object Bonp_fac_listTable: TFDQuery

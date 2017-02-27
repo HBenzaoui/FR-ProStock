@@ -1562,40 +1562,38 @@ I : Integer;
 //  PostMessage((Sender as TComboBox).Handle, CB_SHOWDROPDOWN, 1, 0);
 //      ProduitBonLivGCbx.Refresh;
       ProduitBonLivGCbx.Properties.Items.Clear;
-      MainForm.ProduitTable.DisableControls;
-      MainForm.ProduitTable.Active:=False;
-      MainForm.ProduitTable.SQL.Clear;
-      MainForm.ProduitTable.SQL.Text:= 'SELECT * FROM produit ';
-      MainForm.ProduitTable.Active := True;
+//      MainForm.SQLQuery.DisableControls;
+      MainForm.SQLQuery.Active:=False;
+      MainForm.SQLQuery.SQL.Clear;
+      MainForm.SQLQuery.SQL.Text:= 'SELECT code_p,nom_p,refer_p FROM produit ';
+      MainForm.SQLQuery.Active := True;
 
-      MainForm.ProduitTable.Refresh;
-
-
-      MainForm.ProduitTable.first;
+      MainForm.SQLQuery.first;
 
      if ResherchPARDesProduitsRdioBtn.Checked then
      begin
 
-     for I := 0 to MainForm.ProduitTable.RecordCount - 1 do
-     if ( MainForm.ProduitTable.FieldByName('nom_p').IsNull = False )  then
+     for I := 0 to MainForm.SQLQuery.RecordCount - 1 do
+     if ( MainForm.SQLQuery.FieldByName('nom_p').IsNull = False )  then
      begin
-       ProduitBonLivGCbx.Properties.Items.Add(MainForm.ProduitTable.FieldByName('nom_p').AsString);
-       MainForm.ProduitTable.Next;
+       ProduitBonLivGCbx.Properties.Items.Add(MainForm.SQLQuery.FieldByName('nom_p').AsString);
+       MainForm.SQLQuery.Next;
       end;
      end;
 
       if ResherchPARRefProduitsRdioBtn.Checked then
      begin
 
-     for I := 0 to MainForm.ProduitTable.RecordCount - 1 do
-     if( MainForm.ProduitTable.FieldByName('refer_p').IsNull = False )  then
+     for I := 0 to MainForm.SQLQuery.RecordCount - 1 do
+     if( MainForm.SQLQuery.FieldByName('refer_p').IsNull = False )  then
      begin
-          ProduitBonLivGCbx.Properties.Items.Add(MainForm.ProduitTable.FieldByName('refer_p').AsString);
-       MainForm.ProduitTable.Next;
+          ProduitBonLivGCbx.Properties.Items.Add(MainForm.SQLQuery.FieldByName('refer_p').AsString);
+       MainForm.SQLQuery.Next;
       end;
      end;
 
-     MainForm.ProduitTable.EnableControls;
+      MainForm.SQLQuery.Active:=False;
+      MainForm.SQLQuery.SQL.Clear;
 
 end;
 
@@ -1926,16 +1924,16 @@ begin
    if MainForm.Bonv_livTable.FieldValues['valider_bvliv'] <> True then
    begin
 
-    MainForm.ProduitTable.DisableControls;
-    MainForm.ProduitTable.Active:=False;
-    MainForm.ProduitTable.SQL.Clear;
-    MainForm.ProduitTable.SQL.Text:='SELECT * FROM produit WHERE code_p = ' +IntToStr(MainForm.Bonv_liv_listTable.FieldValues['code_p']);
-    MainForm.ProduitTable.Active:=True;
+//    MainForm.SQLQuery.DisableControls;
+    MainForm.SQLQuery.Active:=False;
+    MainForm.SQLQuery.SQL.Clear;
+    MainForm.SQLQuery.SQL.Text:='SELECT code_p,qut_p,qutini_p FROM produit WHERE code_p = ' +IntToStr(MainForm.Bonv_liv_listTable.FieldValues['code_p']);
+    MainForm.SQLQuery.Active:=True;
 
     BonLivGOLDStock.Caption:=
-      floatTostrF((MainForm.ProduitTable.FieldValues['QutDispo']),ffNumber,14,2);
+      floatTostrF(((MainForm.SQLQuery.FieldValues['qut_p'] + MainForm.SQLQuery.FieldValues['qutini_p'])),ffNumber,14,2);
     BonLivGNEWStock.Caption:=
-      floatTostrF(((MainForm.ProduitTable.FieldValues['QutDispo'])-((MainForm.Bonv_liv_listTable.FieldValues['qut_p'])*(MainForm.Bonv_liv_listTable.FieldValues['cond_p']))),ffNumber,14,2);
+      floatTostrF((((MainForm.SQLQuery.FieldValues['qut_p'] + MainForm.SQLQuery.FieldValues['qutini_p']))-((MainForm.Bonv_liv_listTable.FieldValues['qut_p'])*(MainForm.Bonv_liv_listTable.FieldValues['cond_p']))),ffNumber,14,2);
 
     if(StrToFloat (StringReplace(BonLivGNEWStock.Caption, #32, '', [rfReplaceAll])))  < 0 then
     begin
@@ -1946,11 +1944,11 @@ begin
         Label20.Visible:=false;
         end;
 
-    MainForm.ProduitTable.Active:=False;
-    MainForm.ProduitTable.SQL.Clear;
-    MainForm.ProduitTable.SQL.Text:='SELECT * FROM produit ';
-    MainForm.ProduitTable.Active:=True;
-    MainForm.ProduitTable.EnableControls;
+    MainForm.SQLQuery.Active:=False;
+    MainForm.SQLQuery.SQL.Clear;
+//    MainForm.SQLQuery.SQL.Text:='SELECT * FROM produit ';
+//    MainForm.SQLQuery.Active:=True;
+//    MainForm.SQLQuery.EnableControls;
 
     RemisePerctageBonLivGEdt.Enabled:=True;
     RemiseBonLivGEdt.Enabled:=True;
