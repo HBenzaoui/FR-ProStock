@@ -5,7 +5,7 @@ interface
 uses
  USplashAddUnite,
 
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes,
+  Winapi.Windows, Winapi.Messages,Vcl.OleAuto, System.SysUtils, System.Variants, System.Classes,
   Vcl.Graphics, EhLibFireDAC, Vcl.Controls, Vcl.Forms, Vcl.Dialogs,
   DBGridEhGrouping, ToolCtrlsEh, DBGridEhToolCtrls, DynVarsEh, FireDAC.Stan.Intf,
   FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
@@ -14,7 +14,7 @@ uses
   acAlphaImageList, Vcl.StdCtrls, Vcl.WinXCtrls, Vcl.Buttons, sSpeedButton,
   AdvToolBtn, Vcl.ExtCtrls, EhLibVCL, GridsEh, DBAxisGridsEh, Data.SqlExpr, Vcl.Imaging.jpeg,
   DBGridEh, frxExportPDF, frxClass, frxExportXLS, frxDBSet, acImage, Vcl.Menus,
-  Vcl.ComCtrls, sStatusBar;
+  Vcl.ComCtrls, sStatusBar,ExcelXP;
 
 type
   TProduitsListF = class(TForm)
@@ -77,6 +77,10 @@ type
     AdvToolButton3: TAdvToolButton;
     Panel6: TPanel;
     AdvToolButton4: TAdvToolButton;
+    ExcelExportPMenu: TPopupMenu;
+    e1: TMenuItem;
+    ExporterverExcel1: TMenuItem;
+    ProduitListOpnDg: TOpenDialog;
     procedure AddProduitsBtnClick(Sender: TObject);
     procedure ProduitsListDBGridEhMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
     procedure ProduitsListDBGridEhDrawColumnCell(Sender: TObject; const Rect: TRect; DataCol: Integer; Column: TColumnEh; State: TGridDrawState);
@@ -115,10 +119,11 @@ type
     procedure SumGirdProduitBtnClick(Sender: TObject);
     procedure RefreshGirdBtnClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
-    procedure AdvToolButton1Click(Sender: TObject);
     procedure AdvToolButton2Click(Sender: TObject);
     procedure AdvToolButton4Click(Sender: TObject);
     procedure AdvToolButton3Click(Sender: TObject);
+    procedure e1Click(Sender: TObject);
+    procedure ExporterverExcel1Click(Sender: TObject);
   private
     procedure GettingData;
     procedure FilteredColor;
@@ -461,6 +466,19 @@ begin
       MainForm.SQLQuery.Active:= False;
 end;
 
+procedure TProduitsListF.e1Click(Sender: TObject);
+begin
+MainForm.ProduitTable.DisableControls;
+
+    GettingData;
+
+ProduitListfrxRprt.PrepareReport;
+frxXLSExport1.FileName := 'Liste Des Produits';
+ProduitListfrxRprt.Export(frxXLSExport1);
+
+MainForm.ProduitTable.EnableControls;
+end;
+
 procedure TProduitsListF.EditProduitsBtnClick(Sender: TObject);
 var
   S: TMemoryStream;
@@ -718,6 +736,93 @@ ClearTVAFilterPMenu.Checked:= True;
   FilteredColor;
   Select_PRIX_VENT_WITH;
   ClearFilterBVLivPMenu.Checked:= False;
+end;
+
+
+procedure ConvertANSIFileToUTF8File(AInputFileName, AOutputFileName: TFileName);
+var
+  Strings: TStringList;
+begin
+  Strings := TStringList.Create;
+  try
+    Strings.LoadFromFile(AInputFileName);
+    Strings.Text := UTF8Encode(Strings.Text);
+    Strings.SaveToFile(AOutputFileName, TEncoding.UTF8);
+  finally
+    Strings.Free;
+  end;
+end;
+
+procedure TProduitsListF.ExporterverExcel1Click(Sender: TObject);
+var
+  xls,xlw: Variant;
+
+begin
+
+ if ProduitListOpnDg.Execute then
+ begin
+//   MainForm.ProduitTable.Active:= False;
+//   MainForm.ProduitTable.FetchOptions.Mode:=  fmAll;
+//   MainForm.ProduitTable.Active:= True;
+
+  xls := CreateOleObject('Excel.Application');
+  xls.DisplayAlerts := False  ;
+  xlw := xls.WorkBooks.Open(ProduitListOpnDg.FileName);
+  xlw.SaveAs(GetCurrentDir+ '\imported.csv',xlCSV);
+
+  xlw.Close;
+  xlw := UnAssigned;
+  xls.Quit;
+  xls := UnAssigned;
+
+  ConvertANSIFileToUTF8File(GetCurrentDir+ '\imported.csv',GetCurrentDir+ '\imported.csv');
+
+  MainForm.GstockdcConnection.ExecSQL(
+
+     '  CREATE TEMP TABLE tmp_table '
+    +'  ON COMMIT DROP              '
+    +'  AS                          '
+    +'  SELECT code_p,refer_p,nom_p,codebar_p,prixht_p,  '
+    +'  prixvd_p,prixvr_p,prixvg_p,prixva_p,prixva2_p,tva_p, '
+    +'  qut_p,perissable_p,alertdays_p,qutmin_p,qutmax_p,alertqut_p,obser_p '
+    +'  FROM produit  '
+    +'  WITH NO DATA; '
+    +'  ALTER TABLE tmp_table ADD UNIQUE (refer_p); '
+    +'  ALTER TABLE tmp_table ADD UNIQUE (nom_p);   '
+    +'  ALTER TABLE tmp_table ADD UNIQUE (codebar_p); '
+
+    +'  copy tmp_table from '+ '''' + GetCurrentDir +'\imported.csv'' DELIMITERS '';'' CSV HEADER; '
+
+    +'  INSERT INTO produit   '
+    +'  SELECT DISTINCT ON (code_p) *   '
+    +'  FROM tmp_table                  '
+    +'  ON CONFLICT  (code_p) DO UPDATE '
+    +'   SET                            '
+    +'       refer_p      = excluded.refer_p,       nom_p       = excluded.nom_p,    codebar_p       = excluded.codebar_p,  '
+    +'       prixht_p     = excluded.prixht_p,      prixvd_p    = excluded.prixvd_p,     '
+    +'       prixvr_p     = excluded.prixvr_p,      prixvg_p    = excluded.prixvg_p,     '
+    +'       prixva_p     = excluded.prixva_p,      prixva2_p   = excluded.prixva2_p,    '
+    +'       tva_p        = excluded.tva_p,         qut_p       = excluded.qut_p,        '
+    +'       perissable_p = excluded.perissable_p,  alertdays_p = excluded.alertdays_p,  '
+    +'       qutmin_p     = excluded.qutmin_p,      qutmax_p    = excluded.qutmax_p,     '
+    +'       alertqut_p   = excluded.alertqut_p,    obser_p     = excluded.obser_p;      '
+     );
+
+
+    deletefile(GetCurrentDir+ '\imported.csv');
+
+    MainForm.InactiveTables;
+    MainForm.GstockdcConnection.Connected:= False;
+    MainForm.GstockdcConnection.Connected:= True;
+    MainForm.ActiveTables;
+
+    RefreshGirdBtnClick(Sender);
+//
+//    MainForm.ProduitTable.Active:= False;
+//    MainForm.ProduitTable.FetchOptions.Mode:=  fmOnDemand;
+//    MainForm.ProduitTable.Active:= True;
+ end;
+
 end;
 
 procedure TProduitsListF.FisrtClientbtnClick(Sender: TObject);
@@ -1066,19 +1171,6 @@ begin
   Agent:= ProduitListfrxRprt.FindObject('Agent') as TfrxMemoView;
   Agent.Text:= MainForm.UserNameLbl.Caption ;
 
-end;
-
-procedure TProduitsListF.AdvToolButton1Click(Sender: TObject);
-begin
-MainForm.ProduitTable.DisableControls;
-
-    GettingData;
-
-ProduitListfrxRprt.PrepareReport;
-frxXLSExport1.FileName := 'Liste Des Produits';
-ProduitListfrxRprt.Export(frxXLSExport1);
-
-MainForm.ProduitTable.EnableControls;
 end;
 
 procedure TProduitsListF.AdvToolButton2Click(Sender: TObject);

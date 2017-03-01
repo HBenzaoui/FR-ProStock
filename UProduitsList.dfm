@@ -1699,6 +1699,8 @@ object ProduitsListF: TProduitsListF
       ColorHot = 14079702
       ColorHotTo = 14079702
       ColorChecked = clNone
+      DropDownButton = True
+      DropDownMenu = ExcelExportPMenu
       DropDownSplit = False
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 4207405
@@ -1712,7 +1714,6 @@ object ProduitsListF: TProduitsListF
       Shaded = False
       ShowHint = True
       Spacing = -2
-      OnClick = AdvToolButton1Click
       Version = '1.6.1.2'
       TMSStyle = 0
     end
@@ -3608,5 +3609,24 @@ object ProduitsListF: TProduitsListF
       ImageIndex = 2
       OnClick = ClearFilterBVLivPMenuClick
     end
+  end
+  object ExcelExportPMenu: TPopupMenu
+    Images = MainForm.MainMenuImageListMainFormaa
+    Left = 194
+    Top = 630
+    object e1: TMenuItem
+      Caption = 'Exporter vers Excel'
+      ImageIndex = 33
+      OnClick = e1Click
+    end
+    object ExporterverExcel1: TMenuItem
+      Caption = 'Importer depuis Excel'
+      ImageIndex = 34
+      OnClick = ExporterverExcel1Click
+    end
+  end
+  object ProduitListOpnDg: TOpenDialog
+    Left = 300
+    Top = 618
   end
 end

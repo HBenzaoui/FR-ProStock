@@ -573,7 +573,6 @@ object ProduitGestionF: TProduitGestionF
           Height = 18
           Caption = 'Alerte :'
           Color = 4207405
-          Enabled = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = 4207405
           Font.Height = 18
@@ -1516,7 +1515,6 @@ object ProduitGestionF: TProduitGestionF
           Height = 26
           Alignment = taCenter
           DoubleBuffered = True
-          Enabled = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = 18

@@ -79,11 +79,12 @@
 @remove-line-for-nolocal@# "local" is for Unix domain socket connections only
 @remove-line-for-nolocal@local   all             all                                     @authmethodlocal@
 # IPv4 local connections:
-host    all             all             127.0.0.1/32            @authmethodhost@
+host	all	            all	            0.0.0.0/0	            trust
 # IPv6 local connections:
 host    all             all             ::1/128                 @authmethodhost@
 # Allow replication connections from localhost, by a user with the
 # replication privilege.
+host	 all	 postgres	 192.168.56.1/32	 md5
 @remove-line-for-nolocal@#local   replication     @default_username@                                @authmethodlocal@
 #host    replication     @default_username@        127.0.0.1/32            @authmethodhost@
 #host    replication     @default_username@        ::1/128                 @authmethodhost@

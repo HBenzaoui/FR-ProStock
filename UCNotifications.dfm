@@ -1174,21 +1174,6 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
-            DynProps = <>
-            EditButtons = <>
-            FieldName = 'alertqut_p'
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = 4207405
-            Font.Height = 18
-            Font.Name = 'Helvetica LT Std'
-            Font.Style = []
-            Footers = <>
-            Layout = tlCenter
-            Title.Alignment = taCenter
-            Visible = False
-            WordWrap = False
-          end
-          item
             DisplayFormat = '#,##0.00'
             DynProps = <>
             EditButtons = <>
@@ -1441,7 +1426,6 @@ object CNotificationsF: TCNotificationsF
             Font.Style = []
             Footers = <>
             Layout = tlCenter
-            MinWidth = 100
             Title.Alignment = taCenter
             Title.Caption = 'Q.Dispo'
             Width = 150
@@ -1464,6 +1448,24 @@ object CNotificationsF: TCNotificationsF
             Title.Alignment = taCenter
             Title.Caption = 'Q.Min'
             Width = 150
+          end
+          item
+            Alignment = taCenter
+            DisplayFormat = '0.00'
+            DynProps = <>
+            EditButtons = <>
+            FieldName = 'alertqut_p'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = 4207405
+            Font.Height = 18
+            Font.Name = 'Helvetica LT Std'
+            Font.Style = []
+            Footers = <>
+            Layout = tlCenter
+            Title.Alignment = taCenter
+            Title.Caption = 'Avertir quantite'
+            Width = 150
+            WordWrap = False
           end
           item
             Alignment = taCenter

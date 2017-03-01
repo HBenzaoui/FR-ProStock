@@ -732,7 +732,7 @@ object DataModuleF: TDataModuleF
       
         'SELECT * FROM produit WHERE (qut_p + qutini_p) <= qutmin_p AND q' +
         'utmin_p <> 0'
-      '')
+      'OR ( (qut_p + qutini_p) <= alertqut_p AND alertqut_p <> 0)')
     Left = 852
     Top = 308
     object PCloseZeroQCnotifcode_p: TIntegerField
