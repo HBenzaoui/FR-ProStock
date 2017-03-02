@@ -922,6 +922,8 @@ type
     procedure Bonp_fac_listTableCalcFields(DataSet: TDataSet);
     procedure Bonp_fac_listTableAfterRefresh(DataSet: TDataSet);
     procedure T3Click(Sender: TObject);
+    procedure A5Click(Sender: TObject);
+    procedure ClientTableCalcFields(DataSet: TDataSet);
   private
    //---- this to value of changege we need it to check if theuser changed something
      CountInsert,CountUpdate,CountDelete   : Int64;
@@ -961,7 +963,8 @@ uses   Vcl.Direct2D,Character,
   UUnitesList, ULocaleList, UHomeF, UDataModule, USplash, UWorkingSplash,
   ULogoSplashForm, ULoginUser, ULogin, UCNotifications, UChargesFList,
   UPertesFList, USTypeChargeList, UTypeChargeList, UTypePerteList,
-  UBonFacPGestion, UBonFacP, UTransferComptesGestion, UTransferListGestion;
+  UBonFacPGestion, UBonFacP, UTransferComptesGestion, UTransferListGestion,
+  UAbout;
 
   var
     gGrayForms: TComponentList;
@@ -1160,14 +1163,14 @@ begin
 //  MainForm.FDPhysPgDriverLink1.VendorLib:= 'C:\Program Files (x86)\PostgreSQL\9.6\bin\libpq.dll' ; // Eable this is only for Debuggin
      FDPhysPgDriverLink1.VendorLib:= GetCurrentDir+'\bin\libpq.dll' ;    // Eable this is only for releasing
 
-  Application.UpdateFormatSettings := false;
-  FormatSettings.DecimalSeparator := ',';
-  FormatSettings.ThousandSeparator := ' ';
-  FormatSettings.CurrencyDecimals := 2;
-  FormatSettings.DateSeparator:= '/';
-  FormatSettings.ShortDateFormat:= 'dd/mm/yyyy';
-  FormatSettings.CurrencyString:= '';
-  FormatSettings.CurrencyFormat:= 1;
+//  Application.UpdateFormatSettings := false;
+//  FormatSettings.DecimalSeparator := ',';
+//  FormatSettings.ThousandSeparator := ' ';
+//  FormatSettings.CurrencyDecimals := 2;
+//  FormatSettings.DateSeparator:= '/';
+//  FormatSettings.ShortDateFormat:= 'dd/mm/yyyy';
+//  FormatSettings.CurrencyString:= ' ';
+//  FormatSettings.CurrencyFormat:= 1;
 
 
   
@@ -2513,7 +2516,7 @@ begin
    SQLQuery.SQL.Text:= 'SELECT COUNT(*) as ntable from information_schema.tables WHERE table_schema = ''public''' ;
    SQLQuery.Active:= True;
   
-     if SQLQuery.FieldByName('ntable').AsInteger <> 26 then
+     if SQLQuery.FieldByName('ntable').AsInteger <> 34 then
      begin
      
       CreateTablesFDScript.ExecuteAll;                                 // Eable this is only for releasing
@@ -3186,6 +3189,15 @@ begin
       DataModuleF.PerissBona_recTable.Active:= False;
 end;
 
+procedure TMainForm.A5Click(Sender: TObject);
+begin
+  //-------- Show the About Form---------//
+
+            AboutF:=TAboutF.Create(Application);
+
+            AboutF.Show;
+end;
+
 procedure TMainForm.ActiveTables;
 begin
 
@@ -3776,6 +3788,12 @@ end;
 procedure TMainForm.ClientMainFMnmClick(Sender: TObject);
 begin
 ClientMainFBtnClick(Sender);
+end;
+
+procedure TMainForm.ClientTableCalcFields(DataSet: TDataSet);
+begin
+     ClientTable.FieldValues['CREDIT']:=
+ (ClientTable.FieldValues['oldcredit_c'] + ClientTable.FieldValues['credit_c']);
 end;
 
 procedure TMainForm.FourMainFMnmClick(Sender: TObject);

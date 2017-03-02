@@ -1472,6 +1472,8 @@ object FournisseurListF: TFournisseurListF
       ColorHot = 14079702
       ColorHotTo = 14079702
       ColorChecked = clNone
+      DropDownButton = True
+      DropDownMenu = ExcelExportPMenu
       DropDownSplit = False
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 4207405
@@ -1485,7 +1487,6 @@ object FournisseurListF: TFournisseurListF
       Shaded = False
       ShowHint = True
       Spacing = -2
-      OnClick = AdvToolButton1Click
       Version = '1.6.1.2'
       TMSStyle = 0
     end
@@ -2292,5 +2293,27 @@ object FournisseurListF: TFournisseurListF
         end
       end
     end
+  end
+  object ExcelExportPMenu: TPopupMenu
+    Images = MainForm.MainMenuImageListMainFormaa
+    Left = 194
+    Top = 630
+    object e1: TMenuItem
+      Caption = 'Exporter vers Excel'
+      ImageIndex = 33
+      OnClick = e1Click
+    end
+    object ExporterverExcel1: TMenuItem
+      Caption = 'Importer depuis Excel'
+      ImageIndex = 34
+      OnClick = ExporterverExcel1Click
+    end
+  end
+  object ProduitListOpnDg: TOpenDialog
+    Filter = 
+      'Excel Workbook (*.xlsx)|*.xlsx|Excel  97- 2003 Workbook (*.xls)|' +
+      '*.xls|CSV (Comma delimited) (*.csv)|*.csv'
+    Left = 300
+    Top = 618
   end
 end

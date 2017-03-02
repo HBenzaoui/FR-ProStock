@@ -338,14 +338,13 @@ object BankListF: TBankListF
     ParentDoubleBuffered = False
     TabOrder = 0
     StyleElements = []
-    ExplicitWidth = 1045
     DesignSize = (
       1022
       71)
     object PeriodBankListLbl: TLabel
       Left = 390
       Top = 27
-      Width = 54
+      Width = 53
       Height = 17
       Caption = 'P'#233'riode:'
       Color = 15722984
@@ -393,7 +392,7 @@ object BankListF: TBankListF
     object Label3: TLabel
       Left = 12
       Top = 27
-      Width = 162
+      Width = 161
       Height = 17
       Caption = 'Les Comptes Bancaires:'
       Color = 15722984
@@ -531,7 +530,6 @@ object BankListF: TBankListF
       ParentBackground = False
       TabOrder = 1
       StyleElements = []
-      ExplicitWidth = 1061
     end
     object Panel2: TPanel
       Left = 768
@@ -732,8 +730,6 @@ object BankListF: TBankListF
     ParentBackground = False
     TabOrder = 1
     StyleElements = []
-    ExplicitTop = 82
-    ExplicitHeight = 611
   end
   object CaisseListDBGridEh: TDBGridEh
     Left = 0
@@ -1242,7 +1238,6 @@ object BankListF: TBankListF
     Color = 4207405
     ParentBackground = False
     TabOrder = 3
-    ExplicitWidth = 1045
     DesignSize = (
       1022
       28)
@@ -1427,7 +1422,6 @@ object BankListF: TBankListF
     ParentBiDiMode = False
     SizeGrip = False
     SkinData.SkinSection = 'MENUITEM'
-    ExplicitWidth = 1045
     DesignSize = (
       1022
       20)
@@ -1437,7 +1431,7 @@ object BankListF: TBankListF
       Width = 26
       Height = 20
       Cursor = crHandPoint
-      Hint = 'Totaux'
+      Hint = 'Pay'#233' seulement'
       Anchors = [akRight]
       AutoThemeAdapt = False
       BorderColor = 15722984

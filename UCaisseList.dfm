@@ -832,8 +832,6 @@ object CaisseListF: TCaisseListF
     ParentBackground = False
     TabOrder = 1
     StyleElements = []
-    ExplicitTop = 82
-    ExplicitHeight = 611
   end
   object Panel4: TPanel
     Left = 0
@@ -845,7 +843,6 @@ object CaisseListF: TCaisseListF
     Color = 4207405
     ParentBackground = False
     TabOrder = 2
-    ExplicitWidth = 968
     DesignSize = (
       1022
       28)
@@ -1022,14 +1019,13 @@ object CaisseListF: TCaisseListF
     ParentDoubleBuffered = False
     TabOrder = 3
     StyleElements = []
-    ExplicitWidth = 968
     DesignSize = (
       1022
       71)
     object PeriodCaiseeListLbl: TLabel
       Left = 314
       Top = 27
-      Width = 54
+      Width = 53
       Height = 17
       Caption = 'P'#233'riode:'
       Color = 15722984
@@ -1215,7 +1211,6 @@ object CaisseListF: TCaisseListF
       ParentBackground = False
       TabOrder = 1
       StyleElements = []
-      ExplicitWidth = 984
     end
     object Panel2: TPanel
       Left = 692
@@ -1427,7 +1422,6 @@ object CaisseListF: TCaisseListF
     ParentBiDiMode = False
     SizeGrip = False
     SkinData.SkinSection = 'MENUITEM'
-    ExplicitWidth = 968
     DesignSize = (
       1022
       20)

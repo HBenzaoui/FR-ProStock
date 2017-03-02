@@ -52,6 +52,8 @@ type
     procedure CancelProduitGBtnClick(Sender: TObject);
     procedure ResearchProduitsEdtEnter(Sender: TObject);
     procedure FormActivate(Sender: TObject);
+    procedure ResearchProduitsEdtKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
   private
     { Private declarations }
   public
@@ -188,6 +190,24 @@ begin
     end;
 end;
 
+procedure TFastProduitsListF.ResearchProduitsEdtKeyDown(Sender: TObject;
+  var Key: Word; Shift: TShiftState);
+begin
+
+    if key = VK_DOWN then
+  begin
+//   key := #0;
+     MainForm.ProduitTable.Next;
+  end;
+
+
+    if key = VK_UP then
+  begin
+//   key := #0;
+     MainForm.ProduitTable.Prior;
+  end;
+end;
+
 procedure TFastProduitsListF.ResearchProduitsEdtKeyPress(Sender: TObject; var Key: Char);
 const
   N =[Char(VK_ESCAPE)];
@@ -205,6 +225,8 @@ begin
 
       OKProduitGBtnClick(Sender);
   end;
+
+
 
 end;
 
@@ -378,6 +400,7 @@ begin
              end;
 
            MainForm.Bona_recPlistTable.Refresh;
+           MainForm.Bona_recPlistTable.Last;
 
     end else
 
@@ -492,6 +515,14 @@ begin
 
 
        MainForm.Bona_recPlistTable.Refresh;
+
+        BonRecGestionF.ProduitsListDBGridEh.SetFocus;
+
+        BonRecGestionF.ProduitsListDBGridEh.SelectedIndex:=2;
+        BonRecGestionF.ProduitsListDBGridEh.EditorMode:=True;
+
+        MainForm.Bona_recPlistTable.Last;
+
     end
      else
 
@@ -603,6 +634,12 @@ begin
 //          MainForm.Bonv_liv_listTable.Next;
       end;
            ProduitsListDBGridEh.SelectedRows.Clear;
+
+//           BonLivGestionF.ProduitsListDBGridEh.SetFocus;
+//
+//           BonLivGestionF.ProduitsListDBGridEh.SelectedIndex:=2;
+//           BonLivGestionF.ProduitsListDBGridEh.EditorMode:=True;
+
 //           MainForm.Bonv_liv_listTable.Refresh;
 //           MainForm.Bonv_liv_listTable.IndexFieldNames:='code_bvliv';
            MainForm.Bonv_liv_listTable.Filtered:= False;
@@ -655,6 +692,7 @@ begin
              end;
 
               MainForm.Bonv_liv_listTable.Refresh;
+              MainForm.Bonv_liv_listTable.Last;
 
     end else
 
@@ -752,6 +790,8 @@ begin
 
           Close;
 
+
+
      end else
        begin
           FSplashAddUnite:=TFSplashAddUnite.Create(FastProduitsListF);
@@ -799,6 +839,13 @@ begin
        end;
 
        MainForm.Bonv_liv_listTable.Refresh;
+
+          BonLivGestionF.ProduitsListDBGridEh.SetFocus;
+
+           BonLivGestionF.ProduitsListDBGridEh.SelectedIndex:=2;
+           BonLivGestionF.ProduitsListDBGridEh.EditorMode:=True;
+
+           MainForm.Bonv_liv_listTable.Last;
     end
      else
 
@@ -959,6 +1006,7 @@ begin
              end;
 
              MainForm.Bonv_fac_listTable.Refresh;
+             MainForm.Bonv_fac_listTable.Last;
 
     end else
 
@@ -1054,6 +1102,12 @@ begin
 
           Close;
 
+           BonLivGestionF.ProduitsListDBGridEh.SetFocus;
+
+           BonLivGestionF.ProduitsListDBGridEh.SelectedIndex:=2;
+           BonLivGestionF.ProduitsListDBGridEh.EditorMode:=True;
+           MainForm.Bonv_liv_listTable.Last;
+
    end else
        begin
           FSplashAddUnite:=TFSplashAddUnite.Create(FastProduitsListF);
@@ -1101,6 +1155,14 @@ begin
        end;
 
        MainForm.Bonv_fac_listTable.Refresh;
+
+                 BonRecGestionF.ProduitsListDBGridEh.SetFocus;
+
+           BonRecGestionF.ProduitsListDBGridEh.SelectedIndex:=2;
+           BonRecGestionF.ProduitsListDBGridEh.EditorMode:=True;
+
+           MainForm.Bonv_fac_listTable.Last;
+
     end
      else
 
@@ -1234,6 +1296,7 @@ begin
 
 
              MainForm.Bona_fac_listTable.Refresh;
+             MainForm.Bona_fac_listTable.Last;
 
     end else
 
@@ -1347,6 +1410,14 @@ begin
        end;
 
        MainForm.Bona_fac_listTable.Refresh;
+
+
+        BonFacAGestionF.ProduitsListDBGridEh.SetFocus;
+
+        BonFacAGestionF.ProduitsListDBGridEh.SelectedIndex:=2;
+        BonFacAGestionF.ProduitsListDBGridEh.EditorMode:=True;
+
+        MainForm.Bona_fac_listTable.Last;
 
     end
      else
@@ -1495,6 +1566,7 @@ begin
              end;
 
              MainForm.Bonv_ctr_listTable.Refresh;
+             MainForm.Bonv_ctr_listTable.Last;
 
     end else
 
@@ -1623,6 +1695,16 @@ begin
 
 
        MainForm.Bonv_ctr_listTable.Refresh;
+
+
+       BonCtrGestionF.ProduitsListDBGridEh.SetFocus;
+
+        BonCtrGestionF.ProduitsListDBGridEh.SelectedIndex:=2;
+        BonCtrGestionF.ProduitsListDBGridEh.EditorMode:=True;
+
+        MainForm.Bonv_ctr_listTable.Last;
+
+
     end
      else
 
@@ -1644,12 +1726,6 @@ begin
        Close; 
       
       end;
-
-
-
-
-
-
 
       //-------------------------------------------------------------------------------------------------
 
@@ -1800,6 +1876,7 @@ begin
              end;
 
              MainForm.Bonp_fac_listTable.Refresh;
+             MainForm.Bonp_fac_listTable.Last;
 
     end else
 
@@ -1941,7 +2018,16 @@ begin
           FSplashAddUnite.Tag:=7;
        end;
 
-       MainForm.Bonv_fac_listTable.Refresh;
+       MainForm.Bonp_fac_listTable.Refresh;
+
+
+       BonFacPGestionF.ProduitsListDBGridEh.SetFocus;
+
+        BonFacPGestionF.ProduitsListDBGridEh.SelectedIndex:=2;
+        BonFacPGestionF.ProduitsListDBGridEh.EditorMode:=True;
+
+        MainForm.Bonp_fac_listTable.Last;
+
     end
      else
 

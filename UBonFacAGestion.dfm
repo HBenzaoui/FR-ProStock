@@ -1778,7 +1778,7 @@ object BonFacAGestionF: TBonFacAGestionF
         Title.Font.Name = 'Helvetica LT Std'
         Title.Font.Style = []
         Title.Font.Quality = fqProof
-        Width = 450
+        Width = 350
         WordWrap = False
       end
       item

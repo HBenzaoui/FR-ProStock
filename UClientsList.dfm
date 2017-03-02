@@ -329,7 +329,7 @@ object ClientListF: TClientListF
   object ClientsListDBGridEh: TDBGridEh
     Left = 0
     Top = 71
-    Width = 1022
+    Width = 1024
     Height = 649
     Anchors = [akLeft, akTop, akRight, akBottom]
     Border.Color = 4207405
@@ -920,6 +920,7 @@ object ClientListF: TClientListF
         Title.Font.Name = 'Helvetica LT Std'
         Title.Font.Style = []
         Title.ToolTips = True
+        Visible = False
         Width = 130
         WordWrap = False
       end
@@ -951,6 +952,39 @@ object ClientListF: TClientListF
         Title.Font.Name = 'Helvetica LT Std'
         Title.Font.Style = []
         Title.ToolTips = True
+        Visible = True
+        Width = 130
+        WordWrap = False
+      end
+      item
+        DisplayFormat = '#,##0.00'
+        DynProps = <>
+        EditButtons = <>
+        FieldName = 'CREDIT'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 16
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
+        Footer.Color = 15722984
+        Footer.DisplayFormat = '#,##0.00'
+        Footer.Font.Charset = DEFAULT_CHARSET
+        Footer.Font.Color = 4207405
+        Footer.Font.Height = 18
+        Footer.Font.Name = 'Helvetica LT Std'
+        Footer.Font.Style = [fsBold]
+        Footer.ValueType = fvtSum
+        Footers = <>
+        Layout = tlCenter
+        Title.Alignment = taCenter
+        Title.Caption = 'Cr'#233'dit Total'
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = 4207405
+        Title.Font.Height = 18
+        Title.Font.Name = 'Helvetica LT Std'
+        Title.Font.Style = []
+        Title.ToolTips = True
+		Visible = False
         Width = 130
         WordWrap = False
       end
@@ -1096,7 +1130,7 @@ object ClientListF: TClientListF
     object ResearchClientsLbl: TLabel
       Left = 6
       Top = 28
-      Width = 66
+      Width = 74
       Height = 16
       Caption = 'Rechercher'
       Color = 15722984
@@ -1152,7 +1186,7 @@ object ClientListF: TClientListF
       ParentFont = False
     end
     object sSpeedButton3: TsSpeedButton
-      Left = 600
+      Left = 809
       Top = -4
       Width = 30
       Height = 30
@@ -1220,7 +1254,7 @@ object ClientListF: TClientListF
     object LineP: TPanel
       Left = 0
       Top = 69
-      Width = 1256
+      Width = 1465
       Height = 2
       Anchors = [akLeft, akTop, akRight]
       BevelOuter = bvNone
@@ -1520,6 +1554,8 @@ object ClientListF: TClientListF
       ColorHot = 14079702
       ColorHotTo = 14079702
       ColorChecked = clNone
+      DropDownButton = True
+      DropDownMenu = ExcelExportPMenu
       DropDownSplit = False
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 4207405
@@ -1533,7 +1569,6 @@ object ClientListF: TClientListF
       Shaded = False
       ShowHint = True
       Spacing = -2
-      OnClick = AdvToolButton1Click
       Version = '1.6.1.2'
       TMSStyle = 0
     end
@@ -2336,5 +2371,27 @@ object ClientListF: TClientListF
         end
       end
     end
+  end
+  object ExcelExportPMenu: TPopupMenu
+    Images = MainForm.MainMenuImageListMainFormaa
+    Left = 194
+    Top = 630
+    object e1: TMenuItem
+      Caption = 'Exporter vers Excel'
+      ImageIndex = 33
+      OnClick = e1Click
+    end
+    object ExporterverExcel1: TMenuItem
+      Caption = 'Importer depuis Excel'
+      ImageIndex = 34
+      OnClick = ExporterverExcel1Click
+    end
+  end
+  object ProduitListOpnDg: TOpenDialog
+    Filter = 
+      'Excel Workbook (*.xlsx)|*.xlsx|Excel  97- 2003 Workbook (*.xls)|' +
+      '*.xls|CSV (Comma delimited) (*.csv)|*.csv'
+    Left = 300
+    Top = 618
   end
 end

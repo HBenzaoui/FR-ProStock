@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages,MMSystem, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
 
-  EhLibFireDAC
+  EhLibFireDAC   ,Vcl.OleAuto   ,ExcelXP
   ,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, DBGridEhGrouping, ToolCtrlsEh,
   DBGridEhToolCtrls, DynVarsEh, FireDAC.Stan.Intf, FireDAC.Stan.Option,
@@ -17,7 +17,8 @@ uses
   Vcl.ImgList, acAlphaImageList, EhLibVCL, GridsEh, DBAxisGridsEh, DBGridEh,
   Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.Buttons, sSpeedButton, AdvToolBtn,
   Vcl.WinXCtrls, REST.Backend.EMSServices, REST.Backend.EMSFireDAC, frxClass,
-  frxDBSet, frxExportXLS, frxExportPDF, acImage, Vcl.ComCtrls, sStatusBar  ;
+  frxDBSet, frxExportXLS, frxExportPDF, acImage, Vcl.ComCtrls, sStatusBar,
+  Vcl.Menus  ;
 
 type
   TClientListF = class(TForm)
@@ -58,6 +59,10 @@ type
     AdvToolButton2: TAdvToolButton;
     AdvToolButton3: TAdvToolButton;
     Panel7: TPanel;
+    ExcelExportPMenu: TPopupMenu;
+    e1: TMenuItem;
+    ExporterverExcel1: TMenuItem;
+    ProduitListOpnDg: TOpenDialog;
     procedure AddClientsBtnClick(Sender: TObject);
     procedure EditClientsBtnClick(Sender: TObject);
     procedure ResearchClientsEdtChange(Sender: TObject);
@@ -86,8 +91,9 @@ type
     procedure SumGirdBBVlivBtnClick(Sender: TObject);
     procedure RefreshGirdBtnClick(Sender: TObject);
     procedure AdvToolButton3Click(Sender: TObject);
-    procedure AdvToolButton1Click(Sender: TObject);
     procedure AdvToolButton2Click(Sender: TObject);
+    procedure e1Click(Sender: TObject);
+    procedure ExporterverExcel1Click(Sender: TObject);
   private
     procedure GettingData;
     { Private declarations }
@@ -189,6 +195,80 @@ begin
      begin
        sndPlaySound('C:\Windows\Media\chord.wav', SND_NODEFAULT Or SND_ASYNC Or  SND_RING);
      end;
+end;
+
+
+procedure ConvertANSIFileToUTF8File(AInputFileName, AOutputFileName: TFileName);
+var
+  Strings: TStringList;
+begin
+  Strings := TStringList.Create;
+  try
+    Strings.LoadFromFile(AInputFileName);
+    Strings.Text := UTF8Encode(Strings.Text);
+    Strings.SaveToFile(AOutputFileName, TEncoding.UTF8);
+  finally
+    Strings.Free;
+  end
+end;
+
+procedure TClientListF.ExporterverExcel1Click(Sender: TObject);
+var
+  xls,xlw: Variant;
+begin
+
+ if ProduitListOpnDg.Execute then
+ begin
+
+  xls := CreateOleObject('Excel.Application');
+  xls.DisplayAlerts := False  ;
+  xlw := xls.WorkBooks.Open(ProduitListOpnDg.FileName);
+  xlw.SaveAs(GetCurrentDir+ '\importedclinet.csv',xlCSV);
+
+  xlw.Close;
+  xlw := UnAssigned;
+  xls.Quit;
+  xls := UnAssigned;
+
+  ConvertANSIFileToUTF8File(GetCurrentDir+ '\importedclinet.csv',GetCurrentDir+ '\importedclinet.csv');
+
+  MainForm.GstockdcConnection.ExecSQL(
+
+     '  CREATE UNLOGGED TABLE tmp_table '
+   // +'  ON COMMIT DROP              '
+    +'  AS                          '
+    +'  SELECT code_c,nom_c,activite_c,fix_c,mob_c,   '
+    +'  mob2_c,fax_c,adr_c,ville_c,willaya_c,email_c,siteweb_c,rc_c,  '
+    +'  nif_c,nart_c,nis_c,nbank_c,rib_c,oldcredit_c                  '
+    +'  FROM client                                                   '
+    +'  WITH NO DATA;                                                 '
+
+    +'  copy tmp_table from '+ '''' + GetCurrentDir +'\importedclinet.csv'' DELIMITERS '';'' CSV HEADER; '
+
+
+    +'     INSERT INTO client    '
+    +'     SELECT DISTINCT ON (code_c) * '
+    +'     FROM tmp_table                 '
+    +'    ON CONFLICT  (code_c) DO UPDATE  '
+    +'       SET                            '
+    +'     nom_c      = excluded.nom_c,       activite_c  = excluded.activite_c,     '
+    +'     fix_c      = excluded.fix_c,       mob_c       = excluded.mob_c,          '
+    +'     mob2_c     = excluded.mob2_c,   		fax_c       = excluded.fax_c,          '
+    +'     adr_c      = excluded.adr_c,       ville_c     = excluded.ville_c,        '
+    +'     willaya_c  = excluded.willaya_c,  	email_c     = excluded.email_c,        '
+    +'     siteweb_c  = excluded.siteweb_c,   rc_c        = excluded.rc_c,           '
+    +'     nif_c      = excluded.nif_c,   		nart_c      = excluded.nart_c,         '
+    +'     nis_c      = excluded.nis_c,   		nbank_c     = excluded.nbank_c,        '
+    +'     rib_c      = excluded.rib_c,   		oldcredit_c = excluded.oldcredit_c;   DROP TABLE tmp_table; '
+
+     );
+
+    deletefile(GetCurrentDir+ '\importedclinet.csv');
+
+    RefreshGirdBtnClick(Sender);
+
+ end;
+
 end;
 
 procedure TClientListF.DeleteClientsBtnClick(Sender: TObject);
@@ -363,6 +443,19 @@ begin
 
 end;
 
+procedure TClientListF.e1Click(Sender: TObject);
+begin
+MainForm.ClientTable.DisableControls;
+
+    GettingData;
+
+ClientListfrxRprt.PrepareReport;
+frxXLSExport1.FileName := 'Etat liste des Client';
+ClientListfrxRprt.Export(frxXLSExport1);
+
+MainForm.ClientTable.EnableControls;
+end;
+
 procedure TClientListF.ClientsListDBGridEhDblClick(Sender: TObject);
 begin
 //------ use this code to make the clock just on the grid not the title -----/
@@ -393,7 +486,7 @@ if  ClientListDataS.DataSet = MainForm.ClientTable then
  begin
 
 //------ use this code to red the produit with 0 or null in stock----//
- if (MainForm.ClientTable.FieldByName('credit_c').AsCurrency )> 0      then
+ if (MainForm.ClientTable.FieldByName('CREDIT').AsCurrency )> 0      then
  begin
  ClientsListDBGridEh.Canvas.Font.Color:=$004735F9;//   Brush.Color:=clRed;
  ClientsListDBGridEh.DefaultDrawColumnCell(Rect, DataCol, Column, State);
@@ -401,7 +494,7 @@ if  ClientListDataS.DataSet = MainForm.ClientTable then
 
 
  //------ use this code to red the produit with 0 or null in stock----//
- if (MainForm.ClientTable.FieldByName('credit_c').AsCurrency ) < 0     then
+ if (MainForm.ClientTable.FieldByName('CREDIT').AsCurrency ) < 0     then
  begin
  ClientsListDBGridEh.Canvas.Font.Color:=$00519509;//   Brush.Color:=green;
  ClientsListDBGridEh.DefaultDrawColumnCell(Rect, DataCol, Column, State);
@@ -550,19 +643,6 @@ begin
             ClientGestionF.OKClientGBtn.Tag:= 0 ;
 
 
-end;
-
-procedure TClientListF.AdvToolButton1Click(Sender: TObject);
-begin
-MainForm.ClientTable.DisableControls;
-
-    GettingData;
-
-ClientListfrxRprt.PrepareReport;
-frxXLSExport1.FileName := 'Etat liste des Client';
-ClientListfrxRprt.Export(frxXLSExport1);
-
-MainForm.ClientTable.EnableControls;
 end;
 
 procedure TClientListF.AdvToolButton2Click(Sender: TObject);

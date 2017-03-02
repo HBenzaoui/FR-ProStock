@@ -386,6 +386,10 @@ begin
 
      end;
 
+     // --- this is to show the paied only -------------
+
+//     MainForm.Opt_cas_bnk_BankTable.Filtered:= True;
+
 end;
 
 procedure TBankListF.BankListCbxDropDown(Sender: TObject);

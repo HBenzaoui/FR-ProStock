@@ -5,15 +5,10 @@ interface
 uses
   Winapi.Windows,MMsystem, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, DBGridEhGrouping, ToolCtrlsEh,
-  EhLibFireDAC,
-  DBGridEhToolCtrls, DynVarsEh, FireDAC.Stan.Intf, FireDAC.Stan.Option,
-  FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
-  FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, Data.DB,
-  FireDAC.Comp.DataSet, FireDAC.Comp.Client, System.ImageList, Vcl.ImgList,
-  acAlphaImageList, Vcl.StdCtrls, Vcl.WinXCtrls, Vcl.Buttons, sSpeedButton,
-  AdvToolBtn, Vcl.ExtCtrls, EhLibVCL, GridsEh, DBAxisGridsEh, DBGridEh,
-  frxClass, frxDBSet, frxExportXLS, frxExportPDF, acImage, Vcl.ComCtrls,
-  sStatusBar;
+  EhLibFireDAC, DBGridEhToolCtrls, DynVarsEh, Vcl.Menus, frxClass, frxDBSet,
+  frxExportXLS, frxExportPDF, Data.DB, Vcl.ComCtrls, sStatusBar, Vcl.StdCtrls,
+  Vcl.WinXCtrls, Vcl.Buttons, sSpeedButton, AdvToolBtn, Vcl.ExtCtrls, EhLibVCL,
+  GridsEh, DBAxisGridsEh, DBGridEh, Vcl.OleAuto,ExcelXP;
 
 type
   TFournisseurListF = class(TForm)
@@ -54,6 +49,10 @@ type
     AdvToolButton2: TAdvToolButton;
     AdvToolButton3: TAdvToolButton;
     Panel7: TPanel;
+    ExcelExportPMenu: TPopupMenu;
+    e1: TMenuItem;
+    ExporterverExcel1: TMenuItem;
+    ProduitListOpnDg: TOpenDialog;
     procedure ResearchFournisseurEdtKeyPress(Sender: TObject; var Key: Char);
     procedure ResearchFournisseurEdtChange(Sender: TObject);
     procedure FisrtFournisseursbtnClick(Sender: TObject);
@@ -81,9 +80,10 @@ type
     procedure sSpeedButton3Click(Sender: TObject);
     procedure SumGirdBBVlivBtnClick(Sender: TObject);
     procedure RefreshGirdBtnClick(Sender: TObject);
-    procedure AdvToolButton1Click(Sender: TObject);
     procedure AdvToolButton2Click(Sender: TObject);
     procedure FormPaint(Sender: TObject);
+    procedure e1Click(Sender: TObject);
+    procedure ExporterverExcel1Click(Sender: TObject);
   private
     procedure GettingData;
     { Private declarations }
@@ -162,19 +162,6 @@ begin
     FournisseurGestionF.Show;
     FournisseurGestionF.NameFournisseurGEdt.SetFocus;
     FournisseurGestionF.OKFournisseurGBtn.Tag:= 0 ;
-end;
-
-procedure TFournisseurListF.AdvToolButton1Click(Sender: TObject);
-begin
-MainForm.FournisseurTable.DisableControls;
-
-    GettingData;
-
-FourListfrxRprt.PrepareReport;
-frxXLSExport1.FileName := 'Etat liste des Fournisseurs';
-FourListfrxRprt.Export(frxXLSExport1);
-
-MainForm.FournisseurTable.EnableControls;
 end;
 
 procedure TFournisseurListF.AdvToolButton2Click(Sender: TObject);
@@ -329,6 +316,19 @@ begin
  end;
 end;
 
+procedure TFournisseurListF.e1Click(Sender: TObject);
+begin
+MainForm.FournisseurTable.DisableControls;
+
+    GettingData;
+
+FourListfrxRprt.PrepareReport;
+frxXLSExport1.FileName := 'Etat liste des Fournisseurs';
+FourListfrxRprt.Export(frxXLSExport1);
+
+MainForm.FournisseurTable.EnableControls;
+end;
+
 procedure TFournisseurListF.EditFournisseursBtnClick(Sender: TObject);
 begin
       //----------------- Show the splash screan for the produit familly to add new one---------//
@@ -373,6 +373,81 @@ begin
 
       end
   else  Exit
+end;
+
+
+procedure ConvertANSIFileToUTF8File(AInputFileName, AOutputFileName: TFileName);
+var
+  Strings: TStringList;
+begin
+  Strings := TStringList.Create;
+  try
+    Strings.LoadFromFile(AInputFileName);
+    Strings.Text := UTF8Encode(Strings.Text);
+    Strings.SaveToFile(AOutputFileName, TEncoding.UTF8);
+  finally
+    Strings.Free;
+  end
+end;
+
+procedure TFournisseurListF.ExporterverExcel1Click(Sender: TObject);
+var
+  xls,xlw: Variant;
+begin
+
+ if ProduitListOpnDg.Execute then
+ begin
+
+  xls := CreateOleObject('Excel.Application');
+  xls.DisplayAlerts := False  ;
+  xlw := xls.WorkBooks.Open(ProduitListOpnDg.FileName);
+  xlw.SaveAs(GetCurrentDir+ '\importedfour.csv',xlCSV);
+
+  xlw.Close;
+  xlw := UnAssigned;
+  xls.Quit;
+  xls := UnAssigned;
+
+  ConvertANSIFileToUTF8File(GetCurrentDir+ '\importedfour.csv',GetCurrentDir+ '\importedfour.csv');
+
+  MainForm.GstockdcConnection.ExecSQL(
+
+     '  CREATE UNLOGGED TABLE tmp_table '
+   // +'  ON COMMIT DROP              '
+    +'  AS                          '
+    +'  SELECT code_f,nom_f,fix_f,mob_f,   '
+    +'  mob2_f,fax_f,adr_f,ville_f,willaya_f,email_f,siteweb_f,rc_f,  '
+    +'  nif_f,nart_f,nis_f,nbank_f,rib_f,oldcredit_f                  '
+    +'  FROM fournisseur                                                   '
+    +'  WITH NO DATA;                                                 '
+
+
+    +'  copy tmp_table from '+ '''' + GetCurrentDir +'\importedfour.csv'' DELIMITERS '';'' CSV HEADER; '
+
+
+    +'     INSERT INTO fournisseur    '
+    +'     SELECT DISTINCT ON (code_f) * '
+    +'     FROM tmp_table                 '
+    +'    ON CONFLICT  (code_f) DO UPDATE  '
+    +'       SET                            '
+    +'     nom_f      = excluded.nom_f,          '
+    +'     fix_f      = excluded.fix_f,       mob_f       = excluded.mob_f,          '
+    +'     mob2_f     = excluded.mob2_f,   		fax_f       = excluded.fax_f,          '
+    +'     adr_f      = excluded.adr_f,       ville_f     = excluded.ville_f,        '
+    +'     willaya_f  = excluded.willaya_f,  	email_f     = excluded.email_f,        '
+    +'     siteweb_f  = excluded.siteweb_f,   rc_f        = excluded.rc_f,           '
+    +'     nif_f      = excluded.nif_f,   		nart_f      = excluded.nart_f,         '
+    +'     nis_f      = excluded.nis_f,   		nbank_f     = excluded.nbank_f,        '
+    +'     rib_f      = excluded.rib_f,   		oldcredit_f = excluded.oldcredit_f;   DROP TABLE tmp_table; '
+
+     );
+
+    deletefile(GetCurrentDir+ '\importedfour.csv');
+
+    RefreshGirdBtnClick(Sender);
+
+ end;
+
 end;
 
 procedure TFournisseurListF.FisrtFournisseursbtnClick(Sender: TObject);

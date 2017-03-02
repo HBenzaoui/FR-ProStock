@@ -286,25 +286,24 @@ I : Integer;
 //  PostMessage((Sender as TComboBox).Handle, CB_SHOWDROPDOWN, 1, 0);
 //      ProduitBonLivGCbx.Refresh;
       NamePerteGCbx.Properties.Items.Clear;
-      MainForm.ProduitTable.DisableControls;
-      MainForm.ProduitTable.Active:=False;
-      MainForm.ProduitTable.SQL.Clear;
-      MainForm.ProduitTable.SQL.Text:= 'SELECT * FROM produit ';
-      MainForm.ProduitTable.Active := True;
-
-      MainForm.ProduitTable.Refresh;
-     
-      MainForm.ProduitTable.first;
+      MainForm.SQLQuery.Active:=False;
+      MainForm.SQLQuery.SQL.Clear;
+      MainForm.SQLQuery.SQL.Text:= 'SELECT code_p,nom_p FROM produit ';
+      MainForm.SQLQuery.Active := True;
 
 
-     for I := 0 to MainForm.ProduitTable.RecordCount - 1 do
-     if ( MainForm.ProduitTable.FieldByName('nom_p').IsNull = False )  then
+      MainForm.SQLQuery.first;
+
+
+     for I := 0 to MainForm.SQLQuery.RecordCount - 1 do
+     if ( MainForm.SQLQuery.FieldByName('nom_p').IsNull = False )  then
      begin
-       NamePerteGCbx.Properties.Items.Add(MainForm.ProduitTable.FieldByName('nom_p').AsString);
-       MainForm.ProduitTable.Next;
+       NamePerteGCbx.Properties.Items.Add(MainForm.SQLQuery.FieldByName('nom_p').AsString);
+       MainForm.SQLQuery.Next;
       end;
 
-     MainForm.ProduitTable.EnableControls;
+      MainForm.SQLQuery.Active:=False;
+      MainForm.SQLQuery.SQL.Clear;
   end;
 
 end;

@@ -10,8 +10,12 @@ uses
   sSpeedButton, AdvToolBtn, Vcl.ExtCtrls, EhLibVCL, GridsEh, DBAxisGridsEh,
   DBGridEh,EhLibFireDAC,
   System.DateUtils, frxClass, frxDBSet, frxExportPDF, frxExportXLS, Vcl.Menus,
-  acImage, sStatusBar
+  acImage, sStatusBar ,IniFiles
   ;
+
+
+const
+  SETTINGS_FILE = 'Edijus\Settings.ini';
 
 type
   TBonLivF = class(TForm)
@@ -132,6 +136,8 @@ type
     procedure Select_Regle;
     procedure FilteredColor;
     procedure NOT_FilteredColor;
+    procedure LoadDBGridColumnsWidth(const ADBGrid: TDBGridEh);
+    procedure SaveDBGridColumnsWidth(const ADBGrid: TDBGridEh);
     { Private declarations }
   public
     { Public declarations }
@@ -630,13 +636,13 @@ codeBL:= 0;
            begin
         //   MainForm.Bonv_livTable.Last;
           // codeBL := MainForm.Bonv_livTable.FieldValues['code_bvliv'];
-           MainForm.Bonv_livTable.Insert;
-           MainForm.Bonv_livTable.FieldValues['code_bvliv']:= codeBL + 1;
-           MainForm.Bonv_livTable.FieldValues['num_bvliv']:=  'BL'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5,(codeBL + 1)]);
-           MainForm.Bonv_livTable.FieldValues['date_bvliv']:= DateOf(Today);
-           MainForm.Bonv_livTable.FieldValues['time_bvliv']:= TimeOf(Now);
-           MainForm.Bonv_livTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
-           MainForm.Bonv_livTable.Post;
+             MainForm.Bonv_livTable.Insert;
+             MainForm.Bonv_livTable.FieldValues['code_bvliv']:= codeBL + 1;
+             MainForm.Bonv_livTable.FieldValues['num_bvliv']:=  'BL'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5,(codeBL + 1)]);
+             MainForm.Bonv_livTable.FieldValues['date_bvliv']:= DateOf(Today);
+             MainForm.Bonv_livTable.FieldValues['time_bvliv']:= TimeOf(Now);
+             MainForm.Bonv_livTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
+             MainForm.Bonv_livTable.Post;
 
 
            end;
@@ -664,6 +670,7 @@ MainForm.Bonv_livTable.Active:= False;
 MainForm.Bonv_livTable.SQL.clear;
 mainform.Bonv_livTable.sql.Text:='SELECT * FROM bonv_liv WHERE date_bvliv BETWEEN '''+(DateToStr(DateStartBVLivD.Date))+ ''' AND ''' +(DateToStr(DateEndBVLivD.Date))+'''';
 MainForm.Bonv_livTable.Active:= True;
+MainForm.Bonv_livTable.Last;
 MainForm.Bonv_livTable.EnableControls;
 end;
 
@@ -1128,11 +1135,76 @@ MainForm.Bonv_livTable.Active:= True;
 MainForm.Bonv_livTable.EnableControls;
 end;
 
+
+procedure TBonLivF.LoadDBGridColumnsWidth(const ADBGrid: TDBGridEh);
+var
+  _MemIniU: TMemIniFile;
+  _SettingsPath: string;
+  i, j: integer;
+  _ParentClass: TWinControl;
+begin
+  _SettingsPath := GetHomePath + PathDelim + SETTINGS_FILE;
+  if (not Assigned(ADBGrid)) or (not Assigned(ADBGrid.DataSource)) or
+    (not Assigned(ADBGrid.DataSource.DataSet)) then
+    Exit;
+
+  _MemIniU := TMemIniFile.Create(_SettingsPath, TEncoding.UTF8);
+  try
+    _ParentClass := ADBGrid.Parent;
+    while not(_ParentClass is TForm) do
+      _ParentClass := _ParentClass.Parent;
+    for i := 0 to Pred(ADBGrid.DataSource.DataSet.Fields.Count) do
+      for j := 0 to Pred(ADBGrid.Columns.Count) do
+      begin
+        if (ADBGrid.DataSource.DataSet.Fields[i].FieldName = ADBGrid.Columns[j]
+          .FieldName) then
+          ADBGrid.Columns[j].Width :=
+            _MemIniU.ReadInteger(_ParentClass.Name + '_' + ADBGrid.Name,
+            ADBGrid.Columns[j].FieldName, 64);
+      end;
+  finally
+    FreeAndNil(_MemIniU);
+  end;
+end;
+
+ procedure TBonLivF.SaveDBGridColumnsWidth(const ADBGrid: TDBGridEh);
+var
+  _MemIniU: TMemIniFile;
+  _SettingsPath: string;
+  i: integer;
+  _ParentClass: TWinControl;
+begin
+  _SettingsPath := GetHomePath + PathDelim + SETTINGS_FILE;
+  if (not Assigned(ADBGrid)) or
+    (not ForceDirectories(ExtractFilePath(_SettingsPath))) then
+    Exit;
+
+  _MemIniU := TMemIniFile.Create(_SettingsPath, TEncoding.UTF8);
+  try
+    _ParentClass := ADBGrid.Parent;
+    while not(_ParentClass is TForm) do
+      _ParentClass := _ParentClass.Parent;
+    for i := 0 to Pred(ADBGrid.Columns.Count) do
+      if (ADBGrid.Columns[i].FieldName <> '') then
+        _MemIniU.WriteInteger(_ParentClass.Name + '_' + ADBGrid.Name,
+          ADBGrid.Columns[i].FieldName, ADBGrid.Columns[i].Width);
+
+    _MemIniU.UpdateFile;
+  finally
+    FreeAndNil(_MemIniU);
+  end;
+end;
+
 procedure TBonLivF.FormShow(Sender: TObject);
 begin
   DateStartBVLivD.Date:=EncodeDate (YearOf(Now),MonthOf(Now),01);
   DateEndBVlivD.Date:=EncodeDate (YearOf(Now),MonthOf(Now),DayOf(Now));
   DateStartBVlivDChange(Sender);
+
+
+
+//  LoadDBGridColumnsWidth(BVLivListDBGridEh);
+
 end;
 
 procedure TBonLivF.GettingData;
@@ -1291,6 +1363,8 @@ end;
 
 procedure TBonLivF.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
+//SaveDBGridColumnsWidth(BVLivListDBGridEh);
+
  FreeAndNil(BonLivF);
 end;
 

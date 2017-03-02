@@ -1969,6 +1969,7 @@ object MainForm: TMainForm
       end
       object A5: TMenuItem
         Caption = 'A propos de ...'
+        OnClick = A5Click
       end
     end
   end
@@ -21509,14 +21510,15 @@ object MainForm: TMainForm
     Top = 105
   end
   object ClientTable: TFDQuery
+    OnCalcFields = ClientTableCalcFields
     FilterOptions = [foCaseInsensitive]
     IndexFieldNames = 'code_c'
     Connection = GstockdcConnection
     SQL.Strings = (
       'SELECT * FROM client '
       '')
-    Left = 46
-    Top = 158
+    Left = 48
+    Top = 178
     object ClientTablenom_c: TWideStringField
       FieldName = 'nom_c'
       Origin = 'nom_c'
@@ -21644,7 +21646,7 @@ object MainForm: TMainForm
     end
     object ClientTableCredit: TCurrencyField
       FieldKind = fkInternalCalc
-      FieldName = 'Credit'
+      FieldName = 'CREDIT'
     end
   end
   object FDPhysPgDriverLink1: TFDPhysPgDriverLink
@@ -22060,6 +22062,8 @@ object MainForm: TMainForm
   object SQLQuery: TFDQuery
     FilterOptions = [foCaseInsensitive]
     Connection = GstockdcConnection
+    FetchOptions.AssignedValues = [evRowsetSize]
+    FetchOptions.RowsetSize = 2000
     Left = 188
     Top = 150
   end
@@ -24159,6 +24163,8 @@ object MainForm: TMainForm
   object FDQuery2: TFDQuery
     FilterOptions = [foCaseInsensitive]
     Connection = GstockdcConnection
+    FetchOptions.AssignedValues = [evRowsetSize]
+    FetchOptions.RowsetSize = 2000
     Left = 189
     Top = 94
   end
@@ -43706,35 +43712,38 @@ object MainForm: TMainForm
           '-- ----------------------------'
           '-- Table structure for client'
           '-- ----------------------------'
-          'CREATE TABLE "client" ('
+          'CREATE TABLE "public"."client" ('
           '"code_c" int4 NOT NULL,'
-          '"nom_c" varchar(40) COLLATE "default",'
-          '"adr_c" varchar(60) COLLATE "default",'
-          '"ville_c" varchar(25) COLLATE "default",'
-          '"fix_c" char(15) COLLATE "default",'
-          '"mob_c" char(15) COLLATE "default",'
-          '"email_c" varchar(40) COLLATE "default",'
-          '"willaya_c" varchar(25) COLLATE "default",'
-          '"fax_c" char(15) COLLATE "default",'
-          '"activ_c" bool DEFAULT true,'
-          '"mob2_c" char(15) COLLATE "default",'
-          '"rc_c" char(25) COLLATE "default",'
-          '"nif_c" char(25) COLLATE "default",'
-          '"nart_c" char(25) COLLATE "default",'
-          '"nis_c" char(25) COLLATE "default",'
-          '"obser_c" text COLLATE "default",'
-          '"nbank_c" char(25) COLLATE "default",'
-          '"rib_c" char(25) COLLATE "default",'
-          '"activite_c" char(40) COLLATE "default",'
-          '"siteweb_c" varchar(40) COLLATE "default",'
+          '"nom_c" varchar COLLATE "default",'
+          '"activite_c" varchar COLLATE "default",'
+          '"fix_c" varchar COLLATE "default",'
+          '"mob_c" varchar COLLATE "default",'
+          '"mob2_c" varchar COLLATE "default",'
+          '"fax_c" varchar COLLATE "default",'
+          '"adr_c" varchar COLLATE "default",'
+          '"ville_c" varchar COLLATE "default",'
+          '"willaya_c" varchar COLLATE "default",'
+          '"email_c" varchar COLLATE "default",'
+          '"siteweb_c" varchar COLLATE "default",'
+          '"rc_c" varchar COLLATE "default",'
+          '"nif_c" varchar COLLATE "default",'
+          '"nart_c" varchar COLLATE "default",'
+          '"nis_c" varchar COLLATE "default",'
+          '"nbank_c" varchar COLLATE "default",'
+          '"rib_c" varchar COLLATE "default",'
           '"oldcredit_c" money DEFAULT 0,'
+          '"credit_c" money DEFAULT 0,'
           '"maxcredit_c" money DEFAULT 0,'
           '"tarification_c" int2 DEFAULT 0,'
-          '"credit_c" money DEFAULT 0'
+          '"activ_c" bool DEFAULT true,'
+          '"obser_c" text COLLATE "default"'
+          ''
+          ''
           ')'
           'WITH (OIDS=FALSE)'
           ''
           ';'
+          ''
           ''
           '-- ----------------------------'
           '-- Records of client'
@@ -43848,27 +43857,27 @@ object MainForm: TMainForm
           '-- ----------------------------'
           'CREATE TABLE "fournisseur" ('
           '"code_f" int4 NOT NULL,'
-          '"nom_f" varchar(40) COLLATE "default",'
-          '"adr_f" char(50) COLLATE "default",'
-          '"ville_f" char(25) COLLATE "default",'
-          '"willaya_f" char(25) COLLATE "default",'
-          '"fix_f" char(15) COLLATE "default",'
-          '"mob_f" char(15) COLLATE "default",'
-          '"mob2_f" char(15) COLLATE "default",'
-          '"fax_f" char(15) COLLATE "default",'
-          '"email_f" char(40) COLLATE "default",'
-          '"obser_f" char(250) COLLATE "default",'
-          '"activ_f" bool DEFAULT true,'
-          '"rc_f" char(25) COLLATE "default",'
-          '"nif_f" char(25) COLLATE "default",'
-          '"nart_f" char(25) COLLATE "default",'
-          '"nis_f" char(25) COLLATE "default",'
-          '"nbank_f" char(25) COLLATE "default",'
-          '"rib_f" char(25) COLLATE "default",'
-          '"siteweb_f" char(40) COLLATE "default",'
+          '"nom_f" varchar COLLATE "default",'
+          '"fix_f" varchar COLLATE "default",'
+          '"mob_f" varchar COLLATE "default",'
+          '"mob2_f" varchar COLLATE "default",'
+          '"fax_f" varchar COLLATE "default",'
+          '"adr_f" varchar COLLATE "default",'
+          '"ville_f" varchar COLLATE "default",'
+          '"willaya_f" varchar COLLATE "default",'
+          '"email_f" varchar COLLATE "default",'
+          '"siteweb_f" varchar COLLATE "default",'
+          '"rc_f" varchar COLLATE "default",'
+          '"nif_f" varchar COLLATE "default",'
+          '"nart_f" varchar COLLATE "default",'
+          '"nis_f" varchar COLLATE "default",'
+          '"nbank_f" varchar COLLATE "default",'
+          '"rib_f" varchar COLLATE "default",'
           '"oldcredit_f" money DEFAULT 0,'
+          '"credit_f" money DEFAULT 0,'
           '"maxcredit_f" money DEFAULT 0,'
-          '"credit_f" money DEFAULT 0'
+          '"activ_f" bool DEFAULT true,'
+          '"obser_f" text COLLATE "default"'
           ')'
           'WITH (OIDS=FALSE)'
           ''
@@ -56571,6 +56580,8 @@ object MainForm: TMainForm
   object SQLQuery3: TFDQuery
     FilterOptions = [foCaseInsensitive]
     Connection = GstockdcConnection
+    FetchOptions.AssignedValues = [evRowsetSize]
+    FetchOptions.RowsetSize = 2000
     Left = 186
     Top = 206
   end

@@ -840,10 +840,10 @@ begin
     MainForm.ProduitTable.Delete ;
     end;
 
-//    MainForm.ProduitTable.DisableControls;
-    MainForm.ProduitTable.Active:= False;
-    MainForm.ProduitTable.SQL.Text:= 'SELECT * FROM produit ';
-    MainForm.ProduitTable.Active:= True;
+////    MainForm.ProduitTable.DisableControls;
+//    MainForm.ProduitTable.Active:= False;
+//    MainForm.ProduitTable.SQL.Text:= 'SELECT * FROM produit ';
+//    MainForm.ProduitTable.Active:= True;
     MainForm.ProduitTable.EnableControls;
 
 //   ProduitsListF.ProduitsListDBGridEh.Enabled:=True;
