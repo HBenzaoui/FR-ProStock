@@ -1796,7 +1796,7 @@ object BonLivGestionF: TBonLivGestionF
         Title.Font.Name = 'Helvetica LT Std'
         Title.Font.Style = []
         Title.Font.Quality = fqProof
-        Width = 450
+        Width = 350
         WordWrap = False
       end
       item
@@ -3791,6 +3791,9 @@ object BonLivGestionF: TBonLivGestionF
       ImageIndex = 32
       OnClick = B1Click
     end
+    object Bondelivraison2: TMenuItem
+      Caption = 'Bon de livraison (A5)'
+    end
     object BondeRception1: TMenuItem
       Caption = 'Bon de livraison hors taxe'
       ImageIndex = 32
@@ -5740,5 +5743,10 @@ object BonLivGestionF: TBonLivGestionF
         end
       end
     end
+  end
+  object ApplicationEvents1: TApplicationEvents
+    OnShortCut = ApplicationEvents1ShortCut
+    Left = 858
+    Top = 250
   end
 end

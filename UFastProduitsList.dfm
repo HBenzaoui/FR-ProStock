@@ -36,7 +36,7 @@ object FastProduitsListF: TFastProduitsListF
     object ResearchProduitsLbl: TLabel
       Left = 11
       Top = 23
-      Width = 66
+      Width = 74
       Height = 16
       Caption = 'Rechercher'
       Color = 15722984
@@ -216,6 +216,7 @@ object FastProduitsListF: TFastProduitsListF
       TabOrder = 0
       OnChange = ResearchProduitsEdtChange
       OnEnter = ResearchProduitsEdtEnter
+      OnKeyDown = ResearchProduitsEdtKeyDown
       OnKeyPress = ResearchProduitsEdtKeyPress
     end
     object ResherchPARDesProduitsRdioBtn: TRadioButton

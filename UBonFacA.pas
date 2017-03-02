@@ -687,6 +687,7 @@ MainForm.Bona_facTable.Active:= True;
   MainForm.Bona_facTable.SQL.clear;
   mainform.Bona_facTable.sql.Text:='SELECT * FROM bona_fac WHERE date_bafac BETWEEN '''+(DateToStr(DateStartBAFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBAFacD.Date))+'''';
   MainForm.Bona_facTable.Active:= True;
+  MainForm.Bona_facTable.Last;
   MainForm.Bona_facTable.EnableControls;
 
 end;

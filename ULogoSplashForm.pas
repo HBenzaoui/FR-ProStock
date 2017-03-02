@@ -152,6 +152,18 @@ var
   rgn: HRGN;
   sCmd: string;
 begin
+
+  Application.UpdateFormatSettings := false;
+  FormatSettings.DecimalSeparator := ',';
+  FormatSettings.ThousandSeparator := ' ';
+  FormatSettings.CurrencyDecimals := 2;
+  FormatSettings.DateSeparator:= '/';
+  FormatSettings.ShortDateFormat:= 'dd/mm/yyyy';
+  FormatSettings.CurrencyString:= ' ';
+  FormatSettings.CurrencyFormat:= 1;
+
+
+
 //  MainForm.KillTask('postgres.exe');                                    // Eable this is only for releasing
 //  MainForm.KillTask('cmd.exe');                                         // Eable this is only for releasing
 

@@ -417,7 +417,7 @@ object BonCtrGestionF: TBonCtrGestionF
         Title.Font.Name = 'Helvetica LT Std'
         Title.Font.Style = []
         Title.Font.Quality = fqProof
-        Width = 106
+        Width = 90
         WordWrap = False
       end
       item
@@ -441,7 +441,7 @@ object BonCtrGestionF: TBonCtrGestionF
         Title.Font.Name = 'Helvetica LT Std'
         Title.Font.Style = []
         Title.Font.Quality = fqProof
-        Width = 338
+        Width = 300
         WordWrap = False
       end
       item
@@ -2453,13 +2453,13 @@ object BonCtrGestionF: TBonCtrGestionF
   object BonCtrPListDataS: TDataSource
     DataSet = MainForm.Bonv_ctr_listTable
     OnDataChange = BonCtrPListDataSDataChange
-    Left = 658
-    Top = 514
+    Left = 646
+    Top = 526
   end
   object BonCtrTop10produit: TDataSource
     DataSet = DataModuleF.Top5produit
-    Left = 698
-    Top = 491
+    Left = 826
+    Top = 539
   end
   object frxComptoirListPDB: TfrxDBDataset
     UserName = 'frxComptoirListPDB'

@@ -422,6 +422,7 @@ MainForm.Bonp_facTable.Active:= False;
 MainForm.Bonp_facTable.SQL.clear;
 mainform.Bonp_facTable.sql.Text:='SELECT * FROM bonp_fac WHERE date_bpfac BETWEEN '''+(DateToStr(DateStartBVFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBVFacD.Date))+'''';
 MainForm.Bonp_facTable.Active:= True;
+MainForm.Bonp_facTable.Last;
 MainForm.Bonp_facTable.EnableControls;
 
 end;

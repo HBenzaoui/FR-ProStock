@@ -3,7 +3,7 @@ object ClientListF: TClientListF
   Top = 0
   Caption = 'Liste des Clients'
   ClientHeight = 741
-  ClientWidth = 1022
+  ClientWidth = 1571
   Color = clBtnFace
   DoubleBuffered = True
   Font.Charset = DEFAULT_CHARSET
@@ -322,14 +322,14 @@ object ClientListF: TClientListF
   OnPaint = FormPaint
   OnShow = FormShow
   DesignSize = (
-    1022
+    1571
     741)
   PixelsPerInch = 96
   TextHeight = 13
   object ClientsListDBGridEh: TDBGridEh
     Left = 0
     Top = 71
-    Width = 1022
+    Width = 1571
     Height = 649
     Anchors = [akLeft, akTop, akRight, akBottom]
     Border.Color = 4207405
@@ -984,7 +984,7 @@ object ClientListF: TClientListF
   object TopP: TPanel
     Left = 0
     Top = 0
-    Width = 1022
+    Width = 1571
     Height = 71
     Align = alTop
     BevelOuter = bvNone
@@ -994,8 +994,9 @@ object ClientListF: TClientListF
     ParentDoubleBuffered = False
     TabOrder = 1
     StyleElements = []
+    ExplicitWidth = 1022
     DesignSize = (
-      1022
+      1571
       71)
     object EditClientsBtn: TAdvToolButton
       Left = 538
@@ -1096,7 +1097,7 @@ object ClientListF: TClientListF
     object ResearchClientsLbl: TLabel
       Left = 6
       Top = 28
-      Width = 66
+      Width = 74
       Height = 16
       Caption = 'Rechercher'
       Color = 15722984
@@ -1152,7 +1153,7 @@ object ClientListF: TClientListF
       ParentFont = False
     end
     object sSpeedButton3: TsSpeedButton
-      Left = 600
+      Left = 1149
       Top = -4
       Width = 30
       Height = 30
@@ -1220,7 +1221,7 @@ object ClientListF: TClientListF
     object LineP: TPanel
       Left = 0
       Top = 69
-      Width = 1256
+      Width = 1805
       Height = 2
       Anchors = [akLeft, akTop, akRight]
       BevelOuter = bvNone
@@ -1228,6 +1229,7 @@ object ClientListF: TClientListF
       ParentBackground = False
       TabOrder = 1
       StyleElements = []
+      ExplicitWidth = 1256
     end
     object Panel1: TPanel
       Left = 748
@@ -1415,7 +1417,7 @@ object ClientListF: TClientListF
   object StatuBar: TsStatusBar
     Left = 0
     Top = 721
-    Width = 1022
+    Width = 1571
     Height = 20
     BiDiMode = bdLeftToRight
     Panels = <
@@ -1432,8 +1434,9 @@ object ClientListF: TClientListF
     ParentBiDiMode = False
     SizeGrip = False
     SkinData.SkinSection = 'MENUITEM'
+    ExplicitWidth = 1022
     DesignSize = (
-      1022
+      1571
       20)
     object SumGirdBBVlivBtn: TAdvToolButton
       Left = 141
@@ -1520,6 +1523,8 @@ object ClientListF: TClientListF
       ColorHot = 14079702
       ColorHotTo = 14079702
       ColorChecked = clNone
+      DropDownButton = True
+      DropDownMenu = ExcelExportPMenu
       DropDownSplit = False
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 4207405
@@ -1533,7 +1538,6 @@ object ClientListF: TClientListF
       Shaded = False
       ShowHint = True
       Spacing = -2
-      OnClick = AdvToolButton1Click
       Version = '1.6.1.2'
       TMSStyle = 0
     end
@@ -2336,5 +2340,27 @@ object ClientListF: TClientListF
         end
       end
     end
+  end
+  object ExcelExportPMenu: TPopupMenu
+    Images = MainForm.MainMenuImageListMainFormaa
+    Left = 194
+    Top = 630
+    object e1: TMenuItem
+      Caption = 'Exporter vers Excel'
+      ImageIndex = 33
+      OnClick = e1Click
+    end
+    object ExporterverExcel1: TMenuItem
+      Caption = 'Importer depuis Excel'
+      ImageIndex = 34
+      OnClick = ExporterverExcel1Click
+    end
+  end
+  object ProduitListOpnDg: TOpenDialog
+    Filter = 
+      'Excel Workbook (*.xlsx)|*.xlsx|Excel  97- 2003 Workbook (*.xlsx)' +
+      '||CSV (Comma delimited) (*.csv)|*.csv'
+    Left = 300
+    Top = 618
   end
 end

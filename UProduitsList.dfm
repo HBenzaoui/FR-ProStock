@@ -437,7 +437,7 @@ object ProduitsListF: TProduitsListF
         Title.Font.Name = 'Helvetica LT Std'
         Title.Font.Style = []
         Title.Font.Quality = fqProof
-        Width = 500
+        Width = 380
         WordWrap = False
       end
       item
@@ -3626,6 +3626,9 @@ object ProduitsListF: TProduitsListF
     end
   end
   object ProduitListOpnDg: TOpenDialog
+    Filter = 
+      'Excel Workbook (*.xlsx)|*.xlsx|Excel  97- 2003 Workbook (*.xls)|' +
+      '*.xls|CSV (Comma delimited) (*.csv)|*.csv'
     Left = 300
     Top = 618
   end

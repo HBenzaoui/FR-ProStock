@@ -555,7 +555,10 @@ object DataModuleF: TDataModuleF
     OnCalcFields = PZeroQCnotifCalcFields
     Connection = MainForm.GstockdcConnection
     SQL.Strings = (
-      'SELECT * FROM produit WHERE (qut_p + qutini_p) <= 0')
+      
+        'SELECT code_p,refer_p,nom_p,qut_p,qutini_p,code_famp,code_sfamp,' +
+        'code_l,code_u,code_f'
+      'FROM produit WHERE (qut_p + qutini_p) <= 0')
     Left = 854
     Top = 252
     object PZeroQCnotifcode_p: TIntegerField
@@ -581,22 +584,9 @@ object DataModuleF: TDataModuleF
       FieldName = 'code_famp'
       Origin = 'code_famp'
     end
-    object PZeroQCnotifalertqut_p: TIntegerField
-      FieldName = 'alertqut_p'
-      Origin = 'alertqut_p'
-    end
     object PZeroQCnotifcode_f: TIntegerField
       FieldName = 'code_f'
       Origin = 'code_f'
-    end
-    object PZeroQCnotifobser_p: TWideStringField
-      FieldName = 'obser_p'
-      Origin = 'obser_p'
-      Size = 32767
-    end
-    object PZeroQCnotiflogo_p: TBlobField
-      FieldName = 'logo_p'
-      Origin = 'logo_p'
     end
     object PZeroQCnotifcode_l: TIntegerField
       FieldName = 'code_l'
@@ -606,55 +596,6 @@ object DataModuleF: TDataModuleF
       FieldName = 'code_sfamp'
       Origin = 'code_sfamp'
     end
-    object PZeroQCnotifperissable_p: TBooleanField
-      FieldName = 'perissable_p'
-      Origin = 'perissable_p'
-    end
-    object PZeroQCnotifdateperiss_p: TDateField
-      FieldName = 'dateperiss_p'
-      Origin = 'dateperiss_p'
-    end
-    object PZeroQCnotifalertdays_p: TSmallintField
-      FieldName = 'alertdays_p'
-      Origin = 'alertdays_p'
-    end
-    object PZeroQCnotifprixht_p: TCurrencyField
-      FieldName = 'prixht_p'
-      Origin = 'prixht_p'
-    end
-    object PZeroQCnotifprixvd_p: TCurrencyField
-      FieldName = 'prixvd_p'
-      Origin = 'prixvd_p'
-    end
-    object PZeroQCnotifprixvr_p: TCurrencyField
-      FieldName = 'prixvr_p'
-      Origin = 'prixvr_p'
-    end
-    object PZeroQCnotifprixvg_p: TCurrencyField
-      FieldName = 'prixvg_p'
-      Origin = 'prixvg_p'
-    end
-    object PZeroQCnotifprixva_p: TCurrencyField
-      FieldName = 'prixva_p'
-      Origin = 'prixva_p'
-    end
-    object PZeroQCnotifprixva2_p: TCurrencyField
-      FieldName = 'prixva2_p'
-      Origin = 'prixva2_p'
-    end
-    object PZeroQCnotifcodebar_p: TWideStringField
-      FieldName = 'codebar_p'
-      Origin = 'codebar_p'
-      Size = 8190
-    end
-    object PZeroQCnotifqutmax_p: TFloatField
-      FieldName = 'qutmax_p'
-      Origin = 'qutmax_p'
-    end
-    object PZeroQCnotifqutmin_p: TFloatField
-      FieldName = 'qutmin_p'
-      Origin = 'qutmin_p'
-    end
     object PZeroQCnotifcode_u: TSmallintField
       FieldName = 'code_u'
       Origin = 'code_u'
@@ -662,16 +603,6 @@ object DataModuleF: TDataModuleF
     object PZeroQCnotifqutini_p: TFloatField
       FieldName = 'qutini_p'
       Origin = 'qutini_p'
-    end
-    object PZeroQCnotiftva_p: TSmallintField
-      FieldName = 'tva_p'
-      Origin = 'tva_p'
-    end
-    object PZeroQCnotifQUT: TIntegerField
-      AutoGenerateValue = arDefault
-      FieldKind = fkInternalCalc
-      FieldName = 'QUT'
-      ProviderFlags = []
     end
     object PZeroQCnotifQutDispo: TFloatField
       AutoGenerateValue = arDefault
@@ -730,8 +661,11 @@ object DataModuleF: TDataModuleF
     Connection = MainForm.GstockdcConnection
     SQL.Strings = (
       
-        'SELECT * FROM produit WHERE (qut_p + qutini_p) <= qutmin_p AND q' +
-        'utmin_p <> 0'
+        'SELECT code_p,refer_p,nom_p,qut_p,qutini_p,code_famp,code_sfamp,' +
+        'code_l,code_u,code_f,qutmin_p,alertqut_p'
+      
+        'FROM produit WHERE (qut_p + qutini_p) <= qutmin_p AND qutmin_p <' +
+        '> 0'
       'OR ( (qut_p + qutini_p) <= alertqut_p AND alertqut_p <> 0)')
     Left = 852
     Top = 308
@@ -766,15 +700,6 @@ object DataModuleF: TDataModuleF
       FieldName = 'code_f'
       Origin = 'code_f'
     end
-    object PCloseZeroQCnotifobser_p: TWideStringField
-      FieldName = 'obser_p'
-      Origin = 'obser_p'
-      Size = 32767
-    end
-    object PCloseZeroQCnotiflogo_p: TBlobField
-      FieldName = 'logo_p'
-      Origin = 'logo_p'
-    end
     object PCloseZeroQCnotifcode_l: TIntegerField
       FieldName = 'code_l'
       Origin = 'code_l'
@@ -782,51 +707,6 @@ object DataModuleF: TDataModuleF
     object PCloseZeroQCnotifcode_sfamp: TIntegerField
       FieldName = 'code_sfamp'
       Origin = 'code_sfamp'
-    end
-    object PCloseZeroQCnotifperissable_p: TBooleanField
-      FieldName = 'perissable_p'
-      Origin = 'perissable_p'
-    end
-    object PCloseZeroQCnotifdateperiss_p: TDateField
-      FieldName = 'dateperiss_p'
-      Origin = 'dateperiss_p'
-    end
-    object PCloseZeroQCnotifalertdays_p: TSmallintField
-      FieldName = 'alertdays_p'
-      Origin = 'alertdays_p'
-    end
-    object PCloseZeroQCnotifprixht_p: TCurrencyField
-      FieldName = 'prixht_p'
-      Origin = 'prixht_p'
-    end
-    object PCloseZeroQCnotifprixvd_p: TCurrencyField
-      FieldName = 'prixvd_p'
-      Origin = 'prixvd_p'
-    end
-    object PCloseZeroQCnotifprixvr_p: TCurrencyField
-      FieldName = 'prixvr_p'
-      Origin = 'prixvr_p'
-    end
-    object PCloseZeroQCnotifprixvg_p: TCurrencyField
-      FieldName = 'prixvg_p'
-      Origin = 'prixvg_p'
-    end
-    object PCloseZeroQCnotifprixva_p: TCurrencyField
-      FieldName = 'prixva_p'
-      Origin = 'prixva_p'
-    end
-    object PCloseZeroQCnotifprixva2_p: TCurrencyField
-      FieldName = 'prixva2_p'
-      Origin = 'prixva2_p'
-    end
-    object PCloseZeroQCnotifcodebar_p: TWideStringField
-      FieldName = 'codebar_p'
-      Origin = 'codebar_p'
-      Size = 8190
-    end
-    object PCloseZeroQCnotifqutmax_p: TFloatField
-      FieldName = 'qutmax_p'
-      Origin = 'qutmax_p'
     end
     object PCloseZeroQCnotifqutmin_p: TFloatField
       FieldName = 'qutmin_p'
@@ -839,10 +719,6 @@ object DataModuleF: TDataModuleF
     object PCloseZeroQCnotifqutini_p: TFloatField
       FieldName = 'qutini_p'
       Origin = 'qutini_p'
-    end
-    object PCloseZeroQCnotiftva_p: TSmallintField
-      FieldName = 'tva_p'
-      Origin = 'tva_p'
     end
     object PCloseZeroQCnotifQutDispo: TFloatField
       FieldKind = fkInternalCalc
@@ -899,8 +775,11 @@ object DataModuleF: TDataModuleF
     Connection = MainForm.GstockdcConnection
     SQL.Strings = (
       
-        'SELECT * FROM produit WHERE (qut_p + qutini_p) >= qutmax_p AND q' +
-        'utmax_p <> 0')
+        'SELECT code_p,refer_p,nom_p,qut_p,qutini_p,code_famp,code_sfamp,' +
+        'code_l,code_u,code_f,qutmax_p'
+      
+        ' FROM produit WHERE (qut_p + qutini_p) >= qutmax_p AND qutmax_p ' +
+        '<> 0')
     Left = 852
     Top = 362
     object PMoreMaxQCnotifcode_p: TIntegerField
@@ -926,22 +805,9 @@ object DataModuleF: TDataModuleF
       FieldName = 'code_famp'
       Origin = 'code_famp'
     end
-    object PMoreMaxQCnotifalertqut_p: TIntegerField
-      FieldName = 'alertqut_p'
-      Origin = 'alertqut_p'
-    end
     object PMoreMaxQCnotifcode_f: TIntegerField
       FieldName = 'code_f'
       Origin = 'code_f'
-    end
-    object PMoreMaxQCnotifobser_p: TWideStringField
-      FieldName = 'obser_p'
-      Origin = 'obser_p'
-      Size = 32767
-    end
-    object PMoreMaxQCnotiflogo_p: TBlobField
-      FieldName = 'logo_p'
-      Origin = 'logo_p'
     end
     object PMoreMaxQCnotifcode_l: TIntegerField
       FieldName = 'code_l'
@@ -951,54 +817,9 @@ object DataModuleF: TDataModuleF
       FieldName = 'code_sfamp'
       Origin = 'code_sfamp'
     end
-    object PMoreMaxQCnotifperissable_p: TBooleanField
-      FieldName = 'perissable_p'
-      Origin = 'perissable_p'
-    end
-    object PMoreMaxQCnotifdateperiss_p: TDateField
-      FieldName = 'dateperiss_p'
-      Origin = 'dateperiss_p'
-    end
-    object PMoreMaxQCnotifalertdays_p: TSmallintField
-      FieldName = 'alertdays_p'
-      Origin = 'alertdays_p'
-    end
-    object PMoreMaxQCnotifprixht_p: TCurrencyField
-      FieldName = 'prixht_p'
-      Origin = 'prixht_p'
-    end
-    object PMoreMaxQCnotifprixvd_p: TCurrencyField
-      FieldName = 'prixvd_p'
-      Origin = 'prixvd_p'
-    end
-    object PMoreMaxQCnotifprixvr_p: TCurrencyField
-      FieldName = 'prixvr_p'
-      Origin = 'prixvr_p'
-    end
-    object PMoreMaxQCnotifprixvg_p: TCurrencyField
-      FieldName = 'prixvg_p'
-      Origin = 'prixvg_p'
-    end
-    object PMoreMaxQCnotifprixva_p: TCurrencyField
-      FieldName = 'prixva_p'
-      Origin = 'prixva_p'
-    end
-    object PMoreMaxQCnotifprixva2_p: TCurrencyField
-      FieldName = 'prixva2_p'
-      Origin = 'prixva2_p'
-    end
-    object PMoreMaxQCnotifcodebar_p: TWideStringField
-      FieldName = 'codebar_p'
-      Origin = 'codebar_p'
-      Size = 8190
-    end
     object PMoreMaxQCnotifqutmax_p: TFloatField
       FieldName = 'qutmax_p'
       Origin = 'qutmax_p'
-    end
-    object PMoreMaxQCnotifqutmin_p: TFloatField
-      FieldName = 'qutmin_p'
-      Origin = 'qutmin_p'
     end
     object PMoreMaxQCnotifcode_u: TSmallintField
       FieldName = 'code_u'
@@ -1007,10 +828,6 @@ object DataModuleF: TDataModuleF
     object PMoreMaxQCnotifqutini_p: TFloatField
       FieldName = 'qutini_p'
       Origin = 'qutini_p'
-    end
-    object PMoreMaxQCnotiftva_p: TSmallintField
-      FieldName = 'tva_p'
-      Origin = 'tva_p'
     end
     object PMoreMaxQCnotifQutDispo: TFloatField
       FieldKind = fkInternalCalc

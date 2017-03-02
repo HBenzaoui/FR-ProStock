@@ -791,6 +791,10 @@ begin
        CaisseListCbxChange(Sender);
 
      end;
+
+     // --- this is to show the paied only -------------
+
+     MainForm.Opt_cas_bnk_CaisseTable.Filtered:= True;
 end;
 
 procedure TCaisseListF.DaysCaisseListCbxChange(Sender: TObject);

@@ -172,28 +172,11 @@ type
     PZeroQCnotifrefer_p: TWideStringField;
     PZeroQCnotifqut_p: TFloatField;
     PZeroQCnotifcode_famp: TIntegerField;
-    PZeroQCnotifalertqut_p: TIntegerField;
     PZeroQCnotifcode_f: TIntegerField;
-    PZeroQCnotifobser_p: TWideStringField;
-    PZeroQCnotiflogo_p: TBlobField;
     PZeroQCnotifcode_l: TIntegerField;
     PZeroQCnotifcode_sfamp: TIntegerField;
-    PZeroQCnotifperissable_p: TBooleanField;
-    PZeroQCnotifdateperiss_p: TDateField;
-    PZeroQCnotifalertdays_p: TSmallintField;
-    PZeroQCnotifprixht_p: TCurrencyField;
-    PZeroQCnotifprixvd_p: TCurrencyField;
-    PZeroQCnotifprixvr_p: TCurrencyField;
-    PZeroQCnotifprixvg_p: TCurrencyField;
-    PZeroQCnotifprixva_p: TCurrencyField;
-    PZeroQCnotifprixva2_p: TCurrencyField;
-    PZeroQCnotifcodebar_p: TWideStringField;
-    PZeroQCnotifqutmax_p: TFloatField;
-    PZeroQCnotifqutmin_p: TFloatField;
     PZeroQCnotifcode_u: TSmallintField;
     PZeroQCnotifqutini_p: TFloatField;
-    PZeroQCnotiftva_p: TSmallintField;
-    PZeroQCnotifQUT: TIntegerField;
     PZeroQCnotifQutDispo: TFloatField;
     PCloseZeroQCnotifcode_p: TIntegerField;
     PCloseZeroQCnotifnom_p: TWideStringField;
@@ -202,51 +185,22 @@ type
     PCloseZeroQCnotifcode_famp: TIntegerField;
     PCloseZeroQCnotifalertqut_p: TIntegerField;
     PCloseZeroQCnotifcode_f: TIntegerField;
-    PCloseZeroQCnotifobser_p: TWideStringField;
-    PCloseZeroQCnotiflogo_p: TBlobField;
     PCloseZeroQCnotifcode_l: TIntegerField;
     PCloseZeroQCnotifcode_sfamp: TIntegerField;
-    PCloseZeroQCnotifperissable_p: TBooleanField;
-    PCloseZeroQCnotifdateperiss_p: TDateField;
-    PCloseZeroQCnotifalertdays_p: TSmallintField;
-    PCloseZeroQCnotifprixht_p: TCurrencyField;
-    PCloseZeroQCnotifprixvd_p: TCurrencyField;
-    PCloseZeroQCnotifprixvr_p: TCurrencyField;
-    PCloseZeroQCnotifprixvg_p: TCurrencyField;
-    PCloseZeroQCnotifprixva_p: TCurrencyField;
-    PCloseZeroQCnotifprixva2_p: TCurrencyField;
-    PCloseZeroQCnotifcodebar_p: TWideStringField;
-    PCloseZeroQCnotifqutmax_p: TFloatField;
     PCloseZeroQCnotifqutmin_p: TFloatField;
     PCloseZeroQCnotifcode_u: TSmallintField;
     PCloseZeroQCnotifqutini_p: TFloatField;
-    PCloseZeroQCnotiftva_p: TSmallintField;
     PMoreMaxQCnotifcode_p: TIntegerField;
     PMoreMaxQCnotifnom_p: TWideStringField;
     PMoreMaxQCnotifrefer_p: TWideStringField;
     PMoreMaxQCnotifqut_p: TFloatField;
     PMoreMaxQCnotifcode_famp: TIntegerField;
-    PMoreMaxQCnotifalertqut_p: TIntegerField;
     PMoreMaxQCnotifcode_f: TIntegerField;
-    PMoreMaxQCnotifobser_p: TWideStringField;
-    PMoreMaxQCnotiflogo_p: TBlobField;
     PMoreMaxQCnotifcode_l: TIntegerField;
     PMoreMaxQCnotifcode_sfamp: TIntegerField;
-    PMoreMaxQCnotifperissable_p: TBooleanField;
-    PMoreMaxQCnotifdateperiss_p: TDateField;
-    PMoreMaxQCnotifalertdays_p: TSmallintField;
-    PMoreMaxQCnotifprixht_p: TCurrencyField;
-    PMoreMaxQCnotifprixvd_p: TCurrencyField;
-    PMoreMaxQCnotifprixvr_p: TCurrencyField;
-    PMoreMaxQCnotifprixvg_p: TCurrencyField;
-    PMoreMaxQCnotifprixva_p: TCurrencyField;
-    PMoreMaxQCnotifprixva2_p: TCurrencyField;
-    PMoreMaxQCnotifcodebar_p: TWideStringField;
     PMoreMaxQCnotifqutmax_p: TFloatField;
-    PMoreMaxQCnotifqutmin_p: TFloatField;
     PMoreMaxQCnotifcode_u: TSmallintField;
     PMoreMaxQCnotifqutini_p: TFloatField;
-    PMoreMaxQCnotiftva_p: TSmallintField;
     PCloseZeroQCnotifQutDispo: TFloatField;
     PMoreMaxQCnotifQutDispo: TFloatField;
     PDiedCnotifcode_p: TIntegerField;
@@ -396,24 +350,6 @@ end;
 
 procedure TDataModuleF.PZeroQCnotifCalcFields(DataSet: TDataSet);
 begin
-// PZeroQCnotif.FieldValues['PrixATTC']:=
-// (((PZeroQCnotif.FieldValues['prixht_p'] * PZeroQCnotif.FieldValues['tva_p'])/100) + (PZeroQCnotif.FieldValues['prixht_p'])) ;
-//
-// PZeroQCnotif.FieldValues['PrixVTTCD']:=
-// (((PZeroQCnotif.FieldValues['prixvd_p'] * PZeroQCnotif.FieldValues['tva_p'])/100) + (PZeroQCnotif.FieldValues['prixvd_p'])) ;
-//
-// PZeroQCnotif.FieldValues['PrixVTTCR']:=
-// (((PZeroQCnotif.FieldValues['prixvr_p'] * PZeroQCnotif.FieldValues['tva_p'])/100) + (PZeroQCnotif.FieldValues['prixvr_p'])) ;
-//
-// PZeroQCnotif.FieldValues['PrixVTTCG']:=
-// (((PZeroQCnotif.FieldValues['prixvg_p'] * PZeroQCnotif.FieldValues['tva_p'])/100) + (PZeroQCnotif.FieldValues['prixvg_p'])) ;
-//
-// PZeroQCnotif.FieldValues['PrixVTTCA']:=
-// (((PZeroQCnotif.FieldValues['prixva_p'] * PZeroQCnotif.FieldValues['tva_p'])/100) + (PZeroQCnotif.FieldValues['prixva_p'])) ;
-//
-//  PZeroQCnotif.FieldValues['PrixVTTCA2']:=
-// (((PZeroQCnotif.FieldValues['prixva2_p'] * PZeroQCnotif.FieldValues['tva_p'])/100) + (PZeroQCnotif.FieldValues['prixva2_p'])) ;
-
     PZeroQCnotif.FieldValues['QutDispo']:=
  (PZeroQCnotif.FieldValues['qut_p'] + PZeroQCnotif.FieldValues['qutini_p']);
 end;

@@ -413,6 +413,7 @@ MainForm.Bona_recTable.Active:= False;
 MainForm.Bona_recTable.SQL.clear;
 mainform.Bona_recTable.sql.Text:='SELECT * FROM bona_rec WHERE bon_or_no_barec = true AND date_barec BETWEEN '''+(DateToStr(DateStartBARecD.Date))+ ''' AND ''' +(DateToStr(DateEndBARecD.Date))+'''';
 MainForm.Bona_recTable.Active:= True;
+MainForm.Bona_recTable.Last;
 MainForm.Bona_recTable.EnableControls;
 
 end;

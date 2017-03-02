@@ -65,7 +65,8 @@ uses
   UBonFacP in 'UBonFacP.pas' {BonFacPF},
   UTransferComptesGestion in 'UTransferComptesGestion.pas' {TransferComptesGestionF},
   UTransferListGestion in 'UTransferListGestion.pas' {TransferListGestionF},
-  UPerissableProduit in 'UPerissableProduit.pas' {PerissableProduitF};
+  UPerissableProduit in 'UPerissableProduit.pas' {PerissableProduitF},
+  UAbout in 'UAbout.pas' {AboutF};
 
 {$R *.res}
 

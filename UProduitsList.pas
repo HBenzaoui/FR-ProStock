@@ -323,10 +323,37 @@ procedure TProduitsListF.AddProduitsBtnClick(Sender: TObject);
 var
   codeP, refnum: integer;
 begin
+    MainForm.ProduitTable.DisableControls;
 
  if Assigned (ProduitsListF) then
    begin
-    ClearFilterBVLivPMenuClick(Sender);
+//    ClearFilterBVLivPMenuClick(Sender);
+
+        MainForm.ProduitTable.Filtered:=False;
+        ResearchProduitsEdt.Text:='';
+//        Select_ALL;
+        sImage1.Visible:= False;
+      //  sImage2.Visible:= False;
+      //  sImage3.Visible:= False;
+      //  sImage4.Visible:= False;
+        TVAFilterLbl.Visible:= False;
+        NOT_FilteredColor;
+        FilterBVLivBtn.ImageIndex:=49;
+        ClearValideFilterBVLivPMenu.Checked := True;
+        ClearRegleFilterBVLivPMenu.Checked := True;
+        ClearMPFilterBVLivPMenu.Checked := True;
+        ClearTVAFilterPMenu.Checked := True;
+
+        ProduitsListDBGridEh.Columns[9].Visible := False;
+        ProduitsListDBGridEh.Columns[10].Visible := False;
+        ProduitsListDBGridEh.Columns[11].Visible := False;
+
+
+
+
+
+
+
    //thise is to back the same row if we didnt add anything
    if not  MainForm.ProduitTable.IsEmpty then
    begin
@@ -336,7 +363,7 @@ begin
    end;
 
 //-------- use this code to disable contron o dbgrid when adding or editing in the background-----//
-  MainForm.ProduitTable.DisableControls;
+
   MainForm.ProduitTable.Filtered:=False;
   MainForm.ProduitTable.IndexesActive := True;
 //-------- use this code to start creating th form-----//
@@ -756,14 +783,10 @@ end;
 procedure TProduitsListF.ExporterverExcel1Click(Sender: TObject);
 var
   xls,xlw: Variant;
-
 begin
 
  if ProduitListOpnDg.Execute then
  begin
-//   MainForm.ProduitTable.Active:= False;
-//   MainForm.ProduitTable.FetchOptions.Mode:=  fmAll;
-//   MainForm.ProduitTable.Active:= True;
 
   xls := CreateOleObject('Excel.Application');
   xls.DisplayAlerts := False  ;
@@ -779,8 +802,8 @@ begin
 
   MainForm.GstockdcConnection.ExecSQL(
 
-     '  CREATE TEMP TABLE tmp_table '
-    +'  ON COMMIT DROP              '
+     '  CREATE UNLOGGED TABLE tmp_table '
+   // +'  ON COMMIT DROP              '
     +'  AS                          '
     +'  SELECT code_p,refer_p,nom_p,codebar_p,prixht_p,  '
     +'  prixvd_p,prixvr_p,prixvg_p,prixva_p,prixva2_p,tva_p, '
@@ -805,22 +828,13 @@ begin
     +'       tva_p        = excluded.tva_p,         qut_p       = excluded.qut_p,        '
     +'       perissable_p = excluded.perissable_p,  alertdays_p = excluded.alertdays_p,  '
     +'       qutmin_p     = excluded.qutmin_p,      qutmax_p    = excluded.qutmax_p,     '
-    +'       alertqut_p   = excluded.alertqut_p,    obser_p     = excluded.obser_p;      '
+    +'       alertqut_p   = excluded.alertqut_p,    obser_p     = excluded.obser_p;  DROP TABLE tmp_table;    '
      );
-
 
     deletefile(GetCurrentDir+ '\imported.csv');
 
-    MainForm.InactiveTables;
-    MainForm.GstockdcConnection.Connected:= False;
-    MainForm.GstockdcConnection.Connected:= True;
-    MainForm.ActiveTables;
-
     RefreshGirdBtnClick(Sender);
-//
-//    MainForm.ProduitTable.Active:= False;
-//    MainForm.ProduitTable.FetchOptions.Mode:=  fmOnDemand;
-//    MainForm.ProduitTable.Active:= True;
+
  end;
 
 end;
@@ -1059,9 +1073,11 @@ begin
     begin
      MainForm.ProduitTable.Filtered := false;
     end;
+
   if ResherchPARDCodProduitsRdioBtn.Checked then
     if (ResearchProduitsEdt.text <> '') then
     begin
+      MainForm.ProduitTable.DisableControls;
       MainForm.SQLQuery.Active:=False;
       MainForm.SQLQuery.SQL.Clear;
       MainForm.SQLQuery.SQL.Text:='SELECT nom_cb,code_p FROM codebarres WHERE nom_cb LIKE ' +''+ QuotedStr( ResearchProduitsEdt.Text )+'' ;
@@ -1071,8 +1087,14 @@ begin
       CodeCB:=MainForm.SQLQuery.FieldValues['code_p'];
      end;
       MainForm.ProduitTable.Filtered := false;
-      MainForm.ProduitTable.Filter := '[codebar_p] LIKE ' + quotedstr('%' + ResearchProduitsEdt.Text + '%')  + ' OR [code_p] = '+ IntToStr(CodeCB) ;
+      MainForm.ProduitTable.Filter := '[codebar_p] = ' + quotedstr( ResearchProduitsEdt.Text )  + ' OR [code_p] = '+ IntToStr(CodeCB) ;
       MainForm.ProduitTable.Filtered := True;
+
+       MainForm.ProduitTable.EnableControls;
+
+
+
+
     end
     else
     begin
@@ -1134,7 +1156,16 @@ begin
    MainForm.SQLQuery.Active:=False;
    MainForm.SQLQuery.SQL.Clear;
 
-end;
+    if ResherchPARDCodProduitsRdioBtn.Checked then
+    begin
+      if (ResearchProduitsEdt.text <> '') then
+      begin
+       ResearchProduitsEdt.SelectAll;
+      end;
+    end;
+
+
+ end;
 
 end;
 
