@@ -124,6 +124,7 @@ type
     procedure AdvToolButton3Click(Sender: TObject);
     procedure e1Click(Sender: TObject);
     procedure ExporterverExcel1Click(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     procedure GettingData;
     procedure FilteredColor;
@@ -1184,13 +1185,27 @@ end;
 
 procedure TProduitsListF.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-MainForm.ProduitTable.Filtered:= False;
+
+
+
+   MainForm.SaveGridLayout(ProduitsListDBGridEh,GetCurrentDir +'\bin\gc_prdtlst');
+
+ MainForm.ProduitTable.Filtered:= False;
 Select_ALL;
 FreeAndNil(ProduitsListF);
 end;
 
 
-  procedure TProduitsListF.FormShow(Sender: TObject);
+procedure TProduitsListF.FormCreate(Sender: TObject);
+begin
+     if FileExists(GetCurrentDir +'\bin\gc_prdtlst') then
+   begin
+
+    MainForm.LoadGridLayout(ProduitsListDBGridEh,GetCurrentDir +'\bin\gc_prdtlst');
+   end;
+end;
+
+procedure TProduitsListF.FormShow(Sender: TObject);
 begin
 ResearchProduitsEdt.SetFocus;
 end;

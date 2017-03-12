@@ -115,6 +115,7 @@ type
     procedure AdvToolButton2Click(Sender: TObject);
     procedure AdvToolButton3Click(Sender: TObject);
     procedure FormPaint(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     procedure GettingData;
     procedure Select_ALL;
@@ -136,8 +137,6 @@ type
     procedure Select_Regle;
     procedure FilteredColor;
     procedure NOT_FilteredColor;
-    procedure LoadDBGridColumnsWidth(const ADBGrid: TDBGridEh);
-    procedure SaveDBGridColumnsWidth(const ADBGrid: TDBGridEh);
     { Private declarations }
   public
     { Public declarations }
@@ -1136,64 +1135,7 @@ MainForm.Bonv_livTable.EnableControls;
 end;
 
 
-procedure TBonLivF.LoadDBGridColumnsWidth(const ADBGrid: TDBGridEh);
-var
-  _MemIniU: TMemIniFile;
-  _SettingsPath: string;
-  i, j: integer;
-  _ParentClass: TWinControl;
-begin
-  _SettingsPath := GetHomePath + PathDelim + SETTINGS_FILE;
-  if (not Assigned(ADBGrid)) or (not Assigned(ADBGrid.DataSource)) or
-    (not Assigned(ADBGrid.DataSource.DataSet)) then
-    Exit;
 
-  _MemIniU := TMemIniFile.Create(_SettingsPath, TEncoding.UTF8);
-  try
-    _ParentClass := ADBGrid.Parent;
-    while not(_ParentClass is TForm) do
-      _ParentClass := _ParentClass.Parent;
-    for i := 0 to Pred(ADBGrid.DataSource.DataSet.Fields.Count) do
-      for j := 0 to Pred(ADBGrid.Columns.Count) do
-      begin
-        if (ADBGrid.DataSource.DataSet.Fields[i].FieldName = ADBGrid.Columns[j]
-          .FieldName) then
-          ADBGrid.Columns[j].Width :=
-            _MemIniU.ReadInteger(_ParentClass.Name + '_' + ADBGrid.Name,
-            ADBGrid.Columns[j].FieldName, 64);
-      end;
-  finally
-    FreeAndNil(_MemIniU);
-  end;
-end;
-
- procedure TBonLivF.SaveDBGridColumnsWidth(const ADBGrid: TDBGridEh);
-var
-  _MemIniU: TMemIniFile;
-  _SettingsPath: string;
-  i: integer;
-  _ParentClass: TWinControl;
-begin
-  _SettingsPath := GetHomePath + PathDelim + SETTINGS_FILE;
-  if (not Assigned(ADBGrid)) or
-    (not ForceDirectories(ExtractFilePath(_SettingsPath))) then
-    Exit;
-
-  _MemIniU := TMemIniFile.Create(_SettingsPath, TEncoding.UTF8);
-  try
-    _ParentClass := ADBGrid.Parent;
-    while not(_ParentClass is TForm) do
-      _ParentClass := _ParentClass.Parent;
-    for i := 0 to Pred(ADBGrid.Columns.Count) do
-      if (ADBGrid.Columns[i].FieldName <> '') then
-        _MemIniU.WriteInteger(_ParentClass.Name + '_' + ADBGrid.Name,
-          ADBGrid.Columns[i].FieldName, ADBGrid.Columns[i].Width);
-
-    _MemIniU.UpdateFile;
-  finally
-    FreeAndNil(_MemIniU);
-  end;
-end;
 
 procedure TBonLivF.FormShow(Sender: TObject);
 begin
@@ -1203,7 +1145,6 @@ begin
 
 
 
-//  LoadDBGridColumnsWidth(BVLivListDBGridEh);
 
 end;
 
@@ -1363,9 +1304,21 @@ end;
 
 procedure TBonLivF.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-//SaveDBGridColumnsWidth(BVLivListDBGridEh);
 
- FreeAndNil(BonLivF);
+  MainForm.SaveGridLayout(BVLivListDBGridEh,GetCurrentDir +'\bin\gc_bllst');
+
+  FreeAndNil(BonLivF);
+
+end;
+
+procedure TBonLivF.FormCreate(Sender: TObject);
+begin
+   if FileExists(GetCurrentDir +'\bin\gc_bllst') then
+   begin
+
+    MainForm.LoadGridLayout(BVLivListDBGridEh,GetCurrentDir +'\bin\gc_bllst');
+   end;
+
 end;
 
 procedure TBonLivF.FormPaint(Sender: TObject);

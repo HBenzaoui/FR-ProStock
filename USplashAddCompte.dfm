@@ -26,7 +26,7 @@ object FSplashAddCompte: TFSplashAddCompte
     Left = 78
     Top = 94
     Width = 38
-    Height = 19
+    Height = 18
     Caption = 'Nom:'
     Color = 4207405
     Font.Charset = DEFAULT_CHARSET
@@ -176,7 +176,7 @@ object FSplashAddCompte: TFSplashAddCompte
     Left = 63
     Top = 55
     Width = 56
-    Height = 19
+    Height = 18
     Caption = 'Num'#233'o:'
     Color = 4207405
     Font.Charset = DEFAULT_CHARSET
@@ -191,8 +191,8 @@ object FSplashAddCompte: TFSplashAddCompte
   object Label2: TLabel
     Left = 28
     Top = 170
-    Width = 89
-    Height = 19
+    Width = 88
+    Height = 18
     Caption = 'Solde Initial:'
     Color = 4207405
     Font.Charset = DEFAULT_CHARSET

@@ -317,6 +317,7 @@ object CaisseListF: TCaisseListF
   OldCreateOrder = False
   Visible = True
   OnClose = FormClose
+  OnCreate = FormCreate
   OnPaint = FormShow
   OnShow = FormShow
   DesignSize = (
@@ -341,7 +342,6 @@ object CaisseListF: TCaisseListF
     DataGrouping.Active = True
     DataSource = CaisseListDataS
     DynProps = <>
-    EditActions = [geaSelectAllEh]
     EvenRowColor = clWindow
     FixedColor = clWindow
     Font.Charset = DEFAULT_CHARSET
@@ -356,20 +356,18 @@ object CaisseListF: TCaisseListF
     HorzScrollBar.ExtraPanel.NavigatorButtons = [nbFirstEh, nbPriorEh, nbNextEh, nbLastEh, nbRefreshEh]
     HorzScrollBar.ExtraPanel.Visible = True
     HorzScrollBar.Height = 15
-    IndicatorOptions = []
+    IndicatorOptions = [gioShowRowIndicatorEh]
     IndicatorParams.Color = clBtnFace
-    IndicatorParams.HorzLineColor = 15970832
-    IndicatorParams.VertLineColor = 15970832
     IndicatorTitle.ShowDropDownSign = True
     IndicatorTitle.TitleButton = True
     OddRowColor = 16315635
-    Options = [dgTitles, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
+    Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
     OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghAutoSortMarking, dghDialogFind, dghColumnResize, dghColumnMove, dghHotTrack, dghExtendVertLines]
     ParentCtl3D = False
     ParentFont = False
     ParentShowHint = False
     RowDetailPanel.Color = clBtnFace
-    RowHeight = 25
+    RowHeight = 22
     SearchPanel.FilterOnTyping = True
     ShowHint = True
     SumList.Active = True
@@ -390,38 +388,6 @@ object CaisseListF: TCaisseListF
     VertScrollBar.Width = 15
     OnDrawColumnCell = CaisseListDBGridEhDrawColumnCell
     Columns = <
-      item
-        Alignment = taCenter
-        Checkboxes = False
-        DynProps = <>
-        EditButtons = <>
-        FieldName = 'valider_bvfac'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = 4207405
-        Font.Height = 16
-        Font.Name = 'Helvetica LT Std'
-        Font.Style = []
-        Footers = <>
-        ImageList = MainForm.GridIcons13
-        KeyList.Strings = (
-          'False'
-          'True')
-        Layout = tlCenter
-        ReadOnly = True
-        Title.Alignment = taCenter
-        Title.Caption = 'VA'
-        Title.EndEllipsis = True
-        Title.Font.Charset = DEFAULT_CHARSET
-        Title.Font.Color = 4207405
-        Title.Font.Height = 18
-        Title.Font.Name = 'Helvetica LT Std'
-        Title.Font.Style = []
-        Title.Font.Quality = fqProof
-        Title.ToolTips = True
-        Visible = False
-        Width = 24
-        WordWrap = False
-      end
       item
         Alignment = taCenter
         DisplayFormat = 'DD/MM/YYYY'
@@ -641,158 +607,6 @@ object CaisseListF: TCaisseListF
         Title.Font.Quality = fqProof
         Title.ToolTips = True
         Width = 200
-        WordWrap = False
-      end
-      item
-        DisplayFormat = '#,##0.00'
-        DynProps = <>
-        EditButtons = <>
-        FieldName = 'RemisePerc'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = 4207405
-        Font.Height = 16
-        Font.Name = 'Helvetica LT Std'
-        Font.Style = []
-        Footers = <>
-        Title.Font.Charset = DEFAULT_CHARSET
-        Title.Font.Color = 4207405
-        Title.Font.Height = 18
-        Title.Font.Name = 'Helvetica LT Std'
-        Title.Font.Style = []
-        Title.Font.Quality = fqProof
-        Visible = False
-        WordWrap = False
-      end
-      item
-        DisplayFormat = '#,##0.00'
-        DynProps = <>
-        EditButtons = <>
-        FieldName = 'timber_bvfac'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = 4207405
-        Font.Height = 16
-        Font.Name = 'Helvetica LT Std'
-        Font.Style = []
-        Footers = <>
-        Layout = tlCenter
-        MinWidth = 150
-        Title.Alignment = taCenter
-        Title.Caption = 'Timber Fiscal'
-        Title.Font.Charset = DEFAULT_CHARSET
-        Title.Font.Color = 4207405
-        Title.Font.Height = 18
-        Title.Font.Name = 'Helvetica LT Std'
-        Title.Font.Style = []
-        Title.Font.Quality = fqProof
-        Visible = False
-        Width = 150
-        WordWrap = False
-      end
-      item
-        DisplayFormat = '#,##0.00'
-        DynProps = <>
-        EditButtons = <>
-        FieldName = 'MontantTVA'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = 4207405
-        Font.Height = 16
-        Font.Name = 'Helvetica LT Std'
-        Font.Style = []
-        Footers = <>
-        Layout = tlCenter
-        MinWidth = 150
-        Title.Alignment = taCenter
-        Title.Caption = 'Montant TVA'
-        Title.EndEllipsis = True
-        Title.Font.Charset = DEFAULT_CHARSET
-        Title.Font.Color = 4207405
-        Title.Font.Height = 18
-        Title.Font.Name = 'Helvetica LT Std'
-        Title.Font.Style = []
-        Title.Font.Quality = fqProof
-        Title.ToolTips = True
-        Visible = False
-        Width = 150
-        WordWrap = False
-      end
-      item
-        DisplayFormat = '#,##0.00'
-        DynProps = <>
-        EditButtons = <>
-        FieldName = 'montttc_bvfac'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = 4207405
-        Font.Height = 16
-        Font.Name = 'Helvetica LT Std'
-        Font.Style = []
-        Footers = <>
-        Layout = tlCenter
-        Title.Alignment = taCenter
-        Title.Caption = 'Montant TTC'
-        Title.EndEllipsis = True
-        Title.Font.Charset = DEFAULT_CHARSET
-        Title.Font.Color = 4207405
-        Title.Font.Height = 18
-        Title.Font.Name = 'Helvetica LT Std'
-        Title.Font.Style = []
-        Title.Font.Quality = fqProof
-        Title.ToolTips = True
-        Visible = False
-        Width = 150
-        WordWrap = False
-      end
-      item
-        DisplayFormat = '#,##0.00'
-        DynProps = <>
-        EditButtons = <>
-        FieldName = 'montver_bvfac'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = 4207405
-        Font.Height = 16
-        Font.Name = 'Helvetica LT Std'
-        Font.Style = []
-        Footers = <>
-        Layout = tlCenter
-        MinWidth = 150
-        Title.Alignment = taCenter
-        Title.Caption = 'Montant Vers'#233
-        Title.EndEllipsis = True
-        Title.Font.Charset = DEFAULT_CHARSET
-        Title.Font.Color = 4207405
-        Title.Font.Height = 18
-        Title.Font.Name = 'Helvetica LT Std'
-        Title.Font.Style = []
-        Title.Font.Quality = fqProof
-        Title.ToolTips = True
-        Visible = False
-        Width = 150
-        WordWrap = False
-      end
-      item
-        DisplayFormat = '#,##0.00'
-        DynProps = <>
-        EditButtons = <>
-        FieldName = 'MontantRes'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = 4207405
-        Font.Height = 16
-        Font.Name = 'Helvetica LT Std'
-        Font.Style = []
-        Footers = <>
-        Layout = tlCenter
-        MinWidth = 150
-        Title.Alignment = taCenter
-        Title.Caption = 'Montant Reste'
-        Title.EndEllipsis = True
-        Title.Font.Charset = DEFAULT_CHARSET
-        Title.Font.Color = 4207405
-        Title.Font.Height = 18
-        Title.Font.Name = 'Helvetica LT Std'
-        Title.Font.Style = []
-        Title.Font.Quality = fqProof
-        Title.ToolTips = True
-        Visible = False
-        Width = 150
         WordWrap = False
       end
       item

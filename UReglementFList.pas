@@ -99,6 +99,10 @@ type
     procedure AdvToolButton1Click(Sender: TObject);
     procedure AdvToolButton2Click(Sender: TObject);
     procedure AdvToolButton3Click(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure BARecListDBGridEhDrawColumnCell(Sender: TObject;
+      const Rect: TRect; DataCol: Integer; Column: TColumnEh;
+      State: TGridDrawState);
   private
     procedure GettingData;
     procedure FilteredColor;
@@ -679,6 +683,24 @@ begin
 end;
 end;
 
+procedure TReglementFListF.BARecListDBGridEhDrawColumnCell(Sender: TObject;
+  const Rect: TRect; DataCol: Integer; Column: TColumnEh;
+  State: TGridDrawState);
+begin
+ if gdSelected in State then
+begin
+   BARecListDBGridEh.Canvas.Brush.Color:=$00FFE8CD;
+   BARecListDBGridEh.DefaultDrawColumnCell(Rect, DataCol, Column, State);
+end;
+
+ if  (MainForm.RegfournisseurTable.FieldValues['montver_rf'] <= 0)    then
+ begin
+ BARecListDBGridEh.Canvas.Font.Color:=$004735F9;
+ BARecListDBGridEh.DefaultDrawColumnCell(Rect, DataCol, Column, State);
+ end;
+
+end;
+
 procedure TReglementFListF.BARecListDBGridEhKeyDown(Sender: TObject;
   var Key: Word; Shift: TShiftState);
 begin
@@ -884,8 +906,21 @@ end;
 
 procedure TReglementFListF.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
+
+   MainForm.SaveGridLayout(BARecListDBGridEh,GetCurrentDir +'\bin\gc_regflst');
+
+
 Action:= caFree;
 ReglementFListF:= nil;
+end;
+
+procedure TReglementFListF.FormCreate(Sender: TObject);
+begin
+     if FileExists(GetCurrentDir +'\bin\gc_regflst') then
+   begin
+
+    MainForm.LoadGridLayout(BARecListDBGridEh,GetCurrentDir +'\bin\gc_regflst');
+   end;
 end;
 
 procedure TReglementFListF.FormPaint(Sender: TObject);

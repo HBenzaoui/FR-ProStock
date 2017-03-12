@@ -21510,7 +21510,6 @@ object MainForm: TMainForm
     Top = 105
   end
   object ClientTable: TFDQuery
-    OnCalcFields = ClientTableCalcFields
     FilterOptions = [foCaseInsensitive]
     IndexFieldNames = 'code_c'
     Connection = GstockdcConnection
@@ -21643,10 +21642,6 @@ object MainForm: TMainForm
       FieldName = 'obser_c'
       Origin = 'obser_c'
       Size = 200
-    end
-    object ClientTableCredit: TCurrencyField
-      FieldKind = fkInternalCalc
-      FieldName = 'CREDIT'
     end
   end
   object FDPhysPgDriverLink1: TFDPhysPgDriverLink
@@ -22062,7 +22057,8 @@ object MainForm: TMainForm
   object SQLQuery: TFDQuery
     FilterOptions = [foCaseInsensitive]
     Connection = GstockdcConnection
-    FetchOptions.AssignedValues = [evRowsetSize]
+    FetchOptions.AssignedValues = [evItems, evRowsetSize, evUnidirectional, evCursorKind]
+    FetchOptions.CursorKind = ckForwardOnly
     FetchOptions.RowsetSize = 2000
     Left = 188
     Top = 150
@@ -35953,9 +35949,9 @@ object MainForm: TMainForm
       FF00FF000000FF00FF00FFFF0000FFFFFF0000000000}
   end
   object GridIconsMP20: TsAlphaImageList
-    Height = 20
+    Height = 18
     ShareImages = True
-    Width = 20
+    Width = 18
     Items = <
       item
         ImageFormat = ifPNG
@@ -36575,8 +36571,8 @@ object MainForm: TMainForm
     Connection = GstockdcConnection
     SQL.Strings = (
       'SELECT * FROM bona_fac_list')
-    Left = 281
-    Top = 551
+    Left = 275
+    Top = 547
     object Bona_fac_listTablecode_bafacl: TIntegerField
       FieldName = 'code_bafacl'
       Origin = 'code_bafacl'
@@ -36598,9 +36594,9 @@ object MainForm: TMainForm
       FieldName = 'cond_p'
       Origin = 'cond_p'
     end
-    object Bona_fac_listTablePrixVTTC: TCurrencyField
+    object Bona_fac_listTablePrixATTC: TCurrencyField
       FieldKind = fkInternalCalc
-      FieldName = 'PrixVTTC'
+      FieldName = 'PrixATTC'
     end
     object Bona_fac_listTableMontantHT: TCurrencyField
       FieldKind = fkInternalCalc
@@ -41446,8 +41442,8 @@ object MainForm: TMainForm
     end
   end
   object GriDRegIcons20: TsAlphaImageList
-    Height = 20
-    Width = 20
+    Height = 18
+    Width = 18
     Items = <
       item
         ImageFormat = ifPNG
@@ -44428,9 +44424,9 @@ object MainForm: TMainForm
     Top = 509
   end
   object GridIconsComptes20: TsAlphaImageList
-    Height = 20
+    Height = 18
     ShareImages = True
-    Width = 20
+    Width = 18
     Items = <
       item
         ImageFormat = ifPNG

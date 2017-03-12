@@ -936,6 +936,7 @@ begin
          if BonRecGestionF.Tag=0 then
            begin
             MainForm.Opt_cas_bnk_CaisseTable.DisableControls;
+            MainForm.Opt_cas_bnk_CaisseTable.Filtered:=false;
             MainForm.Opt_cas_bnk_CaisseTable.Active:=false;
             MainForm.Opt_cas_bnk_CaisseTable.SQL.Clear;
             MainForm.Opt_cas_bnk_CaisseTable.SQL.Text:='SELECT * FROM opt_cas_bnk' ;
@@ -994,6 +995,7 @@ begin
           end else
               begin
                     MainForm.Opt_cas_bnk_CaisseTable.DisableControls;
+                    MainForm.Opt_cas_bnk_CaisseTable.Filtered:=false;
                     MainForm.Opt_cas_bnk_CaisseTable.Active:=false;
                     MainForm.Opt_cas_bnk_CaisseTable.SQL.Clear;
                     MainForm.Opt_cas_bnk_CaisseTable.SQL.Text:='SELECT * FROM opt_cas_bnk WHERE code_barec ='+IntToStr(MainForm.Bona_recTable.FieldValues['code_barec']); ;
@@ -1037,6 +1039,7 @@ begin
                  end else
                    begin
                     MainForm.Opt_cas_bnk_CaisseTable.Active:=false;
+                    MainForm.Opt_cas_bnk_CaisseTable.Filtered:=false;
                     MainForm.Opt_cas_bnk_CaisseTable.SQL.Clear;
                     MainForm.Opt_cas_bnk_CaisseTable.SQL.Text:='SELECT * FROM opt_cas_bnk ' ;
                     MainForm.Opt_cas_bnk_CaisseTable.Active:=True;
@@ -1085,11 +1088,13 @@ begin
                         MainForm.Opt_cas_bnk_BankTable.Refresh;
 
                         MainForm.Opt_cas_bnk_CaisseTable.Active:=false;
+                        MainForm.Opt_cas_bnk_CaisseTable.Filtered:=false;
                         MainForm.Opt_cas_bnk_CaisseTable.SQL.Clear;
                         MainForm.Opt_cas_bnk_CaisseTable.SQL.Text:='SELECT * FROM opt_cas_bnk where nature_ocb = false' ;
                         MainForm.Opt_cas_bnk_CaisseTable.Active:=True;
                    end;
                 MainForm.Opt_cas_bnk_CaisseTable.Active:=false;
+                MainForm.Opt_cas_bnk_CaisseTable.Filtered:=false;
                 MainForm.Opt_cas_bnk_CaisseTable.SQL.Clear;
                 MainForm.Opt_cas_bnk_CaisseTable.SQL.Text:='SELECT * FROM opt_cas_bnk where nature_ocb = false' ;
                 MainForm.Opt_cas_bnk_CaisseTable.Active:=True;
@@ -1471,6 +1476,7 @@ begin
              if BonLivGestionF.Tag = 0 then
               begin
                 MainForm.Opt_cas_bnk_CaisseTable.DisableControls;
+                MainForm.Opt_cas_bnk_CaisseTable.Filtered:=false;
                 MainForm.Opt_cas_bnk_CaisseTable.Active:=false;
                 MainForm.Opt_cas_bnk_CaisseTable.SQL.Clear;
                 MainForm.Opt_cas_bnk_CaisseTable.SQL.Text:='SELECT * FROM opt_cas_bnk' ;
@@ -1530,6 +1536,7 @@ begin
               end else
                   begin
                     MainForm.Opt_cas_bnk_CaisseTable.DisableControls;
+                    MainForm.Opt_cas_bnk_CaisseTable.Filtered:=false;
                     MainForm.Opt_cas_bnk_CaisseTable.Active:=false;
                     MainForm.Opt_cas_bnk_CaisseTable.SQL.Clear;
                     MainForm.Opt_cas_bnk_CaisseTable.SQL.Text:='SELECT * FROM opt_cas_bnk WHERE code_bvliv ='+IntToStr(MainForm.Bonv_livTable.FieldByName('code_bvliv').AsInteger) ;
@@ -1575,6 +1582,7 @@ begin
                        end else
                      begin
                         MainForm.Opt_cas_bnk_CaisseTable.Active:=false;
+                        MainForm.Opt_cas_bnk_CaisseTable.Filtered:=false;
                         MainForm.Opt_cas_bnk_CaisseTable.SQL.Clear;
                         MainForm.Opt_cas_bnk_CaisseTable.SQL.Text:='SELECT * FROM opt_cas_bnk' ;
                         MainForm.Opt_cas_bnk_CaisseTable.Active:=True;
@@ -1626,6 +1634,7 @@ begin
                       MainForm.Opt_cas_bnk_BankTable.Refresh;
                      end;
                       MainForm.Opt_cas_bnk_CaisseTable.Active:=false;
+                      MainForm.Opt_cas_bnk_CaisseTable.Filtered:=false;
                       MainForm.Opt_cas_bnk_CaisseTable.SQL.Clear;
                       MainForm.Opt_cas_bnk_CaisseTable.SQL.Text:='SELECT * FROM opt_cas_bnk where nature_ocb = false' ;
                       MainForm.Opt_cas_bnk_CaisseTable.Active:=True;
@@ -1910,6 +1919,7 @@ begin
             if BonCtrGestionF.Tag=0 then
               begin
                 MainForm.Opt_cas_bnk_CaisseTable.DisableControls;
+                MainForm.Opt_cas_bnk_CaisseTable.Filtered:=false;
                 MainForm.Opt_cas_bnk_CaisseTable.Active:=false;
                 MainForm.Opt_cas_bnk_CaisseTable.SQL.Clear;
                 MainForm.Opt_cas_bnk_CaisseTable.SQL.Text:='SELECT * FROM opt_cas_bnk' ;
@@ -1952,6 +1962,7 @@ begin
               end else
                   begin
                     MainForm.Opt_cas_bnk_CaisseTable.DisableControls;
+                    MainForm.Opt_cas_bnk_CaisseTable.Filtered:=false;
                     MainForm.Opt_cas_bnk_CaisseTable.Active:=false;
                     MainForm.Opt_cas_bnk_CaisseTable.SQL.Clear;
                     MainForm.Opt_cas_bnk_CaisseTable.SQL.Text:='SELECT * FROM opt_cas_bnk WHERE code_bvctr ='+IntToStr(MainForm.Bonv_ctrTable.FieldValues['code_bvctr']) ;
@@ -1982,6 +1993,7 @@ begin
                     end  else
                          begin
                           MainForm.Opt_cas_bnk_CaisseTable.Active:=false;
+                          MainForm.Opt_cas_bnk_CaisseTable.Filtered:=false;
                           MainForm.Opt_cas_bnk_CaisseTable.SQL.Clear;
                           MainForm.Opt_cas_bnk_CaisseTable.SQL.Text:='SELECT * FROM opt_cas_bnk' ;
                           MainForm.Opt_cas_bnk_CaisseTable.Active:=True;
@@ -2016,6 +2028,7 @@ begin
 
 
                             MainForm.Opt_cas_bnk_CaisseTable.Active:=false;
+                            MainForm.Opt_cas_bnk_CaisseTable.Filtered:=false;
                             MainForm.Opt_cas_bnk_CaisseTable.SQL.Clear;
                             MainForm.Opt_cas_bnk_CaisseTable.SQL.Text:='SELECT * FROM opt_cas_bnk where nature_ocb = false' ;
                             MainForm.Opt_cas_bnk_CaisseTable.Active:=True;
@@ -2023,6 +2036,7 @@ begin
                          end;
 
                     MainForm.Opt_cas_bnk_CaisseTable.Active:=false;
+                    MainForm.Opt_cas_bnk_CaisseTable.Filtered:=false;
                     MainForm.Opt_cas_bnk_CaisseTable.SQL.Clear;
                     MainForm.Opt_cas_bnk_CaisseTable.SQL.Text:='SELECT * FROM opt_cas_bnk where nature_ocb = false' ;
                     MainForm.Opt_cas_bnk_CaisseTable.Active:=True;

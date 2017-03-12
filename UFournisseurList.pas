@@ -458,6 +458,10 @@ end;
 procedure TFournisseurListF.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
+
+   MainForm.SaveGridLayout(FournisseursListDBGridEh,GetCurrentDir +'\bin\gc_fourlst');
+
+
  //--------- do that when i want ODER by the Indexed of the FirDACTable-----/
  MainForm.FournisseurTable.IndexesActive:=True;
 
@@ -468,7 +472,11 @@ end;
 
 procedure TFournisseurListF.FormCreate(Sender: TObject);
 begin
-//FournisseursListDBGridEh.Height:= (MainForm.Height) - (FournisseursListDBGridEh.Top)
+     if FileExists(GetCurrentDir +'\bin\gc_fourlst') then
+   begin
+
+    MainForm.LoadGridLayout(FournisseursListDBGridEh,GetCurrentDir +'\bin\gc_fourlst');
+   end;
 end;
 
 procedure TFournisseurListF.FormPaint(Sender: TObject);

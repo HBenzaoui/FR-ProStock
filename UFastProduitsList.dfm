@@ -16,6 +16,7 @@ object FastProduitsListF: TFastProduitsListF
   StyleElements = [seClient, seBorder]
   OnActivate = FormActivate
   OnClose = FormClose
+  OnCreate = FormCreate
   OnKeyPress = FormKeyPress
   OnShow = FormShow
   PixelsPerInch = 96
@@ -323,20 +324,20 @@ object FastProduitsListF: TFastProduitsListF
     HorzScrollBar.ExtraPanel.Visible = True
     HorzScrollBar.ExtraPanel.VisibleItems = [gsbiNavigator, gsbiSelAggregationInfoEh]
     HorzScrollBar.Height = 20
-    IndicatorOptions = [gioShowRowselCheckboxesEh]
+    IndicatorOptions = [gioShowRowIndicatorEh, gioShowRowselCheckboxesEh]
     IndicatorParams.Color = clWindow
-    IndicatorParams.HorzLineColor = 15970832
     IndicatorParams.HorzLines = False
-    IndicatorParams.VertLineColor = 15970832
     IndicatorParams.VertLines = True
+    IndicatorTitle.ShowDropDownSign = True
+    IndicatorTitle.TitleButton = True
     OddRowColor = 16315635
-    Options = [dgTitles, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgCancelOnExit, dgMultiSelect]
+    Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgCancelOnExit, dgMultiSelect]
     OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghAutoSortMarking, dghDialogFind, dghColumnResize, dghColumnMove, dghHotTrack, dghExtendVertLines]
     ParentCtl3D = False
     ParentFont = False
     ParentShowHint = False
     RowDetailPanel.Color = clBtnFace
-    RowHeight = 25
+    RowHeight = 22
     SearchPanel.FilterOnTyping = True
     ShowHint = True
     TabOrder = 2
@@ -371,8 +372,6 @@ object FastProduitsListF: TFastProduitsListF
         Font.Style = []
         Footers = <>
         Layout = tlCenter
-        MaxWidth = 120
-        MinWidth = 120
         Title.Alignment = taCenter
         Title.Caption = 'R'#233'ference'
         Title.Font.Charset = DEFAULT_CHARSET
@@ -381,7 +380,7 @@ object FastProduitsListF: TFastProduitsListF
         Title.Font.Name = 'Helvetica LT Std'
         Title.Font.Style = []
         Title.Font.Quality = fqProof
-        Width = 120
+        Width = 100
         WordWrap = False
       end
       item
@@ -479,29 +478,6 @@ object FastProduitsListF: TFastProduitsListF
         WordWrap = False
       end
       item
-        DynProps = <>
-        EditButtons = <>
-        FieldName = 'code_sfamp'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = 4207405
-        Font.Height = 16
-        Font.Name = 'Helvetica LT Std'
-        Font.Style = []
-        Footers = <>
-        Layout = tlCenter
-        Title.Alignment = taCenter
-        Title.Caption = 'Souse Famille'
-        Title.Font.Charset = DEFAULT_CHARSET
-        Title.Font.Color = 4207405
-        Title.Font.Height = 18
-        Title.Font.Name = 'Helvetica LT Std'
-        Title.Font.Style = []
-        Title.Font.Quality = fqProof
-        Visible = False
-        Width = 150
-        WordWrap = False
-      end
-      item
         Alignment = taCenter
         DynProps = <>
         EditButtons = <>
@@ -545,27 +521,6 @@ object FastProduitsListF: TFastProduitsListF
         Title.Font.Style = []
         Title.Font.Quality = fqProof
         Width = 130
-        WordWrap = False
-      end
-      item
-        DynProps = <>
-        EditButtons = <>
-        FieldName = 'alertqut_p'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = 4207405
-        Font.Height = 16
-        Font.Name = 'Helvetica LT Std'
-        Font.Style = []
-        Footers = <>
-        Layout = tlCenter
-        Title.Alignment = taCenter
-        Title.Font.Charset = DEFAULT_CHARSET
-        Title.Font.Color = 4207405
-        Title.Font.Height = 18
-        Title.Font.Name = 'Helvetica LT Std'
-        Title.Font.Style = []
-        Title.Font.Quality = fqProof
-        Visible = False
         WordWrap = False
       end
       item

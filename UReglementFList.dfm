@@ -317,6 +317,7 @@ object ReglementFListF: TReglementFListF
   OldCreateOrder = False
   Visible = True
   OnClose = FormClose
+  OnCreate = FormCreate
   OnPaint = FormPaint
   OnShow = FormShow
   DesignSize = (
@@ -439,7 +440,7 @@ object ReglementFListF: TReglementFListF
     object ResearchBACtrLbl: TLabel
       Left = 6
       Top = 31
-      Width = 66
+      Width = 74
       Height = 16
       Caption = 'Rechercher'
       Color = 15722984
@@ -800,7 +801,6 @@ object ReglementFListF: TReglementFListF
     DataGrouping.Active = True
     DataSource = RegFListDataS
     DynProps = <>
-    EditActions = [geaSelectAllEh]
     EvenRowColor = clWindow
     FixedColor = clWindow
     Font.Charset = DEFAULT_CHARSET
@@ -814,20 +814,18 @@ object ReglementFListF: TReglementFListF
     HorzScrollBar.ExtraPanel.NavigatorButtons = [nbFirstEh, nbPriorEh, nbNextEh, nbLastEh, nbRefreshEh]
     HorzScrollBar.ExtraPanel.Visible = True
     HorzScrollBar.Height = 15
-    IndicatorOptions = []
+    IndicatorOptions = [gioShowRowIndicatorEh]
     IndicatorParams.Color = clBtnFace
-    IndicatorParams.HorzLineColor = 15970832
-    IndicatorParams.VertLineColor = 15970832
     IndicatorTitle.ShowDropDownSign = True
     IndicatorTitle.TitleButton = True
     OddRowColor = 16315635
-    Options = [dgTitles, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
+    Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
     OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghDialogFind, dghColumnResize, dghColumnMove, dghHotTrack, dghExtendVertLines]
     ParentCtl3D = False
     ParentFont = False
     ParentShowHint = False
     RowDetailPanel.Color = clBtnFace
-    RowHeight = 25
+    RowHeight = 22
     SearchPanel.FilterOnTyping = True
     ShowHint = True
     SumList.Active = True
@@ -846,6 +844,7 @@ object ReglementFListF: TReglementFListF
     TitleParams.VertLines = True
     VertScrollBar.Width = 15
     OnDblClick = BARecListDBGridEhDblClick
+    OnDrawColumnCell = BARecListDBGridEhDrawColumnCell
     OnKeyDown = BARecListDBGridEhKeyDown
     OnKeyPress = BARecListDBGridEhKeyPress
     Columns = <
@@ -902,7 +901,7 @@ object ReglementFListF: TReglementFListF
         Title.Font.Style = []
         Title.Font.Quality = fqProof
         Title.ToolTips = True
-        Width = 150
+        Width = 100
         WordWrap = False
       end
       item
@@ -1059,160 +1058,6 @@ object ReglementFListF: TReglementFListF
         Title.Font.Quality = fqProof
         Title.ToolTips = True
         Width = 180
-        WordWrap = False
-      end
-      item
-        DisplayFormat = '#,##0.00'
-        DynProps = <>
-        EditButtons = <>
-        FieldName = 'remise_barec'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = 4207405
-        Font.Height = 16
-        Font.Name = 'Helvetica LT Std'
-        Font.Style = []
-        Footers = <>
-        Layout = tlCenter
-        MinWidth = 150
-        Title.Alignment = taCenter
-        Title.Caption = 'Remise HT'
-        Title.EndEllipsis = True
-        Title.Font.Charset = DEFAULT_CHARSET
-        Title.Font.Color = 4207405
-        Title.Font.Height = 18
-        Title.Font.Name = 'Helvetica LT Std'
-        Title.Font.Style = []
-        Title.Font.Quality = fqProof
-        Title.ToolTips = True
-        Visible = False
-        Width = 150
-        WordWrap = False
-      end
-      item
-        DisplayFormat = '#,##0.00'
-        DynProps = <>
-        EditButtons = <>
-        FieldName = 'RemisePerc'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = 4207405
-        Font.Height = 16
-        Font.Name = 'Helvetica LT Std'
-        Font.Style = []
-        Footers = <>
-        Title.Font.Charset = DEFAULT_CHARSET
-        Title.Font.Color = 4207405
-        Title.Font.Height = 18
-        Title.Font.Name = 'Helvetica LT Std'
-        Title.Font.Style = []
-        Title.Font.Quality = fqProof
-        Visible = False
-        WordWrap = False
-      end
-      item
-        DisplayFormat = '#,##0.00'
-        DynProps = <>
-        EditButtons = <>
-        FieldName = 'MontantTVA'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = 4207405
-        Font.Height = 16
-        Font.Name = 'Helvetica LT Std'
-        Font.Style = []
-        Footers = <>
-        Layout = tlCenter
-        MinWidth = 150
-        Title.Alignment = taCenter
-        Title.Caption = 'Montant TVA'
-        Title.EndEllipsis = True
-        Title.Font.Charset = DEFAULT_CHARSET
-        Title.Font.Color = 4207405
-        Title.Font.Height = 18
-        Title.Font.Name = 'Helvetica LT Std'
-        Title.Font.Style = []
-        Title.Font.Quality = fqProof
-        Title.ToolTips = True
-        Visible = False
-        Width = 150
-        WordWrap = False
-      end
-      item
-        DisplayFormat = '#,##0.00'
-        DynProps = <>
-        EditButtons = <>
-        FieldName = 'montttc_barec'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = 4207405
-        Font.Height = 16
-        Font.Name = 'Helvetica LT Std'
-        Font.Style = []
-        Footers = <>
-        Layout = tlCenter
-        Title.Alignment = taCenter
-        Title.Caption = 'Montant TTC'
-        Title.EndEllipsis = True
-        Title.Font.Charset = DEFAULT_CHARSET
-        Title.Font.Color = 4207405
-        Title.Font.Height = 18
-        Title.Font.Name = 'Helvetica LT Std'
-        Title.Font.Style = []
-        Title.Font.Quality = fqProof
-        Title.ToolTips = True
-        Visible = False
-        Width = 150
-        WordWrap = False
-      end
-      item
-        DisplayFormat = '#,##0.00'
-        DynProps = <>
-        EditButtons = <>
-        FieldName = 'montver_barec'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = 4207405
-        Font.Height = 16
-        Font.Name = 'Helvetica LT Std'
-        Font.Style = []
-        Footers = <>
-        Layout = tlCenter
-        MinWidth = 150
-        Title.Alignment = taCenter
-        Title.Caption = 'Montant Vers'#233
-        Title.EndEllipsis = True
-        Title.Font.Charset = DEFAULT_CHARSET
-        Title.Font.Color = 4207405
-        Title.Font.Height = 18
-        Title.Font.Name = 'Helvetica LT Std'
-        Title.Font.Style = []
-        Title.Font.Quality = fqProof
-        Title.ToolTips = True
-        Visible = False
-        Width = 150
-        WordWrap = False
-      end
-      item
-        DisplayFormat = '#,##0.00'
-        DynProps = <>
-        EditButtons = <>
-        FieldName = 'MontantRes'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = 4207405
-        Font.Height = 16
-        Font.Name = 'Helvetica LT Std'
-        Font.Style = []
-        Footers = <>
-        Layout = tlCenter
-        MinWidth = 150
-        Title.Alignment = taCenter
-        Title.Caption = 'Montant Reste'
-        Title.EndEllipsis = True
-        Title.Font.Charset = DEFAULT_CHARSET
-        Title.Font.Color = 4207405
-        Title.Font.Height = 18
-        Title.Font.Name = 'Helvetica LT Std'
-        Title.Font.Style = []
-        Title.Font.Quality = fqProof
-        Title.ToolTips = True
-        Visible = False
-        Width = 150
         WordWrap = False
       end
       item

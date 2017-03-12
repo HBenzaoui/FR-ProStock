@@ -307,6 +307,8 @@ end;
 
 procedure TBonFacAGestionF.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
+ MainForm.SaveGridLayout(ProduitsListDBGridEh,GetCurrentDir +'\bin\gc_fca');
+
  if ValiderBAFacBonFacAGImg.ImageIndex = 1 then
   begin
 
@@ -342,6 +344,8 @@ begin
 
   MainForm.Bona_fac_listTable.IndexFieldNames:='code_bafac';
 //FormatSettings.DecimalSeparator := '.';
+
+
 end;
 
 procedure TBonFacAGestionF.FormCloseQuery(Sender: TObject;
@@ -1299,6 +1303,7 @@ begin
            if Tag=0 then
                 begin
                   MainForm.Opt_cas_bnk_CaisseTable.DisableControls;
+                  MainForm.Opt_cas_bnk_CaisseTable.Filtered:=false;
                   MainForm.Opt_cas_bnk_CaisseTable.Active:=false;
                   MainForm.Opt_cas_bnk_CaisseTable.SQL.Clear;
                   MainForm.Opt_cas_bnk_CaisseTable.SQL.Text:='SELECT * FROM opt_cas_bnk' ;
@@ -1363,6 +1368,7 @@ begin
                     begin
 
                         MainForm.Opt_cas_bnk_CaisseTable.DisableControls;
+                        MainForm.Opt_cas_bnk_CaisseTable.Filtered:=false;
                         MainForm.Opt_cas_bnk_CaisseTable.Active:=false;
                         MainForm.Opt_cas_bnk_CaisseTable.SQL.Clear;
                         MainForm.Opt_cas_bnk_CaisseTable.SQL.Text:='SELECT * FROM opt_cas_bnk WHERE code_bafac ='+IntToStr(MainForm.Bona_facTable.FieldValues['code_bafac']) ;
@@ -1409,6 +1415,7 @@ begin
                         end else
                             begin
                               MainForm.Opt_cas_bnk_CaisseTable.Active:=false;
+                              MainForm.Opt_cas_bnk_CaisseTable.Filtered:=false;
                               MainForm.Opt_cas_bnk_CaisseTable.SQL.Clear;
                               MainForm.Opt_cas_bnk_CaisseTable.SQL.Text:='SELECT * FROM opt_cas_bnk' ;
                               MainForm.Opt_cas_bnk_CaisseTable.Active:=True;
@@ -1468,6 +1475,7 @@ begin
                             end;
 
                         MainForm.Opt_cas_bnk_CaisseTable.Active:=false;
+                        MainForm.Opt_cas_bnk_CaisseTable.Filtered:=false;
                         MainForm.Opt_cas_bnk_CaisseTable.SQL.Clear;
                         MainForm.Opt_cas_bnk_CaisseTable.SQL.Text:='SELECT * FROM opt_cas_bnk where nature_ocb = false' ;
                         MainForm.Opt_cas_bnk_CaisseTable.Active:=True;
@@ -2868,6 +2876,12 @@ end;
 
 procedure TBonFacAGestionF.FormCreate(Sender: TObject);
 begin
+     if FileExists(GetCurrentDir +'\bin\gc_fca') then
+   begin
+
+    MainForm.LoadGridLayout(ProduitsListDBGridEh,GetCurrentDir +'\bin\gc_fca');
+   end;
+
 MainForm.Bona_fac_listTable.Active:= True;
 if Assigned(ProduitsListF) then
   begin

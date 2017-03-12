@@ -107,6 +107,7 @@ type
     procedure AdvToolButton2Click(Sender: TObject);
     procedure AdvToolButton3Click(Sender: TObject);
     procedure FormPaint(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     procedure GettingData;
     procedure FilteredColor;
@@ -478,7 +479,7 @@ begin
             MainForm.Bona_FacTable.DisableControls;
             MainForm.Bona_FacTable.Active:=False;
             MainForm.Bona_FacTable.SQL.Clear;
-            MainForm.Bona_FacTable.SQL.Text:='SELECT * FROM bona_fac WHERE code_f IN( SELECT code_f FROM client WHERE LOWER(nom_f) LIKE LOWER' +'('''+'%'+(ResearchBAFacEdt.Text)+'%'+''')' +')';
+            MainForm.Bona_FacTable.SQL.Text:='SELECT * FROM bona_fac WHERE code_f IN( SELECT code_f FROM fournisseur WHERE LOWER(nom_f) LIKE LOWER' +'('''+'%'+(ResearchBAFacEdt.Text)+'%'+''')' +')';
             MainForm.Bona_FacTable.Active:=True;
             MainForm.Bona_FacTable.EnableControls;
 
@@ -1273,7 +1274,19 @@ end;
 
 procedure TBonFacAF.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
+
+   MainForm.SaveGridLayout(BAFacListDBGridEh,GetCurrentDir +'\bin\gc_fcalst');
+
  FreeAndNil(BonFacAF);
+end;
+
+procedure TBonFacAF.FormCreate(Sender: TObject);
+begin
+     if FileExists(GetCurrentDir +'\bin\gc_fcalst') then
+   begin
+
+    MainForm.LoadGridLayout(BAFacListDBGridEh,GetCurrentDir +'\bin\gc_fcalst');
+   end;
 end;
 
 procedure TBonFacAF.FormPaint(Sender: TObject);

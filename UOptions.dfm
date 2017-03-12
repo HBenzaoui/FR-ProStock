@@ -65,7 +65,7 @@ object FOptions: TFOptions
     object Label1: TLabel
       Left = 8
       Top = 3
-      Width = 104
+      Width = 107
       Height = 24
       Caption = 'Impression'
       Color = 4207405
@@ -283,7 +283,7 @@ object FOptions: TFOptions
     object Label5: TLabel
       Left = 8
       Top = 0
-      Width = 98
+      Width = 99
       Height = 24
       Caption = 'Enterprise'
       Color = 4207405
@@ -388,6 +388,7 @@ object FOptions: TFOptions
       ShowHint = True
       Spacing = -1
       Visible = False
+      OnClick = ImageDeleteProduitGBtnClick
       Version = '1.6.1.2'
       TMSStyle = 0
     end
@@ -610,7 +611,7 @@ object FOptions: TFOptions
     end
   end
   object OpenPictureDialogProduitG: TOpenPictureDialog
-    Filter = 'JPEG graphics|*.jpg'
+    Filter = 'JPEG graphics (*.jpg)|*.jpg'
     Left = 36
     Top = 207
   end

@@ -73,6 +73,7 @@ type
     procedure AdvToolButton1Click(Sender: TObject);
     procedure AdvToolButton2Click(Sender: TObject);
     procedure AdvToolButton3Click(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     procedure GettingData;
     { Private declarations }
@@ -282,7 +283,20 @@ end;
 
 procedure TPertesFListF.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
+
+   MainForm.SaveGridLayout(PertesListDBGridEh,GetCurrentDir +'\bin\gc_prtlst');
+
+
 FreeAndNil(PertesFListF);
+end;
+
+procedure TPertesFListF.FormCreate(Sender: TObject);
+begin
+     if FileExists(GetCurrentDir +'\bin\gc_prtlst') then
+   begin
+
+    MainForm.LoadGridLayout(PertesListDBGridEh,GetCurrentDir +'\bin\gc_prtlst');
+   end;
 end;
 
 procedure TPertesFListF.FormShow(Sender: TObject);

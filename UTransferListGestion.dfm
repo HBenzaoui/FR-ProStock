@@ -52,6 +52,7 @@ object TransferListGestionF: TTransferListGestionF
   OldCreateOrder = False
   Visible = True
   OnClose = FormClose
+  OnCreate = FormCreate
   OnShow = FormShow
   DesignSize = (
     951
@@ -71,7 +72,6 @@ object TransferListGestionF: TTransferListGestionF
     ParentDoubleBuffered = False
     TabOrder = 0
     StyleElements = []
-    ExplicitWidth = 917
     DesignSize = (
       951
       71)
@@ -175,7 +175,7 @@ object TransferListGestionF: TTransferListGestionF
     object ResearchBACtrLbl: TLabel
       Left = 6
       Top = 31
-      Width = 66
+      Width = 74
       Height = 16
       Caption = 'Rechercher'
       Color = 15722984
@@ -282,7 +282,6 @@ object TransferListGestionF: TTransferListGestionF
       ParentBackground = False
       TabOrder = 1
       StyleElements = []
-      ExplicitWidth = 933
     end
     object S01: TPanel
       Left = 883
@@ -440,8 +439,6 @@ object TransferListGestionF: TTransferListGestionF
     ParentBackground = False
     TabOrder = 1
     StyleElements = []
-    ExplicitTop = 82
-    ExplicitHeight = 639
   end
   object TransferListDBGridEh: TDBGridEh
     Left = 0
@@ -460,7 +457,6 @@ object TransferListGestionF: TTransferListGestionF
     DataGrouping.Active = True
     DataSource = TransferListDataS
     DynProps = <>
-    EditActions = [geaSelectAllEh]
     EvenRowColor = clWindow
     FixedColor = clWindow
     Font.Charset = DEFAULT_CHARSET
@@ -475,20 +471,18 @@ object TransferListGestionF: TTransferListGestionF
     HorzScrollBar.ExtraPanel.NavigatorButtons = [nbFirstEh, nbPriorEh, nbNextEh, nbLastEh, nbRefreshEh]
     HorzScrollBar.ExtraPanel.Visible = True
     HorzScrollBar.Height = 15
-    IndicatorOptions = []
+    IndicatorOptions = [gioShowRowIndicatorEh]
     IndicatorParams.Color = clBtnFace
-    IndicatorParams.HorzLineColor = 15970832
-    IndicatorParams.VertLineColor = 15970832
     IndicatorTitle.ShowDropDownSign = True
     IndicatorTitle.TitleButton = True
     OddRowColor = 16315635
-    Options = [dgTitles, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
+    Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
     OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghDialogFind, dghColumnResize, dghColumnMove, dghHotTrack, dghExtendVertLines]
     ParentCtl3D = False
     ParentFont = False
     ParentShowHint = False
     RowDetailPanel.Color = clBtnFace
-    RowHeight = 25
+    RowHeight = 22
     SearchPanel.FilterOnTyping = True
     ShowHint = True
     SumList.Active = True
@@ -788,7 +782,6 @@ object TransferListGestionF: TTransferListGestionF
     ParentBiDiMode = False
     SizeGrip = False
     SkinData.SkinSection = 'MENUITEM'
-    ExplicitWidth = 917
     DesignSize = (
       951
       20)

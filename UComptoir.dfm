@@ -345,7 +345,6 @@ object BonCtrGestionF: TBonCtrGestionF
     DataGrouping.Active = True
     DataSource = BonCtrPListDataS
     DynProps = <>
-    EditActions = [geaSelectAllEh]
     EvenRowColor = clWindow
     FixedColor = clWindow
     Font.Charset = DEFAULT_CHARSET
@@ -360,20 +359,19 @@ object BonCtrGestionF: TBonCtrGestionF
     HorzScrollBar.ExtraPanel.Visible = True
     HorzScrollBar.ExtraPanel.VisibleItems = [gsbiNavigator, gsbiSelAggregationInfoEh]
     HorzScrollBar.Height = 15
-    IndicatorOptions = [gioShowRecNoEh]
+    IndicatorOptions = [gioShowRowIndicatorEh, gioShowRecNoEh]
     IndicatorParams.Color = clBtnFace
-    IndicatorParams.HorzLineColor = 15970832
-    IndicatorParams.VertLineColor = 15970832
     IndicatorParams.VertLines = True
-    IndicatorTitle.UseGlobalMenu = False
+    IndicatorTitle.ShowDropDownSign = True
+    IndicatorTitle.TitleButton = True
     OddRowColor = 16315635
-    Options = [dgEditing, dgTitles, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
+    Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
     OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghDialogFind, dghShowRecNo, dghColumnResize, dghColumnMove, dghExtendVertLines]
     ParentCtl3D = False
     ParentFont = False
     ParentShowHint = False
     RowDetailPanel.Color = clBtnFace
-    RowHeight = 30
+    RowHeight = 25
     SearchPanel.FilterOnTyping = True
     ShowHint = False
     TabOrder = 5
@@ -539,42 +537,12 @@ object BonCtrGestionF: TBonCtrGestionF
         WordWrap = False
       end
       item
-        Alignment = taCenter
-        DropDownBox.ColumnDefValues.Layout = tlCenter
-        DropDownBox.Options = []
-        DropDownRows = 0
-        DropDownSpecRow.ShowIfNotInKeyList = False
-        DropDownWidth = -1
-        DynProps = <>
-        EditButtons = <>
-        FieldName = 'tvap'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = 18
-        Font.Name = 'Helvetica LT Std'
-        Font.Style = []
-        Footers = <>
-        Layout = tlCenter
-        ReadOnly = True
-        TextEditing = False
-        Title.Alignment = taCenter
-        Title.Caption = 'TVA'
-        Title.Font.Charset = DEFAULT_CHARSET
-        Title.Font.Color = 4207405
-        Title.Font.Height = 19
-        Title.Font.Name = 'Helvetica LT Std'
-        Title.Font.Style = []
-        Title.Font.Quality = fqProof
-        Visible = False
-        WordWrap = False
-      end
-      item
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
         FieldName = 'PrixVTTC'
         Font.Charset = DEFAULT_CHARSET
-        Font.Color = 5345802
+        Font.Color = 4207405
         Font.Height = 18
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
@@ -1029,7 +997,7 @@ object BonCtrGestionF: TBonCtrGestionF
       Visible = False
     end
     object BonCtrTotalTVALbl: TLabel
-      Left = 120
+      Left = 82
       Top = 6
       Width = 6
       Height = 13
@@ -1037,8 +1005,8 @@ object BonCtrGestionF: TBonCtrGestionF
       Visible = False
     end
     object BonCTRTotalMargeLbl: TLabel
-      Left = 170
-      Top = 2
+      Left = 152
+      Top = 27
       Width = 157
       Height = 20
       Caption = 'BonCTRTotalMargeLbl'
@@ -1049,6 +1017,28 @@ object BonCtrGestionF: TBonCtrGestionF
       Font.Style = []
       ParentFont = False
       Visible = False
+    end
+    object Label3: TLabel
+      Left = 107
+      Top = -1
+      Width = 409
+      Height = 27
+      Alignment = taCenter
+      Anchors = [akLeft, akTop, akRight]
+      AutoSize = False
+      Caption = 'Alerte !! Le prix de vente est inf'#233'rieur au prix d'#39'achat'
+      Color = 5425663
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 4539717
+      Font.Height = 17
+      Font.Name = 'Helvetica LT Std'
+      Font.Style = []
+      ParentColor = False
+      ParentFont = False
+      Transparent = False
+      Layout = tlCenter
+      Visible = False
+      StyleElements = []
     end
     object Panel6: TPanel
       Left = 0
@@ -3434,5 +3424,12 @@ object BonCtrGestionF: TBonCtrGestionF
         end
       end
     end
+  end
+  object Timer2: TTimer
+    Enabled = False
+    Interval = 500
+    OnTimer = Timer2Timer
+    Left = 474
+    Top = 482
   end
 end

@@ -136,6 +136,8 @@ type
     NameClientGErrorP: TPanel;
     sImage1: TsImage;
     ProduitBonCtrGCbx: TcxComboBox;
+    Label3: TLabel;
+    Timer2: TTimer;
     procedure FormShow(Sender: TObject);
     procedure RemiseBonCtrGEdtDblClick(Sender: TObject);
     procedure ShowKeyBoardBonCtrGBtnClick(Sender: TObject);
@@ -191,6 +193,7 @@ type
     procedure AddClientBonCtrGBtnClick(Sender: TObject);
     procedure ProduitBonCtrGCbxEnter(Sender: TObject);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
+    procedure Timer2Timer(Sender: TObject);
   private
     procedure GettingData;
     { Private declarations }
@@ -867,6 +870,8 @@ procedure TBonCtrGestionF.FormClose(Sender: TObject; var Action: TCloseAction);
 //HTaskbar:HWND;
 //OldVal:LongInt;
 begin
+ MainForm.SaveGridLayout(ProduitsListDBGridEh,GetCurrentDir +'\bin\gc_ctr');
+
 //Find handle of TASKBAR
 //HTaskBar:=FindWindow('Shell_TrayWnd',nil);
 //Turn SYSTEM KEYS Back ON,Only Win 95/98/ME
@@ -1222,7 +1227,7 @@ begin
 //    MainForm.SQLQuery.DisableControls;
     MainForm.SQLQuery.Active:=False;
     MainForm.SQLQuery.SQL.Clear;
-    MainForm.SQLQuery.SQL.Text:='SELECT code_p,qut_p,qutini_p FROM produit WHERE code_p = ' +IntToStr(MainForm.Bonv_ctr_listTable.FieldValues['code_p']);
+    MainForm.SQLQuery.SQL.Text:='SELECT code_p,qut_p,qutini_p,prixht_p FROM produit WHERE code_p = ' +IntToStr(MainForm.Bonv_ctr_listTable.FieldValues['code_p']);
     MainForm.SQLQuery.Active:=True;
 
     BonCtrGOLDStock.Caption:=  floatTostrF(( (MainForm.SQLQuery.FieldValues['qut_p'] + MainForm.SQLQuery.FieldValues['qutini_p'])),ffNumber,14,2);
@@ -1236,6 +1241,23 @@ begin
         Timer1.Enabled:= False;
         Label20.Visible:=false;
         end;
+
+
+          //------------ this will show notification if the price is lower the the achat price------------
+      if MainForm.Bonv_ctr_listTable.FieldByName('prixvd_p').AsFloat <  MainForm.SQLQuery.FieldByName('prixht_p').AsFloat then
+      begin
+       Label3.Caption:= 'Alerte !! Le prix de vente est inférieur au prix d''achat';
+       Timer2.Enabled:= true;
+      end else
+          if MainForm.Bonv_ctr_listTable.FieldByName('prixvd_p').AsFloat =  MainForm.SQLQuery.FieldByName('prixht_p').AsFloat then
+          begin
+           Label3.Caption:= 'Alerte !! Le prix de vente est égal au prix d''achat';
+           Timer2.Enabled:= true;
+          end else
+          begin
+           Timer2.Enabled:= False;
+           Label3.Visible:=false;
+          end;
 
     MainForm.SQLQuery.Active:=False;
     MainForm.SQLQuery.SQL.Clear;
@@ -1254,7 +1276,9 @@ begin
     DeleteProduitBonCtrGBtn.Visible:= False;
     ClearProduitBonCtrGBtn.Visible:= False;
     Timer1.Enabled:=False;
+    Timer2.Enabled:= False;
     Labell20.Visible:= False;
+    Label3.Visible:= False;
 
     ValiderBVCtrBonCtrGBtn.Enabled:= False;
     ValiderBVCtrBonCtrGBtn.ImageIndex:=12;
@@ -1414,6 +1438,14 @@ if label20.Visible=True then
    label20.Visible:=False
 else
    label20.Visible:=True;
+end;
+
+procedure TBonCtrGestionF.Timer2Timer(Sender: TObject);
+begin
+if Label3.Visible=True then
+   Label3.Visible:=False
+else
+   Label3.Visible:=True;
 end;
 
 procedure TBonCtrGestionF.sSpeedButton7Click(Sender: TObject);
@@ -2157,6 +2189,12 @@ var CodeOCB,CodeRF : Integer;
 
 procedure TBonCtrGestionF.FormCreate(Sender: TObject);
 begin
+     if FileExists(GetCurrentDir +'\bin\gc_ctr') then
+   begin
+
+    MainForm.LoadGridLayout(ProduitsListDBGridEh,GetCurrentDir +'\bin\gc_ctr');
+   end;
+
 MainForm.Bonv_ctr_listTable.Active:=True;
 if Assigned(ProduitsListF) then
   begin
@@ -2789,6 +2827,7 @@ var CodeOCB,CodeRF : Integer;
           if Tag = 0 then
             begin
                   MainForm.Opt_cas_bnk_CaisseTable.DisableControls;
+                  MainForm.Opt_cas_bnk_CaisseTable.Filtered:=false;
                   MainForm.Opt_cas_bnk_CaisseTable.Active:=false;
                   MainForm.Opt_cas_bnk_CaisseTable.SQL.Clear;
                   MainForm.Opt_cas_bnk_CaisseTable.SQL.Text:='SELECT * FROM opt_cas_bnk' ;
@@ -2833,6 +2872,7 @@ var CodeOCB,CodeRF : Integer;
             end else
                 begin
                   MainForm.Opt_cas_bnk_CaisseTable.DisableControls;
+                  MainForm.Opt_cas_bnk_CaisseTable.Filtered:=false;
                   MainForm.Opt_cas_bnk_CaisseTable.Active:=false;
                   MainForm.Opt_cas_bnk_CaisseTable.SQL.Clear;
                   MainForm.Opt_cas_bnk_CaisseTable.SQL.Text:='SELECT * FROM opt_cas_bnk WHERE code_bvctr ='+IntToStr(MainForm.Bonv_ctrTable.FieldValues['code_bvctr']) ;
@@ -2864,6 +2904,7 @@ var CodeOCB,CodeRF : Integer;
                       begin
 
                           MainForm.Opt_cas_bnk_CaisseTable.Active:=false;
+                          MainForm.Opt_cas_bnk_CaisseTable.Filtered:=false;
                           MainForm.Opt_cas_bnk_CaisseTable.SQL.Clear;
                           MainForm.Opt_cas_bnk_CaisseTable.SQL.Text:='SELECT * FROM opt_cas_bnk' ;
                           MainForm.Opt_cas_bnk_CaisseTable.Active:=True;
@@ -2904,6 +2945,7 @@ var CodeOCB,CodeRF : Integer;
                       end;
 
                     MainForm.Opt_cas_bnk_CaisseTable.Active:=false;
+                    MainForm.Opt_cas_bnk_CaisseTable.Filtered:=false;
                     MainForm.Opt_cas_bnk_CaisseTable.SQL.Clear;
                     MainForm.Opt_cas_bnk_CaisseTable.SQL.Text:='SELECT * FROM opt_cas_bnk where nature_ocb = false' ;
                     MainForm.Opt_cas_bnk_CaisseTable.Active:=True;

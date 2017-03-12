@@ -112,6 +112,7 @@ type
     procedure AdvToolButton2Click(Sender: TObject);
     procedure AdvToolButton3Click(Sender: TObject);
     procedure FormPaint(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
 
   private
     procedure GettingData;
@@ -1303,7 +1304,19 @@ end;
 
 procedure TBonRecF.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
+
+   MainForm.SaveGridLayout(BARecListDBGridEh,GetCurrentDir +'\bin\gc_brlst');
+
  FreeAndNil(BonRecF);
+end;
+
+procedure TBonRecF.FormCreate(Sender: TObject);
+begin
+     if FileExists(GetCurrentDir +'\bin\gc_brlst') then
+   begin
+
+    MainForm.LoadGridLayout(BARecListDBGridEh,GetCurrentDir +'\bin\gc_brlst');
+   end;
 end;
 
 procedure TBonRecF.FormPaint(Sender: TObject);

@@ -124,6 +124,7 @@ type
     procedure AdvToolButton1Click(Sender: TObject);
     procedure AdvToolButton2Click(Sender: TObject);
     procedure AdvToolButton3Click(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     procedure GettingData;
     procedure FilteredColor;
@@ -1100,8 +1101,21 @@ end;
 
 procedure TCaisseListF.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
+
+   MainForm.SaveGridLayout(CaisseListDBGridEh,GetCurrentDir +'\bin\gc_caslst');
+
+
 PaidOnlyCaisseBtnClick(Sender);
  FreeAndNil(CaisseListF);
+end;
+
+procedure TCaisseListF.FormCreate(Sender: TObject);
+begin
+     if FileExists(GetCurrentDir +'\bin\gc_caslst') then
+   begin
+
+    MainForm.LoadGridLayout(CaisseListDBGridEh,GetCurrentDir +'\bin\gc_caslst');
+   end;
 end;
 
 end.

@@ -343,7 +343,6 @@ object FournisseurListF: TFournisseurListF
     DataGrouping.Active = True
     DataSource = FournisseurListDataS
     DynProps = <>
-    EditActions = [geaSelectAllEh]
     Font.Charset = DEFAULT_CHARSET
     Font.Color = 4207405
     Font.Height = 18
@@ -356,20 +355,18 @@ object FournisseurListF: TFournisseurListF
     HorzScrollBar.ExtraPanel.Visible = True
     HorzScrollBar.ExtraPanel.VisibleItems = [gsbiNavigator, gsbiSelAggregationInfoEh]
     HorzScrollBar.Height = 15
-    IndicatorOptions = []
+    IndicatorOptions = [gioShowRowIndicatorEh]
     IndicatorParams.Color = clBtnFace
-    IndicatorParams.HorzLineColor = 15970832
-    IndicatorParams.VertLineColor = 15970832
     IndicatorTitle.ShowDropDownSign = True
     IndicatorTitle.TitleButton = True
     OddRowColor = 16315635
-    Options = [dgTitles, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
-    OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghDialogFind, dghColumnResize, dghColumnMove, dghHotTrack, dghExtendVertLines]
+    Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
+    OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghAutoSortMarking, dghMultiSortMarking, dghDialogFind, dghColumnResize, dghColumnMove, dghHotTrack, dghExtendVertLines]
     ParentCtl3D = False
     ParentFont = False
     ParentShowHint = False
     ReadOnly = True
-    RowHeight = 25
+    RowHeight = 22
     SearchPanel.FilterOnTyping = True
     ShowHint = True
     SumList.Active = True
@@ -871,6 +868,7 @@ object FournisseurListF: TFournisseurListF
         Title.Font.Name = 'Helvetica LT Std'
         Title.Font.Style = []
         Title.ToolTips = True
+        Visible = False
         Width = 130
         WordWrap = False
       end

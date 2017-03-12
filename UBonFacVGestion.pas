@@ -146,6 +146,8 @@ type
     PopupMenu1: TPopupMenu;
     B1: TMenuItem;
     BondeCaisseSimple2: TMenuItem;
+    Label25: TLabel;
+    Timer2: TTimer;
     procedure FormShow(Sender: TObject);
     procedure sSpeedButton7Click(Sender: TObject);
     procedure sSpeedButton6Click(Sender: TObject);
@@ -201,6 +203,7 @@ type
     procedure FormKeyPress(Sender: TObject; var Key: Char);
     procedure B1Click(Sender: TObject);
     procedure BondeCaisseSimple2Click(Sender: TObject);
+    procedure Timer2Timer(Sender: TObject);
   private
     procedure GettingData;
     { Private declarations }
@@ -1560,7 +1563,7 @@ begin
 //    MainForm.SQLQuery.DisableControls;
     MainForm.SQLQuery.Active:=False;
     MainForm.SQLQuery.SQL.Clear;
-    MainForm.SQLQuery.SQL.Text:='SELECT code_p,qut_p,qutini_p FROM produit WHERE code_p = ' +IntToStr(MainForm.Bonv_fac_listTable.FieldValues['code_p']);
+    MainForm.SQLQuery.SQL.Text:='SELECT code_p,qut_p,qutini_p,prixht_p FROM produit WHERE code_p = ' +IntToStr(MainForm.Bonv_fac_listTable.FieldValues['code_p']);
     MainForm.SQLQuery.Active:=True;
 
     BonFacVGOLDStock.Caption:=
@@ -1579,6 +1582,22 @@ begin
         Label20.Visible:=false;
         end;
 
+          //------------ this will show notification if the price is lower the the achat price------------
+      if MainForm.Bonv_fac_listTable.FieldByName('prixvd_p').AsFloat <  MainForm.SQLQuery.FieldByName('prixht_p').AsFloat then
+      begin
+       Label25.Caption:= 'Alerte !! Le prix de vente est inférieur au prix d''achat';
+       Timer2.Enabled:= true;
+      end else
+          if MainForm.Bonv_fac_listTable.FieldByName('prixvd_p').AsFloat =  MainForm.SQLQuery.FieldByName('prixht_p').AsFloat then
+          begin
+           Label25.Caption:= 'Alerte !! Le prix de vente est égal au prix d''achat';
+           Timer2.Enabled:= true;
+          end else
+          begin
+           Timer2.Enabled:= False;
+           Label25.Visible:=false;
+          end;
+
     MainForm.SQLQuery.Active:=False;
     MainForm.SQLQuery.SQL.Clear;
 //    MainForm.SQLQuery.SQL.Text:='SELECT * FROM produit ';
@@ -1596,6 +1615,7 @@ begin
     DeleteProduitBonFacVGBtn.Visible:= False;
     ClearProduitBonFacVGBtn.Visible:= False;
      Timer1.Enabled:=False;
+     Timer2.Enabled:=False;
 
     ValiderBVFacBonFacVGBtn.Enabled:= False;
     ValiderBVFacBonFacVGBtn.ImageIndex:=30;
@@ -1620,6 +1640,14 @@ if label20.Visible=True then
    label20.Visible:=False
 else
    label20.Visible:=True;
+end;
+
+procedure TBonFacVGestionF.Timer2Timer(Sender: TObject);
+begin
+if Label25.Visible=True then
+   Label25.Visible:=False
+else
+   Label25.Visible:=True;
 end;
 
 procedure TBonFacVGestionF.ClientBonFacVGCbxChange(Sender: TObject);
@@ -2173,6 +2201,8 @@ end;
 
 procedure TBonFacVGestionF.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
+ MainForm.SaveGridLayout(ProduitsListDBGridEh,GetCurrentDir +'\bin\gc_fcv');
+
  if ValiderBVFacBonFacVGImg.ImageIndex = 1 then
   begin
 
@@ -2209,6 +2239,9 @@ begin
   MainForm.Bonv_fac_listTable.IndexFieldNames:='code_bvfac';
 
 //  FormatSettings.DecimalSeparator := '.';
+
+
+
 end;
 
 procedure TBonFacVGestionF.FormCloseQuery(Sender: TObject;
@@ -2819,6 +2852,7 @@ begin
         if Tag = 0 then
           begin
               MainForm.Opt_cas_bnk_CaisseTable.DisableControls;
+              MainForm.Opt_cas_bnk_CaisseTable.Filtered:=false;
               MainForm.Opt_cas_bnk_CaisseTable.Active:=false;
               MainForm.Opt_cas_bnk_CaisseTable.SQL.Clear;
               MainForm.Opt_cas_bnk_CaisseTable.SQL.Text:='SELECT * FROM opt_cas_bnk' ;
@@ -2882,6 +2916,7 @@ begin
           end else
               begin
                     MainForm.Opt_cas_bnk_CaisseTable.DisableControls;
+                    MainForm.Opt_cas_bnk_CaisseTable.Filtered:=false;
                     MainForm.Opt_cas_bnk_CaisseTable.Active:=false;
                     MainForm.Opt_cas_bnk_CaisseTable.SQL.Clear;
                     MainForm.Opt_cas_bnk_CaisseTable.SQL.Text:='SELECT * FROM opt_cas_bnk WHERE code_bvfac ='+IntToStr(MainForm.Bonv_facTable.FieldByName('code_bvfac').AsInteger) ;
@@ -2927,6 +2962,7 @@ begin
                    end else
                        begin
                           MainForm.Opt_cas_bnk_CaisseTable.Active:=false;
+                          MainForm.Opt_cas_bnk_CaisseTable.Filtered:=false;
                           MainForm.Opt_cas_bnk_CaisseTable.SQL.Clear;
                           MainForm.Opt_cas_bnk_CaisseTable.SQL.Text:='SELECT * FROM opt_cas_bnk' ;
                           MainForm.Opt_cas_bnk_CaisseTable.Active:=True;
@@ -2984,6 +3020,7 @@ begin
                        end;
 
                     MainForm.Opt_cas_bnk_CaisseTable.Active:=false;
+                    MainForm.Opt_cas_bnk_CaisseTable.Filtered:=false;
                     MainForm.Opt_cas_bnk_CaisseTable.SQL.Clear;
                     MainForm.Opt_cas_bnk_CaisseTable.SQL.Text:='SELECT * FROM opt_cas_bnk where nature_ocb = false' ;
                     MainForm.Opt_cas_bnk_CaisseTable.Active:=True;
@@ -3131,6 +3168,12 @@ end;
 
 procedure TBonFacVGestionF.FormCreate(Sender: TObject);
 begin
+     if FileExists(GetCurrentDir +'\bin\gc_fcv') then
+   begin
+
+    MainForm.LoadGridLayout(ProduitsListDBGridEh,GetCurrentDir +'\bin\gc_fcv');
+   end;
+
 MainForm.Bonv_fac_listTable.Active:=True;
 if Assigned(ProduitsListF) then
   begin

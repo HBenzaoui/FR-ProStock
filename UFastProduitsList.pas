@@ -54,6 +54,7 @@ type
     procedure FormActivate(Sender: TObject);
     procedure ResearchProduitsEdtKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -254,9 +255,21 @@ end;
 procedure TFastProduitsListF.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
-MainForm.ProduitTable.Filtered := false;
+
+   MainForm.SaveGridLayout(ProduitsListDBGridEh,GetCurrentDir +'\bin\gc_fstprdtlst');
+
+ MainForm.ProduitTable.Filtered := false;
 NormalForms  ;
 //FreeAndNil(FastProduitsListF);
+end;
+
+procedure TFastProduitsListF.FormCreate(Sender: TObject);
+begin
+     if FileExists(GetCurrentDir +'\bin\gc_fstprdtlst') then
+   begin
+
+    MainForm.LoadGridLayout(ProduitsListDBGridEh,GetCurrentDir +'\bin\gc_fstprdtlst');
+   end;
 end;
 
 procedure TFastProduitsListF.FormKeyPress(Sender: TObject; var Key: Char);

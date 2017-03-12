@@ -318,6 +318,7 @@ object PertesFListF: TPertesFListF
   OldCreateOrder = False
   Visible = True
   OnClose = FormClose
+  OnCreate = FormCreate
   OnShow = FormShow
   DesignSize = (
     1022
@@ -337,7 +338,6 @@ object PertesFListF: TPertesFListF
     ParentDoubleBuffered = False
     TabOrder = 0
     StyleElements = []
-    ExplicitWidth = 1077
     DesignSize = (
       1022
       71)
@@ -440,7 +440,7 @@ object PertesFListF: TPertesFListF
     object ResearchBACtrLbl: TLabel
       Left = 6
       Top = 31
-      Width = 66
+      Width = 74
       Height = 16
       Caption = 'Rechercher'
       Color = 15722984
@@ -538,7 +538,7 @@ object PertesFListF: TPertesFListF
     object PeriodCaiseeListLbl: TLabel
       Left = 542
       Top = 28
-      Width = 31
+      Width = 34
       Height = 16
       Caption = 'Type:'
       Color = 15722984
@@ -562,7 +562,6 @@ object PertesFListF: TPertesFListF
       ParentBackground = False
       TabOrder = 1
       StyleElements = []
-      ExplicitWidth = 1093
     end
     object S01: TPanel
       Left = 1015
@@ -760,8 +759,6 @@ object PertesFListF: TPertesFListF
     ParentBackground = False
     TabOrder = 1
     StyleElements = []
-    ExplicitTop = 82
-    ExplicitHeight = 639
   end
   object PertesListDBGridEh: TDBGridEh
     Left = 0
@@ -780,7 +777,6 @@ object PertesFListF: TPertesFListF
     DataGrouping.Active = True
     DataSource = PerteListDataS
     DynProps = <>
-    EditActions = [geaSelectAllEh]
     EvenRowColor = clWindow
     FixedColor = clWindow
     Font.Charset = DEFAULT_CHARSET
@@ -800,20 +796,18 @@ object PertesFListF: TPertesFListF
     HorzScrollBar.ExtraPanel.NavigatorButtons = [nbFirstEh, nbPriorEh, nbNextEh, nbLastEh, nbRefreshEh]
     HorzScrollBar.ExtraPanel.Visible = True
     HorzScrollBar.Height = 15
-    IndicatorOptions = []
+    IndicatorOptions = [gioShowRowIndicatorEh]
     IndicatorParams.Color = clBtnFace
-    IndicatorParams.HorzLineColor = 15970832
-    IndicatorParams.VertLineColor = 15970832
     IndicatorTitle.ShowDropDownSign = True
     IndicatorTitle.TitleButton = True
     OddRowColor = 16315635
-    Options = [dgTitles, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
+    Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
     OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghDialogFind, dghColumnResize, dghColumnMove, dghHotTrack, dghExtendVertLines]
     ParentCtl3D = False
     ParentFont = False
     ParentShowHint = False
     RowDetailPanel.Color = clBtnFace
-    RowHeight = 25
+    RowHeight = 22
     SearchPanel.FilterOnTyping = True
     ShowHint = True
     SumList.Active = True
@@ -860,7 +854,7 @@ object PertesFListF: TPertesFListF
         Title.Font.Style = []
         Title.Font.Quality = fqProof
         Title.ToolTips = True
-        Width = 120
+        Width = 100
         WordWrap = False
       end
       item
@@ -1254,7 +1248,6 @@ object PertesFListF: TPertesFListF
     ParentBiDiMode = False
     SizeGrip = False
     SkinData.SkinSection = 'MENUITEM'
-    ExplicitWidth = 1077
     DesignSize = (
       1022
       20)

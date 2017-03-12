@@ -317,6 +317,7 @@ object BonFacPF: TBonFacPF
   OldCreateOrder = False
   Visible = True
   OnClose = FormClose
+  OnCreate = FormCreate
   OnPaint = FormPaint
   OnShow = FormShow
   DesignSize = (
@@ -341,7 +342,6 @@ object BonFacPF: TBonFacPF
     DataGrouping.Active = True
     DataSource = MainForm.BonFacPListDataS
     DynProps = <>
-    EditActions = [geaSelectAllEh]
     EvenRowColor = clWindow
     FixedColor = clWindow
     Font.Charset = DEFAULT_CHARSET
@@ -361,20 +361,18 @@ object BonFacPF: TBonFacPF
     HorzScrollBar.ExtraPanel.NavigatorButtons = [nbFirstEh, nbPriorEh, nbNextEh, nbLastEh, nbRefreshEh]
     HorzScrollBar.ExtraPanel.Visible = True
     HorzScrollBar.Height = 15
-    IndicatorOptions = []
+    IndicatorOptions = [gioShowRowIndicatorEh]
     IndicatorParams.Color = clBtnFace
-    IndicatorParams.HorzLineColor = 15970832
-    IndicatorParams.VertLineColor = 15970832
     IndicatorTitle.ShowDropDownSign = True
     IndicatorTitle.TitleButton = True
     OddRowColor = 16315635
-    Options = [dgTitles, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
+    Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
     OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghDialogFind, dghColumnResize, dghColumnMove, dghHotTrack, dghExtendVertLines]
     ParentCtl3D = False
     ParentFont = False
     ParentShowHint = False
     RowDetailPanel.Color = clBtnFace
-    RowHeight = 25
+    RowHeight = 22
     SearchPanel.FilterOnTyping = True
     ShowHint = True
     SumList.Active = True
@@ -458,7 +456,7 @@ object BonFacPF: TBonFacPF
         Title.Font.Style = []
         Title.Font.Quality = fqProof
         Title.ToolTips = True
-        Width = 130
+        Width = 100
         WordWrap = False
       end
       item
@@ -554,43 +552,6 @@ object BonFacPF: TBonFacPF
         Title.Font.Quality = fqProof
         Title.ToolTips = True
         Width = 300
-        WordWrap = False
-      end
-      item
-        Checkboxes = False
-        DynProps = <>
-        EditButtons = <>
-        FieldName = 'code_mdpai'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = 4207405
-        Font.Height = 16
-        Font.Name = 'Helvetica LT Std'
-        Font.Style = []
-        Footer.Color = 15722984
-        Footer.Font.Charset = DEFAULT_CHARSET
-        Footer.Font.Color = 4207405
-        Footer.Font.Height = 18
-        Footer.Font.Name = 'Helvetica LT Std'
-        Footer.Font.Style = [fsBold]
-        Footers = <>
-        ImageList = MainForm.GridIconsMP20
-        KeyList.Strings = (
-          '1'
-          '2'
-          '3'
-          '4')
-        Layout = tlCenter
-        ReadOnly = True
-        Title.Alignment = taCenter
-        Title.Caption = 'MP'
-        Title.Font.Charset = DEFAULT_CHARSET
-        Title.Font.Color = 4207405
-        Title.Font.Height = 18
-        Title.Font.Name = 'Helvetica LT Std'
-        Title.Font.Style = []
-        Title.Font.Quality = fqProof
-        Visible = False
-        Width = 28
         WordWrap = False
       end
       item

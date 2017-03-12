@@ -94,6 +94,7 @@ type
     procedure AdvToolButton2Click(Sender: TObject);
     procedure e1Click(Sender: TObject);
     procedure ExporterverExcel1Click(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     procedure GettingData;
     { Private declarations }
@@ -239,7 +240,7 @@ begin
     +'  AS                          '
     +'  SELECT code_c,nom_c,activite_c,fix_c,mob_c,   '
     +'  mob2_c,fax_c,adr_c,ville_c,willaya_c,email_c,siteweb_c,rc_c,  '
-    +'  nif_c,nart_c,nis_c,nbank_c,rib_c,oldcredit_c                  '
+    +'  nif_c,nart_c,nis_c,nbank_c,rib_c,credit_c                  '
     +'  FROM client                                                   '
     +'  WITH NO DATA;                                                 '
 
@@ -259,7 +260,7 @@ begin
     +'     siteweb_c  = excluded.siteweb_c,   rc_c        = excluded.rc_c,           '
     +'     nif_c      = excluded.nif_c,   		nart_c      = excluded.nart_c,         '
     +'     nis_c      = excluded.nis_c,   		nbank_c     = excluded.nbank_c,        '
-    +'     rib_c      = excluded.rib_c,   		oldcredit_c = excluded.oldcredit_c;   DROP TABLE tmp_table; '
+    +'     rib_c      = excluded.rib_c,   		credit_c    = excluded.credit_c;   DROP TABLE tmp_table; '
 
      );
 
@@ -319,7 +320,7 @@ begin
         MainForm.ClientTable.Active := false;
         MainForm.ClientTable.SQL.Clear;
         MainForm.ClientTable.SQL.Text :=
-        'SELECT * FROM client  WHERE activ_c = true ORDER BY code_c';
+        'SELECT * FROM client  WHERE activ_c = true  ';
         MainForm.ClientTable.Active := true;
 
        ActifClientsLbl.Caption := IntToStr(MainForm.ClientTable.RecordCount - 1); // -1 is to not calculate the Comptoir
@@ -327,7 +328,7 @@ begin
         MainForm.ClientTable.Active := false;
         MainForm.ClientTable.SQL.Clear;
         MainForm.ClientTable.SQL.Text :=
-        'SELECT * FROM client WHERE activ_c = false ORDER BY code_c';
+        'SELECT * FROM client WHERE activ_c = false  ';
         MainForm.ClientTable.Active := true;
 
         PassifClientsLbl.Caption := IntToStr(MainForm.ClientTable.RecordCount);
@@ -335,7 +336,7 @@ begin
         MainForm.ClientTable.Active := false;
         MainForm.ClientTable.SQL.Clear;
         MainForm.ClientTable.SQL.Text :=
-        'SELECT * FROM client ORDER BY code_c ';
+        'SELECT * FROM client   ';
         MainForm.ClientTable.Active := true;
 
         ToutClientsLbl.Caption :=   IntToStr(MainForm.ClientTable.RecordCount - 1);  // -1 is to not calculate the Comptoir
@@ -345,7 +346,7 @@ begin
           MainForm.ClientTable.Active := false;
           MainForm.ClientTable.SQL.Clear;
           MainForm.ClientTable.SQL.Text :=
-          'SELECT * FROM client  WHERE activ_c = true ORDER BY code_c';
+          'SELECT * FROM client  WHERE activ_c = true  ';
           MainForm.ClientTable.Active := true;
          end;
 
@@ -354,7 +355,7 @@ begin
           MainForm.ClientTable.Active := false;
           MainForm.ClientTable.SQL.Clear;
           MainForm.ClientTable.SQL.Text :=
-          'SELECT * FROM client  WHERE activ_c = false ORDER BY code_c';
+          'SELECT * FROM client  WHERE activ_c = false  ';
           MainForm.ClientTable.Active := true;
          end;
 
@@ -363,7 +364,7 @@ begin
           MainForm.ClientTable.Active := false;
           MainForm.ClientTable.SQL.Clear;
           MainForm.ClientTable.SQL.Text :=
-          'SELECT * FROM client ORDER BY code_c';
+          'SELECT * FROM client  ';
           MainForm.ClientTable.Active := true;
          end;
 
@@ -486,7 +487,7 @@ if  ClientListDataS.DataSet = MainForm.ClientTable then
  begin
 
 //------ use this code to red the produit with 0 or null in stock----//
- if (MainForm.ClientTable.FieldByName('CREDIT').AsCurrency )> 0      then
+ if (MainForm.ClientTable.FieldByName('credit_c').AsCurrency )> 0      then
  begin
  ClientsListDBGridEh.Canvas.Font.Color:=$004735F9;//   Brush.Color:=clRed;
  ClientsListDBGridEh.DefaultDrawColumnCell(Rect, DataCol, Column, State);
@@ -494,7 +495,7 @@ if  ClientListDataS.DataSet = MainForm.ClientTable then
 
 
  //------ use this code to red the produit with 0 or null in stock----//
- if (MainForm.ClientTable.FieldByName('CREDIT').AsCurrency ) < 0     then
+ if (MainForm.ClientTable.FieldByName('credit_c').AsCurrency ) < 0     then
  begin
  ClientsListDBGridEh.Canvas.Font.Color:=$00519509;//   Brush.Color:=green;
  ClientsListDBGridEh.DefaultDrawColumnCell(Rect, DataCol, Column, State);
@@ -543,6 +544,10 @@ end;
 
 procedure TClientListF.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
+
+   MainForm.SaveGridLayout(ClientsListDBGridEh,GetCurrentDir +'\bin\gc_clntlst');
+
+
  //--------- do that when i want ODER by the Indexed of the FirDACTable-----/
  MainForm.ClientTable.IndexesActive:=True;
 
@@ -550,6 +555,15 @@ begin
 
  ClientListF:= nil;
 
+end;
+
+procedure TClientListF.FormCreate(Sender: TObject);
+begin
+     if FileExists(GetCurrentDir +'\bin\gc_clntlst') then
+   begin
+
+    MainForm.LoadGridLayout(ClientsListDBGridEh,GetCurrentDir +'\bin\gc_clntlst');
+   end;
 end;
 
 procedure TClientListF.FormShow(Sender: TObject);
@@ -564,7 +578,7 @@ begin
       MainForm.ClientTable.Active := false;
       MainForm.ClientTable.SQL.Clear;
       MainForm.ClientTable.SQL.Text :=
-      'SELECT * FROM client  WHERE activ_c = true ORDER BY code_c';
+      'SELECT * FROM client  WHERE activ_c = true ';
       MainForm.ClientTable.Active := true;
 
      ActifClientsLbl.Caption :=  IntToStr(MainForm.ClientTable.RecordCount - 1);  // -1 is to not calculate the Comptoir
@@ -572,7 +586,7 @@ begin
       MainForm.ClientTable.Active := false;
       MainForm.ClientTable.SQL.Clear;
       MainForm.ClientTable.SQL.Text :=
-      'SELECT * FROM client WHERE activ_c = false ORDER BY code_c';
+      'SELECT * FROM client WHERE activ_c = false ';
       MainForm.ClientTable.Active := true;
 
       PassifClientsLbl.Caption := IntToStr(MainForm.ClientTable.RecordCount);
@@ -580,7 +594,7 @@ begin
       MainForm.ClientTable.Active := false;
       MainForm.ClientTable.SQL.Clear;
       MainForm.ClientTable.SQL.Text :=
-      'SELECT * FROM client ORDER BY code_c ';
+      'SELECT * FROM client   ';
       MainForm.ClientTable.Active := true;
 
       ToutClientsLbl.Caption :=  IntToStr(MainForm.ClientTable.RecordCount - 1); // -1 is to not calculate the Comptoir
@@ -592,7 +606,7 @@ begin
         MainForm.ClientTable.Active := false;
         MainForm.ClientTable.SQL.Clear;
         MainForm.ClientTable.SQL.Text :=
-        'SELECT * FROM client  WHERE activ_c = true ORDER BY code_c';
+        'SELECT * FROM client  WHERE activ_c = true  ';
         MainForm.ClientTable.Active := true;
        end;
 
@@ -601,7 +615,7 @@ begin
         MainForm.ClientTable.Active := false;
         MainForm.ClientTable.SQL.Clear;
         MainForm.ClientTable.SQL.Text :=
-        'SELECT * FROM client  WHERE activ_c = false ORDER BY code_c';
+        'SELECT * FROM client  WHERE activ_c = false  ';
         MainForm.ClientTable.Active := true;
        end;
 
@@ -610,7 +624,7 @@ begin
         MainForm.ClientTable.Active := false;
         MainForm.ClientTable.SQL.Clear;
         MainForm.ClientTable.SQL.Text :=
-        'SELECT * FROM client ORDER BY code_c';
+        'SELECT * FROM client  ';
         MainForm.ClientTable.Active := true;
        end;
 
@@ -690,7 +704,7 @@ begin
   MainForm.ClientTable.Active := false;
   MainForm.ClientTable.SQL.Clear;
   MainForm.ClientTable.SQL.Text :=
-  'SELECT * FROM client WHERE activ_c = true ORDER BY code_c ';
+  'SELECT * FROM client WHERE activ_c = true   ';
   MainForm.ClientTable.Active := true;
 
   MainForm.ClientTable.EnableControls;
@@ -708,7 +722,7 @@ begin
   MainForm.ClientTable.Active := false;
   MainForm.ClientTable.SQL.Clear;
   MainForm.ClientTable.SQL.Text :=
-  'SELECT * FROM client WHERE activ_c = false ORDER BY code_c ';
+  'SELECT * FROM client WHERE activ_c = false   ';
   MainForm.ClientTable.Active := true;
 
   MainForm.ClientTable.EnableControls;
@@ -726,7 +740,7 @@ begin
   MainForm.ClientTable.Active := false;
   MainForm.ClientTable.SQL.Clear;
   MainForm.ClientTable.SQL.Text :=
-  'SELECT * FROM client ORDER BY code_c ';
+  'SELECT * FROM client   ';
   MainForm.ClientTable.Active := true;
 
   MainForm.ClientTable.EnableControls;

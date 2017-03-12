@@ -124,6 +124,7 @@ type
     procedure AdvToolButton1Click(Sender: TObject);
     procedure AdvToolButton2Click(Sender: TObject);
     procedure AdvToolButton3Click(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     procedure GettingData;
     procedure FilteredColor;
@@ -1080,7 +1081,20 @@ end;
 
 procedure TBankListF.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
+
+   MainForm.SaveGridLayout(CaisseListDBGridEh,GetCurrentDir +'\bin\gc_bnklst');
+
+
  FreeAndNil(BankListF);
+end;
+
+procedure TBankListF.FormCreate(Sender: TObject);
+begin
+     if FileExists(GetCurrentDir +'\bin\gc_bnklst') then
+   begin
+
+    MainForm.LoadGridLayout(CaisseListDBGridEh,GetCurrentDir +'\bin\gc_bnklst');
+   end;
 end;
 
 end.

@@ -1682,7 +1682,6 @@ object BonFacAGestionF: TBonFacAGestionF
     DataGrouping.Active = True
     DataSource = BonFacAPListDataS
     DynProps = <>
-    EditActions = [geaSelectAllEh]
     EvenRowColor = clWindow
     FixedColor = clWindow
     Font.Charset = DEFAULT_CHARSET
@@ -1697,20 +1696,19 @@ object BonFacAGestionF: TBonFacAGestionF
     HorzScrollBar.ExtraPanel.Visible = True
     HorzScrollBar.ExtraPanel.VisibleItems = [gsbiNavigator, gsbiSelAggregationInfoEh]
     HorzScrollBar.Height = 15
-    IndicatorOptions = [gioShowRecNoEh]
+    IndicatorOptions = [gioShowRowIndicatorEh, gioShowRecNoEh]
     IndicatorParams.Color = clBtnFace
-    IndicatorParams.HorzLineColor = 15970832
-    IndicatorParams.VertLineColor = 15970832
     IndicatorParams.VertLines = True
-    IndicatorTitle.UseGlobalMenu = False
+    IndicatorTitle.ShowDropDownSign = True
+    IndicatorTitle.TitleButton = True
     OddRowColor = 16315635
-    Options = [dgEditing, dgTitles, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
+    Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
     OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghDialogFind, dghShowRecNo, dghColumnResize, dghColumnMove, dghExtendVertLines]
     ParentCtl3D = False
     ParentFont = False
     ParentShowHint = False
     RowDetailPanel.Color = clBtnFace
-    RowHeight = 25
+    RowHeight = 22
     SearchPanel.FilterOnTyping = True
     ShowHint = True
     TabOrder = 2
@@ -1901,48 +1899,20 @@ object BonFacAGestionF: TBonFacAGestionF
         WordWrap = False
       end
       item
-        Alignment = taCenter
-        DropDownBox.ColumnDefValues.Layout = tlCenter
-        DropDownBox.Options = []
-        DropDownRows = 0
-        DropDownSpecRow.ShowIfNotInKeyList = False
-        DropDownWidth = -1
-        DynProps = <>
-        EditButtons = <>
-        FieldName = 'tvap'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = 4207405
-        Font.Height = 16
-        Font.Name = 'Helvetica LT Std'
-        Font.Style = []
-        Footers = <>
-        Layout = tlCenter
-        ReadOnly = True
-        TextEditing = False
-        Title.Alignment = taCenter
-        Title.Caption = 'TVA OLD'
-        Title.Font.Charset = DEFAULT_CHARSET
-        Title.Font.Color = 4207405
-        Title.Font.Height = 19
-        Title.Font.Name = 'Helvetica LT Std'
-        Title.Font.Style = []
-        Title.Font.Quality = fqProof
-        Visible = False
-        WordWrap = False
-      end
-      item
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
         FieldName = 'PrixATTC'
         Font.Charset = DEFAULT_CHARSET
-        Font.Color = 5345802
+        Font.Color = 4207405
         Font.Height = 16
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
         Font.Quality = fqProof
         Footers = <>
         Layout = tlCenter
+        ReadOnly = True
+        TextEditing = False
         Title.Alignment = taCenter
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = 4207405
@@ -1950,7 +1920,6 @@ object BonFacAGestionF: TBonFacAGestionF
         Title.Font.Name = 'Helvetica LT Std'
         Title.Font.Style = []
         Title.Font.Quality = fqProof
-        Visible = False
         Width = 170
         WordWrap = False
       end
@@ -2886,7 +2855,7 @@ object BonFacAGestionF: TBonFacAGestionF
       'qut_p=qut_p'
       'prixht_p=prixht_p'
       'cond_p=cond_p'
-      'PrixVTTC=PrixVTTC'
+      'PrixATTC=PrixATTC'
       'MontantHT=MontantHT'
       'MontantTVA=MontantTVA'
       'MontantTTC=MontantTTC'

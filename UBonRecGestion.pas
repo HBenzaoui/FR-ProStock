@@ -825,6 +825,8 @@ I : Integer;
 
 procedure TBonRecGestionF.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
+MainForm.SaveGridLayout(ProduitsListDBGridEh,GetCurrentDir +'\bin\gc_br');
+
  if ValiderBARecBonRecGImg.ImageIndex = 1 then
   begin
 
@@ -862,6 +864,8 @@ begin
 
 //  FreeAndNil(BonRecGestionF);
 //  Destroy
+
+
  end;
 
 procedure TBonRecGestionF.FormShow(Sender: TObject);
@@ -2409,6 +2413,13 @@ end;
 
 procedure TBonRecGestionF.FormCreate(Sender: TObject);
 begin
+     if FileExists(GetCurrentDir +'\bin\gc_br') then
+   begin
+
+    MainForm.LoadGridLayout(ProduitsListDBGridEh,GetCurrentDir +'\bin\gc_br');
+   end;
+
+
 MainForm.Bona_recPlistTable.Active:=True;
 if Assigned(ProduitsListF) then
   begin

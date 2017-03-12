@@ -447,7 +447,7 @@ object BonFacPGestionF: TBonFacPGestionF
     end
     object Label4: TLabel
       Left = 9
-      Top = 268
+      Top = 252
       Width = 92
       Height = 18
       Anchors = [akLeft, akBottom]
@@ -736,7 +736,7 @@ object BonFacPGestionF: TBonFacPGestionF
     end
     object ListAddProduitBonFacVGBtn: TAdvToolButton
       Left = 539
-      Top = 261
+      Top = 246
       Width = 71
       Height = 30
       Cursor = crHandPoint
@@ -765,12 +765,11 @@ object BonFacPGestionF: TBonFacPGestionF
       Spacing = -1
       OnClick = ListAddProduitBonFacVGBtnClick
       Version = '1.6.1.2'
-      ExplicitTop = 229
       TMSStyle = 0
     end
     object DeleteProduitBonFacVGBtn: TAdvToolButton
       Left = 724
-      Top = 263
+      Top = 248
       Width = 26
       Height = 26
       Cursor = crHandPoint
@@ -800,12 +799,11 @@ object BonFacPGestionF: TBonFacPGestionF
       Visible = False
       OnClick = DeleteProduitBonFacVGBtnClick
       Version = '1.6.1.2'
-      ExplicitTop = 231
       TMSStyle = 0
     end
     object NewAddProduitBonFacVGBtn: TAdvToolButton
       Left = 617
-      Top = 261
+      Top = 246
       Width = 100
       Height = 30
       Cursor = crHandPoint
@@ -834,7 +832,6 @@ object BonFacPGestionF: TBonFacPGestionF
       Spacing = -1
       OnClick = NewAddProduitBonFacVGBtnClick
       Version = '1.6.1.2'
-      ExplicitTop = 229
       TMSStyle = 0
     end
     object RequiredClientGlbl: TLabel
@@ -859,7 +856,7 @@ object BonFacPGestionF: TBonFacPGestionF
     end
     object EnterAddProduitBonFacVGBtn: TAdvToolButton
       Left = 499
-      Top = 261
+      Top = 246
       Width = 34
       Height = 30
       Cursor = crHandPoint
@@ -887,12 +884,11 @@ object BonFacPGestionF: TBonFacPGestionF
       Spacing = -1
       OnClick = EnterAddProduitBonFacVGBtnClick
       Version = '1.6.1.2'
-      ExplicitTop = 229
       TMSStyle = 0
     end
     object ClearProduitBonFacVGBtn: TAdvToolButton
       Left = 756
-      Top = 263
+      Top = 248
       Width = 26
       Height = 26
       Cursor = crHandPoint
@@ -922,7 +918,6 @@ object BonFacPGestionF: TBonFacPGestionF
       Visible = False
       OnClick = ClearProduitBonFacVGBtnClick
       Version = '1.6.1.2'
-      ExplicitTop = 231
       TMSStyle = 0
     end
     object ValiderBVFacBonFacVGImg: TsImage
@@ -1072,8 +1067,8 @@ object BonFacPGestionF: TBonFacPGestionF
       StyleElements = [seClient, seBorder]
     end
     object BonFacVTotalMargeLbl: TLabel
-      Left = 658
-      Top = 224
+      Left = 665
+      Top = 214
       Width = 160
       Height = 20
       Caption = 'BonFacVTotalMargeLbl'
@@ -1134,6 +1129,28 @@ object BonFacPGestionF: TBonFacPGestionF
       SkinData.SkinSection = 'SPEEDBUTTON'
       Images = MainForm.PanelIcons24
       ImageIndex = 3
+    end
+    object Label25: TLabel
+      Left = 107
+      Top = 275
+      Width = 386
+      Height = 27
+      Alignment = taCenter
+      Anchors = [akLeft, akBottom]
+      AutoSize = False
+      Caption = 'Alerte !! Le prix de vente est inf'#233'rieur au prix d'#39'achat'
+      Color = 5425663
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 4539717
+      Font.Height = -13
+      Font.Name = 'Helvetica LT Std'
+      Font.Style = []
+      ParentColor = False
+      ParentFont = False
+      Transparent = False
+      Layout = tlCenter
+      Visible = False
+      StyleElements = []
     end
     object Panel6: TPanel
       Left = 632
@@ -1359,7 +1376,7 @@ object BonFacPGestionF: TBonFacPGestionF
     end
     object ResherchPARDesProduitsRdioBtn: TRadioButton
       Left = 107
-      Top = 230
+      Top = 219
       Width = 115
       Height = 17
       Anchors = [akLeft, akBottom]
@@ -1377,7 +1394,7 @@ object BonFacPGestionF: TBonFacPGestionF
     end
     object ResherchPARCBProduitsRdioBtn: TRadioButton
       Left = 372
-      Top = 230
+      Top = 219
       Width = 120
       Height = 17
       Anchors = [akLeft, akBottom]
@@ -1407,7 +1424,7 @@ object BonFacPGestionF: TBonFacPGestionF
     end
     object ResherchPARRefProduitsRdioBtn: TRadioButton
       Left = 245
-      Top = 230
+      Top = 219
       Width = 106
       Height = 17
       Anchors = [akLeft, akBottom]
@@ -1629,7 +1646,7 @@ object BonFacPGestionF: TBonFacPGestionF
     end
     object ProduitBonFacVGCbx: TcxComboBox
       Left = 107
-      Top = 261
+      Top = 246
       Anchors = [akLeft, akBottom]
       AutoSize = False
       ParentFont = False
@@ -1665,7 +1682,6 @@ object BonFacPGestionF: TBonFacPGestionF
     DataGrouping.Active = True
     DataSource = BonFacVPListDataS
     DynProps = <>
-    EditActions = [geaSelectAllEh]
     EvenRowColor = clWindow
     FixedColor = clWindow
     Font.Charset = DEFAULT_CHARSET
@@ -1680,20 +1696,19 @@ object BonFacPGestionF: TBonFacPGestionF
     HorzScrollBar.ExtraPanel.Visible = True
     HorzScrollBar.ExtraPanel.VisibleItems = [gsbiNavigator, gsbiSelAggregationInfoEh]
     HorzScrollBar.Height = 15
-    IndicatorOptions = [gioShowRecNoEh]
+    IndicatorOptions = [gioShowRowIndicatorEh, gioShowRecNoEh]
     IndicatorParams.Color = clBtnFace
-    IndicatorParams.HorzLineColor = 15970832
-    IndicatorParams.VertLineColor = 15970832
     IndicatorParams.VertLines = True
-    IndicatorTitle.UseGlobalMenu = False
+    IndicatorTitle.ShowDropDownSign = True
+    IndicatorTitle.TitleButton = True
     OddRowColor = 16315635
-    Options = [dgEditing, dgTitles, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
+    Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
     OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghDialogFind, dghShowRecNo, dghColumnResize, dghColumnMove, dghExtendVertLines]
     ParentCtl3D = False
     ParentFont = False
     ParentShowHint = False
     RowDetailPanel.Color = clBtnFace
-    RowHeight = 25
+    RowHeight = 22
     SearchPanel.FilterOnTyping = True
     ShowHint = True
     TabOrder = 2
@@ -1861,48 +1876,20 @@ object BonFacPGestionF: TBonFacPGestionF
         WordWrap = False
       end
       item
-        Alignment = taCenter
-        DropDownBox.ColumnDefValues.Layout = tlCenter
-        DropDownBox.Options = []
-        DropDownRows = 0
-        DropDownSpecRow.ShowIfNotInKeyList = False
-        DropDownWidth = -1
-        DynProps = <>
-        EditButtons = <>
-        FieldName = 'tvap'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = 4207405
-        Font.Height = 16
-        Font.Name = 'Helvetica LT Std'
-        Font.Style = []
-        Footers = <>
-        Layout = tlCenter
-        ReadOnly = True
-        TextEditing = False
-        Title.Alignment = taCenter
-        Title.Caption = 'TVA OLD'
-        Title.Font.Charset = DEFAULT_CHARSET
-        Title.Font.Color = 4207405
-        Title.Font.Height = 19
-        Title.Font.Name = 'Helvetica LT Std'
-        Title.Font.Style = []
-        Title.Font.Quality = fqProof
-        Visible = False
-        WordWrap = False
-      end
-      item
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
-        FieldName = 'PrixATTC'
+        FieldName = 'PrixVTTC'
         Font.Charset = DEFAULT_CHARSET
-        Font.Color = 5345802
+        Font.Color = 4207405
         Font.Height = 16
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
         Font.Quality = fqProof
         Footers = <>
         Layout = tlCenter
+        ReadOnly = True
+        TextEditing = False
         Title.Alignment = taCenter
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = 4207405
@@ -4215,5 +4202,12 @@ object BonFacPGestionF: TBonFacPGestionF
       Caption = 'Facture proforma avec les cr'#233'dits'
       OnClick = BondeCaisseSimple2Click
     end
+  end
+  object Timer2: TTimer
+    Enabled = False
+    Interval = 500
+    OnTimer = Timer2Timer
+    Left = 794
+    Top = 482
   end
 end

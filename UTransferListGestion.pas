@@ -68,6 +68,7 @@ type
     procedure L1Click(Sender: TObject);
     procedure AdvToolButton2Click(Sender: TObject);
     procedure AdvToolButton1Click(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     procedure GettingData;
     { Private declarations }
@@ -318,7 +319,20 @@ end;
 procedure TTransferListGestionF.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
+
+   MainForm.SaveGridLayout(TransferListDBGridEh,GetCurrentDir +'\bin\gc_trsfrlst');
+
+
 FreeAndNil(TransferListGestionF);
+end;
+
+procedure TTransferListGestionF.FormCreate(Sender: TObject);
+begin
+     if FileExists(GetCurrentDir +'\bin\gc_trsfrlst') then
+   begin
+
+    MainForm.LoadGridLayout(TransferListDBGridEh,GetCurrentDir +'\bin\gc_trsfrlst');
+   end;
 end;
 
 procedure TTransferListGestionF.FormShow(Sender: TObject);

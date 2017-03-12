@@ -397,7 +397,6 @@ type
     Bonv_facTabletimber_bvfac: TCurrencyField;
     Button11: TButton;
     Button12: TButton;
-    Bona_fac_listTablePrixVTTC: TCurrencyField;
     Bona_fac_listTableMontantHT: TCurrencyField;
     Bona_fac_listTableMontantTVA: TCurrencyField;
     Bona_fac_listTableMontantTTC: TCurrencyField;
@@ -808,12 +807,12 @@ type
     Bonv_ctrTableCreditobser_bvctr: TWideStringField;
     Bonv_ctrTableCreditcode_ur: TIntegerField;
     Bonv_ctrTableCreditmarge_bvctr: TCurrencyField;
-    ClientTableCredit: TCurrencyField;
     Bonv_liv_listTablecode_barec: TIntegerField;
     SQLQuery3: TFDQuery;
     Bonv_fac_listTablecode_bafac: TIntegerField;
     Bonv_ctr_listTablecode_barec: TIntegerField;
     Bonp_facTabletimber_bpfac: TCurrencyField;
+    Bona_fac_listTablePrixATTC: TCurrencyField;
     procedure ClientMainFBtnClick(Sender: TObject);
     procedure FourMainFBtnClick(Sender: TObject);
     procedure ProduitMainFBtnClick(Sender: TObject);
@@ -923,7 +922,6 @@ type
     procedure Bonp_fac_listTableAfterRefresh(DataSet: TDataSet);
     procedure T3Click(Sender: TObject);
     procedure A5Click(Sender: TObject);
-    procedure ClientTableCalcFields(DataSet: TDataSet);
   private
    //---- this to value of changege we need it to check if theuser changed something
      CountInsert,CountUpdate,CountDelete   : Int64;
@@ -934,6 +932,7 @@ type
 //    procedure InactiveTables;
     procedure RerfreshTables;
     procedure RefreshCNotification;
+
    public
     function KillTask(ExeFileName: string): Integer;
    
@@ -944,6 +943,9 @@ type
     WM_USER_CLOSETAB;
 
     Procedure StartTimer;
+
+    procedure LoadGridLayout(Mydbgrid: TDBGridEh; fileName: string);
+    procedure SaveGridLayout(Mydbgrid: TDBGridEh; fileName: string);
   end;
 
 var
@@ -1019,6 +1021,81 @@ begin
   FreeAndNil(gGrayForms);
 end;
 
+
+Procedure StringExplode(s: string; Delimiter: string; Var res: TStringList);
+Begin
+	res.Clear;
+	res.Text := StringReplace(s, Delimiter, #13#10, [rfIgnoreCase, rfReplaceAll]);
+End;
+
+procedure TMainForm.SaveGridLayout(Mydbgrid: TDBGridEh; fileName: string);
+var
+  lines: TStringList;
+  i: integer;
+begin
+	try
+		lines := TStringList.Create;
+                with Mydbgrid do
+                begin
+	        	for i := 0 to Mydbgrid.Columns.count-1 do
+                        begin
+	    			lines.Add(  IntToStr(Mydbgrid.Columns[i].Index)
+		            	+ '~ ' + Mydbgrid.Columns[i].DisplayName
+		            	+ '~ ' + Mydbgrid.Columns[i].Title.Caption
+		            	+ '~ ' + IntToStr(Mydbgrid.Columns[i].Width)
+                  + '~ ' + BoolToStr(Mydbgrid.Columns[i].Visible)
+		            );
+		        end;
+	        end;
+
+		lines.SaveToFile(fileName);
+	finally
+	        lines.free;
+	end;
+end;
+
+
+procedure TMainForm.LoadGridLayout(Mydbgrid: TDBGridEh; fileName: string);
+var
+	lines: TStringList;
+	columnInfo: TStringList;
+	lineCtr: integer;
+   	colIdx: integer;
+        cnt: integer;
+begin
+ try
+      	lines := TStringList.Create;
+        columnInfo := TStringList.Create;
+  	lines.LoadFromFile(fileName);
+	for lineCtr := 0 to lines.Count-1 do
+        begin
+		if trim(lines[lineCtr]) <> '' then
+                begin
+			StringExplode(lines[lineCtr], '~ ', columnInfo);
+			cnt:=Mydbgrid.Columns.count;
+			// go through all the columns, looking for the one we are currently working on
+			for colIdx := 0 to cnt-1 do
+                        begin
+				// once found, set its width and title, then its index (order)
+	        		if Mydbgrid.Columns[colIdx].FieldName = columnInfo[1] then
+                                begin
+					Mydbgrid.Columns[colIdx].Width := StrToInt(columnInfo[3]);
+					Mydbgrid.Columns[colIdx].Title.Caption := columnInfo[2];
+          Mydbgrid.Columns[colIdx].Visible := StrToBool(columnInfo[4]);
+
+			               // do the index assignment last!
+					// ignore the index specified in the file. use its line
+					Mydbgrid.Columns[colIdx].Index := lineCtr; //StrToInt(columnInfo[0]); order instead
+				end; // if
+			end;
+		end;
+	end;
+ finally
+	lines.free;
+	if assigned(columnInfo) then
+        	columnInfo.free;
+ end;
+end;
 
 
 function MemoryUsed: cardinal;
@@ -2080,7 +2157,7 @@ end;
 
 procedure TMainForm.Bona_fac_listTableCalcFields(DataSet: TDataSet);
 begin
-  Bona_fac_listTable.FieldValues['PrixVTTC']:=
+  Bona_fac_listTable.FieldValues['PrixATTC']:=
  (((Bona_fac_listTable.FieldValues['prixht_p'] * Bona_fac_listTable.FieldValues['tva_p'])/100) + (Bona_fac_listTable.FieldValues['prixht_p'])) ;
 
    Bona_fac_listTable.FieldValues['MontantHT']:=
@@ -2088,7 +2165,7 @@ begin
 
 
    Bona_fac_listTable.FieldValues['MontantTTC']:=
- ((Bona_fac_listTable.FieldValues['PrixVTTC'] * Bona_fac_listTable.FieldValues['qut_p']) * (Bona_fac_listTable.FieldValues['cond_p']) ) ;
+ ((Bona_fac_listTable.FieldValues['PrixATTC'] * Bona_fac_listTable.FieldValues['qut_p']) * (Bona_fac_listTable.FieldValues['cond_p']) ) ;
 
 
     Bona_fac_listTable.FieldValues['MontantTVA']:=
@@ -2548,8 +2625,6 @@ begin
   SQLQuery.SQL.Clear;    
   SQLQuery.Active:= False;
 
-
-  
   
     if UserTypeLbl.Caption <> '0' then
       begin
@@ -3788,12 +3863,6 @@ end;
 procedure TMainForm.ClientMainFMnmClick(Sender: TObject);
 begin
 ClientMainFBtnClick(Sender);
-end;
-
-procedure TMainForm.ClientTableCalcFields(DataSet: TDataSet);
-begin
-     ClientTable.FieldValues['CREDIT']:=
- (ClientTable.FieldValues['oldcredit_c'] + ClientTable.FieldValues['credit_c']);
 end;
 
 procedure TMainForm.FourMainFMnmClick(Sender: TObject);

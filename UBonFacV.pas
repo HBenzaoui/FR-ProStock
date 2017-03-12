@@ -107,6 +107,7 @@ type
     procedure AdvToolButton2Click(Sender: TObject);
     procedure AdvToolButton3Click(Sender: TObject);
     procedure FormPaint(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     procedure GettingData;
     procedure FilteredColor;
@@ -1274,7 +1275,19 @@ end;
 
 procedure TBonFacVF.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
+
+   MainForm.SaveGridLayout(BVFacListDBGridEh,GetCurrentDir +'\bin\gc_fcvlst');
+
  FreeAndNil(BonFacVF);
+end;
+
+procedure TBonFacVF.FormCreate(Sender: TObject);
+begin
+   if FileExists(GetCurrentDir +'\bin\gc_fcvlst') then
+   begin
+
+    MainForm.LoadGridLayout(BVFacListDBGridEh,GetCurrentDir +'\bin\gc_fcvlst');
+   end;
 end;
 
 procedure TBonFacVF.FormPaint(Sender: TObject);

@@ -99,6 +99,10 @@ type
     procedure AdvToolButton2Click(Sender: TObject);
     procedure AdvToolButton3Click(Sender: TObject);
     procedure FormPaint(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure BVLivListDBGridEhDrawColumnCell(Sender: TObject;
+      const Rect: TRect; DataCol: Integer; Column: TColumnEh;
+      State: TGridDrawState);
   private
     procedure GettingData;
     procedure FilteredColor;
@@ -438,6 +442,23 @@ if BVLivListDBGridEh.ScreenToClient(Mouse.CursorPos).Y>25 then
 begin
   EditBARecBtnClick(Sender) ;
 end;
+end;
+
+procedure TReglementCListF.BVLivListDBGridEhDrawColumnCell(Sender: TObject;
+  const Rect: TRect; DataCol: Integer; Column: TColumnEh;
+  State: TGridDrawState);
+begin
+ if gdSelected in State then
+begin
+   BVLivListDBGridEh.Canvas.Brush.Color:=$00FFE8CD;
+   BVLivListDBGridEh.DefaultDrawColumnCell(Rect, DataCol, Column, State);
+end;
+
+ if  (MainForm.RegclientTable.FieldValues['montver_rc'] <= 0)    then
+ begin
+ BVLivListDBGridEh.Canvas.Font.Color:=$004735F9;
+ BVLivListDBGridEh.DefaultDrawColumnCell(Rect, DataCol, Column, State);
+ end;
 end;
 
 procedure TReglementCListF.BVLivListDBGridEhKeyDown(Sender: TObject;
@@ -869,8 +890,21 @@ end;
 
 procedure TReglementCListF.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
+
+   MainForm.SaveGridLayout(BVLivListDBGridEh,GetCurrentDir +'\bin\gc_regclst');
+
+
 Action:= caFree;
 ReglementCListF:= nil;
+end;
+
+procedure TReglementCListF.FormCreate(Sender: TObject);
+begin
+     if FileExists(GetCurrentDir +'\bin\gc_regclst') then
+   begin
+
+    MainForm.LoadGridLayout(BVLivListDBGridEh,GetCurrentDir +'\bin\gc_regclst');
+   end;
 end;
 
 procedure TReglementCListF.FormPaint(Sender: TObject);

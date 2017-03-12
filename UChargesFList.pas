@@ -97,6 +97,7 @@ type
     procedure SumGirdProduitBtnClick(Sender: TObject);
     procedure AdvToolButton1Click(Sender: TObject);
     procedure AdvToolButton2Click(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     procedure GettingData;
     procedure GettingDataRecu;
@@ -522,7 +523,20 @@ end;
 
 procedure TChargesFListF.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
+
+   MainForm.SaveGridLayout(ChargesListDBGridEh,GetCurrentDir +'\bin\gc_chrglst');
+
+
 FreeAndNil(ChargesFListF);
+end;
+
+procedure TChargesFListF.FormCreate(Sender: TObject);
+begin
+     if FileExists(GetCurrentDir +'\bin\gc_chrglst') then
+   begin
+
+    MainForm.LoadGridLayout(ChargesListDBGridEh,GetCurrentDir +'\bin\gc_chrglst');
+   end;
 end;
 
 procedure TChargesFListF.FormShow(Sender: TObject);
