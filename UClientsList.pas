@@ -94,7 +94,10 @@ type
     procedure AdvToolButton2Click(Sender: TObject);
     procedure e1Click(Sender: TObject);
     procedure ExporterverExcel1Click(Sender: TObject);
+<<<<<<< HEAD
     procedure FormCreate(Sender: TObject);
+=======
+>>>>>>> 5f1587badaf242652e35ad877fddf588f6825e10
   private
     procedure GettingData;
     { Private declarations }
@@ -238,6 +241,7 @@ begin
      '  CREATE UNLOGGED TABLE tmp_table '
    // +'  ON COMMIT DROP              '
     +'  AS                          '
+<<<<<<< HEAD
     +'  SELECT code_c,nom_c,activite_c,fix_c,mob_c,   '
     +'  mob2_c,fax_c,adr_c,ville_c,willaya_c,email_c,siteweb_c,rc_c,  '
     +'  nif_c,nart_c,nis_c,nbank_c,rib_c,credit_c                  '
@@ -262,6 +266,32 @@ begin
     +'     nis_c      = excluded.nis_c,   		nbank_c     = excluded.nbank_c,        '
     +'     rib_c      = excluded.rib_c,   		credit_c    = excluded.credit_c;   DROP TABLE tmp_table; '
 
+=======
+    +'  SELECT code_p,refer_p,nom_p,codebar_p,prixht_p,  '
+    +'  prixvd_p,prixvr_p,prixvg_p,prixva_p,prixva2_p,tva_p, '
+    +'  qut_p,perissable_p,alertdays_p,qutmin_p,qutmax_p,alertqut_p,obser_p '
+    +'  FROM produit  '
+    +'  WITH NO DATA; '
+    +'  ALTER TABLE tmp_table ADD UNIQUE (refer_p); '
+    +'  ALTER TABLE tmp_table ADD UNIQUE (nom_p);   '
+    +'  ALTER TABLE tmp_table ADD UNIQUE (codebar_p); '
+
+    +'  copy tmp_table from '+ '''' + GetCurrentDir +'\importedclinet.csv'' DELIMITERS '';'' CSV HEADER; '
+
+    +'  INSERT INTO produit   '
+    +'  SELECT DISTINCT ON (code_p) *   '
+    +'  FROM tmp_table                  '
+    +'  ON CONFLICT  (code_p) DO UPDATE '
+    +'   SET                            '
+    +'       refer_p      = excluded.refer_p,       nom_p       = excluded.nom_p,    codebar_p       = excluded.codebar_p,  '
+    +'       prixht_p     = excluded.prixht_p,      prixvd_p    = excluded.prixvd_p,     '
+    +'       prixvr_p     = excluded.prixvr_p,      prixvg_p    = excluded.prixvg_p,     '
+    +'       prixva_p     = excluded.prixva_p,      prixva2_p   = excluded.prixva2_p,    '
+    +'       tva_p        = excluded.tva_p,         qut_p       = excluded.qut_p,        '
+    +'       perissable_p = excluded.perissable_p,  alertdays_p = excluded.alertdays_p,  '
+    +'       qutmin_p     = excluded.qutmin_p,      qutmax_p    = excluded.qutmax_p,     '
+    +'       alertqut_p   = excluded.alertqut_p,    obser_p     = excluded.obser_p;  DROP TABLE tmp_table;    '
+>>>>>>> 5f1587badaf242652e35ad877fddf588f6825e10
      );
 
     deletefile(GetCurrentDir+ '\importedclinet.csv');

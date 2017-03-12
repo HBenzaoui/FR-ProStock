@@ -2309,8 +2309,13 @@ object FournisseurListF: TFournisseurListF
   end
   object ProduitListOpnDg: TOpenDialog
     Filter = 
+<<<<<<< HEAD
       'Excel Workbook (*.xlsx)|*.xlsx|Excel  97- 2003 Workbook (*.xls)|' +
       '*.xls|CSV (Comma delimited) (*.csv)|*.csv'
+=======
+      'Excel Workbook (*.xlsx)|*.xlsx|Excel  97- 2003 Workbook (*.xlsx)' +
+      '||CSV (Comma delimited) (*.csv)|*.csv'
+>>>>>>> 5f1587badaf242652e35ad877fddf588f6825e10
     Left = 300
     Top = 618
   end

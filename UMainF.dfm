@@ -40476,7 +40476,9 @@ object MainForm: TMainForm
     Top = 130
   end
   object Opt_cas_bnk_CaisseTable: TFDQuery
+    Filtered = True
     FilterOptions = [foCaseInsensitive]
+    Filter = 'decaiss_ocb <> 0 OR encaiss_ocb <> 0'
     IndexFieldNames = 'code_ocb'
     Connection = GstockdcConnection
     SQL.Strings = (
@@ -40589,7 +40591,9 @@ object MainForm: TMainForm
     end
   end
   object Opt_cas_bnk_BankTable: TFDQuery
+    Filtered = True
     FilterOptions = [foCaseInsensitive]
+    Filter = 'decaiss_ocb <> 0 OR encaiss_ocb <> 0'
     IndexFieldNames = 'code_ocb'
     Connection = GstockdcConnection
     SQL.Strings = (

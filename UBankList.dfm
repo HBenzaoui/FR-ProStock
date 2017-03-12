@@ -1240,6 +1240,7 @@ object BankListF: TBankListF
       1022
       20)
     object PaidOnlyCaisseBtn: TAdvToolButton
+      Tag = 1
       Left = 141
       Top = 0
       Width = 26
@@ -1262,7 +1263,7 @@ object BankListF: TBankListF
       Font.Height = 18
       Font.Name = 'Roboto'
       Font.Style = []
-      ImageIndex = 28
+      ImageIndex = 25
       Images = MainForm.PanelIcons16
       ParentFont = False
       ParentShowHint = False

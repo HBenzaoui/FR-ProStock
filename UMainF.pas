@@ -2604,8 +2604,7 @@ begin
      SQLQuery.Active:= False;
       
   
-    ActiveTables;  
-
+    ActiveTables;
 
 
   end;
