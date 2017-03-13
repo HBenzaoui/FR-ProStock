@@ -330,7 +330,15 @@ object ClientListF: TClientListF
   object ClientsListDBGridEh: TDBGridEh
     Left = 0
     Top = 71
+<<<<<<< HEAD
     Width = 1024
+=======
+<<<<<<< HEAD
+    Width = 1024
+=======
+    Width = 1571
+>>>>>>> 5f1587badaf242652e35ad877fddf588f6825e10
+>>>>>>> origin/develop
     Height = 649
     Anchors = [akLeft, akTop, akRight, akBottom]
     Border.Color = 4207405
@@ -1151,7 +1159,15 @@ object ClientListF: TClientListF
       ParentFont = False
     end
     object sSpeedButton3: TsSpeedButton
+<<<<<<< HEAD
       Left = 809
+=======
+<<<<<<< HEAD
+      Left = 809
+=======
+      Left = 1149
+>>>>>>> 5f1587badaf242652e35ad877fddf588f6825e10
+>>>>>>> origin/develop
       Top = -4
       Width = 30
       Height = 30
@@ -1219,7 +1235,15 @@ object ClientListF: TClientListF
     object LineP: TPanel
       Left = 0
       Top = 69
+<<<<<<< HEAD
       Width = 1465
+=======
+<<<<<<< HEAD
+      Width = 1465
+=======
+      Width = 1805
+>>>>>>> 5f1587badaf242652e35ad877fddf588f6825e10
+>>>>>>> origin/develop
       Height = 2
       Anchors = [akLeft, akTop, akRight]
       BevelOuter = bvNone
@@ -2354,8 +2378,18 @@ object ClientListF: TClientListF
   end
   object ProduitListOpnDg: TOpenDialog
     Filter = 
+<<<<<<< HEAD
       'Excel Workbook (*.xlsx)|*.xlsx|Excel  97- 2003 Workbook (*.xls)|' +
       '*.xls|CSV (Comma delimited) (*.csv)|*.csv'
+=======
+<<<<<<< HEAD
+      'Excel Workbook (*.xlsx)|*.xlsx|Excel  97- 2003 Workbook (*.xls)|' +
+      '*.xls|CSV (Comma delimited) (*.csv)|*.csv'
+=======
+      'Excel Workbook (*.xlsx)|*.xlsx|Excel  97- 2003 Workbook (*.xlsx)' +
+      '||CSV (Comma delimited) (*.csv)|*.csv'
+>>>>>>> 5f1587badaf242652e35ad877fddf588f6825e10
+>>>>>>> origin/develop
     Left = 300
     Top = 618
   end

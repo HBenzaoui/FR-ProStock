@@ -389,7 +389,15 @@ begin
 
      // --- this is to show the paied only -------------
 
+<<<<<<< HEAD
 //     MainForm.Opt_cas_bnk_BankTable.Filtered:= True;
+=======
+<<<<<<< HEAD
+//     MainForm.Opt_cas_bnk_BankTable.Filtered:= True;
+=======
+     MainForm.Opt_cas_bnk_BankTable.Filtered:= True;
+>>>>>>> 5f1587badaf242652e35ad877fddf588f6825e10
+>>>>>>> origin/develop
 
 end;
 

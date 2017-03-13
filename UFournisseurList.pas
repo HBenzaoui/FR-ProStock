@@ -415,6 +415,10 @@ begin
      '  CREATE UNLOGGED TABLE tmp_table '
    // +'  ON COMMIT DROP              '
     +'  AS                          '
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/develop
     +'  SELECT code_f,nom_f,fix_f,mob_f,   '
     +'  mob2_f,fax_f,adr_f,ville_f,willaya_f,email_f,siteweb_f,rc_f,  '
     +'  nif_f,nart_f,nis_f,nbank_f,rib_f,oldcredit_f                  '
@@ -440,6 +444,35 @@ begin
     +'     nis_f      = excluded.nis_f,   		nbank_f     = excluded.nbank_f,        '
     +'     rib_f      = excluded.rib_f,   		oldcredit_f = excluded.oldcredit_f;   DROP TABLE tmp_table; '
 
+<<<<<<< HEAD
+=======
+=======
+    +'  SELECT code_p,refer_p,nom_p,codebar_p,prixht_p,  '
+    +'  prixvd_p,prixvr_p,prixvg_p,prixva_p,prixva2_p,tva_p, '
+    +'  qut_p,perissable_p,alertdays_p,qutmin_p,qutmax_p,alertqut_p,obser_p '
+    +'  FROM produit  '
+    +'  WITH NO DATA; '
+    +'  ALTER TABLE tmp_table ADD UNIQUE (refer_p); '
+    +'  ALTER TABLE tmp_table ADD UNIQUE (nom_p);   '
+    +'  ALTER TABLE tmp_table ADD UNIQUE (codebar_p); '
+
+    +'  copy tmp_table from '+ '''' + GetCurrentDir +'\importedfour.csv'' DELIMITERS '';'' CSV HEADER; '
+
+    +'  INSERT INTO produit   '
+    +'  SELECT DISTINCT ON (code_p) *   '
+    +'  FROM tmp_table                  '
+    +'  ON CONFLICT  (code_p) DO UPDATE '
+    +'   SET                            '
+    +'       refer_p      = excluded.refer_p,       nom_p       = excluded.nom_p,    codebar_p       = excluded.codebar_p,  '
+    +'       prixht_p     = excluded.prixht_p,      prixvd_p    = excluded.prixvd_p,     '
+    +'       prixvr_p     = excluded.prixvr_p,      prixvg_p    = excluded.prixvg_p,     '
+    +'       prixva_p     = excluded.prixva_p,      prixva2_p   = excluded.prixva2_p,    '
+    +'       tva_p        = excluded.tva_p,         qut_p       = excluded.qut_p,        '
+    +'       perissable_p = excluded.perissable_p,  alertdays_p = excluded.alertdays_p,  '
+    +'       qutmin_p     = excluded.qutmin_p,      qutmax_p    = excluded.qutmax_p,     '
+    +'       alertqut_p   = excluded.alertqut_p,    obser_p     = excluded.obser_p;  DROP TABLE tmp_table;    '
+>>>>>>> 5f1587badaf242652e35ad877fddf588f6825e10
+>>>>>>> origin/develop
      );
 
     deletefile(GetCurrentDir+ '\importedfour.csv');
