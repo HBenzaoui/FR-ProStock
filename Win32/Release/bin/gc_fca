@@ -5,7 +5,7 @@
 4~ dateperiss_p~ Date.Exp~ 120~ -1
 5~ prixht_p~ Prix A HT~ 170~ -1
 6~ tva_p~ TVA %~ 84~ -1
-7~ PrixATTC~ PrixATTC~ 170~ -1
+7~ PrixATTC~ PrixATTC~ 170~ 0
 8~ MontantHT~ MontantHT~ 170~ -1
 9~ MontantTVA~ MontantTVA~ 170~ -1
 10~ MontantTTC~ MontantTTC~ 170~ -1

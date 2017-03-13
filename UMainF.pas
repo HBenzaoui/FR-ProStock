@@ -813,7 +813,6 @@ type
     Bonv_ctr_listTablecode_barec: TIntegerField;
     Bonp_facTabletimber_bpfac: TCurrencyField;
     Bona_fac_listTablePrixATTC: TCurrencyField;
-    C1: TMenuItem;
     procedure ClientMainFBtnClick(Sender: TObject);
     procedure FourMainFBtnClick(Sender: TObject);
     procedure ProduitMainFBtnClick(Sender: TObject);

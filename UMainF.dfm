@@ -1627,14 +1627,10 @@ object MainForm: TMainForm
       object N6: TMenuItem
         Caption = '-'
       end
-      object C1: TMenuItem
-        Caption = 'Change Utilisateur'
-        ShortCut = 16469
-      end
       object UsersGMainFMnm: TMenuItem
         Caption = 'Gestion Des Utilisateurs   '
         ImageIndex = 14
-        ShortCut = 49237
+        ShortCut = 16469
         OnClick = UsersGMainFMnmClick
       end
       object N18: TMenuItem

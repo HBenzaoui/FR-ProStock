@@ -3781,16 +3781,8 @@ object BonLivGestionF: TBonLivGestionF
     end
     object Bondelivraison2: TMenuItem
       Caption = 'Bon de livraison (A5)'
-<<<<<<< HEAD
       ImageIndex = 32
       OnClick = Bondelivraison2Click
-=======
-<<<<<<< HEAD
-      ImageIndex = 32
-      OnClick = Bondelivraison2Click
-=======
->>>>>>> 5f1587badaf242652e35ad877fddf588f6825e10
->>>>>>> origin/develop
     end
     object BondeRception1: TMenuItem
       Caption = 'Bon de livraison hors taxe'
@@ -5747,10 +5739,6 @@ object BonLivGestionF: TBonLivGestionF
     Left = 858
     Top = 250
   end
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> origin/develop
   object Timer2: TTimer
     Enabled = False
     Interval = 500
@@ -6782,9 +6770,4 @@ object BonLivGestionF: TBonLivGestionF
       end
     end
   end
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 5f1587badaf242652e35ad877fddf588f6825e10
->>>>>>> origin/develop
 end

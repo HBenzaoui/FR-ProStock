@@ -1135,72 +1135,7 @@ MainForm.Bonv_livTable.EnableControls;
 end;
 
 
-<<<<<<< HEAD
 
-=======
-<<<<<<< HEAD
-
-=======
-procedure TBonLivF.LoadDBGridColumnsWidth(const ADBGrid: TDBGridEh);
-var
-  _MemIniU: TMemIniFile;
-  _SettingsPath: string;
-  i, j: integer;
-  _ParentClass: TWinControl;
-begin
-  _SettingsPath := GetHomePath + PathDelim + SETTINGS_FILE;
-  if (not Assigned(ADBGrid)) or (not Assigned(ADBGrid.DataSource)) or
-    (not Assigned(ADBGrid.DataSource.DataSet)) then
-    Exit;
-
-  _MemIniU := TMemIniFile.Create(_SettingsPath, TEncoding.UTF8);
-  try
-    _ParentClass := ADBGrid.Parent;
-    while not(_ParentClass is TForm) do
-      _ParentClass := _ParentClass.Parent;
-    for i := 0 to Pred(ADBGrid.DataSource.DataSet.Fields.Count) do
-      for j := 0 to Pred(ADBGrid.Columns.Count) do
-      begin
-        if (ADBGrid.DataSource.DataSet.Fields[i].FieldName = ADBGrid.Columns[j]
-          .FieldName) then
-          ADBGrid.Columns[j].Width :=
-            _MemIniU.ReadInteger(_ParentClass.Name + '_' + ADBGrid.Name,
-            ADBGrid.Columns[j].FieldName, 64);
-      end;
-  finally
-    FreeAndNil(_MemIniU);
-  end;
-end;
-
- procedure TBonLivF.SaveDBGridColumnsWidth(const ADBGrid: TDBGridEh);
-var
-  _MemIniU: TMemIniFile;
-  _SettingsPath: string;
-  i: integer;
-  _ParentClass: TWinControl;
-begin
-  _SettingsPath := GetHomePath + PathDelim + SETTINGS_FILE;
-  if (not Assigned(ADBGrid)) or
-    (not ForceDirectories(ExtractFilePath(_SettingsPath))) then
-    Exit;
-
-  _MemIniU := TMemIniFile.Create(_SettingsPath, TEncoding.UTF8);
-  try
-    _ParentClass := ADBGrid.Parent;
-    while not(_ParentClass is TForm) do
-      _ParentClass := _ParentClass.Parent;
-    for i := 0 to Pred(ADBGrid.Columns.Count) do
-      if (ADBGrid.Columns[i].FieldName <> '') then
-        _MemIniU.WriteInteger(_ParentClass.Name + '_' + ADBGrid.Name,
-          ADBGrid.Columns[i].FieldName, ADBGrid.Columns[i].Width);
-
-    _MemIniU.UpdateFile;
-  finally
-    FreeAndNil(_MemIniU);
-  end;
-end;
->>>>>>> 5f1587badaf242652e35ad877fddf588f6825e10
->>>>>>> origin/develop
 
 procedure TBonLivF.FormShow(Sender: TObject);
 begin
@@ -1210,13 +1145,6 @@ begin
 
 
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-//  LoadDBGridColumnsWidth(BVLivListDBGridEh);
->>>>>>> 5f1587badaf242652e35ad877fddf588f6825e10
->>>>>>> origin/develop
 
 end;
 
@@ -1376,10 +1304,6 @@ end;
 
 procedure TBonLivF.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> origin/develop
 
   MainForm.SaveGridLayout(BVLivListDBGridEh,GetCurrentDir +'\bin\gc_bllst');
 
@@ -1395,14 +1319,6 @@ begin
     MainForm.LoadGridLayout(BVLivListDBGridEh,GetCurrentDir +'\bin\gc_bllst');
    end;
 
-<<<<<<< HEAD
-=======
-=======
-//SaveDBGridColumnsWidth(BVLivListDBGridEh);
-
- FreeAndNil(BonLivF);
->>>>>>> 5f1587badaf242652e35ad877fddf588f6825e10
->>>>>>> origin/develop
 end;
 
 procedure TBonLivF.FormPaint(Sender: TObject);

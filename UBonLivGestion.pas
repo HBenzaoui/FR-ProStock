@@ -154,18 +154,9 @@ type
     BondeLivraisonhorstaxe1: TMenuItem;
     BondeCaisseSimple2: TMenuItem;
     ApplicationEvents1: TApplicationEvents;
-<<<<<<< HEAD
     Label25: TLabel;
     Timer2: TTimer;
     BonLivPListfrxRprtA5: TfrxReport;
-=======
-<<<<<<< HEAD
-    Label25: TLabel;
-    Timer2: TTimer;
-    BonLivPListfrxRprtA5: TfrxReport;
-=======
->>>>>>> 5f1587badaf242652e35ad877fddf588f6825e10
->>>>>>> origin/develop
     Bondelivraison2: TMenuItem;
     procedure FormShow(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -228,16 +219,8 @@ type
     procedure BondeCaisseSimple2Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure ApplicationEvents1ShortCut(var Msg: TWMKey; var Handled: Boolean);
-<<<<<<< HEAD
     procedure Timer2Timer(Sender: TObject);
     procedure Bondelivraison2Click(Sender: TObject);
-=======
-<<<<<<< HEAD
-    procedure Timer2Timer(Sender: TObject);
-    procedure Bondelivraison2Click(Sender: TObject);
-=======
->>>>>>> 5f1587badaf242652e35ad877fddf588f6825e10
->>>>>>> origin/develop
   private
     { Private declarations }
     procedure GettingData;
@@ -430,14 +413,7 @@ begin
            MainForm.Bonv_livTable.Last;
           end;
 
-<<<<<<< HEAD
 
-=======
-<<<<<<< HEAD
-
-=======
->>>>>>> 5f1587badaf242652e35ad877fddf588f6825e10
->>>>>>> origin/develop
 end;
 
 procedure TBonLivGestionF .FormCloseQuery(Sender: TObject;
@@ -1732,10 +1708,6 @@ begin
   begin
 
       MainForm.Bonv_liv_listTable.DisableControls;
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> origin/develop
       GettingDataA5;;
 
        OLDCredit:= BonLivPListfrxRprtA5.FindObject('OLDCredit') as TfrxMemoView;
@@ -1752,27 +1724,6 @@ begin
     BonLivPListfrxRprtA5.PrepareReport;
     BonLivPListfrxRprtA5.PrintOptions.ShowDialog := False;
     BonLivPListfrxRprtA5.Print;
-<<<<<<< HEAD
-=======
-=======
-     GettingData;
-
-       OLDCredit:= BonLivPListfrxRprt.FindObject('OLDCredit') as TfrxMemoView;
-      OLDCredit.Visible:= True;
-      NEWCredit:= BonLivPListfrxRprt.FindObject('NEWCredit') as TfrxMemoView;
-      NEWCredit.Visible:= True;
-      OLDCreditLbl:= BonLivPListfrxRprt.FindObject('OLDCreditLbl') as TfrxMemoView;
-      OLDCreditLbl.Visible:= True;
-      NEWCreditLbl:= BonLivPListfrxRprt.FindObject('NEWCreditLbl') as TfrxMemoView;
-      NEWCreditLbl.Visible:= True;
-      LineCredit:= BonLivPListfrxRprt.FindObject('LineCredit') as TfrxShapeView;
-      LineCredit.Visible:= True;
-
-    BonLivPListfrxRprt.PrepareReport;
-    //BonLivPListfrxRprt.PrintOptions.ShowDialog := False;
-    BonLivPListfrxRprt.Print;
->>>>>>> 5f1587badaf242652e35ad877fddf588f6825e10
->>>>>>> origin/develop
 
     //BonLivPListfrxRprt.Print;   // this is to print directly
     MainForm.Bonv_liv_listTable.EnableControls;

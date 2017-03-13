@@ -54,14 +54,7 @@ type
     procedure FormActivate(Sender: TObject);
     procedure ResearchProduitsEdtKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
-<<<<<<< HEAD
     procedure FormCreate(Sender: TObject);
-=======
-<<<<<<< HEAD
-    procedure FormCreate(Sender: TObject);
-=======
->>>>>>> 5f1587badaf242652e35ad877fddf588f6825e10
->>>>>>> origin/develop
   private
     { Private declarations }
   public

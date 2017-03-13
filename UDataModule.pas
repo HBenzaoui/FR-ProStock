@@ -350,14 +350,7 @@ end;
 
 procedure TDataModuleF.PZeroQCnotifCalcFields(DataSet: TDataSet);
 begin
-<<<<<<< HEAD
 
-=======
-<<<<<<< HEAD
-
-=======
->>>>>>> 5f1587badaf242652e35ad877fddf588f6825e10
->>>>>>> origin/develop
     PZeroQCnotif.FieldValues['QutDispo']:=
  (PZeroQCnotif.FieldValues['qut_p'] + PZeroQCnotif.FieldValues['qutini_p']);
 end;

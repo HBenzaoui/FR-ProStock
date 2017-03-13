@@ -1433,15 +1433,7 @@ begin
     MainForm.SQLQuery.DisableControls;
     MainForm.SQLQuery.Active:=False;
     MainForm.SQLQuery.SQL.Clear;
-<<<<<<< HEAD
     MainForm.SQLQuery.SQL.Text:='SELECT code_p,qut_p,qutini_p,prixht_p FROM produit WHERE code_p = ' +IntToStr(MainForm.Bonp_fac_listTable.FieldValues['code_p']);
-=======
-<<<<<<< HEAD
-    MainForm.SQLQuery.SQL.Text:='SELECT code_p,qut_p,qutini_p,prixht_p FROM produit WHERE code_p = ' +IntToStr(MainForm.Bonp_fac_listTable.FieldValues['code_p']);
-=======
-    MainForm.SQLQuery.SQL.Text:='SELECT code_p,qut_p,qutini_p FROM produit WHERE code_p = ' +IntToStr(MainForm.Bonp_fac_listTable.FieldValues['code_p']);
->>>>>>> 5f1587badaf242652e35ad877fddf588f6825e10
->>>>>>> origin/develop
     MainForm.SQLQuery.Active:=True;
 
     BonFacVGOLDStock.Caption:=
@@ -1460,10 +1452,6 @@ begin
         Label20.Visible:=false;
         end;
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> origin/develop
 
           //------------ this will show notification if the price is lower the the achat price------------
       if MainForm.Bonp_fac_listTable.FieldByName('prixvd_p').AsFloat <  MainForm.SQLQuery.FieldByName('prixht_p').AsFloat then
@@ -1482,11 +1470,6 @@ begin
           end;
 
 
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 5f1587badaf242652e35ad877fddf588f6825e10
->>>>>>> origin/develop
     MainForm.SQLQuery.Active:=False;
     MainForm.SQLQuery.SQL.Clear;
 //    MainForm.SQLQuery.SQL.Text:='SELECT * FROM produit ';
