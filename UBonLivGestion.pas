@@ -326,6 +326,7 @@ begin
 
 procedure TBonLivGestionF .FormShow(Sender: TObject);
 var CodeBL: Integer;
+OLDCredit,NEWCredit : Currency;
 begin
 
 
@@ -350,6 +351,7 @@ begin
      ClientBonLivGCbx.Text:= MainForm.Bonv_livTable.FieldValues['clientbvliv'];
      ModePaieBonLivGCbx.Text:= MainForm.Bonv_livTable.FieldValues['ModePaie'];
      CompteBonLivGCbx.Text:= MainForm.Bonv_livTable.FieldValues['Compte'];
+     ClientBonLivGCbxExit(Sender);
      ProduitBonLivGCbx.SetFocus;
    end else
        begin
@@ -362,6 +364,27 @@ begin
  begin
      BonLivGClientOLDCredit.Caption:= FloatToStrF(StrToFloat(StringReplace(BonLivGClientOLDCredit.Caption, #32, '', [rfReplaceAll])),ffNumber,14,2) ;
      BonLivGClientNEWCredit.Caption:= FloatToStrF(StrToFloat(StringReplace(BonLivGClientNEWCredit.Caption, #32, '', [rfReplaceAll])),ffNumber,14,2) ;
+
+   if MainForm.Bonv_livTable.FieldByName('valider_bvliv').AsBoolean = True then
+   begin
+    MainForm.SQLQuery.Active:= False;
+    MainForm.SQLQuery.SQL.Clear;
+    MainForm.SQLQuery.SQL.Text:= 'select code_c, credit_c from client where code_c = ' + IntToStr( MainForm.Bonv_livTable.FieldByName('code_c').AsInteger);
+    MainForm.SQLQuery.Active:= True;
+
+      if NOT (MainForm.SQLQuery.IsEmpty) AND (MainForm.SQLQuery.FieldByName('code_c').AsInteger <> 1) then
+     begin
+      OLDCredit:= (MainForm.SQLQuery.FieldByName('credit_c').AsCurrency) - (MainForm.Bonv_livTable.FieldByName('MontantRes').AsCurrency) ;
+
+      NewCredit:=  MainForm.SQLQuery.FieldByName('credit_c').AsCurrency;
+
+     BonLivGClientOLDCredit.Caption:= FloatToStrF(StrToFloat(StringReplace(CurrToStr( OLDCredit), #32, '', [rfReplaceAll])),ffNumber,14,2) ;
+     BonLivGClientNEWCredit.Caption:= FloatToStrF(StrToFloat(StringReplace(CurrToStr( NewCredit), #32, '', [rfReplaceAll])),ffNumber,14,2) ;
+
+     end;
+        MainForm.SQLQuery.Active:= False;
+    MainForm.SQLQuery.SQL.Clear;
+   end;
   end;
 
 
@@ -2727,6 +2750,8 @@ begin
            MainForm.Bonv_livTable.Refresh;
 
      end;
+
+     ClientBonLivGCbxExit(Sender);
 
 end;
 

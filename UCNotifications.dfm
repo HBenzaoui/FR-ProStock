@@ -408,7 +408,7 @@ object CNotificationsF: TCNotificationsF
         ParentFont = False
         ParentShowHint = False
         RowDetailPanel.Color = clBtnFace
-        RowHeight = 27
+        RowHeight = 22
         SearchPanel.FilterOnTyping = True
         ShowHint = True
         TabOrder = 1
@@ -1016,7 +1016,7 @@ object CNotificationsF: TCNotificationsF
         ParentFont = False
         ParentShowHint = False
         RowDetailPanel.Color = clBtnFace
-        RowHeight = 30
+        RowHeight = 22
         SearchPanel.FilterOnTyping = True
         ShowHint = True
         TabOrder = 1
@@ -2270,7 +2270,7 @@ object CNotificationsF: TCNotificationsF
         ParentFont = False
         ParentShowHint = False
         RowDetailPanel.Color = clBtnFace
-        RowHeight = 27
+        RowHeight = 22
         SearchPanel.FilterOnTyping = True
         ShowHint = True
         TabOrder = 1
@@ -2862,7 +2862,7 @@ object CNotificationsF: TCNotificationsF
         ParentFont = False
         ParentShowHint = False
         RowDetailPanel.Color = clBtnFace
-        RowHeight = 27
+        RowHeight = 22
         SearchPanel.FilterOnTyping = True
         ShowHint = True
         TabOrder = 1

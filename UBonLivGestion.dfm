@@ -6616,7 +6616,7 @@ object BonLivGestionF: TBonLivGestionF
           Font.Style = []
           HAlign = haRight
           Memo.UTF8W = (
-            'Ancien cr'#233'dit :')
+            'Ancien solde :')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -6848,6 +6848,8 @@ object BonLivGestionF: TBonLivGestionF
           Top = 43.263791630000000000
           Width = 86.242002730000000000
           Height = 12.712964550000000000
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -11
@@ -6855,7 +6857,7 @@ object BonLivGestionF: TBonLivGestionF
           Font.Style = []
           HAlign = haRight
           Memo.UTF8W = (
-            '0,00')
+            '[frxBonLivDT."montver_bvliv"]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -6871,7 +6873,7 @@ object BonLivGestionF: TBonLivGestionF
           Font.Style = []
           HAlign = haRight
           Memo.UTF8W = (
-            'Nouveau cr'#233'dit :')
+            'Nouveau solde :')
           ParentFont = False
           VAlign = vaCenter
         end

@@ -2957,6 +2957,12 @@ begin
   DataModuleF.PCloseDiedCnotif.RecordCount + DataModuleF.PDiedCnotif.RecordCount ) ;
 
 
+     if StrToInt(CNotificationLbl.Caption) > 99 then
+  begin
+   CNotificationLbl.Caption:= '99+'
+  end;
+
+
     if CNotificationLbl.Caption <> '0'  then
     begin
 
