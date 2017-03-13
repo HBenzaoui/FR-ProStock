@@ -870,6 +870,7 @@ MainForm.SaveGridLayout(ProduitsListDBGridEh,GetCurrentDir +'\bin\gc_br');
 
 procedure TBonRecGestionF.FormShow(Sender: TObject);
 var CodeCB: Integer;
+OLDCredit,NEWCredit : Currency;
 begin
 // use this tage when i click AddBARecBonRecGBtn bon button
  if Tag = 0 then
@@ -904,6 +905,30 @@ begin
  begin
      BonRecGFourOLDCredit.Caption:= FloatToStrF(StrToFloat(StringReplace(BonRecGFourOLDCredit.Caption, #32, '', [rfReplaceAll])),ffNumber,14,2) ;
      BonRecGFourNEWCredit.Caption:= FloatToStrF(StrToFloat(StringReplace(BonRecGFourNEWCredit.Caption, #32, '', [rfReplaceAll])),ffNumber,14,2) ;
+
+   if MainForm.Bona_recTable.FieldByName('valider_barec').AsBoolean = True then
+   begin
+    MainForm.SQLQuery.Active:= False;
+    MainForm.SQLQuery.SQL.Clear;
+    MainForm.SQLQuery.SQL.Text:= 'select code_f, credit_f from fournisseur where code_f = ' + IntToStr( MainForm.Bona_recTable.FieldByName('code_f').AsInteger);
+    MainForm.SQLQuery.Active:= True;
+
+      if NOT (MainForm.SQLQuery.IsEmpty) then
+     begin
+      OLDCredit:= (MainForm.SQLQuery.FieldByName('credit_f').AsCurrency) - (MainForm.Bona_recTable.FieldByName('MontantRes').AsCurrency) ;
+
+      NewCredit:=  MainForm.SQLQuery.FieldByName('credit_f').AsCurrency;
+
+     BonRecGFourOLDCredit.Caption:= FloatToStrF(StrToFloat(StringReplace(CurrToStr( OLDCredit), #32, '', [rfReplaceAll])),ffNumber,14,2) ;
+     BonRecGFourNEWCredit.Caption:= FloatToStrF(StrToFloat(StringReplace(CurrToStr( NewCredit), #32, '', [rfReplaceAll])),ffNumber,14,2) ;
+
+     end;
+        MainForm.SQLQuery.Active:= False;
+    MainForm.SQLQuery.SQL.Clear;
+   end else
+       begin
+         FournisseurBonRecGCbxExit(Sender);
+       end;
   end;
 
 
@@ -2109,6 +2134,9 @@ begin
            MainForm.SQLQuery.SQL.Clear;
            MainForm.Bona_recTable.Refresh;
      end;
+
+
+     FournisseurBonRecGCbxExit(Sender);
 
 end;
 

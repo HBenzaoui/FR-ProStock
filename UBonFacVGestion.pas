@@ -374,7 +374,10 @@ begin
      end;
         MainForm.SQLQuery.Active:= False;
     MainForm.SQLQuery.SQL.Clear;
-   end;
+   end else
+       begin
+         ClientBonFacVGCbxExit(Sender);
+       end;
 
   end;
 

@@ -384,7 +384,10 @@ begin
      end;
         MainForm.SQLQuery.Active:= False;
     MainForm.SQLQuery.SQL.Clear;
-   end;
+   end else
+       begin
+         ClientBonLivGCbxExit(Sender);
+       end;
   end;
 
 

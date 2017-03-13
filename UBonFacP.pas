@@ -717,15 +717,7 @@ begin
        begin
        CodeC:=MainForm.Bonp_facTable.FieldValues['code_c'];
        BonFacPGestionF.ClientBonFacVGCbx.Text:= MainForm.Bonp_facTable.FieldValues['clientbvfac'];
-         MainForm.SQLQuery.Active:=false;
-         MainForm.SQLQuery.SQL.Clear;
-         MainForm.SQLQuery.SQL.Text:='Select * FROM client WHERE code_c ='+(IntToStr( CodeC ) ) ;
-         MainForm.SQLQuery.Active:=True;
-         BonFacPGestionF.BonFacVGClientOLDCredit.Caption:= CurrToStrF(MainForm.SQLQuery.FieldValues['oldcredit_c'],ffNumber,2);
-         MainForm.SQLQuery.Active:=false;
-         MainForm.SQLQuery.SQL.Clear;
-//         MainForm.SQLQuery.SQL.Text:='Select * FROM client ' ;
-//         MainForm.SQLQuery.Active:=True;
+
         end;
 
 

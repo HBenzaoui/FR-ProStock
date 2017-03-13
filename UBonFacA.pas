@@ -719,15 +719,7 @@ begin
        begin
        CodeF:=MainForm.Bona_facTable.FieldValues['code_f'];
        BonFacAGestionF.FourBonFacAGCbx.Text:= MainForm.Bona_facTable.FieldValues['fourbafac'];
-         MainForm.SQLQuery.Active:=false;
-         MainForm.SQLQuery.SQL.Clear;
-         MainForm.SQLQuery.SQL.Text:='Select * FROM fournisseur WHERE code_f ='+(IntToStr( CodeF ) ) ;
-         MainForm.SQLQuery.Active:=True;
-         BonFacAGestionF.BonFacAGfOUROLDCredit.Caption:= CurrToStrF(MainForm.SQLQuery.FieldValues['oldcredit_f'],ffNumber,2);
-         MainForm.SQLQuery.Active:=false;
-         MainForm.SQLQuery.SQL.Clear;
-//         MainForm.SQLQuery.SQL.Text:='Select * FROM fournisseur ' ;
-//         MainForm.SQLQuery.Active:=True;
+
         end;
 
        if (MainForm.Bona_facTable.FieldValues['code_mdpai']<> null ) AND (MainForm.Bona_facTable.FieldValues['code_mdpai']<> 0) then

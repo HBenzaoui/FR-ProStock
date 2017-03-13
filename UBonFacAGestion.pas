@@ -579,6 +579,7 @@ end;
 
 procedure TBonFacAGestionF.FormShow(Sender: TObject);
 var CodeFA: Integer;
+OLDCredit,NEWCredit : Currency;
 begin
 
 // use this tage when i click AddBVFacBonRecGBtn bon button
@@ -612,6 +613,31 @@ AND (MainForm.Bona_facTable.FieldByName('code_f').AsInteger <> 0)  then
  begin
        BonFacAGFourOLDCredit.Caption:= FloatToStrF(StrToFloat(StringReplace(BonFacAGFourOLDCredit.Caption, #32, '', [rfReplaceAll])),ffNumber,14,2) ;
        BonFacAGFourNEWCredit.Caption:= FloatToStrF(StrToFloat(StringReplace(BonFacAGFourNEWCredit.Caption, #32, '', [rfReplaceAll])),ffNumber,14,2) ;
+
+
+   if MainForm.Bona_facTable.FieldByName('valider_bafac').AsBoolean = True then
+   begin
+    MainForm.SQLQuery.Active:= False;
+    MainForm.SQLQuery.SQL.Clear;
+    MainForm.SQLQuery.SQL.Text:= 'select code_f, credit_f from fournisseur where code_f = ' + IntToStr( MainForm.Bona_facTable.FieldByName('code_f').AsInteger);
+    MainForm.SQLQuery.Active:= True;
+
+      if NOT (MainForm.SQLQuery.IsEmpty) then
+     begin
+      OLDCredit:= (MainForm.SQLQuery.FieldByName('credit_f').AsCurrency) - (MainForm.Bona_facTable.FieldByName('MontantRes').AsCurrency) ;
+
+      NewCredit:=  MainForm.SQLQuery.FieldByName('credit_f').AsCurrency;
+
+     BonFacAGFourOLDCredit.Caption:= FloatToStrF(StrToFloat(StringReplace(CurrToStr( OLDCredit), #32, '', [rfReplaceAll])),ffNumber,14,2) ;
+     BonFacAGFourNEWCredit.Caption:= FloatToStrF(StrToFloat(StringReplace(CurrToStr( NewCredit), #32, '', [rfReplaceAll])),ffNumber,14,2) ;
+
+     end;
+        MainForm.SQLQuery.Active:= False;
+    MainForm.SQLQuery.SQL.Clear;
+   end else
+       begin
+         FourBonFacAGCbxExit(Sender);
+       end;
   end;
 
 
@@ -928,6 +954,7 @@ begin
      end;
 
   //---thise is to visivle timber after edit and calculate it----//
+     FourBonFacAGCbxExit(Sender);
      ModePaieBonFacAGCbxClick(Sender);
 
 end;
