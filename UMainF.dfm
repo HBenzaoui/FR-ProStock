@@ -43255,6 +43255,35 @@ object MainForm: TMainForm
       'SELECT * FROM company')
     Left = 346
     Top = 129
+    object CompanyTablecode_comp: TIntegerField
+      FieldName = 'code_comp'
+      Origin = 'code_comp'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+    end
+    object CompanyTablenom_comp: TWideStringField
+      FieldName = 'nom_comp'
+      Origin = 'nom_comp'
+      Size = 250
+    end
+    object CompanyTablefix_comp: TWideStringField
+      FieldName = 'fix_comp'
+      Origin = 'fix_comp'
+      Size = 250
+    end
+    object CompanyTablemob_comp: TWideStringField
+      FieldName = 'mob_comp'
+      Origin = 'mob_comp'
+      Size = 250
+    end
+    object CompanyTableadr_comp: TWideStringField
+      FieldName = 'adr_comp'
+      Origin = 'adr_comp'
+      Size = 300
+    end
+    object CompanyTablelogo_comp: TBlobField
+      FieldName = 'logo_comp'
+      Origin = 'logo_comp'
+    end
   end
   object CreateTablesFDScript: TFDScript
     SQLScripts = <

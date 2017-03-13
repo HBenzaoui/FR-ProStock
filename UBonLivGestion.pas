@@ -3039,7 +3039,7 @@ begin
 
  procedure TBonLivGestionF.GettingDataA5;
  var
-  MoneyWordRX,NumRX,DateRX,NameRX,AdrRX,VilleRX,WilayaRX,MPRX,NCHeqRX,NEWCredit,OLDCredit : TfrxMemoView;
+  MoneyWordRX,NumRX,DateRX,NameRX,AdrRX,VilleRX,WilayaRX,TelRX,FaxRX,Mob1RX,Mob2RX,MPRX,NCHeqRX,NEWCredit,OLDCredit,Versement : TfrxMemoView;
   str1 : string;
   Name,Tel,Mob,Adr : TfrxMemoView;
   Logo : TfrxPictureView;
@@ -3104,6 +3104,7 @@ begin
       NameRX:= BonLivPListfrxRprtA5.FindObject('NameRX') as TfrxMemoView;
   NameRX.Text:= ClientBonLivGCbx.Text;
 
+
     MainForm.ClientTable.Active:=False;
     MainForm.ClientTable.SQL.Clear;
     MainForm.ClientTable.SQL.Text:='SELECT * FROM client WHERE code_c ='+ IntToStr(MainForm.Bonv_livTable.FieldByName('code_c').AsInteger);
@@ -3119,6 +3120,19 @@ begin
     WilayaRX:= BonLivPListfrxRprtA5.FindObject('WilayaRX') as TfrxMemoView;
   WilayaRX.Text:=  MainForm.ClientTable.FieldByName('willaya_c').AsString;
 
+
+        TelRX:= BonLivPListfrxRprtA5.FindObject('TelRX') as TfrxMemoView;
+  TelRX.Text:= MainForm.ClientTable.FieldByName('fix_c').AsString;
+
+      Mob1RX:= BonLivPListfrxRprtA5.FindObject('Mob1RX') as TfrxMemoView;
+  Mob1RX.Text:= MainForm.ClientTable.FieldByName('mob_c').AsString;
+
+      Mob2RX:= BonLivPListfrxRprtA5.FindObject('Mob2RX') as TfrxMemoView;
+  Mob2RX.Text:= MainForm.ClientTable.FieldByName('mob2_c').AsString;
+
+      FaxRX:= BonLivPListfrxRprtA5.FindObject('FaxRX') as TfrxMemoView;
+  FaxRX.Text:= MainForm.ClientTable.FieldByName('fax_c').AsString;
+
     MainForm.ClientTable.Active:=False;
     MainForm.ClientTable.SQL.Clear;
     MainForm.ClientTable.SQL.Text:='SELECT * FROM client ';
@@ -3133,6 +3147,14 @@ begin
 
         OLDCredit:= BonLivPListfrxRprtA5.FindObject('OLDCredit') as TfrxMemoView;
   OLDCredit.Text:= BonLivGClientOLDCredit.Caption;
+
+
+//          TotalACHAT:= BonLivPListfrxRprtA5.FindObject('TotalACHAT') as TfrxMemoView;
+//  TotalACHAT.Text:= BonLivGClientOLDCredit.Caption;
+
+
+          Versement:= BonLivPListfrxRprtA5.FindObject('Versement') as TfrxMemoView;
+  Versement.Text:= BonLivRegleLbl.Caption;
 
 
       NEWCredit:= BonLivPListfrxRprtA5.FindObject('NEWCredit') as TfrxMemoView;

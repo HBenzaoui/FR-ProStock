@@ -15,6 +15,8 @@ object ReglementCGestionF: TReglementCGestionF
   OldCreateOrder = False
   Position = poScreenCenter
   OnClose = FormClose
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
   OnKeyPress = FormKeyPress
   OnShow = FormShow
   PixelsPerInch = 96
@@ -489,7 +491,7 @@ object ReglementCGestionF: TReglementCGestionF
     Left = 65
     Top = 58
     Width = 124
-    Height = 27
+    Height = 26
     Date = 42565.478213819440000000
     Time = 42565.478213819440000000
     Font.Charset = DEFAULT_CHARSET
@@ -636,7 +638,7 @@ object ReglementCGestionF: TReglementCGestionF
     Left = 188
     Top = 296
     Width = 164
-    Height = 27
+    Height = 28
     Alignment = taRightJustify
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText

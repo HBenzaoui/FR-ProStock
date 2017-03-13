@@ -62,6 +62,8 @@ type
     procedure AddFourRegCGBtnClick(Sender: TObject);
     procedure AddModePaieRegCGBtnClick(Sender: TObject);
     procedure AddCompteRegCGBtnClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
   private
     { Private declarations }
   public
@@ -101,6 +103,24 @@ procedure TReglementCGestionF.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
 NormalForms;
+end;
+
+procedure TReglementCGestionF.FormCreate(Sender: TObject);
+begin
+  Application.UpdateFormatSettings := false;
+  FormatSettings.DecimalSeparator := '.';
+  FormatSettings.ThousandSeparator := ' ';
+  FormatSettings.CurrencyDecimals := 2;
+  FormatSettings.DateSeparator:= '/';
+end;
+
+procedure TReglementCGestionF.FormDestroy(Sender: TObject);
+begin
+  Application.UpdateFormatSettings := false;
+  FormatSettings.DecimalSeparator := ',';
+  FormatSettings.ThousandSeparator := ' ';
+  FormatSettings.CurrencyDecimals := 2;
+  FormatSettings.DateSeparator:= '/';
 end;
 
 procedure TReglementCGestionF.FormKeyPress(Sender: TObject; var Key: Char);
@@ -359,19 +379,21 @@ procedure TReglementCGestionF.VerRegCGEdtKeyPress(Sender: TObject;
   var Key: Char);
 
 const
-  N = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0',',','.', Char(VK_back),Char(VK_RETURN)];
-  F = ['.'];
+  N = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0',',','.', Char(VK_back)];
+   F = [','];
 begin
-
   if not(Key in N) then
   begin
      key := #0;
   end;
-  if (Key in F) then
+
+   if (Key in F) then
   begin
-
-    key :=  #44;
-
+    key :=  #46;
+  end;
+  if (Key = '.') AND (Pos(Key, (VerRegCGEdt.Text)) > 0) Then
+  begin
+      Key := #0;
   end;
 
 end;
