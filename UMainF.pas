@@ -819,6 +819,7 @@ type
     CompanyTablemob_comp: TWideStringField;
     CompanyTableadr_comp: TWideStringField;
     CompanyTablelogo_comp: TBlobField;
+    ChangUserMAinFMnu: TMenuItem;
     procedure ClientMainFBtnClick(Sender: TObject);
     procedure FourMainFBtnClick(Sender: TObject);
     procedure ProduitMainFBtnClick(Sender: TObject);
@@ -928,6 +929,7 @@ type
     procedure Bonp_fac_listTableAfterRefresh(DataSet: TDataSet);
     procedure T3Click(Sender: TObject);
     procedure A5Click(Sender: TObject);
+    procedure ChangUserMAinFMnuClick(Sender: TObject);
   private
    //---- this to value of changege we need it to check if theuser changed something
      CountInsert,CountUpdate,CountDelete   : Int64;
@@ -2634,12 +2636,21 @@ begin
   
     if UserTypeLbl.Caption <> '0' then
       begin
-
        OptionMainFMnm.Visible:= False;
        UsersGMainFMnm.Visible:= False;
 
        BoardMainFBtn.Enabled:= False;
        BoardMainFBtn.ImageIndex:= 12;
+     end else
+         begin
+           OptionMainFMnm.Visible:= True;
+           UsersGMainFMnm.Visible:= True;
+
+          BoardMainFBtn.Enabled:= True;
+          BoardMainFBtn.ImageIndex:= 0;
+         end;
+
+
 
        if NOT (bl_ur.Checked) AND NOT (fcv_ur.Checked)  AND NOT (rgc_ur.Checked) AND NOT (ctr_ur.Checked) Then
        begin
@@ -2658,7 +2669,7 @@ begin
 
        end else
            begin
-
+             VenteMainFMnm.Visible:= True;
              if bl_ur.Checked  then
              begin
               BLMainFBtn.Enabled:= True;
@@ -2719,6 +2730,7 @@ begin
 
           end else
               begin
+                 AchatsMainFMnm.Visible:= True;
                  if br_ur.Checked  then
                  begin
                    BRMainFMmn.Visible:= True;
@@ -2766,8 +2778,11 @@ begin
              end else
                  begin
 
+                   TreMainFMnm.Visible:= True;
+
                    if caisse_ur.Checked  then
                    begin
+
                     CaisseMainFBtn.Enabled:= True;
                     CaisseMainFBtn.ImageIndex:= 7;
                     HomeF.CaisseFaceBtn.Enabled:= True;
@@ -2816,6 +2831,7 @@ begin
 
             end else
                 begin
+                  ListesMainFMnm.Visible := True;
 
                   if client_ur.Checked  then
                    begin
@@ -2907,11 +2923,7 @@ begin
                       LocalMainFMmn.Visible:= False;
                      end;
                 end;
-     end else
-         begin
-           OptionMainFMnm.Visible:= True;
-           UsersGMainFMnm.Visible:= True;
-         end;
+
 
 
   HomeF.Label1.Caption:='Bonjour '+DataModuleF.UsersTable.FieldByName('nom_ur').AsString;
@@ -3010,6 +3022,22 @@ if Not Assigned(CaisseListF) then
                                         begin
                                           CaisseListF.Show
                                         end;
+end;
+
+procedure TMainForm.ChangUserMAinFMnuClick(Sender: TObject);
+begin
+
+  If NOT Assigned(UsersGestionF) then
+  begin
+          LoginUserF := TLoginUserF.Create(Application);
+          LoginUserF.Tag:= 1;
+          LoginUserF.Show
+  end else
+      begin
+        LoginUserF.Tag:= 1;
+        LoginUserF.Show;
+      end;
+
 end;
 
 procedure TMainForm.CaisseMainFBtnClick(Sender: TObject);

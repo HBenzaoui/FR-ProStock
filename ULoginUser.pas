@@ -213,12 +213,17 @@ begin
                
          if LoginF.Label1.Caption = 'R' then
          begin
-          Close; 
-          MainForm.Show;
-                                                                                                   
-//                  LoginUserF.Close;
-         
-         
+
+          if Tag = 1 then
+          begin
+            Close;
+            MainForm.FormShow(Sender);
+          end else
+              begin
+                  Close;
+                  MainForm.Show;
+              end;
+
          end else
              begin
               Close;
