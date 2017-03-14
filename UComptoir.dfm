@@ -331,7 +331,7 @@ object BonCtrGestionF: TBonCtrGestionF
     Left = 2
     Top = 248
     Width = 751
-    Height = 356
+    Height = 367
     Align = alCustom
     Anchors = [akLeft, akTop, akRight, akBottom]
     Border.Color = 4207405
@@ -1040,6 +1040,20 @@ object BonCtrGestionF: TBonCtrGestionF
       Visible = False
       StyleElements = []
     end
+    object Label29: TLabel
+      Left = 596
+      Top = 86
+      Width = 15
+      Height = 12
+      Anchors = [akTop, akRight]
+      Caption = '[F8]'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 10395294
+      Font.Height = -9
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+    end
     object Panel6: TPanel
       Left = 0
       Top = 113
@@ -1265,12 +1279,13 @@ object BonCtrGestionF: TBonCtrGestionF
     Left = 993
     Top = 133
     Width = 1
-    Height = 471
+    Height = 486
     Align = alRight
     BevelOuter = bvNone
     Color = 52377
     ParentBackground = False
     TabOrder = 3
+    ExplicitHeight = 471
   end
   object Panel10: TPanel
     Left = 0
@@ -1287,18 +1302,19 @@ object BonCtrGestionF: TBonCtrGestionF
     Left = 0
     Top = 133
     Width = 2
-    Height = 471
+    Height = 486
     Align = alLeft
     BevelOuter = bvNone
     Color = 52377
     ParentBackground = False
     TabOrder = 2
+    ExplicitHeight = 471
   end
   object Panel12: TPanel
     Left = 0
-    Top = 604
+    Top = 619
     Width = 994
-    Height = 96
+    Height = 81
     Align = alBottom
     BevelOuter = bvNone
     Color = 15722984
@@ -1308,7 +1324,7 @@ object BonCtrGestionF: TBonCtrGestionF
       Left = 2
       Top = 2
       Width = 177
-      Height = 94
+      Height = 79
       Align = alLeft
       BevelEdges = []
       BevelKind = bkFlat
@@ -1322,9 +1338,10 @@ object BonCtrGestionF: TBonCtrGestionF
       ParentDoubleBuffered = False
       TabOrder = 0
       StyleElements = []
+      ExplicitHeight = 94
       object sSpeedButton4: TsSpeedButton
         Left = 132
-        Top = 27
+        Top = 17
         Width = 40
         Height = 40
         Hint = 'Modifer'
@@ -1337,7 +1354,7 @@ object BonCtrGestionF: TBonCtrGestionF
       end
       object sSpeedButton5: TsSpeedButton
         Left = 89
-        Top = 27
+        Top = 17
         Width = 40
         Height = 40
         Hint = 'Detaill'
@@ -1351,7 +1368,7 @@ object BonCtrGestionF: TBonCtrGestionF
       end
       object sSpeedButton6: TsSpeedButton
         Left = 46
-        Top = 27
+        Top = 17
         Width = 40
         Height = 40
         Hint = 'Modifer'
@@ -1364,7 +1381,7 @@ object BonCtrGestionF: TBonCtrGestionF
       end
       object sSpeedButton7: TsSpeedButton
         Left = 3
-        Top = 27
+        Top = 17
         Width = 40
         Height = 40
         Hint = 'Detaill'
@@ -1380,7 +1397,7 @@ object BonCtrGestionF: TBonCtrGestionF
         Left = 176
         Top = 0
         Width = 1
-        Height = 94
+        Height = 79
         ParentCustomHint = False
         Align = alRight
         BevelEdges = []
@@ -1403,6 +1420,7 @@ object BonCtrGestionF: TBonCtrGestionF
         ShowHint = False
         TabOrder = 0
         StyleElements = []
+        ExplicitHeight = 94
       end
     end
     object Panel11: TPanel
@@ -1420,7 +1438,7 @@ object BonCtrGestionF: TBonCtrGestionF
       Left = 750
       Top = 2
       Width = 1
-      Height = 94
+      Height = 79
       ParentCustomHint = False
       Align = alRight
       BevelEdges = []
@@ -1443,23 +1461,25 @@ object BonCtrGestionF: TBonCtrGestionF
       ShowHint = False
       TabOrder = 2
       StyleElements = []
+      ExplicitHeight = 94
     end
     object Panel18: TPanel
       Left = 751
       Top = 2
       Width = 243
-      Height = 94
+      Height = 79
       Align = alRight
       BevelOuter = bvNone
       Color = 15527148
       ParentBackground = False
       TabOrder = 3
+      ExplicitHeight = 94
       DesignSize = (
         243
-        94)
+        79)
       object ValiderBVCtrBonCtrGLbl: TLabel
         Left = 0
-        Top = 75
+        Top = 60
         Width = 243
         Height = 19
         Align = alBottom
@@ -1478,13 +1498,14 @@ object BonCtrGestionF: TBonCtrGestionF
         Layout = tlCenter
         StyleElements = []
         ExplicitLeft = 8
+        ExplicitTop = 75
         ExplicitWidth = 273
       end
       object ValiderBVCtrBonCtrGImg: TsImage
-        Left = 87
-        Top = 3
-        Width = 69
-        Height = 72
+        Left = 90
+        Top = 1
+        Width = 64
+        Height = 58
         Anchors = [akRight, akBottom]
         Center = True
         Picture.Data = {07544269746D617000000000}
@@ -1498,7 +1519,7 @@ object BonCtrGestionF: TBonCtrGestionF
         Left = 0
         Top = 0
         Width = 2
-        Height = 75
+        Height = 60
         ParentCustomHint = False
         Align = alLeft
         BevelEdges = []
@@ -1521,24 +1542,26 @@ object BonCtrGestionF: TBonCtrGestionF
         ShowHint = False
         TabOrder = 0
         StyleElements = []
+        ExplicitHeight = 75
       end
     end
     object Panel22: TPanel
       Left = 615
       Top = 2
       Width = 135
-      Height = 94
+      Height = 79
       Align = alRight
       BevelOuter = bvNone
       Color = 15527148
       ParentBackground = False
       TabOrder = 4
+      ExplicitHeight = 94
       DesignSize = (
         135
-        94)
+        79)
       object sSpeedButton2: TsSpeedButton
         Left = 91
-        Top = 27
+        Top = 17
         Width = 40
         Height = 40
         Anchors = [akTop, akRight]
@@ -1548,11 +1571,10 @@ object BonCtrGestionF: TBonCtrGestionF
         SkinData.SkinSection = 'SPEEDBUTTON'
         Images = MainForm.ComptoiIcons48
         ImageIndex = 6
-        ExplicitLeft = 102
       end
       object sSpeedButton1: TsSpeedButton
         Left = 48
-        Top = 27
+        Top = 17
         Width = 40
         Height = 40
         Anchors = [akTop, akRight]
@@ -1562,11 +1584,10 @@ object BonCtrGestionF: TBonCtrGestionF
         SkinData.SkinSection = 'SPEEDBUTTON'
         Images = MainForm.ComptoiIcons48
         ImageIndex = 5
-        ExplicitLeft = 59
       end
       object PrintTicketBVCtrBonCtrGBtn: TsSpeedButton
         Left = 5
-        Top = 27
+        Top = 17
         Width = 40
         Height = 40
         Anchors = [akTop, akRight]
@@ -1576,30 +1597,43 @@ object BonCtrGestionF: TBonCtrGestionF
         SkinData.SkinSection = 'SPEEDBUTTON'
         Images = MainForm.ComptoiIcons48
         ImageIndex = 15
-        ExplicitLeft = 16
       end
       object RegleVersementSGLbl: TLabel
         Left = 3
-        Top = 6
-        Width = 90
-        Height = 14
+        Top = 2
+        Width = 85
+        Height = 13
         Anchors = [akLeft, akBottom]
         Caption = 'Impression Auto:'
         Color = 4207405
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
-        Font.Height = 14
+        Font.Height = -11
         Font.Name = 'Roboto'
         Font.Style = []
         ParentColor = False
         ParentFont = False
         StyleElements = []
       end
+      object Label30: TLabel
+        Left = 15
+        Top = 60
+        Width = 20
+        Height = 12
+        Anchors = [akTop, akRight]
+        Caption = '[F12]'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 10395294
+        Font.Height = -9
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        ParentFont = False
+      end
       object Panel15: TPanel
         Left = 0
         Top = 0
         Width = 1
-        Height = 94
+        Height = 79
         ParentCustomHint = False
         Align = alLeft
         BevelEdges = []
@@ -1622,12 +1656,13 @@ object BonCtrGestionF: TBonCtrGestionF
         ShowHint = False
         TabOrder = 0
         StyleElements = []
+        ExplicitHeight = 94
       end
       object APrintBVCtrBonCtrGSlider: TsSlider
         Left = 93
-        Top = 5
+        Top = 1
         Width = 38
-        Height = 16
+        Height = 14
         Anchors = [akLeft, akBottom]
         BevelOuter = bvNone
         BiDiMode = bdLeftToRight
@@ -1660,7 +1695,7 @@ object BonCtrGestionF: TBonCtrGestionF
       Left = 0
       Top = 2
       Width = 2
-      Height = 94
+      Height = 79
       ParentCustomHint = False
       Align = alLeft
       BevelEdges = []
@@ -1683,23 +1718,25 @@ object BonCtrGestionF: TBonCtrGestionF
       ShowHint = False
       TabOrder = 5
       StyleElements = []
+      ExplicitHeight = 94
     end
     object Panel17: TPanel
       Left = 179
       Top = 2
       Width = 436
-      Height = 94
+      Height = 79
       Align = alClient
       AutoSize = True
       BevelOuter = bvNone
       Color = 15722984
       ParentBackground = False
       TabOrder = 6
+      ExplicitHeight = 94
       object GridPanel1: TGridPanel
         Left = 0
         Top = 0
         Width = 436
-        Height = 94
+        Height = 79
         Align = alClient
         Color = 15527148
         ColumnCollection = <
@@ -1743,16 +1780,18 @@ object BonCtrGestionF: TBonCtrGestionF
           end>
         ShowCaption = False
         TabOrder = 0
+        ExplicitHeight = 94
         DesignSize = (
           436
-          94)
+          79)
         object AddBVCtrBonCtrGBtn: TAdvToolButton
           AlignWithMargins = True
           Left = 5
           Top = 17
           Width = 103
-          Height = 55
+          Height = 40
           Cursor = crHandPoint
+          Hint = '[F4]'
           Margins.Left = 4
           Margins.Top = 16
           Margins.Right = 1
@@ -1784,6 +1823,7 @@ object BonCtrGestionF: TBonCtrGestionF
           OnClick = AddBVCtrBonCtrGBtnClick
           Version = '1.6.1.2'
           ExplicitWidth = 190
+          ExplicitHeight = 55
           TMSStyle = 0
         end
         object EditBVCtrBonCtrGBtn: TAdvToolButton
@@ -1791,8 +1831,9 @@ object BonCtrGestionF: TBonCtrGestionF
           Left = 113
           Top = 17
           Width = 103
-          Height = 55
+          Height = 40
           Cursor = crHandPoint
+          Hint = '[F5]'
           Margins.Left = 4
           Margins.Top = 16
           Margins.Right = 1
@@ -1824,6 +1865,7 @@ object BonCtrGestionF: TBonCtrGestionF
           OnClick = EditBVCtrBonCtrGBtnClick
           Version = '1.6.1.2'
           ExplicitWidth = 220
+          ExplicitHeight = 55
           TMSStyle = 0
         end
         object ValiderBVCtrBonCtrGBtn: TAdvToolButton
@@ -1831,8 +1873,9 @@ object BonCtrGestionF: TBonCtrGestionF
           Left = 221
           Top = 17
           Width = 103
-          Height = 55
+          Height = 40
           Cursor = crHandPoint
+          Hint = '[F9]'
           Margins.Left = 4
           Margins.Top = 16
           Margins.Right = 1
@@ -1864,6 +1907,7 @@ object BonCtrGestionF: TBonCtrGestionF
           OnClick = ValiderBVCtrBonCtrGBtnClick
           Version = '1.6.1.2'
           ExplicitWidth = 220
+          ExplicitHeight = 55
           TMSStyle = 0
         end
         object ExValiderBVCtrBonCtrGBtn: TAdvToolButton
@@ -1871,8 +1915,9 @@ object BonCtrGestionF: TBonCtrGestionF
           Left = 329
           Top = 17
           Width = 105
-          Height = 55
+          Height = 40
           Cursor = crHandPoint
+          Hint = '[F10]'
           Margins.Left = 4
           Margins.Top = 16
           Margins.Right = 1
@@ -1904,6 +1949,7 @@ object BonCtrGestionF: TBonCtrGestionF
           OnClick = ExValiderBVCtrBonCtrGBtnClick
           Version = '1.6.1.2'
           ExplicitWidth = 193
+          ExplicitHeight = 55
           TMSStyle = 0
         end
       end
@@ -1913,22 +1959,24 @@ object BonCtrGestionF: TBonCtrGestionF
     Left = 750
     Top = 133
     Width = 243
-    Height = 471
+    Height = 486
     Align = alRight
     BevelOuter = bvNone
     Color = 15722984
     ParentBackground = False
     TabOrder = 7
+    ExplicitHeight = 471
     object Panel21: TPanel
       Left = 0
       Top = 332
       Width = 2
-      Height = 139
+      Height = 154
       Align = alLeft
       BevelOuter = bvNone
       Color = 52377
       ParentBackground = False
       TabOrder = 0
+      ExplicitHeight = 139
     end
     object Panel23: TPanel
       Left = 0
@@ -2381,7 +2429,7 @@ object BonCtrGestionF: TBonCtrGestionF
       Left = 2
       Top = 332
       Width = 241
-      Height = 139
+      Height = 154
       Margins.Left = 0
       Margins.Top = 0
       Margins.Right = 0
@@ -3431,5 +3479,10 @@ object BonCtrGestionF: TBonCtrGestionF
     OnTimer = Timer2Timer
     Left = 474
     Top = 482
+  end
+  object ApplicationEvents1: TApplicationEvents
+    OnShortCut = ApplicationEvents1ShortCut
+    Left = 602
+    Top = 434
   end
 end

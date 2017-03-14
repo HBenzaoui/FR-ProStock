@@ -31,7 +31,8 @@ uses
   dxSkinSummer2008, dxSkinTheAsphaltWorld, dxSkinsDefaultPainters,
   dxSkinValentine, dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
   dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
-  dxSkinXmas2008Blue, cxTextEdit, cxMaskEdit, cxDropDownEdit, Vcl.Menus;
+  dxSkinXmas2008Blue, cxTextEdit, cxMaskEdit, cxDropDownEdit, Vcl.Menus,
+  Vcl.AppEvnts;
 
 type
   TBonRecGestionF = class(TForm)
@@ -151,6 +152,12 @@ type
     N1: TMenuItem;
     Bonderception2: TMenuItem;
     Bonderceptionhorstaxe1: TMenuItem;
+    Label26: TLabel;
+    Label27: TLabel;
+    Label28: TLabel;
+    Label30: TLabel;
+    Label29: TLabel;
+    ApplicationEvents1: TApplicationEvents;
     procedure ProduitBonRecGCbxEnter(Sender: TObject);
     procedure ResherchPARDesProduitsRdioBtnClick(Sender: TObject);
     procedure ResherchPARCBProduitsRdioBtnClick(Sender: TObject);
@@ -212,6 +219,7 @@ type
     procedure ModePaieBonRecGCbxChange(Sender: TObject);
     procedure Bonderception2Click(Sender: TObject);
     procedure Bonderceptionhorstaxe1Click(Sender: TObject);
+    procedure ApplicationEvents1ShortCut(var Msg: TWMKey; var Handled: Boolean);
   private
     procedure GettingData;
     procedure GettingDataSansTax;
@@ -1082,6 +1090,73 @@ end;
 procedure TBonRecGestionF.AdvToolButton4Click(Sender: TObject);
 begin
 BonRecF.AddBARecBtnClick(Sender);
+end;
+
+procedure TBonRecGestionF.ApplicationEvents1ShortCut(var Msg: TWMKey;
+  var Handled: Boolean);
+var
+NEWCredit,OLDCredit,NEWCreditLbl,OLDCreditLbl  : TfrxMemoView;
+LineCredit,LineCreditTop :TfrxShapeView;
+begin
+
+
+  if  (GetKeyState(VK_F4) < 0) and (AddBARecBonRecGBtn.Enabled = True ) then
+  begin
+      AddBARecBonRecGBtnClick(Screen);
+
+    Handled := true;
+  end;
+
+
+  if  (GetKeyState(VK_F5) < 0) and (EditBARecBonRecGBtn.Enabled = True ) then
+  begin
+      EditBARecBonRecGBtnClick(Screen);
+
+    Handled := true;
+  end;
+
+
+  if  (GetKeyState(VK_F8) < 0) and (EditBARecBonRecGBtn.Enabled = False ) then
+  begin
+      ListAddProduitBonRecGBtnClick(Screen);
+
+    Handled := true;
+  end;
+
+   if  (GetKeyState(VK_F9) < 0)  then
+  begin
+
+      ValiderBARecBonRecGBtnClick(Screen);
+
+    Handled := true;
+  end;
+
+     if  (GetKeyState(VK_F12) < 0)  then
+  begin
+
+      MainForm.Bona_recPlistTable.DisableControls;
+       GettingData;
+
+         OLDCredit:= BonRecPListfrxRprt.FindObject('OLDCredit') as TfrxMemoView;
+        OLDCredit.Visible:= True;
+        NEWCredit:= BonRecPListfrxRprt.FindObject('NEWCredit') as TfrxMemoView;
+        NEWCredit.Visible:= True;
+        OLDCreditLbl:= BonRecPListfrxRprt.FindObject('OLDCreditLbl') as TfrxMemoView;
+        OLDCreditLbl.Visible:= True;
+        NEWCreditLbl:= BonRecPListfrxRprt.FindObject('NEWCreditLbl') as TfrxMemoView;
+        NEWCreditLbl.Visible:= True;
+        LineCredit:= BonRecPListfrxRprt.FindObject('LineCredit') as TfrxShapeView;
+        LineCredit.Visible:= True;
+
+      BonRecPListfrxRprt.PrepareReport;
+      BonRecPListfrxRprt.PrintOptions.ShowDialog := False;
+      BonRecPListfrxRprt.Print;
+      MainForm.Bona_recPlistTable.EnableControls;
+
+
+    Handled := true;
+  end;
+
 end;
 
 procedure TBonRecGestionF.ListAddProduitBonRecGBtnClick(Sender: TObject);

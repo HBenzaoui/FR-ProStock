@@ -27,7 +27,7 @@ uses
   dxSkinTheAsphaltWorld, dxSkinsDefaultPainters, dxSkinValentine,
   dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
   dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
-  dxSkinXmas2008Blue, cxTextEdit, cxMaskEdit, cxDropDownEdit;
+  dxSkinXmas2008Blue, cxTextEdit, cxMaskEdit, cxDropDownEdit, Vcl.AppEvnts;
 
 type
   TBonCtrGestionF = class(TForm)
@@ -138,6 +138,9 @@ type
     ProduitBonCtrGCbx: TcxComboBox;
     Label3: TLabel;
     Timer2: TTimer;
+    ApplicationEvents1: TApplicationEvents;
+    Label30: TLabel;
+    Label29: TLabel;
     procedure FormShow(Sender: TObject);
     procedure RemiseBonCtrGEdtDblClick(Sender: TObject);
     procedure ShowKeyBoardBonCtrGBtnClick(Sender: TObject);
@@ -194,6 +197,7 @@ type
     procedure ProduitBonCtrGCbxEnter(Sender: TObject);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
     procedure Timer2Timer(Sender: TObject);
+    procedure ApplicationEvents1ShortCut(var Msg: TWMKey; var Handled: Boolean);
   private
     procedure GettingData;
     { Private declarations }
@@ -2441,6 +2445,64 @@ ClientGestionF.OKClientGBtn.Tag := 5 ;
 ClientBonCtrGCbx.StyleElements:= [seFont,seBorder,seBorder];
 RequiredClientGlbl.Visible:= False;
 NameClientGErrorP.Visible:= False;
+end;
+
+procedure TBonCtrGestionF.ApplicationEvents1ShortCut(var Msg: TWMKey;
+  var Handled: Boolean);
+var
+NEWCredit,OLDCredit,NEWCreditLbl,OLDCreditLbl  : TfrxMemoView;
+LineCredit :TfrxShapeView;
+begin
+
+
+  if  (GetKeyState(VK_F4) < 0) and (AddBVCtrBonCtrGBtn.Enabled = True ) then
+  begin
+      AddBVCtrBonCtrGBtnClick(Screen);
+
+    Handled := true;
+  end;
+
+
+  if  (GetKeyState(VK_F5) < 0) and (EditBVCtrBonCtrGBtn.Enabled = True ) then
+  begin
+      EditBVCtrBonCtrGBtnClick(Screen);
+
+    Handled := true;
+  end;
+
+
+  if  (GetKeyState(VK_F8) < 0) and (EditBVCtrBonCtrGBtn.Enabled = False ) then
+  begin
+      ListAddProduitBonCtrGBtnClick(Screen);
+
+    Handled := true;
+  end;
+
+   if  (GetKeyState(VK_F9) < 0)  then
+  begin
+
+      ValiderBVCtrBonCtrGBtnClick(Screen);
+
+    Handled := true;
+  end;
+
+
+     if  (GetKeyState(VK_F10) < 0)  then
+  begin
+
+      ExValiderBVCtrBonCtrGBtnClick(Screen);
+
+    Handled := true;
+  end;
+
+     if  (GetKeyState(VK_F12) < 0)  then
+  begin
+
+    PrintTicketBVCtrBonCtrGBtnClick(Screen) ;
+
+    Handled := true;
+  end;
+
 end;
 
 procedure TBonCtrGestionF.EditBVCtrBonCtrGBtnClick(Sender: TObject);

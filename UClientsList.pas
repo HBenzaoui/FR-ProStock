@@ -18,7 +18,7 @@ uses
   Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.Buttons, sSpeedButton, AdvToolBtn,
   Vcl.WinXCtrls, REST.Backend.EMSServices, REST.Backend.EMSFireDAC, frxClass,
   frxDBSet, frxExportXLS, frxExportPDF, acImage, Vcl.ComCtrls, sStatusBar,
-  Vcl.Menus  ;
+  Vcl.Menus, Vcl.AppEvnts  ;
 
 type
   TClientListF = class(TForm)
@@ -63,6 +63,10 @@ type
     e1: TMenuItem;
     ExporterverExcel1: TMenuItem;
     ProduitListOpnDg: TOpenDialog;
+    Label26: TLabel;
+    Label27: TLabel;
+    Label28: TLabel;
+    ApplicationEvents1: TApplicationEvents;
     procedure AddClientsBtnClick(Sender: TObject);
     procedure EditClientsBtnClick(Sender: TObject);
     procedure ResearchClientsEdtChange(Sender: TObject);
@@ -95,6 +99,9 @@ type
     procedure e1Click(Sender: TObject);
     procedure ExporterverExcel1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure ResearchClientsEdtKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure ApplicationEvents1ShortCut(var Msg: TWMKey; var Handled: Boolean);
   private
     procedure GettingData;
     { Private declarations }
@@ -684,6 +691,59 @@ begin
   MainForm.ClientTable.EnableControls;
 end;
 
+procedure TClientListF.ApplicationEvents1ShortCut(var Msg: TWMKey;
+  var Handled: Boolean);
+begin
+ if (ClientListF.Active = True)  AND  (Assigned(ClientGestionF) = False)  then
+ begin
+  if  (GetKeyState(VK_F4) < 0)  then
+  begin
+      AddClientsBtnClick(Screen);
+    Handled := true;
+  end;
+  if  (GetKeyState(VK_F5) < 0)  then
+  begin
+      EditClientsBtnClick(Screen);
+    Handled := true;
+  end;
+  if  (GetKeyState(VK_F6) < 0)  then
+  begin
+      DeleteClientsBtnClick(Screen);
+    Handled := true;
+  end;
+     if  (GetKeyState(VK_F12) < 0)  then
+  begin
+    AdvToolButton3Click(Screen) ;
+    Handled := true;
+  end;
+ end else
+     begin
+      if  (ClientListF.Active = True)  AND (ClientGestionF.Showing = False)   then
+       begin
+          if  (GetKeyState(VK_F4) < 0)  then
+          begin
+              AddClientsBtnClick(Screen);
+            Handled := true;
+          end;
+          if  (GetKeyState(VK_F5) < 0)  then
+          begin
+              EditClientsBtnClick(Screen);
+            Handled := true;
+          end;
+          if  (GetKeyState(VK_F6) < 0)  then
+          begin
+              DeleteClientsBtnClick(Screen);
+            Handled := true;
+          end;
+             if  (GetKeyState(VK_F12) < 0)  then
+          begin
+            AdvToolButton3Click(Screen) ;
+            Handled := true;
+          end;
+      end;
+     end;
+end;
+
 procedure TClientListF.NextClientbtnClick(Sender: TObject);
 begin
      MainForm.ClientTable.Next;
@@ -773,6 +833,23 @@ begin
           MainForm.ClientTable.SQL.Text:='SELECT * FROM client WHERE LOWER(nom_c) LIKE LOWER' +'('''+'%'+(ResearchClientsEdt.Text)+'%'+''')' ;
           MainForm.ClientTable.Active:=True;
           MainForm.ClientTable.EnableControls;
+end;
+
+procedure TClientListF.ResearchClientsEdtKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+    if key = VK_DOWN then
+  begin
+//   key := #0;
+     MainForm.ClientTable.Next;
+  end;
+
+
+    if key = VK_UP then
+  begin
+//   key := #0;
+     MainForm.ClientTable.Prior;
+  end;
 end;
 
 procedure TClientListF.ResearchClientsEdtKeyPress(Sender: TObject;

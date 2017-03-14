@@ -8,7 +8,7 @@ uses
   EhLibFireDAC, DBGridEhToolCtrls, DynVarsEh, Vcl.Menus, frxClass, frxDBSet,
   frxExportXLS, frxExportPDF, Data.DB, Vcl.ComCtrls, sStatusBar, Vcl.StdCtrls,
   Vcl.WinXCtrls, Vcl.Buttons, sSpeedButton, AdvToolBtn, Vcl.ExtCtrls, EhLibVCL,
-  GridsEh, DBAxisGridsEh, DBGridEh, Vcl.OleAuto,ExcelXP;
+  GridsEh, DBAxisGridsEh, DBGridEh, Vcl.OleAuto,ExcelXP, Vcl.AppEvnts;
 
 type
   TFournisseurListF = class(TForm)
@@ -53,6 +53,10 @@ type
     e1: TMenuItem;
     ExporterverExcel1: TMenuItem;
     ProduitListOpnDg: TOpenDialog;
+    Label26: TLabel;
+    Label27: TLabel;
+    Label28: TLabel;
+    ApplicationEvents1: TApplicationEvents;
     procedure ResearchFournisseurEdtKeyPress(Sender: TObject; var Key: Char);
     procedure ResearchFournisseurEdtChange(Sender: TObject);
     procedure FisrtFournisseursbtnClick(Sender: TObject);
@@ -84,6 +88,10 @@ type
     procedure FormPaint(Sender: TObject);
     procedure e1Click(Sender: TObject);
     procedure ExporterverExcel1Click(Sender: TObject);
+    procedure ResearchFournisseurEdtKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure ApplicationEvents1ShortCut(var Msg: TWMKey; var Handled: Boolean);
+    procedure AdvToolButton3Click(Sender: TObject);
   private
     procedure GettingData;
     { Private declarations }
@@ -175,6 +183,71 @@ frxPDFExport1.FileName := 'Etat liste des Fournisseurs';
 FourListfrxRprt.Export(frxPDFExport1);
 
 MainForm.FournisseurTable.EnableControls;
+end;
+
+procedure TFournisseurListF.AdvToolButton3Click(Sender: TObject);
+begin
+  MainForm.FournisseurTable.DisableControls;
+
+   GettingData;
+
+  FourListfrxRprt.PrepareReport;
+  FourListfrxRprt.ShowReport;
+
+  MainForm.FournisseurTable.EnableControls;
+end;
+
+procedure TFournisseurListF.ApplicationEvents1ShortCut(var Msg: TWMKey;
+  var Handled: Boolean);
+begin
+ if (FournisseurListF.Active = True)  AND  (Assigned(FournisseurGestionF) = False)  then
+ begin
+  if  (GetKeyState(VK_F4) < 0)  then
+  begin
+      AddFournisseursBtnClick(Screen);
+    Handled := true;
+  end;
+  if  (GetKeyState(VK_F5) < 0)  then
+  begin
+      EditFournisseursBtnClick(Screen);
+    Handled := true;
+  end;
+  if  (GetKeyState(VK_F6) < 0)  then
+  begin
+      DeleteFournisseursBtnClick(Screen);
+    Handled := true;
+  end;
+     if  (GetKeyState(VK_F12) < 0)  then
+  begin
+    AdvToolButton3Click(Screen) ;
+    Handled := true;
+  end;
+ end else
+     begin
+      if  (FournisseurListF.Active = True)  AND (FournisseurGestionF.Showing = False)   then
+       begin
+          if  (GetKeyState(VK_F4) < 0)  then
+          begin
+              AddFournisseursBtnClick(Screen);
+            Handled := true;
+          end;
+          if  (GetKeyState(VK_F5) < 0)  then
+          begin
+              EditFournisseursBtnClick(Screen);
+            Handled := true;
+          end;
+          if  (GetKeyState(VK_F6) < 0)  then
+          begin
+              DeleteFournisseursBtnClick(Screen);
+            Handled := true;
+          end;
+             if  (GetKeyState(VK_F12) < 0)  then
+          begin
+            AdvToolButton3Click(Screen) ;
+            Handled := true;
+          end;
+      end;
+     end;
 end;
 
 procedure TFournisseurListF.DeleteFournisseursBtnClick(Sender: TObject);
@@ -701,6 +774,23 @@ begin
           MainForm.FournisseurTable.Active:=True;
           MainForm.FournisseurTable.EnableControls;
 
+end;
+
+procedure TFournisseurListF.ResearchFournisseurEdtKeyDown(Sender: TObject;
+  var Key: Word; Shift: TShiftState);
+begin
+    if key = VK_DOWN then
+  begin
+//   key := #0;
+     MainForm.FournisseurTable.Next;
+  end;
+
+
+    if key = VK_UP then
+  begin
+//   key := #0;
+     MainForm.FournisseurTable.Prior;
+  end;
 end;
 
 procedure TFournisseurListF.ResearchFournisseurEdtKeyPress(Sender: TObject;

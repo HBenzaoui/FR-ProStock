@@ -14,7 +14,7 @@ uses
   acAlphaImageList, Vcl.StdCtrls, Vcl.WinXCtrls, Vcl.Buttons, sSpeedButton,
   AdvToolBtn, Vcl.ExtCtrls, EhLibVCL, GridsEh, DBAxisGridsEh, Data.SqlExpr, Vcl.Imaging.jpeg,
   DBGridEh, frxExportPDF, frxClass, frxExportXLS, frxDBSet, acImage, Vcl.Menus,
-  Vcl.ComCtrls, sStatusBar,ExcelXP;
+  Vcl.ComCtrls, sStatusBar,ExcelXP, Vcl.AppEvnts;
 
 type
   TProduitsListF = class(TForm)
@@ -81,6 +81,10 @@ type
     e1: TMenuItem;
     ExporterverExcel1: TMenuItem;
     ProduitListOpnDg: TOpenDialog;
+    Label26: TLabel;
+    Label27: TLabel;
+    Label28: TLabel;
+    ApplicationEvents1: TApplicationEvents;
     procedure AddProduitsBtnClick(Sender: TObject);
     procedure ProduitsListDBGridEhMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
     procedure ProduitsListDBGridEhDrawColumnCell(Sender: TObject; const Rect: TRect; DataCol: Integer; Column: TColumnEh; State: TGridDrawState);
@@ -125,6 +129,9 @@ type
     procedure e1Click(Sender: TObject);
     procedure ExporterverExcel1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure ResearchProduitsEdtKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure ApplicationEvents1ShortCut(var Msg: TWMKey; var Handled: Boolean);
   private
     procedure GettingData;
     procedure FilteredColor;
@@ -1105,6 +1112,23 @@ begin
    MainForm.SQLQuery.SQL.Clear;
 end;
 
+procedure TProduitsListF.ResearchProduitsEdtKeyDown(Sender: TObject;
+  var Key: Word; Shift: TShiftState);
+begin
+    if key = VK_DOWN then
+  begin
+//   key := #0;
+     MainForm.ProduitTable.Next;
+  end;
+
+
+    if key = VK_UP then
+  begin
+//   key := #0;
+     MainForm.ProduitTable.Prior;
+  end;
+end;
+
 procedure TProduitsListF.ResearchProduitsEdtKeyPress(Sender: TObject; var Key: Char);
 var  CodeCB : Integer;
 const
@@ -1269,6 +1293,70 @@ begin
 
 //FSplashPrinting.Position:= poScreenCenter;
 //FSplashPrinting.ShowModal;
+end;
+
+procedure TProduitsListF.ApplicationEvents1ShortCut(var Msg: TWMKey;
+  var Handled: Boolean);
+begin
+ if (ProduitsListF.Active = True)  AND  (Assigned(ProduitGestionF) = False)  then
+ begin
+  if  (GetKeyState(VK_F4) < 0)  then
+  begin
+      AddProduitsBtnClick(Screen);
+    Handled := true;
+  end;
+  if  (GetKeyState(VK_F5) < 0)  then
+  begin
+      EditProduitsBtnClick(Screen);
+    Handled := true;
+  end;
+  if  (GetKeyState(VK_F6) < 0)  then
+  begin
+      DeleteProduitsBtnClick(Screen);
+    Handled := true;
+  end;
+     if  (GetKeyState(VK_F12) < 0)  then
+  begin
+    AdvToolButton3Click(Screen) ;
+    Handled := true;
+  end;
+  if  (GetKeyState(VK_F11) < 0)  then
+  begin
+    AdvToolButton4Click(Screen) ;
+    Handled := true;
+  end;
+ end else
+     begin
+      if  (ProduitsListF.Active = True)  AND (ProduitGestionF.Showing = False)   then
+       begin
+          if  (GetKeyState(VK_F4) < 0)  then
+          begin
+              AddProduitsBtnClick(Screen);
+            Handled := true;
+          end;
+          if  (GetKeyState(VK_F5) < 0)  then
+          begin
+              EditProduitsBtnClick(Screen);
+            Handled := true;
+          end;
+          if  (GetKeyState(VK_F6) < 0)  then
+          begin
+              DeleteProduitsBtnClick(Screen);
+            Handled := true;
+          end;
+             if  (GetKeyState(VK_F12) < 0)  then
+          begin
+            AdvToolButton3Click(Screen) ;
+            Handled := true;
+          end;
+
+           if  (GetKeyState(VK_F11) < 0)  then
+          begin
+            AdvToolButton4Click(Screen) ;
+            Handled := true;
+          end;
+      end;
+     end;
 end;
 
 procedure TProduitsListF.Button1Click(Sender: TObject);

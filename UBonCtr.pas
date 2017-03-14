@@ -9,7 +9,7 @@ uses
   DBGridEh, Vcl.StdCtrls, Vcl.ComCtrls, Vcl.WinXCtrls, Vcl.Buttons,
   sSpeedButton, AdvToolBtn, Vcl.ExtCtrls,
   System.DateUtils, frxExportPDF, frxClass, frxExportXLS, frxDBSet, acImage,
-  Vcl.Menus, sStatusBar;
+  Vcl.Menus, sStatusBar, Vcl.AppEvnts;
 
 type
   TBonCtrF = class(TForm)
@@ -71,6 +71,10 @@ type
     AdvToolButton2: TAdvToolButton;
     AdvToolButton3: TAdvToolButton;
     Panel6: TPanel;
+    Label26: TLabel;
+    Label27: TLabel;
+    Label28: TLabel;
+    ApplicationEvents1: TApplicationEvents;
     procedure AddBVCtrBtnClick(Sender: TObject);
     procedure EditBVCtrBtnClick(Sender: TObject);
     procedure DeleteBVCtrBtnClick(Sender: TObject);
@@ -109,6 +113,9 @@ type
     procedure AdvToolButton3Click(Sender: TObject);
     procedure FormPaint(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure ResearchBVCtrEdtKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure ApplicationEvents1ShortCut(var Msg: TWMKey; var Handled: Boolean);
   private
     procedure GettingData;
     procedure FilteredColor;
@@ -805,6 +812,23 @@ begin
      end;
 end;
 
+procedure TBonCtrF.ResearchBVCtrEdtKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+    if key = VK_DOWN then
+  begin
+//   key := #0;
+     MainForm.Bonv_ctrTable.Next;
+  end;
+
+
+    if key = VK_UP then
+  begin
+//   key := #0;
+     MainForm.Bonv_ctrTable.Prior;
+  end;
+end;
+
 procedure TBonCtrF.ResearchBVCtrEdtKeyPress(Sender: TObject; var Key: Char);
 var  CodeCB : Integer;
 const
@@ -914,6 +938,59 @@ begin
   BonCtrfrxRprt.ShowReport;
 
   MainForm.Bonv_ctrTable.EnableControls;
+end;
+
+procedure TBonCtrF.ApplicationEvents1ShortCut(var Msg: TWMKey;
+  var Handled: Boolean);
+begin
+ if (BonCtrF.Active = True)  AND  (Assigned(BonCtrGestionF) = False)  then
+ begin
+  if  (GetKeyState(VK_F4) < 0)  then
+  begin
+      AddBVCtrBtnClick(Screen);
+    Handled := true;
+  end;
+  if  (GetKeyState(VK_F5) < 0)  then
+  begin
+      EditBVCtrBtnClick(Screen);
+    Handled := true;
+  end;
+  if  (GetKeyState(VK_F6) < 0)  then
+  begin
+      DeleteBVCtrBtnClick(Screen);
+    Handled := true;
+  end;
+     if  (GetKeyState(VK_F12) < 0)  then
+  begin
+    AdvToolButton3Click(Screen) ;
+    Handled := true;
+  end;
+ end else
+     begin
+      if  (BonCtrF.Active = True)  AND (BonCtrGestionF.Showing = False)   then
+       begin
+          if  (GetKeyState(VK_F4) < 0)  then
+          begin
+              AddBVCtrBtnClick(Screen);
+            Handled := true;
+          end;
+          if  (GetKeyState(VK_F5) < 0)  then
+          begin
+              EditBVCtrBtnClick(Screen);
+            Handled := true;
+          end;
+          if  (GetKeyState(VK_F6) < 0)  then
+          begin
+              DeleteBVCtrBtnClick(Screen);
+            Handled := true;
+          end;
+             if  (GetKeyState(VK_F12) < 0)  then
+          begin
+            AdvToolButton3Click(Screen) ;
+            Handled := true;
+          end;
+      end;
+     end;
 end;
 
 procedure TBonCtrF.ATermeMPFilterBVLivPMenuClick(Sender: TObject);

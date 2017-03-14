@@ -10,7 +10,7 @@ uses
   sSpeedButton, AdvToolBtn, Vcl.ExtCtrls, EhLibVCL, GridsEh, DBAxisGridsEh,
   DBGridEh,EhLibFireDAC,
   System.DateUtils, frxClass, frxDBSet, frxExportPDF, frxExportXLS, Vcl.Menus,
-  acImage, sStatusBar ,IniFiles
+  acImage, sStatusBar ,IniFiles, Vcl.AppEvnts
   ;
 
 
@@ -77,6 +77,10 @@ type
     AdvToolButton1: TAdvToolButton;
     AdvToolButton2: TAdvToolButton;
     AdvToolButton3: TAdvToolButton;
+    ApplicationEvents1: TApplicationEvents;
+    Label26: TLabel;
+    Label27: TLabel;
+    Label28: TLabel;
     procedure ResearchBVLivEdtChange(Sender: TObject);
     procedure FisrtBARecbtnClick(Sender: TObject);
     procedure PreviosBARecbtnClick(Sender: TObject);
@@ -116,6 +120,9 @@ type
     procedure AdvToolButton3Click(Sender: TObject);
     procedure FormPaint(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure ApplicationEvents1ShortCut(var Msg: TWMKey; var Handled: Boolean);
+    procedure ResearchBVLivEdtKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
   private
     procedure GettingData;
     procedure Select_ALL;
@@ -427,6 +434,23 @@ begin
           MainForm.Bonv_livTable.EnableControls;
 
      end;
+end;
+
+procedure TBonLivF.ResearchBVLivEdtKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+    if key = VK_DOWN then
+  begin
+//   key := #0;
+     MainForm.Bonv_livTable.Next;
+  end;
+
+
+    if key = VK_UP then
+  begin
+//   key := #0;
+     MainForm.Bonv_livTable.Prior;
+  end;
 end;
 
 procedure TBonLivF.ResearchBVLivEdtKeyPress(Sender: TObject; var Key: Char);
@@ -1258,6 +1282,60 @@ begin
   BonLivfrxRprt.ShowReport;
 
   MainForm.Bonv_livTable.EnableControls;
+end;
+
+procedure TBonLivF.ApplicationEvents1ShortCut(var Msg: TWMKey;
+  var Handled: Boolean);
+begin
+ if (BonLivF.Active = True)  AND  (Assigned(BonLivGestionF) = False)  then
+ begin
+  if  (GetKeyState(VK_F4) < 0)  then
+  begin
+      AddBVLivBtnClick(Screen);
+    Handled := true;
+  end;
+  if  (GetKeyState(VK_F5) < 0)  then
+  begin
+      EditBVLivBtnClick(Screen);
+    Handled := true;
+  end;
+  if  (GetKeyState(VK_F6) < 0)  then
+  begin
+      DeleteBVLivBtnClick(Screen);
+    Handled := true;
+  end;
+     if  (GetKeyState(VK_F12) < 0)  then
+  begin
+    AdvToolButton3Click(Screen) ;
+    Handled := true;
+  end;
+ end else
+     begin
+      if  (BonLivF.Active = True)  AND (BonLivGestionF.Showing = False)   then
+       begin
+          if  (GetKeyState(VK_F4) < 0)  then
+          begin
+              AddBVLivBtnClick(Screen);
+            Handled := true;
+          end;
+          if  (GetKeyState(VK_F5) < 0)  then
+          begin
+              EditBVLivBtnClick(Screen);
+            Handled := true;
+          end;
+          if  (GetKeyState(VK_F6) < 0)  then
+          begin
+              DeleteBVLivBtnClick(Screen);
+            Handled := true;
+          end;
+             if  (GetKeyState(VK_F12) < 0)  then
+          begin
+            AdvToolButton3Click(Screen) ;
+            Handled := true;
+          end;
+      end;
+     end;
+
 end;
 
 procedure TBonLivF.ATermeMPFilterBVLivPMenuClick(Sender: TObject);

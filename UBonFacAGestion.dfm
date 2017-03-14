@@ -446,7 +446,7 @@ object BonFacAGestionF: TBonFacAGestionF
     end
     object Label3: TLabel
       Left = 9
-      Top = 268
+      Top = 252
       Width = 92
       Height = 18
       Anchors = [akLeft, akBottom]
@@ -732,7 +732,7 @@ object BonFacAGestionF: TBonFacAGestionF
     end
     object ListAddProduitBonFacAGBtn: TAdvToolButton
       Left = 539
-      Top = 261
+      Top = 246
       Width = 71
       Height = 30
       Cursor = crHandPoint
@@ -761,12 +761,11 @@ object BonFacAGestionF: TBonFacAGestionF
       Spacing = -1
       OnClick = ListAddProduitBonFacAGBtnClick
       Version = '1.6.1.2'
-      ExplicitTop = 229
       TMSStyle = 0
     end
     object DeleteProduitBonFacAGBtn: TAdvToolButton
       Left = 724
-      Top = 263
+      Top = 248
       Width = 26
       Height = 26
       Cursor = crHandPoint
@@ -796,12 +795,11 @@ object BonFacAGestionF: TBonFacAGestionF
       Visible = False
       OnClick = DeleteProduitBonFacAGBtnClick
       Version = '1.6.1.2'
-      ExplicitTop = 231
       TMSStyle = 0
     end
     object NewAddProduitBonFacAGBtn: TAdvToolButton
       Left = 617
-      Top = 261
+      Top = 246
       Width = 100
       Height = 30
       Cursor = crHandPoint
@@ -830,7 +828,6 @@ object BonFacAGestionF: TBonFacAGestionF
       Spacing = -1
       OnClick = NewAddProduitBonFacAGBtnClick
       Version = '1.6.1.2'
-      ExplicitTop = 229
       TMSStyle = 0
     end
     object RequiredFourGlbl: TLabel
@@ -855,7 +852,7 @@ object BonFacAGestionF: TBonFacAGestionF
     end
     object EnterAddProduitBonFacAGBtn: TAdvToolButton
       Left = 499
-      Top = 261
+      Top = 246
       Width = 34
       Height = 30
       Cursor = crHandPoint
@@ -883,12 +880,11 @@ object BonFacAGestionF: TBonFacAGestionF
       Spacing = -1
       OnClick = EnterAddProduitBonFacAGBtnClick
       Version = '1.6.1.2'
-      ExplicitTop = 229
       TMSStyle = 0
     end
     object ClearProduitBonFacAGBtn: TAdvToolButton
       Left = 756
-      Top = 263
+      Top = 248
       Width = 26
       Height = 26
       Cursor = crHandPoint
@@ -918,7 +914,6 @@ object BonFacAGestionF: TBonFacAGestionF
       Visible = False
       OnClick = ClearProduitBonFacAGBtnClick
       Version = '1.6.1.2'
-      ExplicitTop = 231
       TMSStyle = 0
     end
     object ValiderBAFacBonFacAGImg: TsImage
@@ -1155,6 +1150,72 @@ object BonFacAGestionF: TBonFacAGestionF
       WordWrap = True
       StyleElements = [seClient, seBorder]
     end
+    object Label26: TLabel
+      Left = 528
+      Top = 47
+      Width = 15
+      Height = 12
+      Caption = '[F4]'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 10395294
+      Font.Height = -9
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label27: TLabel
+      Left = 632
+      Top = 47
+      Width = 15
+      Height = 12
+      Caption = '[F5]'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 10395294
+      Font.Height = -9
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label28: TLabel
+      Left = 736
+      Top = 47
+      Width = 15
+      Height = 12
+      Caption = '[F9]'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 10395294
+      Font.Height = -9
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label30: TLabel
+      Left = 910
+      Top = 47
+      Width = 20
+      Height = 12
+      Anchors = [akTop, akRight]
+      Caption = '[F12]'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 10395294
+      Font.Height = -9
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label29: TLabel
+      Left = 567
+      Top = 275
+      Width = 15
+      Height = 12
+      Caption = '[F8]'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 10395294
+      Font.Height = -9
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+    end
     object CompteGErrorP: TPanel
       Left = 632
       Top = 124
@@ -1379,7 +1440,7 @@ object BonFacAGestionF: TBonFacAGestionF
     end
     object ResherchPARDesProduitsRdioBtn: TRadioButton
       Left = 107
-      Top = 230
+      Top = 219
       Width = 115
       Height = 17
       Anchors = [akLeft, akBottom]
@@ -1397,7 +1458,7 @@ object BonFacAGestionF: TBonFacAGestionF
     end
     object ResherchPARCBProduitsRdioBtn: TRadioButton
       Left = 372
-      Top = 230
+      Top = 219
       Width = 120
       Height = 17
       Anchors = [akLeft, akBottom]
@@ -1427,7 +1488,7 @@ object BonFacAGestionF: TBonFacAGestionF
     end
     object ResherchPARRefProduitsRdioBtn: TRadioButton
       Left = 245
-      Top = 230
+      Top = 219
       Width = 106
       Height = 17
       Anchors = [akLeft, akBottom]
@@ -1646,7 +1707,7 @@ object BonFacAGestionF: TBonFacAGestionF
     end
     object ProduitBonFacAGCbx: TcxComboBox
       Left = 107
-      Top = 261
+      Top = 246
       Anchors = [akLeft, akBottom]
       AutoSize = False
       ParentFont = False
@@ -4389,8 +4450,8 @@ object BonFacAGestionF: TBonFacAGestionF
     end
   end
   object PopupMenu1: TPopupMenu
-    Left = 900
-    Top = 18
+    Left = 848
+    Top = 14
     object B1: TMenuItem
       Caption = 'Facture d'#39'achat'
       ImageIndex = 10
@@ -4401,5 +4462,10 @@ object BonFacAGestionF: TBonFacAGestionF
       ImageIndex = 10
       OnClick = BondeCaisseSimple2Click
     end
+  end
+  object ApplicationEvents1: TApplicationEvents
+    OnShortCut = ApplicationEvents1ShortCut
+    Left = 832
+    Top = 250
   end
 end

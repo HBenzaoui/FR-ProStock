@@ -1167,6 +1167,45 @@ object FournisseurListF: TFournisseurListF
       Images = MainForm.PanelIcons24
       ImageIndex = 1
     end
+    object Label26: TLabel
+      Left = 476
+      Top = 50
+      Width = 15
+      Height = 12
+      Caption = '[F4]'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 10395294
+      Font.Height = -9
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label27: TLabel
+      Left = 581
+      Top = 50
+      Width = 15
+      Height = 12
+      Caption = '[F5]'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 10395294
+      Font.Height = -9
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label28: TLabel
+      Left = 686
+      Top = 50
+      Width = 15
+      Height = 12
+      Caption = '[F6]'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 10395294
+      Font.Height = -9
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+    end
     object LineP: TPanel
       Left = 0
       Top = 69
@@ -1246,6 +1285,7 @@ object FournisseurListF: TFournisseurListF
       ParentFont = False
       TabOrder = 0
       OnChange = ResearchFournisseurEdtChange
+      OnKeyDown = ResearchFournisseurEdtKeyDown
       OnKeyPress = ResearchFournisseurEdtKeyPress
     end
     object ActifFournisseursRdioBtn: TRadioButton
@@ -1454,7 +1494,7 @@ object FournisseurListF: TFournisseurListF
       TMSStyle = 0
     end
     object AdvToolButton1: TAdvToolButton
-      Left = 175
+      Left = 177
       Top = 0
       Width = 26
       Height = 20
@@ -1552,6 +1592,7 @@ object FournisseurListF: TFournisseurListF
       Shaded = False
       ShowHint = True
       Spacing = -2
+      OnClick = AdvToolButton3Click
       Version = '1.6.1.2'
       TMSStyle = 0
     end
@@ -2313,5 +2354,10 @@ object FournisseurListF: TFournisseurListF
       '*.xls|CSV (Comma delimited) (*.csv)|*.csv'
     Left = 300
     Top = 618
+  end
+  object ApplicationEvents1: TApplicationEvents
+    OnShortCut = ApplicationEvents1ShortCut
+    Left = 770
+    Top = 256
   end
 end

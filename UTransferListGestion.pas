@@ -8,7 +8,7 @@ uses
   DBGridEhToolCtrls, DynVarsEh, Vcl.Menus, frxExportPDF, frxClass, frxExportXLS,
   frxDBSet, Data.DB, Vcl.ComCtrls, sStatusBar, EhLibVCL, GridsEh, DBAxisGridsEh,
   DBGridEh, Vcl.StdCtrls, Vcl.WinXCtrls, Vcl.Buttons, sSpeedButton, AdvToolBtn,
-  Vcl.ExtCtrls;
+  Vcl.ExtCtrls, Vcl.AppEvnts;
 
 type
   TTransferListGestionF = class(TForm)
@@ -48,6 +48,10 @@ type
     AdvToolButton2: TAdvToolButton;
     AdvToolButton3: TAdvToolButton;
     Panel6: TPanel;
+    Label26: TLabel;
+    Label27: TLabel;
+    Label28: TLabel;
+    ApplicationEvents1: TApplicationEvents;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);
     procedure DateStartTransferDChange(Sender: TObject);
@@ -69,6 +73,9 @@ type
     procedure AdvToolButton2Click(Sender: TObject);
     procedure AdvToolButton1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure ApplicationEvents1ShortCut(var Msg: TWMKey; var Handled: Boolean);
+    procedure ResearchTransferEdtKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
   private
     procedure GettingData;
     { Private declarations }
@@ -170,6 +177,59 @@ begin
   TransferListfrxRprt.Export(frxPDFExport1);;
 
   DataModuleF.Transfer_comptesTable.EnableControls;
+end;
+
+procedure TTransferListGestionF.ApplicationEvents1ShortCut(var Msg: TWMKey;
+  var Handled: Boolean);
+begin
+ if (TransferListGestionF.Active = True)  AND  (Assigned(TransferComptesGestionF) = False)  then
+ begin
+  if  (GetKeyState(VK_F4) < 0)  then
+  begin
+      AddBARecBtnClick(Screen);
+    Handled := true;
+  end;
+  if  (GetKeyState(VK_F5) < 0)  then
+  begin
+      EditBARecBtnClick(Screen);
+    Handled := true;
+  end;
+  if  (GetKeyState(VK_F6) < 0)  then
+  begin
+      DeleteBARecBtnClick(Screen);
+    Handled := true;
+  end;
+     if  (GetKeyState(VK_F12) < 0)  then
+  begin
+    L1Click(Screen) ;
+    Handled := true;
+  end;
+ end else
+     begin
+      if  (TransferListGestionF.Active = True)  AND (TransferComptesGestionF.Showing = False)   then
+       begin
+          if  (GetKeyState(VK_F4) < 0)  then
+          begin
+              AddBARecBtnClick(Screen);
+            Handled := true;
+          end;
+          if  (GetKeyState(VK_F5) < 0)  then
+          begin
+              EditBARecBtnClick(Screen);
+            Handled := true;
+          end;
+          if  (GetKeyState(VK_F6) < 0)  then
+          begin
+              DeleteBARecBtnClick(Screen);
+            Handled := true;
+          end;
+             if  (GetKeyState(VK_F12) < 0)  then
+          begin
+            L1Click(Screen) ;
+            Handled := true;
+          end;
+      end;
+     end;
 end;
 
 procedure TTransferListGestionF.DateStartTransferDChange(Sender: TObject);
@@ -426,6 +486,23 @@ begin
         DataModuleF.Transfer_comptesTable.EnableControls;
 
      end;
+end;
+
+procedure TTransferListGestionF.ResearchTransferEdtKeyDown(Sender: TObject;
+  var Key: Word; Shift: TShiftState);
+begin
+    if key = VK_DOWN then
+  begin
+//   key := #0;
+     DataModuleF.Transfer_comptesTable.Next;
+  end;
+
+
+    if key = VK_UP then
+  begin
+//   key := #0;
+     DataModuleF.Transfer_comptesTable.Prior;
+  end;
 end;
 
 procedure TTransferListGestionF.SumGirdProduitBtnClick(Sender: TObject);

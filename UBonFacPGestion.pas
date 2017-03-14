@@ -27,7 +27,8 @@ uses
   dxSkinSummer2008, dxSkinTheAsphaltWorld, dxSkinsDefaultPainters,
   dxSkinValentine, dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
   dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
-  dxSkinXmas2008Blue, cxTextEdit, cxMaskEdit, cxDropDownEdit, Vcl.Menus;
+  dxSkinXmas2008Blue, cxTextEdit, cxMaskEdit, cxDropDownEdit, Vcl.Menus,
+  Vcl.AppEvnts;
 
 type
   TBonFacPGestionF = class(TForm)
@@ -146,6 +147,12 @@ type
     BondeCaisseSimple2: TMenuItem;
     Label25: TLabel;
     Timer2: TTimer;
+    Label26: TLabel;
+    Label27: TLabel;
+    Label28: TLabel;
+    Label30: TLabel;
+    Label29: TLabel;
+    ApplicationEvents1: TApplicationEvents;
     procedure FormShow(Sender: TObject);
     procedure sSpeedButton7Click(Sender: TObject);
     procedure sSpeedButton6Click(Sender: TObject);
@@ -202,6 +209,7 @@ type
     procedure B1Click(Sender: TObject);
     procedure BondeCaisseSimple2Click(Sender: TObject);
     procedure Timer2Timer(Sender: TObject);
+    procedure ApplicationEvents1ShortCut(var Msg: TWMKey; var Handled: Boolean);
   private
     procedure GettingData;
     { Private declarations }
@@ -2645,6 +2653,77 @@ begin
     FSplashAddUnite.NameAddUniteSEdt.SetFocus;
     FSplashAddUnite.OKAddUniteSBtn.Tag:= 18 ;
 end;
+
+procedure TBonFacPGestionF.ApplicationEvents1ShortCut(var Msg: TWMKey;
+  var Handled: Boolean);
+var
+NEWCredit,OLDCredit,NEWCreditLbl,OLDCreditLbl  : TfrxMemoView;
+LineCredit,LineCreditTop :TfrxShapeView;
+begin
+
+
+  if  (GetKeyState(VK_F4) < 0) and (AddBVFacBonFacVGBtn.Enabled = True ) then
+  begin
+      AddBVFacBonFacVGBtnClick(Screen);
+
+    Handled := true;
+  end;
+
+
+  if  (GetKeyState(VK_F5) < 0) and (EditBVFacBonFacVGBtn.Enabled = True ) then
+  begin
+      EditBVFacBonFacVGBtnClick(Screen);
+
+    Handled := true;
+  end;
+
+
+  if  (GetKeyState(VK_F8) < 0) and (EditBVFacBonFacVGBtn.Enabled = False ) then
+  begin
+      ListAddProduitBonFacVGBtnClick(Screen);
+
+    Handled := true;
+  end;
+
+   if  (GetKeyState(VK_F9) < 0)  then
+  begin
+
+      ValiderBVFacBonFacVGBtnClick(Screen);
+
+    Handled := true;
+  end;
+
+     if  (GetKeyState(VK_F12) < 0)  then
+  begin
+
+    MainForm.Bonp_fac_listTable.DisableControls;
+     GettingData;
+
+      OLDCredit:= BonFacPPListfrxRprt.FindObject('OLDCredit') as TfrxMemoView;
+      OLDCredit.Visible:= False;
+      NEWCredit:= BonFacPPListfrxRprt.FindObject('NEWCredit') as TfrxMemoView;
+      NEWCredit.Visible:= False;
+      OLDCreditLbl:= BonFacPPListfrxRprt.FindObject('OLDCreditLbl') as TfrxMemoView;
+      OLDCreditLbl.Visible:= False;
+      NEWCreditLbl:= BonFacPPListfrxRprt.FindObject('NEWCreditLbl') as TfrxMemoView;
+      NEWCreditLbl.Visible:= False;
+      LineCredit:= BonFacPPListfrxRprt.FindObject('LineCredit') as TfrxShapeView;
+      LineCredit.Visible:= False;
+      LineCreditTop:= BonFacPPListfrxRprt.FindObject('LineCreditTop') as TfrxShapeView;
+      LineCreditTop.Visible:= False;
+
+
+    BonFacPPListfrxRprt.PrepareReport;
+    BonFacPPListfrxRprt.PrintOptions.ShowDialog := False;
+    BonFacPPListfrxRprt.Print;
+    MainForm.Bonp_fac_listTable.EnableControls;
+
+    Handled := true;
+  end;
+
+
+end;
+
 
 procedure TBonFacPGestionF.AddCompteBonFacVGBtnClick(Sender: TObject);
 begin

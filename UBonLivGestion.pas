@@ -158,6 +158,11 @@ type
     Timer2: TTimer;
     BonLivPListfrxRprtA5: TfrxReport;
     Bondelivraison2: TMenuItem;
+    Label26: TLabel;
+    Label27: TLabel;
+    Label28: TLabel;
+    Label29: TLabel;
+    Label30: TLabel;
     procedure FormShow(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
@@ -1715,7 +1720,7 @@ begin
   end;
 
 
-  if  (GetKeyState(VK_F8) < 0) then
+  if  (GetKeyState(VK_F8) < 0) and (EditBVlivBonLivGBtn.Enabled = False ) then
   begin
       ListAddProduitBonLivGBtnClick(Screen);
 
@@ -1750,8 +1755,6 @@ begin
     BonLivPListfrxRprtA5.PrepareReport;
     BonLivPListfrxRprtA5.PrintOptions.ShowDialog := False;
     BonLivPListfrxRprtA5.Print;
-
-    //BonLivPListfrxRprt.Print;   // this is to print directly
     MainForm.Bonv_liv_listTable.EnableControls;
 
     Handled := true;

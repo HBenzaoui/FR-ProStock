@@ -9,7 +9,7 @@ uses
   DBGridEhToolCtrls, DynVarsEh, Data.DB, EhLibVCL, GridsEh, DBAxisGridsEh,
   DBGridEh, Vcl.StdCtrls, Vcl.ComCtrls, Vcl.WinXCtrls, Vcl.Buttons,
   sSpeedButton, AdvToolBtn, Vcl.ExtCtrls, frxExportPDF, frxClass, frxExportXLS,
-  frxDBSet, acImage, Vcl.Menus, sStatusBar;
+  frxDBSet, acImage, Vcl.Menus, sStatusBar, Vcl.AppEvnts;
 
 type
   TReglementFListF = class(TForm)
@@ -67,6 +67,10 @@ type
     AdvToolButton2: TAdvToolButton;
     AdvToolButton3: TAdvToolButton;
     Panel6: TPanel;
+    Label26: TLabel;
+    Label27: TLabel;
+    Label28: TLabel;
+    ApplicationEvents1: TApplicationEvents;
     procedure AddBARecBtnClick(Sender: TObject);
     procedure EditBARecBtnClick(Sender: TObject);
     procedure DeleteBARecBtnClick(Sender: TObject);
@@ -103,6 +107,9 @@ type
     procedure BARecListDBGridEhDrawColumnCell(Sender: TObject;
       const Rect: TRect; DataCol: Integer; Column: TColumnEh;
       State: TGridDrawState);
+    procedure ResearchRegFEdtKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure ApplicationEvents1ShortCut(var Msg: TWMKey; var Handled: Boolean);
   private
     procedure GettingData;
     procedure FilteredColor;
@@ -552,6 +559,23 @@ begin
      end;
 end;
 
+procedure TReglementFListF.ResearchRegFEdtKeyDown(Sender: TObject;
+  var Key: Word; Shift: TShiftState);
+begin
+    if key = VK_DOWN then
+  begin
+//   key := #0;
+     MainForm.RegfournisseurTable.Next;
+  end;
+
+
+    if key = VK_UP then
+  begin
+//   key := #0;
+     MainForm.RegfournisseurTable.Prior;
+  end;
+end;
+
 procedure TReglementFListF.ResearchRegFEdtKeyPress(Sender: TObject;
   var Key: Char);
 const
@@ -658,6 +682,59 @@ begin
   RegFListfrxRprt.ShowReport;
 
   MainForm.RegfournisseurTable.EnableControls;
+end;
+
+procedure TReglementFListF.ApplicationEvents1ShortCut(var Msg: TWMKey;
+  var Handled: Boolean);
+begin
+ if (ReglementFListF.Active = True)  AND  (Assigned(ReglementFGestionF) = False)  then
+ begin
+  if  (GetKeyState(VK_F4) < 0)  then
+  begin
+      AddBARecBtnClick(Screen);
+    Handled := true;
+  end;
+  if  (GetKeyState(VK_F5) < 0)  then
+  begin
+      EditBARecBtnClick(Screen);
+    Handled := true;
+  end;
+  if  (GetKeyState(VK_F6) < 0)  then
+  begin
+      DeleteBARecBtnClick(Screen);
+    Handled := true;
+  end;
+     if  (GetKeyState(VK_F12) < 0)  then
+  begin
+    AdvToolButton3Click(Screen) ;
+    Handled := true;
+  end;
+ end else
+     begin
+      if  (ReglementFListF.Active = True)  AND (ReglementFGestionF.Showing = False)   then
+       begin
+          if  (GetKeyState(VK_F4) < 0)  then
+          begin
+              AddBARecBtnClick(Screen);
+            Handled := true;
+          end;
+          if  (GetKeyState(VK_F5) < 0)  then
+          begin
+              EditBARecBtnClick(Screen);
+            Handled := true;
+          end;
+          if  (GetKeyState(VK_F6) < 0)  then
+          begin
+              DeleteBARecBtnClick(Screen);
+            Handled := true;
+          end;
+             if  (GetKeyState(VK_F12) < 0)  then
+          begin
+            AdvToolButton3Click(Screen) ;
+            Handled := true;
+          end;
+      end;
+     end;
 end;
 
 procedure TReglementFListF.ATermeMPFilterBVLivPMenuClick(Sender: TObject);

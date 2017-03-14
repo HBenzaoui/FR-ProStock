@@ -271,6 +271,45 @@ object TransferListGestionF: TTransferListGestionF
       Images = MainForm.PanelIcons24
       ImageIndex = 3
     end
+    object Label26: TLabel
+      Left = 611
+      Top = 50
+      Width = 15
+      Height = 12
+      Caption = '[F4]'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 10395294
+      Font.Height = -9
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label27: TLabel
+      Left = 716
+      Top = 50
+      Width = 15
+      Height = 12
+      Caption = '[F5]'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 10395294
+      Font.Height = -9
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label28: TLabel
+      Left = 821
+      Top = 50
+      Width = 15
+      Height = 12
+      Caption = '[F6]'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 10395294
+      Font.Height = -9
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+    end
     object LineP: TPanel
       Left = 0
       Top = 69
@@ -350,6 +389,7 @@ object TransferListGestionF: TTransferListGestionF
       ParentFont = False
       TabOrder = 0
       OnChange = ResearchTransferEdtChange
+      OnKeyDown = ResearchTransferEdtKeyDown
     end
     object Panel2: TPanel
       Left = 436
@@ -1623,11 +1663,16 @@ object TransferListGestionF: TTransferListGestionF
     end
   end
   object PopupMenu1: TPopupMenu
-    Left = 846
-    Top = 94
+    Left = 242
+    Top = 638
     object L1: TMenuItem
       Caption = 'Listing'
       OnClick = L1Click
     end
+  end
+  object ApplicationEvents1: TApplicationEvents
+    OnShortCut = ApplicationEvents1ShortCut
+    Left = 770
+    Top = 256
   end
 end

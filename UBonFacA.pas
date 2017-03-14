@@ -11,7 +11,7 @@ uses
   DBGridEhToolCtrls, DynVarsEh, Data.DB, Vcl.StdCtrls, Vcl.ComCtrls,
   Vcl.WinXCtrls, Vcl.Buttons, sSpeedButton, AdvToolBtn, Vcl.ExtCtrls, EhLibVCL,
   GridsEh, DBAxisGridsEh, DBGridEh, frxExportPDF, frxClass, frxExportXLS,
-  frxDBSet, acImage, Vcl.Menus, sStatusBar;
+  frxDBSet, acImage, Vcl.Menus, sStatusBar, Vcl.AppEvnts;
 
 type
   TBonFacAF = class(TForm)
@@ -73,6 +73,10 @@ type
     AdvToolButton2: TAdvToolButton;
     AdvToolButton3: TAdvToolButton;
     Panel6: TPanel;
+    Label26: TLabel;
+    Label27: TLabel;
+    Label28: TLabel;
+    ApplicationEvents1: TApplicationEvents;
     procedure FisrtBAFacbtnClick(Sender: TObject);
     procedure PreviosBAFacbtnClick(Sender: TObject);
     procedure NextBAFacbtnClick(Sender: TObject);
@@ -108,6 +112,9 @@ type
     procedure AdvToolButton3Click(Sender: TObject);
     procedure FormPaint(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure ResearchBAFacEdtKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure ApplicationEvents1ShortCut(var Msg: TWMKey; var Handled: Boolean);
   private
     procedure GettingData;
     procedure FilteredColor;
@@ -513,6 +520,23 @@ begin
             MainForm.Bona_FacTable.EnableControls;
 
      end;
+end;
+
+procedure TBonFacAF.ResearchBAFacEdtKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+    if key = VK_DOWN then
+  begin
+//   key := #0;
+     MainForm.Bona_FacTable.Next;
+  end;
+
+
+    if key = VK_UP then
+  begin
+//   key := #0;
+     MainForm.Bona_FacTable.Prior;
+  end;
 end;
 
 procedure TBonFacAF.ResearchBAFacEdtKeyPress(Sender: TObject; var Key: Char);
@@ -956,6 +980,59 @@ begin
   BonFacAfrxRprt.ShowReport;
 
   MainForm.Bona_facTable.EnableControls;
+end;
+
+procedure TBonFacAF.ApplicationEvents1ShortCut(var Msg: TWMKey;
+  var Handled: Boolean);
+begin
+ if (BonFacAF.Active = True)  AND  (Assigned(BonFacAGestionF) = False)  then
+ begin
+  if  (GetKeyState(VK_F4) < 0)  then
+  begin
+      AddBAFacBtnClick(Screen);
+    Handled := true;
+  end;
+  if  (GetKeyState(VK_F5) < 0)  then
+  begin
+      EditBAFacBtnClick(Screen);
+    Handled := true;
+  end;
+  if  (GetKeyState(VK_F6) < 0)  then
+  begin
+      DeleteBAFacBtnClick(Screen);
+    Handled := true;
+  end;
+     if  (GetKeyState(VK_F12) < 0)  then
+  begin
+    AdvToolButton3Click(Screen) ;
+    Handled := true;
+  end;
+ end else
+     begin
+      if  (BonFacAF.Active = True)  AND (BonFacAGestionF.Showing = False)   then
+       begin
+          if  (GetKeyState(VK_F4) < 0)  then
+          begin
+              AddBAFacBtnClick(Screen);
+            Handled := true;
+          end;
+          if  (GetKeyState(VK_F5) < 0)  then
+          begin
+              EditBAFacBtnClick(Screen);
+            Handled := true;
+          end;
+          if  (GetKeyState(VK_F6) < 0)  then
+          begin
+              DeleteBAFacBtnClick(Screen);
+            Handled := true;
+          end;
+             if  (GetKeyState(VK_F12) < 0)  then
+          begin
+            AdvToolButton3Click(Screen) ;
+            Handled := true;
+          end;
+      end;
+     end;
 end;
 
 procedure TBonFacAF.ATermeMPFilterBVLivPMenuClick(Sender: TObject);

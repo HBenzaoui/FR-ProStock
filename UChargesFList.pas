@@ -24,7 +24,7 @@ uses
   dxSkinXmas2008Blue, cxTextEdit, cxMaskEdit, cxDropDownEdit, Vcl.Menus,
   frxExportPDF, frxClass, frxExportXLS, frxDBSet, Data.DB, EhLibVCL, GridsEh,
   DBAxisGridsEh, DBGridEh, Vcl.StdCtrls, Vcl.ComCtrls, Vcl.WinXCtrls,
-  Vcl.Buttons, sSpeedButton, AdvToolBtn, Vcl.ExtCtrls, sStatusBar;
+  Vcl.Buttons, sSpeedButton, AdvToolBtn, Vcl.ExtCtrls, sStatusBar, Vcl.AppEvnts;
 
 type
   TChargesFListF = class(TForm)
@@ -71,6 +71,10 @@ type
     AdvToolButton2: TAdvToolButton;
     AdvToolButton3: TAdvToolButton;
     Panel6: TPanel;
+    Label26: TLabel;
+    Label27: TLabel;
+    Label28: TLabel;
+    ApplicationEvents1: TApplicationEvents;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure AddBARecBtnClick(Sender: TObject);
     procedure FisrtBARecbtnClick(Sender: TObject);
@@ -98,6 +102,9 @@ type
     procedure AdvToolButton1Click(Sender: TObject);
     procedure AdvToolButton2Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure ResearchChargeEdtKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure ApplicationEvents1ShortCut(var Msg: TWMKey; var Handled: Boolean);
   private
     procedure GettingData;
     procedure GettingDataRecu;
@@ -327,6 +334,69 @@ frxPDFExport1.FileName := 'Etat de Charges';
 ChargeListfrxRprt.Export(frxPDFExport1);
 
 DataModuleF.ChargesTable.EnableControls;
+end;
+
+procedure TChargesFListF.ApplicationEvents1ShortCut(var Msg: TWMKey;
+  var Handled: Boolean);
+begin
+ if (ChargesFListF.Active = True)  AND  (Assigned(ChargesGestionF) = False)  then
+ begin
+  if  (GetKeyState(VK_F4) < 0)  then
+  begin
+      AddBARecBtnClick(Screen);
+    Handled := true;
+  end;
+  if  (GetKeyState(VK_F5) < 0)  then
+  begin
+      EditBARecBtnClick(Screen);
+    Handled := true;
+  end;
+  if  (GetKeyState(VK_F6) < 0)  then
+  begin
+      DeleteBARecBtnClick(Screen);
+    Handled := true;
+  end;
+  if  (GetKeyState(VK_F12) < 0)  then
+  begin
+    P2Click(Screen) ;
+    Handled := true;
+  end;
+  if  (GetKeyState(VK_F11) < 0)  then
+  begin
+    P1Click(Screen) ;
+    Handled := true;
+  end;
+ end else
+     begin
+      if  (ChargesFListF.Active = True)  AND (ChargesGestionF.Showing = False)   then
+       begin
+          if  (GetKeyState(VK_F4) < 0)  then
+          begin
+              AddBARecBtnClick(Screen);
+            Handled := true;
+          end;
+          if  (GetKeyState(VK_F5) < 0)  then
+          begin
+              EditBARecBtnClick(Screen);
+            Handled := true;
+          end;
+          if  (GetKeyState(VK_F6) < 0)  then
+          begin
+              DeleteBARecBtnClick(Screen);
+            Handled := true;
+          end;
+          if  (GetKeyState(VK_F12) < 0)  then
+          begin
+            P2Click(Screen) ;
+            Handled := true;
+          end;
+          if  (GetKeyState(VK_F11) < 0)  then
+          begin
+            P1Click(Screen) ;
+            Handled := true;
+          end;
+      end;
+     end;
 end;
 
 procedure TChargesFListF.ChargesListDBGridEhDblClick(Sender: TObject);
@@ -717,6 +787,23 @@ begin
         DataModuleF.ChargesTable.EnableControls;
 
      end;
+end;
+
+procedure TChargesFListF.ResearchChargeEdtKeyDown(Sender: TObject;
+  var Key: Word; Shift: TShiftState);
+begin
+    if key = VK_DOWN then
+  begin
+//   key := #0;
+     DataModuleF.ChargesTable.Next;
+  end;
+
+
+    if key = VK_UP then
+  begin
+//   key := #0;
+     DataModuleF.ChargesTable.Prior;
+  end;
 end;
 
 end.

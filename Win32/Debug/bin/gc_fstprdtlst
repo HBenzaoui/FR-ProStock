@@ -1,0 +1,15 @@
+0~ refer_p~ Réference~ 100~ -1
+1~ nom_p~ Désignation~ 350~ -1
+2~ QutDispo~ Stock~ 100~ -1
+3~ unit~ Unité~ 73~ -1
+4~ famp~ Famille~ 150~ -1
+5~ sfamp~ Sous Famille~ 150~ -1
+6~ prixht_p~ PrixA HT~ 130~ -1
+7~ tva_p~ TVA~ 50~ -1
+8~ PrixATTC~ PrixA TTC~ 130~ -1
+9~ PrixVTTCD~ PrixV TTC D~ 130~ -1
+10~ PrixVTTCR~ PrixV TTC R~ 130~ -1
+11~ PrixVTTCG~ PrixV TTC G~ 130~ -1
+12~ PrixVTTCA~ PrixV TTC A~ 130~ -1
+13~ PrixVTTC2~ PrixV TTC A2~ 130~ -1
+14~ fourp~ Fournisseur~ 170~ -1

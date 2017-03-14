@@ -8,7 +8,7 @@ uses
   DBGridEhToolCtrls, DynVarsEh, frxExportPDF, frxClass, frxExportXLS, frxDBSet,
   Data.DB, EhLibVCL, GridsEh, DBAxisGridsEh, DBGridEh, Vcl.StdCtrls,
   Vcl.ComCtrls, Vcl.WinXCtrls, Vcl.Buttons, sSpeedButton, AdvToolBtn,
-  Vcl.ExtCtrls, sStatusBar;
+  Vcl.ExtCtrls, sStatusBar, Vcl.AppEvnts;
 
 type
   TPertesFListF = class(TForm)
@@ -49,6 +49,10 @@ type
     AdvToolButton2: TAdvToolButton;
     AdvToolButton3: TAdvToolButton;
     Panel6: TPanel;
+    Label26: TLabel;
+    Label27: TLabel;
+    Label28: TLabel;
+    ApplicationEvents1: TApplicationEvents;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);
     procedure DateStartPerteDChange(Sender: TObject);
@@ -74,6 +78,9 @@ type
     procedure AdvToolButton2Click(Sender: TObject);
     procedure AdvToolButton3Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure ResearchPerteEdtKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure ApplicationEvents1ShortCut(var Msg: TWMKey; var Handled: Boolean);
   private
     procedure GettingData;
     { Private declarations }
@@ -151,6 +158,59 @@ begin
   PerteListfrxRprt.ShowReport;
 
   DataModuleF.PertesTable.EnableControls;
+end;
+
+procedure TPertesFListF.ApplicationEvents1ShortCut(var Msg: TWMKey;
+  var Handled: Boolean);
+begin
+ if (PertesFListF.Active = True)  AND  (Assigned(PertesGestionF) = False)  then
+ begin
+  if  (GetKeyState(VK_F4) < 0)  then
+  begin
+      AddBARecBtnClick(Screen);
+    Handled := true;
+  end;
+  if  (GetKeyState(VK_F5) < 0)  then
+  begin
+      EditBARecBtnClick(Screen);
+    Handled := true;
+  end;
+  if  (GetKeyState(VK_F6) < 0)  then
+  begin
+      DeleteBARecBtnClick(Screen);
+    Handled := true;
+  end;
+     if  (GetKeyState(VK_F12) < 0)  then
+  begin
+    AdvToolButton3Click(Screen) ;
+    Handled := true;
+  end;
+ end else
+     begin
+      if  (PertesFListF.Active = True)  AND (PertesGestionF.Showing = False)   then
+       begin
+          if  (GetKeyState(VK_F4) < 0)  then
+          begin
+              AddBARecBtnClick(Screen);
+            Handled := true;
+          end;
+          if  (GetKeyState(VK_F5) < 0)  then
+          begin
+              EditBARecBtnClick(Screen);
+            Handled := true;
+          end;
+          if  (GetKeyState(VK_F6) < 0)  then
+          begin
+              DeleteBARecBtnClick(Screen);
+            Handled := true;
+          end;
+             if  (GetKeyState(VK_F12) < 0)  then
+          begin
+            AdvToolButton3Click(Screen) ;
+            Handled := true;
+          end;
+      end;
+     end;
 end;
 
 procedure TPertesFListF.DateStartPerteDChange(Sender: TObject);
@@ -429,6 +489,23 @@ begin
 
     MainForm.SQLQuery.Active:=False;
    MainForm.SQLQuery.SQL.Clear;
+end;
+
+procedure TPertesFListF.ResearchPerteEdtKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+    if key = VK_DOWN then
+  begin
+//   key := #0;
+     DataModuleF.PertesTable.Next;
+  end;
+
+
+    if key = VK_UP then
+  begin
+//   key := #0;
+     DataModuleF.PertesTable.Prior;
+  end;
 end;
 
 procedure TPertesFListF.ResherchPerteRdioBtnClick(Sender: TObject);

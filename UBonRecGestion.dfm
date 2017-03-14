@@ -463,7 +463,7 @@ object BonRecGestionF: TBonRecGestionF
     end
     object Label4: TLabel
       Left = 9
-      Top = 268
+      Top = 252
       Width = 92
       Height = 18
       Anchors = [akLeft, akBottom]
@@ -749,7 +749,7 @@ object BonRecGestionF: TBonRecGestionF
     end
     object ListAddProduitBonRecGBtn: TAdvToolButton
       Left = 539
-      Top = 261
+      Top = 246
       Width = 71
       Height = 30
       Cursor = crHandPoint
@@ -778,12 +778,11 @@ object BonRecGestionF: TBonRecGestionF
       Spacing = -1
       OnClick = ListAddProduitBonRecGBtnClick
       Version = '1.6.1.2'
-      ExplicitTop = 229
       TMSStyle = 0
     end
     object DeleteProduitBonRecGBtn: TAdvToolButton
       Left = 724
-      Top = 263
+      Top = 248
       Width = 26
       Height = 26
       Cursor = crHandPoint
@@ -813,12 +812,11 @@ object BonRecGestionF: TBonRecGestionF
       Visible = False
       OnClick = DeleteProduitBonRecGBtnClick
       Version = '1.6.1.2'
-      ExplicitTop = 231
       TMSStyle = 0
     end
     object NewAddProduitBonRecGBtn: TAdvToolButton
       Left = 617
-      Top = 261
+      Top = 246
       Width = 100
       Height = 30
       Cursor = crHandPoint
@@ -847,7 +845,6 @@ object BonRecGestionF: TBonRecGestionF
       Spacing = -1
       OnClick = NewAddProduitBonRecGBtnClick
       Version = '1.6.1.2'
-      ExplicitTop = 229
       TMSStyle = 0
     end
     object RequiredFourGlbl: TLabel
@@ -872,7 +869,7 @@ object BonRecGestionF: TBonRecGestionF
     end
     object EnterAddProduitBonRecGBtn: TAdvToolButton
       Left = 499
-      Top = 261
+      Top = 246
       Width = 34
       Height = 30
       Cursor = crHandPoint
@@ -900,12 +897,11 @@ object BonRecGestionF: TBonRecGestionF
       Spacing = -1
       OnClick = EnterAddProduitBonRecGBtnClick
       Version = '1.6.1.2'
-      ExplicitTop = 229
       TMSStyle = 0
     end
     object ClearProduitBonRecGBtn: TAdvToolButton
       Left = 756
-      Top = 263
+      Top = 248
       Width = 26
       Height = 26
       Cursor = crHandPoint
@@ -935,7 +931,6 @@ object BonRecGestionF: TBonRecGestionF
       Visible = False
       OnClick = ClearProduitBonRecGBtnClick
       Version = '1.6.1.2'
-      ExplicitTop = 231
       TMSStyle = 0
     end
     object ValiderBARecBonRecGImg: TsImage
@@ -1155,6 +1150,72 @@ object BonRecGestionF: TBonRecGestionF
       Visible = False
       WordWrap = True
       StyleElements = [seClient, seBorder]
+    end
+    object Label26: TLabel
+      Left = 528
+      Top = 47
+      Width = 15
+      Height = 12
+      Caption = '[F4]'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 10395294
+      Font.Height = -9
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label27: TLabel
+      Left = 632
+      Top = 47
+      Width = 15
+      Height = 12
+      Caption = '[F5]'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 10395294
+      Font.Height = -9
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label28: TLabel
+      Left = 736
+      Top = 47
+      Width = 15
+      Height = 12
+      Caption = '[F9]'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 10395294
+      Font.Height = -9
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label30: TLabel
+      Left = 910
+      Top = 47
+      Width = 20
+      Height = 12
+      Anchors = [akTop, akRight]
+      Caption = '[F12]'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 10395294
+      Font.Height = -9
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label29: TLabel
+      Left = 567
+      Top = 275
+      Width = 15
+      Height = 12
+      Caption = '[F8]'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 10395294
+      Font.Height = -9
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
     end
     object CompteGErrorP: TPanel
       Left = 632
@@ -1380,7 +1441,7 @@ object BonRecGestionF: TBonRecGestionF
     end
     object ResherchPARDesProduitsRdioBtn: TRadioButton
       Left = 107
-      Top = 230
+      Top = 219
       Width = 115
       Height = 17
       Anchors = [akLeft, akBottom]
@@ -1399,7 +1460,7 @@ object BonRecGestionF: TBonRecGestionF
     end
     object ResherchPARCBProduitsRdioBtn: TRadioButton
       Left = 372
-      Top = 230
+      Top = 219
       Width = 120
       Height = 17
       Anchors = [akLeft, akBottom]
@@ -1430,7 +1491,7 @@ object BonRecGestionF: TBonRecGestionF
     end
     object ResherchPARRefProduitsRdioBtn: TRadioButton
       Left = 245
-      Top = 230
+      Top = 219
       Width = 106
       Height = 17
       Anchors = [akLeft, akBottom]
@@ -1650,7 +1711,7 @@ object BonRecGestionF: TBonRecGestionF
     end
     object ProduitBonRecGCbx: TcxComboBox
       Left = 107
-      Top = 261
+      Top = 246
       Anchors = [akLeft, akBottom]
       AutoSize = False
       ParentFont = False
@@ -4946,5 +5007,10 @@ object BonRecGestionF: TBonRecGestionF
         end
       end
     end
+  end
+  object ApplicationEvents1: TApplicationEvents
+    OnShortCut = ApplicationEvents1ShortCut
+    Left = 832
+    Top = 250
   end
 end

@@ -1191,6 +1191,72 @@ object BonLivGestionF: TBonLivGestionF
       Visible = False
       StyleElements = []
     end
+    object Label26: TLabel
+      Left = 528
+      Top = 47
+      Width = 15
+      Height = 12
+      Caption = '[F4]'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 10395294
+      Font.Height = -9
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label27: TLabel
+      Left = 632
+      Top = 47
+      Width = 15
+      Height = 12
+      Caption = '[F5]'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 10395294
+      Font.Height = -9
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label28: TLabel
+      Left = 736
+      Top = 47
+      Width = 15
+      Height = 12
+      Caption = '[F9]'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 10395294
+      Font.Height = -9
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label29: TLabel
+      Left = 567
+      Top = 275
+      Width = 15
+      Height = 12
+      Caption = '[F8]'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 10395294
+      Font.Height = -9
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label30: TLabel
+      Left = 910
+      Top = 47
+      Width = 20
+      Height = 12
+      Anchors = [akTop, akRight]
+      Caption = '[F12]'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 10395294
+      Font.Height = -9
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+    end
     object CompteGErrorP: TPanel
       Left = 632
       Top = 125
@@ -5736,7 +5802,7 @@ object BonLivGestionF: TBonLivGestionF
   end
   object ApplicationEvents1: TApplicationEvents
     OnShortCut = ApplicationEvents1ShortCut
-    Left = 858
+    Left = 832
     Top = 250
   end
   object Timer2: TTimer

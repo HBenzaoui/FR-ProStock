@@ -27,7 +27,8 @@ uses
   dxSkinSummer2008, dxSkinTheAsphaltWorld, dxSkinsDefaultPainters,
   dxSkinValentine, dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
   dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
-  dxSkinXmas2008Blue, cxTextEdit, cxMaskEdit, cxDropDownEdit, Vcl.Menus;
+  dxSkinXmas2008Blue, cxTextEdit, cxMaskEdit, cxDropDownEdit, Vcl.Menus,
+  Vcl.AppEvnts;
 
 type
   TBonFacAGestionF = class(TForm)
@@ -145,6 +146,12 @@ type
     PopupMenu1: TPopupMenu;
     B1: TMenuItem;
     BondeCaisseSimple2: TMenuItem;
+    Label26: TLabel;
+    Label27: TLabel;
+    Label28: TLabel;
+    Label30: TLabel;
+    Label29: TLabel;
+    ApplicationEvents1: TApplicationEvents;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure FormShow(Sender: TObject);
@@ -201,6 +208,7 @@ type
     procedure FormKeyPress(Sender: TObject; var Key: Char);
     procedure B1Click(Sender: TObject);
     procedure BondeCaisseSimple2Click(Sender: TObject);
+    procedure ApplicationEvents1ShortCut(var Msg: TWMKey; var Handled: Boolean);
   private
     procedure GettingData;
     { Private declarations }
@@ -2850,6 +2858,75 @@ begin
     FSplashAddUnite.Show;
     FSplashAddUnite.NameAddUniteSEdt.SetFocus;
     FSplashAddUnite.OKAddUniteSBtn.Tag:= 19 ;
+end;
+
+procedure TBonFacAGestionF.ApplicationEvents1ShortCut(var Msg: TWMKey;
+  var Handled: Boolean);
+var
+NEWCredit,OLDCredit,NEWCreditLbl,OLDCreditLbl  : TfrxMemoView;
+LineCredit,LineCreditTop :TfrxShapeView;
+begin
+
+
+  if  (GetKeyState(VK_F4) < 0) and (AddBAFacBonFacAGBtn.Enabled = True ) then
+  begin
+      AddBAFacBonFacAGBtnClick(Screen);
+
+    Handled := true;
+  end;
+
+
+  if  (GetKeyState(VK_F5) < 0) and (EditBAFacBonFacAGBtn.Enabled = True ) then
+  begin
+      EditBAFacBonFacAGBtnClick(Screen);
+
+    Handled := true;
+  end;
+
+
+  if  (GetKeyState(VK_F8) < 0) and (EditBAFacBonFacAGBtn.Enabled = False ) then
+  begin
+      ListAddProduitBonFacAGBtnClick(Screen);
+
+    Handled := true;
+  end;
+
+   if  (GetKeyState(VK_F9) < 0)  then
+  begin
+
+      ValiderBAFacBonFacAGBtnClick(Screen);
+
+    Handled := true;
+  end;
+
+     if  (GetKeyState(VK_F12) < 0)  then
+  begin
+
+      MainForm.Bona_fac_listTable.DisableControls;
+      GettingData;
+
+      OLDCredit:= BonFacAPListfrxRprt.FindObject('OLDCredit') as TfrxMemoView;
+      OLDCredit.Visible:= False;
+      NEWCredit:= BonFacAPListfrxRprt.FindObject('NEWCredit') as TfrxMemoView;
+      NEWCredit.Visible:= False;
+      OLDCreditLbl:= BonFacAPListfrxRprt.FindObject('OLDCreditLbl') as TfrxMemoView;
+      OLDCreditLbl.Visible:= False;
+      NEWCreditLbl:= BonFacAPListfrxRprt.FindObject('NEWCreditLbl') as TfrxMemoView;
+      NEWCreditLbl.Visible:= False;
+      LineCredit:= BonFacAPListfrxRprt.FindObject('LineCredit') as TfrxShapeView;
+      LineCredit.Visible:= False;
+      LineCreditTop:= BonFacAPListfrxRprt.FindObject('LineCreditTop') as TfrxShapeView;
+      LineCreditTop.Visible:= False;
+
+      BonFacAPListfrxRprt.PrepareReport;
+      BonFacAPListfrxRprt.PrintOptions.ShowDialog := False;
+      BonFacAPListfrxRprt.Print;
+      MainForm.Bona_fac_listTable.EnableControls;
+
+
+    Handled := true;
+  end;
+
 end;
 
 procedure TBonFacAGestionF.AddCompteBonFacAGBtnClick(Sender: TObject);

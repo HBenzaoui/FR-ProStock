@@ -567,6 +567,45 @@ object ChargesFListF: TChargesFListF
       ParentFont = False
       StyleElements = []
     end
+    object Label26: TLabel
+      Left = 738
+      Top = 50
+      Width = 15
+      Height = 12
+      Caption = '[F4]'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 10395294
+      Font.Height = -9
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label27: TLabel
+      Left = 843
+      Top = 50
+      Width = 15
+      Height = 12
+      Caption = '[F5]'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 10395294
+      Font.Height = -9
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label28: TLabel
+      Left = 948
+      Top = 50
+      Width = 15
+      Height = 12
+      Caption = '[F6]'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 10395294
+      Font.Height = -9
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+    end
     object LineP: TPanel
       Left = 0
       Top = 69
@@ -646,6 +685,7 @@ object ChargesFListF: TChargesFListF
       ParentFont = False
       TabOrder = 0
       OnChange = ResearchChargeEdtChange
+      OnKeyDown = ResearchChargeEdtKeyDown
     end
     object Panel2: TPanel
       Left = 399
@@ -2316,14 +2356,14 @@ object ChargesFListF: TChargesFListF
   end
   object PopupMenu1: TPopupMenu
     OwnerDraw = True
-    Left = 986
-    Top = 140
+    Left = 226
+    Top = 652
     object P1: TMenuItem
-      Caption = 'Re'#231'u de Paiement'
+      Caption = 'Re'#231'u de Paiement [F11]'
       OnClick = P1Click
     end
     object P2: TMenuItem
-      Caption = 'Liste de Charges'
+      Caption = 'Liste de Charges [F12]'
       OnClick = P2Click
     end
   end
@@ -2806,5 +2846,10 @@ object ChargesFListF: TChargesFListF
         end
       end
     end
+  end
+  object ApplicationEvents1: TApplicationEvents
+    OnShortCut = ApplicationEvents1ShortCut
+    Left = 770
+    Top = 256
   end
 end
