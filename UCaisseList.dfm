@@ -2187,10 +2187,10 @@ object CaisseListF: TCaisseListF
   end
   object FilterBVLivPMenu: TPopupMenu
     Images = MainForm.PanelIcons16
-    Left = 900
+    Left = 836
     Top = 110
     object F1: TMenuItem
-      Caption = 'Filter par la Transaction'
+      Caption = 'Filtrer par la Transaction'
       SubMenuImages = MainForm.PanelIcons16
       ImageIndex = 1
       object ValideFilterBVLivPMenu: TMenuItem
@@ -2221,7 +2221,7 @@ object CaisseListF: TCaisseListF
       end
     end
     object F3: TMenuItem
-      Caption = 'Filter par le Mode de Paiment'
+      Caption = 'Filtrer par le Mode de Paiment'
       ImageIndex = 1
       object RegleFilterBVLivPMenu: TMenuItem
         AutoCheck = True
@@ -2251,7 +2251,7 @@ object CaisseListF: TCaisseListF
       end
     end
     object F2: TMenuItem
-      Caption = 'Filter par les Achats'
+      Caption = 'Filtrer par les Achats'
       SubMenuImages = MainForm.PanelIcons16
       ImageIndex = 1
       object ChequeMPFilterBVLivPMenu: TMenuItem
@@ -2282,7 +2282,7 @@ object CaisseListF: TCaisseListF
       end
     end
     object FilterparlesFactures1: TMenuItem
-      Caption = 'Filter par les Ventes'
+      Caption = 'Filtrer par les Ventes'
       ImageIndex = 1
       object BondeLivration1: TMenuItem
         AutoCheck = True
@@ -2318,7 +2318,7 @@ object CaisseListF: TCaisseListF
       end
     end
     object FilterparlePrixDeVente1: TMenuItem
-      Caption = 'Filter par les Reglement'
+      Caption = 'Filtrer par les Reglement'
       ImageIndex = 1
       object T2: TMenuItem
         AutoCheck = True

@@ -353,7 +353,6 @@ object FournisseurListF: TFournisseurListF
     GridLineParams.DataVertLines = True
     HorzScrollBar.ExtraPanel.NavigatorButtons = [nbFirstEh, nbPriorEh, nbNextEh, nbLastEh, nbRefreshEh]
     HorzScrollBar.ExtraPanel.Visible = True
-    HorzScrollBar.ExtraPanel.VisibleItems = [gsbiNavigator, gsbiSelAggregationInfoEh]
     HorzScrollBar.Height = 15
     IndicatorOptions = [gioShowRowIndicatorEh]
     IndicatorParams.Color = clBtnFace
@@ -948,7 +947,7 @@ object FournisseurListF: TFournisseurListF
       1022
       71)
     object EditFournisseursBtn: TAdvToolButton
-      Left = 538
+      Left = 598
       Top = 21
       Width = 100
       Height = 30
@@ -980,7 +979,7 @@ object FournisseurListF: TFournisseurListF
       TMSStyle = 0
     end
     object DeleteFournisseursBtn: TAdvToolButton
-      Left = 643
+      Left = 703
       Top = 21
       Width = 100
       Height = 30
@@ -1012,7 +1011,7 @@ object FournisseurListF: TFournisseurListF
       TMSStyle = 0
     end
     object AddFournisseursBtn: TAdvToolButton
-      Left = 433
+      Left = 493
       Top = 21
       Width = 100
       Height = 30
@@ -1060,7 +1059,7 @@ object FournisseurListF: TFournisseurListF
       StyleElements = []
     end
     object toutFournisseursLbl: TLabel
-      Left = 912
+      Left = 966
       Top = 45
       Width = 57
       Height = 16
@@ -1072,9 +1071,10 @@ object FournisseurListF: TFournisseurListF
       Font.Name = 'Roboto'
       Font.Style = [fsBold]
       ParentFont = False
+      Visible = False
     end
     object PassifFournisseursLbl: TLabel
-      Left = 912
+      Left = 966
       Top = 26
       Width = 57
       Height = 16
@@ -1086,9 +1086,10 @@ object FournisseurListF: TFournisseurListF
       Font.Name = 'Roboto'
       Font.Style = [fsBold]
       ParentFont = False
+      Visible = False
     end
     object ActifFournisseursLbl: TLabel
-      Left = 912
+      Left = 966
       Top = 7
       Width = 57
       Height = 16
@@ -1100,6 +1101,7 @@ object FournisseurListF: TFournisseurListF
       Font.Name = 'Roboto'
       Font.Style = [fsBold]
       ParentFont = False
+      Visible = False
     end
     object sSpeedButton3: TsSpeedButton
       Left = 600
@@ -1168,7 +1170,7 @@ object FournisseurListF: TFournisseurListF
       ImageIndex = 1
     end
     object Label26: TLabel
-      Left = 476
+      Left = 536
       Top = 50
       Width = 15
       Height = 12
@@ -1181,7 +1183,7 @@ object FournisseurListF: TFournisseurListF
       ParentFont = False
     end
     object Label27: TLabel
-      Left = 581
+      Left = 641
       Top = 50
       Width = 15
       Height = 12
@@ -1194,7 +1196,7 @@ object FournisseurListF: TFournisseurListF
       ParentFont = False
     end
     object Label28: TLabel
-      Left = 686
+      Left = 746
       Top = 50
       Width = 15
       Height = 12
@@ -1205,6 +1207,70 @@ object FournisseurListF: TFournisseurListF
       Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
+    end
+    object FilterBVLivBtn: TAdvToolButton
+      Left = 427
+      Top = 23
+      Width = 55
+      Height = 25
+      Cursor = crHandPoint
+      AutoThemeAdapt = False
+      BorderColor = 7854350
+      BorderDownColor = 7854350
+      BorderHotColor = 4666873
+      Color = 15722984
+      ColorDown = 7854350
+      ColorHot = 15722984
+      ColorChecked = clNone
+      DropDownButton = True
+      DropDownMenu = FilterBVLivPMenu
+      DropDownSplit = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 4207405
+      Font.Height = 14
+      Font.Name = 'Roboto'
+      Font.Style = []
+      ImageIndex = 49
+      Images = MainForm.PanelIcons24
+      Layout = blGlyphRight
+      ParentFont = False
+      ParentShowHint = False
+      PopupMenu = FilterBVLivPMenu
+      Shaded = False
+      ShowHint = True
+      Spacing = -1
+      Version = '1.6.1.2'
+      TMSStyle = 0
+    end
+    object sImage1: TsImage
+      Left = 429
+      Top = 6
+      Width = 16
+      Height = 16
+      Center = True
+      Picture.Data = {07544269746D617000000000}
+      Proportional = True
+      Stretch = True
+      Transparent = True
+      Visible = False
+      ImageIndex = 3
+      Images = MainForm.PanelIcons16
+      SkinData.SkinSection = 'CHECKBOX'
+    end
+    object sImage2: TsImage
+      Left = 446
+      Top = 6
+      Width = 16
+      Height = 16
+      Center = True
+      Picture.Data = {07544269746D617000000000}
+      Proportional = True
+      Stretch = True
+      Transparent = True
+      Visible = False
+      ImageIndex = 7
+      Images = MainForm.PanelIcons16
+      SkinData.SkinSection = 'CHECKBOX'
     end
     object LineP: TPanel
       Left = 0
@@ -1219,7 +1285,7 @@ object FournisseurListF: TFournisseurListF
       StyleElements = []
     end
     object Panel1: TPanel
-      Left = 748
+      Left = 808
       Top = 16
       Width = 1
       Height = 40
@@ -1246,7 +1312,7 @@ object FournisseurListF: TFournisseurListF
       StyleElements = []
     end
     object S02: TPanel
-      Left = 427
+      Left = 487
       Top = 16
       Width = 1
       Height = 40
@@ -1289,7 +1355,7 @@ object FournisseurListF: TFournisseurListF
       OnKeyPress = ResearchFournisseurEdtKeyPress
     end
     object ActifFournisseursRdioBtn: TRadioButton
-      Left = 754
+      Left = 812
       Top = 7
       Width = 139
       Height = 17
@@ -1303,14 +1369,15 @@ object FournisseurListF: TFournisseurListF
       ParentFont = False
       TabOrder = 4
       TabStop = True
+      Visible = False
       OnClick = ActifFournisseursRdioBtnClick
     end
     object PassifFournisseursRdioBtn: TRadioButton
-      Left = 754
+      Left = 812
       Top = 26
       Width = 147
       Height = 17
-      Caption = 'Les Fournisseurs Passif'
+      Caption = 'Les Fournisseurs Passifs'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = 14
@@ -1318,10 +1385,11 @@ object FournisseurListF: TFournisseurListF
       Font.Style = []
       ParentFont = False
       TabOrder = 5
+      Visible = False
       OnClick = PassifFournisseursRdioBtnClick
     end
     object toutFournisseursRdioBtn: TRadioButton
-      Left = 754
+      Left = 812
       Top = 45
       Width = 139
       Height = 17
@@ -1333,10 +1401,11 @@ object FournisseurListF: TFournisseurListF
       Font.Style = []
       ParentFont = False
       TabOrder = 6
+      Visible = False
       OnClick = toutFournisseursRdioBtnClick
     end
     object Panel2: TPanel
-      Left = 906
+      Left = 961
       Top = 16
       Width = 1
       Height = 40
@@ -1360,6 +1429,7 @@ object FournisseurListF: TFournisseurListF
       ParentShowHint = False
       ShowHint = False
       TabOrder = 7
+      Visible = False
       StyleElements = []
     end
     object Panel4: TPanel
@@ -1711,14 +1781,11 @@ object FournisseurListF: TFournisseurListF
       'adr_f=adr_f'
       'ville_f=ville_f'
       'willaya_f=willaya_f'
-      'pays_f=pays_f'
       'fix_f=fix_f'
       'mob_f=mob_f'
       'mob2_f=mob2_f'
       'fax_f=fax_f'
       'email_f=email_f'
-      'obser_f=obser_f'
-      'logo_f=logo_f'
       'activ_f=activ_f'
       'rc_f=rc_f'
       'nif_f=nif_f'
@@ -1728,7 +1795,9 @@ object FournisseurListF: TFournisseurListF
       'rib_f=rib_f'
       'siteweb_f=siteweb_f'
       'oldcredit_f=oldcredit_f'
-      'maxcredit_f=maxcredit_f')
+      'maxcredit_f=maxcredit_f'
+      'credit_f=credit_f'
+      'obser_f=obser_f')
     DataSource = FournisseurListDataS
     BCDToCurrency = False
     Left = 432
@@ -1743,7 +1812,7 @@ object FournisseurListF: TFournisseurListF
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 42576.399521435200000000
-    ReportOptions.LastChange = 42663.580112465280000000
+    ReportOptions.LastChange = 42809.582129537040000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       ''
@@ -2146,7 +2215,7 @@ object FournisseurListF: TFournisseurListF
           Font.Style = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxFournisseurDB."oldcredit_f"]')
+            '[frxFournisseurDB."credit_f"]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -2238,6 +2307,7 @@ object FournisseurListF: TFournisseurListF
           Left = 125.496294880000000000
           Width = 87.307045120000000000
           Height = 15.118120000000000000
+          Visible = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -8
@@ -2253,6 +2323,7 @@ object FournisseurListF: TFournisseurListF
           Left = 0.063514490000000000
           Width = 125.858216460000000000
           Height = 15.118120000000000000
+          Visible = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -8
@@ -2269,6 +2340,7 @@ object FournisseurListF: TFournisseurListF
           Top = 14.677180000000000000
           Width = 87.307045120000000000
           Height = 15.118120000000000000
+          Visible = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -8
@@ -2285,6 +2357,7 @@ object FournisseurListF: TFournisseurListF
           Top = 14.677180000000000000
           Width = 125.858216460000000000
           Height = 15.118120000000000000
+          Visible = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -8
@@ -2301,6 +2374,7 @@ object FournisseurListF: TFournisseurListF
           Top = 29.354360000000000000
           Width = 87.307045120000000000
           Height = 15.118120000000000000
+          Visible = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -9
@@ -2318,6 +2392,7 @@ object FournisseurListF: TFournisseurListF
           Top = 29.354360000000000000
           Width = 125.858216460000000000
           Height = 15.118120000000000000
+          Visible = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -8
@@ -2359,5 +2434,89 @@ object FournisseurListF: TFournisseurListF
     OnShortCut = ApplicationEvents1ShortCut
     Left = 770
     Top = 256
+  end
+  object FilterBVLivPMenu: TPopupMenu
+    Images = MainForm.PanelIcons16
+    Left = 418
+    Top = 130
+    object F1: TMenuItem
+      Caption = 'Filtrer par l'#39'Activit'#233
+      SubMenuImages = MainForm.PanelIcons16
+      ImageIndex = 1
+      object ValideFilterBVLivPMenu: TMenuItem
+        AutoCheck = True
+        Caption = 'Actif'
+        ImageIndex = 3
+        RadioItem = True
+        OnClick = ValideFilterBVLivPMenuClick
+      end
+      object NotValideFilterBVLivPMenu: TMenuItem
+        AutoCheck = True
+        Caption = 'Passif'
+        ImageIndex = 4
+        RadioItem = True
+        OnClick = NotValideFilterBVLivPMenuClick
+      end
+      object N2: TMenuItem
+        Caption = '-'
+        RadioItem = True
+      end
+      object ClearValideFilterBVLivPMenu: TMenuItem
+        AutoCheck = True
+        Caption = 'Tout'
+        Checked = True
+        ImageIndex = 2
+        RadioItem = True
+        OnClick = ClearValideFilterBVLivPMenuClick
+      end
+    end
+    object F3: TMenuItem
+      Caption = 'Filtrer par la R'#232'glement'
+      ImageIndex = 1
+      object RegleFilterBVLivPMenu: TMenuItem
+        AutoCheck = True
+        Caption = 'Cr'#233'dit'#233
+        ImageIndex = 7
+        RadioItem = True
+        OnClick = RegleFilterBVLivPMenuClick
+      end
+      object NoTRegleFilterBVLivPMenu: TMenuItem
+        AutoCheck = True
+        Caption = 'D'#233'bit'#233
+        ImageIndex = 33
+        RadioItem = True
+        OnClick = NoTRegleFilterBVLivPMenuClick
+      end
+      object Crdit1: TMenuItem
+        Caption = 'R'#233'gl'#233
+        ImageIndex = 9
+        OnClick = Crdit1Click
+      end
+      object N1: TMenuItem
+        Caption = '-'
+        RadioItem = True
+      end
+      object ClearRegleFilterBVLivPMenu: TMenuItem
+        AutoCheck = True
+        Caption = 'Tout'
+        Checked = True
+        ImageIndex = 2
+        RadioItem = True
+        OnClick = ClearRegleFilterBVLivPMenuClick
+      end
+    end
+    object N5: TMenuItem
+      Caption = '-'
+      Checked = True
+      SubMenuImages = MainForm.PanelIcons16
+    end
+    object ClearFilterBVLivPMenu: TMenuItem
+      AutoCheck = True
+      Caption = 'Tout'
+      Checked = True
+      SubMenuImages = MainForm.PanelIcons16
+      ImageIndex = 2
+      OnClick = ClearFilterBVLivPMenuClick
+    end
   end
 end

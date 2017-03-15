@@ -356,7 +356,6 @@ object ClientListF: TClientListF
     GridLineParams.DataVertLines = True
     HorzScrollBar.ExtraPanel.NavigatorButtons = [nbFirstEh, nbPriorEh, nbNextEh, nbLastEh, nbRefreshEh]
     HorzScrollBar.ExtraPanel.Visible = True
-    HorzScrollBar.ExtraPanel.VisibleItems = [gsbiNavigator, gsbiSelAggregationInfoEh]
     HorzScrollBar.Height = 15
     IndicatorOptions = [gioShowRowIndicatorEh]
     IndicatorParams.Color = clBtnFace
@@ -997,7 +996,7 @@ object ClientListF: TClientListF
       1022
       71)
     object EditClientsBtn: TAdvToolButton
-      Left = 538
+      Left = 598
       Top = 21
       Width = 100
       Height = 30
@@ -1029,7 +1028,7 @@ object ClientListF: TClientListF
       TMSStyle = 0
     end
     object DeleteClientsBtn: TAdvToolButton
-      Left = 643
+      Left = 703
       Top = 21
       Width = 100
       Height = 30
@@ -1061,7 +1060,7 @@ object ClientListF: TClientListF
       TMSStyle = 0
     end
     object AddClientsBtn: TAdvToolButton
-      Left = 433
+      Left = 493
       Top = 21
       Width = 100
       Height = 30
@@ -1109,7 +1108,7 @@ object ClientListF: TClientListF
       StyleElements = []
     end
     object toutClientsLbl: TLabel
-      Left = 873
+      Left = 933
       Top = 46
       Width = 57
       Height = 16
@@ -1121,9 +1120,10 @@ object ClientListF: TClientListF
       Font.Name = 'Roboto'
       Font.Style = [fsBold]
       ParentFont = False
+      Visible = False
     end
     object PassifClientsLbl: TLabel
-      Left = 873
+      Left = 933
       Top = 27
       Width = 60
       Height = 16
@@ -1135,9 +1135,10 @@ object ClientListF: TClientListF
       Font.Name = 'Roboto'
       Font.Style = [fsBold]
       ParentFont = False
+      Visible = False
     end
     object ActifClientsLbl: TLabel
-      Left = 873
+      Left = 933
       Top = 8
       Width = 57
       Height = 16
@@ -1149,6 +1150,7 @@ object ClientListF: TClientListF
       Font.Name = 'Roboto'
       Font.Style = [fsBold]
       ParentFont = False
+      Visible = False
     end
     object sSpeedButton3: TsSpeedButton
       Left = 809
@@ -1217,7 +1219,7 @@ object ClientListF: TClientListF
       ImageIndex = 3
     end
     object Label26: TLabel
-      Left = 476
+      Left = 535
       Top = 50
       Width = 15
       Height = 12
@@ -1230,7 +1232,7 @@ object ClientListF: TClientListF
       ParentFont = False
     end
     object Label27: TLabel
-      Left = 581
+      Left = 640
       Top = 50
       Width = 15
       Height = 12
@@ -1243,7 +1245,7 @@ object ClientListF: TClientListF
       ParentFont = False
     end
     object Label28: TLabel
-      Left = 686
+      Left = 745
       Top = 50
       Width = 15
       Height = 12
@@ -1254,6 +1256,70 @@ object ClientListF: TClientListF
       Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
+    end
+    object FilterBVLivBtn: TAdvToolButton
+      Left = 427
+      Top = 23
+      Width = 55
+      Height = 25
+      Cursor = crHandPoint
+      AutoThemeAdapt = False
+      BorderColor = 7854350
+      BorderDownColor = 7854350
+      BorderHotColor = 4666873
+      Color = 15722984
+      ColorDown = 7854350
+      ColorHot = 15722984
+      ColorChecked = clNone
+      DropDownButton = True
+      DropDownMenu = FilterBVLivPMenu
+      DropDownSplit = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 4207405
+      Font.Height = 14
+      Font.Name = 'Roboto'
+      Font.Style = []
+      ImageIndex = 49
+      Images = MainForm.PanelIcons24
+      Layout = blGlyphRight
+      ParentFont = False
+      ParentShowHint = False
+      PopupMenu = FilterBVLivPMenu
+      Shaded = False
+      ShowHint = True
+      Spacing = -1
+      Version = '1.6.1.2'
+      TMSStyle = 0
+    end
+    object sImage1: TsImage
+      Left = 429
+      Top = 6
+      Width = 16
+      Height = 16
+      Center = True
+      Picture.Data = {07544269746D617000000000}
+      Proportional = True
+      Stretch = True
+      Transparent = True
+      Visible = False
+      ImageIndex = 3
+      Images = MainForm.PanelIcons16
+      SkinData.SkinSection = 'CHECKBOX'
+    end
+    object sImage2: TsImage
+      Left = 446
+      Top = 6
+      Width = 16
+      Height = 16
+      Center = True
+      Picture.Data = {07544269746D617000000000}
+      Proportional = True
+      Stretch = True
+      Transparent = True
+      Visible = False
+      ImageIndex = 7
+      Images = MainForm.PanelIcons16
+      SkinData.SkinSection = 'CHECKBOX'
     end
     object LineP: TPanel
       Left = 0
@@ -1268,7 +1334,7 @@ object ClientListF: TClientListF
       StyleElements = []
     end
     object Panel1: TPanel
-      Left = 748
+      Left = 808
       Top = 16
       Width = 1
       Height = 40
@@ -1295,7 +1361,7 @@ object ClientListF: TClientListF
       StyleElements = []
     end
     object S02: TPanel
-      Left = 427
+      Left = 487
       Top = 16
       Width = 1
       Height = 40
@@ -1338,7 +1404,7 @@ object ClientListF: TClientListF
       OnKeyPress = ResearchClientsEdtKeyPress
     end
     object ActifClientsRdioBtn: TRadioButton
-      Left = 754
+      Left = 814
       Top = 7
       Width = 102
       Height = 17
@@ -1352,10 +1418,11 @@ object ClientListF: TClientListF
       ParentFont = False
       TabOrder = 4
       TabStop = True
+      Visible = False
       OnClick = ActifClientsRdioBtnClick
     end
     object PassifClientsRdioBtn: TRadioButton
-      Left = 754
+      Left = 814
       Top = 26
       Width = 113
       Height = 17
@@ -1367,10 +1434,11 @@ object ClientListF: TClientListF
       Font.Style = []
       ParentFont = False
       TabOrder = 5
+      Visible = False
       OnClick = PassifClientsRdioBtnClick
     end
     object toutClientsRdioBtn: TRadioButton
-      Left = 754
+      Left = 814
       Top = 45
       Width = 113
       Height = 17
@@ -1382,10 +1450,11 @@ object ClientListF: TClientListF
       Font.Style = []
       ParentFont = False
       TabOrder = 6
+      Visible = False
       OnClick = toutClientsRdioBtnClick
     end
     object Panel2: TPanel
-      Left = 867
+      Left = 927
       Top = 16
       Width = 1
       Height = 40
@@ -1409,6 +1478,7 @@ object ClientListF: TClientListF
       ParentShowHint = False
       ShowHint = False
       TabOrder = 7
+      Visible = False
       StyleElements = []
     end
   end
@@ -1758,28 +1828,27 @@ object ClientListF: TClientListF
       'nom_c=nom_c'
       'adr_c=adr_c'
       'ville_c=ville_c'
-      'fix_c=fix_c'
       'mob_c=mob_c'
+      'fix_c=fix_c'
       'email_c=email_c'
       'willaya_c=willaya_c'
       'fax_c=fax_c'
       'activ_c=activ_c'
-      'logo_c=logo_c'
       'mob2_c=mob2_c'
       'rc_c=rc_c'
       'nif_c=nif_c'
       'nart_c=nart_c'
       'nis_c=nis_c'
-      'obser_c=obser_c'
       'nbank_c=nbank_c'
       'rib_c=rib_c'
       'activite_c=activite_c'
-      'pays_c=pays_c'
       'siteweb_c=siteweb_c'
       'oldcredit_c=oldcredit_c'
       'maxcredit_c=maxcredit_c'
       'code_c=code_c'
-      'tarification_c=tarification_c')
+      'tarification_c=tarification_c'
+      'credit_c=credit_c'
+      'obser_c=obser_c')
     DataSource = ClientListDataS
     BCDToCurrency = False
     Left = 200
@@ -1794,7 +1863,7 @@ object ClientListF: TClientListF
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 42576.399521435200000000
-    ReportOptions.LastChange = 42663.580936562500000000
+    ReportOptions.LastChange = 42809.581910092590000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       ''
@@ -2194,7 +2263,7 @@ object ClientListF: TClientListF
           Font.Style = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxClientDB."oldcredit_c"]')
+            '[frxClientDB."credit_c"]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -2286,6 +2355,7 @@ object ClientListF: TClientListF
           Left = 105.346634880000000000
           Width = 87.307045120000000000
           Height = 15.118120000000000000
+          Visible = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -8
@@ -2299,6 +2369,7 @@ object ClientListF: TClientListF
           Left = -1.086145510000000000
           Width = 106.960566460000000000
           Height = 15.118120000000000000
+          Visible = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -8
@@ -2315,6 +2386,7 @@ object ClientListF: TClientListF
           Top = 14.677180000000000000
           Width = 87.307045120000000000
           Height = 15.118120000000000000
+          Visible = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -8
@@ -2329,6 +2401,7 @@ object ClientListF: TClientListF
           Top = 14.677180000000000000
           Width = 106.960566460000000000
           Height = 15.118120000000000000
+          Visible = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -8
@@ -2345,6 +2418,7 @@ object ClientListF: TClientListF
           Top = 29.354360000000000000
           Width = 87.307045120000000000
           Height = 15.118120000000000000
+          Visible = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -9
@@ -2362,6 +2436,7 @@ object ClientListF: TClientListF
           Top = 29.354360000000000000
           Width = 106.960566460000000000
           Height = 15.118120000000000000
+          Visible = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -8
@@ -2403,5 +2478,88 @@ object ClientListF: TClientListF
     OnShortCut = ApplicationEvents1ShortCut
     Left = 770
     Top = 256
+  end
+  object FilterBVLivPMenu: TPopupMenu
+    Images = MainForm.PanelIcons16
+    Left = 418
+    Top = 130
+    object F1: TMenuItem
+      Caption = 'Filtrer par l'#39'Activit'#233
+      SubMenuImages = MainForm.PanelIcons16
+      ImageIndex = 1
+      object ValideFilterBVLivPMenu: TMenuItem
+        AutoCheck = True
+        Caption = 'Actif'
+        ImageIndex = 3
+        RadioItem = True
+        OnClick = ValideFilterBVLivPMenuClick
+      end
+      object NotValideFilterBVLivPMenu: TMenuItem
+        AutoCheck = True
+        Caption = 'Passif'
+        ImageIndex = 4
+        RadioItem = True
+        OnClick = NotValideFilterBVLivPMenuClick
+      end
+      object N2: TMenuItem
+        Caption = '-'
+        RadioItem = True
+      end
+      object ClearValideFilterBVLivPMenu: TMenuItem
+        AutoCheck = True
+        Caption = 'Tout'
+        Checked = True
+        ImageIndex = 2
+        RadioItem = True
+        OnClick = ClearValideFilterBVLivPMenuClick
+      end
+    end
+    object F3: TMenuItem
+      Caption = 'Filtrer par la R'#232'glement'
+      ImageIndex = 1
+      object RegleFilterBVLivPMenu: TMenuItem
+        AutoCheck = True
+        Caption = 'Cr'#233'dit'#233
+        ImageIndex = 9
+        RadioItem = True
+        OnClick = RegleFilterBVLivPMenuClick
+      end
+      object NoTRegleFilterBVLivPMenu: TMenuItem
+        AutoCheck = True
+        Caption = 'D'#233'bit'#233
+        ImageIndex = 33
+        RadioItem = True
+        OnClick = NoTRegleFilterBVLivPMenuClick
+      end
+      object Crdit1: TMenuItem
+        Caption = 'R'#233'gl'#233
+        OnClick = Crdit1Click
+      end
+      object N1: TMenuItem
+        Caption = '-'
+        RadioItem = True
+      end
+      object ClearRegleFilterBVLivPMenu: TMenuItem
+        AutoCheck = True
+        Caption = 'Tout'
+        Checked = True
+        ImageIndex = 2
+        RadioItem = True
+        OnClick = ClearRegleFilterBVLivPMenuClick
+      end
+    end
+    object N5: TMenuItem
+      Caption = '-'
+      Checked = True
+      SubMenuImages = MainForm.PanelIcons16
+    end
+    object ClearFilterBVLivPMenu: TMenuItem
+      AutoCheck = True
+      Caption = 'Tout'
+      Checked = True
+      SubMenuImages = MainForm.PanelIcons16
+      ImageIndex = 2
+      OnClick = ClearFilterBVLivPMenuClick
+    end
   end
 end

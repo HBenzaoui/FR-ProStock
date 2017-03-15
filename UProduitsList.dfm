@@ -3338,7 +3338,7 @@ object ProduitsListF: TProduitsListF
     Left = 720
     Top = 158
     object F1: TMenuItem
-      Caption = 'Filter par le Stock'
+      Caption = 'Filtrer par le Stock'
       SubMenuImages = MainForm.PanelIcons16
       ImageIndex = 1
       object ValideFilterBVLivPMenu: TMenuItem
@@ -3369,7 +3369,7 @@ object ProduitsListF: TProduitsListF
       end
     end
     object F3: TMenuItem
-      Caption = 'Filter par le Prix D'#39'Achat'
+      Caption = 'Filtrer par le Prix D'#39'Achat'
       ImageIndex = 1
       object RegleFilterBVLivPMenu: TMenuItem
         AutoCheck = True
@@ -3399,7 +3399,7 @@ object ProduitsListF: TProduitsListF
       end
     end
     object F2: TMenuItem
-      Caption = 'Filter par le Prix De Vente'
+      Caption = 'Filtrer par le Prix De Vente'
       SubMenuImages = MainForm.PanelIcons16
       ImageIndex = 1
       object EspeceMPFilterBVLivPMenu: TMenuItem
@@ -3431,7 +3431,7 @@ object ProduitsListF: TProduitsListF
       end
     end
     object FilterparlePrixDeVente1: TMenuItem
-      Caption = 'Filter par la TVA'
+      Caption = 'Filtrer par la TVA'
       ImageIndex = 1
       object T2: TMenuItem
         AutoCheck = True

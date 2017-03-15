@@ -67,6 +67,23 @@ type
     Label27: TLabel;
     Label28: TLabel;
     ApplicationEvents1: TApplicationEvents;
+    FilterBVLivBtn: TAdvToolButton;
+    FilterBVLivPMenu: TPopupMenu;
+    F1: TMenuItem;
+    ValideFilterBVLivPMenu: TMenuItem;
+    NotValideFilterBVLivPMenu: TMenuItem;
+    N2: TMenuItem;
+    ClearValideFilterBVLivPMenu: TMenuItem;
+    F3: TMenuItem;
+    RegleFilterBVLivPMenu: TMenuItem;
+    NoTRegleFilterBVLivPMenu: TMenuItem;
+    Crdit1: TMenuItem;
+    N1: TMenuItem;
+    ClearRegleFilterBVLivPMenu: TMenuItem;
+    N5: TMenuItem;
+    ClearFilterBVLivPMenu: TMenuItem;
+    sImage1: TsImage;
+    sImage2: TsImage;
     procedure AddClientsBtnClick(Sender: TObject);
     procedure EditClientsBtnClick(Sender: TObject);
     procedure ResearchClientsEdtChange(Sender: TObject);
@@ -102,8 +119,27 @@ type
     procedure ResearchClientsEdtKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure ApplicationEvents1ShortCut(var Msg: TWMKey; var Handled: Boolean);
+    procedure ValideFilterBVLivPMenuClick(Sender: TObject);
+    procedure NotValideFilterBVLivPMenuClick(Sender: TObject);
+    procedure ClearValideFilterBVLivPMenuClick(Sender: TObject);
+    procedure RegleFilterBVLivPMenuClick(Sender: TObject);
+    procedure NoTRegleFilterBVLivPMenuClick(Sender: TObject);
+    procedure Crdit1Click(Sender: TObject);
+    procedure ClearRegleFilterBVLivPMenuClick(Sender: TObject);
+    procedure ClearFilterBVLivPMenuClick(Sender: TObject);
   private
     procedure GettingData;
+    procedure Select_ALL;
+    procedure Select_NOT_Valid;
+    procedure Select_Valid;
+    procedure FilteredColor;
+    procedure NOT_FilteredColor;
+    procedure Select_Valid_Credit;
+    procedure Select_Valid_Debite;
+    procedure Select_Valid_Regle;
+    procedure Select_NOT_Valid_Credit;
+    procedure Select_NOT_Valid_Debite;
+    procedure Select_NOT_Valid_Regle;
     { Private declarations }
   public
     { Public declarations }
@@ -118,6 +154,115 @@ implementation
 
 uses UMainF,   UClientGestion, USplash,System.Threading;
 
+procedure TClientListF.Select_Valid;
+begin
+MainForm.ClientTable.DisableControls;
+MainForm.ClientTable.Active:= False;
+MainForm.ClientTable.SQL.clear;
+mainform.ClientTable.sql.Text:='SELECT * FROM client WHERE activ_c = true ';
+MainForm.ClientTable.Active:= True;
+MainForm.ClientTable.EnableControls;
+end;
+
+
+
+procedure TClientListF.Select_NOT_Valid;
+begin
+MainForm.ClientTable.DisableControls;
+MainForm.ClientTable.Active:= False;
+MainForm.ClientTable.SQL.clear;
+mainform.ClientTable.sql.Text:='SELECT * FROM client WHERE activ_c = false ';
+MainForm.ClientTable.Active:= True;
+MainForm.ClientTable.EnableControls;
+end;
+
+
+procedure TClientListF.Select_ALL;
+begin
+MainForm.ClientTable.DisableControls;
+MainForm.ClientTable.Active:= False;
+MainForm.ClientTable.SQL.clear;
+mainform.ClientTable.sql.Text:='SELECT * FROM client ';
+MainForm.ClientTable.Active:= True;
+MainForm.ClientTable.EnableControls;
+end;
+
+
+procedure TClientListF.Select_Valid_Credit;
+begin
+MainForm.ClientTable.DisableControls;
+MainForm.ClientTable.Active:= False;
+MainForm.ClientTable.SQL.clear;
+mainform.ClientTable.sql.Text:='SELECT * FROM client WHERE activ_c = true AND credit_c > ''0'' ';
+MainForm.ClientTable.Active:= True;
+MainForm.ClientTable.EnableControls;
+end;
+
+procedure TClientListF.Select_Valid_Debite;
+begin
+MainForm.ClientTable.DisableControls;
+MainForm.ClientTable.Active:= False;
+MainForm.ClientTable.SQL.clear;
+mainform.ClientTable.sql.Text:='SELECT * FROM client WHERE activ_c = true AND credit_c < ''0'' ';
+MainForm.ClientTable.Active:= True;
+MainForm.ClientTable.EnableControls;
+end;
+
+procedure TClientListF.Select_Valid_Regle;
+begin
+MainForm.ClientTable.DisableControls;
+MainForm.ClientTable.Active:= False;
+MainForm.ClientTable.SQL.clear;
+mainform.ClientTable.sql.Text:='SELECT * FROM client WHERE activ_c = true AND credit_c = ''0'' ';
+MainForm.ClientTable.Active:= True;
+MainForm.ClientTable.EnableControls;
+end;
+
+
+procedure TClientListF.Select_NOT_Valid_Credit;
+begin
+MainForm.ClientTable.DisableControls;
+MainForm.ClientTable.Active:= False;
+MainForm.ClientTable.SQL.clear;
+mainform.ClientTable.sql.Text:='SELECT * FROM client WHERE activ_c = false AND credit_c > ''0'' ';
+MainForm.ClientTable.Active:= True;
+MainForm.ClientTable.EnableControls;
+end;
+
+procedure TClientListF.Select_NOT_Valid_Debite;
+begin
+MainForm.ClientTable.DisableControls;
+MainForm.ClientTable.Active:= False;
+MainForm.ClientTable.SQL.clear;
+mainform.ClientTable.sql.Text:='SELECT * FROM client WHERE activ_c = false AND credit_c < ''0'' ';
+MainForm.ClientTable.Active:= True;
+MainForm.ClientTable.EnableControls;
+end;
+
+procedure TClientListF.Select_NOT_Valid_Regle;
+begin
+MainForm.ClientTable.DisableControls;
+MainForm.ClientTable.Active:= False;
+MainForm.ClientTable.SQL.clear;
+mainform.ClientTable.sql.Text:='SELECT * FROM client WHERE activ_c = false AND credit_c = ''0'' ';
+MainForm.ClientTable.Active:= True;
+MainForm.ClientTable.EnableControls;
+end;
+
+
+procedure TClientListF.FilteredColor;
+begin
+ FilterBVLivBtn.Color:= $0077D90E;
+ FilterBVLivBtn.ColorHot:=  $0080FF00;
+ FilterBVLivBtn.BorderHotColor:= $00EFE9E8;
+end;
+
+procedure TClientListF.NOT_FilteredColor;
+begin
+ FilterBVLivBtn.Color:= $00EFE9E8;
+ FilterBVLivBtn.ColorHot:= $00EFE9E8;
+ FilterBVLivBtn.BorderHotColor:= $004735F9;
+end;
 
 //----- this is a function for custome  Messagedlg  French Caption and buttons and default NON --------//
 
@@ -464,6 +609,60 @@ ClientListfrxRprt.Export(frxXLSExport1);
 MainForm.ClientTable.EnableControls;
 end;
 
+procedure TClientListF.ClearFilterBVLivPMenuClick(Sender: TObject);
+begin
+sImage1.Visible:= False;
+sImage2.Visible:= False;
+F1.Enabled:= True;
+FilterBVLivBtn.ImageIndex:=49;
+NOT_FilteredColor;
+ClearValideFilterBVLivPMenu.Checked:= True;
+ClearFilterBVLivPMenu.Checked:= True;
+ClearRegleFilterBVLivPMenu.Checked:= True;
+MainForm.Bonv_livTable.Filtered:= False;
+Select_ALL;
+end;
+
+procedure TClientListF.ClearRegleFilterBVLivPMenuClick(Sender: TObject);
+begin
+ sImage2.Visible:= False;
+ RegleFilterBVLivPMenu.Enabled:= True;
+
+  sImage1.Visible:= False;
+  Select_ALL;
+  NOT_FilteredColor;
+  FilterBVLivBtn.ImageIndex := 50;
+end;
+
+procedure TClientListF.ClearValideFilterBVLivPMenuClick(Sender: TObject);
+begin
+  if (sImage2.Visible = False)  then
+  begin
+  FilterBVLivBtn.ImageIndex:=50;
+  sImage1.Visible:= False;
+  Select_ALL;
+  NOT_FilteredColor;
+  end else
+  begin
+   if sImage2.ImageIndex = 7 then
+  begin
+  FilterBVLivBtn.ImageIndex:=49;
+   Select_NOT_Valid_Credit;
+  end;
+    if sImage2.ImageIndex = 33 then
+  begin
+  FilterBVLivBtn.ImageIndex:=49;
+  Select_NOT_Valid_Debite;
+  end;
+    if sImage2.ImageIndex = 9 then
+  begin
+  FilterBVLivBtn.ImageIndex:=49;
+  Select_NOT_Valid_Regle;
+  end;
+
+  end;
+end;
+
 procedure TClientListF.ClientsListDBGridEhDblClick(Sender: TObject);
 begin
 //------ use this code to make the clock just on the grid not the title -----/
@@ -544,6 +743,18 @@ begin
  MainForm.ClientTable.IndexesActive:=false;
 end;
 
+procedure TClientListF.Crdit1Click(Sender: TObject);
+begin
+FilterBVLivBtn.ImageIndex:=50;
+sImage1.ImageIndex:=3;
+sImage1.Visible:=True;
+sImage2.ImageIndex:=9;
+sImage2.Visible:=True;
+RegleFilterBVLivPMenu.Enabled:= False;
+FilteredColor;
+Select_Valid_Regle;
+end;
+
 procedure TClientListF.FisrtClientbtnClick(Sender: TObject);
 begin
         MainForm.ClientTable.First;
@@ -578,65 +789,65 @@ begin
        ResearchClientsEdt.SetFocus ;
    //----- for show how many Clients on the database--------------//
 //
-      ToutClientsLbl.Caption:= IntToStr( MainForm.ClientTable.RecordCount) ;
+//      ToutClientsLbl.Caption:= IntToStr( MainForm.ClientTable.RecordCount) ;
+////
+//      MainForm.ClientTable.DisableControls;
+////
+//      MainForm.ClientTable.Active := false;
+//      MainForm.ClientTable.SQL.Clear;
+//      MainForm.ClientTable.SQL.Text :=
+//      'SELECT * FROM client  WHERE activ_c = true ';
+//      MainForm.ClientTable.Active := true;
 //
-      MainForm.ClientTable.DisableControls;
+//     ActifClientsLbl.Caption :=  IntToStr(MainForm.ClientTable.RecordCount - 1);  // -1 is to not calculate the Comptoir
 //
-      MainForm.ClientTable.Active := false;
-      MainForm.ClientTable.SQL.Clear;
-      MainForm.ClientTable.SQL.Text :=
-      'SELECT * FROM client  WHERE activ_c = true ';
-      MainForm.ClientTable.Active := true;
-
-     ActifClientsLbl.Caption :=  IntToStr(MainForm.ClientTable.RecordCount - 1);  // -1 is to not calculate the Comptoir
-
-      MainForm.ClientTable.Active := false;
-      MainForm.ClientTable.SQL.Clear;
-      MainForm.ClientTable.SQL.Text :=
-      'SELECT * FROM client WHERE activ_c = false ';
-      MainForm.ClientTable.Active := true;
-
-      PassifClientsLbl.Caption := IntToStr(MainForm.ClientTable.RecordCount);
-
-      MainForm.ClientTable.Active := false;
-      MainForm.ClientTable.SQL.Clear;
-      MainForm.ClientTable.SQL.Text :=
-      'SELECT * FROM client   ';
-      MainForm.ClientTable.Active := true;
-
-      ToutClientsLbl.Caption :=  IntToStr(MainForm.ClientTable.RecordCount - 1); // -1 is to not calculate the Comptoir
-
-
-
-      if ActifClientsRdioBtn.Checked then
-       begin
-        MainForm.ClientTable.Active := false;
-        MainForm.ClientTable.SQL.Clear;
-        MainForm.ClientTable.SQL.Text :=
-        'SELECT * FROM client  WHERE activ_c = true  ';
-        MainForm.ClientTable.Active := true;
-       end;
-
-       if PassifClientsRdioBtn.Checked then
-       begin
-        MainForm.ClientTable.Active := false;
-        MainForm.ClientTable.SQL.Clear;
-        MainForm.ClientTable.SQL.Text :=
-        'SELECT * FROM client  WHERE activ_c = false  ';
-        MainForm.ClientTable.Active := true;
-       end;
-
-       if toutClientsRdioBtn.Checked then
-       begin
-        MainForm.ClientTable.Active := false;
-        MainForm.ClientTable.SQL.Clear;
-        MainForm.ClientTable.SQL.Text :=
-        'SELECT * FROM client  ';
-        MainForm.ClientTable.Active := true;
-       end;
-
-
-      MainForm.ClientTable.EnableControls;
+//      MainForm.ClientTable.Active := false;
+//      MainForm.ClientTable.SQL.Clear;
+//      MainForm.ClientTable.SQL.Text :=
+//      'SELECT * FROM client WHERE activ_c = false ';
+//      MainForm.ClientTable.Active := true;
+//
+//      PassifClientsLbl.Caption := IntToStr(MainForm.ClientTable.RecordCount);
+//
+//      MainForm.ClientTable.Active := false;
+//      MainForm.ClientTable.SQL.Clear;
+//      MainForm.ClientTable.SQL.Text :=
+//      'SELECT * FROM client   ';
+//      MainForm.ClientTable.Active := true;
+//
+//      ToutClientsLbl.Caption :=  IntToStr(MainForm.ClientTable.RecordCount - 1); // -1 is to not calculate the Comptoir
+//
+//
+//
+//      if ActifClientsRdioBtn.Checked then
+//       begin
+//        MainForm.ClientTable.Active := false;
+//        MainForm.ClientTable.SQL.Clear;
+//        MainForm.ClientTable.SQL.Text :=
+//        'SELECT * FROM client  WHERE activ_c = true  ';
+//        MainForm.ClientTable.Active := true;
+//       end;
+//
+//       if PassifClientsRdioBtn.Checked then
+//       begin
+//        MainForm.ClientTable.Active := false;
+//        MainForm.ClientTable.SQL.Clear;
+//        MainForm.ClientTable.SQL.Text :=
+//        'SELECT * FROM client  WHERE activ_c = false  ';
+//        MainForm.ClientTable.Active := true;
+//       end;
+//
+//       if toutClientsRdioBtn.Checked then
+//       begin
+//        MainForm.ClientTable.Active := false;
+//        MainForm.ClientTable.SQL.Clear;
+//        MainForm.ClientTable.SQL.Text :=
+//        'SELECT * FROM client  ';
+//        MainForm.ClientTable.Active := true;
+//       end;
+//
+//
+//      MainForm.ClientTable.EnableControls;
 
 
 
@@ -749,6 +960,45 @@ begin
      MainForm.ClientTable.Next;
 end;
 
+procedure TClientListF.NoTRegleFilterBVLivPMenuClick(Sender: TObject);
+begin
+FilterBVLivBtn.ImageIndex:=50;
+sImage1.ImageIndex:=3;
+sImage1.Visible:=True;
+sImage2.ImageIndex:=33;
+sImage2.Visible:=True;
+RegleFilterBVLivPMenu.Enabled:= True;
+
+FilteredColor;
+Select_Valid_Debite;
+end;
+
+procedure TClientListF.NotValideFilterBVLivPMenuClick(Sender: TObject);
+begin
+  sImage1.ImageIndex:=4;
+  sImage1.Visible:= True;
+  FilterBVLivBtn.ImageIndex:=50;
+  FilteredColor;
+  ClearFilterBVLivPMenu.Checked:= False;
+  Select_NOT_Valid;
+   if (sImage2.Visible = True)  then
+  begin
+   if sImage2.ImageIndex = 7 then
+  begin
+   Select_NOT_Valid_Credit;
+  end;
+    if sImage2.ImageIndex = 33 then
+  begin
+  Select_NOT_Valid_Debite;
+  end;
+    if sImage2.ImageIndex = 9 then
+  begin
+  Select_NOT_Valid_Regle;
+  end;
+
+  end;
+end;
+
 procedure TClientListF.PreviosClientbtnClick(Sender: TObject);
 begin
    MainForm.ClientTable.Prior;
@@ -807,10 +1057,50 @@ begin
 
 end;
 
+procedure TClientListF.ValideFilterBVLivPMenuClick(Sender: TObject);
+begin
+  sImage1.ImageIndex:=3;
+  sImage1.Visible:= True;
+  FilterBVLivBtn.ImageIndex:=50;
+  FilteredColor;
+  ClearFilterBVLivPMenu.Checked:= False;
+  Select_Valid;
+ if (sImage2.Visible = True)  then
+  begin
+//  Select_Valid;
+    if sImage2.ImageIndex = 7 then
+    begin
+     Select_Valid_Credit;
+    end;
+      if sImage2.ImageIndex = 33 then
+    begin
+    Select_Valid_Debite;
+    end;
+      if sImage2.ImageIndex = 9 then
+    begin
+    Select_Valid_Regle;
+    end;
+
+  end;
+end;
+
 procedure TClientListF.RefreshGirdBtnClick(Sender: TObject);
 begin
 MainForm.ClientTable.Close;
 MainForm.ClientTable.Open;
+end;
+
+procedure TClientListF.RegleFilterBVLivPMenuClick(Sender: TObject);
+begin
+FilterBVLivBtn.ImageIndex:=50;
+sImage1.ImageIndex:=3;
+sImage1.Visible:=True;
+sImage2.ImageIndex:=7;
+sImage2.Visible:=True;
+RegleFilterBVLivPMenu.Enabled:= True;
+
+FilteredColor;
+Select_Valid_Credit;
 end;
 
 procedure TClientListF.ResearchClientsEdtChange(Sender: TObject);

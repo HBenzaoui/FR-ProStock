@@ -8,7 +8,7 @@ uses
   EhLibFireDAC, DBGridEhToolCtrls, DynVarsEh, Vcl.Menus, frxClass, frxDBSet,
   frxExportXLS, frxExportPDF, Data.DB, Vcl.ComCtrls, sStatusBar, Vcl.StdCtrls,
   Vcl.WinXCtrls, Vcl.Buttons, sSpeedButton, AdvToolBtn, Vcl.ExtCtrls, EhLibVCL,
-  GridsEh, DBAxisGridsEh, DBGridEh, Vcl.OleAuto,ExcelXP, Vcl.AppEvnts;
+  GridsEh, DBAxisGridsEh, DBGridEh, Vcl.OleAuto,ExcelXP, Vcl.AppEvnts, acImage;
 
 type
   TFournisseurListF = class(TForm)
@@ -57,6 +57,23 @@ type
     Label27: TLabel;
     Label28: TLabel;
     ApplicationEvents1: TApplicationEvents;
+    FilterBVLivBtn: TAdvToolButton;
+    sImage1: TsImage;
+    FilterBVLivPMenu: TPopupMenu;
+    F1: TMenuItem;
+    ValideFilterBVLivPMenu: TMenuItem;
+    NotValideFilterBVLivPMenu: TMenuItem;
+    N2: TMenuItem;
+    ClearValideFilterBVLivPMenu: TMenuItem;
+    F3: TMenuItem;
+    RegleFilterBVLivPMenu: TMenuItem;
+    NoTRegleFilterBVLivPMenu: TMenuItem;
+    N1: TMenuItem;
+    ClearRegleFilterBVLivPMenu: TMenuItem;
+    N5: TMenuItem;
+    ClearFilterBVLivPMenu: TMenuItem;
+    Crdit1: TMenuItem;
+    sImage2: TsImage;
     procedure ResearchFournisseurEdtKeyPress(Sender: TObject; var Key: Char);
     procedure ResearchFournisseurEdtChange(Sender: TObject);
     procedure FisrtFournisseursbtnClick(Sender: TObject);
@@ -92,8 +109,27 @@ type
       Shift: TShiftState);
     procedure ApplicationEvents1ShortCut(var Msg: TWMKey; var Handled: Boolean);
     procedure AdvToolButton3Click(Sender: TObject);
+    procedure ValideFilterBVLivPMenuClick(Sender: TObject);
+    procedure NotValideFilterBVLivPMenuClick(Sender: TObject);
+    procedure ClearValideFilterBVLivPMenuClick(Sender: TObject);
+    procedure RegleFilterBVLivPMenuClick(Sender: TObject);
+    procedure NoTRegleFilterBVLivPMenuClick(Sender: TObject);
+    procedure Crdit1Click(Sender: TObject);
+    procedure ClearRegleFilterBVLivPMenuClick(Sender: TObject);
+    procedure ClearFilterBVLivPMenuClick(Sender: TObject);
   private
     procedure GettingData;
+    procedure Select_Valid;
+    procedure Select_ALL;
+    procedure Select_NOT_Valid;
+    procedure FilteredColor;
+    procedure NOT_FilteredColor;
+    procedure Select_Valid_Credit;
+    procedure Select_Valid_Debite;
+    procedure Select_Valid_Regle;
+    procedure Select_NOT_Valid_Credit;
+    procedure Select_NOT_Valid_Debite;
+    procedure Select_NOT_Valid_Regle;
     { Private declarations }
   public
     { Public declarations }
@@ -107,6 +143,118 @@ implementation
 {$R *.dfm}
 
 uses UMainF, UFournisseurGestion, USplash, UClientGestion,Threading;
+
+
+procedure TFournisseurListF.Select_Valid;
+begin
+MainForm.FournisseurTable.DisableControls;
+MainForm.FournisseurTable.Active:= False;
+MainForm.FournisseurTable.SQL.clear;
+mainform.FournisseurTable.sql.Text:='SELECT * FROM fournisseur WHERE activ_f = true ';
+MainForm.FournisseurTable.Active:= True;
+MainForm.FournisseurTable.EnableControls;
+end;
+
+
+
+procedure TFournisseurListF.Select_NOT_Valid;
+begin
+MainForm.FournisseurTable.DisableControls;
+MainForm.FournisseurTable.Active:= False;
+MainForm.FournisseurTable.SQL.clear;
+mainform.FournisseurTable.sql.Text:='SELECT * FROM fournisseur WHERE activ_f = false ';
+MainForm.FournisseurTable.Active:= True;
+MainForm.FournisseurTable.EnableControls;
+end;
+
+
+procedure TFournisseurListF.Select_ALL;
+begin
+MainForm.FournisseurTable.DisableControls;
+MainForm.FournisseurTable.Active:= False;
+MainForm.FournisseurTable.SQL.clear;
+mainform.FournisseurTable.sql.Text:='SELECT * FROM fournisseur ';
+MainForm.FournisseurTable.Active:= True;
+MainForm.FournisseurTable.EnableControls;
+end;
+
+
+procedure TFournisseurListF.Select_Valid_Credit;
+begin
+MainForm.FournisseurTable.DisableControls;
+MainForm.FournisseurTable.Active:= False;
+MainForm.FournisseurTable.SQL.clear;
+mainform.FournisseurTable.sql.Text:='SELECT * FROM fournisseur WHERE activ_f = true AND credit_f > ''0'' ';
+MainForm.FournisseurTable.Active:= True;
+MainForm.FournisseurTable.EnableControls;
+end;
+
+procedure TFournisseurListF.Select_Valid_Debite;
+begin
+MainForm.FournisseurTable.DisableControls;
+MainForm.FournisseurTable.Active:= False;
+MainForm.FournisseurTable.SQL.clear;
+mainform.FournisseurTable.sql.Text:='SELECT * FROM fournisseur WHERE activ_f = true AND credit_f < ''0'' ';
+MainForm.FournisseurTable.Active:= True;
+MainForm.FournisseurTable.EnableControls;
+end;
+
+procedure TFournisseurListF.Select_Valid_Regle;
+begin
+MainForm.FournisseurTable.DisableControls;
+MainForm.FournisseurTable.Active:= False;
+MainForm.FournisseurTable.SQL.clear;
+mainform.FournisseurTable.sql.Text:='SELECT * FROM fournisseur WHERE activ_f = true AND credit_f = ''0'' ';
+MainForm.FournisseurTable.Active:= True;
+MainForm.FournisseurTable.EnableControls;
+end;
+
+
+procedure TFournisseurListF.Select_NOT_Valid_Credit;
+begin
+MainForm.FournisseurTable.DisableControls;
+MainForm.FournisseurTable.Active:= False;
+MainForm.FournisseurTable.SQL.clear;
+mainform.FournisseurTable.sql.Text:='SELECT * FROM fournisseur WHERE activ_f = false AND credit_f > ''0'' ';
+MainForm.FournisseurTable.Active:= True;
+MainForm.FournisseurTable.EnableControls;
+end;
+
+procedure TFournisseurListF.Select_NOT_Valid_Debite;
+begin
+MainForm.FournisseurTable.DisableControls;
+MainForm.FournisseurTable.Active:= False;
+MainForm.FournisseurTable.SQL.clear;
+mainform.FournisseurTable.sql.Text:='SELECT * FROM fournisseur WHERE activ_f = false AND credit_f < ''0'' ';
+MainForm.FournisseurTable.Active:= True;
+MainForm.FournisseurTable.EnableControls;
+end;
+
+procedure TFournisseurListF.Select_NOT_Valid_Regle;
+begin
+MainForm.FournisseurTable.DisableControls;
+MainForm.FournisseurTable.Active:= False;
+MainForm.FournisseurTable.SQL.clear;
+mainform.FournisseurTable.sql.Text:='SELECT * FROM fournisseur WHERE activ_f = false AND credit_f = ''0'' ';
+MainForm.FournisseurTable.Active:= True;
+MainForm.FournisseurTable.EnableControls;
+end;
+
+
+procedure TFournisseurListF.FilteredColor;
+begin
+ FilterBVLivBtn.Color:= $0077D90E;
+ FilterBVLivBtn.ColorHot:=  $0080FF00;
+ FilterBVLivBtn.BorderHotColor:= $00EFE9E8;
+end;
+
+procedure TFournisseurListF.NOT_FilteredColor;
+begin
+ FilterBVLivBtn.Color:= $00EFE9E8;
+ FilterBVLivBtn.ColorHot:= $00EFE9E8;
+ FilterBVLivBtn.BorderHotColor:= $004735F9;
+end;
+
 
 //----- this is a function for custome  Messagedlg  French Caption and buttons and default NON --------//
 
@@ -248,6 +396,73 @@ begin
           end;
       end;
      end;
+end;
+
+procedure TFournisseurListF.ClearFilterBVLivPMenuClick(Sender: TObject);
+begin
+sImage1.Visible:= False;
+sImage2.Visible:= False;
+F1.Enabled:= True;
+FilterBVLivBtn.ImageIndex:=49;
+NOT_FilteredColor;
+ClearValideFilterBVLivPMenu.Checked:= True;
+ClearFilterBVLivPMenu.Checked:= True;
+ClearRegleFilterBVLivPMenu.Checked:= True;
+MainForm.Bonv_livTable.Filtered:= False;
+Select_ALL;
+end;
+
+procedure TFournisseurListF.ClearRegleFilterBVLivPMenuClick(Sender: TObject);
+begin
+ sImage2.Visible:= False;
+ RegleFilterBVLivPMenu.Enabled:= True;
+
+  sImage1.Visible:= False;
+  Select_ALL;
+  NOT_FilteredColor;
+  FilterBVLivBtn.ImageIndex := 50;
+end;
+
+
+procedure TFournisseurListF.ClearValideFilterBVLivPMenuClick(Sender: TObject);
+begin
+  if (sImage2.Visible = False)  then
+  begin
+  FilterBVLivBtn.ImageIndex:=50;
+  sImage1.Visible:= False;
+  Select_ALL;
+  NOT_FilteredColor;
+  end else
+  begin
+   if sImage2.ImageIndex = 7 then
+  begin
+  FilterBVLivBtn.ImageIndex:=49;
+   Select_NOT_Valid_Credit;
+  end;
+    if sImage2.ImageIndex = 33 then
+  begin
+  FilterBVLivBtn.ImageIndex:=49;
+  Select_NOT_Valid_Debite;
+  end;
+    if sImage2.ImageIndex = 9 then
+  begin
+  FilterBVLivBtn.ImageIndex:=49;
+  Select_NOT_Valid_Regle;
+  end;
+
+  end;
+end;
+
+procedure TFournisseurListF.Crdit1Click(Sender: TObject);
+begin
+FilterBVLivBtn.ImageIndex:=50;
+sImage1.ImageIndex:=3;
+sImage1.Visible:=True;
+sImage2.ImageIndex:=9;
+sImage2.Visible:=True;
+RegleFilterBVLivPMenu.Enabled:= False;
+FilteredColor;
+Select_Valid_Regle;
 end;
 
 procedure TFournisseurListF.DeleteFournisseursBtnClick(Sender: TObject);
@@ -490,7 +705,7 @@ begin
     +'  AS                          '
     +'  SELECT code_f,nom_f,fix_f,mob_f,   '
     +'  mob2_f,fax_f,adr_f,ville_f,willaya_f,email_f,siteweb_f,rc_f,  '
-    +'  nif_f,nart_f,nis_f,nbank_f,rib_f,oldcredit_f                  '
+    +'  nif_f,nart_f,nis_f,nbank_f,rib_f,credit_f                  '
     +'  FROM fournisseur                                                   '
     +'  WITH NO DATA;                                                 '
 
@@ -511,7 +726,7 @@ begin
     +'     siteweb_f  = excluded.siteweb_f,   rc_f        = excluded.rc_f,           '
     +'     nif_f      = excluded.nif_f,   		nart_f      = excluded.nart_f,         '
     +'     nis_f      = excluded.nis_f,   		nbank_f     = excluded.nbank_f,        '
-    +'     rib_f      = excluded.rib_f,   		oldcredit_f = excluded.oldcredit_f;   DROP TABLE tmp_table; '
+    +'     rib_f      = excluded.rib_f,   		credit_f = excluded.credit_f;   DROP TABLE tmp_table; '
 
      );
 
@@ -567,64 +782,64 @@ begin
 
        ResearchFournisseurEdt.SetFocus ;
   //----- for show how many Fournisseur on the database--------------//
-      ToutFournisseursLbl.Caption:= IntToStr( MainForm.FournisseurTable.RecordCount) ;
-
-      MainForm.FournisseurTable.DisableControls;
-
-      MainForm.FournisseurTable.Active := false;
-      MainForm.FournisseurTable.SQL.Clear;
-      MainForm.FournisseurTable.SQL.Text :=
-      'SELECT * FROM fournisseur  WHERE activ_f = true ORDER BY code_f';
-      MainForm.FournisseurTable.Active := true;
-
-     ActifFournisseursLbl.Caption:= IntToStr(MainForm.FournisseurTable.RecordCount);
-
-      MainForm.FournisseurTable.Active := false;
-      MainForm.FournisseurTable.SQL.Clear;
-      MainForm.FournisseurTable.SQL.Text :=
-      'SELECT * FROM fournisseur WHERE activ_f = false ORDER BY code_f';
-      MainForm.FournisseurTable.Active := true;
-
-      PassifFournisseursLbl.Caption := IntToStr(MainForm.FournisseurTable.RecordCount);
-
-
-      MainForm.FournisseurTable.Active := false;
-      MainForm.FournisseurTable.SQL.Clear;
-      MainForm.FournisseurTable.SQL.Text :=
-      'SELECT * FROM fournisseur ORDER BY code_f ';
-      MainForm.FournisseurTable.Active := true;
-
-      ToutFournisseursLbl.Caption := IntToStr(MainForm.FournisseurTable.RecordCount);
-
-      if ActifFournisseursRdioBtn.Checked then
-       begin
-        MainForm.FournisseurTable.Active := false;
-        MainForm.FournisseurTable.SQL.Clear;
-        MainForm.FournisseurTable.SQL.Text :=
-        'SELECT * FROM fournisseur  WHERE activ_f = true ORDER BY code_f';
-        MainForm.FournisseurTable.Active := true;
-       end;
-
-       if PassifFournisseursRdioBtn.Checked then
-       begin
-        MainForm.FournisseurTable.Active := false;
-        MainForm.FournisseurTable.SQL.Clear;
-        MainForm.FournisseurTable.SQL.Text :=
-        'SELECT * FROM fournisseur  WHERE activ_f = false ORDER BY code_f';
-        MainForm.FournisseurTable.Active := true;
-       end;
-
-       if toutFournisseursRdioBtn.Checked then
-       begin
-        MainForm.FournisseurTable.Active := false;
-        MainForm.FournisseurTable.SQL.Clear;
-        MainForm.FournisseurTable.SQL.Text :=
-        'SELECT * FROM fournisseur ORDER BY code_f';
-        MainForm.FournisseurTable.Active := true;
-       end;
-
-
-      MainForm.FournisseurTable.EnableControls;
+//      ToutFournisseursLbl.Caption:= IntToStr( MainForm.FournisseurTable.RecordCount) ;
+//
+//      MainForm.FournisseurTable.DisableControls;
+//
+//      MainForm.FournisseurTable.Active := false;
+//      MainForm.FournisseurTable.SQL.Clear;
+//      MainForm.FournisseurTable.SQL.Text :=
+//      'SELECT * FROM fournisseur  WHERE activ_f = true ORDER BY code_f';
+//      MainForm.FournisseurTable.Active := true;
+//
+//     ActifFournisseursLbl.Caption:= IntToStr(MainForm.FournisseurTable.RecordCount);
+//
+//      MainForm.FournisseurTable.Active := false;
+//      MainForm.FournisseurTable.SQL.Clear;
+//      MainForm.FournisseurTable.SQL.Text :=
+//      'SELECT * FROM fournisseur WHERE activ_f = false ORDER BY code_f';
+//      MainForm.FournisseurTable.Active := true;
+//
+//      PassifFournisseursLbl.Caption := IntToStr(MainForm.FournisseurTable.RecordCount);
+//
+//
+//      MainForm.FournisseurTable.Active := false;
+//      MainForm.FournisseurTable.SQL.Clear;
+//      MainForm.FournisseurTable.SQL.Text :=
+//      'SELECT * FROM fournisseur ORDER BY code_f ';
+//      MainForm.FournisseurTable.Active := true;
+//
+//      ToutFournisseursLbl.Caption := IntToStr(MainForm.FournisseurTable.RecordCount);
+//
+//      if ActifFournisseursRdioBtn.Checked then
+//       begin
+//        MainForm.FournisseurTable.Active := false;
+//        MainForm.FournisseurTable.SQL.Clear;
+//        MainForm.FournisseurTable.SQL.Text :=
+//        'SELECT * FROM fournisseur  WHERE activ_f = true ORDER BY code_f';
+//        MainForm.FournisseurTable.Active := true;
+//       end;
+//
+//       if PassifFournisseursRdioBtn.Checked then
+//       begin
+//        MainForm.FournisseurTable.Active := false;
+//        MainForm.FournisseurTable.SQL.Clear;
+//        MainForm.FournisseurTable.SQL.Text :=
+//        'SELECT * FROM fournisseur  WHERE activ_f = false ORDER BY code_f';
+//        MainForm.FournisseurTable.Active := true;
+//       end;
+//
+//       if toutFournisseursRdioBtn.Checked then
+//       begin
+//        MainForm.FournisseurTable.Active := false;
+//        MainForm.FournisseurTable.SQL.Clear;
+//        MainForm.FournisseurTable.SQL.Text :=
+//        'SELECT * FROM fournisseur ORDER BY code_f';
+//        MainForm.FournisseurTable.Active := true;
+//       end;
+//
+//
+//      MainForm.FournisseurTable.EnableControls;
 
 end;
 
@@ -717,6 +932,45 @@ begin
         MainForm.FournisseurTable.Next;
 end;
 
+procedure TFournisseurListF.NoTRegleFilterBVLivPMenuClick(Sender: TObject);
+begin
+FilterBVLivBtn.ImageIndex:=50;
+sImage1.ImageIndex:=3;
+sImage1.Visible:=True;
+sImage2.ImageIndex:=33;
+sImage2.Visible:=True;
+RegleFilterBVLivPMenu.Enabled:= True;
+
+FilteredColor;
+Select_Valid_Debite;
+end;
+
+procedure TFournisseurListF.NotValideFilterBVLivPMenuClick(Sender: TObject);
+begin
+  sImage1.ImageIndex:=4;
+  sImage1.Visible:= True;
+  FilterBVLivBtn.ImageIndex:=50;
+  FilteredColor;
+  ClearFilterBVLivPMenu.Checked:= False;
+  Select_NOT_Valid;
+   if (sImage2.Visible = True)  then
+  begin
+   if sImage2.ImageIndex = 7 then
+  begin
+   Select_NOT_Valid_Credit;
+  end;
+    if sImage2.ImageIndex = 33 then
+  begin
+  Select_NOT_Valid_Debite;
+  end;
+    if sImage2.ImageIndex = 9 then
+  begin
+  Select_NOT_Valid_Regle;
+  end;
+
+  end;
+end;
+
 procedure TFournisseurListF.PassifFournisseursRdioBtnClick(Sender: TObject);
 begin
 
@@ -745,6 +999,20 @@ procedure TFournisseurListF.RefreshGirdBtnClick(Sender: TObject);
 begin
 MainForm.FournisseurTable.Close;
 MainForm.FournisseurTable.Open;
+end;
+
+procedure TFournisseurListF.RegleFilterBVLivPMenuClick(Sender: TObject);
+begin
+FilterBVLivBtn.ImageIndex:=50;
+sImage1.ImageIndex:=3;
+sImage1.Visible:=True;
+sImage2.ImageIndex:=7;
+sImage2.Visible:=True;
+RegleFilterBVLivPMenu.Enabled:= True;
+
+FilteredColor;
+Select_Valid_Credit;
+
 end;
 
 procedure TFournisseurListF.ResearchFournisseurEdtChange(Sender: TObject);
@@ -841,7 +1109,34 @@ begin
 
 end;
 
-  procedure TFournisseurListF.GettingData;
+  procedure TFournisseurListF.ValideFilterBVLivPMenuClick(Sender: TObject);
+begin
+  sImage1.ImageIndex:=3;
+  sImage1.Visible:= True;
+  FilterBVLivBtn.ImageIndex:=50;
+  FilteredColor;
+  ClearFilterBVLivPMenu.Checked:= False;
+  Select_Valid;
+ if (sImage2.Visible = True)  then
+  begin
+//  Select_Valid;
+    if sImage2.ImageIndex = 7 then
+    begin
+     Select_Valid_Credit;
+    end;
+      if sImage2.ImageIndex = 33 then
+    begin
+    Select_Valid_Debite;
+    end;
+      if sImage2.ImageIndex = 9 then
+    begin
+    Select_Valid_Regle;
+    end;
+
+  end;
+end;
+
+procedure TFournisseurListF.GettingData;
 var
   Agent,Actif,Passif,Tout,Four : TfrxMemoView;
 begin

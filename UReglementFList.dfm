@@ -1977,7 +1977,7 @@ object ReglementFListF: TReglementFListF
     Left = 868
     Top = 162
     object F1: TMenuItem
-      Caption = 'Filter par le Source'
+      Caption = 'Filtrer par le Source'
       SubMenuImages = MainForm.PanelIcons16
       ImageIndex = 1
       object ValideFilterBVLivPMenu: TMenuItem
@@ -2016,7 +2016,7 @@ object ReglementFListF: TReglementFListF
       end
     end
     object F2: TMenuItem
-      Caption = 'Filter par le Mode de Paiment'
+      Caption = 'Filtrer par le Mode de Paiment'
       SubMenuImages = MainForm.PanelIcons16
       ImageIndex = 1
       object EspeceMPFilterBVLivPMenu: TMenuItem

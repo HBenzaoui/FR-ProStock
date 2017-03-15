@@ -2537,10 +2537,10 @@ object BonFacAF: TBonFacAF
   end
   object FilterBVLivPMenu: TPopupMenu
     Images = MainForm.PanelIcons16
-    Left = 718
-    Top = 184
+    Left = 572
+    Top = 118
     object F1: TMenuItem
-      Caption = 'Filter par la Validation'
+      Caption = 'Filtrer par la Validation'
       SubMenuImages = MainForm.PanelIcons16
       ImageIndex = 1
       object ValideFilterBVLivPMenu: TMenuItem
@@ -2571,7 +2571,7 @@ object BonFacAF: TBonFacAF
       end
     end
     object F3: TMenuItem
-      Caption = 'Filter par la R'#232'glement'
+      Caption = 'Filtrer par la R'#232'glement'
       ImageIndex = 1
       object RegleFilterBVLivPMenu: TMenuItem
         AutoCheck = True
@@ -2601,7 +2601,7 @@ object BonFacAF: TBonFacAF
       end
     end
     object F2: TMenuItem
-      Caption = 'Filter par le Mode de Paiment'
+      Caption = 'Filtrer par le Mode de Paiment'
       SubMenuImages = MainForm.PanelIcons16
       ImageIndex = 1
       object EspeceMPFilterBVLivPMenu: TMenuItem
