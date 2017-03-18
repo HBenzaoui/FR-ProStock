@@ -1530,7 +1530,7 @@ end;
 
 procedure TBonFacVGestionF.B1Click(Sender: TObject);
  var
-NEWCredit,OLDCredit,NEWCreditLbl,OLDCreditLbl  : TfrxMemoView;
+NEWCredit,OLDCredit,NEWCreditLbl,OLDCreditLbl , TotalACHAT,Versement,TotalACHATLbl,VersementLbl   : TfrxMemoView;
 LineCredit,LineCreditTop :TfrxShapeView;
 begin
 MainForm.Bonv_fac_listTable.DisableControls;
@@ -1544,6 +1544,17 @@ MainForm.Bonv_fac_listTable.DisableControls;
   OLDCreditLbl.Visible:= False;
   NEWCreditLbl:= BonFacVPListfrxRprt.FindObject('NEWCreditLbl') as TfrxMemoView;
   NEWCreditLbl.Visible:= False;
+
+    TotalACHAT:= BonFacVPListfrxRprt.FindObject('TotalACHAT') as TfrxMemoView;
+  TotalACHAT.Visible:= False;
+  Versement:= BonFacVPListfrxRprt.FindObject('Versement') as TfrxMemoView;
+  Versement.Visible:= False;
+
+  TotalACHATLbl:= BonFacVPListfrxRprt.FindObject('TotalACHATLbl') as TfrxMemoView;
+  TotalACHATLbl.Visible:= False;
+  VersementLbl:= BonFacVPListfrxRprt.FindObject('VersementLbl') as TfrxMemoView;
+  VersementLbl.Visible:= False;
+
   LineCredit:= BonFacVPListfrxRprt.FindObject('LineCredit') as TfrxShapeView;
   LineCredit.Visible:= False;
   LineCreditTop:= BonFacVPListfrxRprt.FindObject('LineCreditTop') as TfrxShapeView;
@@ -1556,7 +1567,7 @@ end;
 
 procedure TBonFacVGestionF.BondeCaisseSimple2Click(Sender: TObject);
  var
-NEWCredit,OLDCredit,NEWCreditLbl,OLDCreditLbl  : TfrxMemoView;
+NEWCredit,OLDCredit,NEWCreditLbl,OLDCreditLbl , TotalACHAT,Versement,TotalACHATLbl,VersementLbl   : TfrxMemoView;
 LineCredit,LineCreditTop :TfrxShapeView;
 begin
 MainForm.Bonv_fac_listTable.DisableControls;
@@ -1570,6 +1581,17 @@ MainForm.Bonv_fac_listTable.DisableControls;
   OLDCreditLbl.Visible:= True;
   NEWCreditLbl:= BonFacVPListfrxRprt.FindObject('NEWCreditLbl') as TfrxMemoView;
   NEWCreditLbl.Visible:= True;
+
+  TotalACHAT:= BonFacVPListfrxRprt.FindObject('TotalACHAT') as TfrxMemoView;
+  TotalACHAT.Visible:= True;
+  Versement:= BonFacVPListfrxRprt.FindObject('Versement') as TfrxMemoView;
+  Versement.Visible:= True;
+
+  TotalACHATLbl:= BonFacVPListfrxRprt.FindObject('TotalACHATLbl') as TfrxMemoView;
+  TotalACHATLbl.Visible:= True;
+  VersementLbl:= BonFacVPListfrxRprt.FindObject('VersementLbl') as TfrxMemoView;
+  VersementLbl.Visible:= True;
+
   LineCredit:= BonFacVPListfrxRprt.FindObject('LineCredit') as TfrxShapeView;
   LineCredit.Visible:= True;
   LineCreditTop:= BonFacVPListfrxRprt.FindObject('LineCreditTop') as TfrxShapeView;

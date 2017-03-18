@@ -2849,8 +2849,9 @@ object BonFacPGestionF: TBonFacPGestionF
     PreviewOptions.Zoom = 1.000000000000000000
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
+    PrintOptions.ShowDialog = False
     ReportOptions.CreateDate = 42576.399521435200000000
-    ReportOptions.LastChange = 42752.528679548610000000
+    ReportOptions.LastChange = 42812.476904699080000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       ''
@@ -3487,7 +3488,7 @@ object BonFacPGestionF: TBonFacPGestionF
           Center = True
           DataField = 'LOGO'
           DataSetName = 'S_ENTREP'
-          HightQuality = False
+          HightQuality = True
           Transparent = True
           TransparentColor = clWhite
         end
@@ -4108,7 +4109,7 @@ object BonFacPGestionF: TBonFacPGestionF
         end
         object Memo15: TfrxMemoView
           Left = 19.923622550000000000
-          Top = 186.606370000000000000
+          Top = 195.606370000000000000
           Width = 128.243362760000000000
           Height = 15.639434480000000000
           Visible = False
@@ -4125,9 +4126,9 @@ object BonFacPGestionF: TBonFacPGestionF
         end
         object MPRX: TfrxMemoView
           Left = 149.309522550000000000
-          Top = 185.290074960000000000
+          Top = 195.179839970000000000
           Width = 260.100382730000000000
-          Height = 20.272024550000000000
+          Height = 16.492494550000000000
           Visible = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -4141,7 +4142,7 @@ object BonFacPGestionF: TBonFacPGestionF
         end
         object Memo17: TfrxMemoView
           Left = 1.025972550000000000
-          Top = 211.401670000000000000
+          Top = 213.401670000000000000
           Width = 147.141012760000000000
           Height = 15.639434480000000000
           Visible = False
@@ -4158,9 +4159,9 @@ object BonFacPGestionF: TBonFacPGestionF
         end
         object NCHeqRX: TfrxMemoView
           Left = 149.309522550000000000
-          Top = 210.085374970000000000
+          Top = 212.975139970000000000
           Width = 260.100382730000000000
-          Height = 20.272024550000000000
+          Height = 16.492494550000000000
           Visible = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -4172,9 +4173,27 @@ object BonFacPGestionF: TBonFacPGestionF
           ParentFont = False
           VAlign = vaCenter
         end
+        object LineCredit: TfrxShapeView
+          Left = -2.753557450000000000
+          Top = 193.732388430000000000
+          Width = 268.346456690000000000
+          Height = 0.566931570000000000
+          Fill.BackColor = 13948116
+          Fill.ForeColor = clNone
+          Frame.Color = 13948116
+        end
+        object LineCreditTop: TfrxShapeView
+          Left = -3.779334720000000000
+          Top = 114.944960000000000000
+          Width = 268.346456690000000000
+          Height = 0.566931570000000000
+          Fill.BackColor = 13948116
+          Fill.ForeColor = clNone
+          Frame.Color = 13948116
+        end
         object OLDCreditLbl: TfrxMemoView
-          Left = 52.364562550000000000
-          Top = 133.385900000000000000
+          Left = 34.262017270000000000
+          Top = 117.591960030000000000
           Width = 98.007122760000000000
           Height = 15.639434480000000000
           Font.Charset = DEFAULT_CHARSET
@@ -4184,15 +4203,15 @@ object BonFacPGestionF: TBonFacPGestionF
           Font.Style = []
           HAlign = haRight
           Memo.UTF8W = (
-            'Ancien cr'#233'dit :')
+            'Ancien solde :')
           ParentFont = False
           VAlign = vaCenter
         end
         object OLDCredit: TfrxMemoView
-          Left = 152.073282550000000000
-          Top = 131.385900000000000000
+          Left = 132.970737270000000000
+          Top = 117.165430000000000000
           Width = 131.596362730000000000
-          Height = 20.272024550000000000
+          Height = 16.492494550000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -4204,9 +4223,9 @@ object BonFacPGestionF: TBonFacPGestionF
           ParentFont = False
           VAlign = vaCenter
         end
-        object NEWCreditLbl: TfrxMemoView
-          Left = 41.025972550000000000
-          Top = 159.181200000000000000
+        object TotalACHATLbl: TfrxMemoView
+          Left = 22.923427270000000000
+          Top = 137.235023360000000000
           Width = 109.345712760000000000
           Height = 15.639434480000000000
           Font.Charset = DEFAULT_CHARSET
@@ -4216,15 +4235,86 @@ object BonFacPGestionF: TBonFacPGestionF
           Font.Style = []
           HAlign = haRight
           Memo.UTF8W = (
-            'Nouveau cr'#233'dit :')
+            'Total achat :')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object TotalACHAT: TfrxMemoView
+          Left = 132.970737270000000000
+          Top = 136.808493320000000000
+          Width = 131.596362730000000000
+          Height = 16.492494550000000000
+          DataSetName = 'frxBonLivDT'
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[frxBonFacPDB."montttc_bpfac"]')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object VersementLbl: TfrxMemoView
+          Left = 34.262017270000000000
+          Top = 156.878086700000000000
+          Width = 98.007122760000000000
+          Height = 15.639434480000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            'Versement :')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Versement: TfrxMemoView
+          Left = 132.970737270000000000
+          Top = 156.451556670000000000
+          Width = 131.596362730000000000
+          Height = 16.492494550000000000
+          DataSetName = 'frxBonLivDT'
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[frxBonFacPDB."montver_bpfac"]'
+            '')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object NEWCreditLbl: TfrxMemoView
+          Left = 22.923427270000000000
+          Top = 176.521150030000000000
+          Width = 109.345712760000000000
+          Height = 15.639434480000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            'Nouveau solde :')
           ParentFont = False
           VAlign = vaCenter
         end
         object NEWCredit: TfrxMemoView
-          Left = 152.073282550000000000
-          Top = 157.181200000000000000
+          Left = 132.970737270000000000
+          Top = 176.094619990000000000
           Width = 131.596362730000000000
-          Height = 20.272024550000000000
+          Height = 16.492494550000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -4235,24 +4325,6 @@ object BonFacPGestionF: TBonFacPGestionF
             '0,00')
           ParentFont = False
           VAlign = vaCenter
-        end
-        object LineCredit: TfrxShapeView
-          Left = -2.753557450000000000
-          Top = 179.732388430000000000
-          Width = 287.244084720000000000
-          Height = 0.566931570000000000
-          Fill.BackColor = 13948116
-          Fill.ForeColor = clNone
-          Frame.Color = 13948116
-        end
-        object LineCreditTop: TfrxShapeView
-          Left = -3.779334720000000000
-          Top = 127.944960000000000000
-          Width = 287.244084720000000000
-          Height = 0.566931570000000000
-          Fill.BackColor = 13948116
-          Fill.ForeColor = clNone
-          Frame.Color = 13948116
         end
       end
     end

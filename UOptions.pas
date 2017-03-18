@@ -299,9 +299,9 @@ begin
 
     Jpg.LoadFromFile(OpenPictureDialogProduitG.FileName);
           if jpg.Height > jpg.Width then
-        scale := 900 / jpg.Height
+        scale := 1200 / jpg.Height
       else
-        scale := 900 / jpg.Width;
+        scale := 1920 / jpg.Width;
       bmp := TBitmap.Create;
       try
         {Create thumbnail bitmap, keep pictures aspect ratio}
@@ -312,7 +312,7 @@ begin
           jpg.Assign(bmp);
         {CompressionQuality JPEG and save to file}
 
-//          Jpg.CompressionQuality:= 100;
+//          Jpg.CompressionQuality:= 50;
 //          Jpg.Compress;
 
           ImageCompanyOptionImg.Picture.Assign(Jpg);

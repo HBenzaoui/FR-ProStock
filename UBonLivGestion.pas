@@ -1873,7 +1873,7 @@ end;
 
 procedure TBonLivGestionF.B1Click(Sender: TObject);
  var
-NEWCredit,OLDCredit,NEWCreditLbl,OLDCreditLbl  : TfrxMemoView;
+NEWCredit,OLDCredit,NEWCreditLbl,OLDCreditLbl , TotalACHAT,Versement,TotalACHATLbl,VersementLbl   : TfrxMemoView;
 LineCredit :TfrxShapeView;
 begin
 MainForm.Bonv_liv_listTable.DisableControls;
@@ -1887,6 +1887,17 @@ MainForm.Bonv_liv_listTable.DisableControls;
   OLDCreditLbl.Visible:= True;
   NEWCreditLbl:= BonLivPListfrxRprt.FindObject('NEWCreditLbl') as TfrxMemoView;
   NEWCreditLbl.Visible:= True;
+
+  TotalACHAT:= BonLivPListfrxRprt.FindObject('TotalACHAT') as TfrxMemoView;
+  TotalACHAT.Visible:= True;
+  Versement:= BonLivPListfrxRprt.FindObject('Versement') as TfrxMemoView;
+  Versement.Visible:= True;
+
+  TotalACHATLbl:= BonLivPListfrxRprt.FindObject('TotalACHATLbl') as TfrxMemoView;
+  TotalACHATLbl.Visible:= True;
+  VersementLbl:= BonLivPListfrxRprt.FindObject('VersementLbl') as TfrxMemoView;
+  VersementLbl.Visible:= True;
+
   LineCredit:= BonLivPListfrxRprt.FindObject('LineCredit') as TfrxShapeView;
   LineCredit.Visible:= True;
 
@@ -1900,7 +1911,7 @@ end;
 
 procedure TBonLivGestionF.BondeCaisseSimple1Click(Sender: TObject);
  var
-NEWCredit,OLDCredit,NEWCreditLbl,OLDCreditLbl  : TfrxMemoView;
+NEWCredit,OLDCredit,NEWCreditLbl,OLDCreditLbl  , TotalACHAT,Versement,TotalACHATLbl,VersementLbl  : TfrxMemoView;
 LineCredit :TfrxShapeView;
 begin
 MainForm.Bonv_liv_listTable.DisableControls;
@@ -1914,6 +1925,17 @@ MainForm.Bonv_liv_listTable.DisableControls;
   OLDCreditLbl.Visible:= True;
   NEWCreditLbl:= BonLivPListBonSIMPLEfrxRprt.FindObject('NEWCreditLbl') as TfrxMemoView;
   NEWCreditLbl.Visible:= True;
+
+  TotalACHAT:= BonLivPListfrxRprt.FindObject('TotalACHAT') as TfrxMemoView;
+  TotalACHAT.Visible:= True;
+  Versement:= BonLivPListfrxRprt.FindObject('Versement') as TfrxMemoView;
+  Versement.Visible:= True;
+
+  TotalACHATLbl:= BonLivPListfrxRprt.FindObject('TotalACHATLbl') as TfrxMemoView;
+  TotalACHATLbl.Visible:= True;
+  VersementLbl:= BonLivPListfrxRprt.FindObject('VersementLbl') as TfrxMemoView;
+  VersementLbl.Visible:= True;
+
   LineCredit:= BonLivPListBonSIMPLEfrxRprt.FindObject('LineCredit') as TfrxShapeView;
   LineCredit.Visible:= True;
 
@@ -1927,7 +1949,7 @@ end;
 
 procedure TBonLivGestionF.BondeCaisseSimple2Click(Sender: TObject);
  var
-NEWCredit,OLDCredit,NEWCreditLbl,OLDCreditLbl  : TfrxMemoView;
+NEWCredit,OLDCredit,NEWCreditLbl,OLDCreditLbl , TotalACHAT,Versement,TotalACHATLbl,VersementLbl   : TfrxMemoView;
 LineCredit :TfrxShapeView;
 begin
 MainForm.Bonv_liv_listTable.DisableControls;
@@ -1941,6 +1963,17 @@ MainForm.Bonv_liv_listTable.DisableControls;
   OLDCreditLbl.Visible:= False;
   NEWCreditLbl:= BonLivPListBonSIMPLEfrxRprt.FindObject('NEWCreditLbl') as TfrxMemoView;
   NEWCreditLbl.Visible:= False;
+
+  TotalACHAT:= BonLivPListfrxRprt.FindObject('TotalACHAT') as TfrxMemoView;
+  TotalACHAT.Visible:= False;
+  Versement:= BonLivPListfrxRprt.FindObject('Versement') as TfrxMemoView;
+  Versement.Visible:= False;
+
+  TotalACHATLbl:= BonLivPListfrxRprt.FindObject('TotalACHATLbl') as TfrxMemoView;
+  TotalACHATLbl.Visible:= False;
+  VersementLbl:= BonLivPListfrxRprt.FindObject('VersementLbl') as TfrxMemoView;
+  VersementLbl.Visible:= False;
+
   LineCredit:= BonLivPListBonSIMPLEfrxRprt.FindObject('LineCredit') as TfrxShapeView;
   LineCredit.Visible:= False;
 
@@ -1954,7 +1987,7 @@ end;
 
 procedure TBonLivGestionF.BondeLivraison1Click(Sender: TObject);
  var
-NEWCredit,OLDCredit,NEWCreditLbl,OLDCreditLbl  : TfrxMemoView;
+NEWCredit,OLDCredit,NEWCreditLbl,OLDCreditLbl  , TotalACHAT,Versement,TotalACHATLbl,VersementLbl  : TfrxMemoView;
 LineCredit :TfrxShapeView;
 begin
 MainForm.Bonv_liv_listTable.DisableControls;
@@ -1968,6 +2001,17 @@ MainForm.Bonv_liv_listTable.DisableControls;
   OLDCreditLbl.Visible:= False;
   NEWCreditLbl:= BonLivPListfrxRprt.FindObject('NEWCreditLbl') as TfrxMemoView;
   NEWCreditLbl.Visible:= False;
+
+  TotalACHAT:= BonLivPListfrxRprt.FindObject('TotalACHAT') as TfrxMemoView;
+  TotalACHAT.Visible:= False;
+  Versement:= BonLivPListfrxRprt.FindObject('Versement') as TfrxMemoView;
+  Versement.Visible:= False;
+
+  TotalACHATLbl:= BonLivPListfrxRprt.FindObject('TotalACHATLbl') as TfrxMemoView;
+  TotalACHATLbl.Visible:= False;
+  VersementLbl:= BonLivPListfrxRprt.FindObject('VersementLbl') as TfrxMemoView;
+  VersementLbl.Visible:= False;
+
   LineCredit:= BonLivPListfrxRprt.FindObject('LineCredit') as TfrxShapeView;
   LineCredit.Visible:= False;
 //BonLivPListfrxRprt.;
@@ -1981,12 +2025,11 @@ end;
 
 procedure TBonLivGestionF.Bondelivraison2Click(Sender: TObject);
  var
-NEWCredit,OLDCredit,NEWCreditLbl,OLDCreditLbl  : TfrxMemoView;
+NEWCredit,OLDCredit,NEWCreditLbl,OLDCreditLbl , TotalACHAT,Versement,TotalACHATLbl,VersementLbl   : TfrxMemoView;
 LineCredit :TfrxShapeView;
 begin
       MainForm.Bonv_liv_listTable.DisableControls;
      GettingDataA5;
-
        OLDCredit:= BonLivPListfrxRprtA5.FindObject('OLDCredit') as TfrxMemoView;
       OLDCredit.Visible:= True;
       NEWCredit:= BonLivPListfrxRprtA5.FindObject('NEWCredit') as TfrxMemoView;
@@ -1995,6 +2038,17 @@ begin
       OLDCreditLbl.Visible:= True;
       NEWCreditLbl:= BonLivPListfrxRprtA5.FindObject('NEWCreditLbl') as TfrxMemoView;
       NEWCreditLbl.Visible:= True;
+
+      TotalACHAT:= BonLivPListfrxRprt.FindObject('TotalACHAT') as TfrxMemoView;
+      TotalACHAT.Visible:= True;
+      Versement:= BonLivPListfrxRprt.FindObject('Versement') as TfrxMemoView;
+      Versement.Visible:= True;
+
+      TotalACHATLbl:= BonLivPListfrxRprt.FindObject('TotalACHATLbl') as TfrxMemoView;
+      TotalACHATLbl.Visible:= True;
+      VersementLbl:= BonLivPListfrxRprt.FindObject('VersementLbl') as TfrxMemoView;
+      VersementLbl.Visible:= True;
+
       LineCredit:= BonLivPListfrxRprtA5.FindObject('LineCredit') as TfrxShapeView;
       LineCredit.Visible:= True;
 
@@ -2008,7 +2062,7 @@ end;
 
 procedure TBonLivGestionF.BondeLivraisonhorstaxe1Click(Sender: TObject);
  var
-NEWCredit,OLDCredit,NEWCreditLbl,OLDCreditLbl   : TfrxMemoView;
+NEWCredit,OLDCredit,NEWCreditLbl,OLDCreditLbl   , TotalACHAT,Versement,TotalACHATLbl,VersementLbl  : TfrxMemoView;
 LineCredit :TfrxShapeView;
 begin
 MainForm.Bonv_liv_listTable.DisableControls;
@@ -2022,6 +2076,17 @@ MainForm.Bonv_liv_listTable.DisableControls;
   OLDCreditLbl.Visible:= False;
   NEWCreditLbl:= BonLivPListSansTaxfrxRprt.FindObject('NEWCreditLbl') as TfrxMemoView;
   NEWCreditLbl.Visible:= False;
+
+  TotalACHAT:= BonLivPListfrxRprt.FindObject('TotalACHAT') as TfrxMemoView;
+  TotalACHAT.Visible:= False;
+  Versement:= BonLivPListfrxRprt.FindObject('Versement') as TfrxMemoView;
+  Versement.Visible:= False;
+
+  TotalACHATLbl:= BonLivPListfrxRprt.FindObject('TotalACHATLbl') as TfrxMemoView;
+  TotalACHATLbl.Visible:= False;
+  VersementLbl:= BonLivPListfrxRprt.FindObject('VersementLbl') as TfrxMemoView;
+  VersementLbl.Visible:= False;
+
   LineCredit:= BonLivPListSansTaxfrxRprt.FindObject('LineCredit') as TfrxShapeView;
   LineCredit.Visible:= False;
 
@@ -2035,7 +2100,7 @@ end;
 
 procedure TBonLivGestionF.BondeRception1Click(Sender: TObject);
  var
-NEWCredit,OLDCredit,NEWCreditLbl,OLDCreditLbl  : TfrxMemoView;
+NEWCredit,OLDCredit,NEWCreditLbl,OLDCreditLbl  , TotalACHAT,Versement,TotalACHATLbl,VersementLbl  : TfrxMemoView;
 LineCredit :TfrxShapeView;
 begin
 MainForm.Bonv_liv_listTable.DisableControls;
@@ -2049,6 +2114,17 @@ MainForm.Bonv_liv_listTable.DisableControls;
   OLDCreditLbl.Visible:= True;
   NEWCreditLbl:= BonLivPListSansTaxfrxRprt.FindObject('NEWCreditLbl') as TfrxMemoView;
   NEWCreditLbl.Visible:= True;
+
+  TotalACHAT:= BonLivPListfrxRprt.FindObject('TotalACHAT') as TfrxMemoView;
+  TotalACHAT.Visible:= True;
+  Versement:= BonLivPListfrxRprt.FindObject('Versement') as TfrxMemoView;
+  Versement.Visible:= True;
+
+  TotalACHATLbl:= BonLivPListfrxRprt.FindObject('TotalACHATLbl') as TfrxMemoView;
+  TotalACHATLbl.Visible:= True;
+  VersementLbl:= BonLivPListfrxRprt.FindObject('VersementLbl') as TfrxMemoView;
+  VersementLbl.Visible:= True;
+
   LineCredit:= BonLivPListSansTaxfrxRprt.FindObject('LineCredit') as TfrxShapeView;
   LineCredit.Visible:= True;
 
@@ -3070,7 +3146,7 @@ begin
 
  procedure TBonLivGestionF.GettingDataA5;
  var
-  MoneyWordRX,NumRX,DateRX,NameRX,AdrRX,VilleRX,WilayaRX,TelRX,FaxRX,Mob1RX,Mob2RX,MPRX,NCHeqRX,NEWCredit,OLDCredit,Versement : TfrxMemoView;
+  MoneyWordRX,NumRX,DateRX,NameRX,AdrRX,VilleRX,WilayaRX,TelRX,FaxRX,Mob1RX,Mob2RX,MPRX,NCHeqRX,NEWCredit,OLDCredit : TfrxMemoView;
   str1 : string;
   Name,Tel,Mob,Adr : TfrxMemoView;
   Logo : TfrxPictureView;
@@ -3178,14 +3254,6 @@ begin
 
         OLDCredit:= BonLivPListfrxRprtA5.FindObject('OLDCredit') as TfrxMemoView;
   OLDCredit.Text:= BonLivGClientOLDCredit.Caption;
-
-
-//          TotalACHAT:= BonLivPListfrxRprtA5.FindObject('TotalACHAT') as TfrxMemoView;
-//  TotalACHAT.Text:= BonLivGClientOLDCredit.Caption;
-
-
-          Versement:= BonLivPListfrxRprtA5.FindObject('Versement') as TfrxMemoView;
-  Versement.Text:= BonLivRegleLbl.Caption;
 
 
       NEWCredit:= BonLivPListfrxRprtA5.FindObject('NEWCredit') as TfrxMemoView;
