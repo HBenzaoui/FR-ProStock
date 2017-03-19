@@ -148,7 +148,7 @@ implementation
 
 uses
   UMainF,  USplashVersement, USplashAddUnite, UClientGestion,Threading,
-  USplash, UBonFacPGestion;
+  USplash, UBonFacPGestion, UProduitsList;
 
 {$R *.dfm}
 
@@ -344,6 +344,12 @@ var
 begin
 
  ClearFilterBVLivPMenuClick(Sender);
+
+  if Assigned(ProduitsListF) then
+ begin
+  MainForm.ProduitTable.Filtered:= False;
+  ProduitsListF.ResearchProduitsEdt.Text:='';
+  end;
 
 MainForm.bonp_fac_listTable.Active:= False;
 MainForm.bonp_fac_listTable.IndexFieldNames:='';
@@ -724,6 +730,13 @@ var
 begin
  if NOT (MainForm.Bonp_facTable.IsEmpty) Then
  begin
+      if Assigned(ProduitsListF) then
+     begin
+      MainForm.ProduitTable.Filtered:= False;
+      ProduitsListF.ResearchProduitsEdt.Text:='';
+      end;
+
+
     MainForm.bonp_fac_listTable.Active:=True;
 
   if NOT (MainForm.bonp_fac_listTable.IsEmpty) then

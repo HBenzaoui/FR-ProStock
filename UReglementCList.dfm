@@ -439,7 +439,7 @@ object ReglementCListF: TReglementCListF
       TMSStyle = 0
     end
     object ResearchBACtrLbl: TLabel
-      Left = 6
+      Left = 1
       Top = 31
       Width = 74
       Height = 16
@@ -725,13 +725,13 @@ object ReglementCListF: TReglementCListF
       Left = 344
       Top = 38
       Width = 87
-      Height = 24
+      Height = 23
       Date = 42435.595104571760000000
       Time = 42435.595104571760000000
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 4207405
-      Font.Height = 16
-      Font.Name = 'Helvetica LT Std'
+      Font.Height = 15
+      Font.Name = 'Roboto'
       Font.Style = []
       ParentFont = False
       TabOrder = 4
@@ -741,13 +741,13 @@ object ReglementCListF: TReglementCListF
       Left = 344
       Top = 7
       Width = 87
-      Height = 24
+      Height = 23
       Date = 42435.595104571760000000
       Time = 42435.595104571760000000
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 4207405
-      Font.Height = 16
-      Font.Name = 'Helvetica LT Std'
+      Font.Height = 15
+      Font.Name = 'Roboto'
       Font.Style = []
       ParentFont = False
       TabOrder = 5
@@ -756,13 +756,13 @@ object ReglementCListF: TReglementCListF
     object ResherchRegCNumBRdioBtn: TRadioButton
       Left = 165
       Top = 6
-      Width = 131
+      Width = 133
       Height = 17
       Caption = 'Par N'#176' de R'#232'glement'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
       Font.Height = -12
-      Font.Name = 'Roboto'
+      Font.Name = 'Helvetica LT Std'
       Font.Style = []
       ParentFont = False
       TabOrder = 6
@@ -778,7 +778,7 @@ object ReglementCListF: TReglementCListF
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
       Font.Height = -12
-      Font.Name = 'Roboto'
+      Font.Name = 'Helvetica LT Std'
       Font.Style = []
       ParentFont = False
       TabOrder = 7

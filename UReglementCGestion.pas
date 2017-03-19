@@ -221,9 +221,13 @@ procedure TReglementCGestionF.ClientRegCGCbxChange(Sender: TObject);
 begin
      if ClientRegCGCbx.Text<>'' then
      begin
-      ModePaieRegCGCbxDropDown(Self);
-      ModePaieRegCGCbx.ItemIndex:=0;
-      ModePaieRegCGCbxClick(Self) ;
+      if Tag = 0 then
+      begin
+        ModePaieRegCGCbxDropDown(Self);
+        ModePaieRegCGCbx.ItemIndex:=0;
+        ModePaieRegCGCbxClick(Self) ;
+      end;
+
       OKRegCGBtn.Enabled:= True;
       OKRegCGBtn.ImageIndex := 17;
 
@@ -291,9 +295,9 @@ begin
 //      MainForm.SQLQuery.DisableControls;
       MainForm.SQLQuery.Active:=false;
       MainForm.SQLQuery.SQL.Clear;
-      MainForm.SQLQuery.SQL.Text:='Select * FROM client WHERE LOWER(nom_c) LIKE LOWER('+ QuotedStr( ClientRegCGCbx.Text )+')'  ;
+      MainForm.SQLQuery.SQL.Text:='Select code_c,oldcredit_c ,credit_c,activ_c FROM client WHERE LOWER(nom_c) LIKE LOWER('+ QuotedStr( ClientRegCGCbx.Text )+')'  ;
       MainForm.SQLQuery.Active:=True;
-      OLDCreditCINI:=MainForm.SQLQuery.FieldByName('oldcredit_c').AsCurrency;
+      OLDCreditCINI:=MainForm.SQLQuery.FieldByName('credit_c').AsCurrency;
 
       if (MainForm.SQLQuery.IsEmpty) then
       begin
@@ -304,50 +308,50 @@ begin
       end;
       CodeC:= MainForm.SQLQuery.FieldByName('code_c').AsInteger ;
 
-      MainForm.Bonv_livTableCredit.DisableControls;
-      MainForm.Bonv_livTableCredit.Active:=false;
-      MainForm.Bonv_livTableCredit.SQL.Clear;
-      MainForm.Bonv_livTableCredit.SQL.Text:='Select * FROM bonv_liv WHERE valider_bvliv = true AND code_c = '+ IntToStr( CodeC )+' ORDER BY code_bvliv '  ;
-      MainForm.Bonv_livTableCredit.Active:=True;
+//      MainForm.Bonv_livTableCredit.DisableControls;
+//      MainForm.Bonv_livTableCredit.Active:=false;
+//      MainForm.Bonv_livTableCredit.SQL.Clear;
+//      MainForm.Bonv_livTableCredit.SQL.Text:='Select * FROM bonv_liv WHERE valider_bvliv = true AND code_c = '+ IntToStr( CodeC )+' ORDER BY code_bvliv '  ;
+//      MainForm.Bonv_livTableCredit.Active:=True;
+//
+//      while NOT (MainForm.Bonv_livTableCredit.Eof) do
+//     begin
+//     OLDCreditC := OLDCreditC + MainForm.Bonv_livTableCredit.FieldValues['MontantRes'];
+//     MainForm.Bonv_livTableCredit.Next;
+//     end;
+//      MainForm.Bonv_livTableCredit.EnableControls;
+//
+//
+//      MainForm.SQLQuery.DisableControls;
+//      MainForm.SQLQuery.Active:=false;
+//      MainForm.SQLQuery.SQL.Clear;
+//      MainForm.SQLQuery.SQL.Text:='Select * FROM regclient WHERE bon_or_no_rc = 1 AND code_c = '+ IntToStr( CodeC )+' ORDER BY code_rc '  ;
+//      MainForm.SQLQuery.Active:=True;
+//
+//     while NOT (MainForm.SQLQuery.Eof) do
+//     begin
+//     RegCCreditC := RegCCreditC + MainForm.SQLQuery.FieldValues['montver_rc'];
+//     MainForm.SQLQuery.Next;
+//     end;
 
-      while NOT (MainForm.Bonv_livTableCredit.Eof) do
-     begin
-     OLDCreditC := OLDCreditC + MainForm.Bonv_livTableCredit.FieldValues['MontantRes'];
-     MainForm.Bonv_livTableCredit.Next;
-     end;
-      MainForm.Bonv_livTableCredit.EnableControls;
 
 
-      MainForm.SQLQuery.DisableControls;
-      MainForm.SQLQuery.Active:=false;
-      MainForm.SQLQuery.SQL.Clear;
-      MainForm.SQLQuery.SQL.Text:='Select * FROM regclient WHERE bon_or_no_rc = 1 AND code_c = '+ IntToStr( CodeC )+' ORDER BY code_rc '  ;
-      MainForm.SQLQuery.Active:=True;
-
-     while NOT (MainForm.SQLQuery.Eof) do
-     begin
-     RegCCreditC := RegCCreditC + MainForm.SQLQuery.FieldValues['montver_rc'];
-     MainForm.SQLQuery.Next;
-     end;
-
-
-
-      if NOT (MainForm.Bonv_livTableCredit.IsEmpty ) OR NOT (MainForm.SQLQuery.IsEmpty) OR NOT (OLDCreditCINI = 0)  then
+      if NOT (OLDCreditCINI = 0)  then
       begin
-       MainForm.Bonv_livTableCredit.last;
-       RegCGClientOLDCredit.Caption:= CurrToStrF(((OLDCreditC - RegCCreditC) + OLDCreditCINI ),ffNumber,2) ;
+//       MainForm.Bonv_livTableCredit.last;
+       RegCGClientOLDCredit.Caption:= CurrToStrF((OLDCreditCINI ),ffNumber,2) ;
         end else
         begin
          RegCGClientOLDCredit.Caption:= CurrToStrF(0,ffNumber,2) ;
         end;
 
-      MainForm.Bonv_livTableCredit.DisableControls;
-      MainForm.Bonv_livTableCredit.Active:=false;
-      MainForm.Bonv_livTableCredit.SQL.Clear;
-      MainForm.Bonv_livTableCredit.SQL.Text:='Select * FROM bonv_liv '  ;
-      MainForm.Bonv_livTableCredit.Active:=True;
-      MainForm.Bonv_livTableCredit.last;
-      MainForm.Bonv_livTableCredit.EnableControls;
+//      MainForm.Bonv_livTableCredit.DisableControls;
+//      MainForm.Bonv_livTableCredit.Active:=false;
+//      MainForm.Bonv_livTableCredit.SQL.Clear;
+//      MainForm.Bonv_livTableCredit.SQL.Text:='Select * FROM bonv_liv '  ;
+//      MainForm.Bonv_livTableCredit.Active:=True;
+//      MainForm.Bonv_livTableCredit.last;
+//      MainForm.Bonv_livTableCredit.EnableControls;
 
 
 
@@ -484,7 +488,7 @@ begin
             MainForm.RegclientTable.FieldValues['code_rc']:= CodeRF;
             MainForm.RegclientTable.FieldValues['nom_rc']:= NumRegCGEdt.Caption;
             MainForm.RegclientTable.FieldValues['code_c']:= MainForm.SQLQuery.FieldByName('code_c').AsInteger;
-            MainForm.RegclientTable.FieldValues['date_rc']:= DateRegCGD.Date;;
+            MainForm.RegclientTable.FieldValues['date_rc']:= DateRegCGD.Date;
             MainForm.RegclientTable.FieldValues['time_rc']:=TimeOf(Now);
             MainForm.RegclientTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
             MainForm.RegclientTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
@@ -520,8 +524,8 @@ begin
 //                MainForm.RegclientTable.FieldValues['code_rc']:= CodeRF;
                   MainForm.RegclientTable.FieldValues['nom_rc']:= NumRegCGEdt.Caption;
                   MainForm.RegclientTable.FieldValues['code_c']:= MainForm.SQLQuery.FieldByName('code_c').AsInteger;
-//                  MainForm.RegclientTable.FieldValues['date_rc']:= DateOf(Today);
-//                  MainForm.RegclientTable.FieldValues['time_rc']:=TimeOf(Now);
+                  MainForm.RegclientTable.FieldValues['date_rc']:= DateRegCGD.Date;
+                  MainForm.RegclientTable.FieldValues['time_rc']:= TimeOf(Now);
                   MainForm.RegclientTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
                   MainForm.RegclientTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
                   MainForm.RegclientTable.FieldValues['obser_rc']:= ReglementCGestionF.ObserRegCGMem.Text;
@@ -591,8 +595,8 @@ begin
                 MainForm.Opt_cas_bnk_CaisseTable.Append;
                 MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ocb']:= CodeOCB;
                 MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_rc']:= MainForm.RegclientTable.FieldValues['code_rc'];
-                MainForm.Opt_cas_bnk_CaisseTable.FieldValues['date_ocb']:= DateOf(Today);
-                MainForm.Opt_cas_bnk_CaisseTable.FieldValues['time_ocb']:= TimeOf(Now);;
+                MainForm.Opt_cas_bnk_CaisseTable.FieldValues['date_ocb']:= DateRegCGD.Date;
+                MainForm.Opt_cas_bnk_CaisseTable.FieldValues['time_ocb']:= TimeOf(Now);
                 MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
                 MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nom_ocb']:= 'Versement au Client Pièce N° '+ReglementCGestionF.NumRegCGEdt.Caption;
                 MainForm.Opt_cas_bnk_CaisseTable.FieldValues['third_ocb']:= ReglementCGestionF.ClientRegCGCbx.Text;
@@ -639,8 +643,8 @@ begin
 
                 MainForm.Opt_cas_bnk_CaisseTable.Edit;
 //                MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ocb']:= CodeOCB;
-                MainForm.Opt_cas_bnk_CaisseTable.FieldValues['date_ocb']:= DateOf(Today);
                 MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_rc']:= MainForm.RegclientTable.FieldValues['code_rc'];
+                MainForm.Opt_cas_bnk_CaisseTable.FieldValues['date_ocb']:= DateRegCGD.Date;
                 MainForm.Opt_cas_bnk_CaisseTable.FieldValues['time_ocb']:= TimeOf(Now);
                 MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
                 MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nom_ocb']:= 'Versement au Client Pièce N° '+ReglementCGestionF.NumRegCGEdt.Caption;

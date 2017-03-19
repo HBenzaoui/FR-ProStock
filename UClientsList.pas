@@ -306,9 +306,10 @@ begin
     //     MainForm.Align:= alClient;
    //      AnimateWindow(ClientGestionF.Handle, 250, AW_VER_NEGATIVE OR AW_BLEND OR AW_ACTIVATE );
          ClientGestionF.ClientGPgControl.TabIndex:= 0;
+         ClientGestionF.OKClientGBtn.Tag:= 1 ;
          ClientGestionF.Show;
          ClientGestionF.NameClientGEdt.SetFocus;
-          ClientGestionF.OKClientGBtn.Tag:= 1 ;
+
 
        //  MainForm.ClientTable.Refresh;
 

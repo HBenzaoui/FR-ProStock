@@ -963,7 +963,7 @@ object BonCtrF: TBonCtrF
       TMSStyle = 0
     end
     object ResearchBACtrLbl: TLabel
-      Left = 6
+      Left = 1
       Top = 31
       Width = 74
       Height = 16
@@ -1264,13 +1264,13 @@ object BonCtrF: TBonCtrF
       Left = 344
       Top = 38
       Width = 87
-      Height = 24
+      Height = 23
       Date = 42435.595104571760000000
       Time = 42435.595104571760000000
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 4207405
-      Font.Height = 16
-      Font.Name = 'Helvetica LT Std'
+      Font.Height = 15
+      Font.Name = 'Roboto'
       Font.Style = []
       ParentFont = False
       TabOrder = 4
@@ -1280,13 +1280,13 @@ object BonCtrF: TBonCtrF
       Left = 344
       Top = 7
       Width = 87
-      Height = 24
+      Height = 23
       Date = 42435.595104571760000000
       Time = 42435.595104571760000000
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 4207405
-      Font.Height = 16
-      Font.Name = 'Helvetica LT Std'
+      Font.Height = 15
+      Font.Name = 'Roboto'
       Font.Style = []
       ParentFont = False
       TabOrder = 5
@@ -1294,14 +1294,14 @@ object BonCtrF: TBonCtrF
     end
     object ResherchBVCTNumBRdioBtn: TRadioButton
       Left = 195
-      Top = 6
+      Top = 4
       Width = 101
       Height = 17
       Caption = 'Par N'#176' de Bon'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
       Font.Height = -12
-      Font.Name = 'Roboto'
+      Font.Name = 'Helvetica LT Std'
       Font.Style = []
       ParentFont = False
       TabOrder = 6
@@ -1309,7 +1309,7 @@ object BonCtrF: TBonCtrF
     end
     object ResherchBVCTClientRdioBtn: TRadioButton
       Left = 76
-      Top = 6
+      Top = 4
       Width = 115
       Height = 17
       Caption = 'Par Client'
@@ -1317,7 +1317,7 @@ object BonCtrF: TBonCtrF
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
       Font.Height = -12
-      Font.Name = 'Roboto'
+      Font.Name = 'Helvetica LT Std'
       Font.Style = []
       ParentFont = False
       TabOrder = 7

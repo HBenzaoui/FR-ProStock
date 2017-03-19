@@ -438,7 +438,7 @@ object ChargesFListF: TChargesFListF
       TMSStyle = 0
     end
     object ResearchBACtrLbl: TLabel
-      Left = 6
+      Left = 1
       Top = 31
       Width = 74
       Height = 16
@@ -718,13 +718,13 @@ object ChargesFListF: TChargesFListF
       Left = 307
       Top = 38
       Width = 87
-      Height = 24
+      Height = 23
       Date = 42435.595104571760000000
       Time = 42435.595104571760000000
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 4207405
-      Font.Height = 16
-      Font.Name = 'Helvetica LT Std'
+      Font.Height = 15
+      Font.Name = 'Roboto'
       Font.Style = []
       ParentFont = False
       TabOrder = 5
@@ -734,13 +734,13 @@ object ChargesFListF: TChargesFListF
       Left = 307
       Top = 7
       Width = 87
-      Height = 24
+      Height = 23
       Date = 42435.595104571760000000
       Time = 42435.595104571760000000
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 4207405
-      Font.Height = 16
-      Font.Name = 'Helvetica LT Std'
+      Font.Height = 15
+      Font.Name = 'Roboto'
       Font.Style = []
       ParentFont = False
       TabOrder = 6
@@ -749,13 +749,13 @@ object ChargesFListF: TChargesFListF
     object ResherchRegCNumBRdioBtn: TRadioButton
       Left = 172
       Top = 4
-      Width = 106
+      Width = 108
       Height = 17
       Caption = 'Par Observation'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
       Font.Height = -12
-      Font.Name = 'Roboto'
+      Font.Name = 'Helvetica LT Std'
       Font.Style = []
       ParentFont = False
       TabOrder = 7
@@ -771,7 +771,7 @@ object ChargesFListF: TChargesFListF
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
       Font.Height = -12
-      Font.Name = 'Roboto'
+      Font.Name = 'Helvetica LT Std'
       Font.Style = []
       ParentFont = False
       TabOrder = 8

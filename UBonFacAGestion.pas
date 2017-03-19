@@ -610,6 +610,7 @@ AND (MainForm.Bona_facTable.FieldByName('code_f').AsInteger <> 0)  then
    FourBonFacAGCbx.Text:= MainForm.Bona_facTable.FieldValues['fourbafac'];
    ModePaieBonFacAGCbx.Text:= MainForm.Bona_facTable.FieldValues['ModePaie'];
    CompteBonFacAGCbx.Text:= MainForm.Bona_facTable.FieldValues['Compte'];
+   FourBonFacAGCbxExit(Sender);
    ProduitBonFacAGCbx.SetFocus;
  end else
      begin
@@ -1044,11 +1045,7 @@ begin
 
 //--- this is for adding to the priduit
       begin
-           MainForm.ProduitTable.DisableControls;
-           MainForm.ProduitTable.Active:=False;
-           MainForm.ProduitTable.SQL.Clear;
-           MainForm.ProduitTable.SQL.Text:='SELECT * FROM produit ' ;
-           MainForm.ProduitTable.Active:=True;
+
            Mainform.Sqlquery.Active:=False;
            Mainform.Sqlquery.Sql.Clear;
            Mainform.Sqlquery.Sql.Text:='SELECT code_bafacl,code_p,  qut_p, cond_p , prixht_p,tva_p,prixvd_p,prixvr_p,prixvg_p,prixva_p,prixva2_p,qutinstock_p FROM bona_fac_list WHERE code_bafac =  '
@@ -1059,21 +1056,21 @@ begin
            while  NOT (MainForm.SQLQuery.Eof) do
            begin
 //            MainForm.ProduitTable.DisableControls;
-            MainForm.ProduitTable.Active:=False;
-            MainForm.ProduitTable.SQL.Clear;
-            MainForm.ProduitTable.SQL.Text:='SELECT * FROM produit WHERE code_p = ' +QuotedStr(MainForm.SQLQuery.FieldValues['code_p']) ;
-            MainForm.ProduitTable.Active:=True;
-            MainForm.ProduitTable.Edit;
-            MainForm.ProduitTable.FieldValues['qut_p']:= ( MainForm.ProduitTable.FieldValues['qut_p']
+            MainForm.SQLQuery3.Active:=False;
+            MainForm.SQLQuery3.SQL.Clear;
+            MainForm.SQLQuery3.SQL.Text:='SELECT code_p,qut_p,prixht_p,tva_p,prixvd_p,prixvr_p,prixvg_p,prixva_p,prixva2_p FROM produit WHERE code_p = ' +QuotedStr(MainForm.SQLQuery.FieldValues['code_p']) ;
+            MainForm.SQLQuery3.Active:=True;
+            MainForm.SQLQuery3.Edit;
+            MainForm.SQLQuery3.FieldValues['qut_p']:= ( MainForm.SQLQuery3.FieldValues['qut_p']
                                                          + ((MainForm.SQLQuery.FieldValues['qut_p']) * ((MainForm.SQLQuery.FieldValues['cond_p']))));
-            MainForm.ProduitTable.FieldValues['prixht_p']:= MainForm.SQLQuery.FieldValues['prixht_p'];
-            MainForm.ProduitTable.FieldValues['tva_p']:= MainForm.SQLQuery.FieldValues['tva_p'];
-            MainForm.ProduitTable.FieldByName('prixvd_p').AsCurrency:=  MainForm.SQLQuery.FieldByName('prixvd_p').AsCurrency;
-            MainForm.ProduitTable.FieldByName('prixvr_p').AsCurrency:=  MainForm.SQLQuery.FieldByName('prixvr_p').AsCurrency;
-            MainForm.ProduitTable.FieldByName('prixvg_p').AsCurrency:=  MainForm.SQLQuery.FieldByName('prixvg_p').AsCurrency;
-            MainForm.ProduitTable.FieldByName('prixva_p').AsCurrency:=  MainForm.SQLQuery.FieldByName('prixva_p').AsCurrency;
-            MainForm.ProduitTable.FieldByName('prixva2_p').AsCurrency:= MainForm.SQLQuery.FieldByName('prixva2_p').AsCurrency;
-            MainForm.ProduitTable.Post;
+            MainForm.SQLQuery3.FieldValues['prixht_p']:= MainForm.SQLQuery.FieldValues['prixht_p'];
+            MainForm.SQLQuery3.FieldValues['tva_p']:= MainForm.SQLQuery.FieldValues['tva_p'];
+            MainForm.SQLQuery3.FieldByName('prixvd_p').AsCurrency:=  MainForm.SQLQuery.FieldByName('prixvd_p').AsCurrency;
+            MainForm.SQLQuery3.FieldByName('prixvr_p').AsCurrency:=  MainForm.SQLQuery.FieldByName('prixvr_p').AsCurrency;
+            MainForm.SQLQuery3.FieldByName('prixvg_p').AsCurrency:=  MainForm.SQLQuery.FieldByName('prixvg_p').AsCurrency;
+            MainForm.SQLQuery3.FieldByName('prixva_p').AsCurrency:=  MainForm.SQLQuery.FieldByName('prixva_p').AsCurrency;
+            MainForm.SQLQuery3.FieldByName('prixva2_p').AsCurrency:= MainForm.SQLQuery.FieldByName('prixva2_p').AsCurrency;
+            MainForm.SQLQuery3.Post;
 
              MainForm.SQLQuery.Edit;   
              MainForm.SQLQuery.FieldValues['qutinstock_p']:= 
@@ -1083,11 +1080,9 @@ begin
             MainForm.SQLQuery.Next;
            end;
 
-           MainForm.ProduitTable.Active:=False;
-           MainForm.ProduitTable.SQL.Clear;
-           MainForm.ProduitTable.SQL.Text:='SELECT * FROM produit ' ;
-           MainForm.ProduitTable.Active:=True;
-           MainForm.ProduitTable.EnableControls;
+           MainForm.SQLQuery3.Active:=False;
+           MainForm.SQLQuery3.SQL.Clear;
+
            MainForm.SQLQuery.Active:=False;
            MainForm.SQLQuery.SQL.Clear;
           MainForm.Bona_facTable.Refresh;
@@ -1117,11 +1112,8 @@ begin
           MainForm.Bona_facTable.Edit;
           MainForm.Bona_facTable.FieldValues['code_f']:= MainForm.SQLQuery.FieldByName('code_f').AsInteger;
           MainForm.Bona_facTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
-          if Tag = 0 then
-          begin
           MainForm.Bona_facTable.FieldByName('date_bafac').AsDateTime:= DateBonFacAGD.DateTime;
           MainForm.Bona_facTable.FieldValues['time_bafac']:=TimeOf(Now);
-          end;
           MainForm.Bona_facTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
           MainForm.Bona_facTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
           MainForm.Bona_facTable.FieldValues['obser_bafac']:= ObserBonFacAGMem.Text;
@@ -1186,7 +1178,7 @@ begin
             MainForm.RegfournisseurTable.FieldValues['code_bafac']:= MainForm.Bona_facTable.FieldValues['code_bafac'];
             MainForm.RegfournisseurTable.FieldValues['nom_rf']:= NumBonFacAGEdt.Caption;
             MainForm.RegfournisseurTable.FieldValues['code_f']:= MainForm.SQLQuery.FieldByName('code_f').AsInteger;
-            MainForm.RegfournisseurTable.FieldValues['date_rf']:= DateOf(Today);
+            MainForm.RegfournisseurTable.FieldValues['date_rf']:= DateBonFacAGD.DateTime;
             MainForm.RegfournisseurTable.FieldValues['time_rf']:=TimeOf(Now);
             MainForm.RegfournisseurTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
             MainForm.RegfournisseurTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
@@ -1233,7 +1225,7 @@ begin
                   MainForm.RegfournisseurTable.FieldValues['code_bafac']:= MainForm.Bona_facTable.FieldValues['code_bafac'];
                   MainForm.RegfournisseurTable.FieldValues['nom_rf']:= NumBonFacAGEdt.Caption;
                   MainForm.RegfournisseurTable.FieldValues['code_f']:= MainForm.SQLQuery.FieldByName('code_f').AsInteger;
-                  MainForm.RegfournisseurTable.FieldValues['date_rf']:= DateOf(Today);
+                  MainForm.RegfournisseurTable.FieldValues['date_rf']:= DateBonFacAGD.DateTime;
                   MainForm.RegfournisseurTable.FieldValues['time_rf']:=TimeOf(Now);
                   MainForm.RegfournisseurTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
                   MainForm.RegfournisseurTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
@@ -1283,7 +1275,7 @@ begin
                       MainForm.RegfournisseurTable.FieldValues['code_bafac']:= MainForm.Bona_facTable.FieldValues['code_bafac'];
                       MainForm.RegfournisseurTable.FieldValues['nom_rf']:= NumBonFacAGEdt.Caption;
                       MainForm.RegfournisseurTable.FieldValues['code_f']:= MainForm.SQLQuery.FieldByName('code_f').AsInteger;
-                      MainForm.RegfournisseurTable.FieldValues['date_rf']:= DateOf(Today);
+                      MainForm.RegfournisseurTable.FieldValues['date_rf']:= DateBonFacAGD.DateTime;
                       MainForm.RegfournisseurTable.FieldValues['time_rf']:=TimeOf(Now);
                       MainForm.RegfournisseurTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
                       MainForm.RegfournisseurTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
@@ -1357,7 +1349,7 @@ begin
 
                     MainForm.Opt_cas_bnk_CaisseTable.Append;
                     MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ocb']:= CodeOCB;
-                    MainForm.Opt_cas_bnk_CaisseTable.FieldValues['date_ocb']:= DateOf(Today);
+                    MainForm.Opt_cas_bnk_CaisseTable.FieldValues['date_ocb']:= DateBonFacAGD.DateTime;
                     MainForm.Opt_cas_bnk_CaisseTable.FieldValues['time_ocb']:= TimeOf(Now);
                     MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
                     MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nom_ocb']:= 'Versement au Fournisseur pièce N° '+NumBonFacAGEdt.Caption;
@@ -1413,7 +1405,7 @@ begin
                         begin
 
                           MainForm.Opt_cas_bnk_CaisseTable.Edit;
-                          MainForm.Opt_cas_bnk_CaisseTable.FieldValues['date_ocb']:= DateOf(Today);
+                          MainForm.Opt_cas_bnk_CaisseTable.FieldValues['date_ocb']:= DateBonFacAGD.DateTime;
                           MainForm.Opt_cas_bnk_CaisseTable.FieldValues['time_ocb']:= TimeOf(Now);
                           MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
                           MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nom_ocb']:= 'Versement au Fournisseur pièce N° '+NumBonFacAGEdt.Caption;
@@ -1468,7 +1460,7 @@ begin
 
                                 MainForm.Opt_cas_bnk_CaisseTable.Append;
                                 MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ocb']:= CodeOCB;
-                                MainForm.Opt_cas_bnk_CaisseTable.FieldValues['date_ocb']:= DateOf(Today);
+                                MainForm.Opt_cas_bnk_CaisseTable.FieldValues['date_ocb']:= DateBonFacAGD.DateTime;
                                 MainForm.Opt_cas_bnk_CaisseTable.FieldValues['time_ocb']:= TimeOf(Now);;
                                 MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nom_ocb']:= 'Versement au Fournisseur pièce N° '+NumBonFacAGEdt.Caption;
                                 MainForm.Opt_cas_bnk_CaisseTable.FieldValues['third_ocb']:= FourBonFacAGCbx.Text;
@@ -1592,11 +1584,11 @@ begin
 //      MainForm.SQLQuery.DisableControls;
       MainForm.SQLQuery.Active:=false;
       MainForm.SQLQuery.SQL.Clear;
-      MainForm.SQLQuery.SQL.Text:='Select * FROM fournisseur WHERE LOWER(nom_f) LIKE LOWER('+ QuotedStr( FourBonFacAGCbx.Text )+')'  ;
+      MainForm.SQLQuery.SQL.Text:='Select code_f,oldcredit_f,credit_f,activ_f  FROM fournisseur WHERE LOWER(nom_f) LIKE LOWER('+ QuotedStr( FourBonFacAGCbx.Text )+')'  ;
       MainForm.SQLQuery.Active:=True;
      if NOT  MainForm.SQLQuery.IsEmpty then
      begin
-      OLDCreditFINI:= MainForm.SQLQuery.FieldByName('oldcredit_f').AsCurrency;
+      OLDCreditFINI:= MainForm.SQLQuery.FieldByName('credit_f').AsCurrency;
 
       if MainForm.SQLQuery.FieldByName('activ_f').AsBoolean <> False then
       begin
@@ -1610,67 +1602,67 @@ begin
       end;
       CodeF:= MainForm.SQLQuery.FieldByName('code_f').AsInteger ;
 
-       MainForm.Bona_recTableCredit.DisableControls;
-      MainForm.Bona_recTableCredit.Active:=false;
-      MainForm.Bona_recTableCredit.SQL.Clear;
-      MainForm.Bona_recTableCredit.SQL.Text:='Select * FROM bona_rec WHERE valider_barec = true AND code_f = '+ IntToStr( CodeF )+' ORDER BY code_barec '  ;
-      MainForm.Bona_recTableCredit.Active:=True;
+//       MainForm.Bona_recTableCredit.DisableControls;
+//      MainForm.Bona_recTableCredit.Active:=false;
+//      MainForm.Bona_recTableCredit.SQL.Clear;
+//      MainForm.Bona_recTableCredit.SQL.Text:='Select * FROM bona_rec WHERE valider_barec = true AND code_f = '+ IntToStr( CodeF )+' ORDER BY code_barec '  ;
+//      MainForm.Bona_recTableCredit.Active:=True;
+//
+//
+//      while NOT (MainForm.Bona_recTableCredit.Eof) do
+//     begin
+//     OLDCreditC := OLDCreditC + MainForm.Bona_recTableCredit.FieldValues['MontantRes'];
+//     MainForm.Bona_recTableCredit.Next;
+//     end;
+//      MainForm.Bona_recTableCredit.EnableControls;
+//
+//
+//
+//      MainForm.RegfournisseurTable.DisableControls;
+//      MainForm.RegfournisseurTable.Active:=false;
+//      MainForm.RegfournisseurTable.SQL.Clear;
+//      MainForm.RegfournisseurTable.SQL.Text:='Select * FROM regfournisseur WHERE bon_or_no_rf = 1 AND code_f = '+ IntToStr( CodeF )+' ORDER BY code_rf '  ;
+//      MainForm.RegfournisseurTable.Active:=True;
+
+//     while NOT (MainForm.RegfournisseurTable.Eof) do
+//     begin
+//     RegFCreditF := RegFCreditF + MainForm.RegfournisseurTable.FieldValues['montver_rf'];
+//     MainForm.RegfournisseurTable.Next;
+//     end;
 
 
-      while NOT (MainForm.Bona_recTableCredit.Eof) do
-     begin
-     OLDCreditC := OLDCreditC + MainForm.Bona_recTableCredit.FieldValues['MontantRes'];
-     MainForm.Bona_recTableCredit.Next;
-     end;
-      MainForm.Bona_recTableCredit.EnableControls;
-
-
-
-      MainForm.RegfournisseurTable.DisableControls;
-      MainForm.RegfournisseurTable.Active:=false;
-      MainForm.RegfournisseurTable.SQL.Clear;
-      MainForm.RegfournisseurTable.SQL.Text:='Select * FROM regfournisseur WHERE bon_or_no_rf = 1 AND code_f = '+ IntToStr( CodeF )+' ORDER BY code_rf '  ;
-      MainForm.RegfournisseurTable.Active:=True;
-
-     while NOT (MainForm.RegfournisseurTable.Eof) do
-     begin
-     RegFCreditF := RegFCreditF + MainForm.RegfournisseurTable.FieldValues['montver_rf'];
-     MainForm.RegfournisseurTable.Next;
-     end;
-
-
-      if  NOT (MainForm.Bona_recTableCredit.IsEmpty) OR NOT (MainForm.RegfournisseurTable.IsEmpty ) OR NOT (OLDCreditFINI = 0) then
-      begin
-       MainForm.Bona_recTableCredit.last;
-       BonFacAGFourOLDCredit.Caption:= CurrToStrF(((OLDCreditC - RegFCreditF) + OLDCreditFINI ),ffNumber,2) ;
-
-       if NOT (BonFacAPListDataS.DataSet.IsEmpty) then
+        if  NOT (OLDCreditFINI = 0) then
         begin
-         BonFacAGFourNEWCredit.Caption:=
-         CurrToStrF((MainForm.Bona_recTableCredit.FieldByName('MontantRes').AsCurrency ) + StrToCurr(StringReplace(BonFacAResteLbl.Caption, #32, '', [rfReplaceAll])),ffNumber,2);//  anyways i'm software developer
-        end;
-        end else
-        begin
-         BonFacAGFourOLDCredit.Caption:= CurrToStrF(0,ffNumber,2) ;
-        end;
+//       MainForm.Bona_recTableCredit.last;
+         BonFacAGFourOLDCredit.Caption:= CurrToStrF((OLDCreditFINI ),ffNumber,2) ;
+
+//         if NOT (BonFacAPListDataS.DataSet.IsEmpty) then
+//          begin
+//           BonFacAGFourNEWCredit.Caption:=
+//           CurrToStrF((MainForm.Bona_recTableCredit.FieldByName('MontantRes').AsCurrency ) + StrToCurr(StringReplace(BonFacAResteLbl.Caption, #32, '', [rfReplaceAll])),ffNumber,2);//  anyways i'm software developer
+//          end;
+          end else
+          begin
+           BonFacAGFourOLDCredit.Caption:= CurrToStrF(0,ffNumber,2) ;
+          end;
 
 
 
-      MainForm.Bona_recTableCredit.DisableControls;
-      MainForm.Bona_recTableCredit.Active:=false;
-      MainForm.Bona_recTableCredit.SQL.Clear;
-      MainForm.Bona_recTableCredit.SQL.Text:='Select * FROM bona_rec '  ;
-      MainForm.Bona_recTableCredit.Active:=True;
-      MainForm.Bona_recTableCredit.last;
-      MainForm.Bona_recTableCredit.EnableControls;
-
-
-
-      MainForm.RegfournisseurTable.Active:=false;
-      MainForm.RegfournisseurTable.SQL.Clear;
-      MainForm.RegfournisseurTable.SQL.Text:='Select * FROM regfournisseur ORDER BY time_rf  '  ;
-      MainForm.RegfournisseurTable.Active:=True;
-      MainForm.RegfournisseurTable.EnableControls;
+//      MainForm.Bona_recTableCredit.DisableControls;
+//      MainForm.Bona_recTableCredit.Active:=false;
+//      MainForm.Bona_recTableCredit.SQL.Clear;
+//      MainForm.Bona_recTableCredit.SQL.Text:='Select * FROM bona_rec '  ;
+//      MainForm.Bona_recTableCredit.Active:=True;
+//      MainForm.Bona_recTableCredit.last;
+//      MainForm.Bona_recTableCredit.EnableControls;
+//
+//
+//
+//      MainForm.RegfournisseurTable.Active:=false;
+//      MainForm.RegfournisseurTable.SQL.Clear;
+//      MainForm.RegfournisseurTable.SQL.Text:='Select * FROM regfournisseur ORDER BY time_rf  '  ;
+//      MainForm.RegfournisseurTable.Active:=True;
+//      MainForm.RegfournisseurTable.EnableControls;
 
 
 
@@ -2478,9 +2470,9 @@ MainForm.Bona_fac_listTable.DisableControls;
   VersementLbl.Visible:= True;
 
   LineCredit:= BonFacAPListfrxRprt.FindObject('LineCredit') as TfrxShapeView;
-  LineCredit.Visible:= False;
+  LineCredit.Visible:= True;
   LineCreditTop:= BonFacAPListfrxRprt.FindObject('LineCreditTop') as TfrxShapeView;
-  LineCreditTop.Visible:= False;
+  LineCreditTop.Visible:= True;
 
 BonFacAPListfrxRprt.PrepareReport;
 BonFacAPListfrxRprt.ShowReport;

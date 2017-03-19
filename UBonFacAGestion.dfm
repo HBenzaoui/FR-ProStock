@@ -351,8 +351,6 @@ object BonFacAGestionF: TBonFacAGestionF
     ParentDoubleBuffered = False
     TabOrder = 1
     StyleElements = []
-    ExplicitLeft = -16
-    ExplicitTop = -10
     DesignSize = (
       1024
       304)
@@ -4438,6 +4436,7 @@ object BonFacAGestionF: TBonFacAGestionF
           Top = 135.028963320000000000
           Width = 131.596362730000000000
           Height = 16.492494550000000000
+          DataSet = BonLivGestionF.frxBonLivDT
           DataSetName = 'frxBonLivDT'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
@@ -4473,6 +4472,7 @@ object BonFacAGestionF: TBonFacAGestionF
           Top = 154.672026670000000000
           Width = 131.596362730000000000
           Height = 16.492494550000000000
+          DataSet = BonLivGestionF.frxBonLivDT
           DataSetName = 'frxBonLivDT'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric

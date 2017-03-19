@@ -1043,7 +1043,7 @@ object FournisseurListF: TFournisseurListF
       TMSStyle = 0
     end
     object ResearchFournisseursLbl: TLabel
-      Left = 6
+      Left = 1
       Top = 28
       Width = 74
       Height = 16

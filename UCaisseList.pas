@@ -1105,7 +1105,7 @@ begin
    MainForm.SaveGridLayout(CaisseListDBGridEh,GetCurrentDir +'\bin\gc_caslst');
 
 
-PaidOnlyCaisseBtnClick(Sender);
+  MainForm.Opt_cas_bnk_CaisseTable.Filtered := false;
  FreeAndNil(CaisseListF);
 end;
 

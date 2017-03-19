@@ -149,7 +149,7 @@ implementation
 
 uses
   UMainF, USplashVersement, UComptoir, USplashAddUnite, USplash,Threading,
-  UClientGestion;
+  UClientGestion, UProduitsList;
 
 {$R *.dfm}
 
@@ -347,6 +347,12 @@ var
   ClearFilterBVLivPMenuClick(Sender);
   end;
 
+   if Assigned(ProduitsListF) then
+ begin
+  MainForm.ProduitTable.Filtered:= False;
+  ProduitsListF.ResearchProduitsEdt.Text:='';
+  end;
+
    MainForm.Bonv_ctr_listTable.Active:=False;
    MainForm.Bonv_ctr_listTable.IndexFieldNames:='';
    MainForm.Bonv_CtrTable.DisableControls;
@@ -451,6 +457,13 @@ var
 begin
  if NOT (MainForm.Bonv_ctrTable.IsEmpty) Then
  begin
+      if Assigned(ProduitsListF) then
+     begin
+      MainForm.ProduitTable.Filtered:= False;
+      ProduitsListF.ResearchProduitsEdt.Text:='';
+      end;
+
+
   MainForm.Bonv_ctr_listTable.Active:=True;
    if NOT (MainForm.Bonv_ctr_listTable.IsEmpty) Then
   begin

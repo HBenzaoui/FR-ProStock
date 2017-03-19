@@ -1097,7 +1097,7 @@ begin
 //      MainForm.SQLQuery.DisableControls;
       MainForm.SQLQuery.Active:=false;
       MainForm.SQLQuery.SQL.Clear;
-      MainForm.SQLQuery.SQL.Text:='Select * FROM client WHERE LOWER(nom_c) LIKE LOWER('+ QuotedStr( ClientBonCtrGCbx.Text )+')'  ;
+      MainForm.SQLQuery.SQL.Text:='Select code_c,oldcredit_c ,activ_c FROM client WHERE LOWER(nom_c) LIKE LOWER('+ QuotedStr( ClientBonCtrGCbx.Text )+')'  ;
       MainForm.SQLQuery.Active:=True;
           if NOT MainForm.SQLQuery.IsEmpty then
      begin
@@ -2454,6 +2454,8 @@ NEWCredit,OLDCredit,NEWCreditLbl,OLDCreditLbl  : TfrxMemoView;
 LineCredit :TfrxShapeView;
 begin
 
+ if (Showing) AND ((WindowState = wsMaximized)OR(WindowState = wsNormal)) then
+ begin
 
   if  (GetKeyState(VK_F4) < 0) and (AddBVCtrBonCtrGBtn.Enabled = True ) then
   begin
@@ -2502,6 +2504,7 @@ begin
 
     Handled := true;
   end;
+ end;
 
 end;
 
@@ -2766,7 +2769,7 @@ var CodeOCB,CodeRF : Integer;
           MainForm.Bonv_ctrTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption) ;
           if Tag = 0 then
           begin
-           MainForm.Bonv_ctrTable.FieldByName('date_bvctr').AsDateTime:= BonCtrGestionF.DateBonCtrGD.DateTime;
+           MainForm.Bonv_ctrTable.FieldByName('date_bvctr').AsDateTime:= DateBonCtrGD.DateTime;
            MainForm.Bonv_ctrTable.FieldValues['time_bvctr']:=TimeOf(Now);
           end;
 
@@ -2790,7 +2793,7 @@ var CodeOCB,CodeRF : Integer;
             MainForm.RegclientTable.FieldValues['code_bvctr']:= MainForm.Bonv_ctrTable.FieldValues['code_bvctr'];
             MainForm.RegclientTable.FieldValues['nom_rc']:= NumBonCtrGEdt.Caption;
             MainForm.RegclientTable.FieldValues['code_c']:= MainForm.SQLQuery.FieldByName('code_c').AsInteger;
-            MainForm.RegclientTable.FieldValues['date_rc']:= DateOf(Today);
+            MainForm.RegclientTable.FieldValues['date_rc']:= DateBonCtrGD.DateTime;
             MainForm.RegclientTable.FieldValues['time_rc']:=TimeOf(Now);
             MainForm.RegclientTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
             MainForm.RegclientTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
@@ -2819,7 +2822,7 @@ var CodeOCB,CodeRF : Integer;
                   MainForm.RegclientTable.FieldValues['code_bvctr']:= MainForm.Bonv_ctrTable.FieldValues['code_bvctr'];
                   MainForm.RegclientTable.FieldValues['nom_rc']:= NumBonCtrGEdt.Caption;
                   MainForm.RegclientTable.FieldValues['code_c']:= MainForm.SQLQuery.FieldByName('code_c').AsInteger;
-                  MainForm.RegclientTable.FieldValues['date_rc']:= DateOf(Today);
+                  MainForm.RegclientTable.FieldValues['date_rc']:= DateBonCtrGD.DateTime;
                   MainForm.RegclientTable.FieldValues['time_rc']:=TimeOf(Now);
                   MainForm.RegclientTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
                   MainForm.RegclientTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
@@ -2854,7 +2857,7 @@ var CodeOCB,CodeRF : Integer;
                         MainForm.RegclientTable.FieldValues['code_bvctr']:= MainForm.Bonv_ctrTable.FieldValues['code_bvctr'];
                         MainForm.RegclientTable.FieldValues['nom_rc']:= NumBonCtrGEdt.Caption;
                         MainForm.RegclientTable.FieldValues['code_c']:= MainForm.SQLQuery.FieldByName('code_c').AsInteger;
-                        MainForm.RegclientTable.FieldValues['date_rc']:= DateOf(Today);
+                        MainForm.RegclientTable.FieldValues['date_rc']:= DateBonCtrGD.DateTime;
                         MainForm.RegclientTable.FieldValues['time_rc']:=TimeOf(Now);
                         MainForm.RegclientTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
                         MainForm.RegclientTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
@@ -2907,7 +2910,7 @@ var CodeOCB,CodeRF : Integer;
 
                     MainForm.Opt_cas_bnk_CaisseTable.Append;
                     MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ocb']:= CodeOCB;
-                    MainForm.Opt_cas_bnk_CaisseTable.FieldValues['date_ocb']:= DateOf(Today);
+                    MainForm.Opt_cas_bnk_CaisseTable.FieldValues['date_ocb']:= DateBonCtrGD.DateTime;
                     MainForm.Opt_cas_bnk_CaisseTable.FieldValues['time_ocb']:= TimeOf(Now);;
                     MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nom_ocb']:= 'Vente au Comptoir N° '+NumBonCtrGEdt.Caption;
                     MainForm.Opt_cas_bnk_CaisseTable.FieldValues['third_ocb']:= ClientBonCtrGCbx.Text;
@@ -2944,7 +2947,7 @@ var CodeOCB,CodeRF : Integer;
                   
                   begin
                     MainForm.Opt_cas_bnk_CaisseTable.Edit;
-                    MainForm.Opt_cas_bnk_CaisseTable.FieldValues['date_ocb']:= DateOf(Today);
+                    MainForm.Opt_cas_bnk_CaisseTable.FieldValues['date_ocb']:= DateBonCtrGD.DateTime;
                     MainForm.Opt_cas_bnk_CaisseTable.FieldValues['time_ocb']:= TimeOf(Now);;
                     MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nom_ocb']:= 'Vente au Comptoir N° '+NumBonCtrGEdt.Caption;
                     MainForm.Opt_cas_bnk_CaisseTable.FieldValues['third_ocb']:= ClientBonCtrGCbx.Text;
@@ -2982,7 +2985,7 @@ var CodeOCB,CodeRF : Integer;
 
                             MainForm.Opt_cas_bnk_CaisseTable.Append;
                             MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ocb']:= CodeOCB;
-                            MainForm.Opt_cas_bnk_CaisseTable.FieldValues['date_ocb']:= DateOf(Today);
+                            MainForm.Opt_cas_bnk_CaisseTable.FieldValues['date_ocb']:= DateBonCtrGD.DateTime;
                             MainForm.Opt_cas_bnk_CaisseTable.FieldValues['time_ocb']:= TimeOf(Now);;
                             MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nom_ocb']:= 'Vente au Comptoir N° '+NumBonCtrGEdt.Caption;
                             MainForm.Opt_cas_bnk_CaisseTable.FieldValues['third_ocb']:= ClientBonCtrGCbx.Text;

@@ -281,7 +281,8 @@ begin
 end;
 
 procedure TClientGestionF.OKClientGBtnClick(Sender: TObject);
-Var CodeC,CodeCEdit: Integer;
+Var CodeC,CodeCEdit : Integer;
+    OLDCredit : Currency;
 begin
 
   if NameClientGEdt.Text <> '' then
@@ -355,6 +356,7 @@ begin
     if OKClientGBtn.Tag = 1 then
     begin
         CodeCEdit:=MainForm.ClientTable.FieldByName('code_c').AsInteger;
+        OLDCredit:=MainForm.ClientTable.FieldByName('oldcredit_c').AsCurrency;
         with MainForm.ClientTable do
         begin
           Edit;
@@ -380,6 +382,7 @@ begin
           if OldCreditClientGEdt.Text <> '' then
           begin
             fieldbyname('oldcredit_c').Value := StrToCurr(StringReplace(OldCreditClientGEdt.Text, #32, '', [rfReplaceAll]));
+            fieldbyname('credit_c').Value := (fieldbyname('credit_c').Value - OLDCredit)+ StrToCurr(StringReplace(OldCreditClientGEdt.Text, #32, '', [rfReplaceAll]));
           end
           else
           begin

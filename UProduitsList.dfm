@@ -1140,7 +1140,7 @@ object ProduitsListF: TProduitsListF
       TMSStyle = 0
     end
     object ResearchProduitsLbl: TLabel
-      Left = 6
+      Left = 1
       Top = 31
       Width = 74
       Height = 16
@@ -1372,7 +1372,7 @@ object ProduitsListF: TProduitsListF
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -12
-      Font.Name = 'Roboto'
+      Font.Name = 'Helvetica LT Std'
       Font.Style = []
       ParentFont = False
       TabOrder = 3
@@ -1388,7 +1388,7 @@ object ProduitsListF: TProduitsListF
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -12
-      Font.Name = 'Roboto'
+      Font.Name = 'Helvetica LT Std'
       Font.Style = []
       ParentFont = False
       TabOrder = 4

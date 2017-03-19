@@ -154,7 +154,7 @@ var
 implementation
 
 uses UMainF, UBonRecGestion, USplashVersement, USplashAddUnite, USplash,Threading,
-  UClientGestion;
+  UClientGestion, UProduitsList;
 
 {$R *.dfm}
 
@@ -349,6 +349,12 @@ var
 //  MyForm :TBonRecGestionF;
 begin
 ClearFilterBVLivPMenuClick(Sender);
+
+ if Assigned(ProduitsListF) then
+ begin
+  MainForm.ProduitTable.Filtered:= False;
+  ProduitsListF.ResearchProduitsEdt.Text:='';
+  end;
 
   MainForm.Bona_recPlistTable.Active:=False;
   MainForm.Bona_recPlistTable.IndexFieldNames:='';
@@ -737,6 +743,12 @@ var
  begin
     if NOT (MainForm.Bona_recTable.IsEmpty) Then
    begin
+     if Assigned(ProduitsListF) then
+     begin
+      MainForm.ProduitTable.Filtered:= False;
+      ProduitsListF.ResearchProduitsEdt.Text:='';
+      end;
+
     MainForm.Bona_recPlistTable.Active:=True;
     if  NOT (MainForm.Bona_recPlistTable.IsEmpty) then
    begin

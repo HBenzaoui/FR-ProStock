@@ -1375,12 +1375,12 @@ begin
 //      MainForm.SQLQuery.DisableControls;
       MainForm.SQLQuery.Active:=false;
       MainForm.SQLQuery.SQL.Clear;
-      MainForm.SQLQuery.SQL.Text:='Select * FROM client WHERE LOWER(nom_c) LIKE LOWER('+ QuotedStr( ClientBonLivGCbx.Text )+')'  ;
+      MainForm.SQLQuery.SQL.Text:='Select code_c,oldcredit_c,credit_c,activ_c FROM client WHERE LOWER(nom_c) LIKE LOWER('+ QuotedStr( ClientBonLivGCbx.Text )+')'  ;
       MainForm.SQLQuery.Active:=True;
 
-     if NOT MainForm.SQLQuery.IsEmpty then
+     if NOT (MainForm.SQLQuery.IsEmpty)   then
      begin
-      OLDCreditCINI:=MainForm.SQLQuery.FieldByName('oldcredit_c').AsCurrency;
+      OLDCreditCINI:=MainForm.SQLQuery.FieldByName('credit_c').AsCurrency;
 
       if MainForm.SQLQuery.FieldByName('activ_c').AsBoolean <> False then
       begin
@@ -1394,71 +1394,71 @@ begin
         end;
         CodeC:= MainForm.SQLQuery.FieldValues['code_c'] ;
 
-        MainForm.Bonv_livTableCredit.DisableControls;
-        MainForm.Bonv_livTableCredit.Active:=false;
-        MainForm.Bonv_livTableCredit.SQL.Clear;
-        MainForm.Bonv_livTableCredit.SQL.Text:='Select * FROM bonv_liv WHERE valider_bvliv = true AND code_c = '+ IntToStr( CodeC )+' ORDER BY code_bvliv '  ;
-        MainForm.Bonv_livTableCredit.Active:=True;
+//        MainForm.Bonv_livTableCredit.DisableControls;
+//        MainForm.Bonv_livTableCredit.Active:=false;
+//        MainForm.Bonv_livTableCredit.SQL.Clear;
+//        MainForm.Bonv_livTableCredit.SQL.Text:='Select * FROM bonv_liv WHERE valider_bvliv = true AND code_c = '+ IntToStr( CodeC )+' ORDER BY code_bvliv '  ;
+//        MainForm.Bonv_livTableCredit.Active:=True;
+//
+//        while NOT (MainForm.Bonv_livTableCredit.Eof) do
+//       begin
+//       OLDCreditC := OLDCreditC + MainForm.Bonv_livTableCredit.FieldValues['MontantRes'];
+//       MainForm.Bonv_livTableCredit.Next;
+//       end;
+//        MainForm.Bonv_livTableCredit.EnableControls;
+//
+//
+//         MainForm.RegclientTable.DisableControls;
+//        MainForm.RegclientTable.Active:=false;
+//        MainForm.RegclientTable.SQL.Clear;
+//        MainForm.RegclientTable.SQL.Text:='Select * FROM regclient WHERE bon_or_no_rc = 1 AND code_c = '+ IntToStr( CodeC )+' ORDER BY code_rc '  ;
+//        MainForm.RegclientTable.Active:=True;
+//
+//       while NOT (MainForm.RegclientTable.Eof) do
+//       begin
+//       RegCCreditC := RegCCreditC + MainForm.RegclientTable.FieldValues['montver_rc'];
+//       MainForm.RegclientTable.Next;
+//       end;
 
-        while NOT (MainForm.Bonv_livTableCredit.Eof) do
-       begin
-       OLDCreditC := OLDCreditC + MainForm.Bonv_livTableCredit.FieldValues['MontantRes'];
-       MainForm.Bonv_livTableCredit.Next;
-       end;
-        MainForm.Bonv_livTableCredit.EnableControls;
-
-
-                   MainForm.RegclientTable.DisableControls;
-        MainForm.RegclientTable.Active:=false;
-        MainForm.RegclientTable.SQL.Clear;
-        MainForm.RegclientTable.SQL.Text:='Select * FROM regclient WHERE bon_or_no_rc = 1 AND code_c = '+ IntToStr( CodeC )+' ORDER BY code_rc '  ;
-        MainForm.RegclientTable.Active:=True;
-
-       while NOT (MainForm.RegclientTable.Eof) do
-       begin
-       RegCCreditC := RegCCreditC + MainForm.RegclientTable.FieldValues['montver_rc'];
-       MainForm.RegclientTable.Next;
-       end;
-
-        if NOT (MainForm.Bonv_livTableCredit.IsEmpty ) OR NOT (MainForm.RegclientTable.IsEmpty) OR NOT (OLDCreditCINI = 0) then
+        if (NOT (OLDCreditCINI = 0)) AND (MainForm.SQLQuery.FieldByName('code_c').AsInteger <> 1) then
         begin
-         MainForm.Bonv_livTableCredit.last;
-         BonLivGClientOLDCredit.Caption:= CurrToStrF(((OLDCreditC - RegCCreditC) + OLDCreditCINI ),ffNumber,2) ;
+//         MainForm.Bonv_livTableCredit.last;
+         BonLivGClientOLDCredit.Caption:= CurrToStrF((OLDCreditCINI ),ffNumber,2) ;
 
-         if NOT (BonLivPListDataS.DataSet.IsEmpty) then
-          begin
-          if Tag = 0 then
-           begin
-           BonLivGClientNEWCredit.Caption:=
-           CurrToStrF((MainForm.Bonv_livTableCredit.FieldByName('MontantRes').AsCurrency ) + StrToCurr(StringReplace(BonLivResteLbl.Caption, #32, '', [rfReplaceAll])),ffNumber,2);//  anyways i'm software developer
-           end else
-               begin
-                BonLivGClientNEWCredit.Caption:=
-                CurrToStrF((MainForm.Bonv_livTableCredit.FieldByName('MontantRes').AsCurrency ) + StrToCurr(StringReplace(BonLivTotalTTCLbl.Caption, #32, '', [rfReplaceAll])),ffNumber,2);//  anyways i'm software developer
-
-
-               end;
-
-          end;
+//         if NOT (BonLivPListDataS.DataSet.IsEmpty)  then
+//          begin
+//          if Tag = 0 then
+//           begin
+//           BonLivGClientNEWCredit.Caption:=
+//           CurrToStrF((MainForm.Bonv_livTableCredit.FieldByName('MontantRes').AsCurrency ) + StrToCurr(StringReplace(BonLivResteLbl.Caption, #32, '', [rfReplaceAll])),ffNumber,2);//  anyways i'm software developer
+//           end else
+//               begin
+//                BonLivGClientNEWCredit.Caption:=
+//                CurrToStrF((MainForm.Bonv_livTableCredit.FieldByName('MontantRes').AsCurrency ) + StrToCurr(StringReplace(BonLivTotalTTCLbl.Caption, #32, '', [rfReplaceAll])),ffNumber,2);//  anyways i'm software developer
+//
+//
+//               end;
+//
+//          end;
           end else
           begin
            BonLivGClientOLDCredit.Caption:= CurrToStrF(0,ffNumber,2) ;
           end;
 
 
-        MainForm.Bonv_livTableCredit.DisableControls;
-        MainForm.Bonv_livTableCredit.Active:=false;
-        MainForm.Bonv_livTableCredit.SQL.Clear;
-        MainForm.Bonv_livTableCredit.SQL.Text:='Select * FROM bonv_liv '  ;
-        MainForm.Bonv_livTableCredit.Active:=True;
-        MainForm.Bonv_livTableCredit.last;
-        MainForm.Bonv_livTableCredit.EnableControls;
-
-
-        MainForm.RegclientTable.Active:=false;
-        MainForm.RegclientTable.SQL.Clear;
-        MainForm.RegclientTable.SQL.Text:='Select * FROM regclient ORDER BY time_rc '  ;
-        MainForm.RegclientTable.Active:=True;
+//        MainForm.Bonv_livTableCredit.DisableControls;
+//        MainForm.Bonv_livTableCredit.Active:=false;
+//        MainForm.Bonv_livTableCredit.SQL.Clear;
+//        MainForm.Bonv_livTableCredit.SQL.Text:='Select * FROM bonv_liv '  ;
+//        MainForm.Bonv_livTableCredit.Active:=True;
+//        MainForm.Bonv_livTableCredit.last;
+//        MainForm.Bonv_livTableCredit.EnableControls;
+//
+//
+//        MainForm.RegclientTable.Active:=false;
+//        MainForm.RegclientTable.SQL.Clear;
+//        MainForm.RegclientTable.SQL.Text:='Select * FROM regclient ORDER BY time_rc '  ;
+//        MainForm.RegclientTable.Active:=True;
         MainForm.RegclientTable.EnableControls;
 
         MainForm.SQLQuery.Active:=false;

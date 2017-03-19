@@ -1676,11 +1676,11 @@ begin
 //      MainForm.SQLQuery.DisableControls;
       MainForm.SQLQuery.Active:=false;
       MainForm.SQLQuery.SQL.Clear;
-      MainForm.SQLQuery.SQL.Text:='Select * FROM client WHERE LOWER(nom_c) LIKE LOWER('+ QuotedStr( ClientBonFacVGCbx.Text )+')'  ;
+      MainForm.SQLQuery.SQL.Text:='Select code_c,oldcredit_c,credit_c,activ_c FROM client WHERE LOWER(nom_c) LIKE LOWER('+ QuotedStr( ClientBonFacVGCbx.Text )+')'  ;
       MainForm.SQLQuery.Active:=True;
      if NOT MainForm.SQLQuery.IsEmpty then
      begin
-      OLDCreditCINI:= MainForm.SQLQuery.FieldByName('oldcredit_c').AsCurrency;
+      OLDCreditCINI:= MainForm.SQLQuery.FieldByName('credit_c').AsCurrency;
 
       if MainForm.SQLQuery.FieldByName('activ_c').AsBoolean <> False then
       begin
@@ -1693,62 +1693,62 @@ begin
           end;
           CodeC:= MainForm.SQLQuery.FieldByName('code_c').AsInteger ;
 
-          MainForm.Bonv_livTableCredit.DisableControls;
-          MainForm.Bonv_livTableCredit.Active:=false;
-          MainForm.Bonv_livTableCredit.SQL.Clear;
-          MainForm.Bonv_livTableCredit.SQL.Text:='Select * FROM bonv_liv WHERE valider_bvliv = true AND code_c = '+ IntToStr( CodeC )+' ORDER BY code_bvliv '  ;
-          MainForm.Bonv_livTableCredit.Active:=True;
+//          MainForm.Bonv_livTableCredit.DisableControls;
+//          MainForm.Bonv_livTableCredit.Active:=false;
+//          MainForm.Bonv_livTableCredit.SQL.Clear;
+//          MainForm.Bonv_livTableCredit.SQL.Text:='Select * FROM bonv_liv WHERE valider_bvliv = true AND code_c = '+ IntToStr( CodeC )+' ORDER BY code_bvliv '  ;
+//          MainForm.Bonv_livTableCredit.Active:=True;
+//
+//          while NOT (MainForm.Bonv_livTableCredit.Eof) do
+//         begin
+//          OLDCreditC := OLDCreditC + MainForm.Bonv_livTableCredit.FieldValues['MontantRes'];
+//          MainForm.Bonv_livTableCredit.Next;
+//         end;
+//          MainForm.Bonv_livTableCredit.EnableControls;
+//
+//
+//          MainForm.RegclientTable.DisableControls;
+//          MainForm.RegclientTable.Active:=false;
+//          MainForm.RegclientTable.SQL.Clear;
+//          MainForm.RegclientTable.SQL.Text:='Select * FROM regclient WHERE bon_or_no_rc = 1 AND code_c = '+ IntToStr( CodeC )+' ORDER BY code_rc '  ;
+//          MainForm.RegclientTable.Active:=True;
+//
+//         while NOT (MainForm.RegclientTable.Eof) do
+//         begin
+//         RegCCreditC := RegCCreditC + MainForm.RegclientTable.FieldValues['montver_rc'];
+//         MainForm.RegclientTable.Next;
+//         end;
 
-          while NOT (MainForm.Bonv_livTableCredit.Eof) do
-         begin
-          OLDCreditC := OLDCreditC + MainForm.Bonv_livTableCredit.FieldValues['MontantRes'];
-          MainForm.Bonv_livTableCredit.Next;
-         end;
-          MainForm.Bonv_livTableCredit.EnableControls;
 
-
-          MainForm.RegclientTable.DisableControls;
-          MainForm.RegclientTable.Active:=false;
-          MainForm.RegclientTable.SQL.Clear;
-          MainForm.RegclientTable.SQL.Text:='Select * FROM regclient WHERE bon_or_no_rc = 1 AND code_c = '+ IntToStr( CodeC )+' ORDER BY code_rc '  ;
-          MainForm.RegclientTable.Active:=True;
-
-         while NOT (MainForm.RegclientTable.Eof) do
-         begin
-         RegCCreditC := RegCCreditC + MainForm.RegclientTable.FieldValues['montver_rc'];
-         MainForm.RegclientTable.Next;
-         end;
-
-
-          if NOT (MainForm.Bonv_livTableCredit.IsEmpty ) OR NOT (MainForm.RegclientTable.IsEmpty) OR NOT (OLDCreditCINI = 0)then
+          if (NOT (OLDCreditCINI = 0)) AND (MainForm.SQLQuery.FieldByName('code_c').AsInteger <> 1)  then
           begin
-           MainForm.Bonv_livTableCredit.last;
-           BonFacVGClientOLDCredit.Caption:= CurrToStrF(((OLDCreditC - RegCCreditC) + OLDCreditCINI ),ffNumber,2) ;
+//           MainForm.Bonv_livTableCredit.last;
+           BonFacVGClientOLDCredit.Caption:= CurrToStrF((OLDCreditCINI ),ffNumber,2) ;
 
-           if NOT (BonFacVPListDataS.DataSet.IsEmpty) then
-            begin
-             BonFacVGClientNEWCredit.Caption:=
-             CurrToStrF((MainForm.Bonv_livTableCredit.FieldByName('MontantRes').AsCurrency) + StrToCurr(StringReplace(BonFacVResteLbl.Caption, #32, '', [rfReplaceAll]))  ,ffNumber,2);//  anyways i'm software developer
-            end;
+//           if NOT (BonFacVPListDataS.DataSet.IsEmpty) then
+//            begin
+//             BonFacVGClientNEWCredit.Caption:=
+//             CurrToStrF((MainForm.Bonv_livTableCredit.FieldByName('MontantRes').AsCurrency) + StrToCurr(StringReplace(BonFacVResteLbl.Caption, #32, '', [rfReplaceAll]))  ,ffNumber,2);//  anyways i'm software developer
+//            end;
             end else
             begin
              BonFacVGClientOLDCredit.Caption:= CurrToStrF(0,ffNumber,2) ;
             end;
 
-        MainForm.Bonv_livTableCredit.DisableControls;
-        MainForm.Bonv_livTableCredit.Active:=false;
-        MainForm.Bonv_livTableCredit.SQL.Clear;
-        MainForm.Bonv_livTableCredit.SQL.Text:='Select * FROM bonv_liv '  ;
-        MainForm.Bonv_livTableCredit.Active:=True;
-        MainForm.Bonv_livTableCredit.last;
-        MainForm.Bonv_livTableCredit.EnableControls;
-
-
-        MainForm.RegclientTable.Active:=false;
-        MainForm.RegclientTable.SQL.Clear;
-        MainForm.RegclientTable.SQL.Text:='Select * FROM regclient  ORDER BY time_rc '  ;
-        MainForm.RegclientTable.Active:=True;
-        MainForm.RegclientTable.EnableControls;
+//        MainForm.Bonv_livTableCredit.DisableControls;
+//        MainForm.Bonv_livTableCredit.Active:=false;
+//        MainForm.Bonv_livTableCredit.SQL.Clear;
+//        MainForm.Bonv_livTableCredit.SQL.Text:='Select * FROM bonv_liv '  ;
+//        MainForm.Bonv_livTableCredit.Active:=True;
+//        MainForm.Bonv_livTableCredit.last;
+//        MainForm.Bonv_livTableCredit.EnableControls;
+//
+//
+//        MainForm.RegclientTable.Active:=false;
+//        MainForm.RegclientTable.SQL.Clear;
+//        MainForm.RegclientTable.SQL.Text:='Select * FROM regclient  ORDER BY time_rc '  ;
+//        MainForm.RegclientTable.Active:=True;
+//        MainForm.RegclientTable.EnableControls;
 
         MainForm.SQLQuery.Active:=false;
         MainForm.SQLQuery.SQL.Clear;
@@ -2437,44 +2437,44 @@ begin
      sndPlaySound('C:\Windows\Media\speech on.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
 
 //--- this is for adding to the priduit
-      begin
-           MainForm.ProduitTable.DisableControls;
-           MainForm.ProduitTable.Active:=False;
-           MainForm.ProduitTable.SQL.Clear;
-           MainForm.ProduitTable.SQL.Text:='SELECT * FROM produit ' ;
-           MainForm.ProduitTable.Active:=True;
-           Mainform.Sqlquery.Active:=False;
-           Mainform.Sqlquery.Sql.Clear;
-           Mainform.Sqlquery.Sql.Text:='SELECT code_bpfacl,code_p,  qut_p, cond_p , prixvd_p,tva_p FROM bonp_fac_list WHERE code_bpfac =  '
-                                                 + IntToStr (MainForm.Bonp_facTable.FieldValues['code_bpfac'])
-                                                 + 'GROUP BY code_bpfacl, code_p, qut_p, cond_p,prixvd_p,tva_p ' ;
-           MainForm.SQLQuery.Active:=True;
-           MainForm.SQLQuery.First;
-           while  NOT (MainForm.SQLQuery.Eof) do
-           begin
-//            MainForm.ProduitTable.Active:=False;
-//            MainForm.ProduitTable.SQL.Clear;
-//            MainForm.ProduitTable.SQL.Text:='SELECT * FROM produit WHERE code_p = ' +QuotedStr(MainForm.SQLQuery.FieldValues['code_p']) ;
-//            MainForm.ProduitTable.Active:=True;
-//            MainForm.ProduitTable.Edit;
-//            MainForm.ProduitTable.FieldValues['qut_p']:= ( MainForm.ProduitTable.FieldValues['qut_p']
-//                                                         - ((MainForm.SQLQuery.FieldValues['qut_p']) * ((MainForm.SQLQuery.FieldValues['cond_p']))));
-//            MainForm.ProduitTable.FieldValues['tva_p']:= MainForm.SQLQuery.FieldValues['tva_p'];
-//            MainForm.ProduitTable.Post;
-            MainForm.SQLQuery.Next;
-           end;
-
-           MainForm.ProduitTable.Active:=False;
-           MainForm.ProduitTable.SQL.Clear;
-           MainForm.ProduitTable.SQL.Text:='SELECT * FROM produit ' ;
-           MainForm.ProduitTable.Active:=True;
-           MainForm.ProduitTable.EnableControls;
-           MainForm.SQLQuery.Active:=False;
-           MainForm.SQLQuery.SQL.Clear;
-          MainForm.Bonp_facTable.Refresh;
-          DataModuleF.Top5produit.Refresh;
-
-     end;
+//      begin
+//           MainForm.ProduitTable.DisableControls;
+//           MainForm.ProduitTable.Active:=False;
+//           MainForm.ProduitTable.SQL.Clear;
+//           MainForm.ProduitTable.SQL.Text:='SELECT * FROM produit ' ;
+//           MainForm.ProduitTable.Active:=True;
+//           Mainform.Sqlquery.Active:=False;
+//           Mainform.Sqlquery.Sql.Clear;
+//           Mainform.Sqlquery.Sql.Text:='SELECT code_bpfacl,code_p,  qut_p, cond_p , prixvd_p,tva_p FROM bonp_fac_list WHERE code_bpfac =  '
+//                                                 + IntToStr (MainForm.Bonp_facTable.FieldValues['code_bpfac'])
+//                                                 + 'GROUP BY code_bpfacl, code_p, qut_p, cond_p,prixvd_p,tva_p ' ;
+//           MainForm.SQLQuery.Active:=True;
+//           MainForm.SQLQuery.First;
+//           while  NOT (MainForm.SQLQuery.Eof) do
+//           begin
+////            MainForm.ProduitTable.Active:=False;
+////            MainForm.ProduitTable.SQL.Clear;
+////            MainForm.ProduitTable.SQL.Text:='SELECT * FROM produit WHERE code_p = ' +QuotedStr(MainForm.SQLQuery.FieldValues['code_p']) ;
+////            MainForm.ProduitTable.Active:=True;
+////            MainForm.ProduitTable.Edit;
+////            MainForm.ProduitTable.FieldValues['qut_p']:= ( MainForm.ProduitTable.FieldValues['qut_p']
+////                                                         - ((MainForm.SQLQuery.FieldValues['qut_p']) * ((MainForm.SQLQuery.FieldValues['cond_p']))));
+////            MainForm.ProduitTable.FieldValues['tva_p']:= MainForm.SQLQuery.FieldValues['tva_p'];
+////            MainForm.ProduitTable.Post;
+//            MainForm.SQLQuery.Next;
+//           end;
+//
+//           MainForm.ProduitTable.Active:=False;
+//           MainForm.ProduitTable.SQL.Clear;
+//           MainForm.ProduitTable.SQL.Text:='SELECT * FROM produit ' ;
+//           MainForm.ProduitTable.Active:=True;
+//           MainForm.ProduitTable.EnableControls;
+//           MainForm.SQLQuery.Active:=False;
+//           MainForm.SQLQuery.SQL.Clear;
+//          MainForm.Bonp_facTable.Refresh;
+//          DataModuleF.Top5produit.Refresh;
+//
+//     end;
 //--- this is to set the facture de vente fileds
      begin
 //          MainForm.SQLQuery.DisableControls;
@@ -2498,11 +2498,8 @@ begin
           MainForm.Bonp_facTable.Edit;
           MainForm.Bonp_facTable.FieldValues['code_c']:= MainForm.SQLQuery.FieldByName('code_c').AsInteger;
           MainForm.Bonp_facTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
-          if Tag = 0 then
-          begin
           MainForm.Bonp_facTable.FieldByName('date_bpfac').AsDateTime:= DateBonFacVGD.DateTime;
           MainForm.Bonp_facTable.FieldValues['time_bpfac']:=TimeOf(Now);
-          end;
 //          MainForm.Bonp_facTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
 //          MainForm.Bonp_facTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
           MainForm.Bonp_facTable.FieldValues['obser_bpfac']:= ObserBonFacVGMem.Text;

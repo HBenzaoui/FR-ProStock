@@ -1084,7 +1084,7 @@ begin
 
    MainForm.SaveGridLayout(CaisseListDBGridEh,GetCurrentDir +'\bin\gc_bnklst');
 
-
+ MainForm.Opt_cas_bnk_BankTable.Filtered := false;
  FreeAndNil(BankListF);
 end;
 

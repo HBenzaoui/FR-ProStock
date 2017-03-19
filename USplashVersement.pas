@@ -640,11 +640,6 @@ begin
 
 //--- this is for adding to the priduit
       begin
-           MainForm.ProduitTable.DisableControls;
-           MainForm.ProduitTable.Active:=False;
-           MainForm.ProduitTable.SQL.Clear;
-           MainForm.ProduitTable.SQL.Text:='SELECT * FROM produit ' ;
-           MainForm.ProduitTable.Active:=True;
            Mainform.Sqlquery.Active:=False;
            Mainform.Sqlquery.Sql.Clear;
            Mainform.Sqlquery.Sql.Text:='SELECT code_barecl,code_p,  qut_p, cond_p , prixht_p,tva_p,prixvd_p,prixvr_p,prixvg_p,prixva_p,prixva2_p,qutinstock_p FROM bona_rec_list WHERE code_barec =  '
@@ -655,36 +650,34 @@ begin
 
            while  NOT (MainForm.SQLQuery.Eof) do
            begin
-            MainForm.ProduitTable.Active:=False;
-            MainForm.ProduitTable.SQL.Clear;
-            MainForm.ProduitTable.SQL.Text:='SELECT * FROM produit WHERE code_p = ' +QuotedStr(MainForm.SQLQuery.FieldValues['code_p']) ;
-            MainForm.ProduitTable.Active:=True;
+            MainForm.FDQuery2.Active:=False;
+            MainForm.FDQuery2.SQL.Clear;
+            MainForm.FDQuery2.SQL.Text:='SELECT code_p,qut_p,prixht_p,tva_p,prixvd_p,prixvr_p,prixvg_p,prixva_p,prixva2_p FROM produit WHERE code_p = '
+            +IntToStr(MainForm.SQLQuery.FieldByName('code_p').AsInteger) ;
+            MainForm.FDQuery2.Active:=True;
 
-            MainForm.ProduitTable.Edit;
-            MainForm.ProduitTable.FieldValues['qut_p']:= ((MainForm.SQLQuery.FieldValues['qut_p']) * ((MainForm.SQLQuery.FieldValues['cond_p']))
-                                                         + MainForm.ProduitTable.FieldValues['qut_p']);
-            MainForm.ProduitTable.FieldValues['prixht_p']:= MainForm.SQLQuery.FieldValues['prixht_p'];
-            MainForm.ProduitTable.FieldValues['tva_p']:= MainForm.SQLQuery.FieldValues['tva_p'];
-            MainForm.ProduitTable.FieldByName('prixvd_p').AsCurrency:=  MainForm.SQLQuery.FieldByName('prixvd_p').AsCurrency;
-            MainForm.ProduitTable.FieldByName('prixvr_p').AsCurrency:=  MainForm.SQLQuery.FieldByName('prixvr_p').AsCurrency;
-            MainForm.ProduitTable.FieldByName('prixvg_p').AsCurrency:=  MainForm.SQLQuery.FieldByName('prixvg_p').AsCurrency;
-            MainForm.ProduitTable.FieldByName('prixva_p').AsCurrency:=  MainForm.SQLQuery.FieldByName('prixva_p').AsCurrency;
-            MainForm.ProduitTable.FieldByName('prixva2_p').AsCurrency:= MainForm.SQLQuery.FieldByName('prixva2_p').AsCurrency;
-            MainForm.ProduitTable.Post;
+            MainForm.FDQuery2.Edit;
+            MainForm.FDQuery2.FieldValues['qut_p']:= ((MainForm.SQLQuery.FieldValues['qut_p']) * ((MainForm.SQLQuery.FieldValues['cond_p']))
+                                                         + MainForm.FDQuery2.FieldValues['qut_p']);
+            MainForm.FDQuery2.FieldValues['prixht_p']:= MainForm.SQLQuery.FieldValues['prixht_p'];
+            MainForm.FDQuery2.FieldValues['tva_p']:= MainForm.SQLQuery.FieldValues['tva_p'];
+            MainForm.FDQuery2.FieldByName('prixvd_p').AsCurrency:=  MainForm.SQLQuery.FieldByName('prixvd_p').AsCurrency;
+            MainForm.FDQuery2.FieldByName('prixvr_p').AsCurrency:=  MainForm.SQLQuery.FieldByName('prixvr_p').AsCurrency;
+            MainForm.FDQuery2.FieldByName('prixvg_p').AsCurrency:=  MainForm.SQLQuery.FieldByName('prixvg_p').AsCurrency;
+            MainForm.FDQuery2.FieldByName('prixva_p').AsCurrency:=  MainForm.SQLQuery.FieldByName('prixva_p').AsCurrency;
+            MainForm.FDQuery2.FieldByName('prixva2_p').AsCurrency:= MainForm.SQLQuery.FieldByName('prixva2_p').AsCurrency;
+            MainForm.FDQuery2.Post;
 
-             MainForm.SQLQuery.Edit;   
-             MainForm.SQLQuery.FieldValues['qutinstock_p']:= 
+             MainForm.SQLQuery.Edit;
+             MainForm.SQLQuery.FieldValues['qutinstock_p']:=
              (MainForm.SQLQuery.FieldValues['qut_p'])*(MainForm.SQLQuery.FieldValues['cond_p']);
              MainForm.SQLQuery.Post;  
              
             MainForm.SQLQuery.Next;
            end;
 
-           MainForm.ProduitTable.Active:=False;
-           MainForm.ProduitTable.SQL.Clear;
-           MainForm.ProduitTable.SQL.Text:='SELECT * FROM produit ' ;
-           MainForm.ProduitTable.Active:=True;
-           MainForm.ProduitTable.EnableControls;
+           MainForm.FDQuery2.Active:=False;
+           MainForm.FDQuery2.SQL.Clear;
            MainForm.SQLQuery.Active:=False;
            MainForm.SQLQuery.SQL.Clear;
            MainForm.Bona_recTable.Refresh;
@@ -715,13 +708,8 @@ begin
           MainForm.Bona_recTable.Edit;
           MainForm.Bona_recTable.FieldValues['code_f']:= MainForm.SQLQuery.FieldByName('code_f').AsInteger;
           MainForm.Bona_recTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
-
-          if BonRecGestionF.Tag = 0 then
-          begin
           MainForm.Bona_recTable.FieldValues['date_barec']:= BonRecGestionF.DateBonRecGD.DateTime;
-           MainForm.Bona_recTable.FieldValues['time_barec']:=TimeOf(Now);
-          end;
-
+          MainForm.Bona_recTable.FieldValues['time_barec']:=TimeOf(Now);
           MainForm.Bona_recTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
           MainForm.Bona_recTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
           MainForm.Bona_recTable.FieldValues['obser_barec']:= BonRecGestionF.ObserBonRecGMem.Text;
@@ -825,7 +813,7 @@ begin
                   MainForm.RegfournisseurTable.FieldValues['code_barec']:= MainForm.Bona_recTable.FieldValues['code_barec'];
                   MainForm.RegfournisseurTable.FieldValues['nom_rf']:= BonRecGestionF.NumBonRecGEdt.Caption;
                   MainForm.RegfournisseurTable.FieldValues['code_f']:= MainForm.SQLQuery.FieldByName('code_f').AsInteger;
-                  MainForm.RegfournisseurTable.FieldValues['date_rf']:= DateOf(Today);
+                  MainForm.RegfournisseurTable.FieldValues['date_rf']:= BonRecGestionF.DateBonRecGD.DateTime;
                   MainForm.RegfournisseurTable.FieldValues['time_rf']:=TimeOf(Now);
                   MainForm.RegfournisseurTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
                   MainForm.RegfournisseurTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
@@ -878,7 +866,7 @@ begin
                             MainForm.RegfournisseurTable.FieldValues['code_barec']:= MainForm.Bona_recTable.FieldValues['code_barec'];
                             MainForm.RegfournisseurTable.FieldValues['nom_rf']:= BonRecGestionF.NumBonRecGEdt.Caption;
                             MainForm.RegfournisseurTable.FieldValues['code_f']:= MainForm.SQLQuery.FieldByName('code_f').AsInteger;
-                            MainForm.RegfournisseurTable.FieldValues['date_rf']:= DateOf(Today);
+                            MainForm.RegfournisseurTable.FieldValues['date_rf']:= BonRecGestionF.DateBonRecGD.DateTime;;
                             MainForm.RegfournisseurTable.FieldValues['time_rf']:=TimeOf(Now);
                             MainForm.RegfournisseurTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
                             MainForm.RegfournisseurTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
@@ -952,7 +940,7 @@ begin
                 end;
               MainForm.Opt_cas_bnk_CaisseTable.Append;
               MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ocb']:= CodeOCB;
-              MainForm.Opt_cas_bnk_CaisseTable.FieldValues['date_ocb']:= DateOf(Today);
+              MainForm.Opt_cas_bnk_CaisseTable.FieldValues['date_ocb']:= BonRecGestionF.DateBonRecGD.DateTime;;
               MainForm.Opt_cas_bnk_CaisseTable.FieldValues['time_ocb']:= TimeOf(Now);
               MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
               MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nom_ocb']:= 'Versement au Fournisseur pièce N° '+BonRecGestionF.NumBonRecGEdt.Caption;
@@ -1004,7 +992,7 @@ begin
                 if NOT (MainForm.Opt_cas_bnk_CaisseTable.IsEmpty) Then
                 begin
                      MainForm.Opt_cas_bnk_CaisseTable.Edit;
-                     MainForm.Opt_cas_bnk_CaisseTable.FieldValues['date_ocb']:= DateOf(Today);
+                     MainForm.Opt_cas_bnk_CaisseTable.FieldValues['date_ocb']:= BonRecGestionF.DateBonRecGD.DateTime;;
                      MainForm.Opt_cas_bnk_CaisseTable.FieldValues['time_ocb']:= TimeOf(Now);
                      MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
                      MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nom_ocb']:= 'Versement au Fournisseur pièce N° '+BonRecGestionF.NumBonRecGEdt.Caption;
@@ -1054,7 +1042,7 @@ begin
                           end;
                         MainForm.Opt_cas_bnk_CaisseTable.Append;
                         MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ocb']:= CodeOCB;
-                        MainForm.Opt_cas_bnk_CaisseTable.FieldValues['date_ocb']:= DateOf(Today);
+                        MainForm.Opt_cas_bnk_CaisseTable.FieldValues['date_ocb']:= BonRecGestionF.DateBonRecGD.DateTime;;
                         MainForm.Opt_cas_bnk_CaisseTable.FieldValues['time_ocb']:= TimeOf(Now);
                         MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
                         MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nom_ocb']:= 'Versement au Fournisseur pièce N° '+BonRecGestionF.NumBonRecGEdt.Caption;
@@ -1163,11 +1151,6 @@ begin
 
 //--- this is for adding to the priduit
       begin
-//           MainForm.ProduitTable.DisableControls;
-//           MainForm.ProduitTable.Active:=False;
-//           MainForm.ProduitTable.SQL.Clear;
-//           MainForm.ProduitTable.SQL.Text:='SELECT * FROM produit ' ;
-//           MainForm.ProduitTable.Active:=True;
            Mainform.Sqlquery.Active:=False;
            Mainform.Sqlquery.Sql.Clear;
            Mainform.Sqlquery.Sql.Text:='SELECT code_bvlivl,code_p,  qut_p, cond_p , prixvd_p,tva_p,code_barec FROM bonv_liv_list WHERE code_bvliv =  '
@@ -1204,24 +1187,14 @@ begin
            end;
 
 
-
            MainForm.SQLQuery3.Active:=False;
            MainForm.SQLQuery3.SQL.Clear;
-//           MainForm.ProduitTable.SQL.Text:='SELECT * FROM produit ' ;
-//           MainForm.ProduitTable.Active:=True;
-//           MainForm.ProduitTable.EnableControls;
            MainForm.SQLQuery.Active:=False;
            MainForm.SQLQuery.SQL.Clear;
             Mainform.FDQuery2.Active:=False;
             Mainform.FDQuery2.Sql.Clear;
            MainForm.Bonv_livTable.Refresh;
            DataModuleF.Top5produit.Refresh;
-
-
-
-
-
-
 
      end;
 //--- this is to set the bon livration fileds
@@ -1247,11 +1220,8 @@ begin
           MainForm.Bonv_livTable.Edit;
           MainForm.Bonv_livTable.FieldValues['code_c']:= MainForm.SQLQuery.FieldByName('code_c').AsInteger;
           MainForm.Bonv_livTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
-          if BonLivGestionF.Tag = 0 then
-          begin
           MainForm.Bonv_livTable.FieldByName('date_bvliv').AsDateTime:= BonLivGestionF.DateBonLivGD.DateTime;
           MainForm.Bonv_livTable.FieldValues['time_bvliv']:=TimeOf(Now);
-          end;
           MainForm.Bonv_livTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
           MainForm.Bonv_livTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
           MainForm.Bonv_livTable.FieldValues['obser_bvliv']:= BonLivGestionF.ObserBonLivGMem.Text;
@@ -1311,7 +1281,7 @@ begin
             MainForm.RegclientTable.FieldValues['code_bvliv']:= MainForm.Bonv_livTable.FieldValues['code_bvliv'];
             MainForm.RegclientTable.FieldValues['nom_rc']:= BonLivGestionF.NumBonLivGEdt.Caption;
             MainForm.RegclientTable.FieldValues['code_c']:= MainForm.SQLQuery.FieldByName('code_c').AsInteger;
-            MainForm.RegclientTable.FieldValues['date_rc']:= DateOf(Today);
+            MainForm.RegclientTable.FieldValues['date_rc']:= BonLivGestionF.DateBonLivGD.DateTime;
             MainForm.RegclientTable.FieldValues['time_rc']:=TimeOf(Now);
             MainForm.RegclientTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
             MainForm.RegclientTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
@@ -1358,7 +1328,7 @@ begin
                   MainForm.RegclientTable.FieldValues['code_bvliv']:= MainForm.Bonv_livTable.FieldValues['code_bvliv'];
                   MainForm.RegclientTable.FieldValues['nom_rc']:= BonLivGestionF.NumBonLivGEdt.Caption;
                   MainForm.RegclientTable.FieldValues['code_c']:= MainForm.SQLQuery.FieldByName('code_c').AsInteger;
-                  MainForm.RegclientTable.FieldValues['date_rc']:= DateOf(Today);
+                  MainForm.RegclientTable.FieldValues['date_rc']:= BonLivGestionF.DateBonLivGD.DateTime;
                   MainForm.RegclientTable.FieldValues['time_rc']:=TimeOf(Now);
                   MainForm.RegclientTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
                   MainForm.RegclientTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
@@ -1411,7 +1381,7 @@ begin
                       MainForm.RegclientTable.FieldValues['code_bvliv']:= MainForm.Bonv_livTable.FieldValues['code_bvliv'];
                       MainForm.RegclientTable.FieldValues['nom_rc']:= BonLivGestionF.NumBonLivGEdt.Caption;
                       MainForm.RegclientTable.FieldValues['code_c']:= MainForm.SQLQuery.FieldByName('code_c').AsInteger;
-                      MainForm.RegclientTable.FieldValues['date_rc']:= DateOf(Today);
+                      MainForm.RegclientTable.FieldValues['date_rc']:= BonLivGestionF.DateBonLivGD.DateTime;
                       MainForm.RegclientTable.FieldValues['time_rc']:=TimeOf(Now);
                       MainForm.RegclientTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
                       MainForm.RegclientTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
@@ -1492,7 +1462,7 @@ begin
                     end;
                   MainForm.Opt_cas_bnk_CaisseTable.Append;
                   MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ocb']:= CodeOCB;
-                  MainForm.Opt_cas_bnk_CaisseTable.FieldValues['date_ocb']:= DateOf(Today);
+                  MainForm.Opt_cas_bnk_CaisseTable.FieldValues['date_ocb']:= BonLivGestionF.DateBonLivGD.DateTime;
                   MainForm.Opt_cas_bnk_CaisseTable.FieldValues['time_ocb']:= TimeOf(Now);
                   MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
                   MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nom_ocb']:= 'Règlement  Pièce N° '+BonLivGestionF.NumBonLivGEdt.Caption;
@@ -1546,7 +1516,7 @@ begin
                      begin
 
                       MainForm.Opt_cas_bnk_CaisseTable.Edit;
-                      MainForm.Opt_cas_bnk_CaisseTable.FieldValues['date_ocb']:= DateOf(Today);
+                      MainForm.Opt_cas_bnk_CaisseTable.FieldValues['date_ocb']:= BonLivGestionF.DateBonLivGD.DateTime;
                       MainForm.Opt_cas_bnk_CaisseTable.FieldValues['time_ocb']:= TimeOf(Now);
                       MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
                       MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nom_ocb']:= 'Règlement  Pièce N° '+BonLivGestionF.NumBonLivGEdt.Caption;
@@ -1598,7 +1568,7 @@ begin
 
                       MainForm.Opt_cas_bnk_CaisseTable.Append;
                       MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ocb']:= CodeOCB;
-                      MainForm.Opt_cas_bnk_CaisseTable.FieldValues['date_ocb']:= DateOf(Today);
+                      MainForm.Opt_cas_bnk_CaisseTable.FieldValues['date_ocb']:= BonLivGestionF.DateBonLivGD.DateTime;
                       MainForm.Opt_cas_bnk_CaisseTable.FieldValues['time_ocb']:= TimeOf(Now);
                       MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
                       MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nom_ocb']:= 'Règlement  Pièce N° '+BonLivGestionF.NumBonLivGEdt.Caption;
@@ -1690,11 +1660,6 @@ begin
 
 //--- this is for adding to the priduit
       begin
-//           MainForm.ProduitTable.DisableControls;
-//           MainForm.ProduitTable.Active:=False;
-//           MainForm.ProduitTable.SQL.Clear;
-//           MainForm.ProduitTable.SQL.Text:='SELECT * FROM produit ' ;
-//           MainForm.ProduitTable.Active:=True;
            Mainform.Sqlquery.Active:=False;
            Mainform.Sqlquery.Sql.Clear;
            Mainform.Sqlquery.Sql.Text:='SELECT code_bvctrl,code_p,  qut_p, cond_p , prixvd_p,tva_p,code_barec FROM bonv_ctr_list WHERE code_bvctr =  '
@@ -1731,11 +1696,6 @@ begin
             MainForm.SQLQuery.Next;
            end;
 
-//           MainForm.ProduitTable.Active:=False;
-//           MainForm.ProduitTable.SQL.Clear;
-//           MainForm.ProduitTable.SQL.Text:='SELECT * FROM produit ' ;
-//           MainForm.ProduitTable.Active:=True;
-//           MainForm.ProduitTable.EnableControls;
            MainForm.SQLQuery.Active:=False;
            MainForm.SQLQuery.SQL.Clear;
 
@@ -1760,11 +1720,8 @@ begin
           MainForm.Bonv_ctrTable.Edit;
           MainForm.Bonv_ctrTable.FieldValues['code_c']:= MainForm.SQLQuery.FieldByName('code_c').AsInteger;
           MainForm.Bonv_ctrTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
-          if BonCtrGestionF.Tag = 0 then
-          begin
            MainForm.Bonv_ctrTable.FieldByName('date_bvctr').AsDateTime:= BonCtrGestionF.DateBonCtrGD.DateTime;
            MainForm.Bonv_ctrTable.FieldValues['time_bvctr']:=TimeOf(Now);
-          end;
           MainForm.Bonv_ctrTable.FieldByName('montht_bvctr').AsCurrency:= StrToCurr(StringReplace(BonCtrGestionF.BonCtrTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
           if BonCtrGestionF.RemiseBonCtrGEdt.Text<>'' then
           begin
@@ -1818,7 +1775,7 @@ begin
             MainForm.RegclientTable.FieldValues['code_bvctr']:= MainForm.Bonv_ctrTable.FieldValues['code_bvctr'];
             MainForm.RegclientTable.FieldValues['nom_rc']:= BonCtrGestionF.NumBonCtrGEdt.Caption;
             MainForm.RegclientTable.FieldValues['code_c']:= MainForm.SQLQuery.FieldByName('code_c').AsInteger;
-            MainForm.RegclientTable.FieldValues['date_rc']:= DateOf(Today);
+            MainForm.RegclientTable.FieldValues['date_rc']:= BonCtrGestionF.DateBonCtrGD.DateTime;
             MainForm.RegclientTable.FieldValues['time_rc']:=TimeOf(Now);
             MainForm.RegclientTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
             MainForm.RegclientTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
@@ -1845,7 +1802,7 @@ begin
                   MainForm.RegclientTable.FieldValues['code_bvctr']:= MainForm.Bonv_ctrTable.FieldValues['code_bvctr'];
                   MainForm.RegclientTable.FieldValues['nom_rc']:= BonCtrGestionF.NumBonCtrGEdt.Caption;
                   MainForm.RegclientTable.FieldValues['code_c']:= MainForm.SQLQuery.FieldByName('code_c').AsInteger;
-                  MainForm.RegclientTable.FieldValues['date_rc']:= DateOf(Today);
+                  MainForm.RegclientTable.FieldValues['date_rc']:= BonCtrGestionF.DateBonCtrGD.DateTime;
                   MainForm.RegclientTable.FieldValues['time_rc']:=TimeOf(Now);
                   MainForm.RegclientTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
                   MainForm.RegclientTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
@@ -1878,7 +1835,7 @@ begin
                         MainForm.RegclientTable.FieldValues['code_bvctr']:= MainForm.Bonv_ctrTable.FieldValues['code_bvctr'];
                         MainForm.RegclientTable.FieldValues['nom_rc']:= BonCtrGestionF.NumBonCtrGEdt.Caption;
                         MainForm.RegclientTable.FieldValues['code_c']:= MainForm.SQLQuery.FieldByName('code_c').AsInteger;
-                        MainForm.RegclientTable.FieldValues['date_rc']:= DateOf(Today);
+                        MainForm.RegclientTable.FieldValues['date_rc']:= BonCtrGestionF.DateBonCtrGD.DateTime;
                         MainForm.RegclientTable.FieldValues['time_rc']:=TimeOf(Now);
                         MainForm.RegclientTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
                         MainForm.RegclientTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
@@ -1937,7 +1894,7 @@ begin
 
                   MainForm.Opt_cas_bnk_CaisseTable.Append;
                   MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ocb']:= CodeOCB;
-                  MainForm.Opt_cas_bnk_CaisseTable.FieldValues['date_ocb']:= DateOf(Today);
+                  MainForm.Opt_cas_bnk_CaisseTable.FieldValues['date_ocb']:= BonCtrGestionF.DateBonCtrGD.DateTime;
                   MainForm.Opt_cas_bnk_CaisseTable.FieldValues['time_ocb']:= TimeOf(Now);
                   MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
                   MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nom_ocb']:= 'Vente au Comptoir N° '+BonCtrGestionF.NumBonCtrGEdt.Caption;
@@ -1973,7 +1930,7 @@ begin
 
                     MainForm.Opt_cas_bnk_CaisseTable.Edit;
                     MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ocb']:= CodeOCB;
-                    MainForm.Opt_cas_bnk_CaisseTable.FieldValues['date_ocb']:= DateOf(Today);
+                    MainForm.Opt_cas_bnk_CaisseTable.FieldValues['date_ocb']:= BonCtrGestionF.DateBonCtrGD.DateTime;
                     MainForm.Opt_cas_bnk_CaisseTable.FieldValues['time_ocb']:= TimeOf(Now);
                     MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
                     MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nom_ocb']:= 'Vente au Comptoir N° '+BonCtrGestionF.NumBonCtrGEdt.Caption;
@@ -2010,7 +1967,7 @@ begin
 
                             MainForm.Opt_cas_bnk_CaisseTable.Append;
                             MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ocb']:= CodeOCB;
-                            MainForm.Opt_cas_bnk_CaisseTable.FieldValues['date_ocb']:= DateOf(Today);
+                            MainForm.Opt_cas_bnk_CaisseTable.FieldValues['date_ocb']:= BonCtrGestionF.DateBonCtrGD.DateTime;
                             MainForm.Opt_cas_bnk_CaisseTable.FieldValues['time_ocb']:= TimeOf(Now);
                             MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
                             MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nom_ocb']:= 'Vente au Comptoir N° '+BonCtrGestionF.NumBonCtrGEdt.Caption;

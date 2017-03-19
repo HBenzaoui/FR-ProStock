@@ -36,7 +36,7 @@ object FastProduitsListF: TFastProduitsListF
     StyleElements = []
     object ResearchProduitsLbl: TLabel
       Left = 11
-      Top = 23
+      Top = 21
       Width = 74
       Height = 16
       Caption = 'Rechercher'

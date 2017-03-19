@@ -1092,7 +1092,7 @@ object ClientListF: TClientListF
       TMSStyle = 0
     end
     object ResearchClientsLbl: TLabel
-      Left = 6
+      Left = 1
       Top = 28
       Width = 74
       Height = 16
@@ -2533,6 +2533,7 @@ object ClientListF: TClientListF
       end
       object Crdit1: TMenuItem
         Caption = 'R'#233'gl'#233
+        ImageIndex = 9
         OnClick = Crdit1Click
       end
       object N1: TMenuItem

@@ -310,9 +310,8 @@ begin
 
 procedure TFournisseurGestionF.OKFournisseurGBtnClick(Sender: TObject);
 var codeF,CodeFEdit : Integer;
+    OLDCredit : Currency;
 begin
-
-
 
   if NameFournisseurGEdt.Text <> '' then
   begin
@@ -390,6 +389,7 @@ begin
     if OKFournisseurGBtn.Tag = 1 then
     begin
        CodeFEdit:= MainForm.FournisseurTable.FieldByName('code_f').AsInteger;
+       OLDCredit:= MainForm.FournisseurTable.FieldByName('oldcredit_f').AsCurrency;
         with MainForm.FournisseurTable do
         begin
           Edit;
@@ -413,8 +413,8 @@ begin
           fieldbyname('rib_f').Value := RIBFournisseurGEdt.Text;
           if OldCreditFournisseurGEdt.Text <> '' then
           begin
-            fieldbyname('oldcredit_f').Value :=
-            StrToCurr(StringReplace(OldCreditFournisseurGEdt.Text, #32, '', [rfReplaceAll]));
+            fieldbyname('oldcredit_f').Value :=  StrToCurr(StringReplace(OldCreditFournisseurGEdt.Text, #32, '', [rfReplaceAll]));
+            fieldbyname('credit_f').Value := (fieldbyname('credit_f').Value - OLDCredit)+ StrToCurr(StringReplace(OldCreditFournisseurGEdt.Text, #32, '', [rfReplaceAll]));
           end
           else
           begin

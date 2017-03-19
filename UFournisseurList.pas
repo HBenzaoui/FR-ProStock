@@ -624,35 +624,66 @@ begin
      FournisseurGestionF.FournisseurGPgControl.TabIndex:= 0;
      FournisseurGestionF.Left:=  ( Screen.Width div 2 ) - (FournisseurGestionF.Width div 2)    ;
      FournisseurGestionF.Top:=   (Screen.Height div 2) - (FournisseurGestionF.Height div 2)    ;
+     FournisseurGestionF.OKFournisseurGBtn.Tag:= 1 ;
      FournisseurGestionF.Show;
      FournisseurGestionF.NameFournisseurGEdt.SetFocus;
-     FournisseurGestionF.OKFournisseurGBtn.Tag:= 1 ;
+
     if not FournisseursListDBGridEh.DataSource.DataSet.IsEmpty then
      begin
      //----------------- SHOW THE DATA ON THE Fournisseur GESTION PANEL -----------------------------//
          with MainForm.FournisseurTable do begin
             FournisseurGestionF.ActiveFournisseurGSlider.SliderOn:=  FieldValues['activ_f'];
             FournisseurGestionF.NameFournisseurGEdt.Text:= fieldbyname('nom_f').Value;
+            if fieldbyname('adr_f').Value <> null then begin
             FournisseurGestionF.AdrFournisseurGEdt.Text:= fieldbyname('adr_f').Value;
+            end;
+            if fieldbyname('willaya_f').Value <> null then begin
             FournisseurGestionF.WilayaFournisseurGCbx.Text:= fieldbyname('willaya_f').Value;
+            end;
+            if fieldbyname('ville_f').Value <> null then begin
             FournisseurGestionF.VilleFournisseurGCbx.Text:= fieldbyname('ville_f').Value;
+            end;
+            if fieldbyname('fix_f').Value <> null then begin
             FournisseurGestionF.FixFournisseurGEdt.Text:= fieldbyname('fix_f').Value;
+            end;
+            if fieldbyname('fax_f').Value <> null then begin
             FournisseurGestionF.FaxFournisseurGEdt.Text:= fieldbyname('fax_f').Value;
+            end;
+            if fieldbyname('mob_f').Value <> null then begin
             FournisseurGestionF.MobileFournisseurGEdt.Text:= fieldbyname('mob_f').Value;
+            end;
+            if fieldbyname('mob2_f').Value <> null then begin
             FournisseurGestionF.MobileFournisseurGEdt.Text:= fieldbyname('mob2_f').Value;
+            end;
+            if fieldbyname('email_f').Value <> null then begin
             FournisseurGestionF.EmailFournisseurGEdt.Text:= fieldbyname('email_f').Value;
+            end;
+            if fieldbyname('siteWeb_f').Value <> null then begin
             FournisseurGestionF.SiteFournisseurGEdt.Text:= fieldbyname('siteWeb_f').Value;
-
+            end;
+            if fieldbyname('rc_f').Value <> null then begin
             FournisseurGestionF.RCFournisseurGEdt.Text:= fieldbyname('rc_f').Value;
+            end;
+            if fieldbyname('nart_f').Value <> null then begin
             FournisseurGestionF.NArtFournisseurGEdt.Text:= fieldbyname('nart_f').Value;
+            end;
+            if fieldbyname('nif_f').Value <> null then begin
             FournisseurGestionF.NIFFournisseurGEdt.Text:= fieldbyname('nif_f').Value;
+            end;
+            if fieldbyname('nis_f').Value <> null then begin
             FournisseurGestionF.NISFournisseurGEdt.Text:= fieldbyname('nis_f').Value;
+            end;
+            if fieldbyname('nbank_f').Value <> null then begin
             FournisseurGestionF.NBankFournisseurGEdt.Text:= fieldbyname('nbank_f').Value;
+            end;
+            if fieldbyname('rib_f').Value <> null then begin
             FournisseurGestionF.RIBFournisseurGEdt.Text:= fieldbyname('rib_f').Value;
+            end;
             FournisseurGestionF.OldCreditFournisseurGEdt.Text:= CurrToStrF( fieldbyname('oldcredit_f').Value,ffNumber, 2);
             FournisseurGestionF.MaxCreditFournisseurGEdt.Text:= CurrToStrF( fieldbyname('maxcredit_f').Value,ffNumber, 2);
-
+            if fieldbyname('obser_f').Value <> null then begin
             FournisseurGestionF.ObserFournisseurGMem.Text:= fieldbyname('obser_f').Value;
+            end;
 
             //----- this is to move the coursour to the last  --------------------------------------------------------
             FournisseurGestionF.NameFournisseurGEdt.SelStart :=  FournisseurGestionF.NameFournisseurGEdt.GetTextLen ;

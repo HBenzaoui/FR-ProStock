@@ -49,7 +49,7 @@ object ReglementCGestionF: TReglementCGestionF
     Width = 540
     Height = 81
     Align = alTop
-    Brush.Color = 4207405
+    Brush.Color = 15527148
     Pen.Color = 4207405
     ExplicitTop = 344
   end
@@ -380,7 +380,7 @@ object ReglementCGestionF: TReglementCGestionF
     Caption = 'Versement:'
     Color = clWhite
     Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWhite
+    Font.Color = 4207405
     Font.Height = 21
     Font.Name = 'Roboto'
     Font.Style = []
@@ -396,7 +396,7 @@ object ReglementCGestionF: TReglementCGestionF
     Caption = 'Le Reste:'
     Color = clWhite
     Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWhite
+    Font.Color = 4207405
     Font.Height = 21
     Font.Name = 'Roboto'
     Font.Style = []
@@ -437,7 +437,7 @@ object ReglementCGestionF: TReglementCGestionF
     Caption = 'Client Sold:'
     Color = clWhite
     Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWhite
+    Font.Color = 4207405
     Font.Height = 21
     Font.Name = 'Roboto'
     Font.Style = []

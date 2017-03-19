@@ -1023,8 +1023,8 @@ object BonFacVF: TBonFacVF
       TMSStyle = 0
     end
     object ResearchBARecLbl: TLabel
-      Left = 6
-      Top = 31
+      Left = 1
+      Top = 33
       Width = 74
       Height = 16
       Caption = 'Rechercher'
@@ -1324,13 +1324,13 @@ object BonFacVF: TBonFacVF
       Left = 344
       Top = 38
       Width = 87
-      Height = 24
+      Height = 23
       Date = 42435.595104571760000000
       Time = 42435.595104571760000000
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 4207405
-      Font.Height = 16
-      Font.Name = 'Helvetica LT Std'
+      Font.Height = 15
+      Font.Name = 'Roboto'
       Font.Style = []
       ParentFont = False
       TabOrder = 4
@@ -1340,13 +1340,13 @@ object BonFacVF: TBonFacVF
       Left = 344
       Top = 7
       Width = 87
-      Height = 24
+      Height = 23
       Date = 42435.595104571760000000
       Time = 42435.595104571760000000
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 4207405
-      Font.Height = 16
-      Font.Name = 'Helvetica LT Std'
+      Font.Height = 15
+      Font.Name = 'Roboto'
       Font.Style = []
       ParentFont = False
       TabOrder = 5
@@ -1362,7 +1362,7 @@ object BonFacVF: TBonFacVF
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
       Font.Height = -12
-      Font.Name = 'Roboto'
+      Font.Name = 'Helvetica LT Std'
       Font.Style = []
       ParentFont = False
       TabOrder = 6
@@ -1378,7 +1378,7 @@ object BonFacVF: TBonFacVF
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
       Font.Height = -12
-      Font.Name = 'Roboto'
+      Font.Name = 'Helvetica LT Std'
       Font.Style = []
       ParentFont = False
       TabOrder = 7

@@ -1285,7 +1285,6 @@ object BonCtrGestionF: TBonCtrGestionF
     Color = 52377
     ParentBackground = False
     TabOrder = 3
-    ExplicitHeight = 471
   end
   object Panel10: TPanel
     Left = 0
@@ -1308,7 +1307,6 @@ object BonCtrGestionF: TBonCtrGestionF
     Color = 52377
     ParentBackground = False
     TabOrder = 2
-    ExplicitHeight = 471
   end
   object Panel12: TPanel
     Left = 0
@@ -1338,7 +1336,6 @@ object BonCtrGestionF: TBonCtrGestionF
       ParentDoubleBuffered = False
       TabOrder = 0
       StyleElements = []
-      ExplicitHeight = 94
       object sSpeedButton4: TsSpeedButton
         Left = 132
         Top = 17
@@ -1420,7 +1417,6 @@ object BonCtrGestionF: TBonCtrGestionF
         ShowHint = False
         TabOrder = 0
         StyleElements = []
-        ExplicitHeight = 94
       end
     end
     object Panel11: TPanel
@@ -1461,7 +1457,6 @@ object BonCtrGestionF: TBonCtrGestionF
       ShowHint = False
       TabOrder = 2
       StyleElements = []
-      ExplicitHeight = 94
     end
     object Panel18: TPanel
       Left = 751
@@ -1473,7 +1468,6 @@ object BonCtrGestionF: TBonCtrGestionF
       Color = 15527148
       ParentBackground = False
       TabOrder = 3
-      ExplicitHeight = 94
       DesignSize = (
         243
         79)
@@ -1542,7 +1536,6 @@ object BonCtrGestionF: TBonCtrGestionF
         ShowHint = False
         TabOrder = 0
         StyleElements = []
-        ExplicitHeight = 75
       end
     end
     object Panel22: TPanel
@@ -1555,7 +1548,6 @@ object BonCtrGestionF: TBonCtrGestionF
       Color = 15527148
       ParentBackground = False
       TabOrder = 4
-      ExplicitHeight = 94
       DesignSize = (
         135
         79)
@@ -1656,7 +1648,6 @@ object BonCtrGestionF: TBonCtrGestionF
         ShowHint = False
         TabOrder = 0
         StyleElements = []
-        ExplicitHeight = 94
       end
       object APrintBVCtrBonCtrGSlider: TsSlider
         Left = 93
@@ -1718,7 +1709,6 @@ object BonCtrGestionF: TBonCtrGestionF
       ShowHint = False
       TabOrder = 5
       StyleElements = []
-      ExplicitHeight = 94
     end
     object Panel17: TPanel
       Left = 179
@@ -1731,7 +1721,6 @@ object BonCtrGestionF: TBonCtrGestionF
       Color = 15722984
       ParentBackground = False
       TabOrder = 6
-      ExplicitHeight = 94
       object GridPanel1: TGridPanel
         Left = 0
         Top = 0
@@ -1780,7 +1769,6 @@ object BonCtrGestionF: TBonCtrGestionF
           end>
         ShowCaption = False
         TabOrder = 0
-        ExplicitHeight = 94
         DesignSize = (
           436
           79)
@@ -1965,7 +1953,6 @@ object BonCtrGestionF: TBonCtrGestionF
     Color = 15722984
     ParentBackground = False
     TabOrder = 7
-    ExplicitHeight = 471
     object Panel21: TPanel
       Left = 0
       Top = 332
@@ -1976,7 +1963,6 @@ object BonCtrGestionF: TBonCtrGestionF
       Color = 52377
       ParentBackground = False
       TabOrder = 0
-      ExplicitHeight = 139
     end
     object Panel23: TPanel
       Left = 0
