@@ -849,7 +849,6 @@ object BonCtrGestionF: TBonCtrGestionF
       Anchors = [akTop, akRight]
       ParentShowHint = False
       ShowHint = True
-      Visible = False
       OnClick = ClearProduitBonCtrGBtnClick
       SkinData.SkinSection = 'SPEEDBUTTON'
       Images = MainForm.PanelIcons24
@@ -885,22 +884,6 @@ object BonCtrGestionF: TBonCtrGestionF
       Images = MainForm.PanelIcons24
       ImageIndex = 43
       ExplicitLeft = 996
-    end
-    object DeleteProduitBonCtrGBtn: TsSpeedButton
-      Left = 539
-      Top = 2
-      Width = 30
-      Height = 30
-      Hint = 'Modifer'
-      Anchors = [akTop, akRight]
-      ParentShowHint = False
-      ShowHint = True
-      Visible = False
-      OnClick = DeleteProduitBonCtrGBtnClick
-      SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
-      ImageIndex = 14
-      ExplicitLeft = 888
     end
     object CloseBonCtrGBtn: TsSpeedButton
       Left = 719
@@ -1005,9 +988,9 @@ object BonCtrGestionF: TBonCtrGestionF
       Visible = False
     end
     object BonCTRTotalMargeLbl: TLabel
-      Left = 152
-      Top = 27
-      Width = 157
+      Left = 519
+      Top = 3
+      Width = 62
       Height = 20
       Caption = 'BonCTRTotalMargeLbl'
       Font.Charset = DEFAULT_CHARSET
@@ -1053,6 +1036,39 @@ object BonCtrGestionF: TBonCtrGestionF
       Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
+    end
+    object Label5: TLabel
+      Left = 107
+      Top = 33
+      Width = 409
+      Height = 12
+      Alignment = taCenter
+      Anchors = [akLeft, akRight, akBottom]
+      AutoSize = False
+      Caption = 
+        '[F3]S'#233'lectionnez le produit | [F6]Changer le QUT | [F7] Changer ' +
+        'le PRIX '
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 10395294
+      Font.Height = -9
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+    end
+    object DeleteProduitBonCtrGBtn: TsSpeedButton
+      Left = 539
+      Top = 2
+      Width = 30
+      Height = 30
+      Hint = 'Modifer'
+      Anchors = [akTop, akRight]
+      ParentShowHint = False
+      ShowHint = True
+      OnClick = DeleteProduitBonCtrGBtnClick
+      SkinData.SkinSection = 'SPEEDBUTTON'
+      Images = MainForm.PanelIcons24
+      ImageIndex = 14
+      ExplicitLeft = 888
     end
     object Panel6: TPanel
       Left = 0
@@ -1794,12 +1810,12 @@ object BonCtrGestionF: TBonCtrGestionF
           ColorHot = 15722984
           ColorChecked = clNone
           DropDownSplit = False
-          Caption = 'Nouveau'
+          Caption = 'Nouveau'#13#10'[F4]'
           Enabled = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = 4207405
-          Font.Height = 18
-          Font.Name = 'Roboto'
+          Font.Height = 17
+          Font.Name = 'Helvetica LT Std'
           Font.Style = []
           ImageIndex = 8
           Images = MainForm.ComptoiIcons48
@@ -1836,12 +1852,12 @@ object BonCtrGestionF: TBonCtrGestionF
           ColorHot = 15722984
           ColorChecked = clNone
           DropDownSplit = False
-          Caption = 'Modifier'
+          Caption = 'Modifier'#13#10'[F5]'
           Enabled = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = 4207405
-          Font.Height = 18
-          Font.Name = 'Roboto'
+          Font.Height = 17
+          Font.Name = 'Helvetica LT Std'
           Font.Style = []
           ImageIndex = 10
           Images = MainForm.ComptoiIcons48
@@ -1878,12 +1894,12 @@ object BonCtrGestionF: TBonCtrGestionF
           ColorHot = 15722984
           ColorChecked = clNone
           DropDownSplit = False
-          Caption = 'Valider'
+          Caption = 'Valider'#13#10'[F9]'
           Enabled = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = 4207405
-          Font.Height = 18
-          Font.Name = 'Roboto'
+          Font.Height = 17
+          Font.Name = 'Helvetica LT Std'
           Font.Style = []
           ImageIndex = 12
           Images = MainForm.ComptoiIcons48
@@ -1920,12 +1936,12 @@ object BonCtrGestionF: TBonCtrGestionF
           ColorHot = 15722984
           ColorChecked = clNone
           DropDownSplit = False
-          Caption = 'Ex Valider'
+          Caption = 'Ex Valider'#13#10'[F10]'
           Enabled = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = 4207405
-          Font.Height = 18
-          Font.Name = 'Roboto'
+          Font.Height = 17
+          Font.Name = 'Helvetica LT Std'
           Font.Style = []
           ImageIndex = 14
           Images = MainForm.ComptoiIcons48

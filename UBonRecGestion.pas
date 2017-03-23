@@ -158,9 +158,8 @@ type
     Label30: TLabel;
     Label29: TLabel;
     ApplicationEvents1: TApplicationEvents;
+    Label31: TLabel;
     procedure ProduitBonRecGCbxEnter(Sender: TObject);
-    procedure ResherchPARDesProduitsRdioBtnClick(Sender: TObject);
-    procedure ResherchPARCBProduitsRdioBtnClick(Sender: TObject);
     procedure ProduitBonRecGCbxKeyPress(Sender: TObject; var Key: Char);
     procedure FournisseurBonRecGCbxEnter(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -220,6 +219,7 @@ type
     procedure Bonderception2Click(Sender: TObject);
     procedure Bonderceptionhorstaxe1Click(Sender: TObject);
     procedure ApplicationEvents1ShortCut(var Msg: TWMKey; var Handled: Boolean);
+    procedure ResherchPARDesProduitsRdioBtnClick(Sender: TObject);
   private
     procedure GettingData;
     procedure GettingDataSansTax;
@@ -339,55 +339,56 @@ procedure TBonRecGestionF.ProduitBonRecGCbxEnter(Sender: TObject);
 var
 I : Integer;
   begin
-  Cursor := crDefault;
-//  PostMessage((Sender as TComboBox).Handle, CB_SHOWDROPDOWN, 1, 0);
-//      ProduitBonRecGCbx.Refresh;
+
+     if ResherchPARDesProduitsRdioBtn.Checked then
+     begin
       ProduitBonRecGCbx.Properties.Items.Clear;
+//      Cursor := crHourGlass;
 
       MainForm.SQLQuery.Active:=False;
       MainForm.SQLQuery.SQL.Clear;
-      MainForm.SQLQuery.SQL.Text:= 'SELECT code_p,nom_p,refer_p FROM produit ';
+      MainForm.SQLQuery.SQL.Text:= 'SELECT nom_p FROM produit ';
       MainForm.SQLQuery.Active := True;
 
       MainForm.SQLQuery.first;
 
-     if ResherchPARDesProduitsRdioBtn.Checked then
-     begin
+       for I := 0 to MainForm.SQLQuery.RecordCount - 1 do
+       if ( MainForm.SQLQuery.FieldByName('nom_p').IsNull = False )  then
+       begin
+         ProduitBonRecGCbx.Properties.Items.Add(MainForm.SQLQuery.FieldByName('nom_p').AsString);
+         MainForm.SQLQuery.Next;
+        end;
 
-     for I := 0 to MainForm.SQLQuery.RecordCount - 1 do
-     if ( MainForm.SQLQuery.FieldByName('nom_p').IsNull = False )  then
-     begin
-       ProduitBonRecGCbx.Properties.Items.Add(MainForm.SQLQuery.FieldByName('nom_p').AsString);
-       MainForm.SQLQuery.Next;
-      end;
+
+      MainForm.SQLQuery.Active:=False;
+      MainForm.SQLQuery.SQL.Clear;
+//      Cursor := crDefault;
      end;
 
       if ResherchPARRefProduitsRdioBtn.Checked then
      begin
-
-     for I := 0 to MainForm.SQLQuery.RecordCount - 1 do
-     if( MainForm.SQLQuery.FieldByName('refer_p').IsNull = False )  then
-     begin
-          ProduitBonRecGCbx.Properties.Items.Add(MainForm.SQLQuery.FieldByName('refer_p').AsString);
-       MainForm.SQLQuery.Next;
-      end;
-     end;
+      ProduitBonRecGCbx.Properties.Items.Clear;
+//      Cursor := crHourGlass;
 
       MainForm.SQLQuery.Active:=False;
       MainForm.SQLQuery.SQL.Clear;
+      MainForm.SQLQuery.SQL.Text:= 'SELECT refer_p FROM produit ';
+      MainForm.SQLQuery.Active := True;
 
-end;
+      MainForm.SQLQuery.first;
 
-procedure TBonRecGestionF.ResherchPARDesProduitsRdioBtnClick(Sender: TObject);
-begin
-ProduitBonRecGCbx.Clear;
-ProduitBonRecGCbx.SetFocus;
-end;
+       for I := 0 to MainForm.SQLQuery.RecordCount - 1 do
+       if( MainForm.SQLQuery.FieldByName('refer_p').IsNull = False )  then
+       begin
+            ProduitBonRecGCbx.Properties.Items.Add(MainForm.SQLQuery.FieldByName('refer_p').AsString);
+         MainForm.SQLQuery.Next;
+        end;
 
-procedure TBonRecGestionF.ResherchPARCBProduitsRdioBtnClick(Sender: TObject);
-begin
-ProduitBonRecGCbx.Clear;
-ProduitBonRecGCbx.SetFocus;
+      MainForm.SQLQuery.Active:=False;
+      MainForm.SQLQuery.SQL.Clear;
+//      Cursor := crDefault;
+     end;
+
 end;
 
 procedure TBonRecGestionF.ProduitBonRecGCbxKeyDown(Sender: TObject;
@@ -1097,7 +1098,16 @@ procedure TBonRecGestionF.ApplicationEvents1ShortCut(var Msg: TWMKey;
 var
 NEWCredit,OLDCredit,NEWCreditLbl,OLDCreditLbl  : TfrxMemoView;
 LineCredit,LineCreditTop :TfrxShapeView;
+I : Integer;
 begin
+
+   //--- this is to focus in produit --------------------------
+  if  (GetKeyState(VK_F3) < 0) and (AddBARecBonRecGBtn.Enabled = False ) then
+  begin
+      ProduitBonRecGCbx.SetFocus;
+      Handled := true;
+  end;
+
 
 
   if  (GetKeyState(VK_F4) < 0) and (AddBARecBonRecGBtn.Enabled = True ) then
@@ -1113,6 +1123,49 @@ begin
       EditBARecBonRecGBtnClick(Screen);
 
     Handled := true;
+  end;
+
+     //--- this is to switch between produits and quntity--------------------------
+   if  (GetKeyState(VK_F6) < 0) and (EditBARecBonRecGBtn.Enabled = False ) then
+  begin
+       ProduitsListDBGridEh.SetFocus;
+       if ProduitsListDBGridEh.SelectedField.FieldName <>'qut_p' then
+       begin
+        for I := 0 to ProduitsListDBGridEh.FieldCount do
+        begin
+          if ProduitsListDBGridEh.SelectedField.FieldName ='qut_p' then
+          begin
+            ProduitsListDBGridEh.SelectedIndex:= i - 1;
+            Handled := true;
+            Break    ;
+          end else
+              begin
+               ProduitsListDBGridEh.SelectedIndex:=i;
+              end;
+        end;
+       end;
+       Handled := true;
+  end;
+  //--- this is to switch between produits and prix----------------------------
+   if  (GetKeyState(VK_F7) < 0) and (EditBARecBonRecGBtn.Enabled = False ) then
+  begin
+       ProduitsListDBGridEh.SetFocus;
+       if ProduitsListDBGridEh.SelectedField.FieldName <>'prixht_p' then
+       begin
+        for I := 0 to ProduitsListDBGridEh.FieldCount do
+        begin
+          if ProduitsListDBGridEh.SelectedField.FieldName ='prixht_p' then
+          begin
+            ProduitsListDBGridEh.SelectedIndex:= i - 1;
+            Handled := true;
+            Break    ;
+          end else
+              begin
+               ProduitsListDBGridEh.SelectedIndex:=i;
+              end;
+        end;
+       end;
+       Handled := true;
   end;
 
 
@@ -2159,6 +2212,11 @@ procedure TBonRecGestionF.RemiseTypeBonRecGCbxChange(Sender: TObject);
 begin
 RemiseBonRecGEdt.Text:='';
 RemisePerctageBonRecGEdt.Text:='';
+end;
+
+procedure TBonRecGestionF.ResherchPARDesProduitsRdioBtnClick(Sender: TObject);
+begin
+ProduitBonRecGCbx.SetFocus;
 end;
 
 procedure TBonRecGestionF.RemisePerctageBonRecGEdtKeyPress(Sender: TObject;

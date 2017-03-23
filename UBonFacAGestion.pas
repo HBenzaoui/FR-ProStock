@@ -152,6 +152,7 @@ type
     Label30: TLabel;
     Label29: TLabel;
     ApplicationEvents1: TApplicationEvents;
+    Label31: TLabel;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure FormShow(Sender: TObject);
@@ -209,6 +210,7 @@ type
     procedure B1Click(Sender: TObject);
     procedure BondeCaisseSimple2Click(Sender: TObject);
     procedure ApplicationEvents1ShortCut(var Msg: TWMKey; var Handled: Boolean);
+    procedure ResherchPARDesProduitsRdioBtnClick(Sender: TObject);
   private
     procedure GettingData;
     { Private declarations }
@@ -1859,42 +1861,54 @@ procedure TBonFacAGestionF.ProduitBonFacAGCbxEnter(Sender: TObject);
 var
 I : Integer;
   begin
-  Cursor := crDefault;
-//  PostMessage((Sender as TComboBox).Handle, CB_SHOWDROPDOWN, 1, 0);
-//      ProduitBonFacAGCbx.Refresh;
+     if ResherchPARDesProduitsRdioBtn.Checked then
+     begin
       ProduitBonFacAGCbx.Properties.Items.Clear;
+//      Cursor := crHourGlass;
 
       MainForm.SQLQuery.Active:=False;
       MainForm.SQLQuery.SQL.Clear;
-      MainForm.SQLQuery.SQL.Text:= 'SELECT code_p,nom_p,refer_p FROM produit ';
+      MainForm.SQLQuery.SQL.Text:= 'SELECT nom_p FROM produit ';
       MainForm.SQLQuery.Active := True;
 
       MainForm.SQLQuery.first;
 
-     if ResherchPARDesProduitsRdioBtn.Checked then
-     begin
+       for I := 0 to MainForm.SQLQuery.RecordCount - 1 do
+       if ( MainForm.SQLQuery.FieldByName('nom_p').IsNull = False )  then
+       begin
+         ProduitBonFacAGCbx.Properties.Items.Add(MainForm.SQLQuery.FieldByName('nom_p').AsString);
+         MainForm.SQLQuery.Next;
+        end;
 
-     for I := 0 to MainForm.SQLQuery.RecordCount - 1 do
-     if ( MainForm.SQLQuery.FieldByName('nom_p').IsNull = False )  then
-     begin
-       ProduitBonFacAGCbx.Properties.Items.Add(MainForm.SQLQuery.FieldByName('nom_p').AsString);
-       MainForm.SQLQuery.Next;
-      end;
+
+      MainForm.SQLQuery.Active:=False;
+      MainForm.SQLQuery.SQL.Clear;
+//      Cursor := crDefault;
      end;
 
       if ResherchPARRefProduitsRdioBtn.Checked then
      begin
-
-     for I := 0 to MainForm.SQLQuery.RecordCount - 1 do
-     if( MainForm.SQLQuery.FieldByName('refer_p').IsNull = False )  then
-     begin
-          ProduitBonFacAGCbx.Properties.Items.Add(MainForm.SQLQuery.FieldByName('refer_p').AsString);
-       MainForm.SQLQuery.Next;
-      end;
-     end;
+      ProduitBonFacAGCbx.Properties.Items.Clear;
+//      Cursor := crHourGlass;
 
       MainForm.SQLQuery.Active:=False;
       MainForm.SQLQuery.SQL.Clear;
+      MainForm.SQLQuery.SQL.Text:= 'SELECT refer_p FROM produit ';
+      MainForm.SQLQuery.Active := True;
+
+      MainForm.SQLQuery.first;
+
+       for I := 0 to MainForm.SQLQuery.RecordCount - 1 do
+       if( MainForm.SQLQuery.FieldByName('refer_p').IsNull = False )  then
+       begin
+            ProduitBonFacAGCbx.Properties.Items.Add(MainForm.SQLQuery.FieldByName('refer_p').AsString);
+         MainForm.SQLQuery.Next;
+        end;
+
+      MainForm.SQLQuery.Active:=False;
+      MainForm.SQLQuery.SQL.Clear;
+//      Cursor := crDefault;
+     end;
 end;
 
 procedure TBonFacAGestionF.ProduitBonFacAGCbxExit(Sender: TObject);
@@ -2560,6 +2574,11 @@ RemisePerctageBonFacAGEdt.Text:='';
 MainForm.Bona_fac_listTable.Refresh;
 end;
 
+procedure TBonFacAGestionF.ResherchPARDesProduitsRdioBtnClick(Sender: TObject);
+begin
+ProduitBonFacAGCbx.SetFocus;
+end;
+
 procedure TBonFacAGestionF.RemisePerctageBonFacAGEdtChange(Sender: TObject);
 var BonFATotalHT,RemisePerctageBonFacA,TotalTVANet,NewHT,NewTVA,NewTTC,Remise,OldTTC,OldFourCredit,Timber : Currency;
 begin
@@ -2879,7 +2898,16 @@ procedure TBonFacAGestionF.ApplicationEvents1ShortCut(var Msg: TWMKey;
 var
 NEWCredit,OLDCredit,NEWCreditLbl,OLDCreditLbl  : TfrxMemoView;
 LineCredit,LineCreditTop :TfrxShapeView;
+I : Integer;
 begin
+
+   //--- this is to focus in produit --------------------------
+  if  (GetKeyState(VK_F3) < 0) and (AddBAFacBonFacAGBtn.Enabled = False ) then
+  begin
+      ProduitBonFacAGCbx.SetFocus;
+      Handled := true;
+  end;
+
 
 
   if  (GetKeyState(VK_F4) < 0) and (AddBAFacBonFacAGBtn.Enabled = True ) then
@@ -2895,6 +2923,49 @@ begin
       EditBAFacBonFacAGBtnClick(Screen);
 
     Handled := true;
+  end;
+
+     //--- this is to switch between produits and quntity--------------------------
+   if  (GetKeyState(VK_F6) < 0) and (EditBAFacBonFacAGBtn.Enabled = False ) then
+  begin
+       ProduitsListDBGridEh.SetFocus;
+       if ProduitsListDBGridEh.SelectedField.FieldName <>'qut_p' then
+       begin
+        for I := 0 to ProduitsListDBGridEh.FieldCount do
+        begin
+          if ProduitsListDBGridEh.SelectedField.FieldName ='qut_p' then
+          begin
+            ProduitsListDBGridEh.SelectedIndex:= i - 1;
+            Handled := true;
+            Break    ;
+          end else
+              begin
+               ProduitsListDBGridEh.SelectedIndex:=i;
+              end;
+        end;
+       end;
+       Handled := true;
+  end;
+  //--- this is to switch between produits and prix----------------------------
+   if  (GetKeyState(VK_F7) < 0) and (EditBAFacBonFacAGBtn.Enabled = False ) then
+  begin
+       ProduitsListDBGridEh.SetFocus;
+       if ProduitsListDBGridEh.SelectedField.FieldName <>'prixht_p' then
+       begin
+        for I := 0 to ProduitsListDBGridEh.FieldCount do
+        begin
+          if ProduitsListDBGridEh.SelectedField.FieldName ='prixht_p' then
+          begin
+            ProduitsListDBGridEh.SelectedIndex:= i - 1;
+            Handled := true;
+            Break    ;
+          end else
+              begin
+               ProduitsListDBGridEh.SelectedIndex:=i;
+              end;
+        end;
+       end;
+       Handled := true;
   end;
 
 
@@ -2967,10 +3038,11 @@ begin
 //-------- Show the splash screan for the produit familly to add new one---------//
   FastProduitsListF.Left := (Screen.Width div 2) - (FastProduitsListF.Width div 2);
   FastProduitsListF.Top := (Screen.Height div 2) - (FastProduitsListF.Height div 2);
+  //---------Use this tag = 2 for adding from facture dd'achat
+  FastProduitsListF.Tag := 3;
   FastProduitsListF.Show;
   FastProduitsListF.ResearchProduitsEdt.SetFocus;
-//---------Use this tag = 2 for adding from facture dd'achat
-  FastProduitsListF.Tag := 3;
+
 end;
 
 procedure TBonFacAGestionF.ProduitsListDBGridEhKeyPress(Sender: TObject;

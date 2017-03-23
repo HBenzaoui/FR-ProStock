@@ -326,7 +326,7 @@ object BonFacVF: TBonFacVF
   PixelsPerInch = 96
   TextHeight = 13
   object BVFacListDBGridEh: TDBGridEh
-    Left = 0
+    Left = 1
     Top = 71
     Width = 951
     Height = 650
@@ -391,6 +391,7 @@ object BonFacVF: TBonFacVF
     TitleParams.VertLines = True
     VertScrollBar.Width = 15
     OnDblClick = BVFacListDBGridEhDblClick
+    OnDrawColumnCell = BVFacListDBGridEhDrawColumnCell
     OnKeyDown = BVFacListDBGridEhKeyDown
     OnKeyPress = BVFacListDBGridEhKeyPress
     Columns = <

@@ -3026,7 +3026,6 @@ end;
 
 procedure TMainForm.ChangUserMAinFMnuClick(Sender: TObject);
 begin
-
   If NOT Assigned(UsersGestionF) then
   begin
           LoginUserF := TLoginUserF.Create(Application);
@@ -3037,7 +3036,6 @@ begin
         LoginUserF.Tag:= 1;
         LoginUserF.Show;
       end;
-
 end;
 
 procedure TMainForm.CaisseMainFBtnClick(Sender: TObject);
@@ -3965,7 +3963,7 @@ var
 begin
   for I := dxTabbedMDIManager1.TabProperties.PageCount - 1 downto 0 do
     dxTabbedMDIManager1.TabProperties.Pages[I].MDIChild.Close;
-    
+
     Sleep(500);
     
 //   if Assigned(DashboardF) then

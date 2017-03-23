@@ -391,6 +391,7 @@ object BonFacPF: TBonFacPF
     TitleParams.VertLines = True
     VertScrollBar.Width = 15
     OnDblClick = BVFacListDBGridEhDblClick
+    OnDrawColumnCell = BVFacListDBGridEhDrawColumnCell
     OnKeyDown = BVFacListDBGridEhKeyDown
     OnKeyPress = BVFacListDBGridEhKeyPress
     Columns = <

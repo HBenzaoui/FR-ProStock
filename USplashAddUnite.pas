@@ -131,17 +131,17 @@ begin
     begin
      if BonRecGestionF.ResherchPARDesProduitsRdioBtn.Checked then
       begin
-      MainForm.ProduitTable.Active:=False;
-      MainForm.ProduitTable.SQL.Clear;
-      MainForm.ProduitTable.SQL.Text:= 'SELECT * FROM produit WHERE LOWER(nom_p) LIKE LOWER('+QuotedStr(BonRecGestionF.ProduitBonRecGCbx.Text)+')' ;
-      MainForm.ProduitTable.Active:=True;
+      MainForm.SQLQuery3.Active:=False;
+      MainForm.SQLQuery3.SQL.Clear;
+      MainForm.SQLQuery3.SQL.Text:= 'SELECT code_p,nom_p,prixht_p,prixvd_p,prixvr_p,prixvg_p,prixva_p,prixva2_p,tva_p,perissable_p FROM produit WHERE LOWER(nom_p) LIKE LOWER('+QuotedStr(BonRecGestionF.ProduitBonRecGCbx.Text)+')' ;
+      MainForm.SQLQuery3.Active:=True;
       end;
      if BonRecGestionF.ResherchPARRefProduitsRdioBtn.Checked then
       begin
-       MainForm.ProduitTable.Active:=False;
-       MainForm.ProduitTable.SQL.Clear;
-       MainForm.ProduitTable.SQL.Text:= 'SELECT * FROM produit WHERE LOWER(refer_p) LIKE LOWER('+QuotedStr(BonRecGestionF.ProduitBonRecGCbx.Text)+')' ;
-       MainForm.ProduitTable.Active:=True;
+       MainForm.SQLQuery3.Active:=False;
+       MainForm.SQLQuery3.SQL.Clear;
+       MainForm.SQLQuery3.SQL.Text:= 'SELECT code_p,nom_p,prixht_p,prixvd_p,prixvr_p,prixvg_p,prixva_p,prixva2_p,tva_p,perissable_p FROM produit WHERE LOWER(refer_p) LIKE LOWER('+QuotedStr(BonRecGestionF.ProduitBonRecGCbx.Text)+')' ;
+       MainForm.SQLQuery3.Active:=True;
       end;
       if BonRecGestionF.ResherchPARCBProduitsRdioBtn.Checked then
       begin
@@ -153,12 +153,19 @@ begin
         begin
         CodeCB:=MainForm.SQLQuery.FieldValues['code_p'];
         end;
-        MainForm.ProduitTable.Active:=False;
-        MainForm.ProduitTable.SQL.Clear;
-        MainForm.ProduitTable.SQL.Text:= 'SELECT * FROM produit WHERE code_p = '+QuotedStr(IntToStr(CodeCB)) +'OR'+ ' LOWER(codebar_p) LIKE LOWER(' + QuotedStr(BonRecGestionF.ProduitBonRecGCbx.Text)+')';
-        MainForm.ProduitTable.Active:=True;
+        MainForm.SQLQuery3.Active:=False;
+        MainForm.SQLQuery3.SQL.Clear;
+        MainForm.SQLQuery3.SQL.Text:= 'SELECT code_p,nom_p,prixht_p,prixvd_p,prixvr_p,prixvg_p,prixva_p,prixva2_p,tva_p,perissable_p FROM produit WHERE code_p = '+QuotedStr(IntToStr(CodeCB)) +'OR'+ ' LOWER(codebar_p) LIKE LOWER(' + QuotedStr(BonRecGestionF.ProduitBonRecGCbx.Text)+')';
+        MainForm.SQLQuery3.Active:=True;
       end;
-     end;
+     end else
+         begin
+          CodeCB:= MainForm.ProduitTable.FieldByName('code_p').AsInteger;
+          MainForm.SQLQuery3.Active:=False;
+          MainForm.SQLQuery3.SQL.Clear;
+          MainForm.SQLQuery3.SQL.Text:= 'SELECT code_p,nom_p,prixht_p,prixvd_p,prixvr_p,prixvg_p,prixva_p,prixva2_p,tva_p,perissable_p FROM produit WHERE code_p = '+QuotedStr(IntToStr(CodeCB)) ;
+          MainForm.SQLQuery3.Active:=True;
+         end;
 
         MainForm.Bona_recPlistTable.DisableControls;
         MainForm.Bona_recPlistTable.IndexFieldNames:='';
@@ -184,20 +191,20 @@ begin
        MainForm.Bona_recPlistTable.FieldValues['code_barec']:= MainForm.Bona_recTable.FieldValues['code_barec'];
        if Assigned(FastProduitsListF) then
        begin
-        MainForm.Bona_recPlistTable.FieldValues['code_p']:=  FastProduitsListF.CodePForFastPList;// MainForm.ProduitTable.FieldValues['code_p'] ;
+        MainForm.Bona_recPlistTable.FieldValues['code_p']:=  FastProduitsListF.CodePForFastPList;// MainForm.SQLQuery3.FieldValues['code_p'] ;
        end else
            begin
-             MainForm.Bona_recPlistTable.FieldValues['code_p']:= MainForm.ProduitTable.FieldValues['code_p'] ;
+             MainForm.Bona_recPlistTable.FieldValues['code_p']:= MainForm.SQLQuery3.FieldValues['code_p'] ;
            end;
        MainForm.Bona_recPlistTable.FieldValues['qut_p'] :=  01;
-       MainForm.Bona_recPlistTable.FieldValues['prixht_p']:= MainForm.ProduitTable.FieldValues['prixht_p'];
+       MainForm.Bona_recPlistTable.FieldValues['prixht_p']:= MainForm.SQLQuery3.FieldValues['prixht_p'];
        MainForm.Bona_recPlistTable.FieldValues['cond_p']:= 01;
-       MainForm.Bona_recPlistTable.FieldValues['tva_p']:= MainForm.ProduitTable.FieldValues['tva_p'];
-       MainForm.Bona_recPlistTable.FieldByName('prixvd_p').AsCurrency:=  MainForm.ProduitTable.FieldByName('prixvd_p').AsCurrency;
-       MainForm.Bona_recPlistTable.FieldByName('prixvr_p').AsCurrency:=  MainForm.ProduitTable.FieldByName('prixvr_p').AsCurrency;
-       MainForm.Bona_recPlistTable.FieldByName('prixvg_p').AsCurrency:=  MainForm.ProduitTable.FieldByName('prixvg_p').AsCurrency;
-       MainForm.Bona_recPlistTable.FieldByName('prixva_p').AsCurrency:=  MainForm.ProduitTable.FieldByName('prixva_p').AsCurrency;
-       MainForm.Bona_recPlistTable.FieldByName('prixva2_p').AsCurrency:= MainForm.ProduitTable.FieldByName('prixva2_p').AsCurrency;
+       MainForm.Bona_recPlistTable.FieldValues['tva_p']:= MainForm.SQLQuery3.FieldValues['tva_p'];
+       MainForm.Bona_recPlistTable.FieldByName('prixvd_p').AsCurrency:=  MainForm.SQLQuery3.FieldByName('prixvd_p').AsCurrency;
+       MainForm.Bona_recPlistTable.FieldByName('prixvr_p').AsCurrency:=  MainForm.SQLQuery3.FieldByName('prixvr_p').AsCurrency;
+       MainForm.Bona_recPlistTable.FieldByName('prixvg_p').AsCurrency:=  MainForm.SQLQuery3.FieldByName('prixvg_p').AsCurrency;
+       MainForm.Bona_recPlistTable.FieldByName('prixva_p').AsCurrency:=  MainForm.SQLQuery3.FieldByName('prixva_p').AsCurrency;
+       MainForm.Bona_recPlistTable.FieldByName('prixva2_p').AsCurrency:= MainForm.SQLQuery3.FieldByName('prixva2_p').AsCurrency;
        MainForm.Bona_recPlistTable.Post ;
        MainForm.Bona_recPlistTable.IndexFieldNames:='code_barec';
 
@@ -213,10 +220,10 @@ begin
 
        MainForm.Bona_recPlistTable.Last;
 
-       MainForm.ProduitTable.Active:=False;
-       MainForm.ProduitTable.SQL.Clear;
-       MainForm.ProduitTable.SQL.Text:= 'SELECT * FROM produit';
-       MainForm.ProduitTable.Active := True;
+       MainForm.SQLQuery3.Active:=False;
+       MainForm.SQLQuery3.SQL.Clear;
+//       MainForm.SQLQuery3.SQL.Text:= 'SELECT * FROM produit';
+//       MainForm.SQLQuery3.Active := True;
 
        MainForm.Bona_recPlistTable.Refresh;
 //       MainForm.Bona_recPlistTable.Last;
@@ -247,17 +254,17 @@ begin
     begin
      if BonLivGestionF.ResherchPARDesProduitsRdioBtn.Checked then
       begin
-      MainForm.ProduitTable.Active:=False;
-      MainForm.ProduitTable.SQL.Clear;
-      MainForm.ProduitTable.SQL.Text:= 'SELECT * FROM produit WHERE LOWER(nom_p) LIKE LOWER('+QuotedStr(BonLivGestionF.ProduitBonLivGCbx.Text)+')' ;
-      MainForm.ProduitTable.Active:=True;
+      MainForm.SQLQuery3.Active:=False;
+      MainForm.SQLQuery3.SQL.Clear;
+      MainForm.SQLQuery3.SQL.Text:= 'SELECT code_p,nom_p,prixht_p,prixvd_p,prixvr_p,prixvg_p,prixva_p,prixva2_p,tva_p,perissable_p FROM produit WHERE LOWER(nom_p) LIKE LOWER('+QuotedStr(BonLivGestionF.ProduitBonLivGCbx.Text)+')' ;
+      MainForm.SQLQuery3.Active:=True;
       end;
      if BonLivGestionF.ResherchPARRefProduitsRdioBtn.Checked then
       begin
-       MainForm.ProduitTable.Active:=False;
-       MainForm.ProduitTable.SQL.Clear;
-       MainForm.ProduitTable.SQL.Text:= 'SELECT * FROM produit WHERE LOWER(refer_p) LIKE LOWER('+QuotedStr(BonLivGestionF.ProduitBonLivGCbx.Text)+')' ;
-       MainForm.ProduitTable.Active:=True;
+       MainForm.SQLQuery3.Active:=False;
+       MainForm.SQLQuery3.SQL.Clear;
+       MainForm.SQLQuery3.SQL.Text:= 'SELECT code_p,nom_p,prixht_p,prixvd_p,prixvr_p,prixvg_p,prixva_p,prixva2_p,tva_p,perissable_p FROM produit WHERE LOWER(refer_p) LIKE LOWER('+QuotedStr(BonLivGestionF.ProduitBonLivGCbx.Text)+')' ;
+       MainForm.SQLQuery3.Active:=True;
       end;
       if BonLivGestionF.ResherchPARCBProduitsRdioBtn.Checked then
       begin
@@ -269,12 +276,19 @@ begin
         begin
         CodeCB:=MainForm.SQLQuery.FieldValues['code_p'];
         end;
-        MainForm.ProduitTable.Active:=False;
-        MainForm.ProduitTable.SQL.Clear;
-        MainForm.ProduitTable.SQL.Text:= 'SELECT * FROM produit WHERE code_p = '+QuotedStr(IntToStr(CodeCB)) +'OR'+ ' LOWER(codebar_p) LIKE LOWER(' + QuotedStr(BonLivGestionF.ProduitBonLivGCbx.Text)+')';
-        MainForm.ProduitTable.Active:=True;
+        MainForm.SQLQuery3.Active:=False;
+        MainForm.SQLQuery3.SQL.Clear;
+        MainForm.SQLQuery3.SQL.Text:= 'SELECT code_p,nom_p,prixht_p,prixvd_p,prixvr_p,prixvg_p,prixva_p,prixva2_p,tva_p,perissable_p FROM produit WHERE code_p = '+QuotedStr(IntToStr(CodeCB)) +'OR'+ ' LOWER(codebar_p) LIKE LOWER(' + QuotedStr(BonLivGestionF.ProduitBonLivGCbx.Text)+')';
+        MainForm.SQLQuery3.Active:=True;
       end;
-     end;
+     end else
+         begin
+          CodeCB:= MainForm.ProduitTable.FieldByName('code_p').AsInteger;
+          MainForm.SQLQuery3.Active:=False;
+          MainForm.SQLQuery3.SQL.Clear;
+          MainForm.SQLQuery3.SQL.Text:= 'SELECT code_p,nom_p,prixht_p,prixvd_p,prixvr_p,prixvg_p,prixva_p,prixva2_p,tva_p,perissable_p FROM produit WHERE code_p = '+QuotedStr(IntToStr(CodeCB)) ;
+          MainForm.SQLQuery3.Active:=True;
+         end;
 
         MainForm.Bonv_liv_listTable.DisableControls;
         MainForm.Bonv_liv_listTable.IndexFieldNames:='';
@@ -311,41 +325,41 @@ begin
        MainForm.Bonv_liv_listTable.FieldValues['code_bvliv']:= MainForm.Bonv_livTable.FieldValues['code_bvliv'];
        if Assigned(FastProduitsListF) then
        begin
-        MainForm.Bonv_liv_listTable.FieldValues['code_p']:=  FastProduitsListF.CodePForFastPList;// MainForm.ProduitTable.FieldValues['code_p'] ;
+        MainForm.Bonv_liv_listTable.FieldValues['code_p']:=  FastProduitsListF.CodePForFastPList;// MainForm.SQLQuery3.FieldValues['code_p'] ;
        end else
            begin
-             MainForm.Bonv_liv_listTable.FieldValues['code_p']:= MainForm.ProduitTable.FieldValues['code_p'] ;
+             MainForm.Bonv_liv_listTable.FieldValues['code_p']:= MainForm.SQLQuery3.FieldValues['code_p'] ;
            end;
        MainForm.Bonv_liv_listTable.FieldValues['qut_p'] :=  01;
        MainForm.Bonv_liv_listTable.FieldValues['cond_p']:= 01;
-       MainForm.Bonv_liv_listTable.FieldValues['tva_p']:= MainForm.ProduitTable.FieldValues['tva_p'];
+       MainForm.Bonv_liv_listTable.FieldValues['tva_p']:= MainForm.SQLQuery3.FieldValues['tva_p'];
 
            if  NOT (MainForm.ClientTable.IsEmpty) AND (BonLivGestionF.ClientBonLivGCbx.Text<> '' ) then
            begin
 
              if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 0 then
              begin
-             MainForm.Bonv_liv_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixvd_p'];
+             MainForm.Bonv_liv_listTable.FieldValues['prixvd_p']:= MainForm.SQLQuery3.FieldValues['prixvd_p'];
              end;
              if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 1 then
              begin
-             MainForm.Bonv_liv_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixvr_p'];
+             MainForm.Bonv_liv_listTable.FieldValues['prixvd_p']:= MainForm.SQLQuery3.FieldValues['prixvr_p'];
              end;
              if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 2 then
              begin
-             MainForm.Bonv_liv_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixvg_p'];
+             MainForm.Bonv_liv_listTable.FieldValues['prixvd_p']:= MainForm.SQLQuery3.FieldValues['prixvg_p'];
              end;
              if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 3 then
              begin
-             MainForm.Bonv_liv_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixva_p'];
+             MainForm.Bonv_liv_listTable.FieldValues['prixvd_p']:= MainForm.SQLQuery3.FieldValues['prixva_p'];
              end;
              if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 4 then
              begin
-             MainForm.Bonv_liv_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixva2_p'];
+             MainForm.Bonv_liv_listTable.FieldValues['prixvd_p']:= MainForm.SQLQuery3.FieldValues['prixva2_p'];
              end;
              end else
                  begin
-                  MainForm.Bonv_liv_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixvd_p'];
+                  MainForm.Bonv_liv_listTable.FieldValues['prixvd_p']:= MainForm.SQLQuery3.FieldValues['prixvd_p'];
                  end;
 
        MainForm.Bonv_liv_listTable.Post ;
@@ -363,10 +377,10 @@ begin
 
        MainForm.Bonv_liv_listTable.Last;
 
-       MainForm.ProduitTable.Active:=False;
-       MainForm.ProduitTable.SQL.Clear;
-       MainForm.ProduitTable.SQL.Text:= 'SELECT * FROM produit';
-       MainForm.ProduitTable.Active := True;
+       MainForm.SQLQuery3.Active:=False;
+       MainForm.SQLQuery3.SQL.Clear;
+//       MainForm.SQLQuery3.SQL.Text:= 'SELECT * FROM produit';
+//       MainForm.SQLQuery3.Active := True;
 
        MainForm.Bonv_liv_listTable.Refresh;
        MainForm.Bonv_liv_listTable.Last;
@@ -403,17 +417,17 @@ begin
      begin
      if BonFacVGestionF.ResherchPARDesProduitsRdioBtn.Checked then
       begin
-      MainForm.ProduitTable.Active:=False;
-      MainForm.ProduitTable.SQL.Clear;
-      MainForm.ProduitTable.SQL.Text:= 'SELECT * FROM produit WHERE LOWER(nom_p) LIKE LOWER('+QuotedStr(BonFacVGestionF.ProduitBonFacVGCbx.Text)+')' ;
-      MainForm.ProduitTable.Active:=True;
+      MainForm.SQLQuery3.Active:=False;
+      MainForm.SQLQuery3.SQL.Clear;
+      MainForm.SQLQuery3.SQL.Text:= 'SELECT code_p,nom_p,prixht_p,prixvd_p,prixvr_p,prixvg_p,prixva_p,prixva2_p,tva_p,perissable_p FROM produit WHERE LOWER(nom_p) LIKE LOWER('+QuotedStr(BonFacVGestionF.ProduitBonFacVGCbx.Text)+')' ;
+      MainForm.SQLQuery3.Active:=True;
       end;
      if BonFacVGestionF.ResherchPARRefProduitsRdioBtn.Checked then
       begin
-       MainForm.ProduitTable.Active:=False;
-       MainForm.ProduitTable.SQL.Clear;
-       MainForm.ProduitTable.SQL.Text:= 'SELECT * FROM produit WHERE LOWER(refer_p) LIKE LOWER('+QuotedStr(BonFacVGestionF.ProduitBonFacVGCbx.Text)+')' ;
-       MainForm.ProduitTable.Active:=True;
+       MainForm.SQLQuery3.Active:=False;
+       MainForm.SQLQuery3.SQL.Clear;
+       MainForm.SQLQuery3.SQL.Text:= 'SELECT code_p,nom_p,prixht_p,prixvd_p,prixvr_p,prixvg_p,prixva_p,prixva2_p,tva_p,perissable_p FROM produit WHERE LOWER(refer_p) LIKE LOWER('+QuotedStr(BonFacVGestionF.ProduitBonFacVGCbx.Text)+')' ;
+       MainForm.SQLQuery3.Active:=True;
       end;
       if BonFacVGestionF.ResherchPARCBProduitsRdioBtn.Checked then
       begin
@@ -425,12 +439,20 @@ begin
         begin
         CodeCB:=MainForm.SQLQuery.FieldValues['code_p'];
         end;
-        MainForm.ProduitTable.Active:=False;
-        MainForm.ProduitTable.SQL.Clear;
-        MainForm.ProduitTable.SQL.Text:= 'SELECT * FROM produit WHERE code_p = '+QuotedStr(IntToStr(CodeCB)) +'OR'+ ' LOWER(codebar_p) LIKE LOWER(' + QuotedStr(BonFacVGestionF.ProduitBonFacVGCbx.Text)+')';
-        MainForm.ProduitTable.Active:=True;
+        MainForm.SQLQuery3.Active:=False;
+        MainForm.SQLQuery3.SQL.Clear;
+        MainForm.SQLQuery3.SQL.Text:= 'SELECT code_p,nom_p,prixht_p,prixvd_p,prixvr_p,prixvg_p,prixva_p,prixva2_p,tva_p,perissable_p FROM produit WHERE code_p = '+QuotedStr(IntToStr(CodeCB)) +'OR'+ ' LOWER(codebar_p) LIKE LOWER(' + QuotedStr(BonFacVGestionF.ProduitBonFacVGCbx.Text)+')';
+        MainForm.SQLQuery3.Active:=True;
       end;
-     end;
+     end else
+         begin
+          CodeCB:= MainForm.ProduitTable.FieldByName('code_p').AsInteger;
+          MainForm.SQLQuery3.Active:=False;
+          MainForm.SQLQuery3.SQL.Clear;
+          MainForm.SQLQuery3.SQL.Text:= 'SELECT code_p,nom_p,prixht_p,prixvd_p,prixvr_p,prixvg_p,prixva_p,prixva2_p,tva_p,perissable_p FROM produit WHERE code_p = '+QuotedStr(IntToStr(CodeCB)) ;
+          MainForm.SQLQuery3.Active:=True;
+         end;
+
        MainForm.Bonv_fac_listTable.DisableControls;
         MainForm.Bonv_fac_listTable.IndexFieldNames:='';
         MainForm.Bonv_fac_listTable.Active:=False;
@@ -466,40 +488,40 @@ begin
        MainForm.Bonv_fac_listTable.FieldValues['code_bvfac']:= MainForm.Bonv_facTable.FieldValues['code_bvfac'];
        if Assigned(FastProduitsListF) then
        begin
-        MainForm.Bonv_fac_listTable.FieldValues['code_p']:=  FastProduitsListF.CodePForFastPList;// MainForm.ProduitTable.FieldValues['code_p'] ;
+        MainForm.Bonv_fac_listTable.FieldValues['code_p']:=  FastProduitsListF.CodePForFastPList;// MainForm.SQLQuery3.FieldValues['code_p'] ;
        end else
            begin
-             MainForm.Bonv_fac_listTable.FieldValues['code_p']:= MainForm.ProduitTable.FieldValues['code_p'] ;
+             MainForm.Bonv_fac_listTable.FieldValues['code_p']:= MainForm.SQLQuery3.FieldValues['code_p'] ;
            end;
        MainForm.Bonv_fac_listTable.FieldValues['qut_p'] :=  01;
        MainForm.Bonv_fac_listTable.FieldValues['cond_p']:= 01;
-       MainForm.Bonv_fac_listTable.FieldValues['tva_p']:= MainForm.ProduitTable.FieldValues['tva_p'];
+       MainForm.Bonv_fac_listTable.FieldValues['tva_p']:= MainForm.SQLQuery3.FieldValues['tva_p'];
 
        if  NOT (MainForm.ClientTable.IsEmpty) AND (BonFacVGestionF.ClientBonFacVGCbx.Text<> '' ) then
        begin
          if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 0 then
          begin
-         MainForm.Bonv_fac_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixvd_p'];
+         MainForm.Bonv_fac_listTable.FieldValues['prixvd_p']:= MainForm.SQLQuery3.FieldValues['prixvd_p'];
          end;
          if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 1 then
          begin
-         MainForm.Bonv_fac_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixvr_p'];
+         MainForm.Bonv_fac_listTable.FieldValues['prixvd_p']:= MainForm.SQLQuery3.FieldValues['prixvr_p'];
          end;
          if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 2 then
          begin
-         MainForm.Bonv_fac_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixvg_p'];
+         MainForm.Bonv_fac_listTable.FieldValues['prixvd_p']:= MainForm.SQLQuery3.FieldValues['prixvg_p'];
          end;
          if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 3 then
          begin
-         MainForm.Bonv_fac_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixva_p'];
+         MainForm.Bonv_fac_listTable.FieldValues['prixvd_p']:= MainForm.SQLQuery3.FieldValues['prixva_p'];
          end;
          if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 4 then
          begin
-         MainForm.Bonv_fac_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixva2_p'];
+         MainForm.Bonv_fac_listTable.FieldValues['prixvd_p']:= MainForm.SQLQuery3.FieldValues['prixva2_p'];
          end;
          end else
              begin
-              MainForm.Bonv_fac_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixvd_p'];
+              MainForm.Bonv_fac_listTable.FieldValues['prixvd_p']:= MainForm.SQLQuery3.FieldValues['prixvd_p'];
              end;
 
        MainForm.Bonv_fac_listTable.Post ;
@@ -517,10 +539,10 @@ begin
 
        MainForm.Bonv_fac_listTable.Last;
 
-       MainForm.ProduitTable.Active:=False;
-       MainForm.ProduitTable.SQL.Clear;
-       MainForm.ProduitTable.SQL.Text:= 'SELECT * FROM produit';
-       MainForm.ProduitTable.Active := True;
+       MainForm.SQLQuery3.Active:=False;
+       MainForm.SQLQuery3.SQL.Clear;
+//       MainForm.SQLQuery3.SQL.Text:= 'SELECT * FROM produit';
+//       MainForm.SQLQuery3.Active := True;
 
        MainForm.Bonv_fac_listTable.Refresh;
        MainForm.Bonv_fac_listTable.Last;
@@ -556,17 +578,17 @@ begin
      begin
      if BonFacAGestionF.ResherchPARDesProduitsRdioBtn.Checked then
       begin
-      MainForm.ProduitTable.Active:=False;
-      MainForm.ProduitTable.SQL.Clear;
-      MainForm.ProduitTable.SQL.Text:= 'SELECT * FROM produit WHERE LOWER(nom_p) LIKE LOWER('+QuotedStr(BonFacAGestionF.ProduitBonFacAGCbx.Text)+')' ;
-      MainForm.ProduitTable.Active:=True;
+      MainForm.SQLQuery3.Active:=False;
+      MainForm.SQLQuery3.SQL.Clear;
+      MainForm.SQLQuery3.SQL.Text:= 'SELECT code_p,nom_p,prixht_p,prixvd_p,prixvr_p,prixvg_p,prixva_p,prixva2_p,tva_p,perissable_p FROM produit WHERE LOWER(nom_p) LIKE LOWER('+QuotedStr(BonFacAGestionF.ProduitBonFacAGCbx.Text)+')' ;
+      MainForm.SQLQuery3.Active:=True;
       end;
      if BonFacAGestionF.ResherchPARRefProduitsRdioBtn.Checked then
       begin
-       MainForm.ProduitTable.Active:=False;
-       MainForm.ProduitTable.SQL.Clear;
-       MainForm.ProduitTable.SQL.Text:= 'SELECT * FROM produit WHERE LOWER(refer_p) LIKE LOWER('+QuotedStr(BonFacAGestionF.ProduitBonFacAGCbx.Text)+')' ;
-       MainForm.ProduitTable.Active:=True;
+       MainForm.SQLQuery3.Active:=False;
+       MainForm.SQLQuery3.SQL.Clear;
+       MainForm.SQLQuery3.SQL.Text:= 'SELECT code_p,nom_p,prixht_p,prixvd_p,prixvr_p,prixvg_p,prixva_p,prixva2_p,tva_p,perissable_p FROM produit WHERE LOWER(refer_p) LIKE LOWER('+QuotedStr(BonFacAGestionF.ProduitBonFacAGCbx.Text)+')' ;
+       MainForm.SQLQuery3.Active:=True;
       end;
       if BonFacAGestionF.ResherchPARCBProduitsRdioBtn.Checked then
       begin
@@ -578,12 +600,20 @@ begin
         begin
         CodeCB:=MainForm.SQLQuery.FieldValues['code_p'];
         end;
-        MainForm.ProduitTable.Active:=False;
-        MainForm.ProduitTable.SQL.Clear;
-        MainForm.ProduitTable.SQL.Text:= 'SELECT * FROM produit WHERE code_p = '+QuotedStr(IntToStr(CodeCB)) +'OR'+ ' LOWER(codebar_p) LIKE LOWER(' + QuotedStr(BonFacAGestionF.ProduitBonFacAGCbx.Text)+')';
-        MainForm.ProduitTable.Active:=True;
+        MainForm.SQLQuery3.Active:=False;
+        MainForm.SQLQuery3.SQL.Clear;
+        MainForm.SQLQuery3.SQL.Text:= 'SELECT code_p,nom_p,prixht_p,prixvd_p,prixvr_p,prixvg_p,prixva_p,prixva2_p,tva_p,perissable_p FROM produit WHERE code_p = '+QuotedStr(IntToStr(CodeCB)) +'OR'+ ' LOWER(codebar_p) LIKE LOWER(' + QuotedStr(BonFacAGestionF.ProduitBonFacAGCbx.Text)+')';
+        MainForm.SQLQuery3.Active:=True;
       end;
-     end;
+     end else
+         begin
+          CodeCB:= MainForm.ProduitTable.FieldByName('code_p').AsInteger;
+          MainForm.SQLQuery3.Active:=False;
+          MainForm.SQLQuery3.SQL.Clear;
+          MainForm.SQLQuery3.SQL.Text:= 'SELECT code_p,nom_p,prixht_p,prixvd_p,prixvr_p,prixvg_p,prixva_p,prixva2_p,tva_p,perissable_p FROM produit WHERE code_p = '+QuotedStr(IntToStr(CodeCB)) ;
+          MainForm.SQLQuery3.Active:=True;
+         end;
+
        MainForm.Bona_fac_listTable.DisableControls;
         MainForm.Bona_fac_listTable.IndexFieldNames:='';
         MainForm.Bona_fac_listTable.Active:=False;
@@ -608,20 +638,20 @@ begin
        MainForm.Bona_fac_listTable.FieldValues['code_bafac']:= MainForm.Bona_facTable.FieldValues['code_bafac'];
        if Assigned(FastProduitsListF) then
        begin
-        MainForm.Bona_fac_listTable.FieldValues['code_p']:=  FastProduitsListF.CodePForFastPList;// MainForm.ProduitTable.FieldValues['code_p'] ;
+        MainForm.Bona_fac_listTable.FieldValues['code_p']:=  FastProduitsListF.CodePForFastPList;// MainForm.SQLQuery3.FieldValues['code_p'] ;
        end else
            begin
-             MainForm.Bona_fac_listTable.FieldValues['code_p']:= MainForm.ProduitTable.FieldValues['code_p'] ;
+             MainForm.Bona_fac_listTable.FieldValues['code_p']:= MainForm.SQLQuery3.FieldValues['code_p'] ;
            end;
        MainForm.Bona_fac_listTable.FieldValues['qut_p'] :=  01;
-       MainForm.Bona_fac_listTable.FieldValues['prixht_p']:= MainForm.ProduitTable.FieldValues['prixht_p'];
+       MainForm.Bona_fac_listTable.FieldValues['prixht_p']:= MainForm.SQLQuery3.FieldValues['prixht_p'];
        MainForm.Bona_fac_listTable.FieldValues['cond_p']:= 01;
-       MainForm.Bona_fac_listTable.FieldValues['tva_p']:= MainForm.ProduitTable.FieldValues['tva_p'];
-       MainForm.Bona_fac_listTable.FieldByName('prixvd_p').AsCurrency:=  MainForm.ProduitTable.FieldByName('prixvd_p').AsCurrency;
-       MainForm.Bona_fac_listTable.FieldByName('prixvr_p').AsCurrency:=  MainForm.ProduitTable.FieldByName('prixvr_p').AsCurrency;
-       MainForm.Bona_fac_listTable.FieldByName('prixvg_p').AsCurrency:=  MainForm.ProduitTable.FieldByName('prixvg_p').AsCurrency;
-       MainForm.Bona_fac_listTable.FieldByName('prixva_p').AsCurrency:=  MainForm.ProduitTable.FieldByName('prixva_p').AsCurrency;
-       MainForm.Bona_fac_listTable.FieldByName('prixva2_p').AsCurrency:= MainForm.ProduitTable.FieldByName('prixva2_p').AsCurrency;
+       MainForm.Bona_fac_listTable.FieldValues['tva_p']:= MainForm.SQLQuery3.FieldValues['tva_p'];
+       MainForm.Bona_fac_listTable.FieldByName('prixvd_p').AsCurrency:=  MainForm.SQLQuery3.FieldByName('prixvd_p').AsCurrency;
+       MainForm.Bona_fac_listTable.FieldByName('prixvr_p').AsCurrency:=  MainForm.SQLQuery3.FieldByName('prixvr_p').AsCurrency;
+       MainForm.Bona_fac_listTable.FieldByName('prixvg_p').AsCurrency:=  MainForm.SQLQuery3.FieldByName('prixvg_p').AsCurrency;
+       MainForm.Bona_fac_listTable.FieldByName('prixva_p').AsCurrency:=  MainForm.SQLQuery3.FieldByName('prixva_p').AsCurrency;
+       MainForm.Bona_fac_listTable.FieldByName('prixva2_p').AsCurrency:= MainForm.SQLQuery3.FieldByName('prixva2_p').AsCurrency;
        MainForm.Bona_fac_listTable.Post ;
        MainForm.Bona_fac_listTable.IndexFieldNames:='code_bafac';
 
@@ -637,10 +667,10 @@ begin
 
        MainForm.Bona_fac_listTable.Last;
 
-       MainForm.ProduitTable.Active:=False;
-       MainForm.ProduitTable.SQL.Clear;
-       MainForm.ProduitTable.SQL.Text:= 'SELECT * FROM produit';
-       MainForm.ProduitTable.Active := True;
+       MainForm.SQLQuery3.Active:=False;
+       MainForm.SQLQuery3.SQL.Clear;
+//       MainForm.SQLQuery3.SQL.Text:= 'SELECT * FROM produit';
+//       MainForm.SQLQuery3.Active := True;
 
        MainForm.Bona_fac_listTable.Refresh;
        MainForm.Bona_fac_listTable.Last;
@@ -674,31 +704,31 @@ begin
      begin
   //   if BonCtrGestionF.ResherchPARDesProduitsRdioBtn.Checked then
 
-//      MainForm.ProduitTable.Active:=False;
-//      MainForm.ProduitTable.SQL.Clear;
-//      MainForm.ProduitTable.SQL.Text:= 'SELECT * FROM produit WHERE LOWER(nom_p) LIKE LOWER('+QuotedStr(BonCtrGestionF.ProduitBonCtrGCbx.Text)+')' ;
-//      MainForm.ProduitTable.Active:=True;
+//      MainForm.SQLQuery3.Active:=False;
+//      MainForm.SQLQuery3.SQL.Clear;
+//      MainForm.SQLQuery3.SQL.Text:= 'SELECT * FROM produit WHERE LOWER(nom_p) LIKE LOWER('+QuotedStr(BonCtrGestionF.ProduitBonCtrGCbx.Text)+')' ;
+//      MainForm.SQLQuery3.Active:=True;
 
 
 // this is for adddinf from combobox or pupilaire
        if BonCtrGestionF.ProduitsListDBGridEh.Tag <> 1 then
        begin
-        MainForm.ProduitTable.Active:=False;
-        MainForm.ProduitTable.SQL.Clear;
-        MainForm.ProduitTable.SQL.Text:= 'SELECT * FROM produit where code_p = '+ IntToStr(MainForm.Bonv_ctr_listTable.FieldByName('code_p').AsInteger );
-        MainForm.ProduitTable.Active:=True;
+        MainForm.SQLQuery3.Active:=False;
+        MainForm.SQLQuery3.SQL.Clear;
+        MainForm.SQLQuery3.SQL.Text:= 'SELECT code_p,nom_p,prixht_p,prixvd_p,prixvr_p,prixvg_p,prixva_p,prixva2_p,tva_p,perissable_p FROM produit where code_p = '+ IntToStr(MainForm.Bonv_ctr_listTable.FieldByName('code_p').AsInteger );
+        MainForm.SQLQuery3.Active:=True;
        end else
             if BonCtrGestionF.ProduitsListDBGridEh.Tag = 1 then
            begin
-            MainForm.ProduitTable.Active:=False;
-            MainForm.ProduitTable.SQL.Clear;
-            MainForm.ProduitTable.SQL.Text:= 'SELECT * FROM produit where code_p = '+ IntToStr(DataModuleF.Top5produit.FieldByName('code_p').AsInteger );
-            MainForm.ProduitTable.Active:=True;
+            MainForm.SQLQuery3.Active:=False;
+            MainForm.SQLQuery3.SQL.Clear;
+            MainForm.SQLQuery3.SQL.Text:= 'SELECT code_p,nom_p,prixht_p,prixvd_p,prixvr_p,prixvg_p,prixva_p,prixva2_p,tva_p,perissable_p FROM produit where code_p = '+ IntToStr(DataModuleF.Top5produit.FieldByName('code_p').AsInteger );
+            MainForm.SQLQuery3.Active:=True;
            end;
 
-      if Not (MainForm.ProduitTable.IsEmpty) then
+      if Not (MainForm.SQLQuery3.IsEmpty) then
       begin
-      CodeCB:= MainForm.ProduitTable.FieldByName('code_p').AsInteger ;
+      CodeCB:= MainForm.SQLQuery3.FieldByName('code_p').AsInteger ;
       end else
 
       begin
@@ -710,16 +740,24 @@ begin
         begin
         CodeCB:=MainForm.SQLQuery.FieldValues['code_p'];
         end;
-        MainForm.ProduitTable.Active:=False;
-        MainForm.ProduitTable.SQL.Clear;
-        MainForm.ProduitTable.SQL.Text:= 'SELECT * FROM produit WHERE code_p = '+QuotedStr(IntToStr(CodeCB)) +'OR'+ ' LOWER(codebar_p) LIKE LOWER(' + QuotedStr(BonCtrGestionF.ProduitBonCtrGCbx.Text)+')';
-        MainForm.ProduitTable.Active:=True;
+        MainForm.SQLQuery3.Active:=False;
+        MainForm.SQLQuery3.SQL.Clear;
+        MainForm.SQLQuery3.SQL.Text:= 'SELECT code_p,nom_p,prixht_p,prixvd_p,prixvr_p,prixvg_p,prixva_p,prixva2_p,tva_p,perissable_p produit WHERE code_p = '+QuotedStr(IntToStr(CodeCB)) +'OR'+ ' LOWER(codebar_p) LIKE LOWER(' + QuotedStr(BonCtrGestionF.ProduitBonCtrGCbx.Text)+')';
+        MainForm.SQLQuery3.Active:=True;
       end;
 //      If BonCtrGestionF.FormStyle = fsNormal  then
 //      begin
 //         BonCtrGestionF.FormStyle := fsStayOnTop;
 //      end;
-     end;
+     end else
+         begin
+          CodeCB:= MainForm.ProduitTable.FieldByName('code_p').AsInteger;
+          MainForm.SQLQuery3.Active:=False;
+          MainForm.SQLQuery3.SQL.Clear;
+          MainForm.SQLQuery3.SQL.Text:= 'SELECT code_p,nom_p,prixht_p,prixvd_p,prixvr_p,prixvg_p,prixva_p,prixva2_p,tva_p,perissable_p FROM produit WHERE code_p = '+QuotedStr(IntToStr(CodeCB)) ;
+          MainForm.SQLQuery3.Active:=True;
+         end;
+
        MainForm.Bonv_ctr_listTable.DisableControls;
         MainForm.Bonv_ctr_listTable.IndexFieldNames:='';
         MainForm.Bonv_ctr_listTable.Active:=False;
@@ -744,41 +782,41 @@ begin
        MainForm.Bonv_ctr_listTable.FieldValues['code_bvctr']:= MainForm.Bonv_ctrTable.FieldValues['code_bvctr'];
        if Assigned(FastProduitsListF) then
        begin
-        MainForm.Bonv_ctr_listTable.FieldValues['code_p']:=  FastProduitsListF.CodePForFastPList;// MainForm.ProduitTable.FieldValues['code_p'] ;
+        MainForm.Bonv_ctr_listTable.FieldValues['code_p']:=  FastProduitsListF.CodePForFastPList;// MainForm.SQLQuery3.FieldValues['code_p'] ;
        end else
            begin
-             MainForm.Bonv_ctr_listTable.FieldValues['code_p']:= MainForm.ProduitTable.FieldValues['code_p'] ;
+             MainForm.Bonv_ctr_listTable.FieldValues['code_p']:= MainForm.SQLQuery3.FieldValues['code_p'] ;
            end;
        MainForm.Bonv_ctr_listTable.FieldValues['qut_p'] :=  01;
        MainForm.Bonv_ctr_listTable.FieldValues['cond_p']:= 01;
-       MainForm.Bonv_ctr_listTable.FieldValues['tva_p']:= MainForm.ProduitTable.FieldValues['tva_p'];
+       MainForm.Bonv_ctr_listTable.FieldValues['tva_p']:= MainForm.SQLQuery3.FieldValues['tva_p'];
 
        if  NOT (MainForm.ClientTable.IsEmpty) AND (BonCtrGestionF.ClientBonCtrGCbx.Text<> '' ) then
            begin
 
              if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 0 then
              begin
-             MainForm.Bonv_ctr_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixvd_p'];
+             MainForm.Bonv_ctr_listTable.FieldValues['prixvd_p']:= MainForm.SQLQuery3.FieldValues['prixvd_p'];
              end;
              if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 1 then
              begin
-             MainForm.Bonv_ctr_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixvr_p'];
+             MainForm.Bonv_ctr_listTable.FieldValues['prixvd_p']:= MainForm.SQLQuery3.FieldValues['prixvr_p'];
              end;
              if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 2 then
              begin
-             MainForm.Bonv_ctr_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixvg_p'];
+             MainForm.Bonv_ctr_listTable.FieldValues['prixvd_p']:= MainForm.SQLQuery3.FieldValues['prixvg_p'];
              end;
              if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 3 then
              begin
-             MainForm.Bonv_ctr_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixva_p'];
+             MainForm.Bonv_ctr_listTable.FieldValues['prixvd_p']:= MainForm.SQLQuery3.FieldValues['prixva_p'];
              end;
              if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 4 then
              begin
-             MainForm.Bonv_ctr_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixva2_p'];
+             MainForm.Bonv_ctr_listTable.FieldValues['prixvd_p']:= MainForm.SQLQuery3.FieldValues['prixva2_p'];
              end;
              end else
                  begin
-                  MainForm.Bonv_ctr_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixvd_p'];
+                  MainForm.Bonv_ctr_listTable.FieldValues['prixvd_p']:= MainForm.SQLQuery3.FieldValues['prixvd_p'];
                  end;
 
        MainForm.Bonv_ctr_listTable.Post ;
@@ -796,10 +834,10 @@ begin
 
        MainForm.Bonv_ctr_listTable.Last;
 
-       MainForm.ProduitTable.Active:=False;
-       MainForm.ProduitTable.SQL.Clear;
-       MainForm.ProduitTable.SQL.Text:= 'SELECT * FROM produit';
-       MainForm.ProduitTable.Active := True;
+       MainForm.SQLQuery3.Active:=False;
+       MainForm.SQLQuery3.SQL.Clear;
+//       MainForm.SQLQuery3.SQL.Text:= 'SELECT * FROM produit';
+//       MainForm.SQLQuery3.Active := True;
 
        MainForm.Bonv_ctr_listTable.Refresh;
        MainForm.Bonv_ctr_listTable.Last;
@@ -813,10 +851,10 @@ begin
          FastProduitsListF.SetFocus;
          FastProduitsListF.ResearchProduitsEdt.SelectAll;
        end;
-      if FSplashAddUnite.Tag = 5 then
-       begin
-        BonCtrGestionF.ProduitsListDBGridEh.SetFocus;
-       end;
+//      if FSplashAddUnite.Tag = 5 then
+//       begin
+//        BonCtrGestionF.ProduitsListDBGridEh.SetFocus;
+//       end;
 
 //      If BonCtrGestionF.FormStyle = fsNormal  then
 //      begin
@@ -838,17 +876,17 @@ begin
      begin
      if BonFacPGestionF.ResherchPARDesProduitsRdioBtn.Checked then
       begin
-      MainForm.ProduitTable.Active:=False;
-      MainForm.ProduitTable.SQL.Clear;
-      MainForm.ProduitTable.SQL.Text:= 'SELECT * FROM produit WHERE LOWER(nom_p) LIKE LOWER('+QuotedStr(BonFacPGestionF.ProduitBonFacVGCbx.Text)+')' ;
-      MainForm.ProduitTable.Active:=True;
+      MainForm.SQLQuery3.Active:=False;
+      MainForm.SQLQuery3.SQL.Clear;
+      MainForm.SQLQuery3.SQL.Text:= 'SELECT code_p,nom_p,prixht_p,prixvd_p,prixvr_p,prixvg_p,prixva_p,prixva2_p,tva_p,perissable_p FROM produit WHERE LOWER(nom_p) LIKE LOWER('+QuotedStr(BonFacPGestionF.ProduitBonFacVGCbx.Text)+')' ;
+      MainForm.SQLQuery3.Active:=True;
       end;
      if BonFacPGestionF.ResherchPARRefProduitsRdioBtn.Checked then
       begin
-       MainForm.ProduitTable.Active:=False;
-       MainForm.ProduitTable.SQL.Clear;
-       MainForm.ProduitTable.SQL.Text:= 'SELECT * FROM produit WHERE LOWER(refer_p) LIKE LOWER('+QuotedStr(BonFacPGestionF.ProduitBonFacVGCbx.Text)+')' ;
-       MainForm.ProduitTable.Active:=True;
+       MainForm.SQLQuery3.Active:=False;
+       MainForm.SQLQuery3.SQL.Clear;
+       MainForm.SQLQuery3.SQL.Text:= 'SELECT code_p,nom_p,prixht_p,prixvd_p,prixvr_p,prixvg_p,prixva_p,prixva2_p,tva_p,perissable_p FROM produit WHERE LOWER(refer_p) LIKE LOWER('+QuotedStr(BonFacPGestionF.ProduitBonFacVGCbx.Text)+')' ;
+       MainForm.SQLQuery3.Active:=True;
       end;
       if BonFacPGestionF.ResherchPARCBProduitsRdioBtn.Checked then
       begin
@@ -860,12 +898,20 @@ begin
         begin
         CodeCB:=MainForm.SQLQuery.FieldValues['code_p'];
         end;
-        MainForm.ProduitTable.Active:=False;
-        MainForm.ProduitTable.SQL.Clear;
-        MainForm.ProduitTable.SQL.Text:= 'SELECT * FROM produit WHERE code_p = '+QuotedStr(IntToStr(CodeCB)) +'OR'+ ' LOWER(codebar_p) LIKE LOWER(' + QuotedStr(BonFacPGestionF.ProduitBonFacVGCbx.Text)+')';
-        MainForm.ProduitTable.Active:=True;
+        MainForm.SQLQuery3.Active:=False;
+        MainForm.SQLQuery3.SQL.Clear;
+        MainForm.SQLQuery3.SQL.Text:= 'SELECT code_p,nom_p,prixht_p,prixvd_p,prixvr_p,prixvg_p,prixva_p,prixva2_p,tva_p,perissable_p FROM produit WHERE code_p = '+QuotedStr(IntToStr(CodeCB)) +'OR'+ ' LOWER(codebar_p) LIKE LOWER(' + QuotedStr(BonFacPGestionF.ProduitBonFacVGCbx.Text)+')';
+        MainForm.SQLQuery3.Active:=True;
       end;
-     end;
+     end else
+         begin
+          CodeCB:= MainForm.ProduitTable.FieldByName('code_p').AsInteger;
+          MainForm.SQLQuery3.Active:=False;
+          MainForm.SQLQuery3.SQL.Clear;
+          MainForm.SQLQuery3.SQL.Text:= 'SELECT code_p,nom_p,prixht_p,prixvd_p,prixvr_p,prixvg_p,prixva_p,prixva2_p,tva_p,perissable_p FROM produit WHERE code_p = '+QuotedStr(IntToStr(CodeCB)) ;
+          MainForm.SQLQuery3.Active:=True;
+         end;
+
        MainForm.Bonp_fac_listTable.DisableControls;
         MainForm.Bonp_fac_listTable.IndexFieldNames:='';
         MainForm.Bonp_fac_listTable.Active:=False;
@@ -901,40 +947,40 @@ begin
        MainForm.Bonp_fac_listTable.FieldValues['code_bpfac']:= MainForm.Bonp_facTable.FieldValues['code_bpfac'];
        if Assigned(FastProduitsListF) then
        begin
-        MainForm.Bonp_fac_listTable.FieldValues['code_p']:=  FastProduitsListF.CodePForFastPList;// MainForm.ProduitTable.FieldValues['code_p'] ;
+        MainForm.Bonp_fac_listTable.FieldValues['code_p']:=  FastProduitsListF.CodePForFastPList;// MainForm.SQLQuery3.FieldValues['code_p'] ;
        end else
            begin
-             MainForm.Bonp_fac_listTable.FieldValues['code_p']:= MainForm.ProduitTable.FieldValues['code_p'] ;
+             MainForm.Bonp_fac_listTable.FieldValues['code_p']:= MainForm.SQLQuery3.FieldValues['code_p'] ;
            end;
        MainForm.Bonp_fac_listTable.FieldValues['qut_p'] :=  01;
        MainForm.Bonp_fac_listTable.FieldValues['cond_p']:= 01;
-       MainForm.Bonp_fac_listTable.FieldValues['tva_p']:= MainForm.ProduitTable.FieldValues['tva_p'];
+       MainForm.Bonp_fac_listTable.FieldValues['tva_p']:= MainForm.SQLQuery3.FieldValues['tva_p'];
 
        if  NOT (MainForm.ClientTable.IsEmpty) AND (BonFacPGestionF.ClientBonFacVGCbx.Text<> '' ) then
        begin
          if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 0 then
          begin
-         MainForm.Bonp_fac_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixvd_p'];
+         MainForm.Bonp_fac_listTable.FieldValues['prixvd_p']:= MainForm.SQLQuery3.FieldValues['prixvd_p'];
          end;
          if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 1 then
          begin
-         MainForm.Bonp_fac_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixvr_p'];
+         MainForm.Bonp_fac_listTable.FieldValues['prixvd_p']:= MainForm.SQLQuery3.FieldValues['prixvr_p'];
          end;
          if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 2 then
          begin
-         MainForm.Bonp_fac_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixvg_p'];
+         MainForm.Bonp_fac_listTable.FieldValues['prixvd_p']:= MainForm.SQLQuery3.FieldValues['prixvg_p'];
          end;
          if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 3 then
          begin
-         MainForm.Bonp_fac_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixva_p'];
+         MainForm.Bonp_fac_listTable.FieldValues['prixvd_p']:= MainForm.SQLQuery3.FieldValues['prixva_p'];
          end;
          if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 4 then
          begin
-         MainForm.Bonp_fac_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixva2_p'];
+         MainForm.Bonp_fac_listTable.FieldValues['prixvd_p']:= MainForm.SQLQuery3.FieldValues['prixva2_p'];
          end;
          end else
              begin
-              MainForm.Bonp_fac_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixvd_p'];
+              MainForm.Bonp_fac_listTable.FieldValues['prixvd_p']:= MainForm.SQLQuery3.FieldValues['prixvd_p'];
              end;
 
        MainForm.Bonp_fac_listTable.Post ;
@@ -952,10 +998,10 @@ begin
 
        MainForm.Bonp_fac_listTable.Last;
 
-       MainForm.ProduitTable.Active:=False;
-       MainForm.ProduitTable.SQL.Clear;
-       MainForm.ProduitTable.SQL.Text:= 'SELECT * FROM produit';
-       MainForm.ProduitTable.Active := True;
+       MainForm.SQLQuery3.Active:=False;
+       MainForm.SQLQuery3.SQL.Clear;
+//       MainForm.ProduitTable.SQL.Text:= 'SELECT * FROM produit';
+//       MainForm.ProduitTable.Active := True;
 
        MainForm.Bonp_fac_listTable.Refresh;
        MainForm.Bonp_fac_listTable.Last;

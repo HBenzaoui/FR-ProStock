@@ -1252,6 +1252,23 @@ object BonFacVGestionF: TBonFacVGestionF
       Font.Style = []
       ParentFont = False
     end
+    object Label31: TLabel
+      Left = 499
+      Top = 287
+      Width = 275
+      Height = 12
+      Alignment = taCenter
+      Anchors = [akLeft, akBottom]
+      Caption = 
+        '[F3]S'#233'lectionnez le produit | [F6]Changer le QUT | [F7] Changer ' +
+        'le PRIX '
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 10395294
+      Font.Height = -9
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+    end
     object CompteGErrorP: TPanel
       Left = 632
       Top = 124
@@ -1491,6 +1508,7 @@ object BonFacVGestionF: TBonFacVGestionF
       TabOrder = 9
       TabStop = True
       StyleElements = []
+      OnClick = ResherchPARDesProduitsRdioBtnClick
     end
     object ResherchPARCBProduitsRdioBtn: TRadioButton
       Left = 372
@@ -1509,6 +1527,7 @@ object BonFacVGestionF: TBonFacVGestionF
       ParentFont = False
       TabOrder = 10
       StyleElements = []
+      OnClick = ResherchPARDesProduitsRdioBtnClick
     end
     object Panel2: TPanel
       Left = 0
@@ -1537,6 +1556,7 @@ object BonFacVGestionF: TBonFacVGestionF
       ParentFont = False
       TabOrder = 12
       StyleElements = []
+      OnClick = ResherchPARDesProduitsRdioBtnClick
     end
     object Panel13: TPanel
       Left = 338

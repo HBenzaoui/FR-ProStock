@@ -141,6 +141,7 @@ type
     ApplicationEvents1: TApplicationEvents;
     Label30: TLabel;
     Label29: TLabel;
+    Label5: TLabel;
     procedure FormShow(Sender: TObject);
     procedure RemiseBonCtrGEdtDblClick(Sender: TObject);
     procedure ShowKeyBoardBonCtrGBtnClick(Sender: TObject);
@@ -794,12 +795,14 @@ begin
             ValiderBVCtrBonCtrGBtn.ImageIndex:=12;
             end;
 
-            end;
+            sndPlaySound('C:\Windows\Media\speech on.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
 
+            end else
+                begin
+                  sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+                end;
 
-                 sndPlaySound('C:\Windows\Media\speech on.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
-
-     end else
+      end else
      begin
 
       FSplashAddUnite:=TFSplashAddUnite.Create(Application);
@@ -845,7 +848,7 @@ begin
     //--- this tage = 0 is for multi name added by produit combobox----//
        FSplashAddUnite.Tag:=5;
      end;
-     end;
+    end;
 
 
       MainForm.ClientTable.Active:=false;
@@ -1355,12 +1358,12 @@ begin
  begin
     DataModuleF.Top5produit.Refresh;
 
-    MainForm.Bonv_ctr_listTable.DisableControls;
+//    MainForm.Bonv_ctr_listTable.DisableControls;
    // MainForm.Bonv_ctr_listTable.Refresh;
     MainForm.Bonv_ctr_listTable.Delete;
-    MainForm.Bonv_ctr_listTable.Refresh;
-    ProduitsListDBGridEh.Refresh;
-    MainForm.Bonv_ctr_listTable.EnableControls;
+//    MainForm.Bonv_ctr_listTable.Refresh;
+//    ProduitsListDBGridEh.Refresh;
+//    MainForm.Bonv_ctr_listTable.EnableControls;
     ClientBonCtrGCbx.StyleElements:= [];
  //   RequiredClientGlbl.Visible:= False;
 //    NameClientGErrorP.Visible:= False;
@@ -1378,11 +1381,11 @@ begin
  end
  else
      begin
-      MainForm.Bonv_ctr_listTable.DisableControls;
+//      MainForm.Bonv_ctr_listTable.DisableControls;
       MainForm.Bonv_ctr_listTable.Delete;
-      ProduitsListDBGridEh.Refresh;
-      MainForm.Bonv_ctr_listTable.Refresh;
-      MainForm.Bonv_ctr_listTable.EnableControls;
+//      ProduitsListDBGridEh.Refresh;
+//      MainForm.Bonv_ctr_listTable.Refresh;
+//      MainForm.Bonv_ctr_listTable.EnableControls;
      end;
 end;
 
@@ -2449,14 +2452,21 @@ end;
 
 procedure TBonCtrGestionF.ApplicationEvents1ShortCut(var Msg: TWMKey;
   var Handled: Boolean);
-var
-NEWCredit,OLDCredit,NEWCreditLbl,OLDCreditLbl  : TfrxMemoView;
-LineCredit :TfrxShapeView;
+Var   I : Integer;
 begin
 
  if (Showing) AND ((WindowState = wsMaximized)OR(WindowState = wsNormal)) then
  begin
 
+   //--- this is to focus in produit --------------------------
+  if  (GetKeyState(VK_F3) < 0) and (AddBVCtrBonCtrGBtn.Enabled = False ) then
+  begin
+      ProduitBonCtrGCbx.SetFocus;
+      Handled := true;
+  end;
+
+
+ //--- this is to add new bon --------------------------
   if  (GetKeyState(VK_F4) < 0) and (AddBVCtrBonCtrGBtn.Enabled = True ) then
   begin
       AddBVCtrBonCtrGBtnClick(Screen);
@@ -2464,7 +2474,7 @@ begin
     Handled := true;
   end;
 
-
+ //--- this is to edit the bon--------------------------
   if  (GetKeyState(VK_F5) < 0) and (EditBVCtrBonCtrGBtn.Enabled = True ) then
   begin
       EditBVCtrBonCtrGBtnClick(Screen);
@@ -2472,14 +2482,57 @@ begin
     Handled := true;
   end;
 
+ //--- this is to switch between produits and quntity--------------------------
+   if  (GetKeyState(VK_F6) < 0) and (EditBVCtrBonCtrGBtn.Enabled = False ) then
+  begin
+       ProduitsListDBGridEh.SetFocus;
+       if ProduitsListDBGridEh.SelectedField.FieldName <>'qut_p' then
+       begin
+        for I := 0 to ProduitsListDBGridEh.FieldCount do
+        begin
+          if ProduitsListDBGridEh.SelectedField.FieldName ='qut_p' then
+          begin
+            ProduitsListDBGridEh.SelectedIndex:= i - 1;
+            Handled := true;
+            Break    ;
+          end else
+              begin
+               ProduitsListDBGridEh.SelectedIndex:=i;
+              end;
+        end;
+       end;
+       Handled := true;
+  end;
+  //--- this is to switch between produits and prix----------------------------
+   if  (GetKeyState(VK_F7) < 0) and (EditBVCtrBonCtrGBtn.Enabled = False ) then
+  begin
+       ProduitsListDBGridEh.SetFocus;
+       if ProduitsListDBGridEh.SelectedField.FieldName <>'prixvd_p' then
+       begin
+        for I := 0 to ProduitsListDBGridEh.FieldCount do
+        begin
+          if ProduitsListDBGridEh.SelectedField.FieldName ='prixvd_p' then
+          begin
+            ProduitsListDBGridEh.SelectedIndex:= i - 1;
+            Handled := true;
+            Break    ;
+          end else
+              begin
+               ProduitsListDBGridEh.SelectedIndex:=i;
+              end;
+        end;
+       end;
+       Handled := true;
+  end;
 
+ //--- this is to show the list produits -------------------------
   if  (GetKeyState(VK_F8) < 0) and (EditBVCtrBonCtrGBtn.Enabled = False ) then
   begin
       ListAddProduitBonCtrGBtnClick(Screen);
 
     Handled := true;
   end;
-
+ //--- this is to validate the bon--------------------------
    if  (GetKeyState(VK_F9) < 0)  then
   begin
 
@@ -2488,7 +2541,7 @@ begin
     Handled := true;
   end;
 
-
+ //--- this is for fast validate--------------------------
      if  (GetKeyState(VK_F10) < 0)  then
   begin
 
@@ -2496,7 +2549,7 @@ begin
 
     Handled := true;
   end;
-
+ //--- this is print the bon--------------------------
      if  (GetKeyState(VK_F12) < 0)  then
   begin
 
@@ -3214,10 +3267,10 @@ begin
 if NOT (MainForm.Bonv_ctr_listTable.IsEmpty) then
   begin
 //    MainForm.FDQuery2.DisableControls;
-    MainForm.FDQuery2.Active:=False;
-    MainForm.FDQuery2.SQL.Clear;
-    MainForm.FDQuery2.SQL.Text:='SELECT code_p,nom_p,prixht_p,tva_p FROM produit WHERE code_p = ' +IntToStr(MainForm.Bonv_ctr_listTable.FieldValues['code_p']);
-    MainForm.FDQuery2.Active:=True;
+//    MainForm.FDQuery2.Active:=False;
+//    MainForm.FDQuery2.SQL.Clear;
+//    MainForm.FDQuery2.SQL.Text:='SELECT code_p,nom_p,prixht_p,tva_p FROM produit WHERE code_p = ' +IntToStr(MainForm.Bonv_ctr_listTable.FieldValues['code_p']);
+//    MainForm.FDQuery2.Active:=True;
 
 
     //ProduitsListDBGridEh.hint:= ('Prix seuil de vente: '+MainForm.ProduitTable.FieldByName('prixht_p').AsString+FormatSettings.DecimalSeparator+'00'  )     ;
@@ -3226,17 +3279,17 @@ if NOT (MainForm.Bonv_ctr_listTable.IsEmpty) then
    ProduitsListDBGridEh.ShowHint:= True;
 
      ChangeHint(TDBGridEh(Sender),
-      ( 'Dés: '+ (MainForm.FDQuery2.FieldValues['nom_p'])
+      ( 'Dés: '+ (MainForm.Bonv_ctr_listTable.FieldValues['nomp'])
        + sLineBreak +
-         'Prix HT= '+ CurrToStrF((MainForm.FDQuery2.FieldValues['prixht_p']),ffNumber,2)
+         'Prix HT= '+ CurrToStrF((MainForm.Bonv_ctr_listTable.FieldValues['prixht_p']),ffNumber,2)
        + sLineBreak +
-         'Prix TTC= '+ CurrToStrF(((((MainForm.FDQuery2.FieldValues['prixht_p'] * MainForm.FDQuery2.FieldValues['tva_p'])/100) + (MainForm.FDQuery2.FieldValues['prixht_p']))),ffNumber,2)
+         'Prix TTC= '+ CurrToStrF(((((MainForm.Bonv_ctr_listTable.FieldValues['prixht_p'] * MainForm.Bonv_ctr_listTable.FieldValues['tva_p'])/100) + (MainForm.Bonv_ctr_listTable.FieldValues['prixht_p']))),ffNumber,2)
        ),
        TDBGridEh(Sender).ClientToScreen(Point(X, Y)));
 
 
-    MainForm.FDQuery2.Active:=False;
-    MainForm.FDQuery2.SQL.Clear;
+//    MainForm.FDQuery2.Active:=False;
+//    MainForm.FDQuery2.SQL.Clear;
 //    MainForm.FDQuery2.SQL.Text:='SELECT * FROM produit';
 //    MainForm.FDQuery2.Active:=True ;
 //    MainForm.FDQuery2.EnableControls;

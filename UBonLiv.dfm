@@ -440,7 +440,7 @@ object BonLivF: TBonLivF
     object ResearchBALivLbl: TLabel
       Left = 2
       Top = 31
-      Width = 73
+      Width = 74
       Height = 16
       Caption = 'Rechercher'
       Color = 15722984

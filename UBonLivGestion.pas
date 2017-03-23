@@ -163,6 +163,7 @@ type
     Label28: TLabel;
     Label29: TLabel;
     Label30: TLabel;
+    Label31: TLabel;
     procedure FormShow(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
@@ -213,7 +214,6 @@ type
     procedure sSpeedButton3Click(Sender: TObject);
     procedure ProduitsListDBGridEhCellClick(Column: TColumnEh);
     procedure ProduitsListDBGridEhExit(Sender: TObject);
-    procedure cxComboBox1Enter(Sender: TObject);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
     procedure B1Click(Sender: TObject);
     procedure BondeRception1Click(Sender: TObject);
@@ -226,6 +226,7 @@ type
     procedure ApplicationEvents1ShortCut(var Msg: TWMKey; var Handled: Boolean);
     procedure Timer2Timer(Sender: TObject);
     procedure Bondelivraison2Click(Sender: TObject);
+    procedure ResherchPARDesProduitsRdioBtnClick(Sender: TObject);
   private
     { Private declarations }
     procedure GettingData;
@@ -697,44 +698,54 @@ procedure TBonLivGestionF.ProduitBonLivGCbxEnter(Sender: TObject);
 var
 I : Integer;
   begin
-  Cursor := crDefault;
-//  PostMessage((Sender as TComboBox).Handle, CB_SHOWDROPDOWN, 1, 0);
-//      ProduitBonLivGCbx.Refresh;
-      ProduitBonLivGCbx.Properties.Items.Clear;
-      MainForm.ProduitTable.DisableControls;
-      MainForm.ProduitTable.Active:=False;
-      MainForm.ProduitTable.SQL.Clear;
-      MainForm.ProduitTable.SQL.Text:= 'SELECT * FROM produit ';
-      MainForm.ProduitTable.Active := True;
-
-      MainForm.ProduitTable.Refresh;
-
-
-      MainForm.ProduitTable.first;
-
      if ResherchPARDesProduitsRdioBtn.Checked then
      begin
+      ProduitBonLivGCbx.Properties.Items.Clear;
+//      Cursor := crHourGlass;
 
-     for I := 0 to MainForm.ProduitTable.RecordCount - 1 do
-     if ( MainForm.ProduitTable.FieldByName('nom_p').IsNull = False )  then
-     begin
-       ProduitBonLivGCbx.Properties.Items.Add(MainForm.ProduitTable.FieldByName('nom_p').AsString);
-       MainForm.ProduitTable.Next;
-      end;
+      MainForm.SQLQuery.Active:=False;
+      MainForm.SQLQuery.SQL.Clear;
+      MainForm.SQLQuery.SQL.Text:= 'SELECT nom_p FROM produit ';
+      MainForm.SQLQuery.Active := True;
+
+      MainForm.SQLQuery.first;
+
+       for I := 0 to MainForm.SQLQuery.RecordCount - 1 do
+       if ( MainForm.SQLQuery.FieldByName('nom_p').IsNull = False )  then
+       begin
+         ProduitBonLivGCbx.Properties.Items.Add(MainForm.SQLQuery.FieldByName('nom_p').AsString);
+         MainForm.SQLQuery.Next;
+        end;
+
+
+      MainForm.SQLQuery.Active:=False;
+      MainForm.SQLQuery.SQL.Clear;
+//      Cursor := crDefault;
      end;
 
       if ResherchPARRefProduitsRdioBtn.Checked then
      begin
+      ProduitBonLivGCbx.Properties.Items.Clear;
+//      Cursor := crHourGlass;
 
-     for I := 0 to MainForm.ProduitTable.RecordCount - 1 do
-     if( MainForm.ProduitTable.FieldByName('refer_p').IsNull = False )  then
-     begin
-          ProduitBonLivGCbx.Properties.Items.Add(MainForm.ProduitTable.FieldByName('refer_p').AsString);
-       MainForm.ProduitTable.Next;
-      end;
+      MainForm.SQLQuery.Active:=False;
+      MainForm.SQLQuery.SQL.Clear;
+      MainForm.SQLQuery.SQL.Text:= 'SELECT refer_p FROM produit ';
+      MainForm.SQLQuery.Active := True;
+
+      MainForm.SQLQuery.first;
+
+       for I := 0 to MainForm.SQLQuery.RecordCount - 1 do
+       if( MainForm.SQLQuery.FieldByName('refer_p').IsNull = False )  then
+       begin
+            ProduitBonLivGCbx.Properties.Items.Add(MainForm.SQLQuery.FieldByName('refer_p').AsString);
+         MainForm.SQLQuery.Next;
+        end;
+
+      MainForm.SQLQuery.Active:=False;
+      MainForm.SQLQuery.SQL.Clear;
+//      Cursor := crDefault;
      end;
-
-     MainForm.ProduitTable.EnableControls;
 
 end;
 
@@ -1610,49 +1621,6 @@ begin
      end;
 end;
 
-procedure TBonLivGestionF .cxComboBox1Enter(Sender: TObject);
-var
-I : Integer;
-  begin
-  Cursor := crDefault;
-//  PostMessage((Sender as TComboBox).Handle, CB_SHOWDROPDOWN, 1, 0);
-//      ProduitBonLivGCbx.Refresh;
-      ProduitBonLivGCbx.Properties.Items.Clear;
-//      MainForm.SQLQuery.DisableControls;
-      MainForm.SQLQuery.Active:=False;
-      MainForm.SQLQuery.SQL.Clear;
-      MainForm.SQLQuery.SQL.Text:= 'SELECT code_p,nom_p,refer_p FROM produit ';
-      MainForm.SQLQuery.Active := True;
-
-      MainForm.SQLQuery.first;
-
-     if ResherchPARDesProduitsRdioBtn.Checked then
-     begin
-
-     for I := 0 to MainForm.SQLQuery.RecordCount - 1 do
-     if ( MainForm.SQLQuery.FieldByName('nom_p').IsNull = False )  then
-     begin
-       ProduitBonLivGCbx.Properties.Items.Add(MainForm.SQLQuery.FieldByName('nom_p').AsString);
-       MainForm.SQLQuery.Next;
-      end;
-     end;
-
-      if ResherchPARRefProduitsRdioBtn.Checked then
-     begin
-
-     for I := 0 to MainForm.SQLQuery.RecordCount - 1 do
-     if( MainForm.SQLQuery.FieldByName('refer_p').IsNull = False )  then
-     begin
-          ProduitBonLivGCbx.Properties.Items.Add(MainForm.SQLQuery.FieldByName('refer_p').AsString);
-       MainForm.SQLQuery.Next;
-      end;
-     end;
-
-      MainForm.SQLQuery.Active:=False;
-      MainForm.SQLQuery.SQL.Clear;
-
-end;
-
 procedure TBonLivGestionF .AddClientBonLivGBtnClick(Sender: TObject);
 begin
 ClientListF.AddClientsBtnClick(Sender);
@@ -1698,10 +1666,19 @@ end;
 
 procedure TBonLivGestionF.ApplicationEvents1ShortCut(var Msg: TWMKey;
   var Handled: Boolean);
+
 var
 NEWCredit,OLDCredit,NEWCreditLbl,OLDCreditLbl  : TfrxMemoView;
 LineCredit :TfrxShapeView;
+I : Integer;
 begin
+
+   //--- this is to focus in produit --------------------------
+  if  (GetKeyState(VK_F3) < 0) and (AddBVlivBonLivGBtn.Enabled = False ) then
+  begin
+      ProduitBonLivGCbx.SetFocus;
+      Handled := true;
+  end;
 
 
   if  (GetKeyState(VK_F4) < 0) and (AddBVlivBonLivGBtn.Enabled = True ) then
@@ -1717,6 +1694,49 @@ begin
       EditBVlivBonLivGBtnClick(Screen);
 
     Handled := true;
+  end;
+
+   //--- this is to switch between produits and quntity--------------------------
+   if  (GetKeyState(VK_F6) < 0) and (EditBVlivBonLivGBtn.Enabled = False ) then
+  begin
+       ProduitsListDBGridEh.SetFocus;
+       if ProduitsListDBGridEh.SelectedField.FieldName <>'qut_p' then
+       begin
+        for I := 0 to ProduitsListDBGridEh.FieldCount do
+        begin
+          if ProduitsListDBGridEh.SelectedField.FieldName ='qut_p' then
+          begin
+            ProduitsListDBGridEh.SelectedIndex:= i - 1;
+            Handled := true;
+            Break    ;
+          end else
+              begin
+               ProduitsListDBGridEh.SelectedIndex:=i;
+              end;
+        end;
+       end;
+       Handled := true;
+  end;
+  //--- this is to switch between produits and prix----------------------------
+   if  (GetKeyState(VK_F7) < 0) and (EditBVlivBonLivGBtn.Enabled = False ) then
+  begin
+       ProduitsListDBGridEh.SetFocus;
+       if ProduitsListDBGridEh.SelectedField.FieldName <>'prixvd_p' then
+       begin
+        for I := 0 to ProduitsListDBGridEh.FieldCount do
+        begin
+          if ProduitsListDBGridEh.SelectedField.FieldName ='prixvd_p' then
+          begin
+            ProduitsListDBGridEh.SelectedIndex:= i - 1;
+            Handled := true;
+            Break    ;
+          end else
+              begin
+               ProduitsListDBGridEh.SelectedIndex:=i;
+              end;
+        end;
+       end;
+       Handled := true;
   end;
 
 
@@ -1792,10 +1812,11 @@ begin
 //-------- Show the splash screan for the produit familly to add new one---------//
   FastProduitsListF.Left := (Screen.Width div 2) - (FastProduitsListF.Width div 2);
   FastProduitsListF.Top := (Screen.Height div 2) - (FastProduitsListF.Height div 2);
+  FastProduitsListF.Tag := 1;
   FastProduitsListF.Show;
   FastProduitsListF.ResearchProduitsEdt.SetFocus;
   //use this tag = 1 for adding from bon livration
-  FastProduitsListF.Tag := 1;
+
 
  // FastProduitsListF.OKproduitGBtn.Enabled:=False;
  // produitGestionF.CancelProduitGBtn.Tag:=0;
@@ -2231,6 +2252,11 @@ procedure TBonLivGestionF .RemiseTypeBonLivGCbxChange(Sender: TObject);
 begin
 RemiseBonLivGEdt.Text:='';
 RemisePerctageBonLivGEdt.Text:='';
+end;
+
+procedure TBonLivGestionF.ResherchPARDesProduitsRdioBtnClick(Sender: TObject);
+begin
+ProduitBonLivGCbx.SetFocus;
 end;
 
 procedure TBonLivGestionF .RemisePerctageBonLivGEdtChange(Sender: TObject);
@@ -2948,33 +2974,33 @@ procedure TBonLivGestionF.ProduitsListDBGridEhMouseMove(Sender: TObject;
 begin
 if NOT (MainForm.Bonv_liv_listTable.IsEmpty) then
   begin
-//    MainForm.SQLQuery.DisableControls;
-    MainForm.FDQuery2.Active:=False;
-    MainForm.FDQuery2.SQL.Clear;
-    MainForm.FDQuery2.SQL.Text:='SELECT code_p,nom_p,prixht_p,tva_p FROM produit WHERE code_p = ' +IntToStr(MainForm.Bonv_liv_listTable.FieldValues['code_p']);
-    MainForm.FDQuery2.Active:=True;
-
-
+////    MainForm.SQLQuery.DisableControls;
+//    MainForm.FDQuery2.Active:=False;
+//    MainForm.FDQuery2.SQL.Clear;
+//    MainForm.FDQuery2.SQL.Text:='SELECT code_p,nom_p,prixht_p,tva_p FROM produit WHERE code_p = ' +IntToStr(MainForm.Bonv_liv_listTable.FieldValues['code_p']);
+//    MainForm.FDQuery2.Active:=True;
+//
+//
     //ProduitsListDBGridEh.hint:= ('Prix seuil de vente: '+MainForm.ProduitTable.FieldByName('prixht_p').AsString+FormatSettings.DecimalSeparator+'00'  )     ;
        Application.HintPause := 3000;      // 250 mSec before hint is shown
      Application.HintHidePause := 5000;
    ProduitsListDBGridEh.ShowHint:= True;
 
      ChangeHint(TDBGridEh(Sender),
-      ( 'Dés: '+ (MainForm.FDQuery2.FieldValues['nom_p'])
+      ( 'Dés: '+ (MainForm.Bonv_liv_listTable.FieldValues['nomp'])
        + sLineBreak +
-         'Prix HT= '+ CurrToStrF((MainForm.FDQuery2.FieldValues['prixht_p']),ffNumber,2)
+         'Prix HT= '+ CurrToStrF((MainForm.Bonv_liv_listTable.FieldValues['prixht_p']),ffNumber,2)
        + sLineBreak +
-         'Prix TTC= '+ CurrToStrF(((((MainForm.FDQuery2.FieldValues['prixht_p'] * MainForm.FDQuery2.FieldValues['tva_p'])/100) + (MainForm.FDQuery2.FieldValues['prixht_p']))),ffNumber,2)
+         'Prix TTC= '+ CurrToStrF(((((MainForm.Bonv_liv_listTable.FieldValues['prixht_p'] * MainForm.Bonv_liv_listTable.FieldValues['tva_p'])/100) + (MainForm.Bonv_liv_listTable.FieldValues['prixht_p']))),ffNumber,2)
        ),
        TDBGridEh(Sender).ClientToScreen(Point(X, Y)));
-
-
-     MainForm.FDQuery2.Active:=False;
-    MainForm.FDQuery2.SQL.Clear;
-//    MainForm.FDQuery2.SQL.Text:='SELECT * FROM produit';
-//    MainForm.FDQuery2.Active:=True ;
-//    MainForm.FDQuery2.EnableControls;
+//
+//
+//     MainForm.FDQuery2.Active:=False;
+//    MainForm.FDQuery2.SQL.Clear;
+////    MainForm.FDQuery2.SQL.Text:='SELECT * FROM produit';
+////    MainForm.FDQuery2.Active:=True ;
+////    MainForm.FDQuery2.EnableControls;
   end;
 
 end;

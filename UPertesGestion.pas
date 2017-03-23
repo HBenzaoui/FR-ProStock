@@ -288,7 +288,7 @@ I : Integer;
       NamePerteGCbx.Properties.Items.Clear;
       MainForm.SQLQuery.Active:=False;
       MainForm.SQLQuery.SQL.Clear;
-      MainForm.SQLQuery.SQL.Text:= 'SELECT code_p,nom_p FROM produit ';
+      MainForm.SQLQuery.SQL.Text:= 'SELECT nom_p FROM produit ';
       MainForm.SQLQuery.Active := True;
 
 
