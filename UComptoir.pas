@@ -27,7 +27,8 @@ uses
   dxSkinTheAsphaltWorld, dxSkinsDefaultPainters, dxSkinValentine,
   dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
   dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
-  dxSkinXmas2008Blue, cxTextEdit, cxMaskEdit, cxDropDownEdit, Vcl.AppEvnts;
+  dxSkinXmas2008Blue, cxTextEdit, cxMaskEdit, cxDropDownEdit, Vcl.AppEvnts,
+  CPort;
 
 type
   TBonCtrGestionF = class(TForm)
@@ -142,6 +143,7 @@ type
     Label30: TLabel;
     Label29: TLabel;
     Label5: TLabel;
+    ComPort1: TComPort;
     procedure FormShow(Sender: TObject);
     procedure RemiseBonCtrGEdtDblClick(Sender: TObject);
     procedure ShowKeyBoardBonCtrGBtnClick(Sender: TObject);
@@ -199,6 +201,7 @@ type
     procedure FormKeyPress(Sender: TObject; var Key: Char);
     procedure Timer2Timer(Sender: TObject);
     procedure ApplicationEvents1ShortCut(var Msg: TWMKey; var Handled: Boolean);
+    procedure FormDestroy(Sender: TObject);
   private
     procedure GettingData;
     { Private declarations }
@@ -331,7 +334,10 @@ begin
     if (MainForm.Bonv_ctrTable.FieldByName('code_c').AsInteger <> null)
    AND (MainForm.Bonv_ctrTable.FieldByName('code_c').AsInteger <> 0)  then
    begin
+     if MainForm.Bonv_ctrTable.FieldValues['clientbvctr'] <> null then
+     begin
      ClientBonCtrGCbx.Text:= MainForm.Bonv_ctrTable.FieldValues['clientbvctr'];
+     end;
      ProduitBonCtrGCbx.SetFocus;
    end else
        begin
@@ -498,10 +504,17 @@ ProduitBonCtrGCbx.Text:='';
 end;
 
 procedure TBonCtrGestionF.CloseBonCtrGBtnClick(Sender: TObject);
+var caFree: TCloseAction;
 begin
-Close;
+BonCtrGestionF.Close;
+//BonCtrGestionF.FormClose(Sender, caFree);
+
+
+//SendMessage(Handle, WM_CLOSE, 0, 0);
 //Free;
 //FreeAndNil(BonCtrGestionF);
+
+
 end;
 
 procedure TBonCtrGestionF.MinimizeBonCtrGBtnClick(Sender: TObject);
@@ -2210,6 +2223,11 @@ if Assigned(ProduitsListF) then
    end;
 end;
 
+procedure TBonCtrGestionF.FormDestroy(Sender: TObject);
+begin
+BonCtrGestionF:= nil
+end;
+
 procedure TBonCtrGestionF.FormKeyPress(Sender: TObject; var Key: Char);
 begin
 
@@ -2727,22 +2745,32 @@ var CodeOCB,CodeRF : Integer;
   if NOT (MainForm.Bonv_ctr_listTable.IsEmpty) then
   begin
 
-        if RequiredClientGlbl.Visible <> True then
-        begin
+     if RequiredClientGlbl.Visible <> True then
+     begin
 
        FSplashVersement.DisableBonCtr;
        Timer1.Enabled:= False;
        Label20.Visible:= False;
 
-     sndPlaySound('C:\Windows\Media\speech on.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+       sndPlaySound('C:\Windows\Media\speech on.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+
+//         try
+//           ComPort1.Port := 'COM8';
+//          ComPort1.Events := [];
+//          ComPort1.FlowControl.ControlDTR := dtrEnable;
+//          ComPort1.FlowControl.ControlRTS := rtsEnable;
+//          ComPort1.Open; // open port
+//          ComPort1.WriteUnicodeString('                                        '#13#10);
+//          ComPort1.WriteUnicodeString('                                        '#13#10);
+//          ComPort1.WriteUnicodeString('MERCI ET A BIENTOT'#13#10); // send test command
+//          ComPort1.WriteUnicodeString('Total: '+StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll])+ ' DA'#13#10);
+//
+//          finally
+//           ComPort1.Close;
+//         end;
 
 //--- this is for adding to the priduit
       begin
-//           MainForm.ProduitTable.DisableControls;
-//           MainForm.ProduitTable.Active:=False;
-//           MainForm.ProduitTable.SQL.Clear;
-//           MainForm.ProduitTable.SQL.Text:='SELECT * FROM produit ' ;
-//           MainForm.ProduitTable.Active:=True;
            Mainform.Sqlquery.Active:=False;
            Mainform.Sqlquery.Sql.Clear;
            Mainform.Sqlquery.Sql.Text:='SELECT code_bvctrl,code_p,  qut_p, cond_p , prixvd_p,tva_p,code_barec FROM bonv_ctr_list WHERE code_bvctr =  '
@@ -2778,11 +2806,6 @@ var CodeOCB,CodeRF : Integer;
             MainForm.SQLQuery.Next;
            end;
 
-//           MainForm.ProduitTable.Active:=False;
-//           MainForm.ProduitTable.SQL.Clear;
-//           MainForm.ProduitTable.SQL.Text:='SELECT * FROM produit' ;
-//           MainForm.ProduitTable.Active:=True;
-//           MainForm.ProduitTable.EnableControls;
            MainForm.SQLQuery.Active:=False;
            MainForm.SQLQuery.SQL.Clear;
 
@@ -2797,7 +2820,6 @@ var CodeOCB,CodeRF : Integer;
      end;
 //--- this is to set the bon ctrration fileds
      begin
-//          MainForm.SQLQuery.DisableControls;
           MainForm.SQLQuery.Active:=false;
           MainForm.SQLQuery.SQL.Clear;
           MainForm.SQLQuery.SQL.Text:='Select * FROM client WHERE LOWER(nom_c) LIKE LOWER('+ QuotedStr(ClientBonCtrGCbx.Text )+')'  ;
@@ -2935,11 +2957,8 @@ var CodeOCB,CodeRF : Integer;
 
           MainForm.SQLQuery.Active:=false;
           MainForm.SQLQuery.SQL.Clear;
-//          MainForm.SQLQuery.SQL.Text:='Select * FROM client' ;
-//          MainForm.SQLQuery.Active:=True;
-//          MainForm.SQLQuery.EnableControls;
 
-                                        //--- this is for adding the money to the caisse----
+          //--- this is for adding the money to the caisse----
          begin
 
           if Tag = 0 then
@@ -3342,6 +3361,7 @@ end;
 
 procedure TBonCtrGestionF.FormPaint(Sender: TObject);
 begin
+OnActivate(Sender) ;
 DataModuleF.Top5produit.Refresh;
 end;
 

@@ -712,7 +712,9 @@ MainForm.Bona_facTable.Active:= True;
 
   finally
 
-   BonFacAGestionF.Free;
+//   BonFacAGestionF.Free;
+
+   FreeAndNil(BonFacAGestionF);
 
   end;
 

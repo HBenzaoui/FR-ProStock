@@ -238,7 +238,7 @@ uses UClientGestion, UMainF, USplashAddUnite, UFournisseurList,
   USplashAddCodeBarre, math, UFournisseurGestion, USplash, UProduitsList
 
   , UComptoir, UBonFacAGestion, UBonFacVGestion, UBonLivGestion, UBonRecGestion,
-  UPertesGestion;
+  UPertesGestion, UBonFacPGestion;
 
 
 //----------- use this procedure to set center aligment text for the combobox---////
@@ -1248,6 +1248,7 @@ begin
 //end;
 end;
 
+
 procedure TProduitGestionF.OKProduitGBtnClick(Sender: TObject);
 var
 AlertJours,MinStock,MaxStock,StockIN,StockAlert ,FamP,FamSP,UnitP,FourP,LoucP,CodeP: Integer;
@@ -1514,6 +1515,60 @@ begin
            MainForm.UniteTable.SQL.Clear;
            MainForm.UniteTable.SQL.Text:='Select * FROM unite ' ;
            MainForm.UniteTable.Active:=True;
+
+
+
+           if Assigned(BonLivGestionF) AND BonLivGestionF.Showing = True then
+           begin
+                 BonLivGestionF.ProduitsListDBGridEh.DataSource:= nil;
+                 BonLivGestionF.ProduitsListDBGridEh.DataSource:= BonLivGestionF.BonLivPListDataS;
+
+                 BonLivGestionF.ProduitBonLivGCbxEnter(Sender);
+           end;
+
+           if Assigned(BonFacVGestionF) AND BonFacVGestionF.Showing = True then
+           begin
+                 BonFacVGestionF.ProduitsListDBGridEh.DataSource:= nil;
+                 BonFacVGestionF.ProduitsListDBGridEh.DataSource:= BonFacVGestionF.BonFacVPListDataS;
+
+                 BonFacVGestionF.ProduitBonFacVGCbxEnter(Sender);
+           end;
+
+           if Assigned(BonFacPGestionF) AND BonFacPGestionF.Showing = True then
+           begin
+                 BonFacPGestionF.ProduitsListDBGridEh.DataSource:= nil;
+                 BonFacPGestionF.ProduitsListDBGridEh.DataSource:= BonFacPGestionF.BonFacVPListDataS;
+
+                 BonFacPGestionF.ProduitBonFacVGCbxEnter(Sender);
+           end;
+
+           if (Assigned(BonCtrGestionF)) AND (BonCtrGestionF.Showing = True) AND
+           ((BonCtrGestionF.WindowState = wsMaximized)OR(BonCtrGestionF.WindowState = wsNormal))
+           AND (BonCtrGestionF <> nil) AND (BonCtrGestionF.Visible = True)  Then
+           begin
+                 BonCtrGestionF.ProduitsListDBGridEh.DataSource:= nil;
+                 BonCtrGestionF.ProduitsListDBGridEh.DataSource:= BonCtrGestionF.BonCtrPListDataS;
+
+                 BonCtrGestionF.ProduitBonCtrGCbxEnter(Sender);
+
+                 end;
+
+           if Assigned(BonRecGestionF) AND BonRecGestionF.Showing = True then
+           begin
+                 BonRecGestionF.ProduitsListDBGridEh.DataSource:= nil;
+                 BonRecGestionF.ProduitsListDBGridEh.DataSource:= BonRecGestionF.BonRecPListDataS;
+
+                 BonRecGestionF.ProduitBonRecGCbxEnter(Sender);
+           end;
+
+           if Assigned(BonFacAGestionF) AND BonFacAGestionF.Showing = True then
+           begin
+                 BonFacAGestionF.ProduitsListDBGridEh.DataSource:= nil;
+                 BonFacAGestionF.ProduitsListDBGridEh.DataSource:= BonFacAGestionF.BonFacAPListDataS;
+
+                 BonFacAGestionF.ProduitBonFacAGCbxEnter(Sender);
+           end;
+
            end;
           begin
             FSplash := TFSplash.Create(ProduitGestionF);

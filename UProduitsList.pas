@@ -331,7 +331,7 @@ var
   codeP, refnum: integer;
 begin
     MainForm.ProduitTable.DisableControls;
-    MainForm.ProduitTable.IndexesActive:= True;
+//    MainForm.ProduitTable.IndexesActive:= True;
 
  if Assigned (ProduitsListF) then
    begin
@@ -408,7 +408,7 @@ begin
   produitGestionF.OKproduitGBtn.Enabled:=False;
   ProduitGestionF.Tag := 0;
 
-   MainForm.ProduitTable.IndexesActive:= False;
+//   MainForm.ProduitTable.IndexesActive:= False;
 end;
 
 procedure TProduitsListF.DeleteProduitsBtnClick(Sender: TObject);

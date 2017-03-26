@@ -354,9 +354,18 @@ begin
   if (MainForm.Bonv_livTable.FieldByName('code_c').AsInteger <> null)
   AND(MainForm.Bonv_livTable.FieldByName('code_c').AsInteger <> 0) then
    begin
+      if MainForm.Bonv_livTable.FieldValues['clientbvliv'] <> null then
+      begin
      ClientBonLivGCbx.Text:= MainForm.Bonv_livTable.FieldValues['clientbvliv'];
+      end;
+      if MainForm.Bonv_livTable.FieldValues['ModePaie'] <> null then
+      begin
      ModePaieBonLivGCbx.Text:= MainForm.Bonv_livTable.FieldValues['ModePaie'];
+      end;
+      if MainForm.Bonv_livTable.FieldValues['Compte'] <> null then
+      begin
      CompteBonLivGCbx.Text:= MainForm.Bonv_livTable.FieldValues['Compte'];
+      end;
      ClientBonLivGCbxExit(Sender);
      ProduitBonLivGCbx.SetFocus;
    end else
@@ -380,7 +389,7 @@ begin
 
       if NOT (MainForm.SQLQuery.IsEmpty) AND (MainForm.SQLQuery.FieldByName('code_c').AsInteger <> 1) then
      begin
-      OLDCredit:= (MainForm.SQLQuery.FieldByName('credit_c').AsCurrency) - (MainForm.Bonv_livTable.FieldByName('MontantRes').AsCurrency) ;
+      OLDCredit:= (MainForm.SQLQuery.FieldByName('credit_c').AsCurrency);// - (MainForm.Bonv_livTable.FieldByName('MontantRes').AsCurrency) ;
 
       NewCredit:=  MainForm.SQLQuery.FieldByName('credit_c').AsCurrency;
 
@@ -1527,8 +1536,11 @@ begin
 // use this code to make mode pai espece
 
       ModePaieBonLivGCbxDropDown(Self);
+      if Tag = 0 then
+      begin
       ModePaieBonLivGCbx.ItemIndex:=0;
       ModePaieBonLivGCbxClick(Self) ;
+      end;
 
 end;
 

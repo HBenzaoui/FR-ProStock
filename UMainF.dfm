@@ -21796,13 +21796,8 @@ object MainForm: TMainForm
   object ProduitTable: TFDQuery
     OnCalcFields = ProduitTableCalcFields
     FilterOptions = [foCaseInsensitive]
-    IndexesActive = False
     IndexFieldNames = 'code_p'
     Connection = GstockdcConnection
-    FetchOptions.AssignedValues = [evItems, evCache, evAutoClose]
-    FetchOptions.AutoClose = False
-    FetchOptions.Items = [fiBlobs]
-    FetchOptions.Cache = [fiBlobs]
     SQL.Strings = (
       'SELECT * FROM produit ')
     Left = 48
@@ -22067,14 +22062,7 @@ object MainForm: TMainForm
   end
   object SQLQuery: TFDQuery
     FilterOptions = [foCaseInsensitive]
-    IndexesActive = False
     Connection = GstockdcConnection
-    FetchOptions.AssignedValues = [evItems, evRowsetSize, evCache, evAutoClose, evUnidirectional, evCursorKind]
-    FetchOptions.CursorKind = ckForwardOnly
-    FetchOptions.RowsetSize = 2000
-    FetchOptions.AutoClose = False
-    FetchOptions.Items = [fiBlobs]
-    FetchOptions.Cache = [fiBlobs]
     Left = 188
     Top = 150
   end
@@ -24199,13 +24187,7 @@ object MainForm: TMainForm
   end
   object FDQuery2: TFDQuery
     FilterOptions = [foCaseInsensitive]
-    IndexesActive = False
     Connection = GstockdcConnection
-    FetchOptions.AssignedValues = [evItems, evRowsetSize, evCache, evAutoClose]
-    FetchOptions.RowsetSize = 2000
-    FetchOptions.AutoClose = False
-    FetchOptions.Items = [fiBlobs]
-    FetchOptions.Cache = [fiBlobs]
     Left = 189
     Top = 94
   end
@@ -56679,14 +56661,8 @@ object MainForm: TMainForm
   end
   object SQLQuery3: TFDQuery
     FilterOptions = [foCaseInsensitive]
-    IndexesActive = False
     Connection = GstockdcConnection
-    FetchOptions.AssignedValues = [evItems, evRowsetSize, evCache, evAutoClose]
-    FetchOptions.RowsetSize = 2000
-    FetchOptions.AutoClose = False
-    FetchOptions.Items = [fiBlobs]
-    FetchOptions.Cache = [fiBlobs]
     Left = 186
-    Top = 206
+    Top = 208
   end
 end

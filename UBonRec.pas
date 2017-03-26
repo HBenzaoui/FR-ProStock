@@ -422,7 +422,10 @@ ClearFilterBVLivPMenuClick(Sender);
       BonRecGestionF.ShowModal;
 
  finally
-    BonRecGestionF.Free
+//    BonRecGestionF.Free
+
+         FreeAndNil(BonRecGestionF);
+
  end;
 
 //      MainForm.Bona_recTable.DisableControls;
@@ -864,12 +867,27 @@ var
       BonRecGestionF.RemisePerctageBonRecGEdt.Text :=     CurrToStrF(MainForm.Bona_recTable.FieldValues['RemisePerc'], ffNumber, 2);
       BonRecGestionF.RemiseBonRecGEdt.Text :=     CurrToStrF(MainForm.Bona_recTable.FieldValues['remise_barec'], ffNumber, 2);
      end;
-    BonRecGestionF.BonRecTotalHTLbl.Caption :=    CurrToStrF(MainForm.Bona_recTable.FieldValues['montht_barec'], ffNumber, 2);
 
-    BonRecGestionF.BonRecTotalTVALbl.Caption :=   CurrToStrF(MainForm.Bona_recTable.FieldValues['MontantTVA'], ffNumber, 2);
-    BonRecGestionF.BonRecTotalTTCLbl.Caption :=   CurrToStrF(MainForm.Bona_recTable.FieldValues['montttc_barec'], ffNumber, 2);
-    BonRecGestionF.BonRecRegleLbl.Caption :=      CurrToStrF(MainForm.Bona_recTable.FieldValues['montver_barec'], ffNumber, 2);
-    BonRecGestionF.BonRecResteLbl.Caption :=      CurrToStrF(MainForm.Bona_recTable.FieldValues['MontantRes'], ffNumber, 2);
+       if (MainForm.Bona_recTable.FieldValues['montht_barec']<> null) then
+       begin
+      BonRecGestionF.BonRecTotalHTLbl.Caption :=    CurrToStrF(MainForm.Bona_recTable.FieldValues['montht_barec'], ffNumber, 2);
+       end;
+      if (MainForm.Bona_recTable.FieldValues['MontantTVA']<> null) then
+       begin
+      BonRecGestionF.BonRecTotalTVALbl.Caption :=   CurrToStrF(MainForm.Bona_recTable.FieldValues['MontantTVA'], ffNumber, 2);
+       end;
+       if (MainForm.Bona_recTable.FieldValues['montttc_barec']<> null) then
+       begin
+      BonRecGestionF.BonRecTotalTTCLbl.Caption :=   CurrToStrF(MainForm.Bona_recTable.FieldValues['montttc_barec'], ffNumber, 2);
+       end;
+       if (MainForm.Bona_recTable.FieldValues['montver_barec']<> null) then
+       begin
+      BonRecGestionF.BonRecRegleLbl.Caption :=      CurrToStrF(MainForm.Bona_recTable.FieldValues['montver_barec'], ffNumber, 2);
+       end;
+       if (MainForm.Bona_recTable.FieldValues['MontantRes']<> null) then
+       begin
+      BonRecGestionF.BonRecResteLbl.Caption :=      CurrToStrF(MainForm.Bona_recTable.FieldValues['MontantRes'], ffNumber, 2);
+       end;
 
 
 

@@ -900,9 +900,18 @@ begin
   if (MainForm.Bona_recTable.FieldByName('code_f').AsInteger <> null)
  AND (MainForm.Bona_recTable.FieldByName('code_f').AsInteger <> 0)  then
  begin
+   if MainForm.Bona_recTable.FieldValues['fourbarec'] <> null then
+    begin
    FournisseurBonRecGCbx.Text:= MainForm.Bona_recTable.FieldValues['fourbarec'];
+    end;
+    if MainForm.Bona_recTable.FieldValues['ModePaie'] <> null then
+    begin
    ModePaieBonRecGCbx.Text:= MainForm.Bona_recTable.FieldValues['ModePaie'];
+    end;
+    if MainForm.Bona_recTable.FieldValues['Compte'] <> null then
+    begin
    CompteBonRecGCbx.Text:= MainForm.Bona_recTable.FieldValues['Compte'];
+    end;
    FournisseurBonRecGCbxExit(Sender);
    ProduitBonRecGCbx.SetFocus;
  end else
@@ -925,7 +934,7 @@ begin
 
       if NOT (MainForm.SQLQuery.IsEmpty) then
      begin
-      OLDCredit:= (MainForm.SQLQuery.FieldByName('credit_f').AsCurrency) - (MainForm.Bona_recTable.FieldByName('MontantRes').AsCurrency) ;
+      OLDCredit:= (MainForm.SQLQuery.FieldByName('credit_f').AsCurrency);// - (MainForm.Bona_recTable.FieldByName('MontantRes').AsCurrency) ;
 
       NewCredit:=  MainForm.SQLQuery.FieldByName('credit_f').AsCurrency;
 
@@ -2568,8 +2577,11 @@ procedure TBonRecGestionF.FournisseurBonRecGCbxChange(Sender: TObject);
 begin
 // use this code to make mode pai espece
       ModePaieBonRecGCbxDropDown(Self);
+      if Tag = 0 then
+      begin
       ModePaieBonRecGCbx.ItemIndex:=0;
       ModePaieBonRecGCbxClick(Self) ;
+      end;
 end;
 
 

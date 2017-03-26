@@ -689,7 +689,9 @@ MainForm.Bonv_liv_listTable.IndexFieldNames:='code_bvliv';
        BonLivGestionF.ShowModal;
 
     finally
-      BonLivGestionF.Free;
+//      BonLivGestionF.Free;
+
+      FreeAndNil(BonLivGestionF);
 
     end;
 
@@ -867,12 +869,27 @@ begin
      BonLivGestionF.RemisePerctageBonLivGEdt.Text :=     CurrToStrF(MainForm.Bonv_livTable.FieldValues['RemisePerc'], ffNumber, 2);
       BonLivGestionF.RemiseBonLivGEdt.Text :=     CurrToStrF(MainForm.Bonv_livTable.FieldValues['remise_bvliv'], ffNumber, 2);
      end;
-    BonLivGestionF.BonLivTotalHTLbl.Caption :=    CurrToStrF(MainForm.Bonv_livTable.FieldValues['montht_bvliv'], ffNumber, 2);
 
-    BonLivGestionF.BonLivTotalTVALbl.Caption :=   CurrToStrF(MainForm.Bonv_livTable.FieldValues['MontantTVA'], ffNumber, 2);
-    BonLivGestionF.BonLivTotalTTCLbl.Caption :=   CurrToStrF(MainForm.Bonv_livTable.FieldValues['montttc_bvliv'], ffNumber, 2);
-    BonLivGestionF.BonLivRegleLbl.Caption :=      CurrToStrF(MainForm.Bonv_livTable.FieldValues['montver_bvliv'], ffNumber, 2);
-    BonLivGestionF.BonLivResteLbl.Caption :=      CurrToStrF(MainForm.Bonv_livTable.FieldValues['MontantRes'], ffNumber, 2);
+       if (MainForm.Bonv_livTable.FieldValues['montht_bvliv']<> null) then
+       begin
+      BonLivGestionF.BonLivTotalHTLbl.Caption :=    CurrToStrF(MainForm.Bonv_livTable.FieldValues['montht_bvliv'], ffNumber, 2);
+       end;
+      if (MainForm.Bonv_livTable.FieldValues['MontantTVA']<> null) then
+       begin
+      BonLivGestionF.BonLivTotalTVALbl.Caption :=   CurrToStrF(MainForm.Bonv_livTable.FieldValues['MontantTVA'], ffNumber, 2);
+       end;
+       if (MainForm.Bonv_livTable.FieldValues['montttc_bvliv']<> null) then
+       begin
+      BonLivGestionF.BonLivTotalTTCLbl.Caption :=   CurrToStrF(MainForm.Bonv_livTable.FieldValues['montttc_bvliv'], ffNumber, 2);
+       end;
+       if (MainForm.Bonv_livTable.FieldValues['montver_bvliv']<> null) then
+       begin
+      BonLivGestionF.BonLivRegleLbl.Caption :=      CurrToStrF(MainForm.Bonv_livTable.FieldValues['montver_bvliv'], ffNumber, 2);
+       end;
+       if (MainForm.Bonv_livTable.FieldValues['MontantRes']<> null) then
+       begin
+      BonLivGestionF.BonLivResteLbl.Caption :=      CurrToStrF(MainForm.Bonv_livTable.FieldValues['MontantRes'], ffNumber, 2);
+       end;
 
 
 

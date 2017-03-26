@@ -428,7 +428,8 @@ MainForm.Bonp_facTable.Active:= True;
        BonFacPGestionF.ShowModal;
 
       finally
-        BonFacPGestionF.Free;
+//        BonFacPGestionF.Free;
+        FreeAndNil(BonFacPGestionF);
       end;
      //    MainForm.Bonp_facTable.Refresh;
        //  MainForm.bonp_fac_listTable.Refresh;
@@ -813,12 +814,26 @@ begin
           BonFacPGestionF.RemiseBonFacVGEdt.Text :=  '';
          end;
 
+    if (MainForm.Bonp_facTable.FieldValues['montht_bpfac']<> null)  then
+      begin
     BonFacPGestionF.BonFacVTotalHTLbl.Caption :=    CurrToStrF(MainForm.Bonp_facTable.FieldValues['montht_bpfac'], ffNumber, 2);
-
+      end;
+    if (MainForm.Bonp_facTable.FieldValues['MontantTVA']<> null)  then
+      begin
     BonFacPGestionF.BonFacVTotalTVALbl.Caption :=   CurrToStrF(MainForm.Bonp_facTable.FieldValues['MontantTVA'], ffNumber, 2);
+      end;
+     if (MainForm.Bonp_facTable.FieldValues['montttc_bpfac']<> null)  then
+      begin
     BonFacPGestionF.BonFacVTotalTTCLbl.Caption :=   CurrToStrF(MainForm.Bonp_facTable.FieldValues['montttc_bpfac'], ffNumber, 2);
+      end;
+    if (MainForm.Bonp_facTable.FieldValues['montver_bpfac']<> null)  then
+      begin
     BonFacPGestionF.BonFacVRegleLbl.Caption :=      CurrToStrF(MainForm.Bonp_facTable.FieldValues['montver_bpfac'], ffNumber, 2);
+      end;
+    if (MainForm.Bonp_facTable.FieldValues['MontantRes']<> null)  then
+      begin
     BonFacPGestionF.BonFacVResteLbl.Caption :=      CurrToStrF(MainForm.Bonp_facTable.FieldValues['MontantRes'], ffNumber, 2);
+      end;
 
        if MainForm.Bonp_facTable.FieldByName('valider_bpfac').AsBoolean = True then
        begin

@@ -489,9 +489,18 @@ begin
      end;
 
 //    BonCtrGestionF.BonCtrTotalTVALbl.Caption :=   CurrToStrF(MainForm.Bonv_ctrTable.FieldValues['MontantTVA'], ffNumber, 2);
+    if (MainForm.Bonv_ctrTable.FieldValues['montttc_bvctr']<> null) then
+    begin
     BonCtrGestionF.BonCtrTotalTTCLbl.Caption :=   CurrToStrF(MainForm.Bonv_ctrTable.FieldValues['montttc_bvctr'], ffNumber, 2);
+    end;
+    if (MainForm.Bonv_ctrTable.FieldValues['montver_bvctr']<> null) then
+    begin
     BonCtrGestionF.BonCtrRegleLbl.Caption :=      CurrToStrF(MainForm.Bonv_ctrTable.FieldValues['montver_bvctr'], ffNumber, 2);
+    end;
+    if (MainForm.Bonv_ctrTable.FieldValues['MontantRen']<> null) then
+    begin
     BonCtrGestionF.BonCtrRenduLbl.Caption :=      CurrToStrF(MainForm.Bonv_ctrTable.FieldValues['MontantRen'], ffNumber, 2);
+    end;
 
 
 

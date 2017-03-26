@@ -322,6 +322,7 @@ object BonCtrGestionF: TBonCtrGestionF
   OnClose = FormClose
   OnCloseQuery = FormCloseQuery
   OnCreate = FormCreate
+  OnDestroy = FormDestroy
   OnKeyPress = FormKeyPress
   OnPaint = FormPaint
   OnShow = FormShow
@@ -990,7 +991,7 @@ object BonCtrGestionF: TBonCtrGestionF
     object BonCTRTotalMargeLbl: TLabel
       Left = 519
       Top = 3
-      Width = 62
+      Width = 157
       Height = 20
       Caption = 'BonCTRTotalMargeLbl'
       Font.Charset = DEFAULT_CHARSET
@@ -3486,5 +3487,23 @@ object BonCtrGestionF: TBonCtrGestionF
     OnShortCut = ApplicationEvents1ShortCut
     Left = 602
     Top = 434
+  end
+  object ComPort1: TComPort
+    BaudRate = br9600
+    Port = 'COM1'
+    Parity.Bits = prNone
+    StopBits = sbOneStopBit
+    DataBits = dbEight
+    Events = [evRxChar, evTxEmpty, evRxFlag, evRing, evBreak, evCTS, evDSR, evError, evRLSD, evRx80Full]
+    FlowControl.OutCTSFlow = False
+    FlowControl.OutDSRFlow = False
+    FlowControl.ControlDTR = dtrDisable
+    FlowControl.ControlRTS = rtsDisable
+    FlowControl.XonXoffOut = False
+    FlowControl.XonXoffIn = False
+    StoredProps = [spBasic]
+    TriggersOnRxChar = True
+    Left = 548
+    Top = 348
   end
 end

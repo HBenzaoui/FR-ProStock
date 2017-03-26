@@ -1653,10 +1653,6 @@ object ProduitGestionF: TProduitGestionF
       Caption = 'Plus D'#39'info'
       SkinData.CustomColor = False
       SkinData.CustomFont = False
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object PlusInfoTB: TPanel
         Left = 0
         Top = 0

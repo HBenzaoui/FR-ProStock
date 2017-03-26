@@ -609,9 +609,18 @@ begin
  if (MainForm.Bona_facTable.FieldByName('code_f').AsInteger <> null)
 AND (MainForm.Bona_facTable.FieldByName('code_f').AsInteger <> 0)  then
  begin
+   if MainForm.Bona_facTable.FieldValues['fourbafac'] <> null then
+      begin
    FourBonFacAGCbx.Text:= MainForm.Bona_facTable.FieldValues['fourbafac'];
+      end;
+      if MainForm.Bona_facTable.FieldValues['ModePaie'] <> null then
+      begin
    ModePaieBonFacAGCbx.Text:= MainForm.Bona_facTable.FieldValues['ModePaie'];
+      end;
+      if MainForm.Bona_facTable.FieldValues['Compte'] <> null then
+      begin
    CompteBonFacAGCbx.Text:= MainForm.Bona_facTable.FieldValues['Compte'];
+      end;
    FourBonFacAGCbxExit(Sender);
    ProduitBonFacAGCbx.SetFocus;
  end else
@@ -635,7 +644,7 @@ AND (MainForm.Bona_facTable.FieldByName('code_f').AsInteger <> 0)  then
 
       if NOT (MainForm.SQLQuery.IsEmpty) then
      begin
-      OLDCredit:= (MainForm.SQLQuery.FieldByName('credit_f').AsCurrency) - (MainForm.Bona_facTable.FieldByName('MontantRes').AsCurrency) ;
+      OLDCredit:= (MainForm.SQLQuery.FieldByName('credit_f').AsCurrency);//  - (MainForm.Bona_facTable.FieldByName('MontantRes').AsCurrency) ;
 
       NewCredit:=  MainForm.SQLQuery.FieldByName('credit_f').AsCurrency;
 
@@ -1571,8 +1580,11 @@ procedure TBonFacAGestionF.FourBonFacAGCbxChange(Sender: TObject);
 begin
 // use this code to make mode pai espece
       ModePaieBonFacAGCbxDropDown(Self);
+      if Tag = 0 then
+      begin
       ModePaieBonFacAGCbx.ItemIndex:=0;
       ModePaieBonFacAGCbxClick(Self) ;
+      end;
 end;
 
 procedure TBonFacAGestionF.FourBonFacAGCbxExit(Sender: TObject);

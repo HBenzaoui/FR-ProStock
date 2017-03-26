@@ -347,7 +347,10 @@ begin
   if (MainForm.Bonp_facTable.FieldByName('code_c').AsInteger <> null)
  AND (MainForm.Bonp_facTable.FieldByName('code_c').AsInteger <> 0) then
  begin
+   if MainForm.Bonp_facTable.FieldValues['clientbvfac'] <> null then
+      begin
    ClientBonFacVGCbx.Text:= MainForm.Bonp_facTable.FieldValues['clientbvfac'];
+      end;
    ProduitBonFacVGCbx.SetFocus;
  end else
      begin
@@ -370,7 +373,7 @@ begin
 
       if NOT (MainForm.SQLQuery.IsEmpty) AND (MainForm.SQLQuery.FieldByName('code_c').AsInteger <> 1) then
      begin
-      OLDCredit:= (MainForm.SQLQuery.FieldByName('credit_c').AsCurrency) - (MainForm.Bonp_facTable.FieldByName('MontantRes').AsCurrency) ;
+      OLDCredit:= (MainForm.SQLQuery.FieldByName('credit_c').AsCurrency);//  - (MainForm.Bonp_facTable.FieldByName('MontantRes').AsCurrency) ;
 
       NewCredit:=  MainForm.SQLQuery.FieldByName('credit_c').AsCurrency;
 
@@ -1599,8 +1602,11 @@ procedure TBonFacPGestionF.ClientBonFacVGCbxChange(Sender: TObject);
 begin
 // use this code to make mode pai espece
       ModePaieBonFacVGCbxDropDown(Self);
+      if Tag = 0 then
+      begin
       ModePaieBonFacVGCbx.ItemIndex:=0;
       ModePaieBonFacVGCbxClick(Self) ;
+      end;
 end;
 
 

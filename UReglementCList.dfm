@@ -571,7 +571,7 @@ object ReglementCListF: TReglementCListF
       TMSStyle = 0
     end
     object sImage2: TsImage
-      Left = 646
+      Left = 578
       Top = 6
       Width = 16
       Height = 16
@@ -586,7 +586,7 @@ object ReglementCListF: TReglementCListF
       SkinData.SkinSection = 'CHECKBOX'
     end
     object sImage1: TsImage
-      Left = 630
+      Left = 562
       Top = 6
       Width = 16
       Height = 16
