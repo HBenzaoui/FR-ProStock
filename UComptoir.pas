@@ -2329,6 +2329,8 @@ end;
 
 procedure TBonCtrGestionF.PrintTicketBVCtrBonCtrGBtnClick(Sender: TObject);
 begin
+if ValiderBVCtrBonCtrGImg.ImageIndex <> 1 then
+ begin
 MainForm.Bonv_ctr_listTable.DisableControls;
     ComptoirTicketfrxRprt.PrepareReport;
     GettingData;
@@ -2337,6 +2339,7 @@ MainForm.Bonv_ctr_listTable.DisableControls;
 //    ComptoirTicketfrxRprt.PrintOptions.Printer:= FOptions.PrintersListFOptionCaisseCbx.Text ;
     ComptoirTicketfrxRprt.Print;
 MainForm.Bonv_ctr_listTable.EnableControls;
+ end;
 end;
 
 procedure TBonCtrGestionF.sSpeedButton1Click(Sender: TObject);

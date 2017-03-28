@@ -4284,8 +4284,6 @@ object BonFacVGestionF: TBonFacVGestionF
           Top = 137.808493320000000000
           Width = 131.596362730000000000
           Height = 16.492494550000000000
-          DataSet = BonLivGestionF.frxBonLivDT
-          DataSetName = 'frxBonLivDT'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -4320,8 +4318,6 @@ object BonFacVGestionF: TBonFacVGestionF
           Top = 157.451556670000000000
           Width = 131.596362730000000000
           Height = 16.492494550000000000
-          DataSet = BonLivGestionF.frxBonLivDT
-          DataSetName = 'frxBonLivDT'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET

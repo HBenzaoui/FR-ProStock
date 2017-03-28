@@ -21796,6 +21796,12 @@ object MainForm: TMainForm
   object ProduitTable: TFDQuery
     OnCalcFields = ProduitTableCalcFields
     FilterOptions = [foCaseInsensitive]
+    Indexes = <
+      item
+        Active = True
+        Selected = True
+        Fields = 'code_p'
+      end>
     IndexFieldNames = 'code_p'
     Connection = GstockdcConnection
     SQL.Strings = (
@@ -36344,7 +36350,18 @@ object MainForm: TMainForm
     AfterRefresh = Bonv_liv_listTableAfterRefresh
     OnCalcFields = Bonv_liv_listTableCalcFields
     FilterOptions = [foCaseInsensitive]
-    IndexFieldNames = 'code_bvliv'
+    Indexes = <
+      item
+        Active = True
+        Name = 'icode_p_bvlist'
+        Fields = 'code_p'
+      end
+      item
+        Active = True
+        Name = 'icode_bvliv_bvlist'
+        Fields = 'code_bvliv'
+      end>
+    IndexFieldNames = 'code_bvliv;code_p;code_bvlivl'
     MasterSource = BonLivListDataS
     MasterFields = 'code_bvliv'
     Connection = GstockdcConnection
@@ -40314,16 +40331,26 @@ object MainForm: TMainForm
       Origin = 'code_bvctr'
     end
     object Bonv_ctr_listTablequt_p: TFloatField
+      DisplayWidth = 7
       FieldName = 'qut_p'
       Origin = 'qut_p'
+      OnChange = Bonv_ctr_listTablequt_pChange
+      MaxValue = 9999999.000000000000000000
+      MinValue = -9999999.000000000000000000
     end
     object Bonv_ctr_listTableprixvd_p: TCurrencyField
+      DisplayWidth = 7
       FieldName = 'prixvd_p'
       Origin = 'prixvd_p'
+      MaxValue = 9999999.000000000000000000
+      MinValue = -9999999.000000000000000000
     end
     object Bonv_ctr_listTablecond_p: TIntegerField
+      DisplayWidth = 7
       FieldName = 'cond_p'
       Origin = 'cond_p'
+      MaxValue = 9999999
+      MinValue = -9999999
     end
     object Bonv_ctr_listTablePrixVTTC: TCurrencyField
       FieldKind = fkInternalCalc

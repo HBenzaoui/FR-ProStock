@@ -372,6 +372,9 @@ begin
 
 //-------- use this code to disable contron o dbgrid when adding or editing in the background-----//
 
+
+
+
   MainForm.ProduitTable.Filtered:=False;
   MainForm.ProduitTable.IndexesActive := True;
 //-------- use this code to start creating th form-----//
@@ -385,11 +388,20 @@ begin
   end
   else
   begin
+           MainForm.SQLQuery.Active:=false;
+         MainForm.SQLQuery.SQL.Clear;
+         MainForm.SQLQuery.SQL.Text:='SELECT code_p FROM produit ORDER BY code_p' ;
+         MainForm.SQLQuery.Active:=True;
+         MainForm.SQLQuery.Last;
+
     MainForm.ProduitTable.Last;
-    codeP := MainForm.ProduitTable.FieldValues['code_p'];
+    codeP := MainForm.SQLQuery.FieldValues['code_p'];
     MainForm.ProduitTable.insert;
     MainForm.ProduitTable.FieldValues['code_p'] := codeP + 1;
    MainForm.ProduitTable.post;
+
+     MainForm.SQLQuery.Active:=false;
+         MainForm.SQLQuery.SQL.Clear;
   end;
 //------this code is to sent ne reference produit using P00001----
   refnum := MainForm.ProduitTable.FieldValues['code_p'];

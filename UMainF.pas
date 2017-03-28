@@ -930,6 +930,7 @@ type
     procedure T3Click(Sender: TObject);
     procedure A5Click(Sender: TObject);
     procedure ChangUserMAinFMnuClick(Sender: TObject);
+    procedure Bonv_ctr_listTablequt_pChange(Sender: TField);
   private
    //---- this to value of changege we need it to check if theuser changed something
      CountInsert,CountUpdate,CountDelete   : Int64;
@@ -2565,6 +2566,16 @@ begin
  ((Bonv_ctr_listTable.FieldValues['MontantHT']) - (Bonv_ctr_listTable.FieldValues['MontantAHT'])) ;
 end;
 
+
+procedure TMainForm.Bonv_ctr_listTablequt_pChange(Sender: TField);
+begin
+ if (Bonv_ctr_listTablequt_p.Value > 999999) OR (Bonv_ctr_listTablequt_p.Value < -999999) then
+ begin
+  sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+  Bonv_ctr_listTablequt_p.Value := 1;
+ end;
+
+end;
 
 function NonWhiteSpaceCharacterCount(const str: string): Integer;
 var

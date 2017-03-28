@@ -6,7 +6,7 @@ uses
   Winapi.Windows,Data.DB,Vcl.Imaging.jpeg, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, sPanel,
   acSlider, AdvToolBtn, acImage, Vcl.ExtDlgs, System.ImageList, Vcl.ImgList,
-  acAlphaImageList;
+  acAlphaImageList, Vcl.ComCtrls, sPageControl;
 
 type
   TFOptions = class(TForm)
@@ -43,6 +43,24 @@ type
     sAlphaImageList1: TsAlphaImageList;
     Shape1: TShape;
     OKFPrintingBtn: TAdvToolButton;
+    ProduitGPgControl: TsPageControl;
+    GeneralOptionGTB: TsTabSheet;
+    sTabSheet1: TsTabSheet;
+    Panel1: TPanel;
+    Label11: TLabel;
+    Panel5: TPanel;
+    Label17: TLabel;
+    Panel7: TPanel;
+    Label12: TLabel;
+    PoleDisplayActiveSdr: TsSlider;
+    Label13: TLabel;
+    PoleDisplayCOMListCbx: TComboBox;
+    Label14: TLabel;
+    sSlider1: TsSlider;
+    Label15: TLabel;
+    ComboBox1: TComboBox;
+    Label16: TLabel;
+    Edit1: TEdit;
     procedure FormShow(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure OKFPrintingBtnClick(Sender: TObject);
@@ -52,7 +70,9 @@ type
     procedure ImageDeleteProduitGBtnClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
+    procedure PoleDisplayCOMListCbxEnter(Sender: TObject);
   private
+
     { Private declarations }
   public
     { Public declarations }
@@ -370,6 +390,54 @@ begin
    OKFPrintingBtnClick(Sender);
 
   end;
+end;
+
+
+
+// this function is to get a liot of available COM ports
+function ExtComName(ComNr: DWORD): string;
+begin
+  if ComNr > 9 then
+    Result := Format('\\\\.\\COM%d', [ComNr])
+  else
+    Result := Format('COM%d', [ComNr]);
+end;
+
+function CheckCom(AComNumber: Integer): Integer;
+var
+  FHandle: THandle;
+begin
+  Result := 0;
+  FHandle := CreateFile(PChar(ExtComName(AComNumber)),
+    GENERIC_READ or GENERIC_WRITE,
+    0, {exclusive access}
+    nil, {no security attrs}
+    OPEN_EXISTING,
+    FILE_ATTRIBUTE_NORMAL,
+    0);
+  if FHandle <> INVALID_HANDLE_VALUE then
+    CloseHandle(FHandle)
+  else
+    Result := GetLastError;
+end;
+procedure TFOptions.PoleDisplayCOMListCbxEnter(Sender: TObject);
+var
+  XX, Err: Integer;
+  begin
+    PoleDisplayCOMListCbx.Items.Clear;
+    for XX := 1 to 20 do
+    begin
+      Err := CheckCom(XX);
+      if (Err = 0) or (Err = ERROR_ACCESS_DENIED) then
+      begin
+        {the Port exists, if  Err = ERROR_ACCESS_DENIED then the port is already open}
+//        ShowMessage('Port COM0'+ IntToStr(xx)) ;
+        PoleDisplayCOMListCbx.Items.Add('COM0'+IntToStr(xx));
+        //  Break
+        end;
+
+        end;
+
 end;
 
 End.

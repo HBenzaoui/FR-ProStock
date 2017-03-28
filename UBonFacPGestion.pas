@@ -1416,6 +1416,9 @@ procedure TBonFacPGestionF.B1Click(Sender: TObject);
 NEWCredit,OLDCredit,NEWCreditLbl,OLDCreditLbl , TotalACHAT,Versement,TotalACHATLbl,VersementLbl  : TfrxMemoView;
 LineCredit,LineCreditTop :TfrxShapeView;
 begin
+
+if ValiderBVFacBonFacVGImg.ImageIndex <> 1 then
+ begin
 MainForm.Bonp_fac_listTable.DisableControls;
  GettingData;
 
@@ -1447,6 +1450,7 @@ MainForm.Bonp_fac_listTable.DisableControls;
 BonFacPPListfrxRprt.PrepareReport;
 BonFacPPListfrxRprt.ShowReport;
 MainForm.Bonp_fac_listTable.EnableControls;
+ end;
 end;
 
 procedure TBonFacPGestionF.BondeCaisseSimple2Click(Sender: TObject);
@@ -1454,6 +1458,8 @@ procedure TBonFacPGestionF.BondeCaisseSimple2Click(Sender: TObject);
 NEWCredit,OLDCredit,NEWCreditLbl,OLDCreditLbl , TotalACHAT,Versement,TotalACHATLbl,VersementLbl  : TfrxMemoView;
 LineCredit,LineCreditTop :TfrxShapeView;
 begin
+if ValiderBVFacBonFacVGImg.ImageIndex <> 1 then
+ begin
 MainForm.Bonp_fac_listTable.DisableControls;
  GettingData;
 
@@ -1485,6 +1491,7 @@ MainForm.Bonp_fac_listTable.DisableControls;
 BonFacPPListfrxRprt.PrepareReport;
 BonFacPPListfrxRprt.ShowReport;
 MainForm.Bonp_fac_listTable.EnableControls;
+ end;
 end;
 
 procedure TBonFacPGestionF.BonFacVPListDataSDataChange(Sender: TObject;
@@ -2793,6 +2800,8 @@ begin
      if  (GetKeyState(VK_F12) < 0)  then
   begin
 
+if ValiderBVFacBonFacVGImg.ImageIndex <> 1 then
+ begin
     MainForm.Bonp_fac_listTable.DisableControls;
      GettingData;
 
@@ -2816,6 +2825,7 @@ begin
     MainForm.Bonp_fac_listTable.EnableControls;
 
     Handled := true;
+ end;
   end;
 
 

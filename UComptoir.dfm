@@ -456,7 +456,6 @@ object BonCtrGestionF: TBonCtrGestionF
         Font.Style = []
         Footers = <>
         Layout = tlCenter
-        MaxWidth = 100
         Title.Alignment = taCenter
         Title.Caption = 'Quantit'#233
         Title.Font.Charset = DEFAULT_CHARSET

@@ -1196,6 +1196,8 @@ begin
      if  (GetKeyState(VK_F12) < 0)  then
   begin
 
+if ValiderBARecBonRecGImg.ImageIndex <> 1 then
+ begin
       MainForm.Bona_recPlistTable.DisableControls;
        GettingData;
 
@@ -1217,6 +1219,7 @@ begin
 
 
     Handled := true;
+ end;
   end;
 
 end;
@@ -1469,6 +1472,8 @@ procedure TBonRecGestionF.B1Click(Sender: TObject);
 NEWCredit,OLDCredit,NEWCreditLbl,OLDCreditLbl , TotalACHAT,Versement,TotalACHATLbl,VersementLbl    : TfrxMemoView;
 LineCredit :TfrxShapeView;
 begin
+if ValiderBARecBonRecGImg.ImageIndex <> 1 then
+ begin
 MainForm.Bona_recPlistTable.DisableControls;
  GettingData;
 
@@ -1497,6 +1502,7 @@ MainForm.Bona_recPlistTable.DisableControls;
 BonRecPListfrxRprt.PrepareReport;
 BonRecPListfrxRprt.ShowReport;
 MainForm.Bona_recPlistTable.EnableControls;
+ end;
 end;
 
 procedure TBonRecGestionF.BondeRception1Click(Sender: TObject);
@@ -1504,6 +1510,8 @@ procedure TBonRecGestionF.BondeRception1Click(Sender: TObject);
 NEWCredit,OLDCredit,NEWCreditLbl,OLDCreditLbl , TotalACHAT,Versement,TotalACHATLbl,VersementLbl    : TfrxMemoView;
 LineCredit :TfrxShapeView;
 begin
+if ValiderBARecBonRecGImg.ImageIndex <> 1 then
+ begin
 MainForm.Bona_recPlistTable.DisableControls;
  GettingDataSansTax;
 
@@ -1532,6 +1540,7 @@ MainForm.Bona_recPlistTable.DisableControls;
 BonRecPListSanTAXfrxRprt.PrepareReport;
 BonRecPListSanTAXfrxRprt.ShowReport;
 MainForm.Bona_recPlistTable.EnableControls;
+ end;
 end;
 
 procedure TBonRecGestionF.Bonderception2Click(Sender: TObject);
@@ -1539,6 +1548,8 @@ procedure TBonRecGestionF.Bonderception2Click(Sender: TObject);
 NEWCredit,OLDCredit,NEWCreditLbl,OLDCreditLbl , TotalACHAT,Versement,TotalACHATLbl,VersementLbl    : TfrxMemoView;
 LineCredit :TfrxShapeView;
 begin
+if ValiderBARecBonRecGImg.ImageIndex <> 1 then
+ begin
 MainForm.Bona_recPlistTable.DisableControls;
  GettingData;
 
@@ -1567,6 +1578,7 @@ MainForm.Bona_recPlistTable.DisableControls;
 BonRecPListfrxRprt.PrepareReport;
 BonRecPListfrxRprt.ShowReport;
 MainForm.Bona_recPlistTable.EnableControls;
+ end;
 end;
 
 procedure TBonRecGestionF.Bonderceptionhorstaxe1Click(Sender: TObject);
@@ -1574,6 +1586,8 @@ procedure TBonRecGestionF.Bonderceptionhorstaxe1Click(Sender: TObject);
 NEWCredit,OLDCredit,NEWCreditLbl,OLDCreditLbl , TotalACHAT,Versement,TotalACHATLbl,VersementLbl    : TfrxMemoView;
 LineCredit :TfrxShapeView;
 begin
+if ValiderBARecBonRecGImg.ImageIndex <> 1 then
+ begin
 MainForm.Bona_recPlistTable.DisableControls;
  GettingDataSansTax;
 
@@ -1602,6 +1616,7 @@ MainForm.Bona_recPlistTable.DisableControls;
 BonRecPListSanTAXfrxRprt.PrepareReport;
 BonRecPListSanTAXfrxRprt.ShowReport;
 MainForm.Bona_recPlistTable.EnableControls;
+ end;
 end;
 
 procedure TBonRecGestionF.BonRecPListDataSDataChange(Sender: TObject;

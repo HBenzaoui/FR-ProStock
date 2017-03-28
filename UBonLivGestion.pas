@@ -1770,6 +1770,8 @@ begin
      if  (GetKeyState(VK_F12) < 0)  then
   begin
 
+if ValiderBVlivBonLivGImg.ImageIndex <> 1 then
+ begin
       MainForm.Bonv_liv_listTable.DisableControls;
       GettingDataA5;;
 
@@ -1790,6 +1792,7 @@ begin
     MainForm.Bonv_liv_listTable.EnableControls;
 
     Handled := true;
+ end;
   end;
 
 
@@ -1909,6 +1912,8 @@ procedure TBonLivGestionF.B1Click(Sender: TObject);
 NEWCredit,OLDCredit,NEWCreditLbl,OLDCreditLbl , TotalACHAT,Versement,TotalACHATLbl,VersementLbl   : TfrxMemoView;
 LineCredit :TfrxShapeView;
 begin
+if ValiderBVlivBonLivGImg.ImageIndex <> 1 then
+ begin
 MainForm.Bonv_liv_listTable.DisableControls;
  GettingData;
 
@@ -1940,6 +1945,7 @@ BonLivPListfrxRprt.ShowReport;
 
 //BonLivPListfrxRprt.Print;   // this is to print directly
 MainForm.Bonv_liv_listTable.EnableControls;
+ end;
 end;
 
 procedure TBonLivGestionF.BondeCaisseSimple1Click(Sender: TObject);
@@ -1947,6 +1953,8 @@ procedure TBonLivGestionF.BondeCaisseSimple1Click(Sender: TObject);
 NEWCredit,OLDCredit,NEWCreditLbl,OLDCreditLbl  , TotalACHAT,Versement,TotalACHATLbl,VersementLbl  : TfrxMemoView;
 LineCredit :TfrxShapeView;
 begin
+if ValiderBVlivBonLivGImg.ImageIndex <> 1 then
+ begin
 MainForm.Bonv_liv_listTable.DisableControls;
  GettingDataBonSimple;
 
@@ -1979,12 +1987,15 @@ BonLivPListBonSIMPLEfrxRprt.ShowReport;
 //BonLivPListfrxRprt.Print;   // this is to print directly
 MainForm.Bonv_liv_listTable.EnableControls;
 end;
+end;
 
 procedure TBonLivGestionF.BondeCaisseSimple2Click(Sender: TObject);
  var
 NEWCredit,OLDCredit,NEWCreditLbl,OLDCreditLbl , TotalACHAT,Versement,TotalACHATLbl,VersementLbl   : TfrxMemoView;
 LineCredit :TfrxShapeView;
 begin
+if ValiderBVlivBonLivGImg.ImageIndex <> 1 then
+ begin
 MainForm.Bonv_liv_listTable.DisableControls;
  GettingDataBonSimple;
 
@@ -2017,12 +2028,15 @@ BonLivPListBonSIMPLEfrxRprt.ShowReport;
 //BonLivPListfrxRprt.Print;   // this is to print directly
 MainForm.Bonv_liv_listTable.EnableControls;
 end;
+end;
 
 procedure TBonLivGestionF.BondeLivraison1Click(Sender: TObject);
  var
 NEWCredit,OLDCredit,NEWCreditLbl,OLDCreditLbl  , TotalACHAT,Versement,TotalACHATLbl,VersementLbl  : TfrxMemoView;
 LineCredit :TfrxShapeView;
 begin
+if ValiderBVlivBonLivGImg.ImageIndex <> 1 then
+ begin
 MainForm.Bonv_liv_listTable.DisableControls;
  GettingData;
 
@@ -2055,12 +2069,15 @@ BonLivPListfrxRprt.ShowReport;
 //BonLivPListfrxRprt.Print;   // this is to print directly
 MainForm.Bonv_liv_listTable.EnableControls;
 end;
+end;
 
 procedure TBonLivGestionF.Bondelivraison2Click(Sender: TObject);
  var
 NEWCredit,OLDCredit,NEWCreditLbl,OLDCreditLbl , TotalACHAT,Versement,TotalACHATLbl,VersementLbl   : TfrxMemoView;
 LineCredit :TfrxShapeView;
 begin
+if ValiderBVlivBonLivGImg.ImageIndex <> 1 then
+ begin
       MainForm.Bonv_liv_listTable.DisableControls;
      GettingDataA5;
        OLDCredit:= BonLivPListfrxRprtA5.FindObject('OLDCredit') as TfrxMemoView;
@@ -2091,6 +2108,7 @@ begin
 
 //BonLivPListfrxRprt.Print;   // this is to print directly
     MainForm.Bonv_liv_listTable.EnableControls;
+ end;
 end;
 
 procedure TBonLivGestionF.BondeLivraisonhorstaxe1Click(Sender: TObject);
@@ -2098,6 +2116,8 @@ procedure TBonLivGestionF.BondeLivraisonhorstaxe1Click(Sender: TObject);
 NEWCredit,OLDCredit,NEWCreditLbl,OLDCreditLbl   , TotalACHAT,Versement,TotalACHATLbl,VersementLbl  : TfrxMemoView;
 LineCredit :TfrxShapeView;
 begin
+if ValiderBVlivBonLivGImg.ImageIndex <> 1 then
+ begin
 MainForm.Bonv_liv_listTable.DisableControls;
  GettingDataSansTax;
 
@@ -2130,12 +2150,15 @@ BonLivPListSansTaxfrxRprt.ShowReport;
 //BonLivPListfrxRprt.Print;   // this is to print directly
 MainForm.Bonv_liv_listTable.EnableControls;
 end;
+end;
 
 procedure TBonLivGestionF.BondeRception1Click(Sender: TObject);
  var
 NEWCredit,OLDCredit,NEWCreditLbl,OLDCreditLbl  , TotalACHAT,Versement,TotalACHATLbl,VersementLbl  : TfrxMemoView;
 LineCredit :TfrxShapeView;
 begin
+if ValiderBVlivBonLivGImg.ImageIndex <> 1 then
+ begin
 MainForm.Bonv_liv_listTable.DisableControls;
  GettingDataSansTax;
 
@@ -2167,6 +2190,7 @@ BonLivPListSansTaxfrxRprt.ShowReport;
 
 //BonLivPListfrxRprt.Print;   // this is to print directly
 MainForm.Bonv_liv_listTable.EnableControls;
+ end;
 end;
 
 procedure TBonLivGestionF .BonLivPListDataSDataChange(Sender: TObject;
