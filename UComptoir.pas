@@ -2744,6 +2744,11 @@ end;
 
 procedure TBonCtrGestionF.ExValiderBVCtrBonCtrGBtnClick(Sender: TObject);
 var CodeOCB,CodeRF : Integer;
+Ini: TIniFile;
+PoleA,CaisseA : Boolean;
+PORT,Msg2 : string;
+Total: Integer;
+
  begin
   if NOT (MainForm.Bonv_ctr_listTable.IsEmpty) then
   begin
@@ -2757,20 +2762,42 @@ var CodeOCB,CodeRF : Integer;
 
        sndPlaySound('C:\Windows\Media\speech on.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
 
-//         try
-//           ComPort1.Port := 'COM8';
-//          ComPort1.Events := [];
-//          ComPort1.FlowControl.ControlDTR := dtrEnable;
-//          ComPort1.FlowControl.ControlRTS := rtsEnable;
-//          ComPort1.Open; // open port
-//          ComPort1.WriteUnicodeString('                                        '#13#10);
-//          ComPort1.WriteUnicodeString('                                        '#13#10);
-//          ComPort1.WriteUnicodeString('MERCI ET A BIENTOT'#13#10); // send test command
-//          ComPort1.WriteUnicodeString('Total: '+StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll])+ ' DA'#13#10);
-//
-//          finally
-//           ComPort1.Close;
-//         end;
+       Ini := TIniFile.Create(ChangeFileExt(Application.ExeName,'.ini')) ;
+       PoleA:= Ini.ReadBool('', 'Afficheur client Active',PoleA);
+
+       if PoleA = True then
+       begin
+         try
+           PORT:= Ini.ReadString('',  'Afficheur client PORT', PORT);
+           Msg2:= Ini.ReadString('',  'Afficheur client Msg2', Msg2);
+
+          ComPort1.Port := PORT;// 'COM7';
+          ComPort1.Events := [];
+          ComPort1.FlowControl.ControlDTR := dtrEnable;
+          ComPort1.FlowControl.ControlRTS := rtsEnable;
+          ComPort1.Open; // open port
+          ComPort1.WriteUnicodeString('                                        '#13#10);
+          ComPort1.WriteUnicodeString('                                        '#13#10);
+          ComPort1.WriteUnicodeString(Msg2+#13#10); // send test command
+
+          Total:= Ini.ReadInteger('', 'Afficheur client Fin msg', Total) ;
+          if Total = 0 then
+          begin
+          ComPort1.WriteUnicodeString('Total: '+StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll])+ ' DA'#13#10);
+          end;
+          if Total = 1 then
+          begin
+          ComPort1.WriteUnicodeString('Rendu: '+StringReplace(BonCtrRenduLbl.Caption, #32, '', [rfReplaceAll])+ ' DA'#13#10);
+          end;
+
+
+          ComPort1.Close;
+          except
+           ShowMessage('Svp, brancher l''Afficheur Client ou désactiver le dans la configuration->utilites');
+         end;
+         end;
+
+        Ini.Free;
 
 //--- this is for adding to the priduit
       begin

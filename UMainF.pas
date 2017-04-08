@@ -3,7 +3,7 @@ unit UMainF;
 interface
 
 uses 
-  Winapi.Windows,
+  Winapi.Windows, Vcl.Printers,
   System.DateUtils,MMSystem,
    Winapi.Messages, System.SysUtils,System.Math, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, sScrollBox, sFrameBar, Vcl.WinXCtrls,
@@ -820,6 +820,8 @@ type
     CompanyTableadr_comp: TWideStringField;
     CompanyTablelogo_comp: TBlobField;
     ChangUserMAinFMnu: TMenuItem;
+    N24: TMenuItem;
+    OuvertureduTiroirCaisse1: TMenuItem;
     procedure ClientMainFBtnClick(Sender: TObject);
     procedure FourMainFBtnClick(Sender: TObject);
     procedure ProduitMainFBtnClick(Sender: TObject);
@@ -931,6 +933,7 @@ type
     procedure A5Click(Sender: TObject);
     procedure ChangUserMAinFMnuClick(Sender: TObject);
     procedure Bonv_ctr_listTablequt_pChange(Sender: TField);
+    procedure OuvertureduTiroirCaisse1Click(Sender: TObject);
   private
    //---- this to value of changege we need it to check if theuser changed something
      CountInsert,CountUpdate,CountDelete   : Int64;
@@ -1487,8 +1490,8 @@ var TotalHT,TotalTVA,TVA,TotalTTC,LeReste,Regle: Currency;
 
     if BonRecGestionF.FournisseurBonRecGCbx.Text<>'' then
     begin
-    BonRecGestionF.BonRecGFourNEWCredit.Caption:=
-    CurrToStrF((LeReste + ((StrToCurr(StringReplace(BonRecGestionF.BonRecGFourOLDCredit.Caption, #32, '', [rfReplaceAll]))))),ffNumber,2) ;
+//    BonRecGestionF.BonRecGFourNEWCredit.Caption:=
+//    CurrToStrF((LeReste + ((StrToCurr(StringReplace(BonRecGestionF.BonRecGFourOLDCredit.Caption, #32, '', [rfReplaceAll]))))),ffNumber,2) ;
     end ;
 
      BonRecGestionF.RemisePerctageBonRecGEdt.Text:='';
@@ -1654,8 +1657,8 @@ var TotalHT,TotalTVA,TVA,TotalTTC,LeReste,Regle,TTCbeforeTimber,TimberFV,TTCafte
 
     if BonFacPGestionF.ClientBonFacVGCbx.Text<>'' then
     begin
-    BonFacPGestionF.BonFacVGClientNEWCredit.Caption:=
-    CurrToStrF((LeReste + ((StrToCurr(StringReplace(BonFacPGestionF.BonFacVGClientOLDCredit.Caption, #32, '', [rfReplaceAll]))))),ffNumber,2) ;
+//    BonFacPGestionF.BonFacVGClientNEWCredit.Caption:=
+//    CurrToStrF((LeReste + ((StrToCurr(StringReplace(BonFacPGestionF.BonFacVGClientOLDCredit.Caption, #32, '', [rfReplaceAll]))))),ffNumber,2) ;
     end ;
 
 //              if BonFacPGestionF.ModePaieBonFacVGCbx.Text<>'' then
@@ -1864,8 +1867,8 @@ var TotalHT,TotalTVA,TVA,TotalTTC,LeReste,Regle,Marge: Currency;
 
     if BonLivGestionF.ClientBonLivGCbx.Text<>'' then
     begin
-    BonLivGestionF.BonLivGClientNEWCredit.Caption:=
-    CurrToStrF((LeReste + ((StrToCurr(StringReplace(BonLivGestionF.BonLivGClientOLDCredit.Caption, #32, '', [rfReplaceAll]))))),ffNumber,2) ;
+//    BonLivGestionF.BonLivGClientNEWCredit.Caption:=
+//    CurrToStrF((LeReste + ((StrToCurr(StringReplace(BonLivGestionF.BonLivGClientOLDCredit.Caption, #32, '', [rfReplaceAll]))))),ffNumber,2) ;
     end ;
 
      BonLivGestionF.RemisePerctageBonLivGEdt.Text:='';
@@ -1957,8 +1960,8 @@ var TotalHT,TotalTVA,TVA,TotalTTC,LeReste,Regle,TTCbeforeTimber,TimberFV,TTCafte
 
     if BonFacVGestionF.ClientBonFacVGCbx.Text<>'' then
     begin
-    BonFacVGestionF.BonFacVGClientNEWCredit.Caption:=
-    CurrToStrF((LeReste + ((StrToCurr(StringReplace(BonFacVGestionF.BonFacVGClientOLDCredit.Caption, #32, '', [rfReplaceAll]))))),ffNumber,2) ;
+//    BonFacVGestionF.BonFacVGClientNEWCredit.Caption:=
+//    CurrToStrF((LeReste + ((StrToCurr(StringReplace(BonFacVGestionF.BonFacVGClientOLDCredit.Caption, #32, '', [rfReplaceAll]))))),ffNumber,2) ;
     end ;
 
               if BonFacVGestionF.ModePaieBonFacVGCbx.Text<>'' then
@@ -2136,8 +2139,8 @@ var TotalHT,TotalTVA,TVA,TotalTTC,LeReste,Regle,TTCbeforeTimber,TimberFA,TTCafte
 
     if BonFacAGestionF.FourBonFacAGCbx.Text<>'' then
     begin
-    BonFacAGestionF.BonFacAGFourNEWCredit.Caption:=
-    CurrToStrF((LeReste + ((StrToCurr(StringReplace(BonFacAGestionF.BonFacAGFourOLDCredit.Caption, #32, '', [rfReplaceAll]))))),ffNumber,2) ;
+//    BonFacAGestionF.BonFacAGFourNEWCredit.Caption:=
+//    CurrToStrF((LeReste + ((StrToCurr(StringReplace(BonFacAGestionF.BonFacAGFourOLDCredit.Caption, #32, '', [rfReplaceAll]))))),ffNumber,2) ;
     end ;
 
               if BonFacAGestionF.ModePaieBonFacAGCbx.Text<>'' then
@@ -3013,6 +3016,75 @@ procedure TMainForm.N17Click(Sender: TObject);
 begin
 FactureV2MainFMnmClick(Sender);
 BonFacVF.AddBVFacBtnClick(Sender);
+end;
+
+procedure TMainForm.OuvertureduTiroirCaisse1Click(Sender: TObject);
+var myPrinter   : TPrinter;
+   Ini: TIniFile;
+   TiroirA,TiroirCas,PasswordA : Boolean;
+   PORT : string;
+begin
+       Ini       := TIniFile.Create(ChangeFileExt(Application.ExeName,'.ini')) ;
+       TiroirA   := Ini.ReadBool('', 'Tiroir caisse Active',TiroirA);
+       TiroirCas := Ini.ReadBool('', 'Tiroir caisse Cas',   TiroirCas);
+       PORT      :=Ini.ReadString(Caption,'Tiroir caisse COM', PORT);
+       PasswordA := Ini.ReadBool('', 'Tiroir caisse PASSWORD',   PasswordA);
+
+  if TiroirA then
+  begin
+   //-- this is to check if he doesnt need a password
+   if PasswordA = False then
+   begin
+
+    if TiroirCas = False then   // means = 0  Case COM
+    begin
+      try
+        FOptions.ComPort1.Port :=PORT;// 'COM7';
+        FOptions.ComPort1.Events := [];
+        FOptions.ComPort1.Open; // open port
+//        FOptions.ComPort1.WriteUnicodeString('                                        '#13#10);
+//        FOptions.ComPort1.WriteUnicodeString('C''est un TEST :D'+#13#10); // send test command
+        FOptions.ComPort1.Close;
+      except
+        ShowMessage('Svp, brancher le Tiroir Caisse');
+      end;
+    end;
+
+    if TiroirCas = True then  // means = 1   Case PRINTER
+    begin
+      myPrinter := printer;
+      with myPrinter do
+      begin
+
+        Printer.PrinterIndex:= Ini.ReadInteger(Caption,'Tiroir caisse PRINT', Printer.PrinterIndex) ;
+        // Start printing
+        BeginDoc;
+
+        // Finish printing
+        EndDoc;
+      end;
+    end;
+
+      end else
+       begin
+        If NOT Assigned(UsersGestionF) then
+        begin
+                LoginUserF := TLoginUserF.Create(Application);
+                LoginUserF.Tag:= 2;
+                LoginUserF.Show
+        end else
+            begin
+              LoginUserF.Tag:= 2;
+              LoginUserF.Show;
+            end;
+
+        end;
+
+
+  end;
+
+
+  Ini.Free;
 end;
 
 procedure TMainForm.BLMainFBtnClick(Sender: TObject);

@@ -2,7 +2,7 @@ unit ULoginUser;
 
 interface
 
-uses   MMSystem,
+uses   MMSystem,Vcl.Printers,System.IniFiles,
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, AdvToolBtn, Vcl.ExtCtrls,
   acPNG, cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters,
@@ -65,7 +65,7 @@ implementation
 {$R *.dfm}
 
 
-uses UMainF, UDataModule,System.Contnrs, ULogin,Winapi.ShellAPI;
+uses UMainF, UDataModule,System.Contnrs, ULogin,Winapi.ShellAPI, UOptions;
 
 
   var
@@ -123,6 +123,14 @@ end;
 
 procedure TLoginUserF.CancelBtnClick(Sender: TObject);
 begin
+ //--- This Tag = 2 is For opeing Tiroir caisse
+ if Tag = 2 then
+ begin
+  NormalFormsLUR;
+  Close;
+
+ end else
+ begin
 
    MainForm.GstockdcConnection.Connected:= False;
    DataModuleF.GstockdcConnection02.Connected:= False;
@@ -131,7 +139,8 @@ begin
    
 //   MainForm.KillTask('postgres.exe');                                    // Eable this is only for releasing
 //   MainForm.KillTask('cmd.exe');                                         // Eable this is only for releasing
-Application.Terminate;
+ Application.Terminate;
+ end;
 end;
 
 procedure TLoginUserF.FormDestroy(Sender: TObject);
@@ -169,7 +178,12 @@ UserCbx.ItemIndex:=0;
 end;
 
 procedure TLoginUserF.LoginBtnClick(Sender: TObject);
+var myPrinter   : TPrinter;
+   Ini: TIniFile;
+   TiroirA,TiroirCas,PasswordA : Boolean;
+   PORT : string;
 begin
+
 
 
       DataModuleF.UsersTable.DisableControls;
@@ -213,16 +227,70 @@ begin
                
          if LoginF.Label1.Caption = 'R' then
          begin
+         // This tag = 0 is for the first Loging
+            if Tag = 0 then
+            begin
+                Close;
+                MainForm.Show;
+            end;
+         //--------------------------------
 
+          // This tag = 1 is for changing user
           if Tag = 1 then
           begin
             Close;
             MainForm.FormShow(Sender);
-          end else
-              begin
-                  Close;
-                  MainForm.Show;
-              end;
+          end;
+         //--------------------------------
+
+           // This tag = 2 is opening the Tiroir Caisse
+          if Tag = 2 then
+          begin
+               Ini       := TIniFile.Create(ChangeFileExt(Application.ExeName,'.ini')) ;
+               TiroirA   := Ini.ReadBool('', 'Tiroir caisse Active',TiroirA);
+               TiroirCas := Ini.ReadBool('', 'Tiroir caisse Cas',   TiroirCas);
+               PORT      :=Ini.ReadString(Caption,'Tiroir caisse COM', PORT);
+
+               Close;
+
+           if TiroirCas = False then   // means = 0   Case COM
+           begin
+            try
+              FOptions.ComPort1.Port :=PORT;// 'COM7';
+              FOptions.ComPort1.Events := [];
+              FOptions.ComPort1.Open; // open port
+      //        FOptions.ComPort1.WriteUnicodeString('                                        '#13#10);
+      //        FOptions.ComPort1.WriteUnicodeString('C''est un TEST :D'+#13#10); // send test command
+              FOptions.ComPort1.Close;
+            except
+              ShowMessage('Svp, brancher le Tiroir Caisse');
+            end;
+           end;
+
+           if TiroirCas = True then  // means = 1   Case PRINTER
+           begin
+             myPrinter := printer;
+            with myPrinter do
+            begin
+
+              Printer.PrinterIndex:= Ini.ReadInteger(Caption,'Tiroir caisse PRINT', Printer.PrinterIndex) ;
+              // Start printing
+              BeginDoc;
+                    // Set up a large blue font
+              Canvas.Font.Size   := 08;
+              Canvas.Font.Color  := clBlack;
+
+              // Write out the page size
+              Canvas.TextOut(20, 40, 'Le ' + DateToStr(Now)+' â '+TimeToStr(Now)  );
+              Canvas.TextOut(20, 80, 'L''utilisateur "'+UserCbx.Text+'" a ouvert le Tiroir Caisse');
+              // Finish printing
+              EndDoc;
+            end;
+            end;
+            Ini.Free;
+          end;
+         //--------------------------------
+
 
          end else
              begin
@@ -270,9 +338,6 @@ begin
      DataModuleF.UsersTable.EnableControls;
 
 
-
-     
-     
 end;
 Function Wow64DisableWow64FsRedirection(Var Wow64FsEnableRedirection: LongBool): LongBool; StdCall;
   External 'Kernel32.dll' Name 'Wow64DisableWow64FsRedirection';

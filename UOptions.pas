@@ -6,7 +6,24 @@ uses
   Winapi.Windows,Data.DB,Vcl.Imaging.jpeg, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, sPanel,
   acSlider, AdvToolBtn, acImage, Vcl.ExtDlgs, System.ImageList, Vcl.ImgList,
-  acAlphaImageList, Vcl.ComCtrls, sPageControl;
+  acAlphaImageList, Vcl.ComCtrls, sPageControl, cxGraphics, cxControls,
+  cxLookAndFeels, cxLookAndFeelPainters, cxContainer, cxEdit, dxSkinsCore,
+  dxSkinBlack, dxSkinBlue, dxSkinBlueprint, dxSkinCaramel, dxSkinCoffee,
+  dxSkinDarkRoom, dxSkinDarkSide, dxSkinDevExpressDarkStyle,
+  dxSkinDevExpressStyle, dxSkinFoggy, dxSkinGlassOceans, dxSkinHighContrast,
+  dxSkiniMaginary, dxSkinLilian, dxSkinLiquidSky, dxSkinLondonLiquidSky,
+  dxSkinMcSkin, dxSkinMetropolis, dxSkinMetropolisDark, dxSkinMoneyTwins,
+  dxSkinOffice2007Black, dxSkinOffice2007Blue, dxSkinOffice2007Green,
+  dxSkinOffice2007Pink, dxSkinOffice2007Silver, dxSkinOffice2010Black,
+  dxSkinOffice2010Blue, dxSkinOffice2010Silver, dxSkinOffice2013DarkGray,
+  dxSkinOffice2013LightGray, dxSkinOffice2013White, dxSkinOffice2016Colorful,
+  dxSkinOffice2016Dark, dxSkinPumpkin, dxSkinSeven, dxSkinSevenClassic,
+  dxSkinSharp, dxSkinSharpPlus, dxSkinSilver, dxSkinSpringTime, dxSkinStardust,
+  dxSkinSummer2008, dxSkinTheAsphaltWorld, dxSkinsDefaultPainters,
+  dxSkinValentine, dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
+  dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
+  dxSkinXmas2008Blue, cxRadioGroup, cxGroupBox, sTrackBar, cxTrackBar,
+  Vcl.Buttons, sSpeedButton, CPort;
 
 type
   TFOptions = class(TForm)
@@ -43,7 +60,7 @@ type
     sAlphaImageList1: TsAlphaImageList;
     Shape1: TShape;
     OKFPrintingBtn: TAdvToolButton;
-    ProduitGPgControl: TsPageControl;
+    OptionsPgControl: TsPageControl;
     GeneralOptionGTB: TsTabSheet;
     sTabSheet1: TsTabSheet;
     Panel1: TPanel;
@@ -53,16 +70,35 @@ type
     Panel7: TPanel;
     Label12: TLabel;
     PoleDisplayActiveSdr: TsSlider;
-    Label13: TLabel;
+    PoleDisplayCOMListLbl: TLabel;
     PoleDisplayCOMListCbx: TComboBox;
     Label14: TLabel;
-    sSlider1: TsSlider;
-    Label15: TLabel;
-    ComboBox1: TComboBox;
-    Label16: TLabel;
-    Edit1: TEdit;
+    TiroirCaisseActiveSdr: TsSlider;
+    PoleDisplayMsgLbl: TLabel;
+    PoleDisplayMsgEdt: TEdit;
+    CaseCOMLbl: TLabel;
+    TiroirCaisseCOMListCbx: TComboBox;
+    TiroirCaisseCasePRINTRbtn: TcxRadioButton;
+    CasePrinterLbl: TLabel;
+    TiroirCaissePrinterListCbx: TComboBox;
+    TiroirCaisseCaseCOMRbtn: TcxRadioButton;
+    Panel6: TPanel;
+    Panel8: TPanel;
+    Panel9: TPanel;
+    Panel10: TPanel;
+    TiroirCaisseCasePasswordLbl: TLabel;
+    TiroirCaisseCasePasswordSdr: TsSlider;
+    PoleDisplayMsg2Lbl: TLabel;
+    PoleDisplayMsg2Edt: TEdit;
+    PoleDisplayTotalLbl: TLabel;
+    PoleDisplayTotalEdt: TComboBox;
+    RandomCBProduitGBtn: TAdvToolButton;
+    TestPoleBtn: TsSpeedButton;
+    TestPoleLbl: TLabel;
+    TestTeroirBtn: TsSpeedButton;
+    TestTeroirLbl: TLabel;
+    ComPort1: TComPort;
     procedure FormShow(Sender: TObject);
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure OKFPrintingBtnClick(Sender: TObject);
     procedure ImageCompanyOptionImgMouseEnter(Sender: TObject);
     procedure ImageCompanyOptionImgMouseLeave(Sender: TObject);
@@ -70,7 +106,17 @@ type
     procedure ImageDeleteProduitGBtnClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
-    procedure PoleDisplayCOMListCbxEnter(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure TiroirCaisseCaseCOMRbtnClick(Sender: TObject);
+    procedure TiroirCaisseCasePRINTRbtnClick(Sender: TObject);
+    procedure PoleDisplayActiveSdrChanging(Sender: TObject;
+      var CanChange: Boolean);
+    procedure TiroirCaisseActiveSdrChanging(Sender: TObject;
+      var CanChange: Boolean);
+    procedure TiroirCaisseCOMListCbxDropDown(Sender: TObject);
+    procedure PoleDisplayCOMListCbxDropDown(Sender: TObject);
+    procedure TestPoleBtnClick(Sender: TObject);
+    procedure TestTeroirBtnClick(Sender: TObject);
   private
 
     { Private declarations }
@@ -83,29 +129,98 @@ var
 
 implementation
 
-uses
-       Printers,IniFiles, UClientGestion, UMainF;
-
 {$R *.dfm}
+
+uses Printers,IniFiles, UClientGestion, UMainF;
+
+procedure TFOptions.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+NormalForms;
+end;
+
+procedure TFOptions.FormCreate(Sender: TObject);
+begin
+
+   PrintersListFOptionCaisseCbx.Items.Assign(Printer.Printers);
+   PrintersListFOptionCodeBCbx.Items.Assign(Printer.Printers);
+   TiroirCaissePrinterListCbx.Items.Assign(Printer.Printers);
+end;
+
 
 procedure TFOptions.FormShow(Sender: TObject);
 var
   S: TMemoryStream;
   Jpg: TJPEGImage;
   Ini: TIniFile;
+  CanChange : Boolean;
 begin
  GrayForms;
+ OptionsPgControl.TabIndex:= 0;
 
 //    inherited;
 
 
 
     Ini := TIniFile.Create(ChangeFileExt(Application.ExeName,'.ini')) ;
-    APrintOptionGSlider.SliderOn:=      Ini.ReadBool('', 'Auto Print',APrintOptionGSlider.SliderOn);
+    APrintOptionGSlider.SliderOn:=           Ini.ReadBool('', 'Auto Print',APrintOptionGSlider.SliderOn);
     PrintersListFOptionCaisseCbx.ItemIndex:= Ini.ReadInteger('', 'Printer Caisse',PrintersListFOptionCaisseCbx.ItemIndex);
     PrintersListFOptionCodeBCbx.ItemIndex := Ini.ReadInteger('', 'Printer Barcode',PrintersListFOptionCodeBCbx.ItemIndex);
-    FormatFOptionCodeBCbx.ItemIndex := Ini.ReadInteger('', 'Format Barcode',FormatFOptionCodeBCbx.ItemIndex);
-    PrixVenteListFOptionCodeBCbx.ItemIndex := Ini.ReadInteger('', 'Prix de Vente',PrixVenteListFOptionCodeBCbx.ItemIndex);
+    FormatFOptionCodeBCbx.ItemIndex :=       Ini.ReadInteger('', 'Format Barcode',FormatFOptionCodeBCbx.ItemIndex);
+    PrixVenteListFOptionCodeBCbx.ItemIndex:= Ini.ReadInteger('', 'Prix de Vente',PrixVenteListFOptionCodeBCbx.ItemIndex);
+
+    PoleDisplayActiveSdr.SliderOn:=          Ini.ReadBool('', 'Afficheur client Active',PoleDisplayActiveSdr.SliderOn);
+     if PoleDisplayActiveSdr.SliderOn then
+     begin
+      PoleDisplayActiveSdr.SliderOn:=       Ini.ReadBool('',    'Afficheur client Active', PoleDisplayActiveSdr.SliderOn);
+      PoleDisplayCOMListCbx.Text:=          Ini.ReadString('',  'Afficheur client PORT', PoleDisplayCOMListCbx.Text);
+      PoleDisplayMsgEdt.Text:=              Ini.ReadString('',  'Afficheur client Msg', PoleDisplayMsgEdt.Text);
+      PoleDisplayMsg2Edt.Text:=             Ini.ReadString('',  'Afficheur client Msg2', PoleDisplayMsg2Edt.Text);
+      PoleDisplayTotalEdt.ItemIndex:=       Ini.ReadInteger('', 'Afficheur client Fin msg', PoleDisplayTotalEdt.ItemIndex);
+     end else
+         begin
+          PoleDisplayActiveSdr.SliderOn:=       Ini.ReadBool('',    'Afficheur client Active', PoleDisplayActiveSdr.SliderOn);
+          PoleDisplayCOMListCbx.Text:=          '';
+          PoleDisplayMsgEdt.Text:=              'SOYEZ LES BIENVENUS';
+          PoleDisplayMsg2Edt.Text:=             'MERCI ET A BIENTOT';
+          PoleDisplayTotalEdt.ItemIndex:=       0;
+         end;
+
+    TiroirCaisseActiveSdr.SliderOn:=          Ini.ReadBool('', 'Tiroir caisse Active',TiroirCaisseActiveSdr.SliderOn);
+     if TiroirCaisseActiveSdr.SliderOn then
+     begin
+      TiroirCaisseActiveSdr.SliderOn:=      Ini.ReadBool('', 'Tiroir caisse Active',TiroirCaisseActiveSdr.SliderOn);
+        if Ini.ReadInteger('' ,'Tiroir caisse Cas', TiroirCaisseCaseCOMRbtn.Tag) = 0 then
+        begin
+           TiroirCaisseCaseCOMRbtn.Checked:= True;
+           TiroirCaisseCOMListCbx.Text:=          Ini.ReadString('' ,'Tiroir caisse COM', TiroirCaisseCOMListCbx.Text);
+           TiroirCaissePrinterListCbx.ItemIndex:=   -1;
+        end else
+            begin
+             if Ini.ReadInteger('' ,'Tiroir caisse Cas', TiroirCaisseCaseCOMRbtn.Tag) = 1 then
+             begin
+               TiroirCaisseCasePRINTRbtn.Checked:= True;
+               TiroirCaissePrinterListCbx.ItemIndex:=   Ini.ReadInteger(Caption,'Tiroir caisse PRINT', TiroirCaissePrinterListCbx.ItemIndex);
+               TiroirCaisseCOMListCbx.Text:=         '';
+             end;
+            end;
+      TiroirCaisseCasePasswordSdr.SliderOn:= Ini.ReadBool(Caption,'Tiroir caisse PASSWORD', TiroirCaisseCasePasswordSdr.SliderOn);
+     end else
+         begin
+
+            TiroirCaisseCaseCOMRbtn.Enabled:=False;
+            CaseCOMLbl.Enabled:=False;
+            TiroirCaisseCOMListCbx.Enabled:=False;
+
+            TiroirCaisseCasePRINTRbtn.Enabled:=False;
+            CasePrinterLbl.Enabled:=False;
+            TiroirCaissePrinterListCbx.Enabled:=False;
+
+            TiroirCaisseCasePasswordLbl.Enabled:=False;
+            TiroirCaisseCasePasswordSdr.Enabled:=False;
+
+//          TiroirCaisseActiveSdrChanging(Sender,CanChange);
+         end;
+
     Ini.Free;
 
       ImageEditProduitGBtn.Visible:=false;
@@ -172,10 +287,7 @@ begin
     NameCompanyOptionEdt.SetFocus;
 end;
 
-procedure TFOptions.FormClose(Sender: TObject; var Action: TCloseAction);
-begin
-NormalForms;
-end;
+
 
 procedure TFOptions.OKFPrintingBtnClick(Sender: TObject);
 var  S : TStream;
@@ -263,7 +375,41 @@ begin
     Ini.WriteInteger(Caption, 'Printer Barcode', PrintersListFOptionCodeBCbx.ItemIndex);
     Ini.WriteInteger(Caption,'Format Barcode', FormatFOptionCodeBCbx.ItemIndex);
     Ini.WriteInteger(Caption,'Prix de Vente', PrixVenteListFOptionCodeBCbx.ItemIndex);
-//    PrintersListFOptionCodeBCbx.Text := Ini.ReadInteger(Caption, 'Prix de Vente',PrintersListFOptionCodeBCbx.ItemIndex);
+
+    if PoleDisplayActiveSdr.SliderOn then
+    begin
+    Ini.WriteBool(Caption,'Afficheur client Active', PoleDisplayActiveSdr.SliderOn);
+    Ini.WriteString(Caption,'Afficheur client PORT', PoleDisplayCOMListCbx.Text);
+    Ini.WriteString(Caption,'Afficheur client Msg', PoleDisplayMsgEdt.Text);
+    Ini.WriteString(Caption,'Afficheur client Msg2', PoleDisplayMsg2Edt.Text);
+    Ini.WriteInteger(Caption,'Afficheur client Fin msg', PoleDisplayTotalEdt.ItemIndex);
+    end else
+        begin
+           Ini.WriteBool(Caption,'Afficheur client Active', PoleDisplayActiveSdr.SliderOn);
+        end;
+
+    if TiroirCaisseActiveSdr.SliderOn then
+    begin
+    Ini.WriteBool(Caption,'Tiroir caisse Active', TiroirCaisseActiveSdr.SliderOn);
+     if TiroirCaisseCaseCOMRbtn.Checked then
+     begin
+     Ini.WriteInteger(Caption,'Tiroir caisse Cas', TiroirCaisseCaseCOMRbtn.Tag);
+     Ini.WriteString(Caption,'Tiroir caisse COM', TiroirCaisseCOMListCbx.Text);
+     end else
+         begin
+          if TiroirCaisseCasePRINTRbtn.Checked then
+          begin
+           Ini.WriteInteger(Caption,'Tiroir caisse Cas', TiroirCaisseCasePRINTRbtn.Tag);
+           Ini.WriteInteger(Caption,'Tiroir caisse PRINT', TiroirCaissePrinterListCbx.ItemIndex);
+          end;
+         end;
+    Ini.WriteBool(Caption,'Tiroir caisse PASSWORD', TiroirCaisseCasePasswordSdr.SliderOn);
+    end else
+        begin
+             Ini.WriteBool(Caption,'Tiroir caisse Active', TiroirCaisseActiveSdr.SliderOn);
+        end;
+
+
     Ini.Free;
 //  inherited;
   end;
@@ -346,7 +492,8 @@ begin
 
    end;
 
- end else exit
+ end else begin exit
+ end;
 
 end;
 
@@ -365,13 +512,8 @@ MainForm.CompanyTable.FieldValues['logo_comp']:= null;
 MainForm.CompanyTable.Post;
 end;
 
-procedure TFOptions.FormCreate(Sender: TObject);
-begin
 
-   PrintersListFOptionCaisseCbx.Items.Assign(Printer.Printers);
-   PrintersListFOptionCodeBCbx.Items.Assign(Printer.Printers);
 
-end;
 
 procedure TFOptions.FormKeyPress(Sender: TObject; var Key: Char);
 begin
@@ -420,7 +562,9 @@ begin
   else
     Result := GetLastError;
 end;
-procedure TFOptions.PoleDisplayCOMListCbxEnter(Sender: TObject);
+
+
+procedure TFOptions.PoleDisplayCOMListCbxDropDown(Sender: TObject);
 var
   XX, Err: Integer;
   begin
@@ -431,12 +575,213 @@ var
       if (Err = 0) or (Err = ERROR_ACCESS_DENIED) then
       begin
         {the Port exists, if  Err = ERROR_ACCESS_DENIED then the port is already open}
-//        ShowMessage('Port COM0'+ IntToStr(xx)) ;
-        PoleDisplayCOMListCbx.Items.Add('COM0'+IntToStr(xx));
+//        ShowMessage('Port COM'+ IntToStr(xx)) ;
+        PoleDisplayCOMListCbx.Items.Add('COM'+IntToStr(xx));
         //  Break
         end;
 
         end;
+
+end;
+
+procedure TFOptions.TiroirCaisseCOMListCbxDropDown(Sender: TObject);
+var
+  XX, Err: Integer;
+  begin
+    TiroirCaisseCOMListCbx.Items.Clear;
+    for XX := 1 to 20 do
+    begin
+      Err := CheckCom(XX);
+      if (Err = 0) or (Err = ERROR_ACCESS_DENIED) then
+      begin
+        {the Port exists, if  Err = ERROR_ACCESS_DENIED then the port is already open}
+//        ShowMessage('Port COM'+ IntToStr(xx)) ;
+        TiroirCaisseCOMListCbx.Items.Add('COM'+IntToStr(xx));
+        //  Break
+        end;
+
+        end;
+
+end;
+
+procedure TFOptions.TiroirCaisseCaseCOMRbtnClick(Sender: TObject);
+begin
+
+  CaseCOMLbl.Enabled:= True;
+  TiroirCaisseCOMListCbx.Enabled:= True;
+
+  CasePrinterLbl.Enabled:= False;
+  TiroirCaissePrinterListCbx.Enabled:= False;
+
+
+end;
+
+procedure TFOptions.TiroirCaisseCasePRINTRbtnClick(Sender: TObject);
+begin
+
+  CasePrinterLbl.Enabled:= True;
+  TiroirCaissePrinterListCbx.Enabled:= True;
+
+  CaseCOMLbl.Enabled:= False;
+  TiroirCaisseCOMListCbx.Enabled:= False;
+
+end;
+
+
+
+procedure TFOptions.PoleDisplayActiveSdrChanging(Sender: TObject;
+  var CanChange: Boolean);
+begin
+
+ if PoleDisplayActiveSdr.SliderOn = False then
+  begin
+  PoleDisplayCOMListLbl.Enabled:=True;
+  PoleDisplayCOMListCbx.Enabled:=True;
+
+  PoleDisplayMsgLbl.Enabled:=True;
+  PoleDisplayMsgEdt.Enabled:=True;
+  PoleDisplayMsg2Lbl.Enabled:=True;
+  PoleDisplayMsg2Edt.Enabled:=True;
+
+  PoleDisplayTotalLbl.Enabled:=True;
+  PoleDisplayTotalEdt.Enabled:=True;
+
+  TestPoleBtn.Enabled:=True;
+  TestPoleLbl.Enabled:=True;
+
+  end else
+      begin
+        PoleDisplayCOMListLbl.Enabled:=False;
+        PoleDisplayCOMListCbx.Enabled:=False;
+
+        PoleDisplayMsgLbl.Enabled:=False;
+        PoleDisplayMsgEdt.Enabled:=False;
+        PoleDisplayMsg2Lbl.Enabled:=False;
+        PoleDisplayMsg2Edt.Enabled:=False;
+
+        PoleDisplayTotalLbl.Enabled:=False;
+        PoleDisplayTotalEdt.Enabled:=False;
+
+        TestPoleBtn.Enabled:=False;
+        TestPoleLbl.Enabled:=False;
+      end;
+
+
+
+end;
+
+
+
+
+
+procedure TFOptions.TiroirCaisseActiveSdrChanging(Sender: TObject;
+  var CanChange: Boolean);
+begin
+    if TiroirCaisseActiveSdr.SliderOn = False then
+  begin
+
+    TiroirCaisseCaseCOMRbtn.Enabled:=True;
+    CaseCOMLbl.Enabled:=True;
+    TiroirCaisseCOMListCbx.Enabled:=True;
+
+    TiroirCaisseCasePRINTRbtn.Enabled:=True;
+    CasePrinterLbl.Enabled:=True;
+    TiroirCaissePrinterListCbx.Enabled:=True;
+
+    TiroirCaisseCasePasswordLbl.Enabled:=True;
+    TiroirCaisseCasePasswordSdr.Enabled:=True;
+
+    TestTeroirBtn.Enabled:=True;
+    TestTeroirLbl.Enabled:=True;
+
+
+  end else
+      begin
+
+          TiroirCaisseCaseCOMRbtn.Enabled:=False;
+          CaseCOMLbl.Enabled:=False;
+          TiroirCaisseCOMListCbx.Enabled:=False;
+
+          TiroirCaisseCasePRINTRbtn.Enabled:=False;
+          CasePrinterLbl.Enabled:=False;
+          TiroirCaissePrinterListCbx.Enabled:=False;
+
+          TiroirCaisseCasePasswordLbl.Enabled:=False;
+          TiroirCaisseCasePasswordSdr.Enabled:=False;
+          TiroirCaisseCasePasswordSdr.SliderOn:=False;
+
+          TestTeroirBtn.Enabled:=False;
+          TestTeroirLbl.Enabled:=False;
+                 end;
+
+
+end;
+
+
+procedure TFOptions.TestPoleBtnClick(Sender: TObject);
+begin
+          try
+            ComPort1.Port := PoleDisplayCOMListCbx.Text;// 'COM7';
+            ComPort1.Events := [];
+            ComPort1.FlowControl.ControlDTR := dtrEnable;
+            ComPort1.FlowControl.ControlRTS := rtsEnable;
+            ComPort1.Open; // open port
+            ComPort1.WriteUnicodeString('                                        '#13#10);
+//            ComPort1.WriteUnicodeString('                                        '#13#10);
+            ComPort1.WriteUnicodeString('C''est un TEST :D'+#13#10); // send test command
+            ComPort1.Close;
+          except
+            ShowMessage('Svp, brancher l''Afficheur Client');
+          end;
+
+
+end;
+
+
+procedure TFOptions.TestTeroirBtnClick(Sender: TObject);
+var myPrinter   : TPrinter;
+
+begin
+
+
+  if TiroirCaisseCasePRINTRbtn.Checked then
+  begin
+    myPrinter := printer;
+    with myPrinter do
+    begin
+
+      Printer.PrinterIndex:= TiroirCaissePrinterListCbx.ItemIndex;
+      // Start printing
+      BeginDoc;
+
+      // Set up a large blue font
+      Canvas.Font.Size   := 12;
+      Canvas.Font.Color  := clBlack;
+
+      // Write out the page size
+      Canvas.TextOut(20, 40, 'C''est un TEST :D');
+
+      // Finish printing
+      EndDoc;
+    end;
+  end;
+
+  if TiroirCaisseCaseCOMRbtn.Checked then
+  begin
+          try
+            ComPort1.Port := TiroirCaisseCOMListCbx.Text;// 'COM7';
+            ComPort1.Events := [];
+            ComPort1.FlowControl.ControlDTR := dtrEnable;
+            ComPort1.FlowControl.ControlRTS := rtsEnable;
+            ComPort1.Open; // open port
+            ComPort1.WriteUnicodeString('                                        '#13#10);
+            ComPort1.WriteUnicodeString('C''est un TEST :D'+#13#10); // send test command
+            ComPort1.Close;
+          except
+            ShowMessage('Svp, brancher le Tiroir Caisse');
+          end;
+  end;
+
 
 end;
 
