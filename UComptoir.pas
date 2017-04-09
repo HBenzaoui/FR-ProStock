@@ -642,13 +642,18 @@ procedure TBonCtrGestionF.ProduitBonCtrGCbxKeyPress(Sender: TObject;
       lookupResultRefP : Variant;
       NomP: String;
 
+       Ini: TIniFile;
+       PoleA,CaisseA : Boolean;
+       PORT,Msg2,PRIXTTC: string;
+       Total: Integer;
 begin
 
    if key = #13 then
  begin
+ key := #0;
  if ProduitBonCtrGCbx.Text <>'' then
  begin
-  key := #0;
+
 
 
   if ClientBonCtrGCbx.Text<> '' then
@@ -810,6 +815,40 @@ begin
 
             sndPlaySound('C:\Windows\Media\speech on.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
 
+             Ini := TIniFile.Create(ChangeFileExt(Application.ExeName,'.ini')) ;
+             PoleA:= Ini.ReadBool('', 'Afficheur client Active',PoleA);
+
+             if PoleA = True then
+             begin
+
+               PRIXTTC := CurrToStrF(((((MainForm.FDQuery2.FieldValues['prixvd_p'] * MainForm.FDQuery2.FieldValues['tva_p'])/100)
+                                    +(MainForm.FDQuery2.FieldValues['prixvd_p']))),ffNumber,2);
+
+               try
+                 PORT:= Ini.ReadString('',  'Afficheur client PORT', PORT);
+//                 Msg2:= Ini.ReadString('',  'Afficheur client Msg2', Msg2);
+
+                ComPort1.Port := PORT;// 'COM7';
+                ComPort1.Events := [];
+                ComPort1.FlowControl.ControlDTR := dtrEnable;
+                ComPort1.FlowControl.ControlRTS := rtsEnable;
+                ComPort1.Open; // open port
+                ComPort1.WriteUnicodeString('                                        '#13#10);
+                ComPort1.WriteUnicodeString('                                        '#13#10);
+                ComPort1.WriteUnicodeString(copy(MainForm.FDQuery2.FieldByName('nom_p').AsString,0,16)+'...' +#13#10); // send test command
+
+                ComPort1.WriteUnicodeString('Prix: '+PRIXTTC+ ' DA'#13#10);
+
+
+                ComPort1.Close;
+                except
+                 ShowMessage('Svp, brancher l''Afficheur Client ou désactiver le dans la configuration->utilites');
+               end;
+               end;
+
+              Ini.Free;
+
+
             end else
                 begin
                   sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
@@ -883,6 +922,7 @@ begin
      end;
      MainForm.Bonv_ctr_listTable.Last;
  end;
+
 end;
 
 procedure TBonCtrGestionF.FormClose(Sender: TObject; var Action: TCloseAction);
@@ -1236,7 +1276,28 @@ begin
     ValiderBVCtrBonCtrGBtn.ImageIndex:=11;
     ExValiderBVCtrBonCtrGBtn.Enabled:= True;
     ExValiderBVCtrBonCtrGBtn.ImageIndex:=13;
+    AddBVCtrBonCtrGBtn.Enabled:= True;
+    AddBVCtrBonCtrGBtn.ImageIndex:=7;
     end;
+
+   //--- this is to NOT let  NULL data-----------------
+   if (MainForm.Bonv_ctr_listTablequt_p.IsNull)   then
+   begin
+    MainForm.Bonv_ctr_listTablequt_p.Value := 0;
+   end;
+   if (MainForm.Bonv_ctr_listTableprixvd_p.IsNull)   then
+   begin
+    MainForm.Bonv_ctr_listTableprixvd_p.Value := 0;
+   end;
+   if (MainForm.Bonv_ctr_listTablecond_p.IsNull)   then
+   begin
+    MainForm.Bonv_ctr_listTablecond_p.Value := 0;
+   end;
+   if (MainForm.Bonv_ctr_listTabletva_p.IsNull)   then
+   begin
+    MainForm.Bonv_ctr_listTabletva_p.Value := 0;
+   end;
+   //-----------------------------------------------
 
 
     //RemiseTypeBonCtrGCbx.Enabled:= True;
@@ -1304,6 +1365,9 @@ begin
     ValiderBVCtrBonCtrGBtn.ImageIndex:=12;
     ExValiderBVCtrBonCtrGBtn.Enabled:= False;
     ExValiderBVCtrBonCtrGBtn.ImageIndex:=14;
+
+    AddBVCtrBonCtrGBtn.Enabled:= False;
+    AddBVCtrBonCtrGBtn.ImageIndex:=8;
 
     RemisePerctageBonCtrGEdt.Enabled:=False;
     RemiseBonCtrGEdt.Enabled:=False;

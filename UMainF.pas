@@ -2572,7 +2572,8 @@ end;
 
 procedure TMainForm.Bonv_ctr_listTablequt_pChange(Sender: TField);
 begin
- if (Bonv_ctr_listTablequt_p.Value > 999999) OR (Bonv_ctr_listTablequt_p.Value < -999999) then
+
+ if (Bonv_ctr_listTablequt_p.Value > 999999) OR (Bonv_ctr_listTablequt_p.Value < -999999)  then
  begin
   sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
   Bonv_ctr_listTablequt_p.Value := 1;

@@ -40946,6 +40946,7 @@ object MainForm: TMainForm
       DisplayWidth = 7
       FieldName = 'qut_p'
       Origin = 'qut_p'
+      Required = True
       OnChange = Bonv_ctr_listTablequt_pChange
       MaxValue = 9999999.000000000000000000
       MinValue = -9999999.000000000000000000

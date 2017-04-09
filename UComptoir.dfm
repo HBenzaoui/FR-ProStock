@@ -420,6 +420,7 @@ object BonCtrGestionF: TBonCtrGestionF
         WordWrap = False
       end
       item
+        AutoDropDown = True
         DynProps = <>
         EditButtons = <>
         FieldName = 'nomp'
@@ -907,6 +908,7 @@ object BonCtrGestionF: TBonCtrGestionF
       Height = 30
       Hint = 'Minimiser'
       Anchors = [akTop, akRight]
+      Enabled = False
       ParentShowHint = False
       ShowHint = True
       OnClick = MinimizeBonCtrGBtnClick

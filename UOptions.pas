@@ -403,10 +403,15 @@ begin
            Ini.WriteInteger(Caption,'Tiroir caisse PRINT', TiroirCaissePrinterListCbx.ItemIndex);
           end;
          end;
-    Ini.WriteBool(Caption,'Tiroir caisse PASSWORD', TiroirCaisseCasePasswordSdr.SliderOn);
+     Ini.WriteBool(Caption,'Tiroir caisse PASSWORD', TiroirCaisseCasePasswordSdr.SliderOn);
+
+     MainForm.OuvertureduTiroirCaisse1.Visible:= True;
+
     end else
         begin
              Ini.WriteBool(Caption,'Tiroir caisse Active', TiroirCaisseActiveSdr.SliderOn);
+
+             MainForm.OuvertureduTiroirCaisse1.Visible:= False;
         end;
 
 

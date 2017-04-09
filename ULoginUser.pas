@@ -183,7 +183,17 @@ var myPrinter   : TPrinter;
    TiroirA,TiroirCas,PasswordA : Boolean;
    PORT : string;
 begin
-
+      //---- This is just to check if Tiroir caisse is Active so whe can shoe the open button in MainMenu
+      Ini       := TIniFile.Create(ChangeFileExt(Application.ExeName,'.ini')) ;
+      TiroirA   := Ini.ReadBool('', 'Tiroir caisse Active',TiroirA);
+      Ini.Free;
+      if TiroirA then
+      begin
+        MainForm.OuvertureduTiroirCaisse1.Visible:= True
+      end else
+          begin
+           MainForm.OuvertureduTiroirCaisse1.Visible:= False
+          end;
 
 
       DataModuleF.UsersTable.DisableControls;
