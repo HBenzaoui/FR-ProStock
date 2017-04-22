@@ -991,9 +991,10 @@ object BonCtrGestionF: TBonCtrGestionF
     end
     object BonCTRTotalMargeLbl: TLabel
       Left = 519
-      Top = 3
-      Width = 157
+      Top = 23
+      Width = 20
       Height = 20
+      AutoSize = False
       Caption = 'BonCTRTotalMargeLbl'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 4666873
@@ -2489,14 +2490,14 @@ object BonCtrGestionF: TBonCtrGestionF
     Enabled = False
     Interval = 500
     OnTimer = Timer1Timer
-    Left = 408
-    Top = 480
+    Left = 398
+    Top = 350
   end
   object BonCtrPListDataS: TDataSource
     DataSet = MainForm.Bonv_ctr_listTable
     OnDataChange = BonCtrPListDataSDataChange
-    Left = 646
-    Top = 526
+    Left = 702
+    Top = 364
   end
   object BonCtrTop10produit: TDataSource
     DataSet = DataModuleF.Top5produit
@@ -2523,8 +2524,8 @@ object BonCtrGestionF: TBonCtrGestionF
       'TVA=TVA')
     DataSource = BonCtrPListDataS
     BCDToCurrency = False
-    Left = 80
-    Top = 416
+    Left = 30
+    Top = 336
   end
   object frxComptoirDB: TfrxDBDataset
     UserName = 'frxComptoirDB'
@@ -2551,8 +2552,8 @@ object BonCtrGestionF: TBonCtrGestionF
       'NeTHT=NeTHT')
     DataSet = MainForm.Bonv_ctrTable
     BCDToCurrency = False
-    Left = 80
-    Top = 472
+    Left = 30
+    Top = 392
   end
   object frxPDFExport1: TfrxPDFExport
     UseFileCache = True
@@ -2575,8 +2576,8 @@ object BonCtrGestionF: TBonCtrGestionF
     CenterWindow = False
     PrintScaling = False
     PdfA = False
-    Left = 104
-    Top = 544
+    Left = 122
+    Top = 322
   end
   object frxXLSExport1: TfrxXLSExport
     UseFileCache = True
@@ -2590,8 +2591,8 @@ object BonCtrGestionF: TBonCtrGestionF
     PageBreaks = True
     EmptyLines = True
     SuppressPageHeadersFooters = False
-    Left = 200
-    Top = 512
+    Left = 208
+    Top = 324
   end
   object ComptoirTicketfrxRprt: TfrxReport
     Version = '5.4.6'
@@ -2696,8 +2697,8 @@ object BonCtrGestionF: TBonCtrGestionF
       '//Page1.LeftMargin:=<MARGE_IMP>'
       ''
       'end.')
-    Left = 72
-    Top = 344
+    Left = 34
+    Top = 282
     Datasets = <
       item
         DataSet = frxComptoirDB
@@ -3481,13 +3482,13 @@ object BonCtrGestionF: TBonCtrGestionF
     Enabled = False
     Interval = 500
     OnTimer = Timer2Timer
-    Left = 474
-    Top = 482
+    Left = 464
+    Top = 352
   end
   object ApplicationEvents1: TApplicationEvents
     OnShortCut = ApplicationEvents1ShortCut
-    Left = 602
-    Top = 434
+    Left = 662
+    Top = 282
   end
   object ComPort1: TComPort
     BaudRate = br9600
@@ -3504,7 +3505,14 @@ object BonCtrGestionF: TBonCtrGestionF
     FlowControl.XonXoffIn = False
     StoredProps = [spBasic]
     TriggersOnRxChar = True
-    Left = 548
-    Top = 348
+    Left = 602
+    Top = 268
+  end
+  object PoleDisplayerTimerimer: TTimer
+    Enabled = False
+    Interval = 10000
+    OnTimer = PoleDisplayerTimerimerTimer
+    Left = 436
+    Top = 288
   end
 end

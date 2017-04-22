@@ -144,6 +144,7 @@ type
     Label29: TLabel;
     Label5: TLabel;
     ComPort1: TComPort;
+    PoleDisplayerTimerimer: TTimer;
     procedure FormShow(Sender: TObject);
     procedure RemiseBonCtrGEdtDblClick(Sender: TObject);
     procedure ShowKeyBoardBonCtrGBtnClick(Sender: TObject);
@@ -202,6 +203,7 @@ type
     procedure Timer2Timer(Sender: TObject);
     procedure ApplicationEvents1ShortCut(var Msg: TWMKey; var Handled: Boolean);
     procedure FormDestroy(Sender: TObject);
+    procedure PoleDisplayerTimerimerTimer(Sender: TObject);
   private
     procedure GettingData;
     { Private declarations }
@@ -304,14 +306,40 @@ begin
 
 procedure TBonCtrGestionF.FormShow(Sender: TObject);
 var
-   CodeBL: Integer;
+  CodeBL: Integer;
   Ini: TMemIniFile;
+    PoleA,CaisseA : Boolean;
+  PORT,Msg : string;
+
 begin
 
     Ini := TMemIniFile.Create(ChangeFileExt(Application.ExeName,'.ini')) ;
     APrintBVCtrBonCtrGSlider.SliderOn:=      Ini.ReadBool('', 'Auto Print',APrintBVCtrBonCtrGSlider.SliderOn);
+           PoleA:= Ini.ReadBool('', 'Afficheur client Active',PoleA);
+
+       if PoleA = True then
+       begin
+         try
+           PORT:= Ini.ReadString('',  'Afficheur client PORT', PORT);
+           Msg:= Ini.ReadString('',  'Afficheur client Msg', Msg);
+
+          BonCtrGestionF.ComPort1.Port := PORT;// 'COM7';
+          BonCtrGestionF.ComPort1.Events := [];
+//          BonCtrGestionF.ComPort1.FlowControl.ControlDTR := dtrEnable;
+//          BonCtrGestionF.ComPort1.FlowControl.ControlRTS := rtsEnable;
+          BonCtrGestionF.ComPort1.Open; // open port
+//          BonCtrGestionF.ComPort1.WriteUnicodeString('                                        '#13#10);
+          BonCtrGestionF.ComPort1.WriteUnicodeString('                                        '#13#10);
+          BonCtrGestionF. ComPort1.WriteUnicodeString(Msg+#13#10); // send test command
+          BonCtrGestionF.ComPort1.Close;
+          except
+           ShowMessage('Svp, brancher l''Afficheur Client ou désactiver le dans la configuration->utilites');
+         end;
+         end;
     ini.UpdateFile;
     Ini.Free;
+
+    PoleDisplayerTimerimer.Enabled:= True;
 
 // APrintBVCtrBonCtrGSlider.SliderOn :=  FOptions.APrintOptionGSlider.SliderOn;
 
@@ -840,6 +868,10 @@ begin
                 ComPort1.WriteUnicodeString('Prix: '+PRIXTTC+ ' DA'#13#10);
 
 
+                PoleDisplayerTimerimer.Interval:= 1500;
+                PoleDisplayerTimerimer.Enabled:= True;
+
+
                 ComPort1.Close;
                 except
                  ShowMessage('Svp, brancher l''Afficheur Client ou désactiver le dans la configuration->utilites');
@@ -929,8 +961,38 @@ procedure TBonCtrGestionF.FormClose(Sender: TObject; var Action: TCloseAction);
 //var
 //HTaskbar:HWND;
 //OldVal:LongInt;
+Var
+  Ini: TMemIniFile;
+  PoleA,CaisseA : Boolean;
+  PORT : string;
 begin
  MainForm.SaveGridLayout(ProduitsListDBGridEh,GetCurrentDir +'\bin\gc_ctr');
+
+        Ini := TMemIniFile.Create(ChangeFileExt(Application.ExeName,'.ini')) ;
+       PoleA:= Ini.ReadBool('', 'Afficheur client Active',PoleA);
+
+       if PoleA = True then
+       begin
+         try
+           PORT:= Ini.ReadString('',  'Afficheur client PORT', PORT);
+//           Msg:= Ini.ReadString('',  'Afficheur client Msg', Msg);
+
+          BonCtrGestionF.ComPort1.Port := PORT;// 'COM7';
+          BonCtrGestionF.ComPort1.Events := [];
+//          BonCtrGestionF.ComPort1.FlowControl.ControlDTR := dtrEnable;
+//          BonCtrGestionF.ComPort1.FlowControl.ControlRTS := rtsEnable;
+          BonCtrGestionF.ComPort1.Open; // open port
+          BonCtrGestionF.ComPort1.WriteUnicodeString('                                        '#13#10);
+          BonCtrGestionF.ComPort1.WriteUnicodeString('                                        '#13#10);
+//          BonCtrGestionF. ComPort1.WriteUnicodeString(Msg+#13#10); // send test command
+          BonCtrGestionF.ComPort1.Close;
+          except
+           ShowMessage('Svp, brancher l''Afficheur Client ou désactiver le dans la configuration->utilites');
+         end;
+         end;
+
+        ini.UpdateFile;
+        Ini.Free;
 
 //Find handle of TASKBAR
 //HTaskBar:=FindWindow('Shell_TrayWnd',nil);
@@ -2391,6 +2453,113 @@ begin
 
 end;
 
+procedure TBonCtrGestionF.PoleDisplayerTimerimerTimer(Sender: TObject);
+Var
+  Ini: TMemIniFile;
+  PoleA,CaisseA : Boolean;
+  PORT,Msg : string;
+begin
+  if  BonCtrPListDataS.DataSet.IsEmpty then
+  begin
+       Ini := TMemIniFile.Create(ChangeFileExt(Application.ExeName,'.ini')) ;
+       PoleA:= Ini.ReadBool('', 'Afficheur client Active',PoleA);
+
+       if PoleA = True then
+       begin
+         try
+           PORT:= Ini.ReadString('',  'Afficheur client PORT', PORT);
+//           Msg:= Ini.ReadString('',  'Afficheur client Msg', Msg);
+
+          BonCtrGestionF.ComPort1.Port := PORT;// 'COM7';
+          BonCtrGestionF.ComPort1.Events := [];
+//          BonCtrGestionF.ComPort1.FlowControl.ControlDTR := dtrEnable;
+//          BonCtrGestionF.ComPort1.FlowControl.ControlRTS := rtsEnable;
+          BonCtrGestionF.ComPort1.Open; // open port
+          BonCtrGestionF.ComPort1.WriteUnicodeString('                                        '#13#10);
+          BonCtrGestionF.ComPort1.WriteUnicodeString('                                        '#13#10);
+//          BonCtrGestionF. ComPort1.WriteUnicodeString(Msg+#13#10); // send test command
+          BonCtrGestionF.ComPort1.Close;
+          except
+           ShowMessage('Svp, brancher l''Afficheur Client ou désactiver le dans la configuration->utilites');
+         end;
+         end;
+
+        ini.UpdateFile;
+        Ini.Free;
+
+        PoleDisplayerTimerimer.Enabled:= False;
+  end else
+   begin
+   if PoleDisplayerTimerimer.Interval=1500 then
+    begin
+       Ini := TMemIniFile.Create(ChangeFileExt(Application.ExeName,'.ini')) ;
+       PoleA:= Ini.ReadBool('', 'Afficheur client Active',PoleA);
+
+       if PoleA = True then
+       begin
+         try
+           PORT:= Ini.ReadString('',  'Afficheur client PORT', PORT);
+//           Msg:= Ini.ReadString('',  'Afficheur client Msg', Msg);
+
+          BonCtrGestionF.ComPort1.Port := PORT;// 'COM7';
+          BonCtrGestionF.ComPort1.Events := [];
+//          BonCtrGestionF.ComPort1.FlowControl.ControlDTR := dtrEnable;
+//          BonCtrGestionF.ComPort1.FlowControl.ControlRTS := rtsEnable;
+          BonCtrGestionF.ComPort1.Open; // open port
+          BonCtrGestionF.ComPort1.WriteUnicodeString('                                        '#13#10);
+          BonCtrGestionF.ComPort1.WriteUnicodeString('                                        '#13#10);
+          BonCtrGestionF. ComPort1.WriteUnicodeString('Subtotal: '+#13#10); // send test command
+          ComPort1.WriteUnicodeString(' '+StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll])+ ' DA'#13#10);
+          BonCtrGestionF.ComPort1.Close;
+          except
+           ShowMessage('Svp, brancher l''Afficheur Client ou désactiver le dans la configuration->utilites');
+         end;
+         end;
+
+        ini.UpdateFile;
+        Ini.Free;
+
+        PoleDisplayerTimerimer.Enabled:= False;
+
+    end;
+    if PoleDisplayerTimerimer.Interval=10000 then
+    begin
+       Ini := TMemIniFile.Create(ChangeFileExt(Application.ExeName,'.ini')) ;
+       PoleA:= Ini.ReadBool('', 'Afficheur client Active',PoleA);
+
+       if PoleA = True then
+       begin
+         try
+           PORT:= Ini.ReadString('',  'Afficheur client PORT', PORT);
+           Msg:= Ini.ReadString('',  'Afficheur client Msg', Msg);
+
+          BonCtrGestionF.ComPort1.Port := PORT;// 'COM7';
+          BonCtrGestionF.ComPort1.Events := [];
+//          BonCtrGestionF.ComPort1.FlowControl.ControlDTR := dtrEnable;
+//          BonCtrGestionF.ComPort1.FlowControl.ControlRTS := rtsEnable;
+          BonCtrGestionF.ComPort1.Open; // open port
+          BonCtrGestionF.ComPort1.WriteUnicodeString('                                        '#13#10);
+          BonCtrGestionF.ComPort1.WriteUnicodeString('                                        '#13#10);
+          BonCtrGestionF. ComPort1.WriteUnicodeString(Msg+#13#10); // send test command
+          BonCtrGestionF.ComPort1.Close;
+          except
+           ShowMessage('Svp, brancher l''Afficheur Client ou désactiver le dans la configuration->utilites');
+         end;
+         end;
+
+        ini.UpdateFile;
+        Ini.Free;
+
+        PoleDisplayerTimerimer.Enabled:= False;
+    end;
+
+
+
+   end;
+
+
+end;
+
 procedure TBonCtrGestionF.PrintTicketBVCtrBonCtrGBtnClick(Sender: TObject);
 begin
 if ValiderBVCtrBonCtrGImg.ImageIndex <> 1 then
@@ -2435,7 +2604,40 @@ end;
 procedure TBonCtrGestionF.AddBVCtrBonCtrGBtnClick(Sender: TObject);
 var
   codeCT,CodeCB : integer;
+  Ini: TMemIniFile;
+    PoleA,CaisseA : Boolean;
+  PORT,Msg : string;
+
 begin
+
+    Ini := TMemIniFile.Create(ChangeFileExt(Application.ExeName,'.ini')) ;
+    APrintBVCtrBonCtrGSlider.SliderOn:=      Ini.ReadBool('', 'Auto Print',APrintBVCtrBonCtrGSlider.SliderOn);
+           PoleA:= Ini.ReadBool('', 'Afficheur client Active',PoleA);
+
+       if PoleA = True then
+       begin
+         try
+           PORT:= Ini.ReadString('',  'Afficheur client PORT', PORT);
+           Msg:= Ini.ReadString('',  'Afficheur client Msg', Msg);
+
+          BonCtrGestionF.ComPort1.Port := PORT;// 'COM7';
+          BonCtrGestionF.ComPort1.Events := [];
+//          BonCtrGestionF.ComPort1.FlowControl.ControlDTR := dtrEnable;
+//          BonCtrGestionF.ComPort1.FlowControl.ControlRTS := rtsEnable;
+          BonCtrGestionF.ComPort1.Open; // open port
+//          BonCtrGestionF.ComPort1.WriteUnicodeString('                                        '#13#10);
+          BonCtrGestionF.ComPort1.WriteUnicodeString('                                        '#13#10);
+          BonCtrGestionF. ComPort1.WriteUnicodeString(Msg+#13#10); // send test command
+          BonCtrGestionF.ComPort1.Close;
+          except
+           ShowMessage('Svp, brancher l''Afficheur Client ou désactiver le dans la configuration->utilites');
+         end;
+         end;
+    ini.UpdateFile;
+    Ini.Free;
+
+    PoleDisplayerTimerimer.Enabled:= True;
+
  Timer1.Enabled:=False;
 
       begin
@@ -2848,11 +3050,14 @@ Total: Integer;
           if Total = 0 then
           begin
           ComPort1.WriteUnicodeString('Total: '+StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll])+ ' DA'#13#10);
-          end;
+          end else
           if Total = 1 then
           begin
           ComPort1.WriteUnicodeString('Rendu: '+StringReplace(BonCtrRenduLbl.Caption, #32, '', [rfReplaceAll])+ ' DA'#13#10);
-          end;
+          end else
+              begin
+                ComPort1.WriteUnicodeString('Total: '+StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll])+ ' DA'#13#10);
+              end;
 
 
           ComPort1.Close;
@@ -2862,6 +3067,9 @@ Total: Integer;
          end;
 
         Ini.Free;
+
+        PoleDisplayerTimerimer.Interval:=10000;
+        PoleDisplayerTimerimer.Enabled:= True;
 
 //--- this is for adding to the priduit
       begin

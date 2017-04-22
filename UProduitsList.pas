@@ -1162,7 +1162,7 @@ begin
   if ResherchPARDCodProduitsRdioBtn.Checked then
     if (ResearchProduitsEdt.text <> '') then
     begin
-      MainForm.ProduitTable.DisableControls;
+//      MainForm.ProduitTable.DisableControls;
       MainForm.SQLQuery.Active:=False;
       MainForm.SQLQuery.SQL.Clear;
       MainForm.SQLQuery.SQL.Text:='SELECT nom_cb,code_p FROM codebarres WHERE nom_cb LIKE ' +''+ QuotedStr( ResearchProduitsEdt.Text )+'' ;
@@ -1175,7 +1175,7 @@ begin
       MainForm.ProduitTable.Filter := '[codebar_p] = ' + quotedstr( ResearchProduitsEdt.Text )  + ' OR [code_p] = '+ IntToStr(CodeCB) ;
       MainForm.ProduitTable.Filtered := True;
 
-       MainForm.ProduitTable.EnableControls;
+//       MainForm.ProduitTable.EnableControls;
 
 
 

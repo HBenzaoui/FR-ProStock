@@ -3,7 +3,7 @@ unit USplashVersement;
 interface
 
 uses
-  Winapi.Windows,System.DateUtils,
+  Winapi.Windows,System.DateUtils,System.IniFiles,
    Winapi.Messages,MMSystem, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, AdvToolBtn,DBGridEh,
   sPanel, acSlider, AdvSmoothTouchKeyBoard;
@@ -617,6 +617,11 @@ end;
 
 procedure TFSplashVersement.OKVersementSBtnClick(Sender: TObject);
 var CodeOCB,CodeRF: Integer;
+
+Ini: TIniFile;
+PoleA,CaisseA : Boolean;
+PORT,Msg2 : string;
+Total: Integer;
 begin
 //--------- this tag = 1 is for validating a bon recption-------------------
 
@@ -1655,6 +1660,51 @@ begin
              -
               (StrToFloat (StringReplace(MontantTTCVersementSLbl.Caption, #32, '', [rfReplaceAll])))
              ),ffNumber,14,2);
+
+      //--- this is to show data on Pole displayer
+        Ini := TIniFile.Create(ChangeFileExt(Application.ExeName,'.ini')) ;
+       PoleA:= Ini.ReadBool('', 'Afficheur client Active',PoleA);
+
+       if PoleA = True then
+       begin
+         try
+           PORT:= Ini.ReadString('',  'Afficheur client PORT', PORT);
+           Msg2:= Ini.ReadString('',  'Afficheur client Msg2', Msg2);
+
+          BonCtrGestionF.ComPort1.Port := PORT;// 'COM7';
+          BonCtrGestionF.ComPort1.Events := [];
+//          BonCtrGestionF.ComPort1.FlowControl.ControlDTR := dtrEnable;
+//          BonCtrGestionF.ComPort1.FlowControl.ControlRTS := rtsEnable;
+          BonCtrGestionF.ComPort1.Open; // open port
+          BonCtrGestionF.ComPort1.WriteUnicodeString('                                        '#13#10);
+          BonCtrGestionF.ComPort1.WriteUnicodeString('                                        '#13#10);
+         BonCtrGestionF. ComPort1.WriteUnicodeString(Msg2+#13#10); // send test command
+
+          Total:= Ini.ReadInteger('', 'Afficheur client Fin msg', Total) ;
+          if Total = 0 then
+          begin
+          BonCtrGestionF.ComPort1.WriteUnicodeString('Total: '+StringReplace(BonCtrGestionF.BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll])+ ' DA'#13#10);
+          end else
+          if Total = 1 then
+          begin
+          BonCtrGestionF.ComPort1.WriteUnicodeString('Rendu: '+StringReplace(BonCtrGestionF.BonCtrRenduLbl.Caption, #32, '', [rfReplaceAll])+ ' DA'#13#10);
+          end else
+              begin
+                BonCtrGestionF.ComPort1.WriteUnicodeString('Total: '+StringReplace(BonCtrGestionF.BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll])+ ' DA'#13#10);
+              end;
+
+
+          BonCtrGestionF.ComPort1.Close;
+          except
+           ShowMessage('Svp, brancher l''Afficheur Client ou désactiver le dans la configuration->utilites');
+         end;
+         end;
+
+        Ini.Free;
+
+        BonCtrGestionF.PoleDisplayerTimerimer.Interval:=10000;
+        BonCtrGestionF.PoleDisplayerTimerimer.Enabled:= True;
+
 
 //     BonCtrGestionF.BonCtrGClientNEWCredit.Caption := ResteVersementSLbl.Caption;
 
