@@ -862,6 +862,7 @@ object ChargesFListF: TChargesFListF
     Font.Name = 'Segoe UI'
     Font.Style = []
     FooterParams.FillStyle = cfstSolidEh
+    FooterParams.RowHeight = 22
     FrozenCols = 1
     GridLineParams.DataHorzLines = True
     GridLineParams.DataVertLines = True
@@ -879,7 +880,7 @@ object ChargesFListF: TChargesFListF
     ParentFont = False
     ParentShowHint = False
     RowDetailPanel.Color = clBtnFace
-    RowHeight = 22
+    RowHeight = 18
     SearchPanel.FilterOnTyping = True
     ShowHint = True
     SumList.Active = True
@@ -921,7 +922,7 @@ object ChargesFListF: TChargesFListF
         Title.EndEllipsis = True
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = 4207405
-        Title.Font.Height = 18
+        Title.Font.Height = 16
         Title.Font.Name = 'Helvetica LT Std'
         Title.Font.Style = []
         Title.Font.Quality = fqProof
@@ -948,7 +949,7 @@ object ChargesFListF: TChargesFListF
         Title.EndEllipsis = True
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = 4207405
-        Title.Font.Height = 18
+        Title.Font.Height = 16
         Title.Font.Name = 'Helvetica LT Std'
         Title.Font.Style = []
         Title.Font.Quality = fqProof
@@ -975,7 +976,7 @@ object ChargesFListF: TChargesFListF
         Title.EndEllipsis = True
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = 4207405
-        Title.Font.Height = 18
+        Title.Font.Height = 16
         Title.Font.Name = 'Helvetica LT Std'
         Title.Font.Style = []
         Title.Font.Quality = fqProof
@@ -999,7 +1000,7 @@ object ChargesFListF: TChargesFListF
         Title.EndEllipsis = True
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = 4207405
-        Title.Font.Height = 18
+        Title.Font.Height = 16
         Title.Font.Name = 'Helvetica LT Std'
         Title.Font.Style = []
         Title.Font.Quality = fqProof
@@ -1023,7 +1024,7 @@ object ChargesFListF: TChargesFListF
         Title.Caption = 'Type de Charge'
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = 4207405
-        Title.Font.Height = 18
+        Title.Font.Height = 16
         Title.Font.Name = 'Helvetica LT Std'
         Title.Font.Style = []
         Title.Font.Quality = fqProof
@@ -1058,7 +1059,7 @@ object ChargesFListF: TChargesFListF
         Title.EndEllipsis = True
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = 4207405
-        Title.Font.Height = 18
+        Title.Font.Height = 16
         Title.Font.Name = 'Helvetica LT Std'
         Title.Font.Style = []
         Title.Font.Quality = fqProof
@@ -1092,7 +1093,7 @@ object ChargesFListF: TChargesFListF
         Title.Caption = 'MP'
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = 4207405
-        Title.Font.Height = 18
+        Title.Font.Height = 16
         Title.Font.Name = 'Helvetica LT Std'
         Title.Font.Style = []
         Title.Font.Quality = fqProof
@@ -1127,7 +1128,7 @@ object ChargesFListF: TChargesFListF
         Title.EndEllipsis = True
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = 4207405
-        Title.Font.Height = 18
+        Title.Font.Height = 16
         Title.Font.Name = 'Helvetica LT Std'
         Title.Font.Style = []
         Title.Font.Quality = fqProof
@@ -1163,7 +1164,7 @@ object ChargesFListF: TChargesFListF
         Title.EndEllipsis = True
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = 4207405
-        Title.Font.Height = 18
+        Title.Font.Height = 16
         Title.Font.Name = 'Helvetica LT Std'
         Title.Font.Style = []
         Title.Font.Quality = fqProof
@@ -1198,7 +1199,7 @@ object ChargesFListF: TChargesFListF
         Title.Caption = 'Timber Fiscal'
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = 4207405
-        Title.Font.Height = 18
+        Title.Font.Height = 16
         Title.Font.Name = 'Helvetica LT Std'
         Title.Font.Style = []
         Title.Font.Quality = fqProof
@@ -1232,7 +1233,7 @@ object ChargesFListF: TChargesFListF
         Title.EndEllipsis = True
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = 4207405
-        Title.Font.Height = 18
+        Title.Font.Height = 16
         Title.Font.Name = 'Helvetica LT Std'
         Title.Font.Style = []
         Title.Font.Quality = fqProof
@@ -1257,7 +1258,7 @@ object ChargesFListF: TChargesFListF
         Title.EndEllipsis = True
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = 4207405
-        Title.Font.Height = 18
+        Title.Font.Height = 16
         Title.Font.Name = 'Helvetica LT Std'
         Title.Font.Style = []
         Title.Font.Quality = fqProof
@@ -1281,7 +1282,7 @@ object ChargesFListF: TChargesFListF
         Title.Caption = 'Observations'
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = 4207405
-        Title.Font.Height = 18
+        Title.Font.Height = 16
         Title.Font.Name = 'Helvetica LT Std'
         Title.Font.Style = []
         Title.Font.Quality = fqProof
@@ -1303,7 +1304,7 @@ object ChargesFListF: TChargesFListF
         Title.Alignment = taCenter
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = 4207405
-        Title.Font.Height = 18
+        Title.Font.Height = 16
         Title.Font.Name = 'Helvetica LT Std'
         Title.Font.Style = []
         Title.Font.Quality = fqProof
@@ -2851,5 +2852,12 @@ object ChargesFListF: TChargesFListF
     OnShortCut = ApplicationEvents1ShortCut
     Left = 770
     Top = 256
+  end
+  object ProduitListSaveDg: TSaveDialog
+    Filter = 
+      'Excel Workbook (*.xlsx)|*.xlsx|Excel  97- 2003 Workbook (*.xls)|' +
+      '*.xls|CSV (Comma delimited) (*.csv)|*.csv'
+    Left = 372
+    Top = 612
   end
 end

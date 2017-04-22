@@ -3,7 +3,8 @@
 interface
 
 uses
-  Winapi.Windows,MMsystem, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Winapi.Windows,MMsystem,DBGridEhImpExp,ShellAPI,
+   Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, DBGridEhGrouping, ToolCtrlsEh,
   EhLibFireDAC, DBGridEhToolCtrls, DynVarsEh, Vcl.Menus, frxClass, frxDBSet,
   frxExportXLS, frxExportPDF, Data.DB, Vcl.ComCtrls, sStatusBar, Vcl.StdCtrls,
@@ -74,6 +75,7 @@ type
     ClearFilterBVLivPMenu: TMenuItem;
     Crdit1: TMenuItem;
     sImage2: TsImage;
+    ProduitListSaveDg: TSaveDialog;
     procedure ResearchFournisseurEdtKeyPress(Sender: TObject; var Key: Char);
     procedure ResearchFournisseurEdtChange(Sender: TObject);
     procedure FisrtFournisseursbtnClick(Sender: TObject);
@@ -606,15 +608,27 @@ end;
 
 procedure TFournisseurListF.e1Click(Sender: TObject);
 begin
-MainForm.FournisseurTable.DisableControls;
 
-    GettingData;
+ ProduitListSaveDg.FileName:= 'Etat liste des Fournisseurs';
+if ProduitListSaveDg.Execute then
+ begin
 
-FourListfrxRprt.PrepareReport;
-frxXLSExport1.FileName := 'Etat liste des Fournisseurs';
-FourListfrxRprt.Export(frxXLSExport1);
+  ExportDBGridEhToXlsx(FournisseursListDBGridEh,ProduitListSaveDg.FileName+'.xlsx',[]);
+//  GetDir(0,Path);
+  ShellExecute(Handle, nil, PChar(ProduitListSaveDg.FileName + '.xlsx'), nil, nil, SW_SHOWNORMAL);
 
-MainForm.FournisseurTable.EnableControls;
+  end;
+
+
+//MainForm.FournisseurTable.DisableControls;
+//
+//    GettingData;
+//
+//FourListfrxRprt.PrepareReport;
+//frxXLSExport1.FileName := 'Etat liste des Fournisseurs';
+//FourListfrxRprt.Export(frxXLSExport1);
+//
+//MainForm.FournisseurTable.EnableControls;
 end;
 
 procedure TFournisseurListF.EditFournisseursBtnClick(Sender: TObject);

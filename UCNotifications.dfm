@@ -390,6 +390,7 @@ object CNotificationsF: TCNotificationsF
         Font.Height = 18
         Font.Name = 'Segoe UI'
         Font.Style = []
+        FooterParams.RowHeight = 22
         GridLineParams.DataHorzLines = True
         GridLineParams.DataVertLines = True
         HorzScrollBar.ExtraPanel.NavigatorButtons = [nbFirstEh, nbPriorEh, nbNextEh, nbLastEh, nbRefreshEh]
@@ -408,7 +409,7 @@ object CNotificationsF: TCNotificationsF
         ParentFont = False
         ParentShowHint = False
         RowDetailPanel.Color = clBtnFace
-        RowHeight = 22
+        RowHeight = 18
         SearchPanel.FilterOnTyping = True
         ShowHint = True
         TabOrder = 1
@@ -442,6 +443,12 @@ object CNotificationsF: TCNotificationsF
             MinWidth = 120
             Title.Alignment = taCenter
             Title.Caption = 'R'#233'ference'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Width = 120
             WordWrap = False
           end
@@ -460,6 +467,12 @@ object CNotificationsF: TCNotificationsF
             MinWidth = 150
             Title.Alignment = taCenter
             Title.Caption = 'D'#233'signation'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Width = 500
             WordWrap = False
           end
@@ -478,6 +491,12 @@ object CNotificationsF: TCNotificationsF
             Layout = tlCenter
             Title.Alignment = taCenter
             Title.Caption = 'TVA %'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             Width = 70
             WordWrap = False
@@ -495,6 +514,12 @@ object CNotificationsF: TCNotificationsF
             Layout = tlCenter
             Title.Alignment = taCenter
             Title.Caption = 'Famille'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             Width = 150
             WordWrap = False
@@ -513,6 +538,12 @@ object CNotificationsF: TCNotificationsF
             Layout = tlCenter
             Title.Alignment = taCenter
             Title.Caption = 'Famille'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Width = 150
             WordWrap = False
           end
@@ -529,6 +560,12 @@ object CNotificationsF: TCNotificationsF
             Layout = tlCenter
             Title.Alignment = taCenter
             Title.Caption = 'Souse Famille'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             Width = 150
             WordWrap = False
@@ -547,6 +584,12 @@ object CNotificationsF: TCNotificationsF
             Layout = tlCenter
             Title.Alignment = taCenter
             Title.Caption = 'Sous Famille'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Width = 150
             WordWrap = False
           end
@@ -562,6 +605,12 @@ object CNotificationsF: TCNotificationsF
             Footers = <>
             Layout = tlCenter
             Title.Alignment = taCenter
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             WordWrap = False
           end
@@ -577,6 +626,12 @@ object CNotificationsF: TCNotificationsF
             Footers = <>
             Layout = tlCenter
             Title.Alignment = taCenter
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             WordWrap = False
           end
@@ -594,6 +649,12 @@ object CNotificationsF: TCNotificationsF
             Layout = tlCenter
             Title.Alignment = taCenter
             Title.Caption = 'PrixAHT'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             Width = 130
           end
@@ -611,6 +672,12 @@ object CNotificationsF: TCNotificationsF
             Footers = <>
             Layout = tlCenter
             Title.Alignment = taCenter
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             Width = 130
             WordWrap = False
@@ -631,6 +698,12 @@ object CNotificationsF: TCNotificationsF
             MinWidth = 120
             Title.Alignment = taCenter
             Title.Caption = 'PrixVHT D'#233'tail'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             Width = 130
             WordWrap = False
@@ -652,6 +725,12 @@ object CNotificationsF: TCNotificationsF
             Title.Alignment = taCenter
             Title.Caption = 'PrixVTTC D'#233'tail'
             Title.EndEllipsis = True
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Title.ToolTips = True
             Visible = False
             Width = 130
@@ -673,6 +752,12 @@ object CNotificationsF: TCNotificationsF
             MinWidth = 120
             Title.Alignment = taCenter
             Title.Caption = 'PrixVHT Rev'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             Width = 130
             WordWrap = False
@@ -693,6 +778,12 @@ object CNotificationsF: TCNotificationsF
             MinWidth = 120
             Title.Alignment = taCenter
             Title.Caption = 'PrixVTTC Rev'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             Width = 130
             WordWrap = False
@@ -713,6 +804,12 @@ object CNotificationsF: TCNotificationsF
             MinWidth = 120
             Title.Alignment = taCenter
             Title.Caption = 'PrixVHT Gros'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             Width = 130
             WordWrap = False
@@ -733,6 +830,12 @@ object CNotificationsF: TCNotificationsF
             MinWidth = 120
             Title.Alignment = taCenter
             Title.Caption = 'PrixVTTC Gros'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             Width = 130
             WordWrap = False
@@ -750,6 +853,12 @@ object CNotificationsF: TCNotificationsF
             Footers = <>
             Layout = tlCenter
             Title.Alignment = taCenter
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             Width = 130
             WordWrap = False
@@ -767,6 +876,12 @@ object CNotificationsF: TCNotificationsF
             Footers = <>
             Layout = tlCenter
             Title.Alignment = taCenter
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             Width = 130
             WordWrap = False
@@ -784,6 +899,12 @@ object CNotificationsF: TCNotificationsF
             Footers = <>
             Layout = tlCenter
             Title.Alignment = taCenter
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             Width = 130
             WordWrap = False
@@ -801,6 +922,12 @@ object CNotificationsF: TCNotificationsF
             Footers = <>
             Layout = tlCenter
             Title.Alignment = taCenter
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             Width = 130
             WordWrap = False
@@ -816,6 +943,12 @@ object CNotificationsF: TCNotificationsF
             Font.Name = 'Helvetica LT Std'
             Font.Style = []
             Footers = <>
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             WordWrap = False
           end
@@ -836,6 +969,12 @@ object CNotificationsF: TCNotificationsF
             MinWidth = 100
             Title.Alignment = taCenter
             Title.Caption = 'Q.Dispo'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Width = 150
             WordWrap = False
           end
@@ -853,6 +992,12 @@ object CNotificationsF: TCNotificationsF
             Layout = tlCenter
             Title.Alignment = taCenter
             Title.Caption = 'Unit'#233
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             WordWrap = False
           end
           item
@@ -869,6 +1014,12 @@ object CNotificationsF: TCNotificationsF
             Layout = tlCenter
             Title.Alignment = taCenter
             Title.Caption = 'Fournisseur'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Width = 200
             WordWrap = False
           end
@@ -884,6 +1035,12 @@ object CNotificationsF: TCNotificationsF
             Footers = <>
             Layout = tlCenter
             Title.Alignment = taCenter
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             WordWrap = False
           end
@@ -899,6 +1056,12 @@ object CNotificationsF: TCNotificationsF
             Footers = <>
             Layout = tlCenter
             Title.Alignment = taCenter
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             Width = 100
             WordWrap = False
@@ -915,6 +1078,12 @@ object CNotificationsF: TCNotificationsF
             Footers = <>
             Layout = tlCenter
             Title.Alignment = taCenter
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             WordWrap = False
           end
@@ -930,6 +1099,12 @@ object CNotificationsF: TCNotificationsF
             Footers = <>
             Layout = tlCenter
             Title.Alignment = taCenter
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             WordWrap = False
           end
@@ -947,6 +1122,12 @@ object CNotificationsF: TCNotificationsF
             Layout = tlCenter
             Title.Alignment = taCenter
             Title.Caption = 'Localisation'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Width = 150
             WordWrap = False
           end>
@@ -998,6 +1179,7 @@ object CNotificationsF: TCNotificationsF
         Font.Height = 18
         Font.Name = 'Segoe UI'
         Font.Style = []
+        FooterParams.RowHeight = 22
         GridLineParams.DataHorzLines = True
         GridLineParams.DataVertLines = True
         HorzScrollBar.ExtraPanel.NavigatorButtons = [nbFirstEh, nbPriorEh, nbNextEh, nbLastEh, nbRefreshEh]
@@ -1016,7 +1198,7 @@ object CNotificationsF: TCNotificationsF
         ParentFont = False
         ParentShowHint = False
         RowDetailPanel.Color = clBtnFace
-        RowHeight = 22
+        RowHeight = 18
         SearchPanel.FilterOnTyping = True
         ShowHint = True
         TabOrder = 1
@@ -1050,6 +1232,12 @@ object CNotificationsF: TCNotificationsF
             MinWidth = 120
             Title.Alignment = taCenter
             Title.Caption = 'R'#233'ference'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Width = 120
             WordWrap = False
           end
@@ -1068,6 +1256,12 @@ object CNotificationsF: TCNotificationsF
             MinWidth = 150
             Title.Alignment = taCenter
             Title.Caption = 'D'#233'signation'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Width = 500
             WordWrap = False
           end
@@ -1086,6 +1280,12 @@ object CNotificationsF: TCNotificationsF
             Layout = tlCenter
             Title.Alignment = taCenter
             Title.Caption = 'TVA %'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             Width = 70
             WordWrap = False
@@ -1103,6 +1303,12 @@ object CNotificationsF: TCNotificationsF
             Layout = tlCenter
             Title.Alignment = taCenter
             Title.Caption = 'Famille'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             Width = 150
             WordWrap = False
@@ -1121,6 +1327,12 @@ object CNotificationsF: TCNotificationsF
             Layout = tlCenter
             Title.Alignment = taCenter
             Title.Caption = 'Famille'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Width = 150
             WordWrap = False
           end
@@ -1137,6 +1349,12 @@ object CNotificationsF: TCNotificationsF
             Layout = tlCenter
             Title.Alignment = taCenter
             Title.Caption = 'Souse Famille'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             Width = 150
             WordWrap = False
@@ -1155,6 +1373,12 @@ object CNotificationsF: TCNotificationsF
             Layout = tlCenter
             Title.Alignment = taCenter
             Title.Caption = 'Sous Famille'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Width = 150
             WordWrap = False
           end
@@ -1170,6 +1394,12 @@ object CNotificationsF: TCNotificationsF
             Footers = <>
             Layout = tlCenter
             Title.Alignment = taCenter
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             WordWrap = False
           end
@@ -1187,6 +1417,12 @@ object CNotificationsF: TCNotificationsF
             Layout = tlCenter
             Title.Alignment = taCenter
             Title.Caption = 'PrixAHT'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             Width = 130
           end
@@ -1204,6 +1440,12 @@ object CNotificationsF: TCNotificationsF
             Footers = <>
             Layout = tlCenter
             Title.Alignment = taCenter
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             Width = 130
             WordWrap = False
@@ -1224,6 +1466,12 @@ object CNotificationsF: TCNotificationsF
             MinWidth = 120
             Title.Alignment = taCenter
             Title.Caption = 'PrixVHT D'#233'tail'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             Width = 130
             WordWrap = False
@@ -1245,6 +1493,12 @@ object CNotificationsF: TCNotificationsF
             Title.Alignment = taCenter
             Title.Caption = 'PrixVTTC D'#233'tail'
             Title.EndEllipsis = True
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Title.ToolTips = True
             Visible = False
             Width = 130
@@ -1266,6 +1520,12 @@ object CNotificationsF: TCNotificationsF
             MinWidth = 120
             Title.Alignment = taCenter
             Title.Caption = 'PrixVHT Rev'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             Width = 130
             WordWrap = False
@@ -1286,6 +1546,12 @@ object CNotificationsF: TCNotificationsF
             MinWidth = 120
             Title.Alignment = taCenter
             Title.Caption = 'PrixVTTC Rev'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             Width = 130
             WordWrap = False
@@ -1306,6 +1572,12 @@ object CNotificationsF: TCNotificationsF
             MinWidth = 120
             Title.Alignment = taCenter
             Title.Caption = 'PrixVHT Gros'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             Width = 130
             WordWrap = False
@@ -1326,6 +1598,12 @@ object CNotificationsF: TCNotificationsF
             MinWidth = 120
             Title.Alignment = taCenter
             Title.Caption = 'PrixVTTC Gros'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             Width = 130
             WordWrap = False
@@ -1343,6 +1621,12 @@ object CNotificationsF: TCNotificationsF
             Footers = <>
             Layout = tlCenter
             Title.Alignment = taCenter
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             Width = 130
             WordWrap = False
@@ -1360,6 +1644,12 @@ object CNotificationsF: TCNotificationsF
             Footers = <>
             Layout = tlCenter
             Title.Alignment = taCenter
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             Width = 130
             WordWrap = False
@@ -1377,6 +1667,12 @@ object CNotificationsF: TCNotificationsF
             Footers = <>
             Layout = tlCenter
             Title.Alignment = taCenter
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             Width = 130
             WordWrap = False
@@ -1394,6 +1690,12 @@ object CNotificationsF: TCNotificationsF
             Footers = <>
             Layout = tlCenter
             Title.Alignment = taCenter
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             Width = 130
             WordWrap = False
@@ -1409,6 +1711,12 @@ object CNotificationsF: TCNotificationsF
             Font.Name = 'Helvetica LT Std'
             Font.Style = []
             Footers = <>
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             WordWrap = False
           end
@@ -1428,6 +1736,12 @@ object CNotificationsF: TCNotificationsF
             Layout = tlCenter
             Title.Alignment = taCenter
             Title.Caption = 'Q.Dispo'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Width = 150
             WordWrap = False
           end
@@ -1447,6 +1761,12 @@ object CNotificationsF: TCNotificationsF
             Layout = tlCenter
             Title.Alignment = taCenter
             Title.Caption = 'Q.Min'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Width = 150
           end
           item
@@ -1464,6 +1784,12 @@ object CNotificationsF: TCNotificationsF
             Layout = tlCenter
             Title.Alignment = taCenter
             Title.Caption = 'Avertir quantite'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Width = 150
             WordWrap = False
           end
@@ -1481,6 +1807,12 @@ object CNotificationsF: TCNotificationsF
             Layout = tlCenter
             Title.Alignment = taCenter
             Title.Caption = 'Unit'#233
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             WordWrap = False
           end
           item
@@ -1497,6 +1829,12 @@ object CNotificationsF: TCNotificationsF
             Layout = tlCenter
             Title.Alignment = taCenter
             Title.Caption = 'Fournisseur'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Width = 200
             WordWrap = False
           end
@@ -1512,6 +1850,12 @@ object CNotificationsF: TCNotificationsF
             Footers = <>
             Layout = tlCenter
             Title.Alignment = taCenter
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             WordWrap = False
           end
@@ -1527,6 +1871,12 @@ object CNotificationsF: TCNotificationsF
             Footers = <>
             Layout = tlCenter
             Title.Alignment = taCenter
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             Width = 100
             WordWrap = False
@@ -1543,6 +1893,12 @@ object CNotificationsF: TCNotificationsF
             Footers = <>
             Layout = tlCenter
             Title.Alignment = taCenter
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             WordWrap = False
           end
@@ -1558,6 +1914,12 @@ object CNotificationsF: TCNotificationsF
             Footers = <>
             Layout = tlCenter
             Title.Alignment = taCenter
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             WordWrap = False
           end
@@ -1575,6 +1937,12 @@ object CNotificationsF: TCNotificationsF
             Layout = tlCenter
             Title.Alignment = taCenter
             Title.Caption = 'Localisation'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Width = 150
             WordWrap = False
           end>
@@ -1626,6 +1994,7 @@ object CNotificationsF: TCNotificationsF
         Font.Height = 18
         Font.Name = 'Segoe UI'
         Font.Style = []
+        FooterParams.RowHeight = 22
         GridLineParams.DataHorzLines = True
         GridLineParams.DataVertLines = True
         HorzScrollBar.ExtraPanel.NavigatorButtons = [nbFirstEh, nbPriorEh, nbNextEh, nbLastEh, nbRefreshEh]
@@ -1644,7 +2013,7 @@ object CNotificationsF: TCNotificationsF
         ParentFont = False
         ParentShowHint = False
         RowDetailPanel.Color = clBtnFace
-        RowHeight = 27
+        RowHeight = 18
         SearchPanel.FilterOnTyping = True
         ShowHint = True
         TabOrder = 1
@@ -1678,6 +2047,12 @@ object CNotificationsF: TCNotificationsF
             MinWidth = 120
             Title.Alignment = taCenter
             Title.Caption = 'R'#233'ference'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Width = 120
             WordWrap = False
           end
@@ -1696,6 +2071,12 @@ object CNotificationsF: TCNotificationsF
             MinWidth = 150
             Title.Alignment = taCenter
             Title.Caption = 'D'#233'signation'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Width = 500
             WordWrap = False
           end
@@ -1714,6 +2095,12 @@ object CNotificationsF: TCNotificationsF
             Layout = tlCenter
             Title.Alignment = taCenter
             Title.Caption = 'TVA %'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             Width = 70
             WordWrap = False
@@ -1731,6 +2118,12 @@ object CNotificationsF: TCNotificationsF
             Layout = tlCenter
             Title.Alignment = taCenter
             Title.Caption = 'Famille'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             Width = 150
             WordWrap = False
@@ -1749,6 +2142,12 @@ object CNotificationsF: TCNotificationsF
             Layout = tlCenter
             Title.Alignment = taCenter
             Title.Caption = 'Famille'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Width = 150
             WordWrap = False
           end
@@ -1765,6 +2164,12 @@ object CNotificationsF: TCNotificationsF
             Layout = tlCenter
             Title.Alignment = taCenter
             Title.Caption = 'Souse Famille'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             Width = 150
             WordWrap = False
@@ -1783,6 +2188,12 @@ object CNotificationsF: TCNotificationsF
             Layout = tlCenter
             Title.Alignment = taCenter
             Title.Caption = 'Sous Famille'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Width = 150
             WordWrap = False
           end
@@ -1798,6 +2209,12 @@ object CNotificationsF: TCNotificationsF
             Footers = <>
             Layout = tlCenter
             Title.Alignment = taCenter
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             WordWrap = False
           end
@@ -1813,6 +2230,12 @@ object CNotificationsF: TCNotificationsF
             Footers = <>
             Layout = tlCenter
             Title.Alignment = taCenter
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             WordWrap = False
           end
@@ -1830,6 +2253,12 @@ object CNotificationsF: TCNotificationsF
             Layout = tlCenter
             Title.Alignment = taCenter
             Title.Caption = 'PrixAHT'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             Width = 130
           end
@@ -1847,6 +2276,12 @@ object CNotificationsF: TCNotificationsF
             Footers = <>
             Layout = tlCenter
             Title.Alignment = taCenter
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             Width = 130
             WordWrap = False
@@ -1867,6 +2302,12 @@ object CNotificationsF: TCNotificationsF
             MinWidth = 120
             Title.Alignment = taCenter
             Title.Caption = 'PrixVHT D'#233'tail'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             Width = 130
             WordWrap = False
@@ -1888,6 +2329,12 @@ object CNotificationsF: TCNotificationsF
             Title.Alignment = taCenter
             Title.Caption = 'PrixVTTC D'#233'tail'
             Title.EndEllipsis = True
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Title.ToolTips = True
             Visible = False
             Width = 130
@@ -1909,6 +2356,12 @@ object CNotificationsF: TCNotificationsF
             MinWidth = 120
             Title.Alignment = taCenter
             Title.Caption = 'PrixVHT Rev'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             Width = 130
             WordWrap = False
@@ -1929,6 +2382,12 @@ object CNotificationsF: TCNotificationsF
             MinWidth = 120
             Title.Alignment = taCenter
             Title.Caption = 'PrixVTTC Rev'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             Width = 130
             WordWrap = False
@@ -1949,6 +2408,12 @@ object CNotificationsF: TCNotificationsF
             MinWidth = 120
             Title.Alignment = taCenter
             Title.Caption = 'PrixVHT Gros'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             Width = 130
             WordWrap = False
@@ -1969,6 +2434,12 @@ object CNotificationsF: TCNotificationsF
             MinWidth = 120
             Title.Alignment = taCenter
             Title.Caption = 'PrixVTTC Gros'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             Width = 130
             WordWrap = False
@@ -1986,6 +2457,12 @@ object CNotificationsF: TCNotificationsF
             Footers = <>
             Layout = tlCenter
             Title.Alignment = taCenter
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             Width = 130
             WordWrap = False
@@ -2003,6 +2480,12 @@ object CNotificationsF: TCNotificationsF
             Footers = <>
             Layout = tlCenter
             Title.Alignment = taCenter
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             Width = 130
             WordWrap = False
@@ -2020,6 +2503,12 @@ object CNotificationsF: TCNotificationsF
             Footers = <>
             Layout = tlCenter
             Title.Alignment = taCenter
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             Width = 130
             WordWrap = False
@@ -2037,6 +2526,12 @@ object CNotificationsF: TCNotificationsF
             Footers = <>
             Layout = tlCenter
             Title.Alignment = taCenter
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             Width = 130
             WordWrap = False
@@ -2052,6 +2547,12 @@ object CNotificationsF: TCNotificationsF
             Font.Name = 'Helvetica LT Std'
             Font.Style = []
             Footers = <>
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             WordWrap = False
           end
@@ -2072,6 +2573,12 @@ object CNotificationsF: TCNotificationsF
             MinWidth = 100
             Title.Alignment = taCenter
             Title.Caption = 'Q.Dispo'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Width = 150
             WordWrap = False
           end
@@ -2091,6 +2598,12 @@ object CNotificationsF: TCNotificationsF
             Layout = tlCenter
             Title.Alignment = taCenter
             Title.Caption = 'Q.Max'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Width = 150
           end
           item
@@ -2107,6 +2620,12 @@ object CNotificationsF: TCNotificationsF
             Layout = tlCenter
             Title.Alignment = taCenter
             Title.Caption = 'Unit'#233
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             WordWrap = False
           end
           item
@@ -2123,6 +2642,12 @@ object CNotificationsF: TCNotificationsF
             Layout = tlCenter
             Title.Alignment = taCenter
             Title.Caption = 'Fournisseur'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Width = 200
             WordWrap = False
           end
@@ -2138,6 +2663,12 @@ object CNotificationsF: TCNotificationsF
             Footers = <>
             Layout = tlCenter
             Title.Alignment = taCenter
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             WordWrap = False
           end
@@ -2153,6 +2684,12 @@ object CNotificationsF: TCNotificationsF
             Footers = <>
             Layout = tlCenter
             Title.Alignment = taCenter
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             Width = 100
             WordWrap = False
@@ -2169,6 +2706,12 @@ object CNotificationsF: TCNotificationsF
             Footers = <>
             Layout = tlCenter
             Title.Alignment = taCenter
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             WordWrap = False
           end
@@ -2184,6 +2727,12 @@ object CNotificationsF: TCNotificationsF
             Footers = <>
             Layout = tlCenter
             Title.Alignment = taCenter
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             WordWrap = False
           end
@@ -2201,6 +2750,12 @@ object CNotificationsF: TCNotificationsF
             Layout = tlCenter
             Title.Alignment = taCenter
             Title.Caption = 'Localisation'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Width = 150
             WordWrap = False
           end>
@@ -2252,6 +2807,7 @@ object CNotificationsF: TCNotificationsF
         Font.Height = 16
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
+        FooterParams.RowHeight = 22
         GridLineParams.DataHorzLines = True
         GridLineParams.DataVertLines = True
         HorzScrollBar.ExtraPanel.NavigatorButtons = [nbFirstEh, nbPriorEh, nbNextEh, nbLastEh, nbRefreshEh]
@@ -2270,7 +2826,7 @@ object CNotificationsF: TCNotificationsF
         ParentFont = False
         ParentShowHint = False
         RowDetailPanel.Color = clBtnFace
-        RowHeight = 22
+        RowHeight = 18
         SearchPanel.FilterOnTyping = True
         ShowHint = True
         TabOrder = 1
@@ -2299,6 +2855,12 @@ object CNotificationsF: TCNotificationsF
             MinWidth = 120
             Title.Alignment = taCenter
             Title.Caption = 'N'#176' Bon d'#39'achat'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Width = 120
             WordWrap = False
           end
@@ -2313,6 +2875,12 @@ object CNotificationsF: TCNotificationsF
             MinWidth = 120
             Title.Alignment = taCenter
             Title.Caption = 'R'#233'ference'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Width = 120
             WordWrap = False
           end
@@ -2326,6 +2894,12 @@ object CNotificationsF: TCNotificationsF
             MinWidth = 150
             Title.Alignment = taCenter
             Title.Caption = 'D'#233'signation'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Width = 500
             WordWrap = False
           end
@@ -2344,6 +2918,12 @@ object CNotificationsF: TCNotificationsF
             Layout = tlCenter
             Title.Alignment = taCenter
             Title.Caption = 'TVA %'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             Width = 70
             WordWrap = False
@@ -2361,6 +2941,12 @@ object CNotificationsF: TCNotificationsF
             Layout = tlCenter
             Title.Alignment = taCenter
             Title.Caption = 'Famille'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             Width = 150
             WordWrap = False
@@ -2374,6 +2960,12 @@ object CNotificationsF: TCNotificationsF
             Layout = tlCenter
             Title.Alignment = taCenter
             Title.Caption = 'Famille'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Width = 150
             WordWrap = False
           end
@@ -2390,6 +2982,12 @@ object CNotificationsF: TCNotificationsF
             Layout = tlCenter
             Title.Alignment = taCenter
             Title.Caption = 'Souse Famille'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             Width = 150
             WordWrap = False
@@ -2403,6 +3001,12 @@ object CNotificationsF: TCNotificationsF
             Layout = tlCenter
             Title.Alignment = taCenter
             Title.Caption = 'Sous Famille'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Width = 150
             WordWrap = False
           end
@@ -2418,6 +3022,12 @@ object CNotificationsF: TCNotificationsF
             Footers = <>
             Layout = tlCenter
             Title.Alignment = taCenter
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             WordWrap = False
           end
@@ -2433,6 +3043,12 @@ object CNotificationsF: TCNotificationsF
             Footers = <>
             Layout = tlCenter
             Title.Alignment = taCenter
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             WordWrap = False
           end
@@ -2450,6 +3066,12 @@ object CNotificationsF: TCNotificationsF
             Layout = tlCenter
             Title.Alignment = taCenter
             Title.Caption = 'PrixAHT'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             Width = 130
           end
@@ -2467,6 +3089,12 @@ object CNotificationsF: TCNotificationsF
             Footers = <>
             Layout = tlCenter
             Title.Alignment = taCenter
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             Width = 130
             WordWrap = False
@@ -2487,6 +3115,12 @@ object CNotificationsF: TCNotificationsF
             MinWidth = 120
             Title.Alignment = taCenter
             Title.Caption = 'PrixVHT D'#233'tail'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             Width = 130
             WordWrap = False
@@ -2508,6 +3142,12 @@ object CNotificationsF: TCNotificationsF
             Title.Alignment = taCenter
             Title.Caption = 'PrixVTTC D'#233'tail'
             Title.EndEllipsis = True
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Title.ToolTips = True
             Visible = False
             Width = 130
@@ -2529,6 +3169,12 @@ object CNotificationsF: TCNotificationsF
             MinWidth = 120
             Title.Alignment = taCenter
             Title.Caption = 'PrixVHT Rev'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             Width = 130
             WordWrap = False
@@ -2549,6 +3195,12 @@ object CNotificationsF: TCNotificationsF
             MinWidth = 120
             Title.Alignment = taCenter
             Title.Caption = 'PrixVTTC Rev'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             Width = 130
             WordWrap = False
@@ -2569,6 +3221,12 @@ object CNotificationsF: TCNotificationsF
             MinWidth = 120
             Title.Alignment = taCenter
             Title.Caption = 'PrixVHT Gros'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             Width = 130
             WordWrap = False
@@ -2589,6 +3247,12 @@ object CNotificationsF: TCNotificationsF
             MinWidth = 120
             Title.Alignment = taCenter
             Title.Caption = 'PrixVTTC Gros'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             Width = 130
             WordWrap = False
@@ -2606,6 +3270,12 @@ object CNotificationsF: TCNotificationsF
             Footers = <>
             Layout = tlCenter
             Title.Alignment = taCenter
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             Width = 130
             WordWrap = False
@@ -2623,6 +3293,12 @@ object CNotificationsF: TCNotificationsF
             Footers = <>
             Layout = tlCenter
             Title.Alignment = taCenter
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             Width = 130
             WordWrap = False
@@ -2640,6 +3316,12 @@ object CNotificationsF: TCNotificationsF
             Footers = <>
             Layout = tlCenter
             Title.Alignment = taCenter
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             Width = 130
             WordWrap = False
@@ -2657,6 +3339,12 @@ object CNotificationsF: TCNotificationsF
             Footers = <>
             Layout = tlCenter
             Title.Alignment = taCenter
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             Width = 130
             WordWrap = False
@@ -2672,6 +3360,12 @@ object CNotificationsF: TCNotificationsF
             Font.Name = 'Helvetica LT Std'
             Font.Style = []
             Footers = <>
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             WordWrap = False
           end
@@ -2687,6 +3381,12 @@ object CNotificationsF: TCNotificationsF
             MinWidth = 100
             Title.Alignment = taCenter
             Title.Caption = 'Q.Dispo'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Width = 150
             WordWrap = False
           end
@@ -2697,6 +3397,12 @@ object CNotificationsF: TCNotificationsF
             Footers = <>
             Layout = tlCenter
             Title.Alignment = taCenter
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             Width = 100
             WordWrap = False
@@ -2711,6 +3417,12 @@ object CNotificationsF: TCNotificationsF
             Layout = tlCenter
             Title.Alignment = taCenter
             Title.Caption = 'Date Exp.'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Width = 100
             WordWrap = False
           end
@@ -2728,6 +3440,12 @@ object CNotificationsF: TCNotificationsF
             Layout = tlCenter
             Title.Alignment = taCenter
             Title.Caption = 'Jours restants'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Width = 120
           end
           item
@@ -2739,6 +3457,12 @@ object CNotificationsF: TCNotificationsF
             Layout = tlCenter
             Title.Alignment = taCenter
             Title.Caption = 'Unit'#233
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             WordWrap = False
           end
           item
@@ -2750,6 +3474,12 @@ object CNotificationsF: TCNotificationsF
             Layout = tlCenter
             Title.Alignment = taCenter
             Title.Caption = 'Fournisseur'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Width = 200
             WordWrap = False
           end
@@ -2765,6 +3495,12 @@ object CNotificationsF: TCNotificationsF
             Footers = <>
             Layout = tlCenter
             Title.Alignment = taCenter
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             WordWrap = False
           end
@@ -2780,6 +3516,12 @@ object CNotificationsF: TCNotificationsF
             Footers = <>
             Layout = tlCenter
             Title.Alignment = taCenter
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             Width = 100
             WordWrap = False
@@ -2793,6 +3535,12 @@ object CNotificationsF: TCNotificationsF
             Layout = tlCenter
             Title.Alignment = taCenter
             Title.Caption = 'Localisation'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Width = 150
             WordWrap = False
           end>
@@ -2844,6 +3592,7 @@ object CNotificationsF: TCNotificationsF
         Font.Height = 18
         Font.Name = 'Segoe UI'
         Font.Style = []
+        FooterParams.RowHeight = 22
         GridLineParams.DataHorzLines = True
         GridLineParams.DataVertLines = True
         HorzScrollBar.ExtraPanel.NavigatorButtons = [nbFirstEh, nbPriorEh, nbNextEh, nbLastEh, nbRefreshEh]
@@ -2862,7 +3611,7 @@ object CNotificationsF: TCNotificationsF
         ParentFont = False
         ParentShowHint = False
         RowDetailPanel.Color = clBtnFace
-        RowHeight = 22
+        RowHeight = 18
         SearchPanel.FilterOnTyping = True
         ShowHint = True
         TabOrder = 1
@@ -2896,6 +3645,12 @@ object CNotificationsF: TCNotificationsF
             MinWidth = 120
             Title.Alignment = taCenter
             Title.Caption = 'N'#176' Bon d'#39'achat'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Width = 120
             WordWrap = False
           end
@@ -2915,6 +3670,12 @@ object CNotificationsF: TCNotificationsF
             MinWidth = 120
             Title.Alignment = taCenter
             Title.Caption = 'R'#233'ference'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Width = 120
             WordWrap = False
           end
@@ -2933,6 +3694,12 @@ object CNotificationsF: TCNotificationsF
             MinWidth = 150
             Title.Alignment = taCenter
             Title.Caption = 'D'#233'signation'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Width = 500
             WordWrap = False
           end
@@ -2951,6 +3718,12 @@ object CNotificationsF: TCNotificationsF
             Layout = tlCenter
             Title.Alignment = taCenter
             Title.Caption = 'TVA %'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             Width = 70
             WordWrap = False
@@ -2968,6 +3741,12 @@ object CNotificationsF: TCNotificationsF
             Layout = tlCenter
             Title.Alignment = taCenter
             Title.Caption = 'Famille'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             Width = 150
             WordWrap = False
@@ -2986,6 +3765,12 @@ object CNotificationsF: TCNotificationsF
             Layout = tlCenter
             Title.Alignment = taCenter
             Title.Caption = 'Famille'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Width = 150
             WordWrap = False
           end
@@ -3002,6 +3787,12 @@ object CNotificationsF: TCNotificationsF
             Layout = tlCenter
             Title.Alignment = taCenter
             Title.Caption = 'Souse Famille'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             Width = 150
             WordWrap = False
@@ -3020,6 +3811,12 @@ object CNotificationsF: TCNotificationsF
             Layout = tlCenter
             Title.Alignment = taCenter
             Title.Caption = 'Sous Famille'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Width = 150
             WordWrap = False
           end
@@ -3035,6 +3832,12 @@ object CNotificationsF: TCNotificationsF
             Footers = <>
             Layout = tlCenter
             Title.Alignment = taCenter
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             WordWrap = False
           end
@@ -3050,6 +3853,12 @@ object CNotificationsF: TCNotificationsF
             Footers = <>
             Layout = tlCenter
             Title.Alignment = taCenter
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             WordWrap = False
           end
@@ -3067,6 +3876,12 @@ object CNotificationsF: TCNotificationsF
             Layout = tlCenter
             Title.Alignment = taCenter
             Title.Caption = 'PrixAHT'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             Width = 130
           end
@@ -3084,6 +3899,12 @@ object CNotificationsF: TCNotificationsF
             Footers = <>
             Layout = tlCenter
             Title.Alignment = taCenter
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             Width = 130
             WordWrap = False
@@ -3104,6 +3925,12 @@ object CNotificationsF: TCNotificationsF
             MinWidth = 120
             Title.Alignment = taCenter
             Title.Caption = 'PrixVHT D'#233'tail'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             Width = 130
             WordWrap = False
@@ -3125,6 +3952,12 @@ object CNotificationsF: TCNotificationsF
             Title.Alignment = taCenter
             Title.Caption = 'PrixVTTC D'#233'tail'
             Title.EndEllipsis = True
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Title.ToolTips = True
             Visible = False
             Width = 130
@@ -3146,6 +3979,12 @@ object CNotificationsF: TCNotificationsF
             MinWidth = 120
             Title.Alignment = taCenter
             Title.Caption = 'PrixVHT Rev'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             Width = 130
             WordWrap = False
@@ -3166,6 +4005,12 @@ object CNotificationsF: TCNotificationsF
             MinWidth = 120
             Title.Alignment = taCenter
             Title.Caption = 'PrixVTTC Rev'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             Width = 130
             WordWrap = False
@@ -3186,6 +4031,12 @@ object CNotificationsF: TCNotificationsF
             MinWidth = 120
             Title.Alignment = taCenter
             Title.Caption = 'PrixVHT Gros'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             Width = 130
             WordWrap = False
@@ -3206,6 +4057,12 @@ object CNotificationsF: TCNotificationsF
             MinWidth = 120
             Title.Alignment = taCenter
             Title.Caption = 'PrixVTTC Gros'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             Width = 130
             WordWrap = False
@@ -3223,6 +4080,12 @@ object CNotificationsF: TCNotificationsF
             Footers = <>
             Layout = tlCenter
             Title.Alignment = taCenter
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             Width = 130
             WordWrap = False
@@ -3240,6 +4103,12 @@ object CNotificationsF: TCNotificationsF
             Footers = <>
             Layout = tlCenter
             Title.Alignment = taCenter
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             Width = 130
             WordWrap = False
@@ -3257,6 +4126,12 @@ object CNotificationsF: TCNotificationsF
             Footers = <>
             Layout = tlCenter
             Title.Alignment = taCenter
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             Width = 130
             WordWrap = False
@@ -3274,6 +4149,12 @@ object CNotificationsF: TCNotificationsF
             Footers = <>
             Layout = tlCenter
             Title.Alignment = taCenter
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             Width = 130
             WordWrap = False
@@ -3289,6 +4170,12 @@ object CNotificationsF: TCNotificationsF
             Font.Name = 'Helvetica LT Std'
             Font.Style = []
             Footers = <>
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             WordWrap = False
           end
@@ -3309,6 +4196,12 @@ object CNotificationsF: TCNotificationsF
             MinWidth = 100
             Title.Alignment = taCenter
             Title.Caption = 'Q.Dispo'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Width = 150
             WordWrap = False
           end
@@ -3326,6 +4219,12 @@ object CNotificationsF: TCNotificationsF
             Layout = tlCenter
             Title.Alignment = taCenter
             Title.Caption = 'Unit'#233
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             WordWrap = False
           end
           item
@@ -3342,6 +4241,12 @@ object CNotificationsF: TCNotificationsF
             Layout = tlCenter
             Title.Alignment = taCenter
             Title.Caption = 'Fournisseur'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Width = 200
             WordWrap = False
           end
@@ -3357,6 +4262,12 @@ object CNotificationsF: TCNotificationsF
             Footers = <>
             Layout = tlCenter
             Title.Alignment = taCenter
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             WordWrap = False
           end
@@ -3372,6 +4283,12 @@ object CNotificationsF: TCNotificationsF
             Footers = <>
             Layout = tlCenter
             Title.Alignment = taCenter
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             Width = 100
             WordWrap = False
@@ -3388,6 +4305,12 @@ object CNotificationsF: TCNotificationsF
             Footers = <>
             Layout = tlCenter
             Title.Alignment = taCenter
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             WordWrap = False
           end
@@ -3403,6 +4326,12 @@ object CNotificationsF: TCNotificationsF
             Footers = <>
             Layout = tlCenter
             Title.Alignment = taCenter
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Visible = False
             WordWrap = False
           end
@@ -3420,6 +4349,12 @@ object CNotificationsF: TCNotificationsF
             Layout = tlCenter
             Title.Alignment = taCenter
             Title.Caption = 'Localisation'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
             Width = 150
             WordWrap = False
           end>

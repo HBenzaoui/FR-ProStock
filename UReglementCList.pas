@@ -3,7 +3,7 @@
 interface
 
 uses
-  Winapi.Windows,DateUtils,
+  Winapi.Windows,DateUtils,DBGridEhImpExp,ShellAPI,
    Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, DBGridEhGrouping, ToolCtrlsEh,
   DBGridEhToolCtrls, DynVarsEh, Data.DB, EhLibVCL, GridsEh, DBAxisGridsEh,
@@ -71,6 +71,7 @@ type
     Label27: TLabel;
     Label28: TLabel;
     ApplicationEvents1: TApplicationEvents;
+    ProduitListSaveDg: TSaveDialog;
     procedure AddBARecBtnClick(Sender: TObject);
     procedure ResearchRegCEdtChange(Sender: TObject);
     procedure DateStartRegCDChange(Sender: TObject);
@@ -408,15 +409,25 @@ end;
 
 procedure TReglementCListF.AdvToolButton1Click(Sender: TObject);
 begin
-MainForm.RegclientTable.DisableControls;
+ ProduitListSaveDg.FileName:= 'Liste Règlement Client';
+if ProduitListSaveDg.Execute then
+ begin
 
-    GettingData;
+  ExportDBGridEhToXlsx(BVLivListDBGridEh,ProduitListSaveDg.FileName+'.xlsx',[]);
+//  GetDir(0,Path);
+  ShellExecute(Handle, nil, PChar(ProduitListSaveDg.FileName + '.xlsx'), nil, nil, SW_SHOWNORMAL);
 
-RegCListfrxRprt.PrepareReport;
-frxXLSExport1.FileName := 'Liste Règlement Client';
-RegCListfrxRprt.Export(frxXLSExport1);
+  end;
 
-MainForm.RegclientTable.EnableControls;
+//MainForm.RegclientTable.DisableControls;
+//
+//    GettingData;
+//
+//RegCListfrxRprt.PrepareReport;
+//frxXLSExport1.FileName := 'Liste Règlement Client';
+//RegCListfrxRprt.Export(frxXLSExport1);
+//
+//MainForm.RegclientTable.EnableControls;
 end;
 
 procedure TReglementCListF.AdvToolButton2Click(Sender: TObject);

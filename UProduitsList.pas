@@ -3,7 +3,7 @@
 interface
 
 uses
- USplashAddUnite,
+ USplashAddUnite, DBGridEhImpExp,ShellAPI,
 
   Winapi.Windows, Winapi.Messages,Vcl.OleAuto, System.SysUtils, System.Variants, System.Classes,
   Vcl.Graphics, EhLibFireDAC, Vcl.Controls, Vcl.Forms, Vcl.Dialogs,
@@ -85,6 +85,7 @@ type
     Label27: TLabel;
     Label28: TLabel;
     ApplicationEvents1: TApplicationEvents;
+    ProduitListSaveDg: TSaveDialog;
     procedure AddProduitsBtnClick(Sender: TObject);
     procedure ProduitsListDBGridEhMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
     procedure ProduitsListDBGridEhDrawColumnCell(Sender: TObject; const Rect: TRect; DataCol: Integer; Column: TColumnEh; State: TGridDrawState);
@@ -517,15 +518,25 @@ end;
 
 procedure TProduitsListF.e1Click(Sender: TObject);
 begin
-MainForm.ProduitTable.DisableControls;
+ ProduitListSaveDg.FileName:= 'Liste Des Produits';
+if ProduitListSaveDg.Execute then
+ begin
 
-    GettingData;
+  ExportDBGridEhToXlsx(ProduitsListDBGridEh,ProduitListSaveDg.FileName+'.xlsx',[]);
+//  GetDir(0,Path);
+  ShellExecute(Handle, nil, PChar(ProduitListSaveDg.FileName + '.xlsx'), nil, nil, SW_SHOWNORMAL);
 
-ProduitListfrxRprt.PrepareReport;
-frxXLSExport1.FileName := 'Liste Des Produits';
-ProduitListfrxRprt.Export(frxXLSExport1);
+  end;
 
-MainForm.ProduitTable.EnableControls;
+//MainForm.ProduitTable.DisableControls;
+//
+//    GettingData;
+//
+//ProduitListfrxRprt.PrepareReport;
+//frxXLSExport1.FileName := 'Liste Des Produits';
+//ProduitListfrxRprt.Export(frxXLSExport1);
+//
+//MainForm.ProduitTable.EnableControls;
 end;
 
 procedure TProduitsListF.EditProduitsBtnClick(Sender: TObject);

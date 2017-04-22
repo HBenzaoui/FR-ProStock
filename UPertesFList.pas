@@ -3,7 +3,8 @@
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Winapi.Windows, Winapi.Messages, System.SysUtils,DBGridEhImpExp,ShellAPI,
+   System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, DBGridEhGrouping, ToolCtrlsEh,
   DBGridEhToolCtrls, DynVarsEh, frxExportPDF, frxClass, frxExportXLS, frxDBSet,
   Data.DB, EhLibVCL, GridsEh, DBAxisGridsEh, DBGridEh, Vcl.StdCtrls,
@@ -53,6 +54,7 @@ type
     Label27: TLabel;
     Label28: TLabel;
     ApplicationEvents1: TApplicationEvents;
+    ProduitListSaveDg: TSaveDialog;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);
     procedure DateStartPerteDChange(Sender: TObject);
@@ -124,15 +126,27 @@ end;
 
 procedure TPertesFListF.AdvToolButton1Click(Sender: TObject);
 begin
-DataModuleF.PertesTable.DisableControls;
 
-    GettingData;
+ ProduitListSaveDg.FileName:= 'Etat de Pertes';
+if ProduitListSaveDg.Execute then
+ begin
 
-PerteListfrxRprt.PrepareReport;
-frxXLSExport1.FileName := 'Etat de Pertes';
-PerteListfrxRprt.Export(frxXLSExport1);
+  ExportDBGridEhToXlsx(PertesListDBGridEh,ProduitListSaveDg.FileName+'.xlsx',[]);
+//  GetDir(0,Path);
+  ShellExecute(Handle, nil, PChar(ProduitListSaveDg.FileName + '.xlsx'), nil, nil, SW_SHOWNORMAL);
 
-DataModuleF.PertesTable.EnableControls;
+  end;
+
+//
+//DataModuleF.PertesTable.DisableControls;
+//
+//    GettingData;
+//
+//PerteListfrxRprt.PrepareReport;
+//frxXLSExport1.FileName := 'Etat de Pertes';
+//PerteListfrxRprt.Export(frxXLSExport1);
+//
+//DataModuleF.PertesTable.EnableControls;
 end;
 
 procedure TPertesFListF.AdvToolButton2Click(Sender: TObject);

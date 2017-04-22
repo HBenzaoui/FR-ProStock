@@ -3,7 +3,8 @@
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Winapi.Windows, Winapi.Messages, System.SysUtils,DBGridEhImpExp,ShellAPI,
+   System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, DBGridEhGrouping, ToolCtrlsEh,
   DBGridEhToolCtrls, DynVarsEh, cxGraphics, cxControls, cxLookAndFeels,
   cxLookAndFeelPainters, cxContainer, cxEdit, dxSkinsCore, dxSkinBlack,
@@ -75,6 +76,7 @@ type
     Label27: TLabel;
     Label28: TLabel;
     ApplicationEvents1: TApplicationEvents;
+    ProduitListSaveDg: TSaveDialog;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure AddBARecBtnClick(Sender: TObject);
     procedure FisrtBARecbtnClick(Sender: TObject);
@@ -312,15 +314,26 @@ end;
 
 procedure TChargesFListF.AdvToolButton1Click(Sender: TObject);
 begin
-DataModuleF.ChargesTable.DisableControls;
 
-    GettingData;
+ ProduitListSaveDg.FileName:= 'Etat de Charges';
+if ProduitListSaveDg.Execute then
+ begin
 
-ChargeListfrxRprt.PrepareReport;
-frxXLSExport1.FileName := 'Etat de Charges';
-ChargeListfrxRprt.Export(frxXLSExport1);
+  ExportDBGridEhToXlsx(ChargesListDBGridEh,ProduitListSaveDg.FileName+'.xlsx',[]);
+//  GetDir(0,Path);
+  ShellExecute(Handle, nil, PChar(ProduitListSaveDg.FileName + '.xlsx'), nil, nil, SW_SHOWNORMAL);
 
-DataModuleF.ChargesTable.EnableControls;
+  end;
+
+//DataModuleF.ChargesTable.DisableControls;
+//
+//    GettingData;
+//
+//ChargeListfrxRprt.PrepareReport;
+//frxXLSExport1.FileName := 'Etat de Charges';
+//ChargeListfrxRprt.Export(frxXLSExport1);
+//
+//DataModuleF.ChargesTable.EnableControls;
 end;
 
 procedure TChargesFListF.AdvToolButton2Click(Sender: TObject);

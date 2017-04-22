@@ -3,7 +3,8 @@
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils,Winapi.MMSystem, System.Variants,DateUtils, System.Classes, Vcl.Graphics,
+  Winapi.Windows, Winapi.Messages, System.SysUtils,DBGridEhImpExp,ShellAPI,
+  Winapi.MMSystem, System.Variants,DateUtils, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, DBGridEhGrouping, ToolCtrlsEh,
   DBGridEhToolCtrls, DynVarsEh, Data.DB, System.ImageList, Vcl.ImgList,
   acAlphaImageList, Vcl.StdCtrls, Vcl.WinXCtrls, Vcl.Buttons, sSpeedButton,
@@ -79,6 +80,7 @@ type
     Label27: TLabel;
     Label28: TLabel;
     ApplicationEvents1: TApplicationEvents;
+    ProduitListSaveDg: TSaveDialog;
     procedure AddBARecBtnClick(Sender: TObject);
     procedure FisrtBARecbtnClick(Sender: TObject);
     procedure LastBARecbtnClick(Sender: TObject);
@@ -1331,15 +1333,26 @@ end;
 
 procedure TBonRecF.AdvToolButton1Click(Sender: TObject);
 begin
-MainForm.Bona_recTable.DisableControls;
 
-    GettingData;
+ ProduitListSaveDg.FileName:= 'Liste des BR';
+if ProduitListSaveDg.Execute then
+ begin
 
-BonRecfrxRprt.PrepareReport;
-frxXLSExport1.FileName := 'liste des BR';
-BonRecfrxRprt.Export(frxXLSExport1);
+  ExportDBGridEhToXlsx(BARecListDBGridEh,ProduitListSaveDg.FileName+'.xlsx',[]);
+//  GetDir(0,Path);
+  ShellExecute(Handle, nil, PChar(ProduitListSaveDg.FileName + '.xlsx'), nil, nil, SW_SHOWNORMAL);
 
-MainForm.Bona_recTable.EnableControls;
+  end;
+
+//MainForm.Bona_recTable.DisableControls;
+//
+//    GettingData;
+//
+//BonRecfrxRprt.PrepareReport;
+//frxXLSExport1.FileName := 'Liste des BR';
+//BonRecfrxRprt.Export(frxXLSExport1);
+//
+//MainForm.Bona_recTable.EnableControls;
 end;
 
 procedure TBonRecF.AdvToolButton2Click(Sender: TObject);

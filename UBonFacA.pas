@@ -3,7 +3,7 @@
 interface
 
 uses
-  Winapi.Windows,
+  Winapi.Windows,DBGridEhImpExp,ShellAPI,
   DateUtils,
   MMSystem,
   Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
@@ -77,6 +77,7 @@ type
     Label27: TLabel;
     Label28: TLabel;
     ApplicationEvents1: TApplicationEvents;
+    ProduitListSaveDg: TSaveDialog;
     procedure FisrtBAFacbtnClick(Sender: TObject);
     procedure PreviosBAFacbtnClick(Sender: TObject);
     procedure NextBAFacbtnClick(Sender: TObject);
@@ -963,15 +964,27 @@ end;
 
 procedure TBonFacAF.AdvToolButton1Click(Sender: TObject);
 begin
-MainForm.Bona_facTable.DisableControls;
 
-    GettingData;
+ ProduitListSaveDg.FileName:= 'liste des FA';
+if ProduitListSaveDg.Execute then
+ begin
 
-BonFacAfrxRprt.PrepareReport;
-frxXLSExport1.FileName := 'liste des FA';
-BonFacAfrxRprt.Export(frxXLSExport1);
+  ExportDBGridEhToXlsx(BAFacListDBGridEh,ProduitListSaveDg.FileName+'.xlsx',[]);
+//  GetDir(0,Path);
+  ShellExecute(Handle, nil, PChar(ProduitListSaveDg.FileName + '.xlsx'), nil, nil, SW_SHOWNORMAL);
 
-MainForm.Bona_facTable.EnableControls;
+  end;
+
+
+//MainForm.Bona_facTable.DisableControls;
+//
+//    GettingData;
+//
+//BonFacAfrxRprt.PrepareReport;
+//frxXLSExport1.FileName := 'liste des FA';
+//BonFacAfrxRprt.Export(frxXLSExport1);
+//
+//MainForm.Bona_facTable.EnableControls;
 end;
 
 procedure TBonFacAF.AdvToolButton2Click(Sender: TObject);

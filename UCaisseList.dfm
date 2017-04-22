@@ -327,7 +327,7 @@ object CaisseListF: TCaisseListF
   TextHeight = 13
   object CaisseListDBGridEh: TDBGridEh
     Left = 0
-    Top = 68
+    Top = 67
     Width = 1022
     Height = 626
     Anchors = [akLeft, akTop, akRight, akBottom]
@@ -351,6 +351,7 @@ object CaisseListF: TCaisseListF
     Font.Style = []
     FooterRowCount = 1
     FooterParams.FillStyle = cfstSolidEh
+    FooterParams.RowHeight = 22
     GridLineParams.DataHorzLines = True
     GridLineParams.DataVertLines = True
     HorzScrollBar.ExtraPanel.NavigatorButtons = [nbFirstEh, nbPriorEh, nbNextEh, nbLastEh, nbRefreshEh]
@@ -367,7 +368,7 @@ object CaisseListF: TCaisseListF
     ParentFont = False
     ParentShowHint = False
     RowDetailPanel.Color = clBtnFace
-    RowHeight = 22
+    RowHeight = 18
     SearchPanel.FilterOnTyping = True
     ShowHint = True
     SumList.Active = True
@@ -406,7 +407,7 @@ object CaisseListF: TCaisseListF
         Title.EndEllipsis = True
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = 4207405
-        Title.Font.Height = 18
+        Title.Font.Height = 16
         Title.Font.Name = 'Helvetica LT Std'
         Title.Font.Style = []
         Title.Font.Quality = fqProof
@@ -432,7 +433,7 @@ object CaisseListF: TCaisseListF
         Title.EndEllipsis = True
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = 4207405
-        Title.Font.Height = 18
+        Title.Font.Height = 16
         Title.Font.Name = 'Helvetica LT Std'
         Title.Font.Style = []
         Title.Font.Quality = fqProof
@@ -456,7 +457,7 @@ object CaisseListF: TCaisseListF
         Title.EndEllipsis = True
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = 4207405
-        Title.Font.Height = 18
+        Title.Font.Height = 16
         Title.Font.Name = 'Helvetica LT Std'
         Title.Font.Style = []
         Title.Font.Quality = fqProof
@@ -491,7 +492,7 @@ object CaisseListF: TCaisseListF
         Title.EndEllipsis = True
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = 4207405
-        Title.Font.Height = 18
+        Title.Font.Height = 16
         Title.Font.Name = 'Helvetica LT Std'
         Title.Font.Style = []
         Title.Font.Quality = fqProof
@@ -530,7 +531,7 @@ object CaisseListF: TCaisseListF
         Title.Caption = 'MP'
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = 4207405
-        Title.Font.Height = 18
+        Title.Font.Height = 16
         Title.Font.Name = 'Helvetica LT Std'
         Title.Font.Style = []
         Title.Font.Quality = fqProof
@@ -565,7 +566,7 @@ object CaisseListF: TCaisseListF
         Title.EndEllipsis = True
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = 4207405
-        Title.Font.Height = 18
+        Title.Font.Height = 16
         Title.Font.Name = 'Helvetica LT Std'
         Title.Font.Style = []
         Title.Font.Quality = fqProof
@@ -601,7 +602,7 @@ object CaisseListF: TCaisseListF
         Title.EndEllipsis = True
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = 4207405
-        Title.Font.Height = 18
+        Title.Font.Height = 16
         Title.Font.Name = 'Helvetica LT Std'
         Title.Font.Style = []
         Title.Font.Quality = fqProof
@@ -625,7 +626,7 @@ object CaisseListF: TCaisseListF
         Title.Caption = 'Agent'
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = 4207405
-        Title.Font.Height = 18
+        Title.Font.Height = 16
         Title.Font.Name = 'Helvetica LT Std'
         Title.Font.Style = []
         Title.Font.Quality = fqProof
@@ -2359,5 +2360,12 @@ object CaisseListF: TCaisseListF
       ImageIndex = 2
       OnClick = ClearFilterBVLivPMenuClick
     end
+  end
+  object ProduitListSaveDg: TSaveDialog
+    Filter = 
+      'Excel Workbook (*.xlsx)|*.xlsx|Excel  97- 2003 Workbook (*.xls)|' +
+      '*.xls|CSV (Comma delimited) (*.csv)|*.csv'
+    Left = 372
+    Top = 612
   end
 end

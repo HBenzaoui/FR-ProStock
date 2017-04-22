@@ -5,8 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages,MMSystem, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
 
-  EhLibFireDAC   ,Vcl.OleAuto   ,ExcelXP
-  ,
+  EhLibFireDAC   ,Vcl.OleAuto   ,ExcelXP , DBGridEhImpExp,ShellAPI,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, DBGridEhGrouping, ToolCtrlsEh,
   DBGridEhToolCtrls, DynVarsEh, FireDAC.Stan.Intf, FireDAC.Stan.Option,
   FireDAC.Stan.Error, FireDAC.UI.Intf, FireDAC.Phys.Intf, FireDAC.Stan.Def,
@@ -84,6 +83,7 @@ type
     ClearFilterBVLivPMenu: TMenuItem;
     sImage1: TsImage;
     sImage2: TsImage;
+    ProduitListSaveDg: TSaveDialog;
     procedure AddClientsBtnClick(Sender: TObject);
     procedure EditClientsBtnClick(Sender: TObject);
     procedure ResearchClientsEdtChange(Sender: TObject);
@@ -599,15 +599,25 @@ end;
 
 procedure TClientListF.e1Click(Sender: TObject);
 begin
-MainForm.ClientTable.DisableControls;
+ ProduitListSaveDg.FileName:= 'Etat liste des Client';
+if ProduitListSaveDg.Execute then
+ begin
 
-    GettingData;
+  ExportDBGridEhToXlsx(ClientsListDBGridEh,ProduitListSaveDg.FileName+'.xlsx',[]);
+//  GetDir(0,Path);
+  ShellExecute(Handle, nil, PChar(ProduitListSaveDg.FileName + '.xlsx'), nil, nil, SW_SHOWNORMAL);
 
-ClientListfrxRprt.PrepareReport;
-frxXLSExport1.FileName := 'Etat liste des Client';
-ClientListfrxRprt.Export(frxXLSExport1);
+  end;
 
-MainForm.ClientTable.EnableControls;
+//MainForm.ClientTable.DisableControls;
+//
+//    GettingData;
+//
+//ClientListfrxRprt.PrepareReport;
+//frxXLSExport1.FileName := 'Etat liste des Client';
+//ClientListfrxRprt.Export(frxXLSExport1);
+//
+//MainForm.ClientTable.EnableControls;
 end;
 
 procedure TClientListF.ClearFilterBVLivPMenuClick(Sender: TObject);

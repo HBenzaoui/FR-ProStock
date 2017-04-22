@@ -767,7 +767,7 @@ object FOptions: TFOptions
           OnChanging = PoleDisplayActiveSdrChanging
         end
         object PoleDisplayCOMListCbx: TComboBox
-          Left = 21
+          Left = 22
           Top = 76
           Width = 392
           Height = 24
@@ -780,6 +780,19 @@ object FOptions: TFOptions
           ParentFont = False
           TabOrder = 1
           OnDropDown = PoleDisplayCOMListCbxDropDown
+          Items.Strings = (
+            'COM1'
+            'COM2'
+            'COM3'
+            'COM4'
+            'COM5'
+            'COM6'
+            'COM7'
+            'COM8'
+            'COM9'
+            'COM10'
+            'COM11'
+            'COM12')
         end
         object PoleDisplayMsgEdt: TEdit
           Left = 21
@@ -1012,6 +1025,19 @@ object FOptions: TFOptions
           ParentFont = False
           TabOrder = 2
           OnDropDown = TiroirCaisseCOMListCbxDropDown
+          Items.Strings = (
+            'COM1'
+            'COM2'
+            'COM3'
+            'COM4'
+            'COM5'
+            'COM6'
+            'COM7'
+            'COM8'
+            'COM9'
+            'COM10'
+            'COM11'
+            'COM12')
         end
         object TiroirCaisseCasePRINTRbtn: TcxRadioButton
           Tag = 1

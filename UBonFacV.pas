@@ -3,7 +3,7 @@
 interface
 
 uses
-  Winapi.Windows,
+  Winapi.Windows,  DBGridEhImpExp,ShellAPI,
   DateUtils,
   MMSystem,
    Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
@@ -77,6 +77,7 @@ type
     Label27: TLabel;
     Label28: TLabel;
     ApplicationEvents1: TApplicationEvents;
+    ProduitListSaveDg: TSaveDialog;
     procedure AddBVFacBtnClick(Sender: TObject);
     procedure DateStartBVFacDChange(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -974,15 +975,25 @@ end;
 
 procedure TBonFacVF.AdvToolButton1Click(Sender: TObject);
 begin
-MainForm.Bonv_facTable.DisableControls;
+ ProduitListSaveDg.FileName:= 'liste des FV';
+if ProduitListSaveDg.Execute then
+ begin
 
-    GettingData;
+  ExportDBGridEhToXlsx(BVFacListDBGridEh,ProduitListSaveDg.FileName+'.xlsx',[]);
+//  GetDir(0,Path);
+  ShellExecute(Handle, nil, PChar(ProduitListSaveDg.FileName + '.xlsx'), nil, nil, SW_SHOWNORMAL);
 
-BonFacVfrxRprt.PrepareReport;
-frxXLSExport1.FileName := 'liste des FV';
-BonFacVfrxRprt.Export(frxXLSExport1);
+  end;
 
-MainForm.Bonv_facTable.EnableControls;
+//MainForm.Bonv_facTable.DisableControls;
+//
+//    GettingData;
+//
+//BonFacVfrxRprt.PrepareReport;
+//frxXLSExport1.FileName := 'liste des FV';
+//BonFacVfrxRprt.Export(frxXLSExport1);
+//
+//MainForm.Bonv_facTable.EnableControls;
 end;
 
 procedure TBonFacVF.AdvToolButton2Click(Sender: TObject);

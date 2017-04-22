@@ -3,7 +3,8 @@
 interface
 
 uses
-  Winapi.Windows,MMSystem,  Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Winapi.Windows,MMSystem,  Winapi.Messages,DBGridEhImpExp,ShellAPI,
+   System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, DBGridEhGrouping, ToolCtrlsEh,
   DBGridEhToolCtrls, DynVarsEh, Data.DB, EhLibVCL, GridsEh, DBAxisGridsEh,
   DBGridEh, Vcl.StdCtrls, Vcl.ComCtrls, Vcl.WinXCtrls, Vcl.Buttons,
@@ -75,6 +76,7 @@ type
     Label27: TLabel;
     Label28: TLabel;
     ApplicationEvents1: TApplicationEvents;
+    ProduitListSaveDg: TSaveDialog;
     procedure AddBVCtrBtnClick(Sender: TObject);
     procedure EditBVCtrBtnClick(Sender: TObject);
     procedure DeleteBVCtrBtnClick(Sender: TObject);
@@ -925,15 +927,25 @@ end;
 
 procedure TBonCtrF.AdvToolButton1Click(Sender: TObject);
 begin
-MainForm.Bonv_ctrTable.DisableControls;
+ ProduitListSaveDg.FileName:= 'Listing Comptoir de vente';
+if ProduitListSaveDg.Execute then
+ begin
 
-    GettingData;
+  ExportDBGridEhToXlsx(BVCtrListDBGridEh,ProduitListSaveDg.FileName+'.xlsx',[]);
+//  GetDir(0,Path);
+  ShellExecute(Handle, nil, PChar(ProduitListSaveDg.FileName + '.xlsx'), nil, nil, SW_SHOWNORMAL);
 
-BonCtrfrxRprt.PrepareReport;
-frxXLSExport1.FileName := 'Listing Comptoir de vente';
-BonCtrfrxRprt.Export(frxXLSExport1);
+  end;
 
-MainForm.Bonv_ctrTable.EnableControls;
+//MainForm.Bonv_ctrTable.DisableControls;
+//
+//    GettingData;
+//
+//BonCtrfrxRprt.PrepareReport;
+//frxXLSExport1.FileName := 'Listing Comptoir de vente';
+//BonCtrfrxRprt.Export(frxXLSExport1);
+//
+//MainForm.Bonv_ctrTable.EnableControls;
 end;
 
 procedure TBonCtrF.AdvToolButton2Click(Sender: TObject);

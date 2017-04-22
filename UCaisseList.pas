@@ -3,7 +3,7 @@ unit UCaisseList;
 interface
 
 uses
-  Winapi.Windows,DateUtils, EhLibFireDAC,
+  Winapi.Windows,DateUtils, EhLibFireDAC,DBGridEhImpExp,ShellAPI,
    Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, DBGridEhGrouping, ToolCtrlsEh,
   DBGridEhToolCtrls, DynVarsEh, Data.DB, Vcl.StdCtrls, Vcl.ComCtrls,
@@ -88,6 +88,7 @@ type
     AdvToolButton2: TAdvToolButton;
     AdvToolButton3: TAdvToolButton;
     Panel9: TPanel;
+    ProduitListSaveDg: TSaveDialog;
     procedure CaisseListCbxDropDown(Sender: TObject);
     procedure CaisseListCbxChange(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -458,15 +459,25 @@ end;
 
 procedure TCaisseListF.AdvToolButton1Click(Sender: TObject);
 begin
-MainForm.Opt_cas_bnk_CaisseTable.DisableControls;
+ ProduitListSaveDg.FileName:= 'Etat de la Caisse';
+if ProduitListSaveDg.Execute then
+ begin
 
-    GettingData;
+  ExportDBGridEhToXlsx(CaisseListDBGridEh,ProduitListSaveDg.FileName+'.xlsx',[]);
+//  GetDir(0,Path);
+  ShellExecute(Handle, nil, PChar(ProduitListSaveDg.FileName + '.xlsx'), nil, nil, SW_SHOWNORMAL);
 
-CaisseListfrxRprt.PrepareReport;
-frxXLSExport1.FileName := 'Etat de la Caisse';
-CaisseListfrxRprt.Export(frxXLSExport1);
+  end;
 
-MainForm.Opt_cas_bnk_CaisseTable.EnableControls;
+//MainForm.Opt_cas_bnk_CaisseTable.DisableControls;
+//
+//    GettingData;
+//
+//CaisseListfrxRprt.PrepareReport;
+//frxXLSExport1.FileName := 'Etat de la Caisse';
+//CaisseListfrxRprt.Export(frxXLSExport1);
+//
+//MainForm.Opt_cas_bnk_CaisseTable.EnableControls;
 end;
 
 procedure TCaisseListF.AdvToolButton2Click(Sender: TObject);

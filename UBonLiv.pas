@@ -3,7 +3,8 @@
 interface
 
 uses
-  Winapi.Windows,MMSystem,  Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Winapi.Windows,MMSystem,  Winapi.Messages,DBGridEhImpExp,ShellAPI,
+   System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, DBGridEhGrouping, ToolCtrlsEh,
   DBGridEhToolCtrls, DynVarsEh, Data.DB, System.ImageList, Vcl.ImgList,
   acAlphaImageList, Vcl.ComCtrls, Vcl.StdCtrls, Vcl.WinXCtrls, Vcl.Buttons,
@@ -81,6 +82,7 @@ type
     Label26: TLabel;
     Label27: TLabel;
     Label28: TLabel;
+    ProduitListSaveDg: TSaveDialog;
     procedure ResearchBVLivEdtChange(Sender: TObject);
     procedure FisrtBARecbtnClick(Sender: TObject);
     procedure PreviosBARecbtnClick(Sender: TObject);
@@ -1328,15 +1330,26 @@ end;
 
 procedure TBonLivF.AdvToolButton1Click(Sender: TObject);
 begin
-MainForm.Bonv_livTable.DisableControls;
 
-    GettingData;
+ ProduitListSaveDg.FileName:= 'liste des BL';
+if ProduitListSaveDg.Execute then
+ begin
 
-BonLivfrxRprt.PrepareReport;
-frxXLSExport1.FileName := 'liste des BL';
-BonLivfrxRprt.Export(frxXLSExport1);
+  ExportDBGridEhToXlsx(BVLivListDBGridEh,ProduitListSaveDg.FileName+'.xlsx',[]);
+//  GetDir(0,Path);
+  ShellExecute(Handle, nil, PChar(ProduitListSaveDg.FileName + '.xlsx'), nil, nil, SW_SHOWNORMAL);
 
-MainForm.Bonv_livTable.EnableControls;
+  end;
+
+//MainForm.Bonv_livTable.DisableControls;
+//
+//    GettingData;
+//
+//BonLivfrxRprt.PrepareReport;
+//frxXLSExport1.FileName := 'liste des BL';
+//BonLivfrxRprt.Export(frxXLSExport1);
+//
+//MainForm.Bonv_livTable.EnableControls;
 end;
 
 procedure TBonLivF.AdvToolButton2Click(Sender: TObject);

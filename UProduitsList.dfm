@@ -345,9 +345,10 @@ object ProduitsListF: TProduitsListF
     FixedColor = clWindow
     Font.Charset = DEFAULT_CHARSET
     Font.Color = 4207405
-    Font.Height = 18
+    Font.Height = 16
     Font.Name = 'Segoe UI'
     Font.Style = []
+    FooterParams.RowHeight = 22
     FrozenCols = 2
     GridLineParams.DataHorzLines = True
     GridLineParams.DataVertLines = True
@@ -365,7 +366,7 @@ object ProduitsListF: TProduitsListF
     ParentFont = False
     ParentShowHint = False
     RowDetailPanel.Color = clBtnFace
-    RowHeight = 22
+    RowHeight = 18
     SearchPanel.FilterOnTyping = True
     ShowHint = True
     SumList.Active = True
@@ -398,7 +399,7 @@ object ProduitsListF: TProduitsListF
         FieldName = 'refer_p'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
-        Font.Height = 16
+        Font.Height = 14
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
         Footers = <>
@@ -407,7 +408,7 @@ object ProduitsListF: TProduitsListF
         Title.Caption = 'R'#233'ference'
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = 4207405
-        Title.Font.Height = 18
+        Title.Font.Height = 16
         Title.Font.Name = 'Helvetica LT Std'
         Title.Font.Style = []
         Title.Font.Quality = fqProof
@@ -420,7 +421,7 @@ object ProduitsListF: TProduitsListF
         FieldName = 'nom_p'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
-        Font.Height = 16
+        Font.Height = 14
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
         Footers = <>
@@ -429,7 +430,7 @@ object ProduitsListF: TProduitsListF
         Title.Caption = 'D'#233'signation'
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = 4207405
-        Title.Font.Height = 18
+        Title.Font.Height = 16
         Title.Font.Name = 'Helvetica LT Std'
         Title.Font.Style = []
         Title.Font.Quality = fqProof
@@ -444,7 +445,7 @@ object ProduitsListF: TProduitsListF
         FieldName = 'tva_p'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
-        Font.Height = 16
+        Font.Height = 14
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
         Footers = <>
@@ -453,7 +454,7 @@ object ProduitsListF: TProduitsListF
         Title.Caption = 'TVA %'
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = 4207405
-        Title.Font.Height = 18
+        Title.Font.Height = 16
         Title.Font.Name = 'Helvetica LT Std'
         Title.Font.Style = []
         Title.Font.Quality = fqProof
@@ -467,7 +468,7 @@ object ProduitsListF: TProduitsListF
         FieldName = 'famp'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
-        Font.Height = 16
+        Font.Height = 14
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
         Footers = <>
@@ -476,7 +477,7 @@ object ProduitsListF: TProduitsListF
         Title.Caption = 'Famille'
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = 4207405
-        Title.Font.Height = 18
+        Title.Font.Height = 16
         Title.Font.Name = 'Helvetica LT Std'
         Title.Font.Style = []
         Title.Font.Quality = fqProof
@@ -490,7 +491,7 @@ object ProduitsListF: TProduitsListF
         FieldName = 'sfamp'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
-        Font.Height = 16
+        Font.Height = 14
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
         Footer.Alignment = taRightJustify
@@ -508,7 +509,7 @@ object ProduitsListF: TProduitsListF
         Title.Caption = 'Sous Famille'
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = 4207405
-        Title.Font.Height = 18
+        Title.Font.Height = 16
         Title.Font.Name = 'Helvetica LT Std'
         Title.Font.Style = []
         Title.Font.Quality = fqProof
@@ -522,7 +523,7 @@ object ProduitsListF: TProduitsListF
         FieldName = 'prixht_p'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
-        Font.Height = 16
+        Font.Height = 14
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
         Footer.Color = 15722984
@@ -538,7 +539,7 @@ object ProduitsListF: TProduitsListF
         Title.Caption = 'PrixAHT'
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = 4207405
-        Title.Font.Height = 18
+        Title.Font.Height = 16
         Title.Font.Name = 'Helvetica LT Std'
         Title.Font.Style = []
         Title.Font.Quality = fqProof
@@ -552,7 +553,7 @@ object ProduitsListF: TProduitsListF
         FieldName = 'PrixATTC'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
-        Font.Height = 16
+        Font.Height = 14
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
         Font.Quality = fqProof
@@ -570,7 +571,7 @@ object ProduitsListF: TProduitsListF
         Title.Alignment = taCenter
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = 4207405
-        Title.Font.Height = 18
+        Title.Font.Height = 16
         Title.Font.Name = 'Helvetica LT Std'
         Title.Font.Style = []
         Title.Font.Quality = fqProof
@@ -583,6 +584,11 @@ object ProduitsListF: TProduitsListF
         DynProps = <>
         EditButtons = <>
         FieldName = 'ValueStock'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 14
+        Font.Name = 'Segoe UI'
+        Font.Style = []
         Footer.Color = 15722984
         Footer.DisplayFormat = '#,##0.00'
         Footer.FieldName = 'ValueStock'
@@ -596,6 +602,12 @@ object ProduitsListF: TProduitsListF
         Layout = tlCenter
         Title.Alignment = taCenter
         Title.Caption = 'Valeur de Stock'
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = 4207405
+        Title.Font.Height = 16
+        Title.Font.Name = 'Roboto'
+        Title.Font.Style = []
+        Title.Font.Quality = fqProof
         Visible = False
         Width = 130
       end
@@ -606,7 +618,7 @@ object ProduitsListF: TProduitsListF
         FieldName = 'prixvd_p'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
-        Font.Height = 16
+        Font.Height = 14
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
         Font.Quality = fqProof
@@ -625,7 +637,7 @@ object ProduitsListF: TProduitsListF
         Title.Caption = 'PrixVHT D'#233'tail'
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = 4207405
-        Title.Font.Height = 18
+        Title.Font.Height = 16
         Title.Font.Name = 'Helvetica LT Std'
         Title.Font.Style = []
         Title.Font.Quality = fqProof
@@ -639,7 +651,7 @@ object ProduitsListF: TProduitsListF
         FieldName = 'PrixVTTCD'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
-        Font.Height = 16
+        Font.Height = 14
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
         Font.Quality = fqProof
@@ -660,7 +672,7 @@ object ProduitsListF: TProduitsListF
         Title.EndEllipsis = True
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = 4207405
-        Title.Font.Height = 18
+        Title.Font.Height = 16
         Title.Font.Name = 'Helvetica LT Std'
         Title.Font.Style = []
         Title.Font.Quality = fqProof
@@ -675,7 +687,7 @@ object ProduitsListF: TProduitsListF
         FieldName = 'prixvr_p'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
-        Font.Height = 16
+        Font.Height = 14
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
         Font.Quality = fqProof
@@ -694,7 +706,7 @@ object ProduitsListF: TProduitsListF
         Title.Caption = 'PrixVHT Rev'
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = 4207405
-        Title.Font.Height = 18
+        Title.Font.Height = 16
         Title.Font.Name = 'Helvetica LT Std'
         Title.Font.Style = []
         Title.Font.Quality = fqProof
@@ -708,7 +720,7 @@ object ProduitsListF: TProduitsListF
         FieldName = 'PrixVTTCR'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
-        Font.Height = 16
+        Font.Height = 14
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
         Font.Quality = fqProof
@@ -728,7 +740,7 @@ object ProduitsListF: TProduitsListF
         Title.Caption = 'PrixVTTC Rev'
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = 4207405
-        Title.Font.Height = 18
+        Title.Font.Height = 16
         Title.Font.Name = 'Helvetica LT Std'
         Title.Font.Style = []
         Title.Font.Quality = fqProof
@@ -742,7 +754,7 @@ object ProduitsListF: TProduitsListF
         FieldName = 'prixvg_p'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
-        Font.Height = 16
+        Font.Height = 14
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
         Font.Quality = fqProof
@@ -761,7 +773,7 @@ object ProduitsListF: TProduitsListF
         Title.Caption = 'PrixVHT Gros'
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = 4207405
-        Title.Font.Height = 18
+        Title.Font.Height = 16
         Title.Font.Name = 'Helvetica LT Std'
         Title.Font.Style = []
         Title.Font.Quality = fqProof
@@ -775,7 +787,7 @@ object ProduitsListF: TProduitsListF
         FieldName = 'PrixVTTCG'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
-        Font.Height = 16
+        Font.Height = 14
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
         Font.Quality = fqProof
@@ -795,7 +807,7 @@ object ProduitsListF: TProduitsListF
         Title.Caption = 'PrixVTTC Gros'
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = 4207405
-        Title.Font.Height = 18
+        Title.Font.Height = 16
         Title.Font.Name = 'Helvetica LT Std'
         Title.Font.Style = []
         Title.Font.Quality = fqProof
@@ -809,7 +821,7 @@ object ProduitsListF: TProduitsListF
         FieldName = 'prixva_p'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
-        Font.Height = 16
+        Font.Height = 14
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
         Footers = <>
@@ -818,7 +830,7 @@ object ProduitsListF: TProduitsListF
         Title.Caption = 'PrixVHT Autre 1'
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = 4207405
-        Title.Font.Height = 18
+        Title.Font.Height = 16
         Title.Font.Name = 'Helvetica LT Std'
         Title.Font.Style = []
         Title.Font.Quality = fqProof
@@ -833,7 +845,7 @@ object ProduitsListF: TProduitsListF
         FieldName = 'PrixVTTCA'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
-        Font.Height = 16
+        Font.Height = 14
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
         Footers = <>
@@ -842,7 +854,7 @@ object ProduitsListF: TProduitsListF
         Title.Caption = 'PrixVTTC Autre 1'
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = 4207405
-        Title.Font.Height = 18
+        Title.Font.Height = 16
         Title.Font.Name = 'Helvetica LT Std'
         Title.Font.Style = []
         Title.Font.Quality = fqProof
@@ -857,7 +869,7 @@ object ProduitsListF: TProduitsListF
         FieldName = 'prixva2_p'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
-        Font.Height = 16
+        Font.Height = 14
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
         Footers = <>
@@ -866,7 +878,7 @@ object ProduitsListF: TProduitsListF
         Title.Caption = 'PrixVHT Autre 2'
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = 4207405
-        Title.Font.Height = 18
+        Title.Font.Height = 16
         Title.Font.Name = 'Helvetica LT Std'
         Title.Font.Style = []
         Title.Font.Quality = fqProof
@@ -881,7 +893,7 @@ object ProduitsListF: TProduitsListF
         FieldName = 'PrixVTTCA2'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
-        Font.Height = 16
+        Font.Height = 14
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
         Footers = <>
@@ -890,7 +902,7 @@ object ProduitsListF: TProduitsListF
         Title.Caption = 'PrixVTTC Autre 2'
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = 4207405
-        Title.Font.Height = 18
+        Title.Font.Height = 16
         Title.Font.Name = 'Helvetica LT Std'
         Title.Font.Style = []
         Title.Font.Quality = fqProof
@@ -907,7 +919,7 @@ object ProduitsListF: TProduitsListF
         FieldName = 'QutDispo'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
-        Font.Height = 16
+        Font.Height = 14
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
         Footer.Color = 15722984
@@ -926,7 +938,7 @@ object ProduitsListF: TProduitsListF
         Title.Caption = 'Q.Dispo'
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = 4207405
-        Title.Font.Height = 18
+        Title.Font.Height = 16
         Title.Font.Name = 'Helvetica LT Std'
         Title.Font.Style = []
         Title.Font.Quality = fqProof
@@ -940,7 +952,7 @@ object ProduitsListF: TProduitsListF
         FieldName = 'unit'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
-        Font.Height = 16
+        Font.Height = 14
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
         Footers = <>
@@ -949,7 +961,7 @@ object ProduitsListF: TProduitsListF
         Title.Caption = 'Unit'#233
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = 4207405
-        Title.Font.Height = 18
+        Title.Font.Height = 16
         Title.Font.Name = 'Helvetica LT Std'
         Title.Font.Style = []
         Title.Font.Quality = fqProof
@@ -962,7 +974,7 @@ object ProduitsListF: TProduitsListF
         FieldName = 'fourp'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
-        Font.Height = 16
+        Font.Height = 14
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
         Footers = <>
@@ -971,7 +983,7 @@ object ProduitsListF: TProduitsListF
         Title.Caption = 'Fournisseur'
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = 4207405
-        Title.Font.Height = 18
+        Title.Font.Height = 16
         Title.Font.Name = 'Helvetica LT Std'
         Title.Font.Style = []
         Title.Font.Quality = fqProof
@@ -984,7 +996,7 @@ object ProduitsListF: TProduitsListF
         FieldName = 'perissable_p'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
-        Font.Height = 16
+        Font.Height = 14
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
         Footers = <>
@@ -993,7 +1005,7 @@ object ProduitsListF: TProduitsListF
         Title.Caption = 'P'#233'rissable'
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = 4207405
-        Title.Font.Height = 18
+        Title.Font.Height = 16
         Title.Font.Name = 'Helvetica LT Std'
         Title.Font.Style = []
         Title.Font.Quality = fqProof
@@ -1008,7 +1020,7 @@ object ProduitsListF: TProduitsListF
         FieldName = 'local'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
-        Font.Height = 16
+        Font.Height = 14
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
         Footers = <>
@@ -1017,12 +1029,34 @@ object ProduitsListF: TProduitsListF
         Title.Caption = 'Localisation'
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = 4207405
-        Title.Font.Height = 18
+        Title.Font.Height = 16
         Title.Font.Name = 'Helvetica LT Std'
         Title.Font.Style = []
         Title.Font.Quality = fqProof
         Width = 150
         WordWrap = False
+      end
+      item
+        Alignment = taCenter
+        DynProps = <>
+        EditButtons = <>
+        FieldName = 'codebar_p'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 14
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        Footers = <>
+        Layout = tlCenter
+        Title.Alignment = taCenter
+        Title.Caption = 'Code '#226' Barre'
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = 4207405
+        Title.Font.Height = 16
+        Title.Font.Name = 'Helvetica LT Std'
+        Title.Font.Style = []
+        Title.Font.Quality = fqProof
+        Width = 200
       end>
     object RowDetailData: TRowDetailPanelControlEh
     end
@@ -3506,5 +3540,12 @@ object ProduitsListF: TProduitsListF
     OnShortCut = ApplicationEvents1ShortCut
     Left = 770
     Top = 256
+  end
+  object ProduitListSaveDg: TSaveDialog
+    Filter = 
+      'Excel Workbook (*.xlsx)|*.xlsx|Excel  97- 2003 Workbook (*.xls)|' +
+      '*.xls|CSV (Comma delimited) (*.csv)|*.csv'
+    Left = 372
+    Top = 612
   end
 end

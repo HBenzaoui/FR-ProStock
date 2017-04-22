@@ -3,7 +3,7 @@ unit UBankList;
 interface
 
 uses
-  Winapi.Windows,DateUtils,EhLibFireDAC,
+  Winapi.Windows,DateUtils,EhLibFireDAC, DBGridEhImpExp,ShellAPI,
    Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, DBGridEhGrouping, ToolCtrlsEh,
   DBGridEhToolCtrls, DynVarsEh, Data.DB, Vcl.StdCtrls, Vcl.ComCtrls,
@@ -88,6 +88,7 @@ type
     AdvToolButton2: TAdvToolButton;
     AdvToolButton3: TAdvToolButton;
     Panel9: TPanel;
+    ProduitListSaveDg: TSaveDialog;
     procedure FormShow(Sender: TObject);
     procedure BankListCbxDropDown(Sender: TObject);
     procedure DaysBankListCbxChange(Sender: TObject);
@@ -647,15 +648,25 @@ end;
 
 procedure TBankListF.AdvToolButton1Click(Sender: TObject);
 begin
-MainForm.Opt_cas_bnk_BankTable.DisableControls;
+ ProduitListSaveDg.FileName:= 'Relevé des Comptes';
+if ProduitListSaveDg.Execute then
+ begin
 
-    GettingData;
+  ExportDBGridEhToXlsx(CaisseListDBGridEh,ProduitListSaveDg.FileName+'.xlsx',[]);
+//  GetDir(0,Path);
+  ShellExecute(Handle, nil, PChar(ProduitListSaveDg.FileName + '.xlsx'), nil, nil, SW_SHOWNORMAL);
 
-BankListfrxRprt.PrepareReport;
-frxXLSExport1.FileName := 'Relevé des Comptes';
-BankListfrxRprt.Export(frxXLSExport1);
+  end;
 
-MainForm.Opt_cas_bnk_BankTable.EnableControls;
+//MainForm.Opt_cas_bnk_BankTable.DisableControls;
+//
+//    GettingData;
+//
+//BankListfrxRprt.PrepareReport;
+//frxXLSExport1.FileName := 'Relevé des Comptes';
+//BankListfrxRprt.Export(frxXLSExport1);
+//
+//MainForm.Opt_cas_bnk_BankTable.EnableControls;
 end;
 
 procedure TBankListF.AdvToolButton2Click(Sender: TObject);

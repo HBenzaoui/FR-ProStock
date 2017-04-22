@@ -570,42 +570,42 @@ end;
 
 
 procedure TFOptions.PoleDisplayCOMListCbxDropDown(Sender: TObject);
-var
-  XX, Err: Integer;
+//var
+//  XX, Err: Integer;
   begin
-    PoleDisplayCOMListCbx.Items.Clear;
-    for XX := 1 to 20 do
-    begin
-      Err := CheckCom(XX);
-      if (Err = 0) or (Err = ERROR_ACCESS_DENIED) then
-      begin
-        {the Port exists, if  Err = ERROR_ACCESS_DENIED then the port is already open}
-//        ShowMessage('Port COM'+ IntToStr(xx)) ;
-        PoleDisplayCOMListCbx.Items.Add('COM'+IntToStr(xx));
-        //  Break
-        end;
-
-        end;
+//    PoleDisplayCOMListCbx.Items.Clear;
+//    for XX := 1 to 20 do
+//    begin
+//      Err := CheckCom(XX);
+//      if (Err = 0) or (Err = ERROR_ACCESS_DENIED) then
+//      begin
+//        {the Port exists, if  Err = ERROR_ACCESS_DENIED then the port is already open}
+////        ShowMessage('Port COM'+ IntToStr(xx)) ;
+//        PoleDisplayCOMListCbx.Items.Add('COM'+IntToStr(xx));
+//        //  Break
+//        end;
+//
+//        end;
 
 end;
 
 procedure TFOptions.TiroirCaisseCOMListCbxDropDown(Sender: TObject);
-var
-  XX, Err: Integer;
+//var
+//  XX, Err: Integer;
   begin
-    TiroirCaisseCOMListCbx.Items.Clear;
-    for XX := 1 to 20 do
-    begin
-      Err := CheckCom(XX);
-      if (Err = 0) or (Err = ERROR_ACCESS_DENIED) then
-      begin
-        {the Port exists, if  Err = ERROR_ACCESS_DENIED then the port is already open}
-//        ShowMessage('Port COM'+ IntToStr(xx)) ;
-        TiroirCaisseCOMListCbx.Items.Add('COM'+IntToStr(xx));
-        //  Break
-        end;
-
-        end;
+//    TiroirCaisseCOMListCbx.Items.Clear;
+//    for XX := 1 to 20 do
+//    begin
+//      Err := CheckCom(XX);
+//      if (Err = 0) or (Err = ERROR_ACCESS_DENIED) then
+//      begin
+//        {the Port exists, if  Err = ERROR_ACCESS_DENIED then the port is already open}
+////        ShowMessage('Port COM'+ IntToStr(xx)) ;
+//        TiroirCaisseCOMListCbx.Items.Add('COM'+IntToStr(xx));
+//        //  Break
+//        end;
+//
+//        end;
 
 end;
 

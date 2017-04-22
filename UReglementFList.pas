@@ -3,7 +3,7 @@
 interface
 
 uses
-  Winapi.Windows,DateUtils,
+  Winapi.Windows,DateUtils, DBGridEhImpExp,ShellAPI,
    Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, DBGridEhGrouping, ToolCtrlsEh,
   DBGridEhToolCtrls, DynVarsEh, Data.DB, EhLibVCL, GridsEh, DBAxisGridsEh,
@@ -71,6 +71,7 @@ type
     Label27: TLabel;
     Label28: TLabel;
     ApplicationEvents1: TApplicationEvents;
+    ProduitListSaveDg: TSaveDialog;
     procedure AddBARecBtnClick(Sender: TObject);
     procedure EditBARecBtnClick(Sender: TObject);
     procedure DeleteBARecBtnClick(Sender: TObject);
@@ -647,15 +648,25 @@ end;
 
 procedure TReglementFListF.AdvToolButton1Click(Sender: TObject);
 begin
-MainForm.RegfournisseurTable.DisableControls;
+ ProduitListSaveDg.FileName:= 'Liste Règlement Fournisseur';
+if ProduitListSaveDg.Execute then
+ begin
 
-    GettingData;
+  ExportDBGridEhToXlsx(BARecListDBGridEh,ProduitListSaveDg.FileName+'.xlsx',[]);
+//  GetDir(0,Path);
+  ShellExecute(Handle, nil, PChar(ProduitListSaveDg.FileName + '.xlsx'), nil, nil, SW_SHOWNORMAL);
 
-RegFListfrxRprt.PrepareReport;
-frxXLSExport1.FileName := 'Liste Règlement Fournisseur';
-RegFListfrxRprt.Export(frxXLSExport1);
+  end;
 
-MainForm.RegfournisseurTable.EnableControls;
+//MainForm.RegfournisseurTable.DisableControls;
+//
+//    GettingData;
+//
+//RegFListfrxRprt.PrepareReport;
+//frxXLSExport1.FileName := 'Liste Règlement Fournisseur';
+//RegFListfrxRprt.Export(frxXLSExport1);
+//
+//MainForm.RegfournisseurTable.EnableControls;
 end;
 
 procedure TReglementFListF.AdvToolButton2Click(Sender: TObject);
