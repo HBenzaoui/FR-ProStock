@@ -162,7 +162,7 @@ implementation
 
 
 uses MMSystem,Threading,
-  UMainF, UProduitGestion, USplashPrinting, USplash;
+  UMainF, UProduitGestion, USplashPrinting, USplash, UWorkingSplash;
 
 {$R *.dfm}
 
@@ -816,11 +816,19 @@ end;
 procedure TProduitsListF.ExporterverExcel1Click(Sender: TObject);
 var
   xls,xlw: Variant;
+ ImportTask: ITask;
 begin
 
  if ProduitListOpnDg.Execute then
  begin
-
+            FWorkingSplash.dxActivityIndicator1.Active:= True;
+            FWorkingSplash.Left := Screen.Width div 2 - (FWorkingSplash.Width div 2);
+            FWorkingSplash.Top :=  (Screen.Height- FWorkingSplash.Height) div 2;
+            FWorkingSplash.Show;
+//
+     ImportTask := TTask.Create (procedure ()
+  begin
+   try
   xls := CreateOleObject('Excel.Application');
   xls.DisplayAlerts := False  ;
   xlw := xls.WorkBooks.Open(ProduitListOpnDg.FileName);
@@ -830,6 +838,7 @@ begin
   xlw := UnAssigned;
   xls.Quit;
   xls := UnAssigned;
+
 
   ConvertANSIFileToUTF8File(GetCurrentDir+ '\imported.csv',GetCurrentDir+ '\imported.csv');
 
@@ -867,6 +876,28 @@ begin
     deletefile(GetCurrentDir+ '\imported.csv');
 
     RefreshGirdBtnClick(Sender);
+
+
+
+    except
+
+      on E : Exception do
+      begin
+      sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+      ShowMessage(E.ClassName+' error raised, with message : '+E.Message);
+          FWorkingSplash.Close;
+          FWorkingSplash.WorkingNormalForms;
+         Exit
+      end;
+
+    end;
+
+
+               FWorkingSplash.Close;
+            FWorkingSplash.WorkingNormalForms;
+
+   end);
+          ImportTask.Start;
 
  end;
 

@@ -942,7 +942,7 @@ type
     TimerStart: TDateTime;
 //    procedure ActiveTables;
 //    procedure InactiveTables;
-    procedure RerfreshTables;
+
     procedure RefreshCNotification;
 
    public
@@ -950,6 +950,7 @@ type
    
     procedure ActiveTables;
     procedure InactiveTables;
+    procedure RerfreshTables;
 
      procedure WMUserCloseTab(var Message: TMessage); message
     WM_USER_CLOSETAB;
@@ -3534,18 +3535,17 @@ procedure TMainForm.rparation1Click(Sender: TObject);
 var
  BackupTask: ITask;
 begin
-             GrayForms;
-            FWorkingSplash := TFWorkingSplash.Create(MainForm);
+//             GrayForms;
+//            FWorkingSplash := TFWorkingSplash.Create(MainForm);
             FWorkingSplash.dxActivityIndicator1.Active:= True;
             FWorkingSplash.Left := Screen.Width div 2 - (FWorkingSplash.Width div 2);
             FWorkingSplash.Top :=  (Screen.Height- FWorkingSplash.Height) div 2;
-            FWorkingSplash.Show; 
+            FWorkingSplash.Show;
           
  
    BackupTask := TTask.Create (procedure ()
    begin
-        
-//        dxActivityIndicator1.Active:= True;
+
 
         SQLQuery.Active:= False;
         SQLQuery.SQL.Clear;
@@ -3562,8 +3562,10 @@ begin
          SQLQuery.ResourceOptions.CmdExecMode  := amBlocking;
         SQLQuery.ResourceOptions.CmdExecTimeout :=$FFFFFFFF ; 
 //        ActiveTables;
+
           FWorkingSplash.Close;
-          NormalForms;
+          FWorkingSplash.WorkingNormalForms;
+//          NormalForms;
 
 //         dxActivityIndicator1.Active:= False;
 
@@ -3572,7 +3574,7 @@ begin
    end);
           BackupTask.Start;
 
-      
+
 end;
 
 procedure TMainForm.RGClientMainFMnmClick(Sender: TObject);

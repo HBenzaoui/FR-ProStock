@@ -27,11 +27,15 @@ type
     dxActivityIndicator1: TdxActivityIndicator;
     procedure FormCreate(Sender: TObject);
     procedure FormActivate(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     procedure CreateParams(var Params: TCreateParams);
+
     { Private declarations }
   public
     { Public declarations }
+    procedure WorkingNormalForms;
   end;
 
 var
@@ -40,6 +44,61 @@ var
 implementation
 
 {$R *.dfm}
+uses Contnrs, Types, UOptions;
+
+var
+  gGrayForms: TComponentList;
+
+procedure WorkingGrayForms;
+var
+  loop: integer;
+  wScrnFrm: TForm;
+  wForm: TForm;
+//  wPoint: TPoint;
+  wScreens: TList;
+begin
+  if not assigned(gGrayForms) then
+  begin
+    gGrayForms := TComponentList.Create;
+    gGrayForms.OwnsObjects := true;
+    wScreens := TList.Create;
+    try
+      for loop := 0 to 0 do
+        wScreens.Add(Screen.Forms[loop]);
+      for loop := 0 to 0 do
+      begin
+        wScrnFrm := wScreens[loop];
+        if wScrnFrm.Visible then
+        begin
+          wForm := TForm.Create(wScrnFrm);
+       ///wForm.Align:= alClient;
+          wForm.WindowState := wsMaximized;
+          gGrayForms.Add(wForm);
+          wForm.Position := poOwnerFormCenter;
+          wForm.AlphaBlend := true;
+          wForm.AlphaBlendValue := 80;
+          wForm.Color := clBlack;
+          wForm.BorderStyle := bsNone;
+          wForm.StyleElements := [];
+          wForm.Enabled := false;
+          wForm.BoundsRect := wScrnFrm.BoundsRect;
+          SetWindowLong(wForm.Handle, GWL_HWNDPARENT, wScrnFrm.Handle);
+          SetWindowPos(wForm.Handle, wScrnFrm.Handle, 0, 0, 0, 0,
+            SWP_NOSIZE or SWP_NOMOVE);
+          wForm.Visible := true;
+        end;
+      end;
+    finally
+      wScreens.free;
+    end;
+  end;
+end;
+
+procedure TFWorkingSplash.WorkingNormalForms;
+begin
+  FreeAndNil(gGrayForms);
+end;
+
 
 
 procedure TFWorkingSplash.CreateParams(var Params: TCreateParams);
@@ -51,7 +110,17 @@ end;
 
 procedure TFWorkingSplash.FormActivate(Sender: TObject);
 begin
-//  SetWindowPos(FWorkingSplash.Handle,HWND_TOPMOST,0,0,0,0,HWND_TOPMOST OR  SWP_NOACTIVATE or SWP_NOMOVE or SWP_NOSIZE);
+//  if Assigned(FOptions) then
+//  begin
+//  SetWindowPos(FOptions.Handle, HWND_NOTOPMOST, 0, 0, 0, 0,SWP_NOMOVE or SWP_NOSIZE);
+//  end;
+
+  SetWindowPos(FWorkingSplash.Handle,HWND_TOPMOST,0,0,0,0,HWND_TOPMOST OR  SWP_NOACTIVATE or SWP_NOMOVE or SWP_NOSIZE);
+end;
+
+procedure TFWorkingSplash.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+//WorkingNormalForms;
 end;
 
 procedure TFWorkingSplash.FormCreate(Sender: TObject);
@@ -76,6 +145,13 @@ begin
 
 //  Top:=  (Screen.Width-Width)  div 2;
 //  Left:= (Screen.Height-Height) div 2;
+end;
+
+procedure TFWorkingSplash.FormShow(Sender: TObject);
+begin
+
+
+WorkingGrayForms;
 end;
 
 end.

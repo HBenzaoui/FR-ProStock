@@ -92,12 +92,69 @@ type
     PoleDisplayMsg2Edt: TEdit;
     PoleDisplayTotalLbl: TLabel;
     PoleDisplayTotalEdt: TComboBox;
-    RandomCBProduitGBtn: TAdvToolButton;
     TestPoleBtn: TsSpeedButton;
     TestPoleLbl: TLabel;
     TestTeroirBtn: TsSpeedButton;
     TestTeroirLbl: TLabel;
     ComPort1: TComPort;
+    sTabSheet2: TsTabSheet;
+    Panel11: TPanel;
+    Label13: TLabel;
+    Label15: TLabel;
+    ResetDBBtn: TsSpeedButton;
+    Label21: TLabel;
+    AllSdr0: TsSlider;
+    Panel15: TPanel;
+    Panel16: TPanel;
+    Panel17: TPanel;
+    Label16: TLabel;
+    CtrSdr1: TsSlider;
+    Label18: TLabel;
+    BLSdr2: TsSlider;
+    Label19: TLabel;
+    FVSdr4: TsSlider;
+    BRSdr3: TsSlider;
+    Label20: TLabel;
+    Label22: TLabel;
+    RFSdr8: TsSlider;
+    RCSdr7: TsSlider;
+    Label23: TLabel;
+    FPSdr6: TsSlider;
+    Label24: TLabel;
+    Label25: TLabel;
+    FASdr5: TsSlider;
+    BankSdr10: TsSlider;
+    Label26: TLabel;
+    Label27: TLabel;
+    CaisseSdr9: TsSlider;
+    Label28: TLabel;
+    Label29: TLabel;
+    Label30: TLabel;
+    Label31: TLabel;
+    Label32: TLabel;
+    Label33: TLabel;
+    Label34: TLabel;
+    Label35: TLabel;
+    Label36: TLabel;
+    Label37: TLabel;
+    ClientCreditSdr20: TsSlider;
+    localSdr19: TsSlider;
+    ClientSdr12: TsSlider;
+    ChargeSdr14: TsSlider;
+    FourSdr13: TsSlider;
+    UniteSdr18: TsSlider;
+    PSFamileSdr17: TsSlider;
+    PFamileSdr16: TsSlider;
+    PerteSdr15: TsSlider;
+    ProduitSdr11: TsSlider;
+    ResetDBPaswordGEdt: TEdit;
+    Label38: TLabel;
+    Label39: TLabel;
+    FourCreditSdr21: TsSlider;
+    sTabSheet3: TsTabSheet;
+    Panel12: TPanel;
+    Panel13: TPanel;
+    Label40: TLabel;
     procedure FormShow(Sender: TObject);
     procedure OKFPrintingBtnClick(Sender: TObject);
     procedure ImageCompanyOptionImgMouseEnter(Sender: TObject);
@@ -117,6 +174,12 @@ type
     procedure PoleDisplayCOMListCbxDropDown(Sender: TObject);
     procedure TestPoleBtnClick(Sender: TObject);
     procedure TestTeroirBtnClick(Sender: TObject);
+    procedure AllSdr0Changing(Sender: TObject; var CanChange: Boolean);
+    procedure ResetDBBtnClick(Sender: TObject);
+    procedure ResetDBPaswordGEdtChange(Sender: TObject);
+    procedure ProduitSdr11Changing(Sender: TObject; var CanChange: Boolean);
+    procedure ClientSdr12Changing(Sender: TObject; var CanChange: Boolean);
+    procedure FourSdr13Changing(Sender: TObject; var CanChange: Boolean);
   private
 
     { Private declarations }
@@ -129,13 +192,182 @@ var
 
 implementation
 
+uses
+Printers,IniFiles, UClientGestion, UMainF, UWorkingSplash;
+
+
 {$R *.dfm}
 
-uses Printers,IniFiles, UClientGestion, UMainF;
+procedure TFOptions.AllSdr0Changing(Sender: TObject; var CanChange: Boolean);
+begin
+ if AllSdr0.SliderOn = False then
+  begin
+    CtrSdr1.SliderOn:= True;
+    BLSdr2.SliderOn:= True;
+    BRSdr3.SliderOn:= True;
+    FVSdr4.SliderOn:= True;
+    FASdr5.SliderOn:= True;
+    FPSdr6.SliderOn:= True;
+    RCSdr7.SliderOn:= True;
+    RFSdr8.SliderOn:= True;
+    CaisseSdr9.SliderOn:= True;
+    BankSdr10.SliderOn:= True;
+    ProduitSdr11.SliderOn:= True;
+    ClientSdr12.SliderOn:= True;
+    FourSdr13.SliderOn:= True;
+    ChargeSdr14.SliderOn:= True;
+    PerteSdr15.SliderOn:= True;
+    PFamileSdr16.SliderOn:= True;
+    PSFamileSdr17.SliderOn:= True;
+    UniteSdr18.SliderOn:= True;
+    localSdr19.SliderOn:= True;
+    ClientCreditSdr20.SliderOn:= True;
+    FourCreditSdr21.SliderOn:= True;
+
+
+
+    CtrSdr1.Enabled:= False;
+    BLSdr2.Enabled:= False;
+    BRSdr3.Enabled:= False;
+    FVSdr4.Enabled:= False;
+    FASdr5.Enabled:= False;
+    FPSdr6.Enabled:= False;
+    RCSdr7.Enabled:= False;
+    RFSdr8.Enabled:= False;
+    CaisseSdr9.Enabled:= False;
+    BankSdr10.Enabled:= False;
+    ProduitSdr11.Enabled:= False;
+    ClientSdr12.Enabled:= False;
+    FourSdr13.Enabled:= False;
+    ChargeSdr14.Enabled:= False;
+    PerteSdr15.Enabled:= False;
+    PFamileSdr16.Enabled:= False;
+    PSFamileSdr17.Enabled:= False;
+    UniteSdr18.Enabled:= False;
+    localSdr19.Enabled:= False;
+    ClientCreditSdr20.Enabled:= False;
+    FourCreditSdr21.Enabled:= False;
+
+  end else
+      begin
+          CtrSdr1.SliderOn:= False;
+          BLSdr2.SliderOn:= False;
+          BRSdr3.SliderOn:= False;
+          FVSdr4.SliderOn:= False;
+          FASdr5.SliderOn:= False;
+          FPSdr6.SliderOn:= False;
+          RCSdr7.SliderOn:= False;
+          RFSdr8.SliderOn:= False;
+          CaisseSdr9.SliderOn:= False;
+          BankSdr10.SliderOn:= False;
+          ProduitSdr11.SliderOn:= False;
+          ClientSdr12.SliderOn:= False;
+          FourSdr13.SliderOn:= False;
+          ChargeSdr14.SliderOn:= False;
+          PerteSdr15.SliderOn:= False;
+          PFamileSdr16.SliderOn:= False;
+          PSFamileSdr17.SliderOn:= False;
+          UniteSdr18.SliderOn:= False;
+          localSdr19.SliderOn:= False;
+          ClientCreditSdr20.SliderOn:= False;
+          FourCreditSdr21.SliderOn:= False;
+
+
+          CtrSdr1.Enabled:= True;
+          BLSdr2.Enabled:= True;
+          BRSdr3.Enabled:= True;
+          FVSdr4.Enabled:= True;
+          FASdr5.Enabled:= True;
+          FPSdr6.Enabled:= True;
+          RCSdr7.Enabled:= True;
+          RFSdr8.Enabled:= True;
+          CaisseSdr9.Enabled:= True;
+          BankSdr10.Enabled:= True;
+          ProduitSdr11.Enabled:= True;
+          ClientSdr12.Enabled:= True;
+          FourSdr13.Enabled:= True;
+          ChargeSdr14.Enabled:= True;
+          PerteSdr15.Enabled:= True;
+          PFamileSdr16.Enabled:= True;
+          PSFamileSdr17.Enabled:= True;
+          UniteSdr18.Enabled:= True;
+          localSdr19.Enabled:= True;
+          ClientCreditSdr20.Enabled:= True;
+          FourCreditSdr21.Enabled:= True;
+      end;
+end;
+
+procedure TFOptions.ClientSdr12Changing(Sender: TObject;
+  var CanChange: Boolean);
+begin
+   if ClientSdr12.SliderOn = False then
+  begin
+    CtrSdr1.SliderOn:= True;
+    BLSdr2.SliderOn:= True;
+    FVSdr4.SliderOn:= True;
+    FPSdr6.SliderOn:= True;
+    RCSdr7.SliderOn:= True;
+
+        CtrSdr1.Enabled:= False;
+        BLSdr2.Enabled:= False;
+        FVSdr4.Enabled:= False;
+        FPSdr6.Enabled:= False;
+        RCSdr7.Enabled:= False;
+
+  end else
+      begin
+
+       if ProduitSdr11.SliderOn <> true then
+       begin
+          CtrSdr1.SliderOn:= False;
+          BLSdr2.SliderOn:= False;
+          FVSdr4.SliderOn:= False;
+          FPSdr6.SliderOn:= False;
+
+        CtrSdr1.Enabled:= True;
+        BLSdr2.Enabled:= True;
+        FVSdr4.Enabled:= True;
+        FPSdr6.Enabled:= True;
+
+       end;
+          RCSdr7.SliderOn:= False;
+          RCSdr7.Enabled:= True;
+
+      end;
+end;
 
 procedure TFOptions.FormClose(Sender: TObject; var Action: TCloseAction);
+Var CanChange : Boolean;
 begin
 NormalForms;
+
+
+  ResetDBPaswordGEdt.Text:='';
+  ResetDBPaswordGEdtChange(Sender);
+
+  AllSdr0.SliderOn:= False;
+  CtrSdr1.SliderOn:= False;
+  BLSdr2.SliderOn:= False;
+  BRSdr3.SliderOn:= False;
+  FVSdr4.SliderOn:= False;
+  FASdr5.SliderOn:= False;
+  FPSdr6.SliderOn:= False;
+  RCSdr7.SliderOn:= False;
+  RFSdr8.SliderOn:= False;
+  CaisseSdr9.SliderOn:= False;
+  BankSdr10.SliderOn:= False;
+  ProduitSdr11.SliderOn:= False;
+  ClientSdr12.SliderOn:= False;
+  FourSdr13.SliderOn:= False;
+  ChargeSdr14.SliderOn:= False;
+  PerteSdr15.SliderOn:= False;
+  PFamileSdr16.SliderOn:= False;
+  PSFamileSdr17.SliderOn:= False;
+  UniteSdr18.SliderOn:= False;
+  localSdr19.SliderOn:= False;
+  ClientCreditSdr20.SliderOn:= False;
+  FourCreditSdr21.SliderOn:= False;
+
 end;
 
 procedure TFOptions.FormCreate(Sender: TObject);
@@ -288,6 +520,34 @@ begin
 end;
 
 
+
+procedure TFOptions.FourSdr13Changing(Sender: TObject; var CanChange: Boolean);
+begin
+ if FourSdr13.SliderOn = False then
+  begin
+    BRSdr3.SliderOn:= True;
+    FASdr5.SliderOn:= True;
+    RFSdr8.SliderOn:= True;
+
+    BRSdr3.Enabled:= False;
+    FASdr5.Enabled:= False;
+    RFSdr8.Enabled:= False;
+
+  end else
+      begin
+            if ProduitSdr11.SliderOn <> true then
+       begin
+          BRSdr3.SliderOn:= False;
+          FASdr5.SliderOn:= False;
+
+          BRSdr3.Enabled:= True;
+          FASdr5.Enabled:= True;
+
+       end;
+         RFSdr8.SliderOn:= False;
+         RFSdr8.Enabled:= True;
+      end;
+end;
 
 procedure TFOptions.OKFPrintingBtnClick(Sender: TObject);
 var  S : TStream;
@@ -589,7 +849,308 @@ procedure TFOptions.PoleDisplayCOMListCbxDropDown(Sender: TObject);
 
 end;
 
-procedure TFOptions.TiroirCaisseCOMListCbxDropDown(Sender: TObject);
+
+procedure TFOptions.ProduitSdr11Changing(Sender: TObject;
+  var CanChange: Boolean);
+begin
+ if ProduitSdr11.SliderOn = False then
+  begin
+    CtrSdr1.SliderOn:= True;
+    BLSdr2.SliderOn:= True;
+    BRSdr3.SliderOn:= True;
+    FVSdr4.SliderOn:= True;
+    FASdr5.SliderOn:= True;
+    FPSdr6.SliderOn:= True;
+
+    PerteSdr15.SliderOn:= True;
+
+    CtrSdr1.Enabled:= False;
+    BLSdr2.Enabled:= False;
+    BRSdr3.Enabled:= False;
+    FVSdr4.Enabled:= False;
+    FASdr5.Enabled:= False;
+    FPSdr6.Enabled:= False;
+
+    PerteSdr15.Enabled:= False;
+
+
+  end else
+      begin
+       if ClientSdr12.SliderOn <> true then
+       begin
+          CtrSdr1.SliderOn:= False;
+          BLSdr2.SliderOn:= False;
+          FVSdr4.SliderOn:= False;
+          FPSdr6.SliderOn:= False;
+
+          CtrSdr1.Enabled:= True;
+          BLSdr2.Enabled:= True;
+          FVSdr4.Enabled:= True;
+          FPSdr6.Enabled:= True;
+
+       end;
+       if FourSdr13.SliderOn <> true then
+       begin
+          BRSdr3.SliderOn:= False;
+          FASdr5.SliderOn:= False;
+
+         BRSdr3.Enabled:= True;
+         FASdr5.Enabled:= True;
+       end;
+
+          PerteSdr15.SliderOn:= False;
+          PerteSdr15.Enabled:= True;
+
+      end;
+end;
+
+procedure TFOptions.ResetDBBtnClick(Sender: TObject);
+begin
+
+
+   if AllSdr0.SliderOn = True then
+   begin
+
+            FWorkingSplash.dxActivityIndicator1.Active:= True;
+            FWorkingSplash.Left := Screen.Width div 2 - (FWorkingSplash.Width div 2);
+            FWorkingSplash.Top :=  (Screen.Height- FWorkingSplash.Height) div 2;
+//            SetWindowPos(FOptions.Handle, HWND_NOTOPMOST, 0, 0, 0, 0,SWP_NOMOVE or SWP_NOSIZE);
+//            SetWindowPos(FWorkingSplash.Handle,HWND_TOPMOST,0,0,0,0,HWND_TOPMOST OR  SWP_NOACTIVATE or SWP_NOMOVE or SWP_NOSIZE);
+            FWorkingSplash.Show;
+
+        MainForm.InactiveTables;
+
+        try
+          MainForm.SQLQuery.Active:= False;
+          MainForm.SQLQuery.SQL.Clear;
+          MainForm.SQLQuery.SQL.add('SELECT truncate_tables(''postgres'')');
+          MainForm.SQLQuery.Active:= True;
+        finally
+          MainForm.SQLQuery.Active:= False;
+          MainForm.SQLQuery.SQL.Clear;
+        end;
+
+//     MainForm.CreateTablesFDScript.ExecuteAll;                                 // Eable this is only for releasing
+     MainForm.InsertDataFDScript.ExecuteAll;                                   // Eable this is only for releasing
+
+     MainForm.ActiveTables;
+     MainForm.RerfreshTables;
+
+       FWorkingSplash.Close;
+       FWorkingSplash.WorkingNormalForms;
+
+
+
+   end else
+       begin
+
+            FWorkingSplash.dxActivityIndicator1.Active:= True;
+            FWorkingSplash.Left := Screen.Width div 2 - (FWorkingSplash.Width div 2);
+            FWorkingSplash.Top :=  (Screen.Height- FWorkingSplash.Height) div 2;
+            FWorkingSplash.Show;
+
+        MainForm.InactiveTables;
+
+        if CtrSdr1.SliderOn = True then
+        begin
+
+         MainForm.GstockdcConnection.ExecSQL('TRUNCATE  bonv_ctr');
+         MainForm.GstockdcConnection.ExecSQL('TRUNCATE  bonv_ctr_list');
+         MainForm.GstockdcConnection.ExecSQL('DELETE FROM opt_cas_bnk where code_bvctr <> 0 OR code_bvctr is null  ' );
+         MainForm.GstockdcConnection.ExecSQL('DELETE FROM regclient where code_bvctr <> 0 OR code_bvctr is null  ' );
+
+        end;
+
+        if BLSdr2.SliderOn = True then
+        begin
+
+         MainForm.GstockdcConnection.ExecSQL('TRUNCATE  bonv_liv');
+         MainForm.GstockdcConnection.ExecSQL('TRUNCATE  bonv_liv_list');
+         MainForm.GstockdcConnection.ExecSQL('DELETE FROM opt_cas_bnk where code_bvliv <> 0 OR code_bvliv is null  ' );
+         MainForm.GstockdcConnection.ExecSQL('DELETE FROM regclient where code_bvliv <> 0 OR code_bvliv is null  ' );
+
+        end;
+        if BRSdr3.SliderOn = True then
+        begin
+
+         MainForm.GstockdcConnection.ExecSQL('TRUNCATE  bona_rec');
+         MainForm.GstockdcConnection.ExecSQL('TRUNCATE  bona_rec_list');
+         MainForm.GstockdcConnection.ExecSQL('DELETE FROM opt_cas_bnk where code_barec <> 0 OR code_barec is null  ' );
+         MainForm.GstockdcConnection.ExecSQL('DELETE FROM regfournisseur where code_barec <> 0 OR code_barec is null  ' );
+
+        end;
+        if FVSdr4.SliderOn = True then
+        begin
+
+         MainForm.GstockdcConnection.ExecSQL('TRUNCATE  bonv_fac');
+         MainForm.GstockdcConnection.ExecSQL('TRUNCATE  bonv_fac_list');
+         MainForm.GstockdcConnection.ExecSQL('DELETE FROM opt_cas_bnk where code_bvfac <> 0 OR code_bvfac is null  ' );
+         MainForm.GstockdcConnection.ExecSQL('DELETE FROM regclient where code_bvfac <> 0 OR code_bvfac is null  ' );
+
+
+        end;
+        if FASdr5.SliderOn = True then
+        begin
+
+         MainForm.GstockdcConnection.ExecSQL('TRUNCATE  bona_fac');
+         MainForm.GstockdcConnection.ExecSQL('TRUNCATE  bona_fac_list');
+         MainForm.GstockdcConnection.ExecSQL('DELETE FROM opt_cas_bnk where code_bafac <> 0 OR code_bafac is null  ' );
+         MainForm.GstockdcConnection.ExecSQL('DELETE FROM regfournisseur where code_bafac <> 0 OR code_bafac is null  ' );
+
+        end;
+        if FPSdr6.SliderOn = True then
+        begin
+
+         MainForm.GstockdcConnection.ExecSQL('TRUNCATE  bonp_fac');
+         MainForm.GstockdcConnection.ExecSQL('TRUNCATE  bonp_fac_list');
+
+        end;
+        if RCSdr7.SliderOn = True then
+        begin
+
+         MainForm.GstockdcConnection.ExecSQL('DELETE FROM opt_cas_bnk where code_rc <> 0 OR code_rc is null  ' );
+         MainForm.GstockdcConnection.ExecSQL('DELETE FROM regclient where bon_or_no_rc = 1  ' );
+
+        end;
+        if RFSdr8.SliderOn = True then
+        begin
+
+         MainForm.GstockdcConnection.ExecSQL('DELETE FROM opt_cas_bnk where code_rf <> 0 OR code_rf is null  ' );
+         MainForm.GstockdcConnection.ExecSQL('DELETE FROM regfournisseur where bon_or_no_rf = 1  ' );
+
+        end;
+        if CaisseSdr9.SliderOn = True then
+        begin
+          try
+            MainForm.SQLQuery.Active:= False;
+            MainForm.SQLQuery.SQL.Clear;
+            MainForm.SQLQuery.SQL.add('SELECT code_cmpt from compte WHERE nature_cmpt = false ');
+            MainForm.SQLQuery.Active:= True;
+
+            while NOT MainForm.SQLQuery.Eof do
+            begin
+              MainForm.GstockdcConnection.ExecSQL('DELETE FROM transfer_comptes where code_cmpts = '+IntToStr(MainForm.SQLQuery.FieldByName('code_cmpt').AsInteger)
+               +'OR code_cmptd = '+IntToStr(MainForm.SQLQuery.FieldByName('code_cmpt').AsInteger) );
+               MainForm.SQLQuery.Next;
+            end;
+
+
+          finally
+            MainForm.SQLQuery.Active:= False;
+            MainForm.SQLQuery.SQL.Clear;
+          end;
+
+          MainForm.GstockdcConnection.ExecSQL('DELETE FROM compte where nature_cmpt = false ' );
+          MainForm.GstockdcConnection.ExecSQL('INSERT INTO "public"."compte" ("code_cmpt", "nom_cmpt", "refer_cmpt", "nature_cmpt", "oldcredit_cmpt", "date_cmpt") VALUES (''1'', ''Caisse'', ''00001'', ''f'', ''0'', ''2016-01-01'') ' );
+
+        end;
+        if BankSdr10.SliderOn = True then
+        begin
+
+          try
+            MainForm.SQLQuery.Active:= False;
+            MainForm.SQLQuery.SQL.Clear;
+            MainForm.SQLQuery.SQL.add('SELECT code_cmpt from compte WHERE nature_cmpt = true ');
+            MainForm.SQLQuery.Active:= True;
+
+            while NOT MainForm.SQLQuery.Eof do
+            begin
+              MainForm.GstockdcConnection.ExecSQL('DELETE FROM transfer_comptes where code_cmpts = '+IntToStr(MainForm.SQLQuery.FieldByName('code_cmpt').AsInteger)
+               +'OR code_cmptd = '+IntToStr(MainForm.SQLQuery.FieldByName('code_cmpt').AsInteger) );
+               MainForm.SQLQuery.Next;
+            end;
+
+
+          finally
+            MainForm.SQLQuery.Active:= False;
+            MainForm.SQLQuery.SQL.Clear;
+          end;
+
+          MainForm.GstockdcConnection.ExecSQL('DELETE FROM compte where nature_cmpt = true ' );
+          MainForm.GstockdcConnection.ExecSQL('INSERT INTO "public"."compte" ("code_cmpt", "nom_cmpt", "refer_cmpt", "nature_cmpt", "oldcredit_cmpt", "date_cmpt") VALUES (''2'', ''Banque'', ''00002'', ''t'', ''0'', ''2016-01-01'') ' );
+
+        end;
+        if ProduitSdr11.SliderOn = True then
+        begin
+
+         MainForm.GstockdcConnection.ExecSQL('TRUNCATE  produit');
+         MainForm.GstockdcConnection.ExecSQL('TRUNCATE  codebarres');
+
+        end;
+        if ClientSdr12.SliderOn = True then
+        begin
+         MainForm.GstockdcConnection.ExecSQL('TRUNCATE  client');
+        end;
+        if FourSdr13.SliderOn = True then
+        begin
+         MainForm.GstockdcConnection.ExecSQL('TRUNCATE  fournisseur');
+        end;
+        if ChargeSdr14.SliderOn = True then
+        begin
+          MainForm.GstockdcConnection.ExecSQL('TRUNCATE  charges');
+          MainForm.GstockdcConnection.ExecSQL('TRUNCATE  charge_type');
+          MainForm.GstockdcConnection.ExecSQL('TRUNCATE  charge_s_type');
+        end;
+        if PerteSdr15.SliderOn = True then
+        begin
+         MainForm.GstockdcConnection.ExecSQL('TRUNCATE  pertes');
+         MainForm.GstockdcConnection.ExecSQL('TRUNCATE  perte_type');
+        end;
+        if PFamileSdr16.SliderOn = True then
+        begin
+           MainForm.GstockdcConnection.ExecSQL('TRUNCATE  famproduit');
+        end;
+        if PSFamileSdr17.SliderOn = True then
+        begin
+          MainForm.GstockdcConnection.ExecSQL('TRUNCATE  sfamproduit');
+        end;
+        if UniteSdr18.SliderOn = True then
+        begin
+           MainForm.GstockdcConnection.ExecSQL('TRUNCATE  unite');
+        end;
+        if localSdr19.SliderOn = True then
+        begin
+          MainForm.GstockdcConnection.ExecSQL('TRUNCATE  localisation');
+        end;
+        if ClientCreditSdr20.SliderOn = True then
+        begin
+          MainForm.GstockdcConnection.ExecSQL('UPDATE client set (oldcredit_c ,credit_c) = (0,0) ;');
+        end;
+        if FourCreditSdr21.SliderOn = True then
+        begin
+          MainForm.GstockdcConnection.ExecSQL('UPDATE fournisseur set (oldcredit_f ,credit_f) = (0,0) ;');
+        end;
+
+         MainForm.ActiveTables;
+         MainForm.RerfreshTables;
+
+         FWorkingSplash.Close;
+         FWorkingSplash.WorkingNormalForms;
+       end;
+
+
+
+end;
+
+procedure TFOptions.ResetDBPaswordGEdtChange(Sender: TObject);
+begin
+
+ if ResetDBPaswordGEdt.Text = 'p88stk' then
+ begin
+  ResetDBBtn.Enabled:= True;
+  Label21.Enabled:= True;
+
+
+ end else
+     begin
+        ResetDBBtn.Enabled:= False;
+        Label21.Enabled:= False;
+
+     end;
+
+end;
+
+Procedure TFOptions.TiroirCaisseCOMListCbxDropDown(Sender: TObject);
 //var
 //  XX, Err: Integer;
   begin

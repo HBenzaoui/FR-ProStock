@@ -144,7 +144,7 @@ implementation
 
 {$R *.dfm}
 
-uses UMainF, UFournisseurGestion, USplash, UClientGestion,Threading;
+uses UMainF, UFournisseurGestion, USplash, UClientGestion,Threading, UWorkingSplash;
 
 
 procedure TFournisseurListF.Select_Valid;
@@ -726,58 +726,88 @@ end;
 procedure TFournisseurListF.ExporterverExcel1Click(Sender: TObject);
 var
   xls,xlw: Variant;
+  ImportTask: ITask;
 begin
 
  if ProduitListOpnDg.Execute then
  begin
+            FWorkingSplash.dxActivityIndicator1.Active:= True;
+            FWorkingSplash.Left := Screen.Width div 2 - (FWorkingSplash.Width div 2);
+            FWorkingSplash.Top :=  (Screen.Height- FWorkingSplash.Height) div 2;
+            FWorkingSplash.Show;
 
-  xls := CreateOleObject('Excel.Application');
-  xls.DisplayAlerts := False  ;
-  xlw := xls.WorkBooks.Open(ProduitListOpnDg.FileName);
-  xlw.SaveAs(GetCurrentDir+ '\importedfour.csv',xlCSV);
+       ImportTask := TTask.Create (procedure ()
+  begin
+   try
+    xls := CreateOleObject('Excel.Application');
+    xls.DisplayAlerts := False  ;
+    xlw := xls.WorkBooks.Open(ProduitListOpnDg.FileName);
+    xlw.SaveAs(GetCurrentDir+ '\importedfour.csv',xlCSV);
 
-  xlw.Close;
-  xlw := UnAssigned;
-  xls.Quit;
-  xls := UnAssigned;
+    xlw.Close;
+    xlw := UnAssigned;
+    xls.Quit;
+    xls := UnAssigned;
 
-  ConvertANSIFileToUTF8File(GetCurrentDir+ '\importedfour.csv',GetCurrentDir+ '\importedfour.csv');
+    ConvertANSIFileToUTF8File(GetCurrentDir+ '\importedfour.csv',GetCurrentDir+ '\importedfour.csv');
 
-  MainForm.GstockdcConnection.ExecSQL(
+    MainForm.GstockdcConnection.ExecSQL(
 
-     '  CREATE UNLOGGED TABLE tmp_table '
-   // +'  ON COMMIT DROP              '
-    +'  AS                          '
-    +'  SELECT code_f,nom_f,fix_f,mob_f,   '
-    +'  mob2_f,fax_f,adr_f,ville_f,willaya_f,email_f,siteweb_f,rc_f,  '
-    +'  nif_f,nart_f,nis_f,nbank_f,rib_f,credit_f                  '
-    +'  FROM fournisseur                                                   '
-    +'  WITH NO DATA;                                                 '
-
-
-    +'  copy tmp_table from '+ '''' + GetCurrentDir +'\importedfour.csv'' DELIMITERS '';'' CSV HEADER; '
+       '  CREATE UNLOGGED TABLE tmp_table '
+     // +'  ON COMMIT DROP              '
+      +'  AS                          '
+      +'  SELECT code_f,nom_f,fix_f,mob_f,   '
+      +'  mob2_f,fax_f,adr_f,ville_f,willaya_f,email_f,siteweb_f,rc_f,  '
+      +'  nif_f,nart_f,nis_f,nbank_f,rib_f,credit_f                  '
+      +'  FROM fournisseur                                                   '
+      +'  WITH NO DATA;                                                 '
 
 
-    +'     INSERT INTO fournisseur    '
-    +'     SELECT DISTINCT ON (code_f) * '
-    +'     FROM tmp_table                 '
-    +'    ON CONFLICT  (code_f) DO UPDATE  '
-    +'       SET                            '
-    +'     nom_f      = excluded.nom_f,          '
-    +'     fix_f      = excluded.fix_f,       mob_f       = excluded.mob_f,          '
-    +'     mob2_f     = excluded.mob2_f,   		fax_f       = excluded.fax_f,          '
-    +'     adr_f      = excluded.adr_f,       ville_f     = excluded.ville_f,        '
-    +'     willaya_f  = excluded.willaya_f,  	email_f     = excluded.email_f,        '
-    +'     siteweb_f  = excluded.siteweb_f,   rc_f        = excluded.rc_f,           '
-    +'     nif_f      = excluded.nif_f,   		nart_f      = excluded.nart_f,         '
-    +'     nis_f      = excluded.nis_f,   		nbank_f     = excluded.nbank_f,        '
-    +'     rib_f      = excluded.rib_f,   		credit_f = excluded.credit_f;   DROP TABLE tmp_table; '
+      +'  copy tmp_table from '+ '''' + GetCurrentDir +'\importedfour.csv'' DELIMITERS '';'' CSV HEADER; '
 
-     );
 
-    deletefile(GetCurrentDir+ '\importedfour.csv');
+      +'     INSERT INTO fournisseur    '
+      +'     SELECT DISTINCT ON (code_f) * '
+      +'     FROM tmp_table                 '
+      +'    ON CONFLICT  (code_f) DO UPDATE  '
+      +'       SET                            '
+      +'     nom_f      = excluded.nom_f,          '
+      +'     fix_f      = excluded.fix_f,       mob_f       = excluded.mob_f,          '
+      +'     mob2_f     = excluded.mob2_f,   		fax_f       = excluded.fax_f,          '
+      +'     adr_f      = excluded.adr_f,       ville_f     = excluded.ville_f,        '
+      +'     willaya_f  = excluded.willaya_f,  	email_f     = excluded.email_f,        '
+      +'     siteweb_f  = excluded.siteweb_f,   rc_f        = excluded.rc_f,           '
+      +'     nif_f      = excluded.nif_f,   		nart_f      = excluded.nart_f,         '
+      +'     nis_f      = excluded.nis_f,   		nbank_f     = excluded.nbank_f,        '
+      +'     rib_f      = excluded.rib_f,   		credit_f = excluded.credit_f;   DROP TABLE tmp_table; '
 
-    RefreshGirdBtnClick(Sender);
+       );
+
+      deletefile(GetCurrentDir+ '\importedfour.csv');
+
+      RefreshGirdBtnClick(Sender);
+
+                  FWorkingSplash.Close;
+            FWorkingSplash.WorkingNormalForms;
+
+         except
+
+        on E : Exception do
+        begin
+        sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+        ShowMessage(E.ClassName+' error raised, with message : '+E.Message);
+            FWorkingSplash.Close;
+            FWorkingSplash.WorkingNormalForms;
+             Exit
+        end;
+
+      end;
+
+                     FWorkingSplash.Close;
+            FWorkingSplash.WorkingNormalForms;
+
+     end);
+          ImportTask.Start;
 
  end;
 

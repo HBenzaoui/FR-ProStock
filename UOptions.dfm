@@ -24,7 +24,7 @@ object FOptions: TFOptions
     Top = 27
     Width = 448
     Height = 611
-    ActivePage = GeneralOptionGTB
+    ActivePage = sTabSheet3
     Align = alClient
     DoubleBuffered = True
     Font.Charset = DEFAULT_CHARSET
@@ -32,12 +32,12 @@ object FOptions: TFOptions
     Font.Height = 15
     Font.Name = 'Roboto'
     Font.Style = []
+    MultiLine = True
     ParentDoubleBuffered = False
     ParentFont = False
-    TabHeight = 25
     TabOrder = 0
-    TabWidth = 80
     StyleElements = []
+    AnimatEvents = [aeMouseEnter, aeMouseLeave, aeMouseDown, aeMouseUp, aeGlobalDef]
     TabsLineSkin = 'BAR'
     object GeneralOptionGTB: TsTabSheet
       Caption = 'G'#233'n'#233'ral'
@@ -527,7 +527,7 @@ object FOptions: TFOptions
         Left = 0
         Top = 0
         Width = 4
-        Height = 576
+        Height = 581
         Align = alLeft
         BevelOuter = bvNone
         Color = 15658734
@@ -538,7 +538,7 @@ object FOptions: TFOptions
         Left = 435
         Top = 0
         Width = 5
-        Height = 576
+        Height = 581
         Align = alRight
         BevelOuter = bvNone
         Color = 15658734
@@ -670,37 +670,6 @@ object FOptions: TFOptions
           ParentColor = False
           ParentFont = False
           StyleElements = []
-        end
-        object RandomCBProduitGBtn: TAdvToolButton
-          Left = 450
-          Top = 14
-          Width = 26
-          Height = 26
-          Cursor = crHandPoint
-          AutoThemeAdapt = False
-          BorderColor = clWhite
-          BorderDownColor = 7854350
-          BorderHotColor = 15970832
-          Color = clWhite
-          ColorDown = 7854350
-          ColorHot = clBtnFace
-          ColorChecked = clNone
-          DropDownSplit = False
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = 4207405
-          Font.Height = 18
-          Font.Name = 'Roboto'
-          Font.Style = []
-          ImageIndex = 21
-          Images = MainForm.PanelIcons24
-          ParentFont = False
-          ParentShowHint = False
-          Rounded = True
-          Shaded = False
-          ShowHint = True
-          Spacing = -1
-          Version = '1.6.1.2'
-          TMSStyle = 0
         end
         object TestPoleBtn: TsSpeedButton
           Left = 383
@@ -1152,7 +1121,7 @@ object FOptions: TFOptions
         Left = 0
         Top = 0
         Width = 4
-        Height = 576
+        Height = 581
         Align = alLeft
         BevelOuter = bvNone
         Color = 15658734
@@ -1163,12 +1132,1224 @@ object FOptions: TFOptions
         Left = 435
         Top = 0
         Width = 5
-        Height = 576
+        Height = 581
         Align = alRight
         BevelOuter = bvNone
         Color = 15658734
         ParentBackground = False
         TabOrder = 4
+      end
+    end
+    object sTabSheet2: TsTabSheet
+      Caption = 'Base de donn'#233
+      SkinData.CustomColor = False
+      SkinData.CustomFont = False
+      object Panel11: TPanel
+        Left = 3
+        Top = 6
+        Width = 476
+        Height = 294
+        BevelOuter = bvNone
+        Color = clWhite
+        ParentBackground = False
+        TabOrder = 0
+        DesignSize = (
+          476
+          294)
+        object Label13: TLabel
+          Left = 8
+          Top = 0
+          Width = 105
+          Height = 21
+          Caption = 'Initialisation'
+          Color = 4207405
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 4207405
+          Font.Height = 22
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = [fsBold]
+          ParentColor = False
+          ParentFont = False
+        end
+        object Label15: TLabel
+          Left = 11
+          Top = 44
+          Width = 31
+          Height = 15
+          Caption = 'Tous:'
+          Color = 4207405
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 4207405
+          Font.Height = 15
+          Font.Name = 'Roboto'
+          Font.Style = []
+          ParentColor = False
+          ParentFont = False
+          StyleElements = []
+        end
+        object ResetDBBtn: TsSpeedButton
+          Left = 383
+          Top = 1
+          Width = 30
+          Height = 30
+          Hint = 'Ferm'#233'r'
+          Anchors = [akTop, akRight]
+          Enabled = False
+          ParentShowHint = False
+          ShowHint = True
+          OnClick = ResetDBBtnClick
+          SkinData.SkinSection = 'SPEEDBUTTON'
+          Images = MainForm.PanelIcons24
+          ImageIndex = 53
+        end
+        object Label21: TLabel
+          Left = 374
+          Top = 32
+          Width = 48
+          Height = 16
+          Caption = 'initialise'
+          Color = 4207405
+          Enabled = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 4207405
+          Font.Height = 16
+          Font.Name = 'Roboto'
+          Font.Style = []
+          ParentColor = False
+          ParentFont = False
+          StyleElements = []
+        end
+        object Label16: TLabel
+          Left = 32
+          Top = 77
+          Width = 98
+          Height = 14
+          Caption = 'Bons au Comptoir:'
+          Color = 4207405
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 4207405
+          Font.Height = 14
+          Font.Name = 'Roboto'
+          Font.Style = []
+          ParentColor = False
+          ParentFont = False
+          StyleElements = []
+        end
+        object Label18: TLabel
+          Left = 27
+          Top = 97
+          Width = 103
+          Height = 14
+          Caption = 'Bons des Livraison:'
+          Color = 4207405
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 4207405
+          Font.Height = 14
+          Font.Name = 'Roboto'
+          Font.Style = []
+          ParentColor = False
+          ParentFont = False
+          StyleElements = []
+        end
+        object Label19: TLabel
+          Left = 22
+          Top = 137
+          Width = 109
+          Height = 14
+          Caption = 'Factures des Ventes:'
+          Color = 4207405
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 4207405
+          Font.Height = 14
+          Font.Name = 'Roboto'
+          Font.Style = []
+          ParentColor = False
+          ParentFont = False
+          StyleElements = []
+        end
+        object Label20: TLabel
+          Left = 22
+          Top = 117
+          Width = 108
+          Height = 14
+          Caption = 'Bons des R'#233'ception:'
+          Color = 4207405
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 4207405
+          Font.Height = 14
+          Font.Name = 'Roboto'
+          Font.Style = []
+          ParentColor = False
+          ParentFont = False
+          StyleElements = []
+        end
+        object Label22: TLabel
+          Left = 6
+          Top = 217
+          Width = 125
+          Height = 14
+          Caption = 'R'#232'glement Fournisseur:'
+          Color = 4207405
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 4207405
+          Font.Height = 14
+          Font.Name = 'Roboto'
+          Font.Style = []
+          ParentColor = False
+          ParentFont = False
+          StyleElements = []
+        end
+        object Label23: TLabel
+          Left = 33
+          Top = 197
+          Width = 98
+          Height = 14
+          Caption = 'R'#232'glement Clients:'
+          Color = 4207405
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 4207405
+          Font.Height = 14
+          Font.Name = 'Roboto'
+          Font.Style = []
+          ParentColor = False
+          ParentFont = False
+          StyleElements = []
+        end
+        object Label24: TLabel
+          Left = 31
+          Top = 177
+          Width = 100
+          Height = 14
+          Caption = 'Factures Proforma:'
+          Color = 4207405
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 4207405
+          Font.Height = 14
+          Font.Name = 'Roboto'
+          Font.Style = []
+          ParentColor = False
+          ParentFont = False
+          StyleElements = []
+        end
+        object Label25: TLabel
+          Left = 34
+          Top = 158
+          Width = 97
+          Height = 14
+          Caption = 'Factures d'#39'Achats:'
+          Color = 4207405
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 4207405
+          Font.Height = 14
+          Font.Name = 'Roboto'
+          Font.Style = []
+          ParentColor = False
+          ParentFont = False
+          StyleElements = []
+        end
+        object Label26: TLabel
+          Left = 61
+          Top = 257
+          Width = 70
+          Height = 14
+          Caption = 'Les Banques:'
+          Color = 4207405
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 4207405
+          Font.Height = 14
+          Font.Name = 'Roboto'
+          Font.Style = []
+          ParentColor = False
+          ParentFont = False
+          StyleElements = []
+        end
+        object Label27: TLabel
+          Left = 67
+          Top = 237
+          Width = 64
+          Height = 14
+          Caption = 'Les Caisses:'
+          Color = 4207405
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 4207405
+          Font.Height = 14
+          Font.Name = 'Roboto'
+          Font.Style = []
+          ParentColor = False
+          ParentFont = False
+          StyleElements = []
+        end
+        object Label28: TLabel
+          Left = 331
+          Top = 77
+          Width = 48
+          Height = 14
+          Caption = 'Produits:'
+          Color = 4207405
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 4207405
+          Font.Height = 14
+          Font.Name = 'Roboto'
+          Font.Style = []
+          ParentColor = False
+          ParentFont = False
+          StyleElements = []
+        end
+        object Label29: TLabel
+          Left = 340
+          Top = 97
+          Width = 39
+          Height = 14
+          Caption = 'Clients:'
+          Color = 4207405
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 4207405
+          Font.Height = 14
+          Font.Name = 'Roboto'
+          Font.Style = []
+          ParentColor = False
+          ParentFont = False
+          StyleElements = []
+        end
+        object Label30: TLabel
+          Left = 312
+          Top = 137
+          Width = 67
+          Height = 14
+          Caption = 'Les Charges:'
+          Color = 4207405
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 4207405
+          Font.Height = 14
+          Font.Name = 'Roboto'
+          Font.Style = []
+          ParentColor = False
+          ParentFont = False
+          StyleElements = []
+        end
+        object Label31: TLabel
+          Left = 307
+          Top = 117
+          Width = 72
+          Height = 14
+          Caption = 'Fournisseurs:'
+          Color = 4207405
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 4207405
+          Font.Height = 14
+          Font.Name = 'Roboto'
+          Font.Style = []
+          ParentColor = False
+          ParentFont = False
+          StyleElements = []
+        end
+        object Label32: TLabel
+          Left = 342
+          Top = 217
+          Width = 37
+          Height = 14
+          Caption = 'Unites:'
+          Color = 4207405
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 4207405
+          Font.Height = 14
+          Font.Name = 'Roboto'
+          Font.Style = []
+          ParentColor = False
+          ParentFont = False
+          StyleElements = []
+        end
+        object Label33: TLabel
+          Left = 258
+          Top = 197
+          Width = 121
+          Height = 14
+          Caption = 'Produits Sous Familes:'
+          Color = 4207405
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 4207405
+          Font.Height = 14
+          Font.Name = 'Roboto'
+          Font.Style = []
+          ParentColor = False
+          ParentFont = False
+          StyleElements = []
+        end
+        object Label34: TLabel
+          Left = 288
+          Top = 177
+          Width = 91
+          Height = 14
+          Caption = 'Produits Familes:'
+          Color = 4207405
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 4207405
+          Font.Height = 14
+          Font.Name = 'Roboto'
+          Font.Style = []
+          ParentColor = False
+          ParentFont = False
+          StyleElements = []
+        end
+        object Label35: TLabel
+          Left = 322
+          Top = 158
+          Width = 57
+          Height = 14
+          Caption = 'Les Pertes:'
+          Color = 4207405
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 4207405
+          Font.Height = 14
+          Font.Name = 'Roboto'
+          Font.Style = []
+          ParentColor = False
+          ParentFont = False
+          StyleElements = []
+        end
+        object Label36: TLabel
+          Left = 207
+          Top = 257
+          Width = 172
+          Height = 14
+          Caption = 'Supprimer les dettes des clients:'
+          Color = 4207405
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 4207405
+          Font.Height = 14
+          Font.Name = 'Roboto'
+          Font.Style = []
+          ParentColor = False
+          ParentFont = False
+          StyleElements = []
+        end
+        object Label37: TLabel
+          Left = 308
+          Top = 237
+          Width = 71
+          Height = 14
+          Caption = 'Localitations:'
+          Color = 4207405
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 4207405
+          Font.Height = 14
+          Font.Name = 'Roboto'
+          Font.Style = []
+          ParentColor = False
+          ParentFont = False
+          StyleElements = []
+        end
+        object Label38: TLabel
+          Left = 203
+          Top = 9
+          Width = 74
+          Height = 14
+          Caption = 'Mot de Passe:'
+          Color = 4207405
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 4207405
+          Font.Height = 14
+          Font.Name = 'Roboto'
+          Font.Style = []
+          ParentColor = False
+          ParentFont = False
+          StyleElements = []
+        end
+        object Label39: TLabel
+          Left = 175
+          Top = 276
+          Width = 204
+          Height = 14
+          Caption = 'Supprimer les dettes des fournisseurs:'
+          Color = 4207405
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 4207405
+          Font.Height = 14
+          Font.Name = 'Roboto'
+          Font.Style = []
+          ParentColor = False
+          ParentFont = False
+          StyleElements = []
+        end
+        object AllSdr0: TsSlider
+          Left = 45
+          Top = 46
+          Width = 35
+          Height = 12
+          BevelOuter = bvNone
+          BiDiMode = bdLeftToRight
+          Color = 2497560
+          Ctl3D = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 4207405
+          Font.Height = 12
+          Font.Name = 'Roboto'
+          Font.Style = []
+          ParentBiDiMode = False
+          ParentBackground = False
+          ParentCtl3D = False
+          ParentFont = False
+          TabOrder = 0
+          StyleElements = []
+          BoundLabel.Caption = 'sSlider1'
+          BoundLabel.Layout = sclBottomCenter
+          FontOn.Charset = DEFAULT_CHARSET
+          FontOn.Color = 4207405
+          FontOn.Height = 12
+          FontOn.Name = 'Roboto'
+          FontOn.Style = []
+          SliderCursor = crHandPoint
+          Reversed = True
+          SliderOn = False
+          OnChanging = AllSdr0Changing
+        end
+        object CtrSdr1: TsSlider
+          Left = 132
+          Top = 78
+          Width = 35
+          Height = 12
+          BevelOuter = bvNone
+          BiDiMode = bdLeftToRight
+          Color = 2497560
+          Ctl3D = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 4207405
+          Font.Height = 12
+          Font.Name = 'Roboto'
+          Font.Style = []
+          ParentBiDiMode = False
+          ParentBackground = False
+          ParentCtl3D = False
+          ParentFont = False
+          TabOrder = 1
+          StyleElements = []
+          BoundLabel.Caption = 'sSlider1'
+          BoundLabel.Layout = sclBottomCenter
+          FontOn.Charset = DEFAULT_CHARSET
+          FontOn.Color = 4207405
+          FontOn.Height = 12
+          FontOn.Name = 'Roboto'
+          FontOn.Style = []
+          SliderCursor = crHandPoint
+          Reversed = True
+          SliderOn = False
+        end
+        object BLSdr2: TsSlider
+          Left = 132
+          Top = 98
+          Width = 35
+          Height = 12
+          BevelOuter = bvNone
+          BiDiMode = bdLeftToRight
+          Color = 2497560
+          Ctl3D = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 4207405
+          Font.Height = 12
+          Font.Name = 'Roboto'
+          Font.Style = []
+          ParentBiDiMode = False
+          ParentBackground = False
+          ParentCtl3D = False
+          ParentFont = False
+          TabOrder = 2
+          StyleElements = []
+          BoundLabel.Caption = 'sSlider1'
+          BoundLabel.Layout = sclBottomCenter
+          FontOn.Charset = DEFAULT_CHARSET
+          FontOn.Color = 4207405
+          FontOn.Height = 12
+          FontOn.Name = 'Roboto'
+          FontOn.Style = []
+          SliderCursor = crHandPoint
+          Reversed = True
+          SliderOn = False
+        end
+        object FVSdr4: TsSlider
+          Left = 132
+          Top = 138
+          Width = 35
+          Height = 12
+          BevelOuter = bvNone
+          BiDiMode = bdLeftToRight
+          Color = 2497560
+          Ctl3D = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 4207405
+          Font.Height = 12
+          Font.Name = 'Roboto'
+          Font.Style = []
+          ParentBiDiMode = False
+          ParentBackground = False
+          ParentCtl3D = False
+          ParentFont = False
+          TabOrder = 3
+          StyleElements = []
+          BoundLabel.Caption = 'sSlider1'
+          BoundLabel.Layout = sclBottomCenter
+          FontOn.Charset = DEFAULT_CHARSET
+          FontOn.Color = 4207405
+          FontOn.Height = 12
+          FontOn.Name = 'Roboto'
+          FontOn.Style = []
+          SliderCursor = crHandPoint
+          Reversed = True
+          SliderOn = False
+        end
+        object BRSdr3: TsSlider
+          Left = 132
+          Top = 118
+          Width = 35
+          Height = 12
+          BevelOuter = bvNone
+          BiDiMode = bdLeftToRight
+          Color = 2497560
+          Ctl3D = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 4207405
+          Font.Height = 12
+          Font.Name = 'Roboto'
+          Font.Style = []
+          ParentBiDiMode = False
+          ParentBackground = False
+          ParentCtl3D = False
+          ParentFont = False
+          TabOrder = 4
+          StyleElements = []
+          BoundLabel.Caption = 'sSlider1'
+          BoundLabel.Layout = sclBottomCenter
+          FontOn.Charset = DEFAULT_CHARSET
+          FontOn.Color = 4207405
+          FontOn.Height = 12
+          FontOn.Name = 'Roboto'
+          FontOn.Style = []
+          SliderCursor = crHandPoint
+          Reversed = True
+          SliderOn = False
+        end
+        object RFSdr8: TsSlider
+          Left = 132
+          Top = 218
+          Width = 35
+          Height = 12
+          BevelOuter = bvNone
+          BiDiMode = bdLeftToRight
+          Color = 2497560
+          Ctl3D = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 4207405
+          Font.Height = 12
+          Font.Name = 'Roboto'
+          Font.Style = []
+          ParentBiDiMode = False
+          ParentBackground = False
+          ParentCtl3D = False
+          ParentFont = False
+          TabOrder = 5
+          StyleElements = []
+          BoundLabel.Caption = 'sSlider1'
+          BoundLabel.Layout = sclBottomCenter
+          FontOn.Charset = DEFAULT_CHARSET
+          FontOn.Color = 4207405
+          FontOn.Height = 12
+          FontOn.Name = 'Roboto'
+          FontOn.Style = []
+          SliderCursor = crHandPoint
+          Reversed = True
+          SliderOn = False
+        end
+        object RCSdr7: TsSlider
+          Left = 132
+          Top = 198
+          Width = 35
+          Height = 12
+          BevelOuter = bvNone
+          BiDiMode = bdLeftToRight
+          Color = 2497560
+          Ctl3D = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 4207405
+          Font.Height = 12
+          Font.Name = 'Roboto'
+          Font.Style = []
+          ParentBiDiMode = False
+          ParentBackground = False
+          ParentCtl3D = False
+          ParentFont = False
+          TabOrder = 6
+          StyleElements = []
+          BoundLabel.Caption = 'sSlider1'
+          BoundLabel.Layout = sclBottomCenter
+          FontOn.Charset = DEFAULT_CHARSET
+          FontOn.Color = 4207405
+          FontOn.Height = 12
+          FontOn.Name = 'Roboto'
+          FontOn.Style = []
+          SliderCursor = crHandPoint
+          Reversed = True
+          SliderOn = False
+        end
+        object FPSdr6: TsSlider
+          Left = 132
+          Top = 178
+          Width = 35
+          Height = 12
+          BevelOuter = bvNone
+          BiDiMode = bdLeftToRight
+          Color = 2497560
+          Ctl3D = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 4207405
+          Font.Height = 12
+          Font.Name = 'Roboto'
+          Font.Style = []
+          ParentBiDiMode = False
+          ParentBackground = False
+          ParentCtl3D = False
+          ParentFont = False
+          TabOrder = 7
+          StyleElements = []
+          BoundLabel.Caption = 'sSlider1'
+          BoundLabel.Layout = sclBottomCenter
+          FontOn.Charset = DEFAULT_CHARSET
+          FontOn.Color = 4207405
+          FontOn.Height = 12
+          FontOn.Name = 'Roboto'
+          FontOn.Style = []
+          SliderCursor = crHandPoint
+          Reversed = True
+          SliderOn = False
+        end
+        object FASdr5: TsSlider
+          Left = 132
+          Top = 158
+          Width = 35
+          Height = 12
+          BevelOuter = bvNone
+          BiDiMode = bdLeftToRight
+          Color = 2497560
+          Ctl3D = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 4207405
+          Font.Height = 12
+          Font.Name = 'Roboto'
+          Font.Style = []
+          ParentBiDiMode = False
+          ParentBackground = False
+          ParentCtl3D = False
+          ParentFont = False
+          TabOrder = 8
+          StyleElements = []
+          BoundLabel.Caption = 'sSlider1'
+          BoundLabel.Layout = sclBottomCenter
+          FontOn.Charset = DEFAULT_CHARSET
+          FontOn.Color = 4207405
+          FontOn.Height = 12
+          FontOn.Name = 'Roboto'
+          FontOn.Style = []
+          SliderCursor = crHandPoint
+          Reversed = True
+          SliderOn = False
+        end
+        object BankSdr10: TsSlider
+          Left = 132
+          Top = 258
+          Width = 35
+          Height = 12
+          BevelOuter = bvNone
+          BiDiMode = bdLeftToRight
+          Color = 2497560
+          Ctl3D = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 4207405
+          Font.Height = 12
+          Font.Name = 'Roboto'
+          Font.Style = []
+          ParentBiDiMode = False
+          ParentBackground = False
+          ParentCtl3D = False
+          ParentFont = False
+          TabOrder = 9
+          StyleElements = []
+          BoundLabel.Caption = 'sSlider1'
+          BoundLabel.Layout = sclBottomCenter
+          FontOn.Charset = DEFAULT_CHARSET
+          FontOn.Color = 4207405
+          FontOn.Height = 12
+          FontOn.Name = 'Roboto'
+          FontOn.Style = []
+          SliderCursor = crHandPoint
+          Reversed = True
+          SliderOn = False
+        end
+        object CaisseSdr9: TsSlider
+          Left = 132
+          Top = 238
+          Width = 35
+          Height = 12
+          BevelOuter = bvNone
+          BiDiMode = bdLeftToRight
+          Color = 2497560
+          Ctl3D = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 4207405
+          Font.Height = 12
+          Font.Name = 'Roboto'
+          Font.Style = []
+          ParentBiDiMode = False
+          ParentBackground = False
+          ParentCtl3D = False
+          ParentFont = False
+          TabOrder = 10
+          StyleElements = []
+          BoundLabel.Caption = 'sSlider1'
+          BoundLabel.Layout = sclBottomCenter
+          FontOn.Charset = DEFAULT_CHARSET
+          FontOn.Color = 4207405
+          FontOn.Height = 12
+          FontOn.Name = 'Roboto'
+          FontOn.Style = []
+          SliderCursor = crHandPoint
+          Reversed = True
+          SliderOn = False
+        end
+        object ClientCreditSdr20: TsSlider
+          Left = 381
+          Top = 258
+          Width = 35
+          Height = 12
+          BevelOuter = bvNone
+          BiDiMode = bdLeftToRight
+          Color = 2497560
+          Ctl3D = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 4207405
+          Font.Height = 12
+          Font.Name = 'Roboto'
+          Font.Style = []
+          ParentBiDiMode = False
+          ParentBackground = False
+          ParentCtl3D = False
+          ParentFont = False
+          TabOrder = 11
+          StyleElements = []
+          BoundLabel.Caption = 'sSlider1'
+          BoundLabel.Layout = sclBottomCenter
+          FontOn.Charset = DEFAULT_CHARSET
+          FontOn.Color = 4207405
+          FontOn.Height = 12
+          FontOn.Name = 'Roboto'
+          FontOn.Style = []
+          SliderCursor = crHandPoint
+          Reversed = True
+          SliderOn = False
+        end
+        object localSdr19: TsSlider
+          Left = 381
+          Top = 238
+          Width = 35
+          Height = 12
+          BevelOuter = bvNone
+          BiDiMode = bdLeftToRight
+          Color = 2497560
+          Ctl3D = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 4207405
+          Font.Height = 12
+          Font.Name = 'Roboto'
+          Font.Style = []
+          ParentBiDiMode = False
+          ParentBackground = False
+          ParentCtl3D = False
+          ParentFont = False
+          TabOrder = 12
+          StyleElements = []
+          BoundLabel.Caption = 'sSlider1'
+          BoundLabel.Layout = sclBottomCenter
+          FontOn.Charset = DEFAULT_CHARSET
+          FontOn.Color = 4207405
+          FontOn.Height = 12
+          FontOn.Name = 'Roboto'
+          FontOn.Style = []
+          SliderCursor = crHandPoint
+          Reversed = True
+          SliderOn = False
+        end
+        object ClientSdr12: TsSlider
+          Left = 381
+          Top = 97
+          Width = 35
+          Height = 12
+          BevelOuter = bvNone
+          BiDiMode = bdLeftToRight
+          Color = 2497560
+          Ctl3D = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 4207405
+          Font.Height = 12
+          Font.Name = 'Roboto'
+          Font.Style = []
+          ParentBiDiMode = False
+          ParentBackground = False
+          ParentCtl3D = False
+          ParentFont = False
+          TabOrder = 13
+          StyleElements = []
+          BoundLabel.Caption = 'sSlider1'
+          BoundLabel.Layout = sclBottomCenter
+          FontOn.Charset = DEFAULT_CHARSET
+          FontOn.Color = 4207405
+          FontOn.Height = 12
+          FontOn.Name = 'Roboto'
+          FontOn.Style = []
+          SliderCursor = crHandPoint
+          Reversed = True
+          SliderOn = False
+          OnChanging = ClientSdr12Changing
+        end
+        object ChargeSdr14: TsSlider
+          Left = 381
+          Top = 138
+          Width = 35
+          Height = 12
+          BevelOuter = bvNone
+          BiDiMode = bdLeftToRight
+          Color = 2497560
+          Ctl3D = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 4207405
+          Font.Height = 12
+          Font.Name = 'Roboto'
+          Font.Style = []
+          ParentBiDiMode = False
+          ParentBackground = False
+          ParentCtl3D = False
+          ParentFont = False
+          TabOrder = 14
+          StyleElements = []
+          BoundLabel.Caption = 'sSlider1'
+          BoundLabel.Layout = sclBottomCenter
+          FontOn.Charset = DEFAULT_CHARSET
+          FontOn.Color = 4207405
+          FontOn.Height = 12
+          FontOn.Name = 'Roboto'
+          FontOn.Style = []
+          SliderCursor = crHandPoint
+          Reversed = True
+          SliderOn = False
+        end
+        object FourSdr13: TsSlider
+          Left = 381
+          Top = 118
+          Width = 35
+          Height = 12
+          BevelOuter = bvNone
+          BiDiMode = bdLeftToRight
+          Color = 2497560
+          Ctl3D = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 4207405
+          Font.Height = 12
+          Font.Name = 'Roboto'
+          Font.Style = []
+          ParentBiDiMode = False
+          ParentBackground = False
+          ParentCtl3D = False
+          ParentFont = False
+          TabOrder = 15
+          StyleElements = []
+          BoundLabel.Caption = 'sSlider1'
+          BoundLabel.Layout = sclBottomCenter
+          FontOn.Charset = DEFAULT_CHARSET
+          FontOn.Color = 4207405
+          FontOn.Height = 12
+          FontOn.Name = 'Roboto'
+          FontOn.Style = []
+          SliderCursor = crHandPoint
+          Reversed = True
+          SliderOn = False
+          OnChanging = FourSdr13Changing
+        end
+        object UniteSdr18: TsSlider
+          Left = 381
+          Top = 218
+          Width = 35
+          Height = 12
+          BevelOuter = bvNone
+          BiDiMode = bdLeftToRight
+          Color = 2497560
+          Ctl3D = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 4207405
+          Font.Height = 12
+          Font.Name = 'Roboto'
+          Font.Style = []
+          ParentBiDiMode = False
+          ParentBackground = False
+          ParentCtl3D = False
+          ParentFont = False
+          TabOrder = 16
+          StyleElements = []
+          BoundLabel.Caption = 'sSlider1'
+          BoundLabel.Layout = sclBottomCenter
+          FontOn.Charset = DEFAULT_CHARSET
+          FontOn.Color = 4207405
+          FontOn.Height = 12
+          FontOn.Name = 'Roboto'
+          FontOn.Style = []
+          SliderCursor = crHandPoint
+          Reversed = True
+          SliderOn = False
+        end
+        object PSFamileSdr17: TsSlider
+          Left = 381
+          Top = 198
+          Width = 35
+          Height = 12
+          BevelOuter = bvNone
+          BiDiMode = bdLeftToRight
+          Color = 2497560
+          Ctl3D = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 4207405
+          Font.Height = 12
+          Font.Name = 'Roboto'
+          Font.Style = []
+          ParentBiDiMode = False
+          ParentBackground = False
+          ParentCtl3D = False
+          ParentFont = False
+          TabOrder = 17
+          StyleElements = []
+          BoundLabel.Caption = 'sSlider1'
+          BoundLabel.Layout = sclBottomCenter
+          FontOn.Charset = DEFAULT_CHARSET
+          FontOn.Color = 4207405
+          FontOn.Height = 12
+          FontOn.Name = 'Roboto'
+          FontOn.Style = []
+          SliderCursor = crHandPoint
+          Reversed = True
+          SliderOn = False
+        end
+        object PFamileSdr16: TsSlider
+          Left = 381
+          Top = 178
+          Width = 35
+          Height = 12
+          BevelOuter = bvNone
+          BiDiMode = bdLeftToRight
+          Color = 2497560
+          Ctl3D = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 4207405
+          Font.Height = 12
+          Font.Name = 'Roboto'
+          Font.Style = []
+          ParentBiDiMode = False
+          ParentBackground = False
+          ParentCtl3D = False
+          ParentFont = False
+          TabOrder = 18
+          StyleElements = []
+          BoundLabel.Caption = 'sSlider1'
+          BoundLabel.Layout = sclBottomCenter
+          FontOn.Charset = DEFAULT_CHARSET
+          FontOn.Color = 4207405
+          FontOn.Height = 12
+          FontOn.Name = 'Roboto'
+          FontOn.Style = []
+          SliderCursor = crHandPoint
+          Reversed = True
+          SliderOn = False
+        end
+        object PerteSdr15: TsSlider
+          Left = 381
+          Top = 158
+          Width = 35
+          Height = 12
+          BevelOuter = bvNone
+          BiDiMode = bdLeftToRight
+          Color = 2497560
+          Ctl3D = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 4207405
+          Font.Height = 12
+          Font.Name = 'Roboto'
+          Font.Style = []
+          ParentBiDiMode = False
+          ParentBackground = False
+          ParentCtl3D = False
+          ParentFont = False
+          TabOrder = 19
+          StyleElements = []
+          BoundLabel.Caption = 'sSlider1'
+          BoundLabel.Layout = sclBottomCenter
+          FontOn.Charset = DEFAULT_CHARSET
+          FontOn.Color = 4207405
+          FontOn.Height = 12
+          FontOn.Name = 'Roboto'
+          FontOn.Style = []
+          SliderCursor = crHandPoint
+          Reversed = True
+          SliderOn = False
+        end
+        object ProduitSdr11: TsSlider
+          Left = 381
+          Top = 78
+          Width = 35
+          Height = 12
+          BevelOuter = bvNone
+          BiDiMode = bdLeftToRight
+          Color = 2497560
+          Ctl3D = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 4207405
+          Font.Height = 12
+          Font.Name = 'Roboto'
+          Font.Style = []
+          ParentBiDiMode = False
+          ParentBackground = False
+          ParentCtl3D = False
+          ParentFont = False
+          TabOrder = 20
+          StyleElements = []
+          BoundLabel.Caption = 'sSlider1'
+          BoundLabel.Layout = sclBottomCenter
+          FontOn.Charset = DEFAULT_CHARSET
+          FontOn.Color = 4207405
+          FontOn.Height = 12
+          FontOn.Name = 'Roboto'
+          FontOn.Style = []
+          SliderCursor = crHandPoint
+          Reversed = True
+          SliderOn = False
+          OnChanging = ProduitSdr11Changing
+        end
+        object ResetDBPaswordGEdt: TEdit
+          Left = 280
+          Top = 4
+          Width = 97
+          Height = 23
+          Alignment = taCenter
+          DoubleBuffered = True
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = 15
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = []
+          ParentDoubleBuffered = False
+          ParentFont = False
+          PasswordChar = #8226
+          TabOrder = 21
+          OnChange = ResetDBPaswordGEdtChange
+        end
+        object FourCreditSdr21: TsSlider
+          Left = 381
+          Top = 277
+          Width = 35
+          Height = 12
+          BevelOuter = bvNone
+          BiDiMode = bdLeftToRight
+          Color = 2497560
+          Ctl3D = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 4207405
+          Font.Height = 12
+          Font.Name = 'Roboto'
+          Font.Style = []
+          ParentBiDiMode = False
+          ParentBackground = False
+          ParentCtl3D = False
+          ParentFont = False
+          TabOrder = 22
+          StyleElements = []
+          BoundLabel.Caption = 'sSlider1'
+          BoundLabel.Layout = sclBottomCenter
+          FontOn.Charset = DEFAULT_CHARSET
+          FontOn.Color = 4207405
+          FontOn.Height = 12
+          FontOn.Name = 'Roboto'
+          FontOn.Style = []
+          SliderCursor = crHandPoint
+          Reversed = True
+          SliderOn = False
+        end
+      end
+      object Panel15: TPanel
+        Left = -9
+        Top = 303
+        Width = 448
+        Height = 4
+        BevelOuter = bvNone
+        Color = 15658734
+        ParentBackground = False
+        TabOrder = 1
+      end
+      object Panel16: TPanel
+        Left = 0
+        Top = 0
+        Width = 4
+        Height = 581
+        Align = alLeft
+        BevelOuter = bvNone
+        Color = 15658734
+        ParentBackground = False
+        TabOrder = 2
+      end
+      object Panel17: TPanel
+        Left = 435
+        Top = 0
+        Width = 5
+        Height = 581
+        Align = alRight
+        BevelOuter = bvNone
+        Color = 15658734
+        ParentBackground = False
+        TabOrder = 3
+      end
+    end
+    object sTabSheet3: TsTabSheet
+      Caption = 'Produit Favoris'
+      SkinData.CustomColor = False
+      SkinData.CustomFont = False
+      ExplicitTop = 24
+      object Label40: TLabel
+        Left = 10
+        Top = 7
+        Width = 131
+        Height = 21
+        Caption = 'Produit Favoris'
+        Color = 4207405
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 22
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object Panel12: TPanel
+        Left = 0
+        Top = 0
+        Width = 4
+        Height = 581
+        Align = alLeft
+        BevelOuter = bvNone
+        Color = 15658734
+        ParentBackground = False
+        TabOrder = 0
+      end
+      object Panel13: TPanel
+        Left = 435
+        Top = 0
+        Width = 5
+        Height = 581
+        Align = alRight
+        BevelOuter = bvNone
+        Color = 15658734
+        ParentBackground = False
+        TabOrder = 1
       end
     end
   end
@@ -1334,7 +2515,7 @@ object FOptions: TFOptions
     FlowControl.XonXoffIn = False
     StoredProps = [spBasic]
     TriggersOnRxChar = True
-    Left = 316
-    Top = 68
+    Left = 282
+    Top = 100
   end
 end

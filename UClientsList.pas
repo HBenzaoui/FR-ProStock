@@ -152,7 +152,7 @@ implementation
 
 {$R *.dfm}
 
-uses UMainF,   UClientGestion, USplash,System.Threading;
+uses UMainF,   UClientGestion, USplash,System.Threading, UWorkingSplash;
 
 procedure TClientListF.Select_Valid;
 begin
@@ -369,59 +369,91 @@ end;
 procedure TClientListF.ExporterverExcel1Click(Sender: TObject);
 var
   xls,xlw: Variant;
+  ImportTask: ITask;
 begin
 
  if ProduitListOpnDg.Execute then
  begin
+            FWorkingSplash.dxActivityIndicator1.Active:= True;
+            FWorkingSplash.Left := Screen.Width div 2 - (FWorkingSplash.Width div 2);
+            FWorkingSplash.Top :=  (Screen.Height- FWorkingSplash.Height) div 2;
+            FWorkingSplash.Show;
 
-  xls := CreateOleObject('Excel.Application');
-  xls.DisplayAlerts := False  ;
-  xlw := xls.WorkBooks.Open(ProduitListOpnDg.FileName);
-  xlw.SaveAs(GetCurrentDir+ '\importedclinet.csv',xlCSV);
+      ImportTask := TTask.Create (procedure ()
+  begin
+   try
+    xls := CreateOleObject('Excel.Application');
+    xls.DisplayAlerts := False  ;
+    xlw := xls.WorkBooks.Open(ProduitListOpnDg.FileName);
+    xlw.SaveAs(GetCurrentDir+ '\importedclinet.csv',xlCSV);
 
-  xlw.Close;
-  xlw := UnAssigned;
-  xls.Quit;
-  xls := UnAssigned;
+    xlw.Close;
+    xlw := UnAssigned;
+    xls.Quit;
+    xls := UnAssigned;
 
-  ConvertANSIFileToUTF8File(GetCurrentDir+ '\importedclinet.csv',GetCurrentDir+ '\importedclinet.csv');
+    ConvertANSIFileToUTF8File(GetCurrentDir+ '\importedclinet.csv',GetCurrentDir+ '\importedclinet.csv');
 
-  MainForm.GstockdcConnection.ExecSQL(
+    MainForm.GstockdcConnection.ExecSQL(
 
-     '  CREATE UNLOGGED TABLE tmp_table '
-   // +'  ON COMMIT DROP              '
-    +'  AS                          '
-    +'  SELECT code_c,nom_c,activite_c,fix_c,mob_c,   '
-    +'  mob2_c,fax_c,adr_c,ville_c,willaya_c,email_c,siteweb_c,rc_c,  '
-    +'  nif_c,nart_c,nis_c,nbank_c,rib_c,credit_c                  '
-    +'  FROM client                                                   '
-    +'  WITH NO DATA;                                                 '
+       '  CREATE UNLOGGED TABLE tmp_table '
+     // +'  ON COMMIT DROP              '
+      +'  AS                          '
+      +'  SELECT code_c,nom_c,activite_c,fix_c,mob_c,   '
+      +'  mob2_c,fax_c,adr_c,ville_c,willaya_c,email_c,siteweb_c,rc_c,  '
+      +'  nif_c,nart_c,nis_c,nbank_c,rib_c,credit_c                  '
+      +'  FROM client                                                   '
+      +'  WITH NO DATA;                                                 '
 
-    +'  copy tmp_table from '+ '''' + GetCurrentDir +'\importedclinet.csv'' DELIMITERS '';'' CSV HEADER; '
+      +'  copy tmp_table from '+ '''' + GetCurrentDir +'\importedclinet.csv'' DELIMITERS '';'' CSV HEADER; '
 
 
-    +'     INSERT INTO client    '
-    +'     SELECT DISTINCT ON (code_c) * '
-    +'     FROM tmp_table                 '
-    +'    ON CONFLICT  (code_c) DO UPDATE  '
-    +'       SET                            '
-    +'     nom_c      = excluded.nom_c,       activite_c  = excluded.activite_c,     '
-    +'     fix_c      = excluded.fix_c,       mob_c       = excluded.mob_c,          '
-    +'     mob2_c     = excluded.mob2_c,   		fax_c       = excluded.fax_c,          '
-    +'     adr_c      = excluded.adr_c,       ville_c     = excluded.ville_c,        '
-    +'     willaya_c  = excluded.willaya_c,  	email_c     = excluded.email_c,        '
-    +'     siteweb_c  = excluded.siteweb_c,   rc_c        = excluded.rc_c,           '
-    +'     nif_c      = excluded.nif_c,   		nart_c      = excluded.nart_c,         '
-    +'     nis_c      = excluded.nis_c,   		nbank_c     = excluded.nbank_c,        '
-    +'     rib_c      = excluded.rib_c,   		credit_c    = excluded.credit_c;   DROP TABLE tmp_table; '
+      +'     INSERT INTO client    '
+      +'     SELECT DISTINCT ON (code_c) * '
+      +'     FROM tmp_table                 '
+      +'    ON CONFLICT  (code_c) DO UPDATE  '
+      +'       SET                            '
+      +'     nom_c      = excluded.nom_c,       activite_c  = excluded.activite_c,     '
+      +'     fix_c      = excluded.fix_c,       mob_c       = excluded.mob_c,          '
+      +'     mob2_c     = excluded.mob2_c,   		fax_c       = excluded.fax_c,          '
+      +'     adr_c      = excluded.adr_c,       ville_c     = excluded.ville_c,        '
+      +'     willaya_c  = excluded.willaya_c,  	email_c     = excluded.email_c,        '
+      +'     siteweb_c  = excluded.siteweb_c,   rc_c        = excluded.rc_c,           '
+      +'     nif_c      = excluded.nif_c,   		nart_c      = excluded.nart_c,         '
+      +'     nis_c      = excluded.nis_c,   		nbank_c     = excluded.nbank_c,        '
+      +'     rib_c      = excluded.rib_c,   		credit_c    = excluded.credit_c;   DROP TABLE tmp_table; '
 
-     );
+       );
 
-    deletefile(GetCurrentDir+ '\importedclinet.csv');
+      deletefile(GetCurrentDir+ '\importedclinet.csv');
 
-    RefreshGirdBtnClick(Sender);
+      RefreshGirdBtnClick(Sender);
+
+                  FWorkingSplash.Close;
+            FWorkingSplash.WorkingNormalForms;
+
+            except
+
+        on E : Exception do
+        begin
+        sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+        ShowMessage(E.ClassName+' error raised, with message : '+E.Message);
+            FWorkingSplash.Close;
+            FWorkingSplash.WorkingNormalForms;
+            Exit
+        end;
+
+      end;
+
+                     FWorkingSplash.Close;
+            FWorkingSplash.WorkingNormalForms;
+
+        end);
+            ImportTask.Start;;
 
  end;
+
+
 
 end;
 

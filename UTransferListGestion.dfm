@@ -290,6 +290,7 @@ object TransferListGestionF: TTransferListGestionF
       Width = 15
       Height = 12
       Caption = '[F5]'
+      Enabled = False
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 10395294
       Font.Height = -9
