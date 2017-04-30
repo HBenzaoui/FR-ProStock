@@ -180,6 +180,7 @@ type
     procedure ProduitSdr11Changing(Sender: TObject; var CanChange: Boolean);
     procedure ClientSdr12Changing(Sender: TObject; var CanChange: Boolean);
     procedure FourSdr13Changing(Sender: TObject; var CanChange: Boolean);
+    procedure ResetDBPaswordGEdtMouseEnter(Sender: TObject);
   private
 
     { Private declarations }
@@ -1150,7 +1151,15 @@ begin
 
 end;
 
-Procedure TFOptions.TiroirCaisseCOMListCbxDropDown(Sender: TObject);
+procedure TFOptions.ResetDBPaswordGEdtMouseEnter(Sender: TObject);
+begin
+   Application.HintPause := 500;      // 250 mSec before hint is shown
+   Application.HintHidePause := 5000;
+   ResetDBPaswordGEdt.ShowHint:= True;
+   ResetDBPaswordGEdt.Hint:='Appelez Hamza : 213 661 45 81 97 ';
+end;
+
+procedure TFOptions.TiroirCaisseCOMListCbxDropDown(Sender: TObject);
 //var
 //  XX, Err: Integer;
   begin

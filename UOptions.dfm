@@ -24,7 +24,7 @@ object FOptions: TFOptions
     Top = 27
     Width = 448
     Height = 611
-    ActivePage = sTabSheet3
+    ActivePage = sTabSheet2
     Align = alClient
     DoubleBuffered = True
     Font.Charset = DEFAULT_CHARSET
@@ -2240,9 +2240,12 @@ object FOptions: TFOptions
           Font.Style = []
           ParentDoubleBuffered = False
           ParentFont = False
+          ParentShowHint = False
           PasswordChar = #8226
+          ShowHint = False
           TabOrder = 21
           OnChange = ResetDBPaswordGEdtChange
+          OnMouseEnter = ResetDBPaswordGEdtMouseEnter
         end
         object FourCreditSdr21: TsSlider
           Left = 381
@@ -2313,7 +2316,6 @@ object FOptions: TFOptions
       Caption = 'Produit Favoris'
       SkinData.CustomColor = False
       SkinData.CustomFont = False
-      ExplicitTop = 24
       object Label40: TLabel
         Left = 10
         Top = 7
