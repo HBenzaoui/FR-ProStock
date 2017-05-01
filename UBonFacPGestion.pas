@@ -429,6 +429,11 @@ begin
   end;
 
   NumBonFacVGEdt.Caption:= MainForm.Bonp_facTable.FieldByName('num_bpfac').AsString;
+
+          if MainForm.Bonp_fac_listTable.ControlsDisabled  then
+   begin
+     MainForm.Bonp_fac_listTable.EnableControls;
+   end;
 end;
 
 procedure TBonFacPGestionF.sSpeedButton6Click(Sender: TObject);
@@ -466,6 +471,11 @@ begin
   end;
 
   NumBonFacVGEdt.Caption:= MainForm.Bonp_facTable.FieldByName('num_bpfac').AsString;
+
+            if MainForm.Bonp_fac_listTable.ControlsDisabled  then
+   begin
+     MainForm.Bonp_fac_listTable.EnableControls;
+   end;
 end;
 
 procedure TBonFacPGestionF.sSpeedButton5Click(Sender: TObject);
@@ -503,6 +513,11 @@ begin
   end;
 
   NumBonFacVGEdt.Caption:= MainForm.Bonp_facTable.FieldByName('num_bpfac').AsString;
+
+            if MainForm.Bonp_fac_listTable.ControlsDisabled  then
+   begin
+     MainForm.Bonp_fac_listTable.EnableControls;
+   end;
 end;
 
 procedure TBonFacPGestionF.sSpeedButton4Click(Sender: TObject);
@@ -540,6 +555,11 @@ begin
   end;
 
   NumBonFacVGEdt.Caption:= MainForm.Bonp_facTable.FieldByName('num_bpfac').AsString;
+
+            if MainForm.Bonp_fac_listTable.ControlsDisabled  then
+   begin
+     MainForm.Bonp_fac_listTable.EnableControls;
+   end;
 end;
 
 procedure TBonFacPGestionF.AddBVFacBonFacVGBtnClick(Sender: TObject);

@@ -1620,6 +1620,11 @@ begin
   begin
   BonCtrRenduLbl.Caption:=CurrToStrF(((MainForm.Bonv_ctrTable.FieldValues['MontantRen'])),ffNumber,2) ;
   end;
+//  ProduitsListDBGridEh.Refresh;
+      if MainForm.Bonv_ctr_listTable.ControlsDisabled  then
+   begin
+     MainForm.Bonv_ctr_listTable.EnableControls;
+   end;
 end;
 
 procedure TBonCtrGestionF.sSpeedButton6Click(Sender: TObject);
@@ -1627,6 +1632,7 @@ begin
   MainForm.Bonv_ctrTable.Prior;
   MainForm.Bonv_ctrTable.Refresh;
   MainForm.Bonv_ctr_listTable.Refresh;
+
 
   if MainForm.Bonv_ctrTable.FieldValues['valider_bvctr'] = True then
   begin
@@ -1656,6 +1662,13 @@ begin
   begin
   BonCtrRenduLbl.Caption:=CurrToStrF(((MainForm.Bonv_ctrTable.FieldValues['MontantRen'])),ffNumber,2) ;
   end;
+
+
+//  ProduitsListDBGridEh.Refresh;
+      if MainForm.Bonv_ctr_listTable.ControlsDisabled  then
+   begin
+     MainForm.Bonv_ctr_listTable.EnableControls;
+   end;
 end;
 
 procedure TBonCtrGestionF.sSpeedButton5Click(Sender: TObject);
@@ -1691,6 +1704,11 @@ begin
   begin
   BonCtrRenduLbl.Caption:=CurrToStrF(((MainForm.Bonv_ctrTable.FieldValues['MontantRen'])),ffNumber,2) ;
   end;
+//  ProduitsListDBGridEh.Refresh;
+      if MainForm.Bonv_ctr_listTable.ControlsDisabled  then
+   begin
+     MainForm.Bonv_ctr_listTable.EnableControls;
+   end;
 end;
 
 procedure TBonCtrGestionF.sSpeedButton4Click(Sender: TObject);
@@ -1726,6 +1744,11 @@ begin
   begin
   BonCtrRenduLbl.Caption:=CurrToStrF(((MainForm.Bonv_ctrTable.FieldValues['MontantRen'])),ffNumber,2) ;
   end;
+//  ProduitsListDBGridEh.Refresh;
+      if MainForm.Bonv_ctr_listTable.ControlsDisabled  then
+   begin
+     MainForm.Bonv_ctr_listTable.EnableControls;
+   end;
 end;
 
 procedure TBonCtrGestionF.RemisePerctageBonCtrGEdtChange(Sender: TObject);

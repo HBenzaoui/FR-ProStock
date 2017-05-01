@@ -699,6 +699,11 @@ begin
   end;
 
   NumBonFacAGEdt.Caption:= MainForm.Bona_facTable.FieldByName('num_bafac').AsString;
+
+   if MainForm.Bona_fac_listTable.ControlsDisabled  then
+   begin
+     MainForm.Bona_fac_listTable.EnableControls;
+   end;
 end;
 
 procedure TBonFacAGestionF.sSpeedButton6Click(Sender: TObject);
@@ -736,6 +741,11 @@ begin
   end;
 
   NumBonFacAGEdt.Caption:= MainForm.Bona_facTable.FieldByName('num_bafac').AsString;
+
+  if MainForm.Bona_fac_listTable.ControlsDisabled  then
+   begin
+     MainForm.Bona_fac_listTable.EnableControls;
+   end;
 end;
 
 procedure TBonFacAGestionF.sSpeedButton5Click(Sender: TObject);
@@ -773,6 +783,11 @@ begin
   end;
 
   NumBonFacAGEdt.Caption:= MainForm.Bona_facTable.FieldByName('num_bafac').AsString;
+
+  if MainForm.Bona_fac_listTable.ControlsDisabled  then
+   begin
+     MainForm.Bona_fac_listTable.EnableControls;
+   end;
 end;
 
 procedure TBonFacAGestionF.sSpeedButton4Click(Sender: TObject);
@@ -810,6 +825,11 @@ begin
   end;
 
   NumBonFacAGEdt.Caption:= MainForm.Bona_facTable.FieldByName('num_bafac').AsString;
+
+  if MainForm.Bona_fac_listTable.ControlsDisabled  then
+   begin
+     MainForm.Bona_fac_listTable.EnableControls;
+   end;
 end;
 
 procedure TBonFacAGestionF.AddBAFacBonFacAGBtnClick(Sender: TObject);

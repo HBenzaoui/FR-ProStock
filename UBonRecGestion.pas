@@ -2477,6 +2477,11 @@ begin
 
   NumBonRecGEdt.Caption:= MainForm.Bona_recTable.FieldByName('num_barec').AsString;
 
+   if MainForm.Bona_recPlistTable.ControlsDisabled  then
+   begin
+     MainForm.Bona_recPlistTable.EnableControls;
+   end;
+
 end;
 
 procedure TBonRecGestionF.sSpeedButton9Click(Sender: TObject);
@@ -2514,6 +2519,11 @@ BonRecResteLbl.Caption:=CurrToStrF(((MainForm.Bona_recTable.FieldValues['Montant
 end;
 
  NumBonRecGEdt.Caption:= MainForm.Bona_recTable.FieldByName('num_barec').AsString;
+
+    if MainForm.Bona_recPlistTable.ControlsDisabled  then
+   begin
+     MainForm.Bona_recPlistTable.EnableControls;
+   end;
 end;
 
 procedure TBonRecGestionF.sSpeedButton8Click(Sender: TObject);
@@ -2550,6 +2560,11 @@ BonRecResteLbl.Caption:=CurrToStrF(((MainForm.Bona_recTable.FieldValues['Montant
 end;
 
  NumBonRecGEdt.Caption:= MainForm.Bona_recTable.FieldByName('num_barec').AsString;
+
+    if MainForm.Bona_recPlistTable.ControlsDisabled  then
+   begin
+     MainForm.Bona_recPlistTable.EnableControls;
+   end;
 end;
 
 procedure TBonRecGestionF.sSpeedButton7Click(Sender: TObject);
@@ -2586,6 +2601,11 @@ BonRecResteLbl.Caption:=CurrToStrF(((MainForm.Bona_recTable.FieldValues['Montant
 end;
 
  NumBonRecGEdt.Caption:= MainForm.Bona_recTable.FieldByName('num_barec').AsString;
+
+    if MainForm.Bona_recPlistTable.ControlsDisabled  then
+   begin
+     MainForm.Bona_recPlistTable.EnableControls;
+   end;
 end;
 
 procedure TBonRecGestionF.FournisseurBonRecGCbxChange(Sender: TObject);

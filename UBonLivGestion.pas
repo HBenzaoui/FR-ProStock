@@ -2588,6 +2588,11 @@ begin
   end;
 
    NumBonLivGEdt.Caption:= MainForm.Bonv_livTable.FieldByName('num_bvliv').AsString;
+
+      if MainForm.Bonv_liv_listTable.ControlsDisabled  then
+   begin
+     MainForm.Bonv_liv_listTable.EnableControls;
+   end;
 end;
 
 procedure TBonLivGestionF .sSpeedButton6Click(Sender: TObject);
@@ -2625,6 +2630,11 @@ begin
   end;
 
   NumBonLivGEdt.Caption:= MainForm.Bonv_livTable.FieldByName('num_bvliv').AsString;
+
+    if MainForm.Bonv_liv_listTable.ControlsDisabled  then
+   begin
+     MainForm.Bonv_liv_listTable.EnableControls;
+   end;
 end;
 
 procedure TBonLivGestionF .sSpeedButton5Click(Sender: TObject);
@@ -2662,6 +2672,11 @@ begin
   end;
 
   NumBonLivGEdt.Caption:= MainForm.Bonv_livTable.FieldByName('num_bvliv').AsString;
+
+        if MainForm.Bonv_liv_listTable.ControlsDisabled  then
+   begin
+     MainForm.Bonv_liv_listTable.EnableControls;
+   end;
 end;
 
 procedure TBonLivGestionF .sSpeedButton4Click(Sender: TObject);
@@ -2699,6 +2714,11 @@ begin
   end;
 
   NumBonLivGEdt.Caption:= MainForm.Bonv_livTable.FieldByName('num_bvliv').AsString;
+
+        if MainForm.Bonv_liv_listTable.ControlsDisabled  then
+   begin
+     MainForm.Bonv_liv_listTable.EnableControls;
+   end;
 end;
 
 procedure TBonLivGestionF .AddBVlivBonLivGBtnClick(Sender: TObject);

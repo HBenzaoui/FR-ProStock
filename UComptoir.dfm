@@ -1105,7 +1105,7 @@ object BonCtrGestionF: TBonCtrGestionF
       ShowHint = True
       Style.Font.Charset = DEFAULT_CHARSET
       Style.Font.Color = clWindowText
-      Style.Font.Height = 22
+      Style.Font.Height = 16
       Style.Font.Name = 'Helvetica LT Std'
       Style.Font.Style = []
       Style.IsFontAssigned = True

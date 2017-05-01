@@ -1769,7 +1769,7 @@ object BonFacVGestionF: TBonFacVGestionF
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
       Style.Font.Color = clWindowText
-      Style.Font.Height = 18
+      Style.Font.Height = 16
       Style.Font.Name = 'Helvetica LT Std'
       Style.Font.Style = []
       Style.IsFontAssigned = True
