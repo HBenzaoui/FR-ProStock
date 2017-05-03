@@ -1156,7 +1156,7 @@ begin
    Application.HintPause := 500;      // 250 mSec before hint is shown
    Application.HintHidePause := 5000;
    ResetDBPaswordGEdt.ShowHint:= True;
-   ResetDBPaswordGEdt.Hint:='Appelez Hamza : 213 661 45 81 97 ';
+   ResetDBPaswordGEdt.Hint:='Appelez Hamza Benzaoui : +213 661 45 81 97 ';
 end;
 
 procedure TFOptions.TiroirCaisseCOMListCbxDropDown(Sender: TObject);

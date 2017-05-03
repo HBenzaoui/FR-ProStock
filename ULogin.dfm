@@ -32,7 +32,7 @@ object LoginF: TLoginF
   end
   object sImage1: TsImage
     Left = 507
-    Top = 20
+    Top = 14
     Width = 20
     Height = 20
     Cursor = crHandPoint
@@ -123,7 +123,7 @@ object LoginF: TLoginF
   end
   object sImage3: TsImage
     Left = 508
-    Top = 66
+    Top = 52
     Width = 20
     Height = 20
     Cursor = crHandPoint
@@ -1392,10 +1392,11 @@ object LoginF: TLoginF
     SkinData.SkinSection = 'CHECKBOX'
   end
   object CancelBtn: TAdvToolButton
-    Left = 319
+    Left = 379
     Top = 107
-    Width = 185
+    Width = 125
     Height = 30
+    Cursor = crHandPoint
     AutoThemeAdapt = False
     BorderColor = 8819962
     BorderDownColor = 15722984
@@ -1425,8 +1426,9 @@ object LoginF: TLoginF
   object LoginBtn: TAdvToolButton
     Left = 121
     Top = 107
-    Width = 185
+    Width = 125
     Height = 30
+    Cursor = crHandPoint
     AutoThemeAdapt = False
     Color = 7854350
     ColorTo = 7854350
@@ -1451,7 +1453,7 @@ object LoginF: TLoginF
   end
   object Label1: TLabel
     Left = 239
-    Top = 3
+    Top = -3
     Width = 31
     Height = 13
     Caption = 'Label1'
@@ -1459,7 +1461,7 @@ object LoginF: TLoginF
   end
   object sImage6: TsImage
     Left = 81
-    Top = 23
+    Top = 17
     Width = 37
     Height = 15
     Center = True
@@ -1722,7 +1724,7 @@ object LoginF: TLoginF
   end
   object sImage7: TsImage
     Left = 85
-    Top = 69
+    Top = 55
     Width = 37
     Height = 15
     Center = True
@@ -1985,7 +1987,7 @@ object LoginF: TLoginF
   end
   object PassCheckEroorGLbl: TLabel
     Left = 121
-    Top = 47
+    Top = 36
     Width = 384
     Height = 15
     Alignment = taCenter
@@ -1994,7 +1996,7 @@ object LoginF: TLoginF
     Color = clBtnFace
     Font.Charset = DEFAULT_CHARSET
     Font.Color = 4666873
-    Font.Height = 14
+    Font.Height = 12
     Font.Name = 'Helvetica LT Std'
     Font.Style = []
     ParentColor = False
@@ -2003,9 +2005,50 @@ object LoginF: TLoginF
     WordWrap = True
     StyleElements = [seClient, seBorder]
   end
+  object AdvToolButton1: TAdvToolButton
+    Left = 249
+    Top = 107
+    Width = 125
+    Height = 30
+    Cursor = crHandPoint
+    AutoThemeAdapt = False
+    Color = 5425663
+    ColorTo = 5425663
+    ColorDown = 5425663
+    ColorDownTo = 5425663
+    ColorHot = 5236479
+    ColorHotTo = 5236479
+    ColorChecked = clNone
+    DropDownSplit = False
+    Caption = 'Essai'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = 4207405
+    Font.Height = 18
+    Font.Name = 'Roboto'
+    Font.Style = []
+    ParentFont = False
+    Shaded = False
+    Spacing = -1
+    OnClick = AdvToolButton1Click
+    Version = '1.6.1.2'
+    TMSStyle = 0
+  end
+  object Label2: TLabel
+    Left = 275
+    Top = 79
+    Width = 76
+    Height = 13
+    Caption = '21 jours restants'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = 12
+    Font.Name = 'Roboto'
+    Font.Style = []
+    ParentFont = False
+  end
   object PassCheckGErrorP: TPanel
     Left = 120
-    Top = 62
+    Top = 48
     Width = 385
     Height = 28
     BevelOuter = bvNone
@@ -2022,7 +2065,7 @@ object LoginF: TLoginF
   end
   object cxTextEdit114: TcxTextEdit
     Left = 121
-    Top = 18
+    Top = 12
     ParentFont = False
     Properties.PasswordChar = #8226
     Properties.ReadOnly = True
@@ -2038,7 +2081,7 @@ object LoginF: TLoginF
   end
   object cxTextEdit22: TcxTextEdit
     Left = 121
-    Top = 64
+    Top = 50
     ParentFont = False
     Properties.PasswordChar = #8226
     Properties.OnChange = cxTextEdit22PropertiesChange
@@ -2053,29 +2096,85 @@ object LoginF: TLoginF
     Width = 383
   end
   object Button1: TButton
-    Left = 411
-    Top = -2
+    Left = 13
+    Top = 116
     Width = 49
     Height = 18
     Caption = 'Button1'
     TabOrder = 2
-    Visible = False
     OnClick = Button1Click
+  end
+  object PrograssBar: TAdvSmoothProgressBar
+    Left = 121
+    Top = 95
+    Width = 383
+    Height = 5
+    Step = 1.000000000000000000
+    Maximum = 21.000000000000000000
+    Position = 15.000000000000000000
+    GlowAnimation = False
+    Appearance.Shadows = False
+    Appearance.Overlays = False
+    Appearance.BackGroundFill.Color = 15722984
+    Appearance.BackGroundFill.ColorTo = clNone
+    Appearance.BackGroundFill.ColorMirror = clNone
+    Appearance.BackGroundFill.ColorMirrorTo = clNone
+    Appearance.BackGroundFill.GradientType = gtVertical
+    Appearance.BackGroundFill.GradientMirrorType = gtNone
+    Appearance.BackGroundFill.BorderColor = clNone
+    Appearance.BackGroundFill.Rounding = 0
+    Appearance.BackGroundFill.ShadowColor = clNone
+    Appearance.BackGroundFill.ShadowOffset = 0
+    Appearance.BackGroundFill.Glow = gmNone
+    Appearance.BackGroundFill.GlowGradientColor = clNone
+    Appearance.BackGroundFill.GlowRadialColor = clNone
+    Appearance.ProgressFill.Color = 7854350
+    Appearance.ProgressFill.ColorTo = clNone
+    Appearance.ProgressFill.ColorMirror = clNone
+    Appearance.ProgressFill.ColorMirrorTo = clNone
+    Appearance.ProgressFill.GradientType = gtVertical
+    Appearance.ProgressFill.GradientMirrorType = gtVertical
+    Appearance.ProgressFill.BorderColor = clNone
+    Appearance.ProgressFill.Rounding = 0
+    Appearance.ProgressFill.RoundingType = rtNone
+    Appearance.ProgressFill.ShadowColor = clNone
+    Appearance.ProgressFill.ShadowOffset = 0
+    Appearance.ProgressFill.Glow = gmNone
+    Appearance.ProgressFill.GlowGradientColor = clNone
+    Appearance.ProgressFill.GlowRadialColor = clNone
+    Appearance.Font.Charset = DEFAULT_CHARSET
+    Appearance.Font.Color = clWindowText
+    Appearance.Font.Height = -11
+    Appearance.Font.Name = 'Tahoma'
+    Appearance.Font.Style = []
+    Appearance.ProgressFont.Charset = DEFAULT_CHARSET
+    Appearance.ProgressFont.Color = clWindowText
+    Appearance.ProgressFont.Height = -11
+    Appearance.ProgressFont.Name = 'Tahoma'
+    Appearance.ProgressFont.Style = []
+    Appearance.ValueFormat = '%.0f%%'
+    Version = '1.9.0.0'
+    MarqueeColor = clNone
+    TabStop = False
+    TMSStyle = 0
   end
   object LoginFmx: TmxProtector
     CodeKey = 'Ignore'
-    ProtectionTypes = [stRegister]
+    ProtectionTypes = [stDayTrial, stRegister]
     Options = [poAutoInit, poCheckSytemTime, poPasswordOnce]
     RegistryRootKey = rkLocalMachine
     Expiration = 42740.607651898150000000
     MaxStartNumber = 0
-    MaxDayNumber = 0
+    MaxDayNumber = 21
     UserName = '4AB4C-CE7ED-9DAFC-71ED8-C6B7B-C9312-DC'
     Version = '1.31'
+    OnExpiration = LoginFmxExpiration
+    OnDayTrial = LoginFmxDayTrial
+    OnInvalidSystemTime = LoginFmxInvalidSystemTime
     OnInvalidSerialNumber = LoginFmxInvalidSerialNumber
     OnGetSerialNumber = LoginFmxGetSerialNumber
-    Left = 127
-    Top = 111
+    Left = 81
+    Top = 109
     UniqueCodeID = 
       '7A32463D323230393D27383F4E3C2224242122395754242A342A585A2A5B5A66' +
       '60661B14665B'

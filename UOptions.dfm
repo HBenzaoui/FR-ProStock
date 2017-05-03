@@ -24,7 +24,7 @@ object FOptions: TFOptions
     Top = 27
     Width = 448
     Height = 611
-    ActivePage = sTabSheet2
+    ActivePage = GeneralOptionGTB
     Align = alClient
     DoubleBuffered = True
     Font.Charset = DEFAULT_CHARSET

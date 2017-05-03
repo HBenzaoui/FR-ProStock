@@ -21,7 +21,7 @@ uses
   dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
   dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
   dxSkinXmas2008Blue, acPNG, Vcl.Buttons, cxTextEdit, Vcl.ExtCtrls, acImage,
-  mxProtector, AdvToolBtn, Vcl.StdCtrls;
+  mxProtector, AdvToolBtn, Vcl.StdCtrls, AdvSmoothProgressBar;
 
 type
   TLoginF = class(TForm)
@@ -41,6 +41,9 @@ type
     Button1: TButton;
     PassCheckEroorGLbl: TLabel;
     PassCheckGErrorP: TPanel;
+    AdvToolButton1: TAdvToolButton;
+    PrograssBar: TAdvSmoothProgressBar;
+    Label2: TLabel;
     procedure sImage1Click(Sender: TObject);
     procedure sImage3Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -54,6 +57,10 @@ type
     procedure LoginFmxInvalidSerialNumber(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure AdvToolButton1Click(Sender: TObject);
+    procedure LoginFmxDayTrial(Sender: TObject; DaysRemained: Integer);
+    procedure LoginFmxExpiration(Sender: TObject);
+    procedure LoginFmxInvalidSystemTime(Sender: TObject);
   private
     procedure ProcessRights;
     { Private declarations }
@@ -169,12 +176,34 @@ ProcessRights;
    MainForm.Caption:= MainForm.Caption + '[DEMO]'
   end
   else
-  begin 
-   MainForm.Caption:= StringReplace(MainForm.Caption, '[DEMO]', '', [rfReplaceAll]);   
+  begin
+   MainForm.Caption:= StringReplace(MainForm.Caption, '[DEMO]', '', [rfReplaceAll]);
    MainForm.Show;
    Close;
   end;
    
+end;
+
+procedure TLoginF.LoginFmxDayTrial(Sender: TObject; DaysRemained: Integer);
+begin
+     If DaysRemained = 1 Then
+          Label2.Caption := 'Un seul jour autorisé a quitté'  Else
+          Label2.Caption := Format( ' %d jours restants', [ DaysRemained ] );
+
+//     btn_Reset.Enabled := FALSE;
+     AdvToolButton1.Enabled := TRUE;
+     PrograssBar.Maximum := LoginFmx.MaxDayNumber;
+     PrograssBar.Position := DaysRemained;
+end;
+
+procedure TLoginF.LoginFmxExpiration(Sender: TObject);
+begin
+     Label2.Caption := '0 jours restants';
+//     lbl_Message.Caption := 'This licence has expired';
+//     btn_Reset.Enabled := TRUE;
+     AdvToolButton1.Enabled := FALSE;
+     PrograssBar.Maximum := 0;
+     PrograssBar.Position := 0;
 end;
 
 procedure TLoginF.LoginFmxGetSerialNumber(Sender: TObject; var UserName,
@@ -198,6 +227,14 @@ begin
 
 end;
 
+procedure TLoginF.LoginFmxInvalidSystemTime(Sender: TObject);
+begin
+if NOT LoginFmx.IsRegistered Then
+  Begin
+ MessageDlg( 'L''heure ou la date de votre système est invalide.' + #13 + #10 + 'Configurez la date et l''heure appropriées pour continuer.', mtError, [ mbOK ], 0 );
+  End;
+end;
+
 procedure TLoginF.ProcessRights;
 begin
 
@@ -219,6 +256,22 @@ begin
      Begin
           label1.Caption := 'D';
      End;
+end;
+
+procedure TLoginF.AdvToolButton1Click(Sender: TObject);
+begin
+  if label1.Caption = 'D' then
+  begin
+   MainForm.Caption:= MainForm.Caption  ;
+   MainForm.Show;
+   Close;
+  end
+  else
+  begin
+   MainForm.Caption:= StringReplace(MainForm.Caption, '[DEMO]', '', [rfReplaceAll]);
+   MainForm.Show;
+   Close;
+  end;
 end;
 
 procedure TLoginF.Button1Click(Sender: TObject);
