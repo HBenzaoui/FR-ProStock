@@ -2066,8 +2066,8 @@ begin
             begin
             TotalTVANet:=StrToFloat(StringReplace(TotalTVANewLbl.Caption, #32, '', [rfReplaceAll]));
             end;
-         BonFacVTotalTVALbl.Caption:= FloatToStrF((TotalTVANet - (( TotalTVANet  * RemisePerctageBonFacV)/(100))),ffNumber,14,2); //TVA
-         BonFVTotalHTNewLbl.Caption:= FloatToStrF((BonFVTotalHT - (( BonFVTotalHT  * RemisePerctageBonFacV)/(100))),ffNumber,14,2); //HT
+         BonFacVTotalTVALbl.Caption:= FloatToStrF(Round(TotalTVANet - (( TotalTVANet  * RemisePerctageBonFacV)/(100))),ffNumber,14,2); //TVA
+         BonFVTotalHTNewLbl.Caption:= FloatToStrF(Round(BonFVTotalHT - (( BonFVTotalHT  * RemisePerctageBonFacV)/(100))),ffNumber,14,2); //HT
             if BonFVTotalHTNewLbl.Caption <>'' then
             begin
             NewHT:=StrToFloat (StringReplace(BonFVTotalHTNewLbl.Caption , #32, '', [rfReplaceAll]));
@@ -2081,10 +2081,10 @@ begin
             if TimberBonFacVGEdt.Visible = True then
             begin
             Timber:=StrToFloat(StringReplace(TimberBonFacVGEdt.Text, #32, '', [rfReplaceAll]));
-             BonFacVTotalTTCLbl.Caption:=  FloatToStrF((NewHT + NewTVA + Timber),ffNumber,14,2); // TTC
+             BonFacVTotalTTCLbl.Caption:=  FloatToStrF(Round(NewHT + NewTVA + Timber),ffNumber,14,2); // TTC
             end else
                 begin
-                  BonFacVTotalTTCLbl.Caption:=  FloatToStrF((NewHT + NewTVA ),ffNumber,14,2); // TTC
+                  BonFacVTotalTTCLbl.Caption:=  FloatToStrF(Round(NewHT + NewTVA ),ffNumber,14,2); // TTC
                 end;
 
 
@@ -2130,7 +2130,7 @@ begin
             NewTTC:=StrToFloat (StringReplace(BonFacVTotalTTCLbl.Caption , #32, '', [rfReplaceAll]));
             end;
           BonFacVGClientNEWCredit.Caption:=  FloatToStrF((NewTTC + OldClientCredit),ffNumber,14,2);
-          MainForm.Bonv_fac_listTable.Refresh;
+//          MainForm.Bonv_fac_listTable.Refresh;
           end;
        end;
        //------ this is to set the remise on the prix TTC only ---------//
@@ -2203,7 +2203,7 @@ begin
               NewTTC:=StrToFloat (StringReplace(BonFacVTotalTTCLbl.Caption , #32, '', [rfReplaceAll]));
               end;
              BonFacVGClientNEWCredit.Caption:=  FloatToStrF((NewTTC + OldClientCredit),ffNumber,14,2);
-             MainForm.Bonv_fac_listTable.Refresh;
+//             MainForm.Bonv_fac_listTable.Refresh;
             end;
       end;
 
@@ -2226,10 +2226,20 @@ procedure TBonFacVGestionF.RemisePerctageBonFacVGEdtKeyPress(Sender: TObject;
   var Key: Char);
 const
   N = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0',',','.', Char(VK_back)];
+   F = ['.'];
 begin
   if not(Key in N) then
   begin
      key := #0;
+  end;
+
+   if (Key in F) then
+  begin
+    key :=  #44;
+  end;
+  if (Key = '.') AND (Pos(Key, (RemisePerctageBonFacVGEdt.Text)) > 0) Then
+  begin
+      Key := #0;
   end;
 end;
 
@@ -2304,18 +2314,20 @@ procedure TBonFacVGestionF.RemiseBonFacVGEdtKeyPress(Sender: TObject;
   var Key: Char);
 const
   N = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0',',','.', Char(VK_back)];
-  F = ['.'];
+   F = ['.'];
 begin
-
   if not(Key in N) then
   begin
      key := #0;
   end;
-  if (Key in F) then
+
+   if (Key in F) then
   begin
-
     key :=  #44;
-
+  end;
+  if (Key = '.') AND (Pos(Key, (RemiseBonFacVGEdt.Text)) > 0) Then
+  begin
+      Key := #0;
   end;
 end;
 

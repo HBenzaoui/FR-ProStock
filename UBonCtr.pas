@@ -391,6 +391,7 @@ codeCT:= 0;
         end else
             begin
               MainForm.Bonv_ctrTable.Last;
+
               codeCT := MainForm.Bonv_ctrTable.FieldValues['code_bvctr'];
               MainForm.Bonv_ctr_listTable.Active:=False;
               MainForm.Bonv_ctr_listTable.SQL.Clear;
@@ -401,6 +402,12 @@ codeCT:= 0;
              begin
           //   MainForm.Bonv_ctrTable.Last;
              codeCT := MainForm.Bonv_ctrTable.FieldValues['code_bvctr'];
+
+               MainForm.Bonv_ctrTable.Edit;
+               MainForm.Bonv_ctrTable.FieldValues['date_bvctr']:= DateOf(Today);
+               MainForm.Bonv_ctrTable.FieldValues['time_bvctr']:= TimeOf(Now);
+               MainForm.Bonv_ctrTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
+               MainForm.Bonv_ctrTable.Post;
              end else
              begin
           //   MainForm.Bonv_ctrTable.Last;

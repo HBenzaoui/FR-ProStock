@@ -399,6 +399,13 @@ MainForm.Bonv_facTable.Active:= True;
            begin
 
            codeFV := MainForm.Bonv_facTable.FieldValues['code_bvfac'];
+
+           MainForm.Bonv_facTable.Edit;
+           MainForm.Bonv_facTable.FieldValues['date_bvfac']:= DateOf(Today);
+           MainForm.Bonv_facTable.FieldValues['time_bvfac']:= TimeOf(Now);
+           MainForm.Bonv_facTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
+           MainForm.Bonv_facTable.Post;
+
            end else
            begin
 

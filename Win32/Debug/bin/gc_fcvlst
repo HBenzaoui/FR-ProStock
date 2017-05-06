@@ -2,7 +2,7 @@
 1~ num_bvfac~ N° du Facture~ 100~ -1
 2~ date_bvfac~ Date~ 100~ -1
 3~ time_bvfac~ Heure~ 100~ -1
-4~ clientbvfac~ Client~ 300~ -1
+4~ clientbvfac~ Client~ 235~ -1
 5~ code_mdpai~ MP~ 28~ -1
 6~ montht_bvfac~ Montant HT~ 150~ -1
 7~ remise_bvfac~ Remise HT~ 150~ -1

@@ -389,6 +389,7 @@ MainForm.Bonp_facTable.Active:= True;
       end else
           begin
             MainForm.Bonp_facTable.Last;
+
             codeFV := MainForm.Bonp_facTable.FieldValues['code_bpfac'];
             MainForm.bonp_fac_listTable.Active:=False;
             MainForm.bonp_fac_listTable.SQL.Clear;
@@ -399,6 +400,11 @@ MainForm.Bonp_facTable.Active:= True;
            begin
 
            codeFV := MainForm.Bonp_facTable.FieldValues['code_bpfac'];
+           MainForm.Bonp_facTable.Edit;
+           MainForm.Bonp_facTable.FieldValues['date_bpfac']:= DateOf(Today);
+           MainForm.Bonp_facTable.FieldValues['time_bpfac']:= TimeOf(Now);
+           MainForm.Bonp_facTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
+           MainForm.Bonp_facTable.Post;
            end else
            begin
 

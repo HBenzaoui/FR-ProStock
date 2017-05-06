@@ -403,6 +403,13 @@ begin
        begin
          ClientBonLivGCbxExit(Sender);
        end;
+
+
+//     if  (MainForm.Bonv_livTable.FieldValues['RemisePerc']<> null) AND (MainForm.Bonv_livTable.FieldValues['remise_bvliv']<> 0) then
+//     begin
+//     RemisePerctageBonLivGEdtChange(Sender);
+//     end;
+
   end;
 
 
@@ -2317,8 +2324,8 @@ begin
             begin
             TotalTVANet:=StrToFloat(StringReplace(TotalTVANewLbl.Caption, #32, '', [rfReplaceAll]));
             end;
-         BonLivTotalTVALbl.Caption:= FloatToStrF((TotalTVANet - (( TotalTVANet  * RemisePerctageBonLiv)/(100))),ffNumber,14,2); //TVA
-         BonLTotalHTNewLbl.Caption:= FloatToStrF((BonLTotalHT - (( BonLTotalHT  * RemisePerctageBonLiv)/(100))),ffNumber,14,2); //HT
+         BonLivTotalTVALbl.Caption:= FloatToStrF(Round(TotalTVANet - (( TotalTVANet  * RemisePerctageBonLiv)/(100))),ffNumber,14,2); //TVA
+         BonLTotalHTNewLbl.Caption:= FloatToStrF(Round(BonLTotalHT - (( BonLTotalHT  * RemisePerctageBonLiv)/(100))),ffNumber,14,2); //HT
             if BonLTotalHTNewLbl.Caption <>'' then
             begin
             NewHT:=StrToFloat (StringReplace(BonLTotalHTNewLbl.Caption , #32, '', [rfReplaceAll]));
@@ -2327,7 +2334,7 @@ begin
             begin
             NewTVA:=StrToFloat(StringReplace(BonLivTotalTVALbl.Caption, #32, '', [rfReplaceAll]));
             end;
-         BonLivTotalTTCLbl.Caption:=  FloatToStrF((NewHT + NewTVA),ffNumber,14,2); // TTC
+         BonLivTotalTTCLbl.Caption:=  FloatToStrF(Round(NewHT + NewTVA),ffNumber,14,2); // TTC
          BonLivResteLbl.Caption:= BonLivTotalTTCLbl.Caption;                       //REst
             if RemisePerctageBonLivGEdt.Focused then
             begin
@@ -2462,18 +2469,20 @@ procedure TBonLivGestionF .RemisePerctageBonLivGEdtKeyPress(Sender: TObject;
   var Key: Char);
 const
   N = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0',',','.', Char(VK_back)];
-  F = ['.'];
+   F = ['.'];
 begin
-
   if not(Key in N) then
   begin
      key := #0;
   end;
-  if (Key in F) then
+
+   if (Key in F) then
   begin
-
     key :=  #44;
-
+  end;
+  if (Key = '.') AND (Pos(Key, (RemisePerctageBonLivGEdt.Text)) > 0) Then
+  begin
+      Key := #0;
   end;
 end;
 
@@ -2481,11 +2490,20 @@ procedure TBonLivGestionF .RemiseBonLivGEdtKeyPress(Sender: TObject;
   var Key: Char);
 const
   N = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0',',','.', Char(VK_back)];
+   F = ['.'];
 begin
-
   if not(Key in N) then
   begin
      key := #0;
+  end;
+
+   if (Key in F) then
+  begin
+    key :=  #44;
+  end;
+  if (Key = '.') AND (Pos(Key, (RemiseBonLivGEdt.Text)) > 0) Then
+  begin
+      Key := #0;
   end;
 end;
 

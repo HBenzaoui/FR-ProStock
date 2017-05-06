@@ -401,7 +401,11 @@ ClearFilterBVLivPMenuClick(Sender);
            begin
         //   MainForm.Bona_recTable.Last;
            codeBR := MainForm.Bona_recTable.FieldValues['code_barec'];
-
+             MainForm.Bona_recTable.Edit;
+             MainForm.Bona_recTable.FieldValues['date_barec']:= DateOf(Today);
+             MainForm.Bona_recTable.FieldValues['time_barec']:= TimeOf(Now);
+             MainForm.Bona_recTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
+             MainForm.Bona_recTable.Post;
 
            end else
                  begin

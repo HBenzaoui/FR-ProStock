@@ -1444,7 +1444,7 @@ begin
 //B3Click(Sender);
 end;
 procedure TMainForm.Bona_recPlistTableAfterRefresh(DataSet: TDataSet);
-var TotalHT,TotalTVA,TVA,TotalTTC,LeReste,Regle: Currency;
+var TotalHT,TotalTVA,TVA,TotalTTC,LeReste,Regle,NewHT,BonRTotalHT: Currency;
   begin
 
           if Assigned(BonRecGestionF) then
@@ -1488,17 +1488,30 @@ var TotalHT,TotalTVA,TVA,TotalTTC,LeReste,Regle: Currency;
     end;
 
     if NOT (Bona_recPlistTable.IsEmpty) then
-
-    if BonRecGestionF.FournisseurBonRecGCbx.Text<>'' then
     begin
+//    if BonRecGestionF.FournisseurBonRecGCbx.Text<>'' then
+//    begin
 //    BonRecGestionF.BonRecGFourNEWCredit.Caption:=
 //    CurrToStrF((LeReste + ((StrToCurr(StringReplace(BonRecGestionF.BonRecGFourOLDCredit.Caption, #32, '', [rfReplaceAll]))))),ffNumber,2) ;
-    end ;
+//    end ;
 
-     BonRecGestionF.RemisePerctageBonRecGEdt.Text:='';
+//     BonRecGestionF.RemisePerctageBonRecGEdt.Text:='';
 //    BonRecGestionF.RemiseBonRecGEdtChange(Self);
 
+              BonRecGestionF.RemisePerctageBonRecGEdtChange(Self);
 
+            if BonRecGestionF.BonRTotalHTNewLbl.Caption <>'' then
+            begin
+            NewHT:=StrToFloat (StringReplace(BonRecGestionF.BonRTotalHTNewLbl.Caption , #32, '', [rfReplaceAll]));
+            end;
+
+             if BonRecGestionF.BonRecTotalHTLbl.Caption<>'' then
+            begin
+            BonRTotalHT:=StrToFloat (StringReplace(BonRecGestionF.BonRecTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
+            end;
+
+            BonRecGestionF.RemiseBonRecGEdt.Text:=FloatToStrF((BonRTotalHT - NewHT),ffNumber,14,2);
+    end;
        end;
 
 
@@ -1612,7 +1625,7 @@ begin
 end;
 
 procedure TMainForm.Bonp_fac_listTableAfterRefresh(DataSet: TDataSet);
-var TotalHT,TotalTVA,TVA,TotalTTC,LeReste,Regle,TTCbeforeTimber,TimberFV,TTCafterTimber,Marge: Currency;
+var TotalHT,TotalTVA,TVA,TotalTTC,LeReste,Regle,TTCbeforeTimber,TimberFV,TTCafterTimber,Marge,NewHt,BonFVTotalHT: Currency;
   begin
       if Assigned(BonFacPGestionF) then
        begin
@@ -1655,12 +1668,12 @@ var TotalHT,TotalTVA,TVA,TotalTTC,LeReste,Regle,TTCbeforeTimber,TimberFV,TTCafte
     end;
 
     if NOT (Bonp_fac_listTable.IsEmpty) then
-
-    if BonFacPGestionF.ClientBonFacVGCbx.Text<>'' then
-    begin
+   begin
+//    if BonFacPGestionF.ClientBonFacVGCbx.Text<>'' then
+//    begin
 //    BonFacPGestionF.BonFacVGClientNEWCredit.Caption:=
 //    CurrToStrF((LeReste + ((StrToCurr(StringReplace(BonFacPGestionF.BonFacVGClientOLDCredit.Caption, #32, '', [rfReplaceAll]))))),ffNumber,2) ;
-    end ;
+//    end ;
 
 //              if BonFacPGestionF.ModePaieBonFacVGCbx.Text<>'' then
 //         begin
@@ -1681,7 +1694,22 @@ var TotalHT,TotalTVA,TVA,TotalTTC,LeReste,Regle,TTCbeforeTimber,TimberFV,TTCafte
 //          end;
 //          end;
 
-        BonFacPGestionF.RemisePerctageBonFacVGEdt.Text:='';
+//        BonFacPGestionF.RemisePerctageBonFacVGEdt.Text:='';
+
+           BonFacPGestionF.RemisePerctageBonFacVGEdtChange(Self);
+
+            if BonFacPGestionF.BonFVTotalHTNewLbl.Caption <>'' then
+            begin
+            NewHT:=StrToFloat (StringReplace(BonFacPGestionF.BonFVTotalHTNewLbl.Caption , #32, '', [rfReplaceAll]));
+            end;
+
+             if BonFacPGestionF.BonFacVTotalHTLbl.Caption<>'' then
+            begin
+            BonFVTotalHT:=StrToFloat (StringReplace(BonFacPGestionF.BonFacVTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
+            end;
+
+            BonFacPGestionF.RemiseBonFacVGEdt.Text:=FloatToStrF((BonFVTotalHT - NewHT),ffNumber,14,2);
+   end;
 
        end;
 
@@ -1821,7 +1849,7 @@ begin
 end;
 
 procedure TMainForm.Bonv_liv_listTableAfterRefresh(DataSet: TDataSet);
-var TotalHT,TotalTVA,TVA,TotalTTC,LeReste,Regle,Marge: Currency;
+var TotalHT,TotalTVA,TVA,TotalTTC,LeReste,Regle,Marge,NewHT,BonLTotalHT: Currency;
   begin
        if Assigned(BonLivGestionF) then
        begin
@@ -1865,15 +1893,34 @@ var TotalHT,TotalTVA,TVA,TotalTTC,LeReste,Regle,Marge: Currency;
     end;
 
     if NOT (Bonv_liv_listTable.IsEmpty) then
-
-    if BonLivGestionF.ClientBonLivGCbx.Text<>'' then
     begin
+//    if BonLivGestionF.ClientBonLivGCbx.Text<>'' then
+//    begin
 //    BonLivGestionF.BonLivGClientNEWCredit.Caption:=
 //    CurrToStrF((LeReste + ((StrToCurr(StringReplace(BonLivGestionF.BonLivGClientOLDCredit.Caption, #32, '', [rfReplaceAll]))))),ffNumber,2) ;
-    end ;
+//    end ;
+//         if  (Bonv_livTable.FieldValues['RemisePerc']= null) OR (Bonv_livTable.FieldValues['remise_bvliv']= 0) then
+//         begin
+//         BonLivGestionF.RemisePerctageBonLivGEdt.Text:='';
+//         end else
+//         begin
+//            BonLivGestionF.RemisePerctageBonLivGEdtChange(Self);
+//         end;
 
-     BonLivGestionF.RemisePerctageBonLivGEdt.Text:='';
+            BonLivGestionF.RemisePerctageBonLivGEdtChange(Self);
 
+            if BonLivGestionF.BonLTotalHTNewLbl.Caption <>'' then
+            begin
+            NewHT:=StrToFloat (StringReplace(BonLivGestionF.BonLTotalHTNewLbl.Caption , #32, '', [rfReplaceAll]));
+            end;
+
+             if BonLivGestionF.BonLivTotalHTLbl.Caption<>'' then
+            begin
+            BonLTotalHT:=StrToFloat (StringReplace(BonLivGestionF.BonLivTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
+            end;
+
+            BonLivGestionF.RemiseBonLivGEdt.Text:=FloatToStrF((BonLTotalHT - NewHT),ffNumber,14,2);
+    end;
        end;
 end;
 
@@ -1915,7 +1962,7 @@ begin
 end;
 
 procedure TMainForm.Bonv_fac_listTableAfterRefresh(DataSet: TDataSet);
-var TotalHT,TotalTVA,TVA,TotalTTC,LeReste,Regle,TTCbeforeTimber,TimberFV,TTCafterTimber,Marge: Currency;
+var TotalHT,TotalTVA,TVA,TotalTTC,LeReste,Regle,TTCbeforeTimber,TimberFV,TTCafterTimber,Marge,NewHT,BonFVTotalHT: Currency;
   begin
       if Assigned(BonFacVGestionF) then
        begin
@@ -1958,12 +2005,27 @@ var TotalHT,TotalTVA,TVA,TotalTTC,LeReste,Regle,TTCbeforeTimber,TimberFV,TTCafte
     end;
 
     if NOT (Bonv_fac_listTable.IsEmpty) then
-
-    if BonFacVGestionF.ClientBonFacVGCbx.Text<>'' then
     begin
+//    if BonFacVGestionF.ClientBonFacVGCbx.Text<>'' then
+//    begin
 //    BonFacVGestionF.BonFacVGClientNEWCredit.Caption:=
 //    CurrToStrF((LeReste + ((StrToCurr(StringReplace(BonFacVGestionF.BonFacVGClientOLDCredit.Caption, #32, '', [rfReplaceAll]))))),ffNumber,2) ;
-    end ;
+//    end ;
+
+            BonFacVGestionF.RemisePerctageBonFacVGEdtChange(Self);
+
+            if BonFacVGestionF.BonFVTotalHTNewLbl.Caption <>'' then
+            begin
+            NewHT:=StrToFloat (StringReplace(BonFacVGestionF.BonFVTotalHTNewLbl.Caption , #32, '', [rfReplaceAll]));
+            end;
+
+             if BonFacVGestionF.BonFacVTotalHTLbl.Caption<>'' then
+            begin
+            BonFVTotalHT:=StrToFloat (StringReplace(BonFacVGestionF.BonFacVTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
+            end;
+
+            BonFacVGestionF.RemiseBonFacVGEdt.Text:=FloatToStrF((BonFVTotalHT - NewHT),ffNumber,14,2);
+
 
               if BonFacVGestionF.ModePaieBonFacVGCbx.Text<>'' then
          begin
@@ -1984,7 +2046,13 @@ var TotalHT,TotalTVA,TVA,TotalTTC,LeReste,Regle,TTCbeforeTimber,TimberFV,TTCafte
           end;
           end;
 
-        BonFacVGestionF.RemisePerctageBonFacVGEdt.Text:='';
+//        BonFacVGestionF.RemisePerctageBonFacVGEdt.Text:='';
+
+
+
+
+
+    end;
 
        end;
 end;
@@ -2096,7 +2164,7 @@ begin
 end;
 
 procedure TMainForm.Bona_fac_listTableAfterRefresh(DataSet: TDataSet);
-var TotalHT,TotalTVA,TVA,TotalTTC,LeReste,Regle,TTCbeforeTimber,TimberFA,TTCafterTimber: Currency;
+var TotalHT,TotalTVA,TVA,TotalTTC,LeReste,Regle,TTCbeforeTimber,TimberFA,TTCafterTimber,NewHT,BonFATotalHT: Currency;
   begin
       if Assigned(BonFacAGestionF) then
        begin
@@ -2137,12 +2205,28 @@ var TotalHT,TotalTVA,TVA,TotalTTC,LeReste,Regle,TTCbeforeTimber,TimberFA,TTCafte
     end;
 
     if NOT (Bona_fac_listTable.IsEmpty) then
-
-    if BonFacAGestionF.FourBonFacAGCbx.Text<>'' then
-    begin
+   begin
+//    if BonFacAGestionF.FourBonFacAGCbx.Text<>'' then
+//    begin
 //    BonFacAGestionF.BonFacAGFourNEWCredit.Caption:=
 //    CurrToStrF((LeReste + ((StrToCurr(StringReplace(BonFacAGestionF.BonFacAGFourOLDCredit.Caption, #32, '', [rfReplaceAll]))))),ffNumber,2) ;
-    end ;
+//    end ;
+
+              BonFacAGestionF.RemisePerctageBonFacAGEdtChange(Self);
+
+            if BonFacAGestionF.BonFATotalHTNewLbl.Caption <>'' then
+            begin
+            NewHT:=StrToFloat (StringReplace(BonFacAGestionF.BonFATotalHTNewLbl.Caption , #32, '', [rfReplaceAll]));
+            end;
+
+             if BonFacAGestionF.BonFacATotalHTLbl.Caption<>'' then
+            begin
+            BonFATotalHT:=StrToFloat (StringReplace(BonFacAGestionF.BonFacATotalHTLbl.Caption, #32, '', [rfReplaceAll]));
+            end;
+
+            BonFacAGestionF.RemiseBonFacAGEdt.Text:=FloatToStrF((BonFATotalHT - NewHT),ffNumber,14,2);
+
+
 
               if BonFacAGestionF.ModePaieBonFacAGCbx.Text<>'' then
          begin
@@ -2163,8 +2247,11 @@ var TotalHT,TotalTVA,TVA,TotalTTC,LeReste,Regle,TTCbeforeTimber,TimberFA,TTCafte
           end;
           end;
 
-        BonFacAGestionF.RemisePerctageBonFacAGEdt.Text:='';
+//        BonFacAGestionF.RemisePerctageBonFacAGEdt.Text:='';
 
+
+
+   end;
        end;
 end;
 
@@ -2477,7 +2564,7 @@ begin
 end;
 
 procedure TMainForm.Bonv_ctr_listTableAfterRefresh(DataSet: TDataSet);
-var TotalHT,TotalTVA,TVA,TotalTTC,LeRendu,Regle,Marge: Currency;
+var TotalHT,TotalTVA,TVA,TotalTTC,LeRendu,Regle,Marge,NewHT,BonFCTotalHT: Currency;
   begin
    if Assigned(BonCtrGestionF) then
   begin
@@ -2526,14 +2613,31 @@ var TotalHT,TotalTVA,TVA,TotalTTC,LeRendu,Regle,Marge: Currency;
     end;
 
     if NOT (Bonv_ctr_listTable.IsEmpty) then
-
+    begin
 //    if BonCtrGestionF.ClientBonCtrGCbx.Text<>'' then
 //    begin
 //    BonCtrGestionF.BonCtrGClientNEWCredit.Caption:=
 //    CurrToStrF((LeReste + ((StrToCurr(StringReplace(BonCtrGestionF.BonCtrGClientOLDCredit.Caption, #32, '', [rfReplaceAll]))))),ffNumber,2) ;
 //    end ;
 
-     BonCtrGestionF.RemisePerctageBonCtrGEdt.Text:='';
+//     BonCtrGestionF.RemisePerctageBonCtrGEdt.Text:='';
+
+
+             BonCtrGestionF.RemisePerctageBonCtrGEdtChange(Self);
+
+            if BonCtrGestionF.BonCTotalHTNewLbl.Caption <>'' then
+            begin
+            NewHT:=StrToFloat (StringReplace(BonCtrGestionF.BonCTotalHTNewLbl.Caption , #32, '', [rfReplaceAll]));
+            end;
+
+             if BonCtrGestionF.BonCtrTotalHTLbl.Caption<>'' then
+            begin
+            BonFCTotalHT:=StrToFloat (StringReplace(BonCtrGestionF.BonCtrTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
+            end;
+
+            BonCtrGestionF.RemiseBonCtrGEdt.Text:=FloatToStrF((BonFCTotalHT - NewHT),ffNumber,14,2);
+    end;
+
 
        end;
 end;

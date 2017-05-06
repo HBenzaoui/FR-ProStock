@@ -663,6 +663,11 @@ codeBL:= 0;
            begin
         //   MainForm.Bonv_livTable.Last;
            codeBL := MainForm.Bonv_livTable.FieldValues['code_bvliv'];
+             MainForm.Bonv_livTable.Edit;
+             MainForm.Bonv_livTable.FieldValues['date_bvliv']:= DateOf(Today);
+             MainForm.Bonv_livTable.FieldValues['time_bvliv']:= TimeOf(Now);
+             MainForm.Bonv_livTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
+             MainForm.Bonv_livTable.Post;
            end else
            begin
         //   MainForm.Bonv_livTable.Last;

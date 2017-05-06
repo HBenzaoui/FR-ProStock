@@ -2002,11 +2002,20 @@ end;
 procedure TBonRecGestionF.RemiseBonRecGEdtKeyPress(Sender: TObject; var Key: Char);
 const
   N = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0',',','.', Char(VK_back)];
+   F = ['.'];
 begin
-
   if not(Key in N) then
   begin
      key := #0;
+  end;
+
+   if (Key in F) then
+  begin
+    key :=  #44;
+  end;
+  if (Key = '.') AND (Pos(Key, (RemiseBonRecGEdt.Text)) > 0) Then
+  begin
+      Key := #0;
   end;
 end;
 
@@ -2103,8 +2112,8 @@ begin
             begin
             TotalTVANet:=StrToFloat(StringReplace(TotalTVANewLbl.Caption, #32, '', [rfReplaceAll]));
             end;
-         BonRecTotalTVALbl.Caption:= FloatToStrF((TotalTVANet - (( TotalTVANet  * RemisePerctageBonRec)/(100))),ffNumber,14,2); //TVA
-         BonRTotalHTNewLbl.Caption:= FloatToStrF((BonRTotalHT - (( BonRTotalHT  * RemisePerctageBonRec)/(100))),ffNumber,14,2); //HT
+         BonRecTotalTVALbl.Caption:= FloatToStrF(Round(TotalTVANet - (( TotalTVANet  * RemisePerctageBonRec)/(100))),ffNumber,14,2); //TVA
+         BonRTotalHTNewLbl.Caption:= FloatToStrF(Round(BonRTotalHT - (( BonRTotalHT  * RemisePerctageBonRec)/(100))),ffNumber,14,2); //HT
             if BonRTotalHTNewLbl.Caption <>'' then
             begin
             NewHT:=StrToFloat (StringReplace(BonRTotalHTNewLbl.Caption , #32, '', [rfReplaceAll]));
@@ -2113,7 +2122,7 @@ begin
             begin
             NewTVA:=StrToFloat(StringReplace(BonRecTotalTVALbl.Caption, #32, '', [rfReplaceAll]));
             end;
-         BonRecTotalTTCLbl.Caption:=  FloatToStrF((NewHT + NewTVA),ffNumber,14,2); // TTC
+         BonRecTotalTTCLbl.Caption:=  FloatToStrF(Round(NewHT + NewTVA),ffNumber,14,2); // TTC
          BonRecResteLbl.Caption:= BonRecTotalTTCLbl.Caption;                       //REst
             if RemisePerctageBonRecGEdt.Focused then
             begin
@@ -2247,18 +2256,20 @@ procedure TBonRecGestionF.RemisePerctageBonRecGEdtKeyPress(Sender: TObject;
   var Key: Char);
 const
   N = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0',',','.', Char(VK_back)];
-  F = ['.'];
+   F = ['.'];
 begin
-
   if not(Key in N) then
   begin
      key := #0;
   end;
-  if (Key in F) then
+
+   if (Key in F) then
   begin
-
     key :=  #44;
-
+  end;
+  if (Key = '.') AND (Pos(Key, (RemisePerctageBonRecGEdt.Text)) > 0) Then
+  begin
+      Key := #0;
   end;
 end;
 

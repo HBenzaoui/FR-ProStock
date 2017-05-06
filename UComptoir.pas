@@ -204,6 +204,7 @@ type
     procedure ApplicationEvents1ShortCut(var Msg: TWMKey; var Handled: Boolean);
     procedure FormDestroy(Sender: TObject);
     procedure PoleDisplayerTimerimerTimer(Sender: TObject);
+    procedure RemiseBonCtrGEdtKeyPress(Sender: TObject; var Key: Char);
   private
     procedure GettingData;
     { Private declarations }
@@ -399,6 +400,28 @@ end;
 
 end;
 
+
+procedure TBonCtrGestionF.RemiseBonCtrGEdtKeyPress(Sender: TObject;
+  var Key: Char);
+const
+  N = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0',',','.', Char(VK_back)];
+   F = ['.'];
+begin
+  if not(Key in N) then
+  begin
+     key := #0;
+  end;
+
+   if (Key in F) then
+  begin
+    key :=  #44;
+  end;
+  if (Key = '.') AND (Pos(Key, (RemiseBonCtrGEdt.Text)) > 0) Then
+  begin
+      Key := #0;
+  end;
+
+end;
 
 function GetWindowsVersion: string;
 begin
@@ -1765,7 +1788,7 @@ begin
             NewTTC:=StrToFloat (StringReplace(BonCTotalTTCNewLbl.Caption , #32, '', [rfReplaceAll]));  //TTC
             end;
 
-    BonCtrTotalTTCLbl.Caption:= FloatToStrF(( NewTTC - ((NewTTC * RemisePerctageBonCtr)/100)),ffNumber,14,2);
+    BonCtrTotalTTCLbl.Caption:= FloatToStrF(Round( NewTTC - ((NewTTC * RemisePerctageBonCtr)/100)),ffNumber,14,2);
 
             if BonCTotalTTCNewLbl.Caption <>'' then
             begin
@@ -2395,18 +2418,20 @@ procedure TBonCtrGestionF.RemisePerctageBonCtrGEdtKeyPress(Sender: TObject;
   var Key: Char);
 const
   N = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0',',','.', Char(VK_back)];
-  F = ['.'];
+   F = ['.'];
 begin
-
   if not(Key in N) then
   begin
      key := #0;
   end;
-  if (Key in F) then
+
+   if (Key in F) then
   begin
-
     key :=  #44;
-
+  end;
+  if (Key = '.') AND (Pos(Key, (RemisePerctageBonCtrGEdt.Text)) > 0) Then
+  begin
+      Key := #0;
   end;
 end;
 
@@ -3085,7 +3110,7 @@ Total: Integer;
 
           ComPort1.Close;
           except
-           ShowMessage('Svp, brancher l''Afficheur Client ou désactiver le dans la configuration->utilites');
+//           ShowMessage('Svp, brancher l''Afficheur Client ou désactiver le dans la configuration->utilites');
          end;
          end;
 

@@ -1134,7 +1134,7 @@ object BonCtrGestionF: TBonCtrGestionF
       133)
     object BonCtrTotalTTCLbl: TLabel
       Left = -2
-      Top = 19
+      Top = 21
       Width = 906
       Height = 118
       Alignment = taCenter
@@ -1148,7 +1148,6 @@ object BonCtrGestionF: TBonCtrGestionF
       Font.Style = [fsBold]
       ParentFont = False
       Layout = tlCenter
-      ExplicitWidth = 870
     end
     object Label1: TLabel
       Left = 5
@@ -2312,7 +2311,7 @@ object BonCtrGestionF: TBonCtrGestionF
         TabOrder = 3
         OnChange = RemiseBonCtrGEdtChange
         OnDblClick = RemiseBonCtrGEdtDblClick
-        OnKeyPress = RemisePerctageBonCtrGEdtKeyPress
+        OnKeyPress = RemiseBonCtrGEdtKeyPress
         OnMouseEnter = RemiseBonCtrGEdtMouseEnter
       end
     end

@@ -679,6 +679,7 @@ MainForm.Bona_facTable.Active:= True;
       end else
           begin
             MainForm.Bona_facTable.Last;
+
             codeFA := MainForm.Bona_facTable.FieldValues['code_bafac'];
             MainForm.Bona_fac_listTable.Active:=False;
             MainForm.Bona_fac_listTable.SQL.Clear;
@@ -689,6 +690,13 @@ MainForm.Bona_facTable.Active:= True;
            begin
 
             codeFA := MainForm.Bona_facTable.FieldValues['code_bafac'];
+
+             MainForm.Bona_facTable.Edit;
+             MainForm.Bona_facTable.FieldValues['date_bafac']:= DateOf(Today);
+             MainForm.Bona_facTable.FieldValues['time_bafac']:= TimeOf(Now);
+             MainForm.Bona_facTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
+             MainForm.Bona_facTable.Post;
+
            end else
            begin
              MainForm.Bona_facTable.Insert;
