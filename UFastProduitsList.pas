@@ -1168,11 +1168,11 @@ begin
 
           Close;
 
-           BonLivGestionF.ProduitsListDBGridEh.SetFocus;
-
-           BonLivGestionF.ProduitsListDBGridEh.SelectedIndex:=2;
-           BonLivGestionF.ProduitsListDBGridEh.EditorMode:=True;
-           MainForm.Bonv_liv_listTable.Last;
+//           BonFacVGestionF.ProduitsListDBGridEh.SetFocus;
+//
+//           BonFacVGestionF.ProduitsListDBGridEh.SelectedIndex:=2;
+//           BonFacVGestionF.ProduitsListDBGridEh.EditorMode:=True;
+           MainForm.Bonv_fac_listTable.Last;
 
    end else
        begin
@@ -1222,10 +1222,10 @@ begin
 
        MainForm.Bonv_fac_listTable.Refresh;
 
-                 BonRecGestionF.ProduitsListDBGridEh.SetFocus;
+                 BonFacVGestionF.ProduitsListDBGridEh.SetFocus;
 
-           BonRecGestionF.ProduitsListDBGridEh.SelectedIndex:=2;
-           BonRecGestionF.ProduitsListDBGridEh.EditorMode:=True;
+           BonFacVGestionF.ProduitsListDBGridEh.SelectedIndex:=2;
+           BonFacVGestionF.ProduitsListDBGridEh.EditorMode:=True;
 
            MainForm.Bonv_fac_listTable.Last;
 

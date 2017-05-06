@@ -1696,7 +1696,7 @@ begin
 
           BonCtrGestionF.ComPort1.Close;
           except
-           ShowMessage('Svp, brancher l''Afficheur Client ou désactiver le dans la configuration->utilites');
+//           ShowMessage('Svp, brancher l''Afficheur Client ou désactiver le dans la configuration->utilites');
          end;
          end;
 

@@ -897,7 +897,7 @@ begin
 
                 ComPort1.Close;
                 except
-                 ShowMessage('Svp, brancher l''Afficheur Client ou désactiver le dans la configuration->utilites');
+//                 ShowMessage('Svp, brancher l''Afficheur Client ou désactiver le dans la configuration->utilites');
                end;
                end;
 
@@ -1101,6 +1101,7 @@ CodeCTR := MainForm.Bonv_ctrTable.FieldByName('code_bvctr').AsInteger;
           MainForm.Bonv_ctrTable.DisableControls;
           MainForm.Bonv_ctrTable.Edit;
           MainForm.Bonv_ctrTable.FieldValues['code_c']:= MainForm.ClientTable.FieldByName('code_c').AsInteger;
+          MainForm.Bonv_ctrTable.FieldByName('montht_bvctr').AsCurrency:= StrToCurr(StringReplace(BonCtrTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
 
           if RemiseBonCtrGEdt.Text<>'' then
           begin
@@ -2528,7 +2529,7 @@ begin
 //          BonCtrGestionF. ComPort1.WriteUnicodeString(Msg+#13#10); // send test command
           BonCtrGestionF.ComPort1.Close;
           except
-           ShowMessage('Svp, brancher l''Afficheur Client ou désactiver le dans la configuration->utilites');
+//           ShowMessage('Svp, brancher l''Afficheur Client ou désactiver le dans la configuration->utilites');
          end;
          end;
 
@@ -2560,7 +2561,7 @@ begin
           ComPort1.WriteUnicodeString(' '+StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll])+ ' DA'#13#10);
           BonCtrGestionF.ComPort1.Close;
           except
-           ShowMessage('Svp, brancher l''Afficheur Client ou désactiver le dans la configuration->utilites');
+//           ShowMessage('Svp, brancher l''Afficheur Client ou désactiver le dans la configuration->utilites');
          end;
          end;
 
@@ -2591,7 +2592,7 @@ begin
           BonCtrGestionF. ComPort1.WriteUnicodeString(Msg+#13#10); // send test command
           BonCtrGestionF.ComPort1.Close;
           except
-           ShowMessage('Svp, brancher l''Afficheur Client ou désactiver le dans la configuration->utilites');
+//           ShowMessage('Svp, brancher l''Afficheur Client ou désactiver le dans la configuration->utilites');
          end;
          end;
 
@@ -2678,7 +2679,7 @@ begin
           BonCtrGestionF. ComPort1.WriteUnicodeString(Msg+#13#10); // send test command
           BonCtrGestionF.ComPort1.Close;
           except
-           ShowMessage('Svp, brancher l''Afficheur Client ou désactiver le dans la configuration->utilites');
+//           ShowMessage('Svp, brancher l''Afficheur Client ou désactiver le dans la configuration->utilites');
          end;
          end;
     ini.UpdateFile;
