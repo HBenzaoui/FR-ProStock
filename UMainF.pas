@@ -2635,7 +2635,10 @@ var TotalHT,TotalTVA,TVA,TotalTTC,LeRendu,Regle,Marge,NewHT,BonFCTotalHT: Curren
             BonFCTotalHT:=StrToFloat (StringReplace(BonCtrGestionF.BonCtrTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
             end;
 
+            if BonCtrGestionF.Tag = 0 then
+            begin
             BonCtrGestionF.RemiseBonCtrGEdt.Text:=FloatToStrF((BonFCTotalHT - NewHT),ffNumber,14,2);
+            end;
     end;
 
 
