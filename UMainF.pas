@@ -3155,7 +3155,7 @@ begin
 //        FOptions.ComPort1.WriteUnicodeString('C''est un TEST :D'+#13#10); // send test command
         FOptions.ComPort1.Close;
       except
-        ShowMessage('Svp, brancher le Tiroir Caisse');
+     //   ShowMessage('Svp, brancher le Tiroir Caisse');
       end;
     end;
 

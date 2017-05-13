@@ -1,12 +1,12 @@
-0~ refer_p~ Réference~ 150~ -1
-1~ nom_p~ Désignation~ 570~ -1
+0~ refer_p~ Réference~ 113~ -1
+1~ nom_p~ Désignation~ 311~ -1
 2~ tva_p~ TVA %~ 105~ -1
-3~ famp~ Famille~ 225~ -1
-4~ sfamp~ Sous Famille~ 225~ -1
+3~ famp~ Famille~ 196~ -1
+4~ sfamp~ Sous Famille~ 158~ -1
 5~ prixht_p~ PrixAHT~ 195~ 0
 6~ PrixATTC~ PrixATTC~ 195~ 0
 7~ ValueStock~ Valeur de Stock~ 195~ 0
-8~ prixvd_p~ PrixVHT Détail~ 195~ -1
+8~ prixvd_p~ PrixVHT Détail~ 120~ -1
 9~ PrixVTTCD~ PrixVTTC Détail~ 195~ 0
 10~ prixvr_p~ PrixVHT Rev~ 195~ 0
 11~ PrixVTTCR~ PrixVTTC Rev~ 195~ 0

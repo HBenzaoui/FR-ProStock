@@ -22,6 +22,7 @@ type
     Label7: TLabel;
     Label8: TLabel;
     Label9: TLabel;
+    Memo1: TMemo;
     procedure FormShow(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
