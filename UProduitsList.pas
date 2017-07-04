@@ -1235,6 +1235,13 @@ begin
 //   key := #0;
      MainForm.ProduitTable.Prior;
   end;
+
+
+  if Key = VK_DELETE  then
+ begin
+//      key := #0;
+      DeleteProduitsBtnClick(Sender);
+ end;
 end;
 
 procedure TProduitsListF.ResearchProduitsEdtKeyPress(Sender: TObject; var Key: Char);
@@ -1299,6 +1306,9 @@ begin
 
 
  end;
+
+
+
 
 end;
 
