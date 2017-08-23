@@ -375,7 +375,8 @@ object DataModuleF: TDataModuleF
     Params.Strings = (
       'Database=PSDBConfig'
       'User_Name=postgres'
-      'DriverID=pG')
+      'DriverID=pG'
+      'LoginTimeout=15')
     LoginPrompt = False
     Left = 83
     Top = 22

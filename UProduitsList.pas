@@ -1191,31 +1191,39 @@ begin
     end;
 
   if ResherchPARDCodProduitsRdioBtn.Checked then
-    if (ResearchProduitsEdt.text <> '') then
-    begin
-//      MainForm.ProduitTable.DisableControls;
-      MainForm.SQLQuery.Active:=False;
-      MainForm.SQLQuery.SQL.Clear;
-      MainForm.SQLQuery.SQL.Text:='SELECT nom_cb,code_p FROM codebarres WHERE nom_cb LIKE ' +''+ QuotedStr( ResearchProduitsEdt.Text )+'' ;
-      MainForm.SQLQuery.Active:=True;
-      if MainForm.SQLQuery.FieldValues['code_p'] <> null then
-     begin
-      CodeCB:=MainForm.SQLQuery.FieldValues['code_p'];
-     end;
-      MainForm.ProduitTable.Filtered := false;
-      MainForm.ProduitTable.Filter := '[codebar_p] = ' + quotedstr( ResearchProduitsEdt.Text )  + ' OR [code_p] = '+ IntToStr(CodeCB) ;
-      MainForm.ProduitTable.Filtered := True;
 
-//       MainForm.ProduitTable.EnableControls;
-
-
-
-
-    end
-    else
+    if(ResearchProduitsEdt.text = '')then
     begin
       MainForm.ProduitTable.Filtered := false;
     end;
+
+//    if (ResearchProduitsEdt.text <> '') then
+//    begin
+//      MainForm.ProduitTable.DisableControls;
+//      MainForm.SQLQuery.Active:=False;
+//      MainForm.SQLQuery.SQL.Clear;
+//      MainForm.SQLQuery.SQL.Text:='SELECT nom_cb,code_p FROM codebarres WHERE nom_cb = ' +''+ QuotedStr( ResearchProduitsEdt.Text )+'' ;
+//      MainForm.SQLQuery.Active:=True;
+//      if MainForm.SQLQuery.FieldValues['code_p'] <> null then
+//     begin
+//      CodeCB:=MainForm.SQLQuery.FieldValues['code_p'];
+//     end;
+//      MainForm.ProduitTable.Filtered := false;
+//      MainForm.ProduitTable.Filter := '[codebar_p] = ' + quotedstr( ResearchProduitsEdt.Text )  + ' OR [code_p] = '+ IntToStr(CodeCB) ;
+//      MainForm.ProduitTable.Filtered := True;
+//
+//       MainForm.ProduitTable.EnableControls;
+//
+//
+//
+//
+//    end
+//    else
+//    begin
+//      MainForm.ProduitTable.Filtered := false;
+//    end;
+
+
    MainForm.SQLQuery.Active:=False;
    MainForm.SQLQuery.SQL.Clear;
 end;
@@ -1262,18 +1270,19 @@ begin
    key := #0;
 
 
-      if ResherchPARDesProduitsRdioBtn.Checked then
-    if (ResearchProduitsEdt.text <> '') then
-    begin
-      MainForm.ProduitTable.Filtered := false;
-      MainForm.ProduitTable.Filter := '[nom_p] LIKE ' + quotedstr(ResearchProduitsEdt.Text+'%' ) + ' OR '+
-     '[refer_p] LIKE ' + quotedstr(ResearchProduitsEdt.Text+'%' ) ;
-      MainForm.ProduitTable.Filtered := True;
-    end
-    else
-    begin
-     MainForm.ProduitTable.Filtered := false;
-    end;
+//      if ResherchPARDesProduitsRdioBtn.Checked then
+//    if (ResearchProduitsEdt.text <> '') then
+//    begin
+//      MainForm.ProduitTable.Filtered := false;
+//      MainForm.ProduitTable.Filter := '[nom_p] LIKE ' + quotedstr(ResearchProduitsEdt.Text+'%' ) + ' OR '+
+//     '[refer_p] LIKE ' + quotedstr(ResearchProduitsEdt.Text+'%' ) ;
+//      MainForm.ProduitTable.Filtered := True;
+//    end
+//    else
+//    begin
+//     MainForm.ProduitTable.Filtered := false;
+//    end;
+
   if ResherchPARDCodProduitsRdioBtn.Checked then
     if (ResearchProduitsEdt.text <> '') then
     begin
@@ -1315,8 +1324,10 @@ end;
 
 procedure TProduitsListF.ResherchPARDesProduitsRdioBtnClick(Sender: TObject);
 begin
+MainForm.ProduitTable.Filtered := false;
 ResearchProduitsEdt.Clear;
 ResearchProduitsEdt.SetFocus;
+
 end;
 
 procedure TProduitsListF.ResherchPARDCodProduitsRdioBtnClick(Sender: TObject);

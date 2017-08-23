@@ -2,7 +2,7 @@ unit UDataModule;
 
 interface
 
-uses
+uses       Winapi.Windows,  Vcl.StdCtrls, Vcl.Dialogs,System.UITypes,Vcl.Forms,
   System.SysUtils, System.Classes, FireDAC.Stan.Intf, FireDAC.Stan.Option,
   FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
   FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, Data.DB,
@@ -267,9 +267,13 @@ type
     procedure PCloseDiedCnotifCalcFields(DataSet: TDataSet);
     procedure PertesTableCalcFields(DataSet: TDataSet);
   private
+
     { Private declarations }
   public
     { Public declarations }
+    procedure ConnectToDB;
+        function  MyMessageDialog(const Msg: string; DlgType: TMsgDlgType;
+  Buttons: TMsgDlgButtons; Captions: array of string): Integer;
   end;
 
 var
@@ -284,11 +288,40 @@ uses
 
 {$R *.dfm}
 
-procedure TDataModuleF.DataModuleCreate(Sender: TObject);
-begin
 
-//if MainForm.sImage1.Tag = 0 then
- begin
+ function TDataModuleF.MyMessageDialog(const Msg: string; DlgType: TMsgDlgType;
+  Buttons: TMsgDlgButtons; Captions: array of string): Integer;
+  var
+  aMsgDlg: TForm;
+  i: Integer;
+  dlgButton: TButton;
+  CaptionIndex: Integer;
+begin
+         { Create the Dialog }
+  aMsgDlg := CreateMessageDialog(Msg, DlgType, Buttons);
+  captionIndex := 0;
+  { Loop through Objects in Dialog }
+  for i := 0 to aMsgDlg.ComponentCount - 1 do
+  begin
+   { If the object is of type TButton, then }
+    if (aMsgDlg.Components[i] is TButton) then
+    begin
+      dlgButton := TButton(aMsgDlg.Components[i]);
+      if CaptionIndex > High(Captions) then Break;
+      { Give a new caption from our Captions array}
+      dlgButton.Caption := Captions[CaptionIndex];
+      Inc(CaptionIndex);
+    end;
+  end;
+  Result := aMsgDlg.ShowModal;
+end;
+
+procedure TDataModuleF.ConnectToDB;
+var
+ buttonSelected : Integer;
+begin
+ try
+  //if MainForm.sImage1.Tag = 0 then
   GstockdcConnection02.DriverName := 'PG';
   GstockdcConnection02.Params.Values['Server'] :='localhost'; // your server name'';
 //  GstockdcConnection02.Params.Values['Database'] := 'GSTOCKDC';
@@ -303,14 +336,52 @@ begin
 
   GstockdcConnection02.Params.Values['Database'] := 'GSTOCKDC';
   GstockdcConnection02.Connected:= True;
- 
+
   CreatAndaddAdmin.ExecuteAll;
   UsersTable.Active:= True;
   if UsersTable.IsEmpty then
   begin
-   AddAdminUser.ExecuteAll; 
+   AddAdminUser.ExecuteAll;
   end;
+             except
+
+    // Show a custom dialog
+    buttonSelected := MyMessageDialog('Le serveur ne répond pas! Assurer-tu que le serveur est activé'
+    ,mtCustom,[mbRetry,mbCancel],
+                              ['Annuler','Réessayer']);
+
+
+          if buttonSelected = mrRetry then
+          begin
+
+              ConnectToDB;
+
+          end;
+
+          if buttonSelected = mrCancel then
+           begin
+
+            MainForm.GstockdcConnection.Connected:=False;
+            GstockdcConnection02.Connected:=False;
+            PSDBConfigConnection.Connected:=False;
+
+           Application.Terminate;
+
+
+          end;
+
+
+
+
  end;
+
+end;
+
+procedure TDataModuleF.DataModuleCreate(Sender: TObject);
+begin
+          ConnectToDB;
+
+
 end;
 
 procedure TDataModuleF.PCloseDiedCnotifCalcFields(DataSet: TDataSet);

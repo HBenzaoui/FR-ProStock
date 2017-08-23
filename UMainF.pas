@@ -822,6 +822,7 @@ type
     ChangUserMAinFMnu: TMenuItem;
     N24: TMenuItem;
     OuvertureduTiroirCaisse1: TMenuItem;
+    Reconnectez1: TMenuItem;
     procedure ClientMainFBtnClick(Sender: TObject);
     procedure FourMainFBtnClick(Sender: TObject);
     procedure ProduitMainFBtnClick(Sender: TObject);
@@ -924,7 +925,6 @@ type
     procedure L1Click(Sender: TObject);
     procedure ListedetypesdeCharge1Click(Sender: TObject);
     procedure ListedetypesdeCharge2Click(Sender: TObject);
-    procedure FDPhysPgDriverLink1DriverCreated(Sender: TObject);
     procedure FactureP2MainFMnmClick(Sender: TObject);
     procedure Bonp_facTableCalcFields(DataSet: TDataSet);
     procedure Bonp_fac_listTableCalcFields(DataSet: TDataSet);
@@ -934,6 +934,9 @@ type
     procedure ChangUserMAinFMnuClick(Sender: TObject);
     procedure Bonv_ctr_listTablequt_pChange(Sender: TField);
     procedure OuvertureduTiroirCaisse1Click(Sender: TObject);
+    procedure Reconnectez1Click(Sender: TObject);
+    procedure GstockdcConnectionError(ASender, AInitiator: TObject;
+      var AException: Exception);
   private
    //---- this to value of changege we need it to check if theuser changed something
      CountInsert,CountUpdate,CountDelete   : Int64;
@@ -945,12 +948,18 @@ type
 
     procedure RefreshCNotification;
 
+    procedure SwitchingDB;
+
+
    public
     function KillTask(ExeFileName: string): Integer;
+
+    procedure ConnectToDBonMainCreate;
    
     procedure ActiveTables;
     procedure InactiveTables;
     procedure RerfreshTables;
+    procedure ActiveTablesControls;
 
      procedure WMUserCloseTab(var Message: TMessage); message
     WM_USER_CLOSETAB;
@@ -2699,13 +2708,12 @@ begin
       inc(Result);
 end;
 
-procedure TMainForm.FormShow(Sender: TObject);
+procedure TMainForm.ConnectToDBonMainCreate;
+Var
+ buttonSelected : Integer;
 begin
-{
- Here put regstation form 
- }         
- begin
-  
+
+ try
    GstockdcConnection.DriverName := 'PG';
    GstockdcConnection.Params.Values['Server'] :='localhost';
    GstockdcConnection.Params.Values['user_name'] := 'postgres';
@@ -2717,34 +2725,33 @@ begin
    GstockdcConnection.Connected:= True;
 
 
-   
-  //----this is to check if the tables is exsit or not if not creat them ----- 
+
+  //----this is to check if the tables is exsit or not if not creat them -----
    SQLQuery.Active:= False;
    SQLQuery.SQL.Clear;
    SQLQuery.SQL.Text:= 'SELECT COUNT(*) as ntable from information_schema.tables WHERE table_schema = ''public''' ;
    SQLQuery.Active:= True;
-  
+
      if SQLQuery.FieldByName('ntable').AsInteger <> 34 then
      begin
-     
+
       CreateTablesFDScript.ExecuteAll;                                 // Eable this is only for releasing
       InsertDataFDScript.ExecuteAll;                                   // Eable this is only for releasing
-      
+
      end;
      SQLQuery.SQL.Clear;
      SQLQuery.Active:= False;
-      
-  
-    ActiveTables;  
 
 
+    ActiveTables;
+    ActiveTablesControls;
 
-  end;
+
 
 
 //-----this is the set the value of transactions at first start----
   SQLQuery.Active:= False;
-  SQLQuery.SQL.Clear;   
+  SQLQuery.SQL.Clear;
   SQLQuery.SQL.Text:= ' SELECT datname, tup_inserted, tup_updated, tup_deleted '
   +' FROM pg_stat_database WHERE datname = ' +QuotedStr(GstockdcConnection.Params.Database);
   SQLQuery.Active:= True;
@@ -2753,8 +2760,52 @@ begin
   CountUpdate:= SQLQuery.FieldByName('tup_updated').AsInteger;
   CountDelete:= SQLQuery.FieldByName('tup_deleted').AsInteger;
 
-  SQLQuery.SQL.Clear;    
+  SQLQuery.SQL.Clear;
   SQLQuery.Active:= False;
+
+
+
+                  except
+
+
+      // Show a custom dialog
+    buttonSelected := DataModuleF.MyMessageDialog('Le serveur ne répond pas! Assurer-tu que le serveur est activé'
+    ,mtCustom,[mbRetry,mbCancel],
+                              ['Annuler','Réessayer']);
+
+
+          if buttonSelected = mrRetry then
+          begin
+
+              ConnectToDBonMainCreate;
+
+          end;
+
+          if buttonSelected = mrCancel then
+           begin
+
+            GstockdcConnection.Connected:=False;
+            DataModuleF.GstockdcConnection02.Connected:=False;
+            DataModuleF.PSDBConfigConnection.Connected:=False;
+
+           Application.Terminate;
+
+
+          end;
+
+   end;
+
+end;
+
+
+
+procedure TMainForm.FormShow(Sender: TObject);
+begin
+
+  //Conneting to the server
+        ConnectToDBonMainCreate;
+
+
 
   
     if UserTypeLbl.Caption <> '0' then
@@ -3071,6 +3122,12 @@ begin
    
 end;
 
+
+procedure TMainForm.Reconnectez1Click(Sender: TObject);
+begin
+DataModuleF.ConnectToDB ;
+ConnectToDBonMainCreate;
+end;
 
 procedure TMainForm.RefreshCNotification;
 begin
@@ -3430,7 +3487,14 @@ begin
   CloseHandle(FSnapshotHandle);
 end;
 
+ procedure TMainForm.A5Click(Sender: TObject);
+begin
+  //-------- Show the About Form---------//
 
+            AboutF:=TAboutF.Create(Application);
+
+            AboutF.Show;
+end;
 
 procedure TMainForm.InactiveTables;
 begin
@@ -3494,14 +3558,7 @@ begin
       DataModuleF.PerissBona_recTable.Active:= False;
 end;
 
-procedure TMainForm.A5Click(Sender: TObject);
-begin
-  //-------- Show the About Form---------//
 
-            AboutF:=TAboutF.Create(Application);
-
-            AboutF.Show;
-end;
 
 procedure TMainForm.ActiveTables;
 begin
@@ -3635,6 +3692,71 @@ begin
       DataModuleF.Transfer_comptesTable.Refresh;
 
       DataModuleF.PerissBona_recTable.Refresh;
+end;
+
+
+procedure TMainForm.ActiveTablesControls;
+begin
+
+      if DataModuleF.UsersTable.ControlsDisabled  then  begin DataModuleF.UsersTable.EnableControls; end;
+
+      if ProduitTable.ControlsDisabled       then  begin ProduitTable.EnableControls; end;
+      if ClientTable.ControlsDisabled        then  begin ClientTable.EnableControls; end;
+      if FournisseurTable.ControlsDisabled   then  begin FournisseurTable.EnableControls; end;
+      if Bona_recTable.ControlsDisabled      then  begin Bona_recTable.EnableControls; end;
+      if Bona_recPlistTable.ControlsDisabled then  begin Bona_recPlistTable.EnableControls; end;
+      if Bona_facTable.ControlsDisabled      then  begin Bona_facTable.EnableControls; end;
+      if Bona_fac_listTable.ControlsDisabled then  begin Bona_fac_listTable.EnableControls; end;
+      if Bonv_livTable.ControlsDisabled      then  begin Bonv_livTable.EnableControls; end;
+      if Bonv_liv_listTable.ControlsDisabled then  begin Bonv_liv_listTable.EnableControls; end;
+      if Bonv_facTable.ControlsDisabled      then  begin Bonv_facTable.EnableControls; end;
+      if Bonv_fac_listTable.ControlsDisabled then  begin Bonv_fac_listTable.EnableControls; end;
+      if Bonv_ctrTable.ControlsDisabled      then  begin Bonv_ctrTable.EnableControls; end;
+      if Bonv_ctr_listTable.ControlsDisabled then  begin Bonv_ctr_listTable.EnableControls; end;
+      if Mode_paiementTable.ControlsDisabled then  begin Mode_paiementTable.EnableControls; end;
+      if CompteTable.ControlsDisabled        then  begin CompteTable.EnableControls; end;
+      if FamproduitTable.ControlsDisabled    then  begin FamproduitTable.EnableControls; end;
+      if SfamproduitTable.ControlsDisabled   then  begin SfamproduitTable.EnableControls; end;
+      if CodebarresTable.ControlsDisabled    then  begin CodebarresTable.EnableControls; end;
+      if UniteTable.ControlsDisabled         then  begin UniteTable.EnableControls; end;
+      if WilayasTable.ControlsDisabled       then  begin WilayasTable.EnableControls; end;
+      if CommunesTable.ControlsDisabled      then  begin CommunesTable.EnableControls; end;
+      if Opt_cas_bnk_CaisseTable.ControlsDisabled  then  begin Opt_cas_bnk_CaisseTable.EnableControls; end;
+      if Opt_cas_bnk_BankTable.ControlsDisabled  then  begin Opt_cas_bnk_BankTable.EnableControls; end;
+      if RegclientTable.ControlsDisabled     then  begin RegclientTable.EnableControls; end;
+      if RegfournisseurTable.ControlsDisabled  then  begin RegfournisseurTable.EnableControls; end;
+      if CompanyTable.ControlsDisabled       then  begin CompanyTable.EnableControls; end;
+
+
+      if DataModuleF.TopClient.ControlsDisabled  then  begin DataModuleF.TopClient.EnableControls; end;
+      if DataModuleF.TopFour.ControlsDisabled  then  begin DataModuleF.TopFour.EnableControls; end;
+      if DataModuleF.TopVerClient.ControlsDisabled  then  begin DataModuleF.TopVerClient.EnableControls; end;
+      if DataModuleF.TopVerFour.ControlsDisabled  then  begin DataModuleF.TopVerFour.EnableControls; end;
+      if DataModuleF.Top5produit.ControlsDisabled  then  begin DataModuleF.Top5produit.EnableControls; end;
+      if DataModuleF.TotalProduit.ControlsDisabled  then  begin DataModuleF.TotalProduit.EnableControls; end;
+      if DataModuleF.ToatalVerMonthVLIV.ControlsDisabled  then  begin DataModuleF.ToatalVerMonthVLIV.EnableControls; end;
+      if DataModuleF.ToatalVerMonthVFAC.ControlsDisabled  then  begin DataModuleF.ToatalVerMonthVFAC.EnableControls; end;
+      if DataModuleF.ToatalVerMonthVCTR.ControlsDisabled  then  begin DataModuleF.ToatalVerMonthVCTR.EnableControls; end;
+      if DataModuleF.ToatalVerMonthAREC.ControlsDisabled  then  begin DataModuleF.ToatalVerMonthAREC.EnableControls; end;
+      if DataModuleF.ToatalVerMonthAFAC.ControlsDisabled  then  begin DataModuleF.ToatalVerMonthAFAC.EnableControls; end;
+
+      if DataModuleF.PZeroQCnotif.ControlsDisabled  then  begin DataModuleF.PZeroQCnotif.EnableControls; end;
+      if DataModuleF.PCloseZeroQCnotif.ControlsDisabled  then  begin DataModuleF.PCloseZeroQCnotif.EnableControls; end;
+      if DataModuleF.PMoreMaxQCnotif.ControlsDisabled  then  begin DataModuleF.PMoreMaxQCnotif.EnableControls; end;
+      if DataModuleF.PCloseDiedCnotif.ControlsDisabled  then  begin DataModuleF.PCloseDiedCnotif.EnableControls; end;
+      if DataModuleF.PDiedCnotif.ControlsDisabled  then  begin DataModuleF.PDiedCnotif.EnableControls; end;
+
+      if DataModuleF.ChargesTable.ControlsDisabled  then  begin DataModuleF.ChargesTable.EnableControls; end;
+      if DataModuleF.Charge_typeTable.ControlsDisabled  then  begin DataModuleF.Charge_typeTable.EnableControls; end;
+      if DataModuleF.Charge_s_typeTable.ControlsDisabled  then  begin DataModuleF.Charge_s_typeTable.EnableControls; end;
+      if DataModuleF.PertesTable.ControlsDisabled  then  begin DataModuleF.PertesTable.EnableControls; end;
+      if DataModuleF.Perte_typeTable.ControlsDisabled  then  begin DataModuleF.Perte_typeTable.EnableControls; end;
+
+      if DataModuleF.Transfer_comptesTable.ControlsDisabled  then  begin DataModuleF.Transfer_comptesTable.EnableControls; end;
+
+      if DataModuleF.PerissBona_recTable.ControlsDisabled  then  begin DataModuleF.PerissBona_recTable.EnableControls; end;
+
+
 end;
 
 
@@ -4057,11 +4179,6 @@ FactureV2MainFMnmClick(Sender);
 BonFacVF.AddBVFacBtnClick(Sender);
 end;
 
-procedure TMainForm.FDPhysPgDriverLink1DriverCreated(Sender: TObject);
-begin
-//C:\Program Files (x86)\PostgreSQL\9.6\bin\libpq.dll
-end;
-
 procedure TMainForm.BRFaceBtnClick(Sender: TObject);
 begin
 BRMainFMmnClick(Sender);
@@ -4100,6 +4217,64 @@ procedure TMainForm.FourMainFMnmClick(Sender: TObject);
 begin
 FourMainFBtnClick(Sender);
 end;
+
+procedure TMainForm.GstockdcConnectionError(ASender, AInitiator: TObject;
+  var AException: Exception);
+
+Var
+  buttonSelected : Integer;
+begin
+
+    try
+        DataModuleF.ConnectToDB;
+//        ConnectToDBonMainCreate;
+
+        if  DataModuleF.GstockdcConnection02.Connected OR DataModuleF.PSDBConfigConnection.Connected then
+        begin
+             ConnectToDBonMainCreate;
+        end;
+
+
+      except
+
+
+
+           // Show a custom dialog
+     buttonSelected := DataModuleF.MyMessageDialog('Le serveur ne répond pas! Assurer-tu que le serveur est activé'
+     ,mtCustom,[mbRetry,mbCancel],
+                              ['Annuler','Réessayer']);
+
+
+          if buttonSelected = mrRetry then
+          begin
+
+              DataModuleF.ConnectToDB;
+      //        ConnectToDBonMainCreate;
+
+              if  DataModuleF.GstockdcConnection02.Connected OR DataModuleF.PSDBConfigConnection.Connected then
+              begin
+                   ConnectToDBonMainCreate;
+              end;
+
+          end;
+
+          if buttonSelected = mrCancel then
+          begin
+
+            GstockdcConnection.Connected:=False;
+            DataModuleF.GstockdcConnection02.Connected:=False;
+            DataModuleF.PSDBConfigConnection.Connected:=False;
+
+            Application.Terminate;
+
+
+          end;
+
+
+
+    end;
+end;
+
 
 procedure TMainForm.ProduitMainFMmnClick(Sender: TObject);
 begin
@@ -4215,211 +4390,116 @@ begin
             FamPListF.Show;
 end;
 
-procedure TMainForm.SwitchDBMAinFMnuClick(Sender: TObject);
+procedure TMainForm.SwitchingDB();
+var
+ buttonSelected : Integer;
+
 begin
 
-    
-   if sImage1.Tag = 0 then
+
+     GstockdcConnection.OnError:= nil;
+
+//   try
+
+     if sImage1.Tag = 0 then
    begin
-
-      GstockdcConnection.Connected:= False;
-      GstockdcConnection.DriverName := 'PG';
-      GstockdcConnection.Params.Values['Server'] :='localhost';
-      GstockdcConnection.Params.Values['user_name'] := 'postgres';
-      GstockdcConnection.Params.Values['password'] := ''; // ditto
-      GstockdcConnection.Params.Values['Port'] := '5432';
-      GstockdcConnection.LoginPrompt := False;
-
-      GstockdcConnection.Params.Values['Database'] := 'GSTOCKDC';
-      GstockdcConnection.Connected:= True;
+        GstockdcConnection.Connected:= False;
+        GstockdcConnection.Params.Values['Database'] := 'GSTOCKDC';
+        GstockdcConnection.Connected:= True;
 
 
-
-  //----this is to check if the tables is exsit or not if not creat them ----- 
-   SQLQuery.Active:= False;
-   SQLQuery.SQL.Clear;
-   SQLQuery.SQL.Text:= 'SELECT COUNT(*) as ntable from information_schema.tables WHERE table_schema = ''public''' ;
-   SQLQuery.Active:= True;
-  
-     if SQLQuery.FieldByName('ntable').AsInteger <> 34 then
-     begin
-     
-      CreateTablesFDScript.ExecuteAll;                                 // Eable this is only for releasing
-      InsertDataFDScript.ExecuteAll;                                   // Eable this is only for releasing
-      
-     end;
-     SQLQuery.SQL.Clear;
-     SQLQuery.Active:= False;
-
-
-    ProduitTable.Active := True;
-    ClientTable.Active := True;
-    FournisseurTable.Active := True;
-    Bona_recTable.Active := True;
-    Bona_recPlistTable.Active := True;
-    Bona_facTable.Active := True;
-    Bona_fac_listTable.Active := True;
-    Bonv_livTable.Active := True;
-    Bonv_liv_listTable.Active := True;
-    Bonv_facTable.Active := True;
-    Bonv_fac_listTable.Active := True;
-    Bonv_ctrTable.Active := True;
-    Bonv_ctr_listTable.Active := True;
-    Mode_paiementTable.Active := True;
-    CompteTable.Active := True;
-    FamproduitTable.Active := True;
-    SfamproduitTable.Active := True;
-    CodebarresTable.Active := True;
-    LocalisationTable.Active := True;
-    UniteTable.Active := True;
-    WilayasTable.Active := True;
-    CommunesTable.Active := True;
-    Opt_cas_bnk_CaisseTable.Active := True;
-    Opt_cas_bnk_BankTable.Active := True;
-//    DataModuleF.UsersTable.Active := True;
-    RegclientTable.Active := True;
-    RegfournisseurTable.Active := True;
-    CompanyTable.Active := True;
-    
-      //--------------------data moder changer------------///
-      DataModuleF.GstockdcConnection02.DriverName := 'PG';
-      DataModuleF.GstockdcConnection02.Params.Values['Server'] :='localhost'; // your server name'';
-      DataModuleF.GstockdcConnection02.Params.Values['user_name'] := 'postgres';    // adjust to suit
-      DataModuleF.GstockdcConnection02.Params.Values['password'] := ''; // ditto
-      DataModuleF.GstockdcConnection02.Params.Values['Port'] := '5432';
-      DataModuleF.GstockdcConnection02.Params.Values['CharacterSet'] := 'SQL_ASCII';
-      DataModuleF.GstockdcConnection02.LoginPrompt := False;
-
-
+      DataModuleF.GstockdcConnection02.Connected:= False;
       DataModuleF.GstockdcConnection02.Params.Values['Database'] := 'GSTOCKDC';
       DataModuleF.GstockdcConnection02.Connected:= True;
 
-      DataModuleF.TopClient.Active:= True;
-      DataModuleF.TopFour.Active:= True;
-      DataModuleF.TopVerClient.Active:= True;
-      DataModuleF.TopVerFour.Active:= True;
-      DataModuleF.Top5produit.Active:= True;
-      DataModuleF.TotalProduit.Active:= True;
-      DataModuleF.ToatalVerMonthVLIV.Active:= True;
-      DataModuleF.ToatalVerMonthVFAC.Active:= True;
-      DataModuleF.ToatalVerMonthVCTR.Active:= True;
-      DataModuleF.ToatalVerMonthAREC.Active:= True;
-      DataModuleF.ToatalVerMonthAFAC.Active:= True;
 
 
-      DataModuleF.ChargesTable.Active:= True;
-      DataModuleF.Charge_typeTable.Active:= True;
-      DataModuleF.Charge_s_typeTable.Active:= True;
-      DataModuleF.PertesTable.Active:= True;
-      DataModuleF.Perte_typeTable.Active:= True;
+          CreateTablesFDScript.ExecuteAll;                                              // Eable this is only for releasing
+          InsertDataFDScript.ExecuteAll;                                                // Eable this is only for releasing
 
-      DataModuleF.Transfer_comptesTable.Active:= True;
+
+       ActiveTables;
+       ActiveTablesControls;
 
 
 
       sImage1.ImageIndex:=4;
       sImage1.Tag := 1;
 
-   
+
    end else
    begin
 
-    
-      GstockdcConnection.Connected:= False;
-      GstockdcConnection.DriverName := 'PG';
-      GstockdcConnection.Params.Values['Server'] :='localhost';
-      GstockdcConnection.Params.Values['user_name'] := 'postgres';
-      GstockdcConnection.Params.Values['password'] := ''; // ditto
-      GstockdcConnection.Params.Values['Port'] := '5432';
-      GstockdcConnection.LoginPrompt := False;
 
+      GstockdcConnection.Connected:= False;
       GstockdcConnection.Params.Values['Database'] := 'GSTOCKDC2';
       GstockdcConnection.Connected:= True;
 
-  //----this is to check if the tables is exsit or not if not creat them ----- 
-   SQLQuery.Active:= False;
-   SQLQuery.SQL.Clear;
-   SQLQuery.SQL.Text:= 'SELECT COUNT(*) as ntable from information_schema.tables WHERE table_schema = ''public''' ;
-   SQLQuery.Active:= True;
-  
-     if SQLQuery.FieldByName('ntable').AsInteger <> 34 then
-     begin
-     
-      CreateTablesFDScript.ExecuteAll;                                 // Eable this is only for releasing
-      InsertDataFDScript.ExecuteAll;                                   // Eable this is only for releasing
-      
-     end;
-     SQLQuery.SQL.Clear;
-     SQLQuery.Active:= False;
-     
-    ProduitTable.Active := True;
-    ClientTable.Active := True;
-    FournisseurTable.Active := True;
-    Bona_recTable.Active := True;
-    Bona_recPlistTable.Active := True;
-    Bona_facTable.Active := True;
-    Bona_fac_listTable.Active := True;
-    Bonv_livTable.Active := True;
-    Bonv_liv_listTable.Active := True;
-    Bonv_facTable.Active := True;
-    Bonv_fac_listTable.Active := True;
-    Bonv_ctrTable.Active := True;
-    Bonv_ctr_listTable.Active := True;
-    Mode_paiementTable.Active := True;
-    CompteTable.Active := True;
-    FamproduitTable.Active := True;
-    SfamproduitTable.Active := True;
-    CodebarresTable.Active := True;
-    LocalisationTable.Active := True;
-    UniteTable.Active := True;
-    WilayasTable.Active := True;
-    CommunesTable.Active := True;
-    Opt_cas_bnk_CaisseTable.Active := True;
-    Opt_cas_bnk_BankTable.Active := True;
-//    DataModuleF.UsersTable.Active := True;
-    RegclientTable.Active := True;
-    RegfournisseurTable.Active := True;
-    CompanyTable.Active := True;
-    
-      //--------------------data moder changer------------///
-      DataModuleF.GstockdcConnection02.DriverName := 'PG';
-      DataModuleF.GstockdcConnection02.Params.Values['Server'] :='localhost'; // your server name'';
-      DataModuleF.GstockdcConnection02.Params.Values['user_name'] := 'postgres';    // adjust to suit
-      DataModuleF.GstockdcConnection02.Params.Values['password'] := ''; // ditto
-      DataModuleF.GstockdcConnection02.Params.Values['Port'] := '5432';
-      DataModuleF.GstockdcConnection02.Params.Values['CharacterSet'] := 'SQL_ASCII';
-      DataModuleF.GstockdcConnection02.LoginPrompt := False;
-
-
+      DataModuleF.GstockdcConnection02.Connected:= False;
       DataModuleF.GstockdcConnection02.Params.Values['Database'] := 'GSTOCKDC2';
       DataModuleF.GstockdcConnection02.Connected:= True;
 
-      DataModuleF.TopClient.Active:= True;
-      DataModuleF.TopFour.Active:= True;
-      DataModuleF.TopVerClient.Active:= True;
-      DataModuleF.TopVerFour.Active:= True;
-      DataModuleF.Top5produit.Active:= True;
-      DataModuleF.TotalProduit.Active:= True;
-      DataModuleF.ToatalVerMonthVLIV.Active:= True;
-      DataModuleF.ToatalVerMonthVFAC.Active:= True;
-      DataModuleF.ToatalVerMonthVCTR.Active:= True;
-      DataModuleF.ToatalVerMonthAREC.Active:= True;
-      DataModuleF.ToatalVerMonthAFAC.Active:= True;
 
+          CreateTablesFDScript.ExecuteAll;                                              // Eable this is only for releasing
+          InsertDataFDScript.ExecuteAll;                                                // Eable this is only for releasing
 
-      DataModuleF.ChargesTable.Active:= True;
-      DataModuleF.Charge_typeTable.Active:= True;
-      DataModuleF.Charge_s_typeTable.Active:= True;
-      DataModuleF.PertesTable.Active:= True;
-      DataModuleF.Perte_typeTable.Active:= True;
-
-      DataModuleF.Transfer_comptesTable.Active:= True;
+       ActiveTables;
+       ActiveTablesControls;
 
       sImage1.ImageIndex:=3;
       sImage1.Tag := 0;
 
      end;
-   
+
+
+   //-----this is the set the value of transactions at first start----
+  SQLQuery.Active:= False;
+  SQLQuery.SQL.Clear;
+  SQLQuery.SQL.Text:= ' SELECT datname, tup_inserted, tup_updated, tup_deleted '
+  +' FROM pg_stat_database WHERE datname = ' +QuotedStr(GstockdcConnection.Params.Database);
+  SQLQuery.Active:= True;
+
+  CountInsert:= SQLQuery.FieldByName('tup_inserted').AsInteger;
+  CountUpdate:= SQLQuery.FieldByName('tup_updated').AsInteger;
+  CountDelete:= SQLQuery.FieldByName('tup_deleted').AsInteger;
+
+  SQLQuery.SQL.Clear;
+  SQLQuery.Active:= False;
+
+//               except
+//
+//    // Show a custom dialog
+//    buttonSelected := DataModuleF.MyMessageDialog('Le serveur ne répond pas! Assurer-tu que le serveur est activé',mtCustom,[mbRetry,mbCancel],
+//                              ['Annuler','Réessayer']);
+//
+//
+//          if buttonSelected = mrRetry then
+//          begin
+//
+//              SwitchingDB;
+//
+//          end;
+//
+//          if buttonSelected = mrCancel then Application.Terminate;
+//
+//
+//
+//
+// end;
+
+
+GstockdcConnection.OnError := GstockdcConnectionError;
+
+end;
+
+
+procedure TMainForm.SwitchDBMAinFMnuClick(Sender: TObject);
+begin
+
+
+   SwitchingDB;
+    
+
 
    if Assigned(DashboardF) then
    begin
@@ -4436,19 +4516,7 @@ begin
      BankListF.OnPaint(Sender)
    end;
    
-   //-----this is the set the value of transactions at first start----
-  SQLQuery.Active:= False;
-  SQLQuery.SQL.Clear;   
-  SQLQuery.SQL.Text:= ' SELECT datname, tup_inserted, tup_updated, tup_deleted '
-  +' FROM pg_stat_database WHERE datname = ' +QuotedStr(GstockdcConnection.Params.Database);
-  SQLQuery.Active:= True;
 
-  CountInsert:= SQLQuery.FieldByName('tup_inserted').AsInteger;
-  CountUpdate:= SQLQuery.FieldByName('tup_updated').AsInteger;
-  CountDelete:= SQLQuery.FieldByName('tup_deleted').AsInteger;
-
-  SQLQuery.SQL.Clear;    
-  SQLQuery.Active:= False;
 
   
    

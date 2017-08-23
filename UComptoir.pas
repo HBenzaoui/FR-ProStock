@@ -505,46 +505,32 @@ begin
 end;
 
 procedure TBonCtrGestionF.ProduitBonCtrGCbxEnter(Sender: TObject);
-var
-I : Integer;
+//var
+//I : Integer;
   begin
-  Cursor := crDefault;
-//  PostMessage((Sender as TComboBox).Handle, CB_SHOWDROPDOWN, 1, 0);
-//      ProduitBonCtrGCbx.Refresh;
-      ProduitBonCtrGCbx.Properties.Items.Clear;
+//  Cursor := crDefault;
+//      ProduitBonCtrGCbx.Properties.Items.Clear;
+//
+//      MainForm.SQLQuery.Active:=False;
+//      MainForm.SQLQuery.SQL.Clear;
+//      MainForm.SQLQuery.SQL.Text:= 'SELECT code_p,nom_p FROM produit ';
+//      MainForm.SQLQuery.Active := True;
+//
+//      MainForm.SQLQuery.first;
+//
+//     begin
+//
+//     for I := 0 to MainForm.SQLQuery.RecordCount - 1 do
+//     if ( MainForm.SQLQuery.FieldByName('nom_p').IsNull = False )  then
+//     begin
+//       ProduitBonCtrGCbx.Properties.Items.Add(MainForm.SQLQuery.FieldByName('nom_p').AsString);
+//       MainForm.SQLQuery.Next;
+//      end;
+//     end;
+//
+//     MainForm.SQLQuery.Active:=False;
+//      MainForm.SQLQuery.SQL.Clear;
 
-      MainForm.SQLQuery.Active:=False;
-      MainForm.SQLQuery.SQL.Clear;
-      MainForm.SQLQuery.SQL.Text:= 'SELECT code_p,nom_p FROM produit ';
-      MainForm.SQLQuery.Active := True;
-
-      MainForm.SQLQuery.first;
-
-   //  if ResherchPARDesProduitsRdioBtn.Checked then
-     begin
-
-     for I := 0 to MainForm.SQLQuery.RecordCount - 1 do
-     if ( MainForm.SQLQuery.FieldByName('nom_p').IsNull = False )  then
-     begin
-       ProduitBonCtrGCbx.Properties.Items.Add(MainForm.SQLQuery.FieldByName('nom_p').AsString);
-       MainForm.SQLQuery.Next;
-      end;
-     end;
-
-     MainForm.SQLQuery.Active:=False;
-      MainForm.SQLQuery.SQL.Clear;
-
- {     if ResherchPARRefProduitsRdioBtn.Checked then
-     begin
-
-     for I := 0 to MainForm.ProduitTable.RecordCount - 1 do
-     if( MainForm.ProduitTable.FieldByName('refer_p').IsNull = False )  then
-     begin
-          ProduitBonCtrGCbx.Items.Add(MainForm.ProduitTable.FieldByName('refer_p').AsString);
-       MainForm.ProduitTable.Next;
-      end;
-     end;
-      }
 
 end;
 
@@ -706,7 +692,6 @@ begin
  begin
 
 
-
   if ClientBonCtrGCbx.Text<> '' then
    begin
      MainForm.ClientTable.DisableControls;
@@ -780,6 +765,7 @@ begin
 
             if  MainForm.FDQuery2.RecordCount > 0  then
           begin
+
 
             MainForm.Bonv_ctr_listTable.DisableControls;
             MainForm.Bonv_ctr_listTable.IndexFieldNames:='';
