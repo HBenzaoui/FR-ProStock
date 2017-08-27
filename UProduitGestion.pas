@@ -2117,6 +2117,21 @@ begin
        MargeGProduitEdt.Text:= '';
        MargeA1ProduitEdt.Text:= '';
        MargeA2ProduitEdt.Text:= '';
+
+
+       PrixVHTDProduitEdt.Text:= '';
+       PrixVHTRProduitEdt.Text:= '';
+       PrixVHTGProduitEdt.Text:= '';
+       PrixVHTA1ProduitEdt.Text:= '';
+       PrixVHTA2ProduitEdt.Text:= '';
+
+       PrixVTTCDProduitEdt.Text:= '';
+       PrixVTTCRProduitEdt.Text:= '';
+       PrixVTTCGProduitEdt.Text:= '';
+       PrixVTTCA1ProduitEdt.Text:= '';
+       PrixVTTCA2ProduitEdt.Text:= '';
+
+
        PrixVHTDProduitEdt.Enabled:= False;PrixVTTCDProduitEdt.Enabled:= False; MargeDProduitEdt.Enabled:= False;
        PrixVHTRProduitEdt.Enabled:= False;PrixVTTCRProduitEdt.Enabled:= False; MargeRProduitEdt.Enabled:= False;
        PrixVHTGProduitEdt.Enabled:= False;PrixVTTCGProduitEdt.Enabled:= False; MargeGProduitEdt.Enabled:= False;
@@ -2128,6 +2143,14 @@ begin
   begin
    if PrixATTCProduitEdt.Text <>'' then
     begin
+      begin
+        PrixVHTDProduitEdt.Enabled:= True;PrixVTTCDProduitEdt.Enabled:= True; MargeDProduitEdt.Enabled:= True;
+        PrixVHTRProduitEdt.Enabled:= True;PrixVTTCRProduitEdt.Enabled:= True; MargeRProduitEdt.Enabled:= True;
+        PrixVHTGProduitEdt.Enabled:= True;PrixVTTCGProduitEdt.Enabled:= True; MargeGProduitEdt.Enabled:= True;
+        PrixVHTA1ProduitEdt.Enabled:= True;PrixVTTCA1ProduitEdt.Enabled:= True; MargeA1ProduitEdt.Enabled:= True;
+        PrixVHTA2ProduitEdt.Enabled:= True;PrixVTTCA2ProduitEdt.Enabled:= True; MargeA2ProduitEdt.Enabled:= True;
+
+      end;
      PrixATTCProduit:=StrToFloat (StringReplace(PrixATTCProduitEdt.Text, #32, '', [rfReplaceAll]));
      TVAProduit:=StrToFloat (StringReplace(TVAProduitGCbx.Text, #32, '', [rfReplaceAll]));
      PrixAHTProduitEdt.Text := FloatToStrF(((PrixATTCProduit) -((PrixATTCProduit * TVAProduit)/(100+TVAProduit))),ffNumber,14,2);
@@ -2140,6 +2163,25 @@ begin
         MargeGProduitEdt.Text:=  '';
         MargeA1ProduitEdt.Text:= '';
         MargeA2ProduitEdt.Text:= '';
+
+
+       PrixVHTDProduitEdt.Text:= '';
+       PrixVHTRProduitEdt.Text:= '';
+       PrixVHTGProduitEdt.Text:= '';
+       PrixVHTA1ProduitEdt.Text:= '';
+       PrixVHTA2ProduitEdt.Text:= '';
+
+       PrixVTTCDProduitEdt.Text:= '';
+       PrixVTTCRProduitEdt.Text:= '';
+       PrixVTTCGProduitEdt.Text:= '';
+       PrixVTTCA1ProduitEdt.Text:= '';
+       PrixVTTCA2ProduitEdt.Text:= '';
+
+        PrixVHTDProduitEdt.Enabled:= False;PrixVTTCDProduitEdt.Enabled:= False; MargeDProduitEdt.Enabled:= False;
+       PrixVHTRProduitEdt.Enabled:= False;PrixVTTCRProduitEdt.Enabled:= False; MargeRProduitEdt.Enabled:= False;
+       PrixVHTGProduitEdt.Enabled:= False;PrixVTTCGProduitEdt.Enabled:= False; MargeGProduitEdt.Enabled:= False;
+       PrixVHTA1ProduitEdt.Enabled:= False;PrixVTTCA1ProduitEdt.Enabled:= False; MargeA1ProduitEdt.Enabled:= False;
+       PrixVHTA2ProduitEdt.Enabled:= False;PrixVTTCA2ProduitEdt.Enabled:= False; MargeA2ProduitEdt.Enabled:= False;
          Exit
      end;
   end;

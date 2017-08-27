@@ -6,17 +6,17 @@
 5~ prixht_p~ PrixAHT~ 195~ 0
 6~ PrixATTC~ PrixATTC~ 195~ 0
 7~ ValueStock~ Valeur de Stock~ 195~ 0
-8~ prixvd_p~ PrixVHT Détail~ 120~ -1
+8~ prixvd_p~ PrixVHT Détail~ 149~ -1
 9~ PrixVTTCD~ PrixVTTC Détail~ 195~ 0
 10~ prixvr_p~ PrixVHT Rev~ 195~ 0
 11~ PrixVTTCR~ PrixVTTC Rev~ 195~ 0
-12~ prixvg_p~ PrixVHT Gros~ 195~ -1
-13~ PrixVTTCG~ PrixVTTC Gros~ 195~ -1
+12~ prixvg_p~ PrixVHT Gros~ 120~ -1
+13~ PrixVTTCG~ PrixVTTC Gros~ 122~ -1
 14~ prixva_p~ PrixVHT Autre 1~ 195~ 0
 15~ PrixVTTCA~ PrixVTTC Autre 1~ 195~ 0
 16~ prixva2_p~ PrixVHT Autre 2~ 195~ 0
 17~ PrixVTTCA2~ PrixVTTC Autre 2~ 195~ 0
-18~ QutDispo~ Q.Dispo~ 225~ -1
+18~ QutDispo~ Q.Dispo~ 160~ -1
 19~ unit~ Unité~ 186~ -1
 20~ fourp~ Fournisseur~ 300~ -1
 21~ perissable_p~ Périssable~ 150~ 0

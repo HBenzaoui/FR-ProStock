@@ -1486,6 +1486,15 @@ end;
 
 procedure TBonCtrGestionF.ProduitsListDBGridEhKeyPress(Sender: TObject;
   var Key: Char);
+
+   Var
+
+Ini: TMemIniFile;
+PoleA,CaisseA : Boolean;
+PORT,Msg2 : string;
+Total: Integer;
+
+   
 begin
 if (Key=#13 ) OR (Key=#9) then
   begin
@@ -1498,10 +1507,50 @@ if (Key=#13 ) OR (Key=#9) then
      else
      SelectedIndex := 0;
     end;
+
+
+
+
+       Ini := TMemIniFile.Create(ChangeFileExt(Application.ExeName,'.ini')) ;
+       PoleA:= Ini.ReadBool('', 'Afficheur client Active',PoleA);
+
+       if PoleA = True then
+       begin
+         try
+           PORT:= Ini.ReadString('',  'Afficheur client PORT', PORT);
+//           Msg:= Ini.ReadString('',  'Afficheur client Msg', Msg);
+
+          ComPort1.Port := PORT;// 'COM7';
+          ComPort1.Events := [];
+//          BonCtrGestionF.ComPort1.FlowControl.ControlDTR := dtrEnable;       admin
+//          BonCtrGestionF.ComPort1.FlowControl.ControlRTS := rtsEnable;
+          ComPort1.Open; // open port
+          ComPort1.WriteUnicodeString('                                        '#13#10);
+          ComPort1.WriteUnicodeString('                                        '#13#10);
+          ComPort1.WriteUnicodeString('Subtotal: '+#13#10); // send test command
+          ComPort1.WriteUnicodeString(' '+StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll])+ ' DA'#13#10);
+          ComPort1.Close;
+          except
+//           ShowMessage('Svp, brancher l''Afficheur Client ou désactiver le dans la configuration->utilites');
+         end;
+         end;
+
+        ini.UpdateFile;
+        Ini.Free;
+
+                
+
    end;
 end;
 
 procedure TBonCtrGestionF.DeleteProduitBonCtrGBtnClick(Sender: TObject);
+   Var
+
+Ini: TMemIniFile;
+PoleA,CaisseA : Boolean;
+PORT,Msg2 : string;
+Total: Integer;
+
 begin
  if  MainForm.Bonv_ctr_listTable.RecordCount = 1 then
  begin
@@ -1533,8 +1582,36 @@ begin
 //      MainForm.Bonv_ctr_listTable.DisableControls;
       MainForm.Bonv_ctr_listTable.Delete;
 //      ProduitsListDBGridEh.Refresh;
-//      MainForm.Bonv_ctr_listTable.Refresh;
+      MainForm.Bonv_ctr_listTable.Refresh;
 //      MainForm.Bonv_ctr_listTable.EnableControls;
+
+
+       Ini := TMemIniFile.Create(ChangeFileExt(Application.ExeName,'.ini')) ;
+       PoleA:= Ini.ReadBool('', 'Afficheur client Active',PoleA);
+
+       if PoleA = True then
+       begin
+         try
+           PORT:= Ini.ReadString('',  'Afficheur client PORT', PORT);
+//           Msg:= Ini.ReadString('',  'Afficheur client Msg', Msg);
+
+          ComPort1.Port := PORT;// 'COM7';
+          ComPort1.Events := [];
+//          BonCtrGestionF.ComPort1.FlowControl.ControlDTR := dtrEnable;       admin
+//          BonCtrGestionF.ComPort1.FlowControl.ControlRTS := rtsEnable;
+          ComPort1.Open; // open port
+          ComPort1.WriteUnicodeString('                                        '#13#10);
+          ComPort1.WriteUnicodeString('                                        '#13#10);
+          ComPort1.WriteUnicodeString('Subtotal: '+#13#10); // send test command
+          ComPort1.WriteUnicodeString(' '+StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll])+ ' DA'#13#10);
+          ComPort1.Close;
+          except
+//           ShowMessage('Svp, brancher l''Afficheur Client ou désactiver le dans la configuration->utilites');
+         end;
+         end;
+
+        ini.UpdateFile;
+        Ini.Free;
      end;
 end;
 
@@ -2536,16 +2613,16 @@ begin
            PORT:= Ini.ReadString('',  'Afficheur client PORT', PORT);
 //           Msg:= Ini.ReadString('',  'Afficheur client Msg', Msg);
 
-          BonCtrGestionF.ComPort1.Port := PORT;// 'COM7';
-          BonCtrGestionF.ComPort1.Events := [];
+          ComPort1.Port := PORT;// 'COM7';
+          ComPort1.Events := [];
 //          BonCtrGestionF.ComPort1.FlowControl.ControlDTR := dtrEnable;
 //          BonCtrGestionF.ComPort1.FlowControl.ControlRTS := rtsEnable;
-          BonCtrGestionF.ComPort1.Open; // open port
-          BonCtrGestionF.ComPort1.WriteUnicodeString('                                        '#13#10);
-          BonCtrGestionF.ComPort1.WriteUnicodeString('                                        '#13#10);
-          BonCtrGestionF. ComPort1.WriteUnicodeString('Subtotal: '+#13#10); // send test command
+          ComPort1.Open; // open port
+          ComPort1.WriteUnicodeString('                                        '#13#10);
+          ComPort1.WriteUnicodeString('                                        '#13#10);
+          ComPort1.WriteUnicodeString('Subtotal: '+#13#10); // send test command
           ComPort1.WriteUnicodeString(' '+StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll])+ ' DA'#13#10);
-          BonCtrGestionF.ComPort1.Close;
+          ComPort1.Close;
           except
 //           ShowMessage('Svp, brancher l''Afficheur Client ou désactiver le dans la configuration->utilites');
          end;
@@ -2568,21 +2645,21 @@ begin
            PORT:= Ini.ReadString('',  'Afficheur client PORT', PORT);
            Msg:= Ini.ReadString('',  'Afficheur client Msg', Msg);
 
-          BonCtrGestionF.ComPort1.Port := PORT;// 'COM7';
-          BonCtrGestionF.ComPort1.Events := [];
+          ComPort1.Port := PORT;// 'COM7';
+          ComPort1.Events := [];
 //          BonCtrGestionF.ComPort1.FlowControl.ControlDTR := dtrEnable;
 //          BonCtrGestionF.ComPort1.FlowControl.ControlRTS := rtsEnable;
-          BonCtrGestionF.ComPort1.Open; // open port
-          BonCtrGestionF.ComPort1.WriteUnicodeString('                                        '#13#10);
-          BonCtrGestionF.ComPort1.WriteUnicodeString('                                        '#13#10);
-          BonCtrGestionF. ComPort1.WriteUnicodeString(Msg+#13#10); // send test command
-          BonCtrGestionF.ComPort1.Close;
+          ComPort1.Open; // open port
+          ComPort1.WriteUnicodeString('                                        '#13#10);
+          ComPort1.WriteUnicodeString('                                        '#13#10);
+          ComPort1.WriteUnicodeString(Msg+#13#10); // send test command
+          ComPort1.Close;
           except
 //           ShowMessage('Svp, brancher l''Afficheur Client ou désactiver le dans la configuration->utilites');
          end;
          end;
 
-        ini.UpdateFile;
+//        ini.UpdateFile;
         Ini.Free;
 
         PoleDisplayerTimerimer.Enabled:= False;

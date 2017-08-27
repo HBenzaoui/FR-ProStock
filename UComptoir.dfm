@@ -2603,7 +2603,7 @@ object BonCtrGestionF: TBonCtrGestionF
     PrintOptions.PrintOnSheet = 0
     PrintOptions.ShowDialog = False
     ReportOptions.CreateDate = 41863.570242476900000000
-    ReportOptions.LastChange = 42655.059784629630000000
+    ReportOptions.LastChange = 42973.520555219900000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       '//procedure Page1OnBeforePrint(Sender: TfrxComponent);'
@@ -2831,7 +2831,7 @@ object BonCtrGestionF: TBonCtrGestionF
       object PageFooter1: TfrxPageFooter
         FillType = ftBrush
         Height = 27.000000000000000000
-        Top = 529.134200000000000000
+        Top = 548.031850000000000000
         Width = 275.905690000000000000
       end
       object MasterData1: TfrxMasterData
@@ -2941,16 +2941,16 @@ object BonCtrGestionF: TBonCtrGestionF
       end
       object Footer1: TfrxFooter
         FillType = ftBrush
-        Height = 158.826822910000000000
+        Height = 177.724472910000000000
         Top = 309.921460000000000000
         Width = 275.905690000000000000
         OnAfterPrint = 'Footer1OnAfterPrint'
         OnBeforePrint = 'Footer1OnBeforePrint'
         Stretched = True
         object Memo61: TfrxMemoView
-          Left = 139.070914960000000000
+          Left = 123.952794960000000000
           Top = 4.425191970000000000
-          Width = 47.244084720000000000
+          Width = 62.362204720000000000
           Height = 18.897650000000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -2959,7 +2959,7 @@ object BonCtrGestionF: TBonCtrGestionF
           Font.Style = [fsBold]
           HAlign = haRight
           Memo.UTF8W = (
-            'Total :')
+            'Total HT :')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -2981,7 +2981,7 @@ object BonCtrGestionF: TBonCtrGestionF
         end
         object Memo63: TfrxMemoView
           Left = 113.070914960000000000
-          Top = 45.220467560000000000
+          Top = 64.220467560000000000
           Width = 73.700794720000000000
           Height = 18.897650000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -3043,10 +3043,9 @@ object BonCtrGestionF: TBonCtrGestionF
         end
         object Memo69: TfrxMemoView
           Left = 187.102362200000000000
-          Top = 45.220467560000000000
+          Top = 64.220467560000000000
           Width = 77.480324720000000000
           Height = 18.897650000000000000
-          DataField = 'NeTHT'
           DataSet = frxComptoirDB
           DataSetName = 'frxComptoirDB'
           DisplayFormat.DecimalSeparator = '.'
@@ -3060,13 +3059,13 @@ object BonCtrGestionF: TBonCtrGestionF
           Font.Style = [fsBold]
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxComptoirDB."NeTHT"]')
+            '[frxComptoirDB."montttc_bvctr"]')
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo1: TfrxMemoView
           Left = 112.850493780000000000
-          Top = 66.338587560000000000
+          Top = 85.338587560000000000
           Width = 73.700794720000000000
           Height = 18.897650000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -3082,7 +3081,7 @@ object BonCtrGestionF: TBonCtrGestionF
         end
         object Memo3: TfrxMemoView
           Left = 187.102362200000000000
-          Top = 66.338587560000000000
+          Top = 85.338587560000000000
           Width = 79.370088500000000000
           Height = 18.897650000000000000
           DataField = 'montver_bvctr'
@@ -3105,7 +3104,7 @@ object BonCtrGestionF: TBonCtrGestionF
         end
         object Memo6: TfrxMemoView
           Left = 112.850493780000000000
-          Top = 87.236237560000000000
+          Top = 106.236237560000000000
           Width = 73.700794720000000000
           Height = 18.897650000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -3121,7 +3120,7 @@ object BonCtrGestionF: TBonCtrGestionF
         end
         object Memo7: TfrxMemoView
           Left = 187.102362200000000000
-          Top = 87.236237560000000000
+          Top = 106.236237560000000000
           Width = 79.370088500000000000
           Height = 18.897650000000000000
           OnBeforePrint = 'Memo7OnBeforePrint'
@@ -3177,7 +3176,7 @@ object BonCtrGestionF: TBonCtrGestionF
         end
         object Memo10: TfrxMemoView
           Left = 4.000000000000000000
-          Top = 125.504020000000000000
+          Top = 143.504020000000000000
           Width = 264.567100000000000000
           Height = 18.897635350000000000
           StretchMode = smActualHeight
@@ -3194,7 +3193,7 @@ object BonCtrGestionF: TBonCtrGestionF
         end
         object Memo11: TfrxMemoView
           Left = 137.283574410000000000
-          Top = 147.110287480000000000
+          Top = 165.110287480000000000
           Width = 64.251985590000000000
           Height = 11.716535430000000000
           OnBeforePrint = 'Memo11OnBeforePrint'
@@ -3212,7 +3211,7 @@ object BonCtrGestionF: TBonCtrGestionF
         end
         object Memo12: TfrxMemoView
           Left = 4.000000000000000000
-          Top = 147.110287480000000000
+          Top = 165.110287480000000000
           Width = 49.133890000000000000
           Height = 11.716535430000000000
           StretchMode = smActualHeight
@@ -3231,7 +3230,7 @@ object BonCtrGestionF: TBonCtrGestionF
         end
         object Client: TfrxMemoView
           Left = 74.708651650000000000
-          Top = 147.110287480000000000
+          Top = 165.110287480000000000
           Width = 64.252010000000000000
           Height = 11.716535430000000000
           StretchMode = smActualHeight
@@ -3262,7 +3261,7 @@ object BonCtrGestionF: TBonCtrGestionF
         end
         object Agent: TfrxMemoView
           Left = 198.976500000000000000
-          Top = 147.110287480000000000
+          Top = 165.110287480000000000
           Width = 69.921264720000000000
           Height = 11.716535430000000000
           StretchMode = smActualHeight
@@ -3292,7 +3291,7 @@ object BonCtrGestionF: TBonCtrGestionF
         end
         object Line3: TfrxLineView
           Left = 3.779530000000000000
-          Top = 108.826840000000000000
+          Top = 126.826840000000000000
           Width = 264.567100000000000000
           StretchMode = smActualHeight
           Color = clBlack
@@ -3307,7 +3306,7 @@ object BonCtrGestionF: TBonCtrGestionF
         end
         object Line4: TfrxLineView
           Left = 3.779530000000000000
-          Top = 125.724490000000000000
+          Top = 143.724490000000000000
           Width = 264.567100000000000000
           StretchMode = smActualHeight
           Color = clBlack
@@ -3322,7 +3321,7 @@ object BonCtrGestionF: TBonCtrGestionF
         end
         object MoneyWordRX: TfrxMemoView
           Left = 4.338590000000000000
-          Top = 111.606370000000000000
+          Top = 129.606370000000000000
           Width = 262.677297170000000000
           Height = 11.338590000000000000
           StretchMode = smActualHeight
@@ -3338,7 +3337,7 @@ object BonCtrGestionF: TBonCtrGestionF
         end
         object Line7: TfrxLineView
           Left = 3.779530000000000000
-          Top = 145.063080000000000000
+          Top = 163.063080000000000000
           Width = 264.567100000000000000
           Color = clBlack
           Frame.Style = fsDash
@@ -3352,7 +3351,7 @@ object BonCtrGestionF: TBonCtrGestionF
         end
         object Line5: TfrxLineView
           Left = 4.779530000000000000
-          Top = 158.299320000000000000
+          Top = 176.299320000000000000
           Width = 264.567100000000000000
           Color = clBlack
           Frame.Style = fsDashDot
@@ -3365,7 +3364,7 @@ object BonCtrGestionF: TBonCtrGestionF
         end
         object Memo13: TfrxMemoView
           Left = 50.692950000000000000
-          Top = 147.110287480000000000
+          Top = 165.110287480000000000
           Width = 27.212598430000000000
           Height = 11.716535430000000000
           StretchMode = smActualHeight
@@ -3381,6 +3380,44 @@ object BonCtrGestionF: TBonCtrGestionF
           Memo.UTF8W = (
             '| [frxComptoirDB."time_bvctr"] |')
           ParentFont = False
+        end
+        object Memo14: TfrxMemoView
+          Left = 113.385900000000000000
+          Top = 44.354360000000000000
+          Width = 73.700794720000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -16
+          Font.Name = 'Merchant Copy'
+          Font.Style = [fsBold]
+          HAlign = haRight
+          Memo.UTF8W = (
+            'TVA :')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo15: TfrxMemoView
+          Left = 187.417347240000000000
+          Top = 44.354360000000000000
+          Width = 77.480324720000000000
+          Height = 18.897650000000000000
+          DataSet = frxComptoirDB
+          DataSetName = 'frxComptoirDB'
+          DisplayFormat.DecimalSeparator = '.'
+          DisplayFormat.ThousandSeparator = ' '
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -16
+          Font.Name = 'Merchant Copy'
+          Font.Style = [fsBold]
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[frxComptoirDB."MontantTVA"]')
+          ParentFont = False
+          VAlign = vaCenter
         end
       end
       object ReportTitle1: TfrxReportTitle
