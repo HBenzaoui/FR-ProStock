@@ -164,6 +164,7 @@ type
     Label29: TLabel;
     Label30: TLabel;
     Label31: TLabel;
+    Label32: TLabel;
     procedure FormShow(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
@@ -1770,6 +1771,16 @@ begin
   begin
 
       ValiderBVlivBonLivGBtnClick(Screen);
+
+    Handled := true;
+  end;
+
+
+       //--- this is for new produit--------------------------
+  if  (GetKeyState(VK_F11) < 0)  then
+  begin
+
+      NewAddProduitBonLivGBtnClick(Screen);
 
     Handled := true;
   end;

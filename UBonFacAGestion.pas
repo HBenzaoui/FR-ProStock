@@ -153,6 +153,7 @@ type
     Label29: TLabel;
     ApplicationEvents1: TApplicationEvents;
     Label31: TLabel;
+    Label23: TLabel;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure FormShow(Sender: TObject);
@@ -3030,6 +3031,16 @@ begin
   begin
 
       ValiderBAFacBonFacAGBtnClick(Screen);
+
+    Handled := true;
+  end;
+
+
+       //--- this is for new produit--------------------------
+     if  (GetKeyState(VK_F11) < 0)  then
+  begin
+
+      NewAddProduitBonFacAGBtnClick(Screen);
 
     Handled := true;
   end;

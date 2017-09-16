@@ -154,6 +154,7 @@ type
     Label29: TLabel;
     ApplicationEvents1: TApplicationEvents;
     Label31: TLabel;
+    Label23: TLabel;
     procedure FormShow(Sender: TObject);
     procedure sSpeedButton7Click(Sender: TObject);
     procedure sSpeedButton6Click(Sender: TObject);
@@ -2829,6 +2830,14 @@ begin
     Handled := true;
   end;
 
+       //--- this is for new produit--------------------------
+     if  (GetKeyState(VK_F11) < 0)  then
+  begin
+
+      NewAddProduitBonFacVGBtnClick(Screen);
+
+    Handled := true;
+  end;
      if  (GetKeyState(VK_F12) < 0)  then
   begin
 

@@ -118,7 +118,7 @@ type
     BonRTotalHTNewLbl: TLabel;
     TotalTVANewLbl: TLabel;
     NChequeBonRecGCbx: TEdit;
-    Label23: TLabel;
+    Label35: TLabel;
     ObserBonRecGLbl: TLabel;
     ObserBonRecGMem: TMemo;
     BonRRemiseHTNewLbl: TLabel;
@@ -1189,6 +1189,15 @@ begin
   begin
 
       ValiderBARecBonRecGBtnClick(Screen);
+
+    Handled := true;
+  end;
+
+     //--- this is for new produit--------------------------
+     if  (GetKeyState(VK_F11) < 0)  then
+  begin
+
+      NewAddProduitBonRecGBtnClick(Screen);
 
     Handled := true;
   end;

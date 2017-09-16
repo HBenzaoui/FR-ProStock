@@ -2102,6 +2102,7 @@ object LoginF: TLoginF
     Height = 18
     Caption = 'Button1'
     TabOrder = 2
+    Visible = False
     OnClick = Button1Click
   end
   object PrograssBar: TAdvSmoothProgressBar

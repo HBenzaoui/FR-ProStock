@@ -1788,6 +1788,8 @@ begin
 
           MainForm.Bonv_ctrTable.Post;
 
+          BonCtrGestionF.HourBonCtrGD.Caption:= TimeToStr(MainForm.Bonv_ctrTable.FieldByName('time_bvctr').AsDateTime);
+
                  DisableBonCtr;
 
                  BonCtrGestionF.Timer1.Enabled:=False;

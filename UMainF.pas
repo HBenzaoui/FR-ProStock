@@ -2585,7 +2585,10 @@ var TotalHT,TotalTVA,TVA,TotalTTC,LeRendu,Regle,Marge,NewHT,BonFCTotalHT: Curren
         TotalTVA:= TotalTVA + MainForm.Bonv_ctr_listTable.FieldValues['MontantTVA'];
         TotalTTC:= TotalTTC + MainForm.Bonv_ctr_listTable.FieldValues['MontantTTC'];
         TVA:=TVA + MainForm.Bonv_ctr_listTable.FieldValues['tva_p'] ;
+         if Bonv_ctr_listTable.FieldValues['MargeM'] <> null then
+         begin
          Marge:=Marge + MainForm.Bonv_ctr_listTable.FieldValues['MargeM'] ;
+         end;
         LeRendu:=  (StrToCurr(StringReplace(BonCtrGestionF.BonCtrRegleLbl.Caption, #32, '', [rfReplaceAll]))) - TotalTTC  ;
         MainForm.Bonv_ctr_listTable.Next;
       end;

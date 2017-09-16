@@ -1580,6 +1580,7 @@ begin
 
              MainForm.Bonv_ctr_listTable.Post ;
 
+
       end;
            ProduitsListDBGridEh.SelectedRows.Clear;
            MainForm.Bonv_ctr_listTable.IndexFieldNames:='code_bvctr';
@@ -1633,6 +1634,7 @@ begin
 
              MainForm.Bonv_ctr_listTable.Refresh;
              MainForm.Bonv_ctr_listTable.Last;
+             BonCtrGestionF.showInPoleClient;
 
     end else
 
@@ -1701,6 +1703,8 @@ begin
 
 
              MainForm.Bonv_ctr_listTable.Post ;
+
+
            MainForm.Bonv_ctr_listTable.IndexFieldNames:='code_bvctr';
            MainForm.Bonv_ctr_listTable.Last;
            MainForm.Bonv_ctr_listTable.EnableControls;
@@ -1769,6 +1773,7 @@ begin
 //        BonCtrGestionF.ProduitsListDBGridEh.EditorMode:=True;
 
         MainForm.Bonv_ctr_listTable.Last;
+        BonCtrGestionF.showInPoleClient;
 
 
     end

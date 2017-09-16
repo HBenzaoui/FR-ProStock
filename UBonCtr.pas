@@ -485,6 +485,7 @@ begin
 //       MainForm.Bonv_ctrTable.Refresh;
        BonCtrGestionF.NumBonCtrGEdt.Caption := MainForm.Bonv_ctrTable.FieldValues['num_bvctr'];
        BonCtrGestionF.DateBonCtrGD.Date:= MainForm.Bonv_ctrTable.FieldValues['date_bvctr'];
+       BonCtrGestionF.HourBonCtrGD.Caption:= MainForm.Bonv_ctrTable.FieldValues['time_bvctr'];
        if (MainForm.Bonv_ctrTable.FieldValues['code_c']<> null) and (MainForm.Bonv_ctrTable.FieldValues['code_c']<> 0) then
        begin
        CodeC:=MainForm.Bonv_ctrTable.FieldValues['code_c'];

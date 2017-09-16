@@ -1235,6 +1235,19 @@ object BonFacPGestionF: TBonFacPGestionF
       Font.Style = []
       ParentFont = False
     end
+    object Label23: TLabel
+      Left = 659
+      Top = 275
+      Width = 20
+      Height = 12
+      Caption = '[F11]'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 10395294
+      Font.Height = -9
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+    end
     object Panel6: TPanel
       Left = 632
       Top = 124

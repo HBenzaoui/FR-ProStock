@@ -7,9 +7,9 @@
 6~ montht_bvliv~ Montant HT~ 150~ -1
 7~ remise_bvliv~ Remise HT~ 150~ -1
 8~ NeTHT~ Net â Payer HT~ 150~ -1
-9~ MontantTVA~ Montant TVA~ 150~ -1
-10~ montttc_bvliv~ Montant TTC~ 150~ -1
-11~ montver_bvliv~ Montant Versé~ 150~ -1
-12~ MontantRes~ Montant Resté~ 150~ -1
+9~ MontantTVA~ Montant TVA~ 150~ 0
+10~ montttc_bvliv~ Montant TTC~ 150~ 0
+11~ montver_bvliv~ Montant Versé~ 150~ 0
+12~ MontantRes~ Montant Resté~ 150~ 0
 13~ marge_bvliv~ Marge~ 150~ -1
 14~ Agnet~ Agent~ 150~ -1
