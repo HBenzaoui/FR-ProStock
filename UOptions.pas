@@ -155,6 +155,8 @@ type
     Panel12: TPanel;
     Panel13: TPanel;
     Label40: TLabel;
+    PrinterCaisse57mmOptionCaisseRdioBtn: TRadioButton;
+    PrinterCaisse80mmOptionCaisseRdioBtn: TRadioButton;
     procedure FormShow(Sender: TObject);
     procedure OKFPrintingBtnClick(Sender: TObject);
     procedure ImageCompanyOptionImgMouseEnter(Sender: TObject);
@@ -386,6 +388,7 @@ var
   Jpg: TJPEGImage;
   Ini: TIniFile;
   CanChange : Boolean;
+  PrinterCaisseSize : string;
 begin
  GrayForms;
  OptionsPgControl.TabIndex:= 0;
@@ -397,6 +400,18 @@ begin
     Ini := TIniFile.Create(ChangeFileExt(Application.ExeName,'.ini')) ;
     APrintOptionGSlider.SliderOn:=           Ini.ReadBool('', 'Auto Print',APrintOptionGSlider.SliderOn);
     PrintersListFOptionCaisseCbx.ItemIndex:= Ini.ReadInteger('', 'Printer Caisse',PrintersListFOptionCaisseCbx.ItemIndex);
+
+    PrinterCaisseSize:= Ini.ReadString('', 'Printer Caisse Size', PrinterCaisseSize);
+
+    if PrinterCaisseSize = '80mm' then
+    begin
+      PrinterCaisse80mmOptionCaisseRdioBtn.Checked := True;
+    end;
+    if PrinterCaisseSize = '57mm' then
+    begin
+      PrinterCaisse57mmOptionCaisseRdioBtn.Checked := True;
+    end;
+
     PrintersListFOptionCodeBCbx.ItemIndex := Ini.ReadInteger('', 'Printer Barcode',PrintersListFOptionCodeBCbx.ItemIndex);
     FormatFOptionCodeBCbx.ItemIndex :=       Ini.ReadInteger('', 'Format Barcode',FormatFOptionCodeBCbx.ItemIndex);
     PrixVenteListFOptionCodeBCbx.ItemIndex:= Ini.ReadInteger('', 'Prix de Vente',PrixVenteListFOptionCodeBCbx.ItemIndex);
@@ -633,6 +648,16 @@ begin
     Ini := TIniFile.Create(ChangeFileExt(Application.ExeName,'.ini'));
     Ini.WriteBool(Caption,   'Auto Print', APrintOptionGSlider.SliderOn);
     Ini.WriteInteger(Caption, 'Printer Caisse', PrintersListFOptionCaisseCbx.ItemIndex);
+
+    if PrinterCaisse80mmOptionCaisseRdioBtn.Checked then
+    begin
+    Ini.WriteString(Caption, 'Printer Caisse Size', '80mm');
+    end;
+    if PrinterCaisse57mmOptionCaisseRdioBtn.Checked then
+    begin
+    Ini.WriteString(Caption, 'Printer Caisse Size', '57mm');
+    end;
+
     Ini.WriteInteger(Caption, 'Printer Barcode', PrintersListFOptionCodeBCbx.ItemIndex);
     Ini.WriteInteger(Caption,'Format Barcode', FormatFOptionCodeBCbx.ItemIndex);
     Ini.WriteInteger(Caption,'Prix de Vente', PrixVenteListFOptionCodeBCbx.ItemIndex);

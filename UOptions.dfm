@@ -263,6 +263,34 @@ object FOptions: TFOptions
             'Prix Autre 1'
             'Prix Autre 2')
         end
+        object PrinterCaisse57mmOptionCaisseRdioBtn: TRadioButton
+          Left = 346
+          Top = 79
+          Width = 61
+          Height = 17
+          Caption = '57 mm'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 4207405
+          Font.Height = 16
+          Font.Name = 'Roboto'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 6
+        end
+        object PrinterCaisse80mmOptionCaisseRdioBtn: TRadioButton
+          Left = 279
+          Top = 79
+          Width = 63
+          Height = 17
+          Caption = '80 mm'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 4207405
+          Font.Height = 16
+          Font.Name = 'Roboto'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 7
+        end
       end
       object P2: TPanel
         Left = 7

@@ -1174,15 +1174,6 @@ object BonCtrGestionF: TBonCtrGestionF
       Height = 38
       Width = 409
     end
-    object Button1: TButton
-      Left = 522
-      Top = 89
-      Width = 75
-      Height = 25
-      Caption = 'Button1'
-      TabOrder = 3
-      OnClick = Button1Click
-    end
   end
   object Panel1: TPanel
     Left = 0
@@ -1533,7 +1524,7 @@ object BonCtrGestionF: TBonCtrGestionF
       TabOrder = 1
     end
     object Panel20: TPanel
-      Left = 750
+      Left = 615
       Top = 2
       Width = 1
       Height = 79
@@ -1559,6 +1550,7 @@ object BonCtrGestionF: TBonCtrGestionF
       ShowHint = False
       TabOrder = 2
       StyleElements = []
+      ExplicitLeft = 750
     end
     object Panel18: TPanel
       Left = 751
@@ -1641,7 +1633,7 @@ object BonCtrGestionF: TBonCtrGestionF
       end
     end
     object Panel22: TPanel
-      Left = 615
+      Left = 616
       Top = 2
       Width = 135
       Height = 79
@@ -1650,6 +1642,7 @@ object BonCtrGestionF: TBonCtrGestionF
       Color = 15527148
       ParentBackground = False
       TabOrder = 4
+      ExplicitLeft = 617
       DesignSize = (
         135
         79)
@@ -1722,6 +1715,14 @@ object BonCtrGestionF: TBonCtrGestionF
         Font.Name = 'Segoe UI'
         Font.Style = []
         ParentFont = False
+      end
+      object PrinterCaisseSizeBVCtrBonCtrLbl: TLabel
+        Left = 57
+        Top = 63
+        Width = 28
+        Height = 13
+        Caption = '80mm'
+        Visible = False
       end
       object Panel15: TPanel
         Left = 0

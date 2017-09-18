@@ -151,7 +151,7 @@ type
     Label14: TLabel;
     Label15: TLabel;
     ComptoirTicket57frxRprt: TfrxReport;
-    Button1: TButton;
+    PrinterCaisseSizeBVCtrBonCtrLbl: TLabel;
     procedure FormShow(Sender: TObject);
     procedure RemiseBonCtrGEdtDblClick(Sender: TObject);
     procedure ShowKeyBoardBonCtrGBtnClick(Sender: TObject);
@@ -213,7 +213,6 @@ type
     procedure RemiseBonCtrGEdtKeyPress(Sender: TObject; var Key: Char);
     procedure ProduitsListDBGridEhKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
-    procedure Button1Click(Sender: TObject);
   private
     procedure GettingData;
     procedure addingState;
@@ -328,6 +327,7 @@ begin
 
   Ini := TMemIniFile.Create(ChangeFileExt(Application.ExeName, '.ini'));
   APrintBVCtrBonCtrGSlider.SliderOn := Ini.ReadBool('', 'Auto Print', APrintBVCtrBonCtrGSlider.SliderOn);
+  PrinterCaisseSizeBVCtrBonCtrLbl.Caption:= Ini.ReadString('', 'Printer Caisse Size', PrinterCaisseSizeBVCtrBonCtrLbl.Caption);
   PoleA := Ini.ReadBool('', 'Afficheur client Active', PoleA);
 
   if PoleA = True then
@@ -1529,21 +1529,6 @@ begin
   end;
 end;
 
-procedure TBonCtrGestionF.Button1Click(Sender: TObject);
-begin
-  if ValiderBVCtrBonCtrGImg.ImageIndex <> 1 then
-  begin
-    MainForm.Bonv_ctr_listTable.DisableControls;
-    ComptoirTicket57frxRprt.PrepareReport;
-    GettingData57;
-    ComptoirTicket57frxRprt.PrintOptions.ShowDialog := False;
-    ComptoirTicket57frxRprt.PrepareReport;
-//    ComptoirTicketfrxRprt.PrintOptions.Printer:= FOptions.PrintersListFOptionCaisseCbx.Text ;
-    ComptoirTicket57frxRprt.Print;
-    MainForm.Bonv_ctr_listTable.EnableControls;
-  end;
-end;
-
 procedure TBonCtrGestionF.FormActivate(Sender: TObject);
 //Var
 //
@@ -2721,19 +2706,46 @@ begin
 
 end;
 
+
+
 procedure TBonCtrGestionF.PrintTicketBVCtrBonCtrGBtnClick(Sender: TObject);
 begin
+
+  if PrinterCaisseSizeBVCtrBonCtrLbl.Caption = '80mm' then
+  begin
+
+    if ValiderBVCtrBonCtrGImg.ImageIndex <> 1 then
+    begin
+      MainForm.Bonv_ctr_listTable.DisableControls;
+      ComptoirTicketfrxRprt.PrepareReport;
+      GettingData;
+      ComptoirTicketfrxRprt.PrintOptions.ShowDialog := False;
+      ComptoirTicketfrxRprt.PrepareReport;
+
+      ComptoirTicketfrxRprt.PrintOptions.Printer:= FOptions.PrintersListFOptionCaisseCbx.Text ;
+
+      ComptoirTicketfrxRprt.Print;
+      MainForm.Bonv_ctr_listTable.EnableControls;
+    end;
+  end;
+
+    if PrinterCaisseSizeBVCtrBonCtrLbl.Caption = '57mm' then
+  begin
+
   if ValiderBVCtrBonCtrGImg.ImageIndex <> 1 then
   begin
     MainForm.Bonv_ctr_listTable.DisableControls;
-    ComptoirTicketfrxRprt.PrepareReport;
-    GettingData;
-    ComptoirTicketfrxRprt.PrintOptions.ShowDialog := False;
-    ComptoirTicketfrxRprt.PrepareReport;
-//    ComptoirTicketfrxRprt.PrintOptions.Printer:= FOptions.PrintersListFOptionCaisseCbx.Text ;
-    ComptoirTicketfrxRprt.Print;
+    ComptoirTicket57frxRprt.PrepareReport;
+    GettingData57;
+    ComptoirTicket57frxRprt.PrintOptions.ShowDialog := False;
+    ComptoirTicket57frxRprt.PrepareReport;
+
+    ComptoirTicket57frxRprt.PrintOptions.Printer:= FOptions.PrintersListFOptionCaisseCbx.Text ;
+    ComptoirTicket57frxRprt.Print;
     MainForm.Bonv_ctr_listTable.EnableControls;
   end;
+  end;
+
 end;
 
 procedure TBonCtrGestionF.sSpeedButton1Click(Sender: TObject);
