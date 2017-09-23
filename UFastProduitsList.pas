@@ -55,6 +55,8 @@ type
     procedure ResearchProduitsEdtKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure FormCreate(Sender: TObject);
+    procedure ResearchProduitsEdtDblClick(Sender: TObject);
+    procedure ResearchProduitsEdtMouseEnter(Sender: TObject);
   private
     { Private declarations }
   public
@@ -244,6 +246,16 @@ begin
     end;
 end;
 
+procedure TFastProduitsListF.ResearchProduitsEdtDblClick(Sender: TObject);
+begin
+  try
+    BonCtrGestionF.ShowKeyBoardBonCtrGBtnClick(Sender);
+//  ProduitBonCtrGCbx.SetFocus
+  finally
+    ResearchProduitsEdt.SetFocus
+  end;
+end;
+
 procedure TFastProduitsListF.ResearchProduitsEdtKeyDown(Sender: TObject;
   var Key: Word; Shift: TShiftState);
 begin
@@ -284,6 +296,14 @@ begin
 
 end;
 
+
+procedure TFastProduitsListF.ResearchProduitsEdtMouseEnter(Sender: TObject);
+begin
+  Application.HintPause := 500;      // 250 mSec before hint is shown
+  Application.HintHidePause := 5000;
+  ResearchProduitsEdt.ShowHint := True;
+  ResearchProduitsEdt.Hint := 'Double-cliquez ici pour afficher le clavier';
+end;
 
 procedure TFastProduitsListF.ResherchPARDesProduitsRdioBtnClick(Sender: TObject);
 begin

@@ -152,6 +152,7 @@ type
     Label15: TLabel;
     ComptoirTicket57frxRprt: TfrxReport;
     PrinterCaisseSizeBVCtrBonCtrLbl: TLabel;
+    CameraBonCtrGBtn: TsSpeedButton;
     procedure FormShow(Sender: TObject);
     procedure RemiseBonCtrGEdtDblClick(Sender: TObject);
     procedure ShowKeyBoardBonCtrGBtnClick(Sender: TObject);
@@ -213,6 +214,7 @@ type
     procedure RemiseBonCtrGEdtKeyPress(Sender: TObject; var Key: Char);
     procedure ProduitsListDBGridEhKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
+    procedure CameraBonCtrGBtnClick(Sender: TObject);
   private
     procedure GettingData;
     procedure addingState;
@@ -236,7 +238,7 @@ implementation
 uses
   Printers, StringTool, IniFiles, UDataModule, Winapi.ShellAPI, UMainF,
   UProduitsList, UBonCtr, USplashAddUnite, UProduitGestion, UFastProduitsList,
-  USplashVersement, UOptions, UClientGestion, UClientsList, UPerissableProduit;
+  USplashVersement, UOptions, UClientGestion, UClientsList, UPerissableProduit, UCamera;
 
 procedure Refresh_PreservePosition;
 var
@@ -1694,6 +1696,21 @@ begin
     Ini.UpdateFile;
     Ini.Free;
   end;
+end;
+
+procedure TBonCtrGestionF.CameraBonCtrGBtnClick(Sender: TObject);
+begin
+//-------- use this code to start creating th form-----//
+  ProduitBonCtrGCbx.Text := '';
+  MainForm.ProduitTable.Filtered := False;
+  CameraF := TCameraF.Create(Application);
+
+//-------- Show the splash screan for the produit familly to add new one---------//
+  CameraF.Left := (Screen.Width div 2) - (CameraF.Width div 2);
+  CameraF.Top := (Screen.Height div 2) - (CameraF.Height div 2);
+  FormStyle := fsStayOnTop;
+  CameraF.ShowModal;
+
 end;
 
 procedure TBonCtrGestionF.ClearProduitBonCtrGBtnClick(Sender: TObject);

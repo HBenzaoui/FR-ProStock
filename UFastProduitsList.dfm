@@ -216,9 +216,11 @@ object FastProduitsListF: TFastProduitsListF
       ParentFont = False
       TabOrder = 0
       OnChange = ResearchProduitsEdtChange
+      OnDblClick = ResearchProduitsEdtDblClick
       OnEnter = ResearchProduitsEdtEnter
       OnKeyDown = ResearchProduitsEdtKeyDown
       OnKeyPress = ResearchProduitsEdtKeyPress
+      OnMouseEnter = ResearchProduitsEdtMouseEnter
     end
     object ResherchPARDesProduitsRdioBtn: TRadioButton
       Left = 366

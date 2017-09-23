@@ -1,5 +1,7 @@
 program ProStock;
 
+
+
 uses
   Vcl.Forms,
   Windows,
@@ -66,7 +68,8 @@ uses
   UTransferComptesGestion in 'UTransferComptesGestion.pas' {TransferComptesGestionF},
   UTransferListGestion in 'UTransferListGestion.pas' {TransferListGestionF},
   UPerissableProduit in 'UPerissableProduit.pas' {PerissableProduitF},
-  UAbout in 'UAbout.pas' {AboutF};
+  UAbout in 'UAbout.pas' {AboutF},
+  UCamera in 'UCamera.pas' {CameraF};
 
 {$R *.res}
 

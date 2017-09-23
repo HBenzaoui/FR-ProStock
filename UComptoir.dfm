@@ -933,7 +933,7 @@ object BonCtrGestionF: TBonCtrGestionF
       ExplicitLeft = 839
     end
     object sImage2: TsImage
-      Left = 465
+      Left = 467
       Top = 29
       Width = 26
       Height = 20
@@ -946,7 +946,6 @@ object BonCtrGestionF: TBonCtrGestionF
       ImageIndex = 47
       Images = MainForm.PanelIcons24
       SkinData.SkinSection = 'CHECKBOX'
-      ExplicitLeft = 814
     end
     object BonCRemiseHTNewLbl: TLabel
       Left = 8
@@ -1041,7 +1040,7 @@ object BonCtrGestionF: TBonCtrGestionF
     end
     object Label5: TLabel
       Left = 107
-      Top = 33
+      Top = 32
       Width = 409
       Height = 12
       Alignment = taCenter
@@ -1128,6 +1127,20 @@ object BonCtrGestionF: TBonCtrGestionF
       Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
+    end
+    object CameraBonCtrGBtn: TsSpeedButton
+      Left = 107
+      Top = 27
+      Width = 32
+      Height = 21
+      Hint = 'Camera'
+      Anchors = [akLeft, akBottom]
+      ParentShowHint = False
+      ShowHint = True
+      OnClick = CameraBonCtrGBtnClick
+      SkinData.SkinSection = 'SPEEDBUTTON'
+      Images = MainForm.PanelIcons24
+      ImageIndex = 54
     end
     object Panel6: TPanel
       Left = 0
@@ -1550,7 +1563,6 @@ object BonCtrGestionF: TBonCtrGestionF
       ShowHint = False
       TabOrder = 2
       StyleElements = []
-      ExplicitLeft = 750
     end
     object Panel18: TPanel
       Left = 751
@@ -1642,7 +1654,6 @@ object BonCtrGestionF: TBonCtrGestionF
       Color = 15527148
       ParentBackground = False
       TabOrder = 4
-      ExplicitLeft = 617
       DesignSize = (
         135
         79)
