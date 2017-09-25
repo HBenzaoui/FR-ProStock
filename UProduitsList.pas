@@ -3,18 +3,17 @@
 interface
 
 uses
- USplashAddUnite, DBGridEhImpExp,ShellAPI,
-
-  Winapi.Windows, Winapi.Messages,Vcl.OleAuto, System.SysUtils, System.Variants, System.Classes,
-  Vcl.Graphics, EhLibFireDAC, Vcl.Controls, Vcl.Forms, Vcl.Dialogs,
-  DBGridEhGrouping, ToolCtrlsEh, DBGridEhToolCtrls, DynVarsEh, FireDAC.Stan.Intf,
-  FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
-  FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, Data.DB,
-  FireDAC.Comp.DataSet, FireDAC.Comp.Client, System.ImageList, Vcl.ImgList,
-  acAlphaImageList, Vcl.StdCtrls, Vcl.WinXCtrls, Vcl.Buttons, sSpeedButton,
-  AdvToolBtn, Vcl.ExtCtrls, EhLibVCL, GridsEh, DBAxisGridsEh, Data.SqlExpr, Vcl.Imaging.jpeg,
-  DBGridEh, frxExportPDF, frxClass, frxExportXLS, frxDBSet, acImage, Vcl.Menus,
-  Vcl.ComCtrls, sStatusBar,ExcelXP, Vcl.AppEvnts;
+  USplashAddUnite, DBGridEhImpExp, ShellAPI, Winapi.Windows, Winapi.Messages,
+  Vcl.OleAuto, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  EhLibFireDAC, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, DBGridEhGrouping,
+  ToolCtrlsEh, DBGridEhToolCtrls, DynVarsEh, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
+  FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, Data.DB, FireDAC.Comp.DataSet,
+  FireDAC.Comp.Client, System.ImageList, Vcl.ImgList, acAlphaImageList, Vcl.StdCtrls,
+  Vcl.WinXCtrls, Vcl.Buttons, sSpeedButton, AdvToolBtn, Vcl.ExtCtrls, EhLibVCL,
+  GridsEh, DBAxisGridsEh, Data.SqlExpr, Vcl.Imaging.jpeg, DBGridEh, frxExportPDF,
+  frxClass, frxExportXLS, frxDBSet, acImage, Vcl.Menus, Vcl.ComCtrls, sStatusBar,
+  ExcelXP, Vcl.AppEvnts;
 
 type
   TProduitsListF = class(TForm)
@@ -130,8 +129,7 @@ type
     procedure e1Click(Sender: TObject);
     procedure ExporterverExcel1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
-    procedure ResearchProduitsEdtKeyDown(Sender: TObject; var Key: Word;
-      Shift: TShiftState);
+    procedure ResearchProduitsEdtKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure ApplicationEvents1ShortCut(var Msg: TWMKey; var Handled: Boolean);
   private
     procedure GettingData;
@@ -151,7 +149,7 @@ type
   public
     { Public declarations }
 
-    CodePToUseOut : Integer  ;
+    CodePToUseOut: Integer;
 // const   CodePToUseOut = 0;
   end;
 
@@ -160,9 +158,9 @@ var
 
 implementation
 
-
-uses MMSystem,Threading,
-  UMainF, UProduitGestion, USplashPrinting, USplash, UWorkingSplash;
+uses
+  MMSystem, Threading, UMainF, UProduitGestion, USplashPrinting, USplash,
+  UWorkingSplash;
 
 {$R *.dfm}
 
@@ -170,108 +168,97 @@ uses MMSystem,Threading,
 
 procedure TProduitsListF.Select_ALL;
 begin
-MainForm.ProduitTable.DisableControls;
-MainForm.ProduitTable.Active:= False;
-MainForm.ProduitTable.SQL.clear;
-mainform.ProduitTable.sql.Text:='SELECT * FROM produit ';
-MainForm.ProduitTable.Active:= True;
-MainForm.ProduitTable.EnableControls;
+  MainForm.ProduitTable.DisableControls;
+  MainForm.ProduitTable.Active := False;
+  MainForm.ProduitTable.SQL.clear;
+  mainform.ProduitTable.sql.Text := 'SELECT * FROM produit ';
+  MainForm.ProduitTable.Active := True;
+  MainForm.ProduitTable.EnableControls;
 end;
-
 
 procedure TProduitsListF.Select_PRIX_ACHAT_WITH;
 begin
-MainForm.ProduitTable.DisableControls;
-MainForm.ProduitTable.Active:= False;
-MainForm.ProduitTable.SQL.clear;
-mainform.ProduitTable.sql.Text:='SELECT * FROM produit WHERE prixht_p <> ''0'' ';
-MainForm.ProduitTable.Active:= True;
-MainForm.ProduitTable.EnableControls;
+  MainForm.ProduitTable.DisableControls;
+  MainForm.ProduitTable.Active := False;
+  MainForm.ProduitTable.SQL.clear;
+  mainform.ProduitTable.sql.Text := 'SELECT * FROM produit WHERE prixht_p <> ''0'' ';
+  MainForm.ProduitTable.Active := True;
+  MainForm.ProduitTable.EnableControls;
 end;
-
 
 procedure TProduitsListF.Select_PRIX_ACHAT_NOT;
 begin
-MainForm.ProduitTable.DisableControls;
-MainForm.ProduitTable.Active:= False;
-MainForm.ProduitTable.SQL.clear;
-mainform.ProduitTable.sql.Text:='SELECT * FROM produit WHERE prixht_p = ''0'' ';
-MainForm.ProduitTable.Active:= True;
-MainForm.ProduitTable.EnableControls;
+  MainForm.ProduitTable.DisableControls;
+  MainForm.ProduitTable.Active := False;
+  MainForm.ProduitTable.SQL.clear;
+  mainform.ProduitTable.sql.Text := 'SELECT * FROM produit WHERE prixht_p = ''0'' ';
+  MainForm.ProduitTable.Active := True;
+  MainForm.ProduitTable.EnableControls;
 end;
 
 procedure TProduitsListF.Select_PRIX_VENT_WITH;
 begin
-MainForm.ProduitTable.DisableControls;
-MainForm.ProduitTable.Active:= False;
-MainForm.ProduitTable.SQL.clear;
-mainform.ProduitTable.sql.Text:=
-'SELECT * FROM produit WHERE prixvd_p <> ''0'' OR prixvr_p <> ''0'' OR prixvg_p <> ''0'' OR prixva_p <> ''0'' OR prixva2_p <> ''0'' ';
-MainForm.ProduitTable.Active:= True;
-MainForm.ProduitTable.EnableControls;
+  MainForm.ProduitTable.DisableControls;
+  MainForm.ProduitTable.Active := False;
+  MainForm.ProduitTable.SQL.clear;
+  mainform.ProduitTable.sql.Text := 'SELECT * FROM produit WHERE prixvd_p <> ''0'' OR prixvr_p <> ''0'' OR prixvg_p <> ''0'' OR prixva_p <> ''0'' OR prixva2_p <> ''0'' ';
+  MainForm.ProduitTable.Active := True;
+  MainForm.ProduitTable.EnableControls;
 end;
-
 
 procedure TProduitsListF.Select_PRIX_VENT_NOT;
 begin
-MainForm.ProduitTable.DisableControls;
-MainForm.ProduitTable.Active:= False;
-MainForm.ProduitTable.SQL.clear;
-mainform.ProduitTable.sql.Text:=
-'SELECT * FROM produit WHERE prixvd_p = ''0'' AND prixvr_p = ''0'' AND prixvg_p = ''0'' AND prixva_p = ''0'' AND prixva2_p = ''0'' ';
-MainForm.ProduitTable.Active:= True;
-MainForm.ProduitTable.EnableControls;
+  MainForm.ProduitTable.DisableControls;
+  MainForm.ProduitTable.Active := False;
+  MainForm.ProduitTable.SQL.clear;
+  mainform.ProduitTable.sql.Text := 'SELECT * FROM produit WHERE prixvd_p = ''0'' AND prixvr_p = ''0'' AND prixvg_p = ''0'' AND prixva_p = ''0'' AND prixva2_p = ''0'' ';
+  MainForm.ProduitTable.Active := True;
+  MainForm.ProduitTable.EnableControls;
 end;
-
-
 
 procedure TProduitsListF.Select_0_TVA;
 begin
-MainForm.ProduitTable.DisableControls;
-MainForm.ProduitTable.Active:= False;
-MainForm.ProduitTable.SQL.clear;
-mainform.ProduitTable.sql.Text:='SELECT * FROM produit WHERE tva_p = ''0'' ';
-MainForm.ProduitTable.Active:= True;
-MainForm.ProduitTable.EnableControls;
+  MainForm.ProduitTable.DisableControls;
+  MainForm.ProduitTable.Active := False;
+  MainForm.ProduitTable.SQL.clear;
+  mainform.ProduitTable.sql.Text := 'SELECT * FROM produit WHERE tva_p = ''0'' ';
+  MainForm.ProduitTable.Active := True;
+  MainForm.ProduitTable.EnableControls;
 end;
-
-
 
 procedure TProduitsListF.Select_7_TVA;
 begin
-MainForm.ProduitTable.DisableControls;
-MainForm.ProduitTable.Active:= False;
-MainForm.ProduitTable.SQL.clear;
-mainform.ProduitTable.sql.Text:='SELECT * FROM produit WHERE tva_p = ''7'' ';
-MainForm.ProduitTable.Active:= True;
-MainForm.ProduitTable.EnableControls;
+  MainForm.ProduitTable.DisableControls;
+  MainForm.ProduitTable.Active := False;
+  MainForm.ProduitTable.SQL.clear;
+  mainform.ProduitTable.sql.Text := 'SELECT * FROM produit WHERE tva_p = ''7'' ';
+  MainForm.ProduitTable.Active := True;
+  MainForm.ProduitTable.EnableControls;
 end;
-
 
 procedure TProduitsListF.Select_17_TVA;
 begin
-MainForm.ProduitTable.DisableControls;
-MainForm.ProduitTable.Active:= False;
-MainForm.ProduitTable.SQL.clear;
-mainform.ProduitTable.sql.Text:='SELECT * FROM produit WHERE tva_p = ''19'' ';
-MainForm.ProduitTable.Active:= True;
-MainForm.ProduitTable.EnableControls;
+  MainForm.ProduitTable.DisableControls;
+  MainForm.ProduitTable.Active := False;
+  MainForm.ProduitTable.SQL.clear;
+  mainform.ProduitTable.sql.Text := 'SELECT * FROM produit WHERE tva_p = ''19'' ';
+  MainForm.ProduitTable.Active := True;
+  MainForm.ProduitTable.EnableControls;
 end;
 
-
-procedure TProduitsListF.Select_StoCK_Dispo;              
+procedure TProduitsListF.Select_StoCK_Dispo;
 begin
 //  MainForm.ProduitTable.Filtered := False;
 //  MainForm.ProduitTable.Filter:='[QutDispo] > 0 ';
 //  MainForm.ProduitTable.Filtered:=True;
 
 
-MainForm.ProduitTable.DisableControls;
-MainForm.ProduitTable.Active:= False;
-MainForm.ProduitTable.SQL.clear;
-mainform.ProduitTable.sql.Text:='SELECT * FROM produit WHERE (qut_p + qutini_p) > ''0'' ';
-MainForm.ProduitTable.Active:= True;
-MainForm.ProduitTable.EnableControls;
+  MainForm.ProduitTable.DisableControls;
+  MainForm.ProduitTable.Active := False;
+  MainForm.ProduitTable.SQL.clear;
+  mainform.ProduitTable.sql.Text := 'SELECT * FROM produit WHERE (qut_p + qutini_p) > ''0'' ';
+  MainForm.ProduitTable.Active := True;
+  MainForm.ProduitTable.EnableControls;
 
 end;
 
@@ -281,30 +268,28 @@ begin
 //  MainForm.ProduitTable.Filter:='[QutDispo] <= 0 ';
 //  MainForm.ProduitTable.Filtered:=True;
 
-MainForm.ProduitTable.DisableControls;
-MainForm.ProduitTable.Active:= False;
-MainForm.ProduitTable.SQL.clear;
-mainform.ProduitTable.sql.Text:='SELECT * FROM produit WHERE (qut_p + qutini_p) <= ''0'' ';
-MainForm.ProduitTable.Active:= True;
-MainForm.ProduitTable.EnableControls;
+  MainForm.ProduitTable.DisableControls;
+  MainForm.ProduitTable.Active := False;
+  MainForm.ProduitTable.SQL.clear;
+  mainform.ProduitTable.sql.Text := 'SELECT * FROM produit WHERE (qut_p + qutini_p) <= ''0'' ';
+  MainForm.ProduitTable.Active := True;
+  MainForm.ProduitTable.EnableControls;
 
 end;
 
-
 procedure TProduitsListF.FilteredColor;
 begin
- FilterBVLivBtn.Color:= $0077D90E; 
- FilterBVLivBtn.ColorHot:=  $0080FF00;
- FilterBVLivBtn.BorderHotColor:= $00EFE9E8;
+  FilterBVLivBtn.Color := $0077D90E;
+  FilterBVLivBtn.ColorHot := $0080FF00;
+  FilterBVLivBtn.BorderHotColor := $00EFE9E8;
 end;
 
 procedure TProduitsListF.NOT_FilteredColor;
 begin
- FilterBVLivBtn.Color:= $00EFE9E8;
- FilterBVLivBtn.ColorHot:= $00EFE9E8; 
- FilterBVLivBtn.BorderHotColor:= $004735F9;
+  FilterBVLivBtn.Color := $00EFE9E8;
+  FilterBVLivBtn.ColorHot := $00EFE9E8;
+  FilterBVLivBtn.BorderHotColor := $004735F9;
 end;
-
 
 function GridSelectAll(ProduitsListDBGridEh: TDBGridEh): Longint;
 begin
@@ -331,31 +316,31 @@ procedure TProduitsListF.AddProduitsBtnClick(Sender: TObject);
 var
   codeP, refnum: integer;
 begin
-    MainForm.ProduitTable.DisableControls;
+  MainForm.ProduitTable.DisableControls;
 //    MainForm.ProduitTable.IndexesActive:= True;
 
- if Assigned (ProduitsListF) then
-   begin
+  if Assigned(ProduitsListF) then
+  begin
 //    ClearFilterBVLivPMenuClick(Sender);
 
-        MainForm.ProduitTable.Filtered:=False;
-        ResearchProduitsEdt.Text:='';
+    MainForm.ProduitTable.Filtered := False;
+    ResearchProduitsEdt.Text := '';
 //        Select_ALL;
-        sImage1.Visible:= False;
+    sImage1.Visible := False;
       //  sImage2.Visible:= False;
       //  sImage3.Visible:= False;
       //  sImage4.Visible:= False;
-        TVAFilterLbl.Visible:= False;
-        NOT_FilteredColor;
-        FilterBVLivBtn.ImageIndex:=49;
-        ClearValideFilterBVLivPMenu.Checked := True;
-        ClearRegleFilterBVLivPMenu.Checked := True;
-        ClearMPFilterBVLivPMenu.Checked := True;
-        ClearTVAFilterPMenu.Checked := True;
+    TVAFilterLbl.Visible := False;
+    NOT_FilteredColor;
+    FilterBVLivBtn.ImageIndex := 49;
+    ClearValideFilterBVLivPMenu.Checked := True;
+    ClearRegleFilterBVLivPMenu.Checked := True;
+    ClearMPFilterBVLivPMenu.Checked := True;
+    ClearTVAFilterPMenu.Checked := True;
 
-        ProduitsListDBGridEh.Columns[9].Visible := False;
-        ProduitsListDBGridEh.Columns[10].Visible := False;
-        ProduitsListDBGridEh.Columns[11].Visible := False;
+    ProduitsListDBGridEh.Columns[9].Visible := False;
+    ProduitsListDBGridEh.Columns[10].Visible := False;
+    ProduitsListDBGridEh.Columns[11].Visible := False;
 
 
 
@@ -364,19 +349,17 @@ begin
 
 
    //thise is to back the same row if we didnt add anything
-   if not  MainForm.ProduitTable.IsEmpty then
-   begin
-   CodePToUseOut :=   MainForm.ProduitTable.FieldByName('code_p').AsInteger;
-   end;
+    if not MainForm.ProduitTable.IsEmpty then
+    begin
+      CodePToUseOut := MainForm.ProduitTable.FieldByName('code_p').AsInteger;
+    end;
 
-   end;
+  end;
 
 //-------- use this code to disable contron o dbgrid when adding or editing in the background-----//
 
 
-
-
-  MainForm.ProduitTable.Filtered:=False;
+  MainForm.ProduitTable.Filtered := False;
   MainForm.ProduitTable.IndexesActive := True;
 //-------- use this code to start creating th form-----//
   ProduitGestionF := TproduitGestionF.Create(ProduitsListF);
@@ -385,24 +368,24 @@ begin
   begin
     MainForm.ProduitTable.insert;
     MainForm.ProduitTable.FieldValues['code_p'] := 1;
-   MainForm.ProduitTable.post;
+    MainForm.ProduitTable.post;
   end
   else
   begin
-           MainForm.SQLQuery.Active:=false;
-         MainForm.SQLQuery.SQL.Clear;
-         MainForm.SQLQuery.SQL.Text:='SELECT code_p FROM produit ORDER BY code_p' ;
-         MainForm.SQLQuery.Active:=True;
-         MainForm.SQLQuery.Last;
+    MainForm.SQLQuery.Active := false;
+    MainForm.SQLQuery.SQL.Clear;
+    MainForm.SQLQuery.SQL.Text := 'SELECT code_p FROM produit ORDER BY code_p';
+    MainForm.SQLQuery.Active := True;
+    MainForm.SQLQuery.Last;
 
     MainForm.ProduitTable.Last;
     codeP := MainForm.SQLQuery.FieldValues['code_p'];
     MainForm.ProduitTable.insert;
     MainForm.ProduitTable.FieldValues['code_p'] := codeP + 1;
-   MainForm.ProduitTable.post;
+    MainForm.ProduitTable.post;
 
-     MainForm.SQLQuery.Active:=false;
-         MainForm.SQLQuery.SQL.Clear;
+    MainForm.SQLQuery.Active := false;
+    MainForm.SQLQuery.SQL.Clear;
   end;
 //------this code is to sent ne reference produit using P00001----
   refnum := MainForm.ProduitTable.FieldValues['code_p'];
@@ -418,113 +401,103 @@ begin
   produitGestionF.Show;
   produitGestionF.NameproduitGEdt.SetFocus;
   produitGestionF.OKproduitGBtn.Tag := 0;
-  produitGestionF.OKproduitGBtn.Enabled:=False;
+  produitGestionF.OKproduitGBtn.Enabled := False;
   ProduitGestionF.Tag := 0;
 
 //   MainForm.ProduitTable.IndexesActive:= False;
 end;
 
 procedure TProduitsListF.DeleteProduitsBtnClick(Sender: TObject);
-Var NomP: String;
+var
+  NomP: string;
 begin
 
 // ------ this code is to check if the produit are in bons if it is the user cant delte it ------------
-  MainForm.SQLQuery.Active:= False;
+  MainForm.SQLQuery.Active := False;
   MainForm.SQLQuery.SQL.Clear;
-  MainForm.SQLQuery.SQL.Text:=
-  'select * '
- +  'from (   '
- +   'select code_p as code_p from bona_fac_list '
- +   'union all '
- +   'select code_p from bona_rec_list '
- +   'union all '
- +   'select code_p from bonv_ctr_list '
- +   'union all '
- +   'select code_p from bonv_fac_list '
- +   'union all '
- +   'select code_p from bonv_liv_list '
- +     ') a '
- +     'where code_p = '+IntToStr(MainForm.ProduitTable.FieldByName('code_p').AsInteger) ;
+  MainForm.SQLQuery.SQL.Text := 'select * ' + 'from (   ' + 'select code_p as code_p from bona_fac_list ' + 'union all ' + 'select code_p from bona_rec_list ' + 'union all ' + 'select code_p from bonv_ctr_list ' + 'union all ' + 'select code_p from bonv_fac_list ' + 'union all ' + 'select code_p from bonv_liv_list ' + ') a ' + 'where code_p = ' + IntToStr(MainForm.ProduitTable.FieldByName('code_p').AsInteger);
 
-  MainForm.SQLQuery.Active:= True;
+  MainForm.SQLQuery.Active := True;
 
- if MainForm.SQLQuery.IsEmpty then
- begin
-
-  if NOT (MainForm.ProduitTable.IsEmpty) Then
+  if MainForm.SQLQuery.IsEmpty then
   begin
-    FSplashAddUnite:=TFSplashAddUnite.Create(ProduitsListF);
-    FSplashAddUnite.Width:=350;
-    FSplashAddUnite.Height:=160;
-    FSplashAddUnite.Panel1.Color:=  $004735F9;
-    FSplashAddUnite.LineP.Top:= (FSplashAddUnite.Height) - 44  ;
-    FSplashAddUnite.OKAddUniteSBtn.Top:= (FSplashAddUnite.Height) - 36;
-    FSplashAddUnite.Image1.Left:= 1;
-    FSplashAddUnite.OKAddUniteSBtn.ImageIndex:=17;
-    FSplashAddUnite.CancelAddUniteSBtn.Top:=(FSplashAddUnite.Height) - 36;
-    FSplashAddUnite.OKAddUniteSBtn.Left:=(FSplashAddUnite.Width div 4) - (FSplashAddUnite.OKAddUniteSBtn.Width div 2) + 18;
-    FSplashAddUnite.CancelAddUniteSBtn.Left:= ((FSplashAddUnite.Width div 2 )+((FSplashAddUnite.Width div 2)div 2 ) ) - (FSplashAddUnite.CancelAddUniteSBtn.Width div 2) - 18;
-    if  MainForm.ProduitTable.FieldValues['nom_p'] <> NULL then
+
+    if not (MainForm.ProduitTable.IsEmpty) then
     begin
-    NomP:=   MainForm.ProduitTable.FieldValues['nom_p'];
-    end else begin
-      NomP:='';
-    end;
-    FSplashAddUnite.NameAddUniteSLbl.Caption:='Ėtes-vous sûr de vouloir supprimer le Produit : '+ sLineBreak +  sLineBreak + QuotedStr(NomP);
-    FSplashAddUnite.NameAddUniteSLbl.Top:= (FSplashAddUnite.Panel1.Height) + 10 ;
-    FSplashAddUnite.NameAddUniteSLbl.Font.Height:=16;
-    FSplashAddUnite.Image1.Visible:=True;
-    FSplashAddUnite.Image1.Top:= (FSplashAddUnite.Height div 2) - (FSplashAddUnite.Image1.Height div 2 ) ;
-    FSplashAddUnite.FormCaptionAddUniteSLbl.Caption:='Suppression de Produit';
-    FSplashAddUnite.FormCaptionAddUniteSLbl.Font.Color:=clWhite;
-    FSplashAddUnite.FormCaptionAddUniteSLbl.Left:=( FSplashAddUnite.Width div 2) -  ( FSplashAddUnite.FormCaptionAddUniteSLbl.Width div 2);
-    FSplashAddUnite.NameAddUniteSEdt.Visible:=False;
-    FSplashAddUnite.RequiredStarAddUniteSLbl.Visible:=False;
-    FSplashAddUnite.NameAddUniteSLbl.Left:=( FSplashAddUnite.Width div 2) - ( FSplashAddUnite.NameAddUniteSLbl.Width div 2) + (FSplashAddUnite.Image1.Width div 2);
-    FSplashAddUnite.Left:=  (MainForm.Left + MainForm.Width div 2) - (FSplashAddUnite.Width div 2);
-    FSplashAddUnite.Top:=   MainForm.Top + 5;
-
-    AnimateWindow(FSplashAddUnite.Handle, 175, AW_VER_POSITIVE OR AW_SLIDE OR AW_ACTIVATE );
-    FSplashAddUnite.Show;
-    FSplashAddUnite.OKAddUniteSBtn.Enabled:=True;
-    FSplashAddUnite.OKAddUniteSBtn.Tag:= 4 ;
-
-  end;
-
-  end else
+      FSplashAddUnite := TFSplashAddUnite.Create(ProduitsListF);
+      FSplashAddUnite.Width := 350;
+      FSplashAddUnite.Height := 160;
+      FSplashAddUnite.Panel1.Color := $004735F9;
+      FSplashAddUnite.LineP.Top := (FSplashAddUnite.Height) - 44;
+      FSplashAddUnite.OKAddUniteSBtn.Top := (FSplashAddUnite.Height) - 36;
+      FSplashAddUnite.Image1.Left := 1;
+      FSplashAddUnite.OKAddUniteSBtn.ImageIndex := 17;
+      FSplashAddUnite.CancelAddUniteSBtn.Top := (FSplashAddUnite.Height) - 36;
+      FSplashAddUnite.OKAddUniteSBtn.Left := (FSplashAddUnite.Width div 4) - (FSplashAddUnite.OKAddUniteSBtn.Width div 2) + 18;
+      FSplashAddUnite.CancelAddUniteSBtn.Left := ((FSplashAddUnite.Width div 2) + ((FSplashAddUnite.Width div 2) div 2)) - (FSplashAddUnite.CancelAddUniteSBtn.Width div 2) - 18;
+      if MainForm.ProduitTable.FieldValues['nom_p'] <> NULL then
       begin
-         sndPlaySound('C:\Windows\Media\chord.wav', SND_NODEFAULT Or SND_ASYNC Or  SND_RING);
+        NomP := MainForm.ProduitTable.FieldValues['nom_p'];
+      end
+      else
+      begin
+        NomP := '';
+      end;
+      FSplashAddUnite.NameAddUniteSLbl.Caption := 'Ėtes-vous sûr de vouloir supprimer le Produit : ' + sLineBreak + sLineBreak + QuotedStr(NomP);
+      FSplashAddUnite.NameAddUniteSLbl.Top := (FSplashAddUnite.Panel1.Height) + 10;
+      FSplashAddUnite.NameAddUniteSLbl.Font.Height := 16;
+      FSplashAddUnite.Image1.Visible := True;
+      FSplashAddUnite.Image1.Top := (FSplashAddUnite.Height div 2) - (FSplashAddUnite.Image1.Height div 2);
+      FSplashAddUnite.FormCaptionAddUniteSLbl.Caption := 'Suppression de Produit';
+      FSplashAddUnite.FormCaptionAddUniteSLbl.Font.Color := clWhite;
+      FSplashAddUnite.FormCaptionAddUniteSLbl.Left := (FSplashAddUnite.Width div 2) - (FSplashAddUnite.FormCaptionAddUniteSLbl.Width div 2);
+      FSplashAddUnite.NameAddUniteSEdt.Visible := False;
+      FSplashAddUnite.RequiredStarAddUniteSLbl.Visible := False;
+      FSplashAddUnite.NameAddUniteSLbl.Left := (FSplashAddUnite.Width div 2) - (FSplashAddUnite.NameAddUniteSLbl.Width div 2) + (FSplashAddUnite.Image1.Width div 2);
+      FSplashAddUnite.Left := (MainForm.Left + MainForm.Width div 2) - (FSplashAddUnite.Width div 2);
+      FSplashAddUnite.Top := MainForm.Top + 5;
+
+      AnimateWindow(FSplashAddUnite.Handle, 175, AW_VER_POSITIVE or AW_SLIDE or AW_ACTIVATE);
+      FSplashAddUnite.Show;
+      FSplashAddUnite.OKAddUniteSBtn.Enabled := True;
+      FSplashAddUnite.OKAddUniteSBtn.Tag := 4;
+
+    end;
+
+  end
+  else
+  begin
+    sndPlaySound('C:\Windows\Media\chord.wav', SND_NODEFAULT or SND_ASYNC or SND_RING);
 //         TTask.Run ( procedure
 //         begin
-          FSplash := TFSplash.Create(nil);
-           try
-             FSplash.Left := MainForm.Width - FSplash.Width - 15 ;                   
-             FSplash.Top := (MainForm.Height - FSplash.Height ) - 15 ;
-              FSplash.Label1.Font.Height:=21;
-             FSplash.Label1.Caption:='Suppressions ne sont pas autorisés!';
-             FSplash.Color:= $004735F9;
-             AnimateWindow(FSplash.Handle, 100, AW_HOR_NEGATIVE OR AW_SLIDE OR AW_ACTIVATE);
-             sleep(700);
-             AnimateWindow(FSplash.Handle, 100, AW_HOR_POSITIVE OR
-               AW_SLIDE OR AW_HIDE);
-           finally
-             FSplash.free;
-           end;
+    FSplash := TFSplash.Create(nil);
+    try
+      FSplash.Left := MainForm.Width - FSplash.Width - 15;
+      FSplash.Top := (MainForm.Height - FSplash.Height) - 15;
+      FSplash.Label1.Font.Height := 21;
+      FSplash.Label1.Caption := 'Suppressions ne sont pas autorisés!';
+      FSplash.Color := $004735F9;
+      AnimateWindow(FSplash.Handle, 100, AW_HOR_NEGATIVE or AW_SLIDE or AW_ACTIVATE);
+      sleep(700);
+      AnimateWindow(FSplash.Handle, 100, AW_HOR_POSITIVE or AW_SLIDE or AW_HIDE);
+    finally
+      FSplash.free;
+    end;
 //         end);
-      end;
+  end;
      //--dicconet when finish the quiry ---
-      MainForm.SQLQuery.Active:= False;
+  MainForm.SQLQuery.Active := False;
 end;
 
 procedure TProduitsListF.e1Click(Sender: TObject);
 begin
- ProduitListSaveDg.FileName:= 'Liste Des Produits';
-if ProduitListSaveDg.Execute then
- begin
+  ProduitListSaveDg.FileName := 'Liste Des Produits';
+  if ProduitListSaveDg.Execute then
+  begin
 
-  ExportDBGridEhToXlsx(ProduitsListDBGridEh,ProduitListSaveDg.FileName+'.xlsx',[]);
+    ExportDBGridEhToXlsx(ProduitsListDBGridEh, ProduitListSaveDg.FileName + '.xlsx', []);
 //  GetDir(0,Path);
-  ShellExecute(Handle, nil, PChar(ProduitListSaveDg.FileName + '.xlsx'), nil, nil, SW_SHOWNORMAL);
+    ShellExecute(Handle, nil, PChar(ProduitListSaveDg.FileName + '.xlsx'), nil, nil, SW_SHOWNORMAL);
 
   end;
 
@@ -544,7 +517,7 @@ var
   S: TMemoryStream;
   Jpg: TJPEGImage;
 begin
-  if NOT MainForm.ProduitTable.IsEmpty then
+  if not MainForm.ProduitTable.IsEmpty then
   begin
       //----------------- Show the splash screan for the produit familly to add new one---------//
     ProduitGestionF := TProduitGestionF.Create(ProduitsListF);
@@ -567,17 +540,17 @@ begin
       begin
         if (fieldbyname('refer_p').Value <> null) then
         begin
-        ProduitGestionF.RefProduitGEdt.Text := fieldbyname('refer_p').Value;
+          ProduitGestionF.RefProduitGEdt.Text := fieldbyname('refer_p').Value;
         end;
         if (fieldbyname('codebar_p').Value <> null) then
         begin
-        ProduitGestionF.CodeBarProduitGEdt.Text := fieldbyname('codebar_p').Value;
+          ProduitGestionF.CodeBarProduitGEdt.Text := fieldbyname('codebar_p').Value;
         end;
         if (fieldbyname('nom_p').Value <> null) then
         begin
-        ProduitGestionF.NameProduitGEdt.Text := fieldbyname('nom_p').Value;
+          ProduitGestionF.NameProduitGEdt.Text := fieldbyname('nom_p').Value;
          //----- this is to move the coursour to the last  --------------------------------------------------------
-         ProduitGestionF.NameProduitGEdt.SelStart :=  ProduitGestionF.NameProduitGEdt.GetTextLen ;
+          ProduitGestionF.NameProduitGEdt.SelStart := ProduitGestionF.NameProduitGEdt.GetTextLen;
         end;
         //	FamP:= fieldbyname('code_famp').Value;
         if (fieldbyname('famp').Value <> null) then
@@ -604,114 +577,126 @@ begin
 
         if FieldValues['prixht_p'] <> 0 then
         begin
-        ProduitGestionF.PrixAHTProduitEdt.Text := CurrToStrF(FieldValues['prixht_p'], ffNumber, 2);
-        end else
-          begin
-           ProduitGestionF.PrixAHTProduitEdt.Text :='';
-          end;
+          ProduitGestionF.PrixAHTProduitEdt.Text := CurrToStrF(FieldValues['prixht_p'], ffNumber, 2);
+        end
+        else
+        begin
+          ProduitGestionF.PrixAHTProduitEdt.Text := '';
+        end;
 
         if FieldValues['PrixATTC'] <> 0 then
         begin
-        ProduitGestionF.PrixATTCProduitEdt.Text := CurrToStrF(FieldValues['PrixATTC'], ffNumber, 2);
-        end else
-            begin
-            ProduitGestionF.PrixATTCProduitEdt.Text := '';
-            end;
+          ProduitGestionF.PrixATTCProduitEdt.Text := CurrToStrF(FieldValues['PrixATTC'], ffNumber, 2);
+        end
+        else
+        begin
+          ProduitGestionF.PrixATTCProduitEdt.Text := '';
+        end;
 
         if FieldValues['prixvd_p'] <> 0 then
         begin
-        ProduitGestionF.PrixVHTDProduitEdt.Text := CurrToStrF(fieldbyname('prixvd_p').Value, ffNumber, 2);
-        end else
-            begin
-              ProduitGestionF.PrixVHTDProduitEdt.Text :='';
-            end;
+          ProduitGestionF.PrixVHTDProduitEdt.Text := CurrToStrF(fieldbyname('prixvd_p').Value, ffNumber, 2);
+        end
+        else
+        begin
+          ProduitGestionF.PrixVHTDProduitEdt.Text := '';
+        end;
 
         if FieldValues['PrixVTTCD'] <> 0 then
         begin
-        ProduitGestionF.PrixVTTCDProduitEdt.Text := CurrToStrF(fieldbyname('PrixVTTCD').Value, ffNumber, 2);
-        end else
-            begin
-             ProduitGestionF.PrixVTTCDProduitEdt.Text :='';
-            end;
+          ProduitGestionF.PrixVTTCDProduitEdt.Text := CurrToStrF(fieldbyname('PrixVTTCD').Value, ffNumber, 2);
+        end
+        else
+        begin
+          ProduitGestionF.PrixVTTCDProduitEdt.Text := '';
+        end;
 
         if FieldValues['prixvr_p'] <> 0 then
         begin
-        ProduitGestionF.PrixVHTRProduitEdt.Text := CurrToStrF(fieldbyname('prixvr_p').Value, ffNumber, 2);
-        end else
-            begin
-            ProduitGestionF.PrixVHTRProduitEdt.Text := '';
-            end;
+          ProduitGestionF.PrixVHTRProduitEdt.Text := CurrToStrF(fieldbyname('prixvr_p').Value, ffNumber, 2);
+        end
+        else
+        begin
+          ProduitGestionF.PrixVHTRProduitEdt.Text := '';
+        end;
 
         if FieldValues['PrixVTTCR'] <> 0 then
         begin
-        ProduitGestionF.PrixVTTCRProduitEdt.Text := CurrToStrF(fieldbyname('PrixVTTCR').Value, ffNumber, 2);
-        end else
-            begin
-            ProduitGestionF.PrixVTTCRProduitEdt.Text :='';
-            end;
+          ProduitGestionF.PrixVTTCRProduitEdt.Text := CurrToStrF(fieldbyname('PrixVTTCR').Value, ffNumber, 2);
+        end
+        else
+        begin
+          ProduitGestionF.PrixVTTCRProduitEdt.Text := '';
+        end;
 
         if FieldValues['prixvg_p'] <> 0 then
         begin
-        ProduitGestionF.PrixVHTGProduitEdt.Text := CurrToStrF(fieldbyname('prixvg_p').Value, ffNumber, 2);
-        end else
-            begin
-            ProduitGestionF.PrixVHTGProduitEdt.Text := '';
-            end;
+          ProduitGestionF.PrixVHTGProduitEdt.Text := CurrToStrF(fieldbyname('prixvg_p').Value, ffNumber, 2);
+        end
+        else
+        begin
+          ProduitGestionF.PrixVHTGProduitEdt.Text := '';
+        end;
 
         if FieldValues['PrixVTTCG'] <> 0 then
         begin
-        ProduitGestionF.PrixVTTCGProduitEdt.Text := CurrToStrF(fieldbyname('PrixVTTCG').Value, ffNumber, 2);
-        end else
-            begin
-              ProduitGestionF.PrixVTTCGProduitEdt.Text :='';
-            end;
+          ProduitGestionF.PrixVTTCGProduitEdt.Text := CurrToStrF(fieldbyname('PrixVTTCG').Value, ffNumber, 2);
+        end
+        else
+        begin
+          ProduitGestionF.PrixVTTCGProduitEdt.Text := '';
+        end;
 
         if FieldValues['prixva_p'] <> 0 then
         begin
-        ProduitGestionF.PrixVHTA1ProduitEdt.Text := CurrToStrF(fieldbyname('prixva_p').Value, ffNumber, 2);
-        end else
-            begin
-            ProduitGestionF.PrixVHTA1ProduitEdt.Text :='';
-            end;
+          ProduitGestionF.PrixVHTA1ProduitEdt.Text := CurrToStrF(fieldbyname('prixva_p').Value, ffNumber, 2);
+        end
+        else
+        begin
+          ProduitGestionF.PrixVHTA1ProduitEdt.Text := '';
+        end;
 
         if FieldValues['PrixVTTCA'] <> 0 then
         begin
-        ProduitGestionF.PrixVTTCA1ProduitEdt.Text := CurrToStrF(fieldbyname('PrixVTTCA').Value, ffNumber, 2);
-        end else
-            begin
-             ProduitGestionF.PrixVTTCA1ProduitEdt.Text := '';
-            end;
+          ProduitGestionF.PrixVTTCA1ProduitEdt.Text := CurrToStrF(fieldbyname('PrixVTTCA').Value, ffNumber, 2);
+        end
+        else
+        begin
+          ProduitGestionF.PrixVTTCA1ProduitEdt.Text := '';
+        end;
 
         if FieldValues['prixva2_p'] <> 0 then
         begin
-        ProduitGestionF.PrixVHTA2ProduitEdt.Text := CurrToStrF(fieldbyname('prixva2_p').Value, ffNumber, 2);
-        end else
-            begin
-            ProduitGestionF.PrixVHTA2ProduitEdt.Text :='';
-            end;
+          ProduitGestionF.PrixVHTA2ProduitEdt.Text := CurrToStrF(fieldbyname('prixva2_p').Value, ffNumber, 2);
+        end
+        else
+        begin
+          ProduitGestionF.PrixVHTA2ProduitEdt.Text := '';
+        end;
 
         if FieldValues['PrixVTTCA2'] <> 0 then
         begin
-        ProduitGestionF.PrixVTTCA2ProduitEdt.Text := CurrToStrF(fieldbyname('PrixVTTCA2').Value, ffNumber, 2);
-        end else
-            begin
-            ProduitGestionF.PrixVTTCA2ProduitEdt.Text :='';
-            end;
+          ProduitGestionF.PrixVTTCA2ProduitEdt.Text := CurrToStrF(fieldbyname('PrixVTTCA2').Value, ffNumber, 2);
+        end
+        else
+        begin
+          ProduitGestionF.PrixVTTCA2ProduitEdt.Text := '';
+        end;
 
         //----- use this code to refresh all the prices -----//
         if FieldValues['prixht_p'] <> 0 then
-       begin
-        ProduitGestionF.PrixATTCProduitEdtExit(Sender); //----
+        begin
+          ProduitGestionF.PrixATTCProduitEdtExit(Sender); //----
         end;
        //----------------------------------------------------//
     //    if (fieldbyname('qut_p').Value <> null) then
         begin
-          ProduitGestionF.StockActuelProduitEdt.Text := FloatToStrF(((fieldbyname('qut_p').Value) + (fieldbyname('qutini_p').Value)), ffNumber,14, 2);
-          ProduitGestionF.StockINProduitEdt.Text := FloatToStrF(fieldbyname('qutini_p').Value, ffNumber,14, 2);
+          ProduitGestionF.StockActuelProduitEdt.Text := FloatToStrF(((fieldbyname('qut_p').Value) + (fieldbyname('qutini_p').Value)), ffNumber, 14, 2);
+          ProduitGestionF.StockINProduitEdt.Text := FloatToStrF(fieldbyname('qutini_p').Value, ffNumber, 14, 2);
         end;
     //    if (fieldbyname('alertqut_p').Value <> null) then
     //    begin
-          ProduitGestionF.StockAlertProduitEdt.Text := IntToStr(fieldbyname('alertqut_p').Value);
+        ProduitGestionF.StockAlertProduitEdt.Text := IntToStr(fieldbyname('alertqut_p').Value);
    //     end;
           //	FourP:= fieldbyname('code_f').Value;
         if (fieldbyname('fourp').Value <> null) then
@@ -720,19 +705,19 @@ begin
     //    end;
 //        if (fieldbyname('qutmin_p').Value <> null) then
    //     begin
-          ProduitGestionF.MinStockProduitGCbx.Text := FloatToStrF(fieldbyname('qutmin_p').Value, ffNumber,14, 2);
+        ProduitGestionF.MinStockProduitGCbx.Text := FloatToStrF(fieldbyname('qutmin_p').Value, ffNumber, 14, 2);
   //      end;
    //     if (fieldbyname('qutmax_p').Value <> null) then
    //     begin
-          ProduitGestionF.MaxStockProduitGCbx.Text := FloatToStrF(fieldbyname('qutmax_p').Value, ffNumber,14, 2);
+        ProduitGestionF.MaxStockProduitGCbx.Text := FloatToStrF(fieldbyname('qutmax_p').Value, ffNumber, 14, 2);
     //    end;
         if (fieldbyname('local').Value <> null) then
         begin
           ProduitGestionF.LocalisationProduitGCbx.Text := fieldbyname('local').Value;
         end;
-         if (fieldbyname('obser_p').Value <> null) then
+        if (fieldbyname('obser_p').Value <> null) then
         begin
-        ProduitGestionF.ObserProduitGMem.Text := fieldbyname('obser_p').Value;
+          ProduitGestionF.ObserProduitGMem.Text := fieldbyname('obser_p').Value;
         end;
         if (fieldbyname('logo_p').Value <> null) then
         begin
@@ -764,14 +749,25 @@ begin
           ProduitGestionF.ImageShowProduitG.Grayed := True;
           ProduitGestionF.ImageShowProduitG.Blend := 50;
         end;
-         ProduitGestionF.PrixVHTDProduitEdt.Enabled:= True;ProduitGestionF.PrixVTTCDProduitEdt.Enabled:= True; ProduitGestionF.MargeDProduitEdt.Enabled:= True;
-        ProduitGestionF.PrixVHTRProduitEdt.Enabled:= True;ProduitGestionF.PrixVTTCRProduitEdt.Enabled:= True; ProduitGestionF.MargeRProduitEdt.Enabled:= True;
-        ProduitGestionF.PrixVHTGProduitEdt.Enabled:= True;ProduitGestionF.PrixVTTCGProduitEdt.Enabled:= True; ProduitGestionF.MargeGProduitEdt.Enabled:= True;
-        ProduitGestionF.PrixVHTA1ProduitEdt.Enabled:= True;ProduitGestionF.PrixVTTCA1ProduitEdt.Enabled:= True; ProduitGestionF.MargeA1ProduitEdt.Enabled:= True;
-        ProduitGestionF.PrixVHTA2ProduitEdt.Enabled:= True;ProduitGestionF.PrixVTTCA2ProduitEdt.Enabled:= True; ProduitGestionF.MargeA2ProduitEdt.Enabled:= True;
-        end;
+        ProduitGestionF.PrixVHTDProduitEdt.Enabled := True;
+        ProduitGestionF.PrixVTTCDProduitEdt.Enabled := True;
+        ProduitGestionF.MargeDProduitEdt.Enabled := True;
+        ProduitGestionF.PrixVHTRProduitEdt.Enabled := True;
+        ProduitGestionF.PrixVTTCRProduitEdt.Enabled := True;
+        ProduitGestionF.MargeRProduitEdt.Enabled := True;
+        ProduitGestionF.PrixVHTGProduitEdt.Enabled := True;
+        ProduitGestionF.PrixVTTCGProduitEdt.Enabled := True;
+        ProduitGestionF.MargeGProduitEdt.Enabled := True;
+        ProduitGestionF.PrixVHTA1ProduitEdt.Enabled := True;
+        ProduitGestionF.PrixVTTCA1ProduitEdt.Enabled := True;
+        ProduitGestionF.MargeA1ProduitEdt.Enabled := True;
+        ProduitGestionF.PrixVHTA2ProduitEdt.Enabled := True;
+        ProduitGestionF.PrixVTTCA2ProduitEdt.Enabled := True;
+        ProduitGestionF.MargeA2ProduitEdt.Enabled := True;
+      end;
     end
-    else  begin
+    else
+    begin
       Exit
     end;
 //    produitGestionF.OKproduitGBtn.Enabled:=False;
@@ -782,22 +778,21 @@ end;
 
 procedure TProduitsListF.EspeceMPFilterBVLivPMenuClick(Sender: TObject);
 begin
-ClearValideFilterBVLivPMenuClick(Sender);
-ClearRegleFilterBVLivPMenuClick(Sender);
-ClearTVAFilterPMenuClick(Sender);
+  ClearValideFilterBVLivPMenuClick(Sender);
+  ClearRegleFilterBVLivPMenuClick(Sender);
+  ClearTVAFilterPMenuClick(Sender);
 
-ClearValideFilterBVLivPMenu.Checked:= True;
-ClearRegleFilterBVLivPMenu.Checked:= True;
-ClearTVAFilterPMenu.Checked:= True;
+  ClearValideFilterBVLivPMenu.Checked := True;
+  ClearRegleFilterBVLivPMenu.Checked := True;
+  ClearTVAFilterPMenu.Checked := True;
 
-  sImage1.ImageIndex:=15;
-  sImage1.Visible:= True;
-  FilterBVLivBtn.ImageIndex:=50;
+  sImage1.ImageIndex := 15;
+  sImage1.Visible := True;
+  FilterBVLivBtn.ImageIndex := 50;
   FilteredColor;
   Select_PRIX_VENT_WITH;
-  ClearFilterBVLivPMenu.Checked:= False;
+  ClearFilterBVLivPMenu.Checked := False;
 end;
-
 
 procedure ConvertANSIFileToUTF8File(AInputFileName, AOutputFileName: TFileName);
 var
@@ -815,91 +810,63 @@ end;
 
 procedure TProduitsListF.ExporterverExcel1Click(Sender: TObject);
 var
-  xls,xlw: Variant;
- ImportTask: ITask;
+  xls, xlw: Variant;
+  ImportTask: ITask;
 begin
 
- if ProduitListOpnDg.Execute then
- begin
-            FWorkingSplash.dxActivityIndicator1.Active:= True;
-            FWorkingSplash.Left := Screen.Width div 2 - (FWorkingSplash.Width div 2);
-            FWorkingSplash.Top :=  (Screen.Height- FWorkingSplash.Height) div 2;
-            FWorkingSplash.Show;
-//
-     ImportTask := TTask.Create (procedure ()
+  if ProduitListOpnDg.Execute then
   begin
-   try
-  xls := CreateOleObject('Excel.Application');
-  xls.DisplayAlerts := False  ;
-  xlw := xls.WorkBooks.Open(ProduitListOpnDg.FileName);
-  xlw.SaveAs(GetCurrentDir+ '\imported.csv',xlCSV);
-
-  xlw.Close;
-  xlw := UnAssigned;
-  xls.Quit;
-  xls := UnAssigned;
-
-
-  ConvertANSIFileToUTF8File(GetCurrentDir+ '\imported.csv',GetCurrentDir+ '\imported.csv');
-
-  MainForm.GstockdcConnection.ExecSQL(
-
-     '  CREATE UNLOGGED TABLE tmp_table '
-   // +'  ON COMMIT DROP              '
-    +'  AS                          '
-    +'  SELECT code_p,refer_p,nom_p,codebar_p,prixht_p,  '
-    +'  prixvd_p,prixvr_p,prixvg_p,prixva_p,prixva2_p,tva_p, '
-    +'  qut_p,perissable_p,alertdays_p,qutmin_p,qutmax_p,alertqut_p,obser_p '
-    +'  FROM produit  '
-    +'  WITH NO DATA; '
-    +'  ALTER TABLE tmp_table ADD UNIQUE (refer_p); '
-    +'  ALTER TABLE tmp_table ADD UNIQUE (nom_p);   '
-    +'  ALTER TABLE tmp_table ADD UNIQUE (codebar_p); '
-
-    +'  copy tmp_table from '+ '''' + GetCurrentDir +'\imported.csv'' DELIMITERS '';'' CSV HEADER; '
-
-    +'  INSERT INTO produit   '
-    +'  SELECT DISTINCT ON (code_p) *   '
-    +'  FROM tmp_table                  '
-    +'  ON CONFLICT  (code_p) DO UPDATE '
-    +'   SET                            '
-    +'       refer_p      = excluded.refer_p,       nom_p       = excluded.nom_p,    codebar_p       = excluded.codebar_p,  '
-    +'       prixht_p     = excluded.prixht_p,      prixvd_p    = excluded.prixvd_p,     '
-    +'       prixvr_p     = excluded.prixvr_p,      prixvg_p    = excluded.prixvg_p,     '
-    +'       prixva_p     = excluded.prixva_p,      prixva2_p   = excluded.prixva2_p,    '
-    +'       tva_p        = excluded.tva_p,         qut_p       = excluded.qut_p,        '
-    +'       perissable_p = excluded.perissable_p,  alertdays_p = excluded.alertdays_p,  '
-    +'       qutmin_p     = excluded.qutmin_p,      qutmax_p    = excluded.qutmax_p,     '
-    +'       alertqut_p   = excluded.alertqut_p,    obser_p     = excluded.obser_p;  DROP TABLE tmp_table;    '
-     );
-
-    deletefile(GetCurrentDir+ '\imported.csv');
-
-    RefreshGirdBtnClick(Sender);
-
-
-
-    except
-
-      on E : Exception do
+    FWorkingSplash.dxActivityIndicator1.Active := True;
+    FWorkingSplash.Left := Screen.Width div 2 - (FWorkingSplash.Width div 2);
+    FWorkingSplash.Top := (Screen.Height - FWorkingSplash.Height) div 2;
+    FWorkingSplash.Show;
+//
+    ImportTask := TTask.Create(
+      procedure()
       begin
-      sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
-      ShowMessage(E.ClassName+' error raised, with message : '+E.Message);
-          FWorkingSplash.Close;
-          FWorkingSplash.WorkingNormalForms;
-         Exit
-      end;
+        try
+          xls := CreateOleObject('Excel.Application');
+          xls.DisplayAlerts := False;
+          xlw := xls.WorkBooks.Open(ProduitListOpnDg.FileName);
+          xlw.SaveAs(GetCurrentDir + '\imported.csv', xlCSV);
 
-    end;
+          xlw.Close;
+          xlw := UnAssigned;
+          xls.Quit;
+          xls := UnAssigned;
 
+          ConvertANSIFileToUTF8File(GetCurrentDir + '\imported.csv', GetCurrentDir + '\imported.csv');
 
-               FWorkingSplash.Close;
+          MainForm.GstockdcConnection.ExecSQL('  CREATE UNLOGGED TABLE tmp_table '
+   // +'  ON COMMIT DROP              '
+            + '  AS                          ' + '  SELECT code_p,refer_p,nom_p,codebar_p,prixht_p,  ' + '  prixvd_p,prixvr_p,prixvg_p,prixva_p,prixva2_p,tva_p, ' + '  qut_p,perissable_p,alertdays_p,qutmin_p,qutmax_p,alertqut_p,obser_p ' + '  FROM produit  ' + '  WITH NO DATA; ' + '  ALTER TABLE tmp_table ADD UNIQUE (refer_p); ' + '  ALTER TABLE tmp_table ADD UNIQUE (nom_p);   ' + '  ALTER TABLE tmp_table ADD UNIQUE (codebar_p); ' + '  copy tmp_table from ' + '''' + GetCurrentDir +
+            '\imported.csv'' DELIMITERS '';'' CSV HEADER; ' + '  INSERT INTO produit   ' + '  SELECT DISTINCT ON (code_p) *   ' + '  FROM tmp_table                  ' + '  ON CONFLICT  (code_p) DO UPDATE ' + '   SET                            ' + '       refer_p      = excluded.refer_p,       nom_p       = excluded.nom_p,    codebar_p       = excluded.codebar_p,  ' + '       prixht_p     = excluded.prixht_p,      prixvd_p    = excluded.prixvd_p,     ' +
+            '       prixvr_p     = excluded.prixvr_p,      prixvg_p    = excluded.prixvg_p,     ' + '       prixva_p     = excluded.prixva_p,      prixva2_p   = excluded.prixva2_p,    ' + '       tva_p        = excluded.tva_p,         qut_p       = excluded.qut_p,        ' + '       perissable_p = excluded.perissable_p,  alertdays_p = excluded.alertdays_p,  ' + '       qutmin_p     = excluded.qutmin_p,      qutmax_p    = excluded.qutmax_p,     ' + '       alertqut_p   = excluded.alertqut_p,    obser_p     = excluded.obser_p;  DROP TABLE tmp_table;    ');
+
+          deletefile(GetCurrentDir + '\imported.csv');
+
+          RefreshGirdBtnClick(Sender);
+
+        except
+
+          on E: Exception do
+          begin
+            sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT or SND_ASYNC or SND_RING);
+            ShowMessage(E.ClassName + ' error raised, with message : ' + E.Message);
+            FWorkingSplash.Close;
             FWorkingSplash.WorkingNormalForms;
+            Exit
+          end;
 
-   end);
-          ImportTask.Start;
+        end;
 
- end;
+        FWorkingSplash.Close;
+        FWorkingSplash.WorkingNormalForms;
+
+      end);
+    ImportTask.Start;
+
+  end;
 
 end;
 
@@ -915,42 +882,42 @@ end;
 
 procedure TProduitsListF.N0TVA1Click(Sender: TObject);
 begin
-ClearValideFilterBVLivPMenuClick(Sender);
-ClearRegleFilterBVLivPMenuClick(Sender);
-ClearMPFilterBVLivPMenuClick(Sender);
+  ClearValideFilterBVLivPMenuClick(Sender);
+  ClearRegleFilterBVLivPMenuClick(Sender);
+  ClearMPFilterBVLivPMenuClick(Sender);
 
-ClearValideFilterBVLivPMenu.Checked:= True;
-ClearRegleFilterBVLivPMenu.Checked:= True;
-ClearMPFilterBVLivPMenu.Checked:= True;
+  ClearValideFilterBVLivPMenu.Checked := True;
+  ClearRegleFilterBVLivPMenu.Checked := True;
+  ClearMPFilterBVLivPMenu.Checked := True;
 
-  TVAFilterLbl.Caption:='7';
+  TVAFilterLbl.Caption := '7';
   TVAFilterLbl.Visible := True;
-  sImage1.ImageIndex:= 17;
-  sImage1.Visible:= True;
-  FilterBVLivBtn.ImageIndex:=50;
+  sImage1.ImageIndex := 17;
+  sImage1.Visible := True;
+  FilterBVLivBtn.ImageIndex := 50;
   FilteredColor;
   Select_7_TVA;
-  ClearFilterBVLivPMenu.Checked:= False;
+  ClearFilterBVLivPMenu.Checked := False;
 end;
 
 procedure TProduitsListF.N0TVA2Click(Sender: TObject);
 begin
-ClearValideFilterBVLivPMenuClick(Sender);
-ClearRegleFilterBVLivPMenuClick(Sender);
-ClearMPFilterBVLivPMenuClick(Sender);
+  ClearValideFilterBVLivPMenuClick(Sender);
+  ClearRegleFilterBVLivPMenuClick(Sender);
+  ClearMPFilterBVLivPMenuClick(Sender);
 
-ClearValideFilterBVLivPMenu.Checked:= True;
-ClearRegleFilterBVLivPMenu.Checked:= True;
-ClearMPFilterBVLivPMenu.Checked:= True;
+  ClearValideFilterBVLivPMenu.Checked := True;
+  ClearRegleFilterBVLivPMenu.Checked := True;
+  ClearMPFilterBVLivPMenu.Checked := True;
 
-  TVAFilterLbl.Caption:='19';
+  TVAFilterLbl.Caption := '19';
   TVAFilterLbl.Visible := True;
-  sImage1.ImageIndex:= 17;
-  sImage1.Visible:= True;
-  FilterBVLivBtn.ImageIndex:=50;
+  sImage1.ImageIndex := 17;
+  sImage1.Visible := True;
+  FilterBVLivBtn.ImageIndex := 50;
   FilteredColor;
   Select_17_TVA;
-  ClearFilterBVLivPMenu.Checked:= False;
+  ClearFilterBVLivPMenu.Checked := False;
 end;
 
 procedure TProduitsListF.NextClientbtnClick(Sender: TObject);
@@ -964,36 +931,36 @@ begin
   ClearMPFilterBVLivPMenuClick(Sender);
   ClearTVAFilterPMenuClick(Sender);
 
-ClearValideFilterBVLivPMenu.Checked:= True;
-ClearMPFilterBVLivPMenu.Checked:= True;
-ClearTVAFilterPMenu.Checked:= True;
-  
-  sImage1.ImageIndex:=14;
-  sImage1.Visible:= True;
-  FilterBVLivBtn.ImageIndex:=50;
+  ClearValideFilterBVLivPMenu.Checked := True;
+  ClearMPFilterBVLivPMenu.Checked := True;
+  ClearTVAFilterPMenu.Checked := True;
+
+  sImage1.ImageIndex := 14;
+  sImage1.Visible := True;
+  FilterBVLivBtn.ImageIndex := 50;
   FilteredColor;
   Select_PRIX_ACHAT_NOT;
-  ClearFilterBVLivPMenu.Checked:= False;
+  ClearFilterBVLivPMenu.Checked := False;
 end;
 
 procedure TProduitsListF.NotValideFilterBVLivPMenuClick(Sender: TObject);
 begin
-ClearRegleFilterBVLivPMenuClick(Sender);
-ClearMPFilterBVLivPMenuClick(Sender);
-ClearTVAFilterPMenuClick(Sender);
+  ClearRegleFilterBVLivPMenuClick(Sender);
+  ClearMPFilterBVLivPMenuClick(Sender);
+  ClearTVAFilterPMenuClick(Sender);
 
-ClearRegleFilterBVLivPMenu.Checked:= True;
-ClearMPFilterBVLivPMenu.Checked:= True;
-ClearTVAFilterPMenu.Checked:= True;
+  ClearRegleFilterBVLivPMenu.Checked := True;
+  ClearMPFilterBVLivPMenu.Checked := True;
+  ClearTVAFilterPMenu.Checked := True;
 
-  FilterBVLivBtn.ImageIndex:=50;
-  MainForm.ProduitTable.Filtered:= False;
+  FilterBVLivBtn.ImageIndex := 50;
+  MainForm.ProduitTable.Filtered := False;
   Select_All;
   Select_StoCK_NOT_Dispo;
-  sImage1.ImageIndex:=12;
-  sImage1.Visible:= True;
+  sImage1.ImageIndex := 12;
+  sImage1.Visible := True;
   FilteredColor;
-  ClearFilterBVLivPMenu.Checked:= False;
+  ClearFilterBVLivPMenu.Checked := False;
 
 end;
 
@@ -1005,10 +972,10 @@ end;
 procedure TProduitsListF.ProduitsListDBGridEhDblClick(Sender: TObject);
 begin
 //------ use this code to make the clock just on the grid not the title -----/
-if ProduitsListDBGridEh.ScreenToClient(Mouse.CursorPos).Y>25 then
-begin
-  EditProduitsBtnClick(Sender) ;
-end;
+  if ProduitsListDBGridEh.ScreenToClient(Mouse.CursorPos).Y > 25 then
+  begin
+    EditProduitsBtnClick(Sender);
+  end;
 end;
 
 //-----this is to highlight text in dbgrid when shearch---------------
@@ -1069,50 +1036,54 @@ begin
        end;  }
 
 //------ use this code to high light the selected row in dbgrid----//
- if gdSelected in State then
-begin
-   ProduitsListDBGridEh.Canvas.Brush.Color:=$00FFE8CD;
-   ProduitsListDBGridEh.DefaultDrawColumnCell(Rect, DataCol, Column, State);
-end;
+  if gdSelected in State then
+  begin
+    ProduitsListDBGridEh.Canvas.Brush.Color := $00FFE8CD;
+    ProduitsListDBGridEh.DefaultDrawColumnCell(Rect, DataCol, Column, State);
+  end;
 
-  if  (MainForm.ProduitTable.FieldValues['prixht_p'] <= 0) then
- begin
- ProduitsListDBGridEh.Canvas.Font.Color:=$000099FF;
- ProduitsListDBGridEh.DefaultDrawColumnCell(Rect, DataCol, Column, State);
- end;
+  if (MainForm.ProduitTable.FieldValues['prixht_p'] <= 0) then
+  begin
+    ProduitsListDBGridEh.Canvas.Font.Color := $000099FF;
+    ProduitsListDBGridEh.DefaultDrawColumnCell(Rect, DataCol, Column, State);
+  end;
  //------ use this code to red the produit with 0 or null in stock----//
- if  (MainForm.ProduitTable.FieldValues['QutDispo'] <= 0) then
- begin
- ProduitsListDBGridEh.Canvas.Font.Color:=$004735F9;
- ProduitsListDBGridEh.DefaultDrawColumnCell(Rect, DataCol, Column, State);
- end;
+  if (MainForm.ProduitTable.FieldValues['QutDispo'] <= 0) then
+  begin
+    ProduitsListDBGridEh.Canvas.Font.Color := $004735F9;
+    ProduitsListDBGridEh.DefaultDrawColumnCell(Rect, DataCol, Column, State);
+  end;
 
 
 // HighlightCellText(TDBGridEh(Sender),Rect, Column,ResearchProduitsEdt.Text,State);
-  end;
+end;
 
 procedure TProduitsListF.ProduitsListDBGridEhKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
 begin
   if not ProduitsListDBGridEh.DataSource.DataSet.IsEmpty then
   begin
-    if key = VK_DELETE then
-  DeleteProduitsBtnClick(Sender) ;
-  end else exit
- end;
+    if Key = VK_DELETE then
+      DeleteProduitsBtnClick(Sender);
+  end
+  else
+    exit
+end;
 
 procedure TProduitsListF.ProduitsListDBGridEhKeyPress(Sender: TObject; var Key: Char);
 begin
-  if Key in ['n','N']  then
+  if Key in ['n', 'N'] then
     AddProduitsBtnClick(Sender);
-  if Key in ['r','R'] then
+  if Key in ['r', 'R'] then
     ResearchProduitsEdt.SetFocus;
   if not ProduitsListDBGridEh.DataSource.DataSet.IsEmpty then
   begin
-  if Key in ['s','S'] then
-  DeleteProduitsBtnClick(Sender) ;
-    if Key in ['m','M'] then
+    if Key in ['s', 'S'] then
+      DeleteProduitsBtnClick(Sender);
+    if Key in ['m', 'M'] then
       EditProduitsBtnClick(Sender);
-  end else Exit;
+  end
+  else
+    Exit;
 end;
 
 procedure TProduitsListF.ProduitsListDBGridEhMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
@@ -1128,10 +1099,9 @@ begin
 //  end;
 end;
 
-procedure TProduitsListF.ProduitsListDBGridEhSortMarkingChanged(
-  Sender: TObject);
+procedure TProduitsListF.ProduitsListDBGridEhSortMarkingChanged(Sender: TObject);
 begin
-ProduitsListDBGridEh.DefaultApplySorting;
+  ProduitsListDBGridEh.DefaultApplySorting;
 end;
 
 procedure TProduitsListF.ProduitsListDBGridEhTitleBtnClick(Sender: TObject; ACol: Integer; Column: TColumnEh);
@@ -1142,8 +1112,8 @@ end;
 
 procedure TProduitsListF.RefreshGirdBtnClick(Sender: TObject);
 begin
-MainForm.ProduitTable.Close;
-MainForm.ProduitTable.Open;
+  MainForm.ProduitTable.Close;
+  MainForm.ProduitTable.Open;
 end;
 
 procedure TProduitsListF.RegleFilterBVLivPMenuClick(Sender: TObject);
@@ -1151,17 +1121,17 @@ begin
   ClearValideFilterBVLivPMenuClick(Sender);
   ClearMPFilterBVLivPMenuClick(Sender);
   ClearTVAFilterPMenuClick(Sender);
-                                             
-ClearValideFilterBVLivPMenu.Checked:= True;
-ClearMPFilterBVLivPMenu.Checked:= True;
-ClearTVAFilterPMenu.Checked:= True;
-  
-  sImage1.ImageIndex:=13;
-  sImage1.Visible:= True;
-  FilterBVLivBtn.ImageIndex:=50;
+
+  ClearValideFilterBVLivPMenu.Checked := True;
+  ClearMPFilterBVLivPMenu.Checked := True;
+  ClearTVAFilterPMenu.Checked := True;
+
+  sImage1.ImageIndex := 13;
+  sImage1.Visible := True;
+  FilterBVLivBtn.ImageIndex := 50;
   FilteredColor;
   Select_PRIX_ACHAT_WITH;
-  ClearFilterBVLivPMenu.Checked:= False;
+  ClearFilterBVLivPMenu.Checked := False;
 
   ProduitsListDBGridEh.Columns[9].Visible := True;
   ProduitsListDBGridEh.Columns[10].Visible := True;
@@ -1170,29 +1140,30 @@ ClearTVAFilterPMenu.Checked:= True;
 end;
 
 procedure TProduitsListF.ResearchProduitsEdtChange(Sender: TObject);
-var  CodeCB : Integer;
-
+var
+  CodeCB: Integer;
+const
+  N =['-', '&', '"', '(', ')', '_', ',', '.'];
 begin
 
  //----------- Searching in databese-------------------//
 
 
-    if ResherchPARDesProduitsRdioBtn.Checked then
-    if (ResearchProduitsEdt.text <> '') then
+  if ResherchPARDesProduitsRdioBtn.Checked then
+    if (ResearchProduitsEdt.text <> '') and not (ResearchProduitsEdt.Text[1] in N) then
     begin
       MainForm.ProduitTable.Filtered := false;
-      MainForm.ProduitTable.Filter := '[nom_p] LIKE ' + quotedstr('%' +ResearchProduitsEdt.Text + '%') + ' OR '+
-     '[refer_p] LIKE ' + quotedstr('%' +ResearchProduitsEdt.Text + '%') ;
+      MainForm.ProduitTable.Filter := '[nom_p] LIKE ' + quotedstr('%' + ResearchProduitsEdt.Text + '%') + ' OR ' + '[refer_p] LIKE ' + quotedstr('%' + ResearchProduitsEdt.Text + '%');
       MainForm.ProduitTable.Filtered := True;
     end
     else
     begin
-     MainForm.ProduitTable.Filtered := false;
+      MainForm.ProduitTable.Filtered := false;
+      ResearchProduitsEdt.Text := '';
     end;
 
   if ResherchPARDCodProduitsRdioBtn.Checked then
-
-    if(ResearchProduitsEdt.text = '')then
+    if (ResearchProduitsEdt.text = '') then
     begin
       MainForm.ProduitTable.Filtered := false;
     end;
@@ -1224,50 +1195,49 @@ begin
 //    end;
 
 
-   MainForm.SQLQuery.Active:=False;
-   MainForm.SQLQuery.SQL.Clear;
+  MainForm.SQLQuery.Active := False;
+  MainForm.SQLQuery.SQL.Clear;
 end;
 
-procedure TProduitsListF.ResearchProduitsEdtKeyDown(Sender: TObject;
-  var Key: Word; Shift: TShiftState);
+procedure TProduitsListF.ResearchProduitsEdtKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
 begin
-    if key = VK_DOWN then
+  if Key = VK_DOWN then
   begin
 //   key := #0;
-     MainForm.ProduitTable.Next;
+    MainForm.ProduitTable.Next;
   end;
 
-
-    if key = VK_UP then
+  if Key = VK_UP then
   begin
 //   key := #0;
-     MainForm.ProduitTable.Prior;
+    MainForm.ProduitTable.Prior;
   end;
 
-
-  if Key = VK_DELETE  then
- begin
+  if Key = VK_DELETE then
+  begin
 //      key := #0;
-      DeleteProduitsBtnClick(Sender);
- end;
+    DeleteProduitsBtnClick(Sender);
+  end;
 end;
 
 procedure TProduitsListF.ResearchProduitsEdtKeyPress(Sender: TObject; var Key: Char);
-var  CodeCB : Integer;
+var
+  CodeCB: Integer;
 const
   N =[Char(VK_ESCAPE)];
+  E =['-', '&', '"', '(', ')', '_', ',', '.'];
 begin
 
   if (Key in N) then
   begin
-    key := #0;
+    Key := #0;
     ResearchProduitsEdt.Text := '';
 
   end;
 
-    if key = #13 then
+  if Key = #13 then
   begin
-   key := #0;
+    Key := #0;
 
 
 //      if ResherchPARDesProduitsRdioBtn.Checked then
@@ -1283,106 +1253,100 @@ begin
 //     MainForm.ProduitTable.Filtered := false;
 //    end;
 
-  if ResherchPARDCodProduitsRdioBtn.Checked then
-    if (ResearchProduitsEdt.text <> '') then
-    begin
-      MainForm.SQLQuery.Active:=False;
-      MainForm.SQLQuery.SQL.Clear;
-      MainForm.SQLQuery.SQL.Text:='SELECT nom_cb,code_p FROM codebarres WHERE nom_cb LIKE ' +''+ QuotedStr( ResearchProduitsEdt.Text+'%' )+'' ;
-      MainForm.SQLQuery.Active:=True;
-      if MainForm.SQLQuery.FieldValues['code_p'] <> null then
-     begin
-      CodeCB:=MainForm.SQLQuery.FieldValues['code_p'];
-     end;
-      MainForm.ProduitTable.Filtered := false;
-      MainForm.ProduitTable.Filter := '[codebar_p] LIKE ' + quotedstr(ResearchProduitsEdt.Text+'%' )  + ' OR [code_p] = '+ IntToStr(CodeCB) ;
-      MainForm.ProduitTable.Filtered := True;
-    end
-    else
-    begin
-      MainForm.ProduitTable.Filtered := false;
-    end;
-   MainForm.SQLQuery.Active:=False;
-   MainForm.SQLQuery.SQL.Clear;
+    if ResherchPARDCodProduitsRdioBtn.Checked then
+      if (ResearchProduitsEdt.text <> '') and not (ResearchProduitsEdt.Text[1] in E) then
+      begin
+        MainForm.SQLQuery.Active := False;
+        MainForm.SQLQuery.SQL.Clear;
+        MainForm.SQLQuery.SQL.Text := 'SELECT nom_cb,code_p FROM codebarres WHERE nom_cb LIKE ' + '' + QuotedStr(ResearchProduitsEdt.Text + '%') + '';
+        MainForm.SQLQuery.Active := True;
+        if MainForm.SQLQuery.FieldValues['code_p'] <> null then
+        begin
+          CodeCB := MainForm.SQLQuery.FieldValues['code_p'];
+        end;
+        MainForm.ProduitTable.Filtered := false;
+        MainForm.ProduitTable.Filter := '[codebar_p] LIKE ' + quotedstr(ResearchProduitsEdt.Text + '%') + ' OR [code_p] = ' + IntToStr(CodeCB);
+        MainForm.ProduitTable.Filtered := True;
+      end
+      else
+      begin
+        MainForm.ProduitTable.Filtered := false;
+        ResearchProduitsEdt.text := '';
+      end;
+    MainForm.SQLQuery.Active := False;
+    MainForm.SQLQuery.SQL.Clear;
 
     if ResherchPARDCodProduitsRdioBtn.Checked then
     begin
       if (ResearchProduitsEdt.text <> '') then
       begin
-       ResearchProduitsEdt.SelectAll;
+        ResearchProduitsEdt.SelectAll;
       end;
     end;
 
-
- end;
-
-
-
+  end;
 
 end;
 
-
 procedure TProduitsListF.ResherchPARDesProduitsRdioBtnClick(Sender: TObject);
 begin
-MainForm.ProduitTable.Filtered := false;
-ResearchProduitsEdt.Clear;
-ResearchProduitsEdt.SetFocus;
-
+  MainForm.ProduitTable.Filtered := false;
+  ResearchProduitsEdt.Clear;
+  ResearchProduitsEdt.SetFocus;
+  ResearchProduitsEdt.NumbersOnly := False;
 end;
 
 procedure TProduitsListF.ResherchPARDCodProduitsRdioBtnClick(Sender: TObject);
 begin
-ResearchProduitsEdt.Clear;
-ResearchProduitsEdt.SetFocus;
+  ResearchProduitsEdt.Clear;
+  ResearchProduitsEdt.SetFocus;
+  ResearchProduitsEdt.NumbersOnly := True;
 end;
 
 procedure TProduitsListF.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
 
+  MainForm.SaveGridLayout(ProduitsListDBGridEh, GetCurrentDir + '\bin\gc_prdtlst');
 
-
-   MainForm.SaveGridLayout(ProduitsListDBGridEh,GetCurrentDir +'\bin\gc_prdtlst');
-
- MainForm.ProduitTable.Filtered:= False;
-Select_ALL;
-FreeAndNil(ProduitsListF);
+  MainForm.ProduitTable.Filtered := False;
+  Select_ALL;
+  FreeAndNil(ProduitsListF);
 end;
-
 
 procedure TProduitsListF.FormCreate(Sender: TObject);
 begin
-     if FileExists(GetCurrentDir +'\bin\gc_prdtlst') then
-   begin
+  if FileExists(GetCurrentDir + '\bin\gc_prdtlst') then
+  begin
 
-    MainForm.LoadGridLayout(ProduitsListDBGridEh,GetCurrentDir +'\bin\gc_prdtlst');
-   end;
+    MainForm.LoadGridLayout(ProduitsListDBGridEh, GetCurrentDir + '\bin\gc_prdtlst');
+  end;
 end;
 
 procedure TProduitsListF.FormShow(Sender: TObject);
 begin
-ResearchProduitsEdt.SetFocus;
+  ResearchProduitsEdt.SetFocus;
 end;
 
 procedure TProduitsListF.GettingData;
 var
-  Agent,Actif,Passif,Tout,Four : TfrxMemoView;
+  Agent, Actif, Passif, Tout, Four: TfrxMemoView;
 begin
-  Agent:= ProduitListfrxRprt.FindObject('Agent') as TfrxMemoView;
-  Agent.Text:= MainForm.UserNameLbl.Caption ;
+  Agent := ProduitListfrxRprt.FindObject('Agent') as TfrxMemoView;
+  Agent.Text := MainForm.UserNameLbl.Caption;
 
 end;
 
 procedure TProduitsListF.AdvToolButton2Click(Sender: TObject);
 begin
-MainForm.ProduitTable.DisableControls;
+  MainForm.ProduitTable.DisableControls;
 
-    GettingData;
+  GettingData;
 
-ProduitListfrxRprt.PrepareReport;
-frxPDFExport1.FileName := 'Liste Des Produits';
-ProduitListfrxRprt.Export(frxPDFExport1);
+  ProduitListfrxRprt.PrepareReport;
+  frxPDFExport1.FileName := 'Liste Des Produits';
+  ProduitListfrxRprt.Export(frxPDFExport1);
 
-MainForm.ProduitTable.EnableControls;
+  MainForm.ProduitTable.EnableControls;
 end;
 
 procedure TProduitsListF.AdvToolButton3Click(Sender: TObject);
@@ -1390,7 +1354,7 @@ begin
 
   MainForm.ProduitTable.DisableControls;
 
-   GettingData;
+  GettingData;
 
   ProduitListfrxRprt.PrepareReport;
   ProduitListfrxRprt.ShowReport;
@@ -1401,9 +1365,9 @@ end;
 
 procedure TProduitsListF.AdvToolButton4Click(Sender: TObject);
 begin
- if NOT (MainForm.ProduitTable.IsEmpty) Then
+  if not (MainForm.ProduitTable.IsEmpty) then
   begin
-    FSplashPrinting:=TFSplashPrinting.Create(Application);
+    FSplashPrinting := TFSplashPrinting.Create(Application);
 //    FSplashPrinting.Width:=350;
 //    FSplashPrinting.Height:=160;
 //    FSplashPrinting.Panel1.Color:=  $004735F9;
@@ -1411,10 +1375,10 @@ begin
    // FSplashPrinting.Image1.Left:= 1;
 //    FSplashPrinting.Image1.Visible:=True;
 //    FSplashPrinting.Image1.Top:= (FSplashPrinting.Height div 2) - (FSplashPrinting.Image1.Height div 2 ) ;
-    FSplashPrinting.Left:=  (MainForm.Left + MainForm.Width div 2) - (FSplashPrinting.Width div 2);
-    FSplashPrinting.Top:=   MainForm.Top + 5;
+    FSplashPrinting.Left := (MainForm.Left + MainForm.Width div 2) - (FSplashPrinting.Width div 2);
+    FSplashPrinting.Top := MainForm.Top + 5;
 
-    AnimateWindow(FSplashPrinting.Handle, 175, AW_VER_POSITIVE OR AW_SLIDE OR AW_ACTIVATE );
+    AnimateWindow(FSplashPrinting.Handle, 175, AW_VER_POSITIVE or AW_SLIDE or AW_ACTIVATE);
     FSplashPrinting.Show;
 
   end;
@@ -1424,68 +1388,68 @@ begin
 //FSplashPrinting.ShowModal;
 end;
 
-procedure TProduitsListF.ApplicationEvents1ShortCut(var Msg: TWMKey;
-  var Handled: Boolean);
+procedure TProduitsListF.ApplicationEvents1ShortCut(var Msg: TWMKey; var Handled: Boolean);
 begin
- if (ProduitsListF.Active = True)  AND  (Assigned(ProduitGestionF) = False)  then
- begin
-  if  (GetKeyState(VK_F4) < 0)  then
+  if (ProduitsListF.Active = True) and (Assigned(ProduitGestionF) = False) then
   begin
+    if (GetKeyState(VK_F4) < 0) then
+    begin
       AddProduitsBtnClick(Screen);
-    Handled := true;
-  end;
-  if  (GetKeyState(VK_F5) < 0)  then
-  begin
+      Handled := true;
+    end;
+    if (GetKeyState(VK_F5) < 0) then
+    begin
       EditProduitsBtnClick(Screen);
-    Handled := true;
-  end;
-  if  (GetKeyState(VK_F6) < 0)  then
-  begin
+      Handled := true;
+    end;
+    if (GetKeyState(VK_F6) < 0) then
+    begin
       DeleteProduitsBtnClick(Screen);
-    Handled := true;
-  end;
-     if  (GetKeyState(VK_F12) < 0)  then
+      Handled := true;
+    end;
+    if (GetKeyState(VK_F12) < 0) then
+    begin
+      AdvToolButton3Click(Screen);
+      Handled := true;
+    end;
+    if (GetKeyState(VK_F11) < 0) then
+    begin
+      AdvToolButton4Click(Screen);
+      Handled := true;
+    end;
+  end
+  else
   begin
-    AdvToolButton3Click(Screen) ;
-    Handled := true;
-  end;
-  if  (GetKeyState(VK_F11) < 0)  then
-  begin
-    AdvToolButton4Click(Screen) ;
-    Handled := true;
-  end;
- end else
-     begin
-      if  (ProduitsListF.Active = True)  AND (ProduitGestionF.Showing = False)   then
-       begin
-          if  (GetKeyState(VK_F4) < 0)  then
-          begin
-              AddProduitsBtnClick(Screen);
-            Handled := true;
-          end;
-          if  (GetKeyState(VK_F5) < 0)  then
-          begin
-              EditProduitsBtnClick(Screen);
-            Handled := true;
-          end;
-          if  (GetKeyState(VK_F6) < 0)  then
-          begin
-              DeleteProduitsBtnClick(Screen);
-            Handled := true;
-          end;
-             if  (GetKeyState(VK_F12) < 0)  then
-          begin
-            AdvToolButton3Click(Screen) ;
-            Handled := true;
-          end;
-
-           if  (GetKeyState(VK_F11) < 0)  then
-          begin
-            AdvToolButton4Click(Screen) ;
-            Handled := true;
-          end;
+    if (ProduitsListF.Active = True) and (ProduitGestionF.Showing = False) then
+    begin
+      if (GetKeyState(VK_F4) < 0) then
+      begin
+        AddProduitsBtnClick(Screen);
+        Handled := true;
       end;
-     end;
+      if (GetKeyState(VK_F5) < 0) then
+      begin
+        EditProduitsBtnClick(Screen);
+        Handled := true;
+      end;
+      if (GetKeyState(VK_F6) < 0) then
+      begin
+        DeleteProduitsBtnClick(Screen);
+        Handled := true;
+      end;
+      if (GetKeyState(VK_F12) < 0) then
+      begin
+        AdvToolButton3Click(Screen);
+        Handled := true;
+      end;
+
+      if (GetKeyState(VK_F11) < 0) then
+      begin
+        AdvToolButton4Click(Screen);
+        Handled := true;
+      end;
+    end;
+  end;
 end;
 
 procedure TProduitsListF.Button1Click(Sender: TObject);
@@ -1495,40 +1459,39 @@ end;
 
 procedure TProduitsListF.ChequeMPFilterBVLivPMenuClick(Sender: TObject);
 begin
-ClearValideFilterBVLivPMenuClick(Sender);
-ClearRegleFilterBVLivPMenuClick(Sender);
-ClearTVAFilterPMenuClick(Sender);
+  ClearValideFilterBVLivPMenuClick(Sender);
+  ClearRegleFilterBVLivPMenuClick(Sender);
+  ClearTVAFilterPMenuClick(Sender);
 
-ClearValideFilterBVLivPMenu.Checked:= True;
-ClearRegleFilterBVLivPMenu.Checked:= True;
-ClearTVAFilterPMenu.Checked:= True;
+  ClearValideFilterBVLivPMenu.Checked := True;
+  ClearRegleFilterBVLivPMenu.Checked := True;
+  ClearTVAFilterPMenu.Checked := True;
 
-  sImage1.ImageIndex:=16;
-  sImage1.Visible:= True;
-  FilterBVLivBtn.ImageIndex:=50;
+  sImage1.ImageIndex := 16;
+  sImage1.Visible := True;
+  FilterBVLivBtn.ImageIndex := 50;
   FilteredColor;
   Select_PRIX_VENT_NOT;
-  ClearFilterBVLivPMenu.Checked:= False;
+  ClearFilterBVLivPMenu.Checked := False;
 end;
 
 procedure TProduitsListF.ClearFilterBVLivPMenuClick(Sender: TObject);
 begin
 
-
-  MainForm.ProduitTable.Filtered:=False;
+  MainForm.ProduitTable.Filtered := False;
   Select_ALL;
-  sImage1.Visible:= False;
+  sImage1.Visible := False;
 //  sImage2.Visible:= False;
 //  sImage3.Visible:= False;
 //  sImage4.Visible:= False;
-  TVAFilterLbl.Visible:= False;
+  TVAFilterLbl.Visible := False;
   NOT_FilteredColor;
-  FilterBVLivBtn.ImageIndex:=49;
+  FilterBVLivBtn.ImageIndex := 49;
   ClearValideFilterBVLivPMenu.Checked := True;
   ClearRegleFilterBVLivPMenu.Checked := True;
   ClearMPFilterBVLivPMenu.Checked := True;
   ClearTVAFilterPMenu.Checked := True;
-  
+
   ProduitsListDBGridEh.Columns[9].Visible := False;
   ProduitsListDBGridEh.Columns[10].Visible := False;
   ProduitsListDBGridEh.Columns[11].Visible := False;
@@ -1538,8 +1501,8 @@ end;
 procedure TProduitsListF.ClearMPFilterBVLivPMenuClick(Sender: TObject);
 begin
 //  ClearValideFilterBVLivPMenuClick(Sender);
-  sImage1.Visible:= False;
-  FilterBVLivBtn.ImageIndex:=49;
+  sImage1.Visible := False;
+  FilterBVLivBtn.ImageIndex := 49;
   NOT_FilteredColor;
   Select_ALL;
 end;
@@ -1547,11 +1510,11 @@ end;
 procedure TProduitsListF.ClearRegleFilterBVLivPMenuClick(Sender: TObject);
 begin
 //  ClearValideFilterBVLivPMenuClick(Sender);
-  sImage1.Visible:= False;
-  FilterBVLivBtn.ImageIndex:=49;
+  sImage1.Visible := False;
+  FilterBVLivBtn.ImageIndex := 49;
   NOT_FilteredColor;
   Select_ALL;
-  
+
   ProduitsListDBGridEh.Columns[9].Visible := False;
   ProduitsListDBGridEh.Columns[10].Visible := False;
   ProduitsListDBGridEh.Columns[11].Visible := False;
@@ -1559,19 +1522,19 @@ end;
 
 procedure TProduitsListF.ClearValideFilterBVLivPMenuClick(Sender: TObject);
 begin
-  MainForm.ProduitTable.Filtered:=False;
+  MainForm.ProduitTable.Filtered := False;
   Select_ALL;
-  sImage1.Visible:= False;
+  sImage1.Visible := False;
   NOT_FilteredColor;
-  FilterBVLivBtn.ImageIndex:=49;
+  FilterBVLivBtn.ImageIndex := 49;
 end;
 
 procedure TProduitsListF.sSpeedButton4Click(Sender: TObject);
 begin
 
-  if NOT (MainForm.ProduitTable.IsEmpty) Then
+  if not (MainForm.ProduitTable.IsEmpty) then
   begin
-    FSplashPrinting:=TFSplashPrinting.Create(Application);
+    FSplashPrinting := TFSplashPrinting.Create(Application);
 //    FSplashPrinting.Width:=350;
 //    FSplashPrinting.Height:=160;
 //    FSplashPrinting.Panel1.Color:=  $004735F9;
@@ -1579,10 +1542,10 @@ begin
    // FSplashPrinting.Image1.Left:= 1;
 //    FSplashPrinting.Image1.Visible:=True;
 //    FSplashPrinting.Image1.Top:= (FSplashPrinting.Height div 2) - (FSplashPrinting.Image1.Height div 2 ) ;
-    FSplashPrinting.Left:=  (MainForm.Left + MainForm.Width div 2) - (FSplashPrinting.Width div 2);
-    FSplashPrinting.Top:=   MainForm.Top + 5;
+    FSplashPrinting.Left := (MainForm.Left + MainForm.Width div 2) - (FSplashPrinting.Width div 2);
+    FSplashPrinting.Top := MainForm.Top + 5;
 
-    AnimateWindow(FSplashPrinting.Handle, 175, AW_VER_POSITIVE OR AW_SLIDE OR AW_ACTIVATE );
+    AnimateWindow(FSplashPrinting.Handle, 175, AW_VER_POSITIVE or AW_SLIDE or AW_ACTIVATE);
     FSplashPrinting.Show;
 
   end;
@@ -1596,65 +1559,67 @@ procedure TProduitsListF.SumGirdProduitBtnClick(Sender: TObject);
 begin
   if SumGirdProduitBtn.Tag = 0 then
   begin
-    ProduitsListDBGridEh.FooterRowCount:=1;
+    ProduitsListDBGridEh.FooterRowCount := 1;
     SumGirdProduitBtn.Tag := 1;
-  end else
-      begin
-        ProduitsListDBGridEh.FooterRowCount:=0;
-        SumGirdProduitBtn.Tag := 0;
-      end;
+  end
+  else
+  begin
+    ProduitsListDBGridEh.FooterRowCount := 0;
+    SumGirdProduitBtn.Tag := 0;
+  end;
 end;
 
 procedure TProduitsListF.ClearTVAFilterPMenuClick(Sender: TObject);
 begin
 //  ClearValideFilterBVLivPMenuClick(Sender);
   TVAFilterLbl.Visible := False;
-  sImage1.Visible:= False;
-  FilterBVLivBtn.ImageIndex:=49;
+  sImage1.Visible := False;
+  FilterBVLivBtn.ImageIndex := 49;
   NOT_FilteredColor;
   Select_ALL;
 end;
 
 procedure TProduitsListF.T2Click(Sender: TObject);
 begin
-ClearValideFilterBVLivPMenuClick(Sender);
-ClearRegleFilterBVLivPMenuClick(Sender);
-ClearMPFilterBVLivPMenuClick(Sender);
+  ClearValideFilterBVLivPMenuClick(Sender);
+  ClearRegleFilterBVLivPMenuClick(Sender);
+  ClearMPFilterBVLivPMenuClick(Sender);
 
-ClearValideFilterBVLivPMenu.Checked:= True;
-ClearRegleFilterBVLivPMenu.Checked:= True;
-ClearMPFilterBVLivPMenu.Checked:= True;
+  ClearValideFilterBVLivPMenu.Checked := True;
+  ClearRegleFilterBVLivPMenu.Checked := True;
+  ClearMPFilterBVLivPMenu.Checked := True;
 
-  TVAFilterLbl.Caption:='0';
+  TVAFilterLbl.Caption := '0';
   TVAFilterLbl.Visible := True;
-  sImage1.ImageIndex:= 17;
-  sImage1.Visible:= True;
-  FilterBVLivBtn.ImageIndex:=50;
+  sImage1.ImageIndex := 17;
+  sImage1.Visible := True;
+  FilterBVLivBtn.ImageIndex := 50;
   FilteredColor;
   Select_0_TVA;
-  ClearFilterBVLivPMenu.Checked:= False;
-  
+  ClearFilterBVLivPMenu.Checked := False;
+
 end;
 
 procedure TProduitsListF.ValideFilterBVLivPMenuClick(Sender: TObject);
 begin
-ClearRegleFilterBVLivPMenuClick(Sender);
-ClearMPFilterBVLivPMenuClick(Sender);
-ClearTVAFilterPMenuClick(Sender);
+  ClearRegleFilterBVLivPMenuClick(Sender);
+  ClearMPFilterBVLivPMenuClick(Sender);
+  ClearTVAFilterPMenuClick(Sender);
 
-ClearRegleFilterBVLivPMenu.Checked:= True;
-ClearMPFilterBVLivPMenu.Checked:= True;
-ClearTVAFilterPMenu.Checked:= True;
+  ClearRegleFilterBVLivPMenu.Checked := True;
+  ClearMPFilterBVLivPMenu.Checked := True;
+  ClearTVAFilterPMenu.Checked := True;
 
- FilterBVLivBtn.ImageIndex:=50;
- MainForm.ProduitTable.Filtered:= False;
- Select_ALL;
- Select_StoCK_Dispo;
- sImage1.ImageIndex:=11;
- sImage1.Visible:= True;
- FilteredColor;
- ClearFilterBVLivPMenu.Checked:= False;
+  FilterBVLivBtn.ImageIndex := 50;
+  MainForm.ProduitTable.Filtered := False;
+  Select_ALL;
+  Select_StoCK_Dispo;
+  sImage1.ImageIndex := 11;
+  sImage1.Visible := True;
+  FilteredColor;
+  ClearFilterBVLivPMenu.Checked := False;
 
 end;
 
 end.
+

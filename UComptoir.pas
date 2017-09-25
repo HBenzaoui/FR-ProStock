@@ -212,8 +212,7 @@ type
     procedure FormDestroy(Sender: TObject);
     procedure PoleDisplayerTimerimerTimer(Sender: TObject);
     procedure RemiseBonCtrGEdtKeyPress(Sender: TObject; var Key: Char);
-    procedure ProduitsListDBGridEhKeyDown(Sender: TObject; var Key: Word;
-      Shift: TShiftState);
+    procedure ProduitsListDBGridEhKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure CameraBonCtrGBtnClick(Sender: TObject);
   private
     procedure GettingData;
@@ -238,7 +237,8 @@ implementation
 uses
   Printers, StringTool, IniFiles, UDataModule, Winapi.ShellAPI, UMainF,
   UProduitsList, UBonCtr, USplashAddUnite, UProduitGestion, UFastProduitsList,
-  USplashVersement, UOptions, UClientGestion, UClientsList, UPerissableProduit, UCamera;
+  USplashVersement, UOptions, UClientGestion, UClientsList, UPerissableProduit,
+  UCamera;
 
 procedure Refresh_PreservePosition;
 var
@@ -329,7 +329,7 @@ begin
 
   Ini := TMemIniFile.Create(ChangeFileExt(Application.ExeName, '.ini'));
   APrintBVCtrBonCtrGSlider.SliderOn := Ini.ReadBool('', 'Auto Print', APrintBVCtrBonCtrGSlider.SliderOn);
-  PrinterCaisseSizeBVCtrBonCtrLbl.Caption:= Ini.ReadString('', 'Printer Caisse Size', PrinterCaisseSizeBVCtrBonCtrLbl.Caption);
+  PrinterCaisseSizeBVCtrBonCtrLbl.Caption := Ini.ReadString('', 'Printer Caisse Size', PrinterCaisseSizeBVCtrBonCtrLbl.Caption);
   PoleA := Ini.ReadBool('', 'Afficheur client Active', PoleA);
 
   if PoleA = True then
@@ -704,12 +704,14 @@ var
   PoleA, CaisseA: Boolean;
   PORT, Msg2, PRIXTTC: string;
   Total: Integer;
+  const
+  N = ['-', '&', '"', '(', ')', '_',',','.'];
 begin
 
   if Key = #13 then
   begin
     Key := #0;
-    if ProduitBonCtrGCbx.Text <> '' then
+    if (ProduitBonCtrGCbx.Text <> '') AND NOT (ProduitBonCtrGCbx.Text[1] in N ) then
     begin
 
       if ClientBonCtrGCbx.Text <> '' then
@@ -772,7 +774,7 @@ begin
         begin
 
           lookupResultRefP := MainForm.Bonv_ctr_listTable.Lookup('code_p', (CodeP), 'code_p');
-          if (VarIsnull(lookupResultRefP)) AND (Panel1.Tag <> 1) then
+          if (VarIsnull(lookupResultRefP)) and (Panel1.Tag <> 1) then
           begin
 
             if MainForm.FDQuery2.RecordCount > 0 then
@@ -1025,7 +1027,10 @@ begin
 //        ProduitBonCtrGCbx.AutoDropDown:=False;
       ProduitBonCtrGCbx.SelectAll;
 
-    end;
+    end else
+        begin
+          ProduitBonCtrGCbx.Text:= '';
+        end;
     MainForm.Bonv_ctr_listTable.Last;
   end;
 
@@ -1595,14 +1600,15 @@ begin
   Ini.Free;
 end;
 
-procedure TBonCtrGestionF.ProduitsListDBGridEhKeyDown(Sender: TObject;
-  var Key: Word; Shift: TShiftState);
+procedure TBonCtrGestionF.ProduitsListDBGridEhKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
 begin
   if not ProduitsListDBGridEh.DataSource.DataSet.IsEmpty then
   begin
-    if key = VK_DELETE then
-  DeleteProduitBonCtrGBtnClick(Sender) ;
-  end else exit
+    if Key = VK_DELETE then
+      DeleteProduitBonCtrGBtnClick(Sender);
+  end
+  else
+    exit
 end;
 
 procedure TBonCtrGestionF.ProduitsListDBGridEhKeyPress(Sender: TObject; var Key: Char);
@@ -1666,8 +1672,7 @@ begin
     MainForm.Bonv_ctr_listTable.Refresh;
 //      MainForm.Bonv_ctr_listTable.EnableControls;
 
-     sndPlaySound('C:\Windows\Media\speech off.wav', SND_NODEFAULT or SND_ASYNC or SND_RING);
-
+    sndPlaySound('C:\Windows\Media\speech off.wav', SND_NODEFAULT or SND_ASYNC or SND_RING);
 
     Ini := TMemIniFile.Create(ChangeFileExt(Application.ExeName, '.ini'));
     PoleA := Ini.ReadBool('', 'Afficheur client Active', PoleA);
@@ -1717,7 +1722,7 @@ procedure TBonCtrGestionF.ClearProduitBonCtrGBtnClick(Sender: TObject);
 begin
 
   if MainForm.Bonv_ctr_listTable.RecordCount > 0 then
-   begin
+  begin
     FSplashAddUnite := TFSplashAddUnite.Create(Application);
     FSplashAddUnite.Width := 350;
     FSplashAddUnite.Height := 160;
@@ -1748,7 +1753,7 @@ begin
     FSplashAddUnite.Show;
     FSplashAddUnite.OKAddUniteSBtn.Enabled := True;
     FSplashAddUnite.OKAddUniteSBtn.Tag := 22;
-   end;
+  end;
 
 end;
 
@@ -1757,7 +1762,7 @@ begin
 
   if Panel1.Tag = 1 then
   begin
-  addingState;
+    addingState;
   end;
 
 //-------- use this code to start creating th form-----//
@@ -1789,8 +1794,6 @@ begin
   else
     Label3.Visible := True;
 end;
-
-
 
 procedure TBonCtrGestionF.loadData();
 begin
@@ -1827,7 +1830,7 @@ begin
 
   if (MainForm.Bonv_ctrTable.FieldByName('time_bvctr').AsDateTime <> null) then
   begin
-    HourBonCtrGD.Caption := TimeToStr( MainForm.Bonv_ctrTable.FieldByName('time_bvctr').AsDateTime);
+    HourBonCtrGD.Caption := TimeToStr(MainForm.Bonv_ctrTable.FieldByName('time_bvctr').AsDateTime);
   end;
 
   if (MainForm.Bonv_ctrTable.FieldValues['MontantRen'] <> null) then
@@ -1842,7 +1845,6 @@ begin
     MainForm.Bonv_ctr_listTable.EnableControls;
   end;
 end;
-
 
 procedure TBonCtrGestionF.sSpeedButton7Click(Sender: TObject);
 begin
@@ -2723,8 +2725,6 @@ begin
 
 end;
 
-
-
 procedure TBonCtrGestionF.PrintTicketBVCtrBonCtrGBtnClick(Sender: TObject);
 begin
 
@@ -2739,28 +2739,28 @@ begin
       ComptoirTicketfrxRprt.PrintOptions.ShowDialog := False;
       ComptoirTicketfrxRprt.PrepareReport;
 
-      ComptoirTicketfrxRprt.PrintOptions.Printer:= FOptions.PrintersListFOptionCaisseCbx.Text ;
+      ComptoirTicketfrxRprt.PrintOptions.Printer := FOptions.PrintersListFOptionCaisseCbx.Text;
 
       ComptoirTicketfrxRprt.Print;
       MainForm.Bonv_ctr_listTable.EnableControls;
     end;
   end;
 
-    if PrinterCaisseSizeBVCtrBonCtrLbl.Caption = '57mm' then
+  if PrinterCaisseSizeBVCtrBonCtrLbl.Caption = '57mm' then
   begin
 
-  if ValiderBVCtrBonCtrGImg.ImageIndex <> 1 then
-  begin
-    MainForm.Bonv_ctr_listTable.DisableControls;
-    ComptoirTicket57frxRprt.PrepareReport;
-    GettingData57;
-    ComptoirTicket57frxRprt.PrintOptions.ShowDialog := False;
-    ComptoirTicket57frxRprt.PrepareReport;
+    if ValiderBVCtrBonCtrGImg.ImageIndex <> 1 then
+    begin
+      MainForm.Bonv_ctr_listTable.DisableControls;
+      ComptoirTicket57frxRprt.PrepareReport;
+      GettingData57;
+      ComptoirTicket57frxRprt.PrintOptions.ShowDialog := False;
+      ComptoirTicket57frxRprt.PrepareReport;
 
-    ComptoirTicket57frxRprt.PrintOptions.Printer:= FOptions.PrintersListFOptionCaisseCbx.Text ;
-    ComptoirTicket57frxRprt.Print;
-    MainForm.Bonv_ctr_listTable.EnableControls;
-  end;
+      ComptoirTicket57frxRprt.PrintOptions.Printer := FOptions.PrintersListFOptionCaisseCbx.Text;
+      ComptoirTicket57frxRprt.Print;
+      MainForm.Bonv_ctr_listTable.EnableControls;
+    end;
   end;
 
 end;
@@ -2906,7 +2906,7 @@ begin
   CodeCB := MainForm.Bonv_ctrTable.FieldValues['code_bvctr'];
   NumBonCtrGEdt.Caption := 'CT' + IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5, CodeCB]);
 
-  HourBonCtrGD.Caption:= '';
+  HourBonCtrGD.Caption := '';
 
   ProduitBonCtrGCbx.SetFocus;
 
@@ -2930,9 +2930,6 @@ end;
 
 procedure TBonCtrGestionF.addingState();
 begin
-
-
-
 
   Panel1.Color := $0040332D;  //Black
   Panel2.Color := $0040332D;  //Black
@@ -2971,8 +2968,6 @@ end;
 
 procedure TBonCtrGestionF.deletingState();
 begin
-
-
 
   Panel1.Color := $00ECECEC;   //white
   Panel2.Color := $00ECECEC;   //white
@@ -3019,7 +3014,7 @@ begin
 
 
    //--- this is to clear the bon --------------------------
-    if (GetKeyState(VK_CONTROL) < 0) AND (GetKeyState(VK_DELETE) < 0) AND (AddBVCtrBonCtrGBtn.Enabled = True) then
+    if (GetKeyState(VK_CONTROL) < 0) and (GetKeyState(VK_DELETE) < 0) and (AddBVCtrBonCtrGBtn.Enabled = True) then
     begin
       ClearProduitBonCtrGBtnClick(Screen);
 
@@ -3461,7 +3456,7 @@ begin
 
         MainForm.Bonv_ctrTable.Post;
 
-        HourBonCtrGD.Caption:= TimeToStr(MainForm.Bonv_ctrTable.FieldByName('time_bvctr').AsDateTime);
+        HourBonCtrGD.Caption := TimeToStr(MainForm.Bonv_ctrTable.FieldByName('time_bvctr').AsDateTime);
   //------------------------------------------------------------------------------------------------------------------------------------------------------
         begin
           if Tag = 0 then
@@ -3756,7 +3751,7 @@ begin
     MainForm.FDQuery2.Active := True;
 
     lookupResultRefP := MainForm.Bonv_ctr_listTable.Lookup('code_p', (CodeP), 'code_p');
-    if VarIsnull(lookupResultRefP) AND (Panel1.Tag <> 1) then
+    if VarIsnull(lookupResultRefP) and (Panel1.Tag <> 1) then
     begin
 
       MainForm.Bonv_ctr_listTable.DisableControls;
@@ -3868,60 +3863,59 @@ begin
     else
     begin
 
+      if Panel1.Tag = 0 then
+      begin
+        MainForm.Bonv_ctr_listTable.First;
+        while not MainForm.Bonv_ctr_listTable.Eof do
+        begin
 
-            if Panel1.Tag = 0 then
+          if MainForm.Bonv_ctr_listTable.FieldByName('code_p').AsInteger = CodeP then
+          begin
+            MainForm.Bonv_ctr_listTable.Edit;
+            MainForm.Bonv_ctr_listTable.FieldByName('qut_p').AsFloat := MainForm.Bonv_ctr_listTable.FieldByName('qut_p').AsFloat + 1;
+            MainForm.Bonv_ctr_listTable.Post;
+            Refresh_PreservePosition;
+            ProduitBonCtrGCbx.Clear;
+            sndPlaySound('C:\Windows\Media\speech on.wav', SND_NODEFAULT or SND_ASYNC or SND_RING);
+
+            showInPoleClient;
+            Exit;
+
+          end;
+          MainForm.Bonv_ctr_listTable.Next;
+        end;
+
+      end
+      else if (Panel1.Tag = 1) and (MainForm.Bonv_ctr_listTable.IsEmpty = False) then
+      begin
+        MainForm.Bonv_ctr_listTable.First;
+        while not MainForm.Bonv_ctr_listTable.Eof do
+        begin
+
+          if MainForm.Bonv_ctr_listTable.FieldByName('code_p').AsInteger = CodeP then
+          begin
+            if MainForm.Bonv_ctr_listTable.FieldByName('qut_p').AsFloat > 1 then
             begin
-              MainForm.Bonv_ctr_listTable.First;
-              while not MainForm.Bonv_ctr_listTable.Eof do
-              begin
-
-                if MainForm.Bonv_ctr_listTable.FieldByName('code_p').AsInteger = CodeP then
-                begin
-                  MainForm.Bonv_ctr_listTable.Edit;
-                  MainForm.Bonv_ctr_listTable.FieldByName('qut_p').AsFloat := MainForm.Bonv_ctr_listTable.FieldByName('qut_p').AsFloat + 1;
-                  MainForm.Bonv_ctr_listTable.Post;
-                  Refresh_PreservePosition;
-                  ProduitBonCtrGCbx.Clear;
-                  sndPlaySound('C:\Windows\Media\speech on.wav', SND_NODEFAULT or SND_ASYNC or SND_RING);
-
-                  showInPoleClient;
-                  Exit;
-
-                end;
-                MainForm.Bonv_ctr_listTable.Next;
-              end;
-
+              MainForm.Bonv_ctr_listTable.Edit;
+              MainForm.Bonv_ctr_listTable.FieldByName('qut_p').AsFloat := MainForm.Bonv_ctr_listTable.FieldByName('qut_p').AsFloat - 1;
+              MainForm.Bonv_ctr_listTable.Post;
             end
-            else if (Panel1.Tag = 1) and (MainForm.Bonv_ctr_listTable.IsEmpty = False) then
+            else
             begin
-              MainForm.Bonv_ctr_listTable.First;
-              while not MainForm.Bonv_ctr_listTable.Eof do
-              begin
-
-                if MainForm.Bonv_ctr_listTable.FieldByName('code_p').AsInteger = CodeP then
-                begin
-                  if MainForm.Bonv_ctr_listTable.FieldByName('qut_p').AsFloat > 1 then
-                  begin
-                    MainForm.Bonv_ctr_listTable.Edit;
-                    MainForm.Bonv_ctr_listTable.FieldByName('qut_p').AsFloat := MainForm.Bonv_ctr_listTable.FieldByName('qut_p').AsFloat - 1;
-                    MainForm.Bonv_ctr_listTable.Post;
-                  end
-                  else
-                  begin
-                    MainForm.Bonv_ctr_listTable.Delete;
-                  end;
-                  Refresh_PreservePosition;
-                  ProduitBonCtrGCbx.Clear;
-                  sndPlaySound('C:\Windows\Media\speech off.wav', SND_NODEFAULT or SND_ASYNC or SND_RING);
-
-                  showInPoleClient;
-                  Exit;
-
-                end;
-                MainForm.Bonv_ctr_listTable.Next;
-              end;
-
+              MainForm.Bonv_ctr_listTable.Delete;
             end;
+            Refresh_PreservePosition;
+            ProduitBonCtrGCbx.Clear;
+            sndPlaySound('C:\Windows\Media\speech off.wav', SND_NODEFAULT or SND_ASYNC or SND_RING);
+
+            showInPoleClient;
+            Exit;
+
+          end;
+          MainForm.Bonv_ctr_listTable.Next;
+        end;
+
+      end;
 
 
 //        FSplashAddUnite:=TFSplashAddUnite.Create(Application);

@@ -1745,6 +1745,7 @@ object BonRecGestionF: TBonRecGestionF
       Anchors = [akLeft, akBottom]
       AutoSize = False
       ParentFont = False
+      Properties.ImmediateUpdateText = True
       Style.Font.Charset = DEFAULT_CHARSET
       Style.Font.Color = clWindowText
       Style.Font.Height = 16

@@ -1966,10 +1966,12 @@ procedure TBonFacAGestionF.ProduitBonFacAGCbxKeyPress(Sender: TObject;
       lookupResultRefP : Variant;
       NomP: String;
       CodeP: Integer;
+    const
+    N = ['-', '&', '"', '(', ')', '_',',','.'];
 begin
 if key = #13 then
  begin
- if ProduitBonFacAGCbx.Text <>'' then
+ if (ProduitBonFacAGCbx.Text <>'') AND NOT (ProduitBonFacAGCbx.Text[1] in N ) then
  begin
   key := #0;
 
@@ -2362,7 +2364,10 @@ if key = #13 then
 //        ProduitBonFacAGCbx.AutoDropDown:=False;
          ProduitBonFacAGCbx.SelectAll;
 
-     end;
+     end else
+         begin
+           ProduitBonFacAGCbx.Text:= '';
+         end;
      MainForm.Bona_fac_listTable.Last;
  end;
 end;

@@ -210,6 +210,10 @@ end;
 
 procedure TFastProduitsListF.ResearchProduitsEdtChange(Sender: TObject);
 var  CodeCB : Integer;
+
+const
+E = ['-', '&', '"', '(', ')', '_',',','.'];
+
 begin
 
  //----------- Searching in databese-------------------//
@@ -222,7 +226,7 @@ begin
       CodeCB:=MainForm.SQLQuery.FieldValues['code_p'];
      end;
     if ResherchPARDesProduitsRdioBtn.Checked then
-    if (ResearchProduitsEdt.text <> '') then
+    if (ResearchProduitsEdt.text <> '') AND NOT (ResearchProduitsEdt.Text[1] in E ) then
     begin
       MainForm.ProduitTable.Filtered := false;
       MainForm.ProduitTable.Filter := '[nom_p] LIKE ' + quotedstr('%' +ResearchProduitsEdt.Text + '%') + ' OR '+
@@ -232,6 +236,7 @@ begin
     else
     begin
      MainForm.ProduitTable.Filtered := false;
+     ResearchProduitsEdt.text := '';
     end;
   if ResherchPARDCodProduitsRdioBtn.Checked then
     if (ResearchProduitsEdt.text <> '') then
@@ -277,22 +282,33 @@ end;
 procedure TFastProduitsListF.ResearchProduitsEdtKeyPress(Sender: TObject; var Key: Char);
 const
   N =[Char(VK_ESCAPE)];
+  E =['-', '&', '"', '(', ')', '_', ',', '.'];
 begin
   if (Key in N) then
   begin
    key := #0;
     ResearchProduitsEdt.Text := '';
   end;
-  if key = #13 then
+  if (key = #13)   then
   begin
    key := #0;
-  // if ResherchPARDesProduitsRdioBtn.Checked then
-   if  MainForm.ProduitTable.RecordCount > 0  then
+   if  not (ResearchProduitsEdt.Text[1] in E) then
+      begin
 
-      OKProduitGBtnClick(Sender);
+     if  MainForm.ProduitTable.RecordCount > 0  then
+        begin
+        OKProduitGBtnClick(Sender);
+        end else
+            begin
+              ResearchProduitsEdt.Text := '';
+            end;
+    end else
+        begin
+           ResearchProduitsEdt.Text := '';
+        end;
+
+
   end;
-
-
 
 end;
 
@@ -309,12 +325,14 @@ procedure TFastProduitsListF.ResherchPARDesProduitsRdioBtnClick(Sender: TObject)
 begin
 ResearchProduitsEdt.Clear;
 ResearchProduitsEdt.SetFocus;
+ResearchProduitsEdt.NumbersOnly:= False;
 end;
 
 procedure TFastProduitsListF.ResherchPARDCodProduitsRdioBtnClick(Sender: TObject);
 begin
 ResearchProduitsEdt.Clear;
 ResearchProduitsEdt.SetFocus;
+ResearchProduitsEdt.NumbersOnly:= True;
 end;
 
 procedure TFastProduitsListF.FormShow(Sender: TObject);

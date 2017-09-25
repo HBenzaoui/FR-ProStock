@@ -270,6 +270,7 @@ object FSplashAddCodeBarre: TFSplashAddCodeBarre
     Font.Height = 18
     Font.Name = 'Helvetica LT Std'
     Font.Style = []
+    NumbersOnly = True
     ParentCtl3D = False
     ParentDoubleBuffered = False
     ParentFont = False

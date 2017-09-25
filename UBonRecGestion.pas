@@ -118,7 +118,6 @@ type
     BonRTotalHTNewLbl: TLabel;
     TotalTVANewLbl: TLabel;
     NChequeBonRecGCbx: TEdit;
-    Label35: TLabel;
     ObserBonRecGLbl: TLabel;
     ObserBonRecGMem: TMemo;
     BonRRemiseHTNewLbl: TLabel;
@@ -406,10 +405,12 @@ procedure TBonRecGestionF.ProduitBonRecGCbxKeyPress(Sender: TObject; var Key: Ch
       lookupResultRefP : Variant;
       NomP: String;
       CodeP: Integer;
+  const
+  N = ['-', '&', '"', '(', ')', '_',',','.'];
 begin
  if key = #13 then
  begin
- if ProduitBonRecGCbx.Text <>'' then
+ if (ProduitBonRecGCbx.Text <>'') AND NOT (ProduitBonRecGCbx.Text[1] in N ) then
  begin
   key := #0;
 
@@ -663,6 +664,7 @@ begin
  //---------------------------------------------------------------------------------------------
   if ResherchPARCBProduitsRdioBtn.Checked then
   begin
+
     MainForm.SQLQuery.Active:=False;
     MainForm.SQLQuery.SQL.Clear;
     MainForm.SQLQuery.SQL.Text:='SELECT nom_cb,code_p FROM codebarres WHERE LOWER(nom_cb) LIKE LOWER(' +''+ QuotedStr( ProduitBonRecGCbx.Text )+')' ;
@@ -801,7 +803,11 @@ begin
 //        ProduitBonRecGCbx.AutoDropDown:=False;
          ProduitBonRecGCbx.SelectAll;
 
-     end;
+     end else
+         begin
+           ProduitBonRecGCbx.Text:= '';
+         end;
+
      MainForm.Bona_recPlistTable.Last;
  end;
 
@@ -2258,7 +2264,9 @@ end;
 
 procedure TBonRecGestionF.ResherchPARDesProduitsRdioBtnClick(Sender: TObject);
 begin
+ProduitBonRecGCbx.Clear;
 ProduitBonRecGCbx.SetFocus;
+ProduitBonRecGCbx.EditText:= '0';
 end;
 
 procedure TBonRecGestionF.RemisePerctageBonRecGEdtKeyPress(Sender: TObject;

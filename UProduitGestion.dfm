@@ -1640,6 +1640,7 @@ object ProduitGestionF: TProduitGestionF
           Font.Height = 18
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          NumbersOnly = True
           ParentDoubleBuffered = False
           ParentFont = False
           TabOrder = 1

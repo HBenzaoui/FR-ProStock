@@ -787,11 +787,13 @@ procedure TBonLivGestionF.ProduitBonLivGCbxKeyPress(Sender: TObject;
   var CodeBL,CodeCB,CodeP : Integer;
       lookupResultRefP : Variant;
       NomP: String;
+  const
+  N = ['-', '&', '"', '(', ')', '_',',','.'];
 begin
  if key = #13 then
  begin
- if ProduitBonLivGCbx.Text <>'' then
- begin
+ if (ProduitBonLivGCbx.Text <>'') AND NOT (ProduitBonLivGCbx.Text[1] in N ) then
+  begin
   key := #0;
 
 
@@ -1350,7 +1352,11 @@ begin
 //        ProduitBonLivGCbx.AutoDropDown:=False;
          ProduitBonLivGCbx.SelectAll;
 
-     end;
+     end else
+         begin
+           ProduitBonLivGCbx.Text:= '';
+         end;
+
      MainForm.Bonv_liv_listTable.Last;
  end;
 

@@ -1414,9 +1414,9 @@ object ProduitsListF: TProduitsListF
       OnClick = ResherchPARDesProduitsRdioBtnClick
     end
     object ResherchPARDCodProduitsRdioBtn: TRadioButton
-      Left = 268
+      Left = 266
       Top = 6
-      Width = 108
+      Width = 114
       Height = 17
       Caption = 'Par Code '#226' Barre'
       Font.Charset = DEFAULT_CHARSET

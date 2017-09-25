@@ -843,11 +843,12 @@ procedure TBonFacVGestionF.ProduitBonFacVGCbxKeyPress(Sender: TObject;
       lookupResultRefP : Variant;
       NomP: String;
       CodeP: Integer;
-
+  const
+  N = ['-', '&', '"', '(', ')', '_',',','.'];
 begin
  if key = #13 then
  begin
- if ProduitBonFacVGCbx.Text <>'' then
+ if (ProduitBonFacVGCbx.Text <>'') AND NOT (ProduitBonFacVGCbx.Text[1] in N ) then
  begin
   key := #0;
 
@@ -1420,7 +1421,11 @@ begin
 //        ProduitBonFacVGCbx.AutoDropDown:=False;
          ProduitBonFacVGCbx.SelectAll;
 
-     end;
+     end else
+         begin
+           ProduitBonFacVGCbx.Text:= '';
+         end;
+
      MainForm.Bonv_fac_listTable.Last;
  end;
 end;
