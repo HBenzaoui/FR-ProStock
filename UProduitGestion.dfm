@@ -1645,6 +1645,7 @@ object ProduitGestionF: TProduitGestionF
           ParentFont = False
           TabOrder = 1
           OnChange = CodeBarProduitGEdtChange
+          OnEnter = CodeBarProduitGEdtEnter
           OnExit = CodeBarProduitGEdtExit
           OnKeyPress = CodeBarProduitGEdtKeyPress
         end

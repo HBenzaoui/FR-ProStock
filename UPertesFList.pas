@@ -97,7 +97,7 @@ implementation
 
 {$R *.dfm}
 
-uses System.DateUtils,UDataModule, UPertesGestion, UMainF, USplashAddUnite;
+uses System.DateUtils,UDataModule, UPertesGestion, UMainF, USplashAddUnite, UComptoir;
 
 procedure TPertesFListF.AddBARecBtnClick(Sender: TObject);
 begin
@@ -177,6 +177,10 @@ end;
 procedure TPertesFListF.ApplicationEvents1ShortCut(var Msg: TWMKey;
   var Handled: Boolean);
 begin
+ if Assigned(BonCtrGestionF) then
+ begin
+ if (BonCtrGestionF.Showing = False)  then
+ begin
  if (PertesFListF.Active = True)  AND  (Assigned(PertesGestionF) = False)  then
  begin
   if  (GetKeyState(VK_F4) < 0)  then
@@ -224,6 +228,58 @@ begin
             Handled := true;
           end;
       end;
+     end;
+ end;
+ end else
+     begin
+        if (PertesFListF.Active = True)  AND  (Assigned(PertesGestionF) = False)  then
+ begin
+  if  (GetKeyState(VK_F4) < 0)  then
+  begin
+      AddBARecBtnClick(Screen);
+    Handled := true;
+  end;
+  if  (GetKeyState(VK_F5) < 0)  then
+  begin
+      EditBARecBtnClick(Screen);
+    Handled := true;
+  end;
+  if  (GetKeyState(VK_F6) < 0)  then
+  begin
+      DeleteBARecBtnClick(Screen);
+    Handled := true;
+  end;
+     if  (GetKeyState(VK_F12) < 0)  then
+  begin
+    AdvToolButton3Click(Screen) ;
+    Handled := true;
+  end;
+ end else
+     begin
+      if  (PertesFListF.Active = True)  AND (PertesGestionF.Showing = False)   then
+       begin
+          if  (GetKeyState(VK_F4) < 0)  then
+          begin
+              AddBARecBtnClick(Screen);
+            Handled := true;
+          end;
+          if  (GetKeyState(VK_F5) < 0)  then
+          begin
+              EditBARecBtnClick(Screen);
+            Handled := true;
+          end;
+          if  (GetKeyState(VK_F6) < 0)  then
+          begin
+              DeleteBARecBtnClick(Screen);
+            Handled := true;
+          end;
+             if  (GetKeyState(VK_F12) < 0)  then
+          begin
+            AdvToolButton3Click(Screen) ;
+            Handled := true;
+          end;
+      end;
+     end;
      end;
 end;
 

@@ -1647,7 +1647,7 @@ begin
 
   end;
 
-  //--------- this tag = 3 is for validating a comptoir-------------------
+//--------- this tag = 3 is for validating a comptoir-------------------
 
  if FSplashVersement.Tag = 3 then
   begin

@@ -123,7 +123,7 @@ implementation
 {$R *.dfm}
 
 uses System.DateUtils,Vcl.Imaging.jpeg,StringTool,
-UDataModule, UChargesGestion, UMainF, USplashAddUnite;
+UDataModule, UChargesGestion, UMainF, USplashAddUnite, A7Rep, UComptoir;
 
 
 procedure TChargesFListF.AddBARecBtnClick(Sender: TObject);
@@ -352,6 +352,10 @@ end;
 procedure TChargesFListF.ApplicationEvents1ShortCut(var Msg: TWMKey;
   var Handled: Boolean);
 begin
+ if Assigned(BonCtrGestionF) then
+ begin
+ if (BonCtrGestionF.Showing = False)  then
+ begin
  if (ChargesFListF.Active = True)  AND  (Assigned(ChargesGestionF) = False)  then
  begin
   if  (GetKeyState(VK_F4) < 0)  then
@@ -409,6 +413,68 @@ begin
             Handled := true;
           end;
       end;
+     end;
+  end;
+ end else
+     begin
+        if (ChargesFListF.Active = True)  AND  (Assigned(ChargesGestionF) = False)  then
+ begin
+  if  (GetKeyState(VK_F4) < 0)  then
+  begin
+      AddBARecBtnClick(Screen);
+    Handled := true;
+  end;
+  if  (GetKeyState(VK_F5) < 0)  then
+  begin
+      EditBARecBtnClick(Screen);
+    Handled := true;
+  end;
+  if  (GetKeyState(VK_F6) < 0)  then
+  begin
+      DeleteBARecBtnClick(Screen);
+    Handled := true;
+  end;
+  if  (GetKeyState(VK_F12) < 0)  then
+  begin
+    P2Click(Screen) ;
+    Handled := true;
+  end;
+  if  (GetKeyState(VK_F11) < 0)  then
+  begin
+    P1Click(Screen) ;
+    Handled := true;
+  end;
+ end else
+     begin
+      if  (ChargesFListF.Active = True)  AND (ChargesGestionF.Showing = False)   then
+       begin
+          if  (GetKeyState(VK_F4) < 0)  then
+          begin
+              AddBARecBtnClick(Screen);
+            Handled := true;
+          end;
+          if  (GetKeyState(VK_F5) < 0)  then
+          begin
+              EditBARecBtnClick(Screen);
+            Handled := true;
+          end;
+          if  (GetKeyState(VK_F6) < 0)  then
+          begin
+              DeleteBARecBtnClick(Screen);
+            Handled := true;
+          end;
+          if  (GetKeyState(VK_F12) < 0)  then
+          begin
+            P2Click(Screen) ;
+            Handled := true;
+          end;
+          if  (GetKeyState(VK_F11) < 0)  then
+          begin
+            P1Click(Screen) ;
+            Handled := true;
+          end;
+      end;
+     end;
      end;
 end;
 

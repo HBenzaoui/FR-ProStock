@@ -144,7 +144,7 @@ implementation
 
 {$R *.dfm}
 
-uses UMainF, UFournisseurGestion, USplash, UClientGestion,Threading, UWorkingSplash;
+uses UMainF, UFournisseurGestion, USplash, UClientGestion,Threading, UWorkingSplash, UComptoir;
 
 
 procedure TFournisseurListF.Select_Valid;
@@ -350,6 +350,10 @@ end;
 procedure TFournisseurListF.ApplicationEvents1ShortCut(var Msg: TWMKey;
   var Handled: Boolean);
 begin
+ if Assigned(BonCtrGestionF) then
+ begin
+ if (BonCtrGestionF.Showing = False)  then
+ begin
  if (FournisseurListF.Active = True)  AND  (Assigned(FournisseurGestionF) = False)  then
  begin
   if  (GetKeyState(VK_F4) < 0)  then
@@ -397,6 +401,58 @@ begin
             Handled := true;
           end;
       end;
+     end;
+ end;
+ end else
+     begin
+       if (FournisseurListF.Active = True)  AND  (Assigned(FournisseurGestionF) = False)  then
+ begin
+  if  (GetKeyState(VK_F4) < 0)  then
+  begin
+      AddFournisseursBtnClick(Screen);
+    Handled := true;
+  end;
+  if  (GetKeyState(VK_F5) < 0)  then
+  begin
+      EditFournisseursBtnClick(Screen);
+    Handled := true;
+  end;
+  if  (GetKeyState(VK_F6) < 0)  then
+  begin
+      DeleteFournisseursBtnClick(Screen);
+    Handled := true;
+  end;
+     if  (GetKeyState(VK_F12) < 0)  then
+  begin
+    AdvToolButton3Click(Screen) ;
+    Handled := true;
+  end;
+ end else
+     begin
+      if  (FournisseurListF.Active = True)  AND (FournisseurGestionF.Showing = False)   then
+       begin
+          if  (GetKeyState(VK_F4) < 0)  then
+          begin
+              AddFournisseursBtnClick(Screen);
+            Handled := true;
+          end;
+          if  (GetKeyState(VK_F5) < 0)  then
+          begin
+              EditFournisseursBtnClick(Screen);
+            Handled := true;
+          end;
+          if  (GetKeyState(VK_F6) < 0)  then
+          begin
+              DeleteFournisseursBtnClick(Screen);
+            Handled := true;
+          end;
+             if  (GetKeyState(VK_F12) < 0)  then
+          begin
+            AdvToolButton3Click(Screen) ;
+            Handled := true;
+          end;
+      end;
+     end;
      end;
 end;
 

@@ -91,7 +91,7 @@ implementation
 {$R *.dfm}
 
 uses System.DateUtils,Vcl.Imaging.jpeg,StringTool, UDataModule,
-  UTransferComptesGestion, USplashAddUnite, UMainF;
+  UTransferComptesGestion, USplashAddUnite, UMainF, UComptoir;
 
 procedure TTransferListGestionF.AddBARecBtnClick(Sender: TObject);
 begin
@@ -182,6 +182,10 @@ end;
 procedure TTransferListGestionF.ApplicationEvents1ShortCut(var Msg: TWMKey;
   var Handled: Boolean);
 begin
+ if Assigned(BonCtrGestionF) then
+ begin
+ if (BonCtrGestionF.Showing = False)  then
+ begin
  if (TransferListGestionF.Active = True)  AND  (Assigned(TransferComptesGestionF) = False)  then
  begin
   if  (GetKeyState(VK_F4) < 0)  then
@@ -229,6 +233,58 @@ begin
             Handled := true;
           end;
       end;
+     end;
+ end;
+ end else
+     begin
+       if (TransferListGestionF.Active = True)  AND  (Assigned(TransferComptesGestionF) = False)  then
+ begin
+  if  (GetKeyState(VK_F4) < 0)  then
+  begin
+      AddBARecBtnClick(Screen);
+    Handled := true;
+  end;
+  if  (GetKeyState(VK_F5) < 0)  then
+  begin
+      EditBARecBtnClick(Screen);
+    Handled := true;
+  end;
+  if  (GetKeyState(VK_F6) < 0)  then
+  begin
+      DeleteBARecBtnClick(Screen);
+    Handled := true;
+  end;
+     if  (GetKeyState(VK_F12) < 0)  then
+  begin
+    L1Click(Screen) ;
+    Handled := true;
+  end;
+ end else
+     begin
+      if  (TransferListGestionF.Active = True)  AND (TransferComptesGestionF.Showing = False)   then
+       begin
+          if  (GetKeyState(VK_F4) < 0)  then
+          begin
+              AddBARecBtnClick(Screen);
+            Handled := true;
+          end;
+          if  (GetKeyState(VK_F5) < 0)  then
+          begin
+              EditBARecBtnClick(Screen);
+            Handled := true;
+          end;
+          if  (GetKeyState(VK_F6) < 0)  then
+          begin
+              DeleteBARecBtnClick(Screen);
+            Handled := true;
+          end;
+             if  (GetKeyState(VK_F12) < 0)  then
+          begin
+            L1Click(Screen) ;
+            Handled := true;
+          end;
+      end;
+     end;
      end;
 end;
 

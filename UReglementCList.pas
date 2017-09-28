@@ -134,7 +134,7 @@ var
 implementation
 
 uses Winapi.MMSystem,Threading,
-  UReglementCGestion, UMainF, USplashAddUnite, USplash;
+  UReglementCGestion, UMainF, USplashAddUnite, USplash, UComptoir;
 
 {$R *.dfm}
 
@@ -459,6 +459,10 @@ end;
 procedure TReglementCListF.ApplicationEvents1ShortCut(var Msg: TWMKey;
   var Handled: Boolean);
 begin
+ if Assigned(BonCtrGestionF) then
+ begin
+ if (BonCtrGestionF.Showing = False)  then
+ begin
  if (ReglementCListF.Active = True)  AND  (Assigned(ReglementCGestionF) = False)  then
  begin
   if  (GetKeyState(VK_F4) < 0)  then
@@ -506,6 +510,58 @@ begin
             Handled := true;
           end;
       end;
+     end;
+ end;
+ end else
+     begin
+        if (ReglementCListF.Active = True)  AND  (Assigned(ReglementCGestionF) = False)  then
+ begin
+  if  (GetKeyState(VK_F4) < 0)  then
+  begin
+      AddBARecBtnClick(Screen);
+    Handled := true;
+  end;
+  if  (GetKeyState(VK_F5) < 0)  then
+  begin
+      EditBARecBtnClick(Screen);
+    Handled := true;
+  end;
+  if  (GetKeyState(VK_F6) < 0)  then
+  begin
+      DeleteBARecBtnClick(Screen);
+    Handled := true;
+  end;
+     if  (GetKeyState(VK_F12) < 0)  then
+  begin
+    AdvToolButton3Click(Screen) ;
+    Handled := true;
+  end;
+ end else
+     begin
+      if  (ReglementCListF.Active = True)  AND (ReglementCGestionF.Showing = False)   then
+       begin
+          if  (GetKeyState(VK_F4) < 0)  then
+          begin
+              AddBARecBtnClick(Screen);
+            Handled := true;
+          end;
+          if  (GetKeyState(VK_F5) < 0)  then
+          begin
+              EditBARecBtnClick(Screen);
+            Handled := true;
+          end;
+          if  (GetKeyState(VK_F6) < 0)  then
+          begin
+              DeleteBARecBtnClick(Screen);
+            Handled := true;
+          end;
+             if  (GetKeyState(VK_F12) < 0)  then
+          begin
+            AdvToolButton3Click(Screen) ;
+            Handled := true;
+          end;
+      end;
+     end;
      end;
 end;
 

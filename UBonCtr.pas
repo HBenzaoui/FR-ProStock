@@ -438,7 +438,7 @@ codeCT:= 0;
 
 
 
-BonCtrGestionF.Show;
+BonCtrGestionF.ShowModal;
 
  //     finally
       //  BonCtrGestionF.Free;
@@ -985,6 +985,10 @@ end;
 procedure TBonCtrF.ApplicationEvents1ShortCut(var Msg: TWMKey;
   var Handled: Boolean);
 begin
+ if Assigned(BonCtrGestionF) then
+ begin
+ if (BonCtrGestionF.Showing = False)  then
+ begin
  if (BonCtrF.Active = True)  AND  (Assigned(BonCtrGestionF) = False)  then
  begin
   if  (GetKeyState(VK_F4) < 0)  then
@@ -1033,6 +1037,59 @@ begin
           end;
       end;
      end;
+ end;
+ end else
+     begin
+        if (BonCtrF.Active = True)  AND  (Assigned(BonCtrGestionF) = False)  then
+ begin
+  if  (GetKeyState(VK_F4) < 0)  then
+  begin
+      AddBVCtrBtnClick(Screen);
+    Handled := true;
+  end;
+  if  (GetKeyState(VK_F5) < 0)  then
+  begin
+      EditBVCtrBtnClick(Screen);
+    Handled := true;
+  end;
+  if  (GetKeyState(VK_F6) < 0)  then
+  begin
+      DeleteBVCtrBtnClick(Screen);
+    Handled := true;
+  end;
+     if  (GetKeyState(VK_F12) < 0)  then
+  begin
+    AdvToolButton3Click(Screen) ;
+    Handled := true;
+  end;
+ end else
+     begin
+      if  (BonCtrF.Active = True)  AND (BonCtrGestionF.Showing = False)   then
+       begin
+          if  (GetKeyState(VK_F4) < 0)  then
+          begin
+              AddBVCtrBtnClick(Screen);
+            Handled := true;
+          end;
+          if  (GetKeyState(VK_F5) < 0)  then
+          begin
+              EditBVCtrBtnClick(Screen);
+            Handled := true;
+          end;
+          if  (GetKeyState(VK_F6) < 0)  then
+          begin
+              DeleteBVCtrBtnClick(Screen);
+            Handled := true;
+          end;
+             if  (GetKeyState(VK_F12) < 0)  then
+          begin
+            AdvToolButton3Click(Screen) ;
+            Handled := true;
+          end;
+      end;
+     end;
+     end;
+
 end;
 
 procedure TBonCtrF.ATermeMPFilterBVLivPMenuClick(Sender: TObject);

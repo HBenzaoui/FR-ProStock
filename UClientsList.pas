@@ -152,7 +152,7 @@ implementation
 
 {$R *.dfm}
 
-uses UMainF,   UClientGestion, USplash,System.Threading, UWorkingSplash;
+uses UMainF,   UClientGestion, USplash,System.Threading, UWorkingSplash, UComptoir;
 
 procedure TClientListF.Select_Valid;
 begin
@@ -1000,6 +1000,12 @@ end;
 procedure TClientListF.ApplicationEvents1ShortCut(var Msg: TWMKey;
   var Handled: Boolean);
 begin
+
+ if Assigned(BonCtrGestionF) then
+ begin
+ if (BonCtrGestionF.Showing = False)  then
+ begin
+
  if (ClientListF.Active = True)  AND  (Assigned(ClientGestionF) = False)  then
  begin
   if  (GetKeyState(VK_F4) < 0)  then
@@ -1048,6 +1054,58 @@ begin
           end;
       end;
      end;
+ end;
+end else
+    begin
+        if (ClientListF.Active = True)  AND  (Assigned(ClientGestionF) = False)  then
+ begin
+  if  (GetKeyState(VK_F4) < 0)  then
+  begin
+      AddClientsBtnClick(Screen);
+    Handled := true;
+  end;
+  if  (GetKeyState(VK_F5) < 0)  then
+  begin
+      EditClientsBtnClick(Screen);
+    Handled := true;
+  end;
+  if  (GetKeyState(VK_F6) < 0)  then
+  begin
+      DeleteClientsBtnClick(Screen);
+    Handled := true;
+  end;
+     if  (GetKeyState(VK_F12) < 0)  then
+  begin
+    AdvToolButton3Click(Screen) ;
+    Handled := true;
+  end;
+ end else
+     begin
+      if  (ClientListF.Active = True)  AND (ClientGestionF.Showing = False)   then
+       begin
+          if  (GetKeyState(VK_F4) < 0)  then
+          begin
+              AddClientsBtnClick(Screen);
+            Handled := true;
+          end;
+          if  (GetKeyState(VK_F5) < 0)  then
+          begin
+              EditClientsBtnClick(Screen);
+            Handled := true;
+          end;
+          if  (GetKeyState(VK_F6) < 0)  then
+          begin
+              DeleteClientsBtnClick(Screen);
+            Handled := true;
+          end;
+             if  (GetKeyState(VK_F12) < 0)  then
+          begin
+            AdvToolButton3Click(Screen) ;
+            Handled := true;
+          end;
+      end;
+     end;
+    end;
 end;
 
 procedure TClientListF.NextClientbtnClick(Sender: TObject);

@@ -216,6 +216,7 @@ type
     procedure PrixVHTA2ProduitEdtKeyPress(Sender: TObject; var Key: Char);
     procedure PrixVTTCA2ProduitEdtKeyPress(Sender: TObject; var Key: Char);
     procedure MargeA2ProduitEdtKeyPress(Sender: TObject; var Key: Char);
+    procedure CodeBarProduitGEdtEnter(Sender: TObject);
 
   private
     { Private declarations }
@@ -1256,9 +1257,11 @@ AlertJours,MinStock,MaxStock,StockIN,StockAlert ,FamP,FamSP,UnitP,FourP,LoucP,Co
   S : TStream;
   lookupResultNomP,lookupResultRefP : Variant;
 
-begin
+  testInt : Integer;
 
- if NameProduitGEdt.Text <> '' then
+begin
+                  //AND  TryStrToInt(NameProduitGEdt.Text,testInt) = True
+ if (NameProduitGEdt.Text <> '')  then
   begin
    if RefProduitGEdt.Text <> '' then
     begin
@@ -2938,10 +2941,15 @@ begin
   end;
 end;
 
+procedure TProduitGestionF.CodeBarProduitGEdtEnter(Sender: TObject);
+begin
+  ProduitGestionF.KeyPreview:= False;
+end;
+
 procedure TProduitGestionF.CodeBarProduitGEdtExit(Sender: TObject);
 VAR CodeP : Integer;
 begin
-
+  ProduitGestionF.KeyPreview:= True;
 if CodeBarProduitGEdt.Text <> '' then
 begin
   
@@ -3013,7 +3021,6 @@ begin
 if Key = #13 then
 begin
 Key:=#0;
-
 CodeBarProduitGEdtExit(Sender);
 end;
 

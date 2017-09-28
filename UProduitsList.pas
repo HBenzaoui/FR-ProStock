@@ -160,7 +160,7 @@ implementation
 
 uses
   MMSystem, Threading, UMainF, UProduitGestion, USplashPrinting, USplash,
-  UWorkingSplash;
+  UWorkingSplash, UComptoir;
 
 {$R *.dfm}
 
@@ -1390,6 +1390,10 @@ end;
 
 procedure TProduitsListF.ApplicationEvents1ShortCut(var Msg: TWMKey; var Handled: Boolean);
 begin
+ if Assigned(BonCtrGestionF) then
+ begin
+ if (BonCtrGestionF.Showing = False)  then
+ begin
   if (ProduitsListF.Active = True) and (Assigned(ProduitGestionF) = False) then
   begin
     if (GetKeyState(VK_F4) < 0) then
@@ -1450,6 +1454,70 @@ begin
       end;
     end;
   end;
+ end;
+ end else
+     begin
+         if (ProduitsListF.Active = True) and (Assigned(ProduitGestionF) = False) then
+  begin
+    if (GetKeyState(VK_F4) < 0) then
+    begin
+      AddProduitsBtnClick(Screen);
+      Handled := true;
+    end;
+    if (GetKeyState(VK_F5) < 0) then
+    begin
+      EditProduitsBtnClick(Screen);
+      Handled := true;
+    end;
+    if (GetKeyState(VK_F6) < 0) then
+    begin
+      DeleteProduitsBtnClick(Screen);
+      Handled := true;
+    end;
+    if (GetKeyState(VK_F12) < 0) then
+    begin
+      AdvToolButton3Click(Screen);
+      Handled := true;
+    end;
+    if (GetKeyState(VK_F11) < 0) then
+    begin
+      AdvToolButton4Click(Screen);
+      Handled := true;
+    end;
+  end
+  else
+  begin
+    if (ProduitsListF.Active = True) and (ProduitGestionF.Showing = False) then
+    begin
+      if (GetKeyState(VK_F4) < 0) then
+      begin
+        AddProduitsBtnClick(Screen);
+        Handled := true;
+      end;
+      if (GetKeyState(VK_F5) < 0) then
+      begin
+        EditProduitsBtnClick(Screen);
+        Handled := true;
+      end;
+      if (GetKeyState(VK_F6) < 0) then
+      begin
+        DeleteProduitsBtnClick(Screen);
+        Handled := true;
+      end;
+      if (GetKeyState(VK_F12) < 0) then
+      begin
+        AdvToolButton3Click(Screen);
+        Handled := true;
+      end;
+
+      if (GetKeyState(VK_F11) < 0) then
+      begin
+        AdvToolButton4Click(Screen);
+        Handled := true;
+      end;
+    end;
+  end
+     end;
 end;
 
 procedure TProduitsListF.Button1Click(Sender: TObject);

@@ -594,7 +594,7 @@ begin
 
 
       // --------------- adding from the Comptoir panel----
-         if OKClientGBtn.Tag = 6 then
+    if OKClientGBtn.Tag = 6 then
     begin
       with MainForm.ClientTable do
       begin
@@ -650,7 +650,7 @@ begin
       MainForm.ClientTable.Refresh;
       MainForm.ClientTable.Last;
       BonCtrGestionF.ClientBonCtrGCbx.Text := NameClientGEdt.Text;
-      BonCtrGestionF.ClientBonCtrGCbx.SetFocus;
+      BonCtrGestionF.ProduitBonCtrGCbx.SetFocus;
     end;
 
 

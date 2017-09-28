@@ -2850,6 +2850,8 @@ begin
     EnableBonCtr;
   end;
 
+
+
   codeCT := 0;
    //   BonRecGestionF := TBonRecGestionF.Create(BonRecGestionF);
   if MainForm.Bonv_ctrTable.RecordCount <= 0 then
@@ -2916,13 +2918,15 @@ begin
 
   addingState;
 
+
+
 end;
 
 procedure TBonCtrGestionF.AddClientBonCtrGBtnClick(Sender: TObject);
 begin
   FormStyle := fsNormal;
   ClientListF.AddClientsBtnClick(Sender);
-  ClientGestionF.OKClientGBtn.Tag := 5;
+  ClientGestionF.OKClientGBtn.Tag := 6;
   ClientBonCtrGCbx.StyleElements := [seFont, seBorder, seBorder];
   RequiredClientGlbl.Visible := False;
   NameClientGErrorP.Visible := False;
@@ -3013,6 +3017,7 @@ begin
   begin
 
 
+
    //--- this is to clear the bon --------------------------
     if (GetKeyState(VK_CONTROL) < 0) and (GetKeyState(VK_DELETE) < 0) and (AddBVCtrBonCtrGBtn.Enabled = True) then
     begin
@@ -3051,7 +3056,10 @@ begin
  //--- this is to add new bon --------------------------
     if (GetKeyState(VK_F4) < 0) and (AddBVCtrBonCtrGBtn.Enabled = True) then
     begin
+      SetFocus;
       AddBVCtrBonCtrGBtnClick(Screen);
+
+        ProduitBonCtrGCbx.SetFocus;
 
       Handled := true;
     end;

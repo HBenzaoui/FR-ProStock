@@ -1252,7 +1252,7 @@ begin
       CanClose := True;
     end;
  end;
- 
+
 end;
 
 procedure TMainForm.FormCreate(Sender: TObject);
@@ -1270,8 +1270,8 @@ begin
 //  FormatSettings.ShortDateFormat:= 'dd/mm/yyyy';
 //  FormatSettings.CurrencyString:= ' ';
 //  FormatSettings.CurrencyFormat:= 1;
-
-
+//
+//   Label1.Caption  :=  GetLocaleFormatSettings(LOCALE_SYSTEM_DEFAULT, formatSettings);
   
 Screen.MenuFont.Height := 15;
 Screen.MenuFont.Color:= $0040332D ;
@@ -4228,54 +4228,54 @@ Var
   buttonSelected : Integer;
 begin
 
-    try
-        DataModuleF.ConnectToDB;
-//        ConnectToDBonMainCreate;
+//    try
+//        DataModuleF.ConnectToDB;
+////        ConnectToDBonMainCreate;
+//
+//        if  DataModuleF.GstockdcConnection02.Connected OR DataModuleF.PSDBConfigConnection.Connected then
+//        begin
+//             ConnectToDBonMainCreate;
+//        end;
+//
+//
+//      except
+//
+//
+//
+//           // Show a custom dialog
+//     buttonSelected := DataModuleF.MyMessageDialog('Le serveur ne répond pas! Assurer-tu que le serveur est activé'
+//     ,mtCustom,[mbRetry,mbCancel],
+//                              ['Annuler','Réessayer']);
+//
+//
+//          if buttonSelected = mrRetry then
+//          begin
+//
+//              DataModuleF.ConnectToDB;
+//      //        ConnectToDBonMainCreate;
+//
+//              if  DataModuleF.GstockdcConnection02.Connected OR DataModuleF.PSDBConfigConnection.Connected then
+//              begin
+//                   ConnectToDBonMainCreate;
+//              end;
+//
+//          end;
+//
+//          if buttonSelected = mrCancel then
+//          begin
+//
+//            GstockdcConnection.Connected:=False;
+//            DataModuleF.GstockdcConnection02.Connected:=False;
+//            DataModuleF.PSDBConfigConnection.Connected:=False;
+//
+//            Application.Terminate;
+//
+//
+//          end;
 
-        if  DataModuleF.GstockdcConnection02.Connected OR DataModuleF.PSDBConfigConnection.Connected then
-        begin
-             ConnectToDBonMainCreate;
-        end;
 
 
-      except
-
-
-
-           // Show a custom dialog
-     buttonSelected := DataModuleF.MyMessageDialog('Le serveur ne répond pas! Assurer-tu que le serveur est activé'
-     ,mtCustom,[mbRetry,mbCancel],
-                              ['Annuler','Réessayer']);
-
-
-          if buttonSelected = mrRetry then
-          begin
-
-              DataModuleF.ConnectToDB;
-      //        ConnectToDBonMainCreate;
-
-              if  DataModuleF.GstockdcConnection02.Connected OR DataModuleF.PSDBConfigConnection.Connected then
-              begin
-                   ConnectToDBonMainCreate;
-              end;
-
-          end;
-
-          if buttonSelected = mrCancel then
-          begin
-
-            GstockdcConnection.Connected:=False;
-            DataModuleF.GstockdcConnection02.Connected:=False;
-            DataModuleF.PSDBConfigConnection.Connected:=False;
-
-            Application.Terminate;
-
-
-          end;
-
-
-
-    end;
+//    end;
 end;
 
 
