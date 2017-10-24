@@ -388,6 +388,12 @@ I : Integer;
 //      Cursor := crDefault;
      end;
 
+     if ResherchPARCBProduitsRdioBtn.Checked then
+     begin
+      ProduitBonRecGCbx.Properties.Items.Clear;
+
+     end;
+
 end;
 
 procedure TBonRecGestionF.ProduitBonRecGCbxKeyDown(Sender: TObject;
@@ -560,7 +566,7 @@ begin
             MainForm.Bona_recPlistTable.IndexFieldNames:='';
             MainForm.Bona_recPlistTable.Active:=False;
             MainForm.Bona_recPlistTable.SQL.Clear;
-            MainForm.Bona_recPlistTable.SQL.Text:= 'SELECT * FROM bona_rec_list' ;
+            MainForm.Bona_recPlistTable.SQL.Text:= 'SELECT * FROM bona_rec_list ORDER by code_barecl' ;
             MainForm.Bona_recPlistTable.Active:=True;
            if  MainForm.Bona_recPlistTable.RecordCount <= 0 then
            begin
@@ -691,7 +697,7 @@ begin
             MainForm.Bona_recPlistTable.IndexFieldNames:='';
             MainForm.Bona_recPlistTable.Active:=False;
             MainForm.Bona_recPlistTable.SQL.Clear;
-            MainForm.Bona_recPlistTable.SQL.Text:= 'SELECT * FROM bona_rec_list' ;
+            MainForm.Bona_recPlistTable.SQL.Text:= 'SELECT * FROM bona_rec_list ORDER by code_barecl' ;
             MainForm.Bona_recPlistTable.Active:=True;
 
            if  MainForm.Bona_recPlistTable.RecordCount <= 0 then
@@ -708,7 +714,8 @@ begin
                    ProduitsListDBGridEh.Columns[4].Visible := True
                  end;               
 
-             MainForm.Bona_recPlistTable.Insert;
+             MainForm.Bona_recPlistTable.Last;
+             MainForm.Bona_recPlistTable.Append;
              MainForm.Bona_recPlistTable.FieldValues['code_barecl']:= CodeBR ;
              MainForm.Bona_recPlistTable.FieldValues['code_barec']:= MainForm.Bona_recTable.FieldValues['code_barec'];
              MainForm.Bona_recPlistTable.FieldValues['code_p']:=  MainForm.SQLQuery.FieldValues['code_p'] ;

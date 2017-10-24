@@ -116,6 +116,7 @@ type
     RequiredRefProduitGlbl: TLabel;
     RefProduitGErrorP: TPanel;
     DatePerProduitGD: TDateTimePicker;
+    ShowKeyBoardProduitGBtn: TAdvToolButton;
     procedure ShowCalculaturProduitGBtnClick(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -217,6 +218,7 @@ type
     procedure PrixVTTCA2ProduitEdtKeyPress(Sender: TObject; var Key: Char);
     procedure MargeA2ProduitEdtKeyPress(Sender: TObject; var Key: Char);
     procedure CodeBarProduitGEdtEnter(Sender: TObject);
+    procedure ShowKeyBoardProduitGBtnClick(Sender: TObject);
 
   private
     { Private declarations }
@@ -235,7 +237,7 @@ implementation
 
 {$R *.dfm}
 
-uses UClientGestion, UMainF, USplashAddUnite, UFournisseurList,
+uses Winapi.ShellAPI, UClientGestion, UMainF, USplashAddUnite, UFournisseurList,
   USplashAddCodeBarre, math, UFournisseurGestion, USplash, UProduitsList
 
   , UComptoir, UBonFacAGestion, UBonFacVGestion, UBonLivGestion, UBonRecGestion,
@@ -598,6 +600,61 @@ end;
 procedure TProduitGestionF.ShowCalculaturProduitGBtnClick(Sender: TObject);
 begin
  WinExec('C:\Windows\system32\Calc.exe' ,SW_SHOW) ;WinExec('c:\windows\calc.exe', sw_Normal);
+end;
+
+
+function Wow64DisableWow64FsRedirection(var Wow64FsEnableRedirection: LongBool): LongBool; stdcall; external 'Kernel32.dll' name 'Wow64DisableWow64FsRedirection';
+
+function Wow64EnableWow64FsRedirection(Wow64FsEnableRedirection: LongBool): LongBool; stdcall; external 'Kernel32.dll' name 'Wow64EnableWow64FsRedirection';
+
+
+procedure TProduitGestionF.ShowKeyBoardProduitGBtnClick(Sender: TObject);
+var
+  SEInfo: TShellExecuteInfo;
+  ExitCode: DWORD;
+  ExecuteFile, ParamString, StartInString: string;
+  Wow64FsEnableRedirection: LongBool;
+begin
+
+  if not (BonCtrGestionF.GetWindowsVersion = 'Windows XP') then
+  begin
+
+    if Wow64DisableWow64FsRedirection(Wow64FsEnableRedirection) then
+    begin
+      ExecuteFile := 'C:\Windows\System32\osk.exe';
+      FillChar(SEInfo, SizeOf(SEInfo), 0);
+      SEInfo.cbSize := SizeOf(TShellExecuteInfo);
+      with SEInfo do
+      begin
+        fMask := SEE_MASK_NOCLOSEPROCESS;
+        Wnd := Application.Handle;
+        lpFile := PChar(ExecuteFile);
+    { ParamString can contain the application parameters. }
+  //   lpParameters := PChar('/C pg_dump -U postgres -W -F t GSTOCKDC > d:\dd') ;
+    { StartInString specifies the name of the working directory. If ommited, the current directory is used. }
+    // lpDirectory := PChar(StartInString) ;
+        nShow := SW_SHOWNORMAL;
+      end;
+      if ShellExecuteEx(@SEInfo) then
+      begin
+        repeat
+          Application.ProcessMessages;
+          GetExitCodeProcess(SEInfo.hProcess, ExitCode);
+        until (ExitCode <> STILL_ACTIVE) or Application.Terminated;
+
+//  ShowMessage('Calculator terminated') ;
+      end
+      else
+        ShowMessage('Error starting Keyboard!');
+
+      if not Wow64EnableWow64FsRedirection(Wow64FsEnableRedirection) then
+        RaiseLastOSError;
+    end
+    else
+      RaiseLastOSError;
+
+  end;
+
 end;
 
 procedure TProduitGestionF.ImageDeleteProduitGBtnClick(Sender: TObject);
@@ -3060,17 +3117,19 @@ procedure TProduitGestionF.PrixAHTProduitEdtKeyPress(Sender: TObject;
   var Key: Char);
 const
   N = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0',',','.', Char(VK_back)];
-   F = [','];
+  F = [','];
 begin
-  if not(Key in N) then
+
+  if NOT(Key in N) then
   begin
      key := #0;
   end;
 
-   if (Key in F) then
+  if (Key in F) then
   begin
     key :=  #46;
   end;
+
   if (Key = '.') AND (Pos(Key, (PrixAHTProduitEdt.Text)) > 0) Then
   begin
       Key := #0;

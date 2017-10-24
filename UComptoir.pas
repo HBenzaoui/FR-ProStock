@@ -28,7 +28,7 @@ uses
   dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
   dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
   dxSkinXmas2008Blue, cxTextEdit, cxMaskEdit, cxDropDownEdit, Vcl.AppEvnts,
-  CPort;
+  CPort, sPageControl, ToolPanels;
 
 type
   TBonCtrGestionF = class(TForm)
@@ -36,16 +36,9 @@ type
     Label1: TLabel;
     BonCtrTotalTTCLbl: TLabel;
     Panel3: TPanel;
-    Panel5: TPanel;
-    Panel6: TPanel;
-    Label6: TLabel;
-    EnterAddProduitBonCtrGBtn: TAdvToolButton;
-    ListAddProduitBonCtrGBtn: TAdvToolButton;
-    NewAddProduitBonCtrGBtn: TAdvToolButton;
     Panel8: TPanel;
     Panel9: TPanel;
     Panel10: TPanel;
-    ProduitsListDBGridEh: TDBGridEh;
     Panel12: TPanel;
     Panel16: TPanel;
     sSpeedButton4: TsSpeedButton;
@@ -75,7 +68,6 @@ type
     RemiseBonCtrGEdt: TEdit;
     Label9: TLabel;
     ClientBonCtrGCbx: TComboBox;
-    Panel29: TPanel;
     Panel2: TPanel;
     Label2: TLabel;
     NumBonCtrGEdt: TLabel;
@@ -86,7 +78,6 @@ type
     Panel7: TPanel;
     AddClientBonCtrGBtn: TAdvToolButton;
     DateBonCtrGD: TDateTimePicker;
-    Label20: TLabel;
     Label10: TLabel;
     BonCtrGOLDStock: TLabel;
     Label11: TLabel;
@@ -105,20 +96,7 @@ type
     Panel13: TPanel;
     Panel14: TPanel;
     Panel17: TPanel;
-    ClearProduitBonCtrGBtn: TsSpeedButton;
-    ShowCalculaturBonCtrGBtn: TsSpeedButton;
-    ShowKeyBoardBonCtrGBtn: TsSpeedButton;
-    DeleteProduitBonCtrGBtn: TsSpeedButton;
     CtrTop10PRODUITDBGridEh: TDBGridEh;
-    CloseBonCtrGBtn: TsSpeedButton;
-    MinimizeBonCtrGBtn: TsSpeedButton;
-    sImage3: TsImage;
-    sImage2: TsImage;
-    BonCRemiseHTNewLbl: TLabel;
-    TotalTVANewLbl: TLabel;
-    BonCTotalHTNewLbl: TLabel;
-    BonCtrTotalHTLbl: TLabel;
-    BonCtrTotalTVALbl: TLabel;
     BonCtrTop10produit: TDataSource;
     frxComptoirListPDB: TfrxDBDataset;
     frxComptoirDB: TfrxDBDataset;
@@ -132,27 +110,130 @@ type
     RegleVersementSGLbl: TLabel;
     APrintBVCtrBonCtrGSlider: TsSlider;
     ComptoirTicketfrxRprt: TfrxReport;
-    BonCTRTotalMargeLbl: TLabel;
     RequiredClientGlbl: TLabel;
     NameClientGErrorP: TPanel;
     sImage1: TsImage;
-    ProduitBonCtrGCbx: TcxComboBox;
-    Label3: TLabel;
     Timer2: TTimer;
     ApplicationEvents1: TApplicationEvents;
     Label30: TLabel;
-    Label29: TLabel;
-    Label5: TLabel;
     ComPort1: TComPort;
     PoleDisplayerTimerimer: TTimer;
-    Label8: TLabel;
     Label12: TLabel;
+    ComptoirTicket57frxRprt: TfrxReport;
+    PrinterCaisseSizeBVCtrBonCtrLbl: TLabel;
+    LeftTabP: TAdvToolPanelTab;
+    LeftFavTabP: TAdvToolPanel;
+    FavProduitCTRPgControl: TsPageControl;
+    Fav1ListTB: TsTabSheet;
+    LineP: TPanel;
+    Fav2ListTB: TsTabSheet;
+    Panel31: TPanel;
+    Fav3ListTB: TsTabSheet;
+    Panel32: TPanel;
+    Fav4ListTB: TsTabSheet;
+    Panel33: TPanel;
+    Fav5ListTB: TsTabSheet;
+    Panel34: TPanel;
+    Panel5: TPanel;
+    Panel6: TPanel;
+    Label6: TLabel;
+    ListAddProduitBonCtrGBtn: TAdvToolButton;
+    NewAddProduitBonCtrGBtn: TAdvToolButton;
+    EnterAddProduitBonCtrGBtn: TAdvToolButton;
+    Label20: TLabel;
+    ClearProduitBonCtrGBtn: TsSpeedButton;
+    ShowCalculaturBonCtrGBtn: TsSpeedButton;
+    ShowKeyBoardBonCtrGBtn: TsSpeedButton;
+    CloseBonCtrGBtn: TsSpeedButton;
+    MinimizeBonCtrGBtn: TsSpeedButton;
+    sImage3: TsImage;
+    sImage2: TsImage;
+    BonCRemiseHTNewLbl: TLabel;
+    TotalTVANewLbl: TLabel;
+    BonCTotalHTNewLbl: TLabel;
+    BonCtrTotalHTLbl: TLabel;
+    BonCtrTotalTVALbl: TLabel;
+    BonCTRTotalMargeLbl: TLabel;
+    Label3: TLabel;
+    Label29: TLabel;
+    Label5: TLabel;
+    DeleteProduitBonCtrGBtn: TsSpeedButton;
+    Label8: TLabel;
     Label13: TLabel;
     Label14: TLabel;
     Label15: TLabel;
-    ComptoirTicket57frxRprt: TfrxReport;
-    PrinterCaisseSizeBVCtrBonCtrLbl: TLabel;
     CameraBonCtrGBtn: TsSpeedButton;
+    Panel29: TPanel;
+    ProduitBonCtrGCbx: TcxComboBox;
+    ProduitsListDBGridEh: TDBGridEh;
+    FavList1Grd: TGridPanel;
+    Fav1sp: TsSpeedButton;
+    Fav2sp: TsSpeedButton;
+    Fav3sp: TsSpeedButton;
+    Fav4sp: TsSpeedButton;
+    Fav5sp: TsSpeedButton;
+    Fav6sp: TsSpeedButton;
+    Fav7sp: TsSpeedButton;
+    Fav8sp: TsSpeedButton;
+    Fav9sp: TsSpeedButton;
+    Fav10sp: TsSpeedButton;
+    Fav11sp: TsSpeedButton;
+    Fav12sp: TsSpeedButton;
+    FavList2Grd: TGridPanel;
+    Fav13sp: TsSpeedButton;
+    Fav14sp: TsSpeedButton;
+    Fav15sp: TsSpeedButton;
+    Fav16sp: TsSpeedButton;
+    Fav17sp: TsSpeedButton;
+    Fav18sp: TsSpeedButton;
+    Fav19sp: TsSpeedButton;
+    Fav20sp: TsSpeedButton;
+    Fav21sp: TsSpeedButton;
+    Fav22sp: TsSpeedButton;
+    Fav23sp: TsSpeedButton;
+    Fav24sp: TsSpeedButton;
+    FavList3Grd: TGridPanel;
+    Fav25sp: TsSpeedButton;
+    Fav26sp: TsSpeedButton;
+    Fav27sp: TsSpeedButton;
+    Fav28sp: TsSpeedButton;
+    Fav29sp: TsSpeedButton;
+    Fav30sp: TsSpeedButton;
+    Fav31sp: TsSpeedButton;
+    Fav32sp: TsSpeedButton;
+    Fav33sp: TsSpeedButton;
+    Fav34sp: TsSpeedButton;
+    Fav35sp: TsSpeedButton;
+    Fav36sp: TsSpeedButton;
+    FavList4Grd: TGridPanel;
+    Fav37sp: TsSpeedButton;
+    Fav38sp: TsSpeedButton;
+    Fav39sp: TsSpeedButton;
+    Fav40sp: TsSpeedButton;
+    Fav41sp: TsSpeedButton;
+    Fav42sp: TsSpeedButton;
+    Fav43sp: TsSpeedButton;
+    Fav44sp: TsSpeedButton;
+    Fav45sp: TsSpeedButton;
+    Fav46sp: TsSpeedButton;
+    Fav47sp: TsSpeedButton;
+    Fav48sp: TsSpeedButton;
+    FavList5Grd: TGridPanel;
+    Fav49sp: TsSpeedButton;
+    Fav50sp: TsSpeedButton;
+    Fav51sp: TsSpeedButton;
+    Fav52sp: TsSpeedButton;
+    Fav53sp: TsSpeedButton;
+    Fav54sp: TsSpeedButton;
+    Fav55sp: TsSpeedButton;
+    Fav56sp: TsSpeedButton;
+    Fav57sp: TsSpeedButton;
+    Fav58sp: TsSpeedButton;
+    Fav59sp: TsSpeedButton;
+    Fav60sp: TsSpeedButton;
+    ChangeQUTBonCtrGBtn: TsSpeedButton;
+    ChangePRIXBonCtrGBtn: TsSpeedButton;
+    sSpeedButton3: TsSpeedButton;
     procedure FormShow(Sender: TObject);
     procedure RemiseBonCtrGEdtDblClick(Sender: TObject);
     procedure ShowKeyBoardBonCtrGBtnClick(Sender: TObject);
@@ -214,18 +295,28 @@ type
     procedure RemiseBonCtrGEdtKeyPress(Sender: TObject; var Key: Char);
     procedure ProduitsListDBGridEhKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure CameraBonCtrGBtnClick(Sender: TObject);
+    procedure Fav1spClick(Sender: TObject);
+    procedure LeftFavTabPLock(Sender: TObject);
+    procedure ProduitsListDBGridEhDrawColumnCell(Sender: TObject;
+      const Rect: TRect; DataCol: Integer; Column: TColumnEh;
+      State: TGridDrawState);
+    procedure ChangeQUTBonCtrGBtnClick(Sender: TObject);
+    procedure ProduitBonCtrGCbxKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure ChangePRIXBonCtrGBtnClick(Sender: TObject);
+    procedure sSpeedButton3Click(Sender: TObject);
   private
     procedure GettingData;
     procedure addingState;
     procedure deletingState;
     procedure loadData;
     procedure GettingData57;
-
-    { Private declarations }
   public
-    { Public declarations }
     procedure EnableBonCtr;
     procedure showInPoleClient;
+    procedure DisableFavBtns;
+    procedure EnableFavBtns;
+    function GetWindowsVersion: string;
   end;
 
 var
@@ -264,6 +355,140 @@ begin
   end;
 
   BonCtrGestionF.ProduitsListDBGridEh.DataSource.DataSet.EnableControls;
+end;
+
+procedure TBonCtrGestionF.EnableFavBtns();
+begin
+
+  Fav1sp.Enabled:=  True;
+  Fav2sp.Enabled:=  True;
+  Fav3sp.Enabled:=  True;
+  Fav4sp.Enabled:=  True;
+  Fav5sp.Enabled:=  True;
+  Fav6sp.Enabled:=  True;
+  Fav7sp.Enabled:=  True;
+  Fav8sp.Enabled:=  True;
+  Fav9sp.Enabled:=  True;
+  Fav10sp.Enabled:= True;
+  Fav11sp.Enabled:= True;
+  Fav12sp.Enabled:= True;
+  Fav13sp.Enabled:= True;
+  Fav14sp.Enabled:= True;
+  Fav15sp.Enabled:= True;
+  Fav16sp.Enabled:= True;
+  Fav17sp.Enabled:= True;
+  Fav18sp.Enabled:= True;
+  Fav19sp.Enabled:= True;
+  Fav20sp.Enabled:= True;
+  Fav21sp.Enabled:= True;
+  Fav22sp.Enabled:= True;
+  Fav23sp.Enabled:= True;
+  Fav24sp.Enabled:= True;
+  Fav25sp.Enabled:= True;
+  Fav26sp.Enabled:= True;
+  Fav27sp.Enabled:= True;
+  Fav28sp.Enabled:= True;
+  Fav29sp.Enabled:= True;
+  Fav30sp.Enabled:= True;
+  Fav31sp.Enabled:= True;
+  Fav32sp.Enabled:= True;
+  Fav33sp.Enabled:= True;
+  Fav34sp.Enabled:= True;
+  Fav35sp.Enabled:= True;
+  Fav36sp.Enabled:= True;
+  Fav37sp.Enabled:= True;
+  Fav38sp.Enabled:= True;
+  Fav39sp.Enabled:= True;
+  Fav40sp.Enabled:= True;
+  Fav41sp.Enabled:= True;
+  Fav42sp.Enabled:= True;
+  Fav43sp.Enabled:= True;
+  Fav44sp.Enabled:= True;
+  Fav45sp.Enabled:= True;
+  Fav46sp.Enabled:= True;
+  Fav47sp.Enabled:= True;
+  Fav48sp.Enabled:= True;
+  Fav49sp.Enabled:= True;
+  Fav50sp.Enabled:= True;
+  Fav51sp.Enabled:= True;
+  Fav52sp.Enabled:= True;
+  Fav53sp.Enabled:= True;
+  Fav54sp.Enabled:= True;
+  Fav55sp.Enabled:= True;
+  Fav56sp.Enabled:= True;
+  Fav57sp.Enabled:= True;
+  Fav58sp.Enabled:= True;
+  Fav59sp.Enabled:= True;
+  Fav60sp.Enabled:= True;
+
+end;
+
+procedure TBonCtrGestionF.DisableFavBtns();
+begin
+
+  Fav1sp.Enabled:=  False;
+  Fav2sp.Enabled:=  False;
+  Fav3sp.Enabled:=  False;
+  Fav4sp.Enabled:=  False;
+  Fav5sp.Enabled:=  False;
+  Fav6sp.Enabled:=  False;
+  Fav7sp.Enabled:=  False;
+  Fav8sp.Enabled:=  False;
+  Fav9sp.Enabled:=  False;
+  Fav10sp.Enabled:= False;
+  Fav11sp.Enabled:= False;
+  Fav12sp.Enabled:= False;
+  Fav13sp.Enabled:= False;
+  Fav14sp.Enabled:= False;
+  Fav15sp.Enabled:= False;
+  Fav16sp.Enabled:= False;
+  Fav17sp.Enabled:= False;
+  Fav18sp.Enabled:= False;
+  Fav19sp.Enabled:= False;
+  Fav20sp.Enabled:= False;
+  Fav21sp.Enabled:= False;
+  Fav22sp.Enabled:= False;
+  Fav23sp.Enabled:= False;
+  Fav24sp.Enabled:= False;
+  Fav25sp.Enabled:= False;
+  Fav26sp.Enabled:= False;
+  Fav27sp.Enabled:= False;
+  Fav28sp.Enabled:= False;
+  Fav29sp.Enabled:= False;
+  Fav30sp.Enabled:= False;
+  Fav31sp.Enabled:= False;
+  Fav32sp.Enabled:= False;
+  Fav33sp.Enabled:= False;
+  Fav34sp.Enabled:= False;
+  Fav35sp.Enabled:= False;
+  Fav36sp.Enabled:= False;
+  Fav37sp.Enabled:= False;
+  Fav38sp.Enabled:= False;
+  Fav39sp.Enabled:= False;
+  Fav40sp.Enabled:= False;
+  Fav41sp.Enabled:= False;
+  Fav42sp.Enabled:= False;
+  Fav43sp.Enabled:= False;
+  Fav44sp.Enabled:= False;
+  Fav45sp.Enabled:= False;
+  Fav46sp.Enabled:= False;
+  Fav47sp.Enabled:= False;
+  Fav48sp.Enabled:= False;
+  Fav49sp.Enabled:= False;
+  Fav50sp.Enabled:= False;
+  Fav51sp.Enabled:= False;
+  Fav52sp.Enabled:= False;
+  Fav53sp.Enabled:= False;
+  Fav54sp.Enabled:= False;
+  Fav55sp.Enabled:= False;
+  Fav56sp.Enabled:= False;
+  Fav57sp.Enabled:= False;
+  Fav58sp.Enabled:= False;
+  Fav59sp.Enabled:= False;
+  Fav60sp.Enabled:= False;
+
+
+
 end;
 
 procedure TBonCtrGestionF.EnableBonCtr;
@@ -317,7 +542,19 @@ begin
   ValiderBVCtrBonCtrGLbl.Color := $007374FF; // $004AC38B for D
   ValiderBVCtrBonCtrGLbl.Font.Color := clWhite; // clBlack for D
   ValiderBVCtrBonCtrGLbl.Caption := 'Ce bon n''est pas encore Validé'; // 'Ce bon est Valid' for D
-end;
+
+  CameraBonCtrGBtn.Enabled:= True;
+
+    // Enable Fav Panel
+   FavList1Grd.Color:= clWhite;
+   FavList2Grd.Color:= clWhite;
+   FavList3Grd.Color:= clWhite;
+   FavList4Grd.Color:= clWhite;
+   FavList5Grd.Color:= clWhite;
+   EnableFavBtns;
+   FavProduitCTRPgControl.Enabled:= True;
+
+  end;
 
 procedure TBonCtrGestionF.FormShow(Sender: TObject);
 var
@@ -325,6 +562,9 @@ var
   Ini: TMemIniFile;
   PoleA, CaisseA: Boolean;
   PORT, Msg: string;
+
+  I: Integer;
+  FavBtn: TsSpeedButton;
 begin
 
   Ini := TMemIniFile.Create(ChangeFileExt(Application.ExeName, '.ini'));
@@ -351,6 +591,21 @@ begin
 //           ShowMessage('Svp, brancher l''Afficheur Client ou désactiver le dans la configuration->utilites');
     end;
   end;
+
+   // Read fav Btns
+  for I := 1 to 60 do
+  begin
+   FavBtn := (FindComponent('Fav'+IntToStr(I)+'sp') as TsSpeedButton);
+   FavBtn.Caption:= Ini.ReadString('','Fav '+IntToStr(I), FavBtn.Caption);
+  end;
+
+   //Read Locked
+   if Ini.ReadBool(Caption,'Fav Locked', LeftFavTabP.Locked) = True then
+   begin
+   LeftTabP.RollOut(LeftFavTabP);
+   LeftFavTabP.Locked := Ini.ReadBool(Caption,'Fav Locked', LeftFavTabP.Locked);
+   end;
+
   Ini.UpdateFile;
   Ini.Free;
 
@@ -434,7 +689,7 @@ begin
 
 end;
 
-function GetWindowsVersion: string;
+function TBonCtrGestionF.GetWindowsVersion: string;
 begin
   result := 'Unknown (Windows ' + IntToStr(Win32MajorVersion) + '.' + IntToStr(Win32MinorVersion) + ')';
   case Win32MajorVersion of
@@ -695,6 +950,28 @@ begin
   MainForm.Bonv_ctr_listTable.Refresh;
 end;
 
+procedure TBonCtrGestionF.ProduitBonCtrGCbxKeyDown(Sender: TObject;
+  var Key: Word; Shift: TShiftState);
+begin
+  if Key = VK_DOWN then
+  begin
+//   key := #0;
+    MainForm.Bonv_ctr_listTable.Next;
+  end;
+
+  if Key = VK_UP then
+  begin
+//   key := #0;
+    MainForm.Bonv_ctr_listTable.Prior;
+  end;
+
+  if Key = VK_DELETE then
+  begin
+//      key := #0;
+    DeleteProduitBonCtrGBtnClick(Sender);
+  end;
+end;
+
 procedure TBonCtrGestionF.ProduitBonCtrGCbxKeyPress(Sender: TObject; var Key: Char);
 var
   CodeCT, CodeCB, CodeP: Integer;
@@ -703,9 +980,10 @@ var
   Ini: TIniFile;
   PoleA, CaisseA: Boolean;
   PORT, Msg2, PRIXTTC: string;
-  Total: Integer;
+  Total,Numcheck: Integer;
   const
-  N = ['-', '&', '"', '(', ')', '_',',','.'];
+  N = ['&', '"', '(', ')', '_',',','.'];
+
 begin
 
   if Key = #13 then
@@ -713,6 +991,8 @@ begin
     Key := #0;
     if (ProduitBonCtrGCbx.Text <> '') AND NOT (ProduitBonCtrGCbx.Text[1] in N ) then
     begin
+
+
 
       if ClientBonCtrGCbx.Text <> '' then
       begin
@@ -749,7 +1029,14 @@ begin
           MainForm.FDQuery2.SQL.Clear;
           MainForm.FDQuery2.SQL.Text := 'SELECT code_p,nom_p,codebar_p,prixvd_p,prixvr_p,prixvg_p,prixva_p,prixva2_p,tva_p,perissable_p FROM produit WHERE code_p = ' + QuotedStr(IntToStr(CodeCB)) + 'OR' + ' LOWER(codebar_p) LIKE LOWER(' + QuotedStr(ProduitBonCtrGCbx.Text) + ')';
           MainForm.FDQuery2.Active := True;
+
+          if NOT MainForm.FDQuery2.IsEmpty then
+          begin
           CodeP := MainForm.FDQuery2.FieldByName('code_p').AsInteger;
+          end else
+             begin  //This is For Divers XXXX
+               CodeP:= 0;
+             end;
         end;
 
         DataModuleF.PerissBona_recTable.Active := False;
@@ -758,7 +1045,7 @@ begin
         ;
         DataModuleF.PerissBona_recTable.Active := True;
 
-        if (MainForm.FDQuery2.FieldByName('perissable_p').AsBoolean = True) and not (DataModuleF.PerissBona_recTable.IsEmpty) and (DataModuleF.PerissBona_recTable.RecordCount > 1) then
+        if  NOT(MainForm.FDQuery2.IsEmpty) AND (MainForm.FDQuery2.FieldByName('perissable_p').AsBoolean = True) and not (DataModuleF.PerissBona_recTable.IsEmpty) and (DataModuleF.PerissBona_recTable.RecordCount > 1) then
         begin
 
           PerissableProduitF := TPerissableProduitF.Create(BonCtrGestionF);
@@ -798,6 +1085,8 @@ begin
                 MainForm.Bonv_ctr_listTable.Last;
                 CodeCT := MainForm.Bonv_ctr_listTable.FieldValues['code_bvctrl'] + 1;
               end;
+
+
 
               MainForm.Bonv_ctr_listTable.Last;
               MainForm.Bonv_ctr_listTable.Append;
@@ -900,17 +1189,201 @@ begin
 
               Ini.Free;
 
-            end
-            else
-            begin
-              sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT or SND_ASYNC or SND_RING);
-            end;
+            end   else
+                 //XXXXXX This is for adding DIVERS XXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                if  (Copy(ProduitBonCtrGCbx.Text,1,1) = '+') AND  TryStrToInt(Copy(ProduitBonCtrGCbx.Text,2,Length(ProduitBonCtrGCbx.Text)),Numcheck)   then
+                begin
 
+                  MainForm.Bonv_ctr_listTable.DisableControls;
+                  MainForm.Bonv_ctr_listTable.IndexFieldNames := '';
+                  MainForm.Bonv_ctr_listTable.Active := False;
+                  MainForm.Bonv_ctr_listTable.SQL.Clear;
+                  MainForm.Bonv_ctr_listTable.SQL.Text := 'SELECT * FROM bonv_ctr_list ORDER by code_bvctrl';
+                  MainForm.Bonv_ctr_listTable.Active := True;
+
+                  MainForm.Bonv_ctr_listTable.Last;
+                  if MainForm.Bonv_ctr_listTable.IsEmpty then
+                  begin
+                    MainForm.Bonv_ctr_listTable.Last;
+                    CodeCT := 1;
+                  end
+                  else
+                  begin
+                    MainForm.Bonv_ctr_listTable.Last;
+                    CodeCT := MainForm.Bonv_ctr_listTable.FieldValues['code_bvctrl'] + 1;
+                  end;
+
+
+
+                  MainForm.Bonv_ctr_listTable.Last;
+                  MainForm.Bonv_ctr_listTable.Append;
+                  MainForm.Bonv_ctr_listTable.FieldValues['code_bvctrl'] := CodeCT;
+                  MainForm.Bonv_ctr_listTable.FieldValues['code_bvctr'] := MainForm.Bonv_ctrTable.FieldValues['code_bvctr'];
+                  MainForm.Bonv_ctr_listTable.FieldValues['code_p'] := 0;
+                  MainForm.Bonv_ctr_listTable.FieldValues['qut_p'] := 01;
+                  MainForm.Bonv_ctr_listTable.FieldValues['cond_p'] := 01;
+                  MainForm.Bonv_ctr_listTable.FieldValues['tva_p'] := 0;
+
+                  MainForm.Bonv_ctr_listTable.FieldValues['prixvd_p'] := Copy(ProduitBonCtrGCbx.Text,2,Length(ProduitBonCtrGCbx.Text)-1);
+
+                  MainForm.Bonv_ctr_listTable.Post;
+                  MainForm.Bonv_ctr_listTable.IndexFieldNames := 'code_bvctr';
+
+                  MainForm.Bonv_ctr_listTable.Active := False;
+                  MainForm.Bonv_ctr_listTable.SQL.Clear;
+                  MainForm.Bonv_ctr_listTable.SQL.Text := 'SELECT * FROM bonv_ctr_list WHERE code_bvctr = ' + QuotedStr(IntToStr(MainForm.Bonv_ctrTable.FieldValues['code_bvctr']));
+                  MainForm.Bonv_ctr_listTable.Active := True;
+
+                  ProduitBonCtrGCbx.Text := '';
+                  ProduitsListDBGridEh.EditorMode := True;
+
+                  MainForm.Bonv_ctr_listTable.EnableControls;
+                  MainForm.Bonv_ctr_listTable.Last;
+                  if ClientBonCtrGCbx.Text <> '' then
+                  begin
+                    ValiderBVCtrBonCtrGBtn.Enabled := True;
+                    ValiderBVCtrBonCtrGBtn.ImageIndex := 12;
+                  end;
+
+                  sndPlaySound('C:\Windows\Media\speech on.wav', SND_NODEFAULT or SND_ASYNC or SND_RING);
+
+                  Ini := TIniFile.Create(ChangeFileExt(Application.ExeName, '.ini'));
+                  PoleA := Ini.ReadBool('', 'Afficheur client Active', PoleA);
+
+                  if PoleA = True then
+                  begin
+
+                    PRIXTTC := MainForm.Bonv_ctr_listTable.FieldValues['prixvd_p'];
+
+                    try
+                      PORT := Ini.ReadString('', 'Afficheur client PORT', PORT);
+    //                 Msg2:= Ini.ReadString('',  'Afficheur client Msg2', Msg2);
+
+                      ComPort1.Port := PORT; // 'COM7';
+                      ComPort1.Events := [];
+                      ComPort1.FlowControl.ControlDTR := dtrEnable;
+                      ComPort1.FlowControl.ControlRTS := rtsEnable;
+                      ComPort1.Open; // open port
+                      ComPort1.WriteUnicodeString('                                        '#13#10);
+                      ComPort1.WriteUnicodeString('                                        '#13#10);
+                      ComPort1.WriteUnicodeString('Divers' + #13#10); // send test command
+
+                      ComPort1.WriteUnicodeString('      ' + PRIXTTC + ' DA'#13#10);
+
+                      PoleDisplayerTimerimer.Interval := 1500;
+                      PoleDisplayerTimerimer.Enabled := True;
+
+                      ComPort1.Close;
+                    except
+    //                 ShowMessage('Svp, brancher l''Afficheur Client ou désactiver le dans la configuration->utilites');
+                    end;
+                  end;
+
+                  Ini.Free;
+
+                end else
+
+                if  (Copy(ProduitBonCtrGCbx.Text,1,1) = '-') AND  TryStrToInt(Copy(ProduitBonCtrGCbx.Text,2,Length(ProduitBonCtrGCbx.Text)),Numcheck)  then
+                begin
+
+                  MainForm.Bonv_ctr_listTable.DisableControls;
+                  MainForm.Bonv_ctr_listTable.IndexFieldNames := '';
+                  MainForm.Bonv_ctr_listTable.Active := False;
+                  MainForm.Bonv_ctr_listTable.SQL.Clear;
+                  MainForm.Bonv_ctr_listTable.SQL.Text := 'SELECT * FROM bonv_ctr_list ORDER by code_bvctrl';
+                  MainForm.Bonv_ctr_listTable.Active := True;
+
+                  MainForm.Bonv_ctr_listTable.Last;
+                  if MainForm.Bonv_ctr_listTable.IsEmpty then
+                  begin
+                    MainForm.Bonv_ctr_listTable.Last;
+                    CodeCT := 1;
+                  end
+                  else
+                  begin
+                    MainForm.Bonv_ctr_listTable.Last;
+                    CodeCT := MainForm.Bonv_ctr_listTable.FieldValues['code_bvctrl'] + 1;
+                  end;
+
+
+
+                  MainForm.Bonv_ctr_listTable.Last;
+                  MainForm.Bonv_ctr_listTable.Append;
+                  MainForm.Bonv_ctr_listTable.FieldValues['code_bvctrl'] := CodeCT;
+                  MainForm.Bonv_ctr_listTable.FieldValues['code_bvctr'] := MainForm.Bonv_ctrTable.FieldValues['code_bvctr'];
+                  MainForm.Bonv_ctr_listTable.FieldValues['code_p'] := 0;
+                  MainForm.Bonv_ctr_listTable.FieldValues['qut_p'] := 01;
+                  MainForm.Bonv_ctr_listTable.FieldValues['cond_p'] := 01;
+                  MainForm.Bonv_ctr_listTable.FieldValues['tva_p'] := 0;
+
+                  MainForm.Bonv_ctr_listTable.FieldValues['prixvd_p'] := -1 * StrToInt(Copy(ProduitBonCtrGCbx.Text,2,Length(ProduitBonCtrGCbx.Text)-1));
+
+                  MainForm.Bonv_ctr_listTable.Post;
+                  MainForm.Bonv_ctr_listTable.IndexFieldNames := 'code_bvctr';
+
+                  MainForm.Bonv_ctr_listTable.Active := False;
+                  MainForm.Bonv_ctr_listTable.SQL.Clear;
+                  MainForm.Bonv_ctr_listTable.SQL.Text := 'SELECT * FROM bonv_ctr_list WHERE code_bvctr = ' + QuotedStr(IntToStr(MainForm.Bonv_ctrTable.FieldValues['code_bvctr']));
+                  MainForm.Bonv_ctr_listTable.Active := True;
+
+                  ProduitBonCtrGCbx.Text := '';
+                  ProduitsListDBGridEh.EditorMode := True;
+
+                  MainForm.Bonv_ctr_listTable.EnableControls;
+                  MainForm.Bonv_ctr_listTable.Last;
+                  if ClientBonCtrGCbx.Text <> '' then
+                  begin
+                    ValiderBVCtrBonCtrGBtn.Enabled := True;
+                    ValiderBVCtrBonCtrGBtn.ImageIndex := 12;
+                  end;
+
+                  sndPlaySound('C:\Windows\Media\speech on.wav', SND_NODEFAULT or SND_ASYNC or SND_RING);
+
+                  Ini := TIniFile.Create(ChangeFileExt(Application.ExeName, '.ini'));
+                  PoleA := Ini.ReadBool('', 'Afficheur client Active', PoleA);
+
+                  if PoleA = True then
+                  begin
+
+                    PRIXTTC := MainForm.Bonv_ctr_listTable.FieldValues['prixvd_p'];
+
+                    try
+                      PORT := Ini.ReadString('', 'Afficheur client PORT', PORT);
+
+                      ComPort1.Port := PORT; // 'COM7';
+                      ComPort1.Events := [];
+                      ComPort1.FlowControl.ControlDTR := dtrEnable;
+                      ComPort1.FlowControl.ControlRTS := rtsEnable;
+                      ComPort1.Open; // open port
+                      ComPort1.WriteUnicodeString('                                        '#13#10);
+                      ComPort1.WriteUnicodeString('                                        '#13#10);
+                      ComPort1.WriteUnicodeString('Divers' + #13#10); // send test command
+
+                      ComPort1.WriteUnicodeString('      ' + PRIXTTC + ' DA'#13#10);
+
+                      PoleDisplayerTimerimer.Interval := 1500;
+                      PoleDisplayerTimerimer.Enabled := True;
+
+                      ComPort1.Close;
+                    except
+    //                 ShowMessage('Svp, brancher l''Afficheur Client ou désactiver le dans la configuration->utilites');
+                    end;
+                  end;
+
+                  Ini.Free;
+                    //XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                end else
+                begin
+
+                  sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT or SND_ASYNC or SND_RING);
+                end;
+
+//********************************************************************************************/////////////////////
           end
           else
           begin
-
-            if Panel1.Tag = 0 then
+            //This is for adding qut if it the same produit
+            if (Panel1.Tag = 0) AND NOT(Copy(ProduitBonCtrGCbx.Text,1,1) = '-') AND NOT(Copy(ProduitBonCtrGCbx.Text,1,1) = '+') AND NOT TryStrToInt(Copy(ProduitBonCtrGCbx.Text,2,Length(ProduitBonCtrGCbx.Text)),Numcheck) then
             begin
               MainForm.Bonv_ctr_listTable.First;
               while not MainForm.Bonv_ctr_listTable.Eof do
@@ -932,8 +1405,8 @@ begin
                 MainForm.Bonv_ctr_listTable.Next;
               end;
 
-            end
-            else if (Panel1.Tag = 1) and (MainForm.Bonv_ctr_listTable.IsEmpty = False) then
+            end   //This is for deleting when it supression mode
+            else if (Panel1.Tag = 1) and (MainForm.Bonv_ctr_listTable.IsEmpty = False) AND NOT(Copy(ProduitBonCtrGCbx.Text,1,1) = '-') AND NOT(Copy(ProduitBonCtrGCbx.Text,1,1) = '+') AND NOT TryStrToInt(Copy(ProduitBonCtrGCbx.Text,2,Length(ProduitBonCtrGCbx.Text)),Numcheck) then
             begin
               MainForm.Bonv_ctr_listTable.First;
               while not MainForm.Bonv_ctr_listTable.Eof do
@@ -962,52 +1435,195 @@ begin
                 MainForm.Bonv_ctr_listTable.Next;
               end;
 
+            end else //This is for adding DIVERS
+            begin
+                //XXXXXX This is for adding DIVERS XXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                if  (Copy(ProduitBonCtrGCbx.Text,1,1) = '+') AND  TryStrToInt(Copy(ProduitBonCtrGCbx.Text,2,Length(ProduitBonCtrGCbx.Text)),Numcheck)   then
+                begin
+
+                  MainForm.Bonv_ctr_listTable.DisableControls;
+                  MainForm.Bonv_ctr_listTable.IndexFieldNames := '';
+                  MainForm.Bonv_ctr_listTable.Active := False;
+                  MainForm.Bonv_ctr_listTable.SQL.Clear;
+                  MainForm.Bonv_ctr_listTable.SQL.Text := 'SELECT * FROM bonv_ctr_list ORDER by code_bvctrl';
+                  MainForm.Bonv_ctr_listTable.Active := True;
+
+                  MainForm.Bonv_ctr_listTable.Last;
+                  if MainForm.Bonv_ctr_listTable.IsEmpty then
+                  begin
+                    MainForm.Bonv_ctr_listTable.Last;
+                    CodeCT := 1;
+                  end
+                  else
+                  begin
+                    MainForm.Bonv_ctr_listTable.Last;
+                    CodeCT := MainForm.Bonv_ctr_listTable.FieldValues['code_bvctrl'] + 1;
+                  end;
+
+                  MainForm.Bonv_ctr_listTable.Last;
+                  MainForm.Bonv_ctr_listTable.Append;
+                  MainForm.Bonv_ctr_listTable.FieldValues['code_bvctrl'] := CodeCT;
+                  MainForm.Bonv_ctr_listTable.FieldValues['code_bvctr'] := MainForm.Bonv_ctrTable.FieldValues['code_bvctr'];
+                  MainForm.Bonv_ctr_listTable.FieldValues['code_p'] := 0;
+                  MainForm.Bonv_ctr_listTable.FieldValues['qut_p'] := 01;
+                  MainForm.Bonv_ctr_listTable.FieldValues['cond_p'] := 01;
+                  MainForm.Bonv_ctr_listTable.FieldValues['tva_p'] := 0;
+
+                  MainForm.Bonv_ctr_listTable.FieldValues['prixvd_p'] := Copy(ProduitBonCtrGCbx.Text,2,Length(ProduitBonCtrGCbx.Text)-1);
+
+                  MainForm.Bonv_ctr_listTable.Post;
+                  MainForm.Bonv_ctr_listTable.IndexFieldNames := 'code_bvctr';
+
+                  MainForm.Bonv_ctr_listTable.Active := False;
+                  MainForm.Bonv_ctr_listTable.SQL.Clear;
+                  MainForm.Bonv_ctr_listTable.SQL.Text := 'SELECT * FROM bonv_ctr_list WHERE code_bvctr = ' + QuotedStr(IntToStr(MainForm.Bonv_ctrTable.FieldValues['code_bvctr']));
+                  MainForm.Bonv_ctr_listTable.Active := True;
+
+                  ProduitBonCtrGCbx.Text := '';
+                  ProduitsListDBGridEh.EditorMode := True;
+
+                  MainForm.Bonv_ctr_listTable.EnableControls;
+                  MainForm.Bonv_ctr_listTable.Last;
+                  if ClientBonCtrGCbx.Text <> '' then
+                  begin
+                    ValiderBVCtrBonCtrGBtn.Enabled := True;
+                    ValiderBVCtrBonCtrGBtn.ImageIndex := 12;
+                  end;
+
+                  sndPlaySound('C:\Windows\Media\speech on.wav', SND_NODEFAULT or SND_ASYNC or SND_RING);
+
+                  Ini := TIniFile.Create(ChangeFileExt(Application.ExeName, '.ini'));
+                  PoleA := Ini.ReadBool('', 'Afficheur client Active', PoleA);
+
+                  if PoleA = True then
+                  begin
+
+                    PRIXTTC := MainForm.Bonv_ctr_listTable.FieldValues['prixvd_p'];
+
+                    try
+                      PORT := Ini.ReadString('', 'Afficheur client PORT', PORT);
+    //                 Msg2:= Ini.ReadString('',  'Afficheur client Msg2', Msg2);
+
+                      ComPort1.Port := PORT; // 'COM7';
+                      ComPort1.Events := [];
+                      ComPort1.FlowControl.ControlDTR := dtrEnable;
+                      ComPort1.FlowControl.ControlRTS := rtsEnable;
+                      ComPort1.Open; // open port
+                      ComPort1.WriteUnicodeString('                                        '#13#10);
+                      ComPort1.WriteUnicodeString('                                        '#13#10);
+                      ComPort1.WriteUnicodeString('Divers' + #13#10); // send test command
+
+                      ComPort1.WriteUnicodeString('      ' + PRIXTTC + ' DA'#13#10);
+
+                      PoleDisplayerTimerimer.Interval := 1500;
+                      PoleDisplayerTimerimer.Enabled := True;
+
+                      ComPort1.Close;
+                    except
+    //                 ShowMessage('Svp, brancher l''Afficheur Client ou désactiver le dans la configuration->utilites');
+                    end;
+                  end;
+
+                  Ini.Free;
+
+
+                end else
+
+                if  (Copy(ProduitBonCtrGCbx.Text,1,1) = '-') AND  TryStrToInt(Copy(ProduitBonCtrGCbx.Text,2,Length(ProduitBonCtrGCbx.Text)),Numcheck)  then
+                begin
+                  MainForm.Bonv_ctr_listTable.DisableControls;
+                  MainForm.Bonv_ctr_listTable.IndexFieldNames := '';
+                  MainForm.Bonv_ctr_listTable.Active := False;
+                  MainForm.Bonv_ctr_listTable.SQL.Clear;
+                  MainForm.Bonv_ctr_listTable.SQL.Text := 'SELECT * FROM bonv_ctr_list ORDER by code_bvctrl';
+                  MainForm.Bonv_ctr_listTable.Active := True;
+
+                  MainForm.Bonv_ctr_listTable.Last;
+                  if MainForm.Bonv_ctr_listTable.IsEmpty then
+                  begin
+                    MainForm.Bonv_ctr_listTable.Last;
+                    CodeCT := 1;
+                  end
+                  else
+                  begin
+                    MainForm.Bonv_ctr_listTable.Last;
+                    CodeCT := MainForm.Bonv_ctr_listTable.FieldValues['code_bvctrl'] + 1;
+                  end;
+
+                  MainForm.Bonv_ctr_listTable.Last;
+                  MainForm.Bonv_ctr_listTable.Append;
+                  MainForm.Bonv_ctr_listTable.FieldValues['code_bvctrl'] := CodeCT;
+                  MainForm.Bonv_ctr_listTable.FieldValues['code_bvctr'] := MainForm.Bonv_ctrTable.FieldValues['code_bvctr'];
+                  MainForm.Bonv_ctr_listTable.FieldValues['code_p'] := 0;
+                  MainForm.Bonv_ctr_listTable.FieldValues['qut_p'] := 01;
+                  MainForm.Bonv_ctr_listTable.FieldValues['cond_p'] := 01;
+                  MainForm.Bonv_ctr_listTable.FieldValues['tva_p'] := 0;
+
+                  MainForm.Bonv_ctr_listTable.FieldValues['prixvd_p'] := -1 * StrToInt(Copy(ProduitBonCtrGCbx.Text,2,Length(ProduitBonCtrGCbx.Text)-1));
+
+                  MainForm.Bonv_ctr_listTable.Post;
+                  MainForm.Bonv_ctr_listTable.IndexFieldNames := 'code_bvctr';
+
+                  MainForm.Bonv_ctr_listTable.Active := False;
+                  MainForm.Bonv_ctr_listTable.SQL.Clear;
+                  MainForm.Bonv_ctr_listTable.SQL.Text := 'SELECT * FROM bonv_ctr_list WHERE code_bvctr = ' + QuotedStr(IntToStr(MainForm.Bonv_ctrTable.FieldValues['code_bvctr']));
+                  MainForm.Bonv_ctr_listTable.Active := True;
+
+                  ProduitBonCtrGCbx.Text := '';
+                  ProduitsListDBGridEh.EditorMode := True;
+
+                  MainForm.Bonv_ctr_listTable.EnableControls;
+                  MainForm.Bonv_ctr_listTable.Last;
+                  if ClientBonCtrGCbx.Text <> '' then
+                  begin
+                    ValiderBVCtrBonCtrGBtn.Enabled := True;
+                    ValiderBVCtrBonCtrGBtn.ImageIndex := 12;
+                  end;
+
+                  sndPlaySound('C:\Windows\Media\speech on.wav', SND_NODEFAULT or SND_ASYNC or SND_RING);
+
+                  Ini := TIniFile.Create(ChangeFileExt(Application.ExeName, '.ini'));
+                  PoleA := Ini.ReadBool('', 'Afficheur client Active', PoleA);
+
+                  if PoleA = True then
+                  begin
+
+                    PRIXTTC := MainForm.Bonv_ctr_listTable.FieldValues['prixvd_p'];
+                    try
+                      PORT := Ini.ReadString('', 'Afficheur client PORT', PORT);
+    //                 Msg2:= Ini.ReadString('',  'Afficheur client Msg2', Msg2);
+
+                      ComPort1.Port := PORT; // 'COM7';
+                      ComPort1.Events := [];
+                      ComPort1.FlowControl.ControlDTR := dtrEnable;
+                      ComPort1.FlowControl.ControlRTS := rtsEnable;
+                      ComPort1.Open; // open port
+                      ComPort1.WriteUnicodeString('                                        '#13#10);
+                      ComPort1.WriteUnicodeString('                                        '#13#10);
+                      ComPort1.WriteUnicodeString('Divers' + #13#10); // send test command
+
+                      ComPort1.WriteUnicodeString('      ' + PRIXTTC + ' DA'#13#10);
+
+                      PoleDisplayerTimerimer.Interval := 1500;
+                      PoleDisplayerTimerimer.Enabled := True;
+
+                      ComPort1.Close;
+                    except
+    //                 ShowMessage('Svp, brancher l''Afficheur Client ou désactiver le dans la configuration->utilites');
+                    end;
+                  end;
+
+                  Ini.Free;
+
+
+                    //XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                end else
+                begin
+
+                  sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT or SND_ASYNC or SND_RING);
+                end;
             end;
 
-
-//
-//      FSplashAddUnite:=TFSplashAddUnite.Create(Application);
-//      FSplashAddUnite.Image1.ImageIndex:=3;
-//      FSplashAddUnite.Width:=300;
-//      FSplashAddUnite.Height:=160;
-//      FSplashAddUnite.Panel1.Color:= $0028CAFE;
-//      FSplashAddUnite.Color:= $00EFE9E8;
-//      FSplashAddUnite.LineP.Color:=$0028CAFE;
-//      FSplashAddUnite.LineP.Top:= (FSplashAddUnite.Height) - 44  ;
-//      FSplashAddUnite.OKAddUniteSBtn.Top:= (FSplashAddUnite.Height) - 36;
-//      FSplashAddUnite.OKAddUniteSBtn.ImageIndex:=17;
-//      FSplashAddUnite.CancelAddUniteSBtn.Top:=(FSplashAddUnite.Height) - 36;
-//      FSplashAddUnite.OKAddUniteSBtn.Left:=(FSplashAddUnite.Width div 4) - (FSplashAddUnite.OKAddUniteSBtn.Width div 2) + 15;
-//      FSplashAddUnite.CancelAddUniteSBtn.Left:= ((FSplashAddUnite.Width div 2 )+((FSplashAddUnite.Width div 2)div 2 ) ) - (FSplashAddUnite.CancelAddUniteSBtn.Width div 2) - 15;
-//      if  MainForm.Bonv_ctr_listTable.FieldValues['code_p'] <> NULL then
-//      begin
-//      NomP:=   MainForm.FDQuery2.FieldValues['nom_p'];
-//      end else begin
-//        NomP:='';
-//      end;
-//      FSplashAddUnite.NameAddUniteSLbl.Caption:='Article déja inséré : '+ sLineBreak +  sLineBreak + QuotedStr(NomP);
-//      FSplashAddUnite.NameAddUniteSLbl.Font.Height:= 22;
-//      FSplashAddUnite.NameAddUniteSLbl.Top:= (FSplashAddUnite.Panel1.Height) + 10 ;
-//      FSplashAddUnite.NameAddUniteSLbl.Font.Height:=18;
-//      FSplashAddUnite.Image1.Visible:=True;
-//      FSplashAddUnite.Image1.Top:= (FSplashAddUnite.Height div 2) - (FSplashAddUnite.Image1.Height div 2 ) ;
-//      FSplashAddUnite.FormCaptionAddUniteSLbl.Caption:='Attention...';
-//      FSplashAddUnite.FormCaptionAddUniteSLbl.Font.Color:=$0040332D;
-//      FSplashAddUnite.FormCaptionAddUniteSLbl.Left:=( FSplashAddUnite.Width div 2) -  ( FSplashAddUnite.FormCaptionAddUniteSLbl.Width div 2);
-//      FSplashAddUnite.NameAddUniteSEdt.Visible:=False;
-//      FSplashAddUnite.RequiredStarAddUniteSLbl.Visible:=False;
-//      FSplashAddUnite.NameAddUniteSLbl.Left:= FSplashAddUnite.Image1.Left + FSplashAddUnite.Image1.Width + 10;
-//      FSplashAddUnite.Left:=  (MainForm.Left + MainForm.Width div 2) - (FSplashAddUnite.Width div 2);
-//      FSplashAddUnite.Top:=   (MainForm.Top + MainForm.Height div 2) - (FSplashAddUnite.Height div 2);
-//
-//      FSplashAddUnite.CancelAddUniteSBtn.Caption:='Ignorer' ;
-//      FSplashAddUnite.OKAddUniteSBtn.Enabled:=True;
-//      FSplashAddUnite.OKAddUniteSBtn.Tag:= 23 ;
-//      AnimateWindow(FSplashAddUnite.Handle, 175, AW_VER_POSITIVE OR AW_BLEND OR AW_ACTIVATE );
-//      FormStyle:=fsNormal;
-//       FSplashAddUnite.Show;
-//    //--- this tage = 0 is for multi name added by produit combobox----//
-//       FSplashAddUnite.Tag:=5;
           end;
         end;
 
@@ -1458,6 +2074,9 @@ begin
       MainForm.SQLQuery.SQL.Text := 'SELECT code_p,qut_p,qutini_p,prixht_p FROM produit WHERE code_p = ' + IntToStr(MainForm.Bonv_ctr_listTable.FieldValues['code_p']);
       MainForm.SQLQuery.Active := True;
 
+     if NOT MainForm.SQLQuery.IsEmpty then
+     begin
+
       BonCtrGOLDStock.Caption := floatTostrF(((MainForm.SQLQuery.FieldValues['qut_p'] + MainForm.SQLQuery.FieldValues['qutini_p'])), ffNumber, 14, 2);
       BonCtrGNEWStock.Caption := floatTostrF((((MainForm.SQLQuery.FieldValues['qut_p'] + MainForm.SQLQuery.FieldValues['qutini_p'])) - (MainForm.Bonv_ctr_listTable.FieldValues['qut_p'] * MainForm.Bonv_ctr_listTable.FieldValues['cond_p'])), ffNumber, 14, 2);
 
@@ -1487,6 +2106,16 @@ begin
       begin
         Timer2.Enabled := False;
         Label3.Visible := false;
+      end;
+
+     end else  //This is if the entry is a Diver XXXX
+      begin
+            BonCtrGOLDStock.Caption := floatTostrF((MainForm.Bonv_ctr_listTable.FieldValues['qut_p'] * MainForm.Bonv_ctr_listTable.FieldValues['cond_p']), ffNumber, 14, 2);
+            BonCtrGNEWStock.Caption :=  BonCtrGOLDStock.Caption;
+            Timer1.Enabled := False;
+            Timer2.Enabled := False;
+            Labell20.Visible := False;
+            Label3.Visible := False;
       end;
 
       MainForm.SQLQuery.Active := False;
@@ -1533,6 +2162,209 @@ begin
     BonCtrGNEWStock.Caption := floatTostrF((0), ffNumber, 14, 2);
 
     ProduitsListDBGridEh.ReadOnly := True;
+  end;
+end;
+
+procedure TBonCtrGestionF.Fav1spClick(Sender: TObject);
+var
+  CodeBR, CodeP: Integer;
+  lookupResultRefP: Variant;
+  NomP: string;
+  Ini: TIniFile;
+  PoleA, CaisseA: Boolean;
+  PORT, Msg2, PRIXTTC: string;
+  Total: Integer;
+
+  FavBtn : TsSpeedButton;
+
+begin
+
+    FavBtn := Sender as TsSpeedButton;
+    NomP := FavBtn.Caption;
+
+  if NomP <> '' then
+  Begin
+
+    MainForm.FDQuery2.Active := false;
+    MainForm.FDQuery2.SQL.Clear;
+    MainForm.FDQuery2.SQL.Text := 'SELECT code_p,nom_p,prixvd_p,prixvr_p,prixvg_p,prixva_p,prixva2_p,tva_p,perissable_p FROM produit Where LOWER(nom_p) LIKE LOWER(' + QuotedStr(NomP) + ')';
+    MainForm.FDQuery2.Active := True;
+    CodeP := MainForm.FDQuery2.FieldByName('code_p').AsInteger;
+
+    lookupResultRefP := MainForm.Bonv_ctr_listTable.Lookup('code_p', (CodeP), 'code_p');
+    if VarIsnull(lookupResultRefP) and (Panel1.Tag <> 1) then
+    begin
+
+      MainForm.Bonv_ctr_listTable.DisableControls;
+      MainForm.Bonv_ctr_listTable.IndexFieldNames := '';
+      MainForm.SQLQuery.Active := False;
+      MainForm.SQLQuery.SQL.Clear;
+      MainForm.SQLQuery.SQL.Text := 'SELECT * FROM bonv_ctr_list ORDER by code_bvctrl';
+      MainForm.SQLQuery.Active := True;
+
+      MainForm.SQLQuery.Last;
+      if MainForm.SQLQuery.IsEmpty then
+      begin
+        MainForm.SQLQuery.Last;
+        CodeBR := 1;
+      end
+      else
+      begin
+        MainForm.SQLQuery.Last;
+        CodeBR := MainForm.SQLQuery.FieldValues['code_bvctrl'] + 1;
+      end;
+      MainForm.Bonv_ctr_listTable.Last;
+      MainForm.Bonv_ctr_listTable.Append;
+      MainForm.Bonv_ctr_listTable.FieldValues['code_bvctrl'] := CodeBR;
+      MainForm.Bonv_ctr_listTable.FieldValues['code_bvctr'] := MainForm.Bonv_ctrTable.FieldValues['code_bvctr'];
+      MainForm.Bonv_ctr_listTable.FieldValues['code_p'] := MainForm.FDQuery2.FieldValues['code_p'];
+      MainForm.Bonv_ctr_listTable.FieldValues['qut_p'] := 01;
+      MainForm.Bonv_ctr_listTable.FieldValues['cond_p'] := 01;
+      MainForm.Bonv_ctr_listTable.FieldValues['tva_p'] := MainForm.FDQuery2.FieldValues['tva_p'];
+
+      if not (MainForm.ClientTable.IsEmpty) and (ClientBonCtrGCbx.Text <> '') then
+      begin
+
+        if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 0 then
+        begin
+          MainForm.Bonv_ctr_listTable.FieldValues['prixvd_p'] := MainForm.FDQuery2.FieldValues['prixvd_p'];
+        end;
+        if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 1 then
+        begin
+          MainForm.Bonv_ctr_listTable.FieldValues['prixvd_p'] := MainForm.FDQuery2.FieldValues['prixvr_p'];
+        end;
+        if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 2 then
+        begin
+          MainForm.Bonv_ctr_listTable.FieldValues['prixvd_p'] := MainForm.FDQuery2.FieldValues['prixvg_p'];
+        end;
+        if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 3 then
+        begin
+          MainForm.Bonv_ctr_listTable.FieldValues['prixvd_p'] := MainForm.FDQuery2.FieldValues['prixva_p'];
+        end;
+        if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 4 then
+        begin
+          MainForm.Bonv_ctr_listTable.FieldValues['prixvd_p'] := MainForm.FDQuery2.FieldValues['prixva2_p'];
+        end;
+      end
+      else
+      begin
+        MainForm.Bonv_ctr_listTable.FieldValues['prixvd_p'] := MainForm.FDQuery2.FieldValues['prixvd_p'];
+      end;
+
+      MainForm.Bonv_ctr_listTable.Post;
+      Refresh_PreservePosition;
+
+      sndPlaySound('C:\Windows\Media\speech on.wav', SND_NODEFAULT or SND_ASYNC or SND_RING);
+
+      Ini := TIniFile.Create(ChangeFileExt(Application.ExeName, '.ini'));
+      PoleA := Ini.ReadBool('', 'Afficheur client Active', PoleA);
+
+      if PoleA = True then
+      begin
+
+        PRIXTTC := CurrToStrF(((((MainForm.FDQuery2.FieldValues['prixvd_p'] * MainForm.FDQuery2.FieldValues['tva_p']) / 100) + (MainForm.FDQuery2.FieldValues['prixvd_p']))), ffNumber, 2);
+
+        try
+          PORT := Ini.ReadString('', 'Afficheur client PORT', PORT);
+//                 Msg2:= Ini.ReadString('',  'Afficheur client Msg2', Msg2);
+
+          ComPort1.Port := PORT; // 'COM7';
+          ComPort1.Events := [];
+          ComPort1.FlowControl.ControlDTR := dtrEnable;
+          ComPort1.FlowControl.ControlRTS := rtsEnable;
+          ComPort1.Open; // open port
+          ComPort1.WriteUnicodeString('                                        '#13#10);
+          ComPort1.WriteUnicodeString('                                        '#13#10);
+          ComPort1.WriteUnicodeString(copy(MainForm.FDQuery2.FieldByName('nom_p').AsString, 0, 16) + '...' + #13#10); // send test command
+
+          ComPort1.WriteUnicodeString('Prix: ' + PRIXTTC + ' DA'#13#10);
+
+          PoleDisplayerTimerimer.Interval := 1500;
+          PoleDisplayerTimerimer.Enabled := True;
+
+          ComPort1.Close;
+        except
+//                 ShowMessage('Svp, brancher l''Afficheur Client ou désactiver le dans la configuration->utilites');
+        end;
+      end;
+
+      Ini.Free;
+
+      MainForm.Bonv_ctr_listTable.IndexFieldNames := 'code_bvctr';
+      MainForm.Bonv_ctr_listTable.Last;
+      MainForm.Bonv_ctr_listTable.EnableControls;
+      MainForm.Bonv_ctr_listTable.Refresh;
+
+      MainForm.SQLQuery.Active := False;
+      MainForm.SQLQuery.SQL.Clear;
+//          MainForm.SQLQuery.SQL.Text:= 'SELECT * FROM bonv_ctr_list WHERE code_bvctr = ' + QuotedStr(IntToStr(MainForm.Bonv_ctrTable.FieldValues['code_bvctr']));
+//          MainForm.SQLQuery.Active:=True;
+
+
+    end
+    else
+    begin
+
+      if Panel1.Tag = 0 then
+      begin
+        MainForm.Bonv_ctr_listTable.First;
+        while not MainForm.Bonv_ctr_listTable.Eof do
+        begin
+
+          if MainForm.Bonv_ctr_listTable.FieldByName('code_p').AsInteger = CodeP then
+          begin
+            MainForm.Bonv_ctr_listTable.Edit;
+            MainForm.Bonv_ctr_listTable.FieldByName('qut_p').AsFloat := MainForm.Bonv_ctr_listTable.FieldByName('qut_p').AsFloat + 1;
+            MainForm.Bonv_ctr_listTable.Post;
+            Refresh_PreservePosition;
+            ProduitBonCtrGCbx.Clear;
+            sndPlaySound('C:\Windows\Media\speech on.wav', SND_NODEFAULT or SND_ASYNC or SND_RING);
+
+            showInPoleClient;
+            Exit;
+
+          end;
+          MainForm.Bonv_ctr_listTable.Next;
+        end;
+
+      end
+      else if (Panel1.Tag = 1) and (MainForm.Bonv_ctr_listTable.IsEmpty = False) then
+      begin
+        MainForm.Bonv_ctr_listTable.First;
+        while not MainForm.Bonv_ctr_listTable.Eof do
+        begin
+
+          if MainForm.Bonv_ctr_listTable.FieldByName('code_p').AsInteger = CodeP then
+          begin
+            if MainForm.Bonv_ctr_listTable.FieldByName('qut_p').AsFloat > 1 then
+            begin
+              MainForm.Bonv_ctr_listTable.Edit;
+              MainForm.Bonv_ctr_listTable.FieldByName('qut_p').AsFloat := MainForm.Bonv_ctr_listTable.FieldByName('qut_p').AsFloat - 1;
+              MainForm.Bonv_ctr_listTable.Post;
+            end
+            else
+            begin
+              MainForm.Bonv_ctr_listTable.Delete;
+            end;
+            Refresh_PreservePosition;
+            ProduitBonCtrGCbx.Clear;
+            sndPlaySound('C:\Windows\Media\speech off.wav', SND_NODEFAULT or SND_ASYNC or SND_RING);
+
+            showInPoleClient;
+            Exit;
+
+          end;
+          MainForm.Bonv_ctr_listTable.Next;
+        end;
+
+      end;
+
+    end;
+
+    MainForm.FDQuery2.Active := false;
+    MainForm.FDQuery2.SQL.Clear;
+
+
   end;
 end;
 
@@ -1718,6 +2550,65 @@ begin
 
 end;
 
+procedure TBonCtrGestionF.ChangePRIXBonCtrGBtnClick(Sender: TObject);
+begin
+  if not (MainForm.Bonv_ctr_listTable.IsEmpty) then
+  begin
+
+  //------- Show the splash screan for the adding comptes ---------//
+      FSplashVersement := TFSplashVersement.Create(Application);
+
+      FSplashVersement.Width := 304;
+//      FSplashVersement.Height:=446;
+//      FSplashVersement.OKVersementSBtn.Enabled:= True;
+      FSplashVersement.AdvSmoothTouchKeyBoard1.Left:=0;
+      FSplashVersement.AdvSmoothTouchKeyBoard1.Width:=304;
+      FSplashVersement.AdvSmoothTouchKeyBoard1.BringToFront;
+
+      FSplashVersement.Left := (MainForm.Left + MainForm.Width div 2) - (FSplashVersement.Width div 2);
+      FSplashVersement.Top := (MainForm.Top + MainForm.Height div 2) - (FSplashVersement.Height div 2);
+
+      FSplashVersement.Label1.Caption:= 'Prix V HT:';
+
+      FSplashVersement.Tag := 5;
+      FSplashVersement.OKVersementSBtn.Tag := 5;
+//  AnimateWindow(FSplashVersement.Handle, 175, AW_VER_POSITIVE OR AW_BLEND OR AW_ACTIVATE );
+      FormStyle := fsNormal;
+      FSplashVersement.Show;
+
+  end;
+end;
+
+procedure TBonCtrGestionF.ChangeQUTBonCtrGBtnClick(Sender: TObject);
+begin
+  if not (MainForm.Bonv_ctr_listTable.IsEmpty) then
+  begin
+
+  //------- Show the splash screan for the adding comptes ---------//
+      FSplashVersement := TFSplashVersement.Create(Application);
+
+      FSplashVersement.Width := 304;
+//      FSplashVersement.Height:=446;
+//      FSplashVersement.OKVersementSBtn.Enabled:= True;
+      FSplashVersement.AdvSmoothTouchKeyBoard1.Left:=0;
+      FSplashVersement.AdvSmoothTouchKeyBoard1.Width:=304;
+      FSplashVersement.AdvSmoothTouchKeyBoard1.BringToFront;
+
+      FSplashVersement.Left := (MainForm.Left + MainForm.Width div 2) - (FSplashVersement.Width div 2);
+      FSplashVersement.Top := (MainForm.Top + MainForm.Height div 2) - (FSplashVersement.Height div 2);
+
+      FSplashVersement.Label1.Caption:= 'Quantite:';
+
+      FSplashVersement.Tag := 4;
+      FSplashVersement.OKVersementSBtn.Tag := 4;
+//  AnimateWindow(FSplashVersement.Handle, 175, AW_VER_POSITIVE OR AW_BLEND OR AW_ACTIVATE );
+      FormStyle := fsNormal;
+      FSplashVersement.Show;
+
+  end;
+
+end;
+
 procedure TBonCtrGestionF.ClearProduitBonCtrGBtnClick(Sender: TObject);
 begin
 
@@ -1754,6 +2645,19 @@ begin
     FSplashAddUnite.OKAddUniteSBtn.Enabled := True;
     FSplashAddUnite.OKAddUniteSBtn.Tag := 22;
   end;
+
+end;
+
+procedure TBonCtrGestionF.LeftFavTabPLock(Sender: TObject);
+var
+  Ini: TMemIniFile;
+begin
+
+   Ini := TMemIniFile.Create(ChangeFileExt(Application.ExeName, '.ini'));
+   Ini.WriteBool(Caption,'Fav Locked', LeftFavTabP.Locked);
+
+   Ini.UpdateFile;
+   Ini.Free;
 
 end;
 
@@ -2789,6 +3693,32 @@ begin
   MainForm.Bonv_ctr_listTable.EnableControls;
 end;
 
+procedure TBonCtrGestionF.sSpeedButton3Click(Sender: TObject);
+begin
+
+  //------- Show the splash screan for the adding comptes ---------//
+      FSplashVersement := TFSplashVersement.Create(Application);
+
+      FSplashVersement.Width := 304;
+//      FSplashVersement.Height:=446;
+//      FSplashVersement.OKVersementSBtn.Enabled:= True;
+      FSplashVersement.AdvSmoothTouchKeyBoard1.Left:=0;
+      FSplashVersement.AdvSmoothTouchKeyBoard1.Width:=304;
+      FSplashVersement.AdvSmoothTouchKeyBoard1.BringToFront;
+
+      FSplashVersement.Left := (MainForm.Left + MainForm.Width div 2) - (FSplashVersement.Width div 2);
+      FSplashVersement.Top := (MainForm.Top + MainForm.Height div 2) - (FSplashVersement.Height div 2);
+
+      FSplashVersement.Label1.Caption:= 'Divers:';
+
+      FSplashVersement.Tag := 6;
+      FSplashVersement.OKVersementSBtn.Tag := 6;
+//  AnimateWindow(FSplashVersement.Handle, 175, AW_VER_POSITIVE OR AW_BLEND OR AW_ACTIVATE );
+      FormStyle := fsNormal;
+      FSplashVersement.Show;
+
+end;
+
 procedure TBonCtrGestionF.AddBVCtrBonCtrGBtnClick(Sender: TObject);
 var
   codeCT, CodeCB: integer;
@@ -3231,10 +4161,14 @@ begin
       MainForm.SQLQuery3.SQL.Clear;
       MainForm.SQLQuery3.SQL.Text := 'SELECT * FROM produit WHERE code_p = ' + QuotedStr(MainForm.SQLQuery.FieldValues['code_p']);
       MainForm.SQLQuery3.Active := True;
+
+      if NOT MainForm.SQLQuery3.IsEmpty then
+      begin
       MainForm.SQLQuery3.Edit;
       MainForm.SQLQuery3.FieldValues['qut_p'] := (MainForm.SQLQuery3.FieldValues['qut_p'] + ((MainForm.SQLQuery.FieldValues['qut_p']) * ((MainForm.SQLQuery.FieldValues['cond_p']))));
 //            MainForm.ProduitTable.FieldValues['prixvd_p']:= MainForm.SQLQuery.FieldValues['prixvd_p'];
       MainForm.SQLQuery3.Post;
+      end;
 
       Mainform.FDQuery2.Active := False;
       Mainform.FDQuery2.Sql.Clear;
@@ -3398,10 +4332,14 @@ begin
           MainForm.SQLQuery3.SQL.Clear;
           MainForm.SQLQuery3.SQL.Text := 'SELECT * FROM produit WHERE code_p = ' + QuotedStr(MainForm.SQLQuery.FieldValues['code_p']);
           MainForm.SQLQuery3.Active := True;
+
+          if not MainForm.SQLQuery3.IsEmpty then
+          begin
           MainForm.SQLQuery3.Edit;
           MainForm.SQLQuery3.FieldValues['qut_p'] := (MainForm.SQLQuery3.FieldValues['qut_p'] - ((MainForm.SQLQuery.FieldValues['qut_p']) * ((MainForm.SQLQuery.FieldValues['cond_p']))));
           MainForm.SQLQuery3.FieldValues['tva_p'] := MainForm.SQLQuery.FieldValues['tva_p'];
           MainForm.SQLQuery3.Post;
+          end;
 
           Mainform.FDQuery2.Active := False;
           Mainform.FDQuery2.Sql.Clear;
@@ -3733,6 +4671,82 @@ begin
   Refresh_PreservePosition;
 end;
 
+procedure TBonCtrGestionF.ProduitsListDBGridEhDrawColumnCell(Sender: TObject;
+  const Rect: TRect; DataCol: Integer; Column: TColumnEh;
+  State: TGridDrawState);
+
+var
+  grid : TDBGridEh;
+  NomP,XXXX : String;
+  aRect : TRect;
+begin
+
+  NomP := ' Divers';
+  XXXX := ' ####';
+  aRect := Rect;
+  grid := sender as TDBGridEh;
+
+ if ((MainForm.Bonv_ctr_listTable.FieldByName('code_p').AsInteger ) = 0)
+  and NOT(MainForm.Bonv_ctr_listTable.IsEmpty) then
+ begin
+
+    if (MainForm.Bonv_ctr_listTable.FieldByName('prixvd_p').AsCurrency ) > 0  then
+    begin
+      ProduitsListDBGridEh.Canvas.Font.Color:=$00519509;//   Brush.Color:=green;
+      ProduitsListDBGridEh.DefaultDrawColumnCell(Rect, DataCol, Column, State);
+    end;
+
+    if (MainForm.Bonv_ctr_listTable.FieldByName('prixvd_p').AsCurrency ) < 0  then
+    begin
+      ProduitsListDBGridEh.Canvas.Font.Color:=$004735F9;//   Brush.Color:=green;
+      ProduitsListDBGridEh.DefaultDrawColumnCell(Rect, DataCol, Column, State);
+    end;
+
+    if column.FieldName = 'nomp' then
+    begin
+      grid.Canvas.FillRect(Rect);
+      DrawText(grid.Canvas.Handle, PChar(NomP), Length(NomP), aRect,
+      DT_SINGLELINE or DT_LEFT or DT_VCENTER);
+    end;
+    if column.FieldName = 'referp' then
+    begin
+      grid.Canvas.FillRect(Rect);
+      DrawText(grid.Canvas.Handle, PChar(XXXX), Length(XXXX), aRect,
+      DT_SINGLELINE or DT_CENTER or DT_VCENTER);
+    end;
+
+    if column.FieldName = 'tva_p' then
+    begin
+      grid.Canvas.FillRect(Rect);
+      DrawText(grid.Canvas.Handle, PChar(XXXX), Length(XXXX), aRect,
+      DT_SINGLELINE or DT_CENTER or DT_VCENTER);
+    end;
+
+    if column.FieldName = 'MontantTVA' then
+    begin
+      grid.Canvas.FillRect(Rect);
+      DrawText(grid.Canvas.Handle, PChar(XXXX), Length(XXXX), aRect,
+      DT_SINGLELINE or DT_CENTER or DT_VCENTER);
+    end;
+
+    if column.FieldName = 'MargeM' then
+    begin
+      grid.Canvas.FillRect(Rect);
+      DrawText(grid.Canvas.Handle, PChar(XXXX), Length(XXXX), aRect,
+      DT_SINGLELINE or DT_CENTER or DT_VCENTER);
+    end;
+
+    if column.FieldName = 'Marge' then
+    begin
+      grid.Canvas.FillRect(Rect);
+      DrawText(grid.Canvas.Handle, PChar(XXXX), Length(XXXX), aRect,
+      DT_SINGLELINE or DT_CENTER or DT_VCENTER);
+    end;
+
+  end;
+
+end;
+
 procedure TBonCtrGestionF.ProduitsListDBGridEhExit(Sender: TObject);
 begin
   Refresh_PreservePosition;
@@ -3860,6 +4874,7 @@ begin
       MainForm.Bonv_ctr_listTable.IndexFieldNames := 'code_bvctr';
       MainForm.Bonv_ctr_listTable.Last;
       MainForm.Bonv_ctr_listTable.EnableControls;
+      MainForm.Bonv_ctr_listTable.Refresh;
 
       MainForm.SQLQuery.Active := False;
       MainForm.SQLQuery.SQL.Clear;

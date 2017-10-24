@@ -2,7 +2,7 @@
 1~ num_bvctr~ N° du bon~ 100~ -1
 2~ date_bvctr~ Date~ 100~ -1
 3~ time_bvctr~ Heure~ 100~ -1
-4~ clientbvctr~ Client~ 300~ -1
+4~ clientbvctr~ Client~ 259~ -1
 5~ montht_bvctr~ Montant HT~ 150~ -1
 6~ remise_bvctr~ Remise HT~ 150~ -1
 7~ NeTHT~ Net â Payer HT~ 150~ -1
@@ -10,5 +10,5 @@
 9~ montttc_bvctr~ Montant TTC~ 150~ -1
 10~ montver_bvctr~ Montant Versé~ 150~ -1
 11~ MontantRen~ Montant Rendu~ 150~ -1
-12~ Agnet~ Agent~ 150~ -1
-13~ marge_bvctr~ Marge~ 150~ -1
+12~ marge_bvctr~ Marge~ 150~ -1
+13~ Agnet~ Agent~ 150~ -1

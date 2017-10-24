@@ -46,7 +46,7 @@ implementation
 
 {$R *.dfm}
 
-uses Contnrs, Types, UProduitGestion, UMainF, UBonRecGestion, UFastProduitsList,
+uses System.IniFiles, Contnrs, Types, UProduitGestion, UMainF, UBonRecGestion, UFastProduitsList,
   USplashAddCompte, UBonLivGestion, UBonFacVGestion, UBonFacAGestion,
   UComptoir, UReglementCGestion, UReglementFGestion, UDataModule,
   UChargesGestion, UChargesFList, UPertesGestion, UBonFacPGestion,
@@ -1130,6 +1130,9 @@ end;
 procedure TFSplashAddUnite.OKAddUniteSBtnClick(Sender: TObject);
 var codeP,CodeMDPai,codeBR,CodeF,CodeUNIT: Integer;
 
+  Ini: TIniFile;
+  I: Integer;
+
 begin
   //---This TAG = 0 for Add in Produit Famille--///
   if OKAddUniteSBtn.Tag = 0 then
@@ -1356,11 +1359,29 @@ begin
    //---This TAG = 4 for deltting  Produit--///
     if OKAddUniteSBtn.Tag = 4  then
     begin
-   //    MainForm.ProduitTable.Last ;
+
+      // Delete produit from Fav
+      Ini := TIniFile.Create(ChangeFileExt(Application.ExeName,'.ini'));
+      for I := 1 to 60 do
+      begin
+
+         if Ini.ReadString('','Fav '+IntToStr(I), '') = MainForm.ProduitTable.FieldByName('nom_p').AsString then
+         begin
+          Ini.WriteString('','Fav '+IntToStr(I), '');
+          Break
+         end;
+
+      end;
+      Ini.UpdateFile;
+      Ini.Free;
+
+      // MainForm.ProduitTable.Last ;
       //------ this is a executable SQL use it for quick delete code barres in the DB when we cancel
       codeP:= MainForm.ProduitTable.FieldValues['code_p'];
       MainForm.GstockdcConnection.ExecSQL('DELETE FROM codebarres where codebarres.code_p = ' + IntToStr(codeP));
       MainForm.ProduitTable.Delete ;
+
+
 
     sndPlaySound('C:\Windows\Media\speech off.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
           AnimateWindow(FSplashAddUnite.Handle, 175, AW_VER_NEGATIVE OR AW_SLIDE OR AW_HIDE);

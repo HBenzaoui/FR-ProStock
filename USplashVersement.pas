@@ -34,6 +34,8 @@ type
     RegleVersementSGSlider: TsSlider;
     RegleVersementSGLbl: TLabel;
     AdvSmoothTouchKeyBoard1: TAdvSmoothTouchKeyBoard;
+    Label29: TLabel;
+    Edit1: TEdit;
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -49,6 +51,9 @@ type
     procedure RegleVersementSGSliderChanging(Sender: TObject;
       var CanChange: Boolean);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure AdvSmoothTouchKeyBoard1KeyClick(Sender: TObject; Index: Integer);
+    procedure Edit1KeyPress(Sender: TObject; var Key: Char);
+    procedure Edit1Change(Sender: TObject);
   private
 
     { Private declarations }
@@ -69,20 +74,75 @@ var
 
 implementation
 
-uses
+uses System.Contnrs,
   UMainF, UClientGestion, UBonRecGestion, UBonLivGestion, UBonFacVGestion,
   UBonFacAGestion, UComptoir, UDataModule, UBonFacPGestion;
 
 {$R *.dfm}
 
+
+ var
+    gGrayForms: TComponentList;
+
+procedure GrayFormsVer;
+var
+  loop: integer;
+  wScrnFrm: TForm;
+  wForm: TForm;
+//  wPoint: TPoint;
+  wScreens: TList;
+begin
+  if not assigned(gGrayForms) then
+  begin
+    gGrayForms := TComponentList.Create;
+    gGrayForms.OwnsObjects := true;
+    wScreens := TList.Create;
+    try
+      for loop := 0 to 0 do
+        wScreens.Add(Screen.Forms[loop]);
+      for loop := 0 to 0 do
+      begin
+        wScrnFrm := wScreens[loop];
+        if wScrnFrm.Visible then
+        begin
+          wForm := TForm.Create(wScrnFrm);
+       ///wForm.Align:= alClient;
+          wForm.WindowState := wsMaximized;
+          gGrayForms.Add(wForm);
+          wForm.Position := poOwnerFormCenter;
+          wForm.AlphaBlend := true;
+          wForm.AlphaBlendValue := 80;
+          wForm.Color := clBlack;
+          wForm.BorderStyle := bsNone;
+          wForm.StyleElements := [];
+          wForm.Enabled := false;
+          wForm.BoundsRect := wScrnFrm.BoundsRect;
+          SetWindowLong(wForm.Handle, GWL_HWNDPARENT, wScrnFrm.Handle);
+          SetWindowPos(wForm.Handle, wScrnFrm.Handle, 0, 0, 0, 0,
+            SWP_NOSIZE or SWP_NOMOVE);
+          wForm.Visible := true;
+        end;
+      end;
+    finally
+      wScreens.free;
+    end;
+  end;
+end;
+
+procedure NormalFormsVer;
+begin
+  FreeAndNil(gGrayForms);
+end;
+
+
 procedure TFSplashVersement.FormCreate(Sender: TObject);
 begin
- GrayForms  ;
+ GrayFormsVer  ;
  end;
 
 procedure TFSplashVersement.FormDestroy(Sender: TObject);
 begin
-  NormalForms;
+  NormalFormsVer;
 end;
 
 procedure TFSplashVersement.DisableBonCtr;
@@ -138,6 +198,19 @@ begin
           BonCtrGestionF.ValiderBVCtrBonCtrGBtn.ImageIndex:=12; // 11 For A
           BonCtrGestionF.ExValiderBVCtrBonCtrGBtn.Enabled:= False;
           BonCtrGestionF.ExValiderBVCtrBonCtrGBtn.ImageIndex:=14;//13 for D
+
+          BonCtrGestionF.CameraBonCtrGBtn.Enabled:= False;
+
+          // Disable Fav Panel
+          BonCtrGestionF.FavList1Grd.Color:= $00EFE9E8;
+          BonCtrGestionF.FavList2Grd.Color:= $00EFE9E8;
+          BonCtrGestionF.FavList3Grd.Color:= $00EFE9E8;
+          BonCtrGestionF.FavList4Grd.Color:= $00EFE9E8;
+          BonCtrGestionF.FavList5Grd.Color:= $00EFE9E8;
+          BonCtrGestionF.DisableFavBtns;
+          BonCtrGestionF.FavProduitCTRPgControl.Enabled:= False;
+
+
 end;
 
 procedure TFSplashVersement.DisableBonFacA;
@@ -258,6 +331,64 @@ begin
 end;
 
 
+
+procedure TFSplashVersement.Edit1Change(Sender: TObject);
+begin
+       TotalVersementSLbl.Caption:= Edit1.Text;
+end;
+
+procedure TFSplashVersement.Edit1KeyPress(Sender: TObject; var Key: Char);
+const
+   F = ['+','-'];
+   N = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0',',','.','+','-', Char(VK_back)];
+   V = ['.'];
+ var
+  A,D :string ;
+begin
+
+    A:='+';
+    D:='-';
+
+  if NOT(Key in N) then
+  begin
+     key := #0;
+  end;
+
+  if (Key in V) then
+  begin
+    key :=  #44;
+  end;
+
+  if (Key = ',') AND (Pos(Key, (Edit1.Text)) > 0) Then
+  begin
+      Key := #0;
+  end;
+
+  if (Key In F) AND ( (Pos(A, (Edit1.Text)) > 0) OR ( Pos(D, (Edit1.Text)) > 0 ) ) Then
+  begin
+
+        if Key = #45 then
+        begin
+        Edit1.Text:= IntToStr( StrToInt(Edit1.Text) * -1 );
+        end;
+
+        Key := #0;
+  end
+   else
+      if (Key In F) AND ( (Pos(A, (Edit1.Text)) > 0) OR ( Pos(D, (Edit1.Text)) > 0 )) Then
+      begin
+          Key := #0;
+
+      end;
+
+
+  if key = #13 then
+  begin
+    key:=#0;
+  end;
+
+
+end;
 
 procedure TFSplashVersement.DisableBonLiv;
 begin
@@ -441,7 +572,7 @@ procedure TFSplashVersement.FormShow(Sender: TObject);
  var OLDCredit,TotalTTC: Currency;
 begin
 //--------------------------- this tag = 0 is for valdating from bon recption --------
-  if FSplashVersement.OKVersementSBtn.Tag = 0 then
+  if OKVersementSBtn.Tag = 0 then
   begin
 
     BonRecGestionF.FournisseurBonRecGCbx.StyleElements:= [seFont,seClient,seBorder];
@@ -481,13 +612,13 @@ begin
       OKVersementSBtn.ImageIndex := 17;
       end;
 
-  FSplashVersement.VerVersementSEdtChange(Sender);
+  VerVersementSEdtChange(Sender);
 
   end;
 
 
 //--------------------------- this tag = 1 is for valdating from bon livrartion --------
-  if FSplashVersement.OKVersementSBtn.Tag = 1 then
+  if OKVersementSBtn.Tag = 1 then
   begin
        BonLivGestionF.ClientBonLivGCbx.StyleElements:= [seFont,seClient,seBorder];
     BonLivGestionF.RequiredClientGlbl.Visible:= False;
@@ -526,11 +657,11 @@ begin
       OKVersementSBtn.ImageIndex := 17;
       end;
 
-   FSplashVersement.VerVersementSEdtChange(Sender);
+   VerVersementSEdtChange(Sender);
    end;
 
    //--------------------------- this tag = 3 is for valdating from comptoir --------
-  if FSplashVersement.OKVersementSBtn.Tag = 3 then
+  if OKVersementSBtn.Tag = 3 then
   begin
 
     OLDCredit:=StrToFloat(StringReplace(OldCreditVersementSLbl.Caption, #32, '', [rfReplaceAll]));
@@ -557,18 +688,28 @@ begin
        TotalVersementSLbl.Top:= 43;
      end;
 
-//     if (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='à terme' ) OR (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='a terme' )
-//        OR (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='À terme' )  then
-//     begin
-//      VerVersementSEdt.Text:= FloatToStrF(0,ffNumber,14,2);
-//      VerVersementSEdt.Enabled:= False;
-//      RegleVersementSGSlider.Enabled:=False;
-//      OKVersementSBtn.Enabled := true;
-//      OKVersementSBtn.ImageIndex := 17;
-//      end;
 
-//   FSplashVersement.VerVersementSEdtChange(Sender);
+  end;
 
+
+ //--------- this tag = 4 is for Changing QUT OR Addin DIVERS in comptoir-------------------
+  if (OKVersementSBtn.Tag = 4) OR (OKVersementSBtn.Tag = 6) then
+  begin
+      Edit1.Visible:= True;
+      Edit1.Left:= 310;
+      Edit1.SetFocus;
+  end;
+
+
+ //--------- this tag = 5 is for Changing PRRIX in comptoir-------------------
+  if OKVersementSBtn.Tag = 5 then
+  begin
+      Edit1.Visible:= True;
+      Edit1.Left:= 310;
+//      Edit1.Text:= FloatToStr(MainForm.Bonv_ctr_listTable.FieldByName('prixvd_p').AsFloat);
+//      Edit1.SelectAll;
+      TotalVersementSLbl.Caption:= FloatToStr(MainForm.Bonv_ctr_listTable.FieldByName('prixvd_p').AsFloat);
+      Edit1.SetFocus;
   end;
 
 end;
@@ -2071,6 +2212,79 @@ begin
      end;
   end;
 
+//--------- this tag = 4 is for Changing QUT in comptoir-------------------
+
+ if FSplashVersement.Tag = 4 then
+  begin
+
+     MainForm.Bonv_ctr_listTable.Edit;
+     MainForm.Bonv_ctr_listTable.FieldByName('qut_p').AsFloat:= StrToFloat(TotalVersementSLbl.Caption);
+     MainForm.Bonv_ctr_listTable.Post;
+     MainForm.Bonv_ctr_listTable.Refresh;
+
+     BonCtrGestionF.FormStyle:=fsStayOnTop;
+
+     AnimateWindow(FSplashVersement.Handle, 175, AW_VER_NEGATIVE OR AW_BLEND OR AW_HIDE);
+     FSplashVersement.Release;
+
+     sndPlaySound('C:\Windows\Media\speech on.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+  end;
+
+//--------- this tag = 5 is for Changing PRIX in comptoir-------------------
+
+ if FSplashVersement.Tag = 5 then
+  begin
+
+     MainForm.Bonv_ctr_listTable.Edit;
+     MainForm.Bonv_ctr_listTable.FieldByName('prixvd_p').AsFloat:= StrToFloat(TotalVersementSLbl.Caption);
+     MainForm.Bonv_ctr_listTable.Post;
+     MainForm.Bonv_ctr_listTable.Refresh;
+
+     BonCtrGestionF.FormStyle:=fsStayOnTop;
+
+     AnimateWindow(FSplashVersement.Handle, 175, AW_VER_NEGATIVE OR AW_BLEND OR AW_HIDE);
+     FSplashVersement.Release;
+
+     sndPlaySound('C:\Windows\Media\speech on.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+  end;
+
+  //--------- this tag = 6 is for Adding DIVERS in comptoir-------------------
+
+ if FSplashVersement.Tag = 6 then
+  begin
+
+    if (Pos('+', (Edit1.Text)) > 0) OR (Pos('-', (Edit1.Text)) > 0)then
+    begin
+
+     BonCtrGestionF.ProduitBonCtrGCbx.Text:= TotalVersementSLbl.Caption;
+
+    end else
+         begin
+           BonCtrGestionF.ProduitBonCtrGCbx.Text:= '+' + TotalVersementSLbl.Caption;
+         end;
+
+     BonCtrGestionF.EnterAddProduitBonCtrGBtnClick(Sender);
+     BonCtrGestionF.ProduitBonCtrGCbx.Text:='';
+
+
+     BonCtrGestionF.FormStyle:=fsStayOnTop;
+
+     AnimateWindow(FSplashVersement.Handle, 175, AW_VER_NEGATIVE OR AW_BLEND OR AW_HIDE);
+     FSplashVersement.Release;
+
+  end;
+
+
+end;
+
+procedure TFSplashVersement.AdvSmoothTouchKeyBoard1KeyClick(Sender: TObject;
+  Index: Integer);
+begin
+
+  if Tag = 4 then
+  begin
+   TotalVersementSLbl.Caption:= Edit1.Text;
+  end;
 
 
 end;

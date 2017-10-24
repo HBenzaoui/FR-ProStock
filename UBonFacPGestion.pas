@@ -1001,7 +1001,7 @@ begin
             MainForm.Bonp_fac_listTable.IndexFieldNames:='';
             MainForm.Bonp_fac_listTable.Active:=False;
             MainForm.Bonp_fac_listTable.SQL.Clear;
-            MainForm.Bonp_fac_listTable.SQL.Text:= 'SELECT * FROM bonp_fac_list' ;
+            MainForm.Bonp_fac_listTable.SQL.Text:= 'SELECT * FROM bonp_fac_list ORDER by code_bpfacl' ;
             MainForm.Bonp_fac_listTable.Active:=True;
            if  MainForm.Bonp_fac_listTable.RecordCount <= 0 then
            begin
@@ -1149,7 +1149,7 @@ begin
             MainForm.Bonp_fac_listTable.IndexFieldNames:='';
             MainForm.Bonp_fac_listTable.Active:=False;
             MainForm.Bonp_fac_listTable.SQL.Clear;
-            MainForm.Bonp_fac_listTable.SQL.Text:= 'SELECT * FROM bonp_fac_list' ;
+            MainForm.Bonp_fac_listTable.SQL.Text:= 'SELECT * FROM bonp_fac_list ORDER by code_bpfacl' ;
             MainForm.Bonp_fac_listTable.Active:=True;
 
            if  MainForm.Bonp_fac_listTable.RecordCount <= 0 then

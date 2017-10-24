@@ -367,12 +367,15 @@ begin
       begin
      CompteBonLivGCbx.Text:= MainForm.Bonv_livTable.FieldValues['Compte'];
       end;
-     ClientBonLivGCbxExit(Sender);
-     ProduitBonLivGCbx.SetFocus;
+
+      //Activate this when the client when to set comtpo client atopmatcly
+//     ClientBonLivGCbxExit(Sender);
+//     ProduitBonLivGCbx.SetFocus;
    end else
        begin
-           ClientBonLivGCbxExit(Sender);
-           ProduitBonLivGCbx.SetFocus;
+         //Activate this when the client when to set comtpo client atopmatcly
+//           ClientBonLivGCbxExit(Sender);
+//           ProduitBonLivGCbx.SetFocus;
        end;
  end;
 // use this tage when i click on edit button for bon
@@ -764,6 +767,13 @@ I : Integer;
 //      Cursor := crDefault;
      end;
 
+       if ResherchPARCBProduitsRdioBtn.Checked then
+     begin
+      ProduitBonLivGCbx.Properties.Items.Clear;
+
+     end;
+
+
 end;
 
 procedure TBonLivGestionF .ProduitBonLivGCbxExit(Sender: TObject);
@@ -1041,7 +1051,7 @@ begin
             MainForm.Bonv_liv_listTable.IndexFieldNames:='';
             MainForm.Bonv_liv_listTable.Active:=False;
             MainForm.Bonv_liv_listTable.SQL.Clear;
-            MainForm.Bonv_liv_listTable.SQL.Text:= 'SELECT * FROM bonv_liv_list' ;
+            MainForm.Bonv_liv_listTable.SQL.Text:= 'SELECT * FROM bonv_liv_list ORDER by code_bvlivl' ;
             MainForm.Bonv_liv_listTable.Active:=True;
            if  MainForm.Bonv_liv_listTable.RecordCount <= 0 then
            begin
@@ -1220,7 +1230,7 @@ begin
             MainForm.Bonv_liv_listTable.IndexFieldNames:='';
             MainForm.Bonv_liv_listTable.Active:=False;
             MainForm.Bonv_liv_listTable.SQL.Clear;
-            MainForm.Bonv_liv_listTable.SQL.Text:= 'SELECT * FROM bonv_liv_list' ;
+            MainForm.Bonv_liv_listTable.SQL.Text:= 'SELECT * FROM bonv_liv_list ORDER by code_bvlivl' ;
             MainForm.Bonv_liv_listTable.Active:=True;
 
            if  MainForm.Bonv_liv_listTable.RecordCount <= 0 then

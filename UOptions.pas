@@ -23,7 +23,7 @@ uses
   dxSkinValentine, dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
   dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
   dxSkinXmas2008Blue, cxRadioGroup, cxGroupBox, sTrackBar, cxTrackBar,
-  Vcl.Buttons, sSpeedButton, CPort;
+  Vcl.Buttons, sSpeedButton, CPort,DBGridEh, Vcl.Menus;
 
 type
   TFOptions = class(TForm)
@@ -152,11 +152,89 @@ type
     Label39: TLabel;
     FourCreditSdr21: TsSlider;
     sTabSheet3: TsTabSheet;
-    Panel12: TPanel;
-    Panel13: TPanel;
     Label40: TLabel;
     PrinterCaisse57mmOptionCaisseRdioBtn: TRadioButton;
     PrinterCaisse80mmOptionCaisseRdioBtn: TRadioButton;
+    FavProduitOptPgControl: TsPageControl;
+    Fav1ListTB: TsTabSheet;
+    Panel12: TPanel;
+    GridPanel2: TGridPanel;
+    Fav1sp: TsSpeedButton;
+    Fav2sp: TsSpeedButton;
+    Fav3sp: TsSpeedButton;
+    Fav4sp: TsSpeedButton;
+    Fav5sp: TsSpeedButton;
+    Fav6sp: TsSpeedButton;
+    Fav7sp: TsSpeedButton;
+    Fav8sp: TsSpeedButton;
+    Fav9sp: TsSpeedButton;
+    Fav10sp: TsSpeedButton;
+    Fav11sp: TsSpeedButton;
+    Fav12sp: TsSpeedButton;
+    Fav2ListTB: TsTabSheet;
+    Panel31: TPanel;
+    GridPanel3: TGridPanel;
+    Fav13sp: TsSpeedButton;
+    Fav14sp: TsSpeedButton;
+    Fav15sp: TsSpeedButton;
+    Fav16sp: TsSpeedButton;
+    Fav17sp: TsSpeedButton;
+    Fav18sp: TsSpeedButton;
+    Fav19sp: TsSpeedButton;
+    Fav20sp: TsSpeedButton;
+    Fav21sp: TsSpeedButton;
+    Fav22sp: TsSpeedButton;
+    Fav23sp: TsSpeedButton;
+    Fav24sp: TsSpeedButton;
+    Fav3ListTB: TsTabSheet;
+    Panel32: TPanel;
+    GridPanel4: TGridPanel;
+    Fav25sp: TsSpeedButton;
+    Fav26sp: TsSpeedButton;
+    Fav27sp: TsSpeedButton;
+    Fav28sp: TsSpeedButton;
+    Fav29sp: TsSpeedButton;
+    Fav30sp: TsSpeedButton;
+    Fav31sp: TsSpeedButton;
+    Fav32sp: TsSpeedButton;
+    Fav33sp: TsSpeedButton;
+    Fav34sp: TsSpeedButton;
+    Fav35sp: TsSpeedButton;
+    Fav36sp: TsSpeedButton;
+    Fav4ListTB: TsTabSheet;
+    Panel33: TPanel;
+    GridPanel5: TGridPanel;
+    Fav37sp: TsSpeedButton;
+    Fav38sp: TsSpeedButton;
+    Fav39sp: TsSpeedButton;
+    Fav40sp: TsSpeedButton;
+    Fav41sp: TsSpeedButton;
+    Fav42sp: TsSpeedButton;
+    Fav43sp: TsSpeedButton;
+    Fav44sp: TsSpeedButton;
+    Fav45sp: TsSpeedButton;
+    Fav46sp: TsSpeedButton;
+    Fav47sp: TsSpeedButton;
+    Fav48sp: TsSpeedButton;
+    Fav5ListTB: TsTabSheet;
+    Panel34: TPanel;
+    GridPanel6: TGridPanel;
+    Fav49sp: TsSpeedButton;
+    Fav50sp: TsSpeedButton;
+    Fav51sp: TsSpeedButton;
+    Fav52sp: TsSpeedButton;
+    Fav53sp: TsSpeedButton;
+    Fav54sp: TsSpeedButton;
+    Fav55sp: TsSpeedButton;
+    Fav56sp: TsSpeedButton;
+    Fav57sp: TsSpeedButton;
+    Fav58sp: TsSpeedButton;
+    Fav59sp: TsSpeedButton;
+    Fav60sp: TsSpeedButton;
+    EditFavOSp: TsSpeedButton;
+    SaveFavOSp: TsSpeedButton;
+    PopupMenu1: TPopupMenu;
+    S2: TMenuItem;
     procedure FormShow(Sender: TObject);
     procedure OKFPrintingBtnClick(Sender: TObject);
     procedure ImageCompanyOptionImgMouseEnter(Sender: TObject);
@@ -183,11 +261,19 @@ type
     procedure ClientSdr12Changing(Sender: TObject; var CanChange: Boolean);
     procedure FourSdr13Changing(Sender: TObject; var CanChange: Boolean);
     procedure ResetDBPaswordGEdtMouseEnter(Sender: TObject);
+    procedure EditFavOSpClick(Sender: TObject);
+    procedure SaveFavOSpClick(Sender: TObject);
+    procedure Fav1spClick(Sender: TObject);
+    procedure S2Click(Sender: TObject);
+    procedure Fav1spMouseEnter(Sender: TObject);
   private
+    procedure EnableFavBtns;
+    procedure DisableFavBtns;
 
-    { Private declarations }
   public
-    { Public declarations }
+
+   FavBtn : TsSpeedButton;
+
   end;
 
 var
@@ -196,7 +282,7 @@ var
 implementation
 
 uses
-Printers,IniFiles, UClientGestion, UMainF, UWorkingSplash;
+Printers,IniFiles, UClientGestion, UMainF, UWorkingSplash, UFastProduitsList;
 
 
 {$R *.dfm}
@@ -339,6 +425,35 @@ begin
       end;
 end;
 
+procedure TFOptions.Fav1spClick(Sender: TObject);
+begin
+
+  // Set the clicked btn sender
+  FavBtn := Sender as TsSpeedButton;
+
+  FastProduitsListF := TFastProduitsListF.Create(Application);
+  FastProduitsListF.Tag := 7;
+
+//-------- Show the splash screan for the produit familly to add new one---------//
+  FastProduitsListF.Left := (Screen.Width div 2) - (FastProduitsListF.Width div 2);
+  FastProduitsListF.Top := (Screen.Height div 2) - (FastProduitsListF.Height div 2);
+  FormStyle := fsNormal;
+  FastProduitsListF.ProduitsListDBGridEh.Options:=
+      FastProduitsListF.ProduitsListDBGridEh.Options -[dgMultiSelect] ;
+
+  FastProduitsListF.ProduitsListDBGridEh.IndicatorOptions :=
+   FastProduitsListF.ProduitsListDBGridEh.IndicatorOptions - [gioShowRowselCheckboxesEh];
+  FastProduitsListF.ShowModal;
+
+
+//
+end;
+
+procedure TFOptions.Fav1spMouseEnter(Sender: TObject);
+begin
+FavBtn := Sender as TsSpeedButton;
+end;
+
 procedure TFOptions.FormClose(Sender: TObject; var Action: TCloseAction);
 Var CanChange : Boolean;
 begin
@@ -389,6 +504,7 @@ var
   Ini: TIniFile;
   CanChange : Boolean;
   PrinterCaisseSize : string;
+  I: Integer;
 begin
  GrayForms;
  OptionsPgControl.TabIndex:= 0;
@@ -469,7 +585,16 @@ begin
 //          TiroirCaisseActiveSdrChanging(Sender,CanChange);
          end;
 
-    Ini.Free;
+
+       // Read fav Btns
+        for I := 1 to 60 do
+        begin
+         FavBtn := (FindComponent('Fav'+IntToStr(I)+'sp') as TsSpeedButton);
+         FavBtn.Caption:= Ini.ReadString('','Fav '+IntToStr(I), FavBtn.Caption);
+        end;
+
+       Ini.Free;
+
 
       ImageEditProduitGBtn.Visible:=false;
       ImageDeleteProduitGBtn.Visible:=false;
@@ -1182,6 +1307,198 @@ begin
    Application.HintHidePause := 5000;
    ResetDBPaswordGEdt.ShowHint:= True;
    ResetDBPaswordGEdt.Hint:='Appelez Hamza Benzaoui : +213 661 45 81 97 ';
+end;
+
+
+
+procedure TFOptions.EnableFavBtns();
+begin
+
+  Fav1sp.Enabled:=  True;
+  Fav2sp.Enabled:=  True;
+  Fav3sp.Enabled:=  True;
+  Fav4sp.Enabled:=  True;
+  Fav5sp.Enabled:=  True;
+  Fav6sp.Enabled:=  True;
+  Fav7sp.Enabled:=  True;
+  Fav8sp.Enabled:=  True;
+  Fav9sp.Enabled:=  True;
+  Fav10sp.Enabled:= True;
+  Fav11sp.Enabled:= True;
+  Fav12sp.Enabled:= True;
+  Fav13sp.Enabled:= True;
+  Fav14sp.Enabled:= True;
+  Fav15sp.Enabled:= True;
+  Fav16sp.Enabled:= True;
+  Fav17sp.Enabled:= True;
+  Fav18sp.Enabled:= True;
+  Fav19sp.Enabled:= True;
+  Fav20sp.Enabled:= True;
+  Fav21sp.Enabled:= True;
+  Fav22sp.Enabled:= True;
+  Fav23sp.Enabled:= True;
+  Fav24sp.Enabled:= True;
+  Fav25sp.Enabled:= True;
+  Fav26sp.Enabled:= True;
+  Fav27sp.Enabled:= True;
+  Fav28sp.Enabled:= True;
+  Fav29sp.Enabled:= True;
+  Fav30sp.Enabled:= True;
+  Fav31sp.Enabled:= True;
+  Fav32sp.Enabled:= True;
+  Fav33sp.Enabled:= True;
+  Fav34sp.Enabled:= True;
+  Fav35sp.Enabled:= True;
+  Fav36sp.Enabled:= True;
+  Fav37sp.Enabled:= True;
+  Fav38sp.Enabled:= True;
+  Fav39sp.Enabled:= True;
+  Fav40sp.Enabled:= True;
+  Fav41sp.Enabled:= True;
+  Fav42sp.Enabled:= True;
+  Fav43sp.Enabled:= True;
+  Fav44sp.Enabled:= True;
+  Fav45sp.Enabled:= True;
+  Fav46sp.Enabled:= True;
+  Fav47sp.Enabled:= True;
+  Fav48sp.Enabled:= True;
+  Fav49sp.Enabled:= True;
+  Fav50sp.Enabled:= True;
+  Fav51sp.Enabled:= True;
+  Fav52sp.Enabled:= True;
+  Fav53sp.Enabled:= True;
+  Fav54sp.Enabled:= True;
+  Fav55sp.Enabled:= True;
+  Fav56sp.Enabled:= True;
+  Fav57sp.Enabled:= True;
+  Fav58sp.Enabled:= True;
+  Fav59sp.Enabled:= True;
+  Fav60sp.Enabled:= True;
+
+end;
+
+procedure TFOptions.DisableFavBtns();
+begin
+
+  Fav1sp.Enabled:=  False;
+  Fav2sp.Enabled:=  False;
+  Fav3sp.Enabled:=  False;
+  Fav4sp.Enabled:=  False;
+  Fav5sp.Enabled:=  False;
+  Fav6sp.Enabled:=  False;
+  Fav7sp.Enabled:=  False;
+  Fav8sp.Enabled:=  False;
+  Fav9sp.Enabled:=  False;
+  Fav10sp.Enabled:= False;
+  Fav11sp.Enabled:= False;
+  Fav12sp.Enabled:= False;
+  Fav13sp.Enabled:= False;
+  Fav14sp.Enabled:= False;
+  Fav15sp.Enabled:= False;
+  Fav16sp.Enabled:= False;
+  Fav17sp.Enabled:= False;
+  Fav18sp.Enabled:= False;
+  Fav19sp.Enabled:= False;
+  Fav20sp.Enabled:= False;
+  Fav21sp.Enabled:= False;
+  Fav22sp.Enabled:= False;
+  Fav23sp.Enabled:= False;
+  Fav24sp.Enabled:= False;
+  Fav25sp.Enabled:= False;
+  Fav26sp.Enabled:= False;
+  Fav27sp.Enabled:= False;
+  Fav28sp.Enabled:= False;
+  Fav29sp.Enabled:= False;
+  Fav30sp.Enabled:= False;
+  Fav31sp.Enabled:= False;
+  Fav32sp.Enabled:= False;
+  Fav33sp.Enabled:= False;
+  Fav34sp.Enabled:= False;
+  Fav35sp.Enabled:= False;
+  Fav36sp.Enabled:= False;
+  Fav37sp.Enabled:= False;
+  Fav38sp.Enabled:= False;
+  Fav39sp.Enabled:= False;
+  Fav40sp.Enabled:= False;
+  Fav41sp.Enabled:= False;
+  Fav42sp.Enabled:= False;
+  Fav43sp.Enabled:= False;
+  Fav44sp.Enabled:= False;
+  Fav45sp.Enabled:= False;
+  Fav46sp.Enabled:= False;
+  Fav47sp.Enabled:= False;
+  Fav48sp.Enabled:= False;
+  Fav49sp.Enabled:= False;
+  Fav50sp.Enabled:= False;
+  Fav51sp.Enabled:= False;
+  Fav52sp.Enabled:= False;
+  Fav53sp.Enabled:= False;
+  Fav54sp.Enabled:= False;
+  Fav55sp.Enabled:= False;
+  Fav56sp.Enabled:= False;
+  Fav57sp.Enabled:= False;
+  Fav58sp.Enabled:= False;
+  Fav59sp.Enabled:= False;
+  Fav60sp.Enabled:= False;
+
+
+
+end;
+
+procedure TFOptions.EditFavOSpClick(Sender: TObject);
+begin
+
+  if EditFavOSp.Tag = 0 then
+  begin
+  EnableFavBtns;
+  SaveFavOSp.Enabled:= True;
+  EditFavOSp.ImageIndex:= 19 ;
+  EditFavOSp.Tag := 1;
+  end else
+
+   if EditFavOSp.Tag = 1 then
+   begin
+
+     DisableFavBtns;
+     SaveFavOSp.Enabled:= False;
+     EditFavOSp.ImageIndex:= 55 ;
+     EditFavOSp.Tag := 0;
+   end;
+
+
+
+end;
+
+
+procedure TFOptions.S2Click(Sender: TObject);
+begin
+  FavBtn.Caption:='';
+end;
+
+procedure TFOptions.SaveFavOSpClick(Sender: TObject);
+var
+  Ini: TMemIniFile;
+  I: Integer;
+
+begin
+
+  Ini := TMemIniFile.Create(ChangeFileExt(Application.ExeName, '.ini'));
+
+  for I := 1 to 60 do
+  begin
+   FavBtn := (FindComponent('Fav'+IntToStr(I)+'sp') as TsSpeedButton);
+   Ini.WriteString(Caption,'Fav '+IntToStr(I), FavBtn.Caption);
+  end;
+
+  Ini.UpdateFile;
+  Ini.Free;
+
+  DisableFavBtns;
+  SaveFavOSp.Enabled:= False;
+  EditFavOSp.ImageIndex:= 55 ;
+  EditFavOSp.Tag := 0;
+
+
 end;
 
 procedure TFOptions.TiroirCaisseCOMListCbxDropDown(Sender: TObject);

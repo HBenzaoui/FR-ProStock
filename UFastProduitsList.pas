@@ -71,10 +71,63 @@ implementation
 
 {$R *.dfm}
 
-uses
+uses System.Contnrs,
   UMainF, UProduitGestion, USplashAddUnite, UClientGestion, UBonRecGestion,
   UBonLivGestion, UBonFacVGestion, UComptoir,  UBonFacAGestion, UPertesGestion,
-  UBonFacPGestion;
+  UBonFacPGestion, UOptions;
+
+  var
+    gGrayForms: TComponentList;
+
+procedure GrayFormsFp;
+var
+  loop: integer;
+  wScrnFrm: TForm;
+  wForm: TForm;
+//  wPoint: TPoint;
+  wScreens: TList;
+begin
+  if not assigned(gGrayForms) then
+  begin
+    gGrayForms := TComponentList.Create;
+    gGrayForms.OwnsObjects := true;
+    wScreens := TList.Create;
+    try
+      for loop := 0 to 0 do
+        wScreens.Add(Screen.Forms[loop]);
+      for loop := 0 to 0 do
+      begin
+        wScrnFrm := wScreens[loop];
+        if wScrnFrm.Visible then
+        begin
+          wForm := TForm.Create(wScrnFrm);
+       ///wForm.Align:= alClient;
+          wForm.WindowState := wsMaximized;
+          gGrayForms.Add(wForm);
+          wForm.Position := poOwnerFormCenter;
+          wForm.AlphaBlend := true;
+          wForm.AlphaBlendValue := 80;
+          wForm.Color := clBlack;
+          wForm.BorderStyle := bsNone;
+          wForm.StyleElements := [];
+          wForm.Enabled := false;
+          wForm.BoundsRect := wScrnFrm.BoundsRect;
+          SetWindowLong(wForm.Handle, GWL_HWNDPARENT, wScrnFrm.Handle);
+          SetWindowPos(wForm.Handle, wScrnFrm.Handle, 0, 0, 0, 0,
+            SWP_NOSIZE or SWP_NOMOVE);
+          wForm.Visible := true;
+        end;
+      end;
+    finally
+      wScreens.free;
+    end;
+  end;
+end;
+
+procedure NormalFormsFp;
+begin
+  FreeAndNil(gGrayForms);
+end;
 
 
 procedure TFastProduitsListF.FisrtClientbtnClick(Sender: TObject);
@@ -292,7 +345,10 @@ begin
   if (key = #13)   then
   begin
    key := #0;
-   if  not (ResearchProduitsEdt.Text[1] in E) then
+
+   if  (ResearchProduitsEdt.Text <> '')  then
+   begin
+   if  NOT (ResearchProduitsEdt.Text[1] in E) then
       begin
 
      if  MainForm.ProduitTable.RecordCount > 0  then
@@ -307,6 +363,17 @@ begin
            ResearchProduitsEdt.Text := '';
         end;
 
+   end else
+        begin
+
+          if  MainForm.ProduitTable.RecordCount > 0  then
+          begin
+          OKProduitGBtnClick(Sender);
+          end else
+              begin
+                ResearchProduitsEdt.Text := '';
+              end;
+        end;
 
   end;
 
@@ -326,6 +393,26 @@ begin
 ResearchProduitsEdt.Clear;
 ResearchProduitsEdt.SetFocus;
 ResearchProduitsEdt.NumbersOnly:= False;
+
+//
+//  if ResherchPARDCodProduitsRdioBtn.Checked then
+//  begin
+//  OKProduitGBtn.Caption:='Ajouter'  ;
+//  OKProduitGBtn.ImageIndex:=10;
+//  OKProduitGBtn.Margin:= -1;
+//  OKProduitGBtn.Spacing:= -1;
+//  OKproduitGBtn.Tag := 0;
+//
+//  end;
+//  if ResherchPARDesProduitsRdioBtn.Checked then
+//  begin
+//  OKProduitGBtn.Caption:='OK' ;
+//  OKProduitGBtn.ImageIndex:=17;
+//  OKProduitGBtn.Margin:= 10;
+//  OKProduitGBtn.Spacing:= 10;
+//
+//  end;
+
 end;
 
 procedure TFastProduitsListF.ResherchPARDCodProduitsRdioBtnClick(Sender: TObject);
@@ -333,11 +420,30 @@ begin
 ResearchProduitsEdt.Clear;
 ResearchProduitsEdt.SetFocus;
 ResearchProduitsEdt.NumbersOnly:= True;
+
+//  if ResherchPARDCodProduitsRdioBtn.Checked then
+//  begin
+//  OKProduitGBtn.Caption:='Ajouter'  ;
+//  OKProduitGBtn.ImageIndex:=10;
+//  OKProduitGBtn.Margin:= -1;
+//  OKProduitGBtn.Spacing:= -1;
+//  OKproduitGBtn.Tag := 0;
+//
+//  end;
+//  if ResherchPARDesProduitsRdioBtn.Checked then
+//  begin
+//  OKProduitGBtn.Caption:='OK' ;
+//  OKProduitGBtn.ImageIndex:=17;
+//  OKProduitGBtn.Margin:= 10;
+//  OKProduitGBtn.Spacing:= 10;
+//
+//  end;
+
 end;
 
 procedure TFastProduitsListF.FormShow(Sender: TObject);
 begin
-  GrayForms  ;
+  GrayFormsFp  ;
  MainForm.ProduitTable.Refresh;
  ProduitsListDBGridEh.Refresh;
 
@@ -350,7 +456,7 @@ begin
    MainForm.SaveGridLayout(ProduitsListDBGridEh,GetCurrentDir +'\bin\gc_fstprdtlst');
 
  MainForm.ProduitTable.Filtered := false;
-NormalForms  ;
+NormalFormsFp  ;
 //FreeAndNil(FastProduitsListF);
 end;
 
@@ -1826,14 +1932,14 @@ begin
 
 //--------------------------------------------------------------------------------------------------------------------------
 //---------------------------------------------------------------------------------------------------------------------------
-    
+
     //--- this tage = 5 is for select produit for Perte----//
       if Tag = 5 then
       begin
 
        PertesGestionF.NamePerteGCbx.Text:= MainForm.ProduitTable.FieldByName('nom_p').AsString;
-       Close; 
-      
+       Close;
+
       end;
 
       //-------------------------------------------------------------------------------------------------
@@ -2141,14 +2247,25 @@ begin
      else
 
 
-    if (OKProduitGBtn.Tag = 2) AND (FastProduitsListF.Tag = 6)  then
-    begin
-     CancelProduitGBtnClick(Sender);
+      if (OKProduitGBtn.Tag = 2) AND (FastProduitsListF.Tag = 6)  then
+      begin
+       CancelProduitGBtnClick(Sender);
 
-    end;
+      end;
 
+//--------------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------------
 
+    //--- this tage = 7 is for select produit in Favori----//
+      if Tag = 7 then
+      begin
+        //Get the clicke button Sender and set it caption
+       FOptions.FavBtn.Caption := MainForm.ProduitTable.FieldByName('nom_p').AsString;
+       Close;
 
+      end;
+
+      //-------------------------------------------------------------------------------------------------
 
 
     end;

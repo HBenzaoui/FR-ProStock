@@ -164,7 +164,6 @@ type
     Bona_recTableMontantVer: TCurrencyField;
     Bona_recPlistTable: TFDQuery;
     Bona_recPlistTablecode_barecl: TIntegerField;
-    Bona_recPlistTablecode_barec: TIntegerField;
     Bona_recPlistTableprixht_p: TCurrencyField;
     Bona_recPlistTablecond_p: TIntegerField;
     Bona_recPlistTablePrixATTC: TCurrencyField;
@@ -823,6 +822,7 @@ type
     N24: TMenuItem;
     OuvertureduTiroirCaisse1: TMenuItem;
     Reconnectez1: TMenuItem;
+    Bona_recPlistTablecode_barec: TIntegerField;
     procedure ClientMainFBtnClick(Sender: TObject);
     procedure FourMainFBtnClick(Sender: TObject);
     procedure ProduitMainFBtnClick(Sender: TObject);

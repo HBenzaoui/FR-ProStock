@@ -215,7 +215,7 @@ object FSplashVersement: TFSplashVersement
   end
   object RequiredStarVerVersementSLbl: TLabel
     Left = 294
-    Top = 258
+    Top = 254
     Width = 8
     Height = 22
     Anchors = [akLeft, akBottom]
@@ -247,6 +247,20 @@ object FSplashVersement: TFSplashVersement
     ParentFont = False
     StyleElements = []
   end
+  object Label29: TLabel
+    Left = 217
+    Top = 228
+    Width = 11
+    Height = 12
+    Anchors = [akTop, akRight]
+    Caption = '[R]'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = 10395294
+    Font.Height = -9
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    ParentFont = False
+  end
   object Panel1: TPanel
     Left = 0
     Top = 0
@@ -262,7 +276,7 @@ object FSplashVersement: TFSplashVersement
       81)
     object Label1: TLabel
       Left = 8
-      Top = 2
+      Top = 3
       Width = 59
       Height = 23
       Caption = 'Total:'
@@ -469,7 +483,7 @@ object FSplashVersement: TFSplashVersement
         ColorDown = 7854350
         X = 193
         Y = 2
-        Height = 126
+        Height = 63
         Width = 64
         SubKeys = <>
       end
@@ -566,8 +580,8 @@ object FSplashVersement: TFSplashVersement
         Color = 14276563
         ColorDown = 7854350
         X = 193
-        Y = 128
-        Height = 189
+        Y = 190
+        Height = 127
         Width = 64
         SubKeys = <>
       end
@@ -598,6 +612,34 @@ object FSplashVersement: TFSplashVersement
         Height = 63
         Width = 64
         SubKeys = <>
+      end
+      item
+        Caption = '+'
+        KeyValue = 43
+        ShiftKeyValue = -1
+        AltGrKeyValue = -1
+        SpecialKey = skNone
+        Color = 14276563
+        ColorDown = 7854350
+        X = 193
+        Y = 128
+        Height = 63
+        Width = 64
+        SubKeys = <>
+      end
+      item
+        Caption = '-'
+        KeyValue = 45
+        ShiftKeyValue = -1
+        AltGrKeyValue = -1
+        SpecialKey = skNone
+        Color = 14276563
+        ColorDown = 7854350
+        X = 193
+        Y = 65
+        Height = 63
+        Width = 64
+        SubKeys = <>
       end>
     SmallFont.Charset = DEFAULT_CHARSET
     SmallFont.Color = clWindowText
@@ -605,6 +647,7 @@ object FSplashVersement: TFSplashVersement
     SmallFont.Name = 'Segoe UI'
     SmallFont.Style = []
     Version = '1.8.1.1'
+    OnKeyClick = AdvSmoothTouchKeyBoard1KeyClick
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -23
@@ -665,5 +708,15 @@ object FSplashVersement: TFSplashVersement
     Color = 7854350
     ParentBackground = False
     TabOrder = 4
+  end
+  object Edit1: TEdit
+    Left = 13
+    Top = 187
+    Width = 121
+    Height = 21
+    TabOrder = 10
+    Visible = False
+    OnChange = Edit1Change
+    OnKeyPress = Edit1KeyPress
   end
 end

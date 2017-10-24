@@ -369,6 +369,8 @@ ClearFilterBVLivPMenuClick(Sender);
   mainform.Bona_recTable.sql.Text:='SELECT * FROM bona_rec  ';
   MainForm.Bona_recTable.Active:= True;
 
+ codeBR:= 0;
+
  BonRecGestionF := TBonRecGestionF.Create(nil);
  try
 
@@ -376,7 +378,7 @@ ClearFilterBVLivPMenuClick(Sender);
   begin
   ResearchBARecEdt.Text:='';
   end;
-    codeBR:= 0;
+
      if MainForm.Bona_recTable.RecordCount <= 0 then
       begin
 

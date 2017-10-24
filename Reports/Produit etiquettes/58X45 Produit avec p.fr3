@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<TfrxReport Version="5.4.6" DotMatrixReport="False" IniFile="\Software\Fast Reports" PreviewOptions.Buttons="32767" PreviewOptions.Zoom="1" PrintOptions.Printer="POSTEK C168 200s" PrintOptions.PrintOnSheet="0" PrintOptions.ShowDialog="False" ReportOptions.CreateDate="41864.4692348495" ReportOptions.Description.Text="" ReportOptions.LastChange="43029.5516976852" ScriptLanguage="PascalScript" ScriptText.Text="&#13;&#10;procedure TITLEOnBeforePrint(Sender: TfrxComponent);&#13;&#10;begin&#13;&#10;//TITLE.TEXT:=&#60;TITRE&#62;;&#13;&#10;end;&#13;&#10;&#13;&#10;procedure PrixOnBeforePrint(Sender: TfrxComponent);&#13;&#10;begin&#13;&#10;//IF &#60;PV&#62;=1 then&#13;&#10;//Prix.text:='Prix:'+FormatFloat('# ### ### ##0.00',&#60;frxProduitDB.&#34;prixvd_p&#34;&#62;)+' DA';&#13;&#10;//IF &#60;PV&#62;=2 then Prix.text:='Prix:'+FormatFloat('# ### ### ##0.00',&#60;S_ET1.&#34;PV2_TTC&#34;&#62;)+' DA';&#13;&#10;//IF &#60;PV&#62;=3 then Prix.text:='Prix:'+FormatFloat('# ### ### ##0.00',&#60;S_ET1.&#34;PV3_TTC&#34;&#62;)+' DA';&#13;&#10;end;&#13;&#10;&#13;&#10;procedure DATE_EXPOnBeforePrint(Sender: TfrxComponent);&#13;&#10;begin&#13;&#10;//IF &#60;S_ET1.&#34;DATE_PER&#34;&#62;=0  THEN DATE_EXP.TEXT:=''&#13;&#10;  //                       ELSE DATE_EXP.TEXT:='Exp: '+ DateToStr(&#60;S_ET1.&#34;DATE_PER&#34;&#62;);&#13;&#10;&#13;&#10;&#13;&#10;end;&#13;&#10;&#13;&#10;procedure BAR_CODEOnBeforePrint(Sender: TfrxComponent);&#13;&#10;begin&#13;&#10;//BAR_CODE.TEXT:=&#60;CODE_BARRE&#62;;&#13;&#10;&#13;&#10;end;&#13;&#10;&#13;&#10;begin&#13;&#10;end.">
+  <Datasets>
+    <item DataSet="frxProduitDB" DataSetName="frxProduitDB"/>
+  </Datasets>
+  <Variables>
+    <item Name="PV" Value="3"/>
+  </Variables>
+  <TfrxDataPage Name="Data" Height="1000" Left="0" Top="0" Width="1000"/>
+  <TfrxReportPage Name="Page1" PaperWidth="58" PaperHeight="45" PaperSize="256" LeftMargin="0" RightMargin="0" TopMargin="0" BottomMargin="0" ColumnWidth="0" ColumnPositions.Text="" HGuides.Text="" VGuides.Text="">
+    <TfrxMemoView Name="PRODUIT" Align="baWidth" Left="0" Top="27.70079717" Width="219.21274" Height="47.24411646" DataField="nom_p" DataSet="frxProduitDB" DataSetName="frxProduitDB" Font.Charset="1" Font.Color="0" Font.Height="-12" Font.Name="Helvetica LT Std" Font.Style="0" HAlign="haCenter" ParentFont="False" Text="[frxProduitDB.&#34;nom_p&#34;]"/>
+    <TfrxMemoView Name="Name" Align="baWidth" Left="0" Top="2" Width="219.21274" Height="21.92126717" OnBeforePrint="TITLEOnBeforePrint" Font.Charset="1" Font.Color="0" Font.Height="-9" Font.Name="Helvetica LT Std" Font.Style="5" HAlign="haCenter" ParentFont="False" Text=""/>
+    <TfrxMemoView Name="Prix" Align="baWidth" Left="0" Top="83.14966976" Width="219.21274" Height="68.03153024" OnBeforePrint="PPA2OnBeforePrint" DataSet="frxProduitDB" DataSetName="frxProduitDB" DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="0" Font.Height="-19" Font.Name="Helvetica LT Std" Font.Style="1" HAlign="haCenter" ParentFont="False" Text=""/>
+  </TfrxReportPage>
+</TfrxReport>

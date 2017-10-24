@@ -241,7 +241,11 @@ object FOptions: TFOptions
             '40X20 Code 128 sans prix'
             '40X20 Code 128 sans tous'
             '45X35 Code 128 avec prix'
-            '45X35 Code 128 sans prix')
+            '45X35 Code 128 sans prix'
+            '40X20 Porduit avec prix'
+            '47X30 Code 128 avec prix'
+            '47X30 Code 128 sans prix'
+            '58X45 Porduit avec prix')
         end
         object PrixVenteListFOptionCodeBCbx: TComboBox
           Left = 25
@@ -2344,12 +2348,17 @@ object FOptions: TFOptions
       Caption = 'Produit Favoris'
       SkinData.CustomColor = False
       SkinData.CustomFont = False
+      DesignSize = (
+        440
+        581)
       object Label40: TLabel
-        Left = 10
-        Top = 7
-        Width = 131
-        Height = 21
-        Caption = 'Produit Favoris'
+        Left = 0
+        Top = 0
+        Width = 440
+        Height = 40
+        Align = alTop
+        AutoSize = False
+        Caption = ' Produit Favoris'
         Color = 4207405
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
@@ -2358,28 +2367,2150 @@ object FOptions: TFOptions
         Font.Style = [fsBold]
         ParentColor = False
         ParentFont = False
+        Layout = tlCenter
       end
-      object Panel12: TPanel
+      object EditFavOSp: TsSpeedButton
+        Left = 371
+        Top = 5
+        Width = 30
+        Height = 30
+        Hint = 'Ajout Fav'
+        Anchors = [akTop, akRight]
+        ParentShowHint = False
+        ShowHint = True
+        OnClick = EditFavOSpClick
+        SkinData.SkinSection = 'SPEEDBUTTON'
+        Images = MainForm.PanelIcons24
+        ImageIndex = 55
+      end
+      object SaveFavOSp: TsSpeedButton
+        Left = 407
+        Top = 5
+        Width = 30
+        Height = 30
+        Hint = 'Ferm'#233'r'
+        Anchors = [akTop, akRight]
+        Enabled = False
+        ParentShowHint = False
+        ShowHint = True
+        OnClick = SaveFavOSpClick
+        SkinData.SkinSection = 'SPEEDBUTTON'
+        Images = MainForm.PanelIcons24
+        ImageIndex = 17
+      end
+      object FavProduitOptPgControl: TsPageControl
         Left = 0
-        Top = 0
-        Width = 4
-        Height = 581
-        Align = alLeft
-        BevelOuter = bvNone
-        Color = 15658734
-        ParentBackground = False
+        Top = 40
+        Width = 440
+        Height = 541
+        ActivePage = Fav1ListTB
+        Align = alClient
+        DoubleBuffered = True
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = 13
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
+        MultiLine = True
+        ParentDoubleBuffered = False
+        ParentFont = False
+        TabHeight = 40
         TabOrder = 0
-      end
-      object Panel13: TPanel
-        Left = 435
-        Top = 0
-        Width = 5
-        Height = 581
-        Align = alRight
-        BevelOuter = bvNone
-        Color = 15658734
-        ParentBackground = False
-        TabOrder = 1
+        TabWidth = 42
+        StyleElements = []
+        ShowFocus = False
+        TabsLineSkin = 'DIVIDER'
+        object Fav1ListTB: TsTabSheet
+          Caption = 'Liste 1'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = 16
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = []
+          ParentFont = False
+          SkinData.CustomColor = False
+          SkinData.CustomFont = False
+          object Panel12: TPanel
+            Left = 0
+            Top = 0
+            Width = 432
+            Height = 2
+            Align = alTop
+            BevelOuter = bvNone
+            Color = 8469216
+            ParentBackground = False
+            TabOrder = 0
+            StyleElements = []
+          end
+          object GridPanel2: TGridPanel
+            Left = 0
+            Top = 2
+            Width = 432
+            Height = 489
+            Align = alClient
+            BevelOuter = bvNone
+            BiDiMode = bdLeftToRight
+            Color = clWhite
+            ColumnCollection = <
+              item
+                Value = 50.000000000000000000
+              end
+              item
+                Value = 50.000000000000000000
+              end>
+            ControlCollection = <
+              item
+                Column = 0
+                Control = Fav1sp
+                Row = 0
+              end
+              item
+                Column = 1
+                Control = Fav2sp
+                Row = 0
+              end
+              item
+                Column = 0
+                Control = Fav3sp
+                Row = 1
+              end
+              item
+                Column = 1
+                Control = Fav4sp
+                Row = 1
+              end
+              item
+                Column = 0
+                Control = Fav5sp
+                Row = 2
+              end
+              item
+                Column = 1
+                Control = Fav6sp
+                Row = 2
+              end
+              item
+                Column = 0
+                Control = Fav7sp
+                Row = 3
+              end
+              item
+                Column = 1
+                Control = Fav8sp
+                Row = 3
+              end
+              item
+                Column = 0
+                Control = Fav9sp
+                Row = 4
+              end
+              item
+                Column = 1
+                Control = Fav10sp
+                Row = 4
+              end
+              item
+                Column = 0
+                Control = Fav11sp
+                Row = 5
+              end
+              item
+                Column = 1
+                Control = Fav12sp
+                Row = 5
+              end>
+            Ctl3D = False
+            Locked = True
+            ParentBiDiMode = False
+            ParentBackground = False
+            ParentCtl3D = False
+            RowCollection = <
+              item
+                Value = 16.671429660133540000
+              end
+              item
+                Value = 16.669524172383990000
+              end
+              item
+                Value = 16.667618902425200000
+              end
+              item
+                Value = 16.665713850232300000
+              end
+              item
+                Value = 16.663809015780390000
+              end
+              item
+                Value = 16.661904399044590000
+              end>
+            ShowCaption = False
+            TabOrder = 1
+            DesignSize = (
+              432
+              489)
+            object Fav1sp: TsSpeedButton
+              Left = 28
+              Top = 10
+              Width = 160
+              Height = 60
+              ParentCustomHint = False
+              Anchors = []
+              BiDiMode = bdLeftToRight
+              Enabled = False
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Height = 12
+              Font.Name = 'Helvetica LT Std'
+              Font.Style = []
+              ParentFont = False
+              ParentShowHint = False
+              ParentBiDiMode = False
+              PopupMenu = PopupMenu1
+              ShowHint = True
+              OnClick = Fav1spClick
+              OnMouseEnter = Fav1spMouseEnter
+              SkinData.SkinSection = 'EDIT'
+              ExplicitTop = 16
+            end
+            object Fav2sp: TsSpeedButton
+              Left = 244
+              Top = 10
+              Width = 160
+              Height = 60
+              ParentCustomHint = False
+              Anchors = []
+              BiDiMode = bdLeftToRight
+              Enabled = False
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Height = 12
+              Font.Name = 'Helvetica LT Std'
+              Font.Style = []
+              ParentFont = False
+              ParentShowHint = False
+              ParentBiDiMode = False
+              PopupMenu = PopupMenu1
+              ShowHint = True
+              OnClick = Fav1spClick
+              OnMouseEnter = Fav1spMouseEnter
+              SkinData.SkinSection = 'EDIT'
+              ExplicitTop = 16
+            end
+            object Fav3sp: TsSpeedButton
+              Left = 28
+              Top = 91
+              Width = 160
+              Height = 60
+              ParentCustomHint = False
+              Anchors = []
+              BiDiMode = bdLeftToRight
+              Enabled = False
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Height = 12
+              Font.Name = 'Helvetica LT Std'
+              Font.Style = []
+              ParentFont = False
+              ParentShowHint = False
+              ParentBiDiMode = False
+              PopupMenu = PopupMenu1
+              ShowHint = True
+              OnClick = Fav1spClick
+              OnMouseEnter = Fav1spMouseEnter
+              SkinData.SkinSection = 'EDIT'
+              ExplicitTop = 99
+            end
+            object Fav4sp: TsSpeedButton
+              Left = 244
+              Top = 91
+              Width = 160
+              Height = 60
+              ParentCustomHint = False
+              Anchors = []
+              BiDiMode = bdLeftToRight
+              Enabled = False
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Height = 12
+              Font.Name = 'Helvetica LT Std'
+              Font.Style = []
+              ParentFont = False
+              ParentShowHint = False
+              ParentBiDiMode = False
+              PopupMenu = PopupMenu1
+              ShowHint = True
+              OnClick = Fav1spClick
+              OnMouseEnter = Fav1spMouseEnter
+              SkinData.SkinSection = 'EDIT'
+              ExplicitTop = 99
+            end
+            object Fav5sp: TsSpeedButton
+              Left = 28
+              Top = 172
+              Width = 160
+              Height = 60
+              ParentCustomHint = False
+              Anchors = []
+              BiDiMode = bdLeftToRight
+              Enabled = False
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Height = 12
+              Font.Name = 'Helvetica LT Std'
+              Font.Style = []
+              ParentFont = False
+              ParentShowHint = False
+              ParentBiDiMode = False
+              PopupMenu = PopupMenu1
+              ShowHint = True
+              OnClick = Fav1spClick
+              OnMouseEnter = Fav1spMouseEnter
+              SkinData.SkinSection = 'EDIT'
+              ExplicitTop = 182
+            end
+            object Fav6sp: TsSpeedButton
+              Left = 244
+              Top = 172
+              Width = 160
+              Height = 60
+              ParentCustomHint = False
+              Anchors = []
+              BiDiMode = bdLeftToRight
+              Enabled = False
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Height = 12
+              Font.Name = 'Helvetica LT Std'
+              Font.Style = []
+              ParentFont = False
+              ParentShowHint = False
+              ParentBiDiMode = False
+              PopupMenu = PopupMenu1
+              ShowHint = True
+              OnClick = Fav1spClick
+              OnMouseEnter = Fav1spMouseEnter
+              SkinData.SkinSection = 'EDIT'
+              ExplicitTop = 182
+            end
+            object Fav7sp: TsSpeedButton
+              Left = 28
+              Top = 253
+              Width = 160
+              Height = 60
+              ParentCustomHint = False
+              Anchors = []
+              BiDiMode = bdLeftToRight
+              Enabled = False
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Height = 12
+              Font.Name = 'Helvetica LT Std'
+              Font.Style = []
+              ParentFont = False
+              ParentShowHint = False
+              ParentBiDiMode = False
+              PopupMenu = PopupMenu1
+              ShowHint = True
+              OnClick = Fav1spClick
+              OnMouseEnter = Fav1spMouseEnter
+              SkinData.SkinSection = 'EDIT'
+              ExplicitTop = 265
+            end
+            object Fav8sp: TsSpeedButton
+              Left = 244
+              Top = 253
+              Width = 160
+              Height = 60
+              ParentCustomHint = False
+              Anchors = []
+              BiDiMode = bdLeftToRight
+              Enabled = False
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Height = 12
+              Font.Name = 'Helvetica LT Std'
+              Font.Style = []
+              ParentFont = False
+              ParentShowHint = False
+              ParentBiDiMode = False
+              PopupMenu = PopupMenu1
+              ShowHint = True
+              OnClick = Fav1spClick
+              OnMouseEnter = Fav1spMouseEnter
+              SkinData.SkinSection = 'EDIT'
+              ExplicitTop = 265
+            end
+            object Fav9sp: TsSpeedButton
+              Left = 28
+              Top = 334
+              Width = 160
+              Height = 60
+              ParentCustomHint = False
+              Anchors = []
+              BiDiMode = bdLeftToRight
+              Enabled = False
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Height = 12
+              Font.Name = 'Helvetica LT Std'
+              Font.Style = []
+              ParentFont = False
+              ParentShowHint = False
+              ParentBiDiMode = False
+              PopupMenu = PopupMenu1
+              ShowHint = True
+              OnClick = Fav1spClick
+              OnMouseEnter = Fav1spMouseEnter
+              SkinData.SkinSection = 'EDIT'
+              ExplicitTop = 348
+            end
+            object Fav10sp: TsSpeedButton
+              Left = 244
+              Top = 334
+              Width = 160
+              Height = 60
+              ParentCustomHint = False
+              Anchors = []
+              BiDiMode = bdLeftToRight
+              Enabled = False
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Height = 12
+              Font.Name = 'Helvetica LT Std'
+              Font.Style = []
+              ParentFont = False
+              ParentShowHint = False
+              ParentBiDiMode = False
+              PopupMenu = PopupMenu1
+              ShowHint = True
+              OnClick = Fav1spClick
+              OnMouseEnter = Fav1spMouseEnter
+              SkinData.SkinSection = 'EDIT'
+              ExplicitTop = 348
+            end
+            object Fav11sp: TsSpeedButton
+              Left = 28
+              Top = 417
+              Width = 160
+              Height = 60
+              ParentCustomHint = False
+              Anchors = []
+              BiDiMode = bdLeftToRight
+              Enabled = False
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Height = 12
+              Font.Name = 'Helvetica LT Std'
+              Font.Style = []
+              ParentFont = False
+              ParentShowHint = False
+              ParentBiDiMode = False
+              PopupMenu = PopupMenu1
+              ShowHint = True
+              OnClick = Fav1spClick
+              OnMouseEnter = Fav1spMouseEnter
+              SkinData.SkinSection = 'EDIT'
+              ExplicitTop = 432
+            end
+            object Fav12sp: TsSpeedButton
+              Left = 244
+              Top = 417
+              Width = 160
+              Height = 60
+              ParentCustomHint = False
+              Anchors = []
+              BiDiMode = bdLeftToRight
+              Enabled = False
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Height = 12
+              Font.Name = 'Helvetica LT Std'
+              Font.Style = []
+              ParentFont = False
+              ParentShowHint = False
+              ParentBiDiMode = False
+              PopupMenu = PopupMenu1
+              ShowHint = True
+              OnClick = Fav1spClick
+              OnMouseEnter = Fav1spMouseEnter
+              SkinData.SkinSection = 'EDIT'
+              ExplicitTop = 432
+            end
+          end
+        end
+        object Fav2ListTB: TsTabSheet
+          Caption = 'Liste 2'
+          SkinData.CustomColor = False
+          SkinData.CustomFont = False
+          object Panel31: TPanel
+            Left = 0
+            Top = 0
+            Width = 432
+            Height = 2
+            Align = alTop
+            BevelOuter = bvNone
+            Color = 8637171
+            ParentBackground = False
+            TabOrder = 0
+            StyleElements = []
+          end
+          object GridPanel3: TGridPanel
+            Left = 0
+            Top = 2
+            Width = 432
+            Height = 489
+            Align = alClient
+            BevelOuter = bvNone
+            BiDiMode = bdLeftToRight
+            Color = clWhite
+            ColumnCollection = <
+              item
+                Value = 50.000000000000000000
+              end
+              item
+                Value = 50.000000000000000000
+              end>
+            ControlCollection = <
+              item
+                Column = 0
+                Control = Fav13sp
+                Row = 0
+              end
+              item
+                Column = 1
+                Control = Fav14sp
+                Row = 0
+              end
+              item
+                Column = 0
+                Control = Fav15sp
+                Row = 1
+              end
+              item
+                Column = 1
+                Control = Fav16sp
+                Row = 1
+              end
+              item
+                Column = 0
+                Control = Fav17sp
+                Row = 2
+              end
+              item
+                Column = 1
+                Control = Fav18sp
+                Row = 2
+              end
+              item
+                Column = 0
+                Control = Fav19sp
+                Row = 3
+              end
+              item
+                Column = 1
+                Control = Fav20sp
+                Row = 3
+              end
+              item
+                Column = 0
+                Control = Fav21sp
+                Row = 4
+              end
+              item
+                Column = 1
+                Control = Fav22sp
+                Row = 4
+              end
+              item
+                Column = 0
+                Control = Fav23sp
+                Row = 5
+              end
+              item
+                Column = 1
+                Control = Fav24sp
+                Row = 5
+              end>
+            Ctl3D = False
+            Locked = True
+            ParentBiDiMode = False
+            ParentBackground = False
+            ParentCtl3D = False
+            RowCollection = <
+              item
+                Value = 16.671429660133540000
+              end
+              item
+                Value = 16.669524172383990000
+              end
+              item
+                Value = 16.667618902425200000
+              end
+              item
+                Value = 16.665713850232300000
+              end
+              item
+                Value = 16.663809015780390000
+              end
+              item
+                Value = 16.661904399044590000
+              end>
+            ShowCaption = False
+            TabOrder = 1
+            DesignSize = (
+              432
+              489)
+            object Fav13sp: TsSpeedButton
+              Left = 28
+              Top = 10
+              Width = 160
+              Height = 60
+              ParentCustomHint = False
+              Anchors = []
+              BiDiMode = bdLeftToRight
+              Enabled = False
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Height = 12
+              Font.Name = 'Helvetica LT Std'
+              Font.Style = []
+              ParentFont = False
+              ParentShowHint = False
+              ParentBiDiMode = False
+              PopupMenu = PopupMenu1
+              ShowHint = True
+              OnClick = Fav1spClick
+              OnMouseEnter = Fav1spMouseEnter
+              SkinData.SkinSection = 'EDIT'
+              ExplicitLeft = 58
+              ExplicitTop = 11
+            end
+            object Fav14sp: TsSpeedButton
+              Left = 244
+              Top = 10
+              Width = 160
+              Height = 60
+              ParentCustomHint = False
+              Anchors = []
+              BiDiMode = bdLeftToRight
+              Enabled = False
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Height = 12
+              Font.Name = 'Helvetica LT Std'
+              Font.Style = []
+              ParentFont = False
+              ParentShowHint = False
+              ParentBiDiMode = False
+              PopupMenu = PopupMenu1
+              ShowHint = True
+              OnClick = Fav1spClick
+              OnMouseEnter = Fav1spMouseEnter
+              SkinData.SkinSection = 'EDIT'
+              ExplicitLeft = 274
+              ExplicitTop = 11
+            end
+            object Fav15sp: TsSpeedButton
+              Left = 28
+              Top = 91
+              Width = 160
+              Height = 60
+              ParentCustomHint = False
+              Anchors = []
+              BiDiMode = bdLeftToRight
+              Enabled = False
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Height = 12
+              Font.Name = 'Helvetica LT Std'
+              Font.Style = []
+              ParentFont = False
+              ParentShowHint = False
+              ParentBiDiMode = False
+              PopupMenu = PopupMenu1
+              ShowHint = True
+              OnClick = Fav1spClick
+              OnMouseEnter = Fav1spMouseEnter
+              SkinData.SkinSection = 'EDIT'
+              ExplicitLeft = 58
+              ExplicitTop = 94
+            end
+            object Fav16sp: TsSpeedButton
+              Left = 244
+              Top = 91
+              Width = 160
+              Height = 60
+              ParentCustomHint = False
+              Anchors = []
+              BiDiMode = bdLeftToRight
+              Enabled = False
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Height = 12
+              Font.Name = 'Helvetica LT Std'
+              Font.Style = []
+              ParentFont = False
+              ParentShowHint = False
+              ParentBiDiMode = False
+              PopupMenu = PopupMenu1
+              ShowHint = True
+              OnClick = Fav1spClick
+              OnMouseEnter = Fav1spMouseEnter
+              SkinData.SkinSection = 'EDIT'
+              ExplicitLeft = 274
+              ExplicitTop = 94
+            end
+            object Fav17sp: TsSpeedButton
+              Left = 28
+              Top = 172
+              Width = 160
+              Height = 60
+              ParentCustomHint = False
+              Anchors = []
+              BiDiMode = bdLeftToRight
+              Enabled = False
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Height = 12
+              Font.Name = 'Helvetica LT Std'
+              Font.Style = []
+              ParentFont = False
+              ParentShowHint = False
+              ParentBiDiMode = False
+              PopupMenu = PopupMenu1
+              ShowHint = True
+              OnClick = Fav1spClick
+              OnMouseEnter = Fav1spMouseEnter
+              SkinData.SkinSection = 'EDIT'
+              ExplicitLeft = 58
+              ExplicitTop = 177
+            end
+            object Fav18sp: TsSpeedButton
+              Left = 244
+              Top = 172
+              Width = 160
+              Height = 60
+              ParentCustomHint = False
+              Anchors = []
+              BiDiMode = bdLeftToRight
+              Enabled = False
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Height = 12
+              Font.Name = 'Helvetica LT Std'
+              Font.Style = []
+              ParentFont = False
+              ParentShowHint = False
+              ParentBiDiMode = False
+              PopupMenu = PopupMenu1
+              ShowHint = True
+              OnClick = Fav1spClick
+              OnMouseEnter = Fav1spMouseEnter
+              SkinData.SkinSection = 'EDIT'
+              ExplicitLeft = 274
+              ExplicitTop = 177
+            end
+            object Fav19sp: TsSpeedButton
+              Left = 28
+              Top = 253
+              Width = 160
+              Height = 60
+              ParentCustomHint = False
+              Anchors = []
+              BiDiMode = bdLeftToRight
+              Enabled = False
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Height = 12
+              Font.Name = 'Helvetica LT Std'
+              Font.Style = []
+              ParentFont = False
+              ParentShowHint = False
+              ParentBiDiMode = False
+              PopupMenu = PopupMenu1
+              ShowHint = True
+              OnClick = Fav1spClick
+              OnMouseEnter = Fav1spMouseEnter
+              SkinData.SkinSection = 'EDIT'
+              ExplicitLeft = 58
+              ExplicitTop = 260
+            end
+            object Fav20sp: TsSpeedButton
+              Left = 244
+              Top = 253
+              Width = 160
+              Height = 60
+              ParentCustomHint = False
+              Anchors = []
+              BiDiMode = bdLeftToRight
+              Enabled = False
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Height = 12
+              Font.Name = 'Helvetica LT Std'
+              Font.Style = []
+              ParentFont = False
+              ParentShowHint = False
+              ParentBiDiMode = False
+              PopupMenu = PopupMenu1
+              ShowHint = True
+              OnClick = Fav1spClick
+              OnMouseEnter = Fav1spMouseEnter
+              SkinData.SkinSection = 'EDIT'
+              ExplicitLeft = 274
+              ExplicitTop = 260
+            end
+            object Fav21sp: TsSpeedButton
+              Left = 28
+              Top = 334
+              Width = 160
+              Height = 60
+              ParentCustomHint = False
+              Anchors = []
+              BiDiMode = bdLeftToRight
+              Enabled = False
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Height = 12
+              Font.Name = 'Helvetica LT Std'
+              Font.Style = []
+              ParentFont = False
+              ParentShowHint = False
+              ParentBiDiMode = False
+              PopupMenu = PopupMenu1
+              ShowHint = True
+              OnClick = Fav1spClick
+              OnMouseEnter = Fav1spMouseEnter
+              SkinData.SkinSection = 'EDIT'
+              ExplicitLeft = 58
+              ExplicitTop = 343
+            end
+            object Fav22sp: TsSpeedButton
+              Left = 244
+              Top = 334
+              Width = 160
+              Height = 60
+              ParentCustomHint = False
+              Anchors = []
+              BiDiMode = bdLeftToRight
+              Enabled = False
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Height = 12
+              Font.Name = 'Helvetica LT Std'
+              Font.Style = []
+              ParentFont = False
+              ParentShowHint = False
+              ParentBiDiMode = False
+              PopupMenu = PopupMenu1
+              ShowHint = True
+              OnClick = Fav1spClick
+              OnMouseEnter = Fav1spMouseEnter
+              SkinData.SkinSection = 'EDIT'
+              ExplicitLeft = 274
+              ExplicitTop = 343
+            end
+            object Fav23sp: TsSpeedButton
+              Left = 28
+              Top = 417
+              Width = 160
+              Height = 60
+              ParentCustomHint = False
+              Anchors = []
+              BiDiMode = bdLeftToRight
+              Enabled = False
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Height = 12
+              Font.Name = 'Helvetica LT Std'
+              Font.Style = []
+              ParentFont = False
+              ParentShowHint = False
+              ParentBiDiMode = False
+              PopupMenu = PopupMenu1
+              ShowHint = True
+              OnClick = Fav1spClick
+              OnMouseEnter = Fav1spMouseEnter
+              SkinData.SkinSection = 'EDIT'
+              ExplicitLeft = 58
+              ExplicitTop = 427
+            end
+            object Fav24sp: TsSpeedButton
+              Left = 244
+              Top = 417
+              Width = 160
+              Height = 60
+              ParentCustomHint = False
+              Anchors = []
+              BiDiMode = bdLeftToRight
+              Enabled = False
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Height = 12
+              Font.Name = 'Helvetica LT Std'
+              Font.Style = []
+              ParentFont = False
+              ParentShowHint = False
+              ParentBiDiMode = False
+              PopupMenu = PopupMenu1
+              ShowHint = True
+              OnClick = Fav1spClick
+              OnMouseEnter = Fav1spMouseEnter
+              SkinData.SkinSection = 'EDIT'
+              ExplicitLeft = 274
+              ExplicitTop = 427
+            end
+          end
+        end
+        object Fav3ListTB: TsTabSheet
+          Caption = 'Liste 3'
+          SkinData.CustomColor = False
+          SkinData.CustomFont = False
+          object Panel32: TPanel
+            Left = 0
+            Top = 0
+            Width = 432
+            Height = 2
+            Align = alTop
+            BevelOuter = bvNone
+            Color = 13344790
+            ParentBackground = False
+            TabOrder = 0
+            StyleElements = []
+          end
+          object GridPanel4: TGridPanel
+            Left = 0
+            Top = 2
+            Width = 432
+            Height = 489
+            Align = alClient
+            BevelOuter = bvNone
+            BiDiMode = bdLeftToRight
+            Color = clWhite
+            ColumnCollection = <
+              item
+                Value = 50.000000000000000000
+              end
+              item
+                Value = 50.000000000000000000
+              end>
+            ControlCollection = <
+              item
+                Column = 0
+                Control = Fav25sp
+                Row = 0
+              end
+              item
+                Column = 1
+                Control = Fav26sp
+                Row = 0
+              end
+              item
+                Column = 0
+                Control = Fav27sp
+                Row = 1
+              end
+              item
+                Column = 1
+                Control = Fav28sp
+                Row = 1
+              end
+              item
+                Column = 0
+                Control = Fav29sp
+                Row = 2
+              end
+              item
+                Column = 1
+                Control = Fav30sp
+                Row = 2
+              end
+              item
+                Column = 0
+                Control = Fav31sp
+                Row = 3
+              end
+              item
+                Column = 1
+                Control = Fav32sp
+                Row = 3
+              end
+              item
+                Column = 0
+                Control = Fav33sp
+                Row = 4
+              end
+              item
+                Column = 1
+                Control = Fav34sp
+                Row = 4
+              end
+              item
+                Column = 0
+                Control = Fav35sp
+                Row = 5
+              end
+              item
+                Column = 1
+                Control = Fav36sp
+                Row = 5
+              end>
+            Ctl3D = False
+            Locked = True
+            ParentBiDiMode = False
+            ParentBackground = False
+            ParentCtl3D = False
+            RowCollection = <
+              item
+                Value = 16.671429660133540000
+              end
+              item
+                Value = 16.669524172383990000
+              end
+              item
+                Value = 16.667618902425200000
+              end
+              item
+                Value = 16.665713850232300000
+              end
+              item
+                Value = 16.663809015780390000
+              end
+              item
+                Value = 16.661904399044590000
+              end>
+            ShowCaption = False
+            TabOrder = 1
+            DesignSize = (
+              432
+              489)
+            object Fav25sp: TsSpeedButton
+              Left = 28
+              Top = 10
+              Width = 160
+              Height = 60
+              ParentCustomHint = False
+              Anchors = []
+              BiDiMode = bdLeftToRight
+              Enabled = False
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Height = 12
+              Font.Name = 'Helvetica LT Std'
+              Font.Style = []
+              ParentFont = False
+              ParentShowHint = False
+              ParentBiDiMode = False
+              PopupMenu = PopupMenu1
+              ShowHint = True
+              OnClick = Fav1spClick
+              OnMouseEnter = Fav1spMouseEnter
+              SkinData.SkinSection = 'EDIT'
+              ExplicitTop = 16
+            end
+            object Fav26sp: TsSpeedButton
+              Left = 244
+              Top = 10
+              Width = 160
+              Height = 60
+              ParentCustomHint = False
+              Anchors = []
+              BiDiMode = bdLeftToRight
+              Enabled = False
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Height = 12
+              Font.Name = 'Helvetica LT Std'
+              Font.Style = []
+              ParentFont = False
+              ParentShowHint = False
+              ParentBiDiMode = False
+              PopupMenu = PopupMenu1
+              ShowHint = True
+              OnClick = Fav1spClick
+              OnMouseEnter = Fav1spMouseEnter
+              SkinData.SkinSection = 'EDIT'
+              ExplicitTop = 16
+            end
+            object Fav27sp: TsSpeedButton
+              Left = 28
+              Top = 91
+              Width = 160
+              Height = 60
+              ParentCustomHint = False
+              Anchors = []
+              BiDiMode = bdLeftToRight
+              Enabled = False
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Height = 12
+              Font.Name = 'Helvetica LT Std'
+              Font.Style = []
+              ParentFont = False
+              ParentShowHint = False
+              ParentBiDiMode = False
+              PopupMenu = PopupMenu1
+              ShowHint = True
+              OnClick = Fav1spClick
+              OnMouseEnter = Fav1spMouseEnter
+              SkinData.SkinSection = 'EDIT'
+              ExplicitTop = 99
+            end
+            object Fav28sp: TsSpeedButton
+              Left = 244
+              Top = 91
+              Width = 160
+              Height = 60
+              ParentCustomHint = False
+              Anchors = []
+              BiDiMode = bdLeftToRight
+              Enabled = False
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Height = 12
+              Font.Name = 'Helvetica LT Std'
+              Font.Style = []
+              ParentFont = False
+              ParentShowHint = False
+              ParentBiDiMode = False
+              PopupMenu = PopupMenu1
+              ShowHint = True
+              OnClick = Fav1spClick
+              OnMouseEnter = Fav1spMouseEnter
+              SkinData.SkinSection = 'EDIT'
+              ExplicitTop = 99
+            end
+            object Fav29sp: TsSpeedButton
+              Left = 28
+              Top = 172
+              Width = 160
+              Height = 60
+              ParentCustomHint = False
+              Anchors = []
+              BiDiMode = bdLeftToRight
+              Enabled = False
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Height = 12
+              Font.Name = 'Helvetica LT Std'
+              Font.Style = []
+              ParentFont = False
+              ParentShowHint = False
+              ParentBiDiMode = False
+              PopupMenu = PopupMenu1
+              ShowHint = True
+              OnClick = Fav1spClick
+              OnMouseEnter = Fav1spMouseEnter
+              SkinData.SkinSection = 'EDIT'
+              ExplicitTop = 182
+            end
+            object Fav30sp: TsSpeedButton
+              Left = 244
+              Top = 172
+              Width = 160
+              Height = 60
+              ParentCustomHint = False
+              Anchors = []
+              BiDiMode = bdLeftToRight
+              Enabled = False
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Height = 12
+              Font.Name = 'Helvetica LT Std'
+              Font.Style = []
+              ParentFont = False
+              ParentShowHint = False
+              ParentBiDiMode = False
+              PopupMenu = PopupMenu1
+              ShowHint = True
+              OnClick = Fav1spClick
+              OnMouseEnter = Fav1spMouseEnter
+              SkinData.SkinSection = 'EDIT'
+              ExplicitTop = 182
+            end
+            object Fav31sp: TsSpeedButton
+              Left = 28
+              Top = 253
+              Width = 160
+              Height = 60
+              ParentCustomHint = False
+              Anchors = []
+              BiDiMode = bdLeftToRight
+              Enabled = False
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Height = 12
+              Font.Name = 'Helvetica LT Std'
+              Font.Style = []
+              ParentFont = False
+              ParentShowHint = False
+              ParentBiDiMode = False
+              PopupMenu = PopupMenu1
+              ShowHint = True
+              OnClick = Fav1spClick
+              OnMouseEnter = Fav1spMouseEnter
+              SkinData.SkinSection = 'EDIT'
+              ExplicitTop = 265
+            end
+            object Fav32sp: TsSpeedButton
+              Left = 244
+              Top = 253
+              Width = 160
+              Height = 60
+              ParentCustomHint = False
+              Anchors = []
+              BiDiMode = bdLeftToRight
+              Enabled = False
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Height = 12
+              Font.Name = 'Helvetica LT Std'
+              Font.Style = []
+              ParentFont = False
+              ParentShowHint = False
+              ParentBiDiMode = False
+              PopupMenu = PopupMenu1
+              ShowHint = True
+              OnClick = Fav1spClick
+              OnMouseEnter = Fav1spMouseEnter
+              SkinData.SkinSection = 'EDIT'
+              ExplicitTop = 265
+            end
+            object Fav33sp: TsSpeedButton
+              Left = 28
+              Top = 334
+              Width = 160
+              Height = 60
+              ParentCustomHint = False
+              Anchors = []
+              BiDiMode = bdLeftToRight
+              Enabled = False
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Height = 12
+              Font.Name = 'Helvetica LT Std'
+              Font.Style = []
+              ParentFont = False
+              ParentShowHint = False
+              ParentBiDiMode = False
+              PopupMenu = PopupMenu1
+              ShowHint = True
+              OnClick = Fav1spClick
+              OnMouseEnter = Fav1spMouseEnter
+              SkinData.SkinSection = 'EDIT'
+              ExplicitTop = 348
+            end
+            object Fav34sp: TsSpeedButton
+              Left = 244
+              Top = 334
+              Width = 160
+              Height = 60
+              ParentCustomHint = False
+              Anchors = []
+              BiDiMode = bdLeftToRight
+              Enabled = False
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Height = 12
+              Font.Name = 'Helvetica LT Std'
+              Font.Style = []
+              ParentFont = False
+              ParentShowHint = False
+              ParentBiDiMode = False
+              PopupMenu = PopupMenu1
+              ShowHint = True
+              OnClick = Fav1spClick
+              OnMouseEnter = Fav1spMouseEnter
+              SkinData.SkinSection = 'EDIT'
+              ExplicitTop = 348
+            end
+            object Fav35sp: TsSpeedButton
+              Left = 28
+              Top = 417
+              Width = 160
+              Height = 60
+              ParentCustomHint = False
+              Anchors = []
+              BiDiMode = bdLeftToRight
+              Enabled = False
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Height = 12
+              Font.Name = 'Helvetica LT Std'
+              Font.Style = []
+              ParentFont = False
+              ParentShowHint = False
+              ParentBiDiMode = False
+              PopupMenu = PopupMenu1
+              ShowHint = True
+              OnClick = Fav1spClick
+              OnMouseEnter = Fav1spMouseEnter
+              SkinData.SkinSection = 'EDIT'
+              ExplicitTop = 432
+            end
+            object Fav36sp: TsSpeedButton
+              Left = 244
+              Top = 417
+              Width = 160
+              Height = 60
+              ParentCustomHint = False
+              Anchors = []
+              BiDiMode = bdLeftToRight
+              Enabled = False
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Height = 12
+              Font.Name = 'Helvetica LT Std'
+              Font.Style = []
+              ParentFont = False
+              ParentShowHint = False
+              ParentBiDiMode = False
+              PopupMenu = PopupMenu1
+              ShowHint = True
+              OnClick = Fav1spClick
+              OnMouseEnter = Fav1spMouseEnter
+              SkinData.SkinSection = 'EDIT'
+              ExplicitTop = 432
+            end
+          end
+        end
+        object Fav4ListTB: TsTabSheet
+          Caption = 'Liste 4'
+          SkinData.CustomColor = False
+          SkinData.CustomFont = False
+          object Panel33: TPanel
+            Left = 0
+            Top = 0
+            Width = 432
+            Height = 2
+            Align = alTop
+            BevelOuter = bvNone
+            Color = 12568683
+            ParentBackground = False
+            TabOrder = 0
+            StyleElements = []
+          end
+          object GridPanel5: TGridPanel
+            Left = 0
+            Top = 2
+            Width = 432
+            Height = 489
+            Align = alClient
+            BevelOuter = bvNone
+            BiDiMode = bdLeftToRight
+            Color = clWhite
+            ColumnCollection = <
+              item
+                Value = 50.000000000000000000
+              end
+              item
+                Value = 50.000000000000000000
+              end>
+            ControlCollection = <
+              item
+                Column = 0
+                Control = Fav37sp
+                Row = 0
+              end
+              item
+                Column = 1
+                Control = Fav38sp
+                Row = 0
+              end
+              item
+                Column = 0
+                Control = Fav39sp
+                Row = 1
+              end
+              item
+                Column = 1
+                Control = Fav40sp
+                Row = 1
+              end
+              item
+                Column = 0
+                Control = Fav41sp
+                Row = 2
+              end
+              item
+                Column = 1
+                Control = Fav42sp
+                Row = 2
+              end
+              item
+                Column = 0
+                Control = Fav43sp
+                Row = 3
+              end
+              item
+                Column = 1
+                Control = Fav44sp
+                Row = 3
+              end
+              item
+                Column = 0
+                Control = Fav45sp
+                Row = 4
+              end
+              item
+                Column = 1
+                Control = Fav46sp
+                Row = 4
+              end
+              item
+                Column = 0
+                Control = Fav47sp
+                Row = 5
+              end
+              item
+                Column = 1
+                Control = Fav48sp
+                Row = 5
+              end>
+            Ctl3D = False
+            Locked = True
+            ParentBiDiMode = False
+            ParentBackground = False
+            ParentCtl3D = False
+            RowCollection = <
+              item
+                Value = 16.671429660133540000
+              end
+              item
+                Value = 16.669524172383990000
+              end
+              item
+                Value = 16.667618902425200000
+              end
+              item
+                Value = 16.665713850232300000
+              end
+              item
+                Value = 16.663809015780390000
+              end
+              item
+                Value = 16.661904399044590000
+              end>
+            ShowCaption = False
+            TabOrder = 1
+            DesignSize = (
+              432
+              489)
+            object Fav37sp: TsSpeedButton
+              Left = 28
+              Top = 10
+              Width = 160
+              Height = 60
+              ParentCustomHint = False
+              Anchors = []
+              BiDiMode = bdLeftToRight
+              Enabled = False
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Height = 12
+              Font.Name = 'Helvetica LT Std'
+              Font.Style = []
+              ParentFont = False
+              ParentShowHint = False
+              ParentBiDiMode = False
+              PopupMenu = PopupMenu1
+              ShowHint = True
+              OnClick = Fav1spClick
+              OnMouseEnter = Fav1spMouseEnter
+              SkinData.SkinSection = 'EDIT'
+              ExplicitLeft = 58
+              ExplicitTop = 11
+            end
+            object Fav38sp: TsSpeedButton
+              Left = 244
+              Top = 10
+              Width = 160
+              Height = 60
+              ParentCustomHint = False
+              Anchors = []
+              BiDiMode = bdLeftToRight
+              Enabled = False
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Height = 12
+              Font.Name = 'Helvetica LT Std'
+              Font.Style = []
+              ParentFont = False
+              ParentShowHint = False
+              ParentBiDiMode = False
+              PopupMenu = PopupMenu1
+              ShowHint = True
+              OnClick = Fav1spClick
+              OnMouseEnter = Fav1spMouseEnter
+              SkinData.SkinSection = 'EDIT'
+              ExplicitLeft = 274
+              ExplicitTop = 11
+            end
+            object Fav39sp: TsSpeedButton
+              Left = 28
+              Top = 91
+              Width = 160
+              Height = 60
+              ParentCustomHint = False
+              Anchors = []
+              BiDiMode = bdLeftToRight
+              Enabled = False
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Height = 12
+              Font.Name = 'Helvetica LT Std'
+              Font.Style = []
+              ParentFont = False
+              ParentShowHint = False
+              ParentBiDiMode = False
+              PopupMenu = PopupMenu1
+              ShowHint = True
+              OnClick = Fav1spClick
+              OnMouseEnter = Fav1spMouseEnter
+              SkinData.SkinSection = 'EDIT'
+              ExplicitLeft = 58
+              ExplicitTop = 94
+            end
+            object Fav40sp: TsSpeedButton
+              Left = 244
+              Top = 91
+              Width = 160
+              Height = 60
+              ParentCustomHint = False
+              Anchors = []
+              BiDiMode = bdLeftToRight
+              Enabled = False
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Height = 12
+              Font.Name = 'Helvetica LT Std'
+              Font.Style = []
+              ParentFont = False
+              ParentShowHint = False
+              ParentBiDiMode = False
+              PopupMenu = PopupMenu1
+              ShowHint = True
+              OnClick = Fav1spClick
+              OnMouseEnter = Fav1spMouseEnter
+              SkinData.SkinSection = 'EDIT'
+              ExplicitLeft = 274
+              ExplicitTop = 94
+            end
+            object Fav41sp: TsSpeedButton
+              Left = 28
+              Top = 172
+              Width = 160
+              Height = 60
+              ParentCustomHint = False
+              Anchors = []
+              BiDiMode = bdLeftToRight
+              Enabled = False
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Height = 12
+              Font.Name = 'Helvetica LT Std'
+              Font.Style = []
+              ParentFont = False
+              ParentShowHint = False
+              ParentBiDiMode = False
+              PopupMenu = PopupMenu1
+              ShowHint = True
+              OnClick = Fav1spClick
+              OnMouseEnter = Fav1spMouseEnter
+              SkinData.SkinSection = 'EDIT'
+              ExplicitLeft = 58
+              ExplicitTop = 177
+            end
+            object Fav42sp: TsSpeedButton
+              Left = 244
+              Top = 172
+              Width = 160
+              Height = 60
+              ParentCustomHint = False
+              Anchors = []
+              BiDiMode = bdLeftToRight
+              Enabled = False
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Height = 12
+              Font.Name = 'Helvetica LT Std'
+              Font.Style = []
+              ParentFont = False
+              ParentShowHint = False
+              ParentBiDiMode = False
+              PopupMenu = PopupMenu1
+              ShowHint = True
+              OnClick = Fav1spClick
+              OnMouseEnter = Fav1spMouseEnter
+              SkinData.SkinSection = 'EDIT'
+              ExplicitLeft = 274
+              ExplicitTop = 177
+            end
+            object Fav43sp: TsSpeedButton
+              Left = 28
+              Top = 253
+              Width = 160
+              Height = 60
+              ParentCustomHint = False
+              Anchors = []
+              BiDiMode = bdLeftToRight
+              Enabled = False
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Height = 12
+              Font.Name = 'Helvetica LT Std'
+              Font.Style = []
+              ParentFont = False
+              ParentShowHint = False
+              ParentBiDiMode = False
+              PopupMenu = PopupMenu1
+              ShowHint = True
+              OnClick = Fav1spClick
+              OnMouseEnter = Fav1spMouseEnter
+              SkinData.SkinSection = 'EDIT'
+              ExplicitLeft = 58
+              ExplicitTop = 260
+            end
+            object Fav44sp: TsSpeedButton
+              Left = 244
+              Top = 253
+              Width = 160
+              Height = 60
+              ParentCustomHint = False
+              Anchors = []
+              BiDiMode = bdLeftToRight
+              Enabled = False
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Height = 12
+              Font.Name = 'Helvetica LT Std'
+              Font.Style = []
+              ParentFont = False
+              ParentShowHint = False
+              ParentBiDiMode = False
+              PopupMenu = PopupMenu1
+              ShowHint = True
+              OnClick = Fav1spClick
+              OnMouseEnter = Fav1spMouseEnter
+              SkinData.SkinSection = 'EDIT'
+              ExplicitLeft = 274
+              ExplicitTop = 260
+            end
+            object Fav45sp: TsSpeedButton
+              Left = 28
+              Top = 334
+              Width = 160
+              Height = 60
+              ParentCustomHint = False
+              Anchors = []
+              BiDiMode = bdLeftToRight
+              Enabled = False
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Height = 12
+              Font.Name = 'Helvetica LT Std'
+              Font.Style = []
+              ParentFont = False
+              ParentShowHint = False
+              ParentBiDiMode = False
+              PopupMenu = PopupMenu1
+              ShowHint = True
+              OnClick = Fav1spClick
+              OnMouseEnter = Fav1spMouseEnter
+              SkinData.SkinSection = 'EDIT'
+              ExplicitLeft = 58
+              ExplicitTop = 343
+            end
+            object Fav46sp: TsSpeedButton
+              Left = 244
+              Top = 334
+              Width = 160
+              Height = 60
+              ParentCustomHint = False
+              Anchors = []
+              BiDiMode = bdLeftToRight
+              Enabled = False
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Height = 12
+              Font.Name = 'Helvetica LT Std'
+              Font.Style = []
+              ParentFont = False
+              ParentShowHint = False
+              ParentBiDiMode = False
+              PopupMenu = PopupMenu1
+              ShowHint = True
+              OnClick = Fav1spClick
+              OnMouseEnter = Fav1spMouseEnter
+              SkinData.SkinSection = 'EDIT'
+              ExplicitLeft = 274
+              ExplicitTop = 343
+            end
+            object Fav47sp: TsSpeedButton
+              Left = 28
+              Top = 417
+              Width = 160
+              Height = 60
+              ParentCustomHint = False
+              Anchors = []
+              BiDiMode = bdLeftToRight
+              Enabled = False
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Height = 12
+              Font.Name = 'Helvetica LT Std'
+              Font.Style = []
+              ParentFont = False
+              ParentShowHint = False
+              ParentBiDiMode = False
+              PopupMenu = PopupMenu1
+              ShowHint = True
+              OnClick = Fav1spClick
+              OnMouseEnter = Fav1spMouseEnter
+              SkinData.SkinSection = 'EDIT'
+              ExplicitLeft = 58
+              ExplicitTop = 427
+            end
+            object Fav48sp: TsSpeedButton
+              Left = 244
+              Top = 417
+              Width = 160
+              Height = 60
+              ParentCustomHint = False
+              Anchors = []
+              BiDiMode = bdLeftToRight
+              Enabled = False
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Height = 12
+              Font.Name = 'Helvetica LT Std'
+              Font.Style = []
+              ParentFont = False
+              ParentShowHint = False
+              ParentBiDiMode = False
+              PopupMenu = PopupMenu1
+              ShowHint = True
+              OnClick = Fav1spClick
+              OnMouseEnter = Fav1spMouseEnter
+              SkinData.SkinSection = 'EDIT'
+              ExplicitLeft = 274
+              ExplicitTop = 427
+            end
+          end
+        end
+        object Fav5ListTB: TsTabSheet
+          Caption = 'Liste 5'
+          SkinData.CustomColor = False
+          SkinData.CustomFont = False
+          object Panel34: TPanel
+            Left = 0
+            Top = 0
+            Width = 432
+            Height = 2
+            Align = alTop
+            BevelOuter = bvNone
+            Color = 7854350
+            ParentBackground = False
+            TabOrder = 0
+            StyleElements = []
+          end
+          object GridPanel6: TGridPanel
+            Left = 0
+            Top = 2
+            Width = 432
+            Height = 489
+            Align = alClient
+            BevelOuter = bvNone
+            BiDiMode = bdLeftToRight
+            Color = clWhite
+            ColumnCollection = <
+              item
+                Value = 50.000000000000000000
+              end
+              item
+                Value = 50.000000000000000000
+              end>
+            ControlCollection = <
+              item
+                Column = 0
+                Control = Fav49sp
+                Row = 0
+              end
+              item
+                Column = 1
+                Control = Fav50sp
+                Row = 0
+              end
+              item
+                Column = 0
+                Control = Fav51sp
+                Row = 1
+              end
+              item
+                Column = 1
+                Control = Fav52sp
+                Row = 1
+              end
+              item
+                Column = 0
+                Control = Fav53sp
+                Row = 2
+              end
+              item
+                Column = 1
+                Control = Fav54sp
+                Row = 2
+              end
+              item
+                Column = 0
+                Control = Fav55sp
+                Row = 3
+              end
+              item
+                Column = 1
+                Control = Fav56sp
+                Row = 3
+              end
+              item
+                Column = 0
+                Control = Fav57sp
+                Row = 4
+              end
+              item
+                Column = 1
+                Control = Fav58sp
+                Row = 4
+              end
+              item
+                Column = 0
+                Control = Fav59sp
+                Row = 5
+              end
+              item
+                Column = 1
+                Control = Fav60sp
+                Row = 5
+              end>
+            Ctl3D = False
+            Locked = True
+            ParentBiDiMode = False
+            ParentBackground = False
+            ParentCtl3D = False
+            RowCollection = <
+              item
+                Value = 16.671429660133540000
+              end
+              item
+                Value = 16.669524172383990000
+              end
+              item
+                Value = 16.667618902425200000
+              end
+              item
+                Value = 16.665713850232300000
+              end
+              item
+                Value = 16.663809015780390000
+              end
+              item
+                Value = 16.661904399044590000
+              end>
+            ShowCaption = False
+            TabOrder = 1
+            DesignSize = (
+              432
+              489)
+            object Fav49sp: TsSpeedButton
+              Left = 28
+              Top = 10
+              Width = 160
+              Height = 60
+              ParentCustomHint = False
+              Anchors = []
+              BiDiMode = bdLeftToRight
+              Enabled = False
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Height = 12
+              Font.Name = 'Helvetica LT Std'
+              Font.Style = []
+              ParentFont = False
+              ParentShowHint = False
+              ParentBiDiMode = False
+              PopupMenu = PopupMenu1
+              ShowHint = True
+              OnClick = Fav1spClick
+              OnMouseEnter = Fav1spMouseEnter
+              SkinData.SkinSection = 'EDIT'
+              ExplicitLeft = 58
+              ExplicitTop = 11
+            end
+            object Fav50sp: TsSpeedButton
+              Left = 244
+              Top = 10
+              Width = 160
+              Height = 60
+              ParentCustomHint = False
+              Anchors = []
+              BiDiMode = bdLeftToRight
+              Enabled = False
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Height = 12
+              Font.Name = 'Helvetica LT Std'
+              Font.Style = []
+              ParentFont = False
+              ParentShowHint = False
+              ParentBiDiMode = False
+              PopupMenu = PopupMenu1
+              ShowHint = True
+              OnClick = Fav1spClick
+              OnMouseEnter = Fav1spMouseEnter
+              SkinData.SkinSection = 'EDIT'
+              ExplicitTop = 16
+            end
+            object Fav51sp: TsSpeedButton
+              Left = 28
+              Top = 91
+              Width = 160
+              Height = 60
+              ParentCustomHint = False
+              Anchors = []
+              BiDiMode = bdLeftToRight
+              Enabled = False
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Height = 12
+              Font.Name = 'Helvetica LT Std'
+              Font.Style = []
+              ParentFont = False
+              ParentShowHint = False
+              ParentBiDiMode = False
+              PopupMenu = PopupMenu1
+              ShowHint = True
+              OnClick = Fav1spClick
+              OnMouseEnter = Fav1spMouseEnter
+              SkinData.SkinSection = 'EDIT'
+              ExplicitTop = 99
+            end
+            object Fav52sp: TsSpeedButton
+              Left = 244
+              Top = 91
+              Width = 160
+              Height = 60
+              ParentCustomHint = False
+              Anchors = []
+              BiDiMode = bdLeftToRight
+              Enabled = False
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Height = 12
+              Font.Name = 'Helvetica LT Std'
+              Font.Style = []
+              ParentFont = False
+              ParentShowHint = False
+              ParentBiDiMode = False
+              PopupMenu = PopupMenu1
+              ShowHint = True
+              OnClick = Fav1spClick
+              OnMouseEnter = Fav1spMouseEnter
+              SkinData.SkinSection = 'EDIT'
+              ExplicitTop = 99
+            end
+            object Fav53sp: TsSpeedButton
+              Left = 28
+              Top = 172
+              Width = 160
+              Height = 60
+              ParentCustomHint = False
+              Anchors = []
+              BiDiMode = bdLeftToRight
+              Enabled = False
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Height = 12
+              Font.Name = 'Helvetica LT Std'
+              Font.Style = []
+              ParentFont = False
+              ParentShowHint = False
+              ParentBiDiMode = False
+              PopupMenu = PopupMenu1
+              ShowHint = True
+              OnClick = Fav1spClick
+              OnMouseEnter = Fav1spMouseEnter
+              SkinData.SkinSection = 'EDIT'
+              ExplicitTop = 182
+            end
+            object Fav54sp: TsSpeedButton
+              Left = 244
+              Top = 172
+              Width = 160
+              Height = 60
+              ParentCustomHint = False
+              Anchors = []
+              BiDiMode = bdLeftToRight
+              Enabled = False
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Height = 12
+              Font.Name = 'Helvetica LT Std'
+              Font.Style = []
+              ParentFont = False
+              ParentShowHint = False
+              ParentBiDiMode = False
+              PopupMenu = PopupMenu1
+              ShowHint = True
+              OnClick = Fav1spClick
+              OnMouseEnter = Fav1spMouseEnter
+              SkinData.SkinSection = 'EDIT'
+              ExplicitTop = 182
+            end
+            object Fav55sp: TsSpeedButton
+              Left = 28
+              Top = 253
+              Width = 160
+              Height = 60
+              ParentCustomHint = False
+              Anchors = []
+              BiDiMode = bdLeftToRight
+              Enabled = False
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Height = 12
+              Font.Name = 'Helvetica LT Std'
+              Font.Style = []
+              ParentFont = False
+              ParentShowHint = False
+              ParentBiDiMode = False
+              PopupMenu = PopupMenu1
+              ShowHint = True
+              OnClick = Fav1spClick
+              OnMouseEnter = Fav1spMouseEnter
+              SkinData.SkinSection = 'EDIT'
+              ExplicitTop = 265
+            end
+            object Fav56sp: TsSpeedButton
+              Left = 244
+              Top = 253
+              Width = 160
+              Height = 60
+              ParentCustomHint = False
+              Anchors = []
+              BiDiMode = bdLeftToRight
+              Enabled = False
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Height = 12
+              Font.Name = 'Helvetica LT Std'
+              Font.Style = []
+              ParentFont = False
+              ParentShowHint = False
+              ParentBiDiMode = False
+              PopupMenu = PopupMenu1
+              ShowHint = True
+              OnClick = Fav1spClick
+              OnMouseEnter = Fav1spMouseEnter
+              SkinData.SkinSection = 'EDIT'
+              ExplicitTop = 265
+            end
+            object Fav57sp: TsSpeedButton
+              Left = 28
+              Top = 334
+              Width = 160
+              Height = 60
+              ParentCustomHint = False
+              Anchors = []
+              BiDiMode = bdLeftToRight
+              Enabled = False
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Height = 12
+              Font.Name = 'Helvetica LT Std'
+              Font.Style = []
+              ParentFont = False
+              ParentShowHint = False
+              ParentBiDiMode = False
+              PopupMenu = PopupMenu1
+              ShowHint = True
+              OnClick = Fav1spClick
+              OnMouseEnter = Fav1spMouseEnter
+              SkinData.SkinSection = 'EDIT'
+              ExplicitTop = 348
+            end
+            object Fav58sp: TsSpeedButton
+              Left = 244
+              Top = 334
+              Width = 160
+              Height = 60
+              ParentCustomHint = False
+              Anchors = []
+              BiDiMode = bdLeftToRight
+              Enabled = False
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Height = 12
+              Font.Name = 'Helvetica LT Std'
+              Font.Style = []
+              ParentFont = False
+              ParentShowHint = False
+              ParentBiDiMode = False
+              PopupMenu = PopupMenu1
+              ShowHint = True
+              OnClick = Fav1spClick
+              OnMouseEnter = Fav1spMouseEnter
+              SkinData.SkinSection = 'EDIT'
+              ExplicitTop = 348
+            end
+            object Fav59sp: TsSpeedButton
+              Left = 28
+              Top = 417
+              Width = 160
+              Height = 60
+              ParentCustomHint = False
+              Anchors = []
+              BiDiMode = bdLeftToRight
+              Enabled = False
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Height = 12
+              Font.Name = 'Helvetica LT Std'
+              Font.Style = []
+              ParentFont = False
+              ParentShowHint = False
+              ParentBiDiMode = False
+              PopupMenu = PopupMenu1
+              ShowHint = True
+              OnClick = Fav1spClick
+              OnMouseEnter = Fav1spMouseEnter
+              SkinData.SkinSection = 'EDIT'
+              ExplicitTop = 432
+            end
+            object Fav60sp: TsSpeedButton
+              Left = 244
+              Top = 417
+              Width = 160
+              Height = 60
+              ParentCustomHint = False
+              Anchors = []
+              BiDiMode = bdLeftToRight
+              Enabled = False
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Height = 12
+              Font.Name = 'Helvetica LT Std'
+              Font.Style = []
+              ParentFont = False
+              ParentShowHint = False
+              ParentBiDiMode = False
+              PopupMenu = PopupMenu1
+              ShowHint = True
+              OnClick = Fav1spClick
+              OnMouseEnter = Fav1spMouseEnter
+              SkinData.SkinSection = 'EDIT'
+              ExplicitTop = 432
+            end
+          end
+        end
       end
     end
   end
@@ -2464,8 +4595,8 @@ object FOptions: TFOptions
   end
   object OpenPictureDialogProduitG: TOpenPictureDialog
     Filter = 'JPEG graphics (*.jpg)|*.jpg'
-    Left = 36
-    Top = 207
+    Left = 100
+    Top = 289
   end
   object sAlphaImageList1: TsAlphaImageList
     Height = 96
@@ -2543,9 +4674,17 @@ object FOptions: TFOptions
     FlowControl.ControlRTS = rtsDisable
     FlowControl.XonXoffOut = False
     FlowControl.XonXoffIn = False
-    StoredProps = [spBasic]
-    TriggersOnRxChar = True
     Left = 282
     Top = 100
+  end
+  object PopupMenu1: TPopupMenu
+    MenuAnimation = [maNone]
+    OwnerDraw = True
+    Left = 365
+    Top = 100
+    object S2: TMenuItem
+      Caption = 'Vider le champ'
+      OnClick = S2Click
+    end
   end
 end

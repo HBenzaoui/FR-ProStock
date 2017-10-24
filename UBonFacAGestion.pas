@@ -2120,7 +2120,7 @@ if key = #13 then
             MainForm.Bona_fac_listTable.IndexFieldNames:='';
             MainForm.Bona_fac_listTable.Active:=False;
             MainForm.Bona_fac_listTable.SQL.Clear;
-            MainForm.Bona_fac_listTable.SQL.Text:= 'SELECT * FROM bona_fac_list' ;
+            MainForm.Bona_fac_listTable.SQL.Text:= 'SELECT * FROM bona_fac_list ORDER by code_bafacl' ;
             MainForm.Bona_fac_listTable.Active:=True;
            if  MainForm.Bona_fac_listTable.RecordCount <= 0 then
            begin
@@ -2253,7 +2253,7 @@ if key = #13 then
             MainForm.Bona_fac_listTable.IndexFieldNames:='';
             MainForm.Bona_fac_listTable.Active:=False;
             MainForm.Bona_fac_listTable.SQL.Clear;
-            MainForm.Bona_fac_listTable.SQL.Text:= 'SELECT * FROM bona_fac_list' ;
+            MainForm.Bona_fac_listTable.SQL.Text:= 'SELECT * FROM bona_fac_list ORDER by code_bafacl' ;
             MainForm.Bona_fac_listTable.Active:=True;
 
            if  MainForm.Bona_fac_listTable.RecordCount <= 0 then

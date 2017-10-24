@@ -360,7 +360,7 @@ var
    MainForm.Bonv_CtrTable.DisableControls;
    MainForm.Bonv_CtrTable.Active:= False;
    MainForm.Bonv_CtrTable.SQL.clear;
-   mainform.Bonv_CtrTable.sql.Text:='SELECT * FROM bonv_ctr ';
+   mainform.Bonv_CtrTable.sql.Text:='SELECT * FROM bonv_ctr ORDER BY code_bvctr';
    MainForm.Bonv_CtrTable.Active:= True;
 //MainForm.Bonv_CtrTable.EnableControls;
 
@@ -387,15 +387,15 @@ codeCT:= 0;
           MainForm.Bonv_ctrTable.FieldValues['time_bvctr']:=TimeOf(Now);
           MainForm.Bonv_ctrTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
           MainForm.Bonv_ctrTable.Post;
-          codeCT := MainForm.Bonv_ctrTable.FieldValues['code_bvctr'];
+          codeCT := MainForm.Bonv_ctrTable.FieldByName('code_bvctr').AsInteger;
         end else
             begin
               MainForm.Bonv_ctrTable.Last;
 
-              codeCT := MainForm.Bonv_ctrTable.FieldValues['code_bvctr'];
+              codeCT := MainForm.Bonv_ctrTable.FieldByName('code_bvctr').AsInteger;
               MainForm.Bonv_ctr_listTable.Active:=False;
               MainForm.Bonv_ctr_listTable.SQL.Clear;
-              MainForm.Bonv_ctr_listTable.SQL.Text:= 'SELECT * FROM bonv_ctr_list WHERE code_bvctr = ' + QuotedStr(IntToStr(codeCT));
+              MainForm.Bonv_ctr_listTable.SQL.Text:= 'SELECT * FROM bonv_ctr_list WHERE code_bvctr = ' + IntToStr(codeCT);
               MainForm.Bonv_ctr_listTable.Active:=True;
 
              if MainForm.Bonv_ctr_listTable.RecordCount <= 0 then

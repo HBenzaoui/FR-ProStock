@@ -807,7 +807,7 @@ object ProduitGestionF: TProduitGestionF
           TMSStyle = 0
         end
         object ShowCalculaturProduitGBtn: TAdvToolButton
-          Left = 652
+          Left = 612
           Top = 244
           Width = 26
           Height = 26
@@ -889,6 +889,38 @@ object ProduitGestionF: TProduitGestionF
           Visible = False
           WordWrap = True
           StyleElements = [seClient, seBorder]
+        end
+        object ShowKeyBoardProduitGBtn: TAdvToolButton
+          Left = 644
+          Top = 244
+          Width = 26
+          Height = 26
+          Cursor = crHandPoint
+          AutoThemeAdapt = False
+          BorderColor = clWhite
+          BorderDownColor = 7854350
+          BorderHotColor = 15970832
+          Color = clWhite
+          ColorDown = 7854350
+          ColorHot = clBtnFace
+          ColorChecked = clNone
+          DropDownSplit = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 4207405
+          Font.Height = 18
+          Font.Name = 'Roboto'
+          Font.Style = []
+          ImageIndex = 43
+          Images = MainForm.PanelIcons24
+          ParentFont = False
+          ParentShowHint = False
+          Rounded = True
+          Shaded = False
+          ShowHint = True
+          Spacing = -1
+          OnClick = ShowKeyBoardProduitGBtnClick
+          Version = '1.6.1.2'
+          TMSStyle = 0
         end
         object NameProduitGErrorP: TPanel
           Left = 111

@@ -3,7 +3,7 @@ object FSplashPrinting: TFSplashPrinting
   Top = 0
   BorderStyle = bsNone
   Caption = 'FSplashPrinting'
-  ClientHeight = 291
+  ClientHeight = 437
   ClientWidth = 546
   Color = 15527148
   Font.Charset = DEFAULT_CHARSET
@@ -20,7 +20,7 @@ object FSplashPrinting: TFSplashPrinting
   OnShow = FormShow
   DesignSize = (
     546
-    291)
+    437)
   PixelsPerInch = 96
   TextHeight = 13
   object NameAddCompteSLbl: TLabel
@@ -103,20 +103,20 @@ object FSplashPrinting: TFSplashPrinting
   object OKFPrintingBtn: TAdvToolButton
     Tag = 2
     Left = 180
-    Top = 255
+    Top = 401
     Width = 187
     Height = 30
     Cursor = crHandPoint
     Anchors = [akLeft, akBottom]
     AutoThemeAdapt = False
-    BorderColor = 7854350
-    BorderDownColor = 7854350
+    BorderColor = 4666873
+    BorderDownColor = 4666873
     BorderHotColor = 15970832
-    ColorDown = 7854350
+    ColorDown = 4666873
     ColorHot = clBtnFace
     ColorChecked = clNone
     DropDownSplit = False
-    Caption = 'OK'
+    Caption = 'Fermer'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = 4207405
     Font.Height = 18
@@ -219,7 +219,7 @@ object FSplashPrinting: TFSplashPrinting
   end
   object LineP: TPanel
     Left = 1
-    Top = 246
+    Top = 392
     Width = 547
     Height = 2
     Anchors = [akLeft, akRight, akBottom]
@@ -242,17 +242,19 @@ object FSplashPrinting: TFSplashPrinting
     Font.Height = 18
     Font.Name = 'Helvetica LT Std'
     Font.Style = []
-    ItemIndex = 0
     ParentFont = False
     TabOrder = 3
-    Text = '40X20 Code 128 avec prix'
     OnChange = FormatFPrintingCbxChange
     Items.Strings = (
       '40X20 Code 128 avec prix'
       '40X20 Code 128 sans prix'
       '40X20 Code 128 sans tous'
       '45X35 Code 128 avec prix'
-      '45X35 Code 128 sans prix')
+      '45X35 Code 128 sans prix'
+      '40X20 Porduit avec prix'
+      '47X30 Code 128 avec prix'
+      '47X30 Code 128 sans prix'
+      '58X45 Porduit avec prix')
   end
   object TitleFPrintingEdt: TEdit
     Left = 145
@@ -317,7 +319,7 @@ object FSplashPrinting: TFSplashPrinting
     Left = 364
     Top = 205
     Width = 137
-    Height = 21
+    Height = 26
     Alignment = taRightJustify
     Color = clWhite
     Font.Charset = DEFAULT_CHARSET
@@ -344,7 +346,7 @@ object FSplashPrinting: TFSplashPrinting
     PrintOptions.PrintOnSheet = 0
     PrintOptions.ShowDialog = False
     ReportOptions.CreateDate = 41864.469234849500000000
-    ReportOptions.LastChange = 42585.006179826400000000
+    ReportOptions.LastChange = 43029.492613472220000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       ''
@@ -419,9 +421,9 @@ object FSplashPrinting: TFSplashPrinting
         DataSetName = 'frxProduitDB'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
-        Font.Height = -7
+        Font.Height = -8
         Font.Name = 'Helvetica LT Std'
-        Font.Style = [fsBold]
+        Font.Style = []
         HAlign = haCenter
         Memo.UTF8W = (
           '[frxProduitDB."nom_p"]')
@@ -443,7 +445,7 @@ object FSplashPrinting: TFSplashPrinting
       object Prix: TfrxMemoView
         Top = 61.031540000000000000
         Width = 151.181200000000000000
-        Height = 15.118110236220470000
+        Height = 15.118110240000000000
         OnBeforePrint = 'PPA2OnBeforePrint'
         DataSet = frxProduitDB
         DataSetName = 'frxProduitDB'
@@ -582,8 +584,8 @@ object FSplashPrinting: TFSplashPrinting
       ''
       'begin'
       'end.')
-    Left = 360
-    Top = 240
+    Left = 186
+    Top = 246
     Datasets = <
       item
         DataSet = frxProduitDB
@@ -727,9 +729,9 @@ object FSplashPrinting: TFSplashPrinting
         DataSetName = 'frxProduitDB'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
-        Font.Height = -7
+        Font.Height = -8
         Font.Name = 'Helvetica LT Std'
-        Font.Style = [fsBold]
+        Font.Style = []
         HAlign = haCenter
         Memo.UTF8W = (
           '[frxProduitDB."nom_p"]')
@@ -789,8 +791,8 @@ object FSplashPrinting: TFSplashPrinting
       ''
       'begin'
       'end.')
-    Left = 444
-    Top = 240
+    Left = 240
+    Top = 246
     Datasets = <
       item
         DataSet = frxProduitDB
@@ -813,7 +815,7 @@ object FSplashPrinting: TFSplashPrinting
       object PRODUIT: TfrxMemoView
         Align = baCenter
         Left = 1.889765000000000000
-        Top = 15.118110236220500000
+        Top = 15.118110240000000000
         Width = 166.299320000000000000
         Height = 32.503937010000000000
         DataField = 'nom_p'
@@ -905,8 +907,8 @@ object FSplashPrinting: TFSplashPrinting
       ''
       'begin'
       'end.')
-    Left = 512
-    Top = 240
+    Left = 300
+    Top = 248
     Datasets = <
       item
         DataSet = frxProduitDB
@@ -929,7 +931,7 @@ object FSplashPrinting: TFSplashPrinting
       object PRODUIT: TfrxMemoView
         Align = baCenter
         Left = 1.889765000000000000
-        Top = 15.874015748031500000
+        Top = 15.874015750000000000
         Width = 166.299320000000000000
         Height = 36.283467010000000000
         DataField = 'nom_p'
@@ -981,6 +983,543 @@ object FSplashPrinting: TFSplashPrinting
         Font.Height = -11
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
+      end
+    end
+  end
+  object frxReport5: TfrxReport
+    Version = '5.4.6'
+    DotMatrixReport = False
+    IniFile = '\Software\Fast Reports'
+    Preview = PrintTicketfrxPreview
+    PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick, pbNoClose, pbNoFullScreen, pbNoEmail]
+    PreviewOptions.Zoom = 1.000000000000000000
+    PrintOptions.Printer = 'POSTEK C168 200s'
+    PrintOptions.PrintOnSheet = 0
+    PrintOptions.ShowDialog = False
+    ReportOptions.CreateDate = 41864.469234849500000000
+    ReportOptions.LastChange = 43024.609564259260000000
+    ScriptLanguage = 'PascalScript'
+    ScriptText.Strings = (
+      ''
+      'procedure TITLEOnBeforePrint(Sender: TfrxComponent);'
+      'begin'
+      '//TITLE.TEXT:=<TITRE>;'
+      'end;'
+      ''
+      'procedure PrixOnBeforePrint(Sender: TfrxComponent);'
+      'begin'
+      '//IF <PV>=1 then '
+      
+        '//Prix.text:='#39'Prix:'#39'+FormatFloat('#39'# ### ### ##0.00'#39',<frxProduitD' +
+        'B."prixvd_p">)+'#39' DA'#39';'
+      
+        '//IF <PV>=2 then Prix.text:='#39'Prix:'#39'+FormatFloat('#39'# ### ### ##0.0' +
+        '0'#39',<S_ET1."PV2_TTC">)+'#39' DA'#39';'
+      
+        '//IF <PV>=3 then Prix.text:='#39'Prix:'#39'+FormatFloat('#39'# ### ### ##0.0' +
+        '0'#39',<S_ET1."PV3_TTC">)+'#39' DA'#39';'
+      'end;'
+      ''
+      'procedure DATE_EXPOnBeforePrint(Sender: TfrxComponent);'
+      'begin'
+      '//IF <S_ET1."DATE_PER">=0  THEN DATE_EXP.TEXT:='#39#39
+      
+        '  //                       ELSE DATE_EXP.TEXT:='#39'Exp: '#39'+ DateToSt' +
+        'r(<S_ET1."DATE_PER">);'
+      ''
+      ''
+      'end;'
+      ''
+      'procedure BAR_CODEOnBeforePrint(Sender: TfrxComponent);'
+      'begin'
+      '//BAR_CODE.TEXT:=<CODE_BARRE>;'
+      ''
+      'end;'
+      ''
+      'begin'
+      'end.')
+    Left = 368
+    Top = 248
+    Datasets = <
+      item
+        DataSet = frxProduitDB
+        DataSetName = 'frxProduitDB'
+      end>
+    Variables = <
+      item
+        Name = 'PV'
+        Value = '3'
+      end>
+    Style = <>
+    object Data: TfrxDataPage
+      Height = 1000.000000000000000000
+      Width = 1000.000000000000000000
+    end
+    object Page1: TfrxReportPage
+      PaperWidth = 40.000000000000000000
+      PaperHeight = 20.000000000000000000
+      PaperSize = 256
+      HGuides.Strings = (
+        '22.67718')
+      object PRODUIT: TfrxMemoView
+        Align = baCenter
+        Left = 1.322881025000000000
+        Top = 12.582677170000000000
+        Width = 148.535437950000000000
+        Height = 24.566936460000000000
+        DataField = 'nom_p'
+        DataSet = frxProduitDB
+        DataSetName = 'frxProduitDB'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -8
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = [fsBold]
+        HAlign = haCenter
+        Memo.UTF8W = (
+          '[frxProduitDB."nom_p"]')
+        ParentFont = False
+      end
+      object Name: TfrxMemoView
+        Top = 2.000000000000000000
+        Width = 152.314967950000000000
+        Height = 10.582677170000000000
+        OnBeforePrint = 'TITLEOnBeforePrint'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -9
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = [fsBold, fsUnderline]
+        HAlign = haCenter
+        ParentFont = False
+      end
+      object Prix: TfrxMemoView
+        Top = 38.354360000000000000
+        Width = 151.181200000000000000
+        Height = 37.795290240000000000
+        OnBeforePrint = 'PPA2OnBeforePrint'
+        DataSet = frxProduitDB
+        DataSetName = 'frxProduitDB'
+        DisplayFormat.FormatStr = '%2.2n'
+        DisplayFormat.Kind = fkNumeric
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -16
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = [fsBold]
+        HAlign = haCenter
+        ParentFont = False
+      end
+    end
+  end
+  object frxReport47X30: TfrxReport
+    Version = '5.4.6'
+    DotMatrixReport = False
+    IniFile = '\Software\Fast Reports'
+    Preview = PrintTicketfrxPreview
+    PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick, pbNoClose, pbNoFullScreen, pbNoEmail]
+    PreviewOptions.Zoom = 1.000000000000000000
+    PrintOptions.Printer = 'POSTEK C168 200s'
+    PrintOptions.PrintOnSheet = 0
+    PrintOptions.ShowDialog = False
+    ReportOptions.CreateDate = 41864.469234849500000000
+    ReportOptions.LastChange = 43029.502580775460000000
+    ScriptLanguage = 'PascalScript'
+    ScriptText.Strings = (
+      ''
+      'procedure TITLEOnBeforePrint(Sender: TfrxComponent);'
+      'begin'
+      '//TITLE.TEXT:=<TITRE>;'
+      'end;'
+      ''
+      'procedure PrixOnBeforePrint(Sender: TfrxComponent);'
+      'begin'
+      '//IF <PV>=1 then '
+      
+        '//Prix.text:='#39'Prix:'#39'+FormatFloat('#39'# ### ### ##0.00'#39',<frxProduitD' +
+        'B."prixvd_p">)+'#39' DA'#39';'
+      
+        '//IF <PV>=2 then Prix.text:='#39'Prix:'#39'+FormatFloat('#39'# ### ### ##0.0' +
+        '0'#39',<S_ET1."PV2_TTC">)+'#39' DA'#39';'
+      
+        '//IF <PV>=3 then Prix.text:='#39'Prix:'#39'+FormatFloat('#39'# ### ### ##0.0' +
+        '0'#39',<S_ET1."PV3_TTC">)+'#39' DA'#39';'
+      'end;'
+      ''
+      'procedure DATE_EXPOnBeforePrint(Sender: TfrxComponent);'
+      'begin'
+      '//IF <S_ET1."DATE_PER">=0  THEN DATE_EXP.TEXT:='#39#39
+      
+        '  //                       ELSE DATE_EXP.TEXT:='#39'Exp: '#39'+ DateToSt' +
+        'r(<S_ET1."DATE_PER">);'
+      ''
+      ''
+      'end;'
+      ''
+      'procedure BAR_CODEOnBeforePrint(Sender: TfrxComponent);'
+      'begin'
+      '//BAR_CODE.TEXT:=<CODE_BARRE>;'
+      ''
+      'end;'
+      ''
+      'begin'
+      'end.')
+    Left = 440
+    Top = 248
+    Datasets = <
+      item
+        DataSet = frxProduitDB
+        DataSetName = 'frxProduitDB'
+      end>
+    Variables = <
+      item
+        Name = 'PV'
+        Value = '3'
+      end>
+    Style = <>
+    object Data: TfrxDataPage
+      Height = 1000.000000000000000000
+      Width = 1000.000000000000000000
+    end
+    object Page1: TfrxReportPage
+      PaperWidth = 47.000000000000000000
+      PaperHeight = 30.000000000000000000
+      PaperSize = 256
+      HGuides.Strings = (
+        '86.92919'
+        '41.57483')
+      object PRODUIT: TfrxMemoView
+        Align = baWidth
+        Top = 16.362207170000000000
+        Width = 177.637910000000000000
+        Height = 25.212622830000000000
+        DataField = 'nom_p'
+        DataSet = frxProduitDB
+        DataSetName = 'frxProduitDB'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -9
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
+        HAlign = haCenter
+        Memo.UTF8W = (
+          '[frxProduitDB."nom_p"]')
+        ParentFont = False
+      end
+      object Name: TfrxMemoView
+        Align = baWidth
+        Top = 2.000000000000000000
+        Width = 177.637910000000000000
+        Height = 10.582677170000000000
+        OnBeforePrint = 'TITLEOnBeforePrint'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -9
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = [fsBold, fsUnderline]
+        HAlign = haCenter
+        ParentFont = False
+      end
+      object Prix: TfrxMemoView
+        Align = baBottom
+        Top = 86.929199760000000000
+        Width = 177.637910000000000000
+        Height = 26.456700240000000000
+        OnBeforePrint = 'PPA2OnBeforePrint'
+        DataSet = frxProduitDB
+        DataSetName = 'frxProduitDB'
+        DisplayFormat.FormatStr = '%2.2n'
+        DisplayFormat.Kind = fkNumeric
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -12
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = [fsBold]
+        HAlign = haCenter
+        ParentFont = False
+        VAlign = vaCenter
+      end
+      object BAR_CODE: TfrxBarCodeView
+        Align = baCenter
+        Left = 49.318955000000000000
+        Top = 46.236240000000000000
+        Width = 79.000000000000000000
+        Height = 33.259842520000000000
+        OnBeforePrint = 'BAR_CODEOnBeforePrint'
+        BarType = bcCode128
+        DataField = 'codebar_p'
+        DataSet = frxProduitDB
+        DataSetName = 'frxProduitDB'
+        Expression = '<frxProduitDB."codebar_p">'
+        HAlign = haCenter
+        Rotation = 0
+        ShowText = False
+        Text = '12345678'
+        WideBarRatio = 2.000000000000000000
+        Zoom = 1.000000000000000000
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -9
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
+      end
+    end
+  end
+  object frxReport47X30s: TfrxReport
+    Version = '5.4.6'
+    DotMatrixReport = False
+    IniFile = '\Software\Fast Reports'
+    Preview = PrintTicketfrxPreview
+    PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick, pbNoClose, pbNoFullScreen, pbNoEmail]
+    PreviewOptions.Zoom = 1.000000000000000000
+    PrintOptions.Printer = 'POSTEK C168 200s'
+    PrintOptions.PrintOnSheet = 0
+    PrintOptions.ShowDialog = False
+    ReportOptions.CreateDate = 41864.469234849500000000
+    ReportOptions.LastChange = 43029.506769456020000000
+    ScriptLanguage = 'PascalScript'
+    ScriptText.Strings = (
+      ''
+      'procedure TITLEOnBeforePrint(Sender: TfrxComponent);'
+      'begin'
+      '//TITLE.TEXT:=<TITRE>;'
+      'end;'
+      ''
+      'procedure PrixOnBeforePrint(Sender: TfrxComponent);'
+      'begin'
+      '//IF <PV>=1 then '
+      
+        '//Prix.text:='#39'Prix:'#39'+FormatFloat('#39'# ### ### ##0.00'#39',<frxProduitD' +
+        'B."prixvd_p">)+'#39' DA'#39';'
+      
+        '//IF <PV>=2 then Prix.text:='#39'Prix:'#39'+FormatFloat('#39'# ### ### ##0.0' +
+        '0'#39',<S_ET1."PV2_TTC">)+'#39' DA'#39';'
+      
+        '//IF <PV>=3 then Prix.text:='#39'Prix:'#39'+FormatFloat('#39'# ### ### ##0.0' +
+        '0'#39',<S_ET1."PV3_TTC">)+'#39' DA'#39';'
+      'end;'
+      ''
+      'procedure DATE_EXPOnBeforePrint(Sender: TfrxComponent);'
+      'begin'
+      '//IF <S_ET1."DATE_PER">=0  THEN DATE_EXP.TEXT:='#39#39
+      
+        '  //                       ELSE DATE_EXP.TEXT:='#39'Exp: '#39'+ DateToSt' +
+        'r(<S_ET1."DATE_PER">);'
+      ''
+      ''
+      'end;'
+      ''
+      'procedure BAR_CODEOnBeforePrint(Sender: TfrxComponent);'
+      'begin'
+      '//BAR_CODE.TEXT:=<CODE_BARRE>;'
+      ''
+      'end;'
+      ''
+      'begin'
+      'end.')
+    Left = 442
+    Top = 296
+    Datasets = <
+      item
+        DataSet = frxProduitDB
+        DataSetName = 'frxProduitDB'
+      end>
+    Variables = <
+      item
+        Name = 'PV'
+        Value = '3'
+      end>
+    Style = <>
+    object Data: TfrxDataPage
+      Height = 1000.000000000000000000
+      Width = 1000.000000000000000000
+    end
+    object Page1: TfrxReportPage
+      PaperWidth = 47.000000000000000000
+      PaperHeight = 30.000000000000000000
+      PaperSize = 256
+      HGuides.Strings = (
+        '45.35436')
+      object PRODUIT: TfrxMemoView
+        Align = baWidth
+        Top = 16.362207170000000000
+        Width = 177.637910000000000000
+        Height = 25.212622830000000000
+        DataField = 'nom_p'
+        DataSet = frxProduitDB
+        DataSetName = 'frxProduitDB'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -9
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
+        HAlign = haCenter
+        Memo.UTF8W = (
+          '[frxProduitDB."nom_p"]')
+        ParentFont = False
+      end
+      object Name: TfrxMemoView
+        Align = baWidth
+        Top = 2.000000000000000000
+        Width = 177.637910000000000000
+        Height = 10.582677170000000000
+        OnBeforePrint = 'TITLEOnBeforePrint'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -9
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = [fsBold, fsUnderline]
+        HAlign = haCenter
+        ParentFont = False
+      end
+      object BAR_CODE: TfrxBarCodeView
+        Align = baCenter
+        Left = 49.318955000000000000
+        Top = 46.236240000000000000
+        Width = 79.000000000000000000
+        Height = 55.937022520000000000
+        OnBeforePrint = 'BAR_CODEOnBeforePrint'
+        BarType = bcCode128
+        DataField = 'codebar_p'
+        DataSet = frxProduitDB
+        DataSetName = 'frxProduitDB'
+        Expression = '<frxProduitDB."codebar_p">'
+        HAlign = haCenter
+        Rotation = 0
+        ShowText = False
+        Text = '12345678'
+        WideBarRatio = 2.000000000000000000
+        Zoom = 1.000000000000000000
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -9
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
+      end
+    end
+  end
+  object frxReport58X45p: TfrxReport
+    Version = '5.4.6'
+    DotMatrixReport = False
+    IniFile = '\Software\Fast Reports'
+    Preview = PrintTicketfrxPreview
+    PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick, pbNoClose, pbNoFullScreen, pbNoEmail]
+    PreviewOptions.Zoom = 1.000000000000000000
+    PrintOptions.Printer = 'POSTEK C168 200s'
+    PrintOptions.PrintOnSheet = 0
+    PrintOptions.ShowDialog = False
+    ReportOptions.CreateDate = 41864.469234849500000000
+    ReportOptions.LastChange = 43029.551697685190000000
+    ScriptLanguage = 'PascalScript'
+    ScriptText.Strings = (
+      ''
+      'procedure TITLEOnBeforePrint(Sender: TfrxComponent);'
+      'begin'
+      '//TITLE.TEXT:=<TITRE>;'
+      'end;'
+      ''
+      'procedure PrixOnBeforePrint(Sender: TfrxComponent);'
+      'begin'
+      '//IF <PV>=1 then '
+      
+        '//Prix.text:='#39'Prix:'#39'+FormatFloat('#39'# ### ### ##0.00'#39',<frxProduitD' +
+        'B."prixvd_p">)+'#39' DA'#39';'
+      
+        '//IF <PV>=2 then Prix.text:='#39'Prix:'#39'+FormatFloat('#39'# ### ### ##0.0' +
+        '0'#39',<S_ET1."PV2_TTC">)+'#39' DA'#39';'
+      
+        '//IF <PV>=3 then Prix.text:='#39'Prix:'#39'+FormatFloat('#39'# ### ### ##0.0' +
+        '0'#39',<S_ET1."PV3_TTC">)+'#39' DA'#39';'
+      'end;'
+      ''
+      'procedure DATE_EXPOnBeforePrint(Sender: TfrxComponent);'
+      'begin'
+      '//IF <S_ET1."DATE_PER">=0  THEN DATE_EXP.TEXT:='#39#39
+      
+        '  //                       ELSE DATE_EXP.TEXT:='#39'Exp: '#39'+ DateToSt' +
+        'r(<S_ET1."DATE_PER">);'
+      ''
+      ''
+      'end;'
+      ''
+      'procedure BAR_CODEOnBeforePrint(Sender: TfrxComponent);'
+      'begin'
+      '//BAR_CODE.TEXT:=<CODE_BARRE>;'
+      ''
+      'end;'
+      ''
+      'begin'
+      'end.')
+    Left = 358
+    Top = 306
+    Datasets = <
+      item
+        DataSet = frxProduitDB
+        DataSetName = 'frxProduitDB'
+      end>
+    Variables = <
+      item
+        Name = 'PV'
+        Value = '3'
+      end>
+    Style = <>
+    object Data: TfrxDataPage
+      Height = 1000.000000000000000000
+      Width = 1000.000000000000000000
+    end
+    object Page1: TfrxReportPage
+      PaperWidth = 58.000000000000000000
+      PaperHeight = 45.000000000000000000
+      PaperSize = 256
+      object PRODUIT: TfrxMemoView
+        Align = baWidth
+        Top = 27.700797170000000000
+        Width = 219.212740000000000000
+        Height = 47.244116460000000000
+        DataField = 'nom_p'
+        DataSet = frxProduitDB
+        DataSetName = 'frxProduitDB'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -12
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
+        HAlign = haCenter
+        Memo.UTF8W = (
+          '[frxProduitDB."nom_p"]')
+        ParentFont = False
+      end
+      object Name: TfrxMemoView
+        Align = baWidth
+        Top = 2.000000000000000000
+        Width = 219.212740000000000000
+        Height = 21.921267170000000000
+        OnBeforePrint = 'TITLEOnBeforePrint'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -9
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = [fsBold, fsUnderline]
+        HAlign = haCenter
+        ParentFont = False
+      end
+      object Prix: TfrxMemoView
+        Align = baWidth
+        Top = 83.149669760000000000
+        Width = 219.212740000000000000
+        Height = 68.031530240000000000
+        OnBeforePrint = 'PPA2OnBeforePrint'
+        DataSet = frxProduitDB
+        DataSetName = 'frxProduitDB'
+        DisplayFormat.FormatStr = '%2.2n'
+        DisplayFormat.Kind = fkNumeric
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -19
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = [fsBold]
+        HAlign = haCenter
+        ParentFont = False
       end
     end
   end

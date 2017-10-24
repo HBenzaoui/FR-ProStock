@@ -468,8 +468,8 @@ begin
   else
   begin
     sndPlaySound('C:\Windows\Media\chord.wav', SND_NODEFAULT or SND_ASYNC or SND_RING);
-//         TTask.Run ( procedure
-//         begin
+    //         TTask.Run ( procedure
+    //         begin
     FSplash := TFSplash.Create(nil);
     try
       FSplash.Left := MainForm.Width - FSplash.Width - 15;
