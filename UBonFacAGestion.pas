@@ -154,6 +154,7 @@ type
     ApplicationEvents1: TApplicationEvents;
     Label31: TLabel;
     Label23: TLabel;
+    ListFourBonFacAGBtn: TAdvToolButton;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure FormShow(Sender: TObject);
@@ -212,11 +213,62 @@ type
     procedure BondeCaisseSimple2Click(Sender: TObject);
     procedure ApplicationEvents1ShortCut(var Msg: TWMKey; var Handled: Boolean);
     procedure ResherchPARDesProduitsRdioBtnClick(Sender: TObject);
+    procedure ListFourBonFacAGBtnClick(Sender: TObject);
+    procedure ProduitsListDBGridEhKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
   private
     procedure GettingData;
     { Private declarations }
   public
-    { Public declarations }
+
+  
+    const FALSQL =
+     'SELECT FAL.code_bafac,FAL.code_bafacl,FAL.qut_p,FAL.cond_p,FAL.code_p,FAL.tva_p,FAL.prixht_p,P.nom_p as nomp, P.refer_p as referp, '
+      +'   FAL.prixvd_p,FAL.prixvr_p,FAL.prixvg_p,FAL.prixva_p,FAL.prixva2_p,FAL.dateperiss_p,FAL.qutinstock_p,'
+      +'   (((FAL.prixht_p * FAL.tva_p)/100)+FAL.prixht_p) AS PrixATTC, '
+      +'   ((FAL.prixht_p * FAL.qut_p) * cond_p) AS MontantHT, '
+      +'   (((((FAL.prixht_p * FAL.tva_p)/100)+FAL.prixht_p) * FAL.qut_p)*cond_p) AS MontantTTC, '
+      +'   (((((((FAL.prixht_p * FAL.tva_p)/100)+FAL.prixht_p) * FAL.qut_p)*cond_p) )-(((FAL.prixht_p * FAL.qut_p) * cond_p))) AS MontantTVA, '
+      +'   ((FAL.prixht_p * FAL.qut_p)* cond_p) AS MontantAHT, '
+      +'  CASE '
+      +'       WHEN FAL.prixvd_p <> ''0'' THEN '
+      +'     CASE WHEN FAL.prixht_p <> ''0'' '
+      +'       THEN ( ((FAL.prixvd_p - FAL.prixht_p) / FAL.prixht_p  ) *100) '
+      +'       ELSE ''100'' '
+      +'     END '
+      +'  END AS MargeD, '
+      +'  CASE '
+      +'     WHEN FAL.prixvr_p <> ''0'' THEN  '
+      +'   CASE WHEN FAL.prixht_p <> ''0'' '
+      +'     THEN ( ((FAL.prixvr_p - FAL.prixht_p) / FAL.prixht_p  ) *100)  '
+      +'     ELSE ''100'' '
+      +'   END   '
+      +'  END AS MargeR, '
+      +'  CASE '
+      +'     WHEN FAL.prixvg_p <> ''0'' THEN '
+      +'   CASE WHEN FAL.prixht_p <> ''0''  '
+      +'     THEN ( ((FAL.prixvg_p - FAL.prixht_p) / FAL.prixht_p  ) *100)  '
+      +'     ELSE ''100'' '
+      +'   END '
+      +'  END AS MargeG, '
+      +'   CASE  '
+      +'     WHEN FAL.prixva_p <> ''0'' THEN  '
+      +'   CASE WHEN FAL.prixht_p <> ''0''  '
+      +'     THEN ( ((FAL.prixva_p - FAL.prixht_p) / FAL.prixht_p  ) *100)  '
+      +'     ELSE ''100''  '
+      +'   END '
+      +'  END AS MargeA, '
+      +'   CASE   '
+      +'     WHEN FAL.prixva2_p <> ''0'' THEN '
+      +'   CASE WHEN FAL.prixht_p <> ''0''  '
+      +'     THEN ( ((FAL.prixva2_p - FAL.prixht_p) / FAL.prixht_p  ) *100) '
+      +'     ELSE ''100''    '
+      +'   END  '
+      +'  END AS MargeA2 '
+      +' FROM bona_fac_list as FAL  '
+      +' INNER JOIN produit as P   '
+      +'   ON FAL.code_p = P.code_p ';
+      
     procedure EnableBonFacA ;
   end;
 
@@ -275,6 +327,8 @@ begin
           FourBonFacAGCbx.Enabled:= True;
           AddFourBonFacAGBtn.Enabled:= True ; //
           AddFourBonFacAGBtn.ImageIndex:=10;//35 fo D
+          ListFourBonFacAGBtn.Enabled:= True;
+          ListFourBonFacAGBtn.ImageIndex:= 59;
           ModePaieBonFacAGCbx.Enabled:= True;
           AddModePaieBonFacAGBtn.Enabled:= True ;
           AddModePaieBonFacAGBtn.ImageIndex:=10;// 35 fo D
@@ -293,7 +347,7 @@ begin
           DeleteProduitBonFacAGBtn.ImageIndex:=14;//36 fo D
           ClearProduitBonFacAGBtn.Enabled:= True;
           ClearProduitBonFacAGBtn.ImageIndex:=16;//39 fo A
-          ProduitsListDBGridEh.DataSource.DataSet.EnableControls;//DisableControls    For A
+//          ProduitsListDBGridEh.DataSource.DataSet.EnableControls;//DisableControls    For A
           ProduitsListDBGridEh.Columns[2].TextEditing :=True;//False for D
           ProduitsListDBGridEh.Columns[3].TextEditing:=True;//False for D
           ProduitsListDBGridEh.Columns[4].TextEditing:=True;//False for D
@@ -349,7 +403,7 @@ begin
 
           MainForm.Bona_fac_listTable.Active:=false;
           MainForm.Bona_fac_listTable.SQL.Clear;
-          MainForm.Bona_fac_listTable.SQL.Text:='Select * FROM bona_fac_list' ;
+          MainForm.Bona_fac_listTable.SQL.Text:= FALSQL  ;
           MainForm.Bona_fac_listTable.Active:=True;
           MainForm.Bona_fac_listTable.EnableControls;
 
@@ -377,8 +431,8 @@ CodeFA := MainForm.Bona_facTable.FieldByName('code_bafac').AsInteger;
 
       FourBonFacAGCbx.SetFocus;
       CanClose := false;
-    end else
-        begin
+   end else
+       begin
    if ModePaieBonFacAGCbx.Text = '' then
     begin
       sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
@@ -403,8 +457,8 @@ CodeFA := MainForm.Bona_facTable.FieldByName('code_bafac').AsInteger;
      end else
      begin
          //---------------------------------------------------
-         if RequiredFourGlbl.Visible <> True then
-         begin
+        if RequiredFourGlbl.Visible <> True then
+        begin
 
           if  (MainForm.Bona_facTable.FieldByName('valider_bafac').AsBoolean = false)  then
          begin
@@ -447,7 +501,7 @@ CodeFA := MainForm.Bona_facTable.FieldByName('code_bafac').AsInteger;
           MainForm.Bona_facTable.FieldByName('montver_bafac').AsCurrency:=StrToCurr(StringReplace(BonFacARegleLbl.Caption, #32, '', [rfReplaceAll]));
           MainForm.Bona_facTable.FieldByName('montttc_bafac').AsCurrency:=StrToCurr(StringReplace(BonFacATotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
 
-          if TimberBonFacAGEdt.Visible = True then
+          if (TimberBonFacAGEdt.Visible = True) AND (TimberBonFacAGEdt.Text <> '') then
           begin
           MainForm.Bona_facTable.FieldByName('timber_bafac').AsCurrency:=StrToCurr(StringReplace(TimberBonFacAGEdt.Text, #32, '', [rfReplaceAll]));
           end;
@@ -474,13 +528,13 @@ CodeFA := MainForm.Bona_facTable.FieldByName('code_bafac').AsInteger;
           MainForm.CompteTable.EnableControls;
 
             //------- This is to delete data from tre and reg ih not valide----------------------------------------------
-           if (CodeFA <> 0) AND (CodeFA <> null) then
-           begin
-            MainForm.GstockdcConnection.ExecSQL('DELETE FROM regfournisseur where code_bafac = ' + IntToStr(CodeFA));
-            MainForm.GstockdcConnection.ExecSQL('DELETE FROM opt_cas_bnk where code_bafac = ' + IntToStr(CodeFA));
-            MainForm.RegfournisseurTable.Refresh ;
-            MainForm.Opt_cas_bnk_CaisseTable.Refresh ;
-           end;
+//           if (CodeFA <> 0) AND (CodeFA <> null) then
+//           begin
+//            MainForm.GstockdcConnection.ExecSQL('DELETE FROM regfournisseur where code_bafac = ' + IntToStr(CodeFA));
+//            MainForm.GstockdcConnection.ExecSQL('DELETE FROM opt_cas_bnk where code_bafac = ' + IntToStr(CodeFA));
+//            MainForm.RegfournisseurTable.Refresh ;
+//            MainForm.Opt_cas_bnk_CaisseTable.Refresh ;
+//           end;
 
          end;
 
@@ -546,7 +600,7 @@ CodeFA := MainForm.Bona_facTable.FieldByName('code_bafac').AsInteger;
           MainForm.Bona_facTable.FieldByName('montver_bafac').AsCurrency:=StrToCurr(StringReplace(BonFacARegleLbl.Caption, #32, '', [rfReplaceAll]));
           MainForm.Bona_facTable.FieldByName('montttc_bafac').AsCurrency:=StrToCurr(StringReplace(BonFacATotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
 
-          if TimberBonFacAGEdt.Visible = True then
+          if (TimberBonFacAGEdt.Visible = True) AND (TimberBonFacAGEdt.Text <> '') then
           begin
           MainForm.Bona_facTable.FieldByName('timber_bafac').AsCurrency:=StrToCurr(StringReplace(TimberBonFacAGEdt.Text, #32, '', [rfReplaceAll]));
           end;
@@ -879,7 +933,7 @@ begin
             codeFA := MainForm.Bona_facTable.FieldValues['code_bafac'];
             MainForm.Bona_fac_listTable.Active:=False;
             MainForm.Bona_fac_listTable.SQL.Clear;
-            MainForm.Bona_fac_listTable.SQL.Text:= 'SELECT * FROM bona_fac_list WHERE code_bafac = ' + QuotedStr(IntToStr(codeFA));
+            MainForm.Bona_fac_listTable.SQL.Text:= FALSQL +' WHERE code_bafac = ' + QuotedStr(IntToStr(codeFA));
             MainForm.Bona_fac_listTable.Active:=True;
 
            if MainForm.Bona_fac_listTable.RecordCount <= 0 then
@@ -896,7 +950,7 @@ begin
            MainForm.Bona_facTable.Post;
 
            end;
-            ProduitsListDBGridEh.DataSource.DataSet.EnableControls;
+//            ProduitsListDBGridEh.DataSource.DataSet.EnableControls;
           end;
 
 
@@ -923,7 +977,17 @@ begin
 end;
 
 procedure TBonFacAGestionF.EditBAFacBonFacAGBtnClick(Sender: TObject);
+ Var CodeFA :Integer;
 begin
+  CodeFA := MainForm.Bona_facTable.FieldByName('code_bafac').AsInteger;
+            //------- This is to delete data from tre and reg ih not valide----------------------------------------------
+           if (CodeFA <> 0) AND (CodeFA <> null) then
+           begin
+            MainForm.GstockdcConnection.ExecSQL('DELETE FROM regfournisseur where code_bafac = ' + IntToStr(CodeFA));
+            MainForm.GstockdcConnection.ExecSQL('DELETE FROM opt_cas_bnk where code_bafac = ' + IntToStr(CodeFA));
+            MainForm.RegfournisseurTable.Refresh ;
+            MainForm.Opt_cas_bnk_CaisseTable.Refresh ;
+           end;
 
       MainForm.FournisseurTable.DisableControls;
       MainForm.FournisseurTable.Active:=false;
@@ -958,7 +1022,16 @@ begin
            MainForm.ProduitTable.DisableControls;
            MainForm.ProduitTable.Active:=False;
            MainForm.ProduitTable.SQL.Clear;
-           MainForm.ProduitTable.SQL.Text:='SELECT * FROM produit ' ;
+           MainForm.ProduitTable.SQL.Text:='SELECT *, '
+          +' ((prixht_p * tva_p)/100+ prixht_p ) AS PrixATTC, '
+          +' ((prixvd_p * tva_p)/100+ prixvd_p ) AS PrixVTTCD, '
+          +' ((prixvr_p * tva_p)/100+ prixvr_p ) AS PrixVTTCR, '
+          +' ((prixvg_p * tva_p)/100+ prixvg_p ) AS PrixVTTCG, '
+          +' ((prixva_p * tva_p)/100+ prixva_p ) AS PrixVTTCA, '
+          +' ((prixva2_p * tva_p)/100+ prixva2_p ) AS PrixVTTCA2, '
+          +' (qut_p + qutini_p ) AS QutDispo, '
+          +' ((qut_p + qutini_p) * prixht_p ) AS ValueStock '
+          +' FROM produit ' ;
            MainForm.ProduitTable.Active:=True;
            Mainform.Sqlquery.Active:=False;
            Mainform.Sqlquery.Sql.Clear;
@@ -972,7 +1045,16 @@ begin
 
             MainForm.ProduitTable.Active:=False;
             MainForm.ProduitTable.SQL.Clear;
-            MainForm.ProduitTable.SQL.Text:='SELECT * FROM produit WHERE code_p = ' +QuotedStr(MainForm.SQLQuery.FieldValues['code_p']) ;
+            MainForm.ProduitTable.SQL.Text:='SELECT *, '
+            +' ((prixht_p * tva_p)/100+ prixht_p ) AS PrixATTC, '
+            +' ((prixvd_p * tva_p)/100+ prixvd_p ) AS PrixVTTCD, '
+            +' ((prixvr_p * tva_p)/100+ prixvr_p ) AS PrixVTTCR, '
+            +' ((prixvg_p * tva_p)/100+ prixvg_p ) AS PrixVTTCG, '
+            +' ((prixva_p * tva_p)/100+ prixva_p ) AS PrixVTTCA, '
+            +' ((prixva2_p * tva_p)/100+ prixva2_p ) AS PrixVTTCA2, '
+            +' (qut_p + qutini_p ) AS QutDispo, '
+            +' ((qut_p + qutini_p) * prixht_p ) AS ValueStock '
+            +' FROM produit WHERE code_p = ' +QuotedStr(MainForm.SQLQuery.FieldValues['code_p']) ;
             MainForm.ProduitTable.Active:=True;
             MainForm.ProduitTable.Edit;
             MainForm.ProduitTable.FieldValues['qut_p']:= ( MainForm.ProduitTable.FieldValues['qut_p']
@@ -985,7 +1067,16 @@ begin
 
             MainForm.ProduitTable.Active:=False;
            MainForm.ProduitTable.SQL.Clear;
-           MainForm.ProduitTable.SQL.Text:='SELECT * FROM produit ' ;
+           MainForm.ProduitTable.SQL.Text:='SELECT *, '
+            +' ((prixht_p * tva_p)/100+ prixht_p ) AS PrixATTC, '
+            +' ((prixvd_p * tva_p)/100+ prixvd_p ) AS PrixVTTCD, '
+            +' ((prixvr_p * tva_p)/100+ prixvr_p ) AS PrixVTTCR, '
+            +' ((prixvg_p * tva_p)/100+ prixvg_p ) AS PrixVTTCG, '
+            +' ((prixva_p * tva_p)/100+ prixva_p ) AS PrixVTTCA, '
+            +' ((prixva2_p * tva_p)/100+ prixva2_p ) AS PrixVTTCA2, '
+            +' (qut_p + qutini_p ) AS QutDispo, '
+            +' ((qut_p + qutini_p) * prixht_p ) AS ValueStock '
+            +' FROM produit ' ;
            MainForm.ProduitTable.Active:=True;
            MainForm.ProduitTable.EnableControls;
            MainForm.SQLQuery.Active:=False;
@@ -1759,7 +1850,7 @@ I : Integer;
 //        MainForm.SQLQuery.DisableControls;
         MainForm.SQLQuery.Active:=false;
         MainForm.SQLQuery.SQL.Clear;
-        MainForm.SQLQuery.SQL.Text:='Select * FROM fournisseur '  ;
+        MainForm.SQLQuery.SQL.Text:='Select nom_f FROM fournisseur '  ;
         MainForm.SQLQuery.Active:=True;
 
        MainForm.SQLQuery.first;
@@ -1892,8 +1983,10 @@ end;
 
 procedure TBonFacAGestionF.ProduitBonFacAGCbxEnter(Sender: TObject);
 var
-I : Integer;
-  begin
+  I : Integer;
+  KeyState: TKeyboardState;
+begin
+
      if ResherchPARDesProduitsRdioBtn.Checked then
      begin
       ProduitBonFacAGCbx.Properties.Items.Clear;
@@ -1942,6 +2035,23 @@ I : Integer;
       MainForm.SQLQuery.SQL.Clear;
 //      Cursor := crDefault;
      end;
+
+     if ResherchPARCBProduitsRdioBtn.Checked then
+     begin
+      ProduitBonFacAGCbx.Properties.Items.Clear;
+
+      //turn on CapsLock when enter edit to make sure codebare read well
+      GetKeyboardState(KeyState);
+      if (KeyState[VK_CAPITAL]=0) then
+      begin
+        // Simulate a "CAPS LOCK" key release
+        Keybd_Event(VK_CAPITAL, 1, KEYEVENTF_EXTENDEDKEY or 0, 0);
+        // Simulate a "CAPS LOCK" key press
+        Keybd_Event(VK_CAPITAL, 1, KEYEVENTF_EXTENDEDKEY or KEYEVENTF_KEYUP, 0);
+      end;
+
+     end;
+
 end;
 
 procedure TBonFacAGestionF.ProduitBonFacAGCbxExit(Sender: TObject);
@@ -1994,7 +2104,7 @@ if key = #13 then
             MainForm.Bona_fac_listTable.IndexFieldNames:='';
             MainForm.Bona_fac_listTable.Active:=False;
             MainForm.Bona_fac_listTable.SQL.Clear;
-            MainForm.Bona_fac_listTable.SQL.Text:= 'SELECT * FROM bona_fac_list ORDER by code_bafacl' ;
+            MainForm.Bona_fac_listTable.SQL.Text:= FALSQL +' ORDER by code_bafacl' ;
             MainForm.Bona_fac_listTable.Active:=True;
 
             MainForm.Bona_fac_listTable.Last;
@@ -2035,7 +2145,7 @@ if key = #13 then
              MainForm.Bona_fac_listTable.IndexFieldNames:='code_bafac';
             MainForm.Bona_fac_listTable.Active:=False;
             MainForm.Bona_fac_listTable.SQL.Clear;
-            MainForm.Bona_fac_listTable.SQL.Text:= 'SELECT * FROM bona_fac_list WHERE code_bafac = ' + QuotedStr(IntToStr(MainForm.Bona_facTable.FieldValues['code_bafac']));
+            MainForm.Bona_fac_listTable.SQL.Text:= FALSQL +' WHERE code_bafac = ' + QuotedStr(IntToStr(MainForm.Bona_facTable.FieldValues['code_bafac']));
             MainForm.Bona_fac_listTable.Active:=True;
 
             ProduitBonFacAGCbx.Text:='';
@@ -2120,7 +2230,7 @@ if key = #13 then
             MainForm.Bona_fac_listTable.IndexFieldNames:='';
             MainForm.Bona_fac_listTable.Active:=False;
             MainForm.Bona_fac_listTable.SQL.Clear;
-            MainForm.Bona_fac_listTable.SQL.Text:= 'SELECT * FROM bona_fac_list ORDER by code_bafacl' ;
+            MainForm.Bona_fac_listTable.SQL.Text:= FALSQL +' ORDER by code_bafacl' ;
             MainForm.Bona_fac_listTable.Active:=True;
            if  MainForm.Bona_fac_listTable.RecordCount <= 0 then
            begin
@@ -2161,7 +2271,7 @@ if key = #13 then
 
             MainForm.Bona_fac_listTable.Active:=False;
             MainForm.Bona_fac_listTable.SQL.Clear;
-            MainForm.Bona_fac_listTable.SQL.Text:= 'SELECT * FROM bona_fac_list WHERE code_bafac = ' + QuotedStr(IntToStr(MainForm.Bona_facTable.FieldValues['code_bafac']));
+            MainForm.Bona_fac_listTable.SQL.Text:= FALSQL +' WHERE code_bafac = ' + QuotedStr(IntToStr(MainForm.Bona_facTable.FieldValues['code_bafac']));
             MainForm.Bona_fac_listTable.Active:=True;
             MainForm.Bona_fac_listTable.EnableControls;
 
@@ -2253,7 +2363,7 @@ if key = #13 then
             MainForm.Bona_fac_listTable.IndexFieldNames:='';
             MainForm.Bona_fac_listTable.Active:=False;
             MainForm.Bona_fac_listTable.SQL.Clear;
-            MainForm.Bona_fac_listTable.SQL.Text:= 'SELECT * FROM bona_fac_list ORDER by code_bafacl' ;
+            MainForm.Bona_fac_listTable.SQL.Text:=  FALSQL +' ORDER by code_bafacl' ;
             MainForm.Bona_fac_listTable.Active:=True;
 
            if  MainForm.Bona_fac_listTable.RecordCount <= 0 then
@@ -2292,7 +2402,7 @@ if key = #13 then
 
              MainForm.Bona_fac_listTable.Active:=False;
              MainForm.Bona_fac_listTable.SQL.Clear;
-             MainForm.Bona_fac_listTable.SQL.Text:= 'SELECT * FROM bona_fac_list WHERE code_bafac = ' + QuotedStr(IntToStr(MainForm.Bona_facTable.FieldValues['code_bafac']));
+             MainForm.Bona_fac_listTable.SQL.Text:= FALSQL +' WHERE code_bafac = ' + QuotedStr(IntToStr(MainForm.Bona_facTable.FieldValues['code_bafac']));
              MainForm.Bona_fac_listTable.Active:=True;
              MainForm.Bona_fac_listTable.EnableControls;
 
@@ -2668,7 +2778,7 @@ begin
 
 
 
-         BonFacAResteLbl.Caption:= BonFacATotalTTCLbl.Caption;                       //REst
+//         BonFacAResteLbl.Caption:= BonFacATotalTTCLbl.Caption;                       //REst
             if RemisePerctageBonFacAGEdt.Focused then
             begin
             RemiseBonFacAGEdt.Text:=FloatToStrF((BonFATotalHT - NewHT),ffNumber,14,2);
@@ -2681,7 +2791,7 @@ begin
             OldFourCredit:=StrToFloat (StringReplace(BonFacAGFourOLDCredit.Caption , #32, '', [rfReplaceAll]));
             end;
 
-        BonFacAGFourNEWCredit.Caption:=  FloatToStrF(((NewHT + NewTVA) + (OldFourCredit)),ffNumber,14,2);
+//        BonFacAGFourNEWCredit.Caption:=  FloatToStrF(((NewHT + NewTVA) + (OldFourCredit)),ffNumber,14,2);
 
         end else
           begin
@@ -2694,7 +2804,7 @@ begin
            TotalTVANet:=StrToFloat(StringReplace(TotalTVANewLbl.Caption, #32, '', [rfReplaceAll]));
            end;
             BonFacATotalTTCLbl.Caption:=FloatToStrF((BonFATotalHT + TotalTVANet ),ffNumber,14,2);
-            BonFacAResteLbl.Caption:= BonFacATotalTTCLbl.Caption;
+//            BonFacAResteLbl.Caption:= BonFacATotalTTCLbl.Caption;
             BonFacATotalTVALbl.Caption := TotalTVANewLbl.Caption;
             RemiseBonFacAGEdt.Text:='';
             BonFARemiseHTNewLbl.Caption:='0';
@@ -2708,7 +2818,7 @@ begin
             begin
             NewTTC:=StrToFloat (StringReplace(BonFacATotalTTCLbl.Caption , #32, '', [rfReplaceAll]));
             end;
-          BonFacAGFourNEWCredit.Caption:=  FloatToStrF((NewTTC + OldFourCredit),ffNumber,14,2);
+//          BonFacAGFourNEWCredit.Caption:=  FloatToStrF((NewTTC + OldFourCredit),ffNumber,14,2);
 //          MainForm.Bona_fac_listTable.Refresh;
           end;
        end;
@@ -2746,7 +2856,7 @@ begin
          end;
 
 
-         BonFacAResteLbl.Caption:=BonFacATotalTTCLbl.Caption;
+//         BonFacAResteLbl.Caption:=BonFacATotalTTCLbl.Caption;
 
            if BonFacATotalHTLbl.Caption <>'' then
             begin
@@ -2762,16 +2872,15 @@ begin
             OldFourCredit:=StrToFloat (StringReplace(BonFacAGFourOLDCredit.Caption , #32, '', [rfReplaceAll]));
             end;
 
-        BonFacAGFourNEWCredit.Caption:=  FloatToStrF((NewTTC  + OldFourCredit),ffNumber,14,2);
+//        BonFacAGFourNEWCredit.Caption:=  FloatToStrF((NewTTC  + OldFourCredit),ffNumber,14,2);
         end else
             begin
              RemiseBonFacAGEdt.Text:='';
              BonFARemiseHTNewLbl.Caption:='0';
              BonFacATotalTTCLbl.Caption := BonFATotalTTCNewLbl.Caption;
-             BonFacAResteLbl.Caption:=BonFacATotalTTCLbl.Caption;
+//             BonFacAResteLbl.Caption:=BonFacATotalTTCLbl.Caption;
              BonFacATotalTVALbl.Caption:=TotalTVANewLbl.Caption;
              BonFATotalHTNewLbl.Caption:=BonFacATotalHTLbl.Caption;
-             BonFacAGFourNEWCredit.Caption:=  FloatToStrF((NewTTC  + OldFourCredit),ffNumber,14,2);
 
               if BonFacAGFourOLDCredit.Caption <>'' then
               begin
@@ -2781,7 +2890,7 @@ begin
               begin
               NewTTC:=StrToFloat (StringReplace(BonFacATotalTTCLbl.Caption , #32, '', [rfReplaceAll]));
               end;
-             BonFacAGFourNEWCredit.Caption:=  FloatToStrF((NewTTC + OldFourCredit),ffNumber,14,2);
+//             BonFacAGFourNEWCredit.Caption:=  FloatToStrF((NewTTC + OldFourCredit),ffNumber,14,2);
 //             MainForm.Bona_fac_listTable.Refresh;
             end;
       end;
@@ -3114,22 +3223,120 @@ begin
 
 end;
 
+procedure TBonFacAGestionF.ListFourBonFacAGBtnClick(Sender: TObject);
+Var I:Integer;
+begin
+//-------- use this code to start creating th form-----//
+  FastProduitsListF := TFastProduitsListF.Create(BonFacAGestionF);
+
+  MainForm.FDQuery2.Active:=False;
+  MainForm.FDQuery2.SQL.Clear;
+  MainForm.FDQuery2.SQL.TExt:= 'SELECT code_f,nom_f,fix_f,mob_f,adr_f,credit_f FROM fournisseur';
+  MainForm.FDQuery2.IndexFieldNames:='code_f';
+  MainForm.FDQuery2.Active:=True;
+
+  for I := 0 to FastProduitsListF.ProduitsListDBGridEh.Columns.Count -1 do
+  begin
+    FastProduitsListF.ProduitsListDBGridEh.Columns[I].Visible:= False;
+  end;
+    
+  //Change the dataSet
+  FastProduitsListF.ProduitListDataS.DataSet:= MainForm.FDQuery2;
+  FastProduitsListF.ProduitsListDBGridEh.Columns[0].FieldName:='code_f';
+  FastProduitsListF.ProduitsListDBGridEh.Columns[0].Title.Caption:='N°';
+  FastProduitsListF.ProduitsListDBGridEh.Columns[0].Visible:= True;
+  FastProduitsListF.ProduitsListDBGridEh.Columns[0].Width:= 70;
+
+  FastProduitsListF.ProduitsListDBGridEh.Columns[1].FieldName:='nom_f';
+  FastProduitsListF.ProduitsListDBGridEh.Columns[1].Title.Caption:='Nom du Fournisseur';
+  FastProduitsListF.ProduitsListDBGridEh.Columns[1].Visible:= True;
+  FastProduitsListF.ProduitsListDBGridEh.Columns[1].Width:= 300;
+
+//  FastProduitsListF.ProduitsListDBGridEh.Columns[2].FieldName:='activite_c';
+//  FastProduitsListF.ProduitsListDBGridEh.Columns[2].Title.Caption:='Activité';
+//  FastProduitsListF.ProduitsListDBGridEh.Columns[2].Visible:= True;
+//  FastProduitsListF.ProduitsListDBGridEh.Columns[2].Width:= 130;;
+
+  FastProduitsListF.ProduitsListDBGridEh.Columns[2].FieldName:='fix_f';
+  FastProduitsListF.ProduitsListDBGridEh.Columns[2].Title.Caption:='Téléphone';
+  FastProduitsListF.ProduitsListDBGridEh.Columns[2].Visible:= True;
+  FastProduitsListF.ProduitsListDBGridEh.Columns[2].Width:= 130;;
+
+  FastProduitsListF.ProduitsListDBGridEh.Columns[3].FieldName:='mob_f';
+  FastProduitsListF.ProduitsListDBGridEh.Columns[3].Title.Caption:='Téléphone';
+  FastProduitsListF.ProduitsListDBGridEh.Columns[3].Visible:= True;
+  FastProduitsListF.ProduitsListDBGridEh.Columns[3].Width:= 130;;
+
+  FastProduitsListF.ProduitsListDBGridEh.Columns[4].FieldName:='adr_f';
+  FastProduitsListF.ProduitsListDBGridEh.Columns[4].Title.Caption:='Adresse';
+  FastProduitsListF.ProduitsListDBGridEh.Columns[4].Visible:= True;
+  FastProduitsListF.ProduitsListDBGridEh.Columns[4].Width:= 150;;
+
+  FastProduitsListF.ProduitsListDBGridEh.Columns[5].FieldName:='credit_f';
+  FastProduitsListF.ProduitsListDBGridEh.Columns[5].Title.Caption:='Crédit';
+  FastProduitsListF.ProduitsListDBGridEh.Columns[5].Visible:= True;
+  FastProduitsListF.ProduitsListDBGridEh.Columns[5].Width:= 130;;
+  
+  
+  FastProduitsListF.ProduitsListDBGridEh.Refresh;
+
+//-------- Show the splash screan for the produit familly to add new one---------//
+  FastProduitsListF.Left := (Screen.Width div 2) - (FastProduitsListF.Width div 2);
+  FastProduitsListF.Top := (Screen.Height div 2) - (FastProduitsListF.Height div 2);
+
+  FastProduitsListF.Caption:= 'Liste des Fournisseurs';
+  FastProduitsListF.ResherchPARDesProduitsRdioBtn.Visible:= False;
+  FastProduitsListF.ResherchPARDCodProduitsRdioBtn.Visible:= False;
+  FastProduitsListF.ProduitsListDBGridEh.Options:=
+  FastProduitsListF.ProduitsListDBGridEh.Options -[dgMultiSelect] ; //flip + and -  for A
+  FastProduitsListF.ProduitsListDBGridEh.IndicatorOptions:=[];
+  FastProduitsListF.ResearchProduitsEdt.Width:= 431;
+
+  FastProduitsListF.Tag := 1;
+  FastProduitsListF.Show;
+  FastProduitsListF.ResearchProduitsEdt.SetFocus;
+
+end;
+
+procedure TBonFacAGestionF.ProduitsListDBGridEhKeyDown(Sender: TObject;
+  var Key: Word; Shift: TShiftState);
+begin
+  //Use this trick tp pervent wierd error show up (erro happen when cursor on last row and hit down)
+  if (key = VK_DOWN) AND (MainForm.Bona_fac_listTable.RecNo=MainForm.Bona_fac_listTable.RecordCount)then
+  begin
+
+    key := VK_RETURN;
+
+  end;
+end;
+
 procedure TBonFacAGestionF.ProduitsListDBGridEhKeyPress(Sender: TObject;
   var Key: Char);
 begin
 
-if (Key=#13 ) OR (Key=#9) then
+  if (Key=#13 ) OR (Key=#9)then
   begin
-         Refresh_PreservePosition;
+//    Key := 0;
+// This is to jume to the next field
+
+   Refresh_PreservePosition;
+
    with TDBGridEh(Sender) do
-      begin
+   begin
      if SelectedIndex < (FieldCount-1) then
-     SelectedIndex := SelectedIndex+1
+
+      if (Columns[4].Visible = False) AND (SelectedIndex = 3) then  // Check if the date field is visible if not mover directly to price
+       begin
+        SelectedIndex := SelectedIndex+2;
+       end else
+         begin
+          SelectedIndex := SelectedIndex+1
+         end
      else
      SelectedIndex := 0;
-    end;
    end;
 
+   end;
 
 end;
 
@@ -3164,9 +3371,9 @@ end;
 procedure TBonFacAGestionF.GettingData;
  var
   MoneyWordRX,NumRX,DateRX,NameRX,AdrRX,VilleRX,WilayaRX,MPRX,NCHeqRX,
-  TauxTVA17,TauxTVA7,TauxTVA19,MontantTVA17,MontantTVA7,MontantTVA19,RC,NArt,NIF,NIS,NEWCredit,OLDCredit : TfrxMemoView;
+  TauxTVA9,TauxTVA19,MontantTVA9,MontantTVA19,RC,NArt,NIF,NIS,NEWCredit,OLDCredit : TfrxMemoView;
   str1 : string;
-  Taux17,Taux7,Taux19,Montant17,Montant7,Montant19,RemisePerctageBonFacA : Currency;
+  Taux9,Taux19,Montant9,Montant19,RemisePerctageBonFacA : Currency;
     Name,Tel,Mob,Adr : TfrxMemoView;
   Logo : TfrxPictureView;
     S: TMemoryStream;
@@ -3269,49 +3476,11 @@ begin
      begin
       MainForm.Bona_fac_listTable.DisableControls;
 
+
         begin
            MainForm.Bona_fac_listTable.Active:=false;
            MainForm.Bona_fac_listTable.SQL.Clear;
-           MainForm.Bona_fac_listTable.SQL.Text:='Select * FROM bona_fac_list WHERE tva_p = 17' ;
-           MainForm.Bona_fac_listTable.Active:=True;
-            if NOT (MainForm.Bona_fac_listTable.IsEmpty) then
-           begin
-
-            MainForm.Bona_fac_listTable.First;
-
-            while not MainForm.Bona_fac_listTable.Eof do
-            begin
-              Montant17:= Montant17 + MainForm.Bona_fac_listTable.FieldValues['MontantTVA'];
-              MainForm.Bona_fac_listTable.Next;
-            end;
-
-             TauxTVA17:= BonFacAPListfrxRprt.FindObject('TauxTVA17') as TfrxMemoView;
-             TauxTVA17.Text:=  '17 %';
-             TauxTVA17.Visible:=True;
-
-             MontantTVA17:= BonFacAPListfrxRprt.FindObject('MontantTVA17') as TfrxMemoView;
-
-           if RemisePerctageBonFacAGEdt.Text <> '' then
-            begin
-            RemisePerctageBonFacA:=StrToFloat(StringReplace(RemisePerctageBonFacAGEdt.Text, #32, '', [rfReplaceAll]));
-            end;
-
-             if (RemisePerctageBonFacAGEdt.Text = '') OR (RemisePerctageBonFacA = 0) then
-             begin
-             MontantTVA17.Text:= floatToStrF(Montant17,ffNumber,14,2);
-             end else
-                 begin
-                   MontantTVA17.Text:=   floatToStrF((Montant17 - (Montant17*RemisePerctageBonFacA)/100) ,ffNumber,14,2);
-                 end;
-
-                 MontantTVA17.Visible:=True;
-
-            end;
-        end;
-        begin
-           MainForm.Bona_fac_listTable.Active:=false;
-           MainForm.Bona_fac_listTable.SQL.Clear;
-           MainForm.Bona_fac_listTable.SQL.Text:='Select * FROM bona_fac_list WHERE tva_p = 7' ;
+           MainForm.Bona_fac_listTable.SQL.Text:= FALSQL +' WHERE FAL.tva_p = 9' ;
            MainForm.Bona_fac_listTable.Active:=True;
           if NOT (MainForm.Bona_fac_listTable.IsEmpty) then
            begin
@@ -3320,14 +3489,14 @@ begin
 
             while not MainForm.Bona_fac_listTable.Eof do
             begin
-              Montant7:= Montant7 + MainForm.Bona_fac_listTable.FieldValues['MontantTVA'];
+              Montant9:= Montant9 + MainForm.Bona_fac_listTable.FieldValues['MontantTVA'];
               MainForm.Bona_fac_listTable.Next;
             end;
-             TauxTVA7:= BonFacAPListfrxRprt.FindObject('TauxTVA7') as TfrxMemoView;
-             TauxTVA7.Text:=  '7 %';
-             TauxTVA7.Visible:= True;
+             TauxTVA9:= BonFacAPListfrxRprt.FindObject('TauxTVA9') as TfrxMemoView;
+             TauxTVA9.Text:=  '9 %';
+             TauxTVA9.Visible:= True;
 
-             MontantTVA7:= BonFacAPListfrxRprt.FindObject('MontantTVA7') as TfrxMemoView;
+             MontantTVA9:= BonFacAPListfrxRprt.FindObject('MontantTVA9') as TfrxMemoView;
 
 
                         if RemisePerctageBonFacAGEdt.Text <> '' then
@@ -3337,20 +3506,20 @@ begin
 
              if (RemisePerctageBonFacAGEdt.Text = '') OR (RemisePerctageBonFacA = 0) then
              begin
-             MontantTVA7.Text:= CurrToStrF(Montant7,ffCurrency,2);
+             MontantTVA9.Text:= CurrToStrF(Montant9,ffCurrency,2);
              end else
                  begin
-                   MontantTVA7.Text:=   CurrToStrF((Montant7 - (Montant7*RemisePerctageBonFacA)/100) ,ffCurrency,2);
+                   MontantTVA9.Text:=   CurrToStrF((Montant9 - (Montant9*RemisePerctageBonFacA)/100) ,ffCurrency,2);
                  end;
 
-                 MontantTVA7.Visible:=True;
+                 MontantTVA9.Visible:=True;
             end;
         end;
 
         begin
            MainForm.Bona_fac_listTable.Active:=false;
            MainForm.Bona_fac_listTable.SQL.Clear;
-           MainForm.Bona_fac_listTable.SQL.Text:='Select * FROM bona_fac_list WHERE tva_p = 19' ;
+           MainForm.Bona_fac_listTable.SQL.Text:= FALSQL +' WHERE FAL.tva_p = 19' ;
            MainForm.Bona_fac_listTable.Active:=True;
           if NOT (MainForm.Bona_fac_listTable.IsEmpty) then
            begin
@@ -3386,7 +3555,7 @@ begin
         end;
              MainForm.Bona_fac_listTable.Active:=false;
              MainForm.Bona_fac_listTable.SQL.Clear;
-             MainForm.Bona_fac_listTable.SQL.Text:='Select * FROM bona_fac_list ORDER BY code_bafacl ' ;
+             MainForm.Bona_fac_listTable.SQL.Text:= FALSQL +' ORDER BY code_bafacl ' ;
              MainForm.Bona_fac_listTable.Active:=True;
          MainForm.Bona_fac_listTable.EnableControls;
      end;

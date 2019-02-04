@@ -318,6 +318,7 @@ object CNotificationsF: TCNotificationsF
   OldCreateOrder = False
   Visible = True
   OnClose = FormClose
+  OnPaint = FormPaint
   PixelsPerInch = 96
   TextHeight = 13
   object ProduitGPgControl: TsPageControl
@@ -342,14 +343,7 @@ object CNotificationsF: TCNotificationsF
     TabsLineSkin = 'BAR'
     object PZeroQTB: TsTabSheet
       Caption = 'Produits '#233'puis'#233's'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = 16
-      Font.Name = 'Helvetica LT Std'
-      Font.Style = []
-      ParentFont = False
-      SkinData.CustomColor = False
-      SkinData.CustomFont = False
+      OnShow = PZeroQTBShow
       DesignSize = (
         1647
         706)
@@ -429,6 +423,7 @@ object CNotificationsF: TCNotificationsF
         Columns = <
           item
             Alignment = taCenter
+            CellButtons = <>
             DynProps = <>
             EditButtons = <>
             FieldName = 'refer_p'
@@ -453,6 +448,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DynProps = <>
             EditButtons = <>
             FieldName = 'nom_p'
@@ -478,6 +474,7 @@ object CNotificationsF: TCNotificationsF
           end
           item
             Alignment = taCenter
+            CellButtons = <>
             DisplayFormat = '0.00 %'
             DynProps = <>
             EditButtons = <>
@@ -502,6 +499,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DynProps = <>
             EditButtons = <>
             FieldName = 'code_famp'
@@ -526,6 +524,7 @@ object CNotificationsF: TCNotificationsF
           end
           item
             Alignment = taCenter
+            CellButtons = <>
             DynProps = <>
             EditButtons = <>
             FieldName = 'famp'
@@ -548,6 +547,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DynProps = <>
             EditButtons = <>
             FieldName = 'code_sfamp'
@@ -572,6 +572,7 @@ object CNotificationsF: TCNotificationsF
           end
           item
             Alignment = taCenter
+            CellButtons = <>
             DynProps = <>
             EditButtons = <>
             FieldName = 'sfamp'
@@ -594,6 +595,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DynProps = <>
             EditButtons = <>
             FieldName = 'prixht_p'
@@ -615,6 +617,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DynProps = <>
             EditButtons = <>
             FieldName = 'alertqut_p'
@@ -636,6 +639,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DisplayFormat = '#,##0.00'
             DynProps = <>
             EditButtons = <>
@@ -659,6 +663,7 @@ object CNotificationsF: TCNotificationsF
             Width = 130
           end
           item
+            CellButtons = <>
             DisplayFormat = '#,##0.00'
             DynProps = <>
             EditButtons = <>
@@ -683,6 +688,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DisplayFormat = '#,##0.00'
             DynProps = <>
             EditButtons = <>
@@ -709,6 +715,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DisplayFormat = '#,##0.00'
             DynProps = <>
             EditButtons = <>
@@ -737,6 +744,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DisplayFormat = '#,##0.00'
             DynProps = <>
             EditButtons = <>
@@ -763,6 +771,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DisplayFormat = '#,##0.00'
             DynProps = <>
             EditButtons = <>
@@ -789,6 +798,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DisplayFormat = '#,##0.00'
             DynProps = <>
             EditButtons = <>
@@ -815,6 +825,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DisplayFormat = '#,##0.00'
             DynProps = <>
             EditButtons = <>
@@ -841,6 +852,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DisplayFormat = '#,##0.00'
             DynProps = <>
             EditButtons = <>
@@ -864,6 +876,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DisplayFormat = '#,##0.00'
             DynProps = <>
             EditButtons = <>
@@ -887,6 +900,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DisplayFormat = '#,##0.00'
             DynProps = <>
             EditButtons = <>
@@ -910,6 +924,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DisplayFormat = '#,##0.00'
             DynProps = <>
             EditButtons = <>
@@ -933,6 +948,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DisplayFormat = '0.00 '
             DynProps = <>
             EditButtons = <>
@@ -954,6 +970,7 @@ object CNotificationsF: TCNotificationsF
           end
           item
             Alignment = taCenter
+            CellButtons = <>
             Color = 10908906
             DisplayFormat = '0.00'
             DynProps = <>
@@ -980,6 +997,7 @@ object CNotificationsF: TCNotificationsF
           end
           item
             Alignment = taCenter
+            CellButtons = <>
             DynProps = <>
             EditButtons = <>
             FieldName = 'unit'
@@ -1002,6 +1020,7 @@ object CNotificationsF: TCNotificationsF
           end
           item
             Alignment = taCenter
+            CellButtons = <>
             DynProps = <>
             EditButtons = <>
             FieldName = 'fourp'
@@ -1024,6 +1043,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DynProps = <>
             EditButtons = <>
             FieldName = 'code_f'
@@ -1045,6 +1065,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DynProps = <>
             EditButtons = <>
             FieldName = 'perissable_p'
@@ -1067,6 +1088,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DynProps = <>
             EditButtons = <>
             FieldName = 'dateperiss_p'
@@ -1088,6 +1110,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DynProps = <>
             EditButtons = <>
             FieldName = 'alertdays_p'
@@ -1110,6 +1133,7 @@ object CNotificationsF: TCNotificationsF
           end
           item
             Alignment = taCenter
+            CellButtons = <>
             DynProps = <>
             EditButtons = <>
             FieldName = 'local'
@@ -1137,8 +1161,7 @@ object CNotificationsF: TCNotificationsF
     end
     object PCloseZeroQTB: TsTabSheet
       Caption = 'Produits en voie d'#39#233'puisement'
-      SkinData.CustomColor = False
-      SkinData.CustomFont = False
+      OnShow = PCloseZeroQTBShow
       DesignSize = (
         1647
         706)
@@ -1218,6 +1241,7 @@ object CNotificationsF: TCNotificationsF
         Columns = <
           item
             Alignment = taCenter
+            CellButtons = <>
             DynProps = <>
             EditButtons = <>
             FieldName = 'refer_p'
@@ -1242,6 +1266,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DynProps = <>
             EditButtons = <>
             FieldName = 'nom_p'
@@ -1267,6 +1292,7 @@ object CNotificationsF: TCNotificationsF
           end
           item
             Alignment = taCenter
+            CellButtons = <>
             DisplayFormat = '0.00 %'
             DynProps = <>
             EditButtons = <>
@@ -1291,6 +1317,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DynProps = <>
             EditButtons = <>
             FieldName = 'code_famp'
@@ -1315,6 +1342,7 @@ object CNotificationsF: TCNotificationsF
           end
           item
             Alignment = taCenter
+            CellButtons = <>
             DynProps = <>
             EditButtons = <>
             FieldName = 'famp'
@@ -1337,6 +1365,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DynProps = <>
             EditButtons = <>
             FieldName = 'code_sfamp'
@@ -1361,6 +1390,7 @@ object CNotificationsF: TCNotificationsF
           end
           item
             Alignment = taCenter
+            CellButtons = <>
             DynProps = <>
             EditButtons = <>
             FieldName = 'sfamp'
@@ -1383,6 +1413,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DynProps = <>
             EditButtons = <>
             FieldName = 'prixht_p'
@@ -1404,6 +1435,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DisplayFormat = '#,##0.00'
             DynProps = <>
             EditButtons = <>
@@ -1427,6 +1459,7 @@ object CNotificationsF: TCNotificationsF
             Width = 130
           end
           item
+            CellButtons = <>
             DisplayFormat = '#,##0.00'
             DynProps = <>
             EditButtons = <>
@@ -1451,6 +1484,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DisplayFormat = '#,##0.00'
             DynProps = <>
             EditButtons = <>
@@ -1477,6 +1511,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DisplayFormat = '#,##0.00'
             DynProps = <>
             EditButtons = <>
@@ -1505,6 +1540,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DisplayFormat = '#,##0.00'
             DynProps = <>
             EditButtons = <>
@@ -1531,6 +1567,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DisplayFormat = '#,##0.00'
             DynProps = <>
             EditButtons = <>
@@ -1557,6 +1594,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DisplayFormat = '#,##0.00'
             DynProps = <>
             EditButtons = <>
@@ -1583,6 +1621,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DisplayFormat = '#,##0.00'
             DynProps = <>
             EditButtons = <>
@@ -1609,6 +1648,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DisplayFormat = '#,##0.00'
             DynProps = <>
             EditButtons = <>
@@ -1632,6 +1672,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DisplayFormat = '#,##0.00'
             DynProps = <>
             EditButtons = <>
@@ -1655,6 +1696,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DisplayFormat = '#,##0.00'
             DynProps = <>
             EditButtons = <>
@@ -1678,6 +1720,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DisplayFormat = '#,##0.00'
             DynProps = <>
             EditButtons = <>
@@ -1701,6 +1744,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DisplayFormat = '0.00 '
             DynProps = <>
             EditButtons = <>
@@ -1722,6 +1766,7 @@ object CNotificationsF: TCNotificationsF
           end
           item
             Alignment = taCenter
+            CellButtons = <>
             Color = 15722984
             DisplayFormat = '0.00'
             DynProps = <>
@@ -1747,6 +1792,7 @@ object CNotificationsF: TCNotificationsF
           end
           item
             Alignment = taCenter
+            CellButtons = <>
             Color = 8637171
             DisplayFormat = '0.00'
             DynProps = <>
@@ -1771,6 +1817,7 @@ object CNotificationsF: TCNotificationsF
           end
           item
             Alignment = taCenter
+            CellButtons = <>
             DisplayFormat = '0.00'
             DynProps = <>
             EditButtons = <>
@@ -1795,6 +1842,7 @@ object CNotificationsF: TCNotificationsF
           end
           item
             Alignment = taCenter
+            CellButtons = <>
             DynProps = <>
             EditButtons = <>
             FieldName = 'unit'
@@ -1817,6 +1865,7 @@ object CNotificationsF: TCNotificationsF
           end
           item
             Alignment = taCenter
+            CellButtons = <>
             DynProps = <>
             EditButtons = <>
             FieldName = 'fourp'
@@ -1839,6 +1888,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DynProps = <>
             EditButtons = <>
             FieldName = 'code_f'
@@ -1860,6 +1910,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DynProps = <>
             EditButtons = <>
             FieldName = 'perissable_p'
@@ -1882,6 +1933,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DynProps = <>
             EditButtons = <>
             FieldName = 'dateperiss_p'
@@ -1903,6 +1955,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DynProps = <>
             EditButtons = <>
             FieldName = 'alertdays_p'
@@ -1925,6 +1978,7 @@ object CNotificationsF: TCNotificationsF
           end
           item
             Alignment = taCenter
+            CellButtons = <>
             DynProps = <>
             EditButtons = <>
             FieldName = 'local'
@@ -1952,8 +2006,7 @@ object CNotificationsF: TCNotificationsF
     end
     object PMoreMaxQTB: TsTabSheet
       Caption = 'Produits atteignent le Maximum'
-      SkinData.CustomColor = False
-      SkinData.CustomFont = False
+      OnShow = PMoreMaxQTBShow
       DesignSize = (
         1647
         706)
@@ -2033,6 +2086,7 @@ object CNotificationsF: TCNotificationsF
         Columns = <
           item
             Alignment = taCenter
+            CellButtons = <>
             DynProps = <>
             EditButtons = <>
             FieldName = 'refer_p'
@@ -2057,6 +2111,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DynProps = <>
             EditButtons = <>
             FieldName = 'nom_p'
@@ -2082,6 +2137,7 @@ object CNotificationsF: TCNotificationsF
           end
           item
             Alignment = taCenter
+            CellButtons = <>
             DisplayFormat = '0.00 %'
             DynProps = <>
             EditButtons = <>
@@ -2106,6 +2162,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DynProps = <>
             EditButtons = <>
             FieldName = 'code_famp'
@@ -2130,6 +2187,7 @@ object CNotificationsF: TCNotificationsF
           end
           item
             Alignment = taCenter
+            CellButtons = <>
             DynProps = <>
             EditButtons = <>
             FieldName = 'famp'
@@ -2152,6 +2210,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DynProps = <>
             EditButtons = <>
             FieldName = 'code_sfamp'
@@ -2176,6 +2235,7 @@ object CNotificationsF: TCNotificationsF
           end
           item
             Alignment = taCenter
+            CellButtons = <>
             DynProps = <>
             EditButtons = <>
             FieldName = 'sfamp'
@@ -2198,6 +2258,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DynProps = <>
             EditButtons = <>
             FieldName = 'prixht_p'
@@ -2219,6 +2280,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DynProps = <>
             EditButtons = <>
             FieldName = 'alertqut_p'
@@ -2240,6 +2302,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DisplayFormat = '#,##0.00'
             DynProps = <>
             EditButtons = <>
@@ -2263,6 +2326,7 @@ object CNotificationsF: TCNotificationsF
             Width = 130
           end
           item
+            CellButtons = <>
             DisplayFormat = '#,##0.00'
             DynProps = <>
             EditButtons = <>
@@ -2287,6 +2351,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DisplayFormat = '#,##0.00'
             DynProps = <>
             EditButtons = <>
@@ -2313,6 +2378,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DisplayFormat = '#,##0.00'
             DynProps = <>
             EditButtons = <>
@@ -2341,6 +2407,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DisplayFormat = '#,##0.00'
             DynProps = <>
             EditButtons = <>
@@ -2367,6 +2434,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DisplayFormat = '#,##0.00'
             DynProps = <>
             EditButtons = <>
@@ -2393,6 +2461,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DisplayFormat = '#,##0.00'
             DynProps = <>
             EditButtons = <>
@@ -2419,6 +2488,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DisplayFormat = '#,##0.00'
             DynProps = <>
             EditButtons = <>
@@ -2445,6 +2515,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DisplayFormat = '#,##0.00'
             DynProps = <>
             EditButtons = <>
@@ -2468,6 +2539,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DisplayFormat = '#,##0.00'
             DynProps = <>
             EditButtons = <>
@@ -2491,6 +2563,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DisplayFormat = '#,##0.00'
             DynProps = <>
             EditButtons = <>
@@ -2514,6 +2587,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DisplayFormat = '#,##0.00'
             DynProps = <>
             EditButtons = <>
@@ -2537,6 +2611,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DisplayFormat = '0.00 '
             DynProps = <>
             EditButtons = <>
@@ -2558,6 +2633,7 @@ object CNotificationsF: TCNotificationsF
           end
           item
             Alignment = taCenter
+            CellButtons = <>
             Color = 15722984
             DisplayFormat = '0.00'
             DynProps = <>
@@ -2584,6 +2660,7 @@ object CNotificationsF: TCNotificationsF
           end
           item
             Alignment = taCenter
+            CellButtons = <>
             Color = 13344790
             DisplayFormat = '0.00'
             DynProps = <>
@@ -2608,6 +2685,7 @@ object CNotificationsF: TCNotificationsF
           end
           item
             Alignment = taCenter
+            CellButtons = <>
             DynProps = <>
             EditButtons = <>
             FieldName = 'unit'
@@ -2630,6 +2708,7 @@ object CNotificationsF: TCNotificationsF
           end
           item
             Alignment = taCenter
+            CellButtons = <>
             DynProps = <>
             EditButtons = <>
             FieldName = 'fourp'
@@ -2652,6 +2731,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DynProps = <>
             EditButtons = <>
             FieldName = 'code_f'
@@ -2673,6 +2753,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DynProps = <>
             EditButtons = <>
             FieldName = 'perissable_p'
@@ -2695,6 +2776,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DynProps = <>
             EditButtons = <>
             FieldName = 'dateperiss_p'
@@ -2716,6 +2798,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DynProps = <>
             EditButtons = <>
             FieldName = 'alertdays_p'
@@ -2738,6 +2821,7 @@ object CNotificationsF: TCNotificationsF
           end
           item
             Alignment = taCenter
+            CellButtons = <>
             DynProps = <>
             EditButtons = <>
             FieldName = 'local'
@@ -2765,8 +2849,7 @@ object CNotificationsF: TCNotificationsF
     end
     object PCloseDiedTB: TsTabSheet
       Caption = 'Produits en voie de peremption'
-      SkinData.CustomColor = False
-      SkinData.CustomFont = False
+      OnShow = PCloseDiedTBShow
       DesignSize = (
         1647
         706)
@@ -2846,6 +2929,7 @@ object CNotificationsF: TCNotificationsF
         Columns = <
           item
             Alignment = taCenter
+            CellButtons = <>
             DynProps = <>
             EditButtons = <>
             FieldName = 'num_barec'
@@ -2866,9 +2950,10 @@ object CNotificationsF: TCNotificationsF
           end
           item
             Alignment = taCenter
+            CellButtons = <>
             DynProps = <>
             EditButtons = <>
-            FieldName = 'referp'
+            FieldName = 'refer_p'
             Footers = <>
             Layout = tlCenter
             MaxWidth = 120
@@ -2885,9 +2970,10 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DynProps = <>
             EditButtons = <>
-            FieldName = 'nomp'
+            FieldName = 'nom_p'
             Footers = <>
             Layout = tlCenter
             MaxWidth = -1
@@ -2905,6 +2991,7 @@ object CNotificationsF: TCNotificationsF
           end
           item
             Alignment = taCenter
+            CellButtons = <>
             DisplayFormat = '0.00 %'
             DynProps = <>
             EditButtons = <>
@@ -2929,6 +3016,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DynProps = <>
             EditButtons = <>
             FieldName = 'code_famp'
@@ -2953,6 +3041,7 @@ object CNotificationsF: TCNotificationsF
           end
           item
             Alignment = taCenter
+            CellButtons = <>
             DynProps = <>
             EditButtons = <>
             FieldName = 'famp'
@@ -2970,6 +3059,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DynProps = <>
             EditButtons = <>
             FieldName = 'code_sfamp'
@@ -2994,6 +3084,7 @@ object CNotificationsF: TCNotificationsF
           end
           item
             Alignment = taCenter
+            CellButtons = <>
             DynProps = <>
             EditButtons = <>
             FieldName = 'sfamp'
@@ -3011,6 +3102,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DynProps = <>
             EditButtons = <>
             FieldName = 'prixht_p'
@@ -3032,6 +3124,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DynProps = <>
             EditButtons = <>
             FieldName = 'alertqut_p'
@@ -3053,6 +3146,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DisplayFormat = '#,##0.00'
             DynProps = <>
             EditButtons = <>
@@ -3076,6 +3170,7 @@ object CNotificationsF: TCNotificationsF
             Width = 130
           end
           item
+            CellButtons = <>
             DisplayFormat = '#,##0.00'
             DynProps = <>
             EditButtons = <>
@@ -3100,6 +3195,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DisplayFormat = '#,##0.00'
             DynProps = <>
             EditButtons = <>
@@ -3126,6 +3222,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DisplayFormat = '#,##0.00'
             DynProps = <>
             EditButtons = <>
@@ -3154,6 +3251,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DisplayFormat = '#,##0.00'
             DynProps = <>
             EditButtons = <>
@@ -3180,6 +3278,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DisplayFormat = '#,##0.00'
             DynProps = <>
             EditButtons = <>
@@ -3206,6 +3305,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DisplayFormat = '#,##0.00'
             DynProps = <>
             EditButtons = <>
@@ -3232,6 +3332,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DisplayFormat = '#,##0.00'
             DynProps = <>
             EditButtons = <>
@@ -3258,6 +3359,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DisplayFormat = '#,##0.00'
             DynProps = <>
             EditButtons = <>
@@ -3281,6 +3383,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DisplayFormat = '#,##0.00'
             DynProps = <>
             EditButtons = <>
@@ -3304,6 +3407,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DisplayFormat = '#,##0.00'
             DynProps = <>
             EditButtons = <>
@@ -3327,6 +3431,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DisplayFormat = '#,##0.00'
             DynProps = <>
             EditButtons = <>
@@ -3350,6 +3455,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DisplayFormat = '0.00 '
             DynProps = <>
             EditButtons = <>
@@ -3371,6 +3477,7 @@ object CNotificationsF: TCNotificationsF
           end
           item
             Alignment = taCenter
+            CellButtons = <>
             Color = 15722984
             DisplayFormat = '0.00'
             DynProps = <>
@@ -3391,6 +3498,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DynProps = <>
             EditButtons = <>
             FieldName = 'alertdays_p'
@@ -3409,6 +3517,7 @@ object CNotificationsF: TCNotificationsF
           end
           item
             Alignment = taCenter
+            CellButtons = <>
             DisplayFormat = 'DD/MM/YYYY'
             DynProps = <>
             EditButtons = <>
@@ -3428,6 +3537,7 @@ object CNotificationsF: TCNotificationsF
           end
           item
             Alignment = taCenter
+            CellButtons = <>
             DynProps = <>
             EditButtons = <>
             FieldName = 'daysleft'
@@ -3450,6 +3560,7 @@ object CNotificationsF: TCNotificationsF
           end
           item
             Alignment = taCenter
+            CellButtons = <>
             DynProps = <>
             EditButtons = <>
             FieldName = 'unit'
@@ -3467,6 +3578,7 @@ object CNotificationsF: TCNotificationsF
           end
           item
             Alignment = taCenter
+            CellButtons = <>
             DynProps = <>
             EditButtons = <>
             FieldName = 'fourp'
@@ -3484,6 +3596,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DynProps = <>
             EditButtons = <>
             FieldName = 'code_f'
@@ -3505,6 +3618,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DynProps = <>
             EditButtons = <>
             FieldName = 'perissable_p'
@@ -3528,6 +3642,7 @@ object CNotificationsF: TCNotificationsF
           end
           item
             Alignment = taCenter
+            CellButtons = <>
             DynProps = <>
             EditButtons = <>
             FieldName = 'local'
@@ -3550,8 +3665,7 @@ object CNotificationsF: TCNotificationsF
     end
     object PDiedTB: TsTabSheet
       Caption = 'Produits Expir'#233's'
-      SkinData.CustomColor = False
-      SkinData.CustomFont = False
+      OnShow = PDiedTBShow
       DesignSize = (
         1647
         706)
@@ -3631,6 +3745,7 @@ object CNotificationsF: TCNotificationsF
         Columns = <
           item
             Alignment = taCenter
+            CellButtons = <>
             DynProps = <>
             EditButtons = <>
             FieldName = 'num_barec'
@@ -3656,9 +3771,10 @@ object CNotificationsF: TCNotificationsF
           end
           item
             Alignment = taCenter
+            CellButtons = <>
             DynProps = <>
             EditButtons = <>
-            FieldName = 'referp'
+            FieldName = 'refer_p'
             Font.Charset = DEFAULT_CHARSET
             Font.Color = 4207405
             Font.Height = 16
@@ -3680,9 +3796,10 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DynProps = <>
             EditButtons = <>
-            FieldName = 'nomp'
+            FieldName = 'nom_p'
             Font.Charset = DEFAULT_CHARSET
             Font.Color = 4207405
             Font.Height = 16
@@ -3705,6 +3822,7 @@ object CNotificationsF: TCNotificationsF
           end
           item
             Alignment = taCenter
+            CellButtons = <>
             DisplayFormat = '0.00 %'
             DynProps = <>
             EditButtons = <>
@@ -3729,6 +3847,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DynProps = <>
             EditButtons = <>
             FieldName = 'code_famp'
@@ -3753,6 +3872,7 @@ object CNotificationsF: TCNotificationsF
           end
           item
             Alignment = taCenter
+            CellButtons = <>
             DynProps = <>
             EditButtons = <>
             FieldName = 'famp'
@@ -3775,6 +3895,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DynProps = <>
             EditButtons = <>
             FieldName = 'code_sfamp'
@@ -3799,6 +3920,7 @@ object CNotificationsF: TCNotificationsF
           end
           item
             Alignment = taCenter
+            CellButtons = <>
             DynProps = <>
             EditButtons = <>
             FieldName = 'sfamp'
@@ -3821,6 +3943,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DynProps = <>
             EditButtons = <>
             FieldName = 'prixht_p'
@@ -3842,27 +3965,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
-            DynProps = <>
-            EditButtons = <>
-            FieldName = 'alertqut_p'
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = 4207405
-            Font.Height = 18
-            Font.Name = 'Helvetica LT Std'
-            Font.Style = []
-            Footers = <>
-            Layout = tlCenter
-            Title.Alignment = taCenter
-            Title.Font.Charset = DEFAULT_CHARSET
-            Title.Font.Color = 4207405
-            Title.Font.Height = 16
-            Title.Font.Name = 'Roboto'
-            Title.Font.Style = []
-            Title.Font.Quality = fqProof
-            Visible = False
-            WordWrap = False
-          end
-          item
+            CellButtons = <>
             DisplayFormat = '#,##0.00'
             DynProps = <>
             EditButtons = <>
@@ -3886,6 +3989,7 @@ object CNotificationsF: TCNotificationsF
             Width = 130
           end
           item
+            CellButtons = <>
             DisplayFormat = '#,##0.00'
             DynProps = <>
             EditButtons = <>
@@ -3910,6 +4014,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DisplayFormat = '#,##0.00'
             DynProps = <>
             EditButtons = <>
@@ -3936,6 +4041,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DisplayFormat = '#,##0.00'
             DynProps = <>
             EditButtons = <>
@@ -3964,6 +4070,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DisplayFormat = '#,##0.00'
             DynProps = <>
             EditButtons = <>
@@ -3990,6 +4097,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DisplayFormat = '#,##0.00'
             DynProps = <>
             EditButtons = <>
@@ -4016,6 +4124,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DisplayFormat = '#,##0.00'
             DynProps = <>
             EditButtons = <>
@@ -4042,6 +4151,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DisplayFormat = '#,##0.00'
             DynProps = <>
             EditButtons = <>
@@ -4068,6 +4178,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DisplayFormat = '#,##0.00'
             DynProps = <>
             EditButtons = <>
@@ -4091,6 +4202,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DisplayFormat = '#,##0.00'
             DynProps = <>
             EditButtons = <>
@@ -4114,6 +4226,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DisplayFormat = '#,##0.00'
             DynProps = <>
             EditButtons = <>
@@ -4137,6 +4250,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DisplayFormat = '#,##0.00'
             DynProps = <>
             EditButtons = <>
@@ -4160,6 +4274,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DisplayFormat = '0.00 '
             DynProps = <>
             EditButtons = <>
@@ -4181,6 +4296,7 @@ object CNotificationsF: TCNotificationsF
           end
           item
             Alignment = taCenter
+            CellButtons = <>
             Color = 15722984
             DisplayFormat = '0.00'
             DynProps = <>
@@ -4207,6 +4323,55 @@ object CNotificationsF: TCNotificationsF
           end
           item
             Alignment = taCenter
+            CellButtons = <>
+            DisplayFormat = 'DD/MM/YYYY'
+            DynProps = <>
+            EditButtons = <>
+            FieldName = 'dateperiss_p'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = 4207405
+            Font.Height = 18
+            Font.Name = 'Helvetica LT Std'
+            Font.Style = []
+            Footers = <>
+            Layout = tlCenter
+            Title.Alignment = taCenter
+            Title.Caption = 'Date Exp.'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
+            Width = 100
+            WordWrap = False
+          end
+          item
+            Alignment = taCenter
+            CellButtons = <>
+            DynProps = <>
+            EditButtons = <>
+            FieldName = 'daysleft'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = 4207844
+            Font.Height = 16
+            Font.Name = 'Helvetica LT Std'
+            Font.Style = [fsBold]
+            Footers = <>
+            Layout = tlCenter
+            Title.Alignment = taCenter
+            Title.Caption = 'Jours restants'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = 4207405
+            Title.Font.Height = 16
+            Title.Font.Name = 'Roboto'
+            Title.Font.Style = []
+            Title.Font.Quality = fqProof
+            Width = 120
+          end
+          item
+            Alignment = taCenter
+            CellButtons = <>
             DynProps = <>
             EditButtons = <>
             FieldName = 'unit'
@@ -4229,6 +4394,7 @@ object CNotificationsF: TCNotificationsF
           end
           item
             Alignment = taCenter
+            CellButtons = <>
             DynProps = <>
             EditButtons = <>
             FieldName = 'fourp'
@@ -4251,6 +4417,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
+            CellButtons = <>
             DynProps = <>
             EditButtons = <>
             FieldName = 'code_f'
@@ -4272,49 +4439,7 @@ object CNotificationsF: TCNotificationsF
             WordWrap = False
           end
           item
-            DynProps = <>
-            EditButtons = <>
-            FieldName = 'perissable_p'
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = 4207405
-            Font.Height = 18
-            Font.Name = 'Helvetica LT Std'
-            Font.Style = []
-            Footers = <>
-            Layout = tlCenter
-            Title.Alignment = taCenter
-            Title.Font.Charset = DEFAULT_CHARSET
-            Title.Font.Color = 4207405
-            Title.Font.Height = 16
-            Title.Font.Name = 'Roboto'
-            Title.Font.Style = []
-            Title.Font.Quality = fqProof
-            Visible = False
-            Width = 100
-            WordWrap = False
-          end
-          item
-            DynProps = <>
-            EditButtons = <>
-            FieldName = 'dateperiss_p'
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = 4207405
-            Font.Height = 18
-            Font.Name = 'Helvetica LT Std'
-            Font.Style = []
-            Footers = <>
-            Layout = tlCenter
-            Title.Alignment = taCenter
-            Title.Font.Charset = DEFAULT_CHARSET
-            Title.Font.Color = 4207405
-            Title.Font.Height = 16
-            Title.Font.Name = 'Roboto'
-            Title.Font.Style = []
-            Title.Font.Quality = fqProof
-            Visible = False
-            WordWrap = False
-          end
-          item
+            CellButtons = <>
             DynProps = <>
             EditButtons = <>
             FieldName = 'alertdays_p'
@@ -4337,6 +4462,7 @@ object CNotificationsF: TCNotificationsF
           end
           item
             Alignment = taCenter
+            CellButtons = <>
             DynProps = <>
             EditButtons = <>
             FieldName = 'local'

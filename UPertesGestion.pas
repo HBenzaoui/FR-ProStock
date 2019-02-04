@@ -3,7 +3,8 @@ unit UPertesGestion;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
+   System.Classes, Vcl.Graphics, DBGridEh,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ComCtrls,
   Vcl.ExtCtrls, AdvToolBtn, cxGraphics, cxControls, cxLookAndFeels,
   cxLookAndFeelPainters, cxContainer, cxEdit, dxSkinsCore, dxSkinBlack,
@@ -129,7 +130,7 @@ begin
        ///wForm.Align:= alClient;
           wForm.WindowState := wsMaximized;
           gGrayForms.Add(wForm);
-          wForm.Position := poOwnerFormCenter;
+          wForm.Position := MainForm.Position;
           wForm.AlphaBlend := true;
           wForm.AlphaBlendValue := 80;
           wForm.Color := clBlack;
@@ -260,17 +261,21 @@ procedure TPertesGestionF.ListAddProduitPerteGBtnClick(Sender: TObject);
 begin
 //-------- use this code to start creating th form-----//
   MainForm.ProduitTable.Filtered:=False;
-  FastProduitsListF := TFastProduitsListF.Create(Application);
+  FastProduitsListF := TFastProduitsListF.Create(self);
+  try
 
 //-------- Show the splash screan for the produit familly to add new one---------//
   FastProduitsListF.Left := (Screen.Width div 2) - (FastProduitsListF.Width div 2);
   FastProduitsListF.Top := (Screen.Height div 2) - (FastProduitsListF.Height div 2);
   FastProduitsListF.Tag := 5;
+  FastProduitsListF.ProduitsListDBGridEh.Options:=
+  FastProduitsListF.ProduitsListDBGridEh.Options -[dgMultiSelect] ; //flip + and -  for A
   FastProduitsListF.ProduitsListDBGridEh.IndicatorOptions:=[];
-  FastProduitsListF.Show;
-  FastProduitsListF.ResearchProduitsEdt.SetFocus;
+  FastProduitsListF.ShowModal;
   //use this tag = 1 for adding from bon livration
-  
+  finally
+     FreeAndNil(FastProduitsListF);
+  end;
 
  // FastProduitsListF.OKproduitGBtn.Enabled:=False;
  // produitGestionF.CancelProduitGBtn.Tag:=0;

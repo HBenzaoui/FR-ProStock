@@ -361,7 +361,7 @@ object BankListF: TBankListF
     object Label1: TLabel
       Left = 648
       Top = 10
-      Width = 23
+      Width = 22
       Height = 18
       Caption = 'Du:'
       Color = 15722984
@@ -487,7 +487,7 @@ object BankListF: TBankListF
       Shaded = False
       ShowHint = True
       Spacing = -1
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object sImage1: TsImage
@@ -764,7 +764,6 @@ object BankListF: TBankListF
     HorzScrollBar.ExtraPanel.NavigatorButtons = [nbFirstEh, nbPriorEh, nbNextEh, nbLastEh, nbRefreshEh]
     HorzScrollBar.ExtraPanel.Visible = True
     HorzScrollBar.Height = 15
-    IndicatorOptions = [gioShowRowIndicatorEh]
     IndicatorParams.Color = clBtnFace
     IndicatorTitle.ShowDropDownSign = True
     IndicatorTitle.TitleButton = True
@@ -795,9 +794,11 @@ object BankListF: TBankListF
     TitleParams.VertLines = True
     VertScrollBar.Width = 15
     OnDrawColumnCell = CaisseListDBGridEhDrawColumnCell
+    OnSortMarkingChanged = CaisseListDBGridEhSortMarkingChanged
     Columns = <
       item
         Alignment = taCenter
+        CellButtons = <>
         DisplayFormat = 'DD/MM/YYYY'
         DynProps = <>
         EditButtons = <>
@@ -824,6 +825,7 @@ object BankListF: TBankListF
       end
       item
         Alignment = taCenter
+        CellButtons = <>
         DisplayFormat = 'HH:MM:SS'
         DynProps = <>
         EditButtons = <>
@@ -849,6 +851,7 @@ object BankListF: TBankListF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DynProps = <>
         EditButtons = <>
         FieldName = 'nom_ocb'
@@ -873,6 +876,7 @@ object BankListF: TBankListF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DynProps = <>
         EditButtons = <>
         FieldName = 'third_ocb'
@@ -908,6 +912,7 @@ object BankListF: TBankListF
         WordWrap = False
       end
       item
+        CellButtons = <>
         Checkboxes = False
         DynProps = <>
         EditButtons = <>
@@ -946,6 +951,7 @@ object BankListF: TBankListF
         WordWrap = False
       end
       item
+        CellButtons = <>
         Color = 14535415
         DisplayFormat = '#,##0.00'
         DynProps = <>
@@ -982,6 +988,7 @@ object BankListF: TBankListF
         WordWrap = False
       end
       item
+        CellButtons = <>
         Color = 14936255
         DisplayFormat = '#,##0.00'
         DynProps = <>
@@ -1019,9 +1026,10 @@ object BankListF: TBankListF
       end
       item
         Alignment = taCenter
+        CellButtons = <>
         DynProps = <>
         EditButtons = <>
-        FieldName = 'Agnet'
+        FieldName = 'Agent'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
         Font.Height = 16
@@ -1030,7 +1038,6 @@ object BankListF: TBankListF
         Footers = <>
         Layout = tlCenter
         Title.Alignment = taCenter
-        Title.Caption = 'Agent'
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = 4207405
         Title.Font.Height = 16
@@ -1095,7 +1102,7 @@ object BankListF: TBankListF
     object Label4: TLabel
       Left = 9
       Top = 5
-      Width = 82
+      Width = 83
       Height = 17
       Caption = 'Solde Initial :'
       Color = clWhite
@@ -1133,7 +1140,7 @@ object BankListF: TBankListF
     object Label5: TLabel
       Left = 326
       Top = 5
-      Width = 132
+      Width = 136
       Height = 17
       Caption = 'Solde de la p'#233'riode :'
       Color = clWhite
@@ -1201,7 +1208,7 @@ object BankListF: TBankListF
     object Label6: TLabel
       Left = 717
       Top = 5
-      Width = 45
+      Width = 46
       Height = 17
       Anchors = [akTop, akRight]
       Caption = 'Solde :'
@@ -1214,7 +1221,6 @@ object BankListF: TBankListF
       ParentColor = False
       ParentFont = False
       StyleElements = []
-      ExplicitLeft = 886
     end
   end
   object StatuBar: TsStatusBar
@@ -1271,7 +1277,7 @@ object BankListF: TBankListF
       ShowHint = True
       Spacing = -2
       OnClick = PaidOnlyCaisseBtnClick
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object RefreshGirdBtn: TAdvToolButton
@@ -1305,7 +1311,7 @@ object BankListF: TBankListF
       ShowHint = True
       Spacing = -2
       OnClick = RefreshGirdBtnClick
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object AdvToolButton1: TAdvToolButton
@@ -1339,7 +1345,7 @@ object BankListF: TBankListF
       ShowHint = True
       Spacing = -2
       OnClick = AdvToolButton1Click
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object AdvToolButton2: TAdvToolButton
@@ -1373,7 +1379,7 @@ object BankListF: TBankListF
       ShowHint = True
       Spacing = -2
       OnClick = AdvToolButton2Click
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object AdvToolButton3: TAdvToolButton
@@ -1407,7 +1413,7 @@ object BankListF: TBankListF
       ShowHint = True
       Spacing = -2
       OnClick = AdvToolButton3Click
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object Panel8: TPanel
@@ -1546,7 +1552,7 @@ object BankListF: TBankListF
     Top = 480
   end
   object BAnkListfrxRprt: TfrxReport
-    Version = '5.4.6'
+    Version = '5.6.1'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]

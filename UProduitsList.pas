@@ -85,6 +85,9 @@ type
     Label28: TLabel;
     ApplicationEvents1: TApplicationEvents;
     ProduitListSaveDg: TSaveDialog;
+    ProduitMovementBtn: TAdvToolButton;
+    Panel1: TPanel;
+    ProduitMovementAllBtn: TAdvToolButton;
     procedure AddProduitsBtnClick(Sender: TObject);
     procedure ProduitsListDBGridEhMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
     procedure ProduitsListDBGridEhDrawColumnCell(Sender: TObject; const Rect: TRect; DataCol: Integer; Column: TColumnEh; State: TGridDrawState);
@@ -131,6 +134,10 @@ type
     procedure FormCreate(Sender: TObject);
     procedure ResearchProduitsEdtKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure ApplicationEvents1ShortCut(var Msg: TWMKey; var Handled: Boolean);
+    procedure ResearchProduitsEdtEnter(Sender: TObject);
+    procedure FormPaint(Sender: TObject);
+    procedure ProduitMovementBtnClick(Sender: TObject);
+    procedure ProduitMovementAllBtnClick(Sender: TObject);
   private
     procedure GettingData;
     procedure FilteredColor;
@@ -160,7 +167,7 @@ implementation
 
 uses
   MMSystem, Threading, UMainF, UProduitGestion, USplashPrinting, USplash,
-  UWorkingSplash, UComptoir;
+  UWorkingSplash, UComptoir, USplashPrintReport;
 
 {$R *.dfm}
 
@@ -171,7 +178,16 @@ begin
   MainForm.ProduitTable.DisableControls;
   MainForm.ProduitTable.Active := False;
   MainForm.ProduitTable.SQL.clear;
-  mainform.ProduitTable.sql.Text := 'SELECT * FROM produit ';
+  mainform.ProduitTable.sql.Text := 'SELECT *, '
+  +' ((prixht_p * tva_p)/100+ prixht_p ) AS PrixATTC, '
+  +' ((prixvd_p * tva_p)/100+ prixvd_p ) AS PrixVTTCD, '
+  +' ((prixvr_p * tva_p)/100+ prixvr_p ) AS PrixVTTCR, '
+  +' ((prixvg_p * tva_p)/100+ prixvg_p ) AS PrixVTTCG, '
+  +' ((prixva_p * tva_p)/100+ prixva_p ) AS PrixVTTCA, '
+  +' ((prixva2_p * tva_p)/100+ prixva2_p ) AS PrixVTTCA2, '
+  +' (qut_p + qutini_p ) AS QutDispo, '
+  +' ((qut_p + qutini_p) * prixht_p ) AS ValueStock '
+  +' FROM produit ';
   MainForm.ProduitTable.Active := True;
   MainForm.ProduitTable.EnableControls;
 end;
@@ -181,7 +197,16 @@ begin
   MainForm.ProduitTable.DisableControls;
   MainForm.ProduitTable.Active := False;
   MainForm.ProduitTable.SQL.clear;
-  mainform.ProduitTable.sql.Text := 'SELECT * FROM produit WHERE prixht_p <> ''0'' ';
+  mainform.ProduitTable.sql.Text := 'SELECT *, '
+  +' ((prixht_p * tva_p)/100+ prixht_p ) AS PrixATTC, '
+  +' ((prixvd_p * tva_p)/100+ prixvd_p ) AS PrixVTTCD, '
+  +' ((prixvr_p * tva_p)/100+ prixvr_p ) AS PrixVTTCR, '
+  +' ((prixvg_p * tva_p)/100+ prixvg_p ) AS PrixVTTCG, '
+  +' ((prixva_p * tva_p)/100+ prixva_p ) AS PrixVTTCA, '
+  +' ((prixva2_p * tva_p)/100+ prixva2_p ) AS PrixVTTCA2, '
+  +' (qut_p + qutini_p ) AS QutDispo, '
+  +' ((qut_p + qutini_p) * prixht_p ) AS ValueStock '
+  +' FROM produit WHERE prixht_p <> ''0'' ';
   MainForm.ProduitTable.Active := True;
   MainForm.ProduitTable.EnableControls;
 end;
@@ -191,7 +216,16 @@ begin
   MainForm.ProduitTable.DisableControls;
   MainForm.ProduitTable.Active := False;
   MainForm.ProduitTable.SQL.clear;
-  mainform.ProduitTable.sql.Text := 'SELECT * FROM produit WHERE prixht_p = ''0'' ';
+  mainform.ProduitTable.sql.Text := 'SELECT *, '
+  +' ((prixht_p * tva_p)/100+ prixht_p ) AS PrixATTC, '
+  +' ((prixvd_p * tva_p)/100+ prixvd_p ) AS PrixVTTCD, '
+  +' ((prixvr_p * tva_p)/100+ prixvr_p ) AS PrixVTTCR, '
+  +' ((prixvg_p * tva_p)/100+ prixvg_p ) AS PrixVTTCG, '
+  +' ((prixva_p * tva_p)/100+ prixva_p ) AS PrixVTTCA, '
+  +' ((prixva2_p * tva_p)/100+ prixva2_p ) AS PrixVTTCA2, '
+  +' (qut_p + qutini_p ) AS QutDispo, '
+  +' ((qut_p + qutini_p) * prixht_p ) AS ValueStock '
+  +' FROM produit WHERE prixht_p = ''0'' ';
   MainForm.ProduitTable.Active := True;
   MainForm.ProduitTable.EnableControls;
 end;
@@ -201,7 +235,16 @@ begin
   MainForm.ProduitTable.DisableControls;
   MainForm.ProduitTable.Active := False;
   MainForm.ProduitTable.SQL.clear;
-  mainform.ProduitTable.sql.Text := 'SELECT * FROM produit WHERE prixvd_p <> ''0'' OR prixvr_p <> ''0'' OR prixvg_p <> ''0'' OR prixva_p <> ''0'' OR prixva2_p <> ''0'' ';
+  mainform.ProduitTable.sql.Text := 'SELECT *, '
+  +' ((prixht_p * tva_p)/100+ prixht_p ) AS PrixATTC, '
+  +' ((prixvd_p * tva_p)/100+ prixvd_p ) AS PrixVTTCD, '
+  +' ((prixvr_p * tva_p)/100+ prixvr_p ) AS PrixVTTCR, '
+  +' ((prixvg_p * tva_p)/100+ prixvg_p ) AS PrixVTTCG, '
+  +' ((prixva_p * tva_p)/100+ prixva_p ) AS PrixVTTCA, '
+  +' ((prixva2_p * tva_p)/100+ prixva2_p ) AS PrixVTTCA2, '
+  +' (qut_p + qutini_p ) AS QutDispo, '
+  +' ((qut_p + qutini_p) * prixht_p ) AS ValueStock '
+  +' FROM produit WHERE prixvd_p <> ''0'' OR prixvr_p <> ''0'' OR prixvg_p <> ''0'' OR prixva_p <> ''0'' OR prixva2_p <> ''0'' ';
   MainForm.ProduitTable.Active := True;
   MainForm.ProduitTable.EnableControls;
 end;
@@ -211,7 +254,16 @@ begin
   MainForm.ProduitTable.DisableControls;
   MainForm.ProduitTable.Active := False;
   MainForm.ProduitTable.SQL.clear;
-  mainform.ProduitTable.sql.Text := 'SELECT * FROM produit WHERE prixvd_p = ''0'' AND prixvr_p = ''0'' AND prixvg_p = ''0'' AND prixva_p = ''0'' AND prixva2_p = ''0'' ';
+  mainform.ProduitTable.sql.Text := 'SELECT *, '
+  +' ((prixht_p * tva_p)/100+ prixht_p ) AS PrixATTC, '
+  +' ((prixvd_p * tva_p)/100+ prixvd_p ) AS PrixVTTCD, '
+  +' ((prixvr_p * tva_p)/100+ prixvr_p ) AS PrixVTTCR, '
+  +' ((prixvg_p * tva_p)/100+ prixvg_p ) AS PrixVTTCG, '
+  +' ((prixva_p * tva_p)/100+ prixva_p ) AS PrixVTTCA, '
+  +' ((prixva2_p * tva_p)/100+ prixva2_p ) AS PrixVTTCA2, '
+  +' (qut_p + qutini_p ) AS QutDispo, '
+  +' ((qut_p + qutini_p) * prixht_p ) AS ValueStock '
+  +' FROM produit WHERE prixvd_p = ''0'' AND prixvr_p = ''0'' AND prixvg_p = ''0'' AND prixva_p = ''0'' AND prixva2_p = ''0'' ';
   MainForm.ProduitTable.Active := True;
   MainForm.ProduitTable.EnableControls;
 end;
@@ -221,7 +273,16 @@ begin
   MainForm.ProduitTable.DisableControls;
   MainForm.ProduitTable.Active := False;
   MainForm.ProduitTable.SQL.clear;
-  mainform.ProduitTable.sql.Text := 'SELECT * FROM produit WHERE tva_p = ''0'' ';
+  mainform.ProduitTable.sql.Text := 'SELECT *, '
+  +' ((prixht_p * tva_p)/100+ prixht_p ) AS PrixATTC, '
+  +' ((prixvd_p * tva_p)/100+ prixvd_p ) AS PrixVTTCD, '
+  +' ((prixvr_p * tva_p)/100+ prixvr_p ) AS PrixVTTCR, '
+  +' ((prixvg_p * tva_p)/100+ prixvg_p ) AS PrixVTTCG, '
+  +' ((prixva_p * tva_p)/100+ prixva_p ) AS PrixVTTCA, '
+  +' ((prixva2_p * tva_p)/100+ prixva2_p ) AS PrixVTTCA2, '
+  +' (qut_p + qutini_p ) AS QutDispo, '
+  +' ((qut_p + qutini_p) * prixht_p ) AS ValueStock '
+  +' FROM produit WHERE tva_p = ''0'' ';
   MainForm.ProduitTable.Active := True;
   MainForm.ProduitTable.EnableControls;
 end;
@@ -231,7 +292,16 @@ begin
   MainForm.ProduitTable.DisableControls;
   MainForm.ProduitTable.Active := False;
   MainForm.ProduitTable.SQL.clear;
-  mainform.ProduitTable.sql.Text := 'SELECT * FROM produit WHERE tva_p = ''7'' ';
+  mainform.ProduitTable.sql.Text := 'SELECT *, '
+  +' ((prixht_p * tva_p)/100+ prixht_p ) AS PrixATTC, '
+  +' ((prixvd_p * tva_p)/100+ prixvd_p ) AS PrixVTTCD, '
+  +' ((prixvr_p * tva_p)/100+ prixvr_p ) AS PrixVTTCR, '
+  +' ((prixvg_p * tva_p)/100+ prixvg_p ) AS PrixVTTCG, '
+  +' ((prixva_p * tva_p)/100+ prixva_p ) AS PrixVTTCA, '
+  +' ((prixva2_p * tva_p)/100+ prixva2_p ) AS PrixVTTCA2, '
+  +' (qut_p + qutini_p ) AS QutDispo, '
+  +' ((qut_p + qutini_p) * prixht_p ) AS ValueStock '
+  +' FROM produit WHERE tva_p = ''9'' ';
   MainForm.ProduitTable.Active := True;
   MainForm.ProduitTable.EnableControls;
 end;
@@ -241,7 +311,16 @@ begin
   MainForm.ProduitTable.DisableControls;
   MainForm.ProduitTable.Active := False;
   MainForm.ProduitTable.SQL.clear;
-  mainform.ProduitTable.sql.Text := 'SELECT * FROM produit WHERE tva_p = ''19'' ';
+  mainform.ProduitTable.sql.Text := 'SELECT *, '
+  +' ((prixht_p * tva_p)/100+ prixht_p ) AS PrixATTC, '
+  +' ((prixvd_p * tva_p)/100+ prixvd_p ) AS PrixVTTCD, '
+  +' ((prixvr_p * tva_p)/100+ prixvr_p ) AS PrixVTTCR, '
+  +' ((prixvg_p * tva_p)/100+ prixvg_p ) AS PrixVTTCG, '
+  +' ((prixva_p * tva_p)/100+ prixva_p ) AS PrixVTTCA, '
+  +' ((prixva2_p * tva_p)/100+ prixva2_p ) AS PrixVTTCA2, '
+  +' (qut_p + qutini_p ) AS QutDispo, '
+  +' ((qut_p + qutini_p) * prixht_p ) AS ValueStock '
+  +' FROM produit WHERE tva_p = ''19'' ';
   MainForm.ProduitTable.Active := True;
   MainForm.ProduitTable.EnableControls;
 end;
@@ -256,7 +335,16 @@ begin
   MainForm.ProduitTable.DisableControls;
   MainForm.ProduitTable.Active := False;
   MainForm.ProduitTable.SQL.clear;
-  mainform.ProduitTable.sql.Text := 'SELECT * FROM produit WHERE (qut_p + qutini_p) > ''0'' ';
+  mainform.ProduitTable.sql.Text := 'SELECT *, '
+  +' ((prixht_p * tva_p)/100+ prixht_p ) AS PrixATTC, '
+  +' ((prixvd_p * tva_p)/100+ prixvd_p ) AS PrixVTTCD, '
+  +' ((prixvr_p * tva_p)/100+ prixvr_p ) AS PrixVTTCR, '
+  +' ((prixvg_p * tva_p)/100+ prixvg_p ) AS PrixVTTCG, '
+  +' ((prixva_p * tva_p)/100+ prixva_p ) AS PrixVTTCA, '
+  +' ((prixva2_p * tva_p)/100+ prixva2_p ) AS PrixVTTCA2, '
+  +' (qut_p + qutini_p ) AS QutDispo, '
+  +' ((qut_p + qutini_p) * prixht_p ) AS ValueStock '
+  +' FROM produit WHERE (qut_p + qutini_p) > ''0'' ';
   MainForm.ProduitTable.Active := True;
   MainForm.ProduitTable.EnableControls;
 
@@ -271,7 +359,16 @@ begin
   MainForm.ProduitTable.DisableControls;
   MainForm.ProduitTable.Active := False;
   MainForm.ProduitTable.SQL.clear;
-  mainform.ProduitTable.sql.Text := 'SELECT * FROM produit WHERE (qut_p + qutini_p) <= ''0'' ';
+  mainform.ProduitTable.sql.Text := 'SELECT *, '
+  +' ((prixht_p * tva_p)/100+ prixht_p ) AS PrixATTC, '
+  +' ((prixvd_p * tva_p)/100+ prixvd_p ) AS PrixVTTCD, '
+  +' ((prixvr_p * tva_p)/100+ prixvr_p ) AS PrixVTTCR, '
+  +' ((prixvg_p * tva_p)/100+ prixvg_p ) AS PrixVTTCG, '
+  +' ((prixva_p * tva_p)/100+ prixva_p ) AS PrixVTTCA, '
+  +' ((prixva2_p * tva_p)/100+ prixva2_p ) AS PrixVTTCA2, '
+  +' (qut_p + qutini_p ) AS QutDispo, '
+  +' ((qut_p + qutini_p) * prixht_p ) AS ValueStock '
+  +' FROM produit WHERE (qut_p + qutini_p) <= ''0'' ';
   MainForm.ProduitTable.Active := True;
   MainForm.ProduitTable.EnableControls;
 
@@ -341,11 +438,6 @@ begin
     ProduitsListDBGridEh.Columns[9].Visible := False;
     ProduitsListDBGridEh.Columns[10].Visible := False;
     ProduitsListDBGridEh.Columns[11].Visible := False;
-
-
-
-
-
 
 
    //thise is to back the same row if we didnt add anything
@@ -890,7 +982,7 @@ begin
   ClearRegleFilterBVLivPMenu.Checked := True;
   ClearMPFilterBVLivPMenu.Checked := True;
 
-  TVAFilterLbl.Caption := '7';
+  TVAFilterLbl.Caption := '9';
   TVAFilterLbl.Visible := True;
   sImage1.ImageIndex := 17;
   sImage1.Visible := True;
@@ -967,6 +1059,59 @@ end;
 procedure TProduitsListF.PreviosClientbtnClick(Sender: TObject);
 begin
   MainForm.ProduitTable.Prior;
+end;
+
+procedure TProduitsListF.ProduitMovementAllBtnClick(Sender: TObject);
+begin
+//-------- Show the splash screan for the Type de charge to add new one---------//
+    FSplashPrintReport:=TFSplashPrintReport.Create(ProduitsListF);
+    FSplashPrintReport.Image1.ImageIndex:=19;
+    FSplashPrintReport.ListClientFourGBtn.Visible:= False;
+    FSplashPrintReport.NameReportPCbx.Visible:= False;
+    FSplashPrintReport.RequiredStarAddCompteSLbl.Visible:= False;
+    FSplashPrintReport.Panel1.Caption:='Impression de Tous les Mouvements des Produits';
+    FSplashPrintReport.Panel1.Font.Height:= 22;
+    FSplashPrintReport.Label5.Caption:='S''il vous plaît entrer la période:';
+    FSplashPrintReport.Label5.Font.Height:= 20;
+    FSplashPrintReport.Label5.Left:= 150;
+    FSplashPrintReport.PreviewReportPBtn.Enabled := True;
+    FSplashPrintReport.PrintReportPBtn.Enabled:= True;
+    FSplashPrintReport.Tag:=3;
+
+    FSplashPrintReport.Left:=  (MainForm.Left + MainForm.Width div 2) - (FSplashPrintReport.Width div 2);
+    FSplashPrintReport.Top:=  MainForm.Top + 5 ;
+
+
+  AnimateWindow(FSplashPrintReport.Handle, 175, AW_VER_POSITIVE OR AW_SLIDE OR AW_ACTIVATE );
+  FSplashPrintReport.Show;
+end;
+
+procedure TProduitsListF.ProduitMovementBtnClick(Sender: TObject);
+begin
+//-------- Show the splash screan for the Type de charge to add new one---------//
+    FSplashPrintReport:=TFSplashPrintReport.Create(ProduitsListF);
+    FSplashPrintReport.Image1.ImageIndex:=18;
+    FSplashPrintReport.ListClientFourGBtn.ImageIndex:=62;
+    FSplashPrintReport.Panel1.Caption:='Impression de Mouvement de Produits';
+    FSplashPrintReport.Label5.Caption:='Produit:';
+    FSplashPrintReport.RequiredRegCGlbl.Caption:='S''il vous plaît entrer la Désignation de produit';
+    FSplashPrintReport.Tag:=2;
+
+
+    FSplashPrintReport.Left:=  (MainForm.Left + MainForm.Width div 2) - (FSplashPrintReport.Width div 2);
+    FSplashPrintReport.Top:=  MainForm.Top + 5 ;
+
+    if NOT (MainForm.ProduitTable.IsEmpty)
+    AND (MainForm.ProduitTable.FieldByName('code_p').AsInteger <> 0 ) then
+    begin
+
+      FSplashPrintReport.NameReportPCbx.Text:= MainForm.ProduitTable.FieldByName('nom_p').AsString;
+
+    end;
+
+
+  AnimateWindow(FSplashPrintReport.Handle, 175, AW_VER_POSITIVE OR AW_SLIDE OR AW_ACTIVATE );
+  FSplashPrintReport.Show;
 end;
 
 procedure TProduitsListF.ProduitsListDBGridEhDblClick(Sender: TObject);
@@ -1199,6 +1344,25 @@ begin
   MainForm.SQLQuery.SQL.Clear;
 end;
 
+procedure TProduitsListF.ResearchProduitsEdtEnter(Sender: TObject);
+var
+  KeyState: TKeyboardState;
+begin
+  if ResherchPARDCodProduitsRdioBtn.Checked then
+   begin
+    //turn on CapsLock when enter edit to make sure codebare read well
+    GetKeyboardState(KeyState);
+    if (KeyState[VK_CAPITAL]=0) then
+    begin
+      // Simulate a "CAPS LOCK" key release
+      Keybd_Event(VK_CAPITAL, 1, KEYEVENTF_EXTENDEDKEY or 0, 0);
+      // Simulate a "CAPS LOCK" key press
+      Keybd_Event(VK_CAPITAL, 1, KEYEVENTF_EXTENDEDKEY or KEYEVENTF_KEYUP, 0);
+    end;
+   end;
+
+end;
+
 procedure TProduitsListF.ResearchProduitsEdtKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
 begin
   if Key = VK_DOWN then
@@ -1320,6 +1484,52 @@ begin
 
     MainForm.LoadGridLayout(ProduitsListDBGridEh, GetCurrentDir + '\bin\gc_prdtlst');
   end;
+end;
+
+procedure TProduitsListF.FormPaint(Sender: TObject);
+begin
+  if MainForm.totaux_ur.Checked then
+      begin
+
+       SumGirdProduitBtn.Enabled:= True;
+
+      end else
+      begin
+
+       SumGirdProduitBtn.Enabled:= False;
+
+      end;
+
+      if MainForm.viewprixa_ur.Checked then
+      begin
+
+          ProduitsListDBGridEh.FieldColumns['prixht_p'].Visible:= true;
+          ProduitsListDBGridEh.FieldColumns['prixht_p'].MinWidth:= 120;
+          ProduitsListDBGridEh.FieldColumns['prixht_p'].Width:= 130;
+          ProduitsListDBGridEh.FieldColumns['prixht_p'].MaxWidth:= 0;
+
+          ProduitsListDBGridEh.FieldColumns['prixattc'].Visible:= true;
+          ProduitsListDBGridEh.FieldColumns['prixattc'].MinWidth:= 120;
+          ProduitsListDBGridEh.FieldColumns['prixattc'].Width:= 130;
+          ProduitsListDBGridEh.FieldColumns['prixattc'].MaxWidth:= 0;
+
+      end else
+      begin
+
+          ProduitsListDBGridEh.FieldColumns['prixht_p'].Visible:= false;
+          ProduitsListDBGridEh.FieldColumns['prixht_p'].MinWidth:= 0;
+          ProduitsListDBGridEh.FieldColumns['prixht_p'].Width:= 0;
+          ProduitsListDBGridEh.FieldColumns['prixht_p'].MaxWidth:= 1;
+
+
+          ProduitsListDBGridEh.FieldColumns['prixattc'].Visible:= false;
+          ProduitsListDBGridEh.FieldColumns['prixattc'].MinWidth:= 0;
+          ProduitsListDBGridEh.FieldColumns['prixattc'].Width:= 0;
+          ProduitsListDBGridEh.FieldColumns['prixattc'].MaxWidth:= 1;
+
+      end;
+
+
 end;
 
 procedure TProduitsListF.FormShow(Sender: TObject);

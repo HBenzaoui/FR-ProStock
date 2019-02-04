@@ -362,7 +362,6 @@ object BonRecF: TBonRecF
     HorzScrollBar.ExtraPanel.NavigatorButtons = [nbFirstEh, nbPriorEh, nbNextEh, nbLastEh, nbRefreshEh]
     HorzScrollBar.ExtraPanel.Visible = True
     HorzScrollBar.Height = 15
-    IndicatorOptions = [gioShowRowIndicatorEh]
     IndicatorParams.Color = clBtnFace
     IndicatorTitle.ShowDropDownSign = True
     IndicatorTitle.TitleButton = True
@@ -395,9 +394,12 @@ object BonRecF: TBonRecF
     OnDrawColumnCell = BARecListDBGridEhDrawColumnCell
     OnKeyDown = BARecListDBGridEhKeyDown
     OnKeyPress = BARecListDBGridEhKeyPress
+    OnSortMarkingChanged = BARecListDBGridEhSortMarkingChanged
+    OnTitleBtnClick = BARecListDBGridEhTitleBtnClick
     Columns = <
       item
         Alignment = taCenter
+        CellButtons = <>
         Checkboxes = False
         DynProps = <>
         EditButtons = <>
@@ -428,6 +430,7 @@ object BonRecF: TBonRecF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DynProps = <>
         EditButtons = <>
         FieldName = 'num_barec'
@@ -453,6 +456,7 @@ object BonRecF: TBonRecF
       end
       item
         Alignment = taCenter
+        CellButtons = <>
         DisplayFormat = 'DD/MM/YYY'
         DynProps = <>
         EditButtons = <>
@@ -479,6 +483,7 @@ object BonRecF: TBonRecF
       end
       item
         Alignment = taCenter
+        CellButtons = <>
         DisplayFormat = 'HH:MM:SS'
         DynProps = <>
         EditButtons = <>
@@ -504,6 +509,7 @@ object BonRecF: TBonRecF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DynProps = <>
         EditButtons = <>
         FieldName = 'fourbarec'
@@ -539,6 +545,7 @@ object BonRecF: TBonRecF
         WordWrap = False
       end
       item
+        CellButtons = <>
         Checkboxes = False
         DynProps = <>
         EditButtons = <>
@@ -572,6 +579,7 @@ object BonRecF: TBonRecF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
@@ -613,6 +621,7 @@ object BonRecF: TBonRecF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
@@ -649,10 +658,11 @@ object BonRecF: TBonRecF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
-        FieldName = 'NeTHT'
+        FieldName = 'netht'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
         Font.Height = 16
@@ -683,10 +693,11 @@ object BonRecF: TBonRecF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
-        FieldName = 'MontantTVA'
+        FieldName = 'montanttva'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
         Font.Height = 16
@@ -719,6 +730,7 @@ object BonRecF: TBonRecF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
@@ -754,6 +766,7 @@ object BonRecF: TBonRecF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
@@ -790,10 +803,11 @@ object BonRecF: TBonRecF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
-        FieldName = 'MontantRes'
+        FieldName = 'montantres'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
         Font.Height = 16
@@ -827,9 +841,10 @@ object BonRecF: TBonRecF
       end
       item
         Alignment = taCenter
+        CellButtons = <>
         DynProps = <>
         EditButtons = <>
-        FieldName = 'Agnet'
+        FieldName = 'Agent'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
         Font.Height = 16
@@ -838,7 +853,6 @@ object BonRecF: TBonRecF
         Footers = <>
         Layout = tlCenter
         Title.Alignment = taCenter
-        Title.Caption = 'Agent'
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = 4207405
         Title.Font.Height = 16
@@ -896,7 +910,7 @@ object BonRecF: TBonRecF
       ShowHint = True
       Spacing = -1
       OnClick = EditBARecBtnClick
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object DeleteBARecBtn: TAdvToolButton
@@ -928,7 +942,7 @@ object BonRecF: TBonRecF
       ShowHint = True
       Spacing = -2
       OnClick = DeleteBARecBtnClick
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object AddBARecBtn: TAdvToolButton
@@ -960,7 +974,7 @@ object BonRecF: TBonRecF
       ShowHint = True
       Spacing = -1
       OnClick = AddBARecBtnClick
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object ResearchBARecLbl: TLabel
@@ -982,7 +996,7 @@ object BonRecF: TBonRecF
     object Label1: TLabel
       Left = 315
       Top = 10
-      Width = 23
+      Width = 22
       Height = 18
       Caption = 'Du:'
       Color = 15722984
@@ -1092,7 +1106,7 @@ object BonRecF: TBonRecF
       Shaded = False
       ShowHint = True
       Spacing = -1
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object sImage1: TsImage
@@ -1419,7 +1433,7 @@ object BonRecF: TBonRecF
       ShowHint = True
       Spacing = -2
       OnClick = SumGirdBARecBtnClick
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object RefreshGirdBtn: TAdvToolButton
@@ -1453,7 +1467,7 @@ object BonRecF: TBonRecF
       ShowHint = True
       Spacing = -2
       OnClick = RefreshGirdBtnClick
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object AdvToolButton1: TAdvToolButton
@@ -1487,7 +1501,7 @@ object BonRecF: TBonRecF
       ShowHint = True
       Spacing = -2
       OnClick = AdvToolButton1Click
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object AdvToolButton2: TAdvToolButton
@@ -1521,7 +1535,7 @@ object BonRecF: TBonRecF
       ShowHint = True
       Spacing = -2
       OnClick = AdvToolButton2Click
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object AdvToolButton3: TAdvToolButton
@@ -1555,7 +1569,7 @@ object BonRecF: TBonRecF
       ShowHint = True
       Spacing = -2
       OnClick = AdvToolButton3Click
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object Panel5: TPanel
@@ -1694,14 +1708,14 @@ object BonRecF: TBonRecF
     Top = 480
   end
   object BonRecfrxRprt: TfrxReport
-    Version = '5.4.6'
+    Version = '5.6.1'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
     PreviewOptions.Zoom = 1.000000000000000000
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
-    ReportOptions.CreateDate = 42576.399521435200000000
+    ReportOptions.CreateDate = 42576.399521435210000000
     ReportOptions.LastChange = 42647.658829594900000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (

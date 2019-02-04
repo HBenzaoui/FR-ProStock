@@ -4,13 +4,13 @@ interface
 
 uses
   Winapi.Windows,MMSystem,  Winapi.Messages,DBGridEhImpExp,ShellAPI,
+  EhLibFireDAC,
    System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, DBGridEhGrouping, ToolCtrlsEh,
   DBGridEhToolCtrls, DynVarsEh, Data.DB, System.ImageList, Vcl.ImgList,
   acAlphaImageList, Vcl.ComCtrls, Vcl.StdCtrls, Vcl.WinXCtrls, Vcl.Buttons,
   sSpeedButton, AdvToolBtn, Vcl.ExtCtrls, EhLibVCL, GridsEh, DBAxisGridsEh,
-  DBGridEh,EhLibFireDAC,
-  System.DateUtils, frxClass, frxDBSet, frxExportPDF, frxExportXLS, Vcl.Menus,
+  DBGridEh, System.DateUtils, frxClass, frxDBSet, frxExportPDF, frxExportXLS, Vcl.Menus,
   acImage, sStatusBar ,IniFiles, Vcl.AppEvnts
   ;
 
@@ -125,6 +125,8 @@ type
     procedure ApplicationEvents1ShortCut(var Msg: TWMKey; var Handled: Boolean);
     procedure ResearchBVLivEdtKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
+    procedure BVLivListDBGridEhTitleBtnClick(Sender: TObject; ACol: Integer;
+      Column: TColumnEh);
   private
     procedure GettingData;
     procedure Select_ALL;
@@ -149,6 +151,15 @@ type
     { Private declarations }
   public
     { Public declarations }
+    const BLSQL= 'SELECT *, '
+    +'   ((montttc_bvliv)-(montht_bvliv - remise_bvliv)) AS MontantTVA,  '
+    +'   (montttc_bvliv - montver_bvliv) AS MontantRes, '
+    +'  CASE '
+    +'     WHEN remise_bvliv <> ''0'' AND montht_bvliv <> ''0'' THEN  ROUND( CAST (((remise_bvliv / montht_bvliv) * 100) as NUMERIC),2) '
+    +'     ELSE ''0'' '                                                                                                                
+    +'  END AS RemisePerc,  '                                                                                                       
+    +'   (montht_bvliv - remise_bvliv) AS NeTHT '
+    +' FROM bonv_liv ' ;
   end;
 
 var
@@ -169,7 +180,7 @@ begin
 MainForm.Bonv_livTable.DisableControls;
 MainForm.Bonv_livTable.Active:= False;
 MainForm.Bonv_livTable.SQL.clear;
-mainform.Bonv_livTable.sql.Text:='SELECT * FROM bonv_liv WHERE date_bvliv BETWEEN '''+(DateToStr(DateStartBVLivD.Date))+ ''' AND ''' +(DateToStr(DateEndBVLivD.Date))+'''';
+mainform.Bonv_livTable.sql.Text:= BLSQL +' WHERE date_bvliv BETWEEN '''+(DateToStr(DateStartBVLivD.Date))+ ''' AND ''' +(DateToStr(DateEndBVLivD.Date))+'''';
 MainForm.Bonv_livTable.Active:= True;
 MainForm.Bonv_livTable.EnableControls;
 end;
@@ -179,7 +190,7 @@ begin
 MainForm.Bonv_livTable.DisableControls;
 MainForm.Bonv_livTable.Active:= False;
 MainForm.Bonv_livTable.SQL.clear;
-mainform.Bonv_livTable.sql.Text:='SELECT * FROM bonv_liv WHERE valider_bvliv = true AND date_bvliv BETWEEN '''+(DateToStr(DateStartBVLivD.Date))+ ''' AND ''' +(DateToStr(DateEndBVLivD.Date))+'''';
+mainform.Bonv_livTable.sql.Text:= BLSQL +' WHERE valider_bvliv = true AND date_bvliv BETWEEN '''+(DateToStr(DateStartBVLivD.Date))+ ''' AND ''' +(DateToStr(DateEndBVLivD.Date))+'''';
 MainForm.Bonv_livTable.Active:= True;
 MainForm.Bonv_livTable.EnableControls;
 end;
@@ -189,7 +200,7 @@ begin
 MainForm.Bonv_livTable.DisableControls;
 MainForm.Bonv_livTable.Active:= False;
 MainForm.Bonv_livTable.SQL.clear;
-mainform.Bonv_livTable.sql.Text:='SELECT * FROM bonv_liv WHERE valider_bvliv = false AND date_bvliv BETWEEN '''+(DateToStr(DateStartBVLivD.Date))+ ''' AND ''' +(DateToStr(DateEndBVLivD.Date))+'''';
+mainform.Bonv_livTable.sql.Text:= BLSQL +' WHERE valider_bvliv = false AND date_bvliv BETWEEN '''+(DateToStr(DateStartBVLivD.Date))+ ''' AND ''' +(DateToStr(DateEndBVLivD.Date))+'''';
 MainForm.Bonv_livTable.Active:= True;
 MainForm.Bonv_livTable.EnableControls;
 end;
@@ -199,7 +210,7 @@ begin
 MainForm.Bonv_livTable.DisableControls;
 MainForm.Bonv_livTable.Active:= False;
 MainForm.Bonv_livTable.SQL.clear;
-mainform.Bonv_livTable.sql.Text:='SELECT * FROM bonv_liv WHERE code_mdpai = 1 AND date_bvliv BETWEEN '''+(DateToStr(DateStartBVLivD.Date))+ ''' AND ''' +(DateToStr(DateEndBVLivD.Date))+'''';
+mainform.Bonv_livTable.sql.Text:= BLSQL +' WHERE code_mdpai = 1 AND date_bvliv BETWEEN '''+(DateToStr(DateStartBVLivD.Date))+ ''' AND ''' +(DateToStr(DateEndBVLivD.Date))+'''';
 MainForm.Bonv_livTable.Active:= True;
 MainForm.Bonv_livTable.EnableControls;
 end;
@@ -209,7 +220,7 @@ begin
 MainForm.Bonv_livTable.DisableControls;
 MainForm.Bonv_livTable.Active:= False;
 MainForm.Bonv_livTable.SQL.clear;
-mainform.Bonv_livTable.sql.Text:='SELECT * FROM bonv_liv WHERE code_mdpai = 2 AND date_bvliv BETWEEN '''+(DateToStr(DateStartBVLivD.Date))+ ''' AND ''' +(DateToStr(DateEndBVLivD.Date))+'''';
+mainform.Bonv_livTable.sql.Text:= BLSQL +' WHERE code_mdpai = 2 AND date_bvliv BETWEEN '''+(DateToStr(DateStartBVLivD.Date))+ ''' AND ''' +(DateToStr(DateEndBVLivD.Date))+'''';
 MainForm.Bonv_livTable.Active:= True;
 MainForm.Bonv_livTable.EnableControls;
 end;
@@ -219,7 +230,7 @@ begin
 MainForm.Bonv_livTable.DisableControls;
 MainForm.Bonv_livTable.Active:= False;
 MainForm.Bonv_livTable.SQL.clear;
-mainform.Bonv_livTable.sql.Text:='SELECT * FROM bonv_liv WHERE code_mdpai = 3 AND date_bvliv BETWEEN '''+(DateToStr(DateStartBVLivD.Date))+ ''' AND ''' +(DateToStr(DateEndBVLivD.Date))+'''';
+mainform.Bonv_livTable.sql.Text:= BLSQL +' WHERE code_mdpai = 3 AND date_bvliv BETWEEN '''+(DateToStr(DateStartBVLivD.Date))+ ''' AND ''' +(DateToStr(DateEndBVLivD.Date))+'''';
 MainForm.Bonv_livTable.Active:= True;
 MainForm.Bonv_livTable.EnableControls;
 end;
@@ -229,7 +240,7 @@ begin
 MainForm.Bonv_livTable.DisableControls;
 MainForm.Bonv_livTable.Active:= False;
 MainForm.Bonv_livTable.SQL.clear;
-mainform.Bonv_livTable.sql.Text:='SELECT * FROM bonv_liv WHERE code_mdpai = 4 AND date_bvliv BETWEEN '''+(DateToStr(DateStartBVLivD.Date))+ ''' AND ''' +(DateToStr(DateEndBVLivD.Date))+'''';
+mainform.Bonv_livTable.sql.Text:= BLSQL +' WHERE code_mdpai = 4 AND date_bvliv BETWEEN '''+(DateToStr(DateStartBVLivD.Date))+ ''' AND ''' +(DateToStr(DateEndBVLivD.Date))+'''';
 MainForm.Bonv_livTable.Active:= True;
 MainForm.Bonv_livTable.EnableControls;
 end;
@@ -239,7 +250,7 @@ begin
 MainForm.Bonv_livTable.DisableControls;
 MainForm.Bonv_livTable.Active:= False;
 MainForm.Bonv_livTable.SQL.clear;
-mainform.Bonv_livTable.sql.Text:='SELECT * FROM bonv_liv WHERE valider_bvliv = true AND code_mdpai = 1 AND date_bvliv BETWEEN '''+(DateToStr(DateStartBVLivD.Date))+ ''' AND ''' +(DateToStr(DateEndBVLivD.Date))+'''';
+mainform.Bonv_livTable.sql.Text:= BLSQL +' WHERE valider_bvliv = true AND code_mdpai = 1 AND date_bvliv BETWEEN '''+(DateToStr(DateStartBVLivD.Date))+ ''' AND ''' +(DateToStr(DateEndBVLivD.Date))+'''';
 MainForm.Bonv_livTable.Active:= True;
 MainForm.Bonv_livTable.EnableControls;
 end;
@@ -249,7 +260,7 @@ begin
 MainForm.Bonv_livTable.DisableControls;
 MainForm.Bonv_livTable.Active:= False;
 MainForm.Bonv_livTable.SQL.clear;
-mainform.Bonv_livTable.sql.Text:='SELECT * FROM bonv_liv WHERE valider_bvliv = true AND code_mdpai = 2 AND date_bvliv BETWEEN '''+(DateToStr(DateStartBVLivD.Date))+ ''' AND ''' +(DateToStr(DateEndBVLivD.Date))+'''';
+mainform.Bonv_livTable.sql.Text:= BLSQL +' WHERE valider_bvliv = true AND code_mdpai = 2 AND date_bvliv BETWEEN '''+(DateToStr(DateStartBVLivD.Date))+ ''' AND ''' +(DateToStr(DateEndBVLivD.Date))+'''';
 MainForm.Bonv_livTable.Active:= True;
 MainForm.Bonv_livTable.EnableControls;
 end;
@@ -259,7 +270,7 @@ begin
 MainForm.Bonv_livTable.DisableControls;
 MainForm.Bonv_livTable.Active:= False;
 MainForm.Bonv_livTable.SQL.clear;
-mainform.Bonv_livTable.sql.Text:='SELECT * FROM bonv_liv WHERE valider_bvliv = true AND code_mdpai = 3 AND date_bvliv BETWEEN '''+(DateToStr(DateStartBVLivD.Date))+ ''' AND ''' +(DateToStr(DateEndBVLivD.Date))+'''';
+mainform.Bonv_livTable.sql.Text:= BLSQL +' WHERE valider_bvliv = true AND code_mdpai = 3 AND date_bvliv BETWEEN '''+(DateToStr(DateStartBVLivD.Date))+ ''' AND ''' +(DateToStr(DateEndBVLivD.Date))+'''';
 MainForm.Bonv_livTable.Active:= True;
 MainForm.Bonv_livTable.EnableControls;
 end;
@@ -269,7 +280,7 @@ begin
 MainForm.Bonv_livTable.DisableControls;
 MainForm.Bonv_livTable.Active:= False;
 MainForm.Bonv_livTable.SQL.clear;
-mainform.Bonv_livTable.sql.Text:='SELECT * FROM bonv_liv WHERE valider_bvliv = true AND code_mdpai = 4 AND date_bvliv BETWEEN '''+(DateToStr(DateStartBVLivD.Date))+ ''' AND ''' +(DateToStr(DateEndBVLivD.Date))+'''';
+mainform.Bonv_livTable.sql.Text:= BLSQL +' WHERE valider_bvliv = true AND code_mdpai = 4 AND date_bvliv BETWEEN '''+(DateToStr(DateStartBVLivD.Date))+ ''' AND ''' +(DateToStr(DateEndBVLivD.Date))+'''';
 MainForm.Bonv_livTable.Active:= True;
 MainForm.Bonv_livTable.EnableControls;
 end;
@@ -279,7 +290,7 @@ begin
 MainForm.Bonv_livTable.DisableControls;
 MainForm.Bonv_livTable.Active:= False;
 MainForm.Bonv_livTable.SQL.clear;
-mainform.Bonv_livTable.sql.Text:='SELECT * FROM bonv_liv WHERE valider_bvliv = false AND code_mdpai = 1';
+mainform.Bonv_livTable.sql.Text:= BLSQL +' WHERE valider_bvliv = false AND code_mdpai = 1';
 MainForm.Bonv_livTable.Active:= True;
 MainForm.Bonv_livTable.EnableControls;
 end;
@@ -289,7 +300,7 @@ begin
 MainForm.Bonv_livTable.DisableControls;
 MainForm.Bonv_livTable.Active:= False;
 MainForm.Bonv_livTable.SQL.clear;
-mainform.Bonv_livTable.sql.Text:='SELECT * FROM bonv_liv WHERE valider_bvliv = false AND code_mdpai = 2 AND date_bvliv BETWEEN '''+(DateToStr(DateStartBVLivD.Date))+ ''' AND ''' +(DateToStr(DateEndBVLivD.Date))+'''';
+mainform.Bonv_livTable.sql.Text:= BLSQL +' WHERE valider_bvliv = false AND code_mdpai = 2 AND date_bvliv BETWEEN '''+(DateToStr(DateStartBVLivD.Date))+ ''' AND ''' +(DateToStr(DateEndBVLivD.Date))+'''';
 MainForm.Bonv_livTable.Active:= True;
 MainForm.Bonv_livTable.EnableControls;
 end;
@@ -299,7 +310,7 @@ begin
 MainForm.Bonv_livTable.DisableControls;
 MainForm.Bonv_livTable.Active:= False;
 MainForm.Bonv_livTable.SQL.clear;
-mainform.Bonv_livTable.sql.Text:='SELECT * FROM bonv_liv WHERE valider_bvliv = false AND code_mdpai = 3 AND date_bvliv BETWEEN '''+(DateToStr(DateStartBVLivD.Date))+ ''' AND ''' +(DateToStr(DateEndBVLivD.Date))+'''';
+mainform.Bonv_livTable.sql.Text:= BLSQL +' WHERE valider_bvliv = false AND code_mdpai = 3 AND date_bvliv BETWEEN '''+(DateToStr(DateStartBVLivD.Date))+ ''' AND ''' +(DateToStr(DateEndBVLivD.Date))+'''';
 MainForm.Bonv_livTable.Active:= True;
 MainForm.Bonv_livTable.EnableControls;
 end;
@@ -309,7 +320,7 @@ begin
 MainForm.Bonv_livTable.DisableControls;
 MainForm.Bonv_livTable.Active:= False;
 MainForm.Bonv_livTable.SQL.clear;
-mainform.Bonv_livTable.sql.Text:='SELECT * FROM bonv_liv WHERE valider_bvliv = false AND code_mdpai = 4 AND date_bvliv BETWEEN '''+(DateToStr(DateStartBVLivD.Date))+ ''' AND ''' +(DateToStr(DateEndBVLivD.Date))+'''';
+mainform.Bonv_livTable.sql.Text:= BLSQL +' WHERE valider_bvliv = false AND code_mdpai = 4 AND date_bvliv BETWEEN '''+(DateToStr(DateStartBVLivD.Date))+ ''' AND ''' +(DateToStr(DateEndBVLivD.Date))+'''';
 MainForm.Bonv_livTable.Active:= True;
 MainForm.Bonv_livTable.EnableControls;
 end;
@@ -402,7 +413,7 @@ begin
           MainForm.Bonv_livTable.DisableControls;
           MainForm.Bonv_livTable.Active:=False;
           MainForm.Bonv_livTable.SQL.Clear;
-          MainForm.Bonv_livTable.SQL.Text:='SELECT * FROM bonv_liv WHERE code_c IN( SELECT code_c FROM client WHERE LOWER(nom_c) LIKE LOWER' +'('''+'%'+(ResearchBVLIVEdt.Text)+'%'+''')' +')';
+          MainForm.Bonv_livTable.SQL.Text:= BLSQL +' WHERE code_c IN( SELECT code_c FROM client WHERE LOWER(nom_c) LIKE LOWER' +'('''+'%'+(ResearchBVLIVEdt.Text)+'%'+''')' +')';
           MainForm.Bonv_livTable.Active:=True;
           MainForm.Bonv_livTable.EnableControls;
 
@@ -413,7 +424,7 @@ begin
           MainForm.Bonv_livTable.DisableControls;
           MainForm.Bonv_livTable.Active:=False;
           MainForm.Bonv_livTable.SQL.Clear;
-          MainForm.Bonv_livTable.SQL.Text:='SELECT * FROM bonv_liv WHERE LOWER(num_bvliv) LIKE LOWER' +'('''+'%'+(ResearchBVLIVEdt.Text)+'%'+''')' ;
+          MainForm.Bonv_livTable.SQL.Text:= BLSQL +' WHERE LOWER(num_bvliv) LIKE LOWER' +'('''+'%'+(ResearchBVLIVEdt.Text)+'%'+''')' ;
           MainForm.Bonv_livTable.Active:=True;
           MainForm.Bonv_livTable.EnableControls;
           end;
@@ -431,7 +442,7 @@ begin
           MainForm.Bonv_livTable.DisableControls;
           MainForm.Bonv_livTable.Active:=False;
           MainForm.Bonv_livTable.SQL.Clear;
-          MainForm.Bonv_livTable.SQL.Text:='SELECT * FROM bonv_liv ' ;
+          MainForm.Bonv_livTable.SQL.Text:= BLSQL ;
           MainForm.Bonv_livTable.Active:=True;
           MainForm.Bonv_livTable.EnableControls;
 
@@ -482,7 +493,7 @@ begin
           MainForm.Bonv_livTable.DisableControls;
           MainForm.Bonv_livTable.Active:=False;
           MainForm.Bonv_livTable.SQL.Clear;
-          MainForm.Bonv_livTable.SQL.Text:='SELECT * FROM bonv_liv WHERE code_c IN( SELECT code_c FROM client WHERE LOWER(nom_c) LIKE LOWER' +'('''+(ResearchBVLIVEdt.Text+'%')+''')' +')';
+          MainForm.Bonv_livTable.SQL.Text:= BLSQL +' WHERE code_c IN( SELECT code_c FROM client WHERE LOWER(nom_c) LIKE LOWER' +'('''+(ResearchBVLIVEdt.Text+'%')+''')' +')';
           MainForm.Bonv_livTable.Active:=True;
           MainForm.Bonv_livTable.EnableControls;
 
@@ -493,7 +504,7 @@ begin
           MainForm.Bonv_livTable.DisableControls;
           MainForm.Bonv_livTable.Active:=False;
           MainForm.Bonv_livTable.SQL.Clear;
-          MainForm.Bonv_livTable.SQL.Text:='SELECT * FROM bonv_liv WHERE LOWER(num_bvliv) LIKE LOWER' +'('''+(ResearchBVLIVEdt.Text+'%')+''')' ;
+          MainForm.Bonv_livTable.SQL.Text:= BLSQL +' WHERE LOWER(num_bvliv) LIKE LOWER' +'('''+(ResearchBVLIVEdt.Text+'%')+''')' ;
           MainForm.Bonv_livTable.Active:=True;
           MainForm.Bonv_livTable.EnableControls;
           end;
@@ -511,7 +522,7 @@ begin
           MainForm.Bonv_livTable.DisableControls;
           MainForm.Bonv_livTable.Active:=False;
           MainForm.Bonv_livTable.SQL.Clear;
-          MainForm.Bonv_livTable.SQL.Text:='SELECT * FROM bonv_liv ' ;
+          MainForm.Bonv_livTable.SQL.Text:= BLSQL ;
           MainForm.Bonv_livTable.Active:=True;
           MainForm.Bonv_livTable.EnableControls;
 
@@ -628,7 +639,7 @@ MainForm.Bonv_liv_listTable.IndexFieldNames:='';
 MainForm.Bonv_livTable.DisableControls;
 MainForm.Bonv_livTable.Active:= False;
 MainForm.Bonv_livTable.SQL.clear;
-mainform.Bonv_livTable.sql.Text:='SELECT * FROM bonv_liv ';
+mainform.Bonv_livTable.sql.Text:= BLSQL + ' ORDER By code_bvliv ';
 MainForm.Bonv_livTable.Active:= True;
 //MainForm.Bonv_livTable.EnableControls;
 
@@ -654,12 +665,12 @@ codeBL:= 0;
           begin
             MainForm.Bonv_livTable.Last;
             codeBL := MainForm.Bonv_livTable.FieldValues['code_bvliv'];
-            MainForm.Bonv_liv_listTable.Active:=False;
-            MainForm.Bonv_liv_listTable.SQL.Clear;
-            MainForm.Bonv_liv_listTable.SQL.Text:= 'SELECT * FROM bonv_liv_list WHERE code_bvliv = ' + QuotedStr(IntToStr(codeBL));
-            MainForm.Bonv_liv_listTable.Active:=True;
+            MainForm.SQLQuery.Active:=False;    // if soemthig went wrong change it  back to Bonv_liv_listTable
+            MainForm.SQLQuery.SQL.Clear;
+            MainForm.SQLQuery.SQL.Text:= 'SELECT code_bvliv FROM bonv_liv_list WHERE code_bvliv = ' + IntToStr(codeBL);
+            MainForm.SQLQuery.Active:=True;
 
-           if MainForm.Bonv_liv_listTable.RecordCount <= 0 then
+           if MainForm.SQLQuery.RecNo <= 0 then
            begin
         //   MainForm.Bonv_livTable.Last;
            codeBL := MainForm.Bonv_livTable.FieldValues['code_bvliv'];
@@ -685,12 +696,15 @@ codeBL:= 0;
             BonLivGestionF.ProduitsListDBGridEh.DataSource.DataSet.EnableControls;
           end;
 
+      MainForm.Bonv_liv_listTable.IndexFieldNames:='code_bvliv';
       MainForm.Bonv_liv_listTable.Active:=False;
       MainForm.Bonv_liv_listTable.SQL.Clear;
-      MainForm.Bonv_liv_listTable.SQL.Text:= 'SELECT * FROM bonv_liv_list';
+      MainForm.Bonv_liv_listTable.SQL.Text:= BonLivGestionF.BLLSQL;
       MainForm.Bonv_liv_listTable.Active:=True;
 
-MainForm.Bonv_liv_listTable.IndexFieldNames:='code_bvliv';
+       MainForm.SQLQuery.Active:=False;
+       MainForm.SQLQuery.SQL.Clear;
+
 //MainForm.Bonv_liv_listTable.Refresh;
        BonLivGestionF.Tag:= 0;
        BonLivGestionF.ShowModal;
@@ -706,7 +720,7 @@ MainForm.Bonv_liv_listTable.IndexFieldNames:='code_bvliv';
 //       MainForm.Bonv_livTable.DisableControls;
 MainForm.Bonv_livTable.Active:= False;
 MainForm.Bonv_livTable.SQL.clear;
-mainform.Bonv_livTable.sql.Text:='SELECT * FROM bonv_liv WHERE date_bvliv BETWEEN '''+(DateToStr(DateStartBVLivD.Date))+ ''' AND ''' +(DateToStr(DateEndBVLivD.Date))+'''';
+mainform.Bonv_livTable.sql.Text:= BLSQL +' WHERE date_bvliv BETWEEN '''+(DateToStr(DateStartBVLivD.Date))+ ''' AND ''' +(DateToStr(DateEndBVLivD.Date))+'''';
 MainForm.Bonv_livTable.Active:= True;
 MainForm.Bonv_livTable.Last;
 MainForm.Bonv_livTable.EnableControls;
@@ -830,6 +844,7 @@ begin
 //       MainForm.Bonv_livTable.Refresh;
        BonLivGestionF.NumBonLivGEdt.Caption := MainForm.Bonv_livTable.FieldByName('num_bvliv').AsString;
        BonLivGestionF.DateBonLivGD.Date:= MainForm.Bonv_livTable.FieldValues['date_bvliv'];
+       BonLivGestionF.ObserBonLivGMem.Lines.Text := MainForm.Bonv_livTable.FieldByName('obser_bvliv').AsString;
        if (MainForm.Bonv_livTable.FieldValues['code_c']<> null) and (MainForm.Bonv_livTable.FieldValues['code_c']<> 0) then
        begin
        CodeC:=MainForm.Bonv_livTable.FieldValues['code_c'];
@@ -1057,6 +1072,12 @@ begin
 BVLivListDBGridEh.DefaultApplySorting;
 end;
 
+procedure TBonLivF.BVLivListDBGridEhTitleBtnClick(Sender: TObject;
+  ACol: Integer; Column: TColumnEh);
+begin
+    MainForm.Bonv_livTable.IndexesActive := false;
+end;
+
 procedure TBonLivF.ChequeMPFilterBVLivPMenuClick(Sender: TObject);
 begin  
 FilterBVLivBtn.ImageIndex:=50;
@@ -1233,7 +1254,7 @@ ClearFilterBVLivPMenuClick(Sender);
 MainForm.Bonv_livTable.DisableControls;
 MainForm.Bonv_livTable.Active:= False;
 MainForm.Bonv_livTable.SQL.clear;
-mainform.Bonv_livTable.sql.Text:='SELECT * FROM bonv_liv WHERE date_bvliv BETWEEN '''+(DateToStr(DateStartBVLivD.Date))+ ''' AND ''' +(DateToStr(DateEndBVLivD.Date))+'''';
+mainform.Bonv_livTable.sql.Text:= BLSQL +' WHERE date_bvliv BETWEEN '''+(DateToStr(DateStartBVLivD.Date))+ ''' AND ''' +(DateToStr(DateEndBVLivD.Date))+'''';
 MainForm.Bonv_livTable.Active:= True;
 MainForm.Bonv_livTable.EnableControls;
 end;
@@ -1498,6 +1519,38 @@ begin
         MainForm.ClientTable.SQL.Text:='SELECT * FROM client ';
         MainForm.ClientTable.Active:=True;
         MainForm.ClientTable.EnableControls;
+
+
+      if MainForm.totaux_ur.Checked then
+      begin
+
+       SumGirdBBVlivBtn.Enabled:= True;
+
+      end else
+      begin
+
+       SumGirdBBVlivBtn.Enabled:= False;
+
+      end;
+
+
+      if MainForm.viewprixa_ur.Checked then
+      begin
+
+          BVLivListDBGridEh.FieldColumns['montaht_bvliv'].Visible:= true;
+          BVLivListDBGridEh.FieldColumns['montaht_bvliv'].MinWidth:= 150;
+          BVLivListDBGridEh.FieldColumns['montaht_bvliv'].Width:= 150;
+          BVLivListDBGridEh.FieldColumns['montaht_bvliv'].MaxWidth:= 0;
+
+      end else
+      begin
+
+          BVLivListDBGridEh.FieldColumns['montaht_bvliv'].Visible:= false;
+          BVLivListDBGridEh.FieldColumns['montaht_bvliv'].MinWidth:= 0;
+          BVLivListDBGridEh.FieldColumns['montaht_bvliv'].Width:= 0;
+          BVLivListDBGridEh.FieldColumns['montaht_bvliv'].MaxWidth:= 1;
+
+      end;
 end;
 
 end.

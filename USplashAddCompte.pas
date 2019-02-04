@@ -86,7 +86,7 @@ begin
                UForm := TForm.Create(uScrnFrm);
                UForm.WindowState:= wsMaximized;
                gGrayForms.Add(UForm);
-               UForm.Position := poOwnerFormCenter;
+               UForm.Position := MainForm.Position;
                UForm.AlphaBlend := true;
                UForm.AlphaBlendValue := 80;
                UForm.Color := clBlack;

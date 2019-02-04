@@ -99,7 +99,7 @@ object PertesGestionF: TPertesGestionF
   object PerteGLbl: TLabel
     Left = 31
     Top = 126
-    Width = 62
+    Width = 60
     Height = 18
     Caption = 'Quantit'#233':'
     Color = 4207405
@@ -141,13 +141,13 @@ object PertesGestionF: TPertesGestionF
     ShowHint = True
     Spacing = -1
     OnClick = AddTypePerteGBtnClick
-    Version = '1.6.1.2'
+    Version = '1.6.2.0'
     TMSStyle = 0
   end
   object Label1: TLabel
     Left = 336
     Top = 125
-    Width = 38
+    Width = 35
     Height = 18
     Caption = 'Type:'
     Color = 4207405
@@ -163,7 +163,7 @@ object PertesGestionF: TPertesGestionF
   object NamePerteGLbl: TLabel
     Left = 9
     Top = 73
-    Width = 84
+    Width = 81
     Height = 17
     Caption = 'Les Produits:'
     Color = 4207405
@@ -179,7 +179,7 @@ object PertesGestionF: TPertesGestionF
   object ObserPerteGLbl: TLabel
     Left = 5
     Top = 232
-    Width = 88
+    Width = 86
     Height = 17
     Caption = 'Observations:'
     Color = 4207405
@@ -211,7 +211,7 @@ object PertesGestionF: TPertesGestionF
   object Label2: TLabel
     Left = 285
     Top = 351
-    Width = 109
+    Width = 106
     Height = 18
     Caption = 'Nouveau Stock:'
     Color = 4207405
@@ -227,7 +227,7 @@ object PertesGestionF: TPertesGestionF
   object RefPerteGLbl: TLabel
     Left = 32
     Top = 25
-    Width = 61
+    Width = 60
     Height = 18
     Caption = 'Perte N'#176':'
     Color = 4207405
@@ -286,7 +286,7 @@ object PertesGestionF: TPertesGestionF
     ShowHint = True
     Spacing = -1
     OnClick = ListAddProduitPerteGBtnClick
-    Version = '1.6.1.2'
+    Version = '1.6.2.0'
     TMSStyle = 0
   end
   object AdvToolButton1: TAdvToolButton
@@ -317,7 +317,7 @@ object PertesGestionF: TPertesGestionF
     Shaded = False
     ShowHint = True
     Spacing = -1
-    Version = '1.6.1.2'
+    Version = '1.6.2.0'
     TMSStyle = 0
   end
   object RequiredStarPerteGLbl: TLabel
@@ -339,7 +339,7 @@ object PertesGestionF: TPertesGestionF
   object Label3: TLabel
     Left = 7
     Top = 303
-    Width = 86
+    Width = 84
     Height = 18
     Caption = 'Montant.HT:'
     Color = 4207405
@@ -355,7 +355,7 @@ object PertesGestionF: TPertesGestionF
   object Label4: TLabel
     Left = 293
     Top = 303
-    Width = 101
+    Width = 100
     Height = 18
     Caption = 'Monatant.TTC:'
     Color = 4207405
@@ -397,13 +397,13 @@ object PertesGestionF: TPertesGestionF
     ShowHint = True
     Spacing = -1
     OnClick = AddProduitPerteGBtnClick
-    Version = '1.6.1.2'
+    Version = '1.6.2.0'
     TMSStyle = 0
   end
   object Label6: TLabel
     Left = 26
     Top = 179
-    Width = 68
+    Width = 67
     Height = 18
     Caption = 'Prix.A.HT:'
     Color = 4207405
@@ -564,7 +564,7 @@ object PertesGestionF: TPertesGestionF
       ShowHint = True
       Spacing = 10
       OnClick = OKPerteGBtnClick
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object CancelPerteGBtn: TAdvToolButton
@@ -595,7 +595,7 @@ object PertesGestionF: TPertesGestionF
       ShowHint = True
       Spacing = -1
       OnClick = CancelPerteGBtnClick
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
   end

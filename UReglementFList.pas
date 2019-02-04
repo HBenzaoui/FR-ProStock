@@ -4,6 +4,7 @@ interface
 
 uses
   Winapi.Windows,DateUtils, DBGridEhImpExp,ShellAPI,
+  EhLibFireDAC,
    Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, DBGridEhGrouping, ToolCtrlsEh,
   DBGridEhToolCtrls, DynVarsEh, Data.DB, EhLibVCL, GridsEh, DBAxisGridsEh,
@@ -72,6 +73,7 @@ type
     Label28: TLabel;
     ApplicationEvents1: TApplicationEvents;
     ProduitListSaveDg: TSaveDialog;
+    RglementFournisseur1: TMenuItem;
     procedure AddBARecBtnClick(Sender: TObject);
     procedure EditBARecBtnClick(Sender: TObject);
     procedure DeleteBARecBtnClick(Sender: TObject);
@@ -111,6 +113,8 @@ type
     procedure ResearchRegFEdtKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure ApplicationEvents1ShortCut(var Msg: TWMKey; var Handled: Boolean);
+    procedure RglementFournisseur1Click(Sender: TObject);
+    procedure BARecListDBGridEhSortMarkingChanged(Sender: TObject);
   private
     procedure GettingData;
     procedure FilteredColor;
@@ -123,6 +127,7 @@ type
     procedure Select_MP_Cheque;
     procedure Select_MP_Escpace;
     procedure Select_MP_Virment;
+    procedure Select_RF;
     { Private declarations }
   public
     { Public declarations }
@@ -177,6 +182,16 @@ MainForm.RegfournisseurTable.Active:= True;
 MainForm.RegfournisseurTable.EnableControls;
 end;
 
+
+procedure TReglementFListF.Select_RF;
+begin
+MainForm.RegfournisseurTable.DisableControls;
+MainForm.RegfournisseurTable.Active:= False;
+MainForm.RegfournisseurTable.SQL.clear;
+mainform.RegfournisseurTable.sql.Text:='SELECT * FROM regfournisseur WHERE bon_or_no_rf = ''1'' AND date_rf BETWEEN '''+(DateToStr(DateStartRegFD.Date))+ ''' AND ''' +(DateToStr(DateEndRegFD.Date))+'''';
+MainForm.RegfournisseurTable.Active:= True;
+MainForm.RegfournisseurTable.EnableControls;
+end;
 
 
 procedure TReglementFListF.Select_FacA;
@@ -280,10 +295,9 @@ var
  if MainForm.RegfournisseurTable.FieldValues['bon_or_no_rf'] = 1 then
 
  begin
-  ReglementFGestionF := TReglementFGestionF.Create(nil);
-  try
+  ReglementFGestionF := TReglementFGestionF.Create(ReglementFListF);
 
-      if Assigned(ReglementFListF) then
+    if Assigned(ReglementFListF) then
     begin
     ResearchRegFEdt.Text:='';
     end;
@@ -294,6 +308,7 @@ var
 
        ReglementFGestionF.NumRegFGEdt.Caption := MainForm.RegfournisseurTable.FieldValues['nom_rf'];
        ReglementFGestionF.DateRegFGD.Date:= MainForm.RegfournisseurTable.FieldValues['date_rf'];
+       ReglementFGestionF.ObserRegFGMem.Lines.Text := MainForm.RegfournisseurTable.FieldByName('obser_rf').AsString;
        if (MainForm.RegfournisseurTable.FieldValues['code_f']<> null) and (MainForm.RegfournisseurTable.FieldValues['code_f']<> 0) then
        begin
        CodeF:=MainForm.RegfournisseurTable.FieldValues['code_f'];
@@ -349,7 +364,7 @@ var
             ReglementFGestionF.Top:=   (Screen.Height div 2) - (ReglementFGestionF.Height div 2)    ;
 
       ReglementFGestionF.Tag:= 1;
-      ReglementFGestionF.ShowModal;
+      ReglementFGestionF.Show;
 
 
 
@@ -358,10 +373,7 @@ var
 
 
 
-      finally
 
-      ReglementFGestionF.Free
-     end;
 
 
  end;
@@ -646,6 +658,22 @@ begin
   end;
 end;
 
+procedure TReglementFListF.RglementFournisseur1Click(Sender: TObject);
+begin
+ClearMPFilterBVLivPMenuClick(Sender);
+
+ClearMPFilterBVLivPMenu.Checked:= True;
+
+  sImage1.ImageIndex:=25;
+  sImage1.Visible:= True;
+  sImage2.ImageIndex:=13;
+  sImage2.Visible:= True;
+  FilterBVLivBtn.ImageIndex:=50;
+  FilteredColor;
+  Select_RF;
+  ClearFilterBVLivPMenu.Checked:= False;
+end;
+
 procedure TReglementFListF.AdvToolButton1Click(Sender: TObject);
 begin
  ProduitListSaveDg.FileName:= 'Liste Règlement Fournisseur';
@@ -923,6 +951,11 @@ begin
   end else Exit;
 end;
 
+procedure TReglementFListF.BARecListDBGridEhSortMarkingChanged(Sender: TObject);
+begin
+BARecListDBGridEh.DefaultApplySorting;
+end;
+
 procedure TReglementFListF.ChequeMPFilterBVLivPMenuClick(Sender: TObject);
 begin
   ClearValideFilterBVLivPMenuClick(Sender);
@@ -1063,7 +1096,7 @@ ClearMPFilterBVLivPMenu.Checked:= True;
   sImage1.ImageIndex:=22;
   sImage1.Visible:= True;
   sImage2.ImageIndex:=13;
-  sImage2.Visible:= True;  
+  sImage2.Visible:= True;
   FilterBVLivBtn.ImageIndex:=50;
   FilteredColor;
   Select_CTR;
@@ -1122,6 +1155,18 @@ end;
 procedure TReglementFListF.FormPaint(Sender: TObject);
 begin
 MainForm.FournisseurTable.Refresh;
+
+  if MainForm.totaux_ur.Checked then
+      begin
+
+       SumGirdProduitBtn.Enabled:= True;
+
+      end else
+      begin
+
+       SumGirdProduitBtn.Enabled:= False;
+
+      end;
 end;
 
 end.

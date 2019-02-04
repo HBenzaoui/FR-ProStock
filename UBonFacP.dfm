@@ -362,13 +362,12 @@ object BonFacPF: TBonFacPF
     HorzScrollBar.ExtraPanel.NavigatorButtons = [nbFirstEh, nbPriorEh, nbNextEh, nbLastEh, nbRefreshEh]
     HorzScrollBar.ExtraPanel.Visible = True
     HorzScrollBar.Height = 15
-    IndicatorOptions = [gioShowRowIndicatorEh]
     IndicatorParams.Color = clBtnFace
     IndicatorTitle.ShowDropDownSign = True
     IndicatorTitle.TitleButton = True
     OddRowColor = 16315635
     Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
-    OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghDialogFind, dghColumnResize, dghColumnMove, dghHotTrack, dghExtendVertLines]
+    OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghAutoSortMarking, dghDialogFind, dghColumnResize, dghColumnMove, dghHotTrack, dghExtendVertLines]
     ParentCtl3D = False
     ParentFont = False
     ParentShowHint = False
@@ -395,9 +394,12 @@ object BonFacPF: TBonFacPF
     OnDrawColumnCell = BVFacListDBGridEhDrawColumnCell
     OnKeyDown = BVFacListDBGridEhKeyDown
     OnKeyPress = BVFacListDBGridEhKeyPress
+    OnSortMarkingChanged = BVFacListDBGridEhSortMarkingChanged
+    OnTitleBtnClick = BVFacListDBGridEhTitleBtnClick
     Columns = <
       item
         Alignment = taCenter
+        CellButtons = <>
         Checkboxes = False
         DynProps = <>
         EditButtons = <>
@@ -433,6 +435,7 @@ object BonFacPF: TBonFacPF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DynProps = <>
         EditButtons = <>
         FieldName = 'num_bpfac'
@@ -463,6 +466,7 @@ object BonFacPF: TBonFacPF
       end
       item
         Alignment = taCenter
+        CellButtons = <>
         DisplayFormat = 'DD/MM/YYYY'
         DynProps = <>
         EditButtons = <>
@@ -494,6 +498,7 @@ object BonFacPF: TBonFacPF
       end
       item
         Alignment = taCenter
+        CellButtons = <>
         DisplayFormat = 'HH:MM:SS'
         DynProps = <>
         EditButtons = <>
@@ -524,6 +529,7 @@ object BonFacPF: TBonFacPF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DynProps = <>
         EditButtons = <>
         FieldName = 'clientbvfac'
@@ -557,6 +563,7 @@ object BonFacPF: TBonFacPF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
@@ -591,6 +598,7 @@ object BonFacPF: TBonFacPF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
@@ -625,10 +633,11 @@ object BonFacPF: TBonFacPF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
-        FieldName = 'NeTHT'
+        FieldName = 'netht'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
         Font.Height = 16
@@ -657,6 +666,7 @@ object BonFacPF: TBonFacPF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
@@ -688,10 +698,11 @@ object BonFacPF: TBonFacPF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
-        FieldName = 'MontantTVA'
+        FieldName = 'montanttva'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
         Font.Height = 16
@@ -721,6 +732,7 @@ object BonFacPF: TBonFacPF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
@@ -753,6 +765,7 @@ object BonFacPF: TBonFacPF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
@@ -786,10 +799,11 @@ object BonFacPF: TBonFacPF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
-        FieldName = 'MontantRes'
+        FieldName = 'montantres'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
         Font.Height = 16
@@ -819,6 +833,42 @@ object BonFacPF: TBonFacPF
         WordWrap = False
       end
       item
+        CellButtons = <>
+        DisplayFormat = '#,##0.00'
+        DynProps = <>
+        EditButtons = <>
+        FieldName = 'montaht_bpfac'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 16
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
+        Footer.Color = 15722984
+        Footer.FieldName = 'montaht_bpfac'
+        Footer.Font.Charset = DEFAULT_CHARSET
+        Footer.Font.Color = 4207405
+        Footer.Font.Height = 18
+        Footer.Font.Name = 'Helvetica LT Std'
+        Footer.Font.Style = [fsBold]
+        Footer.ValueType = fvtSum
+        Footers = <>
+        Layout = tlCenter
+        MinWidth = 150
+        ReadOnly = True
+        Title.Alignment = taCenter
+        Title.Caption = 'Montant A HT'
+        Title.EndEllipsis = True
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = 4207405
+        Title.Font.Height = 16
+        Title.Font.Name = 'Helvetica LT Std'
+        Title.Font.Style = []
+        Title.Font.Quality = fqProof
+        Title.ToolTips = True
+        Width = 150
+      end
+      item
+        CellButtons = <>
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
@@ -850,6 +900,7 @@ object BonFacPF: TBonFacPF
       end
       item
         Alignment = taCenter
+        CellButtons = <>
         DynProps = <>
         EditButtons = <>
         FieldName = 'Agent'
@@ -923,7 +974,7 @@ object BonFacPF: TBonFacPF
       ShowHint = True
       Spacing = -1
       OnClick = EditBVFacBtnClick
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object DeleteBVFacBtn: TAdvToolButton
@@ -955,7 +1006,7 @@ object BonFacPF: TBonFacPF
       ShowHint = True
       Spacing = -2
       OnClick = DeleteBVFacBtnClick
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object AddBVFacBtn: TAdvToolButton
@@ -987,7 +1038,7 @@ object BonFacPF: TBonFacPF
       ShowHint = True
       Spacing = -1
       OnClick = AddBVFacBtnClick
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object ResearchBARecLbl: TLabel
@@ -1009,7 +1060,7 @@ object BonFacPF: TBonFacPF
     object Label1: TLabel
       Left = 315
       Top = 10
-      Width = 23
+      Width = 22
       Height = 18
       Caption = 'Du:'
       Color = 15722984
@@ -1119,7 +1170,7 @@ object BonFacPF: TBonFacPF
       Shaded = False
       ShowHint = True
       Spacing = -1
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object sImage1: TsImage
@@ -1446,7 +1497,7 @@ object BonFacPF: TBonFacPF
       ShowHint = True
       Spacing = -2
       OnClick = SumGirdBBVFacBtnClick
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object RefreshGirdBtn: TAdvToolButton
@@ -1480,7 +1531,7 @@ object BonFacPF: TBonFacPF
       ShowHint = True
       Spacing = -2
       OnClick = RefreshGirdBtnClick
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object AdvToolButton1: TAdvToolButton
@@ -1514,7 +1565,7 @@ object BonFacPF: TBonFacPF
       ShowHint = True
       Spacing = -2
       OnClick = AdvToolButton1Click
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object AdvToolButton2: TAdvToolButton
@@ -1548,7 +1599,7 @@ object BonFacPF: TBonFacPF
       ShowHint = True
       Spacing = -2
       OnClick = AdvToolButton2Click
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object AdvToolButton3: TAdvToolButton
@@ -1582,7 +1633,7 @@ object BonFacPF: TBonFacPF
       ShowHint = True
       Spacing = -2
       OnClick = AdvToolButton3Click
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object Panel5: TPanel
@@ -1643,14 +1694,14 @@ object BonFacPF: TBonFacPF
     end
   end
   object BonFacPFrxRprt: TfrxReport
-    Version = '5.4.6'
+    Version = '5.6.1'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
     PreviewOptions.Zoom = 1.000000000000000000
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
-    ReportOptions.CreateDate = 42576.399521435200000000
+    ReportOptions.CreateDate = 42576.399521435210000000
     ReportOptions.LastChange = 42745.694711435200000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (

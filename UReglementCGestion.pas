@@ -3,7 +3,7 @@ unit UReglementCGestion;
 interface
 
 uses
-  Winapi.Windows,MMSystem,DateUtils,
+  Winapi.Windows,MMSystem,DateUtils,DBGridEh,
    Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, AdvToolBtn,
   Vcl.ComCtrls;
@@ -44,8 +44,9 @@ type
     Label7: TLabel;
     RegCGClientOLDCredit: TLabel;
     RegCGErrorP: TPanel;
+    ListClientregCGBtn: TAdvToolButton;
+    Label21: TLabel;
     procedure FormShow(Sender: TObject);
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
     procedure CancelRegCGBtnClick(Sender: TObject);
     procedure ClientRegCGCbxDropDown(Sender: TObject);
@@ -64,6 +65,8 @@ type
     procedure AddCompteRegCGBtnClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure ListClientregCGBtnClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -76,13 +79,72 @@ var
 implementation
 
 uses
-  UClientGestion, UMainF, UClientsList, USplashAddUnite, USplashAddCompte;
+   Contnrs,UClientGestion, UMainF, UClientsList, USplashAddUnite, USplashAddCompte,
+  UReglementCList, UFastProduitsList;
 
 {$R *.dfm}
 
-procedure TReglementCGestionF.FormShow(Sender: TObject);
+
+var
+  gGrayForms: TComponentList;
+
+procedure GrayFormsRegC;
+var
+   loop : integer;
+   uScrnFrm : TForm;
+   UForm : TForm;
+//   uPoint : TPoint;
+   uScreens : TList;
+
 begin
-GrayForms;
+   if not assigned(gGrayForms) then
+   begin
+      gGrayForms := TComponentList.Create;
+      gGrayForms.OwnsObjects := true;
+
+      uScreens := TList.create;
+      try
+         for loop := 0 to 0 do
+            uScreens.Add(Screen.Forms[loop]);
+
+         for loop := 0 to 0 do
+
+         begin
+            uScrnFrm := uScreens[loop];
+
+            if uScrnFrm.Visible then
+            begin
+               UForm := TForm.Create(uScrnFrm);
+               UForm.WindowState:= wsMaximized;
+               gGrayForms.Add(UForm);
+               UForm.Position := MainForm.Position;
+               UForm.AlphaBlend := true;
+               UForm.AlphaBlendValue := 80;
+               UForm.Color := clBlack;
+               UForm.BorderStyle := bsNone;
+               UForm.StyleElements:= [];
+               UForm.Enabled := false;
+               UForm.BoundsRect := uScrnFrm.BoundsRect;
+               SetWindowLong(UForm.Handle, GWL_HWNDPARENT, uScrnFrm.Handle);
+               SetWindowPos(UForm.handle, uScrnFrm.handle, 0,0,0,0, SWP_NOSIZE or SWP_NOMOVE);
+               UForm.Visible := true;
+            end;
+         end;
+      finally
+         uScreens.free;
+      end;
+   end;
+end;
+
+procedure NormalFormsRegC;
+begin
+  FreeAndNil(gGrayForms);
+end;
+
+procedure TReglementCGestionF.FormShow(Sender: TObject);
+var      RegCGClientOLDCreditDOUBLE,VerRegCGEdtDOUBLE,RegCGClientNEWCreditDOUBLE : Double;
+begin
+
     if Tag = 0 then
     begin
     DateRegCGD.Date:=EncodeDate (YearOf(Now),MonthOf(Now),DayOf(Now));
@@ -94,15 +156,104 @@ GrayForms;
     if Tag = 1 then
     begin
       ClientRegCGCbxChange(Sender);
-      ReglementCGestionF.VerRegCGEdt.SetFocus;
+
+       RegCGClientOLDCreditDOUBLE:=StrToFloat (StringReplace(RegCGClientOLDCredit.Caption, #32, '', [rfReplaceAll]));
+       VerRegCGEdtDOUBLE         :=StrToFloat (StringReplace(VerRegCGEdt.Text, #32, '', [rfReplaceAll]));
+
+      VerRegCGEdt.SetFocus;
+      RegCGClientOLDCredit.Caption:= FloatToStrF(( RegCGClientOLDCreditDOUBLE + VerRegCGEdtDOUBLE),ffNumber,14,2) ;
+
+      RegCGClientNEWCreditDOUBLE :=StrToFloat (StringReplace(RegCGClientOLDCredit.Caption, #32, '', [rfReplaceAll]));
+
+      RegCGClientNEWCredit.Caption:= FloatToStrF(( RegCGClientNEWCreditDOUBLE - VerRegCGEdtDOUBLE),ffNumber,14,2) ;
+
+
+      ClientRegCGCbx.Enabled:= False;
+      AddFourRegCGBtn.Enabled:= False;
+      ListClientregCGBtn.Enabled:= False;
     end;
+
+end;
+
+procedure TReglementCGestionF.ListClientregCGBtnClick(Sender: TObject);
+Var I:Integer;
+begin
+//-------- use this code to start creating th form-----//
+  FastProduitsListF := TFastProduitsListF.Create(ReglementCGestionF);
+
+  MainForm.FDQuery2.Active:=False;
+  MainForm.FDQuery2.SQL.Clear;
+  MainForm.FDQuery2.SQL.TExt:= 'SELECT code_c,nom_c,activite_c,fix_c,mob_c,adr_c,credit_c FROM client';
+  MainForm.FDQuery2.IndexFieldNames:='code_c';
+  MainForm.FDQuery2.Active:=True;
+
+  for I := 0 to FastProduitsListF.ProduitsListDBGridEh.Columns.Count -1 do
+  begin
+    FastProduitsListF.ProduitsListDBGridEh.Columns[I].Visible:= False;
+  end;
+    
+  //Change the dataSet
+  FastProduitsListF.ProduitListDataS.DataSet:= MainForm.FDQuery2;
+  FastProduitsListF.ProduitsListDBGridEh.Columns[0].FieldName:='code_c';
+  FastProduitsListF.ProduitsListDBGridEh.Columns[0].Title.Caption:='N°';
+  FastProduitsListF.ProduitsListDBGridEh.Columns[0].Visible:= True;
+  FastProduitsListF.ProduitsListDBGridEh.Columns[0].Width:= 70;
+
+  FastProduitsListF.ProduitsListDBGridEh.Columns[1].FieldName:='nom_c';
+  FastProduitsListF.ProduitsListDBGridEh.Columns[1].Title.Caption:='Nom du Client';
+  FastProduitsListF.ProduitsListDBGridEh.Columns[1].Visible:= True;
+  FastProduitsListF.ProduitsListDBGridEh.Columns[1].Width:= 300;
+
+  FastProduitsListF.ProduitsListDBGridEh.Columns[2].FieldName:='activite_c';
+  FastProduitsListF.ProduitsListDBGridEh.Columns[2].Title.Caption:='Activité';
+  FastProduitsListF.ProduitsListDBGridEh.Columns[2].Visible:= True;
+  FastProduitsListF.ProduitsListDBGridEh.Columns[2].Width:= 130;;
+
+  FastProduitsListF.ProduitsListDBGridEh.Columns[3].FieldName:='fix_c';
+  FastProduitsListF.ProduitsListDBGridEh.Columns[3].Title.Caption:='Téléphone';
+  FastProduitsListF.ProduitsListDBGridEh.Columns[3].Visible:= True;
+  FastProduitsListF.ProduitsListDBGridEh.Columns[3].Width:= 130;;
+
+  FastProduitsListF.ProduitsListDBGridEh.Columns[4].FieldName:='mob_c';
+  FastProduitsListF.ProduitsListDBGridEh.Columns[4].Title.Caption:='Téléphone';
+  FastProduitsListF.ProduitsListDBGridEh.Columns[4].Visible:= True;
+  FastProduitsListF.ProduitsListDBGridEh.Columns[4].Width:= 130;;
+
+  FastProduitsListF.ProduitsListDBGridEh.Columns[5].FieldName:='adr_c';
+  FastProduitsListF.ProduitsListDBGridEh.Columns[5].Title.Caption:='Adresse';
+  FastProduitsListF.ProduitsListDBGridEh.Columns[5].Visible:= True;
+  FastProduitsListF.ProduitsListDBGridEh.Columns[5].Width:= 150;;
+
+  FastProduitsListF.ProduitsListDBGridEh.Columns[6].FieldName:='credit_c';
+  FastProduitsListF.ProduitsListDBGridEh.Columns[6].Title.Caption:='Crédit';
+  FastProduitsListF.ProduitsListDBGridEh.Columns[6].Visible:= True;
+  FastProduitsListF.ProduitsListDBGridEh.Columns[6].Width:= 130;;
+  
+  
+  FastProduitsListF.ProduitsListDBGridEh.Refresh;
+
+//-------- Show the splash screan for the produit familly to add new one---------//
+  FastProduitsListF.Left := (Screen.Width div 2) - (FastProduitsListF.Width div 2);
+  FastProduitsListF.Top := (Screen.Height div 2) - (FastProduitsListF.Height div 2);
+
+  FastProduitsListF.Caption:= 'Liste des Clients';
+  FastProduitsListF.ResherchPARDesProduitsRdioBtn.Visible:= False;
+  FastProduitsListF.ResherchPARDCodProduitsRdioBtn.Visible:= False;
+  FastProduitsListF.ProduitsListDBGridEh.Options:=
+  FastProduitsListF.ProduitsListDBGridEh.Options -[dgMultiSelect] ; //flip + and -  for A
+  FastProduitsListF.ProduitsListDBGridEh.IndicatorOptions:=[];
+  FastProduitsListF.ResearchProduitsEdt.Width:= 431;
+
+  FastProduitsListF.Tag := 4;
+  FastProduitsListF.Show;
+  FastProduitsListF.ResearchProduitsEdt.SetFocus;
 
 end;
 
 procedure TReglementCGestionF.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
-NormalForms;
+FreeAndNil(ReglementCGestionF);
 end;
 
 procedure TReglementCGestionF.FormCreate(Sender: TObject);
@@ -112,6 +263,8 @@ begin
   FormatSettings.ThousandSeparator := ' ';
   FormatSettings.CurrencyDecimals := 2;
   FormatSettings.DateSeparator:= '/';
+
+  GrayFormsRegC;
 end;
 
 procedure TReglementCGestionF.FormDestroy(Sender: TObject);
@@ -121,6 +274,9 @@ begin
   FormatSettings.ThousandSeparator := ' ';
   FormatSettings.CurrencyDecimals := 2;
   FormatSettings.DateSeparator:= '/';
+
+
+  NormalFormsRegC;
 end;
 
 procedure TReglementCGestionF.FormKeyPress(Sender: TObject; var Key: Char);
@@ -129,7 +285,7 @@ begin
  begin
  key := #0;
 
-  Close;
+  CancelRegCGBtnClick(Sender);
 
  end;
 
@@ -144,7 +300,7 @@ end;
 
 procedure TReglementCGestionF.CancelRegCGBtnClick(Sender: TObject);
 begin
-close;
+FreeAndNil(ReglementCGestionF);
 end;
 
 procedure TReglementCGestionF.ClientRegCGCbxDropDown(Sender: TObject);
@@ -154,7 +310,7 @@ I : Integer;
 
           MainForm.SQLQuery.Active:=false;
           MainForm.SQLQuery.SQL.Clear;
-          MainForm.SQLQuery.SQL.Text:='Select code_c,nom_c FROM client '  ;
+          MainForm.SQLQuery.SQL.Text:='Select nom_c FROM client '  ;
           MainForm.SQLQuery.Active:=True;
 
        MainForm.SQLQuery.Refresh;
@@ -354,7 +510,6 @@ begin
 //      MainForm.Bonv_livTableCredit.EnableControls;
 
 
-
       MainForm.SQLQuery.Active:=false;
       MainForm.SQLQuery.SQL.Clear;
 
@@ -427,7 +582,12 @@ begin
            RegCGClientNEWCredit.Caption:=FloatToStrF(TOTAL,ffNumber,14,2);
           end;
 
-     end;
+     end else
+         begin
+
+           RegCGClientNEWCredit.Caption := RegCGClientOLDCredit.Caption;
+
+         end;
 
 end;
 
@@ -471,52 +631,60 @@ begin
           MainForm.CompteTable.SQL.Text:='Select * FROM compte WHERE LOWER(nom_cmpt) LIKE LOWER('+ QuotedStr(ReglementCGestionF.CompteRegCGCbx.Text )+')'  ;
           MainForm.CompteTable.Active:=True;
 
+
+          MainForm.SQLQuery3.DisableControls;
+          MainForm.SQLQuery3.Active:=false;
+          MainForm.SQLQuery3.SQL.Clear;
+          MainForm.SQLQuery3.SQL.Text:='Select * from regclient ORDER BY code_rc'  ;
+          MainForm.SQLQuery3.Active:=True;
+
+
           if Tag = 0 then
           begin
 
-          if NOT (MainForm.RegclientTable.IsEmpty) then
+          if NOT (MainForm.SQLQuery3.IsEmpty) then
           begin
-          MainForm.RegclientTable.Last;
-          CodeRF:= MainForm.RegclientTable.FieldValues['code_rc'] + 1;
+          MainForm.SQLQuery3.Last;
+          CodeRF:= MainForm.SQLQuery3.FieldValues['code_rc'] + 1;
           end else
               begin
                CodeRF:= 1;
               end;
 
 
-            MainForm.RegclientTable.Append;
-            MainForm.RegclientTable.FieldValues['code_rc']:= CodeRF;
-            MainForm.RegclientTable.FieldValues['nom_rc']:= NumRegCGEdt.Caption;
-            MainForm.RegclientTable.FieldValues['code_c']:= MainForm.SQLQuery.FieldByName('code_c').AsInteger;
-            MainForm.RegclientTable.FieldValues['date_rc']:= DateRegCGD.Date;
-            MainForm.RegclientTable.FieldValues['time_rc']:=TimeOf(Now);
-            MainForm.RegclientTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
-            MainForm.RegclientTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
-            MainForm.RegclientTable.FieldValues['obser_rc']:= ReglementCGestionF.ObserRegCGMem.Text;
-            MainForm.RegclientTable.FieldValues['num_cheque_rc']:= ReglementCGestionF.NChequeRegCGCbx.Text;
-            MainForm.RegclientTable.FieldValues['code_ur']:= StrToInt( MainForm.UserIDLbl.Caption);
+            MainForm.SQLQuery3.Append;
+            MainForm.SQLQuery3.FieldValues['code_rc']:= CodeRF;
+            MainForm.SQLQuery3.FieldValues['nom_rc']:= NumRegCGEdt.Caption;
+            MainForm.SQLQuery3.FieldValues['code_c']:= MainForm.SQLQuery.FieldByName('code_c').AsInteger;
+            MainForm.SQLQuery3.FieldValues['date_rc']:= DateRegCGD.Date;
+            MainForm.SQLQuery3.FieldValues['time_rc']:=TimeOf(Now);
+            MainForm.SQLQuery3.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
+            MainForm.SQLQuery3.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
+            MainForm.SQLQuery3.FieldValues['obser_rc']:= ReglementCGestionF.ObserRegCGMem.Text;
+            MainForm.SQLQuery3.FieldValues['num_cheque_rc']:= ReglementCGestionF.NChequeRegCGCbx.Text;
+            MainForm.SQLQuery3.FieldValues['code_ur']:= StrToInt( MainForm.UserIDLbl.Caption);
 
-          MainForm.RegclientTable.FieldValues['bon_or_no_rc']:= 1;
+          MainForm.SQLQuery3.FieldValues['bon_or_no_rc']:= 1;
 
 
-          MainForm.RegclientTable.FieldByName('montver_rc').AsCurrency:=StrToCurr(StringReplace(VerRegCGEdt.Text, #32, '', [rfReplaceAll]));
+          MainForm.SQLQuery3.FieldByName('montver_rc').AsCurrency:=StrToCurr(StringReplace(VerRegCGEdt.Text, #32, '', [rfReplaceAll]));
 
 
           if (LowerCase(ReglementCGestionF.ModePaieRegCGCbx.Text)='espèce') OR (LowerCase(ReglementCGestionF.ModePaieRegCGCbx.Text)='espece') then
           begin
-           MainForm.RegclientTable.FieldValues['code_mdpai']:=1 ;
+           MainForm.SQLQuery3.FieldValues['code_mdpai']:=1 ;
           end;
            if (LowerCase(ReglementCGestionF.ModePaieRegCGCbx.Text)='chèque') OR (LowerCase(ReglementCGestionF.ModePaieRegCGCbx.Text)='cheque') then
           begin
-           MainForm.RegclientTable.FieldValues['code_mdpai']:=2 ;
+           MainForm.SQLQuery3.FieldValues['code_mdpai']:=2 ;
           end;
           if (LowerCase(ReglementCGestionF.ModePaieRegCGCbx.Text)='à terme' ) OR (LowerCase(ReglementCGestionF.ModePaieRegCGCbx.Text)='a terme' )
              OR (LowerCase(ReglementCGestionF.ModePaieRegCGCbx.Text)='À terme' ) then
           begin
-           MainForm.RegclientTable.FieldValues['code_mdpai']:=3 ;
+           MainForm.SQLQuery3.FieldValues['code_mdpai']:=3 ;
           end;
 
-          MainForm.RegclientTable.Post;
+          MainForm.SQLQuery3.Post;
 
           end else
               begin
@@ -594,7 +762,7 @@ begin
 
                 MainForm.Opt_cas_bnk_CaisseTable.Append;
                 MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ocb']:= CodeOCB;
-                MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_rc']:= MainForm.RegclientTable.FieldValues['code_rc'];
+                MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_rc']:= MainForm.SQLQuery3.FieldValues['code_rc'];
                 MainForm.Opt_cas_bnk_CaisseTable.FieldValues['date_ocb']:= DateRegCGD.Date;
                 MainForm.Opt_cas_bnk_CaisseTable.FieldValues['time_ocb']:= TimeOf(Now);
                 MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
@@ -700,8 +868,22 @@ begin
           MainForm.CompteTable.Active:=True;
           MainForm.CompteTable.EnableControls;
 
+           MainForm.ClientTable.Refresh;
+           MainForm.RegclientTable.Refresh;
+
+           ReglementCListF.BVLivListDBGridEh.Refresh;
+
+
+          MainForm.SQLQuery3.Active:=false;
+          MainForm.SQLQuery3.SQL.Clear;
+//          MainForm.RegclientTable.SQL.Text:='Select * from regclient '  ;
+//          MainForm.RegclientTable.Active:=True;
+//          MainForm.RegclientTable.EnableControls;
+
+//          ReglementCListF.DateStartRegCDChange(Sender);
+
           sndPlaySound('C:\Windows\Media\speech on.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
-          Close;
+          FreeAndNil(ReglementCGestionF);
 
 
 

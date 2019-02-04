@@ -319,6 +319,7 @@ object ChargesFListF: TChargesFListF
   Visible = True
   OnClose = FormClose
   OnCreate = FormCreate
+  OnPaint = FormPaint
   OnShow = FormShow
   DesignSize = (
     1022
@@ -370,7 +371,7 @@ object ChargesFListF: TChargesFListF
       ShowHint = True
       Spacing = -1
       OnClick = EditBARecBtnClick
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object DeleteBARecBtn: TAdvToolButton
@@ -402,7 +403,7 @@ object ChargesFListF: TChargesFListF
       ShowHint = True
       Spacing = -2
       OnClick = DeleteBARecBtnClick
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object AddBARecBtn: TAdvToolButton
@@ -434,7 +435,7 @@ object ChargesFListF: TChargesFListF
       ShowHint = True
       Spacing = -1
       OnClick = AddBARecBtnClick
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object ResearchBACtrLbl: TLabel
@@ -456,7 +457,7 @@ object ChargesFListF: TChargesFListF
     object Label1: TLabel
       Left = 283
       Top = 10
-      Width = 23
+      Width = 22
       Height = 18
       Caption = 'Du:'
       Color = 15722984
@@ -869,7 +870,6 @@ object ChargesFListF: TChargesFListF
     HorzScrollBar.ExtraPanel.NavigatorButtons = [nbFirstEh, nbPriorEh, nbNextEh, nbLastEh, nbRefreshEh]
     HorzScrollBar.ExtraPanel.Visible = True
     HorzScrollBar.Height = 15
-    IndicatorOptions = [gioShowRowIndicatorEh]
     IndicatorParams.Color = clBtnFace
     IndicatorTitle.ShowDropDownSign = True
     IndicatorTitle.TitleButton = True
@@ -905,6 +905,7 @@ object ChargesFListF: TChargesFListF
     Columns = <
       item
         Alignment = taCenter
+        CellButtons = <>
         Checkboxes = False
         DynProps = <>
         EditButtons = <>
@@ -932,6 +933,7 @@ object ChargesFListF: TChargesFListF
       end
       item
         Alignment = taCenter
+        CellButtons = <>
         DisplayFormat = 'DD/MM/YYYY'
         DynProps = <>
         EditButtons = <>
@@ -959,6 +961,7 @@ object ChargesFListF: TChargesFListF
       end
       item
         Alignment = taCenter
+        CellButtons = <>
         DisplayFormat = 'HH:MM:SS'
         DynProps = <>
         EditButtons = <>
@@ -985,6 +988,7 @@ object ChargesFListF: TChargesFListF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DynProps = <>
         EditButtons = <>
         FieldName = 'nom_ch'
@@ -1010,6 +1014,7 @@ object ChargesFListF: TChargesFListF
       end
       item
         Alignment = taCenter
+        CellButtons = <>
         DynProps = <>
         EditButtons = <>
         FieldName = 'CHType'
@@ -1033,6 +1038,7 @@ object ChargesFListF: TChargesFListF
       end
       item
         Alignment = taCenter
+        CellButtons = <>
         DynProps = <>
         EditButtons = <>
         FieldName = 'CHSType'
@@ -1068,6 +1074,7 @@ object ChargesFListF: TChargesFListF
         WordWrap = False
       end
       item
+        CellButtons = <>
         Checkboxes = False
         DynProps = <>
         EditButtons = <>
@@ -1101,6 +1108,7 @@ object ChargesFListF: TChargesFListF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
@@ -1137,6 +1145,7 @@ object ChargesFListF: TChargesFListF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
@@ -1173,6 +1182,7 @@ object ChargesFListF: TChargesFListF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
@@ -1207,6 +1217,7 @@ object ChargesFListF: TChargesFListF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
@@ -1243,6 +1254,7 @@ object ChargesFListF: TChargesFListF
       end
       item
         Alignment = taCenter
+        CellButtons = <>
         DynProps = <>
         EditButtons = <>
         FieldName = 'Compte'
@@ -1268,6 +1280,7 @@ object ChargesFListF: TChargesFListF
       end
       item
         Alignment = taCenter
+        CellButtons = <>
         DynProps = <>
         EditButtons = <>
         FieldName = 'obser_ch'
@@ -1291,6 +1304,7 @@ object ChargesFListF: TChargesFListF
       end
       item
         Alignment = taCenter
+        CellButtons = <>
         DynProps = <>
         EditButtons = <>
         FieldName = 'Agent'
@@ -1368,7 +1382,7 @@ object ChargesFListF: TChargesFListF
       ShowHint = True
       Spacing = -2
       OnClick = SumGirdProduitBtnClick
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object RefreshGirdBtn: TAdvToolButton
@@ -1402,7 +1416,7 @@ object ChargesFListF: TChargesFListF
       ShowHint = True
       Spacing = -2
       OnClick = RefreshGirdBtnClick
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object AdvToolButton1: TAdvToolButton
@@ -1436,7 +1450,7 @@ object ChargesFListF: TChargesFListF
       ShowHint = True
       Spacing = -2
       OnClick = AdvToolButton1Click
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object AdvToolButton2: TAdvToolButton
@@ -1470,7 +1484,7 @@ object ChargesFListF: TChargesFListF
       ShowHint = True
       Spacing = -2
       OnClick = AdvToolButton2Click
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object AdvToolButton3: TAdvToolButton
@@ -1505,7 +1519,7 @@ object ChargesFListF: TChargesFListF
       Shaded = False
       ShowHint = True
       Spacing = -2
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object Panel5: TPanel
@@ -1571,7 +1585,7 @@ object ChargesFListF: TChargesFListF
     Top = 618
   end
   object ChargeListfrxRprt: TfrxReport
-    Version = '5.4.6'
+    Version = '5.6.1'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -2369,7 +2383,7 @@ object ChargesFListF: TChargesFListF
     end
   end
   object ChargefrxRprt: TfrxReport
-    Version = '5.4.6'
+    Version = '5.6.1'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]

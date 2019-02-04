@@ -319,6 +319,7 @@ object PertesFListF: TPertesFListF
   Visible = True
   OnClose = FormClose
   OnCreate = FormCreate
+  OnPaint = FormPaint
   OnShow = FormShow
   DesignSize = (
     1022
@@ -370,7 +371,7 @@ object PertesFListF: TPertesFListF
       ShowHint = True
       Spacing = -1
       OnClick = EditBARecBtnClick
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object DeleteBARecBtn: TAdvToolButton
@@ -402,7 +403,7 @@ object PertesFListF: TPertesFListF
       ShowHint = True
       Spacing = -2
       OnClick = DeleteBARecBtnClick
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object AddBARecBtn: TAdvToolButton
@@ -434,7 +435,7 @@ object PertesFListF: TPertesFListF
       ShowHint = True
       Spacing = -1
       OnClick = AddBARecBtnClick
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object ResearchBACtrLbl: TLabel
@@ -456,7 +457,7 @@ object PertesFListF: TPertesFListF
     object Label1: TLabel
       Left = 298
       Top = 10
-      Width = 23
+      Width = 22
       Height = 18
       Caption = 'Du:'
       Color = 15722984
@@ -837,7 +838,6 @@ object PertesFListF: TPertesFListF
     HorzScrollBar.ExtraPanel.NavigatorButtons = [nbFirstEh, nbPriorEh, nbNextEh, nbLastEh, nbRefreshEh]
     HorzScrollBar.ExtraPanel.Visible = True
     HorzScrollBar.Height = 15
-    IndicatorOptions = [gioShowRowIndicatorEh]
     IndicatorParams.Color = clBtnFace
     IndicatorTitle.ShowDropDownSign = True
     IndicatorTitle.TitleButton = True
@@ -873,6 +873,7 @@ object PertesFListF: TPertesFListF
     Columns = <
       item
         Alignment = taCenter
+        CellButtons = <>
         Checkboxes = False
         DynProps = <>
         EditButtons = <>
@@ -900,6 +901,7 @@ object PertesFListF: TPertesFListF
       end
       item
         Alignment = taCenter
+        CellButtons = <>
         DisplayFormat = 'DD/MM/YYYY'
         DynProps = <>
         EditButtons = <>
@@ -927,6 +929,7 @@ object PertesFListF: TPertesFListF
       end
       item
         Alignment = taCenter
+        CellButtons = <>
         DisplayFormat = 'HH:MM:SS'
         DynProps = <>
         EditButtons = <>
@@ -954,6 +957,7 @@ object PertesFListF: TPertesFListF
       end
       item
         Alignment = taCenter
+        CellButtons = <>
         DynProps = <>
         EditButtons = <>
         FieldName = 'referp'
@@ -975,6 +979,7 @@ object PertesFListF: TPertesFListF
         Width = 120
       end
       item
+        CellButtons = <>
         DynProps = <>
         EditButtons = <>
         FieldName = 'nomp'
@@ -1000,6 +1005,7 @@ object PertesFListF: TPertesFListF
       end
       item
         Alignment = taCenter
+        CellButtons = <>
         DynProps = <>
         EditButtons = <>
         FieldName = 'PRType'
@@ -1022,6 +1028,7 @@ object PertesFListF: TPertesFListF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
@@ -1049,6 +1056,7 @@ object PertesFListF: TPertesFListF
       end
       item
         Alignment = taCenter
+        CellButtons = <>
         DisplayFormat = '0.00 %'
         DynProps = <>
         EditButtons = <>
@@ -1071,6 +1079,7 @@ object PertesFListF: TPertesFListF
         Width = 70
       end
       item
+        CellButtons = <>
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
@@ -1107,6 +1116,7 @@ object PertesFListF: TPertesFListF
       end
       item
         Alignment = taCenter
+        CellButtons = <>
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
@@ -1140,6 +1150,7 @@ object PertesFListF: TPertesFListF
         Width = 130
       end
       item
+        CellButtons = <>
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
@@ -1174,6 +1185,7 @@ object PertesFListF: TPertesFListF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
@@ -1210,6 +1222,7 @@ object PertesFListF: TPertesFListF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
@@ -1246,6 +1259,7 @@ object PertesFListF: TPertesFListF
       end
       item
         Alignment = taCenter
+        CellButtons = <>
         DynProps = <>
         EditButtons = <>
         FieldName = 'Agent'
@@ -1323,7 +1337,7 @@ object PertesFListF: TPertesFListF
       ShowHint = True
       Spacing = -2
       OnClick = SumGirdProduitBtnClick
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object RefreshGirdBtn: TAdvToolButton
@@ -1357,7 +1371,7 @@ object PertesFListF: TPertesFListF
       ShowHint = True
       Spacing = -2
       OnClick = RefreshGirdBtnClick
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object AdvToolButton1: TAdvToolButton
@@ -1391,7 +1405,7 @@ object PertesFListF: TPertesFListF
       ShowHint = True
       Spacing = -2
       OnClick = AdvToolButton1Click
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object AdvToolButton2: TAdvToolButton
@@ -1425,7 +1439,7 @@ object PertesFListF: TPertesFListF
       ShowHint = True
       Spacing = -2
       OnClick = AdvToolButton2Click
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object AdvToolButton3: TAdvToolButton
@@ -1459,7 +1473,7 @@ object PertesFListF: TPertesFListF
       ShowHint = True
       Spacing = -2
       OnClick = AdvToolButton3Click
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object Panel5: TPanel
@@ -1525,7 +1539,7 @@ object PertesFListF: TPertesFListF
     Top = 618
   end
   object PerteListfrxRprt: TfrxReport
-    Version = '5.4.6'
+    Version = '5.6.1'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]

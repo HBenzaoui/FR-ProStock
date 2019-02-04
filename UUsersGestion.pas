@@ -75,6 +75,10 @@ type
     UnitSdr: TsSlider;
     L22: TLabel;
     LocalSdr: TsSlider;
+    L23: TLabel;
+    TotauxSdr: TsSlider;
+    L24: TLabel;
+    PrixASdr: TsSlider;
     procedure OKUserGEdtClick(Sender: TObject);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
     procedure NameUserGEdtKeyPress(Sender: TObject; var Key: Char);
@@ -104,6 +108,8 @@ type
     procedure UnitSdrChanging(Sender: TObject; var CanChange: Boolean);
     procedure LocalSdrChanging(Sender: TObject; var CanChange: Boolean);
     procedure TypeUserGCbxClick(Sender: TObject);
+    procedure TotauxSdrChanging(Sender: TObject; var CanChange: Boolean);
+    procedure PrixASdrChanging(Sender: TObject; var CanChange: Boolean);
   private
     procedure EnablePar;
     procedure DisablePar;
@@ -155,7 +161,7 @@ begin
                UForm := TForm.Create(uScrnFrm);
                UForm.WindowState:= wsMaximized;
                gGrayForms.Add(UForm);
-               UForm.Position := poOwnerFormCenter;
+               UForm.Position := MainForm.Position;
                UForm.AlphaBlend := true;
                UForm.AlphaBlendValue := 80;
                UForm.Color := clBlack;
@@ -230,6 +236,8 @@ begin
  ComptesSdr.SliderOn:= False;
  UnitSdr.SliderOn:=    False;
  LocalSdr.SliderOn:=   False;
+ TotauxSdr.SliderON:=  False;
+// PrixASdr.SliderON:=   False;
 
  ParaP.Enabled:= True;
 
@@ -255,6 +263,8 @@ begin
  ComptesSdr.Enabled:= True;
  UnitSdr.Enabled:=    True;
  LocalSdr.Enabled:=   True;
+ TotauxSdr.Enabled:=  True;
+ PrixASdr.Enabled:=   True;
 
 end;
 
@@ -285,6 +295,8 @@ begin
  L20.Enabled:= False;
  L21.Enabled:= False;
  L22.Enabled:= False;
+ L23.Enabled:= False;
+// L24.Enabled:= False;
 
  VentesSdr.SliderOn := True;
  BLSdr.SliderOn :=     True;
@@ -308,6 +320,8 @@ begin
  ComptesSdr.SliderOn:= True;
  UnitSdr.SliderOn:=    True;
  LocalSdr.SliderOn:=   True;
+ TotauxSdr.SliderOn:=  True;
+// PrixASdr.SliderOn:=   True;
 
    ParaP.Enabled:= False;
 
@@ -335,6 +349,8 @@ begin
  ComptesSdr.Enabled:=  False;
  UnitSdr.Enabled:=     False;
  LocalSdr.Enabled:=    False;
+ TotauxSdr.Enabled:=   False;
+ PrixASdr.Enabled:=    True;
 
 
 end;
@@ -390,12 +406,19 @@ begin
                   DataModuleF.UsersTable.FieldValues['cmpt_ur']:=ComptesSdr.SliderOn;
                   DataModuleF.UsersTable.FieldValues['unit_ur']:=UnitSdr.SliderOn;
                   DataModuleF.UsersTable.FieldValues['local_ur']:=LocalSdr.SliderOn;
+                  DataModuleF.UsersTable.FieldByName('totaux_ur').AsBoolean:=TotauxSdr.SliderOn;
+                  DataModuleF.UsersTable.FieldByName('viewprixa_ur').AsBoolean:=PrixASdr.SliderOn;
                   DataModuleF.UsersTable.Post;
 
+                  DataModuleF.UsersTable.Refresh;
 
-                DataModuleF.UsersTable.Refresh;
-                sndPlaySound('C:\Windows\Media\speech on.wav', SND_NODEFAULT Or SND_ASYNC Or  SND_RING);
-                Close;
+                  //--- This code is for set the values dictly without need to logout and in
+                  MainForm.totaux_ur.Checked:= DataModuleF.UsersTable.FieldByName('totaux_ur').AsBoolean;
+                  MainForm.viewprixa_ur.Checked:= DataModuleF.UsersTable.FieldByName('viewprixa_ur').AsBoolean;
+                  //--------------
+
+                  sndPlaySound('C:\Windows\Media\speech on.wav', SND_NODEFAULT Or SND_ASYNC Or  SND_RING);
+                  Close;
                  end else
                      begin
                       NameUserGEdt.BorderStyle := bsNone;
@@ -432,13 +455,20 @@ begin
                       DataModuleF.UsersTable.FieldValues['cmpt_ur']:=ComptesSdr.SliderOn;
                       DataModuleF.UsersTable.FieldValues['unit_ur']:=UnitSdr.SliderOn;
                       DataModuleF.UsersTable.FieldValues['local_ur']:=LocalSdr.SliderOn;
-
+                      DataModuleF.UsersTable.FieldByName('totaux_ur').AsBoolean:=TotauxSdr.SliderOn;
+                      DataModuleF.UsersTable.FieldByName('viewprixa_ur').AsBoolean:=PrixASdr.SliderOn;
                       DataModuleF.UsersTable.Post;
 
+                      DataModuleF.UsersTable.Refresh;
 
-                DataModuleF.UsersTable.Refresh;
-                sndPlaySound('C:\Windows\Media\speech on.wav', SND_NODEFAULT Or SND_ASYNC Or  SND_RING);
-                Close;
+                      //--- This code is for set the values dictly without need to logout and in
+                        MainForm.totaux_ur.Checked:= DataModuleF.UsersTable.FieldByName('totaux_ur').AsBoolean;
+                        MainForm.viewprixa_ur.Checked:= DataModuleF.UsersTable.FieldByName('viewprixa_ur').AsBoolean;
+                        //--------------
+
+
+                      sndPlaySound('C:\Windows\Media\speech on.wav', SND_NODEFAULT Or SND_ASYNC Or  SND_RING);
+                      Close;
                     end;
 
 
@@ -613,6 +643,18 @@ begin
        L06.Enabled:= True;
        L07.Enabled:= True;
        L08.Enabled:= True;
+     end;
+end;
+
+procedure TUsersGestionF.TotauxSdrChanging(Sender: TObject;
+  var CanChange: Boolean);
+begin
+ if TotauxSdr.SliderOn = True then
+ begin
+ L23.Enabled:= False;
+ end else
+     begin
+       L23.Enabled:= True;
      end;
 end;
 
@@ -829,6 +871,18 @@ begin
  end else
      begin
        L13.Enabled:= True;
+     end;
+end;
+
+procedure TUsersGestionF.PrixASdrChanging(Sender: TObject;
+  var CanChange: Boolean);
+begin
+ if PrixASdr.SliderOn = True then
+ begin
+   L24.Enabled:= False;
+ end else
+     begin
+       L24.Enabled:= True;
      end;
 end;
 

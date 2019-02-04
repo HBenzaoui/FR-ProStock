@@ -69,7 +69,12 @@ uses
   UTransferListGestion in 'UTransferListGestion.pas' {TransferListGestionF},
   UPerissableProduit in 'UPerissableProduit.pas' {PerissableProduitF},
   UAbout in 'UAbout.pas' {AboutF},
-  UCamera in 'UCamera.pas' {CameraF};
+  UCamera in 'UCamera.pas' {CameraF},
+  DigiSM_TLB in 'DigiSM_TLB.pas',
+  USplashPrintReport in 'USplashPrintReport.pas' {FSplashPrintReport},
+  DBCalcController in 'DBCalcController.pas',
+  UInventory in 'UInventory.pas' {InventoryF},
+  UInventoryGestion in 'UInventoryGestion.pas' {InventoryGestionF};
 
 {$R *.res}
 

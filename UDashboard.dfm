@@ -369,7 +369,7 @@ object DashboardF: TDashboardF
       object Label2: TLabel
         Left = 13
         Top = 67
-        Width = 122
+        Width = 119
         Height = 18
         Caption = 'Nom d'#39'enterprise:'
         Color = 4207405
@@ -385,7 +385,7 @@ object DashboardF: TDashboardF
       object Label3: TLabel
         Left = 10
         Top = 121
-        Width = 77
+        Width = 73
         Height = 18
         Caption = 'T'#233'l'#233'phone:'
         Color = 4207405
@@ -401,7 +401,7 @@ object DashboardF: TDashboardF
       object Label4: TLabel
         Left = 10
         Top = 174
-        Width = 51
+        Width = 50
         Height = 18
         Caption = 'Mobile:'
         Color = 4207405
@@ -433,7 +433,7 @@ object DashboardF: TDashboardF
       object NameCompanyDashBLbl: TLabel
         Left = 43
         Top = 93
-        Width = 49
+        Width = 42
         Height = 18
         Caption = '-------'
         Color = 4207405
@@ -449,7 +449,7 @@ object DashboardF: TDashboardF
       object TelCompanyDashBLbl: TLabel
         Left = 43
         Top = 145
-        Width = 49
+        Width = 42
         Height = 18
         Caption = '-------'
         Color = 4207405
@@ -465,7 +465,7 @@ object DashboardF: TDashboardF
       object MobileCompanyDashBLbl: TLabel
         Left = 43
         Top = 197
-        Width = 49
+        Width = 42
         Height = 18
         Caption = '-------'
         Color = 4207405
@@ -481,7 +481,7 @@ object DashboardF: TDashboardF
       object AdrCompanyDashBLbl: TLabel
         Left = 43
         Top = 249
-        Width = 49
+        Width = 42
         Height = 18
         Caption = '-------'
         Color = 4207405
@@ -497,7 +497,7 @@ object DashboardF: TDashboardF
       object NClient: TLabel
         Left = 267
         Top = 43
-        Width = 120
+        Width = 114
         Height = 16
         Anchors = [akTop, akRight]
         Caption = 'Nombre des Clients:'
@@ -532,7 +532,7 @@ object DashboardF: TDashboardF
       object Label12: TLabel
         Left = 300
         Top = 99
-        Width = 87
+        Width = 83
         Height = 16
         Anchors = [akTop, akRight]
         Caption = 'Meilleur Client:'
@@ -571,7 +571,7 @@ object DashboardF: TDashboardF
       object Label14: TLabel
         Left = 268
         Top = 136
-        Width = 119
+        Width = 113
         Height = 16
         Anchors = [akTop, akRight]
         Caption = 'Meilleur Versement:'
@@ -607,7 +607,7 @@ object DashboardF: TDashboardF
       object Label16: TLabel
         Left = 230
         Top = 245
-        Width = 157
+        Width = 144
         Height = 16
         Anchors = [akTop, akRight]
         Caption = 'Top montant Fournisseur:'
@@ -624,7 +624,7 @@ object DashboardF: TDashboardF
       object Label17: TLabel
         Left = 247
         Top = 210
-        Width = 140
+        Width = 130
         Height = 16
         Anchors = [akTop, akRight]
         Caption = 'Top Achat Fournisseur:'
@@ -641,7 +641,7 @@ object DashboardF: TDashboardF
       object Label18: TLabel
         Left = 227
         Top = 182
-        Width = 160
+        Width = 149
         Height = 16
         Anchors = [akTop, akRight]
         Caption = 'Nombre des Fournisseurs:'
@@ -658,7 +658,7 @@ object DashboardF: TDashboardF
       object NFourDashBLbl: TLabel
         Left = 391
         Top = 182
-        Width = 49
+        Width = 42
         Height = 18
         Anchors = [akTop, akRight]
         Caption = '-------'
@@ -713,7 +713,7 @@ object DashboardF: TDashboardF
       object Label1: TLabel
         Left = 256
         Top = 70
-        Width = 131
+        Width = 126
         Height = 16
         Anchors = [akTop, akRight]
         Caption = 'Clients ont des dettes:'
@@ -878,7 +878,7 @@ object DashboardF: TDashboardF
       object Label22: TLabel
         Left = 77
         Top = 65
-        Width = 92
+        Width = 87
         Height = 16
         Caption = 'N'#176'  de Produits:'
         Color = 4207405
@@ -894,7 +894,7 @@ object DashboardF: TDashboardF
       object NProduitDashBLbl: TLabel
         Left = 175
         Top = 64
-        Width = 49
+        Width = 42
         Height = 18
         Caption = '-------'
         Color = 4207405
@@ -910,7 +910,7 @@ object DashboardF: TDashboardF
       object Label24: TLabel
         Left = 9
         Top = 89
-        Width = 160
+        Width = 161
         Height = 15
         Caption = 'N'#176' de Produit Total en Stock:'
         Color = 4207405
@@ -926,7 +926,7 @@ object DashboardF: TDashboardF
       object NProduitTotalDashBLbl: TLabel
         Left = 175
         Top = 89
-        Width = 49
+        Width = 42
         Height = 18
         Caption = '-------'
         Color = 4207405
@@ -942,7 +942,7 @@ object DashboardF: TDashboardF
       object Label26: TLabel
         Left = 6
         Top = 121
-        Width = 66
+        Width = 65
         Height = 16
         Caption = 'Les Ventes'
         Color = 4207405
@@ -958,7 +958,7 @@ object DashboardF: TDashboardF
       object NBLDashBLbl: TLabel
         Left = 176
         Top = 141
-        Width = 49
+        Width = 42
         Height = 18
         Caption = '-------'
         Color = 4207405
@@ -974,7 +974,7 @@ object DashboardF: TDashboardF
       object Label5: TLabel
         Left = 26
         Top = 141
-        Width = 142
+        Width = 134
         Height = 16
         Caption = 'N'#176' de Bons de Livration:'
         Color = 4207405
@@ -990,7 +990,7 @@ object DashboardF: TDashboardF
       object Label7: TLabel
         Left = 41
         Top = 164
-        Width = 127
+        Width = 123
         Height = 16
         Caption = 'N'#176' Factures de Vente:'
         Color = 4207405
@@ -1006,7 +1006,7 @@ object DashboardF: TDashboardF
       object NFVDashBLbl: TLabel
         Left = 176
         Top = 164
-        Width = 49
+        Width = 42
         Height = 18
         Caption = '-------'
         Color = 4207405
@@ -1022,7 +1022,7 @@ object DashboardF: TDashboardF
       object Label9: TLabel
         Left = 15
         Top = 188
-        Width = 153
+        Width = 144
         Height = 16
         Caption = 'N'#176' des Bons au Comptoir:'
         Color = 4207405
@@ -1038,7 +1038,7 @@ object DashboardF: TDashboardF
       object NCTRDashBLbl: TLabel
         Left = 176
         Top = 187
-        Width = 49
+        Width = 42
         Height = 18
         Caption = '-------'
         Color = 4207405
@@ -1054,7 +1054,7 @@ object DashboardF: TDashboardF
       object Label11: TLabel
         Left = 6
         Top = 217
-        Width = 66
+        Width = 65
         Height = 16
         Caption = 'Les Achats'
         Color = 4207405
@@ -1070,7 +1070,7 @@ object DashboardF: TDashboardF
       object Label13: TLabel
         Left = 12
         Top = 236
-        Width = 157
+        Width = 149
         Height = 16
         Caption = 'N'#176' des bons de R'#233'ception:'
         Color = 4207405
@@ -1086,7 +1086,7 @@ object DashboardF: TDashboardF
       object NBRDashBLbl: TLabel
         Left = 176
         Top = 235
-        Width = 49
+        Width = 42
         Height = 18
         Caption = '-------'
         Color = 4207405
@@ -1102,7 +1102,7 @@ object DashboardF: TDashboardF
       object NFADashBLbl: TLabel
         Left = 176
         Top = 259
-        Width = 49
+        Width = 42
         Height = 18
         Caption = '-------'
         Color = 4207405
@@ -1118,7 +1118,7 @@ object DashboardF: TDashboardF
       object Label20: TLabel
         Left = 49
         Top = 259
-        Width = 120
+        Width = 114
         Height = 16
         Caption = 'N'#176' Factures d'#39'Achat:'
         Color = 4207405

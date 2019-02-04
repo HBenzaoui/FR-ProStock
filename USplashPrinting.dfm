@@ -346,7 +346,7 @@ object FSplashPrinting: TFSplashPrinting
     PrintOptions.PrintOnSheet = 0
     PrintOptions.ShowDialog = False
     ReportOptions.CreateDate = 41864.469234849500000000
-    ReportOptions.LastChange = 43029.492613472220000000
+    ReportOptions.LastChange = 43164.604325601900000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       ''
@@ -357,7 +357,7 @@ object FSplashPrinting: TFSplashPrinting
       ''
       'procedure PrixOnBeforePrint(Sender: TfrxComponent);'
       'begin'
-      '//IF <PV>=1 then '
+      '//IF <PV>=1 then'
       
         '//Prix.text:='#39'Prix:'#39'+FormatFloat('#39'# ### ### ##0.00'#39',<frxProduitD' +
         'B."prixvd_p">)+'#39' DA'#39';'
@@ -387,8 +387,8 @@ object FSplashPrinting: TFSplashPrinting
       ''
       'begin'
       'end.')
-    Left = 40
-    Top = 240
+    Left = 42
+    Top = 242
     Datasets = <
       item
         DataSet = frxProduitDB
@@ -413,16 +413,16 @@ object FSplashPrinting: TFSplashPrinting
       object PRODUIT: TfrxMemoView
         Align = baCenter
         Left = 1.322881025000000000
-        Top = 12.582677170000000000
+        Top = 11.582677170000000000
         Width = 148.535437950000000000
-        Height = 13.228346460000000000
+        Height = 17.007876460000000000
         DataField = 'nom_p'
         DataSet = frxProduitDB
         DataSetName = 'frxProduitDB'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
-        Font.Height = -8
-        Font.Name = 'Helvetica LT Std'
+        Font.Height = -9
+        Font.Name = 'Segoe UI'
         Font.Style = []
         HAlign = haCenter
         Memo.UTF8W = (
@@ -430,20 +430,19 @@ object FSplashPrinting: TFSplashPrinting
         ParentFont = False
       end
       object Name: TfrxMemoView
-        Top = 2.000000000000000000
         Width = 152.314967950000000000
-        Height = 10.582677170000000000
+        Height = 11.716535433070900000
         OnBeforePrint = 'TITLEOnBeforePrint'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Height = -9
-        Font.Name = 'Helvetica LT Std'
+        Font.Name = 'Segoe UI'
         Font.Style = [fsBold, fsUnderline]
         HAlign = haCenter
         ParentFont = False
       end
       object Prix: TfrxMemoView
-        Top = 61.031540000000000000
+        Top = 58.031540000000000000
         Width = 151.181200000000000000
         Height = 15.118110240000000000
         OnBeforePrint = 'PPA2OnBeforePrint'
@@ -458,14 +457,13 @@ object FSplashPrinting: TFSplashPrinting
         Font.Style = [fsBold]
         HAlign = haCenter
         ParentFont = False
-        VAlign = vaCenter
       end
       object BAR_CODE: TfrxBarCodeView
         Align = baCenter
         Left = 36.090600000000000000
-        Top = 27.338590000000000000
+        Top = 28.338590000000000000
         Width = 79.000000000000000000
-        Height = 33.259842520000000000
+        Height = 29.480312520000000000
         OnBeforePrint = 'BAR_CODEOnBeforePrint'
         BarType = bcCode128
         DataField = 'codebar_p'

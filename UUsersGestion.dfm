@@ -66,7 +66,7 @@ object UsersGestionF: TUsersGestionF
     object Label2: TLabel
       Left = 15
       Top = 57
-      Width = 105
+      Width = 98
       Height = 16
       Caption = 'Nom d'#39'utilisateur:'
       Color = 4207405
@@ -82,7 +82,7 @@ object UsersGestionF: TUsersGestionF
     object Label3: TLabel
       Left = 15
       Top = 105
-      Width = 84
+      Width = 80
       Height = 16
       Caption = 'Mot de passe:'
       Color = 4207405
@@ -98,7 +98,7 @@ object UsersGestionF: TUsersGestionF
     object Label4: TLabel
       Left = 18
       Top = 153
-      Width = 81
+      Width = 75
       Height = 16
       Caption = 'Confirmation:'
       Color = 4207405
@@ -114,7 +114,7 @@ object UsersGestionF: TUsersGestionF
     object Label5: TLabel
       Left = 18
       Top = 199
-      Width = 33
+      Width = 31
       Height = 16
       Caption = 'Type:'
       Color = 4207405
@@ -883,7 +883,7 @@ object UsersGestionF: TUsersGestionF
     object L02: TLabel
       Left = 49
       Top = 50
-      Width = 93
+      Width = 86
       Height = 16
       Caption = 'Bon de livration'
       Color = 4207405
@@ -900,7 +900,7 @@ object UsersGestionF: TUsersGestionF
     object L03: TLabel
       Left = 42
       Top = 71
-      Width = 100
+      Width = 96
       Height = 16
       Caption = 'Facture de Vente'
       Color = 4207405
@@ -934,7 +934,7 @@ object UsersGestionF: TUsersGestionF
     object L06: TLabel
       Left = 40
       Top = 170
-      Width = 102
+      Width = 95
       Height = 16
       Caption = 'Bon de r'#233'ception'
       Color = 4207405
@@ -949,9 +949,9 @@ object UsersGestionF: TUsersGestionF
       StyleElements = []
     end
     object L07: TLabel
-      Left = 49
+      Left = 48
       Top = 192
-      Width = 93
+      Width = 87
       Height = 16
       Caption = 'Facture d'#39'Achat'
       Color = 4207405
@@ -966,9 +966,9 @@ object UsersGestionF: TUsersGestionF
       StyleElements = []
     end
     object L08: TLabel
-      Left = 2
+      Left = 4
       Top = 213
-      Width = 140
+      Width = 131
       Height = 16
       Caption = 'Reglement Fournisseur'
       Color = 4207405
@@ -985,7 +985,7 @@ object UsersGestionF: TUsersGestionF
     object L04: TLabel
       Left = 42
       Top = 91
-      Width = 100
+      Width = 96
       Height = 16
       Caption = 'Reglement Client'
       Color = 4207405
@@ -1019,7 +1019,7 @@ object UsersGestionF: TUsersGestionF
     object L11: TLabel
       Left = 293
       Top = 71
-      Width = 78
+      Width = 75
       Height = 16
       Caption = 'Les Comptes'
       Color = 4207405
@@ -1036,7 +1036,7 @@ object UsersGestionF: TUsersGestionF
     object L12: TLabel
       Left = 307
       Top = 123
-      Width = 64
+      Width = 63
       Height = 16
       Caption = 'Les Clients'
       Color = 4207405
@@ -1053,7 +1053,7 @@ object UsersGestionF: TUsersGestionF
     object L13: TLabel
       Left = 267
       Top = 144
-      Width = 104
+      Width = 98
       Height = 16
       Caption = 'Les Fournisseurs'
       Color = 4207405
@@ -1087,7 +1087,7 @@ object UsersGestionF: TUsersGestionF
     object L14: TLabel
       Left = 86
       Top = 113
-      Width = 56
+      Width = 51
       Height = 16
       Caption = 'Comptoir'
       Color = 4207405
@@ -1104,7 +1104,7 @@ object UsersGestionF: TUsersGestionF
     object L15: TLabel
       Left = 295
       Top = 164
-      Width = 75
+      Width = 70
       Height = 16
       Caption = 'Les produits'
       Color = 4207405
@@ -1138,7 +1138,7 @@ object UsersGestionF: TUsersGestionF
     object L17: TLabel
       Left = 297
       Top = 185
-      Width = 73
+      Width = 71
       Height = 16
       Caption = 'Familes Arts'
       Color = 4207405
@@ -1155,7 +1155,7 @@ object UsersGestionF: TUsersGestionF
     object L18: TLabel
       Left = 263
       Top = 206
-      Width = 107
+      Width = 103
       Height = 16
       Caption = 'Sous Familes Arts'
       Color = 4207405
@@ -1172,7 +1172,7 @@ object UsersGestionF: TUsersGestionF
     object L19: TLabel
       Left = 243
       Top = 226
-      Width = 127
+      Width = 121
       Height = 16
       Caption = 'Modes Des paiement'
       Color = 4207405
@@ -1189,7 +1189,7 @@ object UsersGestionF: TUsersGestionF
     object L20: TLabel
       Left = 316
       Top = 247
-      Width = 54
+      Width = 51
       Height = 16
       Caption = 'Comptes'
       Color = 4207405
@@ -1206,7 +1206,7 @@ object UsersGestionF: TUsersGestionF
     object L21: TLabel
       Left = 332
       Top = 267
-      Width = 38
+      Width = 36
       Height = 16
       Caption = 'Unites'
       Color = 4207405
@@ -1223,9 +1223,43 @@ object UsersGestionF: TUsersGestionF
     object L22: TLabel
       Left = 291
       Top = 288
-      Width = 79
+      Width = 76
       Height = 16
       Caption = 'Localisations'
+      Color = 4207405
+      Enabled = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 4207405
+      Font.Height = 16
+      Font.Name = 'Roboto'
+      Font.Style = []
+      ParentColor = False
+      ParentFont = False
+      StyleElements = []
+    end
+    object L23: TLabel
+      Left = 97
+      Top = 265
+      Width = 38
+      Height = 16
+      Caption = 'Totaux'
+      Color = 4207405
+      Enabled = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 4207405
+      Font.Height = 16
+      Font.Name = 'Roboto'
+      Font.Style = []
+      ParentColor = False
+      ParentFont = False
+      StyleElements = []
+    end
+    object L24: TLabel
+      Left = 11
+      Top = 287
+      Width = 124
+      Height = 16
+      Caption = 'Afficher le prix d'#39'achat'
       Color = 4207405
       Enabled = False
       Font.Charset = DEFAULT_CHARSET
@@ -1252,12 +1286,12 @@ object UsersGestionF: TUsersGestionF
       Font.Height = 12
       Font.Name = 'Roboto'
       Font.Style = []
+      StyleElements = []
       ParentBiDiMode = False
       ParentBackground = False
       ParentCtl3D = False
       ParentFont = False
       TabOrder = 0
-      StyleElements = []
       BoundLabel.Caption = 'sSlider1'
       BoundLabel.Layout = sclBottomCenter
       FontOn.Charset = DEFAULT_CHARSET
@@ -1284,12 +1318,12 @@ object UsersGestionF: TUsersGestionF
       Font.Height = 12
       Font.Name = 'Roboto'
       Font.Style = []
+      StyleElements = []
       ParentBiDiMode = False
       ParentBackground = False
       ParentCtl3D = False
       ParentFont = False
       TabOrder = 1
-      StyleElements = []
       BoundLabel.Caption = 'sSlider1'
       BoundLabel.Layout = sclBottomCenter
       FontOn.Charset = DEFAULT_CHARSET
@@ -1316,12 +1350,12 @@ object UsersGestionF: TUsersGestionF
       Font.Height = 12
       Font.Name = 'Roboto'
       Font.Style = []
+      StyleElements = []
       ParentBiDiMode = False
       ParentBackground = False
       ParentCtl3D = False
       ParentFont = False
       TabOrder = 2
-      StyleElements = []
       BoundLabel.Caption = 'sSlider1'
       BoundLabel.Layout = sclBottomCenter
       FontOn.Charset = DEFAULT_CHARSET
@@ -1348,12 +1382,12 @@ object UsersGestionF: TUsersGestionF
       Font.Height = 12
       Font.Name = 'Roboto'
       Font.Style = []
+      StyleElements = []
       ParentBiDiMode = False
       ParentBackground = False
       ParentCtl3D = False
       ParentFont = False
       TabOrder = 3
-      StyleElements = []
       BoundLabel.Caption = 'sSlider1'
       BoundLabel.Layout = sclBottomCenter
       FontOn.Charset = DEFAULT_CHARSET
@@ -1380,12 +1414,12 @@ object UsersGestionF: TUsersGestionF
       Font.Height = 12
       Font.Name = 'Roboto'
       Font.Style = []
+      StyleElements = []
       ParentBiDiMode = False
       ParentBackground = False
       ParentCtl3D = False
       ParentFont = False
       TabOrder = 4
-      StyleElements = []
       BoundLabel.Caption = 'sSlider1'
       BoundLabel.Layout = sclBottomCenter
       FontOn.Charset = DEFAULT_CHARSET
@@ -1412,12 +1446,12 @@ object UsersGestionF: TUsersGestionF
       Font.Height = 12
       Font.Name = 'Roboto'
       Font.Style = []
+      StyleElements = []
       ParentBiDiMode = False
       ParentBackground = False
       ParentCtl3D = False
       ParentFont = False
       TabOrder = 5
-      StyleElements = []
       BoundLabel.Caption = 'sSlider1'
       BoundLabel.Layout = sclBottomCenter
       FontOn.Charset = DEFAULT_CHARSET
@@ -1444,12 +1478,12 @@ object UsersGestionF: TUsersGestionF
       Font.Height = 12
       Font.Name = 'Roboto'
       Font.Style = []
+      StyleElements = []
       ParentBiDiMode = False
       ParentBackground = False
       ParentCtl3D = False
       ParentFont = False
       TabOrder = 6
-      StyleElements = []
       BoundLabel.Caption = 'sSlider1'
       BoundLabel.Layout = sclBottomCenter
       FontOn.Charset = DEFAULT_CHARSET
@@ -1476,12 +1510,12 @@ object UsersGestionF: TUsersGestionF
       Font.Height = 12
       Font.Name = 'Roboto'
       Font.Style = []
+      StyleElements = []
       ParentBiDiMode = False
       ParentBackground = False
       ParentCtl3D = False
       ParentFont = False
       TabOrder = 7
-      StyleElements = []
       BoundLabel.Caption = 'sSlider1'
       BoundLabel.Layout = sclBottomCenter
       FontOn.Charset = DEFAULT_CHARSET
@@ -1508,12 +1542,12 @@ object UsersGestionF: TUsersGestionF
       Font.Height = 12
       Font.Name = 'Roboto'
       Font.Style = []
+      StyleElements = []
       ParentBiDiMode = False
       ParentBackground = False
       ParentCtl3D = False
       ParentFont = False
       TabOrder = 8
-      StyleElements = []
       BoundLabel.Caption = 'sSlider1'
       BoundLabel.Layout = sclBottomCenter
       FontOn.Charset = DEFAULT_CHARSET
@@ -1540,12 +1574,12 @@ object UsersGestionF: TUsersGestionF
       Font.Height = 12
       Font.Name = 'Roboto'
       Font.Style = []
+      StyleElements = []
       ParentBiDiMode = False
       ParentBackground = False
       ParentCtl3D = False
       ParentFont = False
       TabOrder = 9
-      StyleElements = []
       BoundLabel.Caption = 'sSlider1'
       BoundLabel.Layout = sclBottomCenter
       FontOn.Charset = DEFAULT_CHARSET
@@ -1572,12 +1606,12 @@ object UsersGestionF: TUsersGestionF
       Font.Height = 12
       Font.Name = 'Roboto'
       Font.Style = []
+      StyleElements = []
       ParentBiDiMode = False
       ParentBackground = False
       ParentCtl3D = False
       ParentFont = False
       TabOrder = 10
-      StyleElements = []
       BoundLabel.Caption = 'sSlider1'
       BoundLabel.Layout = sclBottomCenter
       FontOn.Charset = DEFAULT_CHARSET
@@ -1604,12 +1638,12 @@ object UsersGestionF: TUsersGestionF
       Font.Height = 12
       Font.Name = 'Roboto'
       Font.Style = []
+      StyleElements = []
       ParentBiDiMode = False
       ParentBackground = False
       ParentCtl3D = False
       ParentFont = False
       TabOrder = 11
-      StyleElements = []
       BoundLabel.Caption = 'sSlider1'
       BoundLabel.Layout = sclBottomCenter
       FontOn.Charset = DEFAULT_CHARSET
@@ -1636,12 +1670,12 @@ object UsersGestionF: TUsersGestionF
       Font.Height = 12
       Font.Name = 'Roboto'
       Font.Style = []
+      StyleElements = []
       ParentBiDiMode = False
       ParentBackground = False
       ParentCtl3D = False
       ParentFont = False
       TabOrder = 12
-      StyleElements = []
       BoundLabel.Caption = 'sSlider1'
       BoundLabel.Layout = sclBottomCenter
       FontOn.Charset = DEFAULT_CHARSET
@@ -1668,12 +1702,12 @@ object UsersGestionF: TUsersGestionF
       Font.Height = 12
       Font.Name = 'Roboto'
       Font.Style = []
+      StyleElements = []
       ParentBiDiMode = False
       ParentBackground = False
       ParentCtl3D = False
       ParentFont = False
       TabOrder = 13
-      StyleElements = []
       BoundLabel.Caption = 'sSlider1'
       BoundLabel.Layout = sclBottomCenter
       FontOn.Charset = DEFAULT_CHARSET
@@ -1700,12 +1734,12 @@ object UsersGestionF: TUsersGestionF
       Font.Height = 12
       Font.Name = 'Roboto'
       Font.Style = []
+      StyleElements = []
       ParentBiDiMode = False
       ParentBackground = False
       ParentCtl3D = False
       ParentFont = False
       TabOrder = 14
-      StyleElements = []
       BoundLabel.Caption = 'sSlider1'
       BoundLabel.Layout = sclBottomCenter
       FontOn.Charset = DEFAULT_CHARSET
@@ -1732,12 +1766,12 @@ object UsersGestionF: TUsersGestionF
       Font.Height = 12
       Font.Name = 'Roboto'
       Font.Style = []
+      StyleElements = []
       ParentBiDiMode = False
       ParentBackground = False
       ParentCtl3D = False
       ParentFont = False
       TabOrder = 15
-      StyleElements = []
       BoundLabel.Caption = 'sSlider1'
       BoundLabel.Layout = sclBottomCenter
       FontOn.Charset = DEFAULT_CHARSET
@@ -1764,12 +1798,12 @@ object UsersGestionF: TUsersGestionF
       Font.Height = 12
       Font.Name = 'Roboto'
       Font.Style = []
+      StyleElements = []
       ParentBiDiMode = False
       ParentBackground = False
       ParentCtl3D = False
       ParentFont = False
       TabOrder = 16
-      StyleElements = []
       BoundLabel.Caption = 'sSlider1'
       BoundLabel.Layout = sclBottomCenter
       FontOn.Charset = DEFAULT_CHARSET
@@ -1796,12 +1830,12 @@ object UsersGestionF: TUsersGestionF
       Font.Height = 12
       Font.Name = 'Roboto'
       Font.Style = []
+      StyleElements = []
       ParentBiDiMode = False
       ParentBackground = False
       ParentCtl3D = False
       ParentFont = False
       TabOrder = 17
-      StyleElements = []
       BoundLabel.Caption = 'sSlider1'
       BoundLabel.Layout = sclBottomCenter
       FontOn.Charset = DEFAULT_CHARSET
@@ -1828,12 +1862,12 @@ object UsersGestionF: TUsersGestionF
       Font.Height = 12
       Font.Name = 'Roboto'
       Font.Style = []
+      StyleElements = []
       ParentBiDiMode = False
       ParentBackground = False
       ParentCtl3D = False
       ParentFont = False
       TabOrder = 18
-      StyleElements = []
       BoundLabel.Caption = 'sSlider1'
       BoundLabel.Layout = sclBottomCenter
       FontOn.Charset = DEFAULT_CHARSET
@@ -1860,12 +1894,12 @@ object UsersGestionF: TUsersGestionF
       Font.Height = 12
       Font.Name = 'Roboto'
       Font.Style = []
+      StyleElements = []
       ParentBiDiMode = False
       ParentBackground = False
       ParentCtl3D = False
       ParentFont = False
       TabOrder = 19
-      StyleElements = []
       BoundLabel.Caption = 'sSlider1'
       BoundLabel.Layout = sclBottomCenter
       FontOn.Charset = DEFAULT_CHARSET
@@ -1892,12 +1926,12 @@ object UsersGestionF: TUsersGestionF
       Font.Height = 12
       Font.Name = 'Roboto'
       Font.Style = []
+      StyleElements = []
       ParentBiDiMode = False
       ParentBackground = False
       ParentCtl3D = False
       ParentFont = False
       TabOrder = 20
-      StyleElements = []
       BoundLabel.Caption = 'sSlider1'
       BoundLabel.Layout = sclBottomCenter
       FontOn.Charset = DEFAULT_CHARSET
@@ -1924,12 +1958,12 @@ object UsersGestionF: TUsersGestionF
       Font.Height = 12
       Font.Name = 'Roboto'
       Font.Style = []
+      StyleElements = []
       ParentBiDiMode = False
       ParentBackground = False
       ParentCtl3D = False
       ParentFont = False
       TabOrder = 21
-      StyleElements = []
       BoundLabel.Caption = 'sSlider1'
       BoundLabel.Layout = sclBottomCenter
       FontOn.Charset = DEFAULT_CHARSET
@@ -1940,6 +1974,38 @@ object UsersGestionF: TUsersGestionF
       SliderCursor = crHandPoint
       Reversed = True
       OnChanging = LocalSdrChanging
+    end
+    object TotauxSdr: TsSlider
+      Left = 156
+      Top = 267
+      Width = 29
+      Height = 15
+      BevelOuter = bvNone
+      BiDiMode = bdLeftToRight
+      Color = clWhite
+      Ctl3D = False
+      Enabled = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 4207405
+      Font.Height = 12
+      Font.Name = 'Roboto'
+      Font.Style = []
+      StyleElements = []
+      ParentBiDiMode = False
+      ParentBackground = False
+      ParentCtl3D = False
+      ParentFont = False
+      TabOrder = 22
+      BoundLabel.Caption = 'sSlider1'
+      BoundLabel.Layout = sclBottomCenter
+      FontOn.Charset = DEFAULT_CHARSET
+      FontOn.Color = 4207405
+      FontOn.Height = 12
+      FontOn.Name = 'Roboto'
+      FontOn.Style = []
+      SliderCursor = crHandPoint
+      Reversed = True
+      OnChanging = TotauxSdrChanging
     end
   end
   object BottomP: TPanel
@@ -1986,8 +2052,40 @@ object UsersGestionF: TUsersGestionF
       ShowHint = True
       Spacing = -1
       OnClick = OKUserGEdtClick
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
+  end
+  object PrixASdr: TsSlider
+    Left = 160
+    Top = 590
+    Width = 29
+    Height = 15
+    BevelOuter = bvNone
+    BiDiMode = bdLeftToRight
+    Color = clWhite
+    Ctl3D = False
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = 4207405
+    Font.Height = 12
+    Font.Name = 'Roboto'
+    Font.Style = []
+    StyleElements = []
+    ParentBiDiMode = False
+    ParentBackground = False
+    ParentCtl3D = False
+    ParentFont = False
+    TabOrder = 4
+    BoundLabel.Caption = 'sSlider1'
+    BoundLabel.Layout = sclBottomCenter
+    FontOn.Charset = DEFAULT_CHARSET
+    FontOn.Color = 4207405
+    FontOn.Height = 12
+    FontOn.Name = 'Roboto'
+    FontOn.Style = []
+    SliderCursor = crHandPoint
+    Reversed = True
+    SliderOn = False
+    OnChanging = PrixASdrChanging
   end
 end

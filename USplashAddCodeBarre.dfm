@@ -48,7 +48,7 @@ object FSplashAddCodeBarre: TFSplashAddCodeBarre
     ShowHint = True
     Spacing = -1
     OnClick = OKAddUniteSBtnClick
-    Version = '1.6.1.2'
+    Version = '1.6.2.0'
     TMSStyle = 0
   end
   object AddCBAddCodeBarreSBtn: TAdvToolButton
@@ -78,7 +78,7 @@ object FSplashAddCodeBarre: TFSplashAddCodeBarre
     ShowHint = True
     Spacing = -1
     OnClick = AddCBAddCodeBarreSBtnClick
-    Version = '1.6.1.2'
+    Version = '1.6.2.0'
     TMSStyle = 0
   end
   object DeleteCBAddCodeBarreSBtn: TAdvToolButton
@@ -108,7 +108,7 @@ object FSplashAddCodeBarre: TFSplashAddCodeBarre
     ShowHint = True
     Spacing = -1
     OnClick = DeleteCBAddCodeBarreSBtnClick
-    Version = '1.6.1.2'
+    Version = '1.6.2.0'
     TMSStyle = 0
   end
   object NumberCBAddCodeBarreSLbl: TLabel
@@ -153,7 +153,7 @@ object FSplashAddCodeBarre: TFSplashAddCodeBarre
     ShowHint = True
     Spacing = -1
     OnClick = RandomCBAddCodeBarreSBtnClick
-    Version = '1.6.1.2'
+    Version = '1.6.2.0'
     TMSStyle = 0
   end
   object DuplicatedCodeBarrelbl: TLabel
@@ -179,7 +179,7 @@ object FSplashAddCodeBarre: TFSplashAddCodeBarre
   object MaxCodeBarrelbl: TLabel
     Left = 31
     Top = 90
-    Width = 120
+    Width = 118
     Height = 13
     Caption = 'Vous avez atteint le max 70'
     Color = clBtnFace
@@ -227,7 +227,7 @@ object FSplashAddCodeBarre: TFSplashAddCodeBarre
     object FormCaptionAddUniteSLbl: TLabel
       Left = 40
       Top = 10
-      Width = 151
+      Width = 146
       Height = 22
       Caption = 'Multi Code '#226' barre'
       Color = 15722984
@@ -276,6 +276,7 @@ object FSplashAddCodeBarre: TFSplashAddCodeBarre
     ParentFont = False
     TabOrder = 2
     StyleElements = [seClient, seBorder]
+    OnEnter = NameAddCodeBarreSEdtEnter
     OnKeyPress = NameAddCodeBarreSEdtKeyPress
   end
   object Panel2: TPanel
@@ -330,6 +331,7 @@ object FSplashAddCodeBarre: TFSplashAddCodeBarre
       item
         Alignment = taCenter
         CaseInsensitiveTextSearch = False
+        CellButtons = <>
         DynProps = <>
         EditButtons = <>
         FieldName = 'nom_cb'

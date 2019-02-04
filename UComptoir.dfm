@@ -343,7 +343,7 @@ object BonCtrGestionF: TBonCtrGestionF
       133)
     object BonCtrTotalTTCLbl: TLabel
       Left = -2
-      Top = 21
+      Top = 19
       Width = 906
       Height = 118
       Alignment = taCenter
@@ -918,12 +918,12 @@ object BonCtrGestionF: TBonCtrGestionF
         Font.Height = 12
         Font.Name = 'Roboto'
         Font.Style = []
+        StyleElements = []
         ParentBiDiMode = False
         ParentBackground = False
         ParentCtl3D = False
         ParentFont = False
         TabOrder = 1
-        StyleElements = []
         BoundLabel.Caption = 'sSlider1'
         BoundLabel.Layout = sclBottomCenter
         FontOn.Charset = DEFAULT_CHARSET
@@ -990,7 +990,7 @@ object BonCtrGestionF: TBonCtrGestionF
             Value = 24.999983505411330000
           end
           item
-            Value = 25.000044385110370000
+            Value = 25.000044385110360000
           end
           item
             Value = 25.000020955221050000
@@ -1063,7 +1063,7 @@ object BonCtrGestionF: TBonCtrGestionF
           ShowHint = True
           Spacing = -1
           OnClick = AddBVCtrBonCtrGBtnClick
-          Version = '1.6.1.2'
+          Version = '1.6.2.0'
           ExplicitWidth = 190
           ExplicitHeight = 55
           TMSStyle = 0
@@ -1105,7 +1105,7 @@ object BonCtrGestionF: TBonCtrGestionF
           ShowHint = True
           Spacing = -1
           OnClick = EditBVCtrBonCtrGBtnClick
-          Version = '1.6.1.2'
+          Version = '1.6.2.0'
           ExplicitWidth = 220
           ExplicitHeight = 55
           TMSStyle = 0
@@ -1147,7 +1147,7 @@ object BonCtrGestionF: TBonCtrGestionF
           ShowHint = True
           Spacing = -1
           OnClick = ValiderBVCtrBonCtrGBtnClick
-          Version = '1.6.1.2'
+          Version = '1.6.2.0'
           ExplicitWidth = 220
           ExplicitHeight = 55
           TMSStyle = 0
@@ -1189,7 +1189,7 @@ object BonCtrGestionF: TBonCtrGestionF
           ShowHint = True
           Spacing = -1
           OnClick = ExValiderBVCtrBonCtrGBtnClick
-          Version = '1.6.1.2'
+          Version = '1.6.2.0'
           ExplicitWidth = 193
           ExplicitHeight = 55
           TMSStyle = 0
@@ -1231,7 +1231,7 @@ object BonCtrGestionF: TBonCtrGestionF
       object Label9: TLabel
         Left = 6
         Top = 20
-        Width = 36
+        Width = 35
         Height = 16
         Caption = 'Client:'
         Color = 4207405
@@ -1273,7 +1273,7 @@ object BonCtrGestionF: TBonCtrGestionF
         ShowHint = True
         Spacing = -1
         OnClick = AddClientBonCtrGBtnClick
-        Version = '1.6.1.2'
+        Version = '1.6.2.0'
         TMSStyle = 0
       end
       object RequiredClientGlbl: TLabel
@@ -1295,6 +1295,38 @@ object BonCtrGestionF: TBonCtrGestionF
         Visible = False
         WordWrap = True
         StyleElements = [seClient, seBorder]
+      end
+      object ListClientBonCtrGBtn: TAdvToolButton
+        Left = 76
+        Top = 45
+        Width = 51
+        Height = 21
+        Cursor = crHandPoint
+        AutoThemeAdapt = False
+        BorderColor = 15722984
+        BorderDownColor = 7854350
+        BorderHotColor = 15970832
+        Color = 15722984
+        ColorDown = 7854350
+        ColorHot = clBtnFace
+        ColorChecked = clNone
+        DropDownSplit = False
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 18
+        Font.Name = 'Roboto'
+        Font.Style = []
+        ImageIndex = 58
+        Images = MainForm.PanelIcons24
+        ParentFont = False
+        ParentShowHint = False
+        Rounded = True
+        Shaded = False
+        ShowHint = True
+        Spacing = -1
+        OnClick = ListClientBonCtrGBtnClick
+        Version = '1.6.2.0'
+        TMSStyle = 0
       end
       object NameClientGErrorP: TPanel
         Left = 42
@@ -1371,7 +1403,7 @@ object BonCtrGestionF: TBonCtrGestionF
       object Label18: TLabel
         Left = 6
         Top = 7
-        Width = 54
+        Width = 50
         Height = 16
         Caption = 'Montant:'
         Font.Charset = DEFAULT_CHARSET
@@ -1398,7 +1430,7 @@ object BonCtrGestionF: TBonCtrGestionF
       object Labell20: TLabel
         Left = 6
         Top = 68
-        Width = 37
+        Width = 36
         Height = 16
         Caption = 'Verse:'
         Font.Charset = DEFAULT_CHARSET
@@ -1425,7 +1457,7 @@ object BonCtrGestionF: TBonCtrGestionF
       object Label22: TLabel
         Left = 6
         Top = 37
-        Width = 47
+        Width = 46
         Height = 16
         Caption = 'Remise:'
         Font.Charset = DEFAULT_CHARSET
@@ -1438,7 +1470,7 @@ object BonCtrGestionF: TBonCtrGestionF
       object Label23: TLabel
         Left = 6
         Top = 97
-        Width = 42
+        Width = 39
         Height = 16
         Caption = 'Rendu:'
         Font.Charset = DEFAULT_CHARSET
@@ -1485,6 +1517,21 @@ object BonCtrGestionF: TBonCtrGestionF
         ParentFont = False
         Layout = tlCenter
         StyleElements = []
+      end
+      object BonCtrTotalAHTLbl: TLabel
+        Left = 174
+        Top = 21
+        Width = 10
+        Height = 21
+        Alignment = taRightJustify
+        Caption = '0'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 16771277
+        Font.Height = 21
+        Font.Name = 'Roboto'
+        Font.Style = []
+        ParentFont = False
+        Visible = False
       end
       object Panel27: TPanel
         Left = 0
@@ -1565,7 +1612,7 @@ object BonCtrGestionF: TBonCtrGestionF
       object Label2: TLabel
         Left = 6
         Top = 6
-        Width = 44
+        Width = 42
         Height = 16
         Caption = 'Bon N'#176':'
         Font.Charset = DEFAULT_CHARSET
@@ -1605,7 +1652,7 @@ object BonCtrGestionF: TBonCtrGestionF
       object Label7: TLabel
         Left = 6
         Top = 35
-        Width = 39
+        Width = 37
         Height = 16
         Caption = 'Heure:'
         Font.Charset = DEFAULT_CHARSET
@@ -1704,6 +1751,7 @@ object BonCtrGestionF: TBonCtrGestionF
         item
           Alignment = taCenter
           CaseInsensitiveTextSearch = False
+          CellButtons = <>
           DynProps = <>
           EditButtons = <>
           EndEllipsis = True
@@ -2226,18 +2274,8 @@ object BonCtrGestionF: TBonCtrGestionF
         end
         object Fav2ListTB: TsTabSheet
           Caption = 'Liste 2'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = 8469216
-          Font.Height = 13
-          Font.Name = 'Helvetica LT Std'
-          Font.Style = []
-          ParentFont = False
           SkinData.CustomColor = True
           SkinData.CustomFont = True
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object Panel31: TPanel
             Left = 0
             Top = 0
@@ -2612,18 +2650,8 @@ object BonCtrGestionF: TBonCtrGestionF
         end
         object Fav3ListTB: TsTabSheet
           Caption = 'Liste 3'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = 13344790
-          Font.Height = 13
-          Font.Name = 'Helvetica LT Std'
-          Font.Style = []
-          ParentFont = False
           SkinData.CustomColor = True
           SkinData.CustomFont = True
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object Panel32: TPanel
             Left = 0
             Top = 0
@@ -2998,18 +3026,8 @@ object BonCtrGestionF: TBonCtrGestionF
         end
         object Fav4ListTB: TsTabSheet
           Caption = 'Liste 4'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = 10332222
-          Font.Height = 13
-          Font.Name = 'Helvetica LT Std'
-          Font.Style = []
-          ParentFont = False
           SkinData.CustomColor = True
           SkinData.CustomFont = True
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object Panel33: TPanel
             Left = 0
             Top = 0
@@ -3384,18 +3402,8 @@ object BonCtrGestionF: TBonCtrGestionF
         end
         object Fav5ListTB: TsTabSheet
           Caption = 'Liste 5'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = 7854350
-          Font.Height = 13
-          Font.Name = 'Helvetica LT Std'
-          Font.Style = []
-          ParentFont = False
           SkinData.CustomColor = True
           SkinData.CustomFont = True
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object Panel34: TPanel
             Left = 0
             Top = 0
@@ -3783,7 +3791,7 @@ object BonCtrGestionF: TBonCtrGestionF
       Left = 0
       Top = 0
       Width = 563
-      Height = 115
+      Height = 147
       Align = alTop
       BevelOuter = bvNone
       Color = 15527148
@@ -3791,10 +3799,10 @@ object BonCtrGestionF: TBonCtrGestionF
       TabOrder = 0
       DesignSize = (
         563
-        115)
+        147)
       object Label6: TLabel
         Left = 8
-        Top = 60
+        Top = 92
         Width = 76
         Height = 15
         Anchors = [akLeft, akBottom]
@@ -3811,7 +3819,7 @@ object BonCtrGestionF: TBonCtrGestionF
       end
       object ListAddProduitBonCtrGBtn: TAdvToolButton
         Left = 381
-        Top = 49
+        Top = 81
         Width = 71
         Height = 38
         Cursor = crHandPoint
@@ -3840,13 +3848,14 @@ object BonCtrGestionF: TBonCtrGestionF
         ShowHint = True
         Spacing = -1
         OnClick = ListAddProduitBonCtrGBtnClick
-        Version = '1.6.1.2'
+        Version = '1.6.2.0'
         ExplicitLeft = 541
+        ExplicitTop = 49
         TMSStyle = 0
       end
       object NewAddProduitBonCtrGBtn: TAdvToolButton
         Left = 459
-        Top = 49
+        Top = 81
         Width = 100
         Height = 38
         Cursor = crHandPoint
@@ -3876,13 +3885,14 @@ object BonCtrGestionF: TBonCtrGestionF
         ShowHint = True
         Spacing = -1
         OnClick = NewAddProduitBonCtrGBtnClick
-        Version = '1.6.1.2'
+        Version = '1.6.2.0'
         ExplicitLeft = 619
+        ExplicitTop = 49
         TMSStyle = 0
       end
       object EnterAddProduitBonCtrGBtn: TAdvToolButton
         Left = 335
-        Top = 49
+        Top = 81
         Width = 38
         Height = 38
         Cursor = crHandPoint
@@ -3909,13 +3919,14 @@ object BonCtrGestionF: TBonCtrGestionF
         ShowHint = True
         Spacing = -1
         OnClick = EnterAddProduitBonCtrGBtnClick
-        Version = '1.6.1.2'
+        Version = '1.6.2.0'
         ExplicitLeft = 495
+        ExplicitTop = 49
         TMSStyle = 0
       end
       object Label20: TLabel
         Left = 86
-        Top = 87
+        Top = 118
         Width = 243
         Height = 27
         Alignment = taCenter
@@ -3936,10 +3947,10 @@ object BonCtrGestionF: TBonCtrGestionF
         StyleElements = []
       end
       object ClearProduitBonCtrGBtn: TsSpeedButton
-        Left = 370
+        Left = 315
         Top = 1
-        Width = 35
-        Height = 35
+        Width = 45
+        Height = 45
         Hint = '[Ctrl+Supper]'
         Anchors = [akTop, akRight]
         ParentShowHint = False
@@ -3950,10 +3961,10 @@ object BonCtrGestionF: TBonCtrGestionF
         ImageIndex = 16
       end
       object ShowCalculaturBonCtrGBtn: TsSpeedButton
-        Left = 409
+        Left = 364
         Top = 1
-        Width = 35
-        Height = 35
+        Width = 45
+        Height = 45
         Hint = 'Calculatrice'
         Anchors = [akTop, akRight]
         ParentShowHint = False
@@ -3964,10 +3975,10 @@ object BonCtrGestionF: TBonCtrGestionF
         ImageIndex = 24
       end
       object ShowKeyBoardBonCtrGBtn: TsSpeedButton
-        Left = 448
+        Left = 413
         Top = 1
-        Width = 35
-        Height = 35
+        Width = 45
+        Height = 45
         Hint = 'Clavier'
         Anchors = [akTop, akRight]
         ParentShowHint = False
@@ -3978,10 +3989,10 @@ object BonCtrGestionF: TBonCtrGestionF
         ImageIndex = 43
       end
       object CloseBonCtrGBtn: TsSpeedButton
-        Left = 525
+        Left = 511
         Top = 1
-        Width = 35
-        Height = 35
+        Width = 45
+        Height = 45
         Hint = 'Ferm'#233'r'
         Anchors = [akTop, akRight]
         ParentShowHint = False
@@ -3992,10 +4003,10 @@ object BonCtrGestionF: TBonCtrGestionF
         ImageIndex = 45
       end
       object MinimizeBonCtrGBtn: TsSpeedButton
-        Left = 487
+        Left = 462
         Top = 1
-        Width = 35
-        Height = 35
+        Width = 45
+        Height = 45
         Hint = 'Minimiser'
         Anchors = [akTop, akRight]
         Enabled = False
@@ -4006,73 +4017,41 @@ object BonCtrGestionF: TBonCtrGestionF
         Images = MainForm.PanelIcons24
         ImageIndex = 44
       end
-      object sImage3: TsImage
-        Left = 303
-        Top = 29
-        Width = 26
-        Height = 20
-        Anchors = [akRight, akBottom]
-        Center = True
-        Picture.Data = {07544269746D617000000000}
-        Proportional = True
-        Stretch = True
-        Transparent = True
-        ImageIndex = 46
-        Images = MainForm.PanelIcons24
-        SkinData.SkinSection = 'CHECKBOX'
-        ExplicitLeft = 463
-      end
-      object sImage2: TsImage
-        Left = 280
-        Top = 29
-        Width = 26
-        Height = 20
-        Anchors = [akRight, akBottom]
-        Center = True
-        Picture.Data = {07544269746D617000000000}
-        Proportional = True
-        Stretch = True
-        Transparent = True
-        ImageIndex = 47
-        Images = MainForm.PanelIcons24
-        SkinData.SkinSection = 'CHECKBOX'
-        ExplicitLeft = 440
-      end
       object BonCRemiseHTNewLbl: TLabel
-        Left = 6
-        Top = 90
+        Left = 12
+        Top = 62
         Width = 6
         Height = 13
         Caption = '0'
         Visible = False
       end
       object TotalTVANewLbl: TLabel
-        Left = 30
-        Top = 88
+        Left = 36
+        Top = 60
         Width = 6
         Height = 13
         Caption = '0'
         Visible = False
       end
       object BonCTotalHTNewLbl: TLabel
-        Left = 18
-        Top = 89
+        Left = 24
+        Top = 61
         Width = 6
         Height = 13
         Caption = '0'
         Visible = False
       end
       object BonCtrTotalHTLbl: TLabel
-        Left = 54
-        Top = 88
+        Left = 60
+        Top = 60
         Width = 6
         Height = 13
         Caption = '0'
         Visible = False
       end
       object BonCtrTotalTVALbl: TLabel
-        Left = 42
-        Top = 88
+        Left = 48
+        Top = 60
         Width = 6
         Height = 13
         Caption = '0'
@@ -4094,9 +4073,9 @@ object BonCtrGestionF: TBonCtrGestionF
         Visible = False
       end
       object Label3: TLabel
-        Left = 82
-        Top = -1
-        Width = 247
+        Left = 86
+        Top = 57
+        Width = 243
         Height = 27
         Alignment = taCenter
         Anchors = [akLeft, akTop, akRight]
@@ -4114,11 +4093,10 @@ object BonCtrGestionF: TBonCtrGestionF
         Layout = tlCenter
         Visible = False
         StyleElements = []
-        ExplicitWidth = 141
       end
       object Label29: TLabel
-        Left = 409
-        Top = 86
+        Left = 407
+        Top = 150
         Width = 15
         Height = 12
         Anchors = [akTop, akRight]
@@ -4129,11 +4107,10 @@ object BonCtrGestionF: TBonCtrGestionF
         Font.Name = 'Segoe UI'
         Font.Style = []
         ParentFont = False
-        ExplicitLeft = 569
       end
       object Label5: TLabel
         Left = 86
-        Top = 32
+        Top = 19
         Width = 243
         Height = 12
         Alignment = taCenter
@@ -4148,13 +4125,12 @@ object BonCtrGestionF: TBonCtrGestionF
         Font.Name = 'Segoe UI'
         Font.Style = []
         ParentFont = False
-        ExplicitWidth = 137
       end
       object DeleteProduitBonCtrGBtn: TsSpeedButton
-        Left = 331
+        Left = 266
         Top = 1
-        Width = 35
-        Height = 35
+        Width = 45
+        Height = 45
         Hint = '[Supper]'
         Anchors = [akTop, akRight]
         ParentShowHint = False
@@ -4165,8 +4141,8 @@ object BonCtrGestionF: TBonCtrGestionF
         ImageIndex = 14
       end
       object Label8: TLabel
-        Left = 501
-        Top = 86
+        Left = 499
+        Top = 150
         Width = 20
         Height = 12
         Anchors = [akTop, akRight]
@@ -4177,11 +4153,10 @@ object BonCtrGestionF: TBonCtrGestionF
         Font.Name = 'Segoe UI'
         Font.Style = []
         ParentFont = False
-        ExplicitLeft = 661
       end
       object Label13: TLabel
-        Left = 331
-        Top = 34
+        Left = 272
+        Top = 44
         Width = 34
         Height = 12
         Anchors = [akTop, akRight]
@@ -4195,8 +4170,8 @@ object BonCtrGestionF: TBonCtrGestionF
         Visible = False
       end
       object Label14: TLabel
-        Left = 364
-        Top = 34
+        Left = 311
+        Top = 44
         Width = 54
         Height = 12
         Anchors = [akTop, akRight]
@@ -4210,8 +4185,8 @@ object BonCtrGestionF: TBonCtrGestionF
         Visible = False
       end
       object Label15: TLabel
-        Left = 528
-        Top = 34
+        Left = 519
+        Top = 44
         Width = 30
         Height = 12
         Anchors = [akTop, akRight]
@@ -4224,10 +4199,10 @@ object BonCtrGestionF: TBonCtrGestionF
         ParentFont = False
       end
       object CameraBonCtrGBtn: TsSpeedButton
-        Left = 246
-        Top = 27
+        Left = 242
+        Top = 56
         Width = 32
-        Height = 21
+        Height = 27
         Hint = 'Camera'
         Anchors = [akRight, akBottom]
         ParentShowHint = False
@@ -4240,9 +4215,9 @@ object BonCtrGestionF: TBonCtrGestionF
       object ChangeQUTBonCtrGBtn: TsSpeedButton
         Left = 8
         Top = 1
-        Width = 35
-        Height = 35
-        Hint = 'Changer le QUT'
+        Width = 45
+        Height = 45
+        Hint = 'Changer le Quantit'#233
         ParentShowHint = False
         ShowHint = True
         OnClick = ChangeQUTBonCtrGBtnClick
@@ -4251,11 +4226,11 @@ object BonCtrGestionF: TBonCtrGestionF
         ImageIndex = 16
       end
       object ChangePRIXBonCtrGBtn: TsSpeedButton
-        Left = 47
+        Left = 57
         Top = 1
-        Width = 35
-        Height = 35
-        Hint = 'Changer le PRIX'
+        Width = 45
+        Height = 45
+        Hint = 'Changer le Prix'
         ParentShowHint = False
         ShowHint = True
         OnClick = ChangePRIXBonCtrGBtnClick
@@ -4264,11 +4239,11 @@ object BonCtrGestionF: TBonCtrGestionF
         ImageIndex = 17
       end
       object sSpeedButton3: TsSpeedButton
-        Left = 86
+        Left = 106
         Top = 1
-        Width = 35
-        Height = 35
-        Hint = 'Produit Diver'
+        Width = 45
+        Height = 45
+        Hint = 'Ajouter des Produits Divers'
         ParentShowHint = False
         ShowHint = True
         OnClick = sSpeedButton3Click
@@ -4276,9 +4251,39 @@ object BonCtrGestionF: TBonCtrGestionF
         Images = MainForm.ComptoiIcons48
         ImageIndex = 18
       end
+      object sImage2: TsImage
+        Left = 276
+        Top = 58
+        Width = 26
+        Height = 22
+        Anchors = [akRight, akBottom]
+        Center = True
+        Picture.Data = {07544269746D617000000000}
+        Proportional = True
+        Stretch = True
+        Transparent = True
+        ImageIndex = 47
+        Images = MainForm.PanelIcons24
+        SkinData.SkinSection = 'CHECKBOX'
+      end
+      object sImage3: TsImage
+        Left = 302
+        Top = 58
+        Width = 26
+        Height = 22
+        Anchors = [akRight, akBottom]
+        Center = True
+        Picture.Data = {07544269746D617000000000}
+        Proportional = True
+        Stretch = True
+        Transparent = True
+        ImageIndex = 46
+        Images = MainForm.PanelIcons24
+        SkinData.SkinSection = 'CHECKBOX'
+      end
       object Panel29: TPanel
         Left = 0
-        Top = 113
+        Top = 145
         Width = 563
         Height = 2
         Align = alBottom
@@ -4289,7 +4294,7 @@ object BonCtrGestionF: TBonCtrGestionF
       end
       object ProduitBonCtrGCbx: TcxComboBox
         Left = 86
-        Top = 49
+        Top = 80
         Anchors = [akLeft, akRight, akBottom]
         AutoSize = False
         ParentFont = False
@@ -4314,9 +4319,9 @@ object BonCtrGestionF: TBonCtrGestionF
     end
     object ProduitsListDBGridEh: TDBGridEh
       Left = 0
-      Top = 115
+      Top = 147
       Width = 563
-      Height = 371
+      Height = 339
       Align = alClient
       Border.Color = 4207405
       Border.ExtendedDraw = False
@@ -4381,6 +4386,7 @@ object BonCtrGestionF: TBonCtrGestionF
       Columns = <
         item
           Alignment = taCenter
+          CellButtons = <>
           DynProps = <>
           EditButtons = <>
           FieldName = 'referp'
@@ -4406,6 +4412,7 @@ object BonCtrGestionF: TBonCtrGestionF
         end
         item
           AutoDropDown = True
+          CellButtons = <>
           DynProps = <>
           EditButtons = <>
           FieldName = 'nomp'
@@ -4431,7 +4438,8 @@ object BonCtrGestionF: TBonCtrGestionF
         end
         item
           Alignment = taCenter
-          DisplayFormat = '0.00 '
+          CellButtons = <>
+          DisplayFormat = '0.000'
           DynProps = <>
           EditButtons = <>
           FieldName = 'qut_p'
@@ -4455,6 +4463,7 @@ object BonCtrGestionF: TBonCtrGestionF
         end
         item
           Alignment = taCenter
+          CellButtons = <>
           DynProps = <>
           EditButtons = <>
           FieldName = 'cond_p'
@@ -4477,6 +4486,7 @@ object BonCtrGestionF: TBonCtrGestionF
           WordWrap = False
         end
         item
+          CellButtons = <>
           DisplayFormat = '#,##0.00'
           DynProps = <>
           EditButtons = <>
@@ -4501,6 +4511,7 @@ object BonCtrGestionF: TBonCtrGestionF
         end
         item
           Alignment = taCenter
+          CellButtons = <>
           DisplayFormat = '0.00 %'
           DynProps = <>
           EditButtons = <>
@@ -4520,13 +4531,15 @@ object BonCtrGestionF: TBonCtrGestionF
           Title.Font.Name = 'Helvetica LT Std'
           Title.Font.Style = []
           Title.Font.Quality = fqProof
+          Visible = False
           WordWrap = False
         end
         item
+          CellButtons = <>
           DisplayFormat = '#,##0.00'
           DynProps = <>
           EditButtons = <>
-          FieldName = 'PrixVTTC'
+          FieldName = 'prixvttc'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = 4207405
           Font.Height = 14
@@ -4536,6 +4549,7 @@ object BonCtrGestionF: TBonCtrGestionF
           Footers = <>
           Layout = tlCenter
           Title.Alignment = taCenter
+          Title.Caption = 'Prix V TTC'
           Title.Font.Charset = DEFAULT_CHARSET
           Title.Font.Color = 4207405
           Title.Font.Height = 16
@@ -4547,10 +4561,11 @@ object BonCtrGestionF: TBonCtrGestionF
           WordWrap = False
         end
         item
+          CellButtons = <>
           DisplayFormat = '#,##0.00'
           DynProps = <>
           EditButtons = <>
-          FieldName = 'MontantHT'
+          FieldName = 'montantht'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = 4207405
           Font.Height = 14
@@ -4558,9 +4573,9 @@ object BonCtrGestionF: TBonCtrGestionF
           Font.Style = []
           Footers = <>
           Layout = tlCenter
-          ReadOnly = True
           TextEditing = False
           Title.Alignment = taCenter
+          Title.Caption = 'Montant HT'
           Title.Font.Charset = DEFAULT_CHARSET
           Title.Font.Color = 4207405
           Title.Font.Height = 16
@@ -4572,10 +4587,11 @@ object BonCtrGestionF: TBonCtrGestionF
           WordWrap = False
         end
         item
+          CellButtons = <>
           DisplayFormat = '#,##0.00'
           DynProps = <>
           EditButtons = <>
-          FieldName = 'MontantTVA'
+          FieldName = 'montanttva'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = 4207405
           Font.Height = 14
@@ -4583,9 +4599,9 @@ object BonCtrGestionF: TBonCtrGestionF
           Font.Style = []
           Footers = <>
           Layout = tlCenter
-          ReadOnly = True
           TextEditing = False
           Title.Alignment = taCenter
+          Title.Caption = 'Montant TVA'
           Title.Font.Charset = DEFAULT_CHARSET
           Title.Font.Color = 4207405
           Title.Font.Height = 16
@@ -4597,11 +4613,12 @@ object BonCtrGestionF: TBonCtrGestionF
           WordWrap = False
         end
         item
+          CellButtons = <>
           Color = 15722984
           DisplayFormat = '#,##0.00'
           DynProps = <>
           EditButtons = <>
-          FieldName = 'MontantTTC'
+          FieldName = 'montantttc'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = 4207405
           Font.Height = 14
@@ -4609,9 +4626,9 @@ object BonCtrGestionF: TBonCtrGestionF
           Font.Style = []
           Footers = <>
           Layout = tlCenter
-          ReadOnly = True
           TextEditing = False
           Title.Alignment = taCenter
+          Title.Caption = 'Montant'
           Title.Font.Charset = DEFAULT_CHARSET
           Title.Font.Color = 4207405
           Title.Font.Height = 16
@@ -4622,10 +4639,34 @@ object BonCtrGestionF: TBonCtrGestionF
           WordWrap = False
         end
         item
+          CellButtons = <>
           DisplayFormat = '#,##0.00'
           DynProps = <>
           EditButtons = <>
-          FieldName = 'MargeM'
+          FieldName = 'prixht_p'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 4207405
+          Font.Height = 14
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = []
+          Footers = <>
+          Layout = tlCenter
+          Title.Alignment = taCenter
+          Title.Caption = 'Prix A HT'
+          Title.Font.Charset = DEFAULT_CHARSET
+          Title.Font.Color = 4207405
+          Title.Font.Height = 16
+          Title.Font.Name = 'Helvetica LT Std'
+          Title.Font.Style = []
+          Title.Font.Quality = fqProof
+          Width = 170
+        end
+        item
+          CellButtons = <>
+          DisplayFormat = '#,##0.00'
+          DynProps = <>
+          EditButtons = <>
+          FieldName = 'margem'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = 4207405
           Font.Height = 14
@@ -4642,14 +4683,16 @@ object BonCtrGestionF: TBonCtrGestionF
           Title.Font.Name = 'Helvetica LT Std'
           Title.Font.Style = []
           Title.Font.Quality = fqProof
+          Visible = False
           Width = 170
           WordWrap = False
         end
         item
+          CellButtons = <>
           DisplayFormat = '0.00 %'
           DynProps = <>
           EditButtons = <>
-          FieldName = 'Marge'
+          FieldName = 'marge'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = 4207405
           Font.Height = 14
@@ -4666,6 +4709,7 @@ object BonCtrGestionF: TBonCtrGestionF
           Title.Font.Name = 'Helvetica LT Std'
           Title.Font.Style = []
           Title.Font.Quality = fqProof
+          Visible = False
           WordWrap = False
         end>
       object RowDetailData: TRowDetailPanelControlEh
@@ -4699,15 +4743,20 @@ object BonCtrGestionF: TBonCtrGestionF
       'qut_p=qut_p'
       'prixvd_p=prixvd_p'
       'cond_p=cond_p'
-      'PrixVTTC=PrixVTTC'
-      'MontantHT=MontantHT'
-      'MontantTVA=MontantTVA'
-      'MontantTTC=MontantTTC'
       'code_p=code_p'
       'nomp=nomp'
       'referp=referp'
-      'tvap=tvap'
-      'TVA=TVA')
+      'TVA=TVA'
+      'tva_p=tva_p'
+      'code_barec=code_barec'
+      'prixht_p=prixht_p'
+      'prixvttc=prixvttc'
+      'montantht=montantht'
+      'montantttc=montantttc'
+      'montanttva=montanttva'
+      'montantaht=montantaht'
+      'marge=marge'
+      'margem=margem')
     DataSource = BonCtrPListDataS
     BCDToCurrency = False
     Left = 78
@@ -4725,17 +4774,18 @@ object BonCtrGestionF: TBonCtrGestionF
       'montver_bvctr=montver_bvctr'
       'valider_bvctr=valider_bvctr'
       'num_bvctr=num_bvctr'
-      'obser_bvctr=obser_bvctr'
       'clientbvctr=clientbvctr'
       'montttc_bvctr=montttc_bvctr'
       'remise_bvctr=remise_bvctr'
-      'MontantTVA=MontantTVA'
-      'MontantRen=MontantRen'
-      'RemisePerc=RemisePerc'
       'NEWTTC=NEWTTC'
       'code_ur=code_ur'
-      'Agnet=Agnet'
-      'NeTHT=NeTHT')
+      'marge_bvctr=marge_bvctr'
+      'obser_bvctr=obser_bvctr'
+      'Agent=Agent'
+      'montanttva=montanttva'
+      'montantren=montantren'
+      'remiseperc=remiseperc'
+      'netht=netht')
     DataSet = MainForm.Bonv_ctrTable
     BCDToCurrency = False
     Left = 78
@@ -4781,7 +4831,7 @@ object BonCtrGestionF: TBonCtrGestionF
     Top = 324
   end
   object ComptoirTicketfrxRprt: TfrxReport
-    Version = '5.4.6'
+    Version = '5.6.1'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick, pbNoClose, pbNoFullScreen, pbNoEmail]
@@ -4790,7 +4840,7 @@ object BonCtrGestionF: TBonCtrGestionF
     PrintOptions.PrintOnSheet = 0
     PrintOptions.ShowDialog = False
     ReportOptions.CreateDate = 41863.570242476900000000
-    ReportOptions.LastChange = 42973.520555219900000000
+    ReportOptions.LastChange = 43191.717916875000000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       '//procedure Page1OnBeforePrint(Sender: TfrxComponent);'
@@ -4927,9 +4977,9 @@ object BonCtrGestionF: TBonCtrGestionF
           Height = 19.275595430000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -15
-          Font.Name = 'Merchant Copy'
-          Font.Style = [fsBold]
+          Font.Height = -11
+          Font.Name = 'Segoe UI'
+          Font.Style = []
           Frame.Style = fsDashDot
           GapY = 4.000000000000000000
           HAlign = haRight
@@ -4944,9 +4994,9 @@ object BonCtrGestionF: TBonCtrGestionF
           Height = 19.275595430000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -15
-          Font.Name = 'Merchant Copy'
-          Font.Style = [fsBold]
+          Font.Height = -11
+          Font.Name = 'Segoe UI'
+          Font.Style = []
           Frame.Style = fsDashDot
           GapY = 4.000000000000000000
           HAlign = haRight
@@ -4961,9 +5011,9 @@ object BonCtrGestionF: TBonCtrGestionF
           Height = 19.275595430000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -15
-          Font.Name = 'Merchant Copy'
-          Font.Style = [fsBold]
+          Font.Height = -11
+          Font.Name = 'Segoe UI'
+          Font.Style = []
           Frame.Style = fsDashDot
           GapY = 4.000000000000000000
           HAlign = haCenter
@@ -4978,9 +5028,9 @@ object BonCtrGestionF: TBonCtrGestionF
           Height = 19.275595430000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -15
-          Font.Name = 'Merchant Copy'
-          Font.Style = [fsBold]
+          Font.Height = -11
+          Font.Name = 'Segoe UI'
+          Font.Style = []
           Frame.Style = fsDash
           GapY = 4.000000000000000000
           Memo.UTF8W = (
@@ -5003,7 +5053,7 @@ object BonCtrGestionF: TBonCtrGestionF
         end
         object Line8: TfrxLineView
           Left = 2.779530000000000000
-          Top = 0.779530000000000000
+          Top = 0.779529999999994000
           Width = 264.567100000000000000
           Color = clBlack
           Frame.Style = fsDashDot
@@ -5032,7 +5082,7 @@ object BonCtrGestionF: TBonCtrGestionF
         Stretched = True
         object Memo46: TfrxMemoView
           Left = 110.102362200000000000
-          Top = 2.889763780000000000
+          Top = 2.889763780000010000
           Width = 38.551178660000000000
           Height = 17.007874020000000000
           StretchMode = smActualHeight
@@ -5044,8 +5094,8 @@ object BonCtrGestionF: TBonCtrGestionF
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -15
-          Font.Name = 'Merchant Copy'
+          Font.Height = -11
+          Font.Name = 'Segoe UI'
           Font.Style = []
           HAlign = haCenter
           Memo.UTF8W = (
@@ -5056,7 +5106,7 @@ object BonCtrGestionF: TBonCtrGestionF
         end
         object Memo47: TfrxMemoView
           Left = 148.787401570000000000
-          Top = 2.889763780000000000
+          Top = 2.889763780000010000
           Width = 60.094488190000000000
           Height = 17.007874020000000000
           StretchMode = smActualHeight
@@ -5068,8 +5118,8 @@ object BonCtrGestionF: TBonCtrGestionF
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -15
-          Font.Name = 'Merchant Copy'
+          Font.Height = -11
+          Font.Name = 'Segoe UI'
           Font.Style = []
           HAlign = haRight
           Memo.UTF8W = (
@@ -5080,7 +5130,7 @@ object BonCtrGestionF: TBonCtrGestionF
         end
         object Memo50: TfrxMemoView
           Left = 209.031496060000000000
-          Top = 2.889763780000000000
+          Top = 2.889763780000010000
           Width = 60.094488190000000000
           Height = 17.007874020000000000
           StretchMode = smActualHeight
@@ -5092,8 +5142,8 @@ object BonCtrGestionF: TBonCtrGestionF
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -15
-          Font.Name = 'Merchant Copy'
+          Font.Height = -11
+          Font.Name = 'Segoe UI'
           Font.Style = []
           HAlign = haRight
           Memo.UTF8W = (
@@ -5104,7 +5154,7 @@ object BonCtrGestionF: TBonCtrGestionF
         end
         object Memo24: TfrxMemoView
           Left = 1.889763780000000000
-          Top = 0.889763780000000000
+          Top = 0.889763780000010000
           Width = 108.094478430000000000
           Height = 17.007874020000000000
           StretchMode = smActualHeight
@@ -5136,14 +5186,14 @@ object BonCtrGestionF: TBonCtrGestionF
         Stretched = True
         object Memo61: TfrxMemoView
           Left = 123.952794960000000000
-          Top = 4.425191970000000000
+          Top = 4.425191970000010000
           Width = 62.362204720000000000
           Height = 18.897650000000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -16
-          Font.Name = 'Merchant Copy'
-          Font.Style = [fsBold]
+          Font.Height = -9
+          Font.Name = 'arial'
+          Font.Style = []
           HAlign = haRight
           Memo.UTF8W = (
             'Total HT :')
@@ -5157,9 +5207,9 @@ object BonCtrGestionF: TBonCtrGestionF
           Height = 18.897650000000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -16
-          Font.Name = 'Merchant Copy'
-          Font.Style = [fsBold]
+          Font.Height = -9
+          Font.Name = 'arial'
+          Font.Style = []
           HAlign = haRight
           Memo.UTF8W = (
             'Remise :')
@@ -5173,9 +5223,9 @@ object BonCtrGestionF: TBonCtrGestionF
           Height = 18.897650000000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -16
-          Font.Name = 'Merchant Copy'
-          Font.Style = [fsBold]
+          Font.Height = -9
+          Font.Name = 'arial'
+          Font.Style = []
           HAlign = haRight
           Memo.UTF8W = (
             'Net a payer:')
@@ -5184,7 +5234,7 @@ object BonCtrGestionF: TBonCtrGestionF
         end
         object Memo67: TfrxMemoView
           Left = 187.102362200000000000
-          Top = 4.425191970000000000
+          Top = 4.425191970000010000
           Width = 79.370088500000000000
           Height = 18.897650000000000000
           DataField = 'montht_bvctr'
@@ -5196,9 +5246,9 @@ object BonCtrGestionF: TBonCtrGestionF
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -16
-          Font.Name = 'Merchant Copy'
-          Font.Style = [fsBold]
+          Font.Height = -11
+          Font.Name = 'Segoe UI'
+          Font.Style = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxComptoirDB."montht_bvctr"]')
@@ -5219,9 +5269,9 @@ object BonCtrGestionF: TBonCtrGestionF
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -16
-          Font.Name = 'Merchant Copy'
-          Font.Style = [fsBold]
+          Font.Height = -11
+          Font.Name = 'Segoe UI'
+          Font.Style = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxComptoirDB."remise_bvctr"]')
@@ -5241,9 +5291,9 @@ object BonCtrGestionF: TBonCtrGestionF
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -16
-          Font.Name = 'Merchant Copy'
-          Font.Style = [fsBold]
+          Font.Height = -11
+          Font.Name = 'Segoe UI'
+          Font.Style = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxComptoirDB."montttc_bvctr"]')
@@ -5257,9 +5307,9 @@ object BonCtrGestionF: TBonCtrGestionF
           Height = 18.897650000000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -16
-          Font.Name = 'Merchant Copy'
-          Font.Style = [fsBold]
+          Font.Height = -9
+          Font.Name = 'arial'
+          Font.Style = []
           HAlign = haRight
           Memo.UTF8W = (
             'Versement :')
@@ -5280,9 +5330,9 @@ object BonCtrGestionF: TBonCtrGestionF
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -16
-          Font.Name = 'Merchant Copy'
-          Font.Style = [fsBold]
+          Font.Height = -11
+          Font.Name = 'Segoe UI'
+          Font.Style = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxComptoirDB."montver_bvctr"]')
@@ -5296,9 +5346,9 @@ object BonCtrGestionF: TBonCtrGestionF
           Height = 18.897650000000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -16
-          Font.Name = 'Merchant Copy'
-          Font.Style = [fsBold]
+          Font.Height = -9
+          Font.Name = 'arial'
+          Font.Style = []
           HAlign = haRight
           Memo.UTF8W = (
             'Rendu :')
@@ -5320,9 +5370,9 @@ object BonCtrGestionF: TBonCtrGestionF
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -16
-          Font.Name = 'Merchant Copy'
-          Font.Style = [fsBold]
+          Font.Height = -11
+          Font.Name = 'Segoe UI'
+          Font.Style = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxComptoirDB."MontantRen"]')
@@ -5330,14 +5380,14 @@ object BonCtrGestionF: TBonCtrGestionF
         end
         object Memo8: TfrxMemoView
           Left = 3.669291340000000000
-          Top = 4.574827560000000000
+          Top = 4.574827560000020000
           Width = 51.023617170000000000
           Height = 18.897650000000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -16
-          Font.Name = 'Merchant Copy'
-          Font.Style = [fsBold]
+          Font.Height = -9
+          Font.Name = 'arial'
+          Font.Style = []
           HAlign = haRight
           Memo.UTF8W = (
             'Nb Prod:')
@@ -5346,16 +5396,16 @@ object BonCtrGestionF: TBonCtrGestionF
         end
         object Memo9: TfrxMemoView
           Left = 54.811026060000000000
-          Top = 4.574827560000000000
+          Top = 4.574827560000020000
           Width = 81.259854720000000000
           Height = 18.897650000000000000
           DataSet = frxComptoirDB
           DataSetName = 'frxComptoirDB'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -16
-          Font.Name = 'Merchant Copy'
-          Font.Style = [fsBold]
+          Font.Height = -9
+          Font.Name = 'arial'
+          Font.Style = []
           Memo.UTF8W = (
             '[COUNT(MasterData1)]')
           ParentFont = False
@@ -5370,8 +5420,8 @@ object BonCtrGestionF: TBonCtrGestionF
           DataSetName = 'S_CONFIG'
           Font.Charset = ANSI_CHARSET
           Font.Color = clWindowText
-          Font.Height = -21
-          Font.Name = 'Merchant Copy'
+          Font.Height = -12
+          Font.Name = 'arial'
           Font.Style = [fsBold]
           HAlign = haCenter
           Memo.UTF8W = (
@@ -5439,9 +5489,9 @@ object BonCtrGestionF: TBonCtrGestionF
           Height = 18.897650000000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -16
-          Font.Name = 'Merchant Copy'
-          Font.Style = [fsBold]
+          Font.Height = -9
+          Font.Name = 'arial'
+          Font.Style = []
           Memo.UTF8W = (
             'Especes')
           ParentFont = False
@@ -5460,7 +5510,7 @@ object BonCtrGestionF: TBonCtrGestionF
           Font.Name = 'Segoe UI'
           Font.Style = []
           Memo.UTF8W = (
-            'Agent: [frxComptoirDB."Agnet"]')
+            'Agent: [frxComptoirDB."Agent"]')
           ParentFont = False
         end
         object Line2: TfrxLineView
@@ -5515,7 +5565,7 @@ object BonCtrGestionF: TBonCtrGestionF
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -9
-          Font.Name = 'Helvetica LT Std'
+          Font.Name = 'Segoe UI'
           Font.Style = []
           Memo.UTF8W = (
             'Moeny in words')
@@ -5575,9 +5625,9 @@ object BonCtrGestionF: TBonCtrGestionF
           Height = 18.897650000000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -16
-          Font.Name = 'Merchant Copy'
-          Font.Style = [fsBold]
+          Font.Height = -9
+          Font.Name = 'arial'
+          Font.Style = []
           HAlign = haRight
           Memo.UTF8W = (
             'TVA :')
@@ -5597,9 +5647,9 @@ object BonCtrGestionF: TBonCtrGestionF
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -16
-          Font.Name = 'Merchant Copy'
-          Font.Style = [fsBold]
+          Font.Height = -11
+          Font.Name = 'Segoe UI'
+          Font.Style = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxComptoirDB."MontantTVA"]')
@@ -5624,8 +5674,8 @@ object BonCtrGestionF: TBonCtrGestionF
           DataSetName = 'S_CONFIG'
           Font.Charset = ANSI_CHARSET
           Font.Color = clWindowText
-          Font.Height = -24
-          Font.Name = 'Merchant Copy'
+          Font.Height = -20
+          Font.Name = 'arial'
           Font.Style = []
           HAlign = haCenter
           Memo.UTF8W = (
@@ -5635,7 +5685,7 @@ object BonCtrGestionF: TBonCtrGestionF
         object Logo: TfrxPictureView
           Align = baCenter
           Left = 5.669295000000000000
-          Top = 0.559060000000000000
+          Top = 0.559059999999999000
           Width = 264.567100000000000000
           Height = 56.692876770000000000
           Visible = False
@@ -5655,8 +5705,8 @@ object BonCtrGestionF: TBonCtrGestionF
           DataSetName = 'S_CONFIG'
           Font.Charset = ANSI_CHARSET
           Font.Color = clWindowText
-          Font.Height = -16
-          Font.Name = 'Merchant Copy'
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
           Font.Style = []
           Memo.UTF8W = (
             'Tel:')
@@ -5671,8 +5721,8 @@ object BonCtrGestionF: TBonCtrGestionF
           DataSetName = 'S_CONFIG'
           Font.Charset = ANSI_CHARSET
           Font.Color = clWindowText
-          Font.Height = -16
-          Font.Name = 'Merchant Copy'
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
           Font.Style = []
           HAlign = haCenter
           Memo.UTF8W = (
@@ -5690,8 +5740,8 @@ object BonCtrGestionF: TBonCtrGestionF
           DataSetName = 'S_CONFIG'
           Font.Charset = ANSI_CHARSET
           Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'Merchant Copy'
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
           Font.Style = []
           HAlign = haCenter
           Memo.UTF8W = (
@@ -5726,6 +5776,8 @@ object BonCtrGestionF: TBonCtrGestionF
     FlowControl.ControlRTS = rtsDisable
     FlowControl.XonXoffOut = False
     FlowControl.XonXoffIn = False
+    StoredProps = [spBasic]
+    TriggersOnRxChar = True
     Left = 602
     Top = 268
   end
@@ -5737,7 +5789,7 @@ object BonCtrGestionF: TBonCtrGestionF
     Top = 288
   end
   object ComptoirTicket57frxRprt: TfrxReport
-    Version = '5.4.6'
+    Version = '5.6.1'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick, pbNoClose, pbNoFullScreen, pbNoEmail]
@@ -5746,7 +5798,7 @@ object BonCtrGestionF: TBonCtrGestionF
     PrintOptions.PrintOnSheet = 0
     PrintOptions.ShowDialog = False
     ReportOptions.CreateDate = 41863.570242476900000000
-    ReportOptions.LastChange = 42994.899968506900000000
+    ReportOptions.LastChange = 43191.718624004630000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       '//procedure Page1OnBeforePrint(Sender: TfrxComponent);'
@@ -5945,7 +5997,7 @@ object BonCtrGestionF: TBonCtrGestionF
         end
         object Line8: TfrxLineView
           Left = 2.779530000000000000
-          Top = 0.779530000000000000
+          Top = 0.779529999999994100
           Width = 177.637910000000000000
           Color = clBlack
           Frame.Style = fsDashDot
@@ -5991,7 +6043,7 @@ object BonCtrGestionF: TBonCtrGestionF
         Stretched = True
         object Memo46: TfrxMemoView
           Left = 78.031552210000000000
-          Top = 2.889763780000000000
+          Top = 2.889763780000010000
           Width = 24.566929130000000000
           Height = 17.007874020000000000
           StretchMode = smActualHeight
@@ -6015,7 +6067,7 @@ object BonCtrGestionF: TBonCtrGestionF
         end
         object Memo47: TfrxMemoView
           Left = 100.488237800000000000
-          Top = 2.889763780000000000
+          Top = 2.889763780000010000
           Width = 39.685039370000000000
           Height = 17.007874020000000000
           StretchMode = smActualHeight
@@ -6039,7 +6091,7 @@ object BonCtrGestionF: TBonCtrGestionF
         end
         object Memo24: TfrxMemoView
           Left = 0.889763780000000000
-          Top = 2.889763780000000000
+          Top = 2.889763780000010000
           Width = 77.858267720000000000
           Height = 17.007874020000000000
           StretchMode = smActualHeight
@@ -6062,7 +6114,7 @@ object BonCtrGestionF: TBonCtrGestionF
         end
         object Memo50: TfrxMemoView
           Left = 140.063106850000000000
-          Top = 2.889763780000000000
+          Top = 2.889763780000010000
           Width = 41.574803150000000000
           Height = 17.007874020000000000
           StretchMode = smActualHeight
@@ -6095,7 +6147,7 @@ object BonCtrGestionF: TBonCtrGestionF
         Stretched = True
         object Memo61: TfrxMemoView
           Left = 84.952794960000000000
-          Top = 4.425191970000000000
+          Top = 4.425191970000015000
           Width = 43.464554720000000000
           Height = 11.338590000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -6111,7 +6163,7 @@ object BonCtrGestionF: TBonCtrGestionF
         end
         object Memo62: TfrxMemoView
           Left = 80.070914960000000000
-          Top = 15.897636090000000000
+          Top = 15.897636089999990000
           Width = 47.244084720000000000
           Height = 11.338590000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -6127,7 +6179,7 @@ object BonCtrGestionF: TBonCtrGestionF
         end
         object Memo63: TfrxMemoView
           Left = 80.070914960000000000
-          Top = 40.511819320000000000
+          Top = 40.511819319999970000
           Width = 47.244084720000000000
           Height = 11.338590000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -6143,7 +6195,7 @@ object BonCtrGestionF: TBonCtrGestionF
         end
         object Memo67: TfrxMemoView
           Left = 124.102362200000000000
-          Top = 4.425191970000000000
+          Top = 4.425191970000015000
           Width = 56.692908500000000000
           Height = 11.338590000000000000
           DataField = 'montht_bvctr'
@@ -6189,7 +6241,7 @@ object BonCtrGestionF: TBonCtrGestionF
         end
         object Memo69: TfrxMemoView
           Left = 125.992125980000000000
-          Top = 40.511819320000000000
+          Top = 40.511819319999970000
           Width = 54.803144720000000000
           Height = 11.338590000000000000
           DataSet = frxComptoirDB
@@ -6211,7 +6263,7 @@ object BonCtrGestionF: TBonCtrGestionF
         end
         object Memo1: TfrxMemoView
           Left = 79.850493780000000000
-          Top = 53.874028440000000000
+          Top = 53.874028440000020000
           Width = 47.244084720000000000
           Height = 11.338590000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -6227,7 +6279,7 @@ object BonCtrGestionF: TBonCtrGestionF
         end
         object Memo3: TfrxMemoView
           Left = 124.102362200000000000
-          Top = 53.874028440000000000
+          Top = 53.874028440000020000
           Width = 56.692908500000000000
           Height = 11.338590000000000000
           DataField = 'montver_bvctr'
@@ -6289,7 +6341,7 @@ object BonCtrGestionF: TBonCtrGestionF
         end
         object Memo8: TfrxMemoView
           Left = 4.669291340000000000
-          Top = 4.574827560000000000
+          Top = 4.574827560000017000
           Width = 32.125967170000000000
           Height = 18.897650000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -6305,7 +6357,7 @@ object BonCtrGestionF: TBonCtrGestionF
         end
         object Memo9: TfrxMemoView
           Left = 33.692906060000000000
-          Top = 4.574827560000000000
+          Top = 4.574827560000017000
           Width = 58.582674720000000000
           Height = 18.897650000000000000
           DataSet = frxComptoirDB
@@ -6322,7 +6374,7 @@ object BonCtrGestionF: TBonCtrGestionF
         end
         object Memo10: TfrxMemoView
           Left = 4.000000000000000000
-          Top = 96.504020000000000000
+          Top = 96.504020000000030000
           Width = 184.976500000000000000
           Height = 18.897635350000000000
           StretchMode = smActualHeight
@@ -6394,7 +6446,7 @@ object BonCtrGestionF: TBonCtrGestionF
         end
         object Memo21: TfrxMemoView
           Left = 3.669291340000000000
-          Top = 24.881877560000000000
+          Top = 24.881877560000020000
           Width = 66.141737170000000000
           Height = 18.897650000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -6420,7 +6472,7 @@ object BonCtrGestionF: TBonCtrGestionF
           Font.Name = 'Segoe UI'
           Font.Style = []
           Memo.UTF8W = (
-            'Agent: [frxComptoirDB."Agnet"]')
+            'Agent: [frxComptoirDB."Agent"]')
           ParentFont = False
         end
         object Line2: TfrxLineView
@@ -6468,7 +6520,7 @@ object BonCtrGestionF: TBonCtrGestionF
         end
         object MoneyWordRX: TfrxMemoView
           Left = 4.338590000000000000
-          Top = 82.606370000000000000
+          Top = 82.606370000000030000
           Width = 183.307167170000000000
           Height = 11.338590000000000000
           StretchMode = smActualHeight
@@ -6530,7 +6582,7 @@ object BonCtrGestionF: TBonCtrGestionF
         end
         object Memo14: TfrxMemoView
           Left = 80.385900000000000000
-          Top = 27.149610210000000000
+          Top = 27.149610209999990000
           Width = 47.244084720000000000
           Height = 11.338590000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -6546,7 +6598,7 @@ object BonCtrGestionF: TBonCtrGestionF
         end
         object Memo15: TfrxMemoView
           Left = 125.992125980000000000
-          Top = 27.149610210000000000
+          Top = 27.149610209999990000
           Width = 54.803144720000000000
           Height = 11.338590000000000000
           DataSet = frxComptoirDB
@@ -6576,6 +6628,7 @@ object BonCtrGestionF: TBonCtrGestionF
         Stretched = True
         object Name: TfrxMemoView
           Align = baCenter
+          Left = -0.000000000000006370
           Top = 60.252085670000000000
           Width = 188.976500000000000000
           Height = 22.677165350000000000
@@ -6593,8 +6646,8 @@ object BonCtrGestionF: TBonCtrGestionF
         end
         object Logo: TfrxPictureView
           Align = baCenter
-          Left = 0.000061025000000006
-          Top = 0.559060000000000000
+          Left = 0.000061024999993636
+          Top = 0.559059999999998800
           Width = 188.976377950000000000
           Height = 56.692876770000000000
           Visible = False
@@ -6640,6 +6693,7 @@ object BonCtrGestionF: TBonCtrGestionF
         end
         object Adr: TfrxMemoView
           Align = baCenter
+          Left = -0.000000000000006370
           Top = 102.826840000000000000
           Width = 188.976500000000000000
           Height = 30.236225350000000000

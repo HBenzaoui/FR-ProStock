@@ -127,6 +127,8 @@ begin
         UsersGestionF.ComptesSdr.SliderOn:=  DataModuleF.UsersTable.FieldValues['cmpt_ur'];
         UsersGestionF.UnitSdr.SliderOn:=  DataModuleF.UsersTable.FieldValues['unit_ur'];
         UsersGestionF.LocalSdr.SliderOn:=  DataModuleF.UsersTable.FieldValues['local_ur'];
+        UsersGestionF.TotauxSdr.SliderOn:=  DataModuleF.UsersTable.FieldValues['totaux_ur'];
+        UsersGestionF.PrixASdr.SliderOn:=  DataModuleF.UsersTable.FieldValues['viewprixa_ur'];
 
         if DataModuleF.UsersTable.FieldByName('code_ur').AsInteger = 1 then
         begin  UsersGestionF.TypeUserGCbx.Enabled:= False  end;

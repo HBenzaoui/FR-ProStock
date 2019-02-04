@@ -370,7 +370,7 @@ object ReglementFListF: TReglementFListF
       ShowHint = True
       Spacing = -1
       OnClick = EditBARecBtnClick
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object DeleteBARecBtn: TAdvToolButton
@@ -402,7 +402,7 @@ object ReglementFListF: TReglementFListF
       ShowHint = True
       Spacing = -2
       OnClick = DeleteBARecBtnClick
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object AddBARecBtn: TAdvToolButton
@@ -434,7 +434,7 @@ object ReglementFListF: TReglementFListF
       ShowHint = True
       Spacing = -1
       OnClick = AddBARecBtnClick
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object ResearchBACtrLbl: TLabel
@@ -456,7 +456,7 @@ object ReglementFListF: TReglementFListF
     object Label1: TLabel
       Left = 315
       Top = 10
-      Width = 23
+      Width = 22
       Height = 18
       Caption = 'Du:'
       Color = 15722984
@@ -566,7 +566,7 @@ object ReglementFListF: TReglementFListF
       Shaded = False
       ShowHint = True
       Spacing = -1
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object sImage2: TsImage
@@ -855,13 +855,12 @@ object ReglementFListF: TReglementFListF
     HorzScrollBar.ExtraPanel.NavigatorButtons = [nbFirstEh, nbPriorEh, nbNextEh, nbLastEh, nbRefreshEh]
     HorzScrollBar.ExtraPanel.Visible = True
     HorzScrollBar.Height = 15
-    IndicatorOptions = [gioShowRowIndicatorEh]
     IndicatorParams.Color = clBtnFace
     IndicatorTitle.ShowDropDownSign = True
     IndicatorTitle.TitleButton = True
     OddRowColor = 16315635
     Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
-    OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghDialogFind, dghColumnResize, dghColumnMove, dghHotTrack, dghExtendVertLines]
+    OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghAutoSortMarking, dghDialogFind, dghColumnResize, dghColumnMove, dghHotTrack, dghExtendVertLines]
     ParentCtl3D = False
     ParentFont = False
     ParentShowHint = False
@@ -888,9 +887,11 @@ object ReglementFListF: TReglementFListF
     OnDrawColumnCell = BARecListDBGridEhDrawColumnCell
     OnKeyDown = BARecListDBGridEhKeyDown
     OnKeyPress = BARecListDBGridEhKeyPress
+    OnSortMarkingChanged = BARecListDBGridEhSortMarkingChanged
     Columns = <
       item
         Alignment = taCenter
+        CellButtons = <>
         Checkboxes = False
         DynProps = <>
         EditButtons = <>
@@ -922,6 +923,7 @@ object ReglementFListF: TReglementFListF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DynProps = <>
         EditButtons = <>
         FieldName = 'nom_rf'
@@ -947,6 +949,7 @@ object ReglementFListF: TReglementFListF
       end
       item
         Alignment = taCenter
+        CellButtons = <>
         DisplayFormat = 'DD/MM/YYYY'
         DynProps = <>
         EditButtons = <>
@@ -973,6 +976,7 @@ object ReglementFListF: TReglementFListF
       end
       item
         Alignment = taCenter
+        CellButtons = <>
         DisplayFormat = 'HH:MM:SS'
         DynProps = <>
         EditButtons = <>
@@ -998,6 +1002,7 @@ object ReglementFListF: TReglementFListF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DynProps = <>
         EditButtons = <>
         FieldName = 'FourRF'
@@ -1031,6 +1036,7 @@ object ReglementFListF: TReglementFListF
         WordWrap = False
       end
       item
+        CellButtons = <>
         Checkboxes = False
         DynProps = <>
         EditButtons = <>
@@ -1067,6 +1073,7 @@ object ReglementFListF: TReglementFListF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
@@ -1103,6 +1110,7 @@ object ReglementFListF: TReglementFListF
       end
       item
         Alignment = taCenter
+        CellButtons = <>
         DynProps = <>
         EditButtons = <>
         FieldName = 'Agent'
@@ -1180,7 +1188,7 @@ object ReglementFListF: TReglementFListF
       ShowHint = True
       Spacing = -2
       OnClick = SumGirdProduitBtnClick
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object RefreshGirdBtn: TAdvToolButton
@@ -1214,7 +1222,7 @@ object ReglementFListF: TReglementFListF
       ShowHint = True
       Spacing = -2
       OnClick = RefreshGirdBtnClick
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object AdvToolButton1: TAdvToolButton
@@ -1248,7 +1256,7 @@ object ReglementFListF: TReglementFListF
       ShowHint = True
       Spacing = -2
       OnClick = AdvToolButton1Click
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object AdvToolButton2: TAdvToolButton
@@ -1282,7 +1290,7 @@ object ReglementFListF: TReglementFListF
       ShowHint = True
       Spacing = -2
       OnClick = AdvToolButton2Click
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object AdvToolButton3: TAdvToolButton
@@ -1316,7 +1324,7 @@ object ReglementFListF: TReglementFListF
       ShowHint = True
       Spacing = -2
       OnClick = AdvToolButton3Click
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object Panel5: TPanel
@@ -1382,7 +1390,7 @@ object ReglementFListF: TReglementFListF
     Top = 672
   end
   object RegFListfrxRprt: TfrxReport
-    Version = '5.4.6'
+    Version = '5.6.1'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -2002,6 +2010,11 @@ object ReglementFListF: TReglementFListF
         RadioItem = True
         Visible = False
         OnClick = V1Click
+      end
+      object RglementFournisseur1: TMenuItem
+        Caption = 'R'#232'glement Fournisseur'
+        ImageIndex = 25
+        OnClick = RglementFournisseur1Click
       end
       object N2: TMenuItem
         Caption = '-'

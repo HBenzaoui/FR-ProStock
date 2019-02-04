@@ -47,8 +47,6 @@ object ProduitGestionF: TProduitGestionF
     TabsLineSkin = 'BAR'
     object GeneralClientGTB: TsTabSheet
       Caption = 'G'#233'n'#233'ral'
-      SkinData.CustomColor = False
-      SkinData.CustomFont = False
       object GeneralTB: TPanel
         Left = 0
         Top = 0
@@ -82,7 +80,7 @@ object ProduitGestionF: TProduitGestionF
         object RefProduitGLbl: TLabel
           Left = 32
           Top = 17
-          Width = 73
+          Width = 71
           Height = 18
           Caption = 'R'#233'ference:'
           Color = 4207405
@@ -98,7 +96,7 @@ object ProduitGestionF: TProduitGestionF
         object NameProduitGLbl: TLabel
           Left = 18
           Top = 66
-          Width = 87
+          Width = 84
           Height = 18
           Caption = 'D'#233'signation:'
           Color = 4207405
@@ -114,7 +112,7 @@ object ProduitGestionF: TProduitGestionF
         object PrixAHTProduitLbl: TLabel
           Left = 24
           Top = 310
-          Width = 55
+          Width = 53
           Height = 18
           Caption = 'Prix HT:'
           Color = 4207405
@@ -165,7 +163,7 @@ object ProduitGestionF: TProduitGestionF
         object Label1: TLabel
           Left = 349
           Top = 110
-          Width = 92
+          Width = 91
           Height = 18
           Caption = 'Sous Famille:'
           Color = 4207405
@@ -181,7 +179,7 @@ object ProduitGestionF: TProduitGestionF
         object Label2: TLabel
           Left = 65
           Top = 155
-          Width = 40
+          Width = 39
           Height = 18
           Caption = 'Unit'#233':'
           Color = 4207405
@@ -197,7 +195,7 @@ object ProduitGestionF: TProduitGestionF
         object Label3: TLabel
           Left = 227
           Top = 155
-          Width = 31
+          Width = 32
           Height = 18
           Caption = 'TVA:'
           Color = 4207405
@@ -213,7 +211,7 @@ object ProduitGestionF: TProduitGestionF
         object Label4: TLabel
           Left = 29
           Top = 198
-          Width = 76
+          Width = 74
           Height = 18
           Caption = 'P'#233'rissable:'
           Color = 4207405
@@ -229,7 +227,7 @@ object ProduitGestionF: TProduitGestionF
         object PerProduitGLbl: TLabel
           Left = 159
           Top = 202
-          Width = 22
+          Width = 23
           Height = 14
           Caption = 'Non'
           Color = 4207405
@@ -263,7 +261,7 @@ object ProduitGestionF: TProduitGestionF
         object AlertJoursProduitLbl: TLabel
           Left = 406
           Top = 198
-          Width = 105
+          Width = 102
           Height = 18
           Caption = 'M'#39'avertir avant:'
           Color = 4207405
@@ -297,7 +295,7 @@ object ProduitGestionF: TProduitGestionF
         object PrixATTCProduitLbl: TLabel
           Left = 17
           Top = 374
-          Width = 62
+          Width = 61
           Height = 18
           Caption = 'Prix TTC:'
           Color = 4207405
@@ -313,7 +311,7 @@ object ProduitGestionF: TProduitGestionF
         object Label10: TLabel
           Left = 73
           Top = 246
-          Width = 87
+          Width = 85
           Height = 19
           Caption = 'Prix D'#39'Achat'
           Color = 4207405
@@ -329,7 +327,7 @@ object ProduitGestionF: TProduitGestionF
         object Label11: TLabel
           Left = 349
           Top = 285
-          Width = 43
+          Width = 41
           Height = 16
           Caption = 'Prix HT'
           Color = 4207405
@@ -345,7 +343,7 @@ object ProduitGestionF: TProduitGestionF
         object Label12: TLabel
           Left = 472
           Top = 285
-          Width = 50
+          Width = 48
           Height = 16
           Caption = 'Prix TTC'
           Color = 4207405
@@ -361,7 +359,7 @@ object ProduitGestionF: TProduitGestionF
         object Label13: TLabel
           Left = 394
           Top = 246
-          Width = 95
+          Width = 94
           Height = 19
           Caption = 'Prix De Vente'
           Color = 4207405
@@ -377,7 +375,7 @@ object ProduitGestionF: TProduitGestionF
         object Label14: TLabel
           Left = 578
           Top = 285
-          Width = 39
+          Width = 36
           Height = 16
           Caption = 'Marge'
           Color = 4207405
@@ -409,7 +407,7 @@ object ProduitGestionF: TProduitGestionF
         object Label16: TLabel
           Left = 240
           Top = 344
-          Width = 68
+          Width = 63
           Height = 16
           Caption = 'Revendeur:'
           Color = 4207405
@@ -425,7 +423,7 @@ object ProduitGestionF: TProduitGestionF
         object Label17: TLabel
           Left = 276
           Top = 376
-          Width = 32
+          Width = 30
           Height = 16
           Caption = 'Gros:'
           Color = 4207405
@@ -441,7 +439,7 @@ object ProduitGestionF: TProduitGestionF
         object Label18: TLabel
           Left = 262
           Top = 408
-          Width = 46
+          Width = 43
           Height = 16
           Caption = 'Autre 1:'
           Color = 4207405
@@ -457,7 +455,7 @@ object ProduitGestionF: TProduitGestionF
         object Label19: TLabel
           Left = 262
           Top = 440
-          Width = 46
+          Width = 43
           Height = 16
           Caption = 'Autre 2:'
           Color = 4207405
@@ -553,7 +551,7 @@ object ProduitGestionF: TProduitGestionF
         object Label25: TLabel
           Left = 18
           Top = 496
-          Width = 89
+          Width = 88
           Height = 18
           Caption = 'Stock Initial :'
           Color = 4207405
@@ -569,7 +567,7 @@ object ProduitGestionF: TProduitGestionF
         object Label26: TLabel
           Left = 494
           Top = 496
-          Width = 47
+          Width = 48
           Height = 18
           Caption = 'Alerte :'
           Color = 4207405
@@ -601,7 +599,7 @@ object ProduitGestionF: TProduitGestionF
         object Label28: TLabel
           Left = 21
           Top = 542
-          Width = 86
+          Width = 83
           Height = 18
           Caption = 'Fournisseur:'
           Color = 4207405
@@ -659,13 +657,13 @@ object ProduitGestionF: TProduitGestionF
           ShowHint = True
           Spacing = -1
           OnClick = RandomCBProduitGBtnClick
-          Version = '1.6.1.2'
+          Version = '1.6.2.0'
           TMSStyle = 0
         end
         object Label9: TLabel
           Left = 350
           Top = 18
-          Width = 91
+          Width = 90
           Height = 18
           Caption = 'Code '#226' Barre:'
           Color = 4207405
@@ -707,7 +705,7 @@ object ProduitGestionF: TProduitGestionF
           ShowHint = True
           Spacing = -1
           OnClick = AddSousFamilleProduitGBtnClick
-          Version = '1.6.1.2'
+          Version = '1.6.2.0'
           TMSStyle = 0
         end
         object AddFamilleProduitGBtn: TAdvToolButton
@@ -739,7 +737,7 @@ object ProduitGestionF: TProduitGestionF
           ShowHint = True
           Spacing = -1
           OnClick = AddFamilleProduitGBtnClick
-          Version = '1.6.1.2'
+          Version = '1.6.2.0'
           TMSStyle = 0
         end
         object AddUniteProduitGBtn: TAdvToolButton
@@ -771,7 +769,7 @@ object ProduitGestionF: TProduitGestionF
           ShowHint = True
           Spacing = -1
           OnClick = AddUniteProduitGBtnClick
-          Version = '1.6.1.2'
+          Version = '1.6.2.0'
           TMSStyle = 0
         end
         object AddFourProduitGBtn: TAdvToolButton
@@ -803,7 +801,7 @@ object ProduitGestionF: TProduitGestionF
           ShowHint = True
           Spacing = -1
           OnClick = AddFourProduitGBtnClick
-          Version = '1.6.1.2'
+          Version = '1.6.2.0'
           TMSStyle = 0
         end
         object ShowCalculaturProduitGBtn: TAdvToolButton
@@ -835,7 +833,7 @@ object ProduitGestionF: TProduitGestionF
           ShowHint = True
           Spacing = -1
           OnClick = ShowCalculaturProduitGBtnClick
-          Version = '1.6.1.2'
+          Version = '1.6.2.0'
           TMSStyle = 0
         end
         object MulteCBProduitGBtn: TAdvToolButton
@@ -868,7 +866,7 @@ object ProduitGestionF: TProduitGestionF
           ShowHint = True
           Spacing = -1
           OnClick = MulteCBProduitGBtnClick
-          Version = '1.6.1.2'
+          Version = '1.6.2.0'
           TMSStyle = 0
         end
         object RequiredRefProduitGlbl: TLabel
@@ -919,7 +917,7 @@ object ProduitGestionF: TProduitGestionF
           ShowHint = True
           Spacing = -1
           OnClick = ShowKeyBoardProduitGBtnClick
-          Version = '1.6.1.2'
+          Version = '1.6.2.0'
           TMSStyle = 0
         end
         object NameProduitGErrorP: TPanel
@@ -996,7 +994,9 @@ object ProduitGestionF: TProduitGestionF
           TabOrder = 2
           StyleElements = [seClient, seBorder]
           OnChange = NameProduitGEdtChange
+          OnDblClick = ShowKeyBoardProduitGBtnClick
           OnKeyPress = NameProduitGEdtKeyPress
+          OnMouseEnter = NameProduitGEdtMouseEnter
         end
         object FamilleProduitGCbx: TComboBox
           Left = 111
@@ -1060,9 +1060,11 @@ object ProduitGestionF: TProduitGestionF
           TabOrder = 6
           Text = '0'
           OnChange = TVAProduitGCbxChange
+          OnKeyDown = TVAProduitGCbxKeyDown
+          OnKeyPress = TVAProduitGCbxKeyPress
           Items.Strings = (
             '0'
-            '7'
+            '9'
             '19')
         end
         object PerProduitGSlider: TsSlider
@@ -1078,13 +1080,13 @@ object ProduitGestionF: TProduitGestionF
           Font.Height = 12
           Font.Name = 'Roboto'
           Font.Style = []
+          StyleElements = []
           ParentBiDiMode = False
           ParentBackground = False
           ParentCtl3D = False
           ParentFont = False
           TabOrder = 7
           TabStop = True
-          StyleElements = []
           BoundLabel.Caption = 'sSlider1'
           BoundLabel.Layout = sclBottomCenter
           FontOn.Charset = DEFAULT_CHARSET
@@ -1657,7 +1659,6 @@ object ProduitGestionF: TProduitGestionF
           Font.Style = []
           ParentFont = False
           TabOrder = 37
-          OnChange = DatePerProduitGDChange
           OnKeyUp = DatePerProduitGDKeyUp
         end
         object CodeBarProduitGEdt: TEdit
@@ -1685,8 +1686,6 @@ object ProduitGestionF: TProduitGestionF
     end
     object PlusInfoClientGTB: TsTabSheet
       Caption = 'Plus D'#39'info'
-      SkinData.CustomColor = False
-      SkinData.CustomFont = False
       object PlusInfoTB: TPanel
         Left = 0
         Top = 0
@@ -1704,7 +1703,7 @@ object ProduitGestionF: TProduitGestionF
         object ObserClientGLbl: TLabel
           Left = 11
           Top = 254
-          Width = 95
+          Width = 92
           Height = 18
           Caption = 'Observations:'
           Color = 4207405
@@ -1720,7 +1719,7 @@ object ProduitGestionF: TProduitGestionF
         object Label30: TLabel
           Left = 18
           Top = 168
-          Width = 88
+          Width = 87
           Height = 18
           Caption = 'Localisation:'
           Color = 4207405
@@ -1762,13 +1761,13 @@ object ProduitGestionF: TProduitGestionF
           ShowHint = True
           Spacing = -1
           OnClick = AddLocationProduitGBtnClick
-          Version = '1.6.1.2'
+          Version = '1.6.2.0'
           TMSStyle = 0
         end
         object Label31: TLabel
           Left = 30
           Top = 107
-          Width = 76
+          Width = 75
           Height = 18
           Caption = 'Max.Stock:'
           Color = 4207405
@@ -1784,7 +1783,7 @@ object ProduitGestionF: TProduitGestionF
         object Label32: TLabel
           Left = 33
           Top = 47
-          Width = 73
+          Width = 72
           Height = 18
           Caption = 'Min.Stock:'
           Color = 4207405
@@ -1800,7 +1799,7 @@ object ProduitGestionF: TProduitGestionF
         object Label5: TLabel
           Left = 512
           Top = 6
-          Width = 109
+          Width = 105
           Height = 17
           Caption = 'Photo De produit'
           Color = 4207405
@@ -1813,24 +1812,6 @@ object ProduitGestionF: TProduitGestionF
           ParentFont = False
           Visible = False
           StyleElements = []
-        end
-        object ImageShowProduitG: TsImage
-          Left = 478
-          Top = 26
-          Width = 177
-          Height = 203
-          Cursor = crHandPoint
-          Center = True
-          Picture.Data = {07544269746D617000000000}
-          Proportional = True
-          OnClick = ImageShowProduitGClick
-          OnMouseEnter = ImageShowProduitGMouseEnter
-          OnMouseLeave = ImageShowProduitGMouseLeave
-          Blend = 40
-          ImageIndex = 0
-          Images = sAlphaImageList1
-          Grayed = True
-          SkinData.SkinSection = 'CHECKBOX'
         end
         object ImageEditProduitGBtn: TAdvToolButton
           Left = 449
@@ -1862,7 +1843,7 @@ object ProduitGestionF: TProduitGestionF
           Spacing = -1
           Visible = False
           OnClick = ImageShowProduitGClick
-          Version = '1.6.1.2'
+          Version = '1.6.2.0'
           TMSStyle = 0
         end
         object ImageDeleteProduitGBtn: TAdvToolButton
@@ -1895,8 +1876,33 @@ object ProduitGestionF: TProduitGestionF
           Spacing = -1
           Visible = False
           OnClick = ImageDeleteProduitGBtnClick
-          Version = '1.6.1.2'
+          Version = '1.6.2.0'
           TMSStyle = 0
+        end
+        object Shape1: TShape
+          Left = 477
+          Top = 25
+          Width = 179
+          Height = 205
+          Pen.Color = 7854350
+        end
+        object ImageShowProduitG: TsImage
+          Left = 478
+          Top = 26
+          Width = 177
+          Height = 203
+          Cursor = crHandPoint
+          Center = True
+          Picture.Data = {07544269746D617000000000}
+          Proportional = True
+          OnClick = ImageShowProduitGClick
+          OnMouseEnter = ImageShowProduitGMouseEnter
+          OnMouseLeave = ImageShowProduitGMouseLeave
+          Blend = 40
+          ImageIndex = 0
+          Images = sAlphaImageList1
+          Grayed = True
+          SkinData.SkinSection = 'CHECKBOX'
         end
         object LineP03: TPanel
           Left = 0
@@ -1972,34 +1978,6 @@ object ProduitGestionF: TProduitGestionF
           ParentFont = False
           TabOrder = 4
         end
-        object Panel1: TPanel
-          Left = 478
-          Top = 25
-          Width = 176
-          Height = 1
-          Anchors = [akLeft, akTop, akRight]
-          BevelOuter = bvNone
-          Color = 7854350
-          DoubleBuffered = True
-          ParentBackground = False
-          ParentDoubleBuffered = False
-          TabOrder = 5
-          StyleElements = []
-        end
-        object Panel2: TPanel
-          Left = 478
-          Top = 228
-          Width = 176
-          Height = 1
-          Anchors = [akLeft, akTop, akRight]
-          BevelOuter = bvNone
-          Color = 7854350
-          DoubleBuffered = True
-          ParentBackground = False
-          ParentDoubleBuffered = False
-          TabOrder = 6
-          StyleElements = []
-        end
         object Panel3: TPanel
           Left = 478
           Top = 25
@@ -2011,7 +1989,7 @@ object ProduitGestionF: TProduitGestionF
           DoubleBuffered = True
           ParentBackground = False
           ParentDoubleBuffered = False
-          TabOrder = 7
+          TabOrder = 5
           StyleElements = []
         end
         object Panel4: TPanel
@@ -2025,7 +2003,7 @@ object ProduitGestionF: TProduitGestionF
           DoubleBuffered = True
           ParentBackground = False
           ParentDoubleBuffered = False
-          TabOrder = 8
+          TabOrder = 6
           StyleElements = []
         end
       end
@@ -2074,7 +2052,7 @@ object ProduitGestionF: TProduitGestionF
       ShowHint = True
       Spacing = 10
       OnClick = OKProduitGBtnClick
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object CancelProduitGBtn: TAdvToolButton
@@ -2105,7 +2083,7 @@ object ProduitGestionF: TProduitGestionF
       ShowHint = True
       Spacing = -1
       OnClick = CancelProduitGBtnClick
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
   end

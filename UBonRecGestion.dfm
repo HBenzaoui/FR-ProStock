@@ -425,7 +425,7 @@ object BonRecGestionF: TBonRecGestionF
       ShowHint = True
       Spacing = -1
       OnClick = EditBARecBonRecGBtnClick
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object AddBARecBonRecGBtn: TAdvToolButton
@@ -458,7 +458,7 @@ object BonRecGestionF: TBonRecGestionF
       ShowHint = True
       Spacing = -1
       OnClick = AddBARecBonRecGBtnClick
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object Label4: TLabel
@@ -540,7 +540,7 @@ object BonRecGestionF: TBonRecGestionF
     object Label6: TLabel
       Left = 15
       Top = 23
-      Width = 152
+      Width = 155
       Height = 20
       Caption = 'Bon de R'#233'ception N'#176
       Color = 15722984
@@ -571,7 +571,7 @@ object BonRecGestionF: TBonRecGestionF
       StyleElements = []
     end
     object AddFourBonRecGBtn: TAdvToolButton
-      Left = 798
+      Left = 807
       Top = 84
       Width = 26
       Height = 26
@@ -599,13 +599,13 @@ object BonRecGestionF: TBonRecGestionF
       ShowHint = True
       Spacing = -1
       OnClick = AddFourBonRecGBtnClick
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object Label8: TLabel
       Left = 344
       Top = 87
-      Width = 86
+      Width = 83
       Height = 18
       Caption = 'Fournisseur:'
       Color = 4207405
@@ -648,13 +648,13 @@ object BonRecGestionF: TBonRecGestionF
       ShowHint = True
       Spacing = -1
       OnClick = ValiderBARecBonRecGBtnClick
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object Label7: TLabel
       Left = 387
       Top = 131
-      Width = 43
+      Width = 42
       Height = 18
       Caption = 'Mode:'
       Color = 4207405
@@ -696,7 +696,7 @@ object BonRecGestionF: TBonRecGestionF
       ShowHint = True
       Spacing = -1
       OnClick = AddModePaieBonRecGBtnClick
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object Label16: TLabel
@@ -716,7 +716,7 @@ object BonRecGestionF: TBonRecGestionF
       StyleElements = []
     end
     object AddCompteBonRecGBtn: TAdvToolButton
-      Left = 798
+      Left = 807
       Top = 128
       Width = 26
       Height = 26
@@ -744,7 +744,7 @@ object BonRecGestionF: TBonRecGestionF
       ShowHint = True
       Spacing = -1
       OnClick = AddCompteBonRecGBtnClick
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object ListAddProduitBonRecGBtn: TAdvToolButton
@@ -777,7 +777,7 @@ object BonRecGestionF: TBonRecGestionF
       ShowHint = True
       Spacing = -1
       OnClick = ListAddProduitBonRecGBtnClick
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object DeleteProduitBonRecGBtn: TAdvToolButton
@@ -811,7 +811,7 @@ object BonRecGestionF: TBonRecGestionF
       Spacing = -1
       Visible = False
       OnClick = DeleteProduitBonRecGBtnClick
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object NewAddProduitBonRecGBtn: TAdvToolButton
@@ -844,11 +844,11 @@ object BonRecGestionF: TBonRecGestionF
       ShowHint = True
       Spacing = -1
       OnClick = NewAddProduitBonRecGBtnClick
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object RequiredFourGlbl: TLabel
-      Left = 410
+      Left = 393
       Top = 66
       Width = 406
       Height = 30
@@ -896,7 +896,7 @@ object BonRecGestionF: TBonRecGestionF
       ShowHint = True
       Spacing = -1
       OnClick = EnterAddProduitBonRecGBtnClick
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object ClearProduitBonRecGBtn: TAdvToolButton
@@ -930,7 +930,7 @@ object BonRecGestionF: TBonRecGestionF
       Spacing = -1
       Visible = False
       OnClick = ClearProduitBonRecGBtnClick
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object ValiderBARecBonRecGImg: TsImage
@@ -986,7 +986,7 @@ object BonRecGestionF: TBonRecGestionF
     object Label23: TLabel
       Left = 353
       Top = 175
-      Width = 77
+      Width = 76
       Height = 18
       Caption = 'N'#176' Ch'#233'que:'
       Color = 4207405
@@ -1002,7 +1002,7 @@ object BonRecGestionF: TBonRecGestionF
     object ObserBonRecGLbl: TLabel
       Left = 15
       Top = 99
-      Width = 102
+      Width = 105
       Height = 20
       Caption = 'Observations:'
       Color = 4207405
@@ -1096,7 +1096,7 @@ object BonRecGestionF: TBonRecGestionF
       ImageIndex = 3
     end
     object Label21: TLabel
-      Left = 795
+      Left = 762
       Top = 89
       Width = 6
       Height = 16
@@ -1247,6 +1247,38 @@ object BonRecGestionF: TBonRecGestionF
       Font.Style = []
       ParentFont = False
     end
+    object ListFourBonRecGBtn: TAdvToolButton
+      Left = 768
+      Top = 84
+      Width = 35
+      Height = 26
+      Cursor = crHandPoint
+      AutoThemeAdapt = False
+      BorderColor = 15722984
+      BorderDownColor = 7854350
+      BorderHotColor = 15970832
+      Color = 15722984
+      ColorDown = 7854350
+      ColorHot = clBtnFace
+      ColorChecked = clNone
+      DropDownSplit = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 4207405
+      Font.Height = 18
+      Font.Name = 'Roboto'
+      Font.Style = []
+      ImageIndex = 59
+      Images = MainForm.PanelIcons24
+      ParentFont = False
+      ParentShowHint = False
+      Rounded = True
+      Shaded = False
+      ShowHint = True
+      Spacing = -1
+      OnClick = ListFourBonRecGBtnClick
+      Version = '1.6.2.0'
+      TMSStyle = 0
+    end
     object CompteGErrorP: TPanel
       Left = 632
       Top = 124
@@ -1284,7 +1316,7 @@ object BonRecGestionF: TBonRecGestionF
     object NameFourGErrorP: TPanel
       Left = 430
       Top = 81
-      Width = 365
+      Width = 331
       Height = 31
       BevelOuter = bvNone
       BevelWidth = 2
@@ -1437,8 +1469,8 @@ object BonRecGestionF: TBonRecGestionF
     end
     object FournisseurBonRecGCbx: TComboBox
       Left = 432
-      Top = 83
-      Width = 361
+      Top = 82
+      Width = 328
       Height = 28
       Ctl3D = True
       Font.Charset = DEFAULT_CHARSET
@@ -1824,10 +1856,12 @@ object BonRecGestionF: TBonRecGestionF
     OnCellClick = ProduitsListDBGridEhCellClick
     OnDrawColumnCell = ProduitsListDBGridEhDrawColumnCell
     OnExit = ProduitsListDBGridEhExit
+    OnKeyDown = ProduitsListDBGridEhKeyDown
     OnKeyPress = ProduitsListDBGridEhKeyPress
     Columns = <
       item
         Alignment = taCenter
+        CellButtons = <>
         DynProps = <>
         EditButtons = <>
         FieldName = 'referp'
@@ -1852,6 +1886,7 @@ object BonRecGestionF: TBonRecGestionF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DynProps = <>
         EditButtons = <>
         FieldName = 'nomp'
@@ -1877,6 +1912,7 @@ object BonRecGestionF: TBonRecGestionF
       end
       item
         Alignment = taCenter
+        CellButtons = <>
         DisplayFormat = '0.00'
         DynProps = <>
         EditButtons = <>
@@ -1903,6 +1939,7 @@ object BonRecGestionF: TBonRecGestionF
       end
       item
         Alignment = taCenter
+        CellButtons = <>
         DynProps = <>
         EditButtons = <>
         FieldName = 'cond_p'
@@ -1926,6 +1963,7 @@ object BonRecGestionF: TBonRecGestionF
       end
       item
         Alignment = taCenter
+        CellButtons = <>
         DisplayFormat = 'dd/mm/yyyy'
         DynProps = <>
         EditButtons = <>
@@ -1949,6 +1987,7 @@ object BonRecGestionF: TBonRecGestionF
         Width = 120
       end
       item
+        CellButtons = <>
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
@@ -1973,6 +2012,7 @@ object BonRecGestionF: TBonRecGestionF
       end
       item
         Alignment = taCenter
+        CellButtons = <>
         DisplayFormat = '0.00 %'
         DynProps = <>
         EditButtons = <>
@@ -1995,10 +2035,11 @@ object BonRecGestionF: TBonRecGestionF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
-        FieldName = 'PrixATTC'
+        FieldName = 'prixattc'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
         Font.Height = 16
@@ -2007,24 +2048,24 @@ object BonRecGestionF: TBonRecGestionF
         Font.Quality = fqProof
         Footers = <>
         Layout = tlCenter
-        ReadOnly = True
         TextEditing = False
         Title.Alignment = taCenter
+        Title.Caption = 'Prix A TTC'
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = 4207405
         Title.Font.Height = 19
         Title.Font.Name = 'Helvetica LT Std'
         Title.Font.Style = []
         Title.Font.Quality = fqProof
-        Visible = False
         Width = 170
         WordWrap = False
       end
       item
+        CellButtons = <>
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
-        FieldName = 'MontantHT'
+        FieldName = 'montantht'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
         Font.Height = 16
@@ -2032,9 +2073,9 @@ object BonRecGestionF: TBonRecGestionF
         Font.Style = []
         Footers = <>
         Layout = tlCenter
-        ReadOnly = True
         TextEditing = False
         Title.Alignment = taCenter
+        Title.Caption = 'MontantHT'
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = 4207405
         Title.Font.Height = 19
@@ -2045,10 +2086,11 @@ object BonRecGestionF: TBonRecGestionF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
-        FieldName = 'MontantTVA'
+        FieldName = 'montanttva'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
         Font.Height = 16
@@ -2056,9 +2098,9 @@ object BonRecGestionF: TBonRecGestionF
         Font.Style = []
         Footers = <>
         Layout = tlCenter
-        ReadOnly = True
         TextEditing = False
         Title.Alignment = taCenter
+        Title.Caption = 'MontantTVA'
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = 4207405
         Title.Font.Height = 19
@@ -2069,11 +2111,12 @@ object BonRecGestionF: TBonRecGestionF
         WordWrap = False
       end
       item
+        CellButtons = <>
         Color = 15722984
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
-        FieldName = 'MontantTTC'
+        FieldName = 'montantttc'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
         Font.Height = 16
@@ -2081,9 +2124,9 @@ object BonRecGestionF: TBonRecGestionF
         Font.Style = []
         Footers = <>
         Layout = tlCenter
-        ReadOnly = True
         TextEditing = False
         Title.Alignment = taCenter
+        Title.Caption = 'MontantTTC'
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = 4207405
         Title.Font.Height = 19
@@ -2094,6 +2137,7 @@ object BonRecGestionF: TBonRecGestionF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
@@ -2117,10 +2161,11 @@ object BonRecGestionF: TBonRecGestionF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DisplayFormat = '0.00 %'
         DynProps = <>
         EditButtons = <>
-        FieldName = 'MargeD'
+        FieldName = 'marged'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
         Font.Height = 16
@@ -2141,6 +2186,7 @@ object BonRecGestionF: TBonRecGestionF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
@@ -2164,10 +2210,11 @@ object BonRecGestionF: TBonRecGestionF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DisplayFormat = '0.00 %'
         DynProps = <>
         EditButtons = <>
-        FieldName = 'MargeR'
+        FieldName = 'marger'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
         Font.Height = 16
@@ -2188,6 +2235,7 @@ object BonRecGestionF: TBonRecGestionF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
@@ -2211,10 +2259,11 @@ object BonRecGestionF: TBonRecGestionF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DisplayFormat = '0.00 %'
         DynProps = <>
         EditButtons = <>
-        FieldName = 'MargeG'
+        FieldName = 'margeg'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
         Font.Height = 16
@@ -2235,6 +2284,7 @@ object BonRecGestionF: TBonRecGestionF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
@@ -2258,10 +2308,11 @@ object BonRecGestionF: TBonRecGestionF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DisplayFormat = '0.00 %'
         DynProps = <>
         EditButtons = <>
-        FieldName = 'MargeA'
+        FieldName = 'margea'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
         Font.Height = 16
@@ -2282,6 +2333,7 @@ object BonRecGestionF: TBonRecGestionF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
@@ -2305,10 +2357,11 @@ object BonRecGestionF: TBonRecGestionF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DisplayFormat = '0.00 %'
         DynProps = <>
         EditButtons = <>
-        FieldName = 'MargeA2'
+        FieldName = 'margea2'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
         Font.Height = 16
@@ -2374,7 +2427,7 @@ object BonRecGestionF: TBonRecGestionF
     object label13: TLabel
       Left = 612
       Top = 6
-      Width = 42
+      Width = 43
       Height = 17
       Caption = 'R'#233'gl'#233':'
       Color = clWhite
@@ -2406,7 +2459,7 @@ object BonRecGestionF: TBonRecGestionF
     object Label1: TLabel
       Left = 413
       Top = 6
-      Width = 65
+      Width = 61
       Height = 17
       Caption = 'Total TVA:'
       Color = clWhite
@@ -2422,7 +2475,7 @@ object BonRecGestionF: TBonRecGestionF
     object Label2: TLabel
       Left = 12
       Top = 6
-      Width = 58
+      Width = 54
       Height = 17
       Caption = 'Total HT:'
       Color = clWhite
@@ -2453,7 +2506,7 @@ object BonRecGestionF: TBonRecGestionF
       Font.Color = 5425663
       Font.Height = 20
       Font.Name = 'Helvetica LT Std'
-      Font.Style = [fsBold, fsItalic]
+      Font.Style = []
       ParentBiDiMode = False
       ParentColor = False
       ParentFont = False
@@ -2478,7 +2531,7 @@ object BonRecGestionF: TBonRecGestionF
       Font.Color = 14727239
       Font.Height = 20
       Font.Name = 'Helvetica LT Std'
-      Font.Style = [fsBold, fsItalic]
+      Font.Style = []
       ParentBiDiMode = False
       ParentColor = False
       ParentFont = False
@@ -2503,7 +2556,7 @@ object BonRecGestionF: TBonRecGestionF
       Font.Color = 7566591
       Font.Height = 20
       Font.Name = 'Helvetica LT Std'
-      Font.Style = [fsBold, fsItalic]
+      Font.Style = []
       ParentBiDiMode = False
       ParentColor = False
       ParentFont = False
@@ -2528,7 +2581,7 @@ object BonRecGestionF: TBonRecGestionF
       Font.Color = 7854350
       Font.Height = 20
       Font.Name = 'Helvetica LT Std'
-      Font.Style = [fsBold, fsItalic]
+      Font.Style = []
       ParentBiDiMode = False
       ParentColor = False
       ParentFont = False
@@ -2553,7 +2606,7 @@ object BonRecGestionF: TBonRecGestionF
       Font.Color = 16771277
       Font.Height = 20
       Font.Name = 'Helvetica LT Std'
-      Font.Style = [fsBold, fsItalic]
+      Font.Style = []
       ParentBiDiMode = False
       ParentColor = False
       ParentFont = False
@@ -2563,7 +2616,7 @@ object BonRecGestionF: TBonRecGestionF
     object Label10: TLabel
       Left = 412
       Top = 64
-      Width = 66
+      Width = 63
       Height = 17
       Caption = 'Total TTC:'
       Color = 15722984
@@ -2713,7 +2766,7 @@ object BonRecGestionF: TBonRecGestionF
       Font.Color = 15722984
       Font.Height = 20
       Font.Name = 'Helvetica LT Std'
-      Font.Style = [fsBold, fsItalic]
+      Font.Style = []
       ParentBiDiMode = False
       ParentColor = False
       ParentFont = False
@@ -2760,7 +2813,7 @@ object BonRecGestionF: TBonRecGestionF
       Font.Color = 3854249
       Font.Height = 20
       Font.Name = 'Helvetica LT Std'
-      Font.Style = [fsBold, fsItalic]
+      Font.Style = []
       ParentBiDiMode = False
       ParentColor = False
       ParentFont = False
@@ -2924,9 +2977,6 @@ object BonRecGestionF: TBonRecGestionF
       'valider_barec=valider_barec'
       'num_barec=num_barec'
       'fourbarec=fourbarec'
-      'MontantTVA=MontantTVA'
-      'MontantRes=MontantRes'
-      'obser_barec=obser_barec'
       'montttc_barec=montttc_barec'
       'remise_barec=remise_barec'
       'num_cheque_barec=num_cheque_barec'
@@ -2934,13 +2984,15 @@ object BonRecGestionF: TBonRecGestionF
       'code_cmpt=code_cmpt'
       'ModePaie=ModePaie'
       'Compte=Compte'
-      'RemisePerc=RemisePerc'
-      'NEWTTC=NEWTTC'
       'code_f=code_f'
       'code_ur=code_ur'
       'bon_or_no_barec=bon_or_no_barec'
-      'NeTHT=NeTHT'
-      'Agent=Agent')
+      'Agent=Agent'
+      'obser_barec=obser_barec'
+      'montanttva=montanttva'
+      'montantres=montantres'
+      'remiseperc=remiseperc'
+      'netht=netht')
     DataSet = MainForm.Bona_recTable
     BCDToCurrency = False
     Left = 248
@@ -2955,28 +3007,27 @@ object BonRecGestionF: TBonRecGestionF
       'qut_p=qut_p'
       'prixht_p=prixht_p'
       'cond_p=cond_p'
-      'PrixATTC=PrixATTC'
-      'MontantHT=MontantHT'
-      'MontantTVA=MontantTVA'
-      'MontantTTC=MontantTTC'
       'code_p=code_p'
+      'prixvd_p=prixvd_p'
+      'prixvr_p=prixvr_p'
+      'prixvg_p=prixvg_p'
+      'prixva_p=prixva_p'
+      'prixva2_p=prixva2_p'
+      'dateperiss_p=dateperiss_p'
+      'qutinstock_p=qutinstock_p'
+      'tva_p=tva_p'
       'nomp=nomp'
       'referp=referp'
-      'tvap=tvap'
-      'TVA=TVA'
-      'tva_p=tva_p'
-      'prixvd_p=prixvd_p'
-      'MargeD=MargeD'
-      'prixvr_p=prixvr_p'
-      'MargeR=MargeR'
-      'prixvg_p=prixvg_p'
-      'MargeG=MargeG'
-      'prixva_p=prixva_p'
-      'MargeA=MargeA'
-      'prixva2_p=prixva2_p'
-      'MargeA2=MargeA2'
-      'dateperiss_p=dateperiss_p'
-      'qutinstock_p=qutinstock_p')
+      'prixattc=prixattc'
+      'montantht=montantht'
+      'montantttc=montantttc'
+      'montanttva=montanttva'
+      'montantaht=montantaht'
+      'marged=marged'
+      'marger=marger'
+      'margeg=margeg'
+      'margea=margea'
+      'margea2=margea2')
     DataSource = BonRecPListDataS
     BCDToCurrency = False
     Left = 248
@@ -3059,7 +3110,7 @@ object BonRecGestionF: TBonRecGestionF
     Top = 480
   end
   object BonRecPListfrxRprt: TfrxReport
-    Version = '5.4.6'
+    Version = '5.6.1'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -3067,8 +3118,8 @@ object BonRecGestionF: TBonRecGestionF
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
     PrintOptions.ShowDialog = False
-    ReportOptions.CreateDate = 42576.399521435200000000
-    ReportOptions.LastChange = 42812.428914768520000000
+    ReportOptions.CreateDate = 42576.399521435210000000
+    ReportOptions.LastChange = 43353.839254733790000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       ''
@@ -3229,9 +3280,9 @@ object BonRecGestionF: TBonRecGestionF
         Top = 18.897650000000000000
         Width = 718.110700000000000000
         object Memo3: TfrxMemoView
-          Left = 340.157700000000000000
+          Left = 325.157700000000000000
           Top = 388.803340000000000000
-          Width = 76.277787270000000000
+          Width = 72.566929130000000000
           Height = 28.174678180000000000
           AllowExpressions = False
           Font.Charset = DEFAULT_CHARSET
@@ -3248,7 +3299,7 @@ object BonRecGestionF: TBonRecGestionF
         end
         object Memo4: TfrxMemoView
           Top = 388.803340000000000000
-          Width = 57.380137270000000000
+          Width = 42.330708661417320000
           Height = 28.174678180000000000
           AllowExpressions = False
           Font.Charset = DEFAULT_CHARSET
@@ -3264,9 +3315,9 @@ object BonRecGestionF: TBonRecGestionF
           VAlign = vaCenter
         end
         object Memo6: TfrxMemoView
-          Left = 566.929500000000000000
+          Left = 593.929500000000000000
           Top = 388.803340000000000000
-          Width = 151.868387270000000000
+          Width = 125.480314960000000000
           Height = 28.174678180000000000
           AllowExpressions = False
           Font.Charset = DEFAULT_CHARSET
@@ -3282,9 +3333,9 @@ object BonRecGestionF: TBonRecGestionF
           VAlign = vaCenter
         end
         object Memo5: TfrxMemoView
-          Left = 415.748300000000000000
+          Left = 469.748300000000000000
           Top = 388.803340000000000000
-          Width = 151.868387270000000000
+          Width = 125.480314960000000000
           Height = 28.174678180000000000
           AllowExpressions = False
           Font.Charset = DEFAULT_CHARSET
@@ -3300,7 +3351,7 @@ object BonRecGestionF: TBonRecGestionF
           VAlign = vaCenter
         end
         object Memo2: TfrxMemoView
-          Left = 56.692950000000000000
+          Left = 41.692950000000000000
           Top = 388.803340000000000000
           Width = 284.151937270000000000
           Height = 28.174678180000000000
@@ -3557,6 +3608,24 @@ object BonRecGestionF: TBonRecGestionF
           Transparent = True
           TransparentColor = clWhite
         end
+        object Memo1: TfrxMemoView
+          Left = 397.850650000000000000
+          Top = 388.803340000000000000
+          Width = 72.566929130000000000
+          Height = 28.174678180000000000
+          AllowExpressions = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Gotham Rounded Light'
+          Font.Style = [fsBold]
+          Fill.BackColor = 13948116
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'Cond')
+          ParentFont = False
+          VAlign = vaCenter
+        end
       end
       object MasterData1: TfrxMasterData
         FillType = ftBrush
@@ -3568,7 +3637,7 @@ object BonRecGestionF: TBonRecGestionF
         RowCount = 0
         Stretched = True
         object frxDBDataset1nomp: TfrxMemoView
-          Left = 49.133890000000000000
+          Left = 34.133890000000000000
           Top = 3.559060000000000000
           Width = 291.023810000000000000
           Height = 18.897650000000000000
@@ -3587,7 +3656,7 @@ object BonRecGestionF: TBonRecGestionF
         end
         object Line: TfrxMemoView
           Top = 3.559060000000000000
-          Width = 49.133890000000000000
+          Width = 34.015748031496060000
           Height = 18.897650000000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -3601,9 +3670,9 @@ object BonRecGestionF: TBonRecGestionF
           VAlign = vaCenter
         end
         object frxDBDataset1qut_p: TfrxMemoView
-          Left = 340.157700000000000000
+          Left = 325.157700000000000000
           Top = 3.559060000000000000
-          Width = 75.590600000000000000
+          Width = 71.811023620000000000
           Height = 18.897650000000000000
           DataSet = frxBonRecPListDB
           DataSetName = 'frxBonRecPListDB'
@@ -3619,9 +3688,9 @@ object BonRecGestionF: TBonRecGestionF
           VAlign = vaCenter
         end
         object frxDBDataset1prixvd_p: TfrxMemoView
-          Left = 415.748300000000000000
+          Left = 471.748300000000000000
           Top = 3.559060000000000000
-          Width = 147.401670000000000000
+          Width = 120.944881890000000000
           Height = 18.897650000000000000
           DataSet = frxBonRecPListDB
           DataSetName = 'frxBonRecPListDB'
@@ -3639,9 +3708,9 @@ object BonRecGestionF: TBonRecGestionF
           VAlign = vaCenter
         end
         object frxDBDataset1MontantHT: TfrxMemoView
-          Left = 566.929500000000000000
+          Left = 593.929500000000000000
           Top = 3.559060000000000000
-          Width = 147.401670000000000000
+          Width = 120.944881890000000000
           Height = 18.897650000000000000
           DataSet = frxBonRecPListDB
           DataSetName = 'frxBonRecPListDB'
@@ -3655,6 +3724,25 @@ object BonRecGestionF: TBonRecGestionF
           HAlign = haRight
           Memo.UTF8W = (
             '[frxBonRecPListDB."MontantHT"]')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo16: TfrxMemoView
+          Left = 396.850650000000000000
+          Top = 4.047310000000000000
+          Width = 71.811023620000000000
+          Height = 18.897650000000000000
+          DataField = 'cond_p'
+          DataSet = frxBonRecPListDB
+          DataSetName = 'frxBonRecPListDB'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -15
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = []
+          HAlign = haCenter
+          Memo.UTF8W = (
+            '[frxBonRecPListDB."cond_p"]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -4172,7 +4260,7 @@ object BonRecGestionF: TBonRecGestionF
     end
   end
   object BonRecPListSanTAXfrxRprt: TfrxReport
-    Version = '5.4.6'
+    Version = '5.6.1'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -4180,8 +4268,8 @@ object BonRecGestionF: TBonRecGestionF
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
     PrintOptions.ShowDialog = False
-    ReportOptions.CreateDate = 42576.399521435200000000
-    ReportOptions.LastChange = 42812.436302719910000000
+    ReportOptions.CreateDate = 42576.399521435210000000
+    ReportOptions.LastChange = 42812.436302719900000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       ''

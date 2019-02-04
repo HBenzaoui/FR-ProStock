@@ -76,6 +76,7 @@ type
     Crdit1: TMenuItem;
     sImage2: TsImage;
     ProduitListSaveDg: TSaveDialog;
+    AdvToolButton4: TAdvToolButton;
     procedure ResearchFournisseurEdtKeyPress(Sender: TObject; var Key: Char);
     procedure ResearchFournisseurEdtChange(Sender: TObject);
     procedure FisrtFournisseursbtnClick(Sender: TObject);
@@ -119,6 +120,7 @@ type
     procedure Crdit1Click(Sender: TObject);
     procedure ClearRegleFilterBVLivPMenuClick(Sender: TObject);
     procedure ClearFilterBVLivPMenuClick(Sender: TObject);
+    procedure AdvToolButton4Click(Sender: TObject);
   private
     procedure GettingData;
     procedure Select_Valid;
@@ -132,6 +134,7 @@ type
     procedure Select_NOT_Valid_Credit;
     procedure Select_NOT_Valid_Debite;
     procedure Select_NOT_Valid_Regle;
+    function isFourExistInClientList(NameF: string): Boolean;
     { Private declarations }
   public
     { Public declarations }
@@ -144,7 +147,7 @@ implementation
 
 {$R *.dfm}
 
-uses UMainF, UFournisseurGestion, USplash, UClientGestion,Threading, UWorkingSplash, UComptoir;
+uses UMainF, UFournisseurGestion, USplash, UClientGestion,Threading, UWorkingSplash, UComptoir, USplashPrintReport;
 
 
 procedure TFournisseurListF.Select_Valid;
@@ -345,6 +348,33 @@ begin
   FourListfrxRprt.ShowReport;
 
   MainForm.FournisseurTable.EnableControls;
+end;
+
+procedure TFournisseurListF.AdvToolButton4Click(Sender: TObject);
+begin
+//-------- Show the splash screan for the Type de charge to add new one---------//
+    FSplashPrintReport:=TFSplashPrintReport.Create(FournisseurListF);
+    FSplashPrintReport.Image1.ImageIndex:=17;
+    FSplashPrintReport.ListClientFourGBtn.ImageIndex:=59;
+    FSplashPrintReport.Panel1.Caption:='Impression de Fournisseur Situation';
+    FSplashPrintReport.Label5.Caption:='Four:';
+    FSplashPrintReport.RequiredRegCGlbl.Caption:='S''il vous plaît entrer le nom de le Fournisseur';
+    FSplashPrintReport.Tag:=1;
+
+
+    FSplashPrintReport.Left:=  (MainForm.Left + MainForm.Width div 2) - (FSplashPrintReport.Width div 2);
+    FSplashPrintReport.Top:=  MainForm.Top + 5 ;
+
+    if NOT (MainForm.FournisseurTable.IsEmpty) AND (MainForm.FournisseurTable.FieldByName('code_f').AsInteger <> 0 ) then
+    begin
+
+      FSplashPrintReport.NameReportPCbx.Text:= MainForm.FournisseurTable.FieldByName('nom_f').AsString;
+
+    end;
+
+    AnimateWindow(FSplashPrintReport.Handle, 175, AW_VER_POSITIVE OR AW_SLIDE OR AW_ACTIVATE );
+    FSplashPrintReport.Show;
+
 end;
 
 procedure TFournisseurListF.ApplicationEvents1ShortCut(var Msg: TWMKey;
@@ -687,81 +717,169 @@ if ProduitListSaveDg.Execute then
 //MainForm.FournisseurTable.EnableControls;
 end;
 
+
+function TFournisseurListF.isFourExistInClientList(NameF :string) : Boolean;
+
+begin
+
+   MainForm.SQLQuery.Active:= False;
+   MainForm.SQLQuery.SQL.Clear;
+   MainForm.SQLQuery.SQL.Text:= 'SELECT LOWER(nom_c) FROM client WHERE LOWER(nom_c) LIKE '+ QuotedStr(LowerCase(NameF));
+   MainForm.SQLQuery.Active:= True;
+
+     if  MainForm.SQLQuery.IsEmpty then
+     begin
+       Result := False;
+
+     end else
+         begin
+             Result := True;
+         end;
+
+   MainForm.SQLQuery.Active:= False;
+   MainForm.SQLQuery.SQL.Clear;
+end;
+
+
 procedure TFournisseurListF.EditFournisseursBtnClick(Sender: TObject);
 begin
-      //----------------- Show the splash screan for the produit familly to add new one---------//
-     FournisseurGestionF:=TFournisseurGestionF.Create(FournisseurListF);
-     FournisseurGestionF.FournisseurGPgControl.TabIndex:= 0;
-     FournisseurGestionF.Left:=  ( Screen.Width div 2 ) - (FournisseurGestionF.Width div 2)    ;
-     FournisseurGestionF.Top:=   (Screen.Height div 2) - (FournisseurGestionF.Height div 2)    ;
-     FournisseurGestionF.OKFournisseurGBtn.Tag:= 1 ;
-     FournisseurGestionF.Show;
-     FournisseurGestionF.NameFournisseurGEdt.SetFocus;
 
-    if not FournisseursListDBGridEh.DataSource.DataSet.IsEmpty then
-     begin
-     //----------------- SHOW THE DATA ON THE Fournisseur GESTION PANEL -----------------------------//
-         with MainForm.FournisseurTable do begin
-            FournisseurGestionF.ActiveFournisseurGSlider.SliderOn:=  FieldValues['activ_f'];
-            FournisseurGestionF.NameFournisseurGEdt.Text:= fieldbyname('nom_f').Value;
-            if fieldbyname('adr_f').Value <> null then begin
-            FournisseurGestionF.AdrFournisseurGEdt.Text:= fieldbyname('adr_f').Value;
-            end;
-            if fieldbyname('willaya_f').Value <> null then begin
-            FournisseurGestionF.WilayaFournisseurGCbx.Text:= fieldbyname('willaya_f').Value;
-            end;
-            if fieldbyname('ville_f').Value <> null then begin
-            FournisseurGestionF.VilleFournisseurGCbx.Text:= fieldbyname('ville_f').Value;
-            end;
-            if fieldbyname('fix_f').Value <> null then begin
-            FournisseurGestionF.FixFournisseurGEdt.Text:= fieldbyname('fix_f').Value;
-            end;
-            if fieldbyname('fax_f').Value <> null then begin
-            FournisseurGestionF.FaxFournisseurGEdt.Text:= fieldbyname('fax_f').Value;
-            end;
-            if fieldbyname('mob_f').Value <> null then begin
-            FournisseurGestionF.MobileFournisseurGEdt.Text:= fieldbyname('mob_f').Value;
-            end;
-            if fieldbyname('mob2_f').Value <> null then begin
-            FournisseurGestionF.MobileFournisseurGEdt.Text:= fieldbyname('mob2_f').Value;
-            end;
-            if fieldbyname('email_f').Value <> null then begin
-            FournisseurGestionF.EmailFournisseurGEdt.Text:= fieldbyname('email_f').Value;
-            end;
-            if fieldbyname('siteWeb_f').Value <> null then begin
-            FournisseurGestionF.SiteFournisseurGEdt.Text:= fieldbyname('siteWeb_f').Value;
-            end;
-            if fieldbyname('rc_f').Value <> null then begin
-            FournisseurGestionF.RCFournisseurGEdt.Text:= fieldbyname('rc_f').Value;
-            end;
-            if fieldbyname('nart_f').Value <> null then begin
-            FournisseurGestionF.NArtFournisseurGEdt.Text:= fieldbyname('nart_f').Value;
-            end;
-            if fieldbyname('nif_f').Value <> null then begin
-            FournisseurGestionF.NIFFournisseurGEdt.Text:= fieldbyname('nif_f').Value;
-            end;
-            if fieldbyname('nis_f').Value <> null then begin
-            FournisseurGestionF.NISFournisseurGEdt.Text:= fieldbyname('nis_f').Value;
-            end;
-            if fieldbyname('nbank_f').Value <> null then begin
-            FournisseurGestionF.NBankFournisseurGEdt.Text:= fieldbyname('nbank_f').Value;
-            end;
-            if fieldbyname('rib_f').Value <> null then begin
-            FournisseurGestionF.RIBFournisseurGEdt.Text:= fieldbyname('rib_f').Value;
-            end;
-            FournisseurGestionF.OldCreditFournisseurGEdt.Text:= CurrToStrF( fieldbyname('oldcredit_f').Value,ffNumber, 2);
-            FournisseurGestionF.MaxCreditFournisseurGEdt.Text:= CurrToStrF( fieldbyname('maxcredit_f').Value,ffNumber, 2);
-            if fieldbyname('obser_f').Value <> null then begin
-            FournisseurGestionF.ObserFournisseurGMem.Text:= fieldbyname('obser_f').Value;
-            end;
+ if NOT MainForm.FournisseurTable.IsEmpty then
+ begin
 
-            //----- this is to move the coursour to the last  --------------------------------------------------------
-            FournisseurGestionF.NameFournisseurGEdt.SelStart :=  FournisseurGestionF.NameFournisseurGEdt.GetTextLen ;
+    //----------------- Show the splash screan for the produit familly to add new one---------//
+   FournisseurGestionF:=TFournisseurGestionF.Create(FournisseurListF);
+   FournisseurGestionF.FournisseurGPgControl.TabIndex:= 0;
+   FournisseurGestionF.Left:=  ( Screen.Width div 2 ) - (FournisseurGestionF.Width div 2)    ;
+   FournisseurGestionF.Top:=   (Screen.Height div 2) - (FournisseurGestionF.Height div 2)    ;
+   FournisseurGestionF.OKFournisseurGBtn.Tag:= 1 ;
 
-           end ;
+   //----------------- Check if exist as fournisseur and if it exist show it as -----------------------------//
+    if isFourExistInClientList(MainForm.FournisseurTable.FieldByName('nom_f').AsString) = True then
+    begin
 
-      end
-  else  Exit
+      FournisseurGestionF.Label1.Visible:= True;
+      FournisseurGestionF.Label2.Visible:= True;
+      FournisseurGestionF.FourClientGSlider.Visible:= True;
+      FournisseurGestionF.FourClientGSlider.SliderOn:= True;
+      FournisseurGestionF.Label1.Enabled:= False;
+      FournisseurGestionF.Label2.Enabled:= False;
+      FournisseurGestionF.FourClientGSlider.Enabled:= False;
+      FournisseurGestionF.FourClientGSlider.Enabled:= False;
+
+      FournisseurGestionF.Label8.Visible:= True;
+      FournisseurGestionF.PayFourClientGSlider.Visible:= True;
+
+
+    end;
+
+
+   //----------------- SHOW CAPITAL CRDIT AND RESTE -----------------------------//
+   MainForm.SQLQuery.Active:= False;
+   MainForm.SQLQuery.Close();
+   MainForm.SQLQuery.SQL.Clear;
+   MainForm.SQLQuery.SQL.Text:=
+   'SELECT code_f, SUM(TotalA) AS Capital, SUM(TotalAR) AS Regle FROM ( '
+   +'SELECT FR.code_f, SUM(BR.montttc_barec) AS TotalA, SUM(BR.montver_barec) AS TotalAR FROM fournisseur FR '
+   +'INNER JOIN bona_rec BR ON FR.code_f = BR.code_f '
+   +'WHERE FR.code_f = :CodeF AND BR.valider_barec = TRUE GROUP BY FR.code_f '
+   +'UNION ALL SELECT FR.code_f, SUM(FA.montttc_bafac) AS TotalA, SUM(FA.montver_bafac) AS TotalAR FROM fournisseur FR '
+   +'INNER JOIN bona_fac FA ON FR.code_f = FA.code_f '
+   +'WHERE FR.code_f = :CodeF AND FA.valider_bafac = TRUE GROUP BY FR.code_f '
+   +'UNION ALL SELECT FR.code_f, ''0'' AS TotalA, SUM(RF.montver_rf) AS TotalAR FROM fournisseur FR '
+   +'INNER JOIN regfournisseur RF ON FR.code_f = RF.code_f '
+   +'WHERE FR.code_f = :CodeF AND RF.bon_or_no_rf = 1 GROUP BY FR.code_f '
+   +') TA GROUP BY code_f ';
+
+    MainForm.SQLQuery.ParamByName('CodeF').AsInteger := MainForm.FournisseurTable.FieldByName('code_F').AsInteger;
+    MainForm.SQLQuery.Open();
+
+    if NOT MainForm.SQLQuery.isEmpty then
+    begin
+     FournisseurGestionF.CapitalFourGLbl.Caption:= CurrToStrF( MainForm.SQLQuery.fieldbyname('capital').Value,ffNumber, 2) + ' DA';
+     FournisseurGestionF.RegleFourGLbl.Caption:= CurrToStrF( MainForm.SQLQuery.fieldbyname('regle').Value,ffNumber, 2) + ' DA';
+    end else
+        begin
+         FournisseurGestionF.CapitalFourGLbl.Caption:= CurrToStrF( 0,ffNumber, 2) + ' DA';
+         FournisseurGestionF.RegleFourGLbl.Caption:= CurrToStrF( 0,ffNumber, 2) + ' DA';
+        end;
+
+ //----------------- SHOW THE DATA ON THE Fournisseur GESTION PANEL -----------------------------//
+     with MainForm.FournisseurTable do begin
+        FournisseurGestionF.ActiveFournisseurGSlider.SliderOn:=  FieldValues['activ_f'];
+        FournisseurGestionF.NameFournisseurGEdt.Text:= fieldbyname('nom_f').Value;
+        if fieldbyname('adr_f').Value <> null then begin
+        FournisseurGestionF.AdrFournisseurGEdt.Text:= fieldbyname('adr_f').Value;
+        end;
+        if fieldbyname('willaya_f').Value <> null then begin
+        FournisseurGestionF.WilayaFournisseurGCbx.Text:= fieldbyname('willaya_f').Value;
+        end;
+        if fieldbyname('ville_f').Value <> null then begin
+        FournisseurGestionF.VilleFournisseurGCbx.Text:= fieldbyname('ville_f').Value;
+        end;
+        if fieldbyname('fix_f').Value <> null then begin
+        FournisseurGestionF.FixFournisseurGEdt.Text:= fieldbyname('fix_f').Value;
+        end;
+        if fieldbyname('fax_f').Value <> null then begin
+        FournisseurGestionF.FaxFournisseurGEdt.Text:= fieldbyname('fax_f').Value;
+        end;
+        if fieldbyname('mob_f').Value <> null then begin
+        FournisseurGestionF.MobileFournisseurGEdt.Text:= fieldbyname('mob_f').Value;
+        end;
+        if fieldbyname('mob2_f').Value <> null then begin
+        FournisseurGestionF.MobileFournisseurGEdt.Text:= fieldbyname('mob2_f').Value;
+        end;
+        if fieldbyname('email_f').Value <> null then begin
+        FournisseurGestionF.EmailFournisseurGEdt.Text:= fieldbyname('email_f').Value;
+        end;
+        if fieldbyname('siteWeb_f').Value <> null then begin
+        FournisseurGestionF.SiteFournisseurGEdt.Text:= fieldbyname('siteWeb_f').Value;
+        end;
+        if fieldbyname('rc_f').Value <> null then begin
+        FournisseurGestionF.RCFournisseurGEdt.Text:= fieldbyname('rc_f').Value;
+        end;
+        if fieldbyname('nart_f').Value <> null then begin
+        FournisseurGestionF.NArtFournisseurGEdt.Text:= fieldbyname('nart_f').Value;
+        end;
+        if fieldbyname('nif_f').Value <> null then begin
+        FournisseurGestionF.NIFFournisseurGEdt.Text:= fieldbyname('nif_f').Value;
+        end;
+        if fieldbyname('nis_f').Value <> null then begin
+        FournisseurGestionF.NISFournisseurGEdt.Text:= fieldbyname('nis_f').Value;
+        end;
+        if fieldbyname('nbank_f').Value <> null then begin
+        FournisseurGestionF.NBankFournisseurGEdt.Text:= fieldbyname('nbank_f').Value;
+        end;
+        if fieldbyname('rib_f').Value <> null then begin
+        FournisseurGestionF.RIBFournisseurGEdt.Text:= fieldbyname('rib_f').Value;
+        end;
+        if  fieldbyname('credit_f').Value <> null then begin
+        FournisseurGestionF.CreditFourGLbl.Caption:= CurrToStrF( fieldbyname('credit_f').Value,ffNumber, 2) + ' DA';
+        end;
+        if  fieldbyname('oldcredit_f').Value <> null then begin
+        FournisseurGestionF.OldCreditFournisseurGEdt.Text:= CurrToStrF( fieldbyname('oldcredit_f').Value,ffNumber, 2);
+        end;
+        if  fieldbyname('maxcredit_f').Value <> null then begin
+        FournisseurGestionF.MaxCreditFournisseurGEdt.Text:= CurrToStrF( fieldbyname('maxcredit_f').Value,ffNumber, 2);
+        end;
+        if fieldbyname('obser_f').Value <> null then begin
+        FournisseurGestionF.ObserFournisseurGMem.Text:= fieldbyname('obser_f').Value;
+        end;
+
+        //----- this is to move the coursour to the last  --------------------------------------------------------
+        FournisseurGestionF.NameFournisseurGEdt.SelStart :=  FournisseurGestionF.NameFournisseurGEdt.GetTextLen ;
+
+       end ;
+
+
+   FournisseurGestionF.Show;
+   FournisseurGestionF.NameFournisseurGEdt.SetFocus;
+
+   MainForm.SQLQuery.Active:= False;
+   MainForm.SQLQuery.Close();
+   MainForm.SQLQuery.SQL.Clear;
+
+ end;
 end;
 
 
@@ -900,12 +1018,26 @@ end;
 
 procedure TFournisseurListF.FormPaint(Sender: TObject);
 begin
-          MainForm.FournisseurTable.DisableControls;
-          MainForm.FournisseurTable.Active:=False;
-          MainForm.FournisseurTable.SQL.Clear;
-          MainForm.FournisseurTable.SQL.Text:='SELECT * FROM fournisseur ';
-          MainForm.FournisseurTable.Active:=True;
-          MainForm.FournisseurTable.EnableControls;
+
+      MainForm.FournisseurTable.DisableControls;
+      MainForm.FournisseurTable.Active:=False;
+      MainForm.FournisseurTable.SQL.Clear;
+      MainForm.FournisseurTable.SQL.Text:='SELECT * FROM fournisseur ';
+      MainForm.FournisseurTable.Active:=True;
+      MainForm.FournisseurTable.EnableControls;
+
+
+      if MainForm.totaux_ur.Checked then
+      begin
+
+       SumGirdBBVlivBtn.Enabled:= True;
+
+      end else
+      begin
+
+       SumGirdBBVlivBtn.Enabled:= False;
+
+      end;
 end;
 
 procedure TFournisseurListF.FormShow(Sender: TObject);

@@ -50,7 +50,7 @@ object UsersListF: TUsersListF
     ShowHint = True
     Spacing = -1
     OnClick = AdvToolButton1Click
-    Version = '1.6.1.2'
+    Version = '1.6.2.0'
     TMSStyle = 0
   end
   object AdvToolButton2: TAdvToolButton
@@ -82,7 +82,7 @@ object UsersListF: TUsersListF
     ShowHint = True
     Spacing = -1
     OnClick = AdvToolButton2Click
-    Version = '1.6.1.2'
+    Version = '1.6.2.0'
     TMSStyle = 0
   end
   object AdvToolButton3: TAdvToolButton
@@ -114,13 +114,13 @@ object UsersListF: TUsersListF
     ShowHint = True
     Spacing = -2
     OnClick = AdvToolButton3Click
-    Version = '1.6.1.2'
+    Version = '1.6.2.0'
     TMSStyle = 0
   end
   object Label1: TLabel
     Left = 8
     Top = 105
-    Width = 74
+    Width = 73
     Height = 18
     Caption = 'Utilisateur:'
     Color = clWhite
@@ -198,7 +198,7 @@ object UsersListF: TUsersListF
       ShowHint = True
       Spacing = -1
       OnClick = OKAddUniteSBtnClick
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
   end
@@ -241,6 +241,7 @@ object UsersListF: TUsersListF
       item
         Alignment = taCenter
         CaseInsensitiveTextSearch = False
+        CellButtons = <>
         DynProps = <>
         EditButtons = <>
         FieldName = 'nom_ur'
@@ -264,6 +265,7 @@ object UsersListF: TUsersListF
       item
         Alignment = taCenter
         CaseInsensitiveTextSearch = False
+        CellButtons = <>
         Checkboxes = False
         DynProps = <>
         EditButtons = <>

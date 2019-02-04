@@ -44,7 +44,7 @@ var
 implementation
 
 {$R *.dfm}
-uses Contnrs, Types, UOptions;
+uses Contnrs, Types, UOptions, UMainF ;
 
 var
   gGrayForms: TComponentList;
@@ -74,7 +74,7 @@ begin
        ///wForm.Align:= alClient;
           wForm.WindowState := wsMaximized;
           gGrayForms.Add(wForm);
-          wForm.Position := poOwnerFormCenter;
+          wForm.Position := MainForm.Position;
           wForm.AlphaBlend := true;
           wForm.AlphaBlendValue := 80;
           wForm.Color := clBlack;

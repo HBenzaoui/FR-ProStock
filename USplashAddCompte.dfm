@@ -69,7 +69,7 @@ object FSplashAddCompte: TFSplashAddCompte
     ShowHint = True
     Spacing = 10
     OnClick = OKAddCompteSBtnClick
-    Version = '1.6.1.2'
+    Version = '1.6.2.0'
     TMSStyle = 0
   end
   object CancelAddCompteSBtn: TAdvToolButton
@@ -101,7 +101,7 @@ object FSplashAddCompte: TFSplashAddCompte
     ShowHint = True
     Spacing = -1
     OnClick = CancelAddCompteSBtnClick
-    Version = '1.6.1.2'
+    Version = '1.6.2.0'
     ExplicitTop = 219
     TMSStyle = 0
   end
@@ -158,7 +158,7 @@ object FSplashAddCompte: TFSplashAddCompte
   object CompteAddCompteSLbl: TLabel
     Left = 66
     Top = 132
-    Width = 50
+    Width = 49
     Height = 18
     Caption = 'Nature:'
     Color = 4207405
@@ -237,7 +237,7 @@ object FSplashAddCompte: TFSplashAddCompte
     object FormCaptionAddUniteSLbl: TLabel
       Left = 97
       Top = 10
-      Width = 138
+      Width = 141
       Height = 24
       Caption = 'Ajouter Compte'
       Color = 4207405

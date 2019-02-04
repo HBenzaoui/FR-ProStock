@@ -4,6 +4,7 @@ interface
 
 uses
   Winapi.Windows,DateUtils,DBGridEhImpExp,ShellAPI,
+  EhLibFireDAC,
    Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, DBGridEhGrouping, ToolCtrlsEh,
   DBGridEhToolCtrls, DynVarsEh, Data.DB, EhLibVCL, GridsEh, DBAxisGridsEh,
@@ -72,6 +73,7 @@ type
     Label28: TLabel;
     ApplicationEvents1: TApplicationEvents;
     ProduitListSaveDg: TSaveDialog;
+    RglementClients1: TMenuItem;
     procedure AddBARecBtnClick(Sender: TObject);
     procedure ResearchRegCEdtChange(Sender: TObject);
     procedure DateStartRegCDChange(Sender: TObject);
@@ -111,6 +113,8 @@ type
     procedure ResearchRegCEdtKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure ApplicationEvents1ShortCut(var Msg: TWMKey; var Handled: Boolean);
+    procedure RglementClients1Click(Sender: TObject);
+    procedure BVLivListDBGridEhSortMarkingChanged(Sender: TObject);
   private
     procedure GettingData;
     procedure FilteredColor;
@@ -123,6 +127,7 @@ type
     procedure Select_MP_Escpace;
     procedure Select_FacV;
     procedure Select_MP_Virment;
+    procedure Select_RC;
     { Private declarations }
   public
     { Public declarations }
@@ -170,6 +175,16 @@ MainForm.RegclientTable.DisableControls;
 MainForm.RegclientTable.Active:= False;
 MainForm.RegclientTable.SQL.clear;
 mainform.RegclientTable.sql.Text:='SELECT * FROM regclient WHERE code_bvctr <> ''0'' AND date_rc BETWEEN '''+(DateToStr(DateStartRegCD.Date))+ ''' AND ''' +(DateToStr(DateEndRegCD.Date))+'''';
+MainForm.RegclientTable.Active:= True;
+MainForm.RegclientTable.EnableControls;
+end;
+
+procedure TReglementCListF.Select_RC;
+begin
+MainForm.RegclientTable.DisableControls;
+MainForm.RegclientTable.Active:= False;
+MainForm.RegclientTable.SQL.clear;
+mainform.RegclientTable.sql.Text:='SELECT * FROM regclient WHERE bon_or_no_rc = ''1'' AND date_rc BETWEEN '''+(DateToStr(DateStartRegCD.Date))+ ''' AND ''' +(DateToStr(DateEndRegCD.Date))+'''';
 MainForm.RegclientTable.Active:= True;
 MainForm.RegclientTable.EnableControls;
 end;
@@ -405,6 +420,22 @@ begin
 
      end;
   end;
+end;
+
+procedure TReglementCListF.RglementClients1Click(Sender: TObject);
+begin
+ClearMPFilterBVLivPMenuClick(Sender);
+
+ClearMPFilterBVLivPMenu.Checked:= True;
+
+  sImage1.ImageIndex:=25;
+  sImage1.Visible:= True;
+  sImage2.ImageIndex:=15;
+  sImage2.Visible:= True;
+  FilterBVLivBtn.ImageIndex:=50;
+  FilteredColor;
+  Select_RC;
+  ClearFilterBVLivPMenu.Checked:= False;
 end;
 
 procedure TReglementCListF.AdvToolButton1Click(Sender: TObject);
@@ -684,6 +715,11 @@ begin
   end else Exit;
 end;
 
+procedure TReglementCListF.BVLivListDBGridEhSortMarkingChanged(Sender: TObject);
+begin
+BVLivListDBGridEh.DefaultApplySorting;
+end;
+
 procedure TReglementCListF.ChequeMPFilterBVLivPMenuClick(Sender: TObject);
 begin
   ClearValideFilterBVLivPMenuClick(Sender);
@@ -792,8 +828,8 @@ var
  if MainForm.RegclientTable.FieldValues['bon_or_no_rc'] = 1 then
 
  begin
-  ReglementCGestionF := TReglementCGestionF.Create(nil);
-  try
+  ReglementCGestionF := TReglementCGestionF.Create(ReglementCListF);
+
 
       if Assigned(ReglementCListF) then
     begin
@@ -806,6 +842,7 @@ var
 
        ReglementCGestionF.NumRegCGEdt.Caption := MainForm.RegclientTable.FieldValues['nom_rc'];
        ReglementCGestionF.DateRegCGD.Date:= MainForm.RegclientTable.FieldValues['date_rc'];
+       ReglementCGestionF.ObserRegCGMem.Lines.Text := MainForm.RegclientTable.FieldByName('obser_rc').AsString;
        if (MainForm.RegclientTable.FieldValues['code_c']<> null) and (MainForm.RegclientTable.FieldValues['code_c']<> 0) then
        begin
        CodeF:=MainForm.RegclientTable.FieldValues['code_c'];
@@ -861,19 +898,13 @@ var
             ReglementCGestionF.Top:=   (Screen.Height div 2) - (ReglementCGestionF.Height div 2)    ;
 
       ReglementCGestionF.Tag:= 1;
-      ReglementCGestionF.ShowModal;
+      ReglementCGestionF.Show;
 
 
 
 
      end;
 
-
-
-      finally
-
-      ReglementCGestionF.Free
-     end;
 
 
  end;
@@ -1048,7 +1079,7 @@ ClearMPFilterBVLivPMenu.Checked:= True;
   sImage1.ImageIndex:=22;
   sImage1.Visible:= True;
   sImage2.ImageIndex:=15;
-  sImage2.Visible:= True;  
+  sImage2.Visible:= True;
   FilterBVLivBtn.ImageIndex:=50;
   FilteredColor;
   Select_CTR;
@@ -1112,6 +1143,19 @@ begin
           MainForm.ClientTable.SQL.Text:='SELECT * FROM client ';
           MainForm.ClientTable.Active:=True;
           MainForm.ClientTable.EnableControls;
+
+
+      if MainForm.totaux_ur.Checked then
+      begin
+
+       SumGirdProduitBtn.Enabled:= True;
+
+      end else
+      begin
+
+       SumGirdProduitBtn.Enabled:= False;
+
+      end;
 end;
 
 end.

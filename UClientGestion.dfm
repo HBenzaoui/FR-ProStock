@@ -20,6 +20,7 @@ object ClientGestionF: TClientGestionF
   OnDestroy = FormDestroy
   OnKeyDown = FormKeyDown
   OnKeyPress = FormKeyPress
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object ClientGPgControl: TsPageControl
@@ -27,7 +28,7 @@ object ClientGestionF: TClientGestionF
     Top = 0
     Width = 516
     Height = 493
-    ActivePage = GeneralClientGTB
+    ActivePage = FicheClientTB
     Align = alClient
     DoubleBuffered = True
     Font.Charset = DEFAULT_CHARSET
@@ -44,8 +45,10 @@ object ClientGestionF: TClientGestionF
     TabsLineSkin = 'BAR'
     object GeneralClientGTB: TsTabSheet
       Caption = 'G'#233'n'#233'ral'
-      SkinData.CustomColor = False
-      SkinData.CustomFont = False
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object GeneralTB: TPanel
         Left = 0
         Top = 0
@@ -63,7 +66,7 @@ object ClientGestionF: TClientGestionF
         object WilayaClientGLbl: TLabel
           Left = 18
           Top = 226
-          Width = 49
+          Width = 48
           Height = 18
           Caption = 'Wilaya:'
           Color = 4207405
@@ -79,7 +82,7 @@ object ClientGestionF: TClientGestionF
         object VilleClientGLbl: TLabel
           Left = 288
           Top = 227
-          Width = 33
+          Width = 34
           Height = 18
           Caption = 'Ville:'
           Color = 4207405
@@ -95,7 +98,7 @@ object ClientGestionF: TClientGestionF
         object ActiveClientGLbl: TLabel
           Left = 30
           Top = 15
-          Width = 78
+          Width = 79
           Height = 18
           Caption = 'Client Actif:'
           Color = 4207405
@@ -159,7 +162,7 @@ object ClientGestionF: TClientGestionF
         object FixClientGLbl: TLabel
           Left = 35
           Top = 306
-          Width = 25
+          Width = 24
           Height = 18
           Caption = 'T'#233'l:'
           Color = 4207405
@@ -175,7 +178,7 @@ object ClientGestionF: TClientGestionF
         object SiteClientGLbl: TLabel
           Left = 257
           Top = 414
-          Width = 64
+          Width = 63
           Height = 18
           Caption = 'Site Web:'
           Color = 4207405
@@ -191,7 +194,7 @@ object ClientGestionF: TClientGestionF
         object EmailClientGLbl: TLabel
           Left = 19
           Top = 414
-          Width = 41
+          Width = 42
           Height = 18
           Caption = 'Email:'
           Color = 4207405
@@ -207,7 +210,7 @@ object ClientGestionF: TClientGestionF
         object MobileClientGLbl: TLabel
           Left = 9
           Top = 360
-          Width = 51
+          Width = 50
           Height = 18
           Caption = 'Mobile:'
           Color = 4207405
@@ -223,7 +226,7 @@ object ClientGestionF: TClientGestionF
         object Mobile2ClientGLbl: TLabel
           Left = 262
           Top = 360
-          Width = 59
+          Width = 58
           Height = 18
           Caption = 'Mobile2:'
           Color = 4207405
@@ -239,7 +242,7 @@ object ClientGestionF: TClientGestionF
         object FaxClientGLbl: TLabel
           Left = 293
           Top = 306
-          Width = 28
+          Width = 27
           Height = 18
           Caption = 'Fax:'
           Color = 4207405
@@ -269,9 +272,9 @@ object ClientGestionF: TClientGestionF
           StyleElements = [seClient, seBorder]
         end
         object RequiredClientGlbl: TLabel
-          Left = 73
+          Left = 71
           Top = 38
-          Width = 425
+          Width = 428
           Height = 16
           Alignment = taCenter
           AutoSize = False
@@ -492,7 +495,7 @@ object ClientGestionF: TClientGestionF
         end
         object ActiveClientGSlider: TsSlider
           Left = 116
-          Top = 17
+          Top = 16
           Width = 40
           Height = 16
           BevelOuter = bvNone
@@ -503,12 +506,12 @@ object ClientGestionF: TClientGestionF
           Font.Height = 12
           Font.Name = 'Roboto'
           Font.Style = []
+          StyleElements = []
           ParentBiDiMode = False
           ParentBackground = False
           ParentCtl3D = False
           ParentFont = False
           TabOrder = 11
-          StyleElements = []
           BoundLabel.Caption = 'sSlider1'
           BoundLabel.Layout = sclBottomCenter
           FontOn.Charset = DEFAULT_CHARSET
@@ -556,8 +559,10 @@ object ClientGestionF: TClientGestionF
     end
     object PlusInfoClientGTB: TsTabSheet
       Caption = 'Plus D'#39'info'
-      SkinData.CustomColor = False
-      SkinData.CustomFont = False
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object PlusInfoTB: TPanel
         Left = 0
         Top = 0
@@ -591,7 +596,7 @@ object ClientGestionF: TClientGestionF
         object NArtClientGLbl: TLabel
           Left = 258
           Top = 18
-          Width = 40
+          Width = 41
           Height = 18
           Caption = 'N'#176'Art:'
           Color = 4207405
@@ -639,7 +644,7 @@ object ClientGestionF: TClientGestionF
         object ObserClientGLbl: TLabel
           Left = 16
           Top = 324
-          Width = 95
+          Width = 92
           Height = 18
           Caption = 'Observations:'
           Color = 4207405
@@ -655,7 +660,7 @@ object ClientGestionF: TClientGestionF
         object MaxCreditClientGLbl: TLabel
           Left = 258
           Top = 252
-          Width = 77
+          Width = 76
           Height = 18
           Caption = 'Cr'#233'dit Max:'
           Color = 4207405
@@ -672,7 +677,7 @@ object ClientGestionF: TClientGestionF
         object ModeTarifClientGLbl: TLabel
           Left = 14
           Top = 185
-          Width = 99
+          Width = 96
           Height = 18
           Caption = 'Mode de Tarif:'
           Color = 4207405
@@ -721,7 +726,7 @@ object ClientGestionF: TClientGestionF
         object OldCreditClientGLbl: TLabel
           Left = 12
           Top = 252
-          Width = 94
+          Width = 92
           Height = 18
           Caption = 'Ancien cr'#233'dit:'
           Color = 4207405
@@ -737,7 +742,7 @@ object ClientGestionF: TClientGestionF
         object NBankClientGLbl: TLabel
           Left = 10
           Top = 113
-          Width = 121
+          Width = 119
           Height = 18
           Caption = 'Compte Bancaire:'
           Color = 4207405
@@ -753,7 +758,7 @@ object ClientGestionF: TClientGestionF
         object RIBClientGLbl: TLabel
           Left = 270
           Top = 113
-          Width = 28
+          Width = 26
           Height = 18
           Caption = 'RIB:'
           Color = 4207405
@@ -887,6 +892,7 @@ object ClientGestionF: TClientGestionF
           ParentDoubleBuffered = False
           ParentFont = False
           TabOrder = 6
+          OnChange = OldCreditClientGEdtChange
           OnClick = OldCreditClientGEdtClick
           OnExit = OldCreditClientGEdtExit
           OnKeyDown = OldCreditClientGEdtKeyDown
@@ -986,6 +992,318 @@ object ClientGestionF: TClientGestionF
         end
       end
     end
+    object FicheClientTB: TsTabSheet
+      Caption = 'Fiche Client'
+      DesignSize = (
+        508
+        458)
+      object Label1: TLabel
+        Left = 12
+        Top = 17
+        Width = 191
+        Height = 18
+        Caption = 'Ajouter comme Fournisseur:'
+        Color = 4207405
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 18
+        Font.Name = 'Roboto'
+        Font.Style = []
+        ParentColor = False
+        ParentFont = False
+        Visible = False
+        StyleElements = []
+      end
+      object CapitalClientGLbl: TLabel
+        AlignWithMargins = True
+        Left = 12
+        Top = 86
+        Width = 485
+        Height = 25
+        Alignment = taRightJustify
+        AutoSize = False
+        BiDiMode = bdLeftToRight
+        Caption = '0'
+        Color = 15722984
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 7854350
+        Font.Height = 21
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = [fsBold]
+        ParentBiDiMode = False
+        ParentColor = False
+        ParentFont = False
+        Layout = tlCenter
+        StyleElements = []
+      end
+      object Label4: TLabel
+        Left = 12
+        Top = 65
+        Width = 31
+        Height = 18
+        Caption = 'C.A:'
+        Color = clWhite
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 18
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = [fsItalic]
+        ParentColor = False
+        ParentFont = False
+        StyleElements = []
+      end
+      object Label3: TLabel
+        Left = 12
+        Top = 129
+        Width = 47
+        Height = 18
+        Caption = 'R'#233'gl'#233':'
+        Color = clWhite
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 18
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = [fsItalic]
+        ParentColor = False
+        ParentFont = False
+        StyleElements = []
+      end
+      object RegleClientGLbl: TLabel
+        AlignWithMargins = True
+        Left = 12
+        Top = 151
+        Width = 485
+        Height = 25
+        Alignment = taRightJustify
+        AutoSize = False
+        BiDiMode = bdLeftToRight
+        Caption = '0'
+        Color = 15722984
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 14727239
+        Font.Height = 21
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = [fsBold]
+        ParentBiDiMode = False
+        ParentColor = False
+        ParentFont = False
+        Layout = tlCenter
+        StyleElements = []
+      end
+      object Label6: TLabel
+        Left = 12
+        Top = 187
+        Width = 47
+        Height = 18
+        Caption = 'Cr'#233'dit:'
+        Color = clWhite
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 18
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = [fsItalic]
+        ParentColor = False
+        ParentFont = False
+        StyleElements = []
+      end
+      object CreditClientGLbl: TLabel
+        AlignWithMargins = True
+        Left = 12
+        Top = 210
+        Width = 485
+        Height = 25
+        Alignment = taRightJustify
+        AutoSize = False
+        BiDiMode = bdLeftToRight
+        Caption = '0'
+        Color = 15722984
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 7566591
+        Font.Height = 21
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = [fsBold]
+        ParentBiDiMode = False
+        ParentColor = False
+        ParentFont = False
+        Layout = tlCenter
+        StyleElements = []
+      end
+      object Label8: TLabel
+        Left = 12
+        Top = 269
+        Width = 242
+        Height = 18
+        Caption = 'Acquitter en cas Client/Fournisseur:'
+        Color = 4207405
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 18
+        Font.Name = 'Roboto'
+        Font.Style = []
+        ParentColor = False
+        ParentFont = False
+        Visible = False
+        StyleElements = []
+      end
+      object Label2: TLabel
+        Left = 256
+        Top = 19
+        Width = 23
+        Height = 14
+        Caption = 'Non'
+        Color = 4207405
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 14
+        Font.Name = 'Roboto'
+        Font.Style = []
+        ParentColor = False
+        ParentFont = False
+        Visible = False
+        StyleElements = []
+      end
+      object Label5: TLabel
+        AlignWithMargins = True
+        Left = 315
+        Top = 267
+        Width = 27
+        Height = 21
+        BiDiMode = bdLeftToRight
+        Caption = 'OK'
+        Color = 15722984
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 5287756
+        Font.Height = 21
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = [fsBold, fsItalic]
+        ParentBiDiMode = False
+        ParentColor = False
+        ParentFont = False
+        Layout = tlCenter
+        Visible = False
+        StyleElements = []
+      end
+      object ClientFourGSlider: TsSlider
+        Left = 210
+        Top = 18
+        Width = 40
+        Height = 16
+        BevelOuter = bvNone
+        BiDiMode = bdLeftToRight
+        Ctl3D = False
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 12
+        Font.Name = 'Roboto'
+        Font.Style = []
+        StyleElements = []
+        ParentBiDiMode = False
+        ParentBackground = False
+        ParentCtl3D = False
+        ParentFont = False
+        TabOrder = 0
+        Visible = False
+        BoundLabel.Caption = 'sSlider1'
+        BoundLabel.Layout = sclBottomCenter
+        FontOn.Charset = DEFAULT_CHARSET
+        FontOn.Color = 4207405
+        FontOn.Height = 12
+        FontOn.Name = 'Roboto'
+        FontOn.Style = []
+        SliderCursor = crHandPoint
+        Reversed = True
+        SliderOn = False
+        OnChanging = ClientFourGSliderChanging
+      end
+      object PayClientFourGSlider: TsSlider
+        Left = 264
+        Top = 270
+        Width = 40
+        Height = 16
+        BevelOuter = bvNone
+        BiDiMode = bdLeftToRight
+        Ctl3D = False
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 12
+        Font.Name = 'Roboto'
+        Font.Style = []
+        StyleElements = []
+        ParentBiDiMode = False
+        ParentBackground = False
+        ParentCtl3D = False
+        ParentFont = False
+        TabOrder = 1
+        Visible = False
+        BoundLabel.Caption = 'sSlider1'
+        BoundLabel.Layout = sclBottomCenter
+        FontOn.Charset = DEFAULT_CHARSET
+        FontOn.Color = 4207405
+        FontOn.Height = 12
+        FontOn.Name = 'Roboto'
+        FontOn.Style = []
+        SliderCursor = crHandPoint
+        Reversed = True
+        SliderOn = False
+        OnChanging = PayClientFourGSliderChanging
+      end
+      object Panel1: TPanel
+        Left = 0
+        Top = 113
+        Width = 508
+        Height = 1
+        Anchors = [akLeft, akTop, akRight]
+        BevelOuter = bvNone
+        Color = 11544476
+        DoubleBuffered = False
+        ParentBackground = False
+        ParentDoubleBuffered = False
+        TabOrder = 2
+        StyleElements = []
+      end
+      object Panel2: TPanel
+        Left = 0
+        Top = 48
+        Width = 508
+        Height = 1
+        Anchors = [akLeft, akTop, akRight]
+        BevelOuter = bvNone
+        Color = 11544476
+        DoubleBuffered = False
+        ParentBackground = False
+        ParentDoubleBuffered = False
+        TabOrder = 3
+        StyleElements = []
+      end
+      object Panel3: TPanel
+        Left = 0
+        Top = 237
+        Width = 508
+        Height = 1
+        Anchors = [akLeft, akTop, akRight]
+        BevelOuter = bvNone
+        Color = 11544476
+        DoubleBuffered = False
+        ParentBackground = False
+        ParentDoubleBuffered = False
+        TabOrder = 4
+        StyleElements = []
+      end
+      object Panel4: TPanel
+        Left = 0
+        Top = 180
+        Width = 508
+        Height = 1
+        Anchors = [akLeft, akTop, akRight]
+        BevelOuter = bvNone
+        Color = 11544476
+        DoubleBuffered = False
+        ParentBackground = False
+        ParentDoubleBuffered = False
+        TabOrder = 5
+        StyleElements = []
+      end
+    end
   end
   object BottomP: TPanel
     Left = 0
@@ -1001,7 +1319,7 @@ object ClientGestionF: TClientGestionF
     TabOrder = 1
     StyleElements = []
     object OKClientGBtn: TAdvToolButton
-      Left = 130
+      Left = 132
       Top = 12
       Width = 100
       Height = 30
@@ -1030,7 +1348,7 @@ object ClientGestionF: TClientGestionF
       ShowHint = True
       Spacing = 10
       OnClick = OKClientGBtnClick
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object CancelClientGBtn: TAdvToolButton
@@ -1061,7 +1379,7 @@ object ClientGestionF: TClientGestionF
       ShowHint = True
       Spacing = -1
       OnClick = CancelClientGBtnClick
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
   end

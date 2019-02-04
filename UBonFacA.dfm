@@ -356,13 +356,12 @@ object BonFacAF: TBonFacAF
     HorzScrollBar.ExtraPanel.NavigatorButtons = [nbFirstEh, nbPriorEh, nbNextEh, nbLastEh, nbRefreshEh]
     HorzScrollBar.ExtraPanel.Visible = True
     HorzScrollBar.Height = 15
-    IndicatorOptions = [gioShowRowIndicatorEh]
     IndicatorParams.Color = clBtnFace
     IndicatorTitle.ShowDropDownSign = True
     IndicatorTitle.TitleButton = True
     OddRowColor = 16315635
     Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
-    OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghDialogFind, dghColumnResize, dghColumnMove, dghHotTrack, dghExtendVertLines]
+    OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghAutoSortMarking, dghDialogFind, dghColumnResize, dghColumnMove, dghHotTrack, dghExtendVertLines]
     ParentCtl3D = False
     ParentFont = False
     ParentShowHint = False
@@ -389,9 +388,12 @@ object BonFacAF: TBonFacAF
     OnDrawColumnCell = BAFacListDBGridEhDrawColumnCell
     OnKeyDown = BAFacListDBGridEhKeyDown
     OnKeyPress = BAFacListDBGridEhKeyPress
+    OnSortMarkingChanged = BAFacListDBGridEhSortMarkingChanged
+    OnTitleBtnClick = BAFacListDBGridEhTitleBtnClick
     Columns = <
       item
         Alignment = taCenter
+        CellButtons = <>
         Checkboxes = False
         DynProps = <>
         EditButtons = <>
@@ -422,6 +424,7 @@ object BonFacAF: TBonFacAF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DynProps = <>
         EditButtons = <>
         FieldName = 'num_bafac'
@@ -447,6 +450,7 @@ object BonFacAF: TBonFacAF
       end
       item
         Alignment = taCenter
+        CellButtons = <>
         DisplayFormat = 'DD/MM/YYYY'
         DynProps = <>
         EditButtons = <>
@@ -473,6 +477,7 @@ object BonFacAF: TBonFacAF
       end
       item
         Alignment = taCenter
+        CellButtons = <>
         DisplayFormat = 'HH:MM:SS'
         DynProps = <>
         EditButtons = <>
@@ -498,6 +503,7 @@ object BonFacAF: TBonFacAF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DynProps = <>
         EditButtons = <>
         FieldName = 'fourbafac'
@@ -531,6 +537,7 @@ object BonFacAF: TBonFacAF
         WordWrap = False
       end
       item
+        CellButtons = <>
         Checkboxes = False
         DynProps = <>
         EditButtons = <>
@@ -567,6 +574,7 @@ object BonFacAF: TBonFacAF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
@@ -600,6 +608,7 @@ object BonFacAF: TBonFacAF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
@@ -633,10 +642,11 @@ object BonFacAF: TBonFacAF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
-        FieldName = 'NeTHT'
+        FieldName = 'netht'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
         Font.Height = 16
@@ -664,6 +674,7 @@ object BonFacAF: TBonFacAF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
@@ -695,10 +706,11 @@ object BonFacAF: TBonFacAF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
-        FieldName = 'MontantTVA'
+        FieldName = 'montanttva'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
         Font.Height = 16
@@ -728,6 +740,7 @@ object BonFacAF: TBonFacAF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
@@ -760,6 +773,7 @@ object BonFacAF: TBonFacAF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
@@ -793,10 +807,11 @@ object BonFacAF: TBonFacAF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
-        FieldName = 'MontantRes'
+        FieldName = 'montantres'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
         Font.Height = 16
@@ -827,9 +842,10 @@ object BonFacAF: TBonFacAF
       end
       item
         Alignment = taCenter
+        CellButtons = <>
         DynProps = <>
         EditButtons = <>
-        FieldName = 'Agnet'
+        FieldName = 'Agent'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
         Font.Height = 16
@@ -838,7 +854,6 @@ object BonFacAF: TBonFacAF
         Footers = <>
         Layout = tlCenter
         Title.Alignment = taCenter
-        Title.Caption = 'Agent'
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = 4207405
         Title.Font.Height = 16
@@ -896,7 +911,7 @@ object BonFacAF: TBonFacAF
       ShowHint = True
       Spacing = -1
       OnClick = EditBAFacBtnClick
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object DeleteBAFacBtn: TAdvToolButton
@@ -928,7 +943,7 @@ object BonFacAF: TBonFacAF
       ShowHint = True
       Spacing = -2
       OnClick = DeleteBAFacBtnClick
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object AddBAFacBtn: TAdvToolButton
@@ -960,7 +975,7 @@ object BonFacAF: TBonFacAF
       ShowHint = True
       Spacing = -1
       OnClick = AddBAFacBtnClick
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object ResearchBARecLbl: TLabel
@@ -982,7 +997,7 @@ object BonFacAF: TBonFacAF
     object Label1: TLabel
       Left = 315
       Top = 10
-      Width = 23
+      Width = 22
       Height = 18
       Caption = 'Du:'
       Color = 15722984
@@ -1092,7 +1107,7 @@ object BonFacAF: TBonFacAF
       Shaded = False
       ShowHint = True
       Spacing = -1
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object sImage6: TsImage
@@ -1419,7 +1434,7 @@ object BonFacAF: TBonFacAF
       ShowHint = True
       Spacing = -2
       OnClick = SumGirdBAFacBtnClick
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object RefreshGirdBtn: TAdvToolButton
@@ -1453,7 +1468,7 @@ object BonFacAF: TBonFacAF
       ShowHint = True
       Spacing = -2
       OnClick = RefreshGirdBtnClick
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object AdvToolButton1: TAdvToolButton
@@ -1487,7 +1502,7 @@ object BonFacAF: TBonFacAF
       ShowHint = True
       Spacing = -2
       OnClick = AdvToolButton1Click
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object AdvToolButton2: TAdvToolButton
@@ -1521,7 +1536,7 @@ object BonFacAF: TBonFacAF
       ShowHint = True
       Spacing = -2
       OnClick = AdvToolButton2Click
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object AdvToolButton3: TAdvToolButton
@@ -1555,7 +1570,7 @@ object BonFacAF: TBonFacAF
       ShowHint = True
       Spacing = -2
       OnClick = AdvToolButton3Click
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object Panel5: TPanel
@@ -1616,14 +1631,14 @@ object BonFacAF: TBonFacAF
     end
   end
   object BonFacAfrxRprt: TfrxReport
-    Version = '5.4.6'
+    Version = '5.6.1'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
     PreviewOptions.Zoom = 1.000000000000000000
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
-    ReportOptions.CreateDate = 42576.399521435200000000
+    ReportOptions.CreateDate = 42576.399521435210000000
     ReportOptions.LastChange = 42647.660439120370000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (

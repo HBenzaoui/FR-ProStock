@@ -148,7 +148,7 @@ begin
           MainForm.SQLQuery.SQL.Text:=
           'select * '
          +  'from (   '
-         +   'select code_cmpt as code_cmpt from bona_fac '
+         +   'select code_cmpt from bona_fac '
          +   'union all '
          +   'select code_cmpt from bona_rec '
          +   'union all '
@@ -159,8 +159,6 @@ begin
          +   'select code_cmpt from regclient '
          +   'union all '
          +   'select code_cmpt from regfournisseur '
-         +   'union all '
-         +   'select code_mdpai from bonp_fac '
          +     ') a '
          +     'where code_cmpt = '+IntToStr(MainForm.CompteTable.FieldByName('code_cmpt').AsInteger) ;
 

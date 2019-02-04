@@ -2,7 +2,7 @@ unit UDashboard;
 
 interface
 
-uses
+uses   FireDAC.Comp.Client,
   Winapi.Windows,ComCtrls, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, acImage,
   DBGridEhGrouping, ToolCtrlsEh, DBGridEhToolCtrls, DynVarsEh, Data.DB,
@@ -101,7 +101,6 @@ type
     procedure FormPaint(Sender: TObject);
   private
     procedure Selecting_Only_Valide_Bons;
-    procedure Selecting_All_Bons;
     procedure MonthsData;
 
 
@@ -111,6 +110,7 @@ type
 
 var
 DashboardF:   TDashboardF;
+QurLiv : TFDQuery;
 
 implementation
 
@@ -121,78 +121,48 @@ uses
 
 
 procedure TDashboardF.Selecting_Only_Valide_Bons;
+
 begin
-      MainForm.Bonv_livTable.DisableControls;
-      MainForm.Bonv_livTable.Active:=False;
-      MainForm.Bonv_livTable.SQL.Clear;
-      MainForm.Bonv_livTable.SQL.Text:='SELECT * from bonv_liv where valider_bvliv = true ' ;
-      MainForm.Bonv_livTable.Active:=True;
+      MainForm.SQLQuery.Active:=False;
+      MainForm.SQLQuery.SQL.Clear;
+      MainForm.SQLQuery.SQL.Text:='SELECT code_bvliv FROM bonv_liv where valider_bvliv = true ' ;
+      MainForm.SQLQuery.Active:=True;
+      NBLDashBLbl.Caption:=       IntToStr(MainForm.SQLQuery.RecordCount);
 
-      MainForm.Bonv_ctrTable.DisableControls;
-      MainForm.Bonv_ctrTable.Active:=False;
-      MainForm.Bonv_ctrTable.SQL.Clear;
-      MainForm.Bonv_ctrTable.SQL.Text:='SELECT * from bonv_ctr where valider_bvctr = true ' ;
-      MainForm.Bonv_ctrTable.Active:=True;
 
-      MainForm.Bonv_facTable.DisableControls;
-      MainForm.Bonv_facTable.Active:=False;
-      MainForm.Bonv_facTable.SQL.Clear;
-      MainForm.Bonv_facTable.SQL.Text:='SELECT * from bonv_fac where valider_bvfac = true ' ;
-      MainForm.Bonv_facTable.Active:=True;
+      MainForm.SQLQuery.Active:=False;
+      MainForm.SQLQuery.SQL.Clear;
+      MainForm.SQLQuery.SQL.Text:='SELECT code_bvctr from bonv_ctr where valider_bvctr = true ' ;
+      MainForm.SQLQuery.Active:=True;
+      NCTRDashBLbl.Caption:=      IntToStr(MainForm.SQLQuery.RecordCount); 
+      
+       
+      MainForm.SQLQuery.Active:=False;
+      MainForm.SQLQuery.SQL.Clear;
+      MainForm.SQLQuery.SQL.Text:='SELECT code_bvfac from bonv_fac where valider_bvfac = true ' ;
+      MainForm.SQLQuery.Active:=True;
+      NFVDashBLbl.Caption:=       IntToStr(MainForm.SQLQuery.RecordCount);
+      
+      
+      MainForm.SQLQuery.Active:=False;
+      MainForm.SQLQuery.SQL.Clear;
+      MainForm.SQLQuery.SQL.Text:='SELECT code_barec from bona_rec where valider_barec = true ' ;
+      MainForm.SQLQuery.Active:=True;
+      NBRDashBLbl.Caption:=       IntToStr(MainForm.SQLQuery.RecordCount);
 
-      MainForm.Bona_recTable.DisableControls;
-      MainForm.Bona_recTable.Active:=False;
-      MainForm.Bona_recTable.SQL.Clear;
-      MainForm.Bona_recTable.SQL.Text:='SELECT * from bona_rec where valider_barec = true ' ;
-      MainForm.Bona_recTable.Active:=True;
+      
+      MainForm.SQLQuery.Active:=False;
+      MainForm.SQLQuery.SQL.Clear;
+      MainForm.SQLQuery.SQL.Text:='SELECT code_bafac from bona_fac where valider_bafac = true ' ;
+      MainForm.SQLQuery.Active:=True;
+      NFADashBLbl.Caption:=       IntToStr(MainForm.SQLQuery.RecordCount);
 
-      MainForm.Bona_facTable.DisableControls;
-      MainForm.Bona_facTable.Active:=False;
-      MainForm.Bona_facTable.SQL.Clear;
-      MainForm.Bona_facTable.SQL.Text:='SELECT * from bona_fac where valider_bafac = true ' ;
-      MainForm.Bona_facTable.Active:=True;
-
+      
+      MainForm.SQLQuery.Active:=False;
+      MainForm.SQLQuery.SQL.Clear;      
 
 end;
 
-procedure TDashboardF.Selecting_All_Bons;
-begin
-
-      MainForm.Bonv_livTable.Active:=False;
-      MainForm.Bonv_livTable.SQL.Clear;
-      MainForm.Bonv_livTable.SQL.Text:='SELECT * from bonv_liv ' ;
-      MainForm.Bonv_livTable.Active:=True;
-      MainForm.Bonv_livTable.EnableControls;
-
-
-      MainForm.Bonv_ctrTable.Active:=False;
-      MainForm.Bonv_ctrTable.SQL.Clear;
-      MainForm.Bonv_ctrTable.SQL.Text:='SELECT * from bonv_ctr ' ;
-      MainForm.Bonv_ctrTable.Active:=True;
-      MainForm.Bonv_ctrTable.EnableControls;
-
-
-      MainForm.Bonv_facTable.Active:=False;
-      MainForm.Bonv_facTable.SQL.Clear;
-      MainForm.Bonv_facTable.SQL.Text:='SELECT * from bonv_fac  ' ;
-      MainForm.Bonv_facTable.Active:=True;
-      MainForm.Bonv_facTable.EnableControls;
-
-
-      MainForm.Bona_recTable.Active:=False;
-      MainForm.Bona_recTable.SQL.Clear;
-      MainForm.Bona_recTable.SQL.Text:='SELECT * from bona_rec ' ;
-      MainForm.Bona_recTable.Active:=True;
-      MainForm.Bona_recTable.EnableControls;
-
-
-      MainForm.Bona_facTable.Active:=False;
-      MainForm.Bona_facTable.SQL.Clear;
-      MainForm.Bona_facTable.SQL.Text:='SELECT * from bona_fac ' ;
-      MainForm.Bona_facTable.Active:=True;
-      MainForm.Bona_facTable.EnableControls;
-
-end;
 
 
 
@@ -210,13 +180,6 @@ begin
 
   Selecting_Only_Valide_Bons;
 
-  NBLDashBLbl.Caption:=       IntToStr(MainForm.Bonv_livTable.RecordCount);
-  NFVDashBLbl.Caption:=       IntToStr(MainForm.Bonv_facTable.RecordCount);
-  NCTRDashBLbl.Caption:=      IntToStr(MainForm.Bonv_ctrTable.RecordCount);
-  NBRDashBLbl.Caption:=       IntToStr(MainForm.Bona_recTable.RecordCount);
-  NFADashBLbl.Caption:=       IntToStr(MainForm.Bona_facTable.RecordCount);
-
-  Selecting_All_Bons;
 
   DataModuleF.TotalProduit.Refresh;
   if NOT (MainForm.ProduitTable.IsEmpty) then

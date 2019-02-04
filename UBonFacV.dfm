@@ -326,8 +326,8 @@ object BonFacVF: TBonFacVF
   PixelsPerInch = 96
   TextHeight = 13
   object BVFacListDBGridEh: TDBGridEh
-    Left = 1
-    Top = 71
+    Left = 0
+    Top = 68
     Width = 951
     Height = 650
     Anchors = [akLeft, akTop, akRight, akBottom]
@@ -362,13 +362,12 @@ object BonFacVF: TBonFacVF
     HorzScrollBar.ExtraPanel.NavigatorButtons = [nbFirstEh, nbPriorEh, nbNextEh, nbLastEh, nbRefreshEh]
     HorzScrollBar.ExtraPanel.Visible = True
     HorzScrollBar.Height = 15
-    IndicatorOptions = [gioShowRowIndicatorEh]
     IndicatorParams.Color = clBtnFace
     IndicatorTitle.ShowDropDownSign = True
     IndicatorTitle.TitleButton = True
     OddRowColor = 16315635
     Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
-    OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghDialogFind, dghColumnResize, dghColumnMove, dghHotTrack, dghExtendVertLines]
+    OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghAutoSortMarking, dghDialogFind, dghColumnResize, dghColumnMove, dghHotTrack, dghExtendVertLines]
     ParentCtl3D = False
     ParentFont = False
     ParentShowHint = False
@@ -395,9 +394,12 @@ object BonFacVF: TBonFacVF
     OnDrawColumnCell = BVFacListDBGridEhDrawColumnCell
     OnKeyDown = BVFacListDBGridEhKeyDown
     OnKeyPress = BVFacListDBGridEhKeyPress
+    OnSortMarkingChanged = BVFacListDBGridEhSortMarkingChanged
+    OnTitleBtnClick = BVFacListDBGridEhTitleBtnClick
     Columns = <
       item
         Alignment = taCenter
+        CellButtons = <>
         Checkboxes = False
         DynProps = <>
         EditButtons = <>
@@ -433,6 +435,7 @@ object BonFacVF: TBonFacVF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DynProps = <>
         EditButtons = <>
         FieldName = 'num_bvfac'
@@ -463,6 +466,7 @@ object BonFacVF: TBonFacVF
       end
       item
         Alignment = taCenter
+        CellButtons = <>
         DisplayFormat = 'DD/MM/YYYY'
         DynProps = <>
         EditButtons = <>
@@ -494,6 +498,7 @@ object BonFacVF: TBonFacVF
       end
       item
         Alignment = taCenter
+        CellButtons = <>
         DisplayFormat = 'HH:MM:SS'
         DynProps = <>
         EditButtons = <>
@@ -524,6 +529,7 @@ object BonFacVF: TBonFacVF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DynProps = <>
         EditButtons = <>
         FieldName = 'clientbvfac'
@@ -557,6 +563,7 @@ object BonFacVF: TBonFacVF
         WordWrap = False
       end
       item
+        CellButtons = <>
         Checkboxes = False
         DynProps = <>
         EditButtons = <>
@@ -593,6 +600,7 @@ object BonFacVF: TBonFacVF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
@@ -626,6 +634,7 @@ object BonFacVF: TBonFacVF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
@@ -659,10 +668,11 @@ object BonFacVF: TBonFacVF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
-        FieldName = 'NeTHT'
+        FieldName = 'netht'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
         Font.Height = 16
@@ -690,6 +700,7 @@ object BonFacVF: TBonFacVF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
@@ -721,10 +732,11 @@ object BonFacVF: TBonFacVF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
-        FieldName = 'MontantTVA'
+        FieldName = 'montanttva'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
         Font.Height = 16
@@ -754,6 +766,7 @@ object BonFacVF: TBonFacVF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
@@ -786,6 +799,7 @@ object BonFacVF: TBonFacVF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
@@ -819,10 +833,11 @@ object BonFacVF: TBonFacVF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
-        FieldName = 'MontantRes'
+        FieldName = 'montantres'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
         Font.Height = 16
@@ -852,6 +867,41 @@ object BonFacVF: TBonFacVF
         WordWrap = False
       end
       item
+        CellButtons = <>
+        DisplayFormat = '#,##0.00'
+        DynProps = <>
+        EditButtons = <>
+        FieldName = 'montaht_bvfac'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 16
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
+        Footer.Color = 15722984
+        Footer.Font.Charset = DEFAULT_CHARSET
+        Footer.Font.Color = 4207405
+        Footer.Font.Height = 18
+        Footer.Font.Name = 'Helvetica LT Std'
+        Footer.Font.Style = [fsBold]
+        Footer.ValueType = fvtSum
+        Footers = <>
+        Layout = tlCenter
+        MinWidth = 150
+        ReadOnly = True
+        Title.Alignment = taCenter
+        Title.Caption = 'Montant A HT'
+        Title.EndEllipsis = True
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = 4207405
+        Title.Font.Height = 16
+        Title.Font.Name = 'Helvetica LT Std'
+        Title.Font.Style = []
+        Title.Font.Quality = fqProof
+        Title.ToolTips = True
+        Width = 150
+      end
+      item
+        CellButtons = <>
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
@@ -883,9 +933,10 @@ object BonFacVF: TBonFacVF
       end
       item
         Alignment = taCenter
+        CellButtons = <>
         DynProps = <>
         EditButtons = <>
-        FieldName = 'Agnet'
+        FieldName = 'Agent'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
         Font.Height = 16
@@ -899,7 +950,6 @@ object BonFacVF: TBonFacVF
         Footers = <>
         Layout = tlCenter
         Title.Alignment = taCenter
-        Title.Caption = 'Agent'
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = 4207405
         Title.Font.Height = 16
@@ -957,7 +1007,7 @@ object BonFacVF: TBonFacVF
       ShowHint = True
       Spacing = -1
       OnClick = EditBVFacBtnClick
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object DeleteBVFacBtn: TAdvToolButton
@@ -989,7 +1039,7 @@ object BonFacVF: TBonFacVF
       ShowHint = True
       Spacing = -2
       OnClick = DeleteBVFacBtnClick
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object AddBVFacBtn: TAdvToolButton
@@ -1021,7 +1071,7 @@ object BonFacVF: TBonFacVF
       ShowHint = True
       Spacing = -1
       OnClick = AddBVFacBtnClick
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object ResearchBARecLbl: TLabel
@@ -1043,7 +1093,7 @@ object BonFacVF: TBonFacVF
     object Label1: TLabel
       Left = 315
       Top = 10
-      Width = 23
+      Width = 22
       Height = 18
       Caption = 'Du:'
       Color = 15722984
@@ -1153,7 +1203,7 @@ object BonFacVF: TBonFacVF
       Shaded = False
       ShowHint = True
       Spacing = -1
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object sImage1: TsImage
@@ -1480,7 +1530,7 @@ object BonFacVF: TBonFacVF
       ShowHint = True
       Spacing = -2
       OnClick = SumGirdBBVFacBtnClick
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object RefreshGirdBtn: TAdvToolButton
@@ -1514,7 +1564,7 @@ object BonFacVF: TBonFacVF
       ShowHint = True
       Spacing = -2
       OnClick = RefreshGirdBtnClick
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object AdvToolButton1: TAdvToolButton
@@ -1548,7 +1598,7 @@ object BonFacVF: TBonFacVF
       ShowHint = True
       Spacing = -2
       OnClick = AdvToolButton1Click
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object AdvToolButton2: TAdvToolButton
@@ -1582,7 +1632,7 @@ object BonFacVF: TBonFacVF
       ShowHint = True
       Spacing = -2
       OnClick = AdvToolButton2Click
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object AdvToolButton3: TAdvToolButton
@@ -1616,7 +1666,7 @@ object BonFacVF: TBonFacVF
       ShowHint = True
       Spacing = -2
       OnClick = AdvToolButton3Click
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object Panel5: TPanel
@@ -1677,14 +1727,14 @@ object BonFacVF: TBonFacVF
     end
   end
   object BonFacVfrxRprt: TfrxReport
-    Version = '5.4.6'
+    Version = '5.6.1'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
     PreviewOptions.Zoom = 1.000000000000000000
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
-    ReportOptions.CreateDate = 42576.399521435200000000
+    ReportOptions.CreateDate = 42576.399521435210000000
     ReportOptions.LastChange = 42647.663199907410000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
@@ -1781,7 +1831,7 @@ object BonFacVF: TBonFacVF
         object PreiodRX: TfrxMemoView
           Align = baCenter
           Left = 371.023861665000000000
-          Top = 34.015770000000000000
+          Top = 34.015770000000010000
           Width = 304.882086670000000000
           Height = 21.417336670000000000
           Font.Charset = DEFAULT_CHARSET
@@ -1797,8 +1847,8 @@ object BonFacVF: TBonFacVF
         end
         object Memo1: TfrxMemoView
           Align = baCenter
-          Left = 372.913626665000000000
-          Top = 2.519686670000000000
+          Left = 372.913626665000100000
+          Top = 2.519686669999999000
           Width = 301.102556670000000000
           Height = 28.976396670000000000
           Font.Charset = DEFAULT_CHARSET
@@ -1814,7 +1864,7 @@ object BonFacVF: TBonFacVF
           VAlign = vaCenter
         end
         object Memo2: TfrxMemoView
-          Top = 66.313571820000000000
+          Top = 66.313571820000010000
           Width = 105.826840000000000000
           Height = 28.174678180000000000
           AllowExpressions = False
@@ -1831,7 +1881,7 @@ object BonFacVF: TBonFacVF
         end
         object Memo3: TfrxMemoView
           Left = 105.165430000000000000
-          Top = 66.313571820000000000
+          Top = 66.313571820000010000
           Width = 57.380137270000000000
           Height = 28.174678180000000000
           AllowExpressions = False
@@ -1849,7 +1899,7 @@ object BonFacVF: TBonFacVF
         end
         object Memo5: TfrxMemoView
           Left = 162.315090000000000000
-          Top = 66.313571820000000000
+          Top = 66.313571820000010000
           Width = 148.088857270000000000
           Height = 28.174678180000000000
           AllowExpressions = False
@@ -1867,7 +1917,7 @@ object BonFacVF: TBonFacVF
         end
         object Memo6: TfrxMemoView
           Left = 310.291590000000000000
-          Top = 66.313571820000000000
+          Top = 66.313571820000010000
           Width = 94.488250000000000000
           Height = 28.174678180000000000
           AllowExpressions = False
@@ -1885,7 +1935,7 @@ object BonFacVF: TBonFacVF
         end
         object Memo7: TfrxMemoView
           Left = 404.779840000000000000
-          Top = 66.313571820000000000
+          Top = 66.313571820000010000
           Width = 94.488250000000000000
           Height = 28.174678180000000000
           AllowExpressions = False
@@ -1903,7 +1953,7 @@ object BonFacVF: TBonFacVF
         end
         object Memo8: TfrxMemoView
           Left = 675.606680000000000000
-          Top = 66.313571820000000000
+          Top = 66.313571820000010000
           Width = 94.488250000000000000
           Height = 28.174678180000000000
           AllowExpressions = False
@@ -1921,7 +1971,7 @@ object BonFacVF: TBonFacVF
         end
         object Memo9: TfrxMemoView
           Left = 770.094930000000000000
-          Top = 66.313571820000000000
+          Top = 66.313571820000010000
           Width = 94.488250000000000000
           Height = 28.174678180000000000
           AllowExpressions = False
@@ -1939,7 +1989,7 @@ object BonFacVF: TBonFacVF
         end
         object Memo10: TfrxMemoView
           Left = 864.583180000000000000
-          Top = 66.313571820000000000
+          Top = 66.313571820000010000
           Width = 94.488250000000000000
           Height = 28.174678180000000000
           AllowExpressions = False
@@ -1957,7 +2007,7 @@ object BonFacVF: TBonFacVF
         end
         object Memo11: TfrxMemoView
           Left = 959.071430000000000000
-          Top = 66.313571820000000000
+          Top = 66.313571820000010000
           Width = 87.685034490000000000
           Height = 28.174678180000000000
           AllowExpressions = False
@@ -1975,7 +2025,7 @@ object BonFacVF: TBonFacVF
         end
         object Memo4: TfrxMemoView
           Left = 498.488560000000000000
-          Top = 66.313571820000000000
+          Top = 66.313571820000010000
           Width = 94.488250000000000000
           Height = 28.174678180000000000
           AllowExpressions = False
@@ -1993,7 +2043,7 @@ object BonFacVF: TBonFacVF
         end
         object Date: TfrxMemoView
           Left = 963.780150000000000000
-          Top = 3.779530000000000000
+          Top = 3.779530000000001000
           Width = 79.370130000000000000
           Height = 18.897650000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -2009,7 +2059,7 @@ object BonFacVF: TBonFacVF
         end
         object Memo21: TfrxMemoView
           Left = 591.842920000000000000
-          Top = 66.313571820000000000
+          Top = 66.313571820000010000
           Width = 90.708658980000000000
           Height = 28.174678180000000000
           AllowExpressions = False
@@ -2098,7 +2148,7 @@ object BonFacVF: TBonFacVF
         DataSetName = 'frxBonFacVDB'
         RowCount = 0
         object frxBonLivDBvalider_bvliv: TfrxMemoView
-          Top = 0.779530000000000000
+          Top = 0.779529999999994100
           Width = 7.559060000000000000
           Height = 18.897650000000000000
           DataField = 'valider_bvfac'
@@ -2117,14 +2167,14 @@ object BonFacVF: TBonFacVF
           VAlign = vaCenter
         end
         object Shape1: TfrxShapeView
-          Top = 21.236240000000000000
+          Top = 21.236240000000010000
           Width = 1046.929810000000000000
           Fill.BackColor = 13948116
           Frame.Color = 13948116
         end
         object frxBonLivDBnum_bvfac: TfrxMemoView
           Left = 12.543290000000000000
-          Top = 0.779530000000000000
+          Top = 0.779529999999994100
           Width = 93.354301420000000000
           Height = 18.897650000000000000
           DataField = 'num_bvfac'
@@ -2142,7 +2192,7 @@ object BonFacVF: TBonFacVF
         end
         object frxBonLivDBdate_bvfac: TfrxMemoView
           Left = 105.504020000000000000
-          Top = 0.779530000000000000
+          Top = 0.779529999999994100
           Width = 56.692950000000000000
           Height = 18.897650000000000000
           DataSet = frxBonFacVDB
@@ -2162,7 +2212,7 @@ object BonFacVF: TBonFacVF
         end
         object frxBonLivDBclientbvfac: TfrxMemoView
           Left = 162.637910000000000000
-          Top = 0.779530000000000000
+          Top = 0.779529999999994100
           Width = 148.157480314961000000
           Height = 18.897650000000000000
           DataField = 'clientbvfac'
@@ -2181,7 +2231,7 @@ object BonFacVF: TBonFacVF
         end
         object frxBonLivDBmontht_bvfac: TfrxMemoView
           Left = 310.567100000000000000
-          Top = 0.779530000000000000
+          Top = 0.779529999999994100
           Width = 94.488250000000000000
           Height = 18.897650000000000000
           DataField = 'montht_bvfac'
@@ -2202,7 +2252,7 @@ object BonFacVF: TBonFacVF
         end
         object frxBonLivDBremise_bvfac: TfrxMemoView
           Left = 405.055350000000000000
-          Top = 0.779530000000000000
+          Top = 0.779529999999994100
           Width = 94.488188980000000000
           Height = 18.897650000000000000
           DataField = 'remise_bvfac'
@@ -2223,7 +2273,7 @@ object BonFacVF: TBonFacVF
         end
         object frxBonLivDBMontantTVA: TfrxMemoView
           Left = 680.882190000000000000
-          Top = 0.779530000000000000
+          Top = 0.779529999999994100
           Width = 90.708658980000000000
           Height = 18.897650000000000000
           DataField = 'MontantTVA'
@@ -2244,7 +2294,7 @@ object BonFacVF: TBonFacVF
         end
         object frxBonLivDBmontttc_bvfac: TfrxMemoView
           Left = 770.370440000000000000
-          Top = 0.779530000000000000
+          Top = 0.779529999999994100
           Width = 94.488188980000000000
           Height = 18.897650000000000000
           DataField = 'montttc_bvfac'
@@ -2265,7 +2315,7 @@ object BonFacVF: TBonFacVF
         end
         object frxBonLivDBmontver_bvfac: TfrxMemoView
           Left = 864.858690000000000000
-          Top = 0.779530000000000000
+          Top = 0.779529999999994100
           Width = 94.488188980000000000
           Height = 18.897650000000000000
           DataField = 'montver_bvfac'
@@ -2286,7 +2336,7 @@ object BonFacVF: TBonFacVF
         end
         object frxBonLivDBMontantRes: TfrxMemoView
           Left = 959.346940000000000000
-          Top = 0.779530000000000000
+          Top = 0.779529999999994100
           Width = 86.929128980000000000
           Height = 18.897650000000000000
           DataField = 'MontantRes'
@@ -2307,7 +2357,7 @@ object BonFacVF: TBonFacVF
         end
         object frxBonLivDBNeTHT: TfrxMemoView
           Left = 499.488560000000000000
-          Top = 0.779530000000000000
+          Top = 0.779529999999994100
           Width = 94.488250000000000000
           Height = 18.897650000000000000
           DataField = 'NeTHT'
@@ -2328,7 +2378,7 @@ object BonFacVF: TBonFacVF
         end
         object Memo22: TfrxMemoView
           Left = 593.842920000000000000
-          Top = 0.779530000000000000
+          Top = 0.779529999999994100
           Width = 86.929128980000000000
           Height = 18.897650000000000000
           DataSet = frxBonFacVDB
@@ -2354,7 +2404,7 @@ object BonFacVF: TBonFacVF
         Width = 1046.929810000000000000
         object Memo13: TfrxMemoView
           Left = 309.512060000000000000
-          Top = 0.377952760000000000
+          Top = 0.377952759999999400
           Width = 94.488250000000000000
           Height = 22.677180000000000000
           DisplayFormat.FormatStr = '%2.2n'
@@ -2373,7 +2423,7 @@ object BonFacVF: TBonFacVF
         end
         object Memo14: TfrxMemoView
           Left = 404.000310000000000000
-          Top = 0.377952760000000000
+          Top = 0.377952759999999400
           Width = 94.488250000000000000
           Height = 22.677180000000000000
           DisplayFormat.FormatStr = '%2.2n'
@@ -2392,7 +2442,7 @@ object BonFacVF: TBonFacVF
         end
         object Memo15: TfrxMemoView
           Left = 498.488560000000000000
-          Top = 0.377952760000000000
+          Top = 0.377952759999999400
           Width = 94.488250000000000000
           Height = 22.677180000000000000
           DisplayFormat.FormatStr = '%2.2n'
@@ -2411,7 +2461,7 @@ object BonFacVF: TBonFacVF
         end
         object Memo16: TfrxMemoView
           Left = 679.976810000000000000
-          Top = 0.377952760000000000
+          Top = 0.377952759999999400
           Width = 90.708720000000000000
           Height = 22.677180000000000000
           DisplayFormat.FormatStr = '%2.2n'
@@ -2430,7 +2480,7 @@ object BonFacVF: TBonFacVF
         end
         object Memo17: TfrxMemoView
           Left = 770.465060000000000000
-          Top = 0.377952760000000000
+          Top = 0.377952759999999400
           Width = 94.488250000000000000
           Height = 22.677180000000000000
           DisplayFormat.FormatStr = '%2.2n'
@@ -2449,7 +2499,7 @@ object BonFacVF: TBonFacVF
         end
         object Memo18: TfrxMemoView
           Left = 864.953310000000000000
-          Top = 0.377952760000000000
+          Top = 0.377952759999999400
           Width = 94.488250000000000000
           Height = 22.677180000000000000
           DisplayFormat.FormatStr = '%2.2n'
@@ -2468,7 +2518,7 @@ object BonFacVF: TBonFacVF
         end
         object Memo19: TfrxMemoView
           Left = 959.441560000000000000
-          Top = 0.377952760000000000
+          Top = 0.377952759999999400
           Width = 86.929190000000000000
           Height = 22.677180000000000000
           DisplayFormat.FormatStr = '%2.2n'
@@ -2487,7 +2537,7 @@ object BonFacVF: TBonFacVF
         end
         object Memo20: TfrxMemoView
           Left = 268.496290000000000000
-          Top = 0.377952760000000000
+          Top = 0.377952759999999400
           Width = 41.574830000000000000
           Height = 22.677180000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -2504,7 +2554,7 @@ object BonFacVF: TBonFacVF
         end
         object Memo23: TfrxMemoView
           Left = 592.842920000000000000
-          Top = 0.377952760000000000
+          Top = 0.377952759999999400
           Width = 86.929128980000000000
           Height = 22.677180000000000000
           DisplayFormat.FormatStr = '%2.2n'

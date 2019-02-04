@@ -357,7 +357,6 @@ object CaisseListF: TCaisseListF
     HorzScrollBar.ExtraPanel.NavigatorButtons = [nbFirstEh, nbPriorEh, nbNextEh, nbLastEh, nbRefreshEh]
     HorzScrollBar.ExtraPanel.Visible = True
     HorzScrollBar.Height = 15
-    IndicatorOptions = [gioShowRowIndicatorEh]
     IndicatorParams.Color = clBtnFace
     IndicatorTitle.ShowDropDownSign = True
     IndicatorTitle.TitleButton = True
@@ -388,9 +387,11 @@ object CaisseListF: TCaisseListF
     TitleParams.VertLines = True
     VertScrollBar.Width = 15
     OnDrawColumnCell = CaisseListDBGridEhDrawColumnCell
+    OnSortMarkingChanged = CaisseListDBGridEhSortMarkingChanged
     Columns = <
       item
         Alignment = taCenter
+        CellButtons = <>
         DisplayFormat = 'DD/MM/YYYY'
         DynProps = <>
         EditButtons = <>
@@ -417,6 +418,7 @@ object CaisseListF: TCaisseListF
       end
       item
         Alignment = taCenter
+        CellButtons = <>
         DisplayFormat = 'HH:MM:SS'
         DynProps = <>
         EditButtons = <>
@@ -442,6 +444,7 @@ object CaisseListF: TCaisseListF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DynProps = <>
         EditButtons = <>
         FieldName = 'nom_ocb'
@@ -466,6 +469,7 @@ object CaisseListF: TCaisseListF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DynProps = <>
         EditButtons = <>
         FieldName = 'third_ocb'
@@ -501,6 +505,7 @@ object CaisseListF: TCaisseListF
         WordWrap = False
       end
       item
+        CellButtons = <>
         Checkboxes = False
         DynProps = <>
         EditButtons = <>
@@ -539,6 +544,7 @@ object CaisseListF: TCaisseListF
         WordWrap = False
       end
       item
+        CellButtons = <>
         Color = 14535415
         DisplayFormat = '#,##0.00'
         DynProps = <>
@@ -575,6 +581,7 @@ object CaisseListF: TCaisseListF
         WordWrap = False
       end
       item
+        CellButtons = <>
         Color = 14936255
         DisplayFormat = '#,##0.00'
         DynProps = <>
@@ -612,9 +619,10 @@ object CaisseListF: TCaisseListF
       end
       item
         Alignment = taCenter
+        CellButtons = <>
         DynProps = <>
         EditButtons = <>
-        FieldName = 'Agnet'
+        FieldName = 'Agent'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
         Font.Height = 16
@@ -623,7 +631,6 @@ object CaisseListF: TCaisseListF
         Footers = <>
         Layout = tlCenter
         Title.Alignment = taCenter
-        Title.Caption = 'Agent'
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = 4207405
         Title.Font.Height = 16
@@ -699,7 +706,7 @@ object CaisseListF: TCaisseListF
     object Label4: TLabel
       Left = 9
       Top = 5
-      Width = 82
+      Width = 83
       Height = 17
       Caption = 'Solde Initial :'
       Color = clWhite
@@ -737,7 +744,7 @@ object CaisseListF: TCaisseListF
     object Label5: TLabel
       Left = 326
       Top = 5
-      Width = 132
+      Width = 136
       Height = 17
       Caption = 'Solde de la p'#233'riode :'
       Color = clWhite
@@ -805,7 +812,7 @@ object CaisseListF: TCaisseListF
     object Label8: TLabel
       Left = 717
       Top = 5
-      Width = 45
+      Width = 46
       Height = 17
       Anchors = [akTop, akRight]
       Caption = 'Solde :'
@@ -818,7 +825,6 @@ object CaisseListF: TCaisseListF
       ParentColor = False
       ParentFont = False
       StyleElements = []
-      ExplicitLeft = 886
     end
   end
   object TopP: TPanel
@@ -856,7 +862,7 @@ object CaisseListF: TCaisseListF
     object Label1: TLabel
       Left = 572
       Top = 10
-      Width = 23
+      Width = 22
       Height = 18
       Caption = 'Du:'
       Color = 15722984
@@ -982,7 +988,7 @@ object CaisseListF: TCaisseListF
       Shaded = False
       ShowHint = True
       Spacing = -1
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object sImage2: TsImage
@@ -1271,7 +1277,7 @@ object CaisseListF: TCaisseListF
       ShowHint = True
       Spacing = -2
       OnClick = PaidOnlyCaisseBtnClick
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object RefreshGirdBtn: TAdvToolButton
@@ -1305,7 +1311,7 @@ object CaisseListF: TCaisseListF
       ShowHint = True
       Spacing = -2
       OnClick = RefreshGirdBtnClick
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object AdvToolButton1: TAdvToolButton
@@ -1339,7 +1345,7 @@ object CaisseListF: TCaisseListF
       ShowHint = True
       Spacing = -2
       OnClick = AdvToolButton1Click
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object AdvToolButton2: TAdvToolButton
@@ -1373,7 +1379,7 @@ object CaisseListF: TCaisseListF
       ShowHint = True
       Spacing = -2
       OnClick = AdvToolButton2Click
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object AdvToolButton3: TAdvToolButton
@@ -1407,7 +1413,7 @@ object CaisseListF: TCaisseListF
       ShowHint = True
       Spacing = -2
       OnClick = AdvToolButton3Click
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object Panel8: TPanel
@@ -1473,7 +1479,7 @@ object CaisseListF: TCaisseListF
     Top = 534
   end
   object CaisseListfrxRprt: TfrxReport
-    Version = '5.4.6'
+    Version = '5.6.1'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]

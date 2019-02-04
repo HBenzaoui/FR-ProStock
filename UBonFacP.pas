@@ -119,6 +119,9 @@ type
     procedure BVFacListDBGridEhDrawColumnCell(Sender: TObject;
       const Rect: TRect; DataCol: Integer; Column: TColumnEh;
       State: TGridDrawState);
+    procedure BVFacListDBGridEhTitleBtnClick(Sender: TObject; ACol: Integer;
+      Column: TColumnEh);
+    procedure BVFacListDBGridEhSortMarkingChanged(Sender: TObject);
   private
     procedure GettingData;
     procedure FilteredColor;
@@ -143,6 +146,16 @@ type
     { Private declarations }
   public
     { Public declarations }
+    const FPSQL = 'SELECT *,  '
+  +' ( ((montttc_bpfac)-(montht_bpfac - remise_bpfac)) - timber_bpfac ) AS MontantTVA, '
+  +' (montttc_bpfac - montver_bpfac) AS MontantRes, '
+  +' CASE  '
+  +' WHEN remise_bpfac <> ''0''  THEN  ROUND( CAST (((remise_bpfac / montht_bpfac) * 100) as NUMERIC),2)  '
+  +' ELSE ''0''  '
+  +' END AS RemisePerc, '
+  +' (montht_bpfac - remise_bpfac) AS NeTHT, '
+  +' (montttc_bpfac - timber_bpfac) AS NetTTC '
+  +' FROM bonp_fac ';
   end;
 
 var
@@ -164,7 +177,7 @@ begin
 MainForm.Bonp_facTable.DisableControls;
 MainForm.Bonp_facTable.Active:= False;
 MainForm.Bonp_facTable.SQL.clear;
-mainform.Bonp_facTable.sql.Text:='SELECT * FROM bonp_fac WHERE date_bpfac BETWEEN '''+(DateToStr(DateStartBVFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBVFacD.Date))+'''';
+mainform.Bonp_facTable.sql.Text:= FPSQL +' WHERE date_bpfac BETWEEN '''+(DateToStr(DateStartBVFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBVFacD.Date))+'''';
 MainForm.Bonp_facTable.Active:= True;
 MainForm.Bonp_facTable.EnableControls;
 end;
@@ -174,7 +187,7 @@ begin
 MainForm.Bonp_facTable.DisableControls;
 MainForm.Bonp_facTable.Active:= False;
 MainForm.Bonp_facTable.SQL.clear;
-mainform.Bonp_facTable.sql.Text:='SELECT * FROM bonp_fac WHERE valider_bpfac = true AND date_bpfac BETWEEN '''+(DateToStr(DateStartBVFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBVFacD.Date))+'''';
+mainform.Bonp_facTable.sql.Text:= FPSQL +' WHERE valider_bpfac = true AND date_bpfac BETWEEN '''+(DateToStr(DateStartBVFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBVFacD.Date))+'''';
 MainForm.Bonp_facTable.Active:= True;
 MainForm.Bonp_facTable.EnableControls;
 end;
@@ -184,7 +197,7 @@ begin
 MainForm.Bonp_facTable.DisableControls;
 MainForm.Bonp_facTable.Active:= False;
 MainForm.Bonp_facTable.SQL.clear;
-mainform.Bonp_facTable.sql.Text:='SELECT * FROM bonp_fac WHERE valider_bpfac = false AND date_bpfac BETWEEN '''+(DateToStr(DateStartBVFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBVFacD.Date))+'''';
+mainform.Bonp_facTable.sql.Text:= FPSQL +' WHERE valider_bpfac = false AND date_bpfac BETWEEN '''+(DateToStr(DateStartBVFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBVFacD.Date))+'''';
 MainForm.Bonp_facTable.Active:= True;
 MainForm.Bonp_facTable.EnableControls;
 end;
@@ -194,7 +207,7 @@ begin
 MainForm.Bonp_facTable.DisableControls;
 MainForm.Bonp_facTable.Active:= False;
 MainForm.Bonp_facTable.SQL.clear;
-mainform.Bonp_facTable.sql.Text:='SELECT * FROM bonp_fac WHERE code_mdpai = 1 AND date_bpfac BETWEEN '''+(DateToStr(DateStartBVFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBVFacD.Date))+'''';
+mainform.Bonp_facTable.sql.Text:= FPSQL +' WHERE code_mdpai = 1 AND date_bpfac BETWEEN '''+(DateToStr(DateStartBVFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBVFacD.Date))+'''';
 MainForm.Bonp_facTable.Active:= True;
 MainForm.Bonp_facTable.EnableControls;
 end;
@@ -204,7 +217,7 @@ begin
 MainForm.Bonp_facTable.DisableControls;
 MainForm.Bonp_facTable.Active:= False;
 MainForm.Bonp_facTable.SQL.clear;
-mainform.Bonp_facTable.sql.Text:='SELECT * FROM bonp_fac WHERE code_mdpai = 2 AND date_bpfac BETWEEN '''+(DateToStr(DateStartBVFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBVFacD.Date))+'''';
+mainform.Bonp_facTable.sql.Text:= FPSQL +' WHERE code_mdpai = 2 AND date_bpfac BETWEEN '''+(DateToStr(DateStartBVFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBVFacD.Date))+'''';
 MainForm.Bonp_facTable.Active:= True;
 MainForm.Bonp_facTable.EnableControls;
 end;
@@ -214,7 +227,7 @@ begin
 MainForm.Bonp_facTable.DisableControls;
 MainForm.Bonp_facTable.Active:= False;
 MainForm.Bonp_facTable.SQL.clear;
-mainform.Bonp_facTable.sql.Text:='SELECT * FROM bonp_fac WHERE code_mdpai = 3 AND date_bpfac BETWEEN '''+(DateToStr(DateStartBVFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBVFacD.Date))+'''';
+mainform.Bonp_facTable.sql.Text:= FPSQL +' WHERE code_mdpai = 3 AND date_bpfac BETWEEN '''+(DateToStr(DateStartBVFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBVFacD.Date))+'''';
 MainForm.Bonp_facTable.Active:= True;
 MainForm.Bonp_facTable.EnableControls;
 end;
@@ -224,7 +237,7 @@ begin
 MainForm.Bonp_facTable.DisableControls;
 MainForm.Bonp_facTable.Active:= False;
 MainForm.Bonp_facTable.SQL.clear;
-mainform.Bonp_facTable.sql.Text:='SELECT * FROM bonp_fac WHERE code_mdpai = 4 AND date_bpfac BETWEEN '''+(DateToStr(DateStartBVFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBVFacD.Date))+'''';
+mainform.Bonp_facTable.sql.Text:= FPSQL +' WHERE code_mdpai = 4 AND date_bpfac BETWEEN '''+(DateToStr(DateStartBVFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBVFacD.Date))+'''';
 MainForm.Bonp_facTable.Active:= True;
 MainForm.Bonp_facTable.EnableControls;
 end;
@@ -234,7 +247,7 @@ begin
 MainForm.Bonp_facTable.DisableControls;
 MainForm.Bonp_facTable.Active:= False;
 MainForm.Bonp_facTable.SQL.clear;
-mainform.Bonp_facTable.sql.Text:='SELECT * FROM bonp_fac WHERE valider_bpfac = true AND code_mdpai = 1 AND date_bpfac BETWEEN '''+(DateToStr(DateStartBVFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBVFacD.Date))+'''';
+mainform.Bonp_facTable.sql.Text:= FPSQL +' WHERE valider_bpfac = true AND code_mdpai = 1 AND date_bpfac BETWEEN '''+(DateToStr(DateStartBVFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBVFacD.Date))+'''';
 MainForm.Bonp_facTable.Active:= True;
 MainForm.Bonp_facTable.EnableControls;
 end;
@@ -244,7 +257,7 @@ begin
 MainForm.Bonp_facTable.DisableControls;
 MainForm.Bonp_facTable.Active:= False;
 MainForm.Bonp_facTable.SQL.clear;
-mainform.Bonp_facTable.sql.Text:='SELECT * FROM bonp_fac WHERE valider_bpfac = true AND code_mdpai = 2 AND date_bpfac BETWEEN '''+(DateToStr(DateStartBVFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBVFacD.Date))+'''';
+mainform.Bonp_facTable.sql.Text:= FPSQL +' WHERE valider_bpfac = true AND code_mdpai = 2 AND date_bpfac BETWEEN '''+(DateToStr(DateStartBVFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBVFacD.Date))+'''';
 MainForm.Bonp_facTable.Active:= True;
 MainForm.Bonp_facTable.EnableControls;
 end;
@@ -254,7 +267,7 @@ begin
 MainForm.Bonp_facTable.DisableControls;
 MainForm.Bonp_facTable.Active:= False;
 MainForm.Bonp_facTable.SQL.clear;
-mainform.Bonp_facTable.sql.Text:='SELECT * FROM bonp_fac WHERE valider_bpfac = true AND code_mdpai = 3 AND date_bpfac BETWEEN '''+(DateToStr(DateStartBVFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBVFacD.Date))+'''';
+mainform.Bonp_facTable.sql.Text:= FPSQL +' WHERE valider_bpfac = true AND code_mdpai = 3 AND date_bpfac BETWEEN '''+(DateToStr(DateStartBVFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBVFacD.Date))+'''';
 MainForm.Bonp_facTable.Active:= True;
 MainForm.Bonp_facTable.EnableControls;
 end;
@@ -264,7 +277,7 @@ begin
 MainForm.Bonp_facTable.DisableControls;
 MainForm.Bonp_facTable.Active:= False;
 MainForm.Bonp_facTable.SQL.clear;
-mainform.Bonp_facTable.sql.Text:='SELECT * FROM bonp_fac WHERE valider_bpfac = true AND code_mdpai = 4 AND date_bpfac BETWEEN '''+(DateToStr(DateStartBVFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBVFacD.Date))+'''';
+mainform.Bonp_facTable.sql.Text:= FPSQL +' WHERE valider_bpfac = true AND code_mdpai = 4 AND date_bpfac BETWEEN '''+(DateToStr(DateStartBVFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBVFacD.Date))+'''';
 MainForm.Bonp_facTable.Active:= True;
 MainForm.Bonp_facTable.EnableControls;
 end;
@@ -274,7 +287,7 @@ begin
 MainForm.Bonp_facTable.DisableControls;
 MainForm.Bonp_facTable.Active:= False;
 MainForm.Bonp_facTable.SQL.clear;
-mainform.Bonp_facTable.sql.Text:='SELECT * FROM bonp_fac WHERE valider_bpfac = false AND code_mdpai = 1';
+mainform.Bonp_facTable.sql.Text:= FPSQL +' WHERE valider_bpfac = false AND code_mdpai = 1';
 MainForm.Bonp_facTable.Active:= True;
 MainForm.Bonp_facTable.EnableControls;
 end;
@@ -284,7 +297,7 @@ begin
 MainForm.Bonp_facTable.DisableControls;
 MainForm.Bonp_facTable.Active:= False;
 MainForm.Bonp_facTable.SQL.clear;
-mainform.Bonp_facTable.sql.Text:='SELECT * FROM bonp_fac WHERE valider_bpfac = false AND code_mdpai = 2 AND date_bpfac BETWEEN '''+(DateToStr(DateStartBVFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBVFacD.Date))+'''';
+mainform.Bonp_facTable.sql.Text:= FPSQL +' WHERE valider_bpfac = false AND code_mdpai = 2 AND date_bpfac BETWEEN '''+(DateToStr(DateStartBVFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBVFacD.Date))+'''';
 MainForm.Bonp_facTable.Active:= True;
 MainForm.Bonp_facTable.EnableControls;
 end;
@@ -294,7 +307,7 @@ begin
 MainForm.Bonp_facTable.DisableControls;
 MainForm.Bonp_facTable.Active:= False;
 MainForm.Bonp_facTable.SQL.clear;
-mainform.Bonp_facTable.sql.Text:='SELECT * FROM bonp_fac WHERE valider_bpfac = false AND code_mdpai = 3 AND date_bpfac BETWEEN '''+(DateToStr(DateStartBVFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBVFacD.Date))+'''';
+mainform.Bonp_facTable.sql.Text:= FPSQL +' WHERE valider_bpfac = false AND code_mdpai = 3 AND date_bpfac BETWEEN '''+(DateToStr(DateStartBVFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBVFacD.Date))+'''';
 MainForm.Bonp_facTable.Active:= True;
 MainForm.Bonp_facTable.EnableControls;
 end;
@@ -304,7 +317,7 @@ begin
 MainForm.Bonp_facTable.DisableControls;
 MainForm.Bonp_facTable.Active:= False;
 MainForm.Bonp_facTable.SQL.clear;
-mainform.Bonp_facTable.sql.Text:='SELECT * FROM bonp_fac WHERE valider_bpfac = false AND code_mdpai = 4 AND date_bpfac BETWEEN '''+(DateToStr(DateStartBVFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBVFacD.Date))+'''';
+mainform.Bonp_facTable.sql.Text:= FPSQL +' WHERE valider_bpfac = false AND code_mdpai = 4 AND date_bpfac BETWEEN '''+(DateToStr(DateStartBVFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBVFacD.Date))+'''';
 MainForm.Bonp_facTable.Active:= True;
 MainForm.Bonp_facTable.EnableControls;
 end;
@@ -360,7 +373,7 @@ MainForm.bonp_fac_listTable.IndexFieldNames:='';
 MainForm.Bonp_facTable.DisableControls;
 MainForm.Bonp_facTable.Active:= False;
 MainForm.Bonp_facTable.SQL.clear;
-mainform.Bonp_facTable.sql.Text:='SELECT * FROM bonp_fac ';
+mainform.Bonp_facTable.sql.Text:= FPSQL +' ORDER By code_bpfac';
 MainForm.Bonp_facTable.Active:= True;
 //MainForm.Bonp_facTable.EnableControls;
 
@@ -391,12 +404,12 @@ MainForm.Bonp_facTable.Active:= True;
             MainForm.Bonp_facTable.Last;
 
             codeFV := MainForm.Bonp_facTable.FieldValues['code_bpfac'];
-            MainForm.bonp_fac_listTable.Active:=False;
-            MainForm.bonp_fac_listTable.SQL.Clear;
-            MainForm.bonp_fac_listTable.SQL.Text:= 'SELECT * FROM bonp_fac_list WHERE code_bpfac = ' + QuotedStr(IntToStr(codeFV));
-            MainForm.bonp_fac_listTable.Active:=True;
+            MainForm.SQLQuery.Active:=False;
+            MainForm.SQLQuery.SQL.Clear;
+            MainForm.SQLQuery.SQL.Text:= 'SELECT code_bpfac FROM bonp_fac_list WHERE code_bpfac = ' + QuotedStr(IntToStr(codeFV));
+            MainForm.SQLQuery.Active:=True;
 
-           if MainForm.bonp_fac_listTable.RecordCount <= 0 then
+           if MainForm.SQLQuery.RecordCount <= 0 then
            begin
 
            codeFV := MainForm.Bonp_facTable.FieldValues['code_bpfac'];
@@ -426,8 +439,11 @@ MainForm.Bonp_facTable.Active:= True;
 
       MainForm.bonp_fac_listTable.Active:=False;
       MainForm.bonp_fac_listTable.SQL.Clear;
-      MainForm.bonp_fac_listTable.SQL.Text:= 'SELECT * FROM bonp_fac_list';
+      MainForm.bonp_fac_listTable.SQL.Text:= BonFacPGestionF.FPLSQL ;
       MainForm.bonp_fac_listTable.Active:=True;
+
+      MainForm.SQLQuery.Active:=False;
+      MainForm.SQLQuery.SQL.Clear;
 
        MainForm.bonp_fac_listTable.IndexFieldNames:='code_bpfac';
 
@@ -445,7 +461,7 @@ MainForm.Bonp_facTable.Active:= True;
 //         MainForm.Bonp_facTable.DisableControls;
 MainForm.Bonp_facTable.Active:= False;
 MainForm.Bonp_facTable.SQL.clear;
-mainform.Bonp_facTable.sql.Text:='SELECT * FROM bonp_fac WHERE date_bpfac BETWEEN '''+(DateToStr(DateStartBVFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBVFacD.Date))+'''';
+mainform.Bonp_facTable.sql.Text:= FPSQL +' WHERE date_bpfac BETWEEN '''+(DateToStr(DateStartBVFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBVFacD.Date))+'''';
 MainForm.Bonp_facTable.Active:= True;
 MainForm.Bonp_facTable.Last;
 MainForm.Bonp_facTable.EnableControls;
@@ -458,7 +474,7 @@ ClearFilterBVLivPMenuClick(Sender);
 MainForm.Bonp_facTable.DisableControls;
 MainForm.Bonp_facTable.Active:= False;
 MainForm.Bonp_facTable.SQL.clear;
-mainform.Bonp_facTable.sql.Text:='SELECT * FROM bonp_fac WHERE date_bpfac BETWEEN '''+(DateToStr(DateStartBVFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBVFacD.Date))+'''';
+mainform.Bonp_facTable.sql.Text:= FPSQL +' WHERE date_bpfac BETWEEN '''+(DateToStr(DateStartBVFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBVFacD.Date))+'''';
 MainForm.Bonp_facTable.Active:= True;
 MainForm.Bonp_facTable.EnableControls;
 end;
@@ -614,7 +630,7 @@ begin
           MainForm.Bonp_facTable.DisableControls;
           MainForm.Bonp_facTable.Active:=False;
           MainForm.Bonp_facTable.SQL.Clear;
-          MainForm.Bonp_facTable.SQL.Text:='SELECT * FROM bonp_fac WHERE code_c IN( SELECT code_c FROM client WHERE LOWER(nom_c) LIKE LOWER' +'('''+'%'+(ResearchBVFacEdt.Text)+'%'+''')' +')';
+          MainForm.Bonp_facTable.SQL.Text:= FPSQL +' WHERE code_c IN( SELECT code_c FROM client WHERE LOWER(nom_c) LIKE LOWER' +'('''+'%'+(ResearchBVFacEdt.Text)+'%'+''')' +')';
           MainForm.Bonp_facTable.Active:=True;
           MainForm.Bonp_facTable.EnableControls;
 
@@ -625,7 +641,7 @@ begin
           MainForm.Bonp_facTable.DisableControls;
           MainForm.Bonp_facTable.Active:=False;
           MainForm.Bonp_facTable.SQL.Clear;
-          MainForm.Bonp_facTable.SQL.Text:='SELECT * FROM bonp_fac WHERE LOWER(num_bpfac) LIKE LOWER' +'('''+'%'+(ResearchBVFacEdt.Text)+'%'+''')' ;
+          MainForm.Bonp_facTable.SQL.Text:= FPSQL +' WHERE LOWER(num_bpfac) LIKE LOWER' +'('''+'%'+(ResearchBVFacEdt.Text)+'%'+''')' ;
           MainForm.Bonp_facTable.Active:=True;
           MainForm.Bonp_facTable.EnableControls;
           end;
@@ -643,7 +659,7 @@ begin
           MainForm.Bonp_facTable.DisableControls;
           MainForm.Bonp_facTable.Active:=False;
           MainForm.Bonp_facTable.SQL.Clear;
-          MainForm.Bonp_facTable.SQL.Text:='SELECT * FROM bonp_fac ' ;
+          MainForm.Bonp_facTable.SQL.Text:= FPSQL ;
           MainForm.Bonp_facTable.Active:=True;
           MainForm.Bonp_facTable.EnableControls;
 
@@ -695,7 +711,7 @@ begin
           MainForm.Bonp_facTable.DisableControls;
           MainForm.Bonp_facTable.Active:=False;
           MainForm.Bonp_facTable.SQL.Clear;
-          MainForm.Bonp_facTable.SQL.Text:='SELECT * FROM bonp_fac WHERE code_c IN( SELECT code_c FROM client WHERE LOWER(nom_c) LIKE LOWER' +'('''+(ResearchBVFacEdt.Text+'%')+''')' +')';
+          MainForm.Bonp_facTable.SQL.Text:= FPSQL +' WHERE code_c IN( SELECT code_c FROM client WHERE LOWER(nom_c) LIKE LOWER' +'('''+(ResearchBVFacEdt.Text+'%')+''')' +')';
           MainForm.Bonp_facTable.Active:=True;
           MainForm.Bonp_facTable.EnableControls;
 
@@ -706,7 +722,7 @@ begin
           MainForm.Bonp_facTable.DisableControls;
           MainForm.Bonp_facTable.Active:=False;
           MainForm.Bonp_facTable.SQL.Clear;
-          MainForm.Bonp_facTable.SQL.Text:='SELECT * FROM bonp_fac WHERE LOWER(num_bpfac) LIKE LOWER' +'('''+(ResearchBVFacEdt.Text+'%')+''')' ;
+          MainForm.Bonp_facTable.SQL.Text:= FPSQL +' WHERE LOWER(num_bpfac) LIKE LOWER' +'('''+(ResearchBVFacEdt.Text+'%')+''')' ;
           MainForm.Bonp_facTable.Active:=True;
           MainForm.Bonp_facTable.EnableControls;
           end;
@@ -724,7 +740,7 @@ begin
           MainForm.Bonp_facTable.DisableControls;
           MainForm.Bonp_facTable.Active:=False;
           MainForm.Bonp_facTable.SQL.Clear;
-          MainForm.Bonp_facTable.SQL.Text:='SELECT * FROM bonp_fac ' ;
+          MainForm.Bonp_facTable.SQL.Text:= FPSQL ;
           MainForm.Bonp_facTable.Active:=True;
           MainForm.Bonp_facTable.EnableControls;
 
@@ -761,6 +777,7 @@ begin
 //       MainForm.Bonp_facTable.Refresh;
        BonFacPGestionF.NumBonFacVGEdt.Caption := MainForm.Bonp_facTable.FieldValues['num_bpfac'];
        BonFacPGestionF.DateBonFacVGD.Date:= MainForm.Bonp_facTable.FieldValues['date_bpfac'];
+       BonFacPGestionF.ObserBonFacVGMem.Lines.Text := MainForm.Bonp_facTable.FieldByName('obser_bpfac').AsString;
        if (MainForm.Bonp_facTable.FieldValues['code_c']<> null) and (MainForm.Bonp_facTable.FieldValues['code_c']<> 0) then
        begin
        CodeC:=MainForm.Bonp_facTable.FieldValues['code_c'];
@@ -1199,6 +1216,17 @@ begin
   end else Exit;
 end;
 
+procedure TBonFacPF.BVFacListDBGridEhSortMarkingChanged(Sender: TObject);
+begin
+  BVFacListDBGridEh.DefaultApplySorting;
+end;
+
+procedure TBonFacPF.BVFacListDBGridEhTitleBtnClick(Sender: TObject;
+  ACol: Integer; Column: TColumnEh);
+begin
+    MainForm.Bonp_facTable.IndexesActive:= False;
+end;
+
 procedure TBonFacPF.ChequeMPFilterBVLivPMenuClick(Sender: TObject);
 begin
 FilterBVLivBtn.ImageIndex:=50;
@@ -1472,6 +1500,39 @@ begin
         MainForm.ClientTable.SQL.Text:='SELECT * FROM client ';
         MainForm.ClientTable.Active:=True;
         MainForm.ClientTable.EnableControls;
+
+
+     if MainForm.totaux_ur.Checked then
+      begin
+
+       SumGirdBBVFacBtn.Enabled:= True;
+
+      end else
+      begin
+
+       SumGirdBBVFacBtn.Enabled:= False;
+
+      end;
+
+
+
+     if MainForm.viewprixa_ur.Checked then
+      begin
+
+          BVFacListDBGridEh.FieldColumns['montaht_bpfac'].Visible:= true;
+          BVFacListDBGridEh.FieldColumns['montaht_bpfac'].MinWidth:= 150;
+          BVFacListDBGridEh.FieldColumns['montaht_bpfac'].Width:= 150;
+          BVFacListDBGridEh.FieldColumns['montaht_bvfac'].MaxWidth:= 0;
+
+      end else
+      begin
+
+          BVFacListDBGridEh.FieldColumns['montaht_bpfac'].Visible:= false;
+          BVFacListDBGridEh.FieldColumns['montaht_bpfac'].MinWidth:= 0;
+          BVFacListDBGridEh.FieldColumns['montaht_bpfac'].Width:= 0;
+          BVFacListDBGridEh.FieldColumns['montaht_bpfac'].MaxWidth:= 1;
+
+      end;
 end;
 
 end.

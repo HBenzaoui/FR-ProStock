@@ -122,6 +122,9 @@ type
     procedure ResearchBARecEdtKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure ApplicationEvents1ShortCut(var Msg: TWMKey; var Handled: Boolean);
+    procedure BARecListDBGridEhTitleBtnClick(Sender: TObject; ACol: Integer;
+      Column: TColumnEh);
+    procedure BARecListDBGridEhSortMarkingChanged(Sender: TObject);
 
   private
     procedure GettingData;
@@ -150,6 +153,15 @@ type
     { Private declarations }
   public
     { Public declarations }
+    const BRSQL = 'SELECT *, '
++'   ((montttc_barec)-(montht_barec - remise_barec)) AS MontantTVA, '
++'   (montttc_barec - montver_barec) AS MontantRes, '
++'  CASE '
++'     WHEN remise_barec <> ''0'' AND montht_barec <> ''0'' THEN  ROUND( CAST (((remise_barec / montht_barec) * 100) as NUMERIC),2) '
++'     ELSE ''0'' '
++'  END AS RemisePerc,  '
++'   (montht_barec - remise_barec) AS NeTHT '
++' FROM bona_rec ';
   end;
 
 
@@ -169,7 +181,7 @@ begin
 MainForm.Bona_recTable.DisableControls;
 MainForm.Bona_recTable.Active:= False;
 MainForm.Bona_recTable.SQL.clear;
-mainform.Bona_recTable.sql.Text:='SELECT * FROM bona_rec WHERE date_barec BETWEEN '''+(DateToStr(DateStartBARecD.Date))+ ''' AND ''' +(DateToStr(DateEndBARecD.Date))+'''';
+mainform.Bona_recTable.sql.Text:= BRSQL+' WHERE date_barec BETWEEN '''+(DateToStr(DateStartBARecD.Date))+ ''' AND ''' +(DateToStr(DateEndBARecD.Date))+'''';
 MainForm.Bona_recTable.Active:= True;
 MainForm.Bona_recTable.EnableControls;
 end;
@@ -179,7 +191,7 @@ begin
 MainForm.Bona_recTable.DisableControls;
 MainForm.Bona_recTable.Active:= False;
 MainForm.Bona_recTable.SQL.clear;
-mainform.Bona_recTable.sql.Text:='SELECT * FROM bona_rec WHERE valider_barec = true AND date_barec BETWEEN '''+(DateToStr(DateStartBARecD.Date))+ ''' AND ''' +(DateToStr(DateEndBARecD.Date))+'''';
+mainform.Bona_recTable.sql.Text:= BRSQL+' WHERE valider_barec = true AND date_barec BETWEEN '''+(DateToStr(DateStartBARecD.Date))+ ''' AND ''' +(DateToStr(DateEndBARecD.Date))+'''';
 MainForm.Bona_recTable.Active:= True;
 MainForm.Bona_recTable.EnableControls;
 end;
@@ -189,7 +201,7 @@ begin
 MainForm.Bona_recTable.DisableControls;
 MainForm.Bona_recTable.Active:= False;
 MainForm.Bona_recTable.SQL.clear;
-mainform.Bona_recTable.sql.Text:='SELECT * FROM bona_rec WHERE valider_barec = false AND date_barec BETWEEN '''+(DateToStr(DateStartBARecD.Date))+ ''' AND ''' +(DateToStr(DateEndBARecD.Date))+'''';
+mainform.Bona_recTable.sql.Text:= BRSQL+' WHERE valider_barec = false AND date_barec BETWEEN '''+(DateToStr(DateStartBARecD.Date))+ ''' AND ''' +(DateToStr(DateEndBARecD.Date))+'''';
 MainForm.Bona_recTable.Active:= True;
 MainForm.Bona_recTable.EnableControls;
 end;
@@ -199,7 +211,7 @@ begin
 MainForm.Bona_recTable.DisableControls;
 MainForm.Bona_recTable.Active:= False;
 MainForm.Bona_recTable.SQL.clear;
-mainform.Bona_recTable.sql.Text:='SELECT * FROM bona_rec WHERE code_mdpai = 1 AND date_barec BETWEEN '''+(DateToStr(DateStartBARecD.Date))+ ''' AND ''' +(DateToStr(DateEndBARecD.Date))+'''';
+mainform.Bona_recTable.sql.Text:= BRSQL+' WHERE code_mdpai = 1 AND date_barec BETWEEN '''+(DateToStr(DateStartBARecD.Date))+ ''' AND ''' +(DateToStr(DateEndBARecD.Date))+'''';
 MainForm.Bona_recTable.Active:= True;
 MainForm.Bona_recTable.EnableControls;
 end;
@@ -209,7 +221,7 @@ begin
 MainForm.Bona_recTable.DisableControls;
 MainForm.Bona_recTable.Active:= False;
 MainForm.Bona_recTable.SQL.clear;
-mainform.Bona_recTable.sql.Text:='SELECT * FROM bona_rec WHERE code_mdpai = 2 AND date_barec BETWEEN '''+(DateToStr(DateStartBARecD.Date))+ ''' AND ''' +(DateToStr(DateEndBARecD.Date))+'''';
+mainform.Bona_recTable.sql.Text:= BRSQL+' WHERE code_mdpai = 2 AND date_barec BETWEEN '''+(DateToStr(DateStartBARecD.Date))+ ''' AND ''' +(DateToStr(DateEndBARecD.Date))+'''';
 MainForm.Bona_recTable.Active:= True;
 MainForm.Bona_recTable.EnableControls;
 end;
@@ -219,7 +231,7 @@ begin
 MainForm.Bona_recTable.DisableControls;
 MainForm.Bona_recTable.Active:= False;
 MainForm.Bona_recTable.SQL.clear;
-mainform.Bona_recTable.sql.Text:='SELECT * FROM bona_rec WHERE code_mdpai = 3 AND date_barec BETWEEN '''+(DateToStr(DateStartBARecD.Date))+ ''' AND ''' +(DateToStr(DateEndBARecD.Date))+'''';
+mainform.Bona_recTable.sql.Text:= BRSQL+' WHERE code_mdpai = 3 AND date_barec BETWEEN '''+(DateToStr(DateStartBARecD.Date))+ ''' AND ''' +(DateToStr(DateEndBARecD.Date))+'''';
 MainForm.Bona_recTable.Active:= True;
 MainForm.Bona_recTable.EnableControls;
 end;
@@ -229,7 +241,7 @@ begin
 MainForm.Bona_recTable.DisableControls;
 MainForm.Bona_recTable.Active:= False;
 MainForm.Bona_recTable.SQL.clear;
-mainform.Bona_recTable.sql.Text:='SELECT * FROM bona_rec WHERE code_mdpai = 4 AND date_barec BETWEEN '''+(DateToStr(DateStartBARecD.Date))+ ''' AND ''' +(DateToStr(DateEndBARecD.Date))+'''';
+mainform.Bona_recTable.sql.Text:= BRSQL+' WHERE code_mdpai = 4 AND date_barec BETWEEN '''+(DateToStr(DateStartBARecD.Date))+ ''' AND ''' +(DateToStr(DateEndBARecD.Date))+'''';
 MainForm.Bona_recTable.Active:= True;
 MainForm.Bona_recTable.EnableControls;
 end;
@@ -239,7 +251,7 @@ begin
 MainForm.Bona_recTable.DisableControls;
 MainForm.Bona_recTable.Active:= False;
 MainForm.Bona_recTable.SQL.clear;
-mainform.Bona_recTable.sql.Text:='SELECT * FROM bona_rec WHERE valider_barec = true AND code_mdpai = 1 AND date_barec BETWEEN '''+(DateToStr(DateStartBARecD.Date))+ ''' AND ''' +(DateToStr(DateEndBARecD.Date))+'''';
+mainform.Bona_recTable.sql.Text:= BRSQL+' WHERE valider_barec = true AND code_mdpai = 1 AND date_barec BETWEEN '''+(DateToStr(DateStartBARecD.Date))+ ''' AND ''' +(DateToStr(DateEndBARecD.Date))+'''';
 MainForm.Bona_recTable.Active:= True;
 MainForm.Bona_recTable.EnableControls;
 end;
@@ -249,7 +261,7 @@ begin
 MainForm.Bona_recTable.DisableControls;
 MainForm.Bona_recTable.Active:= False;
 MainForm.Bona_recTable.SQL.clear;
-mainform.Bona_recTable.sql.Text:='SELECT * FROM bona_rec WHERE valider_barec = true AND code_mdpai = 2 AND date_barec BETWEEN '''+(DateToStr(DateStartBARecD.Date))+ ''' AND ''' +(DateToStr(DateEndBARecD.Date))+'''';
+mainform.Bona_recTable.sql.Text:= BRSQL+' WHERE valider_barec = true AND code_mdpai = 2 AND date_barec BETWEEN '''+(DateToStr(DateStartBARecD.Date))+ ''' AND ''' +(DateToStr(DateEndBARecD.Date))+'''';
 MainForm.Bona_recTable.Active:= True;
 MainForm.Bona_recTable.EnableControls;
 end;
@@ -259,7 +271,7 @@ begin
 MainForm.Bona_recTable.DisableControls;
 MainForm.Bona_recTable.Active:= False;
 MainForm.Bona_recTable.SQL.clear;
-mainform.Bona_recTable.sql.Text:='SELECT * FROM bona_rec WHERE valider_barec = true AND code_mdpai = 3 AND date_barec BETWEEN '''+(DateToStr(DateStartBARecD.Date))+ ''' AND ''' +(DateToStr(DateEndBARecD.Date))+'''';
+mainform.Bona_recTable.sql.Text:= BRSQL+' WHERE valider_barec = true AND code_mdpai = 3 AND date_barec BETWEEN '''+(DateToStr(DateStartBARecD.Date))+ ''' AND ''' +(DateToStr(DateEndBARecD.Date))+'''';
 MainForm.Bona_recTable.Active:= True;
 MainForm.Bona_recTable.EnableControls;
 end;
@@ -269,7 +281,7 @@ begin
 MainForm.Bona_recTable.DisableControls;
 MainForm.Bona_recTable.Active:= False;
 MainForm.Bona_recTable.SQL.clear;
-mainform.Bona_recTable.sql.Text:='SELECT * FROM bona_rec WHERE valider_barec = true AND code_mdpai = 4 AND date_barec BETWEEN '''+(DateToStr(DateStartBARecD.Date))+ ''' AND ''' +(DateToStr(DateEndBARecD.Date))+'''';
+mainform.Bona_recTable.sql.Text:= BRSQL+' WHERE valider_barec = true AND code_mdpai = 4 AND date_barec BETWEEN '''+(DateToStr(DateStartBARecD.Date))+ ''' AND ''' +(DateToStr(DateEndBARecD.Date))+'''';
 MainForm.Bona_recTable.Active:= True;
 MainForm.Bona_recTable.EnableControls;
 end;
@@ -279,7 +291,7 @@ begin
 MainForm.Bona_recTable.DisableControls;
 MainForm.Bona_recTable.Active:= False;
 MainForm.Bona_recTable.SQL.clear;
-mainform.Bona_recTable.sql.Text:='SELECT * FROM bona_rec WHERE valider_barec = false AND code_mdpai = 1';
+mainform.Bona_recTable.sql.Text:= BRSQL+' WHERE valider_barec = false AND code_mdpai = 1';
 MainForm.Bona_recTable.Active:= True;
 MainForm.Bona_recTable.EnableControls;
 end;
@@ -289,7 +301,7 @@ begin
 MainForm.Bona_recTable.DisableControls;
 MainForm.Bona_recTable.Active:= False;
 MainForm.Bona_recTable.SQL.clear;
-mainform.Bona_recTable.sql.Text:='SELECT * FROM bona_rec WHERE valider_barec = false AND code_mdpai = 2 AND date_barec BETWEEN '''+(DateToStr(DateStartBARecD.Date))+ ''' AND ''' +(DateToStr(DateEndBARecD.Date))+'''';
+mainform.Bona_recTable.sql.Text:= BRSQL+' WHERE valider_barec = false AND code_mdpai = 2 AND date_barec BETWEEN '''+(DateToStr(DateStartBARecD.Date))+ ''' AND ''' +(DateToStr(DateEndBARecD.Date))+'''';
 MainForm.Bona_recTable.Active:= True;
 MainForm.Bona_recTable.EnableControls;
 end;
@@ -299,7 +311,7 @@ begin
 MainForm.Bona_recTable.DisableControls;
 MainForm.Bona_recTable.Active:= False;
 MainForm.Bona_recTable.SQL.clear;
-mainform.Bona_recTable.sql.Text:='SELECT * FROM bona_rec WHERE valider_barec = false AND code_mdpai = 3 AND date_barec BETWEEN '''+(DateToStr(DateStartBARecD.Date))+ ''' AND ''' +(DateToStr(DateEndBARecD.Date))+'''';
+mainform.Bona_recTable.sql.Text:= BRSQL+' WHERE valider_barec = false AND code_mdpai = 3 AND date_barec BETWEEN '''+(DateToStr(DateStartBARecD.Date))+ ''' AND ''' +(DateToStr(DateEndBARecD.Date))+'''';
 MainForm.Bona_recTable.Active:= True;
 MainForm.Bona_recTable.EnableControls;
 end;
@@ -309,7 +321,7 @@ begin
 MainForm.Bona_recTable.DisableControls;
 MainForm.Bona_recTable.Active:= False;
 MainForm.Bona_recTable.SQL.clear;
-mainform.Bona_recTable.sql.Text:='SELECT * FROM bona_rec WHERE valider_barec = false AND code_mdpai = 4 AND date_barec BETWEEN '''+(DateToStr(DateStartBARecD.Date))+ ''' AND ''' +(DateToStr(DateEndBARecD.Date))+'''';
+mainform.Bona_recTable.sql.Text:= BRSQL+' WHERE valider_barec = false AND code_mdpai = 4 AND date_barec BETWEEN '''+(DateToStr(DateStartBARecD.Date))+ ''' AND ''' +(DateToStr(DateEndBARecD.Date))+'''';
 MainForm.Bona_recTable.Active:= True;
 MainForm.Bona_recTable.EnableControls;
 end;
@@ -366,7 +378,7 @@ ClearFilterBVLivPMenuClick(Sender);
   MainForm.Bona_recTable.DisableControls;
   MainForm.Bona_recTable.Active:= False;
   MainForm.Bona_recTable.SQL.clear;
-  mainform.Bona_recTable.sql.Text:='SELECT * FROM bona_rec  ';
+  mainform.Bona_recTable.sql.Text:= BRSQL+' ORDER By code_barec';
   MainForm.Bona_recTable.Active:= True;
 
  codeBR:= 0;
@@ -394,12 +406,12 @@ ClearFilterBVLivPMenuClick(Sender);
           begin
             MainForm.Bona_recTable.Last;
             codeBR := MainForm.Bona_recTable.FieldValues['code_barec'];
-            MainForm.Bona_recPlistTable.Active:=False;
-            MainForm.Bona_recPlistTable.SQL.Clear;
-            MainForm.Bona_recPlistTable.SQL.Text:= 'SELECT * FROM bona_rec_list WHERE code_barec = ' + QuotedStr(IntToStr(codeBR));
-            MainForm.Bona_recPlistTable.Active:=True;
+            MainForm.SQLQuery.Active:=False;
+            MainForm.SQLQuery.SQL.Clear;
+            MainForm.SQLQuery.SQL.Text:= 'SELECT * FROM bona_rec_list WHERE code_barec = ' + QuotedStr(IntToStr(codeBR));
+            MainForm.SQLQuery.Active:=True;
 
-           if MainForm.Bona_recPlistTable.RecordCount <= 0 then
+           if MainForm.SQLQuery.RecordCount <= 0 then
            begin
         //   MainForm.Bona_recTable.Last;
            codeBR := MainForm.Bona_recTable.FieldValues['code_barec'];
@@ -439,10 +451,13 @@ ClearFilterBVLivPMenuClick(Sender);
 //      MainForm.Bona_recTable.DisableControls;
 MainForm.Bona_recTable.Active:= False;
 MainForm.Bona_recTable.SQL.clear;
-mainform.Bona_recTable.sql.Text:='SELECT * FROM bona_rec WHERE bon_or_no_barec = true AND date_barec BETWEEN '''+(DateToStr(DateStartBARecD.Date))+ ''' AND ''' +(DateToStr(DateEndBARecD.Date))+'''';
+mainform.Bona_recTable.sql.Text:= BRSQL+' WHERE bon_or_no_barec = true AND date_barec BETWEEN '''+(DateToStr(DateStartBARecD.Date))+ ''' AND ''' +(DateToStr(DateEndBARecD.Date))+'''';
 MainForm.Bona_recTable.Active:= True;
 MainForm.Bona_recTable.Last;
 MainForm.Bona_recTable.EnableControls;
+
+            MainForm.SQLQuery.Active:=False;
+            MainForm.SQLQuery.SQL.Clear;
 
 end;
 
@@ -633,6 +648,17 @@ begin
     if Key in ['m','M'] then
       EditBARecBtnClick(Sender);
   end else Exit;
+end;
+
+procedure TBonRecF.BARecListDBGridEhSortMarkingChanged(Sender: TObject);
+begin
+  BARecListDBGridEh.DefaultApplySorting;
+end;
+
+procedure TBonRecF.BARecListDBGridEhTitleBtnClick(Sender: TObject;
+  ACol: Integer; Column: TColumnEh);
+begin
+    MainForm.Bona_recTable.IndexesActive:= False;
 end;
 
 procedure TBonRecF.ChequeMPFilterBVLivPMenuClick(Sender: TObject);
@@ -830,6 +856,7 @@ var
 
          BonRecGestionF.NumBonRecGEdt.Caption := MainForm.Bona_recTable.FieldValues['num_barec'];
          BonRecGestionF.DateBonRecGD.Date:= MainForm.Bona_recTable.FieldValues['date_barec'];
+         BonRecGestionF.ObserBonRecGMem.Lines.Text := MainForm.Bona_recTable.FieldByName('obser_barec').AsString;
          if (MainForm.Bona_recTable.FieldValues['code_f']<> null) and (MainForm.Bona_recTable.FieldValues['code_f']<> 0) then
          begin
          CodeF:=MainForm.Bona_recTable.FieldValues['code_f'];
@@ -1119,7 +1146,7 @@ begin
           MainForm.Bona_recTable.DisableControls;
           MainForm.Bona_recTable.Active:=False;
           MainForm.Bona_recTable.SQL.Clear;
-          MainForm.Bona_recTable.SQL.Text:='SELECT * FROM bona_rec WHERE code_f IN( SELECT code_f FROM fournisseur WHERE LOWER(nom_f) LIKE LOWER' +'('''+'%'+(ResearchBARecEdt.Text)+'%'+''')' +')';
+          MainForm.Bona_recTable.SQL.Text:= BRSQL+' WHERE code_f IN( SELECT code_f FROM fournisseur WHERE LOWER(nom_f) LIKE LOWER' +'('''+'%'+(ResearchBARecEdt.Text)+'%'+''')' +')';
           MainForm.Bona_recTable.Active:=True;
           MainForm.Bona_recTable.EnableControls;
 
@@ -1130,7 +1157,7 @@ begin
           MainForm.Bona_recTable.DisableControls;
           MainForm.Bona_recTable.Active:=False;
           MainForm.Bona_recTable.SQL.Clear;
-          MainForm.Bona_recTable.SQL.Text:='SELECT * FROM bona_rec WHERE LOWER(num_barec) LIKE LOWER' +'('''+'%'+(ResearchBARecEdt.Text)+'%'+''')' ;
+          MainForm.Bona_recTable.SQL.Text:= BRSQL+' WHERE LOWER(num_barec) LIKE LOWER' +'('''+'%'+(ResearchBARecEdt.Text)+'%'+''')' ;
           MainForm.Bona_recTable.Active:=True;
           MainForm.Bona_recTable.EnableControls;
           end;
@@ -1148,7 +1175,7 @@ begin
           MainForm.Bona_recTable.DisableControls;
           MainForm.Bona_recTable.Active:=False;
           MainForm.Bona_recTable.SQL.Clear;
-          MainForm.Bona_recTable.SQL.Text:='SELECT * FROM bona_rec WHERE bon_or_no_barec = true ' ;
+          MainForm.Bona_recTable.SQL.Text:= BRSQL+' WHERE bon_or_no_barec = true ' ;
           MainForm.Bona_recTable.Active:=True;
           MainForm.Bona_recTable.EnableControls;
 
@@ -1201,7 +1228,7 @@ begin
           MainForm.Bona_recTable.DisableControls;
           MainForm.Bona_recTable.Active:=False;
           MainForm.Bona_recTable.SQL.Clear;
-          MainForm.Bona_recTable.SQL.Text:='SELECT * FROM bona_rec WHERE code_f IN( SELECT code_f FROM fournisseur WHERE LOWER(nom_f) LIKE LOWER' +'('''+(ResearchBARecEdt.Text+'%')+''')' +')';
+          MainForm.Bona_recTable.SQL.Text:= BRSQL+' WHERE code_f IN( SELECT code_f FROM fournisseur WHERE LOWER(nom_f) LIKE LOWER' +'('''+(ResearchBARecEdt.Text+'%')+''')' +')';
           MainForm.Bona_recTable.Active:=True;
           MainForm.Bona_recTable.EnableControls;
 
@@ -1212,7 +1239,7 @@ begin
           MainForm.Bona_recTable.DisableControls;
           MainForm.Bona_recTable.Active:=False;
           MainForm.Bona_recTable.SQL.Clear;
-          MainForm.Bona_recTable.SQL.Text:='SELECT * FROM bona_rec WHERE LOWER(num_barec) LIKE LOWER' +'('''+(ResearchBARecEdt.Text+'%')+''')' ;
+          MainForm.Bona_recTable.SQL.Text:= BRSQL+' WHERE LOWER(num_barec) LIKE LOWER' +'('''+(ResearchBARecEdt.Text+'%')+''')' ;
           MainForm.Bona_recTable.Active:=True;
           MainForm.Bona_recTable.EnableControls;
           end;
@@ -1230,7 +1257,7 @@ begin
           MainForm.Bona_recTable.DisableControls;
           MainForm.Bona_recTable.Active:=False;
           MainForm.Bona_recTable.SQL.Clear;
-          MainForm.Bona_recTable.SQL.Text:='SELECT * FROM bona_rec WHERE bon_or_no_barec = true ' ;
+          MainForm.Bona_recTable.SQL.Text:= BRSQL+' WHERE bon_or_no_barec = true ' ;
           MainForm.Bona_recTable.Active:=True;
           MainForm.Bona_recTable.EnableControls;
 
@@ -1246,7 +1273,7 @@ ClearFilterBVLivPMenuClick(Sender);
 MainForm.Bona_recTable.DisableControls;
 MainForm.Bona_recTable.Active:= False;
 MainForm.Bona_recTable.SQL.clear;
-mainform.Bona_recTable.sql.Text:='SELECT * FROM bona_rec WHERE bon_or_no_barec = true AND date_barec BETWEEN '''+(DateToStr(DateStartBARecD.Date))+ ''' AND ''' +(DateToStr(DateEndBARecD.Date))+'''';
+mainform.Bona_recTable.sql.Text:= BRSQL+' WHERE bon_or_no_barec = true AND date_barec BETWEEN '''+(DateToStr(DateStartBARecD.Date))+ ''' AND ''' +(DateToStr(DateEndBARecD.Date))+'''';
 MainForm.Bona_recTable.Active:= True;
 MainForm.Bona_recTable.EnableControls;
 end;
@@ -1499,6 +1526,19 @@ begin
   MainForm.FournisseurTable.SQL.Text:='SELECT * FROM fournisseur ';
   MainForm.FournisseurTable.Active:=True;
   MainForm.FournisseurTable.EnableControls;
+
+  if MainForm.totaux_ur.Checked then
+      begin
+
+       SumGirdBARecBtn.Enabled:= True;
+
+      end else
+      begin
+
+       SumGirdBARecBtn.Enabled:= False;
+
+      end;
+
 end;
 
 end.

@@ -118,6 +118,9 @@ type
     procedure ResearchBVCtrEdtKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure ApplicationEvents1ShortCut(var Msg: TWMKey; var Handled: Boolean);
+    procedure BVCtrListDBGridEhTitleBtnClick(Sender: TObject; ACol: Integer;
+      Column: TColumnEh);
+    procedure BVCtrListDBGridEhSelectionChanged(Sender: TObject);
   private
     procedure GettingData;
     procedure FilteredColor;
@@ -142,6 +145,18 @@ type
     { Private declarations }
   public
     { Public declarations }
+    const BCSQL = 'SELECT *, '
+        +'  ((montttc_bvctr)-(montht_bvctr - remise_bvctr)) AS MontantTVA, '
+        +'  CASE  '
+        +'     WHEN montver_bvctr <> ''0'' AND montttc_bvctr <> ''0'' THEN  (montver_bvctr - montttc_bvctr) '
+        +'     ELSE ''0'' '
+        +'   END AS MontantRen, '
+        +'  CASE  '
+        +'     WHEN remise_bvctr <> ''0''  THEN  ROUND( CAST (((remise_bvctr / montht_bvctr) * 100) as NUMERIC),2)  '
+        +'     ELSE ''0''  '
+        +'  END AS RemisePerc, '
+        +'   (montht_bvctr - remise_bvctr) AS NeTHT '
+        +' FROM bonv_ctr ';
   end;
 
 var
@@ -162,7 +177,7 @@ begin
 MainForm.Bonv_ctrTable.DisableControls;
 MainForm.Bonv_ctrTable.Active:= False;
 MainForm.Bonv_ctrTable.SQL.clear;
-mainform.Bonv_ctrTable.sql.Text:='SELECT * FROM bonv_ctr WHERE date_bvctr BETWEEN '''+(DateToStr(DateStartBVCtrD.Date))+ ''' AND ''' +(DateToStr(DateEndBVCtrD.Date))+'''';
+mainform.Bonv_ctrTable.sql.Text:= BCSQL +' WHERE date_bvctr BETWEEN '''+(DateToStr(DateStartBVCtrD.Date))+ ''' AND ''' +(DateToStr(DateEndBVCtrD.Date))+'''';
 MainForm.Bonv_ctrTable.Active:= True;
 MainForm.Bonv_ctrTable.EnableControls;
 end;
@@ -172,7 +187,7 @@ begin
 MainForm.Bonv_ctrTable.DisableControls;
 MainForm.Bonv_ctrTable.Active:= False;
 MainForm.Bonv_ctrTable.SQL.clear;
-mainform.Bonv_ctrTable.sql.Text:='SELECT * FROM bonv_ctr WHERE valider_bvctr = true AND date_bvctr BETWEEN '''+(DateToStr(DateStartBVCtrD.Date))+ ''' AND ''' +(DateToStr(DateEndBVCtrD.Date))+'''';
+mainform.Bonv_ctrTable.sql.Text:= BCSQL +' WHERE valider_bvctr = true AND date_bvctr BETWEEN '''+(DateToStr(DateStartBVCtrD.Date))+ ''' AND ''' +(DateToStr(DateEndBVCtrD.Date))+'''';
 MainForm.Bonv_ctrTable.Active:= True;
 MainForm.Bonv_ctrTable.EnableControls;
 end;
@@ -182,7 +197,7 @@ begin
 MainForm.Bonv_ctrTable.DisableControls;
 MainForm.Bonv_ctrTable.Active:= False;
 MainForm.Bonv_ctrTable.SQL.clear;
-mainform.Bonv_ctrTable.sql.Text:='SELECT * FROM bonv_ctr WHERE valider_bvctr = false AND date_bvctr BETWEEN '''+(DateToStr(DateStartBVCtrD.Date))+ ''' AND ''' +(DateToStr(DateEndBVCtrD.Date))+'''';
+mainform.Bonv_ctrTable.sql.Text:= BCSQL +' WHERE valider_bvctr = false AND date_bvctr BETWEEN '''+(DateToStr(DateStartBVCtrD.Date))+ ''' AND ''' +(DateToStr(DateEndBVCtrD.Date))+'''';
 MainForm.Bonv_ctrTable.Active:= True;
 MainForm.Bonv_ctrTable.EnableControls;
 end;
@@ -192,7 +207,7 @@ begin
 MainForm.Bonv_ctrTable.DisableControls;
 MainForm.Bonv_ctrTable.Active:= False;
 MainForm.Bonv_ctrTable.SQL.clear;
-mainform.Bonv_ctrTable.sql.Text:='SELECT * FROM bonv_ctr WHERE code_mdpai = 1 AND date_bvctr BETWEEN '''+(DateToStr(DateStartBVCtrD.Date))+ ''' AND ''' +(DateToStr(DateEndBVCtrD.Date))+'''';
+mainform.Bonv_ctrTable.sql.Text:= BCSQL +' WHERE code_mdpai = 1 AND date_bvctr BETWEEN '''+(DateToStr(DateStartBVCtrD.Date))+ ''' AND ''' +(DateToStr(DateEndBVCtrD.Date))+'''';
 MainForm.Bonv_ctrTable.Active:= True;
 MainForm.Bonv_ctrTable.EnableControls;
 end;
@@ -202,7 +217,7 @@ begin
 MainForm.Bonv_ctrTable.DisableControls;
 MainForm.Bonv_ctrTable.Active:= False;
 MainForm.Bonv_ctrTable.SQL.clear;
-mainform.Bonv_ctrTable.sql.Text:='SELECT * FROM bonv_ctr WHERE code_mdpai = 2 AND date_bvctr BETWEEN '''+(DateToStr(DateStartBVCtrD.Date))+ ''' AND ''' +(DateToStr(DateEndBVCtrD.Date))+'''';
+mainform.Bonv_ctrTable.sql.Text:= BCSQL +' WHERE code_mdpai = 2 AND date_bvctr BETWEEN '''+(DateToStr(DateStartBVCtrD.Date))+ ''' AND ''' +(DateToStr(DateEndBVCtrD.Date))+'''';
 MainForm.Bonv_ctrTable.Active:= True;
 MainForm.Bonv_ctrTable.EnableControls;
 end;
@@ -212,7 +227,7 @@ begin
 MainForm.Bonv_ctrTable.DisableControls;
 MainForm.Bonv_ctrTable.Active:= False;
 MainForm.Bonv_ctrTable.SQL.clear;
-mainform.Bonv_ctrTable.sql.Text:='SELECT * FROM bonv_ctr WHERE code_mdpai = 3 AND date_bvctr BETWEEN '''+(DateToStr(DateStartBVCtrD.Date))+ ''' AND ''' +(DateToStr(DateEndBVCtrD.Date))+'''';
+mainform.Bonv_ctrTable.sql.Text:= BCSQL +' WHERE code_mdpai = 3 AND date_bvctr BETWEEN '''+(DateToStr(DateStartBVCtrD.Date))+ ''' AND ''' +(DateToStr(DateEndBVCtrD.Date))+'''';
 MainForm.Bonv_ctrTable.Active:= True;
 MainForm.Bonv_ctrTable.EnableControls;
 end;
@@ -222,7 +237,7 @@ begin
 MainForm.Bonv_ctrTable.DisableControls;
 MainForm.Bonv_ctrTable.Active:= False;
 MainForm.Bonv_ctrTable.SQL.clear;
-mainform.Bonv_ctrTable.sql.Text:='SELECT * FROM bonv_ctr WHERE code_mdpai = 4 AND date_bvctr BETWEEN '''+(DateToStr(DateStartBVCtrD.Date))+ ''' AND ''' +(DateToStr(DateEndBVCtrD.Date))+'''';
+mainform.Bonv_ctrTable.sql.Text:= BCSQL +' WHERE code_mdpai = 4 AND date_bvctr BETWEEN '''+(DateToStr(DateStartBVCtrD.Date))+ ''' AND ''' +(DateToStr(DateEndBVCtrD.Date))+'''';
 MainForm.Bonv_ctrTable.Active:= True;
 MainForm.Bonv_ctrTable.EnableControls;
 end;
@@ -232,7 +247,7 @@ begin
 MainForm.Bonv_ctrTable.DisableControls;
 MainForm.Bonv_ctrTable.Active:= False;
 MainForm.Bonv_ctrTable.SQL.clear;
-mainform.Bonv_ctrTable.sql.Text:='SELECT * FROM bonv_ctr WHERE valider_bvctr = true AND code_mdpai = 1 AND date_bvctr BETWEEN '''+(DateToStr(DateStartBVCtrD.Date))+ ''' AND ''' +(DateToStr(DateEndBVCtrD.Date))+'''';
+mainform.Bonv_ctrTable.sql.Text:= BCSQL +' WHERE valider_bvctr = true AND code_mdpai = 1 AND date_bvctr BETWEEN '''+(DateToStr(DateStartBVCtrD.Date))+ ''' AND ''' +(DateToStr(DateEndBVCtrD.Date))+'''';
 MainForm.Bonv_ctrTable.Active:= True;
 MainForm.Bonv_ctrTable.EnableControls;
 end;
@@ -242,7 +257,7 @@ begin
 MainForm.Bonv_ctrTable.DisableControls;
 MainForm.Bonv_ctrTable.Active:= False;
 MainForm.Bonv_ctrTable.SQL.clear;
-mainform.Bonv_ctrTable.sql.Text:='SELECT * FROM bonv_ctr WHERE valider_bvctr = true AND code_mdpai = 2 AND date_bvctr BETWEEN '''+(DateToStr(DateStartBVCtrD.Date))+ ''' AND ''' +(DateToStr(DateEndBVCtrD.Date))+'''';
+mainform.Bonv_ctrTable.sql.Text:= BCSQL +' WHERE valider_bvctr = true AND code_mdpai = 2 AND date_bvctr BETWEEN '''+(DateToStr(DateStartBVCtrD.Date))+ ''' AND ''' +(DateToStr(DateEndBVCtrD.Date))+'''';
 MainForm.Bonv_ctrTable.Active:= True;
 MainForm.Bonv_ctrTable.EnableControls;
 end;
@@ -252,7 +267,7 @@ begin
 MainForm.Bonv_ctrTable.DisableControls;
 MainForm.Bonv_ctrTable.Active:= False;
 MainForm.Bonv_ctrTable.SQL.clear;
-mainform.Bonv_ctrTable.sql.Text:='SELECT * FROM bonv_ctr WHERE valider_bvctr = true AND code_mdpai = 3 AND date_bvctr BETWEEN '''+(DateToStr(DateStartBVCtrD.Date))+ ''' AND ''' +(DateToStr(DateEndBVCtrD.Date))+'''';
+mainform.Bonv_ctrTable.sql.Text:= BCSQL +' WHERE valider_bvctr = true AND code_mdpai = 3 AND date_bvctr BETWEEN '''+(DateToStr(DateStartBVCtrD.Date))+ ''' AND ''' +(DateToStr(DateEndBVCtrD.Date))+'''';
 MainForm.Bonv_ctrTable.Active:= True;
 MainForm.Bonv_ctrTable.EnableControls;
 end;
@@ -262,7 +277,7 @@ begin
 MainForm.Bonv_ctrTable.DisableControls;
 MainForm.Bonv_ctrTable.Active:= False;
 MainForm.Bonv_ctrTable.SQL.clear;
-mainform.Bonv_ctrTable.sql.Text:='SELECT * FROM bonv_ctr WHERE valider_bvctr = true AND code_mdpai = 4 AND date_bvctr BETWEEN '''+(DateToStr(DateStartBVCtrD.Date))+ ''' AND ''' +(DateToStr(DateEndBVCtrD.Date))+'''';
+mainform.Bonv_ctrTable.sql.Text:= BCSQL +' WHERE valider_bvctr = true AND code_mdpai = 4 AND date_bvctr BETWEEN '''+(DateToStr(DateStartBVCtrD.Date))+ ''' AND ''' +(DateToStr(DateEndBVCtrD.Date))+'''';
 MainForm.Bonv_ctrTable.Active:= True;
 MainForm.Bonv_ctrTable.EnableControls;
 end;
@@ -272,7 +287,7 @@ begin
 MainForm.Bonv_ctrTable.DisableControls;
 MainForm.Bonv_ctrTable.Active:= False;
 MainForm.Bonv_ctrTable.SQL.clear;
-mainform.Bonv_ctrTable.sql.Text:='SELECT * FROM bonv_ctr WHERE valider_bvctr = false AND code_mdpai = 1';
+mainform.Bonv_ctrTable.sql.Text:= BCSQL +' WHERE valider_bvctr = false AND code_mdpai = 1';
 MainForm.Bonv_ctrTable.Active:= True;
 MainForm.Bonv_ctrTable.EnableControls;
 end;
@@ -282,7 +297,7 @@ begin
 MainForm.Bonv_ctrTable.DisableControls;
 MainForm.Bonv_ctrTable.Active:= False;
 MainForm.Bonv_ctrTable.SQL.clear;
-mainform.Bonv_ctrTable.sql.Text:='SELECT * FROM bonv_ctr WHERE valider_bvctr = false AND code_mdpai = 2 AND date_bvctr BETWEEN '''+(DateToStr(DateStartBVCtrD.Date))+ ''' AND ''' +(DateToStr(DateEndBVCtrD.Date))+'''';
+mainform.Bonv_ctrTable.sql.Text:= BCSQL +' WHERE valider_bvctr = false AND code_mdpai = 2 AND date_bvctr BETWEEN '''+(DateToStr(DateStartBVCtrD.Date))+ ''' AND ''' +(DateToStr(DateEndBVCtrD.Date))+'''';
 MainForm.Bonv_ctrTable.Active:= True;
 MainForm.Bonv_ctrTable.EnableControls;
 end;
@@ -292,7 +307,7 @@ begin
 MainForm.Bonv_ctrTable.DisableControls;
 MainForm.Bonv_ctrTable.Active:= False;
 MainForm.Bonv_ctrTable.SQL.clear;
-mainform.Bonv_ctrTable.sql.Text:='SELECT * FROM bonv_ctr WHERE valider_bvctr = false AND code_mdpai = 3 AND date_bvctr BETWEEN '''+(DateToStr(DateStartBVCtrD.Date))+ ''' AND ''' +(DateToStr(DateEndBVCtrD.Date))+'''';
+mainform.Bonv_ctrTable.sql.Text:= BCSQL +' WHERE valider_bvctr = false AND code_mdpai = 3 AND date_bvctr BETWEEN '''+(DateToStr(DateStartBVCtrD.Date))+ ''' AND ''' +(DateToStr(DateEndBVCtrD.Date))+'''';
 MainForm.Bonv_ctrTable.Active:= True;
 MainForm.Bonv_ctrTable.EnableControls;
 end;
@@ -302,7 +317,7 @@ begin
 MainForm.Bonv_ctrTable.DisableControls;
 MainForm.Bonv_ctrTable.Active:= False;
 MainForm.Bonv_ctrTable.SQL.clear;
-mainform.Bonv_ctrTable.sql.Text:='SELECT * FROM bonv_ctr WHERE valider_bvctr = false AND code_mdpai = 4 AND date_bvctr BETWEEN '''+(DateToStr(DateStartBVCtrD.Date))+ ''' AND ''' +(DateToStr(DateEndBVCtrD.Date))+'''';
+mainform.Bonv_ctrTable.sql.Text:= BCSQL +' WHERE valider_bvctr = false AND code_mdpai = 4 AND date_bvctr BETWEEN '''+(DateToStr(DateStartBVCtrD.Date))+ ''' AND ''' +(DateToStr(DateEndBVCtrD.Date))+'''';
 MainForm.Bonv_ctrTable.Active:= True;
 MainForm.Bonv_ctrTable.EnableControls;
 end;
@@ -360,7 +375,7 @@ var
    MainForm.Bonv_CtrTable.DisableControls;
    MainForm.Bonv_CtrTable.Active:= False;
    MainForm.Bonv_CtrTable.SQL.clear;
-   mainform.Bonv_CtrTable.sql.Text:='SELECT * FROM bonv_ctr ORDER BY code_bvctr';
+   mainform.Bonv_CtrTable.sql.Text:= BCSQL+' ORDER By code_bvctr ';
    MainForm.Bonv_CtrTable.Active:= True;
 //MainForm.Bonv_CtrTable.EnableControls;
 
@@ -393,12 +408,12 @@ codeCT:= 0;
               MainForm.Bonv_ctrTable.Last;
 
               codeCT := MainForm.Bonv_ctrTable.FieldByName('code_bvctr').AsInteger;
-              MainForm.Bonv_ctr_listTable.Active:=False;
-              MainForm.Bonv_ctr_listTable.SQL.Clear;
-              MainForm.Bonv_ctr_listTable.SQL.Text:= 'SELECT * FROM bonv_ctr_list WHERE code_bvctr = ' + IntToStr(codeCT);
-              MainForm.Bonv_ctr_listTable.Active:=True;
+              MainForm.SQLQuery.Active:=False;
+              MainForm.SQLQuery.SQL.Clear;
+              MainForm.SQLQuery.SQL.Text:= 'SELECT code_bvctr FROM bonv_ctr_list WHERE code_bvctr = ' + IntToStr(codeCT);
+              MainForm.SQLQuery.Active:=True;
 
-             if MainForm.Bonv_ctr_listTable.RecordCount <= 0 then
+             if MainForm.SQLQuery.RecordCount <= 0 then
              begin
           //   MainForm.Bonv_ctrTable.Last;
              codeCT := MainForm.Bonv_ctrTable.FieldValues['code_bvctr'];
@@ -443,8 +458,23 @@ BonCtrGestionF.ShowModal;
  //     finally
       //  BonCtrGestionF.Free;
   //    end;
-//MainForm.ProduitTable.EnableControls;
- MainForm.Bonv_CtrTable.EnableControls;
+   MainForm.Bonv_CtrTable.Active:= False;
+   MainForm.Bonv_CtrTable.SQL.clear;
+   
+   if Assigned(BonCtrF) then
+   begin
+     MainForm.Bonv_ctrTable.SQL.Text:= BCSQL+' WHERE date_bvctr BETWEEN '''+(DateToStr(DateStartBVCtrD.Date))+ ''' AND ''' +(DateToStr(DateEndBVCtrD.Date))+'''';
+   end else
+       begin
+         Mainform.Bonv_CtrTable.sql.Text:= BCSQL ;
+       end;
+   
+   MainForm.Bonv_ctrTable.Active:= True;
+   MainForm.Bonv_CtrTable.EnableControls;
+
+
+    MainForm.SQLQuery.Active:=False;
+    MainForm.SQLQuery.SQL.Clear;
 
 //MainForm.Bonv_CtrTable.DisableControls;
 //MainForm.Bonv_CtrTable.Active:= False;
@@ -572,8 +602,8 @@ if NOT (MainForm.Bonv_ctrTable.IsEmpty) then
     begin
     MainForm.Bonv_ctr_listTable.Active:= True;
 
-  if NOT (MainForm.Bonv_ctr_listTable.IsEmpty) then
-   begin
+     if NOT (MainForm.Bonv_ctr_listTable.IsEmpty) then
+      begin
 
          FSplashAddUnite:=TFSplashAddUnite.Create(BonCtrF);
       FSplashAddUnite.Width:=300;
@@ -661,7 +691,7 @@ ClearFilterBVLivPMenuClick(Sender);
 MainForm.Bonv_CtrTable.DisableControls;
 MainForm.Bonv_CtrTable.Active:= False;
 MainForm.Bonv_CtrTable.SQL.clear;
-mainform.Bonv_CtrTable.sql.Text:='SELECT * FROM bonv_ctr WHERE date_bvctr BETWEEN '''+(DateToStr(DateStartBVCtrD.Date))+ ''' AND ''' +(DateToStr(DateEndBVCtrD.Date))+'''';
+mainform.Bonv_CtrTable.sql.Text:= BCSQL +' WHERE date_bvctr BETWEEN '''+(DateToStr(DateStartBVCtrD.Date))+ ''' AND ''' +(DateToStr(DateEndBVCtrD.Date))+'''';
 MainForm.Bonv_CtrTable.Active:= True;
 MainForm.Bonv_CtrTable.EnableControls;
 end;
@@ -810,7 +840,7 @@ begin
           MainForm.Bonv_ctrTable.DisableControls;
           MainForm.Bonv_ctrTable.Active:=False;
           MainForm.Bonv_ctrTable.SQL.Clear;
-          MainForm.Bonv_ctrTable.SQL.Text:='SELECT * FROM bonv_ctr WHERE code_c IN( SELECT code_c FROM client WHERE LOWER(nom_c) LIKE LOWER' +'('''+'%'+(ResearchBVCtrEdt.Text)+'%'+''')' +')';
+          MainForm.Bonv_ctrTable.SQL.Text:= BCSQL +' WHERE code_c IN( SELECT code_c FROM client WHERE LOWER(nom_c) LIKE LOWER' +'('''+'%'+(ResearchBVCtrEdt.Text)+'%'+''')' +')';
           MainForm.Bonv_ctrTable.Active:=True;
           MainForm.Bonv_ctrTable.EnableControls;
           end;
@@ -820,7 +850,7 @@ begin
           MainForm.Bonv_ctrTable.DisableControls;
           MainForm.Bonv_ctrTable.Active:=False;
           MainForm.Bonv_ctrTable.SQL.Clear;
-          MainForm.Bonv_ctrTable.SQL.Text:='SELECT * FROM bonv_ctr WHERE LOWER(num_bvctr) LIKE LOWER' +'('''+'%'+(ResearchBVCtrEdt.Text)+'%'+''')' ;
+          MainForm.Bonv_ctrTable.SQL.Text:= BCSQL +' WHERE LOWER(num_bvctr) LIKE LOWER' +'('''+'%'+(ResearchBVCtrEdt.Text)+'%'+''')' ;
           MainForm.Bonv_ctrTable.Active:=True;
           MainForm.Bonv_ctrTable.EnableControls;
           end;
@@ -837,7 +867,7 @@ begin
           MainForm.Bonv_ctrTable.DisableControls;
           MainForm.Bonv_ctrTable.Active:=False;
           MainForm.Bonv_ctrTable.SQL.Clear;
-          MainForm.Bonv_ctrTable.SQL.Text:='SELECT * FROM bonv_ctr ' ;
+          MainForm.Bonv_ctrTable.SQL.Text:= BCSQL ;
           MainForm.Bonv_ctrTable.Active:=True;
           MainForm.Bonv_ctrTable.EnableControls;
 
@@ -889,7 +919,7 @@ begin
           MainForm.Bonv_ctrTable.DisableControls;
           MainForm.Bonv_ctrTable.Active:=False;
           MainForm.Bonv_ctrTable.SQL.Clear;
-          MainForm.Bonv_ctrTable.SQL.Text:='SELECT * FROM bonv_ctr WHERE code_c IN( SELECT code_c FROM client WHERE LOWER(nom_c) LIKE LOWER' +'('''+(ResearchBVCtrEdt.Text+'%')+''')' +')';
+          MainForm.Bonv_ctrTable.SQL.Text:= BCSQL +' WHERE code_c IN( SELECT code_c FROM client WHERE LOWER(nom_c) LIKE LOWER' +'('''+(ResearchBVCtrEdt.Text+'%')+''')' +')';
           MainForm.Bonv_ctrTable.Active:=True;
           MainForm.Bonv_ctrTable.EnableControls;
           end;
@@ -899,7 +929,7 @@ begin
           MainForm.Bonv_ctrTable.DisableControls;
           MainForm.Bonv_ctrTable.Active:=False;
           MainForm.Bonv_ctrTable.SQL.Clear;
-          MainForm.Bonv_ctrTable.SQL.Text:='SELECT * FROM bonv_ctr WHERE LOWER(num_bvctr) LIKE LOWER' +'('''+(ResearchBVCtrEdt.Text+'%')+''')' ;
+          MainForm.Bonv_ctrTable.SQL.Text:= BCSQL +' WHERE LOWER(num_bvctr) LIKE LOWER' +'('''+(ResearchBVCtrEdt.Text+'%')+''')' ;
           MainForm.Bonv_ctrTable.Active:=True;
           MainForm.Bonv_ctrTable.EnableControls;
           end;
@@ -916,7 +946,7 @@ begin
           MainForm.Bonv_ctrTable.DisableControls;
           MainForm.Bonv_ctrTable.Active:=False;
           MainForm.Bonv_ctrTable.SQL.Clear;
-          MainForm.Bonv_ctrTable.SQL.Text:='SELECT * FROM bonv_ctr ' ;
+          MainForm.Bonv_ctrTable.SQL.Text:= BCSQL ;
           MainForm.Bonv_ctrTable.Active:=True;
           MainForm.Bonv_ctrTable.EnableControls;
 
@@ -931,6 +961,10 @@ begin
   DateStartBVCtrD.Date:=EncodeDate (YearOf(Now),MonthOf(Now),01);
   DateEndBVCtrD.Date:=EncodeDate (YearOf(Now),MonthOf(Now),DayOf(Now));
   DateStartBVCtrDChange(Sender);
+
+
+
+
 end;
 
 procedure TBonCtrF.AdvToolButton1Click(Sender: TObject);
@@ -1220,6 +1254,17 @@ begin
   end else Exit;
 end;
 
+procedure TBonCtrF.BVCtrListDBGridEhSelectionChanged(Sender: TObject);
+begin
+BVCtrListDBGridEh.DefaultApplySorting;
+end;
+
+procedure TBonCtrF.BVCtrListDBGridEhTitleBtnClick(Sender: TObject;
+  ACol: Integer; Column: TColumnEh);
+begin
+  MainForm.Bonv_ctrTable.IndexesActive:= False;
+end;
+
 procedure TBonCtrF.ChequeMPFilterBVLivPMenuClick(Sender: TObject);
 begin
 FilterBVLivBtn.ImageIndex:=50;
@@ -1493,6 +1538,38 @@ begin
         MainForm.ClientTable.SQL.Text:='SELECT * FROM client ';
         MainForm.ClientTable.Active:=True;
         MainForm.ClientTable.EnableControls;
+
+
+      if MainForm.totaux_ur.Checked then
+      begin
+
+       SumGirdBVCTRBtn.Enabled:= True;
+
+      end else
+      begin
+
+       SumGirdBVCTRBtn.Enabled:= False;
+
+      end;
+
+
+      if MainForm.viewprixa_ur.Checked then
+      begin
+
+          BVCtrListDBGridEh.FieldColumns['montaht_bvctr'].Visible:= true;
+          BVCtrListDBGridEh.FieldColumns['montaht_bvctr'].MinWidth:= 150;
+          BVCtrListDBGridEh.FieldColumns['montaht_bvctr'].Width:= 150;
+          BVCtrListDBGridEh.FieldColumns['montaht_bvctr'].MaxWidth:= 0;
+
+      end else
+      begin
+
+          BVCtrListDBGridEh.FieldColumns['montaht_bvctr'].Visible:= false;
+          BVCtrListDBGridEh.FieldColumns['montaht_bvctr'].MinWidth:= 0;
+          BVCtrListDBGridEh.FieldColumns['montaht_bvctr'].Width:= 0;
+          BVCtrListDBGridEh.FieldColumns['montaht_bvctr'].MaxWidth:= 1;
+
+      end;
 end;
 
 end.

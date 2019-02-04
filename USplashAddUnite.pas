@@ -84,7 +84,7 @@ begin
                UForm := TForm.Create(uScrnFrm);
                UForm.WindowState:= wsMaximized;
                gGrayForms.Add(UForm);
-               UForm.Position := poOwnerFormCenter;
+               UForm.Position := MainForm.Position;
                UForm.AlphaBlend := true;
                UForm.AlphaBlendValue := 80;
                UForm.Color := clBlack;
@@ -171,7 +171,7 @@ begin
         MainForm.Bona_recPlistTable.IndexFieldNames:='';
         MainForm.Bona_recPlistTable.Active:=False;
         MainForm.Bona_recPlistTable.SQL.Clear;
-        MainForm.Bona_recPlistTable.SQL.Text:= 'SELECT * FROM bona_rec_list ORDER by code_barecl' ;
+        MainForm.Bona_recPlistTable.SQL.Text:=  BonRecGestionF.BRLSQL+ ' ORDER by code_barecl' ;
         MainForm.Bona_recPlistTable.Active:=True;
      //   MainForm.Bona_recPlistTable.Last;
 
@@ -210,7 +210,7 @@ begin
 
        MainForm.Bona_recPlistTable.Active:=False;
        MainForm.Bona_recPlistTable.SQL.Clear;
-       MainForm.Bona_recPlistTable.SQL.Text:= 'SELECT * FROM bona_rec_list WHERE code_barec = ' + QuotedStr(IntToStr(MainForm.Bona_recTable.FieldValues['code_barec']));
+       MainForm.Bona_recPlistTable.SQL.Text:= BonRecGestionF.BRLSQL+ ' WHERE code_barec = ' + QuotedStr(IntToStr(MainForm.Bona_recTable.FieldValues['code_barec']));
        MainForm.Bona_recPlistTable.Active:=True;
 
        BonRecGestionF.ProduitBonRecGCbx.Text:='';
@@ -294,7 +294,7 @@ begin
         MainForm.Bonv_liv_listTable.IndexFieldNames:='';
         MainForm.Bonv_liv_listTable.Active:=False;
         MainForm.Bonv_liv_listTable.SQL.Clear;
-        MainForm.Bonv_liv_listTable.SQL.Text:= 'SELECT * FROM bonv_liv_list ORDER by code_bvlivl' ;
+        MainForm.Bonv_liv_listTable.SQL.Text:= BonLivGestionF.BLLSQL+' ORDER by code_bvlivl' ;
         MainForm.Bonv_liv_listTable.Active:=True;
      //   MainForm.Bonv_liv_listTable.Last;
 
@@ -333,6 +333,7 @@ begin
        MainForm.Bonv_liv_listTable.FieldValues['qut_p'] :=  01;
        MainForm.Bonv_liv_listTable.FieldValues['cond_p']:= 01;
        MainForm.Bonv_liv_listTable.FieldValues['tva_p']:= MainForm.SQLQuery3.FieldValues['tva_p'];
+       MainForm.Bonv_liv_listTable.FieldValues['prixht_p']:=  MainForm.SQLQuery3.FieldValues['prixht_p'] ;
 
            if  NOT (MainForm.ClientTable.IsEmpty) AND (BonLivGestionF.ClientBonLivGCbx.Text<> '' ) then
            begin
@@ -367,7 +368,7 @@ begin
 
        MainForm.Bonv_liv_listTable.Active:=False;
        MainForm.Bonv_liv_listTable.SQL.Clear;
-       MainForm.Bonv_liv_listTable.SQL.Text:= 'SELECT * FROM bonv_liv_list WHERE code_bvliv = ' + QuotedStr(IntToStr(MainForm.Bonv_livTable.FieldValues['code_bvliv']));
+       MainForm.Bonv_liv_listTable.SQL.Text:= BonLivGestionF.BLLSQL+' WHERE code_bvliv = ' + QuotedStr(IntToStr(MainForm.Bonv_livTable.FieldValues['code_bvliv']));
        MainForm.Bonv_liv_listTable.Active:=True;
 
        BonLivGestionF.ProduitBonLivGCbx.Text:='';
@@ -457,7 +458,7 @@ begin
         MainForm.Bonv_fac_listTable.IndexFieldNames:='';
         MainForm.Bonv_fac_listTable.Active:=False;
         MainForm.Bonv_fac_listTable.SQL.Clear;
-        MainForm.Bonv_fac_listTable.SQL.Text:= 'SELECT * FROM bonv_fac_list ORDER by code_bvfacl' ;
+        MainForm.Bonv_fac_listTable.SQL.Text:= BonFacVGestionF.FVLSQL +' ORDER by code_bvfacl' ;
         MainForm.Bonv_fac_listTable.Active:=True;
      //   MainForm.Bonv_fac_listTable.Last;
 
@@ -496,6 +497,7 @@ begin
        MainForm.Bonv_fac_listTable.FieldValues['qut_p'] :=  01;
        MainForm.Bonv_fac_listTable.FieldValues['cond_p']:= 01;
        MainForm.Bonv_fac_listTable.FieldValues['tva_p']:= MainForm.SQLQuery3.FieldValues['tva_p'];
+       MainForm.Bonv_fac_listTable.FieldValues['prixht_p']:=  MainForm.SQLQuery3.FieldValues['prixht_p'] ;
 
        if  NOT (MainForm.ClientTable.IsEmpty) AND (BonFacVGestionF.ClientBonFacVGCbx.Text<> '' ) then
        begin
@@ -529,7 +531,7 @@ begin
 
        MainForm.Bonv_fac_listTable.Active:=False;
        MainForm.Bonv_fac_listTable.SQL.Clear;
-       MainForm.Bonv_fac_listTable.SQL.Text:= 'SELECT * FROM bonv_fac_list WHERE code_bvfac = ' + QuotedStr(IntToStr(MainForm.Bonv_facTable.FieldValues['code_bvfac']));
+       MainForm.Bonv_fac_listTable.SQL.Text:= BonFacVGestionF.FVLSQL +' WHERE code_bvfac = ' + QuotedStr(IntToStr(MainForm.Bonv_facTable.FieldValues['code_bvfac']));
        MainForm.Bonv_fac_listTable.Active:=True;
 
        BonFacVGestionF.ProduitBonFacVGCbx.Text:='';
@@ -618,7 +620,7 @@ begin
         MainForm.Bona_fac_listTable.IndexFieldNames:='';
         MainForm.Bona_fac_listTable.Active:=False;
         MainForm.Bona_fac_listTable.SQL.Clear;
-        MainForm.Bona_fac_listTable.SQL.Text:= 'SELECT * FROM bona_fac_list ORDER by code_bafacl' ;
+        MainForm.Bona_fac_listTable.SQL.Text:= BonFacAGestionF.FALSQL +' ORDER by code_bafacl' ;
         MainForm.Bona_fac_listTable.Active:=True;
      //   MainForm.Bonv_fac_listTable.Last;
 
@@ -657,7 +659,7 @@ begin
 
        MainForm.Bona_fac_listTable.Active:=False;
        MainForm.Bona_fac_listTable.SQL.Clear;
-       MainForm.Bona_fac_listTable.SQL.Text:= 'SELECT * FROM bona_fac_list WHERE code_bafac = ' + QuotedStr(IntToStr(MainForm.Bona_facTable.FieldValues['code_bafac']));
+       MainForm.Bona_fac_listTable.SQL.Text:= BonFacAGestionF.FALSQL +' WHERE code_bafac = ' + QuotedStr(IntToStr(MainForm.Bona_facTable.FieldValues['code_bafac']));
        MainForm.Bona_fac_listTable.Active:=True;
 
        BonFacAGestionF.ProduitBonFacAGCbx.Text:='';
@@ -762,7 +764,7 @@ begin
         MainForm.Bonv_ctr_listTable.IndexFieldNames:='';
         MainForm.Bonv_ctr_listTable.Active:=False;
         MainForm.Bonv_ctr_listTable.SQL.Clear;
-        MainForm.Bonv_ctr_listTable.SQL.Text:= 'SELECT * FROM bonv_ctr_list ORDER by code_bvctrl' ;
+        MainForm.Bonv_ctr_listTable.SQL.Text:= BonCtrGestionF.BCLSQL +' ORDER by code_bvctrl' ;
         MainForm.Bonv_ctr_listTable.Active:=True;
      //   MainForm.Bonv_ctr_listTable.Last;
 
@@ -790,6 +792,7 @@ begin
        MainForm.Bonv_ctr_listTable.FieldValues['qut_p'] :=  01;
        MainForm.Bonv_ctr_listTable.FieldValues['cond_p']:= 01;
        MainForm.Bonv_ctr_listTable.FieldValues['tva_p']:= MainForm.SQLQuery3.FieldValues['tva_p'];
+       MainForm.Bonv_ctr_listTable.FieldValues['prixht_p']:= MainForm.SQLQuery3.FieldValues['prixht_p'];
 
        if  NOT (MainForm.ClientTable.IsEmpty) AND (BonCtrGestionF.ClientBonCtrGCbx.Text<> '' ) then
            begin
@@ -824,7 +827,7 @@ begin
 
        MainForm.Bonv_ctr_listTable.Active:=False;
        MainForm.Bonv_ctr_listTable.SQL.Clear;
-       MainForm.Bonv_ctr_listTable.SQL.Text:= 'SELECT * FROM bonv_ctr_list WHERE code_bvctr = ' + QuotedStr(IntToStr(MainForm.Bonv_ctrTable.FieldValues['code_bvctr']));
+       MainForm.Bonv_ctr_listTable.SQL.Text:= BonCtrGestionF.BCLSQL +' WHERE code_bvctr = ' + QuotedStr(IntToStr(MainForm.Bonv_ctrTable.FieldValues['code_bvctr']));
        MainForm.Bonv_ctr_listTable.Active:=True;
 
        BonCtrGestionF.ProduitBonCtrGCbx.Text:='';
@@ -916,7 +919,7 @@ begin
         MainForm.Bonp_fac_listTable.IndexFieldNames:='';
         MainForm.Bonp_fac_listTable.Active:=False;
         MainForm.Bonp_fac_listTable.SQL.Clear;
-        MainForm.Bonp_fac_listTable.SQL.Text:= 'SELECT * FROM bonp_fac_list ORDER by code_bpfacl' ;
+        MainForm.Bonp_fac_listTable.SQL.Text:= BonFacPGestionF.FPLSQL +' ORDER by code_bpfacl' ;
         MainForm.Bonp_fac_listTable.Active:=True;
      //   MainForm.Bonv_fac_listTable.Last;
 
@@ -955,6 +958,7 @@ begin
        MainForm.Bonp_fac_listTable.FieldValues['qut_p'] :=  01;
        MainForm.Bonp_fac_listTable.FieldValues['cond_p']:= 01;
        MainForm.Bonp_fac_listTable.FieldValues['tva_p']:= MainForm.SQLQuery3.FieldValues['tva_p'];
+       MainForm.Bonp_fac_listTable.FieldValues['prixht_p']:=  MainForm.SQLQuery3.FieldValues['prixht_p'] ;
 
        if  NOT (MainForm.ClientTable.IsEmpty) AND (BonFacPGestionF.ClientBonFacVGCbx.Text<> '' ) then
        begin
@@ -988,7 +992,7 @@ begin
 
        MainForm.Bonp_fac_listTable.Active:=False;
        MainForm.Bonp_fac_listTable.SQL.Clear;
-       MainForm.Bonp_fac_listTable.SQL.Text:= 'SELECT * FROM bonp_fac_list WHERE code_bpfac = ' + QuotedStr(IntToStr(MainForm.Bonp_facTable.FieldValues['code_bpfac']));
+       MainForm.Bonp_fac_listTable.SQL.Text:= BonFacPGestionF.FPLSQL +' WHERE code_bpfac = ' + QuotedStr(IntToStr(MainForm.Bonp_facTable.FieldValues['code_bpfac']));
        MainForm.Bonp_fac_listTable.Active:=True;
 
        BonFacPGestionF.ProduitBonFacVGCbx.Text:='';
@@ -2535,7 +2539,7 @@ begin
              MainForm.SQLQuery.SQL.Clear;
              MainForm.SQLQuery.SQL.Text:='SELECT code_p, qut_p FROM produit WHERE code_p = ' +IntToStr(CodeP) + ' GROUP BY code_p, qut_p'  ;
              MainForm.SQLQuery.Active:= True;
-             
+
              MainForm.SQLQuery.Edit;
              MainForm.SQLQuery.FieldValues['qut_p']:= (MainForm.SQLQuery.FieldValues['qut_p'] + DataModuleF.PertesTable.FieldValues['qut_p'] );
              MainForm.SQLQuery.Post;
@@ -2544,7 +2548,7 @@ begin
              MainForm.SQLQuery.SQL.Clear;
 
         MainForm.SQLQuery.ExecSQL('DELETE FROM pertes WHERE code_pr = ' +IntToStr(DataModuleF.PertesTable.FieldByName('code_pr').AsInteger));
-        
+
         DataModuleF.PertesTable.Close;
         DataModuleF.PertesTable.Open;
 
@@ -2552,9 +2556,6 @@ begin
      AnimateWindow(FSplashAddUnite.Handle, 175, AW_VER_NEGATIVE OR AW_SLIDE OR AW_HIDE);
     FSplashAddUnite.Release;
    end;
-
-
-
 
    //---- this tag = 35 is for deleting facture Proforma ------///
    if OKAddUniteSBtn.Tag = 35 then
@@ -2612,20 +2613,13 @@ begin
     FSplashAddUnite.Release;
 
    end;
-
-
-
-       //---- this tag = 37 is for adding or ingeoring the same produit in facture  proforma ------///
+   //---- this tag = 37 is for adding or ingeoring the same produit in facture  proforma ------///
    if OKAddUniteSBtn.Tag = 37 then
    begin
     AnimateWindow(FSplashAddUnite.Handle, 175, AW_VER_NEGATIVE OR AW_SLIDE OR AW_HIDE);
     FSplashAddUnite.Release;
 
    end;
-
-
-
-
    //---- this tag = 38 is for adding the mpde de paiement from charge  ------///
    if OKAddUniteSBtn.Tag = 38 then
    begin
@@ -2700,8 +2694,6 @@ begin
         NameAddUniteSEdt.SetFocus;
     end;
    end;
-
-
    //---- this tag = 39 is for adding the mpde de paiement from transfer enter les comptes  ------///
    if OKAddUniteSBtn.Tag = 39 then
    begin
@@ -2776,10 +2768,7 @@ begin
         NameAddUniteSEdt.SetFocus;
     end;
    end;
-
-
-
-               //---- this tag = 40 is for Delleting transfer  ------///
+   //---- this tag = 40 is for Delleting transfer  ------///
    if OKAddUniteSBtn.Tag = 40 then
    begin
       CodeF:=  DataModuleF.Transfer_comptesTable.FieldValues['code_transfer'];
@@ -2795,6 +2784,70 @@ begin
    sndPlaySound('C:\Windows\Media\speech off.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
      AnimateWindow(FSplashAddUnite.Handle, 175, AW_VER_NEGATIVE OR AW_SLIDE OR AW_HIDE);
     FSplashAddUnite.Release;
+   end;
+    //---- this tag = 41 is for empty the inventaire  ------///
+   if OKAddUniteSBtn.Tag = 41 then
+   begin
+     MainForm.SQLQuery.ExecSQL('DELETE FROM inventory_list WHERE code_i = ' +QuotedStr(IntToStr(DataModuleF.InventoryTable.FieldByName('code_i').AsInteger)));
+     DataModuleF.Inventory_listTable.Close;
+     DataModuleF.Inventory_listTable.Open;
+     sndPlaySound('C:\Windows\Media\recycle.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+     AnimateWindow(FSplashAddUnite.Handle, 175, AW_VER_NEGATIVE OR AW_SLIDE OR AW_HIDE);
+     FSplashAddUnite.Release;
+   end;
+
+
+   //---- this tag = 42 is for Deleteing Inventaire  ------///
+   if OKAddUniteSBtn.Tag = 42 then
+   begin
+
+      if DataModuleF.InventoryTable.FieldByName('valider_i').AsBoolean = True then
+      begin
+
+         //Update gap_il
+          DataModuleF.Inventory_listTable.DisableControls;
+          DataModuleF.Inventory_listTable.First;
+          while NOT DataModuleF.Inventory_listTable.Eof do
+          begin
+
+            CodeP:= DataModuleF.Inventory_listTable.FieldByName('code_p').AsInteger;
+
+            MainForm.SQLQuery.Active:=False;
+            MainForm.SQLQuery.SQL.Clear;
+            MainForm.SQLQuery.SQL.Text:='SELECT code_p, qut_p FROM produit WHERE code_p ='+ IntToStr(codeP);
+            MainForm.SQLQuery.Active:=True;
+
+            MainForm.SQLQuery.Edit;
+            MainForm.SQLQuery.FieldByName('qut_p').AsFloat:=
+            MainForm.SQLQuery.FieldByName('qut_p').AsFloat + DataModuleF.Inventory_listTable.FieldByName('gap_il').AsFloat;
+            MainForm.SQLQuery.Post;
+
+            DataModuleF.Inventory_listTable.Next;
+          end;
+          DataModuleF.Inventory_listTable.EnableControls;
+
+         MainForm.ProduitTable.Refresh;
+
+         MainForm.SQLQuery.ExecSQL('DELETE FROM inventory_list WHERE code_i = ' +IntToStr(DataModuleF.InventoryTable.FieldByName('code_i').AsInteger));
+         MainForm.SQLQuery.ExecSQL('DELETE FROM inventory WHERE code_i = ' +IntToStr(DataModuleF.InventoryTable.FieldByName('code_i').AsInteger));
+
+      end else
+          begin
+
+           MainForm.SQLQuery.ExecSQL('DELETE FROM inventory_list WHERE code_i = ' +IntToStr(DataModuleF.InventoryTable.FieldByName('code_i').AsInteger));
+           MainForm.SQLQuery.ExecSQL('DELETE FROM inventory WHERE code_i = ' +IntToStr(DataModuleF.InventoryTable.FieldByName('code_i').AsInteger));
+
+          end;
+
+        DataModuleF.InventoryTable.Close;
+        DataModuleF.InventoryTable.Open;
+
+        MainForm.SQLQuery.Active:=False;
+        MainForm.SQLQuery.SQL.Clear;
+
+     sndPlaySound('C:\Windows\Media\speech off.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+     AnimateWindow(FSplashAddUnite.Handle, 175, AW_VER_NEGATIVE OR AW_SLIDE OR AW_HIDE);
+     FSplashAddUnite.Release;
    end;
 
 

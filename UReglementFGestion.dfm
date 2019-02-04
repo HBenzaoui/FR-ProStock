@@ -104,7 +104,7 @@ object ReglementFGestionF: TReglementFGestionF
   object ObserRegFGLbl: TLabel
     Left = 357
     Top = 4
-    Width = 98
+    Width = 101
     Height = 20
     Caption = 'Observations'
     Color = 4207405
@@ -137,8 +137,8 @@ object ReglementFGestionF: TReglementFGestionF
     StyleElements = [seClient, seBorder]
   end
   object AddFourRegFGBtn: TAdvToolButton
-    Left = 513
-    Top = 124
+    Left = 510
+    Top = 122
     Width = 26
     Height = 26
     Cursor = crHandPoint
@@ -165,7 +165,7 @@ object ReglementFGestionF: TReglementFGestionF
     ShowHint = True
     Spacing = -1
     OnClick = AddFourRegFGBtnClick
-    Version = '1.6.1.2'
+    Version = '1.6.2.0'
     TMSStyle = 0
   end
   object AddCompteRegFGBtn: TAdvToolButton
@@ -197,7 +197,7 @@ object ReglementFGestionF: TReglementFGestionF
     ShowHint = True
     Spacing = -1
     OnClick = AddCompteRegFGBtnClick
-    Version = '1.6.1.2'
+    Version = '1.6.2.0'
     TMSStyle = 0
   end
   object Label3: TLabel
@@ -245,13 +245,13 @@ object ReglementFGestionF: TReglementFGestionF
     ShowHint = True
     Spacing = -1
     OnClick = AddModePaieRegFGBtnClick
-    Version = '1.6.1.2'
+    Version = '1.6.2.0'
     TMSStyle = 0
   end
   object Label4: TLabel
     Left = 51
     Top = 171
-    Width = 43
+    Width = 42
     Height = 18
     Caption = 'Mode:'
     Color = 4207405
@@ -267,7 +267,7 @@ object ReglementFGestionF: TReglementFGestionF
   object Label5: TLabel
     Left = 5
     Top = 126
-    Width = 86
+    Width = 83
     Height = 18
     Caption = 'Fournisseur:'
     Color = 4207405
@@ -283,7 +283,7 @@ object ReglementFGestionF: TReglementFGestionF
   object Label6: TLabel
     Left = 17
     Top = 217
-    Width = 77
+    Width = 76
     Height = 18
     Caption = 'N'#176' Ch'#233'que:'
     Color = 4207405
@@ -336,7 +336,7 @@ object ReglementFGestionF: TReglementFGestionF
     ShowHint = True
     Spacing = 10
     OnClick = OKRegFGBtnClick
-    Version = '1.6.1.2'
+    Version = '1.6.2.0'
     TMSStyle = 0
   end
   object CancelRegFGBtn: TAdvToolButton
@@ -367,13 +367,13 @@ object ReglementFGestionF: TReglementFGestionF
     ShowHint = True
     Spacing = -1
     OnClick = CancelRegFGBtnClick
-    Version = '1.6.1.2'
+    Version = '1.6.2.0'
     TMSStyle = 0
   end
   object label13: TLabel
     Left = 192
     Top = 263
-    Width = 88
+    Width = 92
     Height = 21
     Caption = 'Versement:'
     Color = 4207405
@@ -389,7 +389,7 @@ object ReglementFGestionF: TReglementFGestionF
   object label12: TLabel
     Left = 365
     Top = 263
-    Width = 71
+    Width = 74
     Height = 21
     Caption = 'Le Reste:'
     Color = 4207405
@@ -430,7 +430,7 @@ object ReglementFGestionF: TReglementFGestionF
   object Label7: TLabel
     Left = 8
     Top = 263
-    Width = 136
+    Width = 137
     Height = 21
     Caption = 'Fournisseur Sold:'
     Color = 4207405
@@ -467,6 +467,54 @@ object ReglementFGestionF: TReglementFGestionF
     ParentFont = False
     Layout = tlCenter
     StyleElements = []
+  end
+  object ListFourRegFGBtn: TAdvToolButton
+    Left = 473
+    Top = 122
+    Width = 35
+    Height = 26
+    Cursor = crHandPoint
+    AutoThemeAdapt = False
+    BorderColor = 15722984
+    BorderDownColor = 7854350
+    BorderHotColor = 15970832
+    Color = 15722984
+    ColorDown = 7854350
+    ColorHot = clBtnFace
+    ColorChecked = clNone
+    DropDownSplit = False
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = 4207405
+    Font.Height = 18
+    Font.Name = 'Roboto'
+    Font.Style = []
+    ImageIndex = 59
+    Images = MainForm.PanelIcons24
+    ParentFont = False
+    ParentShowHint = False
+    Rounded = True
+    Shaded = False
+    ShowHint = True
+    Spacing = -1
+    OnClick = ListFourRegFGBtnClick
+    Version = '1.6.2.0'
+    TMSStyle = 0
+  end
+  object Label21: TLabel
+    Left = 467
+    Top = 127
+    Width = 6
+    Height = 16
+    Caption = '*'
+    Color = clBtnFace
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = 4666873
+    Font.Height = 16
+    Font.Name = 'Roboto'
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+    StyleElements = [seClient, seBorder]
   end
   object RegFGErrorP: TPanel
     Left = 187
@@ -516,7 +564,7 @@ object ReglementFGestionF: TReglementFGestionF
   object NameFourGErrorP: TPanel
     Left = 96
     Top = 118
-    Width = 413
+    Width = 371
     Height = 34
     BevelOuter = bvNone
     BevelWidth = 2
@@ -533,7 +581,7 @@ object ReglementFGestionF: TReglementFGestionF
   object FournisseurRegFGCbx: TComboBox
     Left = 98
     Top = 120
-    Width = 409
+    Width = 368
     Height = 30
     Ctl3D = True
     Font.Charset = DEFAULT_CHARSET

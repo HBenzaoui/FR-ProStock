@@ -38,6 +38,7 @@ type
     procedure CodeBarresDBGridEhKeyPress(Sender: TObject; var Key: Char);
     procedure OKAddUniteSBtnClick(Sender: TObject);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
+    procedure NameAddCodeBarreSEdtEnter(Sender: TObject);
   private
     { Private declarations }
   public
@@ -100,7 +101,7 @@ begin
             begin
                cbForm := TForm.Create(cbScrnFrm);
                gGrayForms.Add(cbForm);
-               cbForm.Position := poOwnerFormCenter;
+               cbForm.Position := MainForm.Position;
                cbForm.AlphaBlend := true;
                cbForm.AlphaBlendValue := 80;
                cbForm.Color := clBlack;
@@ -603,6 +604,22 @@ procedure TFSplashAddCodeBarre.FormShow(Sender: TObject);
 begin
 NumberCBAddCodeBarreSLbl.Caption:= IntToStr(MainForm.CodebarresTable.RecordCount) ;
 SetWindowPos(FSplashAddCodeBarre.Handle,HWND_TOPMOST,0,0,0,0,SWP_NOACTIVATE or SWP_NOMOVE or SWP_NOSIZE);
+
+end;
+
+procedure TFSplashAddCodeBarre.NameAddCodeBarreSEdtEnter(Sender: TObject);
+var
+  KeyState: TKeyboardState;
+begin
+  //turn on CapsLock when enter edit to make sure codebare read well
+  GetKeyboardState(KeyState);
+  if (KeyState[VK_CAPITAL]=0) then
+  begin
+    // Simulate a "CAPS LOCK" key release
+    Keybd_Event(VK_CAPITAL, 1, KEYEVENTF_EXTENDEDKEY or 0, 0);
+    // Simulate a "CAPS LOCK" key press
+    Keybd_Event(VK_CAPITAL, 1, KEYEVENTF_EXTENDEDKEY or KEYEVENTF_KEYUP, 0);
+  end;
 
 end;
 

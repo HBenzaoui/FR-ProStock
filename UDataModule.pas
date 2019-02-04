@@ -2,14 +2,16 @@ unit UDataModule;
 
 interface
 
-uses       Winapi.Windows,  Vcl.StdCtrls, Vcl.Dialogs,System.UITypes,Vcl.Forms,
-  System.SysUtils, System.Classes, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+uses
+  Winapi.Windows,  Vcl.StdCtrls, Vcl.Dialogs,System.UITypes,Vcl.Forms,
+  Data.SqlTimSt,  System.SysUtils,
+  System.Classes, FireDAC.Stan.Intf, FireDAC.Stan.Option,
   FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
   FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, Data.DB,
   FireDAC.Comp.DataSet, FireDAC.Comp.Client, FireDAC.UI.Intf, FireDAC.Stan.Def,
   FireDAC.Stan.Pool, FireDAC.Phys, FireDAC.Phys.PG, FireDAC.Phys.PGDef,
   FireDAC.VCLUI.Wait, FireDAC.Comp.ScriptCommands, FireDAC.Stan.Util,
-  FireDAC.Comp.Script;
+  FireDAC.Comp.Script, Data.FMTBcd, Data.SqlExpr;
 
 type
   TDataModuleF = class(TDataModule)
@@ -55,7 +57,7 @@ type
     Top5produittotalall: TFloatField;
     PSDBConfigConnection: TFDConnection;
     UsersTable: TFDQuery;
-    CreatAndaddAdmin: TFDScript;
+    CreateDBConfigTables: TFDScript;
     AddAdminUser: TFDScript;
     UsersTableDs: TDataSource;
     PZeroQCnotif: TFDQuery;
@@ -68,7 +70,6 @@ type
     PMoreMaxQCnotifDS: TDataSource;
     PCloseDiedCnotifDS: TDataSource;
     PDiedCnotifDS: TDataSource;
-    PCloseDiedCnotifcode_p: TIntegerField;
     PCloseDiedCnotifcode_famp: TIntegerField;
     PCloseDiedCnotifcode_sfamp: TIntegerField;
     PCloseDiedCnotifcode_f: TIntegerField;
@@ -128,28 +129,6 @@ type
     PertesTablerefer_pr: TWideStringField;
     ChargesTableAgent: TStringField;
     PertesTablePrixATTC: TCurrencyField;
-    UsersTablecode_ur: TIntegerField;
-    UsersTablenom_ur: TWideStringField;
-    UsersTablepassword_ur: TWideStringField;
-    UsersTablebl_ur: TBooleanField;
-    UsersTablefcv_ur: TBooleanField;
-    UsersTablergc_ur: TBooleanField;
-    UsersTablebr_ur: TBooleanField;
-    UsersTablefca_ur: TBooleanField;
-    UsersTablergf_ur: TBooleanField;
-    UsersTablecaisse_ur: TBooleanField;
-    UsersTablebank_ur: TBooleanField;
-    UsersTableclient_ur: TBooleanField;
-    UsersTablefour_ur: TBooleanField;
-    UsersTabletype_ur: TSmallintField;
-    UsersTablectr_ur: TBooleanField;
-    UsersTableproduit_ur: TBooleanField;
-    UsersTablefamp_ur: TBooleanField;
-    UsersTablesfamp_ur: TBooleanField;
-    UsersTablemdpai_ur: TBooleanField;
-    UsersTablecmpt_ur: TBooleanField;
-    UsersTableunit_ur: TBooleanField;
-    UsersTablelocal_ur: TBooleanField;
     Transfer_comptesTable: TFDQuery;
     Transfer_comptesTablecode_transfer: TIntegerField;
     Transfer_comptesTabledate_transfer: TDateField;
@@ -203,7 +182,6 @@ type
     PMoreMaxQCnotifqutini_p: TFloatField;
     PCloseZeroQCnotifQutDispo: TFloatField;
     PMoreMaxQCnotifQutDispo: TFloatField;
-    PDiedCnotifcode_p: TIntegerField;
     PDiedCnotifcode_famp: TIntegerField;
     PDiedCnotifcode_sfamp: TIntegerField;
     PDiedCnotifcode_f: TIntegerField;
@@ -250,30 +228,113 @@ type
     PerissBona_facTabledateperiss_p: TDateField;
     PerissBona_facTabledaysleft: TIntegerField;
     PerissBona_facTablenumfac: TStringField;
-    PDiedCnotifnomp: TStringField;
-    PDiedCnotifreferp: TStringField;
     PDiedCnotifcode_barec: TIntegerField;
     PDiedCnotifnum_barec: TWideStringField;
     PDiedCnotifqutinstock_p: TFloatField;
     PCloseDiedCnotifcode_barec: TIntegerField;
     PCloseDiedCnotifnum_barec: TWideStringField;
     PCloseDiedCnotifqutinstock_p: TFloatField;
-    PCloseDiedCnotifnomp: TStringField;
-    PCloseDiedCnotifreferp: TStringField;
+    ClientSituationQR: TFDQuery;
+    ClientSituationQRnum: TWideStringField;
+    ClientSituationQRsource: TWideStringField;
+    ClientSituationQRdate_bvliv: TDateField;
+    ClientSituationQRtime_bvliv: TTimeField;
+    ClientSituationQRtotal: TCurrencyField;
+    ClientSituationQRversemt: TCurrencyField;
+    ClientSituationQRrest: TCurrencyField;
+    ClientSituationQRmp: TWideStringField;
+    ClientSituationQRagent: TIntegerField;
+    ClientSituationQRAgentName: TStringField;
+    FourSituationQR: TFDQuery;
+    WideStringField1: TWideStringField;
+    WideStringField2: TWideStringField;
+    DateField1: TDateField;
+    TimeField1: TTimeField;
+    CurrencyField5: TCurrencyField;
+    CurrencyField6: TCurrencyField;
+    CurrencyField7: TCurrencyField;
+    WideStringField3: TWideStringField;
+    IntegerField2: TIntegerField;
+    StringField6: TStringField;
+    SQLQuery1: TFDQuery;
+    AltersDBInfoChangesFDScript: TFDScript;
+    ProduitMovementQR: TFDQuery;
+    ProduitMovementQRsource: TWideStringField;
+    ProduitMovementQRnum: TWideStringField;
+    ProduitMovementQRtiers: TWideStringField;
+    ProduitMovementQRdate: TDateField;
+    ProduitMovementQRtime: TTimeField;
+    ProduitMovementQRqut: TFloatField;
+    ProduitMovementQRprixuva: TCurrencyField;
+    ProduitMovementQRmontant: TCurrencyField;
+    ProduitMovementQRagent: TIntegerField;
+    ProduitMovementQRAgentName: TStringField;
+    AllProduitMovementQR: TFDQuery;
+    AllProduitMovementQRrefer_p: TWideStringField;
+    AllProduitMovementQRnom_p: TWideStringField;
+    AllProduitMovementQRsource: TWideStringField;
+    AllProduitMovementQRnum: TWideStringField;
+    AllProduitMovementQRtiers: TWideStringField;
+    AllProduitMovementQRdate: TDateField;
+    AllProduitMovementQRtime: TTimeField;
+    AllProduitMovementQRqut: TFloatField;
+    AllProduitMovementQRprixuva: TCurrencyField;
+    AllProduitMovementQRmontant: TCurrencyField;
+    AllProduitMovementQRagent: TIntegerField;
+    AllProduitMovementQRAgentName: TStringField;
+    PCloseDiedCnotifrefer_p: TWideStringField;
+    PCloseDiedCnotifnom_p: TWideStringField;
+    PDiedCnotifrefer_p: TWideStringField;
+    PDiedCnotifnom_p: TWideStringField;
+    ProduitMovementQRmarge: TCurrencyField;
+    AllProduitMovementQRmarge: TCurrencyField;
+    InventoryTable: TFDQuery;
+    Inventory_listTable: TFDQuery;
+    InventoryTableAgent: TStringField;
+    InventoryTablecode_u: TIntegerField;
+    Inventory_listTablecode_il: TIntegerField;
+    Inventory_listTablecode_i: TIntegerField;
+    Inventory_listTablecode_p: TIntegerField;
+    Inventory_listTablerefer_p: TWideStringField;
+    Inventory_listTablenom_p: TWideStringField;
+    Inventory_listTablequttheo_il: TFloatField;
+    Inventory_listTablequtphys_il: TFloatField;
+    Inventory_listTableprixht_p: TCurrencyField;
+    Inventory_listTablecode_u: TIntegerField;
+    Inventory_listTablecode_l: TIntegerField;
+    Inventory_listTablenom_u: TWideStringField;
+    Inventory_listTablenom_l: TWideStringField;
+    InventoryTablecode_i: TIntegerField;
+    InventoryTablenum_i: TWideStringField;
+    InventoryTabledate_i: TDateField;
+    InventoryTabletime_i: TTimeField;
+    InventoryTablenom_i: TWideStringField;
+    InventoryTablevalider_i: TBooleanField;
+    InventoryTabletotalpgap_i: TFloatField;
+    InventoryTableobser_i: TWideStringField;
+    InventoryTablenump_i: TWideStringField;
+    Inventory_listTablecalcgap_il: TFloatField;
+    Inventory_listTablegap_il: TFloatField;
     procedure DataModuleCreate(Sender: TObject);
     procedure PZeroQCnotifCalcFields(DataSet: TDataSet);
     procedure PCloseZeroQCnotifCalcFields(DataSet: TDataSet);
     procedure PMoreMaxQCnotifCalcFields(DataSet: TDataSet);
     procedure PCloseDiedCnotifCalcFields(DataSet: TDataSet);
     procedure PertesTableCalcFields(DataSet: TDataSet);
+    procedure CheckdbVersionAndAlterDb;
+    procedure Inventory_listTablequtphys_ilChange(Sender: TField);
   private
+    procedure CheckAppVersionForFirstRun;
+    procedure deleteOldGridsparams;
+    function dbInfoExist(tableName: string): Boolean;
 
-    { Private declarations }
+
   public
-    { Public declarations }
     procedure ConnectToDB;
-        function  MyMessageDialog(const Msg: string; DlgType: TMsgDlgType;
-  Buttons: TMsgDlgButtons; Captions: array of string): Integer;
+    function  MyMessageDialog(const Msg: string; DlgType: TMsgDlgType;
+    Buttons: TMsgDlgButtons; Captions: array of string): Integer;
+
+
   end;
 
 var
@@ -282,7 +343,7 @@ var
 implementation
 
 uses
-  UMainF;
+  UMainF, ULogoSplashForm, ULogin, UInventory;
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
@@ -316,6 +377,158 @@ begin
   Result := aMsgDlg.ShowModal;
 end;
 
+
+procedure TDataModuleF.CheckdbVersionAndAlterDb();
+Var dbVersion : String;
+begin
+
+     SQLQuery1.Active:= false;
+     SQLQuery1.SQL.Clear;
+     SQLQuery1.SQL.Text:= 'SELECT dbversion FROM dbinfo WHERE apptype = ''S'' ';
+     SQLQuery1.Active:= True;
+
+     dbVersion:= SQLQuery1.FieldByName('dbversion').AsString;
+
+     if dbVersion = '1' then
+     begin
+      AltersDBInfoChangesFDScript.ExecuteAll;
+
+      MainForm.AltersDBChangesFDScript.ExecuteAll;
+
+
+     end;
+
+     SQLQuery1.Active:= false;
+     SQLQuery1.SQL.Clear;
+
+end;
+
+
+procedure TDataModuleF.CheckAppVersionForFirstRun();
+
+Var appVersion : String;
+begin
+
+
+  if  dbInfoExist('dbinfo')  then
+  begin
+     SQLQuery1.Active:= false;
+     SQLQuery1.SQL.Clear;
+     SQLQuery1.SQL.Text:= 'SELECT appversion,firstrun FROM dbinfo WHERE apptype = ''S'' ';
+     SQLQuery1.Active:= True;
+
+
+     if NOT SQLQuery1.IsEmpty then
+     begin
+
+      appVersion:= SQLQuery1.FieldByName('appversion').AsString;
+
+      if appVersion <> LogoSplashF.Label7.Caption then
+      begin
+
+       with SQLQuery1 do
+       begin
+
+        edit;
+//        FieldByName('firstrun').AsBoolean:= True; //Cumment this for now
+        FieldByName('appversion').AsString:= LogoSplashF.Label7.Caption;;
+        post;
+
+       end;
+
+        deleteOldGridsparams();
+
+      end;
+
+
+     end;
+
+      SQLQuery1.Active:= false;
+      SQLQuery1.SQL.Clear;
+
+  end else
+  begin
+
+     deleteOldGridsparams();
+
+  end;
+
+end;
+
+function TDataModuleF.dbInfoExist(tableName: string) : Boolean;
+begin
+     SQLQuery1.Active:= false;
+     SQLQuery1.SQL.Clear;
+     SQLQuery1.SQL.Text:= 'SELECT EXISTS ( SELECT 1 FROM   information_schema.tables WHERE table_name = '''+ tableName +''' ); ';
+     SQLQuery1.Active:= True;
+
+     Result := SQLQuery1.FieldByName('exists').AsBoolean;
+
+     SQLQuery1.Active:= false;
+     SQLQuery1.SQL.Clear;
+
+
+end;
+
+
+procedure TDataModuleF.deleteOldGridsparams();
+begin
+
+   if FileExists(GetCurrentDir +'\bin\gc_bllst') then
+   begin
+    DeleteFile(GetCurrentDir +'\bin\gc_bllst');
+   end;
+
+   if FileExists(GetCurrentDir +'\bin\gc_bl') then
+   begin
+    DeleteFile(GetCurrentDir +'\bin\gc_bl');
+   end;
+
+   if FileExists(GetCurrentDir +'\bin\gc_fcvlst') then
+   begin
+    DeleteFile(GetCurrentDir +'\bin\gc_fcvlst');
+   end;
+
+   if FileExists(GetCurrentDir +'\bin\gc_fcv') then
+   begin
+    DeleteFile(GetCurrentDir +'\bin\gc_fcv');
+   end;
+
+   if FileExists(GetCurrentDir +'\bin\gc_fcplst') then
+   begin
+    DeleteFile(GetCurrentDir +'\bin\gc_fcplst');
+   end;
+
+   if FileExists(GetCurrentDir +'\bin\gc_fcp') then
+   begin
+    DeleteFile(GetCurrentDir +'\bin\gc_fcp');
+   end;
+
+   if FileExists(GetCurrentDir +'\bin\gc_ctrlst') then
+   begin
+    DeleteFile(GetCurrentDir +'\bin\gc_ctrlst');
+   end;
+
+   if FileExists(GetCurrentDir +'\bin\gc_ctr') then
+   begin
+    DeleteFile(GetCurrentDir +'\bin\gc_ctr');
+   end;
+
+
+end;
+
+procedure TDataModuleF.Inventory_listTablequtphys_ilChange(Sender: TField);
+begin
+ if Inventory_listTablequtphys_il.IsNull then
+ begin
+
+  Inventory_listTable.Edit;
+  Inventory_listTablequtphys_il.Value := 0;
+  Inventory_listTable.Post;
+
+ end;
+end;
+
 procedure TDataModuleF.ConnectToDB;
 var
  buttonSelected : Integer;
@@ -337,12 +550,51 @@ begin
   GstockdcConnection02.Params.Values['Database'] := 'GSTOCKDC';
   GstockdcConnection02.Connected:= True;
 
-  CreatAndaddAdmin.ExecuteAll;
+
+  CheckAppVersionForFirstRun();
+
+
+  CreateDBConfigTables.ExecuteAll;
+
   UsersTable.Active:= True;
+
   if UsersTable.IsEmpty then
   begin
    AddAdminUser.ExecuteAll;
   end;
+
+  SQLQuery1.Active:= False;
+  SQLQuery1.SQL.Clear;
+  SQLQuery1.SQL.Text:= 'SELECT * FROM dbinfo WHERE hddserial ='''+ LoginF.GetWMIstring('Win32_PhysicalMedia','SerialNumber') +'''';
+  SQLQuery1.Active:= true;
+
+  if SQLQuery1.IsEmpty then with SQLQuery1 do
+  begin
+
+    SQL.Text := 'INSERT INTO dbinfo (dbversion, apptype, appversion, create_date, modified_date, activated, appserial, appkey, hddserial, developer, owner) '+
+    ' VALUES (:1,:2,:3,:4,:5,:6,:7,:8,:9,:10,:11)';
+    ParamByName('1').AsString  := '1';
+    ParamByName('2').AsString  := 'S';
+    ParamByName('3').AsString  := LogoSplashF.Label7.Caption;
+    ParamByName('4').AsSQLTimeStamp := VarToSQLTimeStamp(VarSQLTimeStampCreate(now));
+    ParamByName('5').AsSQLTimeStamp := VarToSQLTimeStamp(VarSQLTimeStampCreate(now));
+    ParamByName('6').AsBoolean := LoginF.LoginFmx.IsRegistered ;
+    ParamByName('7').AsString  := LoginF.cxTextEdit114.Text;
+    ParamByName('8').AsString  := LoginF.cxTextEdit22.Text;
+    ParamByName('9').AsString  := LoginF.GetWMIstring('Win32_PhysicalMedia','SerialNumber');
+    ParamByName('10').AsString := 'Hamza Benzaoui';
+    ParamByName('11').AsString := 'Hamza Benzaoui';
+    ExecSQL(true);
+
+  end;
+
+  SQLQuery1.Active:= False;
+  SQLQuery1.SQL.Clear;
+
+
+  CheckdbVersionAndAlterDb();
+
+
              except
 
     // Show a custom dialog
@@ -379,8 +631,8 @@ end;
 
 procedure TDataModuleF.DataModuleCreate(Sender: TObject);
 begin
-          ConnectToDB;
 
+    ConnectToDB;
 
 end;
 

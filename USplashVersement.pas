@@ -109,7 +109,7 @@ begin
        ///wForm.Align:= alClient;
           wForm.WindowState := wsMaximized;
           gGrayForms.Add(wForm);
-          wForm.Position := poOwnerFormCenter;
+          wForm.Position := MainForm.Position;
           wForm.AlphaBlend := true;
           wForm.AlphaBlendValue := 80;
           wForm.Color := clBlack;
@@ -154,6 +154,8 @@ begin
           BonCtrGestionF.ClientBonCtrGCbx.Enabled:= False;
           BonCtrGestionF.AddClientBonCtrGBtn.Enabled:= False ; //
           BonCtrGestionF.AddClientBonCtrGBtn.ImageIndex:=35;//10 fo A
+          BonCtrGestionF.ListClientBonCtrGBtn.Enabled:= False;
+          BonCtrGestionF.ListClientBonCtrGBtn.ImageIndex:= 60;
 
 
           BonCtrGestionF.ProduitBonCtrGCbx.Enabled:= False;
@@ -167,7 +169,7 @@ begin
           BonCtrGestionF.DeleteProduitBonCtrGBtn.ImageIndex:=36;//14 fo A
           BonCtrGestionF.ClearProduitBonCtrGBtn.Enabled:= False;
           BonCtrGestionF.ClearProduitBonCtrGBtn.ImageIndex:=39;//16 fo A
-          BonCtrGestionF.ProduitsListDBGridEh.DataSource.DataSet.DisableControls;//EnableControls    For A
+//          BonCtrGestionF.ProduitsListDBGridEh.DataSource.DataSet.DisableControls;//EnableControls    For A
           BonCtrGestionF.ProduitsListDBGridEh.Columns[2].TextEditing :=False;//True for A
           BonCtrGestionF.ProduitsListDBGridEh.Columns[3].TextEditing:=False;//True for A
           BonCtrGestionF.ProduitsListDBGridEh.Columns[4].TextEditing:=False;//True for A
@@ -220,6 +222,8 @@ begin
           BonFacAGestionF.DateBonFacAGD.Enabled:= False;
           BonFacAGestionF.ObserBonFacAGMem.Enabled:= False;
           BonFacAGestionF.FourBonFacAGCbx.Enabled:= False;
+          BonFacAGestionF.ListFourBonFacAGBtn.Enabled:= False;
+          BonFacAGestionF.ListFourBonFacAGBtn.ImageIndex:= 61;
           BonFacAGestionF.AddFourBonFacAGBtn.Enabled:= False ; //
           BonFacAGestionF.AddFourBonFacAGBtn.ImageIndex:=35;//10 fo A
           BonFacAGestionF.ModePaieBonFacAGCbx.Enabled:= False;
@@ -240,7 +244,7 @@ begin
           BonFacAGestionF.DeleteProduitBonFacAGBtn.ImageIndex:=36;//14 fo A
           BonFacAGestionF.ClearProduitBonFacAGBtn.Enabled:= False;
           BonFacAGestionF.ClearProduitBonFacAGBtn.ImageIndex:=39;//16 fo A
-          BonFacAGestionF.ProduitsListDBGridEh.DataSource.DataSet.DisableControls;//EnableControls    For A
+//          BonFacAGestionF.ProduitsListDBGridEh.DataSource.DataSet.DisableControls;//EnableControls    For A
           BonFacAGestionF.ProduitsListDBGridEh.Columns[2].TextEditing :=False;//True for A
           BonFacAGestionF.ProduitsListDBGridEh.Columns[3].TextEditing:=False;//True for A
           BonFacAGestionF.ProduitsListDBGridEh.Columns[4].TextEditing:=False;//True for A
@@ -280,6 +284,8 @@ begin
           BonRecGestionF.DateBonRecGD.Enabled:= False;
           BonRecGestionF.ObserBonRecGMem.Enabled:= False;
           BonRecGestionF.FournisseurBonRecGCbx.Enabled:= False;
+          BonRecGestionF.ListFourBonRecGBtn.Enabled:= False;
+          BonRecGestionF.ListFourBonRecGBtn.ImageIndex:= 61;
           BonRecGestionF.AddFourBonRecGBtn.Enabled:= False ; //
           BonRecGestionF.AddFourBonRecGBtn.ImageIndex:=35;//10 fo A
           BonRecGestionF.ModePaieBonRecGCbx.Enabled:= False;
@@ -300,7 +306,7 @@ begin
           BonRecGestionF.DeleteProduitBonRecGBtn.ImageIndex:=36;//14 fo A
           BonRecGestionF.ClearProduitBonRecGBtn.Enabled:= False;
           BonRecGestionF.ClearProduitBonRecGBtn.ImageIndex:=39;//16 fo A
-          BonRecGestionF.ProduitsListDBGridEh.DataSource.DataSet.DisableControls;//EnableControls    For A
+//          BonRecGestionF.ProduitsListDBGridEh.DataSource.DataSet.DisableControls;//EnableControls    For A
           BonRecGestionF.ProduitsListDBGridEh.Columns[2].TextEditing :=False;//True for A
           BonRecGestionF.ProduitsListDBGridEh.Columns[3].TextEditing:=False;//True for A
           BonRecGestionF.ProduitsListDBGridEh.Columns[4].TextEditing:=False;//True for A
@@ -342,12 +348,8 @@ const
    F = ['+','-'];
    N = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0',',','.','+','-', Char(VK_back)];
    V = ['.'];
- var
-  A,D :string ;
 begin
 
-    A:='+';
-    D:='-';
 
   if NOT(Key in N) then
   begin
@@ -356,7 +358,13 @@ begin
 
   if (Key in V) then
   begin
-    key :=  #44;
+    if Edit1.Text <> '' then
+    begin
+     key :=  #44;
+    end else
+        begin
+          key:=#0;
+        end;
   end;
 
   if (Key = ',') AND (Pos(Key, (Edit1.Text)) > 0) Then
@@ -364,7 +372,7 @@ begin
       Key := #0;
   end;
 
-  if (Key In F) AND ( (Pos(A, (Edit1.Text)) > 0) OR ( Pos(D, (Edit1.Text)) > 0 ) ) Then
+  if (Key In F) AND ( (Pos(#43, (Edit1.Text)) > 0) OR ( Pos(#45, (Edit1.Text)) > 0 ) ) Then
   begin
 
         if Key = #45 then
@@ -375,7 +383,7 @@ begin
         Key := #0;
   end
    else
-      if (Key In F) AND ( (Pos(A, (Edit1.Text)) > 0) OR ( Pos(D, (Edit1.Text)) > 0 )) Then
+      if (Key In F) AND ( (Pos(#43, (Edit1.Text)) > 0) OR ( Pos(#45, (Edit1.Text)) > 0 )) Then
       begin
           Key := #0;
 
@@ -397,7 +405,9 @@ begin
           BonLivGestionF.DateBonLivGD.Enabled:= False;
           BonLivGestionF.ObserBonLivGMem.Enabled:= False;
           BonLivGestionF.ClientBonLivGCbx.Enabled:= False;
-          BonLivGestionF.AddClientBonLivGBtn.Enabled:= False ; //
+          BonLivGestionF.ListClientBonLivGBtn.Enabled:= False;
+          BonLivGestionF.ListClientBonLivGBtn.ImageIndex:= 60;
+          BonLivGestionF.AddClientBonLivGBtn.Enabled:= False ; 
           BonLivGestionF.AddClientBonLivGBtn.ImageIndex:=35;//10 fo A
           BonLivGestionF.ModePaieBonLivGCbx.Enabled:= False;
           BonLivGestionF.AddModePaieBonLivGBtn.Enabled:= False ;
@@ -417,7 +427,7 @@ begin
           BonLivGestionF.DeleteProduitBonLivGBtn.ImageIndex:=36;//14 fo A
           BonLivGestionF.ClearProduitBonLivGBtn.Enabled:= False;
           BonLivGestionF.ClearProduitBonLivGBtn.ImageIndex:=39;//16 fo A
-          BonLivGestionF.ProduitsListDBGridEh.DataSource.DataSet.DisableControls;//EnableControls    For A
+//          BonLivGestionF.ProduitsListDBGridEh.DataSource.DataSet.DisableControls;//EnableControls    For A
           BonLivGestionF.ProduitsListDBGridEh.Columns[2].TextEditing :=False;//True for A
           BonLivGestionF.ProduitsListDBGridEh.Columns[3].TextEditing:=False;//True for A
           BonLivGestionF.ProduitsListDBGridEh.Columns[4].TextEditing:=False;//True for A
@@ -456,6 +466,8 @@ begin
           BonFacVGestionF.DateBonFacVGD.Enabled:= False;
           BonFacVGestionF.ObserBonFacVGMem.Enabled:= False;
           BonFacVGestionF.ClientBonFacVGCbx.Enabled:= False;
+          BonFacVGestionF.ListClientBonFacVGBtn.Enabled:= False;
+          BonFacVGestionF.ListClientBonFacVGBtn.ImageIndex:= 60;
           BonFacVGestionF.AddClientBonFacVGBtn.Enabled:= False ; //
           BonFacVGestionF.AddClientBonFacVGBtn.ImageIndex:=35;//10 fo A
           BonFacVGestionF.ModePaieBonFacVGCbx.Enabled:= False;
@@ -476,7 +488,7 @@ begin
           BonFacVGestionF.DeleteProduitBonFacVGBtn.ImageIndex:=36;//14 fo A
           BonFacVGestionF.ClearProduitBonFacVGBtn.Enabled:= False;
           BonFacVGestionF.ClearProduitBonFacVGBtn.ImageIndex:=39;//16 fo A
-          BonFacVGestionF.ProduitsListDBGridEh.DataSource.DataSet.DisableControls;//EnableControls    For A
+//          BonFacVGestionF.ProduitsListDBGridEh.DataSource.DataSet.DisableControls;//EnableControls    For A
           BonFacVGestionF.ProduitsListDBGridEh.Columns[2].TextEditing :=False;//True for A
           BonFacVGestionF.ProduitsListDBGridEh.Columns[3].TextEditing:=False;//True for A
           BonFacVGestionF.ProduitsListDBGridEh.Columns[4].TextEditing:=False;//True for A
@@ -517,6 +529,8 @@ begin
           BonFacPGestionF.DateBonFacVGD.Enabled:= False;
           BonFacPGestionF.ObserBonFacVGMem.Enabled:= False;
           BonFacPGestionF.ClientBonFacVGCbx.Enabled:= False;
+          BonFacPGestionF.ListClientBonFacVGBtn.Enabled:= False;
+          BonFacPGestionF.ListClientBonFacVGBtn.ImageIndex:= 60;
           BonFacPGestionF.AddClientBonFacVGBtn.Enabled:= False ; //
           BonFacPGestionF.AddClientBonFacVGBtn.ImageIndex:=35;//10 fo A
           BonFacPGestionF.ModePaieBonFacVGCbx.Enabled:= False;
@@ -537,7 +551,7 @@ begin
           BonFacPGestionF.DeleteProduitBonFacVGBtn.ImageIndex:=36;//14 fo A
           BonFacPGestionF.ClearProduitBonFacVGBtn.Enabled:= False;
           BonFacPGestionF.ClearProduitBonFacVGBtn.ImageIndex:=39;//16 fo A
-          BonFacPGestionF.ProduitsListDBGridEh.DataSource.DataSet.DisableControls;//EnableControls    For A
+//          BonFacPGestionF.ProduitsListDBGridEh.DataSource.DataSet.DisableControls;//EnableControls    For A
           BonFacPGestionF.ProduitsListDBGridEh.Columns[2].TextEditing :=False;//True for A
           BonFacPGestionF.ProduitsListDBGridEh.Columns[3].TextEditing:=False;//True for A
           BonFacPGestionF.ProduitsListDBGridEh.Columns[4].TextEditing:=False;//True for A
@@ -1372,6 +1386,7 @@ begin
           MainForm.Bonv_livTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
           MainForm.Bonv_livTable.FieldValues['obser_bvliv']:= BonLivGestionF.ObserBonLivGMem.Text;
           MainForm.Bonv_livTable.FieldValues['num_cheque_bvliv']:= BonLivGestionF.NChequeBonLivGCbx.Text;
+          MainForm.Bonv_livTable.FieldByName('montaht_bvliv').AsCurrency:= StrToCurr(StringReplace(BonLivGestionF.BonLivTotalAHTLbl.Caption, #32, '', [rfReplaceAll]));
           MainForm.Bonv_livTable.FieldByName('montht_bvliv').AsCurrency:= StrToCurr(StringReplace(BonLivGestionF.BonLivTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
           if BonLivGestionF.RemiseBonLivGEdt.Text<>'' then
           begin
@@ -1862,13 +1877,17 @@ begin
            begin
             MainForm.SQLQuery3.Active:=False;
             MainForm.SQLQuery3.SQL.Clear;
-            MainForm.SQLQuery3.SQL.Text:='SELECT * FROM produit WHERE code_p = ' +QuotedStr(MainForm.SQLQuery.FieldValues['code_p']) ;
+            MainForm.SQLQuery3.SQL.Text:='SELECT code_p, qut_p, tva_p  FROM produit WHERE code_p = ' +QuotedStr(MainForm.SQLQuery.FieldValues['code_p']) ;
             MainForm.SQLQuery3.Active:=True;
+
+            if not MainForm.SQLQuery3.IsEmpty then
+            begin
             MainForm.SQLQuery3.Edit;
             MainForm.SQLQuery3.FieldValues['qut_p']:= ( MainForm.SQLQuery3.FieldValues['qut_p']
                                                          - ((MainForm.SQLQuery.FieldValues['qut_p']) * ((MainForm.SQLQuery.FieldValues['cond_p']))));
             MainForm.SQLQuery3.FieldValues['tva_p']:= MainForm.SQLQuery.FieldValues['tva_p'];
             MainForm.SQLQuery3.Post;
+            end;
 
 
             Mainform.FDQuery2.Active:=False;
@@ -1911,8 +1930,9 @@ begin
           MainForm.Bonv_ctrTable.Edit;
           MainForm.Bonv_ctrTable.FieldValues['code_c']:= MainForm.SQLQuery.FieldByName('code_c').AsInteger;
           MainForm.Bonv_ctrTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
-           MainForm.Bonv_ctrTable.FieldByName('date_bvctr').AsDateTime:= BonCtrGestionF.DateBonCtrGD.DateTime;
-           MainForm.Bonv_ctrTable.FieldValues['time_bvctr']:=TimeOf(Now);
+          MainForm.Bonv_ctrTable.FieldByName('date_bvctr').AsDateTime:= BonCtrGestionF.DateBonCtrGD.DateTime;
+          MainForm.Bonv_ctrTable.FieldValues['time_bvctr']:=TimeOf(Now);
+          MainForm.Bonv_ctrTable.FieldByName('montaht_bvctr').AsCurrency := StrToCurr(StringReplace(BonCtrGestionF.BonCtrTotalAHTLbl.Caption, #32, '', [rfReplaceAll]));
           MainForm.Bonv_ctrTable.FieldByName('montht_bvctr').AsCurrency:= StrToCurr(StringReplace(BonCtrGestionF.BonCtrTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
           if BonCtrGestionF.RemiseBonCtrGEdt.Text<>'' then
           begin

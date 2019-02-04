@@ -1,7 +1,7 @@
 object DataModuleF: TDataModuleF
   OldCreateOrder = False
   OnCreate = DataModuleCreate
-  Height = 665
+  Height = 778
   Width = 1100
   object Top5produitOLD: TFDQuery
     Connection = MainForm.GstockdcConnection
@@ -326,7 +326,7 @@ object DataModuleF: TDataModuleF
         '  SELECT code_p as code_p, SUM(qut_p) AS total FROM bonv_ctr_lis' +
         't d '
       '  INNER JOIN bonv_ctr p ON d.code_bvctr = p.code_bvctr '
-      '  WHERE valider_bvctr = true '
+      '  WHERE valider_bvctr = true  AND d.code_p <> 0'
       '  GROUP BY code_p,qut_p'
       
         '----------------------------------------------------------------' +
@@ -334,7 +334,7 @@ object DataModuleF: TDataModuleF
       '  UNION ALL '
       '  SELECT code_p, SUM(qut_p) as total FROM bonv_fac_list a'
       '  INNER JOIN bonv_fac c ON a.code_bvfac = c.code_bvfac '
-      '  WHERE valider_bvfac = true '
+      '  WHERE valider_bvfac = true AND a.code_p <> 0'
       '  GROUP BY code_p,qut_p'
       
         '----------------------------------------------------------------' +
@@ -342,7 +342,7 @@ object DataModuleF: TDataModuleF
       '  UNION ALL '
       '  SELECT code_p, SUM(qut_p) as total FROM bonv_liv_list e'
       '  INNER JOIN bonv_liv f ON e.code_bvliv = f.code_bvliv '
-      '  WHERE valider_bvliv = true '
+      '  WHERE valider_bvliv = true AND e.code_p <> 0'
       '  GROUP BY code_p,qut_p'
       '      ) a '
       '      GROUP BY  code_p'#9' '
@@ -378,7 +378,7 @@ object DataModuleF: TDataModuleF
       'DriverID=pG'
       'LoginTimeout=15')
     LoginPrompt = False
-    Left = 83
+    Left = 85
     Top = 22
   end
   object UsersTable: TFDQuery
@@ -389,98 +389,8 @@ object DataModuleF: TDataModuleF
       'SELECT * FROM users')
     Left = 80
     Top = 91
-    object UsersTablecode_ur: TIntegerField
-      FieldName = 'code_ur'
-      Origin = 'code_ur'
-    end
-    object UsersTablenom_ur: TWideStringField
-      FieldName = 'nom_ur'
-      Origin = 'nom_ur'
-      Size = 40
-    end
-    object UsersTablepassword_ur: TWideStringField
-      FieldName = 'password_ur'
-      Origin = 'password_ur'
-      Size = 32
-    end
-    object UsersTablebl_ur: TBooleanField
-      FieldName = 'bl_ur'
-      Origin = 'bl_ur'
-    end
-    object UsersTablefcv_ur: TBooleanField
-      FieldName = 'fcv_ur'
-      Origin = 'fcv_ur'
-    end
-    object UsersTablergc_ur: TBooleanField
-      FieldName = 'rgc_ur'
-      Origin = 'rgc_ur'
-    end
-    object UsersTablebr_ur: TBooleanField
-      FieldName = 'br_ur'
-      Origin = 'br_ur'
-    end
-    object UsersTablefca_ur: TBooleanField
-      FieldName = 'fca_ur'
-      Origin = 'fca_ur'
-    end
-    object UsersTablergf_ur: TBooleanField
-      FieldName = 'rgf_ur'
-      Origin = 'rgf_ur'
-    end
-    object UsersTablecaisse_ur: TBooleanField
-      FieldName = 'caisse_ur'
-      Origin = 'caisse_ur'
-    end
-    object UsersTablebank_ur: TBooleanField
-      FieldName = 'bank_ur'
-      Origin = 'bank_ur'
-    end
-    object UsersTableclient_ur: TBooleanField
-      FieldName = 'client_ur'
-      Origin = 'client_ur'
-    end
-    object UsersTablefour_ur: TBooleanField
-      FieldName = 'four_ur'
-      Origin = 'four_ur'
-    end
-    object UsersTabletype_ur: TSmallintField
-      FieldName = 'type_ur'
-      Origin = 'type_ur'
-    end
-    object UsersTablectr_ur: TBooleanField
-      FieldName = 'ctr_ur'
-      Origin = 'ctr_ur'
-    end
-    object UsersTableproduit_ur: TBooleanField
-      FieldName = 'produit_ur'
-      Origin = 'produit_ur'
-    end
-    object UsersTablefamp_ur: TBooleanField
-      FieldName = 'famp_ur'
-      Origin = 'famp_ur'
-    end
-    object UsersTablesfamp_ur: TBooleanField
-      FieldName = 'sfamp_ur'
-      Origin = 'sfamp_ur'
-    end
-    object UsersTablemdpai_ur: TBooleanField
-      FieldName = 'mdpai_ur'
-      Origin = 'mdpai_ur'
-    end
-    object UsersTablecmpt_ur: TBooleanField
-      FieldName = 'cmpt_ur'
-      Origin = 'cmpt_ur'
-    end
-    object UsersTableunit_ur: TBooleanField
-      FieldName = 'unit_ur'
-      Origin = 'unit_ur'
-    end
-    object UsersTablelocal_ur: TBooleanField
-      FieldName = 'local_ur'
-      Origin = 'local_ur'
-    end
   end
-  object CreatAndaddAdmin: TFDScript
+  object CreateDBConfigTables: TFDScript
     SQLScripts = <
       item
         Name = 'CreateTable'
@@ -510,10 +420,29 @@ object DataModuleF: TDataModuleF
           '"local_ur" bool'
           ')'
           'WITH (OIDS=FALSE)'
-          ''
           ';'
+          ''
+          ''
           'COMMENT ON COLUMN "users"."ctr_ur" IS '#39
-          #39';')
+          #39';'
+          ''
+          'CREATE TABLE dbinfo ('
+          'id SERIAL NOT NULL CONSTRAINT id PRIMARY KEY ,'
+          'dbversion VARCHAR,'
+          'apptype CHAR,'
+          'appversion VARCHAR,'
+          'create_date TIMESTAMP,'
+          'modified_date TIMESTAMP,'
+          'activated boolean,'
+          'appserial VARCHAR,'
+          'appkey VARCHAR,'
+          'hddserial varchar,'
+          'developer VARCHAR,'
+          'owner VARCHAR,'
+          'firstrun boolean DEFAULT '#39't'#39' '
+          ')'
+          'WITH (OIDS=FALSE)'
+          ';')
       end>
     Connection = PSDBConfigConnection
     Params = <>
@@ -885,52 +814,57 @@ object DataModuleF: TDataModuleF
     Connection = MainForm.GstockdcConnection
     SQL.Strings = (
       
-        'SELECT bona_rec_list.code_barec, bona_rec.num_barec, bona_rec_li' +
-        'st.code_p,qutinstock_p,bona_rec_list.dateperiss_p,'
+        'SELECT bona_rec_list.code_barec, bona_rec.num_barec,produit.refe' +
+        'r_p, produit.nom_p,qutinstock_p,bona_rec_list.dateperiss_p,'
       
         '(bona_rec_list.dateperiss_p - CURRENT_DATE) AS daysleft,produit.' +
         'code_famp,produit.code_sfamp,produit.code_l,produit.code_u, bona' +
         '_rec.code_f,produit.alertdays_p'
-      'FROM bona_rec_list '
+      'FROM bona_rec_list'
       'JOIN bona_rec ON bona_rec.code_barec = bona_rec_list.code_barec'
-      
-        'JOIN produit as produit ON bona_rec_list.code_p = produit.code_p' +
-        ' '
+      'JOIN produit as produit ON bona_rec_list.code_p = produit.code_p'
       'WHERE bona_rec.valider_barec = TRUE'
       'AND bona_rec_list.dateperiss_p is NOT NULL'
       'AND (bona_rec_list.dateperiss_p - CURRENT_DATE) <= alertdays_p'
       'AND (bona_rec_list.dateperiss_p - CURRENT_DATE) > 0'
-      'AND qutinstock_p > 0 '
-      'AND bona_rec_list.code_p = 1'
+      'AND qutinstock_p > 0'
       ''
-      'UNION ALL '
+      'UNION ALL'
       ''
       
-        'SELECT bona_fac_list.code_bafac, bona_fac.num_bafac, bona_fac_li' +
-        'st.code_p,qutinstock_p,bona_fac_list.dateperiss_p,'
+        'SELECT bona_fac_list.code_bafac, bona_fac.num_bafac,produit.refe' +
+        'r_p, produit.nom_p,qutinstock_p,bona_fac_list.dateperiss_p,'
       
         '(bona_fac_list.dateperiss_p - CURRENT_DATE) AS daysleft2,produit' +
         '.code_famp,produit.code_sfamp,produit.code_l,produit.code_u, bon' +
         'a_fac.code_f,produit.alertdays_p'
       'FROM bona_fac_list'
       'JOIN bona_fac ON bona_fac.code_bafac = bona_fac_list.code_bafac'
-      
-        'JOIN produit as produit ON bona_fac_list.code_p = produit.code_p' +
-        ' '
-      'WHERE bona_fac.valider_bafac = TRUE '
-      'AND bona_fac_list.dateperiss_p is NOT NULL '
+      'JOIN produit as produit ON bona_fac_list.code_p = produit.code_p'
+      'WHERE bona_fac.valider_bafac = TRUE'
+      'AND bona_fac_list.dateperiss_p is NOT NULL'
       'AND (bona_fac_list.dateperiss_p - CURRENT_DATE) <= alertdays_p'
       'AND (bona_fac_list.dateperiss_p - CURRENT_DATE) > 0'
       'AND qutinstock_p > 0'
-      'AND bona_fac_list.code_p = 1'
-      'ORDER BY daysleft DESC')
+      ''
+      'UNION ALL'
+      ''
+      
+        'SELECT 0 as code_barec, '#39'-Sans Bon-'#39' as num_barec,refer_p, nom_p' +
+        ',(qut_p + qutini_p) AS qutinstock_p, dateperiss_p,'
+      
+        '(produit.dateperiss_p - CURRENT_DATE) AS daysleft2,code_famp,cod' +
+        'e_sfamp,code_l,code_u, code_f , alertdays_p'
+      '  FROM produit'
+      'WHERE dateperiss_p is NOT NULL'
+      'AND (dateperiss_p - CURRENT_DATE) <= alertdays_p'
+      'AND (dateperiss_p - CURRENT_DATE) > 0'
+      'AND (qut_p + qutini_p) > 0'
+      'AND perissable_p = TRUE'
+      ''
+      'ORDER BY daysleft ASC')
     Left = 854
     Top = 414
-    object PCloseDiedCnotifcode_p: TIntegerField
-      FieldName = 'code_p'
-      Origin = 'code_p'
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-    end
     object PCloseDiedCnotifcode_famp: TIntegerField
       FieldName = 'code_famp'
       Origin = 'code_famp'
@@ -1029,76 +963,75 @@ object DataModuleF: TDataModuleF
       Origin = 'qutinstock_p'
       ReadOnly = True
     end
-    object PCloseDiedCnotifnomp: TStringField
-      FieldKind = fkLookup
-      FieldName = 'nomp'
-      LookupDataSet = MainForm.ProduitTable
-      LookupKeyFields = 'code_p'
-      LookupResultField = 'nom_p'
-      KeyFields = 'code_p'
-      Size = 150
-      Lookup = True
+    object PCloseDiedCnotifrefer_p: TWideStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'refer_p'
+      Origin = 'refer_p'
+      ReadOnly = True
+      Size = 8190
     end
-    object PCloseDiedCnotifreferp: TStringField
-      FieldKind = fkLookup
-      FieldName = 'referp'
-      LookupDataSet = MainForm.ProduitTable
-      LookupKeyFields = 'code_p'
-      LookupResultField = 'refer_p'
-      KeyFields = 'code_p'
-      Lookup = True
+    object PCloseDiedCnotifnom_p: TWideStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'nom_p'
+      Origin = 'nom_p'
+      ReadOnly = True
+      Size = 8190
     end
   end
   object PDiedCnotif: TFDQuery
     Connection = MainForm.GstockdcConnection
     SQL.Strings = (
       
-        'SELECT bona_rec_list.code_barec, bona_rec.num_barec, bona_rec_li' +
-        'st.code_p,qutinstock_p,bona_rec_list.dateperiss_p,'
+        'SELECT bona_rec_list.code_barec, bona_rec.num_barec,produit.refe' +
+        'r_p, produit.nom_p, qutinstock_p,bona_rec_list.dateperiss_p,'
       
         '(bona_rec_list.dateperiss_p - CURRENT_DATE) AS daysleft,produit.' +
         'code_famp,produit.code_sfamp,produit.code_l,produit.code_u, bona' +
         '_rec.code_f'
-      'FROM bona_rec_list '
+      'FROM bona_rec_list'
       'JOIN bona_rec ON bona_rec.code_barec = bona_rec_list.code_barec'
-      
-        'JOIN produit as produit ON bona_rec_list.code_p = produit.code_p' +
-        ' '
+      'JOIN produit as produit ON bona_rec_list.code_p = produit.code_p'
       'WHERE bona_rec.valider_barec = TRUE'
       'AND bona_rec_list.dateperiss_p is NOT NULL'
-      'AND bona_rec_list.dateperiss_p <= CURRENT_DATE '
-      'AND qutinstock_p > 0 '
-      'AND produit.perissable_p = TRUE '
-      'AND bona_rec_list.code_p = 1'
+      'AND bona_rec_list.dateperiss_p <= CURRENT_DATE'
+      'AND qutinstock_p > 0'
+      'AND produit.perissable_p = TRUE'
       ''
-      'UNION ALL '
+      'UNION ALL'
       ''
       
-        'SELECT bona_fac_list.code_bafac, bona_fac.num_bafac, bona_fac_li' +
-        'st.code_p,qutinstock_p,bona_fac_list.dateperiss_p,'
+        'SELECT bona_fac_list.code_bafac, bona_fac.num_bafac,produit.refe' +
+        'r_p, produit.nom_p, qutinstock_p,bona_fac_list.dateperiss_p,'
       
         '(bona_fac_list.dateperiss_p - CURRENT_DATE) AS daysleft2,produit' +
         '.code_famp,produit.code_sfamp,produit.code_l,produit.code_u, bon' +
         'a_fac.code_f'
       'FROM bona_fac_list'
       'JOIN bona_fac ON bona_fac.code_bafac = bona_fac_list.code_bafac'
-      
-        'JOIN produit as produit ON bona_fac_list.code_p = produit.code_p' +
-        ' '
-      'WHERE bona_fac.valider_bafac = TRUE '
-      'AND bona_fac_list.dateperiss_p is NOT NULL '
+      'JOIN produit as produit ON bona_fac_list.code_p = produit.code_p'
+      'WHERE bona_fac.valider_bafac = TRUE'
+      'AND bona_fac_list.dateperiss_p is NOT NULL'
       'AND bona_fac_list.dateperiss_p <= CURRENT_DATE'
       'AND qutinstock_p > 0'
-      'AND produit.perissable_p = TRUE '
-      'AND bona_fac_list.code_p = 1'
+      'AND produit.perissable_p = TRUE'
+      ''
+      'UNION ALL'
+      ''
+      
+        'SELECT 0 as code_barec, '#39'-Sans Bon-'#39' as num_barec,refer_p, nom_p' +
+        ',(qut_p + qutini_p) AS qutinstock_p, dateperiss_p,'
+      
+        '(produit.dateperiss_p - CURRENT_DATE) AS daysleft2,code_famp,cod' +
+        'e_sfamp,code_l,code_u, code_f'
+      '  FROM produit'
+      'WHERE dateperiss_p is NOT NULL'
+      'AND dateperiss_p <= CURRENT_DATE'
+      'AND (qut_p + qutini_p) > 0'
+      'AND perissable_p = TRUE'
+      ''
       'ORDER BY daysleft DESC')
     Left = 852
     Top = 470
-    object PDiedCnotifcode_p: TIntegerField
-      FieldName = 'code_p'
-      Origin = 'code_p'
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-    end
     object PDiedCnotifcode_famp: TIntegerField
       FieldName = 'code_famp'
       Origin = 'code_famp'
@@ -1174,26 +1107,6 @@ object DataModuleF: TDataModuleF
       KeyFields = 'code_famp'
       Lookup = True
     end
-    object PDiedCnotifnomp: TStringField
-      FieldKind = fkLookup
-      FieldName = 'nomp'
-      LookupDataSet = MainForm.ProduitTable
-      LookupKeyFields = 'code_p'
-      LookupResultField = 'nom_p'
-      KeyFields = 'code_p'
-      Size = 150
-      Lookup = True
-    end
-    object PDiedCnotifreferp: TStringField
-      FieldKind = fkLookup
-      FieldName = 'referp'
-      LookupDataSet = MainForm.ProduitTable
-      LookupKeyFields = 'code_p'
-      LookupResultField = 'refer_p'
-      KeyFields = 'code_p'
-      Size = 50
-      Lookup = True
-    end
     object PDiedCnotifcode_barec: TIntegerField
       AutoGenerateValue = arDefault
       FieldName = 'code_barec'
@@ -1211,6 +1124,20 @@ object DataModuleF: TDataModuleF
       FieldName = 'qutinstock_p'
       Origin = 'qutinstock_p'
       ReadOnly = True
+    end
+    object PDiedCnotifrefer_p: TWideStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'refer_p'
+      Origin = 'refer_p'
+      ReadOnly = True
+      Size = 8190
+    end
+    object PDiedCnotifnom_p: TWideStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'nom_p'
+      Origin = 'nom_p'
+      ReadOnly = True
+      Size = 8190
     end
   end
   object PZeroQCnotifDS: TDataSource
@@ -1749,6 +1676,966 @@ object DataModuleF: TDataModuleF
       LookupResultField = 'num_bafac'
       KeyFields = 'code_bafac'
       Lookup = True
+    end
+  end
+  object ClientSituationQR: TFDQuery
+    Connection = MainForm.GstockdcConnection
+    SQL.Strings = (
+      
+        'SELECT  num_bvliv AS Num, Source,date_bvliv, time_bvliv, montttc' +
+        '_bvliv AS Total, montver_bvliv AS Versemt, Rest, MP, code_ur AS ' +
+        'Agent'
+      'FROM'
+      '('
+      
+        'SELECT code_c,num_bvliv,date_bvliv,time_bvliv,montttc_bvliv,mont' +
+        'ver_bvliv,(montttc_bvliv - montver_bvliv) AS Rest,'#39'BL'#39' AS Source' +
+        ', code_ur,'
+      '  CASE BL.code_mdpai'
+      '    WHEN  1 THEN '#39'Esp'#232'ce'#39
+      '    WHEN  2 THEN '#39'Ch'#232'que'#39
+      '    WHEN  3 THEN '#39#192' Terme'#39
+      '    WHEN  4 THEN '#39'Virement'#39
+      '    end AS MP'
+      
+        'FROM bonv_liv BL where code_c = :CodeC AND date_bvliv BETWEEN :D' +
+        'ateStartC AND :DateEndC'
+      ''
+      'UNION ALL'
+      
+        'SELECT code_c,num_bvfac,date_bvfac,time_bvfac,montttc_bvfac,mont' +
+        'ver_bvfac,(montttc_bvfac - montver_bvfac) AS Rest,'#39'FV'#39' AS Source' +
+        ', code_ur,'
+      '  CASE FC.code_mdpai'
+      '    WHEN  1 THEN '#39'Esp'#232'ce'#39
+      '    WHEN  2 THEN '#39'Ch'#232'que'#39
+      '    WHEN  3 THEN '#39#192' Terme'#39
+      '    WHEN  4 THEN '#39'Virement'#39
+      '    end'
+      
+        'FROM bonv_fac FC where code_c = :CodeC AND date_bvfac BETWEEN :D' +
+        'ateStartC AND :DateEndC'
+      ''
+      'UNION ALL'
+      
+        'SELECT code_c,num_bvctr,date_bvctr,time_bvctr,montttc_bvctr,mont' +
+        'ver_bvctr,(montttc_bvctr - montver_bvctr) AS Rest,'#39'CT'#39' AS Source' +
+        ', code_ur,'
+      '  '#39'Espace'#39
+      
+        'FROM bonv_ctr CT where code_c = :CodeC AND date_bvctr BETWEEN :D' +
+        'ateStartC AND :DateEndC'
+      ''
+      'UNION ALL'
+      
+        'SELECT code_c,nom_rc,date_rc,time_rc,'#39'0'#39' ,montver_rc,(montver_rc' +
+        ' * -1) AS rest, '#39'RC'#39' AS Source, code_ur,'
+      '  CASE RG.code_mdpai'
+      '    WHEN  1 THEN '#39'Esp'#232'ce'#39
+      '    WHEN  2 THEN '#39'Ch'#232'que'#39
+      '    WHEN  3 THEN '#39#192' Terme'#39
+      '    WHEN  4 THEN '#39'Virement'#39
+      '    end'
+      
+        'FROM regclient RG where code_c = :CodeC AND date_rc BETWEEN :Dat' +
+        'eStartC AND :DateEndC AND bon_or_no_rc = 1'
+      ')'
+      'VT'
+      '-- INNER JOIN client CL'
+      '-- ON  CL.code_c = VT.code_c'
+      '  ORDER BY date_bvliv,time_bvliv;')
+    Left = 174
+    Top = 638
+    ParamData = <
+      item
+        Name = 'CODEC'
+        DataType = ftInteger
+        ParamType = ptInput
+        Value = 0
+      end
+      item
+        Name = 'DATESTARTC'
+        DataType = ftDate
+        ParamType = ptInput
+        Value = Null
+      end
+      item
+        Name = 'DATEENDC'
+        DataType = ftDate
+        ParamType = ptInput
+        Value = Null
+      end>
+    object ClientSituationQRnum: TWideStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'num'
+      Origin = 'num'
+      ReadOnly = True
+      Size = 8190
+    end
+    object ClientSituationQRsource: TWideStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'source'
+      Origin = 'source'
+      ReadOnly = True
+      Size = 32767
+    end
+    object ClientSituationQRdate_bvliv: TDateField
+      AutoGenerateValue = arDefault
+      FieldName = 'date_bvliv'
+      Origin = 'date_bvliv'
+      ReadOnly = True
+    end
+    object ClientSituationQRtime_bvliv: TTimeField
+      AutoGenerateValue = arDefault
+      FieldName = 'time_bvliv'
+      Origin = 'time_bvliv'
+      ReadOnly = True
+    end
+    object ClientSituationQRtotal: TCurrencyField
+      AutoGenerateValue = arDefault
+      FieldName = 'total'
+      Origin = 'total'
+      ReadOnly = True
+    end
+    object ClientSituationQRversemt: TCurrencyField
+      AutoGenerateValue = arDefault
+      FieldName = 'versemt'
+      Origin = 'versemt'
+      ReadOnly = True
+    end
+    object ClientSituationQRrest: TCurrencyField
+      AutoGenerateValue = arDefault
+      FieldName = 'rest'
+      Origin = 'rest'
+      ReadOnly = True
+    end
+    object ClientSituationQRmp: TWideStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'mp'
+      Origin = 'mp'
+      ReadOnly = True
+      Size = 32767
+    end
+    object ClientSituationQRagent: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'agent'
+      Origin = 'agent'
+      ReadOnly = True
+    end
+    object ClientSituationQRAgentName: TStringField
+      FieldKind = fkLookup
+      FieldName = 'AgentName'
+      LookupDataSet = UsersTable
+      LookupKeyFields = 'code_ur'
+      LookupResultField = 'nom_ur'
+      KeyFields = 'agent'
+      Lookup = True
+    end
+  end
+  object FourSituationQR: TFDQuery
+    Connection = MainForm.GstockdcConnection
+    SQL.Strings = (
+      
+        'SELECT  num_barec AS Num, Source,date_barec, time_barec, montttc' +
+        '_barec AS Total, montver_barec AS Versemt, Rest, MP, code_ur AS ' +
+        'Agent'
+      'FROM'
+      '('
+      
+        'SELECT code_f,num_barec,date_barec,time_barec,montttc_barec,mont' +
+        'ver_barec,(montttc_barec - montver_barec) AS Rest,'#39'BR'#39' AS Source' +
+        ', code_ur,'
+      '  CASE BR.code_mdpai'
+      '    WHEN  1 THEN '#39'Esp'#232'ce'#39
+      '    WHEN  2 THEN '#39'Ch'#232'que'#39
+      '    WHEN  3 THEN '#39#192' Terme'#39
+      '    WHEN  4 THEN '#39'Virement'#39
+      '    end AS MP'
+      
+        'FROM bona_rec BR where code_f = :CodeF AND date_barec BETWEEN :D' +
+        'ateStartF AND :DateEndF'
+      ''
+      'UNION ALL'
+      
+        'SELECT code_f,num_bafac,date_bafac,time_bafac,montttc_bafac,mont' +
+        'ver_bafac,(montttc_bafac - montver_bafac) AS Rest,'#39'FA'#39' AS Source' +
+        ', code_ur,'
+      '  CASE FA.code_mdpai'
+      '    WHEN  1 THEN '#39'Esp'#232'ce'#39
+      '    WHEN  2 THEN '#39'Ch'#232'que'#39
+      '    WHEN  3 THEN '#39#192' Terme'#39
+      '    WHEN  4 THEN '#39'Virement'#39
+      '    end'
+      
+        'FROM bona_fac FA where code_f = :CodeF AND date_bafac BETWEEN :D' +
+        'ateStartF AND :DateEndF'
+      ''
+      'UNION ALL'
+      
+        'SELECT code_f,nom_rf,date_rf,time_rf,'#39'0'#39' ,montver_rf,(montver_rf' +
+        ' * -1) AS rest, '#39'RF'#39' AS Source, code_ur,'
+      '  CASE RF.code_mdpai'
+      '    WHEN  1 THEN '#39'Esp'#232'ce'#39
+      '    WHEN  2 THEN '#39'Ch'#232'que'#39
+      '    WHEN  3 THEN '#39#192' Terme'#39
+      '    WHEN  4 THEN '#39'Virement'#39
+      '    end'
+      
+        'FROM regfournisseur RF where code_f = :CodeF AND date_rf BETWEEN' +
+        ' :DateStartF AND :DateEndF AND bon_or_no_rf = 1'
+      ')'
+      'VT'
+      '-- INNER JOIN fournisseur FR'
+      '-- ON  CL.code_f = VT.code_f'
+      '  ORDER BY date_barec,time_barec;')
+    Left = 286
+    Top = 638
+    ParamData = <
+      item
+        Name = 'CODEF'
+        DataType = ftInteger
+        ParamType = ptInput
+        Value = 0
+      end
+      item
+        Name = 'DATESTARTF'
+        DataType = ftDate
+        ParamType = ptInput
+        Value = Null
+      end
+      item
+        Name = 'DATEENDF'
+        DataType = ftDate
+        ParamType = ptInput
+        Value = Null
+      end>
+    object WideStringField1: TWideStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'num'
+      Origin = 'num'
+      ReadOnly = True
+      Size = 8190
+    end
+    object WideStringField2: TWideStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'source'
+      Origin = 'source'
+      ReadOnly = True
+      Size = 32767
+    end
+    object DateField1: TDateField
+      AutoGenerateValue = arDefault
+      FieldName = 'date_barec'
+      Origin = 'date_barec'
+      ReadOnly = True
+    end
+    object TimeField1: TTimeField
+      AutoGenerateValue = arDefault
+      FieldName = 'time_barec'
+      Origin = 'time_barec'
+      ReadOnly = True
+    end
+    object CurrencyField5: TCurrencyField
+      AutoGenerateValue = arDefault
+      FieldName = 'total'
+      Origin = 'total'
+      ReadOnly = True
+    end
+    object CurrencyField6: TCurrencyField
+      AutoGenerateValue = arDefault
+      FieldName = 'versemt'
+      Origin = 'versemt'
+      ReadOnly = True
+    end
+    object CurrencyField7: TCurrencyField
+      AutoGenerateValue = arDefault
+      FieldName = 'rest'
+      Origin = 'rest'
+      ReadOnly = True
+    end
+    object WideStringField3: TWideStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'mp'
+      Origin = 'mp'
+      ReadOnly = True
+      Size = 32767
+    end
+    object IntegerField2: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'agent'
+      Origin = 'agent'
+      ReadOnly = True
+    end
+    object StringField6: TStringField
+      FieldKind = fkLookup
+      FieldName = 'AgentName'
+      LookupDataSet = UsersTable
+      LookupKeyFields = 'code_ur'
+      LookupResultField = 'nom_ur'
+      KeyFields = 'agent'
+      Lookup = True
+    end
+  end
+  object SQLQuery1: TFDQuery
+    FilterOptions = [foCaseInsensitive]
+    Connection = PSDBConfigConnection
+    Left = 76
+    Top = 216
+  end
+  object AltersDBInfoChangesFDScript: TFDScript
+    SQLScripts = <
+      item
+        Name = 'AltersDBChanges'
+        SQL.Strings = (
+          ''
+          'ALTER TABLE users ADD totaux_ur bool DEFAULT '#39't'#39';'
+          ''
+          ''
+          'ALTER TABLE users ADD viewprixa_ur bool DEFAULT '#39'f'#39';'
+          '')
+      end>
+    Connection = PSDBConfigConnection
+    Params = <>
+    Macros = <>
+    FetchOptions.AssignedValues = [evItems, evAutoClose, evAutoFetchAll]
+    FetchOptions.AutoClose = False
+    FetchOptions.Items = [fiBlobs, fiDetails]
+    ResourceOptions.AssignedValues = [rvMacroCreate, rvMacroExpand, rvDirectExecute, rvPersistent]
+    ResourceOptions.MacroCreate = False
+    ResourceOptions.DirectExecute = True
+    Left = 255
+    Top = 100
+  end
+  object ProduitMovementQR: TFDQuery
+    Connection = MainForm.GstockdcConnection
+    SQL.Strings = (
+      'SELECT '
+      
+        '  '#39'BR'#39' AS Source, BR.num_barec AS Num, T.nom_f AS Tiers, BR.date' +
+        '_barec as Date,'
+      '  BR.time_barec as Time, (BRL.qut_p * BRL.cond_p) AS Qut,'
+      
+        '  BRL.prixht_p * -1 AS PrixUVA, ((BRL.qut_p * BRL.cond_p) * BRL.' +
+        'prixht_p ) * -1 AS Montant, CAST(0 as MONEY) AS Marge, BR.code_u' +
+        'r AS Agent'
+      'FROM produit P'
+      'INNER JOIN bona_rec_list BRL'
+      '  ON P.code_p = BRL.code_p'
+      'INNER JOIN bona_rec BR'
+      '  ON BRL.code_barec = BR.code_barec'
+      'INNER JOIN fournisseur AS T'
+      '  ON BR.code_f = T.code_f'
+      
+        '  WHERE P.code_p = :CodeP AND BR.valider_barec = TRUE AND BR.dat' +
+        'e_barec BETWEEN :DateStartP AND :DateEndP'
+      ''
+      ''
+      'UNION ALL '
+      'SELECT'
+      
+        '  '#39'FA'#39' AS Source, FA.num_bafac AS Num, T.nom_f AS Tiers, FA.date' +
+        '_bafac as Date,'
+      '  FA.time_bafac as Time, (FAL.qut_p * FAL.cond_p) AS Qut,'
+      
+        '  FAL.prixht_p * -1 AS PrixU, ((FAL.qut_p * FAL.cond_p) * FAL.pr' +
+        'ixht_p ) * -1 AS Montant, CAST(0 as MONEY) AS Marge, FA.code_ur ' +
+        'AS Agent'
+      'FROM produit P'
+      'INNER JOIN bona_fac_list FAL'
+      '  ON P.code_p = FAL.code_p'
+      'INNER JOIN bona_fac FA'
+      '  ON FAL.code_bafac = FA.code_bafac'
+      'INNER JOIN fournisseur AS T'
+      '  ON FA.code_f = T.code_f'
+      
+        '  WHERE P.code_p = :CodeP AND FA.valider_bafac = TRUE AND FA.dat' +
+        'e_bafac BETWEEN :DateStartP AND :DateEndP'
+      ''
+      'UNION ALL '
+      'SELECT'
+      
+        '  '#39'BL'#39' AS Source, BL.num_bvliv AS Num, T.nom_c AS Tiers, BL.date' +
+        '_bvliv as Date,'
+      '  BL.time_bvliv as Time, (BLL.qut_p * BLL.cond_p) * -1 AS Qut,'
+      
+        '  BLL.prixvd_p AS PrixU, ((BLL.qut_p * BLL.cond_p) * BLL.prixvd_' +
+        'p ) AS Montant, (BLL.prixvd_p - BLL.prixht_p) AS Marge, Bl.code_' +
+        'ur AS Agent'
+      'FROM produit P'
+      'INNER JOIN bonv_liv_list BLL'
+      '  ON P.code_p = BLL.code_p'
+      'INNER JOIN bonv_liv BL'
+      '  ON BLL.code_bvliv = BL.code_bvliv'
+      'INNER JOIN client AS T'
+      '  ON BL.code_c = T.code_c'
+      
+        '  WHERE P.code_p = :CodeP AND BL.valider_bvliv = TRUE AND BL.dat' +
+        'e_bvliv BETWEEN :DateStartP AND :DateEndP'
+      ''
+      'UNION ALL '
+      'SELECT'
+      
+        '  '#39'FV'#39' AS Source, FV.num_bvfac AS Num, T.nom_c AS Tiers, FV.date' +
+        '_bvfac as Date,'
+      '  FV.time_bvfac as Time, (FVL.qut_p * FVL.cond_p) * -1 AS Qut,'
+      
+        '  FVL.prixvd_p AS PrixU, ((FVL.qut_p * FVL.cond_p) * FVL.prixvd_' +
+        'p ) AS Montant, (FVL.prixvd_p - FVL.prixht_p) AS Marge, FV.code_' +
+        'ur AS Agent'
+      'FROM produit P'
+      'INNER JOIN bonv_fac_list FVL'
+      '  ON P.code_p = FVL.code_p'
+      'INNER JOIN bonv_fac FV'
+      '  ON FVL.code_bvfac = FV.code_bvfac'
+      'INNER JOIN client AS T'
+      '  ON FV.code_c = T.code_c'
+      
+        '  WHERE P.code_p = :CodeP AND FV.valider_bvfac = TRUE AND FV.dat' +
+        'e_bvfac BETWEEN :DateStartP AND :DateEndP'
+      ''
+      'UNION ALL '
+      'SELECT'
+      
+        '  '#39'CT'#39' AS Source, CT.num_bvctr AS Num, T.nom_c AS Tiers, CT.date' +
+        '_bvctr as Date,'
+      '  CT.time_bvctr as Time, (CTL.qut_p * CTL.cond_p) * -1 AS Qut,'
+      
+        '  CTL.prixvd_p AS PrixU, ((CTL.qut_p * CTL.cond_p) * CTL.prixvd_' +
+        'p ) AS Montant, (CTL.prixvd_p - CTL.prixht_p) AS Marge, CT.code_' +
+        'ur AS Agent'
+      'FROM produit P'
+      'INNER JOIN bonv_ctr_list CTL'
+      '  ON P.code_p = CTL.code_p'
+      'INNER JOIN bonv_ctr CT'
+      '  ON CTL.code_bvctr= CT.code_bvctr'
+      'INNER JOIN client AS T'
+      '  ON CT.code_c = T.code_c'
+      
+        '  WHERE P.code_p = :CodeP AND CT.valider_bvctr = TRUE AND CT.dat' +
+        'e_bvctr BETWEEN :DateStartP AND :DateEndP'
+      ''
+      'UNION ALL '
+      
+        '       SELECT '#39'PT'#39'                                      AS Sourc' +
+        'e,'
+      '              PT.refer_pr                               AS Num,'
+      
+        '              '#39'--Perte--'#39'                               AS Tiers' +
+        ','
+      '              PT.date_pr                                AS Date,'
+      '              PT.time_pr                                AS Time,'
+      '              (PT.qut_p) * -1                           AS Qut,'
+      
+        '              PT.prixht_p                               AS PrixU' +
+        ','
+      
+        '              (PT.qut_p) * PT.prixht_p                  AS Monta' +
+        'nt,'
+      
+        '              CAST(0 as MONEY)                          AS Marge' +
+        ','
+      '              PT.code_ur                                AS Agent'
+      '       FROM produit P'
+      '              INNER JOIN pertes PT ON PT.code_p = P.code_p'
+      '       WHERE P.code_p = :CodeP'
+      '         AND PT.date_pr BETWEEN :DateStartP AND :DateEndP'
+      ''
+      'ORDER BY Date ,Time ')
+    Left = 392
+    Top = 640
+    ParamData = <
+      item
+        Name = 'CODEP'
+        DataType = ftInteger
+        ParamType = ptInput
+        Value = 0
+      end
+      item
+        Name = 'DATESTARTP'
+        DataType = ftDate
+        ParamType = ptInput
+      end
+      item
+        Name = 'DATEENDP'
+        DataType = ftDate
+        ParamType = ptInput
+      end>
+    object ProduitMovementQRsource: TWideStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'source'
+      Origin = 'source'
+      ReadOnly = True
+      Size = 3
+    end
+    object ProduitMovementQRnum: TWideStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'num'
+      Origin = 'num'
+      ReadOnly = True
+    end
+    object ProduitMovementQRtiers: TWideStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'tiers'
+      Origin = 'tiers'
+      ReadOnly = True
+      Size = 8190
+    end
+    object ProduitMovementQRdate: TDateField
+      AutoGenerateValue = arDefault
+      FieldName = 'date'
+      Origin = 'date'
+      ReadOnly = True
+    end
+    object ProduitMovementQRtime: TTimeField
+      AutoGenerateValue = arDefault
+      FieldName = 'time'
+      Origin = '"time"'
+      ReadOnly = True
+    end
+    object ProduitMovementQRqut: TFloatField
+      AutoGenerateValue = arDefault
+      FieldName = 'qut'
+      Origin = 'qut'
+      ReadOnly = True
+    end
+    object ProduitMovementQRprixuva: TCurrencyField
+      AutoGenerateValue = arDefault
+      FieldName = 'prixuva'
+      Origin = 'prixuva'
+      ReadOnly = True
+    end
+    object ProduitMovementQRmontant: TCurrencyField
+      AutoGenerateValue = arDefault
+      FieldName = 'montant'
+      Origin = 'montant'
+      ReadOnly = True
+    end
+    object ProduitMovementQRmarge: TCurrencyField
+      AutoGenerateValue = arDefault
+      FieldName = 'marge'
+      Origin = 'marge'
+      ReadOnly = True
+    end
+    object ProduitMovementQRagent: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'agent'
+      Origin = 'agent'
+      ReadOnly = True
+    end
+    object ProduitMovementQRAgentName: TStringField
+      FieldKind = fkLookup
+      FieldName = 'AgentName'
+      LookupDataSet = UsersTable
+      LookupKeyFields = 'code_ur'
+      LookupResultField = 'nom_ur'
+      KeyFields = 'agent'
+      Lookup = True
+    end
+  end
+  object AllProduitMovementQR: TFDQuery
+    Connection = MainForm.GstockdcConnection
+    SQL.Strings = (
+      'SELECT'
+      
+        '  P.refer_p, P.nom_p, '#39'BR'#39' AS Source, BR.num_barec AS Num, T.nom' +
+        '_f AS Tiers, BR.date_barec as Date,'
+      '  BR.time_barec as Time, (BRL.qut_p * BRL.cond_p) AS Qut,'
+      
+        '  BRL.prixht_p AS PrixUVA, ((BRL.qut_p * BRL.cond_p) * BRL.prixh' +
+        't_p ) * -1 AS Montant, CAST(0 as MONEY) AS Marge, BR.code_ur AS ' +
+        'Agent'
+      'FROM produit P'
+      'INNER JOIN bona_rec_list BRL'
+      '  ON P.code_p = BRL.code_p'
+      'INNER JOIN bona_rec BR'
+      '  ON BRL.code_barec = BR.code_barec'
+      'INNER JOIN fournisseur AS T'
+      '  ON BR.code_f = T.code_f'
+      
+        '  WHERE BR.valider_barec = TRUE AND BR.date_barec BETWEEN :DateS' +
+        'tartP AND :DateEndP'
+      ''
+      ''
+      'UNION ALL '
+      'SELECT'
+      
+        '  P.refer_p, P.nom_p, '#39'FA'#39' AS Source, FA.num_bafac AS Num, T.nom' +
+        '_f AS Tiers, FA.date_bafac as Date,'
+      '  FA.time_bafac as Time, (FAL.qut_p * FAL.cond_p) AS Qut,'
+      
+        '  FAL.prixht_p AS PrixU, ((FAL.qut_p * FAL.cond_p) * FAL.prixht_' +
+        'p ) * -1 AS Montant, CAST(0 as MONEY) AS Marge, FA.code_ur AS Ag' +
+        'ent'
+      'FROM produit P'
+      'INNER JOIN bona_fac_list FAL'
+      '  ON P.code_p = FAL.code_p'
+      'INNER JOIN bona_fac FA'
+      '  ON FAL.code_bafac = FA.code_bafac'
+      'INNER JOIN fournisseur AS T'
+      '  ON FA.code_f = T.code_f'
+      
+        '  WHERE FA.valider_bafac = TRUE AND FA.date_bafac BETWEEN :DateS' +
+        'tartP AND :DateEndP'
+      ''
+      'UNION ALL'
+      'SELECT'
+      
+        '  P.refer_p, P.nom_p, '#39'BL'#39' AS Source, BL.num_bvliv AS Num, T.nom' +
+        '_c AS Tiers, BL.date_bvliv as Date,'
+      '  BL.time_bvliv as Time, (BLL.qut_p * BLL.cond_p) * -1 AS Qut,'
+      
+        '  BLL.prixvd_p AS PrixU, ((BLL.qut_p * BLL.cond_p) * BLL.prixvd_' +
+        'p ) AS Montant, (BLL.prixvd_p - BLL.prixht_p) AS Marge, Bl.code_' +
+        'ur AS Agent'
+      'FROM produit P'
+      'INNER JOIN bonv_liv_list BLL'
+      '  ON P.code_p = BLL.code_p'
+      'INNER JOIN bonv_liv BL'
+      '  ON BLL.code_bvliv = BL.code_bvliv'
+      'INNER JOIN client AS T'
+      '  ON BL.code_c = T.code_c'
+      
+        '  WHERE BL.valider_bvliv = TRUE AND BL.date_bvliv BETWEEN :DateS' +
+        'tartP AND :DateEndP'
+      ''
+      'UNION ALL'
+      'SELECT'
+      
+        '  P.refer_p, P.nom_p, '#39'FV'#39' AS Source, FV.num_bvfac AS Num, T.nom' +
+        '_c AS Tiers, FV.date_bvfac as Date,'
+      '  FV.time_bvfac as Time, (FVL.qut_p * FVL.cond_p) * -1 AS Qut,'
+      
+        '  FVL.prixvd_p AS PrixU, ((FVL.qut_p * FVL.cond_p) * FVL.prixvd_' +
+        'p ) AS Montant, (FVL.prixvd_p - FVL.prixht_p) AS Marge, FV.code_' +
+        'ur AS Agent'
+      'FROM produit P'
+      'INNER JOIN bonv_fac_list FVL'
+      '  ON P.code_p = FVL.code_p'
+      'INNER JOIN bonv_fac FV'
+      '  ON FVL.code_bvfac = FV.code_bvfac'
+      'INNER JOIN client AS T'
+      '  ON FV.code_c = T.code_c'
+      
+        '  WHERE FV.valider_bvfac = TRUE AND FV.date_bvfac BETWEEN :DateS' +
+        'tartP AND :DateEndP'
+      ''
+      'UNION ALL'
+      'SELECT'
+      
+        '  P.refer_p, P.nom_p, '#39'CT'#39' AS Source, CT.num_bvctr AS Num, T.nom' +
+        '_c AS Tiers, CT.date_bvctr as Date,'
+      '  CT.time_bvctr as Time, (CTL.qut_p * CTL.cond_p) * -1 AS Qut,'
+      
+        '  CTL.prixvd_p AS PrixU, ((CTL.qut_p * CTL.cond_p) * CTL.prixvd_' +
+        'p ) AS Montant, (CTL.prixvd_p - CTL.prixht_p) AS Marge, CT.code_' +
+        'ur AS Agent'
+      'FROM produit P'
+      'INNER JOIN bonv_ctr_list CTL'
+      '  ON P.code_p = CTL.code_p'
+      'INNER JOIN bonv_ctr CT'
+      '  ON CTL.code_bvctr= CT.code_bvctr'
+      'INNER JOIN client AS T'
+      '  ON CT.code_c = T.code_c'
+      
+        '  WHERE CT.valider_bvctr = TRUE AND CT.date_bvctr BETWEEN :DateS' +
+        'tartP AND :DateEndP'
+      ''
+      'UNION ALL '
+      '       SELECT'
+      '              P.refer_p,'
+      '              P.nom_p,'
+      
+        '              '#39'PT'#39'                                      AS Sourc' +
+        'e,'
+      '              PT.refer_pr                               AS Num,'
+      
+        '              '#39'--Perte--'#39'                               AS Tiers' +
+        ','
+      '              PT.date_pr                                AS Date,'
+      '              PT.time_pr                                AS Time,'
+      '              (PT.qut_p) * -1                           AS Qut,'
+      
+        '              PT.prixht_p                               AS PrixU' +
+        ','
+      
+        '              (PT.qut_p) * PT.prixht_p                  AS Monta' +
+        'nt,'
+      
+        '              CAST(0 as MONEY)                          AS Marge' +
+        ','
+      '              PT.code_ur                                AS Agent'
+      '       FROM produit P'
+      '              INNER JOIN pertes PT ON PT.code_p = P.code_p'
+      '       WHERE PT.date_pr BETWEEN :DateStartP AND :DateEndP'
+      ''
+      'ORDER BY Date ,Time ')
+    Left = 516
+    Top = 642
+    ParamData = <
+      item
+        Name = 'DATESTARTP'
+        DataType = ftDate
+        ParamType = ptInput
+        Value = Null
+      end
+      item
+        Name = 'DATEENDP'
+        DataType = ftDate
+        ParamType = ptInput
+      end>
+    object AllProduitMovementQRrefer_p: TWideStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'refer_p'
+      Origin = 'refer_p'
+      ReadOnly = True
+      Size = 8190
+    end
+    object AllProduitMovementQRnom_p: TWideStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'nom_p'
+      Origin = 'nom_p'
+      ReadOnly = True
+      Size = 8190
+    end
+    object AllProduitMovementQRsource: TWideStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'source'
+      Origin = 'source'
+      ReadOnly = True
+      Size = 32767
+    end
+    object AllProduitMovementQRnum: TWideStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'num'
+      Origin = 'num'
+      ReadOnly = True
+    end
+    object AllProduitMovementQRtiers: TWideStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'tiers'
+      Origin = 'tiers'
+      ReadOnly = True
+      Size = 8190
+    end
+    object AllProduitMovementQRdate: TDateField
+      AutoGenerateValue = arDefault
+      FieldName = 'date'
+      Origin = 'date'
+      ReadOnly = True
+    end
+    object AllProduitMovementQRtime: TTimeField
+      AutoGenerateValue = arDefault
+      FieldName = 'time'
+      Origin = '"time"'
+      ReadOnly = True
+    end
+    object AllProduitMovementQRqut: TFloatField
+      AutoGenerateValue = arDefault
+      FieldName = 'qut'
+      Origin = 'qut'
+      ReadOnly = True
+    end
+    object AllProduitMovementQRprixuva: TCurrencyField
+      AutoGenerateValue = arDefault
+      FieldName = 'prixuva'
+      Origin = 'prixuva'
+      ReadOnly = True
+    end
+    object AllProduitMovementQRmontant: TCurrencyField
+      AutoGenerateValue = arDefault
+      FieldName = 'montant'
+      Origin = 'montant'
+      ReadOnly = True
+    end
+    object AllProduitMovementQRmarge: TCurrencyField
+      AutoGenerateValue = arDefault
+      FieldName = 'marge'
+      Origin = 'marge'
+      ReadOnly = True
+    end
+    object AllProduitMovementQRagent: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'agent'
+      Origin = 'agent'
+      ReadOnly = True
+    end
+    object AllProduitMovementQRAgentName: TStringField
+      FieldKind = fkLookup
+      FieldName = 'AgentName'
+      LookupDataSet = UsersTable
+      LookupKeyFields = 'code_ur'
+      LookupResultField = 'nom_ur'
+      KeyFields = 'agent'
+      Lookup = True
+    end
+  end
+  object InventoryTable: TFDQuery
+    FilterOptions = [foCaseInsensitive]
+    IndexFieldNames = 'code_i'
+    Connection = MainForm.GstockdcConnection
+    SQL.Strings = (
+      'SELECT'
+      '  code_i,'
+      '  num_i,'
+      '  date_i,'
+      '  time_i,'
+      '  nom_i,'
+      '  valider_i,'
+      '  totalpgap_i,'
+      '  nump_i || '#39' Sur '#39'||(SELECT COUNT(*) FROM produit) AS nump_i,'
+      '  obser_i,'
+      '  code_ur'
+      'FROM inventory')
+    Left = 572
+    Top = 533
+    object InventoryTablecode_i: TIntegerField
+      FieldName = 'code_i'
+      Origin = 'code_i'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+    end
+    object InventoryTablenum_i: TWideStringField
+      FieldName = 'num_i'
+      Origin = 'num_i'
+    end
+    object InventoryTabledate_i: TDateField
+      FieldName = 'date_i'
+      Origin = 'date_i'
+    end
+    object InventoryTabletime_i: TTimeField
+      FieldName = 'time_i'
+      Origin = 'time_i'
+    end
+    object InventoryTablenom_i: TWideStringField
+      FieldName = 'nom_i'
+      Origin = 'nom_i'
+      Size = 200
+    end
+    object InventoryTablevalider_i: TBooleanField
+      FieldName = 'valider_i'
+      Origin = 'valider_i'
+    end
+    object InventoryTabletotalpgap_i: TFloatField
+      FieldName = 'totalpgap_i'
+      Origin = 'totalpgap_i'
+    end
+    object InventoryTablenump_i: TWideStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'nump_i'
+      Origin = 'nump_i'
+      ReadOnly = True
+      Size = 32767
+    end
+    object InventoryTableobser_i: TWideStringField
+      FieldName = 'obser_i'
+      Origin = 'obser_i'
+      Size = 32767
+    end
+    object InventoryTableAgent: TStringField
+      FieldKind = fkLookup
+      FieldName = 'Agent'
+      LookupDataSet = UsersTable
+      LookupKeyFields = 'code_ur'
+      LookupResultField = 'nom_ur'
+      KeyFields = 'code_ur'
+      Lookup = True
+    end
+    object InventoryTablecode_u: TIntegerField
+      FieldName = 'code_ur'
+    end
+  end
+  object Inventory_listTable: TFDQuery
+    IndexFieldNames = 'code_i'
+    MasterSource = InventoryF.InvListDataS
+    MasterFields = 'code_i'
+    Connection = MainForm.GstockdcConnection
+    SQL.Strings = (
+      'SELECT'
+      '       IL.code_il, IL.code_i,IL.code_p, P.refer_p, P.nom_p,'
+      '       (P.qut_p + P. qutini_p) AS quttheo_il, IL.qutphys_il,'
+      
+        '       ((P.qut_p + P. qutini_p) - qutphys_il) * -1 AS calcgap_il' +
+        ','
+      
+        '       IL.gap_il, IL.prixht_p,IL.code_u, IL.code_l, U.nom_u, L.n' +
+        'om_l'
+      'FROM inventory_list IL'
+      'LEFT JOIN produit P'
+      '    ON IL.code_p = P.code_p'
+      'LEFT JOIN unite U'
+      '    ON IL.code_u = U.code_u'
+      'LEFT JOIN localisation L'
+      '    ON IL.code_l = L.code_l ')
+    Left = 571
+    Top = 586
+    object Inventory_listTablecode_il: TIntegerField
+      FieldName = 'code_il'
+      Origin = 'code_il'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+    end
+    object Inventory_listTablecode_i: TIntegerField
+      FieldName = 'code_i'
+      Origin = 'code_i'
+    end
+    object Inventory_listTablecode_p: TIntegerField
+      FieldName = 'code_p'
+      Origin = 'code_p'
+    end
+    object Inventory_listTablerefer_p: TWideStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'refer_p'
+      Origin = 'refer_p'
+      Size = 8190
+    end
+    object Inventory_listTablenom_p: TWideStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'nom_p'
+      Origin = 'nom_p'
+      Size = 8190
+    end
+    object Inventory_listTablequttheo_il: TFloatField
+      AutoGenerateValue = arDefault
+      FieldName = 'quttheo_il'
+      Origin = 'quttheo_il'
+      ReadOnly = True
+    end
+    object Inventory_listTablequtphys_il: TFloatField
+      FieldName = 'qutphys_il'
+      Origin = 'qutphys_il'
+      OnChange = Inventory_listTablequtphys_ilChange
+    end
+    object Inventory_listTableprixht_p: TCurrencyField
+      FieldName = 'prixht_p'
+      Origin = 'prixht_p'
+    end
+    object Inventory_listTablecalcgap_il: TFloatField
+      AutoGenerateValue = arDefault
+      FieldName = 'calcgap_il'
+      Origin = 'calcgap_il'
+      ReadOnly = True
+    end
+    object Inventory_listTablegap_il: TFloatField
+      FieldName = 'gap_il'
+      Origin = 'gap_il'
+    end
+    object Inventory_listTablecode_u: TIntegerField
+      FieldName = 'code_u'
+      Origin = 'code_u'
+    end
+    object Inventory_listTablecode_l: TIntegerField
+      FieldName = 'code_l'
+      Origin = 'code_l'
+    end
+    object Inventory_listTablenom_u: TWideStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'nom_u'
+      Origin = 'nom_u'
+      Size = 15
+    end
+    object Inventory_listTablenom_l: TWideStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'nom_l'
+      Origin = 'nom_l'
+      Size = 30
     end
   end
 end

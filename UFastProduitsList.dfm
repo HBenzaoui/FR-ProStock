@@ -2,6 +2,7 @@ object FastProduitsListF: TFastProduitsListF
   Left = 0
   Top = 0
   BorderStyle = bsDialog
+  Caption = 'Liste des Produits'
   ClientHeight = 516
   ClientWidth = 894
   Color = clBtnFace
@@ -18,6 +19,7 @@ object FastProduitsListF: TFastProduitsListF
   OnClose = FormClose
   OnCreate = FormCreate
   OnKeyPress = FormKeyPress
+  OnPaint = FormPaint
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
@@ -36,7 +38,7 @@ object FastProduitsListF: TFastProduitsListF
     StyleElements = []
     object ResearchProduitsLbl: TLabel
       Left = 11
-      Top = 21
+      Top = 24
       Width = 74
       Height = 16
       Caption = 'Rechercher'
@@ -78,7 +80,7 @@ object FastProduitsListF: TFastProduitsListF
       ShowHint = True
       Spacing = -1
       OnClick = CancelProduitGBtnClick
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object OKProduitGBtn: TAdvToolButton
@@ -111,7 +113,7 @@ object FastProduitsListF: TFastProduitsListF
       ShowHint = True
       Spacing = 10
       OnClick = OKProduitGBtnClick
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object LastClientbtn: TsSpeedButton
@@ -152,7 +154,7 @@ object FastProduitsListF: TFastProduitsListF
       ImageIndex = 1
     end
     object FisrtClientbtn: TsSpeedButton
-      Left = 532
+      Left = 530
       Top = 17
       Width = 30
       Height = 30
@@ -163,6 +165,23 @@ object FastProduitsListF: TFastProduitsListF
       Images = MainForm.PanelIcons24
       ImageIndex = 0
       ShowCaption = False
+    end
+    object SelectAllLbl: TLabel
+      Left = 10
+      Top = 44
+      Width = 108
+      Height = 16
+      Caption = 'Tout s'#233'lectionner'
+      Color = 4207405
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 4207405
+      Font.Height = 16
+      Font.Name = 'Helvetica LT Std'
+      Font.Style = []
+      ParentColor = False
+      ParentFont = False
+      Visible = False
+      StyleElements = []
     end
     object LineP: TPanel
       Left = 0
@@ -204,7 +223,7 @@ object FastProduitsListF: TFastProduitsListF
       StyleElements = []
     end
     object ResearchProduitsEdt: TSearchBox
-      Left = 89
+      Left = 91
       Top = 14
       Width = 267
       Height = 30
@@ -230,7 +249,7 @@ object FastProduitsListF: TFastProduitsListF
       Caption = 'Par D'#233'signation ou R'#233'f'
       Checked = True
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
+      Font.Color = 4207405
       Font.Height = 15
       Font.Name = 'Helvetica LT Std'
       Font.Style = []
@@ -246,7 +265,7 @@ object FastProduitsListF: TFastProduitsListF
       Height = 17
       Caption = 'Par Code '#226' Barre'
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
+      Font.Color = 4207405
       Font.Height = 15
       Font.Name = 'Helvetica LT Std'
       Font.Style = []
@@ -280,6 +299,39 @@ object FastProduitsListF: TFastProduitsListF
       ShowHint = False
       TabOrder = 5
       StyleElements = []
+    end
+    object SelectAllSdr: TsSlider
+      Left = 124
+      Top = 48
+      Width = 40
+      Height = 12
+      BevelOuter = bvNone
+      BiDiMode = bdLeftToRight
+      Color = clWhite
+      Ctl3D = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 4207405
+      Font.Height = 12
+      Font.Name = 'Roboto'
+      Font.Style = []
+      StyleElements = []
+      ParentBiDiMode = False
+      ParentBackground = False
+      ParentCtl3D = False
+      ParentFont = False
+      TabOrder = 6
+      Visible = False
+      BoundLabel.Caption = 'sSlider1'
+      BoundLabel.Layout = sclBottomCenter
+      FontOn.Charset = DEFAULT_CHARSET
+      FontOn.Color = 4207405
+      FontOn.Height = 12
+      FontOn.Name = 'Roboto'
+      FontOn.Style = []
+      SliderCursor = crHandPoint
+      Reversed = True
+      SliderOn = False
+      OnChanging = SelectAllSdrChanging
     end
   end
   object Panel3: TPanel
@@ -364,6 +416,7 @@ object FastProduitsListF: TFastProduitsListF
     Columns = <
       item
         Alignment = taCenter
+        CellButtons = <>
         DynProps = <>
         EditButtons = <>
         FieldName = 'refer_p'
@@ -386,6 +439,7 @@ object FastProduitsListF: TFastProduitsListF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DynProps = <>
         EditButtons = <>
         FieldName = 'nom_p'
@@ -409,10 +463,11 @@ object FastProduitsListF: TFastProduitsListF
       end
       item
         Alignment = taCenter
+        CellButtons = <>
         DisplayFormat = '0.00'
         DynProps = <>
         EditButtons = <>
-        FieldName = 'QutDispo'
+        FieldName = 'qutdispo'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
         Font.Height = 14
@@ -433,6 +488,7 @@ object FastProduitsListF: TFastProduitsListF
       end
       item
         Alignment = taCenter
+        CellButtons = <>
         DynProps = <>
         EditButtons = <>
         FieldName = 'unit'
@@ -456,6 +512,7 @@ object FastProduitsListF: TFastProduitsListF
       end
       item
         Alignment = taCenter
+        CellButtons = <>
         DynProps = <>
         EditButtons = <>
         FieldName = 'famp'
@@ -479,6 +536,7 @@ object FastProduitsListF: TFastProduitsListF
       end
       item
         Alignment = taCenter
+        CellButtons = <>
         DynProps = <>
         EditButtons = <>
         FieldName = 'sfamp'
@@ -501,6 +559,7 @@ object FastProduitsListF: TFastProduitsListF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
@@ -525,6 +584,7 @@ object FastProduitsListF: TFastProduitsListF
       end
       item
         Alignment = taCenter
+        CellButtons = <>
         DynProps = <>
         EditButtons = <>
         FieldName = 'tva_p'
@@ -547,10 +607,11 @@ object FastProduitsListF: TFastProduitsListF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
-        FieldName = 'PrixATTC'
+        FieldName = 'prixattc'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
         Font.Height = 14
@@ -571,10 +632,11 @@ object FastProduitsListF: TFastProduitsListF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
-        FieldName = 'PrixVTTCD'
+        FieldName = 'prixvttcd'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
         Font.Height = 14
@@ -594,10 +656,11 @@ object FastProduitsListF: TFastProduitsListF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
-        FieldName = 'PrixVTTCR'
+        FieldName = 'prixvttcr'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
         Font.Height = 14
@@ -617,10 +680,11 @@ object FastProduitsListF: TFastProduitsListF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
-        FieldName = 'PrixVTTCG'
+        FieldName = 'prixvttcg'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
         Font.Height = 14
@@ -640,10 +704,11 @@ object FastProduitsListF: TFastProduitsListF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
-        FieldName = 'PrixVTTCA'
+        FieldName = 'prixvttca'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
         Font.Height = 14
@@ -664,6 +729,7 @@ object FastProduitsListF: TFastProduitsListF
       end
       item
         Alignment = taRightJustify
+        CellButtons = <>
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
@@ -688,6 +754,7 @@ object FastProduitsListF: TFastProduitsListF
       end
       item
         Alignment = taCenter
+        CellButtons = <>
         DynProps = <>
         EditButtons = <>
         FieldName = 'fourp'
@@ -714,7 +781,7 @@ object FastProduitsListF: TFastProduitsListF
   end
   object ProduitListDataS: TDataSource
     DataSet = MainForm.ProduitTable
-    Left = 432
-    Top = 360
+    Left = 862
+    Top = 484
   end
 end

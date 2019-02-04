@@ -84,6 +84,7 @@ type
     sImage1: TsImage;
     sImage2: TsImage;
     ProduitListSaveDg: TSaveDialog;
+    AdvToolButton4: TAdvToolButton;
     procedure AddClientsBtnClick(Sender: TObject);
     procedure EditClientsBtnClick(Sender: TObject);
     procedure ResearchClientsEdtChange(Sender: TObject);
@@ -127,6 +128,7 @@ type
     procedure Crdit1Click(Sender: TObject);
     procedure ClearRegleFilterBVLivPMenuClick(Sender: TObject);
     procedure ClearFilterBVLivPMenuClick(Sender: TObject);
+    procedure AdvToolButton4Click(Sender: TObject);
   private
     procedure GettingData;
     procedure Select_ALL;
@@ -140,6 +142,7 @@ type
     procedure Select_NOT_Valid_Credit;
     procedure Select_NOT_Valid_Debite;
     procedure Select_NOT_Valid_Regle;
+    function isClientExistInFourList(NameC: string): Boolean;
     { Private declarations }
   public
     { Public declarations }
@@ -152,7 +155,8 @@ implementation
 
 {$R *.dfm}
 
-uses UMainF,   UClientGestion, USplash,System.Threading, UWorkingSplash, UComptoir;
+uses UMainF,   UClientGestion, USplash,System.Threading, UWorkingSplash, UComptoir, USplashPrintReport,
+  UFastProduitsList;
 
 procedure TClientListF.Select_Valid;
 begin
@@ -292,63 +296,137 @@ begin
   Result := aMsgdlg.Showmodal;
 end;
 
+function TClientListF.isClientExistInFourList(NameC :string) : Boolean;
 
+begin
+
+   MainForm.SQLQuery.Active:= False;
+   MainForm.SQLQuery.SQL.Clear;
+   MainForm.SQLQuery.SQL.Text:= 'SELECT LOWER(nom_f) FROM fournisseur WHERE LOWER(nom_f) LIKE '+ QuotedStr(LowerCase(NameC));
+   MainForm.SQLQuery.Active:= True;
+
+     if  MainForm.SQLQuery.IsEmpty then
+     begin
+       Result := False;
+
+     end else
+         begin
+             Result := True;
+         end;
+
+   MainForm.SQLQuery.Active:= False;
+   MainForm.SQLQuery.SQL.Clear;
+end;
 
 procedure TClientListF.EditClientsBtnClick(Sender: TObject);
 begin
       //----------------- Show the splash screan for the produit familly to add new one---------//
-   if NOT (MainForm.ClientTable.FieldByName('code_c').AsInteger = 1) then
+   if NOT (MainForm.ClientTable.FieldByName('code_c').AsInteger = 1) AND NOT (MainForm.ClientTable.IsEmpty) then
  begin
-         ClientGestionF:=TClientGestionF.Create(ClientListF);
 
-         ClientGestionF.Left:=  ( Screen.Width div 2 ) - (ClientGestionF.Width div 2)    ;
-         ClientGestionF.Top:=   (Screen.Height div 2) - (ClientGestionF.Height div 2)    ;
-    //     MainForm.Align:= alClient;
-   //      AnimateWindow(ClientGestionF.Handle, 250, AW_VER_NEGATIVE OR AW_BLEND OR AW_ACTIVATE );
-         ClientGestionF.ClientGPgControl.TabIndex:= 0;
-         ClientGestionF.OKClientGBtn.Tag:= 1 ;
-         ClientGestionF.Show;
-         ClientGestionF.NameClientGEdt.SetFocus;
+   ClientGestionF:=TClientGestionF.Create(ClientListF);
+   ClientGestionF.Left:=  ( Screen.Width div 2 ) - (ClientGestionF.Width div 2)    ;
+   ClientGestionF.Top:=   (Screen.Height div 2) - (ClientGestionF.Height div 2)    ;
+   ClientGestionF.ClientGPgControl.TabIndex:= 0;
+   ClientGestionF.OKClientGBtn.Tag:= 1 ;
+
+//----------------- Check if exist as fournisseur and if it exist show it as -----------------------------//
+    if isClientExistInFourList(MainForm.ClientTable.FieldByName('nom_c').AsString) = True then
+    begin
+
+      ClientGestionF.Label1.Visible:= True;
+      ClientGestionF.Label2.Visible:= True;
+      ClientGestionF.ClientFourGSlider.Visible:= True;
+      ClientGestionF.ClientFourGSlider.SliderOn:= True;
+      ClientGestionF.Label1.Enabled:= False;
+      ClientGestionF.Label2.Enabled:= False;
+      ClientGestionF.ClientFourGSlider.Enabled:= False;
+      ClientGestionF.ClientFourGSlider.Enabled:= False;
+
+      ClientGestionF.Label8.Visible:= True;
+      ClientGestionF.PayClientFourGSlider.Visible:= True;
+
+    end;
+
+//----------------- SHOW CAPITAL CRDIT AND RESTE -----------------------------//
+   MainForm.SQLQuery.Active:= False;
+   MainForm.SQLQuery.Close();
+   MainForm.SQLQuery.SQL.Clear;
+   MainForm.SQLQuery.SQL.Text:=
+   'SELECT code_c, SUM(TotalV) AS Capital, SUM(TotalVR) AS Regle FROM ( '
+   +'SELECT CL.code_c, SUM(BL.montttc_bvliv) AS TotalV, SUM(BL.montver_bvliv) AS TotalVR FROM client CL '
+   +'INNER JOIN bonv_liv BL ON CL.code_c = BL.code_c '
+   +'WHERE CL.code_c = :CodeC AND BL.valider_bvliv = TRUE GROUP BY CL.code_c '
+   +'UNION ALL SELECT CL.code_c, SUM(FV.montttc_bvfac) AS TotalV, SUM(FV.montver_bvfac) AS TotalVR FROM client CL '
+   +'INNER JOIN bonv_fac FV ON CL.code_c = FV.code_c '
+   +'WHERE CL.code_c = :CodeC AND FV.valider_bvfac = TRUE GROUP BY CL.code_c '
+   +'UNION ALL SELECT CL.code_c, SUM(CT.montttc_bvctr) AS TotalV, SUM(CT.montver_bvctr) AS TotalVR FROM client CL '
+   +'INNER JOIN bonv_ctr CT ON CL.code_c = CT.code_c '
+   +'WHERE CL.code_c = :CodeC AND CT.valider_bvctr = TRUE GROUP BY CL.code_c '
+   +'UNION ALL SELECT CL.code_c, ''0'' AS TotalV, SUM(RC.montver_rc) AS TotalVR FROM client CL '
+   +'INNER JOIN regclient RC ON CL.code_c = RC.code_c '
+   +'WHERE CL.code_c = :CodeC AND RC.bon_or_no_rc = 1 GROUP BY CL.code_c '
+   +') TV GROUP BY code_c ';
+
+    MainForm.SQLQuery.ParamByName('CodeC').AsInteger := MainForm.ClientTable.FieldByName('code_c').AsInteger;
+    MainForm.SQLQuery.Open();
+
+    if NOT MainForm.SQLQuery.isEmpty then
+    begin
+     ClientGestionF.CapitalClientGLbl.Caption:= CurrToStrF( MainForm.SQLQuery.fieldbyname('capital').Value,ffNumber, 2) + ' DA';
+     ClientGestionF.RegleClientGLbl.Caption:= CurrToStrF( MainForm.SQLQuery.fieldbyname('regle').Value,ffNumber, 2) + ' DA';
+    end else
+        begin
+         ClientGestionF.CapitalClientGLbl.Caption:= CurrToStrF( 0,ffNumber, 2) + ' DA';
+         ClientGestionF.RegleClientGLbl.Caption:= CurrToStrF( 0,ffNumber, 2) + ' DA';
+        end;
 
 
-       //  MainForm.ClientTable.Refresh;
+//----------------- SHOW THE DATA ON THE CLIENT GESTION PANEL -----------------------------//
+   with MainForm.ClientTable do begin
+      ClientGestionF.ActiveClientGSlider.SliderOn:=  FieldValues['activ_c'];
+      ClientGestionF.NameClientGEdt.Text:= fieldbyname('nom_c').AsString;
+      ClientGestionF.AcitiviteClientGEdt.Text:= fieldbyname('activite_c').AsString;
+      ClientGestionF.AdrClientGEdt.Text:= fieldbyname('adr_c').AsString;
+      ClientGestionF.WilayaClientGCbx.Text:= fieldbyname('willaya_c').AsString;
+      ClientGestionF.VilleClientGCbx.Text:= fieldbyname('ville_c').AsString;
+      ClientGestionF.FixClientGEdt.Text:= fieldbyname('fix_c').AsString;
+      ClientGestionF.FaxClientGEdt.Text:= fieldbyname('fax_c').AsString;
+      ClientGestionF.MobileClientGEdt.Text:= fieldbyname('mob_c').AsString;
+      ClientGestionF.MobileClientGEdt.Text:= fieldbyname('mob2_c').AsString;
+      ClientGestionF.EmailClientGEdt.Text:= fieldbyname('email_c').AsString;
+      ClientGestionF.SiteClientGEdt.Text:= fieldbyname('siteWeb_c').AsString;
 
-    if not ClientsListDBGridEh.DataSource.DataSet.IsEmpty then
-     begin
-     //----------------- SHOW THE DATA ON THE CLIENT GESTION PANEL -----------------------------//
-         with MainForm.ClientTable do begin
-            ClientGestionF.ActiveClientGSlider.SliderOn:=  FieldValues['activ_c'];
-            ClientGestionF.NameClientGEdt.Text:= fieldbyname('nom_c').AsString;
-            ClientGestionF.AcitiviteClientGEdt.Text:= fieldbyname('activite_c').AsString;
-            ClientGestionF.AdrClientGEdt.Text:= fieldbyname('adr_c').AsString;
-            ClientGestionF.WilayaClientGCbx.Text:= fieldbyname('willaya_c').AsString;
-            ClientGestionF.VilleClientGCbx.Text:= fieldbyname('ville_c').AsString;
-            ClientGestionF.FixClientGEdt.Text:= fieldbyname('fix_c').AsString;
-            ClientGestionF.FaxClientGEdt.Text:= fieldbyname('fax_c').AsString;
-            ClientGestionF.MobileClientGEdt.Text:= fieldbyname('mob_c').AsString;
-            ClientGestionF.MobileClientGEdt.Text:= fieldbyname('mob2_c').AsString;
-            ClientGestionF.EmailClientGEdt.Text:= fieldbyname('email_c').AsString;
-            ClientGestionF.SiteClientGEdt.Text:= fieldbyname('siteWeb_c').AsString;
+      ClientGestionF.RCClientGEdt.Text:= fieldbyname('rc_c').AsString;
+      ClientGestionF.NArtClientGEdt.Text:= fieldbyname('nart_c').AsString;
+      ClientGestionF.NIFClientGEdt.Text:= fieldbyname('nif_c').AsString;
+      ClientGestionF.NISClientGEdt.Text:= fieldbyname('nis_c').AsString;
+      ClientGestionF.NBankClientGEdt.Text:= fieldbyname('nbank_c').AsString;
+      ClientGestionF.RIBClientGEdt.Text:= fieldbyname('rib_c').AsString;
+      if  fieldbyname('credit_c').Value <> null then begin
+      ClientGestionF.CreditClientGLbl.Caption:= CurrToStrF( fieldbyname('credit_c').Value,ffNumber, 2) + ' DA';
+      end;
+      if  fieldbyname('oldcredit_c').Value <> null then begin
+      ClientGestionF.OldCreditClientGEdt.Text:= CurrToStrF( fieldbyname('oldcredit_c').Value,ffNumber, 2);
+      end;
+      if  fieldbyname('maxcredit_c').Value <> null then begin
+      ClientGestionF.MaxCreditClientGEdt.Text:= CurrToStrF( fieldbyname('maxcredit_c').Value,ffNumber, 2);
+      end;
+      ClientGestionF.ModeTarifClientGCbx.ItemIndex:= fieldbyname('tarification_c').AsInteger;
+      ClientGestionF.ObserClientGMem.Text:= fieldbyname('obser_c').AsString;
+       //----- this is to move the coursour to the last  --------------------------------------------------------
+      ClientGestionF.NameClientGEdt.SelStart :=  ClientGestionF.NameClientGEdt.GetTextLen ;
+     end ;
 
-            ClientGestionF.RCClientGEdt.Text:= fieldbyname('rc_c').AsString;
-            ClientGestionF.NArtClientGEdt.Text:= fieldbyname('nart_c').AsString;
-            ClientGestionF.NIFClientGEdt.Text:= fieldbyname('nif_c').AsString;
-            ClientGestionF.NISClientGEdt.Text:= fieldbyname('nis_c').AsString;
-            ClientGestionF.NBankClientGEdt.Text:= fieldbyname('nbank_c').AsString;
-            ClientGestionF.RIBClientGEdt.Text:= fieldbyname('rib_c').AsString;
-            ClientGestionF.OldCreditClientGEdt.Text:= CurrToStrF( fieldbyname('oldcredit_c').Value,ffNumber, 2);
-            ClientGestionF.MaxCreditClientGEdt.Text:= CurrToStrF( fieldbyname('maxcredit_c').Value,ffNumber, 2);
-            ClientGestionF.ModeTarifClientGCbx.ItemIndex:= fieldbyname('tarification_c').AsInteger;
-            ClientGestionF.ObserClientGMem.Text:= fieldbyname('obser_c').AsString;
-             //----- this is to move the coursour to the last  --------------------------------------------------------
-            ClientGestionF.NameClientGEdt.SelStart :=  ClientGestionF.NameClientGEdt.GetTextLen ;
-           end ;
-   end;
 
- end else
-     begin
-       sndPlaySound('C:\Windows\Media\chord.wav', SND_NODEFAULT Or SND_ASYNC Or  SND_RING);
-     end;
+   ClientGestionF.Show;
+   ClientGestionF.NameClientGEdt.SetFocus;
+
+   MainForm.SQLQuery.Active:= False;
+   MainForm.SQLQuery.Close();
+   MainForm.SQLQuery.SQL.Clear;
+
+ end;
 end;
 
 
@@ -997,6 +1075,28 @@ begin
   MainForm.ClientTable.EnableControls;
 end;
 
+procedure TClientListF.AdvToolButton4Click(Sender: TObject);
+begin
+//-------- Show the splash screan for the Type de charge to add new one---------//
+    FSplashPrintReport:=TFSplashPrintReport.Create(ClientListF);
+    FSplashPrintReport.Tag:=0;
+
+    FSplashPrintReport.Left:=  (MainForm.Left + MainForm.Width div 2) - (FSplashPrintReport.Width div 2);
+    FSplashPrintReport.Top:=  MainForm.Top + 5 ;
+
+    if NOT (MainForm.ClientTable.IsEmpty) AND (MainForm.ClientTable.FieldByName('code_c').AsInteger <> 1 )
+    AND (MainForm.ClientTable.FieldByName('code_c').AsInteger <> 0 ) then
+    begin
+
+      FSplashPrintReport.NameReportPCbx.Text:= MainForm.ClientTable.FieldByName('nom_c').AsString;
+
+    end;
+
+
+  AnimateWindow(FSplashPrintReport.Handle, 175, AW_VER_POSITIVE OR AW_SLIDE OR AW_ACTIVATE );
+  FSplashPrintReport.Show;
+end;
+
 procedure TClientListF.ApplicationEvents1ShortCut(var Msg: TWMKey;
   var Handled: Boolean);
 begin
@@ -1392,7 +1492,22 @@ end;
 
 procedure TClientListF.FormPaint(Sender: TObject);
 begin
-MainForm.ClientTable.Refresh;
+
+ MainForm.ClientTable.Refresh;
+
+   if MainForm.totaux_ur.Checked then
+      begin
+
+       SumGirdBBVlivBtn.Enabled:= True;
+
+      end else
+      begin
+
+       SumGirdBBVlivBtn.Enabled:= False;
+
+      end;
+
+
 end;
 
 end.

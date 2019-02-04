@@ -358,7 +358,6 @@ object ClientListF: TClientListF
     HorzScrollBar.ExtraPanel.NavigatorButtons = [nbFirstEh, nbPriorEh, nbNextEh, nbLastEh, nbRefreshEh]
     HorzScrollBar.ExtraPanel.Visible = True
     HorzScrollBar.Height = 15
-    IndicatorOptions = [gioShowRowIndicatorEh]
     IndicatorParams.Color = clBtnFace
     IndicatorTitle.ShowDropDownSign = True
     IndicatorTitle.TitleButton = True
@@ -396,6 +395,7 @@ object ClientListF: TClientListF
     Columns = <
       item
         Alignment = taCenter
+        CellButtons = <>
         Checkboxes = False
         DynProps = <>
         EditButtons = <>
@@ -428,6 +428,7 @@ object ClientListF: TClientListF
       end
       item
         Alignment = taCenter
+        CellButtons = <>
         DisplayFormat = '0000'
         DynProps = <>
         EditButtons = <>
@@ -452,6 +453,7 @@ object ClientListF: TClientListF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DynProps = <>
         EditButtons = <>
         FieldName = 'nom_c'
@@ -476,6 +478,7 @@ object ClientListF: TClientListF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DynProps = <>
         EditButtons = <>
         FieldName = 'activite_c'
@@ -499,6 +502,7 @@ object ClientListF: TClientListF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DynProps = <>
         EditButtons = <>
         FieldName = 'tarification_c'
@@ -527,6 +531,7 @@ object ClientListF: TClientListF
       end
       item
         Alignment = taCenter
+        CellButtons = <>
         DynProps = <>
         EditButtons = <>
         FieldName = 'fix_c'
@@ -551,6 +556,7 @@ object ClientListF: TClientListF
       end
       item
         Alignment = taCenter
+        CellButtons = <>
         DynProps = <>
         EditButtons = <>
         FieldName = 'mob_c'
@@ -575,6 +581,7 @@ object ClientListF: TClientListF
       end
       item
         Alignment = taCenter
+        CellButtons = <>
         DynProps = <>
         EditButtons = <>
         FieldName = 'mob2_c'
@@ -599,6 +606,7 @@ object ClientListF: TClientListF
       end
       item
         Alignment = taCenter
+        CellButtons = <>
         DynProps = <>
         EditButtons = <>
         FieldName = 'fax_c'
@@ -622,6 +630,7 @@ object ClientListF: TClientListF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DynProps = <>
         EditButtons = <>
         FieldName = 'adr_c'
@@ -645,6 +654,7 @@ object ClientListF: TClientListF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DynProps = <>
         EditButtons = <>
         FieldName = 'ville_c'
@@ -668,6 +678,7 @@ object ClientListF: TClientListF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DynProps = <>
         EditButtons = <>
         FieldName = 'willaya_c'
@@ -691,6 +702,7 @@ object ClientListF: TClientListF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DynProps = <>
         EditButtons = <>
         FieldName = 'email_c'
@@ -714,6 +726,7 @@ object ClientListF: TClientListF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DynProps = <>
         EditButtons = <>
         FieldName = 'siteweb_c'
@@ -738,6 +751,7 @@ object ClientListF: TClientListF
       end
       item
         Alignment = taCenter
+        CellButtons = <>
         DynProps = <>
         EditButtons = <>
         FieldName = 'rc_c'
@@ -762,6 +776,7 @@ object ClientListF: TClientListF
       end
       item
         Alignment = taCenter
+        CellButtons = <>
         DynProps = <>
         EditButtons = <>
         FieldName = 'nif_c'
@@ -786,6 +801,7 @@ object ClientListF: TClientListF
       end
       item
         Alignment = taCenter
+        CellButtons = <>
         DynProps = <>
         EditButtons = <>
         FieldName = 'nart_c'
@@ -810,6 +826,7 @@ object ClientListF: TClientListF
       end
       item
         Alignment = taCenter
+        CellButtons = <>
         DynProps = <>
         EditButtons = <>
         FieldName = 'nis_c'
@@ -834,6 +851,7 @@ object ClientListF: TClientListF
       end
       item
         Alignment = taCenter
+        CellButtons = <>
         DynProps = <>
         EditButtons = <>
         FieldName = 'nbank_c'
@@ -858,6 +876,7 @@ object ClientListF: TClientListF
       end
       item
         Alignment = taCenter
+        CellButtons = <>
         DynProps = <>
         EditButtons = <>
         FieldName = 'rib_c'
@@ -890,6 +909,7 @@ object ClientListF: TClientListF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
@@ -923,6 +943,7 @@ object ClientListF: TClientListF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
@@ -954,6 +975,7 @@ object ClientListF: TClientListF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
@@ -997,7 +1019,7 @@ object ClientListF: TClientListF
       1022
       71)
     object EditClientsBtn: TAdvToolButton
-      Left = 598
+      Left = 597
       Top = 21
       Width = 100
       Height = 30
@@ -1025,7 +1047,7 @@ object ClientListF: TClientListF
       ShowHint = True
       Spacing = -1
       OnClick = EditClientsBtnClick
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object DeleteClientsBtn: TAdvToolButton
@@ -1057,7 +1079,7 @@ object ClientListF: TClientListF
       ShowHint = True
       Spacing = -2
       OnClick = DeleteClientsBtnClick
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object AddClientsBtn: TAdvToolButton
@@ -1089,7 +1111,7 @@ object ClientListF: TClientListF
       ShowHint = True
       Spacing = -1
       OnClick = AddClientsBtnClick
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object ResearchClientsLbl: TLabel
@@ -1289,7 +1311,7 @@ object ClientListF: TClientListF
       Shaded = False
       ShowHint = True
       Spacing = -1
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object sImage1: TsImage
@@ -1576,7 +1598,7 @@ object ClientListF: TClientListF
       ShowHint = True
       Spacing = -2
       OnClick = SumGirdBBVlivBtnClick
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object RefreshGirdBtn: TAdvToolButton
@@ -1610,7 +1632,7 @@ object ClientListF: TClientListF
       ShowHint = True
       Spacing = -2
       OnClick = RefreshGirdBtnClick
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object AdvToolButton1: TAdvToolButton
@@ -1645,7 +1667,7 @@ object ClientListF: TClientListF
       Shaded = False
       ShowHint = True
       Spacing = -2
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object AdvToolButton2: TAdvToolButton
@@ -1679,16 +1701,16 @@ object ClientListF: TClientListF
       ShowHint = True
       Spacing = -2
       OnClick = AdvToolButton2Click
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object AdvToolButton3: TAdvToolButton
-      Left = 229
+      Left = 231
       Top = 0
       Width = 26
       Height = 20
       Cursor = crHandPoint
-      Hint = 'Imprimer'
+      Hint = 'Imprimer Listing'
       Anchors = [akRight]
       AutoThemeAdapt = False
       BorderColor = 15722984
@@ -1713,7 +1735,41 @@ object ClientListF: TClientListF
       ShowHint = True
       Spacing = -2
       OnClick = AdvToolButton3Click
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
+      TMSStyle = 0
+    end
+    object AdvToolButton4: TAdvToolButton
+      Left = 259
+      Top = 0
+      Width = 26
+      Height = 20
+      Cursor = crHandPoint
+      Hint = 'Client Situation'
+      Anchors = [akRight]
+      AutoThemeAdapt = False
+      BorderColor = 15722984
+      BorderDownColor = 15722984
+      BorderHotColor = 14079702
+      Color = 15722984
+      ColorDown = 15722984
+      ColorHot = 14079702
+      ColorHotTo = 14079702
+      ColorChecked = clNone
+      DropDownSplit = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 4207405
+      Font.Height = 18
+      Font.Name = 'Roboto'
+      Font.Style = []
+      ImageIndex = 34
+      Images = MainForm.PanelIcons16
+      ParentFont = False
+      ParentShowHint = False
+      Shaded = False
+      ShowHint = True
+      Spacing = -2
+      OnClick = AdvToolButton4Click
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object Panel6: TPanel
@@ -1745,7 +1801,7 @@ object ClientListF: TClientListF
       StyleElements = []
     end
     object Panel7: TPanel
-      Left = 261
+      Left = 288
       Top = 0
       Width = 1
       Height = 20
@@ -1856,7 +1912,7 @@ object ClientListF: TClientListF
     Top = 320
   end
   object ClientListfrxRprt: TfrxReport
-    Version = '5.4.6'
+    Version = '5.6.1'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -2516,7 +2572,7 @@ object ClientListF: TClientListF
       end
     end
     object F3: TMenuItem
-      Caption = 'Filtrer par la R'#232'glement'
+      Caption = 'Filtrer par le R'#232'glement'
       ImageIndex = 1
       object RegleFilterBVLivPMenu: TMenuItem
         AutoCheck = True

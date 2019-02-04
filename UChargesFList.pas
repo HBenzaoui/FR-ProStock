@@ -107,6 +107,7 @@ type
     procedure ResearchChargeEdtKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure ApplicationEvents1ShortCut(var Msg: TWMKey; var Handled: Boolean);
+    procedure FormPaint(Sender: TObject);
   private
     procedure GettingData;
     procedure GettingDataRecu;
@@ -123,7 +124,8 @@ implementation
 {$R *.dfm}
 
 uses System.DateUtils,Vcl.Imaging.jpeg,StringTool,
-UDataModule, UChargesGestion, UMainF, USplashAddUnite, A7Rep, UComptoir;
+UDataModule, UChargesGestion, UMainF, USplashAddUnite, //A7Rep,
+ UComptoir;
 
 
 procedure TChargesFListF.AddBARecBtnClick(Sender: TObject);
@@ -688,6 +690,21 @@ begin
    end;
 end;
 
+procedure TChargesFListF.FormPaint(Sender: TObject);
+begin
+  if MainForm.totaux_ur.Checked then
+      begin
+
+       SumGirdProduitBtn.Enabled:= True;
+
+      end else
+      begin
+
+       SumGirdProduitBtn.Enabled:= False;
+
+      end;
+end;
+
 procedure TChargesFListF.FormShow(Sender: TObject);
 begin
   DataModuleF.ChargesTable.Active:= True;
@@ -791,6 +808,9 @@ end;
 
 procedure TChargesFListF.P1Click(Sender: TObject);
 begin
+ if not DataModuleF.ChargesTable.IsEmpty then
+ begin
+ 
   DataModuleF.ChargesTable.DisableControls;
    ChargefrxRprt.PrepareReport;
    GettingDataRecu;
@@ -799,6 +819,8 @@ begin
   ChargefrxRprt.ShowReport;
 
   DataModuleF.ChargesTable.EnableControls;
+ 
+ end;
 end;
 
 procedure TChargesFListF.P2Click(Sender: TObject);

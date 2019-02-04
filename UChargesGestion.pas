@@ -823,16 +823,16 @@ begin
         DataModuleF.ChargesTable.Last;
     end;
   // ------------// --- This TAG is for editing---//---------------------------------------------------
-    if Tag = 1 then
-    begin
+     if Tag = 1 then
+     begin
         CodeCHEdit:=DataModuleF.ChargesTable.FieldByName('code_ch').AsInteger;
         with DataModuleF.ChargesTable do
         begin
           Edit;
           FieldValues['nom_ch']:= NameChargeGEdt.Text;
           FieldValues['refer_ch']:= NumChargeGEdt.Caption;
-//          FieldValues['date_ch']:= DateOf(Today);
-//          FieldValues['time_ch']:=TimeOf(Now);
+          FieldValues['date_ch']:= DateChargeGD.Date;
+          FieldValues['time_ch']:=TimeOf(Now);
           FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
           FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
           FieldValues['obser_ch']:= ObserChargeMem.Text;
@@ -883,7 +883,7 @@ begin
         end;
 
 //        DataModuleF.ChargesTable.Refresh;
-    end;
+     end;
 
                  //--- this is for adding the money to the caisse----
          begin
@@ -909,7 +909,7 @@ begin
 
             MainForm.Opt_cas_bnk_CaisseTable.Append;
             MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ocb']:= CodeOCB;
-            MainForm.Opt_cas_bnk_CaisseTable.FieldValues['date_ocb']:= DateOf(Today);
+            MainForm.Opt_cas_bnk_CaisseTable.FieldValues['date_ocb']:= DateChargeGD.Date;
             MainForm.Opt_cas_bnk_CaisseTable.FieldValues['time_ocb']:= TimeOf(Now);
             MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
             MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nom_ocb']:= 'Paiement de Charge Pièce N° '+NumChargeGEdt.Caption;
@@ -970,7 +970,7 @@ begin
 
                     MainForm.Opt_cas_bnk_CaisseTable.Edit;
 //                    MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ocb']:= CodeOCB;
-                    MainForm.Opt_cas_bnk_CaisseTable.FieldValues['date_ocb']:= DateOf(Today);
+                    MainForm.Opt_cas_bnk_CaisseTable.FieldValues['date_ocb']:= DateChargeGD.Date;
                     MainForm.Opt_cas_bnk_CaisseTable.FieldValues['time_ocb']:= TimeOf(Now);;
                     MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nom_ocb']:= 'Paiement de Charge Pièce N° '+NumChargeGEdt.Caption;
                     MainForm.Opt_cas_bnk_CaisseTable.FieldValues['third_ocb']:= MainForm.UserNameLbl.Caption;

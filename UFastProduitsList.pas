@@ -7,7 +7,8 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, DBGridEhGrouping, ToolCtrlsEh,
   DBGridEhToolCtrls, DynVarsEh, Data.DB, System.ImageList, Vcl.ImgList,
   acAlphaImageList, Vcl.StdCtrls, Vcl.WinXCtrls, Vcl.Buttons, sSpeedButton,
-  Vcl.ExtCtrls, EhLibVCL, GridsEh, DBAxisGridsEh, DBGridEh, AdvToolBtn;
+  Vcl.ExtCtrls, EhLibVCL, GridsEh, DBAxisGridsEh, DBGridEh, AdvToolBtn, UDataModule,
+  sPanel, acSlider;
 
 type
   TFastProduitsListF = class(TForm)
@@ -28,6 +29,8 @@ type
     NextClientbtn: TsSpeedButton;
     PreviosClientbtn: TsSpeedButton;
     FisrtClientbtn: TsSpeedButton;
+    SelectAllLbl: TLabel;
+    SelectAllSdr: TsSlider;
     procedure FisrtClientbtnClick(Sender: TObject);
     procedure PreviosClientbtnClick(Sender: TObject);
     procedure NextClientbtnClick(Sender: TObject);
@@ -57,6 +60,8 @@ type
     procedure FormCreate(Sender: TObject);
     procedure ResearchProduitsEdtDblClick(Sender: TObject);
     procedure ResearchProduitsEdtMouseEnter(Sender: TObject);
+    procedure FormPaint(Sender: TObject);
+    procedure SelectAllSdrChanging(Sender: TObject; var CanChange: Boolean);
   private
     { Private declarations }
   public
@@ -74,7 +79,8 @@ implementation
 uses System.Contnrs,
   UMainF, UProduitGestion, USplashAddUnite, UClientGestion, UBonRecGestion,
   UBonLivGestion, UBonFacVGestion, UComptoir,  UBonFacAGestion, UPertesGestion,
-  UBonFacPGestion, UOptions;
+  UBonFacPGestion, UOptions, UReglementCGestion, UReglementFGestion,
+  USplashPrintReport, UInventory, UInventoryGestion;
 
   var
     gGrayForms: TComponentList;
@@ -104,7 +110,7 @@ begin
        ///wForm.Align:= alClient;
           wForm.WindowState := wsMaximized;
           gGrayForms.Add(wForm);
-          wForm.Position := poOwnerFormCenter;
+          wForm.Position := MainForm.Position;
           wForm.AlphaBlend := true;
           wForm.AlphaBlendValue := 80;
           wForm.Color := clBlack;
@@ -132,35 +138,66 @@ end;
 
 procedure TFastProduitsListF.FisrtClientbtnClick(Sender: TObject);
 begin
-  MainForm.ProduitTable.First;
+   if Caption='Liste des Produits' then
+   begin
+    MainForm.ProduitTable.First;
+   end;
+
+   if Caption='Liste des Clients' then
+   begin
+     MainForm.FDQuery2.First;
+   end;
 end;
 
 
 procedure TFastProduitsListF.LastClientbtnClick(Sender: TObject);
 begin
-  MainForm.ProduitTable.Last;
+     if Caption='Liste des Produits' then
+   begin
+    MainForm.ProduitTable.Last;
+   end;
+
+   if Caption='Liste des Clients' then
+   begin
+     MainForm.FDQuery2.Last;
+   end;
 end;
 
 procedure TFastProduitsListF.NextClientbtnClick(Sender: TObject);
 begin
-  MainForm.ProduitTable.Next;
+     if Caption='Liste des Produits' then
+   begin
+    MainForm.ProduitTable.Next;
+   end;
+
+   if Caption='Liste des Clients' then
+   begin
+     MainForm.FDQuery2.Next;
+   end;
 end;
 
 procedure TFastProduitsListF.PreviosClientbtnClick(Sender: TObject);
 begin
-  MainForm.ProduitTable.Prior;
+     if Caption='Liste des Produits' then
+   begin
+     MainForm.ProduitTable.Prior;
+   end;
+   
+   if Caption='Liste des Clients' then
+   begin
+     MainForm.FDQuery2.Prior;
+   end;
 end;
 
 procedure TFastProduitsListF.ProduitsListDBGridEhDblClick(Sender: TObject);
-//var CodeBR,i  : Integer;
-
 begin
-     if ProduitsListDBGridEh.ScreenToClient(Mouse.CursorPos).Y>25 then
-        begin
+ 
+   if ProduitsListDBGridEh.ScreenToClient(Mouse.CursorPos).Y>25 then
+   begin
 
          OKProduitGBtnClick(Sender);
 
-     end;
+   end;
 
 end;
 
@@ -217,30 +254,84 @@ end;
 
 procedure TFastProduitsListF.ProduitsListDBGridEhDrawColumnCell(Sender: TObject; const Rect: TRect; DataCol: Integer; Column: TColumnEh; State: TGridDrawState);
 begin
-//------ use this code to high light the selected row in dbgrid----//
- if gdSelected in State then
-begin
+ if Caption='Liste des Produits' then
+ begin
+  //------ use this code to high light the selected row in dbgrid----//
+   if gdSelected in State then
+   begin
    ProduitsListDBGridEh.Canvas.Brush.Color:=$00FFE8CD;
    ProduitsListDBGridEh.DefaultDrawColumnCell(Rect, DataCol, Column, State);
-end;
+   end;
 
-//------ use this code to orange the produit with 0 or null in prix achate ----//
-  if  (MainForm.ProduitTable.FieldValues['prixht_p'] = 0)   then
- begin
- ProduitsListDBGridEh.Canvas.Font.Color:=$000099FF;
- ProduitsListDBGridEh.DefaultDrawColumnCell(Rect, DataCol, Column, State);
+  //------ use this code to orange the produit with 0 or null in prix achate ----//
+    if  (MainForm.ProduitTable.FieldValues['prixht_p'] = 0)   then
+   begin
+   ProduitsListDBGridEh.Canvas.Font.Color:=$000099FF;
+   ProduitsListDBGridEh.DefaultDrawColumnCell(Rect, DataCol, Column, State);
+   end;
+
+   //------ use this code to red the produit with 0 or null in stock----//
+   if  (MainForm.ProduitTable.FieldValues['QutDispo'] = 0)   then
+   begin
+   ProduitsListDBGridEh.Canvas.Font.Color:=$004735F9;
+   ProduitsListDBGridEh.DefaultDrawColumnCell(Rect, DataCol, Column, State);
+   end;
+   
  end;
 
- //------ use this code to red the produit with 0 or null in stock----//
- if  (MainForm.ProduitTable.FieldValues['QutDispo'] = 0)   then
+  if Caption='Liste des Clients' then
  begin
- ProduitsListDBGridEh.Canvas.Font.Color:=$004735F9;
- ProduitsListDBGridEh.DefaultDrawColumnCell(Rect, DataCol, Column, State);
+
+   if gdSelected in State then
+   begin
+      ProduitsListDBGridEh.Canvas.Brush.Color:=$00FFE8CD;
+      ProduitsListDBGridEh.DefaultDrawColumnCell(Rect, DataCol, Column, State);
+   end;
+
+     //------ use this code to red the produit with 0 or null in stock----//
+   if (MainForm.FDQuery2.FieldByName('credit_c').AsCurrency )> 0      then
+   begin
+      ProduitsListDBGridEh.Canvas.Font.Color:=$004735F9;//   Brush.Color:=clRed;
+      ProduitsListDBGridEh.DefaultDrawColumnCell(Rect, DataCol, Column, State);
+   end;
+
+
+   //------ use this code to red the produit with 0 or null in stock----//
+   if (MainForm.FDQuery2.FieldByName('credit_c').AsCurrency ) < 0     then
+   begin
+      ProduitsListDBGridEh.Canvas.Font.Color:=$00519509;//   Brush.Color:=green;
+      ProduitsListDBGridEh.DefaultDrawColumnCell(Rect, DataCol, Column, State);
+   end;
+  
  end;
 
+  if Caption='Liste des Fournisseurs' then
+ begin
+        if gdSelected in State then
+   begin
+      ProduitsListDBGridEh.Canvas.Brush.Color:=$00FFE8CD;
+      ProduitsListDBGridEh.DefaultDrawColumnCell(Rect, DataCol, Column, State);
+   end;
+
+     //------ use this code to red the produit with 0 or null in stock----//
+   if (MainForm.FDQuery2.FieldByName('credit_f').AsCurrency )> 0      then
+   begin
+      ProduitsListDBGridEh.Canvas.Font.Color:=$004735F9;//   Brush.Color:=clRed;
+      ProduitsListDBGridEh.DefaultDrawColumnCell(Rect, DataCol, Column, State);
+   end;
+
+
+   //------ use this code to red the produit with 0 or null in stock----//
+   if (MainForm.FDQuery2.FieldByName('credit_f').AsCurrency ) < 0     then
+   begin
+      ProduitsListDBGridEh.Canvas.Font.Color:=$00519509;//   Brush.Color:=green;
+      ProduitsListDBGridEh.DefaultDrawColumnCell(Rect, DataCol, Column, State);
+   end;
+   
+ end;
 
 //  HighlightCellText(TDBGridEh(Sender),Rect, Column,ResearchProduitsEdt.Text,State);
-  end;
+end;
 
 
 procedure TFastProduitsListF.ProduitsListDBGridEhKeyPress(Sender: TObject; var Key: Char);
@@ -251,14 +342,20 @@ begin
   end;
     if Key = #13 then
   begin
+  if Caption='Liste des Produits' then
+   begin
       FastProduitsListF.OKProduitGBtnClick(Sender);
+   end;
   end;
 end;
 
 
 procedure TFastProduitsListF.ProduitsListDBGridEhTitleBtnClick(Sender: TObject; ACol: Integer; Column: TColumnEh);
 begin
-  MainForm.ProduitTable.IndexesActive := false;
+     if Caption='Liste des Produits' then
+   begin
+    MainForm.ProduitTable.IndexesActive := false;
+   end;
 end;
 
 procedure TFastProduitsListF.ResearchProduitsEdtChange(Sender: TObject);
@@ -269,6 +366,8 @@ E = ['-', '&', '"', '(', ')', '_',',','.'];
 
 begin
 
+   if Caption='Liste des Produits' then
+   begin
  //----------- Searching in databese-------------------//
       MainForm.SQLQuery.Active:=False;
       MainForm.SQLQuery.SQL.Clear;
@@ -291,7 +390,7 @@ begin
      MainForm.ProduitTable.Filtered := false;
      ResearchProduitsEdt.text := '';
     end;
-  if ResherchPARDCodProduitsRdioBtn.Checked then
+     if ResherchPARDCodProduitsRdioBtn.Checked then
     if (ResearchProduitsEdt.text <> '') then
     begin
       MainForm.ProduitTable.Filtered := false;
@@ -302,6 +401,35 @@ begin
     begin
       MainForm.ProduitTable.Filtered := false;
     end;
+   
+   end;
+
+
+   if Caption='Liste des Clients' then
+   begin
+
+      MainForm.FDQuery2.Active:=False;
+      MainForm.FDQuery2.SQL.Clear;
+      MainForm.FDQuery2.SQL.Text:=
+     'SELECT code_c,nom_c,activite_c,fix_c,mob_c,adr_c,credit_c FROM client WHERE LOWER(nom_c) LIKE LOWER' +'('''+'%'+(ResearchProduitsEdt.Text)+'%'+''')' ;
+      MainForm.FDQuery2.Active:=True
+
+     
+   end;
+
+   if Caption='Liste des Fournisseurs' then
+   begin
+
+      MainForm.FDQuery2.Active:=False;
+      MainForm.FDQuery2.SQL.Clear;
+      MainForm.FDQuery2.SQL.Text:=
+     'SELECT code_f,nom_f,fix_f,mob_f,adr_f,credit_f FROM fournisseur WHERE LOWER(nom_f) LIKE LOWER' +'('''+'%'+(ResearchProduitsEdt.Text)+'%'+''')' ;
+      MainForm.FDQuery2.Active:=True
+
+     
+   end;
+   
+   
 end;
 
 procedure TFastProduitsListF.ResearchProduitsEdtDblClick(Sender: TObject);
@@ -320,15 +448,28 @@ begin
 
     if key = VK_DOWN then
   begin
-//   key := #0;
+   if Caption='Liste des Produits' then
+   begin
      MainForm.ProduitTable.Next;
+   end else
+       begin
+          MainForm.FDQuery2.Next;
+       end;
+
+
+   
   end;
 
 
     if key = VK_UP then
   begin
-//   key := #0;
+   if Caption='Liste des Produits' then
+   begin
      MainForm.ProduitTable.Prior;
+   end else
+       begin
+        MainForm.FDQuery2.Prior; 
+       end;
   end;
 end;
 
@@ -337,43 +478,53 @@ const
   N =[Char(VK_ESCAPE)];
   E =['-', '&', '"', '(', ')', '_', ',', '.'];
 begin
+
   if (Key in N) then
   begin
    key := #0;
     ResearchProduitsEdt.Text := '';
   end;
+  
   if (key = #13)   then
   begin
    key := #0;
-
-   if  (ResearchProduitsEdt.Text <> '')  then
+   
+   if Caption='Liste des Produits' then
    begin
-   if  NOT (ResearchProduitsEdt.Text[1] in E) then
-      begin
+     if  (ResearchProduitsEdt.Text <> '')  then
+     begin
+       if  NOT (ResearchProduitsEdt.Text[1] in E) then
+          begin
 
-     if  MainForm.ProduitTable.RecordCount > 0  then
-        begin
-        OKProduitGBtnClick(Sender);
+         if  MainForm.ProduitTable.RecordCount > 0  then
+            begin
+            OKProduitGBtnClick(Sender);
+            end else
+                begin
+                  ResearchProduitsEdt.Text := '';
+                end;
         end else
             begin
-              ResearchProduitsEdt.Text := '';
+               ResearchProduitsEdt.Text := '';
             end;
-    end else
-        begin
-           ResearchProduitsEdt.Text := '';
-        end;
 
-   end else
-        begin
-
-          if  MainForm.ProduitTable.RecordCount > 0  then
+     end else
           begin
+
+            if  MainForm.ProduitTable.RecordCount > 0  then
+            begin
+            OKProduitGBtnClick(Sender);
+            end else
+                begin
+                  ResearchProduitsEdt.Text := '';
+                end;
+          end;
+          
+   
+   end else
+       begin
           OKProduitGBtnClick(Sender);
-          end else
-              begin
-                ResearchProduitsEdt.Text := '';
-              end;
-        end;
+       end;
 
   end;
 
@@ -415,6 +566,30 @@ ResearchProduitsEdt.NumbersOnly:= False;
 
 end;
 
+procedure TFastProduitsListF.SelectAllSdrChanging(Sender: TObject;
+  var CanChange: Boolean);
+var i: integer;
+begin
+
+ if SelectAllSdr.SliderOn = True then
+ begin
+       ProduitsListDBGridEh.SelectedRows.Clear;
+
+ end else
+     begin
+
+        ProduitsListDBGridEh.DataSource.DataSet.DisableControls;
+        ProduitsListDBGridEh.SelectedRows.Clear;
+        ProduitsListDBGridEh.DataSource.DataSet.First;
+        for i := 0 to ProduitsListDBGridEh.DataSource.DataSet.RecordCount-1 do
+        begin
+          ProduitsListDBGridEh.SelectedRows.CurrentRowSelected := true;
+          ProduitsListDBGridEh.DataSource.DataSet.Next;
+        end;
+        ProduitsListDBGridEh.DataSource.DataSet.EnableControls;
+     end;
+end;
+
 procedure TFastProduitsListF.ResherchPARDCodProduitsRdioBtnClick(Sender: TObject);
 begin
 ResearchProduitsEdt.Clear;
@@ -444,8 +619,11 @@ end;
 procedure TFastProduitsListF.FormShow(Sender: TObject);
 begin
   GrayFormsFp  ;
- MainForm.ProduitTable.Refresh;
- ProduitsListDBGridEh.Refresh;
+ if Caption='Liste des Produits' then
+   begin
+     MainForm.ProduitTable.Refresh;
+     ProduitsListDBGridEh.Refresh;
+   end;
 
 end;
 
@@ -453,11 +631,22 @@ procedure TFastProduitsListF.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
 
-   MainForm.SaveGridLayout(ProduitsListDBGridEh,GetCurrentDir +'\bin\gc_fstprdtlst');
+   if Caption='Liste des Produits' then
+   begin
+     MainForm.SaveGridLayout(ProduitsListDBGridEh,GetCurrentDir +'\bin\gc_fstprdtlst');
+ 
+    MainForm.ProduitTable.Filtered := false;
+   
+   end else
+       begin
+         MainForm.FDQuery2.IndexFieldNames:='';       
+         MainForm.FDQuery2.Active:= False;
+         MainForm.FDQuery2.SQL.Clear;
 
- MainForm.ProduitTable.Filtered := false;
-NormalFormsFp  ;
-//FreeAndNil(FastProduitsListF);
+       end;
+
+   NormalFormsFp  ;
+   
 end;
 
 procedure TFastProduitsListF.FormCreate(Sender: TObject);
@@ -474,8 +663,11 @@ begin
      if key = #27 then
  begin
   key := #0;
-
-  MainForm.ProduitTable.Filtered:=False;
+  
+  if Caption='Liste des Produits' then
+   begin
+     MainForm.ProduitTable.Filtered:=False;
+   end;
   ResearchProduitsEdt.Text:='';
 
   Close;
@@ -483,12 +675,54 @@ begin
  end;
 end;
 
+procedure TFastProduitsListF.FormPaint(Sender: TObject);
+begin
+
+    if (FastProduitsListF.Caption <> 'Liste des Fournisseurs') AND (FastProduitsListF.Caption <> 'Liste des Clients') then
+    begin
+
+      if MainForm.viewprixa_ur.Checked then
+      begin
+
+          ProduitsListDBGridEh.FieldColumns['prixht_p'].Visible:= true;
+          ProduitsListDBGridEh.FieldColumns['prixht_p'].MinWidth:= 100;
+          ProduitsListDBGridEh.FieldColumns['prixht_p'].Width:= 100;
+          ProduitsListDBGridEh.FieldColumns['prixht_p'].MaxWidth:= 0;
+
+
+          ProduitsListDBGridEh.FieldColumns['prixattc'].Visible:= true;
+          ProduitsListDBGridEh.FieldColumns['prixattc'].MinWidth:= 100;
+          ProduitsListDBGridEh.FieldColumns['prixattc'].Width:= 100;
+          ProduitsListDBGridEh.FieldColumns['prixattc'].MaxWidth:= 0;
+
+      end else
+      begin
+
+          ProduitsListDBGridEh.FieldColumns['prixht_p'].Visible:= false;
+          ProduitsListDBGridEh.FieldColumns['prixht_p'].MinWidth:= 0;
+          ProduitsListDBGridEh.FieldColumns['prixht_p'].Width:= 0;
+          ProduitsListDBGridEh.FieldColumns['prixht_p'].MaxWidth:= 1;
+
+
+          ProduitsListDBGridEh.FieldColumns['prixattc'].Visible:= false;
+          ProduitsListDBGridEh.FieldColumns['prixattc'].MinWidth:= 0;
+          ProduitsListDBGridEh.FieldColumns['prixattc'].Width:= 0;
+          ProduitsListDBGridEh.FieldColumns['prixattc'].MaxWidth:= 1;
+
+      end;
+    end;
+end;
+
 procedure TFastProduitsListF.OKProduitGBtnClick(Sender: TObject);
-var CodeBR,i,CodeP : Integer;
+var CodeBR,i,CodeP,CodeINV,CodeINVL : Integer;
     NomP: string;
     lookupResultRefP : Variant;
 begin
-   if NOT (MainForm.ProduitTable.IsEmpty) then
+
+   if Caption='Liste des Produits' then
+   begin
+
+    if NOT (MainForm.ProduitTable.IsEmpty) then
     begin
 
     CodePForFastPList:=MainForm.ProduitTable.FieldValues['code_p'];
@@ -511,7 +745,7 @@ begin
       MainForm.Bona_recPlistTable.IndexFieldNames:='';
       MainForm.Bona_recPlistTable.Active:=False;
       MainForm.Bona_recPlistTable.SQL.Clear;
-      MainForm.Bona_recPlistTable.SQL.Text:= 'SELECT * FROM bona_rec_list ORDER by code_barecl' ;
+      MainForm.Bona_recPlistTable.SQL.Text:= BonRecGestionF.BRLSQL+ ' ORDER by code_barecl' ;
       MainForm.Bona_recPlistTable.Active:=True;
       MainForm.Bona_recPlistTable.Last;
 
@@ -628,7 +862,7 @@ begin
       MainForm.Bona_recPlistTable.IndexFieldNames:='';
       MainForm.Bona_recPlistTable.Active:=False;
       MainForm.Bona_recPlistTable.SQL.Clear;
-      MainForm.Bona_recPlistTable.SQL.Text:= 'SELECT * FROM bona_rec_list ORDER by code_barecl' ;
+      MainForm.Bona_recPlistTable.SQL.Text:= BonRecGestionF.BRLSQL+ ' ORDER by code_barecl' ;
       MainForm.Bona_recPlistTable.Active:=True;
       MainForm.Bona_recPlistTable.Last;
            if  MainForm.Bona_recPlistTable.IsEmpty then
@@ -672,7 +906,7 @@ begin
            MainForm.ProduitTable.Filtered:=False;
           MainForm.Bona_recPlistTable.Active:=False;
           MainForm.Bona_recPlistTable.SQL.Clear;
-          MainForm.Bona_recPlistTable.SQL.Text:= 'SELECT * FROM bona_rec_list WHERE code_barec = ' + QuotedStr(IntToStr(MainForm.Bona_recTable.FieldValues['code_barec']));
+          MainForm.Bona_recPlistTable.SQL.Text:= BonRecGestionF.BRLSQL+ ' WHERE code_barec = ' + QuotedStr(IntToStr(MainForm.Bona_recTable.FieldValues['code_barec']));
           MainForm.Bona_recPlistTable.Active:=True;
 
           Close;
@@ -804,6 +1038,7 @@ begin
              MainForm.SQLQuery.FieldByName('qut_p').AsFloat :=  01;
              MainForm.SQLQuery.FieldByName('cond_p').AsInteger:=  01;
              MainForm.SQLQuery.FieldByName('tva_p').AsInteger:= MainForm.ProduitTable.FieldByName('tva_p').AsInteger;
+             MainForm.SQLQuery.FieldValues['prixht_p']:=  MainForm.ProduitTable.FieldValues['prixht_p'] ;
 
            if  NOT (MainForm.ClientTable.IsEmpty) AND (BonLivGestionF.ClientBonLivGCbx.Text<> '' ) then
            begin
@@ -931,7 +1166,7 @@ begin
           MainForm.Bonv_liv_listTable.IndexFieldNames:='';
           MainForm.Bonv_liv_listTable.Active:=False;
           MainForm.Bonv_liv_listTable.SQL.Clear;
-          MainForm.Bonv_liv_listTable.SQL.Text:= 'SELECT * FROM bonv_liv_list ORDER by code_bvlivl' ;
+          MainForm.Bonv_liv_listTable.SQL.Text:= BonLivGestionF.BLLSQL+' ORDER by code_bvlivl ' ;
           MainForm.Bonv_liv_listTable.Active:=True;
           MainForm.Bonv_liv_listTable.Last;
            if  MainForm.Bonv_liv_listTable.IsEmpty then
@@ -951,6 +1186,7 @@ begin
              MainForm.Bonv_liv_listTable.FieldValues['qut_p'] :=  01;
              MainForm.Bonv_liv_listTable.FieldValues['cond_p']:= 01;
              MainForm.Bonv_liv_listTable.FieldValues['tva_p']:= MainForm.ProduitTable.FieldValues['tva_p'];
+             MainForm.Bonv_liv_listTable.FieldValues['prixht_p']:=  MainForm.ProduitTable.FieldValues['prixht_p'] ;
 
            if  NOT (MainForm.ClientTable.IsEmpty) AND (BonLivGestionF.ClientBonLivGCbx.Text<> '' ) then
            begin
@@ -988,7 +1224,7 @@ begin
            MainForm.ProduitTable.Filtered:=False;
            MainForm.Bonv_liv_listTable.Active:=False;
            MainForm.Bonv_liv_listTable.SQL.Clear;
-           MainForm.Bonv_liv_listTable.SQL.Text:= 'SELECT * FROM bonv_liv_list WHERE code_bvliv = ' + QuotedStr(IntToStr(MainForm.Bonv_livTable.FieldValues['code_bvliv']));
+           MainForm.Bonv_liv_listTable.SQL.Text:= BonLivGestionF.BLLSQL+' WHERE code_bvliv = ' + QuotedStr(IntToStr(MainForm.Bonv_livTable.FieldValues['code_bvliv']))+' ';
            MainForm.Bonv_liv_listTable.Active:=True;
 
           MainForm.ClientTable.Active:=false;
@@ -1099,7 +1335,7 @@ begin
       MainForm.Bonv_fac_listTable.IndexFieldNames:='';
       MainForm.Bonv_fac_listTable.Active:=False;
       MainForm.Bonv_fac_listTable.SQL.Clear;
-      MainForm.Bonv_fac_listTable.SQL.Text:= 'SELECT * FROM bonv_fac_list ORDER by code_bvfacl' ;
+      MainForm.Bonv_fac_listTable.SQL.Text:= BonFacVGestionF.FVLSQL +' ORDER by code_bvfacl' ;
       MainForm.Bonv_fac_listTable.Active:=True;
       MainForm.Bonv_fac_listTable.Last;
 
@@ -1129,6 +1365,7 @@ begin
              MainForm.Bonv_fac_listTable.FieldValues['qut_p'] :=  01;
              MainForm.Bonv_fac_listTable.FieldValues['cond_p']:=  01;
              MainForm.Bonv_fac_listTable.FieldValues['tva_p']:= MainForm.ProduitTable.FieldValues['tva_p'];
+             MainForm.Bonv_fac_listTable.FieldValues['prixht_p']:=  MainForm.ProduitTable.FieldValues['prixht_p'] ;
 
            if  NOT (MainForm.ClientTable.IsEmpty) AND (BonFacVGestionF.ClientBonFacVGCbx.Text<> '' ) then
            begin
@@ -1243,7 +1480,7 @@ begin
       MainForm.Bonv_fac_listTable.IndexFieldNames:='';
       MainForm.Bonv_fac_listTable.Active:=False;
       MainForm.Bonv_fac_listTable.SQL.Clear;
-      MainForm.Bonv_fac_listTable.SQL.Text:= 'SELECT * FROM bonv_fac_list ORDER by code_bvfacl' ;
+      MainForm.Bonv_fac_listTable.SQL.Text:= BonFacVGestionF.FVLSQL +' ORDER by code_bvfacl' ;
       MainForm.Bonv_fac_listTable.Active:=True;
       MainForm.Bonv_fac_listTable.Last;
            if  MainForm.Bonv_fac_listTable.IsEmpty then
@@ -1264,6 +1501,7 @@ begin
              MainForm.Bonv_fac_listTable.FieldValues['qut_p'] :=  01;
              MainForm.Bonv_fac_listTable.FieldValues['cond_p']:= 01;
              MainForm.Bonv_fac_listTable.FieldValues['tva_p']:= MainForm.ProduitTable.FieldValues['tva_p'];
+             MainForm.Bonv_fac_listTable.FieldValues['prixht_p']:=  MainForm.ProduitTable.FieldValues['prixht_p'] ;
 
            if  NOT (MainForm.ClientTable.IsEmpty) AND (BonFacVGestionF.ClientBonFacVGCbx.Text<> '' ) then
            begin
@@ -1300,7 +1538,7 @@ begin
            MainForm.ProduitTable.Filtered:=False;
           MainForm.Bonv_fac_listTable.Active:=False;
           MainForm.Bonv_fac_listTable.SQL.Clear;
-          MainForm.Bonv_fac_listTable.SQL.Text:= 'SELECT * FROM bonv_fac_list WHERE code_bvfac = ' + QuotedStr(IntToStr(MainForm.Bonv_facTable.FieldValues['code_bvfac']));
+          MainForm.Bonv_fac_listTable.SQL.Text:= BonFacVGestionF.FVLSQL +' WHERE code_bvfac = ' + QuotedStr(IntToStr(MainForm.Bonv_facTable.FieldValues['code_bvfac']));
           MainForm.Bonv_fac_listTable.Active:=True;
 
 
@@ -1406,7 +1644,7 @@ begin
       MainForm.Bona_fac_listTable.IndexFieldNames:='';
       MainForm.Bona_fac_listTable.Active:=False;
       MainForm.Bona_fac_listTable.SQL.Clear;
-      MainForm.Bona_fac_listTable.SQL.Text:= 'SELECT * FROM bona_fac_list ORDER by code_bafacl' ;
+      MainForm.Bona_fac_listTable.SQL.Text:= BonFacAGestionF.FALSQL +' ORDER by code_bafacl' ;
       MainForm.Bona_fac_listTable.Active:=True;
       MainForm.Bona_fac_listTable.Last;
 
@@ -1524,7 +1762,7 @@ begin
       MainForm.Bona_fac_listTable.IndexFieldNames:='';
       MainForm.Bona_fac_listTable.Active:=False;
       MainForm.Bona_fac_listTable.SQL.Clear;
-      MainForm.Bona_fac_listTable.SQL.Text:= 'SELECT * FROM bona_fac_list ORDER by code_bafacl' ;
+      MainForm.Bona_fac_listTable.SQL.Text:= BonFacAGestionF.FALSQL +' ORDER by code_bafacl' ;
       MainForm.Bona_fac_listTable.Active:=True;
       MainForm.Bona_fac_listTable.Last;
            if  MainForm.Bona_fac_listTable.IsEmpty then
@@ -1568,7 +1806,7 @@ begin
            MainForm.ProduitTable.Filtered:=False;
           MainForm.Bona_fac_listTable.Active:=False;
           MainForm.Bona_fac_listTable.SQL.Clear;
-          MainForm.Bona_fac_listTable.SQL.Text:= 'SELECT * FROM bona_fac_list WHERE code_bafac = ' + QuotedStr(IntToStr(MainForm.Bona_facTable.FieldValues['code_bafac']));
+          MainForm.Bona_fac_listTable.SQL.Text:= BonFacAGestionF.FALSQL +' WHERE code_bafac = ' + QuotedStr(IntToStr(MainForm.Bona_facTable.FieldValues['code_bafac']));
           MainForm.Bona_fac_listTable.Active:=True;
 
           Close;
@@ -1661,7 +1899,7 @@ begin
       MainForm.Bonv_ctr_listTable.IndexFieldNames:='';
       MainForm.Bonv_ctr_listTable.Active:=False;
       MainForm.Bonv_ctr_listTable.SQL.Clear;
-      MainForm.Bonv_ctr_listTable.SQL.Text:= 'SELECT * FROM bonv_ctr_list ORDER by code_bvctrl' ;
+      MainForm.Bonv_ctr_listTable.SQL.Text:= BonCtrGestionF.BCLSQL +' ORDER by code_bvctrl' ;
       MainForm.Bonv_ctr_listTable.Active:=True;
       MainForm.Bonv_ctr_listTable.Last;
 
@@ -1691,6 +1929,7 @@ begin
              MainForm.Bonv_ctr_listTable.FieldValues['qut_p'] :=  01;
              MainForm.Bonv_ctr_listTable.FieldValues['cond_p']:=  01;
              MainForm.Bonv_ctr_listTable.FieldValues['tva_p']:= MainForm.ProduitTable.FieldValues['tva_p'];
+             MainForm.Bonv_ctr_listTable.FieldValues['prixht_p']:= MainForm.ProduitTable.FieldValues['prixht_p'];
 
            if  NOT (MainForm.ClientTable.IsEmpty) AND ( BonCtrGestionF.ClientBonCtrGCbx.Text<> '' ) then
            begin
@@ -1796,7 +2035,7 @@ begin
       MainForm.Bonv_ctr_listTable.IndexFieldNames:='';
       MainForm.Bonv_ctr_listTable.Active:=False;
       MainForm.Bonv_ctr_listTable.SQL.Clear;
-      MainForm.Bonv_ctr_listTable.SQL.Text:= 'SELECT * FROM bonv_ctr_list ORDER by code_bvctrl' ;
+      MainForm.Bonv_ctr_listTable.SQL.Text:= BonCtrGestionF.BCLSQL +' ORDER by code_bvctrl' ;
       MainForm.Bonv_ctr_listTable.Active:=True;
       MainForm.Bonv_ctr_listTable.Last;
            if  MainForm.Bonv_ctr_listTable.IsEmpty then
@@ -1816,6 +2055,7 @@ begin
              MainForm.Bonv_ctr_listTable.FieldValues['qut_p'] :=  01;
              MainForm.Bonv_ctr_listTable.FieldValues['cond_p']:= 01;
              MainForm.Bonv_ctr_listTable.FieldValues['tva_p']:= MainForm.ProduitTable.FieldValues['tva_p'];
+             MainForm.Bonv_ctr_listTable.FieldValues['prixht_p']:= MainForm.ProduitTable.FieldValues['prixht_p'];
 
            if  NOT (MainForm.ClientTable.IsEmpty) AND ( BonCtrGestionF.ClientBonCtrGCbx.Text<> '' ) then
            begin
@@ -1856,7 +2096,7 @@ begin
            MainForm.ProduitTable.Filtered:=False;
           MainForm.Bonv_ctr_listTable.Active:=False;
           MainForm.Bonv_ctr_listTable.SQL.Clear;
-          MainForm.Bonv_ctr_listTable.SQL.Text:= 'SELECT * FROM bonv_ctr_list WHERE code_bvctr = ' + QuotedStr(IntToStr(MainForm.Bonv_ctrTable.FieldValues['code_bvctr']));
+          MainForm.Bonv_ctr_listTable.SQL.Text:= BonCtrGestionF.BCLSQL +' WHERE code_bvctr = ' + QuotedStr(IntToStr(MainForm.Bonv_ctrTable.FieldValues['code_bvctr']));
           MainForm.Bonv_ctr_listTable.Active:=True;
 
           Close;
@@ -1974,7 +2214,7 @@ begin
       MainForm.Bonp_fac_listTable.IndexFieldNames:='';
       MainForm.Bonp_fac_listTable.Active:=False;
       MainForm.Bonp_fac_listTable.SQL.Clear;
-      MainForm.Bonp_fac_listTable.SQL.Text:= 'SELECT * FROM bonp_fac_list ORDER by code_bpfacl' ;
+      MainForm.Bonp_fac_listTable.SQL.Text:= BonFacPGestionF.FPLSQL +' ORDER by code_bpfacl' ;
       MainForm.Bonp_fac_listTable.Active:=True;
       MainForm.Bonp_fac_listTable.Last;
 
@@ -2004,6 +2244,7 @@ begin
              MainForm.Bonp_fac_listTable.FieldValues['qut_p'] :=  01;
              MainForm.Bonp_fac_listTable.FieldValues['cond_p']:=  01;
              MainForm.Bonp_fac_listTable.FieldValues['tva_p']:= MainForm.ProduitTable.FieldValues['tva_p'];
+             MainForm.Bonp_fac_listTable.FieldValues['prixht_p']:=  MainForm.ProduitTable.FieldValues['prixht_p'] ;
 
            if  NOT (MainForm.ClientTable.IsEmpty) AND (BonFacPGestionF.ClientBonFacVGCbx.Text<> '' ) then
            begin
@@ -2118,7 +2359,7 @@ begin
       MainForm.Bonp_fac_listTable.IndexFieldNames:='';
       MainForm.Bonp_fac_listTable.Active:=False;
       MainForm.Bonp_fac_listTable.SQL.Clear;
-      MainForm.Bonp_fac_listTable.SQL.Text:= 'SELECT * FROM bonp_fac_list ORDER by code_bpfacl' ;
+      MainForm.Bonp_fac_listTable.SQL.Text:= BonFacPGestionF.FPLSQL +' ORDER by code_bpfacl' ;
       MainForm.Bonp_fac_listTable.Active:=True;
       MainForm.Bonp_fac_listTable.Last;
            if  MainForm.Bonp_fac_listTable.IsEmpty then
@@ -2139,6 +2380,7 @@ begin
              MainForm.Bonp_fac_listTable.FieldValues['qut_p'] :=  01;
              MainForm.Bonp_fac_listTable.FieldValues['cond_p']:= 01;
              MainForm.Bonp_fac_listTable.FieldValues['tva_p']:= MainForm.ProduitTable.FieldValues['tva_p'];
+             MainForm.Bonp_fac_listTable.FieldValues['prixht_p']:=  MainForm.ProduitTable.FieldValues['prixht_p'] ;
 
            if  NOT (MainForm.ClientTable.IsEmpty) AND (BonFacPGestionF.ClientBonFacVGCbx.Text<> '' ) then
            begin
@@ -2175,7 +2417,7 @@ begin
            MainForm.ProduitTable.Filtered:=False;
           MainForm.Bonp_fac_listTable.Active:=False;
           MainForm.Bonp_fac_listTable.SQL.Clear;
-          MainForm.Bonp_fac_listTable.SQL.Text:= 'SELECT * FROM bonp_fac_list WHERE code_bpfac = ' + QuotedStr(IntToStr(MainForm.Bonp_facTable.FieldValues['code_bpfac']));
+          MainForm.Bonp_fac_listTable.SQL.Text:= BonFacPGestionF.FPLSQL +' WHERE code_bpfac = ' + QuotedStr(IntToStr(MainForm.Bonp_facTable.FieldValues['code_bpfac']));
           MainForm.Bonp_fac_listTable.Active:=True;
 
 
@@ -2268,44 +2510,419 @@ begin
       //-------------------------------------------------------------------------------------------------
 
 
+      //--- this tage = 8 is for select produit in Balance----//
+      if Tag = 8 then
+      begin
+        //Get the clicke button Sender and set it caption
+       FOptions.BalBtn.Caption := MainForm.ProduitTable.FieldByName('nom_p').AsString;
+       Close;
+
+      end;
+
+      //-------------------------------------------------------------------------------------------------
+
+
+       //--- this tage = 9 is for select produit in Movement De produit ----//
+      if Tag = 9 then
+      begin
+        //Get the clicke button Sender and set it caption
+
+       FSplashPrintReport.NameReportPCbx.Text:= MainForm.ProduitTable.fieldbyName('nom_p').asString;
+       FSplashPrintReport.NameReportPCbxChange(Sender);
+       Close;
+
+      end;
+
+      //-------------------------------------------------------------------------------------------------
+
+      //--- this tage = 9 is for select produit in inventory ----//
+     if Tag = 10 then
+     begin
+
+      if InventoryGestionF.Tag = 0 then
+       begin
+
+         if DataModuleF.InventoryTable.IsEmpty then
+         begin
+          CodeINV := 01;
+         end else
+         begin
+          DataModuleF.InventoryTable.Last;
+          CodeINV:= DataModuleF.InventoryTable.FieldByName('code_i').AsInteger;
+         end;
+
+       end else
+       begin
+
+        CodeINV:= DataModuleF.InventoryTable.FieldByName('code_i').AsInteger;
+
+       end;
+
+      if OKproduitGBtn.Tag = 0 then
+      begin
+       //Get the clicke button Sender and set it caption
+       CodeP:= MainForm.ProduitTable.FieldByName('code_p').AsInteger ;
+       ResearchProduitsEdt.Text:='';
+       ResearchProduitsEdt.SetFocus;
+       MainForm.ProduitTable.Filtered := false;
+       lookupResultRefP := DataModuleF.Inventory_listTable.Lookup('code_p',(CodeP),'code_p');
+       if VarIsnull( lookupResultRefP) then
+       begin
+
+        MainForm.ProduitTable.DisableControls;
+
+        DataModuleF.Inventory_listTable.DisableControls;
+        DataModuleF.Inventory_listTable.IndexFieldNames:='';
+        DataModuleF.Inventory_listTable.Active:=False;
+        DataModuleF.Inventory_listTable.SQL.Clear;
+        DataModuleF.Inventory_listTable.SQL.Text:= InventoryGestionF.INVLSQL +' ORDER by code_il' ;
+        DataModuleF.Inventory_listTable.Active:=True;
+        DataModuleF.Inventory_listTable.Last;
+
+        //----- use this code to select more than one produit ------//
+        if ProduitsListDBGridEh.SelectedRows.Count > 0 then
+        with ProduitsListDBGridEh.DataSource.DataSet do
+        for i:=0 to ProduitsListDBGridEh.SelectedRows.Count-1 do
+        begin
+            GotoBookmark(ProduitsListDBGridEh.SelectedRows.Items[i]);
+            CodeP:=MainForm.ProduitTable.FieldByName('code_p').AsInteger;
+            MainForm.SQLQuery3.Active:=False;
+            MainForm.SQLQuery3.SQL.Clear;
+            MainForm.SQLQuery3.SQl.Text:='SELECT code_p, qut_p, qutini_p FROM produit WHERE code_p = '+IntToStr(CodeP);
+            MainForm.SQLQuery3.Active:=True;
+
+          lookupResultRefP := DataModuleF.Inventory_listTable.Lookup('code_p',(CodeP),'code_p');
+          if VarIsnull( lookupResultRefP) then
+          begin
+           if DataModuleF.Inventory_listTable.IsEmpty then
+           begin
+             DataModuleF.Inventory_listTable.Last;
+             CodeINVL := 1;
+           end else
+               begin
+                DataModuleF.Inventory_listTable.Last;
+                CodeINVL:= DataModuleF.Inventory_listTable.FieldValues['code_il'] + 1 ;
+               end;
+
+             DataModuleF.Inventory_listTable.Append;
+             DataModuleF.Inventory_listTable.FieldByName('code_il').AsInteger:= CodeINVL ;
+             DataModuleF.Inventory_listTable.FieldByName('code_i').AsInteger:=  CodeINV;
+             DataModuleF.Inventory_listTable.FieldByName('code_p').AsInteger:=   CodeP;
+             DataModuleF.Inventory_listTable.FieldByName('qutphys_il').AsFloat :=
+             MainForm.SQLQuery3.FieldByName('qut_p').AsFloat + MainForm.SQLQuery3.FieldByName('qutini_p').AsFloat;
+             DataModuleF.Inventory_listTable.Post ;
+
+            MainForm.SQLQuery3.Active:=False;
+            MainForm.SQLQuery3.SQL.Clear;
+          end;
+
+        end;
+           ProduitsListDBGridEh.SelectedRows.Clear;
+           DataModuleF.Inventory_listTable.IndexFieldNames:='code_i';
+           DataModuleF.Inventory_listTable.Last;
+           DataModuleF.Inventory_listTable.EnableControls;
+           DataModuleF.Inventory_listTable.Refresh;
+           MainForm.ProduitTable.EnableControls;
+
+       end;
+
+      end;
+
+      if OKproduitGBtn.Tag = 1 then
+      begin
+
+        MainForm.SQLQuery.Active:=False;
+        MainForm.SQLQuery.SQL.Clear;
+        MainForm.SQLQuery.SQL.Text:= 'SELECT code_p,prixht_p,code_l,code_u FROM produit WHERE code_p = '
+        +IntToStr(MainForm.ProduitTable.FieldByName('code_p').AsInteger);
+        MainForm.SQLQuery.Active:=True;
+        CodeP:= MainForm.SQLQuery.FieldByName('code_p').AsInteger ;
+
+       lookupResultRefP := DataModuleF.Inventory_listTable.Lookup('code_p',(CodeP),'code_p');
+       if VarIsnull( lookupResultRefP) then
+       begin
+
+        if InventoryGestionF.Tag = 0 then
+         begin
+
+           if DataModuleF.InventoryTable.IsEmpty then
+           begin
+            CodeINV := 01;
+           end else
+           begin
+            DataModuleF.InventoryTable.Last;
+            CodeINV:= DataModuleF.InventoryTable.FieldByName('code_i').AsInteger;
+           end;
+
+         end else
+         begin
+
+          CodeINV:= DataModuleF.InventoryTable.FieldByName('code_i').AsInteger;
+
+         end;
+
+        if  MainForm.SQLQuery.RecordCount > 0  then
+        begin
+
+            MainForm.SQLQuery3.Active:=False;
+            MainForm.SQLQuery3.SQL.Clear;
+            MainForm.SQLQuery3.SQl.Text:='SELECT code_p, qut_p, qutini_p FROM produit WHERE code_p = '+IntToStr(CodeP);
+            MainForm.SQLQuery3.Active:=True;
+
+          DataModuleF.Inventory_listTable.DisableControls;
+          DataModuleF.Inventory_listTable.IndexFieldNames:='';
+          DataModuleF.Inventory_listTable.Active:=False;
+          DataModuleF.Inventory_listTable.SQL.Clear;
+          DataModuleF.Inventory_listTable.SQL.Text:= InventoryGestionF.INVLSQL+' ORDER by code_il  ' ;
+          DataModuleF.Inventory_listTable.Active:=True;
+
+           if  DataModuleF.Inventory_listTable.IsEmpty then
+           begin
+             CodeINVL := 1;
+           end else
+               begin
+                DataModuleF.Inventory_listTable.Last;
+                CodeINVL:= DataModuleF.Inventory_listTable.FieldValues['code_il'] + 1 ;
+               end;
+
+           DataModuleF.Inventory_listTable.Append;
+           DataModuleF.Inventory_listTable.FieldByName('code_il').AsInteger:= CodeINVL ;
+           DataModuleF.Inventory_listTable.FieldByName('code_i').AsInteger:=  CodeINV;
+           DataModuleF.Inventory_listTable.FieldByName('code_p').AsInteger:=  CodeP ;
+           DataModuleF.Inventory_listTable.FieldByName('qutphys_il').AsFloat :=
+           MainForm.SQLQuery3.FieldByName('qut_p').AsFloat + MainForm.SQLQuery3.FieldByName('qutini_p').AsFloat;
+
+
+          DataModuleF.Inventory_listTable.Post ;
+          DataModuleF.Inventory_listTable.IndexFieldNames:='code_i';
+
+          DataModuleF.Inventory_listTable.Active:=False;
+          DataModuleF.Inventory_listTable.SQL.Clear;
+          DataModuleF.Inventory_listTable.SQL.Text:= InventoryGestionF.INVLSQL+' WHERE code_i = ' + IntToStr(CodeINV) +' ';
+          DataModuleF.Inventory_listTable.Active:=True;
+
+          InventoryGestionF.ProduitsListDBGridEh.SetFocus;
+
+         ProduitsListDBGridEh.SelectedIndex:=4;
+         ProduitsListDBGridEh.EditorMode:=True;
+
+         DataModuleF.Inventory_listTable.EnableControls;
+         DataModuleF.Inventory_listTable.Last;
+
+         MainForm.SQLQuery3.Active:=False;
+         MainForm.SQLQuery3.SQL.Clear;
+
+          end;
+
+
+        MainForm.SQLQuery.Active:=False;
+        MainForm.SQLQuery.SQL.Clear;
+
+        DataModuleF.Inventory_listTable.Refresh;
+        DataModuleF.Inventory_listTable.Last;
+
+
+       end;
+
+      end;
+
+      DataModuleF.Inventory_listTable.Close;
+      DataModuleF.Inventory_listTable.Open;
+      Close;
+
+     end;
+
+      //-------------------------------------------------------------------------------------------------
+
     end;
+    
+ //------End for produit---------------------------------
+   end;
+
+   //This is for chosing clients
+   if Caption='Liste des Clients' then
+   begin
+    //This tag = 0 if for choosing client in bon livaration
+    if Tag = 0 then
+    begin
+      
+     BonLivGestionF.ClientBonLivGCbx.Text:= MainForm.FDQuery2.fieldbyName('nom_c').asString;
+     BonLivGestionF.ProduitBonLivGCbx.SetFocus;
+     Close;
+
+    end;
+
+    //This tag = 1 if for choosing client in Facture preforma
+    if Tag = 1 then
+    begin
+
+     BonFacPGestionF.ClientBonFacVGCbx.Text:= MainForm.FDQuery2.fieldbyName('nom_c').asString;
+     BonFacPGestionF.ProduitBonFacVGCbx.SetFocus;
+     Close;
+      
+    end;
+
+    //This tag = 2 if for choosing client in Facture Vente
+    if Tag = 2 then
+    begin
+
+     BonFacVGestionF.ClientBonFacVGCbx.Text:= MainForm.FDQuery2.fieldbyName('nom_c').asString;
+     BonFacVGestionF.ProduitBonFacVGCbx.SetFocus;
+     Close;
+      
+    end;
+
+    //This tag = 3 if for choosing client in Comptoir
+    if Tag = 3 then
+    begin
+
+     BonCtrGestionF.ClientBonCtrGCbx.Text:= MainForm.FDQuery2.fieldbyName('nom_c').asString;
+     BonCtrGestionF.ProduitBonCtrGCbx.SetFocus;
+     Close;    
+      
+    end;
+
+
+        //This tag = 4 if for choosing client in Reg Client
+    if Tag = 4 then
+    begin
+
+     ReglementCGestionF.ClientRegCGCbx.Text:= MainForm.FDQuery2.fieldbyName('nom_c').asString;
+     ReglementCGestionF.ClientRegCGCbxChange(Sender);
+     ReglementCGestionF.VerRegCGEdt.SetFocus;
+     Close;    
+      
+    end;
+
+
+        //This tag = 5 if for choosing client in Situation Client
+    if Tag = 5 then
+    begin
+
+     FSplashPrintReport.NameReportPCbx.Text:= MainForm.FDQuery2.fieldbyName('nom_c').asString;
+     FSplashPrintReport.NameReportPCbxChange(Sender);
+     Close;
+
+    end;
+
+   
+   end;
+
+
+      //This is for chosing Four
+   if Caption='Liste des Fournisseurs' then
+   begin
+    //This tag = 0 if for choosing client in bon reception
+    if Tag = 0 then
+    begin
+
+     BonRecGestionF.FournisseurBonRecGCbx.Text:= MainForm.FDQuery2.fieldbyName('nom_f').asString;
+     BonRecGestionF.ProduitBonRecGCbx.SetFocus;
+     Close;
+      
+    end;
+
+    //This tag = 1 if for choosing client in Facture achat
+    if Tag = 1 then
+    begin
+
+     BonFacAGestionF.FourBonFacAGCbx.Text:= MainForm.FDQuery2.fieldbyName('nom_f').asString;
+     BonFacAGestionF.ProduitBonFacAGCbx.SetFocus;
+     Close;
+      
+    end;
+
+        //This tag = 2 if for choosing client in Reg Four
+    if Tag = 2 then
+    begin
+
+     ReglementFGestionF.FournisseurRegFGCbx.Text:= MainForm.FDQuery2.fieldbyName('nom_f').asString;
+     ReglementFGestionF.FournisseurRegFGCbxChange(Sender);
+     ReglementFGestionF.VerRegFGEdt.SetFocus;
+     Close;
+      
+    end;
+
+        //This tag = 3 if for choosing client in Situation Four
+    if Tag = 3 then
+    begin
+
+     FSplashPrintReport.NameReportPCbx.Text:= MainForm.FDQuery2.fieldbyName('nom_f').asString;
+     FSplashPrintReport.NameReportPCbxChange(Sender);
+     Close;
+      
+    end;
+
+   
+   end;
+   
+   
 
 end;
 
 procedure TFastProduitsListF.ProduitsListDBGridEhCheckRowHaveDetailPanel(
   Sender: TCustomDBGridEh; var RowHaveDetailPanel: Boolean);
 begin
-if ProduitsListDBGridEh.SelectedRows.Count > 0  then
-begin
-OKProduitGBtn.Caption:='Ajouter'  ;
-OKProduitGBtn.ImageIndex:=10;
-OKProduitGBtn.Margin:= -1;
-OKProduitGBtn.Spacing:= -1;
-OKproduitGBtn.Tag := 0;
 
-end;
-if ProduitsListDBGridEh.SelectedRows.Count <= 0 then
-begin
-OKProduitGBtn.Caption:='OK' ;
-OKProduitGBtn.ImageIndex:=17;
-OKProduitGBtn.Margin:= 10;
-OKProduitGBtn.Spacing:= 10;
+ if Caption='Liste des Produits' then
+ begin
+  if ProduitsListDBGridEh.SelectedRows.Count > 0  then
+  begin
+  OKProduitGBtn.Caption:='Ajouter'  ;
+  OKProduitGBtn.ImageIndex:=10;
+  OKProduitGBtn.Margin:= -1;
+  OKProduitGBtn.Spacing:= -1;
+  OKproduitGBtn.Tag := 0;
 
-end;
+  end;
+  if ProduitsListDBGridEh.SelectedRows.Count <= 0 then
+  begin
+  OKProduitGBtn.Caption:='OK' ;
+  OKProduitGBtn.ImageIndex:=17;
+  OKProduitGBtn.Margin:= 10;
+  OKProduitGBtn.Spacing:= 10;
+
+  end;
+   
+ end;
 
 end;
 
 procedure TFastProduitsListF.CancelProduitGBtnClick(Sender: TObject);
 begin
-MainForm.ProduitTable.Filtered:=False;
+     if Caption='Liste des Produits' then
+   begin
+     MainForm.ProduitTable.Filtered:=False;
+   end;
   ResearchProduitsEdt.Text:='';
-Close;
+  Close;
 
 end;
 
 procedure TFastProduitsListF.ResearchProduitsEdtEnter(Sender: TObject);
+var
+  KeyState: TKeyboardState;
 begin
-OKproduitGBtn.Tag := 1;
+
+   if Caption='Liste des Produits' then
+   begin
+    OKproduitGBtn.Tag := 1;
+   end;
+
+   if ResherchPARDCodProduitsRdioBtn.Checked then
+ BEGIN
+  //turn on CapsLock when enter edit to make sure codebare read well
+  GetKeyboardState(KeyState);
+  if (KeyState[VK_CAPITAL]=0) then
+  begin
+    // Simulate a "CAPS LOCK" key release
+    Keybd_Event(VK_CAPITAL, 1, KEYEVENTF_EXTENDEDKEY or 0, 0);
+    // Simulate a "CAPS LOCK" key press
+    Keybd_Event(VK_CAPITAL, 1, KEYEVENTF_EXTENDEDKEY or KEYEVENTF_KEYUP, 0);
+  end;
+ END;
+
+
 end;
 
 procedure TFastProduitsListF.FormActivate(Sender: TObject);

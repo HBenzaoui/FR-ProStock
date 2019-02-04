@@ -26,7 +26,7 @@ object FSplashVersement: TFSplashVersement
   object Label3: TLabel
     Left = 8
     Top = 86
-    Width = 97
+    Width = 92
     Height = 18
     Anchors = [akLeft, akBottom]
     Caption = 'Ancien Solde:'
@@ -55,7 +55,7 @@ object FSplashVersement: TFSplashVersement
   object Label9: TLabel
     Left = 8
     Top = 225
-    Width = 79
+    Width = 75
     Height = 18
     Anchors = [akLeft, akBottom]
     Caption = 'Versement:'
@@ -69,7 +69,7 @@ object FSplashVersement: TFSplashVersement
   object Label10: TLabel
     Left = 8
     Top = 296
-    Width = 67
+    Width = 65
     Height = 18
     Anchors = [akLeft, akBottom]
     Caption = 'Le Reste:'
@@ -127,7 +127,7 @@ object FSplashVersement: TFSplashVersement
     ShowHint = True
     Spacing = 10
     OnClick = OKVersementSBtnClick
-    Version = '1.6.1.2'
+    Version = '1.6.2.0'
     TMSStyle = 0
   end
   object CancelVersementSBtn: TAdvToolButton
@@ -159,7 +159,7 @@ object FSplashVersement: TFSplashVersement
     ShowHint = True
     Spacing = -1
     OnClick = CancelVersementSBtnClick
-    Version = '1.6.1.2'
+    Version = '1.6.2.0'
     ExplicitTop = 381
     TMSStyle = 0
   end
@@ -356,12 +356,12 @@ object FSplashVersement: TFSplashVersement
     Font.Height = 12
     Font.Name = 'Roboto'
     Font.Style = []
+    StyleElements = []
     ParentBiDiMode = False
     ParentBackground = False
     ParentCtl3D = False
     ParentFont = False
     TabOrder = 8
-    StyleElements = []
     BoundLabel.Caption = 'sSlider1'
     BoundLabel.Layout = sclBottomCenter
     FontOn.Charset = DEFAULT_CHARSET
@@ -646,7 +646,7 @@ object FSplashVersement: TFSplashVersement
     SmallFont.Height = -9
     SmallFont.Name = 'Segoe UI'
     SmallFont.Style = []
-    Version = '1.8.1.1'
+    Version = '1.8.4.1'
     OnKeyClick = AdvSmoothTouchKeyBoard1KeyClick
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText

@@ -318,6 +318,7 @@ object ProduitsListF: TProduitsListF
   Visible = True
   OnClose = FormClose
   OnCreate = FormCreate
+  OnPaint = FormPaint
   OnShow = FormShow
   DesignSize = (
     951
@@ -355,7 +356,6 @@ object ProduitsListF: TProduitsListF
     HorzScrollBar.ExtraPanel.NavigatorButtons = [nbFirstEh, nbPriorEh, nbNextEh, nbLastEh, nbRefreshEh]
     HorzScrollBar.ExtraPanel.Visible = True
     HorzScrollBar.Height = 15
-    IndicatorOptions = [gioShowRowIndicatorEh]
     IndicatorParams.Color = clBtnFace
     IndicatorTitle.ShowDropDownSign = True
     IndicatorTitle.TitleButton = True
@@ -394,6 +394,7 @@ object ProduitsListF: TProduitsListF
     Columns = <
       item
         Alignment = taCenter
+        CellButtons = <>
         DynProps = <>
         EditButtons = <>
         FieldName = 'refer_p'
@@ -416,6 +417,7 @@ object ProduitsListF: TProduitsListF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DynProps = <>
         EditButtons = <>
         FieldName = 'nom_p'
@@ -439,6 +441,7 @@ object ProduitsListF: TProduitsListF
       end
       item
         Alignment = taCenter
+        CellButtons = <>
         DisplayFormat = '0.00 %'
         DynProps = <>
         EditButtons = <>
@@ -463,6 +466,7 @@ object ProduitsListF: TProduitsListF
       end
       item
         Alignment = taCenter
+        CellButtons = <>
         DynProps = <>
         EditButtons = <>
         FieldName = 'famp'
@@ -486,6 +490,7 @@ object ProduitsListF: TProduitsListF
       end
       item
         Alignment = taCenter
+        CellButtons = <>
         DynProps = <>
         EditButtons = <>
         FieldName = 'sfamp'
@@ -517,6 +522,7 @@ object ProduitsListF: TProduitsListF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
@@ -547,10 +553,11 @@ object ProduitsListF: TProduitsListF
         Width = 130
       end
       item
+        CellButtons = <>
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
-        FieldName = 'PrixATTC'
+        FieldName = 'prixattc'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
         Font.Height = 14
@@ -569,6 +576,7 @@ object ProduitsListF: TProduitsListF
         Footers = <>
         Layout = tlCenter
         Title.Alignment = taCenter
+        Title.Caption = 'PrixATTC'
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = 4207405
         Title.Font.Height = 16
@@ -580,10 +588,11 @@ object ProduitsListF: TProduitsListF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
-        FieldName = 'ValueStock'
+        FieldName = 'valuestock'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
         Font.Height = 14
@@ -612,6 +621,7 @@ object ProduitsListF: TProduitsListF
         Width = 130
       end
       item
+        CellButtons = <>
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
@@ -645,10 +655,11 @@ object ProduitsListF: TProduitsListF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
-        FieldName = 'PrixVTTCD'
+        FieldName = 'prixvttcd'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
         Font.Height = 14
@@ -681,6 +692,7 @@ object ProduitsListF: TProduitsListF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
@@ -714,10 +726,11 @@ object ProduitsListF: TProduitsListF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
-        FieldName = 'PrixVTTCR'
+        FieldName = 'prixvttcr'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
         Font.Height = 14
@@ -748,6 +761,7 @@ object ProduitsListF: TProduitsListF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
@@ -781,10 +795,11 @@ object ProduitsListF: TProduitsListF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
-        FieldName = 'PrixVTTCG'
+        FieldName = 'prixvttcg'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
         Font.Height = 14
@@ -815,6 +830,7 @@ object ProduitsListF: TProduitsListF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
@@ -839,10 +855,11 @@ object ProduitsListF: TProduitsListF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
-        FieldName = 'PrixVTTCA'
+        FieldName = 'prixvttca'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
         Font.Height = 14
@@ -863,6 +880,7 @@ object ProduitsListF: TProduitsListF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
@@ -887,10 +905,11 @@ object ProduitsListF: TProduitsListF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
-        FieldName = 'PrixVTTCA2'
+        FieldName = 'prixvttca2'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
         Font.Height = 14
@@ -912,11 +931,12 @@ object ProduitsListF: TProduitsListF
       end
       item
         Alignment = taCenter
+        CellButtons = <>
         Color = 15722984
         DisplayFormat = '0.00'
         DynProps = <>
         EditButtons = <>
-        FieldName = 'QutDispo'
+        FieldName = 'qutdispo'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
         Font.Height = 14
@@ -947,6 +967,7 @@ object ProduitsListF: TProduitsListF
       end
       item
         Alignment = taCenter
+        CellButtons = <>
         DynProps = <>
         EditButtons = <>
         FieldName = 'unit'
@@ -969,6 +990,7 @@ object ProduitsListF: TProduitsListF
       end
       item
         Alignment = taCenter
+        CellButtons = <>
         DynProps = <>
         EditButtons = <>
         FieldName = 'fourp'
@@ -991,6 +1013,7 @@ object ProduitsListF: TProduitsListF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DynProps = <>
         EditButtons = <>
         FieldName = 'perissable_p'
@@ -1015,6 +1038,7 @@ object ProduitsListF: TProduitsListF
       end
       item
         Alignment = taCenter
+        CellButtons = <>
         DynProps = <>
         EditButtons = <>
         FieldName = 'local'
@@ -1038,6 +1062,7 @@ object ProduitsListF: TProduitsListF
       end
       item
         Alignment = taCenter
+        CellButtons = <>
         DynProps = <>
         EditButtons = <>
         FieldName = 'codebar_p'
@@ -1106,7 +1131,7 @@ object ProduitsListF: TProduitsListF
       ShowHint = True
       Spacing = -1
       OnClick = EditProduitsBtnClick
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object DeleteProduitsBtn: TAdvToolButton
@@ -1138,7 +1163,7 @@ object ProduitsListF: TProduitsListF
       ShowHint = True
       Spacing = -2
       OnClick = DeleteProduitsBtnClick
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object AddProduitsBtn: TAdvToolButton
@@ -1170,7 +1195,7 @@ object ProduitsListF: TProduitsListF
       ShowHint = True
       Spacing = -1
       OnClick = AddProduitsBtnClick
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object ResearchProduitsLbl: TLabel
@@ -1285,7 +1310,7 @@ object ProduitsListF: TProduitsListF
       Shaded = False
       ShowHint = True
       Spacing = -1
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object TVAFilterLbl: TLabel
@@ -1393,6 +1418,7 @@ object ProduitsListF: TProduitsListF
       ParentFont = False
       TabOrder = 0
       OnChange = ResearchProduitsEdtChange
+      OnEnter = ResearchProduitsEdtEnter
       OnKeyDown = ResearchProduitsEdtKeyDown
       OnKeyPress = ResearchProduitsEdtKeyPress
     end
@@ -1549,7 +1575,7 @@ object ProduitsListF: TProduitsListF
       ShowHint = True
       Spacing = -2
       OnClick = SumGirdProduitBtnClick
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object RefreshGirdBtn: TAdvToolButton
@@ -1583,7 +1609,7 @@ object ProduitsListF: TProduitsListF
       ShowHint = True
       Spacing = -2
       OnClick = RefreshGirdBtnClick
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object AdvToolButton1: TAdvToolButton
@@ -1618,7 +1644,7 @@ object ProduitsListF: TProduitsListF
       Shaded = False
       ShowHint = True
       Spacing = -2
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object AdvToolButton2: TAdvToolButton
@@ -1652,7 +1678,7 @@ object ProduitsListF: TProduitsListF
       ShowHint = True
       Spacing = -2
       OnClick = AdvToolButton2Click
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object AdvToolButton3: TAdvToolButton
@@ -1686,7 +1712,7 @@ object ProduitsListF: TProduitsListF
       ShowHint = True
       Spacing = -2
       OnClick = AdvToolButton3Click
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object AdvToolButton4: TAdvToolButton
@@ -1720,7 +1746,75 @@ object ProduitsListF: TProduitsListF
       ShowHint = True
       Spacing = -2
       OnClick = AdvToolButton4Click
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
+      TMSStyle = 0
+    end
+    object ProduitMovementBtn: TAdvToolButton
+      Left = 322
+      Top = 0
+      Width = 26
+      Height = 20
+      Cursor = crHandPoint
+      Hint = 'Mouvement de Produit'
+      Anchors = [akRight]
+      AutoThemeAdapt = False
+      BorderColor = 15722984
+      BorderDownColor = 15722984
+      BorderHotColor = 14079702
+      Color = 15722984
+      ColorDown = 15722984
+      ColorHot = 14079702
+      ColorHotTo = 14079702
+      ColorChecked = clNone
+      DropDownSplit = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 4207405
+      Font.Height = 18
+      Font.Name = 'Roboto'
+      Font.Style = []
+      ImageIndex = 36
+      Images = MainForm.PanelIcons16
+      ParentFont = False
+      ParentShowHint = False
+      Shaded = False
+      ShowHint = True
+      Spacing = -2
+      OnClick = ProduitMovementBtnClick
+      Version = '1.6.2.0'
+      TMSStyle = 0
+    end
+    object ProduitMovementAllBtn: TAdvToolButton
+      Left = 294
+      Top = 0
+      Width = 26
+      Height = 20
+      Cursor = crHandPoint
+      Hint = 'Tous les Mouvements des Produits'
+      Anchors = [akRight]
+      AutoThemeAdapt = False
+      BorderColor = 15722984
+      BorderDownColor = 15722984
+      BorderHotColor = 14079702
+      Color = 15722984
+      ColorDown = 15722984
+      ColorHot = 14079702
+      ColorHotTo = 14079702
+      ColorChecked = clNone
+      DropDownSplit = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 4207405
+      Font.Height = 18
+      Font.Name = 'Roboto'
+      Font.Style = []
+      ImageIndex = 37
+      Images = MainForm.PanelIcons16
+      ParentFont = False
+      ParentShowHint = False
+      Shaded = False
+      ShowHint = True
+      Spacing = -2
+      OnClick = ProduitMovementAllBtnClick
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object Panel5: TPanel
@@ -1777,6 +1871,34 @@ object ProduitsListF: TProduitsListF
       ParentShowHint = False
       ShowHint = False
       TabOrder = 1
+      StyleElements = []
+    end
+    object Panel1: TPanel
+      Left = 351
+      Top = 0
+      Width = 1
+      Height = 20
+      ParentCustomHint = False
+      Anchors = [akTop, akRight]
+      BevelEdges = []
+      BevelOuter = bvNone
+      BiDiMode = bdLeftToRight
+      Color = 13421772
+      Ctl3D = True
+      DoubleBuffered = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentBiDiMode = False
+      ParentBackground = False
+      ParentCtl3D = False
+      ParentDoubleBuffered = False
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = False
+      TabOrder = 2
       StyleElements = []
     end
   end
@@ -2753,14 +2875,14 @@ object ProduitsListF: TProduitsListF
       FF00FF000000FF00FF00FFFF0000FFFFFF0000000000}
   end
   object ProduitListfrxRprt: TfrxReport
-    Version = '5.4.6'
+    Version = '5.6.1'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
     PreviewOptions.Zoom = 1.000000000000000000
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
-    ReportOptions.CreateDate = 42576.399521435200000000
+    ReportOptions.CreateDate = 42576.399521435210000000
     ReportOptions.LastChange = 42663.583965324080000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
@@ -3476,7 +3598,7 @@ object ProduitsListF: TProduitsListF
       end
       object N0TVA1: TMenuItem
         AutoCheck = True
-        Caption = '7 %TVA'
+        Caption = '9 %TVA'
         ImageIndex = 17
         RadioItem = True
         OnClick = N0TVA1Click

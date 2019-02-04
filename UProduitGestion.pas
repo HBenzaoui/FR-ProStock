@@ -104,19 +104,18 @@ type
     MaxStockProduitGCbx: TEdit;
     MulteCBProduitGBtn: TAdvToolButton;
     Label5: TLabel;
-    Panel1: TPanel;
     ImageShowProduitG: TsImage;
     ImageEditProduitGBtn: TAdvToolButton;
     ImageDeleteProduitGBtn: TAdvToolButton;
     OpenPictureDialogProduitG: TOpenPictureDialog;
     sAlphaImageList1: TsAlphaImageList;
-    Panel2: TPanel;
     Panel3: TPanel;
     Panel4: TPanel;
     RequiredRefProduitGlbl: TLabel;
     RefProduitGErrorP: TPanel;
     DatePerProduitGD: TDateTimePicker;
     ShowKeyBoardProduitGBtn: TAdvToolButton;
+    Shape1: TShape;
     procedure ShowCalculaturProduitGBtnClick(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -175,7 +174,6 @@ type
     procedure ImageDeleteProduitGBtnClick(Sender: TObject);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
     procedure RefProduitGEdtChange(Sender: TObject);
-    procedure DatePerProduitGDChange(Sender: TObject);
     procedure DatePerProduitGDKeyUp(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure MargeDProduitEdtClick(Sender: TObject);
@@ -219,6 +217,10 @@ type
     procedure MargeA2ProduitEdtKeyPress(Sender: TObject; var Key: Char);
     procedure CodeBarProduitGEdtEnter(Sender: TObject);
     procedure ShowKeyBoardProduitGBtnClick(Sender: TObject);
+    procedure NameProduitGEdtMouseEnter(Sender: TObject);
+    procedure TVAProduitGCbxKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure TVAProduitGCbxKeyPress(Sender: TObject; var Key: Char);
 
   private
     { Private declarations }
@@ -237,11 +239,11 @@ implementation
 
 {$R *.dfm}
 
-uses Winapi.ShellAPI, UClientGestion, UMainF, USplashAddUnite, UFournisseurList,
+uses Winapi.ShellAPI,DateUtils, UClientGestion, UMainF, USplashAddUnite, UFournisseurList,
   USplashAddCodeBarre, math, UFournisseurGestion, USplash, UProduitsList
 
   , UComptoir, UBonFacAGestion, UBonFacVGestion, UBonLivGestion, UBonRecGestion,
-  UPertesGestion, UBonFacPGestion;
+  UPertesGestion, UBonFacPGestion, UInventoryGestion;
 
 
 //----------- use this procedure to set center aligment text for the combobox---////
@@ -486,7 +488,16 @@ begin
          begin
          MainForm.ProduitTable.DisableControls;
          MainForm.ProduitTable.Active:= False;
-         MainForm.ProduitTable.SQL.Text:= 'SELECT * FROM produit WHERE code_p = ' +IntToStr(CodeP);
+         MainForm.ProduitTable.SQL.Text:= 'SELECT *, '
+          +' ((prixht_p * tva_p)/100+ prixht_p ) AS PrixATTC, '
+          +' ((prixvd_p * tva_p)/100+ prixvd_p ) AS PrixVTTCD, '
+          +' ((prixvr_p * tva_p)/100+ prixvr_p ) AS PrixVTTCR, '
+          +' ((prixvg_p * tva_p)/100+ prixvg_p ) AS PrixVTTCG, '
+          +' ((prixva_p * tva_p)/100+ prixva_p ) AS PrixVTTCA, '
+          +' ((prixva2_p * tva_p)/100+ prixva2_p ) AS PrixVTTCA2, '
+          +' (qut_p + qutini_p ) AS QutDispo, '
+          +' ((qut_p + qutini_p) * prixht_p ) AS ValueStock '
+          +' FROM produit WHERE code_p = ' +IntToStr(CodeP);
          MainForm.ProduitTable.Active:= True;
          MainForm.ProduitTable.EnableControls;
 
@@ -799,7 +810,7 @@ begin
         MainForm.ProduitTable.EnableControls;
         //--- this is to pervet adding dublicate produit when editing adn creatin codebare
        if NOT (Assigned(BonCtrGestionF)) AND NOT (Assigned(BonLivGestionF)) AND NOT (Assigned(BonFacVGestionF))
-          AND NOT (Assigned(BonRecGestionF)) AND NOT (Assigned(BonFacAGestionF)) AND NOT (Assigned(PertesGestionF))  then
+          AND NOT (Assigned(BonRecGestionF)) AND NOT (Assigned(BonFacAGestionF)) AND NOT (Assigned(PertesGestionF)) AND NOT (Assigned(InventoryGestionF))  then
         begin
         if (PAdded = False) AND (ProduitsListF.CodePToUseOut <> 0 )  then
         begin
@@ -814,7 +825,16 @@ begin
            codeP:= MainForm.ProduitTable.FieldValues['code_p'];
            MainForm.ProduitTable.DisableControls;
            MainForm.ProduitTable.Active:= False;
-           MainForm.ProduitTable.SQL.Text:= 'SELECT * FROM produit ';
+           MainForm.ProduitTable.SQL.Text:= 'SELECT *, '
+            +' ((prixht_p * tva_p)/100+ prixht_p ) AS PrixATTC, '
+            +' ((prixvd_p * tva_p)/100+ prixvd_p ) AS PrixVTTCD, '
+            +' ((prixvr_p * tva_p)/100+ prixvr_p ) AS PrixVTTCR, '
+            +' ((prixvg_p * tva_p)/100+ prixvg_p ) AS PrixVTTCG, '
+            +' ((prixva_p * tva_p)/100+ prixva_p ) AS PrixVTTCA, '
+            +' ((prixva2_p * tva_p)/100+ prixva2_p ) AS PrixVTTCA2, '
+            +' (qut_p + qutini_p ) AS QutDispo, '
+            +' ((qut_p + qutini_p) * prixht_p ) AS ValueStock '
+            +' FROM produit ';
            MainForm.ProduitTable.Active:= True;
            MainForm.ProduitTable.EnableControls;
 
@@ -822,7 +842,8 @@ begin
           end;
           
    if NOT (Assigned(BonCtrGestionF)) AND NOT (Assigned(BonLivGestionF)) AND NOT (Assigned(BonFacVGestionF))  /// To make sure access voltation wont show
-      AND NOT (Assigned(BonRecGestionF)) AND NOT (Assigned(BonFacAGestionF)) AND NOT (Assigned(PertesGestionF))  then                           /// where we are in bons not produit list
+      AND NOT (Assigned(BonRecGestionF)) AND NOT (Assigned(BonFacAGestionF)) AND NOT (Assigned(PertesGestionF))
+      AND NOT (Assigned(InventoryGestionF))    then   /// where we are in bons not produit list
     begin
     ProduitsListF.CodePToUseOut:= 0;
     end;
@@ -844,14 +865,6 @@ if CodeBarProduitGEdt.Text <> '' then
   MulteCBProduitGBtn.ImageIndex:=38;
   end;
 
-end;
-
-procedure TProduitGestionF.DatePerProduitGDChange(Sender: TObject);
-begin
-
-   if lastkey<>'-' then
-    keybd_event(vkkeyscan('-'), 0, 0, 0);
- //    DateTimePicker1.Format:='';
 end;
 
 procedure TProduitGestionF.DatePerProduitGDKeyUp(Sender: TObject; var Key: Word;
@@ -900,7 +913,16 @@ begin
 
 ////    MainForm.ProduitTable.DisableControls;
 //    MainForm.ProduitTable.Active:= False;
-//    MainForm.ProduitTable.SQL.Text:= 'SELECT * FROM produit ';
+//    MainForm.ProduitTable.SQL.Text:= 'SELECT *, '
+//  +' ((prixht_p * tva_p)/100+ prixht_p ) AS PrixATTC, '
+//  +' ((prixvd_p * tva_p)/100+ prixvd_p ) AS PrixVTTCD, '
+//  +' ((prixvr_p * tva_p)/100+ prixvr_p ) AS PrixVTTCR, '
+//  +' ((prixvg_p * tva_p)/100+ prixvg_p ) AS PrixVTTCG, '
+//  +' ((prixva_p * tva_p)/100+ prixva_p ) AS PrixVTTCA, '
+//  +' ((prixva2_p * tva_p)/100+ prixva2_p ) AS PrixVTTCA2, '
+//  +' (qut_p + qutini_p ) AS QutDispo, '
+//  +' ((qut_p + qutini_p) * prixht_p ) AS ValueStock '
+//  +' FROM produit ';
 //    MainForm.ProduitTable.Active:= True;
     MainForm.ProduitTable.EnableControls;
 
@@ -921,11 +943,11 @@ begin
  // ProduitsListF.ProduitsListDBGridEh.SetFocus;
 //  end;
 
-  Application.UpdateFormatSettings := false;
-  FormatSettings.DecimalSeparator := ',';
-  FormatSettings.ThousandSeparator := ' ';
-  FormatSettings.CurrencyDecimals := 2;
-  FormatSettings.DateSeparator:= '/';
+//  Application.UpdateFormatSettings := false;
+//  FormatSettings.DecimalSeparator := ',';
+//  FormatSettings.ThousandSeparator := ' ';
+//  FormatSettings.CurrencyDecimals := 2;
+//  FormatSettings.DateSeparator:= '/';
 
 end;
 
@@ -982,6 +1004,8 @@ begin
        ImageShowProduitG.Grayed:=True;
        ImageShowProduitG.Blend:=50;
       end;
+
+  DatePerProduitGD.Date:=EncodeDate (YearOf(Now),MonthOf(Now),DayOf(Now));
 end;
 
 procedure TProduitGestionF.FournisseurProduitGCbxEnter(Sender: TObject);
@@ -1307,6 +1331,14 @@ begin
 end;
 
 
+procedure TProduitGestionF.NameProduitGEdtMouseEnter(Sender: TObject);
+begin
+  Application.HintPause := 500;      // 250 mSec before hint is shown
+  Application.HintHidePause := 5000;
+  NameProduitGEdt.ShowHint := True;
+  NameProduitGEdt.Hint := 'Double-cliquez ici pour afficher le clavier';
+end;
+
 procedure TProduitGestionF.OKProduitGBtnClick(Sender: TObject);
 var
 AlertJours,MinStock,MaxStock,StockIN,StockAlert ,FamP,FamSP,UnitP,FourP,LoucP,CodeP: Integer;
@@ -1577,29 +1609,33 @@ begin
            MainForm.UniteTable.Active:=True;
 
 
-
+           //This code is for adding fat new produit in bons
            if Assigned(BonLivGestionF) AND BonLivGestionF.Showing = True then
            begin
                  BonLivGestionF.ProduitsListDBGridEh.DataSource:= nil;
                  BonLivGestionF.ProduitsListDBGridEh.DataSource:= BonLivGestionF.BonLivPListDataS;
-
                  BonLivGestionF.ProduitBonLivGCbxEnter(Sender);
+                 BonLivGestionF.ProduitBonLivGCbx.Text:= NameProduitGEdt.Text;
+                 BonLivGestionF.EnterAddProduitBonLivGBtnClick(Sender);
+
            end;
 
            if Assigned(BonFacVGestionF) AND BonFacVGestionF.Showing = True then
            begin
                  BonFacVGestionF.ProduitsListDBGridEh.DataSource:= nil;
                  BonFacVGestionF.ProduitsListDBGridEh.DataSource:= BonFacVGestionF.BonFacVPListDataS;
-
                  BonFacVGestionF.ProduitBonFacVGCbxEnter(Sender);
+                 BonFacVGestionF.ProduitBonFacVGCbx.Text:= NameProduitGEdt.Text;
+                 BonFacVGestionF.EnterAddProduitBonFacVGBtnClick(Sender);
            end;
 
            if Assigned(BonFacPGestionF) AND BonFacPGestionF.Showing = True then
            begin
                  BonFacPGestionF.ProduitsListDBGridEh.DataSource:= nil;
                  BonFacPGestionF.ProduitsListDBGridEh.DataSource:= BonFacPGestionF.BonFacVPListDataS;
-
                  BonFacPGestionF.ProduitBonFacVGCbxEnter(Sender);
+                 BonFacPGestionF.ProduitBonFacVGCbx.Text:= NameProduitGEdt.Text;
+                 BonFacPGestionF.EnterAddProduitBonFacVGBtnClick(Sender);
            end;
 
            if (Assigned(BonCtrGestionF)) AND (BonCtrGestionF.Showing = True) AND
@@ -1608,8 +1644,9 @@ begin
            begin
                  BonCtrGestionF.ProduitsListDBGridEh.DataSource:= nil;
                  BonCtrGestionF.ProduitsListDBGridEh.DataSource:= BonCtrGestionF.BonCtrPListDataS;
-
                  BonCtrGestionF.ProduitBonCtrGCbxEnter(Sender);
+                 BonCtrGestionF.ProduitBonCTRGCbx.Text:= NameProduitGEdt.Text;
+                 BonCtrGestionF.EnterAddProduitBonCTRGBtnClick(Sender);
 
                  end;
 
@@ -1617,16 +1654,18 @@ begin
            begin
                  BonRecGestionF.ProduitsListDBGridEh.DataSource:= nil;
                  BonRecGestionF.ProduitsListDBGridEh.DataSource:= BonRecGestionF.BonRecPListDataS;
-
                  BonRecGestionF.ProduitBonRecGCbxEnter(Sender);
+                 BonRecGestionF.ProduitBonRecGCbx.Text:= NameProduitGEdt.Text;
+                 BonRecGestionF.EnterAddProduitBonRecGBtnClick(Sender);
            end;
 
            if Assigned(BonFacAGestionF) AND BonFacAGestionF.Showing = True then
            begin
                  BonFacAGestionF.ProduitsListDBGridEh.DataSource:= nil;
                  BonFacAGestionF.ProduitsListDBGridEh.DataSource:= BonFacAGestionF.BonFacAPListDataS;
-
                  BonFacAGestionF.ProduitBonFacAGCbxEnter(Sender);
+                 BonFacAGestionF.ProduitBonFacAGCbx.Text:= NameProduitGEdt.Text;
+                 BonFacAGestionF.EnterAddProduitBonFacAGBtnClick(Sender);
            end;
 
            end;
@@ -1708,7 +1747,16 @@ begin
        //---- WE need to use difrent sqlQuery to check if the same name and ref are not used twice
            MainForm.SQLQuery.Active:= False;
            MainForm.SQLQuery.SQL.Clear;
-           MainForm.SQLQuery.SQL.Text:= 'SELECT * FROM produit WHERE code_p <> '+IntToStr(CodeP);
+           MainForm.SQLQuery.SQL.Text:= 'SELECT *, '
+          +' ((prixht_p * tva_p)/100+ prixht_p ) AS PrixATTC, '
+          +' ((prixvd_p * tva_p)/100+ prixvd_p ) AS PrixVTTCD, '
+          +' ((prixvr_p * tva_p)/100+ prixvr_p ) AS PrixVTTCR, '
+          +' ((prixvg_p * tva_p)/100+ prixvg_p ) AS PrixVTTCG, '
+          +' ((prixva_p * tva_p)/100+ prixva_p ) AS PrixVTTCA, '
+          +' ((prixva2_p * tva_p)/100+ prixva2_p ) AS PrixVTTCA2, '
+          +' (qut_p + qutini_p ) AS QutDispo, '
+          +' ((qut_p + qutini_p) * prixht_p ) AS ValueStock '
+          +' FROM produit WHERE code_p <> '+IntToStr(CodeP);
            MainForm.SQLQuery.Active:= True;
 
                lookupResultNomP := MainForm.SQLQuery.Lookup('LOWER(nom_p)',(LowerCase(NameProduitGEdt.Text)),'nom_p');
@@ -1948,7 +1996,16 @@ begin
 //           CodeP:= MainForm.ProduitTable.FieldByName('code_p').AsInteger;
            MainForm.ProduitTable.DisableControls;
            MainForm.ProduitTable.Active:= False;
-           MainForm.ProduitTable.SQL.Text:= 'SELECT * FROM produit ';
+           MainForm.ProduitTable.SQL.Text:= 'SELECT *, '
+            +' ((prixht_p * tva_p)/100+ prixht_p ) AS PrixATTC, '
+            +' ((prixvd_p * tva_p)/100+ prixvd_p ) AS PrixVTTCD, '
+            +' ((prixvr_p * tva_p)/100+ prixvr_p ) AS PrixVTTCR, '
+            +' ((prixvg_p * tva_p)/100+ prixvg_p ) AS PrixVTTCG, '
+            +' ((prixva_p * tva_p)/100+ prixva_p ) AS PrixVTTCA, '
+            +' ((prixva2_p * tva_p)/100+ prixva2_p ) AS PrixVTTCA2, '
+            +' (qut_p + qutini_p ) AS QutDispo, '
+            +' ((qut_p + qutini_p) * prixht_p ) AS ValueStock '
+            +' FROM produit ';
            MainForm.ProduitTable.Active:= True;
            MainForm.ProduitTable.EnableControls;
 
@@ -2839,6 +2896,37 @@ begin
   end;
 end;
 
+procedure TProduitGestionF.TVAProduitGCbxKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+if key = VK_RETURN then
+SelectNext(ActiveControl as TWinControl, True,True );
+end;
+
+procedure TProduitGestionF.TVAProduitGCbxKeyPress(Sender: TObject;
+  var Key: Char);
+const
+  N = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0',',','.', Char(VK_back)];
+  F = ['.'];
+begin
+
+  if NOT(Key in N) then
+  begin
+     key := #0;
+  end;
+
+  if (Key in F) then
+  begin
+    key :=  #0;
+  end;
+
+  if (Key = ',') AND (Pos(Key, (TVAProduitGCbx.Text)) > 0) Then
+  begin
+      Key := #0;
+  end;
+
+end;
+
 procedure TProduitGestionF.UniteProduitGCbxDropDown(Sender: TObject);
 begin
 UniteProduitGCbxEnter(Sender);
@@ -2999,7 +3087,18 @@ begin
 end;
 
 procedure TProduitGestionF.CodeBarProduitGEdtEnter(Sender: TObject);
+var
+  KeyState: TKeyboardState;
 begin
+  //turn on CapsLock when enter edit to make sure codebare read well
+  GetKeyboardState(KeyState);
+  if (KeyState[VK_CAPITAL]=0) then
+  begin
+    // Simulate a "CAPS LOCK" key release
+    Keybd_Event(VK_CAPITAL, 1, KEYEVENTF_EXTENDEDKEY or 0, 0);
+    // Simulate a "CAPS LOCK" key press
+    Keybd_Event(VK_CAPITAL, 1, KEYEVENTF_EXTENDEDKEY or KEYEVENTF_KEYUP, 0);
+  end;
   ProduitGestionF.KeyPreview:= False;
 end;
 
@@ -3007,67 +3106,146 @@ procedure TProduitGestionF.CodeBarProduitGEdtExit(Sender: TObject);
 VAR CodeP : Integer;
 begin
   ProduitGestionF.KeyPreview:= True;
-if CodeBarProduitGEdt.Text <> '' then
-begin
-  
-
-  MainForm.CodebarresTable.IndexFieldNames:='';
-
- if  MainForm.CodebarresTable.Locate('nom_cb', CodeBarProduitGEdt.Text, [loCaseInsensitive])  then
+ if CodeBarProduitGEdt.Text <> '' then
+ begin
+    //This is to check if the code bar already exist or no already in the databse
+    //first we check if we are in add mode or edit mode to make sure we excpect the produit we editing
+    //if Tag = 0 then
+   begin
+    //We use sql to check if already existe
+    MainForm.SQLQuery3.Active:= False;
+    MainForm.SQLQuery3.Close();
+    MainForm.SQLQuery3.SQL.Clear;
+    if Tag = 0 then
     begin
-   MainForm.CodebarresTable.DisableControls;
-   MainForm.SQLQuery.Active:=false;
-   MainForm.SQLQuery.SQL.Clear;
-   MainForm.SQLQuery.SQL.Text:= 'SELECT nom_cb,code_p FROM codebarres WHERE nom_cb LIKE ' + QuotedStr(CodeBarProduitGEdt.Text);
-   MainForm.SQLQuery.Active:=True ;
-   CodeP:= MainForm.SQLQuery.FieldValues['code_p'];
-
-   MainForm.SQLQuery.Active:=false;
-   MainForm.SQLQuery.SQL.Clear;
-   MainForm.SQLQuery.SQL.Text:= 'SELECT nom_p FROM produit WHERE code_p = ' + IntToStr( CodeP);
-   MainForm.SQLQuery.Active:=True ;
-
-   ShowMessage('Le Code a barre existe déja dans le produit : ' +QuotedStr(MainForm.SQLQuery.FieldValues['nom_p'])  );
-     MainForm.CodebarresTable.Active:=False;
-     MainForm.CodebarresTable.SQL.Clear;
-     MainForm.CodebarresTable.SQL.Text:= 'SELECT * FROM codebarres ' ;
-     MainForm.CodebarresTable.IndexFieldNames:='code_p';
-     MainForm.CodebarresTable.Active:=True;
-     MainForm.CodebarresTable.EnableControls;
-     MainForm.CodebarresTable.Refresh;
-     CodeBarProduitGEdt.SetFocus;
-     CodeBarProduitGEdt.Text:='';
-     Exit;
-
- end else
-
-   if MainForm.ProduitTable.Locate('codebar_p', CodeBarProduitGEdt.Text, [loCaseInsensitive])  then
-
+    MainForm.SQLQuery3.SQL.Text:= 'SELECT PR.code_p, PR.nom_p, PR.codebar_p,CB.code_cb, CB.code_p AS codepb,CB.nom_cb FROM produit PR '
+    +' FULL JOIN codebarres CB '
+    +' ON PR.code_p = CB.code_p '
+    +' WHERE PR.codebar_p = :Codebare OR CB.nom_cb = :Codebare ';
+    end;
+    
+    if Tag = 1 then
     begin
-     MainForm.CodebarresTable.DisableControls;
-     MainForm.SQLQuery.Active:=false;
-     MainForm.SQLQuery.SQL.Clear;
-     MainForm.SQLQuery.SQL.Text:= 'SELECT nom_p FROM produit WHERE codebar_p LIKE ' + QuotedStr(CodeBarProduitGEdt.Text);
-     MainForm.SQLQuery.Active:=True ;
+    MainForm.SQLQuery3.SQL.Text:= 'SELECT PR.code_p, PR.nom_p, PR.codebar_p,CB.code_cb, CB.code_p AS codepb,CB.nom_cb FROM produit PR '
+    +' FULL JOIN codebarres CB '
+    +' ON PR.code_p = CB.code_p '
+    +' WHERE (PR.codebar_p = :Codebare OR CB.nom_cb = :Codebare) AND PR.code_p <> '+ IntToStr(MainForm.ProduitTable.FieldByName('code_p').AsInteger);
+    end;
+    
+    
+    MainForm.SQLQuery3.ParamByName('Codebare').AsString:= CodeBarProduitGEdt.Text;
+    MainForm.SQLQuery3.Open();
 
-     ShowMessage('Le Code a barre existe déja dans le produit  ' +QuotedStr(MainForm.SQLQuery.FieldByName('nom_p').AsString)  );
-       MainForm.ProduitTable.Last;
-       MainForm.CodebarresTable.Active:=False;
-       MainForm.CodebarresTable.SQL.Clear;
-       MainForm.CodebarresTable.SQL.Text:= 'SELECT * FROM codebarres ' ;
-       MainForm.CodebarresTable.IndexFieldNames:='code_p';
-       MainForm.CodebarresTable.Active:=True;
-       MainForm.CodebarresTable.EnableControls;
-       MainForm.CodebarresTable.Refresh;
+    if NOT MainForm.SQLQuery3.IsEmpty then //If there is codebasre exist
+    begin
 
-            CodeBarProduitGEdt.SetFocus;
-            CodeBarProduitGEdt.Text:='';
-            Exit;
+      if (MainForm.SQLQuery3.FieldByName('codebar_p').AsString <> null) 
+      AND (MainForm.SQLQuery3.FieldByName('codebar_p').AsString <> '') then // if it is exist in produit list
+      begin
 
-    end else
+       CodeP:= MainForm.SQLQuery3.FieldByName('code_p').AsInteger;
+      
+      end;
+      
+      if (MainForm.SQLQuery3.FieldByName('nom_cb').AsString <> null) 
+      AND (MainForm.SQLQuery3.FieldByName('nom_cb').AsString <> '') then   // if it is exist in codebasre list
+      begin
+        
+       CodeP:= MainForm.SQLQuery3.FieldByName('codepb').AsInteger; 
+      
+      end;
+
+      //Check there is produit
+      if CodeP <> 0 OR CodeP <> null then
+      begin
+        //We use that codep to get the name
+
+        MainForm.FDQuery2.Active:= False;
+        MainForm.FDQuery2.SQL.Clear;
+        MainForm.FDQuery2.SQL.Text:= 'SELECT nom_p FROM produit where code_p = '+ IntToStr(CodeP);
+        MainForm.FDQuery2.Active:= True;
+       
+        if NOT MainForm.FDQuery2.IsEmpty then
         begin
-         NameProduitGEdt.SetFocus;
+        ShowMessage('Le Code a barre existe déja dans le produit : ' +QuotedStr(MainForm.FDQuery2.FieldValues['nom_p'])  );
+        CodeBarProduitGEdt.SetFocus;
+        CodeBarProduitGEdt.Text:='';
         end;
+        
+        MainForm.FDQuery2.Active:= False;
+        MainForm.FDQuery2.SQL.Clear;
+      
+      end;
+
+
+
+
+    end;
+
+    MainForm.SQLQuery3.Active:= False;
+    MainForm.SQLQuery3.Close();
+    MainForm.SQLQuery3.SQL.Clear;
+
+
+   end;
+
+//  MainForm.CodebarresTable.IndexFieldNames:='';
+//
+// if  MainForm.CodebarresTable.Locate('nom_cb', CodeBarProduitGEdt.Text, [loCaseInsensitive])  then
+//    begin
+//   MainForm.CodebarresTable.DisableControls;
+//   MainForm.SQLQuery.Active:=false;
+//   MainForm.SQLQuery.SQL.Clear;
+//   MainForm.SQLQuery.SQL.Text:= 'SELECT nom_cb,code_p FROM codebarres WHERE nom_cb LIKE ' + QuotedStr(CodeBarProduitGEdt.Text);
+//   MainForm.SQLQuery.Active:=True ;
+//   CodeP:= MainForm.SQLQuery.FieldValues['code_p'];
+//
+//   MainForm.SQLQuery.Active:=false;
+//   MainForm.SQLQuery.SQL.Clear;
+//   MainForm.SQLQuery.SQL.Text:= 'SELECT nom_p FROM produit WHERE code_p = ' + IntToStr( CodeP);
+//   MainForm.SQLQuery.Active:=True ;
+//
+//   ShowMessage('Le Code a barre existe déja dans le produit : ' +QuotedStr(MainForm.SQLQuery.FieldValues['nom_p'])  );
+//     MainForm.CodebarresTable.Active:=False;
+//     MainForm.CodebarresTable.SQL.Clear;
+//     MainForm.CodebarresTable.SQL.Text:= 'SELECT * FROM codebarres ' ;
+//     MainForm.CodebarresTable.IndexFieldNames:='code_p';
+//     MainForm.CodebarresTable.Active:=True;
+//     MainForm.CodebarresTable.EnableControls;
+//     MainForm.CodebarresTable.Refresh;
+//     CodeBarProduitGEdt.SetFocus;
+//     CodeBarProduitGEdt.Text:='';
+//     Exit;
+//
+// end else
+//
+//   if MainForm.ProduitTable.Locate('codebar_p', CodeBarProduitGEdt.Text, [loCaseInsensitive])  then
+//
+//    begin
+//     MainForm.CodebarresTable.DisableControls;
+//     MainForm.SQLQuery.Active:=false;
+//     MainForm.SQLQuery.SQL.Clear;
+//     MainForm.SQLQuery.SQL.Text:= 'SELECT nom_p FROM produit WHERE codebar_p LIKE ' + QuotedStr(CodeBarProduitGEdt.Text);
+//     MainForm.SQLQuery.Active:=True ;
+//
+//     ShowMessage('Le Code a barre existe déja dans le produit  ' +QuotedStr(MainForm.SQLQuery.FieldByName('nom_p').AsString)  );
+//       MainForm.ProduitTable.Last;
+//       MainForm.CodebarresTable.Active:=False;
+//       MainForm.CodebarresTable.SQL.Clear;
+//       MainForm.CodebarresTable.SQL.Text:= 'SELECT * FROM codebarres ' ;
+//       MainForm.CodebarresTable.IndexFieldNames:='code_p';
+//       MainForm.CodebarresTable.Active:=True;
+//       MainForm.CodebarresTable.EnableControls;
+//       MainForm.CodebarresTable.Refresh;
+//
+//            CodeBarProduitGEdt.SetFocus;
+//            CodeBarProduitGEdt.Text:='';
+//            Exit;
+//
+//    end else
+//        begin
+//         NameProduitGEdt.SetFocus;
+//        end;
 
  end;       
 end;
@@ -3085,18 +3263,18 @@ end;
 
 procedure TProduitGestionF.FormCreate(Sender: TObject);
 begin
-  Application.UpdateFormatSettings := false;
-  FormatSettings.DecimalSeparator := '.';
-  FormatSettings.ThousandSeparator := ' ';
-  FormatSettings.CurrencyDecimals := 2;
-  FormatSettings.DateSeparator:= '/';
+//  Application.UpdateFormatSettings := false;
+//  FormatSettings.DecimalSeparator := '.';
+//  FormatSettings.ThousandSeparator := ' ';
+//  FormatSettings.CurrencyDecimals := 2;
+//  FormatSettings.DateSeparator:= '/';
 end;
 
 procedure TProduitGestionF.PrixVTTCDProduitEdtKeyPress(Sender: TObject;
   var Key: Char);
 const
   N = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0',',','.', Char(VK_back)];
-   F = [','];
+   F = ['.'];
 begin
   if not(Key in N) then
   begin
@@ -3105,9 +3283,9 @@ begin
 
    if (Key in F) then
   begin
-    key :=  #46;
+    key :=  #44;
   end;
-  if (Key = '.') AND (Pos(Key, (PrixVTTCDProduitEdt.Text)) > 0) Then
+  if (Key = ',') AND (Pos(Key, (PrixVTTCDProduitEdt.Text)) > 0) Then
   begin
       Key := #0;
   end;
@@ -3117,7 +3295,7 @@ procedure TProduitGestionF.PrixAHTProduitEdtKeyPress(Sender: TObject;
   var Key: Char);
 const
   N = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0',',','.', Char(VK_back)];
-  F = [','];
+  F = ['.'];
 begin
 
   if NOT(Key in N) then
@@ -3127,10 +3305,10 @@ begin
 
   if (Key in F) then
   begin
-    key :=  #46;
+    key :=  #44;
   end;
 
-  if (Key = '.') AND (Pos(Key, (PrixAHTProduitEdt.Text)) > 0) Then
+  if (Key = ',') AND (Pos(Key, (PrixAHTProduitEdt.Text)) > 0) Then
   begin
       Key := #0;
   end;
@@ -3141,7 +3319,7 @@ procedure TProduitGestionF.PrixATTCProduitEdtKeyPress(Sender: TObject;
   var Key: Char);
 const
   N = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0',',','.', Char(VK_back)];
-   F = [','];
+   F = ['.'];
 begin
   if not(Key in N) then
   begin
@@ -3150,9 +3328,9 @@ begin
 
    if (Key in F) then
   begin
-    key :=  #46;
+    key :=  #44;
   end;
-  if (Key = '.') AND (Pos(Key, (PrixATTCProduitEdt.Text)) > 0) Then
+  if (Key = ',') AND (Pos(Key, (PrixATTCProduitEdt.Text)) > 0) Then
   begin
       Key := #0;
   end;
@@ -3163,7 +3341,7 @@ procedure TProduitGestionF.PrixVHTDProduitEdtKeyPress(Sender: TObject;
   var Key: Char);
 const
   N = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0',',','.', Char(VK_back)];
-   F = [','];
+   F = ['.'];
 begin
   if not(Key in N) then
   begin
@@ -3172,9 +3350,9 @@ begin
 
    if (Key in F) then
   begin
-    key :=  #46;
+    key :=  #44;
   end;
-  if (Key = '.') AND (Pos(Key, (PrixVHTDProduitEdt.Text)) > 0) Then
+  if (Key = ',') AND (Pos(Key, (PrixVHTDProduitEdt.Text)) > 0) Then
   begin
       Key := #0;
   end;
@@ -3185,7 +3363,7 @@ procedure TProduitGestionF.MargeDProduitEdtKeyPress(Sender: TObject;
   var Key: Char);
 const
   N = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0',',','.', Char(VK_back)];
-   F = [','];
+   F = ['.'];
 begin
   if not(Key in N) then
   begin
@@ -3194,9 +3372,9 @@ begin
 
    if (Key in F) then
   begin
-    key :=  #46;
+    key :=  #44;
   end;
-  if (Key = '.') AND (Pos(Key, (MargeDProduitEdt.Text)) > 0) Then
+  if (Key = ',') AND (Pos(Key, (MargeDProduitEdt.Text)) > 0) Then
   begin
       Key := #0;
   end;
@@ -3207,7 +3385,7 @@ procedure TProduitGestionF.PrixVHTRProduitEdtKeyPress(Sender: TObject;
   var Key: Char);
 const
   N = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0',',','.', Char(VK_back)];
-   F = [','];
+   F = ['.'];
 begin
   if not(Key in N) then
   begin
@@ -3216,9 +3394,9 @@ begin
 
    if (Key in F) then
   begin
-    key :=  #46;
+    key :=  #44;
   end;
-  if (Key = '.') AND (Pos(Key, (PrixVHTRProduitEdt.Text)) > 0) Then
+  if (Key = ',') AND (Pos(Key, (PrixVHTRProduitEdt.Text)) > 0) Then
   begin
       Key := #0;
   end;
@@ -3229,7 +3407,7 @@ procedure TProduitGestionF.PrixVTTCRProduitEdtKeyPress(Sender: TObject;
   var Key: Char);
 const
   N = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0',',','.', Char(VK_back)];
-   F = [','];
+   F = ['.'];
 begin
   if not(Key in N) then
   begin
@@ -3238,9 +3416,9 @@ begin
 
    if (Key in F) then
   begin
-    key :=  #46;
+    key :=  #44;
   end;
-  if (Key = '.') AND (Pos(Key, (PrixVTTCRProduitEdt.Text)) > 0) Then
+  if (Key = ',') AND (Pos(Key, (PrixVTTCRProduitEdt.Text)) > 0) Then
   begin
       Key := #0;
   end;
@@ -3251,7 +3429,7 @@ procedure TProduitGestionF.MargeRProduitEdtKeyPress(Sender: TObject;
   var Key: Char);
 const
   N = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0',',','.', Char(VK_back)];
-   F = [','];
+   F = ['.'];
 begin
   if not(Key in N) then
   begin
@@ -3260,9 +3438,9 @@ begin
 
    if (Key in F) then
   begin
-    key :=  #46;
+    key :=  #44;
   end;
-  if (Key = '.') AND (Pos(Key, (MargeRProduitEdt.Text)) > 0) Then
+  if (Key = ',') AND (Pos(Key, (MargeRProduitEdt.Text)) > 0) Then
   begin
       Key := #0;
   end;
@@ -3272,7 +3450,7 @@ procedure TProduitGestionF.PrixVHTGProduitEdtKeyPress(Sender: TObject;
   var Key: Char);
 const
   N = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0',',','.', Char(VK_back)];
-   F = [','];
+   F = ['.'];
 begin
   if not(Key in N) then
   begin
@@ -3281,9 +3459,9 @@ begin
 
    if (Key in F) then
   begin
-    key :=  #46;
+    key :=  #44;
   end;
-  if (Key = '.') AND (Pos(Key, (PrixVHTGProduitEdt.Text)) > 0) Then
+  if (Key = ',') AND (Pos(Key, (PrixVHTGProduitEdt.Text)) > 0) Then
   begin
       Key := #0;
   end;
@@ -3293,7 +3471,7 @@ procedure TProduitGestionF.PrixVTTCGProduitEdtKeyPress(Sender: TObject;
   var Key: Char);
 const
   N = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0',',','.', Char(VK_back)];
-   F = [','];
+   F = ['.'];
 begin
   if not(Key in N) then
   begin
@@ -3302,9 +3480,9 @@ begin
 
    if (Key in F) then
   begin
-    key :=  #46;
+    key :=  #44;
   end;
-  if (Key = '.') AND (Pos(Key, (PrixVTTCGProduitEdt.Text)) > 0) Then
+  if (Key = ',') AND (Pos(Key, (PrixVTTCGProduitEdt.Text)) > 0) Then
   begin
       Key := #0;
   end;
@@ -3315,7 +3493,7 @@ procedure TProduitGestionF.MargeGProduitEdtKeyPress(Sender: TObject;
   var Key: Char);
 const
   N = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0',',','.', Char(VK_back)];
-   F = [','];
+   F = ['.'];
 begin
   if not(Key in N) then
   begin
@@ -3324,9 +3502,9 @@ begin
 
    if (Key in F) then
   begin
-    key :=  #46;
+    key :=  #44;
   end;
-  if (Key = '.') AND (Pos(Key, (MargeGProduitEdt.Text)) > 0) Then
+  if (Key = ',') AND (Pos(Key, (MargeGProduitEdt.Text)) > 0) Then
   begin
       Key := #0;
   end;
@@ -3337,7 +3515,7 @@ procedure TProduitGestionF.PrixVHTA1ProduitEdtKeyPress(Sender: TObject;
   var Key: Char);
 const
   N = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0',',','.', Char(VK_back)];
-   F = [','];
+   F = ['.'];
 begin
   if not(Key in N) then
   begin
@@ -3346,9 +3524,9 @@ begin
 
    if (Key in F) then
   begin
-    key :=  #46;
+    key :=  #44;
   end;
-  if (Key = '.') AND (Pos(Key, (PrixVHTA1ProduitEdt.Text)) > 0) Then
+  if (Key = ',') AND (Pos(Key, (PrixVHTA1ProduitEdt.Text)) > 0) Then
   begin
       Key := #0;
   end;
@@ -3359,7 +3537,7 @@ procedure TProduitGestionF.PrixVTTCA1ProduitEdtKeyPress(Sender: TObject;
   var Key: Char);
 const
   N = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0',',','.', Char(VK_back)];
-   F = [','];
+   F = ['.'];
 begin
   if not(Key in N) then
   begin
@@ -3368,9 +3546,9 @@ begin
 
    if (Key in F) then
   begin
-    key :=  #46;
+    key :=  #44;
   end;
-  if (Key = '.') AND (Pos(Key, (PrixVTTCA1ProduitEdt.Text)) > 0) Then
+  if (Key = ',') AND (Pos(Key, (PrixVTTCA1ProduitEdt.Text)) > 0) Then
   begin
       Key := #0;
   end;
@@ -3381,7 +3559,7 @@ procedure TProduitGestionF.MargeA1ProduitEdtKeyPress(Sender: TObject;
   var Key: Char);
 const
   N = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0',',','.', Char(VK_back)];
-   F = [','];
+   F = ['.'];
 begin
   if not(Key in N) then
   begin
@@ -3390,9 +3568,9 @@ begin
 
    if (Key in F) then
   begin
-    key :=  #46;
+    key :=  #44;
   end;
-  if (Key = '.') AND (Pos(Key, (MargeA1ProduitEdt.Text)) > 0) Then
+  if (Key = ',') AND (Pos(Key, (MargeA1ProduitEdt.Text)) > 0) Then
   begin
       Key := #0;
   end;
@@ -3403,7 +3581,7 @@ procedure TProduitGestionF.PrixVHTA2ProduitEdtKeyPress(Sender: TObject;
   var Key: Char);
 const
   N = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0',',','.', Char(VK_back)];
-   F = [','];
+   F = ['.'];
 begin
   if not(Key in N) then
   begin
@@ -3412,9 +3590,9 @@ begin
 
    if (Key in F) then
   begin
-    key :=  #46;
+    key :=  #44;
   end;
-  if (Key = '.') AND (Pos(Key, (PrixVHTA2ProduitEdt.Text)) > 0) Then
+  if (Key = ',') AND (Pos(Key, (PrixVHTA2ProduitEdt.Text)) > 0) Then
   begin
       Key := #0;
   end;
@@ -3425,7 +3603,7 @@ procedure TProduitGestionF.PrixVTTCA2ProduitEdtKeyPress(Sender: TObject;
   var Key: Char);
 const
   N = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0',',','.', Char(VK_back)];
-   F = [','];
+   F = ['.'];
 begin
   if not(Key in N) then
   begin
@@ -3434,9 +3612,9 @@ begin
 
    if (Key in F) then
   begin
-    key :=  #46;
+    key :=  #44;
   end;
-  if (Key = '.') AND (Pos(Key, (PrixVTTCA2ProduitEdt.Text)) > 0) Then
+  if (Key = ',') AND (Pos(Key, (PrixVTTCA2ProduitEdt.Text)) > 0) Then
   begin
       Key := #0;
   end;
@@ -3446,7 +3624,7 @@ procedure TProduitGestionF.MargeA2ProduitEdtKeyPress(Sender: TObject;
   var Key: Char);
 const
   N = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0',',','.', Char(VK_back)];
-   F = [','];
+   F = ['.'];
 begin
   if not(Key in N) then
   begin
@@ -3455,9 +3633,9 @@ begin
 
    if (Key in F) then
   begin
-    key :=  #46;
+    key :=  #44;
   end;
-  if (Key = '.') AND (Pos(Key, (MargeA2ProduitEdt.Text)) > 0) Then
+  if (Key = ',') AND (Pos(Key, (MargeA2ProduitEdt.Text)) > 0) Then
   begin
       Key := #0;
   end;

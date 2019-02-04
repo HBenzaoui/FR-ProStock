@@ -119,6 +119,9 @@ type
     procedure BAFacListDBGridEhDrawColumnCell(Sender: TObject;
       const Rect: TRect; DataCol: Integer; Column: TColumnEh;
       State: TGridDrawState);
+    procedure BAFacListDBGridEhTitleBtnClick(Sender: TObject; ACol: Integer;
+      Column: TColumnEh);
+    procedure BAFacListDBGridEhSortMarkingChanged(Sender: TObject);
   private
     procedure GettingData;
     procedure FilteredColor;
@@ -143,6 +146,17 @@ type
     { Private declarations }
   public
     { Public declarations }
+
+    const FASQL = 'SELECT *, '
+      +'   ((montttc_bafac)-(montht_bafac - remise_bafac)) - (timber_bafac) AS MontantTVA, '
+      +'   (montttc_bafac - montver_bafac) AS MontantRes, '
+      +'  CASE  '
+      +'     WHEN remise_bafac <> ''0'' AND montht_bafac <> ''0'' THEN  ROUND( CAST (((remise_bafac / montht_bafac) * 100) as NUMERIC),2) '
+      +'     ELSE ''0'' '
+      +'  END AS RemisePerc, '
+      +'   (montht_bafac - remise_bafac) AS NeTHT, '
+      +'   (montttc_bafac - remise_bafac) AS NetTTC '
+      +' FROM bona_fac ';
   end;
 
 var
@@ -164,7 +178,7 @@ begin
 MainForm.Bona_facTable.DisableControls;
 MainForm.Bona_facTable.Active:= False;
 MainForm.Bona_facTable.SQL.clear;
-mainform.Bona_facTable.sql.Text:='SELECT * FROM bona_fac WHERE date_bafac BETWEEN '''+(DateToStr(DateStartBAFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBAFacD.Date))+'''';
+mainform.Bona_facTable.sql.Text:= FASQL +' WHERE date_bafac BETWEEN '''+(DateToStr(DateStartBAFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBAFacD.Date))+'''';
 MainForm.Bona_facTable.Active:= True;
 MainForm.Bona_facTable.EnableControls;
 end;
@@ -174,7 +188,7 @@ begin
 MainForm.Bona_facTable.DisableControls;
 MainForm.Bona_facTable.Active:= False;
 MainForm.Bona_facTable.SQL.clear;
-mainform.Bona_facTable.sql.Text:='SELECT * FROM bona_fac WHERE valider_bafac = true AND date_bafac BETWEEN '''+(DateToStr(DateStartBAFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBAFacD.Date))+'''';
+mainform.Bona_facTable.sql.Text:= FASQL +' WHERE valider_bafac = true AND date_bafac BETWEEN '''+(DateToStr(DateStartBAFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBAFacD.Date))+'''';
 MainForm.Bona_facTable.Active:= True;
 MainForm.Bona_facTable.EnableControls;
 end;
@@ -184,7 +198,7 @@ begin
 MainForm.Bona_facTable.DisableControls;
 MainForm.Bona_facTable.Active:= False;
 MainForm.Bona_facTable.SQL.clear;
-mainform.Bona_facTable.sql.Text:='SELECT * FROM bona_fac WHERE valider_bafac = false AND date_bafac BETWEEN '''+(DateToStr(DateStartBAFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBAFacD.Date))+'''';
+mainform.Bona_facTable.sql.Text:= FASQL +' WHERE valider_bafac = false AND date_bafac BETWEEN '''+(DateToStr(DateStartBAFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBAFacD.Date))+'''';
 MainForm.Bona_facTable.Active:= True;
 MainForm.Bona_facTable.EnableControls;
 end;
@@ -194,7 +208,7 @@ begin
 MainForm.Bona_facTable.DisableControls;
 MainForm.Bona_facTable.Active:= False;
 MainForm.Bona_facTable.SQL.clear;
-mainform.Bona_facTable.sql.Text:='SELECT * FROM bona_fac WHERE code_mdpai = 1 AND date_bafac BETWEEN '''+(DateToStr(DateStartBAFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBAFacD.Date))+'''';
+mainform.Bona_facTable.sql.Text:= FASQL +' WHERE code_mdpai = 1 AND date_bafac BETWEEN '''+(DateToStr(DateStartBAFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBAFacD.Date))+'''';
 MainForm.Bona_facTable.Active:= True;
 MainForm.Bona_facTable.EnableControls;
 end;
@@ -204,7 +218,7 @@ begin
 MainForm.Bona_facTable.DisableControls;
 MainForm.Bona_facTable.Active:= False;
 MainForm.Bona_facTable.SQL.clear;
-mainform.Bona_facTable.sql.Text:='SELECT * FROM bona_fac WHERE code_mdpai = 2 AND date_bafac BETWEEN '''+(DateToStr(DateStartBAFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBAFacD.Date))+'''';
+mainform.Bona_facTable.sql.Text:= FASQL +' WHERE code_mdpai = 2 AND date_bafac BETWEEN '''+(DateToStr(DateStartBAFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBAFacD.Date))+'''';
 MainForm.Bona_facTable.Active:= True;
 MainForm.Bona_facTable.EnableControls;
 end;
@@ -214,7 +228,7 @@ begin
 MainForm.Bona_facTable.DisableControls;
 MainForm.Bona_facTable.Active:= False;
 MainForm.Bona_facTable.SQL.clear;
-mainform.Bona_facTable.sql.Text:='SELECT * FROM bona_fac WHERE code_mdpai = 3 AND date_bafac BETWEEN '''+(DateToStr(DateStartBAFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBAFacD.Date))+'''';
+mainform.Bona_facTable.sql.Text:= FASQL +' WHERE code_mdpai = 3 AND date_bafac BETWEEN '''+(DateToStr(DateStartBAFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBAFacD.Date))+'''';
 MainForm.Bona_facTable.Active:= True;
 MainForm.Bona_facTable.EnableControls;
 end;
@@ -224,7 +238,7 @@ begin
 MainForm.Bona_facTable.DisableControls;
 MainForm.Bona_facTable.Active:= False;
 MainForm.Bona_facTable.SQL.clear;
-mainform.Bona_facTable.sql.Text:='SELECT * FROM bona_fac WHERE code_mdpai = 4 AND date_bafac BETWEEN '''+(DateToStr(DateStartBAFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBAFacD.Date))+'''';
+mainform.Bona_facTable.sql.Text:= FASQL +' WHERE code_mdpai = 4 AND date_bafac BETWEEN '''+(DateToStr(DateStartBAFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBAFacD.Date))+'''';
 MainForm.Bona_facTable.Active:= True;
 MainForm.Bona_facTable.EnableControls;
 end;
@@ -234,7 +248,7 @@ begin
 MainForm.Bona_facTable.DisableControls;
 MainForm.Bona_facTable.Active:= False;
 MainForm.Bona_facTable.SQL.clear;
-mainform.Bona_facTable.sql.Text:='SELECT * FROM bona_fac WHERE valider_bafac = true AND code_mdpai = 1 AND date_bafac BETWEEN '''+(DateToStr(DateStartBAFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBAFacD.Date))+'''';
+mainform.Bona_facTable.sql.Text:= FASQL +' WHERE valider_bafac = true AND code_mdpai = 1 AND date_bafac BETWEEN '''+(DateToStr(DateStartBAFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBAFacD.Date))+'''';
 MainForm.Bona_facTable.Active:= True;
 MainForm.Bona_facTable.EnableControls;
 end;
@@ -244,7 +258,7 @@ begin
 MainForm.Bona_facTable.DisableControls;
 MainForm.Bona_facTable.Active:= False;
 MainForm.Bona_facTable.SQL.clear;
-mainform.Bona_facTable.sql.Text:='SELECT * FROM bona_fac WHERE valider_bafac = true AND code_mdpai = 2 AND date_bafac BETWEEN '''+(DateToStr(DateStartBAFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBAFacD.Date))+'''';
+mainform.Bona_facTable.sql.Text:= FASQL +' WHERE valider_bafac = true AND code_mdpai = 2 AND date_bafac BETWEEN '''+(DateToStr(DateStartBAFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBAFacD.Date))+'''';
 MainForm.Bona_facTable.Active:= True;
 MainForm.Bona_facTable.EnableControls;
 end;
@@ -254,7 +268,7 @@ begin
 MainForm.Bona_facTable.DisableControls;
 MainForm.Bona_facTable.Active:= False;
 MainForm.Bona_facTable.SQL.clear;
-mainform.Bona_facTable.sql.Text:='SELECT * FROM bona_fac WHERE valider_bafac = true AND code_mdpai = 3 AND date_bafac BETWEEN '''+(DateToStr(DateStartBAFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBAFacD.Date))+'''';
+mainform.Bona_facTable.sql.Text:= FASQL +' WHERE valider_bafac = true AND code_mdpai = 3 AND date_bafac BETWEEN '''+(DateToStr(DateStartBAFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBAFacD.Date))+'''';
 MainForm.Bona_facTable.Active:= True;
 MainForm.Bona_facTable.EnableControls;
 end;
@@ -264,7 +278,7 @@ begin
 MainForm.Bona_facTable.DisableControls;
 MainForm.Bona_facTable.Active:= False;
 MainForm.Bona_facTable.SQL.clear;
-mainform.Bona_facTable.sql.Text:='SELECT * FROM bona_fac WHERE valider_bafac = true AND code_mdpai = 4 AND date_bafac BETWEEN '''+(DateToStr(DateStartBAFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBAFacD.Date))+'''';
+mainform.Bona_facTable.sql.Text:= FASQL +' WHERE valider_bafac = true AND code_mdpai = 4 AND date_bafac BETWEEN '''+(DateToStr(DateStartBAFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBAFacD.Date))+'''';
 MainForm.Bona_facTable.Active:= True;
 MainForm.Bona_facTable.EnableControls;
 end;
@@ -274,7 +288,7 @@ begin
 MainForm.Bona_facTable.DisableControls;
 MainForm.Bona_facTable.Active:= False;
 MainForm.Bona_facTable.SQL.clear;
-mainform.Bona_facTable.sql.Text:='SELECT * FROM bona_fac WHERE valider_bafac = false AND code_mdpai = 1';
+mainform.Bona_facTable.sql.Text:= FASQL +' WHERE valider_bafac = false AND code_mdpai = 1';
 MainForm.Bona_facTable.Active:= True;
 MainForm.Bona_facTable.EnableControls;
 end;
@@ -284,7 +298,7 @@ begin
 MainForm.Bona_facTable.DisableControls;
 MainForm.Bona_facTable.Active:= False;
 MainForm.Bona_facTable.SQL.clear;
-mainform.Bona_facTable.sql.Text:='SELECT * FROM bona_fac WHERE valider_bafac = false AND code_mdpai = 2 AND date_bafac BETWEEN '''+(DateToStr(DateStartBAFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBAFacD.Date))+'''';
+mainform.Bona_facTable.sql.Text:= FASQL +' WHERE valider_bafac = false AND code_mdpai = 2 AND date_bafac BETWEEN '''+(DateToStr(DateStartBAFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBAFacD.Date))+'''';
 MainForm.Bona_facTable.Active:= True;
 MainForm.Bona_facTable.EnableControls;
 end;
@@ -294,7 +308,7 @@ begin
 MainForm.Bona_facTable.DisableControls;
 MainForm.Bona_facTable.Active:= False;
 MainForm.Bona_facTable.SQL.clear;
-mainform.Bona_facTable.sql.Text:='SELECT * FROM bona_fac WHERE valider_bafac = false AND code_mdpai = 3 AND date_bafac BETWEEN '''+(DateToStr(DateStartBAFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBAFacD.Date))+'''';
+mainform.Bona_facTable.sql.Text:= FASQL +' WHERE valider_bafac = false AND code_mdpai = 3 AND date_bafac BETWEEN '''+(DateToStr(DateStartBAFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBAFacD.Date))+'''';
 MainForm.Bona_facTable.Active:= True;
 MainForm.Bona_facTable.EnableControls;
 end;
@@ -304,7 +318,7 @@ begin
 MainForm.Bona_facTable.DisableControls;
 MainForm.Bona_facTable.Active:= False;
 MainForm.Bona_facTable.SQL.clear;
-mainform.Bona_facTable.sql.Text:='SELECT * FROM bona_fac WHERE valider_bafac = false AND code_mdpai = 4 AND date_bafac BETWEEN '''+(DateToStr(DateStartBAFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBAFacD.Date))+'''';
+mainform.Bona_facTable.sql.Text:= FASQL +' WHERE valider_bafac = false AND code_mdpai = 4 AND date_bafac BETWEEN '''+(DateToStr(DateStartBAFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBAFacD.Date))+'''';
 MainForm.Bona_facTable.Active:= True;
 MainForm.Bona_facTable.EnableControls;
 end;
@@ -490,7 +504,7 @@ begin
             MainForm.Bona_FacTable.DisableControls;
             MainForm.Bona_FacTable.Active:=False;
             MainForm.Bona_FacTable.SQL.Clear;
-            MainForm.Bona_FacTable.SQL.Text:='SELECT * FROM bona_fac WHERE code_f IN( SELECT code_f FROM fournisseur WHERE LOWER(nom_f) LIKE LOWER' +'('''+'%'+(ResearchBAFacEdt.Text)+'%'+''')' +')';
+            MainForm.Bona_FacTable.SQL.Text:= FASQL +' WHERE code_f IN( SELECT code_f FROM fournisseur WHERE LOWER(nom_f) LIKE LOWER' +'('''+'%'+(ResearchBAFacEdt.Text)+'%'+''')' +')';
             MainForm.Bona_FacTable.Active:=True;
             MainForm.Bona_FacTable.EnableControls;
 
@@ -501,7 +515,7 @@ begin
             MainForm.Bona_FacTable.DisableControls;
             MainForm.Bona_FacTable.Active:=False;
             MainForm.Bona_FacTable.SQL.Clear;
-            MainForm.Bona_FacTable.SQL.Text:='SELECT * FROM bona_fac WHERE LOWER(num_bafac) LIKE LOWER' +'('''+'%'+(ResearchBAFacEdt.Text)+'%'+''')' ;
+            MainForm.Bona_FacTable.SQL.Text:= FASQL +' WHERE LOWER(num_bafac) LIKE LOWER' +'('''+'%'+(ResearchBAFacEdt.Text)+'%'+''')' ;
             MainForm.Bona_FacTable.Active:=True;
             MainForm.Bona_FacTable.EnableControls;
           end;
@@ -519,7 +533,7 @@ begin
             MainForm.Bona_FacTable.DisableControls;
             MainForm.Bona_FacTable.Active:=False;
             MainForm.Bona_FacTable.SQL.Clear;
-            MainForm.Bona_FacTable.SQL.Text:='SELECT * FROM bona_fac ' ;
+            MainForm.Bona_FacTable.SQL.Text:= FASQL ;
             MainForm.Bona_FacTable.Active:=True;
             MainForm.Bona_FacTable.EnableControls;
 
@@ -571,7 +585,7 @@ begin
             MainForm.Bona_FacTable.DisableControls;
             MainForm.Bona_FacTable.Active:=False;
             MainForm.Bona_FacTable.SQL.Clear;
-            MainForm.Bona_FacTable.SQL.Text:='SELECT * FROM bona_fac WHERE code_f IN( SELECT code_f FROM client WHERE LOWER(nom_f) LIKE LOWER' +'('''+(ResearchBAFacEdt.Text+'%')+''')' +')';
+            MainForm.Bona_FacTable.SQL.Text:= FASQL +' WHERE code_f IN( SELECT code_f FROM client WHERE LOWER(nom_f) LIKE LOWER' +'('''+(ResearchBAFacEdt.Text+'%')+''')' +')';
             MainForm.Bona_FacTable.Active:=True;
             MainForm.Bona_FacTable.EnableControls;
 
@@ -582,7 +596,7 @@ begin
             MainForm.Bona_FacTable.DisableControls;
             MainForm.Bona_FacTable.Active:=False;
             MainForm.Bona_FacTable.SQL.Clear;
-            MainForm.Bona_FacTable.SQL.Text:='SELECT * FROM bona_fac WHERE LOWER(num_bafac) LIKE LOWER' +'('''+(ResearchBAFacEdt.Text+'%')+''')' ;
+            MainForm.Bona_FacTable.SQL.Text:= FASQL +' WHERE LOWER(num_bafac) LIKE LOWER' +'('''+(ResearchBAFacEdt.Text+'%')+''')' ;
             MainForm.Bona_FacTable.Active:=True;
             MainForm.Bona_FacTable.EnableControls;
           end;
@@ -600,7 +614,7 @@ begin
             MainForm.Bona_FacTable.DisableControls;
             MainForm.Bona_FacTable.Active:=False;
             MainForm.Bona_FacTable.SQL.Clear;
-            MainForm.Bona_FacTable.SQL.Text:='SELECT * FROM bona_fac ' ;
+            MainForm.Bona_FacTable.SQL.Text:= FASQL ;
             MainForm.Bona_FacTable.Active:=True;
             MainForm.Bona_FacTable.EnableControls;
 
@@ -616,7 +630,7 @@ ClearFilterBVLivPMenuClick(Sender);
 MainForm.Bona_facTable.DisableControls;
 MainForm.Bona_facTable.Active:= False;
 MainForm.Bona_facTable.SQL.clear;
-mainform.Bona_facTable.sql.Text:='SELECT * FROM bona_fac WHERE date_bafac BETWEEN '''+(DateToStr(DateStartBAFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBAFacD.Date))+'''';
+mainform.Bona_facTable.sql.Text:= FASQL +' WHERE date_bafac BETWEEN '''+(DateToStr(DateStartBAFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBAFacD.Date))+'''';
 MainForm.Bona_facTable.Active:= True;
 MainForm.Bona_facTable.EnableControls;
 end;
@@ -648,7 +662,7 @@ MainForm.Bona_fac_listTable.IndexFieldNames:='';
 MainForm.Bona_facTable.DisableControls;
 MainForm.Bona_facTable.Active:= False;
 MainForm.Bona_facTable.SQL.clear;
-mainform.Bona_facTable.sql.Text:='SELECT * FROM bona_fac ';
+mainform.Bona_facTable.sql.Text:= FASQL +' ORDER By code_bafac ';
 MainForm.Bona_facTable.Active:= True;
 //MainForm.Bona_facTable.EnableControls;
 
@@ -681,12 +695,12 @@ MainForm.Bona_facTable.Active:= True;
             MainForm.Bona_facTable.Last;
 
             codeFA := MainForm.Bona_facTable.FieldValues['code_bafac'];
-            MainForm.Bona_fac_listTable.Active:=False;
-            MainForm.Bona_fac_listTable.SQL.Clear;
-            MainForm.Bona_fac_listTable.SQL.Text:= 'SELECT * FROM bona_fac_list WHERE code_bafac = ' + QuotedStr(IntToStr(codeFA));
-            MainForm.Bona_fac_listTable.Active:=True;
+            MainForm.SQLQuery.Active:=False;
+            MainForm.SQLQuery.SQL.Clear;
+            MainForm.SQLQuery.SQL.Text:= 'SELECT * FROM bona_fac_list WHERE code_bafac = ' + QuotedStr(IntToStr(codeFA));
+            MainForm.SQLQuery.Active:=True;
 
-           if MainForm.Bona_fac_listTable.RecordCount <= 0 then
+           if MainForm.SQLQuery.RecordCount <= 0 then
            begin
 
             codeFA := MainForm.Bona_facTable.FieldValues['code_bafac'];
@@ -712,8 +726,11 @@ MainForm.Bona_facTable.Active:= True;
 
       MainForm.Bona_fac_listTable.Active:=False;
       MainForm.Bona_fac_listTable.SQL.Clear;
-      MainForm.Bona_fac_listTable.SQL.Text:= 'SELECT * FROM bona_fac_list';
+      MainForm.Bona_fac_listTable.SQL.Text:= BonFacAGestionF.FALSQL ;
       MainForm.Bona_fac_listTable.Active:=True;
+
+      MainForm.SQLQuery.Active:=False;
+      MainForm.SQLQuery.SQL.Clear;
 
    MainForm.Bona_fac_listTable.IndexFieldNames:='code_bafac';
        BonFacAGestionF.Tag:= 0;
@@ -730,7 +747,7 @@ MainForm.Bona_facTable.Active:= True;
 //       MainForm.Bona_facTable.DisableControls;
   MainForm.Bona_facTable.Active:= False;
   MainForm.Bona_facTable.SQL.clear;
-  mainform.Bona_facTable.sql.Text:='SELECT * FROM bona_fac WHERE date_bafac BETWEEN '''+(DateToStr(DateStartBAFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBAFacD.Date))+'''';
+  mainform.Bona_facTable.sql.Text:= FASQL +' WHERE date_bafac BETWEEN '''+(DateToStr(DateStartBAFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBAFacD.Date))+'''';
   MainForm.Bona_facTable.Active:= True;
   MainForm.Bona_facTable.Last;
   MainForm.Bona_facTable.EnableControls;
@@ -766,6 +783,7 @@ begin
 //       MainForm.Bona_facTable.Refresh;
        BonFacAGestionF.NumBonFacAGEdt.Caption := MainForm.Bona_facTable.FieldValues['num_bafac'];
        BonFacAGestionF.DateBonFacAGD.Date:= MainForm.Bona_facTable.FieldValues['date_bafac'];
+       BonFacAGestionF.ObserBonFacAGMem.Lines.Text := MainForm.Bona_facTable.FieldByName('obser_bafac').AsString;
        if (MainForm.Bona_facTable.FieldValues['code_f']<> null) and (MainForm.Bona_facTable.FieldValues['code_f']<> 0) then
        begin
        CodeF:=MainForm.Bona_facTable.FieldValues['code_f'];
@@ -1189,6 +1207,17 @@ begin
   end else Exit;
 end;
 
+procedure TBonFacAF.BAFacListDBGridEhSortMarkingChanged(Sender: TObject);
+begin
+    BAFacListDBGridEh.DefaultApplySorting;
+end;
+
+procedure TBonFacAF.BAFacListDBGridEhTitleBtnClick(Sender: TObject;
+  ACol: Integer; Column: TColumnEh);
+begin
+    MainForm.Bona_facTable.IndexesActive:= False;
+end;
+
 procedure TBonFacAF.ChequeMPFilterBVLivPMenuClick(Sender: TObject);
 begin
 FilterBVLivBtn.ImageIndex:=50;
@@ -1461,6 +1490,19 @@ begin
   MainForm.FournisseurTable.SQL.Text:='SELECT * FROM fournisseur ';
   MainForm.FournisseurTable.Active:=True;
   MainForm.FournisseurTable.EnableControls;
+
+
+    if MainForm.totaux_ur.Checked then
+      begin
+
+       SumGirdBAFacBtn.Enabled:= True;
+
+      end else
+      begin
+
+       SumGirdBAFacBtn.Enabled:= False;
+
+      end;
 end;
 
 end.

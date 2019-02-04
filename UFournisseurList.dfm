@@ -355,7 +355,6 @@ object FournisseurListF: TFournisseurListF
     HorzScrollBar.ExtraPanel.NavigatorButtons = [nbFirstEh, nbPriorEh, nbNextEh, nbLastEh, nbRefreshEh]
     HorzScrollBar.ExtraPanel.Visible = True
     HorzScrollBar.Height = 15
-    IndicatorOptions = [gioShowRowIndicatorEh]
     IndicatorParams.Color = clBtnFace
     IndicatorTitle.ShowDropDownSign = True
     IndicatorTitle.TitleButton = True
@@ -392,6 +391,7 @@ object FournisseurListF: TFournisseurListF
     Columns = <
       item
         Alignment = taCenter
+        CellButtons = <>
         Checkboxes = False
         DynProps = <>
         EditButtons = <>
@@ -423,6 +423,7 @@ object FournisseurListF: TFournisseurListF
       end
       item
         Alignment = taCenter
+        CellButtons = <>
         DisplayFormat = '0000'
         DynProps = <>
         EditButtons = <>
@@ -447,6 +448,7 @@ object FournisseurListF: TFournisseurListF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DynProps = <>
         EditButtons = <>
         FieldName = 'nom_f'
@@ -472,6 +474,7 @@ object FournisseurListF: TFournisseurListF
       end
       item
         Alignment = taCenter
+        CellButtons = <>
         DynProps = <>
         EditButtons = <>
         FieldName = 'fix_f'
@@ -496,6 +499,7 @@ object FournisseurListF: TFournisseurListF
       end
       item
         Alignment = taCenter
+        CellButtons = <>
         DynProps = <>
         EditButtons = <>
         FieldName = 'mob_f'
@@ -520,6 +524,7 @@ object FournisseurListF: TFournisseurListF
       end
       item
         Alignment = taCenter
+        CellButtons = <>
         DynProps = <>
         EditButtons = <>
         FieldName = 'mob2_f'
@@ -544,6 +549,7 @@ object FournisseurListF: TFournisseurListF
       end
       item
         Alignment = taCenter
+        CellButtons = <>
         DynProps = <>
         EditButtons = <>
         FieldName = 'fax_f'
@@ -568,6 +574,7 @@ object FournisseurListF: TFournisseurListF
       end
       item
         Alignment = taCenter
+        CellButtons = <>
         DynProps = <>
         EditButtons = <>
         FieldName = 'adr_f'
@@ -592,6 +599,7 @@ object FournisseurListF: TFournisseurListF
       end
       item
         Alignment = taCenter
+        CellButtons = <>
         DynProps = <>
         EditButtons = <>
         FieldName = 'ville_f'
@@ -616,6 +624,7 @@ object FournisseurListF: TFournisseurListF
       end
       item
         Alignment = taCenter
+        CellButtons = <>
         DynProps = <>
         EditButtons = <>
         FieldName = 'willaya_f'
@@ -640,6 +649,7 @@ object FournisseurListF: TFournisseurListF
       end
       item
         Alignment = taCenter
+        CellButtons = <>
         DynProps = <>
         EditButtons = <>
         FieldName = 'email_f'
@@ -664,6 +674,7 @@ object FournisseurListF: TFournisseurListF
       end
       item
         Alignment = taCenter
+        CellButtons = <>
         DynProps = <>
         EditButtons = <>
         FieldName = 'siteweb_c'
@@ -688,6 +699,7 @@ object FournisseurListF: TFournisseurListF
       end
       item
         Alignment = taCenter
+        CellButtons = <>
         DynProps = <>
         EditButtons = <>
         FieldName = 'rc_f'
@@ -712,6 +724,7 @@ object FournisseurListF: TFournisseurListF
       end
       item
         Alignment = taCenter
+        CellButtons = <>
         DynProps = <>
         EditButtons = <>
         FieldName = 'nif_f'
@@ -736,6 +749,7 @@ object FournisseurListF: TFournisseurListF
       end
       item
         Alignment = taCenter
+        CellButtons = <>
         DynProps = <>
         EditButtons = <>
         FieldName = 'nart_f'
@@ -760,6 +774,7 @@ object FournisseurListF: TFournisseurListF
       end
       item
         Alignment = taCenter
+        CellButtons = <>
         DynProps = <>
         EditButtons = <>
         FieldName = 'nis_f'
@@ -784,6 +799,7 @@ object FournisseurListF: TFournisseurListF
       end
       item
         Alignment = taCenter
+        CellButtons = <>
         DynProps = <>
         EditButtons = <>
         FieldName = 'nbank_f'
@@ -808,6 +824,7 @@ object FournisseurListF: TFournisseurListF
       end
       item
         Alignment = taCenter
+        CellButtons = <>
         DynProps = <>
         EditButtons = <>
         FieldName = 'rib_f'
@@ -840,6 +857,7 @@ object FournisseurListF: TFournisseurListF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
@@ -873,6 +891,7 @@ object FournisseurListF: TFournisseurListF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
@@ -905,6 +924,7 @@ object FournisseurListF: TFournisseurListF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
@@ -976,7 +996,7 @@ object FournisseurListF: TFournisseurListF
       ShowHint = True
       Spacing = -1
       OnClick = EditFournisseursBtnClick
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object DeleteFournisseursBtn: TAdvToolButton
@@ -1008,7 +1028,7 @@ object FournisseurListF: TFournisseurListF
       ShowHint = True
       Spacing = -2
       OnClick = DeleteFournisseursBtnClick
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object AddFournisseursBtn: TAdvToolButton
@@ -1040,7 +1060,7 @@ object FournisseurListF: TFournisseurListF
       ShowHint = True
       Spacing = -1
       OnClick = AddFournisseursBtnClick
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object ResearchFournisseursLbl: TLabel
@@ -1240,7 +1260,7 @@ object FournisseurListF: TFournisseurListF
       Shaded = False
       ShowHint = True
       Spacing = -1
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object sImage1: TsImage
@@ -1527,7 +1547,7 @@ object FournisseurListF: TFournisseurListF
       ShowHint = True
       Spacing = -2
       OnClick = SumGirdBBVlivBtnClick
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object RefreshGirdBtn: TAdvToolButton
@@ -1561,7 +1581,7 @@ object FournisseurListF: TFournisseurListF
       ShowHint = True
       Spacing = -2
       OnClick = RefreshGirdBtnClick
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object AdvToolButton1: TAdvToolButton
@@ -1596,7 +1616,7 @@ object FournisseurListF: TFournisseurListF
       Shaded = False
       ShowHint = True
       Spacing = -2
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object AdvToolButton2: TAdvToolButton
@@ -1630,7 +1650,7 @@ object FournisseurListF: TFournisseurListF
       ShowHint = True
       Spacing = -2
       OnClick = AdvToolButton2Click
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object AdvToolButton3: TAdvToolButton
@@ -1664,7 +1684,41 @@ object FournisseurListF: TFournisseurListF
       ShowHint = True
       Spacing = -2
       OnClick = AdvToolButton3Click
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
+      TMSStyle = 0
+    end
+    object AdvToolButton4: TAdvToolButton
+      Left = 259
+      Top = 0
+      Width = 26
+      Height = 20
+      Cursor = crHandPoint
+      Hint = 'Fournisseur Situatuin'
+      Anchors = [akRight]
+      AutoThemeAdapt = False
+      BorderColor = 15722984
+      BorderDownColor = 15722984
+      BorderHotColor = 14079702
+      Color = 15722984
+      ColorDown = 15722984
+      ColorHot = 14079702
+      ColorHotTo = 14079702
+      ColorChecked = clNone
+      DropDownSplit = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 4207405
+      Font.Height = 18
+      Font.Name = 'Roboto'
+      Font.Style = []
+      ImageIndex = 35
+      Images = MainForm.PanelIcons16
+      ParentFont = False
+      ParentShowHint = False
+      Shaded = False
+      ShowHint = True
+      Spacing = -2
+      OnClick = AdvToolButton4Click
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object Panel6: TPanel
@@ -1696,7 +1750,7 @@ object FournisseurListF: TFournisseurListF
       StyleElements = []
     end
     object Panel7: TPanel
-      Left = 261
+      Left = 288
       Top = 0
       Width = 1
       Height = 20
@@ -1805,7 +1859,7 @@ object FournisseurListF: TFournisseurListF
     Top = 304
   end
   object FourListfrxRprt: TfrxReport
-    Version = '5.4.6'
+    Version = '5.6.1'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]

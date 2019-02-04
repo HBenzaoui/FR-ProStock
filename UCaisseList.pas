@@ -4,6 +4,7 @@ interface
 
 uses
   Winapi.Windows,DateUtils, EhLibFireDAC,DBGridEhImpExp,ShellAPI,
+
    Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, DBGridEhGrouping, ToolCtrlsEh,
   DBGridEhToolCtrls, DynVarsEh, Data.DB, Vcl.StdCtrls, Vcl.ComCtrls,
@@ -126,7 +127,8 @@ type
     procedure AdvToolButton2Click(Sender: TObject);
     procedure AdvToolButton3Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
-  private
+
+    procedure CaisseListDBGridEhSortMarkingChanged(Sender: TObject);  private
     procedure GettingData;
     procedure FilteredColor;
     procedure NOT_FilteredColor;
@@ -373,6 +375,11 @@ end;
  CaisseListDBGridEh.Canvas.Font.Color:=$004735F9;
  CaisseListDBGridEh.DefaultDrawColumnCell(Rect, DataCol, Column, State);
  end;
+end;
+
+procedure TCaisseListF.CaisseListDBGridEhSortMarkingChanged(Sender: TObject);
+begin
+   CaisseListDBGridEh.DefaultApplySorting;
 end;
 
 procedure TCaisseListF.ChequeMPFilterBVLivPMenuClick(Sender: TObject);

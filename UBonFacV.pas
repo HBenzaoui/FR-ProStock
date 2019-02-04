@@ -119,6 +119,9 @@ type
     procedure BVFacListDBGridEhDrawColumnCell(Sender: TObject;
       const Rect: TRect; DataCol: Integer; Column: TColumnEh;
       State: TGridDrawState);
+    procedure BVFacListDBGridEhSortMarkingChanged(Sender: TObject);
+    procedure BVFacListDBGridEhTitleBtnClick(Sender: TObject; ACol: Integer;
+      Column: TColumnEh);
   private
     procedure GettingData;
     procedure FilteredColor;
@@ -143,6 +146,17 @@ type
     { Private declarations }
   public
     { Public declarations }
+    const FVSQL= 'SELECT *,  '
+    +'   ( ((montttc_bvfac)-(montht_bvfac - remise_bvfac)) - timber_bvfac ) AS MontantTVA, '
+    +'   (montttc_bvfac - montver_bvfac) AS MontantRes,  '
+    +'  CASE  '                    
+    +'     WHEN remise_bvfac <> ''0''  THEN  ROUND( CAST (((remise_bvfac / montht_bvfac) * 100) as NUMERIC),2)  '
+    +'     ELSE ''0''  '
+    +'  END AS RemisePerc, '
+    +'   (montht_bvfac - remise_bvfac) AS NeTHT, '
+    +'   (montttc_bvfac - timber_bvfac) AS NetTTC '
+    +' FROM bonv_fac ';
+    
   end;
 
 var
@@ -161,152 +175,152 @@ uses
 
 procedure TBonFacVF.Select_ALL;
 begin
-MainForm.Bonv_facTable.DisableControls;
-MainForm.Bonv_facTable.Active:= False;
-MainForm.Bonv_facTable.SQL.clear;
-mainform.Bonv_facTable.sql.Text:='SELECT * FROM bonv_fac WHERE date_bvfac BETWEEN '''+(DateToStr(DateStartBVFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBVFacD.Date))+'''';
-MainForm.Bonv_facTable.Active:= True;
-MainForm.Bonv_facTable.EnableControls;
+  MainForm.Bonv_facTable.DisableControls;
+  MainForm.Bonv_facTable.Active:= False;
+  MainForm.Bonv_facTable.SQL.clear;
+  mainform.Bonv_facTable.sql.Text:= FVSQL +' WHERE date_bvfac BETWEEN '''+(DateToStr(DateStartBVFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBVFacD.Date))+'''';
+  MainForm.Bonv_facTable.Active:= True;
+  MainForm.Bonv_facTable.EnableControls;
 end;
 
 procedure TBonFacVF.Select_Valid;
 begin
-MainForm.Bonv_facTable.DisableControls;
-MainForm.Bonv_facTable.Active:= False;
-MainForm.Bonv_facTable.SQL.clear;
-mainform.Bonv_facTable.sql.Text:='SELECT * FROM bonv_fac WHERE valider_bvfac = true AND date_bvfac BETWEEN '''+(DateToStr(DateStartBVFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBVFacD.Date))+'''';
-MainForm.Bonv_facTable.Active:= True;
-MainForm.Bonv_facTable.EnableControls;
+  MainForm.Bonv_facTable.DisableControls;
+  MainForm.Bonv_facTable.Active:= False;
+  MainForm.Bonv_facTable.SQL.clear;
+  mainform.Bonv_facTable.sql.Text:= FVSQL +' WHERE valider_bvfac = true AND date_bvfac BETWEEN '''+(DateToStr(DateStartBVFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBVFacD.Date))+'''';
+  MainForm.Bonv_facTable.Active:= True;
+  MainForm.Bonv_facTable.EnableControls;
 end;
 
 procedure TBonFacVF.Select_NOT_Valid;
 begin
-MainForm.Bonv_facTable.DisableControls;
-MainForm.Bonv_facTable.Active:= False;
-MainForm.Bonv_facTable.SQL.clear;
-mainform.Bonv_facTable.sql.Text:='SELECT * FROM bonv_fac WHERE valider_bvfac = false AND date_bvfac BETWEEN '''+(DateToStr(DateStartBVFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBVFacD.Date))+'''';
-MainForm.Bonv_facTable.Active:= True;
-MainForm.Bonv_facTable.EnableControls;
+  MainForm.Bonv_facTable.DisableControls;
+  MainForm.Bonv_facTable.Active:= False;
+  MainForm.Bonv_facTable.SQL.clear;
+  mainform.Bonv_facTable.sql.Text:= FVSQL +' WHERE valider_bvfac = false AND date_bvfac BETWEEN '''+(DateToStr(DateStartBVFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBVFacD.Date))+'''';
+  MainForm.Bonv_facTable.Active:= True;
+  MainForm.Bonv_facTable.EnableControls;
 end;
 
 procedure TBonFacVF.Select_Escpace;
 begin
-MainForm.Bonv_facTable.DisableControls;
-MainForm.Bonv_facTable.Active:= False;
-MainForm.Bonv_facTable.SQL.clear;
-mainform.Bonv_facTable.sql.Text:='SELECT * FROM bonv_fac WHERE code_mdpai = 1 AND date_bvfac BETWEEN '''+(DateToStr(DateStartBVFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBVFacD.Date))+'''';
-MainForm.Bonv_facTable.Active:= True;
-MainForm.Bonv_facTable.EnableControls;
+  MainForm.Bonv_facTable.DisableControls;
+  MainForm.Bonv_facTable.Active:= False;
+  MainForm.Bonv_facTable.SQL.clear;
+  mainform.Bonv_facTable.sql.Text:= FVSQL +' WHERE code_mdpai = 1 AND date_bvfac BETWEEN '''+(DateToStr(DateStartBVFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBVFacD.Date))+'''';
+  MainForm.Bonv_facTable.Active:= True;
+  MainForm.Bonv_facTable.EnableControls;
 end;
 
 procedure TBonFacVF.Select_Cheque;
 begin
-MainForm.Bonv_facTable.DisableControls;
-MainForm.Bonv_facTable.Active:= False;
-MainForm.Bonv_facTable.SQL.clear;
-mainform.Bonv_facTable.sql.Text:='SELECT * FROM bonv_fac WHERE code_mdpai = 2 AND date_bvfac BETWEEN '''+(DateToStr(DateStartBVFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBVFacD.Date))+'''';
-MainForm.Bonv_facTable.Active:= True;
-MainForm.Bonv_facTable.EnableControls;
+  MainForm.Bonv_facTable.DisableControls;
+  MainForm.Bonv_facTable.Active:= False;
+  MainForm.Bonv_facTable.SQL.clear;
+  mainform.Bonv_facTable.sql.Text:= FVSQL +' WHERE code_mdpai = 2 AND date_bvfac BETWEEN '''+(DateToStr(DateStartBVFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBVFacD.Date))+'''';
+  MainForm.Bonv_facTable.Active:= True;
+  MainForm.Bonv_facTable.EnableControls;
 end;
 
 procedure TBonFacVF.Select_ATerme;
 begin
-MainForm.Bonv_facTable.DisableControls;
-MainForm.Bonv_facTable.Active:= False;
-MainForm.Bonv_facTable.SQL.clear;
-mainform.Bonv_facTable.sql.Text:='SELECT * FROM bonv_fac WHERE code_mdpai = 3 AND date_bvfac BETWEEN '''+(DateToStr(DateStartBVFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBVFacD.Date))+'''';
-MainForm.Bonv_facTable.Active:= True;
-MainForm.Bonv_facTable.EnableControls;
+  MainForm.Bonv_facTable.DisableControls;
+  MainForm.Bonv_facTable.Active:= False;
+  MainForm.Bonv_facTable.SQL.clear;
+  mainform.Bonv_facTable.sql.Text:= FVSQL +' WHERE code_mdpai = 3 AND date_bvfac BETWEEN '''+(DateToStr(DateStartBVFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBVFacD.Date))+'''';
+  MainForm.Bonv_facTable.Active:= True;
+  MainForm.Bonv_facTable.EnableControls;
 end;
 
 procedure TBonFacVF.Select_Virment;
 begin
-MainForm.Bonv_facTable.DisableControls;
-MainForm.Bonv_facTable.Active:= False;
-MainForm.Bonv_facTable.SQL.clear;
-mainform.Bonv_facTable.sql.Text:='SELECT * FROM bonv_fac WHERE code_mdpai = 4 AND date_bvfac BETWEEN '''+(DateToStr(DateStartBVFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBVFacD.Date))+'''';
-MainForm.Bonv_facTable.Active:= True;
-MainForm.Bonv_facTable.EnableControls;
+  MainForm.Bonv_facTable.DisableControls;
+  MainForm.Bonv_facTable.Active:= False;
+  MainForm.Bonv_facTable.SQL.clear;
+  mainform.Bonv_facTable.sql.Text:= FVSQL +' WHERE code_mdpai = 4 AND date_bvfac BETWEEN '''+(DateToStr(DateStartBVFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBVFacD.Date))+'''';
+  MainForm.Bonv_facTable.Active:= True;
+  MainForm.Bonv_facTable.EnableControls;
 end;
 
 procedure TBonFacVF.Select_Valid_Escpace;
 begin
-MainForm.Bonv_facTable.DisableControls;
-MainForm.Bonv_facTable.Active:= False;
-MainForm.Bonv_facTable.SQL.clear;
-mainform.Bonv_facTable.sql.Text:='SELECT * FROM bonv_fac WHERE valider_bvfac = true AND code_mdpai = 1 AND date_bvfac BETWEEN '''+(DateToStr(DateStartBVFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBVFacD.Date))+'''';
-MainForm.Bonv_facTable.Active:= True;
-MainForm.Bonv_facTable.EnableControls;
+  MainForm.Bonv_facTable.DisableControls;
+  MainForm.Bonv_facTable.Active:= False;
+  MainForm.Bonv_facTable.SQL.clear;
+  mainform.Bonv_facTable.sql.Text:= FVSQL +' WHERE valider_bvfac = true AND code_mdpai = 1 AND date_bvfac BETWEEN '''+(DateToStr(DateStartBVFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBVFacD.Date))+'''';
+  MainForm.Bonv_facTable.Active:= True;
+  MainForm.Bonv_facTable.EnableControls;
 end;
 
 procedure TBonFacVF.Select_Valid_Cheque;
 begin
-MainForm.Bonv_facTable.DisableControls;
-MainForm.Bonv_facTable.Active:= False;
-MainForm.Bonv_facTable.SQL.clear;
-mainform.Bonv_facTable.sql.Text:='SELECT * FROM bonv_fac WHERE valider_bvfac = true AND code_mdpai = 2 AND date_bvfac BETWEEN '''+(DateToStr(DateStartBVFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBVFacD.Date))+'''';
-MainForm.Bonv_facTable.Active:= True;
-MainForm.Bonv_facTable.EnableControls;
+  MainForm.Bonv_facTable.DisableControls;
+  MainForm.Bonv_facTable.Active:= False;
+  MainForm.Bonv_facTable.SQL.clear;
+  mainform.Bonv_facTable.sql.Text:= FVSQL +' WHERE valider_bvfac = true AND code_mdpai = 2 AND date_bvfac BETWEEN '''+(DateToStr(DateStartBVFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBVFacD.Date))+'''';
+  MainForm.Bonv_facTable.Active:= True;
+  MainForm.Bonv_facTable.EnableControls;
 end;
 
 procedure TBonFacVF.Select_Valid_ATerme;
 begin
-MainForm.Bonv_facTable.DisableControls;
-MainForm.Bonv_facTable.Active:= False;
-MainForm.Bonv_facTable.SQL.clear;
-mainform.Bonv_facTable.sql.Text:='SELECT * FROM bonv_fac WHERE valider_bvfac = true AND code_mdpai = 3 AND date_bvfac BETWEEN '''+(DateToStr(DateStartBVFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBVFacD.Date))+'''';
-MainForm.Bonv_facTable.Active:= True;
-MainForm.Bonv_facTable.EnableControls;
+  MainForm.Bonv_facTable.DisableControls;
+  MainForm.Bonv_facTable.Active:= False;
+  MainForm.Bonv_facTable.SQL.clear;
+  mainform.Bonv_facTable.sql.Text:= FVSQL +' WHERE valider_bvfac = true AND code_mdpai = 3 AND date_bvfac BETWEEN '''+(DateToStr(DateStartBVFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBVFacD.Date))+'''';
+  MainForm.Bonv_facTable.Active:= True;
+  MainForm.Bonv_facTable.EnableControls;
 end;
 
 procedure TBonFacVF.Select_Valid_Virment;
 begin
-MainForm.Bonv_facTable.DisableControls;
-MainForm.Bonv_facTable.Active:= False;
-MainForm.Bonv_facTable.SQL.clear;
-mainform.Bonv_facTable.sql.Text:='SELECT * FROM bonv_fac WHERE valider_bvfac = true AND code_mdpai = 4 AND date_bvfac BETWEEN '''+(DateToStr(DateStartBVFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBVFacD.Date))+'''';
-MainForm.Bonv_facTable.Active:= True;
-MainForm.Bonv_facTable.EnableControls;
+  MainForm.Bonv_facTable.DisableControls;
+  MainForm.Bonv_facTable.Active:= False;
+  MainForm.Bonv_facTable.SQL.clear;
+  mainform.Bonv_facTable.sql.Text:= FVSQL +' WHERE valider_bvfac = true AND code_mdpai = 4 AND date_bvfac BETWEEN '''+(DateToStr(DateStartBVFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBVFacD.Date))+'''';
+  MainForm.Bonv_facTable.Active:= True;
+  MainForm.Bonv_facTable.EnableControls;
 end;
 
 procedure TBonFacVF.Select_NOT_Valid_Escpace;
 begin
-MainForm.Bonv_facTable.DisableControls;
-MainForm.Bonv_facTable.Active:= False;
-MainForm.Bonv_facTable.SQL.clear;
-mainform.Bonv_facTable.sql.Text:='SELECT * FROM bonv_fac WHERE valider_bvfac = false AND code_mdpai = 1';
-MainForm.Bonv_facTable.Active:= True;
-MainForm.Bonv_facTable.EnableControls;
+  MainForm.Bonv_facTable.DisableControls;
+  MainForm.Bonv_facTable.Active:= False;
+  MainForm.Bonv_facTable.SQL.clear;
+  mainform.Bonv_facTable.sql.Text:= FVSQL +' WHERE valider_bvfac = false AND code_mdpai = 1';
+  MainForm.Bonv_facTable.Active:= True;
+  MainForm.Bonv_facTable.EnableControls;
 end;
 
 procedure TBonFacVF.Select_NOT_Valid_Cheque;
 begin
-MainForm.Bonv_facTable.DisableControls;
-MainForm.Bonv_facTable.Active:= False;
-MainForm.Bonv_facTable.SQL.clear;
-mainform.Bonv_facTable.sql.Text:='SELECT * FROM bonv_fac WHERE valider_bvfac = false AND code_mdpai = 2 AND date_bvfac BETWEEN '''+(DateToStr(DateStartBVFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBVFacD.Date))+'''';
-MainForm.Bonv_facTable.Active:= True;
-MainForm.Bonv_facTable.EnableControls;
+  MainForm.Bonv_facTable.DisableControls;
+  MainForm.Bonv_facTable.Active:= False;
+  MainForm.Bonv_facTable.SQL.clear;
+  mainform.Bonv_facTable.sql.Text:= FVSQL +' WHERE valider_bvfac = false AND code_mdpai = 2 AND date_bvfac BETWEEN '''+(DateToStr(DateStartBVFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBVFacD.Date))+'''';
+  MainForm.Bonv_facTable.Active:= True;
+  MainForm.Bonv_facTable.EnableControls;
 end;
 
 procedure TBonFacVF.Select_NOT_Valid_ATerme;
 begin
-MainForm.Bonv_facTable.DisableControls;
-MainForm.Bonv_facTable.Active:= False;
-MainForm.Bonv_facTable.SQL.clear;
-mainform.Bonv_facTable.sql.Text:='SELECT * FROM bonv_fac WHERE valider_bvfac = false AND code_mdpai = 3 AND date_bvfac BETWEEN '''+(DateToStr(DateStartBVFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBVFacD.Date))+'''';
-MainForm.Bonv_facTable.Active:= True;
-MainForm.Bonv_facTable.EnableControls;
+  MainForm.Bonv_facTable.DisableControls;
+  MainForm.Bonv_facTable.Active:= False;
+  MainForm.Bonv_facTable.SQL.clear;
+  mainform.Bonv_facTable.sql.Text:= FVSQL +' WHERE valider_bvfac = false AND code_mdpai = 3 AND date_bvfac BETWEEN '''+(DateToStr(DateStartBVFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBVFacD.Date))+'''';
+  MainForm.Bonv_facTable.Active:= True;
+  MainForm.Bonv_facTable.EnableControls;
 end;
 
 procedure TBonFacVF.Select_NOT_Valid_Virment;
 begin
-MainForm.Bonv_facTable.DisableControls;
-MainForm.Bonv_facTable.Active:= False;
-MainForm.Bonv_facTable.SQL.clear;
-mainform.Bonv_facTable.sql.Text:='SELECT * FROM bonv_fac WHERE valider_bvfac = false AND code_mdpai = 4 AND date_bvfac BETWEEN '''+(DateToStr(DateStartBVFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBVFacD.Date))+'''';
-MainForm.Bonv_facTable.Active:= True;
-MainForm.Bonv_facTable.EnableControls;
+  MainForm.Bonv_facTable.DisableControls;
+  MainForm.Bonv_facTable.Active:= False;
+  MainForm.Bonv_facTable.SQL.clear;
+  mainform.Bonv_facTable.sql.Text:= FVSQL +' WHERE valider_bvfac = false AND code_mdpai = 4 AND date_bvfac BETWEEN '''+(DateToStr(DateStartBVFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBVFacD.Date))+'''';
+  MainForm.Bonv_facTable.Active:= True;
+  MainForm.Bonv_facTable.EnableControls;
 end;
 
 procedure TBonFacVF.Select_Regle;
@@ -355,14 +369,14 @@ begin
   ProduitsListF.ResearchProduitsEdt.Text:='';
   end;
 
-MainForm.Bonv_fac_listTable.Active:= False;
-MainForm.Bonv_fac_listTable.IndexFieldNames:='';
-MainForm.Bonv_facTable.DisableControls;
-MainForm.Bonv_facTable.Active:= False;
-MainForm.Bonv_facTable.SQL.clear;
-mainform.Bonv_facTable.sql.Text:='SELECT * FROM bonv_fac ';
-MainForm.Bonv_facTable.Active:= True;
-//MainForm.Bonv_facTable.EnableControls;
+  MainForm.Bonv_fac_listTable.Active:= False;
+  MainForm.Bonv_fac_listTable.IndexFieldNames:='';
+  MainForm.Bonv_facTable.DisableControls;
+  MainForm.Bonv_facTable.Active:= False;
+  MainForm.Bonv_facTable.SQL.clear;
+  mainform.Bonv_facTable.sql.Text:= FVSQL +' ORDER By code_bvfac';
+    MainForm.Bonv_facTable.Active:= True;
+  //MainForm.Bonv_facTable.EnableControls;
 
   if Assigned(BonFacVF) then
   begin
@@ -390,12 +404,12 @@ MainForm.Bonv_facTable.Active:= True;
           begin
             MainForm.Bonv_facTable.Last;
             codeFV := MainForm.Bonv_facTable.FieldValues['code_bvfac'];
-            MainForm.Bonv_fac_listTable.Active:=False;
-            MainForm.Bonv_fac_listTable.SQL.Clear;
-            MainForm.Bonv_fac_listTable.SQL.Text:= 'SELECT * FROM bonv_fac_list WHERE code_bvfac = ' + QuotedStr(IntToStr(codeFV));
-            MainForm.Bonv_fac_listTable.Active:=True;
+            MainForm.SQLQuery.Active:=False;
+            MainForm.SQLQuery.SQL.Clear;
+            MainForm.SQLQuery.SQL.Text:= 'SELECT code_bvfac FROM bonv_fac_list WHERE code_bvfac = ' + QuotedStr(IntToStr(codeFV));
+            MainForm.SQLQuery.Active:=True;
 
-           if MainForm.Bonv_fac_listTable.RecordCount <= 0 then
+           if MainForm.SQLQuery.RecordCount <= 0 then
            begin
 
            codeFV := MainForm.Bonv_facTable.FieldValues['code_bvfac'];
@@ -427,8 +441,11 @@ MainForm.Bonv_facTable.Active:= True;
 
       MainForm.Bonv_fac_listTable.Active:=False;
       MainForm.Bonv_fac_listTable.SQL.Clear;
-      MainForm.Bonv_fac_listTable.SQL.Text:= 'SELECT * FROM bonv_fac_list';
+      MainForm.Bonv_fac_listTable.SQL.Text:=BonFacVGestionF.FVLSQL +' ORDER BY code_bvfacl ';
       MainForm.Bonv_fac_listTable.Active:=True;
+
+      MainForm.SQLQuery.Active:=False;
+      MainForm.SQLQuery.SQL.Clear;
 
        MainForm.Bonv_fac_listTable.IndexFieldNames:='code_bvfac';
 
@@ -444,12 +461,12 @@ MainForm.Bonv_facTable.Active:= True;
 
 
 //         MainForm.Bonv_facTable.DisableControls;
-MainForm.Bonv_facTable.Active:= False;
-MainForm.Bonv_facTable.SQL.clear;
-mainform.Bonv_facTable.sql.Text:='SELECT * FROM bonv_fac WHERE date_bvfac BETWEEN '''+(DateToStr(DateStartBVFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBVFacD.Date))+'''';
-MainForm.Bonv_facTable.Active:= True;
-MainForm.Bonv_facTable.Last;
-MainForm.Bonv_facTable.EnableControls;
+  MainForm.Bonv_facTable.Active:= False;
+  MainForm.Bonv_facTable.SQL.clear;
+  mainform.Bonv_facTable.sql.Text:= FVSQL +' WHERE date_bvfac BETWEEN '''+(DateToStr(DateStartBVFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBVFacD.Date))+'''';
+  MainForm.Bonv_facTable.Active:= True;
+  MainForm.Bonv_facTable.Last;
+  MainForm.Bonv_facTable.EnableControls;
 
 end;
 
@@ -457,12 +474,12 @@ procedure TBonFacVF.DateStartBVFacDChange(Sender: TObject);
 begin
 ClearFilterBVLivPMenuClick(Sender);
 
-MainForm.Bonv_facTable.DisableControls;
-MainForm.Bonv_facTable.Active:= False;
-MainForm.Bonv_facTable.SQL.clear;
-mainform.Bonv_facTable.sql.Text:='SELECT * FROM bonv_fac WHERE date_bvfac BETWEEN '''+(DateToStr(DateStartBVFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBVFacD.Date))+'''';
-MainForm.Bonv_facTable.Active:= True;
-MainForm.Bonv_facTable.EnableControls;
+  MainForm.Bonv_facTable.DisableControls;
+  MainForm.Bonv_facTable.Active:= False;
+  MainForm.Bonv_facTable.SQL.clear;
+  mainform.Bonv_facTable.sql.Text:= FVSQL +' WHERE date_bvfac BETWEEN '''+(DateToStr(DateStartBVFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBVFacD.Date))+'''';
+  MainForm.Bonv_facTable.Active:= True;
+  MainForm.Bonv_facTable.EnableControls;
 end;
 
 procedure TBonFacVF.FormShow(Sender: TObject);
@@ -613,23 +630,23 @@ begin
 
           if ResherchBFVClientRdioBtn.Checked then
           begin
-          MainForm.Bonv_FacTable.DisableControls;
-          MainForm.Bonv_FacTable.Active:=False;
-          MainForm.Bonv_FacTable.SQL.Clear;
-          MainForm.Bonv_FacTable.SQL.Text:='SELECT * FROM bonv_fac WHERE code_c IN( SELECT code_c FROM client WHERE LOWER(nom_c) LIKE LOWER' +'('''+'%'+(ResearchBVFacEdt.Text)+'%'+''')' +')';
-          MainForm.Bonv_FacTable.Active:=True;
-          MainForm.Bonv_FacTable.EnableControls;
+            MainForm.Bonv_FacTable.DisableControls;
+            MainForm.Bonv_FacTable.Active:=False;
+            MainForm.Bonv_FacTable.SQL.Clear;
+            MainForm.Bonv_FacTable.SQL.Text:= FVSQL +' WHERE code_c IN( SELECT code_c FROM client WHERE LOWER(nom_c) LIKE LOWER' +'('''+'%'+(ResearchBVFacEdt.Text)+'%'+''')' +')';
+            MainForm.Bonv_FacTable.Active:=True;
+            MainForm.Bonv_FacTable.EnableControls;
 
           end;
 
           if ResherchBFVNumBRdioBtn.Checked then
           begin
-          MainForm.Bonv_FacTable.DisableControls;
-          MainForm.Bonv_FacTable.Active:=False;
-          MainForm.Bonv_FacTable.SQL.Clear;
-          MainForm.Bonv_FacTable.SQL.Text:='SELECT * FROM bonv_fac WHERE LOWER(num_bvfac) LIKE LOWER' +'('''+'%'+(ResearchBVFacEdt.Text)+'%'+''')' ;
-          MainForm.Bonv_FacTable.Active:=True;
-          MainForm.Bonv_FacTable.EnableControls;
+            MainForm.Bonv_FacTable.DisableControls;
+            MainForm.Bonv_FacTable.Active:=False;
+            MainForm.Bonv_FacTable.SQL.Clear;
+            MainForm.Bonv_FacTable.SQL.Text:= FVSQL +' WHERE LOWER(num_bvfac) LIKE LOWER' +'('''+'%'+(ResearchBVFacEdt.Text)+'%'+''')' ;
+            MainForm.Bonv_FacTable.Active:=True;
+            MainForm.Bonv_FacTable.EnableControls;
           end;
 
 
@@ -645,7 +662,7 @@ begin
           MainForm.Bonv_FacTable.DisableControls;
           MainForm.Bonv_FacTable.Active:=False;
           MainForm.Bonv_FacTable.SQL.Clear;
-          MainForm.Bonv_FacTable.SQL.Text:='SELECT * FROM bonv_fac ' ;
+          MainForm.Bonv_FacTable.SQL.Text:= FVSQL ;
           MainForm.Bonv_FacTable.Active:=True;
           MainForm.Bonv_FacTable.EnableControls;
 
@@ -694,23 +711,23 @@ begin
 
           if ResherchBFVClientRdioBtn.Checked then
           begin
-          MainForm.Bonv_FacTable.DisableControls;
-          MainForm.Bonv_FacTable.Active:=False;
-          MainForm.Bonv_FacTable.SQL.Clear;
-          MainForm.Bonv_FacTable.SQL.Text:='SELECT * FROM bonv_fac WHERE code_c IN( SELECT code_c FROM client WHERE LOWER(nom_c) LIKE LOWER' +'('''+(ResearchBVFacEdt.Text+'%')+''')' +')';
-          MainForm.Bonv_FacTable.Active:=True;
-          MainForm.Bonv_FacTable.EnableControls;
+            MainForm.Bonv_FacTable.DisableControls;
+            MainForm.Bonv_FacTable.Active:=False;
+            MainForm.Bonv_FacTable.SQL.Clear;
+            MainForm.Bonv_FacTable.SQL.Text:= FVSQL +' WHERE code_c IN( SELECT code_c FROM client WHERE LOWER(nom_c) LIKE LOWER' +'('''+(ResearchBVFacEdt.Text+'%')+''')' +')';
+            MainForm.Bonv_FacTable.Active:=True;
+            MainForm.Bonv_FacTable.EnableControls;
 
           end;
 
           if ResherchBFVNumBRdioBtn.Checked then
           begin
-          MainForm.Bonv_FacTable.DisableControls;
-          MainForm.Bonv_FacTable.Active:=False;
-          MainForm.Bonv_FacTable.SQL.Clear;
-          MainForm.Bonv_FacTable.SQL.Text:='SELECT * FROM bonv_fac WHERE LOWER(num_bvfac) LIKE LOWER' +'('''+(ResearchBVFacEdt.Text+'%')+''')' ;
-          MainForm.Bonv_FacTable.Active:=True;
-          MainForm.Bonv_FacTable.EnableControls;
+            MainForm.Bonv_FacTable.DisableControls;
+            MainForm.Bonv_FacTable.Active:=False;
+            MainForm.Bonv_FacTable.SQL.Clear;
+            MainForm.Bonv_FacTable.SQL.Text:= FVSQL +' WHERE LOWER(num_bvfac) LIKE LOWER' +'('''+(ResearchBVFacEdt.Text+'%')+''')' ;
+            MainForm.Bonv_FacTable.Active:=True;
+            MainForm.Bonv_FacTable.EnableControls;
           end;
 
 
@@ -726,7 +743,7 @@ begin
           MainForm.Bonv_FacTable.DisableControls;
           MainForm.Bonv_FacTable.Active:=False;
           MainForm.Bonv_FacTable.SQL.Clear;
-          MainForm.Bonv_FacTable.SQL.Text:='SELECT * FROM bonv_fac ' ;
+          MainForm.Bonv_FacTable.SQL.Text:= FVSQL ;
           MainForm.Bonv_FacTable.Active:=True;
           MainForm.Bonv_FacTable.EnableControls;
 
@@ -762,6 +779,7 @@ begin
 //       MainForm.Bonv_facTable.Refresh;
        BonFacVGestionF.NumBonFacVGEdt.Caption := MainForm.Bonv_facTable.FieldValues['num_bvfac'];
        BonFacVGestionF.DateBonFacVGD.Date:= MainForm.Bonv_facTable.FieldValues['date_bvfac'];
+       BonFacVGestionF.ObserBonFacVGMem.Lines.Text := MainForm.Bonv_facTable.FieldByName('obser_bvfac').AsString;
        if (MainForm.Bonv_facTable.FieldValues['code_c']<> null) and (MainForm.Bonv_facTable.FieldValues['code_c']<> 0) then
        begin
        CodeC:=MainForm.Bonv_facTable.FieldValues['code_c'];
@@ -1198,6 +1216,17 @@ begin
   end else Exit;
 end;
 
+procedure TBonFacVF.BVFacListDBGridEhSortMarkingChanged(Sender: TObject);
+begin
+BVFacListDBGridEh.DefaultApplySorting;
+end;
+
+procedure TBonFacVF.BVFacListDBGridEhTitleBtnClick(Sender: TObject;
+  ACol: Integer; Column: TColumnEh);
+begin
+  MainForm.Bonv_facTable.IndexesActive:=False;
+end;
+
 procedure TBonFacVF.ChequeMPFilterBVLivPMenuClick(Sender: TObject);
 begin
 FilterBVLivBtn.ImageIndex:=50;
@@ -1471,6 +1500,40 @@ begin
         MainForm.ClientTable.SQL.Text:='SELECT * FROM client ';
         MainForm.ClientTable.Active:=True;
         MainForm.ClientTable.EnableControls;
+
+
+      if MainForm.totaux_ur.Checked then
+      begin
+
+       SumGirdBBVFacBtn.Enabled:= True;
+
+      end else
+      begin
+
+       SumGirdBBVFacBtn.Enabled:= False;
+
+      end;
+
+
+      if MainForm.viewprixa_ur.Checked then
+      begin
+
+          BVFacListDBGridEh.FieldColumns['montaht_bvfac'].Visible:= true;
+          BVFacListDBGridEh.FieldColumns['montaht_bvfac'].MinWidth:= 150;
+          BVFacListDBGridEh.FieldColumns['montaht_bvfac'].Width:= 150;
+          BVFacListDBGridEh.FieldColumns['montaht_bvfac'].MaxWidth:= 0;
+
+      end else
+      begin
+
+          BVFacListDBGridEh.FieldColumns['montaht_bvfac'].Visible:= false;
+          BVFacListDBGridEh.FieldColumns['montaht_bvfac'].MinWidth:= 0;
+          BVFacListDBGridEh.FieldColumns['montaht_bvfac'].Width:= 0;
+          BVFacListDBGridEh.FieldColumns['montaht_bvfac'].MaxWidth:= 1;
+
+      end;
+
+
 end;
 
 end.

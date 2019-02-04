@@ -10,7 +10,7 @@ uses
   Vcl.ComCtrls, sPageControl;
 
 type
-  TFournisseurGestionF = class(TForm)
+	TFournisseurGestionF = class(TForm)
     FournisseurGPgControl: TsPageControl;
     GeneralClientGTB: TsTabSheet;
     GeneralTB: TPanel;
@@ -69,6 +69,23 @@ type
     OKFournisseurGBtn: TAdvToolButton;
     CancelFournisseurGBtn: TAdvToolButton;
     VilleFournisseurGCbx: TComboBox;
+    FicheFourTB: TsTabSheet;
+    Label1: TLabel;
+    CapitalFourGLbl: TLabel;
+    Label4: TLabel;
+    Label3: TLabel;
+    RegleFourGLbl: TLabel;
+    Label6: TLabel;
+    CreditFourGLbl: TLabel;
+    Label8: TLabel;
+    FourClientGSlider: TsSlider;
+    PayFourClientGSlider: TsSlider;
+    Panel1: TPanel;
+    Panel2: TPanel;
+    Panel3: TPanel;
+    Panel4: TPanel;
+    Label2: TLabel;
+    Label5: TLabel;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
@@ -92,7 +109,22 @@ type
     procedure MaxCreditFournisseurGEdtClick(Sender: TObject);
     procedure OldCreditFournisseurGEdtClick(Sender: TObject);
     procedure OldCreditFournisseurGEdtKeyPress(Sender: TObject; var Key: Char);
-  private
+    procedure OldCreditFournisseurGEdtChange(Sender: TObject);
+    procedure ActiveFournisseurGSliderChanging(Sender: TObject;
+      var CanChange: Boolean);
+    procedure FourClientGSliderChanging(Sender: TObject;
+      var CanChange: Boolean);
+    procedure PayFourClientGSliderChanging(Sender: TObject;
+      var CanChange: Boolean);
+    procedure FormShow(Sender: TObject);
+	private
+		procedure EditSameClientDetailInCList(NameC: string);
+    procedure addNewFour;
+    function isClientExist(NameC: String): Boolean;
+		function isFourExist(NameF: String): Boolean;
+    function isFourExistTwiceForEdit(NameF: String): Boolean;
+		procedure AddSameFourDetailInCFList(NameC: string);
+    procedure editFour(OLDCredit: Currency);
     { Private declarations }
   public
     { Public declarations }
@@ -140,7 +172,7 @@ begin
        ///wForm.Align:= alClient;
           wForm.WindowState := wsMaximized;
           gGrayForms.Add(wForm);
-          wForm.Position := poOwnerFormCenter;
+          wForm.Position := MainForm.Position;
           wForm.AlphaBlend := true;
           wForm.AlphaBlendValue := 150;
           wForm.Color := clBlack;
@@ -166,14 +198,32 @@ begin
 end;
 
 
+procedure TFournisseurGestionF.ActiveFournisseurGSliderChanging(Sender: TObject;
+  var CanChange: Boolean);
+begin
+  if ActiveFournisseurGOuiOuNon.Caption = 'Oui' then
+    ActiveFournisseurGOuiOuNon.Caption := 'Non'
+  else
+    ActiveFournisseurGOuiOuNon.Caption := 'Oui'
+end;
+
 procedure TFournisseurGestionF.CancelFournisseurGBtnClick(Sender: TObject);
 begin
 
   OKFournisseurGBtn.Enabled := false;
   OKFournisseurGBtn.ImageIndex := 1;
 
-  Destroy;
+  FreeAndNil(FournisseurGestionF);
 
+end;
+
+procedure TFournisseurGestionF.FourClientGSliderChanging(Sender: TObject;
+  var CanChange: Boolean);
+begin
+  if Label2.Caption = 'Oui' then
+    Label2.Caption := 'Non'
+  else
+    Label2.Caption := 'Oui'
 end;
 
 procedure TFournisseurGestionF.FaxFournisseurGEdtKeyPress(Sender: TObject;
@@ -187,7 +237,7 @@ begin
   if Key = #27 then
   begin
     Key := #0;
-    Close;
+    FreeAndNil(FournisseurGestionF);
 
   end;
 
@@ -216,7 +266,7 @@ procedure TFournisseurGestionF.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
 
-  NormalFormsFour;
+  FreeAndNil(FournisseurGestionF);
 
 end;
 
@@ -305,22 +355,23 @@ begin
   NameFournisseurGEdt.BorderStyle := bsSingle;
   NameFournisseurGEdt.StyleElements := [seClient, seBorder];
   RequiredFournisseurGlbl.Visible := false;
+  RequiredFournisseurGlbl.Font.Height:= 16;
+  RequiredFournisseurGlbl.Top:=38;
+  RequiredFournisseurGlbl.Left:= NameFournisseurGEdt.Left;
   NameFournisseurGErrorP.Visible := false;
+
  end;
 
-procedure TFournisseurGestionF.OKFournisseurGBtnClick(Sender: TObject);
-var codeF,CodeFEdit : Integer;
-    OLDCredit : Currency;
+
+procedure TFournisseurGestionF.addNewFour();
+var CodeF : Integer;
 begin
 
-  if NameFournisseurGEdt.Text <> '' then
-  begin
-    if OKFournisseurGBtn.Tag = 0 then
-    begin
+
       MainForm.FournisseurTable.Active := false;
       MainForm.FournisseurTable.SQL.Clear;
       MainForm.FournisseurTable.SQL.Text :=
-        'SELECT * FROM fournisseur ORDER BY code_f';
+      'SELECT * FROM fournisseur ORDER BY code_f';
       MainForm.FournisseurTable.Active := true;
 
         with MainForm.FournisseurTable do
@@ -380,65 +431,246 @@ begin
 
         MainForm.FournisseurTable.Refresh;
         MainForm.FournisseurTable.Last;
+end;
 
-        end;
+function TFournisseurGestionF.isFourExist(NameF :String) : Boolean;
+var
+lookupResultNomF : Variant;
+begin
+   lookupResultNomF := MainForm.FournisseurTable.Lookup('LOWER(nom_f)',(LowerCase( NameF)),'nom_f');
+     if  VarIsnull( lookupResultNomF) then
+     begin
+       Result := False;
+
+     end else
+         begin
+             Result := True;
+         end;
+end;
+
+function TFournisseurGestionF.isClientExist(NameC :String) : Boolean;
+var
+lookupResultNomC : Variant;
+begin
+   lookupResultNomC := MainForm.ClientTable.Lookup('LOWER(nom_c)',(LowerCase( NameC)),'nom_c');
+     if  VarIsnull( lookupResultNomC) then
+     begin
+       Result := False;
+
+     end else
+         begin
+             Result := True;
+         end;
+end;
+
+
+
+
+
+function TFournisseurGestionF.isFourExistTwiceForEdit(NameF :String) : Boolean;
+var
+CodeFEdit: Integer;
+lookupResultNomF : Variant;
+
+begin
+
+   CodeFEdit:=MainForm.FournisseurTable.FieldByName('code_f').AsInteger;
+
+   //---- For editing wE need to use difrent sqlQuery to check if the same name  are not used twice
+   MainForm.SQLQuery.Active:= False;
+   MainForm.SQLQuery.SQL.Clear;
+   MainForm.SQLQuery.SQL.Text:= 'SELECT * FROM fournisseur WHERE code_f <> '+IntToStr(CodeFEdit);
+   MainForm.SQLQuery.Active:= True;
+
+    lookupResultNomF := MainForm.SQLQuery.Lookup('LOWER(nom_f)',(LowerCase( NameF)),'nom_f');
+     if  VarIsnull( lookupResultNomF) then
+     begin
+       Result := False;
+
+     end else
+         begin
+             Result := True;
+         end;
+
+   MainForm.SQLQuery.Active:= False;
+   MainForm.SQLQuery.SQL.Clear;
+end;
+
+
+
+procedure TFournisseurGestionF.editFour(OLDCredit: Currency);
+
+begin
+
+  with MainForm.FournisseurTable do
+  begin
+    Edit;
+    FieldValues['activ_f'] := ActiveFournisseurGSlider.SliderOn;
+    fieldbyname('nom_f').Value := NameFournisseurGEdt.Text;
+    fieldbyname('adr_f').Value := AdrFournisseurGEdt.Text;
+    fieldbyname('willaya_f').Value := WilayaFournisseurGCbx.Text;
+    fieldbyname('ville_f').Value := VilleFournisseurGCbx.Text;
+    fieldbyname('fix_f').Value := FixFournisseurGEdt.Text;
+    fieldbyname('fax_f').Value := FaxFournisseurGEdt.Text;
+    fieldbyname('mob_f').Value := MobileFournisseurGEdt.Text;
+    fieldbyname('mob2_f').Value := MobileFournisseurGEdt.Text;
+    fieldbyname('email_f').Value := EmailFournisseurGEdt.Text;
+    fieldbyname('siteweb_f').Value := SiteFournisseurGEdt.Text;
+
+    fieldbyname('rc_f').Value := RCFournisseurGEdt.Text;
+    fieldbyname('nart_f').Value := NArtFournisseurGEdt.Text;
+    fieldbyname('nif_f').Value := NIFFournisseurGEdt.Text;
+    fieldbyname('nis_f').Value := NISFournisseurGEdt.Text;
+    fieldbyname('nbank_f').Value := NBankFournisseurGEdt.Text;
+    fieldbyname('rib_f').Value := RIBFournisseurGEdt.Text;
+    if OldCreditFournisseurGEdt.Text <> '' then
+    begin
+      fieldbyname('oldcredit_f').Value :=  StrToCurr(StringReplace(OldCreditFournisseurGEdt.Text, #32, '', [rfReplaceAll]));
+      fieldbyname('credit_f').Value := (fieldbyname('credit_f').Value - OLDCredit)+ StrToCurr(StringReplace(OldCreditFournisseurGEdt.Text, #32, '', [rfReplaceAll]));
+    end
+    else
+    begin
+      fieldbyname('oldcredit_f').Value := StrToInt('0');
+      fieldbyname('credit_f').Value := (fieldbyname('credit_f').Value - OLDCredit)+ StrToCurr('0');
+    end;
+    if MaxCreditFournisseurGEdt.Text <> '' then
+    begin
+      fieldbyname('maxcredit_f').Value :=
+      StrToCurr(StringReplace(MaxCreditFournisseurGEdt.Text, #32, '', [rfReplaceAll]));
+    end
+    else
+    begin
+      fieldbyname('maxcredit_f').Value := StrToInt('0')
+    end;
+    fieldbyname('obser_f').Value := ObserFournisseurGMem.Text;
+    post;
+  end;
+
+    MainForm.FournisseurTable.Refresh;
+
+
+end;
+
+procedure TFournisseurGestionF.OKFournisseurGBtnClick(Sender: TObject);
+var codeF : Integer;
+    lookupResultNomF : Variant;
+begin
+
+  if NameFournisseurGEdt.Text <> '' then
+  begin
+		if OKFournisseurGBtn.Tag = 0 then
+		begin
+
+		 if  isFourExist(NameFournisseurGEdt.Text) = False	 then
+		 begin
+
+             // This is to add new fournisseur as this client
+				if FourClientGSlider.SliderOn then
+        begin
+
+         if isClientExist(NameFournisseurGEdt.Text) = False then
+         begin
+
+				 AddSameFourDetailInCFList(NameFournisseurGEdt.Text);
+         addNewFour();
+         end
+         else
+             begin
+                try
+                NameFournisseurGEdt.BorderStyle:= bsNone;
+                NameFournisseurGEdt.StyleElements:= [];
+                RequiredFournisseurGlbl.Caption:='C''est nom existe deja dans la list des clients, décocher "Ajouter comme Client:" ou bien change le nom';
+                RequiredFournisseurGlbl.Font.Height:= 12;
+                RequiredFournisseurGlbl.Top:= RequiredFournisseurGlbl.Top - 5;
+                RequiredFournisseurGlbl.Height:=23;
+                RequiredFournisseurGlbl.Visible:= True;
+                NameFournisseurGErrorP.Visible:= True;
+                sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+                OKFournisseurGBtn.Enabled := False;
+                OKFournisseurGBtn.ImageIndex := 18;
+
+                exit;
+               finally
+                FournisseurGPgControl.TabIndex:= 0;
+                NameFournisseurGEdt.SetFocus;
+               end;
+             end;
+
+        end else
+            begin
+              addNewFour();
+            end;
+
+       end else
+          begin
+            try
+            NameFournisseurGEdt.BorderStyle:= bsNone;
+            NameFournisseurGEdt.StyleElements:= [];
+            RequiredFournisseurGlbl.Caption:='C''est Fournisseur Existe Déja !!';
+            RequiredFournisseurGlbl.Visible:= True;
+            NameFournisseurGErrorP.Visible:= True;
+            sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+            OKFournisseurGBtn.Enabled := False;
+            OKFournisseurGBtn.ImageIndex := 18;
+
+            exit;
+           finally
+            FournisseurGPgControl.TabIndex:= 0;
+            NameFournisseurGEdt.SetFocus;
+           end;
+          end;
+				end;
 
 
     // ----------------editing fourn---------------------------------------------------
 
     if OKFournisseurGBtn.Tag = 1 then
     begin
-       CodeFEdit:= MainForm.FournisseurTable.FieldByName('code_f').AsInteger;
-       OLDCredit:= MainForm.FournisseurTable.FieldByName('oldcredit_f').AsCurrency;
-        with MainForm.FournisseurTable do
-        begin
-          Edit;
-          FieldValues['activ_f'] := ActiveFournisseurGSlider.SliderOn;
-          fieldbyname('nom_f').Value := NameFournisseurGEdt.Text;
-          fieldbyname('adr_f').Value := AdrFournisseurGEdt.Text;
-          fieldbyname('willaya_f').Value := WilayaFournisseurGCbx.Text;
-          fieldbyname('ville_f').Value := VilleFournisseurGCbx.Text;
-          fieldbyname('fix_f').Value := FixFournisseurGEdt.Text;
-          fieldbyname('fax_f').Value := FaxFournisseurGEdt.Text;
-          fieldbyname('mob_f').Value := MobileFournisseurGEdt.Text;
-          fieldbyname('mob2_f').Value := MobileFournisseurGEdt.Text;
-          fieldbyname('email_f').Value := EmailFournisseurGEdt.Text;
-          fieldbyname('siteweb_f').Value := SiteFournisseurGEdt.Text;
 
-          fieldbyname('rc_f').Value := RCFournisseurGEdt.Text;
-          fieldbyname('nart_f').Value := NArtFournisseurGEdt.Text;
-          fieldbyname('nif_f').Value := NIFFournisseurGEdt.Text;
-          fieldbyname('nis_f').Value := NISFournisseurGEdt.Text;
-          fieldbyname('nbank_f').Value := NBankFournisseurGEdt.Text;
-          fieldbyname('rib_f').Value := RIBFournisseurGEdt.Text;
-          if OldCreditFournisseurGEdt.Text <> '' then
-          begin
-            fieldbyname('oldcredit_f').Value :=  StrToCurr(StringReplace(OldCreditFournisseurGEdt.Text, #32, '', [rfReplaceAll]));
-            fieldbyname('credit_f').Value := (fieldbyname('credit_f').Value - OLDCredit)+ StrToCurr(StringReplace(OldCreditFournisseurGEdt.Text, #32, '', [rfReplaceAll]));
-          end
-          else
-          begin
-            fieldbyname('oldcredit_f').Value := StrToInt('0')
-          end;
-          if MaxCreditFournisseurGEdt.Text <> '' then
-          begin
-            fieldbyname('maxcredit_f').Value :=
-            StrToCurr(StringReplace(MaxCreditFournisseurGEdt.Text, #32, '', [rfReplaceAll]));
-          end
-          else
-          begin
-            fieldbyname('maxcredit_f').Value := StrToInt('0')
-          end;
-          fieldbyname('obser_f').Value := ObserFournisseurGMem.Text;
-          post;
-        end;
+     if  isFourExistTwiceForEdit(NameFournisseurGEdt.Text) = False then
+     begin
 
+       if FourClientGSlider.SliderOn then
+       begin
+
+					 EditSameClientDetailInCList(MainForm.FournisseurTable.FieldByName('nom_f').AsString);
+           editFour(MainForm.FournisseurTable.FieldByName('oldcredit_f').AsCurrency);
+       end else
+           begin
+             editFour(MainForm.FournisseurTable.FieldByName('oldcredit_f').AsCurrency);
+           end;
+
+
+
+        end else
+          begin
+            try
+            NameFournisseurGEdt.BorderStyle:= bsNone;
+            NameFournisseurGEdt.StyleElements:= [];
+            RequiredFournisseurGlbl.Caption:='C''est Fournisseur Existe Déja !!';
+            RequiredFournisseurGlbl.Visible:= True;
+            NameFournisseurGErrorP.Visible:= True;
+            sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+            OKFournisseurGBtn.Enabled := False;
+            OKFournisseurGBtn.ImageIndex := 18;
+
+            exit;
+           finally
+            FournisseurGPgControl.TabIndex:= 0;
+            NameFournisseurGEdt.SetFocus;
+           end;
+          end;
     end;
 
     // --------------- adding from the produit panel----
 
     if OKFournisseurGBtn.Tag = 2 then
     begin
+
+     lookupResultNomF := MainForm.FournisseurTable.Lookup('LOWER(nom_f)',(LowerCase( NameFournisseurGEdt.Text)),'nom_f');
+     if  VarIsnull( lookupResultNomF) then
+     begin
+
       with MainForm.FournisseurTable do
         begin
           if NOT (MainForm.FournisseurTable.IsEmpty) then
@@ -495,11 +727,35 @@ begin
       MainForm.FournisseurTable.Refresh;
       MainForm.FournisseurTable.Last;
       ProduitGestionF.FournisseurProduitGCbx.Text := NameFournisseurGEdt.Text;
+
+      end else
+          begin
+            try
+            NameFournisseurGEdt.BorderStyle:= bsNone;
+            NameFournisseurGEdt.StyleElements:= [];
+            RequiredFournisseurGlbl.Caption:='C''est Fournisseur Existe Déja !!';
+            RequiredFournisseurGlbl.Visible:= True;
+            NameFournisseurGErrorP.Visible:= True;
+            sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+            OKFournisseurGBtn.Enabled := False;
+            OKFournisseurGBtn.ImageIndex := 18;
+
+            exit;
+           finally
+            FournisseurGPgControl.TabIndex:= 0;
+            NameFournisseurGEdt.SetFocus;
+           end;
+          end;
     end;
 
   // --------------- adding from the bon_rec  panel----
          if OKFournisseurGBtn.Tag = 3 then
     begin
+
+       lookupResultNomF := MainForm.FournisseurTable.Lookup('LOWER(nom_f)',(LowerCase( NameFournisseurGEdt.Text)),'nom_f');
+     if  VarIsnull( lookupResultNomF) then
+     begin
+
         with MainForm.FournisseurTable do
         begin
           if NOT (MainForm.FournisseurTable.IsEmpty) then
@@ -557,6 +813,24 @@ begin
       BonRecGestionF.FournisseurBonRecGCbx.Text := NameFournisseurGEdt.Text;
       BonRecGestionF.FournisseurBonRecGCbx.SetFocus;
 
+      end else
+          begin
+            try
+            NameFournisseurGEdt.BorderStyle:= bsNone;
+            NameFournisseurGEdt.StyleElements:= [];
+            RequiredFournisseurGlbl.Caption:='C''est Fournisseur Existe Déja !!';
+            RequiredFournisseurGlbl.Visible:= True;
+            NameFournisseurGErrorP.Visible:= True;
+            sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+            OKFournisseurGBtn.Enabled := False;
+            OKFournisseurGBtn.ImageIndex := 18;
+
+            exit;
+           finally
+            FournisseurGPgControl.TabIndex:= 0;
+            NameFournisseurGEdt.SetFocus;
+           end;
+          end;
 
     end;
 
@@ -564,6 +838,11 @@ begin
       // --------------- adding from the facture d''achat panel----
          if OKFournisseurGBtn.Tag = 4 then
     begin
+
+       lookupResultNomF := MainForm.FournisseurTable.Lookup('LOWER(nom_f)',(LowerCase( NameFournisseurGEdt.Text)),'nom_f');
+     if  VarIsnull( lookupResultNomF) then
+     begin
+
         with MainForm.FournisseurTable do
         begin
           if NOT (MainForm.FournisseurTable.IsEmpty) then
@@ -621,12 +900,35 @@ begin
       BonFacAGestionF.FourBonFacAGCbx.Text := NameFournisseurGEdt.Text;
       BonFacAGestionF.FourBonFacAGCbx.SetFocus;
 
+     end else
+          begin
+            try
+            NameFournisseurGEdt.BorderStyle:= bsNone;
+            NameFournisseurGEdt.StyleElements:= [];
+            RequiredFournisseurGlbl.Caption:='C''est Fournisseur Existe Déja !!';
+            RequiredFournisseurGlbl.Visible:= True;
+            NameFournisseurGErrorP.Visible:= True;
+            sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+            OKFournisseurGBtn.Enabled := False;
+            OKFournisseurGBtn.ImageIndex := 18;
+
+            exit;
+           finally
+            FournisseurGPgControl.TabIndex:= 0;
+            NameFournisseurGEdt.SetFocus;
+           end;
+          end;
 
     end;
 
     // --------------- adding from the regelement four----
      if OKFournisseurGBtn.Tag = 5 then
     begin
+
+       lookupResultNomF := MainForm.FournisseurTable.Lookup('LOWER(nom_f)',(LowerCase( NameFournisseurGEdt.Text)),'nom_f');
+     if  VarIsnull( lookupResultNomF) then
+     begin
+
       with MainForm.FournisseurTable do
         begin
           if NOT (MainForm.FournisseurTable.IsEmpty) then
@@ -683,7 +985,24 @@ begin
       MainForm.FournisseurTable.Last;
       ReglementFGestionF.FournisseurRegFGCbx.Text := NameFournisseurGEdt.Text;
       ReglementFGestionF.FournisseurRegFGCbx.SetFocus;
+      end else
+          begin
+            try
+            NameFournisseurGEdt.BorderStyle:= bsNone;
+            NameFournisseurGEdt.StyleElements:= [];
+            RequiredFournisseurGlbl.Caption:='C''est Fournisseur Existe Déja !!';
+            RequiredFournisseurGlbl.Visible:= True;
+            NameFournisseurGErrorP.Visible:= True;
+            sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+            OKFournisseurGBtn.Enabled := False;
+            OKFournisseurGBtn.ImageIndex := 18;
 
+            exit;
+           finally
+            FournisseurGPgControl.TabIndex:= 0;
+            NameFournisseurGEdt.SetFocus;
+           end;
+          end;
     end;
 
     begin
@@ -704,7 +1023,6 @@ begin
     end;
 
     FournisseurGestionF.FournisseurGPgControl.TabIndex := 0;
-    Close;
     NameFournisseurGEdt.BorderStyle := bsSingle;
     NameFournisseurGEdt.StyleElements := [seClient, seBorder];
     RequiredFournisseurGlbl.Visible := false;
@@ -712,80 +1030,91 @@ begin
     sndPlaySound('C:\Windows\Media\speech on.wav', SND_NODEFAULT Or SND_ASYNC Or
       SND_RING);
 
-     if OKFournisseurGBtn.Tag = 0 OR 1 then
-     begin
 
-      MainForm.FournisseurTable.DisableControls;
+      //This is for active and not active cleint caption show when enable
 
-      MainForm.FournisseurTable.Active := false;
-      MainForm.FournisseurTable.SQL.Clear;
-      MainForm.FournisseurTable.SQL.Text :=
-      'SELECT * FROM fournisseur  WHERE activ_f = true ORDER BY code_f';
-      MainForm.FournisseurTable.Active := true;
+//     if (OKFournisseurGBtn.Tag = 0) OR (OKFournisseurGBtn.Tag = 1) then
+//     begin
+//
+//      MainForm.FournisseurTable.DisableControls;
+//
+//      MainForm.FournisseurTable.Active := false;
+//      MainForm.FournisseurTable.SQL.Clear;
+//      MainForm.FournisseurTable.SQL.Text :=
+//      'SELECT * FROM fournisseur  WHERE activ_f = true ORDER BY code_f';
+//      MainForm.FournisseurTable.Active := true;
+//
+//     FournisseurListF.ActifFournisseursLbl.Caption :=
+//     IntToStr(MainForm.FournisseurTable.RecordCount);
+//
+//      MainForm.FournisseurTable.Active := false;
+//      MainForm.FournisseurTable.SQL.Clear;
+//      MainForm.FournisseurTable.SQL.Text :=
+//      'SELECT * FROM fournisseur WHERE activ_f = false ORDER BY code_f ';
+//      MainForm.FournisseurTable.Active := true;
+//
+//      FournisseurListF.PassifFournisseursLbl.Caption :=
+//      IntToStr(MainForm.FournisseurTable.RecordCount);
+//
+//
+//      MainForm.FournisseurTable.Active := false;
+//      MainForm.FournisseurTable.SQL.Clear;
+//      MainForm.FournisseurTable.SQL.Text :=
+//      'SELECT * FROM fournisseur ORDER BY code_f ';
+//      MainForm.FournisseurTable.Active := true;
+//
+//      FournisseurListF.ToutFournisseursLbl.Caption :=
+//      IntToStr(MainForm.FournisseurTable.RecordCount);
+//
+//      if FournisseurListF.ActifFournisseursRdioBtn.Checked then
+//       begin
+//        MainForm.FournisseurTable.Active := false;
+//        MainForm.FournisseurTable.SQL.Clear;
+//        MainForm.FournisseurTable.SQL.Text :=
+//        'SELECT * FROM fournisseur  WHERE activ_f = true ORDER BY code_f';
+//        MainForm.FournisseurTable.Active := true;
+//       end;
+//
+//       if FournisseurListF.PassifFournisseursRdioBtn.Checked then
+//       begin
+//        MainForm.FournisseurTable.Active := false;
+//        MainForm.FournisseurTable.SQL.Clear;
+//        MainForm.FournisseurTable.SQL.Text :=
+//        'SELECT * FROM fournisseur  WHERE activ_f = false ORDER BY code_f';
+//        MainForm.FournisseurTable.Active := true;
+//       end;
+//
+//       if FournisseurListF.toutFournisseursRdioBtn.Checked then
+//       begin
+//        MainForm.FournisseurTable.Active := false;
+//        MainForm.FournisseurTable.SQL.Clear;
+//        MainForm.FournisseurTable.SQL.Text :=
+//        'SELECT * FROM fournisseur ORDER BY code_f';
+//        MainForm.FournisseurTable.Active := true;
+//       end;
+//
+//       if OKFournisseurGBtn.Tag = 0 then
+//       begin
+//       MainForm.FournisseurTable.Last;
+//       end;
+//
+//       MainForm.FournisseurTable.EnableControls;
+//
+//       MainForm.FournisseurTable.Locate('code_f',MainForm.FournisseurTable.FieldByName('code_f').AsInteger,[]) ;
+//
+//     end;
+//
+//    MainForm.SQLQuery.Active:= False;
+//    MainForm.SQLQuery.SQL.Clear;
 
-     FournisseurListF.ActifFournisseursLbl.Caption :=
-     IntToStr(MainForm.FournisseurTable.RecordCount);
 
-      MainForm.FournisseurTable.Active := false;
-      MainForm.FournisseurTable.SQL.Clear;
-      MainForm.FournisseurTable.SQL.Text :=
-      'SELECT * FROM fournisseur WHERE activ_f = false ORDER BY code_f ';
-      MainForm.FournisseurTable.Active := true;
+    FreeAndNil(FournisseurGestionF);
 
-      FournisseurListF.PassifFournisseursLbl.Caption :=
-      IntToStr(MainForm.FournisseurTable.RecordCount);
-
-
-      MainForm.FournisseurTable.Active := false;
-      MainForm.FournisseurTable.SQL.Clear;
-      MainForm.FournisseurTable.SQL.Text :=
-      'SELECT * FROM fournisseur ORDER BY code_f ';
-      MainForm.FournisseurTable.Active := true;
-
-      FournisseurListF.ToutFournisseursLbl.Caption :=
-      IntToStr(MainForm.FournisseurTable.RecordCount);
-
-      if FournisseurListF.ActifFournisseursRdioBtn.Checked then
-       begin
-        MainForm.FournisseurTable.Active := false;
-        MainForm.FournisseurTable.SQL.Clear;
-        MainForm.FournisseurTable.SQL.Text :=
-        'SELECT * FROM fournisseur  WHERE activ_f = true ORDER BY code_f';
-        MainForm.FournisseurTable.Active := true;
-       end;
-
-       if FournisseurListF.PassifFournisseursRdioBtn.Checked then
-       begin
-        MainForm.FournisseurTable.Active := false;
-        MainForm.FournisseurTable.SQL.Clear;
-        MainForm.FournisseurTable.SQL.Text :=
-        'SELECT * FROM fournisseur  WHERE activ_f = false ORDER BY code_f';
-        MainForm.FournisseurTable.Active := true;
-       end;
-
-       if FournisseurListF.toutFournisseursRdioBtn.Checked then
-       begin
-        MainForm.FournisseurTable.Active := false;
-        MainForm.FournisseurTable.SQL.Clear;
-        MainForm.FournisseurTable.SQL.Text :=
-        'SELECT * FROM fournisseur ORDER BY code_f';
-        MainForm.FournisseurTable.Active := true;
-       end;
-
-       if OKFournisseurGBtn.Tag = 0 then
-       begin
-       MainForm.FournisseurTable.Last;
-       end;
-
-       MainForm.FournisseurTable.EnableControls;
-
-       MainForm.FournisseurTable.Locate('code_f',CodeFEdit,[]) ;
-
-     end;
   end  else
     try
       NameFournisseurGEdt.BorderStyle := bsNone;
       NameFournisseurGEdt.StyleElements := [];
+      RequiredFournisseurGlbl.Caption:= 'S''il vous plaît entrer un nom';
       RequiredFournisseurGlbl.Visible := true;
       NameFournisseurGErrorP.Visible := true;
       sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav',
@@ -833,6 +1162,65 @@ begin
 
 end;
 
+procedure TFournisseurGestionF.PayFourClientGSliderChanging(Sender: TObject;
+  var CanChange: Boolean);
+  
+Var
+ClientCredit,FourCredit,CreditAfter : Currency;
+ 
+begin
+  if Label5.Visible = False then
+  begin
+    
+    MainForm.SQLQuery.Active:= False;      
+    MainForm.SQLQuery.SQL.Clear;
+    MainForm.SQLQuery.SQL.Text:= 'SELECT credit_c FROM client WHERE LOWER(nom_c) LIKE '+
+    QuotedStr( LowerCase(MainForm.FournisseurTable.FieldByName('nom_f').asString));
+    MainForm.SQLQuery.Active:= True;
+
+    if NOT MainForm.SQLQuery.isEmpty then
+    begin
+
+      FourCredit:=     MainForm.FournisseurTable.FieldByName('credit_f').AsCurrency;
+      ClientCredit:=   MainForm.SQLQuery.FieldByName('credit_c').AsCurrency;
+      
+      CreditAfter:=  FourCredit - ClientCredit;
+      CreditFourGLbl.Caption:= CurrToStrF((CreditAfter), ffNumber,2 ) + ' DA';
+
+      if (CreditAfter <> 0) AND (CreditAfter <> null) AND (ClientCredit <> 0) AND (ClientCredit <> Null)  then
+      begin
+            Label6.Caption:= 'Crédit après l''Acquit:';
+            Label6.Font.Color:=$007374FF;
+            Label5.Visible:= True;
+            
+      end else
+          begin
+          
+           Label5.Caption:= 'Aucune dettes';
+           Label5.Font.Color:=$007374FF;
+           Label5.Visible:= True;  
+          end;
+      
+    end;
+          
+    MainForm.SQLQuery.Active:= False;      
+    MainForm.SQLQuery.SQL.Clear;
+    
+  end else
+      begin
+
+       FourCredit:=   MainForm.FournisseurTable.FieldByName('credit_f').AsCurrency;
+       CreditFourGLbl.Caption:= CurrToStrF((FourCredit), ffNumber,2 ) + ' DA';
+       Label6.Caption:= 'Crédit:';
+       Label6.Font.Color:=$0040332D;
+       Label5.Caption:= 'OK';
+       Label5.Font.Color:=$0077D90E;
+       Label5.Visible:= False;
+
+        
+      end;
+end;
+
 procedure TFournisseurGestionF.WilayaFournisseurGCbxEnter(Sender: TObject);
 Var I: Integer;
 
@@ -865,8 +1253,7 @@ begin
   if Key = #27 then
   begin
     Key := #0;
-    Close;
-
+    FreeAndNil(FournisseurGestionF);
   end;
 
   // ---- jump to the next edit when i press enter-----//
@@ -939,11 +1326,29 @@ begin
   end;
 end;
 
+procedure TFournisseurGestionF.FormShow(Sender: TObject);
+begin
+	if OKFournisseurGBtn.Tag = 0 then
+	begin
+		Label1.Visible:= True;
+		Label2.Visible:= True;
+		FourClientGSlider.Visible:= True;
+	end;
+end;
+
 procedure TFournisseurGestionF.MaxCreditFournisseurGEdtClick(Sender: TObject);
 begin
 //----- use this code to delte the blanks from the Tedit when enter that will avoide the not foit point error --///
 MaxCreditFournisseurGEdt.Text := StringReplace(MaxCreditFournisseurGEdt.Text, #32, '', [rfReplaceAll]);
 MaxCreditFournisseurGEdt.SelectAll;
+end;
+
+procedure TFournisseurGestionF.OldCreditFournisseurGEdtChange(Sender: TObject);
+begin
+  if OKFournisseurGBtn.Tag = 0 then
+  begin
+   CreditFourGLbl.Caption := OldCreditFournisseurGEdt.Text;
+  end;
 end;
 
 procedure TFournisseurGestionF.OldCreditFournisseurGEdtClick(Sender: TObject);
@@ -952,6 +1357,115 @@ begin
 OldCreditFournisseurGEdt.Text := StringReplace(OldCreditFournisseurGEdt.Text, #32, '', [rfReplaceAll]);
 OldCreditFournisseurGEdt.SelectAll;
 end;
+
+
+
+procedure TFournisseurGestionF.AddSameFourDetailInCFList(NameC: string);
+Var
+codeC: Integer;
+lookupResultNomC : Variant;
+begin
+
+ if  isClientExist(NameC) = False then
+ begin
+
+      MainForm.SQLQuery.Active := false;
+      MainForm.SQLQuery.SQL.Clear;
+      MainForm.SQLQuery.SQL.Text :=
+        'SELECT * FROM client ORDER BY code_c';
+      MainForm.SQLQuery.Active := true;
+
+        with MainForm.SQLQuery do
+        begin
+          if NOT (MainForm.SQLQuery.IsEmpty) then
+          begin
+          MainForm.SQLQuery.Last;
+          codeC:= MainForm.SQLQuery.FieldValues['code_c'] + 1;
+          end else
+              begin
+               codeC:= 1;
+              end;
+          Append;
+          FieldValues['code_c'] := codeC;
+          FieldValues['activ_c'] := ActiveFournisseurGSlider.SliderOn;
+          fieldbyname('nom_c').Value := NameC;
+          fieldbyname('adr_c').Value := AdrFournisseurGEdt.Text;
+          fieldbyname('willaya_c').Value := WilayaFournisseurGCbx.Text;
+          fieldbyname('ville_c').Value := VilleFournisseurGCbx.Text;
+          fieldbyname('fix_c').Value := FixFournisseurGEdt.Text;
+          fieldbyname('fax_c').Value := FaxFournisseurGEdt.Text;
+          fieldbyname('mob_c').Value := MobileFournisseurGEdt.Text;
+          fieldbyname('mob2_c').Value := MobileFournisseurGEdt.Text;
+          fieldbyname('email_c').Value := EmailFournisseurGEdt.Text;
+          fieldbyname('siteweb_c').Value := SiteFournisseurGEdt.Text;
+
+          fieldbyname('rc_c').Value := RCFournisseurGEdt.Text;
+          fieldbyname('nart_c').Value := NArtFournisseurGEdt.Text;
+          fieldbyname('nif_c').Value := NIFFournisseurGEdt.Text;
+          fieldbyname('nis_c').Value := NISFournisseurGEdt.Text;
+          fieldbyname('nbank_c').Value := NBankFournisseurGEdt.Text;
+          fieldbyname('rib_c').Value := RIBFournisseurGEdt.Text;
+
+          fieldbyname('obser_c').Value := ObserFournisseurGMem.Text;
+          post;
+          end;
+
+        MainForm.SQLQuery.Refresh;
+
+      MainForm.SQLQuery.Active := false;
+      MainForm.SQLQuery.SQL.Clear;
+
+ end;
+end;
+
+
+procedure TFournisseurGestionF.EditSameClientDetailInCList(NameC: string);
+
+begin
+
+	MainForm.SQLQuery.Active:= False;
+  MainForm.SQLQuery.SQL.Clear;
+	MainForm.SQLQuery.SQL.Text := 'SELECT * FROM client WHERE LOWER(nom_c) LIKE '+LowerCase(QuotedStr(NameC));
+	MainForm.SQLQuery.Active:= True;
+	
+	if NOT MainForm.SQLQuery.IsEmpty then
+	begin
+
+	 with MainForm.SQLQuery do
+	 begin
+		Edit;
+		FieldValues['activ_c'] := ActiveFournisseurGSlider.SliderOn;
+		fieldbyname('nom_c').AsString := NameFournisseurGEdt.Text;
+		fieldbyname('adr_c').AsString := AdrFournisseurGEdt.Text;
+		fieldbyname('willaya_c').AsString := WilayaFournisseurGCbx.Text;
+		fieldbyname('ville_c').AsString := VilleFournisseurGCbx.Text;
+		fieldbyname('fix_c').AsString := FixFournisseurGEdt.Text;
+		fieldbyname('fax_c').AsString := FaxFournisseurGEdt.Text;
+		fieldbyname('mob_c').AsString := MobileFournisseurGEdt.Text;
+		fieldbyname('mob2_c').AsString := MobileFournisseurGEdt.Text;
+		fieldbyname('email_c').AsString := EmailFournisseurGEdt.Text;
+		fieldbyname('siteweb_c').AsString := SiteFournisseurGEdt.Text;
+
+		fieldbyname('rc_c').AsString := RCFournisseurGEdt.Text;
+		fieldbyname('nart_c').AsString := NArtFournisseurGEdt.Text;
+		fieldbyname('nif_c').AsString := NIFFournisseurGEdt.Text;
+		fieldbyname('nis_c').AsString := NISFournisseurGEdt.Text;
+		fieldbyname('nbank_c').AsString := NBankFournisseurGEdt.Text;
+		fieldbyname('rib_c').AsString := RIBFournisseurGEdt.Text;
+
+		fieldbyname('obser_c').Value := ObserFournisseurGMem.Text;
+		post;
+   end;
+
+    MainForm.ClientTable.Refresh;
+  end;
+
+  MainForm.SQLQuery.Active:= False;
+  MainForm.SQLQuery.SQL.Clear;
+
+end;
+
+
 
 end.
 

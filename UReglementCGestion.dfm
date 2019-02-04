@@ -104,7 +104,7 @@ object ReglementCGestionF: TReglementCGestionF
   object ObserRegCGLbl: TLabel
     Left = 357
     Top = 4
-    Width = 98
+    Width = 101
     Height = 20
     Caption = 'Observations'
     Color = 4207405
@@ -167,7 +167,7 @@ object ReglementCGestionF: TReglementCGestionF
     ShowHint = True
     Spacing = -1
     OnClick = AddFourRegCGBtnClick
-    Version = '1.6.1.2'
+    Version = '1.6.2.0'
     TMSStyle = 0
   end
   object AddCompteRegCGBtn: TAdvToolButton
@@ -199,7 +199,7 @@ object ReglementCGestionF: TReglementCGestionF
     ShowHint = True
     Spacing = -1
     OnClick = AddCompteRegCGBtnClick
-    Version = '1.6.1.2'
+    Version = '1.6.2.0'
     TMSStyle = 0
   end
   object Label3: TLabel
@@ -247,13 +247,13 @@ object ReglementCGestionF: TReglementCGestionF
     ShowHint = True
     Spacing = -1
     OnClick = AddModePaieRegCGBtnClick
-    Version = '1.6.1.2'
+    Version = '1.6.2.0'
     TMSStyle = 0
   end
   object Label4: TLabel
     Left = 49
     Top = 171
-    Width = 43
+    Width = 42
     Height = 18
     Caption = 'Mode:'
     Color = 4207405
@@ -285,7 +285,7 @@ object ReglementCGestionF: TReglementCGestionF
   object Label6: TLabel
     Left = 15
     Top = 217
-    Width = 77
+    Width = 76
     Height = 18
     Caption = 'N'#176' Ch'#233'que:'
     Color = 4207405
@@ -338,7 +338,7 @@ object ReglementCGestionF: TReglementCGestionF
     ShowHint = True
     Spacing = 10
     OnClick = OKRegCGBtnClick
-    Version = '1.6.1.2'
+    Version = '1.6.2.0'
     TMSStyle = 0
   end
   object CancelRegCGBtn: TAdvToolButton
@@ -369,13 +369,13 @@ object ReglementCGestionF: TReglementCGestionF
     ShowHint = True
     Spacing = -1
     OnClick = CancelRegCGBtnClick
-    Version = '1.6.1.2'
+    Version = '1.6.2.0'
     TMSStyle = 0
   end
   object label13: TLabel
     Left = 192
     Top = 263
-    Width = 88
+    Width = 92
     Height = 21
     Caption = 'Versement:'
     Color = clWhite
@@ -391,7 +391,7 @@ object ReglementCGestionF: TReglementCGestionF
   object label12: TLabel
     Left = 365
     Top = 263
-    Width = 71
+    Width = 74
     Height = 21
     Caption = 'Le Reste:'
     Color = clWhite
@@ -432,7 +432,7 @@ object ReglementCGestionF: TReglementCGestionF
   object Label7: TLabel
     Left = 8
     Top = 263
-    Width = 87
+    Width = 89
     Height = 21
     Caption = 'Client Sold:'
     Color = clWhite
@@ -470,11 +470,59 @@ object ReglementCGestionF: TReglementCGestionF
     Layout = tlCenter
     StyleElements = []
   end
+  object ListClientregCGBtn: TAdvToolButton
+    Left = 473
+    Top = 122
+    Width = 35
+    Height = 26
+    Cursor = crHandPoint
+    AutoThemeAdapt = False
+    BorderColor = 15722984
+    BorderDownColor = 7854350
+    BorderHotColor = 15970832
+    Color = 15722984
+    ColorDown = 7854350
+    ColorHot = clBtnFace
+    ColorChecked = clNone
+    DropDownSplit = False
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = 4207405
+    Font.Height = 18
+    Font.Name = 'Roboto'
+    Font.Style = []
+    ImageIndex = 58
+    Images = MainForm.PanelIcons24
+    ParentFont = False
+    ParentShowHint = False
+    Rounded = True
+    Shaded = False
+    ShowHint = True
+    Spacing = -1
+    OnClick = ListClientregCGBtnClick
+    Version = '1.6.2.0'
+    TMSStyle = 0
+  end
+  object Label21: TLabel
+    Left = 467
+    Top = 127
+    Width = 6
+    Height = 16
+    Caption = '*'
+    Color = clBtnFace
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = 4666873
+    Font.Height = 16
+    Font.Name = 'Roboto'
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+    StyleElements = [seClient, seBorder]
+  end
   object RegCGErrorP: TPanel
     Left = 187
     Top = 294
-    Width = 167
-    Height = 32
+    Width = 166
+    Height = 30
     BevelOuter = bvNone
     BevelWidth = 2
     Color = 8421631
@@ -518,7 +566,7 @@ object ReglementCGestionF: TReglementCGestionF
   object NameClientGErrorP: TPanel
     Left = 96
     Top = 118
-    Width = 413
+    Width = 371
     Height = 34
     BevelOuter = bvNone
     BevelWidth = 2
@@ -535,7 +583,7 @@ object ReglementCGestionF: TReglementCGestionF
   object ClientRegCGCbx: TComboBox
     Left = 98
     Top = 120
-    Width = 409
+    Width = 368
     Height = 30
     Ctl3D = True
     Font.Charset = DEFAULT_CHARSET
@@ -636,7 +684,7 @@ object ReglementCGestionF: TReglementCGestionF
   end
   object VerRegCGEdt: TEdit
     Left = 188
-    Top = 296
+    Top = 295
     Width = 164
     Height = 28
     Alignment = taRightJustify

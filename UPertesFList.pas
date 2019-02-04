@@ -83,6 +83,7 @@ type
     procedure ResearchPerteEdtKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure ApplicationEvents1ShortCut(var Msg: TWMKey; var Handled: Boolean);
+    procedure FormPaint(Sender: TObject);
   private
     procedure GettingData;
     { Private declarations }
@@ -427,6 +428,21 @@ begin
 
     MainForm.LoadGridLayout(PertesListDBGridEh,GetCurrentDir +'\bin\gc_prtlst');
    end;
+end;
+
+procedure TPertesFListF.FormPaint(Sender: TObject);
+begin
+  if MainForm.totaux_ur.Checked then
+      begin
+
+       SumGirdProduitBtn.Enabled:= True;
+
+      end else
+      begin
+
+       SumGirdProduitBtn.Enabled:= False;
+
+      end;
 end;
 
 procedure TPertesFListF.FormShow(Sender: TObject);
