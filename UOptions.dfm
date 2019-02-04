@@ -219,7 +219,7 @@ object FOptions: TFOptions
         Left = 10
         Top = 368
         Width = 23
-        Height = 18
+        Height = 16
         Caption = 'RC:'
         Color = 4207405
         Font.Charset = DEFAULT_CHARSET
@@ -235,7 +235,7 @@ object FOptions: TFOptions
         Left = 10
         Top = 419
         Width = 27
-        Height = 18
+        Height = 16
         Caption = 'NIF:'
         Color = 4207405
         Font.Charset = DEFAULT_CHARSET
@@ -251,7 +251,7 @@ object FOptions: TFOptions
         Left = 10
         Top = 467
         Width = 41
-        Height = 18
+        Height = 16
         Caption = 'N'#176'Art:'
         Color = 4207405
         Font.Charset = DEFAULT_CHARSET
@@ -267,7 +267,7 @@ object FOptions: TFOptions
         Left = 10
         Top = 517
         Width = 28
-        Height = 18
+        Height = 16
         Caption = 'NIS:'
         Color = 4207405
         Font.Charset = DEFAULT_CHARSET
