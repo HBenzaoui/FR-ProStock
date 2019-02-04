@@ -48,6 +48,7 @@
 *.projdata
 *.tvsconfig
 *.dsk
+*.swp
 
 # Delphi history and backups
 __history/
@@ -58,3 +59,6 @@ __history/
 
 #grids congif
 *.file
+
+#folders
+__recovery/

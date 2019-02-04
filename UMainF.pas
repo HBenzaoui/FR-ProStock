@@ -584,12 +584,6 @@ type
     SQLQuery3: TFDQuery;
     Bonv_ctr_listTablecode_barec: TIntegerField;
     Bonp_facTabletimber_bpfac: TCurrencyField;
-    CompanyTablecode_comp: TIntegerField;
-    CompanyTablenom_comp: TWideStringField;
-    CompanyTablefix_comp: TWideStringField;
-    CompanyTablemob_comp: TWideStringField;
-    CompanyTableadr_comp: TWideStringField;
-    CompanyTablelogo_comp: TBlobField;
     ChangUserMAinFMnu: TMenuItem;
     N24: TMenuItem;
     OuvertureduTiroirCaisse1: TMenuItem;
