@@ -2,7 +2,7 @@ unit UOptions;
 
 interface
 
-uses
+uses  DigiSM_TLB,
   Winapi.Windows,Data.DB,Vcl.Imaging.jpeg, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, sPanel,
   acSlider, AdvToolBtn, acImage, Vcl.ExtDlgs, System.ImageList, Vcl.ImgList,
@@ -233,8 +233,88 @@ type
     Fav60sp: TsSpeedButton;
     EditFavOSp: TsSpeedButton;
     SaveFavOSp: TsSpeedButton;
-    PopupMenu1: TPopupMenu;
+    FavPopMenu: TPopupMenu;
     S2: TMenuItem;
+    sTabSheet4: TsTabSheet;
+    Panel13: TPanel;
+    Label41: TLabel;
+    Label42: TLabel;
+    BalanceIPListLbl: TLabel;
+    BalanceIPAdressIPLbl: TLabel;
+    BalanceIPBareCodeListLbl: TLabel;
+    TestBalanceIPBtn: TsSpeedButton;
+    TestBalanceIPLbl: TLabel;
+    BalanceIPActiveSdr: TsSlider;
+    BalanceIPListCbx: TComboBox;
+    BalanceIPAdressIPEdt: TEdit;
+    BalanceIPBareCodeListCbx: TComboBox;
+    Panel20: TPanel;
+    Panel21: TPanel;
+    Panel22: TPanel;
+    Label46: TLabel;
+    Panel14: TPanel;
+    GridPanel1: TGridPanel;
+    Bal1sp: TsSpeedButton;
+    Bal2sp: TsSpeedButton;
+    Bal3sp: TsSpeedButton;
+    Bal4sp: TsSpeedButton;
+    Bal5sp: TsSpeedButton;
+    Bal6sp: TsSpeedButton;
+    Bal7sp: TsSpeedButton;
+    Bal8sp: TsSpeedButton;
+    Bal9sp: TsSpeedButton;
+    Bal10sp: TsSpeedButton;
+    Bal11sp: TsSpeedButton;
+    Bal12sp: TsSpeedButton;
+    Bal13sp: TsSpeedButton;
+    Bal14sp: TsSpeedButton;
+    Bal15sp: TsSpeedButton;
+    Bal16sp: TsSpeedButton;
+    Bal17sp: TsSpeedButton;
+    Bal18sp: TsSpeedButton;
+    Bal19sp: TsSpeedButton;
+    Bal20sp: TsSpeedButton;
+    Bal21sp: TsSpeedButton;
+    Bal22sp: TsSpeedButton;
+    Bal23sp: TsSpeedButton;
+    Bal24sp: TsSpeedButton;
+    Bal25sp: TsSpeedButton;
+    Bal26sp: TsSpeedButton;
+    Bal27sp: TsSpeedButton;
+    Bal28sp: TsSpeedButton;
+    Bal29sp: TsSpeedButton;
+    Bal30sp: TsSpeedButton;
+    Bal31sp: TsSpeedButton;
+    Bal32sp: TsSpeedButton;
+    Bal33sp: TsSpeedButton;
+    Bal34sp: TsSpeedButton;
+    Bal35sp: TsSpeedButton;
+    Bal36sp: TsSpeedButton;
+    Bal37sp: TsSpeedButton;
+    Bal38sp: TsSpeedButton;
+    Bal39sp: TsSpeedButton;
+    Bal40sp: TsSpeedButton;
+    Bal41sp: TsSpeedButton;
+    Bal42sp: TsSpeedButton;
+    Bal43sp: TsSpeedButton;
+    Bal44sp: TsSpeedButton;
+    Bal45sp: TsSpeedButton;
+    Bal46sp: TsSpeedButton;
+    Bal47sp: TsSpeedButton;
+    Bal48sp: TsSpeedButton;
+    Bal49sp: TsSpeedButton;
+    Bal50sp: TsSpeedButton;
+    Bal51sp: TsSpeedButton;
+    Bal52sp: TsSpeedButton;
+    Bal53sp: TsSpeedButton;
+    Bal54sp: TsSpeedButton;
+    Bal55sp: TsSpeedButton;
+    Bal56sp: TsSpeedButton;
+    BalPopMenu: TPopupMenu;
+    Viderlechamp1: TMenuItem;
+    UploadToBalBtn: TsSpeedButton;
+    UploadToBalLbl: TLabel;
+    BalBtnLblDrawerTimer: TTimer;
     procedure FormShow(Sender: TObject);
     procedure OKFPrintingBtnClick(Sender: TObject);
     procedure ImageCompanyOptionImgMouseEnter(Sender: TObject);
@@ -266,18 +346,31 @@ type
     procedure Fav1spClick(Sender: TObject);
     procedure S2Click(Sender: TObject);
     procedure Fav1spMouseEnter(Sender: TObject);
+    procedure BalanceIPActiveSdrChanging(Sender: TObject;
+      var CanChange: Boolean);
+    procedure Bal1spClick(Sender: TObject);
+    procedure Bal1spMouseEnter(Sender: TObject);
+    procedure Viderlechamp1Click(Sender: TObject);
+    procedure TestBalanceIPBtnClick(Sender: TObject);
+    procedure UploadToBalBtnClick(Sender: TObject);
+    procedure FormPaint(Sender: TObject);
+    procedure BalBtnLblDrawerTimerTimer(Sender: TObject);
   private
     procedure EnableFavBtns;
     procedure DisableFavBtns;
+    procedure DisableBalBtns;
+    procedure EnableBalBtns;
 
   public
 
-   FavBtn : TsSpeedButton;
+   FavBtn,BalBtn : TsSpeedButton;
 
   end;
 
 var
   FOptions: TFOptions;
+
+  ScaleLib:IScale;
 
 implementation
 
@@ -386,6 +479,78 @@ begin
       end;
 end;
 
+procedure TFOptions.Bal1spClick(Sender: TObject);
+begin
+  // Set the clicked btn sender
+  BalBtn := Sender as TsSpeedButton;
+
+  FastProduitsListF := TFastProduitsListF.Create(Application);
+  FastProduitsListF.Tag := 8;
+
+//-------- Show the splash screan for the produit familly to add new one---------//
+  FastProduitsListF.Left := (Screen.Width div 2) - (FastProduitsListF.Width div 2);
+  FastProduitsListF.Top := (Screen.Height div 2) - (FastProduitsListF.Height div 2);
+  FormStyle := fsNormal;
+  FastProduitsListF.ProduitsListDBGridEh.Options:=
+      FastProduitsListF.ProduitsListDBGridEh.Options -[dgMultiSelect] ;
+
+  FastProduitsListF.ProduitsListDBGridEh.IndicatorOptions :=
+   FastProduitsListF.ProduitsListDBGridEh.IndicatorOptions - [gioShowRowselCheckboxesEh];
+  FastProduitsListF.ShowModal;
+end;
+
+procedure TFOptions.BalanceIPActiveSdrChanging(Sender: TObject;
+  var CanChange: Boolean);
+begin
+ if BalanceIPActiveSdr.SliderOn = False then
+  begin
+
+    EnableBalBtns;
+
+    BalanceIPListLbl.Enabled:=True;
+    BalanceIPListCbx.Enabled:=True;
+
+    BalanceIPAdressIPLbl.Enabled:=True;
+    BalanceIPAdressIPEdt.Enabled:=True;
+
+    BalanceIPBareCodeListLbl.Enabled:=True;
+    BalanceIPBareCodeListCbx.Enabled:=True;
+
+    TestBalanceIPLbl.Enabled:=True;
+    TestBalanceIPBtn.Enabled:=True;
+
+    UploadToBalBtn.Enabled:=True;
+    UploadToBalLbl.Enabled:=True;
+
+  end else
+      begin
+
+        DisableBalBtns;
+
+        BalanceIPListLbl.Enabled:=False;
+        BalanceIPListCbx.Enabled:=False;
+
+        BalanceIPAdressIPLbl.Enabled:=False;
+        BalanceIPAdressIPEdt.Enabled:=False;
+
+        BalanceIPBareCodeListLbl.Enabled:=False;
+        BalanceIPBareCodeListCbx.Enabled:=False;
+
+        TestBalanceIPLbl.Enabled:=False;
+        TestBalanceIPBtn.Enabled:=False;
+
+        UploadToBalBtn.Enabled:=False;
+        UploadToBalLbl.Enabled:=False;
+      end;
+
+end;
+
+procedure TFOptions.Bal1spMouseEnter(Sender: TObject);
+begin
+BalBtn := Sender as TsSpeedButton;
+
+end;
+
 procedure TFOptions.ClientSdr12Changing(Sender: TObject;
   var CanChange: Boolean);
 begin
@@ -445,8 +610,6 @@ begin
    FastProduitsListF.ProduitsListDBGridEh.IndicatorOptions - [gioShowRowselCheckboxesEh];
   FastProduitsListF.ShowModal;
 
-
-//
 end;
 
 procedure TFOptions.Fav1spMouseEnter(Sender: TObject);
@@ -485,6 +648,9 @@ NormalForms;
   localSdr19.SliderOn:= False;
   ClientCreditSdr20.SliderOn:= False;
   FourCreditSdr21.SliderOn:= False;
+
+
+  BalBtnLblDrawerTimer.Enabled:=False;
 
 end;
 
@@ -593,6 +759,32 @@ begin
          FavBtn.Caption:= Ini.ReadString('','Fav '+IntToStr(I), FavBtn.Caption);
         end;
 
+
+    // Balance IP******************************/
+      BalanceIPActiveSdr.SliderOn:=  Ini.ReadBool('', 'Balance IP Active',BalanceIPActiveSdr.SliderOn);
+     if BalanceIPActiveSdr.SliderOn then
+     begin
+      BalanceIPActiveSdr.SliderOn:=           Ini.ReadBool('', 'Balance IP Active',BalanceIPActiveSdr.SliderOn);
+      BalanceIPListCbx.ItemIndex:=            Ini.ReadInteger('', 'Balance', BalanceIPListCbx.ItemIndex);
+      BalanceIPAdressIPEdt.Text:=             Ini.ReadString('',  'Balance Adresse IP', BalanceIPAdressIPEdt.Text);
+      BalanceIPBareCodeListCbx.ItemIndex:=    Ini.ReadInteger('', 'Type de Code a Barre', BalanceIPBareCodeListCbx.ItemIndex)
+     end else
+         begin
+
+          BalanceIPActiveSdr.SliderOn:=        Ini.ReadBool('','Balance IP Active', BalanceIPActiveSdr.SliderOn);
+          BalanceIPListCbx.ItemIndex:=         0;
+          BalanceIPAdressIPEdt.Text:=          '192.168.0.34';
+          BalanceIPBareCodeListCbx.ItemIndex:= 0;
+
+         end;
+
+        // Read Balance Btns
+        for I := 1 to 56 do
+        begin
+         BalBtn := (FindComponent('Bal'+IntToStr(I)+'sp') as TsSpeedButton);
+         BalBtn.Caption:= Ini.ReadString('','Bal '+IntToStr(I), BalBtn.Caption);
+        end;
+
        Ini.Free;
 
 
@@ -658,6 +850,8 @@ begin
 
 
     NameCompanyOptionEdt.SetFocus;
+
+    BalBtnLblDrawerTimer.Enabled:=True;
 end;
 
 
@@ -693,6 +887,7 @@ end;
 procedure TFOptions.OKFPrintingBtnClick(Sender: TObject);
 var  S : TStream;
 Ini: TIniFile;
+I : Integer;
 begin
 
    if NameCompanyOptionEdt.Text <> '' then
@@ -826,6 +1021,31 @@ begin
         end;
 
 
+    if BalanceIPActiveSdr.SliderOn  then
+    begin
+    Ini.WriteBool(Caption,'Balance IP Active', BalanceIPActiveSdr.SliderOn);
+    Ini.WriteInteger(Caption,'Balance', BalanceIPListCbx.ItemIndex);
+    Ini.WriteString(Caption,'Balance Adresse IP', BalanceIPAdressIPEdt.Text);
+    Ini.WriteInteger(Caption,'Type de Code a Barre', BalanceIPBareCodeListCbx.ItemIndex);
+    end;
+
+    for I := 1 to 56 do
+    begin
+     BalBtn := (FindComponent('Bal'+IntToStr(I)+'sp') as TsSpeedButton);
+     Ini.WriteString(Caption,'Bal '+IntToStr(I), BalBtn.Caption);
+     MainForm.SQLQuery.Active:= False;
+     MainForm.SQLQuery.SQL.Clear;
+     MainForm.SQLQuery.SQL.Text:= 'SELECT code_p FROM produit WHERE LOWER(nom_p) LIKE LOWER('+ QuotedStr(BalBtn.Caption) +');' ;
+     MainForm.SQLQuery.Active:= True;
+
+     Ini.WriteString(Caption,'Bal '+IntToStr(I)+'Code ',  IntToStr(MainForm.SQLQuery.FieldByName('code_p').AsInteger) );
+
+    end;
+
+    MainForm.SQLQuery.Active:= False;
+    MainForm.SQLQuery.SQL.Clear;
+
+
     Ini.Free;
 //  inherited;
   end;
@@ -951,6 +1171,11 @@ begin
 end;
 
 
+
+procedure TFOptions.FormPaint(Sender: TObject);
+begin
+
+end;
 
 // this function is to get a liot of available COM ports
 function ExtComName(ComNr: DWORD): string;
@@ -1087,8 +1312,10 @@ begin
      MainForm.ActiveTables;
      MainForm.RerfreshTables;
 
-       FWorkingSplash.Close;
+
        FWorkingSplash.WorkingNormalForms;
+       FWorkingSplash.Close;
+
 
 
 
@@ -1241,6 +1468,7 @@ begin
           MainForm.GstockdcConnection.ExecSQL('TRUNCATE  charges');
           MainForm.GstockdcConnection.ExecSQL('TRUNCATE  charge_type');
           MainForm.GstockdcConnection.ExecSQL('TRUNCATE  charge_s_type');
+          MainForm.GstockdcConnection.ExecSQL('DELETE FROM opt_cas_bnk where code_ch <> 0 OR code_ch is null  ' );
         end;
         if PerteSdr15.SliderOn = True then
         begin
@@ -1309,7 +1537,135 @@ begin
    ResetDBPaswordGEdt.Hint:='Appelez Hamza Benzaoui : +213 661 45 81 97 ';
 end;
 
+//************Bal*************//
+ procedure TFOptions.EnableBalBtns();
+begin
 
+  Bal1sp.Enabled:=  True;
+  Bal2sp.Enabled:=  True;
+  Bal3sp.Enabled:=  True;
+  Bal4sp.Enabled:=  True;
+  Bal5sp.Enabled:=  True;
+  Bal6sp.Enabled:=  True;
+  Bal7sp.Enabled:=  True;
+  Bal8sp.Enabled:=  True;
+  Bal9sp.Enabled:=  True;
+  Bal10sp.Enabled:= True;
+  Bal11sp.Enabled:= True;
+  Bal12sp.Enabled:= True;
+  Bal13sp.Enabled:= True;
+  Bal14sp.Enabled:= True;
+  Bal15sp.Enabled:= True;
+  Bal16sp.Enabled:= True;
+  Bal17sp.Enabled:= True;
+  Bal18sp.Enabled:= True;
+  Bal19sp.Enabled:= True;
+  Bal20sp.Enabled:= True;
+  Bal21sp.Enabled:= True;
+  Bal22sp.Enabled:= True;
+  Bal23sp.Enabled:= True;
+  Bal24sp.Enabled:= True;
+  Bal25sp.Enabled:= True;
+  Bal26sp.Enabled:= True;
+  Bal27sp.Enabled:= True;
+  Bal28sp.Enabled:= True;
+  Bal29sp.Enabled:= True;
+  Bal30sp.Enabled:= True;
+  Bal31sp.Enabled:= True;
+  Bal32sp.Enabled:= True;
+  Bal33sp.Enabled:= True;
+  Bal34sp.Enabled:= True;
+  Bal35sp.Enabled:= True;
+  Bal36sp.Enabled:= True;
+  Bal37sp.Enabled:= True;
+  Bal38sp.Enabled:= True;
+  Bal39sp.Enabled:= True;
+  Bal40sp.Enabled:= True;
+  Bal41sp.Enabled:= True;
+  Bal42sp.Enabled:= True;
+  Bal43sp.Enabled:= True;
+  Bal44sp.Enabled:= True;
+  Bal45sp.Enabled:= True;
+  Bal46sp.Enabled:= True;
+  Bal47sp.Enabled:= True;
+  Bal48sp.Enabled:= True;
+  Bal49sp.Enabled:= True;
+  Bal50sp.Enabled:= True;
+  Bal51sp.Enabled:= True;
+  Bal52sp.Enabled:= True;
+  Bal53sp.Enabled:= True;
+  Bal54sp.Enabled:= True;
+  Bal55sp.Enabled:= True;
+  Bal56sp.Enabled:= True;
+
+
+end;
+
+procedure TFOptions.DisableBalBtns();
+begin
+
+  Bal1sp.Enabled:=  False;
+  Bal2sp.Enabled:=  False;
+  Bal3sp.Enabled:=  False;
+  Bal4sp.Enabled:=  False;
+  Bal5sp.Enabled:=  False;
+  Bal6sp.Enabled:=  False;
+  Bal7sp.Enabled:=  False;
+  Bal8sp.Enabled:=  False;
+  Bal9sp.Enabled:=  False;
+  Bal10sp.Enabled:= False;
+  Bal11sp.Enabled:= False;
+  Bal12sp.Enabled:= False;
+  Bal13sp.Enabled:= False;
+  Bal14sp.Enabled:= False;
+  Bal15sp.Enabled:= False;
+  Bal16sp.Enabled:= False;
+  Bal17sp.Enabled:= False;
+  Bal18sp.Enabled:= False;
+  Bal19sp.Enabled:= False;
+  Bal20sp.Enabled:= False;
+  Bal21sp.Enabled:= False;
+  Bal22sp.Enabled:= False;
+  Bal23sp.Enabled:= False;
+  Bal24sp.Enabled:= False;
+  Bal25sp.Enabled:= False;
+  Bal26sp.Enabled:= False;
+  Bal27sp.Enabled:= False;
+  Bal28sp.Enabled:= False;
+  Bal29sp.Enabled:= False;
+  Bal30sp.Enabled:= False;
+  Bal31sp.Enabled:= False;
+  Bal32sp.Enabled:= False;
+  Bal33sp.Enabled:= False;
+  Bal34sp.Enabled:= False;
+  Bal35sp.Enabled:= False;
+  Bal36sp.Enabled:= False;
+  Bal37sp.Enabled:= False;
+  Bal38sp.Enabled:= False;
+  Bal39sp.Enabled:= False;
+  Bal40sp.Enabled:= False;
+  Bal41sp.Enabled:= False;
+  Bal42sp.Enabled:= False;
+  Bal43sp.Enabled:= False;
+  Bal44sp.Enabled:= False;
+  Bal45sp.Enabled:= False;
+  Bal46sp.Enabled:= False;
+  Bal47sp.Enabled:= False;
+  Bal48sp.Enabled:= False;
+  Bal49sp.Enabled:= False;
+  Bal50sp.Enabled:= False;
+  Bal51sp.Enabled:= False;
+  Bal52sp.Enabled:= False;
+  Bal53sp.Enabled:= False;
+  Bal54sp.Enabled:= False;
+  Bal55sp.Enabled:= False;
+  Bal56sp.Enabled:= False;
+
+
+end;
+
+
+//************Fav*************//
 
 procedure TFOptions.EnableFavBtns();
 begin
@@ -1521,6 +1877,109 @@ procedure TFOptions.TiroirCaisseCOMListCbxDropDown(Sender: TObject);
 
 end;
 
+procedure TFOptions.UploadToBalBtnClick(Sender: TObject);
+var
+  Ini: TMemIniFile;
+  I: Integer;
+
+begin
+  try
+  ScaleLib:=CoScale.Create;
+  except
+  ShowMessage('UnSuccssed - COM Object');
+  end;
+
+
+  ScaleLib.ScaleIP:=BalanceIPAdressIPEdt.Text;
+  ScaleLib.ScaleTimeOut:=1000;
+
+  ScaleLib.OpenConnect;
+
+
+  case ScaleLib.ResultCode  of
+        0: ShowMessage('Réussi');
+    else
+        ShowMessage('Le Balance ne répond pas! Assurer-tu que le Balance est allumé et en définissant l''adresse IP: '
+        +BalanceIPAdressIPEdt.Text);
+    end;
+
+  Ini := TMemIniFile.Create(ChangeFileExt(Application.ExeName, '.ini'));
+
+  if BalanceIPActiveSdr.SliderOn  then
+  begin
+  Ini.WriteBool(Caption,'Balance IP Active', BalanceIPActiveSdr.SliderOn);
+  Ini.WriteInteger(Caption,'Balance', BalanceIPListCbx.ItemIndex);
+  Ini.WriteString(Caption,'Balance Adresse IP', BalanceIPAdressIPEdt.Text);
+  Ini.WriteInteger(Caption,'Type de Code a Barre', BalanceIPBareCodeListCbx.ItemIndex);
+  end;
+
+  for I := 1 to 56 do
+  begin
+   BalBtn := (FindComponent('Bal'+IntToStr(I)+'sp') as TsSpeedButton);
+   Ini.WriteString(Caption,'Bal '+IntToStr(I), BalBtn.Caption);
+
+    MainForm.SQLQuery.Active:= False;
+    MainForm.SQLQuery.SQL.Clear;
+    MainForm.SQLQuery.SQL.Text:= 'SELECT code_p, nom_p, prixvd_p FROM produit WHERE LOWER(nom_p) LIKE LOWER('+ QuotedStr(BalBtn.Caption) +');' ;
+    MainForm.SQLQuery.Active:= True;
+
+    Ini.WriteString(Caption,'Bal '+IntToStr(I)+'Code ',  IntToStr(MainForm.SQLQuery.FieldByName('code_p').AsInteger) );
+
+
+     BalBtn := (FindComponent('Bal'+IntToStr(I)+'sp') as TsSpeedButton);
+
+     ScaleLib.RaiseException:=True;
+     try
+
+      ScaleLib.ScaleTimeOut := 1000;
+
+      ScaleLib.LabelFormat := 'F1';
+      ScaleLib.LabelFont := 'S3';
+      ScaleLib.BarCodeFormat := 5;
+
+      ScaleLib.PLUNo := I;
+      ScaleLib.PLUName := MainForm.SQLQuery.FieldByName('nom_p').AsString;
+      ScaleLib.PLUType := 0;
+      ScaleLib.UnitPrice := (MainForm.SQLQuery.FieldValues['prixvd_p'] *100);
+      ScaleLib.ShelfLife := 10;
+      ScaleLib.SellBy := 0;
+      ScaleLib.ItemCode := IntToStr(MainForm.SQLQuery.FieldByName('code_p').AsInteger);
+      ScaleLib.GroupCode := 23;
+      ScaleLib.TareWeight := 0;
+
+      ScaleLib.MsgNo := 1;
+//      ScaleLib.MsgName := MsgName.Text;
+      ScaleLib.IngredientNo := 0;
+//        ScaleLib.IngredientName := IngredientName.Text;
+
+      ScaleLib.SendPLU;
+
+      except
+
+      end;
+
+//      ShowMessage(ScaleLib.ResultDescription(0));
+      ScaleLib.RaiseException:=False;
+
+  end;
+
+    MainForm.SQLQuery.Active:= False;
+    MainForm.SQLQuery.SQL.Clear;
+
+
+  Ini.UpdateFile;
+  Ini.Free;
+
+
+
+
+end;
+
+procedure TFOptions.Viderlechamp1Click(Sender: TObject);
+begin
+    BalBtn.Caption:='';
+end;
+
 procedure TFOptions.TiroirCaisseCaseCOMRbtnClick(Sender: TObject);
 begin
 
@@ -1591,6 +2050,21 @@ end;
 
 
 
+procedure TFOptions.BalBtnLblDrawerTimerTimer(Sender: TObject);
+Var
+I : Integer;
+BalBtnNum : TsSpeedButton;
+begin
+   for I := 1 to 56 do
+ begin
+    BalBtnNum := (FindComponent('Bal'+IntToStr(I)+'sp') as TsSpeedButton);
+    BalBtnNum.Canvas.Font.Name :='Arial';// set the font
+    BalBtnNum.Canvas.Font.Size  :=6;//set the size of the font
+    BalBtnNum.Canvas.Font.Color:=$004734F6;//set the color of the text
+    BalBtnNum.Canvas.TextOut(2,2,IntToStr(I));
+ end;
+end;
+
 procedure TFOptions.TiroirCaisseActiveSdrChanging(Sender: TObject;
   var CanChange: Boolean);
 begin
@@ -1634,6 +2108,30 @@ begin
 
 end;
 
+
+procedure TFOptions.TestBalanceIPBtnClick(Sender: TObject);
+begin
+  try
+  ScaleLib:=CoScale.Create;
+  except
+  ShowMessage('UnSuccssed - COM Object');
+  end;
+
+
+  ScaleLib.ScaleIP:=BalanceIPAdressIPEdt.Text;
+  ScaleLib.ScaleTimeOut:=1000;
+
+  ScaleLib.OpenConnect;
+
+
+  case ScaleLib.ResultCode  of
+      0: ShowMessage('Réussi');
+  else
+      ShowMessage('Le Balance ne répond pas! Assurer-tu que le Balance est allumé et en définissant l''adresse IP: '
+      +BalanceIPAdressIPEdt.Text);
+  end;
+
+end;
 
 procedure TFOptions.TestPoleBtnClick(Sender: TObject);
 begin

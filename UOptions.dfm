@@ -16,6 +16,7 @@ object FOptions: TFOptions
   OnClose = FormClose
   OnCreate = FormCreate
   OnKeyPress = FormKeyPress
+  OnPaint = FormPaint
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
@@ -41,8 +42,6 @@ object FOptions: TFOptions
     TabsLineSkin = 'BAR'
     object GeneralOptionGTB: TsTabSheet
       Caption = 'G'#233'n'#233'ral'
-      SkinData.CustomColor = False
-      SkinData.CustomFont = False
       object P1: TPanel
         Left = 0
         Top = 284
@@ -89,7 +88,7 @@ object FOptions: TFOptions
         object CaiseeLbl: TLabel
           Left = 10
           Top = 79
-          Width = 196
+          Width = 187
           Height = 16
           Caption = 'Imprimante de caisse par d'#233'faut:'
           Color = 4207405
@@ -105,7 +104,7 @@ object FOptions: TFOptions
         object Label2: TLabel
           Left = 10
           Top = 139
-          Width = 224
+          Width = 210
           Height = 16
           Caption = 'Imprimante de Code barre par d'#233'faut:'
           Color = 4207405
@@ -121,7 +120,7 @@ object FOptions: TFOptions
         object Label3: TLabel
           Left = 10
           Top = 188
-          Width = 176
+          Width = 166
           Height = 16
           Caption = 'Format d'#39#233'tiquette par d'#233'faut:'
           Color = 4207405
@@ -137,7 +136,7 @@ object FOptions: TFOptions
         object Label4: TLabel
           Left = 10
           Top = 236
-          Width = 210
+          Width = 198
           Height = 16
           Caption = 'Prix de vente d'#39#233'tiquette par d'#233'faut:'
           Color = 4207405
@@ -178,12 +177,12 @@ object FOptions: TFOptions
           Font.Height = 12
           Font.Name = 'Roboto'
           Font.Style = []
+          StyleElements = []
           ParentBiDiMode = False
           ParentBackground = False
           ParentCtl3D = False
           ParentFont = False
           TabOrder = 0
-          StyleElements = []
           BoundLabel.Caption = 'sSlider1'
           BoundLabel.Layout = sclBottomCenter
           FontOn.Charset = DEFAULT_CHARSET
@@ -323,7 +322,7 @@ object FOptions: TFOptions
         object Label6: TLabel
           Left = 1
           Top = 32
-          Width = 107
+          Width = 99
           Height = 16
           Caption = 'Nom d'#39'enterprise:'
           Color = 4207405
@@ -339,7 +338,7 @@ object FOptions: TFOptions
         object Label7: TLabel
           Left = 41
           Top = 72
-          Width = 67
+          Width = 62
           Height = 16
           Caption = 'T'#233'l'#233'phone:'
           Color = 4207405
@@ -355,7 +354,7 @@ object FOptions: TFOptions
         object Label8: TLabel
           Left = 64
           Top = 112
-          Width = 44
+          Width = 41
           Height = 16
           Caption = 'Mobile:'
           Color = 4207405
@@ -371,7 +370,7 @@ object FOptions: TFOptions
         object Label9: TLabel
           Left = 56
           Top = 152
-          Width = 52
+          Width = 50
           Height = 16
           Caption = 'Adresse:'
           Color = 4207405
@@ -414,7 +413,7 @@ object FOptions: TFOptions
           Spacing = -1
           Visible = False
           OnClick = ImageDeleteProduitGBtnClick
-          Version = '1.6.1.2'
+          Version = '1.6.2.0'
           TMSStyle = 0
         end
         object ImageEditProduitGBtn: TAdvToolButton
@@ -446,13 +445,13 @@ object FOptions: TFOptions
           ShowHint = True
           Spacing = -1
           Visible = False
-          Version = '1.6.1.2'
+          Version = '1.6.2.0'
           TMSStyle = 0
         end
         object Label10: TLabel
           Left = 71
           Top = 230
-          Width = 37
+          Width = 34
           Height = 16
           Caption = 'Logo :'
           Color = 4207405
@@ -590,8 +589,6 @@ object FOptions: TFOptions
     end
     object sTabSheet1: TsTabSheet
       Caption = 'Utilit'#233's'
-      SkinData.CustomColor = False
-      SkinData.CustomFont = False
       object Panel1: TPanel
         Left = 3
         Top = 6
@@ -638,7 +635,7 @@ object FOptions: TFOptions
         object PoleDisplayCOMListLbl: TLabel
           Left = 9
           Top = 55
-          Width = 151
+          Width = 141
           Height = 16
           Caption = 'Port de cummunications:'
           Color = 4207405
@@ -655,7 +652,7 @@ object FOptions: TFOptions
         object PoleDisplayMsgLbl: TLabel
           Left = 9
           Top = 106
-          Width = 108
+          Width = 103
           Height = 16
           Caption = 'Premier message:'
           Color = 4207405
@@ -672,7 +669,7 @@ object FOptions: TFOptions
         object PoleDisplayMsg2Lbl: TLabel
           Left = 9
           Top = 160
-          Width = 105
+          Width = 100
           Height = 16
           Caption = 'Dernier message:'
           Color = 4207405
@@ -689,7 +686,7 @@ object FOptions: TFOptions
         object PoleDisplayTotalLbl: TLabel
           Left = 9
           Top = 219
-          Width = 89
+          Width = 84
           Height = 16
           Caption = #192' la fin montre:'
           Color = 4207405
@@ -721,7 +718,7 @@ object FOptions: TFOptions
         object TestPoleLbl: TLabel
           Left = 385
           Top = 32
-          Width = 26
+          Width = 25
           Height = 16
           Caption = 'Test'
           Color = 4207405
@@ -749,12 +746,12 @@ object FOptions: TFOptions
           Font.Height = 12
           Font.Name = 'Roboto'
           Font.Style = []
+          StyleElements = []
           ParentBiDiMode = False
           ParentBackground = False
           ParentCtl3D = False
           ParentFont = False
           TabOrder = 0
-          StyleElements = []
           BoundLabel.Caption = 'sSlider1'
           BoundLabel.Layout = sclBottomCenter
           FontOn.Charset = DEFAULT_CHARSET
@@ -900,7 +897,7 @@ object FOptions: TFOptions
         object CaseCOMLbl: TLabel
           Left = 19
           Top = 83
-          Width = 151
+          Width = 141
           Height = 16
           Caption = 'Port de cummunications:'
           Color = 4207405
@@ -917,7 +914,7 @@ object FOptions: TFOptions
         object CasePrinterLbl: TLabel
           Left = 21
           Top = 175
-          Width = 148
+          Width = 137
           Height = 16
           Caption = 'L'#39'imprimante connect'#233'e:'
           Color = 4207405
@@ -934,7 +931,7 @@ object FOptions: TFOptions
         object TiroirCaisseCasePasswordLbl: TLabel
           Left = 11
           Top = 244
-          Width = 275
+          Width = 274
           Height = 15
           Caption = 'Ouvrez le tiroir avec le mot de passe d'#39'utilisateur:'
           Color = 4207405
@@ -966,7 +963,7 @@ object FOptions: TFOptions
         object TestTeroirLbl: TLabel
           Left = 391
           Top = 32
-          Width = 26
+          Width = 25
           Height = 16
           Caption = 'Test'
           Color = 4207405
@@ -994,12 +991,12 @@ object FOptions: TFOptions
           Font.Height = 12
           Font.Name = 'Roboto'
           Font.Style = []
+          StyleElements = []
           ParentBiDiMode = False
           ParentBackground = False
           ParentCtl3D = False
           ParentFont = False
           TabOrder = 0
-          StyleElements = []
           BoundLabel.Caption = 'sSlider1'
           BoundLabel.Layout = sclBottomCenter
           FontOn.Charset = DEFAULT_CHARSET
@@ -1121,12 +1118,12 @@ object FOptions: TFOptions
           Font.Height = 12
           Font.Name = 'Roboto'
           Font.Style = []
+          StyleElements = []
           ParentBiDiMode = False
           ParentBackground = False
           ParentCtl3D = False
           ParentFont = False
           TabOrder = 5
-          StyleElements = []
           BoundLabel.Caption = 'sSlider1'
           BoundLabel.Layout = sclBottomCenter
           FontOn.Charset = DEFAULT_CHARSET
@@ -1174,8 +1171,6 @@ object FOptions: TFOptions
     end
     object sTabSheet2: TsTabSheet
       Caption = 'Base de donn'#233
-      SkinData.CustomColor = False
-      SkinData.CustomFont = False
       object Panel11: TPanel
         Left = 3
         Top = 6
@@ -1237,7 +1232,7 @@ object FOptions: TFOptions
         object Label21: TLabel
           Left = 374
           Top = 32
-          Width = 48
+          Width = 47
           Height = 16
           Caption = 'initialise'
           Color = 4207405
@@ -1254,7 +1249,7 @@ object FOptions: TFOptions
         object Label16: TLabel
           Left = 32
           Top = 77
-          Width = 98
+          Width = 101
           Height = 14
           Caption = 'Bons au Comptoir:'
           Color = 4207405
@@ -1270,7 +1265,7 @@ object FOptions: TFOptions
         object Label18: TLabel
           Left = 27
           Top = 97
-          Width = 103
+          Width = 104
           Height = 14
           Caption = 'Bons des Livraison:'
           Color = 4207405
@@ -1286,7 +1281,7 @@ object FOptions: TFOptions
         object Label19: TLabel
           Left = 22
           Top = 137
-          Width = 109
+          Width = 112
           Height = 14
           Caption = 'Factures des Ventes:'
           Color = 4207405
@@ -1318,7 +1313,7 @@ object FOptions: TFOptions
         object Label22: TLabel
           Left = 6
           Top = 217
-          Width = 125
+          Width = 127
           Height = 14
           Caption = 'R'#232'glement Fournisseur:'
           Color = 4207405
@@ -1334,7 +1329,7 @@ object FOptions: TFOptions
         object Label23: TLabel
           Left = 33
           Top = 197
-          Width = 98
+          Width = 100
           Height = 14
           Caption = 'R'#232'glement Clients:'
           Color = 4207405
@@ -1350,7 +1345,7 @@ object FOptions: TFOptions
         object Label24: TLabel
           Left = 31
           Top = 177
-          Width = 100
+          Width = 105
           Height = 14
           Caption = 'Factures Proforma:'
           Color = 4207405
@@ -1366,7 +1361,7 @@ object FOptions: TFOptions
         object Label25: TLabel
           Left = 34
           Top = 158
-          Width = 97
+          Width = 99
           Height = 14
           Caption = 'Factures d'#39'Achats:'
           Color = 4207405
@@ -1382,7 +1377,7 @@ object FOptions: TFOptions
         object Label26: TLabel
           Left = 61
           Top = 257
-          Width = 70
+          Width = 71
           Height = 14
           Caption = 'Les Banques:'
           Color = 4207405
@@ -1398,7 +1393,7 @@ object FOptions: TFOptions
         object Label27: TLabel
           Left = 67
           Top = 237
-          Width = 64
+          Width = 66
           Height = 14
           Caption = 'Les Caisses:'
           Color = 4207405
@@ -1414,7 +1409,7 @@ object FOptions: TFOptions
         object Label28: TLabel
           Left = 331
           Top = 77
-          Width = 48
+          Width = 49
           Height = 14
           Caption = 'Produits:'
           Color = 4207405
@@ -1430,7 +1425,7 @@ object FOptions: TFOptions
         object Label29: TLabel
           Left = 340
           Top = 97
-          Width = 39
+          Width = 40
           Height = 14
           Caption = 'Clients:'
           Color = 4207405
@@ -1446,7 +1441,7 @@ object FOptions: TFOptions
         object Label30: TLabel
           Left = 312
           Top = 137
-          Width = 67
+          Width = 69
           Height = 14
           Caption = 'Les Charges:'
           Color = 4207405
@@ -1462,7 +1457,7 @@ object FOptions: TFOptions
         object Label31: TLabel
           Left = 307
           Top = 117
-          Width = 72
+          Width = 73
           Height = 14
           Caption = 'Fournisseurs:'
           Color = 4207405
@@ -1494,7 +1489,7 @@ object FOptions: TFOptions
         object Label33: TLabel
           Left = 258
           Top = 197
-          Width = 121
+          Width = 125
           Height = 14
           Caption = 'Produits Sous Familes:'
           Color = 4207405
@@ -1510,7 +1505,7 @@ object FOptions: TFOptions
         object Label34: TLabel
           Left = 288
           Top = 177
-          Width = 91
+          Width = 95
           Height = 14
           Caption = 'Produits Familes:'
           Color = 4207405
@@ -1526,7 +1521,7 @@ object FOptions: TFOptions
         object Label35: TLabel
           Left = 322
           Top = 158
-          Width = 57
+          Width = 58
           Height = 14
           Caption = 'Les Pertes:'
           Color = 4207405
@@ -1542,7 +1537,7 @@ object FOptions: TFOptions
         object Label36: TLabel
           Left = 207
           Top = 257
-          Width = 172
+          Width = 173
           Height = 14
           Caption = 'Supprimer les dettes des clients:'
           Color = 4207405
@@ -1558,7 +1553,7 @@ object FOptions: TFOptions
         object Label37: TLabel
           Left = 308
           Top = 237
-          Width = 71
+          Width = 73
           Height = 14
           Caption = 'Localitations:'
           Color = 4207405
@@ -1574,7 +1569,7 @@ object FOptions: TFOptions
         object Label38: TLabel
           Left = 203
           Top = 9
-          Width = 74
+          Width = 76
           Height = 14
           Caption = 'Mot de Passe:'
           Color = 4207405
@@ -1590,7 +1585,7 @@ object FOptions: TFOptions
         object Label39: TLabel
           Left = 175
           Top = 276
-          Width = 204
+          Width = 205
           Height = 14
           Caption = 'Supprimer les dettes des fournisseurs:'
           Color = 4207405
@@ -1617,12 +1612,12 @@ object FOptions: TFOptions
           Font.Height = 12
           Font.Name = 'Roboto'
           Font.Style = []
+          StyleElements = []
           ParentBiDiMode = False
           ParentBackground = False
           ParentCtl3D = False
           ParentFont = False
           TabOrder = 0
-          StyleElements = []
           BoundLabel.Caption = 'sSlider1'
           BoundLabel.Layout = sclBottomCenter
           FontOn.Charset = DEFAULT_CHARSET
@@ -1649,12 +1644,12 @@ object FOptions: TFOptions
           Font.Height = 12
           Font.Name = 'Roboto'
           Font.Style = []
+          StyleElements = []
           ParentBiDiMode = False
           ParentBackground = False
           ParentCtl3D = False
           ParentFont = False
           TabOrder = 1
-          StyleElements = []
           BoundLabel.Caption = 'sSlider1'
           BoundLabel.Layout = sclBottomCenter
           FontOn.Charset = DEFAULT_CHARSET
@@ -1680,12 +1675,12 @@ object FOptions: TFOptions
           Font.Height = 12
           Font.Name = 'Roboto'
           Font.Style = []
+          StyleElements = []
           ParentBiDiMode = False
           ParentBackground = False
           ParentCtl3D = False
           ParentFont = False
           TabOrder = 2
-          StyleElements = []
           BoundLabel.Caption = 'sSlider1'
           BoundLabel.Layout = sclBottomCenter
           FontOn.Charset = DEFAULT_CHARSET
@@ -1711,12 +1706,12 @@ object FOptions: TFOptions
           Font.Height = 12
           Font.Name = 'Roboto'
           Font.Style = []
+          StyleElements = []
           ParentBiDiMode = False
           ParentBackground = False
           ParentCtl3D = False
           ParentFont = False
           TabOrder = 3
-          StyleElements = []
           BoundLabel.Caption = 'sSlider1'
           BoundLabel.Layout = sclBottomCenter
           FontOn.Charset = DEFAULT_CHARSET
@@ -1742,12 +1737,12 @@ object FOptions: TFOptions
           Font.Height = 12
           Font.Name = 'Roboto'
           Font.Style = []
+          StyleElements = []
           ParentBiDiMode = False
           ParentBackground = False
           ParentCtl3D = False
           ParentFont = False
           TabOrder = 4
-          StyleElements = []
           BoundLabel.Caption = 'sSlider1'
           BoundLabel.Layout = sclBottomCenter
           FontOn.Charset = DEFAULT_CHARSET
@@ -1773,12 +1768,12 @@ object FOptions: TFOptions
           Font.Height = 12
           Font.Name = 'Roboto'
           Font.Style = []
+          StyleElements = []
           ParentBiDiMode = False
           ParentBackground = False
           ParentCtl3D = False
           ParentFont = False
           TabOrder = 5
-          StyleElements = []
           BoundLabel.Caption = 'sSlider1'
           BoundLabel.Layout = sclBottomCenter
           FontOn.Charset = DEFAULT_CHARSET
@@ -1804,12 +1799,12 @@ object FOptions: TFOptions
           Font.Height = 12
           Font.Name = 'Roboto'
           Font.Style = []
+          StyleElements = []
           ParentBiDiMode = False
           ParentBackground = False
           ParentCtl3D = False
           ParentFont = False
           TabOrder = 6
-          StyleElements = []
           BoundLabel.Caption = 'sSlider1'
           BoundLabel.Layout = sclBottomCenter
           FontOn.Charset = DEFAULT_CHARSET
@@ -1835,12 +1830,12 @@ object FOptions: TFOptions
           Font.Height = 12
           Font.Name = 'Roboto'
           Font.Style = []
+          StyleElements = []
           ParentBiDiMode = False
           ParentBackground = False
           ParentCtl3D = False
           ParentFont = False
           TabOrder = 7
-          StyleElements = []
           BoundLabel.Caption = 'sSlider1'
           BoundLabel.Layout = sclBottomCenter
           FontOn.Charset = DEFAULT_CHARSET
@@ -1866,12 +1861,12 @@ object FOptions: TFOptions
           Font.Height = 12
           Font.Name = 'Roboto'
           Font.Style = []
+          StyleElements = []
           ParentBiDiMode = False
           ParentBackground = False
           ParentCtl3D = False
           ParentFont = False
           TabOrder = 8
-          StyleElements = []
           BoundLabel.Caption = 'sSlider1'
           BoundLabel.Layout = sclBottomCenter
           FontOn.Charset = DEFAULT_CHARSET
@@ -1897,12 +1892,12 @@ object FOptions: TFOptions
           Font.Height = 12
           Font.Name = 'Roboto'
           Font.Style = []
+          StyleElements = []
           ParentBiDiMode = False
           ParentBackground = False
           ParentCtl3D = False
           ParentFont = False
           TabOrder = 9
-          StyleElements = []
           BoundLabel.Caption = 'sSlider1'
           BoundLabel.Layout = sclBottomCenter
           FontOn.Charset = DEFAULT_CHARSET
@@ -1928,12 +1923,12 @@ object FOptions: TFOptions
           Font.Height = 12
           Font.Name = 'Roboto'
           Font.Style = []
+          StyleElements = []
           ParentBiDiMode = False
           ParentBackground = False
           ParentCtl3D = False
           ParentFont = False
           TabOrder = 10
-          StyleElements = []
           BoundLabel.Caption = 'sSlider1'
           BoundLabel.Layout = sclBottomCenter
           FontOn.Charset = DEFAULT_CHARSET
@@ -1959,12 +1954,12 @@ object FOptions: TFOptions
           Font.Height = 12
           Font.Name = 'Roboto'
           Font.Style = []
+          StyleElements = []
           ParentBiDiMode = False
           ParentBackground = False
           ParentCtl3D = False
           ParentFont = False
           TabOrder = 11
-          StyleElements = []
           BoundLabel.Caption = 'sSlider1'
           BoundLabel.Layout = sclBottomCenter
           FontOn.Charset = DEFAULT_CHARSET
@@ -1990,12 +1985,12 @@ object FOptions: TFOptions
           Font.Height = 12
           Font.Name = 'Roboto'
           Font.Style = []
+          StyleElements = []
           ParentBiDiMode = False
           ParentBackground = False
           ParentCtl3D = False
           ParentFont = False
           TabOrder = 12
-          StyleElements = []
           BoundLabel.Caption = 'sSlider1'
           BoundLabel.Layout = sclBottomCenter
           FontOn.Charset = DEFAULT_CHARSET
@@ -2021,12 +2016,12 @@ object FOptions: TFOptions
           Font.Height = 12
           Font.Name = 'Roboto'
           Font.Style = []
+          StyleElements = []
           ParentBiDiMode = False
           ParentBackground = False
           ParentCtl3D = False
           ParentFont = False
           TabOrder = 13
-          StyleElements = []
           BoundLabel.Caption = 'sSlider1'
           BoundLabel.Layout = sclBottomCenter
           FontOn.Charset = DEFAULT_CHARSET
@@ -2053,12 +2048,12 @@ object FOptions: TFOptions
           Font.Height = 12
           Font.Name = 'Roboto'
           Font.Style = []
+          StyleElements = []
           ParentBiDiMode = False
           ParentBackground = False
           ParentCtl3D = False
           ParentFont = False
           TabOrder = 14
-          StyleElements = []
           BoundLabel.Caption = 'sSlider1'
           BoundLabel.Layout = sclBottomCenter
           FontOn.Charset = DEFAULT_CHARSET
@@ -2084,12 +2079,12 @@ object FOptions: TFOptions
           Font.Height = 12
           Font.Name = 'Roboto'
           Font.Style = []
+          StyleElements = []
           ParentBiDiMode = False
           ParentBackground = False
           ParentCtl3D = False
           ParentFont = False
           TabOrder = 15
-          StyleElements = []
           BoundLabel.Caption = 'sSlider1'
           BoundLabel.Layout = sclBottomCenter
           FontOn.Charset = DEFAULT_CHARSET
@@ -2116,12 +2111,12 @@ object FOptions: TFOptions
           Font.Height = 12
           Font.Name = 'Roboto'
           Font.Style = []
+          StyleElements = []
           ParentBiDiMode = False
           ParentBackground = False
           ParentCtl3D = False
           ParentFont = False
           TabOrder = 16
-          StyleElements = []
           BoundLabel.Caption = 'sSlider1'
           BoundLabel.Layout = sclBottomCenter
           FontOn.Charset = DEFAULT_CHARSET
@@ -2147,12 +2142,12 @@ object FOptions: TFOptions
           Font.Height = 12
           Font.Name = 'Roboto'
           Font.Style = []
+          StyleElements = []
           ParentBiDiMode = False
           ParentBackground = False
           ParentCtl3D = False
           ParentFont = False
           TabOrder = 17
-          StyleElements = []
           BoundLabel.Caption = 'sSlider1'
           BoundLabel.Layout = sclBottomCenter
           FontOn.Charset = DEFAULT_CHARSET
@@ -2178,12 +2173,12 @@ object FOptions: TFOptions
           Font.Height = 12
           Font.Name = 'Roboto'
           Font.Style = []
+          StyleElements = []
           ParentBiDiMode = False
           ParentBackground = False
           ParentCtl3D = False
           ParentFont = False
           TabOrder = 18
-          StyleElements = []
           BoundLabel.Caption = 'sSlider1'
           BoundLabel.Layout = sclBottomCenter
           FontOn.Charset = DEFAULT_CHARSET
@@ -2209,12 +2204,12 @@ object FOptions: TFOptions
           Font.Height = 12
           Font.Name = 'Roboto'
           Font.Style = []
+          StyleElements = []
           ParentBiDiMode = False
           ParentBackground = False
           ParentCtl3D = False
           ParentFont = False
           TabOrder = 19
-          StyleElements = []
           BoundLabel.Caption = 'sSlider1'
           BoundLabel.Layout = sclBottomCenter
           FontOn.Charset = DEFAULT_CHARSET
@@ -2240,12 +2235,12 @@ object FOptions: TFOptions
           Font.Height = 12
           Font.Name = 'Roboto'
           Font.Style = []
+          StyleElements = []
           ParentBiDiMode = False
           ParentBackground = False
           ParentCtl3D = False
           ParentFont = False
           TabOrder = 20
-          StyleElements = []
           BoundLabel.Caption = 'sSlider1'
           BoundLabel.Layout = sclBottomCenter
           FontOn.Charset = DEFAULT_CHARSET
@@ -2293,12 +2288,12 @@ object FOptions: TFOptions
           Font.Height = 12
           Font.Name = 'Roboto'
           Font.Style = []
+          StyleElements = []
           ParentBiDiMode = False
           ParentBackground = False
           ParentCtl3D = False
           ParentFont = False
           TabOrder = 22
-          StyleElements = []
           BoundLabel.Caption = 'sSlider1'
           BoundLabel.Layout = sclBottomCenter
           FontOn.Charset = DEFAULT_CHARSET
@@ -2346,8 +2341,6 @@ object FOptions: TFOptions
     end
     object sTabSheet3: TsTabSheet
       Caption = 'Produit Favoris'
-      SkinData.CustomColor = False
-      SkinData.CustomFont = False
       DesignSize = (
         440
         581)
@@ -2428,8 +2421,6 @@ object FOptions: TFOptions
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
           ParentFont = False
-          SkinData.CustomColor = False
-          SkinData.CustomFont = False
           object Panel12: TPanel
             Left = 0
             Top = 0
@@ -2565,7 +2556,7 @@ object FOptions: TFOptions
               ParentFont = False
               ParentShowHint = False
               ParentBiDiMode = False
-              PopupMenu = PopupMenu1
+              PopupMenu = FavPopMenu
               ShowHint = True
               OnClick = Fav1spClick
               OnMouseEnter = Fav1spMouseEnter
@@ -2589,7 +2580,7 @@ object FOptions: TFOptions
               ParentFont = False
               ParentShowHint = False
               ParentBiDiMode = False
-              PopupMenu = PopupMenu1
+              PopupMenu = FavPopMenu
               ShowHint = True
               OnClick = Fav1spClick
               OnMouseEnter = Fav1spMouseEnter
@@ -2613,7 +2604,7 @@ object FOptions: TFOptions
               ParentFont = False
               ParentShowHint = False
               ParentBiDiMode = False
-              PopupMenu = PopupMenu1
+              PopupMenu = FavPopMenu
               ShowHint = True
               OnClick = Fav1spClick
               OnMouseEnter = Fav1spMouseEnter
@@ -2637,7 +2628,7 @@ object FOptions: TFOptions
               ParentFont = False
               ParentShowHint = False
               ParentBiDiMode = False
-              PopupMenu = PopupMenu1
+              PopupMenu = FavPopMenu
               ShowHint = True
               OnClick = Fav1spClick
               OnMouseEnter = Fav1spMouseEnter
@@ -2661,7 +2652,7 @@ object FOptions: TFOptions
               ParentFont = False
               ParentShowHint = False
               ParentBiDiMode = False
-              PopupMenu = PopupMenu1
+              PopupMenu = FavPopMenu
               ShowHint = True
               OnClick = Fav1spClick
               OnMouseEnter = Fav1spMouseEnter
@@ -2685,7 +2676,7 @@ object FOptions: TFOptions
               ParentFont = False
               ParentShowHint = False
               ParentBiDiMode = False
-              PopupMenu = PopupMenu1
+              PopupMenu = FavPopMenu
               ShowHint = True
               OnClick = Fav1spClick
               OnMouseEnter = Fav1spMouseEnter
@@ -2709,7 +2700,7 @@ object FOptions: TFOptions
               ParentFont = False
               ParentShowHint = False
               ParentBiDiMode = False
-              PopupMenu = PopupMenu1
+              PopupMenu = FavPopMenu
               ShowHint = True
               OnClick = Fav1spClick
               OnMouseEnter = Fav1spMouseEnter
@@ -2733,7 +2724,7 @@ object FOptions: TFOptions
               ParentFont = False
               ParentShowHint = False
               ParentBiDiMode = False
-              PopupMenu = PopupMenu1
+              PopupMenu = FavPopMenu
               ShowHint = True
               OnClick = Fav1spClick
               OnMouseEnter = Fav1spMouseEnter
@@ -2757,7 +2748,7 @@ object FOptions: TFOptions
               ParentFont = False
               ParentShowHint = False
               ParentBiDiMode = False
-              PopupMenu = PopupMenu1
+              PopupMenu = FavPopMenu
               ShowHint = True
               OnClick = Fav1spClick
               OnMouseEnter = Fav1spMouseEnter
@@ -2781,7 +2772,7 @@ object FOptions: TFOptions
               ParentFont = False
               ParentShowHint = False
               ParentBiDiMode = False
-              PopupMenu = PopupMenu1
+              PopupMenu = FavPopMenu
               ShowHint = True
               OnClick = Fav1spClick
               OnMouseEnter = Fav1spMouseEnter
@@ -2805,7 +2796,7 @@ object FOptions: TFOptions
               ParentFont = False
               ParentShowHint = False
               ParentBiDiMode = False
-              PopupMenu = PopupMenu1
+              PopupMenu = FavPopMenu
               ShowHint = True
               OnClick = Fav1spClick
               OnMouseEnter = Fav1spMouseEnter
@@ -2829,7 +2820,7 @@ object FOptions: TFOptions
               ParentFont = False
               ParentShowHint = False
               ParentBiDiMode = False
-              PopupMenu = PopupMenu1
+              PopupMenu = FavPopMenu
               ShowHint = True
               OnClick = Fav1spClick
               OnMouseEnter = Fav1spMouseEnter
@@ -2840,8 +2831,6 @@ object FOptions: TFOptions
         end
         object Fav2ListTB: TsTabSheet
           Caption = 'Liste 2'
-          SkinData.CustomColor = False
-          SkinData.CustomFont = False
           object Panel31: TPanel
             Left = 0
             Top = 0
@@ -2977,7 +2966,7 @@ object FOptions: TFOptions
               ParentFont = False
               ParentShowHint = False
               ParentBiDiMode = False
-              PopupMenu = PopupMenu1
+              PopupMenu = FavPopMenu
               ShowHint = True
               OnClick = Fav1spClick
               OnMouseEnter = Fav1spMouseEnter
@@ -3002,7 +2991,7 @@ object FOptions: TFOptions
               ParentFont = False
               ParentShowHint = False
               ParentBiDiMode = False
-              PopupMenu = PopupMenu1
+              PopupMenu = FavPopMenu
               ShowHint = True
               OnClick = Fav1spClick
               OnMouseEnter = Fav1spMouseEnter
@@ -3027,7 +3016,7 @@ object FOptions: TFOptions
               ParentFont = False
               ParentShowHint = False
               ParentBiDiMode = False
-              PopupMenu = PopupMenu1
+              PopupMenu = FavPopMenu
               ShowHint = True
               OnClick = Fav1spClick
               OnMouseEnter = Fav1spMouseEnter
@@ -3052,7 +3041,7 @@ object FOptions: TFOptions
               ParentFont = False
               ParentShowHint = False
               ParentBiDiMode = False
-              PopupMenu = PopupMenu1
+              PopupMenu = FavPopMenu
               ShowHint = True
               OnClick = Fav1spClick
               OnMouseEnter = Fav1spMouseEnter
@@ -3077,7 +3066,7 @@ object FOptions: TFOptions
               ParentFont = False
               ParentShowHint = False
               ParentBiDiMode = False
-              PopupMenu = PopupMenu1
+              PopupMenu = FavPopMenu
               ShowHint = True
               OnClick = Fav1spClick
               OnMouseEnter = Fav1spMouseEnter
@@ -3102,7 +3091,7 @@ object FOptions: TFOptions
               ParentFont = False
               ParentShowHint = False
               ParentBiDiMode = False
-              PopupMenu = PopupMenu1
+              PopupMenu = FavPopMenu
               ShowHint = True
               OnClick = Fav1spClick
               OnMouseEnter = Fav1spMouseEnter
@@ -3127,7 +3116,7 @@ object FOptions: TFOptions
               ParentFont = False
               ParentShowHint = False
               ParentBiDiMode = False
-              PopupMenu = PopupMenu1
+              PopupMenu = FavPopMenu
               ShowHint = True
               OnClick = Fav1spClick
               OnMouseEnter = Fav1spMouseEnter
@@ -3152,7 +3141,7 @@ object FOptions: TFOptions
               ParentFont = False
               ParentShowHint = False
               ParentBiDiMode = False
-              PopupMenu = PopupMenu1
+              PopupMenu = FavPopMenu
               ShowHint = True
               OnClick = Fav1spClick
               OnMouseEnter = Fav1spMouseEnter
@@ -3177,7 +3166,7 @@ object FOptions: TFOptions
               ParentFont = False
               ParentShowHint = False
               ParentBiDiMode = False
-              PopupMenu = PopupMenu1
+              PopupMenu = FavPopMenu
               ShowHint = True
               OnClick = Fav1spClick
               OnMouseEnter = Fav1spMouseEnter
@@ -3202,7 +3191,7 @@ object FOptions: TFOptions
               ParentFont = False
               ParentShowHint = False
               ParentBiDiMode = False
-              PopupMenu = PopupMenu1
+              PopupMenu = FavPopMenu
               ShowHint = True
               OnClick = Fav1spClick
               OnMouseEnter = Fav1spMouseEnter
@@ -3227,7 +3216,7 @@ object FOptions: TFOptions
               ParentFont = False
               ParentShowHint = False
               ParentBiDiMode = False
-              PopupMenu = PopupMenu1
+              PopupMenu = FavPopMenu
               ShowHint = True
               OnClick = Fav1spClick
               OnMouseEnter = Fav1spMouseEnter
@@ -3252,7 +3241,7 @@ object FOptions: TFOptions
               ParentFont = False
               ParentShowHint = False
               ParentBiDiMode = False
-              PopupMenu = PopupMenu1
+              PopupMenu = FavPopMenu
               ShowHint = True
               OnClick = Fav1spClick
               OnMouseEnter = Fav1spMouseEnter
@@ -3264,8 +3253,6 @@ object FOptions: TFOptions
         end
         object Fav3ListTB: TsTabSheet
           Caption = 'Liste 3'
-          SkinData.CustomColor = False
-          SkinData.CustomFont = False
           object Panel32: TPanel
             Left = 0
             Top = 0
@@ -3401,7 +3388,7 @@ object FOptions: TFOptions
               ParentFont = False
               ParentShowHint = False
               ParentBiDiMode = False
-              PopupMenu = PopupMenu1
+              PopupMenu = FavPopMenu
               ShowHint = True
               OnClick = Fav1spClick
               OnMouseEnter = Fav1spMouseEnter
@@ -3425,7 +3412,7 @@ object FOptions: TFOptions
               ParentFont = False
               ParentShowHint = False
               ParentBiDiMode = False
-              PopupMenu = PopupMenu1
+              PopupMenu = FavPopMenu
               ShowHint = True
               OnClick = Fav1spClick
               OnMouseEnter = Fav1spMouseEnter
@@ -3449,7 +3436,7 @@ object FOptions: TFOptions
               ParentFont = False
               ParentShowHint = False
               ParentBiDiMode = False
-              PopupMenu = PopupMenu1
+              PopupMenu = FavPopMenu
               ShowHint = True
               OnClick = Fav1spClick
               OnMouseEnter = Fav1spMouseEnter
@@ -3473,7 +3460,7 @@ object FOptions: TFOptions
               ParentFont = False
               ParentShowHint = False
               ParentBiDiMode = False
-              PopupMenu = PopupMenu1
+              PopupMenu = FavPopMenu
               ShowHint = True
               OnClick = Fav1spClick
               OnMouseEnter = Fav1spMouseEnter
@@ -3497,7 +3484,7 @@ object FOptions: TFOptions
               ParentFont = False
               ParentShowHint = False
               ParentBiDiMode = False
-              PopupMenu = PopupMenu1
+              PopupMenu = FavPopMenu
               ShowHint = True
               OnClick = Fav1spClick
               OnMouseEnter = Fav1spMouseEnter
@@ -3521,7 +3508,7 @@ object FOptions: TFOptions
               ParentFont = False
               ParentShowHint = False
               ParentBiDiMode = False
-              PopupMenu = PopupMenu1
+              PopupMenu = FavPopMenu
               ShowHint = True
               OnClick = Fav1spClick
               OnMouseEnter = Fav1spMouseEnter
@@ -3545,7 +3532,7 @@ object FOptions: TFOptions
               ParentFont = False
               ParentShowHint = False
               ParentBiDiMode = False
-              PopupMenu = PopupMenu1
+              PopupMenu = FavPopMenu
               ShowHint = True
               OnClick = Fav1spClick
               OnMouseEnter = Fav1spMouseEnter
@@ -3569,7 +3556,7 @@ object FOptions: TFOptions
               ParentFont = False
               ParentShowHint = False
               ParentBiDiMode = False
-              PopupMenu = PopupMenu1
+              PopupMenu = FavPopMenu
               ShowHint = True
               OnClick = Fav1spClick
               OnMouseEnter = Fav1spMouseEnter
@@ -3593,7 +3580,7 @@ object FOptions: TFOptions
               ParentFont = False
               ParentShowHint = False
               ParentBiDiMode = False
-              PopupMenu = PopupMenu1
+              PopupMenu = FavPopMenu
               ShowHint = True
               OnClick = Fav1spClick
               OnMouseEnter = Fav1spMouseEnter
@@ -3617,7 +3604,7 @@ object FOptions: TFOptions
               ParentFont = False
               ParentShowHint = False
               ParentBiDiMode = False
-              PopupMenu = PopupMenu1
+              PopupMenu = FavPopMenu
               ShowHint = True
               OnClick = Fav1spClick
               OnMouseEnter = Fav1spMouseEnter
@@ -3641,7 +3628,7 @@ object FOptions: TFOptions
               ParentFont = False
               ParentShowHint = False
               ParentBiDiMode = False
-              PopupMenu = PopupMenu1
+              PopupMenu = FavPopMenu
               ShowHint = True
               OnClick = Fav1spClick
               OnMouseEnter = Fav1spMouseEnter
@@ -3665,7 +3652,7 @@ object FOptions: TFOptions
               ParentFont = False
               ParentShowHint = False
               ParentBiDiMode = False
-              PopupMenu = PopupMenu1
+              PopupMenu = FavPopMenu
               ShowHint = True
               OnClick = Fav1spClick
               OnMouseEnter = Fav1spMouseEnter
@@ -3676,8 +3663,6 @@ object FOptions: TFOptions
         end
         object Fav4ListTB: TsTabSheet
           Caption = 'Liste 4'
-          SkinData.CustomColor = False
-          SkinData.CustomFont = False
           object Panel33: TPanel
             Left = 0
             Top = 0
@@ -3813,7 +3798,7 @@ object FOptions: TFOptions
               ParentFont = False
               ParentShowHint = False
               ParentBiDiMode = False
-              PopupMenu = PopupMenu1
+              PopupMenu = FavPopMenu
               ShowHint = True
               OnClick = Fav1spClick
               OnMouseEnter = Fav1spMouseEnter
@@ -3838,7 +3823,7 @@ object FOptions: TFOptions
               ParentFont = False
               ParentShowHint = False
               ParentBiDiMode = False
-              PopupMenu = PopupMenu1
+              PopupMenu = FavPopMenu
               ShowHint = True
               OnClick = Fav1spClick
               OnMouseEnter = Fav1spMouseEnter
@@ -3863,7 +3848,7 @@ object FOptions: TFOptions
               ParentFont = False
               ParentShowHint = False
               ParentBiDiMode = False
-              PopupMenu = PopupMenu1
+              PopupMenu = FavPopMenu
               ShowHint = True
               OnClick = Fav1spClick
               OnMouseEnter = Fav1spMouseEnter
@@ -3888,7 +3873,7 @@ object FOptions: TFOptions
               ParentFont = False
               ParentShowHint = False
               ParentBiDiMode = False
-              PopupMenu = PopupMenu1
+              PopupMenu = FavPopMenu
               ShowHint = True
               OnClick = Fav1spClick
               OnMouseEnter = Fav1spMouseEnter
@@ -3913,7 +3898,7 @@ object FOptions: TFOptions
               ParentFont = False
               ParentShowHint = False
               ParentBiDiMode = False
-              PopupMenu = PopupMenu1
+              PopupMenu = FavPopMenu
               ShowHint = True
               OnClick = Fav1spClick
               OnMouseEnter = Fav1spMouseEnter
@@ -3938,7 +3923,7 @@ object FOptions: TFOptions
               ParentFont = False
               ParentShowHint = False
               ParentBiDiMode = False
-              PopupMenu = PopupMenu1
+              PopupMenu = FavPopMenu
               ShowHint = True
               OnClick = Fav1spClick
               OnMouseEnter = Fav1spMouseEnter
@@ -3963,7 +3948,7 @@ object FOptions: TFOptions
               ParentFont = False
               ParentShowHint = False
               ParentBiDiMode = False
-              PopupMenu = PopupMenu1
+              PopupMenu = FavPopMenu
               ShowHint = True
               OnClick = Fav1spClick
               OnMouseEnter = Fav1spMouseEnter
@@ -3988,7 +3973,7 @@ object FOptions: TFOptions
               ParentFont = False
               ParentShowHint = False
               ParentBiDiMode = False
-              PopupMenu = PopupMenu1
+              PopupMenu = FavPopMenu
               ShowHint = True
               OnClick = Fav1spClick
               OnMouseEnter = Fav1spMouseEnter
@@ -4013,7 +3998,7 @@ object FOptions: TFOptions
               ParentFont = False
               ParentShowHint = False
               ParentBiDiMode = False
-              PopupMenu = PopupMenu1
+              PopupMenu = FavPopMenu
               ShowHint = True
               OnClick = Fav1spClick
               OnMouseEnter = Fav1spMouseEnter
@@ -4038,7 +4023,7 @@ object FOptions: TFOptions
               ParentFont = False
               ParentShowHint = False
               ParentBiDiMode = False
-              PopupMenu = PopupMenu1
+              PopupMenu = FavPopMenu
               ShowHint = True
               OnClick = Fav1spClick
               OnMouseEnter = Fav1spMouseEnter
@@ -4063,7 +4048,7 @@ object FOptions: TFOptions
               ParentFont = False
               ParentShowHint = False
               ParentBiDiMode = False
-              PopupMenu = PopupMenu1
+              PopupMenu = FavPopMenu
               ShowHint = True
               OnClick = Fav1spClick
               OnMouseEnter = Fav1spMouseEnter
@@ -4088,7 +4073,7 @@ object FOptions: TFOptions
               ParentFont = False
               ParentShowHint = False
               ParentBiDiMode = False
-              PopupMenu = PopupMenu1
+              PopupMenu = FavPopMenu
               ShowHint = True
               OnClick = Fav1spClick
               OnMouseEnter = Fav1spMouseEnter
@@ -4100,8 +4085,6 @@ object FOptions: TFOptions
         end
         object Fav5ListTB: TsTabSheet
           Caption = 'Liste 5'
-          SkinData.CustomColor = False
-          SkinData.CustomFont = False
           object Panel34: TPanel
             Left = 0
             Top = 0
@@ -4237,7 +4220,7 @@ object FOptions: TFOptions
               ParentFont = False
               ParentShowHint = False
               ParentBiDiMode = False
-              PopupMenu = PopupMenu1
+              PopupMenu = FavPopMenu
               ShowHint = True
               OnClick = Fav1spClick
               OnMouseEnter = Fav1spMouseEnter
@@ -4262,7 +4245,7 @@ object FOptions: TFOptions
               ParentFont = False
               ParentShowHint = False
               ParentBiDiMode = False
-              PopupMenu = PopupMenu1
+              PopupMenu = FavPopMenu
               ShowHint = True
               OnClick = Fav1spClick
               OnMouseEnter = Fav1spMouseEnter
@@ -4286,7 +4269,7 @@ object FOptions: TFOptions
               ParentFont = False
               ParentShowHint = False
               ParentBiDiMode = False
-              PopupMenu = PopupMenu1
+              PopupMenu = FavPopMenu
               ShowHint = True
               OnClick = Fav1spClick
               OnMouseEnter = Fav1spMouseEnter
@@ -4310,7 +4293,7 @@ object FOptions: TFOptions
               ParentFont = False
               ParentShowHint = False
               ParentBiDiMode = False
-              PopupMenu = PopupMenu1
+              PopupMenu = FavPopMenu
               ShowHint = True
               OnClick = Fav1spClick
               OnMouseEnter = Fav1spMouseEnter
@@ -4334,7 +4317,7 @@ object FOptions: TFOptions
               ParentFont = False
               ParentShowHint = False
               ParentBiDiMode = False
-              PopupMenu = PopupMenu1
+              PopupMenu = FavPopMenu
               ShowHint = True
               OnClick = Fav1spClick
               OnMouseEnter = Fav1spMouseEnter
@@ -4358,7 +4341,7 @@ object FOptions: TFOptions
               ParentFont = False
               ParentShowHint = False
               ParentBiDiMode = False
-              PopupMenu = PopupMenu1
+              PopupMenu = FavPopMenu
               ShowHint = True
               OnClick = Fav1spClick
               OnMouseEnter = Fav1spMouseEnter
@@ -4382,7 +4365,7 @@ object FOptions: TFOptions
               ParentFont = False
               ParentShowHint = False
               ParentBiDiMode = False
-              PopupMenu = PopupMenu1
+              PopupMenu = FavPopMenu
               ShowHint = True
               OnClick = Fav1spClick
               OnMouseEnter = Fav1spMouseEnter
@@ -4406,7 +4389,7 @@ object FOptions: TFOptions
               ParentFont = False
               ParentShowHint = False
               ParentBiDiMode = False
-              PopupMenu = PopupMenu1
+              PopupMenu = FavPopMenu
               ShowHint = True
               OnClick = Fav1spClick
               OnMouseEnter = Fav1spMouseEnter
@@ -4430,7 +4413,7 @@ object FOptions: TFOptions
               ParentFont = False
               ParentShowHint = False
               ParentBiDiMode = False
-              PopupMenu = PopupMenu1
+              PopupMenu = FavPopMenu
               ShowHint = True
               OnClick = Fav1spClick
               OnMouseEnter = Fav1spMouseEnter
@@ -4454,7 +4437,7 @@ object FOptions: TFOptions
               ParentFont = False
               ParentShowHint = False
               ParentBiDiMode = False
-              PopupMenu = PopupMenu1
+              PopupMenu = FavPopMenu
               ShowHint = True
               OnClick = Fav1spClick
               OnMouseEnter = Fav1spMouseEnter
@@ -4478,7 +4461,7 @@ object FOptions: TFOptions
               ParentFont = False
               ParentShowHint = False
               ParentBiDiMode = False
-              PopupMenu = PopupMenu1
+              PopupMenu = FavPopMenu
               ShowHint = True
               OnClick = Fav1spClick
               OnMouseEnter = Fav1spMouseEnter
@@ -4502,13 +4485,2097 @@ object FOptions: TFOptions
               ParentFont = False
               ParentShowHint = False
               ParentBiDiMode = False
-              PopupMenu = PopupMenu1
+              PopupMenu = FavPopMenu
               ShowHint = True
               OnClick = Fav1spClick
               OnMouseEnter = Fav1spMouseEnter
               SkinData.SkinSection = 'EDIT'
               ExplicitTop = 432
             end
+          end
+        end
+      end
+    end
+    object sTabSheet4: TsTabSheet
+      Caption = 'Modules'
+      object Panel13: TPanel
+        Left = 2
+        Top = 7
+        Width = 424
+        Height = 224
+        BevelOuter = bvNone
+        Color = clWhite
+        ParentBackground = False
+        TabOrder = 0
+        DesignSize = (
+          424
+          224)
+        object Label41: TLabel
+          Left = 7
+          Top = 0
+          Width = 91
+          Height = 21
+          Caption = 'Balance IP'
+          Color = 4207405
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 4207405
+          Font.Height = 22
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = [fsBold]
+          ParentColor = False
+          ParentFont = False
+        end
+        object Label42: TLabel
+          Left = 9
+          Top = 32
+          Width = 38
+          Height = 15
+          Caption = 'Active:'
+          Color = 4207405
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 4207405
+          Font.Height = 15
+          Font.Name = 'Roboto'
+          Font.Style = []
+          ParentColor = False
+          ParentFont = False
+          StyleElements = []
+        end
+        object BalanceIPListLbl: TLabel
+          Left = 9
+          Top = 55
+          Width = 66
+          Height = 16
+          Caption = 'Le Balance:'
+          Color = 4207405
+          Enabled = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 4207405
+          Font.Height = 16
+          Font.Name = 'Roboto'
+          Font.Style = []
+          ParentColor = False
+          ParentFont = False
+          StyleElements = []
+        end
+        object BalanceIPAdressIPLbl: TLabel
+          Left = 9
+          Top = 106
+          Width = 65
+          Height = 16
+          Caption = 'Adresse IP:'
+          Color = 4207405
+          Enabled = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 4207405
+          Font.Height = 16
+          Font.Name = 'Roboto'
+          Font.Style = []
+          ParentColor = False
+          ParentFont = False
+          StyleElements = []
+        end
+        object BalanceIPBareCodeListLbl: TLabel
+          Left = 7
+          Top = 161
+          Width = 123
+          Height = 16
+          Caption = 'Type de Code '#226' Barre:'
+          Color = 4207405
+          Enabled = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 4207405
+          Font.Height = 16
+          Font.Name = 'Roboto'
+          Font.Style = []
+          ParentColor = False
+          ParentFont = False
+          StyleElements = []
+        end
+        object TestBalanceIPBtn: TsSpeedButton
+          Left = 338
+          Top = 1
+          Width = 30
+          Height = 30
+          Hint = 'Ferm'#233'r'
+          Anchors = [akTop, akRight]
+          Enabled = False
+          ParentShowHint = False
+          ShowHint = True
+          OnClick = TestBalanceIPBtnClick
+          SkinData.SkinSection = 'SPEEDBUTTON'
+          Images = MainForm.PanelIcons24
+          ImageIndex = 56
+        end
+        object TestBalanceIPLbl: TLabel
+          Left = 340
+          Top = 32
+          Width = 25
+          Height = 16
+          Caption = 'Test'
+          Color = 4207405
+          Enabled = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 4207405
+          Font.Height = 16
+          Font.Name = 'Roboto'
+          Font.Style = []
+          ParentColor = False
+          ParentFont = False
+          StyleElements = []
+        end
+        object Label46: TLabel
+          Left = 177
+          Top = 208
+          Width = 70
+          Height = 12
+          Anchors = [akTop, akRight]
+          Caption = '[A] Article  [P] Prix'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 10395294
+          Font.Height = -9
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentFont = False
+        end
+        object UploadToBalBtn: TsSpeedButton
+          Left = 384
+          Top = 1
+          Width = 30
+          Height = 30
+          Hint = 'Ferm'#233'r'
+          Anchors = [akTop, akRight]
+          Enabled = False
+          ParentShowHint = False
+          ShowHint = True
+          OnClick = UploadToBalBtnClick
+          SkinData.SkinSection = 'SPEEDBUTTON'
+          Images = MainForm.PanelIcons24
+          ImageIndex = 57
+        end
+        object UploadToBalLbl: TLabel
+          Left = 375
+          Top = 32
+          Width = 44
+          Height = 16
+          Caption = 'Envoyer'
+          Color = 4207405
+          Enabled = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 4207405
+          Font.Height = 16
+          Font.Name = 'Roboto'
+          Font.Style = []
+          ParentColor = False
+          ParentFont = False
+          StyleElements = []
+        end
+        object BalanceIPActiveSdr: TsSlider
+          Left = 53
+          Top = 32
+          Width = 37
+          Height = 15
+          BevelOuter = bvNone
+          BiDiMode = bdLeftToRight
+          Color = 2497560
+          Ctl3D = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 4207405
+          Font.Height = 12
+          Font.Name = 'Roboto'
+          Font.Style = []
+          StyleElements = []
+          ParentBiDiMode = False
+          ParentBackground = False
+          ParentCtl3D = False
+          ParentFont = False
+          TabOrder = 0
+          BoundLabel.Caption = 'sSlider1'
+          BoundLabel.Layout = sclBottomCenter
+          FontOn.Charset = DEFAULT_CHARSET
+          FontOn.Color = 4207405
+          FontOn.Height = 12
+          FontOn.Name = 'Roboto'
+          FontOn.Style = []
+          SliderCursor = crHandPoint
+          Reversed = True
+          SliderOn = False
+          OnChanging = BalanceIPActiveSdrChanging
+        end
+        object BalanceIPListCbx: TComboBox
+          Left = 22
+          Top = 76
+          Width = 392
+          Height = 24
+          Style = csDropDownList
+          Enabled = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = 16
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = []
+          ItemIndex = 0
+          ParentFont = False
+          TabOrder = 1
+          Text = 'DIGI SM-100'
+          OnDropDown = PoleDisplayCOMListCbxDropDown
+          Items.Strings = (
+            'DIGI SM-100')
+        end
+        object BalanceIPAdressIPEdt: TEdit
+          Left = 21
+          Top = 129
+          Width = 391
+          Height = 26
+          Alignment = taCenter
+          DoubleBuffered = True
+          Enabled = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = 18
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = []
+          MaxLength = 19
+          ParentDoubleBuffered = False
+          ParentFont = False
+          TabOrder = 2
+          Text = '192.168.0.34'
+        end
+        object BalanceIPBareCodeListCbx: TComboBox
+          Left = 21
+          Top = 183
+          Width = 392
+          Height = 24
+          Style = csDropDownList
+          Enabled = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = 16
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = []
+          ItemIndex = 0
+          ParentFont = False
+          TabOrder = 3
+          Text = '23AAAAAPPPPPC'
+          Items.Strings = (
+            '23AAAAAPPPPPC')
+        end
+      end
+      object Panel20: TPanel
+        Left = -8
+        Top = 232
+        Width = 448
+        Height = 4
+        BevelOuter = bvNone
+        Color = 15658734
+        ParentBackground = False
+        TabOrder = 1
+      end
+      object Panel21: TPanel
+        Left = 0
+        Top = 0
+        Width = 4
+        Height = 581
+        Align = alLeft
+        BevelOuter = bvNone
+        Color = 15658734
+        ParentBackground = False
+        TabOrder = 2
+      end
+      object Panel22: TPanel
+        Left = 435
+        Top = 0
+        Width = 5
+        Height = 581
+        Align = alRight
+        BevelOuter = bvNone
+        Color = 15658734
+        ParentBackground = False
+        TabOrder = 3
+      end
+      object Panel14: TPanel
+        Left = 3
+        Top = 233
+        Width = 431
+        Height = 340
+        BevelOuter = bvNone
+        Color = clWhite
+        ParentBackground = False
+        TabOrder = 4
+        object GridPanel1: TGridPanel
+          Left = 0
+          Top = 0
+          Width = 431
+          Height = 340
+          Align = alClient
+          BevelOuter = bvNone
+          BiDiMode = bdLeftToRight
+          Color = clWhite
+          ColumnCollection = <
+            item
+              Value = 12.500000000000000000
+            end
+            item
+              Value = 12.500000000000000000
+            end
+            item
+              Value = 12.500000000000000000
+            end
+            item
+              Value = 12.500000000000000000
+            end
+            item
+              Value = 12.500000000000000000
+            end
+            item
+              Value = 12.500000000000000000
+            end
+            item
+              Value = 12.500000000000000000
+            end
+            item
+              Value = 12.500000000000000000
+            end>
+          ControlCollection = <
+            item
+              Column = 0
+              Control = Bal1sp
+              Row = 0
+            end
+            item
+              Column = 1
+              Control = Bal2sp
+              Row = 0
+            end
+            item
+              Column = 2
+              Control = Bal3sp
+              Row = 0
+            end
+            item
+              Column = 3
+              Control = Bal4sp
+              Row = 0
+            end
+            item
+              Column = 4
+              Control = Bal5sp
+              Row = 0
+            end
+            item
+              Column = 5
+              Control = Bal6sp
+              Row = 0
+            end
+            item
+              Column = 6
+              Control = Bal7sp
+              Row = 0
+            end
+            item
+              Column = 7
+              Control = Bal8sp
+              Row = 0
+            end
+            item
+              Column = 0
+              Control = Bal9sp
+              Row = 1
+            end
+            item
+              Column = 1
+              Control = Bal10sp
+              Row = 1
+            end
+            item
+              Column = 2
+              Control = Bal11sp
+              Row = 1
+            end
+            item
+              Column = 3
+              Control = Bal12sp
+              Row = 1
+            end
+            item
+              Column = 4
+              Control = Bal13sp
+              Row = 1
+            end
+            item
+              Column = 5
+              Control = Bal14sp
+              Row = 1
+            end
+            item
+              Column = 6
+              Control = Bal15sp
+              Row = 1
+            end
+            item
+              Column = 7
+              Control = Bal16sp
+              Row = 1
+            end
+            item
+              Column = 0
+              Control = Bal17sp
+              Row = 2
+            end
+            item
+              Column = 1
+              Control = Bal18sp
+              Row = 2
+            end
+            item
+              Column = 2
+              Control = Bal19sp
+              Row = 2
+            end
+            item
+              Column = 3
+              Control = Bal20sp
+              Row = 2
+            end
+            item
+              Column = 4
+              Control = Bal21sp
+              Row = 2
+            end
+            item
+              Column = 5
+              Control = Bal22sp
+              Row = 2
+            end
+            item
+              Column = 6
+              Control = Bal23sp
+              Row = 2
+            end
+            item
+              Column = 7
+              Control = Bal24sp
+              Row = 2
+            end
+            item
+              Column = 0
+              Control = Bal25sp
+              Row = 3
+            end
+            item
+              Column = 1
+              Control = Bal26sp
+              Row = 3
+            end
+            item
+              Column = 2
+              Control = Bal27sp
+              Row = 3
+            end
+            item
+              Column = 3
+              Control = Bal28sp
+              Row = 3
+            end
+            item
+              Column = 4
+              Control = Bal29sp
+              Row = 3
+            end
+            item
+              Column = 5
+              Control = Bal30sp
+              Row = 3
+            end
+            item
+              Column = 6
+              Control = Bal31sp
+              Row = 3
+            end
+            item
+              Column = 7
+              Control = Bal32sp
+              Row = 3
+            end
+            item
+              Column = 0
+              Control = Bal33sp
+              Row = 4
+            end
+            item
+              Column = 1
+              Control = Bal34sp
+              Row = 4
+            end
+            item
+              Column = 2
+              Control = Bal35sp
+              Row = 4
+            end
+            item
+              Column = 3
+              Control = Bal36sp
+              Row = 4
+            end
+            item
+              Column = 4
+              Control = Bal37sp
+              Row = 4
+            end
+            item
+              Column = 5
+              Control = Bal38sp
+              Row = 4
+            end
+            item
+              Column = 6
+              Control = Bal39sp
+              Row = 4
+            end
+            item
+              Column = 7
+              Control = Bal40sp
+              Row = 4
+            end
+            item
+              Column = 0
+              Control = Bal41sp
+              Row = 5
+            end
+            item
+              Column = 1
+              Control = Bal42sp
+              Row = 5
+            end
+            item
+              Column = 2
+              Control = Bal43sp
+              Row = 5
+            end
+            item
+              Column = 3
+              Control = Bal44sp
+              Row = 5
+            end
+            item
+              Column = 4
+              Control = Bal45sp
+              Row = 5
+            end
+            item
+              Column = 5
+              Control = Bal46sp
+              Row = 5
+            end
+            item
+              Column = 6
+              Control = Bal47sp
+              Row = 5
+            end
+            item
+              Column = 7
+              Control = Bal48sp
+              Row = 5
+            end
+            item
+              Column = 0
+              Control = Bal49sp
+              Row = 6
+            end
+            item
+              Column = 1
+              Control = Bal50sp
+              Row = 6
+            end
+            item
+              Column = 2
+              Control = Bal51sp
+              Row = 6
+            end
+            item
+              Column = 3
+              Control = Bal52sp
+              Row = 6
+            end
+            item
+              Column = 4
+              Control = Bal53sp
+              Row = 6
+            end
+            item
+              Column = 5
+              Control = Bal54sp
+              Row = 6
+            end
+            item
+              Column = 6
+              Control = Bal55sp
+              Row = 6
+            end
+            item
+              Column = 7
+              Control = Bal56sp
+              Row = 6
+            end>
+          Ctl3D = False
+          Locked = True
+          ParentBiDiMode = False
+          ParentBackground = False
+          ParentCtl3D = False
+          RowCollection = <
+            item
+              Value = 14.285500002499970000
+            end
+            item
+              Value = 14.285571429642850000
+            end
+            item
+              Value = 14.285642857142860000
+            end
+            item
+              Value = 14.285714285000010000
+            end
+            item
+              Value = 14.285785713214300000
+            end
+            item
+              Value = 14.285857141785720000
+            end
+            item
+              Value = 14.285928570714290000
+            end>
+          ShowCaption = False
+          TabOrder = 0
+          object Bal1sp: TsSpeedButton
+            Left = 0
+            Top = 0
+            Width = 53
+            Height = 48
+            ParentCustomHint = False
+            Align = alClient
+            BiDiMode = bdLeftToRight
+            Enabled = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = 11
+            Font.Name = 'Helvetica LT Std'
+            Font.Style = []
+            ParentFont = False
+            ParentShowHint = False
+            ParentBiDiMode = False
+            PopupMenu = BalPopMenu
+            ShowHint = True
+            OnClick = Bal1spClick
+            OnMouseEnter = Bal1spMouseEnter
+            SkinData.SkinSection = 'EDIT'
+            ExplicitWidth = 52
+            ExplicitHeight = 42
+          end
+          object Bal2sp: TsSpeedButton
+            Left = 53
+            Top = 0
+            Width = 53
+            Height = 48
+            ParentCustomHint = False
+            Align = alClient
+            BiDiMode = bdLeftToRight
+            Enabled = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = 11
+            Font.Name = 'Helvetica LT Std'
+            Font.Style = []
+            ParentFont = False
+            ParentShowHint = False
+            ParentBiDiMode = False
+            PopupMenu = BalPopMenu
+            ShowHint = True
+            OnClick = Bal1spClick
+            OnMouseEnter = Bal1spMouseEnter
+            SkinData.SkinSection = 'EDIT'
+            ExplicitWidth = 52
+            ExplicitHeight = 42
+          end
+          object Bal3sp: TsSpeedButton
+            Left = 106
+            Top = 0
+            Width = 53
+            Height = 48
+            ParentCustomHint = False
+            Align = alClient
+            BiDiMode = bdLeftToRight
+            Enabled = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = 11
+            Font.Name = 'Helvetica LT Std'
+            Font.Style = []
+            ParentFont = False
+            ParentShowHint = False
+            ParentBiDiMode = False
+            PopupMenu = BalPopMenu
+            ShowHint = True
+            OnClick = Bal1spClick
+            OnMouseEnter = Bal1spMouseEnter
+            SkinData.SkinSection = 'EDIT'
+            ExplicitWidth = 52
+            ExplicitHeight = 42
+          end
+          object Bal4sp: TsSpeedButton
+            Left = 159
+            Top = 0
+            Width = 53
+            Height = 48
+            ParentCustomHint = False
+            Align = alClient
+            BiDiMode = bdLeftToRight
+            Enabled = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = 11
+            Font.Name = 'Helvetica LT Std'
+            Font.Style = []
+            ParentFont = False
+            ParentShowHint = False
+            ParentBiDiMode = False
+            PopupMenu = BalPopMenu
+            ShowHint = True
+            OnClick = Bal1spClick
+            OnMouseEnter = Bal1spMouseEnter
+            SkinData.SkinSection = 'EDIT'
+            ExplicitWidth = 52
+            ExplicitHeight = 42
+          end
+          object Bal5sp: TsSpeedButton
+            Left = 212
+            Top = 0
+            Width = 53
+            Height = 48
+            ParentCustomHint = False
+            Align = alClient
+            BiDiMode = bdLeftToRight
+            Enabled = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = 11
+            Font.Name = 'Helvetica LT Std'
+            Font.Style = []
+            ParentFont = False
+            ParentShowHint = False
+            ParentBiDiMode = False
+            PopupMenu = BalPopMenu
+            ShowHint = True
+            OnClick = Bal1spClick
+            OnMouseEnter = Bal1spMouseEnter
+            SkinData.SkinSection = 'EDIT'
+            ExplicitWidth = 52
+            ExplicitHeight = 42
+          end
+          object Bal6sp: TsSpeedButton
+            Left = 265
+            Top = 0
+            Width = 53
+            Height = 48
+            ParentCustomHint = False
+            Align = alClient
+            BiDiMode = bdLeftToRight
+            Enabled = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = 11
+            Font.Name = 'Helvetica LT Std'
+            Font.Style = []
+            ParentFont = False
+            ParentShowHint = False
+            ParentBiDiMode = False
+            PopupMenu = BalPopMenu
+            ShowHint = True
+            OnClick = Bal1spClick
+            OnMouseEnter = Bal1spMouseEnter
+            SkinData.SkinSection = 'EDIT'
+            ExplicitWidth = 52
+            ExplicitHeight = 42
+          end
+          object Bal7sp: TsSpeedButton
+            Left = 318
+            Top = 0
+            Width = 53
+            Height = 48
+            ParentCustomHint = False
+            Align = alClient
+            BiDiMode = bdLeftToRight
+            Enabled = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = 11
+            Font.Name = 'Helvetica LT Std'
+            Font.Style = []
+            ParentFont = False
+            ParentShowHint = False
+            ParentBiDiMode = False
+            PopupMenu = BalPopMenu
+            ShowHint = True
+            OnClick = Bal1spClick
+            OnMouseEnter = Bal1spMouseEnter
+            SkinData.SkinSection = 'EDIT'
+            ExplicitWidth = 52
+            ExplicitHeight = 42
+          end
+          object Bal8sp: TsSpeedButton
+            Left = 371
+            Top = 0
+            Width = 60
+            Height = 48
+            ParentCustomHint = False
+            Align = alClient
+            BiDiMode = bdLeftToRight
+            Enabled = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = 11
+            Font.Name = 'Helvetica LT Std'
+            Font.Style = []
+            ParentFont = False
+            ParentShowHint = False
+            ParentBiDiMode = False
+            PopupMenu = BalPopMenu
+            ShowHint = True
+            OnClick = Bal1spClick
+            OnMouseEnter = Bal1spMouseEnter
+            SkinData.SkinSection = 'EDIT'
+            ExplicitLeft = 373
+            ExplicitWidth = 52
+            ExplicitHeight = 42
+          end
+          object Bal9sp: TsSpeedButton
+            Left = 0
+            Top = 48
+            Width = 53
+            Height = 48
+            ParentCustomHint = False
+            Align = alClient
+            BiDiMode = bdLeftToRight
+            Enabled = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = 11
+            Font.Name = 'Helvetica LT Std'
+            Font.Style = []
+            ParentFont = False
+            ParentShowHint = False
+            ParentBiDiMode = False
+            PopupMenu = BalPopMenu
+            ShowHint = True
+            OnClick = Bal1spClick
+            OnMouseEnter = Bal1spMouseEnter
+            SkinData.SkinSection = 'EDIT'
+            ExplicitWidth = 52
+            ExplicitHeight = 42
+          end
+          object Bal10sp: TsSpeedButton
+            Left = 53
+            Top = 48
+            Width = 53
+            Height = 48
+            ParentCustomHint = False
+            Align = alClient
+            BiDiMode = bdLeftToRight
+            Enabled = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = 11
+            Font.Name = 'Helvetica LT Std'
+            Font.Style = []
+            ParentFont = False
+            ParentShowHint = False
+            ParentBiDiMode = False
+            PopupMenu = BalPopMenu
+            ShowHint = True
+            OnClick = Bal1spClick
+            OnMouseEnter = Bal1spMouseEnter
+            SkinData.SkinSection = 'EDIT'
+            ExplicitWidth = 52
+            ExplicitHeight = 42
+          end
+          object Bal11sp: TsSpeedButton
+            Left = 106
+            Top = 48
+            Width = 53
+            Height = 48
+            ParentCustomHint = False
+            Align = alClient
+            BiDiMode = bdLeftToRight
+            Enabled = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = 11
+            Font.Name = 'Helvetica LT Std'
+            Font.Style = []
+            ParentFont = False
+            ParentShowHint = False
+            ParentBiDiMode = False
+            PopupMenu = BalPopMenu
+            ShowHint = True
+            OnClick = Bal1spClick
+            OnMouseEnter = Bal1spMouseEnter
+            SkinData.SkinSection = 'EDIT'
+            ExplicitWidth = 52
+            ExplicitHeight = 42
+          end
+          object Bal12sp: TsSpeedButton
+            Left = 159
+            Top = 48
+            Width = 53
+            Height = 48
+            ParentCustomHint = False
+            Align = alClient
+            BiDiMode = bdLeftToRight
+            Enabled = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = 11
+            Font.Name = 'Helvetica LT Std'
+            Font.Style = []
+            ParentFont = False
+            ParentShowHint = False
+            ParentBiDiMode = False
+            PopupMenu = BalPopMenu
+            ShowHint = True
+            OnClick = Bal1spClick
+            OnMouseEnter = Bal1spMouseEnter
+            SkinData.SkinSection = 'EDIT'
+            ExplicitWidth = 52
+            ExplicitHeight = 42
+          end
+          object Bal13sp: TsSpeedButton
+            Left = 212
+            Top = 48
+            Width = 53
+            Height = 48
+            ParentCustomHint = False
+            Align = alClient
+            BiDiMode = bdLeftToRight
+            Enabled = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = 11
+            Font.Name = 'Helvetica LT Std'
+            Font.Style = []
+            ParentFont = False
+            ParentShowHint = False
+            ParentBiDiMode = False
+            PopupMenu = BalPopMenu
+            ShowHint = True
+            OnClick = Bal1spClick
+            OnMouseEnter = Bal1spMouseEnter
+            SkinData.SkinSection = 'EDIT'
+            ExplicitWidth = 52
+            ExplicitHeight = 42
+          end
+          object Bal14sp: TsSpeedButton
+            Left = 265
+            Top = 48
+            Width = 53
+            Height = 48
+            ParentCustomHint = False
+            Align = alClient
+            BiDiMode = bdLeftToRight
+            Enabled = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = 11
+            Font.Name = 'Helvetica LT Std'
+            Font.Style = []
+            ParentFont = False
+            ParentShowHint = False
+            ParentBiDiMode = False
+            PopupMenu = BalPopMenu
+            ShowHint = True
+            OnClick = Bal1spClick
+            OnMouseEnter = Bal1spMouseEnter
+            SkinData.SkinSection = 'EDIT'
+            ExplicitWidth = 52
+            ExplicitHeight = 42
+          end
+          object Bal15sp: TsSpeedButton
+            Left = 318
+            Top = 48
+            Width = 53
+            Height = 48
+            ParentCustomHint = False
+            Align = alClient
+            BiDiMode = bdLeftToRight
+            Enabled = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = 11
+            Font.Name = 'Helvetica LT Std'
+            Font.Style = []
+            ParentFont = False
+            ParentShowHint = False
+            ParentBiDiMode = False
+            PopupMenu = BalPopMenu
+            ShowHint = True
+            OnClick = Bal1spClick
+            OnMouseEnter = Bal1spMouseEnter
+            SkinData.SkinSection = 'EDIT'
+            ExplicitWidth = 52
+            ExplicitHeight = 42
+          end
+          object Bal16sp: TsSpeedButton
+            Left = 371
+            Top = 48
+            Width = 60
+            Height = 48
+            ParentCustomHint = False
+            Align = alClient
+            BiDiMode = bdLeftToRight
+            Enabled = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = 11
+            Font.Name = 'Helvetica LT Std'
+            Font.Style = []
+            ParentFont = False
+            ParentShowHint = False
+            ParentBiDiMode = False
+            PopupMenu = BalPopMenu
+            ShowHint = True
+            OnClick = Bal1spClick
+            OnMouseEnter = Bal1spMouseEnter
+            SkinData.SkinSection = 'EDIT'
+            ExplicitLeft = 373
+            ExplicitWidth = 52
+            ExplicitHeight = 42
+          end
+          object Bal17sp: TsSpeedButton
+            Left = 0
+            Top = 96
+            Width = 53
+            Height = 48
+            ParentCustomHint = False
+            Align = alClient
+            BiDiMode = bdLeftToRight
+            Enabled = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = 11
+            Font.Name = 'Helvetica LT Std'
+            Font.Style = []
+            ParentFont = False
+            ParentShowHint = False
+            ParentBiDiMode = False
+            PopupMenu = BalPopMenu
+            ShowHint = True
+            OnClick = Bal1spClick
+            OnMouseEnter = Bal1spMouseEnter
+            SkinData.SkinSection = 'EDIT'
+            ExplicitWidth = 52
+            ExplicitHeight = 42
+          end
+          object Bal18sp: TsSpeedButton
+            Left = 53
+            Top = 96
+            Width = 53
+            Height = 48
+            ParentCustomHint = False
+            Align = alClient
+            BiDiMode = bdLeftToRight
+            Enabled = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = 11
+            Font.Name = 'Helvetica LT Std'
+            Font.Style = []
+            ParentFont = False
+            ParentShowHint = False
+            ParentBiDiMode = False
+            PopupMenu = BalPopMenu
+            ShowHint = True
+            OnClick = Bal1spClick
+            OnMouseEnter = Bal1spMouseEnter
+            SkinData.SkinSection = 'EDIT'
+            ExplicitWidth = 52
+            ExplicitHeight = 42
+          end
+          object Bal19sp: TsSpeedButton
+            Left = 106
+            Top = 96
+            Width = 53
+            Height = 48
+            ParentCustomHint = False
+            Align = alClient
+            BiDiMode = bdLeftToRight
+            Enabled = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = 11
+            Font.Name = 'Helvetica LT Std'
+            Font.Style = []
+            ParentFont = False
+            ParentShowHint = False
+            ParentBiDiMode = False
+            PopupMenu = BalPopMenu
+            ShowHint = True
+            OnClick = Bal1spClick
+            OnMouseEnter = Bal1spMouseEnter
+            SkinData.SkinSection = 'EDIT'
+            ExplicitWidth = 52
+            ExplicitHeight = 42
+          end
+          object Bal20sp: TsSpeedButton
+            Left = 159
+            Top = 96
+            Width = 53
+            Height = 48
+            ParentCustomHint = False
+            Align = alClient
+            BiDiMode = bdLeftToRight
+            Enabled = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = 11
+            Font.Name = 'Helvetica LT Std'
+            Font.Style = []
+            ParentFont = False
+            ParentShowHint = False
+            ParentBiDiMode = False
+            PopupMenu = BalPopMenu
+            ShowHint = True
+            OnClick = Bal1spClick
+            OnMouseEnter = Bal1spMouseEnter
+            SkinData.SkinSection = 'EDIT'
+            ExplicitWidth = 52
+            ExplicitHeight = 42
+          end
+          object Bal21sp: TsSpeedButton
+            Left = 212
+            Top = 96
+            Width = 53
+            Height = 48
+            ParentCustomHint = False
+            Align = alClient
+            BiDiMode = bdLeftToRight
+            Enabled = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = 11
+            Font.Name = 'Helvetica LT Std'
+            Font.Style = []
+            ParentFont = False
+            ParentShowHint = False
+            ParentBiDiMode = False
+            PopupMenu = BalPopMenu
+            ShowHint = True
+            OnClick = Bal1spClick
+            OnMouseEnter = Bal1spMouseEnter
+            SkinData.SkinSection = 'EDIT'
+            ExplicitWidth = 52
+            ExplicitHeight = 42
+          end
+          object Bal22sp: TsSpeedButton
+            Left = 265
+            Top = 96
+            Width = 53
+            Height = 48
+            ParentCustomHint = False
+            Align = alClient
+            BiDiMode = bdLeftToRight
+            Enabled = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = 11
+            Font.Name = 'Helvetica LT Std'
+            Font.Style = []
+            ParentFont = False
+            ParentShowHint = False
+            ParentBiDiMode = False
+            PopupMenu = BalPopMenu
+            ShowHint = True
+            OnClick = Bal1spClick
+            OnMouseEnter = Bal1spMouseEnter
+            SkinData.SkinSection = 'EDIT'
+            ExplicitWidth = 52
+            ExplicitHeight = 42
+          end
+          object Bal23sp: TsSpeedButton
+            Left = 318
+            Top = 96
+            Width = 53
+            Height = 48
+            ParentCustomHint = False
+            Align = alClient
+            BiDiMode = bdLeftToRight
+            Enabled = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = 11
+            Font.Name = 'Helvetica LT Std'
+            Font.Style = []
+            ParentFont = False
+            ParentShowHint = False
+            ParentBiDiMode = False
+            PopupMenu = BalPopMenu
+            ShowHint = True
+            OnClick = Bal1spClick
+            OnMouseEnter = Bal1spMouseEnter
+            SkinData.SkinSection = 'EDIT'
+            ExplicitWidth = 52
+            ExplicitHeight = 42
+          end
+          object Bal24sp: TsSpeedButton
+            Left = 371
+            Top = 96
+            Width = 60
+            Height = 48
+            ParentCustomHint = False
+            Align = alClient
+            BiDiMode = bdLeftToRight
+            Enabled = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = 11
+            Font.Name = 'Helvetica LT Std'
+            Font.Style = []
+            ParentFont = False
+            ParentShowHint = False
+            ParentBiDiMode = False
+            PopupMenu = BalPopMenu
+            ShowHint = True
+            OnClick = Bal1spClick
+            OnMouseEnter = Bal1spMouseEnter
+            SkinData.SkinSection = 'EDIT'
+            ExplicitLeft = 373
+            ExplicitWidth = 52
+            ExplicitHeight = 42
+          end
+          object Bal25sp: TsSpeedButton
+            Left = 0
+            Top = 144
+            Width = 53
+            Height = 48
+            ParentCustomHint = False
+            Align = alClient
+            BiDiMode = bdLeftToRight
+            Enabled = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = 11
+            Font.Name = 'Helvetica LT Std'
+            Font.Style = []
+            ParentFont = False
+            ParentShowHint = False
+            ParentBiDiMode = False
+            PopupMenu = BalPopMenu
+            ShowHint = True
+            OnClick = Bal1spClick
+            OnMouseEnter = Bal1spMouseEnter
+            SkinData.SkinSection = 'EDIT'
+            ExplicitWidth = 52
+            ExplicitHeight = 42
+          end
+          object Bal26sp: TsSpeedButton
+            Left = 53
+            Top = 144
+            Width = 53
+            Height = 48
+            ParentCustomHint = False
+            Align = alClient
+            BiDiMode = bdLeftToRight
+            Enabled = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = 11
+            Font.Name = 'Helvetica LT Std'
+            Font.Style = []
+            ParentFont = False
+            ParentShowHint = False
+            ParentBiDiMode = False
+            PopupMenu = BalPopMenu
+            ShowHint = True
+            OnClick = Bal1spClick
+            OnMouseEnter = Bal1spMouseEnter
+            SkinData.SkinSection = 'EDIT'
+            ExplicitWidth = 52
+            ExplicitHeight = 42
+          end
+          object Bal27sp: TsSpeedButton
+            Left = 106
+            Top = 144
+            Width = 53
+            Height = 48
+            ParentCustomHint = False
+            Align = alClient
+            BiDiMode = bdLeftToRight
+            Enabled = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = 11
+            Font.Name = 'Helvetica LT Std'
+            Font.Style = []
+            ParentFont = False
+            ParentShowHint = False
+            ParentBiDiMode = False
+            PopupMenu = BalPopMenu
+            ShowHint = True
+            OnClick = Bal1spClick
+            OnMouseEnter = Bal1spMouseEnter
+            SkinData.SkinSection = 'EDIT'
+            ExplicitWidth = 52
+            ExplicitHeight = 42
+          end
+          object Bal28sp: TsSpeedButton
+            Left = 159
+            Top = 144
+            Width = 53
+            Height = 48
+            ParentCustomHint = False
+            Align = alClient
+            BiDiMode = bdLeftToRight
+            Enabled = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = 11
+            Font.Name = 'Helvetica LT Std'
+            Font.Style = []
+            ParentFont = False
+            ParentShowHint = False
+            ParentBiDiMode = False
+            PopupMenu = BalPopMenu
+            ShowHint = True
+            OnClick = Bal1spClick
+            OnMouseEnter = Bal1spMouseEnter
+            SkinData.SkinSection = 'EDIT'
+            ExplicitWidth = 52
+            ExplicitHeight = 42
+          end
+          object Bal29sp: TsSpeedButton
+            Left = 212
+            Top = 144
+            Width = 53
+            Height = 48
+            ParentCustomHint = False
+            Align = alClient
+            BiDiMode = bdLeftToRight
+            Enabled = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = 11
+            Font.Name = 'Helvetica LT Std'
+            Font.Style = []
+            ParentFont = False
+            ParentShowHint = False
+            ParentBiDiMode = False
+            PopupMenu = BalPopMenu
+            ShowHint = True
+            OnClick = Bal1spClick
+            OnMouseEnter = Bal1spMouseEnter
+            SkinData.SkinSection = 'EDIT'
+            ExplicitWidth = 52
+            ExplicitHeight = 42
+          end
+          object Bal30sp: TsSpeedButton
+            Left = 265
+            Top = 144
+            Width = 53
+            Height = 48
+            ParentCustomHint = False
+            Align = alClient
+            BiDiMode = bdLeftToRight
+            Enabled = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = 11
+            Font.Name = 'Helvetica LT Std'
+            Font.Style = []
+            ParentFont = False
+            ParentShowHint = False
+            ParentBiDiMode = False
+            PopupMenu = BalPopMenu
+            ShowHint = True
+            OnClick = Bal1spClick
+            OnMouseEnter = Bal1spMouseEnter
+            SkinData.SkinSection = 'EDIT'
+            ExplicitWidth = 52
+            ExplicitHeight = 42
+          end
+          object Bal31sp: TsSpeedButton
+            Left = 318
+            Top = 144
+            Width = 53
+            Height = 48
+            ParentCustomHint = False
+            Align = alClient
+            BiDiMode = bdLeftToRight
+            Enabled = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = 11
+            Font.Name = 'Helvetica LT Std'
+            Font.Style = []
+            ParentFont = False
+            ParentShowHint = False
+            ParentBiDiMode = False
+            PopupMenu = BalPopMenu
+            ShowHint = True
+            OnClick = Bal1spClick
+            OnMouseEnter = Bal1spMouseEnter
+            SkinData.SkinSection = 'EDIT'
+            ExplicitWidth = 52
+            ExplicitHeight = 42
+          end
+          object Bal32sp: TsSpeedButton
+            Left = 371
+            Top = 144
+            Width = 60
+            Height = 48
+            ParentCustomHint = False
+            Align = alClient
+            BiDiMode = bdLeftToRight
+            Enabled = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = 11
+            Font.Name = 'Helvetica LT Std'
+            Font.Style = []
+            ParentFont = False
+            ParentShowHint = False
+            ParentBiDiMode = False
+            PopupMenu = BalPopMenu
+            ShowHint = True
+            OnClick = Bal1spClick
+            OnMouseEnter = Bal1spMouseEnter
+            SkinData.SkinSection = 'EDIT'
+            ExplicitLeft = 373
+            ExplicitWidth = 52
+            ExplicitHeight = 42
+          end
+          object Bal33sp: TsSpeedButton
+            Left = 0
+            Top = 192
+            Width = 53
+            Height = 48
+            ParentCustomHint = False
+            Align = alClient
+            BiDiMode = bdLeftToRight
+            Enabled = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = 11
+            Font.Name = 'Helvetica LT Std'
+            Font.Style = []
+            ParentFont = False
+            ParentShowHint = False
+            ParentBiDiMode = False
+            PopupMenu = BalPopMenu
+            ShowHint = True
+            OnClick = Bal1spClick
+            OnMouseEnter = Bal1spMouseEnter
+            SkinData.SkinSection = 'EDIT'
+            ExplicitTop = 191
+            ExplicitWidth = 52
+            ExplicitHeight = 42
+          end
+          object Bal34sp: TsSpeedButton
+            Left = 53
+            Top = 192
+            Width = 53
+            Height = 48
+            ParentCustomHint = False
+            Align = alClient
+            BiDiMode = bdLeftToRight
+            Enabled = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = 11
+            Font.Name = 'Helvetica LT Std'
+            Font.Style = []
+            ParentFont = False
+            ParentShowHint = False
+            ParentBiDiMode = False
+            PopupMenu = BalPopMenu
+            ShowHint = True
+            OnClick = Bal1spClick
+            OnMouseEnter = Bal1spMouseEnter
+            SkinData.SkinSection = 'EDIT'
+            ExplicitTop = 191
+            ExplicitWidth = 52
+            ExplicitHeight = 42
+          end
+          object Bal35sp: TsSpeedButton
+            Left = 106
+            Top = 192
+            Width = 53
+            Height = 48
+            ParentCustomHint = False
+            Align = alClient
+            BiDiMode = bdLeftToRight
+            Enabled = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = 11
+            Font.Name = 'Helvetica LT Std'
+            Font.Style = []
+            ParentFont = False
+            ParentShowHint = False
+            ParentBiDiMode = False
+            PopupMenu = BalPopMenu
+            ShowHint = True
+            OnClick = Bal1spClick
+            OnMouseEnter = Bal1spMouseEnter
+            SkinData.SkinSection = 'EDIT'
+            ExplicitTop = 191
+            ExplicitWidth = 52
+            ExplicitHeight = 42
+          end
+          object Bal36sp: TsSpeedButton
+            Left = 159
+            Top = 192
+            Width = 53
+            Height = 48
+            ParentCustomHint = False
+            Align = alClient
+            BiDiMode = bdLeftToRight
+            Enabled = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = 11
+            Font.Name = 'Helvetica LT Std'
+            Font.Style = []
+            ParentFont = False
+            ParentShowHint = False
+            ParentBiDiMode = False
+            PopupMenu = BalPopMenu
+            ShowHint = True
+            OnClick = Bal1spClick
+            OnMouseEnter = Bal1spMouseEnter
+            SkinData.SkinSection = 'EDIT'
+            ExplicitTop = 191
+            ExplicitWidth = 52
+            ExplicitHeight = 42
+          end
+          object Bal37sp: TsSpeedButton
+            Left = 212
+            Top = 192
+            Width = 53
+            Height = 48
+            ParentCustomHint = False
+            Align = alClient
+            BiDiMode = bdLeftToRight
+            Enabled = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = 11
+            Font.Name = 'Helvetica LT Std'
+            Font.Style = []
+            ParentFont = False
+            ParentShowHint = False
+            ParentBiDiMode = False
+            PopupMenu = BalPopMenu
+            ShowHint = True
+            OnClick = Bal1spClick
+            OnMouseEnter = Bal1spMouseEnter
+            SkinData.SkinSection = 'EDIT'
+            ExplicitTop = 191
+            ExplicitWidth = 52
+            ExplicitHeight = 42
+          end
+          object Bal38sp: TsSpeedButton
+            Left = 265
+            Top = 192
+            Width = 53
+            Height = 48
+            ParentCustomHint = False
+            Align = alClient
+            BiDiMode = bdLeftToRight
+            Enabled = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = 11
+            Font.Name = 'Helvetica LT Std'
+            Font.Style = []
+            ParentFont = False
+            ParentShowHint = False
+            ParentBiDiMode = False
+            PopupMenu = BalPopMenu
+            ShowHint = True
+            OnClick = Bal1spClick
+            OnMouseEnter = Bal1spMouseEnter
+            SkinData.SkinSection = 'EDIT'
+            ExplicitTop = 191
+            ExplicitWidth = 52
+            ExplicitHeight = 42
+          end
+          object Bal39sp: TsSpeedButton
+            Left = 318
+            Top = 192
+            Width = 53
+            Height = 48
+            ParentCustomHint = False
+            Align = alClient
+            BiDiMode = bdLeftToRight
+            Enabled = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = 11
+            Font.Name = 'Helvetica LT Std'
+            Font.Style = []
+            ParentFont = False
+            ParentShowHint = False
+            ParentBiDiMode = False
+            PopupMenu = BalPopMenu
+            ShowHint = True
+            OnClick = Bal1spClick
+            OnMouseEnter = Bal1spMouseEnter
+            SkinData.SkinSection = 'EDIT'
+            ExplicitTop = 191
+            ExplicitWidth = 52
+            ExplicitHeight = 42
+          end
+          object Bal40sp: TsSpeedButton
+            Left = 371
+            Top = 192
+            Width = 60
+            Height = 48
+            ParentCustomHint = False
+            Align = alClient
+            BiDiMode = bdLeftToRight
+            Enabled = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = 11
+            Font.Name = 'Helvetica LT Std'
+            Font.Style = []
+            ParentFont = False
+            ParentShowHint = False
+            ParentBiDiMode = False
+            PopupMenu = BalPopMenu
+            ShowHint = True
+            OnClick = Bal1spClick
+            OnMouseEnter = Bal1spMouseEnter
+            SkinData.SkinSection = 'EDIT'
+            ExplicitLeft = 373
+            ExplicitTop = 191
+            ExplicitWidth = 52
+            ExplicitHeight = 42
+          end
+          object Bal41sp: TsSpeedButton
+            Left = 0
+            Top = 240
+            Width = 53
+            Height = 48
+            ParentCustomHint = False
+            Align = alClient
+            BiDiMode = bdLeftToRight
+            Enabled = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = 11
+            Font.Name = 'Helvetica LT Std'
+            Font.Style = []
+            ParentFont = False
+            ParentShowHint = False
+            ParentBiDiMode = False
+            PopupMenu = BalPopMenu
+            ShowHint = True
+            OnClick = Bal1spClick
+            OnMouseEnter = Bal1spMouseEnter
+            SkinData.SkinSection = 'EDIT'
+            ExplicitTop = 238
+            ExplicitWidth = 52
+            ExplicitHeight = 42
+          end
+          object Bal42sp: TsSpeedButton
+            Left = 53
+            Top = 240
+            Width = 53
+            Height = 48
+            ParentCustomHint = False
+            Align = alClient
+            BiDiMode = bdLeftToRight
+            Enabled = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = 11
+            Font.Name = 'Helvetica LT Std'
+            Font.Style = []
+            ParentFont = False
+            ParentShowHint = False
+            ParentBiDiMode = False
+            PopupMenu = BalPopMenu
+            ShowHint = True
+            OnClick = Bal1spClick
+            OnMouseEnter = Bal1spMouseEnter
+            SkinData.SkinSection = 'EDIT'
+            ExplicitTop = 238
+            ExplicitWidth = 52
+            ExplicitHeight = 42
+          end
+          object Bal43sp: TsSpeedButton
+            Left = 106
+            Top = 240
+            Width = 53
+            Height = 48
+            ParentCustomHint = False
+            Align = alClient
+            BiDiMode = bdLeftToRight
+            Enabled = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = 11
+            Font.Name = 'Helvetica LT Std'
+            Font.Style = []
+            ParentFont = False
+            ParentShowHint = False
+            ParentBiDiMode = False
+            PopupMenu = BalPopMenu
+            ShowHint = True
+            OnClick = Bal1spClick
+            OnMouseEnter = Bal1spMouseEnter
+            SkinData.SkinSection = 'EDIT'
+            ExplicitTop = 238
+            ExplicitWidth = 52
+            ExplicitHeight = 42
+          end
+          object Bal44sp: TsSpeedButton
+            Left = 159
+            Top = 240
+            Width = 53
+            Height = 48
+            ParentCustomHint = False
+            Align = alClient
+            BiDiMode = bdLeftToRight
+            Enabled = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = 11
+            Font.Name = 'Helvetica LT Std'
+            Font.Style = []
+            ParentFont = False
+            ParentShowHint = False
+            ParentBiDiMode = False
+            PopupMenu = BalPopMenu
+            ShowHint = True
+            OnClick = Bal1spClick
+            OnMouseEnter = Bal1spMouseEnter
+            SkinData.SkinSection = 'EDIT'
+            ExplicitTop = 238
+            ExplicitWidth = 52
+            ExplicitHeight = 42
+          end
+          object Bal45sp: TsSpeedButton
+            Left = 212
+            Top = 240
+            Width = 53
+            Height = 48
+            ParentCustomHint = False
+            Align = alClient
+            BiDiMode = bdLeftToRight
+            Enabled = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = 11
+            Font.Name = 'Helvetica LT Std'
+            Font.Style = []
+            ParentFont = False
+            ParentShowHint = False
+            ParentBiDiMode = False
+            PopupMenu = BalPopMenu
+            ShowHint = True
+            OnClick = Bal1spClick
+            OnMouseEnter = Bal1spMouseEnter
+            SkinData.SkinSection = 'EDIT'
+            ExplicitTop = 238
+            ExplicitWidth = 52
+            ExplicitHeight = 42
+          end
+          object Bal46sp: TsSpeedButton
+            Left = 265
+            Top = 240
+            Width = 53
+            Height = 48
+            ParentCustomHint = False
+            Align = alClient
+            BiDiMode = bdLeftToRight
+            Enabled = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = 11
+            Font.Name = 'Helvetica LT Std'
+            Font.Style = []
+            ParentFont = False
+            ParentShowHint = False
+            ParentBiDiMode = False
+            PopupMenu = BalPopMenu
+            ShowHint = True
+            OnClick = Bal1spClick
+            OnMouseEnter = Bal1spMouseEnter
+            SkinData.SkinSection = 'EDIT'
+            ExplicitTop = 238
+            ExplicitWidth = 52
+            ExplicitHeight = 42
+          end
+          object Bal47sp: TsSpeedButton
+            Left = 318
+            Top = 240
+            Width = 53
+            Height = 48
+            ParentCustomHint = False
+            Align = alClient
+            BiDiMode = bdLeftToRight
+            Enabled = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = 11
+            Font.Name = 'Helvetica LT Std'
+            Font.Style = []
+            ParentFont = False
+            ParentShowHint = False
+            ParentBiDiMode = False
+            PopupMenu = BalPopMenu
+            ShowHint = True
+            OnClick = Bal1spClick
+            OnMouseEnter = Bal1spMouseEnter
+            SkinData.SkinSection = 'EDIT'
+            ExplicitTop = 238
+            ExplicitWidth = 52
+            ExplicitHeight = 42
+          end
+          object Bal48sp: TsSpeedButton
+            Left = 371
+            Top = 240
+            Width = 60
+            Height = 48
+            ParentCustomHint = False
+            Align = alClient
+            BiDiMode = bdLeftToRight
+            Enabled = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = 11
+            Font.Name = 'Helvetica LT Std'
+            Font.Style = []
+            ParentFont = False
+            ParentShowHint = False
+            ParentBiDiMode = False
+            PopupMenu = BalPopMenu
+            ShowHint = True
+            OnClick = Bal1spClick
+            OnMouseEnter = Bal1spMouseEnter
+            SkinData.SkinSection = 'EDIT'
+            ExplicitLeft = 373
+            ExplicitTop = 238
+            ExplicitWidth = 52
+            ExplicitHeight = 42
+          end
+          object Bal49sp: TsSpeedButton
+            Left = 0
+            Top = 288
+            Width = 53
+            Height = 52
+            ParentCustomHint = False
+            Align = alClient
+            BiDiMode = bdLeftToRight
+            Enabled = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = 11
+            Font.Name = 'Helvetica LT Std'
+            Font.Style = []
+            ParentFont = False
+            ParentShowHint = False
+            ParentBiDiMode = False
+            PopupMenu = BalPopMenu
+            ShowHint = True
+            OnClick = Bal1spClick
+            OnMouseEnter = Bal1spMouseEnter
+            SkinData.SkinSection = 'EDIT'
+            ExplicitTop = 285
+            ExplicitWidth = 52
+            ExplicitHeight = 42
+          end
+          object Bal50sp: TsSpeedButton
+            Left = 53
+            Top = 288
+            Width = 53
+            Height = 52
+            ParentCustomHint = False
+            Align = alClient
+            BiDiMode = bdLeftToRight
+            Enabled = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = 11
+            Font.Name = 'Helvetica LT Std'
+            Font.Style = []
+            ParentFont = False
+            ParentShowHint = False
+            ParentBiDiMode = False
+            PopupMenu = BalPopMenu
+            ShowHint = True
+            OnClick = Bal1spClick
+            OnMouseEnter = Bal1spMouseEnter
+            SkinData.SkinSection = 'EDIT'
+            ExplicitTop = 285
+            ExplicitWidth = 52
+            ExplicitHeight = 42
+          end
+          object Bal51sp: TsSpeedButton
+            Left = 106
+            Top = 288
+            Width = 53
+            Height = 52
+            ParentCustomHint = False
+            Align = alClient
+            BiDiMode = bdLeftToRight
+            Enabled = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = 11
+            Font.Name = 'Helvetica LT Std'
+            Font.Style = []
+            ParentFont = False
+            ParentShowHint = False
+            ParentBiDiMode = False
+            PopupMenu = BalPopMenu
+            ShowHint = True
+            OnClick = Bal1spClick
+            OnMouseEnter = Bal1spMouseEnter
+            SkinData.SkinSection = 'EDIT'
+            ExplicitTop = 285
+            ExplicitWidth = 52
+            ExplicitHeight = 42
+          end
+          object Bal52sp: TsSpeedButton
+            Left = 159
+            Top = 288
+            Width = 53
+            Height = 52
+            ParentCustomHint = False
+            Align = alClient
+            BiDiMode = bdLeftToRight
+            Enabled = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = 11
+            Font.Name = 'Helvetica LT Std'
+            Font.Style = []
+            ParentFont = False
+            ParentShowHint = False
+            ParentBiDiMode = False
+            PopupMenu = BalPopMenu
+            ShowHint = True
+            OnClick = Bal1spClick
+            OnMouseEnter = Bal1spMouseEnter
+            SkinData.SkinSection = 'EDIT'
+            ExplicitTop = 285
+            ExplicitWidth = 52
+            ExplicitHeight = 42
+          end
+          object Bal53sp: TsSpeedButton
+            Left = 212
+            Top = 288
+            Width = 53
+            Height = 52
+            ParentCustomHint = False
+            Align = alClient
+            BiDiMode = bdLeftToRight
+            Enabled = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = 11
+            Font.Name = 'Helvetica LT Std'
+            Font.Style = []
+            ParentFont = False
+            ParentShowHint = False
+            ParentBiDiMode = False
+            PopupMenu = BalPopMenu
+            ShowHint = True
+            OnClick = Bal1spClick
+            OnMouseEnter = Bal1spMouseEnter
+            SkinData.SkinSection = 'EDIT'
+            ExplicitTop = 285
+            ExplicitWidth = 52
+            ExplicitHeight = 42
+          end
+          object Bal54sp: TsSpeedButton
+            Left = 265
+            Top = 288
+            Width = 53
+            Height = 52
+            ParentCustomHint = False
+            Align = alClient
+            BiDiMode = bdLeftToRight
+            Enabled = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = 11
+            Font.Name = 'Helvetica LT Std'
+            Font.Style = []
+            ParentFont = False
+            ParentShowHint = False
+            ParentBiDiMode = False
+            PopupMenu = BalPopMenu
+            ShowHint = True
+            OnClick = Bal1spClick
+            OnMouseEnter = Bal1spMouseEnter
+            SkinData.SkinSection = 'EDIT'
+            ExplicitTop = 285
+            ExplicitWidth = 52
+            ExplicitHeight = 42
+          end
+          object Bal55sp: TsSpeedButton
+            Left = 318
+            Top = 288
+            Width = 53
+            Height = 52
+            ParentCustomHint = False
+            Align = alClient
+            BiDiMode = bdLeftToRight
+            Enabled = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = 11
+            Font.Name = 'Helvetica LT Std'
+            Font.Style = []
+            ParentFont = False
+            ParentShowHint = False
+            ParentBiDiMode = False
+            PopupMenu = BalPopMenu
+            ShowHint = True
+            OnClick = Bal1spClick
+            OnMouseEnter = Bal1spMouseEnter
+            SkinData.SkinSection = 'EDIT'
+            ExplicitTop = 285
+            ExplicitWidth = 52
+            ExplicitHeight = 42
+          end
+          object Bal56sp: TsSpeedButton
+            Left = 371
+            Top = 288
+            Width = 60
+            Height = 52
+            ParentCustomHint = False
+            Align = alClient
+            BiDiMode = bdLeftToRight
+            Enabled = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = 11
+            Font.Name = 'Helvetica LT Std'
+            Font.Style = []
+            ParentFont = False
+            ParentShowHint = False
+            ParentBiDiMode = False
+            PopupMenu = BalPopMenu
+            ShowHint = True
+            OnClick = Bal1spClick
+            OnMouseEnter = Bal1spMouseEnter
+            SkinData.SkinSection = 'EDIT'
+            ExplicitLeft = 373
+            ExplicitTop = 285
+            ExplicitWidth = 52
+            ExplicitHeight = 42
           end
         end
       end
@@ -4589,7 +6656,7 @@ object FOptions: TFOptions
       ShowHint = True
       Spacing = -1
       OnClick = OKFPrintingBtnClick
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
   end
@@ -4674,17 +6741,34 @@ object FOptions: TFOptions
     FlowControl.ControlRTS = rtsDisable
     FlowControl.XonXoffOut = False
     FlowControl.XonXoffIn = False
-    Left = 282
-    Top = 100
+    StoredProps = [spBasic]
+    TriggersOnRxChar = True
+    Left = 174
+    Top = 76
   end
-  object PopupMenu1: TPopupMenu
+  object FavPopMenu: TPopupMenu
     MenuAnimation = [maNone]
     OwnerDraw = True
-    Left = 365
-    Top = 100
+    Left = 229
+    Top = 78
     object S2: TMenuItem
       Caption = 'Vider le champ'
       OnClick = S2Click
     end
+  end
+  object BalPopMenu: TPopupMenu
+    Left = 298
+    Top = 80
+    object Viderlechamp1: TMenuItem
+      Caption = 'Vider le champ'
+      OnClick = Viderlechamp1Click
+    end
+  end
+  object BalBtnLblDrawerTimer: TTimer
+    Enabled = False
+    Interval = 1
+    OnTimer = BalBtnLblDrawerTimerTimer
+    Left = 386
+    Top = 198
   end
 end
