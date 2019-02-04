@@ -293,7 +293,7 @@ object FOptions: TFOptions
         Font.Style = []
         ParentDoubleBuffered = False
         ParentFont = False
-        TabOrder = 0
+        TabOrder = 3
       end
       object MobCompanyOptionEdt: TEdit
         Left = 25
@@ -309,7 +309,7 @@ object FOptions: TFOptions
         Font.Style = []
         ParentDoubleBuffered = False
         ParentFont = False
-        TabOrder = 1
+        TabOrder = 2
       end
       object NameCompanyOptionEdt: TEdit
         Left = 25
@@ -325,7 +325,7 @@ object FOptions: TFOptions
         Font.Style = []
         ParentDoubleBuffered = False
         ParentFont = False
-        TabOrder = 2
+        TabOrder = 0
       end
       object TelCompanyOptionEdt: TEdit
         Left = 25
@@ -341,7 +341,7 @@ object FOptions: TFOptions
         Font.Style = []
         ParentDoubleBuffered = False
         ParentFont = False
-        TabOrder = 3
+        TabOrder = 1
       end
       object NIFCompanyGEdt: TEdit
         Left = 25
@@ -357,7 +357,7 @@ object FOptions: TFOptions
         Font.Style = []
         ParentDoubleBuffered = False
         ParentFont = False
-        TabOrder = 4
+        TabOrder = 5
       end
       object RCCompanyGEdt: TEdit
         Left = 25
@@ -373,7 +373,7 @@ object FOptions: TFOptions
         Font.Style = []
         ParentDoubleBuffered = False
         ParentFont = False
-        TabOrder = 5
+        TabOrder = 4
       end
       object NArtCompanyGEdt: TEdit
         Left = 25
