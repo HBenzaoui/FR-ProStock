@@ -3105,7 +3105,8 @@ procedure TBonFacPGestionF.GettingData;
   TauxTVA9,TauxTVA19,MontantTVA9,MontantTVA19,RC,NArt,NIF,NIS,NEWCredit,OLDCredit : TfrxMemoView;
   str1 : string;
   Montant9,Montant19,RemisePerctageBonFacV : Currency;
-  Name,Tel,Mob,Adr : TfrxMemoView;
+  Name,Tel,Mob,Adr,ComRC,ComNArt,ComNIF,ComNIS : TfrxMemoView;
+  RCLbl,NArtLbl,NIFLbl,NISLbl,ComRCLbl,ComNArtLbl,ComNIFLbl,ComNISLbl : TfrxMemoView;
   Logo : TfrxPictureView;
     S: TMemoryStream;
   Jpg: TJPEGImage;
@@ -3122,13 +3123,38 @@ begin
     Tel.Text:= MainForm.CompanyTable.FieldByName('fix_comp').AsString ;
     Tel.Visible:=True;
 
-      Mob:= BonFacPPListfrxRprt.FindObject('Mob') as TfrxMemoView;
+    Mob:= BonFacPPListfrxRprt.FindObject('Mob') as TfrxMemoView;
     Mob.Text:= MainForm.CompanyTable.FieldByName('mob_comp').AsString ;
     Mob.Visible:=True;
 
-      Adr:= BonFacPPListfrxRprt.FindObject('Adr') as TfrxMemoView;
+    Adr:= BonFacPPListfrxRprt.FindObject('Adr') as TfrxMemoView;
     Adr.Text:= MainForm.CompanyTable.FieldByName('adr_comp').AsString ;
     Adr.Visible:=True;
+
+    ComRC:= BonFacPPListfrxRprt.FindObject('ComRC') as TfrxMemoView;
+    ComRC.Text:= MainForm.CompanyTable.FieldByName('rc_comp').AsString ;
+    ComRC.Visible:=True;
+    ComRCLbl:= BonFacPPListfrxRprt.FindObject('ComRCLbl') as TfrxMemoView;
+    ComRCLbl.Visible:=True;
+
+    ComNArt:= BonFacPPListfrxRprt.FindObject('ComNArt') as TfrxMemoView;
+    ComNArt.Text:= MainForm.CompanyTable.FieldByName('nart_comp').AsString ;
+    ComNArt.Visible:=True;
+    ComNArtLbl:= BonFacPPListfrxRprt.FindObject('ComNArtLbl') as TfrxMemoView;
+    ComNArtLbl.Visible:=True;
+
+    ComNIF:= BonFacPPListfrxRprt.FindObject('ComNIF') as TfrxMemoView;
+    ComNIF.Text:= MainForm.CompanyTable.FieldByName('nif_comp').AsString ;
+    ComNIF.Visible:=True;
+    ComNIFLbl:= BonFacPPListfrxRprt.FindObject('ComNIFLbl') as TfrxMemoView;
+    ComNIFLbl.Visible:=True;
+
+    ComNIS:= BonFacPPListfrxRprt.FindObject('ComNIS') as TfrxMemoView;
+    ComNIS.Text:= MainForm.CompanyTable.FieldByName('nis_comp').AsString ;
+    ComNIS.Visible:=True;
+    ComNISLbl:= BonFacPPListfrxRprt.FindObject('ComNISLbl') as TfrxMemoView;
+    ComNISLbl.Visible:=True;
+
 
       Logo:= BonFacPPListfrxRprt.FindObject('Logo') as TfrxPictureView;
       Logo.Visible:=True;
@@ -3183,17 +3209,36 @@ begin
     WilayaRX:= BonFacPPListfrxRprt.FindObject('WilayaRX') as TfrxMemoView;
   WilayaRX.Text:=  MainForm.ClientTable.FieldByName('willaya_c').AsString;
 
-//      RC:= BonFacPPListfrxRprt.FindObject('RC') as TfrxMemoView;
-//  RC.Text:= MainForm.ClientTable.FieldByName('rc_c').AsString;
-//
-//    NArt:= BonFacPPListfrxRprt.FindObject('NArt') as TfrxMemoView;
-//  NArt.Text:= MainForm.ClientTable.FieldByName('nart_c').AsString;
-//
-//    NIF:= BonFacPPListfrxRprt.FindObject('NIF') as TfrxMemoView;
-//  NIF.Text:=  MainForm.ClientTable.FieldByName('nif_c').AsString;
-//
-//      NIS:= BonFacPPListfrxRprt.FindObject('NIS') as TfrxMemoView;
-//  NIS.Text:=  MainForm.ClientTable.FieldByName('nis_c').AsString;
+  with MainForm.ClientTable do
+  begin
+
+      RC:= BonFacPPListfrxRprt.FindObject('RC') as TfrxMemoView;
+      RC.Text:= FieldByName('rc_c').AsString;
+      RC.Visible:= True;
+      RCLbl:= BonFacPPListfrxRprt.FindObject('RCLbl') as TfrxMemoView;
+      RCLbl.Visible:= True;
+
+      NArt:= BonFacPPListfrxRprt.FindObject('NArt') as TfrxMemoView;
+      NArt.Text:= FieldByName('nart_c').AsString;
+      NArt.Visible:= True;
+      NArtLbl:= BonFacPPListfrxRprt.FindObject('NArtLbl') as TfrxMemoView;
+      NArtLbl.Visible:= True;
+
+      NIF:= BonFacPPListfrxRprt.FindObject('NIF') as TfrxMemoView;
+      NIF.Text:=  FieldByName('nif_c').AsString;
+      NIF.Visible:= True;
+      NIFLbl:= BonFacPPListfrxRprt.FindObject('NIFLbl') as TfrxMemoView;
+      NIFLbl.Visible:= True;
+
+      NIS:= BonFacPPListfrxRprt.FindObject('NIS') as TfrxMemoView;
+      NIS.Text:=  FieldByName('nis_c').AsString;
+      NIS.Visible:= True;
+      NISLbl:= BonFacPPListfrxRprt.FindObject('NISLbl') as TfrxMemoView;
+      NISLbl.Visible:= True;
+
+  end;
+
+
 
     MainForm.ClientTable.Active:=False;
     MainForm.ClientTable.SQL.Clear;
