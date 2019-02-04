@@ -1420,7 +1420,7 @@ object LoginF: TLoginF
     Shaded = False
     Spacing = -1
     OnClick = CancelBtnClick
-    Version = '1.6.1.2'
+    Version = '1.6.2.0'
     TMSStyle = 0
   end
   object LoginBtn: TAdvToolButton
@@ -1448,7 +1448,7 @@ object LoginF: TLoginF
     Shaded = False
     Spacing = -1
     OnClick = LoginBtnClick
-    Version = '1.6.1.2'
+    Version = '1.6.2.0'
     TMSStyle = 0
   end
   object Label1: TLabel
@@ -2030,13 +2030,13 @@ object LoginF: TLoginF
     Shaded = False
     Spacing = -1
     OnClick = AdvToolButton1Click
-    Version = '1.6.1.2'
+    Version = '1.6.2.0'
     TMSStyle = 0
   end
   object Label2: TLabel
     Left = 275
     Top = 79
-    Width = 76
+    Width = 73
     Height = 13
     Caption = '21 jours restants'
     Font.Charset = DEFAULT_CHARSET
@@ -2154,7 +2154,7 @@ object LoginF: TLoginF
     Appearance.ProgressFont.Name = 'Tahoma'
     Appearance.ProgressFont.Style = []
     Appearance.ValueFormat = '%.0f%%'
-    Version = '1.9.0.0'
+    Version = '1.9.0.2'
     MarqueeColor = clNone
     TabStop = False
     TMSStyle = 0

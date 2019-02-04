@@ -96,7 +96,7 @@ begin
        ///wForm.Align:= alClient;
           wForm.WindowState := wsMaximized;
           gGrayForms.Add(wForm);
-          wForm.Position := poOwnerFormCenter;
+          wForm.Position := MainForm.Position;
           wForm.AlphaBlend := true;
           wForm.AlphaBlendValue := 140;
           wForm.Color := clBlack;
@@ -230,6 +230,8 @@ begin
          MainForm.cmpt_ur.Checked:= DataModuleF.UsersTable.FieldByName('cmpt_ur').AsBoolean;
          MainForm.unit_ur.Checked:= DataModuleF.UsersTable.FieldByName('unit_ur').AsBoolean;
          MainForm.local_ur.Checked:= DataModuleF.UsersTable.FieldByName('local_ur').AsBoolean;
+         MainForm.totaux_ur.Checked:= DataModuleF.UsersTable.FieldByName('totaux_ur').AsBoolean;
+         MainForm.viewprixa_ur.Checked:= DataModuleF.UsersTable.FieldByName('viewprixa_ur').AsBoolean;
 
 //         LoginUserF.Close;
 //         LoginUserF.Close;

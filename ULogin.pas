@@ -61,11 +61,13 @@ type
     procedure LoginFmxDayTrial(Sender: TObject; DaysRemained: Integer);
     procedure LoginFmxExpiration(Sender: TObject);
     procedure LoginFmxInvalidSystemTime(Sender: TObject);
+    function  GetWMIstring(const WMIClass, WMIProperty:string): string;
   private
     procedure ProcessRights;
     { Private declarations }
   public
     { Public declarations }
+
   end;
 
 var
@@ -92,7 +94,7 @@ implementation
             CKEY2 = 32618;
 //------------------------------------------------------------------------
 
-    function  GetWMIstring(const WMIClass, WMIProperty:string): string;
+    function  TLoginF.GetWMIstring(const WMIClass, WMIProperty:string): string;
     const
       wbemFlagForwardOnly = $00000020;
     var

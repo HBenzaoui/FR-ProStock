@@ -25,7 +25,7 @@ object LoginUserF: TLoginUserF
   object UserL: TLabel
     Left = 111
     Top = 64
-    Width = 60
+    Width = 57
     Height = 16
     Anchors = []
     Caption = 'Utilisateur'
@@ -42,7 +42,7 @@ object LoginUserF: TLoginUserF
   object PasswordL: TLabel
     Left = 90
     Top = 112
-    Width = 81
+    Width = 78
     Height = 16
     Anchors = []
     Caption = 'Mot de Passe'
@@ -726,7 +726,7 @@ object LoginUserF: TLoginUserF
       Shaded = False
       Spacing = -1
       OnClick = LoginBtnClick
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
   end
@@ -777,7 +777,7 @@ object LoginUserF: TLoginUserF
       Shaded = False
       Spacing = -1
       OnClick = CancelBtnClick
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
   end
