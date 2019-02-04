@@ -6,9 +6,9 @@
 5~ code_mdpai~ MP~ 28~ -1
 6~ montht_barec~ Montant HT~ 150~ -1
 7~ remise_barec~ Remise HT~ 150~ -1
-8~ NeTHT~ Net â Payer HT~ 150~ -1
-9~ MontantTVA~ Montant TVA~ 150~ -1
+8~ netht~ Net â Payer HT~ 150~ -1
+9~ montanttva~ Montant TVA~ 150~ -1
 10~ montttc_barec~ Montant TTC~ 150~ -1
 11~ montver_barec~ Montant Versé~ 150~ -1
-12~ MontantRes~ Montant Resté~ 150~ -1
-13~ Agnet~ Agent~ 150~ -1
+12~ montantres~ Montant Resté~ 150~ -1
+13~ Agent~ Agent~ 150~ -1

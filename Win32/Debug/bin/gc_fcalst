@@ -6,10 +6,10 @@
 5~ code_mdpai~ MP~ 28~ -1
 6~ montht_bafac~ Montant HT~ 150~ -1
 7~ remise_bafac~ Remise HT~ 150~ -1
-8~ NeTHT~ Net â Payer HT~ 150~ -1
+8~ netht~ Net â Payer HT~ 150~ -1
 9~ timber_bafac~ Timber Fiscal~ 150~ -1
-10~ MontantTVA~ Montant TVA~ 150~ -1
+10~ montanttva~ Montant TVA~ 150~ -1
 11~ montttc_bafac~ Montant TTC~ 150~ -1
 12~ montver_bafac~ Montant Versé~ 150~ -1
-13~ MontantRes~ Montant Resté~ 150~ -1
-14~ Agnet~ Agent~ 150~ -1
+13~ montantres~ Montant Resté~ 150~ -1
+14~ Agent~ Agent~ 150~ -1
