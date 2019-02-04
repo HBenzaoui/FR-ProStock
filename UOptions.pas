@@ -28,40 +28,10 @@ uses  DigiSM_TLB,
 type
   TFOptions = class(TForm)
     TopP: TPanel;
-    S1: TPanel;
-    P1: TPanel;
-    P2: TPanel;
-    Label1: TLabel;
-    LineP: TPanel;
-    AutoImL: TLabel;
-    APrintOptionGSlider: TsSlider;
-    PrintersListFOptionCaisseCbx: TComboBox;
-    CaiseeLbl: TLabel;
-    Label2: TLabel;
-    PrintersListFOptionCodeBCbx: TComboBox;
-    Label3: TLabel;
-    FormatFOptionCodeBCbx: TComboBox;
-    Label4: TLabel;
-    PrixVenteListFOptionCodeBCbx: TComboBox;
-    Label5: TLabel;
-    NameCompanyOptionEdt: TEdit;
-    Label6: TLabel;
-    Label7: TLabel;
-    TelCompanyOptionEdt: TEdit;
-    MobCompanyOptionEdt: TEdit;
-    Label8: TLabel;
-    Label9: TLabel;
-    AdrCompanyOptionEdt: TEdit;
     OpenPictureDialogProduitG: TOpenPictureDialog;
-    ImageCompanyOptionImg: TsImage;
-    ImageDeleteProduitGBtn: TAdvToolButton;
-    ImageEditProduitGBtn: TAdvToolButton;
-    Label10: TLabel;
     sAlphaImageList1: TsAlphaImageList;
-    Shape1: TShape;
     OKFPrintingBtn: TAdvToolButton;
     OptionsPgControl: TsPageControl;
-    GeneralOptionGTB: TsTabSheet;
     sTabSheet1: TsTabSheet;
     Panel1: TPanel;
     Label11: TLabel;
@@ -153,8 +123,6 @@ type
     FourCreditSdr21: TsSlider;
     sTabSheet3: TsTabSheet;
     Label40: TLabel;
-    PrinterCaisse57mmOptionCaisseRdioBtn: TRadioButton;
-    PrinterCaisse80mmOptionCaisseRdioBtn: TRadioButton;
     FavProduitOptPgControl: TsPageControl;
     Fav1ListTB: TsTabSheet;
     Panel12: TPanel;
@@ -315,6 +283,43 @@ type
     UploadToBalBtn: TsSpeedButton;
     UploadToBalLbl: TLabel;
     BalBtnLblDrawerTimer: TTimer;
+    GeneralOptionGTB: TsTabSheet;
+    sTabSheet7: TsTabSheet;
+    AdrCompanyOptionEdt: TEdit;
+    ImageCompanyOptionImg: TsImage;
+    ImageDeleteProduitGBtn: TAdvToolButton;
+    ImageEditProduitGBtn: TAdvToolButton;
+    Label10: TLabel;
+    Label6: TLabel;
+    Label7: TLabel;
+    Label8: TLabel;
+    Label9: TLabel;
+    MobCompanyOptionEdt: TEdit;
+    NameCompanyOptionEdt: TEdit;
+    Shape1: TShape;
+    TelCompanyOptionEdt: TEdit;
+    APrintOptionGSlider: TsSlider;
+    AutoImL: TLabel;
+    CaiseeLbl: TLabel;
+    PrinterCaisse80mmOptionCaisseRdioBtn: TRadioButton;
+    PrinterCaisse57mmOptionCaisseRdioBtn: TRadioButton;
+    PrintersListFOptionCaisseCbx: TComboBox;
+    LineP: TPanel;
+    Label2: TLabel;
+    PrintersListFOptionCodeBCbx: TComboBox;
+    Label3: TLabel;
+    FormatFOptionCodeBCbx: TComboBox;
+    Label4: TLabel;
+    PrixVenteListFOptionCodeBCbx: TComboBox;
+    RCCompanyGLbl: TLabel;
+    NIFCompanyGLbl: TLabel;
+    NIFCompanyGEdt: TEdit;
+    RCCompanyGEdt: TEdit;
+    NArtCompanyLbl: TLabel;
+    NArtCompanyGEdt: TEdit;
+    NISCompanyGLbl: TLabel;
+    NISCompanyGEdt: TEdit;
+    Panel2: TPanel;
     procedure FormShow(Sender: TObject);
     procedure OKFPrintingBtnClick(Sender: TObject);
     procedure ImageCompanyOptionImgMouseEnter(Sender: TObject);
@@ -660,6 +665,9 @@ begin
    PrintersListFOptionCaisseCbx.Items.Assign(Printer.Printers);
    PrintersListFOptionCodeBCbx.Items.Assign(Printer.Printers);
    TiroirCaissePrinterListCbx.Items.Assign(Printer.Printers);
+
+//   OptionsPgControl.SkinData.SkinManager:= ;
+
 end;
 
 
@@ -820,6 +828,26 @@ begin
          AdrCompanyOptionEdt.Text := fieldbyname('adr_comp').Value;
         end;
 
+        if (fieldbyname('rc_comp').Value <> null) then
+        begin
+         RCCompanyGEdt.Text := fieldbyname('rc_comp').Value;
+        end;
+
+        if (fieldbyname('nif_comp').Value <> null) then
+        begin
+         NIFCompanyGEdt.Text := fieldbyname('nif_comp').Value;
+        end;
+
+        if (fieldbyname('nart_comp').Value <> null) then
+        begin
+         NArtCompanyGEdt.Text := fieldbyname('nart_comp').Value;
+        end;
+
+        if (fieldbyname('nis_comp').Value <> null) then
+        begin
+         NISCompanyGEdt.Text := fieldbyname('nis_comp').Value;
+        end;
+
         if (fieldbyname('logo_comp').Value <> null) then
         begin
           S := TMemoryStream.Create;
@@ -849,7 +877,7 @@ begin
     end;
 
 
-    NameCompanyOptionEdt.SetFocus;
+//    NameCompanyOptionEdt.SetFocus;
 
     BalBtnLblDrawerTimer.Enabled:=True;
 end;
@@ -902,6 +930,11 @@ begin
             fieldbyname('mob_comp').Value := MobCompanyOptionEdt.Text;
             fieldbyname('adr_comp').Value := AdrCompanyOptionEdt.Text;
 
+            fieldbyname('rc_comp').Value := RCCompanyGEdt.Text;
+            fieldbyname('nif_comp').Value := NIFCompanyGEdt.Text;
+            fieldbyname('nart_comp').Value := NArtCompanyGEdt.Text;
+            fieldbyname('nis_comp').Value := NISCompanyGEdt.Text;
+
               {Creat the stream using BlobStream is better the to the blob dictely }
 
               S :=CreateBlobStream(FieldByName('logo_comp'), bmWrite);
@@ -935,6 +968,11 @@ begin
               fieldbyname('fix_comp').Value := TelCompanyOptionEdt.Text;
               fieldbyname('mob_comp').Value := MobCompanyOptionEdt.Text;
               fieldbyname('adr_comp').Value := AdrCompanyOptionEdt.Text;
+
+              fieldbyname('rc_comp').Value := RCCompanyGEdt.Text;
+              fieldbyname('nif_comp').Value := NIFCompanyGEdt.Text;
+              fieldbyname('nart_comp').Value := NArtCompanyGEdt.Text;
+              fieldbyname('nis_comp').Value := NISCompanyGEdt.Text;
 
               {Creat the stream using BlobStream is better the to the blob dictely }
 
