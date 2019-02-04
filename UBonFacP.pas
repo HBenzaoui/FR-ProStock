@@ -1522,7 +1522,7 @@ begin
           BVFacListDBGridEh.FieldColumns['montaht_bpfac'].Visible:= true;
           BVFacListDBGridEh.FieldColumns['montaht_bpfac'].MinWidth:= 150;
           BVFacListDBGridEh.FieldColumns['montaht_bpfac'].Width:= 150;
-          BVFacListDBGridEh.FieldColumns['montaht_bvfac'].MaxWidth:= 0;
+          BVFacListDBGridEh.FieldColumns['montaht_bpfac'].MaxWidth:= 0;
 
       end else
       begin
