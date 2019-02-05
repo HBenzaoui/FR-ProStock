@@ -859,9 +859,7 @@ begin
       BonFacAGestionF.ShowModal;
 
     finally
-
-      BonFacAGestionF.Free;
-
+      FreeAndNil(BonFacAGestionF);
     end;
 
   end else

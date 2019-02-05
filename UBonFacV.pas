@@ -453,14 +453,9 @@ begin
        BonFacVGestionF.ShowModal;
 
       finally
-//        BonFacVGestionF.Free;
            FreeAndNil(BonFacVGestionF);
       end;
-     //    MainForm.Bonv_facTable.Refresh;
-       //  MainForm.Bonv_fac_listTable.Refresh;
 
-
-//         MainForm.Bonv_facTable.DisableControls;
   MainForm.Bonv_facTable.Active:= False;
   MainForm.Bonv_facTable.SQL.clear;
   mainform.Bonv_facTable.sql.Text:= FVSQL +' WHERE date_bvfac BETWEEN '''+(DateToStr(DateStartBVFacD.Date))+ ''' AND ''' +(DateToStr(DateEndBVFacD.Date))+'''';
@@ -873,7 +868,7 @@ begin
       BonFacVGestionF.ShowModal;
 
       finally
-        BonFacVGestionF.Free;
+        FreeAndNil(BonFacVGestionF);
       end;
 
  end else

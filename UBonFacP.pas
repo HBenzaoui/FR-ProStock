@@ -451,8 +451,7 @@ MainForm.Bonp_facTable.Active:= True;
        BonFacPGestionF.ShowModal;
 
       finally
-//        BonFacPGestionF.Free;
-        FreeAndNil(BonFacPGestionF);
+       FreeAndNil(BonFacPGestionF);
       end;
      //    MainForm.Bonp_facTable.Refresh;
        //  MainForm.bonp_fac_listTable.Refresh;
@@ -768,13 +767,11 @@ begin
 
   if NOT (MainForm.bonp_fac_listTable.IsEmpty) then
     begin
-//  MainForm.Bonp_facTable.Refresh;
      MainForm.bonp_fac_listTable.Active:=False;
      MainForm.bonp_fac_listTable.IndexFieldNames:='code_bpfac';
 
-      BonFacPGestionF := TBonFacPGestionF.Create(nil);
+   BonFacPGestionF := TBonFacPGestionF.Create(nil);
    try
-//       MainForm.Bonp_facTable.Refresh;
        BonFacPGestionF.NumBonFacVGEdt.Caption := MainForm.Bonp_facTable.FieldValues['num_bpfac'];
        BonFacPGestionF.DateBonFacVGD.Date:= MainForm.Bonp_facTable.FieldValues['date_bpfac'];
        BonFacPGestionF.ObserBonFacVGMem.Lines.Text := MainForm.Bonp_facTable.FieldByName('obser_bpfac').AsString;
@@ -785,46 +782,6 @@ begin
 
         end;
 
-
-//       if (MainForm.Bonp_facTable.FieldValues['code_mdpai']<> null ) AND (MainForm.Bonp_facTable.FieldValues['code_mdpai']<> 0) then
-//       begin
-//       CodeC:=MainForm.Bonp_facTable.FieldValues['code_mdpai'];
-//         MainForm.Mode_paiementTable.Active:=false;
-//         MainForm.Mode_paiementTable.SQL.Clear;
-//         MainForm.Mode_paiementTable.SQL.Text:='Select * FROM mode_paiement WHERE code_mdpai ='+(IntToStr( CodeC ) ) ;
-//         MainForm.Mode_paiementTable.Active:=True;
-//         BonFacPGestionF.ModePaieBonFacVGCbx.Text:= MainForm.Mode_paiementTable.FieldValues['nom_mdpai'];
-//         if  MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger = 1 then
-//         begin
-//         BonFacPGestionF.TimberBonFacVGlbl.Visible:= True;
-//         BonFacPGestionF.TimberPerctageBonFacVGLbl.Visible:= True;
-//         BonFacPGestionF.TimberPerctageBonFacVGEdt.Visible:= True;
-//         BonFacPGestionF.TimberBonFacVGEdt.Visible:= True;
-//         BonFacPGestionF.TimberBonFacVGEdt.Text :=     CurrToStrF(MainForm.Bonp_facTable.FieldValues['timber_bvfac'], ffNumber, 2);
-//         end;
-//         MainForm.Mode_paiementTable.Active:=false;
-//         MainForm.Mode_paiementTable.SQL.Clear;
-//         MainForm.Mode_paiementTable.SQL.Text:='SELECT * FROM mode_paiement ' ;
-//         MainForm.Mode_paiementTable.Active:=True;
-//
-//       end;
-//       if (MainForm.Bonp_facTable.FieldValues['code_cmpt']<> null) AND (MainForm.Bonp_facTable.FieldValues['code_cmpt']<> 0) then
-//       begin
-//       CodeC:=MainForm.Bonp_facTable.FieldValues['code_cmpt'];
-//         MainForm.CompteTable.Active:=false;
-//         MainForm.CompteTable.SQL.Clear;
-//         MainForm.CompteTable.SQL.Text:='Select * FROM compte WHERE code_cmpt ='+(IntToStr( CodeC ) ) ;
-//         MainForm.CompteTable.Active:=True;
-//         BonFacPGestionF.CompteBonFacVGCbx.Text:= MainForm.CompteTable.FieldValues['nom_cmpt'];
-//         MainForm.CompteTable.Active:=false;
-//         MainForm.CompteTable.SQL.Clear;
-//         MainForm.CompteTable.SQL.Text:='SELECT * FROM compte ' ;
-//         MainForm.CompteTable.Active:=True;
-//       end;
-//       if MainForm.Bonp_facTable.FieldValues['num_cheque_bvfac']<> null then
-//       begin
-//        BonFacPGestionF.NChequeBonFacVGCbx.Text:= MainForm.Bonp_facTable.FieldValues['num_cheque_bvfac'];
-//       end;
 
 
 
@@ -872,7 +829,7 @@ begin
       BonFacPGestionF.ShowModal;
 
       finally
-        BonFacPGestionF.Free;
+        FreeAndNil(BonFacPGestionF);
       end;
 
  end else

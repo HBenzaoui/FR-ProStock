@@ -832,16 +832,12 @@ begin
    MainForm.Bonv_liv_listTable.Active := True;
      if NOT (MainForm.Bonv_liv_listTable.IsEmpty) then
     begin
-
-   MainForm.Bonv_liv_listTable.Active := False;
-//  MainForm.Bonv_livTable.Refresh;
-
+     MainForm.Bonv_liv_listTable.Active := False;
      MainForm.Bonv_liv_listTable.IndexFieldNames:='code_bvliv';
 
-        BonLivGestionF := TBonLivGestionF.Create(nil);
+    BonLivGestionF := TBonLivGestionF.Create(nil);
     try
-      MainForm.Bonv_liv_listTable.Active := True;
-//       MainForm.Bonv_livTable.Refresh;
+       MainForm.Bonv_liv_listTable.Active := True;
        BonLivGestionF.NumBonLivGEdt.Caption := MainForm.Bonv_livTable.FieldByName('num_bvliv').AsString;
        BonLivGestionF.DateBonLivGD.Date:= MainForm.Bonv_livTable.FieldValues['date_bvliv'];
        BonLivGestionF.ObserBonLivGMem.Lines.Text := MainForm.Bonv_livTable.FieldByName('obser_bvliv').AsString;
@@ -931,9 +927,9 @@ begin
 
 
 
-        finally
-          BonLivGestionF.Free;
-        end;
+    finally
+      FreeAndNil(BonLivGestionF);
+    end;
 
   end else
      begin

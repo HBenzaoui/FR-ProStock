@@ -941,7 +941,7 @@ var
 
 
       finally
-      BonRecGestionF.Free;
+       FreeAndNil(BonRecGestionF);
       end;
 
 

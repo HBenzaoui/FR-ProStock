@@ -1358,11 +1358,26 @@ begin
     if ProduitGestionF.Tag = 0 then
      begin
 
-     lookupResultNomP := MainForm.ProduitTable.Lookup('LOWER(nom_p)',(LowerCase( NameProduitGEdt.Text)),'nom_p');
-     if  VarIsnull( lookupResultNomP) then
+
+      MainForm.SQLQuery.Active:= False;
+      MainForm.SQLQuery.SQL.Clear;
+      MainForm.SQLQuery.SQL.Text:= 'SELECT code_p from produit WHERE LOWER(nom_p) ='
+                                    + QuotedStr(LowerCase(NameProduitGEdt.Text));
+      MainForm.SQLQuery.Active:= True;
+
+
+//      lookupResultNomP := MainForm.ProduitTable.Lookup('LOWER(nom_p)',(LowerCase( NameProduitGEdt.Text)),'nom_p');
+      if MainForm.SQLQuery.IsEmpty then
       begin
-        lookupResultRefP := MainForm.ProduitTable.Lookup('LOWER(refer_p)',(LowerCase(RefProduitGEdt.Text)),'refer_p');
-       if  VarIsnull(lookupResultRefP) then
+
+        MainForm.SQLQuery.Active:= False;
+        MainForm.SQLQuery.SQL.Clear;
+        MainForm.SQLQuery.SQL.Text:= 'SELECT code_p from produit WHERE LOWER(refer_p) ='
+                                      + QuotedStr(LowerCase(RefProduitGEdt.Text));
+        MainForm.SQLQuery.Active:= True;
+
+//        lookupResultRefP := MainForm.ProduitTable.Lookup('LOWER(refer_p)',(LowerCase(RefProduitGEdt.Text)),'refer_p');
+       if  MainForm.SQLQuery.IsEmpty then
         begin
            //----------- use this code to inster new famille when just type name it if empty exit-------------
           if FamilleProduitGCbx.Text <> '' then
@@ -2116,6 +2131,10 @@ begin
       ProduitGPgControl.TabIndex:= 0;
       NameProduitGEdt.SetFocus;
   end;
+
+  MainForm.SQLQuery.Active := False;
+  MainForm.SQLQuery.SQL.Clear;
+
 end;
 
 procedure TProduitGestionF.PerProduitGSliderChanging(Sender: TObject;
