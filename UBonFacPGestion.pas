@@ -2393,18 +2393,6 @@ begin
           MainForm.ClientTable.Active:=True;
           MainForm.ClientTable.EnableControls;
 
-//          MainForm.Mode_paiementTable.Active:=false;
-//          MainForm.Mode_paiementTable.SQL.Clear;
-//          MainForm.Mode_paiementTable.SQL.Text:='Select * FROM mode_paiement' ;
-//          MainForm.Mode_paiementTable.Active:=True;
-//          MainForm.Mode_paiementTable.EnableControls;
-//
-//          MainForm.CompteTable.Active:=false;
-//          MainForm.CompteTable.SQL.Clear;
-//          MainForm.CompteTable.SQL.Text:='Select * FROM compte' ;
-//          MainForm.CompteTable.Active:=True;
-//          MainForm.CompteTable.EnableControls;
-
 
           MainForm.Bonp_fac_listTable.Active:=false;
           MainForm.Bonp_fac_listTable.SQL.Clear;
@@ -2450,26 +2438,12 @@ begin
           MainForm.ClientTable.SQL.Text:='Select * FROM client WHERE LOWER(nom_c) LIKE LOWER('+ QuotedStr( ClientBonFacVGCbx.Text )+')'  ;
           MainForm.ClientTable.Active:=True;
 
-//          MainForm.Mode_paiementTable.DisableControls;
-//          MainForm.Mode_paiementTable.Active:=false;
-//          MainForm.Mode_paiementTable.SQL.Clear;
-//          MainForm.Mode_paiementTable.SQL.Text:='Select * FROM mode_paiement WHERE LOWER(nom_mdpai) LIKE LOWER('+ QuotedStr( ModePaieBonFacVGCbx.Text )+')'  ;
-//          MainForm.Mode_paiementTable.Active:=True;
-//
-//          MainForm.CompteTable.DisableControls;
-//          MainForm.CompteTable.Active:=false;
-//          MainForm.CompteTable.SQL.Clear;
-//          MainForm.CompteTable.SQL.Text:='Select * FROM compte WHERE LOWER(nom_cmpt) LIKE LOWER('+ QuotedStr( CompteBonFacVGCbx.Text )+')'  ;
-//          MainForm.CompteTable.Active:=True;
 
 
           MainForm.Bonp_facTable.DisableControls;
           MainForm.Bonp_facTable.Edit;
           MainForm.Bonp_facTable.FieldValues['code_c']:= MainForm.ClientTable.FieldByName('code_c').AsInteger;
-//          MainForm.Bonp_facTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
-//          MainForm.Bonp_facTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
           MainForm.Bonp_facTable.FieldValues['obser_bpfac']:= ObserBonFacVGMem.Text;
-//          MainForm.Bonp_facTable.FieldValues['num_cheque_bvfac']:= NChequeBonFacVGCbx.Text;
           MainForm.Bonp_facTable.FieldByName('montht_bpfac').AsCurrency:= StrToCurr(StringReplace(BonFacVTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
           MainForm.Bonp_facTable.FieldByName('montaht_bpfac').AsCurrency:= StrToCurr(StringReplace(BonFacVTotalAHTLbl.Caption, #32, '', [rfReplaceAll]));
 
@@ -2497,23 +2471,6 @@ begin
             MainForm.ClientTable.Active:=True;
             MainForm.ClientTable.EnableControls;
 
-//            MainForm.Mode_paiementTable.Active:=false;
-//            MainForm.Mode_paiementTable.SQL.Clear;
-//            MainForm.Mode_paiementTable.SQL.Text:='Select * FROM mode_paiement' ;
-//            MainForm.Mode_paiementTable.Active:=True;
-//            MainForm.Mode_paiementTable.EnableControls;
-//
-//            MainForm.CompteTable.Active:=false;
-//            MainForm.CompteTable.SQL.Clear;
-//            MainForm.CompteTable.SQL.Text:='Select * FROM compte' ;
-//            MainForm.CompteTable.Active:=True;
-//            MainForm.CompteTable.EnableControls;
-
-            //------- This is to delete data from tre and reg ih not valide----------------------------------------------
-//            MainForm.GstockdcConnection.ExecSQL('DELETE FROM regclient where code_bpfac = ' + IntToStr(codeFV));
-//            MainForm.GstockdcConnection.ExecSQL('DELETE FROM opt_cas_bnk where code_bpfac = ' + IntToStr(codeFV));
-//            MainForm.RegclientTable.Refresh ;
-//            MainForm.Opt_cas_bnk_CaisseTable.Refresh ;
 
          end;
 
@@ -2543,25 +2500,12 @@ begin
           MainForm.ClientTable.SQL.Text:='Select * FROM client WHERE LOWER(nom_c) LIKE LOWER('+ QuotedStr( ClientBonFacVGCbx.Text )+')'  ;
           MainForm.ClientTable.Active:=True;
 
-//          MainForm.Mode_paiementTable.DisableControls;
-//          MainForm.Mode_paiementTable.Active:=false;
-//          MainForm.Mode_paiementTable.SQL.Clear;
-//          MainForm.Mode_paiementTable.SQL.Text:='Select * FROM mode_paiement WHERE LOWER(nom_mdpai) LIKE LOWER('+ QuotedStr( ModePaieBonFacVGCbx.Text )+')'  ;
-//          MainForm.Mode_paiementTable.Active:=True;
-//
-//          MainForm.CompteTable.DisableControls;
-//          MainForm.CompteTable.Active:=false;
-//          MainForm.CompteTable.SQL.Clear;
-//          MainForm.CompteTable.SQL.Text:='Select * FROM compte WHERE LOWER(nom_cmpt) LIKE LOWER('+ QuotedStr( CompteBonFacVGCbx.Text )+')'  ;
-//          MainForm.CompteTable.Active:=True;
+
 
           MainForm.Bonp_facTable.DisableControls;
           MainForm.Bonp_facTable.Edit;
           MainForm.Bonp_facTable.FieldValues['code_c']:= MainForm.ClientTable.FieldByName('code_c').AsInteger;
-//          MainForm.Bonp_facTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
-//          MainForm.Bonp_facTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
           MainForm.Bonp_facTable.FieldValues['obser_bpfac']:= ObserBonFacVGMem.Text;
-//          MainForm.Bonp_facTable.FieldValues['num_cheque_bvfac']:= NChequeBonFacVGCbx.Text;
           MainForm.Bonp_facTable.FieldByName('montht_bpfac').AsCurrency:= StrToCurr(StringReplace(BonFacVTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
 
           if RemiseBonFacVGEdt.Text<>'' then
@@ -2588,23 +2532,6 @@ begin
             MainForm.ClientTable.Active:=True;
             MainForm.ClientTable.EnableControls;
 
-//            MainForm.Mode_paiementTable.Active:=false;
-//            MainForm.Mode_paiementTable.SQL.Clear;
-//            MainForm.Mode_paiementTable.SQL.Text:='Select * FROM mode_paiement' ;
-//            MainForm.Mode_paiementTable.Active:=True;
-//            MainForm.Mode_paiementTable.EnableControls;
-//
-//            MainForm.CompteTable.Active:=false;
-//            MainForm.CompteTable.SQL.Clear;
-//            MainForm.CompteTable.SQL.Text:='Select * FROM compte' ;
-//            MainForm.CompteTable.Active:=True;
-//            MainForm.CompteTable.EnableControls;
-
-            //------- This is to delete data from tre and reg ih not valide----------------------------------------------
-//            MainForm.GstockdcConnection.ExecSQL('DELETE FROM regclient where code_bpfac = ' + IntToStr(codeFV));
-//            MainForm.GstockdcConnection.ExecSQL('DELETE FROM opt_cas_bnk where code_bpfac = ' + IntToStr(codeFV));
-//            MainForm.RegclientTable.Refresh ;
-//            MainForm.Opt_cas_bnk_CaisseTable.Refresh ;
 
          end;
 
