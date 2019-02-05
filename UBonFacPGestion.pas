@@ -3121,23 +3121,22 @@ begin
       NameRX:= BonFacPPListfrxRprt.FindObject('NameRX') as TfrxMemoView;
   NameRX.Text:= ClientBonFacVGCbx.Text;
 
-    MainForm.ClientTable.Active:=False;
-    MainForm.ClientTable.SQL.Clear;
-    MainForm.ClientTable.SQL.Text:='SELECT * FROM client WHERE code_c ='+ IntToStr(MainForm.Bonp_facTable.FieldByName('code_c').AsInteger);
-    MainForm.ClientTable.Active:=True;
+    MainForm.SQLQuery.Active:=False;
+    MainForm.SQLQuery.SQL.Clear;
+    MainForm.SQLQuery.SQL.Text:='SELECT * FROM client WHERE code_c ='+ IntToStr(MainForm.Bonp_facTable.FieldByName('code_c').AsInteger);
+    MainForm.SQLQuery.Active:=True;
 
-
-    AdrRX:= BonFacPPListfrxRprt.FindObject('AdrRX') as TfrxMemoView;
-  AdrRX.Text:= MainForm.ClientTable.FieldByName('adr_c').AsString;
-
-    VilleRX:= BonFacPPListfrxRprt.FindObject('VilleRX') as TfrxMemoView;
-  VilleRX.Text:= MainForm.ClientTable.FieldByName('ville_c').AsString;
-
-    WilayaRX:= BonFacPPListfrxRprt.FindObject('WilayaRX') as TfrxMemoView;
-  WilayaRX.Text:=  MainForm.ClientTable.FieldByName('willaya_c').AsString;
-
-  with MainForm.ClientTable do
+   with MainForm.SQLQuery do
   begin
+
+      AdrRX:= BonFacPPListfrxRprt.FindObject('AdrRX') as TfrxMemoView;
+      AdrRX.Text:= FieldByName('adr_c').AsString;
+
+      VilleRX:= BonFacPPListfrxRprt.FindObject('VilleRX') as TfrxMemoView;
+      VilleRX.Text:= FieldByName('ville_c').AsString;
+
+      WilayaRX:= BonFacPPListfrxRprt.FindObject('WilayaRX') as TfrxMemoView;
+      WilayaRX.Text:=  FieldByName('willaya_c').AsString;
 
       RC:= BonFacPPListfrxRprt.FindObject('RC') as TfrxMemoView;
       RC.Text:= FieldByName('rc_c').AsString;
@@ -3165,15 +3164,10 @@ begin
 
   end;
 
+    MainForm.SQLQuery.Active:=False;
+    MainForm.SQLQuery.SQL.Clear;
 
-
-    MainForm.ClientTable.Active:=False;
-    MainForm.ClientTable.SQL.Clear;
-    MainForm.ClientTable.SQL.Text:='SELECT * FROM client ';
-    MainForm.ClientTable.Active:=True;
-
-
-         begin
+     begin
       MainForm.Bonp_fac_listTable.DisableControls;
 
 

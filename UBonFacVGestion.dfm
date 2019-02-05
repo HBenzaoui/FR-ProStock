@@ -3012,7 +3012,7 @@ object BonFacVGestionF: TBonFacVGestionF
     PrintOptions.PrintOnSheet = 0
     PrintOptions.ShowDialog = False
     ReportOptions.CreateDate = 42576.399521435210000000
-    ReportOptions.LastChange = 43238.819196689820000000
+    ReportOptions.LastChange = 43501.861181956020000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       ''
@@ -3488,7 +3488,7 @@ object BonFacVGestionF: TBonFacVGestionF
           ParentFont = False
           VAlign = vaCenter
         end
-        object Memo31: TfrxMemoView
+        object RCLbl: TfrxMemoView
           Left = 401.048537240000000000
           Top = 243.960730000000000000
           Width = 45.093702760000000000
@@ -3504,7 +3504,7 @@ object BonFacVGestionF: TBonFacVGestionF
           ParentFont = False
           VAlign = vaCenter
         end
-        object Memo32: TfrxMemoView
+        object NArtLbl: TfrxMemoView
           Left = 390.071120000000000000
           Top = 278.976500000000000000
           Width = 56.432292760000000000
@@ -3520,7 +3520,7 @@ object BonFacVGestionF: TBonFacVGestionF
           ParentFont = False
           VAlign = vaCenter
         end
-        object Memo33: TfrxMemoView
+        object NIFLbl: TfrxMemoView
           Left = 400.409710000000000000
           Top = 312.212740000000000000
           Width = 45.093702760000000000
@@ -3536,7 +3536,7 @@ object BonFacVGestionF: TBonFacVGestionF
           ParentFont = False
           VAlign = vaCenter
         end
-        object Memo34: TfrxMemoView
+        object NISLbl: TfrxMemoView
           Left = 400.409710000000000000
           Top = 345.448980000000000000
           Width = 45.093702760000000000
@@ -3642,6 +3642,138 @@ object BonFacVGestionF: TBonFacVGestionF
           Font.Style = [fsBold]
           Memo.UTF8W = (
             'FACTURE DE VENTE')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object ComRC: TfrxMemoView
+          Left = 401.607597240000000000
+          Top = 136.063080000000000000
+          Width = 143.361482760000000000
+          Height = 23.198494480000000000
+          Visible = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = []
+          Memo.UTF8W = (
+            'RC :')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object ComNArt: TfrxMemoView
+          Left = 401.607597240000000000
+          Top = 171.078850000000000000
+          Width = 143.361482760000000000
+          Height = 23.198494480000000000
+          Visible = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = []
+          Memo.UTF8W = (
+            'N'#176' Art :')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object ComNIF: TfrxMemoView
+          Left = 575.025037240000000000
+          Top = 137.283550000000000000
+          Width = 143.361482760000000000
+          Height = 23.198494480000000000
+          Visible = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = []
+          Memo.UTF8W = (
+            'NIF :')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object ComNIS: TfrxMemoView
+          Left = 575.025037240000000000
+          Top = 170.519790000000000000
+          Width = 143.361482760000000000
+          Height = 23.198494480000000000
+          Visible = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = []
+          Memo.UTF8W = (
+            'NIS :')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object ComRCLbl: TfrxMemoView
+          Left = 367.072954480000000000
+          Top = 136.063080000000000000
+          Width = 37.534642760000000000
+          Height = 23.198494480000000000
+          Visible = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            'RC :')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object ComNArtLbl: TfrxMemoView
+          Left = 356.095537240000000000
+          Top = 171.078850000000000000
+          Width = 48.873232760000000000
+          Height = 23.198494480000000000
+          Visible = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            'N'#176' Art :')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object ComNIFLbl: TfrxMemoView
+          Left = 539.851567240000000000
+          Top = 137.283550000000000000
+          Width = 33.755112760000000000
+          Height = 23.198494480000000000
+          Visible = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            'NIF :')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object ComNISLbl: TfrxMemoView
+          Left = 539.851567240000000000
+          Top = 170.519790000000000000
+          Width = 33.755112760000000000
+          Height = 23.198494480000000000
+          Visible = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            'NIS :')
           ParentFont = False
           VAlign = vaCenter
         end
