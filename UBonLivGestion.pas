@@ -3460,31 +3460,33 @@ begin
   NumRX:= BonLivPListfrxRprt.FindObject('NumRX') as TfrxMemoView;
   NumRX.Text:= NumBonLivGEdt.Caption;
 
-    DateRX:= BonLivPListfrxRprt.FindObject('DateRX') as TfrxMemoView;
+  DateRX:= BonLivPListfrxRprt.FindObject('DateRX') as TfrxMemoView;
   DateRX.Text:= DateToStr(DateBonLivGD.Date);
 
-      NameRX:= BonLivPListfrxRprt.FindObject('NameRX') as TfrxMemoView;
+  NameRX:= BonLivPListfrxRprt.FindObject('NameRX') as TfrxMemoView;
   NameRX.Text:= ClientBonLivGCbx.Text;
 
-    MainForm.ClientTable.Active:=False;
-    MainForm.ClientTable.SQL.Clear;
-    MainForm.ClientTable.SQL.Text:='SELECT * FROM client WHERE code_c ='+ IntToStr(MainForm.Bonv_livTable.FieldByName('code_c').AsInteger);
-    MainForm.ClientTable.Active:=True;
+    MainForm.SQLQuery.Active:=False;
+    MainForm.SQLQuery.SQL.Clear;
+    MainForm.SQLQuery.SQL.Text:='SELECT code_c,adr_c,ville_c,willaya_c,rc_c,nart_c,nif_c,nis_c FROM client WHERE code_c ='
+    + IntToStr(MainForm.Bonv_livTable.FieldByName('code_c').AsInteger);
+    MainForm.SQLQuery.Active:=True;
+
+    with MainForm.SQLQuery do
+    begin
+      AdrRX:= BonLivPListfrxRprt.FindObject('AdrRX') as TfrxMemoView;
+      AdrRX.Text:= FieldByName('adr_c').AsString;
+
+      VilleRX:= BonLivPListfrxRprt.FindObject('VilleRX') as TfrxMemoView;
+      VilleRX.Text:= FieldByName('ville_c').AsString;
+
+      WilayaRX:= BonLivPListfrxRprt.FindObject('WilayaRX') as TfrxMemoView;
+      WilayaRX.Text:=  FieldByName('willaya_c').AsString;
+    end;
 
 
-    AdrRX:= BonLivPListfrxRprt.FindObject('AdrRX') as TfrxMemoView;
-  AdrRX.Text:= MainForm.ClientTable.FieldByName('adr_c').AsString;
-
-    VilleRX:= BonLivPListfrxRprt.FindObject('VilleRX') as TfrxMemoView;
-  VilleRX.Text:= MainForm.ClientTable.FieldByName('ville_c').AsString;
-
-    WilayaRX:= BonLivPListfrxRprt.FindObject('WilayaRX') as TfrxMemoView;
-  WilayaRX.Text:=  MainForm.ClientTable.FieldByName('willaya_c').AsString;
-
-    MainForm.ClientTable.Active:=False;
-    MainForm.ClientTable.SQL.Clear;
-    MainForm.ClientTable.SQL.Text:='SELECT * FROM client ';
-    MainForm.ClientTable.Active:=True;
+    MainForm.SQLQuery.Active:=False;
+    MainForm.SQLQuery.SQL.Clear;
 
     MPRX:= BonLivPListfrxRprt.FindObject('MPRX') as TfrxMemoView;
   MPRX.Text:= ModePaieBonLivGCbx.Text;

@@ -3048,11 +3048,11 @@ begin
     Tel.Text:= MainForm.CompanyTable.FieldByName('fix_comp').AsString ;
     Tel.Visible:=True;
 
-      Mob:= BonRecPListfrxRprt.FindObject('Mob') as TfrxMemoView;
+    Mob:= BonRecPListfrxRprt.FindObject('Mob') as TfrxMemoView;
     Mob.Text:= MainForm.CompanyTable.FieldByName('mob_comp').AsString ;
     Mob.Visible:=True;
 
-      Adr:= BonRecPListfrxRprt.FindObject('Adr') as TfrxMemoView;
+    Adr:= BonRecPListfrxRprt.FindObject('Adr') as TfrxMemoView;
     Adr.Text:= MainForm.CompanyTable.FieldByName('adr_comp').AsString ;
     Adr.Visible:=True;
 
@@ -3088,31 +3088,32 @@ begin
   NumRX:= BonRecPListfrxRprt.FindObject('NumRX') as TfrxMemoView;
   NumRX.Text:= NumBonRecGEdt.Caption;
 
-    DateRX:= BonRecPListfrxRprt.FindObject('DateRX') as TfrxMemoView;
+  DateRX:= BonRecPListfrxRprt.FindObject('DateRX') as TfrxMemoView;
   DateRX.Text:= DateToStr(DateBonRecGD.Date);
 
-      NameRX:= BonRecPListfrxRprt.FindObject('NameRX') as TfrxMemoView;
+  NameRX:= BonRecPListfrxRprt.FindObject('NameRX') as TfrxMemoView;
   NameRX.Text:= FournisseurBonRecGCbx.Text;
 
-    MainForm.FournisseurTable.Active:=False;
-    MainForm.FournisseurTable.SQL.Clear;
-    MainForm.FournisseurTable.SQL.Text:='SELECT * FROM fournisseur WHERE code_f ='+ IntToStr(MainForm.Bona_recTable.FieldByName('code_f').AsInteger);
-    MainForm.FournisseurTable.Active:=True;
+    MainForm.SQLQuery.Active:=False;
+    MainForm.SQLQuery.SQL.Clear;
+    MainForm.SQLQuery.SQL.Text:='SELECT code_f,adr_f,ville_f,willaya_f ,rc_f,nart_f,nif_f,nis_f FROM fournisseur WHERE code_f ='
+    + IntToStr(MainForm.Bona_recTable.FieldByName('code_f').AsInteger);
+    MainForm.SQLQuery.Active:=True;
 
+    with MainForm.SQLQuery do
+    begin
+      AdrRX:= BonRecPListfrxRprt.FindObject('AdrRX') as TfrxMemoView;
+      AdrRX.Text:= FieldByName('adr_f').AsString;
 
-    AdrRX:= BonRecPListfrxRprt.FindObject('AdrRX') as TfrxMemoView;
-  AdrRX.Text:= MainForm.FournisseurTable.FieldByName('adr_f').AsString;
+      VilleRX:= BonRecPListfrxRprt.FindObject('VilleRX') as TfrxMemoView;
+      VilleRX.Text:= FieldByName('ville_f').AsString;
 
-    VilleRX:= BonRecPListfrxRprt.FindObject('VilleRX') as TfrxMemoView;
-  VilleRX.Text:= MainForm.FournisseurTable.FieldByName('ville_f').AsString;
+      WilayaRX:= BonRecPListfrxRprt.FindObject('WilayaRX') as TfrxMemoView;
+      WilayaRX.Text:=  FieldByName('willaya_f').AsString;
+    end;
 
-    WilayaRX:= BonRecPListfrxRprt.FindObject('WilayaRX') as TfrxMemoView;
-  WilayaRX.Text:=  MainForm.FournisseurTable.FieldByName('willaya_f').AsString;
-
-    MainForm.FournisseurTable.Active:=False;
-    MainForm.FournisseurTable.SQL.Clear;
-    MainForm.FournisseurTable.SQL.Text:='SELECT * FROM fournisseur ';
-    MainForm.FournisseurTable.Active:=True;
+    MainForm.SQLQuery.Active:=False;
+    MainForm.SQLQuery.SQL.Clear;
 
     MPRX:= BonRecPListfrxRprt.FindObject('MPRX') as TfrxMemoView;
   MPRX.Text:= ModePaieBonRecGCbx.Text;
