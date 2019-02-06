@@ -3620,38 +3620,40 @@ begin
   NameRX.Text:= ClientBonLivGCbx.Text;
 
 
-    MainForm.ClientTable.Active:=False;
-    MainForm.ClientTable.SQL.Clear;
-    MainForm.ClientTable.SQL.Text:='SELECT * FROM client WHERE code_c ='+ IntToStr(MainForm.Bonv_livTable.FieldByName('code_c').AsInteger);
-    MainForm.ClientTable.Active:=True;
+    MainForm.SQLQuery.Active:=False;
+    MainForm.SQLQuery.SQL.Clear;
+    MainForm.SQLQuery.SQL.Text:='SELECT code_c,adr_c,ville_c,willaya_c,rc_c,nart_c,nif_c,nis_c FROM client WHERE code_c ='
+    + IntToStr(MainForm.Bonv_livTable.FieldByName('code_c').AsInteger);
+    MainForm.SQLQuery.Active:=True;
+
+    with MainForm.SQLQuery do
+    begin
+
+      AdrRX:= BonLivPListfrxRprtA5.FindObject('AdrRX') as TfrxMemoView;
+      AdrRX.Text:= FieldByName('adr_c').AsString;
+
+      VilleRX:= BonLivPListfrxRprtA5.FindObject('VilleRX') as TfrxMemoView;
+      VilleRX.Text:= FieldByName('ville_c').AsString;
+
+      WilayaRX:= BonLivPListfrxRprtA5.FindObject('WilayaRX') as TfrxMemoView;
+      WilayaRX.Text:=  FieldByName('willaya_c').AsString;
 
 
-    AdrRX:= BonLivPListfrxRprtA5.FindObject('AdrRX') as TfrxMemoView;
-  AdrRX.Text:= MainForm.ClientTable.FieldByName('adr_c').AsString;
-
-    VilleRX:= BonLivPListfrxRprtA5.FindObject('VilleRX') as TfrxMemoView;
-  VilleRX.Text:= MainForm.ClientTable.FieldByName('ville_c').AsString;
-
-    WilayaRX:= BonLivPListfrxRprtA5.FindObject('WilayaRX') as TfrxMemoView;
-  WilayaRX.Text:=  MainForm.ClientTable.FieldByName('willaya_c').AsString;
-
-
-        TelRX:= BonLivPListfrxRprtA5.FindObject('TelRX') as TfrxMemoView;
-  TelRX.Text:= MainForm.ClientTable.FieldByName('fix_c').AsString;
+      TelRX:= BonLivPListfrxRprtA5.FindObject('TelRX') as TfrxMemoView;
+      TelRX.Text:= FieldByName('fix_c').AsString;
 
       Mob1RX:= BonLivPListfrxRprtA5.FindObject('Mob1RX') as TfrxMemoView;
-  Mob1RX.Text:= MainForm.ClientTable.FieldByName('mob_c').AsString;
+      Mob1RX.Text:= FieldByName('mob_c').AsString;
 
       Mob2RX:= BonLivPListfrxRprtA5.FindObject('Mob2RX') as TfrxMemoView;
-  Mob2RX.Text:= MainForm.ClientTable.FieldByName('mob2_c').AsString;
+      Mob2RX.Text:= FieldByName('mob2_c').AsString;
 
       FaxRX:= BonLivPListfrxRprtA5.FindObject('FaxRX') as TfrxMemoView;
-  FaxRX.Text:= MainForm.ClientTable.FieldByName('fax_c').AsString;
+      FaxRX.Text:= FieldByName('fax_c').AsString;
+    end;
 
-    MainForm.ClientTable.Active:=False;
-    MainForm.ClientTable.SQL.Clear;
-    MainForm.ClientTable.SQL.Text:='SELECT * FROM client ';
-    MainForm.ClientTable.Active:=True;
+    MainForm.SQLQuery.Active:=False;
+    MainForm.SQLQuery.SQL.Clear;
 
     MPRX:= BonLivPListfrxRprtA5.FindObject('MPRX') as TfrxMemoView;
   MPRX.Text:= ModePaieBonLivGCbx.Text;
@@ -3739,25 +3741,26 @@ begin
       NameRX:= BonLivPListSansTaxfrxRprt.FindObject('NameRX') as TfrxMemoView;
   NameRX.Text:= ClientBonLivGCbx.Text;
 
-    MainForm.ClientTable.Active:=False;
-    MainForm.ClientTable.SQL.Clear;
-    MainForm.ClientTable.SQL.Text:='SELECT * FROM client WHERE code_c ='+ IntToStr(MainForm.Bonv_livTable.FieldByName('code_c').AsInteger);
-    MainForm.ClientTable.Active:=True;
+    MainForm.SQLQuery.Active:=False;
+    MainForm.SQLQuery.SQL.Clear;
+    MainForm.SQLQuery.SQL.Text:='SELECT code_c,adr_c,ville_c,willaya_c,rc_c,nart_c,nif_c,nis_c FROM client WHERE code_c ='
+    + IntToStr(MainForm.Bonv_livTable.FieldByName('code_c').AsInteger);
+    MainForm.SQLQuery.Active:=True;
 
+    with MainForm.SQLQuery do
+    begin
+      AdrRX:= BonLivPListSansTaxfrxRprt.FindObject('AdrRX') as TfrxMemoView;
+      AdrRX.Text:= FieldByName('adr_c').AsString;
 
-    AdrRX:= BonLivPListSansTaxfrxRprt.FindObject('AdrRX') as TfrxMemoView;
-  AdrRX.Text:= MainForm.ClientTable.FieldByName('adr_c').AsString;
+      VilleRX:= BonLivPListSansTaxfrxRprt.FindObject('VilleRX') as TfrxMemoView;
+      VilleRX.Text:= FieldByName('ville_c').AsString;
 
-    VilleRX:= BonLivPListSansTaxfrxRprt.FindObject('VilleRX') as TfrxMemoView;
-  VilleRX.Text:= MainForm.ClientTable.FieldByName('ville_c').AsString;
+      WilayaRX:= BonLivPListSansTaxfrxRprt.FindObject('WilayaRX') as TfrxMemoView;
+      WilayaRX.Text:=  FieldByName('willaya_c').AsString;
+    end;
 
-    WilayaRX:= BonLivPListSansTaxfrxRprt.FindObject('WilayaRX') as TfrxMemoView;
-  WilayaRX.Text:=  MainForm.ClientTable.FieldByName('willaya_c').AsString;
-
-    MainForm.ClientTable.Active:=False;
-    MainForm.ClientTable.SQL.Clear;
-    MainForm.ClientTable.SQL.Text:='SELECT * FROM client ';
-    MainForm.ClientTable.Active:=True;
+    MainForm.SQLQuery.Active:=False;
+    MainForm.SQLQuery.SQL.Clear;
 
     MPRX:= BonLivPListSansTaxfrxRprt.FindObject('MPRX') as TfrxMemoView;
   MPRX.Text:= ModePaieBonLivGCbx.Text;
@@ -3846,39 +3849,40 @@ begin
       NameRX:= BonLivPListBonCaissefrxRprt.FindObject('NameRX') as TfrxMemoView;
   NameRX.Text:= ClientBonLivGCbx.Text;
 
-    MainForm.ClientTable.Active:=False;
-    MainForm.ClientTable.SQL.Clear;
-    MainForm.ClientTable.SQL.Text:='SELECT * FROM client WHERE code_c ='+ IntToStr(MainForm.Bonv_livTable.FieldByName('code_c').AsInteger);
-    MainForm.ClientTable.Active:=True;
+    MainForm.SQLQuery.Active:=False;
+    MainForm.SQLQuery.SQL.Clear;
+    MainForm.SQLQuery.SQL.Text:='SELECT code_c,adr_c,ville_c,willaya_c,rc_c,nart_c,nif_c,nis_c FROM client WHERE code_c ='
+    + IntToStr(MainForm.Bonv_livTable.FieldByName('code_c').AsInteger);
+    MainForm.SQLQuery.Active:=True;
 
+    with MainForm.SQLQuery do
+    begin
+      AdrRX:= BonLivPListBonCaissefrxRprt.FindObject('AdrRX') as TfrxMemoView;
+      AdrRX.Text:= FieldByName('adr_c').AsString;
 
-    AdrRX:= BonLivPListBonCaissefrxRprt.FindObject('AdrRX') as TfrxMemoView;
-  AdrRX.Text:= MainForm.ClientTable.FieldByName('adr_c').AsString;
+      VilleRX:= BonLivPListBonCaissefrxRprt.FindObject('VilleRX') as TfrxMemoView;
+      VilleRX.Text:= FieldByName('ville_c').AsString;
 
-    VilleRX:= BonLivPListBonCaissefrxRprt.FindObject('VilleRX') as TfrxMemoView;
-  VilleRX.Text:= MainForm.ClientTable.FieldByName('ville_c').AsString;
+      WilayaRX:= BonLivPListBonCaissefrxRprt.FindObject('WilayaRX') as TfrxMemoView;
+      WilayaRX.Text:=  FieldByName('willaya_c').AsString;
+    end;
 
-    WilayaRX:= BonLivPListBonCaissefrxRprt.FindObject('WilayaRX') as TfrxMemoView;
-  WilayaRX.Text:=  MainForm.ClientTable.FieldByName('willaya_c').AsString;
-
-    MainForm.ClientTable.Active:=False;
-    MainForm.ClientTable.SQL.Clear;
-    MainForm.ClientTable.SQL.Text:='SELECT * FROM client ';
-    MainForm.ClientTable.Active:=True;
+    MainForm.SQLQuery.Active:=False;
+    MainForm.SQLQuery.SQL.Clear;
 
     MPRX:= BonLivPListBonCaissefrxRprt.FindObject('MPRX') as TfrxMemoView;
-  MPRX.Text:= ModePaieBonLivGCbx.Text;
+    MPRX.Text:= ModePaieBonLivGCbx.Text;
 
     NCHeqRX:= BonLivPListBonCaissefrxRprt.FindObject('NCHeqRX') as TfrxMemoView;
-  NCHeqRX.Text:= NChequeBonLivGCbx.Text;
+    NCHeqRX.Text:= NChequeBonLivGCbx.Text;
 
 
-      OLDCredit:= BonLivPListBonCaissefrxRprt.FindObject('OLDCredit') as TfrxMemoView;
-  OLDCredit.Text:= BonLivGClientOLDCredit.Caption;
+    OLDCredit:= BonLivPListBonCaissefrxRprt.FindObject('OLDCredit') as TfrxMemoView;
+    OLDCredit.Text:= BonLivGClientOLDCredit.Caption;
 
 
-      NEWCredit:= BonLivPListBonCaissefrxRprt.FindObject('NEWCredit') as TfrxMemoView;
-  NEWCredit.Text:= BonLivGClientNEWCredit.Caption;
+    NEWCredit:= BonLivPListBonCaissefrxRprt.FindObject('NEWCredit') as TfrxMemoView;
+    NEWCredit.Text:= BonLivGClientNEWCredit.Caption;
 
  end;
 
@@ -4047,52 +4051,26 @@ begin
 
 
 
-//  str1:= MontantEnToutesLettres(StrToFloat(StringReplace(BonLivTotalTTCLbl.Caption, #32, '', [rfReplaceAll])));
-//  str1[1] := Upcase(str1[1]);
-//  MoneyWordRX := BonLivSimplePListfrxRprtA5.FindObject('MoneyWordRX') as TfrxMemoView;
-//  MoneyWordRX.Text :=str1;// StringReplace(ObserBonLivGLbl.Caption, '%my_str%', 'new string', [rfReplaceAll]);
 
   NumRX:= BonLivPListLivSimplefrxRprt.FindObject('NumRX') as TfrxMemoView;
   NumRX.Text:= NumBonLivGEdt.Caption;
 
-    DateRX:= BonLivPListLivSimplefrxRprt.FindObject('DateRX') as TfrxMemoView;
+  DateRX:= BonLivPListLivSimplefrxRprt.FindObject('DateRX') as TfrxMemoView;
   DateRX.Text:= DateToStr(DateBonLivGD.Date);
 
-      NameRX:= BonLivPListLivSimplefrxRprt.FindObject('NameRX') as TfrxMemoView;
+  NameRX:= BonLivPListLivSimplefrxRprt.FindObject('NameRX') as TfrxMemoView;
   NameRX.Text:= ClientBonLivGCbx.Text;
 
-//    MainForm.ClientTable.Active:=False;
-//    MainForm.ClientTable.SQL.Clear;
-//    MainForm.ClientTable.SQL.Text:='SELECT * FROM client WHERE code_c ='+ IntToStr(MainForm.Bonv_livTable.FieldByName('code_c').AsInteger);
-//    MainForm.ClientTable.Active:=True;
-//
-//
-//    AdrRX:= BonLivSimplePListfrxRprtA5.FindObject('AdrRX') as TfrxMemoView;
-//  AdrRX.Text:= MainForm.ClientTable.FieldByName('adr_c').AsString;
-//
-//    VilleRX:= BonLivSimplePListfrxRprtA5.FindObject('VilleRX') as TfrxMemoView;
-//  VilleRX.Text:= MainForm.ClientTable.FieldByName('ville_c').AsString;
-//
-//    WilayaRX:= BonLivSimplePListfrxRprtA5.FindObject('WilayaRX') as TfrxMemoView;
-//  WilayaRX.Text:=  MainForm.ClientTable.FieldByName('willaya_c').AsString;
-//
-//    MainForm.ClientTable.Active:=False;
-//    MainForm.ClientTable.SQL.Clear;
-//    MainForm.ClientTable.SQL.Text:='SELECT * FROM client ';
-//    MainForm.ClientTable.Active:=True;
 
-    MPRX:= BonLivPListLivSimplefrxRprt.FindObject('MPRX') as TfrxMemoView;
+  MPRX:= BonLivPListLivSimplefrxRprt.FindObject('MPRX') as TfrxMemoView;
   MPRX.Text:= ModePaieBonLivGCbx.Text;
 
-//    NCHeqRX:= BonLivSimplePListfrxRprtA5.FindObject('NCHeqRX') as TfrxMemoView;
-//  NCHeqRX.Text:= NChequeBonLivGCbx.Text;
 
-
-      OLDCredit:= BonLivPListLivSimplefrxRprt.FindObject('OLDCredit') as TfrxMemoView;
+  OLDCredit:= BonLivPListLivSimplefrxRprt.FindObject('OLDCredit') as TfrxMemoView;
   OLDCredit.Text:= BonLivGClientOLDCredit.Caption;
 
 
-      NEWCredit:= BonLivPListLivSimplefrxRprt.FindObject('NEWCredit') as TfrxMemoView;
+  NEWCredit:= BonLivPListLivSimplefrxRprt.FindObject('NEWCredit') as TfrxMemoView;
   NEWCredit.Text:= BonLivGClientNEWCredit.Caption;
 
  end;
