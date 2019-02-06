@@ -3374,7 +3374,8 @@ procedure TBonFacAGestionF.GettingData;
   TauxTVA9,TauxTVA19,MontantTVA9,MontantTVA19,RC,NArt,NIF,NIS,NEWCredit,OLDCredit : TfrxMemoView;
   str1 : string;
   Taux9,Taux19,Montant9,Montant19,RemisePerctageBonFacA : Currency;
-    Name,Tel,Mob,Adr : TfrxMemoView;
+  Name,Tel,Mob,Adr,ComRC,ComNArt,ComNIF,ComNIS : TfrxMemoView;
+  RCLbl,NArtLbl,NIFLbl,NISLbl,ComRCLbl,ComNArtLbl,ComNIFLbl,ComNISLbl : TfrxMemoView;
   Logo : TfrxPictureView;
     S: TMemoryStream;
   Jpg: TJPEGImage;
@@ -3391,13 +3392,38 @@ begin
     Tel.Text:= MainForm.CompanyTable.FieldByName('fix_comp').AsString ;
     Tel.Visible:=True;
 
-      Mob:= BonFacAPListfrxRprt.FindObject('Mob') as TfrxMemoView;
+    Mob:= BonFacAPListfrxRprt.FindObject('Mob') as TfrxMemoView;
     Mob.Text:= MainForm.CompanyTable.FieldByName('mob_comp').AsString ;
     Mob.Visible:=True;
 
-      Adr:= BonFacAPListfrxRprt.FindObject('Adr') as TfrxMemoView;
+    Adr:= BonFacAPListfrxRprt.FindObject('Adr') as TfrxMemoView;
     Adr.Text:= MainForm.CompanyTable.FieldByName('adr_comp').AsString ;
     Adr.Visible:=True;
+
+
+    ComRC:= BonFacAPListfrxRprt.FindObject('ComRC') as TfrxMemoView;
+    ComRC.Text:= MainForm.CompanyTable.FieldByName('rc_comp').AsString ;
+    ComRC.Visible:=True;
+    ComRCLbl:= BonFacAPListfrxRprt.FindObject('ComRCLbl') as TfrxMemoView;
+    ComRCLbl.Visible:=True;
+
+    ComNArt:= BonFacAPListfrxRprt.FindObject('ComNArt') as TfrxMemoView;
+    ComNArt.Text:= MainForm.CompanyTable.FieldByName('nart_comp').AsString ;
+    ComNArt.Visible:=True;
+    ComNArtLbl:= BonFacAPListfrxRprt.FindObject('ComNArtLbl') as TfrxMemoView;
+    ComNArtLbl.Visible:=True;
+
+    ComNIF:= BonFacAPListfrxRprt.FindObject('ComNIF') as TfrxMemoView;
+    ComNIF.Text:= MainForm.CompanyTable.FieldByName('nif_comp').AsString ;
+    ComNIF.Visible:=True;
+    ComNIFLbl:= BonFacAPListfrxRprt.FindObject('ComNIFLbl') as TfrxMemoView;
+    ComNIFLbl.Visible:=True;
+
+    ComNIS:= BonFacAPListfrxRprt.FindObject('ComNIS') as TfrxMemoView;
+    ComNIS.Text:= MainForm.CompanyTable.FieldByName('nis_comp').AsString ;
+    ComNIS.Visible:=True;
+    ComNISLbl:= BonFacAPListfrxRprt.FindObject('ComNISLbl') as TfrxMemoView;
+    ComNISLbl.Visible:=True;
 
       Logo:= BonFacAPListfrxRprt.FindObject('Logo') as TfrxPictureView;
       Logo.Visible:=True;
@@ -3437,41 +3463,51 @@ begin
       NameRX:= BonFacAPListfrxRprt.FindObject('NameRX') as TfrxMemoView;
   NameRX.Text:= FourBonFacAGCbx.Text;
 
-    MainForm.FournisseurTable.Active:=False;
-    MainForm.FournisseurTable.SQL.Clear;
-    MainForm.FournisseurTable.SQL.Text:='SELECT * FROM fournisseur WHERE code_f ='+ IntToStr(MainForm.Bona_facTable.FieldByName('code_f').AsInteger);
-    MainForm.FournisseurTable.Active:=True;
+    MainForm.SQLQuery.Active:=False;
+    MainForm.SQLQuery.SQL.Clear;
+    MainForm.SQLQuery.SQL.Text:='SELECT code_f,adr_f,ville_f,willaya_f ,rc_f,nart_f,nif_f,nis_f FROM fournisseur WHERE code_f ='
+    + IntToStr(MainForm.Bona_facTable.FieldByName('code_f').AsInteger);
+    MainForm.SQLQuery.Active:=True;
 
-
+  with MainForm.SQLQuery do
+  begin
     AdrRX:= BonFacAPListfrxRprt.FindObject('AdrRX') as TfrxMemoView;
-  AdrRX.Text:= MainForm.FournisseurTable.FieldByName('adr_f').AsString;
+    AdrRX.Text:= FieldByName('adr_f').AsString;
 
     VilleRX:= BonFacAPListfrxRprt.FindObject('VilleRX') as TfrxMemoView;
-  VilleRX.Text:= MainForm.FournisseurTable.FieldByName('ville_f').AsString;
+    VilleRX.Text:= FieldByName('ville_f').AsString;
 
     WilayaRX:= BonFacAPListfrxRprt.FindObject('WilayaRX') as TfrxMemoView;
-  WilayaRX.Text:=  MainForm.FournisseurTable.FieldByName('willaya_f').AsString;
+    WilayaRX.Text:=  FieldByName('willaya_f').AsString;
 
-
-
-      RC:= BonFacAPListfrxRprt.FindObject('RC') as TfrxMemoView;
-  RC.Text:= MainForm.FournisseurTable.FieldByName('rc_f').AsString;
+    RC:= BonFacAPListfrxRprt.FindObject('RC') as TfrxMemoView;
+    RC.Text:= FieldByName('rc_f').AsString;
+    RC.Visible:= True;
+    RCLbl:= BonFacAPListfrxRprt.FindObject('RCLbl') as TfrxMemoView;
+    RCLbl.Visible:= True;
 
     NArt:= BonFacAPListfrxRprt.FindObject('NArt') as TfrxMemoView;
-  NArt.Text:= MainForm.FournisseurTable.FieldByName('nart_f').AsString;
+    NArt.Text:= FieldByName('nart_f').AsString;
+    NArt.Visible:= True;
+    NArtLbl:= BonFacAPListfrxRprt.FindObject('NArtLbl') as TfrxMemoView;
+    NArtLbl.Visible:= True;
 
     NIF:= BonFacAPListfrxRprt.FindObject('NIF') as TfrxMemoView;
-  NIF.Text:=  MainForm.FournisseurTable.FieldByName('nif_f').AsString;
+    NIF.Text:=  FieldByName('nif_f').AsString;
+    NIF.Visible:= True;
+    NIFLbl:= BonFacAPListfrxRprt.FindObject('NIFLbl') as TfrxMemoView;
+    NIFLbl.Visible:= True;
 
-      NIS:= BonFacAPListfrxRprt.FindObject('NIS') as TfrxMemoView;
-  NIS.Text:=  MainForm.FournisseurTable.FieldByName('nis_f').AsString;
+    NIS:= BonFacAPListfrxRprt.FindObject('NIS') as TfrxMemoView;
+    NIS.Text:=  FieldByName('nis_f').AsString;
+    NIS.Visible:= True;
+    NISLbl:= BonFacAPListfrxRprt.FindObject('NISLbl') as TfrxMemoView;
+    NISLbl.Visible:= True;
 
+  end;
 
-
-    MainForm.FournisseurTable.Active:=False;
-    MainForm.FournisseurTable.SQL.Clear;
-    MainForm.FournisseurTable.SQL.Text:='SELECT * FROM fournisseur ';
-    MainForm.FournisseurTable.Active:=True;
+    MainForm.SQLQuery.Active:=False;
+    MainForm.SQLQuery.SQL.Clear;
 
      begin
       MainForm.Bona_fac_listTable.DisableControls;

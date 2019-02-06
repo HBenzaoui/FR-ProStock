@@ -3150,7 +3150,7 @@ object BonFacAGestionF: TBonFacAGestionF
     PrintOptions.PrintOnSheet = 0
     PrintOptions.ShowDialog = False
     ReportOptions.CreateDate = 42576.399521435210000000
-    ReportOptions.LastChange = 43238.874852615740000000
+    ReportOptions.LastChange = 43502.423420532410000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       ''
@@ -3405,7 +3405,7 @@ object BonFacAGestionF: TBonFacAGestionF
         end
         object Memo20: TfrxMemoView
           Left = 358.897650000000000000
-          Top = 114.504020000000000000
+          Top = 108.504020000000000000
           Width = 52.652762760000000000
           Height = 15.639434480000000000
           Font.Charset = DEFAULT_CHARSET
@@ -3450,7 +3450,7 @@ object BonFacAGestionF: TBonFacAGestionF
         end
         object DateRX: TfrxMemoView
           Left = 411.811070000000000000
-          Top = 114.504020000000000000
+          Top = 108.504020000000000000
           Width = 305.881272760000000000
           Height = 15.639434480000000000
           Font.Charset = DEFAULT_CHARSET
@@ -3628,7 +3628,7 @@ object BonFacAGestionF: TBonFacAGestionF
           ParentFont = False
           VAlign = vaCenter
         end
-        object Memo18: TfrxMemoView
+        object RCLbl: TfrxMemoView
           Left = 403.875067240000000000
           Top = 243.960730000000000000
           Width = 45.093702760000000000
@@ -3644,7 +3644,7 @@ object BonFacAGestionF: TBonFacAGestionF
           ParentFont = False
           VAlign = vaCenter
         end
-        object Memo22: TfrxMemoView
+        object NArtLbl: TfrxMemoView
           Left = 392.897650000000000000
           Top = 278.976500000000000000
           Width = 56.432292760000000000
@@ -3660,7 +3660,7 @@ object BonFacAGestionF: TBonFacAGestionF
           ParentFont = False
           VAlign = vaCenter
         end
-        object Memo23: TfrxMemoView
+        object NIFLbl: TfrxMemoView
           Left = 403.236240000000000000
           Top = 312.212740000000000000
           Width = 45.093702760000000000
@@ -3676,7 +3676,7 @@ object BonFacAGestionF: TBonFacAGestionF
           ParentFont = False
           VAlign = vaCenter
         end
-        object Memo25: TfrxMemoView
+        object NISLbl: TfrxMemoView
           Left = 403.236240000000000000
           Top = 345.448980000000000000
           Width = 45.093702760000000000
@@ -3784,6 +3784,138 @@ object BonFacAGestionF: TBonFacAGestionF
           HightQuality = True
           Transparent = True
           TransparentColor = clWhite
+        end
+        object ComRC: TfrxMemoView
+          Left = 403.489477240000000000
+          Top = 139.283550000000000000
+          Width = 143.361482760000000000
+          Height = 23.198494480000000000
+          Visible = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = []
+          Memo.UTF8W = (
+            'RC :')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object ComNArt: TfrxMemoView
+          Left = 403.489477240000000000
+          Top = 174.299320000000000000
+          Width = 143.361482760000000000
+          Height = 23.198494480000000000
+          Visible = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = []
+          Memo.UTF8W = (
+            'N'#176' Art :')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object ComNIF: TfrxMemoView
+          Left = 576.906917240000000000
+          Top = 140.504020000000000000
+          Width = 143.361482760000000000
+          Height = 23.198494480000000000
+          Visible = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = []
+          Memo.UTF8W = (
+            'NIF :')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object ComNIS: TfrxMemoView
+          Left = 576.906917240000000000
+          Top = 173.740260000000000000
+          Width = 143.361482760000000000
+          Height = 23.198494480000000000
+          Visible = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = []
+          Memo.UTF8W = (
+            'NIS :')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object ComRCLbl: TfrxMemoView
+          Left = 368.954834480000000000
+          Top = 139.283550000000000000
+          Width = 37.534642760000000000
+          Height = 23.198494480000000000
+          Visible = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            'RC :')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object ComNArtLbl: TfrxMemoView
+          Left = 357.977417240000000000
+          Top = 174.299320000000000000
+          Width = 48.873232760000000000
+          Height = 23.198494480000000000
+          Visible = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            'N'#176' Art :')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object ComNIFLbl: TfrxMemoView
+          Left = 541.733447240000000000
+          Top = 140.504020000000000000
+          Width = 33.755112760000000000
+          Height = 23.198494480000000000
+          Visible = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            'NIF :')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object ComNISLbl: TfrxMemoView
+          Left = 541.733447240000000000
+          Top = 173.740260000000000000
+          Width = 33.755112760000000000
+          Height = 23.198494480000000000
+          Visible = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            'NIS :')
+          ParentFont = False
+          VAlign = vaCenter
         end
       end
       object MasterData1: TfrxMasterData
