@@ -2978,52 +2978,53 @@ begin
 
   end;
 
-  str1:= MontantEnToutesLettres(StrToFloat(StringReplace(BonRecTotalTTCLbl.Caption, #32, '', [rfReplaceAll])));
-  str1[1] := Upcase(str1[1]);
-  MoneyWordRX := BonRecPListSanTAXfrxRprt.FindObject('MoneyWordRX') as TfrxMemoView;
-  MoneyWordRX.Text :=str1;// StringReplace(ObserBonLivGLbl.Caption, '%my_str%', 'new string', [rfReplaceAll]);
+    str1:= MontantEnToutesLettres(StrToFloat(StringReplace(BonRecTotalTTCLbl.Caption, #32, '', [rfReplaceAll])));
+    str1[1] := Upcase(str1[1]);
+    MoneyWordRX := BonRecPListSanTAXfrxRprt.FindObject('MoneyWordRX') as TfrxMemoView;
+    MoneyWordRX.Text :=str1;// StringReplace(ObserBonLivGLbl.Caption, '%my_str%', 'new string', [rfReplaceAll]);
 
-  NumRX:= BonRecPListSanTAXfrxRprt.FindObject('NumRX') as TfrxMemoView;
-  NumRX.Text:= NumBonRecGEdt.Caption;
+    NumRX:= BonRecPListSanTAXfrxRprt.FindObject('NumRX') as TfrxMemoView;
+    NumRX.Text:= NumBonRecGEdt.Caption;
 
     DateRX:= BonRecPListSanTAXfrxRprt.FindObject('DateRX') as TfrxMemoView;
-  DateRX.Text:= DateToStr(DateBonRecGD.Date);
+    DateRX.Text:= DateToStr(DateBonRecGD.Date);
 
-      NameRX:= BonRecPListSanTAXfrxRprt.FindObject('NameRX') as TfrxMemoView;
-  NameRX.Text:= FournisseurBonRecGCbx.Text;
+    NameRX:= BonRecPListSanTAXfrxRprt.FindObject('NameRX') as TfrxMemoView;
+    NameRX.Text:= FournisseurBonRecGCbx.Text;
 
-    MainForm.FournisseurTable.Active:=False;
-    MainForm.FournisseurTable.SQL.Clear;
-    MainForm.FournisseurTable.SQL.Text:='SELECT * FROM fournisseur WHERE code_f ='+ IntToStr(MainForm.Bona_recTable.FieldByName('code_f').AsInteger);
-    MainForm.FournisseurTable.Active:=True;
+    MainForm.SQLQuery.Active:=False;
+    MainForm.SQLQuery.SQL.Clear;
+    MainForm.SQLQuery.SQL.Text:='SELECT code_f,adr_f,ville_f,willaya_f ,rc_f,nart_f,nif_f,nis_f FROM fournisseur WHERE code_f ='
+    + IntToStr(MainForm.Bona_recTable.FieldByName('code_f').AsInteger);
+    MainForm.SQLQuery.Active:=True;
 
+    with MainForm.SQLQuery do
+    begin
+      AdrRX:= BonRecPListSanTAXfrxRprt.FindObject('AdrRX') as TfrxMemoView;
+      AdrRX.Text:= FieldByName('adr_f').AsString;
 
-    AdrRX:= BonRecPListSanTAXfrxRprt.FindObject('AdrRX') as TfrxMemoView;
-  AdrRX.Text:= MainForm.FournisseurTable.FieldByName('adr_f').AsString;
+      VilleRX:= BonRecPListSanTAXfrxRprt.FindObject('VilleRX') as TfrxMemoView;
+      VilleRX.Text:= FieldByName('ville_f').AsString;
 
-    VilleRX:= BonRecPListSanTAXfrxRprt.FindObject('VilleRX') as TfrxMemoView;
-  VilleRX.Text:= MainForm.FournisseurTable.FieldByName('ville_f').AsString;
+      WilayaRX:= BonRecPListSanTAXfrxRprt.FindObject('WilayaRX') as TfrxMemoView;
+      WilayaRX.Text:=  FieldByName('willaya_f').AsString;
+    end;
 
-    WilayaRX:= BonRecPListSanTAXfrxRprt.FindObject('WilayaRX') as TfrxMemoView;
-  WilayaRX.Text:=  MainForm.FournisseurTable.FieldByName('willaya_f').AsString;
-
-    MainForm.FournisseurTable.Active:=False;
-    MainForm.FournisseurTable.SQL.Clear;
-    MainForm.FournisseurTable.SQL.Text:='SELECT * FROM fournisseur ';
-    MainForm.FournisseurTable.Active:=True;
+    MainForm.SQLQuery.Active:=False;
+    MainForm.SQLQuery.SQL.Clear;
 
     MPRX:= BonRecPListSanTAXfrxRprt.FindObject('MPRX') as TfrxMemoView;
-  MPRX.Text:= ModePaieBonRecGCbx.Text;
+    MPRX.Text:= ModePaieBonRecGCbx.Text;
 
     NCHeqRX:= BonRecPListSanTAXfrxRprt.FindObject('NCHeqRX') as TfrxMemoView;
-  NCHeqRX.Text:= NChequeBonRecGCbx.Text;
+    NCHeqRX.Text:= NChequeBonRecGCbx.Text;
 
-          OLDCredit:= BonRecPListSanTAXfrxRprt.FindObject('OLDCredit') as TfrxMemoView;
-  OLDCredit.Text:= BonRecGFourOLDCredit.Caption;
+    OLDCredit:= BonRecPListSanTAXfrxRprt.FindObject('OLDCredit') as TfrxMemoView;
+    OLDCredit.Text:= BonRecGFourOLDCredit.Caption;
 
 
-      NEWCredit:= BonRecPListSanTAXfrxRprt.FindObject('NEWCredit') as TfrxMemoView;
-  NEWCredit.Text:= BonRecGFourNEWCredit.Caption;
+    NEWCredit:= BonRecPListSanTAXfrxRprt.FindObject('NEWCredit') as TfrxMemoView;
+    NEWCredit.Text:= BonRecGFourNEWCredit.Caption;
 
  end;
 
