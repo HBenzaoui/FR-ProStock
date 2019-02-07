@@ -717,6 +717,13 @@ begin
     FormatFOptionCodeBCbx.ItemIndex :=       Ini.ReadInteger('', 'Format Barcode',FormatFOptionCodeBCbx.ItemIndex);
     PrixVenteListFOptionCodeBCbx.ItemIndex:= Ini.ReadInteger('', 'Prix de Vente',PrixVenteListFOptionCodeBCbx.ItemIndex);
 
+    FormatBLOptionCbx.ItemIndex:= Ini.ReadInteger('', 'Format BL',FormatBLOptionCbx.ItemIndex);
+    FormatFPOptionCbx.ItemIndex:= Ini.ReadInteger('', 'Format FP',FormatFPOptionCbx.ItemIndex);
+    FormatFVOptionCbx.ItemIndex:= Ini.ReadInteger('', 'Format FV',FormatFVOptionCbx.ItemIndex);
+    FormatBROptionCbx.ItemIndex:= Ini.ReadInteger('', 'Format BR',FormatBROptionCbx.ItemIndex);
+    FormatFAOptionCbx.ItemIndex:= Ini.ReadInteger('', 'Format FA',FormatFAOptionCbx.ItemIndex);
+
+
     PoleDisplayActiveSdr.SliderOn:=          Ini.ReadBool('', 'Afficheur client Active',PoleDisplayActiveSdr.SliderOn);
      if PoleDisplayActiveSdr.SliderOn then
      begin
@@ -1033,7 +1040,7 @@ begin
 
     Ini.WriteInteger(Caption,'Format BL', FormatBLOptionCbx.ItemIndex);
     Ini.WriteInteger(Caption,'Format FP', FormatFPOptionCbx.ItemIndex);
-    Ini.WriteInteger(Caption,'Format FV', FormatFPOptionCbx.ItemIndex);
+    Ini.WriteInteger(Caption,'Format FV', FormatFVOptionCbx.ItemIndex);
     Ini.WriteInteger(Caption,'Format BR', FormatBROptionCbx.ItemIndex);
     Ini.WriteInteger(Caption,'Format FA', FormatFAOptionCbx.ItemIndex);
 
