@@ -322,15 +322,15 @@ type
     Panel2: TPanel;
     Panel3: TPanel;
     Label1: TLabel;
-    ComboBox1: TComboBox;
+    FormatBLOptionCbx: TComboBox;
     Label5: TLabel;
-    ComboBox2: TComboBox;
+    FormatFPOptionCbx: TComboBox;
     Label43: TLabel;
-    ComboBox3: TComboBox;
+    FormatFVOptionCbx: TComboBox;
     Label44: TLabel;
-    ComboBox4: TComboBox;
+    FormatBROptionCbx: TComboBox;
     Label45: TLabel;
-    ComboBox5: TComboBox;
+    FormatFAOptionCbx: TComboBox;
     procedure FormShow(Sender: TObject);
     procedure OKFPrintingBtnClick(Sender: TObject);
     procedure ImageCompanyOptionImgMouseEnter(Sender: TObject);
@@ -1030,6 +1030,12 @@ begin
     Ini.WriteInteger(Caption, 'Printer Barcode', PrintersListFOptionCodeBCbx.ItemIndex);
     Ini.WriteInteger(Caption,'Format Barcode', FormatFOptionCodeBCbx.ItemIndex);
     Ini.WriteInteger(Caption,'Prix de Vente', PrixVenteListFOptionCodeBCbx.ItemIndex);
+
+    Ini.WriteInteger(Caption,'Format BL', FormatBLOptionCbx.ItemIndex);
+    Ini.WriteInteger(Caption,'Format FP', FormatFPOptionCbx.ItemIndex);
+    Ini.WriteInteger(Caption,'Format FV', FormatFPOptionCbx.ItemIndex);
+    Ini.WriteInteger(Caption,'Format BR', FormatBROptionCbx.ItemIndex);
+    Ini.WriteInteger(Caption,'Format FA', FormatFAOptionCbx.ItemIndex);
 
     if PoleDisplayActiveSdr.SliderOn then
     begin

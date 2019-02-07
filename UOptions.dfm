@@ -509,7 +509,7 @@ object FOptions: TFOptions
       end
       object Label1: TLabel
         Left = 10
-        Top = 266
+        Top = 272
         Width = 200
         Height = 16
         Caption = 'Format Bon de Livraison par d'#233'faut:'
@@ -525,7 +525,7 @@ object FOptions: TFOptions
       end
       object Label5: TLabel
         Left = 10
-        Top = 314
+        Top = 320
         Width = 206
         Height = 16
         Caption = 'Format Facture Proforma par d'#233'faut:'
@@ -541,7 +541,7 @@ object FOptions: TFOptions
       end
       object Label43: TLabel
         Left = 10
-        Top = 363
+        Top = 369
         Width = 203
         Height = 16
         Caption = 'Format Facture de Vente par d'#233'faut:'
@@ -557,7 +557,7 @@ object FOptions: TFOptions
       end
       object Label44: TLabel
         Left = 10
-        Top = 413
+        Top = 419
         Width = 206
         Height = 16
         Caption = 'Format Bon de R'#233'ception par d'#233'faut:'
@@ -573,7 +573,7 @@ object FOptions: TFOptions
       end
       object Label45: TLabel
         Left = 10
-        Top = 461
+        Top = 467
         Width = 194
         Height = 16
         Caption = 'Format Facture d'#39'Achat par d'#233'faut:'
@@ -746,9 +746,9 @@ object FOptions: TFOptions
         TabOrder = 8
         StyleElements = []
       end
-      object ComboBox1: TComboBox
+      object FormatBLOptionCbx: TComboBox
         Left = 25
-        Top = 287
+        Top = 293
         Width = 381
         Height = 24
         Style = csDropDownList
@@ -770,9 +770,9 @@ object FOptions: TFOptions
           'Bon de livraison hors taxe sans les cr'#233'dits'
           'Bon de caisse sans les cr'#233'dits')
       end
-      object ComboBox2: TComboBox
+      object FormatFPOptionCbx: TComboBox
         Left = 25
-        Top = 335
+        Top = 341
         Width = 381
         Height = 24
         Style = csDropDownList
@@ -787,9 +787,9 @@ object FOptions: TFOptions
           'Facture proforma'
           'Facture proforma avec les cr'#233'dits')
       end
-      object ComboBox3: TComboBox
+      object FormatFVOptionCbx: TComboBox
         Left = 25
-        Top = 384
+        Top = 390
         Width = 381
         Height = 24
         Style = csDropDownList
@@ -804,9 +804,9 @@ object FOptions: TFOptions
           'Facture de vente'
           'Facture de vente avec les cr'#233'dits')
       end
-      object ComboBox4: TComboBox
+      object FormatBROptionCbx: TComboBox
         Left = 25
-        Top = 434
+        Top = 440
         Width = 381
         Height = 24
         Style = csDropDownList
@@ -823,9 +823,9 @@ object FOptions: TFOptions
           'Bon de r'#233'ception sans les cr'#233'dits'
           'Bon de r'#233'ception hors taxe sans les cr'#233'dits')
       end
-      object ComboBox5: TComboBox
+      object FormatFAOptionCbx: TComboBox
         Left = 25
-        Top = 482
+        Top = 488
         Width = 381
         Height = 24
         Style = csDropDownList
