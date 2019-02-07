@@ -25,7 +25,7 @@ object FOptions: TFOptions
     Top = 27
     Width = 437
     Height = 611
-    ActivePage = GeneralOptionGTB
+    ActivePage = sTabSheet7
     Align = alClient
     DoubleBuffered = True
     Font.Charset = DEFAULT_CHARSET
@@ -219,7 +219,7 @@ object FOptions: TFOptions
         Left = 10
         Top = 368
         Width = 23
-        Height = 16
+        Height = 18
         Caption = 'RC:'
         Color = 4207405
         Font.Charset = DEFAULT_CHARSET
@@ -235,7 +235,7 @@ object FOptions: TFOptions
         Left = 10
         Top = 419
         Width = 27
-        Height = 16
+        Height = 18
         Caption = 'NIF:'
         Color = 4207405
         Font.Charset = DEFAULT_CHARSET
@@ -251,7 +251,7 @@ object FOptions: TFOptions
         Left = 10
         Top = 467
         Width = 41
-        Height = 16
+        Height = 18
         Caption = 'N'#176'Art:'
         Color = 4207405
         Font.Charset = DEFAULT_CHARSET
@@ -267,7 +267,7 @@ object FOptions: TFOptions
         Left = 10
         Top = 517
         Width = 28
-        Height = 16
+        Height = 18
         Caption = 'NIS:'
         Color = 4207405
         Font.Charset = DEFAULT_CHARSET
@@ -507,6 +507,86 @@ object FOptions: TFOptions
         ParentFont = False
         StyleElements = []
       end
+      object Label1: TLabel
+        Left = 10
+        Top = 266
+        Width = 200
+        Height = 16
+        Caption = 'Format Bon de Livraison par d'#233'faut:'
+        Color = 4207405
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 16
+        Font.Name = 'Roboto'
+        Font.Style = []
+        ParentColor = False
+        ParentFont = False
+        StyleElements = []
+      end
+      object Label5: TLabel
+        Left = 10
+        Top = 314
+        Width = 206
+        Height = 16
+        Caption = 'Format Facture Proforma par d'#233'faut:'
+        Color = 4207405
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 16
+        Font.Name = 'Roboto'
+        Font.Style = []
+        ParentColor = False
+        ParentFont = False
+        StyleElements = []
+      end
+      object Label43: TLabel
+        Left = 10
+        Top = 363
+        Width = 203
+        Height = 16
+        Caption = 'Format Facture de Vente par d'#233'faut:'
+        Color = 4207405
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 16
+        Font.Name = 'Roboto'
+        Font.Style = []
+        ParentColor = False
+        ParentFont = False
+        StyleElements = []
+      end
+      object Label44: TLabel
+        Left = 10
+        Top = 413
+        Width = 206
+        Height = 16
+        Caption = 'Format Bon de R'#233'ception par d'#233'faut:'
+        Color = 4207405
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 16
+        Font.Name = 'Roboto'
+        Font.Style = []
+        ParentColor = False
+        ParentFont = False
+        StyleElements = []
+      end
+      object Label45: TLabel
+        Left = 10
+        Top = 461
+        Width = 194
+        Height = 16
+        Caption = 'Format Facture d'#39'Achat par d'#233'faut:'
+        Color = 4207405
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 16
+        Font.Name = 'Roboto'
+        Font.Style = []
+        ParentColor = False
+        ParentFont = False
+        StyleElements = []
+      end
       object APrintOptionGSlider: TsSlider
         Left = 190
         Top = 18
@@ -651,6 +731,114 @@ object FOptions: TFOptions
           'Prix Gros'
           'Prix Autre 1'
           'Prix Autre 2')
+      end
+      object Panel3: TPanel
+        Left = -5
+        Top = 262
+        Width = 434
+        Height = 1
+        Anchors = [akLeft, akTop, akRight]
+        BevelOuter = bvNone
+        Color = 7854350
+        DoubleBuffered = True
+        ParentBackground = False
+        ParentDoubleBuffered = False
+        TabOrder = 8
+        StyleElements = []
+      end
+      object ComboBox1: TComboBox
+        Left = 25
+        Top = 287
+        Width = 381
+        Height = 24
+        Style = csDropDownList
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = 16
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 9
+        Items.Strings = (
+          'Bon de livraison'
+          'Bon de livraison (A5)'
+          'Bon de livraison hors taxe'
+          'Bon de livraison simple'
+          'Bon de r'#232'glement'
+          'Bon de r'#232'glement (A5)'
+          'Bon de livraison sans les cr'#233'dits'
+          'Bon de livraison hors taxe sans les cr'#233'dits'
+          'Bon de caisse sans les cr'#233'dits')
+      end
+      object ComboBox2: TComboBox
+        Left = 25
+        Top = 335
+        Width = 381
+        Height = 24
+        Style = csDropDownList
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = 16
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 10
+        Items.Strings = (
+          'Facture proforma'
+          'Facture proforma avec les cr'#233'dits')
+      end
+      object ComboBox3: TComboBox
+        Left = 25
+        Top = 384
+        Width = 381
+        Height = 24
+        Style = csDropDownList
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = 16
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 11
+        Items.Strings = (
+          'Facture de vente'
+          'Facture de vente avec les cr'#233'dits')
+      end
+      object ComboBox4: TComboBox
+        Left = 25
+        Top = 434
+        Width = 381
+        Height = 24
+        Style = csDropDownList
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = 16
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 12
+        Items.Strings = (
+          'Bon de r'#233'ception'
+          'Bon de r'#233'ception hors taxe'
+          'Bon de r'#233'ception sans les cr'#233'dits'
+          'Bon de r'#233'ception hors taxe sans les cr'#233'dits')
+      end
+      object ComboBox5: TComboBox
+        Left = 25
+        Top = 482
+        Width = 381
+        Height = 24
+        Style = csDropDownList
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = 16
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 13
+        Items.Strings = (
+          'Facture d'#39'Achat'
+          'Facture d'#39'Achat avec les cr'#233'dits')
       end
     end
     object sTabSheet1: TsTabSheet
@@ -6766,8 +6954,8 @@ object FOptions: TFOptions
   end
   object OpenPictureDialogProduitG: TOpenPictureDialog
     Filter = 'JPEG graphics (*.jpg)|*.jpg'
-    Left = 100
-    Top = 289
+    Left = 272
+    Top = 205
   end
   object sAlphaImageList1: TsAlphaImageList
     Height = 96
@@ -6823,8 +7011,8 @@ object FOptions: TFOptions
           F5192E7DA3362F8C9E5814E362CCEC71E10457AF7009312D3C9ED0CEB16BF05A
           A7FFCE3F0F6AAD62752ECB450000000049454E44AE426082}
       end>
-    Left = 30
-    Top = 286
+    Left = 222
+    Top = 216
     Bitmap = {
       494C010100000800080001000100FFFFFFFF0400FFFFFFFFFFFFFFFF424D7600
       0000000000007600000028000000040000000100000001000400000000000400

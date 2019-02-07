@@ -320,6 +320,17 @@ type
     NISCompanyGLbl: TLabel;
     NISCompanyGEdt: TEdit;
     Panel2: TPanel;
+    Panel3: TPanel;
+    Label1: TLabel;
+    ComboBox1: TComboBox;
+    Label5: TLabel;
+    ComboBox2: TComboBox;
+    Label43: TLabel;
+    ComboBox3: TComboBox;
+    Label44: TLabel;
+    ComboBox4: TComboBox;
+    Label45: TLabel;
+    ComboBox5: TComboBox;
     procedure FormShow(Sender: TObject);
     procedure OKFPrintingBtnClick(Sender: TObject);
     procedure ImageCompanyOptionImgMouseEnter(Sender: TObject);
