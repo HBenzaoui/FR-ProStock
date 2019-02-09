@@ -1,13 +1,13 @@
-0~ referp~ Réference~ 150~ -1
-1~ nomp~ Désignation~ 350~ -1
+0~ referp~ Réference~ 188~ -1
+1~ nomp~ Désignation~ 437~ -1
 2~ qut_p~ Quantité~ 100~ -1
-3~ cond_p~ Cond~ 70~ -1
-4~ prixvd_p~ Prix V HT~ 170~ -1
-5~ tva_p~ TVA %~ 84~ -1
-6~ prixvttc~ Prix V TTC~ 170~ -1
-7~ montantht~ MontantHT~ 170~ -1
-8~ montanttva~ MontantTVA~ 170~ -1
-9~ montantttc~ MontantTTC~ 170~ -1
+3~ cond_p~ Cond~ 88~ -1
+4~ prixvd_p~ Prix V HT~ 212~ -1
+5~ tva_p~ TVA %~ 105~ -1
+6~ prixvttc~ Prix V TTC~ 213~ -1
+7~ montantht~ MontantHT~ 212~ -1
+8~ montanttva~ MontantTVA~ 213~ -1
+9~ montantttc~ MontantTTC~ 212~ -1
 10~ prixht_p~ Prix A HT~ 170~ -1
-11~ margem~ Marge~ 170~ -1
-12~ marge~ Marge %~ 84~ -1
+11~ margem~ Marge~ 212~ -1
+12~ marge~ Marge %~ 63~ -1

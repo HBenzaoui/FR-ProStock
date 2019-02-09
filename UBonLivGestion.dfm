@@ -4137,7 +4137,6 @@ object BonLivGestionF: TBonLivGestionF
     end
     object Bondecaissesimple3: TMenuItem
       Caption = 'Bon de r'#232'glement (A5)'
-      Visible = False
       OnClick = Bondecaissesimple3Click
     end
     object N1: TMenuItem
@@ -8331,7 +8330,7 @@ object BonLivGestionF: TBonLivGestionF
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 43502.663075046300000000
-    ReportOptions.LastChange = 43502.769206712960000000
+    ReportOptions.LastChange = 43505.474997650460000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       'begin'
@@ -8339,7 +8338,15 @@ object BonLivGestionF: TBonLivGestionF
       'end.')
     Left = 100
     Top = 396
-    Datasets = <>
+    Datasets = <
+      item
+        DataSet = frxBonLivDT
+        DataSetName = 'frxBonLivDT'
+      end
+      item
+        DataSet = frxBonLivPListDB
+        DataSetName = 'frxBonLivPListDB'
+      end>
     Variables = <>
     Style = <>
     object Data: TfrxDataPage
