@@ -285,7 +285,7 @@ var
 
 implementation
 
-uses   StringTool,Vcl.Imaging.jpeg,
+uses   StringTool,Vcl.Imaging.jpeg, IniFiles,
   UBonRec, UMainF, UFournisseurGestion, UFournisseurList, UFastProduitsList,
   UProduitGestion, USplashAddUnite, UProduitsList, USplashAddCompte,
   USplashVersement;
@@ -1185,6 +1185,8 @@ var
 NEWCredit,OLDCredit,NEWCreditLbl,OLDCreditLbl  : TfrxMemoView;
 LineCredit,LineCreditTop :TfrxShapeView;
 I : Integer;
+Ini: TIniFile;
+indexP: Integer;
 begin
 
    //--- this is to focus in produit --------------------------
@@ -1282,30 +1284,30 @@ begin
      if  (GetKeyState(VK_F12) < 0)  then
   begin
 
-if ValiderBARecBonRecGImg.ImageIndex <> 1 then
- begin
-      MainForm.Bona_recPlistTable.DisableControls;
-       GettingData;
+     if ValiderBARecBonRecGImg.ImageIndex <> 1 then
+     begin
+        Ini := TIniFile.Create(ChangeFileExt(Application.ExeName,'.ini')) ;
+        indexP:= Ini.ReadInteger('', 'Format FA',0);
+        if (indexP = 0) or (indexP = -1) then
+        begin
+         B1Click(Screen);
+        end;
+        if indexP = 1 then
+        begin
+          BondeRception1Click(Screen);
+        end;
+        if indexP = 2 then
+        begin
+          Bonderception2Click(Screen);
+        end;
+        if indexP = 3 then
+        begin
+          Bonderceptionhorstaxe1Click(Screen);
+        end;
 
-         OLDCredit:= BonRecPListfrxRprt.FindObject('OLDCredit') as TfrxMemoView;
-        OLDCredit.Visible:= True;
-        NEWCredit:= BonRecPListfrxRprt.FindObject('NEWCredit') as TfrxMemoView;
-        NEWCredit.Visible:= True;
-        OLDCreditLbl:= BonRecPListfrxRprt.FindObject('OLDCreditLbl') as TfrxMemoView;
-        OLDCreditLbl.Visible:= True;
-        NEWCreditLbl:= BonRecPListfrxRprt.FindObject('NEWCreditLbl') as TfrxMemoView;
-        NEWCreditLbl.Visible:= True;
-        LineCredit:= BonRecPListfrxRprt.FindObject('LineCredit') as TfrxShapeView;
-        LineCredit.Visible:= True;
-
-      BonRecPListfrxRprt.PrepareReport;
-      BonRecPListfrxRprt.PrintOptions.ShowDialog := False;
-      BonRecPListfrxRprt.Print;
-      MainForm.Bona_recPlistTable.EnableControls;
-
-
-    Handled := true;
- end;
+        Ini.Free;
+        Handled := true;
+     end;
   end;
 
 end;

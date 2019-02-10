@@ -277,7 +277,7 @@ var
 
 implementation
 
-uses  StringTool,Vcl.Imaging.jpeg,
+uses  StringTool,Vcl.Imaging.jpeg, IniFiles,
   UMainF, USplashVersement, UBonFacA, USplashAddUnite, UProduitsList,
   UFournisseurList, UFournisseurGestion, USplashAddCompte, UFastProduitsList,
   UDataModule, UProduitGestion;
@@ -3064,6 +3064,8 @@ var
 NEWCredit,OLDCredit,NEWCreditLbl,OLDCreditLbl  : TfrxMemoView;
 LineCredit,LineCreditTop :TfrxShapeView;
 I : Integer;
+Ini: TIniFile;
+indexP: Integer;
 begin
 
    //--- this is to focus in produit --------------------------
@@ -3162,32 +3164,22 @@ begin
      if  (GetKeyState(VK_F12) < 0)  then
   begin
 
-if ValiderBAFacBonFacAGImg.ImageIndex <> 1 then
- begin
-      MainForm.Bona_fac_listTable.DisableControls;
-      GettingData;
+     if ValiderBAFacBonFacAGImg.ImageIndex <> 1 then
+     begin
+        Ini := TIniFile.Create(ChangeFileExt(Application.ExeName,'.ini')) ;
+        indexP:= Ini.ReadInteger('', 'Format FA',0);
+        if (indexP = 0) or (indexP = -1) then
+        begin
+        B1Click(Screen);
+        end;
+        if indexP = 1 then
+        begin
+        BondeCaisseSimple2Click(Screen);
+        end;
 
-      OLDCredit:= BonFacAPListfrxRprt.FindObject('OLDCredit') as TfrxMemoView;
-      OLDCredit.Visible:= False;
-      NEWCredit:= BonFacAPListfrxRprt.FindObject('NEWCredit') as TfrxMemoView;
-      NEWCredit.Visible:= False;
-      OLDCreditLbl:= BonFacAPListfrxRprt.FindObject('OLDCreditLbl') as TfrxMemoView;
-      OLDCreditLbl.Visible:= False;
-      NEWCreditLbl:= BonFacAPListfrxRprt.FindObject('NEWCreditLbl') as TfrxMemoView;
-      NEWCreditLbl.Visible:= False;
-      LineCredit:= BonFacAPListfrxRprt.FindObject('LineCredit') as TfrxShapeView;
-      LineCredit.Visible:= False;
-      LineCreditTop:= BonFacAPListfrxRprt.FindObject('LineCreditTop') as TfrxShapeView;
-      LineCreditTop.Visible:= False;
-
-      BonFacAPListfrxRprt.PrepareReport;
-      BonFacAPListfrxRprt.PrintOptions.ShowDialog := False;
-      BonFacAPListfrxRprt.Print;
-      MainForm.Bona_fac_listTable.EnableControls;
-
-
-    Handled := true;
- end;
+        Ini.Free;
+        Handled := true;
+     end;
   end;
 
 end;

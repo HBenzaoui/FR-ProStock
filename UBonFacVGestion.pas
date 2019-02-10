@@ -251,7 +251,7 @@ var
 
 implementation
 
-uses StringTool,Vcl.Imaging.jpeg,
+uses StringTool,Vcl.Imaging.jpeg, IniFiles,
   UMainF, USplashVersement, UBonFacV, UFastProduitsList, UProduitsList,
   USplashAddUnite, UClientsList, UClientGestion, USplashAddCompte, UDataModule,
   UProduitGestion, UPerissableProduit;
@@ -3460,6 +3460,8 @@ var
 NEWCredit,OLDCredit,NEWCreditLbl,OLDCreditLbl  : TfrxMemoView;
 LineCredit,LineCreditTop :TfrxShapeView;
 I : Integer;
+Ini: TIniFile;
+indexP: Integer;
 begin
 
    //--- this is to focus in produit --------------------------
@@ -3556,31 +3558,22 @@ begin
      if  (GetKeyState(VK_F12) < 0)  then
   begin
 
-if ValiderBVFacBonFacVGImg.ImageIndex <> 1 then
- begin
-    MainForm.Bonv_fac_listTable.DisableControls;
-     GettingData;
+    if ValiderBVFacBonFacVGImg.ImageIndex <> 1 then
+     begin
+        Ini := TIniFile.Create(ChangeFileExt(Application.ExeName,'.ini')) ;
+        indexP:= Ini.ReadInteger('', 'Format FV',0);
+        if (indexP = 0) or (indexP = -1) then
+        begin
+          B1Click(Screen);
+        end;
+        if indexP = 1 then
+        begin
+          BondeCaisseSimple2Click(Screen);
+        end;
 
-        OLDCredit:= BonFacVPListfrxRprt.FindObject('OLDCredit') as TfrxMemoView;
-      OLDCredit.Visible:= False;
-      NEWCredit:= BonFacVPListfrxRprt.FindObject('NEWCredit') as TfrxMemoView;
-      NEWCredit.Visible:= False;
-      OLDCreditLbl:= BonFacVPListfrxRprt.FindObject('OLDCreditLbl') as TfrxMemoView;
-      OLDCreditLbl.Visible:= False;
-      NEWCreditLbl:= BonFacVPListfrxRprt.FindObject('NEWCreditLbl') as TfrxMemoView;
-      NEWCreditLbl.Visible:= False;
-      LineCredit:= BonFacVPListfrxRprt.FindObject('LineCredit') as TfrxShapeView;
-      LineCredit.Visible:= False;
-      LineCreditTop:= BonFacVPListfrxRprt.FindObject('LineCreditTop') as TfrxShapeView;
-      LineCreditTop.Visible:= False;
-
-    BonFacVPListfrxRprt.PrepareReport;
-    BonFacVPListfrxRprt.PrintOptions.ShowDialog := False;
-    BonFacVPListfrxRprt.Print;
-    MainForm.Bonv_fac_listTable.EnableControls;
-
-    Handled := true;
- end;
+        Ini.Free;
+        Handled := true;
+     end;
   end;
 
 

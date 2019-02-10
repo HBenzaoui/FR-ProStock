@@ -1791,9 +1791,8 @@ NEWCredit,OLDCredit,NEWCreditLbl,OLDCreditLbl  : TfrxMemoView;
 LineCredit :TfrxShapeView;
 I : Integer;
 Ini: TIniFile;
- indexP: Integer;
+indexP: Integer;
 
- Key: Char;
 begin
 
    //--- this is to focus in produit --------------------------

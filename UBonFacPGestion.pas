@@ -251,7 +251,7 @@ var
 
 implementation
 
-uses StringTool,Vcl.Imaging.jpeg,
+uses StringTool,Vcl.Imaging.jpeg, IniFiles,
   UMainF, USplashVersement, UFastProduitsList, UProduitsList,
   USplashAddUnite, UClientsList, UClientGestion, USplashAddCompte, UDataModule,
   UProduitGestion;
@@ -2858,6 +2858,8 @@ var
 NEWCredit,OLDCredit,NEWCreditLbl,OLDCreditLbl  : TfrxMemoView;
 LineCredit,LineCreditTop :TfrxShapeView;
 I : Integer;
+Ini: TIniFile;
+indexP: Integer;
 begin
 
    //--- this is to focus in produit --------------------------
@@ -2954,32 +2956,22 @@ begin
      if  (GetKeyState(VK_F12) < 0)  then
   begin
 
-if ValiderBVFacBonFacVGImg.ImageIndex <> 1 then
- begin
-    MainForm.Bonp_fac_listTable.DisableControls;
-     GettingData;
+     if ValiderBVFacBonFacVGImg.ImageIndex <> 1 then
+     begin
+        Ini := TIniFile.Create(ChangeFileExt(Application.ExeName,'.ini')) ;
+        indexP:= Ini.ReadInteger('', 'Format FP',0);
+        if (indexP = 0) or (indexP = -1) then
+        begin
+          B1Click(Screen);
+        end;
+        if indexP = 1 then
+        begin
+          BondeCaisseSimple2Click(Screen);
+        end;
 
-      OLDCredit:= BonFacPPListfrxRprt.FindObject('OLDCredit') as TfrxMemoView;
-      OLDCredit.Visible:= False;
-      NEWCredit:= BonFacPPListfrxRprt.FindObject('NEWCredit') as TfrxMemoView;
-      NEWCredit.Visible:= False;
-      OLDCreditLbl:= BonFacPPListfrxRprt.FindObject('OLDCreditLbl') as TfrxMemoView;
-      OLDCreditLbl.Visible:= False;
-      NEWCreditLbl:= BonFacPPListfrxRprt.FindObject('NEWCreditLbl') as TfrxMemoView;
-      NEWCreditLbl.Visible:= False;
-      LineCredit:= BonFacPPListfrxRprt.FindObject('LineCredit') as TfrxShapeView;
-      LineCredit.Visible:= False;
-      LineCreditTop:= BonFacPPListfrxRprt.FindObject('LineCreditTop') as TfrxShapeView;
-      LineCreditTop.Visible:= False;
-
-
-    BonFacPPListfrxRprt.PrepareReport;
-    BonFacPPListfrxRprt.PrintOptions.ShowDialog := False;
-    BonFacPPListfrxRprt.Print;
-    MainForm.Bonp_fac_listTable.EnableControls;
-
-    Handled := true;
- end;
+        Ini.Free;
+        Handled := true;
+     end;
   end;
 
 
