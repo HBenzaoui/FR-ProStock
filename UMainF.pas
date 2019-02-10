@@ -859,6 +859,8 @@ type
     procedure Bona_fac_listTableprixva_pChange(Sender: TField);
     procedure Bona_fac_listTableprixva2_pChange(Sender: TField);
     procedure L2Click(Sender: TObject);
+    procedure MouvementdeProduit2Click(Sender: TObject);
+    procedure MouvementdeProduit3Click(Sender: TObject);
   private
    //---- this to value of changege we need it to check if theuser changed something
      CountInsert,CountUpdate,CountDelete   : Int64;
@@ -4702,6 +4704,30 @@ procedure TMainForm.FCAFaceBtnClick(Sender: TObject);
 begin
 FactureAMainFMnmClick(Sender);
 BonFacAF.AddBAFacBtnClick(Sender);
+end;
+
+procedure TMainForm.MouvementdeProduit2Click(Sender: TObject);
+begin
+  if Not Assigned(ProduitsListF) then
+  begin
+   ProduitsListF:= TProduitsListF.Create(Application);
+  end  else
+  begin
+    ProduitsListF.Show;
+  end;
+    ProduitsListF.ProduitMovementBtnClick(Sender);
+  end;
+
+procedure TMainForm.MouvementdeProduit3Click(Sender: TObject);
+begin
+  if Not Assigned(ProduitsListF) then
+  begin
+   ProduitsListF:= TProduitsListF.Create(Application);
+  end  else
+  begin
+    ProduitsListF.Show;
+  end;
+    ProduitsListF.ProduitMovementAllBtnClick(Sender);
 end;
 
 procedure TMainForm.MPMainFMmnClick(Sender: TObject);
