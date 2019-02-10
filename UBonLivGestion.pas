@@ -1888,12 +1888,8 @@ begin
     Handled := true;
   end;
 
-     if  (GetKeyState(VK_F12) < 0)
-//          OR
-//         ((GetKeyState(VK_CONTROL) < 0) AND (Key = #50 ) )
-         then
+  if  (GetKeyState(VK_F12) < 0) then
   begin
-     key:= #0;
 
     if ValiderBVlivBonLivGImg.ImageIndex <> 1 then
      begin
