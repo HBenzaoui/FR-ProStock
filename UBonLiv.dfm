@@ -1,7 +1,7 @@
 object BonLivF: TBonLivF
   Left = 0
   Top = 0
-  Caption = 'Bon de Livration'
+  Caption = 'Bon de Livraison'
   ClientHeight = 741
   ClientWidth = 951
   Color = clBtnFace

@@ -25,7 +25,7 @@ object FOptions: TFOptions
     Top = 27
     Width = 437
     Height = 611
-    ActivePage = sTabSheet7
+    ActivePage = GeneralOptionGTB
     Align = alClient
     DoubleBuffered = True
     Font.Charset = DEFAULT_CHARSET
@@ -1466,6 +1466,7 @@ object FOptions: TFOptions
           Font.Style = [fsBold]
           ParentColor = False
           ParentFont = False
+          Visible = False
           StyleElements = []
         end
         object ResetDBBtn: TsSpeedButton
@@ -1872,6 +1873,7 @@ object FOptions: TFOptions
           ParentCtl3D = False
           ParentFont = False
           TabOrder = 0
+          Visible = False
           BoundLabel.Caption = 'sSlider1'
           BoundLabel.Layout = sclBottomCenter
           FontOn.Charset = DEFAULT_CHARSET
