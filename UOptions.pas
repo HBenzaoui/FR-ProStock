@@ -2174,23 +2174,23 @@ end;
 
 procedure TFOptions.TestBalanceIPBtnClick(Sender: TObject);
 var
-  s: TSocket; //
+  BalanceSocket: TSocket; //
   Records: LabelPLU;
   i: Integer;
   CommResult: Integer;
   iCount: Integer;
   IPAddress: TStrings;
 begin
-  s := 0;
+  BalanceSocket := 0;
   edt1.Text := '0';
   try
     IPAddress := TStringList.Create;
     IPAddress.Delimiter := '.';
     IPAddress.DelimitedText := BalanceIPAdressIPEdt.Text;
 
-    s := ConnectScale(IPAddress.DelimitedText, 2000 + StrToInt(IPAddress[3]));
+    BalanceSocket := ConnectScale(IPAddress.DelimitedText, 2000 + StrToInt(IPAddress[3]));
     IPAddress.Free;
-    if (s > 0) then // Connection Successful
+    if (BalanceSocket > 0) then // Connection Successful
     begin
        ShowMessage('La balance est Connectée sur l''adresse IP: '+BalanceIPAdressIPEdt.Text);
     end else
@@ -2198,8 +2198,8 @@ begin
        ShowMessage('Échec de connection');
     end;
   finally
-    if s > 0 then
-      CloseConnect(s);
+    if BalanceSocket > 0 then
+      CloseConnect(BalanceSocket);
   end;
 
 
