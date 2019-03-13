@@ -25,7 +25,7 @@ object FOptions: TFOptions
     Top = 27
     Width = 437
     Height = 611
-    ActivePage = GeneralOptionGTB
+    ActivePage = sTabSheet4
     Align = alClient
     DoubleBuffered = True
     Font.Charset = DEFAULT_CHARSET
@@ -5033,7 +5033,7 @@ object FOptions: TFOptions
           ParentDoubleBuffered = False
           ParentFont = False
           TabOrder = 2
-          Text = '192.168.0.34'
+          Text = '192.168.1.16'
         end
         object BalanceIPBareCodeListCbx: TComboBox
           Left = 21
