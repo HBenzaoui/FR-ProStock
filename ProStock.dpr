@@ -74,7 +74,10 @@ uses
   USplashPrintReport in 'USplashPrintReport.pas' {FSplashPrintReport},
   DBCalcController in 'DBCalcController.pas',
   UInventory in 'UInventory.pas' {InventoryF},
-  UInventoryGestion in 'UInventoryGestion.pas' {InventoryGestionF};
+  UInventoryGestion in 'UInventoryGestion.pas' {InventoryGestionF},
+  ScaleAPI in 'ScaleAPI.pas',
+  PLU in 'PLU.pas',
+  ShopName in 'ShopName.pas';
 
 {$R *.res}
 
