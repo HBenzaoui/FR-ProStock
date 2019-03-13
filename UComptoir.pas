@@ -1054,7 +1054,7 @@ begin
     if (ProduitBonCtrGCbx.Text <> '') AND NOT (ProduitBonCtrGCbx.Text[1] in N ) then
     begin
 
-       if  (Copy(ProduitBonCtrGCbx.Text,1,2) = '23') then
+       if  (Copy(ProduitBonCtrGCbx.Text,1,2) = '55') then
        begin
          isBalCode:= True;
        end;
@@ -1118,8 +1118,9 @@ begin
            MainForm.FDQuery2.Active := True;
 
 
-           BalQut:= (StrToFloat( Copy(ProduitBonCtrGCbx.Text,8,5 )) /100)/MainForm.FDQuery2.FieldByName('prixvd_p').AsCurrency;  // divid by 1000 cuz in codebare qut = AAAAA
+//           BalQut:= (StrToFloat( Copy(ProduitBonCtrGCbx.Text,8,5 )) /100)/MainForm.FDQuery2.FieldByName('prixvd_p').AsCurrency;  // divid by 1000 cuz in codebare qut = AAAAA
 
+             BalQut:= (StrToFloat( Copy(ProduitBonCtrGCbx.Text,8,5 )) /1000)  //becouse i managed to do qut in rightdata in codebar by using balance config
           end;
 
         DataModuleF.PerissBona_recTable.Active := False;
