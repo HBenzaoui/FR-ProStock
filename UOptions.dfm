@@ -5054,6 +5054,13 @@ object FOptions: TFOptions
           Items.Strings = (
             '23AAAAAPPPPPC')
         end
+        object edt1: TEdit
+          Left = 166
+          Top = 24
+          Width = 75
+          Height = 23
+          TabOrder = 4
+        end
       end
       object Panel20: TPanel
         Left = -8

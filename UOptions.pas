@@ -2,7 +2,7 @@ unit UOptions;
 
 interface
 
-uses  DigiSM_TLB,
+uses  DigiSM_TLB,    Winapi.WinSock,
   Winapi.Windows,Data.DB,Vcl.Imaging.jpeg, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, sPanel,
   acSlider, AdvToolBtn, acImage, Vcl.ExtDlgs, System.ImageList, Vcl.ImgList,
@@ -331,6 +331,7 @@ type
     FormatBROptionCbx: TComboBox;
     Label45: TLabel;
     FormatFAOptionCbx: TComboBox;
+    edt1: TEdit;
     procedure FormShow(Sender: TObject);
     procedure OKFPrintingBtnClick(Sender: TObject);
     procedure ImageCompanyOptionImgMouseEnter(Sender: TObject);
@@ -390,7 +391,7 @@ var
 
 implementation
 
-uses
+uses      PLU,ScaleAPI,ShopName,
 Printers,IniFiles, UClientGestion, UMainF, UWorkingSplash, UFastProduitsList;
 
 
@@ -799,7 +800,7 @@ begin
 
           BalanceIPActiveSdr.SliderOn:=        Ini.ReadBool('','Balance IP Active', BalanceIPActiveSdr.SliderOn);
           BalanceIPListCbx.ItemIndex:=         0;
-          BalanceIPAdressIPEdt.Text:=          '192.168.0.34';
+          BalanceIPAdressIPEdt.Text:=          '192.168.1.16';
           BalanceIPBareCodeListCbx.ItemIndex:= 0;
 
          end;
@@ -2172,26 +2173,61 @@ end;
 
 
 procedure TFOptions.TestBalanceIPBtnClick(Sender: TObject);
+var
+  s: TSocket; //
+  Records: LabelPLU;
+  i: Integer;
+  CommResult: Integer;
+  iCount: Integer;
+  IPAddress: TStrings;
 begin
+  s := 0;
+  edt1.Text := '0';
   try
-  ScaleLib:=CoScale.Create;
-  except
-  ShowMessage('UnSuccssed - COM Object');
+    IPAddress := TStringList.Create;
+    IPAddress.Delimiter := '.';
+    IPAddress.DelimitedText := BalanceIPAdressIPEdt.Text;
+
+    s := ConnectScale(IPAddress.DelimitedText, 2000 + StrToInt(IPAddress[3]));
+    IPAddress.Free;
+    if (s > 0) then // Connection Successful
+    begin
+       ShowMessage('La balance est Connectée sur l''adresse IP: '+BalanceIPAdressIPEdt.Text);
+    end else
+    begin
+       ShowMessage('Échec de connection');
+    end;
+  finally
+    if s > 0 then
+      CloseConnect(s);
   end;
 
 
-  ScaleLib.ScaleIP:=BalanceIPAdressIPEdt.Text;
-  ScaleLib.ScaleTimeOut:=1000;
-
-  ScaleLib.OpenConnect;
 
 
-  case ScaleLib.ResultCode  of
-      0: ShowMessage('Réussi');
-  else
-      ShowMessage('Le Balance ne répond pas! Assurer-tu que le Balance est allumé et en définissant l''adresse IP: '
-      +BalanceIPAdressIPEdt.Text);
-  end;
+
+
+
+//=============Old Confugration balnce======>
+//  try
+//  ScaleLib:=CoScale.Create;
+//  except
+//  ShowMessage('UnSuccssed - COM Object');
+//  end;
+//
+//
+//  ScaleLib.ScaleIP:=BalanceIPAdressIPEdt.Text;
+//  ScaleLib.ScaleTimeOut:=1000;
+//
+//  ScaleLib.OpenConnect;
+//
+//
+//  case ScaleLib.ResultCode  of
+//      0: ShowMessage('Réussi');
+//  else
+//      ShowMessage('Le Balance ne répond pas! Assurer-tu que le Balance est allumé et en définissant l''adresse IP: '
+//      +BalanceIPAdressIPEdt.Text);
+//  end;
 
 end;
 
