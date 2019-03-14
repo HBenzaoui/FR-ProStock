@@ -1948,10 +1948,14 @@ var
 
   s: TSocket; //
   Records: LabelPLU;
-  i: Integer;
+  RecordShop: ShpName;
+  I: Integer;
   CommResult: Integer;
   iCount: Integer;
   IPAddress: TStrings;
+
+  CodeP,PrixP: Integer;
+  NomP : String;
 begin
 
   s := 0;
@@ -1966,28 +1970,61 @@ begin
     IPAddress.Free;
     if (s > 0) then // Connection Successful
     begin
+
+
+
       iCount := 0;
-      for i := 0 to 55 do
+      for I := 1 to 56 do
       begin
+
+
+        BalBtn := (FindComponent('Bal'+IntToStr(I)+'sp') as TsSpeedButton);
+
+        if BalBtn.Caption <> '' then
+        begin
+          MainForm.SQLQuery.Active:= False;
+          MainForm.SQLQuery.SQL.Clear;
+          MainForm.SQLQuery.SQL.Text:= 'SELECT code_p, nom_p, prixvd_p FROM produit WHERE LOWER(nom_p) LIKE LOWER('+ QuotedStr(BalBtn.Caption) +');' ;
+          MainForm.SQLQuery.Active:= True;
+
+          if NOT MainForm.SQLQuery.isEmpty then
+          begin
+            CodeP:= MainForm.SQLQuery.FieldByName('code_p').AsInteger;
+            NomP:= MainForm.SQLQuery.FieldByName('nom_p').asString;
+            PrixP:= MainForm.SQLQuery.FieldValues['prixvd_p'];
+          end;
+        end else
+            begin
+             CodeP := 0;
+             NomP:= '';
+             PrixP := 0;
+            end;
+
+        //==============Send produit========//
         ZeroMemory(@Records, SizeOf(Records));
-        Records.PLUNo :=  1; // PLU No.
+        Records.PLUNo := I ; // PLU No.
         Records.WeightUnit := 0; // Item Property 0-Weight 1-Non-weight
         Records.UPriceOverride := 0; // Unit Price Override 0-Inhibit  1-Allow
-        Records.UPrice := 250000; // Unit Price
+        Records.UPrice := PrixP * 100; // Unit Price
         Records.MG := 997; // Main Group No.
         Records.Cost := 0; // Cost
         Records.LabelFormat1 := 17; //Label Format
         Records.BarFormat := 5; // Barcode Format No.
         Records.EANFlags := 55; //Ean data F1F2
-        Records.EAN_Data.ItemCode := '0000200000'; //Item Code
+//        Records.EAN_Data.ItemCode := '0000200000'; //Item Code
+//        StrPCopy(Records.EAN_Data.ItemCode, IntToStr(CodeP) + '00000');
+
+        //        Format('%.*d',[5,CodeP])
+        StrPCopy(Records.EAN_Data.ItemCode, Format('%.*d',[5,CodeP]) + '00000');
+
         Records.EAN_Data.BarCodeType := 0; //Barcode Type 0--EAN; 9--ITF
         Records.EAN_Data.BarRightData := 1;  //X's Type 0--Price,1--Weight,2--Quantity
-
         Records.MBarcode1.MutilBarFunc :=86; // EAN-128
         Records.MBarcode1.MutilBarData :='F (94)XXXXXXXXXXXXXXXXXXXXXXXXXXCD'; //EAN-128C (94)
         Records.MBarcode1.MutilBarType :=0; //EAN-128 Type 0-A 1-B 2-C
         Records.Commodity[0].TwsFontSize := 21;    //Item Font Size(First Line)
-        Records.Commodity[0].TxtValue := 'Ounness';//Item Commodity(First Line)
+//        Records.Commodity[0].TxtValue := 'Ounness';//Item Commodity(First Line)
+        StrPCopy(Records.Commodity[0].TxtValue, NomP);
 
         CommResult := SendLPlu(s, @Records);
         case CommResult of
@@ -1996,16 +2033,61 @@ begin
               Inc(iCount);
               edt1.Text := IntToStr(iCount);
               Application.ProcessMessages;
+//              ShowMessage('Réussi');
               Continue;
             end;
           $E1:
-            Continue; // Write Error
+            begin
+//             ShowMessage('Write Error');
+             Continue; // Write Error
+            end;
           $E2:
-            Break; // No enought Space
+            begin
+//             ShowMessage('No enought Space');
+             Break; // No enought Space
+            end;
         else
-          Break; // Undefined Error
+          begin
+//           ShowMessage('Undefined Error');
+           Break; // Undefined Error
+          end;
         end;
+
+        //==============Send Shop Name========//
+        ZeroMemory(@RecordShop, SizeOf(RecordShop));
+        RecordShop.RecordNo :=  I ;; // Shop No.
+        RecordShop.labformat := 17;
+        RecordShop.Name[0].TwsFontSize := 5; // shopname line1 font
+//        RecordShop.Name[0].TxtValue := shopNameEdit.Text; // shopname  line1
+        StrPCopy(RecordShop.Name[0].TxtValue, NameCompanyOptionEdt.Text);
+//        RecordShop.Name[1].TwsFontSize := 5;
+//        RecordShop.Name[1].TxtValue := 'Addr: 1234';
+//        RecordShop.Name[2].TwsFontSize := 5;
+//        RecordShop.Name[2].TxtValue := 'Tel: 1234';
+
+        CommResult := SendShopName(s, @RecordShop);
+        case CommResult of
+          $06:
+            begin
+              Inc(iCount);
+              edt1.Text := IntToStr(iCount);
+              Application.ProcessMessages;
+            end;
+          $E1:
+            edt1.Text := 'Write Error'; // Write Error
+          $E2:
+            edt1.Text := 'No enough Space'; // No enough Space
+        else
+          edt1.Text := 'Undefined Error'; // Undefined Error
+        end;
+
       end;
+
+      ShowMessage('Réussi');
+
+    end else
+    begin
+       ShowMessage('Échec de connection');
     end;
   finally
     if s > 0 then

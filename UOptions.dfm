@@ -5055,10 +5055,23 @@ object FOptions: TFOptions
             '55AAAAAPPPPPC')
         end
         object edt1: TEdit
-          Left = 166
-          Top = 24
-          Width = 75
-          Height = 23
+          Left = 294
+          Top = 3
+          Width = 26
+          Height = 26
+          Alignment = taCenter
+          AutoSelect = False
+          AutoSize = False
+          BevelEdges = []
+          BevelInner = bvNone
+          BevelOuter = bvNone
+          Enabled = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = 18
+          Font.Name = 'Roboto'
+          Font.Style = []
+          ParentFont = False
           TabOrder = 4
           Visible = False
         end
