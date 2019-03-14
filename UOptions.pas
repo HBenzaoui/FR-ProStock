@@ -1943,9 +1943,80 @@ end;
 procedure TFOptions.UploadToBalBtnClick(Sender: TObject);
 var
   Ini: TMemIniFile;
-  I: Integer;
+//  I: Integer;
 
+
+  s: TSocket; //
+  Records: LabelPLU;
+  i: Integer;
+  CommResult: Integer;
+  iCount: Integer;
+  IPAddress: TStrings;
 begin
+
+  s := 0;
+  edt1.Text := '0';
+  try
+    IPAddress := TStringList.Create;
+    IPAddress.Delimiter := '.';
+    IPAddress.DelimitedText := BalanceIPAdressIPEdt.Text;
+
+
+    s := ConnectScale(IPAddress.DelimitedText, 2000 + StrToInt(IPAddress[3]));
+    IPAddress.Free;
+    if (s > 0) then // Connection Successful
+    begin
+      iCount := 0;
+      for i := 0 to 55 do
+      begin
+        ZeroMemory(@Records, SizeOf(Records));
+        Records.PLUNo :=  1; // PLU No.
+        Records.WeightUnit := 0; // Item Property 0-Weight 1-Non-weight
+        Records.UPriceOverride := 0; // Unit Price Override 0-Inhibit  1-Allow
+        Records.UPrice := 250000; // Unit Price
+        Records.MG := 997; // Main Group No.
+        Records.Cost := 0; // Cost
+        Records.LabelFormat1 := 17; //Label Format
+        Records.BarFormat := 5; // Barcode Format No.
+        Records.EANFlags := 55; //Ean data F1F2
+        Records.EAN_Data.ItemCode := '0000200000'; //Item Code
+        Records.EAN_Data.BarCodeType := 0; //Barcode Type 0--EAN; 9--ITF
+        Records.EAN_Data.BarRightData := 1;  //X's Type 0--Price,1--Weight,2--Quantity
+
+        Records.MBarcode1.MutilBarFunc :=86; // EAN-128
+        Records.MBarcode1.MutilBarData :='F (94)XXXXXXXXXXXXXXXXXXXXXXXXXXCD'; //EAN-128C (94)
+        Records.MBarcode1.MutilBarType :=0; //EAN-128 Type 0-A 1-B 2-C
+        Records.Commodity[0].TwsFontSize := 21;    //Item Font Size(First Line)
+        Records.Commodity[0].TxtValue := 'Ounness';//Item Commodity(First Line)
+
+        CommResult := SendLPlu(s, @Records);
+        case CommResult of
+          $06:
+            begin
+              Inc(iCount);
+              edt1.Text := IntToStr(iCount);
+              Application.ProcessMessages;
+              Continue;
+            end;
+          $E1:
+            Continue; // Write Error
+          $E2:
+            Break; // No enought Space
+        else
+          Break; // Undefined Error
+        end;
+      end;
+    end;
+  finally
+    if s > 0 then
+      CloseConnect(s);
+  end;
+
+
+
+
+// The olde method
+{
   try
   ScaleLib:=CoScale.Create;
   except
@@ -2034,7 +2105,7 @@ begin
   Ini.Free;
 
 
-
+     }
 
 end;
 

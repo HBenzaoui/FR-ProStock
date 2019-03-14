@@ -5050,9 +5050,9 @@ object FOptions: TFOptions
           ItemIndex = 0
           ParentFont = False
           TabOrder = 3
-          Text = '23AAAAAPPPPPC'
+          Text = '55AAAAAPPPPPC'
           Items.Strings = (
-            '23AAAAAPPPPPC')
+            '55AAAAAPPPPPC')
         end
         object edt1: TEdit
           Left = 166
@@ -5060,6 +5060,7 @@ object FOptions: TFOptions
           Width = 75
           Height = 23
           TabOrder = 4
+          Visible = False
         end
       end
       object Panel20: TPanel
