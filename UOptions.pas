@@ -1978,6 +1978,35 @@ begin
       begin
 
 
+      //==============Send Shop Name========//
+            ZeroMemory(@RecordShop, SizeOf(RecordShop));
+            RecordShop.RecordNo :=  I ;; // Shop No.
+            RecordShop.labformat := 17;
+            RecordShop.Name[0].TwsFontSize := 4; // shopname line1 font
+    //        RecordShop.Name[0].TxtValue := shopNameEdit.Text; // shopname  line1
+            StrPCopy(RecordShop.Name[0].TxtValue, NameCompanyOptionEdt.Text);
+    //        RecordShop.Name[1].TwsFontSize := 5;
+    //        RecordShop.Name[1].TxtValue := 'Addr: 1234';
+    //        RecordShop.Name[2].TwsFontSize := 5;
+    //        RecordShop.Name[2].TxtValue := 'Tel: 1234';
+
+            CommResult := SendShopName(s, @RecordShop);
+            case CommResult of
+              $06:
+                begin
+                  Inc(iCount);
+                  edt1.Text := IntToStr(iCount);
+                  Application.ProcessMessages;
+                end;
+              $E1:
+                edt1.Text := 'Write Error'; // Write Error
+              $E2:
+                edt1.Text := 'No enough Space'; // No enough Space
+            else
+              edt1.Text := 'Undefined Error'; // Undefined Error
+            end;
+
+
         BalBtn := (FindComponent('Bal'+IntToStr(I)+'sp') as TsSpeedButton);
 
         if BalBtn.Caption <> '' then
@@ -2053,37 +2082,16 @@ begin
           end;
         end;
 
-        //==============Send Shop Name========//
-        ZeroMemory(@RecordShop, SizeOf(RecordShop));
-        RecordShop.RecordNo :=  I ;; // Shop No.
-        RecordShop.labformat := 17;
-        RecordShop.Name[0].TwsFontSize := 5; // shopname line1 font
-//        RecordShop.Name[0].TxtValue := shopNameEdit.Text; // shopname  line1
-        StrPCopy(RecordShop.Name[0].TxtValue, NameCompanyOptionEdt.Text);
-//        RecordShop.Name[1].TwsFontSize := 5;
-//        RecordShop.Name[1].TxtValue := 'Addr: 1234';
-//        RecordShop.Name[2].TwsFontSize := 5;
-//        RecordShop.Name[2].TxtValue := 'Tel: 1234';
 
-        CommResult := SendShopName(s, @RecordShop);
-        case CommResult of
-          $06:
-            begin
-              Inc(iCount);
-              edt1.Text := IntToStr(iCount);
-              Application.ProcessMessages;
-            end;
-          $E1:
-            edt1.Text := 'Write Error'; // Write Error
-          $E2:
-            edt1.Text := 'No enough Space'; // No enough Space
-        else
-          edt1.Text := 'Undefined Error'; // Undefined Error
-        end;
 
       end;
 
+
+      MainForm.SQLQuery.Active:= False;
+      MainForm.SQLQuery.SQL.Clear;
+
       ShowMessage('Réussi');
+
 
     end else
     begin
