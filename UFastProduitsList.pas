@@ -65,8 +65,17 @@ type
   private
     { Private declarations }
   public
-    { Public declarations }
     CodePForFastPList: Integer;
+    const PSQL= 'SELECT *, '
+    +'   ((prixht_p * tva_p)/100+ prixht_p ) AS PrixATTC,  '
+    +'   ((prixvd_p * tva_p)/100+ prixvd_p ) AS PrixVTTCD, '
+    +'   ((prixvr_p * tva_p)/100+ prixvr_p ) AS PrixVTTCR, '
+    +'   ((prixvg_p * tva_p)/100+ prixvg_p ) AS PrixVTTCG, '
+    +'   ((prixva_p * tva_p)/100+ prixva_p ) AS PrixVTTCA, '
+    +'   ((prixva2_p * tva_p)/100+ prixva2_p ) AS PrixVTTCA2,  '
+    +'   (qut_p + qutini_p ) AS QutDispo, '
+    +'   ((qut_p + qutini_p) * prixht_p ) AS ValueStock '
+    +' FROM produit ' ;
   end;
 
 var
@@ -373,33 +382,48 @@ begin
       MainForm.SQLQuery.SQL.Clear;
       MainForm.SQLQuery.SQL.Text:='SELECT nom_cb,code_p FROM codebarres WHERE nom_cb LIKE ' +''+ QuotedStr( ResearchProduitsEdt.Text )+'' ;
       MainForm.SQLQuery.Active:=True;
-      if MainForm.SQLQuery.FieldValues['code_p'] <> null then
+      if MainForm.SQLQuery.FieldByName('code_p').AsInteger <> null then
      begin
-      CodeCB:=MainForm.SQLQuery.FieldValues['code_p'];
+      CodeCB:=MainForm.SQLQuery.FieldByName('code_p').AsInteger;
      end;
     if ResherchPARDesProduitsRdioBtn.Checked then
     if (ResearchProduitsEdt.text <> '') AND NOT (ResearchProduitsEdt.Text[1] in E ) then
     begin
-      MainForm.ProduitTable.Filtered := false;
-      MainForm.ProduitTable.Filter := '[nom_p] LIKE ' + quotedstr('%' +ResearchProduitsEdt.Text + '%') + ' OR '+
-     '[refer_p] LIKE ' + quotedstr('%' +ResearchProduitsEdt.Text + '%') ;
-      MainForm.ProduitTable.Filtered := True;
+      MainForm.ProduitTable.DisableControls;
+      MainForm.ProduitTable.Active:=False;
+      MainForm.ProduitTable.SQL.Clear;
+      MainForm.ProduitTable.SQL.Text:= PSQL + ' WHERE LOWER(nom_p) LIKE LOWER' + '('''+'%'+(ResearchProduitsEdt.Text)+'%'+''')' + ' OR ' + 'LOWER(refer_p) LIKE LOWER' +  '('''+'%'+(ResearchProduitsEdt.Text)+'%'+''')';
+      MainForm.ProduitTable.Active:=True;
+      MainForm.ProduitTable.EnableControls;
     end
     else
     begin
-     MainForm.ProduitTable.Filtered := false;
-     ResearchProduitsEdt.text := '';
+      MainForm.ProduitTable.DisableControls;
+      MainForm.ProduitTable.Active:=False;
+      MainForm.ProduitTable.SQL.Clear;
+      MainForm.ProduitTable.SQL.Text:= PSQL ;
+      MainForm.ProduitTable.Active:=True;
+      MainForm.ProduitTable.EnableControls;
+      ResearchProduitsEdt.text := '';
     end;
      if ResherchPARDCodProduitsRdioBtn.Checked then
     if (ResearchProduitsEdt.text <> '') then
     begin
-      MainForm.ProduitTable.Filtered := false;
-      MainForm.ProduitTable.Filter := '[codebar_p] LIKE ' + quotedstr('%' + ResearchProduitsEdt.Text + '%')  + ' OR [code_p] = '+ IntToStr(CodeCB) ;
-      MainForm.ProduitTable.Filtered := True;
+        MainForm.ProduitTable.DisableControls;
+        MainForm.ProduitTable.Active:=False;
+        MainForm.ProduitTable.SQL.Clear;
+        MainForm.ProduitTable.SQL.Text:= PSQL +' WHERE LOWER(codebar_p) LIKE LOWER'+'('''+'%'+(ResearchProduitsEdt.Text)+'%'+''')'+ ' OR code_p = ' + IntToStr(CodeCB);
+        MainForm.ProduitTable.Active:=True;
+        MainForm.ProduitTable.EnableControls;
     end
     else
     begin
-      MainForm.ProduitTable.Filtered := false;
+      MainForm.ProduitTable.DisableControls;
+      MainForm.ProduitTable.Active:=False;
+      MainForm.ProduitTable.SQL.Clear;
+      MainForm.ProduitTable.SQL.Text:= PSQL ;
+      MainForm.ProduitTable.Active:=True;
+      MainForm.ProduitTable.EnableControls;
     end;
    
    end;

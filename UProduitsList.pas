@@ -1419,17 +1419,27 @@ begin
         MainForm.SQLQuery.SQL.Clear;
         MainForm.SQLQuery.SQL.Text := 'SELECT nom_cb,code_p FROM codebarres WHERE nom_cb LIKE ' + '' + QuotedStr(ResearchProduitsEdt.Text + '%') + '';
         MainForm.SQLQuery.Active := True;
-        if MainForm.SQLQuery.FieldValues['code_p'] <> null then
+        if MainForm.SQLQuery.FieldByName('code_p').AsInteger <> null then
         begin
-          CodeCB := MainForm.SQLQuery.FieldValues['code_p'];
+          CodeCB := MainForm.SQLQuery.FieldByName('code_p').AsInteger;
         end;
-        MainForm.ProduitTable.Filtered := false;
-        MainForm.ProduitTable.Filter := '[codebar_p] LIKE ' + quotedstr(ResearchProduitsEdt.Text + '%') + ' OR [code_p] = ' + IntToStr(CodeCB);
-        MainForm.ProduitTable.Filtered := True;
+
+        MainForm.ProduitTable.DisableControls;
+        MainForm.ProduitTable.Active:=False;
+        MainForm.ProduitTable.SQL.Clear;
+        MainForm.ProduitTable.SQL.Text:= PSQL +' WHERE LOWER(codebar_p) LIKE LOWER'+'('''+'%'+(ResearchProduitsEdt.Text)+'%'+''')'+ ' OR code_p = ' + IntToStr(CodeCB);
+        MainForm.ProduitTable.Active:=True;
+        MainForm.ProduitTable.EnableControls;
       end
       else
       begin
-        MainForm.ProduitTable.Filtered := false;
+//        MainForm.ProduitTable.Filtered := false;
+        MainForm.ProduitTable.DisableControls;
+        MainForm.ProduitTable.Active:=False;
+        MainForm.ProduitTable.SQL.Clear;
+        MainForm.ProduitTable.SQL.Text:= PSQL ;
+        MainForm.ProduitTable.Active:=True;
+        MainForm.ProduitTable.EnableControls;
         ResearchProduitsEdt.text := '';
       end;
     MainForm.SQLQuery.Active := False;
