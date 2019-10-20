@@ -1857,6 +1857,8 @@ object ClientListF: TClientListF
     CenterWindow = False
     PrintScaling = False
     PdfA = False
+    PDFStandard = psNone
+    PDFVersion = pv17
     Left = 360
     Top = 408
   end
@@ -1912,7 +1914,7 @@ object ClientListF: TClientListF
     Top = 320
   end
   object ClientListfrxRprt: TfrxReport
-    Version = '5.6.1'
+    Version = '6.3.12'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -1943,6 +1945,7 @@ object ClientListF: TClientListF
         Font.Height = -16
         Font.Name = 'Arial'
         Font.Style = [fsBold]
+        Frame.Typ = []
         Fill.BackColor = 14211288
       end
       item
@@ -1952,6 +1955,7 @@ object ClientListF: TClientListF
         Font.Height = -13
         Font.Name = 'Arial'
         Font.Style = [fsBold]
+        Frame.Typ = []
         Fill.BackColor = 15790320
       end
       item
@@ -1961,6 +1965,7 @@ object ClientListF: TClientListF
         Font.Height = -13
         Font.Name = 'Arial'
         Font.Style = [fsBold]
+        Frame.Typ = []
         Fill.BackColor = 15790320
       end
       item
@@ -1970,6 +1975,7 @@ object ClientListF: TClientListF
         Font.Height = -13
         Font.Name = 'Arial'
         Font.Style = []
+        Frame.Typ = []
       end
       item
         Name = 'Group footer'
@@ -1987,6 +1993,7 @@ object ClientListF: TClientListF
         Font.Height = -13
         Font.Name = 'Arial'
         Font.Style = []
+        Frame.Typ = []
         Frame.Width = 2.000000000000000000
       end>
     object Data: TfrxDataPage
@@ -2002,17 +2009,21 @@ object ClientListF: TClientListF
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
+      MirrorMode = []
       VGuides.Strings = (
         '309,92146'
         '351,49629'
         '593,38621')
       object PageHeader1: TfrxPageHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 84.826840000000000000
         Top = 18.897650000000000000
         Width = 1046.929810000000000000
         object Memo1: TfrxMemoView
           Align = baCenter
+          AllowVectorExport = True
           Left = 372.913626665000000000
           Top = 2.519686670000000000
           Width = 301.102556670000000000
@@ -2030,6 +2041,7 @@ object ClientListF: TClientListF
           VAlign = vaCenter
         end
         object Memo5: TfrxMemoView
+          AllowVectorExport = True
           Left = -0.377860000000000000
           Top = 56.692913385826770000
           Width = 302.567100000000000000
@@ -2040,6 +2052,7 @@ object ClientListF: TClientListF
           Font.Height = -11
           Font.Name = 'Gotham Rounded Light'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = 13948116
           HAlign = haCenter
           Memo.UTF8W = (
@@ -2048,6 +2061,7 @@ object ClientListF: TClientListF
           VAlign = vaCenter
         end
         object Date: TfrxMemoView
+          AllowVectorExport = True
           Left = 963.780150000000000000
           Top = 3.779530000000000000
           Width = 79.370130000000000000
@@ -2057,6 +2071,7 @@ object ClientListF: TClientListF
           Font.Height = -13
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[Date]')
@@ -2064,6 +2079,7 @@ object ClientListF: TClientListF
           VAlign = vaCenter
         end
         object Memo3: TfrxMemoView
+          AllowVectorExport = True
           Left = 301.716921100000000000
           Top = 56.692913385826770000
           Width = 310.126160000000000000
@@ -2074,6 +2090,7 @@ object ClientListF: TClientListF
           Font.Height = -11
           Font.Name = 'Gotham Rounded Light'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = 13948116
           HAlign = haCenter
           Memo.UTF8W = (
@@ -2082,6 +2099,7 @@ object ClientListF: TClientListF
           VAlign = vaCenter
         end
         object Memo6: TfrxMemoView
+          AllowVectorExport = True
           Left = 611.284021100000000000
           Top = 56.692913385826770000
           Width = 102.252010000000000000
@@ -2092,6 +2110,7 @@ object ClientListF: TClientListF
           Font.Height = -11
           Font.Name = 'Gotham Rounded Light'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = 13948116
           HAlign = haCenter
           Memo.UTF8W = (
@@ -2100,6 +2119,7 @@ object ClientListF: TClientListF
           VAlign = vaCenter
         end
         object Memo8: TfrxMemoView
+          AllowVectorExport = True
           Left = 917.347101100000000000
           Top = 56.692913385826770000
           Width = 128.708720000000000000
@@ -2110,6 +2130,7 @@ object ClientListF: TClientListF
           Font.Height = -11
           Font.Name = 'Gotham Rounded Light'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = 13948116
           HAlign = haCenter
           Memo.UTF8W = (
@@ -2118,6 +2139,7 @@ object ClientListF: TClientListF
           VAlign = vaCenter
         end
         object Memo2: TfrxMemoView
+          AllowVectorExport = True
           Left = 713.417911100000000000
           Top = 56.692913385826770000
           Width = 102.252010000000000000
@@ -2128,6 +2150,7 @@ object ClientListF: TClientListF
           Font.Height = -11
           Font.Name = 'Gotham Rounded Light'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = 13948116
           HAlign = haCenter
           Memo.UTF8W = (
@@ -2136,6 +2159,7 @@ object ClientListF: TClientListF
           VAlign = vaCenter
         end
         object Memo11: TfrxMemoView
+          AllowVectorExport = True
           Left = 815.449451100000000000
           Top = 56.692913385826770000
           Width = 102.252010000000000000
@@ -2146,6 +2170,7 @@ object ClientListF: TClientListF
           Font.Height = -11
           Font.Name = 'Gotham Rounded Light'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = 13948116
           HAlign = haCenter
           Memo.UTF8W = (
@@ -2155,6 +2180,7 @@ object ClientListF: TClientListF
         end
         object Four: TfrxMemoView
           Align = baCenter
+          AllowVectorExport = True
           Left = 372.913626665000000000
           Top = 34.015770000000000000
           Width = 301.102556670000000000
@@ -2164,6 +2190,7 @@ object ClientListF: TClientListF
           Font.Height = -12
           Font.Name = 'Helvetica LT Std'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'P'#233'riode du :')
@@ -2173,10 +2200,12 @@ object ClientListF: TClientListF
       end
       object PageFooter1: TfrxPageFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 22.677180000000000000
         Top = 317.480520000000000000
         Width = 1046.929810000000000000
         object Page: TfrxMemoView
+          AllowVectorExport = True
           Left = 899.528140000000000000
           Top = 2.000000000000000000
           Width = 147.401670000000000000
@@ -2186,6 +2215,7 @@ object ClientListF: TClientListF
           Font.Height = -9
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Page: [Page]/[TotalPages#]')
@@ -2198,6 +2228,7 @@ object ClientListF: TClientListF
             end>
         end
         object Memo12: TfrxMemoView
+          AllowVectorExport = True
           Top = 1.380201430000000000
           Width = 35.095635710000000000
           Height = 18.897650000000000000
@@ -2206,12 +2237,14 @@ object ClientListF: TClientListF
           Font.Height = -9
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Agent :')
           ParentFont = False
           VAlign = vaCenter
         end
         object Agent: TfrxMemoView
+          AllowVectorExport = True
           Left = 31.795300000000000000
           Top = 1.000000000000000000
           Width = 457.323130000000000000
@@ -2221,19 +2254,23 @@ object ClientListF: TClientListF
           Font.Height = -9
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           ParentFont = False
           VAlign = vaCenter
         end
         object Shape2: TfrxShapeView
+          AllowVectorExport = True
           Width = 1046.929810000000000000
           Height = 2.267716535433070000
           Fill.BackColor = 13948116
           Fill.ForeColor = clNone
           Frame.Color = clNone
+          Frame.Typ = []
         end
       end
       object MasterData1: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 21.236240000000000000
         Top = 166.299320000000000000
         Width = 1046.929810000000000000
@@ -2241,12 +2278,15 @@ object ClientListF: TClientListF
         DataSetName = 'frxClientDB'
         RowCount = 0
         object Shape1: TfrxShapeView
+          AllowVectorExport = True
           Top = 21.236240000000000000
           Width = 1046.929810000000000000
           Fill.BackColor = 13948116
           Frame.Color = 13948116
+          Frame.Typ = []
         end
         object frxBonLivDBclientbvfac: TfrxMemoView
+          AllowVectorExport = True
           Left = 2.448818900000000000
           Top = 0.779530000000000000
           Width = 298.960891100000000000
@@ -2259,12 +2299,14 @@ object ClientListF: TClientListF
           Font.Height = -12
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxClientDB."nom_c"]')
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo4: TfrxMemoView
+          AllowVectorExport = True
           Left = 301.543600000000000000
           Top = 0.779530000000000000
           Width = 310.299481100000000000
@@ -2277,6 +2319,7 @@ object ClientListF: TClientListF
           Font.Height = -12
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxClientDB."adr_c"]')
@@ -2284,6 +2327,7 @@ object ClientListF: TClientListF
           VAlign = vaCenter
         end
         object Memo7: TfrxMemoView
+          AllowVectorExport = True
           Left = 611.110700000000000000
           Top = 0.779530000000000000
           Width = 102.425165120000000000
@@ -2298,6 +2342,7 @@ object ClientListF: TClientListF
           Font.Height = -12
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxClientDB."mob_c"]')
@@ -2305,6 +2350,7 @@ object ClientListF: TClientListF
           VAlign = vaCenter
         end
         object Memo9: TfrxMemoView
+          AllowVectorExport = True
           Left = 917.173780000000000000
           Top = 0.779530000000000000
           Width = 132.283464570000000000
@@ -2318,6 +2364,7 @@ object ClientListF: TClientListF
           Font.Height = -12
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxClientDB."credit_c"]')
@@ -2325,6 +2372,7 @@ object ClientListF: TClientListF
           VAlign = vaCenter
         end
         object Memo10: TfrxMemoView
+          AllowVectorExport = True
           Left = 713.244590000000000000
           Top = 0.779530000000000000
           Width = 102.425165120000000000
@@ -2339,6 +2387,7 @@ object ClientListF: TClientListF
           Font.Height = -12
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxClientDB."mob2_c"]')
@@ -2346,6 +2395,7 @@ object ClientListF: TClientListF
           VAlign = vaCenter
         end
         object Memo13: TfrxMemoView
+          AllowVectorExport = True
           Left = 815.276130000000000000
           Top = 0.779530000000000000
           Width = 102.425165120000000000
@@ -2360,6 +2410,7 @@ object ClientListF: TClientListF
           Font.Height = -12
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxClientDB."fax_c"]')
@@ -2369,10 +2420,12 @@ object ClientListF: TClientListF
       end
       object Footer1: TfrxFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 44.472480000000000000
         Top = 211.653680000000000000
         Width = 1046.929810000000000000
         object Memo16: TfrxMemoView
+          AllowVectorExport = True
           Left = 895.748180390000000000
           Top = 0.377952760000000000
           Width = 151.559055120000000000
@@ -2384,6 +2437,7 @@ object ClientListF: TClientListF
           Font.Height = -12
           Font.Name = 'Helvetica LT Std'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = 13948116
           HAlign = haRight
           Memo.UTF8W = (
@@ -2392,6 +2446,7 @@ object ClientListF: TClientListF
           VAlign = vaCenter
         end
         object Memo20: TfrxMemoView
+          AllowVectorExport = True
           Left = 794.142240000000000000
           Top = 0.377952760000000000
           Width = 102.047310000000000000
@@ -2401,6 +2456,7 @@ object ClientListF: TClientListF
           Font.Height = -12
           Font.Name = 'Helvetica LT Std'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = 13948116
           HAlign = haRight
           Memo.UTF8W = (
@@ -2409,6 +2465,7 @@ object ClientListF: TClientListF
           VAlign = vaCenter
         end
         object Actif: TfrxMemoView
+          AllowVectorExport = True
           Left = 105.346634880000000000
           Width = 87.307045120000000000
           Height = 15.118120000000000000
@@ -2418,11 +2475,13 @@ object ClientListF: TClientListF
           Font.Height = -8
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo15: TfrxMemoView
+          AllowVectorExport = True
           Left = -1.086145510000000000
           Width = 106.960566460000000000
           Height = 15.118120000000000000
@@ -2432,6 +2491,7 @@ object ClientListF: TClientListF
           Font.Height = -8
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Number des Clients Active:')
@@ -2439,6 +2499,7 @@ object ClientListF: TClientListF
           VAlign = vaCenter
         end
         object Passif: TfrxMemoView
+          AllowVectorExport = True
           Left = 105.346634880000000000
           Top = 14.677180000000000000
           Width = 87.307045120000000000
@@ -2449,11 +2510,13 @@ object ClientListF: TClientListF
           Font.Height = -8
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo18: TfrxMemoView
+          AllowVectorExport = True
           Left = -1.188495510000000000
           Top = 14.677180000000000000
           Width = 106.960566460000000000
@@ -2464,6 +2527,7 @@ object ClientListF: TClientListF
           Font.Height = -8
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Number des Clients Passif:')
@@ -2471,6 +2535,7 @@ object ClientListF: TClientListF
           VAlign = vaCenter
         end
         object Tout: TfrxMemoView
+          AllowVectorExport = True
           Left = 105.346634880000000000
           Top = 29.354360000000000000
           Width = 87.307045120000000000
@@ -2481,6 +2546,7 @@ object ClientListF: TClientListF
           Font.Height = -9
           Font.Name = 'Helvetica LT Std'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = 13948116
           HAlign = haCenter
           Memo.UTF8W = (
@@ -2489,6 +2555,7 @@ object ClientListF: TClientListF
           VAlign = vaCenter
         end
         object Memo21: TfrxMemoView
+          AllowVectorExport = True
           Left = -1.188495510000000000
           Top = 29.354360000000000000
           Width = 106.960566460000000000
@@ -2499,6 +2566,7 @@ object ClientListF: TClientListF
           Font.Height = -8
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           Fill.BackColor = 13948116
           HAlign = haRight
           Memo.UTF8W = (

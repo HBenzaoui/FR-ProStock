@@ -2,7 +2,7 @@ object LoginF: TLoginF
   Left = 0
   Top = 0
   BorderStyle = bsDialog
-  Caption = 'ProStock'
+  Caption = 'WeeCom-Pro'
   ClientHeight = 146
   ClientWidth = 530
   Color = 15527148
@@ -2036,7 +2036,7 @@ object LoginF: TLoginF
   object Label2: TLabel
     Left = 275
     Top = 79
-    Width = 73
+    Width = 76
     Height = 13
     Caption = '21 jours restants'
     Font.Charset = DEFAULT_CHARSET
@@ -2154,7 +2154,7 @@ object LoginF: TLoginF
     Appearance.ProgressFont.Name = 'Tahoma'
     Appearance.ProgressFont.Style = []
     Appearance.ValueFormat = '%.0f%%'
-    Version = '1.9.0.2'
+    Version = '1.9.0.3'
     MarqueeColor = clNone
     TabStop = False
     TMSStyle = 0

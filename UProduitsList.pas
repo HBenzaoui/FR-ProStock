@@ -13,7 +13,7 @@ uses
   Vcl.WinXCtrls, Vcl.Buttons, sSpeedButton, AdvToolBtn, Vcl.ExtCtrls, EhLibVCL,
   GridsEh, DBAxisGridsEh, Data.SqlExpr, Vcl.Imaging.jpeg, DBGridEh, frxExportPDF,
   frxClass, frxExportXLS, frxDBSet, acImage, Vcl.Menus, Vcl.ComCtrls, sStatusBar,
-  ExcelXP, Vcl.AppEvnts;
+  ExcelXP, Vcl.AppEvnts, frxExportBaseDialog;
 
 type
   TProduitsListF = class(TForm)
@@ -154,9 +154,17 @@ type
     procedure Select_7_TVA;
     { Private declarations }
   public
-    { Public declarations }
-
     CodePToUseOut: Integer;
+    const PSQL= 'SELECT *, '
+    +'   ((prixht_p * tva_p)/100+ prixht_p ) AS PrixATTC,  '
+    +'   ((prixvd_p * tva_p)/100+ prixvd_p ) AS PrixVTTCD, '
+    +'   ((prixvr_p * tva_p)/100+ prixvr_p ) AS PrixVTTCR, '
+    +'   ((prixvg_p * tva_p)/100+ prixvg_p ) AS PrixVTTCG, '
+    +'   ((prixva_p * tva_p)/100+ prixva_p ) AS PrixVTTCA, '
+    +'   ((prixva2_p * tva_p)/100+ prixva2_p ) AS PrixVTTCA2,  '
+    +'   (qut_p + qutini_p ) AS QutDispo, '
+    +'   ((qut_p + qutini_p) * prixht_p ) AS ValueStock '
+    +' FROM produit ' ;
 // const   CodePToUseOut = 0;
   end;
 
@@ -1297,51 +1305,38 @@ begin
   if ResherchPARDesProduitsRdioBtn.Checked then
     if (ResearchProduitsEdt.text <> '') and not (ResearchProduitsEdt.Text[1] in N) then
     begin
-      MainForm.ProduitTable.Filtered := false;
-      MainForm.ProduitTable.Filter := '[nom_p] LIKE ' + quotedstr('%' + ResearchProduitsEdt.Text + '%') + ' OR ' + '[refer_p] LIKE ' + quotedstr('%' + ResearchProduitsEdt.Text + '%');
-      MainForm.ProduitTable.Filtered := True;
+        MainForm.ProduitTable.DisableControls;
+        MainForm.ProduitTable.Active:=False;
+        MainForm.ProduitTable.SQL.Clear;
+        MainForm.ProduitTable.SQL.Text:= PSQL + ' WHERE LOWER(nom_p) LIKE LOWER' + '('''+'%'+(ResearchProduitsEdt.Text)+'%'+''')' + ' OR ' + 'LOWER(refer_p) LIKE LOWER' +  '('''+'%'+(ResearchProduitsEdt.Text)+'%'+''')';
+        MainForm.ProduitTable.Active:=True;
+        MainForm.ProduitTable.EnableControls;
     end
     else
     begin
-      MainForm.ProduitTable.Filtered := false;
+//      MainForm.ProduitTable.Filtered := false;
+      MainForm.ProduitTable.DisableControls;
+      MainForm.ProduitTable.Active:=False;
+      MainForm.ProduitTable.SQL.Clear;
+      MainForm.ProduitTable.SQL.Text:= PSQL ;
+      MainForm.ProduitTable.Active:=True;
+      MainForm.ProduitTable.EnableControls;
       ResearchProduitsEdt.Text := '';
     end;
 
   if ResherchPARDCodProduitsRdioBtn.Checked then
     if (ResearchProduitsEdt.text = '') then
     begin
-      MainForm.ProduitTable.Filtered := false;
+//      MainForm.ProduitTable.Filtered := false;
+      MainForm.ProduitTable.DisableControls;
+      MainForm.ProduitTable.Active:=False;
+      MainForm.ProduitTable.SQL.Clear;
+      MainForm.ProduitTable.SQL.Text:= PSQL ;
+      MainForm.ProduitTable.Active:=True;
+      MainForm.ProduitTable.EnableControls;
+      ResearchProduitsEdt.Text := '';
     end;
 
-//    if (ResearchProduitsEdt.text <> '') then
-//    begin
-//      MainForm.ProduitTable.DisableControls;
-//      MainForm.SQLQuery.Active:=False;
-//      MainForm.SQLQuery.SQL.Clear;
-//      MainForm.SQLQuery.SQL.Text:='SELECT nom_cb,code_p FROM codebarres WHERE nom_cb = ' +''+ QuotedStr( ResearchProduitsEdt.Text )+'' ;
-//      MainForm.SQLQuery.Active:=True;
-//      if MainForm.SQLQuery.FieldValues['code_p'] <> null then
-//     begin
-//      CodeCB:=MainForm.SQLQuery.FieldValues['code_p'];
-//     end;
-//      MainForm.ProduitTable.Filtered := false;
-//      MainForm.ProduitTable.Filter := '[codebar_p] = ' + quotedstr( ResearchProduitsEdt.Text )  + ' OR [code_p] = '+ IntToStr(CodeCB) ;
-//      MainForm.ProduitTable.Filtered := True;
-//
-//       MainForm.ProduitTable.EnableControls;
-//
-//
-//
-//
-//    end
-//    else
-//    begin
-//      MainForm.ProduitTable.Filtered := false;
-//    end;
-
-
-  MainForm.SQLQuery.Active := False;
-  MainForm.SQLQuery.SQL.Clear;
 end;
 
 procedure TProduitsListF.ResearchProduitsEdtEnter(Sender: TObject);
