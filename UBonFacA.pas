@@ -11,7 +11,7 @@ uses
   DBGridEhToolCtrls, DynVarsEh, Data.DB, Vcl.StdCtrls, Vcl.ComCtrls,
   Vcl.WinXCtrls, Vcl.Buttons, sSpeedButton, AdvToolBtn, Vcl.ExtCtrls, EhLibVCL,
   GridsEh, DBAxisGridsEh, DBGridEh, frxExportPDF, frxClass, frxExportXLS,
-  frxDBSet, acImage, Vcl.Menus, sStatusBar, Vcl.AppEvnts;
+  frxDBSet, acImage, Vcl.Menus, sStatusBar, Vcl.AppEvnts, frxExportBaseDialog;
 
 type
   TBonFacAF = class(TForm)
@@ -1125,59 +1125,59 @@ end;
 end;
 
 //-----this is to highlight text in dbgrid when shearch---------------
-//procedure HighlightCellText(AGrid :TDbGridEH; const ARect : TRect; AColumn : TColumnEh;  FilterText : string; AState:TGridDrawState ;
-//  BkColor : TColor = clYellow; SelectedBkColor : TColor = clGray);
-//var
-//  HlRect : TRect;
-//  Position : Integer;
-//  HlText, FilterColName,DisplayText: string;
-//  i, offset : Integer;
-//begin
-//   DisplayText := Acolumn.Field.AsString;
-//   Position := Pos(AnsiLowerCase(FilterText), AnsiLowerCase(DisplayText){  AnsiLowerCase(AColumn.DisplayText)});
-//   if Position > 0 then
-//   begin
-//     // set highlight area
-//     case AColumn.Alignment of
-//       taLeftJustify:  HlRect.Left := ARect.Left + AGrid.Canvas.TextWidth(Copy(DisplayText, 1, Position-1)) + 1;
-//       taRightJustify: begin
-//         Offset := AGrid.Canvas.TextWidth(Copy(DisplayText, 1,1)) - 1;
-//         HlRect.Left :=  (ARect.Right - AGrid.Canvas.TextWidth(DisplayText)-offset) + AGrid.Canvas.TextWidth(Copy(DisplayText, 1, Position-1));
-//       end;
-//       taCenter: begin
-//         Offset := ((ARect.Right - ARect.Left) div 2) - (AGrid.Canvas.TextWidth(DisplayText) div 2)
-//         - (AGrid.Canvas.TextWidth(Copy(DisplayText, 1,1)) - 2);
-//
-//         HlRect.Left := (ARect.Right - AGrid.Canvas.TextWidth(DisplayText)- offset) + AGrid.Canvas.TextWidth(Copy(DisplayText, 1, Position-1));
-//       end;
-//     end;
-//
-//     HlRect.Top := ARect.Top + 1;
-//     HlRect.Right := HlRect.Left +AGrid.Canvas.TextWidth(Copy(DisplayText, Position, Length(FilterText))) + 1 ;
-//     HlRect.Bottom := ARect.Bottom - 1;
-//
-//     //check for  limit of the cell
-//     if HlRect.Right > ARect.Right then
-//       HlRect.Right := ARect.Right;
-//
-//     // setup the color and draw the rectangle in a width of the matching text
-//     if gdSelected in AState then
-//       AGrid.Canvas.Brush.Color := $0000FFFF//$00F8CA90//$0083CAF4
-//     else
-//       AGrid.Canvas.Brush.Color := $0000FFFF;//$00F8CA90;//$0083CAF4;
-//
-//     AGrid.Canvas.FillRect(HlRect);
-//
-//     HlText := Copy(DisplayText,Position, Length(FilterText));
-//     AGrid.Canvas.TextRect(HlRect,HlRect.Left + 1,HlRect.Top + 1, HlText);
-//   end;
-//end;
+procedure HighlightCellText(AGrid :TDbGridEH; const ARect : TRect; AColumn : TColumnEh;  FilterText : string; AState:TGridDrawState ;
+  BkColor : TColor = clYellow; SelectedBkColor : TColor = clGray);
+var
+  HlRect : TRect;
+  Position : Integer;
+  HlText, FilterColName,DisplayText: string;
+  i, offset : Integer;
+begin
+   DisplayText := Acolumn.Field.AsString;
+   Position := Pos(AnsiLowerCase(FilterText), AnsiLowerCase(DisplayText){  AnsiLowerCase(AColumn.DisplayText)});
+   if Position > 0 then
+   begin
+     // set highlight area
+     case AColumn.Alignment of
+       taLeftJustify:  HlRect.Left := ARect.Left + AGrid.Canvas.TextWidth(Copy(DisplayText, 1, Position-1)) + 1;
+       taRightJustify: begin
+         Offset := AGrid.Canvas.TextWidth(Copy(DisplayText, 1,1)) - 1;
+         HlRect.Left :=  (ARect.Right - AGrid.Canvas.TextWidth(DisplayText)-offset) + AGrid.Canvas.TextWidth(Copy(DisplayText, 1, Position-1));
+       end;
+       taCenter: begin
+         Offset := ((ARect.Right - ARect.Left) div 2) - (AGrid.Canvas.TextWidth(DisplayText) div 2)
+         - (AGrid.Canvas.TextWidth(Copy(DisplayText, 1,1)) - 2);
+
+         HlRect.Left := (ARect.Right - AGrid.Canvas.TextWidth(DisplayText)- offset) + AGrid.Canvas.TextWidth(Copy(DisplayText, 1, Position-1));
+       end;
+     end;
+
+     HlRect.Top := ARect.Top + 1;
+     HlRect.Right := HlRect.Left +AGrid.Canvas.TextWidth(Copy(DisplayText, Position, Length(FilterText))) + 1 ;
+     HlRect.Bottom := ARect.Bottom - 1;
+
+     //check for  limit of the cell
+     if HlRect.Right > ARect.Right then
+       HlRect.Right := ARect.Right;
+
+     // setup the color and draw the rectangle in a width of the matching text
+     if gdSelected in AState then
+       AGrid.Canvas.Brush.Color := $006DCEFE//$00626262//$0000FFFF//$00F8CA90//$0083CAF4    $00FD9732 //
+     else
+       AGrid.Canvas.Brush.Color := $006DCEFE;//$00626262;//$0000FFFF;//$00F8CA90;//$0083CAF4; $00FD9732;
+
+     AGrid.Canvas.FillRect(HlRect);
+
+     HlText := Copy(DisplayText,Position, Length(FilterText));
+     AGrid.Canvas.TextRect(HlRect,HlRect.Left + 1,HlRect.Top + 1, HlText);
+   end;
+end;
 
 procedure TBonFacAF.BAFacListDBGridEhDrawColumnCell(Sender: TObject;
   const Rect: TRect; DataCol: Integer; Column: TColumnEh;
   State: TGridDrawState);
 begin
-// HighlightCellText(TDBGridEh(Sender),Rect, Column,ResearchBAFacEdt.Text,State);
+ HighlightCellText(TDBGridEh(Sender),Rect, Column,ResearchBAFacEdt.Text,State);
 end;
 
 procedure TBonFacAF.BAFacListDBGridEhKeyDown(Sender: TObject; var Key: Word;

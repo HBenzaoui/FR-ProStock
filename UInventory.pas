@@ -10,7 +10,7 @@ uses
   DBGridEhToolCtrls, DynVarsEh, Vcl.AppEvnts, Vcl.Menus, frxClass, frxDBSet,
   frxExportPDF, frxExportXLS, Vcl.ComCtrls, sStatusBar, EhLibVCL, GridsEh,
   DBAxisGridsEh, DBGridEh, Vcl.StdCtrls, Vcl.WinXCtrls, Vcl.ExtCtrls, acImage,
-  Vcl.Buttons, sSpeedButton, AdvToolBtn, Data.DB;
+  Vcl.Buttons, sSpeedButton, AdvToolBtn, Data.DB, frxExportBaseDialog;
 
 type
   TInventoryF = class(TForm)
