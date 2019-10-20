@@ -3,7 +3,7 @@
         <ProjectGuid>{F47BD3B8-6D1F-4F1D-ACF0-EF4D868342C4}</ProjectGuid>
         <ProjectVersion>18.7</ProjectVersion>
         <FrameworkType>VCL</FrameworkType>
-        <MainSource>ProStock.dpr</MainSource>
+        <MainSource>WeeComPro.dpr</MainSource>
         <Base>True</Base>
         <Config Condition="'$(Config)'==''">Debug</Config>
         <Platform Condition="'$(Platform)'==''">Win32</Platform>
@@ -46,7 +46,7 @@
         <DCC_OutputDRCFile>true</DCC_OutputDRCFile>
         <DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;$(DCC_Namespace)</DCC_Namespace>
         <Icon_MainIcon>$(BDS)\bin\delphi_PROJECTICON.ico</Icon_MainIcon>
-        <SanitizedProjectName>ProStock</SanitizedProjectName>
+        <SanitizedProjectName>WeeComPro</SanitizedProjectName>
         <DCC_DcuOutput>D:\ProStock.DCU\</DCC_DcuOutput>
         <DCC_ExeOutput>.\$(Platform)\$(Config)</DCC_ExeOutput>
         <DCC_E>false</DCC_E>
@@ -337,7 +337,7 @@
         <BorlandProject>
             <Delphi.Personality>
                 <Source>
-                    <Source Name="MainSource">ProStock.dpr</Source>
+                    <Source Name="MainSource">WeeComPro.dpr</Source>
                 </Source>
                 <Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\fqb250.bpl">FastQueryBuilder 1.03</Excluded_Packages>
@@ -382,9 +382,9 @@
             </Delphi.Personality>
             <Deployment Version="3">
                 <DeployFile LocalName="Win32\Debug\ProStock.exe" Configuration="Debug" Class="ProjectOutput"/>
-                <DeployFile LocalName="Win32\Debug\ProStock.exe" Configuration="Debug" Class="ProjectOutput">
+                <DeployFile LocalName="Win32\Debug\WeeComPro.exe" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
-                        <RemoteName>ProStock.exe</RemoteName>
+                        <RemoteName>WeeComPro.exe</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>

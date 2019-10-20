@@ -4,8 +4,8 @@
 3~ qutdispo~ Q.Dispo~ 150~ -1
 4~ famp~ Famille~ 150~ -1
 5~ sfamp~ Sous Famille~ 150~ -1
-6~ prixht_p~ PrixAHT~ 130~ -1
-7~ prixattc~ PrixATTC~ 130~ -1
+6~ prixht_p~ PrixAHT~ 0~ 0
+7~ prixattc~ PrixATTC~ 0~ 0
 8~ valuestock~ Valeur de Stock~ 130~ 0
 9~ prixvd_p~ PrixVHT Détail~ 130~ 0
 10~ prixvttcd~ PrixVTTC Détail~ 130~ 0
