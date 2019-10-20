@@ -457,7 +457,7 @@ object ChargesFListF: TChargesFListF
     object Label1: TLabel
       Left = 283
       Top = 10
-      Width = 22
+      Width = 23
       Height = 18
       Caption = 'Du:'
       Color = 15722984
@@ -720,8 +720,8 @@ object ChargesFListF: TChargesFListF
       Top = 38
       Width = 87
       Height = 23
-      Date = 42435.595104571760000000
-      Time = 42435.595104571760000000
+      Date = 42435.000000000000000000
+      Time = 0.595104571759293300
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 4207405
       Font.Height = 15
@@ -736,8 +736,8 @@ object ChargesFListF: TChargesFListF
       Top = 7
       Width = 87
       Height = 23
-      Date = 42435.595104571760000000
-      Time = 42435.595104571760000000
+      Date = 42435.000000000000000000
+      Time = 0.595104571759293300
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 4207405
       Font.Height = 15
@@ -900,6 +900,7 @@ object ChargesFListF: TChargesFListF
     TitleParams.VertLines = True
     VertScrollBar.Width = 15
     OnDblClick = ChargesListDBGridEhDblClick
+    OnDrawColumnCell = ChargesListDBGridEhDrawColumnCell
     OnKeyDown = ChargesListDBGridEhKeyDown
     OnKeyPress = ChargesListDBGridEhKeyPress
     Columns = <
@@ -1585,7 +1586,7 @@ object ChargesFListF: TChargesFListF
     Top = 618
   end
   object ChargeListfrxRprt: TfrxReport
-    Version = '5.6.1'
+    Version = '6.3.12'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -1616,6 +1617,7 @@ object ChargesFListF: TChargesFListF
         Font.Height = -16
         Font.Name = 'Arial'
         Font.Style = [fsBold]
+        Frame.Typ = []
         Fill.BackColor = 14211288
       end
       item
@@ -1625,6 +1627,7 @@ object ChargesFListF: TChargesFListF
         Font.Height = -13
         Font.Name = 'Arial'
         Font.Style = [fsBold]
+        Frame.Typ = []
         Fill.BackColor = 15790320
       end
       item
@@ -1634,6 +1637,7 @@ object ChargesFListF: TChargesFListF
         Font.Height = -13
         Font.Name = 'Arial'
         Font.Style = [fsBold]
+        Frame.Typ = []
         Fill.BackColor = 15790320
       end
       item
@@ -1643,6 +1647,7 @@ object ChargesFListF: TChargesFListF
         Font.Height = -13
         Font.Name = 'Arial'
         Font.Style = []
+        Frame.Typ = []
       end
       item
         Name = 'Group footer'
@@ -1660,6 +1665,7 @@ object ChargesFListF: TChargesFListF
         Font.Height = -13
         Font.Name = 'Arial'
         Font.Style = []
+        Frame.Typ = []
         Frame.Width = 2.000000000000000000
       end>
     object Data: TfrxDataPage
@@ -1675,13 +1681,17 @@ object ChargesFListF: TChargesFListF
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
+      MirrorMode = []
       object PageHeader1: TfrxPageHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 111.165430000000000000
         Top = 18.897650000000000000
         Width = 1046.929810000000000000
         object PreiodRX: TfrxMemoView
           Align = baCenter
+          AllowVectorExport = True
           Left = 371.023861665000000000
           Top = 34.015770000000000000
           Width = 304.882086670000000000
@@ -1691,6 +1701,7 @@ object ChargesFListF: TChargesFListF
           Font.Height = -12
           Font.Name = 'Helvetica LT Std'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'P'#233'riode du :')
@@ -1699,6 +1710,7 @@ object ChargesFListF: TChargesFListF
         end
         object Memo1: TfrxMemoView
           Align = baCenter
+          AllowVectorExport = True
           Left = 372.913626665000000000
           Top = 2.519686670000000000
           Width = 301.102556670000000000
@@ -1716,6 +1728,7 @@ object ChargesFListF: TChargesFListF
           VAlign = vaCenter
         end
         object Memo2: TfrxMemoView
+          AllowVectorExport = True
           Left = 113.409400000000000000
           Top = 83.313571820000000000
           Width = 86.929190000000000000
@@ -1726,6 +1739,7 @@ object ChargesFListF: TChargesFListF
           Font.Height = -11
           Font.Name = 'Gotham Rounded Light'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = 13948116
           Memo.UTF8W = (
             '          Date')
@@ -1733,6 +1747,7 @@ object ChargesFListF: TChargesFListF
           VAlign = vaCenter
         end
         object Memo5: TfrxMemoView
+          AllowVectorExport = True
           Top = 83.313571820000000000
           Width = 113.385826770000000000
           Height = 28.174678180000000000
@@ -1742,6 +1757,7 @@ object ChargesFListF: TChargesFListF
           Font.Height = -11
           Font.Name = 'Gotham Rounded Light'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = 13948116
           HAlign = haCenter
           Memo.UTF8W = (
@@ -1750,6 +1766,7 @@ object ChargesFListF: TChargesFListF
           VAlign = vaCenter
         end
         object Date: TfrxMemoView
+          AllowVectorExport = True
           Left = 963.780150000000000000
           Top = 3.779530000000000000
           Width = 79.370130000000000000
@@ -1759,6 +1776,7 @@ object ChargesFListF: TChargesFListF
           Font.Height = -13
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[Date]')
@@ -1766,6 +1784,7 @@ object ChargesFListF: TChargesFListF
           VAlign = vaCenter
         end
         object Memo3: TfrxMemoView
+          AllowVectorExport = True
           Left = 200.079011100000000000
           Top = 83.313571820000000000
           Width = 238.315090000000000000
@@ -1776,6 +1795,7 @@ object ChargesFListF: TChargesFListF
           Font.Height = -11
           Font.Name = 'Gotham Rounded Light'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = 13948116
           HAlign = haCenter
           Memo.UTF8W = (
@@ -1784,6 +1804,7 @@ object ChargesFListF: TChargesFListF
           VAlign = vaCenter
         end
         object Memo8: TfrxMemoView
+          AllowVectorExport = True
           Left = 671.220941100000000000
           Top = 83.313571820000000000
           Width = 94.488188980000000000
@@ -1794,6 +1815,7 @@ object ChargesFListF: TChargesFListF
           Font.Height = -11
           Font.Name = 'Gotham Rounded Light'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = 13948116
           HAlign = haCenter
           Memo.UTF8W = (
@@ -1802,6 +1824,7 @@ object ChargesFListF: TChargesFListF
           VAlign = vaCenter
         end
         object Memo15: TfrxMemoView
+          AllowVectorExport = True
           Left = 437.732691100000000000
           Top = 83.472480000000000000
           Width = 117.370130000000000000
@@ -1812,6 +1835,7 @@ object ChargesFListF: TChargesFListF
           Font.Height = -11
           Font.Name = 'Gotham Rounded Light'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = 13948116
           HAlign = haCenter
           Memo.UTF8W = (
@@ -1820,6 +1844,7 @@ object ChargesFListF: TChargesFListF
           VAlign = vaCenter
         end
         object Memo17: TfrxMemoView
+          AllowVectorExport = True
           Left = 554.677651100000000000
           Top = 83.472480000000000000
           Width = 117.370130000000000000
@@ -1830,6 +1855,7 @@ object ChargesFListF: TChargesFListF
           Font.Height = -11
           Font.Name = 'Gotham Rounded Light'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = 13948116
           HAlign = haCenter
           Memo.UTF8W = (
@@ -1838,6 +1864,7 @@ object ChargesFListF: TChargesFListF
           VAlign = vaCenter
         end
         object Memo10: TfrxMemoView
+          AllowVectorExport = True
           Left = 764.913891100000000000
           Top = 83.472480000000000000
           Width = 94.488188980000000000
@@ -1848,6 +1875,7 @@ object ChargesFListF: TChargesFListF
           Font.Height = -11
           Font.Name = 'Gotham Rounded Light'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = 13948116
           HAlign = haCenter
           Memo.UTF8W = (
@@ -1856,6 +1884,7 @@ object ChargesFListF: TChargesFListF
           VAlign = vaCenter
         end
         object Memo22: TfrxMemoView
+          AllowVectorExport = True
           Left = 858.402141100000000000
           Top = 83.472480000000000000
           Width = 94.488188980000000000
@@ -1866,6 +1895,7 @@ object ChargesFListF: TChargesFListF
           Font.Height = -11
           Font.Name = 'Gotham Rounded Light'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = 13948116
           HAlign = haCenter
           Memo.UTF8W = (
@@ -1874,6 +1904,7 @@ object ChargesFListF: TChargesFListF
           VAlign = vaCenter
         end
         object Memo6: TfrxMemoView
+          AllowVectorExport = True
           Left = 951.299791100000000000
           Top = 83.472480000000000000
           Width = 94.488188980000000000
@@ -1884,6 +1915,7 @@ object ChargesFListF: TChargesFListF
           Font.Height = -11
           Font.Name = 'Gotham Rounded Light'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = 13948116
           HAlign = haCenter
           Memo.UTF8W = (
@@ -1893,6 +1925,7 @@ object ChargesFListF: TChargesFListF
         end
         object Caisse: TfrxMemoView
           Align = baCenter
+          AllowVectorExport = True
           Left = 302.992321665000000000
           Top = 56.692950000000000000
           Width = 440.945166670000000000
@@ -1902,6 +1935,7 @@ object ChargesFListF: TChargesFListF
           Font.Height = -12
           Font.Name = 'Helvetica LT Std'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Caisse :')
@@ -1911,10 +1945,12 @@ object ChargesFListF: TChargesFListF
       end
       object PageFooter1: TfrxPageFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 22.677180000000000000
         Top = 321.260050000000000000
         Width = 1046.929810000000000000
         object Page: TfrxMemoView
+          AllowVectorExport = True
           Left = 899.528140000000000000
           Top = 2.000000000000000000
           Width = 147.401670000000000000
@@ -1924,6 +1960,7 @@ object ChargesFListF: TChargesFListF
           Font.Height = -9
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Page: [Page]/[TotalPages#]')
@@ -1936,6 +1973,7 @@ object ChargesFListF: TChargesFListF
             end>
         end
         object Memo12: TfrxMemoView
+          AllowVectorExport = True
           Top = 1.380201430000000000
           Width = 35.095635710000000000
           Height = 18.897650000000000000
@@ -1944,12 +1982,14 @@ object ChargesFListF: TChargesFListF
           Font.Height = -9
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Agent :')
           ParentFont = False
           VAlign = vaCenter
         end
         object Agent: TfrxMemoView
+          AllowVectorExport = True
           Left = 31.795300000000000000
           Top = 1.000000000000000000
           Width = 457.323130000000000000
@@ -1961,19 +2001,23 @@ object ChargesFListF: TChargesFListF
           Font.Height = -9
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           ParentFont = False
           VAlign = vaCenter
         end
         object Shape2: TfrxShapeView
+          AllowVectorExport = True
           Width = 1046.929810000000000000
           Height = 2.267716535433070000
           Fill.BackColor = 13948116
           Fill.ForeColor = clNone
           Frame.Color = clNone
+          Frame.Typ = []
         end
       end
       object MasterData1: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 21.236240000000000000
         Top = 188.976500000000000000
         Width = 1046.929810000000000000
@@ -1981,12 +2025,15 @@ object ChargesFListF: TChargesFListF
         DataSetName = 'frxChargeListDB'
         RowCount = 0
         object Shape1: TfrxShapeView
+          AllowVectorExport = True
           Top = 21.236240000000000000
           Width = 1046.929810000000000000
           Fill.BackColor = 13948116
           Frame.Color = 13948116
+          Frame.Typ = []
         end
         object frxBonLivDBnum_bvfac: TfrxMemoView
+          AllowVectorExport = True
           Left = 113.409400000000000000
           Top = 0.779530000000000000
           Width = 85.795241420000000000
@@ -2001,6 +2048,7 @@ object ChargesFListF: TChargesFListF
           Font.Height = -13
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxChargeListDB."date_ch"]')
@@ -2008,6 +2056,7 @@ object ChargesFListF: TChargesFListF
           VAlign = vaCenter
         end
         object frxBonLivDBclientbvfac: TfrxMemoView
+          AllowVectorExport = True
           Left = 9.102350000000000000
           Top = 0.779530000000000000
           Width = 102.047236770000000000
@@ -2020,12 +2069,14 @@ object ChargesFListF: TChargesFListF
           Font.Height = -13
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxChargeListDB."refer_ch"]')
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo4: TfrxMemoView
+          AllowVectorExport = True
           Left = 199.905690000000000000
           Top = 0.779530000000000000
           Width = 238.488411100000000000
@@ -2038,6 +2089,7 @@ object ChargesFListF: TChargesFListF
           Font.Height = -13
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxChargeListDB."nom_ch"]')
@@ -2045,6 +2097,7 @@ object ChargesFListF: TChargesFListF
           VAlign = vaCenter
         end
         object Memo9: TfrxMemoView
+          AllowVectorExport = True
           Left = 671.047620000000000000
           Top = 0.779530000000000000
           Width = 94.488188980000000000
@@ -2059,6 +2112,7 @@ object ChargesFListF: TChargesFListF
           Font.Height = -13
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxChargeListDB."montht_ch"]')
@@ -2066,6 +2120,7 @@ object ChargesFListF: TChargesFListF
           VAlign = vaCenter
         end
         object Memo16: TfrxMemoView
+          AllowVectorExport = True
           Left = 437.559370000000000000
           Top = 0.938438180000000000
           Width = 117.543451100000000000
@@ -2078,6 +2133,7 @@ object ChargesFListF: TChargesFListF
           Font.Height = -13
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxChargeListDB."CHType"]')
@@ -2085,6 +2141,7 @@ object ChargesFListF: TChargesFListF
           VAlign = vaCenter
         end
         object Memo19: TfrxMemoView
+          AllowVectorExport = True
           Left = 554.504330000000000000
           Top = 0.938438180000000000
           Width = 117.543451100000000000
@@ -2097,6 +2154,7 @@ object ChargesFListF: TChargesFListF
           Font.Height = -13
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxChargeListDB."CHSType"]')
@@ -2104,6 +2162,7 @@ object ChargesFListF: TChargesFListF
           VAlign = vaCenter
         end
         object Memo11: TfrxMemoView
+          AllowVectorExport = True
           Left = 764.740570000000000000
           Top = 0.938438180000000000
           Width = 94.488188980000000000
@@ -2118,6 +2177,7 @@ object ChargesFListF: TChargesFListF
           Font.Height = -13
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxChargeListDB."monttva_ch"]')
@@ -2125,6 +2185,7 @@ object ChargesFListF: TChargesFListF
           VAlign = vaCenter
         end
         object Memo23: TfrxMemoView
+          AllowVectorExport = True
           Left = 859.228820000000000000
           Top = 0.938438180000000000
           Width = 94.488188980000000000
@@ -2139,6 +2200,7 @@ object ChargesFListF: TChargesFListF
           Font.Height = -13
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxChargeListDB."timber_ch"]')
@@ -2146,6 +2208,7 @@ object ChargesFListF: TChargesFListF
           VAlign = vaCenter
         end
         object Memo7: TfrxMemoView
+          AllowVectorExport = True
           Left = 952.126470000000000000
           Top = 0.938438180000000000
           Width = 94.488188980000000000
@@ -2160,6 +2223,7 @@ object ChargesFListF: TChargesFListF
           Font.Height = -13
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxChargeListDB."montttc_ch"]')
@@ -2169,10 +2233,12 @@ object ChargesFListF: TChargesFListF
       end
       object Footer1: TfrxFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 26.834662760000000000
         Top = 234.330860000000000000
         Width = 1046.929810000000000000
         object Memo18: TfrxMemoView
+          AllowVectorExport = True
           Left = 671.047620000000000000
           Top = 0.377952760000000000
           Width = 94.488188980000000000
@@ -2184,6 +2250,7 @@ object ChargesFListF: TChargesFListF
           Font.Height = -13
           Font.Name = 'Helvetica LT Std'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = 13948116
           HAlign = haRight
           Memo.UTF8W = (
@@ -2192,6 +2259,7 @@ object ChargesFListF: TChargesFListF
           VAlign = vaCenter
         end
         object Memo20: TfrxMemoView
+          AllowVectorExport = True
           Left = 580.559370000000000000
           Top = 0.377952760000000000
           Width = 90.708720000000000000
@@ -2201,6 +2269,7 @@ object ChargesFListF: TChargesFListF
           Font.Height = -13
           Font.Name = 'Helvetica LT Std'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = 13948116
           HAlign = haRight
           Memo.UTF8W = (
@@ -2209,6 +2278,7 @@ object ChargesFListF: TChargesFListF
           VAlign = vaCenter
         end
         object Memo13: TfrxMemoView
+          AllowVectorExport = True
           Left = 111.346630000000000000
           Width = 117.543285120000000000
           Height = 26.456710000000000000
@@ -2217,12 +2287,14 @@ object ChargesFListF: TChargesFListF
           Font.Height = -9
           Font.Name = 'Helvetica LT Std'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             '[COUNT(MasterData1)]')
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo14: TfrxMemoView
+          AllowVectorExport = True
           Width = 109.606370000000000000
           Height = 26.456710000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -2230,6 +2302,7 @@ object ChargesFListF: TChargesFListF
           Font.Height = -9
           Font.Name = 'Helvetica LT Std'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Number des Charges :')
@@ -2237,6 +2310,7 @@ object ChargesFListF: TChargesFListF
           VAlign = vaCenter
         end
         object Memo21: TfrxMemoView
+          AllowVectorExport = True
           Left = 764.913891100000000000
           Top = 0.536860940000000000
           Width = 94.488188980000000000
@@ -2248,6 +2322,7 @@ object ChargesFListF: TChargesFListF
           Font.Height = -13
           Font.Name = 'Helvetica LT Std'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = 13948116
           HAlign = haRight
           Memo.UTF8W = (
@@ -2256,6 +2331,7 @@ object ChargesFListF: TChargesFListF
           VAlign = vaCenter
         end
         object Memo24: TfrxMemoView
+          AllowVectorExport = True
           Left = 859.228820000000000000
           Top = 0.536860940000000000
           Width = 94.488188980000000000
@@ -2267,6 +2343,7 @@ object ChargesFListF: TChargesFListF
           Font.Height = -13
           Font.Name = 'Helvetica LT Std'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = 13948116
           HAlign = haRight
           Memo.UTF8W = (
@@ -2275,6 +2352,7 @@ object ChargesFListF: TChargesFListF
           VAlign = vaCenter
         end
         object Memo25: TfrxMemoView
+          AllowVectorExport = True
           Left = 952.126470000000000000
           Top = 0.536860940000000000
           Width = 94.488188980000000000
@@ -2286,6 +2364,7 @@ object ChargesFListF: TChargesFListF
           Font.Height = -13
           Font.Name = 'Helvetica LT Std'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = 13948116
           HAlign = haRight
           Memo.UTF8W = (
@@ -2366,6 +2445,8 @@ object ChargesFListF: TChargesFListF
     CenterWindow = False
     PrintScaling = False
     PdfA = False
+    PDFStandard = psNone
+    PDFVersion = pv17
     Left = 408
     Top = 480
   end
@@ -2383,7 +2464,7 @@ object ChargesFListF: TChargesFListF
     end
   end
   object ChargefrxRprt: TfrxReport
-    Version = '5.6.1'
+    Version = '6.3.12'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -2414,6 +2495,7 @@ object ChargesFListF: TChargesFListF
         Font.Height = -16
         Font.Name = 'Arial'
         Font.Style = [fsBold]
+        Frame.Typ = []
         Fill.BackColor = 14211288
       end
       item
@@ -2423,6 +2505,7 @@ object ChargesFListF: TChargesFListF
         Font.Height = -13
         Font.Name = 'Arial'
         Font.Style = [fsBold]
+        Frame.Typ = []
         Fill.BackColor = 15790320
       end
       item
@@ -2432,6 +2515,7 @@ object ChargesFListF: TChargesFListF
         Font.Height = -13
         Font.Name = 'Arial'
         Font.Style = [fsBold]
+        Frame.Typ = []
         Fill.BackColor = 15790320
       end
       item
@@ -2441,6 +2525,7 @@ object ChargesFListF: TChargesFListF
         Font.Height = -13
         Font.Name = 'Arial'
         Font.Style = []
+        Frame.Typ = []
       end
       item
         Name = 'Group footer'
@@ -2458,6 +2543,7 @@ object ChargesFListF: TChargesFListF
         Font.Height = -13
         Font.Name = 'Arial'
         Font.Style = []
+        Frame.Typ = []
         Frame.Width = 2.000000000000000000
       end>
     object Data: TfrxDataPage
@@ -2472,13 +2558,17 @@ object ChargesFListF: TChargesFListF
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
+      MirrorMode = []
       object PageHeader1: TfrxPageHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 462.661720000000000000
         Top = 18.897650000000000000
         Width = 718.110700000000000000
         object Memo1: TfrxMemoView
           Align = baCenter
+          AllowVectorExport = True
           Left = 253.934498330000000000
           Top = 84.228406670000000000
           Width = 210.241703340000000000
@@ -2496,6 +2586,7 @@ object ChargesFListF: TChargesFListF
           VAlign = vaCenter
         end
         object Memo2: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 163.960730000000000000
           Width = 123.312513340000000000
@@ -2505,12 +2596,14 @@ object ChargesFListF: TChargesFListF
           Font.Height = -15
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Nous soussign'#233's:')
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo3: TfrxMemoView
+          AllowVectorExport = True
           Left = 128.092043340000000000
           Top = 167.960730000000000000
           Width = 573.076583340000000000
@@ -2529,6 +2622,7 @@ object ChargesFListF: TChargesFListF
           VAlign = vaCenter
         end
         object Memo4: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 201.315090000000000000
           Width = 217.800763340000000000
@@ -2538,12 +2632,14 @@ object ChargesFListF: TChargesFListF
           Font.Height = -15
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Certifions avoir pay'#233' en date du:')
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo5: TfrxMemoView
+          AllowVectorExport = True
           Left = 225.359823340000000000
           Top = 208.874150000000000000
           Width = 77.958153340000000000
@@ -2563,6 +2659,7 @@ object ChargesFListF: TChargesFListF
           VAlign = vaCenter
         end
         object Memo6: TfrxMemoView
+          AllowVectorExport = True
           Left = 309.921460000000000000
           Top = 201.315090000000000000
           Width = 96.855803340000000000
@@ -2572,6 +2669,7 @@ object ChargesFListF: TChargesFListF
           Font.Height = -15
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'La somme de:')
@@ -2579,6 +2677,7 @@ object ChargesFListF: TChargesFListF
           VAlign = vaCenter
         end
         object Memo7: TfrxMemoView
+          AllowVectorExport = True
           Left = 411.556793340000000000
           Top = 208.874150000000000000
           Width = 289.611833340000000000
@@ -2600,6 +2699,7 @@ object ChargesFListF: TChargesFListF
           VAlign = vaCenter
         end
         object Memo9: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 270.685220000000000000
           Width = 40.162853340000000000
@@ -2609,12 +2709,14 @@ object ChargesFListF: TChargesFListF
           Font.Height = -15
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Motif:')
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo10: TfrxMemoView
+          AllowVectorExport = True
           Left = 44.942383340000000000
           Top = 274.685220000000000000
           Width = 656.226243340000000000
@@ -2633,6 +2735,7 @@ object ChargesFListF: TChargesFListF
           VAlign = vaCenter
         end
         object Memo11: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 311.260050000000000000
           Width = 96.855803340000000000
@@ -2642,12 +2745,14 @@ object ChargesFListF: TChargesFListF
           Font.Height = -15
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Observations:')
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo12: TfrxMemoView
+          AllowVectorExport = True
           Left = 101.635333340000000000
           Top = 315.260050000000000000
           Width = 599.533293340000000000
@@ -2666,6 +2771,7 @@ object ChargesFListF: TChargesFListF
           VAlign = vaCenter
         end
         object Memo13: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 348.834880000000000000
           Width = 361.422903340000000000
@@ -2675,12 +2781,14 @@ object ChargesFListF: TChargesFListF
           Font.Height = -13
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Ce re'#231'u est '#233'tabli pour servir et valoir ce que de droit.')
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo14: TfrxMemoView
+          AllowVectorExport = True
           Left = 63.031540000000000000
           Top = 386.189240000000000000
           Width = 96.855803340000000000
@@ -2690,6 +2798,7 @@ object ChargesFListF: TChargesFListF
           Font.Height = -15
           Font.Name = 'Helvetica LT Std'
           Font.Style = [fsUnderline]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Signature')
@@ -2697,6 +2806,7 @@ object ChargesFListF: TChargesFListF
           VAlign = vaCenter
         end
         object Memo15: TfrxMemoView
+          AllowVectorExport = True
           Left = 287.165909870000000000
           Top = 386.189240000000000000
           Width = 143.778880260000000000
@@ -2706,6 +2816,7 @@ object ChargesFListF: TChargesFListF
           Font.Height = -15
           Font.Name = 'Helvetica LT Std'
           Font.Style = [fsUnderline]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Signature b'#233'nificiaire')
@@ -2713,6 +2824,7 @@ object ChargesFListF: TChargesFListF
           VAlign = vaCenter
         end
         object Memo17: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 128.165430000000000000
           Width = 28.824263340000000000
@@ -2722,12 +2834,14 @@ object ChargesFListF: TChargesFListF
           Font.Height = -15
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'N'#176' :')
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo18: TfrxMemoView
+          AllowVectorExport = True
           Left = 33.603793340000000000
           Top = 132.165430000000000000
           Width = 119.532983340000000000
@@ -2747,6 +2861,7 @@ object ChargesFListF: TChargesFListF
           VAlign = vaCenter
         end
         object Name: TfrxMemoView
+          AllowVectorExport = True
           Left = 4.889765000000000000
           Top = 2.220545670000000000
           Width = 260.787570000000000000
@@ -2758,11 +2873,13 @@ object ChargesFListF: TChargesFListF
           Font.Height = -15
           Font.Name = 'Helvetica LT Std'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Name')
           ParentFont = False
         end
         object Logo: TfrxPictureView
+          AllowVectorExport = True
           Left = 476.220780000000000000
           Top = 2.220545670000000000
           Width = 234.330860000000000000
@@ -2771,11 +2888,13 @@ object ChargesFListF: TChargesFListF
           Center = True
           DataField = 'LOGO'
           DataSetName = 'S_ENTREP'
+          Frame.Typ = []
           HightQuality = False
           Transparent = True
           TransparentColor = clWhite
         end
         object Tel: TfrxMemoView
+          AllowVectorExport = True
           Left = 6.015750630000000000
           Top = 29.236240000000000000
           Width = 149.055214370000000000
@@ -2787,11 +2906,13 @@ object ChargesFListF: TChargesFListF
           Font.Height = -15
           Font.Name = 'Helvetica LT Std'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Tel:')
           ParentFont = False
         end
         object Mob: TfrxMemoView
+          AllowVectorExport = True
           Left = 6.015750630000000000
           Top = 51.913420000000000000
           Width = 148.913400470000000000
@@ -2803,11 +2924,13 @@ object ChargesFListF: TChargesFListF
           Font.Height = -15
           Font.Name = 'Helvetica LT Std'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Mob:')
           ParentFont = False
         end
         object Adr: TfrxMemoView
+          AllowVectorExport = True
           Left = 4.889765000000000000
           Top = 73.811070000000000000
           Width = 215.433210000000000000
@@ -2820,11 +2943,13 @@ object ChargesFListF: TChargesFListF
           Font.Height = -15
           Font.Name = 'Helvetica LT Std'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Adr')
           ParentFont = False
         end
         object MoneyWordRX: TfrxMemoView
+          AllowVectorExport = True
           Left = 7.779530000000000000
           Top = 241.110390000000000000
           Width = 689.764187170000000000
@@ -2844,6 +2969,7 @@ object ChargesFListF: TChargesFListF
           VAlign = vaCenter
         end
         object Memo16: TfrxMemoView
+          AllowVectorExport = True
           Left = 548.811380000000000000
           Top = 386.189240000000000000
           Width = 115.753453340000000000
@@ -2853,6 +2979,7 @@ object ChargesFListF: TChargesFListF
           Font.Height = -15
           Font.Name = 'Helvetica LT Std'
           Font.Style = [fsUnderline]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Signature g'#233'rant')

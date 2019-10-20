@@ -457,7 +457,7 @@ object ReglementCListF: TReglementCListF
     object Label1: TLabel
       Left = 315
       Top = 10
-      Width = 22
+      Width = 23
       Height = 18
       Caption = 'Du:'
       Color = 15722984
@@ -726,8 +726,8 @@ object ReglementCListF: TReglementCListF
       Top = 38
       Width = 87
       Height = 23
-      Date = 42435.595104571760000000
-      Time = 42435.595104571760000000
+      Date = 42435.000000000000000000
+      Time = 0.595104571759293300
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 4207405
       Font.Height = 15
@@ -742,8 +742,8 @@ object ReglementCListF: TReglementCListF
       Top = 7
       Width = 87
       Height = 23
-      Date = 42435.595104571760000000
-      Time = 42435.595104571760000000
+      Date = 42435.000000000000000000
+      Time = 0.595104571759293300
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 4207405
       Font.Height = 15
@@ -1392,7 +1392,7 @@ object ReglementCListF: TReglementCListF
     Top = 672
   end
   object RegCListfrxRprt: TfrxReport
-    Version = '5.6.1'
+    Version = '6.3.12'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -1423,6 +1423,7 @@ object ReglementCListF: TReglementCListF
         Font.Height = -16
         Font.Name = 'Arial'
         Font.Style = [fsBold]
+        Frame.Typ = []
         Fill.BackColor = 14211288
       end
       item
@@ -1432,6 +1433,7 @@ object ReglementCListF: TReglementCListF
         Font.Height = -13
         Font.Name = 'Arial'
         Font.Style = [fsBold]
+        Frame.Typ = []
         Fill.BackColor = 15790320
       end
       item
@@ -1441,6 +1443,7 @@ object ReglementCListF: TReglementCListF
         Font.Height = -13
         Font.Name = 'Arial'
         Font.Style = [fsBold]
+        Frame.Typ = []
         Fill.BackColor = 15790320
       end
       item
@@ -1450,6 +1453,7 @@ object ReglementCListF: TReglementCListF
         Font.Height = -13
         Font.Name = 'Arial'
         Font.Style = []
+        Frame.Typ = []
       end
       item
         Name = 'Group footer'
@@ -1467,6 +1471,7 @@ object ReglementCListF: TReglementCListF
         Font.Height = -13
         Font.Name = 'Arial'
         Font.Style = []
+        Frame.Typ = []
         Frame.Width = 2.000000000000000000
       end>
     object Data: TfrxDataPage
@@ -1482,13 +1487,17 @@ object ReglementCListF: TReglementCListF
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
+      MirrorMode = []
       object PageHeader1: TfrxPageHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 88.488250000000000000
         Top = 18.897650000000000000
         Width = 1046.929810000000000000
         object PreiodRX: TfrxMemoView
           Align = baCenter
+          AllowVectorExport = True
           Left = 371.023861665000000000
           Top = 34.015770000000000000
           Width = 304.882086670000000000
@@ -1498,6 +1507,7 @@ object ReglementCListF: TReglementCListF
           Font.Height = -12
           Font.Name = 'Helvetica LT Std'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'P'#233'riode du :')
@@ -1506,6 +1516,7 @@ object ReglementCListF: TReglementCListF
         end
         object Memo1: TfrxMemoView
           Align = baCenter
+          AllowVectorExport = True
           Left = 372.913626665000000000
           Top = 2.519686670000000000
           Width = 301.102556670000000000
@@ -1523,6 +1534,7 @@ object ReglementCListF: TReglementCListF
           VAlign = vaCenter
         end
         object Memo2: TfrxMemoView
+          AllowVectorExport = True
           Left = 189.000000000000000000
           Top = 60.313571820000000000
           Width = 132.283550000000000000
@@ -1533,6 +1545,7 @@ object ReglementCListF: TReglementCListF
           Font.Height = -11
           Font.Name = 'Gotham Rounded Light'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = 13948116
           Memo.UTF8W = (
             '          Date')
@@ -1540,6 +1553,7 @@ object ReglementCListF: TReglementCListF
           VAlign = vaCenter
         end
         object Memo5: TfrxMemoView
+          AllowVectorExport = True
           Top = 60.313571820000000000
           Width = 189.181200000000000000
           Height = 28.174678180000000000
@@ -1549,6 +1563,7 @@ object ReglementCListF: TReglementCListF
           Font.Height = -11
           Font.Name = 'Gotham Rounded Light'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = 13948116
           HAlign = haCenter
           Memo.UTF8W = (
@@ -1557,6 +1572,7 @@ object ReglementCListF: TReglementCListF
           VAlign = vaCenter
         end
         object Date: TfrxMemoView
+          AllowVectorExport = True
           Left = 963.780150000000000000
           Top = 3.779530000000000000
           Width = 79.370130000000000000
@@ -1566,6 +1582,7 @@ object ReglementCListF: TReglementCListF
           Font.Height = -13
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[Date]')
@@ -1573,6 +1590,7 @@ object ReglementCListF: TReglementCListF
           VAlign = vaCenter
         end
         object Memo3: TfrxMemoView
+          AllowVectorExport = True
           Left = 450.716921100000000000
           Top = 60.313571820000000000
           Width = 306.346630000000000000
@@ -1583,6 +1601,7 @@ object ReglementCListF: TReglementCListF
           Font.Height = -11
           Font.Name = 'Gotham Rounded Light'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = 13948116
           HAlign = haCenter
           Memo.UTF8W = (
@@ -1591,6 +1610,7 @@ object ReglementCListF: TReglementCListF
           VAlign = vaCenter
         end
         object Memo6: TfrxMemoView
+          AllowVectorExport = True
           Left = 318.590551180000000000
           Top = 60.313571820000000000
           Width = 132.488250000000000000
@@ -1601,6 +1621,7 @@ object ReglementCListF: TReglementCListF
           Font.Height = -11
           Font.Name = 'Gotham Rounded Light'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = 13948116
           HAlign = haCenter
           Memo.UTF8W = (
@@ -1609,6 +1630,7 @@ object ReglementCListF: TReglementCListF
           VAlign = vaCenter
         end
         object Memo8: TfrxMemoView
+          AllowVectorExport = True
           Left = 851.669921100000000000
           Top = 60.313571820000000000
           Width = 196.740260000000000000
@@ -1619,6 +1641,7 @@ object ReglementCListF: TReglementCListF
           Font.Height = -11
           Font.Name = 'Gotham Rounded Light'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = 13948116
           HAlign = haCenter
           Memo.UTF8W = (
@@ -1627,6 +1650,7 @@ object ReglementCListF: TReglementCListF
           VAlign = vaCenter
         end
         object Memo10: TfrxMemoView
+          AllowVectorExport = True
           Left = 754.733001100000000000
           Top = 60.313571820000000000
           Width = 98.472480000000000000
@@ -1637,6 +1661,7 @@ object ReglementCListF: TReglementCListF
           Font.Height = -11
           Font.Name = 'Gotham Rounded Light'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = 13948116
           HAlign = haCenter
           Memo.UTF8W = (
@@ -1647,10 +1672,12 @@ object ReglementCListF: TReglementCListF
       end
       object PageFooter1: TfrxPageFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 22.677180000000000000
         Top = 298.582870000000000000
         Width = 1046.929810000000000000
         object Page: TfrxMemoView
+          AllowVectorExport = True
           Left = 899.528140000000000000
           Top = 2.000000000000000000
           Width = 147.401670000000000000
@@ -1660,6 +1687,7 @@ object ReglementCListF: TReglementCListF
           Font.Height = -9
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Page: [Page]/[TotalPages#]')
@@ -1672,6 +1700,7 @@ object ReglementCListF: TReglementCListF
             end>
         end
         object Memo12: TfrxMemoView
+          AllowVectorExport = True
           Top = 1.380201430000000000
           Width = 35.095635710000000000
           Height = 18.897650000000000000
@@ -1680,12 +1709,14 @@ object ReglementCListF: TReglementCListF
           Font.Height = -9
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Agent :')
           ParentFont = False
           VAlign = vaCenter
         end
         object Agent: TfrxMemoView
+          AllowVectorExport = True
           Left = 31.795300000000000000
           Top = 1.000000000000000000
           Width = 457.323130000000000000
@@ -1697,19 +1728,23 @@ object ReglementCListF: TReglementCListF
           Font.Height = -9
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           ParentFont = False
           VAlign = vaCenter
         end
         object Shape2: TfrxShapeView
+          AllowVectorExport = True
           Width = 1046.929810000000000000
           Height = 2.267716535433070000
           Fill.BackColor = 13948116
           Fill.ForeColor = clNone
           Frame.Color = clNone
+          Frame.Typ = []
         end
       end
       object MasterData1: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 21.236240000000000000
         Top = 166.299320000000000000
         Width = 1046.929810000000000000
@@ -1717,12 +1752,15 @@ object ReglementCListF: TReglementCListF
         DataSetName = 'frxRegCListDB'
         RowCount = 0
         object Shape1: TfrxShapeView
+          AllowVectorExport = True
           Top = 21.236240000000000000
           Width = 1046.929810000000000000
           Fill.BackColor = 13948116
           Frame.Color = 13948116
+          Frame.Typ = []
         end
         object frxBonLivDBnum_bvfac: TfrxMemoView
+          AllowVectorExport = True
           Left = 189.000000000000000000
           Top = 0.779530000000000000
           Width = 131.149601420000000000
@@ -1737,6 +1775,7 @@ object ReglementCListF: TReglementCListF
           Font.Height = -13
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxRegCListDB."date_rc"]')
@@ -1744,6 +1783,7 @@ object ReglementCListF: TReglementCListF
           VAlign = vaCenter
         end
         object frxBonLivDBclientbvfac: TfrxMemoView
+          AllowVectorExport = True
           Left = 20.000000000000000000
           Top = 0.779530000000000000
           Width = 170.456871100000000000
@@ -1756,12 +1796,14 @@ object ReglementCListF: TReglementCListF
           Font.Height = -13
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxRegCListDB."nom_rc"]')
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo4: TfrxMemoView
+          AllowVectorExport = True
           Left = 450.543600000000000000
           Top = 0.779530000000000000
           Width = 306.519951100000000000
@@ -1774,6 +1816,7 @@ object ReglementCListF: TReglementCListF
           Font.Height = -13
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxRegCListDB."ClientrRC"]')
@@ -1781,6 +1824,7 @@ object ReglementCListF: TReglementCListF
           VAlign = vaCenter
         end
         object Memo7: TfrxMemoView
+          AllowVectorExport = True
           Left = 318.590551180000000000
           Top = 0.779530000000000000
           Width = 132.661405120000000000
@@ -1795,6 +1839,7 @@ object ReglementCListF: TReglementCListF
           Font.Height = -13
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxRegCListDB."time_rc"]')
@@ -1802,6 +1847,7 @@ object ReglementCListF: TReglementCListF
           VAlign = vaCenter
         end
         object Memo9: TfrxMemoView
+          AllowVectorExport = True
           Left = 851.496600000000000000
           Top = 0.779530000000000000
           Width = 196.913415120000000000
@@ -1815,6 +1861,7 @@ object ReglementCListF: TReglementCListF
           Font.Height = -13
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxRegCListDB."montver_rc"]')
@@ -1822,6 +1869,7 @@ object ReglementCListF: TReglementCListF
           VAlign = vaCenter
         end
         object Memo11: TfrxMemoView
+          AllowVectorExport = True
           Left = 754.559680000000000000
           Top = 0.779530000000000000
           Width = 98.645801100000000000
@@ -1834,6 +1882,7 @@ object ReglementCListF: TReglementCListF
           Font.Height = -13
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxRegCListDB."MP"]')
@@ -1843,10 +1892,12 @@ object ReglementCListF: TReglementCListF
       end
       object Footer1: TfrxFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 26.834662760000000000
         Top = 211.653680000000000000
         Width = 1046.929810000000000000
         object Memo18: TfrxMemoView
+          AllowVectorExport = True
           Left = 851.189550000000000000
           Top = 0.377952760000000000
           Width = 196.913415120000000000
@@ -1858,6 +1909,7 @@ object ReglementCListF: TReglementCListF
           Font.Height = -13
           Font.Name = 'Helvetica LT Std'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = 13948116
           HAlign = haRight
           Memo.UTF8W = (
@@ -1866,6 +1918,7 @@ object ReglementCListF: TReglementCListF
           VAlign = vaCenter
         end
         object Memo20: TfrxMemoView
+          AllowVectorExport = True
           Left = 760.740570000000000000
           Top = 0.377952760000000000
           Width = 90.708720000000000000
@@ -1875,6 +1928,7 @@ object ReglementCListF: TReglementCListF
           Font.Height = -13
           Font.Name = 'Helvetica LT Std'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = 13948116
           HAlign = haRight
           Memo.UTF8W = (
@@ -1883,6 +1937,7 @@ object ReglementCListF: TReglementCListF
           VAlign = vaCenter
         end
         object Memo13: TfrxMemoView
+          AllowVectorExport = True
           Left = 111.346630000000000000
           Width = 117.543285120000000000
           Height = 26.456710000000000000
@@ -1891,12 +1946,14 @@ object ReglementCListF: TReglementCListF
           Font.Height = -9
           Font.Name = 'Helvetica LT Std'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             '[COUNT(MasterData1)]')
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo14: TfrxMemoView
+          AllowVectorExport = True
           Width = 109.606370000000000000
           Height = 26.456710000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -1904,6 +1961,7 @@ object ReglementCListF: TReglementCListF
           Font.Height = -9
           Font.Name = 'Helvetica LT Std'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Number de reglements :')
@@ -1981,6 +2039,8 @@ object ReglementCListF: TReglementCListF
     CenterWindow = False
     PrintScaling = False
     PdfA = False
+    PDFStandard = psNone
+    PDFVersion = pv17
     Left = 408
     Top = 480
   end

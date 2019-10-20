@@ -551,7 +551,7 @@ begin
 end;
 
 //-----this is to highlight text in dbgrid when shearch---------------
-procedure TBonRecF.HighlightCellText(AGrid :TDbGridEH; const ARect : TRect; AColumn : TColumnEh;  FilterText : string; AState:TGridDrawState ;
+procedure HighlightCellText(AGrid :TDbGridEH; const ARect : TRect; AColumn : TColumnEh;  FilterText : string; AState:TGridDrawState ;
   BkColor : TColor = clYellow; SelectedBkColor : TColor = clGray);
 
 var
@@ -622,7 +622,7 @@ end;
  BARecListDBGridEh.DefaultDrawColumnCell(Rect, DataCol, Column, State);
  end;
 
- BonRecF.HighlightCellText(TDBGridEh(Sender),Rect, Column,ResearchBARecEdt.Text,State);
+ HighlightCellText(TDBGridEh(Sender),Rect, Column,ResearchBARecEdt.Text,State);
 end;
 
 procedure TBonRecF.BARecListDBGridEhKeyDown(Sender: TObject; var Key: Word;

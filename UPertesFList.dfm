@@ -457,7 +457,7 @@ object PertesFListF: TPertesFListF
     object Label1: TLabel
       Left = 298
       Top = 10
-      Width = 22
+      Width = 23
       Height = 18
       Caption = 'Du:'
       Color = 15722984
@@ -704,8 +704,8 @@ object PertesFListF: TPertesFListF
       Top = 38
       Width = 87
       Height = 23
-      Date = 42435.595104571760000000
-      Time = 42435.595104571760000000
+      Date = 42435.000000000000000000
+      Time = 0.595104571759293300
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 4207405
       Font.Height = 15
@@ -720,8 +720,8 @@ object PertesFListF: TPertesFListF
       Top = 7
       Width = 87
       Height = 23
-      Date = 42435.595104571760000000
-      Time = 42435.595104571760000000
+      Date = 42435.000000000000000000
+      Time = 0.595104571759293300
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 4207405
       Font.Height = 15
@@ -868,6 +868,7 @@ object PertesFListF: TPertesFListF
     TitleParams.VertLines = True
     VertScrollBar.Width = 15
     OnDblClick = PertesListDBGridEhDblClick
+    OnDrawColumnCell = PertesListDBGridEhDrawColumnCell
     OnKeyDown = PertesListDBGridEhKeyDown
     OnKeyPress = PertesListDBGridEhKeyPress
     Columns = <
@@ -1539,7 +1540,7 @@ object PertesFListF: TPertesFListF
     Top = 618
   end
   object PerteListfrxRprt: TfrxReport
-    Version = '5.6.1'
+    Version = '6.3.12'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -1570,6 +1571,7 @@ object PertesFListF: TPertesFListF
         Font.Height = -16
         Font.Name = 'Arial'
         Font.Style = [fsBold]
+        Frame.Typ = []
         Fill.BackColor = 14211288
       end
       item
@@ -1579,6 +1581,7 @@ object PertesFListF: TPertesFListF
         Font.Height = -13
         Font.Name = 'Arial'
         Font.Style = [fsBold]
+        Frame.Typ = []
         Fill.BackColor = 15790320
       end
       item
@@ -1588,6 +1591,7 @@ object PertesFListF: TPertesFListF
         Font.Height = -13
         Font.Name = 'Arial'
         Font.Style = [fsBold]
+        Frame.Typ = []
         Fill.BackColor = 15790320
       end
       item
@@ -1597,6 +1601,7 @@ object PertesFListF: TPertesFListF
         Font.Height = -13
         Font.Name = 'Arial'
         Font.Style = []
+        Frame.Typ = []
       end
       item
         Name = 'Group footer'
@@ -1614,6 +1619,7 @@ object PertesFListF: TPertesFListF
         Font.Height = -13
         Font.Name = 'Arial'
         Font.Style = []
+        Frame.Typ = []
         Frame.Width = 2.000000000000000000
       end>
     object Data: TfrxDataPage
@@ -1629,13 +1635,17 @@ object PertesFListF: TPertesFListF
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
+      MirrorMode = []
       object PageHeader1: TfrxPageHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 111.165430000000000000
         Top = 18.897650000000000000
         Width = 1046.929810000000000000
         object PreiodRX: TfrxMemoView
           Align = baCenter
+          AllowVectorExport = True
           Left = 371.023861665000000000
           Top = 34.015770000000000000
           Width = 304.882086670000000000
@@ -1645,6 +1655,7 @@ object PertesFListF: TPertesFListF
           Font.Height = -12
           Font.Name = 'Helvetica LT Std'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'P'#233'riode du :')
@@ -1653,6 +1664,7 @@ object PertesFListF: TPertesFListF
         end
         object Memo1: TfrxMemoView
           Align = baCenter
+          AllowVectorExport = True
           Left = 372.913626665000000000
           Top = 2.519686670000000000
           Width = 301.102556670000000000
@@ -1670,6 +1682,7 @@ object PertesFListF: TPertesFListF
           VAlign = vaCenter
         end
         object Memo2: TfrxMemoView
+          AllowVectorExport = True
           Left = 113.409400000000000000
           Top = 83.313571820000000000
           Width = 86.929190000000000000
@@ -1680,6 +1693,7 @@ object PertesFListF: TPertesFListF
           Font.Height = -11
           Font.Name = 'Gotham Rounded Light'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = 13948116
           Memo.UTF8W = (
             '          Date')
@@ -1687,6 +1701,7 @@ object PertesFListF: TPertesFListF
           VAlign = vaCenter
         end
         object Memo5: TfrxMemoView
+          AllowVectorExport = True
           Top = 83.313571820000000000
           Width = 113.385826770000000000
           Height = 28.174678180000000000
@@ -1696,6 +1711,7 @@ object PertesFListF: TPertesFListF
           Font.Height = -11
           Font.Name = 'Gotham Rounded Light'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = 13948116
           HAlign = haCenter
           Memo.UTF8W = (
@@ -1704,6 +1720,7 @@ object PertesFListF: TPertesFListF
           VAlign = vaCenter
         end
         object Date: TfrxMemoView
+          AllowVectorExport = True
           Left = 963.780150000000000000
           Top = 3.779530000000000000
           Width = 79.370130000000000000
@@ -1713,6 +1730,7 @@ object PertesFListF: TPertesFListF
           Font.Height = -13
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[Date]')
@@ -1720,6 +1738,7 @@ object PertesFListF: TPertesFListF
           VAlign = vaCenter
         end
         object Memo3: TfrxMemoView
+          AllowVectorExport = True
           Left = 306.079011100000000000
           Top = 83.313571820000000000
           Width = 238.315090000000000000
@@ -1730,6 +1749,7 @@ object PertesFListF: TPertesFListF
           Font.Height = -11
           Font.Name = 'Gotham Rounded Light'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = 13948116
           HAlign = haCenter
           Memo.UTF8W = (
@@ -1738,6 +1758,7 @@ object PertesFListF: TPertesFListF
           VAlign = vaCenter
         end
         object Memo8: TfrxMemoView
+          AllowVectorExport = True
           Left = 763.220941100000000000
           Top = 83.313571820000000000
           Width = 94.488188980000000000
@@ -1748,6 +1769,7 @@ object PertesFListF: TPertesFListF
           Font.Height = -11
           Font.Name = 'Gotham Rounded Light'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = 13948116
           HAlign = haCenter
           Memo.UTF8W = (
@@ -1756,6 +1778,7 @@ object PertesFListF: TPertesFListF
           VAlign = vaCenter
         end
         object Memo15: TfrxMemoView
+          AllowVectorExport = True
           Left = 543.732691100000000000
           Top = 83.472480000000000000
           Width = 124.929190000000000000
@@ -1766,6 +1789,7 @@ object PertesFListF: TPertesFListF
           Font.Height = -11
           Font.Name = 'Gotham Rounded Light'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = 13948116
           HAlign = haCenter
           Memo.UTF8W = (
@@ -1774,6 +1798,7 @@ object PertesFListF: TPertesFListF
           VAlign = vaCenter
         end
         object Memo17: TfrxMemoView
+          AllowVectorExport = True
           Left = 668.677651100000000000
           Top = 83.472480000000000000
           Width = 94.488188980000000000
@@ -1784,6 +1809,7 @@ object PertesFListF: TPertesFListF
           Font.Height = -11
           Font.Name = 'Gotham Rounded Light'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = 13948116
           HAlign = haCenter
           Memo.UTF8W = (
@@ -1792,6 +1818,7 @@ object PertesFListF: TPertesFListF
           VAlign = vaCenter
         end
         object Memo10: TfrxMemoView
+          AllowVectorExport = True
           Left = 856.913891100000000000
           Top = 83.472480000000000000
           Width = 94.488188980000000000
@@ -1802,6 +1829,7 @@ object PertesFListF: TPertesFListF
           Font.Height = -11
           Font.Name = 'Gotham Rounded Light'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = 13948116
           HAlign = haCenter
           Memo.UTF8W = (
@@ -1810,6 +1838,7 @@ object PertesFListF: TPertesFListF
           VAlign = vaCenter
         end
         object Memo6: TfrxMemoView
+          AllowVectorExport = True
           Left = 951.299791100000000000
           Top = 83.472480000000000000
           Width = 94.488188980000000000
@@ -1820,6 +1849,7 @@ object PertesFListF: TPertesFListF
           Font.Height = -11
           Font.Name = 'Gotham Rounded Light'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = 13948116
           HAlign = haCenter
           Memo.UTF8W = (
@@ -1829,6 +1859,7 @@ object PertesFListF: TPertesFListF
         end
         object Caisse: TfrxMemoView
           Align = baCenter
+          AllowVectorExport = True
           Left = 302.992321665000000000
           Top = 56.692950000000000000
           Width = 440.945166670000000000
@@ -1838,6 +1869,7 @@ object PertesFListF: TPertesFListF
           Font.Height = -12
           Font.Name = 'Helvetica LT Std'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Caisse :')
@@ -1845,6 +1877,7 @@ object PertesFListF: TPertesFListF
           VAlign = vaCenter
         end
         object Memo23: TfrxMemoView
+          AllowVectorExport = True
           Left = 199.488411100000000000
           Top = 83.149660000000000000
           Width = 109.811070000000000000
@@ -1855,6 +1888,7 @@ object PertesFListF: TPertesFListF
           Font.Height = -11
           Font.Name = 'Gotham Rounded Light'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = 13948116
           HAlign = haCenter
           Memo.UTF8W = (
@@ -1865,10 +1899,12 @@ object PertesFListF: TPertesFListF
       end
       object PageFooter1: TfrxPageFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 22.677180000000000000
         Top = 321.260050000000000000
         Width = 1046.929810000000000000
         object Page: TfrxMemoView
+          AllowVectorExport = True
           Left = 899.528140000000000000
           Top = 2.000000000000000000
           Width = 147.401670000000000000
@@ -1878,6 +1914,7 @@ object PertesFListF: TPertesFListF
           Font.Height = -9
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Page: [Page]/[TotalPages#]')
@@ -1890,6 +1927,7 @@ object PertesFListF: TPertesFListF
             end>
         end
         object Memo12: TfrxMemoView
+          AllowVectorExport = True
           Top = 1.380201430000000000
           Width = 35.095635710000000000
           Height = 18.897650000000000000
@@ -1898,12 +1936,14 @@ object PertesFListF: TPertesFListF
           Font.Height = -9
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Agent :')
           ParentFont = False
           VAlign = vaCenter
         end
         object Agent: TfrxMemoView
+          AllowVectorExport = True
           Left = 31.795300000000000000
           Top = 1.000000000000000000
           Width = 457.323130000000000000
@@ -1913,19 +1953,23 @@ object PertesFListF: TPertesFListF
           Font.Height = -9
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           ParentFont = False
           VAlign = vaCenter
         end
         object Shape2: TfrxShapeView
+          AllowVectorExport = True
           Width = 1046.929810000000000000
           Height = 2.267716535433070000
           Fill.BackColor = 13948116
           Fill.ForeColor = clNone
           Frame.Color = clNone
+          Frame.Typ = []
         end
       end
       object MasterData1: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 21.236240000000000000
         Top = 188.976500000000000000
         Width = 1046.929810000000000000
@@ -1933,12 +1977,15 @@ object PertesFListF: TPertesFListF
         DataSetName = 'frxPerteListDB'
         RowCount = 0
         object Shape1: TfrxShapeView
+          AllowVectorExport = True
           Top = 21.236240000000000000
           Width = 1046.929810000000000000
           Fill.BackColor = 13948116
           Frame.Color = 13948116
+          Frame.Typ = []
         end
         object frxBonLivDBnum_bvfac: TfrxMemoView
+          AllowVectorExport = True
           Left = 113.409400000000000000
           Top = 0.779530000000000000
           Width = 85.795241420000000000
@@ -1953,6 +2000,7 @@ object PertesFListF: TPertesFListF
           Font.Height = -13
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxPerteListDB."date_pr"]')
@@ -1960,6 +2008,7 @@ object PertesFListF: TPertesFListF
           VAlign = vaCenter
         end
         object frxBonLivDBclientbvfac: TfrxMemoView
+          AllowVectorExport = True
           Left = 9.102350000000000000
           Top = 0.779530000000000000
           Width = 102.047236770000000000
@@ -1972,12 +2021,14 @@ object PertesFListF: TPertesFListF
           Font.Height = -13
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxPerteListDB."refer_pr"]')
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo4: TfrxMemoView
+          AllowVectorExport = True
           Left = 305.905690000000000000
           Top = 0.779530000000000000
           Width = 238.488411100000000000
@@ -1990,6 +2041,7 @@ object PertesFListF: TPertesFListF
           Font.Height = -13
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxPerteListDB."nomp"]')
@@ -1997,6 +2049,7 @@ object PertesFListF: TPertesFListF
           VAlign = vaCenter
         end
         object Memo9: TfrxMemoView
+          AllowVectorExport = True
           Left = 763.047620000000000000
           Top = 0.779530000000000000
           Width = 94.488188980000000000
@@ -2011,6 +2064,7 @@ object PertesFListF: TPertesFListF
           Font.Height = -13
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxPerteListDB."MontantHT"]')
@@ -2018,6 +2072,7 @@ object PertesFListF: TPertesFListF
           VAlign = vaCenter
         end
         object Memo16: TfrxMemoView
+          AllowVectorExport = True
           Left = 543.559370000000000000
           Top = 0.938438180000000000
           Width = 125.102511100000000000
@@ -2030,6 +2085,7 @@ object PertesFListF: TPertesFListF
           Font.Height = -13
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxPerteListDB."PRType"]')
@@ -2037,6 +2093,7 @@ object PertesFListF: TPertesFListF
           VAlign = vaCenter
         end
         object Memo19: TfrxMemoView
+          AllowVectorExport = True
           Left = 668.504330000000000000
           Top = 0.938438180000000000
           Width = 94.488188980000000000
@@ -2049,6 +2106,7 @@ object PertesFListF: TPertesFListF
           Font.Height = -13
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxPerteListDB."qut_p"]')
@@ -2056,6 +2114,7 @@ object PertesFListF: TPertesFListF
           VAlign = vaCenter
         end
         object Memo11: TfrxMemoView
+          AllowVectorExport = True
           Left = 856.740570000000000000
           Top = 0.938438180000000000
           Width = 94.488188980000000000
@@ -2070,6 +2129,7 @@ object PertesFListF: TPertesFListF
           Font.Height = -13
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxPerteListDB."MontantTVA"]')
@@ -2077,6 +2137,7 @@ object PertesFListF: TPertesFListF
           VAlign = vaCenter
         end
         object Memo7: TfrxMemoView
+          AllowVectorExport = True
           Left = 952.126470000000000000
           Top = 0.938438180000000000
           Width = 94.488188980000000000
@@ -2091,6 +2152,7 @@ object PertesFListF: TPertesFListF
           Font.Height = -13
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxPerteListDB."MontantTTC"]')
@@ -2098,6 +2160,7 @@ object PertesFListF: TPertesFListF
           VAlign = vaCenter
         end
         object Memo24: TfrxMemoView
+          AllowVectorExport = True
           Left = 199.315090000000000000
           Top = 0.615618180000000000
           Width = 109.984391100000000000
@@ -2110,6 +2173,7 @@ object PertesFListF: TPertesFListF
           Font.Height = -13
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxPerteListDB."referp"]')
@@ -2119,10 +2183,12 @@ object PertesFListF: TPertesFListF
       end
       object Footer1: TfrxFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 26.834662760000000000
         Top = 234.330860000000000000
         Width = 1046.929810000000000000
         object Memo18: TfrxMemoView
+          AllowVectorExport = True
           Left = 763.047620000000000000
           Top = 0.377952760000000000
           Width = 94.488188980000000000
@@ -2134,6 +2200,7 @@ object PertesFListF: TPertesFListF
           Font.Height = -13
           Font.Name = 'Helvetica LT Std'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = 13948116
           HAlign = haRight
           Memo.UTF8W = (
@@ -2142,6 +2209,7 @@ object PertesFListF: TPertesFListF
           VAlign = vaCenter
         end
         object Memo20: TfrxMemoView
+          AllowVectorExport = True
           Left = 543.937391100000000000
           Top = 0.377952760000000000
           Width = 124.724490000000000000
@@ -2151,6 +2219,7 @@ object PertesFListF: TPertesFListF
           Font.Height = -13
           Font.Name = 'Helvetica LT Std'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = 13948116
           HAlign = haRight
           Memo.UTF8W = (
@@ -2159,6 +2228,7 @@ object PertesFListF: TPertesFListF
           VAlign = vaCenter
         end
         object Memo13: TfrxMemoView
+          AllowVectorExport = True
           Left = 111.346630000000000000
           Width = 117.543285120000000000
           Height = 26.456710000000000000
@@ -2167,12 +2237,14 @@ object PertesFListF: TPertesFListF
           Font.Height = -9
           Font.Name = 'Helvetica LT Std'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             '[COUNT(MasterData1)]')
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo14: TfrxMemoView
+          AllowVectorExport = True
           Width = 109.606370000000000000
           Height = 26.456710000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -2180,6 +2252,7 @@ object PertesFListF: TPertesFListF
           Font.Height = -9
           Font.Name = 'Helvetica LT Std'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Number des Pertes :')
@@ -2187,6 +2260,7 @@ object PertesFListF: TPertesFListF
           VAlign = vaCenter
         end
         object Memo21: TfrxMemoView
+          AllowVectorExport = True
           Left = 856.913891100000000000
           Top = 0.536860940000000000
           Width = 94.488188980000000000
@@ -2198,6 +2272,7 @@ object PertesFListF: TPertesFListF
           Font.Height = -13
           Font.Name = 'Helvetica LT Std'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = 13948116
           HAlign = haRight
           Memo.UTF8W = (
@@ -2206,6 +2281,7 @@ object PertesFListF: TPertesFListF
           VAlign = vaCenter
         end
         object Memo25: TfrxMemoView
+          AllowVectorExport = True
           Left = 952.126470000000000000
           Top = 0.536860940000000000
           Width = 94.488188980000000000
@@ -2217,6 +2293,7 @@ object PertesFListF: TPertesFListF
           Font.Height = -13
           Font.Name = 'Helvetica LT Std'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = 13948116
           HAlign = haRight
           Memo.UTF8W = (
@@ -2225,6 +2302,7 @@ object PertesFListF: TPertesFListF
           VAlign = vaCenter
         end
         object Memo22: TfrxMemoView
+          AllowVectorExport = True
           Left = 668.976810000000000000
           Width = 94.488188980000000000
           Height = 26.456710000000000000
@@ -2235,6 +2313,7 @@ object PertesFListF: TPertesFListF
           Font.Height = -13
           Font.Name = 'Helvetica LT Std'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = 13948116
           HAlign = haRight
           Memo.UTF8W = (
@@ -2314,6 +2393,8 @@ object PertesFListF: TPertesFListF
     CenterWindow = False
     PrintScaling = False
     PdfA = False
+    PDFStandard = psNone
+    PDFVersion = pv17
     Left = 408
     Top = 480
   end
