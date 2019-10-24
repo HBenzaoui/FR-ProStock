@@ -1196,8 +1196,8 @@ begin
  FournisseursListDBGridEh.DefaultDrawColumnCell(Rect, DataCol, Column, State);
  end;
 end;
-
- HighlightCellText(TDBGridEh(Sender),Rect, Column,ResearchFournisseurEdt.Text,State);
+// disabled becouse error
+// HighlightCellText(TDBGridEh(Sender),Rect, Column,ResearchFournisseurEdt.Text,State);
 end;
 
 procedure TFournisseurListF.FournisseursListDBGridEhKeyDown(Sender: TObject;
