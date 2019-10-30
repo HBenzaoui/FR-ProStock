@@ -2638,4 +2638,365 @@ object DataModuleF: TDataModuleF
       Size = 30
     end
   end
+  object Bona_comTable: TFDQuery
+    FilterOptions = [foCaseInsensitive]
+    IndexFieldNames = 'code_barec'
+    Connection = MainForm.GstockdcConnection
+    SQL.Strings = (
+      'SELECT *,'
+      '  ((montttc_barec)-(montht_barec - remise_barec)) AS MontantTVA,'
+      '  (montttc_barec - montver_barec) AS MontantRes,'
+      ' CASE'
+      
+        '    WHEN remise_barec <> '#39'0'#39' AND montht_barec <> '#39'0'#39'  THEN  ROUN' +
+        'D( CAST (((remise_barec / montht_barec) * 100) as NUMERIC),2)'
+      '    ELSE '#39'0'#39
+      ' END AS RemisePerc,'
+      '  (montht_barec - remise_barec) AS NeTHT'
+      'FROM bona_rec WHERE bon_or_no_barec = true')
+    Left = 467
+    Top = 250
+    object Bona_comTablecode_barec: TIntegerField
+      FieldName = 'code_barec'
+      Origin = 'code_barec'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+    end
+    object Bona_comTabledate_barec: TDateField
+      FieldName = 'date_barec'
+      Origin = 'date_barec'
+    end
+    object Bona_comTabletime_barec: TTimeField
+      FieldName = 'time_barec'
+      Origin = 'time_barec'
+    end
+    object Bona_comTablemontht_barec: TCurrencyField
+      FieldName = 'montht_barec'
+      Origin = 'montht_barec'
+    end
+    object rr: TCurrencyField
+      FieldName = 'montver_barec'
+      Origin = 'montver_barec'
+    end
+    object Bona_comTablevalider_barec: TBooleanField
+      FieldName = 'valider_barec'
+      Origin = 'valider_barec'
+    end
+    object Bona_comTablenum_barec: TWideStringField
+      FieldName = 'num_barec'
+      Origin = 'num_barec'
+    end
+    object Bona_comTablefourbarec: TStringField
+      FieldKind = fkLookup
+      FieldName = 'fourbarec'
+      LookupKeyFields = 'code_f'
+      LookupResultField = 'nom_f'
+      KeyFields = 'code_f'
+      Size = 100
+      Lookup = True
+    end
+    object Bona_comTablemonttc_barec: TCurrencyField
+      FieldName = 'montttc_barec'
+    end
+    object Bona_comTableremise_barec: TCurrencyField
+      FieldName = 'remise_barec'
+      Origin = 'remise_barec'
+    end
+    object Bona_comTablenum_cheque_barec: TWideStringField
+      FieldName = 'num_cheque_barec'
+      Origin = 'num_cheque_barec'
+      Size = 50
+    end
+    object Bona_comTablecode_mdpai: TSmallintField
+      FieldName = 'code_mdpai'
+      Origin = 'code_mdpai'
+    end
+    object Bona_comTablecode_cmpt: TSmallintField
+      FieldName = 'code_cmpt'
+      Origin = 'code_cmpt'
+    end
+    object Bona_comTableModePaie: TStringField
+      FieldKind = fkLookup
+      FieldName = 'ModePaie'
+      LookupKeyFields = 'code_mdpai'
+      LookupResultField = 'nom_mdpai'
+      KeyFields = 'code_mdpai'
+      Lookup = True
+    end
+    object Bona_comTableCompte: TStringField
+      FieldKind = fkLookup
+      FieldName = 'Compte'
+      LookupKeyFields = 'code_cmpt'
+      LookupResultField = 'nom_cmpt'
+      KeyFields = 'code_cmpt'
+      Size = 50
+      Lookup = True
+    end
+    object Bona_comTablecode_f: TIntegerField
+      FieldName = 'code_f'
+      Origin = 'code_f'
+    end
+    object Bona_comTablecode_ur: TIntegerField
+      FieldName = 'code_ur'
+      Origin = 'code_ur'
+    end
+    object Bona_comTablebon_or_no_barec: TBooleanField
+      FieldName = 'bon_or_no_barec'
+      Origin = 'bon_or_no_barec'
+    end
+    object Bona_comTableAgent: TStringField
+      FieldKind = fkLookup
+      FieldName = 'Agent'
+      LookupDataSet = UsersTable
+      LookupKeyFields = 'code_ur'
+      LookupResultField = 'nom_ur'
+      KeyFields = 'code_ur'
+      Size = 50
+      Lookup = True
+    end
+    object Bona_comTableobser_barec: TWideStringField
+      FieldName = 'obser_barec'
+      Origin = 'obser_barec'
+      Size = 200
+    end
+    object Bona_comTablemontanttva: TCurrencyField
+      AutoGenerateValue = arDefault
+      FieldName = 'montanttva'
+      Origin = 'montanttva'
+      ReadOnly = True
+    end
+    object Bona_comTablemontantres: TCurrencyField
+      AutoGenerateValue = arDefault
+      FieldName = 'montantres'
+      Origin = 'montantres'
+      ReadOnly = True
+    end
+    object Bona_comTableremiseperc: TFMTBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'remiseperc'
+      Origin = 'remiseperc'
+      ReadOnly = True
+      Precision = 64
+      Size = 0
+    end
+    object Bona_comTablenetht: TCurrencyField
+      AutoGenerateValue = arDefault
+      FieldName = 'netht'
+      Origin = 'netht'
+      ReadOnly = True
+    end
+  end
+  object Bona_com_listTable: TFDQuery
+    FilterOptions = [foCaseInsensitive]
+    Indexes = <
+      item
+        Active = True
+        Name = 'icode_p_balist'
+        Fields = 'code_p'
+      end
+      item
+        Active = True
+        Name = 'icode_barec_balist'
+        Fields = 'code_barec'
+      end>
+    IndexFieldNames = 'code_barec;code_p;code_barecl'
+    MasterFields = 'code_barec'
+    Connection = MainForm.GstockdcConnection
+    SQL.Strings = (
+      
+        'SELECT BRL.code_barec,BRL.code_barecl,BRL.qut_p,BRL.cond_p,BRL.c' +
+        'ode_p,BRL.tva_p,BRL.prixht_p,P.nom_p as nomp, P.refer_p as refer' +
+        'p,'
+      
+        '  BRL.prixvd_p,BRL.prixvr_p,BRL.prixvg_p,BRL.prixva_p,BRL.prixva' +
+        '2_p,BRL.dateperiss_p,BRL.qutinstock_p,'
+      '  (((BRL.prixht_p * BRL.tva_p)/100)+BRL.prixht_p) AS PrixATTC,'
+      '  ((BRL.prixht_p * BRL.qut_p) * cond_p) AS MontantHT,'
+      
+        '  (((((BRL.prixht_p * BRL.tva_p)/100)+BRL.prixht_p) * BRL.qut_p)' +
+        '*cond_p) AS MontantTTC,'
+      
+        '  (((((((BRL.prixht_p * BRL.tva_p)/100)+BRL.prixht_p) * BRL.qut_' +
+        'p)*cond_p) )-(((BRL.prixht_p * BRL.qut_p) * cond_p))) AS Montant' +
+        'TVA,'
+      '  ((BRL.prixht_p * BRL.qut_p)* cond_p) AS MontantAHT,'
+      ' CASE'
+      '      WHEN BRL.prixvd_p <> '#39'0'#39' THEN'
+      '    CASE WHEN BRL.prixht_p <> '#39'0'#39
+      
+        '      THEN ( ((BRL.prixvd_p - BRL.prixht_p) / BRL.prixht_p  ) *1' +
+        '00)'
+      '      ELSE '#39'100'#39
+      '    END'
+      ' END AS MargeD,'
+      ' CASE'
+      '    WHEN BRL.prixvr_p <> '#39'0'#39' THEN'
+      '  CASE WHEN BRL.prixht_p <> '#39'0'#39
+      
+        '    THEN ( ((BRL.prixvr_p - BRL.prixht_p) / BRL.prixht_p  ) *100' +
+        ')'
+      '    ELSE '#39'100'#39
+      '  END'
+      ' END AS MargeR,'
+      ' CASE'
+      '    WHEN BRL.prixvg_p <> '#39'0'#39' THEN'
+      '  CASE WHEN BRL.prixht_p <> '#39'0'#39
+      
+        '    THEN ( ((BRL.prixvg_p - BRL.prixht_p) / BRL.prixht_p  ) *100' +
+        ')'
+      '    ELSE '#39'100'#39
+      '  END'
+      ' END AS MargeG,'
+      '  CASE'
+      '    WHEN BRL.prixva_p <> '#39'0'#39' THEN'
+      '  CASE WHEN BRL.prixht_p <> '#39'0'#39
+      
+        '    THEN ( ((BRL.prixva_p - BRL.prixht_p) / BRL.prixht_p  ) *100' +
+        ')'
+      '    ELSE '#39'100'#39
+      '  END'
+      ' END AS MargeA,'
+      '  CASE'
+      '    WHEN BRL.prixva2_p <> '#39'0'#39' THEN'
+      '  CASE WHEN BRL.prixht_p <> '#39'0'#39
+      
+        '    THEN ( ((BRL.prixva2_p - BRL.prixht_p) / BRL.prixht_p  ) *10' +
+        '0)'
+      '    ELSE '#39'100'#39
+      '  END'
+      ' END AS MargeA2'
+      'FROM bona_rec_list as BRL'
+      'INNER JOIN produit as P'
+      '  ON BRL.code_p = P.code_p ')
+    Left = 467
+    Top = 316
+    object Bona_com_listTablecode_barecl: TIntegerField
+      FieldName = 'code_barecl'
+      Origin = 'code_barecl'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+    end
+    object Bona_com_listTablecode_barec: TIntegerField
+      FieldName = 'code_barec'
+      Origin = 'code_barec'
+    end
+    object Bona_com_listTablequt_p: TFloatField
+      FieldName = 'qut_p'
+      Origin = 'qut_p'
+    end
+    object Bona_com_listTableprixht_p: TCurrencyField
+      FieldName = 'prixht_p'
+      Origin = 'prixht_p'
+    end
+    object Bona_com_listTablecond_p: TIntegerField
+      FieldName = 'cond_p'
+      Origin = 'cond_p'
+    end
+    object Bona_com_listTablecode_p: TIntegerField
+      FieldName = 'code_p'
+      Origin = 'code_p'
+    end
+    object Bona_com_listTableprixvd_p: TCurrencyField
+      FieldName = 'prixvd_p'
+      Origin = 'prixvd_p'
+    end
+    object Bona_com_listTableprixvr_p: TCurrencyField
+      FieldName = 'prixvr_p'
+      Origin = 'prixvr_p'
+    end
+    object Bona_com_listTableprixvg_p: TCurrencyField
+      FieldName = 'prixvg_p'
+      Origin = 'prixvg_p'
+    end
+    object Bona_com_listTableprixva_p: TCurrencyField
+      FieldName = 'prixva_p'
+      Origin = 'prixva_p'
+    end
+    object Bona_com_listTableprixva2_p: TCurrencyField
+      FieldName = 'prixva2_p'
+      Origin = 'prixva2_p'
+    end
+    object Bona_com_listTabledateperiss_p: TDateField
+      FieldName = 'dateperiss_p'
+      Origin = 'dateperiss_p'
+    end
+    object Bona_com_listTablequtinstock_p: TFloatField
+      FieldName = 'qutinstock_p'
+      Origin = 'qutinstock_p'
+    end
+    object Bona_com_listTabletva_p: TSmallintField
+      FieldName = 'tva_p'
+      Origin = 'tva_p'
+    end
+    object Bona_com_listTablenomp: TWideStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'nomp'
+      Origin = 'nomp'
+      Size = 8190
+    end
+    object Bona_com_listTablereferp: TWideStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'referp'
+      Origin = 'referp'
+      Size = 8190
+    end
+    object Bona_com_listTableprixattc: TCurrencyField
+      AutoGenerateValue = arDefault
+      FieldName = 'prixattc'
+      Origin = 'prixattc'
+      ReadOnly = True
+    end
+    object Bona_com_listTablemontantht: TCurrencyField
+      AutoGenerateValue = arDefault
+      FieldName = 'montantht'
+      Origin = 'montantht'
+      ReadOnly = True
+    end
+    object Bona_com_listTablemontantttc: TCurrencyField
+      AutoGenerateValue = arDefault
+      FieldName = 'montantttc'
+      Origin = 'montantttc'
+      ReadOnly = True
+    end
+    object Bona_com_listTablemontanttva: TCurrencyField
+      AutoGenerateValue = arDefault
+      FieldName = 'montanttva'
+      Origin = 'montanttva'
+      ReadOnly = True
+    end
+    object Bona_com_listTablemontantaht: TCurrencyField
+      AutoGenerateValue = arDefault
+      FieldName = 'montantaht'
+      Origin = 'montantaht'
+      ReadOnly = True
+    end
+    object Bona_com_listTablemarged: TFloatField
+      AutoGenerateValue = arDefault
+      FieldName = 'marged'
+      Origin = 'marged'
+      ReadOnly = True
+    end
+    object Bona_com_listTablemarger: TFloatField
+      AutoGenerateValue = arDefault
+      FieldName = 'marger'
+      Origin = 'marger'
+      ReadOnly = True
+    end
+    object Bona_com_listTablemargeg: TFloatField
+      AutoGenerateValue = arDefault
+      FieldName = 'margeg'
+      Origin = 'margeg'
+      ReadOnly = True
+    end
+    object Bona_com_listTablemargea: TFloatField
+      AutoGenerateValue = arDefault
+      FieldName = 'margea'
+      Origin = 'margea'
+      ReadOnly = True
+    end
+    object Bona_com_listTablemargea2: TFloatField
+      AutoGenerateValue = arDefault
+      FieldName = 'margea2'
+      Origin = 'margea2'
+      ReadOnly = True
+    end
+  end
 end

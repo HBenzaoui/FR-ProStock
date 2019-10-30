@@ -1,7 +1,7 @@
-object BonRecF: TBonRecF
+object BonComAF: TBonComAF
   Left = 2219
   Top = 177
-  Caption = 'Bon de R'#233'ception'
+  Caption = 'Bon de Commande'
   ClientHeight = 741
   ClientWidth = 951
   Color = clBtnFace
@@ -325,7 +325,7 @@ object BonRecF: TBonRecF
     741)
   PixelsPerInch = 96
   TextHeight = 13
-  object BARecListDBGridEh: TDBGridEh
+  object BAComListDBGridEh: TDBGridEh
     Left = 0
     Top = 71
     Width = 951
@@ -340,7 +340,7 @@ object BonRecF: TBonRecF
     ColumnDefValues.ToolTips = True
     Ctl3D = True
     DataGrouping.Active = True
-    DataSource = MainForm.BonRecListDataS
+    DataSource = MainForm.BonComAListDataS
     DynProps = <>
     EvenRowColor = clWindow
     FixedColor = clWindow
@@ -390,12 +390,12 @@ object BonRecF: TBonRecF
     TitleParams.SortMarkerStyle = smstThemeDefinedEh
     TitleParams.VertLines = True
     VertScrollBar.Width = 15
-    OnDblClick = BARecListDBGridEhDblClick
-    OnDrawColumnCell = BARecListDBGridEhDrawColumnCell
-    OnKeyDown = BARecListDBGridEhKeyDown
-    OnKeyPress = BARecListDBGridEhKeyPress
-    OnSortMarkingChanged = BARecListDBGridEhSortMarkingChanged
-    OnTitleBtnClick = BARecListDBGridEhTitleBtnClick
+    OnDblClick = BAComListDBGridEhDblClick
+    OnDrawColumnCell = BAComListDBGridEhDrawColumnCell
+    OnKeyDown = BAComListDBGridEhKeyDown
+    OnKeyPress = BAComListDBGridEhKeyPress
+    OnSortMarkingChanged = BAComListDBGridEhSortMarkingChanged
+    OnTitleBtnClick = BAComListDBGridEhTitleBtnClick
     Columns = <
       item
         Alignment = taCenter
@@ -403,7 +403,7 @@ object BonRecF: TBonRecF
         Checkboxes = False
         DynProps = <>
         EditButtons = <>
-        FieldName = 'valider_barec'
+        FieldName = 'valider_bacom'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
         Font.Height = 16
@@ -433,7 +433,7 @@ object BonRecF: TBonRecF
         CellButtons = <>
         DynProps = <>
         EditButtons = <>
-        FieldName = 'num_barec'
+        FieldName = 'num_bacom'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
         Font.Height = 16
@@ -460,7 +460,7 @@ object BonRecF: TBonRecF
         DisplayFormat = 'DD/MM/YYY'
         DynProps = <>
         EditButtons = <>
-        FieldName = 'date_barec'
+        FieldName = 'date_bacom'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
         Font.Height = 16
@@ -487,7 +487,7 @@ object BonRecF: TBonRecF
         DisplayFormat = 'HH:MM:SS'
         DynProps = <>
         EditButtons = <>
-        FieldName = 'time_barec'
+        FieldName = 'time_bacom'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
         Font.Height = 16
@@ -512,7 +512,7 @@ object BonRecF: TBonRecF
         CellButtons = <>
         DynProps = <>
         EditButtons = <>
-        FieldName = 'fourbarec'
+        FieldName = 'fourbacom'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
         Font.Height = 16
@@ -583,7 +583,7 @@ object BonRecF: TBonRecF
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
-        FieldName = 'montht_barec'
+        FieldName = 'montht_bacom'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
         Font.Height = 16
@@ -597,7 +597,7 @@ object BonRecF: TBonRecF
         Footers = <
           item
             Color = 15722984
-            FieldName = 'montht_barec'
+            FieldName = 'montht_bacom'
             Font.Charset = DEFAULT_CHARSET
             Font.Color = 4207405
             Font.Height = 18
@@ -625,7 +625,7 @@ object BonRecF: TBonRecF
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
-        FieldName = 'remise_barec'
+        FieldName = 'remise_bacom'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
         Font.Height = 16
@@ -634,7 +634,7 @@ object BonRecF: TBonRecF
         Footers = <
           item
             Color = 15722984
-            FieldName = 'remise_barec'
+            FieldName = 'remise_bacom'
             Font.Charset = DEFAULT_CHARSET
             Font.Color = 4207405
             Font.Height = 18
@@ -734,7 +734,7 @@ object BonRecF: TBonRecF
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
-        FieldName = 'montttc_barec'
+        FieldName = 'montttc_bacom'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
         Font.Height = 16
@@ -743,7 +743,7 @@ object BonRecF: TBonRecF
         Footers = <
           item
             Color = 15722984
-            FieldName = 'montttc_barec'
+            FieldName = 'montttc_bacom'
             Font.Charset = DEFAULT_CHARSET
             Font.Color = 4207405
             Font.Height = 18
@@ -770,7 +770,7 @@ object BonRecF: TBonRecF
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
-        FieldName = 'montver_barec'
+        FieldName = 'montver_bacom'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
         Font.Height = 16
@@ -779,7 +779,7 @@ object BonRecF: TBonRecF
         Footers = <
           item
             Color = 15722984
-            FieldName = 'montver_barec'
+            FieldName = 'montver_bacom'
             Font.Charset = DEFAULT_CHARSET
             Font.Color = 4207405
             Font.Height = 18
@@ -881,7 +881,7 @@ object BonRecF: TBonRecF
     DesignSize = (
       951
       71)
-    object EditBARecBtn: TAdvToolButton
+    object EditBAComBtn: TAdvToolButton
       Left = 733
       Top = 21
       Width = 100
@@ -909,11 +909,11 @@ object BonRecF: TBonRecF
       Shaded = False
       ShowHint = True
       Spacing = -1
-      OnClick = EditBARecBtnClick
+      OnClick = EditBAComBtnClick
       Version = '1.6.2.0'
       TMSStyle = 0
     end
-    object DeleteBARecBtn: TAdvToolButton
+    object DeleteBAComBtn: TAdvToolButton
       Left = 838
       Top = 21
       Width = 100
@@ -941,11 +941,11 @@ object BonRecF: TBonRecF
       Shaded = False
       ShowHint = True
       Spacing = -2
-      OnClick = DeleteBARecBtnClick
+      OnClick = DeleteBAComBtnClick
       Version = '1.6.2.0'
       TMSStyle = 0
     end
-    object AddBARecBtn: TAdvToolButton
+    object AddBAComBtn: TAdvToolButton
       Left = 628
       Top = 21
       Width = 100
@@ -973,11 +973,11 @@ object BonRecF: TBonRecF
       Shaded = False
       ShowHint = True
       Spacing = -1
-      OnClick = AddBARecBtnClick
+      OnClick = AddBAComBtnClick
       Version = '1.6.2.0'
       TMSStyle = 0
     end
-    object ResearchBARecLbl: TLabel
+    object ResearchBAComLbl: TLabel
       Left = 3
       Top = 31
       Width = 74
@@ -1025,51 +1025,51 @@ object BonRecF: TBonRecF
       ParentFont = False
       StyleElements = []
     end
-    object PreviosBARecbtn: TsSpeedButton
+    object PreviosBACombtn: TsSpeedButton
       Left = 472
       Top = 23
       Width = 25
       Height = 25
       ParentShowHint = False
       ShowHint = True
-      OnClick = PreviosBARecbtnClick
+      OnClick = PreviosBACombtnClick
       SkinData.SkinSection = 'SPEEDBUTTON'
       Images = MainForm.PanelIcons24
       ImageIndex = 1
     end
-    object NextBARecbtn: TsSpeedButton
+    object NextBACombtn: TsSpeedButton
       Left = 502
       Top = 23
       Width = 25
       Height = 25
       ParentShowHint = False
       ShowHint = True
-      OnClick = NextBARecbtnClick
+      OnClick = NextBACombtnClick
       SkinData.SkinSection = 'SPEEDBUTTON'
       Images = MainForm.PanelIcons24
       ImageIndex = 2
       ShowCaption = False
     end
-    object LastBARecbtn: TsSpeedButton
+    object LastBACombtn: TsSpeedButton
       Left = 532
       Top = 23
       Width = 25
       Height = 25
       ParentShowHint = False
       ShowHint = True
-      OnClick = LastBARecbtnClick
+      OnClick = LastBACombtnClick
       SkinData.SkinSection = 'SPEEDBUTTON'
       Images = MainForm.PanelIcons24
       ImageIndex = 3
     end
-    object FisrtBARecbtn: TsSpeedButton
+    object FisrtBACombtn: TsSpeedButton
       Left = 442
       Top = 23
       Width = 25
       Height = 25
       ParentShowHint = False
       ShowHint = True
-      OnClick = FisrtBARecbtnClick
+      OnClick = FisrtBACombtnClick
       SkinData.SkinSection = 'SPEEDBUTTON'
       Images = MainForm.PanelIcons24
       ImageIndex = 0
@@ -1232,7 +1232,7 @@ object BonRecF: TBonRecF
       TabOrder = 2
       StyleElements = []
     end
-    object ResearchBARecEdt: TSearchBox
+    object ResearchBAComEdt: TSearchBox
       Left = 77
       Top = 29
       Width = 220
@@ -1244,9 +1244,9 @@ object BonRecF: TBonRecF
       Font.Style = []
       ParentFont = False
       TabOrder = 0
-      OnChange = ResearchBARecEdtChange
-      OnKeyDown = ResearchBARecEdtKeyDown
-      OnKeyPress = ResearchBARecEdtKeyPress
+      OnChange = ResearchBAComEdtChange
+      OnKeyDown = ResearchBAComEdtKeyDown
+      OnKeyPress = ResearchBAComEdtKeyPress
     end
     object Panel2: TPanel
       Left = 436
@@ -1275,7 +1275,7 @@ object BonRecF: TBonRecF
       TabOrder = 3
       StyleElements = []
     end
-    object DateEndBARecD: TDateTimePicker
+    object DateEndBAComD: TDateTimePicker
       Left = 344
       Top = 38
       Width = 87
@@ -1289,9 +1289,9 @@ object BonRecF: TBonRecF
       Font.Style = []
       ParentFont = False
       TabOrder = 4
-      OnChange = DateStartBARecDChange
+      OnChange = DateStartBAComDChange
     end
-    object DateStartBARecD: TDateTimePicker
+    object DateStartBAComD: TDateTimePicker
       Left = 344
       Top = 7
       Width = 87
@@ -1305,7 +1305,7 @@ object BonRecF: TBonRecF
       Font.Style = []
       ParentFont = False
       TabOrder = 5
-      OnChange = DateStartBARecDChange
+      OnChange = DateStartBAComDChange
     end
     object ResherchBARFourRdioBtn: TRadioButton
       Left = 76
@@ -1402,7 +1402,7 @@ object BonRecF: TBonRecF
     DesignSize = (
       951
       20)
-    object SumGirdBARecBtn: TAdvToolButton
+    object SumGirdBAComBtn: TAdvToolButton
       Left = 141
       Top = 0
       Width = 26
@@ -1432,7 +1432,7 @@ object BonRecF: TBonRecF
       Shaded = False
       ShowHint = True
       Spacing = -2
-      OnClick = SumGirdBARecBtnClick
+      OnClick = SumGirdBAComBtnClick
       Version = '1.6.2.0'
       TMSStyle = 0
     end
@@ -1629,24 +1629,24 @@ object BonRecF: TBonRecF
       StyleElements = []
     end
   end
-  object frxBonRecDB: TfrxDBDataset
-    UserName = 'frxBonRecDB'
+  object frxBonComADB: TfrxDBDataset
+    UserName = 'frxBonComADB'
     CloseDataSource = False
     FieldAliases.Strings = (
-      'code_barec=code_barec'
-      'date_barec=date_barec'
-      'time_barec=time_barec'
-      'montht_barec=montht_barec'
-      'montver_barec=montver_barec'
-      'valider_barec=valider_barec'
-      'num_barec=num_barec'
-      'fourbarec=fourbarec'
+      'code_bacom=code_bacom'
+      'date_bacom=date_bacom'
+      'time_bacom=time_bacom'
+      'montht_bacom=montht_bacom'
+      'montver_bacom=montver_bacom'
+      'valider_bacom=valider_bacom'
+      'num_bacom=num_bacom'
+      'fourbacom=fourbacom'
       'MontantTVA=MontantTVA'
       'MontantRes=MontantRes'
-      'obser_barec=obser_barec'
-      'montttc_barec=montttc_barec'
-      'remise_barec=remise_barec'
-      'num_cheque_barec=num_cheque_barec'
+      'obser_bacom=obser_bacom'
+      'montttc_bacom=montttc_bacom'
+      'remise_bacom=remise_bacom'
+      'num_cheque_bacom=num_cheque_bacom'
       'code_mdpai=code_mdpai'
       'code_cmpt=code_cmpt'
       'ModePaie=ModePaie'
@@ -1656,9 +1656,9 @@ object BonRecF: TBonRecF
       'code_f=code_f'
       'code_ur=code_ur'
       'Agnet=Agnet'
-      'bon_or_no_barec=bon_or_no_barec'
+      'bon_or_no_bacom=bon_or_no_bacom'
       'NeTHT=NeTHT')
-    DataSource = MainForm.BonRecListDataS
+    DataSource = MainForm.BonComListDataS
     BCDToCurrency = False
     Left = 248
     Top = 392
@@ -1709,7 +1709,7 @@ object BonRecF: TBonRecF
     Left = 408
     Top = 480
   end
-  object BonRecfrxRprt: TfrxReport
+  object BonComAfrxRprt: TfrxReport
     Version = '6.3.12'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
@@ -1729,8 +1729,8 @@ object BonRecF: TBonRecF
     Top = 320
     Datasets = <
       item
-        DataSet = frxBonRecDB
-        DataSetName = 'frxBonRecDB'
+        DataSet = frxBonComADB
+        DataSetName = 'frxBonComADB'
       end>
     Variables = <>
     Style = <
@@ -2151,8 +2151,8 @@ object BonRecF: TBonRecF
         Height = 21.236240000000000000
         Top = 173.858380000000000000
         Width = 1046.929810000000000000
-        DataSet = frxBonRecDB
-        DataSetName = 'frxBonRecDB'
+        DataSet = frxBonComADB
+        DataSetName = 'frxBonComADB'
         RowCount = 0
         object Shape1: TfrxShapeView
           AllowVectorExport = True
@@ -2162,14 +2162,14 @@ object BonRecF: TBonRecF
           Frame.Color = 13948116
           Frame.Typ = []
         end
-        object frxBonRecDBvalider_barec: TfrxMemoView
+        object frxBonComADBvalider_bacom: TfrxMemoView
           AllowVectorExport = True
           Left = -0.220470000000000000
           Top = 1.000000000000000000
           Width = 11.338590000000000000
           Height = 18.897650000000000000
-          DataSet = frxBonRecDB
-          DataSetName = 'frxBonRecDB'
+          DataSet = frxBonComADB
+          DataSetName = 'frxBonComADB'
           DisplayFormat.FormatStr = #9675','#9679
           DisplayFormat.Kind = fkBoolean
           Font.Charset = DEFAULT_CHARSET
@@ -2180,18 +2180,18 @@ object BonRecF: TBonRecF
           Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
-            '[frxBonRecDB."valider_barec"]')
+            '[frxBonComADB."valider_bacom"]')
           ParentFont = False
         end
-        object frxBonRecDBnum_barec: TfrxMemoView
+        object frxBonComADBnum_bacom: TfrxMemoView
           AllowVectorExport = True
           Left = 11.338590000000000000
           Top = 0.645640000000000000
           Width = 113.385900000000000000
           Height = 18.897650000000000000
-          DataField = 'num_barec'
-          DataSet = frxBonRecDB
-          DataSetName = 'frxBonRecDB'
+          DataField = 'num_bacom'
+          DataSet = frxBonComADB
+          DataSetName = 'frxBonComADB'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -12
@@ -2199,18 +2199,18 @@ object BonRecF: TBonRecF
           Font.Style = []
           Frame.Typ = []
           Memo.UTF8W = (
-            '[frxBonRecDB."num_barec"]')
+            '[frxBonComADB."num_bacom"]')
           ParentFont = False
           VAlign = vaCenter
         end
-        object frxBonRecDBdate_barec: TfrxMemoView
+        object frxBonComADBdate_bacom: TfrxMemoView
           AllowVectorExport = True
           Left = 125.102489130000000000
           Top = 0.755905510000000000
           Width = 71.433070870000000000
           Height = 18.897650000000000000
-          DataSet = frxBonRecDB
-          DataSetName = 'frxBonRecDB'
+          DataSet = frxBonComADB
+          DataSetName = 'frxBonComADB'
           DisplayFormat.FormatStr = 'mm/dd/yyyy'
           DisplayFormat.Kind = fkDateTime
           Font.Charset = DEFAULT_CHARSET
@@ -2221,19 +2221,19 @@ object BonRecF: TBonRecF
           Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
-            '[frxBonRecDB."date_barec"]')
+            '[frxBonComADB."date_bacom"]')
           ParentFont = False
           VAlign = vaCenter
         end
-        object frxBonRecDBfourbarec: TfrxMemoView
+        object frxBonComADBfourbacom: TfrxMemoView
           AllowVectorExport = True
           Left = 196.535560000000000000
           Top = 0.755905511811024000
           Width = 188.976500000000000000
           Height = 18.897650000000000000
-          DataField = 'fourbarec'
-          DataSet = frxBonRecDB
-          DataSetName = 'frxBonRecDB'
+          DataField = 'fourbacom'
+          DataSet = frxBonComADB
+          DataSetName = 'frxBonComADB'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -12
@@ -2242,18 +2242,18 @@ object BonRecF: TBonRecF
           Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
-            '[frxBonRecDB."fourbarec"]')
+            '[frxBonComADB."fourbacom"]')
           ParentFont = False
           VAlign = vaCenter
         end
-        object frxBonRecDBmontht_barec: TfrxMemoView
+        object frxBonComADBmontht_bacom: TfrxMemoView
           AllowVectorExport = True
           Left = 385.512060000000000000
           Top = 0.645640000000000000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
-          DataSet = frxBonRecDB
-          DataSetName = 'frxBonRecDB'
+          DataSet = frxBonComADB
+          DataSetName = 'frxBonComADB'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -2264,18 +2264,18 @@ object BonRecF: TBonRecF
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonRecDB."montht_barec"]')
+            '[frxBonComADB."montht_bacom"]')
           ParentFont = False
           VAlign = vaCenter
         end
-        object frxBonRecDBremise_barec: TfrxMemoView
+        object frxBonComADBremise_bacom: TfrxMemoView
           AllowVectorExport = True
           Left = 480.000310000000000000
           Top = 0.755905510000000000
           Width = 94.488188980000000000
           Height = 18.897650000000000000
-          DataSet = frxBonRecDB
-          DataSetName = 'frxBonRecDB'
+          DataSet = frxBonComADB
+          DataSetName = 'frxBonComADB'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -2286,18 +2286,18 @@ object BonRecF: TBonRecF
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonRecDB."remise_barec"]')
+            '[frxBonComADB."remise_bacom"]')
           ParentFont = False
           VAlign = vaCenter
         end
-        object frxBonRecDBNeTHT: TfrxMemoView
+        object frxBonComADBNeTHT: TfrxMemoView
           AllowVectorExport = True
           Left = 574.488560000000000000
           Top = 0.755905510000000000
           Width = 94.488188980000000000
           Height = 18.897650000000000000
-          DataSet = frxBonRecDB
-          DataSetName = 'frxBonRecDB'
+          DataSet = frxBonComADB
+          DataSetName = 'frxBonComADB'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -2308,18 +2308,18 @@ object BonRecF: TBonRecF
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonRecDB."NeTHT"]')
+            '[frxBonComADB."NeTHT"]')
           ParentFont = False
           VAlign = vaCenter
         end
-        object frxBonRecDBMontantTVA: TfrxMemoView
+        object frxBonComADBMontantTVA: TfrxMemoView
           AllowVectorExport = True
           Left = 668.976810000000000000
           Top = 0.755905510000000000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
-          DataSet = frxBonRecDB
-          DataSetName = 'frxBonRecDB'
+          DataSet = frxBonComADB
+          DataSetName = 'frxBonComADB'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -2330,18 +2330,18 @@ object BonRecF: TBonRecF
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonRecDB."MontantTVA"]')
+            '[frxBonComADB."MontantTVA"]')
           ParentFont = False
           VAlign = vaCenter
         end
-        object frxBonRecDBmontttc_barec: TfrxMemoView
+        object frxBonComADBmontttc_bacom: TfrxMemoView
           AllowVectorExport = True
           Left = 763.465060000000000000
           Top = 0.755905510000000000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
-          DataSet = frxBonRecDB
-          DataSetName = 'frxBonRecDB'
+          DataSet = frxBonComADB
+          DataSetName = 'frxBonComADB'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -2352,18 +2352,18 @@ object BonRecF: TBonRecF
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonRecDB."montttc_barec"]')
+            '[frxBonComADB."montttc_bacom"]')
           ParentFont = False
           VAlign = vaCenter
         end
-        object frxBonRecDBmontver_barec: TfrxMemoView
+        object frxBonComADBmontver_bacom: TfrxMemoView
           AllowVectorExport = True
           Left = 858.512370000000000000
           Top = 0.755905510000000000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
-          DataSet = frxBonRecDB
-          DataSetName = 'frxBonRecDB'
+          DataSet = frxBonComADB
+          DataSetName = 'frxBonComADB'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -2374,18 +2374,18 @@ object BonRecF: TBonRecF
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonRecDB."montver_barec"]')
+            '[frxBonComADB."montver_bacom"]')
           ParentFont = False
           VAlign = vaCenter
         end
-        object frxBonRecDBMontantRes: TfrxMemoView
+        object frxBonComADBMontantRes: TfrxMemoView
           AllowVectorExport = True
           Left = 953.000620000000000000
           Top = 0.755905510000000000
           Width = 94.110236220000000000
           Height = 18.897650000000000000
-          DataSet = frxBonRecDB
-          DataSetName = 'frxBonRecDB'
+          DataSet = frxBonComADB
+          DataSetName = 'frxBonComADB'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -2396,7 +2396,7 @@ object BonRecF: TBonRecF
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonRecDB."MontantRes"]')
+            '[frxBonComADB."MontantRes"]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -2424,7 +2424,7 @@ object BonRecF: TBonRecF
           Fill.BackColor = 13948116
           HAlign = haRight
           Memo.UTF8W = (
-            '[SUM(<frxBonRecDB."montht_barec">,MasterData1)]')
+            '[SUM(<frxBonComADB."montht_bacom">,MasterData1)]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -2445,7 +2445,7 @@ object BonRecF: TBonRecF
           Fill.BackColor = 13948116
           HAlign = haRight
           Memo.UTF8W = (
-            '[SUM(<frxBonRecDB."remise_barec">,MasterData1)]')
+            '[SUM(<frxBonComADB."remise_bacom">,MasterData1)]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -2466,7 +2466,7 @@ object BonRecF: TBonRecF
           Fill.BackColor = 13948116
           HAlign = haRight
           Memo.UTF8W = (
-            '[SUM(<frxBonRecDB."NeTHT">,MasterData1)]')
+            '[SUM(<frxBonComADB."NeTHT">,MasterData1)]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -2487,7 +2487,7 @@ object BonRecF: TBonRecF
           Fill.BackColor = 13948116
           HAlign = haRight
           Memo.UTF8W = (
-            '[SUM(<frxBonRecDB."MontantTVA">,MasterData1)]')
+            '[SUM(<frxBonComADB."MontantTVA">,MasterData1)]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -2508,7 +2508,7 @@ object BonRecF: TBonRecF
           Fill.BackColor = 13948116
           HAlign = haRight
           Memo.UTF8W = (
-            '[SUM(<frxBonRecDB."montttc_barec">,MasterData1)]')
+            '[SUM(<frxBonComADB."montttc_bacom">,MasterData1)]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -2529,7 +2529,7 @@ object BonRecF: TBonRecF
           Fill.BackColor = 13948116
           HAlign = haRight
           Memo.UTF8W = (
-            '[SUM(<frxBonRecDB."montver_barec">,MasterData1)]')
+            '[SUM(<frxBonComADB."montver_bacom">,MasterData1)]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -2550,7 +2550,7 @@ object BonRecF: TBonRecF
           Fill.BackColor = 13948116
           HAlign = haRight
           Memo.UTF8W = (
-            '[SUM(<frxBonRecDB."MontantRes">,MasterData1)]')
+            '[SUM(<frxBonComADB."MontantRes">,MasterData1)]')
           ParentFont = False
           VAlign = vaCenter
         end
