@@ -1,4 +1,4 @@
-unit UProduitGestion;
+ï»¿unit UProduitGestion;
 
 interface
 
@@ -243,7 +243,7 @@ uses Winapi.ShellAPI,DateUtils, UClientGestion, UMainF, USplashAddUnite, UFourni
   USplashAddCodeBarre, math, UFournisseurGestion, USplash, UProduitsList
 
   , UComptoir, UBonFacAGestion, UBonFacVGestion, UBonLivGestion, UBonRecGestion,
-  UPertesGestion, UBonFacPGestion, UInventoryGestion;
+  UPertesGestion, UBonFacPGestion, UInventoryGestion, UBonComAGestion;
 
 
 //----------- use this procedure to set center aligment text for the combobox---////
@@ -310,7 +310,7 @@ begin
   FSplashAddUnite.OKAddUniteSBtn.Left:=(FSplashAddUnite.Width div 4) - (FSplashAddUnite.OKAddUniteSBtn.Width div 2) + 18 ;
   FSplashAddUnite.CancelAddUniteSBtn.Left:= ((FSplashAddUnite.Width div 2 )+((FSplashAddUnite.Width div 2)div 2 ) ) - (FSplashAddUnite.CancelAddUniteSBtn.Width div 2) - 18;
   FSplashAddUnite.NameAddUniteSLbl.Caption:='Famille:';
-  FSplashAddUnite.RequiredAddUniteSlbl.Caption:='S''il vous plaît entrer une Famille' ;
+  FSplashAddUnite.RequiredAddUniteSlbl.Caption:='S''il vous plaï¿½t entrer une Famille' ;
   FSplashAddUnite.RequiredAddUniteSlbl.Left:= FSplashAddUnite.NameAddUniteSEdt.Left;
   FSplashAddUnite.FormCaptionAddUniteSLbl.Caption:='Ajouter Famille';
   FSplashAddUnite.RequiredStarAddUniteSLbl.Left:= (FSplashAddUnite.NameAddUniteSEdt.Left )+( FSplashAddUnite.NameAddUniteSEdt.Width) + 3 ;
@@ -530,7 +530,7 @@ begin
     FSplashAddUnite.OKAddUniteSBtn.Left:=(FSplashAddUnite.Width div 4) - (FSplashAddUnite.OKAddUniteSBtn.Width div 2) + 20 ;
     FSplashAddUnite.CancelAddUniteSBtn.Left:= ((FSplashAddUnite.Width div 2 )+((FSplashAddUnite.Width div 2)div 2 ) ) - (FSplashAddUnite.CancelAddUniteSBtn.Width div 2) - 20;
     FSplashAddUnite.NameAddUniteSLbl.Caption:='Sous Famille:';
-    FSplashAddUnite.RequiredAddUniteSlbl.Caption:='S''il vous plaît entrer une Sous Famille' ;
+    FSplashAddUnite.RequiredAddUniteSlbl.Caption:='S''il vous plaï¿½t entrer une Sous Famille' ;
     FSplashAddUnite.RequiredAddUniteSlbl.Left:= FSplashAddUnite.NameAddUniteSEdt.Left;
     FSplashAddUnite.FormCaptionAddUniteSLbl.Caption:='Ajouter Sous Famille';
     FSplashAddUnite.RequiredStarAddUniteSLbl.Left:= (FSplashAddUnite.NameAddUniteSEdt.Left )+( FSplashAddUnite.NameAddUniteSEdt.Width) + 3 ;
@@ -587,7 +587,7 @@ begin
   FSplashAddUnite.OKAddUniteSBtn.Left:=(FSplashAddUnite.Width div 4) - (FSplashAddUnite.OKAddUniteSBtn.Width div 2) + 20 ;
   FSplashAddUnite.CancelAddUniteSBtn.Left:= ((FSplashAddUnite.Width div 2 )+((FSplashAddUnite.Width div 2)div 2 ) ) - (FSplashAddUnite.CancelAddUniteSBtn.Width div 2) - 20;
   FSplashAddUnite.NameAddUniteSLbl.Caption:='Localisation:';
-  FSplashAddUnite.RequiredAddUniteSlbl.Caption:='S''il vous plaît entrer Localisation' ;
+  FSplashAddUnite.RequiredAddUniteSlbl.Caption:='S''il vous plaï¿½t entrer Localisation' ;
   FSplashAddUnite.RequiredAddUniteSlbl.Left:= FSplashAddUnite.NameAddUniteSEdt.Left;
   FSplashAddUnite.FormCaptionAddUniteSLbl.Caption:='Ajouter Localisation';
   FSplashAddUnite.RequiredStarAddUniteSLbl.Left:= (FSplashAddUnite.NameAddUniteSEdt.Left )+( FSplashAddUnite.NameAddUniteSEdt.Width) + 3 ;
@@ -1683,6 +1683,15 @@ begin
                  BonFacAGestionF.EnterAddProduitBonFacAGBtnClick(Sender);
            end;
 
+           if Assigned(BonComAGestionF) AND BonComAGestionF.Showing = True then
+           begin
+                 BonComAGestionF.ProduitsListDBGridEh.DataSource:= nil;
+                 BonComAGestionF.ProduitsListDBGridEh.DataSource:= BonComAGestionF.BonComPListDataS;
+                 BonComAGestionF.ProduitBonComGCbxEnter(Sender);
+                 BonComAGestionF.ProduitBonComGCbx.Text:= NameProduitGEdt.Text;
+                 BonComAGestionF.EnterAddProduitBonComGBtnClick(Sender);
+           end;
+
            end;
           begin
             FSplash := TFSplash.Create(ProduitGestionF);
@@ -1711,7 +1720,7 @@ begin
         try
           RefProduitGEdt.BorderStyle:= bsNone;
           RefProduitGEdt.StyleElements:= [];
-          RequiredRefProduitGlbl.Caption:='Réference Produit Existe Déja !!';
+          RequiredRefProduitGlbl.Caption:='Rï¿½ference Produit Existe Dï¿½ja !!';
 
           RequiredRefProduitGlbl.Visible:= True;
           RefProduitGErrorP.Visible:= True;
@@ -1732,7 +1741,7 @@ begin
             try
           NameProduitGEdt.BorderStyle:= bsNone;
           NameProduitGEdt.StyleElements:= [];
-          RequiredProduitGlbl.Caption:='Désignation Produit Existe Déja !!';
+          RequiredProduitGlbl.Caption:='Dï¿½signation Produit Existe Dï¿½ja !!';
           RequiredProduitGlbl.Visible:= True;
           NameProduitGErrorP.Visible:= True;
           sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
@@ -2056,7 +2065,7 @@ begin
         try
           RefProduitGEdt.BorderStyle:= bsNone;
           RefProduitGEdt.StyleElements:= [];
-          RequiredRefProduitGlbl.Caption:='Réference Produit Existe Déja !!';
+          RequiredRefProduitGlbl.Caption:='Rï¿½ference Produit Existe Dï¿½ja !!';
 
           RequiredRefProduitGlbl.Visible:= True;
           RefProduitGErrorP.Visible:= True;
@@ -2077,7 +2086,7 @@ begin
             try
           NameProduitGEdt.BorderStyle:= bsNone;
           NameProduitGEdt.StyleElements:= [];
-          RequiredProduitGlbl.Caption:='Désignation Produit Existe Déja !!';
+          RequiredProduitGlbl.Caption:='Dï¿½signation Produit Existe Dï¿½ja !!';
           RequiredProduitGlbl.Visible:= True;
           NameProduitGErrorP.Visible:= True;
           sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
@@ -2107,7 +2116,7 @@ begin
        try
         RefProduitGEdt.BorderStyle:= bsNone;
         RefProduitGEdt.StyleElements:= [];
-        RequiredRefProduitGlbl.Caption:='S''il vous plaît entrer un Réference';
+        RequiredRefProduitGlbl.Caption:='S''il vous plaï¿½t entrer un Rï¿½ference';
         RequiredRefProduitGlbl.Visible:= True;
         RefProduitGErrorP.Visible:= True;
         sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
@@ -2121,7 +2130,7 @@ begin
       try
       NameProduitGEdt.BorderStyle:= bsNone;
       NameProduitGEdt.StyleElements:= [];
-      RequiredProduitGlbl.Caption:='S''il vous plaît entrer un désignation';
+      RequiredProduitGlbl.Caption:='S''il vous plaï¿½t entrer un dï¿½signation';
       RequiredProduitGlbl.Visible:= True;
       NameProduitGErrorP.Visible:= True;
       sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
@@ -3186,7 +3195,7 @@ begin
        
         if NOT MainForm.FDQuery2.IsEmpty then
         begin
-        ShowMessage('Le Code a barre existe déja dans le produit : ' +QuotedStr(MainForm.FDQuery2.FieldValues['nom_p'])  );
+        ShowMessage('Le Code a barre existe dï¿½ja dans le produit : ' +QuotedStr(MainForm.FDQuery2.FieldValues['nom_p'])  );
         CodeBarProduitGEdt.SetFocus;
         CodeBarProduitGEdt.Text:='';
         end;
@@ -3224,7 +3233,7 @@ begin
 //   MainForm.SQLQuery.SQL.Text:= 'SELECT nom_p FROM produit WHERE code_p = ' + IntToStr( CodeP);
 //   MainForm.SQLQuery.Active:=True ;
 //
-//   ShowMessage('Le Code a barre existe déja dans le produit : ' +QuotedStr(MainForm.SQLQuery.FieldValues['nom_p'])  );
+//   ShowMessage('Le Code a barre existe dï¿½ja dans le produit : ' +QuotedStr(MainForm.SQLQuery.FieldValues['nom_p'])  );
 //     MainForm.CodebarresTable.Active:=False;
 //     MainForm.CodebarresTable.SQL.Clear;
 //     MainForm.CodebarresTable.SQL.Text:= 'SELECT * FROM codebarres ' ;
@@ -3247,7 +3256,7 @@ begin
 //     MainForm.SQLQuery.SQL.Text:= 'SELECT nom_p FROM produit WHERE codebar_p LIKE ' + QuotedStr(CodeBarProduitGEdt.Text);
 //     MainForm.SQLQuery.Active:=True ;
 //
-//     ShowMessage('Le Code a barre existe déja dans le produit  ' +QuotedStr(MainForm.SQLQuery.FieldByName('nom_p').AsString)  );
+//     ShowMessage('Le Code a barre existe dï¿½ja dans le produit  ' +QuotedStr(MainForm.SQLQuery.FieldByName('nom_p').AsString)  );
 //       MainForm.ProduitTable.Last;
 //       MainForm.CodebarresTable.Active:=False;
 //       MainForm.CodebarresTable.SQL.Clear;

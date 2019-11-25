@@ -32,7 +32,7 @@ uses
   dxSkinValentine, dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
   dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
   dxSkinXmas2008Blue, cxTextEdit, cxMaskEdit, cxDropDownEdit, Vcl.Menus,
-  Vcl.AppEvnts;
+  Vcl.AppEvnts, frxExportBaseDialog;
 
 type
   TBonComAGestionF = class(TForm)
@@ -114,8 +114,8 @@ type
     Shape5: TShape;
     RemiseTypeBonComGCbx: TComboBox;
     Label15: TLabel;
-    BonRTotalTTCNewLbl: TLabel;
-    BonRTotalHTNewLbl: TLabel;
+    BonCATotalTTCNewLbl: TLabel;
+    BonCATotalHTNewLbl: TLabel;
     TotalTVANewLbl: TLabel;
     NChequeBonComGCbx: TEdit;
     ObserBonComGLbl: TLabel;
@@ -139,7 +139,7 @@ type
     ProduitBonComGCbx: TcxComboBox;
     PopupMenu1: TPopupMenu;
     B1: TMenuItem;
-    BondeRception1: TMenuItem;
+    BondeCommande1: TMenuItem;
     BonComPListSanTAXfrxRprt: TfrxReport;
     RequiredStarProduitGLbl: TLabel;
     ModepPaiGErrorP: TPanel;
@@ -149,8 +149,8 @@ type
     RequiredMPGlbl: TLabel;
     RequiredCompteGlbl: TLabel;
     N1: TMenuItem;
-    Bonderception2: TMenuItem;
-    Bonderceptionhorstaxe1: TMenuItem;
+    Bondecommande2: TMenuItem;
+    Bondecommandehorstaxe1: TMenuItem;
     Label26: TLabel;
     Label27: TLabel;
     Label28: TLabel;
@@ -213,11 +213,11 @@ type
       const Rect: TRect; DataCol: Integer; Column: TColumnEh;
       State: TGridDrawState);
     procedure B1Click(Sender: TObject);
-    procedure BondeRception1Click(Sender: TObject);
+    procedure BondeCommande1Click(Sender: TObject);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
     procedure ModePaieBonComGCbxChange(Sender: TObject);
-    procedure Bonderception2Click(Sender: TObject);
-    procedure Bonderceptionhorstaxe1Click(Sender: TObject);
+    procedure Bondecommande2Click(Sender: TObject);
+    procedure Bondecommandehorstaxe1Click(Sender: TObject);
     procedure ApplicationEvents1ShortCut(var Msg: TWMKey; var Handled: Boolean);
     procedure ResherchPARDesProduitsRdioBtnClick(Sender: TObject);
     procedure ListFourBonComGBtnClick(Sender: TObject);
@@ -230,52 +230,52 @@ type
   public
     { Public declarations }
 
-    const BRLSQL = 
-      ' SELECT BRL.code_bacom,BRL.code_bacoml,BRL.qut_p,BRL.cond_p,BRL.code_p,BRL.tva_p,BRL.prixht_p,P.nom_p as nomp, P.refer_p as referp,  '
-      +' BRL.prixvd_p,BRL.prixvr_p,BRL.prixvg_p,BRL.prixva_p,BRL.prixva2_p,BRL.dateperiss_p,BRL.qutinstock_p, '
-      +'   (((BRL.prixht_p * BRL.tva_p)/100)+BRL.prixht_p) AS PrixATTC, '
-      +'   ((BRL.prixht_p * BRL.qut_p) * cond_p) AS MontantHT, '
-      +'   (((((BRL.prixht_p * BRL.tva_p)/100)+BRL.prixht_p) * BRL.qut_p)*cond_p) AS MontantTTC, '
-      +'   (((((((BRL.prixht_p * BRL.tva_p)/100)+BRL.prixht_p) * BRL.qut_p)*cond_p) )-(((BRL.prixht_p * BRL.qut_p) * cond_p))) AS MontantTVA, '
-      +'   ((BRL.prixht_p * BRL.qut_p)* cond_p) AS MontantAHT, '
+    const BCALSQL = 
+      ' SELECT BCAL.code_bacom,BCAL.code_bacoml,BCAL.qut_p,BCAL.cond_p,BCAL.code_p,BCAL.tva_p,BCAL.prixht_p,P.nom_p as nomp, P.refer_p as referp,  '
+      +' BCAL.prixvd_p,BCAL.prixvr_p,BCAL.prixvg_p,BCAL.prixva_p,BCAL.prixva2_p,BCAL.dateperiss_p,BCAL.qutinstock_p, '
+      +'   (((BCAL.prixht_p * BCAL.tva_p)/100)+BCAL.prixht_p) AS PrixATTC, '
+      +'   ((BCAL.prixht_p * BCAL.qut_p) * cond_p) AS MontantHT, '
+      +'   (((((BCAL.prixht_p * BCAL.tva_p)/100)+BCAL.prixht_p) * BCAL.qut_p)*cond_p) AS MontantTTC, '
+      +'   (((((((BCAL.prixht_p * BCAL.tva_p)/100)+BCAL.prixht_p) * BCAL.qut_p)*cond_p) )-(((BCAL.prixht_p * BCAL.qut_p) * cond_p))) AS MontantTVA, '
+      +'   ((BCAL.prixht_p * BCAL.qut_p)* cond_p) AS MontantAHT, '
       +'  CASE  '
-      +'       WHEN BRL.prixvd_p <> ''0'' THEN '
-      +'     CASE WHEN BRL.prixht_p <> ''0''   '
-      +'       THEN ( ((BRL.prixvd_p - BRL.prixht_p) / BRL.prixht_p  ) *100) '
+      +'       WHEN BCAL.prixvd_p <> ''0'' THEN '
+      +'     CASE WHEN BCAL.prixht_p <> ''0''   '
+      +'       THEN ( ((BCAL.prixvd_p - BCAL.prixht_p) / BCAL.prixht_p  ) *100) '
       +'       ELSE ''100''  '
       +'     END           '
       +'  END AS MargeD,   '
       +'  CASE             '
-      +'     WHEN BRL.prixvr_p <> ''0'' THEN '
-      +'   CASE WHEN BRL.prixht_p <> ''0''    '
-      +'     THEN ( ((BRL.prixvr_p - BRL.prixht_p) / BRL.prixht_p  ) *100) '
+      +'     WHEN BCAL.prixvr_p <> ''0'' THEN '
+      +'   CASE WHEN BCAL.prixht_p <> ''0''    '
+      +'     THEN ( ((BCAL.prixvr_p - BCAL.prixht_p) / BCAL.prixht_p  ) *100) '
       +'     ELSE ''100''  '
       +'   END          '
       +'  END AS MargeR, '
       +'  CASE   '
-      +'     WHEN BRL.prixvg_p <> ''0'' THEN  '
-      +'   CASE WHEN BRL.prixht_p <> ''0''   '
-      +'     THEN ( ((BRL.prixvg_p - BRL.prixht_p) / BRL.prixht_p  ) *100)  '
+      +'     WHEN BCAL.prixvg_p <> ''0'' THEN  '
+      +'   CASE WHEN BCAL.prixht_p <> ''0''   '
+      +'     THEN ( ((BCAL.prixvg_p - BCAL.prixht_p) / BCAL.prixht_p  ) *100)  '
       +'     ELSE ''100''  '
       +'   END   '
       +'  END AS MargeG,  '
       +'   CASE    '
-      +'     WHEN BRL.prixva_p <> ''0'' THEN  '
-      +'   CASE WHEN BRL.prixht_p <> ''0''  '
-      +'     THEN ( ((BRL.prixva_p - BRL.prixht_p) / BRL.prixht_p  ) *100) '
+      +'     WHEN BCAL.prixva_p <> ''0'' THEN  '
+      +'   CASE WHEN BCAL.prixht_p <> ''0''  '
+      +'     THEN ( ((BCAL.prixva_p - BCAL.prixht_p) / BCAL.prixht_p  ) *100) '
       +'     ELSE ''100''  '
       +'   END  '
       +'  END AS MargeA, '
       +'   CASE   '
-      +'     WHEN BRL.prixva2_p <> ''0'' THEN  '
-      +'   CASE WHEN BRL.prixht_p <> ''0''   '
-      +'     THEN ( ((BRL.prixva2_p - BRL.prixht_p) / BRL.prixht_p  ) *100)  '
+      +'     WHEN BCAL.prixva2_p <> ''0'' THEN  '
+      +'   CASE WHEN BCAL.prixht_p <> ''0''   '
+      +'     THEN ( ((BCAL.prixva2_p - BCAL.prixht_p) / BCAL.prixht_p  ) *100)  '
       +'     ELSE ''100''  '
       +'   END  '
       +'  END AS MargeA2   '
-      +' FROM bona_com_list as BRL '
+      +' FROM bona_com_list as BCAL '
       +' INNER JOIN produit as P   '
-      +'  ON BRL.code_p = P.code_p ';
+      +'  ON BCAL.code_p = P.code_p ';
     
     procedure EnableBonCom;
   end;
@@ -288,7 +288,7 @@ implementation
 uses   StringTool,Vcl.Imaging.jpeg, IniFiles,
   UBonComA, UMainF, UFournisseurGestion, UFournisseurList, UFastProduitsList,
   UProduitGestion, USplashAddUnite, UProduitsList, USplashAddCompte,
-  USplashVersement;
+  USplashVersement, UDataModule;
 
 {$R *.dfm}
 
@@ -471,7 +471,7 @@ begin
 end;
 
 procedure TBonComAGestionF.ProduitBonComGCbxKeyPress(Sender: TObject; var Key: Char);
-  var CodeBR,CodeCB : Integer;
+  var CodeBCA,CodeCB : Integer;
       lookupResultRefP : Variant;
       NomP: String;
       CodeP: Integer;
@@ -492,29 +492,29 @@ begin
         MainForm.SQLQuery.Active:=True;
         CodeP:= MainForm.SQLQuery.FieldByName('code_p').AsInteger ;
 
-         lookupResultRefP := MainForm.Bona_com_listTable.Lookup('code_p',(CodeP),'code_p');
+         lookupResultRefP := DataModuleF.Bona_com_listTable.Lookup('code_p',(CodeP),'code_p');
          if VarIsnull( lookupResultRefP) then
          begin
 
             if  MainForm.SQLQuery.RecordCount > 0  then
           begin
 
-            MainForm.Bona_com_listTable.DisableControls;
-            MainForm.Bona_com_listTable.IndexFieldNames:='';
-            MainForm.Bona_com_listTable.Active:=False;
-            MainForm.Bona_com_listTable.SQL.Clear;
-            MainForm.Bona_com_listTable.SQL.Text:= BRLSQL+ ' ORDER by code_bacoml' ;
-            MainForm.Bona_com_listTable.Active:=True;
+            DataModuleF.Bona_com_listTable.DisableControls;
+            DataModuleF.Bona_com_listTable.IndexFieldNames:='';
+            DataModuleF.Bona_com_listTable.Active:=False;
+            DataModuleF.Bona_com_listTable.SQL.Clear;
+            DataModuleF.Bona_com_listTable.SQL.Text:= BCALSQL+ ' ORDER by code_bacoml' ;
+            DataModuleF.Bona_com_listTable.Active:=True;
 
-            MainForm.Bona_com_listTable.Last;
-             if  MainForm.Bona_com_listTable.IsEmpty then
+            DataModuleF.Bona_com_listTable.Last;
+             if  DataModuleF.Bona_com_listTable.IsEmpty then
              begin
-               MainForm.Bona_com_listTable.Last;
-               CodeBR := 1;
+               DataModuleF.Bona_com_listTable.Last;
+               CodeBCA := 1;
              end else
                  begin
-                  MainForm.Bona_com_listTable.Last;
-                  CodeBR:= MainForm.Bona_com_listTable.FieldValues['code_bacoml'] + 1 ;
+                  DataModuleF.Bona_com_listTable.Last;
+                  CodeBCA:= DataModuleF.Bona_com_listTable.FieldValues['code_bacoml'] + 1 ;
                  end;
 
                  if MainForm.SQLQuery.FieldByName('perissable_p').AsBoolean = True then
@@ -522,31 +522,31 @@ begin
                    ProduitsListDBGridEh.Columns[4].Visible := True
                  end;
 
-             MainForm.Bona_com_listTable.Last;
-             MainForm.Bona_com_listTable.Append;
-             MainForm.Bona_com_listTable.FieldValues['code_bacoml']:= CodeBR ;
-             MainForm.Bona_com_listTable.FieldValues['code_bacom']:= MainForm.Bona_comTable.FieldValues['code_bacom'];
-             MainForm.Bona_com_listTable.FieldValues['code_p']:=  MainForm.SQLQuery.FieldValues['code_p'] ;
-             MainForm.Bona_com_listTable.FieldValues['qut_p'] :=  01;
-             MainForm.Bona_com_listTable.FieldValues['prixht_p']:= MainForm.SQLQuery.FieldValues['prixht_p'];
-             MainForm.Bona_com_listTable.FieldValues['cond_p']:= 01;
-             MainForm.Bona_com_listTable.FieldValues['tva_p']:= MainForm.SQLQuery.FieldValues['tva_p'];
-             MainForm.Bona_com_listTable.FieldByName('prixvd_p').AsCurrency:=  MainForm.SQLQuery.FieldByName('prixvd_p').AsCurrency;
-             MainForm.Bona_com_listTable.FieldByName('prixvr_p').AsCurrency:=  MainForm.SQLQuery.FieldByName('prixvr_p').AsCurrency;
-             MainForm.Bona_com_listTable.FieldByName('prixvg_p').AsCurrency:=  MainForm.SQLQuery.FieldByName('prixvg_p').AsCurrency;
-             MainForm.Bona_com_listTable.FieldByName('prixva_p').AsCurrency:=  MainForm.SQLQuery.FieldByName('prixva_p').AsCurrency;
-             MainForm.Bona_com_listTable.FieldByName('prixva2_p').AsCurrency:= MainForm.SQLQuery.FieldByName('prixva2_p').AsCurrency;
+             DataModuleF.Bona_com_listTable.Last;
+             DataModuleF.Bona_com_listTable.Append;
+             DataModuleF.Bona_com_listTable.FieldValues['code_bacoml']:= CodeBCA ;
+             DataModuleF.Bona_com_listTable.FieldValues['code_bacom']:= DataModuleF.Bona_comTable.FieldValues['code_bacom'];
+             DataModuleF.Bona_com_listTable.FieldValues['code_p']:=  MainForm.SQLQuery.FieldValues['code_p'] ;
+             DataModuleF.Bona_com_listTable.FieldValues['qut_p'] :=  01;
+             DataModuleF.Bona_com_listTable.FieldValues['prixht_p']:= MainForm.SQLQuery.FieldValues['prixht_p'];
+             DataModuleF.Bona_com_listTable.FieldValues['cond_p']:= 01;
+             DataModuleF.Bona_com_listTable.FieldValues['tva_p']:= MainForm.SQLQuery.FieldValues['tva_p'];
+             DataModuleF.Bona_com_listTable.FieldByName('prixvd_p').AsCurrency:=  MainForm.SQLQuery.FieldByName('prixvd_p').AsCurrency;
+             DataModuleF.Bona_com_listTable.FieldByName('prixvr_p').AsCurrency:=  MainForm.SQLQuery.FieldByName('prixvr_p').AsCurrency;
+             DataModuleF.Bona_com_listTable.FieldByName('prixvg_p').AsCurrency:=  MainForm.SQLQuery.FieldByName('prixvg_p').AsCurrency;
+             DataModuleF.Bona_com_listTable.FieldByName('prixva_p').AsCurrency:=  MainForm.SQLQuery.FieldByName('prixva_p').AsCurrency;
+             DataModuleF.Bona_com_listTable.FieldByName('prixva2_p').AsCurrency:= MainForm.SQLQuery.FieldByName('prixva2_p').AsCurrency;
 
-             MainForm.Bona_com_listTable.FieldValues['qutinstock_p']:= 
-             (MainForm.Bona_com_listTable.FieldValues['qut_p'])*(MainForm.Bona_com_listTable.FieldValues['cond_p']);     
+             DataModuleF.Bona_com_listTable.FieldValues['qutinstock_p']:= 
+             (DataModuleF.Bona_com_listTable.FieldValues['qut_p'])*(DataModuleF.Bona_com_listTable.FieldValues['cond_p']);     
              
-             MainForm.Bona_com_listTable.Post ;
-             MainForm.Bona_com_listTable.IndexFieldNames:='code_bacom';
+             DataModuleF.Bona_com_listTable.Post ;
+             DataModuleF.Bona_com_listTable.IndexFieldNames:='code_bacom';
 
-            MainForm.Bona_com_listTable.Active:=False;
-            MainForm.Bona_com_listTable.SQL.Clear;
-            MainForm.Bona_com_listTable.SQL.Text:= BRLSQL+ ' WHERE code_bacom = ' + QuotedStr(IntToStr(MainForm.Bona_comTable.FieldValues['code_bacom']));
-            MainForm.Bona_com_listTable.Active:=True;
+            DataModuleF.Bona_com_listTable.Active:=False;
+            DataModuleF.Bona_com_listTable.SQL.Clear;
+            DataModuleF.Bona_com_listTable.SQL.Text:= BCALSQL+ ' WHERE code_bacom = ' + QuotedStr(IntToStr(DataModuleF.Bona_comTable.FieldValues['code_bacom']));
+            DataModuleF.Bona_com_listTable.Active:=True;
 
             ProduitBonComGCbx.Text:='';
             ProduitsListDBGridEh.SetFocus;
@@ -554,8 +554,8 @@ begin
            ProduitsListDBGridEh.SelectedIndex:=2;
            ProduitsListDBGridEh.EditorMode:=True;
 
-           MainForm.Bona_com_listTable.EnableControls;
-           MainForm.Bona_com_listTable.Last;
+           DataModuleF.Bona_com_listTable.EnableControls;
+           DataModuleF.Bona_com_listTable.Last;
            if FournisseurBonComGCbx.Text<>'' then
             begin
             ValiderBAComBonComGBtn.Enabled:= True;
@@ -580,7 +580,7 @@ begin
       FSplashAddUnite.CancelAddUniteSBtn.Top:=(FSplashAddUnite.Height) - 36;
       FSplashAddUnite.OKAddUniteSBtn.Left:=(FSplashAddUnite.Width div 4) - (FSplashAddUnite.OKAddUniteSBtn.Width div 2) + 15;
       FSplashAddUnite.CancelAddUniteSBtn.Left:= ((FSplashAddUnite.Width div 2 )+((FSplashAddUnite.Width div 2)div 2 ) ) - (FSplashAddUnite.CancelAddUniteSBtn.Width div 2) - 15;
-      if  MainForm.Bona_com_listTable.FieldValues['code_p'] <> NULL then
+      if  DataModuleF.Bona_com_listTable.FieldValues['code_p'] <> NULL then
       begin
       NomP:=   MainForm.SQLQuery.FieldValues['nom_p'];
       end else begin
@@ -620,25 +620,25 @@ begin
             MainForm.SQLQuery.Active:=True;
             CodeP:= MainForm.SQLQuery.FieldByName('code_p').AsInteger ;
 
-         lookupResultRefP := MainForm.Bona_com_listTable.Lookup('code_p',(CodeP),'code_p');
+         lookupResultRefP := DataModuleF.Bona_com_listTable.Lookup('code_p',(CodeP),'code_p');
          if VarIsnull( lookupResultRefP) then
          begin
        if  MainForm.SQLQuery.RecordCount > 0  then
           begin
 
-            MainForm.Bona_com_listTable.DisableControls;
-            MainForm.Bona_com_listTable.IndexFieldNames:='';
-            MainForm.Bona_com_listTable.Active:=False;
-            MainForm.Bona_com_listTable.SQL.Clear;
-            MainForm.Bona_com_listTable.SQL.Text:= BRLSQL+ ' ORDER by code_bacoml' ;
-            MainForm.Bona_com_listTable.Active:=True;
-           if  MainForm.Bona_com_listTable.RecordCount <= 0 then
+            DataModuleF.Bona_com_listTable.DisableControls;
+            DataModuleF.Bona_com_listTable.IndexFieldNames:='';
+            DataModuleF.Bona_com_listTable.Active:=False;
+            DataModuleF.Bona_com_listTable.SQL.Clear;
+            DataModuleF.Bona_com_listTable.SQL.Text:= BCALSQL+ ' ORDER by code_bacoml' ;
+            DataModuleF.Bona_com_listTable.Active:=True;
+           if  DataModuleF.Bona_com_listTable.RecordCount <= 0 then
            begin
-             CodeBR := 1;
+             CodeBCA := 1;
            end else
                begin
-                MainForm.Bona_com_listTable.Last;
-                CodeBR:= MainForm.Bona_com_listTable.FieldValues['code_bacoml'] + 1 ;
+                DataModuleF.Bona_com_listTable.Last;
+                CodeBCA:= DataModuleF.Bona_com_listTable.FieldValues['code_bacoml'] + 1 ;
                end;
 
                  if MainForm.SQLQuery.FieldByName('perissable_p').AsBoolean = True then
@@ -646,31 +646,31 @@ begin
                    ProduitsListDBGridEh.Columns[4].Visible := True
                  end;
                                 
-             MainForm.Bona_com_listTable.Insert;
-             MainForm.Bona_com_listTable.FieldValues['code_bacoml']:= CodeBR ;
-             MainForm.Bona_com_listTable.FieldValues['code_bacom']:= MainForm.Bona_comTable.FieldValues['code_bacom'];
-             MainForm.Bona_com_listTable.FieldValues['code_p']:=  MainForm.SQLQuery.FieldValues['code_p'] ;
-             MainForm.Bona_com_listTable.FieldValues['qut_p'] :=  01;
-             MainForm.Bona_com_listTable.FieldValues['prixht_p']:= MainForm.SQLQuery.FieldValues['prixht_p'];
-             MainForm.Bona_com_listTable.FieldValues['cond_p']:= 01;
-             MainForm.Bona_com_listTable.FieldValues['tva_p']:= MainForm.SQLQuery.FieldValues['tva_p'];
-             MainForm.Bona_com_listTable.FieldByName('prixvd_p').AsCurrency:=  MainForm.SQLQuery.FieldByName('prixvd_p').AsCurrency;
-             MainForm.Bona_com_listTable.FieldByName('prixvr_p').AsCurrency:=  MainForm.SQLQuery.FieldByName('prixvr_p').AsCurrency;
-             MainForm.Bona_com_listTable.FieldByName('prixvg_p').AsCurrency:=  MainForm.SQLQuery.FieldByName('prixvg_p').AsCurrency;
-             MainForm.Bona_com_listTable.FieldByName('prixva_p').AsCurrency:=  MainForm.SQLQuery.FieldByName('prixva_p').AsCurrency;
-             MainForm.Bona_com_listTable.FieldByName('prixva2_p').AsCurrency:= MainForm.SQLQuery.FieldByName('prixva2_p').AsCurrency;
+             DataModuleF.Bona_com_listTable.Insert;
+             DataModuleF.Bona_com_listTable.FieldValues['code_bacoml']:= CodeBCA ;
+             DataModuleF.Bona_com_listTable.FieldValues['code_bacom']:= DataModuleF.Bona_comTable.FieldValues['code_bacom'];
+             DataModuleF.Bona_com_listTable.FieldValues['code_p']:=  MainForm.SQLQuery.FieldValues['code_p'] ;
+             DataModuleF.Bona_com_listTable.FieldValues['qut_p'] :=  01;
+             DataModuleF.Bona_com_listTable.FieldValues['prixht_p']:= MainForm.SQLQuery.FieldValues['prixht_p'];
+             DataModuleF.Bona_com_listTable.FieldValues['cond_p']:= 01;
+             DataModuleF.Bona_com_listTable.FieldValues['tva_p']:= MainForm.SQLQuery.FieldValues['tva_p'];
+             DataModuleF.Bona_com_listTable.FieldByName('prixvd_p').AsCurrency:=  MainForm.SQLQuery.FieldByName('prixvd_p').AsCurrency;
+             DataModuleF.Bona_com_listTable.FieldByName('prixvr_p').AsCurrency:=  MainForm.SQLQuery.FieldByName('prixvr_p').AsCurrency;
+             DataModuleF.Bona_com_listTable.FieldByName('prixvg_p').AsCurrency:=  MainForm.SQLQuery.FieldByName('prixvg_p').AsCurrency;
+             DataModuleF.Bona_com_listTable.FieldByName('prixva_p').AsCurrency:=  MainForm.SQLQuery.FieldByName('prixva_p').AsCurrency;
+             DataModuleF.Bona_com_listTable.FieldByName('prixva2_p').AsCurrency:= MainForm.SQLQuery.FieldByName('prixva2_p').AsCurrency;
 
-              MainForm.Bona_com_listTable.FieldValues['qutinstock_p']:= 
-             (MainForm.Bona_com_listTable.FieldValues['qut_p'])*(MainForm.Bona_com_listTable.FieldValues['cond_p']);     
+              DataModuleF.Bona_com_listTable.FieldValues['qutinstock_p']:= 
+             (DataModuleF.Bona_com_listTable.FieldValues['qut_p'])*(DataModuleF.Bona_com_listTable.FieldValues['cond_p']);     
 
-             MainForm.Bona_com_listTable.Post ;
-             MainForm.Bona_com_listTable.IndexFieldNames:='code_bacom';
+             DataModuleF.Bona_com_listTable.Post ;
+             DataModuleF.Bona_com_listTable.IndexFieldNames:='code_bacom';
 
-            MainForm.Bona_com_listTable.Active:=False;
-            MainForm.Bona_com_listTable.SQL.Clear;
-            MainForm.Bona_com_listTable.SQL.Text:= BRLSQL+ ' WHERE code_bacom = ' + QuotedStr(IntToStr(MainForm.Bona_comTable.FieldValues['code_bacom']));
-            MainForm.Bona_com_listTable.Active:=True;
-            MainForm.Bona_com_listTable.EnableControls;
+            DataModuleF.Bona_com_listTable.Active:=False;
+            DataModuleF.Bona_com_listTable.SQL.Clear;
+            DataModuleF.Bona_com_listTable.SQL.Text:= BCALSQL+ ' WHERE code_bacom = ' + QuotedStr(IntToStr(DataModuleF.Bona_comTable.FieldValues['code_bacom']));
+            DataModuleF.Bona_com_listTable.Active:=True;
+            DataModuleF.Bona_com_listTable.EnableControls;
 
             ProduitBonComGCbx.Text:='';
             ProduitsListDBGridEh.SetFocus;
@@ -678,8 +678,8 @@ begin
            ProduitsListDBGridEh.SelectedIndex:=2;
            ProduitsListDBGridEh.EditorMode:=True;
 
-           MainForm.Bona_com_listTable.EnableControls;
-            MainForm.Bona_com_listTable.Last;
+           DataModuleF.Bona_com_listTable.EnableControls;
+            DataModuleF.Bona_com_listTable.Last;
             if FournisseurBonComGCbx.Text<>'' then
               begin
               ValiderBAComBonComGBtn.Enabled:= True;
@@ -702,7 +702,7 @@ begin
             FSplashAddUnite.CancelAddUniteSBtn.Top:=(FSplashAddUnite.Height) - 36;
             FSplashAddUnite.OKAddUniteSBtn.Left:=(FSplashAddUnite.Width div 4) - (FSplashAddUnite.OKAddUniteSBtn.Width div 2) + 15;
             FSplashAddUnite.CancelAddUniteSBtn.Left:= ((FSplashAddUnite.Width div 2 )+((FSplashAddUnite.Width div 2)div 2 ) ) - (FSplashAddUnite.CancelAddUniteSBtn.Width div 2) - 15;
-            if  MainForm.Bona_com_listTable.FieldValues['code_p'] <> NULL then
+            if  DataModuleF.Bona_com_listTable.FieldValues['code_p'] <> NULL then
             begin
             NomP:=   MainForm.SQLQuery.FieldValues['nom_p'];
             end else begin
@@ -753,24 +753,24 @@ begin
      if  (MainForm.SQLQuery.RecordCount > 0 )   then
       begin
 
-         lookupResultRefP := MainForm.Bona_com_listTable.Lookup('code_p',(CodeP),'code_p');
+         lookupResultRefP := DataModuleF.Bona_com_listTable.Lookup('code_p',(CodeP),'code_p');
          if VarIsnull( lookupResultRefP) then
          begin
 
-            MainForm.Bona_com_listTable.DisableControls;
-            MainForm.Bona_com_listTable.IndexFieldNames:='';
-            MainForm.Bona_com_listTable.Active:=False;
-            MainForm.Bona_com_listTable.SQL.Clear;
-            MainForm.Bona_com_listTable.SQL.Text:= BRLSQL+ ' ORDER by code_bacoml' ;
-            MainForm.Bona_com_listTable.Active:=True;
+            DataModuleF.Bona_com_listTable.DisableControls;
+            DataModuleF.Bona_com_listTable.IndexFieldNames:='';
+            DataModuleF.Bona_com_listTable.Active:=False;
+            DataModuleF.Bona_com_listTable.SQL.Clear;
+            DataModuleF.Bona_com_listTable.SQL.Text:= BCALSQL+ ' ORDER by code_bacoml' ;
+            DataModuleF.Bona_com_listTable.Active:=True;
 
-           if  MainForm.Bona_com_listTable.RecordCount <= 0 then
+           if  DataModuleF.Bona_com_listTable.RecordCount <= 0 then
            begin
-             CodeBR := 1;
+             CodeBCA := 1;
            end else
                begin
-                MainForm.Bona_com_listTable.Last;
-                CodeBR:= MainForm.Bona_com_listTable.FieldValues['code_bacoml'] + 1 ;
+                DataModuleF.Bona_com_listTable.Last;
+                CodeBCA:= DataModuleF.Bona_com_listTable.FieldValues['code_bacoml'] + 1 ;
                end;
                
                  if MainForm.SQLQuery.FieldByName('perissable_p').AsBoolean = True then
@@ -778,32 +778,32 @@ begin
                    ProduitsListDBGridEh.Columns[4].Visible := True
                  end;               
 
-             MainForm.Bona_com_listTable.Last;
-             MainForm.Bona_com_listTable.Append;
-             MainForm.Bona_com_listTable.FieldValues['code_bacoml']:= CodeBR ;
-             MainForm.Bona_com_listTable.FieldValues['code_bacom']:= MainForm.Bona_comTable.FieldValues['code_bacom'];
-             MainForm.Bona_com_listTable.FieldValues['code_p']:=  MainForm.SQLQuery.FieldValues['code_p'] ;
-             MainForm.Bona_com_listTable.FieldValues['qut_p'] :=  01;
-             MainForm.Bona_com_listTable.FieldValues['prixht_p']:= MainForm.SQLQuery.FieldValues['prixht_p'];
-             MainForm.Bona_com_listTable.FieldValues['cond_p']:= 01;
-             MainForm.Bona_com_listTable.FieldValues['tva_p']:= MainForm.SQLQuery.FieldValues['tva_p'];
-             MainForm.Bona_com_listTable.FieldByName('prixvd_p').AsCurrency:=  MainForm.SQLQuery.FieldByName('prixvd_p').AsCurrency;
-             MainForm.Bona_com_listTable.FieldByName('prixvr_p').AsCurrency:=  MainForm.SQLQuery.FieldByName('prixvr_p').AsCurrency;
-             MainForm.Bona_com_listTable.FieldByName('prixvg_p').AsCurrency:=  MainForm.SQLQuery.FieldByName('prixvg_p').AsCurrency;
-             MainForm.Bona_com_listTable.FieldByName('prixva_p').AsCurrency:=  MainForm.SQLQuery.FieldByName('prixva_p').AsCurrency;
-             MainForm.Bona_com_listTable.FieldByName('prixva2_p').AsCurrency:= MainForm.SQLQuery.FieldByName('prixva2_p').AsCurrency;
+             DataModuleF.Bona_com_listTable.Last;
+             DataModuleF.Bona_com_listTable.Append;
+             DataModuleF.Bona_com_listTable.FieldValues['code_bacoml']:= CodeBCA ;
+             DataModuleF.Bona_com_listTable.FieldValues['code_bacom']:= DataModuleF.Bona_comTable.FieldValues['code_bacom'];
+             DataModuleF.Bona_com_listTable.FieldValues['code_p']:=  MainForm.SQLQuery.FieldValues['code_p'] ;
+             DataModuleF.Bona_com_listTable.FieldValues['qut_p'] :=  01;
+             DataModuleF.Bona_com_listTable.FieldValues['prixht_p']:= MainForm.SQLQuery.FieldValues['prixht_p'];
+             DataModuleF.Bona_com_listTable.FieldValues['cond_p']:= 01;
+             DataModuleF.Bona_com_listTable.FieldValues['tva_p']:= MainForm.SQLQuery.FieldValues['tva_p'];
+             DataModuleF.Bona_com_listTable.FieldByName('prixvd_p').AsCurrency:=  MainForm.SQLQuery.FieldByName('prixvd_p').AsCurrency;
+             DataModuleF.Bona_com_listTable.FieldByName('prixvr_p').AsCurrency:=  MainForm.SQLQuery.FieldByName('prixvr_p').AsCurrency;
+             DataModuleF.Bona_com_listTable.FieldByName('prixvg_p').AsCurrency:=  MainForm.SQLQuery.FieldByName('prixvg_p').AsCurrency;
+             DataModuleF.Bona_com_listTable.FieldByName('prixva_p').AsCurrency:=  MainForm.SQLQuery.FieldByName('prixva_p').AsCurrency;
+             DataModuleF.Bona_com_listTable.FieldByName('prixva2_p').AsCurrency:= MainForm.SQLQuery.FieldByName('prixva2_p').AsCurrency;
 
-             MainForm.Bona_com_listTable.FieldValues['qutinstock_p']:= 
-             (MainForm.Bona_com_listTable.FieldValues['qut_p'])*(MainForm.Bona_com_listTable.FieldValues['cond_p']);             
+             DataModuleF.Bona_com_listTable.FieldValues['qutinstock_p']:= 
+             (DataModuleF.Bona_com_listTable.FieldValues['qut_p'])*(DataModuleF.Bona_com_listTable.FieldValues['cond_p']);             
              
-             MainForm.Bona_com_listTable.Post ;
-             MainForm.Bona_com_listTable.IndexFieldNames:='code_bacom';
+             DataModuleF.Bona_com_listTable.Post ;
+             DataModuleF.Bona_com_listTable.IndexFieldNames:='code_bacom';
 
-             MainForm.Bona_com_listTable.Active:=False;
-             MainForm.Bona_com_listTable.SQL.Clear;
-             MainForm.Bona_com_listTable.SQL.Text:= BRLSQL+ ' WHERE code_bacom = ' + QuotedStr(IntToStr(MainForm.Bona_comTable.FieldValues['code_bacom']));
-             MainForm.Bona_com_listTable.Active:=True;
-             MainForm.Bona_com_listTable.EnableControls;
+             DataModuleF.Bona_com_listTable.Active:=False;
+             DataModuleF.Bona_com_listTable.SQL.Clear;
+             DataModuleF.Bona_com_listTable.SQL.Text:= BCALSQL+ ' WHERE code_bacom = ' + QuotedStr(IntToStr(DataModuleF.Bona_comTable.FieldValues['code_bacom']));
+             DataModuleF.Bona_com_listTable.Active:=True;
+             DataModuleF.Bona_com_listTable.EnableControls;
 
             ProduitBonComGCbx.Text:='';
             ProduitsListDBGridEh.SetFocus;
@@ -811,8 +811,8 @@ begin
            ProduitsListDBGridEh.SelectedIndex:=2;
            ProduitsListDBGridEh.EditorMode:=True;
 
-           MainForm.Bona_com_listTable.EnableControls;
-            MainForm.Bona_com_listTable.Last;
+           DataModuleF.Bona_com_listTable.EnableControls;
+            DataModuleF.Bona_com_listTable.Last;
             if FournisseurBonComGCbx.Text<>'' then
               begin
               ValiderBAComBonComGBtn.Enabled:= True;
@@ -836,7 +836,7 @@ begin
             FSplashAddUnite.CancelAddUniteSBtn.Top:=(FSplashAddUnite.Height) - 36;
             FSplashAddUnite.OKAddUniteSBtn.Left:=(FSplashAddUnite.Width div 4) - (FSplashAddUnite.OKAddUniteSBtn.Width div 2) + 15;
             FSplashAddUnite.CancelAddUniteSBtn.Left:= ((FSplashAddUnite.Width div 2 )+((FSplashAddUnite.Width div 2)div 2 ) ) - (FSplashAddUnite.CancelAddUniteSBtn.Width div 2) - 15;
-            if  MainForm.Bona_com_listTable.FieldValues['code_p'] <> NULL then
+            if  DataModuleF.Bona_com_listTable.FieldValues['code_p'] <> NULL then
             begin
             NomP:=   MainForm.SQLQuery.FieldValues['nom_p'];
             end else begin
@@ -870,7 +870,7 @@ begin
           MainForm.SQLQuery.Active:=False;
           MainForm.SQLQuery.SQL.Clear;
 
-         MainForm.Bona_com_listTable.Refresh;
+         DataModuleF.Bona_com_listTable.Refresh;
 //        ProduitBonComGCbx.AutoDropDown:=False;
          ProduitBonComGCbx.SelectAll;
 
@@ -879,7 +879,7 @@ begin
            ProduitBonComGCbx.Text:= '';
          end;
 
-     MainForm.Bona_com_listTable.Last;
+     DataModuleF.Bona_com_listTable.Last;
  end;
 
 end;
@@ -911,14 +911,14 @@ I : Integer;
 
 procedure TBonComAGestionF.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-MainForm.SaveGridLayout(ProduitsListDBGridEh,GetCurrentDir +'\bin\gc_br');
+MainForm.SaveGridLayout(ProduitsListDBGridEh,GetCurrentDir +'\bin\gc_bca');
 
  if ValiderBAComBonComGImg.ImageIndex = 1 then
   begin
 
-    MainForm.Bona_comTable.Refresh;
+    DataModuleF.Bona_comTable.Refresh;
 
-    MainForm.Bona_com_listTable.Refresh;
+    DataModuleF.Bona_com_listTable.Refresh;
   end;
 
           MainForm.FournisseurTable.Active:=false;
@@ -940,13 +940,13 @@ MainForm.SaveGridLayout(ProduitsListDBGridEh,GetCurrentDir +'\bin\gc_br');
           MainForm.CompteTable.EnableControls;
 
 
-          MainForm.Bona_com_listTable.Active:=false;
-          MainForm.Bona_com_listTable.SQL.Clear;
-          MainForm.Bona_com_listTable.SQL.Text:= BRLSQL ;
-          MainForm.Bona_com_listTable.Active:=True;
-          MainForm.Bona_com_listTable.EnableControls;
+          DataModuleF.Bona_com_listTable.Active:=false;
+          DataModuleF.Bona_com_listTable.SQL.Clear;
+          DataModuleF.Bona_com_listTable.SQL.Text:= BCALSQL ;
+          DataModuleF.Bona_com_listTable.Active:=True;
+          DataModuleF.Bona_com_listTable.EnableControls;
 
-  MainForm.Bona_com_listTable.IndexFieldNames:='code_bacom';
+  DataModuleF.Bona_com_listTable.IndexFieldNames:='code_bacom';
 
 //  FreeAndNil(BonComAGestionF);
 //  Destroy
@@ -972,22 +972,22 @@ begin
     BonComRegleLbl.Caption :=         FloatToStrF(StrToFloat(BonComRegleLbl.Caption),ffNumber,14,2) ;
     BonComGFourOLDCredit.Caption:= FloatToStrF(StrToFloat(BonComGFourOLDCredit.Caption),ffNumber,14,2) ;
     BonComGFourNEWCredit.Caption:= FloatToStrF(StrToFloat(BonComGFourNEWCredit.Caption),ffNumber,14,2) ;
- CodeCB:= MainForm.Bona_comTable.FieldValues['code_bacom']   ;
- NumBonComGEdt.Caption := 'BR'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5, CodeCB]);
-  if (MainForm.Bona_comTable.FieldByName('code_f').AsInteger <> null)
- AND (MainForm.Bona_comTable.FieldByName('code_f').AsInteger <> 0)  then
+ CodeCB:= DataModuleF.Bona_comTable.FieldValues['code_bacom']   ;
+ NumBonComGEdt.Caption := 'BCA'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5, CodeCB]);
+  if (DataModuleF.Bona_comTable.FieldByName('code_f').AsInteger <> null)
+ AND (DataModuleF.Bona_comTable.FieldByName('code_f').AsInteger <> 0)  then
  begin
-   if MainForm.Bona_comTable.FieldValues['fourbacom'] <> null then
+   if DataModuleF.Bona_comTable.FieldValues['fourbacom'] <> null then
     begin
-   FournisseurBonComGCbx.Text:= MainForm.Bona_comTable.FieldValues['fourbacom'];
+   FournisseurBonComGCbx.Text:= DataModuleF.Bona_comTable.FieldValues['fourbacom'];
     end;
-    if MainForm.Bona_comTable.FieldValues['ModePaie'] <> null then
+    if DataModuleF.Bona_comTable.FieldValues['ModePaie'] <> null then
     begin
-   ModePaieBonComGCbx.Text:= MainForm.Bona_comTable.FieldValues['ModePaie'];
+   ModePaieBonComGCbx.Text:= DataModuleF.Bona_comTable.FieldValues['ModePaie'];
     end;
-    if MainForm.Bona_comTable.FieldValues['Compte'] <> null then
+    if DataModuleF.Bona_comTable.FieldValues['Compte'] <> null then
     begin
-   CompteBonComGCbx.Text:= MainForm.Bona_comTable.FieldValues['Compte'];
+   CompteBonComGCbx.Text:= DataModuleF.Bona_comTable.FieldValues['Compte'];
     end;
    FournisseurBonComGCbxExit(Sender);
    ProduitBonComGCbx.SetFocus;
@@ -1002,16 +1002,16 @@ begin
      BonComGFourOLDCredit.Caption:= FloatToStrF(StrToFloat(StringReplace(BonComGFourOLDCredit.Caption, #32, '', [rfReplaceAll])),ffNumber,14,2) ;
      BonComGFourNEWCredit.Caption:= FloatToStrF(StrToFloat(StringReplace(BonComGFourNEWCredit.Caption, #32, '', [rfReplaceAll])),ffNumber,14,2) ;
 
-   if MainForm.Bona_comTable.FieldByName('valider_bacom').AsBoolean = True then
+   if DataModuleF.Bona_comTable.FieldByName('valider_bacom').AsBoolean = True then
    begin
     MainForm.SQLQuery.Active:= False;
     MainForm.SQLQuery.SQL.Clear;
-    MainForm.SQLQuery.SQL.Text:= 'select code_f, credit_f from fournisseur where code_f = ' + IntToStr( MainForm.Bona_comTable.FieldByName('code_f').AsInteger);
+    MainForm.SQLQuery.SQL.Text:= 'select code_f, credit_f from fournisseur where code_f = ' + IntToStr( DataModuleF.Bona_comTable.FieldByName('code_f').AsInteger);
     MainForm.SQLQuery.Active:= True;
 
       if NOT (MainForm.SQLQuery.IsEmpty) then
      begin
-      OLDCredit:= (MainForm.SQLQuery.FieldByName('credit_f').AsCurrency);// - (MainForm.Bona_comTable.FieldByName('MontantRes').AsCurrency) ;
+      OLDCredit:= (MainForm.SQLQuery.FieldByName('credit_f').AsCurrency);// - (DataModuleF.Bona_comTable.FieldByName('MontantRes').AsCurrency) ;
 
       NewCredit:=  MainForm.SQLQuery.FieldByName('credit_f').AsCurrency;
 
@@ -1061,16 +1061,16 @@ begin
       CodeF:= MainForm.SQLQuery.FieldByName('code_f').AsInteger ;
 
 
-//      MainForm.Bona_comTableCredit.DisableControls;
-//      MainForm.Bona_comTableCredit.Active:=false;
-//      MainForm.Bona_comTableCredit.SQL.Clear;
-//      MainForm.Bona_comTableCredit.SQL.Text:='Select * FROM bona_com WHERE valider_bacom = true AND code_f = '+ IntToStr( CodeF )+' ORDER BY code_bacom '  ;
-//      MainForm.Bona_comTableCredit.Active:=True;
+//      DataModuleF.Bona_comTableCredit.DisableControls;
+//      DataModuleF.Bona_comTableCredit.Active:=false;
+//      DataModuleF.Bona_comTableCredit.SQL.Clear;
+//      DataModuleF.Bona_comTableCredit.SQL.Text:='Select * FROM bona_com WHERE valider_bacom = true AND code_f = '+ IntToStr( CodeF )+' ORDER BY code_bacom '  ;
+//      DataModuleF.Bona_comTableCredit.Active:=True;
 //
-//     while NOT (MainForm.Bona_comTableCredit.Eof) do
+//     while NOT (DataModuleF.Bona_comTableCredit.Eof) do
 //     begin
-//     OLDCreditF := OLDCreditF + MainForm.Bona_comTableCredit.FieldValues['MontantRes'];
-//     MainForm.Bona_comTableCredit.Next;
+//     OLDCreditF := OLDCreditF + DataModuleF.Bona_comTableCredit.FieldValues['MontantRes'];
+//     DataModuleF.Bona_comTableCredit.Next;
 //     end;
 //
 //      MainForm.RegfournisseurTable.DisableControls;
@@ -1086,10 +1086,10 @@ begin
 //     end;
 
 
-//      MainForm.Bona_comTableCredit.EnableControls;
+//      DataModuleF.Bona_comTableCredit.EnableControls;
       if NOT (OLDCreditFINI = 0) then
       begin
-//       MainForm.Bona_comTableCredit.last;
+//       DataModuleF.Bona_comTableCredit.last;
        BonComGFourOLDCredit.Caption:= CurrToStrF((OLDCreditFINI ),ffNumber,2) ;
 
        if NOT (BonComPListDataS.DataSet.IsEmpty) then
@@ -1097,11 +1097,11 @@ begin
 //         if Tag = 0 then
 //         begin
 //         BonComGFourNEWCredit.Caption:=
-//         CurrToStrF((MainForm.Bona_comTableCredit.FieldByName('MontantRes').AsCurrency )+ StrToCurr (StringReplace(BonComResteLbl.Caption, #32, '', [rfReplaceAll])),ffNumber,2);//  anyways i'm software developer
+//         CurrToStrF((DataModuleF.Bona_comTableCredit.FieldByName('MontantRes').AsCurrency )+ StrToCurr (StringReplace(BonComResteLbl.Caption, #32, '', [rfReplaceAll])),ffNumber,2);//  anyways i'm software developer
 //        end else
 //            begin
 //              BonComGFourNEWCredit.Caption:=
-//              CurrToStrF((MainForm.Bona_comTableCredit.FieldByName('MontantRes').AsCurrency )+ StrToCurr (StringReplace(BonComResteLbl.Caption, #32, '', [rfReplaceAll])),ffNumber,2);//  anyways i'm software developer
+//              CurrToStrF((DataModuleF.Bona_comTableCredit.FieldByName('MontantRes').AsCurrency )+ StrToCurr (StringReplace(BonComResteLbl.Caption, #32, '', [rfReplaceAll])),ffNumber,2);//  anyways i'm software developer
 //
 //            end;
 
@@ -1111,13 +1111,13 @@ begin
          BonComGFourOLDCredit.Caption:= CurrToStrF(0,ffNumber,2) ;
         end;
 
-//      MainForm.Bona_comTableCredit.DisableControls;
-//      MainForm.Bona_comTableCredit.Active:=false;
-//      MainForm.Bona_comTableCredit.SQL.Clear;
-//      MainForm.Bona_comTableCredit.SQL.Text:='Select * FROM bona_com '  ;
-//      MainForm.Bona_comTableCredit.Active:=True;
-//      MainForm.Bona_comTableCredit.last;
-//      MainForm.Bona_comTableCredit.EnableControls;
+//      DataModuleF.Bona_comTableCredit.DisableControls;
+//      DataModuleF.Bona_comTableCredit.Active:=false;
+//      DataModuleF.Bona_comTableCredit.SQL.Clear;
+//      DataModuleF.Bona_comTableCredit.SQL.Text:='Select * FROM bona_com '  ;
+//      DataModuleF.Bona_comTableCredit.Active:=True;
+//      DataModuleF.Bona_comTableCredit.last;
+//      DataModuleF.Bona_comTableCredit.EnableControls;
 //
 //
 //
@@ -1133,13 +1133,13 @@ begin
 //      MainForm.SQLQuery.SQL.Text:='Select * FROM fournisseur' ;
 //      MainForm.SQLQuery.Active:=True;
 //      MainForm.SQLQuery.EnableControls;
-      if NOT (BonComPListDataS.DataSet.IsEmpty) AND NOT (MainForm.Bona_comTable.FieldByName('valider_bacom').AsBoolean = true) then
+      if NOT (BonComPListDataS.DataSet.IsEmpty) AND NOT (DataModuleF.Bona_comTable.FieldByName('valider_bacom').AsBoolean = true) then
       begin
       ValiderBAComBonComGBtn.Enabled:= True;
       ValiderBAComBonComGBtn.ImageIndex:=12;
       end;
 
-      MainForm.Bona_com_listTable.Refresh;
+      DataModuleF.Bona_com_listTable.Refresh;
 
         FournisseurBonComGCbx.StyleElements:= [seFont,seBorder,seBorder];
         RequiredFourGlbl.Visible:= False;
@@ -1176,7 +1176,7 @@ end;
 
 procedure TBonComAGestionF.AdvToolButton4Click(Sender: TObject);
 begin
-BonComF.AddBARecBtnClick(Sender);
+BonComAF.AddBAComBtnClick(Sender);
 end;
 
 procedure TBonComAGestionF.ApplicationEvents1ShortCut(var Msg: TWMKey;
@@ -1294,15 +1294,15 @@ begin
         end;
         if indexP = 1 then
         begin
-          BondeRception1Click(Screen);
+          BondeCommande1Click(Screen);
         end;
         if indexP = 2 then
         begin
-          Bonderception2Click(Screen);
+          Bondecommande2Click(Screen);
         end;
         if indexP = 3 then
         begin
-          Bonderceptionhorstaxe1Click(Screen);
+          Bondecommandehorstaxe1Click(Screen);
         end;
 
         Ini.Free;
@@ -1322,6 +1322,7 @@ begin
 //-------- Show the splash screan for the produit familly to add new one---------//
   FastProduitsListF.Left := (Screen.Width div 2) - (FastProduitsListF.Width div 2);
   FastProduitsListF.Top := (Screen.Height div 2) - (FastProduitsListF.Height div 2);
+  FastProduitsListF.Tag := 11;
   FastProduitsListF.Show;
   FastProduitsListF.ResearchProduitsEdt.SetFocus;
 
@@ -1398,7 +1399,7 @@ begin
   FastProduitsListF.ProduitsListDBGridEh.IndicatorOptions:=[];
   FastProduitsListF.ResearchProduitsEdt.Width:= 431;
 
-  FastProduitsListF.Tag := 0;
+  FastProduitsListF.Tag := 4;
   FastProduitsListF.Show;
   FastProduitsListF.ResearchProduitsEdt.SetFocus;
 
@@ -1406,9 +1407,9 @@ end;
 
 procedure TBonComAGestionF.FormCloseQuery(Sender: TObject;
   var CanClose: Boolean);
-  Var CodeBR : Integer;
+  Var CodeBCA : Integer;
  begin
-   codeBR:= MainForm.Bona_comTable.FieldByName('code_bacom').AsInteger;
+   codeBCA:= DataModuleF.Bona_comTable.FieldByName('code_bacom').AsInteger;
  if  NOT ProduitsListDBGridEh.DataSource.DataSet.IsEmpty then
   begin
     if FournisseurBonComGCbx.Text = '' then
@@ -1451,7 +1452,7 @@ procedure TBonComAGestionF.FormCloseQuery(Sender: TObject;
          //---------------------------------------------------
          if RequiredFourGlbl.Visible <> True then
            begin
-             if  (MainForm.Bona_comTable.FieldByName('valider_bacom').AsBoolean = false)  then
+             if  (DataModuleF.Bona_comTable.FieldByName('valider_bacom').AsBoolean = false)  then
              begin
               MainForm.FournisseurTable.DisableControls;
               MainForm.FournisseurTable.Active:=false;
@@ -1472,28 +1473,28 @@ procedure TBonComAGestionF.FormCloseQuery(Sender: TObject;
               MainForm.CompteTable.Active:=True;
 
 
-              MainForm.Bona_comTable.DisableControls;
-              MainForm.Bona_comTable.Edit;
-              MainForm.Bona_comTable.FieldValues['code_f']:= MainForm.FournisseurTable.FieldByName('code_f').AsInteger;
-              MainForm.Bona_comTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
-              MainForm.Bona_comTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
-              MainForm.Bona_comTable.FieldValues['obser_bacom']:= ObserBonComGMem.Text;
-              MainForm.Bona_comTable.FieldValues['num_cheque_bacom']:= NChequeBonComGCbx.Text;
-              MainForm.Bona_comTable.FieldByName('montht_bacom').AsCurrency:= StrToCurr(StringReplace(BonComTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
+              DataModuleF.Bona_comTable.DisableControls;
+              DataModuleF.Bona_comTable.Edit;
+              DataModuleF.Bona_comTable.FieldValues['code_f']:= MainForm.FournisseurTable.FieldByName('code_f').AsInteger;
+              DataModuleF.Bona_comTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
+              DataModuleF.Bona_comTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
+              DataModuleF.Bona_comTable.FieldValues['obser_bacom']:= ObserBonComGMem.Text;
+              DataModuleF.Bona_comTable.FieldValues['num_cheque_bacom']:= NChequeBonComGCbx.Text;
+              DataModuleF.Bona_comTable.FieldByName('montht_bacom').AsCurrency:= StrToCurr(StringReplace(BonComTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
 
               if RemiseBonComGEdt.Text<>'' then
               begin
-                 MainForm.Bona_comTable.FieldByName('remise_bacom').AsCurrency:=StrToCurr(StringReplace(RemiseBonComGEdt.Text, #32, '', [rfReplaceAll]));
+                 DataModuleF.Bona_comTable.FieldByName('remise_bacom').AsCurrency:=StrToCurr(StringReplace(RemiseBonComGEdt.Text, #32, '', [rfReplaceAll]));
               end else begin
-                        MainForm.Bona_comTable.FieldByName('remise_bacom').AsCurrency:=0;
+                        DataModuleF.Bona_comTable.FieldByName('remise_bacom').AsCurrency:=0;
                        end;
 
 
-              MainForm.Bona_comTable.FieldByName('montver_bacom').AsCurrency:=StrToCurr(StringReplace(BonComRegleLbl.Caption, #32, '', [rfReplaceAll]));
-              MainForm.Bona_comTable.FieldByName('montttc_bacom').AsCurrency:=StrToCurr(StringReplace(BonComTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
+              DataModuleF.Bona_comTable.FieldByName('montver_bacom').AsCurrency:=StrToCurr(StringReplace(BonComRegleLbl.Caption, #32, '', [rfReplaceAll]));
+              DataModuleF.Bona_comTable.FieldByName('montttc_bacom').AsCurrency:=StrToCurr(StringReplace(BonComTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
 
-              MainForm.Bona_comTable.Post;
-              MainForm.Bona_comTable.EnableControls;
+              DataModuleF.Bona_comTable.Post;
+              DataModuleF.Bona_comTable.EnableControls;
 
               MainForm.FournisseurTable.Active:=false;
               MainForm.FournisseurTable.SQL.Clear;
@@ -1514,10 +1515,10 @@ procedure TBonComAGestionF.FormCloseQuery(Sender: TObject;
               MainForm.CompteTable.EnableControls;
 
             //------- This is to delete data from tre and reg ih not valide----------------------------------------------
-//               if (codeBR <> 0) AND (codeBR <> null) then
+//               if (codeBCA <> 0) AND (codeBCA <> null) then
 //               begin
-//                  MainForm.GstockdcConnection.ExecSQL('DELETE FROM regfournisseur where code_bacom = ' + IntToStr(codeBR));
-//                  MainForm.GstockdcConnection.ExecSQL('DELETE FROM opt_cas_bnk where code_bacom = ' + IntToStr(codeBR));
+//                  MainForm.GstockdcConnection.ExecSQL('DELETE FROM regfournisseur where code_bacom = ' + IntToStr(codeBCA));
+//                  MainForm.GstockdcConnection.ExecSQL('DELETE FROM opt_cas_bnk where code_bacom = ' + IntToStr(codeBCA));
 //                  MainForm.RegfournisseurTable.Refresh ;
 //                  MainForm.Opt_cas_bnk_CaisseTable.Refresh ;
 //               end;
@@ -1543,9 +1544,9 @@ procedure TBonComAGestionF.FormCloseQuery(Sender: TObject;
   end  else
   begin
 
-          if  (MainForm.Bona_comTable.FieldByName('valider_bacom').AsBoolean = false)  then
+          if  (DataModuleF.Bona_comTable.FieldByName('valider_bacom').AsBoolean = false)  then
          begin
-//          codeBR:= MainForm.Bona_comTable.FieldByName('code_bacom').AsInteger;
+//          codeBCA:= DataModuleF.Bona_comTable.FieldByName('code_bacom').AsInteger;
 
           MainForm.FournisseurTable.DisableControls;
           MainForm.FournisseurTable.Active:=false;
@@ -1566,28 +1567,28 @@ procedure TBonComAGestionF.FormCloseQuery(Sender: TObject;
           MainForm.CompteTable.Active:=True;
 
 
-          MainForm.Bona_comTable.DisableControls;
-          MainForm.Bona_comTable.Edit;
-          MainForm.Bona_comTable.FieldValues['code_f']:= MainForm.FournisseurTable.FieldByName('code_f').AsInteger;
-          MainForm.Bona_comTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
-          MainForm.Bona_comTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
-          MainForm.Bona_comTable.FieldValues['obser_bacom']:= ObserBonComGMem.Text;
-          MainForm.Bona_comTable.FieldValues['num_cheque_bacom']:= NChequeBonComGCbx.Text;
-          MainForm.Bona_comTable.FieldByName('montht_bacom').AsCurrency:= StrToCurr(StringReplace(BonComTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
+          DataModuleF.Bona_comTable.DisableControls;
+          DataModuleF.Bona_comTable.Edit;
+          DataModuleF.Bona_comTable.FieldValues['code_f']:= MainForm.FournisseurTable.FieldByName('code_f').AsInteger;
+          DataModuleF.Bona_comTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
+          DataModuleF.Bona_comTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
+          DataModuleF.Bona_comTable.FieldValues['obser_bacom']:= ObserBonComGMem.Text;
+          DataModuleF.Bona_comTable.FieldValues['num_cheque_bacom']:= NChequeBonComGCbx.Text;
+          DataModuleF.Bona_comTable.FieldByName('montht_bacom').AsCurrency:= StrToCurr(StringReplace(BonComTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
 
           if RemiseBonComGEdt.Text<>'' then
           begin
-             MainForm.Bona_comTable.FieldByName('remise_bacom').AsCurrency:=StrToCurr(StringReplace(RemiseBonComGEdt.Text, #32, '', [rfReplaceAll]));
+             DataModuleF.Bona_comTable.FieldByName('remise_bacom').AsCurrency:=StrToCurr(StringReplace(RemiseBonComGEdt.Text, #32, '', [rfReplaceAll]));
           end else begin
-                    MainForm.Bona_comTable.FieldByName('remise_bacom').AsCurrency:=0;
+                    DataModuleF.Bona_comTable.FieldByName('remise_bacom').AsCurrency:=0;
                    end;
 
 
-          MainForm.Bona_comTable.FieldByName('montver_bacom').AsCurrency:=StrToCurr(StringReplace(BonComRegleLbl.Caption, #32, '', [rfReplaceAll]));
-          MainForm.Bona_comTable.FieldByName('montttc_bacom').AsCurrency:=StrToCurr(StringReplace(BonComTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
+          DataModuleF.Bona_comTable.FieldByName('montver_bacom').AsCurrency:=StrToCurr(StringReplace(BonComRegleLbl.Caption, #32, '', [rfReplaceAll]));
+          DataModuleF.Bona_comTable.FieldByName('montttc_bacom').AsCurrency:=StrToCurr(StringReplace(BonComTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
 
-          MainForm.Bona_comTable.Post;
-          MainForm.Bona_comTable.EnableControls;
+          DataModuleF.Bona_comTable.Post;
+          DataModuleF.Bona_comTable.EnableControls;
 
           MainForm.FournisseurTable.Active:=false;
           MainForm.FournisseurTable.SQL.Clear;
@@ -1608,10 +1609,10 @@ procedure TBonComAGestionF.FormCloseQuery(Sender: TObject;
           MainForm.CompteTable.EnableControls;
 
         //------- This is to delete data from tre and reg ih not valide----------------------------------------------
-           if (codeBR <> 0) AND (codeBR <> null) then
+           if (codeBCA <> 0) AND (codeBCA <> null) then
            begin
-              MainForm.GstockdcConnection.ExecSQL('DELETE FROM regfournisseur where code_bacom = ' + IntToStr(codeBR));
-              MainForm.GstockdcConnection.ExecSQL('DELETE FROM opt_cas_bnk where code_bacom = ' + IntToStr(codeBR));
+              MainForm.GstockdcConnection.ExecSQL('DELETE FROM regfournisseur where code_bacom = ' + IntToStr(codeBCA));
+              MainForm.GstockdcConnection.ExecSQL('DELETE FROM opt_cas_bnk where code_bacom = ' + IntToStr(codeBCA));
               MainForm.RegfournisseurTable.Refresh ;
               MainForm.Opt_cas_bnk_CaisseTable.Refresh ;
            end;
@@ -1637,7 +1638,7 @@ LineCredit :TfrxShapeView;
 begin
 if ValiderBAComBonComGImg.ImageIndex <> 1 then
  begin
-MainForm.Bona_com_listTable.DisableControls;
+DataModuleF.Bona_com_listTable.DisableControls;
  GettingData;
 
    OLDCredit:= BonComPListfrxRprt.FindObject('OLDCredit') as TfrxMemoView;
@@ -1664,18 +1665,18 @@ MainForm.Bona_com_listTable.DisableControls;
 
 BonComPListfrxRprt.PrepareReport;
 BonComPListfrxRprt.ShowReport;
-MainForm.Bona_com_listTable.EnableControls;
+DataModuleF.Bona_com_listTable.EnableControls;
  end;
 end;
 
-procedure TBonComAGestionF.BondeRception1Click(Sender: TObject);
+procedure TBonComAGestionF.BondeCommande1Click(Sender: TObject);
  var
 NEWCredit,OLDCredit,NEWCreditLbl,OLDCreditLbl , TotalACHAT,Versement,TotalACHATLbl,VersementLbl    : TfrxMemoView;
 LineCredit :TfrxShapeView;
 begin
 if ValiderBAComBonComGImg.ImageIndex <> 1 then
  begin
-MainForm.Bona_com_listTable.DisableControls;
+DataModuleF.Bona_com_listTable.DisableControls;
  GettingDataSansTax;
 
    OLDCredit:= BonComPListSanTAXfrxRprt.FindObject('OLDCredit') as TfrxMemoView;
@@ -1702,18 +1703,18 @@ MainForm.Bona_com_listTable.DisableControls;
 
 BonComPListSanTAXfrxRprt.PrepareReport;
 BonComPListSanTAXfrxRprt.ShowReport;
-MainForm.Bona_com_listTable.EnableControls;
+DataModuleF.Bona_com_listTable.EnableControls;
  end;
 end;
 
-procedure TBonComAGestionF.Bonderception2Click(Sender: TObject);
+procedure TBonComAGestionF.Bondecommande2Click(Sender: TObject);
  var
 NEWCredit,OLDCredit,NEWCreditLbl,OLDCreditLbl , TotalACHAT,Versement,TotalACHATLbl,VersementLbl    : TfrxMemoView;
 LineCredit :TfrxShapeView;
 begin
 if ValiderBAComBonComGImg.ImageIndex <> 1 then
  begin
-MainForm.Bona_com_listTable.DisableControls;
+DataModuleF.Bona_com_listTable.DisableControls;
  GettingData;
 
    OLDCredit:= BonComPListfrxRprt.FindObject('OLDCredit') as TfrxMemoView;
@@ -1740,18 +1741,18 @@ MainForm.Bona_com_listTable.DisableControls;
 
 BonComPListfrxRprt.PrepareReport;
 BonComPListfrxRprt.ShowReport;
-MainForm.Bona_com_listTable.EnableControls;
+DataModuleF.Bona_com_listTable.EnableControls;
  end;
 end;
 
-procedure TBonComAGestionF.Bonderceptionhorstaxe1Click(Sender: TObject);
+procedure TBonComAGestionF.Bondecommandehorstaxe1Click(Sender: TObject);
  var
 NEWCredit,OLDCredit,NEWCreditLbl,OLDCreditLbl , TotalACHAT,Versement,TotalACHATLbl,VersementLbl    : TfrxMemoView;
 LineCredit :TfrxShapeView;
 begin
 if ValiderBAComBonComGImg.ImageIndex <> 1 then
  begin
-MainForm.Bona_com_listTable.DisableControls;
+DataModuleF.Bona_com_listTable.DisableControls;
  GettingDataSansTax;
 
    OLDCredit:= BonComPListSanTAXfrxRprt.FindObject('OLDCredit') as TfrxMemoView;
@@ -1778,7 +1779,7 @@ MainForm.Bona_com_listTable.DisableControls;
 
 BonComPListSanTAXfrxRprt.PrepareReport;
 BonComPListSanTAXfrxRprt.ShowReport;
-MainForm.Bona_com_listTable.EnableControls;
+DataModuleF.Bona_com_listTable.EnableControls;
  end;
 end;
 
@@ -1790,26 +1791,26 @@ begin
     DeleteProduitBonComGBtn.Visible:= True;
     ClearProduitBonComGBtn.Visible:= True;
 
-    if (FournisseurBonComGCbx.Text<>'')  AND (MainForm.Bona_comTable.FieldByName('valider_bacom').AsBoolean <> True) then
+    if (FournisseurBonComGCbx.Text<>'')  AND (DataModuleF.Bona_comTable.FieldByName('valider_bacom').AsBoolean <> True) then
     begin
     ValiderBAComBonComGBtn.Enabled:= True;
     ValiderBAComBonComGBtn.ImageIndex:=12;
     end;
     
-   if MainForm.Bona_comTable.FieldValues['valider_bacom'] <> True then
+   if DataModuleF.Bona_comTable.FieldValues['valider_bacom'] <> True then
    begin
 
 //    MainForm.SQLQuery.DisableControls;
     MainForm.SQLQuery.Active:=False;
     MainForm.SQLQuery.SQL.Clear;
-    MainForm.SQLQuery.SQL.Text:='SELECT code_p,qut_p,qutini_p FROM produit WHERE code_p = ' +IntToStr(MainForm.Bona_com_listTable.FieldValues['code_p']);
+    MainForm.SQLQuery.SQL.Text:='SELECT code_p,qut_p,qutini_p FROM produit WHERE code_p = ' +IntToStr(DataModuleF.Bona_com_listTable.FieldValues['code_p']);
     MainForm.SQLQuery.Active:=True;
 
 
     BonComGOLDStock.Caption:=
      floatTostrF(((MainForm.SQLQuery.FieldValues['qut_p'] + MainForm.SQLQuery.FieldValues['qutini_p'])),ffNumber,14,2);
     BonComGNEWStock.Caption:=
-     floatTostrF((((MainForm.SQLQuery.FieldValues['qut_p'] + MainForm.SQLQuery.FieldValues['qutini_p']))+((MainForm.Bona_com_listTable.FieldValues['qut_p']) * (MainForm.Bona_com_listTable.FieldValues['cond_p']))),ffNumber,14,2);
+     floatTostrF((((MainForm.SQLQuery.FieldValues['qut_p'] + MainForm.SQLQuery.FieldValues['qutini_p']))+((DataModuleF.Bona_com_listTable.FieldValues['qut_p']) * (DataModuleF.Bona_com_listTable.FieldValues['cond_p']))),ffNumber,14,2);
 
 //     if(StrToFloat (StringReplace(BonComGNEWStock.Caption, #32, '', [rfReplaceAll])))  < 0 then
 //    begin
@@ -1900,18 +1901,18 @@ begin
   AnimateWindow(FSplashAddUnite.Handle, 175, AW_VER_POSITIVE OR AW_SLIDE OR AW_ACTIVATE );
   FSplashAddUnite.Show;
   FSplashAddUnite.OKAddUniteSBtn.Enabled:=True;
-  FSplashAddUnite.OKAddUniteSBtn.Tag:= 6 ;
+  FSplashAddUnite.OKAddUniteSBtn.Tag:= 43 ;
 
 end;
 procedure TBonComAGestionF.DeleteProduitBonComGBtnClick(Sender: TObject);
 begin
- if  MainForm.Bona_com_listTable.RecordCount = 1 then
+ if  DataModuleF.Bona_com_listTable.RecordCount = 1 then
  begin
-    MainForm.Bona_com_listTable.DisableControls;
-    MainForm.Bona_com_listTable.Refresh;
-    MainForm.Bona_com_listTable.Delete;
+    DataModuleF.Bona_com_listTable.DisableControls;
+    DataModuleF.Bona_com_listTable.Refresh;
+    DataModuleF.Bona_com_listTable.Delete;
     ProduitsListDBGridEh.Refresh;
-    MainForm.Bona_com_listTable.EnableControls;
+    DataModuleF.Bona_com_listTable.EnableControls;
     FournisseurBonComGCbx.StyleElements:= [];
     RequiredFourGlbl.Visible:= False;
     NameFourGErrorP.Visible:= False;
@@ -1922,17 +1923,17 @@ begin
     BonComResteLbl.Caption:=FloatToStrF(0, ffNumber, 14, 2);
     BonComGFourNEWCredit.Caption:= BonComTotalTTCLbl.Caption;
  end else
- if MainForm.Bona_com_listTable.RecordCount <= 0 then
+ if DataModuleF.Bona_com_listTable.RecordCount <= 0 then
  begin
   exit;
  end
  else
      begin
-      MainForm.Bona_com_listTable.DisableControls;
-      MainForm.Bona_com_listTable.Delete;
+      DataModuleF.Bona_com_listTable.DisableControls;
+      DataModuleF.Bona_com_listTable.Delete;
       ProduitsListDBGridEh.Refresh;
-      MainForm.Bona_com_listTable.Refresh;
-      MainForm.Bona_com_listTable.EnableControls;
+      DataModuleF.Bona_com_listTable.Refresh;
+      DataModuleF.Bona_com_listTable.EnableControls;
      end;
 end;
 
@@ -2112,8 +2113,8 @@ begin
              (StrToFloat (StringReplace(BonComRegleLbl.Caption, #32, '', [rfReplaceAll])))
              ),ffNumber,14,2);
 
-       FSplashVersement.Tag := 1 ;
-       FSplashVersement.OKVersementSBtn.Tag:= 0 ;
+       FSplashVersement.Tag := 7 ;
+       FSplashVersement.OKVersementSBtn.Tag:= 6 ;
 
        AnimateWindow(FSplashVersement.Handle, 175, AW_VER_POSITIVE OR AW_SLIDE OR AW_ACTIVATE );
        FSplashVersement.Show;
@@ -2228,9 +2229,9 @@ if RemiseBonComGEdt.Focused then
 
       if RemiseTypeBonComGCbx.ItemIndex = 1 then
         begin
-         if BonRTotalTTCNewLbl.Caption<>'' then
+         if BonCATotalTTCNewLbl.Caption<>'' then
          begin
-          OLDTTC:=StrToFloat (StringReplace(BonRTotalTTCNewLbl.Caption, #32, '', [rfReplaceAll]));
+          OLDTTC:=StrToFloat (StringReplace(BonCATotalTTCNewLbl.Caption, #32, '', [rfReplaceAll]));
          end;
         RemisePerctageBonComGEdt.Text := FloatToStrF(((RemiseBonComG / OLDTTC) * 100),ffNumber,14,2) ;
 
@@ -2241,7 +2242,7 @@ if RemiseBonComGEdt.Focused then
         begin
           BonRRemiseHTNewLbl.Caption:='0';
           RemisePerctageBonComGEdt.Text:='';
-          BonRTotalHTNewLbl.Caption:=BonComTotalHTLbl.Caption;
+          BonCATotalHTNewLbl.Caption:=BonComTotalHTLbl.Caption;
         end;
  end;
 end;
@@ -2276,10 +2277,10 @@ begin
             TotalTVANet:=StrToFloat(StringReplace(TotalTVANewLbl.Caption, #32, '', [rfReplaceAll]));
             end;
          BonComTotalTVALbl.Caption:= FloatToStrF(Round(TotalTVANet - (( TotalTVANet  * RemisePerctageBonCom)/(100))),ffNumber,14,2); //TVA
-         BonRTotalHTNewLbl.Caption:= FloatToStrF(Round(BonRTotalHT - (( BonRTotalHT  * RemisePerctageBonCom)/(100))),ffNumber,14,2); //HT
-            if BonRTotalHTNewLbl.Caption <>'' then
+         BonCATotalHTNewLbl.Caption:= FloatToStrF(Round(BonRTotalHT - (( BonRTotalHT  * RemisePerctageBonCom)/(100))),ffNumber,14,2); //HT
+            if BonCATotalHTNewLbl.Caption <>'' then
             begin
-            NewHT:=StrToFloat (StringReplace(BonRTotalHTNewLbl.Caption , #32, '', [rfReplaceAll]));
+            NewHT:=StrToFloat (StringReplace(BonCATotalHTNewLbl.Caption , #32, '', [rfReplaceAll]));
             end;
             if BonComTotalTVALbl.Caption <> '' then
             begin
@@ -2316,7 +2317,7 @@ begin
             BonComTotalTVALbl.Caption := TotalTVANewLbl.Caption;
             RemiseBonComGEdt.Text:='';
             BonRRemiseHTNewLbl.Caption:='0';
-            BonRTotalHTNewLbl.Caption:=BonComTotalHTLbl.Caption;
+            BonCATotalHTNewLbl.Caption:=BonComTotalHTLbl.Caption;
             
             if BonComGFourOLDCredit.Caption <>'' then
             begin
@@ -2347,11 +2348,11 @@ begin
             NewHT:=StrToFloat (StringReplace(BonComTotalHTLbl.Caption , #32, '', [rfReplaceAll]));  //TTC
             end;
          BonComTotalTVALbl.Caption:= FloatToStrF(( NewTVA - ((RemisePerctageBonCom/100) * NewTVA)),ffNumber,14,2);
-         BonRTotalHTNewLbl.Caption:= FloatToStrF(( NewHT - ((RemisePerctageBonCom/100) * NewHT)),ffNumber,14,2);
+         BonCATotalHTNewLbl.Caption:= FloatToStrF(( NewHT - ((RemisePerctageBonCom/100) * NewHT)),ffNumber,14,2);
          BonComTotalTTCLbl.Caption:= FloatToStrF((( NewHT - ((RemisePerctageBonCom/100) * NewHT))+( NewTVA - ((RemisePerctageBonCom/100) * NewTVA))),ffNumber,14,2);
-            if BonRTotalTTCNewLbl.Caption <>'' then
+            if BonCATotalTTCNewLbl.Caption <>'' then
             begin
-            OldTTC:=StrToFloat (StringReplace(BonRTotalTTCNewLbl.Caption , #32, '', [rfReplaceAll]));  //TTC
+            OldTTC:=StrToFloat (StringReplace(BonCATotalTTCNewLbl.Caption , #32, '', [rfReplaceAll]));  //TTC
             end;
             if BonComTotalTTCLbl.Caption <>'' then
             begin
@@ -2370,7 +2371,7 @@ begin
             BonRTotalHT:=StrToFloat (StringReplace(BonComTotalHTLbl.Caption , #32, '', [rfReplaceAll]));
             end;
 
-         NewHT:=StrToFloat (StringReplace(BonRTotalHTNewLbl.Caption , #32, '', [rfReplaceAll]));  //
+         NewHT:=StrToFloat (StringReplace(BonCATotalHTNewLbl.Caption , #32, '', [rfReplaceAll]));  //
 
         BonRRemiseHTNewLbl.Caption:= FloatToStrF((BonRTotalHT - NewHT),ffNumber,14,2);
 
@@ -2384,10 +2385,10 @@ begin
             begin
              RemiseBonComGEdt.Text:='';
              BonRRemiseHTNewLbl.Caption:='0';
-             BonComTotalTTCLbl.Caption := BonRTotalTTCNewLbl.Caption;
+             BonComTotalTTCLbl.Caption := BonCATotalTTCNewLbl.Caption;
 //             BonComResteLbl.Caption:=BonComTotalTTCLbl.Caption;
              BonComTotalTVALbl.Caption:=TotalTVANewLbl.Caption;
-             BonRTotalHTNewLbl.Caption:=BonComTotalHTLbl.Caption;
+             BonCATotalHTNewLbl.Caption:=BonComTotalHTLbl.Caption;
 
               if BonComGFourOLDCredit.Caption <>'' then
               begin
@@ -2438,14 +2439,14 @@ begin
 end;
 
 procedure TBonComAGestionF.EditBAComBonComGBtnClick(Sender: TObject);
-  Var CodeBR : Integer;
+  Var CodeBCA : Integer;
  begin
-   codeBR:= MainForm.Bona_comTable.FieldByName('code_bacom').AsInteger;
+   codeBCA:= DataModuleF.Bona_comTable.FieldByName('code_bacom').AsInteger;
                  //------- This is to delete data from tre and reg ih not valide----------------------------------------------
-               if (codeBR <> 0) AND (codeBR <> null) then
+               if (codeBCA <> 0) AND (codeBCA <> null) then
                begin
-                  MainForm.GstockdcConnection.ExecSQL('DELETE FROM regfournisseur where code_bacom = ' + IntToStr(codeBR));
-                  MainForm.GstockdcConnection.ExecSQL('DELETE FROM opt_cas_bnk where code_bacom = ' + IntToStr(codeBR));
+                  MainForm.GstockdcConnection.ExecSQL('DELETE FROM regfournisseur where code_bacom = ' + IntToStr(codeBCA));
+                  MainForm.GstockdcConnection.ExecSQL('DELETE FROM opt_cas_bnk where code_bacom = ' + IntToStr(codeBCA));
                   MainForm.RegfournisseurTable.Refresh ;
                   MainForm.Opt_cas_bnk_CaisseTable.Refresh ;
                end;
@@ -2460,9 +2461,9 @@ procedure TBonComAGestionF.EditBAComBonComGBtnClick(Sender: TObject);
   EnableBonCom;
  // this is to unvalider the bon
   begin
-  MainForm.Bona_comTable.Edit;
-  MainForm.Bona_comTable.FieldByName('valider_bacom').AsBoolean:= False;
-  MainForm.Bona_comTable.Post;
+  DataModuleF.Bona_comTable.Edit;
+  DataModuleF.Bona_comTable.FieldByName('valider_bacom').AsBoolean:= False;
+  DataModuleF.Bona_comTable.Post;
   end;
 
 // use this code to rest the old credit to the to the last time before he pay anything in that bon so you can aclculate again
@@ -2471,7 +2472,7 @@ procedure TBonComAGestionF.EditBAComBonComGBtnClick(Sender: TObject);
 
         begin
       MainForm.FournisseurTable.Edit;
-      MainForm.FournisseurTable.FieldByName('credit_f').AsCurrency:= (MainForm.FournisseurTable.FieldByName('credit_f').AsCurrency) - (MainForm.Bona_comTable.FieldByName('MontantRes').AsCurrency);
+      MainForm.FournisseurTable.FieldByName('credit_f').AsCurrency:= (MainForm.FournisseurTable.FieldByName('credit_f').AsCurrency) - (DataModuleF.Bona_comTable.FieldByName('MontantRes').AsCurrency);
       MainForm.FournisseurTable.Post;
       end;
 
@@ -2484,71 +2485,12 @@ procedure TBonComAGestionF.EditBAComBonComGBtnClick(Sender: TObject);
       MainForm.FournisseurTable.Active:=True;
       MainForm.FournisseurTable.EnableControls;
   //-------------------------------------------
-    begin
-           MainForm.ProduitTable.DisableControls;
-           MainForm.ProduitTable.Active:=False;
-           MainForm.ProduitTable.SQL.Clear;
-           MainForm.ProduitTable.SQL.Text:='SELECT *, '
-            +' ((prixht_p * tva_p)/100+ prixht_p ) AS PrixATTC, '
-            +' ((prixvd_p * tva_p)/100+ prixvd_p ) AS PrixVTTCD, '
-            +' ((prixvr_p * tva_p)/100+ prixvr_p ) AS PrixVTTCR, '
-            +' ((prixvg_p * tva_p)/100+ prixvg_p ) AS PrixVTTCG, '
-            +' ((prixva_p * tva_p)/100+ prixva_p ) AS PrixVTTCA, '
-            +' ((prixva2_p * tva_p)/100+ prixva2_p ) AS PrixVTTCA2, '
-            +' (qut_p + qutini_p ) AS QutDispo, '
-            +' ((qut_p + qutini_p) * prixht_p ) AS ValueStock '
-            +' FROM produit ' ;
-           MainForm.ProduitTable.Active:=True;
-           Mainform.Sqlquery.Active:=False;
-           Mainform.Sqlquery.Sql.Clear;
-           Mainform.Sqlquery.Sql.Text:='SELECT code_bacoml,code_p,  qut_p, cond_p  FROM bona_com_list WHERE code_bacom =  '
-                                                 + IntToStr (MainForm.Bona_comTable.FieldValues['code_bacom'])
-                                                 + 'GROUP BY code_bacoml, code_p, qut_p, cond_p ' ;
-           MainForm.SQLQuery.Active:=True;
-           MainForm.SQLQuery.First;
-
-           while  NOT (MainForm.SQLQuery.Eof) do
-           begin
-            MainForm.ProduitTable.Active:=False;
-            MainForm.ProduitTable.SQL.Clear;
-            MainForm.ProduitTable.SQL.Text:='SELECT *, '
-            +' ((prixht_p * tva_p)/100+ prixht_p ) AS PrixATTC, '
-            +' ((prixvd_p * tva_p)/100+ prixvd_p ) AS PrixVTTCD, '
-            +' ((prixvr_p * tva_p)/100+ prixvr_p ) AS PrixVTTCR, '
-            +' ((prixvg_p * tva_p)/100+ prixvg_p ) AS PrixVTTCG, '
-            +' ((prixva_p * tva_p)/100+ prixva_p ) AS PrixVTTCA, '
-            +' ((prixva2_p * tva_p)/100+ prixva2_p ) AS PrixVTTCA2, '
-            +' (qut_p + qutini_p ) AS QutDispo, '
-            +' ((qut_p + qutini_p) * prixht_p ) AS ValueStock '
-            +' FROM produit WHERE code_p = ' +QuotedStr(MainForm.SQLQuery.FieldValues['code_p']) ;
-            MainForm.ProduitTable.Active:=True;
-
-            MainForm.ProduitTable.Edit;
-            MainForm.ProduitTable.FieldValues['qut_p']:= ( MainForm.ProduitTable.FieldValues['qut_p']
-                                                         - (MainForm.SQLQuery.FieldValues['qut_p']) * ((MainForm.SQLQuery.FieldValues['cond_p'])));
-//            MainForm.ProduitTable.FieldValues['prixht_p']:= MainForm.SQLQuery.FieldValues['prixht_p'];
-            MainForm.ProduitTable.Post;
-            MainForm.SQLQuery.Next;
-           end;
-
-           MainForm.ProduitTable.Active:=False;
-           MainForm.ProduitTable.SQL.Clear;
-           MainForm.ProduitTable.SQL.Text:='SELECT *, '
-            +' ((prixht_p * tva_p)/100+ prixht_p ) AS PrixATTC, '
-            +' ((prixvd_p * tva_p)/100+ prixvd_p ) AS PrixVTTCD, '
-            +' ((prixvr_p * tva_p)/100+ prixvr_p ) AS PrixVTTCR, '
-            +' ((prixvg_p * tva_p)/100+ prixvg_p ) AS PrixVTTCG, '
-            +' ((prixva_p * tva_p)/100+ prixva_p ) AS PrixVTTCA, '
-            +' ((prixva2_p * tva_p)/100+ prixva2_p ) AS PrixVTTCA2, '
-            +' (qut_p + qutini_p ) AS QutDispo, '
-            +' ((qut_p + qutini_p) * prixht_p ) AS ValueStock '
-            +' FROM produit ' ;
-           MainForm.ProduitTable.Active:=True;
-           MainForm.ProduitTable.EnableControls;
-           MainForm.SQLQuery.Active:=False;
-           MainForm.SQLQuery.SQL.Clear;
-           MainForm.Bona_comTable.Refresh;
-     end;
+  
+  //== This is to delete produit from store after editing bon
+  // We dont need it bcus it bon command
+    // begin
+    // end;
+ 
 
 
      FournisseurBonComGCbxExit(Sender);
@@ -2557,7 +2499,7 @@ end;
 
 procedure TBonComAGestionF.AddBAComBonComGBtnClick(Sender: TObject);
 var
-  codeBR,CodeCB : integer;
+  codeBCA,CodeCB : integer;
 begin
       begin
      FournisseurBonComGCbx.Clear;
@@ -2569,12 +2511,12 @@ begin
 
    MainForm.ProduitTable.Refresh;
    MainForm.FournisseurTable.Refresh;
-   MainForm.Bona_comTable.Refresh;
-   MainForm.Bona_com_listTable.Refresh;
+   DataModuleF.Bona_comTable.Refresh;
+   DataModuleF.Bona_com_listTable.Refresh;
    MainForm.Mode_paiementTable.Refresh;
    MainForm.CompteTable.Refresh;
    BonComPListDataS.DataSet.Refresh;
-   MainForm.BonComListDataS.DataSet.Refresh;
+   DataModuleF.BonComAListDataS.DataSet.Refresh;
    Refresh;
 
    ModePaieBonComGCbx.Refresh;
@@ -2582,41 +2524,41 @@ begin
 
    EnableBonCom;
 
- codeBR:= 0;
+ codeBCA:= 0;
    //   BonComAGestionF := TBonComAGestionF.Create(BonComAGestionF);
-     if MainForm.Bona_comTable.RecordCount <= 0 then
+     if DataModuleF.Bona_comTable.RecordCount <= 0 then
       begin
 
-        MainForm.Bona_comTable.Insert;
-        MainForm.Bona_comTable.FieldValues['code_bacom']:=1;
-        MainForm.Bona_comTable.FieldValues['num_bacom']:= 'BR'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5, 1]);
-        MainForm.Bona_comTable.FieldValues['date_bacom']:= DateOf(Today);
-        MainForm.Bona_comTable.FieldValues['time_bacom']:=TimeOf(Now);
-        MainForm.Bona_comTable.Post;
-        codeBR := MainForm.Bona_comTable.FieldValues['code_bacom'];
+        DataModuleF.Bona_comTable.Insert;
+        DataModuleF.Bona_comTable.FieldValues['code_bacom']:=1;
+        DataModuleF.Bona_comTable.FieldValues['num_bacom']:= 'BCA'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5, 1]);
+        DataModuleF.Bona_comTable.FieldValues['date_bacom']:= DateOf(Today);
+        DataModuleF.Bona_comTable.FieldValues['time_bacom']:=TimeOf(Now);
+        DataModuleF.Bona_comTable.Post;
+        codeBCA := DataModuleF.Bona_comTable.FieldValues['code_bacom'];
       end else
           begin
-            MainForm.Bona_comTable.Last;
-            codeBR := MainForm.Bona_comTable.FieldValues['code_bacom'];
-            MainForm.Bona_com_listTable.Active:=False;
-            MainForm.Bona_com_listTable.SQL.Clear;
-            MainForm.Bona_com_listTable.SQL.Text:= BRLSQL+ ' WHERE code_bacom = ' + QuotedStr(IntToStr(codeBR));
-            MainForm.Bona_com_listTable.Active:=True;
+            DataModuleF.Bona_comTable.Last;
+            codeBCA := DataModuleF.Bona_comTable.FieldValues['code_bacom'];
+            DataModuleF.Bona_com_listTable.Active:=False;
+            DataModuleF.Bona_com_listTable.SQL.Clear;
+            DataModuleF.Bona_com_listTable.SQL.Text:= BCALSQL+ ' WHERE code_bacom = ' + QuotedStr(IntToStr(codeBCA));
+            DataModuleF.Bona_com_listTable.Active:=True;
 
-           if MainForm.Bona_com_listTable.RecordCount <= 0 then
+           if DataModuleF.Bona_com_listTable.RecordCount <= 0 then
            begin
-        //   MainForm.Bona_comTable.Last;
-           codeBR := MainForm.Bona_comTable.FieldValues['code_bacom'];
+        //   DataModuleF.Bona_comTable.Last;
+           codeBCA := DataModuleF.Bona_comTable.FieldValues['code_bacom'];
            end else
            begin
-        //   MainForm.Bona_comTable.Last;
-          // codeBR := MainForm.Bona_comTable.FieldValues['code_bacom'];
-           MainForm.Bona_comTable.Insert;
-           MainForm.Bona_comTable.FieldValues['code_bacom']:= codeBR + 1;
-           MainForm.Bona_comTable.FieldValues['num_bacom']:=  'BR'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5,(codeBR + 1)]);
-           MainForm.Bona_comTable.FieldValues['date_bacom']:= DateOf(Today);
-           MainForm.Bona_comTable.FieldValues['time_bacom']:= TimeOf(Now);
-           MainForm.Bona_comTable.Post;
+        //   DataModuleF.Bona_comTable.Last;
+          // codeBCA := DataModuleF.Bona_comTable.FieldValues['code_bacom'];
+           DataModuleF.Bona_comTable.Insert;
+           DataModuleF.Bona_comTable.FieldValues['code_bacom']:= codeBCA + 1;
+           DataModuleF.Bona_comTable.FieldValues['num_bacom']:=  'BCA'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5,(codeBCA + 1)]);
+           DataModuleF.Bona_comTable.FieldValues['date_bacom']:= DateOf(Today);
+           DataModuleF.Bona_comTable.FieldValues['time_bacom']:= TimeOf(Now);
+           DataModuleF.Bona_comTable.Post;
 
            end;
 //            ProduitsListDBGridEh.DataSource.DataSet.EnableControls;
@@ -2634,14 +2576,14 @@ BonComRegleLbl.Caption :=         FloatToStrF(0,ffNumber,14,2) ;
 BonComGFourOLDCredit.Caption:= FloatToStrF(0,ffNumber,14,2) ;
 BonComGFourNEWCredit.Caption:= FloatToStrF(0,ffNumber,14,2) ;
 
- CodeCB:= MainForm.Bona_comTable.FieldValues['code_bacom']   ;
- NumBonComGEdt.Caption := 'BR'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5, CodeCB]);
+ CodeCB:= DataModuleF.Bona_comTable.FieldValues['code_bacom']   ;
+ NumBonComGEdt.Caption := 'BCA'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5, CodeCB]);
 
      FournisseurBonComGCbx.SetFocus;
 
      Tag:=0;
 
-     MainForm.Bona_com_listTable.Refresh;
+     DataModuleF.Bona_com_listTable.Refresh;
 
 end;
 
@@ -2657,168 +2599,168 @@ end;
 
 procedure TBonComAGestionF.sSpeedButton10Click(Sender: TObject);
 begin
-  MainForm.Bona_comTable.First;
-  MainForm.Bona_comTable.Refresh;
-  MainForm.Bona_com_listTable.Refresh;
+  DataModuleF.Bona_comTable.First;
+  DataModuleF.Bona_comTable.Refresh;
+  DataModuleF.Bona_com_listTable.Refresh;
 
-  if MainForm.Bona_comTable.FieldValues['valider_bacom'] = True then
+  if DataModuleF.Bona_comTable.FieldValues['valider_bacom'] = True then
   begin
        FSplashVersement.DisableBonCom;
   end;
-  if MainForm.Bona_comTable.FieldValues['valider_bacom'] = False then
+  if DataModuleF.Bona_comTable.FieldValues['valider_bacom'] = False then
    begin
      EnableBonCom;
     end;
 
 
-  if (MainForm.Bona_comTable.FieldValues['code_f']<> 0) AND (MainForm.Bona_comTable.FieldValues['code_f']<> null) then
+  if (DataModuleF.Bona_comTable.FieldValues['code_f']<> 0) AND (DataModuleF.Bona_comTable.FieldValues['code_f']<> null) then
   begin
-  FournisseurBonComGCbx.Text:=MainForm.Bona_comTable.FieldValues['fourbacom'];
+  FournisseurBonComGCbx.Text:=DataModuleF.Bona_comTable.FieldValues['fourbacom'];
   end;
-  if (MainForm.Bona_comTable.FieldValues['code_mdpai']<> 0) AND (MainForm.Bona_comTable.FieldValues['code_mdpai']<>null)  then
+  if (DataModuleF.Bona_comTable.FieldValues['code_mdpai']<> 0) AND (DataModuleF.Bona_comTable.FieldValues['code_mdpai']<>null)  then
   begin
-  ModePaieBonComGCbx.Text:=MainForm.Bona_comTable.FieldValues['ModePaie'];
+  ModePaieBonComGCbx.Text:=DataModuleF.Bona_comTable.FieldValues['ModePaie'];
   end;
-  if (MainForm.Bona_comTable.FieldValues['code_cmpt']<> 0) AND (MainForm.Bona_comTable.FieldValues['code_cmpt']<>null)  then
+  if (DataModuleF.Bona_comTable.FieldValues['code_cmpt']<> 0) AND (DataModuleF.Bona_comTable.FieldValues['code_cmpt']<>null)  then
   begin
-  CompteBonComGCbx.Text:=MainForm.Bona_comTable.FieldValues['Compte'];
-  end;
-
-  if  (MainForm.Bona_comTable.FieldValues['MontantRes']<>null)  then
-  begin
-  BonComResteLbl.Caption:=CurrToStrF(((MainForm.Bona_comTable.FieldValues['MontantRes'])),ffNumber,2) ;
+  CompteBonComGCbx.Text:=DataModuleF.Bona_comTable.FieldValues['Compte'];
   end;
 
-  NumBonComGEdt.Caption:= MainForm.Bona_comTable.FieldByName('num_bacom').AsString;
+  if  (DataModuleF.Bona_comTable.FieldValues['MontantRes']<>null)  then
+  begin
+  BonComResteLbl.Caption:=CurrToStrF(((DataModuleF.Bona_comTable.FieldValues['MontantRes'])),ffNumber,2) ;
+  end;
 
-   if MainForm.Bona_com_listTable.ControlsDisabled  then
+  NumBonComGEdt.Caption:= DataModuleF.Bona_comTable.FieldByName('num_bacom').AsString;
+
+   if DataModuleF.Bona_com_listTable.ControlsDisabled  then
    begin
-     MainForm.Bona_com_listTable.EnableControls;
+     DataModuleF.Bona_com_listTable.EnableControls;
    end;
 
 end;
 
 procedure TBonComAGestionF.sSpeedButton9Click(Sender: TObject);
 begin
-MainForm.Bona_comTable.Prior;
-MainForm.Bona_comTable.Refresh;
-MainForm.Bona_com_listTable.Refresh;
+DataModuleF.Bona_comTable.Prior;
+DataModuleF.Bona_comTable.Refresh;
+DataModuleF.Bona_com_listTable.Refresh;
 
-if MainForm.Bona_comTable.FieldValues['valider_bacom'] = True then
+if DataModuleF.Bona_comTable.FieldValues['valider_bacom'] = True then
 begin
      FSplashVersement.DisableBonCom;
 end;
-if MainForm.Bona_comTable.FieldValues['valider_bacom'] = False then
+if DataModuleF.Bona_comTable.FieldValues['valider_bacom'] = False then
  begin
    EnableBonCom;
   end;
 
 
-if (MainForm.Bona_comTable.FieldValues['code_f']<> 0) AND (MainForm.Bona_comTable.FieldValues['code_f']<> null) then
+if (DataModuleF.Bona_comTable.FieldValues['code_f']<> 0) AND (DataModuleF.Bona_comTable.FieldValues['code_f']<> null) then
 begin
-FournisseurBonComGCbx.Text:=MainForm.Bona_comTable.FieldValues['fourbacom'];
+FournisseurBonComGCbx.Text:=DataModuleF.Bona_comTable.FieldValues['fourbacom'];
 end;
-if (MainForm.Bona_comTable.FieldValues['code_mdpai']<> 0) AND (MainForm.Bona_comTable.FieldValues['code_mdpai']<>null)  then
+if (DataModuleF.Bona_comTable.FieldValues['code_mdpai']<> 0) AND (DataModuleF.Bona_comTable.FieldValues['code_mdpai']<>null)  then
 begin
-ModePaieBonComGCbx.Text:=MainForm.Bona_comTable.FieldValues['ModePaie'];
+ModePaieBonComGCbx.Text:=DataModuleF.Bona_comTable.FieldValues['ModePaie'];
 end;
-if (MainForm.Bona_comTable.FieldValues['code_cmpt']<> 0) AND (MainForm.Bona_comTable.FieldValues['code_cmpt']<>null)  then
+if (DataModuleF.Bona_comTable.FieldValues['code_cmpt']<> 0) AND (DataModuleF.Bona_comTable.FieldValues['code_cmpt']<>null)  then
 begin
-CompteBonComGCbx.Text:=MainForm.Bona_comTable.FieldValues['Compte'];
-end;
-
-if  (MainForm.Bona_comTable.FieldValues['MontantRes']<>null)  then
-begin
-BonComResteLbl.Caption:=CurrToStrF(((MainForm.Bona_comTable.FieldValues['MontantRes'])),ffNumber,2) ;
+CompteBonComGCbx.Text:=DataModuleF.Bona_comTable.FieldValues['Compte'];
 end;
 
- NumBonComGEdt.Caption:= MainForm.Bona_comTable.FieldByName('num_bacom').AsString;
+if  (DataModuleF.Bona_comTable.FieldValues['MontantRes']<>null)  then
+begin
+BonComResteLbl.Caption:=CurrToStrF(((DataModuleF.Bona_comTable.FieldValues['MontantRes'])),ffNumber,2) ;
+end;
 
-    if MainForm.Bona_com_listTable.ControlsDisabled  then
+ NumBonComGEdt.Caption:= DataModuleF.Bona_comTable.FieldByName('num_bacom').AsString;
+
+    if DataModuleF.Bona_com_listTable.ControlsDisabled  then
    begin
-     MainForm.Bona_com_listTable.EnableControls;
+     DataModuleF.Bona_com_listTable.EnableControls;
    end;
 end;
 
 procedure TBonComAGestionF.sSpeedButton8Click(Sender: TObject);
 begin
-MainForm.Bona_comTable.Next;
-MainForm.Bona_comTable.Refresh;
-MainForm.Bona_com_listTable.Refresh;
+DataModuleF.Bona_comTable.Next;
+DataModuleF.Bona_comTable.Refresh;
+DataModuleF.Bona_com_listTable.Refresh;
 
-if MainForm.Bona_comTable.FieldValues['valider_bacom'] = True then
+if DataModuleF.Bona_comTable.FieldValues['valider_bacom'] = True then
 begin
      FSplashVersement.DisableBonCom;
 end;
-if MainForm.Bona_comTable.FieldValues['valider_bacom'] = False then
+if DataModuleF.Bona_comTable.FieldValues['valider_bacom'] = False then
  begin
    EnableBonCom;
   end;
 
-if (MainForm.Bona_comTable.FieldValues['code_f']<> 0) AND (MainForm.Bona_comTable.FieldValues['code_f']<> null) then
+if (DataModuleF.Bona_comTable.FieldValues['code_f']<> 0) AND (DataModuleF.Bona_comTable.FieldValues['code_f']<> null) then
 begin
-FournisseurBonComGCbx.Text:=MainForm.Bona_comTable.FieldValues['fourbacom'];
+FournisseurBonComGCbx.Text:=DataModuleF.Bona_comTable.FieldValues['fourbacom'];
 end;
-if (MainForm.Bona_comTable.FieldValues['code_mdpai']<> 0) AND (MainForm.Bona_comTable.FieldValues['code_mdpai']<>null)  then
+if (DataModuleF.Bona_comTable.FieldValues['code_mdpai']<> 0) AND (DataModuleF.Bona_comTable.FieldValues['code_mdpai']<>null)  then
 begin
-ModePaieBonComGCbx.Text:=MainForm.Bona_comTable.FieldValues['ModePaie'];
+ModePaieBonComGCbx.Text:=DataModuleF.Bona_comTable.FieldValues['ModePaie'];
 end;
-if (MainForm.Bona_comTable.FieldValues['code_cmpt']<> 0) AND (MainForm.Bona_comTable.FieldValues['code_cmpt']<>null)  then
+if (DataModuleF.Bona_comTable.FieldValues['code_cmpt']<> 0) AND (DataModuleF.Bona_comTable.FieldValues['code_cmpt']<>null)  then
 begin
-CompteBonComGCbx.Text:=MainForm.Bona_comTable.FieldValues['Compte'];
-end;
-
-if  (MainForm.Bona_comTable.FieldValues['MontantRes']<>null)  then
-begin
-BonComResteLbl.Caption:=CurrToStrF(((MainForm.Bona_comTable.FieldValues['MontantRes'])),ffNumber,2) ;
+CompteBonComGCbx.Text:=DataModuleF.Bona_comTable.FieldValues['Compte'];
 end;
 
- NumBonComGEdt.Caption:= MainForm.Bona_comTable.FieldByName('num_bacom').AsString;
+if  (DataModuleF.Bona_comTable.FieldValues['MontantRes']<>null)  then
+begin
+BonComResteLbl.Caption:=CurrToStrF(((DataModuleF.Bona_comTable.FieldValues['MontantRes'])),ffNumber,2) ;
+end;
 
-    if MainForm.Bona_com_listTable.ControlsDisabled  then
+ NumBonComGEdt.Caption:= DataModuleF.Bona_comTable.FieldByName('num_bacom').AsString;
+
+    if DataModuleF.Bona_com_listTable.ControlsDisabled  then
    begin
-     MainForm.Bona_com_listTable.EnableControls;
+     DataModuleF.Bona_com_listTable.EnableControls;
    end;
 end;
 
 procedure TBonComAGestionF.sSpeedButton7Click(Sender: TObject);
 begin
-MainForm.Bona_comTable.Last;
-MainForm.Bona_comTable.Refresh;
-MainForm.Bona_com_listTable.Refresh;
+DataModuleF.Bona_comTable.Last;
+DataModuleF.Bona_comTable.Refresh;
+DataModuleF.Bona_com_listTable.Refresh;
 
-if MainForm.Bona_comTable.FieldValues['valider_bacom'] = True then
+if DataModuleF.Bona_comTable.FieldValues['valider_bacom'] = True then
 begin
      FSplashVersement.DisableBonCom;
 end;
-if MainForm.Bona_comTable.FieldValues['valider_bacom'] = False then
+if DataModuleF.Bona_comTable.FieldValues['valider_bacom'] = False then
  begin
    EnableBonCom;
   end;
 
-if (MainForm.Bona_comTable.FieldValues['code_f']<> 0) AND (MainForm.Bona_comTable.FieldValues['code_f']<> null) then
+if (DataModuleF.Bona_comTable.FieldValues['code_f']<> 0) AND (DataModuleF.Bona_comTable.FieldValues['code_f']<> null) then
 begin
-FournisseurBonComGCbx.Text:=MainForm.Bona_comTable.FieldValues['fourbacom'];
+FournisseurBonComGCbx.Text:=DataModuleF.Bona_comTable.FieldValues['fourbacom'];
 end;
-if (MainForm.Bona_comTable.FieldValues['code_mdpai']<> 0) AND (MainForm.Bona_comTable.FieldValues['code_mdpai']<>null)  then
+if (DataModuleF.Bona_comTable.FieldValues['code_mdpai']<> 0) AND (DataModuleF.Bona_comTable.FieldValues['code_mdpai']<>null)  then
 begin
-ModePaieBonComGCbx.Text:=MainForm.Bona_comTable.FieldValues['ModePaie'];
+ModePaieBonComGCbx.Text:=DataModuleF.Bona_comTable.FieldValues['ModePaie'];
 end;
-if (MainForm.Bona_comTable.FieldValues['code_cmpt']<> 0) AND (MainForm.Bona_comTable.FieldValues['code_cmpt']<>null)  then
+if (DataModuleF.Bona_comTable.FieldValues['code_cmpt']<> 0) AND (DataModuleF.Bona_comTable.FieldValues['code_cmpt']<>null)  then
 begin
-CompteBonComGCbx.Text:=MainForm.Bona_comTable.FieldValues['Compte'];
-end;
-
-if  (MainForm.Bona_comTable.FieldValues['MontantRes']<>null)  then
-begin
-BonComResteLbl.Caption:=CurrToStrF(((MainForm.Bona_comTable.FieldValues['MontantRes'])),ffNumber,2) ;
+CompteBonComGCbx.Text:=DataModuleF.Bona_comTable.FieldValues['Compte'];
 end;
 
- NumBonComGEdt.Caption:= MainForm.Bona_comTable.FieldByName('num_bacom').AsString;
+if  (DataModuleF.Bona_comTable.FieldValues['MontantRes']<>null)  then
+begin
+BonComResteLbl.Caption:=CurrToStrF(((DataModuleF.Bona_comTable.FieldValues['MontantRes'])),ffNumber,2) ;
+end;
 
-    if MainForm.Bona_com_listTable.ControlsDisabled  then
+ NumBonComGEdt.Caption:= DataModuleF.Bona_comTable.FieldByName('num_bacom').AsString;
+
+    if DataModuleF.Bona_com_listTable.ControlsDisabled  then
    begin
-     MainForm.Bona_com_listTable.EnableControls;
+     DataModuleF.Bona_com_listTable.EnableControls;
    end;
 end;
 
@@ -2838,13 +2780,13 @@ end;
 
 procedure TBonComAGestionF.RemisePerctageBonComGEdtEnter(Sender: TObject);
 begin
-MainForm.Bona_com_listTable.Refresh;
+DataModuleF.Bona_com_listTable.Refresh;
  RemisePerctageBonComGEdtChange(Sender);
 end;
 
 procedure TBonComAGestionF.RemiseBonComGEdtEnter(Sender: TObject);
 begin
-MainForm.Bona_com_listTable.Refresh;
+DataModuleF.Bona_com_listTable.Refresh;
  RemisePerctageBonComGEdtChange(Sender);
 end;
 
@@ -2858,7 +2800,7 @@ procedure TBonComAGestionF.ProduitsListDBGridEhKeyDown(Sender: TObject;
   var Key: Word; Shift: TShiftState);
 begin
   //Use this trick tp pervent wierd error show up (erro happen when cursor on last row and hit down)
-  if (key = VK_DOWN) AND (MainForm.Bona_com_listTable.RecNo=MainForm.Bona_com_listTable.RecordCount)then
+  if (key = VK_DOWN) AND (DataModuleF.Bona_com_listTable.RecNo=DataModuleF.Bona_com_listTable.RecordCount)then
   begin
 
     key := VK_RETURN;
@@ -2898,14 +2840,14 @@ end;
 
 procedure TBonComAGestionF.FormCreate(Sender: TObject);
 begin
-     if FileExists(GetCurrentDir +'\bin\gc_br') then
+     if FileExists(GetCurrentDir +'\bin\gc_bca') then
    begin
 
-    MainForm.LoadGridLayout(ProduitsListDBGridEh,GetCurrentDir +'\bin\gc_br');
+    MainForm.LoadGridLayout(ProduitsListDBGridEh,GetCurrentDir +'\bin\gc_bca');
    end;
 
 
-MainForm.Bona_com_listTable.Active:=True;
+DataModuleF.Bona_com_listTable.Active:=True;
 if Assigned(ProduitsListF) then
   begin
    ProduitsListF.ResearchProduitsEdt.Text:='';
@@ -2997,7 +2939,7 @@ begin
     MainForm.SQLQuery.Active:=False;
     MainForm.SQLQuery.SQL.Clear;
     MainForm.SQLQuery.SQL.Text:='SELECT code_f,adr_f,ville_f,willaya_f ,rc_f,nart_f,nif_f,nis_f FROM fournisseur WHERE code_f ='
-    + IntToStr(MainForm.Bona_comTable.FieldByName('code_f').AsInteger);
+    + IntToStr(DataModuleF.Bona_comTable.FieldByName('code_f').AsInteger);
     MainForm.SQLQuery.Active:=True;
 
     with MainForm.SQLQuery do
@@ -3100,7 +3042,7 @@ begin
     MainForm.SQLQuery.Active:=False;
     MainForm.SQLQuery.SQL.Clear;
     MainForm.SQLQuery.SQL.Text:='SELECT code_f,adr_f,ville_f,willaya_f ,rc_f,nart_f,nif_f,nis_f FROM fournisseur WHERE code_f ='
-    + IntToStr(MainForm.Bona_comTable.FieldByName('code_f').AsInteger);
+    + IntToStr(DataModuleF.Bona_comTable.FieldByName('code_f').AsInteger);
     MainForm.SQLQuery.Active:=True;
 
     with MainForm.SQLQuery do
@@ -3138,28 +3080,28 @@ begin
 procedure TBonComAGestionF.sSpeedButton4Click(Sender: TObject);
 begin
    GettingData;
-MainForm.Bona_com_listTable.DisableControls;
+DataModuleF.Bona_com_listTable.DisableControls;
 BonComPListfrxRprt.PrepareReport;
-frxXLSExport1.FileName := 'Bon de Réception N° '
-  +IntToStr(YearOf(Today)) + '-' + Format('%.*d', [5,(MainForm.Bona_comTable.FieldByName('code_bacom').AsInteger)]);
+frxXLSExport1.FileName := 'Bon de Commande N° '
+  +IntToStr(YearOf(Today)) + '-' + Format('%.*d', [5,(DataModuleF.Bona_comTable.FieldByName('code_bacom').AsInteger)]);
 BonComPListfrxRprt.Export(frxXLSExport1);
-MainForm.Bona_com_listTable.EnableControls;
+DataModuleF.Bona_com_listTable.EnableControls;
 end;
 
 procedure TBonComAGestionF.sSpeedButton6Click(Sender: TObject);
 begin
  GettingData;
-MainForm.Bona_com_listTable.DisableControls;
+DataModuleF.Bona_com_listTable.DisableControls;
 BonComPListfrxRprt.PrepareReport;
 
-frxPDFExport1.FileName := 'Bon de Réception N° '
-  +IntToStr(YearOf(Today)) + '-' + Format('%.*d', [5,(MainForm.Bona_comTable.FieldByName('code_bacom').AsInteger)]);
+frxPDFExport1.FileName := 'Bon de Commande N° '
+  +IntToStr(YearOf(Today)) + '-' + Format('%.*d', [5,(DataModuleF.Bona_comTable.FieldByName('code_bacom').AsInteger)]);
 
 frxPDFExport1.EmbeddedFonts:=True;
 
 BonComPListfrxRprt.Export(frxPDFExport1);
 
-MainForm.Bona_com_listTable.EnableControls;
+DataModuleF.Bona_com_listTable.EnableControls;
 end;
 
 procedure TBonComAGestionF.ProduitsListDBGridEhCellClick(Column: TColumnEh);
@@ -3184,11 +3126,11 @@ begin
 //   ProduitsListDBGridEh.DefaultDrawColumnCell(Rect, DataCol, Column, State);
 //end;
 //
-//  if  (MainForm.Bona_com_listTable.FieldByName('prixht_p').AsCurrency > MainForm.Bona_com_listTable.FieldByName('prixvd_p').AsCurrency )
-//    OR(MainForm.Bona_com_listTable.FieldByName('prixht_p').AsCurrency > MainForm.Bona_com_listTable.FieldByName('prixvr_p').AsCurrency )
-//    OR(MainForm.Bona_com_listTable.FieldByName('prixht_p').AsCurrency > MainForm.Bona_com_listTable.FieldByName('prixvg_p').AsCurrency )
-//    OR(MainForm.Bona_com_listTable.FieldByName('prixht_p').AsCurrency > MainForm.Bona_com_listTable.FieldByName('prixva_p').AsCurrency )
-//    OR(MainForm.Bona_com_listTable.FieldByName('prixht_p').AsCurrency > MainForm.Bona_com_listTable.FieldByName('prixva2_p').AsCurrency )
+//  if  (DataModuleF.Bona_com_listTable.FieldByName('prixht_p').AsCurrency > DataModuleF.Bona_com_listTable.FieldByName('prixvd_p').AsCurrency )
+//    OR(DataModuleF.Bona_com_listTable.FieldByName('prixht_p').AsCurrency > DataModuleF.Bona_com_listTable.FieldByName('prixvr_p').AsCurrency )
+//    OR(DataModuleF.Bona_com_listTable.FieldByName('prixht_p').AsCurrency > DataModuleF.Bona_com_listTable.FieldByName('prixvg_p').AsCurrency )
+//    OR(DataModuleF.Bona_com_listTable.FieldByName('prixht_p').AsCurrency > DataModuleF.Bona_com_listTable.FieldByName('prixva_p').AsCurrency )
+//    OR(DataModuleF.Bona_com_listTable.FieldByName('prixht_p').AsCurrency > DataModuleF.Bona_com_listTable.FieldByName('prixva2_p').AsCurrency )
 //         then
 // begin
 // ProduitsListDBGridEh.Canvas.Font.Color:=$004735F9;

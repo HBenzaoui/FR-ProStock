@@ -36,7 +36,7 @@ type
     ResherchBARFourRdioBtn: TRadioButton;
     ResherchBARNumBRdioBtn: TRadioButton;
     Panel4: TPanel;
-    frxBonComDB: TfrxDBDataset;
+    frxBonComADB: TfrxDBDataset;
     frxXLSExport1: TfrxXLSExport;
     frxPDFExport1: TfrxPDFExport;
     BonComAfrxRprt: TfrxReport;
@@ -153,7 +153,7 @@ type
     { Private declarations }
   public
     { Public declarations }
-    const BRSQL = 'SELECT *, '
+    const BCASQL = 'SELECT *, '
 +'   ((montttc_bacom)-(montht_bacom - remise_bacom)) AS MontantTVA, '
 +'   (montttc_bacom - montver_bacom) AS MontantRes, '
 +'  CASE '
@@ -171,175 +171,175 @@ var
 implementation
 
 uses UMainF, UBonComAGestion, USplashVersement, USplashAddUnite, USplash,Threading,
-  UClientGestion, UProduitsList;
+  UClientGestion, UProduitsList, UDataModule;
 
 {$R *.dfm}
 
 
 procedure TBonComAF.Select_ALL;
 begin
-MainForm.Bona_comTable.DisableControls;
-MainForm.Bona_comTable.Active:= False;
-MainForm.Bona_comTable.SQL.clear;
-mainform.Bona_comTable.sql.Text:= BRSQL+' WHERE date_bacom BETWEEN '''+(DateToStr(DateStartBAComD.Date))+ ''' AND ''' +(DateToStr(DateEndBAComD.Date))+'''';
-MainForm.Bona_comTable.Active:= True;
-MainForm.Bona_comTable.EnableControls;
+DataModuleF.Bona_comTable.DisableControls;
+DataModuleF.Bona_comTable.Active:= False;
+DataModuleF.Bona_comTable.SQL.clear;
+DataModuleF.Bona_comTable.sql.Text:= BCASQL+' WHERE date_bacom BETWEEN '''+(DateToStr(DateStartBAComD.Date))+ ''' AND ''' +(DateToStr(DateEndBAComD.Date))+'''';
+DataModuleF.Bona_comTable.Active:= True;
+DataModuleF.Bona_comTable.EnableControls;
 end;
 
 procedure TBonComAF.Select_Valid;
 begin
-MainForm.Bona_comTable.DisableControls;
-MainForm.Bona_comTable.Active:= False;
-MainForm.Bona_comTable.SQL.clear;
-mainform.Bona_comTable.sql.Text:= BRSQL+' WHERE valider_bacom = true AND date_bacom BETWEEN '''+(DateToStr(DateStartBAComD.Date))+ ''' AND ''' +(DateToStr(DateEndBAComD.Date))+'''';
-MainForm.Bona_comTable.Active:= True;
-MainForm.Bona_comTable.EnableControls;
+DataModuleF.Bona_comTable.DisableControls;
+DataModuleF.Bona_comTable.Active:= False;
+DataModuleF.Bona_comTable.SQL.clear;
+DataModuleF.Bona_comTable.sql.Text:= BCASQL+' WHERE valider_bacom = true AND date_bacom BETWEEN '''+(DateToStr(DateStartBAComD.Date))+ ''' AND ''' +(DateToStr(DateEndBAComD.Date))+'''';
+DataModuleF.Bona_comTable.Active:= True;
+DataModuleF.Bona_comTable.EnableControls;
 end;
 
 procedure TBonComAF.Select_NOT_Valid;
 begin
-MainForm.Bona_comTable.DisableControls;
-MainForm.Bona_comTable.Active:= False;
-MainForm.Bona_comTable.SQL.clear;
-mainform.Bona_comTable.sql.Text:= BRSQL+' WHERE valider_bacom = false AND date_bacom BETWEEN '''+(DateToStr(DateStartBAComD.Date))+ ''' AND ''' +(DateToStr(DateEndBAComD.Date))+'''';
-MainForm.Bona_comTable.Active:= True;
-MainForm.Bona_comTable.EnableControls;
+DataModuleF.Bona_comTable.DisableControls;
+DataModuleF.Bona_comTable.Active:= False;
+DataModuleF.Bona_comTable.SQL.clear;
+DataModuleF.Bona_comTable.sql.Text:= BCASQL+' WHERE valider_bacom = false AND date_bacom BETWEEN '''+(DateToStr(DateStartBAComD.Date))+ ''' AND ''' +(DateToStr(DateEndBAComD.Date))+'''';
+DataModuleF.Bona_comTable.Active:= True;
+DataModuleF.Bona_comTable.EnableControls;
 end;
 
 procedure TBonComAF.Select_Escpace;
 begin
-MainForm.Bona_comTable.DisableControls;
-MainForm.Bona_comTable.Active:= False;
-MainForm.Bona_comTable.SQL.clear;
-mainform.Bona_comTable.sql.Text:= BRSQL+' WHERE code_mdpai = 1 AND date_bacom BETWEEN '''+(DateToStr(DateStartBAComD.Date))+ ''' AND ''' +(DateToStr(DateEndBAComD.Date))+'''';
-MainForm.Bona_comTable.Active:= True;
-MainForm.Bona_comTable.EnableControls;
+DataModuleF.Bona_comTable.DisableControls;
+DataModuleF.Bona_comTable.Active:= False;
+DataModuleF.Bona_comTable.SQL.clear;
+DataModuleF.Bona_comTable.sql.Text:= BCASQL+' WHERE code_mdpai = 1 AND date_bacom BETWEEN '''+(DateToStr(DateStartBAComD.Date))+ ''' AND ''' +(DateToStr(DateEndBAComD.Date))+'''';
+DataModuleF.Bona_comTable.Active:= True;
+DataModuleF.Bona_comTable.EnableControls;
 end;
 
 procedure TBonComAF.Select_Cheque;
 begin
-MainForm.Bona_comTable.DisableControls;
-MainForm.Bona_comTable.Active:= False;
-MainForm.Bona_comTable.SQL.clear;
-mainform.Bona_comTable.sql.Text:= BRSQL+' WHERE code_mdpai = 2 AND date_bacom BETWEEN '''+(DateToStr(DateStartBAComD.Date))+ ''' AND ''' +(DateToStr(DateEndBAComD.Date))+'''';
-MainForm.Bona_comTable.Active:= True;
-MainForm.Bona_comTable.EnableControls;
+DataModuleF.Bona_comTable.DisableControls;
+DataModuleF.Bona_comTable.Active:= False;
+DataModuleF.Bona_comTable.SQL.clear;
+DataModuleF.Bona_comTable.sql.Text:= BCASQL+' WHERE code_mdpai = 2 AND date_bacom BETWEEN '''+(DateToStr(DateStartBAComD.Date))+ ''' AND ''' +(DateToStr(DateEndBAComD.Date))+'''';
+DataModuleF.Bona_comTable.Active:= True;
+DataModuleF.Bona_comTable.EnableControls;
 end;
 
 procedure TBonComAF.Select_ATerme;
 begin
-MainForm.Bona_comTable.DisableControls;
-MainForm.Bona_comTable.Active:= False;
-MainForm.Bona_comTable.SQL.clear;
-mainform.Bona_comTable.sql.Text:= BRSQL+' WHERE code_mdpai = 3 AND date_bacom BETWEEN '''+(DateToStr(DateStartBAComD.Date))+ ''' AND ''' +(DateToStr(DateEndBAComD.Date))+'''';
-MainForm.Bona_comTable.Active:= True;
-MainForm.Bona_comTable.EnableControls;
+DataModuleF.Bona_comTable.DisableControls;
+DataModuleF.Bona_comTable.Active:= False;
+DataModuleF.Bona_comTable.SQL.clear;
+DataModuleF.Bona_comTable.sql.Text:= BCASQL+' WHERE code_mdpai = 3 AND date_bacom BETWEEN '''+(DateToStr(DateStartBAComD.Date))+ ''' AND ''' +(DateToStr(DateEndBAComD.Date))+'''';
+DataModuleF.Bona_comTable.Active:= True;
+DataModuleF.Bona_comTable.EnableControls;
 end;
 
 procedure TBonComAF.Select_Virment;
 begin
-MainForm.Bona_comTable.DisableControls;
-MainForm.Bona_comTable.Active:= False;
-MainForm.Bona_comTable.SQL.clear;
-mainform.Bona_comTable.sql.Text:= BRSQL+' WHERE code_mdpai = 4 AND date_bacom BETWEEN '''+(DateToStr(DateStartBAComD.Date))+ ''' AND ''' +(DateToStr(DateEndBAComD.Date))+'''';
-MainForm.Bona_comTable.Active:= True;
-MainForm.Bona_comTable.EnableControls;
+DataModuleF.Bona_comTable.DisableControls;
+DataModuleF.Bona_comTable.Active:= False;
+DataModuleF.Bona_comTable.SQL.clear;
+DataModuleF.Bona_comTable.sql.Text:= BCASQL+' WHERE code_mdpai = 4 AND date_bacom BETWEEN '''+(DateToStr(DateStartBAComD.Date))+ ''' AND ''' +(DateToStr(DateEndBAComD.Date))+'''';
+DataModuleF.Bona_comTable.Active:= True;
+DataModuleF.Bona_comTable.EnableControls;
 end;
 
 procedure TBonComAF.Select_Valid_Escpace;
 begin
-MainForm.Bona_comTable.DisableControls;
-MainForm.Bona_comTable.Active:= False;
-MainForm.Bona_comTable.SQL.clear;
-mainform.Bona_comTable.sql.Text:= BRSQL+' WHERE valider_bacom = true AND code_mdpai = 1 AND date_bacom BETWEEN '''+(DateToStr(DateStartBAComD.Date))+ ''' AND ''' +(DateToStr(DateEndBAComD.Date))+'''';
-MainForm.Bona_comTable.Active:= True;
-MainForm.Bona_comTable.EnableControls;
+DataModuleF.Bona_comTable.DisableControls;
+DataModuleF.Bona_comTable.Active:= False;
+DataModuleF.Bona_comTable.SQL.clear;
+DataModuleF.Bona_comTable.sql.Text:= BCASQL+' WHERE valider_bacom = true AND code_mdpai = 1 AND date_bacom BETWEEN '''+(DateToStr(DateStartBAComD.Date))+ ''' AND ''' +(DateToStr(DateEndBAComD.Date))+'''';
+DataModuleF.Bona_comTable.Active:= True;
+DataModuleF.Bona_comTable.EnableControls;
 end;
 
 procedure TBonComAF.Select_Valid_Cheque;
 begin
-MainForm.Bona_comTable.DisableControls;
-MainForm.Bona_comTable.Active:= False;
-MainForm.Bona_comTable.SQL.clear;
-mainform.Bona_comTable.sql.Text:= BRSQL+' WHERE valider_bacom = true AND code_mdpai = 2 AND date_bacom BETWEEN '''+(DateToStr(DateStartBAComD.Date))+ ''' AND ''' +(DateToStr(DateEndBAComD.Date))+'''';
-MainForm.Bona_comTable.Active:= True;
-MainForm.Bona_comTable.EnableControls;
+DataModuleF.Bona_comTable.DisableControls;
+DataModuleF.Bona_comTable.Active:= False;
+DataModuleF.Bona_comTable.SQL.clear;
+DataModuleF.Bona_comTable.sql.Text:= BCASQL+' WHERE valider_bacom = true AND code_mdpai = 2 AND date_bacom BETWEEN '''+(DateToStr(DateStartBAComD.Date))+ ''' AND ''' +(DateToStr(DateEndBAComD.Date))+'''';
+DataModuleF.Bona_comTable.Active:= True;
+DataModuleF.Bona_comTable.EnableControls;
 end;
 
 procedure TBonComAF.Select_Valid_ATerme;
 begin
-MainForm.Bona_comTable.DisableControls;
-MainForm.Bona_comTable.Active:= False;
-MainForm.Bona_comTable.SQL.clear;
-mainform.Bona_comTable.sql.Text:= BRSQL+' WHERE valider_bacom = true AND code_mdpai = 3 AND date_bacom BETWEEN '''+(DateToStr(DateStartBAComD.Date))+ ''' AND ''' +(DateToStr(DateEndBAComD.Date))+'''';
-MainForm.Bona_comTable.Active:= True;
-MainForm.Bona_comTable.EnableControls;
+DataModuleF.Bona_comTable.DisableControls;
+DataModuleF.Bona_comTable.Active:= False;
+DataModuleF.Bona_comTable.SQL.clear;
+DataModuleF.Bona_comTable.sql.Text:= BCASQL+' WHERE valider_bacom = true AND code_mdpai = 3 AND date_bacom BETWEEN '''+(DateToStr(DateStartBAComD.Date))+ ''' AND ''' +(DateToStr(DateEndBAComD.Date))+'''';
+DataModuleF.Bona_comTable.Active:= True;
+DataModuleF.Bona_comTable.EnableControls;
 end;
 
 procedure TBonComAF.Select_Valid_Virment;
 begin
-MainForm.Bona_comTable.DisableControls;
-MainForm.Bona_comTable.Active:= False;
-MainForm.Bona_comTable.SQL.clear;
-mainform.Bona_comTable.sql.Text:= BRSQL+' WHERE valider_bacom = true AND code_mdpai = 4 AND date_bacom BETWEEN '''+(DateToStr(DateStartBAComD.Date))+ ''' AND ''' +(DateToStr(DateEndBAComD.Date))+'''';
-MainForm.Bona_comTable.Active:= True;
-MainForm.Bona_comTable.EnableControls;
+DataModuleF.Bona_comTable.DisableControls;
+DataModuleF.Bona_comTable.Active:= False;
+DataModuleF.Bona_comTable.SQL.clear;
+DataModuleF.Bona_comTable.sql.Text:= BCASQL+' WHERE valider_bacom = true AND code_mdpai = 4 AND date_bacom BETWEEN '''+(DateToStr(DateStartBAComD.Date))+ ''' AND ''' +(DateToStr(DateEndBAComD.Date))+'''';
+DataModuleF.Bona_comTable.Active:= True;
+DataModuleF.Bona_comTable.EnableControls;
 end;
 
 procedure TBonComAF.Select_NOT_Valid_Escpace;
 begin
-MainForm.Bona_comTable.DisableControls;
-MainForm.Bona_comTable.Active:= False;
-MainForm.Bona_comTable.SQL.clear;
-mainform.Bona_comTable.sql.Text:= BRSQL+' WHERE valider_bacom = false AND code_mdpai = 1';
-MainForm.Bona_comTable.Active:= True;
-MainForm.Bona_comTable.EnableControls;
+DataModuleF.Bona_comTable.DisableControls;
+DataModuleF.Bona_comTable.Active:= False;
+DataModuleF.Bona_comTable.SQL.clear;
+DataModuleF.Bona_comTable.sql.Text:= BCASQL+' WHERE valider_bacom = false AND code_mdpai = 1';
+DataModuleF.Bona_comTable.Active:= True;
+DataModuleF.Bona_comTable.EnableControls;
 end;
 
 procedure TBonComAF.Select_NOT_Valid_Cheque;
 begin
-MainForm.Bona_comTable.DisableControls;
-MainForm.Bona_comTable.Active:= False;
-MainForm.Bona_comTable.SQL.clear;
-mainform.Bona_comTable.sql.Text:= BRSQL+' WHERE valider_bacom = false AND code_mdpai = 2 AND date_bacom BETWEEN '''+(DateToStr(DateStartBAComD.Date))+ ''' AND ''' +(DateToStr(DateEndBAComD.Date))+'''';
-MainForm.Bona_comTable.Active:= True;
-MainForm.Bona_comTable.EnableControls;
+DataModuleF.Bona_comTable.DisableControls;
+DataModuleF.Bona_comTable.Active:= False;
+DataModuleF.Bona_comTable.SQL.clear;
+DataModuleF.Bona_comTable.sql.Text:= BCASQL+' WHERE valider_bacom = false AND code_mdpai = 2 AND date_bacom BETWEEN '''+(DateToStr(DateStartBAComD.Date))+ ''' AND ''' +(DateToStr(DateEndBAComD.Date))+'''';
+DataModuleF.Bona_comTable.Active:= True;
+DataModuleF.Bona_comTable.EnableControls;
 end;
 
 procedure TBonComAF.Select_NOT_Valid_ATerme;
 begin
-MainForm.Bona_comTable.DisableControls;
-MainForm.Bona_comTable.Active:= False;
-MainForm.Bona_comTable.SQL.clear;
-mainform.Bona_comTable.sql.Text:= BRSQL+' WHERE valider_bacom = false AND code_mdpai = 3 AND date_bacom BETWEEN '''+(DateToStr(DateStartBAComD.Date))+ ''' AND ''' +(DateToStr(DateEndBAComD.Date))+'''';
-MainForm.Bona_comTable.Active:= True;
-MainForm.Bona_comTable.EnableControls;
+DataModuleF.Bona_comTable.DisableControls;
+DataModuleF.Bona_comTable.Active:= False;
+DataModuleF.Bona_comTable.SQL.clear;
+DataModuleF.Bona_comTable.sql.Text:= BCASQL+' WHERE valider_bacom = false AND code_mdpai = 3 AND date_bacom BETWEEN '''+(DateToStr(DateStartBAComD.Date))+ ''' AND ''' +(DateToStr(DateEndBAComD.Date))+'''';
+DataModuleF.Bona_comTable.Active:= True;
+DataModuleF.Bona_comTable.EnableControls;
 end;
 
 procedure TBonComAF.Select_NOT_Valid_Virment;
 begin
-MainForm.Bona_comTable.DisableControls;
-MainForm.Bona_comTable.Active:= False;
-MainForm.Bona_comTable.SQL.clear;
-mainform.Bona_comTable.sql.Text:= BRSQL+' WHERE valider_bacom = false AND code_mdpai = 4 AND date_bacom BETWEEN '''+(DateToStr(DateStartBAComD.Date))+ ''' AND ''' +(DateToStr(DateEndBAComD.Date))+'''';
-MainForm.Bona_comTable.Active:= True;
-MainForm.Bona_comTable.EnableControls;
+DataModuleF.Bona_comTable.DisableControls;
+DataModuleF.Bona_comTable.Active:= False;
+DataModuleF.Bona_comTable.SQL.clear;
+DataModuleF.Bona_comTable.sql.Text:= BCASQL+' WHERE valider_bacom = false AND code_mdpai = 4 AND date_bacom BETWEEN '''+(DateToStr(DateStartBAComD.Date))+ ''' AND ''' +(DateToStr(DateEndBAComD.Date))+'''';
+DataModuleF.Bona_comTable.Active:= True;
+DataModuleF.Bona_comTable.EnableControls;
 end;
 
 procedure TBonComAF.Select_Regle;
 begin
-  MainForm.Bona_comTable.Filtered := False;
-  MainForm.Bona_comTable.Filter:='MontantRes <= 0 ';
-  MainForm.Bona_comTable.Filtered:=True;
-  MainForm.Bona_comTable.First;
+  DataModuleF.Bona_comTable.Filtered := False;
+  DataModuleF.Bona_comTable.Filter:='MontantRes <= 0 ';
+  DataModuleF.Bona_comTable.Filtered:=True;
+  DataModuleF.Bona_comTable.First;
 end;
 
 procedure TBonComAF.Select_NOT_Regle;
 begin
-  MainForm.Bona_comTable.Filtered := False;
-  MainForm.Bona_comTable.Filter:='MontantRes > 0 ';
-  MainForm.Bona_comTable.Filtered:=True;
-  MainForm.Bona_comTable.First;
+  DataModuleF.Bona_comTable.Filtered := False;
+  DataModuleF.Bona_comTable.Filter:='MontantRes > 0 ';
+  DataModuleF.Bona_comTable.Filtered:=True;
+  DataModuleF.Bona_comTable.First;
 end;
 
 procedure TBonComAF.FilteredColor;
@@ -361,7 +361,7 @@ end;
 
 procedure TBonComAF.AddBAComBtnClick(Sender: TObject);
 var
-  codeBR : integer;
+  codeBCA : integer;
 
 //  MyForm :TBonComAGestionF;
 begin
@@ -373,15 +373,15 @@ ClearFilterBVLivPMenuClick(Sender);
   ProduitsListF.ResearchProduitsEdt.Text:='';
   end;
 
-  MainForm.Bona_com_listTable.Active:=False;
-  MainForm.Bona_com_listTable.IndexFieldNames:='';
-  MainForm.Bona_comTable.DisableControls;
-  MainForm.Bona_comTable.Active:= False;
-  MainForm.Bona_comTable.SQL.clear;
-  mainform.Bona_comTable.sql.Text:= BRSQL+' ORDER By code_bacom';
-  MainForm.Bona_comTable.Active:= True;
+  DataModuleF.Bona_com_listTable.Active:=False;
+  DataModuleF.Bona_com_listTable.IndexFieldNames:='';
+  DataModuleF.Bona_comTable.DisableControls;
+  DataModuleF.Bona_comTable.Active:= False;
+  DataModuleF.Bona_comTable.SQL.clear;
+  DataModuleF.Bona_comTable.sql.Text:= BCASQL+' ORDER By code_bacom';
+  DataModuleF.Bona_comTable.Active:= True;
 
- codeBR:= 0;
+ codeBCA:= 0;
 
  BonComAGestionF := TBonComAGestionF.Create(nil);
  try
@@ -391,52 +391,52 @@ ClearFilterBVLivPMenuClick(Sender);
   ResearchBAComEdt.Text:='';
   end;
 
-     if MainForm.Bona_comTable.RecordCount <= 0 then
+     if DataModuleF.Bona_comTable.RecordCount <= 0 then
       begin
 
-        MainForm.Bona_comTable.Insert;
-        MainForm.Bona_comTable.FieldValues['code_bacom']:=1;
-        MainForm.Bona_comTable.FieldValues['num_bacom']:= 'BR'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5, 1]);
-        MainForm.Bona_comTable.FieldValues['date_bacom']:= DateOf(Today);
-        MainForm.Bona_comTable.FieldValues['time_bacom']:=TimeOf(Now);
-        MainForm.Bona_comTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
-        MainForm.Bona_comTable.Post;
-        codeBR := MainForm.Bona_comTable.FieldValues['code_bacom'];
+        DataModuleF.Bona_comTable.Insert;
+        DataModuleF.Bona_comTable.FieldValues['code_bacom']:=1;
+        DataModuleF.Bona_comTable.FieldValues['num_bacom']:= 'BCA'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5, 1]);
+        DataModuleF.Bona_comTable.FieldValues['date_bacom']:= DateOf(Today);
+        DataModuleF.Bona_comTable.FieldValues['time_bacom']:=TimeOf(Now);
+        DataModuleF.Bona_comTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
+        DataModuleF.Bona_comTable.Post;
+        codeBCA := DataModuleF.Bona_comTable.FieldValues['code_bacom'];
       end else
           begin
-            MainForm.Bona_comTable.Last;
-            codeBR := MainForm.Bona_comTable.FieldValues['code_bacom'];
+            DataModuleF.Bona_comTable.Last;
+            codeBCA := DataModuleF.Bona_comTable.FieldValues['code_bacom'];
             MainForm.SQLQuery.Active:=False;
             MainForm.SQLQuery.SQL.Clear;
-            MainForm.SQLQuery.SQL.Text:= 'SELECT * FROM bona_com_list WHERE code_bacom = ' + QuotedStr(IntToStr(codeBR));
+            MainForm.SQLQuery.SQL.Text:= 'SELECT * FROM bona_com_list WHERE code_bacom = ' + QuotedStr(IntToStr(codeBCA));
             MainForm.SQLQuery.Active:=True;
 
            if MainForm.SQLQuery.RecordCount <= 0 then
            begin
-        //   MainForm.Bona_comTable.Last;
-           codeBR := MainForm.Bona_comTable.FieldValues['code_bacom'];
-             MainForm.Bona_comTable.Edit;
-             MainForm.Bona_comTable.FieldValues['date_bacom']:= DateOf(Today);
-             MainForm.Bona_comTable.FieldValues['time_bacom']:= TimeOf(Now);
-             MainForm.Bona_comTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
-             MainForm.Bona_comTable.Post;
+        //   DataModuleF.Bona_comTable.Last;
+           codeBCA := DataModuleF.Bona_comTable.FieldValues['code_bacom'];
+             DataModuleF.Bona_comTable.Edit;
+             DataModuleF.Bona_comTable.FieldValues['date_bacom']:= DateOf(Today);
+             DataModuleF.Bona_comTable.FieldValues['time_bacom']:= TimeOf(Now);
+             DataModuleF.Bona_comTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
+             DataModuleF.Bona_comTable.Post;
 
            end else
                  begin
-              //   MainForm.Bona_comTable.Last;
-                // codeBR := MainForm.Bona_comTable.FieldValues['code_bacom'];
-                 MainForm.Bona_comTable.Insert;
-                 MainForm.Bona_comTable.FieldValues['code_bacom']:= codeBR + 1;
-                 MainForm.Bona_comTable.FieldValues['num_bacom']:=  'BR'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5,(codeBR + 1)]);
-                 MainForm.Bona_comTable.FieldValues['date_bacom']:= DateOf(Today);
-                 MainForm.Bona_comTable.FieldValues['time_bacom']:= TimeOf(Now);
-                 MainForm.Bona_comTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
-                 MainForm.Bona_comTable.Post;
+              //   DataModuleF.Bona_comTable.Last;
+                // codeBCA := DataModuleF.Bona_comTable.FieldValues['code_bacom'];
+                 DataModuleF.Bona_comTable.Insert;
+                 DataModuleF.Bona_comTable.FieldValues['code_bacom']:= codeBCA + 1;
+                 DataModuleF.Bona_comTable.FieldValues['num_bacom']:=  'BCA'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5,(codeBCA + 1)]);
+                 DataModuleF.Bona_comTable.FieldValues['date_bacom']:= DateOf(Today);
+                 DataModuleF.Bona_comTable.FieldValues['time_bacom']:= TimeOf(Now);
+                 DataModuleF.Bona_comTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
+                 DataModuleF.Bona_comTable.Post;
                  end;
      //    BonComAGestionF.ProduitsListDBGridEh.DataSource.DataSet.EnableControls;
           end;
 
-   MainForm.Bona_com_listTable.IndexFieldNames:='code_bacom';
+   DataModuleF.Bona_com_listTable.IndexFieldNames:='code_bacom';
 
            BonComAGestionF.Tag:= 0;
       BonComAGestionF.ShowModal;
@@ -448,13 +448,13 @@ ClearFilterBVLivPMenuClick(Sender);
 
  end;
 
-//      MainForm.Bona_comTable.DisableControls;
-MainForm.Bona_comTable.Active:= False;
-MainForm.Bona_comTable.SQL.clear;
-mainform.Bona_comTable.sql.Text:= BRSQL+' WHERE bon_or_no_bacom = true AND date_bacom BETWEEN '''+(DateToStr(DateStartBAComD.Date))+ ''' AND ''' +(DateToStr(DateEndBAComD.Date))+'''';
-MainForm.Bona_comTable.Active:= True;
-MainForm.Bona_comTable.Last;
-MainForm.Bona_comTable.EnableControls;
+//      DataModuleF.Bona_comTable.DisableControls;
+DataModuleF.Bona_comTable.Active:= False;
+DataModuleF.Bona_comTable.SQL.clear;
+DataModuleF.Bona_comTable.sql.Text:= BCASQL+' WHERE bon_or_no_bacom = true AND date_bacom BETWEEN '''+(DateToStr(DateStartBAComD.Date))+ ''' AND ''' +(DateToStr(DateEndBAComD.Date))+'''';
+DataModuleF.Bona_comTable.Active:= True;
+DataModuleF.Bona_comTable.Last;
+DataModuleF.Bona_comTable.EnableControls;
 
             MainForm.SQLQuery.Active:=False;
             MainForm.SQLQuery.SQL.Clear;
@@ -484,7 +484,7 @@ end;
 procedure TBonComAF.NoTRegleFilterBVLivPMenuClick(Sender: TObject);
 begin
 FilterBVLivBtn.ImageIndex:=50;
-MainForm.Bona_comTable.Filtered:= False;
+DataModuleF.Bona_comTable.Filtered:= False;
 Select_Valid;
 Select_NOT_Regle;
 sImage1.ImageIndex:=3;
@@ -611,12 +611,12 @@ begin
    BAComListDBGridEh.DefaultDrawColumnCell(Rect, DataCol, Column, State);
 end;
 
- if  (MainForm.Bona_comTable.FieldValues['MontantRes'] > 0)    then
+ if  (DataModuleF.Bona_comTable.FieldValues['MontantRes'] > 0)    then
  begin
  BAComListDBGridEh.Canvas.Font.Color:=$004735F9;
  BAComListDBGridEh.DefaultDrawColumnCell(Rect, DataCol, Column, State);
  end;
-  if  (MainForm.Bona_comTable.FieldValues['MontantRes'] < 0)    then
+  if  (DataModuleF.Bona_comTable.FieldValues['MontantRes'] < 0)    then
  begin
  BAComListDBGridEh.Canvas.Font.Color:=$00519509;
  BAComListDBGridEh.DefaultDrawColumnCell(Rect, DataCol, Column, State);
@@ -658,7 +658,7 @@ end;
 procedure TBonComAF.BAComListDBGridEhTitleBtnClick(Sender: TObject;
   ACol: Integer; Column: TColumnEh);
 begin
-    MainForm.Bona_comTable.IndexesActive:= False;
+    DataModuleF.Bona_comTable.IndexesActive:= False;
 end;
 
 procedure TBonComAF.ChequeMPFilterBVLivPMenuClick(Sender: TObject);
@@ -675,7 +675,7 @@ Select_Valid_Cheque;
 
   if sImage6.Visible = True then
    begin
-   MainForm.Bona_comTable.Filtered:= False;
+   DataModuleF.Bona_comTable.Filtered:= False;
     if RegleFilterBVLivPMenu.Checked then
     begin
      Select_Regle; 
@@ -699,7 +699,7 @@ ClearValideFilterBVLivPMenu.Checked:= True;
 ClearMPFilterBVLivPMenu.Checked:= True;
 ClearFilterBVLivPMenu.Checked:= True;
 ClearRegleFilterBVLivPMenu.Checked:= True;
-MainForm.Bona_comTable.Filtered:= False;
+DataModuleF.Bona_comTable.Filtered:= False;
 Select_ALL;
  ATermeMPFilterBVLivPMenu.Enabled:= True;
 end;
@@ -721,7 +721,7 @@ begin
     begin
      FilteredColor;
      FilterBVLivBtn.ImageIndex:=49;
-     MainForm.Bona_comTable.Filtered := False;
+     DataModuleF.Bona_comTable.Filtered := False;
      Select_Valid;
      Select_Regle;
     end;
@@ -729,7 +729,7 @@ begin
     begin
      FilteredColor;    
      FilterBVLivBtn.ImageIndex:=49;
-     MainForm.Bona_comTable.Filtered := False;
+     DataModuleF.Bona_comTable.Filtered := False;
      Select_Valid;
      Select_NOT_Regle;
     end;
@@ -738,7 +738,7 @@ end;
 
 procedure TBonComAF.ClearRegleFilterBVLivPMenuClick(Sender: TObject);
 begin
- MainForm.Bona_comTable.Filtered:=False;
+ DataModuleF.Bona_comTable.Filtered:=False;
  //Select_ALL;
  sImage1.Visible:= False;
  sImage6.Visible:= False;
@@ -775,7 +775,7 @@ begin
  begin
   NOT_FilteredColor;
   FilterBVLivBtn.ImageIndex:=50;
-  MainForm.Bona_comTable.Filtered := false;
+  DataModuleF.Bona_comTable.Filtered := false;
   Select_ALL;
   
   end  else
@@ -833,7 +833,7 @@ var
  CodeF : Integer;
 
  begin
-    if NOT (MainForm.Bona_comTable.IsEmpty) Then
+    if NOT (DataModuleF.Bona_comTable.IsEmpty) Then
    begin
      if Assigned(ProduitsListF) then
      begin
@@ -841,31 +841,31 @@ var
       ProduitsListF.ResearchProduitsEdt.Text:='';
       end;
 
-    MainForm.Bona_com_listTable.Active:=True;
-    if  NOT (MainForm.Bona_com_listTable.IsEmpty) then
+    DataModuleF.Bona_com_listTable.Active:=True;
+    if  NOT (DataModuleF.Bona_com_listTable.IsEmpty) then
    begin
 
-    MainForm.Bona_com_listTable.Active:=False;
+    DataModuleF.Bona_com_listTable.Active:=False;
 
 
-      MainForm.Bona_com_listTable.IndexFieldNames:='code_bacom';
+      DataModuleF.Bona_com_listTable.IndexFieldNames:='code_bacom';
 
       BonComAGestionF := TBonComAGestionF.Create(nil);
       try
 
 
-         BonComAGestionF.NumBonComGEdt.Caption := MainForm.Bona_comTable.FieldValues['num_bacom'];
-         BonComAGestionF.DateBonComGD.Date:= MainForm.Bona_comTable.FieldValues['date_bacom'];
-         BonComAGestionF.ObserBonComGMem.Lines.Text := MainForm.Bona_comTable.FieldByName('obser_bacom').AsString;
-         if (MainForm.Bona_comTable.FieldValues['code_f']<> null) and (MainForm.Bona_comTable.FieldValues['code_f']<> 0) then
+         BonComAGestionF.NumBonComGEdt.Caption := DataModuleF.Bona_comTable.FieldValues['num_bacom'];
+         BonComAGestionF.DateBonComGD.Date:= DataModuleF.Bona_comTable.FieldValues['date_bacom'];
+         BonComAGestionF.ObserBonComGMem.Lines.Text := DataModuleF.Bona_comTable.FieldByName('obser_bacom').AsString;
+         if (DataModuleF.Bona_comTable.FieldValues['code_f']<> null) and (DataModuleF.Bona_comTable.FieldValues['code_f']<> 0) then
          begin
-         CodeF:=MainForm.Bona_comTable.FieldValues['code_f'];
-         BonComAGestionF.FournisseurBonComGCbx.Text:= MainForm.Bona_comTable.FieldValues['fourbacom'];
+         CodeF:=DataModuleF.Bona_comTable.FieldValues['code_f'];
+         BonComAGestionF.FournisseurBonComGCbx.Text:= DataModuleF.Bona_comTable.FieldValues['fourbacom'];
           end;
 
-         if (MainForm.Bona_comTable.FieldValues['code_mdpai']<> null ) AND (MainForm.Bona_comTable.FieldValues['code_mdpai']<> 0) then
+         if (DataModuleF.Bona_comTable.FieldValues['code_mdpai']<> null ) AND (DataModuleF.Bona_comTable.FieldValues['code_mdpai']<> 0) then
          begin
-         CodeF:=MainForm.Bona_comTable.FieldValues['code_mdpai'];
+         CodeF:=DataModuleF.Bona_comTable.FieldValues['code_mdpai'];
            MainForm.Mode_paiementTable.Active:=false;
            MainForm.Mode_paiementTable.SQL.Clear;
            MainForm.Mode_paiementTable.SQL.Text:='Select * FROM mode_paiement WHERE code_mdpai ='+(IntToStr( CodeF ) ) ;
@@ -877,9 +877,9 @@ var
            MainForm.Mode_paiementTable.Active:=True;
 
          end;
-         if (MainForm.Bona_comTable.FieldValues['code_cmpt']<> null) AND (MainForm.Bona_comTable.FieldValues['code_cmpt']<> 0) then
+         if (DataModuleF.Bona_comTable.FieldValues['code_cmpt']<> null) AND (DataModuleF.Bona_comTable.FieldValues['code_cmpt']<> 0) then
          begin
-         CodeF:=MainForm.Bona_comTable.FieldValues['code_cmpt'];
+         CodeF:=DataModuleF.Bona_comTable.FieldValues['code_cmpt'];
            MainForm.CompteTable.Active:=false;
            MainForm.CompteTable.SQL.Clear;
            MainForm.CompteTable.SQL.Text:='Select * FROM compte WHERE code_cmpt ='+(IntToStr( CodeF ) ) ;
@@ -890,43 +890,43 @@ var
            MainForm.CompteTable.SQL.Text:='SELECT * FROM compte ' ;
            MainForm.CompteTable.Active:=True;
          end;
-         if MainForm.Bona_comTable.FieldValues['num_cheque_bacom']<> null then
+         if DataModuleF.Bona_comTable.FieldValues['num_cheque_bacom']<> null then
          begin
-          BonComAGestionF.NChequeBonComGCbx.Text:= MainForm.Bona_comTable.FieldValues['num_cheque_bacom'];
+          BonComAGestionF.NChequeBonComGCbx.Text:= DataModuleF.Bona_comTable.FieldValues['num_cheque_bacom'];
          end;
 
 
 
-     if (MainForm.Bona_comTable.FieldValues['RemisePerc']<> null) AND (MainForm.Bona_comTable.FieldValues['remise_bacom']<> 0) then
+     if (DataModuleF.Bona_comTable.FieldValues['RemisePerc']<> null) AND (DataModuleF.Bona_comTable.FieldValues['remise_bacom']<> 0) then
      begin
-      BonComAGestionF.RemisePerctageBonComGEdt.Text :=     CurrToStrF(MainForm.Bona_comTable.FieldValues['RemisePerc'], ffNumber, 2);
-      BonComAGestionF.RemiseBonComGEdt.Text :=     CurrToStrF(MainForm.Bona_comTable.FieldValues['remise_bacom'], ffNumber, 2);
+      BonComAGestionF.RemisePerctageBonComGEdt.Text :=     CurrToStrF(DataModuleF.Bona_comTable.FieldValues['RemisePerc'], ffNumber, 2);
+      BonComAGestionF.RemiseBonComGEdt.Text :=     CurrToStrF(DataModuleF.Bona_comTable.FieldValues['remise_bacom'], ffNumber, 2);
      end;
 
-       if (MainForm.Bona_comTable.FieldValues['montht_bacom']<> null) then
+       if (DataModuleF.Bona_comTable.FieldValues['montht_bacom']<> null) then
        begin
-      BonComAGestionF.BonComTotalHTLbl.Caption :=    CurrToStrF(MainForm.Bona_comTable.FieldValues['montht_bacom'], ffNumber, 2);
+      BonComAGestionF.BonComTotalHTLbl.Caption :=    CurrToStrF(DataModuleF.Bona_comTable.FieldValues['montht_bacom'], ffNumber, 2);
        end;
-      if (MainForm.Bona_comTable.FieldValues['MontantTVA']<> null) then
+      if (DataModuleF.Bona_comTable.FieldValues['MontantTVA']<> null) then
        begin
-      BonComAGestionF.BonComTotalTVALbl.Caption :=   CurrToStrF(MainForm.Bona_comTable.FieldValues['MontantTVA'], ffNumber, 2);
+      BonComAGestionF.BonComTotalTVALbl.Caption :=   CurrToStrF(DataModuleF.Bona_comTable.FieldValues['MontantTVA'], ffNumber, 2);
        end;
-       if (MainForm.Bona_comTable.FieldValues['montttc_bacom']<> null) then
+       if (DataModuleF.Bona_comTable.FieldValues['montttc_bacom']<> null) then
        begin
-      BonComAGestionF.BonComTotalTTCLbl.Caption :=   CurrToStrF(MainForm.Bona_comTable.FieldValues['montttc_bacom'], ffNumber, 2);
+      BonComAGestionF.BonComTotalTTCLbl.Caption :=   CurrToStrF(DataModuleF.Bona_comTable.FieldValues['montttc_bacom'], ffNumber, 2);
        end;
-       if (MainForm.Bona_comTable.FieldValues['montver_bacom']<> null) then
+       if (DataModuleF.Bona_comTable.FieldValues['montver_bacom']<> null) then
        begin
-      BonComAGestionF.BonComRegleLbl.Caption :=      CurrToStrF(MainForm.Bona_comTable.FieldValues['montver_bacom'], ffNumber, 2);
+      BonComAGestionF.BonComRegleLbl.Caption :=      CurrToStrF(DataModuleF.Bona_comTable.FieldValues['montver_bacom'], ffNumber, 2);
        end;
-       if (MainForm.Bona_comTable.FieldValues['MontantRes']<> null) then
+       if (DataModuleF.Bona_comTable.FieldValues['MontantRes']<> null) then
        begin
-      BonComAGestionF.BonComResteLbl.Caption :=      CurrToStrF(MainForm.Bona_comTable.FieldValues['MontantRes'], ffNumber, 2);
+      BonComAGestionF.BonComResteLbl.Caption :=      CurrToStrF(DataModuleF.Bona_comTable.FieldValues['MontantRes'], ffNumber, 2);
        end;
 
 
 
-       if MainForm.Bona_comTable.FieldByName('valider_bacom').AsBoolean = True then
+       if DataModuleF.Bona_comTable.FieldByName('valider_bacom').AsBoolean = True then
        begin
         FSplashVersement.DisableBonCom;
        end else
@@ -935,7 +935,7 @@ var
             BonComAGestionF.ProduitBonComGCbx.TabOrder:=0;
            end;
       BonComAGestionF.Tag:= 1;
-      MainForm.Bona_com_listTable.Refresh;
+      DataModuleF.Bona_com_listTable.Refresh;
       BonComAGestionF.ShowModal;
 
 
@@ -966,7 +966,7 @@ FilteredColor;
 Select_Valid_Escpace;
 if sImage6.Visible = True  then 
  begin
-  MainForm.Bona_comTable.Filtered:= False;
+  DataModuleF.Bona_comTable.Filtered:= False;
   if RegleFilterBVLivPMenu.Checked then
   begin
    Select_Regle;
@@ -981,13 +981,13 @@ end;
 procedure TBonComAF.DeleteBAComBtnClick(Sender: TObject);
 begin
 
-if NOT (MainForm.Bona_comTable.IsEmpty) then
+if NOT (DataModuleF.Bona_comTable.IsEmpty) then
  begin
-    if  (MainForm.Bona_comTable.FieldByName('valider_bacom').AsBoolean <> True ) then
+    if  (DataModuleF.Bona_comTable.FieldByName('valider_bacom').AsBoolean <> True ) then
     begin
-     MainForm.Bona_com_listTable.Active:=True;
+     DataModuleF.Bona_com_listTable.Active:=True;
 
-      if NOT (MainForm.Bona_com_listTable.IsEmpty) then
+      if NOT (DataModuleF.Bona_com_listTable.IsEmpty) then
        begin
 
              FSplashAddUnite:=TFSplashAddUnite.Create(BonComAF);
@@ -1018,11 +1018,11 @@ if NOT (MainForm.Bona_comTable.IsEmpty) then
           AnimateWindow(FSplashAddUnite.Handle, 175, AW_VER_POSITIVE OR AW_SLIDE OR AW_ACTIVATE );
           FSplashAddUnite.Show;
           FSplashAddUnite.OKAddUniteSBtn.Enabled:=True;
-          FSplashAddUnite.OKAddUniteSBtn.Tag:= 8 ;
+          FSplashAddUnite.OKAddUniteSBtn.Tag:= 44 ;
          end
           else
           begin
-                  MainForm.Bona_comTable.Delete ;
+                  DataModuleF.Bona_comTable.Delete ;
             GrayForms;
             FSplash := TFSplash.Create(Self);
             try
@@ -1069,11 +1069,11 @@ if NOT (MainForm.Bona_comTable.IsEmpty) then
 
  end;
 
-//     MainForm.Bona_comTable.Active:= False;
-//    MainForm.Bona_comTable.SQL.clear;
-//    mainform.Bona_comTable.sql.Text:='SELECT * FROM bona_com WHERE bon_or_no_bacom = true AND date_bacom BETWEEN '''+(DateToStr(DateStartBAComD.Date))+ ''' AND ''' +(DateToStr(DateEndBAComD.Date))+'''';
-//    MainForm.Bona_comTable.Active:= True;
-//    MainForm.Bona_comTable.EnableControls;
+//     DataModuleF.Bona_comTable.Active:= False;
+//    DataModuleF.Bona_comTable.SQL.clear;
+//    DataModuleF.Bona_comTable.sql.Text:='SELECT * FROM bona_com WHERE bon_or_no_bacom = true AND date_bacom BETWEEN '''+(DateToStr(DateStartBAComD.Date))+ ''' AND ''' +(DateToStr(DateEndBAComD.Date))+'''';
+//    DataModuleF.Bona_comTable.Active:= True;
+//    DataModuleF.Bona_comTable.EnableControls;
 end;
 
 
@@ -1091,14 +1091,14 @@ end;
 
 procedure TBonComAF.RefreshGirdBtnClick(Sender: TObject);
 begin
-MainForm.Bona_comTable.Close;
-MainForm.Bona_comTable.Open;
+DataModuleF.Bona_comTable.Close;
+DataModuleF.Bona_comTable.Open;
 end;
 
 procedure TBonComAF.RegleFilterBVLivPMenuClick(Sender: TObject);
 begin
  FilterBVLivBtn.ImageIndex:=50;
- MainForm.Bona_comTable.Filtered:= False;
+ DataModuleF.Bona_comTable.Filtered:= False;
  Select_Valid;
  Select_Regle;
  sImage1.ImageIndex:=3;
@@ -1143,23 +1143,23 @@ begin
 
           if ResherchBARFourRdioBtn.Checked then
           begin
-          MainForm.Bona_comTable.DisableControls;
-          MainForm.Bona_comTable.Active:=False;
-          MainForm.Bona_comTable.SQL.Clear;
-          MainForm.Bona_comTable.SQL.Text:= BRSQL+' WHERE code_f IN( SELECT code_f FROM fournisseur WHERE LOWER(nom_f) LIKE LOWER' +'('''+'%'+(ResearchBAComEdt.Text)+'%'+''')' +')';
-          MainForm.Bona_comTable.Active:=True;
-          MainForm.Bona_comTable.EnableControls;
+          DataModuleF.Bona_comTable.DisableControls;
+          DataModuleF.Bona_comTable.Active:=False;
+          DataModuleF.Bona_comTable.SQL.Clear;
+          DataModuleF.Bona_comTable.SQL.Text:= BCASQL+' WHERE code_f IN( SELECT code_f FROM fournisseur WHERE LOWER(nom_f) LIKE LOWER' +'('''+'%'+(ResearchBAComEdt.Text)+'%'+''')' +')';
+          DataModuleF.Bona_comTable.Active:=True;
+          DataModuleF.Bona_comTable.EnableControls;
 
           end;
 
           if ResherchBARNumBRdioBtn.Checked then
           begin
-          MainForm.Bona_comTable.DisableControls;
-          MainForm.Bona_comTable.Active:=False;
-          MainForm.Bona_comTable.SQL.Clear;
-          MainForm.Bona_comTable.SQL.Text:= BRSQL+' WHERE LOWER(num_bacom) LIKE LOWER' +'('''+'%'+(ResearchBAComEdt.Text)+'%'+''')' ;
-          MainForm.Bona_comTable.Active:=True;
-          MainForm.Bona_comTable.EnableControls;
+          DataModuleF.Bona_comTable.DisableControls;
+          DataModuleF.Bona_comTable.Active:=False;
+          DataModuleF.Bona_comTable.SQL.Clear;
+          DataModuleF.Bona_comTable.SQL.Text:= BCASQL+' WHERE LOWER(num_bacom) LIKE LOWER' +'('''+'%'+(ResearchBAComEdt.Text)+'%'+''')' ;
+          DataModuleF.Bona_comTable.Active:=True;
+          DataModuleF.Bona_comTable.EnableControls;
           end;
 
 
@@ -1172,12 +1172,12 @@ begin
           MainForm.FournisseurTable.Active:=True;
           MainForm.FournisseurTable.EnableControls;
 
-          MainForm.Bona_comTable.DisableControls;
-          MainForm.Bona_comTable.Active:=False;
-          MainForm.Bona_comTable.SQL.Clear;
-          MainForm.Bona_comTable.SQL.Text:= BRSQL+' WHERE bon_or_no_bacom = true ' ;
-          MainForm.Bona_comTable.Active:=True;
-          MainForm.Bona_comTable.EnableControls;
+          DataModuleF.Bona_comTable.DisableControls;
+          DataModuleF.Bona_comTable.Active:=False;
+          DataModuleF.Bona_comTable.SQL.Clear;
+          DataModuleF.Bona_comTable.SQL.Text:= BCASQL+' WHERE bon_or_no_bacom = true ' ;
+          DataModuleF.Bona_comTable.Active:=True;
+          DataModuleF.Bona_comTable.EnableControls;
 
      end;
 
@@ -1189,14 +1189,14 @@ begin
     if key = VK_DOWN then
   begin
 //   key := #0;
-     MainForm.Bona_comTable.Next;
+     DataModuleF.Bona_comTable.Next;
   end;
 
 
     if key = VK_UP then
   begin
 //   key := #0;
-     MainForm.Bona_comTable.Prior;
+     DataModuleF.Bona_comTable.Prior;
   end;
 end;
 
@@ -1225,23 +1225,23 @@ begin
 
           if ResherchBARFourRdioBtn.Checked then
           begin
-          MainForm.Bona_comTable.DisableControls;
-          MainForm.Bona_comTable.Active:=False;
-          MainForm.Bona_comTable.SQL.Clear;
-          MainForm.Bona_comTable.SQL.Text:= BRSQL+' WHERE code_f IN( SELECT code_f FROM fournisseur WHERE LOWER(nom_f) LIKE LOWER' +'('''+(ResearchBAComEdt.Text+'%')+''')' +')';
-          MainForm.Bona_comTable.Active:=True;
-          MainForm.Bona_comTable.EnableControls;
+          DataModuleF.Bona_comTable.DisableControls;
+          DataModuleF.Bona_comTable.Active:=False;
+          DataModuleF.Bona_comTable.SQL.Clear;
+          DataModuleF.Bona_comTable.SQL.Text:= BCASQL+' WHERE code_f IN( SELECT code_f FROM fournisseur WHERE LOWER(nom_f) LIKE LOWER' +'('''+(ResearchBAComEdt.Text+'%')+''')' +')';
+          DataModuleF.Bona_comTable.Active:=True;
+          DataModuleF.Bona_comTable.EnableControls;
 
           end;
 
           if ResherchBARNumBRdioBtn.Checked then
           begin
-          MainForm.Bona_comTable.DisableControls;
-          MainForm.Bona_comTable.Active:=False;
-          MainForm.Bona_comTable.SQL.Clear;
-          MainForm.Bona_comTable.SQL.Text:= BRSQL+' WHERE LOWER(num_bacom) LIKE LOWER' +'('''+(ResearchBAComEdt.Text+'%')+''')' ;
-          MainForm.Bona_comTable.Active:=True;
-          MainForm.Bona_comTable.EnableControls;
+          DataModuleF.Bona_comTable.DisableControls;
+          DataModuleF.Bona_comTable.Active:=False;
+          DataModuleF.Bona_comTable.SQL.Clear;
+          DataModuleF.Bona_comTable.SQL.Text:= BCASQL+' WHERE LOWER(num_bacom) LIKE LOWER' +'('''+(ResearchBAComEdt.Text+'%')+''')' ;
+          DataModuleF.Bona_comTable.Active:=True;
+          DataModuleF.Bona_comTable.EnableControls;
           end;
 
 
@@ -1254,12 +1254,12 @@ begin
           MainForm.FournisseurTable.Active:=True;
           MainForm.FournisseurTable.EnableControls;
 
-          MainForm.Bona_comTable.DisableControls;
-          MainForm.Bona_comTable.Active:=False;
-          MainForm.Bona_comTable.SQL.Clear;
-          MainForm.Bona_comTable.SQL.Text:= BRSQL+' WHERE bon_or_no_bacom = true ' ;
-          MainForm.Bona_comTable.Active:=True;
-          MainForm.Bona_comTable.EnableControls;
+          DataModuleF.Bona_comTable.DisableControls;
+          DataModuleF.Bona_comTable.Active:=False;
+          DataModuleF.Bona_comTable.SQL.Clear;
+          DataModuleF.Bona_comTable.SQL.Text:= BCASQL+' WHERE bon_or_no_bacom = true ' ;
+          DataModuleF.Bona_comTable.Active:=True;
+          DataModuleF.Bona_comTable.EnableControls;
 
      end;
 
@@ -1270,17 +1270,17 @@ end;
 procedure TBonComAF.DateStartBAComDChange(Sender: TObject);
 begin
 ClearFilterBVLivPMenuClick(Sender);
-MainForm.Bona_comTable.DisableControls;
-MainForm.Bona_comTable.Active:= False;
-MainForm.Bona_comTable.SQL.clear;
-mainform.Bona_comTable.sql.Text:= BRSQL+' WHERE bon_or_no_bacom = true AND date_bacom BETWEEN '''+(DateToStr(DateStartBAComD.Date))+ ''' AND ''' +(DateToStr(DateEndBAComD.Date))+'''';
-MainForm.Bona_comTable.Active:= True;
-MainForm.Bona_comTable.EnableControls;
+DataModuleF.Bona_comTable.DisableControls;
+DataModuleF.Bona_comTable.Active:= False;
+DataModuleF.Bona_comTable.SQL.clear;
+DataModuleF.Bona_comTable.sql.Text:= BCASQL+' WHERE bon_or_no_bacom = true AND date_bacom BETWEEN '''+(DateToStr(DateStartBAComD.Date))+ ''' AND ''' +(DateToStr(DateEndBAComD.Date))+'''';
+DataModuleF.Bona_comTable.Active:= True;
+DataModuleF.Bona_comTable.EnableControls;
 end;
 
 procedure TBonComAF.FormShow(Sender: TObject);
 Begin
-  MainForm.Bona_comTable.Active:= True;
+  DataModuleF.Bona_comTable.Active:= True;
   DateStartBAComD.Date:=EncodeDate (YearOf(Now),MonthOf(Now),01);
   DateEndBAComD.Date:=EncodeDate (YearOf(Now),MonthOf(Now),DayOf(Now));
   DateStartBAComDChange(Sender);
@@ -1339,7 +1339,7 @@ Select_Valid_Virment;
 
   if sImage6.Visible = True then
    begin
-   MainForm.Bona_comTable.Filtered:= False;
+   DataModuleF.Bona_comTable.Filtered:= False;
     if RegleFilterBVLivPMenu.Checked then
     begin
      Select_Regle; 
@@ -1367,7 +1367,7 @@ end;
 procedure TBonComAF.AdvToolButton1Click(Sender: TObject);
 begin
 
- ProduitListSaveDg.FileName:= 'Liste des BR';
+ ProduitListSaveDg.FileName:= 'Liste des BCA';
 if ProduitListSaveDg.Execute then
  begin
 
@@ -1377,41 +1377,41 @@ if ProduitListSaveDg.Execute then
 
   end;
 
-//MainForm.Bona_comTable.DisableControls;
+//DataModuleF.Bona_comTable.DisableControls;
 //
 //    GettingData;
 //
 //BonComAfrxRprt.PrepareReport;
-//frxXLSExport1.FileName := 'Liste des BR';
+//frxXLSExport1.FileName := 'Liste des BCA';
 //BonComAfrxRprt.Export(frxXLSExport1);
 //
-//MainForm.Bona_comTable.EnableControls;
+//DataModuleF.Bona_comTable.EnableControls;
 end;
 
 procedure TBonComAF.AdvToolButton2Click(Sender: TObject);
 begin
-MainForm.Bona_comTable.DisableControls;
+DataModuleF.Bona_comTable.DisableControls;
 
     GettingData;
 
 BonComAfrxRprt.PrepareReport;
-frxPDFExport1.FileName := 'liste des BR';
+frxPDFExport1.FileName := 'liste des BCA';
 BonComAfrxRprt.Export(frxPDFExport1);
 
 
-MainForm.Bona_comTable.EnableControls;
+DataModuleF.Bona_comTable.EnableControls;
 end;
 
 procedure TBonComAF.AdvToolButton3Click(Sender: TObject);
 begin
-  MainForm.Bona_comTable.DisableControls;
+  DataModuleF.Bona_comTable.DisableControls;
 
    GettingData;
 
   BonComAfrxRprt.PrepareReport;
   BonComAfrxRprt.ShowReport;
 
-  MainForm.Bona_comTable.EnableControls;
+  DataModuleF.Bona_comTable.EnableControls;
 end;
 
 procedure TBonComAF.ApplicationEvents1ShortCut(var Msg: TWMKey;
@@ -1479,7 +1479,7 @@ FilteredColor;
 Select_Valid_ATerme;
   if sImage6.Visible = True then
    begin
-   MainForm.Bona_comTable.Filtered:= False;
+   DataModuleF.Bona_comTable.Filtered:= False;
     if RegleFilterBVLivPMenu.Checked then
     begin
 
@@ -1504,17 +1504,17 @@ end;
 procedure TBonComAF.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
 
-   MainForm.SaveGridLayout(BAComListDBGridEh,GetCurrentDir +'\bin\gc_brlst');
+   MainForm.SaveGridLayout(BAComListDBGridEh,GetCurrentDir +'\bin\gc_bcalst');
 
  FreeAndNil(BonComAF);
 end;
 
 procedure TBonComAF.FormCreate(Sender: TObject);
 begin
-     if FileExists(GetCurrentDir +'\bin\gc_brlst') then
+     if FileExists(GetCurrentDir +'\bin\gc_bcalst') then
    begin
 
-    MainForm.LoadGridLayout(BAComListDBGridEh,GetCurrentDir +'\bin\gc_brlst');
+    MainForm.LoadGridLayout(BAComListDBGridEh,GetCurrentDir +'\bin\gc_bcalst');
    end;
 end;
 

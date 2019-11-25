@@ -710,6 +710,12 @@ begin
               MainForm.Mode_paiementTable.Active:=True;
 
 
+              MainForm.SQLQuery3.Active:=false;
+              MainForm.SQLQuery3.SQL.Clear;
+              MainForm.SQLQuery3.SQL.Text:='SELECT * FROM transfer_comptes'  ;
+              MainForm.SQLQuery3.Active:=True;
+
+
             //--- this tag is for adding ---------------
              if Tag = 0 then
              begin
@@ -720,12 +726,12 @@ begin
               MainForm.Opt_cas_bnk_CaisseTable.SQL.Text:='SELECT * FROM opt_cas_bnk' ;
               MainForm.Opt_cas_bnk_CaisseTable.Active:=True;
 
-                with DataModuleF.Transfer_comptesTable do
+                with MainForm.SQLQuery3 do
                 begin
-                    if NOT (DataModuleF.Transfer_comptesTable.IsEmpty) then
+                    if NOT (MainForm.SQLQuery3.IsEmpty) then
                     begin
-                    DataModuleF.Transfer_comptesTable.Last;
-                    CodeTrans:= DataModuleF.Transfer_comptesTable.FieldValues['code_transfer'] + 1;
+                    MainForm.SQLQuery3.Last;
+                    CodeTrans:= MainForm.SQLQuery3.FieldValues['code_transfer'] + 1;
                     end else
                         begin
                          CodeTrans:= 1;
@@ -881,6 +887,11 @@ begin
 
                 MainForm.FDQuery2.Active:=false;
                 MainForm.FDQuery2.SQL.Clear;
+
+                MainForm.SQLQuery3.Active:=false;
+                MainForm.SQLQuery3.SQL.Clear;
+
+                DataModuleF.Transfer_comptesTable.Refresh;
 
              end  else
               begin

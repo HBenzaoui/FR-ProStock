@@ -77,7 +77,9 @@ uses
   UInventoryGestion in 'UInventoryGestion.pas' {InventoryGestionF},
   ScaleAPI in 'ScaleAPI.pas',
   PLU in 'PLU.pas',
-  ShopName in 'ShopName.pas';
+  ShopName in 'ShopName.pas',
+  UBonComAGestion in 'UBonComAGestion.pas' {BonComAGestionF},
+  UBonComA in 'UBonComA.pas' {BonComAF};
 
 {$R *.res}
 

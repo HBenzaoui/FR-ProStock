@@ -79,6 +79,8 @@ type
     TotauxSdr: TsSlider;
     L24: TLabel;
     PrixASdr: TsSlider;
+    L25: TLabel;
+    StockSdr: TsSlider;
     procedure OKUserGEdtClick(Sender: TObject);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
     procedure NameUserGEdtKeyPress(Sender: TObject; var Key: Char);
@@ -110,6 +112,7 @@ type
     procedure TypeUserGCbxClick(Sender: TObject);
     procedure TotauxSdrChanging(Sender: TObject; var CanChange: Boolean);
     procedure PrixASdrChanging(Sender: TObject; var CanChange: Boolean);
+    procedure StockSdrChanging(Sender: TObject; var CanChange: Boolean);
   private
     procedure EnablePar;
     procedure DisablePar;
@@ -237,7 +240,7 @@ begin
  UnitSdr.SliderOn:=    False;
  LocalSdr.SliderOn:=   False;
  TotauxSdr.SliderON:=  False;
-// PrixASdr.SliderON:=   False;
+ StockSdr.SliderON:=   False;
 
  ParaP.Enabled:= True;
 
@@ -265,6 +268,7 @@ begin
  LocalSdr.Enabled:=   True;
  TotauxSdr.Enabled:=  True;
  PrixASdr.Enabled:=   True;
+ StockSdr.Enabled:=   True;
 
 end;
 
@@ -296,7 +300,7 @@ begin
  L21.Enabled:= False;
  L22.Enabled:= False;
  L23.Enabled:= False;
-// L24.Enabled:= False;
+ L25.Enabled:= False;
 
  VentesSdr.SliderOn := True;
  BLSdr.SliderOn :=     True;
@@ -321,7 +325,7 @@ begin
  UnitSdr.SliderOn:=    True;
  LocalSdr.SliderOn:=   True;
  TotauxSdr.SliderOn:=  True;
-// PrixASdr.SliderOn:=   True;
+ StockSdr.SliderOn:=   True;
 
    ParaP.Enabled:= False;
 
@@ -351,6 +355,7 @@ begin
  LocalSdr.Enabled:=    False;
  TotauxSdr.Enabled:=   False;
  PrixASdr.Enabled:=    True;
+ StockSdr.Enabled:=   True;
 
 
 end;
@@ -408,6 +413,9 @@ begin
                   DataModuleF.UsersTable.FieldValues['local_ur']:=LocalSdr.SliderOn;
                   DataModuleF.UsersTable.FieldByName('totaux_ur').AsBoolean:=TotauxSdr.SliderOn;
                   DataModuleF.UsersTable.FieldByName('viewprixa_ur').AsBoolean:=PrixASdr.SliderOn;
+                  DataModuleF.UsersTable.FieldByName('stock_ur').AsBoolean:=StockSdr.SliderOn;
+
+
                   DataModuleF.UsersTable.Post;
 
                   DataModuleF.UsersTable.Refresh;
@@ -457,6 +465,7 @@ begin
                       DataModuleF.UsersTable.FieldValues['local_ur']:=LocalSdr.SliderOn;
                       DataModuleF.UsersTable.FieldByName('totaux_ur').AsBoolean:=TotauxSdr.SliderOn;
                       DataModuleF.UsersTable.FieldByName('viewprixa_ur').AsBoolean:=PrixASdr.SliderOn;
+                      DataModuleF.UsersTable.FieldByName('stock_ur').AsBoolean:=StockSdr.SliderOn;
                       DataModuleF.UsersTable.Post;
 
                       DataModuleF.UsersTable.Refresh;
@@ -719,6 +728,7 @@ begin
    ComptesSdr.SliderOn:=   False;
    UnitSdr.SliderOn:=      False;
    LocalSdr.SliderOn:=     False;
+   StockSdr.SliderON:=     False;
 
 
    L12.Enabled:= False;
@@ -730,6 +740,7 @@ begin
    L20.Enabled:= False;
    L21.Enabled:= False;
    L22.Enabled:= False;
+   L25.Enabled:= False;
  end else
      begin
        ClientSdr.SliderOn :=   True;
@@ -741,6 +752,7 @@ begin
        ComptesSdr.SliderOn:=   True;
        UnitSdr.SliderOn:=      True;
        LocalSdr.SliderOn:=     True;
+       StockSdr.SliderOn:=     True;
 
 
        L12.Enabled:= True;
@@ -752,6 +764,7 @@ begin
        L20.Enabled:= True;
        L21.Enabled:= True;
        L22.Enabled:= True;
+       L25.Enabled:= True;
      end;
 end;
 
@@ -920,6 +933,18 @@ begin
  end else
      begin
        L18.Enabled:= True;
+     end;
+end;
+
+procedure TUsersGestionF.StockSdrChanging(Sender: TObject;
+  var CanChange: Boolean);
+begin
+ if StockSdr.SliderOn = True then
+ begin
+   L25.Enabled:= False;
+ end else
+     begin
+       L25.Enabled:= True;
      end;
 end;
 

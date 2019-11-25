@@ -1,10 +1,10 @@
-unit UDataModule;
+ï»¿unit UDataModule;
 
 interface
 
 uses
   Winapi.Windows,  Vcl.StdCtrls, Vcl.Dialogs,System.UITypes,Vcl.Forms,
-  Data.SqlTimSt,  System.SysUtils,
+  Data.SqlTimSt,  System.SysUtils,System.Variants,
   System.Classes, FireDAC.Stan.Intf, FireDAC.Stan.Option,
   FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
   FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, Data.DB,
@@ -316,33 +316,33 @@ type
     Inventory_listTablecalcgap_il: TFloatField;
     Inventory_listTablegap_il: TFloatField;
     Bona_comTable: TFDQuery;
-    Bona_comTablecode_barec: TIntegerField;
-    Bona_comTabledate_barec: TDateField;
-    Bona_comTabletime_barec: TTimeField;
-    Bona_comTablemontht_barec: TCurrencyField;
+    Bona_comTablecode_bacom: TIntegerField;
+    Bona_comTabledate_bacom: TDateField;
+    Bona_comTabletime_bacom: TTimeField;
+    Bona_comTablemontht_bacom: TCurrencyField;
     rr: TCurrencyField;
-    Bona_comTablevalider_barec: TBooleanField;
-    Bona_comTablenum_barec: TWideStringField;
-    Bona_comTablefourbarec: TStringField;
-    Bona_comTablemonttc_barec: TCurrencyField;
-    Bona_comTableremise_barec: TCurrencyField;
-    Bona_comTablenum_cheque_barec: TWideStringField;
+    Bona_comTablevalider_bacom: TBooleanField;
+    Bona_comTablenum_bacom: TWideStringField;
+    Bona_comTablefourbacom: TStringField;
+    Bona_comTablemonttc_bacom: TCurrencyField;
+    Bona_comTableremise_bacom: TCurrencyField;
+    Bona_comTablenum_cheque_bacom: TWideStringField;
     Bona_comTablecode_mdpai: TSmallintField;
     Bona_comTablecode_cmpt: TSmallintField;
     Bona_comTableModePaie: TStringField;
     Bona_comTableCompte: TStringField;
     Bona_comTablecode_f: TIntegerField;
     Bona_comTablecode_ur: TIntegerField;
-    Bona_comTablebon_or_no_barec: TBooleanField;
+    Bona_comTablebon_or_no_bacom: TBooleanField;
     Bona_comTableAgent: TStringField;
-    Bona_comTableobser_barec: TWideStringField;
+    Bona_comTableobser_bacom: TWideStringField;
     Bona_comTablemontanttva: TCurrencyField;
     Bona_comTablemontantres: TCurrencyField;
     Bona_comTableremiseperc: TFMTBCDField;
     Bona_comTablenetht: TCurrencyField;
     Bona_com_listTable: TFDQuery;
-    Bona_com_listTablecode_barecl: TIntegerField;
-    Bona_com_listTablecode_barec: TIntegerField;
+    Bona_com_listTablecode_bacoml: TIntegerField;
+    Bona_com_listTablecode_bacom: TIntegerField;
     Bona_com_listTablequt_p: TFloatField;
     Bona_com_listTableprixht_p: TCurrencyField;
     Bona_com_listTablecond_p: TIntegerField;
@@ -367,6 +367,7 @@ type
     Bona_com_listTablemargeg: TFloatField;
     Bona_com_listTablemargea: TFloatField;
     Bona_com_listTablemargea2: TFloatField;
+    BonComAListDataS: TDataSource;
     procedure DataModuleCreate(Sender: TObject);
     procedure PZeroQCnotifCalcFields(DataSet: TDataSet);
     procedure PCloseZeroQCnotifCalcFields(DataSet: TDataSet);
@@ -375,6 +376,7 @@ type
     procedure PertesTableCalcFields(DataSet: TDataSet);
     procedure CheckdbVersionAndAlterDb;
     procedure Inventory_listTablequtphys_ilChange(Sender: TField);
+    procedure Bona_com_listTableAfterRefresh(DataSet: TDataSet);
   private
     procedure CheckAppVersionForFirstRun;
     procedure deleteOldGridsparams;
@@ -395,7 +397,7 @@ var
 implementation
 
 uses
-  UMainF, ULogoSplashForm, ULogin, UInventory;
+  UMainF, ULogoSplashForm, ULogin, UInventory, UBonComAGestion;
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
@@ -455,6 +457,87 @@ begin
 
 end;
 
+
+procedure TDataModuleF.Bona_com_listTableAfterRefresh(DataSet: TDataSet);
+var TotalHT,TotalTVA,TVA,TotalTTC,LeReste,Regle,NewHT,BonRTotalHT: Currency;
+InvoiceID :Integer;
+  begin
+
+       if Assigned(BonComAGestionF) then
+       begin
+
+         MainForm.SQLQuery3.Active:= False;
+         MainForm.SQLQuery3.SQL.Clear;
+         MainForm.SQLQuery3.SQL.Text:= BonComAGestionF.BCALSQL+ ' WHERE code_bacom= '+ IntToStr(Bona_comTable.FieldByName('code_bacom').AsInteger) +' ORDER BY code_bacoml ';
+         MainForm.SQLQuery3.Active:= True;
+
+          MainForm.SQLQuery3.First;
+          while not MainForm.SQLQuery3.Eof do
+          begin
+            TotalHT:= TotalHT + (MainForm.SQLQuery3.FieldValues['MontantHT'] );
+            TotalTVA:= TotalTVA + MainForm.SQLQuery3.FieldValues['MontantTVA'];
+            TotalTTC:= TotalTTC + MainForm.SQLQuery3.FieldValues['MontantTTC'];
+            TVA:=TVA + MainForm.SQLQuery3.FieldValues['tva_p'] ;
+            LeReste:= TotalTTC - StrToCurr(StringReplace(BonComAGestionF.BonComRegleLbl.Caption, #32, '', [rfReplaceAll]))  ;
+            MainForm.SQLQuery3.Next;
+          end;
+
+         MainForm.SQLQuery3.Active:=false;
+         MainForm.SQLQuery3.SQL.Clear;
+
+         InvoiceID := Bona_com_listTable.FieldByName('code_bacoml').AsInteger;
+         Bona_com_listTable.Active:=false;
+         Bona_com_listTable.SQL.Clear;
+         Bona_com_listTable.SQL.Text:= BonComAGestionF.BCALSQL+ ' ORDER BY code_bacoml ' ;
+         Bona_com_listTable.Active:=True;
+
+         Bona_com_listTable.Locate('code_bacoml',InvoiceID,[]);
+
+
+
+    BonComAGestionF.BonComTotalHTLbl.Caption :=    CurrToStrF((TotalHT),ffNumber,2) ;
+    BonComAGestionF.BonComTotalTVALbl.Caption :=   CurrToStrF((TotalTVA),ffNumber,2) ;
+    BonComAGestionF.BonComTotalTTCLbl.Caption :=   CurrToStrF((TotalTTC),ffNumber,2) ;
+    BonComAGestionF.BonComResteLbl.Caption :=      CurrToStrF((LeReste),ffNumber,2) ;
+    BonComAGestionF.BonCATotalTTCNewLbl.Caption :=  CurrToStrF(((TotalTTC)),ffNumber,2) ;
+    BonComAGestionF.BonCATotalHTNewLbl.Caption :=   CurrToStrF(((TotalHT)),ffNumber,2) ;
+    BonComAGestionF.TotalTVANewLbl.Caption :=      CurrToStrF(((TotalTVA)),ffNumber,2) ;
+
+    if Bona_comTable.FieldValues['montver_bacom']<> Null then
+    begin
+    Regle:= Bona_comTable.FieldValues['montver_bacom'];
+    BonComAGestionF.BonComRegleLbl.Caption :=      CurrToStrF(((Regle)),ffNumber,2) ;
+    end;
+
+    if NOT (Bona_com_listTable.IsEmpty) then
+    begin
+//    if BonRecGestionF.FournisseurBonRecGCbx.Text<>'' then
+//    begin
+//    BonRecGestionF.BonRecGFourNEWCredit.Caption:=
+//    CurrToStrF((LeReste + ((StrToCurr(StringReplace(BonRecGestionF.BonRecGFourOLDCredit.Caption, #32, '', [rfReplaceAll]))))),ffNumber,2) ;
+//    end ;
+
+//     BonRecGestionF.RemisePerctageBonRecGEdt.Text:='';
+//    BonRecGestionF.RemiseBonRecGEdtChange(Self);
+
+              BonComAGestionF.RemisePerctageBonComGEdtChange(Self);
+
+            if BonComAGestionF.BonCATotalHTNewLbl.Caption <>'' then
+            begin
+            NewHT:=StrToFloat (StringReplace(BonComAGestionF.BonCATotalHTNewLbl.Caption , #32, '', [rfReplaceAll]));
+            end;
+
+             if BonComAGestionF.BonComTotalHTLbl.Caption<>'' then
+            begin
+            BonRTotalHT:=StrToFloat (StringReplace(BonComAGestionF.BonComTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
+            end;
+
+            BonComAGestionF.RemiseBonComGEdt.Text:=FloatToStrF((BonRTotalHT - NewHT),ffNumber,14,2);
+    end;
+       end;
+
+
+end;
 
 procedure TDataModuleF.CheckAppVersionForFirstRun();
 
@@ -650,9 +733,9 @@ begin
              except
 
     // Show a custom dialog
-    buttonSelected := MyMessageDialog('Le serveur ne répond pas! Assurer-tu que le serveur est activé'
+    buttonSelected := MyMessageDialog('Le serveur ne rï¿½pond pas! Assurer-tu que le serveur est activï¿½'
     ,mtCustom,[mbRetry,mbCancel],
-                              ['Annuler','Réessayer']);
+                              ['Annuler','Rï¿½essayer']);
 
 
           if buttonSelected = mrRetry then

@@ -25,7 +25,7 @@ object LoginUserF: TLoginUserF
   object UserL: TLabel
     Left = 111
     Top = 64
-    Width = 57
+    Width = 60
     Height = 16
     Anchors = []
     Caption = 'Utilisateur'
@@ -42,7 +42,7 @@ object LoginUserF: TLoginUserF
   object PasswordL: TLabel
     Left = 90
     Top = 112
-    Width = 78
+    Width = 81
     Height = 16
     Anchors = []
     Caption = 'Mot de Passe'

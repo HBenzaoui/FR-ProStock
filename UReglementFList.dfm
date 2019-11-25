@@ -440,7 +440,7 @@ object ReglementFListF: TReglementFListF
     object ResearchBACtrLbl: TLabel
       Left = 1
       Top = 31
-      Width = 74
+      Width = 76
       Height = 16
       Caption = 'Rechercher'
       Color = 15722984
@@ -906,7 +906,9 @@ object ReglementFListF: TReglementFListF
         KeyList.Strings = (
           '1'
           '2'
-          '3')
+          '3'
+          '4'
+          '5')
         Layout = tlCenter
         ReadOnly = True
         Title.Alignment = taCenter

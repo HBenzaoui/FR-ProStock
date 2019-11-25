@@ -129,7 +129,7 @@ object FSplashAddUnite: TFSplashAddUnite
   object RequiredStarAddUniteSLbl: TLabel
     Left = 298
     Top = 64
-    Width = 8
+    Width = 9
     Height = 22
     Caption = '*'
     Color = clBtnFace
@@ -240,7 +240,7 @@ object FSplashAddUnite: TFSplashAddUnite
     object FormCaptionAddUniteSLbl: TLabel
       Left = 99
       Top = 10
-      Width = 117
+      Width = 116
       Height = 24
       Caption = 'Ajouter Unite'
       Color = 4207405

@@ -216,7 +216,7 @@ object FSplashVersement: TFSplashVersement
   object RequiredStarVerVersementSLbl: TLabel
     Left = 294
     Top = 254
-    Width = 8
+    Width = 9
     Height = 22
     Anchors = [akLeft, akBottom]
     Caption = '*'
@@ -277,8 +277,8 @@ object FSplashVersement: TFSplashVersement
     object Label1: TLabel
       Left = 8
       Top = 3
-      Width = 59
-      Height = 23
+      Width = 50
+      Height = 24
       Caption = 'Total:'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 1752319
@@ -288,9 +288,9 @@ object FSplashVersement: TFSplashVersement
       ParentFont = False
     end
     object TotalVersementSLbl: TLabel
-      Left = 273
+      Left = 274
       Top = 27
-      Width = 25
+      Width = 24
       Height = 51
       Alignment = taRightJustify
       Anchors = [akLeft, akBottom]
@@ -646,7 +646,7 @@ object FSplashVersement: TFSplashVersement
     SmallFont.Height = -9
     SmallFont.Name = 'Segoe UI'
     SmallFont.Style = []
-    Version = '1.8.4.1'
+    Version = '1.8.5.1'
     OnKeyClick = AdvSmoothTouchKeyBoard1KeyClick
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText

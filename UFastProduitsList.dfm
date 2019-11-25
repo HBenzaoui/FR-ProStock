@@ -39,7 +39,7 @@ object FastProduitsListF: TFastProduitsListF
     object ResearchProduitsLbl: TLabel
       Left = 11
       Top = 24
-      Width = 74
+      Width = 76
       Height = 16
       Caption = 'Rechercher'
       Color = 15722984

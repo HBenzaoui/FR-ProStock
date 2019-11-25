@@ -2,7 +2,7 @@ object UsersGestionF: TUsersGestionF
   Left = 0
   Top = 0
   BorderStyle = bsDialog
-  ClientHeight = 660
+  ClientHeight = 683
   ClientWidth = 450
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -51,7 +51,7 @@ object UsersGestionF: TUsersGestionF
     object Label1: TLabel
       Left = 8
       Top = 2
-      Width = 109
+      Width = 106
       Height = 21
       Caption = 'Informations'
       Color = 4207405
@@ -66,7 +66,7 @@ object UsersGestionF: TUsersGestionF
     object Label2: TLabel
       Left = 15
       Top = 57
-      Width = 98
+      Width = 105
       Height = 16
       Caption = 'Nom d'#39'utilisateur:'
       Color = 4207405
@@ -82,7 +82,7 @@ object UsersGestionF: TUsersGestionF
     object Label3: TLabel
       Left = 15
       Top = 105
-      Width = 80
+      Width = 84
       Height = 16
       Caption = 'Mot de passe:'
       Color = 4207405
@@ -98,7 +98,7 @@ object UsersGestionF: TUsersGestionF
     object Label4: TLabel
       Left = 18
       Top = 153
-      Width = 75
+      Width = 81
       Height = 16
       Caption = 'Confirmation:'
       Color = 4207405
@@ -114,7 +114,7 @@ object UsersGestionF: TUsersGestionF
     object Label5: TLabel
       Left = 18
       Top = 199
-      Width = 31
+      Width = 33
       Height = 16
       Caption = 'Type:'
       Color = 4207405
@@ -842,7 +842,7 @@ object UsersGestionF: TUsersGestionF
     Left = 4
     Top = 301
     Width = 441
-    Height = 312
+    Height = 331
     BevelOuter = bvNone
     Color = clWhite
     ParentBackground = False
@@ -850,7 +850,7 @@ object UsersGestionF: TUsersGestionF
     object ParaL: TLabel
       Left = 8
       Top = 0
-      Width = 97
+      Width = 96
       Height = 21
       Caption = 'Param'#233'tres'
       Color = 4207405
@@ -866,7 +866,7 @@ object UsersGestionF: TUsersGestionF
     object L01: TLabel
       Left = 67
       Top = 28
-      Width = 66
+      Width = 75
       Height = 16
       Caption = 'Les Ventes'
       Color = 4207405
@@ -883,7 +883,7 @@ object UsersGestionF: TUsersGestionF
     object L02: TLabel
       Left = 49
       Top = 50
-      Width = 86
+      Width = 93
       Height = 16
       Caption = 'Bon de livration'
       Color = 4207405
@@ -900,7 +900,7 @@ object UsersGestionF: TUsersGestionF
     object L03: TLabel
       Left = 42
       Top = 71
-      Width = 96
+      Width = 100
       Height = 16
       Caption = 'Facture de Vente'
       Color = 4207405
@@ -917,7 +917,7 @@ object UsersGestionF: TUsersGestionF
     object L05: TLabel
       Left = 67
       Top = 149
-      Width = 66
+      Width = 75
       Height = 16
       Caption = 'Les Achats'
       Color = 4207405
@@ -934,7 +934,7 @@ object UsersGestionF: TUsersGestionF
     object L06: TLabel
       Left = 40
       Top = 170
-      Width = 95
+      Width = 102
       Height = 16
       Caption = 'Bon de r'#233'ception'
       Color = 4207405
@@ -951,7 +951,7 @@ object UsersGestionF: TUsersGestionF
     object L07: TLabel
       Left = 48
       Top = 192
-      Width = 87
+      Width = 93
       Height = 16
       Caption = 'Facture d'#39'Achat'
       Color = 4207405
@@ -968,7 +968,7 @@ object UsersGestionF: TUsersGestionF
     object L08: TLabel
       Left = 4
       Top = 213
-      Width = 131
+      Width = 140
       Height = 16
       Caption = 'Reglement Fournisseur'
       Color = 4207405
@@ -985,7 +985,7 @@ object UsersGestionF: TUsersGestionF
     object L04: TLabel
       Left = 42
       Top = 91
-      Width = 96
+      Width = 100
       Height = 16
       Caption = 'Reglement Client'
       Color = 4207405
@@ -1019,7 +1019,7 @@ object UsersGestionF: TUsersGestionF
     object L11: TLabel
       Left = 293
       Top = 71
-      Width = 75
+      Width = 78
       Height = 16
       Caption = 'Les Comptes'
       Color = 4207405
@@ -1036,7 +1036,7 @@ object UsersGestionF: TUsersGestionF
     object L12: TLabel
       Left = 307
       Top = 123
-      Width = 63
+      Width = 64
       Height = 16
       Caption = 'Les Clients'
       Color = 4207405
@@ -1053,7 +1053,7 @@ object UsersGestionF: TUsersGestionF
     object L13: TLabel
       Left = 267
       Top = 144
-      Width = 98
+      Width = 104
       Height = 16
       Caption = 'Les Fournisseurs'
       Color = 4207405
@@ -1070,7 +1070,7 @@ object UsersGestionF: TUsersGestionF
     object L09: TLabel
       Left = 296
       Top = 29
-      Width = 63
+      Width = 72
       Height = 16
       Caption = 'Tr'#233'sorerie'
       Color = 4207405
@@ -1087,7 +1087,7 @@ object UsersGestionF: TUsersGestionF
     object L14: TLabel
       Left = 86
       Top = 113
-      Width = 51
+      Width = 56
       Height = 16
       Caption = 'Comptoir'
       Color = 4207405
@@ -1104,7 +1104,7 @@ object UsersGestionF: TUsersGestionF
     object L15: TLabel
       Left = 295
       Top = 164
-      Width = 70
+      Width = 75
       Height = 16
       Caption = 'Les produits'
       Color = 4207405
@@ -1121,7 +1121,7 @@ object UsersGestionF: TUsersGestionF
     object L16: TLabel
       Left = 322
       Top = 101
-      Width = 37
+      Width = 41
       Height = 16
       Caption = 'Listes'
       Color = 4207405
@@ -1138,7 +1138,7 @@ object UsersGestionF: TUsersGestionF
     object L17: TLabel
       Left = 297
       Top = 185
-      Width = 71
+      Width = 73
       Height = 16
       Caption = 'Familes Arts'
       Color = 4207405
@@ -1155,7 +1155,7 @@ object UsersGestionF: TUsersGestionF
     object L18: TLabel
       Left = 263
       Top = 206
-      Width = 103
+      Width = 107
       Height = 16
       Caption = 'Sous Familes Arts'
       Color = 4207405
@@ -1172,7 +1172,7 @@ object UsersGestionF: TUsersGestionF
     object L19: TLabel
       Left = 243
       Top = 226
-      Width = 121
+      Width = 127
       Height = 16
       Caption = 'Modes Des paiement'
       Color = 4207405
@@ -1189,7 +1189,7 @@ object UsersGestionF: TUsersGestionF
     object L20: TLabel
       Left = 316
       Top = 247
-      Width = 51
+      Width = 54
       Height = 16
       Caption = 'Comptes'
       Color = 4207405
@@ -1206,7 +1206,7 @@ object UsersGestionF: TUsersGestionF
     object L21: TLabel
       Left = 332
       Top = 267
-      Width = 36
+      Width = 38
       Height = 16
       Caption = 'Unites'
       Color = 4207405
@@ -1223,7 +1223,7 @@ object UsersGestionF: TUsersGestionF
     object L22: TLabel
       Left = 291
       Top = 288
-      Width = 76
+      Width = 79
       Height = 16
       Caption = 'Localisations'
       Color = 4207405
@@ -1240,7 +1240,7 @@ object UsersGestionF: TUsersGestionF
     object L23: TLabel
       Left = 97
       Top = 265
-      Width = 38
+      Width = 42
       Height = 16
       Caption = 'Totaux'
       Color = 4207405
@@ -1257,9 +1257,26 @@ object UsersGestionF: TUsersGestionF
     object L24: TLabel
       Left = 11
       Top = 287
-      Width = 124
+      Width = 132
       Height = 16
       Caption = 'Afficher le prix d'#39'achat'
+      Color = 4207405
+      Enabled = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 4207405
+      Font.Height = 16
+      Font.Name = 'Roboto'
+      Font.Style = []
+      ParentColor = False
+      ParentFont = False
+      StyleElements = []
+    end
+    object L25: TLabel
+      Left = 337
+      Top = 309
+      Width = 34
+      Height = 16
+      Caption = 'Stock'
       Color = 4207405
       Enabled = False
       Font.Charset = DEFAULT_CHARSET
@@ -2007,10 +2024,42 @@ object UsersGestionF: TUsersGestionF
       Reversed = True
       OnChanging = TotauxSdrChanging
     end
+    object StockSdr: TsSlider
+      Left = 386
+      Top = 310
+      Width = 29
+      Height = 15
+      BevelOuter = bvNone
+      BiDiMode = bdLeftToRight
+      Color = clWhite
+      Ctl3D = False
+      Enabled = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 4207405
+      Font.Height = 12
+      Font.Name = 'Roboto'
+      Font.Style = []
+      StyleElements = []
+      ParentBiDiMode = False
+      ParentBackground = False
+      ParentCtl3D = False
+      ParentFont = False
+      TabOrder = 23
+      BoundLabel.Caption = 'sSlider1'
+      BoundLabel.Layout = sclBottomCenter
+      FontOn.Charset = DEFAULT_CHARSET
+      FontOn.Color = 4207405
+      FontOn.Height = 12
+      FontOn.Name = 'Roboto'
+      FontOn.Style = []
+      SliderCursor = crHandPoint
+      Reversed = True
+      OnChanging = StockSdrChanging
+    end
   end
   object BottomP: TPanel
     Left = 0
-    Top = 615
+    Top = 638
     Width = 450
     Height = 45
     Align = alBottom
@@ -2021,6 +2070,7 @@ object UsersGestionF: TUsersGestionF
     ParentDoubleBuffered = False
     TabOrder = 3
     StyleElements = []
+    ExplicitTop = 615
     object OKUserGEdt: TAdvToolButton
       Tag = 2
       Left = 108

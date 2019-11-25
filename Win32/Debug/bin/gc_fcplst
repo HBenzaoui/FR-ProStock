@@ -1,0 +1,16 @@
+0~ valider_bpfac~ VA~ 24~ -1
+1~ num_bpfac~ N° du Devis~ 100~ -1
+2~ date_bpfac~ Date~ 100~ -1
+3~ time_bpfac~ Heure~ 100~ -1
+4~ clientbvfac~ Client~ 300~ -1
+5~ montht_bpfac~ Montant HT~ 150~ -1
+6~ remise_bpfac~ Remise HT~ 150~ -1
+7~ netht~ Net â Payer HT~ 150~ -1
+8~ timber_bpfac~ Timber Fiscal~ 150~ -1
+9~ montanttva~ Montant TVA~ 150~ -1
+10~ montttc_bpfac~ Montant TTC~ 150~ -1
+11~ montver_bpfac~ Montant Versé~ 150~ -1
+12~ montantres~ Montant Resté~ 150~ -1
+13~ montaht_bpfac~ Montant A HT~ 0~ 0
+14~ marge_bpfac~ Marge~ 150~ -1
+15~ Agent~ Agent~ 150~ -1

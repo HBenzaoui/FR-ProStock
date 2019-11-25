@@ -52,7 +52,7 @@ type
     UsersGMainFMnm: TMenuItem;
     N7: TMenuItem;
     Q1: TMenuItem;
-    A1: TMenuItem;
+    StockMainFMnm: TMenuItem;
     ListesMainFMnm: TMenuItem;
     ClientMainFMnm: TMenuItem;
     FourMainFMnm: TMenuItem; N1: TMenuItem;
@@ -347,7 +347,7 @@ type
     TreMainFMnm: TMenuItem;
     C5: TMenuItem;
     B6: TMenuItem;
-    L2: TMenuItem;
+    InventoryMainFMnm: TMenuItem;
     N14: TMenuItem;
     Ajouterunrglementclient1: TMenuItem;
     P1: TMenuItem;
@@ -715,6 +715,10 @@ type
     N25: TMenuItem;
     MouvementdeProduit2: TMenuItem;
     MouvementdeProduit3: TMenuItem;
+    stock_ur: TCheckBox;
+    RegfournisseurTablecode_bacom: TIntegerField;
+    Opt_cas_bnk_CaisseTablecode_bacom: TIntegerField;
+    Opt_cas_bnk_BankTablecode_bacom: TIntegerField;
     procedure ClientMainFBtnClick(Sender: TObject);
     procedure FourMainFBtnClick(Sender: TObject);
     procedure ProduitMainFBtnClick(Sender: TObject);
@@ -858,9 +862,10 @@ type
     procedure Bona_fac_listTableprixvg_pChange(Sender: TField);
     procedure Bona_fac_listTableprixva_pChange(Sender: TField);
     procedure Bona_fac_listTableprixva2_pChange(Sender: TField);
-    procedure L2Click(Sender: TObject);
+    procedure InventoryMainFMnmClick(Sender: TObject);
     procedure MouvementdeProduit2Click(Sender: TObject);
     procedure MouvementdeProduit3Click(Sender: TObject);
+    procedure B2Click(Sender: TObject);
   private
    //---- this to value of changege we need it to check if theuser changed something
      CountInsert,CountUpdate,CountDelete   : Int64;
@@ -901,7 +906,7 @@ implementation
 
 {$R *.dfm}
 
-uses   Vcl.Direct2D,Character, 
+uses   Vcl.Direct2D,Character,
  TlHelp32,Contnrs,System.Threading,IniFiles,
    UClientsList, UFournisseurList, UProduitsList, UBonRec, UBonRecGestion,
   USplashAddUnite, UBonLiv, UBonLivGestion, UBonFacVGestion, UBonFacV,
@@ -912,7 +917,7 @@ uses   Vcl.Direct2D,Character,
   ULogoSplashForm, ULoginUser, ULogin, UCNotifications, UChargesFList,
   UPertesFList, USTypeChargeList, UTypeChargeList, UTypePerteList,
   UBonFacPGestion, UBonFacP, UTransferComptesGestion, UTransferListGestion,
-  UAbout, DBCalcController, UInventory;
+  UAbout, DBCalcController, UInventory, UBonComA, UBonComAGestion;
 
   var
     gGrayForms: TComponentList;
@@ -3484,6 +3489,18 @@ begin
                      end;
                 end;
 
+             if NOT (stock_ur.Checked)  Then
+             begin
+
+               StockMainFMnm.Visible:= False;
+
+             end else
+                 begin
+
+                   StockMainFMnm.Visible:= True;
+
+                 end;
+
 
   HomeF.Label1.Caption:='Bonjour '+DataModuleF.UsersTable.FieldByName('nom_ur').AsString;
    UserNameLbl.Caption:=DataModuleF.UsersTable.FieldByName('nom_ur').AsString;
@@ -4493,6 +4510,23 @@ if Not Assigned(CNotificationsF) then
                                         end;
 end;
 
+procedure TMainForm.B2Click(Sender: TObject);
+begin
+       FournisseurTable.DisableControls;
+       FournisseurTable.Active:=False;
+       FournisseurTable.SQL.Clear;
+       FournisseurTable.SQL.Text:='SELECT * FROM fournisseur ';
+       FournisseurTable.Active:=True;
+       FournisseurTable.EnableControls;
+
+if Not Assigned(BonComAF) then
+
+     BonComAF:= TBonComAF.Create(Application) else
+                                        begin
+                                          BonComAF.Show
+                                        end;
+end;
+
 procedure TMainForm.B3Click(Sender: TObject);
 var
  BackupTask: ITask;
@@ -5093,7 +5127,7 @@ begin
             TypeChargeListF.Show;
 end;
 
-procedure TMainForm.L2Click(Sender: TObject);
+procedure TMainForm.InventoryMainFMnmClick(Sender: TObject);
 begin
 if Not Assigned(InventoryF) then
 

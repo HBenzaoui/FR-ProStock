@@ -47,6 +47,10 @@ object ProduitGestionF: TProduitGestionF
     TabsLineSkin = 'BAR'
     object GeneralClientGTB: TsTabSheet
       Caption = 'G'#233'n'#233'ral'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object GeneralTB: TPanel
         Left = 0
         Top = 0
@@ -80,7 +84,7 @@ object ProduitGestionF: TProduitGestionF
         object RefProduitGLbl: TLabel
           Left = 32
           Top = 17
-          Width = 71
+          Width = 73
           Height = 18
           Caption = 'R'#233'ference:'
           Color = 4207405
@@ -96,7 +100,7 @@ object ProduitGestionF: TProduitGestionF
         object NameProduitGLbl: TLabel
           Left = 18
           Top = 66
-          Width = 84
+          Width = 87
           Height = 18
           Caption = 'D'#233'signation:'
           Color = 4207405
@@ -112,7 +116,7 @@ object ProduitGestionF: TProduitGestionF
         object PrixAHTProduitLbl: TLabel
           Left = 24
           Top = 310
-          Width = 53
+          Width = 55
           Height = 18
           Caption = 'Prix HT:'
           Color = 4207405
@@ -128,7 +132,7 @@ object ProduitGestionF: TProduitGestionF
         object RequiredStarProduitGLbl: TLabel
           Left = 629
           Top = 64
-          Width = 8
+          Width = 9
           Height = 22
           Caption = '*'
           Color = clBtnFace
@@ -163,7 +167,7 @@ object ProduitGestionF: TProduitGestionF
         object Label1: TLabel
           Left = 349
           Top = 110
-          Width = 91
+          Width = 92
           Height = 18
           Caption = 'Sous Famille:'
           Color = 4207405
@@ -179,7 +183,7 @@ object ProduitGestionF: TProduitGestionF
         object Label2: TLabel
           Left = 65
           Top = 155
-          Width = 39
+          Width = 40
           Height = 18
           Caption = 'Unit'#233':'
           Color = 4207405
@@ -195,7 +199,7 @@ object ProduitGestionF: TProduitGestionF
         object Label3: TLabel
           Left = 227
           Top = 155
-          Width = 32
+          Width = 31
           Height = 18
           Caption = 'TVA:'
           Color = 4207405
@@ -211,7 +215,7 @@ object ProduitGestionF: TProduitGestionF
         object Label4: TLabel
           Left = 29
           Top = 198
-          Width = 74
+          Width = 76
           Height = 18
           Caption = 'P'#233'rissable:'
           Color = 4207405
@@ -227,7 +231,7 @@ object ProduitGestionF: TProduitGestionF
         object PerProduitGLbl: TLabel
           Left = 159
           Top = 202
-          Width = 23
+          Width = 22
           Height = 14
           Caption = 'Non'
           Color = 4207405
@@ -261,7 +265,7 @@ object ProduitGestionF: TProduitGestionF
         object AlertJoursProduitLbl: TLabel
           Left = 406
           Top = 198
-          Width = 102
+          Width = 105
           Height = 18
           Caption = 'M'#39'avertir avant:'
           Color = 4207405
@@ -278,7 +282,7 @@ object ProduitGestionF: TProduitGestionF
         object AlertJoursProduitLbl2: TLabel
           Left = 608
           Top = 200
-          Width = 31
+          Width = 37
           Height = 15
           Caption = 'Jours'
           Color = clBtnFace
@@ -295,7 +299,7 @@ object ProduitGestionF: TProduitGestionF
         object PrixATTCProduitLbl: TLabel
           Left = 17
           Top = 374
-          Width = 61
+          Width = 62
           Height = 18
           Caption = 'Prix TTC:'
           Color = 4207405
@@ -311,7 +315,7 @@ object ProduitGestionF: TProduitGestionF
         object Label10: TLabel
           Left = 73
           Top = 246
-          Width = 85
+          Width = 87
           Height = 19
           Caption = 'Prix D'#39'Achat'
           Color = 4207405
@@ -327,7 +331,7 @@ object ProduitGestionF: TProduitGestionF
         object Label11: TLabel
           Left = 349
           Top = 285
-          Width = 41
+          Width = 43
           Height = 16
           Caption = 'Prix HT'
           Color = 4207405
@@ -343,7 +347,7 @@ object ProduitGestionF: TProduitGestionF
         object Label12: TLabel
           Left = 472
           Top = 285
-          Width = 48
+          Width = 50
           Height = 16
           Caption = 'Prix TTC'
           Color = 4207405
@@ -359,7 +363,7 @@ object ProduitGestionF: TProduitGestionF
         object Label13: TLabel
           Left = 394
           Top = 246
-          Width = 94
+          Width = 95
           Height = 19
           Caption = 'Prix De Vente'
           Color = 4207405
@@ -375,7 +379,7 @@ object ProduitGestionF: TProduitGestionF
         object Label14: TLabel
           Left = 578
           Top = 285
-          Width = 36
+          Width = 39
           Height = 16
           Caption = 'Marge'
           Color = 4207405
@@ -407,7 +411,7 @@ object ProduitGestionF: TProduitGestionF
         object Label16: TLabel
           Left = 240
           Top = 344
-          Width = 63
+          Width = 68
           Height = 16
           Caption = 'Revendeur:'
           Color = 4207405
@@ -423,7 +427,7 @@ object ProduitGestionF: TProduitGestionF
         object Label17: TLabel
           Left = 276
           Top = 376
-          Width = 30
+          Width = 32
           Height = 16
           Caption = 'Gros:'
           Color = 4207405
@@ -439,7 +443,7 @@ object ProduitGestionF: TProduitGestionF
         object Label18: TLabel
           Left = 262
           Top = 408
-          Width = 43
+          Width = 46
           Height = 16
           Caption = 'Autre 1:'
           Color = 4207405
@@ -455,7 +459,7 @@ object ProduitGestionF: TProduitGestionF
         object Label19: TLabel
           Left = 262
           Top = 440
-          Width = 43
+          Width = 46
           Height = 16
           Caption = 'Autre 2:'
           Color = 4207405
@@ -471,7 +475,7 @@ object ProduitGestionF: TProduitGestionF
         object Label20: TLabel
           Left = 633
           Top = 312
-          Width = 11
+          Width = 12
           Height = 18
           Caption = '%'
           Color = clBtnFace
@@ -487,7 +491,7 @@ object ProduitGestionF: TProduitGestionF
         object Label21: TLabel
           Left = 633
           Top = 344
-          Width = 11
+          Width = 12
           Height = 18
           Caption = '%'
           Color = clBtnFace
@@ -503,7 +507,7 @@ object ProduitGestionF: TProduitGestionF
         object Label22: TLabel
           Left = 633
           Top = 377
-          Width = 11
+          Width = 12
           Height = 18
           Caption = '%'
           Color = clBtnFace
@@ -519,7 +523,7 @@ object ProduitGestionF: TProduitGestionF
         object Label23: TLabel
           Left = 633
           Top = 408
-          Width = 11
+          Width = 12
           Height = 18
           Caption = '%'
           Color = clBtnFace
@@ -535,7 +539,7 @@ object ProduitGestionF: TProduitGestionF
         object Label24: TLabel
           Left = 633
           Top = 440
-          Width = 11
+          Width = 12
           Height = 18
           Caption = '%'
           Color = clBtnFace
@@ -551,7 +555,7 @@ object ProduitGestionF: TProduitGestionF
         object Label25: TLabel
           Left = 18
           Top = 496
-          Width = 88
+          Width = 89
           Height = 18
           Caption = 'Stock Initial :'
           Color = 4207405
@@ -567,7 +571,7 @@ object ProduitGestionF: TProduitGestionF
         object Label26: TLabel
           Left = 494
           Top = 496
-          Width = 48
+          Width = 47
           Height = 18
           Caption = 'Alerte :'
           Color = 4207405
@@ -599,7 +603,7 @@ object ProduitGestionF: TProduitGestionF
         object Label28: TLabel
           Left = 21
           Top = 542
-          Width = 83
+          Width = 86
           Height = 18
           Caption = 'Fournisseur:'
           Color = 4207405
@@ -615,7 +619,7 @@ object ProduitGestionF: TProduitGestionF
         object Label29: TLabel
           Left = 341
           Top = 156
-          Width = 11
+          Width = 12
           Height = 18
           Caption = '%'
           Color = clBtnFace
@@ -663,7 +667,7 @@ object ProduitGestionF: TProduitGestionF
         object Label9: TLabel
           Left = 350
           Top = 18
-          Width = 90
+          Width = 91
           Height = 18
           Caption = 'Code '#226' Barre:'
           Color = 4207405
@@ -1648,9 +1652,9 @@ object ProduitGestionF: TProduitGestionF
           Top = 195
           Width = 121
           Height = 24
-          Date = 42435.595104571760000000
+          Date = 42435.000000000000000000
           Format = ' '
-          Time = 42435.595104571760000000
+          Time = 0.595104571759293300
           Enabled = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = 4207405
@@ -1686,6 +1690,10 @@ object ProduitGestionF: TProduitGestionF
     end
     object PlusInfoClientGTB: TsTabSheet
       Caption = 'Plus D'#39'info'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object PlusInfoTB: TPanel
         Left = 0
         Top = 0
@@ -1703,7 +1711,7 @@ object ProduitGestionF: TProduitGestionF
         object ObserClientGLbl: TLabel
           Left = 11
           Top = 254
-          Width = 92
+          Width = 95
           Height = 18
           Caption = 'Observations:'
           Color = 4207405
@@ -1719,7 +1727,7 @@ object ProduitGestionF: TProduitGestionF
         object Label30: TLabel
           Left = 18
           Top = 168
-          Width = 87
+          Width = 88
           Height = 18
           Caption = 'Localisation:'
           Color = 4207405
@@ -1767,7 +1775,7 @@ object ProduitGestionF: TProduitGestionF
         object Label31: TLabel
           Left = 30
           Top = 107
-          Width = 75
+          Width = 76
           Height = 18
           Caption = 'Max.Stock:'
           Color = 4207405
@@ -1783,7 +1791,7 @@ object ProduitGestionF: TProduitGestionF
         object Label32: TLabel
           Left = 33
           Top = 47
-          Width = 72
+          Width = 73
           Height = 18
           Caption = 'Min.Stock:'
           Color = 4207405
@@ -1799,7 +1807,7 @@ object ProduitGestionF: TProduitGestionF
         object Label5: TLabel
           Left = 512
           Top = 6
-          Width = 105
+          Width = 109
           Height = 17
           Caption = 'Photo De produit'
           Color = 4207405

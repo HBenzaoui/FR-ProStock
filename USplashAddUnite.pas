@@ -50,7 +50,7 @@ uses System.IniFiles, Contnrs, Types, UProduitGestion, UMainF, UBonRecGestion, U
   USplashAddCompte, UBonLivGestion, UBonFacVGestion, UBonFacAGestion,
   UComptoir, UReglementCGestion, UReglementFGestion, UDataModule,
   UChargesGestion, UChargesFList, UPertesGestion, UBonFacPGestion,
-  UTransferComptesGestion;
+  UTransferComptesGestion, UBonComAGestion;
 
 var
   gGrayForms: TComponentList;
@@ -1033,6 +1033,128 @@ begin
 
    end else
 
+   //---- This Tag = 45  ingoring when add the same prodect to bon de command add anyway -----//
+   if OKAddUniteSBtn.Tag = 45 then
+    begin
+
+    if FSplashAddUnite.Tag = 7 then
+    begin
+     if BonComAGestionF.ResherchPARDesProduitsRdioBtn.Checked then
+      begin
+      MainForm.SQLQuery3.Active:=False;
+      MainForm.SQLQuery3.SQL.Clear;
+      MainForm.SQLQuery3.SQL.Text:= 'SELECT code_p,nom_p,prixht_p,prixvd_p,prixvr_p,prixvg_p,prixva_p,prixva2_p,tva_p,perissable_p FROM produit WHERE LOWER(nom_p) LIKE LOWER('+QuotedStr(BonComAGestionF.ProduitBonComGCbx.Text)+')' ;
+      MainForm.SQLQuery3.Active:=True;
+      end;
+     if BonComAGestionF.ResherchPARRefProduitsRdioBtn.Checked then
+      begin
+       MainForm.SQLQuery3.Active:=False;
+       MainForm.SQLQuery3.SQL.Clear;
+       MainForm.SQLQuery3.SQL.Text:= 'SELECT code_p,nom_p,prixht_p,prixvd_p,prixvr_p,prixvg_p,prixva_p,prixva2_p,tva_p,perissable_p FROM produit WHERE LOWER(refer_p) LIKE LOWER('+QuotedStr(BonComAGestionF.ProduitBonComGCbx.Text)+')' ;
+       MainForm.SQLQuery3.Active:=True;
+      end;
+      if BonComAGestionF.ResherchPARCBProduitsRdioBtn.Checked then
+      begin
+        MainForm.SQLQuery.Active:=False;
+        MainForm.SQLQuery.SQL.Clear;
+        MainForm.SQLQuery.SQL.Text:='SELECT nom_cb,code_p FROM codebarres WHERE LOWER(nom_cb) LIKE LOWER(' +''+ QuotedStr( BonComAGestionF.ProduitBonComGCbx.Text )+')' ;
+        MainForm.SQLQuery.Active:=True;
+        if MainForm.SQLQuery.FieldValues['code_p'] <> null then
+        begin
+        CodeCB:=MainForm.SQLQuery.FieldValues['code_p'];
+        end;
+        MainForm.SQLQuery3.Active:=False;
+        MainForm.SQLQuery3.SQL.Clear;
+        MainForm.SQLQuery3.SQL.Text:= 'SELECT code_p,nom_p,prixht_p,prixvd_p,prixvr_p,prixvg_p,prixva_p,prixva2_p,tva_p,perissable_p FROM produit WHERE code_p = '+QuotedStr(IntToStr(CodeCB)) +'OR'+ ' LOWER(codebar_p) LIKE LOWER(' + QuotedStr(BonComAGestionF.ProduitBonComGCbx.Text)+')';
+        MainForm.SQLQuery3.Active:=True;
+      end;
+     end else
+         begin
+          CodeCB:= MainForm.ProduitTable.FieldByName('code_p').AsInteger;
+          MainForm.SQLQuery3.Active:=False;
+          MainForm.SQLQuery3.SQL.Clear;
+          MainForm.SQLQuery3.SQL.Text:= 'SELECT code_p,nom_p,prixht_p,prixvd_p,prixvr_p,prixvg_p,prixva_p,prixva2_p,tva_p,perissable_p FROM produit WHERE code_p = '+QuotedStr(IntToStr(CodeCB)) ;
+          MainForm.SQLQuery3.Active:=True;
+         end;
+
+        DataModuleF.Bona_com_listTable.DisableControls;
+        DataModuleF.Bona_com_listTable.IndexFieldNames:='';
+        DataModuleF.Bona_com_listTable.Active:=False;
+        DataModuleF.Bona_com_listTable.SQL.Clear;
+        DataModuleF.Bona_com_listTable.SQL.Text:=  BonComAGestionF.BCALSQL+ ' ORDER by code_bacoml' ;
+        DataModuleF.Bona_com_listTable.Active:=True;
+     //   DataModuleF.Bona_com_listTable.Last;
+
+       if  DataModuleF.Bona_com_listTable.IsEmpty then
+       begin
+         DataModuleF.Bona_com_listTable.Last;
+         CodeBR := 1;
+       end else
+           begin
+            DataModuleF.Bona_com_listTable.Last;
+            CodeBR:= DataModuleF.Bona_com_listTable.FieldValues['code_bacoml'] + 1 ;
+           end;
+
+       DataModuleF.Bona_com_listTable.Last;
+       DataModuleF.Bona_com_listTable.Append;
+       DataModuleF.Bona_com_listTable.FieldValues['code_bacoml']:= CodeBR;
+       DataModuleF.Bona_com_listTable.FieldValues['code_bacom']:= DataModuleF.Bona_comTable.FieldValues['code_bacom'];
+       if Assigned(FastProduitsListF) then
+       begin
+        DataModuleF.Bona_com_listTable.FieldValues['code_p']:=  FastProduitsListF.CodePForFastPList;// MainForm.SQLQuery3.FieldValues['code_p'] ;
+       end else
+           begin
+             DataModuleF.Bona_com_listTable.FieldValues['code_p']:= MainForm.SQLQuery3.FieldValues['code_p'] ;
+           end;
+       DataModuleF.Bona_com_listTable.FieldValues['qut_p'] :=  01;
+       DataModuleF.Bona_com_listTable.FieldValues['prixht_p']:= MainForm.SQLQuery3.FieldValues['prixht_p'];
+       DataModuleF.Bona_com_listTable.FieldValues['cond_p']:= 01;
+       DataModuleF.Bona_com_listTable.FieldValues['tva_p']:= MainForm.SQLQuery3.FieldValues['tva_p'];
+       DataModuleF.Bona_com_listTable.FieldByName('prixvd_p').AsCurrency:=  MainForm.SQLQuery3.FieldByName('prixvd_p').AsCurrency;
+       DataModuleF.Bona_com_listTable.FieldByName('prixvr_p').AsCurrency:=  MainForm.SQLQuery3.FieldByName('prixvr_p').AsCurrency;
+       DataModuleF.Bona_com_listTable.FieldByName('prixvg_p').AsCurrency:=  MainForm.SQLQuery3.FieldByName('prixvg_p').AsCurrency;
+       DataModuleF.Bona_com_listTable.FieldByName('prixva_p').AsCurrency:=  MainForm.SQLQuery3.FieldByName('prixva_p').AsCurrency;
+       DataModuleF.Bona_com_listTable.FieldByName('prixva2_p').AsCurrency:= MainForm.SQLQuery3.FieldByName('prixva2_p').AsCurrency;
+       DataModuleF.Bona_com_listTable.Post ;
+       DataModuleF.Bona_com_listTable.IndexFieldNames:='code_bacom';
+
+       DataModuleF.Bona_com_listTable.Active:=False;
+       DataModuleF.Bona_com_listTable.SQL.Clear;
+       DataModuleF.Bona_com_listTable.SQL.Text:= BonComAGestionF.BCALSQL+ ' WHERE code_bacom = ' + QuotedStr(IntToStr(DataModuleF.Bona_comTable.FieldValues['code_bacom']));
+       DataModuleF.Bona_com_listTable.Active:=True;
+
+       BonComAGestionF.ProduitBonComGCbx.Text:='';
+
+       BonComAGestionF.ProduitsListDBGridEh.SelectedIndex:=2;
+       BonComAGestionF.ProduitsListDBGridEh.EditorMode:=True;
+
+       DataModuleF.Bona_com_listTable.Last;
+
+       MainForm.SQLQuery3.Active:=False;
+       MainForm.SQLQuery3.SQL.Clear;
+//       MainForm.SQLQuery3.SQL.Text:= 'SELECT * FROM produit';
+//       MainForm.SQLQuery3.Active := True;
+
+       DataModuleF.Bona_com_listTable.Refresh;
+//       DataModuleF.Bona_com_listTable.Last;
+       DataModuleF.Bona_com_listTable.EnableControls;
+
+
+       AnimateWindow(FSplashAddUnite.Handle, 175, AW_VER_NEGATIVE OR AW_SLIDE OR AW_HIDE);
+       FSplashAddUnite.Release;
+       if FSplashAddUnite.Tag = 1 then
+       begin
+         FastProduitsListF.BringToFront;
+         FastProduitsListF.SetFocus;
+         FastProduitsListF.ResearchProduitsEdt.SelectAll;
+       end;
+      if FSplashAddUnite.Tag = 0 then
+       begin
+        BonComAGestionF.ProduitsListDBGridEh.SetFocus;
+       end;
+
+   end else
+ 
 
 //------------------------------------------------------------------------------------------
        if CancelAddUniteSBtn.Tag= 0 then
@@ -2850,6 +2972,47 @@ begin
      FSplashAddUnite.Release;
    end;
 
+
+   //------------------------------------------------------
+//---- this tag = 43 is for empty the bon commande
+   if OKAddUniteSBtn.Tag = 43 then
+   begin
+   MainForm.SQLQuery.ExecSQL('DELETE FROM bona_com_list WHERE code_bacom = ' +QuotedStr(IntToStr(DataModuleF.Bona_comTable.FieldByName('code_bacom').AsInteger)));
+   DataModuleF.Bona_com_listTable.Refresh;
+   BonComAGestionF.BonComGFourNEWCredit.Caption:= BonComAGestionF.BonComTotalTTCLbl.Caption;
+   sndPlaySound('C:\Windows\Media\recycle.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+     AnimateWindow(FSplashAddUnite.Handle, 175, AW_VER_NEGATIVE OR AW_SLIDE OR AW_HIDE);
+    FSplashAddUnite.Release;
+   end;
+   //---- this tag = 44 is for Delting Bon de commande ------///
+   if OKAddUniteSBtn.Tag = 44 then
+   begin
+
+      //------ this is a executable SQL use it for quick delete code barres in the DB when we cancel
+      codeBR:= DataModuleF.Bona_comTable.FieldByName('code_bacom').AsInteger;
+      //----- this is to delte the old ciredit when we delte the bon com
+      if (DataModuleF.Bona_comTable.FieldByName('code_f').AsInteger <> 0) AND (DataModuleF.Bona_comTable.FieldByName('code_f').AsInteger <> null)  then
+      MainForm.GstockdcConnection.ExecSQL('DELETE FROM bona_com_list where code_bacom = ' + IntToStr(codeBR));
+      MainForm.GstockdcConnection.ExecSQL('DELETE FROM regfournisseur where code_bacom = ' + IntToStr(codeBR));
+      MainForm.GstockdcConnection.ExecSQL('DELETE FROM opt_cas_bnk where code_bacom = ' + IntToStr(codeBR));
+      DataModuleF.Bona_comTable.Delete ;
+      DataModuleF.Bona_comTable.Refresh ;
+      MainForm.RegfournisseurTable.Refresh ;
+      MainForm.Opt_cas_bnk_CaisseTable.Refresh ;
+
+    sndPlaySound('C:\Windows\Media\speech off.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+          AnimateWindow(FSplashAddUnite.Handle, 175, AW_VER_NEGATIVE OR AW_SLIDE OR AW_HIDE);
+      FSplashAddUnite.Release;
+
+   end;
+
+   //---- this tag = 45 is for adding or ingeoring the same produit in bon command ------///
+   if OKAddUniteSBtn.Tag = 45 then
+   begin
+    AnimateWindow(FSplashAddUnite.Handle, 175, AW_VER_NEGATIVE OR AW_SLIDE OR AW_HIDE);
+    FSplashAddUnite.Release;
+
+   end;
 
 
 end;

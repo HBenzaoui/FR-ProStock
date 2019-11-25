@@ -1990,9 +1990,9 @@ object DataModuleF: TDataModuleF
           ''
           'ALTER TABLE users ADD totaux_ur bool DEFAULT '#39't'#39';'
           ''
-          ''
           'ALTER TABLE users ADD viewprixa_ur bool DEFAULT '#39'f'#39';'
-          '')
+          ''
+          'ALTER TABLE users ADD stock_ur bool DEFAULT '#39't'#39';')
       end>
     Connection = PSDBConfigConnection
     Params = <>
@@ -2640,70 +2640,71 @@ object DataModuleF: TDataModuleF
   end
   object Bona_comTable: TFDQuery
     FilterOptions = [foCaseInsensitive]
-    IndexFieldNames = 'code_barec'
+    IndexFieldNames = 'code_bacom'
     Connection = MainForm.GstockdcConnection
     SQL.Strings = (
       'SELECT *,'
-      '  ((montttc_barec)-(montht_barec - remise_barec)) AS MontantTVA,'
-      '  (montttc_barec - montver_barec) AS MontantRes,'
+      '  ((montttc_bacom)-(montht_bacom - remise_bacom)) AS MontantTVA,'
+      '  (montttc_bacom - montver_bacom) AS MontantRes,'
       ' CASE'
       
-        '    WHEN remise_barec <> '#39'0'#39' AND montht_barec <> '#39'0'#39'  THEN  ROUN' +
-        'D( CAST (((remise_barec / montht_barec) * 100) as NUMERIC),2)'
+        '    WHEN remise_bacom <> '#39'0'#39' AND montht_bacom <> '#39'0'#39'  THEN  ROUN' +
+        'D( CAST (((remise_bacom / montht_bacom) * 100) as NUMERIC),2)'
       '    ELSE '#39'0'#39
       ' END AS RemisePerc,'
-      '  (montht_barec - remise_barec) AS NeTHT'
-      'FROM bona_rec WHERE bon_or_no_barec = true')
+      '  (montht_bacom - remise_bacom) AS NeTHT'
+      'FROM bona_com WHERE bon_or_no_bacom = true')
     Left = 467
     Top = 250
-    object Bona_comTablecode_barec: TIntegerField
-      FieldName = 'code_barec'
-      Origin = 'code_barec'
+    object Bona_comTablecode_bacom: TIntegerField
+      FieldName = 'code_bacom'
+      Origin = 'code_bacom'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
     end
-    object Bona_comTabledate_barec: TDateField
-      FieldName = 'date_barec'
-      Origin = 'date_barec'
+    object Bona_comTabledate_bacom: TDateField
+      FieldName = 'date_bacom'
+      Origin = 'date_bacom'
     end
-    object Bona_comTabletime_barec: TTimeField
-      FieldName = 'time_barec'
-      Origin = 'time_barec'
+    object Bona_comTabletime_bacom: TTimeField
+      FieldName = 'time_bacom'
+      Origin = 'time_bacom'
     end
-    object Bona_comTablemontht_barec: TCurrencyField
-      FieldName = 'montht_barec'
-      Origin = 'montht_barec'
+    object Bona_comTablemontht_bacom: TCurrencyField
+      FieldName = 'montht_bacom'
+      Origin = 'montht_bacom'
     end
     object rr: TCurrencyField
-      FieldName = 'montver_barec'
-      Origin = 'montver_barec'
+      FieldName = 'montver_bacom'
+      Origin = 'montver_bacom'
     end
-    object Bona_comTablevalider_barec: TBooleanField
-      FieldName = 'valider_barec'
-      Origin = 'valider_barec'
+    object Bona_comTablevalider_bacom: TBooleanField
+      FieldName = 'valider_bacom'
+      Origin = 'valider_bacom'
     end
-    object Bona_comTablenum_barec: TWideStringField
-      FieldName = 'num_barec'
-      Origin = 'num_barec'
+    object Bona_comTablenum_bacom: TWideStringField
+      FieldName = 'num_bacom'
+      Origin = 'num_bacom'
     end
-    object Bona_comTablefourbarec: TStringField
+    object Bona_comTablefourbacom: TStringField
       FieldKind = fkLookup
-      FieldName = 'fourbarec'
+      FieldName = 'fourbacom'
+      LookupDataSet = MainForm.FournisseurTable
       LookupKeyFields = 'code_f'
       LookupResultField = 'nom_f'
       KeyFields = 'code_f'
       Size = 100
       Lookup = True
     end
-    object Bona_comTablemonttc_barec: TCurrencyField
-      FieldName = 'montttc_barec'
+    object Bona_comTablemonttc_bacom: TCurrencyField
+      FieldName = 'montttc_bacom'
     end
-    object Bona_comTableremise_barec: TCurrencyField
-      FieldName = 'remise_barec'
-      Origin = 'remise_barec'
+    object Bona_comTableremise_bacom: TCurrencyField
+      FieldName = 'remise_bacom'
+      Origin = 'remise_bacom'
     end
-    object Bona_comTablenum_cheque_barec: TWideStringField
-      FieldName = 'num_cheque_barec'
-      Origin = 'num_cheque_barec'
+    object Bona_comTablenum_cheque_bacom: TWideStringField
+      FieldName = 'num_cheque_bacom'
+      Origin = 'num_cheque_bacom'
       Size = 50
     end
     object Bona_comTablecode_mdpai: TSmallintField
@@ -2717,6 +2718,7 @@ object DataModuleF: TDataModuleF
     object Bona_comTableModePaie: TStringField
       FieldKind = fkLookup
       FieldName = 'ModePaie'
+      LookupDataSet = MainForm.Mode_paiementTable
       LookupKeyFields = 'code_mdpai'
       LookupResultField = 'nom_mdpai'
       KeyFields = 'code_mdpai'
@@ -2725,6 +2727,7 @@ object DataModuleF: TDataModuleF
     object Bona_comTableCompte: TStringField
       FieldKind = fkLookup
       FieldName = 'Compte'
+      LookupDataSet = MainForm.CompteTable
       LookupKeyFields = 'code_cmpt'
       LookupResultField = 'nom_cmpt'
       KeyFields = 'code_cmpt'
@@ -2739,9 +2742,9 @@ object DataModuleF: TDataModuleF
       FieldName = 'code_ur'
       Origin = 'code_ur'
     end
-    object Bona_comTablebon_or_no_barec: TBooleanField
-      FieldName = 'bon_or_no_barec'
-      Origin = 'bon_or_no_barec'
+    object Bona_comTablebon_or_no_bacom: TBooleanField
+      FieldName = 'bon_or_no_bacom'
+      Origin = 'bon_or_no_bacom'
     end
     object Bona_comTableAgent: TStringField
       FieldKind = fkLookup
@@ -2753,9 +2756,9 @@ object DataModuleF: TDataModuleF
       Size = 50
       Lookup = True
     end
-    object Bona_comTableobser_barec: TWideStringField
-      FieldName = 'obser_barec'
-      Origin = 'obser_barec'
+    object Bona_comTableobser_bacom: TWideStringField
+      FieldName = 'obser_bacom'
+      Origin = 'obser_bacom'
       Size = 200
     end
     object Bona_comTablemontanttva: TCurrencyField
@@ -2786,6 +2789,7 @@ object DataModuleF: TDataModuleF
     end
   end
   object Bona_com_listTable: TFDQuery
+    AfterRefresh = Bona_com_listTableAfterRefresh
     FilterOptions = [foCaseInsensitive]
     Indexes = <
       item
@@ -2795,88 +2799,91 @@ object DataModuleF: TDataModuleF
       end
       item
         Active = True
-        Name = 'icode_barec_balist'
-        Fields = 'code_barec'
+        Name = 'icode_bacom_balist'
+        Fields = 'code_bacom'
       end>
-    IndexFieldNames = 'code_barec;code_p;code_barecl'
-    MasterFields = 'code_barec'
+    IndexFieldNames = 'code_bacom;code_p;code_bacoml'
+    MasterSource = BonComAListDataS
+    MasterFields = 'code_bacom'
     Connection = MainForm.GstockdcConnection
     SQL.Strings = (
       
-        'SELECT BRL.code_barec,BRL.code_barecl,BRL.qut_p,BRL.cond_p,BRL.c' +
-        'ode_p,BRL.tva_p,BRL.prixht_p,P.nom_p as nomp, P.refer_p as refer' +
-        'p,'
+        'SELECT BCAL.code_bacom,BCAL.code_bacoml,BCAL.qut_p,BCAL.cond_p,B' +
+        'CAL.code_p,BCAL.tva_p,BCAL.prixht_p,P.nom_p as nomp, P.refer_p a' +
+        's referp,'
       
-        '  BRL.prixvd_p,BRL.prixvr_p,BRL.prixvg_p,BRL.prixva_p,BRL.prixva' +
-        '2_p,BRL.dateperiss_p,BRL.qutinstock_p,'
-      '  (((BRL.prixht_p * BRL.tva_p)/100)+BRL.prixht_p) AS PrixATTC,'
-      '  ((BRL.prixht_p * BRL.qut_p) * cond_p) AS MontantHT,'
+        '  BCAL.prixvd_p,BCAL.prixvr_p,BCAL.prixvg_p,BCAL.prixva_p,BCAL.p' +
+        'rixva2_p,BCAL.dateperiss_p,BCAL.qutinstock_p,'
       
-        '  (((((BRL.prixht_p * BRL.tva_p)/100)+BRL.prixht_p) * BRL.qut_p)' +
-        '*cond_p) AS MontantTTC,'
+        '  (((BCAL.prixht_p * BCAL.tva_p)/100)+BCAL.prixht_p) AS PrixATTC' +
+        ','
+      '  ((BCAL.prixht_p * BCAL.qut_p) * cond_p) AS MontantHT,'
       
-        '  (((((((BRL.prixht_p * BRL.tva_p)/100)+BRL.prixht_p) * BRL.qut_' +
-        'p)*cond_p) )-(((BRL.prixht_p * BRL.qut_p) * cond_p))) AS Montant' +
-        'TVA,'
-      '  ((BRL.prixht_p * BRL.qut_p)* cond_p) AS MontantAHT,'
+        '  (((((BCAL.prixht_p * BCAL.tva_p)/100)+BCAL.prixht_p) * BCAL.qu' +
+        't_p)*cond_p) AS MontantTTC,'
+      
+        '  (((((((BCAL.prixht_p * BCAL.tva_p)/100)+BCAL.prixht_p) * BCAL.' +
+        'qut_p)*cond_p) )-(((BCAL.prixht_p * BCAL.qut_p) * cond_p))) AS M' +
+        'ontantTVA,'
+      '  ((BCAL.prixht_p * BCAL.qut_p)* cond_p) AS MontantAHT,'
       ' CASE'
-      '      WHEN BRL.prixvd_p <> '#39'0'#39' THEN'
-      '    CASE WHEN BRL.prixht_p <> '#39'0'#39
+      '      WHEN BCAL.prixvd_p <> '#39'0'#39' THEN'
+      '    CASE WHEN BCAL.prixht_p <> '#39'0'#39
       
-        '      THEN ( ((BRL.prixvd_p - BRL.prixht_p) / BRL.prixht_p  ) *1' +
-        '00)'
+        '      THEN ( ((BCAL.prixvd_p - BCAL.prixht_p) / BCAL.prixht_p  )' +
+        ' *100)'
       '      ELSE '#39'100'#39
       '    END'
       ' END AS MargeD,'
       ' CASE'
-      '    WHEN BRL.prixvr_p <> '#39'0'#39' THEN'
-      '  CASE WHEN BRL.prixht_p <> '#39'0'#39
+      '    WHEN BCAL.prixvr_p <> '#39'0'#39' THEN'
+      '  CASE WHEN BCAL.prixht_p <> '#39'0'#39
       
-        '    THEN ( ((BRL.prixvr_p - BRL.prixht_p) / BRL.prixht_p  ) *100' +
-        ')'
+        '    THEN ( ((BCAL.prixvr_p - BCAL.prixht_p) / BCAL.prixht_p  ) *' +
+        '100)'
       '    ELSE '#39'100'#39
       '  END'
       ' END AS MargeR,'
       ' CASE'
-      '    WHEN BRL.prixvg_p <> '#39'0'#39' THEN'
-      '  CASE WHEN BRL.prixht_p <> '#39'0'#39
+      '    WHEN BCAL.prixvg_p <> '#39'0'#39' THEN'
+      '  CASE WHEN BCAL.prixht_p <> '#39'0'#39
       
-        '    THEN ( ((BRL.prixvg_p - BRL.prixht_p) / BRL.prixht_p  ) *100' +
-        ')'
+        '    THEN ( ((BCAL.prixvg_p - BCAL.prixht_p) / BCAL.prixht_p  ) *' +
+        '100)'
       '    ELSE '#39'100'#39
       '  END'
       ' END AS MargeG,'
       '  CASE'
-      '    WHEN BRL.prixva_p <> '#39'0'#39' THEN'
-      '  CASE WHEN BRL.prixht_p <> '#39'0'#39
+      '    WHEN BCAL.prixva_p <> '#39'0'#39' THEN'
+      '  CASE WHEN BCAL.prixht_p <> '#39'0'#39
       
-        '    THEN ( ((BRL.prixva_p - BRL.prixht_p) / BRL.prixht_p  ) *100' +
-        ')'
+        '    THEN ( ((BCAL.prixva_p - BCAL.prixht_p) / BCAL.prixht_p  ) *' +
+        '100)'
       '    ELSE '#39'100'#39
       '  END'
       ' END AS MargeA,'
       '  CASE'
-      '    WHEN BRL.prixva2_p <> '#39'0'#39' THEN'
-      '  CASE WHEN BRL.prixht_p <> '#39'0'#39
+      '    WHEN BCAL.prixva2_p <> '#39'0'#39' THEN'
+      '  CASE WHEN BCAL.prixht_p <> '#39'0'#39
       
-        '    THEN ( ((BRL.prixva2_p - BRL.prixht_p) / BRL.prixht_p  ) *10' +
-        '0)'
+        '    THEN ( ((BCAL.prixva2_p - BCAL.prixht_p) / BCAL.prixht_p  ) ' +
+        '*100)'
       '    ELSE '#39'100'#39
       '  END'
       ' END AS MargeA2'
-      'FROM bona_rec_list as BRL'
+      'FROM bona_com_list as BCAL'
       'INNER JOIN produit as P'
-      '  ON BRL.code_p = P.code_p ')
-    Left = 467
+      '  ON BCAL.code_p = P.code_p ')
+    Left = 469
     Top = 316
-    object Bona_com_listTablecode_barecl: TIntegerField
-      FieldName = 'code_barecl'
-      Origin = 'code_barecl'
+    object Bona_com_listTablecode_bacoml: TIntegerField
+      FieldName = 'code_bacoml'
+      Origin = 'code_bacoml'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
     end
-    object Bona_com_listTablecode_barec: TIntegerField
-      FieldName = 'code_barec'
-      Origin = 'code_barec'
+    object Bona_com_listTablecode_bacom: TIntegerField
+      FieldName = 'code_bacom'
+      Origin = 'code_bacom'
     end
     object Bona_com_listTablequt_p: TFloatField
       FieldName = 'qut_p'
@@ -2998,5 +3005,10 @@ object DataModuleF: TDataModuleF
       Origin = 'margea2'
       ReadOnly = True
     end
+  end
+  object BonComAListDataS: TDataSource
+    DataSet = Bona_comTable
+    Left = 469
+    Top = 372
   end
 end

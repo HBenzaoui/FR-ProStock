@@ -105,7 +105,7 @@ object TransferListGestionF: TTransferListGestionF
       ShowHint = True
       Spacing = -1
       OnClick = EditBARecBtnClick
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object DeleteBARecBtn: TAdvToolButton
@@ -137,7 +137,7 @@ object TransferListGestionF: TTransferListGestionF
       ShowHint = True
       Spacing = -2
       OnClick = DeleteBARecBtnClick
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object AddBARecBtn: TAdvToolButton
@@ -169,13 +169,13 @@ object TransferListGestionF: TTransferListGestionF
       ShowHint = True
       Spacing = -1
       OnClick = AddBARecBtnClick
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object ResearchBACtrLbl: TLabel
       Left = 2
       Top = 31
-      Width = 74
+      Width = 76
       Height = 16
       Caption = 'Rechercher'
       Color = 15722984
@@ -424,8 +424,8 @@ object TransferListGestionF: TTransferListGestionF
       Top = 38
       Width = 87
       Height = 23
-      Date = 42435.595104571760000000
-      Time = 42435.595104571760000000
+      Date = 42435.000000000000000000
+      Time = 0.595104571759293300
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 4207405
       Font.Height = 15
@@ -440,8 +440,8 @@ object TransferListGestionF: TTransferListGestionF
       Top = 7
       Width = 87
       Height = 23
-      Date = 42435.595104571760000000
-      Time = 42435.595104571760000000
+      Date = 42435.000000000000000000
+      Time = 0.595104571759293300
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 4207405
       Font.Height = 15
@@ -512,7 +512,6 @@ object TransferListGestionF: TTransferListGestionF
     HorzScrollBar.ExtraPanel.NavigatorButtons = [nbFirstEh, nbPriorEh, nbNextEh, nbLastEh, nbRefreshEh]
     HorzScrollBar.ExtraPanel.Visible = True
     HorzScrollBar.Height = 15
-    IndicatorOptions = [gioShowRowIndicatorEh]
     IndicatorParams.Color = clBtnFace
     IndicatorTitle.ShowDropDownSign = True
     IndicatorTitle.TitleButton = True
@@ -548,6 +547,7 @@ object TransferListGestionF: TTransferListGestionF
     Columns = <
       item
         Alignment = taCenter
+        CellButtons = <>
         Checkboxes = False
         DynProps = <>
         EditButtons = <>
@@ -575,6 +575,7 @@ object TransferListGestionF: TTransferListGestionF
       end
       item
         Alignment = taCenter
+        CellButtons = <>
         DisplayFormat = 'DD/MM/YYYY'
         DynProps = <>
         EditButtons = <>
@@ -602,6 +603,7 @@ object TransferListGestionF: TTransferListGestionF
       end
       item
         Alignment = taCenter
+        CellButtons = <>
         DisplayFormat = 'HH:MM:SS'
         DynProps = <>
         EditButtons = <>
@@ -629,6 +631,7 @@ object TransferListGestionF: TTransferListGestionF
       end
       item
         Alignment = taCenter
+        CellButtons = <>
         DynProps = <>
         EditButtons = <>
         FieldName = 'CompteSource'
@@ -652,6 +655,7 @@ object TransferListGestionF: TTransferListGestionF
       end
       item
         Alignment = taCenter
+        CellButtons = <>
         DynProps = <>
         EditButtons = <>
         FieldName = 'CompteDis'
@@ -687,6 +691,7 @@ object TransferListGestionF: TTransferListGestionF
         WordWrap = False
       end
       item
+        CellButtons = <>
         Checkboxes = False
         DynProps = <>
         EditButtons = <>
@@ -720,6 +725,7 @@ object TransferListGestionF: TTransferListGestionF
         WordWrap = False
       end
       item
+        CellButtons = <>
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
@@ -757,6 +763,7 @@ object TransferListGestionF: TTransferListGestionF
       end
       item
         Alignment = taCenter
+        CellButtons = <>
         DynProps = <>
         EditButtons = <>
         FieldName = 'obser_transfer'
@@ -780,6 +787,7 @@ object TransferListGestionF: TTransferListGestionF
       end
       item
         Alignment = taCenter
+        CellButtons = <>
         DynProps = <>
         EditButtons = <>
         FieldName = 'Agent'
@@ -857,7 +865,7 @@ object TransferListGestionF: TTransferListGestionF
       ShowHint = True
       Spacing = -2
       OnClick = SumGirdProduitBtnClick
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object RefreshGirdBtn: TAdvToolButton
@@ -891,7 +899,7 @@ object TransferListGestionF: TTransferListGestionF
       ShowHint = True
       Spacing = -2
       OnClick = RefreshGirdBtnClick
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object AdvToolButton1: TAdvToolButton
@@ -925,7 +933,7 @@ object TransferListGestionF: TTransferListGestionF
       ShowHint = True
       Spacing = -2
       OnClick = AdvToolButton1Click
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object AdvToolButton2: TAdvToolButton
@@ -959,7 +967,7 @@ object TransferListGestionF: TTransferListGestionF
       ShowHint = True
       Spacing = -2
       OnClick = AdvToolButton2Click
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object AdvToolButton3: TAdvToolButton
@@ -994,7 +1002,7 @@ object TransferListGestionF: TTransferListGestionF
       Shaded = False
       ShowHint = True
       Spacing = -2
-      Version = '1.6.1.2'
+      Version = '1.6.2.0'
       TMSStyle = 0
     end
     object Panel5: TPanel
@@ -1123,11 +1131,13 @@ object TransferListGestionF: TTransferListGestionF
     CenterWindow = False
     PrintScaling = False
     PdfA = False
+    PDFStandard = psNone
+    PDFVersion = pv17
     Left = 408
     Top = 480
   end
   object TransferListfrxRprt: TfrxReport
-    Version = '5.4.6'
+    Version = '6.3.12'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -1158,6 +1168,7 @@ object TransferListGestionF: TTransferListGestionF
         Font.Height = -16
         Font.Name = 'Arial'
         Font.Style = [fsBold]
+        Frame.Typ = []
         Fill.BackColor = 14211288
       end
       item
@@ -1167,6 +1178,7 @@ object TransferListGestionF: TTransferListGestionF
         Font.Height = -13
         Font.Name = 'Arial'
         Font.Style = [fsBold]
+        Frame.Typ = []
         Fill.BackColor = 15790320
       end
       item
@@ -1176,6 +1188,7 @@ object TransferListGestionF: TTransferListGestionF
         Font.Height = -13
         Font.Name = 'Arial'
         Font.Style = [fsBold]
+        Frame.Typ = []
         Fill.BackColor = 15790320
       end
       item
@@ -1185,6 +1198,7 @@ object TransferListGestionF: TTransferListGestionF
         Font.Height = -13
         Font.Name = 'Arial'
         Font.Style = []
+        Frame.Typ = []
       end
       item
         Name = 'Group footer'
@@ -1202,6 +1216,7 @@ object TransferListGestionF: TTransferListGestionF
         Font.Height = -13
         Font.Name = 'Arial'
         Font.Style = []
+        Frame.Typ = []
         Frame.Width = 2.000000000000000000
       end>
     object Data: TfrxDataPage
@@ -1217,13 +1232,17 @@ object TransferListGestionF: TTransferListGestionF
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
+      MirrorMode = []
       object PageHeader1: TfrxPageHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 111.165430000000000000
         Top = 18.897650000000000000
         Width = 1046.929810000000000000
         object PreiodRX: TfrxMemoView
           Align = baCenter
+          AllowVectorExport = True
           Left = 371.023861665000000000
           Top = 34.015770000000000000
           Width = 304.882086670000000000
@@ -1233,6 +1252,7 @@ object TransferListGestionF: TTransferListGestionF
           Font.Height = -12
           Font.Name = 'Helvetica LT Std'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'P'#233'riode du :')
@@ -1241,6 +1261,7 @@ object TransferListGestionF: TTransferListGestionF
         end
         object Memo1: TfrxMemoView
           Align = baCenter
+          AllowVectorExport = True
           Left = 372.913626665000000000
           Top = 2.519686670000000000
           Width = 301.102556670000000000
@@ -1258,6 +1279,7 @@ object TransferListGestionF: TTransferListGestionF
           VAlign = vaCenter
         end
         object Memo2: TfrxMemoView
+          AllowVectorExport = True
           Left = 113.409400000000000000
           Top = 83.313571820000000000
           Width = 86.929190000000000000
@@ -1268,6 +1290,7 @@ object TransferListGestionF: TTransferListGestionF
           Font.Height = -11
           Font.Name = 'Gotham Rounded Light'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = 13948116
           Memo.UTF8W = (
             '          Date')
@@ -1275,6 +1298,7 @@ object TransferListGestionF: TTransferListGestionF
           VAlign = vaCenter
         end
         object Memo5: TfrxMemoView
+          AllowVectorExport = True
           Top = 83.313571820000000000
           Width = 113.385826770000000000
           Height = 28.174678180000000000
@@ -1284,6 +1308,7 @@ object TransferListGestionF: TTransferListGestionF
           Font.Height = -11
           Font.Name = 'Gotham Rounded Light'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = 13948116
           HAlign = haCenter
           Memo.UTF8W = (
@@ -1292,6 +1317,7 @@ object TransferListGestionF: TTransferListGestionF
           VAlign = vaCenter
         end
         object Date: TfrxMemoView
+          AllowVectorExport = True
           Left = 963.780150000000000000
           Top = 3.779530000000000000
           Width = 79.370130000000000000
@@ -1301,6 +1327,7 @@ object TransferListGestionF: TTransferListGestionF
           Font.Height = -13
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[Date]')
@@ -1308,6 +1335,7 @@ object TransferListGestionF: TTransferListGestionF
           VAlign = vaCenter
         end
         object Memo3: TfrxMemoView
+          AllowVectorExport = True
           Left = 200.079011100000000000
           Top = 83.313571820000000000
           Width = 238.315090000000000000
@@ -1318,6 +1346,7 @@ object TransferListGestionF: TTransferListGestionF
           Font.Height = -11
           Font.Name = 'Gotham Rounded Light'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = 13948116
           HAlign = haCenter
           Memo.UTF8W = (
@@ -1326,6 +1355,7 @@ object TransferListGestionF: TTransferListGestionF
           VAlign = vaCenter
         end
         object Memo15: TfrxMemoView
+          AllowVectorExport = True
           Left = 437.732691100000000000
           Top = 83.472480000000000000
           Width = 238.488188980000000000
@@ -1336,6 +1366,7 @@ object TransferListGestionF: TTransferListGestionF
           Font.Height = -11
           Font.Name = 'Gotham Rounded Light'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = 13948116
           HAlign = haCenter
           Memo.UTF8W = (
@@ -1344,6 +1375,7 @@ object TransferListGestionF: TTransferListGestionF
           VAlign = vaCenter
         end
         object Memo17: TfrxMemoView
+          AllowVectorExport = True
           Left = 675.488721100000000000
           Top = 83.472480000000000000
           Width = 242.267718980000000000
@@ -1354,6 +1386,7 @@ object TransferListGestionF: TTransferListGestionF
           Font.Height = -11
           Font.Name = 'Gotham Rounded Light'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = 13948116
           HAlign = haCenter
           Memo.UTF8W = (
@@ -1362,6 +1395,7 @@ object TransferListGestionF: TTransferListGestionF
           VAlign = vaCenter
         end
         object Memo6: TfrxMemoView
+          AllowVectorExport = True
           Left = 915.284021100000000000
           Top = 83.472480000000000000
           Width = 132.283488980000000000
@@ -1372,6 +1406,7 @@ object TransferListGestionF: TTransferListGestionF
           Font.Height = -11
           Font.Name = 'Gotham Rounded Light'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = 13948116
           HAlign = haCenter
           Memo.UTF8W = (
@@ -1381,6 +1416,7 @@ object TransferListGestionF: TTransferListGestionF
         end
         object Caisse: TfrxMemoView
           Align = baCenter
+          AllowVectorExport = True
           Left = 302.992321665000000000
           Top = 56.692950000000000000
           Width = 440.945166670000000000
@@ -1391,6 +1427,7 @@ object TransferListGestionF: TTransferListGestionF
           Font.Height = -12
           Font.Name = 'Helvetica LT Std'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Caisse :')
@@ -1400,10 +1437,12 @@ object TransferListGestionF: TTransferListGestionF
       end
       object PageFooter1: TfrxPageFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 22.677180000000000000
         Top = 321.260050000000000000
         Width = 1046.929810000000000000
         object Page: TfrxMemoView
+          AllowVectorExport = True
           Left = 899.528140000000000000
           Top = 2.000000000000000000
           Width = 147.401670000000000000
@@ -1413,6 +1452,7 @@ object TransferListGestionF: TTransferListGestionF
           Font.Height = -9
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Page: [Page]/[TotalPages#]')
@@ -1425,6 +1465,7 @@ object TransferListGestionF: TTransferListGestionF
             end>
         end
         object Memo12: TfrxMemoView
+          AllowVectorExport = True
           Top = 1.380201430000000000
           Width = 35.095635710000000000
           Height = 18.897650000000000000
@@ -1433,12 +1474,14 @@ object TransferListGestionF: TTransferListGestionF
           Font.Height = -9
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Agent :')
           ParentFont = False
           VAlign = vaCenter
         end
         object Agent: TfrxMemoView
+          AllowVectorExport = True
           Left = 31.795300000000000000
           Top = 1.000000000000000000
           Width = 457.323130000000000000
@@ -1448,19 +1491,23 @@ object TransferListGestionF: TTransferListGestionF
           Font.Height = -9
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           ParentFont = False
           VAlign = vaCenter
         end
         object Shape2: TfrxShapeView
+          AllowVectorExport = True
           Width = 1046.929810000000000000
           Height = 2.267716535433070000
           Fill.BackColor = 13948116
           Fill.ForeColor = clNone
           Frame.Color = clNone
+          Frame.Typ = []
         end
       end
       object MasterData1: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 21.236240000000000000
         Top = 188.976500000000000000
         Width = 1046.929810000000000000
@@ -1468,12 +1515,15 @@ object TransferListGestionF: TTransferListGestionF
         DataSetName = 'frxTransferListDB'
         RowCount = 0
         object Shape1: TfrxShapeView
+          AllowVectorExport = True
           Top = 21.236240000000000000
           Width = 1046.929810000000000000
           Fill.BackColor = 13948116
           Frame.Color = 13948116
+          Frame.Typ = []
         end
         object frxBonLivDBnum_bvfac: TfrxMemoView
+          AllowVectorExport = True
           Left = 113.409400000000000000
           Top = 0.779530000000000000
           Width = 85.795241420000000000
@@ -1488,6 +1538,7 @@ object TransferListGestionF: TTransferListGestionF
           Font.Height = -13
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxTransferListDB."date_transfer"]')
@@ -1495,6 +1546,7 @@ object TransferListGestionF: TTransferListGestionF
           VAlign = vaCenter
         end
         object frxBonLivDBclientbvfac: TfrxMemoView
+          AllowVectorExport = True
           Left = 9.102350000000000000
           Top = 0.779530000000000000
           Width = 102.047236770000000000
@@ -1507,12 +1559,14 @@ object TransferListGestionF: TTransferListGestionF
           Font.Height = -13
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxTransferListDB."refer_transfer"]')
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo4: TfrxMemoView
+          AllowVectorExport = True
           Left = 199.905690000000000000
           Top = 0.779530000000000000
           Width = 238.488411100000000000
@@ -1525,6 +1579,7 @@ object TransferListGestionF: TTransferListGestionF
           Font.Height = -13
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxTransferListDB."CompteSource"]')
@@ -1532,6 +1587,7 @@ object TransferListGestionF: TTransferListGestionF
           VAlign = vaCenter
         end
         object Memo16: TfrxMemoView
+          AllowVectorExport = True
           Left = 437.559370000000000000
           Top = 0.938438180000000000
           Width = 238.488188976378000000
@@ -1544,6 +1600,7 @@ object TransferListGestionF: TTransferListGestionF
           Font.Height = -13
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxTransferListDB."CompteDis"]')
@@ -1551,6 +1608,7 @@ object TransferListGestionF: TTransferListGestionF
           VAlign = vaCenter
         end
         object Memo19: TfrxMemoView
+          AllowVectorExport = True
           Left = 676.315400000000000000
           Top = 0.938438180000000000
           Width = 238.488188980000000000
@@ -1563,6 +1621,7 @@ object TransferListGestionF: TTransferListGestionF
           Font.Height = -13
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxTransferListDB."obser_transfer"]')
@@ -1570,6 +1629,7 @@ object TransferListGestionF: TTransferListGestionF
           VAlign = vaCenter
         end
         object Memo7: TfrxMemoView
+          AllowVectorExport = True
           Left = 914.331170000000000000
           Top = 0.938438180000000000
           Width = 132.283488980000000000
@@ -1584,6 +1644,7 @@ object TransferListGestionF: TTransferListGestionF
           Font.Height = -13
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxTransferListDB."mont_transfer"]')
@@ -1593,10 +1654,12 @@ object TransferListGestionF: TTransferListGestionF
       end
       object Footer1: TfrxFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 26.834662760000000000
         Top = 234.330860000000000000
         Width = 1046.929810000000000000
         object Memo20: TfrxMemoView
+          AllowVectorExport = True
           Left = 862.110700000000000000
           Top = 0.377952760000000000
           Width = 90.708720000000000000
@@ -1606,6 +1669,7 @@ object TransferListGestionF: TTransferListGestionF
           Font.Height = -13
           Font.Name = 'Helvetica LT Std'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = 13948116
           HAlign = haRight
           Memo.UTF8W = (
@@ -1614,6 +1678,7 @@ object TransferListGestionF: TTransferListGestionF
           VAlign = vaCenter
         end
         object Memo13: TfrxMemoView
+          AllowVectorExport = True
           Left = 120.346630000000000000
           Width = 117.543285120000000000
           Height = 26.456710000000000000
@@ -1622,12 +1687,14 @@ object TransferListGestionF: TTransferListGestionF
           Font.Height = -9
           Font.Name = 'Helvetica LT Std'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             '[COUNT(MasterData1)]')
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo14: TfrxMemoView
+          AllowVectorExport = True
           Width = 117.165430000000000000
           Height = 26.456710000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -1635,6 +1702,7 @@ object TransferListGestionF: TTransferListGestionF
           Font.Height = -9
           Font.Name = 'Helvetica LT Std'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Number des op'#233'rations :')
@@ -1642,6 +1710,7 @@ object TransferListGestionF: TTransferListGestionF
           VAlign = vaCenter
         end
         object Memo25: TfrxMemoView
+          AllowVectorExport = True
           Left = 952.126470000000000000
           Top = 0.536860940000000000
           Width = 94.488188980000000000
@@ -1653,6 +1722,7 @@ object TransferListGestionF: TTransferListGestionF
           Font.Height = -13
           Font.Name = 'Helvetica LT Std'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = 13948116
           HAlign = haRight
           Memo.UTF8W = (

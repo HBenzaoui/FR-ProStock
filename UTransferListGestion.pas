@@ -8,7 +8,7 @@ uses
   DBGridEhToolCtrls, DynVarsEh, Vcl.Menus, frxExportPDF, frxClass, frxExportXLS,
   frxDBSet, Data.DB, Vcl.ComCtrls, sStatusBar, EhLibVCL, GridsEh, DBAxisGridsEh,
   DBGridEh, Vcl.StdCtrls, Vcl.WinXCtrls, Vcl.Buttons, sSpeedButton, AdvToolBtn,
-  Vcl.ExtCtrls, Vcl.AppEvnts;
+  Vcl.ExtCtrls, Vcl.AppEvnts, frxExportBaseDialog;
 
 type
   TTransferListGestionF = class(TForm)
@@ -99,7 +99,12 @@ begin
 
             TransferComptesGestionF:=TTransferComptesGestionF.Create(TransferListGestionF);
 
-      DataModuleF.Transfer_comptesTable.DisableControls;
+    DataModuleF.Transfer_comptesTable.DisableControls;
+    DataModuleF.Transfer_comptesTable.Active:= False;
+    DataModuleF.Transfer_comptesTable.SQL.clear;
+    DataModuleF.Transfer_comptesTable.sql.Text:='SELECT * FROM transfer_comptes ORDER By code_transfer ';
+    DataModuleF.Transfer_comptesTable.Active:= True;
+
       DataModuleF.Transfer_comptesTable.Last;
       TransferComptesGestionF.NumTransferGEdt.Caption:=
       'TR'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5,((DataModuleF.Transfer_comptesTable.FieldByName('code_transfer').AsInteger) + 1)]);
@@ -114,6 +119,14 @@ begin
             TransferComptesGestionF.OKTransferGBtn.Tag:= 0 ;
             TransferComptesGestionF.Show;
 //            TransferComptesGestionF.NameChargeGEdt.SetFocus;
+
+DataModuleF.Transfer_comptesTable.DisableControls;
+DataModuleF.Transfer_comptesTable.Active:= False;
+DataModuleF.Transfer_comptesTable.SQL.clear;
+DataModuleF.Transfer_comptesTable.sql.Text:='SELECT * FROM transfer_comptes WHERE date_transfer BETWEEN '''+(DateToStr(DateStartTransferD.Date))+ ''' AND ''' +(DateToStr(DateEndTransferD.Date))+'''';
+DataModuleF.Transfer_comptesTable.Active:= True;
+DataModuleF.Transfer_comptesTable.EnableControls;
+
 end;
 
 procedure TTransferListGestionF.TransferListDBGridEhDblClick(Sender: TObject);

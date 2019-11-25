@@ -103,7 +103,7 @@ object TransferComptesGestionF: TTransferComptesGestionF
     ShowHint = True
     Spacing = -1
     OnClick = AddCompte1TransfeGBtnClick
-    Version = '1.6.1.2'
+    Version = '1.6.2.0'
     TMSStyle = 0
   end
   object Label5: TLabel
@@ -197,7 +197,7 @@ object TransferComptesGestionF: TTransferComptesGestionF
     ShowHint = True
     Spacing = -1
     OnClick = AddCompte2TransfeGBtnClick
-    Version = '1.6.1.2'
+    Version = '1.6.2.0'
     TMSStyle = 0
   end
   object OKTransferGBtn: TAdvToolButton
@@ -231,7 +231,7 @@ object TransferComptesGestionF: TTransferComptesGestionF
     ShowHint = True
     Spacing = 10
     OnClick = OKTransferGBtnClick
-    Version = '1.6.1.2'
+    Version = '1.6.2.0'
     ExplicitTop = 462
     TMSStyle = 0
   end
@@ -264,7 +264,7 @@ object TransferComptesGestionF: TTransferComptesGestionF
     ShowHint = True
     Spacing = -1
     OnClick = CancelTransferGBtnClick
-    Version = '1.6.1.2'
+    Version = '1.6.2.0'
     ExplicitTop = 356
     TMSStyle = 0
   end
@@ -341,7 +341,7 @@ object TransferComptesGestionF: TTransferComptesGestionF
   object Label4: TLabel
     Left = 506
     Top = 88
-    Width = 6
+    Width = 7
     Height = 16
     Caption = '*'
     Color = clBtnFace
@@ -357,7 +357,7 @@ object TransferComptesGestionF: TTransferComptesGestionF
   object Label6: TLabel
     Left = 354
     Top = 150
-    Width = 6
+    Width = 7
     Height = 16
     Caption = '*'
     Color = clBtnFace
@@ -373,7 +373,7 @@ object TransferComptesGestionF: TTransferComptesGestionF
   object Label9: TLabel
     Left = 506
     Top = 197
-    Width = 6
+    Width = 7
     Height = 16
     Caption = '*'
     Color = clBtnFace
@@ -431,13 +431,13 @@ object TransferComptesGestionF: TTransferComptesGestionF
     ShowHint = True
     Spacing = -1
     OnClick = AddModePaieRegCGBtnClick
-    Version = '1.6.1.2'
+    Version = '1.6.2.0'
     TMSStyle = 0
   end
   object Label10: TLabel
     Left = 298
     Top = 292
-    Width = 5
+    Width = 6
     Height = 15
     Caption = '*'
     Color = clBtnFace
@@ -633,9 +633,9 @@ object TransferComptesGestionF: TTransferComptesGestionF
     Left = 146
     Top = 365
     Width = 124
-    Height = 27
-    Date = 42565.478213819440000000
-    Time = 42565.478213819440000000
+    Height = 26
+    Date = 42565.000000000000000000
+    Time = 0.478213819442316900
     Font.Charset = DEFAULT_CHARSET
     Font.Color = 4207405
     Font.Height = 19
@@ -678,7 +678,7 @@ object TransferComptesGestionF: TTransferComptesGestionF
     Left = 146
     Top = 81
     Width = 359
-    Height = 27
+    Height = 28
     Ctl3D = True
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -739,7 +739,7 @@ object TransferComptesGestionF: TTransferComptesGestionF
     Left = 146
     Top = 191
     Width = 359
-    Height = 27
+    Height = 28
     Ctl3D = True
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -783,7 +783,7 @@ object TransferComptesGestionF: TTransferComptesGestionF
     Left = 189
     Top = 144
     Width = 164
-    Height = 27
+    Height = 28
     Alignment = taRightJustify
     Enabled = False
     Font.Charset = DEFAULT_CHARSET
@@ -804,7 +804,7 @@ object TransferComptesGestionF: TTransferComptesGestionF
     Left = 369
     Top = 144
     Width = 164
-    Height = 27
+    Height = 28
     Alignment = taRightJustify
     Enabled = False
     Font.Charset = DEFAULT_CHARSET
@@ -897,7 +897,7 @@ object TransferComptesGestionF: TTransferComptesGestionF
     Left = 146
     Top = 285
     Width = 152
-    Height = 27
+    Height = 28
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = 20
@@ -916,7 +916,7 @@ object TransferComptesGestionF: TTransferComptesGestionF
     Left = 146
     Top = 324
     Width = 357
-    Height = 27
+    Height = 28
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = 20

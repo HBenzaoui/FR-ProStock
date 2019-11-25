@@ -232,6 +232,7 @@ begin
          MainForm.local_ur.Checked:= DataModuleF.UsersTable.FieldByName('local_ur').AsBoolean;
          MainForm.totaux_ur.Checked:= DataModuleF.UsersTable.FieldByName('totaux_ur').AsBoolean;
          MainForm.viewprixa_ur.Checked:= DataModuleF.UsersTable.FieldByName('viewprixa_ur').AsBoolean;
+         MainForm.stock_ur.Checked:= DataModuleF.UsersTable.FieldByName('stock_ur').AsBoolean;
 
 //         LoginUserF.Close;
 //         LoginUserF.Close;
