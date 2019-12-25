@@ -47,10 +47,6 @@ object ProduitGestionF: TProduitGestionF
     TabsLineSkin = 'BAR'
     object GeneralClientGTB: TsTabSheet
       Caption = 'G'#233'n'#233'ral'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object GeneralTB: TPanel
         Left = 0
         Top = 0
@@ -132,7 +128,7 @@ object ProduitGestionF: TProduitGestionF
         object RequiredStarProduitGLbl: TLabel
           Left = 629
           Top = 64
-          Width = 9
+          Width = 8
           Height = 22
           Caption = '*'
           Color = clBtnFace
@@ -282,7 +278,7 @@ object ProduitGestionF: TProduitGestionF
         object AlertJoursProduitLbl2: TLabel
           Left = 608
           Top = 200
-          Width = 37
+          Width = 31
           Height = 15
           Caption = 'Jours'
           Color = clBtnFace
@@ -475,7 +471,7 @@ object ProduitGestionF: TProduitGestionF
         object Label20: TLabel
           Left = 633
           Top = 312
-          Width = 12
+          Width = 11
           Height = 18
           Caption = '%'
           Color = clBtnFace
@@ -491,7 +487,7 @@ object ProduitGestionF: TProduitGestionF
         object Label21: TLabel
           Left = 633
           Top = 344
-          Width = 12
+          Width = 11
           Height = 18
           Caption = '%'
           Color = clBtnFace
@@ -507,7 +503,7 @@ object ProduitGestionF: TProduitGestionF
         object Label22: TLabel
           Left = 633
           Top = 377
-          Width = 12
+          Width = 11
           Height = 18
           Caption = '%'
           Color = clBtnFace
@@ -523,7 +519,7 @@ object ProduitGestionF: TProduitGestionF
         object Label23: TLabel
           Left = 633
           Top = 408
-          Width = 12
+          Width = 11
           Height = 18
           Caption = '%'
           Color = clBtnFace
@@ -539,7 +535,7 @@ object ProduitGestionF: TProduitGestionF
         object Label24: TLabel
           Left = 633
           Top = 440
-          Width = 12
+          Width = 11
           Height = 18
           Caption = '%'
           Color = clBtnFace
@@ -619,7 +615,7 @@ object ProduitGestionF: TProduitGestionF
         object Label29: TLabel
           Left = 341
           Top = 156
-          Width = 12
+          Width = 11
           Height = 18
           Caption = '%'
           Color = clBtnFace
@@ -1690,10 +1686,6 @@ object ProduitGestionF: TProduitGestionF
     end
     object PlusInfoClientGTB: TsTabSheet
       Caption = 'Plus D'#39'info'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object PlusInfoTB: TPanel
         Left = 0
         Top = 0

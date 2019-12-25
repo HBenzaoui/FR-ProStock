@@ -810,7 +810,8 @@ begin
         MainForm.ProduitTable.EnableControls;
         //--- this is to pervet adding dublicate produit when editing adn creatin codebare
        if NOT (Assigned(BonCtrGestionF)) AND NOT (Assigned(BonLivGestionF)) AND NOT (Assigned(BonFacVGestionF))
-          AND NOT (Assigned(BonRecGestionF)) AND NOT (Assigned(BonFacAGestionF)) AND NOT (Assigned(PertesGestionF)) AND NOT (Assigned(InventoryGestionF))  then
+          AND NOT (Assigned(BonRecGestionF)) AND NOT (Assigned(BonFacAGestionF)) AND NOT (Assigned(PertesGestionF))
+          AND NOT (Assigned(InventoryGestionF)) AND NOT (Assigned(BonComAGestionF))  then
         begin
         if (PAdded = False) AND (ProduitsListF.CodePToUseOut <> 0 )  then
         begin
@@ -843,7 +844,7 @@ begin
           
    if NOT (Assigned(BonCtrGestionF)) AND NOT (Assigned(BonLivGestionF)) AND NOT (Assigned(BonFacVGestionF))  /// To make sure access voltation wont show
       AND NOT (Assigned(BonRecGestionF)) AND NOT (Assigned(BonFacAGestionF)) AND NOT (Assigned(PertesGestionF))
-      AND NOT (Assigned(InventoryGestionF))    then   /// where we are in bons not produit list
+      AND NOT (Assigned(InventoryGestionF)) AND NOT (Assigned(BonComAGestionF))    then   /// where we are in bons not produit list
     begin
     ProduitsListF.CodePToUseOut:= 0;
     end;

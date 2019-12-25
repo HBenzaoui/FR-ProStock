@@ -1,16 +1,16 @@
-0~ valider_bvliv~ VA~ 24~ -1
-1~ num_bvliv~ N° du bon~ 100~ -1
-2~ date_bvliv~ Date~ 100~ -1
-3~ time_bvliv~ Heure~ 100~ -1
-4~ clientbvliv~ Client~ 300~ -1
-5~ code_mdpai~ MP~ 28~ -1
-6~ montht_bvliv~ Montant HT~ 150~ -1
-7~ remise_bvliv~ Remise HT~ 150~ -1
-8~ netht~ Net â Payer HT~ 150~ -1
-9~ montanttva~ Montant TVA~ 150~ -1
-10~ montttc_bvliv~ Montant TTC~ 150~ -1
-11~ montver_bvliv~ Montant Versé~ 150~ -1
-12~ montantres~ Montant Resté~ 150~ -1
+0~ valider_bvliv~ VA~ 36~ -1
+1~ num_bvliv~ N° du bon~ 150~ -1
+2~ date_bvliv~ Date~ 150~ -1
+3~ time_bvliv~ Heure~ 150~ -1
+4~ clientbvliv~ Client~ 450~ -1
+5~ code_mdpai~ MP~ 42~ -1
+6~ montht_bvliv~ Montant HT~ 225~ -1
+7~ remise_bvliv~ Remise HT~ 225~ -1
+8~ netht~ Net â Payer HT~ 225~ -1
+9~ montanttva~ Montant TVA~ 225~ -1
+10~ montttc_bvliv~ Montant TTC~ 225~ -1
+11~ montver_bvliv~ Montant Versé~ 225~ -1
+12~ montantres~ Montant Resté~ 225~ -1
 13~ montaht_bvliv~ Montant A HT~ 0~ 0
-14~ marge_bvliv~ Marge~ 150~ -1
-15~ Agent~ Agent~ 150~ -1
+14~ marge_bvliv~ Marge~ 225~ -1
+15~ Agent~ Agent~ 225~ -1

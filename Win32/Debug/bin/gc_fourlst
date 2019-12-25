@@ -1,21 +1,21 @@
 0~ activ_f~  ~ 16~ -1
-1~ code_f~ N°~ 70~ -1
-2~ nom_f~ Nom du Fournisseur~ 400~ -1
-3~ credit_f~ Credit~ 130~ -1
-4~ fix_f~ Téléphone~ 130~ -1
-5~ mob_f~ Mobile~ 130~ -1
-6~ mob2_f~ Mobile 2~ 130~ -1
-7~ fax_f~ Fax~ 130~ -1
-8~ adr_f~ Adresse~ 130~ -1
-9~ ville_f~ Ville~ 130~ -1
-10~ willaya_f~ Willaya~ 130~ -1
-11~ email_f~ Email~ 130~ -1
-12~ siteweb_c~ Site Web~ 130~ -1
-13~ rc_f~ R.C~ 130~ -1
-14~ nif_f~ N.I.F~ 130~ -1
-15~ nart_f~ N° ART~ 130~ -1
-16~ nis_f~ N.I.S~ 130~ -1
-17~ nbank_f~ Compte Bancaire~ 130~ -1
-18~ rib_f~ R.I.B~ 130~ -1
-19~ oldcredit_f~ Ancien Crédit~ 130~ 0
-20~ maxcredit_f~ Max Crédit~ 130~ -1
+1~ code_f~ N°~ 105~ -1
+2~ nom_f~ Nom du Fournisseur~ 600~ -1
+3~ credit_f~ Credit~ 195~ -1
+4~ fix_f~ Téléphone~ 195~ -1
+5~ mob_f~ Mobile~ 195~ -1
+6~ mob2_f~ Mobile 2~ 195~ -1
+7~ fax_f~ Fax~ 195~ -1
+8~ adr_f~ Adresse~ 195~ -1
+9~ ville_f~ Ville~ 195~ -1
+10~ willaya_f~ Willaya~ 195~ -1
+11~ email_f~ Email~ 195~ -1
+12~ siteweb_c~ Site Web~ 195~ -1
+13~ rc_f~ R.C~ 195~ -1
+14~ nif_f~ N.I.F~ 195~ -1
+15~ nart_f~ N° ART~ 195~ -1
+16~ nis_f~ N.I.S~ 195~ -1
+17~ nbank_f~ Compte Bancaire~ 195~ -1
+18~ rib_f~ R.I.B~ 195~ -1
+19~ oldcredit_f~ Ancien Crédit~ 195~ 0
+20~ maxcredit_f~ Max Crédit~ 195~ -1

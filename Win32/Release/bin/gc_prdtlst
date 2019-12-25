@@ -7,9 +7,9 @@
 6~ prixattc~ PrixATTC~ 0~ 0
 7~ valuestock~ Valeur de Stock~ 130~ 0
 8~ prixvd_p~ PrixVHT Détail~ 130~ -1
-9~ prixvttcd~ PrixVTTC Détail~ 130~ -1
-10~ prixvr_p~ PrixVHT Rev~ 130~ -1
-11~ prixvttcr~ PrixVTTC Rev~ 130~ -1
+9~ prixvttcd~ PrixVTTC Détail~ 130~ 0
+10~ prixvr_p~ PrixVHT Rev~ 130~ 0
+11~ prixvttcr~ PrixVTTC Rev~ 130~ 0
 12~ prixvg_p~ PrixVHT Gros~ 130~ -1
 13~ prixvttcg~ PrixVTTC Gros~ 130~ -1
 14~ prixva_p~ PrixVHT Autre 1~ 130~ 0
