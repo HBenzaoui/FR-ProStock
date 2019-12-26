@@ -216,7 +216,7 @@ object FSplashVersement: TFSplashVersement
   object RequiredStarVerVersementSLbl: TLabel
     Left = 294
     Top = 254
-    Width = 9
+    Width = 8
     Height = 22
     Anchors = [akLeft, akBottom]
     Caption = '*'

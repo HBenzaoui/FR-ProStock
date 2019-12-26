@@ -825,6 +825,10 @@ begin
 
   end;
 
+
+  VerVersementSEdt.SetFocus;
+  VerVersementSEdt.SelectAll;
+
 end;
 
 procedure TFSplashVersement.FormKeyPress(Sender: TObject; var Key: Char);
@@ -2508,7 +2512,7 @@ begin
             MainForm.RegfournisseurTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
             MainForm.RegfournisseurTable.FieldValues['obser_rf']:= BonComAGestionF.ObserBonComGMem.Text;
             MainForm.RegfournisseurTable.FieldValues['num_cheque_rf']:= BonComAGestionF.NChequeBonComGCbx.Text;
-            MainForm.RegfournisseurTable.FieldValues['bon_or_no_rf']:= 4;
+            MainForm.RegfournisseurTable.FieldValues['bon_or_no_rf']:= 5;
             MainForm.RegfournisseurTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
 
             MainForm.RegfournisseurTable.FieldByName('montver_rf').AsCurrency:=StrToCurr(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll]));
@@ -2554,7 +2558,7 @@ begin
                   MainForm.RegfournisseurTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
                   MainForm.RegfournisseurTable.FieldValues['obser_rf']:= BonComAGestionF.ObserBonComGMem.Text;
                   MainForm.RegfournisseurTable.FieldValues['num_cheque_rf']:= BonComAGestionF.NChequeBonComGCbx.Text;
-                  MainForm.RegfournisseurTable.FieldValues['bon_or_no_rf']:= 4;
+                  MainForm.RegfournisseurTable.FieldValues['bon_or_no_rf']:= 5;
                   MainForm.RegfournisseurTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
 
                   MainForm.RegfournisseurTable.FieldByName('montver_rf').AsCurrency:=StrToCurr(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll]));
@@ -2607,7 +2611,7 @@ begin
                             MainForm.RegfournisseurTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
                             MainForm.RegfournisseurTable.FieldValues['obser_rf']:= BonComAGestionF.ObserBonComGMem.Text;
                             MainForm.RegfournisseurTable.FieldValues['num_cheque_rf']:= BonComAGestionF.NChequeBonComGCbx.Text;
-                            MainForm.RegfournisseurTable.FieldValues['bon_or_no_rf']:= 4;
+                            MainForm.RegfournisseurTable.FieldValues['bon_or_no_rf']:= 5;
                             MainForm.RegfournisseurTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
 
                             MainForm.RegfournisseurTable.FieldByName('montver_rf').AsCurrency:=StrToCurr(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll]));
