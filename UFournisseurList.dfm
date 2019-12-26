@@ -1066,7 +1066,7 @@ object FournisseurListF: TFournisseurListF
     object ResearchFournisseursLbl: TLabel
       Left = 1
       Top = 28
-      Width = 74
+      Width = 76
       Height = 16
       Caption = 'Rechercher'
       Color = 15722984
