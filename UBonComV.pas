@@ -151,7 +151,7 @@ type
     { Private declarations }
   public
     { Public declarations }
-    const BLSQL= 'SELECT *, '
+    const BCVSQL= 'SELECT *, '
     +'   ((montttc_bvcom)-(montht_bvcom - remise_bvcom)) AS MontantTVA,  '
     +'   (montttc_bvcom - montver_bvcom) AS MontantRes, '
     +'  CASE '
@@ -177,168 +177,168 @@ uses
 
 procedure TBonComVF.Select_ALL;
 begin
-MainForm.Bonv_comTable.DisableControls;
-MainForm.Bonv_comTable.Active:= False;
-MainForm.Bonv_comTable.SQL.clear;
-mainform.Bonv_comTable.sql.Text:= BLSQL +' WHERE date_bvcom BETWEEN '''+(DateToStr(DateStartBVComD.Date))+ ''' AND ''' +(DateToStr(DateEndBVComD.Date))+'''';
-MainForm.Bonv_comTable.Active:= True;
-MainForm.Bonv_comTable.EnableControls;
+DataModuleF.Bonv_comTable.DisableControls;
+DataModuleF.Bonv_comTable.Active:= False;
+DataModuleF.Bonv_comTable.SQL.clear;
+DataModuleF.Bonv_comTable.sql.Text:= BCVSQL +' WHERE date_bvcom BETWEEN '''+(DateToStr(DateStartBVComD.Date))+ ''' AND ''' +(DateToStr(DateEndBVComD.Date))+'''';
+DataModuleF.Bonv_comTable.Active:= True;
+DataModuleF.Bonv_comTable.EnableControls;
 end;
 
 procedure TBonComVF.Select_Valid;
 begin
-MainForm.Bonv_comTable.DisableControls;
-MainForm.Bonv_comTable.Active:= False;
-MainForm.Bonv_comTable.SQL.clear;
-mainform.Bonv_comTable.sql.Text:= BLSQL +' WHERE valider_bvcom = true AND date_bvcom BETWEEN '''+(DateToStr(DateStartBVComD.Date))+ ''' AND ''' +(DateToStr(DateEndBVComD.Date))+'''';
-MainForm.Bonv_comTable.Active:= True;
-MainForm.Bonv_comTable.EnableControls;
+DataModuleF.Bonv_comTable.DisableControls;
+DataModuleF.Bonv_comTable.Active:= False;
+DataModuleF.Bonv_comTable.SQL.clear;
+DataModuleF.Bonv_comTable.sql.Text:= BCVSQL +' WHERE valider_bvcom = true AND date_bvcom BETWEEN '''+(DateToStr(DateStartBVComD.Date))+ ''' AND ''' +(DateToStr(DateEndBVComD.Date))+'''';
+DataModuleF.Bonv_comTable.Active:= True;
+DataModuleF.Bonv_comTable.EnableControls;
 end;
 
 procedure TBonComVF.Select_NOT_Valid;
 begin
-MainForm.Bonv_comTable.DisableControls;
-MainForm.Bonv_comTable.Active:= False;
-MainForm.Bonv_comTable.SQL.clear;
-mainform.Bonv_comTable.sql.Text:= BLSQL +' WHERE valider_bvcom = false AND date_bvcom BETWEEN '''+(DateToStr(DateStartBVComD.Date))+ ''' AND ''' +(DateToStr(DateEndBVComD.Date))+'''';
-MainForm.Bonv_comTable.Active:= True;
-MainForm.Bonv_comTable.EnableControls;
+DataModuleF.Bonv_comTable.DisableControls;
+DataModuleF.Bonv_comTable.Active:= False;
+DataModuleF.Bonv_comTable.SQL.clear;
+DataModuleF.Bonv_comTable.sql.Text:= BCVSQL +' WHERE valider_bvcom = false AND date_bvcom BETWEEN '''+(DateToStr(DateStartBVComD.Date))+ ''' AND ''' +(DateToStr(DateEndBVComD.Date))+'''';
+DataModuleF.Bonv_comTable.Active:= True;
+DataModuleF.Bonv_comTable.EnableControls;
 end;
 
 procedure TBonComVF.Select_Escpace;
 begin
-MainForm.Bonv_comTable.DisableControls;
-MainForm.Bonv_comTable.Active:= False;
-MainForm.Bonv_comTable.SQL.clear;
-mainform.Bonv_comTable.sql.Text:= BLSQL +' WHERE code_mdpai = 1 AND date_bvcom BETWEEN '''+(DateToStr(DateStartBVComD.Date))+ ''' AND ''' +(DateToStr(DateEndBVComD.Date))+'''';
-MainForm.Bonv_comTable.Active:= True;
-MainForm.Bonv_comTable.EnableControls;
+DataModuleF.Bonv_comTable.DisableControls;
+DataModuleF.Bonv_comTable.Active:= False;
+DataModuleF.Bonv_comTable.SQL.clear;
+DataModuleF.Bonv_comTable.sql.Text:= BCVSQL +' WHERE code_mdpai = 1 AND date_bvcom BETWEEN '''+(DateToStr(DateStartBVComD.Date))+ ''' AND ''' +(DateToStr(DateEndBVComD.Date))+'''';
+DataModuleF.Bonv_comTable.Active:= True;
+DataModuleF.Bonv_comTable.EnableControls;
 end;
 
 procedure TBonComVF.Select_Cheque;
 begin
-MainForm.Bonv_comTable.DisableControls;
-MainForm.Bonv_comTable.Active:= False;
-MainForm.Bonv_comTable.SQL.clear;
-mainform.Bonv_comTable.sql.Text:= BLSQL +' WHERE code_mdpai = 2 AND date_bvcom BETWEEN '''+(DateToStr(DateStartBVComD.Date))+ ''' AND ''' +(DateToStr(DateEndBVComD.Date))+'''';
-MainForm.Bonv_comTable.Active:= True;
-MainForm.Bonv_comTable.EnableControls;
+DataModuleF.Bonv_comTable.DisableControls;
+DataModuleF.Bonv_comTable.Active:= False;
+DataModuleF.Bonv_comTable.SQL.clear;
+DataModuleF.Bonv_comTable.sql.Text:= BCVSQL +' WHERE code_mdpai = 2 AND date_bvcom BETWEEN '''+(DateToStr(DateStartBVComD.Date))+ ''' AND ''' +(DateToStr(DateEndBVComD.Date))+'''';
+DataModuleF.Bonv_comTable.Active:= True;
+DataModuleF.Bonv_comTable.EnableControls;
 end;
 
 procedure TBonComVF.Select_ATerme;
 begin
-MainForm.Bonv_comTable.DisableControls;
-MainForm.Bonv_comTable.Active:= False;
-MainForm.Bonv_comTable.SQL.clear;
-mainform.Bonv_comTable.sql.Text:= BLSQL +' WHERE code_mdpai = 3 AND date_bvcom BETWEEN '''+(DateToStr(DateStartBVComD.Date))+ ''' AND ''' +(DateToStr(DateEndBVComD.Date))+'''';
-MainForm.Bonv_comTable.Active:= True;
-MainForm.Bonv_comTable.EnableControls;
+DataModuleF.Bonv_comTable.DisableControls;
+DataModuleF.Bonv_comTable.Active:= False;
+DataModuleF.Bonv_comTable.SQL.clear;
+DataModuleF.Bonv_comTable.sql.Text:= BCVSQL +' WHERE code_mdpai = 3 AND date_bvcom BETWEEN '''+(DateToStr(DateStartBVComD.Date))+ ''' AND ''' +(DateToStr(DateEndBVComD.Date))+'''';
+DataModuleF.Bonv_comTable.Active:= True;
+DataModuleF.Bonv_comTable.EnableControls;
 end;
 
 procedure TBonComVF.Select_Virment;
 begin
-MainForm.Bonv_comTable.DisableControls;
-MainForm.Bonv_comTable.Active:= False;
-MainForm.Bonv_comTable.SQL.clear;
-mainform.Bonv_comTable.sql.Text:= BLSQL +' WHERE code_mdpai = 4 AND date_bvcom BETWEEN '''+(DateToStr(DateStartBVComD.Date))+ ''' AND ''' +(DateToStr(DateEndBVComD.Date))+'''';
-MainForm.Bonv_comTable.Active:= True;
-MainForm.Bonv_comTable.EnableControls;
+DataModuleF.Bonv_comTable.DisableControls;
+DataModuleF.Bonv_comTable.Active:= False;
+DataModuleF.Bonv_comTable.SQL.clear;
+DataModuleF.Bonv_comTable.sql.Text:= BCVSQL +' WHERE code_mdpai = 4 AND date_bvcom BETWEEN '''+(DateToStr(DateStartBVComD.Date))+ ''' AND ''' +(DateToStr(DateEndBVComD.Date))+'''';
+DataModuleF.Bonv_comTable.Active:= True;
+DataModuleF.Bonv_comTable.EnableControls;
 end;
 
 procedure TBonComVF.Select_Valid_Escpace;
 begin
-MainForm.Bonv_comTable.DisableControls;
-MainForm.Bonv_comTable.Active:= False;
-MainForm.Bonv_comTable.SQL.clear;
-mainform.Bonv_comTable.sql.Text:= BLSQL +' WHERE valider_bvcom = true AND code_mdpai = 1 AND date_bvcom BETWEEN '''+(DateToStr(DateStartBVComD.Date))+ ''' AND ''' +(DateToStr(DateEndBVComD.Date))+'''';
-MainForm.Bonv_comTable.Active:= True;
-MainForm.Bonv_comTable.EnableControls;
+DataModuleF.Bonv_comTable.DisableControls;
+DataModuleF.Bonv_comTable.Active:= False;
+DataModuleF.Bonv_comTable.SQL.clear;
+DataModuleF.Bonv_comTable.sql.Text:= BCVSQL +' WHERE valider_bvcom = true AND code_mdpai = 1 AND date_bvcom BETWEEN '''+(DateToStr(DateStartBVComD.Date))+ ''' AND ''' +(DateToStr(DateEndBVComD.Date))+'''';
+DataModuleF.Bonv_comTable.Active:= True;
+DataModuleF.Bonv_comTable.EnableControls;
 end;
 
 procedure TBonComVF.Select_Valid_Cheque;
 begin
-MainForm.Bonv_comTable.DisableControls;
-MainForm.Bonv_comTable.Active:= False;
-MainForm.Bonv_comTable.SQL.clear;
-mainform.Bonv_comTable.sql.Text:= BLSQL +' WHERE valider_bvcom = true AND code_mdpai = 2 AND date_bvcom BETWEEN '''+(DateToStr(DateStartBVComD.Date))+ ''' AND ''' +(DateToStr(DateEndBVComD.Date))+'''';
-MainForm.Bonv_comTable.Active:= True;
-MainForm.Bonv_comTable.EnableControls;
+DataModuleF.Bonv_comTable.DisableControls;
+DataModuleF.Bonv_comTable.Active:= False;
+DataModuleF.Bonv_comTable.SQL.clear;
+DataModuleF.Bonv_comTable.sql.Text:= BCVSQL +' WHERE valider_bvcom = true AND code_mdpai = 2 AND date_bvcom BETWEEN '''+(DateToStr(DateStartBVComD.Date))+ ''' AND ''' +(DateToStr(DateEndBVComD.Date))+'''';
+DataModuleF.Bonv_comTable.Active:= True;
+DataModuleF.Bonv_comTable.EnableControls;
 end;
 
 procedure TBonComVF.Select_Valid_ATerme;
 begin
-MainForm.Bonv_comTable.DisableControls;
-MainForm.Bonv_comTable.Active:= False;
-MainForm.Bonv_comTable.SQL.clear;
-mainform.Bonv_comTable.sql.Text:= BLSQL +' WHERE valider_bvcom = true AND code_mdpai = 3 AND date_bvcom BETWEEN '''+(DateToStr(DateStartBVComD.Date))+ ''' AND ''' +(DateToStr(DateEndBVComD.Date))+'''';
-MainForm.Bonv_comTable.Active:= True;
-MainForm.Bonv_comTable.EnableControls;
+DataModuleF.Bonv_comTable.DisableControls;
+DataModuleF.Bonv_comTable.Active:= False;
+DataModuleF.Bonv_comTable.SQL.clear;
+DataModuleF.Bonv_comTable.sql.Text:= BCVSQL +' WHERE valider_bvcom = true AND code_mdpai = 3 AND date_bvcom BETWEEN '''+(DateToStr(DateStartBVComD.Date))+ ''' AND ''' +(DateToStr(DateEndBVComD.Date))+'''';
+DataModuleF.Bonv_comTable.Active:= True;
+DataModuleF.Bonv_comTable.EnableControls;
 end;
 
 procedure TBonComVF.Select_Valid_Virment;
 begin
-MainForm.Bonv_comTable.DisableControls;
-MainForm.Bonv_comTable.Active:= False;
-MainForm.Bonv_comTable.SQL.clear;
-mainform.Bonv_comTable.sql.Text:= BLSQL +' WHERE valider_bvcom = true AND code_mdpai = 4 AND date_bvcom BETWEEN '''+(DateToStr(DateStartBVComD.Date))+ ''' AND ''' +(DateToStr(DateEndBVComD.Date))+'''';
-MainForm.Bonv_comTable.Active:= True;
-MainForm.Bonv_comTable.EnableControls;
+DataModuleF.Bonv_comTable.DisableControls;
+DataModuleF.Bonv_comTable.Active:= False;
+DataModuleF.Bonv_comTable.SQL.clear;
+DataModuleF.Bonv_comTable.sql.Text:= BCVSQL +' WHERE valider_bvcom = true AND code_mdpai = 4 AND date_bvcom BETWEEN '''+(DateToStr(DateStartBVComD.Date))+ ''' AND ''' +(DateToStr(DateEndBVComD.Date))+'''';
+DataModuleF.Bonv_comTable.Active:= True;
+DataModuleF.Bonv_comTable.EnableControls;
 end;
 
 procedure TBonComVF.Select_NOT_Valid_Escpace;
 begin
-MainForm.Bonv_comTable.DisableControls;
-MainForm.Bonv_comTable.Active:= False;
-MainForm.Bonv_comTable.SQL.clear;
-mainform.Bonv_comTable.sql.Text:= BLSQL +' WHERE valider_bvcom = false AND code_mdpai = 1';
-MainForm.Bonv_comTable.Active:= True;
-MainForm.Bonv_comTable.EnableControls;
+DataModuleF.Bonv_comTable.DisableControls;
+DataModuleF.Bonv_comTable.Active:= False;
+DataModuleF.Bonv_comTable.SQL.clear;
+DataModuleF.Bonv_comTable.sql.Text:= BCVSQL +' WHERE valider_bvcom = false AND code_mdpai = 1';
+DataModuleF.Bonv_comTable.Active:= True;
+DataModuleF.Bonv_comTable.EnableControls;
 end;
 
 procedure TBonComVF.Select_NOT_Valid_Cheque;
 begin
-MainForm.Bonv_comTable.DisableControls;
-MainForm.Bonv_comTable.Active:= False;
-MainForm.Bonv_comTable.SQL.clear;
-mainform.Bonv_comTable.sql.Text:= BLSQL +' WHERE valider_bvcom = false AND code_mdpai = 2 AND date_bvcom BETWEEN '''+(DateToStr(DateStartBVComD.Date))+ ''' AND ''' +(DateToStr(DateEndBVComD.Date))+'''';
-MainForm.Bonv_comTable.Active:= True;
-MainForm.Bonv_comTable.EnableControls;
+DataModuleF.Bonv_comTable.DisableControls;
+DataModuleF.Bonv_comTable.Active:= False;
+DataModuleF.Bonv_comTable.SQL.clear;
+DataModuleF.Bonv_comTable.sql.Text:= BCVSQL +' WHERE valider_bvcom = false AND code_mdpai = 2 AND date_bvcom BETWEEN '''+(DateToStr(DateStartBVComD.Date))+ ''' AND ''' +(DateToStr(DateEndBVComD.Date))+'''';
+DataModuleF.Bonv_comTable.Active:= True;
+DataModuleF.Bonv_comTable.EnableControls;
 end;
 
 procedure TBonComVF.Select_NOT_Valid_ATerme;
 begin
-MainForm.Bonv_comTable.DisableControls;
-MainForm.Bonv_comTable.Active:= False;
-MainForm.Bonv_comTable.SQL.clear;
-mainform.Bonv_comTable.sql.Text:= BLSQL +' WHERE valider_bvcom = false AND code_mdpai = 3 AND date_bvcom BETWEEN '''+(DateToStr(DateStartBVComD.Date))+ ''' AND ''' +(DateToStr(DateEndBVComD.Date))+'''';
-MainForm.Bonv_comTable.Active:= True;
-MainForm.Bonv_comTable.EnableControls;
+DataModuleF.Bonv_comTable.DisableControls;
+DataModuleF.Bonv_comTable.Active:= False;
+DataModuleF.Bonv_comTable.SQL.clear;
+DataModuleF.Bonv_comTable.sql.Text:= BCVSQL +' WHERE valider_bvcom = false AND code_mdpai = 3 AND date_bvcom BETWEEN '''+(DateToStr(DateStartBVComD.Date))+ ''' AND ''' +(DateToStr(DateEndBVComD.Date))+'''';
+DataModuleF.Bonv_comTable.Active:= True;
+DataModuleF.Bonv_comTable.EnableControls;
 end;
 
 procedure TBonComVF.Select_NOT_Valid_Virment;
 begin
-MainForm.Bonv_comTable.DisableControls;
-MainForm.Bonv_comTable.Active:= False;
-MainForm.Bonv_comTable.SQL.clear;
-mainform.Bonv_comTable.sql.Text:= BLSQL +' WHERE valider_bvcom = false AND code_mdpai = 4 AND date_bvcom BETWEEN '''+(DateToStr(DateStartBVComD.Date))+ ''' AND ''' +(DateToStr(DateEndBVComD.Date))+'''';
-MainForm.Bonv_comTable.Active:= True;
-MainForm.Bonv_comTable.EnableControls;
+DataModuleF.Bonv_comTable.DisableControls;
+DataModuleF.Bonv_comTable.Active:= False;
+DataModuleF.Bonv_comTable.SQL.clear;
+DataModuleF.Bonv_comTable.sql.Text:= BCVSQL +' WHERE valider_bvcom = false AND code_mdpai = 4 AND date_bvcom BETWEEN '''+(DateToStr(DateStartBVComD.Date))+ ''' AND ''' +(DateToStr(DateEndBVComD.Date))+'''';
+DataModuleF.Bonv_comTable.Active:= True;
+DataModuleF.Bonv_comTable.EnableControls;
 end;
 
 procedure TBonComVF.Select_Regle;
 begin
-  MainForm.Bonv_comTable.Filtered := False;
-  MainForm.Bonv_comTable.Filter:='MontantRes <= 0 ';
-  MainForm.Bonv_comTable.Filtered:=True;
-  MainForm.Bonv_comTable.First;
+  DataModuleF.Bonv_comTable.Filtered := False;
+  DataModuleF.Bonv_comTable.Filter:='MontantRes <= 0 ';
+  DataModuleF.Bonv_comTable.Filtered:=True;
+  DataModuleF.Bonv_comTable.First;
 end;
 
 procedure TBonComVF.Select_NOT_Regle;
 begin
-  MainForm.Bonv_comTable.Filtered := False;
-  MainForm.Bonv_comTable.Filter:='MontantRes > 0 ';
-  MainForm.Bonv_comTable.Filtered:=True;
-  MainForm.Bonv_comTable.First;
+  DataModuleF.Bonv_comTable.Filtered := False;
+  DataModuleF.Bonv_comTable.Filter:='MontantRes > 0 ';
+  DataModuleF.Bonv_comTable.Filtered:=True;
+  DataModuleF.Bonv_comTable.First;
 end;
 
 procedure TBonComVF.FilteredColor;
@@ -358,14 +358,14 @@ end;
 
 procedure TBonComVF.RefreshGirdBtnClick(Sender: TObject);
 begin
-MainForm.Bonv_comTable.Close;
-MainForm.Bonv_comTable.Open;
+DataModuleF.Bonv_comTable.Close;
+DataModuleF.Bonv_comTable.Open;
 end;
 
 procedure TBonComVF.RegleFilterBVComPMenuClick(Sender: TObject);
 begin
  FilterBVComBtn.ImageIndex:=50;
- MainForm.Bonv_comTable.Filtered:= False;
+ DataModuleF.Bonv_comTable.Filtered:= False;
  Select_Valid;
  Select_Regle;
  sImage1.ImageIndex:=3;
@@ -410,23 +410,23 @@ begin
 
           if ResherchBVlClientRdioBtn.Checked then
           begin
-          MainForm.Bonv_comTable.DisableControls;
-          MainForm.Bonv_comTable.Active:=False;
-          MainForm.Bonv_comTable.SQL.Clear;
-          MainForm.Bonv_comTable.SQL.Text:= BLSQL +' WHERE code_c IN( SELECT code_c FROM client WHERE LOWER(nom_c) LIKE LOWER' +'('''+'%'+(ResearchBVComEdt.Text)+'%'+''')' +')';
-          MainForm.Bonv_comTable.Active:=True;
-          MainForm.Bonv_comTable.EnableControls;
+          DataModuleF.Bonv_comTable.DisableControls;
+          DataModuleF.Bonv_comTable.Active:=False;
+          DataModuleF.Bonv_comTable.SQL.Clear;
+          DataModuleF.Bonv_comTable.SQL.Text:= BCVSQL +' WHERE code_c IN( SELECT code_c FROM client WHERE LOWER(nom_c) LIKE LOWER' +'('''+'%'+(ResearchBVComEdt.Text)+'%'+''')' +')';
+          DataModuleF.Bonv_comTable.Active:=True;
+          DataModuleF.Bonv_comTable.EnableControls;
 
           end;
 
           if ResherchBVLNumBRdioBtn.Checked then
           begin
-          MainForm.Bonv_comTable.DisableControls;
-          MainForm.Bonv_comTable.Active:=False;
-          MainForm.Bonv_comTable.SQL.Clear;
-          MainForm.Bonv_comTable.SQL.Text:= BLSQL +' WHERE LOWER(num_bvcom) LIKE LOWER' +'('''+'%'+(ResearchBVComEdt.Text)+'%'+''')' ;
-          MainForm.Bonv_comTable.Active:=True;
-          MainForm.Bonv_comTable.EnableControls;
+          DataModuleF.Bonv_comTable.DisableControls;
+          DataModuleF.Bonv_comTable.Active:=False;
+          DataModuleF.Bonv_comTable.SQL.Clear;
+          DataModuleF.Bonv_comTable.SQL.Text:= BCVSQL +' WHERE LOWER(num_bvcom) LIKE LOWER' +'('''+'%'+(ResearchBVComEdt.Text)+'%'+''')' ;
+          DataModuleF.Bonv_comTable.Active:=True;
+          DataModuleF.Bonv_comTable.EnableControls;
           end;
 
 
@@ -439,12 +439,12 @@ begin
           MainForm.ClientTable.Active:=True;
           MainForm.ClientTable.EnableControls;
 
-          MainForm.Bonv_comTable.DisableControls;
-          MainForm.Bonv_comTable.Active:=False;
-          MainForm.Bonv_comTable.SQL.Clear;
-          MainForm.Bonv_comTable.SQL.Text:= BLSQL ;
-          MainForm.Bonv_comTable.Active:=True;
-          MainForm.Bonv_comTable.EnableControls;
+          DataModuleF.Bonv_comTable.DisableControls;
+          DataModuleF.Bonv_comTable.Active:=False;
+          DataModuleF.Bonv_comTable.SQL.Clear;
+          DataModuleF.Bonv_comTable.SQL.Text:= BCVSQL ;
+          DataModuleF.Bonv_comTable.Active:=True;
+          DataModuleF.Bonv_comTable.EnableControls;
 
      end;
 end;
@@ -455,14 +455,14 @@ begin
     if key = VK_DOWN then
   begin
 //   key := #0;
-     MainForm.Bonv_comTable.Next;
+     DataModuleF.Bonv_comTable.Next;
   end;
 
 
     if key = VK_UP then
   begin
 //   key := #0;
-     MainForm.Bonv_comTable.Prior;
+     DataModuleF.Bonv_comTable.Prior;
   end;
 end;
 
@@ -490,23 +490,23 @@ begin
 
           if ResherchBVlClientRdioBtn.Checked then
           begin
-          MainForm.Bonv_comTable.DisableControls;
-          MainForm.Bonv_comTable.Active:=False;
-          MainForm.Bonv_comTable.SQL.Clear;
-          MainForm.Bonv_comTable.SQL.Text:= BLSQL +' WHERE code_c IN( SELECT code_c FROM client WHERE LOWER(nom_c) LIKE LOWER' +'('''+(ResearchBVComEdt.Text+'%')+''')' +')';
-          MainForm.Bonv_comTable.Active:=True;
-          MainForm.Bonv_comTable.EnableControls;
+          DataModuleF.Bonv_comTable.DisableControls;
+          DataModuleF.Bonv_comTable.Active:=False;
+          DataModuleF.Bonv_comTable.SQL.Clear;
+          DataModuleF.Bonv_comTable.SQL.Text:= BCVSQL +' WHERE code_c IN( SELECT code_c FROM client WHERE LOWER(nom_c) LIKE LOWER' +'('''+(ResearchBVComEdt.Text+'%')+''')' +')';
+          DataModuleF.Bonv_comTable.Active:=True;
+          DataModuleF.Bonv_comTable.EnableControls;
 
           end;
 
           if ResherchBVLNumBRdioBtn.Checked then
           begin
-          MainForm.Bonv_comTable.DisableControls;
-          MainForm.Bonv_comTable.Active:=False;
-          MainForm.Bonv_comTable.SQL.Clear;
-          MainForm.Bonv_comTable.SQL.Text:= BLSQL +' WHERE LOWER(num_bvcom) LIKE LOWER' +'('''+(ResearchBVComEdt.Text+'%')+''')' ;
-          MainForm.Bonv_comTable.Active:=True;
-          MainForm.Bonv_comTable.EnableControls;
+          DataModuleF.Bonv_comTable.DisableControls;
+          DataModuleF.Bonv_comTable.Active:=False;
+          DataModuleF.Bonv_comTable.SQL.Clear;
+          DataModuleF.Bonv_comTable.SQL.Text:= BCVSQL +' WHERE LOWER(num_bvcom) LIKE LOWER' +'('''+(ResearchBVComEdt.Text+'%')+''')' ;
+          DataModuleF.Bonv_comTable.Active:=True;
+          DataModuleF.Bonv_comTable.EnableControls;
           end;
 
 
@@ -519,12 +519,12 @@ begin
           MainForm.ClientTable.Active:=True;
           MainForm.ClientTable.EnableControls;
 
-          MainForm.Bonv_comTable.DisableControls;
-          MainForm.Bonv_comTable.Active:=False;
-          MainForm.Bonv_comTable.SQL.Clear;
-          MainForm.Bonv_comTable.SQL.Text:= BLSQL ;
-          MainForm.Bonv_comTable.Active:=True;
-          MainForm.Bonv_comTable.EnableControls;
+          DataModuleF.Bonv_comTable.DisableControls;
+          DataModuleF.Bonv_comTable.Active:=False;
+          DataModuleF.Bonv_comTable.SQL.Clear;
+          DataModuleF.Bonv_comTable.SQL.Text:= BCVSQL ;
+          DataModuleF.Bonv_comTable.Active:=True;
+          DataModuleF.Bonv_comTable.EnableControls;
 
      end;
 end;
@@ -533,23 +533,23 @@ end;
 
 procedure TBonComVF.FisrtBARecbtnClick(Sender: TObject);
 begin
-MainForm.Bonv_comTable.First;
+DataModuleF.Bonv_comTable.First;
 end;
 
 procedure TBonComVF.PreviosBARecbtnClick(Sender: TObject);
 begin
-MainForm.Bonv_comTable.Prior;
+DataModuleF.Bonv_comTable.Prior;
 end;
 
 procedure TBonComVF.NextBARecbtnClick(Sender: TObject);
 begin
-MainForm.Bonv_comTable.Next;
+DataModuleF.Bonv_comTable.Next;
 end;
 
 procedure TBonComVF.NoTRegleFilterBVComPMenuClick(Sender: TObject);
 begin
 FilterBVComBtn.ImageIndex:=50;
-MainForm.Bonv_comTable.Filtered:= False;
+DataModuleF.Bonv_comTable.Filtered:= False;
 Select_Valid;
 Select_NOT_Regle;
 sImage1.ImageIndex:=3;
@@ -618,7 +618,7 @@ end;
 
 procedure TBonComVF.LastBARecbtnClick(Sender: TObject);
 begin
-MainForm.Bonv_comTable.Last;
+DataModuleF.Bonv_comTable.Last;
 end;
 
 procedure TBonComVF.AddBVComBtnClick(Sender: TObject);
@@ -634,14 +634,14 @@ ClearFilterBVComPMenuClick(Sender);
   ProduitsListF.ResearchProduitsEdt.Text:='';
   end;
 
-MainForm.Bonv_liv_listTable.Active:= False;
-MainForm.Bonv_liv_listTable.IndexFieldNames:='';
-MainForm.Bonv_comTable.DisableControls;
-MainForm.Bonv_comTable.Active:= False;
-MainForm.Bonv_comTable.SQL.clear;
-mainform.Bonv_comTable.sql.Text:= BLSQL + ' ORDER By code_bvcom ';
-MainForm.Bonv_comTable.Active:= True;
-//MainForm.Bonv_comTable.EnableControls;
+DataModuleF.Bonv_com_listTable.Active:= False;
+DataModuleF.Bonv_com_listTable.IndexFieldNames:='';
+DataModuleF.Bonv_comTable.DisableControls;
+DataModuleF.Bonv_comTable.Active:= False;
+DataModuleF.Bonv_comTable.SQL.clear;
+DataModuleF.Bonv_comTable.sql.Text:= BCVSQL + ' ORDER By code_bvcom ';
+DataModuleF.Bonv_comTable.Active:= True;
+//DataModuleF.Bonv_comTable.EnableControls;
 
 
 ResearchBVComEdt.Text:='';
@@ -650,21 +650,21 @@ codeBL:= 0;
 // if not Assigned (BonLivGestionF) then
     BonLivGestionF := TBonLivGestionF.Create(nil);
     try
-     if MainForm.Bonv_comTable.RecordCount <= 0 then
+     if DataModuleF.Bonv_comTable.RecordCount <= 0 then
       begin
 
-        MainForm.Bonv_comTable.Insert;
-        MainForm.Bonv_comTable.FieldValues['code_bvcom']:=1;
-        MainForm.Bonv_comTable.FieldValues['num_bvcom']:= 'BL'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5, 1]);
-        MainForm.Bonv_comTable.FieldValues['date_bvcom']:= DateOf(Today);
-        MainForm.Bonv_comTable.FieldValues['time_bvcom']:=TimeOf(Now);
-        MainForm.Bonv_comTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
-        MainForm.Bonv_comTable.Post;
-        codeBL := MainForm.Bonv_comTable.FieldValues['code_bvcom'];
+        DataModuleF.Bonv_comTable.Insert;
+        DataModuleF.Bonv_comTable.FieldValues['code_bvcom']:=1;
+        DataModuleF.Bonv_comTable.FieldValues['num_bvcom']:= 'BL'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5, 1]);
+        DataModuleF.Bonv_comTable.FieldValues['date_bvcom']:= DateOf(Today);
+        DataModuleF.Bonv_comTable.FieldValues['time_bvcom']:=TimeOf(Now);
+        DataModuleF.Bonv_comTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
+        DataModuleF.Bonv_comTable.Post;
+        codeBL := DataModuleF.Bonv_comTable.FieldValues['code_bvcom'];
       end else
           begin
-            MainForm.Bonv_comTable.Last;
-            codeBL := MainForm.Bonv_comTable.FieldValues['code_bvcom'];
+            DataModuleF.Bonv_comTable.Last;
+            codeBL := DataModuleF.Bonv_comTable.FieldValues['code_bvcom'];
             MainForm.SQLQuery.Active:=False;    // if soemthig went wrong change it  back to Bonv_liv_listTable
             MainForm.SQLQuery.SQL.Clear;
             MainForm.SQLQuery.SQL.Text:= 'SELECT code_bvcom FROM bonv_liv_list WHERE code_bvcom = ' + IntToStr(codeBL);
@@ -672,40 +672,40 @@ codeBL:= 0;
 
            if MainForm.SQLQuery.RecNo <= 0 then
            begin
-        //   MainForm.Bonv_comTable.Last;
-           codeBL := MainForm.Bonv_comTable.FieldValues['code_bvcom'];
-             MainForm.Bonv_comTable.Edit;
-             MainForm.Bonv_comTable.FieldValues['date_bvcom']:= DateOf(Today);
-             MainForm.Bonv_comTable.FieldValues['time_bvcom']:= TimeOf(Now);
-             MainForm.Bonv_comTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
-             MainForm.Bonv_comTable.Post;
+        //   DataModuleF.Bonv_comTable.Last;
+           codeBL := DataModuleF.Bonv_comTable.FieldValues['code_bvcom'];
+             DataModuleF.Bonv_comTable.Edit;
+             DataModuleF.Bonv_comTable.FieldValues['date_bvcom']:= DateOf(Today);
+             DataModuleF.Bonv_comTable.FieldValues['time_bvcom']:= TimeOf(Now);
+             DataModuleF.Bonv_comTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
+             DataModuleF.Bonv_comTable.Post;
            end else
            begin
-        //   MainForm.Bonv_comTable.Last;
-          // codeBL := MainForm.Bonv_comTable.FieldValues['code_bvcom'];
-             MainForm.Bonv_comTable.Insert;
-             MainForm.Bonv_comTable.FieldValues['code_bvcom']:= codeBL + 1;
-             MainForm.Bonv_comTable.FieldValues['num_bvcom']:=  'BL'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5,(codeBL + 1)]);
-             MainForm.Bonv_comTable.FieldValues['date_bvcom']:= DateOf(Today);
-             MainForm.Bonv_comTable.FieldValues['time_bvcom']:= TimeOf(Now);
-             MainForm.Bonv_comTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
-             MainForm.Bonv_comTable.Post;
+        //   DataModuleF.Bonv_comTable.Last;
+          // codeBL := DataModuleF.Bonv_comTable.FieldValues['code_bvcom'];
+             DataModuleF.Bonv_comTable.Insert;
+             DataModuleF.Bonv_comTable.FieldValues['code_bvcom']:= codeBL + 1;
+             DataModuleF.Bonv_comTable.FieldValues['num_bvcom']:=  'BL'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5,(codeBL + 1)]);
+             DataModuleF.Bonv_comTable.FieldValues['date_bvcom']:= DateOf(Today);
+             DataModuleF.Bonv_comTable.FieldValues['time_bvcom']:= TimeOf(Now);
+             DataModuleF.Bonv_comTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
+             DataModuleF.Bonv_comTable.Post;
 
 
            end;
             BonLivGestionF.ProduitsListDBGridEh.DataSource.DataSet.EnableControls;
           end;
 
-      MainForm.Bonv_liv_listTable.IndexFieldNames:='code_bvcom';
-      MainForm.Bonv_liv_listTable.Active:=False;
-      MainForm.Bonv_liv_listTable.SQL.Clear;
-      MainForm.Bonv_liv_listTable.SQL.Text:= BonLivGestionF.BLLSQL;
-      MainForm.Bonv_liv_listTable.Active:=True;
+      DataModuleF.Bonv_com_listTable.IndexFieldNames:='code_bvcom';
+      DataModuleF.Bonv_com_listTable.Active:=False;
+      DataModuleF.Bonv_com_listTable.SQL.Clear;
+      DataModuleF.Bonv_com_listTable.SQL.Text:= BonLivGestionF.BLLSQL;
+      DataModuleF.Bonv_com_listTable.Active:=True;
 
        MainForm.SQLQuery.Active:=False;
        MainForm.SQLQuery.SQL.Clear;
 
-//MainForm.Bonv_liv_listTable.Refresh;
+//DataModuleF.Bonv_com_listTable.Refresh;
        BonLivGestionF.Tag:= 0;
        BonLivGestionF.ShowModal;
 
@@ -717,24 +717,24 @@ codeBL:= 0;
     end;
 
 
-//       MainForm.Bonv_comTable.DisableControls;
-MainForm.Bonv_comTable.Active:= False;
-MainForm.Bonv_comTable.SQL.clear;
-mainform.Bonv_comTable.sql.Text:= BLSQL +' WHERE date_bvcom BETWEEN '''+(DateToStr(DateStartBVComD.Date))+ ''' AND ''' +(DateToStr(DateEndBVComD.Date))+'''';
-MainForm.Bonv_comTable.Active:= True;
-MainForm.Bonv_comTable.Last;
-MainForm.Bonv_comTable.EnableControls;
+//       DataModuleF.Bonv_comTable.DisableControls;
+DataModuleF.Bonv_comTable.Active:= False;
+DataModuleF.Bonv_comTable.SQL.clear;
+DataModuleF.Bonv_comTable.sql.Text:= BCVSQL +' WHERE date_bvcom BETWEEN '''+(DateToStr(DateStartBVComD.Date))+ ''' AND ''' +(DateToStr(DateEndBVComD.Date))+'''';
+DataModuleF.Bonv_comTable.Active:= True;
+DataModuleF.Bonv_comTable.Last;
+DataModuleF.Bonv_comTable.EnableControls;
 end;
 
 procedure TBonComVF.DeleteBVComBtnClick(Sender: TObject);
 begin
-if NOT (MainForm.Bonv_comTable.IsEmpty) then
+if NOT (DataModuleF.Bonv_comTable.IsEmpty) then
  begin
-  if  (MainForm.Bonv_comTable.FieldByName('valider_bvcom').AsBoolean <> True ) then
+  if  (DataModuleF.Bonv_comTable.FieldByName('valider_bvcom').AsBoolean <> True ) then
     begin
-   MainForm.Bonv_liv_listTable.Active:=True;
+   DataModuleF.Bonv_com_listTable.Active:=True;
 
-    if NOT (MainForm.Bonv_liv_listTable.IsEmpty) then
+    if NOT (DataModuleF.Bonv_com_listTable.IsEmpty) then
      begin
 
            FSplashAddUnite:=TFSplashAddUnite.Create(BonComVF);
@@ -769,7 +769,7 @@ if NOT (MainForm.Bonv_comTable.IsEmpty) then
        end
         else
         begin
-                MainForm.Bonv_comTable.Delete ;
+                DataModuleF.Bonv_comTable.Delete ;
           GrayForms;
           FSplash := TFSplash.Create(BonComVF);
           try
@@ -821,7 +821,7 @@ var
  CodeC : Integer;
 
 begin
- if NOT (MainForm.Bonv_comTable.IsEmpty) Then
+ if NOT (DataModuleF.Bonv_comTable.IsEmpty) Then
  begin
       if Assigned(ProduitsListF) then
      begin
@@ -829,28 +829,28 @@ begin
       ProduitsListF.ResearchProduitsEdt.Text:='';
       end;
 
-   MainForm.Bonv_liv_listTable.Active := True;
-     if NOT (MainForm.Bonv_liv_listTable.IsEmpty) then
+   DataModuleF.Bonv_com_listTable.Active := True;
+     if NOT (DataModuleF.Bonv_com_listTable.IsEmpty) then
     begin
-     MainForm.Bonv_liv_listTable.Active := False;
-     MainForm.Bonv_liv_listTable.IndexFieldNames:='code_bvcom';
+     DataModuleF.Bonv_com_listTable.Active := False;
+     DataModuleF.Bonv_com_listTable.IndexFieldNames:='code_bvcom';
 
     BonLivGestionF := TBonLivGestionF.Create(nil);
     try
-       MainForm.Bonv_liv_listTable.Active := True;
-       BonLivGestionF.NumBonLivGEdt.Caption := MainForm.Bonv_comTable.FieldByName('num_bvcom').AsString;
-       BonLivGestionF.DateBonLivGD.Date:= MainForm.Bonv_comTable.FieldValues['date_bvcom'];
-       BonLivGestionF.ObserBonLivGMem.Lines.Text := MainForm.Bonv_comTable.FieldByName('obser_bvcom').AsString;
-       if (MainForm.Bonv_comTable.FieldValues['code_c']<> null) and (MainForm.Bonv_comTable.FieldValues['code_c']<> 0) then
+       DataModuleF.Bonv_com_listTable.Active := True;
+       BonLivGestionF.NumBonLivGEdt.Caption := DataModuleF.Bonv_comTable.FieldByName('num_bvcom').AsString;
+       BonLivGestionF.DateBonLivGD.Date:= DataModuleF.Bonv_comTable.FieldValues['date_bvcom'];
+       BonLivGestionF.ObserBonLivGMem.Lines.Text := DataModuleF.Bonv_comTable.FieldByName('obser_bvcom').AsString;
+       if (DataModuleF.Bonv_comTable.FieldValues['code_c']<> null) and (DataModuleF.Bonv_comTable.FieldValues['code_c']<> 0) then
        begin
-       CodeC:=MainForm.Bonv_comTable.FieldValues['code_c'];
-       BonLivGestionF.ClientBonLivGCbx.Text:= MainForm.Bonv_comTable.FieldValues['clientbvcom'];
+       CodeC:=DataModuleF.Bonv_comTable.FieldValues['code_c'];
+       BonLivGestionF.ClientBonLivGCbx.Text:= DataModuleF.Bonv_comTable.FieldValues['clientbvcom'];
 
         end;
 
-       if (MainForm.Bonv_comTable.FieldValues['code_mdpai']<> null ) AND (MainForm.Bonv_comTable.FieldValues['code_mdpai']<> 0) then
+       if (DataModuleF.Bonv_comTable.FieldValues['code_mdpai']<> null ) AND (DataModuleF.Bonv_comTable.FieldValues['code_mdpai']<> 0) then
        begin
-       CodeC:=MainForm.Bonv_comTable.FieldValues['code_mdpai'];
+       CodeC:=DataModuleF.Bonv_comTable.FieldValues['code_mdpai'];
          MainForm.Mode_paiementTable.Active:=false;
          MainForm.Mode_paiementTable.SQL.Clear;
          MainForm.Mode_paiementTable.SQL.Text:='Select * FROM mode_paiement WHERE code_mdpai ='+(IntToStr( CodeC ) ) ;
@@ -862,9 +862,9 @@ begin
          MainForm.Mode_paiementTable.Active:=True;
 
        end;
-       if (MainForm.Bonv_comTable.FieldValues['code_cmpt']<> null) AND (MainForm.Bonv_comTable.FieldValues['code_cmpt']<> 0) then
+       if (DataModuleF.Bonv_comTable.FieldValues['code_cmpt']<> null) AND (DataModuleF.Bonv_comTable.FieldValues['code_cmpt']<> 0) then
        begin
-       CodeC:=MainForm.Bonv_comTable.FieldValues['code_cmpt'];
+       CodeC:=DataModuleF.Bonv_comTable.FieldValues['code_cmpt'];
          MainForm.CompteTable.Active:=false;
          MainForm.CompteTable.SQL.Clear;
          MainForm.CompteTable.SQL.Text:='Select * FROM compte WHERE code_cmpt ='+(IntToStr( CodeC ) ) ;
@@ -875,43 +875,43 @@ begin
          MainForm.CompteTable.SQL.Text:='SELECT * FROM compte ' ;
          MainForm.CompteTable.Active:=True;
        end;
-       if (MainForm.Bonv_comTable.FieldValues['num_cheque_bvcom']<> null)  then
+       if (DataModuleF.Bonv_comTable.FieldValues['num_cheque_bvcom']<> null)  then
        begin
-        BonLivGestionF.NChequeBonLivGCbx.Text:= MainForm.Bonv_comTable.FieldValues['num_cheque_bvcom'];
+        BonLivGestionF.NChequeBonLivGCbx.Text:= DataModuleF.Bonv_comTable.FieldValues['num_cheque_bvcom'];
 
        end;
 
 
-     if (MainForm.Bonv_comTable.FieldValues['RemisePerc']<> null) AND (MainForm.Bonv_comTable.FieldValues['remise_bvcom']<> 0) then
+     if (DataModuleF.Bonv_comTable.FieldValues['RemisePerc']<> null) AND (DataModuleF.Bonv_comTable.FieldValues['remise_bvcom']<> 0) then
      begin
-     BonLivGestionF.RemisePerctageBonLivGEdt.Text :=     CurrToStrF(MainForm.Bonv_comTable.FieldValues['RemisePerc'], ffNumber, 2);
-      BonLivGestionF.RemiseBonLivGEdt.Text :=     CurrToStrF(MainForm.Bonv_comTable.FieldValues['remise_bvcom'], ffNumber, 2);
+     BonLivGestionF.RemisePerctageBonLivGEdt.Text :=     CurrToStrF(DataModuleF.Bonv_comTable.FieldValues['RemisePerc'], ffNumber, 2);
+      BonLivGestionF.RemiseBonLivGEdt.Text :=     CurrToStrF(DataModuleF.Bonv_comTable.FieldValues['remise_bvcom'], ffNumber, 2);
      end;
 
-       if (MainForm.Bonv_comTable.FieldValues['montht_bvcom']<> null) then
+       if (DataModuleF.Bonv_comTable.FieldValues['montht_bvcom']<> null) then
        begin
-      BonLivGestionF.BonLivTotalHTLbl.Caption :=    CurrToStrF(MainForm.Bonv_comTable.FieldValues['montht_bvcom'], ffNumber, 2);
+      BonLivGestionF.BonLivTotalHTLbl.Caption :=    CurrToStrF(DataModuleF.Bonv_comTable.FieldValues['montht_bvcom'], ffNumber, 2);
        end;
-      if (MainForm.Bonv_comTable.FieldValues['MontantTVA']<> null) then
+      if (DataModuleF.Bonv_comTable.FieldValues['MontantTVA']<> null) then
        begin
-      BonLivGestionF.BonLivTotalTVALbl.Caption :=   CurrToStrF(MainForm.Bonv_comTable.FieldValues['MontantTVA'], ffNumber, 2);
+      BonLivGestionF.BonLivTotalTVALbl.Caption :=   CurrToStrF(DataModuleF.Bonv_comTable.FieldValues['MontantTVA'], ffNumber, 2);
        end;
-       if (MainForm.Bonv_comTable.FieldValues['montttc_bvcom']<> null) then
+       if (DataModuleF.Bonv_comTable.FieldValues['montttc_bvcom']<> null) then
        begin
-      BonLivGestionF.BonLivTotalTTCLbl.Caption :=   CurrToStrF(MainForm.Bonv_comTable.FieldValues['montttc_bvcom'], ffNumber, 2);
+      BonLivGestionF.BonLivTotalTTCLbl.Caption :=   CurrToStrF(DataModuleF.Bonv_comTable.FieldValues['montttc_bvcom'], ffNumber, 2);
        end;
-       if (MainForm.Bonv_comTable.FieldValues['montver_bvcom']<> null) then
+       if (DataModuleF.Bonv_comTable.FieldValues['montver_bvcom']<> null) then
        begin
-      BonLivGestionF.BonLivRegleLbl.Caption :=      CurrToStrF(MainForm.Bonv_comTable.FieldValues['montver_bvcom'], ffNumber, 2);
+      BonLivGestionF.BonLivRegleLbl.Caption :=      CurrToStrF(DataModuleF.Bonv_comTable.FieldValues['montver_bvcom'], ffNumber, 2);
        end;
-       if (MainForm.Bonv_comTable.FieldValues['MontantRes']<> null) then
+       if (DataModuleF.Bonv_comTable.FieldValues['MontantRes']<> null) then
        begin
-      BonLivGestionF.BonLivResteLbl.Caption :=      CurrToStrF(MainForm.Bonv_comTable.FieldValues['MontantRes'], ffNumber, 2);
+      BonLivGestionF.BonLivResteLbl.Caption :=      CurrToStrF(DataModuleF.Bonv_comTable.FieldValues['MontantRes'], ffNumber, 2);
        end;
 
 
 
-       if MainForm.Bonv_comTable.FieldByName('valider_bvcom').AsBoolean = True then
+       if DataModuleF.Bonv_comTable.FieldByName('valider_bvcom').AsBoolean = True then
        begin
         FSplashVersement.DisableBonLiv;
        end else
@@ -921,7 +921,7 @@ begin
 
            end;
       BonLivGestionF.Tag:= 1;
-      MainForm.Bonv_liv_listTable.Refresh;
+      DataModuleF.Bonv_com_listTable.Refresh;
       BonLivGestionF.ShowModal;
 
 
@@ -952,7 +952,7 @@ FilteredColor;
 Select_Valid_Escpace;
 if sImage6.Visible = True  then 
  begin
-  MainForm.Bonv_comTable.Filtered:= False;
+  DataModuleF.Bonv_comTable.Filtered:= False;
   if RegleFilterBVComPMenu.Checked then
   begin
    Select_Regle;
@@ -1024,12 +1024,12 @@ begin
    BVComListDBGridEh.DefaultDrawColumnCell(Rect, DataCol, Column, State);
 end;
 
- if  (MainForm.Bonv_comTable.FieldValues['MontantRes'] > 0)    then
+ if  (DataModuleF.Bonv_comTable.FieldValues['MontantRes'] > 0)    then
  begin
  BVComListDBGridEh.Canvas.Font.Color:=$004735F9;
  BVComListDBGridEh.DefaultDrawColumnCell(Rect, DataCol, Column, State);
  end;
-  if  (MainForm.Bonv_comTable.FieldValues['MontantRes'] < 0)    then
+  if  (DataModuleF.Bonv_comTable.FieldValues['MontantRes'] < 0)    then
  begin
  BVComListDBGridEh.Canvas.Font.Color:=$00519509;
  BVComListDBGridEh.DefaultDrawColumnCell(Rect, DataCol, Column, State);
@@ -1071,7 +1071,7 @@ end;
 procedure TBonComVF.BVComListDBGridEhTitleBtnClick(Sender: TObject;
   ACol: Integer; Column: TColumnEh);
 begin
-    MainForm.Bonv_comTable.IndexesActive := false;
+    DataModuleF.Bonv_comTable.IndexesActive := false;
 end;
 
 procedure TBonComVF.ChequeMPFilterBVComPMenuClick(Sender: TObject);
@@ -1088,7 +1088,7 @@ Select_Valid_Cheque;
 
   if sImage6.Visible = True then
    begin
-   MainForm.Bonv_comTable.Filtered:= False;
+   DataModuleF.Bonv_comTable.Filtered:= False;
     if RegleFilterBVComPMenu.Checked then
     begin
      Select_Regle; 
@@ -1112,7 +1112,7 @@ ClearValideFilterBVComPMenu.Checked:= True;
 ClearMPFilterBVComPMenu.Checked:= True;
 ClearFilterBVComPMenu.Checked:= True;
 ClearRegleFilterBVComPMenu.Checked:= True;
-MainForm.Bonv_comTable.Filtered:= False;
+DataModuleF.Bonv_comTable.Filtered:= False;
 Select_ALL;
  ATermeMPFilterBVComPMenu.Enabled:= True;
 end;
@@ -1134,7 +1134,7 @@ begin
     begin
      FilteredColor;
      FilterBVComBtn.ImageIndex:=49;
-     MainForm.Bonv_comTable.Filtered := False;
+     DataModuleF.Bonv_comTable.Filtered := False;
      Select_Valid;
      Select_Regle;
     end;
@@ -1142,7 +1142,7 @@ begin
     begin
      FilteredColor;    
      FilterBVComBtn.ImageIndex:=49;
-     MainForm.Bonv_comTable.Filtered := False;
+     DataModuleF.Bonv_comTable.Filtered := False;
      Select_Valid;
      Select_NOT_Regle;
     end;
@@ -1152,7 +1152,7 @@ end;
 
 procedure TBonComVF.ClearRegleFilterBVComPMenuClick(Sender: TObject);
 begin
- MainForm.Bonv_comTable.Filtered:=False;
+ DataModuleF.Bonv_comTable.Filtered:=False;
  //Select_ALL;
  sImage1.Visible:= False;
  sImage6.Visible:= False;
@@ -1189,7 +1189,7 @@ begin
  begin
   NOT_FilteredColor;
   FilterBVComBtn.ImageIndex:=50;
-  MainForm.Bonv_comTable.Filtered := false;
+  DataModuleF.Bonv_comTable.Filtered := false;
   Select_ALL;
   
   end  else
@@ -1247,12 +1247,12 @@ procedure TBonComVF.DateStartBVComDChange(Sender: TObject);
 begin
 ClearFilterBVComPMenuClick(Sender);
 
-MainForm.Bonv_comTable.DisableControls;
-MainForm.Bonv_comTable.Active:= False;
-MainForm.Bonv_comTable.SQL.clear;
-mainform.Bonv_comTable.sql.Text:= BLSQL +' WHERE date_bvcom BETWEEN '''+(DateToStr(DateStartBVComD.Date))+ ''' AND ''' +(DateToStr(DateEndBVComD.Date))+'''';
-MainForm.Bonv_comTable.Active:= True;
-MainForm.Bonv_comTable.EnableControls;
+DataModuleF.Bonv_comTable.DisableControls;
+DataModuleF.Bonv_comTable.Active:= False;
+DataModuleF.Bonv_comTable.SQL.clear;
+DataModuleF.Bonv_comTable.sql.Text:= BCVSQL +' WHERE date_bvcom BETWEEN '''+(DateToStr(DateStartBVComD.Date))+ ''' AND ''' +(DateToStr(DateEndBVComD.Date))+'''';
+DataModuleF.Bonv_comTable.Active:= True;
+DataModuleF.Bonv_comTable.EnableControls;
 end;
 
 
@@ -1338,7 +1338,7 @@ Select_Valid_Virment;
 
   if sImage6.Visible = True then
    begin
-   MainForm.Bonv_comTable.Filtered:= False;
+   DataModuleF.Bonv_comTable.Filtered:= False;
     if RegleFilterBVComPMenu.Checked then
     begin
      Select_Regle; 
@@ -1363,7 +1363,7 @@ if ProduitListSaveDg.Execute then
 
   end;
 
-//MainForm.Bonv_comTable.DisableControls;
+//DataModuleF.Bonv_comTable.DisableControls;
 //
 //    GettingData;
 //
@@ -1371,12 +1371,12 @@ if ProduitListSaveDg.Execute then
 //frxXLSExport1.FileName := 'liste des BL';
 //BonComVfrxRprt.Export(frxXLSExport1);
 //
-//MainForm.Bonv_comTable.EnableControls;
+//DataModuleF.Bonv_comTable.EnableControls;
 end;
 
 procedure TBonComVF.AdvToolButton2Click(Sender: TObject);
 begin
-MainForm.Bonv_comTable.DisableControls;
+DataModuleF.Bonv_comTable.DisableControls;
 
     GettingData;
 
@@ -1385,19 +1385,19 @@ frxPDFExport1.FileName := 'liste des BL';
 BonComVfrxRprt.Export(frxPDFExport1);
 
 
-MainForm.Bonv_comTable.EnableControls;
+DataModuleF.Bonv_comTable.EnableControls;
 end;
 
 procedure TBonComVF.AdvToolButton3Click(Sender: TObject);
 begin
-  MainForm.Bonv_comTable.DisableControls;
+  DataModuleF.Bonv_comTable.DisableControls;
 
    GettingData;
 
   BonComVfrxRprt.PrepareReport;
   BonComVfrxRprt.ShowReport;
 
-  MainForm.Bonv_comTable.EnableControls;
+  DataModuleF.Bonv_comTable.EnableControls;
 end;
 
 procedure TBonComVF.ApplicationEvents1ShortCut(var Msg: TWMKey;
@@ -1466,7 +1466,7 @@ FilteredColor;
 Select_Valid_ATerme;
   if sImage6.Visible = True then
    begin
-   MainForm.Bonv_comTable.Filtered:= False;
+   DataModuleF.Bonv_comTable.Filtered:= False;
     if RegleFilterBVComPMenu.Checked then
     begin
      
