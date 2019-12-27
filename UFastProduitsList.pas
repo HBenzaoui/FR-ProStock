@@ -3099,22 +3099,24 @@ begin
     begin
 
      BonRecGestionF.FournisseurBonRecGCbx.Text:= MainForm.FDQuery2.fieldbyName('nom_f').asString;
+     BonRecGestionF.FournisseurBonRecGCbxExit(Sender);
      BonRecGestionF.ProduitBonRecGCbx.SetFocus;
      Close;
       
     end;
 
-    //This tag = 1 if for choosing client in Facture achat
+    //This tag = 1 if for choosing four in Facture achat
     if Tag = 1 then
     begin
 
      BonFacAGestionF.FourBonFacAGCbx.Text:= MainForm.FDQuery2.fieldbyName('nom_f').asString;
+     BonFacAGestionF.FourBonFacAGCbxExit(Sender);
      BonFacAGestionF.ProduitBonFacAGCbx.SetFocus;
      Close;
       
     end;
 
-        //This tag = 2 if for choosing client in Reg Four
+        //This tag = 2 if for choosing four in Reg Four
     if Tag = 2 then
     begin
 
@@ -3125,16 +3127,16 @@ begin
       
     end;
 
-        //This tag = 3 if for choosing client in Situation Four
+        //This tag = 3 if for choosing four in Situation Four
     if Tag = 3 then
     begin
 
      FSplashPrintReport.NameReportPCbx.Text:= MainForm.FDQuery2.fieldbyName('nom_f').asString;
      FSplashPrintReport.NameReportPCbxChange(Sender);
      Close;
-      
-    end;
 
+    end;
+        //This tag = 4 if for choosing four in Bon Commande Four
     if Tag = 4 then
     begin
 
