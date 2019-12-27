@@ -358,7 +358,7 @@ object BonComAGestionF: TBonComAGestionF
     object Label22: TLabel
       Left = 795
       Top = 136
-      Width = 5
+      Width = 4
       Height = 13
       Caption = '*'
       Color = clBtnFace
@@ -374,7 +374,7 @@ object BonComAGestionF: TBonComAGestionF
     object RequiredStarProduitGLbl: TLabel
       Left = 535
       Top = 135
-      Width = 5
+      Width = 4
       Height = 13
       Caption = '*'
       Color = clBtnFace
@@ -1098,7 +1098,7 @@ object BonComAGestionF: TBonComAGestionF
     object Label21: TLabel
       Left = 762
       Top = 89
-      Width = 7
+      Width = 6
       Height = 16
       Caption = '*'
       Color = clBtnFace
@@ -2648,9 +2648,9 @@ object BonComAGestionF: TBonComAGestionF
     end
     object Label9: TLabel
       AlignWithMargins = True
-      Left = 391
+      Left = 392
       Top = 66
-      Width = 11
+      Width = 10
       Height = 17
       Margins.Left = 0
       Margins.Top = 0
@@ -2673,9 +2673,9 @@ object BonComAGestionF: TBonComAGestionF
     end
     object Label11: TLabel
       AlignWithMargins = True
-      Left = 391
+      Left = 392
       Top = 6
-      Width = 11
+      Width = 10
       Height = 17
       Margins.Left = 0
       Margins.Top = 0

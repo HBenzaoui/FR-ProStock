@@ -357,7 +357,7 @@ object BonFacPGestionF: TBonFacPGestionF
     object Label9: TLabel
       Left = 796
       Top = 133
-      Width = 6
+      Width = 5
       Height = 14
       Caption = '*'
       Color = clBtnFace
@@ -1036,7 +1036,7 @@ object BonFacPGestionF: TBonFacPGestionF
     object RequiredStarProduitGLbl: TLabel
       Left = 535
       Top = 133
-      Width = 6
+      Width = 5
       Height = 14
       Caption = '*'
       Color = clBtnFace
@@ -1053,7 +1053,7 @@ object BonFacPGestionF: TBonFacPGestionF
     object Label3: TLabel
       Left = 761
       Top = 88
-      Width = 7
+      Width = 6
       Height = 16
       Caption = '*'
       Color = clBtnFace
@@ -2458,9 +2458,9 @@ object BonFacPGestionF: TBonFacPGestionF
     end
     object TimberPerctageBonFacVGLbl: TLabel
       AlignWithMargins = True
-      Left = 391
+      Left = 392
       Top = 66
-      Width = 11
+      Width = 10
       Height = 17
       Margins.Left = 0
       Margins.Top = 0
@@ -2483,9 +2483,9 @@ object BonFacPGestionF: TBonFacPGestionF
     end
     object Label11: TLabel
       AlignWithMargins = True
-      Left = 391
+      Left = 392
       Top = 6
-      Width = 11
+      Width = 10
       Height = 17
       Margins.Left = 0
       Margins.Top = 0

@@ -104,7 +104,7 @@ object ReglementFGestionF: TReglementFGestionF
   object ObserRegFGLbl: TLabel
     Left = 357
     Top = 4
-    Width = 101
+    Width = 98
     Height = 20
     Caption = 'Observations'
     Color = 4207405
@@ -251,7 +251,7 @@ object ReglementFGestionF: TReglementFGestionF
   object Label4: TLabel
     Left = 51
     Top = 171
-    Width = 42
+    Width = 43
     Height = 18
     Caption = 'Mode:'
     Color = 4207405
@@ -267,7 +267,7 @@ object ReglementFGestionF: TReglementFGestionF
   object Label5: TLabel
     Left = 5
     Top = 126
-    Width = 83
+    Width = 86
     Height = 18
     Caption = 'Fournisseur:'
     Color = 4207405
@@ -283,7 +283,7 @@ object ReglementFGestionF: TReglementFGestionF
   object Label6: TLabel
     Left = 17
     Top = 217
-    Width = 76
+    Width = 77
     Height = 18
     Caption = 'N'#176' Ch'#233'que:'
     Color = 4207405
@@ -373,7 +373,7 @@ object ReglementFGestionF: TReglementFGestionF
   object label13: TLabel
     Left = 192
     Top = 263
-    Width = 92
+    Width = 88
     Height = 21
     Caption = 'Versement:'
     Color = 4207405
@@ -389,7 +389,7 @@ object ReglementFGestionF: TReglementFGestionF
   object label12: TLabel
     Left = 365
     Top = 263
-    Width = 74
+    Width = 71
     Height = 21
     Caption = 'Le Reste:'
     Color = 4207405
@@ -430,7 +430,7 @@ object ReglementFGestionF: TReglementFGestionF
   object Label7: TLabel
     Left = 8
     Top = 263
-    Width = 137
+    Width = 136
     Height = 21
     Caption = 'Fournisseur Sold:'
     Color = 4207405
@@ -538,8 +538,8 @@ object ReglementFGestionF: TReglementFGestionF
     Top = 58
     Width = 124
     Height = 26
-    Date = 42565.478213819440000000
-    Time = 42565.478213819440000000
+    Date = 42565.000000000000000000
+    Time = 0.478213819442316900
     Font.Charset = DEFAULT_CHARSET
     Font.Color = 4207405
     Font.Height = 19

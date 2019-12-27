@@ -358,7 +358,7 @@ object BonLivGestionF: TBonLivGestionF
     object Label23: TLabel
       Left = 795
       Top = 135
-      Width = 6
+      Width = 5
       Height = 14
       Caption = '*'
       Color = clBtnFace
@@ -374,7 +374,7 @@ object BonLivGestionF: TBonLivGestionF
     object RequiredStarProduitGLbl: TLabel
       Left = 536
       Top = 135
-      Width = 6
+      Width = 5
       Height = 14
       Caption = '*'
       Color = clBtnFace
@@ -1116,7 +1116,7 @@ object BonLivGestionF: TBonLivGestionF
     object Label24: TLabel
       Left = 761
       Top = 90
-      Width = 7
+      Width = 6
       Height = 16
       Caption = '*'
       Color = clBtnFace
@@ -2480,9 +2480,9 @@ object BonLivGestionF: TBonLivGestionF
     end
     object Label9: TLabel
       AlignWithMargins = True
-      Left = 391
+      Left = 392
       Top = 67
-      Width = 11
+      Width = 10
       Height = 17
       Margins.Left = 0
       Margins.Top = 0
@@ -2505,9 +2505,9 @@ object BonLivGestionF: TBonLivGestionF
     end
     object Label11: TLabel
       AlignWithMargins = True
-      Left = 391
+      Left = 392
       Top = 6
-      Width = 11
+      Width = 10
       Height = 17
       Margins.Left = 0
       Margins.Top = 0

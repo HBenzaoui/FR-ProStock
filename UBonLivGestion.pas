@@ -1983,7 +1983,7 @@ procedure TBonLivGestionF.ListClientBonLivGBtnClick(Sender: TObject);
 Var I:Integer;
 begin
 //-------- use this code to start creating th form-----//
-  FastProduitsListF := TFastProduitsListF.Create(BonLivGestionF);
+  FastProduitsListF := TFastProduitsListF.Create(Application);
 
   MainForm.FDQuery2.Active:=False;
   MainForm.FDQuery2.SQL.Clear;

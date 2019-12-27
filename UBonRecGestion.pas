@@ -32,7 +32,7 @@ uses
   dxSkinValentine, dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
   dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
   dxSkinXmas2008Blue, cxTextEdit, cxMaskEdit, cxDropDownEdit, Vcl.Menus,
-  Vcl.AppEvnts;
+  Vcl.AppEvnts, frxExportBaseDialog;
 
 type
   TBonRecGestionF = class(TForm)
@@ -1333,7 +1333,7 @@ procedure TBonRecGestionF.ListFourBonRecGBtnClick(Sender: TObject);
 Var I:Integer;
 begin
 //-------- use this code to start creating th form-----//
-  FastProduitsListF := TFastProduitsListF.Create(BonRecGestionF);
+  FastProduitsListF := TFastProduitsListF.Create(Application);
 
   MainForm.FDQuery2.Active:=False;
   MainForm.FDQuery2.SQL.Clear;

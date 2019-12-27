@@ -361,7 +361,7 @@ object BonCtrGestionF: TBonCtrGestionF
     object Label1: TLabel
       Left = 5
       Top = 4
-      Width = 70
+      Width = 75
       Height = 28
       Caption = 'Total'
       Font.Charset = DEFAULT_CHARSET
@@ -372,9 +372,9 @@ object BonCtrGestionF: TBonCtrGestionF
       ParentFont = False
     end
     object Label17: TLabel
-      Left = 884
+      Left = 877
       Top = 4
-      Width = 106
+      Width = 113
       Height = 28
       Anchors = [akTop, akRight]
       BiDiMode = bdRightToLeft
@@ -1231,7 +1231,7 @@ object BonCtrGestionF: TBonCtrGestionF
       object Label9: TLabel
         Left = 6
         Top = 20
-        Width = 35
+        Width = 36
         Height = 16
         Caption = 'Client:'
         Color = 4207405
@@ -1403,7 +1403,7 @@ object BonCtrGestionF: TBonCtrGestionF
       object Label18: TLabel
         Left = 6
         Top = 7
-        Width = 50
+        Width = 54
         Height = 16
         Caption = 'Montant:'
         Font.Charset = DEFAULT_CHARSET
@@ -1430,7 +1430,7 @@ object BonCtrGestionF: TBonCtrGestionF
       object Labell20: TLabel
         Left = 6
         Top = 68
-        Width = 36
+        Width = 37
         Height = 16
         Caption = 'Verse:'
         Font.Charset = DEFAULT_CHARSET
@@ -1457,7 +1457,7 @@ object BonCtrGestionF: TBonCtrGestionF
       object Label22: TLabel
         Left = 6
         Top = 37
-        Width = 46
+        Width = 47
         Height = 16
         Caption = 'Remise:'
         Font.Charset = DEFAULT_CHARSET
@@ -1470,7 +1470,7 @@ object BonCtrGestionF: TBonCtrGestionF
       object Label23: TLabel
         Left = 6
         Top = 97
-        Width = 39
+        Width = 42
         Height = 16
         Caption = 'Rendu:'
         Font.Charset = DEFAULT_CHARSET
@@ -1612,7 +1612,7 @@ object BonCtrGestionF: TBonCtrGestionF
       object Label2: TLabel
         Left = 6
         Top = 6
-        Width = 42
+        Width = 44
         Height = 16
         Caption = 'Bon N'#176':'
         Font.Charset = DEFAULT_CHARSET
@@ -1652,7 +1652,7 @@ object BonCtrGestionF: TBonCtrGestionF
       object Label7: TLabel
         Left = 6
         Top = 35
-        Width = 37
+        Width = 39
         Height = 16
         Caption = 'Heure:'
         Font.Charset = DEFAULT_CHARSET
@@ -1703,8 +1703,8 @@ object BonCtrGestionF: TBonCtrGestionF
         Top = 66
         Width = 121
         Height = 23
-        Date = 42592.456630983800000000
-        Time = 42592.456630983800000000
+        Date = 42592.000000000000000000
+        Time = 0.456630983797367700
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
         Font.Height = 15
@@ -1804,7 +1804,7 @@ object BonCtrGestionF: TBonCtrGestionF
     TabHoverColorTo = 8375293
     TabWidth = 25
     TextDirection = tdBottomToTop
-    Version = '1.6.0.0'
+    Version = '1.6.0.2'
     object LeftFavTabP: TAdvToolPanel
       Left = 25
       Top = 0
@@ -1865,7 +1865,7 @@ object BonCtrGestionF: TBonCtrGestionF
       ShowCaptionBorder = False
       ShowClose = False
       Style = esWindows10
-      Version = '1.6.0.0'
+      Version = '1.6.0.2'
       OnLock = LeftFavTabPLock
       OnUnlock = LeftFavTabPLock
       object FavProduitCTRPgControl: TsPageControl
@@ -3803,7 +3803,7 @@ object BonCtrGestionF: TBonCtrGestionF
       object Label6: TLabel
         Left = 8
         Top = 92
-        Width = 76
+        Width = 77
         Height = 15
         Anchors = [akLeft, akBottom]
         Caption = 'Les Produits:'
@@ -4796,6 +4796,7 @@ object BonCtrGestionF: TBonCtrGestionF
     ShowProgress = True
     OverwritePrompt = False
     DataOnly = False
+    OpenAfterExport = False
     PrintOptimized = False
     Outline = False
     Background = False
@@ -4812,6 +4813,8 @@ object BonCtrGestionF: TBonCtrGestionF
     CenterWindow = False
     PrintScaling = False
     PdfA = False
+    PDFStandard = psNone
+    PDFVersion = pv17
     Left = 170
     Top = 322
   end
@@ -4831,7 +4834,7 @@ object BonCtrGestionF: TBonCtrGestionF
     Top = 324
   end
   object ComptoirTicketfrxRprt: TfrxReport
-    Version = '5.6.1'
+    Version = '6.3.12'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick, pbNoClose, pbNoFullScreen, pbNoEmail]
@@ -4956,9 +4959,12 @@ object BonCtrGestionF: TBonCtrGestionF
       PaperSize = 256
       MirrorMargins = True
       DataSetName = 'MasterData'
+      Frame.Typ = []
+      MirrorMode = []
       OnBeforePrint = 'Page1OnBeforePrint'
       object PageHeader1: TfrxPageHeader
         FillType = ftBrush
+        Frame.Typ = []
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -9
@@ -4971,6 +4977,7 @@ object BonCtrGestionF: TBonCtrGestionF
         OnBeforePrint = 'PageHeader1OnBeforePrint'
         Stretched = True
         object Memo18: TfrxMemoView
+          AllowVectorExport = True
           Left = 208.031496060000000000
           Top = 8.976377950000000000
           Width = 60.472443390000000000
@@ -4981,6 +4988,7 @@ object BonCtrGestionF: TBonCtrGestionF
           Font.Name = 'Segoe UI'
           Font.Style = []
           Frame.Style = fsDashDot
+          Frame.Typ = []
           GapY = 4.000000000000000000
           HAlign = haRight
           Memo.UTF8W = (
@@ -4988,6 +4996,7 @@ object BonCtrGestionF: TBonCtrGestionF
           ParentFont = False
         end
         object Memo4: TfrxMemoView
+          AllowVectorExport = True
           Left = 148.960730000000000000
           Top = 8.976377950000000000
           Width = 58.582677170000000000
@@ -4998,6 +5007,7 @@ object BonCtrGestionF: TBonCtrGestionF
           Font.Name = 'Segoe UI'
           Font.Style = []
           Frame.Style = fsDashDot
+          Frame.Typ = []
           GapY = 4.000000000000000000
           HAlign = haRight
           Memo.UTF8W = (
@@ -5005,6 +5015,7 @@ object BonCtrGestionF: TBonCtrGestionF
           ParentFont = False
         end
         object Memo5: TfrxMemoView
+          AllowVectorExport = True
           Left = 109.385924410000000000
           Top = 8.976377950000000000
           Width = 39.685036930000000000
@@ -5015,6 +5026,7 @@ object BonCtrGestionF: TBonCtrGestionF
           Font.Name = 'Segoe UI'
           Font.Style = []
           Frame.Style = fsDashDot
+          Frame.Typ = []
           GapY = 4.000000000000000000
           HAlign = haCenter
           Memo.UTF8W = (
@@ -5022,6 +5034,7 @@ object BonCtrGestionF: TBonCtrGestionF
           ParentFont = False
         end
         object Memo2: TfrxMemoView
+          AllowVectorExport = True
           Left = 1.889763780000000000
           Top = 8.976377950000000000
           Width = 108.094478430000000000
@@ -5032,12 +5045,14 @@ object BonCtrGestionF: TBonCtrGestionF
           Font.Name = 'Segoe UI'
           Font.Style = []
           Frame.Style = fsDash
+          Frame.Typ = []
           GapY = 4.000000000000000000
           Memo.UTF8W = (
             'DESCRIPTION')
           ParentFont = False
         end
         object Line1: TfrxLineView
+          AllowVectorExport = True
           Left = 3.000000000000000000
           Top = 28.708720000000000000
           Width = 264.567100000000000000
@@ -5052,6 +5067,7 @@ object BonCtrGestionF: TBonCtrGestionF
           Frame.BottomLine.Color = clNone
         end
         object Line8: TfrxLineView
+          AllowVectorExport = True
           Left = 2.779530000000000000
           Top = 0.779529999999994000
           Width = 264.567100000000000000
@@ -5067,12 +5083,14 @@ object BonCtrGestionF: TBonCtrGestionF
       end
       object PageFooter1: TfrxPageFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 27.000000000000000000
         Top = 548.031850000000000000
         Width = 275.905690000000000000
       end
       object MasterData1: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 22.677167800000000000
         Top = 264.567100000000000000
         Width = 275.905690000000000000
@@ -5081,6 +5099,7 @@ object BonCtrGestionF: TBonCtrGestionF
         RowCount = 0
         Stretched = True
         object Memo46: TfrxMemoView
+          AllowVectorExport = True
           Left = 110.102362200000000000
           Top = 2.889763780000010000
           Width = 38.551178660000000000
@@ -5097,6 +5116,7 @@ object BonCtrGestionF: TBonCtrGestionF
           Font.Height = -11
           Font.Name = 'Segoe UI'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxComptoirListPDB."qut_p"]')
@@ -5105,6 +5125,7 @@ object BonCtrGestionF: TBonCtrGestionF
           VAlign = vaBottom
         end
         object Memo47: TfrxMemoView
+          AllowVectorExport = True
           Left = 148.787401570000000000
           Top = 2.889763780000010000
           Width = 60.094488190000000000
@@ -5121,6 +5142,7 @@ object BonCtrGestionF: TBonCtrGestionF
           Font.Height = -11
           Font.Name = 'Segoe UI'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxComptoirListPDB."PrixVTTC"]')
@@ -5129,6 +5151,7 @@ object BonCtrGestionF: TBonCtrGestionF
           VAlign = vaBottom
         end
         object Memo50: TfrxMemoView
+          AllowVectorExport = True
           Left = 209.031496060000000000
           Top = 2.889763780000010000
           Width = 60.094488190000000000
@@ -5145,6 +5168,7 @@ object BonCtrGestionF: TBonCtrGestionF
           Font.Height = -11
           Font.Name = 'Segoe UI'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxComptoirListPDB."MontantTTC"]')
@@ -5153,6 +5177,7 @@ object BonCtrGestionF: TBonCtrGestionF
           VAlign = vaBottom
         end
         object Memo24: TfrxMemoView
+          AllowVectorExport = True
           Left = 1.889763780000000000
           Top = 0.889763780000010000
           Width = 108.094478430000000000
@@ -5169,6 +5194,7 @@ object BonCtrGestionF: TBonCtrGestionF
           Font.Height = -9
           Font.Name = 'Segoe UI'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxComptoirListPDB."nomp"]')
           ParentFont = False
@@ -5178,6 +5204,7 @@ object BonCtrGestionF: TBonCtrGestionF
       end
       object Footer1: TfrxFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 177.724472910000000000
         Top = 309.921460000000000000
         Width = 275.905690000000000000
@@ -5185,6 +5212,7 @@ object BonCtrGestionF: TBonCtrGestionF
         OnBeforePrint = 'Footer1OnBeforePrint'
         Stretched = True
         object Memo61: TfrxMemoView
+          AllowVectorExport = True
           Left = 123.952794960000000000
           Top = 4.425191970000010000
           Width = 62.362204720000000000
@@ -5194,6 +5222,7 @@ object BonCtrGestionF: TBonCtrGestionF
           Font.Height = -9
           Font.Name = 'arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Total HT :')
@@ -5201,6 +5230,7 @@ object BonCtrGestionF: TBonCtrGestionF
           VAlign = vaCenter
         end
         object Memo62: TfrxMemoView
+          AllowVectorExport = True
           Left = 113.070914960000000000
           Top = 24.322829760000000000
           Width = 73.700794720000000000
@@ -5210,6 +5240,7 @@ object BonCtrGestionF: TBonCtrGestionF
           Font.Height = -9
           Font.Name = 'arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Remise :')
@@ -5217,6 +5248,7 @@ object BonCtrGestionF: TBonCtrGestionF
           VAlign = vaCenter
         end
         object Memo63: TfrxMemoView
+          AllowVectorExport = True
           Left = 113.070914960000000000
           Top = 64.220467560000000000
           Width = 73.700794720000000000
@@ -5226,6 +5258,7 @@ object BonCtrGestionF: TBonCtrGestionF
           Font.Height = -9
           Font.Name = 'arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Net a payer:')
@@ -5233,6 +5266,7 @@ object BonCtrGestionF: TBonCtrGestionF
           VAlign = vaCenter
         end
         object Memo67: TfrxMemoView
+          AllowVectorExport = True
           Left = 187.102362200000000000
           Top = 4.425191970000010000
           Width = 79.370088500000000000
@@ -5249,6 +5283,7 @@ object BonCtrGestionF: TBonCtrGestionF
           Font.Height = -11
           Font.Name = 'Segoe UI'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxComptoirDB."montht_bvctr"]')
@@ -5256,6 +5291,7 @@ object BonCtrGestionF: TBonCtrGestionF
           VAlign = vaCenter
         end
         object Memo68: TfrxMemoView
+          AllowVectorExport = True
           Left = 187.102362200000000000
           Top = 24.322829760000000000
           Width = 79.370088500000000000
@@ -5272,6 +5308,7 @@ object BonCtrGestionF: TBonCtrGestionF
           Font.Height = -11
           Font.Name = 'Segoe UI'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxComptoirDB."remise_bvctr"]')
@@ -5279,6 +5316,7 @@ object BonCtrGestionF: TBonCtrGestionF
           VAlign = vaCenter
         end
         object Memo69: TfrxMemoView
+          AllowVectorExport = True
           Left = 187.102362200000000000
           Top = 64.220467560000000000
           Width = 77.480324720000000000
@@ -5294,6 +5332,7 @@ object BonCtrGestionF: TBonCtrGestionF
           Font.Height = -11
           Font.Name = 'Segoe UI'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxComptoirDB."montttc_bvctr"]')
@@ -5301,6 +5340,7 @@ object BonCtrGestionF: TBonCtrGestionF
           VAlign = vaCenter
         end
         object Memo1: TfrxMemoView
+          AllowVectorExport = True
           Left = 112.850493780000000000
           Top = 85.338587560000000000
           Width = 73.700794720000000000
@@ -5310,6 +5350,7 @@ object BonCtrGestionF: TBonCtrGestionF
           Font.Height = -9
           Font.Name = 'arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Versement :')
@@ -5317,6 +5358,7 @@ object BonCtrGestionF: TBonCtrGestionF
           VAlign = vaCenter
         end
         object Memo3: TfrxMemoView
+          AllowVectorExport = True
           Left = 187.102362200000000000
           Top = 85.338587560000000000
           Width = 79.370088500000000000
@@ -5333,6 +5375,7 @@ object BonCtrGestionF: TBonCtrGestionF
           Font.Height = -11
           Font.Name = 'Segoe UI'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxComptoirDB."montver_bvctr"]')
@@ -5340,6 +5383,7 @@ object BonCtrGestionF: TBonCtrGestionF
           VAlign = vaCenter
         end
         object Memo6: TfrxMemoView
+          AllowVectorExport = True
           Left = 112.850493780000000000
           Top = 106.236237560000000000
           Width = 73.700794720000000000
@@ -5349,6 +5393,7 @@ object BonCtrGestionF: TBonCtrGestionF
           Font.Height = -9
           Font.Name = 'arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Rendu :')
@@ -5356,6 +5401,7 @@ object BonCtrGestionF: TBonCtrGestionF
           VAlign = vaCenter
         end
         object Memo7: TfrxMemoView
+          AllowVectorExport = True
           Left = 187.102362200000000000
           Top = 106.236237560000000000
           Width = 79.370088500000000000
@@ -5373,12 +5419,14 @@ object BonCtrGestionF: TBonCtrGestionF
           Font.Height = -11
           Font.Name = 'Segoe UI'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxComptoirDB."MontantRen"]')
           ParentFont = False
         end
         object Memo8: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.669291340000000000
           Top = 4.574827560000020000
           Width = 51.023617170000000000
@@ -5388,6 +5436,7 @@ object BonCtrGestionF: TBonCtrGestionF
           Font.Height = -9
           Font.Name = 'arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Nb Prod:')
@@ -5395,6 +5444,7 @@ object BonCtrGestionF: TBonCtrGestionF
           VAlign = vaCenter
         end
         object Memo9: TfrxMemoView
+          AllowVectorExport = True
           Left = 54.811026060000000000
           Top = 4.574827560000020000
           Width = 81.259854720000000000
@@ -5406,12 +5456,14 @@ object BonCtrGestionF: TBonCtrGestionF
           Font.Height = -9
           Font.Name = 'arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[COUNT(MasterData1)]')
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo10: TfrxMemoView
+          AllowVectorExport = True
           Left = 4.000000000000000000
           Top = 143.504020000000000000
           Width = 264.567100000000000000
@@ -5423,12 +5475,14 @@ object BonCtrGestionF: TBonCtrGestionF
           Font.Height = -12
           Font.Name = 'arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'MERCI ET A BIENTOT')
           ParentFont = False
         end
         object Memo11: TfrxMemoView
+          AllowVectorExport = True
           Left = 137.283574410000000000
           Top = 165.110287480000000000
           Width = 64.251985590000000000
@@ -5442,11 +5496,13 @@ object BonCtrGestionF: TBonCtrGestionF
           Font.Height = -7
           Font.Name = 'Segoe UI'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'N: [frxComptoirDB."num_bvctr"]')
           ParentFont = False
         end
         object Memo12: TfrxMemoView
+          AllowVectorExport = True
           Left = 4.000000000000000000
           Top = 165.110287480000000000
           Width = 49.133890000000000000
@@ -5461,11 +5517,13 @@ object BonCtrGestionF: TBonCtrGestionF
           Font.Height = -7
           Font.Name = 'Segoe UI'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Le: [frxComptoirDB."date_bvctr"]')
           ParentFont = False
         end
         object Client: TfrxMemoView
+          AllowVectorExport = True
           Left = 74.708651650000000000
           Top = 165.110287480000000000
           Width = 64.252010000000000000
@@ -5478,11 +5536,13 @@ object BonCtrGestionF: TBonCtrGestionF
           Font.Height = -7
           Font.Name = 'Segoe UI'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Client: [frxComptoirDB."clientbvctr"]')
           ParentFont = False
         end
         object Memo21: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.669291340000000000
           Top = 24.881877560000000000
           Width = 107.716567170000000000
@@ -5492,11 +5552,13 @@ object BonCtrGestionF: TBonCtrGestionF
           Font.Height = -9
           Font.Name = 'arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Especes')
           ParentFont = False
         end
         object Agent: TfrxMemoView
+          AllowVectorExport = True
           Left = 198.976500000000000000
           Top = 165.110287480000000000
           Width = 69.921264720000000000
@@ -5509,11 +5571,13 @@ object BonCtrGestionF: TBonCtrGestionF
           Font.Height = -7
           Font.Name = 'Segoe UI'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Agent: [frxComptoirDB."Agent"]')
           ParentFont = False
         end
         object Line2: TfrxLineView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Width = 264.567100000000000000
           Color = clBlack
@@ -5527,6 +5591,7 @@ object BonCtrGestionF: TBonCtrGestionF
           Frame.BottomLine.Color = clNone
         end
         object Line3: TfrxLineView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 126.826840000000000000
           Width = 264.567100000000000000
@@ -5542,6 +5607,7 @@ object BonCtrGestionF: TBonCtrGestionF
           Frame.BottomLine.Color = clNone
         end
         object Line4: TfrxLineView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 143.724490000000000000
           Width = 264.567100000000000000
@@ -5557,6 +5623,7 @@ object BonCtrGestionF: TBonCtrGestionF
           Frame.BottomLine.Color = clNone
         end
         object MoneyWordRX: TfrxMemoView
+          AllowVectorExport = True
           Left = 4.338590000000000000
           Top = 129.606370000000000000
           Width = 262.677297170000000000
@@ -5567,12 +5634,14 @@ object BonCtrGestionF: TBonCtrGestionF
           Font.Height = -9
           Font.Name = 'Segoe UI'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Moeny in words')
           ParentFont = False
           VAlign = vaCenter
         end
         object Line7: TfrxLineView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 163.063080000000000000
           Width = 264.567100000000000000
@@ -5587,6 +5656,7 @@ object BonCtrGestionF: TBonCtrGestionF
           Frame.BottomLine.Color = clNone
         end
         object Line5: TfrxLineView
+          AllowVectorExport = True
           Left = 4.779530000000000000
           Top = 176.299320000000000000
           Width = 264.567100000000000000
@@ -5600,6 +5670,7 @@ object BonCtrGestionF: TBonCtrGestionF
           Frame.BottomLine.Color = clNone
         end
         object Memo13: TfrxMemoView
+          AllowVectorExport = True
           Left = 50.692950000000000000
           Top = 165.110287480000000000
           Width = 27.212598430000000000
@@ -5614,11 +5685,13 @@ object BonCtrGestionF: TBonCtrGestionF
           Font.Height = -7
           Font.Name = 'Segoe UI'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '| [frxComptoirDB."time_bvctr"] |')
           ParentFont = False
         end
         object Memo14: TfrxMemoView
+          AllowVectorExport = True
           Left = 113.385900000000000000
           Top = 44.354360000000000000
           Width = 73.700794720000000000
@@ -5628,6 +5701,7 @@ object BonCtrGestionF: TBonCtrGestionF
           Font.Height = -9
           Font.Name = 'arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'TVA :')
@@ -5635,6 +5709,7 @@ object BonCtrGestionF: TBonCtrGestionF
           VAlign = vaCenter
         end
         object Memo15: TfrxMemoView
+          AllowVectorExport = True
           Left = 187.417347240000000000
           Top = 44.354360000000000000
           Width = 77.480324720000000000
@@ -5650,6 +5725,7 @@ object BonCtrGestionF: TBonCtrGestionF
           Font.Height = -11
           Font.Name = 'Segoe UI'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxComptoirDB."MontantTVA"]')
@@ -5659,6 +5735,7 @@ object BonCtrGestionF: TBonCtrGestionF
       end
       object ReportTitle1: TfrxReportTitle
         FillType = ftBrush
+        Frame.Typ = []
         Height = 133.063065350000000000
         Top = 18.897650000000000000
         Width = 275.905690000000000000
@@ -5666,6 +5743,7 @@ object BonCtrGestionF: TBonCtrGestionF
         Stretched = True
         object Name: TfrxMemoView
           Align = baCenter
+          AllowVectorExport = True
           Left = 7.559060000000000000
           Top = 60.252085670000000000
           Width = 260.787570000000000000
@@ -5677,6 +5755,7 @@ object BonCtrGestionF: TBonCtrGestionF
           Font.Height = -20
           Font.Name = 'arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Name')
@@ -5684,6 +5763,7 @@ object BonCtrGestionF: TBonCtrGestionF
         end
         object Logo: TfrxPictureView
           Align = baCenter
+          AllowVectorExport = True
           Left = 5.669295000000000000
           Top = 0.559059999999999000
           Width = 264.567100000000000000
@@ -5692,11 +5772,13 @@ object BonCtrGestionF: TBonCtrGestionF
           Center = True
           DataField = 'LOGO'
           DataSetName = 'S_ENTREP'
+          Frame.Typ = []
           HightQuality = False
           Transparent = True
           TransparentColor = clWhite
         end
         object Tel: TfrxMemoView
+          AllowVectorExport = True
           Left = 7.685045630000000000
           Top = 84.929190000000000000
           Width = 126.378034370000000000
@@ -5708,11 +5790,13 @@ object BonCtrGestionF: TBonCtrGestionF
           Font.Height = -12
           Font.Name = 'Segoe UI'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Tel:')
           ParentFont = False
         end
         object Mob: TfrxMemoView
+          AllowVectorExport = True
           Left = 142.110409530000000000
           Top = 84.929190000000000000
           Width = 126.236220470000000000
@@ -5724,6 +5808,7 @@ object BonCtrGestionF: TBonCtrGestionF
           Font.Height = -12
           Font.Name = 'Segoe UI'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Mob:')
@@ -5731,6 +5816,7 @@ object BonCtrGestionF: TBonCtrGestionF
         end
         object Adr: TfrxMemoView
           Align = baCenter
+          AllowVectorExport = True
           Left = 7.559060000000000000
           Top = 102.826840000000000000
           Width = 260.787570000000000000
@@ -5743,6 +5829,7 @@ object BonCtrGestionF: TBonCtrGestionF
           Font.Height = -12
           Font.Name = 'Segoe UI'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Adr')
@@ -5789,7 +5876,7 @@ object BonCtrGestionF: TBonCtrGestionF
     Top = 288
   end
   object ComptoirTicket57frxRprt: TfrxReport
-    Version = '5.6.1'
+    Version = '6.3.12'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick, pbNoClose, pbNoFullScreen, pbNoEmail]
@@ -5914,12 +6001,15 @@ object BonCtrGestionF: TBonCtrGestionF
       PaperSize = 256
       MirrorMargins = True
       DataSetName = 'MasterData'
+      Frame.Typ = []
+      MirrorMode = []
       VGuides.Strings = (
         '207.87415'
         '181.41744')
       OnBeforePrint = 'Page1OnBeforePrint'
       object PageHeader1: TfrxPageHeader
         FillType = ftBrush
+        Frame.Typ = []
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -9
@@ -5932,6 +6022,7 @@ object BonCtrGestionF: TBonCtrGestionF
         OnBeforePrint = 'PageHeader1OnBeforePrint'
         Stretched = True
         object Memo4: TfrxMemoView
+          AllowVectorExport = True
           Left = 100.488250000000000000
           Top = 8.976377950000000000
           Width = 39.685027170000000000
@@ -5942,6 +6033,7 @@ object BonCtrGestionF: TBonCtrGestionF
           Font.Name = 'Merchant Copy'
           Font.Style = [fsBold]
           Frame.Style = fsDashDot
+          Frame.Typ = []
           GapY = 4.000000000000000000
           HAlign = haRight
           Memo.UTF8W = (
@@ -5949,6 +6041,7 @@ object BonCtrGestionF: TBonCtrGestionF
           ParentFont = False
         end
         object Memo5: TfrxMemoView
+          AllowVectorExport = True
           Left = 78.031564410000000000
           Top = 8.976377950000000000
           Width = 24.566916930000000000
@@ -5959,6 +6052,7 @@ object BonCtrGestionF: TBonCtrGestionF
           Font.Name = 'Merchant Copy'
           Font.Style = [fsBold]
           Frame.Style = fsDashDot
+          Frame.Typ = []
           GapY = 4.000000000000000000
           HAlign = haCenter
           Memo.UTF8W = (
@@ -5966,6 +6060,7 @@ object BonCtrGestionF: TBonCtrGestionF
           ParentFont = False
         end
         object Memo2: TfrxMemoView
+          AllowVectorExport = True
           Left = 0.889763780000000000
           Top = 8.976377950000000000
           Width = 77.858238430000000000
@@ -5976,12 +6071,14 @@ object BonCtrGestionF: TBonCtrGestionF
           Font.Name = 'Merchant Copy'
           Font.Style = [fsBold]
           Frame.Style = fsDash
+          Frame.Typ = []
           GapY = 4.000000000000000000
           Memo.UTF8W = (
             'DESCRIPTION')
           ParentFont = False
         end
         object Line1: TfrxLineView
+          AllowVectorExport = True
           Left = 3.000000000000000000
           Top = 28.708720000000000000
           Width = 177.637910000000000000
@@ -5996,6 +6093,7 @@ object BonCtrGestionF: TBonCtrGestionF
           Frame.BottomLine.Color = clNone
         end
         object Line8: TfrxLineView
+          AllowVectorExport = True
           Left = 2.779530000000000000
           Top = 0.779529999999994100
           Width = 177.637910000000000000
@@ -6009,6 +6107,7 @@ object BonCtrGestionF: TBonCtrGestionF
           Frame.BottomLine.Color = clNone
         end
         object Memo18: TfrxMemoView
+          AllowVectorExport = True
           Left = 140.220426060000000000
           Top = 8.976377950000000000
           Width = 41.417483940000000000
@@ -6019,6 +6118,7 @@ object BonCtrGestionF: TBonCtrGestionF
           Font.Name = 'Merchant Copy'
           Font.Style = [fsBold]
           Frame.Style = fsDashDot
+          Frame.Typ = []
           GapY = 4.000000000000000000
           HAlign = haRight
           Memo.UTF8W = (
@@ -6028,12 +6128,14 @@ object BonCtrGestionF: TBonCtrGestionF
       end
       object PageFooter1: TfrxPageFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 7.015770000000000000
         Top = 502.677490000000000000
         Width = 188.976500000000000000
       end
       object MasterData1: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 22.677167800000000000
         Top = 264.567100000000000000
         Width = 188.976500000000000000
@@ -6042,6 +6144,7 @@ object BonCtrGestionF: TBonCtrGestionF
         RowCount = 0
         Stretched = True
         object Memo46: TfrxMemoView
+          AllowVectorExport = True
           Left = 78.031552210000000000
           Top = 2.889763780000010000
           Width = 24.566929130000000000
@@ -6058,6 +6161,7 @@ object BonCtrGestionF: TBonCtrGestionF
           Font.Height = -9
           Font.Name = 'Merchant Copy'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxComptoirListPDB."qut_p"]')
@@ -6066,6 +6170,7 @@ object BonCtrGestionF: TBonCtrGestionF
           VAlign = vaBottom
         end
         object Memo47: TfrxMemoView
+          AllowVectorExport = True
           Left = 100.488237800000000000
           Top = 2.889763780000010000
           Width = 39.685039370000000000
@@ -6082,6 +6187,7 @@ object BonCtrGestionF: TBonCtrGestionF
           Font.Height = -9
           Font.Name = 'Merchant Copy'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxComptoirListPDB."PrixVTTC"]')
@@ -6090,6 +6196,7 @@ object BonCtrGestionF: TBonCtrGestionF
           VAlign = vaBottom
         end
         object Memo24: TfrxMemoView
+          AllowVectorExport = True
           Left = 0.889763780000000000
           Top = 2.889763780000010000
           Width = 77.858267720000000000
@@ -6106,6 +6213,7 @@ object BonCtrGestionF: TBonCtrGestionF
           Font.Height = -7
           Font.Name = 'Segoe UI'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxComptoirListPDB."nomp"]')
           ParentFont = False
@@ -6113,6 +6221,7 @@ object BonCtrGestionF: TBonCtrGestionF
           VAlign = vaCenter
         end
         object Memo50: TfrxMemoView
+          AllowVectorExport = True
           Left = 140.063106850000000000
           Top = 2.889763780000010000
           Width = 41.574803150000000000
@@ -6129,6 +6238,7 @@ object BonCtrGestionF: TBonCtrGestionF
           Font.Height = -9
           Font.Name = 'Merchant Copy'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxComptoirListPDB."MontantTTC"]')
@@ -6139,6 +6249,7 @@ object BonCtrGestionF: TBonCtrGestionF
       end
       object Footer1: TfrxFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 132.370112910000000000
         Top = 309.921460000000000000
         Width = 188.976500000000000000
@@ -6146,6 +6257,7 @@ object BonCtrGestionF: TBonCtrGestionF
         OnBeforePrint = 'Footer1OnBeforePrint'
         Stretched = True
         object Memo61: TfrxMemoView
+          AllowVectorExport = True
           Left = 84.952794960000000000
           Top = 4.425191970000015000
           Width = 43.464554720000000000
@@ -6155,6 +6267,7 @@ object BonCtrGestionF: TBonCtrGestionF
           Font.Height = -8
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Total HT :')
@@ -6162,6 +6275,7 @@ object BonCtrGestionF: TBonCtrGestionF
           VAlign = vaCenter
         end
         object Memo62: TfrxMemoView
+          AllowVectorExport = True
           Left = 80.070914960000000000
           Top = 15.897636089999990000
           Width = 47.244084720000000000
@@ -6171,6 +6285,7 @@ object BonCtrGestionF: TBonCtrGestionF
           Font.Height = -8
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Remise :')
@@ -6178,6 +6293,7 @@ object BonCtrGestionF: TBonCtrGestionF
           VAlign = vaCenter
         end
         object Memo63: TfrxMemoView
+          AllowVectorExport = True
           Left = 80.070914960000000000
           Top = 40.511819319999970000
           Width = 47.244084720000000000
@@ -6187,6 +6303,7 @@ object BonCtrGestionF: TBonCtrGestionF
           Font.Height = -8
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Net a payer:')
@@ -6194,6 +6311,7 @@ object BonCtrGestionF: TBonCtrGestionF
           VAlign = vaCenter
         end
         object Memo67: TfrxMemoView
+          AllowVectorExport = True
           Left = 124.102362200000000000
           Top = 4.425191970000015000
           Width = 56.692908500000000000
@@ -6210,6 +6328,7 @@ object BonCtrGestionF: TBonCtrGestionF
           Font.Height = -8
           Font.Name = 'Helvetica LT Std'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxComptoirDB."montht_bvctr"]')
@@ -6217,6 +6336,7 @@ object BonCtrGestionF: TBonCtrGestionF
           VAlign = vaCenter
         end
         object Memo68: TfrxMemoView
+          AllowVectorExport = True
           Left = 124.102362200000000000
           Top = 17.787401090000000000
           Width = 56.692908500000000000
@@ -6233,6 +6353,7 @@ object BonCtrGestionF: TBonCtrGestionF
           Font.Height = -8
           Font.Name = 'Helvetica LT Std'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxComptoirDB."remise_bvctr"]')
@@ -6240,6 +6361,7 @@ object BonCtrGestionF: TBonCtrGestionF
           VAlign = vaCenter
         end
         object Memo69: TfrxMemoView
+          AllowVectorExport = True
           Left = 125.992125980000000000
           Top = 40.511819319999970000
           Width = 54.803144720000000000
@@ -6255,6 +6377,7 @@ object BonCtrGestionF: TBonCtrGestionF
           Font.Height = -8
           Font.Name = 'Helvetica LT Std'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxComptoirDB."montttc_bvctr"]')
@@ -6262,6 +6385,7 @@ object BonCtrGestionF: TBonCtrGestionF
           VAlign = vaCenter
         end
         object Memo1: TfrxMemoView
+          AllowVectorExport = True
           Left = 79.850493780000000000
           Top = 53.874028440000020000
           Width = 47.244084720000000000
@@ -6271,6 +6395,7 @@ object BonCtrGestionF: TBonCtrGestionF
           Font.Height = -8
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Versement :')
@@ -6278,6 +6403,7 @@ object BonCtrGestionF: TBonCtrGestionF
           VAlign = vaCenter
         end
         object Memo3: TfrxMemoView
+          AllowVectorExport = True
           Left = 124.102362200000000000
           Top = 53.874028440000020000
           Width = 56.692908500000000000
@@ -6294,6 +6420,7 @@ object BonCtrGestionF: TBonCtrGestionF
           Font.Height = -8
           Font.Name = 'Helvetica LT Std'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxComptoirDB."montver_bvctr"]')
@@ -6301,6 +6428,7 @@ object BonCtrGestionF: TBonCtrGestionF
           VAlign = vaCenter
         end
         object Memo6: TfrxMemoView
+          AllowVectorExport = True
           Left = 79.850493780000000000
           Top = 67.236237560000000000
           Width = 47.244084720000000000
@@ -6310,6 +6438,7 @@ object BonCtrGestionF: TBonCtrGestionF
           Font.Height = -8
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Rendu :')
@@ -6317,6 +6446,7 @@ object BonCtrGestionF: TBonCtrGestionF
           VAlign = vaCenter
         end
         object Memo7: TfrxMemoView
+          AllowVectorExport = True
           Left = 124.102362200000000000
           Top = 67.236237560000000000
           Width = 56.692908500000000000
@@ -6334,12 +6464,14 @@ object BonCtrGestionF: TBonCtrGestionF
           Font.Height = -8
           Font.Name = 'Helvetica LT Std'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxComptoirDB."MontantRen"]')
           ParentFont = False
         end
         object Memo8: TfrxMemoView
+          AllowVectorExport = True
           Left = 4.669291340000000000
           Top = 4.574827560000017000
           Width = 32.125967170000000000
@@ -6349,6 +6481,7 @@ object BonCtrGestionF: TBonCtrGestionF
           Font.Height = -7
           Font.Name = 'Helvetica LT Std'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Nb Prod:')
@@ -6356,6 +6489,7 @@ object BonCtrGestionF: TBonCtrGestionF
           VAlign = vaCenter
         end
         object Memo9: TfrxMemoView
+          AllowVectorExport = True
           Left = 33.692906060000000000
           Top = 4.574827560000017000
           Width = 58.582674720000000000
@@ -6367,12 +6501,14 @@ object BonCtrGestionF: TBonCtrGestionF
           Font.Height = -7
           Font.Name = 'Helvetica LT Std'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             '[COUNT(MasterData1)]')
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo10: TfrxMemoView
+          AllowVectorExport = True
           Left = 4.000000000000000000
           Top = 96.504020000000030000
           Width = 184.976500000000000000
@@ -6384,6 +6520,7 @@ object BonCtrGestionF: TBonCtrGestionF
           Font.Height = -12
           Font.Name = 'Merchant Copy'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'MERCI ET A BIENTOT')
@@ -6391,6 +6528,7 @@ object BonCtrGestionF: TBonCtrGestionF
           VAlign = vaBottom
         end
         object Memo11: TfrxMemoView
+          AllowVectorExport = True
           Left = 111.283574410000000000
           Top = 118.110287480000000000
           Width = 41.574805590000000000
@@ -6404,11 +6542,13 @@ object BonCtrGestionF: TBonCtrGestionF
           Font.Height = -4
           Font.Name = 'Segoe UI'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'N: [frxComptoirDB."num_bvctr"]')
           ParentFont = False
         end
         object Memo12: TfrxMemoView
+          AllowVectorExport = True
           Left = 4.000000000000000000
           Top = 118.110287480000000000
           Width = 34.015770000000000000
@@ -6423,11 +6563,13 @@ object BonCtrGestionF: TBonCtrGestionF
           Font.Height = -4
           Font.Name = 'Segoe UI'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Le: [frxComptoirDB."date_bvctr"]')
           ParentFont = False
         end
         object Client: TfrxMemoView
+          AllowVectorExport = True
           Left = 61.708651650000000000
           Top = 118.110287480000000000
           Width = 49.133890000000000000
@@ -6440,11 +6582,13 @@ object BonCtrGestionF: TBonCtrGestionF
           Font.Height = -4
           Font.Name = 'Segoe UI'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Client: [frxComptoirDB."clientbvctr"]')
           ParentFont = False
         end
         object Memo21: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.669291340000000000
           Top = 24.881877560000020000
           Width = 66.141737170000000000
@@ -6454,11 +6598,13 @@ object BonCtrGestionF: TBonCtrGestionF
           Font.Height = -7
           Font.Name = 'Helvetica LT Std'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Especes')
           ParentFont = False
         end
         object Agent: TfrxMemoView
+          AllowVectorExport = True
           Left = 152.976500000000000000
           Top = 118.110287480000000000
           Width = 35.905494720000000000
@@ -6471,11 +6617,13 @@ object BonCtrGestionF: TBonCtrGestionF
           Font.Height = -4
           Font.Name = 'Segoe UI'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Agent: [frxComptoirDB."Agent"]')
           ParentFont = False
         end
         object Line2: TfrxLineView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Width = 177.637910000000000000
           Color = clBlack
@@ -6489,6 +6637,7 @@ object BonCtrGestionF: TBonCtrGestionF
           Frame.BottomLine.Color = clNone
         end
         object Line3: TfrxLineView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 79.826840000000000000
           Width = 185.196970000000000000
@@ -6504,6 +6653,7 @@ object BonCtrGestionF: TBonCtrGestionF
           Frame.BottomLine.Color = clNone
         end
         object Line4: TfrxLineView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 96.724490000000000000
           Width = 185.196970000000000000
@@ -6519,6 +6669,7 @@ object BonCtrGestionF: TBonCtrGestionF
           Frame.BottomLine.Color = clNone
         end
         object MoneyWordRX: TfrxMemoView
+          AllowVectorExport = True
           Left = 4.338590000000000000
           Top = 82.606370000000030000
           Width = 183.307167170000000000
@@ -6529,12 +6680,14 @@ object BonCtrGestionF: TBonCtrGestionF
           Font.Height = -7
           Font.Name = 'High Tower Text'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Moeny in words')
           ParentFont = False
           VAlign = vaCenter
         end
         object Line7: TfrxLineView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 116.063080000000000000
           Width = 185.196970000000000000
@@ -6549,6 +6702,7 @@ object BonCtrGestionF: TBonCtrGestionF
           Frame.BottomLine.Color = clNone
         end
         object Line5: TfrxLineView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 129.299320000000000000
           Width = 185.196970000000000000
@@ -6562,6 +6716,7 @@ object BonCtrGestionF: TBonCtrGestionF
           Frame.BottomLine.Color = clNone
         end
         object Memo13: TfrxMemoView
+          AllowVectorExport = True
           Left = 37.692950000000000000
           Top = 118.110287480000000000
           Width = 23.433068430000000000
@@ -6576,11 +6731,13 @@ object BonCtrGestionF: TBonCtrGestionF
           Font.Height = -4
           Font.Name = 'Segoe UI'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '| [frxComptoirDB."time_bvctr"] |')
           ParentFont = False
         end
         object Memo14: TfrxMemoView
+          AllowVectorExport = True
           Left = 80.385900000000000000
           Top = 27.149610209999990000
           Width = 47.244084720000000000
@@ -6590,6 +6747,7 @@ object BonCtrGestionF: TBonCtrGestionF
           Font.Height = -8
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'TVA :')
@@ -6597,6 +6755,7 @@ object BonCtrGestionF: TBonCtrGestionF
           VAlign = vaCenter
         end
         object Memo15: TfrxMemoView
+          AllowVectorExport = True
           Left = 125.992125980000000000
           Top = 27.149610209999990000
           Width = 54.803144720000000000
@@ -6612,6 +6771,7 @@ object BonCtrGestionF: TBonCtrGestionF
           Font.Height = -8
           Font.Name = 'Helvetica LT Std'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxComptoirDB."MontantTVA"]')
@@ -6621,6 +6781,7 @@ object BonCtrGestionF: TBonCtrGestionF
       end
       object ReportTitle1: TfrxReportTitle
         FillType = ftBrush
+        Frame.Typ = []
         Height = 133.063065350000000000
         Top = 18.897650000000000000
         Width = 188.976500000000000000
@@ -6628,6 +6789,7 @@ object BonCtrGestionF: TBonCtrGestionF
         Stretched = True
         object Name: TfrxMemoView
           Align = baCenter
+          AllowVectorExport = True
           Left = -0.000000000000006370
           Top = 60.252085670000000000
           Width = 188.976500000000000000
@@ -6639,6 +6801,7 @@ object BonCtrGestionF: TBonCtrGestionF
           Font.Height = -24
           Font.Name = 'Merchant Copy'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Name')
@@ -6646,6 +6809,7 @@ object BonCtrGestionF: TBonCtrGestionF
         end
         object Logo: TfrxPictureView
           Align = baCenter
+          AllowVectorExport = True
           Left = 0.000061024999993636
           Top = 0.559059999999998800
           Width = 188.976377950000000000
@@ -6654,11 +6818,13 @@ object BonCtrGestionF: TBonCtrGestionF
           Center = True
           DataField = 'LOGO'
           DataSetName = 'S_ENTREP'
+          Frame.Typ = []
           HightQuality = False
           Transparent = True
           TransparentColor = clWhite
         end
         object Tel: TfrxMemoView
+          AllowVectorExport = True
           Left = 0.125985630000000000
           Top = 84.929190000000000000
           Width = 94.488188976378000000
@@ -6670,11 +6836,13 @@ object BonCtrGestionF: TBonCtrGestionF
           Font.Height = -16
           Font.Name = 'Merchant Copy'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Tel:')
           ParentFont = False
         end
         object Mob: TfrxMemoView
+          AllowVectorExport = True
           Left = 94.315109530000000000
           Top = 84.929190000000000000
           Width = 94.488188980000000000
@@ -6686,6 +6854,7 @@ object BonCtrGestionF: TBonCtrGestionF
           Font.Height = -16
           Font.Name = 'Merchant Copy'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Mob:')
@@ -6693,6 +6862,7 @@ object BonCtrGestionF: TBonCtrGestionF
         end
         object Adr: TfrxMemoView
           Align = baCenter
+          AllowVectorExport = True
           Left = -0.000000000000006370
           Top = 102.826840000000000000
           Width = 188.976500000000000000
@@ -6705,6 +6875,7 @@ object BonCtrGestionF: TBonCtrGestionF
           Font.Height = -9
           Font.Name = 'Segoe UI'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Adr')
