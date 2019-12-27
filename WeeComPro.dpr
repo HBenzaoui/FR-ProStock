@@ -79,7 +79,9 @@ uses
   PLU in 'PLU.pas',
   ShopName in 'ShopName.pas',
   UBonComAGestion in 'UBonComAGestion.pas' {BonComAGestionF},
-  UBonComA in 'UBonComA.pas' {BonComAF};
+  UBonComA in 'UBonComA.pas' {BonComAF},
+  UBonComVGestion in 'UBonComVGestion.pas' {BonComVGestionF},
+  UBonComV in 'UBonComV.pas' {BonComVF};
 
 {$R *.res}
 
