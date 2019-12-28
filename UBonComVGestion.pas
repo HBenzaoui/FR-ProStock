@@ -59,12 +59,12 @@ type
     ClearProduitBonComGBtn: TAdvToolButton;
     ValiderBVComBonComGImg: TsImage;
     Shape5: TShape;
-    BonLTotalTTCNewLbl: TLabel;
-    BonLTotalHTNewLbl: TLabel;
+    BonCVTotalTTCNewLbl: TLabel;
+    BonCVTotalHTNewLbl: TLabel;
     TotalTVANewLbl: TLabel;
     Label19: TLabel;
     ObserBonComGLbl: TLabel;
-    BonLRemiseHTNewLbl: TLabel;
+    BonCVRemiseHTNewLbl: TLabel;
     ValiderBVComBonComGLbl: TLabel;
     NameClientGErrorP: TPanel;
     Panel7: TPanel;
@@ -151,14 +151,14 @@ type
     N1: TMenuItem;
     RequiredMPGlbl: TLabel;
     RequiredCompteGlbl: TLabel;
-    BondeLivraison1: TMenuItem;
-    BondeLivraisonhorstaxe1: TMenuItem;
+    BondeCommande1: TMenuItem;
+    BondeCommandehorstaxe1: TMenuItem;
     BondeCaisseSimple2: TMenuItem;
     ApplicationEvents1: TApplicationEvents;
     Label25: TLabel;
     Timer2: TTimer;
     BonComPListfrxRprtA5: TfrxReport;
-    Bondelivraison2: TMenuItem;
+    BondeCommande2: TMenuItem;
     Label26: TLabel;
     Label27: TLabel;
     Label28: TLabel;
@@ -167,8 +167,8 @@ type
     Label31: TLabel;
     Label32: TLabel;
     N2: TMenuItem;
-    Bondelivraison3: TMenuItem;
-    BonComPListLivSimplefrxRprt: TfrxReport;
+    BondeCommande3: TMenuItem;
+    BonComPListComSimplefrxRprt: TfrxReport;
     ListClientBonComGBtn: TAdvToolButton;
     BonComTotalAHTLbl: TLabel;
     Bondecaissesimple3: TMenuItem;
@@ -228,15 +228,15 @@ type
     procedure BondeRception1Click(Sender: TObject);
     procedure BondeCaisseSimple1Click(Sender: TObject);
     procedure ModePaieBonComGCbxChange(Sender: TObject);
-    procedure BondeLivraison1Click(Sender: TObject);
-    procedure BondeLivraisonhorstaxe1Click(Sender: TObject);
+    procedure BondeCommande1Click(Sender: TObject);
+    procedure BondeCommandehorstaxe1Click(Sender: TObject);
     procedure BondeCaisseSimple2Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure ApplicationEvents1ShortCut(var Msg: TWMKey; var Handled: Boolean);
     procedure Timer2Timer(Sender: TObject);
-    procedure Bondelivraison2Click(Sender: TObject);
+    procedure BondeCommande2Click(Sender: TObject);
     procedure ResherchPARDesProduitsRdioBtnClick(Sender: TObject);
-    procedure Bondelivraison3Click(Sender: TObject);
+    procedure BondeCommande3Click(Sender: TObject);
     procedure ListClientBonComGBtnClick(Sender: TObject);
     procedure ProduitsListDBGridEhKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
@@ -1901,7 +1901,7 @@ begin
         end;
         if indexP = 1 then
         begin
-         Bondelivraison2Click(Screen);
+         BondeCommande2Click(Screen);
         end;
         if indexP = 2 then
         begin
@@ -1909,7 +1909,7 @@ begin
         end;
         if indexP = 3 then
         begin
-         Bondelivraison3Click(Screen);
+         BondeCommande3Click(Screen);
         end;
         if indexP = 4 then
         begin
@@ -1921,11 +1921,11 @@ begin
         end;
         if indexP = 6 then
         begin
-         BondeLivraison1Click(Screen);
+         BondeCommande1Click(Screen);
         end;
         if indexP = 7 then
         begin
-         BondeLivraisonhorstaxe1Click(Screen);
+         BondeCommandehorstaxe1Click(Screen);
         end;
         if indexP = 8 then
         begin
@@ -2288,7 +2288,7 @@ end;
 
 end;
 
-procedure TBonComVGestionF.BondeLivraison1Click(Sender: TObject);
+procedure TBonComVGestionF.BondeCommande1Click(Sender: TObject);
  var
 NEWCredit,OLDCredit,NEWCreditLbl,OLDCreditLbl  , TotalACHAT,Versement,TotalACHATLbl,VersementLbl  : TfrxMemoView;
 LineCredit :TfrxShapeView;
@@ -2329,7 +2329,7 @@ MainForm.bonv_com_listTable.EnableControls;
 end;
 end;
 
-procedure TBonComVGestionF.Bondelivraison2Click(Sender: TObject);
+procedure TBonComVGestionF.BondeCommande2Click(Sender: TObject);
  var
 NEWCredit,OLDCredit,NEWCreditLbl,OLDCreditLbl , TotalACHAT,Versement,TotalACHATLbl,VersementLbl   : TfrxMemoView;
 LineCredit :TfrxShapeView;
@@ -2369,7 +2369,7 @@ if ValiderBVComBonComGImg.ImageIndex <> 1 then
  end;
 end;
 
-procedure TBonComVGestionF.Bondelivraison3Click(Sender: TObject);
+procedure TBonComVGestionF.BondeCommande3Click(Sender: TObject);
  var
 NEWCredit,OLDCredit,NEWCreditLbl,OLDCreditLbl  , TotalACHAT,Versement,TotalACHATLbl,VersementLbl  : TfrxMemoView;
 LineCredit :TfrxShapeView;
@@ -2379,31 +2379,31 @@ if ValiderBVComBonComGImg.ImageIndex <> 1 then
 MainForm.bonv_com_listTable.DisableControls;
  GettingDataBLSimple;
 
-   OLDCredit:= BonComPListLivSimplefrxRprt.FindObject('OLDCredit') as TfrxMemoView;
+   OLDCredit:= BonComPListComSimplefrxRprt.FindObject('OLDCredit') as TfrxMemoView;
   OLDCredit.Visible:= True;
-  NEWCredit:= BonComPListLivSimplefrxRprt.FindObject('NEWCredit') as TfrxMemoView;
+  NEWCredit:= BonComPListComSimplefrxRprt.FindObject('NEWCredit') as TfrxMemoView;
   NEWCredit.Visible:= True;
-  OLDCreditLbl:= BonComPListLivSimplefrxRprt.FindObject('OLDCreditLbl') as TfrxMemoView;
+  OLDCreditLbl:= BonComPListComSimplefrxRprt.FindObject('OLDCreditLbl') as TfrxMemoView;
   OLDCreditLbl.Visible:= True;
-  NEWCreditLbl:= BonComPListLivSimplefrxRprt.FindObject('NEWCreditLbl') as TfrxMemoView;
+  NEWCreditLbl:= BonComPListComSimplefrxRprt.FindObject('NEWCreditLbl') as TfrxMemoView;
   NEWCreditLbl.Visible:= True;
 
-  TotalACHAT:= BonComPListLivSimplefrxRprt.FindObject('TotalACHAT') as TfrxMemoView;
+  TotalACHAT:= BonComPListComSimplefrxRprt.FindObject('TotalACHAT') as TfrxMemoView;
   TotalACHAT.Visible:= True;
-  Versement:= BonComPListLivSimplefrxRprt.FindObject('Versement') as TfrxMemoView;
+  Versement:= BonComPListComSimplefrxRprt.FindObject('Versement') as TfrxMemoView;
   Versement.Visible:= True;
 
-  TotalACHATLbl:= BonComPListLivSimplefrxRprt.FindObject('TotalACHATLbl') as TfrxMemoView;
+  TotalACHATLbl:= BonComPListComSimplefrxRprt.FindObject('TotalACHATLbl') as TfrxMemoView;
   TotalACHATLbl.Visible:= True;
-  VersementLbl:= BonComPListLivSimplefrxRprt.FindObject('VersementLbl') as TfrxMemoView;
+  VersementLbl:= BonComPListComSimplefrxRprt.FindObject('VersementLbl') as TfrxMemoView;
   VersementLbl.Visible:= True;
 
-  LineCredit:= BonComPListLivSimplefrxRprt.FindObject('LineCredit') as TfrxShapeView;
+  LineCredit:= BonComPListComSimplefrxRprt.FindObject('LineCredit') as TfrxShapeView;
   LineCredit.Visible:= True;
 
-BonComPListLivSimplefrxRprt.PrepareReport;
+BonComPListComSimplefrxRprt.PrepareReport;
 //BonComPListfrxRprt.PrintOptions.ShowDialog := False;
-BonComPListLivSimplefrxRprt.ShowReport;
+BonComPListComSimplefrxRprt.ShowReport;
 
 //BonComPListfrxRprt.Print;   // this is to print directly
 MainForm.bonv_com_listTable.EnableControls;
@@ -2411,7 +2411,7 @@ end;
 
 end;
 
-procedure TBonComVGestionF.BondeLivraisonhorstaxe1Click(Sender: TObject);
+procedure TBonComVGestionF.BondeCommandehorstaxe1Click(Sender: TObject);
  var
 NEWCredit,OLDCredit,NEWCreditLbl,OLDCreditLbl   , TotalACHAT,Versement,TotalACHATLbl,VersementLbl  : TfrxMemoView;
 LineCredit :TfrxShapeView;
@@ -2596,7 +2596,7 @@ ProduitBonComGCbx.SetFocus;
 end;
 
 procedure TBonComVGestionF.RemisePerctageBonComGEdtChange(Sender: TObject);
-var BonLTotalHT,RemisePerctageBonCom,TotalTVANet,NewHT,NewTVA,NewTTC,Remise,OldTTC,OldClientCredit : Currency;
+var BonCVTotalHT,RemisePerctageBonCom,TotalTVANet,NewHT,NewTVA,NewTTC,Remise,OldTTC,OldClientCredit : Currency;
 begin
 //------ this is to set the remise on tyhe prix HT ---------//
 
@@ -2611,17 +2611,17 @@ begin
             end;
             if BonComTotalHTLbl.Caption<>'' then
             begin
-            BonLTotalHT:=StrToFloat (StringReplace(BonComTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
+            BonCVTotalHT:=StrToFloat (StringReplace(BonComTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
             end;
             if TotalTVANewLbl.Caption <> '' then
             begin
             TotalTVANet:=StrToFloat(StringReplace(TotalTVANewLbl.Caption, #32, '', [rfReplaceAll]));
             end;
          BonComTotalTVALbl.Caption:= FloatToStrF(Round(TotalTVANet - (( TotalTVANet  * RemisePerctageBonCom)/(100))),ffNumber,14,2); //TVA
-         BonLTotalHTNewLbl.Caption:= FloatToStrF(Round(BonLTotalHT - (( BonLTotalHT  * RemisePerctageBonCom)/(100))),ffNumber,14,2); //HT
-            if BonLTotalHTNewLbl.Caption <>'' then
+         BonCVTotalHTNewLbl.Caption:= FloatToStrF(Round(BonCVTotalHT - (( BonCVTotalHT  * RemisePerctageBonCom)/(100))),ffNumber,14,2); //HT
+            if BonCVTotalHTNewLbl.Caption <>'' then
             begin
-            NewHT:=StrToFloat (StringReplace(BonLTotalHTNewLbl.Caption , #32, '', [rfReplaceAll]));
+            NewHT:=StrToFloat (StringReplace(BonCVTotalHTNewLbl.Caption , #32, '', [rfReplaceAll]));
             end;
             if BonComTotalTVALbl.Caption <> '' then
             begin
@@ -2631,10 +2631,10 @@ begin
 //         BonComResteLbl.Caption:= BonComTotalTTCLbl.Caption;                       //REst
             if RemisePerctageBonComGEdt.Focused then
             begin
-            RemiseBonComGEdt.Text:=FloatToStrF((BonLTotalHT - NewHT),ffNumber,14,2);
+            RemiseBonComGEdt.Text:=FloatToStrF((BonCVTotalHT - NewHT),ffNumber,14,2);
             end;
 
-        BonLRemiseHTNewLbl.Caption:= FloatToStrF((BonLTotalHT - NewHT),ffNumber,14,2);
+        BonCVRemiseHTNewLbl.Caption:= FloatToStrF((BonCVTotalHT - NewHT),ffNumber,14,2);
 
             if BonComGClientOLDCredit.Caption <>'' then
             begin
@@ -2647,18 +2647,18 @@ begin
           begin
            if BonComTotalHTLbl.Caption<>'' then
            begin
-           BonLTotalHT:=StrToFloat (StringReplace(BonComTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
+           BonCVTotalHT:=StrToFloat (StringReplace(BonComTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
            end;
            if TotalTVANewLbl.Caption <> '' then
            begin
            TotalTVANet:=StrToFloat(StringReplace(TotalTVANewLbl.Caption, #32, '', [rfReplaceAll]));
            end;
-            BonComTotalTTCLbl.Caption:=FloatToStrF((BonLTotalHT + TotalTVANet ),ffNumber,14,2);
+            BonComTotalTTCLbl.Caption:=FloatToStrF((BonCVTotalHT + TotalTVANet ),ffNumber,14,2);
 //            BonComResteLbl.Caption:= BonComTotalTTCLbl.Caption;
             BonComTotalTVALbl.Caption := TotalTVANewLbl.Caption;
             RemiseBonComGEdt.Text:='';
-            BonLRemiseHTNewLbl.Caption:='0';
-            BonLTotalHTNewLbl.Caption:=BonComTotalHTLbl.Caption;
+            BonCVRemiseHTNewLbl.Caption:='0';
+            BonCVTotalHTNewLbl.Caption:=BonComTotalHTLbl.Caption;
 
             if BonComGClientOLDCredit.Caption <>'' then
             begin
@@ -2689,11 +2689,11 @@ begin
             NewHT:=StrToFloat (StringReplace(BonComTotalHTLbl.Caption , #32, '', [rfReplaceAll]));  //TTC
             end;
          BonComTotalTVALbl.Caption:= FloatToStrF(( NewTVA - ((RemisePerctageBonCom/100) * NewTVA)),ffNumber,14,2);
-         BonlTotalHTNewLbl.Caption:= FloatToStrF(( NewHT - ((RemisePerctageBonCom/100) * NewHT)),ffNumber,14,2);
+         BonCVTotalHTNewLbl.Caption:= FloatToStrF(( NewHT - ((RemisePerctageBonCom/100) * NewHT)),ffNumber,14,2);
          BonComTotalTTCLbl.Caption:= FloatToStrF((( NewHT - ((RemisePerctageBonCom/100) * NewHT))+( NewTVA - ((RemisePerctageBonCom/100) * NewTVA))),ffNumber,14,2);
-            if BonLTotalTTCNewLbl.Caption <>'' then
+            if BonCVTotalTTCNewLbl.Caption <>'' then
             begin
-            OldTTC:=StrToFloat (StringReplace(BonLTotalTTCNewLbl.Caption , #32, '', [rfReplaceAll]));  //TTC
+            OldTTC:=StrToFloat (StringReplace(BonCVTotalTTCNewLbl.Caption , #32, '', [rfReplaceAll]));  //TTC
             end;
             if BonComTotalTTCLbl.Caption <>'' then
             begin
@@ -2709,12 +2709,12 @@ begin
 
            if BonComTotalHTLbl.Caption <>'' then
             begin
-            BonLTotalHT:=StrToFloat (StringReplace(BonComTotalHTLbl.Caption , #32, '', [rfReplaceAll]));
+            BonCVTotalHT:=StrToFloat (StringReplace(BonComTotalHTLbl.Caption , #32, '', [rfReplaceAll]));
             end;
 
-         NewHT:=StrToFloat (StringReplace(BonLTotalHTNewLbl.Caption , #32, '', [rfReplaceAll]));  //
+         NewHT:=StrToFloat (StringReplace(BonCVTotalHTNewLbl.Caption , #32, '', [rfReplaceAll]));  //
 
-        BonLRemiseHTNewLbl.Caption:= FloatToStrF((BonLTotalHT - NewHT),ffNumber,14,2);
+        BonCVRemiseHTNewLbl.Caption:= FloatToStrF((BonCVTotalHT - NewHT),ffNumber,14,2);
 
             if BonComGClientOLDCredit.Caption <>'' then
             begin
@@ -2725,11 +2725,11 @@ begin
         end else
             begin
              RemiseBonComGEdt.Text:='';
-             BonLRemiseHTNewLbl.Caption:='0';
-             BonComTotalTTCLbl.Caption := BonLTotalTTCNewLbl.Caption;
+             BonCVRemiseHTNewLbl.Caption:='0';
+             BonComTotalTTCLbl.Caption := BonCVTotalTTCNewLbl.Caption;
 //             BonComResteLbl.Caption:=BonComTotalTTCLbl.Caption;
              BonComTotalTVALbl.Caption:=TotalTVANewLbl.Caption;
-             BonLTotalHTNewLbl.Caption:=BonComTotalHTLbl.Caption;
+             BonCVTotalHTNewLbl.Caption:=BonComTotalHTLbl.Caption;
 
               if BonComGClientOLDCredit.Caption <>'' then
               begin
@@ -2823,7 +2823,7 @@ RemiseBonComGEdt.SelectAll;
 end;
 
 procedure TBonComVGestionF.RemiseBonComGEdtChange(Sender: TObject);
-var RemiseBonComG,BonLTotalHT,BonLTotalTVA,OLDTTC : Currency;
+var RemiseBonComG,BonCVTotalHT,BonCVTotalTVA,OLDTTC : Currency;
 begin
 if RemiseBonComGEdt.Focused then
  begin
@@ -2837,28 +2837,28 @@ if RemiseBonComGEdt.Focused then
        begin
          if BonComTotalHTLbl.Caption<>'' then
          begin
-         BonLTotalHT:=StrToFloat (StringReplace(BonComTotalHTLbl.Caption, #32, '', [rfReplaceAll]))  ;
+         BonCVTotalHT:=StrToFloat (StringReplace(BonComTotalHTLbl.Caption, #32, '', [rfReplaceAll]))  ;
          end;
          if BonComTotalTVALbl.Caption<>'' then
          begin
-          BonLTotalTVA:=StrToFloat (StringReplace(BonComTotalTVALbl.Caption, #32, '', [rfReplaceAll]));
+          BonCVTotalTVA:=StrToFloat (StringReplace(BonComTotalTVALbl.Caption, #32, '', [rfReplaceAll]));
          end;
-         RemisePerctageBonComGEdt.Text := FloatToStrF(((RemiseBonComG / BonLTotalHT) * 100),ffNumber,14,2) ;
+         RemisePerctageBonComGEdt.Text := FloatToStrF(((RemiseBonComG / BonCVTotalHT) * 100),ffNumber,14,2) ;
            end;
 
       if RemiseTypeBonComGCbx.ItemIndex = 1 then
         begin
-         if BonLTotalTTCNewLbl.Caption<>'' then
+         if BonCVTotalTTCNewLbl.Caption<>'' then
          begin
-          OLDTTC:=StrToFloat (StringReplace(BonLTotalTTCNewLbl.Caption, #32, '', [rfReplaceAll]));
+          OLDTTC:=StrToFloat (StringReplace(BonCVTotalTTCNewLbl.Caption, #32, '', [rfReplaceAll]));
          end;
         RemisePerctageBonComGEdt.Text := FloatToStrF(((RemiseBonComG / OLDTTC) * 100),ffNumber,14,2) ;
         end;
     end else
         begin
-          BonLRemiseHTNewLbl.Caption:='0';
+          BonCVRemiseHTNewLbl.Caption:='0';
           RemisePerctageBonComGEdt.Text:='';
-          BonLTotalHTNewLbl.Caption:=BonComTotalHTLbl.Caption;
+          BonCVTotalHTNewLbl.Caption:=BonComTotalHTLbl.Caption;
         end;
  end;
 end;
@@ -4038,23 +4038,23 @@ begin
   if NOT (MainForm.CompanyTable.IsEmpty) then
   begin
 
-    Name:= BonComPListLivSimplefrxRprt.FindObject('Name') as TfrxMemoView;
+    Name:= BonComPListComSimplefrxRprt.FindObject('Name') as TfrxMemoView;
     Name.Text:= MainForm.CompanyTable.FieldByName('nom_comp').AsString ;
     Name.Visible:=True;
 
-    Tel:= BonComPListLivSimplefrxRprt.FindObject('Tel') as TfrxMemoView;
+    Tel:= BonComPListComSimplefrxRprt.FindObject('Tel') as TfrxMemoView;
     Tel.Text:= MainForm.CompanyTable.FieldByName('fix_comp').AsString ;
     Tel.Visible:=True;
 
-      Mob:= BonComPListLivSimplefrxRprt.FindObject('Mob') as TfrxMemoView;
+      Mob:= BonComPListComSimplefrxRprt.FindObject('Mob') as TfrxMemoView;
     Mob.Text:= MainForm.CompanyTable.FieldByName('mob_comp').AsString ;
     Mob.Visible:=True;
 
-      Adr:= BonComPListLivSimplefrxRprt.FindObject('Adr') as TfrxMemoView;
+      Adr:= BonComPListComSimplefrxRprt.FindObject('Adr') as TfrxMemoView;
     Adr.Text:= MainForm.CompanyTable.FieldByName('adr_comp').AsString ;
     Adr.Visible:=True;
 
-      Logo:= BonComPListLivSimplefrxRprt.FindObject('Logo') as TfrxPictureView;
+      Logo:= BonComPListComSimplefrxRprt.FindObject('Logo') as TfrxPictureView;
       Logo.Visible:=True;
 
         if (MainForm.CompanyTable.fieldbyname('logo_comp').Value <> null) then
@@ -4081,25 +4081,25 @@ begin
 
 
 
-  NumRX:= BonComPListLivSimplefrxRprt.FindObject('NumRX') as TfrxMemoView;
+  NumRX:= BonComPListComSimplefrxRprt.FindObject('NumRX') as TfrxMemoView;
   NumRX.Text:= NumBonComGEdt.Caption;
 
-  DateRX:= BonComPListLivSimplefrxRprt.FindObject('DateRX') as TfrxMemoView;
+  DateRX:= BonComPListComSimplefrxRprt.FindObject('DateRX') as TfrxMemoView;
   DateRX.Text:= DateToStr(DateBonComGD.Date);
 
-  NameRX:= BonComPListLivSimplefrxRprt.FindObject('NameRX') as TfrxMemoView;
+  NameRX:= BonComPListComSimplefrxRprt.FindObject('NameRX') as TfrxMemoView;
   NameRX.Text:= ClientBonComGCbx.Text;
 
 
-  MPRX:= BonComPListLivSimplefrxRprt.FindObject('MPRX') as TfrxMemoView;
+  MPRX:= BonComPListComSimplefrxRprt.FindObject('MPRX') as TfrxMemoView;
   MPRX.Text:= ModePaieBonComGCbx.Text;
 
 
-  OLDCredit:= BonComPListLivSimplefrxRprt.FindObject('OLDCredit') as TfrxMemoView;
+  OLDCredit:= BonComPListComSimplefrxRprt.FindObject('OLDCredit') as TfrxMemoView;
   OLDCredit.Text:= BonComGClientOLDCredit.Caption;
 
 
-  NEWCredit:= BonComPListLivSimplefrxRprt.FindObject('NEWCredit') as TfrxMemoView;
+  NEWCredit:= BonComPListComSimplefrxRprt.FindObject('NEWCredit') as TfrxMemoView;
   NEWCredit.Text:= BonComGClientNEWCredit.Caption;
 
  end;

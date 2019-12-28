@@ -4254,19 +4254,19 @@ object BonComVGestionF: TBonComVGestionF
       ImageIndex = 32
       OnClick = B1Click
     end
-    object Bondecommande2: TMenuItem
+    object BondeCommande2: TMenuItem
       Caption = 'Commande Client (A5)'
       ImageIndex = 32
-      OnClick = Bondecommande2Click
+      OnClick = BondeCommande2Click
     end
     object BondeRception1: TMenuItem
       Caption = 'Commande Client hors taxe'
       ImageIndex = 32
       OnClick = BondeRception1Click
     end
-    object Bondecommande3: TMenuItem
+    object BondeCommande3: TMenuItem
       Caption = 'Commande Client simple'
-      OnClick = Bondecommande3Click
+      OnClick = BondeCommande3Click
     end
     object BondeCaisseSimple1: TMenuItem
       Caption = 'Bon de r'#232'glement'
@@ -4279,13 +4279,13 @@ object BonComVGestionF: TBonComVGestionF
     object N1: TMenuItem
       Caption = '-'
     end
-    object Bondecommande1: TMenuItem
+    object BondeCommande1: TMenuItem
       Caption = 'Commande Client sans les cr'#233'dits'
-      OnClick = Bondecommande1Click
+      OnClick = BondeCommande1Click
     end
-    object Bondecommandehorstaxe1: TMenuItem
+    object BondeCommandehorstaxe1: TMenuItem
       Caption = 'Commande Client hors taxe sans les cr'#233'dits'
-      OnClick = Bondecommandehorstaxe1Click
+      OnClick = BondeCommandehorstaxe1Click
     end
     object BondeCaisseSimple2: TMenuItem
       Caption = 'Bon de caisse sans les cr'#233'dits'
