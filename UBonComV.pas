@@ -168,7 +168,7 @@ var
 implementation
 
 uses
-  UMainF, UBonLivGestion, USplashAddUnite,  UClientGestion, USplash,Threading,
+  UMainF, UBonComVGestion, USplashAddUnite,  UClientGestion, USplash,Threading,
   USplashVersement, UProduitsList;
 
 {$R *.dfm}
@@ -665,9 +665,9 @@ codeBL:= 0;
           begin
             DataModuleF.Bonv_comTable.Last;
             codeBL := DataModuleF.Bonv_comTable.FieldValues['code_bvcom'];
-            MainForm.SQLQuery.Active:=False;    // if soemthig went wrong change it  back to Bonv_liv_listTable
+            MainForm.SQLQuery.Active:=False;    // if soemthig went wrong change it  back to bonv_com_listTable
             MainForm.SQLQuery.SQL.Clear;
-            MainForm.SQLQuery.SQL.Text:= 'SELECT code_bvcom FROM bonv_liv_list WHERE code_bvcom = ' + IntToStr(codeBL);
+            MainForm.SQLQuery.SQL.Text:= 'SELECT code_bvcom FROM bonv_com_list WHERE code_bvcom = ' + IntToStr(codeBL);
             MainForm.SQLQuery.Active:=True;
 
            if MainForm.SQLQuery.RecNo <= 0 then
@@ -838,13 +838,13 @@ begin
     BonComVGestionF := TBonComVGestionF.Create(nil);
     try
        DataModuleF.Bonv_com_listTable.Active := True;
-       BonComVGestionF.NumBonLivGEdt.Caption := DataModuleF.Bonv_comTable.FieldByName('num_bvcom').AsString;
-       BonComVGestionF.DateBonLivGD.Date:= DataModuleF.Bonv_comTable.FieldValues['date_bvcom'];
-       BonComVGestionF.ObserBonLivGMem.Lines.Text := DataModuleF.Bonv_comTable.FieldByName('obser_bvcom').AsString;
+       BonComVGestionF.NumBonComVGEdt.Caption := DataModuleF.Bonv_comTable.FieldByName('num_bvcom').AsString;
+       BonComVGestionF.DateBonComVGD.Date:= DataModuleF.Bonv_comTable.FieldValues['date_bvcom'];
+       BonComVGestionF.ObserBonComVGMem.Lines.Text := DataModuleF.Bonv_comTable.FieldByName('obser_bvcom').AsString;
        if (DataModuleF.Bonv_comTable.FieldValues['code_c']<> null) and (DataModuleF.Bonv_comTable.FieldValues['code_c']<> 0) then
        begin
        CodeC:=DataModuleF.Bonv_comTable.FieldValues['code_c'];
-       BonComVGestionF.ClientBonLivGCbx.Text:= DataModuleF.Bonv_comTable.FieldValues['clientbvcom'];
+       BonComVGestionF.ClientBonComVGCbx.Text:= DataModuleF.Bonv_comTable.FieldValues['clientbvcom'];
 
         end;
 
@@ -855,7 +855,7 @@ begin
          MainForm.Mode_paiementTable.SQL.Clear;
          MainForm.Mode_paiementTable.SQL.Text:='Select * FROM mode_paiement WHERE code_mdpai ='+(IntToStr( CodeC ) ) ;
          MainForm.Mode_paiementTable.Active:=True;
-         BonComVGestionF.ModePaieBonLivGCbx.Text:= MainForm.Mode_paiementTable.FieldValues['nom_mdpai'];
+         BonComVGestionF.ModePaieBonComVGCbx.Text:= MainForm.Mode_paiementTable.FieldValues['nom_mdpai'];
          MainForm.Mode_paiementTable.Active:=false;
          MainForm.Mode_paiementTable.SQL.Clear;
          MainForm.Mode_paiementTable.SQL.Text:='SELECT * FROM mode_paiement ' ;
@@ -869,7 +869,7 @@ begin
          MainForm.CompteTable.SQL.Clear;
          MainForm.CompteTable.SQL.Text:='Select * FROM compte WHERE code_cmpt ='+(IntToStr( CodeC ) ) ;
          MainForm.CompteTable.Active:=True;
-         BonComVGestionF.CompteBonLivGCbx.Text:= MainForm.CompteTable.FieldValues['nom_cmpt'];
+         BonComVGestionF.CompteBonComVGCbx.Text:= MainForm.CompteTable.FieldValues['nom_cmpt'];
          MainForm.CompteTable.Active:=false;
          MainForm.CompteTable.SQL.Clear;
          MainForm.CompteTable.SQL.Text:='SELECT * FROM compte ' ;
@@ -877,47 +877,47 @@ begin
        end;
        if (DataModuleF.Bonv_comTable.FieldValues['num_cheque_bvcom']<> null)  then
        begin
-        BonComVGestionF.NChequeBonLivGCbx.Text:= DataModuleF.Bonv_comTable.FieldValues['num_cheque_bvcom'];
+        BonComVGestionF.NChequeBonComVGCbx.Text:= DataModuleF.Bonv_comTable.FieldValues['num_cheque_bvcom'];
 
        end;
 
 
      if (DataModuleF.Bonv_comTable.FieldValues['RemisePerc']<> null) AND (DataModuleF.Bonv_comTable.FieldValues['remise_bvcom']<> 0) then
      begin
-     BonComVGestionF.RemisePerctageBonLivGEdt.Text :=     CurrToStrF(DataModuleF.Bonv_comTable.FieldValues['RemisePerc'], ffNumber, 2);
-      BonComVGestionF.RemiseBonLivGEdt.Text :=     CurrToStrF(DataModuleF.Bonv_comTable.FieldValues['remise_bvcom'], ffNumber, 2);
+     BonComVGestionF.RemisePerctageBonComVGEdt.Text :=     CurrToStrF(DataModuleF.Bonv_comTable.FieldValues['RemisePerc'], ffNumber, 2);
+      BonComVGestionF.RemiseBonComVGEdt.Text :=     CurrToStrF(DataModuleF.Bonv_comTable.FieldValues['remise_bvcom'], ffNumber, 2);
      end;
 
        if (DataModuleF.Bonv_comTable.FieldValues['montht_bvcom']<> null) then
        begin
-      BonComVGestionF.BonLivTotalHTLbl.Caption :=    CurrToStrF(DataModuleF.Bonv_comTable.FieldValues['montht_bvcom'], ffNumber, 2);
+      BonComVGestionF.BonComVTotalHTLbl.Caption :=    CurrToStrF(DataModuleF.Bonv_comTable.FieldValues['montht_bvcom'], ffNumber, 2);
        end;
       if (DataModuleF.Bonv_comTable.FieldValues['MontantTVA']<> null) then
        begin
-      BonComVGestionF.BonLivTotalTVALbl.Caption :=   CurrToStrF(DataModuleF.Bonv_comTable.FieldValues['MontantTVA'], ffNumber, 2);
+      BonComVGestionF.BonComVTotalTVALbl.Caption :=   CurrToStrF(DataModuleF.Bonv_comTable.FieldValues['MontantTVA'], ffNumber, 2);
        end;
        if (DataModuleF.Bonv_comTable.FieldValues['montttc_bvcom']<> null) then
        begin
-      BonComVGestionF.BonLivTotalTTCLbl.Caption :=   CurrToStrF(DataModuleF.Bonv_comTable.FieldValues['montttc_bvcom'], ffNumber, 2);
+      BonComVGestionF.BonComVTotalTTCLbl.Caption :=   CurrToStrF(DataModuleF.Bonv_comTable.FieldValues['montttc_bvcom'], ffNumber, 2);
        end;
        if (DataModuleF.Bonv_comTable.FieldValues['montver_bvcom']<> null) then
        begin
-      BonComVGestionF.BonLivRegleLbl.Caption :=      CurrToStrF(DataModuleF.Bonv_comTable.FieldValues['montver_bvcom'], ffNumber, 2);
+      BonComVGestionF.BonComVRegleLbl.Caption :=      CurrToStrF(DataModuleF.Bonv_comTable.FieldValues['montver_bvcom'], ffNumber, 2);
        end;
        if (DataModuleF.Bonv_comTable.FieldValues['MontantRes']<> null) then
        begin
-      BonComVGestionF.BonLivResteLbl.Caption :=      CurrToStrF(DataModuleF.Bonv_comTable.FieldValues['MontantRes'], ffNumber, 2);
+      BonComVGestionF.BonComVResteLbl.Caption :=      CurrToStrF(DataModuleF.Bonv_comTable.FieldValues['MontantRes'], ffNumber, 2);
        end;
 
 
 
        if DataModuleF.Bonv_comTable.FieldByName('valider_bvcom').AsBoolean = True then
        begin
-        FSplashVersement.DisableBonLiv;
+        FSplashVersement.DisableBonComV;
        end else
            begin
-            BonComVGestionF.EnableBonLiv;
-            BonComVGestionF.ProduitBonLivGCbx.TabOrder:=0;
+            BonComVGestionF.EnableBonComV;
+            BonComVGestionF.ProduitBonComVGCbx.TabOrder:=0;
 
            end;
       BonComVGestionF.Tag:= 1;

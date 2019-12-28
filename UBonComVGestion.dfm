@@ -1,7 +1,7 @@
 object BonComVGestionF: TBonComVGestionF
   Left = 0
   Top = 0
-  Caption = 'Bon de Livraison'
+  Caption = 'Commande Client'
   ClientHeight = 702
   ClientWidth = 1024
   Color = clBtnFace
@@ -395,7 +395,7 @@ object BonComVGestionF: TBonComVGestionF
       Brush.Color = 15527148
       Pen.Color = 4666873
     end
-    object EditBVlivBonLivGBtn: TAdvToolButton
+    object EditBVComBonLivGBtn: TAdvToolButton
       Left = 589
       Top = 18
       Width = 100
@@ -424,11 +424,11 @@ object BonComVGestionF: TBonComVGestionF
       Shaded = False
       ShowHint = True
       Spacing = -1
-      OnClick = EditBVlivBonLivGBtnClick
+      OnClick = EditBVComBonLivGBtnClick
       Version = '1.6.2.0'
       TMSStyle = 0
     end
-    object AddBVlivBonLivGBtn: TAdvToolButton
+    object AddBVComBonLivGBtn: TAdvToolButton
       Left = 485
       Top = 18
       Width = 100
@@ -457,7 +457,7 @@ object BonComVGestionF: TBonComVGestionF
       Shaded = False
       ShowHint = True
       Spacing = -1
-      OnClick = AddBVlivBonLivGBtnClick
+      OnClick = AddBVComBonLivGBtnClick
       Version = '1.6.2.0'
       TMSStyle = 0
     end
@@ -618,7 +618,7 @@ object BonComVGestionF: TBonComVGestionF
       ParentFont = False
       StyleElements = []
     end
-    object ValiderBVlivBonLivGBtn: TAdvToolButton
+    object ValiderBVComBonLivGBtn: TAdvToolButton
       Left = 693
       Top = 17
       Width = 100
@@ -647,7 +647,7 @@ object BonComVGestionF: TBonComVGestionF
       Shaded = False
       ShowHint = True
       Spacing = -1
-      OnClick = ValiderBVlivBonLivGBtnClick
+      OnClick = ValiderBVComBonLivGBtnClick
       Version = '1.6.2.0'
       TMSStyle = 0
     end
@@ -933,7 +933,7 @@ object BonComVGestionF: TBonComVGestionF
       Version = '1.6.2.0'
       TMSStyle = 0
     end
-    object ValiderBVlivBonLivGImg: TsImage
+    object ValiderBVComBonLivGImg: TsImage
       Left = 901
       Top = 230
       Width = 69
@@ -3690,13 +3690,13 @@ object BonComVGestionF: TBonComVGestionF
           ParentFont = False
           VAlign = vaCenter
         end
-        object frxBonLivDTremise_bvliv: TfrxMemoView
+        object frxBonLivDTremise_bvcom: TfrxMemoView
           AllowVectorExport = True
           Left = 566.929500000000000000
           Top = 60.472480000000010000
           Width = 147.401670000000000000
           Height = 18.897650000000000000
-          DataField = 'remise_bvliv'
+          DataField = 'remise_bvcom'
           DataSet = frxBonLivDT
           DataSetName = 'frxBonLivDT'
           DisplayFormat.FormatStr = '%2.2n'
@@ -3709,17 +3709,17 @@ object BonComVGestionF: TBonComVGestionF
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonLivDT."remise_bvliv"]')
+            '[frxBonLivDT."remise_bvcom"]')
           ParentFont = False
           VAlign = vaCenter
         end
-        object frxBonLivDTmontht_bvliv: TfrxMemoView
+        object frxBonLivDTmontht_bvcom: TfrxMemoView
           AllowVectorExport = True
           Left = 566.929500000000000000
           Top = 31.236239999999960000
           Width = 147.401670000000000000
           Height = 18.897650000000000000
-          DataField = 'montht_bvliv'
+          DataField = 'montht_bvcom'
           DataSet = frxBonLivDT
           DataSetName = 'frxBonLivDT'
           DisplayFormat.FormatStr = '%2.2n'
@@ -3732,7 +3732,7 @@ object BonComVGestionF: TBonComVGestionF
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonLivDT."montht_bvliv"]')
+            '[frxBonLivDT."montht_bvcom"]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -3759,13 +3759,13 @@ object BonComVGestionF: TBonComVGestionF
           ParentFont = False
           VAlign = vaCenter
         end
-        object frxBonLivDTmontttc_bvliv: TfrxMemoView
+        object frxBonLivDTmontttc_bvcom: TfrxMemoView
           AllowVectorExport = True
           Left = 563.149970000000000000
           Top = 151.181200000000000000
           Width = 151.181200000000000000
           Height = 31.370086060000000000
-          DataField = 'montttc_bvliv'
+          DataField = 'montttc_bvcom'
           DataSet = frxBonLivDT
           DataSetName = 'frxBonLivDT'
           DisplayFormat.FormatStr = '%2.2n'
@@ -3779,7 +3779,7 @@ object BonComVGestionF: TBonComVGestionF
           Fill.BackColor = 13948116
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonLivDT."montttc_bvliv"]')
+            '[frxBonLivDT."montttc_bvcom"]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -4036,7 +4036,7 @@ object BonComVGestionF: TBonComVGestionF
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonLivDT."montttc_bvliv"]')
+            '[frxBonLivDT."montttc_bvcom"]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -4086,7 +4086,7 @@ object BonComVGestionF: TBonComVGestionF
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonLivDT."montver_bvliv"]')
+            '[frxBonLivDT."montver_bvcom"]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -4133,8 +4133,8 @@ object BonComVGestionF: TBonComVGestionF
     UserName = 'frxBonLivPListDB'
     CloseDataSource = False
     FieldAliases.Strings = (
-      'code_bvlivl=code_bvlivl'
-      'code_bvliv=code_bvliv'
+      'code_bvcoml=code_bvcoml'
+      'code_bvcom=code_bvcom'
       'qut_p=qut_p'
       'prixvd_p=prixvd_p'
       'cond_p=cond_p'
@@ -4208,30 +4208,30 @@ object BonComVGestionF: TBonComVGestionF
     UserName = 'frxBonLivDT'
     CloseDataSource = False
     FieldAliases.Strings = (
-      'code_bvliv=code_bvliv'
-      'date_bvliv=date_bvliv'
-      'time_bvliv=time_bvliv'
+      'code_bvcom=code_bvcom'
+      'date_bvcom=date_bvcom'
+      'time_bvcom=time_bvcom'
       'code_c=code_c'
-      'montht_bvliv=montht_bvliv'
-      'montver_bvliv=montver_bvliv'
-      'valider_bvliv=valider_bvliv'
-      'num_bvliv=num_bvliv'
+      'montht_bvcom=montht_bvcom'
+      'montver_bvcom=montver_bvcom'
+      'valider_bvcom=valider_bvcom'
+      'num_bvcom=num_bvcom'
       'clientbvliv=clientbvliv'
-      'montttc_bvliv=montttc_bvliv'
-      'remise_bvliv=remise_bvliv'
-      'num_cheque_bvliv=num_cheque_bvliv'
+      'montttc_bvcom=montttc_bvcom'
+      'remise_bvcom=remise_bvcom'
+      'num_cheque_bvcom=num_cheque_bvcom'
       'code_mdpai=code_mdpai'
       'code_cmpt=code_cmpt'
       'ModePaie=ModePaie'
       'Compte=Compte'
       'NEWTTC=NEWTTC'
       'code_ur=code_ur'
-      'marge_bvliv=marge_bvliv'
+      'marge_bvcom=marge_bvcom'
       'montanttva=montanttva'
       'montantres=montantres'
       'remiseperc=remiseperc'
       'netht=netht'
-      'obser_bvliv=obser_bvliv'
+      'obser_bvcom=obser_bvcom'
       'Agent=Agent')
     DataSet = MainForm.Bonv_livTable
     BCDToCurrency = False
@@ -5042,13 +5042,13 @@ object BonComVGestionF: TBonComVGestionF
           ParentFont = False
           VAlign = vaCenter
         end
-        object frxBonLivDTremise_bvliv: TfrxMemoView
+        object frxBonLivDTremise_bvcom: TfrxMemoView
           AllowVectorExport = True
           Left = 566.929500000000000000
           Top = 71.472480000000010000
           Width = 147.401670000000000000
           Height = 18.897650000000000000
-          DataField = 'remise_bvliv'
+          DataField = 'remise_bvcom'
           DataSet = frxBonLivDT
           DataSetName = 'frxBonLivDT'
           DisplayFormat.FormatStr = '%2.2n'
@@ -5061,17 +5061,17 @@ object BonComVGestionF: TBonComVGestionF
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonLivDT."remise_bvliv"]')
+            '[frxBonLivDT."remise_bvcom"]')
           ParentFont = False
           VAlign = vaCenter
         end
-        object frxBonLivDTmontht_bvliv: TfrxMemoView
+        object frxBonLivDTmontht_bvcom: TfrxMemoView
           AllowVectorExport = True
           Left = 566.929500000000000000
           Top = 31.236239999999960000
           Width = 147.401670000000000000
           Height = 18.897650000000000000
-          DataField = 'montht_bvliv'
+          DataField = 'montht_bvcom'
           DataSet = frxBonLivDT
           DataSetName = 'frxBonLivDT'
           DisplayFormat.FormatStr = '%2.2n'
@@ -5084,11 +5084,11 @@ object BonComVGestionF: TBonComVGestionF
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonLivDT."montht_bvliv"]')
+            '[frxBonLivDT."montht_bvcom"]')
           ParentFont = False
           VAlign = vaCenter
         end
-        object frxBonLivDTmontttc_bvliv: TfrxMemoView
+        object frxBonLivDTmontttc_bvcom: TfrxMemoView
           AllowVectorExport = True
           Left = 563.149970000000000000
           Top = 114.181200000000000000
@@ -5351,7 +5351,7 @@ object BonComVGestionF: TBonComVGestionF
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonLivDT."montttc_bvliv"]')
+            '[frxBonLivDT."montttc_bvcom"]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -5391,7 +5391,7 @@ object BonComVGestionF: TBonComVGestionF
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonLivDT."montver_bvliv"]')
+            '[frxBonLivDT."montver_bvcom"]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -6199,13 +6199,13 @@ object BonComVGestionF: TBonComVGestionF
           ParentFont = False
           VAlign = vaCenter
         end
-        object frxBonLivDTremise_bvliv: TfrxMemoView
+        object frxBonLivDTremise_bvcom: TfrxMemoView
           AllowVectorExport = True
           Left = 566.929500000000000000
           Top = 60.472480000000010000
           Width = 147.401670000000000000
           Height = 18.897650000000000000
-          DataField = 'remise_bvliv'
+          DataField = 'remise_bvcom'
           DataSet = frxBonLivDT
           DataSetName = 'frxBonLivDT'
           DisplayFormat.FormatStr = '%2.2n'
@@ -6218,17 +6218,17 @@ object BonComVGestionF: TBonComVGestionF
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonLivDT."remise_bvliv"]')
+            '[frxBonLivDT."remise_bvcom"]')
           ParentFont = False
           VAlign = vaCenter
         end
-        object frxBonLivDTmontht_bvliv: TfrxMemoView
+        object frxBonLivDTmontht_bvcom: TfrxMemoView
           AllowVectorExport = True
           Left = 566.929500000000000000
           Top = 31.236239999999960000
           Width = 147.401670000000000000
           Height = 18.897650000000000000
-          DataField = 'montht_bvliv'
+          DataField = 'montht_bvcom'
           DataSet = frxBonLivDT
           DataSetName = 'frxBonLivDT'
           DisplayFormat.FormatStr = '%2.2n'
@@ -6241,11 +6241,11 @@ object BonComVGestionF: TBonComVGestionF
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonLivDT."montht_bvliv"]')
+            '[frxBonLivDT."montht_bvcom"]')
           ParentFont = False
           VAlign = vaCenter
         end
-        object frxBonLivDTmontttc_bvliv: TfrxMemoView
+        object frxBonLivDTmontttc_bvcom: TfrxMemoView
           AllowVectorExport = True
           Left = 563.149970000000000000
           Top = 118.181200000000000000
@@ -6264,7 +6264,7 @@ object BonComVGestionF: TBonComVGestionF
           Fill.BackColor = 13948116
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonLivDT."montver_bvliv"]')
+            '[frxBonLivDT."montver_bvcom"]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -6531,7 +6531,7 @@ object BonComVGestionF: TBonComVGestionF
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonLivDT."montttc_bvliv"]')
+            '[frxBonLivDT."montttc_bvcom"]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -6571,7 +6571,7 @@ object BonComVGestionF: TBonComVGestionF
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonLivDT."montver_bvliv"]')
+            '[frxBonLivDT."montver_bvcom"]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -7659,7 +7659,7 @@ object BonComVGestionF: TBonComVGestionF
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonLivDT."montttc_bvliv"]')
+            '[frxBonLivDT."montttc_bvcom"]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -7684,13 +7684,13 @@ object BonComVGestionF: TBonComVGestionF
           Frame.Color = clNone
           Frame.Typ = []
         end
-        object frxBonLivDTremise_bvliv: TfrxMemoView
+        object frxBonLivDTremise_bvcom: TfrxMemoView
           AllowVectorExport = True
           Left = 411.149970000000000000
           Top = 31.802739415000000000
           Width = 109.606370000000000000
           Height = 18.897650000000000000
-          DataField = 'remise_bvliv'
+          DataField = 'remise_bvcom'
           DataSet = frxBonLivDT
           DataSetName = 'frxBonLivDT'
           DisplayFormat.FormatStr = '%2.2n'
@@ -7703,17 +7703,17 @@ object BonComVGestionF: TBonComVGestionF
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonLivDT."remise_bvliv"]')
+            '[frxBonLivDT."remise_bvcom"]')
           ParentFont = False
           VAlign = vaCenter
         end
-        object frxBonLivDTmontht_bvliv: TfrxMemoView
+        object frxBonLivDTmontht_bvcom: TfrxMemoView
           AllowVectorExport = True
           Left = 411.149970000000000000
           Top = 8.090873465000020000
           Width = 109.606370000000000000
           Height = 18.897650000000000000
-          DataField = 'montht_bvliv'
+          DataField = 'montht_bvcom'
           DataSet = frxBonLivDT
           DataSetName = 'frxBonLivDT'
           DisplayFormat.FormatStr = '%2.2n'
@@ -7726,7 +7726,7 @@ object BonComVGestionF: TBonComVGestionF
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonLivDT."montht_bvliv"]')
+            '[frxBonLivDT."montht_bvcom"]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -7753,13 +7753,13 @@ object BonComVGestionF: TBonComVGestionF
           ParentFont = False
           VAlign = vaCenter
         end
-        object frxBonLivDTmontttc_bvliv: TfrxMemoView
+        object frxBonLivDTmontttc_bvcom: TfrxMemoView
           AllowVectorExport = True
           Left = 411.149970000000000000
           Top = 104.261179240000000000
           Width = 109.606370000000000000
           Height = 16.251966060000000000
-          DataField = 'montttc_bvliv'
+          DataField = 'montttc_bvcom'
           DataSet = frxBonLivDT
           DataSetName = 'frxBonLivDT'
           DisplayFormat.FormatStr = '%2.2n'
@@ -7773,7 +7773,7 @@ object BonComVGestionF: TBonComVGestionF
           Fill.BackColor = 13948116
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonLivDT."montttc_bvliv"]')
+            '[frxBonLivDT."montttc_bvcom"]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -7872,7 +7872,7 @@ object BonComVGestionF: TBonComVGestionF
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonLivDT."montver_bvliv"]')
+            '[frxBonLivDT."montver_bvcom"]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -8627,13 +8627,13 @@ object BonComVGestionF: TBonComVGestionF
           ParentFont = False
           VAlign = vaCenter
         end
-        object frxBonLivDTremise_bvliv: TfrxMemoView
+        object frxBonLivDTremise_bvcom: TfrxMemoView
           AllowVectorExport = True
           Left = 566.929500000000000000
           Top = 60.472480000000010000
           Width = 147.401670000000000000
           Height = 18.897650000000000000
-          DataField = 'remise_bvliv'
+          DataField = 'remise_bvcom'
           DataSet = frxBonLivDT
           DataSetName = 'frxBonLivDT'
           DisplayFormat.FormatStr = '%2.2n'
@@ -8646,17 +8646,17 @@ object BonComVGestionF: TBonComVGestionF
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonLivDT."remise_bvliv"]')
+            '[frxBonLivDT."remise_bvcom"]')
           ParentFont = False
           VAlign = vaCenter
         end
-        object frxBonLivDTmontht_bvliv: TfrxMemoView
+        object frxBonLivDTmontht_bvcom: TfrxMemoView
           AllowVectorExport = True
           Left = 566.929500000000000000
           Top = 31.236240000000010000
           Width = 147.401670000000000000
           Height = 18.897650000000000000
-          DataField = 'montht_bvliv'
+          DataField = 'montht_bvcom'
           DataSet = frxBonLivDT
           DataSetName = 'frxBonLivDT'
           DisplayFormat.FormatStr = '%2.2n'
@@ -8669,17 +8669,17 @@ object BonComVGestionF: TBonComVGestionF
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonLivDT."montht_bvliv"]')
+            '[frxBonLivDT."montht_bvcom"]')
           ParentFont = False
           VAlign = vaCenter
         end
-        object frxBonLivDTmontttc_bvliv: TfrxMemoView
+        object frxBonLivDTmontttc_bvcom: TfrxMemoView
           AllowVectorExport = True
           Left = 563.149970000000000000
           Top = 127.181200000000000000
           Width = 151.181200000000000000
           Height = 31.370086060000000000
-          DataField = 'montttc_bvliv'
+          DataField = 'montttc_bvcom'
           DataSet = frxBonLivDT
           DataSetName = 'frxBonLivDT'
           DisplayFormat.FormatStr = '%2.2n'
@@ -8693,7 +8693,7 @@ object BonComVGestionF: TBonComVGestionF
           Fill.BackColor = 13948116
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonLivDT."montttc_bvliv"]')
+            '[frxBonLivDT."montttc_bvcom"]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -8865,7 +8865,7 @@ object BonComVGestionF: TBonComVGestionF
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonLivDT."montttc_bvliv"]')
+            '[frxBonLivDT."montttc_bvcom"]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -8915,7 +8915,7 @@ object BonComVGestionF: TBonComVGestionF
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonLivDT."montver_bvliv"]')
+            '[frxBonLivDT."montver_bvcom"]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -9651,13 +9651,13 @@ object BonComVGestionF: TBonComVGestionF
           ParentFont = False
           VAlign = vaCenter
         end
-        object frxBonLivDTremise_bvliv: TfrxMemoView
+        object frxBonLivDTremise_bvcom: TfrxMemoView
           AllowVectorExport = True
           Left = 412.929500000000000000
           Top = 41.472480000000000000
           Width = 109.606299210000000000
           Height = 18.897650000000000000
-          DataField = 'remise_bvliv'
+          DataField = 'remise_bvcom'
           DataSet = frxBonLivDT
           DataSetName = 'frxBonLivDT'
           DisplayFormat.FormatStr = '%2.2n'
@@ -9670,17 +9670,17 @@ object BonComVGestionF: TBonComVGestionF
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonLivDT."remise_bvliv"]')
+            '[frxBonLivDT."remise_bvcom"]')
           ParentFont = False
           VAlign = vaCenter
         end
-        object frxBonLivDTmontht_bvliv: TfrxMemoView
+        object frxBonLivDTmontht_bvcom: TfrxMemoView
           AllowVectorExport = True
           Left = 412.929500000000000000
           Top = 12.236240000000000000
           Width = 109.606299210000000000
           Height = 18.897650000000000000
-          DataField = 'montht_bvliv'
+          DataField = 'montht_bvcom'
           DataSet = frxBonLivDT
           DataSetName = 'frxBonLivDT'
           DisplayFormat.FormatStr = '%2.2n'
@@ -9693,11 +9693,11 @@ object BonComVGestionF: TBonComVGestionF
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonLivDT."montht_bvliv"]')
+            '[frxBonLivDT."montht_bvcom"]')
           ParentFont = False
           VAlign = vaCenter
         end
-        object frxBonLivDTmontttc_bvliv: TfrxMemoView
+        object frxBonLivDTmontttc_bvcom: TfrxMemoView
           AllowVectorExport = True
           Left = 415.149970000000000000
           Top = 99.181200000000000000
@@ -9716,7 +9716,7 @@ object BonComVGestionF: TBonComVGestionF
           Fill.BackColor = 13948116
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonLivDT."montver_bvliv"]')
+            '[frxBonLivDT."montver_bvcom"]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -9983,7 +9983,7 @@ object BonComVGestionF: TBonComVGestionF
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonLivDT."montttc_bvliv"]')
+            '[frxBonLivDT."montttc_bvcom"]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -10023,7 +10023,7 @@ object BonComVGestionF: TBonComVGestionF
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonLivDT."montver_bvliv"]')
+            '[frxBonLivDT."montver_bvcom"]')
           ParentFont = False
           VAlign = vaCenter
         end
