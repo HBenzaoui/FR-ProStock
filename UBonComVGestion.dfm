@@ -395,7 +395,7 @@ object BonComVGestionF: TBonComVGestionF
       Brush.Color = 15527148
       Pen.Color = 4666873
     end
-    object EditBVComBonLivGBtn: TAdvToolButton
+    object EditBVComBonComGBtn: TAdvToolButton
       Left = 589
       Top = 18
       Width = 100
@@ -424,11 +424,11 @@ object BonComVGestionF: TBonComVGestionF
       Shaded = False
       ShowHint = True
       Spacing = -1
-      OnClick = EditBVComBonLivGBtnClick
+      OnClick = EditBVComBonComGBtnClick
       Version = '1.6.2.0'
       TMSStyle = 0
     end
-    object AddBVComBonLivGBtn: TAdvToolButton
+    object AddBVComBonComGBtn: TAdvToolButton
       Left = 485
       Top = 18
       Width = 100
@@ -457,7 +457,7 @@ object BonComVGestionF: TBonComVGestionF
       Shaded = False
       ShowHint = True
       Spacing = -1
-      OnClick = AddBVComBonLivGBtnClick
+      OnClick = AddBVComBonComGBtnClick
       Version = '1.6.2.0'
       TMSStyle = 0
     end
@@ -553,7 +553,7 @@ object BonComVGestionF: TBonComVGestionF
       ParentFont = False
       StyleElements = []
     end
-    object NumBonLivGEdt: TLabel
+    object NumBonComGEdt: TLabel
       Left = 163
       Top = 25
       Width = 168
@@ -570,7 +570,7 @@ object BonComVGestionF: TBonComVGestionF
       ParentFont = False
       StyleElements = []
     end
-    object AddClientBonLivGBtn: TAdvToolButton
+    object AddClientBonComGBtn: TAdvToolButton
       Left = 807
       Top = 84
       Width = 26
@@ -598,7 +598,7 @@ object BonComVGestionF: TBonComVGestionF
       Shaded = False
       ShowHint = True
       Spacing = -1
-      OnClick = AddClientBonLivGBtnClick
+      OnClick = AddClientBonComGBtnClick
       Version = '1.6.2.0'
       TMSStyle = 0
     end
@@ -618,7 +618,7 @@ object BonComVGestionF: TBonComVGestionF
       ParentFont = False
       StyleElements = []
     end
-    object ValiderBVComBonLivGBtn: TAdvToolButton
+    object ValiderBVComBonComGBtn: TAdvToolButton
       Left = 693
       Top = 17
       Width = 100
@@ -647,7 +647,7 @@ object BonComVGestionF: TBonComVGestionF
       Shaded = False
       ShowHint = True
       Spacing = -1
-      OnClick = ValiderBVComBonLivGBtnClick
+      OnClick = ValiderBVComBonComGBtnClick
       Version = '1.6.2.0'
       TMSStyle = 0
     end
@@ -667,7 +667,7 @@ object BonComVGestionF: TBonComVGestionF
       ParentFont = False
       StyleElements = []
     end
-    object AddModePaieBonLivGBtn: TAdvToolButton
+    object AddModePaieBonComGBtn: TAdvToolButton
       Left = 539
       Top = 127
       Width = 26
@@ -695,7 +695,7 @@ object BonComVGestionF: TBonComVGestionF
       Shaded = False
       ShowHint = True
       Spacing = -1
-      OnClick = AddModePaieBonLivGBtnClick
+      OnClick = AddModePaieBonComGBtnClick
       Version = '1.6.2.0'
       TMSStyle = 0
     end
@@ -715,7 +715,7 @@ object BonComVGestionF: TBonComVGestionF
       ParentFont = False
       StyleElements = []
     end
-    object AddCompteBonLivGBtn: TAdvToolButton
+    object AddCompteBonComGBtn: TAdvToolButton
       Left = 807
       Top = 127
       Width = 26
@@ -743,11 +743,11 @@ object BonComVGestionF: TBonComVGestionF
       Shaded = False
       ShowHint = True
       Spacing = -1
-      OnClick = AddCompteBonLivGBtnClick
+      OnClick = AddCompteBonComGBtnClick
       Version = '1.6.2.0'
       TMSStyle = 0
     end
-    object ListAddProduitBonLivGBtn: TAdvToolButton
+    object ListAddProduitBonComGBtn: TAdvToolButton
       Left = 539
       Top = 245
       Width = 71
@@ -776,11 +776,11 @@ object BonComVGestionF: TBonComVGestionF
       Shaded = False
       ShowHint = True
       Spacing = -1
-      OnClick = ListAddProduitBonLivGBtnClick
+      OnClick = ListAddProduitBonComGBtnClick
       Version = '1.6.2.0'
       TMSStyle = 0
     end
-    object DeleteProduitBonLivGBtn: TAdvToolButton
+    object DeleteProduitBonComGBtn: TAdvToolButton
       Left = 724
       Top = 247
       Width = 26
@@ -810,11 +810,11 @@ object BonComVGestionF: TBonComVGestionF
       ShowHint = True
       Spacing = -1
       Visible = False
-      OnClick = DeleteProduitBonLivGBtnClick
+      OnClick = DeleteProduitBonComGBtnClick
       Version = '1.6.2.0'
       TMSStyle = 0
     end
-    object NewAddProduitBonLivGBtn: TAdvToolButton
+    object NewAddProduitBonComGBtn: TAdvToolButton
       Left = 617
       Top = 245
       Width = 100
@@ -843,7 +843,7 @@ object BonComVGestionF: TBonComVGestionF
       Shaded = False
       ShowHint = True
       Spacing = -1
-      OnClick = NewAddProduitBonLivGBtnClick
+      OnClick = NewAddProduitBonComGBtnClick
       Version = '1.6.2.0'
       TMSStyle = 0
     end
@@ -867,7 +867,7 @@ object BonComVGestionF: TBonComVGestionF
       WordWrap = True
       StyleElements = [seClient, seBorder]
     end
-    object EnterAddProduitBonLivGBtn: TAdvToolButton
+    object EnterAddProduitBonComGBtn: TAdvToolButton
       Left = 499
       Top = 245
       Width = 34
@@ -895,11 +895,11 @@ object BonComVGestionF: TBonComVGestionF
       Shaded = False
       ShowHint = True
       Spacing = -1
-      OnClick = EnterAddProduitBonLivGBtnClick
+      OnClick = EnterAddProduitBonComGBtnClick
       Version = '1.6.2.0'
       TMSStyle = 0
     end
-    object ClearProduitBonLivGBtn: TAdvToolButton
+    object ClearProduitBonComGBtn: TAdvToolButton
       Left = 756
       Top = 247
       Width = 26
@@ -929,11 +929,11 @@ object BonComVGestionF: TBonComVGestionF
       ShowHint = True
       Spacing = -1
       Visible = False
-      OnClick = ClearProduitBonLivGBtnClick
+      OnClick = ClearProduitBonComGBtnClick
       Version = '1.6.2.0'
       TMSStyle = 0
     end
-    object ValiderBVComBonLivGImg: TsImage
+    object ValiderBVComBonComGImg: TsImage
       Left = 901
       Top = 230
       Width = 69
@@ -1002,7 +1002,7 @@ object BonComVGestionF: TBonComVGestionF
       ParentFont = False
       StyleElements = []
     end
-    object ObserBonLivGLbl: TLabel
+    object ObserBonComGLbl: TLabel
       Left = 15
       Top = 99
       Width = 102
@@ -1027,7 +1027,7 @@ object BonComVGestionF: TBonComVGestionF
       Caption = '0'
       Visible = False
     end
-    object ValiderBVLivBonLivGLbl: TLabel
+    object ValiderBVLivBonComGLbl: TLabel
       Left = 838
       Top = 213
       Width = 186
@@ -1049,12 +1049,12 @@ object BonComVGestionF: TBonComVGestionF
       StyleElements = []
       ExplicitLeft = 903
     end
-    object BonLivTotalMargeLbl: TLabel
+    object BonComTotalMargeLbl: TLabel
       Left = 691
       Top = 218
       Width = 147
       Height = 20
-      Caption = 'BonLivTotalMargeLbl'
+      Caption = 'BonComTotalMargeLbl'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 4666873
       Font.Height = 20
@@ -1287,7 +1287,7 @@ object BonComVGestionF: TBonComVGestionF
       Font.Style = []
       ParentFont = False
     end
-    object ListClientBonLivGBtn: TAdvToolButton
+    object ListClientBonComGBtn: TAdvToolButton
       Left = 768
       Top = 84
       Width = 35
@@ -1315,7 +1315,7 @@ object BonComVGestionF: TBonComVGestionF
       Shaded = False
       ShowHint = True
       Spacing = -1
-      OnClick = ListClientBonLivGBtnClick
+      OnClick = ListClientBonComGBtnClick
       Version = '1.6.2.0'
       TMSStyle = 0
     end
@@ -1492,7 +1492,7 @@ object BonComVGestionF: TBonComVGestionF
       TabOrder = 6
       StyleElements = []
     end
-    object DateBonLivGD: TDateTimePicker
+    object DateBonComGD: TDateTimePicker
       Left = 73
       Top = 60
       Width = 124
@@ -1507,7 +1507,7 @@ object BonComVGestionF: TBonComVGestionF
       ParentFont = False
       TabOrder = 7
     end
-    object ClientBonLivGCbx: TComboBox
+    object ClientBonComGCbx: TComboBox
       Left = 432
       Top = 83
       Width = 328
@@ -1522,12 +1522,12 @@ object BonComVGestionF: TBonComVGestionF
       ParentFont = False
       Sorted = True
       TabOrder = 0
-      OnChange = ClientBonLivGCbxChange
-      OnClick = ClientBonLivGCbxExit
-      OnDropDown = ClientBonLivGCbxEnter
-      OnEnter = ClientBonLivGCbxEnter
-      OnExit = ClientBonLivGCbxExit
-      OnKeyPress = ClientBonLivGCbxKeyPress
+      OnChange = ClientBonComGCbxChange
+      OnClick = ClientBonComGCbxExit
+      OnDropDown = ClientBonComGCbxEnter
+      OnEnter = ClientBonComGCbxEnter
+      OnExit = ClientBonComGCbxExit
+      OnKeyPress = ClientBonComGCbxKeyPress
     end
     object Panel12: TPanel
       Left = 0
@@ -1635,7 +1635,7 @@ object BonComVGestionF: TBonComVGestionF
       TabOrder = 13
       StyleElements = []
     end
-    object ModePaieBonLivGCbx: TComboBox
+    object ModePaieBonComGCbx: TComboBox
       Left = 432
       Top = 126
       Width = 101
@@ -1647,18 +1647,18 @@ object BonComVGestionF: TBonComVGestionF
       Font.Style = []
       ParentFont = False
       TabOrder = 14
-      OnChange = ModePaieBonLivGCbxChange
-      OnClick = ModePaieBonLivGCbxClick
-      OnDropDown = ModePaieBonLivGCbxDropDown
-      OnEnter = ModePaieBonLivGCbxClick
-      OnExit = ModePaieBonLivGCbxClick
-      OnSelect = ModePaieBonLivGCbxClick
+      OnChange = ModePaieBonComGCbxChange
+      OnClick = ModePaieBonComGCbxClick
+      OnDropDown = ModePaieBonComGCbxDropDown
+      OnEnter = ModePaieBonComGCbxClick
+      OnExit = ModePaieBonComGCbxClick
+      OnSelect = ModePaieBonComGCbxClick
       Items.Strings = (
         ''
         'ch'#232'que '
         'Esp'#232'ce')
     end
-    object CompteBonLivGCbx: TComboBox
+    object CompteBonComGCbx: TComboBox
       Left = 633
       Top = 126
       Width = 160
@@ -1670,9 +1670,9 @@ object BonComVGestionF: TBonComVGestionF
       Font.Style = []
       ParentFont = False
       TabOrder = 15
-      OnChange = CompteBonLivGCbxChange
-      OnDropDown = CompteBonLivGCbxEnter
-      OnEnter = CompteBonLivGCbxEnter
+      OnChange = CompteBonComGCbxChange
+      OnDropDown = CompteBonComGCbxEnter
+      OnEnter = CompteBonComGCbxEnter
     end
     object Panel5: TPanel
       Left = 838
@@ -1688,7 +1688,7 @@ object BonComVGestionF: TBonComVGestionF
       DesignSize = (
         186
         140)
-      object BonLivGClientOLDCredit: TLabel
+      object BonComGClientOLDCredit: TLabel
         AlignWithMargins = True
         Left = 7
         Top = 37
@@ -1713,7 +1713,7 @@ object BonComVGestionF: TBonComVGestionF
         Layout = tlCenter
         StyleElements = []
       end
-      object BonLivGClientNEWCredit: TLabel
+      object BonComGClientNEWCredit: TLabel
         AlignWithMargins = True
         Left = 7
         Top = 112
@@ -1785,7 +1785,7 @@ object BonComVGestionF: TBonComVGestionF
         StyleElements = []
       end
     end
-    object NChequeBonLivGCbx: TEdit
+    object NChequeBonComGCbx: TEdit
       Left = 432
       Top = 170
       Width = 361
@@ -1798,7 +1798,7 @@ object BonComVGestionF: TBonComVGestionF
       ParentFont = False
       TabOrder = 18
     end
-    object ObserBonLivGMem: TMemo
+    object ObserBonComGMem: TMemo
       Left = 16
       Top = 124
       Width = 307
@@ -1811,7 +1811,7 @@ object BonComVGestionF: TBonComVGestionF
       ParentFont = False
       TabOrder = 19
     end
-    object ProduitBonLivGCbx: TcxComboBox
+    object ProduitBonComGCbx: TcxComboBox
       Left = 107
       Top = 245
       Anchors = [akLeft, akBottom]
@@ -1824,10 +1824,10 @@ object BonComVGestionF: TBonComVGestionF
       Style.Font.Style = []
       Style.IsFontAssigned = True
       TabOrder = 1
-      OnEnter = ProduitBonLivGCbxEnter
-      OnExit = ProduitBonLivGCbxExit
-      OnKeyDown = ProduitBonLivGCbxKeyDown
-      OnKeyPress = ProduitBonLivGCbxKeyPress
+      OnEnter = ProduitBonComGCbxEnter
+      OnExit = ProduitBonComGCbxExit
+      OnKeyDown = ProduitBonComGCbxKeyDown
+      OnKeyPress = ProduitBonComGCbxKeyPress
       Height = 30
       Width = 386
     end
@@ -1847,7 +1847,7 @@ object BonComVGestionF: TBonComVGestionF
     ColumnDefValues.ToolTips = True
     Ctl3D = True
     DataGrouping.Active = True
-    DataSource = BonLivPListDataS
+    DataSource = BonComPListDataS
     DynProps = <>
     EvenRowColor = clWindow
     FixedColor = clWindow
@@ -2320,7 +2320,7 @@ object BonComVGestionF: TBonComVGestionF
       ParentFont = False
       StyleElements = []
     end
-    object BonLivTotalTVALbl: TLabel
+    object BonComTotalTVALbl: TLabel
       AlignWithMargins = True
       Left = 404
       Top = 30
@@ -2345,7 +2345,7 @@ object BonComVGestionF: TBonComVGestionF
       Layout = tlCenter
       StyleElements = []
     end
-    object BonLivRegleLbl: TLabel
+    object BonComRegleLbl: TLabel
       AlignWithMargins = True
       Left = 602
       Top = 30
@@ -2370,7 +2370,7 @@ object BonComVGestionF: TBonComVGestionF
       Layout = tlCenter
       StyleElements = []
     end
-    object BonLivResteLbl: TLabel
+    object BonComResteLbl: TLabel
       AlignWithMargins = True
       Left = 604
       Top = 83
@@ -2395,7 +2395,7 @@ object BonComVGestionF: TBonComVGestionF
       Layout = tlCenter
       StyleElements = []
     end
-    object BonLivTotalHTLbl: TLabel
+    object BonComTotalHTLbl: TLabel
       AlignWithMargins = True
       Left = -3
       Top = 30
@@ -2420,7 +2420,7 @@ object BonComVGestionF: TBonComVGestionF
       Layout = tlCenter
       StyleElements = []
     end
-    object BonLivTotalTTCLbl: TLabel
+    object BonComTotalTTCLbl: TLabel
       AlignWithMargins = True
       Left = 404
       Top = 83
@@ -2599,7 +2599,7 @@ object BonComVGestionF: TBonComVGestionF
       StyleElements = []
       ExplicitWidth = 280
     end
-    object BonLivGOLDStock: TLabel
+    object BonComGOLDStock: TLabel
       AlignWithMargins = True
       Left = 804
       Top = 24
@@ -2626,7 +2626,7 @@ object BonComVGestionF: TBonComVGestionF
       StyleElements = []
       ExplicitWidth = 280
     end
-    object BonLivGNEWStock: TLabel
+    object BonComGNEWStock: TLabel
       AlignWithMargins = True
       Left = 804
       Top = 65
@@ -2691,7 +2691,7 @@ object BonComVGestionF: TBonComVGestionF
       Images = MainForm.PanelIcons16
       SkinData.SkinSection = 'CHECKBOX'
     end
-    object BonLivTotalAHTLbl: TLabel
+    object BonComTotalAHTLbl: TLabel
       AlignWithMargins = True
       Left = -1
       Top = 4
@@ -2761,7 +2761,7 @@ object BonComVGestionF: TBonComVGestionF
       TabOrder = 2
       Visible = False
     end
-    object RemisePerctageBonLivGEdt: TEdit
+    object RemisePerctageBonComGEdt: TEdit
       Left = 339
       Top = 3
       Width = 50
@@ -2776,12 +2776,12 @@ object BonComVGestionF: TBonComVGestionF
       MaxLength = 5
       ParentFont = False
       TabOrder = 3
-      OnChange = RemisePerctageBonLivGEdtChange
-      OnClick = RemisePerctageBonLivGEdtClick
-      OnEnter = RemisePerctageBonLivGEdtEnter
-      OnKeyPress = RemisePerctageBonLivGEdtKeyPress
+      OnChange = RemisePerctageBonComGEdtChange
+      OnClick = RemisePerctageBonComGEdtClick
+      OnEnter = RemisePerctageBonComGEdtEnter
+      OnKeyPress = RemisePerctageBonComGEdtKeyPress
     end
-    object RemiseBonLivGEdt: TEdit
+    object RemiseBonComGEdt: TEdit
       Left = 276
       Top = 31
       Width = 114
@@ -2796,11 +2796,11 @@ object BonComVGestionF: TBonComVGestionF
       MaxLength = -1
       ParentFont = False
       TabOrder = 4
-      OnChange = RemiseBonLivGEdtChange
-      OnClick = RemiseBonLivGEdtClick
-      OnEnter = RemiseBonLivGEdtEnter
-      OnExit = RemiseBonLivGEdtExit
-      OnKeyPress = RemiseBonLivGEdtKeyPress
+      OnChange = RemiseBonComGEdtChange
+      OnClick = RemiseBonComGEdtClick
+      OnEnter = RemiseBonComGEdtEnter
+      OnExit = RemiseBonComGEdtExit
+      OnKeyPress = RemiseBonComGEdtKeyPress
     end
     object Panel1: TPanel
       Left = 204
@@ -2815,7 +2815,7 @@ object BonComVGestionF: TBonComVGestionF
       TabOrder = 5
       StyleElements = []
     end
-    object RemiseTypeBonLivGCbx: TComboBox
+    object RemiseTypeBonComGCbx: TComboBox
       Left = 276
       Top = 3
       Width = 52
@@ -2832,15 +2832,15 @@ object BonComVGestionF: TBonComVGestionF
       TabOrder = 6
       Text = 'HT'
       StyleElements = [seClient, seBorder]
-      OnChange = RemiseTypeBonLivGCbxChange
+      OnChange = RemiseTypeBonComGCbxChange
       Items.Strings = (
         'HT'
         'TTC')
     end
   end
-  object BonLivPListDataS: TDataSource
+  object BonComPListDataS: TDataSource
     DataSet = MainForm.Bonv_liv_listTable
-    OnDataChange = BonLivPListDataSDataChange
+    OnDataChange = BonComPListDataSDataChange
     Left = 944
     Top = 472
   end
@@ -2851,7 +2851,7 @@ object BonComVGestionF: TBonComVGestionF
     Left = 872
     Top = 480
   end
-  object BonLivPListfrxRprt: TfrxReport
+  object BonComPListfrxRprt: TfrxReport
     Version = '6.3.12'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
@@ -2872,12 +2872,12 @@ object BonComVGestionF: TBonComVGestionF
     Top = 336
     Datasets = <
       item
-        DataSet = frxBonLivDT
-        DataSetName = 'frxBonLivDT'
+        DataSet = frxBonComDT
+        DataSetName = 'frxBonComDT'
       end
       item
-        DataSet = frxBonLivPListDB
-        DataSetName = 'frxBonLivPListDB'
+        DataSet = frxBonComPListDB
+        DataSetName = 'frxBonComPListDB'
       end>
     Variables = <>
     Style = <
@@ -2991,8 +2991,8 @@ object BonComVGestionF: TBonComVGestionF
           Top = 0.779530000000022500
           Width = 302.362400000000000000
           Height = 18.897650000000000000
-          DataSet = frxBonLivDT
-          DataSetName = 'frxBonLivDT'
+          DataSet = frxBonComDT
+          DataSetName = 'frxBonComDT'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -9
@@ -3000,7 +3000,7 @@ object BonComVGestionF: TBonComVGestionF
           Font.Style = []
           Frame.Typ = []
           Memo.UTF8W = (
-            '[frxBonLivDT."Agent"]')
+            '[frxBonComDT."Agent"]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -3449,8 +3449,8 @@ object BonComVGestionF: TBonComVGestionF
         Height = 24.566929130000000000
         Top = 498.897960000000000000
         Width = 718.110700000000000000
-        DataSet = frxBonLivPListDB
-        DataSetName = 'frxBonLivPListDB'
+        DataSet = frxBonComPListDB
+        DataSetName = 'frxBonComPListDB'
         RowCount = 0
         Stretched = True
         object frxDBDataset1nomp: TfrxMemoView
@@ -3461,8 +3461,8 @@ object BonComVGestionF: TBonComVGestionF
           Height = 18.897650000000000000
           StretchMode = smActualHeight
           DataField = 'nomp'
-          DataSet = frxBonLivPListDB
-          DataSetName = 'frxBonLivPListDB'
+          DataSet = frxBonComPListDB
+          DataSetName = 'frxBonComPListDB'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -12
@@ -3470,7 +3470,7 @@ object BonComVGestionF: TBonComVGestionF
           Font.Style = []
           Frame.Typ = []
           Memo.UTF8W = (
-            '[frxBonLivPListDB."nomp"]')
+            '[frxBonComPListDB."nomp"]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -3498,8 +3498,8 @@ object BonComVGestionF: TBonComVGestionF
           Width = 71.811070000000000000
           Height = 18.897650000000000000
           DataField = 'qut_p'
-          DataSet = frxBonLivPListDB
-          DataSetName = 'frxBonLivPListDB'
+          DataSet = frxBonComPListDB
+          DataSetName = 'frxBonComPListDB'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -12
@@ -3508,7 +3508,7 @@ object BonComVGestionF: TBonComVGestionF
           Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
-            '[frxBonLivPListDB."qut_p"]')
+            '[frxBonComPListDB."qut_p"]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -3519,8 +3519,8 @@ object BonComVGestionF: TBonComVGestionF
           Width = 120.944960000000000000
           Height = 18.897650000000000000
           DataField = 'prixvd_p'
-          DataSet = frxBonLivPListDB
-          DataSetName = 'frxBonLivPListDB'
+          DataSet = frxBonComPListDB
+          DataSetName = 'frxBonComPListDB'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -3531,7 +3531,7 @@ object BonComVGestionF: TBonComVGestionF
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonLivPListDB."prixvd_p"]')
+            '[frxBonComPListDB."prixvd_p"]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -3542,8 +3542,8 @@ object BonComVGestionF: TBonComVGestionF
           Width = 120.944960000000000000
           Height = 18.897650000000000000
           DataField = 'MontantHT'
-          DataSet = frxBonLivPListDB
-          DataSetName = 'frxBonLivPListDB'
+          DataSet = frxBonComPListDB
+          DataSetName = 'frxBonComPListDB'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -3554,7 +3554,7 @@ object BonComVGestionF: TBonComVGestionF
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonLivPListDB."MontantHT"]')
+            '[frxBonComPListDB."MontantHT"]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -3565,8 +3565,8 @@ object BonComVGestionF: TBonComVGestionF
           Width = 71.811070000000000000
           Height = 18.897650000000000000
           DataField = 'cond_p'
-          DataSet = frxBonLivPListDB
-          DataSetName = 'frxBonLivPListDB'
+          DataSet = frxBonComPListDB
+          DataSetName = 'frxBonComPListDB'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -12
@@ -3575,7 +3575,7 @@ object BonComVGestionF: TBonComVGestionF
           Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
-            '[frxBonLivPListDB."cond_p"]')
+            '[frxBonComPListDB."cond_p"]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -3690,15 +3690,15 @@ object BonComVGestionF: TBonComVGestionF
           ParentFont = False
           VAlign = vaCenter
         end
-        object frxBonLivDTremise_bvcom: TfrxMemoView
+        object frxBonComDTremise_bvcom: TfrxMemoView
           AllowVectorExport = True
           Left = 566.929500000000000000
           Top = 60.472480000000010000
           Width = 147.401670000000000000
           Height = 18.897650000000000000
           DataField = 'remise_bvcom'
-          DataSet = frxBonLivDT
-          DataSetName = 'frxBonLivDT'
+          DataSet = frxBonComDT
+          DataSetName = 'frxBonComDT'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -3709,19 +3709,19 @@ object BonComVGestionF: TBonComVGestionF
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonLivDT."remise_bvcom"]')
+            '[frxBonComDT."remise_bvcom"]')
           ParentFont = False
           VAlign = vaCenter
         end
-        object frxBonLivDTmontht_bvcom: TfrxMemoView
+        object frxBonComDTmontht_bvcom: TfrxMemoView
           AllowVectorExport = True
           Left = 566.929500000000000000
           Top = 31.236239999999960000
           Width = 147.401670000000000000
           Height = 18.897650000000000000
           DataField = 'montht_bvcom'
-          DataSet = frxBonLivDT
-          DataSetName = 'frxBonLivDT'
+          DataSet = frxBonComDT
+          DataSetName = 'frxBonComDT'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -3732,19 +3732,19 @@ object BonComVGestionF: TBonComVGestionF
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonLivDT."montht_bvcom"]')
+            '[frxBonComDT."montht_bvcom"]')
           ParentFont = False
           VAlign = vaCenter
         end
-        object frxBonLivDTMontantTVA: TfrxMemoView
+        object frxBonComDTMontantTVA: TfrxMemoView
           AllowVectorExport = True
           Left = 566.929500000000000000
           Top = 120.944960000000000000
           Width = 147.401670000000000000
           Height = 18.897650000000000000
           DataField = 'MontantTVA'
-          DataSet = frxBonLivDT
-          DataSetName = 'frxBonLivDT'
+          DataSet = frxBonComDT
+          DataSetName = 'frxBonComDT'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -3755,19 +3755,19 @@ object BonComVGestionF: TBonComVGestionF
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonLivDT."MontantTVA"]')
+            '[frxBonComDT."MontantTVA"]')
           ParentFont = False
           VAlign = vaCenter
         end
-        object frxBonLivDTmontttc_bvcom: TfrxMemoView
+        object frxBonComDTmontttc_bvcom: TfrxMemoView
           AllowVectorExport = True
           Left = 563.149970000000000000
           Top = 151.181200000000000000
           Width = 151.181200000000000000
           Height = 31.370086060000000000
           DataField = 'montttc_bvcom'
-          DataSet = frxBonLivDT
-          DataSetName = 'frxBonLivDT'
+          DataSet = frxBonComDT
+          DataSetName = 'frxBonComDT'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -3779,19 +3779,19 @@ object BonComVGestionF: TBonComVGestionF
           Fill.BackColor = 13948116
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonLivDT."montttc_bvcom"]')
+            '[frxBonComDT."montttc_bvcom"]')
           ParentFont = False
           VAlign = vaCenter
         end
-        object frxBonLivDTNeTHT: TfrxMemoView
+        object frxBonComDTNeTHT: TfrxMemoView
           AllowVectorExport = True
           Left = 566.929500000000000000
           Top = 90.708719999999970000
           Width = 147.401670000000000000
           Height = 18.897650000000000000
           DataField = 'NeTHT'
-          DataSet = frxBonLivDT
-          DataSetName = 'frxBonLivDT'
+          DataSet = frxBonComDT
+          DataSetName = 'frxBonComDT'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -3802,7 +3802,7 @@ object BonComVGestionF: TBonComVGestionF
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonLivDT."NeTHT"]')
+            '[frxBonComDT."NeTHT"]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -3890,7 +3890,7 @@ object BonComVGestionF: TBonComVGestionF
           Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
-            '([frxBonLivDT."RemisePerc"]%)')
+            '([frxBonComDT."RemisePerc"]%)')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -4024,8 +4024,8 @@ object BonComVGestionF: TBonComVGestionF
           Top = 47.099773329999950000
           Width = 131.596362730000000000
           Height = 20.272024550000000000
-          DataSet = frxBonLivDT
-          DataSetName = 'frxBonLivDT'
+          DataSet = frxBonComDT
+          DataSetName = 'frxBonComDT'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -4036,7 +4036,7 @@ object BonComVGestionF: TBonComVGestionF
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonLivDT."montttc_bvcom"]')
+            '[frxBonComDT."montttc_bvcom"]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -4074,8 +4074,8 @@ object BonComVGestionF: TBonComVGestionF
           Top = 70.742836669999970000
           Width = 131.596362730000000000
           Height = 20.272024550000000000
-          DataSet = frxBonLivDT
-          DataSetName = 'frxBonLivDT'
+          DataSet = frxBonComDT
+          DataSetName = 'frxBonComDT'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -4086,7 +4086,7 @@ object BonComVGestionF: TBonComVGestionF
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonLivDT."montver_bvcom"]')
+            '[frxBonComDT."montver_bvcom"]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -4129,8 +4129,8 @@ object BonComVGestionF: TBonComVGestionF
       end
     end
   end
-  object frxBonLivPListDB: TfrxDBDataset
-    UserName = 'frxBonLivPListDB'
+  object frxBonComPListDB: TfrxDBDataset
+    UserName = 'frxBonComPListDB'
     CloseDataSource = False
     FieldAliases.Strings = (
       'code_bvcoml=code_bvcoml'
@@ -4152,7 +4152,7 @@ object BonComVGestionF: TBonComVGestionF
       'marge=marge'
       'margem=margem'
       'prixht_p=prixht_p')
-    DataSource = BonLivPListDataS
+    DataSource = BonComPListDataS
     BCDToCurrency = False
     Left = 248
     Top = 384
@@ -4204,8 +4204,8 @@ object BonComVGestionF: TBonComVGestionF
     Left = 408
     Top = 480
   end
-  object frxBonLivDT: TfrxDBDataset
-    UserName = 'frxBonLivDT'
+  object frxBonComDT: TfrxDBDataset
+    UserName = 'frxBonComDT'
     CloseDataSource = False
     FieldAliases.Strings = (
       'code_bvcom=code_bvcom'
@@ -4295,7 +4295,7 @@ object BonComVGestionF: TBonComVGestionF
       Caption = '-'
     end
   end
-  object BonLivPListSansTaxfrxRprt: TfrxReport
+  object BonComPListSansTaxfrxRprt: TfrxReport
     Version = '6.3.12'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
@@ -4316,12 +4316,12 @@ object BonComVGestionF: TBonComVGestionF
     Top = 336
     Datasets = <
       item
-        DataSet = frxBonLivDT
-        DataSetName = 'frxBonLivDT'
+        DataSet = frxBonComDT
+        DataSetName = 'frxBonComDT'
       end
       item
-        DataSet = frxBonLivPListDB
-        DataSetName = 'frxBonLivPListDB'
+        DataSet = frxBonComPListDB
+        DataSetName = 'frxBonComPListDB'
       end>
     Variables = <>
     Style = <
@@ -4437,8 +4437,8 @@ object BonComVGestionF: TBonComVGestionF
           Top = 0.779530000000022500
           Width = 302.362400000000000000
           Height = 18.897650000000000000
-          DataSet = frxBonLivDT
-          DataSetName = 'frxBonLivDT'
+          DataSet = frxBonComDT
+          DataSetName = 'frxBonComDT'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -9
@@ -4446,7 +4446,7 @@ object BonComVGestionF: TBonComVGestionF
           Font.Style = []
           Frame.Typ = []
           Memo.UTF8W = (
-            '[frxBonLivDT."Agent"]')
+            '[frxBonComDT."Agent"]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -4858,8 +4858,8 @@ object BonComVGestionF: TBonComVGestionF
         Height = 24.566929130000000000
         Top = 498.897960000000000000
         Width = 718.110700000000000000
-        DataSet = frxBonLivPListDB
-        DataSetName = 'frxBonLivPListDB'
+        DataSet = frxBonComPListDB
+        DataSetName = 'frxBonComPListDB'
         RowCount = 0
         Stretched = True
         object frxDBDataset1nomp: TfrxMemoView
@@ -4870,8 +4870,8 @@ object BonComVGestionF: TBonComVGestionF
           Height = 18.897650000000000000
           StretchMode = smActualHeight
           DataField = 'nomp'
-          DataSet = frxBonLivPListDB
-          DataSetName = 'frxBonLivPListDB'
+          DataSet = frxBonComPListDB
+          DataSetName = 'frxBonComPListDB'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -15
@@ -4879,7 +4879,7 @@ object BonComVGestionF: TBonComVGestionF
           Font.Style = []
           Frame.Typ = []
           Memo.UTF8W = (
-            '[frxBonLivPListDB."nomp"]')
+            '[frxBonComPListDB."nomp"]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -4907,8 +4907,8 @@ object BonComVGestionF: TBonComVGestionF
           Width = 75.590600000000000000
           Height = 18.897650000000000000
           DataField = 'qut_p'
-          DataSet = frxBonLivPListDB
-          DataSetName = 'frxBonLivPListDB'
+          DataSet = frxBonComPListDB
+          DataSetName = 'frxBonComPListDB'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -15
@@ -4917,7 +4917,7 @@ object BonComVGestionF: TBonComVGestionF
           Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
-            '[frxBonLivPListDB."qut_p"]')
+            '[frxBonComPListDB."qut_p"]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -4928,8 +4928,8 @@ object BonComVGestionF: TBonComVGestionF
           Width = 147.401670000000000000
           Height = 18.897650000000000000
           DataField = 'prixvd_p'
-          DataSet = frxBonLivPListDB
-          DataSetName = 'frxBonLivPListDB'
+          DataSet = frxBonComPListDB
+          DataSetName = 'frxBonComPListDB'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -4940,7 +4940,7 @@ object BonComVGestionF: TBonComVGestionF
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonLivPListDB."prixvd_p"]')
+            '[frxBonComPListDB."prixvd_p"]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -4951,8 +4951,8 @@ object BonComVGestionF: TBonComVGestionF
           Width = 147.401670000000000000
           Height = 18.897650000000000000
           DataField = 'MontantHT'
-          DataSet = frxBonLivPListDB
-          DataSetName = 'frxBonLivPListDB'
+          DataSet = frxBonComPListDB
+          DataSetName = 'frxBonComPListDB'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -4963,7 +4963,7 @@ object BonComVGestionF: TBonComVGestionF
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonLivPListDB."MontantHT"]')
+            '[frxBonComPListDB."MontantHT"]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -5042,15 +5042,15 @@ object BonComVGestionF: TBonComVGestionF
           ParentFont = False
           VAlign = vaCenter
         end
-        object frxBonLivDTremise_bvcom: TfrxMemoView
+        object frxBonComDTremise_bvcom: TfrxMemoView
           AllowVectorExport = True
           Left = 566.929500000000000000
           Top = 71.472480000000010000
           Width = 147.401670000000000000
           Height = 18.897650000000000000
           DataField = 'remise_bvcom'
-          DataSet = frxBonLivDT
-          DataSetName = 'frxBonLivDT'
+          DataSet = frxBonComDT
+          DataSetName = 'frxBonComDT'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -5061,19 +5061,19 @@ object BonComVGestionF: TBonComVGestionF
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonLivDT."remise_bvcom"]')
+            '[frxBonComDT."remise_bvcom"]')
           ParentFont = False
           VAlign = vaCenter
         end
-        object frxBonLivDTmontht_bvcom: TfrxMemoView
+        object frxBonComDTmontht_bvcom: TfrxMemoView
           AllowVectorExport = True
           Left = 566.929500000000000000
           Top = 31.236239999999960000
           Width = 147.401670000000000000
           Height = 18.897650000000000000
           DataField = 'montht_bvcom'
-          DataSet = frxBonLivDT
-          DataSetName = 'frxBonLivDT'
+          DataSet = frxBonComDT
+          DataSetName = 'frxBonComDT'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -5084,18 +5084,18 @@ object BonComVGestionF: TBonComVGestionF
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonLivDT."montht_bvcom"]')
+            '[frxBonComDT."montht_bvcom"]')
           ParentFont = False
           VAlign = vaCenter
         end
-        object frxBonLivDTmontttc_bvcom: TfrxMemoView
+        object frxBonComDTmontttc_bvcom: TfrxMemoView
           AllowVectorExport = True
           Left = 563.149970000000000000
           Top = 114.181200000000000000
           Width = 151.181200000000000000
           Height = 31.370086060000000000
-          DataSet = frxBonLivDT
-          DataSetName = 'frxBonLivDT'
+          DataSet = frxBonComDT
+          DataSetName = 'frxBonComDT'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -5107,7 +5107,7 @@ object BonComVGestionF: TBonComVGestionF
           Fill.BackColor = 13948116
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonLivDT."NeTHT"]')
+            '[frxBonComDT."NeTHT"]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -5195,7 +5195,7 @@ object BonComVGestionF: TBonComVGestionF
           Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
-            '([frxBonLivDT."RemisePerc"]%)')
+            '([frxBonComDT."RemisePerc"]%)')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -5339,8 +5339,8 @@ object BonComVGestionF: TBonComVGestionF
           Top = 44.555123289999980000
           Width = 131.596362730000000000
           Height = 16.492494550000000000
-          DataSet = frxBonLivDT
-          DataSetName = 'frxBonLivDT'
+          DataSet = frxBonComDT
+          DataSetName = 'frxBonComDT'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -5351,7 +5351,7 @@ object BonComVGestionF: TBonComVGestionF
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonLivDT."montttc_bvcom"]')
+            '[frxBonComDT."montttc_bvcom"]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -5379,8 +5379,8 @@ object BonComVGestionF: TBonComVGestionF
           Top = 64.198186640000010000
           Width = 131.596362730000000000
           Height = 16.492494550000000000
-          DataSet = frxBonLivDT
-          DataSetName = 'frxBonLivDT'
+          DataSet = frxBonComDT
+          DataSetName = 'frxBonComDT'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -5391,7 +5391,7 @@ object BonComVGestionF: TBonComVGestionF
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonLivDT."montver_bvcom"]')
+            '[frxBonComDT."montver_bvcom"]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -5434,7 +5434,7 @@ object BonComVGestionF: TBonComVGestionF
       end
     end
   end
-  object BonLivPListBonCaissefrxRprt: TfrxReport
+  object BonComPListBonCaissefrxRprt: TfrxReport
     Version = '6.3.12'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
@@ -5455,12 +5455,12 @@ object BonComVGestionF: TBonComVGestionF
     Top = 392
     Datasets = <
       item
-        DataSet = frxBonLivDT
-        DataSetName = 'frxBonLivDT'
+        DataSet = frxBonComDT
+        DataSetName = 'frxBonComDT'
       end
       item
-        DataSet = frxBonLivPListDB
-        DataSetName = 'frxBonLivPListDB'
+        DataSet = frxBonComPListDB
+        DataSetName = 'frxBonComPListDB'
       end>
     Variables = <>
     Style = <
@@ -5576,8 +5576,8 @@ object BonComVGestionF: TBonComVGestionF
           Top = 0.779530000000022500
           Width = 302.362400000000000000
           Height = 18.897650000000000000
-          DataSet = frxBonLivDT
-          DataSetName = 'frxBonLivDT'
+          DataSet = frxBonComDT
+          DataSetName = 'frxBonComDT'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -9
@@ -5585,7 +5585,7 @@ object BonComVGestionF: TBonComVGestionF
           Font.Style = []
           Frame.Typ = []
           Memo.UTF8W = (
-            '[frxBonLivDT."Agent"]')
+            '[frxBonComDT."Agent"]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -5997,8 +5997,8 @@ object BonComVGestionF: TBonComVGestionF
         Height = 24.566929130000000000
         Top = 498.897960000000000000
         Width = 718.110700000000000000
-        DataSet = frxBonLivPListDB
-        DataSetName = 'frxBonLivPListDB'
+        DataSet = frxBonComPListDB
+        DataSetName = 'frxBonComPListDB'
         RowCount = 0
         Stretched = True
         object frxDBDataset1nomp: TfrxMemoView
@@ -6009,8 +6009,8 @@ object BonComVGestionF: TBonComVGestionF
           Height = 18.897650000000000000
           StretchMode = smActualHeight
           DataField = 'nomp'
-          DataSet = frxBonLivPListDB
-          DataSetName = 'frxBonLivPListDB'
+          DataSet = frxBonComPListDB
+          DataSetName = 'frxBonComPListDB'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -15
@@ -6018,7 +6018,7 @@ object BonComVGestionF: TBonComVGestionF
           Font.Style = []
           Frame.Typ = []
           Memo.UTF8W = (
-            '[frxBonLivPListDB."nomp"]')
+            '[frxBonComPListDB."nomp"]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -6046,8 +6046,8 @@ object BonComVGestionF: TBonComVGestionF
           Width = 75.590600000000000000
           Height = 18.897650000000000000
           DataField = 'qut_p'
-          DataSet = frxBonLivPListDB
-          DataSetName = 'frxBonLivPListDB'
+          DataSet = frxBonComPListDB
+          DataSetName = 'frxBonComPListDB'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -15
@@ -6056,7 +6056,7 @@ object BonComVGestionF: TBonComVGestionF
           Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
-            '[frxBonLivPListDB."qut_p"]')
+            '[frxBonComPListDB."qut_p"]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -6067,8 +6067,8 @@ object BonComVGestionF: TBonComVGestionF
           Width = 147.401670000000000000
           Height = 18.897650000000000000
           DataField = 'prixvd_p'
-          DataSet = frxBonLivPListDB
-          DataSetName = 'frxBonLivPListDB'
+          DataSet = frxBonComPListDB
+          DataSetName = 'frxBonComPListDB'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -6079,7 +6079,7 @@ object BonComVGestionF: TBonComVGestionF
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonLivPListDB."prixvd_p"]')
+            '[frxBonComPListDB."prixvd_p"]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -6090,8 +6090,8 @@ object BonComVGestionF: TBonComVGestionF
           Width = 147.401670000000000000
           Height = 18.897650000000000000
           DataField = 'MontantHT'
-          DataSet = frxBonLivPListDB
-          DataSetName = 'frxBonLivPListDB'
+          DataSet = frxBonComPListDB
+          DataSetName = 'frxBonComPListDB'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -6102,7 +6102,7 @@ object BonComVGestionF: TBonComVGestionF
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonLivPListDB."MontantHT"]')
+            '[frxBonComPListDB."MontantHT"]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -6199,15 +6199,15 @@ object BonComVGestionF: TBonComVGestionF
           ParentFont = False
           VAlign = vaCenter
         end
-        object frxBonLivDTremise_bvcom: TfrxMemoView
+        object frxBonComDTremise_bvcom: TfrxMemoView
           AllowVectorExport = True
           Left = 566.929500000000000000
           Top = 60.472480000000010000
           Width = 147.401670000000000000
           Height = 18.897650000000000000
           DataField = 'remise_bvcom'
-          DataSet = frxBonLivDT
-          DataSetName = 'frxBonLivDT'
+          DataSet = frxBonComDT
+          DataSetName = 'frxBonComDT'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -6218,19 +6218,19 @@ object BonComVGestionF: TBonComVGestionF
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonLivDT."remise_bvcom"]')
+            '[frxBonComDT."remise_bvcom"]')
           ParentFont = False
           VAlign = vaCenter
         end
-        object frxBonLivDTmontht_bvcom: TfrxMemoView
+        object frxBonComDTmontht_bvcom: TfrxMemoView
           AllowVectorExport = True
           Left = 566.929500000000000000
           Top = 31.236239999999960000
           Width = 147.401670000000000000
           Height = 18.897650000000000000
           DataField = 'montht_bvcom'
-          DataSet = frxBonLivDT
-          DataSetName = 'frxBonLivDT'
+          DataSet = frxBonComDT
+          DataSetName = 'frxBonComDT'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -6241,18 +6241,18 @@ object BonComVGestionF: TBonComVGestionF
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonLivDT."montht_bvcom"]')
+            '[frxBonComDT."montht_bvcom"]')
           ParentFont = False
           VAlign = vaCenter
         end
-        object frxBonLivDTmontttc_bvcom: TfrxMemoView
+        object frxBonComDTmontttc_bvcom: TfrxMemoView
           AllowVectorExport = True
           Left = 563.149970000000000000
           Top = 118.181200000000000000
           Width = 151.181200000000000000
           Height = 31.370086060000000000
-          DataSet = frxBonLivDT
-          DataSetName = 'frxBonLivDT'
+          DataSet = frxBonComDT
+          DataSetName = 'frxBonComDT'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -6264,19 +6264,19 @@ object BonComVGestionF: TBonComVGestionF
           Fill.BackColor = 13948116
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonLivDT."montver_bvcom"]')
+            '[frxBonComDT."montver_bvcom"]')
           ParentFont = False
           VAlign = vaCenter
         end
-        object frxBonLivDTNeTHT: TfrxMemoView
+        object frxBonComDTNeTHT: TfrxMemoView
           AllowVectorExport = True
           Left = 566.929500000000000000
           Top = 90.708719999999970000
           Width = 147.401670000000000000
           Height = 18.897650000000000000
           DataField = 'NeTHT'
-          DataSet = frxBonLivDT
-          DataSetName = 'frxBonLivDT'
+          DataSet = frxBonComDT
+          DataSetName = 'frxBonComDT'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -6287,7 +6287,7 @@ object BonComVGestionF: TBonComVGestionF
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonLivDT."NeTHT"]')
+            '[frxBonComDT."NeTHT"]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -6445,7 +6445,7 @@ object BonComVGestionF: TBonComVGestionF
           Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
-            '([frxBonLivDT."RemisePerc"]%)')
+            '([frxBonComDT."RemisePerc"]%)')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -6519,8 +6519,8 @@ object BonComVGestionF: TBonComVGestionF
           Top = 46.099773320000050000
           Width = 131.596362730000000000
           Height = 16.492494550000000000
-          DataSet = frxBonLivDT
-          DataSetName = 'frxBonLivDT'
+          DataSet = frxBonComDT
+          DataSetName = 'frxBonComDT'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -6531,7 +6531,7 @@ object BonComVGestionF: TBonComVGestionF
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonLivDT."montttc_bvcom"]')
+            '[frxBonComDT."montttc_bvcom"]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -6559,8 +6559,8 @@ object BonComVGestionF: TBonComVGestionF
           Top = 65.742836669999970000
           Width = 131.596362730000000000
           Height = 16.492494550000000000
-          DataSet = frxBonLivDT
-          DataSetName = 'frxBonLivDT'
+          DataSet = frxBonComDT
+          DataSetName = 'frxBonComDT'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -6571,7 +6571,7 @@ object BonComVGestionF: TBonComVGestionF
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonLivDT."montver_bvcom"]')
+            '[frxBonComDT."montver_bvcom"]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -6626,7 +6626,7 @@ object BonComVGestionF: TBonComVGestionF
     Left = 794
     Top = 482
   end
-  object BonLivPListfrxRprtA5: TfrxReport
+  object BonComPListfrxRprtA5: TfrxReport
     Version = '6.3.12'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
@@ -6647,12 +6647,12 @@ object BonComVGestionF: TBonComVGestionF
     Top = 340
     Datasets = <
       item
-        DataSet = frxBonLivDT
-        DataSetName = 'frxBonLivDT'
+        DataSet = frxBonComDT
+        DataSetName = 'frxBonComDT'
       end
       item
-        DataSet = frxBonLivPListDB
-        DataSetName = 'frxBonLivPListDB'
+        DataSet = frxBonComPListDB
+        DataSetName = 'frxBonComPListDB'
       end>
     Variables = <>
     Style = <
@@ -6766,8 +6766,8 @@ object BonComVGestionF: TBonComVGestionF
           Top = 0.779530000000023000
           Width = 340.157700000000000000
           Height = 18.897650000000000000
-          DataSet = frxBonLivDT
-          DataSetName = 'frxBonLivDT'
+          DataSet = frxBonComDT
+          DataSetName = 'frxBonComDT'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -9
@@ -6775,7 +6775,7 @@ object BonComVGestionF: TBonComVGestionF
           Font.Style = []
           Frame.Typ = []
           Memo.UTF8W = (
-            '[frxBonLivDT."Agent"]')
+            '[frxBonComDT."Agent"]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -7260,8 +7260,8 @@ object BonComVGestionF: TBonComVGestionF
         ParentFont = False
         Top = 343.937230000000000000
         Width = 521.575140000000000000
-        DataSet = frxBonLivPListDB
-        DataSetName = 'frxBonLivPListDB'
+        DataSet = frxBonComPListDB
+        DataSetName = 'frxBonComPListDB'
         RowCount = 0
         Stretched = True
         object frxDBDataset1nomp: TfrxMemoView
@@ -7272,8 +7272,8 @@ object BonComVGestionF: TBonComVGestionF
           Height = 11.338590000000000000
           StretchMode = smActualHeight
           DataField = 'nomp'
-          DataSet = frxBonLivPListDB
-          DataSetName = 'frxBonLivPListDB'
+          DataSet = frxBonComPListDB
+          DataSetName = 'frxBonComPListDB'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -9
@@ -7281,7 +7281,7 @@ object BonComVGestionF: TBonComVGestionF
           Font.Style = []
           Frame.Typ = []
           Memo.UTF8W = (
-            '[frxBonLivPListDB."nomp"]')
+            '[frxBonComPListDB."nomp"]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -7309,8 +7309,8 @@ object BonComVGestionF: TBonComVGestionF
           Width = 56.692950000000000000
           Height = 11.338590000000000000
           DataField = 'qut_p'
-          DataSet = frxBonLivPListDB
-          DataSetName = 'frxBonLivPListDB'
+          DataSet = frxBonComPListDB
+          DataSetName = 'frxBonComPListDB'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -9
@@ -7319,7 +7319,7 @@ object BonComVGestionF: TBonComVGestionF
           Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
-            '[frxBonLivPListDB."qut_p"]')
+            '[frxBonComPListDB."qut_p"]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -7330,8 +7330,8 @@ object BonComVGestionF: TBonComVGestionF
           Width = 86.929190000000000000
           Height = 11.338590000000000000
           DataField = 'prixvd_p'
-          DataSet = frxBonLivPListDB
-          DataSetName = 'frxBonLivPListDB'
+          DataSet = frxBonComPListDB
+          DataSetName = 'frxBonComPListDB'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -7342,7 +7342,7 @@ object BonComVGestionF: TBonComVGestionF
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonLivPListDB."prixvd_p"]')
+            '[frxBonComPListDB."prixvd_p"]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -7353,8 +7353,8 @@ object BonComVGestionF: TBonComVGestionF
           Width = 86.929190000000000000
           Height = 11.338590000000000000
           DataField = 'MontantHT'
-          DataSet = frxBonLivPListDB
-          DataSetName = 'frxBonLivPListDB'
+          DataSet = frxBonComPListDB
+          DataSetName = 'frxBonComPListDB'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -7365,7 +7365,7 @@ object BonComVGestionF: TBonComVGestionF
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonLivPListDB."MontantHT"]')
+            '[frxBonComPListDB."MontantHT"]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -7659,7 +7659,7 @@ object BonComVGestionF: TBonComVGestionF
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonLivDT."montttc_bvcom"]')
+            '[frxBonComDT."montttc_bvcom"]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -7684,15 +7684,15 @@ object BonComVGestionF: TBonComVGestionF
           Frame.Color = clNone
           Frame.Typ = []
         end
-        object frxBonLivDTremise_bvcom: TfrxMemoView
+        object frxBonComDTremise_bvcom: TfrxMemoView
           AllowVectorExport = True
           Left = 411.149970000000000000
           Top = 31.802739415000000000
           Width = 109.606370000000000000
           Height = 18.897650000000000000
           DataField = 'remise_bvcom'
-          DataSet = frxBonLivDT
-          DataSetName = 'frxBonLivDT'
+          DataSet = frxBonComDT
+          DataSetName = 'frxBonComDT'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -7703,19 +7703,19 @@ object BonComVGestionF: TBonComVGestionF
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonLivDT."remise_bvcom"]')
+            '[frxBonComDT."remise_bvcom"]')
           ParentFont = False
           VAlign = vaCenter
         end
-        object frxBonLivDTmontht_bvcom: TfrxMemoView
+        object frxBonComDTmontht_bvcom: TfrxMemoView
           AllowVectorExport = True
           Left = 411.149970000000000000
           Top = 8.090873465000020000
           Width = 109.606370000000000000
           Height = 18.897650000000000000
           DataField = 'montht_bvcom'
-          DataSet = frxBonLivDT
-          DataSetName = 'frxBonLivDT'
+          DataSet = frxBonComDT
+          DataSetName = 'frxBonComDT'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -7726,19 +7726,19 @@ object BonComVGestionF: TBonComVGestionF
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonLivDT."montht_bvcom"]')
+            '[frxBonComDT."montht_bvcom"]')
           ParentFont = False
           VAlign = vaCenter
         end
-        object frxBonLivDTMontantTVA: TfrxMemoView
+        object frxBonComDTMontantTVA: TfrxMemoView
           AllowVectorExport = True
           Left = 411.149970000000000000
           Top = 79.226471325000000000
           Width = 109.606370000000000000
           Height = 18.897650000000000000
           DataField = 'MontantTVA'
-          DataSet = frxBonLivDT
-          DataSetName = 'frxBonLivDT'
+          DataSet = frxBonComDT
+          DataSetName = 'frxBonComDT'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -7749,19 +7749,19 @@ object BonComVGestionF: TBonComVGestionF
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonLivDT."MontantTVA"]')
+            '[frxBonComDT."MontantTVA"]')
           ParentFont = False
           VAlign = vaCenter
         end
-        object frxBonLivDTmontttc_bvcom: TfrxMemoView
+        object frxBonComDTmontttc_bvcom: TfrxMemoView
           AllowVectorExport = True
           Left = 411.149970000000000000
           Top = 104.261179240000000000
           Width = 109.606370000000000000
           Height = 16.251966060000000000
           DataField = 'montttc_bvcom'
-          DataSet = frxBonLivDT
-          DataSetName = 'frxBonLivDT'
+          DataSet = frxBonComDT
+          DataSetName = 'frxBonComDT'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -7773,19 +7773,19 @@ object BonComVGestionF: TBonComVGestionF
           Fill.BackColor = 13948116
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonLivDT."montttc_bvcom"]')
+            '[frxBonComDT."montttc_bvcom"]')
           ParentFont = False
           VAlign = vaCenter
         end
-        object frxBonLivDTNeTHT: TfrxMemoView
+        object frxBonComDTNeTHT: TfrxMemoView
           AllowVectorExport = True
           Left = 411.149970000000000000
           Top = 55.514605365000000000
           Width = 109.606370000000000000
           Height = 18.897650000000000000
           DataField = 'NeTHT'
-          DataSet = frxBonLivDT
-          DataSetName = 'frxBonLivDT'
+          DataSet = frxBonComDT
+          DataSetName = 'frxBonComDT'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -7796,7 +7796,7 @@ object BonComVGestionF: TBonComVGestionF
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonLivDT."NeTHT"]')
+            '[frxBonComDT."NeTHT"]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -7834,7 +7834,7 @@ object BonComVGestionF: TBonComVGestionF
           Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
-            '([frxBonLivDT."RemisePerc"]%)')
+            '([frxBonComDT."RemisePerc"]%)')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -7872,7 +7872,7 @@ object BonComVGestionF: TBonComVGestionF
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonLivDT."montver_bvcom"]')
+            '[frxBonComDT."montver_bvcom"]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -7915,7 +7915,7 @@ object BonComVGestionF: TBonComVGestionF
       end
     end
   end
-  object BonLivPListLivSimplefrxRprt: TfrxReport
+  object BonComPListLivSimplefrxRprt: TfrxReport
     Version = '6.3.12'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
@@ -7935,12 +7935,12 @@ object BonComVGestionF: TBonComVGestionF
     Top = 336
     Datasets = <
       item
-        DataSet = frxBonLivDT
-        DataSetName = 'frxBonLivDT'
+        DataSet = frxBonComDT
+        DataSetName = 'frxBonComDT'
       end
       item
-        DataSet = frxBonLivPListDB
-        DataSetName = 'frxBonLivPListDB'
+        DataSet = frxBonComPListDB
+        DataSetName = 'frxBonComPListDB'
       end>
     Variables = <>
     Style = <
@@ -8056,8 +8056,8 @@ object BonComVGestionF: TBonComVGestionF
           Top = 0.779530000000022500
           Width = 302.362400000000000000
           Height = 18.897650000000000000
-          DataSet = frxBonLivDT
-          DataSetName = 'frxBonLivDT'
+          DataSet = frxBonComDT
+          DataSetName = 'frxBonComDT'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -9
@@ -8065,7 +8065,7 @@ object BonComVGestionF: TBonComVGestionF
           Font.Style = []
           Frame.Typ = []
           Memo.UTF8W = (
-            '[frxBonLivDT."Agent"]')
+            '[frxBonComDT."Agent"]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -8425,8 +8425,8 @@ object BonComVGestionF: TBonComVGestionF
         Height = 24.566929130000000000
         Top = 393.071120000000000000
         Width = 718.110700000000000000
-        DataSet = frxBonLivPListDB
-        DataSetName = 'frxBonLivPListDB'
+        DataSet = frxBonComPListDB
+        DataSetName = 'frxBonComPListDB'
         RowCount = 0
         Stretched = True
         object frxDBDataset1nomp: TfrxMemoView
@@ -8437,8 +8437,8 @@ object BonComVGestionF: TBonComVGestionF
           Height = 18.897650000000000000
           StretchMode = smActualHeight
           DataField = 'nomp'
-          DataSet = frxBonLivPListDB
-          DataSetName = 'frxBonLivPListDB'
+          DataSet = frxBonComPListDB
+          DataSetName = 'frxBonComPListDB'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -15
@@ -8446,7 +8446,7 @@ object BonComVGestionF: TBonComVGestionF
           Font.Style = []
           Frame.Typ = []
           Memo.UTF8W = (
-            '[frxBonLivPListDB."nomp"]')
+            '[frxBonComPListDB."nomp"]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -8474,8 +8474,8 @@ object BonComVGestionF: TBonComVGestionF
           Width = 75.590600000000000000
           Height = 18.897650000000000000
           DataField = 'qut_p'
-          DataSet = frxBonLivPListDB
-          DataSetName = 'frxBonLivPListDB'
+          DataSet = frxBonComPListDB
+          DataSetName = 'frxBonComPListDB'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -15
@@ -8484,7 +8484,7 @@ object BonComVGestionF: TBonComVGestionF
           Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
-            '[frxBonLivPListDB."qut_p"]')
+            '[frxBonComPListDB."qut_p"]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -8495,8 +8495,8 @@ object BonComVGestionF: TBonComVGestionF
           Width = 147.401670000000000000
           Height = 18.897650000000000000
           DataField = 'prixvd_p'
-          DataSet = frxBonLivPListDB
-          DataSetName = 'frxBonLivPListDB'
+          DataSet = frxBonComPListDB
+          DataSetName = 'frxBonComPListDB'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -8507,7 +8507,7 @@ object BonComVGestionF: TBonComVGestionF
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonLivPListDB."prixvd_p"]')
+            '[frxBonComPListDB."prixvd_p"]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -8518,8 +8518,8 @@ object BonComVGestionF: TBonComVGestionF
           Width = 147.401670000000000000
           Height = 18.897650000000000000
           DataField = 'MontantHT'
-          DataSet = frxBonLivPListDB
-          DataSetName = 'frxBonLivPListDB'
+          DataSet = frxBonComPListDB
+          DataSetName = 'frxBonComPListDB'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -8530,7 +8530,7 @@ object BonComVGestionF: TBonComVGestionF
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonLivPListDB."MontantHT"]')
+            '[frxBonComPListDB."MontantHT"]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -8627,15 +8627,15 @@ object BonComVGestionF: TBonComVGestionF
           ParentFont = False
           VAlign = vaCenter
         end
-        object frxBonLivDTremise_bvcom: TfrxMemoView
+        object frxBonComDTremise_bvcom: TfrxMemoView
           AllowVectorExport = True
           Left = 566.929500000000000000
           Top = 60.472480000000010000
           Width = 147.401670000000000000
           Height = 18.897650000000000000
           DataField = 'remise_bvcom'
-          DataSet = frxBonLivDT
-          DataSetName = 'frxBonLivDT'
+          DataSet = frxBonComDT
+          DataSetName = 'frxBonComDT'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -8646,19 +8646,19 @@ object BonComVGestionF: TBonComVGestionF
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonLivDT."remise_bvcom"]')
+            '[frxBonComDT."remise_bvcom"]')
           ParentFont = False
           VAlign = vaCenter
         end
-        object frxBonLivDTmontht_bvcom: TfrxMemoView
+        object frxBonComDTmontht_bvcom: TfrxMemoView
           AllowVectorExport = True
           Left = 566.929500000000000000
           Top = 31.236240000000010000
           Width = 147.401670000000000000
           Height = 18.897650000000000000
           DataField = 'montht_bvcom'
-          DataSet = frxBonLivDT
-          DataSetName = 'frxBonLivDT'
+          DataSet = frxBonComDT
+          DataSetName = 'frxBonComDT'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -8669,19 +8669,19 @@ object BonComVGestionF: TBonComVGestionF
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonLivDT."montht_bvcom"]')
+            '[frxBonComDT."montht_bvcom"]')
           ParentFont = False
           VAlign = vaCenter
         end
-        object frxBonLivDTmontttc_bvcom: TfrxMemoView
+        object frxBonComDTmontttc_bvcom: TfrxMemoView
           AllowVectorExport = True
           Left = 563.149970000000000000
           Top = 127.181200000000000000
           Width = 151.181200000000000000
           Height = 31.370086060000000000
           DataField = 'montttc_bvcom'
-          DataSet = frxBonLivDT
-          DataSetName = 'frxBonLivDT'
+          DataSet = frxBonComDT
+          DataSetName = 'frxBonComDT'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -8693,19 +8693,19 @@ object BonComVGestionF: TBonComVGestionF
           Fill.BackColor = 13948116
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonLivDT."montttc_bvcom"]')
+            '[frxBonComDT."montttc_bvcom"]')
           ParentFont = False
           VAlign = vaCenter
         end
-        object frxBonLivDTNeTHT: TfrxMemoView
+        object frxBonComDTNeTHT: TfrxMemoView
           AllowVectorExport = True
           Left = 566.929500000000000000
           Top = 90.708719999999970000
           Width = 147.401670000000000000
           Height = 18.897650000000000000
           DataField = 'NeTHT'
-          DataSet = frxBonLivDT
-          DataSetName = 'frxBonLivDT'
+          DataSet = frxBonComDT
+          DataSetName = 'frxBonComDT'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -8716,7 +8716,7 @@ object BonComVGestionF: TBonComVGestionF
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonLivDT."NeTHT"]')
+            '[frxBonComDT."NeTHT"]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -8754,7 +8754,7 @@ object BonComVGestionF: TBonComVGestionF
           Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
-            '([frxBonLivDT."RemisePerc"]%)')
+            '([frxBonComDT."RemisePerc"]%)')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -8853,8 +8853,8 @@ object BonComVGestionF: TBonComVGestionF
           Top = 47.099773330000010000
           Width = 131.596362730000000000
           Height = 20.272024550000000000
-          DataSet = frxBonLivDT
-          DataSetName = 'frxBonLivDT'
+          DataSet = frxBonComDT
+          DataSetName = 'frxBonComDT'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -8865,7 +8865,7 @@ object BonComVGestionF: TBonComVGestionF
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonLivDT."montttc_bvcom"]')
+            '[frxBonComDT."montttc_bvcom"]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -8903,8 +8903,8 @@ object BonComVGestionF: TBonComVGestionF
           Top = 70.742836669999970000
           Width = 131.596362730000000000
           Height = 20.272024550000000000
-          DataSet = frxBonLivDT
-          DataSetName = 'frxBonLivDT'
+          DataSet = frxBonComDT
+          DataSetName = 'frxBonComDT'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -8915,7 +8915,7 @@ object BonComVGestionF: TBonComVGestionF
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonLivDT."montver_bvcom"]')
+            '[frxBonComDT."montver_bvcom"]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -8958,7 +8958,7 @@ object BonComVGestionF: TBonComVGestionF
       end
     end
   end
-  object BonLivPListfrxCaisseRprtA5: TfrxReport
+  object BonComPListfrxCaisseRprtA5: TfrxReport
     Version = '6.3.12'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
@@ -8977,12 +8977,12 @@ object BonComVGestionF: TBonComVGestionF
     Top = 396
     Datasets = <
       item
-        DataSet = frxBonLivDT
-        DataSetName = 'frxBonLivDT'
+        DataSet = frxBonComDT
+        DataSetName = 'frxBonComDT'
       end
       item
-        DataSet = frxBonLivPListDB
-        DataSetName = 'frxBonLivPListDB'
+        DataSet = frxBonComPListDB
+        DataSetName = 'frxBonComPListDB'
       end>
     Variables = <>
     Style = <>
@@ -9038,8 +9038,8 @@ object BonComVGestionF: TBonComVGestionF
           Top = 0.779530000000000000
           Width = 302.362400000000000000
           Height = 18.897650000000000000
-          DataSet = frxBonLivDT
-          DataSetName = 'frxBonLivDT'
+          DataSet = frxBonComDT
+          DataSetName = 'frxBonComDT'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -9
@@ -9047,7 +9047,7 @@ object BonComVGestionF: TBonComVGestionF
           Font.Style = []
           Frame.Typ = []
           Memo.UTF8W = (
-            '[frxBonLivDT."Agent"]')
+            '[frxBonComDT."Agent"]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -9460,8 +9460,8 @@ object BonComVGestionF: TBonComVGestionF
         Height = 24.566929130000000000
         Top = 343.937230000000000000
         Width = 521.575140000000000000
-        DataSet = frxBonLivPListDB
-        DataSetName = 'frxBonLivPListDB'
+        DataSet = frxBonComPListDB
+        DataSetName = 'frxBonComPListDB'
         RowCount = 0
         Stretched = True
         object frxDBDataset1nomp: TfrxMemoView
@@ -9472,8 +9472,8 @@ object BonComVGestionF: TBonComVGestionF
           Height = 18.897650000000000000
           StretchMode = smActualHeight
           DataField = 'nomp'
-          DataSet = frxBonLivPListDB
-          DataSetName = 'frxBonLivPListDB'
+          DataSet = frxBonComPListDB
+          DataSetName = 'frxBonComPListDB'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -12
@@ -9481,7 +9481,7 @@ object BonComVGestionF: TBonComVGestionF
           Font.Style = []
           Frame.Typ = []
           Memo.UTF8W = (
-            '[frxBonLivPListDB."nomp"]')
+            '[frxBonComPListDB."nomp"]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -9509,8 +9509,8 @@ object BonComVGestionF: TBonComVGestionF
           Width = 52.913420000000000000
           Height = 18.897650000000000000
           DataField = 'qut_p'
-          DataSet = frxBonLivPListDB
-          DataSetName = 'frxBonLivPListDB'
+          DataSet = frxBonComPListDB
+          DataSetName = 'frxBonComPListDB'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -12
@@ -9519,7 +9519,7 @@ object BonComVGestionF: TBonComVGestionF
           Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
-            '[frxBonLivPListDB."qut_p"]')
+            '[frxBonComPListDB."qut_p"]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -9530,8 +9530,8 @@ object BonComVGestionF: TBonComVGestionF
           Width = 86.929190000000000000
           Height = 18.897650000000000000
           DataField = 'prixvd_p'
-          DataSet = frxBonLivPListDB
-          DataSetName = 'frxBonLivPListDB'
+          DataSet = frxBonComPListDB
+          DataSetName = 'frxBonComPListDB'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -9542,7 +9542,7 @@ object BonComVGestionF: TBonComVGestionF
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonLivPListDB."prixvd_p"]')
+            '[frxBonComPListDB."prixvd_p"]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -9553,8 +9553,8 @@ object BonComVGestionF: TBonComVGestionF
           Width = 94.488250000000000000
           Height = 18.897650000000000000
           DataField = 'MontantHT'
-          DataSet = frxBonLivPListDB
-          DataSetName = 'frxBonLivPListDB'
+          DataSet = frxBonComPListDB
+          DataSetName = 'frxBonComPListDB'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -9565,7 +9565,7 @@ object BonComVGestionF: TBonComVGestionF
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonLivPListDB."MontantHT"]')
+            '[frxBonComPListDB."MontantHT"]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -9651,15 +9651,15 @@ object BonComVGestionF: TBonComVGestionF
           ParentFont = False
           VAlign = vaCenter
         end
-        object frxBonLivDTremise_bvcom: TfrxMemoView
+        object frxBonComDTremise_bvcom: TfrxMemoView
           AllowVectorExport = True
           Left = 412.929500000000000000
           Top = 41.472480000000000000
           Width = 109.606299210000000000
           Height = 18.897650000000000000
           DataField = 'remise_bvcom'
-          DataSet = frxBonLivDT
-          DataSetName = 'frxBonLivDT'
+          DataSet = frxBonComDT
+          DataSetName = 'frxBonComDT'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -9670,19 +9670,19 @@ object BonComVGestionF: TBonComVGestionF
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonLivDT."remise_bvcom"]')
+            '[frxBonComDT."remise_bvcom"]')
           ParentFont = False
           VAlign = vaCenter
         end
-        object frxBonLivDTmontht_bvcom: TfrxMemoView
+        object frxBonComDTmontht_bvcom: TfrxMemoView
           AllowVectorExport = True
           Left = 412.929500000000000000
           Top = 12.236240000000000000
           Width = 109.606299210000000000
           Height = 18.897650000000000000
           DataField = 'montht_bvcom'
-          DataSet = frxBonLivDT
-          DataSetName = 'frxBonLivDT'
+          DataSet = frxBonComDT
+          DataSetName = 'frxBonComDT'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -9693,18 +9693,18 @@ object BonComVGestionF: TBonComVGestionF
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonLivDT."montht_bvcom"]')
+            '[frxBonComDT."montht_bvcom"]')
           ParentFont = False
           VAlign = vaCenter
         end
-        object frxBonLivDTmontttc_bvcom: TfrxMemoView
+        object frxBonComDTmontttc_bvcom: TfrxMemoView
           AllowVectorExport = True
           Left = 415.149970000000000000
           Top = 99.181200000000000000
           Width = 109.606299210000000000
           Height = 31.370086060000000000
-          DataSet = frxBonLivDT
-          DataSetName = 'frxBonLivDT'
+          DataSet = frxBonComDT
+          DataSetName = 'frxBonComDT'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -9716,19 +9716,19 @@ object BonComVGestionF: TBonComVGestionF
           Fill.BackColor = 13948116
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonLivDT."montver_bvcom"]')
+            '[frxBonComDT."montver_bvcom"]')
           ParentFont = False
           VAlign = vaCenter
         end
-        object frxBonLivDTNeTHT: TfrxMemoView
+        object frxBonComDTNeTHT: TfrxMemoView
           AllowVectorExport = True
           Left = 412.929500000000000000
           Top = 71.708720000000000000
           Width = 109.606299210000000000
           Height = 18.897650000000000000
           DataField = 'NeTHT'
-          DataSet = frxBonLivDT
-          DataSetName = 'frxBonLivDT'
+          DataSet = frxBonComDT
+          DataSetName = 'frxBonComDT'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -9739,7 +9739,7 @@ object BonComVGestionF: TBonComVGestionF
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonLivDT."NeTHT"]')
+            '[frxBonComDT."NeTHT"]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -9897,7 +9897,7 @@ object BonComVGestionF: TBonComVGestionF
           Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
-            '([frxBonLivDT."RemisePerc"]%)')
+            '([frxBonComDT."RemisePerc"]%)')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -9971,8 +9971,8 @@ object BonComVGestionF: TBonComVGestionF
           Top = 27.099773320000000000
           Width = 86.173228350000000000
           Height = 16.492494550000000000
-          DataSet = frxBonLivDT
-          DataSetName = 'frxBonLivDT'
+          DataSet = frxBonComDT
+          DataSetName = 'frxBonComDT'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -9983,7 +9983,7 @@ object BonComVGestionF: TBonComVGestionF
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonLivDT."montttc_bvcom"]')
+            '[frxBonComDT."montttc_bvcom"]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -10011,8 +10011,8 @@ object BonComVGestionF: TBonComVGestionF
           Top = 46.742836670000000000
           Width = 86.173228350000000000
           Height = 16.492494550000000000
-          DataSet = frxBonLivDT
-          DataSetName = 'frxBonLivDT'
+          DataSet = frxBonComDT
+          DataSetName = 'frxBonComDT'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -10023,7 +10023,7 @@ object BonComVGestionF: TBonComVGestionF
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonLivDT."montver_bvcom"]')
+            '[frxBonComDT."montver_bvcom"]')
           ParentFont = False
           VAlign = vaCenter
         end
