@@ -542,7 +542,7 @@ object BonComVGestionF: TBonComVGestionF
       Top = 24
       Width = 144
       Height = 20
-      Caption = 'Bon de Livraison N'#176
+      Caption = 'Commande Client N'#176
       Color = 15722984
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 4207405
@@ -1027,7 +1027,7 @@ object BonComVGestionF: TBonComVGestionF
       Caption = '0'
       Visible = False
     end
-    object ValiderBVLivBonComGLbl: TLabel
+    object ValiderBVComBonComGLbl: TLabel
       Left = 838
       Top = 213
       Width = 186
@@ -2548,7 +2548,7 @@ object BonComVGestionF: TBonComVGestionF
       Top = 62
       Width = 94
       Height = 56
-      Caption = 'Bon de '#13#10'Livraison'
+      Caption = 'Commande '#13#10'Client'
       Color = 15722984
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
@@ -2839,7 +2839,7 @@ object BonComVGestionF: TBonComVGestionF
     end
   end
   object BonComPListDataS: TDataSource
-    DataSet = MainForm.Bonv_liv_listTable
+    DataSet = MainForm.Bonv_com_listTable
     OnDataChange = BonComPListDataSDataChange
     Left = 944
     Top = 472
@@ -3161,7 +3161,7 @@ object BonComVGestionF: TBonComVGestionF
           Font.Style = [fsBold]
           Frame.Typ = []
           Memo.UTF8W = (
-            'BON DE LIVRAISON')
+            'COMMANDE CLIENT')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -4216,7 +4216,7 @@ object BonComVGestionF: TBonComVGestionF
       'montver_bvcom=montver_bvcom'
       'valider_bvcom=valider_bvcom'
       'num_bvcom=num_bvcom'
-      'clientbvliv=clientbvliv'
+      'clientbvcom=clientbvcom'
       'montttc_bvcom=montttc_bvcom'
       'remise_bvcom=remise_bvcom'
       'num_cheque_bvcom=num_cheque_bvcom'
@@ -4233,7 +4233,7 @@ object BonComVGestionF: TBonComVGestionF
       'netht=netht'
       'obser_bvcom=obser_bvcom'
       'Agent=Agent')
-    DataSet = MainForm.Bonv_livTable
+    DataSet = MainForm.Bonv_comTable
     BCDToCurrency = False
     Left = 248
     Top = 432
@@ -4250,23 +4250,23 @@ object BonComVGestionF: TBonComVGestionF
     Left = 806
     Top = 18
     object B1: TMenuItem
-      Caption = 'Bon de livraison'
+      Caption = 'Commande Client'
       ImageIndex = 32
       OnClick = B1Click
     end
-    object Bondelivraison2: TMenuItem
-      Caption = 'Bon de livraison (A5)'
+    object Bondecommande2: TMenuItem
+      Caption = 'Commande Client (A5)'
       ImageIndex = 32
-      OnClick = Bondelivraison2Click
+      OnClick = Bondecommande2Click
     end
     object BondeRception1: TMenuItem
-      Caption = 'Bon de livraison hors taxe'
+      Caption = 'Commande Client hors taxe'
       ImageIndex = 32
       OnClick = BondeRception1Click
     end
-    object Bondelivraison3: TMenuItem
-      Caption = 'Bon de livraison simple'
-      OnClick = Bondelivraison3Click
+    object Bondecommande3: TMenuItem
+      Caption = 'Commande Client simple'
+      OnClick = Bondecommande3Click
     end
     object BondeCaisseSimple1: TMenuItem
       Caption = 'Bon de r'#232'glement'
@@ -4279,13 +4279,13 @@ object BonComVGestionF: TBonComVGestionF
     object N1: TMenuItem
       Caption = '-'
     end
-    object BondeLivraison1: TMenuItem
-      Caption = 'Bon de livraison sans les cr'#233'dits'
-      OnClick = BondeLivraison1Click
+    object Bondecommande1: TMenuItem
+      Caption = 'Commande Client sans les cr'#233'dits'
+      OnClick = Bondecommande1Click
     end
-    object BondeLivraisonhorstaxe1: TMenuItem
-      Caption = 'Bon de livraison hors taxe sans les cr'#233'dits'
-      OnClick = BondeLivraisonhorstaxe1Click
+    object Bondecommandehorstaxe1: TMenuItem
+      Caption = 'Commande Client hors taxe sans les cr'#233'dits'
+      OnClick = Bondecommandehorstaxe1Click
     end
     object BondeCaisseSimple2: TMenuItem
       Caption = 'Bon de caisse sans les cr'#233'dits'
@@ -4592,7 +4592,7 @@ object BonComVGestionF: TBonComVGestionF
           Font.Style = [fsBold]
           Frame.Typ = []
           Memo.UTF8W = (
-            'BON DE LIVRAISON')
+            'COMMANDE CLIENT')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -6901,7 +6901,7 @@ object BonComVGestionF: TBonComVGestionF
           Font.Style = [fsBold]
           Frame.Typ = []
           Memo.UTF8W = (
-            'BON DE LIVRAISON')
+            'COMMANDE CLIENT')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -8211,7 +8211,7 @@ object BonComVGestionF: TBonComVGestionF
           Font.Style = [fsBold]
           Frame.Typ = []
           Memo.UTF8W = (
-            'BON DE LIVRAISON')
+            'COMMANDE CLIENT')
           ParentFont = False
           VAlign = vaCenter
         end
