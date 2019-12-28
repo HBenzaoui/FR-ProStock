@@ -386,7 +386,7 @@ begin
       BonComGClientOLDCredit.Caption:= FloatToStrF(StrToFloat(BonComGClientOLDCredit.Caption),ffNumber,14,2) ;
       BonComGClientNEWCredit.Caption:= FloatToStrF(StrToFloat(BonComGClientNEWCredit.Caption),ffNumber,14,2) ;
  CodeBL:= DataModuleF.Bonv_comTable.FieldValues['code_bvcom']   ;
-    NumBonComGEdt.Caption := 'BL'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5, CodeBL]);
+    NumBonComGEdt.Caption := 'BCV'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5, CodeBL]);
   if (DataModuleF.Bonv_comTable.FieldByName('code_c').AsInteger <> null)
   AND(DataModuleF.Bonv_comTable.FieldByName('code_c').AsInteger <> 0) then
    begin
@@ -1894,7 +1894,7 @@ begin
      begin
 
         Ini := TIniFile.Create(ChangeFileExt(Application.ExeName,'.ini')) ;
-        indexP:= Ini.ReadInteger('', 'Format BL',0);
+        indexP:= Ini.ReadInteger('', 'Format BCV',0);
         if (indexP = 0) or (indexP = -1) then
         begin
          B1Click(Screen);
@@ -1972,7 +1972,7 @@ begin
   FastProduitsListF.Tag := 1;
   FastProduitsListF.Show;
   FastProduitsListF.ResearchProduitsEdt.SetFocus;
-  //use this tag = 1 for adding from bon livration
+  //use this tag = 1 for adding from Commade Client
 
 
  // FastProduitsListF.OKproduitGBtn.Enabled:=False;
@@ -3066,7 +3066,7 @@ begin
 
         DataModuleF.Bonv_comTable.Insert;
         DataModuleF.Bonv_comTable.FieldValues['code_bvcom']:=1;
-        DataModuleF.Bonv_comTable.FieldValues['num_bvcom']:= 'BL'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5, 1]);
+        DataModuleF.Bonv_comTable.FieldValues['num_bvcom']:= 'BCV'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5, 1]);
         DataModuleF.Bonv_comTable.FieldValues['date_bvcom']:= DateOf(Today);
         DataModuleF.Bonv_comTable.FieldValues['time_bvcom']:=TimeOf(Now);
         DataModuleF.Bonv_comTable.Post;
@@ -3089,7 +3089,7 @@ begin
 
              DataModuleF.Bonv_comTable.Insert;
              DataModuleF.Bonv_comTable.FieldValues['code_bvcom']:= codeBL + 1;
-             DataModuleF.Bonv_comTable.FieldValues['num_bvcom']:=  'BL'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5,(codeBL + 1)]);
+             DataModuleF.Bonv_comTable.FieldValues['num_bvcom']:=  'BCV'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5,(codeBL + 1)]);
              DataModuleF.Bonv_comTable.FieldValues['date_bvcom']:= DateOf(Today);
              DataModuleF.Bonv_comTable.FieldValues['time_bvcom']:= TimeOf(Now);
              DataModuleF.Bonv_comTable.Post;
@@ -3111,7 +3111,7 @@ begin
       BonComGClientNEWCredit.Caption:= FloatToStrF(0,ffNumber,14,2) ;
 
  CodeCB:= DataModuleF.Bonv_comTable.FieldValues['code_bvcom']   ;
-   NumBonComGEdt.Caption := 'BL'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5, CodeCB]);
+   NumBonComGEdt.Caption := 'BCV'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5, CodeCB]);
 
      ClientBonComGCbx.SetFocus;
 
@@ -4112,7 +4112,7 @@ MainForm.bonv_com_listTable.DisableControls;
    GettingData;
 
 BonComPListfrxRprt.PrepareReport;
-frxXLSExport1.FileName := 'Bon de Livraison N� '
+frxXLSExport1.FileName := 'Commande Client N� '
   +IntToStr(YearOf(Today)) + '-' + Format('%.*d', [5,(DataModuleF.Bonv_comTable.FieldByName('code_bvcom').AsInteger)]);
 BonComPListfrxRprt.Export(frxXLSExport1);
 MainForm.bonv_com_listTable.EnableControls;
@@ -4129,7 +4129,7 @@ begin
  MainForm.bonv_com_listTable.DisableControls;
 BonComPListfrxRprt.PrepareReport;
 
-frxPDFExport1.FileName := 'Bon de Livraison N� '
+frxPDFExport1.FileName := 'Commande Client N� '
   +IntToStr(YearOf(Today)) + '-' + Format('%.*d', [5,(DataModuleF.Bonv_comTable.FieldByName('code_bvcom').AsInteger)]);
 
 frxPDFExport1.EmbeddedFonts:=True;
