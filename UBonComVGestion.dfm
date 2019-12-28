@@ -7915,7 +7915,7 @@ object BonComVGestionF: TBonComVGestionF
       end
     end
   end
-  object BonComPListLivSimplefrxRprt: TfrxReport
+  object BonComPListComSimplefrxRprt: TfrxReport
     Version = '6.3.12'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
