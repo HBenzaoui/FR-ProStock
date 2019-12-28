@@ -251,7 +251,7 @@ type
     procedure GettingDataBLSimple;
   public
      
-     const BLLSQL = 'Select BLL.code_bvliv,BLL.code_bvlivl,BLL.qut_p,BLL.prixht_p,BLL.prixvd_p,BLL.cond_p,BLL.code_p,BLL.tva_p,BLL.code_barec,P.prixht_p,P.nom_p as nomp, P.refer_p as referp, '
+     const BCVLSQL = 'Select BLL.code_bvliv,BLL.code_bvlivl,BLL.qut_p,BLL.prixht_p,BLL.prixvd_p,BLL.cond_p,BLL.code_p,BLL.tva_p,BLL.code_barec,P.prixht_p,P.nom_p as nomp, P.refer_p as referp, '
           +' (((BLL.prixvd_p * BLL.tva_p)/100)+BLL.prixvd_p) AS PrixVTTC, '
           +' ((BLL.prixht_p * BLL.qut_p) * cond_p) AS MontantAHT, '
           +' ((BLL.prixvd_p * BLL.qut_p) * cond_p) AS MontantHT, '
@@ -519,7 +519,7 @@ begin
 
           MainForm.Bonv_liv_listTable.Active:=false;
           MainForm.Bonv_liv_listTable.SQL.Clear;
-          MainForm.Bonv_liv_listTable.SQL.Text:= BLLSQL ;
+          MainForm.Bonv_liv_listTable.SQL.Text:= BCVLSQL ;
           MainForm.Bonv_liv_listTable.Active:=True;
           MainForm.Bonv_liv_listTable.EnableControls;
      
@@ -947,7 +947,7 @@ begin
             MainForm.Bonv_liv_listTable.IndexFieldNames:='';
             MainForm.Bonv_liv_listTable.Active:=False;
             MainForm.Bonv_liv_listTable.SQL.Clear;
-            MainForm.Bonv_liv_listTable.SQL.Text:= BLLSQL+' ORDER by code_bvlivl  ' ;
+            MainForm.Bonv_liv_listTable.SQL.Text:= BCVLSQL+' ORDER by code_bvlivl  ' ;
             MainForm.Bonv_liv_listTable.Active:=True;
 
             MainForm.Bonv_liv_listTable.Last;
@@ -1011,7 +1011,7 @@ begin
 
             MainForm.Bonv_liv_listTable.Active:=False;
             MainForm.Bonv_liv_listTable.SQL.Clear;
-            MainForm.Bonv_liv_listTable.SQL.Text:= BLLSQL+' WHERE code_bvliv = ' + QuotedStr(IntToStr(MainForm.Bonv_livTable.FieldValues['code_bvliv']))+' ';
+            MainForm.Bonv_liv_listTable.SQL.Text:= BCVLSQL+' WHERE code_bvliv = ' + QuotedStr(IntToStr(MainForm.Bonv_livTable.FieldValues['code_bvliv']))+' ';
             MainForm.Bonv_liv_listTable.Active:=True;
 
             ProduitBonLivGCbx.Text:='';
@@ -1132,7 +1132,7 @@ begin
             MainForm.Bonv_liv_listTable.IndexFieldNames:='';
             MainForm.Bonv_liv_listTable.Active:=False;
             MainForm.Bonv_liv_listTable.SQL.Clear;
-            MainForm.Bonv_liv_listTable.SQL.Text:= BLLSQL+' ORDER by code_bvlivl' ;
+            MainForm.Bonv_liv_listTable.SQL.Text:= BCVLSQL+' ORDER by code_bvlivl' ;
             MainForm.Bonv_liv_listTable.Active:=True;
            if  MainForm.Bonv_liv_listTable.RecordCount <= 0 then
            begin
@@ -1191,7 +1191,7 @@ begin
 
             MainForm.Bonv_liv_listTable.Active:=False;
             MainForm.Bonv_liv_listTable.SQL.Clear;
-            MainForm.Bonv_liv_listTable.SQL.Text:= BLLSQL+' WHERE code_bvliv = ' + QuotedStr(IntToStr(MainForm.Bonv_livTable.FieldValues['code_bvliv']))+' ';
+            MainForm.Bonv_liv_listTable.SQL.Text:= BCVLSQL+' WHERE code_bvliv = ' + QuotedStr(IntToStr(MainForm.Bonv_livTable.FieldValues['code_bvliv']))+' ';
             MainForm.Bonv_liv_listTable.Active:=True;
             MainForm.Bonv_liv_listTable.EnableControls;
 
@@ -1312,7 +1312,7 @@ begin
             MainForm.Bonv_liv_listTable.IndexFieldNames:='';
             MainForm.Bonv_liv_listTable.Active:=False;
             MainForm.Bonv_liv_listTable.SQL.Clear;
-            MainForm.Bonv_liv_listTable.SQL.Text:= BLLSQL+' ORDER by code_bvlivl' ;
+            MainForm.Bonv_liv_listTable.SQL.Text:= BCVLSQL+' ORDER by code_bvlivl' ;
             MainForm.Bonv_liv_listTable.Active:=True;
 
            if  MainForm.Bonv_liv_listTable.RecordCount <= 0 then
@@ -1371,7 +1371,7 @@ begin
 
              MainForm.Bonv_liv_listTable.Active:=False;
              MainForm.Bonv_liv_listTable.SQL.Clear;
-             MainForm.Bonv_liv_listTable.SQL.Text:= BLLSQL+' WHERE code_bvliv = ' + QuotedStr(IntToStr(MainForm.Bonv_livTable.FieldValues['code_bvliv']))+' ';
+             MainForm.Bonv_liv_listTable.SQL.Text:= BCVLSQL+' WHERE code_bvliv = ' + QuotedStr(IntToStr(MainForm.Bonv_livTable.FieldValues['code_bvliv']))+' ';
              MainForm.Bonv_liv_listTable.Active:=True;
              MainForm.Bonv_liv_listTable.EnableControls;
 
@@ -3077,7 +3077,7 @@ begin
             codeBL := MainForm.Bonv_livTable.FieldValues['code_bvliv'];
             MainForm.Bonv_liv_listTable.Active:=False;
             MainForm.Bonv_liv_listTable.SQL.Clear;
-            MainForm.Bonv_liv_listTable.SQL.Text:= BLLSQL+' WHERE code_bvliv = ' + QuotedStr(IntToStr(codeBL))+' ';
+            MainForm.Bonv_liv_listTable.SQL.Text:= BCVLSQL+' WHERE code_bvliv = ' + QuotedStr(IntToStr(codeBL))+' ';
             MainForm.Bonv_liv_listTable.Active:=True;
 
            if MainForm.Bonv_liv_listTable.RecordCount <= 0 then
