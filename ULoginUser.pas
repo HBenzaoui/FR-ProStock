@@ -51,6 +51,7 @@ type
     procedure PasswordEdtPropertiesChange(Sender: TObject);
     procedure PasswordEdtMouseEnter(Sender: TObject);
     procedure PasswordEdtDblClick(Sender: TObject);
+    procedure PasswordEdtKeyPress(Sender: TObject; var Key: Char);
   private
     { Private declarations }
   public
@@ -434,6 +435,16 @@ var    SEInfo: TShellExecuteInfo;
 
  PasswordEdt.SetFocus;
    
+end;
+
+procedure TLoginUserF.PasswordEdtKeyPress(Sender: TObject; var Key: Char);
+begin
+       if Key = #13 then
+  begin
+    Key := #0;
+    LoginBtnClick(Sender);
+
+  end;
 end;
 
 procedure TLoginUserF.PasswordEdtMouseEnter(Sender: TObject);

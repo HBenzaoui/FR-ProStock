@@ -819,6 +819,7 @@ object LoginUserF: TLoginUserF
     Style.IsFontAssigned = True
     TabOrder = 0
     OnDblClick = PasswordEdtDblClick
+    OnKeyPress = PasswordEdtKeyPress
     OnMouseEnter = PasswordEdtMouseEnter
     Width = 207
   end
