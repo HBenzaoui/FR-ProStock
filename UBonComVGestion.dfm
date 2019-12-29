@@ -554,12 +554,12 @@ object BonComVGestionF: TBonComVGestionF
       StyleElements = []
     end
     object NumBonComGEdt: TLabel
-      Left = 163
-      Top = 25
-      Width = 168
+      Left = 172
+      Top = 24
+      Width = 164
       Height = 22
       AutoSize = False
-      Caption = 'BL2016/12458740'
+      Caption = 'BCV2016/12458740'
       Color = 15722984
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 10379008
@@ -2838,6 +2838,7 @@ object BonComVGestionF: TBonComVGestionF
     end
   end
   object BonComPListDataS: TDataSource
+    DataSet = DataModuleF.Bonv_com_listTable
     OnDataChange = BonComPListDataSDataChange
     Left = 944
     Top = 472

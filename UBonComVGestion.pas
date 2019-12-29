@@ -476,7 +476,7 @@ end;
 
 procedure TBonComVGestionF.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-  MainForm.SaveGridLayout(ProduitsListDBGridEh,GetCurrentDir +'\bin\gc_bl');
+  MainForm.SaveGridLayout(ProduitsListDBGridEh,GetCurrentDir +'\bin\gc_bcv');
 
  if ValiderBVComBonComGImg.ImageIndex = 1 then
   begin
@@ -758,10 +758,10 @@ end;
 
 procedure TBonComVGestionF.FormCreate(Sender: TObject);
 begin
-     if FileExists(GetCurrentDir +'\bin\gc_bl') then
+     if FileExists(GetCurrentDir +'\bin\gc_bcv') then
    begin
 
-    MainForm.LoadGridLayout(ProduitsListDBGridEh,GetCurrentDir +'\bin\gc_bl');
+    MainForm.LoadGridLayout(ProduitsListDBGridEh,GetCurrentDir +'\bin\gc_bcv');
    end;
 
 if Assigned(ProduitsListF) then

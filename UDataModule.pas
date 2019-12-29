@@ -635,9 +635,9 @@ InvoiceID :Integer;
     BonComVGestionF.TotalTVANewLbl.Caption :=      CurrToStrF(((TotalTVA)),ffNumber,2) ;
     BonComVGestionF.BonComTotalMargeLbl.Caption := CurrToStrF(((Marge)),ffNumber,2) ;
 
-    if MainForm.Bonv_livTable.FieldByName('montver_bvcom').AsCurrency<> Null then
+    if Bonv_comTable.FieldByName('montver_bvcom').AsCurrency<> Null then
     begin
-    Regle:= MainForm.Bonv_livTable.FieldByName('montver_bvcom').AsCurrency;
+    Regle:= Bonv_comTable.FieldByName('montver_bvcom').AsCurrency;
     BonComVGestionF.BonComRegleLbl.Caption :=      CurrToStrF(((Regle)),ffNumber,2) ;
     end;
 

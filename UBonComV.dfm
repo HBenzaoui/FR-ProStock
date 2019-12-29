@@ -854,6 +854,7 @@ object BonComVF: TBonComVF
     ColumnDefValues.ToolTips = True
     Ctl3D = True
     DataGrouping.Active = True
+    DataSource = DataModuleF.BonComVListDataS
     DynProps = <>
     EvenRowColor = clWindow
     FixedColor = clWindow
@@ -915,7 +916,7 @@ object BonComVF: TBonComVF
         Checkboxes = False
         DynProps = <>
         EditButtons = <>
-        FieldName = 'valider_bvCom'
+        FieldName = 'valider_bvcom'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
         Font.Height = 16

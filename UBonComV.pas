@@ -11,7 +11,7 @@ uses
   acAlphaImageList, Vcl.ComCtrls, Vcl.StdCtrls, Vcl.WinXCtrls, Vcl.Buttons,
   sSpeedButton, AdvToolBtn, Vcl.ExtCtrls, EhLibVCL, GridsEh, DBAxisGridsEh,
   DBGridEh, System.DateUtils, frxClass, frxDBSet, frxExportPDF, frxExportXLS, Vcl.Menus,
-  acImage, sStatusBar ,IniFiles, Vcl.AppEvnts, frxExportBaseDialog, UDataModule ;
+  acImage, sStatusBar ,IniFiles, Vcl.AppEvnts, frxExportBaseDialog ;
 
 
 const
@@ -168,7 +168,7 @@ implementation
 
 uses
   UMainF, UBonComVGestion, USplashAddUnite,  UClientGestion, USplash,Threading,
-  USplashVersement, UProduitsList;
+  USplashVersement, UProduitsList, UDataModule;
 
 {$R *.dfm}
 
@@ -622,7 +622,7 @@ end;
 
 procedure TBonComVF.AddBVComBtnClick(Sender: TObject);
 var
-  codeBL : integer;
+  codeBCV : integer;
 
 begin
 ClearFilterBVComPMenuClick(Sender);
@@ -645,7 +645,7 @@ DataModuleF.Bonv_comTable.Active:= True;
 
 ResearchBVComEdt.Text:='';
 
-codeBL:= 0;
+codeBCV:= 0;
 // if not Assigned (BonComVGestionF) then
     BonComVGestionF := TBonComVGestionF.Create(nil);
     try
@@ -654,25 +654,25 @@ codeBL:= 0;
 
         DataModuleF.Bonv_comTable.Insert;
         DataModuleF.Bonv_comTable.FieldValues['code_bvcom']:=1;
-        DataModuleF.Bonv_comTable.FieldValues['num_bvcom']:= 'BL'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5, 1]);
+        DataModuleF.Bonv_comTable.FieldValues['num_bvcom']:= 'BCV'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5, 1]);
         DataModuleF.Bonv_comTable.FieldValues['date_bvcom']:= DateOf(Today);
         DataModuleF.Bonv_comTable.FieldValues['time_bvcom']:=TimeOf(Now);
         DataModuleF.Bonv_comTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
         DataModuleF.Bonv_comTable.Post;
-        codeBL := DataModuleF.Bonv_comTable.FieldValues['code_bvcom'];
+        codeBCV := DataModuleF.Bonv_comTable.FieldValues['code_bvcom'];
       end else
           begin
             DataModuleF.Bonv_comTable.Last;
-            codeBL := DataModuleF.Bonv_comTable.FieldValues['code_bvcom'];
+            codeBCV := DataModuleF.Bonv_comTable.FieldValues['code_bvcom'];
             MainForm.SQLQuery.Active:=False;    // if soemthig went wrong change it  back to bonv_com_listTable
             MainForm.SQLQuery.SQL.Clear;
-            MainForm.SQLQuery.SQL.Text:= 'SELECT code_bvcom FROM bonv_com_list WHERE code_bvcom = ' + IntToStr(codeBL);
+            MainForm.SQLQuery.SQL.Text:= 'SELECT code_bvcom FROM bonv_com_list WHERE code_bvcom = ' + IntToStr(codeBCV);
             MainForm.SQLQuery.Active:=True;
 
            if MainForm.SQLQuery.RecNo <= 0 then
            begin
         //   DataModuleF.Bonv_comTable.Last;
-           codeBL := DataModuleF.Bonv_comTable.FieldValues['code_bvcom'];
+           codeBCV := DataModuleF.Bonv_comTable.FieldValues['code_bvcom'];
              DataModuleF.Bonv_comTable.Edit;
              DataModuleF.Bonv_comTable.FieldValues['date_bvcom']:= DateOf(Today);
              DataModuleF.Bonv_comTable.FieldValues['time_bvcom']:= TimeOf(Now);
@@ -681,10 +681,10 @@ codeBL:= 0;
            end else
            begin
         //   DataModuleF.Bonv_comTable.Last;
-          // codeBL := DataModuleF.Bonv_comTable.FieldValues['code_bvcom'];
+          // codeBCV := DataModuleF.Bonv_comTable.FieldValues['code_bvcom'];
              DataModuleF.Bonv_comTable.Insert;
-             DataModuleF.Bonv_comTable.FieldValues['code_bvcom']:= codeBL + 1;
-             DataModuleF.Bonv_comTable.FieldValues['num_bvcom']:=  'BL'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5,(codeBL + 1)]);
+             DataModuleF.Bonv_comTable.FieldValues['code_bvcom']:= codeBCV + 1;
+             DataModuleF.Bonv_comTable.FieldValues['num_bvcom']:=  'BCV'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5,(codeBCV + 1)]);
              DataModuleF.Bonv_comTable.FieldValues['date_bvcom']:= DateOf(Today);
              DataModuleF.Bonv_comTable.FieldValues['time_bvcom']:= TimeOf(Now);
              DataModuleF.Bonv_comTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
@@ -1352,7 +1352,7 @@ end;
 procedure TBonComVF.AdvToolButton1Click(Sender: TObject);
 begin
 
- ProduitListSaveDg.FileName:= 'liste des BL';
+ ProduitListSaveDg.FileName:= 'liste des BCV';
 if ProduitListSaveDg.Execute then
  begin
 
@@ -1367,7 +1367,7 @@ if ProduitListSaveDg.Execute then
 //    GettingData;
 //
 //BonComVfrxRprt.PrepareReport;
-//frxXLSExport1.FileName := 'liste des BL';
+//frxXLSExport1.FileName := 'liste des BCV';
 //BonComVfrxRprt.Export(frxXLSExport1);
 //
 //DataModuleF.Bonv_comTable.EnableControls;
@@ -1380,7 +1380,7 @@ DataModuleF.Bonv_comTable.DisableControls;
     GettingData;
 
 BonComVfrxRprt.PrepareReport;
-frxPDFExport1.FileName := 'liste des BL';
+frxPDFExport1.FileName := 'liste des BCV';
 BonComVfrxRprt.Export(frxPDFExport1);
 
 
@@ -1490,7 +1490,7 @@ end;
 procedure TBonComVF.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
 
-  MainForm.SaveGridLayout(BVComListDBGridEh,GetCurrentDir +'\bin\gc_bllst');
+  MainForm.SaveGridLayout(BVComListDBGridEh,GetCurrentDir +'\bin\gc_bcvlst');
 
   FreeAndNil(BonComVF);
 
@@ -1498,10 +1498,10 @@ end;
 
 procedure TBonComVF.FormCreate(Sender: TObject);
 begin
-   if FileExists(GetCurrentDir +'\bin\gc_bllst') then
+   if FileExists(GetCurrentDir +'\bin\gc_bcvlst') then
    begin
 
-    MainForm.LoadGridLayout(BVComListDBGridEh,GetCurrentDir +'\bin\gc_bllst');
+    MainForm.LoadGridLayout(BVComListDBGridEh,GetCurrentDir +'\bin\gc_bcvlst');
    end;
 
 end;
