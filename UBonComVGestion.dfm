@@ -540,7 +540,7 @@ object BonComVGestionF: TBonComVGestionF
     object Label6: TLabel
       Left = 16
       Top = 24
-      Width = 144
+      Width = 155
       Height = 20
       Caption = 'Commande Client N'#176
       Color = 15722984
@@ -1052,7 +1052,7 @@ object BonComVGestionF: TBonComVGestionF
     object BonComTotalMargeLbl: TLabel
       Left = 691
       Top = 218
-      Width = 147
+      Width = 160
       Height = 20
       Caption = 'BonComTotalMargeLbl'
       Font.Charset = DEFAULT_CHARSET
@@ -2211,7 +2211,6 @@ object BonComVGestionF: TBonComVGestionF
         Title.Font.Name = 'Helvetica LT Std'
         Title.Font.Style = []
         Title.Font.Quality = fqProof
-        Width = 50
       end>
     object RowDetailData: TRowDetailPanelControlEh
     end
@@ -2546,7 +2545,7 @@ object BonComVGestionF: TBonComVGestionF
     object Label15: TLabel
       Left = 12
       Top = 62
-      Width = 94
+      Width = 131
       Height = 56
       Caption = 'Commande '#13#10'Client'
       Color = 15722984
@@ -2839,7 +2838,6 @@ object BonComVGestionF: TBonComVGestionF
     end
   end
   object BonComPListDataS: TDataSource
-    DataSet = MainForm.Bonv_com_listTable
     OnDataChange = BonComPListDataSDataChange
     Left = 944
     Top = 472
@@ -4233,7 +4231,6 @@ object BonComVGestionF: TBonComVGestionF
       'netht=netht'
       'obser_bvcom=obser_bvcom'
       'Agent=Agent')
-    DataSet = MainForm.Bonv_comTable
     BCDToCurrency = False
     Left = 248
     Top = 432

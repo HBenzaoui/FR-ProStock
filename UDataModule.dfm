@@ -3066,9 +3066,10 @@ object DataModuleF: TDataModuleF
       FieldName = 'num_bvcom'
       Origin = 'num_bvcom'
     end
-    object Bonv_comTablefourbarec: TStringField
+    object Bonv_comTableclientbvcom: TStringField
       FieldKind = fkLookup
       FieldName = 'clientbvcom'
+      LookupDataSet = MainForm.ClientTable
       LookupKeyFields = 'code_c'
       LookupResultField = 'nom_c'
       KeyFields = 'code_c'
@@ -3099,6 +3100,7 @@ object DataModuleF: TDataModuleF
     object Bonv_comTableModePaie: TStringField
       FieldKind = fkLookup
       FieldName = 'ModePaie'
+      LookupDataSet = MainForm.Mode_paiementTable
       LookupKeyFields = 'code_mdpai'
       LookupResultField = 'nom_mdpai'
       KeyFields = 'code_mdpai'
@@ -3107,6 +3109,7 @@ object DataModuleF: TDataModuleF
     object Bonv_comTableCompte: TStringField
       FieldKind = fkLookup
       FieldName = 'Compte'
+      LookupDataSet = MainForm.CompteTable
       LookupKeyFields = 'code_cmpt'
       LookupResultField = 'nom_cmpt'
       KeyFields = 'code_cmpt'

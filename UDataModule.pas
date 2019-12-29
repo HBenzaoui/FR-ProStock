@@ -378,7 +378,7 @@ type
     Bonv_comTablemontver_bvcom: TCurrencyField;
     Bonv_comTablevalider_bvcom: TBooleanField;
     Bonv_comTablenum_bvcom: TWideStringField;
-    Bonv_comTablefourbarec: TStringField;
+    Bonv_comTableclientbvcom: TStringField;
     Bonv_comTablemontttc_bvcom: TCurrencyField;
     Bonv_comTableremise_bvcom: TCurrencyField;
     Bonv_comTablenum_cheque_bvcom: TWideStringField;

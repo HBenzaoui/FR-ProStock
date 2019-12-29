@@ -1050,16 +1050,18 @@ object BonComVF: TBonComVF
         Font.Height = 16
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
-        Footer.Alignment = taRightJustify
-        Footer.Color = 15722984
-        Footer.Font.Charset = DEFAULT_CHARSET
-        Footer.Font.Color = 4207405
-        Footer.Font.Height = 18
-        Footer.Font.Name = 'Helvetica LT Std'
-        Footer.Font.Style = [fsBold]
-        Footer.Value = 'Total:'
-        Footer.ValueType = fvtStaticText
-        Footers = <>
+        Footers = <
+          item
+            Alignment = taRightJustify
+            Color = 15722984
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = 4207405
+            Font.Height = 18
+            Font.Name = 'Helvetica LT Std'
+            Font.Style = [fsBold]
+            Value = 'Total:'
+            ValueType = fvtStaticText
+          end>
         Layout = tlCenter
         Title.Alignment = taCenter
         Title.Caption = 'Client'

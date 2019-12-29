@@ -1,4 +1,4 @@
-unit UBonComVGestion;
+﻿unit UBonComVGestion;
 
 interface
 
@@ -279,8 +279,8 @@ implementation
 
 uses   WinSpool,Vcl.Imaging.jpeg, IniFiles,
   StringTool, UMainF, USplashAddUnite, UClientsList, UClientGestion, USplashAddCompte,
-  UFastProduitsList, UProduitsList, USplashVersement, UBonCom, UProduitGestion,
-  UDataModule, UPerissableProduit. UDataModule;
+  UFastProduitsList, UProduitsList, USplashVersement, UBonComV, UProduitGestion,
+  UDataModule, UPerissableProduit ;
 
   {$R *.dfm}
 
@@ -483,7 +483,7 @@ begin
 
     DataModuleF.Bonv_comTable.Refresh;
 
-    MainForm.bonv_com_listTable.Refresh;
+    DataModuleF.bonv_com_listTable.Refresh;
   end;
 
           MainForm.ClientTable.Active:=false;
@@ -517,14 +517,14 @@ begin
 //          end;
                 
 
-          MainForm.bonv_com_listTable.Active:=false;
-          MainForm.bonv_com_listTable.SQL.Clear;
-          MainForm.bonv_com_listTable.SQL.Text:= BCVLSQL ;
-          MainForm.bonv_com_listTable.Active:=True;
-          MainForm.bonv_com_listTable.EnableControls;
+          DataModuleF.bonv_com_listTable.Active:=false;
+          DataModuleF.bonv_com_listTable.SQL.Clear;
+          DataModuleF.bonv_com_listTable.SQL.Text:= BCVLSQL ;
+          DataModuleF.bonv_com_listTable.Active:=True;
+          DataModuleF.bonv_com_listTable.EnableControls;
      
       
-  MainForm.bonv_com_listTable.IndexFieldNames:='code_bvcom';
+  DataModuleF.bonv_com_listTable.IndexFieldNames:='code_bvcom';
 
         //----- this is to go to last
        if Tag <> 1 then
@@ -936,44 +936,44 @@ begin
     end else
      begin
 
-         lookupResultRefP := MainForm.bonv_com_listTable.Lookup('code_p',(CodeP),'code_p');
+         lookupResultRefP := DataModuleF.bonv_com_listTable.Lookup('code_p',(CodeP),'code_p');
          if VarIsnull( lookupResultRefP) then
          begin
 
             if  MainForm.SQLQuery.RecordCount > 0  then
           begin
 
-            MainForm.bonv_com_listTable.DisableControls;
-            MainForm.bonv_com_listTable.IndexFieldNames:='';
-            MainForm.bonv_com_listTable.Active:=False;
-            MainForm.bonv_com_listTable.SQL.Clear;
-            MainForm.bonv_com_listTable.SQL.Text:= BCVLSQL+' ORDER by code_bvcoml  ' ;
-            MainForm.bonv_com_listTable.Active:=True;
+            DataModuleF.bonv_com_listTable.DisableControls;
+            DataModuleF.bonv_com_listTable.IndexFieldNames:='';
+            DataModuleF.bonv_com_listTable.Active:=False;
+            DataModuleF.bonv_com_listTable.SQL.Clear;
+            DataModuleF.bonv_com_listTable.SQL.Text:= BCVLSQL+' ORDER by code_bvcoml  ' ;
+            DataModuleF.bonv_com_listTable.Active:=True;
 
-            MainForm.bonv_com_listTable.Last;
-             if  MainForm.bonv_com_listTable.IsEmpty then
+            DataModuleF.bonv_com_listTable.Last;
+             if  DataModuleF.bonv_com_listTable.IsEmpty then
              begin
-               MainForm.bonv_com_listTable.Last;
+               DataModuleF.bonv_com_listTable.Last;
                CodeBCV := 1;
              end else
                  begin
-                  MainForm.bonv_com_listTable.Last;
-                  CodeBCV:= MainForm.bonv_com_listTable.FieldValues['code_bvcoml'] + 1 ;
+                  DataModuleF.bonv_com_listTable.Last;
+                  CodeBCV:= DataModuleF.bonv_com_listTable.FieldValues['code_bvcoml'] + 1 ;
                  end;
 
-             MainForm.bonv_com_listTable.Last;
-             MainForm.bonv_com_listTable.Append;
-             MainForm.bonv_com_listTable.FieldValues['code_bvcoml']:= CodeBCV ;
-             MainForm.bonv_com_listTable.FieldValues['code_bvcom']:= DataModuleF.Bonv_comTable.FieldValues['code_bvcom'];
-             MainForm.bonv_com_listTable.FieldValues['code_p']:=  MainForm.SQLQuery.FieldValues['code_p'] ;
-             MainForm.bonv_com_listTable.FieldValues['qut_p'] :=  01;
-             MainForm.bonv_com_listTable.FieldValues['cond_p']:= 01;
-             MainForm.bonv_com_listTable.FieldValues['tva_p']:=  MainForm.SQLQuery.FieldValues['tva_p'] ;
-             MainForm.bonv_com_listTable.FieldValues['prixht_p']:=  MainForm.SQLQuery.FieldValues['prixht_p'] ;
+             DataModuleF.bonv_com_listTable.Last;
+             DataModuleF.bonv_com_listTable.Append;
+             DataModuleF.bonv_com_listTable.FieldValues['code_bvcoml']:= CodeBCV ;
+             DataModuleF.bonv_com_listTable.FieldValues['code_bvcom']:= DataModuleF.Bonv_comTable.FieldValues['code_bvcom'];
+             DataModuleF.bonv_com_listTable.FieldValues['code_p']:=  MainForm.SQLQuery.FieldValues['code_p'] ;
+             DataModuleF.bonv_com_listTable.FieldValues['qut_p'] :=  01;
+             DataModuleF.bonv_com_listTable.FieldValues['cond_p']:= 01;
+             DataModuleF.bonv_com_listTable.FieldValues['tva_p']:=  MainForm.SQLQuery.FieldValues['tva_p'] ;
+             DataModuleF.bonv_com_listTable.FieldValues['prixht_p']:=  MainForm.SQLQuery.FieldValues['prixht_p'] ;
 
              if DataModuleF.PerissBona_recTable.RecordCount = 1 then
              begin
-              MainForm.bonv_com_listTable.FieldValues['code_barec']:= DataModuleF.PerissBona_recTable.FieldValues['code_barec'];
+              DataModuleF.bonv_com_listTable.FieldValues['code_barec']:= DataModuleF.PerissBona_recTable.FieldValues['code_barec'];
              end;
 
 
@@ -982,37 +982,37 @@ begin
 
              if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 0 then
              begin
-             MainForm.bonv_com_listTable.FieldValues['prixvd_p']:= MainForm.SQLQuery.FieldValues['prixvd_p'];
+             DataModuleF.bonv_com_listTable.FieldValues['prixvd_p']:= MainForm.SQLQuery.FieldValues['prixvd_p'];
              end;
              if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 1 then
              begin
-             MainForm.bonv_com_listTable.FieldValues['prixvd_p']:= MainForm.SQLQuery.FieldValues['prixvr_p'];
+             DataModuleF.bonv_com_listTable.FieldValues['prixvd_p']:= MainForm.SQLQuery.FieldValues['prixvr_p'];
              end;
              if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 2 then
              begin
-             MainForm.bonv_com_listTable.FieldValues['prixvd_p']:= MainForm.SQLQuery.FieldValues['prixvg_p'];
+             DataModuleF.bonv_com_listTable.FieldValues['prixvd_p']:= MainForm.SQLQuery.FieldValues['prixvg_p'];
              end;
              if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 3 then
              begin
-             MainForm.bonv_com_listTable.FieldValues['prixvd_p']:= MainForm.SQLQuery.FieldValues['prixva_p'];
+             DataModuleF.bonv_com_listTable.FieldValues['prixvd_p']:= MainForm.SQLQuery.FieldValues['prixva_p'];
              end;
              if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 4 then
              begin
-             MainForm.bonv_com_listTable.FieldValues['prixvd_p']:= MainForm.SQLQuery.FieldValues['prixva2_p'];
+             DataModuleF.bonv_com_listTable.FieldValues['prixvd_p']:= MainForm.SQLQuery.FieldValues['prixva2_p'];
              end;
              end else
                  begin
-                  MainForm.bonv_com_listTable.FieldValues['prixvd_p']:= MainForm.SQLQuery.FieldValues['prixvd_p'];
+                  DataModuleF.bonv_com_listTable.FieldValues['prixvd_p']:= MainForm.SQLQuery.FieldValues['prixvd_p'];
                  end;
 
 
-             MainForm.bonv_com_listTable.Post ;
-             MainForm.bonv_com_listTable.IndexFieldNames:='code_bvcom';
+             DataModuleF.bonv_com_listTable.Post ;
+             DataModuleF.bonv_com_listTable.IndexFieldNames:='code_bvcom';
 
-            MainForm.bonv_com_listTable.Active:=False;
-            MainForm.bonv_com_listTable.SQL.Clear;
-            MainForm.bonv_com_listTable.SQL.Text:= BCVLSQL+' WHERE code_bvcom = ' + QuotedStr(IntToStr(DataModuleF.Bonv_comTable.FieldValues['code_bvcom']))+' ';
-            MainForm.bonv_com_listTable.Active:=True;
+            DataModuleF.bonv_com_listTable.Active:=False;
+            DataModuleF.bonv_com_listTable.SQL.Clear;
+            DataModuleF.bonv_com_listTable.SQL.Text:= BCVLSQL+' WHERE code_bvcom = ' + QuotedStr(IntToStr(DataModuleF.Bonv_comTable.FieldValues['code_bvcom']))+' ';
+            DataModuleF.bonv_com_listTable.Active:=True;
 
             ProduitBonComGCbx.Text:='';
             ProduitsListDBGridEh.SetFocus;
@@ -1020,8 +1020,8 @@ begin
            ProduitsListDBGridEh.SelectedIndex:=2;
            ProduitsListDBGridEh.EditorMode:=True;
 
-           MainForm.bonv_com_listTable.EnableControls;
-           MainForm.bonv_com_listTable.Last;
+           DataModuleF.bonv_com_listTable.EnableControls;
+           DataModuleF.bonv_com_listTable.Last;
            if ClientBonComGCbx.Text<>'' then
             begin
             ValiderBVComBonComGBtn.Enabled:= True;
@@ -1046,7 +1046,7 @@ begin
       FSplashAddUnite.CancelAddUniteSBtn.Top:=(FSplashAddUnite.Height) - 36;
       FSplashAddUnite.OKAddUniteSBtn.Left:=(FSplashAddUnite.Width div 4) - (FSplashAddUnite.OKAddUniteSBtn.Width div 2) + 15;
       FSplashAddUnite.CancelAddUniteSBtn.Left:= ((FSplashAddUnite.Width div 2 )+((FSplashAddUnite.Width div 2)div 2 ) ) - (FSplashAddUnite.CancelAddUniteSBtn.Width div 2) - 15;
-      if  MainForm.bonv_com_listTable.FieldValues['code_p'] <> NULL then
+      if  DataModuleF.bonv_com_listTable.FieldValues['code_p'] <> NULL then
       begin
       NomP:=   MainForm.SQLQuery.FieldValues['nom_p'];
       end else begin
@@ -1122,39 +1122,39 @@ begin
     end else
      begin
 
-         lookupResultRefP := MainForm.bonv_com_listTable.Lookup('code_p',(CodeP),'code_p');
+         lookupResultRefP := DataModuleF.bonv_com_listTable.Lookup('code_p',(CodeP),'code_p');
          if VarIsnull( lookupResultRefP) then
          begin
           if  MainForm.SQLQuery.RecordCount > 0  then
           begin
 
-            MainForm.bonv_com_listTable.DisableControls;
-            MainForm.bonv_com_listTable.IndexFieldNames:='';
-            MainForm.bonv_com_listTable.Active:=False;
-            MainForm.bonv_com_listTable.SQL.Clear;
-            MainForm.bonv_com_listTable.SQL.Text:= BCVLSQL+' ORDER by code_bvcoml' ;
-            MainForm.bonv_com_listTable.Active:=True;
-           if  MainForm.bonv_com_listTable.RecordCount <= 0 then
+            DataModuleF.bonv_com_listTable.DisableControls;
+            DataModuleF.bonv_com_listTable.IndexFieldNames:='';
+            DataModuleF.bonv_com_listTable.Active:=False;
+            DataModuleF.bonv_com_listTable.SQL.Clear;
+            DataModuleF.bonv_com_listTable.SQL.Text:= BCVLSQL+' ORDER by code_bvcoml' ;
+            DataModuleF.bonv_com_listTable.Active:=True;
+           if  DataModuleF.bonv_com_listTable.RecordCount <= 0 then
            begin
              CodeBCV := 1;
            end else
                begin
-                MainForm.bonv_com_listTable.Last;
-                CodeBCV:= MainForm.bonv_com_listTable.FieldValues['code_bvcoml'] + 1 ;
+                DataModuleF.bonv_com_listTable.Last;
+                CodeBCV:= DataModuleF.bonv_com_listTable.FieldValues['code_bvcoml'] + 1 ;
                end;
-             MainForm.bonv_com_listTable.Insert;
-             MainForm.bonv_com_listTable.FieldValues['code_bvcoml']:= CodeBCV ;
-             MainForm.bonv_com_listTable.FieldValues['code_bvcom']:= DataModuleF.Bonv_comTable.FieldValues['code_bvcom'];
-             MainForm.bonv_com_listTable.FieldValues['code_p']:=  MainForm.SQLQuery.FieldValues['code_p'] ;
-             MainForm.bonv_com_listTable.FieldValues['qut_p'] :=  01;
-             MainForm.bonv_com_listTable.FieldValues['cond_p']:= 01;
-             MainForm.bonv_com_listTable.FieldValues['tva_p']:=  MainForm.SQLQuery.FieldValues['tva_p'] ;
-             MainForm.bonv_com_listTable.FieldValues['prixht_p']:=  MainForm.SQLQuery.FieldValues['prixht_p'] ;
+             DataModuleF.bonv_com_listTable.Insert;
+             DataModuleF.bonv_com_listTable.FieldValues['code_bvcoml']:= CodeBCV ;
+             DataModuleF.bonv_com_listTable.FieldValues['code_bvcom']:= DataModuleF.Bonv_comTable.FieldValues['code_bvcom'];
+             DataModuleF.bonv_com_listTable.FieldValues['code_p']:=  MainForm.SQLQuery.FieldValues['code_p'] ;
+             DataModuleF.bonv_com_listTable.FieldValues['qut_p'] :=  01;
+             DataModuleF.bonv_com_listTable.FieldValues['cond_p']:= 01;
+             DataModuleF.bonv_com_listTable.FieldValues['tva_p']:=  MainForm.SQLQuery.FieldValues['tva_p'] ;
+             DataModuleF.bonv_com_listTable.FieldValues['prixht_p']:=  MainForm.SQLQuery.FieldValues['prixht_p'] ;
 
 
              if DataModuleF.PerissBona_recTable.RecordCount = 1 then
              begin
-              MainForm.bonv_com_listTable.FieldValues['code_barec']:= DataModuleF.PerissBona_recTable.FieldValues['code_barec'];
+              DataModuleF.bonv_com_listTable.FieldValues['code_barec']:= DataModuleF.PerissBona_recTable.FieldValues['code_barec'];
              end;
 
             if  NOT (MainForm.ClientTable.IsEmpty) AND (ClientBonComGCbx.Text<> '' ) then
@@ -1162,38 +1162,38 @@ begin
 
              if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 0 then
              begin
-             MainForm.bonv_com_listTable.FieldValues['prixvd_p']:= MainForm.SQLQuery.FieldValues['prixvd_p'];
+             DataModuleF.bonv_com_listTable.FieldValues['prixvd_p']:= MainForm.SQLQuery.FieldValues['prixvd_p'];
              end;
              if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 1 then
              begin
-             MainForm.bonv_com_listTable.FieldValues['prixvd_p']:= MainForm.SQLQuery.FieldValues['prixvr_p'];
+             DataModuleF.bonv_com_listTable.FieldValues['prixvd_p']:= MainForm.SQLQuery.FieldValues['prixvr_p'];
              end;
              if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 2 then
              begin
-             MainForm.bonv_com_listTable.FieldValues['prixvd_p']:= MainForm.SQLQuery.FieldValues['prixvg_p'];
+             DataModuleF.bonv_com_listTable.FieldValues['prixvd_p']:= MainForm.SQLQuery.FieldValues['prixvg_p'];
              end;
              if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 3 then
              begin
-             MainForm.bonv_com_listTable.FieldValues['prixvd_p']:= MainForm.SQLQuery.FieldValues['prixva_p'];
+             DataModuleF.bonv_com_listTable.FieldValues['prixvd_p']:= MainForm.SQLQuery.FieldValues['prixva_p'];
              end;
              if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 4 then
              begin
-             MainForm.bonv_com_listTable.FieldValues['prixvd_p']:= MainForm.SQLQuery.FieldValues['prixva2_p'];
+             DataModuleF.bonv_com_listTable.FieldValues['prixvd_p']:= MainForm.SQLQuery.FieldValues['prixva2_p'];
              end;
              end else
                  begin
-                  MainForm.bonv_com_listTable.FieldValues['prixvd_p']:= MainForm.SQLQuery.FieldValues['prixvd_p'];
+                  DataModuleF.bonv_com_listTable.FieldValues['prixvd_p']:= MainForm.SQLQuery.FieldValues['prixvd_p'];
                  end;
 
 
-             MainForm.bonv_com_listTable.Post ;
-             MainForm.bonv_com_listTable.IndexFieldNames:='code_bvcom';
+             DataModuleF.bonv_com_listTable.Post ;
+             DataModuleF.bonv_com_listTable.IndexFieldNames:='code_bvcom';
 
-            MainForm.bonv_com_listTable.Active:=False;
-            MainForm.bonv_com_listTable.SQL.Clear;
-            MainForm.bonv_com_listTable.SQL.Text:= BCVLSQL+' WHERE code_bvcom = ' + QuotedStr(IntToStr(DataModuleF.Bonv_comTable.FieldValues['code_bvcom']))+' ';
-            MainForm.bonv_com_listTable.Active:=True;
-            MainForm.bonv_com_listTable.EnableControls;
+            DataModuleF.bonv_com_listTable.Active:=False;
+            DataModuleF.bonv_com_listTable.SQL.Clear;
+            DataModuleF.bonv_com_listTable.SQL.Text:= BCVLSQL+' WHERE code_bvcom = ' + QuotedStr(IntToStr(DataModuleF.Bonv_comTable.FieldValues['code_bvcom']))+' ';
+            DataModuleF.bonv_com_listTable.Active:=True;
+            DataModuleF.bonv_com_listTable.EnableControls;
 
             ProduitBonComGCbx.Text:='';
             ProduitsListDBGridEh.SetFocus;
@@ -1201,8 +1201,8 @@ begin
            ProduitsListDBGridEh.SelectedIndex:=2;
            ProduitsListDBGridEh.EditorMode:=True;
 
-           MainForm.bonv_com_listTable.EnableControls;
-            MainForm.bonv_com_listTable.Last;
+           DataModuleF.bonv_com_listTable.EnableControls;
+            DataModuleF.bonv_com_listTable.Last;
             if ClientBonComGCbx.Text<>'' then
               begin
               ValiderBVComBonComGBtn.Enabled:= True;
@@ -1225,7 +1225,7 @@ begin
             FSplashAddUnite.CancelAddUniteSBtn.Top:=(FSplashAddUnite.Height) - 36;
             FSplashAddUnite.OKAddUniteSBtn.Left:=(FSplashAddUnite.Width div 4) - (FSplashAddUnite.OKAddUniteSBtn.Width div 2) + 15;
             FSplashAddUnite.CancelAddUniteSBtn.Left:= ((FSplashAddUnite.Width div 2 )+((FSplashAddUnite.Width div 2)div 2 ) ) - (FSplashAddUnite.CancelAddUniteSBtn.Width div 2) - 15;
-            if  MainForm.bonv_com_listTable.FieldValues['code_p'] <> NULL then
+            if  DataModuleF.bonv_com_listTable.FieldValues['code_p'] <> NULL then
             begin
             NomP:=   MainForm.SQLQuery.FieldValues['nom_p'];
             end else begin
@@ -1304,38 +1304,38 @@ begin
      if  (MainForm.SQLQuery.RecordCount > 0 )   then
       begin
 
-         lookupResultRefP := MainForm.bonv_com_listTable.Lookup('code_p',(CodeP),'code_p');
+         lookupResultRefP := DataModuleF.bonv_com_listTable.Lookup('code_p',(CodeP),'code_p');
          if VarIsnull( lookupResultRefP) then
          begin
 
-            MainForm.bonv_com_listTable.DisableControls;
-            MainForm.bonv_com_listTable.IndexFieldNames:='';
-            MainForm.bonv_com_listTable.Active:=False;
-            MainForm.bonv_com_listTable.SQL.Clear;
-            MainForm.bonv_com_listTable.SQL.Text:= BCVLSQL+' ORDER by code_bvcoml' ;
-            MainForm.bonv_com_listTable.Active:=True;
+            DataModuleF.bonv_com_listTable.DisableControls;
+            DataModuleF.bonv_com_listTable.IndexFieldNames:='';
+            DataModuleF.bonv_com_listTable.Active:=False;
+            DataModuleF.bonv_com_listTable.SQL.Clear;
+            DataModuleF.bonv_com_listTable.SQL.Text:= BCVLSQL+' ORDER by code_bvcoml' ;
+            DataModuleF.bonv_com_listTable.Active:=True;
 
-           if  MainForm.bonv_com_listTable.RecordCount <= 0 then
+           if  DataModuleF.bonv_com_listTable.RecordCount <= 0 then
            begin
              CodeBCV := 1;
            end else
                begin
-                MainForm.bonv_com_listTable.Last;
-                CodeBCV:= MainForm.bonv_com_listTable.FieldValues['code_bvcoml'] + 1 ;
+                DataModuleF.bonv_com_listTable.Last;
+                CodeBCV:= DataModuleF.bonv_com_listTable.FieldValues['code_bvcoml'] + 1 ;
                end;
 
-             MainForm.bonv_com_listTable.Insert;
-             MainForm.bonv_com_listTable.FieldValues['code_bvcoml']:= CodeBCV ;
-             MainForm.bonv_com_listTable.FieldValues['code_bvcom']:= DataModuleF.Bonv_comTable.FieldValues['code_bvcom'];
-             MainForm.bonv_com_listTable.FieldValues['code_p']:=  MainForm.SQLQuery.FieldValues['code_p'] ;
-             MainForm.bonv_com_listTable.FieldValues['qut_p'] :=  01;
-             MainForm.bonv_com_listTable.FieldValues['cond_p']:= 01;
-             MainForm.bonv_com_listTable.FieldValues['tva_p']:=  MainForm.SQLQuery.FieldValues['tva_p'] ;
-             MainForm.bonv_com_listTable.FieldValues['prixht_p']:=  MainForm.SQLQuery.FieldValues['prixht_p'] ;
+             DataModuleF.bonv_com_listTable.Insert;
+             DataModuleF.bonv_com_listTable.FieldValues['code_bvcoml']:= CodeBCV ;
+             DataModuleF.bonv_com_listTable.FieldValues['code_bvcom']:= DataModuleF.Bonv_comTable.FieldValues['code_bvcom'];
+             DataModuleF.bonv_com_listTable.FieldValues['code_p']:=  MainForm.SQLQuery.FieldValues['code_p'] ;
+             DataModuleF.bonv_com_listTable.FieldValues['qut_p'] :=  01;
+             DataModuleF.bonv_com_listTable.FieldValues['cond_p']:= 01;
+             DataModuleF.bonv_com_listTable.FieldValues['tva_p']:=  MainForm.SQLQuery.FieldValues['tva_p'] ;
+             DataModuleF.bonv_com_listTable.FieldValues['prixht_p']:=  MainForm.SQLQuery.FieldValues['prixht_p'] ;
 
              if DataModuleF.PerissBona_recTable.RecordCount = 1 then
              begin
-              MainForm.bonv_com_listTable.FieldValues['code_barec']:= DataModuleF.PerissBona_recTable.FieldValues['code_barec'];
+              DataModuleF.bonv_com_listTable.FieldValues['code_barec']:= DataModuleF.PerissBona_recTable.FieldValues['code_barec'];
              end;
 
            if  NOT (MainForm.ClientTable.IsEmpty) AND (ClientBonComGCbx.Text<> '' ) then
@@ -1343,37 +1343,37 @@ begin
 
              if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 0 then
              begin
-             MainForm.bonv_com_listTable.FieldValues['prixvd_p']:= MainForm.SQLQuery.FieldValues['prixvd_p'];
+             DataModuleF.bonv_com_listTable.FieldValues['prixvd_p']:= MainForm.SQLQuery.FieldValues['prixvd_p'];
              end;
              if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 1 then
              begin
-             MainForm.bonv_com_listTable.FieldValues['prixvd_p']:= MainForm.SQLQuery.FieldValues['prixvr_p'];
+             DataModuleF.bonv_com_listTable.FieldValues['prixvd_p']:= MainForm.SQLQuery.FieldValues['prixvr_p'];
              end;
              if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 2 then
              begin
-             MainForm.bonv_com_listTable.FieldValues['prixvd_p']:= MainForm.SQLQuery.FieldValues['prixvg_p'];
+             DataModuleF.bonv_com_listTable.FieldValues['prixvd_p']:= MainForm.SQLQuery.FieldValues['prixvg_p'];
              end;
              if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 3 then
              begin
-             MainForm.bonv_com_listTable.FieldValues['prixvd_p']:= MainForm.SQLQuery.FieldValues['prixva_p'];
+             DataModuleF.bonv_com_listTable.FieldValues['prixvd_p']:= MainForm.SQLQuery.FieldValues['prixva_p'];
              end;
              if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 4 then
              begin
-             MainForm.bonv_com_listTable.FieldValues['prixvd_p']:= MainForm.SQLQuery.FieldValues['prixva2_p'];
+             DataModuleF.bonv_com_listTable.FieldValues['prixvd_p']:= MainForm.SQLQuery.FieldValues['prixva2_p'];
              end;
              end else
                  begin
-                  MainForm.bonv_com_listTable.FieldValues['prixvd_p']:= MainForm.SQLQuery.FieldValues['prixvd_p'];
+                  DataModuleF.bonv_com_listTable.FieldValues['prixvd_p']:= MainForm.SQLQuery.FieldValues['prixvd_p'];
                  end;
 
-             MainForm.bonv_com_listTable.Post ;
-             MainForm.bonv_com_listTable.IndexFieldNames:='code_bvcom';
+             DataModuleF.bonv_com_listTable.Post ;
+             DataModuleF.bonv_com_listTable.IndexFieldNames:='code_bvcom';
 
-             MainForm.bonv_com_listTable.Active:=False;
-             MainForm.bonv_com_listTable.SQL.Clear;
-             MainForm.bonv_com_listTable.SQL.Text:= BCVLSQL+' WHERE code_bvcom = ' + QuotedStr(IntToStr(DataModuleF.Bonv_comTable.FieldValues['code_bvcom']))+' ';
-             MainForm.bonv_com_listTable.Active:=True;
-             MainForm.bonv_com_listTable.EnableControls;
+             DataModuleF.bonv_com_listTable.Active:=False;
+             DataModuleF.bonv_com_listTable.SQL.Clear;
+             DataModuleF.bonv_com_listTable.SQL.Text:= BCVLSQL+' WHERE code_bvcom = ' + QuotedStr(IntToStr(DataModuleF.Bonv_comTable.FieldValues['code_bvcom']))+' ';
+             DataModuleF.bonv_com_listTable.Active:=True;
+             DataModuleF.bonv_com_listTable.EnableControls;
 
             ProduitBonComGCbx.Text:='';
             ProduitsListDBGridEh.SetFocus;
@@ -1381,8 +1381,8 @@ begin
            ProduitsListDBGridEh.SelectedIndex:=2;
            ProduitsListDBGridEh.EditorMode:=True;
 
-           MainForm.bonv_com_listTable.EnableControls;
-            MainForm.bonv_com_listTable.Last;
+           DataModuleF.bonv_com_listTable.EnableControls;
+            DataModuleF.bonv_com_listTable.Last;
             if ClientBonComGCbx.Text<>'' then
               begin
               ValiderBVComBonComGBtn.Enabled:= True;
@@ -1406,7 +1406,7 @@ begin
             FSplashAddUnite.CancelAddUniteSBtn.Top:=(FSplashAddUnite.Height) - 36;
             FSplashAddUnite.OKAddUniteSBtn.Left:=(FSplashAddUnite.Width div 4) - (FSplashAddUnite.OKAddUniteSBtn.Width div 2) + 15;
             FSplashAddUnite.CancelAddUniteSBtn.Left:= ((FSplashAddUnite.Width div 2 )+((FSplashAddUnite.Width div 2)div 2 ) ) - (FSplashAddUnite.CancelAddUniteSBtn.Width div 2) - 15;
-            if  MainForm.bonv_com_listTable.FieldValues['code_p'] <> NULL then
+            if  DataModuleF.bonv_com_listTable.FieldValues['code_p'] <> NULL then
             begin
             NomP:=   MainForm.SQLQuery.FieldValues['nom_p'];
             end else begin
@@ -1441,7 +1441,7 @@ begin
           MainForm.SQLQuery.Active:=False;
           MainForm.SQLQuery.SQL.Clear;
 
-         MainForm.bonv_com_listTable.Refresh;
+         DataModuleF.bonv_com_listTable.Refresh;
 //        ProduitBonComGCbx.AutoDropDown:=False;
          ProduitBonComGCbx.SelectAll;
 
@@ -1450,7 +1450,7 @@ begin
            ProduitBonComGCbx.Text:= '';
          end;
 
-     MainForm.bonv_com_listTable.Last;
+     DataModuleF.bonv_com_listTable.Last;
  end;
 
 end;
@@ -1599,7 +1599,7 @@ begin
         ValiderBVComBonComGBtn.ImageIndex:=12;
         end;
 
-      MainForm.bonv_com_listTable.Refresh;
+      DataModuleF.bonv_com_listTable.Refresh;
 
             ClientBonComGCbx.StyleElements:= [seFont,seBorder,seBorder];
             RequiredClientGlbl.Visible:= False;
@@ -2061,13 +2061,13 @@ end;
 
 procedure TBonComVGestionF.DeleteProduitBonComGBtnClick(Sender: TObject);
 begin
- if  MainForm.bonv_com_listTable.RecordCount = 1 then
+ if  DataModuleF.bonv_com_listTable.RecordCount = 1 then
  begin
-    MainForm.bonv_com_listTable.DisableControls;
-    MainForm.bonv_com_listTable.Refresh;
-    MainForm.bonv_com_listTable.Delete;
+    DataModuleF.bonv_com_listTable.DisableControls;
+    DataModuleF.bonv_com_listTable.Refresh;
+    DataModuleF.bonv_com_listTable.Delete;
     ProduitsListDBGridEh.Refresh;
-    MainForm.bonv_com_listTable.EnableControls;
+    DataModuleF.bonv_com_listTable.EnableControls;
     ClientBonComGCbx.StyleElements:= [];
     RequiredClientGlbl.Visible:= False;
     NameClientGErrorP.Visible:= False;
@@ -2078,17 +2078,17 @@ begin
     BonComResteLbl.Caption:=FloatToStrF(0, ffNumber, 14, 2);
     BonComGClientNEWCredit.Caption:= BonComTotalTTCLbl.Caption;
  end else
- if MainForm.bonv_com_listTable.RecordCount <= 0 then
+ if DataModuleF.bonv_com_listTable.RecordCount <= 0 then
  begin
   exit;
  end
  else
      begin
-      MainForm.bonv_com_listTable.DisableControls;
-      MainForm.bonv_com_listTable.Delete;
+      DataModuleF.bonv_com_listTable.DisableControls;
+      DataModuleF.bonv_com_listTable.Delete;
       ProduitsListDBGridEh.Refresh;
-      MainForm.bonv_com_listTable.Refresh;
-      MainForm.bonv_com_listTable.EnableControls;
+      DataModuleF.bonv_com_listTable.Refresh;
+      DataModuleF.bonv_com_listTable.EnableControls;
      end;
 end;
 
@@ -2131,7 +2131,7 @@ LineCredit :TfrxShapeView;
 begin
 if ValiderBVComBonComGImg.ImageIndex <> 1 then
  begin
-MainForm.bonv_com_listTable.DisableControls;
+DataModuleF.bonv_com_listTable.DisableControls;
  GettingData;
 
    OLDCredit:= BonComPListfrxRprt.FindObject('OLDCredit') as TfrxMemoView;
@@ -2161,7 +2161,7 @@ BonComPListfrxRprt.PrepareReport;
 BonComPListfrxRprt.ShowReport;
 
 //BonComPListfrxRprt.Print;   // this is to print directly
-MainForm.bonv_com_listTable.EnableControls;
+DataModuleF.bonv_com_listTable.EnableControls;
  end;
 end;
 
@@ -2172,7 +2172,7 @@ LineCredit :TfrxShapeView;
 begin
 if ValiderBVComBonComGImg.ImageIndex <> 1 then
  begin
-MainForm.bonv_com_listTable.DisableControls;
+DataModuleF.bonv_com_listTable.DisableControls;
  GettingDataBonCaisse;
 
    OLDCredit:= BonComPListBonCaissefrxRprt.FindObject('OLDCredit') as TfrxMemoView;
@@ -2202,7 +2202,7 @@ BonComPListBonCaissefrxRprt.PrepareReport;
 BonComPListBonCaissefrxRprt.ShowReport;
 
 //BonComPListfrxRprt.Print;   // this is to print directly
-MainForm.bonv_com_listTable.EnableControls;
+DataModuleF.bonv_com_listTable.EnableControls;
 end;
 end;
 
@@ -2213,7 +2213,7 @@ LineCredit :TfrxShapeView;
 begin
 if ValiderBVComBonComGImg.ImageIndex <> 1 then
  begin
-MainForm.bonv_com_listTable.DisableControls;
+DataModuleF.bonv_com_listTable.DisableControls;
  GettingDataBonCaisse;
 
   OLDCredit:= BonComPListBonCaissefrxRprt.FindObject('OLDCredit') as TfrxMemoView;
@@ -2243,7 +2243,7 @@ BonComPListBonCaissefrxRprt.PrepareReport;
 BonComPListBonCaissefrxRprt.ShowReport;
 
 //BonComPListfrxRprt.Print;   // this is to print directly
-MainForm.bonv_com_listTable.EnableControls;
+DataModuleF.bonv_com_listTable.EnableControls;
 end;
 end;
 
@@ -2254,7 +2254,7 @@ LineCredit :TfrxShapeView;
 begin
 if ValiderBVComBonComGImg.ImageIndex <> 1 then
  begin
-MainForm.bonv_com_listTable.DisableControls;
+DataModuleF.bonv_com_listTable.DisableControls;
  GettingDataBonCaisseA5;
 
    OLDCredit:= BonComPListfrxCaisseRprtA5.FindObject('OLDCredit') as TfrxMemoView;
@@ -2283,7 +2283,7 @@ MainForm.bonv_com_listTable.DisableControls;
   BonComPListfrxCaisseRprtA5.ShowReport;
 
   //BonComPListfrxRprt.Print;   // this is to print directly
-  MainForm.bonv_com_listTable.EnableControls;
+  DataModuleF.bonv_com_listTable.EnableControls;
 end;
 
 end;
@@ -2295,7 +2295,7 @@ LineCredit :TfrxShapeView;
 begin
 if ValiderBVComBonComGImg.ImageIndex <> 1 then
  begin
-MainForm.bonv_com_listTable.DisableControls;
+DataModuleF.bonv_com_listTable.DisableControls;
  GettingData;
 
   OLDCredit:= BonComPListfrxRprt.FindObject('OLDCredit') as TfrxMemoView;
@@ -2325,7 +2325,7 @@ BonComPListfrxRprt.PrepareReport;
 BonComPListfrxRprt.ShowReport;
 
 //BonComPListfrxRprt.Print;   // this is to print directly
-MainForm.bonv_com_listTable.EnableControls;
+DataModuleF.bonv_com_listTable.EnableControls;
 end;
 end;
 
@@ -2336,7 +2336,7 @@ LineCredit :TfrxShapeView;
 begin
 if ValiderBVComBonComGImg.ImageIndex <> 1 then
  begin
-      MainForm.bonv_com_listTable.DisableControls;
+      DataModuleF.bonv_com_listTable.DisableControls;
      GettingDataA5;
        OLDCredit:= BonComPListfrxRprtA5.FindObject('OLDCredit') as TfrxMemoView;
       OLDCredit.Visible:= True;
@@ -2365,7 +2365,7 @@ if ValiderBVComBonComGImg.ImageIndex <> 1 then
     BonComPListfrxRprtA5.ShowReport;
 
 //BonComPListfrxRprt.Print;   // this is to print directly
-    MainForm.bonv_com_listTable.EnableControls;
+    DataModuleF.bonv_com_listTable.EnableControls;
  end;
 end;
 
@@ -2376,7 +2376,7 @@ LineCredit :TfrxShapeView;
 begin
 if ValiderBVComBonComGImg.ImageIndex <> 1 then
  begin
-MainForm.bonv_com_listTable.DisableControls;
+DataModuleF.bonv_com_listTable.DisableControls;
  GettingDataBCVSimple;
 
    OLDCredit:= BonComPListComSimplefrxRprt.FindObject('OLDCredit') as TfrxMemoView;
@@ -2406,7 +2406,7 @@ BonComPListComSimplefrxRprt.PrepareReport;
 BonComPListComSimplefrxRprt.ShowReport;
 
 //BonComPListfrxRprt.Print;   // this is to print directly
-MainForm.bonv_com_listTable.EnableControls;
+DataModuleF.bonv_com_listTable.EnableControls;
 end;
 
 end;
@@ -2418,7 +2418,7 @@ LineCredit :TfrxShapeView;
 begin
 if ValiderBVComBonComGImg.ImageIndex <> 1 then
  begin
-MainForm.bonv_com_listTable.DisableControls;
+DataModuleF.bonv_com_listTable.DisableControls;
  GettingDataSansTax;
 
   OLDCredit:= BonComPListSansTaxfrxRprt.FindObject('OLDCredit') as TfrxMemoView;
@@ -2448,7 +2448,7 @@ BonComPListSansTaxfrxRprt.PrepareReport;
 BonComPListSansTaxfrxRprt.ShowReport;
 
 //BonComPListfrxRprt.Print;   // this is to print directly
-MainForm.bonv_com_listTable.EnableControls;
+DataModuleF.bonv_com_listTable.EnableControls;
 end;
 end;
 
@@ -2459,7 +2459,7 @@ LineCredit :TfrxShapeView;
 begin
 if ValiderBVComBonComGImg.ImageIndex <> 1 then
  begin
-MainForm.bonv_com_listTable.DisableControls;
+DataModuleF.bonv_com_listTable.DisableControls;
  GettingDataSansTax;
 
    OLDCredit:= BonComPListSansTaxfrxRprt.FindObject('OLDCredit') as TfrxMemoView;
@@ -2489,7 +2489,7 @@ BonComPListSansTaxfrxRprt.PrepareReport;
 BonComPListSansTaxfrxRprt.ShowReport;
 
 //BonComPListfrxRprt.Print;   // this is to print directly
-MainForm.bonv_com_listTable.EnableControls;
+DataModuleF.bonv_com_listTable.EnableControls;
  end;
 end;
 
@@ -2513,13 +2513,13 @@ begin
 //    MainForm.SQLQuery.DisableControls;
     MainForm.SQLQuery.Active:=False;
     MainForm.SQLQuery.SQL.Clear;
-    MainForm.SQLQuery.SQL.Text:='SELECT code_p,qut_p,qutini_p,prixht_p FROM produit WHERE code_p = ' +IntToStr(MainForm.bonv_com_listTable.FieldValues['code_p']);
+    MainForm.SQLQuery.SQL.Text:='SELECT code_p,qut_p,qutini_p,prixht_p FROM produit WHERE code_p = ' +IntToStr(DataModuleF.bonv_com_listTable.FieldValues['code_p']);
     MainForm.SQLQuery.Active:=True;
 
     BonComGOLDStock.Caption:=
       floatTostrF(((MainForm.SQLQuery.FieldValues['qut_p'] + MainForm.SQLQuery.FieldValues['qutini_p'])),ffNumber,14,2);
     BonComGNEWStock.Caption:=
-      floatTostrF((((MainForm.SQLQuery.FieldValues['qut_p'] + MainForm.SQLQuery.FieldValues['qutini_p']))-((MainForm.bonv_com_listTable.FieldValues['qut_p'])*(MainForm.bonv_com_listTable.FieldValues['cond_p']))),ffNumber,14,2);
+      floatTostrF((((MainForm.SQLQuery.FieldValues['qut_p'] + MainForm.SQLQuery.FieldValues['qutini_p']))-((DataModuleF.bonv_com_listTable.FieldValues['qut_p'])*(DataModuleF.bonv_com_listTable.FieldValues['cond_p']))),ffNumber,14,2);
 
     if(StrToFloat (StringReplace(BonComGNEWStock.Caption, #32, '', [rfReplaceAll])))  < 0 then
     begin
@@ -2531,12 +2531,12 @@ begin
         end;
 
   //------------ this will show notification if the price is lower the the achat price------------
-      if MainForm.bonv_com_listTable.FieldByName('prixvd_p').AsFloat <  MainForm.SQLQuery.FieldByName('prixht_p').AsFloat then
+      if DataModuleF.bonv_com_listTable.FieldByName('prixvd_p').AsFloat <  MainForm.SQLQuery.FieldByName('prixht_p').AsFloat then
       begin
        Label25.Caption:= 'Alerte !! Le prix de vente est inf�rieur au prix d''achat';
        Timer2.Enabled:= true;
       end else
-          if MainForm.bonv_com_listTable.FieldByName('prixvd_p').AsFloat =  MainForm.SQLQuery.FieldByName('prixht_p').AsFloat then
+          if DataModuleF.bonv_com_listTable.FieldByName('prixvd_p').AsFloat =  MainForm.SQLQuery.FieldByName('prixht_p').AsFloat then
           begin
            Label25.Caption:= 'Alerte !! Le prix de vente est �gal au prix d''achat';
            Timer2.Enabled:= true;
@@ -2753,7 +2753,7 @@ end;
 
 procedure TBonComVGestionF.RemisePerctageBonComGEdtEnter(Sender: TObject);
 begin
-MainForm.bonv_com_listTable.Refresh;
+DataModuleF.bonv_com_listTable.Refresh;
  RemisePerctageBonComGEdtChange(Sender);
 end;
 
@@ -2811,7 +2811,7 @@ begin
 end;
 procedure TBonComVGestionF.RemiseBonComGEdtEnter(Sender: TObject);
 begin
-MainForm.bonv_com_listTable.Refresh;
+DataModuleF.bonv_com_listTable.Refresh;
  RemisePerctageBonComGEdtChange(Sender);
 end;
 
@@ -2867,7 +2867,7 @@ procedure TBonComVGestionF.sSpeedButton7Click(Sender: TObject);
 begin
   DataModuleF.Bonv_comTable.First;
   DataModuleF.Bonv_comTable.Refresh;
-  MainForm.bonv_com_listTable.Refresh;
+  DataModuleF.bonv_com_listTable.Refresh;
 
   if DataModuleF.Bonv_comTable.FieldValues['valider_bvcom'] = True then
   begin
@@ -2899,9 +2899,9 @@ begin
 
    NumBonComGEdt.Caption:= DataModuleF.Bonv_comTable.FieldByName('num_bvcom').AsString;
 
-      if MainForm.bonv_com_listTable.ControlsDisabled  then
+      if DataModuleF.bonv_com_listTable.ControlsDisabled  then
    begin
-     MainForm.bonv_com_listTable.EnableControls;
+     DataModuleF.bonv_com_listTable.EnableControls;
    end;
 end;
 
@@ -2909,7 +2909,7 @@ procedure TBonComVGestionF.sSpeedButton6Click(Sender: TObject);
 begin
   DataModuleF.Bonv_comTable.Prior;
   DataModuleF.Bonv_comTable.Refresh;
-  MainForm.bonv_com_listTable.Refresh;
+  DataModuleF.bonv_com_listTable.Refresh;
 
   if DataModuleF.Bonv_comTable.FieldValues['valider_bvcom'] = True then
   begin
@@ -2941,9 +2941,9 @@ begin
 
   NumBonComGEdt.Caption:= DataModuleF.Bonv_comTable.FieldByName('num_bvcom').AsString;
 
-    if MainForm.bonv_com_listTable.ControlsDisabled  then
+    if DataModuleF.bonv_com_listTable.ControlsDisabled  then
    begin
-     MainForm.bonv_com_listTable.EnableControls;
+     DataModuleF.bonv_com_listTable.EnableControls;
    end;
 end;
 
@@ -2951,7 +2951,7 @@ procedure TBonComVGestionF.sSpeedButton5Click(Sender: TObject);
 begin
   DataModuleF.Bonv_comTable.Next;
   DataModuleF.Bonv_comTable.Refresh;
-  MainForm.bonv_com_listTable.Refresh;
+  DataModuleF.bonv_com_listTable.Refresh;
 
   if DataModuleF.Bonv_comTable.FieldValues['valider_bvcom'] = True then
   begin
@@ -2983,9 +2983,9 @@ begin
 
   NumBonComGEdt.Caption:= DataModuleF.Bonv_comTable.FieldByName('num_bvcom').AsString;
 
-        if MainForm.bonv_com_listTable.ControlsDisabled  then
+        if DataModuleF.bonv_com_listTable.ControlsDisabled  then
    begin
-     MainForm.bonv_com_listTable.EnableControls;
+     DataModuleF.bonv_com_listTable.EnableControls;
    end;
 end;
 
@@ -2993,7 +2993,7 @@ procedure TBonComVGestionF.sSpeedButton4Click(Sender: TObject);
 begin
   DataModuleF.Bonv_comTable.Last;
   DataModuleF.Bonv_comTable.Refresh;
-  MainForm.bonv_com_listTable.Refresh;
+  DataModuleF.bonv_com_listTable.Refresh;
 
   if DataModuleF.Bonv_comTable.FieldValues['valider_bvcom'] = True then
   begin
@@ -3025,9 +3025,9 @@ begin
 
   NumBonComGEdt.Caption:= DataModuleF.Bonv_comTable.FieldByName('num_bvcom').AsString;
 
-        if MainForm.bonv_com_listTable.ControlsDisabled  then
+        if DataModuleF.bonv_com_listTable.ControlsDisabled  then
    begin
-     MainForm.bonv_com_listTable.EnableControls;
+     DataModuleF.bonv_com_listTable.EnableControls;
    end;
 end;
 
@@ -3047,11 +3047,11 @@ begin
    MainForm.ProduitTable.Refresh;
    MainForm.ClientTable.Refresh;
    DataModuleF.Bonv_comTable.Refresh;
-   MainForm.bonv_com_listTable.Refresh;
+   DataModuleF.bonv_com_listTable.Refresh;
    MainForm.Mode_paiementTable.Refresh;
    MainForm.CompteTable.Refresh;
    BonComPListDataS.DataSet.Refresh;
-   MainForm.BonComListDataS.DataSet.Refresh;
+   DataModuleF.BonComVListDataS.DataSet.Refresh;
    Refresh;
 
    ModePaieBonComGCbx.Refresh;
@@ -3075,12 +3075,12 @@ begin
           begin
             DataModuleF.Bonv_comTable.Last;
             codeBCV := DataModuleF.Bonv_comTable.FieldValues['code_bvcom'];
-            MainForm.bonv_com_listTable.Active:=False;
-            MainForm.bonv_com_listTable.SQL.Clear;
-            MainForm.bonv_com_listTable.SQL.Text:= BCVLSQL+' WHERE code_bvcom = ' + QuotedStr(IntToStr(codeBCV))+' ';
-            MainForm.bonv_com_listTable.Active:=True;
+            DataModuleF.bonv_com_listTable.Active:=False;
+            DataModuleF.bonv_com_listTable.SQL.Clear;
+            DataModuleF.bonv_com_listTable.SQL.Text:= BCVLSQL+' WHERE code_bvcom = ' + QuotedStr(IntToStr(codeBCV))+' ';
+            DataModuleF.bonv_com_listTable.Active:=True;
 
-           if MainForm.bonv_com_listTable.RecordCount <= 0 then
+           if DataModuleF.bonv_com_listTable.RecordCount <= 0 then
            begin
         //   DataModuleF.Bonv_comTable.Last;
            codeBCV := DataModuleF.Bonv_comTable.FieldValues['code_bvcom'];
@@ -3117,7 +3117,7 @@ begin
 
      Tag :=0;
 
-     MainForm.bonv_com_listTable.Refresh;
+     DataModuleF.bonv_com_listTable.Refresh;
 
      ClientBonComGCbxExit(Sender);
      ProduitBonComGCbx.SetFocus;
@@ -3330,7 +3330,7 @@ procedure TBonComVGestionF.ProduitsListDBGridEhKeyDown(Sender: TObject;
 begin
 
   //Use this trick tp pervent wierd error show up (erro happen when cursor on last row and hit down)
-  if (key = VK_DOWN) AND (MainForm.bonv_com_listTable.RecNo=MainForm.bonv_com_listTable.RecordCount)then
+  if (key = VK_DOWN) AND (DataModuleF.bonv_com_listTable.RecNo=DataModuleF.bonv_com_listTable.RecordCount)then
   begin
 
     key := VK_RETURN;
@@ -3376,12 +3376,12 @@ procedure TBonComVGestionF.ProduitsListDBGridEhMouseMove(Sender: TObject;
   Shift: TShiftState; X, Y: Integer);
 
 begin
-//if NOT (MainForm.bonv_com_listTable.IsEmpty) then
+//if NOT (DataModuleF.bonv_com_listTable.IsEmpty) then
 //  begin
 //////    MainForm.SQLQuery.DisableControls;
 ////    MainForm.FDQuery2.Active:=False;
 ////    MainForm.FDQuery2.SQL.Clear;
-////    MainForm.FDQuery2.SQL.Text:='SELECT code_p,nom_p,prixht_p,tva_p FROM produit WHERE code_p = ' +IntToStr(MainForm.bonv_com_listTable.FieldValues['code_p']);
+////    MainForm.FDQuery2.SQL.Text:='SELECT code_p,nom_p,prixht_p,tva_p FROM produit WHERE code_p = ' +IntToStr(DataModuleF.bonv_com_listTable.FieldValues['code_p']);
 ////    MainForm.FDQuery2.Active:=True;
 ////
 ////
@@ -3391,11 +3391,11 @@ begin
 //   ProduitsListDBGridEh.ShowHint:= True;
 //
 //     ChangeHint(TDBGridEh(Sender),
-//      ( 'D�s: '+ (MainForm.bonv_com_listTable.FieldValues['nomp'])
+//      ( 'D�s: '+ (DataModuleF.bonv_com_listTable.FieldValues['nomp'])
 //       + sLineBreak +
-//         'Prix HT= '+ CurrToStrF((MainForm.bonv_com_listTable.FieldValues['prixht_p']),ffNumber,2)
+//         'Prix HT= '+ CurrToStrF((DataModuleF.bonv_com_listTable.FieldValues['prixht_p']),ffNumber,2)
 //       + sLineBreak +
-//         'Prix TTC= '+ CurrToStrF(((((MainForm.bonv_com_listTable.FieldValues['prixht_p'] * MainForm.bonv_com_listTable.FieldValues['tva_p'])/100) + (MainForm.bonv_com_listTable.FieldValues['prixht_p']))),ffNumber,2)
+//         'Prix TTC= '+ CurrToStrF(((((DataModuleF.bonv_com_listTable.FieldValues['prixht_p'] * DataModuleF.bonv_com_listTable.FieldValues['tva_p'])/100) + (DataModuleF.bonv_com_listTable.FieldValues['prixht_p']))),ffNumber,2)
 //       ),
 //       TDBGridEh(Sender).ClientToScreen(Point(X, Y)));
 ////
@@ -4108,14 +4108,14 @@ begin
 
 procedure TBonComVGestionF.sSpeedButton1Click(Sender: TObject);
 begin
-MainForm.bonv_com_listTable.DisableControls;
+DataModuleF.bonv_com_listTable.DisableControls;
    GettingData;
 
 BonComPListfrxRprt.PrepareReport;
 frxXLSExport1.FileName := 'Commande Client N� '
   +IntToStr(YearOf(Today)) + '-' + Format('%.*d', [5,(DataModuleF.Bonv_comTable.FieldByName('code_bvcom').AsInteger)]);
 BonComPListfrxRprt.Export(frxXLSExport1);
-MainForm.bonv_com_listTable.EnableControls;
+DataModuleF.bonv_com_listTable.EnableControls;
 //EmptyLines: = True;
 //OpenExcelAfterExport: = True;
 //PageBreaks: = False;
@@ -4126,7 +4126,7 @@ end;
 procedure TBonComVGestionF.sSpeedButton3Click(Sender: TObject);
 begin
  GettingData;
- MainForm.bonv_com_listTable.DisableControls;
+ DataModuleF.bonv_com_listTable.DisableControls;
 BonComPListfrxRprt.PrepareReport;
 
 frxPDFExport1.FileName := 'Commande Client N� '
@@ -4135,7 +4135,7 @@ frxPDFExport1.FileName := 'Commande Client N� '
 frxPDFExport1.EmbeddedFonts:=True;
 
 BonComPListfrxRprt.Export(frxPDFExport1);
-MainForm.bonv_com_listTable.EnableControls;
+DataModuleF.bonv_com_listTable.EnableControls;
 end;
 
 procedure TBonComVGestionF.ProduitsListDBGridEhCellClick(Column: TColumnEh);

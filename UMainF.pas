@@ -866,6 +866,7 @@ type
     procedure MouvementdeProduit2Click(Sender: TObject);
     procedure MouvementdeProduit3Click(Sender: TObject);
     procedure B2Click(Sender: TObject);
+    procedure B4Click(Sender: TObject);
   private
    //---- this to value of changege we need it to check if theuser changed something
      CountInsert,CountUpdate,CountDelete   : Int64;
@@ -917,7 +918,7 @@ uses   Vcl.Direct2D,Character,
   ULogoSplashForm, ULoginUser, ULogin, UCNotifications, UChargesFList,
   UPertesFList, USTypeChargeList, UTypeChargeList, UTypePerteList,
   UBonFacPGestion, UBonFacP, UTransferComptesGestion, UTransferListGestion,
-  UAbout, DBCalcController, UInventory, UBonComA, UBonComAGestion;
+  UAbout, DBCalcController, UInventory, UBonComA, UBonComAGestion, UBonComV, UBonComVGestion;
 
   var
     gGrayForms: TComponentList;
@@ -4591,6 +4592,23 @@ input := '/c "'+GetCurrentDir+'\bin\pg_dump.exe" -U postgres -F c '+ GstockdcCon
 
  end;
 
+end;
+
+procedure TMainForm.B4Click(Sender: TObject);
+begin
+       ClientTable.DisableControls;
+       ClientTable.Active:=False;
+       ClientTable.SQL.Clear;
+       ClientTable.SQL.Text:='SELECT * FROM client ';
+       ClientTable.Active:=True;
+       ClientTable.EnableControls;
+
+if Not Assigned(BonComVF) then
+
+     BonComVF:= TBonComVF.Create(Application) else
+                                        begin
+                                          BonComVF.Show
+                                        end;
 end;
 
 procedure TMainForm.BankFaceBtnClick(Sender: TObject);

@@ -67,6 +67,7 @@ type
     procedure DisableBonCtr;
     procedure DisableBonFacP;
     procedure DisableBonCom;
+    procedure DisableBonComV;
 
   end;
 
@@ -77,7 +78,7 @@ implementation
 
 uses System.Contnrs,
   UMainF, UClientGestion, UBonRecGestion, UBonLivGestion, UBonFacVGestion,
-  UBonFacAGestion, UComptoir, UDataModule, UBonFacPGestion, UBonComAGestion;
+  UBonFacAGestion, UComptoir, UDataModule, UBonFacPGestion, UBonComAGestion, UBonComVGestion;
 
 {$R *.dfm}
 
@@ -145,6 +146,67 @@ procedure TFSplashVersement.FormDestroy(Sender: TObject);
 begin
   NormalFormsVer;
 end;
+
+
+procedure TFSplashVersement.DisableBonComV;
+begin
+
+
+          BonComVGestionF.DateBonComGD.Enabled:= False;
+          BonComVGestionF.ObserBonComGMem.Enabled:= False;
+          BonComVGestionF.ClientBonComGCbx.Enabled:= False;
+          BonComVGestionF.ListClientBonComGBtn.Enabled:= False;
+          BonComVGestionF.ListClientBonComGBtn.ImageIndex:= 61;
+          BonComVGestionF.AddClientBonComGBtn.Enabled:= False ; //
+          BonComVGestionF.AddClientBonComGBtn.ImageIndex:=35;//10 fo A
+          BonComVGestionF.ModePaieBonComGCbx.Enabled:= False;
+          BonComVGestionF.AddModePaieBonComGBtn.Enabled:= False ;
+          BonComVGestionF.AddModePaieBonComGBtn.ImageIndex:=35;//10 fo A
+          BonComVGestionF.CompteBonComGCbx.Enabled:= False;
+          BonComVGestionF.AddCompteBonComGBtn.Enabled:= False ;
+          BonComVGestionF.AddCompteBonComGBtn.ImageIndex:=35;//10 fo A
+          BonComVGestionF.NChequeBonComGCbx.Enabled:= False;
+          BonComVGestionF.ProduitBonComGCbx.Enabled:= False;
+          BonComVGestionF.EnterAddProduitBonComGBtn.Enabled:= False;
+          BonComVGestionF.EnterAddProduitBonComGBtn.ImageIndex:=40;//15 fo A
+          BonComVGestionF.ListAddProduitBonComGBtn.Enabled:= False;
+          BonComVGestionF.ListAddProduitBonComGBtn.ImageIndex:=41;//13 fo A
+          BonComVGestionF.NewAddProduitBonComGBtn.Enabled:= False;
+          BonComVGestionF.NewAddProduitBonComGBtn.ImageIndex:=28;//4 fo A
+          BonComVGestionF.DeleteProduitBonComGBtn.Enabled:= False;
+          BonComVGestionF.DeleteProduitBonComGBtn.ImageIndex:=36;//14 fo A
+          BonComVGestionF.ClearProduitBonComGBtn.Enabled:= False;
+          BonComVGestionF.ClearProduitBonComGBtn.ImageIndex:=39;//16 fo A
+//          BonComVGestionF.ProduitsListDBGridEh.DataSource.DataSet.DisableControls;//EnableControls    For A
+          BonComVGestionF.ProduitsListDBGridEh.Columns[2].TextEditing :=False;//True for A
+          BonComVGestionF.ProduitsListDBGridEh.Columns[3].TextEditing:=False;//True for A
+          BonComVGestionF.ProduitsListDBGridEh.Columns[4].TextEditing:=False;//True for A
+          BonComVGestionF.ProduitsListDBGridEh.Options:=
+          BonComVGestionF.ProduitsListDBGridEh.Options + [dgRowSelect]-[dgAlwaysShowSelection]-[dgMultiSelect] ; //flip + and -  for A
+          BonComVGestionF.ProduitsListDBGridEh.Color:= $00EFE9E8;// clWhite for A
+          BonComVGestionF.ProduitsListDBGridEh.FixedColor:=$00D9D7D3;//clwindow for A
+          BonComVGestionF.ProduitsListDBGridEh.EvenRowColor:=$00D9D7D3;//clwindow for A
+          BonComVGestionF.RemisePerctageBonComGEdt.Enabled:=False;//True for A
+          BonComVGestionF.RemiseBonComGEdt.Enabled:=False;//True for A
+          BonComVGestionF.RemiseTypeBonComGCbx.Enabled:= False;//True for A;
+
+          BonComVGestionF.ResherchPARDesProduitsRdioBtn.Enabled:= False;//True for A
+          BonComVGestionF.ResherchPARRefProduitsRdioBtn.Enabled:= False;//True for A                                   Ce bon n'est pas encore valid�
+          BonComVGestionF.ResherchPARCBProduitsRdioBtn.Enabled:= False;//True for A
+
+          BonComVGestionF.ValiderBVComBonComGImg.ImageIndex:=0;//1 fo A
+          BonComVGestionF.ValiderBVComBonComGLbl.Color:=$004AC38B;// $007374FF for A
+          BonComVGestionF.ValiderBVComBonComGLbl.Font.Color:= clBlack;// clWhite for A
+          BonComVGestionF.ValiderBVComBonComGLbl.Caption:='Ce bon est Valid�';// 'Ce bon n''est pas encore Valid�' for A
+
+          BonComVGestionF.AddBVComBonComGBtn.Enabled:= True;
+          BonComVGestionF.AddBVComBonComGBtn.ImageIndex:=4;// 28 For A
+          BonComVGestionF.EditBVComBonComGBtn.Enabled:= True;
+          BonComVGestionF.EditBVComBonComGBtn.ImageIndex:=5; // 29 For A
+          BonComVGestionF.ValiderBVComBonComGBtn.ImageIndex:=30; // 12 For A
+          BonComVGestionF.ValiderBVComBonComGBtn.Enabled:= False;
+end;
+
 
 
 procedure TFSplashVersement.DisableBonCom;
