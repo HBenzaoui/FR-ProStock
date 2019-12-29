@@ -237,8 +237,8 @@ type
     ClientSituationQR: TFDQuery;
     ClientSituationQRnum: TWideStringField;
     ClientSituationQRsource: TWideStringField;
-    ClientSituationQRdate_bvliv: TDateField;
-    ClientSituationQRtime_bvliv: TTimeField;
+    ClientSituationQRdate_bvcom: TDateField;
+    ClientSituationQRtime_bvcom: TTimeField;
     ClientSituationQRtotal: TCurrencyField;
     ClientSituationQRversemt: TCurrencyField;
     ClientSituationQRrest: TCurrencyField;
@@ -368,6 +368,53 @@ type
     Bona_com_listTablemargea: TFloatField;
     Bona_com_listTablemargea2: TFloatField;
     BonComAListDataS: TDataSource;
+    Bonv_comTable: TFDQuery;
+    Bonv_comTablecode_bvcom: TIntegerField;
+    Bonv_comTabledate_bvcom: TDateField;
+    Bonv_comTabletime_bvcom: TTimeField;
+    Bonv_comTablecode_c: TIntegerField;
+    Bonv_comTablemontaht_bvcom: TCurrencyField;
+    Bonv_comTablemontht_bvcom: TCurrencyField;
+    Bonv_comTablemontver_bvcom: TCurrencyField;
+    Bonv_comTablevalider_bvcom: TBooleanField;
+    Bonv_comTablenum_bvcom: TWideStringField;
+    Bonv_comTablefourbarec: TStringField;
+    Bonv_comTablemontttc_bvcom: TCurrencyField;
+    Bonv_comTableremise_bvcom: TCurrencyField;
+    Bonv_comTablenum_cheque_bvcom: TWideStringField;
+    Bonv_comTablecode_mdpai: TSmallintField;
+    Bonv_comTablecode_cmpt: TSmallintField;
+    Bonv_comTableModePaie: TStringField;
+    Bonv_comTableCompte: TStringField;
+    Bonv_comTableNEWTTC: TCurrencyField;
+    Bonv_comTablecode_ur: TIntegerField;
+    Bonv_comTablemarge_bvcom: TCurrencyField;
+    Bonv_comTablemontanttva: TCurrencyField;
+    Bonv_comTablemontantres: TCurrencyField;
+    Bonv_comTableremiseperc: TFMTBCDField;
+    Bonv_comTablenetht: TCurrencyField;
+    Bonv_comTableobser_bvcom: TWideStringField;
+    Bonv_comTableAgent: TStringField;
+    Bonv_com_listTable: TFDQuery;
+    Bonv_com_listTablecode_bvcoml: TIntegerField;
+    Bonv_com_listTablecode_bvcom: TIntegerField;
+    Bonv_com_listTablequt_p: TFloatField;
+    Bonv_com_listTableprixvd_p: TCurrencyField;
+    Bonv_com_listTablecond_p: TIntegerField;
+    Bonv_com_listTablecode_p: TIntegerField;
+    Bonv_com_listTabletva_p: TSmallintField;
+    Bonv_com_listTablecode_barec: TIntegerField;
+    Bonv_com_listTableprixvttc: TCurrencyField;
+    Bonv_com_listTablemontantht: TCurrencyField;
+    Bonv_com_listTablemontantttc: TCurrencyField;
+    Bonv_com_listTablemontanttva: TCurrencyField;
+    Bonv_com_listTablemontantaht: TCurrencyField;
+    Bonv_com_listTablemarge: TFloatField;
+    Bonv_com_listTablemargem: TCurrencyField;
+    Bonv_com_listTableprixht_p: TCurrencyField;
+    Bonv_com_listTablenomp: TWideStringField;
+    Bonv_com_listTablereferp: TWideStringField;
+    BonComVListDataS: TDataSource;
     procedure DataModuleCreate(Sender: TObject);
     procedure PZeroQCnotifCalcFields(DataSet: TDataSet);
     procedure PCloseZeroQCnotifCalcFields(DataSet: TDataSet);
@@ -377,6 +424,7 @@ type
     procedure CheckdbVersionAndAlterDb;
     procedure Inventory_listTablequtphys_ilChange(Sender: TField);
     procedure Bona_com_listTableAfterRefresh(DataSet: TDataSet);
+    procedure Bonv_com_listTableAfterRefresh(DataSet: TDataSet);
   private
     procedure CheckAppVersionForFirstRun;
     procedure deleteOldGridsparams;
@@ -397,7 +445,7 @@ var
 implementation
 
 uses
-  UMainF, ULogoSplashForm, ULogin, UInventory, UBonComAGestion;
+  UMainF, ULogoSplashForm, ULogin, UInventory, UBonComAGestion, UBonComVGestion;
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
@@ -536,6 +584,93 @@ InvoiceID :Integer;
     end;
        end;
 
+
+end;
+
+procedure TDataModuleF.Bonv_com_listTableAfterRefresh(DataSet: TDataSet);
+var TotalHT,TotalAHT,TotalTVA,TVA,TotalTTC,LeReste,Regle,Marge,NewHT,BonCVTotalHT: Currency;
+InvoiceID :Integer;
+  begin
+       if Assigned(BonComVGestionF) then
+       begin
+
+          MainForm.SQLQuery3.Active:= False;
+          MainForm.SQLQuery3.SQL.Clear;
+          MainForm.SQLQuery3.SQL.Text:= BonComVGestionF.BCVLSQL+ ' WHERE code_bvcom= '+ IntToStr(Bonv_comTable.FieldByName('code_bvcom').AsInteger) +' ORDER BY code_bvcoml ';
+          MainForm.SQLQuery3.Active:= True;
+
+          MainForm.SQLQuery3.First;
+          while not MainForm.SQLQuery3.Eof do
+          begin
+            TotalAHT:= TotalAHT + (MainForm.SQLQuery3.FieldByName('MontantAHT').AsCurrency );
+            TotalHT:= TotalHT + (MainForm.SQLQuery3.FieldByName('MontantHT').AsCurrency );
+            TotalTVA:= TotalTVA + MainForm.SQLQuery3.FieldByName('MontantTVA').AsCurrency;
+            TotalTTC:= TotalTTC + MainForm.SQLQuery3.FieldByName('MontantTTC').AsCurrency;
+            TVA:=TVA + MainForm.SQLQuery3.FieldByName('tva_p').AsInteger;
+            Marge:=Marge + MainForm.SQLQuery3.FieldByName('MargeM').AsCurrency ;
+            LeReste:= TotalTTC - StrToCurr(StringReplace(BonComVGestionF.BonComRegleLbl.Caption, #32, '', [rfReplaceAll]))  ;
+            MainForm.SQLQuery3.Next;
+          end;
+
+         MainForm.SQLQuery3.Active:=false;
+         MainForm.SQLQuery3.SQL.Clear;
+
+         InvoiceID := Bonv_com_listTable.FieldByName('code_bvcoml').AsInteger;
+
+         Bonv_com_listTable.Active:=false;
+         Bonv_com_listTable.SQL.Clear;
+         Bonv_com_listTable.SQL.Text:= BonComVGestionF.BCVLSQL+' ORDER BY code_bvcoml ' ;
+         Bonv_com_listTable.Active:=True;
+
+         Bonv_com_listTable.Locate('code_bvcoml',InvoiceID,[]);
+
+
+    BonComVGestionF.BonComTotalAHTLbl.Caption :=    CurrToStrF((TotalAHT),ffNumber,2) ;
+    BonComVGestionF.BonComTotalHTLbl.Caption :=    CurrToStrF((TotalHT),ffNumber,2) ;
+    BonComVGestionF.BonComTotalTVALbl.Caption :=   CurrToStrF((TotalTVA),ffNumber,2) ;
+    BonComVGestionF.BonComTotalTTCLbl.Caption :=   CurrToStrF((TotalTTC),ffNumber,2) ;
+    BonComVGestionF.BonComResteLbl.Caption :=      CurrToStrF((LeReste),ffNumber,2) ;
+    BonComVGestionF.BonCVTotalTTCNewLbl.Caption :=  CurrToStrF(((TotalTTC)),ffNumber,2) ;
+    BonComVGestionF.BonCVTotalHTNewLbl.Caption :=   CurrToStrF(((TotalHT)),ffNumber,2) ;
+    BonComVGestionF.TotalTVANewLbl.Caption :=      CurrToStrF(((TotalTVA)),ffNumber,2) ;
+    BonComVGestionF.BonComTotalMargeLbl.Caption := CurrToStrF(((Marge)),ffNumber,2) ;
+
+    if MainForm.Bonv_livTable.FieldByName('montver_bvcom').AsCurrency<> Null then
+    begin
+    Regle:= MainForm.Bonv_livTable.FieldByName('montver_bvcom').AsCurrency;
+    BonComVGestionF.BonComRegleLbl.Caption :=      CurrToStrF(((Regle)),ffNumber,2) ;
+    end;
+
+    if NOT (Bonv_com_listTable.IsEmpty) then
+    begin
+//    if BonComVGestionF.ClientBonLivGCbx.Text<>'' then
+//    begin
+//    BonComVGestionF.BonLivGClientNEWCredit.Caption:=
+//    CurrToStrF((LeReste + ((StrToCurr(StringReplace(BonComVGestionF.BonLivGClientOLDCredit.Caption, #32, '', [rfReplaceAll]))))),ffNumber,2) ;
+//    end ;
+//         if  (Bonv_livTable.FieldValues['RemisePerc']= null) OR (Bonv_livTable.FieldValues['remise_bvcom']= 0) then
+//         begin
+//         BonComVGestionF.RemisePerctageBonLivGEdt.Text:='';
+//         end else
+//         begin
+//            BonComVGestionF.RemisePerctageBonLivGEdtChange(Self);
+//         end;
+
+            BonComVGestionF.RemisePerctageBonComGEdtChange(Self);
+
+            if BonComVGestionF.BonCVTotalHTNewLbl.Caption <>'' then
+            begin
+            NewHT:=StrToFloat (StringReplace(BonComVGestionF.BonCVTotalHTNewLbl.Caption , #32, '', [rfReplaceAll]));
+            end;
+
+             if BonComVGestionF.BonComTotalHTLbl.Caption<>'' then
+            begin
+            BonCVTotalHT:=StrToFloat (StringReplace(BonComVGestionF.BonComTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
+            end;
+
+            BonComVGestionF.RemiseBonComGEdt.Text:=FloatToStrF((BonCVTotalHT - NewHT),ffNumber,14,2);
+    end;
+       end;
 
 end;
 

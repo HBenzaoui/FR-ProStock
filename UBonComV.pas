@@ -11,8 +11,7 @@ uses
   acAlphaImageList, Vcl.ComCtrls, Vcl.StdCtrls, Vcl.WinXCtrls, Vcl.Buttons,
   sSpeedButton, AdvToolBtn, Vcl.ExtCtrls, EhLibVCL, GridsEh, DBAxisGridsEh,
   DBGridEh, System.DateUtils, frxClass, frxDBSet, frxExportPDF, frxExportXLS, Vcl.Menus,
-  acImage, sStatusBar ,IniFiles, Vcl.AppEvnts, frxExportBaseDialog
-  ;
+  acImage, sStatusBar ,IniFiles, Vcl.AppEvnts, frxExportBaseDialog, UDataModule ;
 
 
 const
@@ -765,7 +764,7 @@ if NOT (DataModuleF.Bonv_comTable.IsEmpty) then
         AnimateWindow(FSplashAddUnite.Handle, 175, AW_VER_POSITIVE OR AW_SLIDE OR AW_ACTIVATE );
         FSplashAddUnite.Show;
         FSplashAddUnite.OKAddUniteSBtn.Enabled:=True;
-        FSplashAddUnite.OKAddUniteSBtn.Tag:= 9 ;
+        FSplashAddUnite.OKAddUniteSBtn.Tag:= 46 ;
        end
         else
         begin

@@ -440,7 +440,7 @@ object BonComVF: TBonComVF
     object ResearchBVComLbl: TLabel
       Left = 2
       Top = 31
-      Width = 74
+      Width = 76
       Height = 16
       Caption = 'Rechercher'
       Color = 15722984
@@ -854,7 +854,6 @@ object BonComVF: TBonComVF
     ColumnDefValues.ToolTips = True
     Ctl3D = True
     DataGrouping.Active = True
-    DataSource = MainForm.BonComListDataS
     DynProps = <>
     EvenRowColor = clWindow
     FixedColor = clWindow
@@ -1767,7 +1766,6 @@ object BonComVF: TBonComVF
       'code_ur=code_ur'
       'Agnet=Agnet'
       'NeTHT=NeTHT')
-    DataSource = MainForm.BonComVListDataS
     BCDToCurrency = False
     Left = 248
     Top = 392

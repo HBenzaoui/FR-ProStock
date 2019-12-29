@@ -340,9 +340,9 @@ object DataModuleF: TDataModuleF
         '----------------------------------------------------------------' +
         '-------'
       '  UNION ALL '
-      '  SELECT code_p, SUM(qut_p) as total FROM bonv_liv_list e'
-      '  INNER JOIN bonv_liv f ON e.code_bvliv = f.code_bvliv '
-      '  WHERE valider_bvliv = true AND e.code_p <> 0'
+      '  SELECT code_p, SUM(qut_p) as total FROM Bonv_com_list e'
+      '  INNER JOIN bonv_com f ON e.code_bvcom = f.code_bvcom '
+      '  WHERE valider_bvcom = true AND e.code_p <> 0'
       '  GROUP BY code_p,qut_p'
       '      ) a '
       '      GROUP BY  code_p'#9' '
@@ -1682,14 +1682,14 @@ object DataModuleF: TDataModuleF
     Connection = MainForm.GstockdcConnection
     SQL.Strings = (
       
-        'SELECT  num_bvliv AS Num, Source,date_bvliv, time_bvliv, montttc' +
-        '_bvliv AS Total, montver_bvliv AS Versemt, Rest, MP, code_ur AS ' +
+        'SELECT  num_bvcom AS Num, Source,date_bvcom, time_bvcom, montttc' +
+        '_bvcom AS Total, montver_bvcom AS Versemt, Rest, MP, code_ur AS ' +
         'Agent'
       'FROM'
       '('
       
-        'SELECT code_c,num_bvliv,date_bvliv,time_bvliv,montttc_bvliv,mont' +
-        'ver_bvliv,(montttc_bvliv - montver_bvliv) AS Rest,'#39'BL'#39' AS Source' +
+        'SELECT code_c,num_bvcom,date_bvcom,time_bvcom,montttc_bvcom,mont' +
+        'ver_bvcom,(montttc_bvcom - montver_bvcom) AS Rest,'#39'BL'#39' AS Source' +
         ', code_ur,'
       '  CASE BL.code_mdpai'
       '    WHEN  1 THEN '#39'Esp'#232'ce'#39
@@ -1698,7 +1698,7 @@ object DataModuleF: TDataModuleF
       '    WHEN  4 THEN '#39'Virement'#39
       '    end AS MP'
       
-        'FROM bonv_liv BL where code_c = :CodeC AND date_bvliv BETWEEN :D' +
+        'FROM bonv_com BL where code_c = :CodeC AND date_bvcom BETWEEN :D' +
         'ateStartC AND :DateEndC'
       ''
       'UNION ALL'
@@ -1743,7 +1743,7 @@ object DataModuleF: TDataModuleF
       'VT'
       '-- INNER JOIN client CL'
       '-- ON  CL.code_c = VT.code_c'
-      '  ORDER BY date_bvliv,time_bvliv;')
+      '  ORDER BY date_bvcom,time_bvcom;')
     Left = 174
     Top = 638
     ParamData = <
@@ -1779,16 +1779,16 @@ object DataModuleF: TDataModuleF
       ReadOnly = True
       Size = 32767
     end
-    object ClientSituationQRdate_bvliv: TDateField
+    object ClientSituationQRdate_bvcom: TDateField
       AutoGenerateValue = arDefault
-      FieldName = 'date_bvliv'
-      Origin = 'date_bvliv'
+      FieldName = 'date_bvcom'
+      Origin = 'date_bvcom'
       ReadOnly = True
     end
-    object ClientSituationQRtime_bvliv: TTimeField
+    object ClientSituationQRtime_bvcom: TTimeField
       AutoGenerateValue = arDefault
-      FieldName = 'time_bvliv'
-      Origin = 'time_bvliv'
+      FieldName = 'time_bvcom'
+      Origin = 'time_bvcom'
       ReadOnly = True
     end
     object ClientSituationQRtotal: TCurrencyField
@@ -2054,23 +2054,23 @@ object DataModuleF: TDataModuleF
       'UNION ALL '
       'SELECT'
       
-        '  '#39'BL'#39' AS Source, BL.num_bvliv AS Num, T.nom_c AS Tiers, BL.date' +
-        '_bvliv as Date,'
-      '  BL.time_bvliv as Time, (BLL.qut_p * BLL.cond_p) * -1 AS Qut,'
+        '  '#39'BL'#39' AS Source, BL.num_bvcom AS Num, T.nom_c AS Tiers, BL.date' +
+        '_bvcom as Date,'
+      '  BL.time_bvcom as Time, (BLL.qut_p * BLL.cond_p) * -1 AS Qut,'
       
         '  BLL.prixvd_p AS PrixU, ((BLL.qut_p * BLL.cond_p) * BLL.prixvd_' +
         'p ) AS Montant, (BLL.prixvd_p - BLL.prixht_p) AS Marge, Bl.code_' +
         'ur AS Agent'
       'FROM produit P'
-      'INNER JOIN bonv_liv_list BLL'
+      'INNER JOIN Bonv_com_list BLL'
       '  ON P.code_p = BLL.code_p'
-      'INNER JOIN bonv_liv BL'
-      '  ON BLL.code_bvliv = BL.code_bvliv'
+      'INNER JOIN bonv_com BL'
+      '  ON BLL.code_bvcom = BL.code_bvcom'
       'INNER JOIN client AS T'
       '  ON BL.code_c = T.code_c'
       
-        '  WHERE P.code_p = :CodeP AND BL.valider_bvliv = TRUE AND BL.dat' +
-        'e_bvliv BETWEEN :DateStartP AND :DateEndP'
+        '  WHERE P.code_p = :CodeP AND BL.valider_bvcom = TRUE AND BL.dat' +
+        'e_bvcom BETWEEN :DateStartP AND :DateEndP'
       ''
       'UNION ALL '
       'SELECT'
@@ -2280,22 +2280,22 @@ object DataModuleF: TDataModuleF
       'UNION ALL'
       'SELECT'
       
-        '  P.refer_p, P.nom_p, '#39'BL'#39' AS Source, BL.num_bvliv AS Num, T.nom' +
-        '_c AS Tiers, BL.date_bvliv as Date,'
-      '  BL.time_bvliv as Time, (BLL.qut_p * BLL.cond_p) * -1 AS Qut,'
+        '  P.refer_p, P.nom_p, '#39'BL'#39' AS Source, BL.num_bvcom AS Num, T.nom' +
+        '_c AS Tiers, BL.date_bvcom as Date,'
+      '  BL.time_bvcom as Time, (BLL.qut_p * BLL.cond_p) * -1 AS Qut,'
       
         '  BLL.prixvd_p AS PrixU, ((BLL.qut_p * BLL.cond_p) * BLL.prixvd_' +
         'p ) AS Montant, (BLL.prixvd_p - BLL.prixht_p) AS Marge, Bl.code_' +
         'ur AS Agent'
       'FROM produit P'
-      'INNER JOIN bonv_liv_list BLL'
+      'INNER JOIN Bonv_com_list BLL'
       '  ON P.code_p = BLL.code_p'
-      'INNER JOIN bonv_liv BL'
-      '  ON BLL.code_bvliv = BL.code_bvliv'
+      'INNER JOIN bonv_com BL'
+      '  ON BLL.code_bvcom = BL.code_bvcom'
       'INNER JOIN client AS T'
       '  ON BL.code_c = T.code_c'
       
-        '  WHERE BL.valider_bvliv = TRUE AND BL.date_bvliv BETWEEN :DateS' +
+        '  WHERE BL.valider_bvcom = TRUE AND BL.date_bvcom BETWEEN :DateS' +
         'tartP AND :DateEndP'
       ''
       'UNION ALL'
@@ -3010,5 +3010,310 @@ object DataModuleF: TDataModuleF
     DataSet = Bona_comTable
     Left = 469
     Top = 372
+  end
+  object Bonv_comTable: TFDQuery
+    FilterOptions = [foCaseInsensitive]
+    IndexFieldNames = 'code_bvcom'
+    Connection = MainForm.GstockdcConnection
+    SQL.Strings = (
+      'SELECT *,'
+      '  ((montttc_bvcom)-(montht_bvcom - remise_bvcom)) AS MontantTVA,'
+      '  (montttc_bvcom - montver_bvcom) AS MontantRes,'
+      ' CASE'
+      
+        '    WHEN remise_bvcom <> '#39'0'#39' AND montht_bvcom <> '#39'0'#39' THEN  ROUND' +
+        '( CAST (((remise_bvcom / montht_bvcom) * 100) as NUMERIC),2)'
+      '    ELSE '#39'0'#39
+      ' END AS RemisePerc,'
+      '  (montht_bvcom - remise_bvcom) AS NeTHT'
+      'FROM bonv_com')
+    Left = 470
+    Top = 429
+    object Bonv_comTablecode_bvcom: TIntegerField
+      FieldName = 'code_bvcom'
+      Origin = 'code_bvcom'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+    end
+    object Bonv_comTabledate_bvcom: TDateField
+      FieldName = 'date_bvcom'
+      Origin = 'date_bvcom'
+    end
+    object Bonv_comTabletime_bvcom: TTimeField
+      FieldName = 'time_bvcom'
+      Origin = 'time_bvcom'
+    end
+    object Bonv_comTablecode_c: TIntegerField
+      FieldName = 'code_c'
+      Origin = 'code_c'
+    end
+    object Bonv_comTablemontaht_bvcom: TCurrencyField
+      FieldName = 'montaht_bvcom'
+      Origin = 'montaht_bvcom'
+    end
+    object Bonv_comTablemontht_bvcom: TCurrencyField
+      FieldName = 'montht_bvcom'
+      Origin = 'montht_bvcom'
+    end
+    object Bonv_comTablemontver_bvcom: TCurrencyField
+      FieldName = 'montver_bvcom'
+      Origin = 'montver_bvcom'
+    end
+    object Bonv_comTablevalider_bvcom: TBooleanField
+      FieldName = 'valider_bvcom'
+      Origin = 'valider_bvcom'
+    end
+    object Bonv_comTablenum_bvcom: TWideStringField
+      FieldName = 'num_bvcom'
+      Origin = 'num_bvcom'
+    end
+    object Bonv_comTablefourbarec: TStringField
+      FieldKind = fkLookup
+      FieldName = 'clientbvcom'
+      LookupKeyFields = 'code_c'
+      LookupResultField = 'nom_c'
+      KeyFields = 'code_c'
+      Size = 100
+      Lookup = True
+    end
+    object Bonv_comTablemontttc_bvcom: TCurrencyField
+      FieldName = 'montttc_bvcom'
+      Origin = 'montttc_bvcom'
+    end
+    object Bonv_comTableremise_bvcom: TCurrencyField
+      FieldName = 'remise_bvcom'
+      Origin = 'remise_bvcom'
+    end
+    object Bonv_comTablenum_cheque_bvcom: TWideStringField
+      FieldName = 'num_cheque_bvcom'
+      Origin = 'num_cheque_bvcom'
+      Size = 50
+    end
+    object Bonv_comTablecode_mdpai: TSmallintField
+      FieldName = 'code_mdpai'
+      Origin = 'code_mdpai'
+    end
+    object Bonv_comTablecode_cmpt: TSmallintField
+      FieldName = 'code_cmpt'
+      Origin = 'code_cmpt'
+    end
+    object Bonv_comTableModePaie: TStringField
+      FieldKind = fkLookup
+      FieldName = 'ModePaie'
+      LookupKeyFields = 'code_mdpai'
+      LookupResultField = 'nom_mdpai'
+      KeyFields = 'code_mdpai'
+      Lookup = True
+    end
+    object Bonv_comTableCompte: TStringField
+      FieldKind = fkLookup
+      FieldName = 'Compte'
+      LookupKeyFields = 'code_cmpt'
+      LookupResultField = 'nom_cmpt'
+      KeyFields = 'code_cmpt'
+      Size = 50
+      Lookup = True
+    end
+    object Bonv_comTableNEWTTC: TCurrencyField
+      FieldKind = fkInternalCalc
+      FieldName = 'NEWTTC'
+    end
+    object Bonv_comTablecode_ur: TIntegerField
+      FieldName = 'code_ur'
+      Origin = 'code_ur'
+    end
+    object Bonv_comTablemarge_bvcom: TCurrencyField
+      FieldName = 'marge_bvcom'
+      Origin = 'marge_bvcom'
+    end
+    object Bonv_comTablemontanttva: TCurrencyField
+      AutoGenerateValue = arDefault
+      FieldName = 'montanttva'
+      Origin = 'montanttva'
+      ReadOnly = True
+    end
+    object Bonv_comTablemontantres: TCurrencyField
+      AutoGenerateValue = arDefault
+      FieldName = 'montantres'
+      Origin = 'montantres'
+      ReadOnly = True
+    end
+    object Bonv_comTableremiseperc: TFMTBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'remiseperc'
+      Origin = 'remiseperc'
+      ReadOnly = True
+      Precision = 64
+      Size = 0
+    end
+    object Bonv_comTablenetht: TCurrencyField
+      AutoGenerateValue = arDefault
+      FieldName = 'netht'
+      Origin = 'netht'
+      ReadOnly = True
+    end
+    object Bonv_comTableobser_bvcom: TWideStringField
+      FieldName = 'obser_bvcom'
+      Origin = 'obser_bvcom'
+      Size = 32767
+    end
+    object Bonv_comTableAgent: TStringField
+      FieldKind = fkLookup
+      FieldName = 'Agent'
+      LookupDataSet = UsersTable
+      LookupKeyFields = 'code_ur'
+      LookupResultField = 'nom_ur'
+      KeyFields = 'code_ur'
+      Lookup = True
+    end
+  end
+  object Bonv_com_listTable: TFDQuery
+    AfterRefresh = Bonv_com_listTableAfterRefresh
+    FilterOptions = [foCaseInsensitive]
+    Indexes = <
+      item
+        Active = True
+        Name = 'icode_p_bvlist'
+        Fields = 'code_p'
+      end
+      item
+        Active = True
+        Name = 'icode_bvcom_bvlist'
+        Fields = 'code_bvcom'
+      end>
+    IndexFieldNames = 'code_bvcom;code_p;code_bvcoml'
+    MasterSource = BonComVListDataS
+    MasterFields = 'code_bvcom'
+    Connection = MainForm.GstockdcConnection
+    SQL.Strings = (
+      
+        'SELECT BLL.code_bvcom,BLL.code_bvcoml,BLL.qut_p,BLL.prixvd_p,BLL' +
+        '.cond_p,BLL.code_p,BLL.tva_p,BLL.code_barec,P.prixht_p,P.nom_p a' +
+        's nomp, P.refer_p as referp,'
+      '  (((BLL.prixvd_p * BLL.tva_p)/100)+BLL.prixvd_p) AS PrixVTTC,'
+      '  ((BLL.prixvd_p * BLL.qut_p) * cond_p) AS MontantHT,'
+      
+        '  (((((BLL.prixvd_p * BLL.tva_p)/100)+BLL.prixvd_p) * BLL.qut_p)' +
+        '*cond_p) AS MontantTTC,'
+      
+        '  (((((((BLL.prixvd_p * BLL.tva_p)/100)+BLL.prixvd_p) * BLL.qut_' +
+        'p)*cond_p) )-(((BLL.prixvd_p * BLL.qut_p) * cond_p))) AS Montant' +
+        'TVA,'
+      '  ((P.prixht_p * BLL.qut_p)* cond_p) AS MontantAHT,'
+      ' CASE'
+      '      WHEN BLL.prixvd_p <> '#39'0'#39'  THEN'
+      '    CASE WHEN ((P.prixht_p * BLL.qut_p)* cond_p) <> '#39'0'#39
+      
+        '      THEN ( ( (((BLL.prixvd_p * BLL.qut_p) * cond_p) - ((P.prix' +
+        'ht_p * BLL.qut_p)* cond_p)) / ((P.prixht_p * BLL.qut_p)* cond_p)' +
+        ' ) *100)'
+      '      ELSE '#39'100'#39
+      '    END'
+      ' END AS Marge,'
+      
+        '  (((BLL.prixvd_p * BLL.qut_p) * cond_p) - ((P.prixht_p * BLL.qu' +
+        't_p)* cond_p) ) AS MargeM'
+      'FROM Bonv_com_list as BLL'
+      'INNER JOIN produit as P'
+      '  ON BLL.code_p = P.code_p ')
+    Left = 471
+    Top = 484
+    object Bonv_com_listTablecode_bvcoml: TIntegerField
+      FieldName = 'code_bvcoml'
+      Origin = 'code_bvcoml'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+    end
+    object Bonv_com_listTablecode_bvcom: TIntegerField
+      Alignment = taCenter
+      FieldName = 'code_bvcom'
+      Origin = 'code_bvcom'
+    end
+    object Bonv_com_listTablequt_p: TFloatField
+      FieldName = 'qut_p'
+      Origin = 'qut_p'
+    end
+    object Bonv_com_listTableprixvd_p: TCurrencyField
+      FieldName = 'prixvd_p'
+      Origin = 'prixvd_p'
+    end
+    object Bonv_com_listTablecond_p: TIntegerField
+      FieldName = 'cond_p'
+      Origin = 'cond_p'
+    end
+    object Bonv_com_listTablecode_p: TIntegerField
+      FieldName = 'code_p'
+      Origin = 'code_p'
+    end
+    object Bonv_com_listTabletva_p: TSmallintField
+      FieldName = 'tva_p'
+      Origin = 'tva_p'
+    end
+    object Bonv_com_listTablecode_barec: TIntegerField
+      FieldName = 'code_barec'
+      Origin = 'code_barec'
+    end
+    object Bonv_com_listTableprixvttc: TCurrencyField
+      AutoGenerateValue = arDefault
+      FieldName = 'prixvttc'
+      Origin = 'prixvttc'
+      ReadOnly = True
+    end
+    object Bonv_com_listTablemontantht: TCurrencyField
+      AutoGenerateValue = arDefault
+      FieldName = 'montantht'
+      Origin = 'montantht'
+      ReadOnly = True
+    end
+    object Bonv_com_listTablemontantttc: TCurrencyField
+      AutoGenerateValue = arDefault
+      FieldName = 'montantttc'
+      Origin = 'montantttc'
+      ReadOnly = True
+    end
+    object Bonv_com_listTablemontanttva: TCurrencyField
+      AutoGenerateValue = arDefault
+      FieldName = 'montanttva'
+      Origin = 'montanttva'
+      ReadOnly = True
+    end
+    object Bonv_com_listTablemontantaht: TCurrencyField
+      AutoGenerateValue = arDefault
+      FieldName = 'montantaht'
+      Origin = 'montantaht'
+      ReadOnly = True
+    end
+    object Bonv_com_listTablemarge: TFloatField
+      AutoGenerateValue = arDefault
+      FieldName = 'marge'
+      Origin = 'marge'
+      ReadOnly = True
+    end
+    object Bonv_com_listTablemargem: TCurrencyField
+      AutoGenerateValue = arDefault
+      FieldName = 'margem'
+      Origin = 'margem'
+      ReadOnly = True
+    end
+    object Bonv_com_listTableprixht_p: TCurrencyField
+      AutoGenerateValue = arDefault
+      FieldName = 'prixht_p'
+      Origin = 'prixht_p'
+    end
+    object Bonv_com_listTablenomp: TWideStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'nomp'
+      Origin = 'nomp'
+      Size = 8190
+    end
+    object Bonv_com_listTablereferp: TWideStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'referp'
+      Origin = 'referp'
+      Size = 8190
+    end
+  end
+  object BonComVListDataS: TDataSource
+    DataSet = Bonv_comTable
+    Left = 469
+    Top = 542
   end
 end

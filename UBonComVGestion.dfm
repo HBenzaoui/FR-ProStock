@@ -959,7 +959,7 @@ object BonComVGestionF: TBonComVGestionF
       Pen.Color = 4666873
       ExplicitLeft = 903
     end
-    object BonLTotalTTCNewLbl: TLabel
+    object BonCVTotalTTCNewLbl: TLabel
       Left = 266
       Top = 51
       Width = 71
@@ -968,7 +968,7 @@ object BonComVGestionF: TBonComVGestionF
       Caption = '0'
       Visible = False
     end
-    object BonLTotalHTNewLbl: TLabel
+    object BonCVTotalHTNewLbl: TLabel
       Left = 266
       Top = 75
       Width = 71
@@ -1018,7 +1018,7 @@ object BonComVGestionF: TBonComVGestionF
       ParentFont = False
       StyleElements = []
     end
-    object BonLRemiseHTNewLbl: TLabel
+    object BonCVRemiseHTNewLbl: TLabel
       Left = 189
       Top = 100
       Width = 44
