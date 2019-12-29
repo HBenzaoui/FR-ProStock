@@ -1769,6 +1769,7 @@ object BonComVF: TBonComVF
       'code_ur=code_ur'
       'Agnet=Agnet'
       'NeTHT=NeTHT')
+    DataSource = DataModuleF.BonComVListDataS
     BCDToCurrency = False
     Left = 248
     Top = 392
