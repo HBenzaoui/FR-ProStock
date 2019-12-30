@@ -2121,7 +2121,7 @@ begin
   AnimateWindow(FSplashAddUnite.Handle, 175, AW_VER_POSITIVE OR AW_SLIDE OR AW_ACTIVATE );
   FSplashAddUnite.Show;
   FSplashAddUnite.OKAddUniteSBtn.Enabled:=True;
-  FSplashAddUnite.OKAddUniteSBtn.Tag:= 12 ;
+  FSplashAddUnite.OKAddUniteSBtn.Tag:= 49 ;
 end;
 
 procedure TBonComVGestionF.B1Click(Sender: TObject);
