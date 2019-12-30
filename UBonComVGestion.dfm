@@ -4232,6 +4232,7 @@ object BonComVGestionF: TBonComVGestionF
       'netht=netht'
       'obser_bvcom=obser_bvcom'
       'Agent=Agent')
+    DataSet = DataModuleF.Bonv_comTable
     BCDToCurrency = False
     Left = 248
     Top = 432
