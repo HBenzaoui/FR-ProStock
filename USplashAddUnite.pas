@@ -3175,7 +3175,18 @@ begin
     end;
    end;
 
-  
+     //------------------------------------------------------
+//---- this tag = 49 is for empty the Commande Client
+   if OKAddUniteSBtn.Tag = 49 then
+   begin
+   MainForm.SQLQuery.ExecSQL('DELETE FROM bonv_com_list WHERE code_bvcom = ' +QuotedStr(IntToStr(DataModuleF.Bonv_comTable.FieldByName('code_bvcom').AsInteger)));
+   DataModuleF.Bonv_com_listTable.Refresh;
+   BonComVGestionF.BonComGClientNEWCredit.Caption:= BonComVGestionF.BonComTotalTTCLbl.Caption;
+   sndPlaySound('C:\Windows\Media\recycle.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+     AnimateWindow(FSplashAddUnite.Handle, 175, AW_VER_NEGATIVE OR AW_SLIDE OR AW_HIDE);
+    FSplashAddUnite.Release;
+   end;
+
 
 
 end;
