@@ -49,7 +49,7 @@ implementation
 uses
   UMainF,Contnrs, UClientGestion, USplashAddUnite, UBonRecGestion, UBonLivGestion,
   UBonFacVGestion, UBonFacAGestion, UReglementCGestion, UReglementFGestion,
-  UChargesGestion, UTransferComptesGestion;
+  UChargesGestion, UTransferComptesGestion, UBonComAGestion, UBonComVGestion;
 
 {$R *.dfm}
 
@@ -804,6 +804,107 @@ begin
     end;
   end;
 
+  //----- use this tag for adding from the Bon de Commande add copmte  icons------//
+ if OKAddCompteSBtn.Tag = 12 then
+  begin
+   if NameAddCompteSEdt.Text <> '' then
+    begin
+      with MainForm.CompteTable do  begin
+         if NOT (MainForm.CompteTable.IsEmpty) then
+        begin
+        MainForm.CompteTable.Last;
+        CodeCompte:= MainForm.CompteTable.FieldValues['code_cmpt'] + 1;
+        end else
+            begin
+             CodeCompte:= 1;
+            end;
+        Append;
+        fieldbyname('code_cmpt').AsInteger:= CodeCompte;
+        fieldbyname('nom_cmpt').AsString := NameAddCompteSEdt.Text;
+        fieldbyname('refer_cmpt').AsString := NumAddCompteSEdt.Text;
+        if NatureAddCompteSCbx.ItemIndex = 0 then
+           fieldbyname('nature_cmpt').AsBoolean:= False else begin fieldbyname('nature_cmpt').AsBoolean:= True end;
+        if SoldeAddCompteSCbx.Text<>'' then
+        begin
+        FieldValues['oldcredit_cmpt']:=Trim(SoldeAddCompteSCbx.Text) end else
+        begin FieldValues['oldcredit_cmpt']:=StrToInt('0')end;
+        fieldbyname('date_cmpt').Value := Now;
+        post;
+         end;
+
+         NameAddCompteSErrorP.Visible:=False;
+         RequiredAddCompteSlbl.Visible:=False;
+         AnimateWindow(FSplashAddCompte.Handle, 175, AW_VER_NEGATIVE OR AW_SLIDE OR AW_HIDE);
+         FSplashAddCompte.Release;
+         BonComAGestionF.CompteBonComGCbx.Text:= NameAddCompteSEdt.Text;
+         BonComAGestionF.CompteBonComGCbx.SetFocus;
+         MainForm.CompteTable.Refresh;
+         MainForm.Mode_paiementTable.Refresh;
+     end
+        else
+       try
+       NameAddCompteSEdt.BorderStyle:= bsNone;
+      NameAddCompteSEdt.StyleElements:= [];
+      RequiredAddCompteSlbl.Visible:= True;
+      NameAddCompteSErrorP.Visible:= True;
+      sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+     OKAddCompteSBtn.Enabled := False;
+     OKAddCompteSBtn.ImageIndex := 18;
+      finally
+      NameAddCompteSEdt.SetFocus;
+    end;
+  end;
+
+    //----- use this tag for adding from the Commande Client add copmte  icons------//
+ if OKAddCompteSBtn.Tag = 13 then
+  begin
+   if NameAddCompteSEdt.Text <> '' then
+    begin
+      with MainForm.CompteTable do  begin
+         if NOT (MainForm.CompteTable.IsEmpty) then
+        begin
+        MainForm.CompteTable.Last;
+        CodeCompte:= MainForm.CompteTable.FieldValues['code_cmpt'] + 1;
+        end else
+            begin
+             CodeCompte:= 1;
+            end;
+        Append;
+        fieldbyname('code_cmpt').AsInteger:= CodeCompte;
+        fieldbyname('nom_cmpt').AsString := NameAddCompteSEdt.Text;
+        fieldbyname('refer_cmpt').AsString := NumAddCompteSEdt.Text;
+        if NatureAddCompteSCbx.ItemIndex = 0 then
+           fieldbyname('nature_cmpt').AsBoolean:= False else begin fieldbyname('nature_cmpt').AsBoolean:= True end;
+        if SoldeAddCompteSCbx.Text<>'' then
+        begin
+        FieldValues['oldcredit_cmpt']:=Trim(SoldeAddCompteSCbx.Text) end else
+        begin FieldValues['oldcredit_cmpt']:=StrToInt('0')end;
+        fieldbyname('date_cmpt').Value := Now;
+        post;
+         end;
+
+         NameAddCompteSErrorP.Visible:=False;
+         RequiredAddCompteSlbl.Visible:=False;
+         AnimateWindow(FSplashAddCompte.Handle, 175, AW_VER_NEGATIVE OR AW_SLIDE OR AW_HIDE);
+         FSplashAddCompte.Release;
+         BonComVGestionF.CompteBonComGCbx.Text:= NameAddCompteSEdt.Text;
+         BonComVGestionF.CompteBonComGCbx.SetFocus;
+         MainForm.CompteTable.Refresh;
+         MainForm.Mode_paiementTable.Refresh;
+     end
+        else
+       try
+       NameAddCompteSEdt.BorderStyle:= bsNone;
+      NameAddCompteSEdt.StyleElements:= [];
+      RequiredAddCompteSlbl.Visible:= True;
+      NameAddCompteSErrorP.Visible:= True;
+      sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+     OKAddCompteSBtn.Enabled := False;
+     OKAddCompteSBtn.ImageIndex := 18;
+      finally
+      NameAddCompteSEdt.SetFocus;
+    end;
+  end;
 
 
 end;

@@ -2000,7 +2000,7 @@ begin
     AnimateWindow(FSplashAddCompte.Handle, 175, AW_VER_POSITIVE OR AW_SLIDE OR AW_ACTIVATE );
     FSplashAddCompte.Show;
     FSplashAddCompte.NameAddCompteSEdt.SetFocus;
-    FSplashAddCompte.OKAddCompteSBtn.Tag:= 1 ;
+    FSplashAddCompte.OKAddCompteSBtn.Tag:= 12 ;
 end;
 
 procedure TBonComAGestionF.AddFourBonComGBtnClick(Sender: TObject);

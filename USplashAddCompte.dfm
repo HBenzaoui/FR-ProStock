@@ -158,7 +158,7 @@ object FSplashAddCompte: TFSplashAddCompte
   object CompteAddCompteSLbl: TLabel
     Left = 66
     Top = 132
-    Width = 49
+    Width = 50
     Height = 18
     Caption = 'Nature:'
     Color = 4207405
@@ -191,7 +191,7 @@ object FSplashAddCompte: TFSplashAddCompte
   object Label2: TLabel
     Left = 28
     Top = 170
-    Width = 88
+    Width = 89
     Height = 18
     Caption = 'Solde Initial:'
     Color = 4207405
@@ -237,7 +237,7 @@ object FSplashAddCompte: TFSplashAddCompte
     object FormCaptionAddUniteSLbl: TLabel
       Left = 97
       Top = 10
-      Width = 141
+      Width = 138
       Height = 24
       Caption = 'Ajouter Compte'
       Color = 4207405
