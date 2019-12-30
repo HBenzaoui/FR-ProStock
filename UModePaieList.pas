@@ -191,7 +191,9 @@ begin
          +   'union all '
          +   'select code_mdpai from regfournisseur '
          +   'union all '
-         +   'select code_mdpai from bonp_fac '
+         +   'select code_mdpai from bona_com '
+         +   'union all '
+         +   'select code_mdpai from bonv_com '
          +     ') a '
          +     'where code_mdpai = '+IntToStr(MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger) ;
 
