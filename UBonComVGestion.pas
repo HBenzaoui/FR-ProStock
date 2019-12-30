@@ -1969,7 +1969,7 @@ begin
 //-------- Show the splash screan for the produit familly to add new one---------//
   FastProduitsListF.Left := (Screen.Width div 2) - (FastProduitsListF.Width div 2);
   FastProduitsListF.Top := (Screen.Height div 2) - (FastProduitsListF.Height div 2);
-  FastProduitsListF.Tag := 1;
+  FastProduitsListF.Tag := 12;
   FastProduitsListF.Show;
   FastProduitsListF.ResearchProduitsEdt.SetFocus;
   //use this tag = 1 for adding from Commade Client
