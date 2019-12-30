@@ -89,7 +89,7 @@ uses System.Contnrs,
   UMainF, UProduitGestion, USplashAddUnite, UClientGestion, UBonRecGestion,
   UBonLivGestion, UBonFacVGestion, UComptoir,  UBonFacAGestion, UPertesGestion,
   UBonFacPGestion, UOptions, UReglementCGestion, UReglementFGestion,
-  USplashPrintReport, UInventory, UInventoryGestion, UBonComAGestion;
+  USplashPrintReport, UInventory, UInventoryGestion, UBonComAGestion, UBonComVGestion;
 
   var
     gGrayForms: TComponentList;
@@ -3087,6 +3087,18 @@ begin
 
      FSplashPrintReport.NameReportPCbx.Text:= MainForm.FDQuery2.fieldbyName('nom_c').asString;
      FSplashPrintReport.NameReportPCbxChange(Sender);
+     Close;
+
+    end;
+
+
+            //This tag = 5 if for choosing client in Commande Client
+    if Tag = 6 then
+    begin
+
+     BonComVGestionF.ClientBonComGCbx.Text:= MainForm.FDQuery2.fieldbyName('nom_c').asString;
+     BonComVGestionF.ClientBonComGCbxExit(Sender);
+     BonComVGestionF.ProduitBonComGCbx.SetFocus;
      Close;
 
     end;

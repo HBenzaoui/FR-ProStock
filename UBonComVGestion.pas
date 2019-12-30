@@ -2048,7 +2048,7 @@ begin
   FastProduitsListF.ProduitsListDBGridEh.IndicatorOptions:=[];
   FastProduitsListF.ResearchProduitsEdt.Width:= 431;
 
-  FastProduitsListF.Tag := 0;
+  FastProduitsListF.Tag := 6;
   FastProduitsListF.Show;
   FastProduitsListF.ResearchProduitsEdt.SetFocus;
 
