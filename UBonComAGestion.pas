@@ -2006,7 +2006,7 @@ end;
 procedure TBonComAGestionF.AddFourBonComGBtnClick(Sender: TObject);
 begin
 FournisseurListF.AddFournisseursBtnClick(Sender);
-FournisseurGestionF.OKFournisseurGBtn.Tag := 3 ;
+FournisseurGestionF.OKFournisseurGBtn.Tag := 6 ;
 FournisseurBonComGCbx.StyleElements:= [seFont,seBorder,seBorder];
 RequiredFourGlbl.Visible:= False;
 NameFourGErrorP.Visible:= False;

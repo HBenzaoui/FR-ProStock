@@ -140,7 +140,7 @@ implementation
 uses Contnrs,
  UFournisseurList, UMainF, USplash, UClientGestion,
   UProduitGestion, USplashAddUnite, UBonRecGestion, UBonFacAGestion,
-  UReglementFGestion;
+  UReglementFGestion, UBonComAGestion;
 
 
 
@@ -985,6 +985,91 @@ begin
       MainForm.FournisseurTable.Last;
       ReglementFGestionF.FournisseurRegFGCbx.Text := NameFournisseurGEdt.Text;
       ReglementFGestionF.FournisseurRegFGCbx.SetFocus;
+      end else
+          begin
+            try
+            NameFournisseurGEdt.BorderStyle:= bsNone;
+            NameFournisseurGEdt.StyleElements:= [];
+            RequiredFournisseurGlbl.Caption:='C''est Fournisseur Existe Déja !!';
+            RequiredFournisseurGlbl.Visible:= True;
+            NameFournisseurGErrorP.Visible:= True;
+            sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+            OKFournisseurGBtn.Enabled := False;
+            OKFournisseurGBtn.ImageIndex := 18;
+
+            exit;
+           finally
+            FournisseurGPgControl.TabIndex:= 0;
+            NameFournisseurGEdt.SetFocus;
+           end;
+          end;
+    end;
+
+
+        // --------------- adding from the bon de commande four----
+     if OKFournisseurGBtn.Tag = 6 then
+    begin
+
+       lookupResultNomF := MainForm.FournisseurTable.Lookup('LOWER(nom_f)',(LowerCase( NameFournisseurGEdt.Text)),'nom_f');
+     if  VarIsnull( lookupResultNomF) then
+     begin
+
+      with MainForm.FournisseurTable do
+        begin
+          if NOT (MainForm.FournisseurTable.IsEmpty) then
+          begin
+          MainForm.FournisseurTable.Last;
+          codeF:= MainForm.FournisseurTable.FieldValues['code_f'] + 1;
+          end else
+              begin
+               codeF:= 1;
+              end;
+          Append;
+          FieldValues['code_f'] := codeF;
+          FieldValues['activ_f'] := ActiveFournisseurGSlider.SliderOn;
+          fieldbyname('nom_f').Value := NameFournisseurGEdt.Text;
+          fieldbyname('adr_f').Value := AdrFournisseurGEdt.Text;
+          fieldbyname('willaya_f').Value := WilayaFournisseurGCbx.Text;
+          fieldbyname('ville_f').Value := VilleFournisseurGCbx.Text;
+          fieldbyname('fix_f').Value := FixFournisseurGEdt.Text;
+          fieldbyname('fax_f').Value := FaxFournisseurGEdt.Text;
+          fieldbyname('mob_f').Value := MobileFournisseurGEdt.Text;
+          fieldbyname('mob2_f').Value := MobileFournisseurGEdt.Text;
+          fieldbyname('email_f').Value := EmailFournisseurGEdt.Text;
+          fieldbyname('siteweb_f').Value := SiteFournisseurGEdt.Text;
+
+          fieldbyname('rc_f').Value := RCFournisseurGEdt.Text;
+          fieldbyname('nart_f').Value := NArtFournisseurGEdt.Text;
+          fieldbyname('nif_f').Value := NIFFournisseurGEdt.Text;
+          fieldbyname('nis_f').Value := NISFournisseurGEdt.Text;
+          fieldbyname('nbank_f').Value := NBankFournisseurGEdt.Text;
+          fieldbyname('rib_f').Value := RIBFournisseurGEdt.Text;
+          if OldCreditFournisseurGEdt.Text <> '' then
+          begin
+            fieldbyname('oldcredit_f').Value :=
+              Trim(OldCreditFournisseurGEdt.Text);
+          end
+          else
+          begin
+            fieldbyname('oldcredit_f').Value := StrToInt('0')
+          end;
+          if MaxCreditFournisseurGEdt.Text <> '' then
+          begin
+            fieldbyname('maxcredit_f').Value :=
+              Trim(MaxCreditFournisseurGEdt.Text);
+          end
+          else
+          begin
+            fieldbyname('maxcredit_f').Value := StrToInt('0')
+          end;
+          fieldbyname('obser_f').Value := ObserFournisseurGMem.Text;
+          post;
+          end;
+
+      MainForm.FournisseurTable.Refresh;
+      MainForm.FournisseurTable.Last;
+      BonComAGestionF.FournisseurBonComGCbx.Text := NameFournisseurGEdt.Text;
+      BonComAGestionF.FournisseurBonComGCbx.SetFocus;
       end else
           begin
             try

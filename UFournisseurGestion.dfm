@@ -28,7 +28,7 @@ object FournisseurGestionF: TFournisseurGestionF
     Top = 0
     Width = 516
     Height = 493
-    ActivePage = FicheFourTB
+    ActivePage = GeneralClientGTB
     Align = alClient
     DoubleBuffered = True
     Font.Charset = DEFAULT_CHARSET
@@ -45,10 +45,6 @@ object FournisseurGestionF: TFournisseurGestionF
     TabsLineSkin = 'BAR'
     object GeneralClientGTB: TsTabSheet
       Caption = 'G'#233'n'#233'ral'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object GeneralTB: TPanel
         Left = 0
         Top = 0
@@ -66,7 +62,7 @@ object FournisseurGestionF: TFournisseurGestionF
         object WilayaFournisseurGLbl: TLabel
           Left = 18
           Top = 226
-          Width = 48
+          Width = 49
           Height = 18
           Caption = 'Wilaya:'
           Color = 4207405
@@ -82,7 +78,7 @@ object FournisseurGestionF: TFournisseurGestionF
         object VilleFournisseurGLbl: TLabel
           Left = 288
           Top = 226
-          Width = 34
+          Width = 33
           Height = 18
           Caption = 'Ville:'
           Color = 4207405
@@ -98,7 +94,7 @@ object FournisseurGestionF: TFournisseurGestionF
         object ActiveFournisseurGLbl: TLabel
           Left = 11
           Top = 15
-          Width = 119
+          Width = 121
           Height = 18
           Caption = 'Fournisseur Actif:'
           Color = 4207405
@@ -146,7 +142,7 @@ object FournisseurGestionF: TFournisseurGestionF
         object FixFournisseurGLbl: TLabel
           Left = 35
           Top = 306
-          Width = 24
+          Width = 25
           Height = 18
           Caption = 'T'#233'l:'
           Color = 4207405
@@ -162,7 +158,7 @@ object FournisseurGestionF: TFournisseurGestionF
         object SiteFournisseurGLbl: TLabel
           Left = 257
           Top = 414
-          Width = 63
+          Width = 64
           Height = 18
           Caption = 'Site Web:'
           Color = 4207405
@@ -178,7 +174,7 @@ object FournisseurGestionF: TFournisseurGestionF
         object EmailFournisseurGLbl: TLabel
           Left = 19
           Top = 414
-          Width = 42
+          Width = 41
           Height = 18
           Caption = 'Email:'
           Color = 4207405
@@ -194,7 +190,7 @@ object FournisseurGestionF: TFournisseurGestionF
         object MobileFournisseurGLbl: TLabel
           Left = 9
           Top = 360
-          Width = 50
+          Width = 51
           Height = 18
           Caption = 'Mobile:'
           Color = 4207405
@@ -210,7 +206,7 @@ object FournisseurGestionF: TFournisseurGestionF
         object Mobile2CFournisseurGLbl: TLabel
           Left = 262
           Top = 360
-          Width = 58
+          Width = 59
           Height = 18
           Caption = 'Mobile2:'
           Color = 4207405
@@ -226,7 +222,7 @@ object FournisseurGestionF: TFournisseurGestionF
         object FaxFournisseurGLbl: TLabel
           Left = 293
           Top = 306
-          Width = 27
+          Width = 28
           Height = 18
           Caption = 'Fax:'
           Color = 4207405
@@ -567,10 +563,6 @@ object FournisseurGestionF: TFournisseurGestionF
     end
     object PlusInfoClientGTB: TsTabSheet
       Caption = 'Plus D'#39'info'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object PlusInfoTB: TPanel
         Left = 0
         Top = 0
@@ -604,7 +596,7 @@ object FournisseurGestionF: TFournisseurGestionF
         object NArtFournisseurGLbl: TLabel
           Left = 258
           Top = 18
-          Width = 41
+          Width = 40
           Height = 18
           Caption = 'N'#176'Art:'
           Color = 4207405
@@ -652,7 +644,7 @@ object FournisseurGestionF: TFournisseurGestionF
         object ObserFournisseurGLbl: TLabel
           Left = 16
           Top = 303
-          Width = 92
+          Width = 95
           Height = 18
           Caption = 'Observations:'
           Color = 4207405
@@ -668,7 +660,7 @@ object FournisseurGestionF: TFournisseurGestionF
         object MaxCreditFournisseurGLbl: TLabel
           Left = 258
           Top = 209
-          Width = 76
+          Width = 77
           Height = 18
           Caption = 'Cr'#233'dit Max:'
           Color = 4207405
@@ -718,7 +710,7 @@ object FournisseurGestionF: TFournisseurGestionF
         object OldCreditFournisseurGLbl: TLabel
           Left = 8
           Top = 208
-          Width = 92
+          Width = 94
           Height = 18
           Caption = 'Ancien cr'#233'dit:'
           Color = 4207405
@@ -734,7 +726,7 @@ object FournisseurGestionF: TFournisseurGestionF
         object NBankFournisseurGLbl: TLabel
           Left = 8
           Top = 119
-          Width = 119
+          Width = 121
           Height = 18
           Caption = 'Compte Bancaire:'
           Color = 4207405
@@ -750,7 +742,7 @@ object FournisseurGestionF: TFournisseurGestionF
         object RIBFournisseurGLbl: TLabel
           Left = 270
           Top = 119
-          Width = 26
+          Width = 28
           Height = 18
           Caption = 'RIB:'
           Color = 4207405
@@ -1016,7 +1008,7 @@ object FournisseurGestionF: TFournisseurGestionF
       object Label3: TLabel
         Left = 12
         Top = 129
-        Width = 47
+        Width = 48
         Height = 18
         Caption = 'R'#233'gl'#233':'
         Color = clWhite
@@ -1054,7 +1046,7 @@ object FournisseurGestionF: TFournisseurGestionF
       object Label6: TLabel
         Left = 12
         Top = 187
-        Width = 47
+        Width = 48
         Height = 18
         Caption = 'Cr'#233'dit:'
         Color = clWhite
@@ -1092,7 +1084,7 @@ object FournisseurGestionF: TFournisseurGestionF
       object Label8: TLabel
         Left = 12
         Top = 269
-        Width = 242
+        Width = 246
         Height = 18
         Caption = 'Acquitter en cas Fournisseur/Client:'
         Color = 4207405
@@ -1109,7 +1101,7 @@ object FournisseurGestionF: TFournisseurGestionF
       object Label2: TLabel
         Left = 213
         Top = 19
-        Width = 23
+        Width = 22
         Height = 14
         Caption = 'Non'
         Color = 4207405
@@ -1127,7 +1119,7 @@ object FournisseurGestionF: TFournisseurGestionF
         AlignWithMargins = True
         Left = 315
         Top = 267
-        Width = 27
+        Width = 26
         Height = 21
         BiDiMode = bdLeftToRight
         Caption = 'OK'
