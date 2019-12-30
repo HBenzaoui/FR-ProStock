@@ -1743,7 +1743,7 @@ end;
 procedure TBonComVGestionF.AddClientBonComGBtnClick(Sender: TObject);
 begin
 ClientListF.AddClientsBtnClick(Sender);
-ClientGestionF.OKClientGBtn.Tag := 3 ;
+ClientGestionF.OKClientGBtn.Tag := 8 ;
 ClientBonComGCbx.StyleElements:= [seFont,seBorder,seBorder];
 RequiredClientGlbl.Visible:= False;
 NameClientGErrorP.Visible:= False;
