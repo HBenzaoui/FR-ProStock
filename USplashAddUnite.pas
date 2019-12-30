@@ -50,7 +50,7 @@ uses System.IniFiles, Contnrs, Types, UProduitGestion, UMainF, UBonRecGestion, U
   USplashAddCompte, UBonLivGestion, UBonFacVGestion, UBonFacAGestion,
   UComptoir, UReglementCGestion, UReglementFGestion, UDataModule,
   UChargesGestion, UChargesFList, UPertesGestion, UBonFacPGestion,
-  UTransferComptesGestion, UBonComAGestion;
+  UTransferComptesGestion, UBonComAGestion, UBonComVGestion;
 
 var
   gGrayForms: TComponentList;

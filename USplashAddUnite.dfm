@@ -129,7 +129,7 @@ object FSplashAddUnite: TFSplashAddUnite
   object RequiredStarAddUniteSLbl: TLabel
     Left = 298
     Top = 64
-    Width = 9
+    Width = 8
     Height = 22
     Caption = '*'
     Color = clBtnFace
