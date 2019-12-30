@@ -1069,7 +1069,7 @@ begin
 
       FSplashAddUnite.CancelAddUniteSBtn.Caption:='Ignorer' ;
       FSplashAddUnite.OKAddUniteSBtn.Enabled:=True;
-      FSplashAddUnite.OKAddUniteSBtn.Tag:= 10 ;
+      FSplashAddUnite.OKAddUniteSBtn.Tag:= 50 ;
       AnimateWindow(FSplashAddUnite.Handle, 175, AW_VER_POSITIVE OR AW_SLIDE OR AW_ACTIVATE );
        FSplashAddUnite.Show;
     //--- this tage = 0 is for multi name added by produit combobox----//
@@ -1247,7 +1247,7 @@ begin
             FSplashAddUnite.Top:=   MainForm.Top + 5;
             FSplashAddUnite.CancelAddUniteSBtn.Caption:='Ignorer' ;
             FSplashAddUnite.OKAddUniteSBtn.Enabled:=True;
-            FSplashAddUnite.OKAddUniteSBtn.Tag:= 10 ;
+            FSplashAddUnite.OKAddUniteSBtn.Tag:= 50 ;
             AnimateWindow(FSplashAddUnite.Handle, 175, AW_VER_POSITIVE OR AW_SLIDE OR AW_ACTIVATE );
              FSplashAddUnite.Show;
           //--- this tage = 0 is for multi name added by produit combobox----//
@@ -1428,7 +1428,7 @@ begin
             FSplashAddUnite.Top:=   MainForm.Top + 5;
             FSplashAddUnite.CancelAddUniteSBtn.Caption:='Ignorer' ;
             FSplashAddUnite.OKAddUniteSBtn.Enabled:=True;
-            FSplashAddUnite.OKAddUniteSBtn.Tag:= 10 ;
+            FSplashAddUnite.OKAddUniteSBtn.Tag:= 50 ;
             AnimateWindow(FSplashAddUnite.Handle, 175, AW_VER_POSITIVE OR AW_SLIDE OR AW_ACTIVATE );
              FSplashAddUnite.Show;
           //--- this tage = 0 is for multi name added by produit combobox----//
