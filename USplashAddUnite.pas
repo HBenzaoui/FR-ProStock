@@ -3035,7 +3035,147 @@ begin
           AnimateWindow(FSplashAddUnite.Handle, 175, AW_VER_NEGATIVE OR AW_SLIDE OR AW_HIDE);
       FSplashAddUnite.Release;
 
-   end; 
+   end;
+
+
+   //---- this tag = 47 is for adding the mpde de paiement from Bon de Command Four ------///
+   if OKAddUniteSBtn.Tag = 47 then
+   begin
+    if NameAddUniteSEdt.Text <> '' then
+  begin
+      MainForm.Mode_paiementTable.IndexFieldNames:='';
+      MainForm.Mode_paiementTable.Active:=false;
+      MainForm.Mode_paiementTable.SQL.Clear;
+      MainForm.Mode_paiementTable.SQL.Text:='SELECT * FROM mode_paiement ORDER BY code_mdpai'  ;
+      MainForm.Mode_paiementTable.Active:=True;
+
+      MainForm.CompteTable.Active:=false;
+      MainForm.CompteTable.SQL.Clear;
+      MainForm.CompteTable.SQL.Text:='Select * FROM compte WHERE LOWER(nom_cmpt) LIKE LOWER('+ QuotedStr( CompteAddUniteSCbx.Text )+')'  ;
+      MainForm.CompteTable.Active:=True;
+
+     if MainForm.Mode_paiementTable.IsEmpty then
+      begin
+       with MainForm.Mode_paiementTable do  begin
+
+          Append;
+          fieldbyname('code_mdpai').AsInteger:= 1;
+          fieldbyname('nom_mdpai').AsString := NameAddUniteSEdt.Text;
+          if CompteAddUniteSCbx.Text <> '' then
+          begin
+           fieldbyname('code_cmpt').AsInteger:=MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
+          end;
+          post;
+           end;
+      end else
+      begin
+        with MainForm.Mode_paiementTable do  begin
+          MainForm.Mode_paiementTable.Last;
+          CodeMDPai:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger ;
+          Insert;
+          fieldbyname('code_mdpai').AsInteger:= CodeMDPai + 1;
+          fieldbyname('nom_mdpai').AsString := NameAddUniteSEdt.Text;
+          if CompteAddUniteSCbx.Text <> '' then
+          begin
+          fieldbyname('code_cmpt').AsInteger:=MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
+          end;
+          post;
+         end;
+      end;
+       MainForm.Mode_paiementTable.IndexFieldNames:='code_cmpt';
+       NameAddUniteSErrorP.Visible:=False;
+       RequiredAddUniteSlbl.Visible:=False;
+       AnimateWindow(FSplashAddUnite.Handle, 175, AW_VER_NEGATIVE OR AW_SLIDE OR AW_HIDE);
+       FSplashAddUnite.Release;
+       BonComAGestionF.ModePaieBonComGCbx.Text:= NameAddUniteSEdt.Text;
+       BonComAGestionF.ModePaieBonComGCbx.SetFocus;
+       BonComAGestionF.ModePaieBonComGCbxClick(Sender);
+       end
+      else
+    try
+        NameAddUniteSEdt.BorderStyle:= bsNone;
+        NameAddUniteSEdt.StyleElements:= [];
+        RequiredAddUniteSlbl.Visible:= True;
+        NameAddUniteSErrorP.Visible:= True;
+        sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+
+       OKAddUniteSBtn.Enabled := False;
+       OKAddUniteSBtn.ImageIndex := 18;
+        finally
+        NameAddUniteSEdt.SetFocus;
+    end;
+   end;
+
+
+   //---- this tag = 48 is for adding the mpde de paiement from Commande Client ------///
+   if OKAddUniteSBtn.Tag = 48 then
+   begin
+    if NameAddUniteSEdt.Text <> '' then
+  begin
+      MainForm.Mode_paiementTable.IndexFieldNames:='';
+      MainForm.Mode_paiementTable.Active:=false;
+      MainForm.Mode_paiementTable.SQL.Clear;
+      MainForm.Mode_paiementTable.SQL.Text:='SELECT * FROM mode_paiement ORDER BY code_mdpai'  ;
+      MainForm.Mode_paiementTable.Active:=True;
+
+      MainForm.CompteTable.Active:=false;
+      MainForm.CompteTable.SQL.Clear;
+      MainForm.CompteTable.SQL.Text:='Select * FROM compte WHERE LOWER(nom_cmpt) LIKE LOWER('+ QuotedStr( CompteAddUniteSCbx.Text )+')'  ;
+      MainForm.CompteTable.Active:=True;
+
+     if MainForm.Mode_paiementTable.IsEmpty then
+      begin
+       with MainForm.Mode_paiementTable do  begin
+
+          Append;
+          fieldbyname('code_mdpai').AsInteger:= 1;
+          fieldbyname('nom_mdpai').AsString := NameAddUniteSEdt.Text;
+          if CompteAddUniteSCbx.Text <> '' then
+          begin
+           fieldbyname('code_cmpt').AsInteger:=MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
+          end;
+          post;
+           end;
+      end else
+      begin
+        with MainForm.Mode_paiementTable do  begin
+          MainForm.Mode_paiementTable.Last;
+          CodeMDPai:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger ;
+          Insert;
+          fieldbyname('code_mdpai').AsInteger:= CodeMDPai + 1;
+          fieldbyname('nom_mdpai').AsString := NameAddUniteSEdt.Text;
+          if CompteAddUniteSCbx.Text <> '' then
+          begin
+          fieldbyname('code_cmpt').AsInteger:=MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
+          end;
+          post;
+         end;
+      end;
+       MainForm.Mode_paiementTable.IndexFieldNames:='code_cmpt';
+       NameAddUniteSErrorP.Visible:=False;
+       RequiredAddUniteSlbl.Visible:=False;
+       AnimateWindow(FSplashAddUnite.Handle, 175, AW_VER_NEGATIVE OR AW_SLIDE OR AW_HIDE);
+       FSplashAddUnite.Release;
+       BonComVGestionF.ModePaieBonComGCbx.Text:= NameAddUniteSEdt.Text;
+       BonComVGestionF.ModePaieBonComGCbx.SetFocus;
+       BonComVGestionF.ModePaieBonComGCbxClick(Sender);
+       end
+      else
+    try
+        NameAddUniteSEdt.BorderStyle:= bsNone;
+        NameAddUniteSEdt.StyleElements:= [];
+        RequiredAddUniteSlbl.Visible:= True;
+        NameAddUniteSErrorP.Visible:= True;
+        sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+
+       OKAddUniteSBtn.Enabled := False;
+       OKAddUniteSBtn.ImageIndex := 18;
+        finally
+        NameAddUniteSEdt.SetFocus;
+    end;
+   end;
+
+  
 
 
 end;

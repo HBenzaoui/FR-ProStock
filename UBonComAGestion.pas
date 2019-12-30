@@ -1965,7 +1965,7 @@ begin
     AnimateWindow(FSplashAddUnite.Handle, 175, AW_VER_POSITIVE OR AW_SLIDE OR AW_ACTIVATE );
     FSplashAddUnite.Show;
     FSplashAddUnite.NameAddUniteSEdt.SetFocus;
-    FSplashAddUnite.OKAddUniteSBtn.Tag:= 7 ;
+    FSplashAddUnite.OKAddUniteSBtn.Tag:= 47 ;
 end;
 
 procedure TBonComAGestionF.CompteBonComGCbxEnter(Sender: TObject);

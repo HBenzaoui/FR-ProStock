@@ -1777,7 +1777,7 @@ begin
     AnimateWindow(FSplashAddUnite.Handle, 175, AW_VER_POSITIVE OR AW_SLIDE OR AW_ACTIVATE );
     FSplashAddUnite.Show;
     FSplashAddUnite.NameAddUniteSEdt.SetFocus;
-    FSplashAddUnite.OKAddUniteSBtn.Tag:= 11 ;
+    FSplashAddUnite.OKAddUniteSBtn.Tag:= 48 ;
 end;
 
 
