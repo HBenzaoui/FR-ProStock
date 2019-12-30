@@ -1154,7 +1154,10 @@ begin
        end;
 
    end else
- 
+
+
+   //---- This Tag = 50  ingoring when add the same prodect to Commande Clientadd anyway -----//
+
 
 //------------------------------------------------------------------------------------------
        if CancelAddUniteSBtn.Tag= 0 then
