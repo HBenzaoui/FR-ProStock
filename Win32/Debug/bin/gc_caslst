@@ -1,0 +1,8 @@
+0~ date_ocb~ Date~ 100~ -1
+1~ time_ocb~ Heure~ 100~ -1
+2~ nom_ocb~ Description~ 370~ -1
+3~ third_ocb~ Tiers~ 250~ -1
+4~ code_mdpai~ MP~ 28~ -1
+5~ decaiss_ocb~ Décaissement~ 200~ -1
+6~ encaiss_ocb~ Encaissement~ 200~ -1
+7~ Agent~ Agent~ 150~ -1

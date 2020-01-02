@@ -3178,72 +3178,10 @@ begin
       MainForm.ClientTable.Active:=True;
       MainForm.ClientTable.EnableControls ;
 
- //----------------------------------------
-
-      begin
-//           MainForm.ProduitTable.DisableControls;
-//           MainForm.ProduitTable.Active:=False;
-//           MainForm.ProduitTable.SQL.Clear;
-//           MainForm.ProduitTable.SQL.Text:='SELECT *, '
-//            +' ((prixht_p * tva_p)/100+ prixht_p ) AS PrixATTC, '
-//            +' ((prixvd_p * tva_p)/100+ prixvd_p ) AS PrixVTTCD, '
-//            +' ((prixvr_p * tva_p)/100+ prixvr_p ) AS PrixVTTCR, '
-//            +' ((prixvg_p * tva_p)/100+ prixvg_p ) AS PrixVTTCG, '
-//            +' ((prixva_p * tva_p)/100+ prixva_p ) AS PrixVTTCA, '
-//            +' ((prixva2_p * tva_p)/100+ prixva2_p ) AS PrixVTTCA2, '
-//            +' (qut_p + qutini_p ) AS QutDispo, '
-//            +' ((qut_p + qutini_p) * prixht_p ) AS ValueStock '
-//            +' FROM produit ' ;
-//           MainForm.ProduitTable.Active:=True;
-           Mainform.Sqlquery.Active:=False;
-           Mainform.Sqlquery.Sql.Clear;
-           Mainform.Sqlquery.Sql.Text:='SELECT code_bvcoml,code_p,  qut_p, cond_p,code_barec  FROM bonv_com_list WHERE code_bvcom =  '
-                                                 + IntToStr (DataModuleF.Bonv_comTable.FieldValues['code_bvcom'])
-                                                 + 'GROUP BY code_bvcoml, code_p, qut_p, cond_p,code_barec ' ;
-           MainForm.SQLQuery.Active:=True;
-           MainForm.SQLQuery.First;
-           while  NOT (MainForm.SQLQuery.Eof) do
-           begin
-            MainForm.SQLQuery3.Active:=False;
-            MainForm.SQLQuery3.SQL.Clear;
-            MainForm.SQLQuery3.SQL.Text:='SELECT code_p,qut_p,tva_p FROM produit WHERE code_p = ' +QuotedStr(MainForm.SQLQuery.FieldValues['code_p']) ;
-            MainForm.SQLQuery3.Active:=True;
-            MainForm.SQLQuery3.Edit;
-            MainForm.SQLQuery3.FieldValues['qut_p']:= ( MainForm.SQLQuery3.FieldValues['qut_p']
-                                                         + ((MainForm.SQLQuery.FieldValues['qut_p']) * ((MainForm.SQLQuery.FieldValues['cond_p']))));
-//            MainForm.ProduitTable.FieldValues['prixvd_p']:= MainForm.SQLQuery.FieldValues['prixvd_p'];
-            MainForm.SQLQuery3.Post;
-
-
-            Mainform.FDQuery2.Active:=False;
-            Mainform.FDQuery2.Sql.Clear;
-            Mainform.FDQuery2.Sql.Text:='SELECT code_barecl,code_barec, code_p,qutinstock_p FROM bona_rec_list  WHERE code_barec =' +IntToStr(MainForm.SQLQuery.FieldByName('code_barec').AsInteger) ;
-            MainForm.FDQuery2.Active:=True;
-
-            if NOT MainForm.FDQuery2.IsEmpty then
-            begin
-
-            MainForm.FDQuery2.Edit;
-            MainForm.FDQuery2.FieldValues['qutinstock_p']:= ( MainForm.FDQuery2.FieldValues['qutinstock_p']
-                                                         + ((MainForm.SQLQuery.FieldValues['qut_p']) * ((MainForm.SQLQuery.FieldValues['cond_p']))));
-            MainForm.FDQuery2.Post;
-            end;
-
-            MainForm.SQLQuery.Next;
-           end;
-
-           MainForm.SQLQuery3.Active:=False;
-           MainForm.SQLQuery3.SQL.Clear;
-//           MainForm.ProduitTable.SQL.Text:='SELECT * FROM produit ' ;
-//           MainForm.ProduitTable.Active:=True;
-//           MainForm.ProduitTable.EnableControls;
-           MainForm.SQLQuery.Active:=False;
-           MainForm.SQLQuery.SQL.Clear;
-           Mainform.FDQuery2.Active:=False;
-           Mainform.FDQuery2.Sql.Clear;
-           DataModuleF.Bonv_comTable.Refresh;
-
-     end;
+  //== This is to delete produit from store after editing bon
+  // We dont need it bcus it commande client
+    // begin
+    // end;
 
      ClientBonComGCbxExit(Sender);
 

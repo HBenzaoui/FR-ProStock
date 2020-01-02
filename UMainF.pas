@@ -719,6 +719,9 @@ type
     RegfournisseurTablecode_bacom: TIntegerField;
     Opt_cas_bnk_CaisseTablecode_bacom: TIntegerField;
     Opt_cas_bnk_BankTablecode_bacom: TIntegerField;
+    RegclientTablecode_bvcom: TIntegerField;
+    Opt_cas_bnk_CaisseTablecode_bvcom: TIntegerField;
+    Opt_cas_bnk_BankTablecode_bvcom: TIntegerField;
     procedure ClientMainFBtnClick(Sender: TObject);
     procedure FourMainFBtnClick(Sender: TObject);
     procedure ProduitMainFBtnClick(Sender: TObject);
