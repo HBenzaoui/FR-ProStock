@@ -66,7 +66,7 @@ type
     procedure DisableBonFacA;
     procedure DisableBonCtr;
     procedure DisableBonFacP;
-    procedure DisableBonCom;
+    procedure DisableBonComA;
     procedure DisableBonComV;
 
   end;
@@ -209,7 +209,7 @@ end;
 
 
 
-procedure TFSplashVersement.DisableBonCom;
+procedure TFSplashVersement.DisableBonComA;
 begin
 
 
@@ -849,8 +849,8 @@ begin
       Edit1.SetFocus;
   end;
 
-  //--------------------------- this tag = 6 is for valdating from bon commande --------
-  if OKVersementSBtn.Tag = 6 then
+  //--------------------------- this tag = 7 is for valdating from bon commande --------
+  if OKVersementSBtn.Tag = 7 then
   begin
 
     BonComAGestionF.FournisseurBonComGCbx.StyleElements:= [seFont,seClient,seBorder];
@@ -888,8 +888,8 @@ begin
   end;
 
 
-  VerVersementSEdt.SetFocus;
-  VerVersementSEdt.SelectAll;
+//  VerVersementSEdt.SetFocus;
+//  VerVersementSEdt.SelectAll;
 
 end;
 
@@ -2460,9 +2460,9 @@ begin
   end;
 
 
-//--------- this tag = 7 is for validating a bon Commande-------------------
+//--------- this tag = 8 is for validating a bon Commande-------------------
 
-  if FSplashVersement.Tag = 7 then
+  if FSplashVersement.Tag = 8 then
   begin
      if VerVersementSEdt.Text<>'' then
      begin
@@ -2478,7 +2478,7 @@ begin
      AnimateWindow(FSplashVersement.Handle, 175, AW_VER_NEGATIVE OR AW_SLIDE OR AW_HIDE);
      FSplashVersement.Release;
      sndPlaySound('C:\Windows\Media\speech on.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
-     DisableBonCom;
+     DisableBonComA;
 
 //--- this is for adding to the priduit
 //--- we dont need to add in stock becuxz it just a bon commande 

@@ -2113,8 +2113,8 @@ begin
              (StrToFloat (StringReplace(BonComRegleLbl.Caption, #32, '', [rfReplaceAll])))
              ),ffNumber,14,2);
 
-       FSplashVersement.Tag := 7 ;
-       FSplashVersement.OKVersementSBtn.Tag:= 6 ;
+       FSplashVersement.Tag := 8 ;
+       FSplashVersement.OKVersementSBtn.Tag:= 7 ;
 
        AnimateWindow(FSplashVersement.Handle, 175, AW_VER_POSITIVE OR AW_SLIDE OR AW_ACTIVATE );
        FSplashVersement.Show;
@@ -2605,7 +2605,7 @@ begin
 
   if DataModuleF.Bona_comTable.FieldValues['valider_bacom'] = True then
   begin
-       FSplashVersement.DisableBonCom;
+       FSplashVersement.DisableBonComA;
   end;
   if DataModuleF.Bona_comTable.FieldValues['valider_bacom'] = False then
    begin
@@ -2648,7 +2648,7 @@ DataModuleF.Bona_com_listTable.Refresh;
 
 if DataModuleF.Bona_comTable.FieldValues['valider_bacom'] = True then
 begin
-     FSplashVersement.DisableBonCom;
+     FSplashVersement.DisableBonComA;
 end;
 if DataModuleF.Bona_comTable.FieldValues['valider_bacom'] = False then
  begin
@@ -2690,7 +2690,7 @@ DataModuleF.Bona_com_listTable.Refresh;
 
 if DataModuleF.Bona_comTable.FieldValues['valider_bacom'] = True then
 begin
-     FSplashVersement.DisableBonCom;
+     FSplashVersement.DisableBonComA;
 end;
 if DataModuleF.Bona_comTable.FieldValues['valider_bacom'] = False then
  begin
@@ -2731,7 +2731,7 @@ DataModuleF.Bona_com_listTable.Refresh;
 
 if DataModuleF.Bona_comTable.FieldValues['valider_bacom'] = True then
 begin
-     FSplashVersement.DisableBonCom;
+     FSplashVersement.DisableBonComA;
 end;
 if DataModuleF.Bona_comTable.FieldValues['valider_bacom'] = False then
  begin

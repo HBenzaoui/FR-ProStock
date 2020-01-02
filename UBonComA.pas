@@ -928,7 +928,7 @@ var
 
        if DataModuleF.Bona_comTable.FieldByName('valider_bacom').AsBoolean = True then
        begin
-        FSplashVersement.DisableBonCom;
+        FSplashVersement.DisableBonComA;
        end else
            begin
             BonComAGestionF.EnableBonCom;
