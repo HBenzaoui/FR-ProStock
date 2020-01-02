@@ -3276,8 +3276,8 @@ begin
         FSplashVersement.VerVersementSEdt.Text:=FloatToStrF((
              (StrToFloat (StringReplace(BonComRegleLbl.Caption, #32, '', [rfReplaceAll])))
              ),ffNumber,14,2);
-        FSplashVersement.Tag := 2 ;
-        FSplashVersement.OKVersementSBtn.Tag:= 1 ;
+        FSplashVersement.Tag := 10 ;
+        FSplashVersement.OKVersementSBtn.Tag:= 9 ;
        AnimateWindow(FSplashVersement.Handle, 175, AW_VER_POSITIVE OR AW_SLIDE OR AW_ACTIVATE );
        FSplashVersement.Show;
 
