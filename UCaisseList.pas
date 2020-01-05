@@ -10,7 +10,7 @@ uses
   DBGridEhToolCtrls, DynVarsEh, Data.DB, Vcl.StdCtrls, Vcl.ComCtrls,
   Vcl.WinXCtrls, Vcl.Buttons, sSpeedButton, Vcl.ExtCtrls, EhLibVCL, GridsEh,
   DBAxisGridsEh, DBGridEh, frxExportPDF, frxClass, frxExportXLS, frxDBSet,
-  AdvToolBtn, acImage, Vcl.Menus, sStatusBar;
+  AdvToolBtn, acImage, Vcl.Menus, sStatusBar, frxExportBaseDialog;
 
 type
   TCaisseListF = class(TForm)
@@ -90,6 +90,8 @@ type
     AdvToolButton3: TAdvToolButton;
     Panel9: TPanel;
     ProduitListSaveDg: TSaveDialog;
+    C1: TMenuItem;
+    B1: TMenuItem;
     procedure CaisseListCbxDropDown(Sender: TObject);
     procedure CaisseListCbxChange(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -128,7 +130,8 @@ type
     procedure AdvToolButton3Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
 
-    procedure CaisseListDBGridEhSortMarkingChanged(Sender: TObject);  private
+    procedure CaisseListDBGridEhSortMarkingChanged(Sender: TObject);
+    procedure B1Click(Sender: TObject);  private
     procedure GettingData;
     procedure FilteredColor;
     procedure NOT_FilteredColor;
@@ -387,13 +390,13 @@ begin
   ClearValideFilterBVLivPMenuClick(Sender);
   ClearTVAFilterPMenuClick(Sender);
   ClearBRFilterPMenuClick(Sender);
-  ClearRegleFilterBVLivPMenuClick(Sender);  
-                                             
+  ClearRegleFilterBVLivPMenuClick(Sender);
+
 ClearValideFilterBVLivPMenu.Checked:= True;
 ClearTVAFilterPMenu.Checked:= True;
 ClearBRFilterPMenu.Checked:= True;
 ClearRegleFilterBVLivPMenu.Checked:= True;
-  
+
   sImage1.ImageIndex:=20;
   sImage1.Visible:= True;
   sImage2.ImageIndex:=13;
@@ -511,6 +514,11 @@ begin
   CaisseListfrxRprt.ShowReport;
 
   MainForm.Opt_cas_bnk_CaisseTable.EnableControls;
+end;
+
+procedure TCaisseListF.B1Click(Sender: TObject);
+begin
+// Commade Client
 end;
 
 procedure TCaisseListF.BondeLivration1Click(Sender: TObject);
