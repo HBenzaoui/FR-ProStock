@@ -2336,6 +2336,7 @@ object BankListF: TBankListF
       object B1: TMenuItem
         Caption = 'Bon de Commande'
         ImageIndex = 38
+        OnClick = B1Click
       end
       object ChequeMPFilterBVLivPMenu: TMenuItem
         AutoCheck = True
@@ -2370,6 +2371,7 @@ object BankListF: TBankListF
       object CommandeClient1: TMenuItem
         Caption = 'Commande Client'
         ImageIndex = 38
+        OnClick = CommandeClient1Click
       end
       object BondeLivration1: TMenuItem
         AutoCheck = True
