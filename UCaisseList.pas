@@ -131,13 +131,16 @@ type
     procedure FormCreate(Sender: TObject);
 
     procedure CaisseListDBGridEhSortMarkingChanged(Sender: TObject);
-    procedure B1Click(Sender: TObject);  private
+    procedure B1Click(Sender: TObject);
+    procedure C1Click(Sender: TObject);  private
     procedure GettingData;
     procedure FilteredColor;
     procedure NOT_FilteredColor;
     procedure Select_ALL;
     procedure Select_BL;
     procedure Select_BR;
+    procedure Select_BCA;
+    procedure Select_BCV;
     procedure Select_CTR;
     procedure Select_Deca;
     procedure Select_Enca;
@@ -221,7 +224,15 @@ MainForm.Opt_cas_bnk_CaisseTable.Active:= True;
 MainForm.Opt_cas_bnk_CaisseTable.EnableControls;
 end;
 
-
+procedure TCaisseListF.Select_BCV;
+begin
+MainForm.Opt_cas_bnk_CaisseTable.DisableControls;
+MainForm.Opt_cas_bnk_CaisseTable.Active:= False;
+MainForm.Opt_cas_bnk_CaisseTable.SQL.clear;
+mainform.Opt_cas_bnk_CaisseTable.sql.Text:='SELECT * FROM opt_cas_bnk WHERE nature_ocb = false AND code_bvcom <> ''0'' ';
+MainForm.Opt_cas_bnk_CaisseTable.Active:= True;
+MainForm.Opt_cas_bnk_CaisseTable.EnableControls;
+end;
 
 procedure TCaisseListF.Select_BL;
 begin
@@ -257,6 +268,15 @@ MainForm.Opt_cas_bnk_CaisseTable.EnableControls;
 end;
 
 
+procedure TCaisseListF.Select_BCA;
+begin
+MainForm.Opt_cas_bnk_CaisseTable.DisableControls;
+MainForm.Opt_cas_bnk_CaisseTable.Active:= False;
+MainForm.Opt_cas_bnk_CaisseTable.SQL.clear;
+mainform.Opt_cas_bnk_CaisseTable.sql.Text:='SELECT * FROM opt_cas_bnk WHERE nature_ocb = false AND code_bacom <> ''0'' ';
+MainForm.Opt_cas_bnk_CaisseTable.Active:= True;
+MainForm.Opt_cas_bnk_CaisseTable.EnableControls;
+end;
 
 procedure TCaisseListF.Select_BR;
 begin
@@ -518,7 +538,27 @@ end;
 
 procedure TCaisseListF.B1Click(Sender: TObject);
 begin
-// Commade Client
+// Bon de Commande
+  ClearValideFilterBVLivPMenuClick(Sender);
+  ClearTVAFilterPMenuClick(Sender);
+  ClearBRFilterPMenuClick(Sender);
+  ClearRegleFilterBVLivPMenuClick(Sender);
+
+ClearValideFilterBVLivPMenu.Checked:= True;
+ClearTVAFilterPMenu.Checked:= True;
+ClearBRFilterPMenu.Checked:= True;
+ClearRegleFilterBVLivPMenu.Checked:= True;
+
+  sImage1.ImageIndex:=20;
+  sImage1.Visible:= True;
+  sImage2.ImageIndex:=13;
+  sImage2.Visible:= True;
+  FilterBVLivBtn.ImageIndex:=50;
+  FilteredColor;
+  Select_BCA;
+  ClearFilterBVLivPMenu.Checked:= False;
+
+
 end;
 
 procedure TCaisseListF.BondeLivration1Click(Sender: TObject);
@@ -575,6 +615,33 @@ begin
   FilterBVLivBtn.ImageIndex:=49;
   NOT_FilteredColor;
   Select_ALL;
+end;
+
+procedure TCaisseListF.C1Click(Sender: TObject);
+begin
+//Commande Client
+ClearValideFilterBVLivPMenuClick(Sender);
+ClearRegleFilterBVLivPMenuClick(Sender);
+ClearTVAFilterPMenuClick(Sender);
+ClearMPFilterBVLivPMenuClick(Sender);
+
+ClearValideFilterBVLivPMenu.Checked:= True;
+ClearRegleFilterBVLivPMenu.Checked:= True;
+ClearTVAFilterPMenu.Checked:= True;
+ClearMPFilterBVLivPMenu.Checked:= True;
+
+
+
+  sImage1.ImageIndex:=20;
+  sImage1.Visible:= True;
+  sImage2.ImageIndex:=15;
+  sImage2.Visible:= True;
+  FilterBVLivBtn.ImageIndex:=50;
+  FilteredColor;
+  Select_BCV;
+  ClearFilterBVLivPMenu.Checked:= False;
+
+
 end;
 
 procedure TCaisseListF.CaisseListCbxChange(Sender: TObject);

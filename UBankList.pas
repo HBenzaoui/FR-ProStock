@@ -10,7 +10,7 @@ uses
   DBGridEhToolCtrls, DynVarsEh, Data.DB, Vcl.StdCtrls, Vcl.ComCtrls,
   Vcl.Buttons, sSpeedButton, Vcl.ExtCtrls, EhLibVCL, GridsEh, DBAxisGridsEh,
   DBGridEh, frxClass, frxExportPDF, frxExportXLS, frxDBSet, AdvToolBtn, acImage,
-  Vcl.Menus, sStatusBar;
+  Vcl.Menus, sStatusBar, frxExportBaseDialog;
 
 type
   TBankListF = class(TForm)
@@ -90,6 +90,8 @@ type
     AdvToolButton3: TAdvToolButton;
     Panel9: TPanel;
     ProduitListSaveDg: TSaveDialog;
+    CommandeClient1: TMenuItem;
+    B1: TMenuItem;
     procedure FormShow(Sender: TObject);
     procedure BankListCbxDropDown(Sender: TObject);
     procedure DaysBankListCbxChange(Sender: TObject);

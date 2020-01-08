@@ -2335,6 +2335,7 @@ object CaisseListF: TCaisseListF
       ImageIndex = 1
       object B1: TMenuItem
         Caption = 'Bon de Commande'
+        ImageIndex = 38
         OnClick = B1Click
       end
       object ChequeMPFilterBVLivPMenu: TMenuItem
@@ -2369,6 +2370,8 @@ object CaisseListF: TCaisseListF
       ImageIndex = 1
       object C1: TMenuItem
         Caption = 'Commande Client'
+        ImageIndex = 38
+        OnClick = C1Click
       end
       object BondeLivration1: TMenuItem
         AutoCheck = True

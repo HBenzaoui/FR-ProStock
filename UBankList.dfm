@@ -345,7 +345,7 @@ object BankListF: TBankListF
     object PeriodBankListLbl: TLabel
       Left = 390
       Top = 27
-      Width = 53
+      Width = 54
       Height = 17
       Caption = 'P'#233'riode:'
       Color = 15722984
@@ -361,7 +361,7 @@ object BankListF: TBankListF
     object Label1: TLabel
       Left = 648
       Top = 10
-      Width = 22
+      Width = 23
       Height = 18
       Caption = 'Du:'
       Color = 15722984
@@ -393,7 +393,7 @@ object BankListF: TBankListF
     object Label3: TLabel
       Left = 12
       Top = 27
-      Width = 161
+      Width = 163
       Height = 17
       Caption = 'Les Comptes Bancaires:'
       Color = 15722984
@@ -564,8 +564,8 @@ object BankListF: TBankListF
       Top = 38
       Width = 87
       Height = 23
-      Date = 42435.595104571760000000
-      Time = 42435.595104571760000000
+      Date = 42435.000000000000000000
+      Time = 0.595104571759293300
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 4207405
       Font.Height = 15
@@ -580,8 +580,8 @@ object BankListF: TBankListF
       Top = 7
       Width = 87
       Height = 23
-      Date = 42435.595104571760000000
-      Time = 42435.595104571760000000
+      Date = 42435.000000000000000000
+      Time = 0.595104571759293300
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 4207405
       Font.Height = 15
@@ -1548,11 +1548,13 @@ object BankListF: TBankListF
     CenterWindow = False
     PrintScaling = False
     PdfA = False
+    PDFStandard = psNone
+    PDFVersion = pv17
     Left = 408
     Top = 480
   end
   object BAnkListfrxRprt: TfrxReport
-    Version = '5.6.1'
+    Version = '6.3.12'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -1583,6 +1585,7 @@ object BankListF: TBankListF
         Font.Height = -16
         Font.Name = 'Arial'
         Font.Style = [fsBold]
+        Frame.Typ = []
         Fill.BackColor = 14211288
       end
       item
@@ -1592,6 +1595,7 @@ object BankListF: TBankListF
         Font.Height = -13
         Font.Name = 'Arial'
         Font.Style = [fsBold]
+        Frame.Typ = []
         Fill.BackColor = 15790320
       end
       item
@@ -1601,6 +1605,7 @@ object BankListF: TBankListF
         Font.Height = -13
         Font.Name = 'Arial'
         Font.Style = [fsBold]
+        Frame.Typ = []
         Fill.BackColor = 15790320
       end
       item
@@ -1610,6 +1615,7 @@ object BankListF: TBankListF
         Font.Height = -13
         Font.Name = 'Arial'
         Font.Style = []
+        Frame.Typ = []
       end
       item
         Name = 'Group footer'
@@ -1627,6 +1633,7 @@ object BankListF: TBankListF
         Font.Height = -13
         Font.Name = 'Arial'
         Font.Style = []
+        Frame.Typ = []
         Frame.Width = 2.000000000000000000
       end>
     object Data: TfrxDataPage
@@ -1642,6 +1649,8 @@ object BankListF: TBankListF
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
+      MirrorMode = []
       HGuides.Strings = (
         '113,3859')
       VGuides.Strings = (
@@ -1650,11 +1659,13 @@ object BankListF: TBankListF
         '593,38621')
       object PageHeader1: TfrxPageHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 117.165430000000000000
         Top = 18.897650000000000000
         Width = 1046.929810000000000000
         object PreiodRX: TfrxMemoView
           Align = baCenter
+          AllowVectorExport = True
           Left = 371.023861665000000000
           Top = 34.015770000000000000
           Width = 304.882086670000000000
@@ -1664,6 +1675,7 @@ object BankListF: TBankListF
           Font.Height = -12
           Font.Name = 'Helvetica LT Std'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'P'#233'riode du :')
@@ -1672,6 +1684,7 @@ object BankListF: TBankListF
         end
         object Memo1: TfrxMemoView
           Align = baCenter
+          AllowVectorExport = True
           Left = 372.913626665000000000
           Top = 2.519686670000000000
           Width = 301.102556670000000000
@@ -1689,6 +1702,7 @@ object BankListF: TBankListF
           VAlign = vaCenter
         end
         object Memo2: TfrxMemoView
+          AllowVectorExport = True
           Top = 89.313571820000000000
           Width = 90.708720000000000000
           Height = 28.174678180000000000
@@ -1698,6 +1712,7 @@ object BankListF: TBankListF
           Font.Height = -11
           Font.Name = 'Gotham Rounded Light'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = 13948116
           Memo.UTF8W = (
             '          Date')
@@ -1705,6 +1720,7 @@ object BankListF: TBankListF
           VAlign = vaCenter
         end
         object Memo5: TfrxMemoView
+          AllowVectorExport = True
           Left = 90.622140000000000000
           Top = 89.313571820000000000
           Width = 306.346630000000000000
@@ -1715,6 +1731,7 @@ object BankListF: TBankListF
           Font.Height = -11
           Font.Name = 'Gotham Rounded Light'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = 13948116
           HAlign = haCenter
           Memo.UTF8W = (
@@ -1723,6 +1740,7 @@ object BankListF: TBankListF
           VAlign = vaCenter
         end
         object Date: TfrxMemoView
+          AllowVectorExport = True
           Left = 963.780150000000000000
           Top = 3.779530000000000000
           Width = 79.370130000000000000
@@ -1732,6 +1750,7 @@ object BankListF: TBankListF
           Font.Height = -13
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[Date]')
@@ -1739,6 +1758,7 @@ object BankListF: TBankListF
           VAlign = vaCenter
         end
         object Memo3: TfrxMemoView
+          AllowVectorExport = True
           Left = 395.716921100000000000
           Top = 89.313571820000000000
           Width = 272.330860000000000000
@@ -1749,6 +1769,7 @@ object BankListF: TBankListF
           Font.Height = -11
           Font.Name = 'Gotham Rounded Light'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = 13948116
           HAlign = haCenter
           Memo.UTF8W = (
@@ -1757,6 +1778,7 @@ object BankListF: TBankListF
           VAlign = vaCenter
         end
         object Memo6: TfrxMemoView
+          AllowVectorExport = True
           Left = 665.284021100000000000
           Top = 89.313571820000000000
           Width = 151.385900000000000000
@@ -1767,6 +1789,7 @@ object BankListF: TBankListF
           Font.Height = -11
           Font.Name = 'Gotham Rounded Light'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = 13948116
           HAlign = haCenter
           Memo.UTF8W = (
@@ -1775,6 +1798,7 @@ object BankListF: TBankListF
           VAlign = vaCenter
         end
         object Memo8: TfrxMemoView
+          AllowVectorExport = True
           Left = 815.669921100000000000
           Top = 89.313571820000000000
           Width = 151.385900000000000000
@@ -1785,6 +1809,7 @@ object BankListF: TBankListF
           Font.Height = -11
           Font.Name = 'Gotham Rounded Light'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = 13948116
           HAlign = haCenter
           Memo.UTF8W = (
@@ -1793,6 +1818,7 @@ object BankListF: TBankListF
           VAlign = vaCenter
         end
         object Memo10: TfrxMemoView
+          AllowVectorExport = True
           Left = 966.733001100000000000
           Top = 89.313571820000000000
           Width = 83.354360000000000000
@@ -1803,6 +1829,7 @@ object BankListF: TBankListF
           Font.Height = -11
           Font.Name = 'Gotham Rounded Light'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = 13948116
           HAlign = haCenter
           Memo.UTF8W = (
@@ -1812,6 +1839,7 @@ object BankListF: TBankListF
         end
         object Caisse: TfrxMemoView
           Align = baCenter
+          AllowVectorExport = True
           Left = 371.023861665000000000
           Top = 64.252010000000000000
           Width = 304.882086670000000000
@@ -1821,6 +1849,7 @@ object BankListF: TBankListF
           Font.Height = -12
           Font.Name = 'Helvetica LT Std'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Caisse :')
@@ -1830,10 +1859,12 @@ object BankListF: TBankListF
       end
       object PageFooter1: TfrxPageFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 22.677180000000000000
         Top = 411.968770000000000000
         Width = 1046.929810000000000000
         object Page: TfrxMemoView
+          AllowVectorExport = True
           Left = 899.528140000000000000
           Top = 2.000000000000000000
           Width = 147.401670000000000000
@@ -1843,6 +1874,7 @@ object BankListF: TBankListF
           Font.Height = -9
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Page: [Page]/[TotalPages#]')
@@ -1855,6 +1887,7 @@ object BankListF: TBankListF
             end>
         end
         object Memo12: TfrxMemoView
+          AllowVectorExport = True
           Top = 1.380201430000000000
           Width = 35.095635710000000000
           Height = 18.897650000000000000
@@ -1863,12 +1896,14 @@ object BankListF: TBankListF
           Font.Height = -9
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Agent :')
           ParentFont = False
           VAlign = vaCenter
         end
         object Agent: TfrxMemoView
+          AllowVectorExport = True
           Left = 31.795300000000000000
           Top = 1.000000000000000000
           Width = 457.323130000000000000
@@ -1880,19 +1915,23 @@ object BankListF: TBankListF
           Font.Height = -9
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           ParentFont = False
           VAlign = vaCenter
         end
         object Shape2: TfrxShapeView
+          AllowVectorExport = True
           Width = 1046.929810000000000000
           Height = 2.267716535433070000
           Fill.BackColor = 13948116
           Fill.ForeColor = clNone
           Frame.Color = clNone
+          Frame.Typ = []
         end
       end
       object MasterData1: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 21.236240000000000000
         Top = 196.535560000000000000
         Width = 1046.929810000000000000
@@ -1900,12 +1939,15 @@ object BankListF: TBankListF
         DataSetName = 'frxBBankDB'
         RowCount = 0
         object Shape1: TfrxShapeView
+          AllowVectorExport = True
           Top = 21.236240000000000000
           Width = 1046.929810000000000000
           Fill.BackColor = 13948116
           Frame.Color = 13948116
+          Frame.Typ = []
         end
         object frxBonLivDBnum_bvfac: TfrxMemoView
+          AllowVectorExport = True
           Top = 0.779530000000000000
           Width = 89.574771420000000000
           Height = 18.897650000000000000
@@ -1918,6 +1960,7 @@ object BankListF: TBankListF
           Font.Height = -12
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxBBankDB."date_ocb"]')
@@ -1925,6 +1968,7 @@ object BankListF: TBankListF
           VAlign = vaCenter
         end
         object frxBonLivDBclientbvfac: TfrxMemoView
+          AllowVectorExport = True
           Left = 90.448818900000000000
           Top = 0.779530000000000000
           Width = 302.740421100000000000
@@ -1937,12 +1981,14 @@ object BankListF: TBankListF
           Font.Height = -12
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxBBankDB."nom_ocb"]')
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo4: TfrxMemoView
+          AllowVectorExport = True
           Left = 395.543600000000000000
           Top = 0.779530000000000000
           Width = 272.504181100000000000
@@ -1955,6 +2001,7 @@ object BankListF: TBankListF
           Font.Height = -12
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxBBankDB."third_ocb"]')
@@ -1962,6 +2009,7 @@ object BankListF: TBankListF
           VAlign = vaCenter
         end
         object Memo7: TfrxMemoView
+          AllowVectorExport = True
           Left = 665.110700000000000000
           Top = 0.779530000000000000
           Width = 151.559055120000000000
@@ -1976,6 +2024,7 @@ object BankListF: TBankListF
           Font.Height = -12
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxBBankDB."decaiss_ocb"]')
@@ -1983,6 +2032,7 @@ object BankListF: TBankListF
           VAlign = vaCenter
         end
         object Memo9: TfrxMemoView
+          AllowVectorExport = True
           Left = 815.496600000000000000
           Top = 0.779530000000000000
           Width = 151.559055120000000000
@@ -1997,6 +2047,7 @@ object BankListF: TBankListF
           Font.Height = -12
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxBBankDB."encaiss_ocb"]')
@@ -2004,6 +2055,7 @@ object BankListF: TBankListF
           VAlign = vaCenter
         end
         object Memo11: TfrxMemoView
+          AllowVectorExport = True
           Left = 966.559680000000000000
           Top = 0.779530000000000000
           Width = 79.748151100000000000
@@ -2018,6 +2070,7 @@ object BankListF: TBankListF
           Font.Height = -12
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxBBankDB."MP"]')
@@ -2027,10 +2080,12 @@ object BankListF: TBankListF
       end
       object Footer1: TfrxFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 109.984322760000000000
         Top = 241.889920000000000000
         Width = 1046.929810000000000000
         object Memo16: TfrxMemoView
+          AllowVectorExport = True
           Left = 665.196850390000000000
           Top = 0.377952760000000000
           Width = 151.559055120000000000
@@ -2042,6 +2097,7 @@ object BankListF: TBankListF
           Font.Height = -11
           Font.Name = 'Helvetica LT Std'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = 13948116
           HAlign = haRight
           Memo.UTF8W = (
@@ -2050,6 +2106,7 @@ object BankListF: TBankListF
           VAlign = vaCenter
         end
         object Memo18: TfrxMemoView
+          AllowVectorExport = True
           Left = 815.819420000000000000
           Top = 0.377952760000000000
           Width = 151.559055120000000000
@@ -2061,6 +2118,7 @@ object BankListF: TBankListF
           Font.Height = -11
           Font.Name = 'Helvetica LT Std'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = 13948116
           HAlign = haRight
           Memo.UTF8W = (
@@ -2069,6 +2127,7 @@ object BankListF: TBankListF
           VAlign = vaCenter
         end
         object Memo20: TfrxMemoView
+          AllowVectorExport = True
           Left = 540.740570000000000000
           Top = 0.377952760000000000
           Width = 124.724490000000000000
@@ -2078,6 +2137,7 @@ object BankListF: TBankListF
           Font.Height = -12
           Font.Name = 'Helvetica LT Std'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = 13948116
           HAlign = haRight
           Memo.UTF8W = (
@@ -2086,6 +2146,7 @@ object BankListF: TBankListF
           VAlign = vaCenter
         end
         object SoldeiNI: TfrxMemoView
+          AllowVectorExport = True
           Left = 664.858690000000000000
           Top = 41.677180000000000000
           Width = 302.362400000000000000
@@ -2097,6 +2158,7 @@ object BankListF: TBankListF
           Font.Height = -11
           Font.Name = 'Helvetica LT Std'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '0,00')
@@ -2104,6 +2166,7 @@ object BankListF: TBankListF
           VAlign = vaCenter
         end
         object Memo14: TfrxMemoView
+          AllowVectorExport = True
           Left = 540.740570000000000000
           Top = 41.677180000000000000
           Width = 124.724490000000000000
@@ -2113,6 +2176,7 @@ object BankListF: TBankListF
           Font.Height = -12
           Font.Name = 'Helvetica LT Std'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Solde Initial :')
@@ -2120,6 +2184,7 @@ object BankListF: TBankListF
           VAlign = vaCenter
         end
         object SoldePre: TfrxMemoView
+          AllowVectorExport = True
           Left = 664.858690000000000000
           Top = 64.354360000000000000
           Width = 302.362400000000000000
@@ -2131,6 +2196,7 @@ object BankListF: TBankListF
           Font.Height = -11
           Font.Name = 'Helvetica LT Std'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '0,00')
@@ -2138,6 +2204,7 @@ object BankListF: TBankListF
           VAlign = vaCenter
         end
         object Memo19: TfrxMemoView
+          AllowVectorExport = True
           Left = 540.740570000000000000
           Top = 64.354360000000000000
           Width = 124.724490000000000000
@@ -2147,6 +2214,7 @@ object BankListF: TBankListF
           Font.Height = -12
           Font.Name = 'Helvetica LT Std'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Solde de la Periode :')
@@ -2154,6 +2222,7 @@ object BankListF: TBankListF
           VAlign = vaCenter
         end
         object SoldeTotal: TfrxMemoView
+          AllowVectorExport = True
           Left = 664.504330000000000000
           Top = 87.031540000000000000
           Width = 302.362400000000000000
@@ -2165,6 +2234,7 @@ object BankListF: TBankListF
           Font.Height = -11
           Font.Name = 'Helvetica LT Std'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = 13948116
           HAlign = haCenter
           Memo.UTF8W = (
@@ -2173,6 +2243,7 @@ object BankListF: TBankListF
           VAlign = vaCenter
         end
         object Memo21: TfrxMemoView
+          AllowVectorExport = True
           Left = 540.386210000000000000
           Top = 87.031540000000000000
           Width = 124.724490000000000000
@@ -2182,6 +2253,7 @@ object BankListF: TBankListF
           Font.Height = -12
           Font.Name = 'Helvetica LT Std'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = 13948116
           HAlign = haRight
           Memo.UTF8W = (
@@ -2261,6 +2333,10 @@ object BankListF: TBankListF
       Caption = 'Filtrer par les Achats'
       SubMenuImages = MainForm.PanelIcons16
       ImageIndex = 1
+      object B1: TMenuItem
+        Caption = 'Bon de Commande'
+        ImageIndex = 38
+      end
       object ChequeMPFilterBVLivPMenu: TMenuItem
         AutoCheck = True
         Caption = 'Bon de Reception'
@@ -2291,6 +2367,10 @@ object BankListF: TBankListF
     object FilterparlesFactures1: TMenuItem
       Caption = 'Filtrer par les Ventes'
       ImageIndex = 1
+      object CommandeClient1: TMenuItem
+        Caption = 'Commande Client'
+        ImageIndex = 38
+      end
       object BondeLivration1: TMenuItem
         AutoCheck = True
         Caption = 'Bon de Livration'
