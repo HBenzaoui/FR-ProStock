@@ -549,7 +549,7 @@ ClearTVAFilterPMenu.Checked:= True;
 ClearBRFilterPMenu.Checked:= True;
 ClearRegleFilterBVLivPMenu.Checked:= True;
 
-  sImage1.ImageIndex:=20;
+  sImage1.ImageIndex:=38;
   sImage1.Visible:= True;
   sImage2.ImageIndex:=13;
   sImage2.Visible:= True;
@@ -632,7 +632,7 @@ ClearMPFilterBVLivPMenu.Checked:= True;
 
 
 
-  sImage1.ImageIndex:=20;
+  sImage1.ImageIndex:=38;
   sImage1.Visible:= True;
   sImage2.ImageIndex:=15;
   sImage2.Visible:= True;
