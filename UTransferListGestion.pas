@@ -99,16 +99,16 @@ begin
 
             TransferComptesGestionF:=TTransferComptesGestionF.Create(TransferListGestionF);
 
-    DataModuleF.Transfer_comptesTable.DisableControls;
-    DataModuleF.Transfer_comptesTable.Active:= False;
-    DataModuleF.Transfer_comptesTable.SQL.clear;
-    DataModuleF.Transfer_comptesTable.sql.Text:='SELECT * FROM transfer_comptes ORDER By code_transfer ';
-    DataModuleF.Transfer_comptesTable.Active:= True;
+//    MainForm.SQLQuery.DisableControls;
+    MainForm.SQLQuery.Active:= False;
+    MainForm.SQLQuery.SQL.clear;
+    MainForm.SQLQuery.sql.Text:='SELECT * FROM transfer_comptes ORDER By code_transfer ';
+    MainForm.SQLQuery.Active:= True;
 
-      DataModuleF.Transfer_comptesTable.Last;
+      MainForm.SQLQuery.Last;
       TransferComptesGestionF.NumTransferGEdt.Caption:=
-      'TR'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5,((DataModuleF.Transfer_comptesTable.FieldByName('code_transfer').AsInteger) + 1)]);
-      DataModuleF.Transfer_comptesTable.EnableControls;
+      'TR'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5,((MainForm.SQLQuery.FieldByName('code_transfer').AsInteger) + 1)]);
+//      MainForm.Transfer_comptesTable.EnableControls;
 
 
      //       ClientGestionF.BringToFront;
@@ -120,12 +120,12 @@ begin
             TransferComptesGestionF.Show;
 //            TransferComptesGestionF.NameChargeGEdt.SetFocus;
 
-DataModuleF.Transfer_comptesTable.DisableControls;
-DataModuleF.Transfer_comptesTable.Active:= False;
-DataModuleF.Transfer_comptesTable.SQL.clear;
-DataModuleF.Transfer_comptesTable.sql.Text:='SELECT * FROM transfer_comptes WHERE date_transfer BETWEEN '''+(DateToStr(DateStartTransferD.Date))+ ''' AND ''' +(DateToStr(DateEndTransferD.Date))+'''';
-DataModuleF.Transfer_comptesTable.Active:= True;
-DataModuleF.Transfer_comptesTable.EnableControls;
+//MainForm.Transfer_comptesTable.DisableControls;
+MainForm.SQLQuery.Active:= False;
+MainForm.SQLQuery.SQL.clear;
+//MainForm.SQLQuery.sql.Text:='SELECT * FROM transfer_comptes WHERE date_transfer BETWEEN '''+(DateToStr(DateStartTransferD.Date))+ ''' AND ''' +(DateToStr(DateEndTransferD.Date))+'''';
+//MainForm.SQLQuery.Active:= True;
+//MainForm.Transfer_comptesTable.EnableControls;
 
 end;
 

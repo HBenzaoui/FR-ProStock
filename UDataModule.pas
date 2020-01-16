@@ -3,7 +3,7 @@
 interface
 
 uses
-  Winapi.Windows,  Vcl.StdCtrls, Vcl.Dialogs,System.UITypes,Vcl.Forms,
+  Winapi.Windows,Winapi.MMSystem,  Vcl.StdCtrls, Vcl.Dialogs,System.UITypes,Vcl.Forms,
   Data.SqlTimSt,  System.SysUtils,System.Variants,
   System.Classes, FireDAC.Stan.Intf, FireDAC.Stan.Option,
   FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
@@ -425,6 +425,12 @@ type
     procedure Inventory_listTablequtphys_ilChange(Sender: TField);
     procedure Bona_com_listTableAfterRefresh(DataSet: TDataSet);
     procedure Bonv_com_listTableAfterRefresh(DataSet: TDataSet);
+    procedure Bona_com_listTablequt_pChange(Sender: TField);
+    procedure Bona_com_listTableprixht_pChange(Sender: TField);
+    procedure Bona_com_listTablecond_pChange(Sender: TField);
+    procedure Bonv_com_listTablequt_pChange(Sender: TField);
+    procedure Bonv_com_listTableprixvd_pChange(Sender: TField);
+    procedure Bonv_com_listTablecond_pChange(Sender: TField);
   private
     procedure CheckAppVersionForFirstRun;
     procedure deleteOldGridsparams;
@@ -587,6 +593,66 @@ InvoiceID :Integer;
 
 end;
 
+procedure TDataModuleF.Bona_com_listTablecond_pChange(Sender: TField);
+begin
+if (Bona_com_listTablecond_p.Value > 9999999) OR (Bona_com_listTablecond_p.Value < -9999999)  then
+ begin
+
+  sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+  Bona_com_listTable.Edit;
+  Bona_com_listTablecond_p.Value := 1;
+  Bona_com_listTable.Post;
+
+ end else if Bona_com_listTablecond_p.IsNull then
+     begin
+
+      Bona_com_listTable.Edit;
+      Bona_com_listTablecond_p.Value := 0;
+      Bona_com_listTable.Post;
+
+     end;
+end;
+
+procedure TDataModuleF.Bona_com_listTableprixht_pChange(Sender: TField);
+begin
+if (Bona_com_listTableprixht_p.Value > 9999999) OR (Bona_com_listTableprixht_p.Value < -9999999)  then
+ begin
+
+  sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+  Bona_com_listTable.Edit;
+  Bona_com_listTableprixht_p.Value := 1;
+  Bona_com_listTable.Post;
+
+ end else if Bona_com_listTableprixht_p.IsNull then
+     begin
+
+      Bona_com_listTable.Edit;
+      Bona_com_listTableprixht_p.Value := 0;
+      Bona_com_listTable.Post;
+
+     end;
+end;
+
+procedure TDataModuleF.Bona_com_listTablequt_pChange(Sender: TField);
+begin
+ if (Bona_com_listTablequt_p.Value > 9999999) OR (Bona_com_listTablequt_p.Value < -9999999)  then
+ begin
+
+  sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+  Bona_com_listTable.Edit;
+  Bona_com_listTablequt_p.Value := 1;
+  Bona_com_listTable.Post;
+
+ end else if Bona_com_listTablequt_p.IsNull then
+     begin
+
+      Bona_com_listTable.Edit;
+      Bona_com_listTablequt_p.Value := 0;
+      Bona_com_listTable.Post;
+
+     end;
+end;
+
 procedure TDataModuleF.Bonv_com_listTableAfterRefresh(DataSet: TDataSet);
 var TotalHT,TotalAHT,TotalTVA,TVA,TotalTTC,LeReste,Regle,Marge,NewHT,BonCVTotalHT: Currency;
 InvoiceID :Integer;
@@ -672,6 +738,66 @@ InvoiceID :Integer;
     end;
        end;
 
+end;
+
+procedure TDataModuleF.Bonv_com_listTablecond_pChange(Sender: TField);
+begin
+if (Bonv_com_listTablecond_p.Value > 9999999) OR (Bonv_com_listTablecond_p.Value < -9999999)  then
+ begin
+
+  sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+  Bonv_com_listTable.Edit;
+  Bonv_com_listTablecond_p.Value := 1;
+  Bonv_com_listTable.Post;
+
+ end else if Bonv_com_listTablecond_p.IsNull then
+     begin
+
+      Bonv_com_listTable.Edit;
+      Bonv_com_listTablecond_p.Value := 0;
+      Bonv_com_listTable.Post;
+
+     end;
+end;
+
+procedure TDataModuleF.Bonv_com_listTableprixvd_pChange(Sender: TField);
+begin
+if (Bonv_com_listTableprixvd_p.Value > 9999999) OR (Bonv_com_listTableprixvd_p.Value < -9999999)  then
+ begin
+
+  sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+  Bonv_com_listTable.Edit;
+  Bonv_com_listTableprixvd_p.Value := 1;
+  Bonv_com_listTable.Post;
+
+ end else if Bonv_com_listTableprixvd_p.IsNull then
+     begin
+
+      Bonv_com_listTable.Edit;
+      Bonv_com_listTableprixvd_p.Value := 0;
+      Bonv_com_listTable.Post;
+
+     end;
+end;
+
+procedure TDataModuleF.Bonv_com_listTablequt_pChange(Sender: TField);
+begin
+if (Bonv_com_listTablequt_p.Value > 9999999) OR (Bonv_com_listTablequt_p.Value < -9999999)  then
+ begin
+
+  sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+  Bonv_com_listTable.Edit;
+  Bonv_com_listTablequt_p.Value := 1;
+  Bonv_com_listTable.Post;
+
+ end else if Bonv_com_listTablequt_p.IsNull then
+     begin
+
+      Bonv_com_listTable.Edit;
+      Bonv_com_listTablequt_p.Value := 0;
+      Bonv_com_listTable.Post;
+
+     end;
 end;
 
 procedure TDataModuleF.CheckAppVersionForFirstRun();

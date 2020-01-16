@@ -2888,14 +2888,17 @@ object DataModuleF: TDataModuleF
     object Bona_com_listTablequt_p: TFloatField
       FieldName = 'qut_p'
       Origin = 'qut_p'
+      OnChange = Bona_com_listTablequt_pChange
     end
     object Bona_com_listTableprixht_p: TCurrencyField
       FieldName = 'prixht_p'
       Origin = 'prixht_p'
+      OnChange = Bona_com_listTableprixht_pChange
     end
     object Bona_com_listTablecond_p: TIntegerField
       FieldName = 'cond_p'
       Origin = 'cond_p'
+      OnChange = Bona_com_listTablecond_pChange
     end
     object Bona_com_listTablecode_p: TIntegerField
       FieldName = 'code_p'
@@ -3233,14 +3236,17 @@ object DataModuleF: TDataModuleF
     object Bonv_com_listTablequt_p: TFloatField
       FieldName = 'qut_p'
       Origin = 'qut_p'
+      OnChange = Bonv_com_listTablequt_pChange
     end
     object Bonv_com_listTableprixvd_p: TCurrencyField
       FieldName = 'prixvd_p'
       Origin = 'prixvd_p'
+      OnChange = Bonv_com_listTableprixvd_pChange
     end
     object Bonv_com_listTablecond_p: TIntegerField
       FieldName = 'cond_p'
       Origin = 'cond_p'
+      OnChange = Bonv_com_listTablecond_pChange
     end
     object Bonv_com_listTablecode_p: TIntegerField
       FieldName = 'code_p'

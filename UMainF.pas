@@ -1356,11 +1356,19 @@ end;
 
 procedure TMainForm.Bona_recPlistTablecond_pChange(Sender: TField);
 begin
-     if Bona_recPlistTablecond_p.IsNull then
+ if (Bona_recPlistTablecond_p.Value > 9999999) OR (Bona_recPlistTablecond_p.Value < -9999999)  then
+ begin
+
+  sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+  Bona_recPlistTable.Edit;
+  Bona_recPlistTablecond_p.Value := 1;
+  Bona_recPlistTable.Post;
+
+ end else if Bona_recPlistTablecond_p.IsNull then
      begin
 
       Bona_recPlistTable.Edit;
-      Bona_recPlistTablecond_p.Value := 1;
+      Bona_recPlistTablecond_p.Value := 0;
       Bona_recPlistTable.Post;
 
      end;
@@ -1368,7 +1376,15 @@ end;
 
 procedure TMainForm.Bona_recPlistTableprixht_pChange(Sender: TField);
 begin
-     if Bona_recPlistTableprixht_p.IsNull then
+ if (Bona_recPlistTableprixht_p.Value > 9999999) OR (Bona_recPlistTableprixht_p.Value < -9999999)  then
+ begin
+
+  sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+  Bona_recPlistTable.Edit;
+  Bona_recPlistTableprixht_p.Value := 1;
+  Bona_recPlistTable.Post;
+
+ end else if Bona_recPlistTableprixht_p.IsNull then
      begin
 
       Bona_recPlistTable.Edit;
@@ -1380,7 +1396,16 @@ end;
 
 procedure TMainForm.Bona_recPlistTableprixva2_pChange(Sender: TField);
 begin
-     if Bona_recPlistTableprixva2_p.IsNull then
+
+ if (Bona_recPlistTableprixva2_p.Value > 9999999) OR (Bona_recPlistTableprixva2_p.Value < -9999999)  then
+ begin
+
+  sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+  Bona_recPlistTable.Edit;
+  Bona_recPlistTableprixva2_p.Value := 1;
+  Bona_recPlistTable.Post;
+
+ end else if Bona_recPlistTableprixva2_p.IsNull then
      begin
 
       Bona_recPlistTable.Edit;
@@ -1392,7 +1417,15 @@ end;
 
 procedure TMainForm.Bona_recPlistTableprixva_pChange(Sender: TField);
 begin
-     if Bona_recPlistTableprixva_p.IsNull then
+ if (Bona_recPlistTableprixva_p.Value > 9999999) OR (Bona_recPlistTableprixva_p.Value < -9999999)  then
+ begin
+
+  sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+  Bona_recPlistTable.Edit;
+  Bona_recPlistTableprixva_p.Value := 1;
+  Bona_recPlistTable.Post;
+
+ end else if Bona_recPlistTableprixva_p.IsNull then
      begin
 
       Bona_recPlistTable.Edit;
@@ -1404,7 +1437,16 @@ end;
 
 procedure TMainForm.Bona_recPlistTableprixvd_pChange(Sender: TField);
 begin
-     if Bona_recPlistTableprixvd_p.IsNull then
+
+      if (Bona_recPlistTableprixvd_p.Value > 9999999) OR (Bona_recPlistTableprixvd_p.Value < -9999999)  then
+ begin
+
+  sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+  Bona_recPlistTable.Edit;
+  Bona_recPlistTableprixvd_p.Value := 1;
+  Bona_recPlistTable.Post;
+
+ end else if Bona_recPlistTableprixvd_p.IsNull then
      begin
 
       Bona_recPlistTable.Edit;
@@ -1416,7 +1458,16 @@ end;
 
 procedure TMainForm.Bona_recPlistTableprixvg_pChange(Sender: TField);
 begin
-     if Bona_recPlistTableprixvg_p.IsNull then
+
+ if (Bona_recPlistTableprixvg_p.Value > 9999999) OR (Bona_recPlistTableprixvg_p.Value < -9999999)  then
+ begin
+
+  sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+  Bona_recPlistTable.Edit;
+  Bona_recPlistTableprixvg_p.Value := 1;
+  Bona_recPlistTable.Post;
+
+ end else if Bona_recPlistTableprixvg_p.IsNull then
      begin
 
       Bona_recPlistTable.Edit;
@@ -1428,7 +1479,15 @@ end;
 
 procedure TMainForm.Bona_recPlistTableprixvr_pChange(Sender: TField);
 begin
-     if Bona_recPlistTableprixvr_p.IsNull then
+  if (Bona_recPlistTableprixvr_p.Value > 9999999) OR (Bona_recPlistTableprixvr_p.Value < -9999999)  then
+ begin
+
+  sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+  Bona_recPlistTable.Edit;
+  Bona_recPlistTableprixvr_p.Value := 1;
+  Bona_recPlistTable.Post;
+
+ end else if Bona_recPlistTableprixvr_p.IsNull then
      begin
 
       Bona_recPlistTable.Edit;
@@ -1440,7 +1499,15 @@ end;
 
 procedure TMainForm.Bona_recPlistTablequt_pChange(Sender: TField);
 begin
-     if Bona_recPlistTablequt_p.IsNull then
+ if (Bona_recPlistTablequt_p.Value > 9999999) OR (Bona_recPlistTablequt_p.Value < -9999999)  then
+ begin
+
+  sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+  Bona_recPlistTable.Edit;
+  Bona_recPlistTablequt_p.Value := 1;
+  Bona_recPlistTable.Post;
+
+ end else if Bona_recPlistTablequt_p.IsNull then
      begin
 
       Bona_recPlistTable.Edit;
@@ -1828,38 +1895,62 @@ end;
 
 procedure TMainForm.Bonp_fac_listTablecond_pChange(Sender: TField);
 begin
-  if Bonp_fac_listTablecond_p.IsNull then
+  if (Bonp_fac_listTablecond_p.Value > 9999999) OR (Bonp_fac_listTablecond_p.Value < -9999999)  then
  begin
 
+  sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
   Bonp_fac_listTable.Edit;
   Bonp_fac_listTablecond_p.Value := 1;
   Bonp_fac_listTable.Post;
 
- end;
+ end else if Bonp_fac_listTablecond_p.IsNull then
+     begin
+
+      Bonp_fac_listTable.Edit;
+      Bonp_fac_listTablecond_p.Value := 0;
+      Bonp_fac_listTable.Post;
+
+     end;
 end;
 
 procedure TMainForm.Bonp_fac_listTableprixvd_pChange(Sender: TField);
 begin
-  if Bonp_fac_listTableprixvd_p.IsNull then
+   if (Bonp_fac_listTableprixvd_p.Value > 9999999) OR (Bonp_fac_listTableprixvd_p.Value < -9999999)  then
  begin
 
+  sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
   Bonp_fac_listTable.Edit;
-  Bonp_fac_listTableprixvd_p.Value := 0;
+  Bonp_fac_listTableprixvd_p.Value := 1;
   Bonp_fac_listTable.Post;
 
- end;
+ end else if Bonp_fac_listTableprixvd_p.IsNull then
+     begin
+
+      Bonp_fac_listTable.Edit;
+      Bonp_fac_listTableprixvd_p.Value := 0;
+      Bonp_fac_listTable.Post;
+
+     end;
 end;
 
 procedure TMainForm.Bonp_fac_listTablequt_pChange(Sender: TField);
 begin
- if Bonp_fac_listTablequt_p.IsNull then
+ if (Bonp_fac_listTablequt_p.Value > 9999999) OR (Bonp_fac_listTablequt_p.Value < -9999999)  then
  begin
 
+  sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
   Bonp_fac_listTable.Edit;
-  Bonp_fac_listTablequt_p.Value := 0;
+  Bonp_fac_listTablequt_p.Value := 1;
   Bonp_fac_listTable.Post;
 
- end;
+ end else if Bonp_fac_listTablequt_p.IsNull then
+     begin
+
+      Bonp_fac_listTable.Edit;
+      Bonp_fac_listTablequt_p.Value := 0;
+      Bonp_fac_listTable.Post;
+
+     end;
 end;
 
 procedure TMainForm.Bonp_fac_listTabletva_pChange(Sender: TField);
@@ -1974,39 +2065,63 @@ end;
 
 procedure TMainForm.Bonv_liv_listTablecond_pChange(Sender: TField);
 begin
- if Bonv_liv_listTablecond_p.IsNull then
+ if (Bonv_liv_listTablecond_p.Value > 9999999) OR (Bonv_liv_listTablecond_p.Value < -9999999)  then
  begin
 
+  sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
   Bonv_liv_listTable.Edit;
   Bonv_liv_listTablecond_p.Value := 1;
   Bonv_liv_listTable.Post;
 
- end;
+ end else if Bonv_liv_listTablecond_p.IsNull then
+     begin
+
+      Bonv_liv_listTable.Edit;
+      Bonv_liv_listTablecond_p.Value := 0;
+      Bonv_liv_listTable.Post;
+
+     end;
 end;
 
 procedure TMainForm.Bonv_liv_listTableprixvd_pChange(Sender: TField);
 begin
- if Bonv_liv_listTableprixvd_p.IsNull then
+ if (Bonv_liv_listTableprixvd_p.Value > 9999999) OR (Bonv_liv_listTableprixvd_p.Value < -9999999)  then
  begin
 
+  sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
   Bonv_liv_listTable.Edit;
-  Bonv_liv_listTableprixvd_p.Value := 0;
+  Bonv_liv_listTableprixvd_p.Value := 1;
   Bonv_liv_listTable.Post;
 
- end;
+ end else if Bonv_liv_listTableprixvd_p.IsNull then
+     begin
+
+      Bonv_liv_listTable.Edit;
+      Bonv_liv_listTableprixvd_p.Value := 0;
+      Bonv_liv_listTable.Post;
+
+     end;
 end;
 
 procedure TMainForm.Bonv_liv_listTablequt_pChange(Sender: TField);
 begin
 
- if Bonv_liv_listTablequt_p.IsNull then
+  if (Bonv_liv_listTablequt_p.Value > 9999999) OR (Bonv_liv_listTablequt_p.Value < -9999999)  then
  begin
 
+  sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
   Bonv_liv_listTable.Edit;
-  Bonv_liv_listTablequt_p.Value := 0;
+  Bonv_liv_listTablequt_p.Value := 1;
   Bonv_liv_listTable.Post;
 
- end;
+ end else if Bonv_liv_listTablequt_p.IsNull then
+     begin
+
+      Bonv_liv_listTable.Edit;
+      Bonv_liv_listTablequt_p.Value := 0;
+      Bonv_liv_listTable.Post;
+
+     end;
 
 end;
 
@@ -2289,38 +2404,62 @@ end;
 
 procedure TMainForm.Bonv_fac_listTablecond_pChange(Sender: TField);
 begin
- if Bonv_fac_listTablecond_p.IsNull then
+  if (Bonv_fac_listTablecond_p.Value > 9999999) OR (Bonv_fac_listTablecond_p.Value < -9999999)  then
  begin
 
+  sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
   Bonv_fac_listTable.Edit;
   Bonv_fac_listTablecond_p.Value := 1;
   Bonv_fac_listTable.Post;
 
- end;
+ end else if Bonv_fac_listTablecond_p.IsNull then
+     begin
+
+      Bonv_fac_listTable.Edit;
+      Bonv_fac_listTablecond_p.Value := 0;
+      Bonv_fac_listTable.Post;
+
+     end;
 end;
 
 procedure TMainForm.Bonv_fac_listTableprixvd_pChange(Sender: TField);
 begin
- if Bonv_fac_listTableprixvd_p.IsNull then
+  if (Bonv_fac_listTableprixvd_p.Value > 9999999) OR (Bonv_fac_listTableprixvd_p.Value < -9999999)  then
  begin
 
+  sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
   Bonv_fac_listTable.Edit;
-  Bonv_fac_listTableprixvd_p.Value := 0;
+  Bonv_fac_listTableprixvd_p.Value := 1;
   Bonv_fac_listTable.Post;
 
- end;
+ end else if Bonv_fac_listTableprixvd_p.IsNull then
+     begin
+
+      Bonv_fac_listTable.Edit;
+      Bonv_fac_listTableprixvd_p.Value := 0;
+      Bonv_fac_listTable.Post;
+
+     end;
 end;
 
 procedure TMainForm.Bonv_fac_listTablequt_pChange(Sender: TField);
 begin
- if Bonv_fac_listTablequt_p.IsNull then
+ if (Bonv_fac_listTablequt_p.Value > 9999999) OR (Bonv_fac_listTablequt_p.Value < -9999999)  then
  begin
 
+  sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
   Bonv_fac_listTable.Edit;
-  Bonv_fac_listTablequt_p.Value := 0;
+  Bonv_fac_listTablequt_p.Value := 1;
   Bonv_fac_listTable.Post;
 
- end;
+ end else if Bonv_fac_listTablequt_p.IsNull then
+     begin
+
+      Bonv_fac_listTable.Edit;
+      Bonv_fac_listTablequt_p.Value := 0;
+      Bonv_fac_listTable.Post;
+
+     end;
 end;
 
 procedure TMainForm.Bonv_fac_listTabletva_pChange(Sender: TField);
@@ -2580,11 +2719,19 @@ end;
 
 procedure TMainForm.Bona_fac_listTablecond_pChange(Sender: TField);
 begin
-     if Bona_fac_listTablecond_p.IsNull then
+  if (Bona_fac_listTablecond_p.Value > 9999999) OR (Bona_fac_listTablecond_p.Value < -9999999)  then
+ begin
+
+  sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+  Bona_fac_listTable.Edit;
+  Bona_fac_listTablecond_p.Value := 1;
+  Bona_fac_listTable.Post;
+
+ end else if Bona_fac_listTablecond_p.IsNull then
      begin
 
       Bona_fac_listTable.Edit;
-      Bona_fac_listTablecond_p.Value := 1;
+      Bona_fac_listTablecond_p.Value := 0;
       Bona_fac_listTable.Post;
 
      end;
@@ -2592,7 +2739,15 @@ end;
 
 procedure TMainForm.Bona_fac_listTableprixht_pChange(Sender: TField);
 begin
-     if Bona_fac_listTableprixht_p.IsNull then
+   if (Bona_fac_listTableprixht_p.Value > 9999999) OR (Bona_fac_listTableprixht_p.Value < -9999999)  then
+ begin
+
+  sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+  Bona_fac_listTable.Edit;
+  Bona_fac_listTableprixht_p.Value := 1;
+  Bona_fac_listTable.Post;
+
+ end else if Bona_fac_listTableprixht_p.IsNull then
      begin
 
       Bona_fac_listTable.Edit;
@@ -2604,7 +2759,15 @@ end;
 
 procedure TMainForm.Bona_fac_listTableprixva2_pChange(Sender: TField);
 begin
-     if Bona_fac_listTableprixva2_p.IsNull then
+ if (Bona_fac_listTableprixva2_p.Value > 9999999) OR (Bona_fac_listTableprixva2_p.Value < -9999999)  then
+ begin
+
+  sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+  Bona_fac_listTable.Edit;
+  Bona_fac_listTableprixva2_p.Value := 1;
+  Bona_fac_listTable.Post;
+
+ end else if Bona_fac_listTableprixva2_p.IsNull then
      begin
 
       Bona_fac_listTable.Edit;
@@ -2616,7 +2779,15 @@ end;
 
 procedure TMainForm.Bona_fac_listTableprixva_pChange(Sender: TField);
 begin
-     if Bona_fac_listTableprixva_p.IsNull then
+ if (Bona_fac_listTableprixva_p.Value > 9999999) OR (Bona_fac_listTableprixva_p.Value < -9999999)  then
+ begin
+
+  sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+  Bona_fac_listTable.Edit;
+  Bona_fac_listTableprixva_p.Value := 1;
+  Bona_fac_listTable.Post;
+
+ end else if Bona_fac_listTableprixva_p.IsNull then
      begin
 
       Bona_fac_listTable.Edit;
@@ -2628,7 +2799,16 @@ end;
 
 procedure TMainForm.Bona_fac_listTableprixvd_pChange(Sender: TField);
 begin
-     if Bona_fac_listTableprixvd_p.IsNull then
+
+if (Bona_fac_listTableprixvd_p.Value > 9999999) OR (Bona_fac_listTableprixvd_p.Value < -9999999)  then
+ begin
+
+  sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+  Bona_fac_listTable.Edit;
+  Bona_fac_listTableprixvd_p.Value := 1;
+  Bona_fac_listTable.Post;
+
+ end else if Bona_fac_listTableprixvd_p.IsNull then
      begin
 
       Bona_fac_listTable.Edit;
@@ -2640,7 +2820,15 @@ end;
 
 procedure TMainForm.Bona_fac_listTableprixvg_pChange(Sender: TField);
 begin
-     if Bona_fac_listTableprixvg_p.IsNull then
+ if (Bona_fac_listTableprixvg_p.Value > 9999999) OR (Bona_fac_listTableprixvg_p.Value < -9999999)  then
+ begin
+
+  sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+  Bona_fac_listTable.Edit;
+  Bona_fac_listTableprixvg_p.Value := 1;
+  Bona_fac_listTable.Post;
+
+ end else if Bona_fac_listTableprixvg_p.IsNull then
      begin
 
       Bona_fac_listTable.Edit;
@@ -2652,7 +2840,16 @@ end;
 
 procedure TMainForm.Bona_fac_listTableprixvr_pChange(Sender: TField);
 begin
-     if Bona_fac_listTableprixvr_p.IsNull then
+
+ if (Bona_fac_listTableprixvr_p.Value > 9999999) OR (Bona_fac_listTableprixvr_p.Value < -9999999)  then
+ begin
+
+  sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+  Bona_fac_listTable.Edit;
+  Bona_fac_listTableprixvr_p.Value := 1;
+  Bona_fac_listTable.Post;
+
+ end else if Bona_fac_listTableprixvr_p.IsNull then
      begin
 
       Bona_fac_listTable.Edit;
@@ -2664,7 +2861,15 @@ end;
 
 procedure TMainForm.Bona_fac_listTablequt_pChange(Sender: TField);
 begin
-     if Bona_fac_listTablequt_p.IsNull then
+ if (Bona_fac_listTablequt_p.Value > 9999999) OR (Bona_fac_listTablequt_p.Value < -9999999)  then
+ begin
+
+  sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+  Bona_fac_listTable.Edit;
+  Bona_fac_listTablequt_p.Value := 1;
+  Bona_fac_listTable.Post;
+
+ end else if Bona_fac_listTablequt_p.IsNull then
      begin
 
       Bona_fac_listTable.Edit;
