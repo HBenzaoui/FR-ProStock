@@ -722,6 +722,7 @@ type
     RegclientTablecode_bvcom: TIntegerField;
     Opt_cas_bnk_CaisseTablecode_bvcom: TIntegerField;
     Opt_cas_bnk_BankTablecode_bvcom: TIntegerField;
+    Bonv_ctr_listTablelocalisation: TWideStringField;
     procedure ClientMainFBtnClick(Sender: TObject);
     procedure FourMainFBtnClick(Sender: TObject);
     procedure ProduitMainFBtnClick(Sender: TObject);

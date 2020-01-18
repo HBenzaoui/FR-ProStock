@@ -323,6 +323,7 @@ type
               +'   (((((BCL.prixvd_p * BCL.tva_p)/100)+BCL.prixvd_p) * BCL.qut_p)*cond_p) AS MontantTTC, '
               +'   (((((((BCL.prixvd_p * BCL.tva_p)/100)+BCL.prixvd_p) * BCL.qut_p)*cond_p) )-(((BCL.prixvd_p * BCL.qut_p) * cond_p))) AS MontantTVA, '
               +'   ((P.prixht_p * BCL.qut_p)* cond_p) AS MontantAHT,  '
+              +'   L.nom_l AS Localisation,  '
               +'  CASE  '
               +'       WHEN BCL.prixvd_p <> ''0''  THEN   '
               +'     CASE WHEN ((P.prixht_p * BCL.qut_p)* cond_p) <> ''0''  '
@@ -333,7 +334,11 @@ type
               +'   (((BCL.prixvd_p * BCL.qut_p) * cond_p) - ((P.prixht_p * BCL.qut_p)* cond_p) ) AS MargeM   '
               +' FROM bonv_ctr_list as BCL   '
               +' LEFT JOIN produit as P    '
-              +'   ON BCL.code_p = P.code_p ';
+              +'   ON BCL.code_p = P.code_p '
+              +' LEFT JOIN localisation as L '
+              +'   ON P.code_l = L.code_l ';
+
+
     procedure EnableBonCtr;
     procedure showInPoleClient;
     procedure DisableFavBtns;

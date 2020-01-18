@@ -4688,6 +4688,26 @@ object BonCtrGestionF: TBonCtrGestionF
           WordWrap = False
         end
         item
+          AutoDropDown = True
+          CellButtons = <>
+          DynProps = <>
+          EditButtons = <>
+          FieldName = 'localisation'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = 14
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = []
+          Footers = <>
+          Layout = tlCenter
+          ReadOnly = True
+          TextEditing = False
+          Title.Alignment = taCenter
+          Title.Caption = 'Localisation'
+          Width = 200
+          WordWrap = False
+        end
+        item
           CellButtons = <>
           DisplayFormat = '0.00 %'
           DynProps = <>
