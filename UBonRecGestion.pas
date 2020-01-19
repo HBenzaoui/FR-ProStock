@@ -232,7 +232,7 @@ type
 
     const BRLSQL = 
       ' SELECT BRL.code_barec,BRL.code_barecl,BRL.qut_p,BRL.cond_p,BRL.code_p,BRL.tva_p,BRL.prixht_p,P.nom_p as nomp, P.refer_p as referp,  '
-      +' BRL.prixvd_p,BRL.prixvr_p,BRL.prixvg_p,BRL.prixva_p,BRL.prixva2_p,BRL.dateperiss_p,BRL.qutinstock_p, '
+      +' BRL.prixvd_p,BRL.prixvr_p,BRL.prixvg_p,BRL.prixva_p,BRL.prixva2_p,BRL.dateperiss_p,BRL.qutinstock_p,L.nom_l AS Localisation, '
       +'   (((BRL.prixht_p * BRL.tva_p)/100)+BRL.prixht_p) AS PrixATTC, '
       +'   ((BRL.prixht_p * BRL.qut_p) * cond_p) AS MontantHT, '
       +'   (((((BRL.prixht_p * BRL.tva_p)/100)+BRL.prixht_p) * BRL.qut_p)*cond_p) AS MontantTTC, '
@@ -275,7 +275,9 @@ type
       +'  END AS MargeA2   '
       +' FROM bona_rec_list as BRL '
       +' INNER JOIN produit as P   '
-      +'  ON BRL.code_p = P.code_p ';
+      +'  ON BRL.code_p = P.code_p '
+      +' LEFT JOIN localisation as L '
+      +'  ON P.code_l = L.code_l ';
     
     procedure EnableBonRec;
   end;

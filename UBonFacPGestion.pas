@@ -224,7 +224,7 @@ type
   public
     { Public declarations }
 
-    const FPLSQL = 'SELECT FPL.code_bpfac,FPL.code_bpfacl,FPL.qut_p,FPL.prixht_p,FPL.prixvd_p,FPL.cond_p,FPL.code_p,FPL.tva_p,P.prixht_p,P.nom_p as nomp, P.refer_p as referp,  '
+    const FPLSQL = 'SELECT FPL.code_bpfac,FPL.code_bpfacl,FPL.qut_p,FPL.prixht_p,FPL.prixvd_p,FPL.cond_p,FPL.code_p,FPL.tva_p,P.prixht_p,P.nom_p as nomp, P.refer_p as referp,L.nom_l AS Localisation, '
           +'   (((FPL.prixvd_p * FPL.tva_p)/100)+FPL.prixvd_p) AS PrixVTTC,  '
           +'   ((FPL.prixht_p * FPL.qut_p) * cond_p) AS MontantAHT,  '
           +'   ((FPL.prixvd_p * FPL.qut_p) * cond_p) AS MontantHT,  '
@@ -241,7 +241,10 @@ type
           +'   (((FPL.prixvd_p * FPL.qut_p) * cond_p) - ((P.prixht_p * FPL.qut_p)* cond_p) ) AS MargeM '
           +' FROM bonp_fac_list as FPL  '
           +' INNER JOIN produit as P    '
-          +'   ON FPL.code_p = P.code_p ';
+          +'   ON FPL.code_p = P.code_p '
+          +' LEFT JOIN localisation as L '
+          +'   ON P.code_l = L.code_l ';
+
           
     procedure EnableBonFacP;
   end;

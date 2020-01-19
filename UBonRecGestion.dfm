@@ -2380,6 +2380,25 @@ object BonRecGestionF: TBonRecGestionF
         Title.Font.Quality = fqProof
         Width = 170
         WordWrap = False
+      end
+      item
+        CellButtons = <>
+        DynProps = <>
+        EditButtons = <>
+        FieldName = 'localisation'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 16
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
+        Footers = <>
+        Layout = tlCenter
+        ReadOnly = True
+        TextEditing = False
+        Title.Alignment = taCenter
+        Title.Caption = 'Localisation'
+        Width = 200
+        WordWrap = False
       end>
     object RowDetailData: TRowDetailPanelControlEh
     end

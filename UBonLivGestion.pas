@@ -251,7 +251,7 @@ type
     procedure GettingDataBLSimple;
   public
      
-     const BLLSQL = 'Select BLL.code_bvliv,BLL.code_bvlivl,BLL.qut_p,BLL.prixht_p,BLL.prixvd_p,BLL.cond_p,BLL.code_p,BLL.tva_p,BLL.code_barec,P.prixht_p,P.nom_p as nomp, P.refer_p as referp, '
+     const BLLSQL = 'Select BLL.code_bvliv,BLL.code_bvlivl,BLL.qut_p,BLL.prixht_p,BLL.prixvd_p,BLL.cond_p,BLL.code_p,BLL.tva_p,BLL.code_barec,P.prixht_p,P.nom_p as nomp, P.refer_p as referp,L.nom_l AS Localisation, '
           +' (((BLL.prixvd_p * BLL.tva_p)/100)+BLL.prixvd_p) AS PrixVTTC, '
           +' ((BLL.prixht_p * BLL.qut_p) * cond_p) AS MontantAHT, '
           +' ((BLL.prixvd_p * BLL.qut_p) * cond_p) AS MontantHT, '
@@ -268,7 +268,9 @@ type
           +' (((BLL.prixvd_p * BLL.qut_p) * cond_p) - ((P.prixht_p * BLL.qut_p)* cond_p) ) AS MargeM '
           +' FROM bonv_liv_list as BLL '
           +' INNER JOIN produit as P '
-          +' ON BLL.code_p = P.code_p ';
+          +' ON BLL.code_p = P.code_p '
+          +' LEFT JOIN localisation as L '
+          +' ON P.code_l = L.code_l ';
      procedure EnableBonLiv;
   end;
 

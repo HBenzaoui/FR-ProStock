@@ -2212,6 +2212,25 @@ object BonLivGestionF: TBonLivGestionF
         Title.Font.Style = []
         Title.Font.Quality = fqProof
         Width = 50
+      end
+      item
+        CellButtons = <>
+        DynProps = <>
+        EditButtons = <>
+        FieldName = 'localisation'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = 16
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
+        Footers = <>
+        Layout = tlCenter
+        ReadOnly = True
+        TextEditing = False
+        Title.Alignment = taCenter
+        Title.Caption = 'Localisation'
+        Width = 200
+        WordWrap = False
       end>
     object RowDetailData: TRowDetailPanelControlEh
     end
