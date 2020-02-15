@@ -6,7 +6,7 @@
 @SET PGLOCALEDIR=%~dp0\share\locale
 "%~dp0initdb" -U postgres -D "%~dp0/data" -E UTF8
 "%~dp0pg_ctl" -w -D "%~dp0/data" start
-psql.exe -U postgres -f "C:\WeeCom\bin\db_create.sql" postgres
+psql.exe -U postgres -f "C:\ProStock\bin\db_create.sql" postgres
 "%~dp0pg_ctl" -D "%~dp0/data" stop
 
 

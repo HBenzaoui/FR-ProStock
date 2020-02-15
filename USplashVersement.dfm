@@ -277,8 +277,8 @@ object FSplashVersement: TFSplashVersement
     object Label1: TLabel
       Left = 8
       Top = 3
-      Width = 50
-      Height = 24
+      Width = 59
+      Height = 23
       Caption = 'Total:'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 1752319
@@ -288,9 +288,9 @@ object FSplashVersement: TFSplashVersement
       ParentFont = False
     end
     object TotalVersementSLbl: TLabel
-      Left = 274
+      Left = 273
       Top = 27
-      Width = 24
+      Width = 25
       Height = 51
       Alignment = taRightJustify
       Anchors = [akLeft, akBottom]

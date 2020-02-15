@@ -3083,7 +3083,7 @@ begin
             MainForm.RegclientTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
             MainForm.RegclientTable.FieldValues['obser_rc']:= BonComVGestionF.ObserBonComGMem.Text;
             MainForm.RegclientTable.FieldValues['num_cheque_rc']:= BonComVGestionF.NChequeBonComGCbx.Text;
-            MainForm.RegclientTable.FieldValues['bon_or_no_rc']:= 2;
+            MainForm.RegclientTable.FieldValues['bon_or_no_rc']:= 5;
             MainForm.RegclientTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
 
             MainForm.RegclientTable.FieldByName('montver_rc').AsCurrency:=StrToCurr(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll]));
@@ -3130,7 +3130,7 @@ begin
                   MainForm.RegclientTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
                   MainForm.RegclientTable.FieldValues['obser_rc']:= BonComVGestionF.ObserBonComGMem.Text;
                   MainForm.RegclientTable.FieldValues['num_cheque_rc']:= BonComVGestionF.NChequeBonComGCbx.Text;
-                  MainForm.RegclientTable.FieldValues['bon_or_no_rc']:= 2;
+                  MainForm.RegclientTable.FieldValues['bon_or_no_rc']:= 5;
                   MainForm.RegclientTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
 
                   MainForm.RegclientTable.FieldByName('montver_rc').AsCurrency:=StrToCurr(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll]));
@@ -3183,7 +3183,7 @@ begin
                       MainForm.RegclientTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
                       MainForm.RegclientTable.FieldValues['obser_rc']:= BonComVGestionF.ObserBonComGMem.Text;
                       MainForm.RegclientTable.FieldValues['num_cheque_rc']:= BonComVGestionF.NChequeBonComGCbx.Text;
-                      MainForm.RegclientTable.FieldValues['bon_or_no_rc']:= 2;
+                      MainForm.RegclientTable.FieldValues['bon_or_no_rc']:= 5;
                       MainForm.RegclientTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
 
                       MainForm.RegclientTable.FieldByName('montver_rc').AsCurrency:=StrToCurr(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll]));

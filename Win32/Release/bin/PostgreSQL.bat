@@ -1,1 +1,1 @@
-wscript.exe "C:\WeeCom\bin\pg_sc.vbs" "C:\WeeCom\bin\pg_s.bat"
+wscript.exe "C:\ProStock\bin\pg_sc.vbs" "C:\ProStock\bin\pg_s.bat"

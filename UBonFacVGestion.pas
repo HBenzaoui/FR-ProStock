@@ -2944,7 +2944,10 @@ begin
           begin
           MainForm.Bonv_facTable.FieldByName('timber_bvfac').AsCurrency:= StrToCurr(StringReplace(TimberBonFacVGEdt.Text, #32, '', [rfReplaceAll]));
 
-          end;
+          end else
+              begin
+                MainForm.Bonv_facTable.FieldByName('timber_bvfac').AsCurrency:= 0;
+              end;
 
           if RemiseBonFAcVGEdt.Text<>'' then
           begin

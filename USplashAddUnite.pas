@@ -1380,9 +1380,11 @@ begin
 
  end;
 
-
- if    (OKAddUniteSBtn.Tag <> 0) AND (OKAddUniteSBtn.Tag <> 1) AND (OKAddUniteSBtn.Tag <> 2) AND (OKAddUniteSBtn.Tag <> 3) AND (OKAddUniteSBtn.Tag <> 28)
-   AND (OKAddUniteSBtn.Tag <> 7) AND (OKAddUniteSBtn.Tag <> 11)AND (OKAddUniteSBtn.Tag <> 18)AND (OKAddUniteSBtn.Tag <> 19)  then
+  //Add forms where we dont need space button to act as return button
+ if (OKAddUniteSBtn.Tag <> 0) AND (OKAddUniteSBtn.Tag <> 1) AND (OKAddUniteSBtn.Tag <> 2) AND (OKAddUniteSBtn.Tag <> 3) AND
+    (OKAddUniteSBtn.Tag <> 28)AND (OKAddUniteSBtn.Tag <> 7) AND (OKAddUniteSBtn.Tag <> 11)AND (OKAddUniteSBtn.Tag <> 18)AND
+    (OKAddUniteSBtn.Tag <> 19)AND (OKAddUniteSBtn.Tag <> 30)AND (OKAddUniteSBtn.Tag <> 31)AND (OKAddUniteSBtn.Tag <> 38)AND
+    (OKAddUniteSBtn.Tag <> 33)     then
  begin
     if (key = #13) OR (key = #32) then
  begin

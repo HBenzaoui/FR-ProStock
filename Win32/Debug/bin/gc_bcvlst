@@ -1,5 +1,5 @@
 0~ valider_bvcom~ VA~ 24~ -1
-1~ num_bvcom~ N° du bon~ 117~ -1
+1~ num_bvcom~ N° du bon~ 100~ -1
 2~ date_bvcom~ Date~ 100~ -1
 3~ time_bvcom~ Heure~ 100~ -1
 4~ clientbvcom~ Client~ 300~ -1
