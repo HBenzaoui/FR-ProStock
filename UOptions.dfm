@@ -25,7 +25,7 @@ object FOptions: TFOptions
     Top = 27
     Width = 437
     Height = 611
-    ActivePage = sTabSheet4
+    ActivePage = sTabSheet2
     Align = alClient
     DoubleBuffered = True
     Font.Charset = DEFAULT_CHARSET
@@ -44,7 +44,7 @@ object FOptions: TFOptions
       Caption = 'Enterprise'
       DesignSize = (
         429
-        581)
+        561)
       object ImageDeleteProduitGBtn: TAdvToolButton
         Left = 405
         Top = 271
@@ -113,7 +113,7 @@ object FOptions: TFOptions
       object Label10: TLabel
         Left = 10
         Top = 213
-        Width = 34
+        Width = 37
         Height = 16
         Caption = 'Logo :'
         Color = 4207405
@@ -129,7 +129,7 @@ object FOptions: TFOptions
       object Label6: TLabel
         Left = 10
         Top = 12
-        Width = 99
+        Width = 107
         Height = 16
         Caption = 'Nom d'#39'enterprise:'
         Color = 4207405
@@ -145,7 +145,7 @@ object FOptions: TFOptions
       object Label7: TLabel
         Left = 10
         Top = 62
-        Width = 62
+        Width = 67
         Height = 16
         Caption = 'T'#233'l'#233'phone:'
         Color = 4207405
@@ -161,7 +161,7 @@ object FOptions: TFOptions
       object Label8: TLabel
         Left = 10
         Top = 113
-        Width = 41
+        Width = 44
         Height = 16
         Caption = 'Mobile:'
         Color = 4207405
@@ -177,7 +177,7 @@ object FOptions: TFOptions
       object Label9: TLabel
         Left = 10
         Top = 164
-        Width = 50
+        Width = 52
         Height = 16
         Caption = 'Adresse:'
         Color = 4207405
@@ -250,7 +250,7 @@ object FOptions: TFOptions
       object NArtCompanyLbl: TLabel
         Left = 10
         Top = 467
-        Width = 41
+        Width = 40
         Height = 18
         Caption = 'N'#176'Art:'
         Color = 4207405
@@ -426,7 +426,7 @@ object FOptions: TFOptions
       Caption = 'Impression'
       DesignSize = (
         429
-        581)
+        561)
       object AutoImL: TLabel
         Left = 10
         Top = 17
@@ -446,7 +446,7 @@ object FOptions: TFOptions
       object CaiseeLbl: TLabel
         Left = 10
         Top = 51
-        Width = 187
+        Width = 196
         Height = 16
         Caption = 'Imprimante de caisse par d'#233'faut:'
         Color = 4207405
@@ -462,7 +462,7 @@ object FOptions: TFOptions
       object Label2: TLabel
         Left = 10
         Top = 111
-        Width = 210
+        Width = 224
         Height = 16
         Caption = 'Imprimante de Code barre par d'#233'faut:'
         Color = 4207405
@@ -478,7 +478,7 @@ object FOptions: TFOptions
       object Label3: TLabel
         Left = 10
         Top = 160
-        Width = 166
+        Width = 176
         Height = 16
         Caption = 'Format d'#39#233'tiquette par d'#233'faut:'
         Color = 4207405
@@ -494,7 +494,7 @@ object FOptions: TFOptions
       object Label4: TLabel
         Left = 10
         Top = 208
-        Width = 198
+        Width = 210
         Height = 16
         Caption = 'Prix de vente d'#39#233'tiquette par d'#233'faut:'
         Color = 4207405
@@ -510,7 +510,7 @@ object FOptions: TFOptions
       object Label1: TLabel
         Left = 10
         Top = 272
-        Width = 200
+        Width = 213
         Height = 16
         Caption = 'Format Bon de Livraison par d'#233'faut:'
         Color = 4207405
@@ -526,7 +526,7 @@ object FOptions: TFOptions
       object Label5: TLabel
         Left = 10
         Top = 320
-        Width = 206
+        Width = 218
         Height = 16
         Caption = 'Format Facture Proforma par d'#233'faut:'
         Color = 4207405
@@ -542,7 +542,7 @@ object FOptions: TFOptions
       object Label43: TLabel
         Left = 10
         Top = 369
-        Width = 203
+        Width = 213
         Height = 16
         Caption = 'Format Facture de Vente par d'#233'faut:'
         Color = 4207405
@@ -558,7 +558,7 @@ object FOptions: TFOptions
       object Label44: TLabel
         Left = 10
         Top = 419
-        Width = 206
+        Width = 218
         Height = 16
         Caption = 'Format Bon de R'#233'ception par d'#233'faut:'
         Color = 4207405
@@ -574,7 +574,7 @@ object FOptions: TFOptions
       object Label45: TLabel
         Left = 10
         Top = 467
-        Width = 194
+        Width = 206
         Height = 16
         Caption = 'Format Facture d'#39'Achat par d'#233'faut:'
         Color = 4207405
@@ -858,7 +858,7 @@ object FOptions: TFOptions
         object Label11: TLabel
           Left = 7
           Top = 0
-          Width = 130
+          Width = 128
           Height = 21
           Caption = 'Afficheur client'
           Color = 4207405
@@ -889,7 +889,7 @@ object FOptions: TFOptions
         object PoleDisplayCOMListLbl: TLabel
           Left = 9
           Top = 55
-          Width = 141
+          Width = 151
           Height = 16
           Caption = 'Port de cummunications:'
           Color = 4207405
@@ -906,7 +906,7 @@ object FOptions: TFOptions
         object PoleDisplayMsgLbl: TLabel
           Left = 9
           Top = 106
-          Width = 103
+          Width = 108
           Height = 16
           Caption = 'Premier message:'
           Color = 4207405
@@ -923,7 +923,7 @@ object FOptions: TFOptions
         object PoleDisplayMsg2Lbl: TLabel
           Left = 9
           Top = 160
-          Width = 100
+          Width = 105
           Height = 16
           Caption = 'Dernier message:'
           Color = 4207405
@@ -940,7 +940,7 @@ object FOptions: TFOptions
         object PoleDisplayTotalLbl: TLabel
           Left = 9
           Top = 219
-          Width = 84
+          Width = 89
           Height = 16
           Caption = #192' la fin montre:'
           Color = 4207405
@@ -972,7 +972,7 @@ object FOptions: TFOptions
         object TestPoleLbl: TLabel
           Left = 385
           Top = 32
-          Width = 25
+          Width = 26
           Height = 16
           Caption = 'Test'
           Color = 4207405
@@ -1120,7 +1120,7 @@ object FOptions: TFOptions
         object Label17: TLabel
           Left = 10
           Top = -2
-          Width = 106
+          Width = 103
           Height = 21
           Caption = 'Tiroir caisse'
           Color = 4207405
@@ -1151,7 +1151,7 @@ object FOptions: TFOptions
         object CaseCOMLbl: TLabel
           Left = 19
           Top = 83
-          Width = 141
+          Width = 151
           Height = 16
           Caption = 'Port de cummunications:'
           Color = 4207405
@@ -1168,7 +1168,7 @@ object FOptions: TFOptions
         object CasePrinterLbl: TLabel
           Left = 21
           Top = 175
-          Width = 137
+          Width = 148
           Height = 16
           Caption = 'L'#39'imprimante connect'#233'e:'
           Color = 4207405
@@ -1185,7 +1185,7 @@ object FOptions: TFOptions
         object TiroirCaisseCasePasswordLbl: TLabel
           Left = 11
           Top = 244
-          Width = 274
+          Width = 275
           Height = 15
           Caption = 'Ouvrez le tiroir avec le mot de passe d'#39'utilisateur:'
           Color = 4207405
@@ -1217,7 +1217,7 @@ object FOptions: TFOptions
         object TestTeroirLbl: TLabel
           Left = 391
           Top = 32
-          Width = 25
+          Width = 26
           Height = 16
           Caption = 'Test'
           Color = 4207405
@@ -1404,7 +1404,7 @@ object FOptions: TFOptions
         Left = 0
         Top = 0
         Width = 4
-        Height = 581
+        Height = 561
         Align = alLeft
         BevelOuter = bvNone
         Color = 15658734
@@ -1415,7 +1415,7 @@ object FOptions: TFOptions
         Left = 424
         Top = 0
         Width = 5
-        Height = 581
+        Height = 561
         Align = alRight
         BevelOuter = bvNone
         Color = 15658734
@@ -1440,7 +1440,7 @@ object FOptions: TFOptions
         object Label13: TLabel
           Left = 8
           Top = 0
-          Width = 105
+          Width = 104
           Height = 21
           Caption = 'Initialisation'
           Color = 4207405
@@ -1487,7 +1487,7 @@ object FOptions: TFOptions
         object Label21: TLabel
           Left = 374
           Top = 32
-          Width = 47
+          Width = 48
           Height = 16
           Caption = 'initialise'
           Color = 4207405
@@ -1504,7 +1504,7 @@ object FOptions: TFOptions
         object Label16: TLabel
           Left = 30
           Top = 57
-          Width = 101
+          Width = 98
           Height = 14
           Caption = 'Bons au Comptoir:'
           Color = 4207405
@@ -1520,7 +1520,7 @@ object FOptions: TFOptions
         object Label18: TLabel
           Left = 25
           Top = 77
-          Width = 104
+          Width = 103
           Height = 14
           Caption = 'Bons des Livraison:'
           Color = 4207405
@@ -1536,7 +1536,7 @@ object FOptions: TFOptions
         object Label19: TLabel
           Left = 20
           Top = 117
-          Width = 112
+          Width = 109
           Height = 14
           Caption = 'Factures des Ventes:'
           Color = 4207405
@@ -1568,7 +1568,7 @@ object FOptions: TFOptions
         object Label22: TLabel
           Left = 4
           Top = 197
-          Width = 127
+          Width = 125
           Height = 14
           Caption = 'R'#232'glement Fournisseur:'
           Color = 4207405
@@ -1584,7 +1584,7 @@ object FOptions: TFOptions
         object Label23: TLabel
           Left = 31
           Top = 177
-          Width = 100
+          Width = 98
           Height = 14
           Caption = 'R'#232'glement Clients:'
           Color = 4207405
@@ -1600,7 +1600,7 @@ object FOptions: TFOptions
         object Label24: TLabel
           Left = 29
           Top = 157
-          Width = 105
+          Width = 100
           Height = 14
           Caption = 'Factures Proforma:'
           Color = 4207405
@@ -1616,7 +1616,7 @@ object FOptions: TFOptions
         object Label25: TLabel
           Left = 32
           Top = 138
-          Width = 99
+          Width = 97
           Height = 14
           Caption = 'Factures d'#39'Achats:'
           Color = 4207405
@@ -1632,7 +1632,7 @@ object FOptions: TFOptions
         object Label26: TLabel
           Left = 59
           Top = 237
-          Width = 71
+          Width = 70
           Height = 14
           Caption = 'Les Banques:'
           Color = 4207405
@@ -1648,7 +1648,7 @@ object FOptions: TFOptions
         object Label27: TLabel
           Left = 65
           Top = 217
-          Width = 66
+          Width = 64
           Height = 14
           Caption = 'Les Caisses:'
           Color = 4207405
@@ -1664,7 +1664,7 @@ object FOptions: TFOptions
         object Label28: TLabel
           Left = 329
           Top = 57
-          Width = 49
+          Width = 48
           Height = 14
           Caption = 'Produits:'
           Color = 4207405
@@ -1680,7 +1680,7 @@ object FOptions: TFOptions
         object Label29: TLabel
           Left = 338
           Top = 77
-          Width = 40
+          Width = 39
           Height = 14
           Caption = 'Clients:'
           Color = 4207405
@@ -1696,7 +1696,7 @@ object FOptions: TFOptions
         object Label30: TLabel
           Left = 310
           Top = 117
-          Width = 69
+          Width = 67
           Height = 14
           Caption = 'Les Charges:'
           Color = 4207405
@@ -1712,7 +1712,7 @@ object FOptions: TFOptions
         object Label31: TLabel
           Left = 305
           Top = 97
-          Width = 73
+          Width = 72
           Height = 14
           Caption = 'Fournisseurs:'
           Color = 4207405
@@ -1744,7 +1744,7 @@ object FOptions: TFOptions
         object Label33: TLabel
           Left = 256
           Top = 177
-          Width = 125
+          Width = 121
           Height = 14
           Caption = 'Produits Sous Familes:'
           Color = 4207405
@@ -1760,7 +1760,7 @@ object FOptions: TFOptions
         object Label34: TLabel
           Left = 286
           Top = 157
-          Width = 95
+          Width = 91
           Height = 14
           Caption = 'Produits Familes:'
           Color = 4207405
@@ -1776,7 +1776,7 @@ object FOptions: TFOptions
         object Label35: TLabel
           Left = 320
           Top = 138
-          Width = 58
+          Width = 57
           Height = 14
           Caption = 'Les Pertes:'
           Color = 4207405
@@ -1792,7 +1792,7 @@ object FOptions: TFOptions
         object Label36: TLabel
           Left = 205
           Top = 237
-          Width = 173
+          Width = 172
           Height = 14
           Caption = 'Supprimer les dettes des clients:'
           Color = 4207405
@@ -1808,7 +1808,7 @@ object FOptions: TFOptions
         object Label37: TLabel
           Left = 306
           Top = 217
-          Width = 73
+          Width = 71
           Height = 14
           Caption = 'Localitations:'
           Color = 4207405
@@ -1824,7 +1824,7 @@ object FOptions: TFOptions
         object Label38: TLabel
           Left = 203
           Top = 9
-          Width = 76
+          Width = 74
           Height = 14
           Caption = 'Mot de Passe:'
           Color = 4207405
@@ -1840,7 +1840,7 @@ object FOptions: TFOptions
         object Label39: TLabel
           Left = 173
           Top = 256
-          Width = 205
+          Width = 204
           Height = 14
           Caption = 'Supprimer les dettes des fournisseurs:'
           Color = 4207405
@@ -2576,7 +2576,7 @@ object FOptions: TFOptions
         Left = 0
         Top = 0
         Width = 4
-        Height = 581
+        Height = 561
         Align = alLeft
         BevelOuter = bvNone
         Color = 15658734
@@ -2587,7 +2587,7 @@ object FOptions: TFOptions
         Left = 424
         Top = 0
         Width = 5
-        Height = 581
+        Height = 561
         Align = alRight
         BevelOuter = bvNone
         Color = 15658734
@@ -2599,7 +2599,7 @@ object FOptions: TFOptions
       Caption = 'Produit Favoris'
       DesignSize = (
         429
-        581)
+        561)
       object Label40: TLabel
         Left = 0
         Top = 0
@@ -2654,7 +2654,7 @@ object FOptions: TFOptions
         Left = 0
         Top = 40
         Width = 429
-        Height = 541
+        Height = 521
         ActivePage = Fav1ListTB
         Align = alClient
         DoubleBuffered = True
@@ -2696,7 +2696,7 @@ object FOptions: TFOptions
             Left = 0
             Top = 2
             Width = 421
-            Height = 489
+            Height = 469
             Align = alClient
             BevelOuter = bvNone
             BiDiMode = bdLeftToRight
@@ -2797,10 +2797,10 @@ object FOptions: TFOptions
             TabOrder = 1
             DesignSize = (
               421
-              489)
+              469)
             object Fav1sp: TsSpeedButton
               Left = 25
-              Top = 10
+              Top = 9
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -2825,7 +2825,7 @@ object FOptions: TFOptions
             end
             object Fav2sp: TsSpeedButton
               Left = 235
-              Top = 10
+              Top = 9
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -2850,7 +2850,7 @@ object FOptions: TFOptions
             end
             object Fav3sp: TsSpeedButton
               Left = 25
-              Top = 91
+              Top = 87
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -2875,7 +2875,7 @@ object FOptions: TFOptions
             end
             object Fav4sp: TsSpeedButton
               Left = 235
-              Top = 91
+              Top = 87
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -2900,7 +2900,7 @@ object FOptions: TFOptions
             end
             object Fav5sp: TsSpeedButton
               Left = 25
-              Top = 172
+              Top = 165
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -2925,7 +2925,7 @@ object FOptions: TFOptions
             end
             object Fav6sp: TsSpeedButton
               Left = 235
-              Top = 172
+              Top = 165
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -2950,7 +2950,7 @@ object FOptions: TFOptions
             end
             object Fav7sp: TsSpeedButton
               Left = 25
-              Top = 253
+              Top = 243
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -2975,7 +2975,7 @@ object FOptions: TFOptions
             end
             object Fav8sp: TsSpeedButton
               Left = 235
-              Top = 253
+              Top = 243
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -3000,7 +3000,7 @@ object FOptions: TFOptions
             end
             object Fav9sp: TsSpeedButton
               Left = 25
-              Top = 334
+              Top = 321
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -3025,7 +3025,7 @@ object FOptions: TFOptions
             end
             object Fav10sp: TsSpeedButton
               Left = 235
-              Top = 334
+              Top = 321
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -3050,7 +3050,7 @@ object FOptions: TFOptions
             end
             object Fav11sp: TsSpeedButton
               Left = 25
-              Top = 417
+              Top = 399
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -3075,7 +3075,7 @@ object FOptions: TFOptions
             end
             object Fav12sp: TsSpeedButton
               Left = 235
-              Top = 417
+              Top = 399
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -3118,7 +3118,7 @@ object FOptions: TFOptions
             Left = 0
             Top = 2
             Width = 421
-            Height = 489
+            Height = 469
             Align = alClient
             BevelOuter = bvNone
             BiDiMode = bdLeftToRight
@@ -3219,10 +3219,10 @@ object FOptions: TFOptions
             TabOrder = 1
             DesignSize = (
               421
-              489)
+              469)
             object Fav13sp: TsSpeedButton
               Left = 25
-              Top = 10
+              Top = 9
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -3247,7 +3247,7 @@ object FOptions: TFOptions
             end
             object Fav14sp: TsSpeedButton
               Left = 235
-              Top = 10
+              Top = 9
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -3272,7 +3272,7 @@ object FOptions: TFOptions
             end
             object Fav15sp: TsSpeedButton
               Left = 25
-              Top = 91
+              Top = 87
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -3297,7 +3297,7 @@ object FOptions: TFOptions
             end
             object Fav16sp: TsSpeedButton
               Left = 235
-              Top = 91
+              Top = 87
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -3322,7 +3322,7 @@ object FOptions: TFOptions
             end
             object Fav17sp: TsSpeedButton
               Left = 25
-              Top = 172
+              Top = 165
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -3347,7 +3347,7 @@ object FOptions: TFOptions
             end
             object Fav18sp: TsSpeedButton
               Left = 235
-              Top = 172
+              Top = 165
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -3372,7 +3372,7 @@ object FOptions: TFOptions
             end
             object Fav19sp: TsSpeedButton
               Left = 25
-              Top = 253
+              Top = 243
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -3397,7 +3397,7 @@ object FOptions: TFOptions
             end
             object Fav20sp: TsSpeedButton
               Left = 235
-              Top = 253
+              Top = 243
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -3422,7 +3422,7 @@ object FOptions: TFOptions
             end
             object Fav21sp: TsSpeedButton
               Left = 25
-              Top = 334
+              Top = 321
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -3447,7 +3447,7 @@ object FOptions: TFOptions
             end
             object Fav22sp: TsSpeedButton
               Left = 235
-              Top = 334
+              Top = 321
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -3472,7 +3472,7 @@ object FOptions: TFOptions
             end
             object Fav23sp: TsSpeedButton
               Left = 25
-              Top = 417
+              Top = 399
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -3497,7 +3497,7 @@ object FOptions: TFOptions
             end
             object Fav24sp: TsSpeedButton
               Left = 235
-              Top = 417
+              Top = 399
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -3540,7 +3540,7 @@ object FOptions: TFOptions
             Left = 0
             Top = 2
             Width = 421
-            Height = 489
+            Height = 469
             Align = alClient
             BevelOuter = bvNone
             BiDiMode = bdLeftToRight
@@ -3641,10 +3641,10 @@ object FOptions: TFOptions
             TabOrder = 1
             DesignSize = (
               421
-              489)
+              469)
             object Fav25sp: TsSpeedButton
               Left = 25
-              Top = 10
+              Top = 9
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -3669,7 +3669,7 @@ object FOptions: TFOptions
             end
             object Fav26sp: TsSpeedButton
               Left = 235
-              Top = 10
+              Top = 9
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -3694,7 +3694,7 @@ object FOptions: TFOptions
             end
             object Fav27sp: TsSpeedButton
               Left = 25
-              Top = 91
+              Top = 87
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -3719,7 +3719,7 @@ object FOptions: TFOptions
             end
             object Fav28sp: TsSpeedButton
               Left = 235
-              Top = 91
+              Top = 87
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -3744,7 +3744,7 @@ object FOptions: TFOptions
             end
             object Fav29sp: TsSpeedButton
               Left = 25
-              Top = 172
+              Top = 165
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -3769,7 +3769,7 @@ object FOptions: TFOptions
             end
             object Fav30sp: TsSpeedButton
               Left = 235
-              Top = 172
+              Top = 165
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -3794,7 +3794,7 @@ object FOptions: TFOptions
             end
             object Fav31sp: TsSpeedButton
               Left = 25
-              Top = 253
+              Top = 243
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -3819,7 +3819,7 @@ object FOptions: TFOptions
             end
             object Fav32sp: TsSpeedButton
               Left = 235
-              Top = 253
+              Top = 243
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -3844,7 +3844,7 @@ object FOptions: TFOptions
             end
             object Fav33sp: TsSpeedButton
               Left = 25
-              Top = 334
+              Top = 321
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -3869,7 +3869,7 @@ object FOptions: TFOptions
             end
             object Fav34sp: TsSpeedButton
               Left = 235
-              Top = 334
+              Top = 321
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -3894,7 +3894,7 @@ object FOptions: TFOptions
             end
             object Fav35sp: TsSpeedButton
               Left = 25
-              Top = 417
+              Top = 399
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -3919,7 +3919,7 @@ object FOptions: TFOptions
             end
             object Fav36sp: TsSpeedButton
               Left = 235
-              Top = 417
+              Top = 399
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -3962,7 +3962,7 @@ object FOptions: TFOptions
             Left = 0
             Top = 2
             Width = 421
-            Height = 489
+            Height = 469
             Align = alClient
             BevelOuter = bvNone
             BiDiMode = bdLeftToRight
@@ -4063,10 +4063,10 @@ object FOptions: TFOptions
             TabOrder = 1
             DesignSize = (
               421
-              489)
+              469)
             object Fav37sp: TsSpeedButton
               Left = 25
-              Top = 10
+              Top = 9
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -4091,7 +4091,7 @@ object FOptions: TFOptions
             end
             object Fav38sp: TsSpeedButton
               Left = 235
-              Top = 10
+              Top = 9
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -4116,7 +4116,7 @@ object FOptions: TFOptions
             end
             object Fav39sp: TsSpeedButton
               Left = 25
-              Top = 91
+              Top = 87
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -4141,7 +4141,7 @@ object FOptions: TFOptions
             end
             object Fav40sp: TsSpeedButton
               Left = 235
-              Top = 91
+              Top = 87
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -4166,7 +4166,7 @@ object FOptions: TFOptions
             end
             object Fav41sp: TsSpeedButton
               Left = 25
-              Top = 172
+              Top = 165
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -4191,7 +4191,7 @@ object FOptions: TFOptions
             end
             object Fav42sp: TsSpeedButton
               Left = 235
-              Top = 172
+              Top = 165
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -4216,7 +4216,7 @@ object FOptions: TFOptions
             end
             object Fav43sp: TsSpeedButton
               Left = 25
-              Top = 253
+              Top = 243
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -4241,7 +4241,7 @@ object FOptions: TFOptions
             end
             object Fav44sp: TsSpeedButton
               Left = 235
-              Top = 253
+              Top = 243
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -4266,7 +4266,7 @@ object FOptions: TFOptions
             end
             object Fav45sp: TsSpeedButton
               Left = 25
-              Top = 334
+              Top = 321
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -4291,7 +4291,7 @@ object FOptions: TFOptions
             end
             object Fav46sp: TsSpeedButton
               Left = 235
-              Top = 334
+              Top = 321
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -4316,7 +4316,7 @@ object FOptions: TFOptions
             end
             object Fav47sp: TsSpeedButton
               Left = 25
-              Top = 417
+              Top = 399
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -4341,7 +4341,7 @@ object FOptions: TFOptions
             end
             object Fav48sp: TsSpeedButton
               Left = 235
-              Top = 417
+              Top = 399
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -4384,7 +4384,7 @@ object FOptions: TFOptions
             Left = 0
             Top = 2
             Width = 421
-            Height = 489
+            Height = 469
             Align = alClient
             BevelOuter = bvNone
             BiDiMode = bdLeftToRight
@@ -4485,10 +4485,10 @@ object FOptions: TFOptions
             TabOrder = 1
             DesignSize = (
               421
-              489)
+              469)
             object Fav49sp: TsSpeedButton
               Left = 25
-              Top = 10
+              Top = 9
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -4513,7 +4513,7 @@ object FOptions: TFOptions
             end
             object Fav50sp: TsSpeedButton
               Left = 235
-              Top = 10
+              Top = 9
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -4538,7 +4538,7 @@ object FOptions: TFOptions
             end
             object Fav51sp: TsSpeedButton
               Left = 25
-              Top = 91
+              Top = 87
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -4563,7 +4563,7 @@ object FOptions: TFOptions
             end
             object Fav52sp: TsSpeedButton
               Left = 235
-              Top = 91
+              Top = 87
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -4588,7 +4588,7 @@ object FOptions: TFOptions
             end
             object Fav53sp: TsSpeedButton
               Left = 25
-              Top = 172
+              Top = 165
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -4613,7 +4613,7 @@ object FOptions: TFOptions
             end
             object Fav54sp: TsSpeedButton
               Left = 235
-              Top = 172
+              Top = 165
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -4638,7 +4638,7 @@ object FOptions: TFOptions
             end
             object Fav55sp: TsSpeedButton
               Left = 25
-              Top = 253
+              Top = 243
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -4663,7 +4663,7 @@ object FOptions: TFOptions
             end
             object Fav56sp: TsSpeedButton
               Left = 235
-              Top = 253
+              Top = 243
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -4688,7 +4688,7 @@ object FOptions: TFOptions
             end
             object Fav57sp: TsSpeedButton
               Left = 25
-              Top = 334
+              Top = 321
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -4713,7 +4713,7 @@ object FOptions: TFOptions
             end
             object Fav58sp: TsSpeedButton
               Left = 235
-              Top = 334
+              Top = 321
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -4738,7 +4738,7 @@ object FOptions: TFOptions
             end
             object Fav59sp: TsSpeedButton
               Left = 25
-              Top = 417
+              Top = 399
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -4763,7 +4763,7 @@ object FOptions: TFOptions
             end
             object Fav60sp: TsSpeedButton
               Left = 235
-              Top = 417
+              Top = 399
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -4838,7 +4838,7 @@ object FOptions: TFOptions
         object BalanceIPListLbl: TLabel
           Left = 9
           Top = 55
-          Width = 66
+          Width = 67
           Height = 16
           Caption = 'Le Balance:'
           Color = 4207405
@@ -4855,7 +4855,7 @@ object FOptions: TFOptions
         object BalanceIPAdressIPLbl: TLabel
           Left = 9
           Top = 106
-          Width = 65
+          Width = 67
           Height = 16
           Caption = 'Adresse IP:'
           Color = 4207405
@@ -4872,7 +4872,7 @@ object FOptions: TFOptions
         object BalanceIPBareCodeListLbl: TLabel
           Left = 7
           Top = 161
-          Width = 123
+          Width = 130
           Height = 16
           Caption = 'Type de Code '#226' Barre:'
           Color = 4207405
@@ -4904,7 +4904,7 @@ object FOptions: TFOptions
         object TestBalanceIPLbl: TLabel
           Left = 340
           Top = 32
-          Width = 25
+          Width = 26
           Height = 16
           Caption = 'Test'
           Color = 4207405
@@ -4950,7 +4950,7 @@ object FOptions: TFOptions
         object UploadToBalLbl: TLabel
           Left = 375
           Top = 32
-          Width = 44
+          Width = 49
           Height = 16
           Caption = 'Envoyer'
           Color = 4207405
@@ -5090,7 +5090,7 @@ object FOptions: TFOptions
         Left = 0
         Top = 0
         Width = 4
-        Height = 581
+        Height = 561
         Align = alLeft
         BevelOuter = bvNone
         Color = 15658734
@@ -5101,7 +5101,7 @@ object FOptions: TFOptions
         Left = 424
         Top = 0
         Width = 5
-        Height = 581
+        Height = 561
         Align = alRight
         BevelOuter = bvNone
         Color = 15658734

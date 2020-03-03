@@ -1344,6 +1344,7 @@ begin
 end;
 
 procedure TFOptions.ResetDBBtnClick(Sender: TObject);
+var SQLSring,SQLSring2 :String   ;
 begin
 
 
@@ -1521,6 +1522,10 @@ begin
         if ClientSdr12.SliderOn = True then
         begin
          MainForm.GstockdcConnection.ExecSQL('TRUNCATE  client');
+         SQLSring:= 'INSERT INTO client (nom_c,adr_c,ville_c,fix_c,mob_c,email_c,willaya_c,fax_c,activ_c,mob2_c,rc_c,nif_c,nart_c,nis_c,obser_c,nbank_c,rib_c,activite_c,siteweb_c,oldcredit_c,maxcredit_c,code_c,tarification_c,credit_c)' ;
+         SQLSring2:=' VALUES (''Comptoir'','''','''','''','''','''','''','''',''t'','''','''','''','''','''','''','''','''','''','''',''0'',''0'',''1'',''0'',''0'')';
+         MainForm.GstockdcConnection.ExecSQL(SQLSring + SQLSring2);
+
         end;
         if FourSdr13.SliderOn = True then
         begin
