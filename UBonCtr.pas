@@ -412,18 +412,18 @@ codeCT:= 0;
               MainForm.SQLQuery.SQL.Clear;
               MainForm.SQLQuery.SQL.Text:= 'SELECT code_bvctr FROM bonv_ctr_list WHERE code_bvctr = ' + IntToStr(codeCT);
               MainForm.SQLQuery.Active:=True;
-
-             if MainForm.SQLQuery.RecordCount <= 0 then
-             begin
-          //   MainForm.Bonv_ctrTable.Last;
-             codeCT := MainForm.Bonv_ctrTable.FieldValues['code_bvctr'];
-
-               MainForm.Bonv_ctrTable.Edit;
-               MainForm.Bonv_ctrTable.FieldValues['date_bvctr']:= DateOf(Today);
-               MainForm.Bonv_ctrTable.FieldValues['time_bvctr']:= TimeOf(Now);
-               MainForm.Bonv_ctrTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
-               MainForm.Bonv_ctrTable.Post;
-             end else
+//Disable this code to alway create new bon when open ctr
+//             if MainForm.SQLQuery.RecordCount <= 0 then
+//             begin
+//          //   MainForm.Bonv_ctrTable.Last;
+//             codeCT := MainForm.Bonv_ctrTable.FieldValues['code_bvctr'];
+//
+//               MainForm.Bonv_ctrTable.Edit;
+//               MainForm.Bonv_ctrTable.FieldValues['date_bvctr']:= DateOf(Today);
+//               MainForm.Bonv_ctrTable.FieldValues['time_bvctr']:= TimeOf(Now);
+//               MainForm.Bonv_ctrTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
+//               MainForm.Bonv_ctrTable.Post;
+//             end else
              begin
           //   MainForm.Bonv_ctrTable.Last;
             // codeCT := MainForm.Bonv_ctrTable.FieldValues['code_bvliv'];

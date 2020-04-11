@@ -4136,17 +4136,17 @@ begin
   begin
     MainForm.Bonv_ctrTable.Last;
     codeCT := MainForm.Bonv_ctrTable.FieldValues['code_bvctr'];
-    MainForm.Bonv_ctr_listTable.Active := False;
-    MainForm.Bonv_ctr_listTable.SQL.Clear;
-    MainForm.Bonv_ctr_listTable.SQL.Text := BCLSQL +' WHERE code_bvctr = ' + QuotedStr(IntToStr(codeCT));
-    MainForm.Bonv_ctr_listTable.Active := True;
+    MainForm.SQLQuery.Active := False;
+    MainForm.SQLQuery.SQL.Clear;
+    MainForm.SQLQuery.SQL.Text := BCLSQL +' WHERE code_bvctr = ' + QuotedStr(IntToStr(codeCT));
+    MainForm.SQLQuery.Active := True;
 
-    if MainForm.Bonv_ctr_listTable.RecordCount <= 0 then
-    begin
-        //   MainForm.Bonv_ctrTable.Last;
-      codeCT := MainForm.Bonv_ctrTable.FieldValues['code_bvctr'];
-    end
-    else
+//    if MainForm.SQLQuery.RecordCount <= 0 then
+//    begin
+//        //   MainForm.Bonv_ctrTable.Last;
+//      codeCT := MainForm.Bonv_ctrTable.FieldValues['code_bvctr'];
+//    end
+//    else
     begin
 
       MainForm.Bonv_ctrTable.Insert;
@@ -4179,6 +4179,9 @@ begin
   ProduitBonCtrGCbx.SetFocus;
 
   Tag := 0;
+
+  MainForm.SQLQuery.Active := False;
+  MainForm.SQLQuery.SQL.Clear;
 
   MainForm.Bonv_ctr_listTable.Refresh;
   BonCtrTotalTTCLbl.Caption :=    CurrToStrF(0, ffNumber, 2);

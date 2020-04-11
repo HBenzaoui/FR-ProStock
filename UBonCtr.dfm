@@ -980,7 +980,7 @@ object BonCtrF: TBonCtrF
       TMSStyle = 0
     end
     object AddBVCtrBtn: TAdvToolButton
-      Left = 628
+      Left = 627
       Top = 21
       Width = 100
       Height = 30
@@ -1014,7 +1014,7 @@ object BonCtrF: TBonCtrF
     object ResearchBACtrLbl: TLabel
       Left = 1
       Top = 31
-      Width = 74
+      Width = 76
       Height = 16
       Caption = 'Rechercher'
       Color = 15722984
