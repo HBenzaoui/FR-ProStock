@@ -1078,18 +1078,7 @@ begin
       begin
        if NOT isBalCode then   //Check it not a Balance CodeBare
        begin
-          MainForm.FDQuery2.Active := False;
-          MainForm.FDQuery2.SQL.Clear;
-          MainForm.FDQuery2.SQL.Text := 'SELECT code_p,nom_p,prixht_p,prixvd_p,prixvr_p,prixvg_p,prixva_p,prixva2_p,tva_p,perissable_p FROM produit WHERE LOWER(nom_p) LIKE LOWER(' + QuotedStr(ProduitBonCtrGCbx.Text) + ')';
-          MainForm.FDQuery2.Active := True;
 
-        if not (MainForm.FDQuery2.IsEmpty) then
-        begin
-          CodeP := MainForm.FDQuery2.FieldByName('code_p').AsInteger;
-
-        end
-        else
-        begin
           MainForm.SQLQuery.Active := False;
           MainForm.SQLQuery.SQL.Clear;
           MainForm.SQLQuery.SQL.Text := 'SELECT nom_cb,code_p FROM codebarres WHERE LOWER(nom_cb) LIKE LOWER(' + '' + QuotedStr(ProduitBonCtrGCbx.Text) + ')';
@@ -1097,21 +1086,35 @@ begin
           if MainForm.SQLQuery.FieldValues['code_p'] <> null then
           begin
             CodeCB := MainForm.SQLQuery.FieldValues['code_p'];
-          end;
-
-          MainForm.FDQuery2.Active := False;
-          MainForm.FDQuery2.SQL.Clear;
-          MainForm.FDQuery2.SQL.Text := 'SELECT code_p,nom_p,codebar_p,prixht_p,prixvd_p,prixvr_p,prixvg_p,prixva_p,prixva2_p,tva_p,perissable_p FROM produit WHERE code_p = ' + QuotedStr(IntToStr(CodeCB)) + 'OR' + ' LOWER(codebar_p) LIKE LOWER(' + QuotedStr(ProduitBonCtrGCbx.Text) + ')';
-          MainForm.FDQuery2.Active := True;
-
-          if NOT MainForm.FDQuery2.IsEmpty then
-          begin
-          CodeP := MainForm.FDQuery2.FieldByName('code_p').AsInteger;
           end else
-             begin  //This is For Divers XXXX
-               CodeP:= 0;
-             end;
-        end;
+              begin
+                MainForm.FDQuery2.Active := False;
+                MainForm.FDQuery2.SQL.Clear;
+                MainForm.FDQuery2.SQL.Text := 'SELECT code_p,nom_p,codebar_p,prixht_p,prixvd_p,prixvr_p,prixvg_p,prixva_p,prixva2_p,tva_p,perissable_p FROM produit WHERE code_p = ' + QuotedStr(IntToStr(CodeCB)) + 'OR' + ' LOWER(codebar_p) LIKE LOWER(' + QuotedStr(ProduitBonCtrGCbx.Text) + ')';
+                MainForm.FDQuery2.Active := True;
+
+                if NOT MainForm.FDQuery2.IsEmpty then
+                begin
+                CodeP := MainForm.FDQuery2.FieldByName('code_p').AsInteger;
+                end else
+                 begin
+                      MainForm.FDQuery2.Active := False;
+                      MainForm.FDQuery2.SQL.Clear;
+                      MainForm.FDQuery2.SQL.Text := 'SELECT code_p,nom_p,prixht_p,prixvd_p,prixvr_p,prixvg_p,prixva_p,prixva2_p,tva_p,perissable_p FROM produit WHERE LOWER(nom_p) LIKE LOWER(' + QuotedStr(ProduitBonCtrGCbx.Text) + ')';
+                      MainForm.FDQuery2.Active := True;
+
+                    if not (MainForm.FDQuery2.IsEmpty) then
+                    begin
+                      CodeP := MainForm.FDQuery2.FieldByName('code_p').AsInteger;
+
+                    end else
+                      begin //This is For Divers XXXX
+                        CodeP:= 0;
+                      end;
+                 end;
+              end;
+
+
         end else
           begin
 
