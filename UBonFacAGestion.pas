@@ -266,7 +266,7 @@ type
       +'   END  '
       +'  END AS MargeA2 '
       +' FROM bona_fac_list as FAL  '
-      +' INNER JOIN produit as P   '
+      +' LEFT JOIN produit as P   '
       +'   ON FAL.code_p = P.code_p ';
       
     procedure EnableBonFacA ;

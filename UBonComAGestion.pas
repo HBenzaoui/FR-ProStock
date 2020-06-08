@@ -274,7 +274,7 @@ type
       +'   END  '
       +'  END AS MargeA2   '
       +' FROM bona_com_list as BCAL '
-      +' INNER JOIN produit as P   '
+      +' LEFT JOIN produit as P   '
       +'  ON BCAL.code_p = P.code_p ';
     
     procedure EnableBonCom;

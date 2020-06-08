@@ -267,7 +267,7 @@ type
           +' END AS Marge, '
           +' (((BCVL.prixvd_p * BCVL.qut_p) * cond_p) - ((P.prixht_p * BCVL.qut_p)* cond_p) ) AS MargeM '
           +' FROM bonv_com_list as BCVL '
-          +' INNER JOIN produit as P '
+          +' LEFT JOIN produit as P '
           +' ON BCVL.code_p = P.code_p ';
      procedure EnableBonComV;
   end;

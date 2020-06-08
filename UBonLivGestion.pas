@@ -267,7 +267,7 @@ type
           +' END AS Marge, '
           +' (((BLL.prixvd_p * BLL.qut_p) * cond_p) - ((P.prixht_p * BLL.qut_p)* cond_p) ) AS MargeM '
           +' FROM bonv_liv_list as BLL '
-          +' INNER JOIN produit as P '
+          +' LEFT JOIN produit as P '
           +' ON BLL.code_p = P.code_p '
           +' LEFT JOIN localisation as L '
           +' ON P.code_l = L.code_l ';

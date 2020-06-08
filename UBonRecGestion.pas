@@ -274,7 +274,7 @@ type
       +'   END  '
       +'  END AS MargeA2   '
       +' FROM bona_rec_list as BRL '
-      +' INNER JOIN produit as P   '
+      +' LEFT JOIN produit as P   '
       +'  ON BRL.code_p = P.code_p '
       +' LEFT JOIN localisation as L '
       +'  ON P.code_l = L.code_l ';

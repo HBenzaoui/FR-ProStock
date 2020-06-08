@@ -241,7 +241,7 @@ type
           +'  END AS Marge,  '
           +'   (((FVL.prixvd_p * FVL.qut_p) * cond_p) - ((P.prixht_p * FVL.qut_p)* cond_p) ) AS MargeM   '
           +' FROM bonv_fac_list as FVL  '
-          +' INNER JOIN produit as P  '
+          +' LEFT JOIN produit as P  '
           +'   ON FVL.code_p = P.code_p ';
     procedure EnableBonFacV;
   end;
