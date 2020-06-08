@@ -240,7 +240,7 @@ type
           +'  END AS Marge, '
           +'   (((FPL.prixvd_p * FPL.qut_p) * cond_p) - ((P.prixht_p * FPL.qut_p)* cond_p) ) AS MargeM '
           +' FROM bonp_fac_list as FPL  '
-          +' INNER JOIN produit as P    '
+          +' LEFT JOIN produit as P    '
           +'   ON FPL.code_p = P.code_p '
           +' LEFT JOIN localisation as L '
           +'   ON P.code_l = L.code_l ';
