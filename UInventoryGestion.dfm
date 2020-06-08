@@ -365,7 +365,7 @@ object InventoryGestionF: TInventoryGestionF
   object DesInvGLbl: TLabel
     Left = 14
     Top = 111
-    Width = 126
+    Width = 129
     Height = 18
     Caption = 'D'#233'signation/Motif:'
     Color = 4207405
@@ -381,7 +381,7 @@ object InventoryGestionF: TInventoryGestionF
   object NameInvGLbl: TLabel
     Left = 59
     Top = 64
-    Width = 81
+    Width = 84
     Height = 17
     Caption = 'Les Produits:'
     Color = 4207405
@@ -397,7 +397,7 @@ object InventoryGestionF: TInventoryGestionF
   object ObserInvGLbl: TLabel
     Left = 54
     Top = 156
-    Width = 86
+    Width = 88
     Height = 17
     Caption = 'Observations:'
     Color = 4207405
@@ -413,7 +413,7 @@ object InventoryGestionF: TInventoryGestionF
   object RefInvGGLbl: TLabel
     Left = 50
     Top = 25
-    Width = 90
+    Width = 93
     Height = 18
     Caption = 'Inventaire N'#176':'
     Color = 4207405
@@ -769,8 +769,8 @@ object InventoryGestionF: TInventoryGestionF
     Top = 21
     Width = 117
     Height = 26
-    Date = 42571.604963831020000000
-    Time = 42571.604963831020000000
+    Date = 42571.000000000000000000
+    Time = 0.604963831021450500
     Font.Charset = DEFAULT_CHARSET
     Font.Color = 4207405
     Font.Height = 19
@@ -1138,12 +1138,21 @@ object InventoryGestionF: TInventoryGestionF
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
+        FieldName = 'valtheo_il'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
         Font.Height = 16
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
         Font.Quality = fqProof
+        Footer.Color = 15722984
+        Footer.DisplayFormat = '#,##0.00'
+        Footer.Font.Charset = DEFAULT_CHARSET
+        Footer.Font.Color = 4207405
+        Footer.Font.Height = 18
+        Footer.Font.Name = 'Helvetica LT Std'
+        Footer.Font.Style = [fsBold]
+        Footer.ValueType = fvtSum
         Footers = <>
         Layout = tlCenter
         MinWidth = 50
@@ -1155,21 +1164,30 @@ object InventoryGestionF: TInventoryGestionF
         Title.Font.Name = 'Helvetica LT Std'
         Title.Font.Style = []
         Title.Font.Quality = fqProof
-        Visible = False
         Width = 100
         WordWrap = False
       end
       item
+        Alignment = taRightJustify
         CellButtons = <>
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
+        FieldName = 'valphys_il'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
         Font.Height = 16
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
         Font.Quality = fqProof
+        Footer.Color = 15722984
+        Footer.DisplayFormat = '#,##0.00'
+        Footer.Font.Charset = DEFAULT_CHARSET
+        Footer.Font.Color = 4207405
+        Footer.Font.Height = 18
+        Footer.Font.Name = 'Helvetica LT Std'
+        Footer.Font.Style = [fsBold]
+        Footer.ValueType = fvtSum
         Footers = <>
         Layout = tlCenter
         MinWidth = 50
@@ -1181,9 +1199,36 @@ object InventoryGestionF: TInventoryGestionF
         Title.Font.Name = 'Helvetica LT Std'
         Title.Font.Style = []
         Title.Font.Quality = fqProof
-        Visible = False
         Width = 100
         WordWrap = False
+      end
+      item
+        Alignment = taRightJustify
+        CellButtons = <>
+        DisplayFormat = '#,##0.00'
+        DynProps = <>
+        EditButtons = <>
+        FieldName = 'valgap_il'
+        Footer.Color = 15722984
+        Footer.DisplayFormat = '#,##0.00'
+        Footer.Font.Charset = DEFAULT_CHARSET
+        Footer.Font.Color = 4207405
+        Footer.Font.Height = 18
+        Footer.Font.Name = 'Helvetica LT Std'
+        Footer.Font.Style = [fsBold]
+        Footer.ValueType = fvtSum
+        Footers = <>
+        Layout = tlCenter
+        MinWidth = 50
+        Title.Alignment = taCenter
+        Title.Caption = 'Valeur Stock Ecart.'
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = 4207405
+        Title.Font.Height = -13
+        Title.Font.Name = 'Helvetica LT Std'
+        Title.Font.Style = []
+        Title.Font.Quality = fqProof
+        Width = 100
       end
       item
         Alignment = taCenter
@@ -1747,6 +1792,8 @@ object InventoryGestionF: TInventoryGestionF
     CenterWindow = False
     PrintScaling = False
     PdfA = False
+    PDFStandard = psNone
+    PDFVersion = pv17
     Left = 322
     Top = 396
   end
@@ -1758,7 +1805,7 @@ object InventoryGestionF: TInventoryGestionF
     Top = 472
   end
   object INVfrxRprt: TfrxReport
-    Version = '5.6.1'
+    Version = '6.3.12'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -1793,6 +1840,7 @@ object InventoryGestionF: TInventoryGestionF
         Font.Height = -16
         Font.Name = 'Arial'
         Font.Style = [fsBold]
+        Frame.Typ = []
         Fill.BackColor = 14211288
       end
       item
@@ -1802,6 +1850,7 @@ object InventoryGestionF: TInventoryGestionF
         Font.Height = -13
         Font.Name = 'Arial'
         Font.Style = [fsBold]
+        Frame.Typ = []
         Fill.BackColor = 15790320
       end
       item
@@ -1811,6 +1860,7 @@ object InventoryGestionF: TInventoryGestionF
         Font.Height = -13
         Font.Name = 'Arial'
         Font.Style = [fsBold]
+        Frame.Typ = []
         Fill.BackColor = 15790320
       end
       item
@@ -1820,6 +1870,7 @@ object InventoryGestionF: TInventoryGestionF
         Font.Height = -13
         Font.Name = 'Arial'
         Font.Style = []
+        Frame.Typ = []
       end
       item
         Name = 'Group footer'
@@ -1837,6 +1888,7 @@ object InventoryGestionF: TInventoryGestionF
         Font.Height = -13
         Font.Name = 'Arial'
         Font.Style = []
+        Frame.Typ = []
         Frame.Width = 2.000000000000000000
       end>
     object Data: TfrxDataPage
@@ -1851,12 +1903,16 @@ object InventoryGestionF: TInventoryGestionF
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
+      MirrorMode = []
       object PageFooter1: TfrxPageFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 21.057381430000000000
         Top = 325.039580000000000000
         Width = 718.110700000000000000
         object Memo7: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 1.159731429999960000
           Width = 35.095635710000000000
@@ -1866,19 +1922,23 @@ object InventoryGestionF: TInventoryGestionF
           Font.Height = -9
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Agent :')
           ParentFont = False
           VAlign = vaCenter
         end
         object Shape2: TfrxShapeView
+          AllowVectorExport = True
           Width = 718.110700000000000000
           Height = 3.023622050000000000
           Fill.BackColor = 13948116
           Fill.ForeColor = clNone
           Frame.Color = clNone
+          Frame.Typ = []
         end
         object frxDBDataset2Agnet: TfrxMemoView
+          AllowVectorExport = True
           Left = 35.574830000000000000
           Top = 0.779530000000000000
           Width = 302.362400000000000000
@@ -1888,12 +1948,14 @@ object InventoryGestionF: TInventoryGestionF
           Font.Height = -9
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxINVLDB."Agent"]')
           ParentFont = False
           VAlign = vaCenter
         end
         object Page: TfrxMemoView
+          AllowVectorExport = True
           Left = 570.929500000000000000
           Top = 1.000000000000000000
           Width = 147.401670000000000000
@@ -1903,6 +1965,7 @@ object InventoryGestionF: TInventoryGestionF
           Font.Height = -9
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Page: [Page]/[TotalPages#]')
@@ -1917,10 +1980,12 @@ object InventoryGestionF: TInventoryGestionF
       end
       object PageHeader1: TfrxPageHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 123.489768180000000000
         Top = 18.897650000000000000
         Width = 718.110700000000000000
         object Memo3: TfrxMemoView
+          AllowVectorExport = True
           Left = 397.157700000000000000
           Top = 95.315090000000000000
           Width = 42.262017270000000000
@@ -1931,6 +1996,7 @@ object InventoryGestionF: TInventoryGestionF
           Font.Height = -11
           Font.Name = 'Gotham Rounded Light'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = 13948116
           HAlign = haCenter
           Memo.UTF8W = (
@@ -1939,6 +2005,7 @@ object InventoryGestionF: TInventoryGestionF
           VAlign = vaCenter
         end
         object Memo4: TfrxMemoView
+          AllowVectorExport = True
           Top = 95.315090000000000000
           Width = 38.482487270000000000
           Height = 28.174678180000000000
@@ -1948,6 +2015,7 @@ object InventoryGestionF: TInventoryGestionF
           Font.Height = -11
           Font.Name = 'Gotham Rounded Light'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = 13948116
           HAlign = haCenter
           Memo.UTF8W = (
@@ -1956,6 +2024,7 @@ object InventoryGestionF: TInventoryGestionF
           VAlign = vaCenter
         end
         object Memo6: TfrxMemoView
+          AllowVectorExport = True
           Left = 528.929500000000000000
           Top = 95.315090000000000000
           Width = 94.692950000000000000
@@ -1966,6 +2035,7 @@ object InventoryGestionF: TInventoryGestionF
           Font.Height = -11
           Font.Name = 'Gotham Rounded Light'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = 13948116
           HAlign = haCenter
           Memo.UTF8W = (
@@ -1974,6 +2044,7 @@ object InventoryGestionF: TInventoryGestionF
           VAlign = vaCenter
         end
         object Memo5: TfrxMemoView
+          AllowVectorExport = True
           Left = 435.748300000000000000
           Top = 95.315090000000000000
           Width = 94.488188980000000000
@@ -1984,6 +2055,7 @@ object InventoryGestionF: TInventoryGestionF
           Font.Height = -11
           Font.Name = 'Gotham Rounded Light'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = 13948116
           HAlign = haCenter
           Memo.UTF8W = (
@@ -1992,6 +2064,7 @@ object InventoryGestionF: TInventoryGestionF
           VAlign = vaCenter
         end
         object Memo2: TfrxMemoView
+          AllowVectorExport = True
           Left = 98.574830000000000000
           Top = 95.315090000000000000
           Width = 299.270057270000000000
@@ -2002,6 +2075,7 @@ object InventoryGestionF: TInventoryGestionF
           Font.Height = -11
           Font.Name = 'Gotham Rounded Light'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = 13948116
           HAlign = haCenter
           Memo.UTF8W = (
@@ -2010,6 +2084,7 @@ object InventoryGestionF: TInventoryGestionF
           VAlign = vaCenter
         end
         object Memo19: TfrxMemoView
+          AllowVectorExport = True
           Left = 7.559055120000000000
           Top = 7.897650000000000000
           Width = 173.171192730000000000
@@ -2019,12 +2094,14 @@ object InventoryGestionF: TInventoryGestionF
           Font.Height = -27
           Font.Name = 'Helvetica LT Std'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'INVENTAIRE')
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo20: TfrxMemoView
+          AllowVectorExport = True
           Left = 571.330860000000000000
           Top = 7.897650000000000000
           Width = 52.652762760000000000
@@ -2034,12 +2111,14 @@ object InventoryGestionF: TInventoryGestionF
           Font.Height = -16
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Date :')
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo21: TfrxMemoView
+          AllowVectorExport = True
           Left = 182.897650000000000000
           Top = 7.897650000000000000
           Width = 44.667172730000000000
@@ -2049,12 +2128,14 @@ object InventoryGestionF: TInventoryGestionF
           Font.Height = -27
           Font.Name = 'Helvetica LT Std'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'N'#176)
           ParentFont = False
           VAlign = vaCenter
         end
         object NumRX: TfrxMemoView
+          AllowVectorExport = True
           Left = 227.811070000000000000
           Top = 7.897650000000000000
           Width = 294.116152730000000000
@@ -2064,12 +2145,14 @@ object InventoryGestionF: TInventoryGestionF
           Font.Height = -27
           Font.Name = 'Helvetica LT Std'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'N'#176)
           ParentFont = False
           VAlign = vaCenter
         end
         object DateRX: TfrxMemoView
+          AllowVectorExport = True
           Left = 616.244280000000000000
           Top = 7.897650000000000000
           Width = 98.007122760000000000
@@ -2079,12 +2162,14 @@ object InventoryGestionF: TInventoryGestionF
           Font.Height = -16
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Date :')
           ParentFont = False
           VAlign = vaCenter
         end
         object NameRX: TfrxMemoView
+          AllowVectorExport = True
           Left = 7.779530000000000000
           Top = 57.401670000000000000
           Width = 702.731922760000000000
@@ -2094,12 +2179,14 @@ object InventoryGestionF: TInventoryGestionF
           Font.Height = -16
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Motif')
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo1: TfrxMemoView
+          AllowVectorExport = True
           Left = 623.488560000000000000
           Top = 95.315090000000000000
           Width = 94.488188980000000000
@@ -2110,6 +2197,7 @@ object InventoryGestionF: TInventoryGestionF
           Font.Height = -11
           Font.Name = 'Gotham Rounded Light'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = 13948116
           HAlign = haCenter
           Memo.UTF8W = (
@@ -2118,6 +2206,7 @@ object InventoryGestionF: TInventoryGestionF
           VAlign = vaCenter
         end
         object Memo11: TfrxMemoView
+          AllowVectorExport = True
           Left = 31.795300000000000000
           Top = 95.315090000000000000
           Width = 75.590538980000000000
@@ -2128,6 +2217,7 @@ object InventoryGestionF: TInventoryGestionF
           Font.Height = -11
           Font.Name = 'Gotham Rounded Light'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = 13948116
           Memo.UTF8W = (
             ' R'#233'ference')
@@ -2137,6 +2227,7 @@ object InventoryGestionF: TInventoryGestionF
       end
       object MasterData1: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 20.162932310000000000
         Top = 204.094620000000000000
         Width = 718.110700000000000000
@@ -2145,6 +2236,7 @@ object InventoryGestionF: TInventoryGestionF
         RowCount = 0
         Stretched = True
         object frxDBDataset1nomp: TfrxMemoView
+          AllowVectorExport = True
           Left = 108.692950000000000000
           Top = 0.559060000000000000
           Width = 291.023810000000000000
@@ -2158,12 +2250,14 @@ object InventoryGestionF: TInventoryGestionF
           Font.Height = -11
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxINVDB."nom_p"]')
           ParentFont = False
           VAlign = vaCenter
         end
         object Line: TfrxMemoView
+          AllowVectorExport = True
           Top = 0.559060000000000000
           Width = 34.015770000000000000
           Height = 18.897650000000000000
@@ -2172,6 +2266,7 @@ object InventoryGestionF: TInventoryGestionF
           Font.Height = -11
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[Line]')
@@ -2179,6 +2274,7 @@ object InventoryGestionF: TInventoryGestionF
           VAlign = vaCenter
         end
         object frxDBDataset1qut_p: TfrxMemoView
+          AllowVectorExport = True
           Left = 397.157700000000000000
           Top = 0.559060000000000000
           Width = 37.795300000000000000
@@ -2188,6 +2284,7 @@ object InventoryGestionF: TInventoryGestionF
           Font.Height = -11
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxINVDB."nom_u"]')
@@ -2195,6 +2292,7 @@ object InventoryGestionF: TInventoryGestionF
           VAlign = vaCenter
         end
         object frxDBDataset1prixvd_p: TfrxMemoView
+          AllowVectorExport = True
           Left = 434.748300000000000000
           Top = 0.559060000000000000
           Width = 94.488188980000000000
@@ -2209,6 +2307,7 @@ object InventoryGestionF: TInventoryGestionF
           Font.Height = -11
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxINVDB."quttheo_il"]')
@@ -2216,6 +2315,7 @@ object InventoryGestionF: TInventoryGestionF
           VAlign = vaCenter
         end
         object frxDBDataset1MontantHT: TfrxMemoView
+          AllowVectorExport = True
           Left = 526.929500000000000000
           Top = 0.559060000000000000
           Width = 96.692950000000000000
@@ -2230,6 +2330,7 @@ object InventoryGestionF: TInventoryGestionF
           Font.Height = -11
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxINVDB."qutphys_il"]')
@@ -2237,6 +2338,7 @@ object InventoryGestionF: TInventoryGestionF
           VAlign = vaCenter
         end
         object Memo8: TfrxMemoView
+          AllowVectorExport = True
           Left = 624.488560000000000000
           Top = 0.559060000000000000
           Width = 94.488188980000000000
@@ -2251,6 +2353,7 @@ object InventoryGestionF: TInventoryGestionF
           Font.Height = -11
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxINVDB."calcgap_il"]')
@@ -2258,6 +2361,7 @@ object InventoryGestionF: TInventoryGestionF
           VAlign = vaCenter
         end
         object Memo13: TfrxMemoView
+          AllowVectorExport = True
           Left = 34.795300000000000000
           Top = 0.559060000000000000
           Width = 75.590538980000000000
@@ -2272,12 +2376,14 @@ object InventoryGestionF: TInventoryGestionF
           Font.Height = -11
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxINVDB."refer_p"]')
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo14: TfrxMemoView
+          AllowVectorExport = True
           Top = 19.000000000000000000
           Width = 719.564365380000000000
           Height = 1.162932310000000000
@@ -2286,6 +2392,7 @@ object InventoryGestionF: TInventoryGestionF
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = 13948116
           HAlign = haRight
           ParentFont = False
@@ -2294,10 +2401,12 @@ object InventoryGestionF: TInventoryGestionF
       end
       object Footer1: TfrxFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 20.123662310000000000
         Top = 245.669450000000000000
         Width = 718.110700000000000000
         object Memo12: TfrxMemoView
+          AllowVectorExport = True
           Left = 394.884695940000000000
           Top = 0.063080000000000000
           Width = 43.028495380000000000
@@ -2307,6 +2416,7 @@ object InventoryGestionF: TInventoryGestionF
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = 13948116
           HAlign = haRight
           Memo.UTF8W = (
@@ -2315,6 +2425,7 @@ object InventoryGestionF: TInventoryGestionF
           VAlign = vaCenter
         end
         object frxBonLivDTmontttc_bvliv: TfrxMemoView
+          AllowVectorExport = True
           Left = 433.858504490000000000
           Top = 0.063080000000000000
           Width = 95.275695510000000000
@@ -2326,6 +2437,7 @@ object InventoryGestionF: TInventoryGestionF
           Font.Height = -11
           Font.Name = 'Helvetica LT Std'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = 13948116
           HAlign = haRight
           Memo.UTF8W = (
@@ -2334,6 +2446,7 @@ object InventoryGestionF: TInventoryGestionF
           VAlign = vaCenter
         end
         object Memo9: TfrxMemoView
+          AllowVectorExport = True
           Left = 529.039704490000000000
           Top = 0.063080000000000000
           Width = 95.244094488189000000
@@ -2345,6 +2458,7 @@ object InventoryGestionF: TInventoryGestionF
           Font.Height = -11
           Font.Name = 'Helvetica LT Std'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = 13948116
           HAlign = haRight
           Memo.UTF8W = (
@@ -2353,6 +2467,7 @@ object InventoryGestionF: TInventoryGestionF
           VAlign = vaCenter
         end
         object Memo10: TfrxMemoView
+          AllowVectorExport = True
           Left = 624.377952755906000000
           Top = 0.063080000000000000
           Width = 94.488250000000000000
@@ -2364,6 +2479,7 @@ object InventoryGestionF: TInventoryGestionF
           Font.Height = -11
           Font.Name = 'Helvetica LT Std'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = 13948116
           HAlign = haRight
           Memo.UTF8W = (
@@ -2372,6 +2488,7 @@ object InventoryGestionF: TInventoryGestionF
           VAlign = vaCenter
         end
         object Memo15: TfrxMemoView
+          AllowVectorExport = True
           Top = 0.897650000000000000
           Width = 719.564365380000000000
           Height = 1.162932310000000000
@@ -2381,6 +2498,7 @@ object InventoryGestionF: TInventoryGestionF
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = 13948116
           HAlign = haRight
           ParentFont = False
@@ -2388,6 +2506,7 @@ object InventoryGestionF: TInventoryGestionF
         end
       end
       object Memo16: TfrxMemoView
+        AllowVectorExport = True
         Left = -154.511750000000000000
         Top = -52.236240000000000000
         Width = 719.564365380000000000
@@ -2397,6 +2516,7 @@ object InventoryGestionF: TInventoryGestionF
         Font.Height = -11
         Font.Name = 'Arial'
         Font.Style = [fsBold]
+        Frame.Typ = []
         Fill.BackColor = 13948116
         HAlign = haRight
         ParentFont = False

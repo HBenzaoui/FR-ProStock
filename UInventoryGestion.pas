@@ -25,7 +25,7 @@ uses System.Contnrs,System.DateUtils,Winapi.MMSystem,
   Vcl.ComCtrls, Vcl.ExtCtrls, AdvToolBtn, acImage, DBGridEhGrouping,
   ToolCtrlsEh, DBGridEhToolCtrls, DynVarsEh, EhLibVCL, GridsEh, DBAxisGridsEh,
   DBGridEh, Data.DB, Vcl.Buttons, sSpeedButton, sStatusBar, frxExportPDF,
-  frxClass, frxExportXLS, frxDBSet, Vcl.AppEvnts;
+  frxClass, frxExportXLS, frxDBSet, Vcl.AppEvnts, frxExportBaseDialog;
 
 type
   TInventoryGestionF = class(TForm)
@@ -126,6 +126,9 @@ type
                     +' IL.code_il, IL.code_i, IL.code_p, P.refer_p, P.nom_p, '
                     +' (P.qut_p + P.qutini_p) AS quttheo_il, IL.qutphys_il, '
                     +' ((P.qut_p + P. qutini_p) - qutphys_il) * -1 AS calcgap_il, '
+                    +' ((P.qut_p + P. qutini_p) * P.prixht_p) AS valtheo_il, '
+                    +' (qutphys_il * P.prixht_p) AS valphys_il, '
+                    +' ((((P.qut_p + P. qutini_p) - qutphys_il) * -1) * P.prixht_p) AS valgap_il, '
                     +' IL.gap_il, IL.prixht_p,IL.code_u, IL.code_l, U.nom_u, L.nom_l '
                     +' FROM inventory_list IL '
                     +' LEFT JOIN produit P '
