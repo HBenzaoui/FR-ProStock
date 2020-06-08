@@ -2555,11 +2555,6 @@ object DataModuleF: TDataModuleF
       
         '       ((P.qut_p + P. qutini_p) - qutphys_il) * -1 AS calcgap_il' +
         ','
-      '       ((P.qut_p + P. qutini_p) * P.prixht_p) AS valtheo_il,'
-      '       (qutphys_il * P.prixht_p) AS valphys_il,'
-      
-        '       ((((P.qut_p + P. qutini_p) - qutphys_il) * -1) * P.prixht' +
-        '_p) AS valgap_il,'
       
         '       IL.gap_il, IL.prixht_p,IL.code_u, IL.code_l, U.nom_u, L.n' +
         'om_l'
@@ -2569,7 +2564,7 @@ object DataModuleF: TDataModuleF
       'LEFT JOIN unite U'
       '    ON IL.code_u = U.code_u'
       'LEFT JOIN localisation L'
-      '    ON IL.code_l = L.code_l')
+      '    ON IL.code_l = L.code_l ')
     Left = 571
     Top = 586
     object Inventory_listTablecode_il: TIntegerField
@@ -2616,24 +2611,6 @@ object DataModuleF: TDataModuleF
       AutoGenerateValue = arDefault
       FieldName = 'calcgap_il'
       Origin = 'calcgap_il'
-      ReadOnly = True
-    end
-    object Inventory_listTablevaltheo_il: TCurrencyField
-      AutoGenerateValue = arDefault
-      FieldName = 'valtheo_il'
-      Origin = 'valtheo_il'
-      ReadOnly = True
-    end
-    object Inventory_listTablevalphys_il: TCurrencyField
-      AutoGenerateValue = arDefault
-      FieldName = 'valphys_il'
-      Origin = 'valphys_il'
-      ReadOnly = True
-    end
-    object Inventory_listTablevalgap_il: TCurrencyField
-      AutoGenerateValue = arDefault
-      FieldName = 'valgap_il'
-      Origin = 'valgap_il'
       ReadOnly = True
     end
     object Inventory_listTablegap_il: TFloatField

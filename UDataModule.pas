@@ -415,9 +415,6 @@ type
     Bonv_com_listTablenomp: TWideStringField;
     Bonv_com_listTablereferp: TWideStringField;
     BonComVListDataS: TDataSource;
-    Inventory_listTablevaltheo_il: TCurrencyField;
-    Inventory_listTablevalphys_il: TCurrencyField;
-    Inventory_listTablevalgap_il: TCurrencyField;
     procedure DataModuleCreate(Sender: TObject);
     procedure PZeroQCnotifCalcFields(DataSet: TDataSet);
     procedure PCloseZeroQCnotifCalcFields(DataSet: TDataSet);

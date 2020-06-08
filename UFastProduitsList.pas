@@ -2525,9 +2525,17 @@ begin
     //--- this tage = 7 is for select produit in Favori----//
       if Tag = 7 then
       begin
+
+        //This to delete last space in nomp
+        NomP := MainForm.ProduitTable.FieldByName('nom_p').AsString;
+        MainForm.ProduitTable.Edit;
+        MainForm.ProduitTable.FieldByName('nom_p').AsString := TrimRight(NomP);
+        MainForm.ProduitTable.Post;
+
         //Get the clicke button Sender and set it caption
-       FOptions.FavBtn.Caption := MainForm.ProduitTable.FieldByName('nom_p').AsString;
-       Close;
+
+        FOptions.FavBtn.Caption := MainForm.ProduitTable.FieldByName('nom_p').AsString;
+        Close;
 
       end;
 
