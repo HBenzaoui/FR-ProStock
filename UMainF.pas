@@ -4397,11 +4397,13 @@ begin
             FWorkingSplash.Left := Screen.Width div 2 - (FWorkingSplash.Width div 2);
             FWorkingSplash.Top :=  (Screen.Height- FWorkingSplash.Height) div 2;
             FWorkingSplash.Show;
-          
- 
-   BackupTask := TTask.Create (procedure ()
-   begin
 
+
+ 
+   BackupTask := TTask.Create (
+   procedure ()
+   begin
+    try
 
         SQLQuery.Active:= False;
         SQLQuery.SQL.Clear;
@@ -4409,7 +4411,7 @@ begin
         SQLQuery.ResourceOptions.CmdExecMode := amAsync;
         SQLQuery.ExecSQL;
 
-            
+
         while SQLQuery.Command.State = csExecuting  do
         begin
 //          dxActivityIndicator1.Active:= True;
@@ -4418,6 +4420,20 @@ begin
          SQLQuery.ResourceOptions.CmdExecMode  := amBlocking;
         SQLQuery.ResourceOptions.CmdExecTimeout :=$FFFFFFFF ; 
 //        ActiveTables;
+
+
+
+        except on E: Exception do
+
+            begin
+              sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT or SND_ASYNC or SND_RING);
+              ShowMessage(E.ClassName + ' error raised, with message : ' + E.Message);
+              FWorkingSplash.Close;
+              FWorkingSplash.WorkingNormalForms;
+              Exit
+            end;
+
+        end;
 
           FWorkingSplash.Close;
           FWorkingSplash.WorkingNormalForms;
@@ -4429,6 +4445,7 @@ begin
         SQLQuery.SQL.Clear;
    end);
           BackupTask.Start;
+
 
 
 end;
