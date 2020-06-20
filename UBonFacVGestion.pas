@@ -3628,8 +3628,8 @@ procedure TBonFacVGestionF.GettingData;
   TauxTVA9,TauxTVA19,MontantTVA9,MontantTVA19,RC,NArt,NIF,NIS,NEWCredit,OLDCredit : TfrxMemoView;
   str1 : string;
   Taux19,Montant9,Montant19,RemisePerctageBonFacV : Currency;
-  Name,Tel,Mob,Adr,ComRC,ComNArt,ComNIF,ComNIS : TfrxMemoView;
-  RCLbl,NArtLbl,NIFLbl,NISLbl,ComRCLbl,ComNArtLbl,ComNIFLbl,ComNISLbl : TfrxMemoView;
+  Name,Tel,Mob,Adr,ComRC,ComNArt,ComNIF,ComNIS,ComRIB : TfrxMemoView;
+  RCLbl,NArtLbl,NIFLbl,NISLbl,ComRCLbl,ComNArtLbl,ComNIFLbl,ComNISLbl,ComRIBLbl : TfrxMemoView;
   Logo : TfrxPictureView;
     S: TMemoryStream;
   Jpg: TJPEGImage;
@@ -3677,6 +3677,12 @@ begin
     ComNIS.Visible:=True;
     ComNISLbl:= BonFacVPListfrxRprt.FindObject('ComNISLbl') as TfrxMemoView;
     ComNISLbl.Visible:=True;
+
+    ComRIB:= BonFacVPListfrxRprt.FindObject('ComRIB') as TfrxMemoView;
+    ComRIB.Text:= MainForm.CompanyTable.FieldByName('rib_comp').AsString ;
+    ComRIB.Visible:=True;
+    ComRIBLbl:= BonFacVPListfrxRprt.FindObject('ComRIBLbl') as TfrxMemoView;
+    ComRIBLbl.Visible:=True;
 
 
       Logo:= BonFacVPListfrxRprt.FindObject('Logo') as TfrxPictureView;

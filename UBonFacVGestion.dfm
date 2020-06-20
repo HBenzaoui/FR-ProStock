@@ -3014,7 +3014,7 @@ object BonFacVGestionF: TBonFacVGestionF
     PrintOptions.PrintOnSheet = 0
     PrintOptions.ShowDialog = False
     ReportOptions.CreateDate = 42576.399521435210000000
-    ReportOptions.LastChange = 43501.861181956020000000
+    ReportOptions.LastChange = 43998.548984490740000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       ''
@@ -3869,6 +3869,43 @@ object BonFacVGestionF: TBonFacVGestionF
           HAlign = haRight
           Memo.UTF8W = (
             'NIS :')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object ComRIB: TfrxMemoView
+          AllowVectorExport = True
+          Left = 575.646260000000000000
+          Top = 196.535560000000000000
+          Width = 143.361482760000000000
+          Height = 23.198494480000000000
+          Visible = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            'RIB :')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object ComRIBLbl: TfrxMemoView
+          AllowVectorExport = True
+          Left = 540.472790000000000000
+          Top = 196.535560000000000000
+          Width = 33.755112760000000000
+          Height = 23.198494480000000000
+          Visible = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = []
+          Frame.Typ = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            'RIB :')
           ParentFont = False
           VAlign = vaCenter
         end

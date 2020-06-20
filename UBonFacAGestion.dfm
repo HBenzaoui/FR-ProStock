@@ -3152,7 +3152,7 @@ object BonFacAGestionF: TBonFacAGestionF
     PrintOptions.PrintOnSheet = 0
     PrintOptions.ShowDialog = False
     ReportOptions.CreateDate = 42576.399521435210000000
-    ReportOptions.LastChange = 43502.423420532410000000
+    ReportOptions.LastChange = 43998.476302465280000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       ''
@@ -3921,7 +3921,7 @@ object BonFacAGestionF: TBonFacAGestionF
         object ComNIS: TfrxMemoView
           AllowVectorExport = True
           Left = 576.906917240000000000
-          Top = 173.740260000000000000
+          Top = 171.740260000000000000
           Width = 143.361482760000000000
           Height = 23.198494480000000000
           Visible = False
@@ -3996,7 +3996,7 @@ object BonFacAGestionF: TBonFacAGestionF
         object ComNISLbl: TfrxMemoView
           AllowVectorExport = True
           Left = 541.733447240000000000
-          Top = 173.740260000000000000
+          Top = 171.740260000000000000
           Width = 33.755112760000000000
           Height = 23.198494480000000000
           Visible = False
@@ -4009,6 +4009,43 @@ object BonFacAGestionF: TBonFacAGestionF
           HAlign = haRight
           Memo.UTF8W = (
             'NIS :')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object ComRIB: TfrxMemoView
+          AllowVectorExport = True
+          Left = 577.906917240000000000
+          Top = 197.637910000000000000
+          Width = 143.361482760000000000
+          Height = 23.198494480000000000
+          Visible = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            'RIB :')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object ComRIBLbl: TfrxMemoView
+          AllowVectorExport = True
+          Left = 542.733447240000000000
+          Top = 197.637910000000000000
+          Width = 33.755112760000000000
+          Height = 23.198494480000000000
+          Visible = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = []
+          Frame.Typ = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            'RIB :')
           ParentFont = False
           VAlign = vaCenter
         end
