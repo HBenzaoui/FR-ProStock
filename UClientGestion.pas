@@ -751,73 +751,60 @@ begin
     if OKClientGBtn.Tag = 3 then
     begin
 
-      lookupResultNomC := MainForm.ClientTable.Lookup('LOWER(nom_c)',(LowerCase( NameClientGEdt.Text)),'nom_c');
-      if  VarIsnull( lookupResultNomC) then
-      begin
+     if  isClientExist(NameClientGEdt.Text) = False then
+     begin
 
-        with MainForm.ClientTable do
-       begin
 
-         if NOT (MainForm.ClientTable.IsEmpty) then
+        // This is to add new fournisseur as this client
+
+        if ClientFourGSlider.SliderOn then
+        begin
+
+         if isFourExist(NameClientGEdt.Text) = False then
+         begin
+
+         AddSameClientDetailInCFList(NameClientGEdt.Text);
+         addNewClient();
+         end
+         else
+             begin
+                try
+                NameClientGEdt.BorderStyle:= bsNone;
+                NameClientGEdt.StyleElements:= [];
+                RequiredClientGlbl.Caption:='C''est nom existe deja dans la list des fournisseurs, décocher "Ajouter comme Fournisseur:" ou bien change le nom';
+                RequiredClientGlbl.Font.Height:= 12;
+                RequiredClientGlbl.Top:= RequiredClientGlbl.Top - 5;
+                RequiredClientGlbl.Height:=23;
+                RequiredClientGlbl.Visible:= True;
+                NameClientGErrorP.Visible:= True;
+                sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+                OKClientGBtn.Enabled := False;
+                OKClientGBtn.ImageIndex := 18;
+
+                exit;
+               finally
+                ClientGPgControl.TabIndex:= 0;
+                NameClientGEdt.SetFocus;
+               end;
+             end;
+
+        end else
+            begin
+              addNewClient();
+            end;
+
+
+            BonLivGestionF.ClientBonLivGCbx.Text := NameClientGEdt.Text;
+            BonLivGestionF.ClientBonLivGCbx.SetFocus;
+
+
+      end //End Lookup
+      else
           begin
-          MainForm.ClientTable.Last;
-          CodeC:= MainForm.ClientTable.FieldValues['code_c'] + 1;
-          end else
-              begin
-               CodeC:= 1;
-              end;
-        Append;
-        FieldValues['code_c'] := CodeC;
-        FieldValues['activ_c'] := ActiveClientGSlider.SliderOn;
-        fieldbyname('nom_c').AsString := NameClientGEdt.Text;
-        fieldbyname('activite_c').AsString := AcitiviteClientGEdt.Text;
-        fieldbyname('adr_c').AsString := AdrClientGEdt.Text;
-        fieldbyname('willaya_c').AsString := WilayaClientGCbx.Text;
-        fieldbyname('ville_c').AsString := VilleClientGCbx.Text;
-        fieldbyname('fix_c').AsString := FixClientGEdt.Text;
-        fieldbyname('fax_c').AsString := FaxClientGEdt.Text;
-        fieldbyname('mob_c').AsString := MobileClientGEdt.Text;
-        fieldbyname('mob2_c').AsString := MobileClientGEdt.Text;
-        fieldbyname('email_c').AsString := EmailClientGEdt.Text;
-        fieldbyname('siteweb_c').AsString := SiteClientGEdt.Text;
-        fieldbyname('rc_c').AsString := RCClientGEdt.Text;
-        fieldbyname('nart_c').AsString := NArtClientGEdt.Text;
-        fieldbyname('nif_c').AsString := NIFClientGEdt.Text;
-        fieldbyname('nis_c').AsString := NISClientGEdt.Text;
-        fieldbyname('nbank_c').AsString := NBankClientGEdt.Text;
-        fieldbyname('rib_c').AsString := RIBClientGEdt.Text;
-        if OldCreditClientGEdt.Text <> '' then
-        begin
-          fieldbyname('oldcredit_c').Value :=
-            Trim(OldCreditClientGEdt.Text);
-        end
-        else
-        begin
-          fieldbyname('oldcredit_c').Value := StrToInt('0')
-        end;
-        if MaxCreditClientGEdt.Text <> '' then
-        begin
-          fieldbyname('maxcredit_c').Value :=
-            Trim(MaxCreditClientGEdt.Text);
-        end
-        else
-        begin
-          fieldbyname('maxcredit_c').Value := StrToInt('0')
-        end;
-        fieldbyname('obser_c').Value := ObserClientGMem.Text;
-        post;
-       end;
-        MainForm.ClientTable.Refresh;
-        MainForm.ClientTable.Last;
-        BonLivGestionF.ClientBonLivGCbx.Text := NameClientGEdt.Text;
-        BonLivGestionF.ClientBonLivGCbx.SetFocus;
-
-      end else
-          begin
-                           try
+           try
             NameClientGEdt.BorderStyle:= bsNone;
             NameClientGEdt.StyleElements:= [];
-            RequiredClientGlbl.Caption:='Nom Client Existe Déja !!';
+            RequiredClientGlbl.Caption:='C''est Client Existe Déja !!';
             RequiredClientGlbl.Visible:= True;
             NameClientGErrorP.Visible:= True;
             sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
@@ -838,72 +825,59 @@ begin
     if OKClientGBtn.Tag = 4 then
     begin
 
-    lookupResultNomC := MainForm.ClientTable.Lookup('LOWER(nom_c)',(LowerCase( NameClientGEdt.Text)),'nom_c');
-      if  VarIsnull( lookupResultNomC) then
-      begin
+     if  isClientExist(NameClientGEdt.Text) = False then
+     begin
 
-      with MainForm.ClientTable do
-      begin
-               if NOT (MainForm.ClientTable.IsEmpty) then
-          begin
-          MainForm.ClientTable.Last;
-          CodeC:= MainForm.ClientTable.FieldValues['code_c'] + 1;
-          end else
-              begin
-               CodeC:= 1;
-              end;
-        Append;
-        FieldValues['code_c'] := CodeC;
-        FieldValues['activ_c'] := ActiveClientGSlider.SliderOn;
-        fieldbyname('nom_c').Value := NameClientGEdt.Text;
-        fieldbyname('activite_c').AsString := AcitiviteClientGEdt.Text;
-        fieldbyname('adr_c').Value := AdrClientGEdt.Text;
-        fieldbyname('willaya_c').Value := WilayaClientGCbx.Text;
-        fieldbyname('ville_c').Value := VilleClientGCbx.Text;
-        fieldbyname('fix_c').Value := FixClientGEdt.Text;
-        fieldbyname('fax_c').Value := FaxClientGEdt.Text;
-        fieldbyname('mob_c').Value := MobileClientGEdt.Text;
-        fieldbyname('mob2_c').Value := MobileClientGEdt.Text;
-        fieldbyname('email_c').Value := EmailClientGEdt.Text;
-        fieldbyname('siteweb_c').Value := SiteClientGEdt.Text;
-        fieldbyname('rc_c').Value := RCClientGEdt.Text;
-        fieldbyname('nart_c').Value := NArtClientGEdt.Text;
-        fieldbyname('nif_c').Value := NIFClientGEdt.Text;
-        fieldbyname('nis_c').Value := NISClientGEdt.Text;
-        fieldbyname('nbank_c').Value := NBankClientGEdt.Text;
-        fieldbyname('rib_c').Value := RIBClientGEdt.Text;
-        if OldCreditClientGEdt.Text <> '' then
+
+        // This is to add new fournisseur as this client
+
+        if ClientFourGSlider.SliderOn then
         begin
-          fieldbyname('oldcredit_c').Value :=
-            Trim(OldCreditClientGEdt.Text);
-        end
-        else
-        begin
-          fieldbyname('oldcredit_c').Value := StrToInt('0')
-        end;
-        if MaxCreditClientGEdt.Text <> '' then
-        begin
-          fieldbyname('maxcredit_c').Value :=
-            Trim(MaxCreditClientGEdt.Text);
-        end
-        else
-        begin
-          fieldbyname('maxcredit_c').Value := StrToInt('0')
-        end;
-        fieldbyname('obser_c').Value := ObserClientGMem.Text;
-        post;
-      end;
-      MainForm.ClientTable.Refresh;
-      MainForm.ClientTable.Last;
+
+         if isFourExist(NameClientGEdt.Text) = False then
+         begin
+
+         AddSameClientDetailInCFList(NameClientGEdt.Text);
+         addNewClient();
+         end
+         else
+             begin
+                try
+                NameClientGEdt.BorderStyle:= bsNone;
+                NameClientGEdt.StyleElements:= [];
+                RequiredClientGlbl.Caption:='C''est nom existe deja dans la list des fournisseurs, décocher "Ajouter comme Fournisseur:" ou bien change le nom';
+                RequiredClientGlbl.Font.Height:= 12;
+                RequiredClientGlbl.Top:= RequiredClientGlbl.Top - 5;
+                RequiredClientGlbl.Height:=23;
+                RequiredClientGlbl.Visible:= True;
+                NameClientGErrorP.Visible:= True;
+                sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+                OKClientGBtn.Enabled := False;
+                OKClientGBtn.ImageIndex := 18;
+
+                exit;
+               finally
+                ClientGPgControl.TabIndex:= 0;
+                NameClientGEdt.SetFocus;
+               end;
+             end;
+
+        end else
+            begin
+              addNewClient();
+            end;
+
+
       BonFacVGestionF.ClientBonFacVGCbx.Text := NameClientGEdt.Text;
       BonFacVGestionF.ClientBonFacVGCbx.SetFocus;
 
-     end else
+      end //End Lookup
+      else
           begin
-                           try
+           try
             NameClientGEdt.BorderStyle:= bsNone;
             NameClientGEdt.StyleElements:= [];
-            RequiredClientGlbl.Caption:='Nom Client Existe Déja !!';
+            RequiredClientGlbl.Caption:='C''est Client Existe Déja !!';
             RequiredClientGlbl.Visible:= True;
             NameClientGErrorP.Visible:= True;
             sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
@@ -923,72 +897,58 @@ begin
     if OKClientGBtn.Tag = 5 then
     begin
 
-     lookupResultNomC := MainForm.ClientTable.Lookup('LOWER(nom_c)',(LowerCase( NameClientGEdt.Text)),'nom_c');
-     if  VarIsnull( lookupResultNomC) then
+           if  isClientExist(NameClientGEdt.Text) = False then
      begin
 
-      with MainForm.ClientTable do
-      begin
-          if NOT (MainForm.ClientTable.IsEmpty) then
-          begin
-          MainForm.ClientTable.Last;
-          CodeC:= MainForm.ClientTable.FieldValues['code_c'] + 1;
-          end else
-              begin
-               CodeC:= 1;
-              end;
-        Append;
-        FieldValues['code_c'] := CodeC;
-        FieldValues['activ_c'] := ActiveClientGSlider.SliderOn;
-        fieldbyname('nom_c').Value := NameClientGEdt.Text;
-        fieldbyname('activite_c').AsString := AcitiviteClientGEdt.Text;
-        fieldbyname('adr_c').Value := AdrClientGEdt.Text;
-        fieldbyname('willaya_c').Value := WilayaClientGCbx.Text;
-        fieldbyname('ville_c').Value := VilleClientGCbx.Text;
-        fieldbyname('fix_c').Value := FixClientGEdt.Text;
-        fieldbyname('fax_c').Value := FaxClientGEdt.Text;
-        fieldbyname('mob_c').Value := MobileClientGEdt.Text;
-        fieldbyname('mob2_c').Value := MobileClientGEdt.Text;
-        fieldbyname('email_c').Value := EmailClientGEdt.Text;
-        fieldbyname('siteweb_c').Value := SiteClientGEdt.Text;
-        fieldbyname('rc_c').Value := RCClientGEdt.Text;
-        fieldbyname('nart_c').Value := NArtClientGEdt.Text;
-        fieldbyname('nif_c').Value := NIFClientGEdt.Text;
-        fieldbyname('nis_c').Value := NISClientGEdt.Text;
-        fieldbyname('nbank_c').Value := NBankClientGEdt.Text;
-        fieldbyname('rib_c').Value := RIBClientGEdt.Text;
-        if OldCreditClientGEdt.Text <> '' then
-        begin
-          fieldbyname('oldcredit_c').Value :=
-            Trim(OldCreditClientGEdt.Text);
-        end
-        else
-        begin
-          fieldbyname('oldcredit_c').Value := StrToInt('0')
-        end;
-        if MaxCreditClientGEdt.Text <> '' then
-        begin
-          fieldbyname('maxcredit_c').Value :=
-            Trim(MaxCreditClientGEdt.Text);
-        end
-        else
-        begin
-          fieldbyname('maxcredit_c').Value := StrToInt('0')
-        end;
-        fieldbyname('obser_c').Value := ObserClientGMem.Text;
-        post;
-      end;
-      MainForm.ClientTable.Refresh;
-      MainForm.ClientTable.Last;
-      ReglementCGestionF.ClientRegCGCbx.Text := NameClientGEdt.Text;
-      ReglementCGestionF.ClientRegCGCbx.SetFocus;
 
-      end else
+        // This is to add new fournisseur as this client
+
+        if ClientFourGSlider.SliderOn then
+        begin
+
+         if isFourExist(NameClientGEdt.Text) = False then
+         begin
+
+         AddSameClientDetailInCFList(NameClientGEdt.Text);
+         addNewClient();
+         end
+         else
+             begin
+                try
+                NameClientGEdt.BorderStyle:= bsNone;
+                NameClientGEdt.StyleElements:= [];
+                RequiredClientGlbl.Caption:='C''est nom existe deja dans la list des fournisseurs, décocher "Ajouter comme Fournisseur:" ou bien change le nom';
+                RequiredClientGlbl.Font.Height:= 12;
+                RequiredClientGlbl.Top:= RequiredClientGlbl.Top - 5;
+                RequiredClientGlbl.Height:=23;
+                RequiredClientGlbl.Visible:= True;
+                NameClientGErrorP.Visible:= True;
+                sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+                OKClientGBtn.Enabled := False;
+                OKClientGBtn.ImageIndex := 18;
+
+                exit;
+               finally
+                ClientGPgControl.TabIndex:= 0;
+                NameClientGEdt.SetFocus;
+               end;
+             end;
+
+        end else
+            begin
+              addNewClient();
+            end;
+
+            ReglementCGestionF.ClientRegCGCbx.Text := NameClientGEdt.Text;
+            ReglementCGestionF.ClientRegCGCbx.SetFocus;
+
+      end //End Lookup
+      else
           begin
-                           try
+           try
             NameClientGEdt.BorderStyle:= bsNone;
             NameClientGEdt.StyleElements:= [];
-            RequiredClientGlbl.Caption:='Nom Client Existe Déja !!';
+            RequiredClientGlbl.Caption:='C''est Client Existe Déja !!';
             RequiredClientGlbl.Visible:= True;
             NameClientGErrorP.Visible:= True;
             sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
@@ -1009,72 +969,58 @@ begin
     if OKClientGBtn.Tag = 6 then
     begin
 
-     lookupResultNomC := MainForm.ClientTable.Lookup('LOWER(nom_c)',(LowerCase( NameClientGEdt.Text)),'nom_c');
-     if  VarIsnull( lookupResultNomC) then
+           if  isClientExist(NameClientGEdt.Text) = False then
      begin
 
-      with MainForm.ClientTable do
-      begin
-               if NOT (MainForm.ClientTable.IsEmpty) then
-          begin
-          MainForm.ClientTable.Last;
-          CodeC:= MainForm.ClientTable.FieldValues['code_c'] + 1;
-          end else
-              begin
-               CodeC:= 1;
-              end;
-        Append;
-        FieldValues['code_c'] := CodeC;
-        FieldValues['activ_c'] := ActiveClientGSlider.SliderOn;
-        fieldbyname('nom_c').Value := NameClientGEdt.Text;
-        fieldbyname('activite_c').AsString := AcitiviteClientGEdt.Text;
-        fieldbyname('adr_c').Value := AdrClientGEdt.Text;
-        fieldbyname('willaya_c').Value := WilayaClientGCbx.Text;
-        fieldbyname('ville_c').Value := VilleClientGCbx.Text;
-        fieldbyname('fix_c').Value := FixClientGEdt.Text;
-        fieldbyname('fax_c').Value := FaxClientGEdt.Text;
-        fieldbyname('mob_c').Value := MobileClientGEdt.Text;
-        fieldbyname('mob2_c').Value := MobileClientGEdt.Text;
-        fieldbyname('email_c').Value := EmailClientGEdt.Text;
-        fieldbyname('siteweb_c').Value := SiteClientGEdt.Text;
-        fieldbyname('rc_c').Value := RCClientGEdt.Text;
-        fieldbyname('nart_c').Value := NArtClientGEdt.Text;
-        fieldbyname('nif_c').Value := NIFClientGEdt.Text;
-        fieldbyname('nis_c').Value := NISClientGEdt.Text;
-        fieldbyname('nbank_c').Value := NBankClientGEdt.Text;
-        fieldbyname('rib_c').Value := RIBClientGEdt.Text;
-        if OldCreditClientGEdt.Text <> '' then
-        begin
-          fieldbyname('oldcredit_c').Value :=
-            Trim(OldCreditClientGEdt.Text);
-        end
-        else
-        begin
-          fieldbyname('oldcredit_c').Value := StrToInt('0')
-        end;
-        if MaxCreditClientGEdt.Text <> '' then
-        begin
-          fieldbyname('maxcredit_c').Value :=
-            Trim(MaxCreditClientGEdt.Text);
-        end
-        else
-        begin
-          fieldbyname('maxcredit_c').Value := StrToInt('0')
-        end;
-        fieldbyname('obser_c').Value := ObserClientGMem.Text;
-        post;
-      end;
-      MainForm.ClientTable.Refresh;
-      MainForm.ClientTable.Last;
-      BonCtrGestionF.ClientBonCtrGCbx.Text := NameClientGEdt.Text;
-      BonCtrGestionF.ProduitBonCtrGCbx.SetFocus;
 
-      end else
+        // This is to add new fournisseur as this client
+
+        if ClientFourGSlider.SliderOn then
+        begin
+
+         if isFourExist(NameClientGEdt.Text) = False then
+         begin
+
+         AddSameClientDetailInCFList(NameClientGEdt.Text);
+         addNewClient();
+         end
+         else
+             begin
+                try
+                NameClientGEdt.BorderStyle:= bsNone;
+                NameClientGEdt.StyleElements:= [];
+                RequiredClientGlbl.Caption:='C''est nom existe deja dans la list des fournisseurs, décocher "Ajouter comme Fournisseur:" ou bien change le nom';
+                RequiredClientGlbl.Font.Height:= 12;
+                RequiredClientGlbl.Top:= RequiredClientGlbl.Top - 5;
+                RequiredClientGlbl.Height:=23;
+                RequiredClientGlbl.Visible:= True;
+                NameClientGErrorP.Visible:= True;
+                sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+                OKClientGBtn.Enabled := False;
+                OKClientGBtn.ImageIndex := 18;
+
+                exit;
+               finally
+                ClientGPgControl.TabIndex:= 0;
+                NameClientGEdt.SetFocus;
+               end;
+             end;
+
+        end else
+            begin
+              addNewClient();
+            end;
+
+            BonCtrGestionF.ClientBonCtrGCbx.Text := NameClientGEdt.Text;
+            BonCtrGestionF.ProduitBonCtrGCbx.SetFocus;
+
+      end //End Lookup
+      else
           begin
-                           try
+           try
             NameClientGEdt.BorderStyle:= bsNone;
             NameClientGEdt.StyleElements:= [];
-            RequiredClientGlbl.Caption:='Nom Client Existe Déja !!';
+            RequiredClientGlbl.Caption:='C''est Client Existe Déja !!';
             RequiredClientGlbl.Visible:= True;
             NameClientGErrorP.Visible:= True;
             sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
@@ -1087,6 +1033,7 @@ begin
             NameClientGEdt.SetFocus;
            end;
           end;
+
     end;
 
 
@@ -1094,72 +1041,60 @@ begin
     if OKClientGBtn.Tag = 7 then
     begin
 
-     lookupResultNomC := MainForm.ClientTable.Lookup('LOWER(nom_c)',(LowerCase( NameClientGEdt.Text)),'nom_c');
-      if  VarIsnull( lookupResultNomC) then
-      begin
+          if  isClientExist(NameClientGEdt.Text) = False then
+     begin
 
-       with MainForm.ClientTable do
-       begin
-               if NOT (MainForm.ClientTable.IsEmpty) then
-          begin
-          MainForm.ClientTable.Last;
-          CodeC:= MainForm.ClientTable.FieldValues['code_c'] + 1;
-          end else
-              begin
-               CodeC:= 1;
-              end;
-        Append;
-        FieldValues['code_c'] := CodeC;
-        FieldValues['activ_c'] := ActiveClientGSlider.SliderOn;
-        fieldbyname('nom_c').Value := NameClientGEdt.Text;
-        fieldbyname('activite_c').AsString := AcitiviteClientGEdt.Text;
-        fieldbyname('adr_c').Value := AdrClientGEdt.Text;
-        fieldbyname('willaya_c').Value := WilayaClientGCbx.Text;
-        fieldbyname('ville_c').Value := VilleClientGCbx.Text;
-        fieldbyname('fix_c').Value := FixClientGEdt.Text;
-        fieldbyname('fax_c').Value := FaxClientGEdt.Text;
-        fieldbyname('mob_c').Value := MobileClientGEdt.Text;
-        fieldbyname('mob2_c').Value := MobileClientGEdt.Text;
-        fieldbyname('email_c').Value := EmailClientGEdt.Text;
-        fieldbyname('siteweb_c').Value := SiteClientGEdt.Text;
-        fieldbyname('rc_c').Value := RCClientGEdt.Text;
-        fieldbyname('nart_c').Value := NArtClientGEdt.Text;
-        fieldbyname('nif_c').Value := NIFClientGEdt.Text;
-        fieldbyname('nis_c').Value := NISClientGEdt.Text;
-        fieldbyname('nbank_c').Value := NBankClientGEdt.Text;
-        fieldbyname('rib_c').Value := RIBClientGEdt.Text;
-        if OldCreditClientGEdt.Text <> '' then
-        begin
-          fieldbyname('oldcredit_c').Value :=
-            Trim(OldCreditClientGEdt.Text);
-        end
-        else
-        begin
-          fieldbyname('oldcredit_c').Value := StrToInt('0')
-        end;
-        if MaxCreditClientGEdt.Text <> '' then
-        begin
-          fieldbyname('maxcredit_c').Value :=
-            Trim(MaxCreditClientGEdt.Text);
-        end
-        else
-        begin
-          fieldbyname('maxcredit_c').Value := StrToInt('0')
-        end;
-        fieldbyname('obser_c').Value := ObserClientGMem.Text;
-        post;
-       end;
-        MainForm.ClientTable.Refresh;
-        MainForm.ClientTable.Last;
-        BonFacPGestionF.ClientBonFacVGCbx.Text := NameClientGEdt.Text;
-        BonFacPGestionF.ClientBonFacVGCbx.SetFocus;
 
-     end else
+        // This is to add new fournisseur as this client
+
+        if ClientFourGSlider.SliderOn then
+        begin
+
+         if isFourExist(NameClientGEdt.Text) = False then
+         begin
+
+         AddSameClientDetailInCFList(NameClientGEdt.Text);
+         addNewClient();
+         end
+         else
+             begin
+                try
+                NameClientGEdt.BorderStyle:= bsNone;
+                NameClientGEdt.StyleElements:= [];
+                RequiredClientGlbl.Caption:='C''est nom existe deja dans la list des fournisseurs, décocher "Ajouter comme Fournisseur:" ou bien change le nom';
+                RequiredClientGlbl.Font.Height:= 12;
+                RequiredClientGlbl.Top:= RequiredClientGlbl.Top - 5;
+                RequiredClientGlbl.Height:=23;
+                RequiredClientGlbl.Visible:= True;
+                NameClientGErrorP.Visible:= True;
+                sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+                OKClientGBtn.Enabled := False;
+                OKClientGBtn.ImageIndex := 18;
+
+                exit;
+               finally
+                ClientGPgControl.TabIndex:= 0;
+                NameClientGEdt.SetFocus;
+               end;
+             end;
+
+        end else
+            begin
+              addNewClient();
+            end;
+
+
+            BonFacPGestionF.ClientBonFacVGCbx.Text := NameClientGEdt.Text;
+            BonFacPGestionF.ClientBonFacVGCbx.SetFocus;
+
+
+      end //End Lookup
+      else
           begin
-                           try
+           try
             NameClientGEdt.BorderStyle:= bsNone;
             NameClientGEdt.StyleElements:= [];
-            RequiredClientGlbl.Caption:='Nom Client Existe Déja !!';
+            RequiredClientGlbl.Caption:='C''est Client Existe Déja !!';
             RequiredClientGlbl.Visible:= True;
             NameClientGErrorP.Visible:= True;
             sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
@@ -1174,7 +1109,84 @@ begin
           end;
 
     end;
-    
+
+
+
+
+
+      // --------------- adding from commande client----
+    if OKClientGBtn.Tag = 8 then
+    begin
+
+         if  isClientExist(NameClientGEdt.Text) = False then
+     begin
+
+
+        // This is to add new fournisseur as this client
+
+        if ClientFourGSlider.SliderOn then
+        begin
+
+         if isFourExist(NameClientGEdt.Text) = False then
+         begin
+
+         AddSameClientDetailInCFList(NameClientGEdt.Text);
+         addNewClient();
+         end
+         else
+             begin
+                try
+                NameClientGEdt.BorderStyle:= bsNone;
+                NameClientGEdt.StyleElements:= [];
+                RequiredClientGlbl.Caption:='C''est nom existe deja dans la list des fournisseurs, décocher "Ajouter comme Fournisseur:" ou bien change le nom';
+                RequiredClientGlbl.Font.Height:= 12;
+                RequiredClientGlbl.Top:= RequiredClientGlbl.Top - 5;
+                RequiredClientGlbl.Height:=23;
+                RequiredClientGlbl.Visible:= True;
+                NameClientGErrorP.Visible:= True;
+                sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+                OKClientGBtn.Enabled := False;
+                OKClientGBtn.ImageIndex := 18;
+
+                exit;
+               finally
+                ClientGPgControl.TabIndex:= 0;
+                NameClientGEdt.SetFocus;
+               end;
+             end;
+
+        end else
+            begin
+              addNewClient();
+            end;
+
+
+            BonComVGestionF.ClientBonComGCbx.Text := NameClientGEdt.Text;
+            BonComVGestionF.ClientBonComGCbx.SetFocus;
+
+
+      end //End Lookup
+      else
+          begin
+           try
+            NameClientGEdt.BorderStyle:= bsNone;
+            NameClientGEdt.StyleElements:= [];
+            RequiredClientGlbl.Caption:='C''est Client Existe Déja !!';
+            RequiredClientGlbl.Visible:= True;
+            NameClientGErrorP.Visible:= True;
+            sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+            OKClientGBtn.Enabled := False;
+            OKClientGBtn.ImageIndex := 18;
+
+            exit;
+           finally
+            ClientGPgControl.TabIndex:= 0;
+            NameClientGEdt.SetFocus;
+           end;
+          end;
+
+    end;
+
 
     begin
       FSplash := TFSplash.Create(Application);
@@ -1190,92 +1202,6 @@ begin
         FSplash.free;
 
       end;
-
-    end;
-
-
-      // --------------- adding from commande client----
-    if OKClientGBtn.Tag = 8 then
-    begin
-
-     lookupResultNomC := MainForm.ClientTable.Lookup('LOWER(nom_c)',(LowerCase( NameClientGEdt.Text)),'nom_c');
-      if  VarIsnull( lookupResultNomC) then
-      begin
-
-       with MainForm.ClientTable do
-       begin
-               if NOT (MainForm.ClientTable.IsEmpty) then
-          begin
-          MainForm.ClientTable.Last;
-          CodeC:= MainForm.ClientTable.FieldValues['code_c'] + 1;
-          end else
-              begin
-               CodeC:= 1;
-              end;
-        Append;
-        FieldValues['code_c'] := CodeC;
-        FieldValues['activ_c'] := ActiveClientGSlider.SliderOn;
-        fieldbyname('nom_c').Value := NameClientGEdt.Text;
-        fieldbyname('activite_c').AsString := AcitiviteClientGEdt.Text;
-        fieldbyname('adr_c').Value := AdrClientGEdt.Text;
-        fieldbyname('willaya_c').Value := WilayaClientGCbx.Text;
-        fieldbyname('ville_c').Value := VilleClientGCbx.Text;
-        fieldbyname('fix_c').Value := FixClientGEdt.Text;
-        fieldbyname('fax_c').Value := FaxClientGEdt.Text;
-        fieldbyname('mob_c').Value := MobileClientGEdt.Text;
-        fieldbyname('mob2_c').Value := MobileClientGEdt.Text;
-        fieldbyname('email_c').Value := EmailClientGEdt.Text;
-        fieldbyname('siteweb_c').Value := SiteClientGEdt.Text;
-        fieldbyname('rc_c').Value := RCClientGEdt.Text;
-        fieldbyname('nart_c').Value := NArtClientGEdt.Text;
-        fieldbyname('nif_c').Value := NIFClientGEdt.Text;
-        fieldbyname('nis_c').Value := NISClientGEdt.Text;
-        fieldbyname('nbank_c').Value := NBankClientGEdt.Text;
-        fieldbyname('rib_c').Value := RIBClientGEdt.Text;
-        if OldCreditClientGEdt.Text <> '' then
-        begin
-          fieldbyname('oldcredit_c').Value :=
-            Trim(OldCreditClientGEdt.Text);
-        end
-        else
-        begin
-          fieldbyname('oldcredit_c').Value := StrToInt('0')
-        end;
-        if MaxCreditClientGEdt.Text <> '' then
-        begin
-          fieldbyname('maxcredit_c').Value :=
-            Trim(MaxCreditClientGEdt.Text);
-        end
-        else
-        begin
-          fieldbyname('maxcredit_c').Value := StrToInt('0')
-        end;
-        fieldbyname('obser_c').Value := ObserClientGMem.Text;
-        post;
-       end;
-        MainForm.ClientTable.Refresh;
-        MainForm.ClientTable.Last;
-        BonComVGestionF.ClientBonComGCbx.Text := NameClientGEdt.Text;
-        BonComVGestionF.ClientBonComGCbx.SetFocus;
-
-     end else
-          begin
-                           try
-            NameClientGEdt.BorderStyle:= bsNone;
-            NameClientGEdt.StyleElements:= [];
-            RequiredClientGlbl.Caption:='Nom Client Existe Déja !!';
-            RequiredClientGlbl.Visible:= True;
-            NameClientGErrorP.Visible:= True;
-            sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
-            OKClientGBtn.Enabled := False;
-            OKClientGBtn.ImageIndex := 18;
-
-            exit;
-           finally
-            ClientGPgControl.TabIndex:= 0;
-            NameClientGEdt.SetFocus;
-           end;
-          end;
 
     end;
 

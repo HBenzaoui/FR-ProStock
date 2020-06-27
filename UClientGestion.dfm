@@ -555,6 +555,10 @@ object ClientGestionF: TClientGestionF
     end
     object PlusInfoClientGTB: TsTabSheet
       Caption = 'Plus D'#39'info'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object PlusInfoTB: TPanel
         Left = 0
         Top = 0
@@ -986,6 +990,10 @@ object ClientGestionF: TClientGestionF
     end
     object FicheClientTB: TsTabSheet
       Caption = 'Fiche Client'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       DesignSize = (
         508
         458)
