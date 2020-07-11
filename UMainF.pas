@@ -726,6 +726,7 @@ type
     Bona_recPlistTablelocalisation: TWideStringField;
     Bonp_fac_listTablelocalisation: TWideStringField;
     Bonv_liv_listTablelocalisation: TWideStringField;
+    BRVMainFMmn: TMenuItem;
     procedure ClientMainFBtnClick(Sender: TObject);
     procedure FourMainFBtnClick(Sender: TObject);
     procedure ProduitMainFBtnClick(Sender: TObject);
@@ -874,6 +875,7 @@ type
     procedure MouvementdeProduit3Click(Sender: TObject);
     procedure B2Click(Sender: TObject);
     procedure B4Click(Sender: TObject);
+    procedure BRVMainFMmnClick(Sender: TObject);
   private
    //---- this to value of changege we need it to check if theuser changed something
      CountInsert,CountUpdate,CountDelete   : Int64;
@@ -925,7 +927,8 @@ uses   Vcl.Direct2D,Character,
   ULogoSplashForm, ULoginUser, ULogin, UCNotifications, UChargesFList,
   UPertesFList, USTypeChargeList, UTypeChargeList, UTypePerteList,
   UBonFacPGestion, UBonFacP, UTransferComptesGestion, UTransferListGestion,
-  UAbout, DBCalcController, UInventory, UBonComA, UBonComAGestion, UBonComV, UBonComVGestion;
+  UAbout, DBCalcController, UInventory, UBonComA, UBonComAGestion, UBonComV, UBonComVGestion,
+  UBonRetV;
 
   var
     gGrayForms: TComponentList;
@@ -1150,6 +1153,23 @@ if Not Assigned(BonRecF) then
      BonRecF:= TBonRecF.Create(Application) else
                                         begin
                                           BonRecF.Show
+                                        end;
+end;
+
+procedure TMainForm.BRVMainFMmnClick(Sender: TObject);
+begin
+        ClientTable.DisableControls;
+        ClientTable.Active:=False;
+        ClientTable.SQL.Clear;
+        ClientTable.SQL.Text:='SELECT * FROM client ';
+        ClientTable.Active:=True;
+        ClientTable.EnableControls;
+
+if Not Assigned(BonRetVF) then
+
+     BonRetVF:= TBonRetVF.Create(Application) else
+                                        begin
+                                          BonRetVF.Show
                                         end;
 end;
 
