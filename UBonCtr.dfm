@@ -1651,6 +1651,15 @@ object BonCtrF: TBonCtrF
       StyleElements = []
     end
   end
+  object Button1: TButton
+    Left = 210
+    Top = 50
+    Width = 75
+    Height = 25
+    Caption = 'Button1'
+    TabOrder = 4
+    OnClick = Button1Click
+  end
   object BonCtrfrxRprt: TfrxReport
     Version = '6.3.12'
     DotMatrixReport = False

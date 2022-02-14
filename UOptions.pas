@@ -74,7 +74,6 @@ type
     ResetDBBtn: TsSpeedButton;
     Label21: TLabel;
     AllSdr0: TsSlider;
-    Panel15: TPanel;
     Panel16: TPanel;
     Panel17: TPanel;
     Label16: TLabel;
@@ -332,6 +331,18 @@ type
     Label45: TLabel;
     FormatFAOptionCbx: TComboBox;
     edt1: TEdit;
+    CtrNoValidBonSdr22: TsSlider;
+    Label47: TLabel;
+    Label48: TLabel;
+    Label49: TLabel;
+    Label50: TLabel;
+    CtrSdrF23: TsSlider;
+    BLSdrF24: TsSlider;
+    BRSdrF25: TsSlider;
+    FVSdrF26: TsSlider;
+    FASdrF27: TsSlider;
+    Label51: TLabel;
+    RIBCompanyGEdt: TEdit;
     procedure FormShow(Sender: TObject);
     procedure OKFPrintingBtnClick(Sender: TObject);
     procedure ImageCompanyOptionImgMouseEnter(Sender: TObject);
@@ -645,10 +656,15 @@ NormalForms;
 
   AllSdr0.SliderOn:= False;
   CtrSdr1.SliderOn:= False;
+  CtrSdrF23.SliderOn:= False;
   BLSdr2.SliderOn:= False;
+  BLSdrF24.SliderOn:= False;
   BRSdr3.SliderOn:= False;
+  BRSdrF25.SliderOn:= False;
   FVSdr4.SliderOn:= False;
+  FVSdrF26.SliderOn:= False;
   FASdr5.SliderOn:= False;
+  FASdrF27.SliderOn:= False;
   FPSdr6.SliderOn:= False;
   RCSdr7.SliderOn:= False;
   RFSdr8.SliderOn:= False;
@@ -953,6 +969,7 @@ begin
             fieldbyname('nif_comp').Value := NIFCompanyGEdt.Text;
             fieldbyname('nart_comp').Value := NArtCompanyGEdt.Text;
             fieldbyname('nis_comp').Value := NISCompanyGEdt.Text;
+            fieldbyname('rib_comp').Value := RIBCompanyGEdt.Text;
 
               {Creat the stream using BlobStream is better the to the blob dictely }
 
@@ -992,6 +1009,7 @@ begin
               fieldbyname('nif_comp').Value := NIFCompanyGEdt.Text;
               fieldbyname('nart_comp').Value := NArtCompanyGEdt.Text;
               fieldbyname('nis_comp').Value := NISCompanyGEdt.Text;
+              fieldbyname('rib_comp').Value := RIBCompanyGEdt.Text;
 
               {Creat the stream using BlobStream is better the to the blob dictely }
 
@@ -1398,6 +1416,16 @@ begin
 
          MainForm.GstockdcConnection.ExecSQL('TRUNCATE  bonv_ctr');
          MainForm.GstockdcConnection.ExecSQL('TRUNCATE  bonv_ctr_list');
+//         MainForm.GstockdcConnection.ExecSQL('DELETE FROM opt_cas_bnk where code_bvctr <> 0 OR code_bvctr is null  ' );
+//         MainForm.GstockdcConnection.ExecSQL('DELETE FROM regclient where code_bvctr <> 0 OR code_bvctr is null  ' );
+
+        end;
+
+        if CtrSdrF23.SliderOn = True then
+        begin
+
+//         MainForm.GstockdcConnection.ExecSQL('TRUNCATE  bonv_ctr');
+//         MainForm.GstockdcConnection.ExecSQL('TRUNCATE  bonv_ctr_list');
          MainForm.GstockdcConnection.ExecSQL('DELETE FROM opt_cas_bnk where code_bvctr <> 0 OR code_bvctr is null  ' );
          MainForm.GstockdcConnection.ExecSQL('DELETE FROM regclient where code_bvctr <> 0 OR code_bvctr is null  ' );
 
@@ -1408,38 +1436,81 @@ begin
 
          MainForm.GstockdcConnection.ExecSQL('TRUNCATE  bonv_liv');
          MainForm.GstockdcConnection.ExecSQL('TRUNCATE  bonv_liv_list');
+//         MainForm.GstockdcConnection.ExecSQL('DELETE FROM opt_cas_bnk where code_bvliv <> 0 OR code_bvliv is null  ' );
+//         MainForm.GstockdcConnection.ExecSQL('DELETE FROM regclient where code_bvliv <> 0 OR code_bvliv is null  ' );
+
+        end;
+
+        if BLSdrF24.SliderOn = True then
+        begin
+
+//         MainForm.GstockdcConnection.ExecSQL('TRUNCATE  bonv_liv');
+//         MainForm.GstockdcConnection.ExecSQL('TRUNCATE  bonv_liv_list');
          MainForm.GstockdcConnection.ExecSQL('DELETE FROM opt_cas_bnk where code_bvliv <> 0 OR code_bvliv is null  ' );
          MainForm.GstockdcConnection.ExecSQL('DELETE FROM regclient where code_bvliv <> 0 OR code_bvliv is null  ' );
 
         end;
+
         if BRSdr3.SliderOn = True then
         begin
 
          MainForm.GstockdcConnection.ExecSQL('TRUNCATE  bona_rec');
          MainForm.GstockdcConnection.ExecSQL('TRUNCATE  bona_rec_list');
+//         MainForm.GstockdcConnection.ExecSQL('DELETE FROM opt_cas_bnk where code_barec <> 0 OR code_barec is null  ' );
+//         MainForm.GstockdcConnection.ExecSQL('DELETE FROM regfournisseur where code_barec <> 0 OR code_barec is null  ' );
+
+        end;
+
+        if BRSdrF25.SliderOn = True then
+        begin
+
+//         MainForm.GstockdcConnection.ExecSQL('TRUNCATE  bona_rec');
+//         MainForm.GstockdcConnection.ExecSQL('TRUNCATE  bona_rec_list');
          MainForm.GstockdcConnection.ExecSQL('DELETE FROM opt_cas_bnk where code_barec <> 0 OR code_barec is null  ' );
          MainForm.GstockdcConnection.ExecSQL('DELETE FROM regfournisseur where code_barec <> 0 OR code_barec is null  ' );
 
         end;
+
         if FVSdr4.SliderOn = True then
         begin
 
          MainForm.GstockdcConnection.ExecSQL('TRUNCATE  bonv_fac');
          MainForm.GstockdcConnection.ExecSQL('TRUNCATE  bonv_fac_list');
+//         MainForm.GstockdcConnection.ExecSQL('DELETE FROM opt_cas_bnk where code_bvfac <> 0 OR code_bvfac is null  ' );
+//         MainForm.GstockdcConnection.ExecSQL('DELETE FROM regclient where code_bvfac <> 0 OR code_bvfac is null  ' );
+
+        end;
+
+        if FVSdrF26.SliderOn = True then
+        begin
+
+//         MainForm.GstockdcConnection.ExecSQL('TRUNCATE  bonv_fac');
+//         MainForm.GstockdcConnection.ExecSQL('TRUNCATE  bonv_fac_list');
          MainForm.GstockdcConnection.ExecSQL('DELETE FROM opt_cas_bnk where code_bvfac <> 0 OR code_bvfac is null  ' );
          MainForm.GstockdcConnection.ExecSQL('DELETE FROM regclient where code_bvfac <> 0 OR code_bvfac is null  ' );
 
-
         end;
+
         if FASdr5.SliderOn = True then
         begin
 
          MainForm.GstockdcConnection.ExecSQL('TRUNCATE  bona_fac');
          MainForm.GstockdcConnection.ExecSQL('TRUNCATE  bona_fac_list');
+//         MainForm.GstockdcConnection.ExecSQL('DELETE FROM opt_cas_bnk where code_bafac <> 0 OR code_bafac is null  ' );
+//         MainForm.GstockdcConnection.ExecSQL('DELETE FROM regfournisseur where code_bafac <> 0 OR code_bafac is null  ' );
+
+        end;
+
+        if FASdrF27.SliderOn = True then
+        begin
+
+//         MainForm.GstockdcConnection.ExecSQL('TRUNCATE  bona_fac');
+//         MainForm.GstockdcConnection.ExecSQL('TRUNCATE  bona_fac_list');
          MainForm.GstockdcConnection.ExecSQL('DELETE FROM opt_cas_bnk where code_bafac <> 0 OR code_bafac is null  ' );
          MainForm.GstockdcConnection.ExecSQL('DELETE FROM regfournisseur where code_bafac <> 0 OR code_bafac is null  ' );
 
         end;
+
         if FPSdr6.SliderOn = True then
         begin
 
@@ -1567,6 +1638,14 @@ begin
         begin
           MainForm.GstockdcConnection.ExecSQL('UPDATE fournisseur set (oldcredit_f ,credit_f) = (0,0) ;');
         end;
+
+        if CtrNoValidBonSdr22.SliderOn = True then
+        begin
+         MainForm.GstockdcConnection.ExecSQL('DELETE FROM bonv_ctr_list CTL USING bonv_ctr CT WHERE CTL.code_bvctr = CT.code_bvctr AND CT.valider_bvctr = FALSE' );
+         MainForm.GstockdcConnection.ExecSQL('DELETE FROM bonv_ctr WHERE valider_bvctr = false ' );
+        end;
+
+
 
          MainForm.ActiveTables;
          MainForm.RerfreshTables;

@@ -335,7 +335,7 @@ object BonCtrGestionF: TBonCtrGestionF
     Height = 133
     Align = alTop
     BevelOuter = bvNone
-    Color = 4207405
+    Color = clBlack
     ParentBackground = False
     TabOrder = 0
     DesignSize = (
@@ -361,7 +361,7 @@ object BonCtrGestionF: TBonCtrGestionF
     object Label1: TLabel
       Left = 5
       Top = 4
-      Width = 75
+      Width = 70
       Height = 28
       Caption = 'Total'
       Font.Charset = DEFAULT_CHARSET
@@ -372,9 +372,9 @@ object BonCtrGestionF: TBonCtrGestionF
       ParentFont = False
     end
     object Label17: TLabel
-      Left = 877
+      Left = 884
       Top = 4
-      Width = 113
+      Width = 106
       Height = 28
       Anchors = [akTop, akRight]
       BiDiMode = bdRightToLeft
@@ -421,7 +421,7 @@ object BonCtrGestionF: TBonCtrGestionF
       Caption = '0'
       Color = 15722984
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = 15722984
+      Font.Color = 7854350
       Font.Height = 25
       Font.Name = 'DS-Digital'
       Font.Style = [fsBold]
@@ -466,7 +466,7 @@ object BonCtrGestionF: TBonCtrGestionF
       Caption = '0'
       Color = 4207405
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = 3854249
+      Font.Color = 7854350
       Font.Height = 25
       Font.Name = 'DS-Digital'
       Font.Style = [fsBold]
@@ -588,12 +588,11 @@ object BonCtrGestionF: TBonCtrGestionF
         Width = 40
         Height = 40
         Hint = 'Modifer'
+        ImageIndex = 3
+        Images = MainForm.ComptoiIcons48
         ParentShowHint = False
         ShowHint = True
         OnClick = sSpeedButton4Click
-        SkinData.SkinSection = 'SPEEDBUTTON'
-        Images = MainForm.ComptoiIcons48
-        ImageIndex = 3
       end
       object sSpeedButton5: TsSpeedButton
         Left = 89
@@ -601,12 +600,11 @@ object BonCtrGestionF: TBonCtrGestionF
         Width = 40
         Height = 40
         Hint = 'Detaill'
+        ImageIndex = 2
+        Images = MainForm.ComptoiIcons48
         ParentShowHint = False
         ShowHint = True
         OnClick = sSpeedButton5Click
-        SkinData.SkinSection = 'SPEEDBUTTON'
-        Images = MainForm.ComptoiIcons48
-        ImageIndex = 2
         ShowCaption = False
       end
       object sSpeedButton6: TsSpeedButton
@@ -615,12 +613,11 @@ object BonCtrGestionF: TBonCtrGestionF
         Width = 40
         Height = 40
         Hint = 'Modifer'
+        ImageIndex = 1
+        Images = MainForm.ComptoiIcons48
         ParentShowHint = False
         ShowHint = True
         OnClick = sSpeedButton6Click
-        SkinData.SkinSection = 'SPEEDBUTTON'
-        Images = MainForm.ComptoiIcons48
-        ImageIndex = 1
       end
       object sSpeedButton7: TsSpeedButton
         Left = 3
@@ -628,12 +625,11 @@ object BonCtrGestionF: TBonCtrGestionF
         Width = 40
         Height = 40
         Hint = 'Detaill'
+        ImageIndex = 0
+        Images = MainForm.ComptoiIcons48
         ParentShowHint = False
         ShowHint = True
         OnClick = sSpeedButton7Click
-        SkinData.SkinSection = 'SPEEDBUTTON'
-        Images = MainForm.ComptoiIcons48
-        ImageIndex = 0
         ShowCaption = False
       end
       object Panel14: TPanel
@@ -803,12 +799,11 @@ object BonCtrGestionF: TBonCtrGestionF
         Width = 40
         Height = 40
         Anchors = [akTop, akRight]
+        ImageIndex = 6
+        Images = MainForm.ComptoiIcons48
         ParentShowHint = False
         ShowHint = True
         OnClick = sSpeedButton2Click
-        SkinData.SkinSection = 'SPEEDBUTTON'
-        Images = MainForm.ComptoiIcons48
-        ImageIndex = 6
       end
       object sSpeedButton1: TsSpeedButton
         Left = 48
@@ -816,12 +811,11 @@ object BonCtrGestionF: TBonCtrGestionF
         Width = 40
         Height = 40
         Anchors = [akTop, akRight]
+        ImageIndex = 5
+        Images = MainForm.ComptoiIcons48
         ParentShowHint = False
         ShowHint = True
         OnClick = sSpeedButton1Click
-        SkinData.SkinSection = 'SPEEDBUTTON'
-        Images = MainForm.ComptoiIcons48
-        ImageIndex = 5
       end
       object PrintTicketBVCtrBonCtrGBtn: TsSpeedButton
         Left = 5
@@ -829,12 +823,11 @@ object BonCtrGestionF: TBonCtrGestionF
         Width = 40
         Height = 40
         Anchors = [akTop, akRight]
+        ImageIndex = 15
+        Images = MainForm.ComptoiIcons48
         ParentShowHint = False
         ShowHint = True
         OnClick = PrintTicketBVCtrBonCtrGBtnClick
-        SkinData.SkinSection = 'SPEEDBUTTON'
-        Images = MainForm.ComptoiIcons48
-        ImageIndex = 15
       end
       object RegleVersementSGLbl: TLabel
         Left = 3
@@ -1030,7 +1023,7 @@ object BonCtrGestionF: TBonCtrGestionF
           AlignWithMargins = True
           Left = 5
           Top = 17
-          Width = 117
+          Width = 118
           Height = 40
           Cursor = crHandPoint
           Hint = '[F4]'
@@ -1063,16 +1056,16 @@ object BonCtrGestionF: TBonCtrGestionF
           ShowHint = True
           Spacing = -1
           OnClick = AddBVCtrBonCtrGBtnClick
-          Version = '1.6.2.0'
+          Version = '1.7.2.0'
           ExplicitWidth = 190
           ExplicitHeight = 55
           TMSStyle = 0
         end
         object EditBVCtrBonCtrGBtn: TAdvToolButton
           AlignWithMargins = True
-          Left = 127
+          Left = 128
           Top = 17
-          Width = 117
+          Width = 118
           Height = 40
           Cursor = crHandPoint
           Hint = '[F5]'
@@ -1105,14 +1098,14 @@ object BonCtrGestionF: TBonCtrGestionF
           ShowHint = True
           Spacing = -1
           OnClick = EditBVCtrBonCtrGBtnClick
-          Version = '1.6.2.0'
+          Version = '1.7.2.0'
           ExplicitWidth = 220
           ExplicitHeight = 55
           TMSStyle = 0
         end
         object ValiderBVCtrBonCtrGBtn: TAdvToolButton
           AlignWithMargins = True
-          Left = 249
+          Left = 251
           Top = 17
           Width = 118
           Height = 40
@@ -1147,16 +1140,16 @@ object BonCtrGestionF: TBonCtrGestionF
           ShowHint = True
           Spacing = -1
           OnClick = ValiderBVCtrBonCtrGBtnClick
-          Version = '1.6.2.0'
+          Version = '1.7.2.0'
           ExplicitWidth = 220
           ExplicitHeight = 55
           TMSStyle = 0
         end
         object ExValiderBVCtrBonCtrGBtn: TAdvToolButton
           AlignWithMargins = True
-          Left = 372
+          Left = 374
           Top = 17
-          Width = 120
+          Width = 118
           Height = 40
           Cursor = crHandPoint
           Hint = '[F10]'
@@ -1189,7 +1182,7 @@ object BonCtrGestionF: TBonCtrGestionF
           ShowHint = True
           Spacing = -1
           OnClick = ExValiderBVCtrBonCtrGBtnClick
-          Version = '1.6.2.0'
+          Version = '1.7.2.0'
           ExplicitWidth = 193
           ExplicitHeight = 55
           TMSStyle = 0
@@ -1273,7 +1266,7 @@ object BonCtrGestionF: TBonCtrGestionF
         ShowHint = True
         Spacing = -1
         OnClick = AddClientBonCtrGBtnClick
-        Version = '1.6.2.0'
+        Version = '1.7.2.0'
         TMSStyle = 0
       end
       object RequiredClientGlbl: TLabel
@@ -1325,7 +1318,7 @@ object BonCtrGestionF: TBonCtrGestionF
         ShowHint = True
         Spacing = -1
         OnClick = ListClientBonCtrGBtnClick
-        Version = '1.6.2.0'
+        Version = '1.7.2.0'
         TMSStyle = 0
       end
       object NameClientGErrorP: TPanel
@@ -1373,7 +1366,7 @@ object BonCtrGestionF: TBonCtrGestionF
         Width = 114
         Height = 24
         Ctl3D = True
-        Font.Charset = DEFAULT_CHARSET
+        Font.Charset = ARABIC_CHARSET
         Font.Color = clWindowText
         Font.Height = 16
         Font.Name = 'Helvetica LT Std'
@@ -1397,7 +1390,7 @@ object BonCtrGestionF: TBonCtrGestionF
       Height = 125
       Align = alTop
       BevelOuter = bvNone
-      Color = 4207405
+      Color = clBlack
       ParentBackground = False
       TabOrder = 2
       object Label18: TLabel
@@ -1606,7 +1599,7 @@ object BonCtrGestionF: TBonCtrGestionF
       Align = alTop
       Alignment = taRightJustify
       BevelOuter = bvNone
-      Color = 4207405
+      Color = clBlack
       ParentBackground = False
       TabOrder = 3
       object Label2: TLabel
@@ -1804,7 +1797,7 @@ object BonCtrGestionF: TBonCtrGestionF
     TabHoverColorTo = 8375293
     TabWidth = 25
     TextDirection = tdBottomToTop
-    Version = '1.6.0.2'
+    Version = '1.8.1.1'
     object LeftFavTabP: TAdvToolPanel
       Left = 25
       Top = 0
@@ -1865,7 +1858,7 @@ object BonCtrGestionF: TBonCtrGestionF
       ShowCaptionBorder = False
       ShowClose = False
       Style = esWindows10
-      Version = '1.6.0.2'
+      Version = '1.8.1.1'
       OnLock = LeftFavTabPLock
       OnUnlock = LeftFavTabPLock
       object FavProduitCTRPgControl: TsPageControl
@@ -2146,7 +2139,7 @@ object BonCtrGestionF: TBonCtrGestionF
             end
             object Fav7sp: TsSpeedButton
               Left = 2
-              Top = 213
+              Top = 214
               Width = 100
               Height = 50
               ParentCustomHint = False
@@ -2167,7 +2160,7 @@ object BonCtrGestionF: TBonCtrGestionF
             end
             object Fav8sp: TsSpeedButton
               Left = 107
-              Top = 213
+              Top = 214
               Width = 100
               Height = 50
               ParentCustomHint = False
@@ -2188,7 +2181,7 @@ object BonCtrGestionF: TBonCtrGestionF
             end
             object Fav9sp: TsSpeedButton
               Left = 2
-              Top = 281
+              Top = 282
               Width = 100
               Height = 50
               ParentCustomHint = False
@@ -2209,7 +2202,7 @@ object BonCtrGestionF: TBonCtrGestionF
             end
             object Fav10sp: TsSpeedButton
               Left = 107
-              Top = 281
+              Top = 282
               Width = 100
               Height = 50
               ParentCustomHint = False
@@ -2230,7 +2223,7 @@ object BonCtrGestionF: TBonCtrGestionF
             end
             object Fav11sp: TsSpeedButton
               Left = 2
-              Top = 349
+              Top = 350
               Width = 100
               Height = 50
               ParentCustomHint = False
@@ -2251,7 +2244,7 @@ object BonCtrGestionF: TBonCtrGestionF
             end
             object Fav12sp: TsSpeedButton
               Left = 107
-              Top = 349
+              Top = 350
               Width = 100
               Height = 50
               ParentCustomHint = False
@@ -2522,7 +2515,7 @@ object BonCtrGestionF: TBonCtrGestionF
             end
             object Fav19sp: TsSpeedButton
               Left = 2
-              Top = 213
+              Top = 214
               Width = 100
               Height = 50
               ParentCustomHint = False
@@ -2543,7 +2536,7 @@ object BonCtrGestionF: TBonCtrGestionF
             end
             object Fav20sp: TsSpeedButton
               Left = 107
-              Top = 213
+              Top = 214
               Width = 100
               Height = 50
               ParentCustomHint = False
@@ -2564,7 +2557,7 @@ object BonCtrGestionF: TBonCtrGestionF
             end
             object Fav21sp: TsSpeedButton
               Left = 2
-              Top = 281
+              Top = 282
               Width = 100
               Height = 50
               ParentCustomHint = False
@@ -2585,7 +2578,7 @@ object BonCtrGestionF: TBonCtrGestionF
             end
             object Fav22sp: TsSpeedButton
               Left = 107
-              Top = 281
+              Top = 282
               Width = 100
               Height = 50
               ParentCustomHint = False
@@ -2606,7 +2599,7 @@ object BonCtrGestionF: TBonCtrGestionF
             end
             object Fav23sp: TsSpeedButton
               Left = 2
-              Top = 349
+              Top = 350
               Width = 100
               Height = 50
               ParentCustomHint = False
@@ -2627,7 +2620,7 @@ object BonCtrGestionF: TBonCtrGestionF
             end
             object Fav24sp: TsSpeedButton
               Left = 107
-              Top = 349
+              Top = 350
               Width = 100
               Height = 50
               ParentCustomHint = False
@@ -2898,7 +2891,7 @@ object BonCtrGestionF: TBonCtrGestionF
             end
             object Fav31sp: TsSpeedButton
               Left = 2
-              Top = 213
+              Top = 214
               Width = 100
               Height = 50
               ParentCustomHint = False
@@ -2919,7 +2912,7 @@ object BonCtrGestionF: TBonCtrGestionF
             end
             object Fav32sp: TsSpeedButton
               Left = 107
-              Top = 213
+              Top = 214
               Width = 100
               Height = 50
               ParentCustomHint = False
@@ -2940,7 +2933,7 @@ object BonCtrGestionF: TBonCtrGestionF
             end
             object Fav33sp: TsSpeedButton
               Left = 2
-              Top = 281
+              Top = 282
               Width = 100
               Height = 50
               ParentCustomHint = False
@@ -2961,7 +2954,7 @@ object BonCtrGestionF: TBonCtrGestionF
             end
             object Fav34sp: TsSpeedButton
               Left = 107
-              Top = 281
+              Top = 282
               Width = 100
               Height = 50
               ParentCustomHint = False
@@ -2982,7 +2975,7 @@ object BonCtrGestionF: TBonCtrGestionF
             end
             object Fav35sp: TsSpeedButton
               Left = 2
-              Top = 349
+              Top = 350
               Width = 100
               Height = 50
               ParentCustomHint = False
@@ -3003,7 +2996,7 @@ object BonCtrGestionF: TBonCtrGestionF
             end
             object Fav36sp: TsSpeedButton
               Left = 107
-              Top = 349
+              Top = 350
               Width = 100
               Height = 50
               ParentCustomHint = False
@@ -3274,7 +3267,7 @@ object BonCtrGestionF: TBonCtrGestionF
             end
             object Fav43sp: TsSpeedButton
               Left = 2
-              Top = 213
+              Top = 214
               Width = 100
               Height = 50
               ParentCustomHint = False
@@ -3295,7 +3288,7 @@ object BonCtrGestionF: TBonCtrGestionF
             end
             object Fav44sp: TsSpeedButton
               Left = 107
-              Top = 213
+              Top = 214
               Width = 100
               Height = 50
               ParentCustomHint = False
@@ -3316,7 +3309,7 @@ object BonCtrGestionF: TBonCtrGestionF
             end
             object Fav45sp: TsSpeedButton
               Left = 2
-              Top = 281
+              Top = 282
               Width = 100
               Height = 50
               ParentCustomHint = False
@@ -3337,7 +3330,7 @@ object BonCtrGestionF: TBonCtrGestionF
             end
             object Fav46sp: TsSpeedButton
               Left = 107
-              Top = 281
+              Top = 282
               Width = 100
               Height = 50
               ParentCustomHint = False
@@ -3358,7 +3351,7 @@ object BonCtrGestionF: TBonCtrGestionF
             end
             object Fav47sp: TsSpeedButton
               Left = 2
-              Top = 349
+              Top = 350
               Width = 100
               Height = 50
               ParentCustomHint = False
@@ -3379,7 +3372,7 @@ object BonCtrGestionF: TBonCtrGestionF
             end
             object Fav48sp: TsSpeedButton
               Left = 107
-              Top = 349
+              Top = 350
               Width = 100
               Height = 50
               ParentCustomHint = False
@@ -3650,7 +3643,7 @@ object BonCtrGestionF: TBonCtrGestionF
             end
             object Fav55sp: TsSpeedButton
               Left = 2
-              Top = 213
+              Top = 214
               Width = 100
               Height = 50
               ParentCustomHint = False
@@ -3671,7 +3664,7 @@ object BonCtrGestionF: TBonCtrGestionF
             end
             object Fav56sp: TsSpeedButton
               Left = 107
-              Top = 213
+              Top = 214
               Width = 100
               Height = 50
               ParentCustomHint = False
@@ -3692,7 +3685,7 @@ object BonCtrGestionF: TBonCtrGestionF
             end
             object Fav57sp: TsSpeedButton
               Left = 2
-              Top = 281
+              Top = 282
               Width = 100
               Height = 50
               ParentCustomHint = False
@@ -3713,7 +3706,7 @@ object BonCtrGestionF: TBonCtrGestionF
             end
             object Fav58sp: TsSpeedButton
               Left = 107
-              Top = 281
+              Top = 282
               Width = 100
               Height = 50
               ParentCustomHint = False
@@ -3734,7 +3727,7 @@ object BonCtrGestionF: TBonCtrGestionF
             end
             object Fav59sp: TsSpeedButton
               Left = 2
-              Top = 349
+              Top = 350
               Width = 100
               Height = 50
               ParentCustomHint = False
@@ -3755,7 +3748,7 @@ object BonCtrGestionF: TBonCtrGestionF
             end
             object Fav60sp: TsSpeedButton
               Left = 107
-              Top = 349
+              Top = 350
               Width = 100
               Height = 50
               ParentCustomHint = False
@@ -3803,7 +3796,7 @@ object BonCtrGestionF: TBonCtrGestionF
       object Label6: TLabel
         Left = 8
         Top = 92
-        Width = 77
+        Width = 76
         Height = 15
         Anchors = [akLeft, akBottom]
         Caption = 'Les Produits:'
@@ -3848,7 +3841,7 @@ object BonCtrGestionF: TBonCtrGestionF
         ShowHint = True
         Spacing = -1
         OnClick = ListAddProduitBonCtrGBtnClick
-        Version = '1.6.2.0'
+        Version = '1.7.2.0'
         ExplicitLeft = 541
         ExplicitTop = 49
         TMSStyle = 0
@@ -3885,7 +3878,7 @@ object BonCtrGestionF: TBonCtrGestionF
         ShowHint = True
         Spacing = -1
         OnClick = NewAddProduitBonCtrGBtnClick
-        Version = '1.6.2.0'
+        Version = '1.7.2.0'
         ExplicitLeft = 619
         ExplicitTop = 49
         TMSStyle = 0
@@ -3919,7 +3912,7 @@ object BonCtrGestionF: TBonCtrGestionF
         ShowHint = True
         Spacing = -1
         OnClick = EnterAddProduitBonCtrGBtnClick
-        Version = '1.6.2.0'
+        Version = '1.7.2.0'
         ExplicitLeft = 495
         ExplicitTop = 49
         TMSStyle = 0
@@ -3953,12 +3946,11 @@ object BonCtrGestionF: TBonCtrGestionF
         Height = 45
         Hint = '[Ctrl+Supper]'
         Anchors = [akTop, akRight]
+        ImageIndex = 16
+        Images = MainForm.PanelIcons24
         ParentShowHint = False
         ShowHint = True
         OnClick = ClearProduitBonCtrGBtnClick
-        SkinData.SkinSection = 'SPEEDBUTTON'
-        Images = MainForm.PanelIcons24
-        ImageIndex = 16
       end
       object ShowCalculaturBonCtrGBtn: TsSpeedButton
         Left = 364
@@ -3967,12 +3959,11 @@ object BonCtrGestionF: TBonCtrGestionF
         Height = 45
         Hint = 'Calculatrice'
         Anchors = [akTop, akRight]
+        ImageIndex = 24
+        Images = MainForm.PanelIcons24
         ParentShowHint = False
         ShowHint = True
         OnClick = ShowCalculaturBonCtrGBtnClick
-        SkinData.SkinSection = 'SPEEDBUTTON'
-        Images = MainForm.PanelIcons24
-        ImageIndex = 24
       end
       object ShowKeyBoardBonCtrGBtn: TsSpeedButton
         Left = 413
@@ -3981,12 +3972,11 @@ object BonCtrGestionF: TBonCtrGestionF
         Height = 45
         Hint = 'Clavier'
         Anchors = [akTop, akRight]
+        ImageIndex = 43
+        Images = MainForm.PanelIcons24
         ParentShowHint = False
         ShowHint = True
         OnClick = ShowKeyBoardBonCtrGBtnClick
-        SkinData.SkinSection = 'SPEEDBUTTON'
-        Images = MainForm.PanelIcons24
-        ImageIndex = 43
       end
       object CloseBonCtrGBtn: TsSpeedButton
         Left = 511
@@ -3995,12 +3985,11 @@ object BonCtrGestionF: TBonCtrGestionF
         Height = 45
         Hint = 'Ferm'#233'r'
         Anchors = [akTop, akRight]
+        ImageIndex = 45
+        Images = MainForm.PanelIcons24
         ParentShowHint = False
         ShowHint = True
         OnClick = CloseBonCtrGBtnClick
-        SkinData.SkinSection = 'SPEEDBUTTON'
-        Images = MainForm.PanelIcons24
-        ImageIndex = 45
       end
       object MinimizeBonCtrGBtn: TsSpeedButton
         Left = 462
@@ -4009,13 +3998,12 @@ object BonCtrGestionF: TBonCtrGestionF
         Height = 45
         Hint = 'Minimiser'
         Anchors = [akTop, akRight]
+        ImageIndex = 44
+        Images = MainForm.PanelIcons24
         Enabled = False
         ParentShowHint = False
         ShowHint = True
         OnClick = MinimizeBonCtrGBtnClick
-        SkinData.SkinSection = 'SPEEDBUTTON'
-        Images = MainForm.PanelIcons24
-        ImageIndex = 44
       end
       object BonCRemiseHTNewLbl: TLabel
         Left = 12
@@ -4133,12 +4121,11 @@ object BonCtrGestionF: TBonCtrGestionF
         Height = 45
         Hint = '[Supper]'
         Anchors = [akTop, akRight]
+        ImageIndex = 14
+        Images = MainForm.PanelIcons24
         ParentShowHint = False
         ShowHint = True
         OnClick = DeleteProduitBonCtrGBtnClick
-        SkinData.SkinSection = 'SPEEDBUTTON'
-        Images = MainForm.PanelIcons24
-        ImageIndex = 14
       end
       object Label8: TLabel
         Left = 499
@@ -4205,12 +4192,11 @@ object BonCtrGestionF: TBonCtrGestionF
         Height = 27
         Hint = 'Camera'
         Anchors = [akRight, akBottom]
+        ImageIndex = 54
+        Images = MainForm.PanelIcons24
         ParentShowHint = False
         ShowHint = True
         OnClick = CameraBonCtrGBtnClick
-        SkinData.SkinSection = 'SPEEDBUTTON'
-        Images = MainForm.PanelIcons24
-        ImageIndex = 54
       end
       object ChangeQUTBonCtrGBtn: TsSpeedButton
         Left = 8
@@ -4218,12 +4204,11 @@ object BonCtrGestionF: TBonCtrGestionF
         Width = 45
         Height = 45
         Hint = 'Changer le Quantit'#233
+        ImageIndex = 16
+        Images = MainForm.ComptoiIcons48
         ParentShowHint = False
         ShowHint = True
         OnClick = ChangeQUTBonCtrGBtnClick
-        SkinData.SkinSection = 'SPEEDBUTTON'
-        Images = MainForm.ComptoiIcons48
-        ImageIndex = 16
       end
       object ChangePRIXBonCtrGBtn: TsSpeedButton
         Left = 57
@@ -4231,12 +4216,11 @@ object BonCtrGestionF: TBonCtrGestionF
         Width = 45
         Height = 45
         Hint = 'Changer le Prix'
+        ImageIndex = 17
+        Images = MainForm.ComptoiIcons48
         ParentShowHint = False
         ShowHint = True
         OnClick = ChangePRIXBonCtrGBtnClick
-        SkinData.SkinSection = 'SPEEDBUTTON'
-        Images = MainForm.ComptoiIcons48
-        ImageIndex = 17
       end
       object sSpeedButton3: TsSpeedButton
         Left = 106
@@ -4244,12 +4228,11 @@ object BonCtrGestionF: TBonCtrGestionF
         Width = 45
         Height = 45
         Hint = 'Ajouter des Produits Divers'
+        ImageIndex = 18
+        Images = MainForm.ComptoiIcons48
         ParentShowHint = False
         ShowHint = True
         OnClick = sSpeedButton3Click
-        SkinData.SkinSection = 'SPEEDBUTTON'
-        Images = MainForm.ComptoiIcons48
-        ImageIndex = 18
       end
       object sImage2: TsImage
         Left = 276
@@ -4816,6 +4799,7 @@ object BonCtrGestionF: TBonCtrGestionF
     ShowProgress = True
     OverwritePrompt = False
     DataOnly = False
+    InteractiveFormsFontSubset = 'A-Z,a-z,0-9,#43-#47 '
     OpenAfterExport = False
     PrintOptimized = False
     Outline = False
@@ -4854,7 +4838,7 @@ object BonCtrGestionF: TBonCtrGestionF
     Top = 324
   end
   object ComptoirTicketfrxRprt: TfrxReport
-    Version = '6.3.12'
+    Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick, pbNoClose, pbNoFullScreen, pbNoEmail]
@@ -4863,7 +4847,7 @@ object BonCtrGestionF: TBonCtrGestionF
     PrintOptions.PrintOnSheet = 0
     PrintOptions.ShowDialog = False
     ReportOptions.CreateDate = 41863.570242476900000000
-    ReportOptions.LastChange = 43191.717916875000000000
+    ReportOptions.LastChange = 44387.045941631940000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       '//procedure Page1OnBeforePrint(Sender: TfrxComponent);'
@@ -4992,7 +4976,7 @@ object BonCtrGestionF: TBonCtrGestionF
         Font.Style = [fsBold]
         Height = 28.708720000000000000
         ParentFont = False
-        Top = 173.858380000000000000
+        Top = 196.535560000000000000
         Width = 275.905690000000000000
         OnBeforePrint = 'PageHeader1OnBeforePrint'
         Stretched = True
@@ -5105,14 +5089,14 @@ object BonCtrGestionF: TBonCtrGestionF
         FillType = ftBrush
         Frame.Typ = []
         Height = 27.000000000000000000
-        Top = 548.031850000000000000
+        Top = 574.488560000000000000
         Width = 275.905690000000000000
       end
       object MasterData1: TfrxMasterData
         FillType = ftBrush
         Frame.Typ = []
-        Height = 22.677167800000000000
-        Top = 264.567100000000000000
+        Height = 18.897637800000000000
+        Top = 287.244280000000000000
         Width = 275.905690000000000000
         DataSet = frxComptoirListPDB
         DataSetName = 'frxComptoirListPDB'
@@ -5121,7 +5105,7 @@ object BonCtrGestionF: TBonCtrGestionF
         object Memo46: TfrxMemoView
           AllowVectorExport = True
           Left = 110.102362200000000000
-          Top = 2.889763780000010000
+          Top = 0.889763780000000000
           Width = 38.551178660000000000
           Height = 17.007874020000000000
           StretchMode = smActualHeight
@@ -5147,7 +5131,7 @@ object BonCtrGestionF: TBonCtrGestionF
         object Memo47: TfrxMemoView
           AllowVectorExport = True
           Left = 148.787401570000000000
-          Top = 2.889763780000010000
+          Top = 0.889763780000000000
           Width = 60.094488190000000000
           Height = 17.007874020000000000
           StretchMode = smActualHeight
@@ -5173,7 +5157,7 @@ object BonCtrGestionF: TBonCtrGestionF
         object Memo50: TfrxMemoView
           AllowVectorExport = True
           Left = 209.031496060000000000
-          Top = 2.889763780000010000
+          Top = 0.889763780000000000
           Width = 60.094488190000000000
           Height = 17.007874020000000000
           StretchMode = smActualHeight
@@ -5199,7 +5183,7 @@ object BonCtrGestionF: TBonCtrGestionF
         object Memo24: TfrxMemoView
           AllowVectorExport = True
           Left = 1.889763780000000000
-          Top = 0.889763780000010000
+          Top = 0.889763780000000000
           Width = 108.094478430000000000
           Height = 17.007874020000000000
           StretchMode = smActualHeight
@@ -5225,8 +5209,8 @@ object BonCtrGestionF: TBonCtrGestionF
       object Footer1: TfrxFooter
         FillType = ftBrush
         Frame.Typ = []
-        Height = 177.724472910000000000
-        Top = 309.921460000000000000
+        Height = 185.283532910000000000
+        Top = 328.819110000000000000
         Width = 275.905690000000000000
         OnAfterPrint = 'Footer1OnAfterPrint'
         OnBeforePrint = 'Footer1OnBeforePrint'
@@ -5234,7 +5218,7 @@ object BonCtrGestionF: TBonCtrGestionF
         object Memo61: TfrxMemoView
           AllowVectorExport = True
           Left = 123.952794960000000000
-          Top = 4.425191970000010000
+          Top = 4.425191970000000000
           Width = 62.362204720000000000
           Height = 18.897650000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -5245,7 +5229,7 @@ object BonCtrGestionF: TBonCtrGestionF
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            'Total HT :')
+            'Total :')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -5269,10 +5253,11 @@ object BonCtrGestionF: TBonCtrGestionF
         end
         object Memo63: TfrxMemoView
           AllowVectorExport = True
-          Left = 113.070914960000000000
-          Top = 64.220467560000000000
+          Left = 11.354217200000000000
+          Top = 49.102347560000000000
           Width = 73.700794720000000000
           Height = 18.897650000000000000
+          Visible = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -9
@@ -5337,10 +5322,11 @@ object BonCtrGestionF: TBonCtrGestionF
         end
         object Memo69: TfrxMemoView
           AllowVectorExport = True
-          Left = 187.102362200000000000
-          Top = 64.220467560000000000
+          Left = 9.464452200000000000
+          Top = 49.102347560000000000
           Width = 77.480324720000000000
           Height = 18.897650000000000000
+          Visible = False
           DataSet = frxComptoirDB
           DataSetName = 'frxComptoirDB'
           DisplayFormat.DecimalSeparator = '.'
@@ -5362,7 +5348,7 @@ object BonCtrGestionF: TBonCtrGestionF
         object Memo1: TfrxMemoView
           AllowVectorExport = True
           Left = 112.850493780000000000
-          Top = 85.338587560000000000
+          Top = 46.338587560000000000
           Width = 73.700794720000000000
           Height = 18.897650000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -5380,7 +5366,7 @@ object BonCtrGestionF: TBonCtrGestionF
         object Memo3: TfrxMemoView
           AllowVectorExport = True
           Left = 187.102362200000000000
-          Top = 85.338587560000000000
+          Top = 46.338587560000000000
           Width = 79.370088500000000000
           Height = 18.897650000000000000
           DataField = 'montver_bvctr'
@@ -5405,7 +5391,7 @@ object BonCtrGestionF: TBonCtrGestionF
         object Memo6: TfrxMemoView
           AllowVectorExport = True
           Left = 112.850493780000000000
-          Top = 106.236237560000000000
+          Top = 67.236237560000000000
           Width = 73.700794720000000000
           Height = 18.897650000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -5423,7 +5409,7 @@ object BonCtrGestionF: TBonCtrGestionF
         object Memo7: TfrxMemoView
           AllowVectorExport = True
           Left = 187.102362200000000000
-          Top = 106.236237560000000000
+          Top = 67.236237560000000000
           Width = 79.370088500000000000
           Height = 18.897650000000000000
           OnBeforePrint = 'Memo7OnBeforePrint'
@@ -5448,8 +5434,8 @@ object BonCtrGestionF: TBonCtrGestionF
         object Memo8: TfrxMemoView
           AllowVectorExport = True
           Left = 3.669291340000000000
-          Top = 4.574827560000020000
-          Width = 51.023617170000000000
+          Top = 4.574827560000000000
+          Width = 39.685027170000000000
           Height = 18.897650000000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -5457,7 +5443,6 @@ object BonCtrGestionF: TBonCtrGestionF
           Font.Name = 'arial'
           Font.Style = []
           Frame.Typ = []
-          HAlign = haRight
           Memo.UTF8W = (
             'Nb Prod:')
           ParentFont = False
@@ -5465,9 +5450,9 @@ object BonCtrGestionF: TBonCtrGestionF
         end
         object Memo9: TfrxMemoView
           AllowVectorExport = True
-          Left = 54.811026060000000000
-          Top = 4.574827560000020000
-          Width = 81.259854720000000000
+          Left = 44.811026060000000000
+          Top = 4.574827560000000000
+          Width = 92.598444720000000000
           Height = 18.897650000000000000
           DataSet = frxComptoirDB
           DataSetName = 'frxComptoirDB'
@@ -5485,14 +5470,14 @@ object BonCtrGestionF: TBonCtrGestionF
         object Memo10: TfrxMemoView
           AllowVectorExport = True
           Left = 4.000000000000000000
-          Top = 143.504020000000000000
+          Top = 168.960730000000000000
           Width = 264.567100000000000000
-          Height = 18.897635350000000000
+          Height = 11.338575350000000000
           StretchMode = smActualHeight
           DataSetName = 'S_CONFIG'
           Font.Charset = ANSI_CHARSET
           Font.Color = clWindowText
-          Font.Height = -12
+          Font.Height = -7
           Font.Name = 'arial'
           Font.Style = [fsBold]
           Frame.Typ = []
@@ -5503,17 +5488,17 @@ object BonCtrGestionF: TBonCtrGestionF
         end
         object Memo11: TfrxMemoView
           AllowVectorExport = True
-          Left = 137.283574410000000000
-          Top = 165.110287480000000000
-          Width = 64.251985590000000000
-          Height = 11.716535430000000000
+          Left = 167.519814410000000000
+          Top = 117.653577480000000000
+          Width = 109.606345590000000000
+          Height = 19.275595430000000000
           OnBeforePrint = 'Memo11OnBeforePrint'
           StretchMode = smActualHeight
           DataSet = frxComptoirDB
           DataSetName = 'frxComptoirDB'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -7
+          Font.Height = -12
           Font.Name = 'Segoe UI'
           Font.Style = []
           Frame.Typ = []
@@ -5524,9 +5509,9 @@ object BonCtrGestionF: TBonCtrGestionF
         object Memo12: TfrxMemoView
           AllowVectorExport = True
           Left = 4.000000000000000000
-          Top = 165.110287480000000000
-          Width = 49.133890000000000000
-          Height = 11.716535430000000000
+          Top = 117.653577480000000000
+          Width = 102.047310000000000000
+          Height = 19.275595430000000000
           StretchMode = smActualHeight
           DataSet = frxComptoirDB
           DataSetName = 'frxComptoirDB'
@@ -5534,7 +5519,7 @@ object BonCtrGestionF: TBonCtrGestionF
           DisplayFormat.Kind = fkDateTime
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -7
+          Font.Height = -12
           Font.Name = 'Segoe UI'
           Font.Style = []
           Frame.Typ = []
@@ -5544,16 +5529,16 @@ object BonCtrGestionF: TBonCtrGestionF
         end
         object Client: TfrxMemoView
           AllowVectorExport = True
-          Left = 74.708651650000000000
-          Top = 165.110287480000000000
-          Width = 64.252010000000000000
-          Height = 11.716535430000000000
+          Left = 4.897581650000000000
+          Top = 138.433107480000000000
+          Width = 158.740260000000000000
+          Height = 19.275595430000000000
           StretchMode = smActualHeight
           DataSet = frxComptoirDB
           DataSetName = 'frxComptoirDB'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -7
+          Font.Height = -12
           Font.Name = 'Segoe UI'
           Font.Style = []
           Frame.Typ = []
@@ -5579,16 +5564,16 @@ object BonCtrGestionF: TBonCtrGestionF
         end
         object Agent: TfrxMemoView
           AllowVectorExport = True
-          Left = 198.976500000000000000
-          Top = 165.110287480000000000
-          Width = 69.921264720000000000
-          Height = 11.716535430000000000
+          Left = 167.519814410000000000
+          Top = 138.433107480000000000
+          Width = 107.716564720000000000
+          Height = 19.275595430000000000
           StretchMode = smActualHeight
           DataSet = frxComptoirDB
           DataSetName = 'frxComptoirDB'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -7
+          Font.Height = -12
           Font.Name = 'Segoe UI'
           Font.Style = []
           Frame.Typ = []
@@ -5599,6 +5584,7 @@ object BonCtrGestionF: TBonCtrGestionF
         object Line2: TfrxLineView
           AllowVectorExport = True
           Left = 3.779530000000000000
+          Top = 2.000000000000000000
           Width = 264.567100000000000000
           Color = clBlack
           Frame.Style = fsDash
@@ -5613,7 +5599,7 @@ object BonCtrGestionF: TBonCtrGestionF
         object Line3: TfrxLineView
           AllowVectorExport = True
           Left = 3.779530000000000000
-          Top = 126.826840000000000000
+          Top = 92.811070000000000000
           Width = 264.567100000000000000
           StretchMode = smActualHeight
           Color = clBlack
@@ -5629,7 +5615,7 @@ object BonCtrGestionF: TBonCtrGestionF
         object Line4: TfrxLineView
           AllowVectorExport = True
           Left = 3.779530000000000000
-          Top = 143.724490000000000000
+          Top = 113.488250000000000000
           Width = 264.567100000000000000
           StretchMode = smActualHeight
           Color = clBlack
@@ -5645,9 +5631,9 @@ object BonCtrGestionF: TBonCtrGestionF
         object MoneyWordRX: TfrxMemoView
           AllowVectorExport = True
           Left = 4.338590000000000000
-          Top = 129.606370000000000000
+          Top = 95.590600000000000000
           Width = 262.677297170000000000
-          Height = 11.338590000000000000
+          Height = 15.118120000000000000
           StretchMode = smActualHeight
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -5658,13 +5644,12 @@ object BonCtrGestionF: TBonCtrGestionF
           Memo.UTF8W = (
             'Moeny in words')
           ParentFont = False
-          VAlign = vaCenter
         end
         object Line7: TfrxLineView
           AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 163.063080000000000000
-          Width = 264.567100000000000000
+          Width = 268.346630000000000000
           Color = clBlack
           Frame.Style = fsDash
           Frame.Typ = [ftTop]
@@ -5677,8 +5662,8 @@ object BonCtrGestionF: TBonCtrGestionF
         end
         object Line5: TfrxLineView
           AllowVectorExport = True
-          Left = 4.779530000000000000
-          Top = 176.299320000000000000
+          Left = 8.559060000000000000
+          Top = 184.756030000000000000
           Width = 264.567100000000000000
           Color = clBlack
           Frame.Style = fsDashDot
@@ -5691,10 +5676,10 @@ object BonCtrGestionF: TBonCtrGestionF
         end
         object Memo13: TfrxMemoView
           AllowVectorExport = True
-          Left = 50.692950000000000000
-          Top = 165.110287480000000000
-          Width = 27.212598430000000000
-          Height = 11.716535430000000000
+          Left = 107.826840000000000000
+          Top = 117.653577480000000000
+          Width = 57.448838430000000000
+          Height = 19.275595430000000000
           StretchMode = smActualHeight
           DataSet = frxComptoirDB
           DataSetName = 'frxComptoirDB'
@@ -5702,7 +5687,7 @@ object BonCtrGestionF: TBonCtrGestionF
           DisplayFormat.Kind = fkDateTime
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -7
+          Font.Height = -12
           Font.Name = 'Segoe UI'
           Font.Style = []
           Frame.Typ = []
@@ -5712,10 +5697,11 @@ object BonCtrGestionF: TBonCtrGestionF
         end
         object Memo14: TfrxMemoView
           AllowVectorExport = True
-          Left = 113.385900000000000000
-          Top = 44.354360000000000000
+          Left = 11.354217200000000000
+          Top = 49.102347560000000000
           Width = 73.700794720000000000
           Height = 18.897650000000000000
+          Visible = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -9
@@ -5730,10 +5716,11 @@ object BonCtrGestionF: TBonCtrGestionF
         end
         object Memo15: TfrxMemoView
           AllowVectorExport = True
-          Left = 187.417347240000000000
-          Top = 44.354360000000000000
+          Left = 9.464452200000000000
+          Top = 49.102347560000000000
           Width = 77.480324720000000000
           Height = 18.897650000000000000
+          Visible = False
           DataSet = frxComptoirDB
           DataSetName = 'frxComptoirDB'
           DisplayFormat.DecimalSeparator = '.'
@@ -5756,7 +5743,7 @@ object BonCtrGestionF: TBonCtrGestionF
       object ReportTitle1: TfrxReportTitle
         FillType = ftBrush
         Frame.Typ = []
-        Height = 133.063065350000000000
+        Height = 155.740245350000000000
         Top = 18.897650000000000000
         Width = 275.905690000000000000
         OnBeforePrint = 'ReportTitle1OnBeforePrint'
@@ -5764,15 +5751,14 @@ object BonCtrGestionF: TBonCtrGestionF
         object Name: TfrxMemoView
           Align = baCenter
           AllowVectorExport = True
-          Left = 7.559060000000000000
-          Top = 60.252085670000000000
-          Width = 260.787570000000000000
-          Height = 22.677165350000000000
+          Top = 58.252085670000000000
+          Width = 275.905690000000000000
+          Height = 49.133875350000000000
           Visible = False
           DataSetName = 'S_CONFIG'
           Font.Charset = ANSI_CHARSET
           Font.Color = clWindowText
-          Font.Height = -20
+          Font.Height = -15
           Font.Name = 'arial'
           Font.Style = []
           Frame.Typ = []
@@ -5785,7 +5771,7 @@ object BonCtrGestionF: TBonCtrGestionF
           Align = baCenter
           AllowVectorExport = True
           Left = 5.669295000000000000
-          Top = 0.559059999999999000
+          Top = 0.559060000000000000
           Width = 264.567100000000000000
           Height = 56.692876770000000000
           Visible = False
@@ -5799,9 +5785,9 @@ object BonCtrGestionF: TBonCtrGestionF
         end
         object Tel: TfrxMemoView
           AllowVectorExport = True
-          Left = 7.685045630000000000
-          Top = 84.929190000000000000
-          Width = 126.378034370000000000
+          Left = 3.905515630000000000
+          Top = 108.929190000000000000
+          Width = 133.937094370000000000
           Height = 15.118105350000000000
           Visible = False
           DataSetName = 'S_CONFIG'
@@ -5814,12 +5800,13 @@ object BonCtrGestionF: TBonCtrGestionF
           Memo.UTF8W = (
             'Tel:')
           ParentFont = False
+          VAlign = vaCenter
         end
         object Mob: TfrxMemoView
           AllowVectorExport = True
-          Left = 142.110409530000000000
-          Top = 84.929190000000000000
-          Width = 126.236220470000000000
+          Left = 139.110409530000000000
+          Top = 108.929190000000000000
+          Width = 133.795280470000000000
           Height = 15.118105350000000000
           Visible = False
           DataSetName = 'S_CONFIG'
@@ -5829,18 +5816,18 @@ object BonCtrGestionF: TBonCtrGestionF
           Font.Name = 'Segoe UI'
           Font.Style = []
           Frame.Typ = []
-          HAlign = haCenter
           Memo.UTF8W = (
             'Mob:')
           ParentFont = False
+          VAlign = vaCenter
         end
         object Adr: TfrxMemoView
           Align = baCenter
           AllowVectorExport = True
           Left = 7.559060000000000000
-          Top = 102.826840000000000000
+          Top = 126.826840000000000000
           Width = 260.787570000000000000
-          Height = 30.236225350000000000
+          Height = 26.456695350000000000
           Visible = False
           StretchMode = smActualHeight
           DataSetName = 'S_CONFIG'
@@ -5896,7 +5883,7 @@ object BonCtrGestionF: TBonCtrGestionF
     Top = 288
   end
   object ComptoirTicket57frxRprt: TfrxReport
-    Version = '6.3.12'
+    Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick, pbNoClose, pbNoFullScreen, pbNoEmail]
@@ -6016,6 +6003,9 @@ object BonCtrGestionF: TBonCtrGestionF
       Width = 1000.000000000000000000
     end
     object Page1: TfrxReportPage
+      VGuides.Strings = (
+        '207.87415'
+        '181.41744')
       PaperWidth = 50.000000000000000000
       PaperHeight = 120.000000000000000000
       PaperSize = 256
@@ -6023,9 +6013,6 @@ object BonCtrGestionF: TBonCtrGestionF
       DataSetName = 'MasterData'
       Frame.Typ = []
       MirrorMode = []
-      VGuides.Strings = (
-        '207.87415'
-        '181.41744')
       OnBeforePrint = 'Page1OnBeforePrint'
       object PageHeader1: TfrxPageHeader
         FillType = ftBrush

@@ -81,7 +81,9 @@ uses
   UBonComAGestion in 'UBonComAGestion.pas' {BonComAGestionF},
   UBonComA in 'UBonComA.pas' {BonComAF},
   UBonComVGestion in 'UBonComVGestion.pas' {BonComVGestionF},
-  UBonComV in 'UBonComV.pas' {BonComVF};
+  UBonComV in 'UBonComV.pas' {BonComVF},
+  UBonRetVGestion in 'UBonRetVGestion.pas' {BonRetVGestionF},
+  UBonRetV in 'UBonRetV.pas' {BonRetVF};
 
 {$R *.res}
 

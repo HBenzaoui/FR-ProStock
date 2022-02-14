@@ -418,6 +418,108 @@ type
     Inventory_listTablevaltheo_il: TCurrencyField;
     Inventory_listTablevalphys_il: TCurrencyField;
     Inventory_listTablevalgap_il: TCurrencyField;
+    Bona_retTable: TFDQuery;
+    IntegerField3: TIntegerField;
+    DateField2: TDateField;
+    TimeField2: TTimeField;
+    CurrencyField8: TCurrencyField;
+    CurrencyField9: TCurrencyField;
+    BooleanField1: TBooleanField;
+    WideStringField4: TWideStringField;
+    StringField7: TStringField;
+    CurrencyField10: TCurrencyField;
+    CurrencyField11: TCurrencyField;
+    WideStringField5: TWideStringField;
+    SmallintField1: TSmallintField;
+    SmallintField2: TSmallintField;
+    StringField8: TStringField;
+    StringField9: TStringField;
+    IntegerField4: TIntegerField;
+    IntegerField5: TIntegerField;
+    BooleanField2: TBooleanField;
+    StringField10: TStringField;
+    WideStringField6: TWideStringField;
+    CurrencyField12: TCurrencyField;
+    CurrencyField13: TCurrencyField;
+    FMTBCDField1: TFMTBCDField;
+    CurrencyField14: TCurrencyField;
+    Bona_ret_listTable: TFDQuery;
+    IntegerField6: TIntegerField;
+    IntegerField7: TIntegerField;
+    FloatField5: TFloatField;
+    CurrencyField15: TCurrencyField;
+    IntegerField8: TIntegerField;
+    IntegerField9: TIntegerField;
+    CurrencyField16: TCurrencyField;
+    CurrencyField17: TCurrencyField;
+    CurrencyField18: TCurrencyField;
+    CurrencyField19: TCurrencyField;
+    CurrencyField20: TCurrencyField;
+    DateField3: TDateField;
+    FloatField6: TFloatField;
+    SmallintField3: TSmallintField;
+    WideStringField7: TWideStringField;
+    WideStringField8: TWideStringField;
+    CurrencyField21: TCurrencyField;
+    CurrencyField22: TCurrencyField;
+    CurrencyField23: TCurrencyField;
+    CurrencyField24: TCurrencyField;
+    CurrencyField25: TCurrencyField;
+    FloatField7: TFloatField;
+    FloatField8: TFloatField;
+    FloatField9: TFloatField;
+    FloatField10: TFloatField;
+    FloatField11: TFloatField;
+    BonRetAListDataS: TDataSource;
+    Bonv_retTable: TFDQuery;
+    Bonv_retTablecode_bvret: TIntegerField;
+    Bonv_retTabledate_bvret: TDateField;
+    Bonv_retTabletime_bvret: TTimeField;
+    Bonv_retTablecode_c: TIntegerField;
+    Bonv_retTablemontaht_bvret: TCurrencyField;
+    Bonv_retTablemontht_bvret: TCurrencyField;
+    Bonv_retTablemontver_bvret: TCurrencyField;
+    Bonv_retTablevalider_bvret: TBooleanField;
+    Bonv_retTablenum_bvret: TWideStringField;
+    Bonv_retTableclientbvret: TStringField;
+    Bonv_retTablemontttc_bvret: TCurrencyField;
+    Bonv_retTableremise_bvret: TCurrencyField;
+    Bonv_retTablenum_cheque_bvret: TWideStringField;
+    Bonv_retTablecode_mdpai: TSmallintField;
+    Bonv_retTablecode_cmpt: TSmallintField;
+    Bonv_retTableModePaie: TStringField;
+    Bonv_retTableCompte: TStringField;
+    Bonv_retTableNEWTTC: TCurrencyField;
+    Bonv_retTablecode_ur: TIntegerField;
+    Bonv_retTablemarge_bvret: TCurrencyField;
+    Bonv_retTablemontanttva: TCurrencyField;
+    Bonv_retTablemontantres: TCurrencyField;
+    Bonv_retTableremiseperc: TFMTBCDField;
+    Bonv_retTablenetht: TCurrencyField;
+    Bonv_retTableobser_bvret: TWideStringField;
+    Bonv_retTableAgent: TStringField;
+    Bonv_ret_listTable: TFDQuery;
+    Bonv_ret_listTablecode_bvretl: TIntegerField;
+    Bonv_ret_listTablecode_bvret: TIntegerField;
+    Bonv_ret_listTablequt_p: TFloatField;
+    Bonv_ret_listTableprixvd_p: TCurrencyField;
+    Bonv_ret_listTablecond_p: TIntegerField;
+    Bonv_ret_listTablecode_p: TIntegerField;
+    Bonv_ret_listTabletva_p: TSmallintField;
+    Bonv_ret_listTablecode_barec: TIntegerField;
+    Bonv_ret_listTableprixvttc: TCurrencyField;
+    Bonv_ret_listTablemontantht: TCurrencyField;
+    Bonv_ret_listTablemontantttc: TCurrencyField;
+    Bonv_ret_listTablemontanttva: TCurrencyField;
+    Bonv_ret_listTablemontantaht: TCurrencyField;
+    Bonv_ret_listTablemarge: TFloatField;
+    Bonv_ret_listTablemargem: TCurrencyField;
+    Bonv_ret_listTableprixht_p: TCurrencyField;
+    Bonv_ret_listTablenomp: TWideStringField;
+    Bonv_ret_listTablereferp: TWideStringField;
+    BonRetVListDataS: TDataSource;
+    Bonv_ret_listTablelocalisation: TWideStringField;
+    SQLQuery2: TFDQuery;
     procedure DataModuleCreate(Sender: TObject);
     procedure PZeroQCnotifCalcFields(DataSet: TDataSet);
     procedure PCloseZeroQCnotifCalcFields(DataSet: TDataSet);
@@ -434,6 +536,11 @@ type
     procedure Bonv_com_listTablequt_pChange(Sender: TField);
     procedure Bonv_com_listTableprixvd_pChange(Sender: TField);
     procedure Bonv_com_listTablecond_pChange(Sender: TField);
+    procedure Bona_ret_listTableAfterRefresh(DataSet: TDataSet);
+    procedure Bonv_ret_listTableAfterRefresh(DataSet: TDataSet);
+    procedure Bonv_ret_listTablequt_pChange(Sender: TField);
+    procedure Bonv_ret_listTableprixvd_pChange(Sender: TField);
+    procedure Bonv_ret_listTablecond_pChange(Sender: TField);
   private
     procedure CheckAppVersionForFirstRun;
     procedure deleteOldGridsparams;
@@ -454,7 +561,8 @@ var
 implementation
 
 uses
-  UMainF, ULogoSplashForm, ULogin, UInventory, UBonComAGestion, UBonComVGestion;
+  UMainF, ULogoSplashForm, ULogin, UInventory, UBonComAGestion, UBonComVGestion,
+  UBonRetVGestion;
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
@@ -656,6 +764,11 @@ begin
      end;
 end;
 
+procedure TDataModuleF.Bona_ret_listTableAfterRefresh(DataSet: TDataSet);
+begin
+//
+end;
+
 procedure TDataModuleF.Bonv_com_listTableAfterRefresh(DataSet: TDataSet);
 var TotalHT,TotalAHT,TotalTVA,TVA,TotalTTC,LeReste,Regle,Marge,NewHT,BonCVTotalHT: Currency;
 InvoiceID :Integer;
@@ -799,6 +912,153 @@ if (Bonv_com_listTablequt_p.Value > 9999999) OR (Bonv_com_listTablequt_p.Value <
       Bonv_com_listTable.Edit;
       Bonv_com_listTablequt_p.Value := 0;
       Bonv_com_listTable.Post;
+
+     end;
+end;
+
+procedure TDataModuleF.Bonv_ret_listTableAfterRefresh(DataSet: TDataSet);
+var TotalHT,TotalAHT,TotalTVA,TVA,TotalTTC,LeReste,Regle,Marge,NewHT,BonCVTotalHT: Currency;
+InvoiceID :Integer;
+  begin
+       if Assigned(BonRetVGestionF) then
+       begin
+
+          MainForm.SQLQuery3.Active:= False;
+          MainForm.SQLQuery3.SQL.Clear;
+          MainForm.SQLQuery3.SQL.Text:= BonRetVGestionF.BRVLSQL+ ' WHERE code_bvret= '+ IntToStr(Bonv_retTable.FieldByName('code_bvret').AsInteger) +' ORDER BY code_bvretl ';
+          MainForm.SQLQuery3.Active:= True;
+
+          MainForm.SQLQuery3.First;
+          while not MainForm.SQLQuery3.Eof do
+          begin
+            TotalAHT:= TotalAHT + (MainForm.SQLQuery3.FieldByName('MontantAHT').AsCurrency );
+            TotalHT:= TotalHT + (MainForm.SQLQuery3.FieldByName('MontantHT').AsCurrency );
+            TotalTVA:= TotalTVA + MainForm.SQLQuery3.FieldByName('MontantTVA').AsCurrency;
+            TotalTTC:= TotalTTC + MainForm.SQLQuery3.FieldByName('MontantTTC').AsCurrency;
+            TVA:=TVA + MainForm.SQLQuery3.FieldByName('tva_p').AsInteger;
+            Marge:=Marge + MainForm.SQLQuery3.FieldByName('MargeM').AsCurrency ;
+            LeReste:= TotalTTC - StrToCurr(StringReplace(BonRetVGestionF.BonRetRegleLbl.Caption, #32, '', [rfReplaceAll]))  ;
+            MainForm.SQLQuery3.Next;
+          end;
+
+         MainForm.SQLQuery3.Active:=false;
+         MainForm.SQLQuery3.SQL.Clear;
+
+         InvoiceID := Bonv_ret_listTable.FieldByName('code_bvretl').AsInteger;
+
+         Bonv_ret_listTable.Active:=false;
+         Bonv_ret_listTable.SQL.Clear;
+         Bonv_ret_listTable.SQL.Text:= BonRetVGestionF.BRVLSQL+' ORDER BY code_bvretl ' ;
+         Bonv_ret_listTable.Active:=True;
+
+         Bonv_ret_listTable.Locate('code_bvretl',InvoiceID,[]);
+
+
+//    BonRetVGestionF.BonRetTotalAHTLbl.Caption :=    CurrToStrF((TotalAHT),ffNumber,2) ;
+    BonRetVGestionF.BonRetTotalHTLbl.Caption :=    CurrToStrF((TotalHT),ffNumber,2) ;
+    BonRetVGestionF.BonRetTotalTVALbl.Caption :=   CurrToStrF((TotalTVA),ffNumber,2) ;
+    BonRetVGestionF.BonRetTotalTTCLbl.Caption :=   CurrToStrF((TotalTTC),ffNumber,2) ;
+    BonRetVGestionF.BonRetResteLbl.Caption :=      CurrToStrF((LeReste),ffNumber,2) ;
+    BonRetVGestionF.BonRVTotalTTCNewLbl.Caption :=  CurrToStrF(((TotalTTC)),ffNumber,2) ;
+    BonRetVGestionF.BonRVTotalHTNewLbl.Caption :=   CurrToStrF(((TotalHT)),ffNumber,2) ;
+    BonRetVGestionF.TotalTVANewLbl.Caption :=      CurrToStrF(((TotalTVA)),ffNumber,2) ;
+//    BonRetVGestionF.BonRetTotalMargeLbl.Caption := CurrToStrF(((Marge)),ffNumber,2) ;
+
+    if Bonv_retTable.FieldByName('montver_bvret').AsCurrency<> Null then
+    begin
+    Regle:= Bonv_retTable.FieldByName('montver_bvret').AsCurrency;
+    BonRetVGestionF.BonRetRegleLbl.Caption :=      CurrToStrF(((Regle)),ffNumber,2) ;
+    end;
+
+    if NOT (Bonv_ret_listTable.IsEmpty) then
+    begin
+//    if BonRetVGestionF.ClientBonRetCbx.Text<>'' then
+//    begin
+//    BonRetVGestionF.BonRetGClientNEWCredit.Caption:=
+//    CurrToStrF((LeReste + ((StrToCurr(StringReplace(BonRetVGestionF.BonRetGClientOLDCredit.Caption, #32, '', [rfReplaceAll]))))),ffNumber,2) ;
+//    end ;
+//         if  (Bonv_retTable.FieldValues['RemisePerc']= null) OR (Bonv_retTable.FieldValues['remise_bvret']= 0) then
+//         begin
+//         BonRetVGestionF.RemisePerctageBonLivGEdt.Text:='';
+//         end else
+//         begin
+//            BonRetVGestionF.RemisePerctageBonLivGEdtChange(Self);
+//         end;
+
+            BonRetVGestionF.RemisePerctageBonRetVGEdtChange(Self);
+
+            if BonRetVGestionF.BonRVTotalHTNewLbl.Caption <>'' then
+            begin
+            NewHT:=StrToFloat (StringReplace(BonRetVGestionF.BonRVTotalHTNewLbl.Caption , #32, '', [rfReplaceAll]));
+            end;
+
+             if BonRetVGestionF.BonRetTotalHTLbl.Caption<>'' then
+            begin
+            BonCVTotalHT:=StrToFloat (StringReplace(BonRetVGestionF.BonRetTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
+            end;
+
+            BonRetVGestionF.RemiseBonRetVGEdt.Text:=FloatToStrF((BonCVTotalHT - NewHT),ffNumber,14,2);
+    end;
+       end;
+
+end;
+
+procedure TDataModuleF.Bonv_ret_listTablecond_pChange(Sender: TField);
+begin
+if (Bonv_ret_listTablecond_p.Value > 9999999) OR (Bonv_ret_listTablecond_p.Value < -9999999)  then
+ begin
+
+  sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+  Bonv_ret_listTable.Edit;
+  Bonv_ret_listTablecond_p.Value := 1;
+  Bonv_ret_listTable.Post;
+
+ end else if Bonv_ret_listTablecond_p.IsNull then
+     begin
+
+      Bonv_ret_listTable.Edit;
+      Bonv_ret_listTablecond_p.Value := 0;
+      Bonv_ret_listTable.Post;
+
+     end;
+end;
+
+procedure TDataModuleF.Bonv_ret_listTableprixvd_pChange(Sender: TField);
+begin
+if (Bonv_ret_listTableprixvd_p.Value > 9999999) OR (Bonv_ret_listTableprixvd_p.Value < -9999999)  then
+ begin
+
+  sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+  Bonv_ret_listTable.Edit;
+  Bonv_ret_listTableprixvd_p.Value := 1;
+  Bonv_ret_listTable.Post;
+
+ end else if Bonv_ret_listTableprixvd_p.IsNull then
+     begin
+
+      Bonv_ret_listTable.Edit;
+      Bonv_ret_listTableprixvd_p.Value := 0;
+      Bonv_ret_listTable.Post;
+
+     end;
+end;
+
+procedure TDataModuleF.Bonv_ret_listTablequt_pChange(Sender: TField);
+begin
+ if (Bonv_ret_listTablequt_p.Value > 9999999) OR (Bonv_ret_listTablequt_p.Value < -9999999)  then
+ begin
+
+  sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+  Bonv_ret_listTable.Edit;
+  Bonv_ret_listTablequt_p.Value := 1;
+  Bonv_ret_listTable.Post;
+
+ end else if Bonv_ret_listTablequt_p.IsNull then
+     begin
+
+      Bonv_ret_listTable.Edit;
+      Bonv_ret_listTablequt_p.Value := 0;
+      Bonv_ret_listTable.Post;
 
      end;
 end;
@@ -989,7 +1249,6 @@ begin
 
   SQLQuery1.Active:= False;
   SQLQuery1.SQL.Clear;
-
 
   CheckdbVersionAndAlterDb();
 

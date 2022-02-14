@@ -35,7 +35,7 @@ uses
   Vcl.AppEvnts, frxExportBaseDialog;
 
 type
-  TBonRetGestionF = class(TForm)
+  TBonRetVGestionF = class(TForm)
     Panel3: TPanel;
     BonRetPListDataS: TDataSource;
     TopP2: TPanel;
@@ -47,7 +47,7 @@ type
     sSpeedButton6: TsSpeedButton;
     Label5: TLabel;
     Label6: TLabel;
-    NumBonRetGEdt: TLabel;
+    NumBonRetVGEdt: TLabel;
     AddClientBonRetGBtn: TAdvToolButton;
     Label8: TLabel;
     Panel7: TPanel;
@@ -55,8 +55,8 @@ type
     Panel9: TPanel;
     Panel10: TPanel;
     Panel11: TPanel;
-    DateBonRetGD: TDateTimePicker;
-    ClientBonRetGCbx: TComboBox;
+    DateBonRetVGD: TDateTimePicker;
+    ClientBonRetVGCbx: TComboBox;
     Panel12: TPanel;
     ResherchPARDesProduitsRdioBtn: TRadioButton;
     ResherchPARCBProduitsRdioBtn: TRadioButton;
@@ -65,12 +65,12 @@ type
     ProduitsListDBGridEh: TDBGridEh;
     ResherchPARRefProduitsRdioBtn: TRadioButton;
     Panel13: TPanel;
-    ModePaieBonRetGCbx: TComboBox;
+    ModePaieBonRetVGCbx: TComboBox;
     Label7: TLabel;
     AddModePaieBonRetGBtn: TAdvToolButton;
     Label16: TLabel;
     AddCompteBonRetGBtn: TAdvToolButton;
-    CompteBonRetGCbx: TComboBox;
+    CompteBonRetVGCbx: TComboBox;
     ListAddProduitBonRetGBtn: TAdvToolButton;
     Panel5: TPanel;
     BonRetGClientOLDCredit: TLabel;
@@ -104,9 +104,9 @@ type
     Label9: TLabel;
     Edit2: TEdit;
     Label11: TLabel;
-    RemisePerctageBonRetGEdt: TEdit;
+    RemisePerctageBonRetVGEdt: TEdit;
     Label14: TLabel;
-    RemiseBonRetGEdt: TEdit;
+    RemiseBonRetVGEdt: TEdit;
     Shape2: TShape;
     Shape3: TShape;
     Shape4: TShape;
@@ -114,13 +114,13 @@ type
     Shape5: TShape;
     RemiseTypeBonRetGCbx: TComboBox;
     Label15: TLabel;
-    BonRTotalTTCNewLbl: TLabel;
-    BonRTotalHTNewLbl: TLabel;
+    BonRVTotalTTCNewLbl: TLabel;
+    BonRVTotalHTNewLbl: TLabel;
     TotalTVANewLbl: TLabel;
-    NChequeBonRetGCbx: TEdit;
+    NChequeBonRetVGCbx: TEdit;
     ObserBonRetGLbl: TLabel;
-    ObserBonRetGMem: TMemo;
-    BonRRemiseHTNewLbl: TLabel;
+    ObserBonRetVGMem: TMemo;
+    BonRVRemiseHTNewLbl: TLabel;
     Label19: TLabel;
     BonRetGOLDStock: TLabel;
     Label20: TLabel;
@@ -161,10 +161,10 @@ type
     ListClientBonRetGBtn: TAdvToolButton;
     procedure ProduitBonRetGCbxEnter(Sender: TObject);
     procedure ProduitBonRetGCbxKeyPress(Sender: TObject; var Key: Char);
-    procedure ClientBonRetGCbxEnter(Sender: TObject);
+    procedure ClientBonRetVGCbxEnter(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);
-    procedure ClientBonRetGCbxExit(Sender: TObject);
+    procedure ClientBonRetVGCbxExit(Sender: TObject);
     procedure AdvToolButton4Click(Sender: TObject);
     procedure ListAddProduitBonRetGBtnClick(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
@@ -175,34 +175,34 @@ type
     procedure ClearProduitBonRetGBtnClick(Sender: TObject);
     procedure DeleteProduitBonRetGBtnClick(Sender: TObject);
     procedure AddModePaieBonRetGBtnClick(Sender: TObject);
-    procedure CompteBonRetGCbxEnter(Sender: TObject);
+    procedure CompteBonRetVGCbxEnter(Sender: TObject);
     procedure AddCompteBonRetGBtnClick(Sender: TObject);
     procedure AddClientBonRetGBtnClick(Sender: TObject);
-    procedure ModePaieBonRetGCbxClick(Sender: TObject);
-    procedure ModePaieBonRetGCbxDropDown(Sender: TObject);
-    procedure CompteBonRetGCbxChange(Sender: TObject);
+    procedure ModePaieBonRetVGCbxClick(Sender: TObject);
+    procedure ModePaieBonRetVGCbxDropDown(Sender: TObject);
+    procedure CompteBonRetVGCbxChange(Sender: TObject);
     procedure ProduitBonRetGCbxKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure ProduitBonRetGCbxChange(Sender: TObject);
     procedure ValiderBVRetBonRetGBtnClick(Sender: TObject);
-    procedure RemiseBonRetGEdtKeyPress(Sender: TObject; var Key: Char);
-    procedure RemiseBonRetGEdtExit(Sender: TObject);
-    procedure RemiseBonRetGEdtClick(Sender: TObject);
-    procedure RemiseBonRetGEdtChange(Sender: TObject);
-    procedure RemisePerctageBonRetGEdtClick(Sender: TObject);
-    procedure RemisePerctageBonRetGEdtChange(Sender: TObject);
+    procedure RemiseBonRetVGEdtKeyPress(Sender: TObject; var Key: Char);
+    procedure RemiseBonRetVGEdtExit(Sender: TObject);
+    procedure RemiseBonRetVGEdtClick(Sender: TObject);
+    procedure RemiseBonRetVGEdtChange(Sender: TObject);
+    procedure RemisePerctageBonRetVGEdtClick(Sender: TObject);
+    procedure RemisePerctageBonRetVGEdtChange(Sender: TObject);
     procedure RemiseTypeBonRetGCbxChange(Sender: TObject);
-    procedure RemisePerctageBonRetGEdtKeyPress(Sender: TObject; var Key: Char);
+    procedure RemisePerctageBonRetVGEdtKeyPress(Sender: TObject; var Key: Char);
     procedure EditBVRetBonRetGBtnClick(Sender: TObject);
     procedure AddBVRetBonRetGBtnClick(Sender: TObject);
-    procedure ClientBonRetGCbxKeyPress(Sender: TObject; var Key: Char);
+    procedure ClientBonRetVGCbxKeyPress(Sender: TObject; var Key: Char);
     procedure sSpeedButton10Click(Sender: TObject);
     procedure sSpeedButton9Click(Sender: TObject);
     procedure sSpeedButton8Click(Sender: TObject);
     procedure sSpeedButton7Click(Sender: TObject);
-    procedure ClientBonRetGCbxChange(Sender: TObject);
-    procedure RemisePerctageBonRetGEdtEnter(Sender: TObject);
-    procedure RemiseBonRetGEdtEnter(Sender: TObject);
+    procedure ClientBonRetVGCbxChange(Sender: TObject);
+    procedure RemisePerctageBonRetVGEdtEnter(Sender: TObject);
+    procedure RemiseBonRetVGEdtEnter(Sender: TObject);
     procedure ProduitsListDBGridEhExit(Sender: TObject);
     procedure ProduitsListDBGridEhKeyPress(Sender: TObject; var Key: Char);
     procedure FormCreate(Sender: TObject);
@@ -215,7 +215,7 @@ type
     procedure B1Click(Sender: TObject);
     procedure BondeRetourClient1Click(Sender: TObject);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
-    procedure ModePaieBonRetGCbxChange(Sender: TObject);
+    procedure ModePaieBonRetVGCbxChange(Sender: TObject);
     procedure BondeRetourClient2Click(Sender: TObject);
     procedure BondeRetourClienthorstaxe1Click(Sender: TObject);
     procedure ApplicationEvents1ShortCut(var Msg: TWMKey; var Handled: Boolean);
@@ -230,67 +230,39 @@ type
   public
     { Public declarations }
 
-    const BReVLSQL =
-      ' SELECT BReL.code_bvret,BReL.code_bvretl,BReL.qut_p,BReL.cond_p,BReL.code_p,BReL.tva_p,BReL.prixht_p,P.nom_p as nomp, P.refer_p as referp,  '
-      +' BReL.prixvd_p,BReL.prixvr_p,BReL.prixvg_p,BReL.prixva_p,BReL.prixva2_p,BReL.dateperiss_p,BReL.qutinstock_p,L.nom_l AS Localisation, '
-      +'   (((BReL.prixht_p * BReL.tva_p)/100)+BReL.prixht_p) AS PrixATTC, '
-      +'   ((BReL.prixht_p * BReL.qut_p) * cond_p) AS MontantHT, '
-      +'   (((((BReL.prixht_p * BReL.tva_p)/100)+BReL.prixht_p) * BReL.qut_p)*cond_p) AS MontantTTC, '
-      +'   (((((((BReL.prixht_p * BReL.tva_p)/100)+BReL.prixht_p) * BReL.qut_p)*cond_p) )-(((BReL.prixht_p * BReL.qut_p) * cond_p))) AS MontantTVA, '
-      +'   ((BReL.prixht_p * BReL.qut_p)* cond_p) AS MontantAHT, '
-      +'  CASE  '
-      +'       WHEN BReL.prixvd_p <> ''0'' THEN '
-      +'     CASE WHEN BReL.prixht_p <> ''0''   '
-      +'       THEN ( ((BReL.prixvd_p - BReL.prixht_p) / BReL.prixht_p  ) *100) '
-      +'       ELSE ''100''  '
-      +'     END           '
-      +'  END AS MargeD,   '
-      +'  CASE             '
-      +'     WHEN BReL.prixvr_p <> ''0'' THEN '
-      +'   CASE WHEN BReL.prixht_p <> ''0''    '
-      +'     THEN ( ((BReL.prixvr_p - BReL.prixht_p) / BReL.prixht_p  ) *100) '
-      +'     ELSE ''100''  '
-      +'   END          '
-      +'  END AS MargeR, '
-      +'  CASE   '
-      +'     WHEN BReL.prixvg_p <> ''0'' THEN  '
-      +'   CASE WHEN BReL.prixht_p <> ''0''   '
-      +'     THEN ( ((BReL.prixvg_p - BReL.prixht_p) / BReL.prixht_p  ) *100)  '
-      +'     ELSE ''100''  '
-      +'   END   '
-      +'  END AS MargeG,  '
-      +'   CASE    '
-      +'     WHEN BReL.prixva_p <> ''0'' THEN  '
-      +'   CASE WHEN BReL.prixht_p <> ''0''  '
-      +'     THEN ( ((BReL.prixva_p - BReL.prixht_p) / BReL.prixht_p  ) *100) '
-      +'     ELSE ''100''  '
-      +'   END  '
-      +'  END AS MargeA, '
-      +'   CASE   '
-      +'     WHEN BReL.prixva2_p <> ''0'' THEN  '
-      +'   CASE WHEN BReL.prixht_p <> ''0''   '
-      +'     THEN ( ((BReL.prixva2_p - BReL.prixht_p) / BReL.prixht_p  ) *100)  '
-      +'     ELSE ''100''  '
-      +'   END  '
-      +'  END AS MargeA2   '
-      +' FROM bonv_ret_list as BReL '
-      +' LEFT JOIN produit as P   '
-      +'  ON BReL.code_p = P.code_p '
-      +' LEFT JOIN localisation as L '
-      +'  ON P.code_l = L.code_l ';
+    const BRVLSQL = 'Select BRVL.code_bvret,BRVL.code_bvretl,BRVL.qut_p,BRVL.prixht_p,BRVL.prixvd_p,BRVL.cond_p,BRVL.code_p,BRVL.tva_p,BRVL.code_bvliv,P.prixht_p,P.nom_p as nomp, P.refer_p as referp,L.nom_l AS Localisation, '
+          +' (((BRVL.prixvd_p * BRVL.tva_p)/100)+BRVL.prixvd_p) AS PrixVTTC, '
+          +' ((BRVL.prixht_p * BRVL.qut_p) * cond_p) AS MontantAHT, '
+          +' ((BRVL.prixvd_p * BRVL.qut_p) * cond_p) AS MontantHT, '
+          +' (((((BRVL.prixvd_p * BRVL.tva_p)/100)+BRVL.prixvd_p) * BRVL.qut_p)*cond_p) AS MontantTTC, '
+          +' (((((((BRVL.prixvd_p * BRVL.tva_p)/100)+BRVL.prixvd_p) * BRVL.qut_p)*cond_p) )-(((BRVL.prixvd_p * BRVL.qut_p) * cond_p))) AS MontantTVA, '
+          +' ((P.prixht_p * BRVL.qut_p)* cond_p) AS MontantAHT, '
+          +' CASE '
+          +'      WHEN BRVL.prixvd_p <> ''0''  THEN '
+          +'   CASE WHEN ((P.prixht_p * BRVL.qut_p)* cond_p) <> ''0'' '
+          +'     THEN ( ( (((BRVL.prixvd_p * BRVL.qut_p) * cond_p) - ((P.prixht_p * BRVL.qut_p)* cond_p)) / ((P.prixht_p * BRVL.qut_p)* cond_p) ) *100) '
+          +'     ELSE ''100'' '
+          +'   END '
+          +' END AS Marge, '
+          +' (((BRVL.prixvd_p * BRVL.qut_p) * cond_p) - ((P.prixht_p * BRVL.qut_p)* cond_p) ) AS MargeM '
+          +' FROM bonv_ret_list as BRVL '
+          +' LEFT JOIN produit as P '
+          +' ON BRVL.code_p = P.code_p '
+          +' LEFT JOIN localisation as L '
+          +' ON P.code_l = L.code_l ';
 
-    procedure EnableBonRet;
+    procedure EnableBonRetV;
   end;
 
 var
-  BonRetGestionF: TBonRetGestionF;
+  BonRetVGestionF: TBonRetVGestionF;
 
 implementation
 
 uses   StringTool,Vcl.Imaging.jpeg, IniFiles,
-  UBonRet, UMainF, UClientGestion, UClientGestion, UFastProduitsList,
+  UMainF, UClientsList, UClientGestion, UFastProduitsList,
   UProduitGestion, USplashAddUnite, UProduitsList, USplashAddCompte,
-  USplashVersement;
+  USplashVersement, UDataModule, UBonRetV;
 
 {$R *.dfm}
 
@@ -303,10 +275,10 @@ procedure Refresh_PreservePosition;
  ds : TDataSet;
  begin
 
-   BonRetGestionF.ProduitsListDBGridEh.DataSource.DataSet.DisableControls;
+   BonRetVGestionF.ProduitsListDBGridEh.DataSource.DataSet.DisableControls;
 
-   ds := TDBGridEh(BonRetGestionF.ProduitsListDBGridEh).DataSource.DataSet;
-   rowDelta := -1 + TDBGridEh(BonRetGestionF.ProduitsListDBGridEh).Row;
+   ds := TDBGridEh(BonRetVGestionF.ProduitsListDBGridEh).DataSource.DataSet;
+   rowDelta := -1 + TDBGridEh(BonRetVGestionF.ProduitsListDBGridEh).Row;
    row := ds.RecNo;
    ds.Refresh;
    with ds do   begin
@@ -317,10 +289,10 @@ procedure Refresh_PreservePosition;
   // EnableControls;
    end;
 
-   BonRetGestionF.ProduitsListDBGridEh.DataSource.DataSet.EnableControls;
+   BonRetVGestionF.ProduitsListDBGridEh.DataSource.DataSet.EnableControls;
  end;
 
-procedure TBonRetGestionF.EnableBonRet;
+procedure TBonRetVGestionF.EnableBonRetV;
   begin
 
         AddBVRetBonRetGBtn.Enabled:= False;
@@ -330,20 +302,20 @@ procedure TBonRetGestionF.EnableBonRet;
         ValiderBVRetBonRetGBtn.Enabled:= True;
         ValiderBVRetBonRetGBtn.ImageIndex:=12;//30 for D
 
-        DateBonRetGD.Enabled:= True;
-        ObserBonRetGMem.Enabled:= True;
-        ClientBonRetGCbx.Enabled:= True;
+        DateBonRetVGD.Enabled:= True;
+        ObserBonRetVGMem.Enabled:= True;
+        ClientBonRetVGCbx.Enabled:= True;
         AddClientBonRetGBtn.Enabled:= True ; //
         AddClientBonRetGBtn.ImageIndex:=10;//35 fo D
         ListClientBonRetGBtn.Enabled:= True;
         ListClientBonRetGBtn.ImageIndex:= 59;
-        ModePaieBonRetGCbx.Enabled:= True;
+        ModePaieBonRetVGCbx.Enabled:= True;
         AddModePaieBonRetGBtn.Enabled:= True ;
         AddModePaieBonRetGBtn.ImageIndex:=10;// 35 fo D
-        CompteBonRetGCbx.Enabled:= True;
+        CompteBonRetVGCbx.Enabled:= True;
         AddCompteBonRetGBtn.Enabled:= True ;
         AddCompteBonRetGBtn.ImageIndex:=10;// 35 fo D
-        NChequeBonRetGCbx.Enabled:= True;
+        NChequeBonRetVGCbx.Enabled:= True;
         ProduitBonRetGCbx.Enabled:= True;
         EnterAddProduitBonRetGBtn.Enabled:= True;
         EnterAddProduitBonRetGBtn.ImageIndex:=15;// 40 fo D
@@ -364,8 +336,8 @@ procedure TBonRetGestionF.EnableBonRet;
         ProduitsListDBGridEh.Color:= clWhite;// $00D9D7D3 for D
         ProduitsListDBGridEh.FixedColor:=clwindow;//$00D9D7D3 for D
         ProduitsListDBGridEh.EvenRowColor:=clwindow;//$00EFE9E8 for D
-        RemisePerctageBonRetGEdt.Enabled:=True;//False for D
-        RemiseBonRetGEdt.Enabled:=True;//False for D
+        RemisePerctageBonRetVGEdt.Enabled:=True;//False for D
+        RemiseBonRetVGEdt.Enabled:=True;//False for D
         RemiseTypeBonRetGCbx.Enabled:= True;//False for D;
 
         ResherchPARDesProduitsRdioBtn.Enabled:= True;//False for D
@@ -378,7 +350,7 @@ procedure TBonRetGestionF.EnableBonRet;
         ValiderBVRetBonRetGLbl.Caption:='Ce bon n''est pas encore Validé';// 'Ce bon est Valid' for D
   end;
 
-procedure TBonRetGestionF.ProduitBonRetGCbxChange(Sender: TObject);
+procedure TBonRetVGestionF.ProduitBonRetGCbxChange(Sender: TObject);
 begin
 {if ProduitBonRetGCbx.Text<>'' then
 begin
@@ -390,11 +362,14 @@ begin
 end; }
 end;
 
-procedure TBonRetGestionF.ProduitBonRetGCbxEnter(Sender: TObject);
+procedure TBonRetVGestionF.ProduitBonRetGCbxEnter(Sender: TObject);
 var
   I : Integer;
   KeyState: TKeyboardState;
 begin
+
+    if ClientBonRetVGCbx.Text <> '' then
+    begin
 
      if ResherchPARDesProduitsRdioBtn.Checked then
      begin
@@ -403,7 +378,16 @@ begin
 
       MainForm.SQLQuery.Active:=False;
       MainForm.SQLQuery.SQL.Clear;
-      MainForm.SQLQuery.SQL.Text:= 'SELECT nom_p FROM produit ';
+      MainForm.SQLQuery.SQL.Text:=  'SELECT BLL.code_p, P.nom_p '
+                                    +'     FROM bonv_liv_list AS BLL '
+                                    +' INNER JOIN produit P             '
+                                    +'     on BLL.code_p = p.code_p     '
+                                    +' INNER JOIN bonv_liv BL           '
+                                    +'     on BLL.code_bvliv = BL.code_bvliv '
+                                    +' INNER JOIN client CL             '
+                                    +'     on BL.code_c = CL.code_c     '
+                                    +' WHERE BL.valider_bvliv = TRUE AND LOWER(CL.nom_c) LIKE LOWER('+ QuotedStr( ClientBonRetVGCbx.Text )+') '
+                                    +'         GROUP BY BLL.code_p, P.nom_p;';
       MainForm.SQLQuery.Active := True;
 
       MainForm.SQLQuery.first;
@@ -428,7 +412,16 @@ begin
 
       MainForm.SQLQuery.Active:=False;
       MainForm.SQLQuery.SQL.Clear;
-      MainForm.SQLQuery.SQL.Text:= 'SELECT refer_p FROM produit ';
+            MainForm.SQLQuery.SQL.Text:=  'SELECT BLL.code_p, P.refer_p '
+                                    +'     FROM bonv_liv_list AS BLL '
+                                    +' INNER JOIN produit P             '
+                                    +'     on BLL.code_p = p.code_p     '
+                                    +' INNER JOIN bonv_liv BL           '
+                                    +'     on BLL.code_bvliv = BL.code_bvliv '
+                                    +' INNER JOIN client CL             '
+                                    +'     on BL.code_c = CL.code_c     '
+                                    +' WHERE BL.valider_bvliv = TRUE AND LOWER(CL.nom_c) LIKE LOWER('+ QuotedStr( ClientBonRetVGCbx.Text )+') '
+                                    +'         GROUP BY BLL.code_p, P.refer_p;';
       MainForm.SQLQuery.Active := True;
 
       MainForm.SQLQuery.first;
@@ -445,24 +438,25 @@ begin
 //      Cursor := crDefault;
      end;
 
-     if ResherchPARCBProduitsRdioBtn.Checked then
-     begin
-      ProduitBonRetGCbx.Properties.Items.Clear;
+       if ResherchPARCBProduitsRdioBtn.Checked then
+       begin
+        ProduitBonRetGCbx.Properties.Items.Clear;
 
-  //turn on CapsLock when enter edit to make sure codebare read well
-  GetKeyboardState(KeyState);
-  if (KeyState[VK_CAPITAL]=0) then
-  begin
-    // Simulate a "CAPS LOCK" key release
-    Keybd_Event(VK_CAPITAL, 1, KEYEVENTF_EXTENDEDKEY or 0, 0);
-    // Simulate a "CAPS LOCK" key press
-    Keybd_Event(VK_CAPITAL, 1, KEYEVENTF_EXTENDEDKEY or KEYEVENTF_KEYUP, 0);
-  end;
+          //turn on CapsLock when enter edit to make sure codebare read well
+          GetKeyboardState(KeyState);
+          if (KeyState[VK_CAPITAL]=0) then
+          begin
+            // Simulate a "CAPS LOCK" key release
+            Keybd_Event(VK_CAPITAL, 1, KEYEVENTF_EXTENDEDKEY or 0, 0);
+            // Simulate a "CAPS LOCK" key press
+            Keybd_Event(VK_CAPITAL, 1, KEYEVENTF_EXTENDEDKEY or KEYEVENTF_KEYUP, 0);
+          end;
 
+        end;
     end;
 end;
 
-procedure TBonRetGestionF.ProduitBonRetGCbxKeyDown(Sender: TObject;
+procedure TBonRetVGestionF.ProduitBonRetGCbxKeyDown(Sender: TObject;
   var Key: Word; Shift: TShiftState);
 begin
  if ResherchPARCBProduitsRdioBtn.Checked = False then
@@ -472,7 +466,7 @@ begin
 
 end;
 
-procedure TBonRetGestionF.ProduitBonRetGCbxKeyPress(Sender: TObject; var Key: Char);
+procedure TBonRetVGestionF.ProduitBonRetGCbxKeyPress(Sender: TObject; var Key: Char);
   var CodeBR,CodeCB : Integer;
       lookupResultRefP : Variant;
       NomP: String;
@@ -490,7 +484,17 @@ begin
    begin
         MainForm.SQLQuery.Active:=False;
         MainForm.SQLQuery.SQL.Clear;
-        MainForm.SQLQuery.SQL.Text:= 'SELECT code_p,nom_p,prixht_p,prixvd_p,prixvr_p,prixvg_p,prixva_p,prixva2_p,tva_p,perissable_p FROM produit WHERE LOWER(nom_p) LIKE LOWER('+QuotedStr(ProduitBonRetGCbx.Text)+')';
+        MainForm.SQLQuery.SQL.Text:= 'SELECT code_p,nom_p,prixht_p,prixvd_p FROM produit WHERE LOWER(nom_p) LIKE LOWER('+QuotedStr(ProduitBonRetGCbx.Text)+')';
+        MainForm.SQLQuery.SQL.Text:=  'SELECT BLL.code_p, P.nom_p '
+                                    +'     FROM bonv_liv_list AS BLL '
+                                    +' INNER JOIN produit P             '
+                                    +'     on BLL.code_p = p.code_p     '
+                                    +' INNER JOIN bonv_liv BL           '
+                                    +'     on BLL.code_bvliv = BL.code_bvliv '
+                                    +' INNER JOIN client CL             '
+                                    +'     on BL.code_c = CL.code_c     '
+                                    +' WHERE BL.valider_bvliv = TRUE AND LOWER(CL.nom_c) LIKE LOWER('+ QuotedStr( ClientBonRetVGCbx.Text )+') '
+                                    +'         GROUP BY BLL.code_p, P.nom_p;';
         MainForm.SQLQuery.Active:=True;
         CodeP:= MainForm.SQLQuery.FieldByName('code_p').AsInteger ;
 
@@ -505,7 +509,7 @@ begin
             DataModuleF.Bonv_ret_listTable.IndexFieldNames:='';
             DataModuleF.Bonv_ret_listTable.Active:=False;
             DataModuleF.Bonv_ret_listTable.SQL.Clear;
-            DataModuleF.Bonv_ret_listTable.SQL.Text:= BReVLSQL+ ' ORDER by code_bvretl' ;
+            DataModuleF.Bonv_ret_listTable.SQL.Text:= BRVLSQL+ ' ORDER by code_bvretl' ;
             DataModuleF.Bonv_ret_listTable.Active:=True;
 
             DataModuleF.Bonv_ret_listTable.Last;
@@ -534,10 +538,6 @@ begin
              DataModuleF.Bonv_ret_listTable.FieldValues['cond_p']:= 01;
              DataModuleF.Bonv_ret_listTable.FieldValues['tva_p']:= MainForm.SQLQuery.FieldValues['tva_p'];
              DataModuleF.Bonv_ret_listTable.FieldByName('prixvd_p').AsCurrency:=  MainForm.SQLQuery.FieldByName('prixvd_p').AsCurrency;
-             DataModuleF.Bonv_ret_listTable.FieldByName('prixvr_p').AsCurrency:=  MainForm.SQLQuery.FieldByName('prixvr_p').AsCurrency;
-             DataModuleF.Bonv_ret_listTable.FieldByName('prixvg_p').AsCurrency:=  MainForm.SQLQuery.FieldByName('prixvg_p').AsCurrency;
-             DataModuleF.Bonv_ret_listTable.FieldByName('prixva_p').AsCurrency:=  MainForm.SQLQuery.FieldByName('prixva_p').AsCurrency;
-             DataModuleF.Bonv_ret_listTable.FieldByName('prixva2_p').AsCurrency:= MainForm.SQLQuery.FieldByName('prixva2_p').AsCurrency;
 
              DataModuleF.Bonv_ret_listTable.FieldValues['qutinstock_p']:=
              (DataModuleF.Bonv_ret_listTable.FieldValues['qut_p'])*(DataModuleF.Bonv_ret_listTable.FieldValues['cond_p']);
@@ -547,7 +547,7 @@ begin
 
             DataModuleF.Bonv_ret_listTable.Active:=False;
             DataModuleF.Bonv_ret_listTable.SQL.Clear;
-            DataModuleF.Bonv_ret_listTable.SQL.Text:= BReVLSQL+ ' WHERE code_bvret = ' + QuotedStr(IntToStr(DataModuleF.Bonv_retTable.FieldValues['code_bvret']));
+            DataModuleF.Bonv_ret_listTable.SQL.Text:= BRVLSQL+ ' WHERE code_bvret = ' + QuotedStr(IntToStr(DataModuleF.Bonv_retTable.FieldValues['code_bvret']));
             DataModuleF.Bonv_ret_listTable.Active:=True;
 
             ProduitBonRetGCbx.Text:='';
@@ -558,7 +558,7 @@ begin
 
            DataModuleF.Bonv_ret_listTable.EnableControls;
            DataModuleF.Bonv_ret_listTable.Last;
-           if ClientBonRetGCbx.Text<>'' then
+           if ClientBonRetVGCbx.Text<>'' then
             begin
             ValiderBVRetBonRetGBtn.Enabled:= True;
             ValiderBVRetBonRetGBtn.ImageIndex:=12;
@@ -632,7 +632,7 @@ begin
             DataModuleF.Bonv_ret_listTable.IndexFieldNames:='';
             DataModuleF.Bonv_ret_listTable.Active:=False;
             DataModuleF.Bonv_ret_listTable.SQL.Clear;
-            DataModuleF.Bonv_ret_listTable.SQL.Text:= BReVLSQL+ ' ORDER by code_bvretl' ;
+            DataModuleF.Bonv_ret_listTable.SQL.Text:= BRVLSQL+ ' ORDER by code_bvretl' ;
             DataModuleF.Bonv_ret_listTable.Active:=True;
            if  DataModuleF.Bonv_ret_listTable.RecordCount <= 0 then
            begin
@@ -670,7 +670,7 @@ begin
 
             DataModuleF.Bonv_ret_listTable.Active:=False;
             DataModuleF.Bonv_ret_listTable.SQL.Clear;
-            DataModuleF.Bonv_ret_listTable.SQL.Text:= BReVLSQL+ ' WHERE code_bvret = ' + QuotedStr(IntToStr(DataModuleF.Bonv_retTable.FieldValues['code_bvret']));
+            DataModuleF.Bonv_ret_listTable.SQL.Text:= BRVLSQL+ ' WHERE code_bvret = ' + QuotedStr(IntToStr(DataModuleF.Bonv_retTable.FieldValues['code_bvret']));
             DataModuleF.Bonv_ret_listTable.Active:=True;
             DataModuleF.Bonv_ret_listTable.EnableControls;
 
@@ -682,7 +682,7 @@ begin
 
            DataModuleF.Bonv_ret_listTable.EnableControls;
             DataModuleF.Bonv_ret_listTable.Last;
-            if ClientBonRetGCbx.Text<>'' then
+            if ClientBonRetVGCbx.Text<>'' then
               begin
               ValiderBVRetBonRetGBtn.Enabled:= True;
               ValiderBVRetBonRetGBtn.ImageIndex:=12;
@@ -763,7 +763,7 @@ begin
             DataModuleF.Bonv_ret_listTable.IndexFieldNames:='';
             DataModuleF.Bonv_ret_listTable.Active:=False;
             DataModuleF.Bonv_ret_listTable.SQL.Clear;
-            DataModuleF.Bonv_ret_listTable.SQL.Text:= BReVLSQL+ ' ORDER by code_bvretl' ;
+            DataModuleF.Bonv_ret_listTable.SQL.Text:= BRVLSQL+ ' ORDER by code_bvretl' ;
             DataModuleF.Bonv_ret_listTable.Active:=True;
 
            if  DataModuleF.Bonv_ret_listTable.RecordCount <= 0 then
@@ -803,7 +803,7 @@ begin
 
              DataModuleF.Bonv_ret_listTable.Active:=False;
              DataModuleF.Bonv_ret_listTable.SQL.Clear;
-             DataModuleF.Bonv_ret_listTable.SQL.Text:= BReVLSQL+ ' WHERE code_bvret = ' + QuotedStr(IntToStr(DataModuleF.Bonv_retTable.FieldValues['code_bvret']));
+             DataModuleF.Bonv_ret_listTable.SQL.Text:= BRVLSQL+ ' WHERE code_bvret = ' + QuotedStr(IntToStr(DataModuleF.Bonv_retTable.FieldValues['code_bvret']));
              DataModuleF.Bonv_ret_listTable.Active:=True;
              DataModuleF.Bonv_ret_listTable.EnableControls;
 
@@ -815,7 +815,7 @@ begin
 
            DataModuleF.Bonv_ret_listTable.EnableControls;
             DataModuleF.Bonv_ret_listTable.Last;
-            if ClientBonRetGCbx.Text<>'' then
+            if ClientBonRetVGCbx.Text<>'' then
               begin
               ValiderBVRetBonRetGBtn.Enabled:= True;
               ValiderBVRetBonRetGBtn.ImageIndex:=12;
@@ -886,23 +886,23 @@ begin
 
 end;
 
-procedure TBonRetGestionF.ClientBonRetGCbxEnter(Sender: TObject);
+procedure TBonRetVGestionF.ClientBonRetVGCbxEnter(Sender: TObject);
 var
 I : Integer;
   begin
-          ClientBonRetGCbx.Items.Clear;
+          ClientBonRetVGCbx.Items.Clear;
 //          MainForm.SQLQuery.DisableControls;
           MainForm.SQLQuery.Active:=false;
           MainForm.SQLQuery.SQL.Clear;
-          MainForm.SQLQuery.SQL.Text:='Select nom_f FROM client '  ;
+          MainForm.SQLQuery.SQL.Text:='Select nom_c FROM client '  ;
           MainForm.SQLQuery.Active:=True;
 
        MainForm.SQLQuery.first;
 
      for I := 0 to MainForm.SQLQuery.RecordCount - 1 do
-     if MainForm.SQLQuery.FieldByName('nom_f').IsNull = False then
+     if MainForm.SQLQuery.FieldByName('nom_c').IsNull = False then
      begin
-          ClientBonRetGCbx.Items.Add(MainForm.SQLQuery.FieldByName('nom_f').AsString);
+          ClientBonRetVGCbx.Items.Add(MainForm.SQLQuery.FieldByName('nom_c').AsString);
        MainForm.SQLQuery.Next;
       end;
 
@@ -911,7 +911,7 @@ I : Integer;
   end;
 
 
-procedure TBonRetGestionF.FormClose(Sender: TObject; var Action: TCloseAction);
+procedure TBonRetVGestionF.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
 MainForm.SaveGridLayout(ProduitsListDBGridEh,GetCurrentDir +'\bin\gc_br');
 
@@ -944,19 +944,19 @@ MainForm.SaveGridLayout(ProduitsListDBGridEh,GetCurrentDir +'\bin\gc_br');
 
           DataModuleF.Bonv_ret_listTable.Active:=false;
           DataModuleF.Bonv_ret_listTable.SQL.Clear;
-          DataModuleF.Bonv_ret_listTable.SQL.Text:= BReVLSQL ;
+          DataModuleF.Bonv_ret_listTable.SQL.Text:= BRVLSQL ;
           DataModuleF.Bonv_ret_listTable.Active:=True;
           DataModuleF.Bonv_ret_listTable.EnableControls;
 
   DataModuleF.Bonv_ret_listTable.IndexFieldNames:='code_bvret';
 
-//  FreeAndNil(BonRetGestionF);
+//  FreeAndNil(BonRetVGestionF);
 //  Destroy
 
 
  end;
 
-procedure TBonRetGestionF.FormShow(Sender: TObject);
+procedure TBonRetVGestionF.FormShow(Sender: TObject);
 var CodeCB: Integer;
 OLDCredit,NEWCredit : Currency;
 begin
@@ -964,10 +964,10 @@ begin
  if Tag = 0 then
  begin
 
-    DateBonRetGD.Date:=EncodeDate (YearOf(Now),MonthOf(Now),DayOf(Now));
+    DateBonRetVGD.Date:=EncodeDate (YearOf(Now),MonthOf(Now),DayOf(Now));
 //-- use this code to make the montants look lake money values-------//
     BonRetTotalHTLbl.Caption :=       FloatToStrF(StrToFloat(BonRetTotalHTLbl.Caption),ffNumber,14,2) ;
-//    RemiseBonRetGEdt.Text :=       FloatToStrF(StrToFloat(RemiseBonRetGEdt.Text),ffNumber,14,2) ;
+//    RemiseBonRetVGEdt.Text :=       FloatToStrF(StrToFloat(RemiseBonRetVGEdt.Text),ffNumber,14,2) ;
     BonRetTotalTVALbl.Caption :=      FloatToStrF(StrToFloat(BonRetTotalTVALbl.Caption),ffNumber,14,2) ;
     BonRetTotalTTCLbl.Caption :=      FloatToStrF(StrToFloat(BonRetTotalTTCLbl.Caption),ffNumber,14,2) ;
     BonRetResteLbl.Caption :=         FloatToStrF(StrToFloat(BonRetResteLbl.Caption),ffNumber,14,2) ;
@@ -975,27 +975,27 @@ begin
     BonRetGClientOLDCredit.Caption:= FloatToStrF(StrToFloat(BonRetGClientOLDCredit.Caption),ffNumber,14,2) ;
     BonRetGClientNEWCredit.Caption:= FloatToStrF(StrToFloat(BonRetGClientNEWCredit.Caption),ffNumber,14,2) ;
  CodeCB:= DataModuleF.Bonv_retTable.FieldValues['code_bvret']   ;
- NumBonRetGEdt.Caption := 'BR'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5, CodeCB]);
+ NumBonRetVGEdt.Caption := 'BR'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5, CodeCB]);
   if (DataModuleF.Bonv_retTable.FieldByName('code_c').AsInteger <> null)
  AND (DataModuleF.Bonv_retTable.FieldByName('code_c').AsInteger <> 0)  then
  begin
    if DataModuleF.Bonv_retTable.FieldValues['clientbvret'] <> null then
     begin
-   ClientBonRetGCbx.Text:= DataModuleF.Bonv_retTable.FieldValues['clientbvret'];
+   ClientBonRetVGCbx.Text:= DataModuleF.Bonv_retTable.FieldValues['clientbvret'];
     end;
     if DataModuleF.Bonv_retTable.FieldValues['ModePaie'] <> null then
     begin
-   ModePaieBonRetGCbx.Text:= DataModuleF.Bonv_retTable.FieldValues['ModePaie'];
+   ModePaieBonRetVGCbx.Text:= DataModuleF.Bonv_retTable.FieldValues['ModePaie'];
     end;
     if DataModuleF.Bonv_retTable.FieldValues['Compte'] <> null then
     begin
-   CompteBonRetGCbx.Text:= DataModuleF.Bonv_retTable.FieldValues['Compte'];
+   CompteBonRetVGCbx.Text:= DataModuleF.Bonv_retTable.FieldValues['Compte'];
     end;
-   ClientBonRetGCbxExit(Sender);
+   ClientBonRetVGCbxExit(Sender);
    ProduitBonRetGCbx.SetFocus;
  end else
      begin
-       ClientBonRetGCbx.SetFocus;
+       ClientBonRetVGCbx.SetFocus;
      end;
  end;
 // use this tage when i click on edit button for bon
@@ -1008,14 +1008,14 @@ begin
    begin
     MainForm.SQLQuery.Active:= False;
     MainForm.SQLQuery.SQL.Clear;
-    MainForm.SQLQuery.SQL.Text:= 'select code_c, credit_f from client where code_c = ' + IntToStr( DataModuleF.Bonv_retTable.FieldByName('code_c').AsInteger);
+    MainForm.SQLQuery.SQL.Text:= 'select code_c, credit_c from client where code_c = ' + IntToStr( DataModuleF.Bonv_retTable.FieldByName('code_c').AsInteger);
     MainForm.SQLQuery.Active:= True;
 
       if NOT (MainForm.SQLQuery.IsEmpty) then
      begin
-      OLDCredit:= (MainForm.SQLQuery.FieldByName('credit_f').AsCurrency);// - (DataModuleF.Bonv_retTable.FieldByName('MontantRes').AsCurrency) ;
+      OLDCredit:= (MainForm.SQLQuery.FieldByName('credit_c').AsCurrency);// - (DataModuleF.Bonv_retTable.FieldByName('MontantRes').AsCurrency) ;
 
-      NewCredit:=  MainForm.SQLQuery.FieldByName('credit_f').AsCurrency;
+      NewCredit:=  MainForm.SQLQuery.FieldByName('credit_c').AsCurrency;
 
      BonRetGClientOLDCredit.Caption:= FloatToStrF(StrToFloat(StringReplace(CurrToStr( OLDCredit), #32, '', [rfReplaceAll])),ffNumber,14,2) ;
      BonRetGClientNEWCredit.Caption:= FloatToStrF(StrToFloat(StringReplace(CurrToStr( NewCredit), #32, '', [rfReplaceAll])),ffNumber,14,2) ;
@@ -1025,7 +1025,7 @@ begin
     MainForm.SQLQuery.SQL.Clear;
    end else
        begin
-         ClientBonRetGCbxExit(Sender);
+         ClientBonRetVGCbxExit(Sender);
        end;
   end;
 
@@ -1033,29 +1033,29 @@ begin
   sImage1.ImageIndex:= MainForm.sImage1.ImageIndex;
  end;
 
-procedure TBonRetGestionF.ClientBonRetGCbxExit(Sender: TObject);
+procedure TBonRetVGestionF.ClientBonRetVGCbxExit(Sender: TObject);
 var CodeF: Integer;
 OLDCreditF,RegFCreditF,OLDCreditFV,OLDCreditFINI : Currency;
 begin
 
-  if ClientBonRetGCbx.Text <> '' then
+  if ClientBonRetVGCbx.Text <> '' then
     begin
-     ClientBonRetGCbxChange(Sender);
+     ClientBonRetVGCbxChange(Sender);
 //      MainForm.SQLQuery.DisableControls;
       MainForm.SQLQuery.Active:=false;
       MainForm.SQLQuery.SQL.Clear;
-      MainForm.SQLQuery.SQL.Text:='Select code_c,oldcredit_f,credit_f,activ_f FROM client WHERE LOWER(nom_f) LIKE LOWER('+ QuotedStr( ClientBonRetGCbx.Text )+')'  ;
+      MainForm.SQLQuery.SQL.Text:='Select code_c,oldcredit_c,credit_c,activ_c FROM client WHERE LOWER(nom_c) LIKE LOWER('+ QuotedStr( ClientBonRetVGCbx.Text )+')'  ;
       MainForm.SQLQuery.Active:=True;
       if NOT  MainForm.SQLQuery.IsEmpty then
      begin
-      OLDCreditFINI:= MainForm.SQLQuery.FieldByName('credit_f').AsCurrency ;
+      OLDCreditFINI:= MainForm.SQLQuery.FieldByName('credit_c').AsCurrency ;
 
-     if MainForm.SQLQuery.FieldByName('activ_f').AsBoolean <> False then
+     if MainForm.SQLQuery.FieldByName('activ_c').AsBoolean <> False then
      begin
 
       if (MainForm.SQLQuery.IsEmpty) then
       begin
-       ClientBonRetGCbx.Text := '';
+       ClientBonRetVGCbx.Text := '';
        BonRetGClientOLDCredit.Caption:= FloatToStrF(0,ffNumber,14,2) ;
        BonRetGClientNEWCredit.Caption:=BonRetGClientOLDCredit.Caption;
        exit;
@@ -1143,23 +1143,23 @@ begin
 
       DataModuleF.Bonv_ret_listTable.Refresh;
 
-        ClientBonRetGCbx.StyleElements:= [seFont,seBorder,seBorder];
+        ClientBonRetVGCbx.StyleElements:= [seFont,seBorder,seBorder];
         RequiredClientGlbl.Visible:= False;
         NameClientGErrorP.Visible:= False;
 
        end else
            begin
             sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
-            ClientBonRetGCbx.StyleElements:= [];
+            ClientBonRetVGCbx.StyleElements:= [];
             RequiredClientGlbl.Caption:='Ce Client est bloqué';
             RequiredClientGlbl.Visible:= True;
             NameClientGErrorP.Visible:= True;
-            ClientBonRetGCbx.SetFocus;
+            ClientBonRetVGCbx.SetFocus;
            end;
 
        end else
            begin
-             ClientBonRetGCbx.Text:='';
+             ClientBonRetVGCbx.Text:='';
 
               MainForm.SQLQuery.Active:=false;
               MainForm.SQLQuery.SQL.Clear;
@@ -1176,12 +1176,12 @@ begin
 
 end;
 
-procedure TBonRetGestionF.AdvToolButton4Click(Sender: TObject);
+procedure TBonRetVGestionF.AdvToolButton4Click(Sender: TObject);
 begin
-BonRetF.AddBVRetBtnClick(Sender);
+BonRetVF.AddBVRetBtnClick(Sender);
 end;
 
-procedure TBonRetGestionF.ApplicationEvents1ShortCut(var Msg: TWMKey;
+procedure TBonRetVGestionF.ApplicationEvents1ShortCut(var Msg: TWMKey;
   var Handled: Boolean);
 var
 NEWCredit,OLDCredit,NEWCreditLbl,OLDCreditLbl  : TfrxMemoView;
@@ -1314,7 +1314,7 @@ begin
 
 end;
 
-procedure TBonRetGestionF.ListAddProduitBonRetGBtnClick(Sender: TObject);
+procedure TBonRetVGestionF.ListAddProduitBonRetGBtnClick(Sender: TObject);
 begin
 //-------- use this code to start creating th form-----//
   ProduitBonRetGCbx.Text:='';
@@ -1331,7 +1331,7 @@ begin
 //  produitGestionF.CancelProduitGBtn.Tag:=0;
 end;
 
-procedure TBonRetGestionF.ListClientBonRetGBtnClick(Sender: TObject);
+procedure TBonRetVGestionF.ListClientBonRetGBtnClick(Sender: TObject);
 Var I:Integer;
 begin
 //-------- use this code to start creating th form-----//
@@ -1339,7 +1339,7 @@ begin
 
   MainForm.FDQuery2.Active:=False;
   MainForm.FDQuery2.SQL.Clear;
-  MainForm.FDQuery2.SQL.TExt:= 'SELECT code_c,nom_f,fix_f,mob_f,adr_f,credit_f FROM client';
+  MainForm.FDQuery2.SQL.TExt:= 'SELECT code_c,nom_c,fix_c,mob_c,adr_c,credit_c FROM client';
   MainForm.FDQuery2.IndexFieldNames:='code_c';
   MainForm.FDQuery2.Active:=True;
 
@@ -1355,7 +1355,7 @@ begin
   FastProduitsListF.ProduitsListDBGridEh.Columns[0].Visible:= True;
   FastProduitsListF.ProduitsListDBGridEh.Columns[0].Width:= 70;
 
-  FastProduitsListF.ProduitsListDBGridEh.Columns[1].FieldName:='nom_f';
+  FastProduitsListF.ProduitsListDBGridEh.Columns[1].FieldName:='nom_c';
   FastProduitsListF.ProduitsListDBGridEh.Columns[1].Title.Caption:='Nom du Client';
   FastProduitsListF.ProduitsListDBGridEh.Columns[1].Visible:= True;
   FastProduitsListF.ProduitsListDBGridEh.Columns[1].Width:= 300;
@@ -1365,22 +1365,22 @@ begin
 //  FastProduitsListF.ProduitsListDBGridEh.Columns[2].Visible:= True;
 //  FastProduitsListF.ProduitsListDBGridEh.Columns[2].Width:= 130;;
 
-  FastProduitsListF.ProduitsListDBGridEh.Columns[2].FieldName:='fix_f';
+  FastProduitsListF.ProduitsListDBGridEh.Columns[2].FieldName:='fix_c';
   FastProduitsListF.ProduitsListDBGridEh.Columns[2].Title.Caption:='Téléphone';
   FastProduitsListF.ProduitsListDBGridEh.Columns[2].Visible:= True;
   FastProduitsListF.ProduitsListDBGridEh.Columns[2].Width:= 130;;
 
-  FastProduitsListF.ProduitsListDBGridEh.Columns[3].FieldName:='mob_f';
+  FastProduitsListF.ProduitsListDBGridEh.Columns[3].FieldName:='mob_c';
   FastProduitsListF.ProduitsListDBGridEh.Columns[3].Title.Caption:='Téléphone';
   FastProduitsListF.ProduitsListDBGridEh.Columns[3].Visible:= True;
   FastProduitsListF.ProduitsListDBGridEh.Columns[3].Width:= 130;;
 
-  FastProduitsListF.ProduitsListDBGridEh.Columns[4].FieldName:='adr_f';
+  FastProduitsListF.ProduitsListDBGridEh.Columns[4].FieldName:='adr_c';
   FastProduitsListF.ProduitsListDBGridEh.Columns[4].Title.Caption:='Adresse';
   FastProduitsListF.ProduitsListDBGridEh.Columns[4].Visible:= True;
   FastProduitsListF.ProduitsListDBGridEh.Columns[4].Width:= 150;;
 
-  FastProduitsListF.ProduitsListDBGridEh.Columns[5].FieldName:='credit_f';
+  FastProduitsListF.ProduitsListDBGridEh.Columns[5].FieldName:='credit_c';
   FastProduitsListF.ProduitsListDBGridEh.Columns[5].Title.Caption:='Crédit';
   FastProduitsListF.ProduitsListDBGridEh.Columns[5].Visible:= True;
   FastProduitsListF.ProduitsListDBGridEh.Columns[5].Width:= 130;;
@@ -1392,7 +1392,7 @@ begin
   FastProduitsListF.Left := (Screen.Width div 2) - (FastProduitsListF.Width div 2);
   FastProduitsListF.Top := (Screen.Height div 2) - (FastProduitsListF.Height div 2);
 
-  FastProduitsListF.Caption:= 'Liste des Clientss';
+  FastProduitsListF.Caption:= 'Liste des Clients';
   FastProduitsListF.ResherchPARDesProduitsRdioBtn.Visible:= False;
   FastProduitsListF.ResherchPARDCodProduitsRdioBtn.Visible:= False;
   FastProduitsListF.ProduitsListDBGridEh.Options:=
@@ -1406,46 +1406,46 @@ begin
 
 end;
 
-procedure TBonRetGestionF.FormCloseQuery(Sender: TObject;
+procedure TBonRetVGestionF.FormCloseQuery(Sender: TObject;
   var CanClose: Boolean);
   Var CodeBR : Integer;
  begin
    codeBR:= DataModuleF.Bonv_retTable.FieldByName('code_bvret').AsInteger;
  if  NOT ProduitsListDBGridEh.DataSource.DataSet.IsEmpty then
   begin
-    if ClientBonRetGCbx.Text = '' then
+    if ClientBonRetVGCbx.Text = '' then
     begin
       sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
-      ClientBonRetGCbx.StyleElements:= [];
+      ClientBonRetVGCbx.StyleElements:= [];
       RequiredClientGlbl.Caption:= 'S''il vous plaît entrer le nom de le Client' ;
       RequiredClientGlbl.Visible:= True;
       NameClientGErrorP.Visible:= True;
 
-      ClientBonRetGCbx.SetFocus;
+      ClientBonRetVGCbx.SetFocus;
       CanClose := false;
   end else
     begin
 
-     if ModePaieBonRetGCbx.Text = '' then
+     if ModePaieBonRetVGCbx.Text = '' then
      begin
         sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
-        ModePaieBonRetGCbx.StyleElements:= [];
+        ModePaieBonRetVGCbx.StyleElements:= [];
         RequiredMPGlbl.Visible:= True;
         ModepPaiGErrorP.Visible:= True;
 
-        ModePaieBonRetGCbx.SetFocus;
+        ModePaieBonRetVGCbx.SetFocus;
         CanClose := false;
      end else
      begin
 
-       if CompteBonRetGCbx.Text = '' then
+       if CompteBonRetVGCbx.Text = '' then
        begin
           sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
-          CompteBonRetGCbx.StyleElements:= [];
+          CompteBonRetVGCbx.StyleElements:= [];
           RequiredCompteGlbl.Visible:= True;
           CompteGErrorP.Visible:= True;
 
-          CompteBonRetGCbx.SetFocus;
+          CompteBonRetVGCbx.SetFocus;
           CanClose := false;
        end else
        begin
@@ -1458,19 +1458,19 @@ procedure TBonRetGestionF.FormCloseQuery(Sender: TObject;
               MainForm.ClientTable.DisableControls;
               MainForm.ClientTable.Active:=false;
               MainForm.ClientTable.SQL.Clear;
-              MainForm.ClientTable.SQL.Text:='Select * FROM client WHERE LOWER(nom_f) LIKE LOWER('+ QuotedStr( ClientBonRetGCbx.Text )+')'  ;
+              MainForm.ClientTable.SQL.Text:='Select * FROM client WHERE LOWER(nom_c) LIKE LOWER('+ QuotedStr( ClientBonRetVGCbx.Text )+')'  ;
               MainForm.ClientTable.Active:=True;
 
               MainForm.Mode_paiementTable.DisableControls;
               MainForm.Mode_paiementTable.Active:=false;
               MainForm.Mode_paiementTable.SQL.Clear;
-              MainForm.Mode_paiementTable.SQL.Text:='Select * FROM mode_paiement WHERE LOWER(nom_mdpai) LIKE LOWER('+ QuotedStr( ModePaieBonRetGCbx.Text )+')'  ;
+              MainForm.Mode_paiementTable.SQL.Text:='Select * FROM mode_paiement WHERE LOWER(nom_mdpai) LIKE LOWER('+ QuotedStr( ModePaieBonRetVGCbx.Text )+')'  ;
               MainForm.Mode_paiementTable.Active:=True;
 
               MainForm.CompteTable.DisableControls;
               MainForm.CompteTable.Active:=false;
               MainForm.CompteTable.SQL.Clear;
-              MainForm.CompteTable.SQL.Text:='Select * FROM compte WHERE LOWER(nom_cmpt) LIKE LOWER('+ QuotedStr( CompteBonRetGCbx.Text )+')'  ;
+              MainForm.CompteTable.SQL.Text:='Select * FROM compte WHERE LOWER(nom_cmpt) LIKE LOWER('+ QuotedStr( CompteBonRetVGCbx.Text )+')'  ;
               MainForm.CompteTable.Active:=True;
 
 
@@ -1479,13 +1479,13 @@ procedure TBonRetGestionF.FormCloseQuery(Sender: TObject;
               DataModuleF.Bonv_retTable.FieldValues['code_c']:= MainForm.ClientTable.FieldByName('code_c').AsInteger;
               DataModuleF.Bonv_retTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
               DataModuleF.Bonv_retTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
-              DataModuleF.Bonv_retTable.FieldValues['obser_bvret']:= ObserBonRetGMem.Text;
-              DataModuleF.Bonv_retTable.FieldValues['num_cheque_bvret']:= NChequeBonRetGCbx.Text;
+              DataModuleF.Bonv_retTable.FieldValues['obser_bvret']:= ObserBonRetVGMem.Text;
+              DataModuleF.Bonv_retTable.FieldValues['num_cheque_bvret']:= NChequeBonRetVGCbx.Text;
               DataModuleF.Bonv_retTable.FieldByName('montht_bvret').AsCurrency:= StrToCurr(StringReplace(BonRetTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
 
-              if RemiseBonRetGEdt.Text<>'' then
+              if RemiseBonRetVGEdt.Text<>'' then
               begin
-                 DataModuleF.Bonv_retTable.FieldByName('remise_bvret').AsCurrency:=StrToCurr(StringReplace(RemiseBonRetGEdt.Text, #32, '', [rfReplaceAll]));
+                 DataModuleF.Bonv_retTable.FieldByName('remise_bvret').AsCurrency:=StrToCurr(StringReplace(RemiseBonRetVGEdt.Text, #32, '', [rfReplaceAll]));
               end else begin
                         DataModuleF.Bonv_retTable.FieldByName('remise_bvret').AsCurrency:=0;
                        end;
@@ -1529,12 +1529,12 @@ procedure TBonRetGestionF.FormCloseQuery(Sender: TObject;
               end else
                   begin
                     sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
-                    ClientBonRetGCbx.StyleElements:= [];
+                    ClientBonRetVGCbx.StyleElements:= [];
                     RequiredClientGlbl.Caption:= 'Ce Client est bloqué' ;
                     RequiredClientGlbl.Visible:= True;
                     NameClientGErrorP.Visible:= True;
 
-                    ClientBonRetGCbx.SetFocus;
+                    ClientBonRetVGCbx.SetFocus;
                     CanClose:= False;
                   end;
           //---------------------------------------------------
@@ -1552,19 +1552,19 @@ procedure TBonRetGestionF.FormCloseQuery(Sender: TObject;
           MainForm.ClientTable.DisableControls;
           MainForm.ClientTable.Active:=false;
           MainForm.ClientTable.SQL.Clear;
-          MainForm.ClientTable.SQL.Text:='Select * FROM client WHERE LOWER(nom_f) LIKE LOWER('+ QuotedStr( ClientBonRetGCbx.Text )+')'  ;
+          MainForm.ClientTable.SQL.Text:='Select * FROM client WHERE LOWER(nom_c) LIKE LOWER('+ QuotedStr( ClientBonRetVGCbx.Text )+')'  ;
           MainForm.ClientTable.Active:=True;
 
           MainForm.Mode_paiementTable.DisableControls;
           MainForm.Mode_paiementTable.Active:=false;
           MainForm.Mode_paiementTable.SQL.Clear;
-          MainForm.Mode_paiementTable.SQL.Text:='Select * FROM mode_paiement WHERE LOWER(nom_mdpai) LIKE LOWER('+ QuotedStr( ModePaieBonRetGCbx.Text )+')'  ;
+          MainForm.Mode_paiementTable.SQL.Text:='Select * FROM mode_paiement WHERE LOWER(nom_mdpai) LIKE LOWER('+ QuotedStr( ModePaieBonRetVGCbx.Text )+')'  ;
           MainForm.Mode_paiementTable.Active:=True;
 
           MainForm.CompteTable.DisableControls;
           MainForm.CompteTable.Active:=false;
           MainForm.CompteTable.SQL.Clear;
-          MainForm.CompteTable.SQL.Text:='Select * FROM compte WHERE LOWER(nom_cmpt) LIKE LOWER('+ QuotedStr( CompteBonRetGCbx.Text )+')'  ;
+          MainForm.CompteTable.SQL.Text:='Select * FROM compte WHERE LOWER(nom_cmpt) LIKE LOWER('+ QuotedStr( CompteBonRetVGCbx.Text )+')'  ;
           MainForm.CompteTable.Active:=True;
 
 
@@ -1573,13 +1573,13 @@ procedure TBonRetGestionF.FormCloseQuery(Sender: TObject;
           DataModuleF.Bonv_retTable.FieldValues['code_c']:= MainForm.ClientTable.FieldByName('code_c').AsInteger;
           DataModuleF.Bonv_retTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
           DataModuleF.Bonv_retTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
-          DataModuleF.Bonv_retTable.FieldValues['obser_bvret']:= ObserBonRetGMem.Text;
-          DataModuleF.Bonv_retTable.FieldValues['num_cheque_bvret']:= NChequeBonRetGCbx.Text;
+          DataModuleF.Bonv_retTable.FieldValues['obser_bvret']:= ObserBonRetVGMem.Text;
+          DataModuleF.Bonv_retTable.FieldValues['num_cheque_bvret']:= NChequeBonRetVGCbx.Text;
           DataModuleF.Bonv_retTable.FieldByName('montht_bvret').AsCurrency:= StrToCurr(StringReplace(BonRetTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
 
-          if RemiseBonRetGEdt.Text<>'' then
+          if RemiseBonRetVGEdt.Text<>'' then
           begin
-             DataModuleF.Bonv_retTable.FieldByName('remise_bvret').AsCurrency:=StrToCurr(StringReplace(RemiseBonRetGEdt.Text, #32, '', [rfReplaceAll]));
+             DataModuleF.Bonv_retTable.FieldByName('remise_bvret').AsCurrency:=StrToCurr(StringReplace(RemiseBonRetVGEdt.Text, #32, '', [rfReplaceAll]));
           end else begin
                     DataModuleF.Bonv_retTable.FieldByName('remise_bvret').AsCurrency:=0;
                    end;
@@ -1626,13 +1626,13 @@ procedure TBonRetGestionF.FormCloseQuery(Sender: TObject;
 
 end;
 
-procedure TBonRetGestionF.ProduitBonRetGCbxExit(Sender: TObject);
+procedure TBonRetVGestionF.ProduitBonRetGCbxExit(Sender: TObject);
 begin
 ProduitBonRetGCbx.Text:='';
 //ProduitBonRetGCbx.AutoDropDown:=False;
 end;
 
-procedure TBonRetGestionF.B1Click(Sender: TObject);
+procedure TBonRetVGestionF.B1Click(Sender: TObject);
  var
 NEWCredit,OLDCredit,NEWCreditLbl,OLDCreditLbl , TotalACHAT,Versement,TotalACHATLbl,VersementLbl    : TfrxMemoView;
 LineCredit :TfrxShapeView;
@@ -1670,7 +1670,7 @@ DataModuleF.Bonv_ret_listTable.EnableControls;
  end;
 end;
 
-procedure TBonRetGestionF.BondeRetourClient1Click(Sender: TObject);
+procedure TBonRetVGestionF.BondeRetourClient1Click(Sender: TObject);
  var
 NEWCredit,OLDCredit,NEWCreditLbl,OLDCreditLbl , TotalACHAT,Versement,TotalACHATLbl,VersementLbl    : TfrxMemoView;
 LineCredit :TfrxShapeView;
@@ -1708,7 +1708,7 @@ DataModuleF.Bonv_ret_listTable.EnableControls;
  end;
 end;
 
-procedure TBonRetGestionF.BondeRetourClient2Click(Sender: TObject);
+procedure TBonRetVGestionF.BondeRetourClient2Click(Sender: TObject);
  var
 NEWCredit,OLDCredit,NEWCreditLbl,OLDCreditLbl , TotalACHAT,Versement,TotalACHATLbl,VersementLbl    : TfrxMemoView;
 LineCredit :TfrxShapeView;
@@ -1746,7 +1746,7 @@ DataModuleF.Bonv_ret_listTable.EnableControls;
  end;
 end;
 
-procedure TBonRetGestionF.BondeRetourClienthorstaxe1Click(Sender: TObject);
+procedure TBonRetVGestionF.BondeRetourClienthorstaxe1Click(Sender: TObject);
  var
 NEWCredit,OLDCredit,NEWCreditLbl,OLDCreditLbl , TotalACHAT,Versement,TotalACHATLbl,VersementLbl    : TfrxMemoView;
 LineCredit :TfrxShapeView;
@@ -1784,7 +1784,7 @@ DataModuleF.Bonv_ret_listTable.EnableControls;
  end;
 end;
 
-procedure TBonRetGestionF.BonRetPListDataSDataChange(Sender: TObject;
+procedure TBonRetVGestionF.BonRetPListDataSDataChange(Sender: TObject;
   Field: TField);
 begin
   if NOT BonRetPListDataS.DataSet.IsEmpty then
@@ -1792,7 +1792,7 @@ begin
     DeleteProduitBonRetGBtn.Visible:= True;
     ClearProduitBonRetGBtn.Visible:= True;
 
-    if (ClientBonRetGCbx.Text<>'')  AND (DataModuleF.Bonv_retTable.FieldByName('valider_bvret').AsBoolean <> True) then
+    if (ClientBonRetVGCbx.Text<>'')  AND (DataModuleF.Bonv_retTable.FieldByName('valider_bvret').AsBoolean <> True) then
     begin
     ValiderBVRetBonRetGBtn.Enabled:= True;
     ValiderBVRetBonRetGBtn.ImageIndex:=12;
@@ -1829,8 +1829,8 @@ begin
 //    MainForm.SQLQuery.EnableControls;
 
 
-    RemisePerctageBonRetGEdt.Enabled:=True;
-    RemiseBonRetGEdt.Enabled:=True;
+    RemisePerctageBonRetVGEdt.Enabled:=True;
+    RemiseBonRetVGEdt.Enabled:=True;
     RemiseTypeBonRetGCbx.Enabled:= True;
 
    end;
@@ -1844,12 +1844,12 @@ begin
     ValiderBVRetBonRetGBtn.Enabled:= False;
     ValiderBVRetBonRetGBtn.ImageIndex:=30;
 
-    RemisePerctageBonRetGEdt.Enabled:=False;
-    RemiseBonRetGEdt.Enabled:=False;
+    RemisePerctageBonRetVGEdt.Enabled:=False;
+    RemiseBonRetVGEdt.Enabled:=False;
     RemiseTypeBonRetGCbx.Enabled:= False;
 
-    RemisePerctageBonRetGEdt.Text:='';
-    RemiseBonRetGEdt.Text:='';
+    RemisePerctageBonRetVGEdt.Text:='';
+    RemiseBonRetVGEdt.Text:='';
     RemiseTypeBonRetGCbx.Text:='';
 
     BonRetGOLDStock.Caption:=  floatTostrF((0),ffNumber,14,2);
@@ -1860,20 +1860,20 @@ begin
 
 end;
 
-procedure TBonRetGestionF.EnterAddProduitBonRetGBtnClick(Sender: TObject);
+procedure TBonRetVGestionF.EnterAddProduitBonRetGBtnClick(Sender: TObject);
 var key : char  ;
 begin
 key := #13;
 ProduitBonRetGCbxKeyPress(Sender, key);
 end;
 
-procedure TBonRetGestionF.NewAddProduitBonRetGBtnClick(Sender: TObject);
+procedure TBonRetVGestionF.NewAddProduitBonRetGBtnClick(Sender: TObject);
 begin
 
 ProduitsListF.AddProduitsBtnClick(Sender);
 end;
 
-procedure TBonRetGestionF.ClearProduitBonRetGBtnClick(Sender: TObject);
+procedure TBonRetVGestionF.ClearProduitBonRetGBtnClick(Sender: TObject);
 begin
   FSplashAddUnite:=TFSplashAddUnite.Create(Application);
   FSplashAddUnite.Width:=350;
@@ -1905,7 +1905,7 @@ begin
   FSplashAddUnite.OKAddUniteSBtn.Tag:= 6 ;
 
 end;
-procedure TBonRetGestionF.DeleteProduitBonRetGBtnClick(Sender: TObject);
+procedure TBonRetVGestionF.DeleteProduitBonRetGBtnClick(Sender: TObject);
 begin
  if  DataModuleF.Bonv_ret_listTable.RecordCount = 1 then
  begin
@@ -1914,7 +1914,7 @@ begin
     DataModuleF.Bonv_ret_listTable.Delete;
     ProduitsListDBGridEh.Refresh;
     DataModuleF.Bonv_ret_listTable.EnableControls;
-    ClientBonRetGCbx.StyleElements:= [];
+    ClientBonRetVGCbx.StyleElements:= [];
     RequiredClientGlbl.Visible:= False;
     NameClientGErrorP.Visible:= False;
     BonRetTotalHTLbl.Caption:=FloatToStrF(0, ffNumber, 14, 2);
@@ -1938,7 +1938,7 @@ begin
      end;
 end;
 
-procedure TBonRetGestionF.AddModePaieBonRetGBtnClick(Sender: TObject);
+procedure TBonRetVGestionF.AddModePaieBonRetGBtnClick(Sender: TObject);
 begin
    //-------- Show the splash screan for the mode de paiement ---------//
     FSplashAddUnite:=TFSplashAddUnite.Create(self);
@@ -1969,7 +1969,7 @@ begin
     FSplashAddUnite.OKAddUniteSBtn.Tag:= 7 ;
 end;
 
-procedure TBonRetGestionF.CompteBonRetGCbxEnter(Sender: TObject);
+procedure TBonRetVGestionF.CompteBonRetVGCbxEnter(Sender: TObject);
 Var I: Integer;
 begin
       MainForm.CompteTable.Active:=False;
@@ -1978,7 +1978,7 @@ begin
       MainForm.CompteTable.Active := True;
 
       MainForm.CompteTable.Refresh;
-      CompteBonRetGCbx.Items.Clear;
+      CompteBonRetVGCbx.Items.Clear;
 
       MainForm.CompteTable.first;
      begin
@@ -1986,13 +1986,13 @@ begin
      for I := 0 to MainForm.CompteTable.RecordCount - 1 do
      if ( MainForm.CompteTable.FieldByName('nom_cmpt').IsNull = False )  then
      begin
-       CompteBonRetGCbx.Items.Add(MainForm.CompteTable.FieldByName('nom_cmpt').AsString);
+       CompteBonRetVGCbx.Items.Add(MainForm.CompteTable.FieldByName('nom_cmpt').AsString);
        MainForm.CompteTable.Next;
       end;
      end;
 end;
 
-procedure TBonRetGestionF.AddCompteBonRetGBtnClick(Sender: TObject);
+procedure TBonRetVGestionF.AddCompteBonRetGBtnClick(Sender: TObject);
 begin
    //-------- Show the splash screan for the adding comptes ---------//
     FSplashAddCompte:=TFSplashAddCompte.Create(Application);
@@ -2004,30 +2004,30 @@ begin
     FSplashAddCompte.OKAddCompteSBtn.Tag:= 1 ;
 end;
 
-procedure TBonRetGestionF.AddClientBonRetGBtnClick(Sender: TObject);
+procedure TBonRetVGestionF.AddClientBonRetGBtnClick(Sender: TObject);
 begin
 ClientListF.AddClientsBtnClick(Sender);
 ClientGestionF.OKClientGBtn.Tag := 3 ;
-ClientBonRetGCbx.StyleElements:= [seFont,seBorder,seBorder];
+ClientBonRetVGCbx.StyleElements:= [seFont,seBorder,seBorder];
 RequiredClientGlbl.Visible:= False;
 NameClientGErrorP.Visible:= False;
 end;
 
-procedure TBonRetGestionF.ModePaieBonRetGCbxChange(Sender: TObject);
+procedure TBonRetVGestionF.ModePaieBonRetVGCbxChange(Sender: TObject);
 begin
 RequiredMPGlbl.Visible:= False;
 ModepPaiGErrorP.Visible:= False;
 end;
 
-procedure TBonRetGestionF.ModePaieBonRetGCbxClick(Sender: TObject);
+procedure TBonRetVGestionF.ModePaieBonRetVGCbxClick(Sender: TObject);
 begin
-  if ModePaieBonRetGCbx.Text <> '' then
+  if ModePaieBonRetVGCbx.Text <> '' then
   begin
 
     MainForm.Mode_paiementTable.DisableControls;
     MainForm.Mode_paiementTable.Active:=false;
     MainForm.Mode_paiementTable.SQL.Clear;
-    MainForm.Mode_paiementTable.SQL.Text:='Select * FROM mode_paiement WHERE LOWER(nom_mdpai) LIKE LOWER('+QuotedStr(ModePaieBonRetGCbx.Text)+')'  ;
+    MainForm.Mode_paiementTable.SQL.Text:='Select * FROM mode_paiement WHERE LOWER(nom_mdpai) LIKE LOWER('+QuotedStr(ModePaieBonRetVGCbx.Text)+')'  ;
     MainForm.Mode_paiementTable.Active:=True;
     MainForm.Mode_paiementTable.EnableControls;
 
@@ -2038,7 +2038,7 @@ begin
     MainForm.CompteTable.Active:=True;
     if NOT (MainForm.CompteTable.IsEmpty) then
     begin
-    CompteBonRetGCbx.Text:= MainForm.CompteTable.FieldValues['nom_cmpt'] ;
+    CompteBonRetVGCbx.Text:= MainForm.CompteTable.FieldValues['nom_cmpt'] ;
     end;
     MainForm.CompteTable.EnableControls;
 
@@ -2046,10 +2046,10 @@ begin
 
 
 
-  ModePaieBonRetGCbxChange(Sender);
+  ModePaieBonRetVGCbxChange(Sender);
 end;
 
-procedure TBonRetGestionF.ModePaieBonRetGCbxDropDown(Sender: TObject);
+procedure TBonRetVGestionF.ModePaieBonRetVGCbxDropDown(Sender: TObject);
 Var I: Integer;
 begin
       MainForm.Mode_paiementTable.Active:=False;
@@ -2058,7 +2058,7 @@ begin
       MainForm.Mode_paiementTable.Active := True;
 
       MainForm.Mode_paiementTable.Refresh;
-      ModePaieBonRetGCbx.Items.Clear;
+      ModePaieBonRetVGCbx.Items.Clear;
 
       MainForm.Mode_paiementTable.first;
      begin
@@ -2066,29 +2066,29 @@ begin
      for I := 0 to MainForm.Mode_paiementTable.RecordCount - 1 do
      if ( MainForm.Mode_paiementTable.FieldByName('nom_mdpai').IsNull = False )  then
      begin
-       ModePaieBonRetGCbx.Items.Add(MainForm.Mode_paiementTable.FieldByName('nom_mdpai').AsString);
+       ModePaieBonRetVGCbx.Items.Add(MainForm.Mode_paiementTable.FieldByName('nom_mdpai').AsString);
        MainForm.Mode_paiementTable.Next;
       end;
      end;
 end;
 
-procedure TBonRetGestionF.CompteBonRetGCbxChange(Sender: TObject);
+procedure TBonRetVGestionF.CompteBonRetVGCbxChange(Sender: TObject);
 begin
-CompteBonRetGCbx.AutoDropDown:=True;
+CompteBonRetVGCbx.AutoDropDown:=True;
 
 RequiredCompteGlbl.Visible:= False;
 CompteGErrorP.Visible:= False;
 end;
 
-procedure TBonRetGestionF.ValiderBVRetBonRetGBtnClick(Sender: TObject);
+procedure TBonRetVGestionF.ValiderBVRetBonRetGBtnClick(Sender: TObject);
 begin
-  if ClientBonRetGCbx.Text <> '' then
+  if ClientBonRetVGCbx.Text <> '' then
   begin
 
-   if ModePaieBonRetGCbx.Text <> '' then
+   if ModePaieBonRetVGCbx.Text <> '' then
    begin
 
-    if CompteBonRetGCbx.Text <> '' then
+    if CompteBonRetVGCbx.Text <> '' then
     begin
 
 
@@ -2124,47 +2124,47 @@ begin
        end else
            begin
               sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
-              ClientBonRetGCbx.StyleElements:= [];
+              ClientBonRetVGCbx.StyleElements:= [];
               RequiredClientGlbl.Caption:= 'Ce Client est bloqué' ;
               RequiredClientGlbl.Visible:= True;
               NameClientGErrorP.Visible:= True;
-              ClientBonRetGCbx.SetFocus;
+              ClientBonRetVGCbx.SetFocus;
            end;
 
           end else
               begin
                 sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
-                CompteBonRetGCbx.StyleElements:= [];
+                CompteBonRetVGCbx.StyleElements:= [];
                 RequiredCompteGlbl.Visible:= True;
                 CompteGErrorP.Visible:= True;
-                CompteBonRetGCbx.SetFocus;
+                CompteBonRetVGCbx.SetFocus;
               end;
 
      end else
      begin
 
             sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
-            ModePaieBonRetGCbx.StyleElements:= [];
+            ModePaieBonRetVGCbx.StyleElements:= [];
             RequiredMPGlbl.Visible:= True;
             ModepPaiGErrorP.Visible:= True;
-            ModePaieBonRetGCbx.SetFocus;
+            ModePaieBonRetVGCbx.SetFocus;
 
      end;
 
     end else
     begin
       sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
-      ClientBonRetGCbx.StyleElements:= [];
+      ClientBonRetVGCbx.StyleElements:= [];
       RequiredClientGlbl.Caption:= 'S''il vous plaît entrer le nom de le Client' ;
       RequiredClientGlbl.Visible:= True;
       NameClientGErrorP.Visible:= True;
 
-      ClientBonRetGCbx.SetFocus;
+      ClientBonRetVGCbx.SetFocus;
     end;
 
 end;
 
-procedure TBonRetGestionF.RemiseBonRetGEdtKeyPress(Sender: TObject; var Key: Char);
+procedure TBonRetVGestionF.RemiseBonRetVGEdtKeyPress(Sender: TObject; var Key: Char);
 const
   N = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0',',','.', Char(VK_back)];
    F = ['.'];
@@ -2178,42 +2178,42 @@ begin
   begin
     key :=  #44;
   end;
-  if (Key = '.') AND (Pos(Key, (RemiseBonRetGEdt.Text)) > 0) Then
+  if (Key = '.') AND (Pos(Key, (RemiseBonRetVGEdt.Text)) > 0) Then
   begin
       Key := #0;
   end;
 end;
 
-procedure TBonRetGestionF.RemiseBonRetGEdtExit(Sender: TObject);
+procedure TBonRetVGestionF.RemiseBonRetVGEdtExit(Sender: TObject);
 var
 RemiseBonRetG: Currency;
 begin
-  if RemiseBonRetGEdt.Text<>'' then
+  if RemiseBonRetVGEdt.Text<>'' then
   begin
-  RemiseBonRetG:=StrToFloat(StringReplace(RemiseBonRetGEdt.Text, #32, '', [rfReplaceAll]));
-  RemiseBonRetGEdt.Text := FloatToStrF(RemiseBonRetG,ffNumber,14,2);
+  RemiseBonRetG:=StrToFloat(StringReplace(RemiseBonRetVGEdt.Text, #32, '', [rfReplaceAll]));
+  RemiseBonRetVGEdt.Text := FloatToStrF(RemiseBonRetG,ffNumber,14,2);
   end;
 end;
 
-procedure TBonRetGestionF.RemiseBonRetGEdtClick(Sender: TObject);
+procedure TBonRetVGestionF.RemiseBonRetVGEdtClick(Sender: TObject);
 begin
 //----- use this code to delte the blanks from the Tedit when enter that will avoide the not foit point error --///
-RemiseBonRetGEdt.Text := StringReplace(RemiseBonRetGEdt.Text, #32, '', [rfReplaceAll]);
-RemiseBonRetGEdt.SelectAll;
+RemiseBonRetVGEdt.Text := StringReplace(RemiseBonRetVGEdt.Text, #32, '', [rfReplaceAll]);
+RemiseBonRetVGEdt.SelectAll;
 end;
 
-procedure TBonRetGestionF.RemiseBonRetGEdtChange(Sender: TObject);
+procedure TBonRetVGestionF.RemiseBonRetVGEdtChange(Sender: TObject);
 var RemiseBonRetG,BonRTotalHT,BonRTotalTVA,OLDTTC : Currency;
 begin
-if RemiseBonRetGEdt.Focused then
+if RemiseBonRetVGEdt.Focused then
  begin
 
-      if RemiseBonRetGEdt.Text<>'' then
+      if RemiseBonRetVGEdt.Text<>'' then
      begin
-     RemiseBonRetG:=StrToFloat (StringReplace(RemiseBonRetGEdt.Text, #32, '', [rfReplaceAll]));
+     RemiseBonRetG:=StrToFloat (StringReplace(RemiseBonRetVGEdt.Text, #32, '', [rfReplaceAll]));
      end;
 
-     if (RemiseBonRetGEdt.Text<>'') AND (RemiseBonRetG<>0) then
+     if (RemiseBonRetVGEdt.Text<>'') AND (RemiseBonRetG<>0) then
     begin
        if RemiseTypeBonRetGCbx.ItemIndex = 0 then
        begin
@@ -2225,37 +2225,37 @@ if RemiseBonRetGEdt.Focused then
          begin
           BonRTotalTVA:=StrToFloat (StringReplace(BonRetTotalTVALbl.Caption, #32, '', [rfReplaceAll]));
          end;
-         RemisePerctageBonRetGEdt.Text := FloatToStrF(((RemiseBonRetG / BonRTotalHT) * 100),ffNumber,14,2) ;
+         RemisePerctageBonRetVGEdt.Text := FloatToStrF(((RemiseBonRetG / BonRTotalHT) * 100),ffNumber,14,2) ;
            end;
 
       if RemiseTypeBonRetGCbx.ItemIndex = 1 then
         begin
-         if BonRTotalTTCNewLbl.Caption<>'' then
+         if BonRVTotalTTCNewLbl.Caption<>'' then
          begin
-          OLDTTC:=StrToFloat (StringReplace(BonRTotalTTCNewLbl.Caption, #32, '', [rfReplaceAll]));
+          OLDTTC:=StrToFloat (StringReplace(BonRVTotalTTCNewLbl.Caption, #32, '', [rfReplaceAll]));
          end;
-        RemisePerctageBonRetGEdt.Text := FloatToStrF(((RemiseBonRetG / OLDTTC) * 100),ffNumber,14,2) ;
+        RemisePerctageBonRetVGEdt.Text := FloatToStrF(((RemiseBonRetG / OLDTTC) * 100),ffNumber,14,2) ;
 
 
         end;
 
     end else
         begin
-          BonRRemiseHTNewLbl.Caption:='0';
-          RemisePerctageBonRetGEdt.Text:='';
-          BonRTotalHTNewLbl.Caption:=BonRetTotalHTLbl.Caption;
+          BonRVRemiseHTNewLbl.Caption:='0';
+          RemisePerctageBonRetVGEdt.Text:='';
+          BonRVTotalHTNewLbl.Caption:=BonRetTotalHTLbl.Caption;
         end;
  end;
 end;
 
-procedure TBonRetGestionF.RemisePerctageBonRetGEdtClick(Sender: TObject);
+procedure TBonRetVGestionF.RemisePerctageBonRetVGEdtClick(Sender: TObject);
 begin
 //----- use this code to delte the blanks from the Tedit when enter that will avoide the not foit point error --///
-RemisePerctageBonRetGEdt.Text := StringReplace(RemisePerctageBonRetGEdt.Text, #32, '', [rfReplaceAll]);
-RemisePerctageBonRetGEdt.SelectAll;
+RemisePerctageBonRetVGEdt.Text := StringReplace(RemisePerctageBonRetVGEdt.Text, #32, '', [rfReplaceAll]);
+RemisePerctageBonRetVGEdt.SelectAll;
 end;
 
-procedure TBonRetGestionF.RemisePerctageBonRetGEdtChange(Sender: TObject);
+procedure TBonRetVGestionF.RemisePerctageBonRetVGEdtChange(Sender: TObject);
 var BonRTotalHT,RemisePerctageBonRet,TotalTVANet,NewHT,NewTVA,NewTTC,Remise,OldTTC,OldClientCredit : Currency;
 begin
 //------ this is to set the remise on tyhe prix HT ---------//
@@ -2263,11 +2263,11 @@ begin
    //-- use this code to HT TVA calculation
       if RemiseTypeBonRetGCbx.ItemIndex = 0 then
        begin
-        if RemisePerctageBonRetGEdt.Text<>''  then
+        if RemisePerctageBonRetVGEdt.Text<>''  then
         begin
-            if RemisePerctageBonRetGEdt.Text <> '' then
+            if RemisePerctageBonRetVGEdt.Text <> '' then
             begin
-            RemisePerctageBonRet:=StrToFloat(StringReplace(RemisePerctageBonRetGEdt.Text, #32, '', [rfReplaceAll]));
+            RemisePerctageBonRet:=StrToFloat(StringReplace(RemisePerctageBonRetVGEdt.Text, #32, '', [rfReplaceAll]));
             end;
             if BonRetTotalHTLbl.Caption<>'' then
             begin
@@ -2278,10 +2278,10 @@ begin
             TotalTVANet:=StrToFloat(StringReplace(TotalTVANewLbl.Caption, #32, '', [rfReplaceAll]));
             end;
          BonRetTotalTVALbl.Caption:= FloatToStrF(Round(TotalTVANet - (( TotalTVANet  * RemisePerctageBonRet)/(100))),ffNumber,14,2); //TVA
-         BonRTotalHTNewLbl.Caption:= FloatToStrF(Round(BonRTotalHT - (( BonRTotalHT  * RemisePerctageBonRet)/(100))),ffNumber,14,2); //HT
-            if BonRTotalHTNewLbl.Caption <>'' then
+         BonRVTotalHTNewLbl.Caption:= FloatToStrF(Round(BonRTotalHT - (( BonRTotalHT  * RemisePerctageBonRet)/(100))),ffNumber,14,2); //HT
+            if BonRVTotalHTNewLbl.Caption <>'' then
             begin
-            NewHT:=StrToFloat (StringReplace(BonRTotalHTNewLbl.Caption , #32, '', [rfReplaceAll]));
+            NewHT:=StrToFloat (StringReplace(BonRVTotalHTNewLbl.Caption , #32, '', [rfReplaceAll]));
             end;
             if BonRetTotalTVALbl.Caption <> '' then
             begin
@@ -2289,12 +2289,12 @@ begin
             end;
          BonRetTotalTTCLbl.Caption:=  FloatToStrF(Round(NewHT + NewTVA),ffNumber,14,2); // TTC
 //         BonRetResteLbl.Caption:= BonRetTotalTTCLbl.Caption;                       //REst
-            if RemisePerctageBonRetGEdt.Focused then
+            if RemisePerctageBonRetVGEdt.Focused then
             begin
-            RemiseBonRetGEdt.Text:=FloatToStrF((BonRTotalHT - NewHT),ffNumber,14,2);
+            RemiseBonRetVGEdt.Text:=FloatToStrF((BonRTotalHT - NewHT),ffNumber,14,2);
             end;
 
-        BonRRemiseHTNewLbl.Caption:= FloatToStrF((BonRTotalHT - NewHT),ffNumber,14,2);
+        BonRVRemiseHTNewLbl.Caption:= FloatToStrF((BonRTotalHT - NewHT),ffNumber,14,2);
 
             if BonRetGClientOLDCredit.Caption <>'' then
             begin
@@ -2316,9 +2316,9 @@ begin
             BonRetTotalTTCLbl.Caption:=FloatToStrF((BonRTotalHT + TotalTVANet ),ffNumber,14,2);
 //            BonRetResteLbl.Caption:= BonRetTotalTTCLbl.Caption;
             BonRetTotalTVALbl.Caption := TotalTVANewLbl.Caption;
-            RemiseBonRetGEdt.Text:='';
-            BonRRemiseHTNewLbl.Caption:='0';
-            BonRTotalHTNewLbl.Caption:=BonRetTotalHTLbl.Caption;
+            RemiseBonRetVGEdt.Text:='';
+            BonRVRemiseHTNewLbl.Caption:='0';
+            BonRVTotalHTNewLbl.Caption:=BonRetTotalHTLbl.Caption;
 
             if BonRetGClientOLDCredit.Caption <>'' then
             begin
@@ -2334,11 +2334,11 @@ begin
        //------ this is to set the remise on the prix TTC only ---------//
        if RemiseTypeBonRetGCbx.ItemIndex = 1 then
        begin
-        if RemisePerctageBonRetGEdt.Text<>'' then
+        if RemisePerctageBonRetVGEdt.Text<>'' then
         begin
-             if RemisePerctageBonRetGEdt.Text <> '' then
+             if RemisePerctageBonRetVGEdt.Text <> '' then
             begin
-            RemisePerctageBonRet:=StrToFloat(StringReplace(RemisePerctageBonRetGEdt.Text, #32, '', [rfReplaceAll]));
+            RemisePerctageBonRet:=StrToFloat(StringReplace(RemisePerctageBonRetVGEdt.Text, #32, '', [rfReplaceAll]));
             end;
              if TotalTVANewLbl.Caption <>'' then
             begin
@@ -2349,19 +2349,19 @@ begin
             NewHT:=StrToFloat (StringReplace(BonRetTotalHTLbl.Caption , #32, '', [rfReplaceAll]));  //TTC
             end;
          BonRetTotalTVALbl.Caption:= FloatToStrF(( NewTVA - ((RemisePerctageBonRet/100) * NewTVA)),ffNumber,14,2);
-         BonRTotalHTNewLbl.Caption:= FloatToStrF(( NewHT - ((RemisePerctageBonRet/100) * NewHT)),ffNumber,14,2);
+         BonRVTotalHTNewLbl.Caption:= FloatToStrF(( NewHT - ((RemisePerctageBonRet/100) * NewHT)),ffNumber,14,2);
          BonRetTotalTTCLbl.Caption:= FloatToStrF((( NewHT - ((RemisePerctageBonRet/100) * NewHT))+( NewTVA - ((RemisePerctageBonRet/100) * NewTVA))),ffNumber,14,2);
-            if BonRTotalTTCNewLbl.Caption <>'' then
+            if BonRVTotalTTCNewLbl.Caption <>'' then
             begin
-            OldTTC:=StrToFloat (StringReplace(BonRTotalTTCNewLbl.Caption , #32, '', [rfReplaceAll]));  //TTC
+            OldTTC:=StrToFloat (StringReplace(BonRVTotalTTCNewLbl.Caption , #32, '', [rfReplaceAll]));  //TTC
             end;
             if BonRetTotalTTCLbl.Caption <>'' then
             begin
             NewTTC:=StrToFloat (StringReplace(BonRetTotalTTCLbl.Caption , #32, '', [rfReplaceAll]));  //TTC
             end;
-         if RemisePerctageBonRetGEdt.Focused then
+         if RemisePerctageBonRetVGEdt.Focused then
          begin
-         RemiseBonRetGEdt.Text:= FloatToStrF((OldTTC - NewTTC),ffNumber,14,2); //RemiseAMount
+         RemiseBonRetVGEdt.Text:= FloatToStrF((OldTTC - NewTTC),ffNumber,14,2); //RemiseAMount
          end;
 
 
@@ -2372,9 +2372,9 @@ begin
             BonRTotalHT:=StrToFloat (StringReplace(BonRetTotalHTLbl.Caption , #32, '', [rfReplaceAll]));
             end;
 
-         NewHT:=StrToFloat (StringReplace(BonRTotalHTNewLbl.Caption , #32, '', [rfReplaceAll]));  //
+         NewHT:=StrToFloat (StringReplace(BonRVTotalHTNewLbl.Caption , #32, '', [rfReplaceAll]));  //
 
-        BonRRemiseHTNewLbl.Caption:= FloatToStrF((BonRTotalHT - NewHT),ffNumber,14,2);
+        BonRVRemiseHTNewLbl.Caption:= FloatToStrF((BonRTotalHT - NewHT),ffNumber,14,2);
 
             if BonRetGClientOLDCredit.Caption <>'' then
             begin
@@ -2384,12 +2384,12 @@ begin
 //        BonRetGClientNEWCredit.Caption:=  FloatToStrF((NewTTC  + OldClientCredit),ffNumber,14,2);
         end else
             begin
-             RemiseBonRetGEdt.Text:='';
-             BonRRemiseHTNewLbl.Caption:='0';
-             BonRetTotalTTCLbl.Caption := BonRTotalTTCNewLbl.Caption;
+             RemiseBonRetVGEdt.Text:='';
+             BonRVRemiseHTNewLbl.Caption:='0';
+             BonRetTotalTTCLbl.Caption := BonRVTotalTTCNewLbl.Caption;
 //             BonRetResteLbl.Caption:=BonRetTotalTTCLbl.Caption;
              BonRetTotalTVALbl.Caption:=TotalTVANewLbl.Caption;
-             BonRTotalHTNewLbl.Caption:=BonRetTotalHTLbl.Caption;
+             BonRVTotalHTNewLbl.Caption:=BonRetTotalHTLbl.Caption;
 
               if BonRetGClientOLDCredit.Caption <>'' then
               begin
@@ -2405,20 +2405,20 @@ begin
       end;
 end;
 
-procedure TBonRetGestionF.RemiseTypeBonRetGCbxChange(Sender: TObject);
+procedure TBonRetVGestionF.RemiseTypeBonRetGCbxChange(Sender: TObject);
 begin
-RemiseBonRetGEdt.Text:='';
-RemisePerctageBonRetGEdt.Text:='';
+RemiseBonRetVGEdt.Text:='';
+RemisePerctageBonRetVGEdt.Text:='';
 end;
 
-procedure TBonRetGestionF.ResherchPARDesProduitsRdioBtnClick(Sender: TObject);
+procedure TBonRetVGestionF.ResherchPARDesProduitsRdioBtnClick(Sender: TObject);
 begin
 ProduitBonRetGCbx.Clear;
 ProduitBonRetGCbx.SetFocus;
 ProduitBonRetGCbx.EditText:= '0';
 end;
 
-procedure TBonRetGestionF.RemisePerctageBonRetGEdtKeyPress(Sender: TObject;
+procedure TBonRetVGestionF.RemisePerctageBonRetVGEdtKeyPress(Sender: TObject;
   var Key: Char);
 const
   N = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0',',','.', Char(VK_back)];
@@ -2433,13 +2433,13 @@ begin
   begin
     key :=  #44;
   end;
-  if (Key = '.') AND (Pos(Key, (RemisePerctageBonRetGEdt.Text)) > 0) Then
+  if (Key = '.') AND (Pos(Key, (RemisePerctageBonRetVGEdt.Text)) > 0) Then
   begin
       Key := #0;
   end;
 end;
 
-procedure TBonRetGestionF.EditBVRetBonRetGBtnClick(Sender: TObject);
+procedure TBonRetVGestionF.EditBVRetBonRetGBtnClick(Sender: TObject);
   Var CodeBR : Integer;
  begin
    codeBR:= DataModuleF.Bonv_retTable.FieldByName('code_bvret').AsInteger;
@@ -2457,9 +2457,9 @@ procedure TBonRetGestionF.EditBVRetBonRetGBtnClick(Sender: TObject);
       MainForm.ClientTable.DisableControls;
       MainForm.ClientTable.Active:=false;
       MainForm.ClientTable.SQL.Clear;
-      MainForm.ClientTable.SQL.Text:='Select * FROM client WHERE LOWER(nom_f) LIKE LOWER('+ QuotedStr( ClientBonRetGCbx.Text )+')'  ;
+      MainForm.ClientTable.SQL.Text:='Select * FROM client WHERE LOWER(nom_c) LIKE LOWER('+ QuotedStr( ClientBonRetVGCbx.Text )+')'  ;
       MainForm.ClientTable.Active:=True;
-  EnableBonRet;
+  EnableBonRetV;
  // this is to unvalider the bon
   begin
   DataModuleF.Bonv_retTable.Edit;
@@ -2469,11 +2469,11 @@ procedure TBonRetGestionF.EditBVRetBonRetGBtnClick(Sender: TObject);
 
 // use this code to rest the old credit to the to the last time before he pay anything in that bon so you can aclculate again
   BonRetGClientOLDCredit.Caption:=
-  CurrToStrF((((MainForm.ClientTable.FieldValues['credit_f'])-(StringReplace(BonRetResteLbl.Caption, #32, '', [rfReplaceAll])))),ffNumber,2);
+  CurrToStrF((((MainForm.ClientTable.FieldValues['credit_c'])-(StringReplace(BonRetResteLbl.Caption, #32, '', [rfReplaceAll])))),ffNumber,2);
 
         begin
       MainForm.ClientTable.Edit;
-      MainForm.ClientTable.FieldByName('credit_f').AsCurrency:= (MainForm.ClientTable.FieldByName('credit_f').AsCurrency) - (DataModuleF.Bonv_retTable.FieldByName('MontantRes').AsCurrency);
+      MainForm.ClientTable.FieldByName('credit_c').AsCurrency:= (MainForm.ClientTable.FieldByName('credit_c').AsCurrency) - (DataModuleF.Bonv_retTable.FieldByName('MontantRes').AsCurrency);
       MainForm.ClientTable.Post;
       end;
 
@@ -2553,20 +2553,20 @@ procedure TBonRetGestionF.EditBVRetBonRetGBtnClick(Sender: TObject);
      end;
 
 
-     ClientBonRetGCbxExit(Sender);
+     ClientBonRetVGCbxExit(Sender);
 
 end;
 
-procedure TBonRetGestionF.AddBVRetBonRetGBtnClick(Sender: TObject);
+procedure TBonRetVGestionF.AddBVRetBonRetGBtnClick(Sender: TObject);
 var
   codeBR,CodeCB : integer;
 begin
       begin
-     ClientBonRetGCbx.Clear;
-     ModePaieBonRetGCbx.Clear;
-     CompteBonRetGCbx.Clear;
-     NChequeBonRetGCbx.Clear;
- //    ClientBonRetGCbx.SetFocus;
+     ClientBonRetVGCbx.Clear;
+     ModePaieBonRetVGCbx.Clear;
+     CompteBonRetVGCbx.Clear;
+     NChequeBonRetVGCbx.Clear;
+ //    ClientBonRetVGCbx.SetFocus;
    end;
 
    MainForm.ProduitTable.Refresh;
@@ -2576,16 +2576,16 @@ begin
    MainForm.Mode_paiementTable.Refresh;
    MainForm.CompteTable.Refresh;
    BonRetPListDataS.DataSet.Refresh;
-   MainForm.BonRetListDataS.DataSet.Refresh;
+   DataModuleF.BonRetVListDataS.DataSet.Refresh;
    Refresh;
 
-   ModePaieBonRetGCbx.Refresh;
-   CompteBonRetGCbx.Refresh;
+   ModePaieBonRetVGCbx.Refresh;
+   CompteBonRetVGCbx.Refresh;
 
-   EnableBonRet;
+   EnableBonRetV;
 
  codeBR:= 0;
-   //   BonRetGestionF := TBonRetGestionF.Create(BonRetGestionF);
+   //   BonRetVGestionF := TBonRetVGestionF.Create(BonRetVGestionF);
      if DataModuleF.Bonv_retTable.RecordCount <= 0 then
       begin
 
@@ -2602,7 +2602,7 @@ begin
             codeBR := DataModuleF.Bonv_retTable.FieldValues['code_bvret'];
             DataModuleF.Bonv_ret_listTable.Active:=False;
             DataModuleF.Bonv_ret_listTable.SQL.Clear;
-            DataModuleF.Bonv_ret_listTable.SQL.Text:= BReVLSQL+ ' WHERE code_bvret = ' + QuotedStr(IntToStr(codeBR));
+            DataModuleF.Bonv_ret_listTable.SQL.Text:= BRVLSQL+ ' WHERE code_bvret = ' + QuotedStr(IntToStr(codeBR));
             DataModuleF.Bonv_ret_listTable.Active:=True;
 
            if DataModuleF.Bonv_ret_listTable.RecordCount <= 0 then
@@ -2628,7 +2628,7 @@ begin
 
 //-- use this code to make the montants look lake money values-------//
     BonRetTotalHTLbl.Caption :=       FloatToStrF(0,ffNumber,14,2) ;
-//    RemiseBonRetGEdt.Text :=       FloatToStrF(StrToInt64(RemiseBonRetGEdt.Text),ffNumber,14,2) ;
+//    RemiseBonRetVGEdt.Text :=       FloatToStrF(StrToInt64(RemiseBonRetVGEdt.Text),ffNumber,14,2) ;
 BonRetTotalTVALbl.Caption :=      FloatToStrF(0,ffNumber,14,2) ;
 BonRetTotalTTCLbl.Caption :=      FloatToStrF(0,ffNumber,14,2) ;
 BonRetResteLbl.Caption :=         FloatToStrF(0,ffNumber,14,2) ;
@@ -2637,9 +2637,9 @@ BonRetGClientOLDCredit.Caption:= FloatToStrF(0,ffNumber,14,2) ;
 BonRetGClientNEWCredit.Caption:= FloatToStrF(0,ffNumber,14,2) ;
 
  CodeCB:= DataModuleF.Bonv_retTable.FieldValues['code_bvret']   ;
- NumBonRetGEdt.Caption := 'BR'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5, CodeCB]);
+ NumBonRetVGEdt.Caption := 'BR'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5, CodeCB]);
 
-     ClientBonRetGCbx.SetFocus;
+     ClientBonRetVGCbx.SetFocus;
 
      Tag:=0;
 
@@ -2647,7 +2647,7 @@ BonRetGClientNEWCredit.Caption:= FloatToStrF(0,ffNumber,14,2) ;
 
 end;
 
-procedure TBonRetGestionF.ClientBonRetGCbxKeyPress(Sender: TObject;
+procedure TBonRetVGestionF.ClientBonRetVGCbxKeyPress(Sender: TObject;
   var Key: Char);
 begin
   if Key = #13 then
@@ -2657,7 +2657,7 @@ begin
     end;
 end;
 
-procedure TBonRetGestionF.sSpeedButton10Click(Sender: TObject);
+procedure TBonRetVGestionF.sSpeedButton10Click(Sender: TObject);
 begin
   DataModuleF.Bonv_retTable.First;
   DataModuleF.Bonv_retTable.Refresh;
@@ -2665,25 +2665,25 @@ begin
 
   if DataModuleF.Bonv_retTable.FieldValues['valider_bvret'] = True then
   begin
-       FSplashVersement.DisableBonRet;
+       FSplashVersement.DisableBonRetV;
   end;
   if DataModuleF.Bonv_retTable.FieldValues['valider_bvret'] = False then
    begin
-     EnableBonRet;
+     EnableBonRetV;
     end;
 
 
   if (DataModuleF.Bonv_retTable.FieldValues['code_c']<> 0) AND (DataModuleF.Bonv_retTable.FieldValues['code_c']<> null) then
   begin
-  ClientBonRetGCbx.Text:=DataModuleF.Bonv_retTable.FieldValues['clientbvret'];
+  ClientBonRetVGCbx.Text:=DataModuleF.Bonv_retTable.FieldValues['clientbvret'];
   end;
   if (DataModuleF.Bonv_retTable.FieldValues['code_mdpai']<> 0) AND (DataModuleF.Bonv_retTable.FieldValues['code_mdpai']<>null)  then
   begin
-  ModePaieBonRetGCbx.Text:=DataModuleF.Bonv_retTable.FieldValues['ModePaie'];
+  ModePaieBonRetVGCbx.Text:=DataModuleF.Bonv_retTable.FieldValues['ModePaie'];
   end;
   if (DataModuleF.Bonv_retTable.FieldValues['code_cmpt']<> 0) AND (DataModuleF.Bonv_retTable.FieldValues['code_cmpt']<>null)  then
   begin
-  CompteBonRetGCbx.Text:=DataModuleF.Bonv_retTable.FieldValues['Compte'];
+  CompteBonRetVGCbx.Text:=DataModuleF.Bonv_retTable.FieldValues['Compte'];
   end;
 
   if  (DataModuleF.Bonv_retTable.FieldValues['MontantRes']<>null)  then
@@ -2691,7 +2691,7 @@ begin
   BonRetResteLbl.Caption:=CurrToStrF(((DataModuleF.Bonv_retTable.FieldValues['MontantRes'])),ffNumber,2) ;
   end;
 
-  NumBonRetGEdt.Caption:= DataModuleF.Bonv_retTable.FieldByName('num_bvret').AsString;
+  NumBonRetVGEdt.Caption:= DataModuleF.Bonv_retTable.FieldByName('num_bvret').AsString;
 
    if DataModuleF.Bonv_ret_listTable.ControlsDisabled  then
    begin
@@ -2700,7 +2700,7 @@ begin
 
 end;
 
-procedure TBonRetGestionF.sSpeedButton9Click(Sender: TObject);
+procedure TBonRetVGestionF.sSpeedButton9Click(Sender: TObject);
 begin
 DataModuleF.Bonv_retTable.Prior;
 DataModuleF.Bonv_retTable.Refresh;
@@ -2708,25 +2708,25 @@ DataModuleF.Bonv_ret_listTable.Refresh;
 
 if DataModuleF.Bonv_retTable.FieldValues['valider_bvret'] = True then
 begin
-     FSplashVersement.DisableBonRet;
+     FSplashVersement.DisableBonRetV;
 end;
 if DataModuleF.Bonv_retTable.FieldValues['valider_bvret'] = False then
  begin
-   EnableBonRet;
+   EnableBonRetV;
   end;
 
 
 if (DataModuleF.Bonv_retTable.FieldValues['code_c']<> 0) AND (DataModuleF.Bonv_retTable.FieldValues['code_c']<> null) then
 begin
-ClientBonRetGCbx.Text:=DataModuleF.Bonv_retTable.FieldValues['clientbvret'];
+ClientBonRetVGCbx.Text:=DataModuleF.Bonv_retTable.FieldValues['clientbvret'];
 end;
 if (DataModuleF.Bonv_retTable.FieldValues['code_mdpai']<> 0) AND (DataModuleF.Bonv_retTable.FieldValues['code_mdpai']<>null)  then
 begin
-ModePaieBonRetGCbx.Text:=DataModuleF.Bonv_retTable.FieldValues['ModePaie'];
+ModePaieBonRetVGCbx.Text:=DataModuleF.Bonv_retTable.FieldValues['ModePaie'];
 end;
 if (DataModuleF.Bonv_retTable.FieldValues['code_cmpt']<> 0) AND (DataModuleF.Bonv_retTable.FieldValues['code_cmpt']<>null)  then
 begin
-CompteBonRetGCbx.Text:=DataModuleF.Bonv_retTable.FieldValues['Compte'];
+CompteBonRetVGCbx.Text:=DataModuleF.Bonv_retTable.FieldValues['Compte'];
 end;
 
 if  (DataModuleF.Bonv_retTable.FieldValues['MontantRes']<>null)  then
@@ -2734,7 +2734,7 @@ begin
 BonRetResteLbl.Caption:=CurrToStrF(((DataModuleF.Bonv_retTable.FieldValues['MontantRes'])),ffNumber,2) ;
 end;
 
- NumBonRetGEdt.Caption:= DataModuleF.Bonv_retTable.FieldByName('num_bvret').AsString;
+ NumBonRetVGEdt.Caption:= DataModuleF.Bonv_retTable.FieldByName('num_bvret').AsString;
 
     if DataModuleF.Bonv_ret_listTable.ControlsDisabled  then
    begin
@@ -2742,7 +2742,7 @@ end;
    end;
 end;
 
-procedure TBonRetGestionF.sSpeedButton8Click(Sender: TObject);
+procedure TBonRetVGestionF.sSpeedButton8Click(Sender: TObject);
 begin
 DataModuleF.Bonv_retTable.Next;
 DataModuleF.Bonv_retTable.Refresh;
@@ -2750,24 +2750,24 @@ DataModuleF.Bonv_ret_listTable.Refresh;
 
 if DataModuleF.Bonv_retTable.FieldValues['valider_bvret'] = True then
 begin
-     FSplashVersement.DisableBonRet;
+     FSplashVersement.DisableBonRetV;
 end;
 if DataModuleF.Bonv_retTable.FieldValues['valider_bvret'] = False then
  begin
-   EnableBonRet;
+   EnableBonRetV;
   end;
 
 if (DataModuleF.Bonv_retTable.FieldValues['code_c']<> 0) AND (DataModuleF.Bonv_retTable.FieldValues['code_c']<> null) then
 begin
-ClientBonRetGCbx.Text:=DataModuleF.Bonv_retTable.FieldValues['clientbvret'];
+ClientBonRetVGCbx.Text:=DataModuleF.Bonv_retTable.FieldValues['clientbvret'];
 end;
 if (DataModuleF.Bonv_retTable.FieldValues['code_mdpai']<> 0) AND (DataModuleF.Bonv_retTable.FieldValues['code_mdpai']<>null)  then
 begin
-ModePaieBonRetGCbx.Text:=DataModuleF.Bonv_retTable.FieldValues['ModePaie'];
+ModePaieBonRetVGCbx.Text:=DataModuleF.Bonv_retTable.FieldValues['ModePaie'];
 end;
 if (DataModuleF.Bonv_retTable.FieldValues['code_cmpt']<> 0) AND (DataModuleF.Bonv_retTable.FieldValues['code_cmpt']<>null)  then
 begin
-CompteBonRetGCbx.Text:=DataModuleF.Bonv_retTable.FieldValues['Compte'];
+CompteBonRetVGCbx.Text:=DataModuleF.Bonv_retTable.FieldValues['Compte'];
 end;
 
 if  (DataModuleF.Bonv_retTable.FieldValues['MontantRes']<>null)  then
@@ -2775,7 +2775,7 @@ begin
 BonRetResteLbl.Caption:=CurrToStrF(((DataModuleF.Bonv_retTable.FieldValues['MontantRes'])),ffNumber,2) ;
 end;
 
- NumBonRetGEdt.Caption:= DataModuleF.Bonv_retTable.FieldByName('num_bvret').AsString;
+ NumBonRetVGEdt.Caption:= DataModuleF.Bonv_retTable.FieldByName('num_bvret').AsString;
 
     if DataModuleF.Bonv_ret_listTable.ControlsDisabled  then
    begin
@@ -2783,7 +2783,7 @@ end;
    end;
 end;
 
-procedure TBonRetGestionF.sSpeedButton7Click(Sender: TObject);
+procedure TBonRetVGestionF.sSpeedButton7Click(Sender: TObject);
 begin
 DataModuleF.Bonv_retTable.Last;
 DataModuleF.Bonv_retTable.Refresh;
@@ -2791,24 +2791,24 @@ DataModuleF.Bonv_ret_listTable.Refresh;
 
 if DataModuleF.Bonv_retTable.FieldValues['valider_bvret'] = True then
 begin
-     FSplashVersement.DisableBonRet;
+     FSplashVersement.DisableBonRetV;
 end;
 if DataModuleF.Bonv_retTable.FieldValues['valider_bvret'] = False then
  begin
-   EnableBonRet;
+   EnableBonRetV;
   end;
 
 if (DataModuleF.Bonv_retTable.FieldValues['code_c']<> 0) AND (DataModuleF.Bonv_retTable.FieldValues['code_c']<> null) then
 begin
-ClientBonRetGCbx.Text:=DataModuleF.Bonv_retTable.FieldValues['clientbvret'];
+ClientBonRetVGCbx.Text:=DataModuleF.Bonv_retTable.FieldValues['clientbvret'];
 end;
 if (DataModuleF.Bonv_retTable.FieldValues['code_mdpai']<> 0) AND (DataModuleF.Bonv_retTable.FieldValues['code_mdpai']<>null)  then
 begin
-ModePaieBonRetGCbx.Text:=DataModuleF.Bonv_retTable.FieldValues['ModePaie'];
+ModePaieBonRetVGCbx.Text:=DataModuleF.Bonv_retTable.FieldValues['ModePaie'];
 end;
 if (DataModuleF.Bonv_retTable.FieldValues['code_cmpt']<> 0) AND (DataModuleF.Bonv_retTable.FieldValues['code_cmpt']<>null)  then
 begin
-CompteBonRetGCbx.Text:=DataModuleF.Bonv_retTable.FieldValues['Compte'];
+CompteBonRetVGCbx.Text:=DataModuleF.Bonv_retTable.FieldValues['Compte'];
 end;
 
 if  (DataModuleF.Bonv_retTable.FieldValues['MontantRes']<>null)  then
@@ -2816,7 +2816,7 @@ begin
 BonRetResteLbl.Caption:=CurrToStrF(((DataModuleF.Bonv_retTable.FieldValues['MontantRes'])),ffNumber,2) ;
 end;
 
- NumBonRetGEdt.Caption:= DataModuleF.Bonv_retTable.FieldByName('num_bvret').AsString;
+ NumBonRetVGEdt.Caption:= DataModuleF.Bonv_retTable.FieldByName('num_bvret').AsString;
 
     if DataModuleF.Bonv_ret_listTable.ControlsDisabled  then
    begin
@@ -2824,39 +2824,39 @@ end;
    end;
 end;
 
-procedure TBonRetGestionF.ClientBonRetGCbxChange(Sender: TObject);
+procedure TBonRetVGestionF.ClientBonRetVGCbxChange(Sender: TObject);
 begin
 // use this code to make mode pai espece
-      ModePaieBonRetGCbxDropDown(Self);
+      ModePaieBonRetVGCbxDropDown(Self);
       if Tag = 0 then
       begin
-      ModePaieBonRetGCbx.ItemIndex:=0;
-      ModePaieBonRetGCbxClick(Self) ;
+      ModePaieBonRetVGCbx.ItemIndex:=0;
+      ModePaieBonRetVGCbxClick(Self) ;
       end;
 end;
 
 
 
 
-procedure TBonRetGestionF.RemisePerctageBonRetGEdtEnter(Sender: TObject);
+procedure TBonRetVGestionF.RemisePerctageBonRetVGEdtEnter(Sender: TObject);
 begin
 DataModuleF.Bonv_ret_listTable.Refresh;
- RemisePerctageBonRetGEdtChange(Sender);
+ RemisePerctageBonRetVGEdtChange(Sender);
 end;
 
-procedure TBonRetGestionF.RemiseBonRetGEdtEnter(Sender: TObject);
+procedure TBonRetVGestionF.RemiseBonRetVGEdtEnter(Sender: TObject);
 begin
 DataModuleF.Bonv_ret_listTable.Refresh;
- RemisePerctageBonRetGEdtChange(Sender);
+ RemisePerctageBonRetVGEdtChange(Sender);
 end;
 
-procedure TBonRetGestionF.ProduitsListDBGridEhExit(Sender: TObject);
+procedure TBonRetVGestionF.ProduitsListDBGridEhExit(Sender: TObject);
 var key : Char;
 begin
 Refresh_PreservePosition;
 end;
 
-procedure TBonRetGestionF.ProduitsListDBGridEhKeyDown(Sender: TObject;
+procedure TBonRetVGestionF.ProduitsListDBGridEhKeyDown(Sender: TObject;
   var Key: Word; Shift: TShiftState);
 begin
   //Use this trick tp pervent wierd error show up (erro happen when cursor on last row and hit down)
@@ -2868,7 +2868,7 @@ begin
   end;
 end;
 
-procedure TBonRetGestionF.ProduitsListDBGridEhKeyPress(Sender: TObject;
+procedure TBonRetVGestionF.ProduitsListDBGridEhKeyPress(Sender: TObject;
   var Key: Char);
 begin
 
@@ -2898,7 +2898,7 @@ begin
 
 end;
 
-procedure TBonRetGestionF.FormCreate(Sender: TObject);
+procedure TBonRetVGestionF.FormCreate(Sender: TObject);
 begin
      if FileExists(GetCurrentDir +'\bin\gc_br') then
    begin
@@ -2918,7 +2918,7 @@ end;
 
 
 
-procedure TBonRetGestionF.FormKeyPress(Sender: TObject; var Key: Char);
+procedure TBonRetVGestionF.FormKeyPress(Sender: TObject; var Key: Char);
 begin
      if key = #27 then
  begin
@@ -2929,7 +2929,7 @@ begin
  end;
 end;
 
-procedure TBonRetGestionF.GettingDataSansTax;
+procedure TBonRetVGestionF.GettingDataSansTax;
  var
   MoneyWordRX,NumRX,DateRX,NameRX,AdrRX,VilleRX,WilayaRX,MPRX,NCHeqRX,NEWCredit,OLDCredit  : TfrxMemoView;
   str1 : string;
@@ -2988,40 +2988,40 @@ begin
     MoneyWordRX.Text :=str1;// StringReplace(ObserBonLivGLbl.Caption, '%my_str%', 'new string', [rfReplaceAll]);
 
     NumRX:= BonRetPListSanTAXfrxRprt.FindObject('NumRX') as TfrxMemoView;
-    NumRX.Text:= NumBonRetGEdt.Caption;
+    NumRX.Text:= NumBonRetVGEdt.Caption;
 
     DateRX:= BonRetPListSanTAXfrxRprt.FindObject('DateRX') as TfrxMemoView;
-    DateRX.Text:= DateToStr(DateBonRetGD.Date);
+    DateRX.Text:= DateToStr(DateBonRetVGD.Date);
 
     NameRX:= BonRetPListSanTAXfrxRprt.FindObject('NameRX') as TfrxMemoView;
-    NameRX.Text:= ClientBonRetGCbx.Text;
+    NameRX.Text:= ClientBonRetVGCbx.Text;
 
     MainForm.SQLQuery.Active:=False;
     MainForm.SQLQuery.SQL.Clear;
-    MainForm.SQLQuery.SQL.Text:='SELECT code_c,adr_f,ville_f,willaya_f ,rc_f,nart_f,nif_f,nis_f FROM client WHERE code_c ='
+    MainForm.SQLQuery.SQL.Text:='SELECT code_c,adr_c,ville_v,willaya_c ,rc_c,nart_c,nif_c,nis_c FROM client WHERE code_c ='
     + IntToStr(DataModuleF.Bonv_retTable.FieldByName('code_c').AsInteger);
     MainForm.SQLQuery.Active:=True;
 
     with MainForm.SQLQuery do
     begin
       AdrRX:= BonRetPListSanTAXfrxRprt.FindObject('AdrRX') as TfrxMemoView;
-      AdrRX.Text:= FieldByName('adr_f').AsString;
+      AdrRX.Text:= FieldByName('adr_c').AsString;
 
       VilleRX:= BonRetPListSanTAXfrxRprt.FindObject('VilleRX') as TfrxMemoView;
-      VilleRX.Text:= FieldByName('ville_f').AsString;
+      VilleRX.Text:= FieldByName('ville_v').AsString;
 
       WilayaRX:= BonRetPListSanTAXfrxRprt.FindObject('WilayaRX') as TfrxMemoView;
-      WilayaRX.Text:=  FieldByName('willaya_f').AsString;
+      WilayaRX.Text:=  FieldByName('willaya_c').AsString;
     end;
 
     MainForm.SQLQuery.Active:=False;
     MainForm.SQLQuery.SQL.Clear;
 
     MPRX:= BonRetPListSanTAXfrxRprt.FindObject('MPRX') as TfrxMemoView;
-    MPRX.Text:= ModePaieBonRetGCbx.Text;
+    MPRX.Text:= ModePaieBonRetVGCbx.Text;
 
     NCHeqRX:= BonRetPListSanTAXfrxRprt.FindObject('NCHeqRX') as TfrxMemoView;
-    NCHeqRX.Text:= NChequeBonRetGCbx.Text;
+    NCHeqRX.Text:= NChequeBonRetVGCbx.Text;
 
     OLDCredit:= BonRetPListSanTAXfrxRprt.FindObject('OLDCredit') as TfrxMemoView;
     OLDCredit.Text:= BonRetGClientOLDCredit.Caption;
@@ -3032,7 +3032,7 @@ begin
 
  end;
 
-procedure TBonRetGestionF.GettingData;
+procedure TBonRetVGestionF.GettingData;
  var
   MoneyWordRX,NumRX,DateRX,NameRX,AdrRX,VilleRX,WilayaRX,MPRX,NCHeqRX,NEWCredit,OLDCredit  : TfrxMemoView;
   str1 : string;
@@ -3091,40 +3091,40 @@ begin
   MoneyWordRX.Text :=str1;// StringReplace(ObserBonLivGLbl.Caption, '%my_str%', 'new string', [rfReplaceAll]);
 
   NumRX:= BonRetPListfrxRprt.FindObject('NumRX') as TfrxMemoView;
-  NumRX.Text:= NumBonRetGEdt.Caption;
+  NumRX.Text:= NumBonRetVGEdt.Caption;
 
   DateRX:= BonRetPListfrxRprt.FindObject('DateRX') as TfrxMemoView;
-  DateRX.Text:= DateToStr(DateBonRetGD.Date);
+  DateRX.Text:= DateToStr(DateBonRetVGD.Date);
 
   NameRX:= BonRetPListfrxRprt.FindObject('NameRX') as TfrxMemoView;
-  NameRX.Text:= ClientBonRetGCbx.Text;
+  NameRX.Text:= ClientBonRetVGCbx.Text;
 
     MainForm.SQLQuery.Active:=False;
     MainForm.SQLQuery.SQL.Clear;
-    MainForm.SQLQuery.SQL.Text:='SELECT code_c,adr_f,ville_f,willaya_f ,rc_f,nart_f,nif_f,nis_f FROM client WHERE code_c ='
+    MainForm.SQLQuery.SQL.Text:='SELECT code_c,adr_c,ville_v,willaya_c ,rc_c,nart_c,nif_c,nis_c FROM client WHERE code_c ='
     + IntToStr(DataModuleF.Bonv_retTable.FieldByName('code_c').AsInteger);
     MainForm.SQLQuery.Active:=True;
 
     with MainForm.SQLQuery do
     begin
       AdrRX:= BonRetPListfrxRprt.FindObject('AdrRX') as TfrxMemoView;
-      AdrRX.Text:= FieldByName('adr_f').AsString;
+      AdrRX.Text:= FieldByName('adr_c').AsString;
 
       VilleRX:= BonRetPListfrxRprt.FindObject('VilleRX') as TfrxMemoView;
-      VilleRX.Text:= FieldByName('ville_f').AsString;
+      VilleRX.Text:= FieldByName('ville_v').AsString;
 
       WilayaRX:= BonRetPListfrxRprt.FindObject('WilayaRX') as TfrxMemoView;
-      WilayaRX.Text:=  FieldByName('willaya_f').AsString;
+      WilayaRX.Text:=  FieldByName('willaya_c').AsString;
     end;
 
     MainForm.SQLQuery.Active:=False;
     MainForm.SQLQuery.SQL.Clear;
 
     MPRX:= BonRetPListfrxRprt.FindObject('MPRX') as TfrxMemoView;
-  MPRX.Text:= ModePaieBonRetGCbx.Text;
+  MPRX.Text:= ModePaieBonRetVGCbx.Text;
 
     NCHeqRX:= BonRetPListfrxRprt.FindObject('NCHeqRX') as TfrxMemoView;
-  NCHeqRX.Text:= NChequeBonRetGCbx.Text;
+  NCHeqRX.Text:= NChequeBonRetVGCbx.Text;
 
 
         OLDCredit:= BonRetPListfrxRprt.FindObject('OLDCredit') as TfrxMemoView;
@@ -3137,7 +3137,7 @@ begin
  end;
 
 
-procedure TBonRetGestionF.sSpeedButton4Click(Sender: TObject);
+procedure TBonRetVGestionF.sSpeedButton4Click(Sender: TObject);
 begin
    GettingData;
 DataModuleF.Bonv_ret_listTable.DisableControls;
@@ -3148,7 +3148,7 @@ BonRetPListfrxRprt.Export(frxXLSExport1);
 DataModuleF.Bonv_ret_listTable.EnableControls;
 end;
 
-procedure TBonRetGestionF.sSpeedButton6Click(Sender: TObject);
+procedure TBonRetVGestionF.sSpeedButton6Click(Sender: TObject);
 begin
  GettingData;
 DataModuleF.Bonv_ret_listTable.DisableControls;
@@ -3164,12 +3164,12 @@ BonRetPListfrxRprt.Export(frxPDFExport1);
 DataModuleF.Bonv_ret_listTable.EnableControls;
 end;
 
-procedure TBonRetGestionF.ProduitsListDBGridEhCellClick(Column: TColumnEh);
+procedure TBonRetVGestionF.ProduitsListDBGridEhCellClick(Column: TColumnEh);
 begin
 Refresh_PreservePosition;
 end;
 
-procedure TBonRetGestionF.ProduitsListDBGridEhDrawColumnCell(Sender: TObject;
+procedure TBonRetVGestionF.ProduitsListDBGridEhDrawColumnCell(Sender: TObject;
   const Rect: TRect; DataCol: Integer; Column: TColumnEh;
   State: TGridDrawState);
 begin

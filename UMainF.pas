@@ -589,7 +589,6 @@ type
     OuvertureduTiroirCaisse1: TMenuItem;
     Reconnectez1: TMenuItem;
     Bona_recPlistTablecode_barec: TIntegerField;
-    FDEventAlerter: TFDEventAlerter;
     FunctionsTriggesFDScript: TFDScript;
     ProduitTableprixattc: TCurrencyField;
     ProduitTableprixvttcd: TCurrencyField;
@@ -727,6 +726,9 @@ type
     Bonp_fac_listTablelocalisation: TWideStringField;
     Bonv_liv_listTablelocalisation: TWideStringField;
     BRVMainFMmn: TMenuItem;
+    Bona_recPlistTableCalcPMP: TCurrencyField;
+    ProduitTablepmp_p: TCurrencyField;
+    FDEventAlerter: TFDEventAlerter;
     procedure ClientMainFBtnClick(Sender: TObject);
     procedure FourMainFBtnClick(Sender: TObject);
     procedure ProduitMainFBtnClick(Sender: TObject);
@@ -836,8 +838,6 @@ type
     procedure Reconnectez1Click(Sender: TObject);
     procedure GstockdcConnectionError(ASender, AInitiator: TObject;
       var AException: Exception);
-    procedure FDEventAlerterAlert(ASender: TFDCustomEventAlerter;
-      const AEventName: string; const AArgument: Variant);
     procedure Bonv_liv_listTablequt_pChange(Sender: TField);
     procedure Bonv_liv_listTableprixvd_pChange(Sender: TField);
     procedure Bonv_liv_listTablecond_pChange(Sender: TField);
@@ -876,6 +876,8 @@ type
     procedure B2Click(Sender: TObject);
     procedure B4Click(Sender: TObject);
     procedure BRVMainFMmnClick(Sender: TObject);
+    procedure FDEventAlerterAlert(ASender: TFDCustomEventAlerter;
+      const AEventName: string; const AArgument: Variant);
   private
    //---- this to value of changege we need it to check if theuser changed something
      CountInsert,CountUpdate,CountDelete   : Int64;
@@ -1306,6 +1308,22 @@ end;
 
 procedure TMainForm.Bona_recPlistTableCalcFields(DataSet: TDataSet);
 begin
+
+   Sqlquery3.Active:=False;
+   Sqlquery3.Sql.Clear;
+   Sqlquery3.Sql.Text:='SELECT prixht_p, qut_p ,qutini_p from produit WHERE code_p =' + IntToStr (Bona_recPlistTable.FieldByName('code_p').AsInteger) ;
+   Sqlquery3.Active:=True;
+
+  Bona_recPlistTable.FieldValues['CalcPMP']:=
+  ((Sqlquery3.FieldValues['prixht_p'] * (Sqlquery3.FieldValues['qut_p'] + Sqlquery3.FieldValues['qutini_p']))
+  +(Bona_recPlistTable.FieldValues['prixht_p'] * Bona_recPlistTable.FieldValues['qut_p']))
+  / (Sqlquery3.FieldValues['qut_p'] + Sqlquery3.FieldValues['qutini_p'] + Bona_recPlistTable.FieldValues['qut_p']);
+
+  Sqlquery3.Active:=False;
+   Sqlquery3.Sql.Clear;
+
+
+
   //  Bona_recPlistTable.FieldValues['PrixATTC']:=
   // (((Bona_recPlistTable.FieldValues['prixht_p'] * Bona_r ecPlistTable.FieldValues['tva_p'])/100) + (Bona_recPlistTable.FieldValues['prixht_p'])) ;
   //
@@ -3354,8 +3372,8 @@ begin
      if SQLQuery.FieldByName('ntable').AsInteger <> 36 then
      begin
 
-      CreateTablesFDScript.ExecuteAll;                                 // Eable this is only for releasing
-      InsertDataFDScript.ExecuteAll;                                   // Eable this is only for releasing
+//      CreateTablesFDScript.ExecuteAll;                                 // Eable this is only for releasing
+//      InsertDataFDScript.ExecuteAll;                                   // Eable this is only for releasing
       FunctionsTriggesFDScript.ExecuteAll;                                   // Eable this is only for releasing
 
      end;
@@ -4880,7 +4898,6 @@ end;
 procedure TMainForm.FDEventAlerterAlert(ASender: TFDCustomEventAlerter;
   const AEventName: string; const AArgument: Variant);
 begin
-
   if AEventName = 'c_produit' then
   begin
     ProduitTable.Refresh;
@@ -4901,7 +4918,7 @@ begin
     DataModuleF.ChargesTable.Refresh;
   end;
 
-   
+
   if AEventName = 'c_pertes' then
   begin
     DataModuleF.PertesTable.Refresh;
@@ -4923,7 +4940,7 @@ begin
     Opt_cas_bnk_BankTable.Refresh;
   end;
 
-  
+
   if AEventName = 'c_transfer_comptes' then
   begin
     DataModuleF.Transfer_comptesTable.Refresh;
@@ -4944,7 +4961,7 @@ begin
     Bona_facTable.Refresh;
   end;
 
-  
+
   if AEventName = 'c_bona_fac_list' then
   begin
     Bona_fac_listTable.Refresh;
@@ -4965,7 +4982,7 @@ begin
     Bonv_livTable.Refresh;
   end;
 
-  
+
   if AEventName = 'c_bonv_liv_list' then
   begin
     Bonv_liv_listTable.Refresh;
@@ -4986,13 +5003,11 @@ begin
     Bonv_ctrTable.Refresh;
   end;
 
-  
+
   if AEventName = 'c_bonv_ctr_list' then
   begin
     Bonv_ctr_listTable.Refresh;
   end;
-
-  
 end;
 
 procedure TMainForm.BRFaceBtnClick(Sender: TObject);

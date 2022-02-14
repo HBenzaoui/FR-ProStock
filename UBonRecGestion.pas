@@ -230,8 +230,8 @@ type
   public
     { Public declarations }
 
-    const BRLSQL = 
-      ' SELECT BRL.code_barec,BRL.code_barecl,BRL.qut_p,BRL.cond_p,BRL.code_p,BRL.tva_p,BRL.prixht_p,P.nom_p as nomp, P.refer_p as referp,  '
+    const BRLSQL =
+      ' SELECT BRL.code_barec,BRL.code_barecl,BRL.qut_p,BRL.cond_p,BRL.code_p,BRL.tva_p,BRL.prixht_p,P.pmp_p,P.nom_p as nomp, P.refer_p as referp,  '
       +' BRL.prixvd_p,BRL.prixvr_p,BRL.prixvg_p,BRL.prixva_p,BRL.prixva2_p,BRL.dateperiss_p,BRL.qutinstock_p,L.nom_l AS Localisation, '
       +'   (((BRL.prixht_p * BRL.tva_p)/100)+BRL.prixht_p) AS PrixATTC, '
       +'   ((BRL.prixht_p * BRL.qut_p) * cond_p) AS MontantHT, '
@@ -278,7 +278,7 @@ type
       +'  ON BRL.code_p = P.code_p '
       +' LEFT JOIN localisation as L '
       +'  ON P.code_l = L.code_l ';
-    
+
     procedure EnableBonRec;
   end;
 
@@ -539,9 +539,9 @@ begin
              MainForm.Bona_recPlistTable.FieldByName('prixva_p').AsCurrency:=  MainForm.SQLQuery.FieldByName('prixva_p').AsCurrency;
              MainForm.Bona_recPlistTable.FieldByName('prixva2_p').AsCurrency:= MainForm.SQLQuery.FieldByName('prixva2_p').AsCurrency;
 
-             MainForm.Bona_recPlistTable.FieldValues['qutinstock_p']:= 
-             (MainForm.Bona_recPlistTable.FieldValues['qut_p'])*(MainForm.Bona_recPlistTable.FieldValues['cond_p']);     
-             
+             MainForm.Bona_recPlistTable.FieldValues['qutinstock_p']:=
+             (MainForm.Bona_recPlistTable.FieldValues['qut_p'])*(MainForm.Bona_recPlistTable.FieldValues['cond_p']);
+
              MainForm.Bona_recPlistTable.Post ;
              MainForm.Bona_recPlistTable.IndexFieldNames:='code_barec';
 
@@ -551,10 +551,10 @@ begin
             MainForm.Bona_recPlistTable.Active:=True;
 
             ProduitBonRecGCbx.Text:='';
-            ProduitsListDBGridEh.SetFocus;
-
-           ProduitsListDBGridEh.SelectedIndex:=2;
-           ProduitsListDBGridEh.EditorMode:=True;
+//            ProduitsListDBGridEh.SetFocus;
+//
+//           ProduitsListDBGridEh.SelectedIndex:=2;
+//           ProduitsListDBGridEh.EditorMode:=True;
 
            MainForm.Bona_recPlistTable.EnableControls;
            MainForm.Bona_recPlistTable.Last;
@@ -647,7 +647,7 @@ begin
                  begin
                    ProduitsListDBGridEh.Columns[4].Visible := True
                  end;
-                                
+
              MainForm.Bona_recPlistTable.Insert;
              MainForm.Bona_recPlistTable.FieldValues['code_barecl']:= CodeBR ;
              MainForm.Bona_recPlistTable.FieldValues['code_barec']:= MainForm.Bona_recTable.FieldValues['code_barec'];
@@ -662,8 +662,8 @@ begin
              MainForm.Bona_recPlistTable.FieldByName('prixva_p').AsCurrency:=  MainForm.SQLQuery.FieldByName('prixva_p').AsCurrency;
              MainForm.Bona_recPlistTable.FieldByName('prixva2_p').AsCurrency:= MainForm.SQLQuery.FieldByName('prixva2_p').AsCurrency;
 
-              MainForm.Bona_recPlistTable.FieldValues['qutinstock_p']:= 
-             (MainForm.Bona_recPlistTable.FieldValues['qut_p'])*(MainForm.Bona_recPlistTable.FieldValues['cond_p']);     
+              MainForm.Bona_recPlistTable.FieldValues['qutinstock_p']:=
+             (MainForm.Bona_recPlistTable.FieldValues['qut_p'])*(MainForm.Bona_recPlistTable.FieldValues['cond_p']);
 
              MainForm.Bona_recPlistTable.Post ;
              MainForm.Bona_recPlistTable.IndexFieldNames:='code_barec';
@@ -675,10 +675,10 @@ begin
             MainForm.Bona_recPlistTable.EnableControls;
 
             ProduitBonRecGCbx.Text:='';
-            ProduitsListDBGridEh.SetFocus;
-
-           ProduitsListDBGridEh.SelectedIndex:=2;
-           ProduitsListDBGridEh.EditorMode:=True;
+//            ProduitsListDBGridEh.SetFocus;
+//
+//           ProduitsListDBGridEh.SelectedIndex:=2;
+//           ProduitsListDBGridEh.EditorMode:=True;
 
            MainForm.Bona_recPlistTable.EnableControls;
             MainForm.Bona_recPlistTable.Last;
@@ -774,11 +774,11 @@ begin
                 MainForm.Bona_recPlistTable.Last;
                 CodeBR:= MainForm.Bona_recPlistTable.FieldValues['code_barecl'] + 1 ;
                end;
-               
+
                  if MainForm.SQLQuery.FieldByName('perissable_p').AsBoolean = True then
                  begin
                    ProduitsListDBGridEh.Columns[4].Visible := True
-                 end;               
+                 end;
 
              MainForm.Bona_recPlistTable.Last;
              MainForm.Bona_recPlistTable.Append;
@@ -795,9 +795,9 @@ begin
              MainForm.Bona_recPlistTable.FieldByName('prixva_p').AsCurrency:=  MainForm.SQLQuery.FieldByName('prixva_p').AsCurrency;
              MainForm.Bona_recPlistTable.FieldByName('prixva2_p').AsCurrency:= MainForm.SQLQuery.FieldByName('prixva2_p').AsCurrency;
 
-             MainForm.Bona_recPlistTable.FieldValues['qutinstock_p']:= 
-             (MainForm.Bona_recPlistTable.FieldValues['qut_p'])*(MainForm.Bona_recPlistTable.FieldValues['cond_p']);             
-             
+             MainForm.Bona_recPlistTable.FieldValues['qutinstock_p']:=
+             (MainForm.Bona_recPlistTable.FieldValues['qut_p'])*(MainForm.Bona_recPlistTable.FieldValues['cond_p']);
+
              MainForm.Bona_recPlistTable.Post ;
              MainForm.Bona_recPlistTable.IndexFieldNames:='code_barec';
 
@@ -808,10 +808,10 @@ begin
              MainForm.Bona_recPlistTable.EnableControls;
 
             ProduitBonRecGCbx.Text:='';
-            ProduitsListDBGridEh.SetFocus;
-
-           ProduitsListDBGridEh.SelectedIndex:=2;
-           ProduitsListDBGridEh.EditorMode:=True;
+//            ProduitsListDBGridEh.SetFocus;
+//
+//           ProduitsListDBGridEh.SelectedIndex:=2;
+//           ProduitsListDBGridEh.EditorMode:=True;
 
            MainForm.Bona_recPlistTable.EnableControls;
             MainForm.Bona_recPlistTable.Last;
@@ -1167,7 +1167,7 @@ begin
 //              MainForm.SQLQuery.Active:=True;
 //              MainForm.SQLQuery.EnableControls;
            end;
-           
+
     end else
     begin
      BonRecGFourOLDCredit.Caption:= FloatToStrF(0,ffNumber,14,2) ;
@@ -1266,7 +1266,7 @@ begin
     Handled := true;
   end;
 
-   if  (GetKeyState(VK_F9) < 0)  then
+   if  (GetKeyState(VK_F9) < 0) AND (ValiderBARecBonRecGBtn.Enabled = True)  then
   begin
 
       ValiderBARecBonRecGBtnClick(Screen);
@@ -1275,7 +1275,7 @@ begin
   end;
 
      //--- this is for new produit--------------------------
-     if  (GetKeyState(VK_F11) < 0)  then
+     if  (GetKeyState(VK_F11) < 0) AND (NewAddProduitBonRecGBtn.Enabled = True) then
   begin
 
       NewAddProduitBonRecGBtnClick(Screen);
@@ -1347,7 +1347,7 @@ begin
   begin
     FastProduitsListF.ProduitsListDBGridEh.Columns[I].Visible:= False;
   end;
-    
+
   //Change the dataSet
   FastProduitsListF.ProduitListDataS.DataSet:= MainForm.FDQuery2;
   FastProduitsListF.ProduitsListDBGridEh.Columns[0].FieldName:='code_f';
@@ -1384,8 +1384,8 @@ begin
   FastProduitsListF.ProduitsListDBGridEh.Columns[5].Title.Caption:='Crédit';
   FastProduitsListF.ProduitsListDBGridEh.Columns[5].Visible:= True;
   FastProduitsListF.ProduitsListDBGridEh.Columns[5].Width:= 130;;
-  
-  
+
+
   FastProduitsListF.ProduitsListDBGridEh.Refresh;
 
 //-------- Show the splash screan for the produit familly to add new one---------//
@@ -1797,7 +1797,7 @@ begin
     ValiderBARecBonRecGBtn.Enabled:= True;
     ValiderBARecBonRecGBtn.ImageIndex:=12;
     end;
-    
+
    if MainForm.Bona_recTable.FieldValues['valider_barec'] <> True then
    begin
 
@@ -2319,7 +2319,7 @@ begin
             RemiseBonRecGEdt.Text:='';
             BonRRemiseHTNewLbl.Caption:='0';
             BonRTotalHTNewLbl.Caption:=BonRecTotalHTLbl.Caption;
-            
+
             if BonRecGFourOLDCredit.Caption <>'' then
             begin
             OldFourCredit:=StrToFloat (StringReplace(BonRecGFourOLDCredit.Caption , #32, '', [rfReplaceAll]));

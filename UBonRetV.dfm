@@ -1,7 +1,7 @@
 object BonRetVF: TBonRetVF
   Left = 2219
   Top = 177
-  Caption = 'Bon de R'#233'ception'
+  Caption = 'Bon de Retour Client'
   ClientHeight = 741
   ClientWidth = 951
   Color = clBtnFace
@@ -325,7 +325,7 @@ object BonRetVF: TBonRetVF
     741)
   PixelsPerInch = 96
   TextHeight = 13
-  object BARecListDBGridEh: TDBGridEh
+  object BVRetListDBGridEh: TDBGridEh
     Left = 0
     Top = 71
     Width = 951
@@ -340,7 +340,7 @@ object BonRetVF: TBonRetVF
     ColumnDefValues.ToolTips = True
     Ctl3D = True
     DataGrouping.Active = True
-    DataSource = MainForm.BonRecListDataS
+    DataSource = DataModuleF.BonRetVListDataS
     DynProps = <>
     EvenRowColor = clWindow
     FixedColor = clWindow
@@ -390,12 +390,12 @@ object BonRetVF: TBonRetVF
     TitleParams.SortMarkerStyle = smstThemeDefinedEh
     TitleParams.VertLines = True
     VertScrollBar.Width = 15
-    OnDblClick = BARecListDBGridEhDblClick
-    OnDrawColumnCell = BARecListDBGridEhDrawColumnCell
-    OnKeyDown = BARecListDBGridEhKeyDown
-    OnKeyPress = BARecListDBGridEhKeyPress
-    OnSortMarkingChanged = BARecListDBGridEhSortMarkingChanged
-    OnTitleBtnClick = BARecListDBGridEhTitleBtnClick
+    OnDblClick = BVRetListDBGridEhDblClick
+    OnDrawColumnCell = BVRetListDBGridEhDrawColumnCell
+    OnKeyDown = BVRetListDBGridEhKeyDown
+    OnKeyPress = BVRetListDBGridEhKeyPress
+    OnSortMarkingChanged = BVRetListDBGridEhSortMarkingChanged
+    OnTitleBtnClick = BVRetListDBGridEhTitleBtnClick
     Columns = <
       item
         Alignment = taCenter
@@ -403,12 +403,17 @@ object BonRetVF: TBonRetVF
         Checkboxes = False
         DynProps = <>
         EditButtons = <>
-        FieldName = 'valider_barec'
+        FieldName = 'valider_bvret'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
         Font.Height = 16
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
+        Footer.Font.Charset = DEFAULT_CHARSET
+        Footer.Font.Color = 4207405
+        Footer.Font.Height = 16
+        Footer.Font.Name = 'Helvetica LT Std'
+        Footer.Font.Style = []
         Footers = <>
         ImageList = MainForm.GridIcons13
         KeyList.Strings = (
@@ -433,16 +438,21 @@ object BonRetVF: TBonRetVF
         CellButtons = <>
         DynProps = <>
         EditButtons = <>
-        FieldName = 'num_barec'
+        FieldName = 'num_bvret'
         Font.Charset = DEFAULT_CHARSET
-        Font.Color = 4207405
+        Font.Color = clBlack
         Font.Height = 16
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
+        Footer.Font.Charset = DEFAULT_CHARSET
+        Footer.Font.Color = 4207405
+        Footer.Font.Height = 16
+        Footer.Font.Name = 'Helvetica LT Std'
+        Footer.Font.Style = []
         Footers = <>
         Layout = tlCenter
         Title.Alignment = taCenter
-        Title.Caption = 'N'#176' du Bon'
+        Title.Caption = 'N'#176' du bon'
         Title.EndEllipsis = True
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = 4207405
@@ -457,15 +467,20 @@ object BonRetVF: TBonRetVF
       item
         Alignment = taCenter
         CellButtons = <>
-        DisplayFormat = 'DD/MM/YYY'
+        DisplayFormat = 'DD/MM/YYYY'
         DynProps = <>
         EditButtons = <>
-        FieldName = 'date_barec'
+        FieldName = 'date_bvret'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
         Font.Height = 16
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
+        Footer.Font.Charset = DEFAULT_CHARSET
+        Footer.Font.Color = 4207405
+        Footer.Font.Height = 16
+        Footer.Font.Name = 'Helvetica LT Std'
+        Footer.Font.Style = []
         Footers = <>
         Layout = tlCenter
         Title.Alignment = taCenter
@@ -487,12 +502,17 @@ object BonRetVF: TBonRetVF
         DisplayFormat = 'HH:MM:SS'
         DynProps = <>
         EditButtons = <>
-        FieldName = 'time_barec'
+        FieldName = 'time_bvret'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
         Font.Height = 16
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
+        Footer.Font.Charset = DEFAULT_CHARSET
+        Footer.Font.Color = 4207405
+        Footer.Font.Height = 16
+        Footer.Font.Name = 'Helvetica LT Std'
+        Footer.Font.Style = []
         Footers = <>
         Layout = tlCenter
         Title.Alignment = taCenter
@@ -512,27 +532,25 @@ object BonRetVF: TBonRetVF
         CellButtons = <>
         DynProps = <>
         EditButtons = <>
-        FieldName = 'fourbarec'
+        FieldName = 'clientbvret'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
         Font.Height = 16
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
-        Footers = <
-          item
-            Alignment = taRightJustify
-            Color = 15722984
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = 4207405
-            Font.Height = 18
-            Font.Name = 'Helvetica LT Std'
-            Font.Style = [fsBold]
-            Value = 'Total:'
-            ValueType = fvtStaticText
-          end>
+        Footer.Alignment = taRightJustify
+        Footer.Color = 15722984
+        Footer.Font.Charset = DEFAULT_CHARSET
+        Footer.Font.Color = 4207405
+        Footer.Font.Height = 18
+        Footer.Font.Name = 'Helvetica LT Std'
+        Footer.Font.Style = [fsBold]
+        Footer.Value = 'Total:'
+        Footer.ValueType = fvtStaticText
+        Footers = <>
         Layout = tlCenter
         Title.Alignment = taCenter
-        Title.Caption = 'Fournisseur'
+        Title.Caption = 'Client'
         Title.EndEllipsis = True
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = 4207405
@@ -555,10 +573,13 @@ object BonRetVF: TBonRetVF
         Font.Height = 16
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
-        Footers = <
-          item
-            Color = 15722984
-          end>
+        Footer.Color = 15722984
+        Footer.Font.Charset = DEFAULT_CHARSET
+        Footer.Font.Color = 4207405
+        Footer.Font.Height = 16
+        Footer.Font.Name = 'Helvetica LT Std'
+        Footer.Font.Style = []
+        Footers = <>
         ImageList = MainForm.GridIconsMP20
         KeyList.Strings = (
           '1'
@@ -583,28 +604,20 @@ object BonRetVF: TBonRetVF
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
-        FieldName = 'montht_barec'
+        FieldName = 'montht_bvret'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
         Font.Height = 16
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
+        Footer.Color = 15722984
         Footer.Font.Charset = DEFAULT_CHARSET
         Footer.Font.Color = 4207405
-        Footer.Font.Height = 16
+        Footer.Font.Height = 18
         Footer.Font.Name = 'Helvetica LT Std'
-        Footer.Font.Style = []
-        Footers = <
-          item
-            Color = 15722984
-            FieldName = 'montht_barec'
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = 4207405
-            Font.Height = 18
-            Font.Name = 'Helvetica LT Std'
-            Font.Style = [fsBold]
-            ValueType = fvtSum
-          end>
+        Footer.Font.Style = [fsBold]
+        Footer.ValueType = fvtSum
+        Footers = <>
         Layout = tlCenter
         MinWidth = 150
         Title.Alignment = taCenter
@@ -625,23 +638,20 @@ object BonRetVF: TBonRetVF
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
-        FieldName = 'remise_barec'
+        FieldName = 'remise_bvret'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
         Font.Height = 16
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
-        Footers = <
-          item
-            Color = 15722984
-            FieldName = 'remise_barec'
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = 4207405
-            Font.Height = 18
-            Font.Name = 'Helvetica LT Std'
-            Font.Style = [fsBold]
-            ValueType = fvtSum
-          end>
+        Footer.Color = 15722984
+        Footer.Font.Charset = DEFAULT_CHARSET
+        Footer.Font.Color = 4207405
+        Footer.Font.Height = 18
+        Footer.Font.Name = 'Helvetica LT Std'
+        Footer.Font.Style = [fsBold]
+        Footer.ValueType = fvtSum
+        Footers = <>
         Layout = tlCenter
         MinWidth = 150
         Title.Alignment = taCenter
@@ -668,17 +678,14 @@ object BonRetVF: TBonRetVF
         Font.Height = 16
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
-        Footers = <
-          item
-            Color = 15722984
-            FieldName = 'NeTHT'
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = 4207405
-            Font.Height = 18
-            Font.Name = 'Helvetica LT Std'
-            Font.Style = [fsBold]
-            ValueType = fvtSum
-          end>
+        Footer.Color = 15722984
+        Footer.Font.Charset = DEFAULT_CHARSET
+        Footer.Font.Color = 4207405
+        Footer.Font.Height = 18
+        Footer.Font.Name = 'Helvetica LT Std'
+        Footer.Font.Style = [fsBold]
+        Footer.ValueType = fvtSum
+        Footers = <>
         Layout = tlCenter
         MinWidth = 150
         Title.Alignment = taCenter
@@ -703,17 +710,14 @@ object BonRetVF: TBonRetVF
         Font.Height = 16
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
-        Footers = <
-          item
-            Color = 15722984
-            FieldName = 'MontantTVA'
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = 4207405
-            Font.Height = 18
-            Font.Name = 'Helvetica LT Std'
-            Font.Style = [fsBold]
-            ValueType = fvtSum
-          end>
+        Footer.Color = 15722984
+        Footer.Font.Charset = DEFAULT_CHARSET
+        Footer.Font.Color = 4207405
+        Footer.Font.Height = 18
+        Footer.Font.Name = 'Helvetica LT Std'
+        Footer.Font.Style = [fsBold]
+        Footer.ValueType = fvtSum
+        Footers = <>
         Layout = tlCenter
         MinWidth = 150
         Title.Alignment = taCenter
@@ -734,23 +738,20 @@ object BonRetVF: TBonRetVF
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
-        FieldName = 'montttc_barec'
+        FieldName = 'montttc_bvret'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
         Font.Height = 16
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
-        Footers = <
-          item
-            Color = 15722984
-            FieldName = 'montttc_barec'
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = 4207405
-            Font.Height = 18
-            Font.Name = 'Helvetica LT Std'
-            Font.Style = [fsBold]
-            ValueType = fvtSum
-          end>
+        Footer.Color = 15722984
+        Footer.Font.Charset = DEFAULT_CHARSET
+        Footer.Font.Color = 4207405
+        Footer.Font.Height = 18
+        Footer.Font.Name = 'Helvetica LT Std'
+        Footer.Font.Style = [fsBold]
+        Footer.ValueType = fvtSum
+        Footers = <>
         Layout = tlCenter
         Title.Alignment = taCenter
         Title.Caption = 'Montant TTC'
@@ -770,23 +771,20 @@ object BonRetVF: TBonRetVF
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
-        FieldName = 'montver_barec'
+        FieldName = 'montver_bvret'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
         Font.Height = 16
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
-        Footers = <
-          item
-            Color = 15722984
-            FieldName = 'montver_barec'
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = 4207405
-            Font.Height = 18
-            Font.Name = 'Helvetica LT Std'
-            Font.Style = [fsBold]
-            ValueType = fvtSum
-          end>
+        Footer.Color = 15722984
+        Footer.Font.Charset = DEFAULT_CHARSET
+        Footer.Font.Color = 4207405
+        Footer.Font.Height = 18
+        Footer.Font.Name = 'Helvetica LT Std'
+        Footer.Font.Style = [fsBold]
+        Footer.ValueType = fvtSum
+        Footers = <>
         Layout = tlCenter
         MinWidth = 150
         Title.Alignment = taCenter
@@ -813,17 +811,14 @@ object BonRetVF: TBonRetVF
         Font.Height = 16
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
-        Footers = <
-          item
-            Color = 15722984
-            FieldName = 'MontantRes'
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = 4207405
-            Font.Height = 18
-            Font.Name = 'Helvetica LT Std'
-            Font.Style = [fsBold]
-            ValueType = fvtSum
-          end>
+        Footer.Color = 15722984
+        Footer.Font.Charset = DEFAULT_CHARSET
+        Footer.Font.Color = 4207405
+        Footer.Font.Height = 18
+        Footer.Font.Name = 'Helvetica LT Std'
+        Footer.Font.Style = [fsBold]
+        Footer.ValueType = fvtSum
+        Footers = <>
         Layout = tlCenter
         MinWidth = 150
         Title.Alignment = taCenter
@@ -840,6 +835,71 @@ object BonRetVF: TBonRetVF
         WordWrap = False
       end
       item
+        CellButtons = <>
+        DisplayFormat = '#,##0.00'
+        DynProps = <>
+        EditButtons = <>
+        FieldName = 'montaht_bvret'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 16
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
+        Footer.Color = 15722984
+        Footer.Font.Charset = DEFAULT_CHARSET
+        Footer.Font.Color = 4207405
+        Footer.Font.Height = 18
+        Footer.Font.Name = 'Helvetica LT Std'
+        Footer.Font.Style = [fsBold]
+        Footer.ValueType = fvtSum
+        Footers = <>
+        Layout = tlCenter
+        MinWidth = 150
+        ReadOnly = True
+        Title.Alignment = taCenter
+        Title.Caption = 'Montant A HT'
+        Title.EndEllipsis = True
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = 4207405
+        Title.Font.Height = 16
+        Title.Font.Name = 'Helvetica LT Std'
+        Title.Font.Style = []
+        Title.Font.Quality = fqProof
+        Title.ToolTips = True
+        Width = 150
+      end
+      item
+        CellButtons = <>
+        DisplayFormat = '#,##0.00'
+        DynProps = <>
+        EditButtons = <>
+        FieldName = 'marge_bvret'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 16
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
+        Footer.Color = 15722984
+        Footer.Font.Charset = DEFAULT_CHARSET
+        Footer.Font.Color = 4207405
+        Footer.Font.Height = 18
+        Footer.Font.Name = 'Helvetica LT Std'
+        Footer.Font.Style = [fsBold]
+        Footer.ValueType = fvtSum
+        Footers = <>
+        Layout = tlCenter
+        Title.Alignment = taCenter
+        Title.Caption = 'Marge'
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = 4207405
+        Title.Font.Height = 16
+        Title.Font.Name = 'Helvetica LT Std'
+        Title.Font.Style = []
+        Title.Font.Quality = fqProof
+        Width = 150
+        WordWrap = False
+      end
+      item
         Alignment = taCenter
         CellButtons = <>
         DynProps = <>
@@ -850,6 +910,11 @@ object BonRetVF: TBonRetVF
         Font.Height = 16
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
+        Footer.Font.Charset = DEFAULT_CHARSET
+        Footer.Font.Color = 4207405
+        Footer.Font.Height = 16
+        Footer.Font.Name = 'Helvetica LT Std'
+        Footer.Font.Style = []
         Footers = <>
         Layout = tlCenter
         Title.Alignment = taCenter
@@ -881,7 +946,7 @@ object BonRetVF: TBonRetVF
     DesignSize = (
       951
       71)
-    object EditBARecBtn: TAdvToolButton
+    object EditBVRetBtn: TAdvToolButton
       Left = 733
       Top = 21
       Width = 100
@@ -909,11 +974,11 @@ object BonRetVF: TBonRetVF
       Shaded = False
       ShowHint = True
       Spacing = -1
-      OnClick = EditBARecBtnClick
+      OnClick = EditBVRetBtnClick
       Version = '1.6.2.0'
       TMSStyle = 0
     end
-    object DeleteBARecBtn: TAdvToolButton
+    object DeleteBVRetBtn: TAdvToolButton
       Left = 838
       Top = 21
       Width = 100
@@ -941,11 +1006,11 @@ object BonRetVF: TBonRetVF
       Shaded = False
       ShowHint = True
       Spacing = -2
-      OnClick = DeleteBARecBtnClick
+      OnClick = DeleteBVRetBtnClick
       Version = '1.6.2.0'
       TMSStyle = 0
     end
-    object AddBARecBtn: TAdvToolButton
+    object AddBVRetBtn: TAdvToolButton
       Left = 628
       Top = 21
       Width = 100
@@ -973,14 +1038,14 @@ object BonRetVF: TBonRetVF
       Shaded = False
       ShowHint = True
       Spacing = -1
-      OnClick = AddBARecBtnClick
+      OnClick = AddBVRetBtnClick
       Version = '1.6.2.0'
       TMSStyle = 0
     end
-    object ResearchBARecLbl: TLabel
+    object ResearchBVRetLbl: TLabel
       Left = 3
       Top = 31
-      Width = 74
+      Width = 76
       Height = 16
       Caption = 'Rechercher'
       Color = 15722984
@@ -1025,51 +1090,51 @@ object BonRetVF: TBonRetVF
       ParentFont = False
       StyleElements = []
     end
-    object PreviosBARecbtn: TsSpeedButton
+    object PreviosBVRetbtn: TsSpeedButton
       Left = 472
       Top = 23
       Width = 25
       Height = 25
       ParentShowHint = False
       ShowHint = True
-      OnClick = PreviosBARecbtnClick
+      OnClick = PreviosBVRetbtnClick
       SkinData.SkinSection = 'SPEEDBUTTON'
       Images = MainForm.PanelIcons24
       ImageIndex = 1
     end
-    object NextBARecbtn: TsSpeedButton
+    object NextBVRetbtn: TsSpeedButton
       Left = 502
       Top = 23
       Width = 25
       Height = 25
       ParentShowHint = False
       ShowHint = True
-      OnClick = NextBARecbtnClick
+      OnClick = NextBVRetbtnClick
       SkinData.SkinSection = 'SPEEDBUTTON'
       Images = MainForm.PanelIcons24
       ImageIndex = 2
       ShowCaption = False
     end
-    object LastBARecbtn: TsSpeedButton
+    object LastBVRetbtn: TsSpeedButton
       Left = 532
       Top = 23
       Width = 25
       Height = 25
       ParentShowHint = False
       ShowHint = True
-      OnClick = LastBARecbtnClick
+      OnClick = LastBVRetbtnClick
       SkinData.SkinSection = 'SPEEDBUTTON'
       Images = MainForm.PanelIcons24
       ImageIndex = 3
     end
-    object FisrtBARecbtn: TsSpeedButton
+    object FisrtBVRetbtn: TsSpeedButton
       Left = 442
       Top = 23
       Width = 25
       Height = 25
       ParentShowHint = False
       ShowHint = True
-      OnClick = FisrtBARecbtnClick
+      OnClick = FisrtBVRetbtnClick
       SkinData.SkinSection = 'SPEEDBUTTON'
       Images = MainForm.PanelIcons24
       ImageIndex = 0
@@ -1232,7 +1297,7 @@ object BonRetVF: TBonRetVF
       TabOrder = 2
       StyleElements = []
     end
-    object ResearchBARecEdt: TSearchBox
+    object ResearchBVRetEdt: TSearchBox
       Left = 77
       Top = 29
       Width = 220
@@ -1244,9 +1309,9 @@ object BonRetVF: TBonRetVF
       Font.Style = []
       ParentFont = False
       TabOrder = 0
-      OnChange = ResearchBARecEdtChange
-      OnKeyDown = ResearchBARecEdtKeyDown
-      OnKeyPress = ResearchBARecEdtKeyPress
+      OnChange = ResearchBVRetEdtChange
+      OnKeyDown = ResearchBVRetEdtKeyDown
+      OnKeyPress = ResearchBVRetEdtKeyPress
     end
     object Panel2: TPanel
       Left = 436
@@ -1275,7 +1340,7 @@ object BonRetVF: TBonRetVF
       TabOrder = 3
       StyleElements = []
     end
-    object DateEndBARecD: TDateTimePicker
+    object DateEndBVRetD: TDateTimePicker
       Left = 344
       Top = 38
       Width = 87
@@ -1289,9 +1354,9 @@ object BonRetVF: TBonRetVF
       Font.Style = []
       ParentFont = False
       TabOrder = 4
-      OnChange = DateStartBARecDChange
+      OnChange = DateStartBVRetDChange
     end
-    object DateStartBARecD: TDateTimePicker
+    object DateStartBVRetD: TDateTimePicker
       Left = 344
       Top = 7
       Width = 87
@@ -1305,14 +1370,14 @@ object BonRetVF: TBonRetVF
       Font.Style = []
       ParentFont = False
       TabOrder = 5
-      OnChange = DateStartBARecDChange
+      OnChange = DateStartBVRetDChange
     end
-    object ResherchBARFourRdioBtn: TRadioButton
+    object ResherchBVRClientRdioBtn: TRadioButton
       Left = 76
       Top = 6
       Width = 115
       Height = 17
-      Caption = 'Par Fournisseur'
+      Caption = 'Par Client'
       Checked = True
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
@@ -1324,7 +1389,7 @@ object BonRetVF: TBonRetVF
       TabStop = True
       StyleElements = []
     end
-    object ResherchBARNumBRdioBtn: TRadioButton
+    object ResherchBVRNumBRdioBtn: TRadioButton
       Left = 201
       Top = 6
       Width = 96
@@ -1402,7 +1467,7 @@ object BonRetVF: TBonRetVF
     DesignSize = (
       951
       20)
-    object SumGirdBARecBtn: TAdvToolButton
+    object SumGirdBVRetBtn: TAdvToolButton
       Left = 141
       Top = 0
       Width = 26
@@ -1432,7 +1497,7 @@ object BonRetVF: TBonRetVF
       Shaded = False
       ShowHint = True
       Spacing = -2
-      OnClick = SumGirdBARecBtnClick
+      OnClick = SumGirdBVRetBtnClick
       Version = '1.6.2.0'
       TMSStyle = 0
     end
@@ -1629,36 +1694,35 @@ object BonRetVF: TBonRetVF
       StyleElements = []
     end
   end
-  object frxBonRecDB: TfrxDBDataset
-    UserName = 'frxBonRecDB'
+  object frxBonRetVDB: TfrxDBDataset
+    UserName = 'frxBonRetVDB'
     CloseDataSource = False
     FieldAliases.Strings = (
-      'code_barec=code_barec'
-      'date_barec=date_barec'
-      'time_barec=time_barec'
-      'montht_barec=montht_barec'
-      'montver_barec=montver_barec'
-      'valider_barec=valider_barec'
-      'num_barec=num_barec'
-      'fourbarec=fourbarec'
+      'code_bvret=code_bvret'
+      'date_bvret=date_bvret'
+      'time_bvret=time_bvret'
+      'montht_bvret=montht_bvret'
+      'montver_bvret=montver_bvret'
+      'valider_bvret=valider_bvret'
+      'num_bvret=num_bvret'
+      'clientbvret=clientbvret'
       'MontantTVA=MontantTVA'
       'MontantRes=MontantRes'
-      'obser_barec=obser_barec'
-      'montttc_barec=montttc_barec'
-      'remise_barec=remise_barec'
-      'num_cheque_barec=num_cheque_barec'
+      'obser_bvret=obser_bvret'
+      'montttc_bvret=montttc_bvret'
+      'remise_bvret=remise_bvret'
+      'num_cheque_bvret=num_cheque_bvret'
       'code_mdpai=code_mdpai'
       'code_cmpt=code_cmpt'
       'ModePaie=ModePaie'
       'Compte=Compte'
       'RemisePerc=RemisePerc'
       'NEWTTC=NEWTTC'
-      'code_f=code_f'
+      'code_c=code_c'
       'code_ur=code_ur'
       'Agnet=Agnet'
-      'bon_or_no_barec=bon_or_no_barec'
+      'bon_or_no_bvret=bon_or_no_bvret'
       'NeTHT=NeTHT')
-    DataSource = MainForm.BonRecListDataS
     BCDToCurrency = False
     Left = 248
     Top = 392
@@ -1709,7 +1773,7 @@ object BonRetVF: TBonRetVF
     Left = 408
     Top = 480
   end
-  object BonRecfrxRprt: TfrxReport
+  object BonRetVfrxRprt: TfrxReport
     Version = '6.3.12'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
@@ -1729,8 +1793,8 @@ object BonRetVF: TBonRetVF
     Top = 320
     Datasets = <
       item
-        DataSet = frxBonRecDB
-        DataSetName = 'frxBonRecDB'
+        DataSet = frxBonRetVDB
+        DataSetName = 'frxBonRetVDB'
       end>
     Variables = <>
     Style = <
@@ -1854,7 +1918,7 @@ object BonRetVF: TBonRetVF
           Frame.Typ = [ftBottom]
           HAlign = haCenter
           Memo.UTF8W = (
-            'La liste des bons de R'#233'ception')
+            'La liste des bons de Retour Client')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -1912,7 +1976,7 @@ object BonRetVF: TBonRetVF
           Fill.BackColor = 13948116
           HAlign = haCenter
           Memo.UTF8W = (
-            'Fournisseur')
+            'Client')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -2151,8 +2215,8 @@ object BonRetVF: TBonRetVF
         Height = 21.236240000000000000
         Top = 173.858380000000000000
         Width = 1046.929810000000000000
-        DataSet = frxBonRecDB
-        DataSetName = 'frxBonRecDB'
+        DataSet = frxBonRetVDB
+        DataSetName = 'frxBonRetVDB'
         RowCount = 0
         object Shape1: TfrxShapeView
           AllowVectorExport = True
@@ -2162,14 +2226,14 @@ object BonRetVF: TBonRetVF
           Frame.Color = 13948116
           Frame.Typ = []
         end
-        object frxBonRecDBvalider_barec: TfrxMemoView
+        object frxBonRetVDBvalider_bvret: TfrxMemoView
           AllowVectorExport = True
           Left = -0.220470000000000000
           Top = 1.000000000000000000
           Width = 11.338590000000000000
           Height = 18.897650000000000000
-          DataSet = frxBonRecDB
-          DataSetName = 'frxBonRecDB'
+          DataSet = frxBonRetVDB
+          DataSetName = 'frxBonRetVDB'
           DisplayFormat.FormatStr = #9675','#9679
           DisplayFormat.Kind = fkBoolean
           Font.Charset = DEFAULT_CHARSET
@@ -2180,18 +2244,18 @@ object BonRetVF: TBonRetVF
           Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
-            '[frxBonRecDB."valider_barec"]')
+            '[frxBonRetVDB."valider_bvret"]')
           ParentFont = False
         end
-        object frxBonRecDBnum_barec: TfrxMemoView
+        object frxBonRetVDBnum_bvret: TfrxMemoView
           AllowVectorExport = True
           Left = 11.338590000000000000
           Top = 0.645640000000000000
           Width = 113.385900000000000000
           Height = 18.897650000000000000
-          DataField = 'num_barec'
-          DataSet = frxBonRecDB
-          DataSetName = 'frxBonRecDB'
+          DataField = 'num_bvret'
+          DataSet = frxBonRetVDB
+          DataSetName = 'frxBonRetVDB'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -12
@@ -2199,18 +2263,18 @@ object BonRetVF: TBonRetVF
           Font.Style = []
           Frame.Typ = []
           Memo.UTF8W = (
-            '[frxBonRecDB."num_barec"]')
+            '[frxBonRetVDB."num_bvret"]')
           ParentFont = False
           VAlign = vaCenter
         end
-        object frxBonRecDBdate_barec: TfrxMemoView
+        object frxBonRetVDBdate_bvret: TfrxMemoView
           AllowVectorExport = True
           Left = 125.102489130000000000
           Top = 0.755905510000000000
           Width = 71.433070870000000000
           Height = 18.897650000000000000
-          DataSet = frxBonRecDB
-          DataSetName = 'frxBonRecDB'
+          DataSet = frxBonRetVDB
+          DataSetName = 'frxBonRetVDB'
           DisplayFormat.FormatStr = 'mm/dd/yyyy'
           DisplayFormat.Kind = fkDateTime
           Font.Charset = DEFAULT_CHARSET
@@ -2221,19 +2285,19 @@ object BonRetVF: TBonRetVF
           Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
-            '[frxBonRecDB."date_barec"]')
+            '[frxBonRetVDB."date_bvret"]')
           ParentFont = False
           VAlign = vaCenter
         end
-        object frxBonRecDBfourbarec: TfrxMemoView
+        object frxBonRetVDBclientbvret: TfrxMemoView
           AllowVectorExport = True
           Left = 196.535560000000000000
           Top = 0.755905511811024000
           Width = 188.976500000000000000
           Height = 18.897650000000000000
-          DataField = 'fourbarec'
-          DataSet = frxBonRecDB
-          DataSetName = 'frxBonRecDB'
+          DataField = 'clientbvret'
+          DataSet = frxBonRetVDB
+          DataSetName = 'frxBonRetVDB'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -12
@@ -2242,18 +2306,18 @@ object BonRetVF: TBonRetVF
           Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
-            '[frxBonRecDB."fourbarec"]')
+            '[frxBonRetVDB."clientbvret"]')
           ParentFont = False
           VAlign = vaCenter
         end
-        object frxBonRecDBmontht_barec: TfrxMemoView
+        object frxBonRetVDBmontht_bvret: TfrxMemoView
           AllowVectorExport = True
           Left = 385.512060000000000000
           Top = 0.645640000000000000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
-          DataSet = frxBonRecDB
-          DataSetName = 'frxBonRecDB'
+          DataSet = frxBonRetVDB
+          DataSetName = 'frxBonRetVDB'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -2264,18 +2328,18 @@ object BonRetVF: TBonRetVF
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonRecDB."montht_barec"]')
+            '[frxBonRetVDB."montht_bvret"]')
           ParentFont = False
           VAlign = vaCenter
         end
-        object frxBonRecDBremise_barec: TfrxMemoView
+        object frxBonRetVDBremise_bvret: TfrxMemoView
           AllowVectorExport = True
           Left = 480.000310000000000000
           Top = 0.755905510000000000
           Width = 94.488188980000000000
           Height = 18.897650000000000000
-          DataSet = frxBonRecDB
-          DataSetName = 'frxBonRecDB'
+          DataSet = frxBonRetVDB
+          DataSetName = 'frxBonRetVDB'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -2286,18 +2350,18 @@ object BonRetVF: TBonRetVF
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonRecDB."remise_barec"]')
+            '[frxBonRetVDB."remise_bvret"]')
           ParentFont = False
           VAlign = vaCenter
         end
-        object frxBonRecDBNeTHT: TfrxMemoView
+        object frxBonRetVDBNeTHT: TfrxMemoView
           AllowVectorExport = True
           Left = 574.488560000000000000
           Top = 0.755905510000000000
           Width = 94.488188980000000000
           Height = 18.897650000000000000
-          DataSet = frxBonRecDB
-          DataSetName = 'frxBonRecDB'
+          DataSet = frxBonRetVDB
+          DataSetName = 'frxBonRetVDB'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -2308,18 +2372,18 @@ object BonRetVF: TBonRetVF
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonRecDB."NeTHT"]')
+            '[frxBonRetVDB."NeTHT"]')
           ParentFont = False
           VAlign = vaCenter
         end
-        object frxBonRecDBMontantTVA: TfrxMemoView
+        object frxBonRetVDBMontantTVA: TfrxMemoView
           AllowVectorExport = True
           Left = 668.976810000000000000
           Top = 0.755905510000000000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
-          DataSet = frxBonRecDB
-          DataSetName = 'frxBonRecDB'
+          DataSet = frxBonRetVDB
+          DataSetName = 'frxBonRetVDB'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -2330,18 +2394,18 @@ object BonRetVF: TBonRetVF
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonRecDB."MontantTVA"]')
+            '[frxBonRetVDB."MontantTVA"]')
           ParentFont = False
           VAlign = vaCenter
         end
-        object frxBonRecDBmontttc_barec: TfrxMemoView
+        object frxBonRetVDBmontttc_bvret: TfrxMemoView
           AllowVectorExport = True
           Left = 763.465060000000000000
           Top = 0.755905510000000000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
-          DataSet = frxBonRecDB
-          DataSetName = 'frxBonRecDB'
+          DataSet = frxBonRetVDB
+          DataSetName = 'frxBonRetVDB'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -2352,18 +2416,18 @@ object BonRetVF: TBonRetVF
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonRecDB."montttc_barec"]')
+            '[frxBonRetVDB."montttc_bvret"]')
           ParentFont = False
           VAlign = vaCenter
         end
-        object frxBonRecDBmontver_barec: TfrxMemoView
+        object frxBonRetVDBmontver_bvret: TfrxMemoView
           AllowVectorExport = True
           Left = 858.512370000000000000
           Top = 0.755905510000000000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
-          DataSet = frxBonRecDB
-          DataSetName = 'frxBonRecDB'
+          DataSet = frxBonRetVDB
+          DataSetName = 'frxBonRetVDB'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -2374,18 +2438,18 @@ object BonRetVF: TBonRetVF
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonRecDB."montver_barec"]')
+            '[frxBonRetVDB."montver_bvret"]')
           ParentFont = False
           VAlign = vaCenter
         end
-        object frxBonRecDBMontantRes: TfrxMemoView
+        object frxBonRetVDBMontantRes: TfrxMemoView
           AllowVectorExport = True
           Left = 953.000620000000000000
           Top = 0.755905510000000000
           Width = 94.110236220000000000
           Height = 18.897650000000000000
-          DataSet = frxBonRecDB
-          DataSetName = 'frxBonRecDB'
+          DataSet = frxBonRetVDB
+          DataSetName = 'frxBonRetVDB'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -2396,7 +2460,7 @@ object BonRetVF: TBonRetVF
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxBonRecDB."MontantRes"]')
+            '[frxBonRetVDB."MontantRes"]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -2424,7 +2488,7 @@ object BonRetVF: TBonRetVF
           Fill.BackColor = 13948116
           HAlign = haRight
           Memo.UTF8W = (
-            '[SUM(<frxBonRecDB."montht_barec">,MasterData1)]')
+            '[SUM(<frxBonRetVDB."montht_bvret">,MasterData1)]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -2445,7 +2509,7 @@ object BonRetVF: TBonRetVF
           Fill.BackColor = 13948116
           HAlign = haRight
           Memo.UTF8W = (
-            '[SUM(<frxBonRecDB."remise_barec">,MasterData1)]')
+            '[SUM(<frxBonRetVDB."remise_bvret">,MasterData1)]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -2466,7 +2530,7 @@ object BonRetVF: TBonRetVF
           Fill.BackColor = 13948116
           HAlign = haRight
           Memo.UTF8W = (
-            '[SUM(<frxBonRecDB."NeTHT">,MasterData1)]')
+            '[SUM(<frxBonRetVDB."NeTHT">,MasterData1)]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -2487,7 +2551,7 @@ object BonRetVF: TBonRetVF
           Fill.BackColor = 13948116
           HAlign = haRight
           Memo.UTF8W = (
-            '[SUM(<frxBonRecDB."MontantTVA">,MasterData1)]')
+            '[SUM(<frxBonRetVDB."MontantTVA">,MasterData1)]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -2508,7 +2572,7 @@ object BonRetVF: TBonRetVF
           Fill.BackColor = 13948116
           HAlign = haRight
           Memo.UTF8W = (
-            '[SUM(<frxBonRecDB."montttc_barec">,MasterData1)]')
+            '[SUM(<frxBonRetVDB."montttc_bvret">,MasterData1)]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -2529,7 +2593,7 @@ object BonRetVF: TBonRetVF
           Fill.BackColor = 13948116
           HAlign = haRight
           Memo.UTF8W = (
-            '[SUM(<frxBonRecDB."montver_barec">,MasterData1)]')
+            '[SUM(<frxBonRetVDB."montver_bvret">,MasterData1)]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -2550,7 +2614,7 @@ object BonRetVF: TBonRetVF
           Fill.BackColor = 13948116
           HAlign = haRight
           Memo.UTF8W = (
-            '[SUM(<frxBonRecDB."MontantRes">,MasterData1)]')
+            '[SUM(<frxBonRetVDB."MontantRes">,MasterData1)]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -2707,7 +2771,7 @@ object BonRetVF: TBonRetVF
     Top = 256
   end
   object ProduitListSaveDg: TSaveDialog
-    Filter =
+    Filter = 
       'Excel Workbook (*.xlsx)|*.xlsx|Excel  97- 2003 Workbook (*.xls)|' +
       '*.xls|CSV (Comma delimited) (*.csv)|*.csv'
     Left = 372

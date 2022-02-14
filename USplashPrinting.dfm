@@ -26,7 +26,7 @@ object FSplashPrinting: TFSplashPrinting
   object NameAddCompteSLbl: TLabel
     Left = 56
     Top = 112
-    Width = 83
+    Width = 84
     Height = 18
     Caption = 'Imprimante:'
     Color = 4207405
@@ -71,7 +71,7 @@ object FSplashPrinting: TFSplashPrinting
   object Label1: TLabel
     Left = 103
     Top = 64
-    Width = 36
+    Width = 35
     Height = 18
     Caption = 'Titre:'
     Color = 4207405
@@ -87,7 +87,7 @@ object FSplashPrinting: TFSplashPrinting
   object Label2: TLabel
     Left = 43
     Top = 209
-    Width = 96
+    Width = 97
     Height = 18
     Caption = 'Prix de vente:'
     Color = 4207405
@@ -128,7 +128,7 @@ object FSplashPrinting: TFSplashPrinting
     ShowHint = True
     Spacing = -1
     OnClick = OKFPrintingBtnClick
-    Version = '1.6.1.2'
+    Version = '1.6.2.0'
     ExplicitTop = 259
     TMSStyle = 0
   end
@@ -177,7 +177,7 @@ object FSplashPrinting: TFSplashPrinting
     Spacing = -1
     Visible = False
     OnClick = SetDeafultFPrintingBtnClick
-    Version = '1.6.1.2'
+    Version = '1.6.2.0'
     TMSStyle = 0
   end
   object PrintTicketfrxPreview: TfrxPreview
@@ -321,7 +321,6 @@ object FSplashPrinting: TFSplashPrinting
     Width = 137
     Height = 26
     Alignment = taRightJustify
-    Color = clWhite
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clBlack
     Font.Height = 18
@@ -336,7 +335,7 @@ object FSplashPrinting: TFSplashPrinting
     Value = 1
   end
   object PrintTicketfrxRprt: TfrxReport
-    Version = '5.4.6'
+    Version = '6.3.12'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     Preview = PrintTicketfrxPreview
@@ -346,7 +345,7 @@ object FSplashPrinting: TFSplashPrinting
     PrintOptions.PrintOnSheet = 0
     PrintOptions.ShowDialog = False
     ReportOptions.CreateDate = 41864.469234849500000000
-    ReportOptions.LastChange = 43164.604325601900000000
+    ReportOptions.LastChange = 44030.633023067130000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       ''
@@ -408,10 +407,13 @@ object FSplashPrinting: TFSplashPrinting
       PaperWidth = 40.000000000000000000
       PaperHeight = 20.000000000000000000
       PaperSize = 256
+      Frame.Typ = []
+      MirrorMode = []
       HGuides.Strings = (
         '22.67718')
       object PRODUIT: TfrxMemoView
         Align = baCenter
+        AllowVectorExport = True
         Left = 1.322881025000000000
         Top = 11.582677170000000000
         Width = 148.535437950000000000
@@ -424,24 +426,30 @@ object FSplashPrinting: TFSplashPrinting
         Font.Height = -9
         Font.Name = 'Segoe UI'
         Font.Style = []
+        Frame.Typ = []
         HAlign = haCenter
         Memo.UTF8W = (
           '[frxProduitDB."nom_p"]')
         ParentFont = False
+        VAlign = vaCenter
       end
       object Name: TfrxMemoView
+        AllowVectorExport = True
         Width = 152.314967950000000000
-        Height = 11.716535433070900000
+        Height = 11.716535430000000000
         OnBeforePrint = 'TITLEOnBeforePrint'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Height = -9
         Font.Name = 'Segoe UI'
-        Font.Style = [fsBold, fsUnderline]
+        Font.Style = [fsBold]
+        Frame.Typ = []
         HAlign = haCenter
         ParentFont = False
+        VAlign = vaCenter
       end
       object Prix: TfrxMemoView
+        AllowVectorExport = True
         Top = 58.031540000000000000
         Width = 151.181200000000000000
         Height = 15.118110240000000000
@@ -455,11 +463,13 @@ object FSplashPrinting: TFSplashPrinting
         Font.Height = -12
         Font.Name = 'Helvetica LT Std'
         Font.Style = [fsBold]
+        Frame.Typ = []
         HAlign = haCenter
         ParentFont = False
       end
       object BAR_CODE: TfrxBarCodeView
         Align = baCenter
+        AllowVectorExport = True
         Left = 36.090600000000000000
         Top = 28.338590000000000000
         Width = 79.000000000000000000
@@ -470,9 +480,11 @@ object FSplashPrinting: TFSplashPrinting
         DataSet = frxProduitDB
         DataSetName = 'frxProduitDB'
         Expression = '<frxProduitDB."codebar_p">'
+        Frame.Typ = []
         HAlign = haCenter
         Rotation = 0
         ShowText = False
+        TestLine = False
         Text = '12345678'
         WideBarRatio = 2.000000000000000000
         Zoom = 1.000000000000000000
@@ -532,7 +544,7 @@ object FSplashPrinting: TFSplashPrinting
     Top = 56
   end
   object frxReport2: TfrxReport
-    Version = '5.4.6'
+    Version = '6.3.12'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     Preview = PrintTicketfrxPreview
@@ -603,9 +615,12 @@ object FSplashPrinting: TFSplashPrinting
       PaperWidth = 40.000000000000000000
       PaperHeight = 20.000000000000000000
       PaperSize = 256
+      Frame.Typ = []
+      MirrorMode = []
       HGuides.Strings = (
         '30.23624')
       object Name: TfrxMemoView
+        AllowVectorExport = True
         Width = 152.314967950000000000
         Height = 10.582677170000000000
         OnBeforePrint = 'TITLEOnBeforePrint'
@@ -613,12 +628,15 @@ object FSplashPrinting: TFSplashPrinting
         Font.Color = clBlack
         Font.Height = -9
         Font.Name = 'Helvetica LT Std'
-        Font.Style = [fsBold, fsUnderline]
+        Font.Style = [fsBold]
+        Frame.Typ = []
         HAlign = haCenter
         ParentFont = False
+        VAlign = vaCenter
       end
       object BAR_CODE: TfrxBarCodeView
         Align = baCenter
+        AllowVectorExport = True
         Left = 36.090600000000000000
         Top = 15.118120000000000000
         Width = 79.000000000000000000
@@ -629,8 +647,10 @@ object FSplashPrinting: TFSplashPrinting
         DataSet = frxProduitDB
         DataSetName = 'frxProduitDB'
         Expression = '<frxProduitDB."codebar_p">'
+        Frame.Typ = []
         HAlign = haCenter
         Rotation = 0
+        TestLine = False
         Text = '12345678'
         WideBarRatio = 2.000000000000000000
         Zoom = 1.000000000000000000
@@ -643,7 +663,7 @@ object FSplashPrinting: TFSplashPrinting
     end
   end
   object frxReport1: TfrxReport
-    Version = '5.4.6'
+    Version = '6.3.12'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     Preview = PrintTicketfrxPreview
@@ -714,10 +734,13 @@ object FSplashPrinting: TFSplashPrinting
       PaperWidth = 40.000000000000000000
       PaperHeight = 20.000000000000000000
       PaperSize = 256
+      Frame.Typ = []
+      MirrorMode = []
       HGuides.Strings = (
         '30.23624')
       object PRODUIT: TfrxMemoView
         Align = baCenter
+        AllowVectorExport = True
         Left = 1.322881025000000000
         Top = 10.582677170000000000
         Width = 148.535437950000000000
@@ -730,12 +753,15 @@ object FSplashPrinting: TFSplashPrinting
         Font.Height = -8
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
+        Frame.Typ = []
         HAlign = haCenter
         Memo.UTF8W = (
           '[frxProduitDB."nom_p"]')
         ParentFont = False
+        VAlign = vaCenter
       end
       object Name: TfrxMemoView
+        AllowVectorExport = True
         Width = 152.314967950000000000
         Height = 10.582677170000000000
         OnBeforePrint = 'TITLEOnBeforePrint'
@@ -743,12 +769,15 @@ object FSplashPrinting: TFSplashPrinting
         Font.Color = clBlack
         Font.Height = -9
         Font.Name = 'Helvetica LT Std'
-        Font.Style = [fsBold, fsUnderline]
+        Font.Style = [fsBold]
+        Frame.Typ = []
         HAlign = haCenter
         ParentFont = False
+        VAlign = vaCenter
       end
       object BAR_CODE: TfrxBarCodeView
         Align = baCenter
+        AllowVectorExport = True
         Left = 36.090600000000000000
         Top = 29.338590000000000000
         Width = 79.000000000000000000
@@ -759,8 +788,10 @@ object FSplashPrinting: TFSplashPrinting
         DataSet = frxProduitDB
         DataSetName = 'frxProduitDB'
         Expression = '<frxProduitDB."codebar_p">'
+        Frame.Typ = []
         HAlign = haCenter
         Rotation = 0
+        TestLine = False
         Text = '12345678'
         WideBarRatio = 2.000000000000000000
         Zoom = 1.000000000000000000
@@ -773,7 +804,7 @@ object FSplashPrinting: TFSplashPrinting
     end
   end
   object frxReport3: TfrxReport
-    Version = '5.4.6'
+    Version = '6.3.12'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     Preview = PrintTicketfrxPreview
@@ -810,8 +841,11 @@ object FSplashPrinting: TFSplashPrinting
       PaperWidth = 45.000000000000000000
       PaperHeight = 35.000000000000000000
       PaperSize = 256
+      Frame.Typ = []
+      MirrorMode = []
       object PRODUIT: TfrxMemoView
         Align = baCenter
+        AllowVectorExport = True
         Left = 1.889765000000000000
         Top = 15.118110240000000000
         Width = 166.299320000000000000
@@ -824,13 +858,16 @@ object FSplashPrinting: TFSplashPrinting
         Font.Height = -9
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
+        Frame.Typ = []
         HAlign = haCenter
         Memo.UTF8W = (
           '[frxProduitDB."nom_p"]')
         ParentFont = False
+        VAlign = vaCenter
       end
       object Name: TfrxMemoView
         Align = baCenter
+        AllowVectorExport = True
         Top = 1.779530000000000000
         Width = 170.078850000000000000
         Height = 12.850393700000000000
@@ -839,12 +876,15 @@ object FSplashPrinting: TFSplashPrinting
         Font.Color = clBlack
         Font.Height = -11
         Font.Name = 'Helvetica LT Std'
-        Font.Style = [fsBold, fsUnderline]
+        Font.Style = [fsBold]
+        Frame.Typ = []
         HAlign = haCenter
         ParentFont = False
+        VAlign = vaCenter
       end
       object Prix: TfrxMemoView
         Align = baCenter
+        AllowVectorExport = True
         Left = 1.889765000000000000
         Top = 102.606370000000000000
         Width = 166.299320000000000000
@@ -859,12 +899,14 @@ object FSplashPrinting: TFSplashPrinting
         Font.Height = -17
         Font.Name = 'Helvetica LT Std'
         Font.Style = [fsBold]
+        Frame.Typ = []
         HAlign = haCenter
         ParentFont = False
         VAlign = vaCenter
       end
       object BAR_CODE: TfrxBarCodeView
         Align = baCenter
+        AllowVectorExport = True
         Left = 29.039425000000000000
         Top = 48.795300000000000000
         Width = 112.000000000000000000
@@ -875,8 +917,10 @@ object FSplashPrinting: TFSplashPrinting
         DataSet = frxProduitDB
         DataSetName = 'frxProduitDB'
         Expression = '<frxProduitDB."codebar_p">'
+        Frame.Typ = []
         HAlign = haCenter
         Rotation = 0
+        TestLine = False
         Text = '00000000000000'
         WideBarRatio = 2.000000000000000000
         Zoom = 1.000000000000000000
@@ -889,7 +933,7 @@ object FSplashPrinting: TFSplashPrinting
     end
   end
   object frxReport4: TfrxReport
-    Version = '5.4.6'
+    Version = '6.3.12'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     Preview = PrintTicketfrxPreview
@@ -926,8 +970,11 @@ object FSplashPrinting: TFSplashPrinting
       PaperWidth = 45.000000000000000000
       PaperHeight = 35.000000000000000000
       PaperSize = 256
+      Frame.Typ = []
+      MirrorMode = []
       object PRODUIT: TfrxMemoView
         Align = baCenter
+        AllowVectorExport = True
         Left = 1.889765000000000000
         Top = 15.874015750000000000
         Width = 166.299320000000000000
@@ -940,13 +987,16 @@ object FSplashPrinting: TFSplashPrinting
         Font.Height = -9
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
+        Frame.Typ = []
         HAlign = haCenter
         Memo.UTF8W = (
           '[frxProduitDB."nom_p"]')
         ParentFont = False
+        VAlign = vaCenter
       end
       object Name: TfrxMemoView
         Align = baCenter
+        AllowVectorExport = True
         Top = 1.779530000000000000
         Width = 170.078850000000000000
         Height = 12.850393700000000000
@@ -955,12 +1005,15 @@ object FSplashPrinting: TFSplashPrinting
         Font.Color = clBlack
         Font.Height = -11
         Font.Name = 'Helvetica LT Std'
-        Font.Style = [fsBold, fsUnderline]
+        Font.Style = [fsBold]
+        Frame.Typ = []
         HAlign = haCenter
         ParentFont = False
+        VAlign = vaCenter
       end
       object BAR_CODE: TfrxBarCodeView
         Align = baCenter
+        AllowVectorExport = True
         Left = 29.039425000000000000
         Top = 53.795300000000000000
         Width = 112.000000000000000000
@@ -971,8 +1024,10 @@ object FSplashPrinting: TFSplashPrinting
         DataSet = frxProduitDB
         DataSetName = 'frxProduitDB'
         Expression = '<frxProduitDB."codebar_p">'
+        Frame.Typ = []
         HAlign = haCenter
         Rotation = 0
+        TestLine = False
         Text = '00000000000000'
         WideBarRatio = 2.000000000000000000
         Zoom = 1.000000000000000000
@@ -985,7 +1040,7 @@ object FSplashPrinting: TFSplashPrinting
     end
   end
   object frxReport5: TfrxReport
-    Version = '5.4.6'
+    Version = '6.3.12'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     Preview = PrintTicketfrxPreview
@@ -1057,10 +1112,13 @@ object FSplashPrinting: TFSplashPrinting
       PaperWidth = 40.000000000000000000
       PaperHeight = 20.000000000000000000
       PaperSize = 256
+      Frame.Typ = []
+      MirrorMode = []
       HGuides.Strings = (
         '22.67718')
       object PRODUIT: TfrxMemoView
         Align = baCenter
+        AllowVectorExport = True
         Left = 1.322881025000000000
         Top = 12.582677170000000000
         Width = 148.535437950000000000
@@ -1073,12 +1131,15 @@ object FSplashPrinting: TFSplashPrinting
         Font.Height = -8
         Font.Name = 'Helvetica LT Std'
         Font.Style = [fsBold]
+        Frame.Typ = []
         HAlign = haCenter
         Memo.UTF8W = (
           '[frxProduitDB."nom_p"]')
         ParentFont = False
+        VAlign = vaCenter
       end
       object Name: TfrxMemoView
+        AllowVectorExport = True
         Top = 2.000000000000000000
         Width = 152.314967950000000000
         Height = 10.582677170000000000
@@ -1087,11 +1148,14 @@ object FSplashPrinting: TFSplashPrinting
         Font.Color = clBlack
         Font.Height = -9
         Font.Name = 'Helvetica LT Std'
-        Font.Style = [fsBold, fsUnderline]
+        Font.Style = [fsBold]
+        Frame.Typ = []
         HAlign = haCenter
         ParentFont = False
+        VAlign = vaCenter
       end
       object Prix: TfrxMemoView
+        AllowVectorExport = True
         Top = 38.354360000000000000
         Width = 151.181200000000000000
         Height = 37.795290240000000000
@@ -1105,13 +1169,14 @@ object FSplashPrinting: TFSplashPrinting
         Font.Height = -16
         Font.Name = 'Helvetica LT Std'
         Font.Style = [fsBold]
+        Frame.Typ = []
         HAlign = haCenter
         ParentFont = False
       end
     end
   end
   object frxReport47X30: TfrxReport
-    Version = '5.4.6'
+    Version = '6.3.12'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     Preview = PrintTicketfrxPreview
@@ -1183,11 +1248,14 @@ object FSplashPrinting: TFSplashPrinting
       PaperWidth = 47.000000000000000000
       PaperHeight = 30.000000000000000000
       PaperSize = 256
+      Frame.Typ = []
+      MirrorMode = []
       HGuides.Strings = (
         '86.92919'
         '41.57483')
       object PRODUIT: TfrxMemoView
         Align = baWidth
+        AllowVectorExport = True
         Top = 16.362207170000000000
         Width = 177.637910000000000000
         Height = 25.212622830000000000
@@ -1199,13 +1267,16 @@ object FSplashPrinting: TFSplashPrinting
         Font.Height = -9
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
+        Frame.Typ = []
         HAlign = haCenter
         Memo.UTF8W = (
           '[frxProduitDB."nom_p"]')
         ParentFont = False
+        VAlign = vaCenter
       end
       object Name: TfrxMemoView
         Align = baWidth
+        AllowVectorExport = True
         Top = 2.000000000000000000
         Width = 177.637910000000000000
         Height = 10.582677170000000000
@@ -1214,12 +1285,15 @@ object FSplashPrinting: TFSplashPrinting
         Font.Color = clBlack
         Font.Height = -9
         Font.Name = 'Helvetica LT Std'
-        Font.Style = [fsBold, fsUnderline]
+        Font.Style = [fsBold]
+        Frame.Typ = []
         HAlign = haCenter
         ParentFont = False
+        VAlign = vaCenter
       end
       object Prix: TfrxMemoView
         Align = baBottom
+        AllowVectorExport = True
         Top = 86.929199760000000000
         Width = 177.637910000000000000
         Height = 26.456700240000000000
@@ -1233,12 +1307,14 @@ object FSplashPrinting: TFSplashPrinting
         Font.Height = -12
         Font.Name = 'Helvetica LT Std'
         Font.Style = [fsBold]
+        Frame.Typ = []
         HAlign = haCenter
         ParentFont = False
         VAlign = vaCenter
       end
       object BAR_CODE: TfrxBarCodeView
         Align = baCenter
+        AllowVectorExport = True
         Left = 49.318955000000000000
         Top = 46.236240000000000000
         Width = 79.000000000000000000
@@ -1249,9 +1325,11 @@ object FSplashPrinting: TFSplashPrinting
         DataSet = frxProduitDB
         DataSetName = 'frxProduitDB'
         Expression = '<frxProduitDB."codebar_p">'
+        Frame.Typ = []
         HAlign = haCenter
         Rotation = 0
         ShowText = False
+        TestLine = False
         Text = '12345678'
         WideBarRatio = 2.000000000000000000
         Zoom = 1.000000000000000000
@@ -1264,7 +1342,7 @@ object FSplashPrinting: TFSplashPrinting
     end
   end
   object frxReport47X30s: TfrxReport
-    Version = '5.4.6'
+    Version = '6.3.12'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     Preview = PrintTicketfrxPreview
@@ -1336,10 +1414,13 @@ object FSplashPrinting: TFSplashPrinting
       PaperWidth = 47.000000000000000000
       PaperHeight = 30.000000000000000000
       PaperSize = 256
+      Frame.Typ = []
+      MirrorMode = []
       HGuides.Strings = (
         '45.35436')
       object PRODUIT: TfrxMemoView
         Align = baWidth
+        AllowVectorExport = True
         Top = 16.362207170000000000
         Width = 177.637910000000000000
         Height = 25.212622830000000000
@@ -1351,13 +1432,16 @@ object FSplashPrinting: TFSplashPrinting
         Font.Height = -9
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
+        Frame.Typ = []
         HAlign = haCenter
         Memo.UTF8W = (
           '[frxProduitDB."nom_p"]')
         ParentFont = False
+        VAlign = vaCenter
       end
       object Name: TfrxMemoView
         Align = baWidth
+        AllowVectorExport = True
         Top = 2.000000000000000000
         Width = 177.637910000000000000
         Height = 10.582677170000000000
@@ -1366,12 +1450,15 @@ object FSplashPrinting: TFSplashPrinting
         Font.Color = clBlack
         Font.Height = -9
         Font.Name = 'Helvetica LT Std'
-        Font.Style = [fsBold, fsUnderline]
+        Font.Style = [fsBold]
+        Frame.Typ = []
         HAlign = haCenter
         ParentFont = False
+        VAlign = vaCenter
       end
       object BAR_CODE: TfrxBarCodeView
         Align = baCenter
+        AllowVectorExport = True
         Left = 49.318955000000000000
         Top = 46.236240000000000000
         Width = 79.000000000000000000
@@ -1382,9 +1469,11 @@ object FSplashPrinting: TFSplashPrinting
         DataSet = frxProduitDB
         DataSetName = 'frxProduitDB'
         Expression = '<frxProduitDB."codebar_p">'
+        Frame.Typ = []
         HAlign = haCenter
         Rotation = 0
         ShowText = False
+        TestLine = False
         Text = '12345678'
         WideBarRatio = 2.000000000000000000
         Zoom = 1.000000000000000000
@@ -1397,7 +1486,7 @@ object FSplashPrinting: TFSplashPrinting
     end
   end
   object frxReport58X45p: TfrxReport
-    Version = '5.4.6'
+    Version = '6.3.12'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     Preview = PrintTicketfrxPreview
@@ -1469,8 +1558,11 @@ object FSplashPrinting: TFSplashPrinting
       PaperWidth = 58.000000000000000000
       PaperHeight = 45.000000000000000000
       PaperSize = 256
+      Frame.Typ = []
+      MirrorMode = []
       object PRODUIT: TfrxMemoView
         Align = baWidth
+        AllowVectorExport = True
         Top = 27.700797170000000000
         Width = 219.212740000000000000
         Height = 47.244116460000000000
@@ -1482,13 +1574,16 @@ object FSplashPrinting: TFSplashPrinting
         Font.Height = -12
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
+        Frame.Typ = []
         HAlign = haCenter
         Memo.UTF8W = (
           '[frxProduitDB."nom_p"]')
         ParentFont = False
+        VAlign = vaCenter
       end
       object Name: TfrxMemoView
         Align = baWidth
+        AllowVectorExport = True
         Top = 2.000000000000000000
         Width = 219.212740000000000000
         Height = 21.921267170000000000
@@ -1497,12 +1592,15 @@ object FSplashPrinting: TFSplashPrinting
         Font.Color = clBlack
         Font.Height = -9
         Font.Name = 'Helvetica LT Std'
-        Font.Style = [fsBold, fsUnderline]
+        Font.Style = [fsBold]
+        Frame.Typ = []
         HAlign = haCenter
         ParentFont = False
+        VAlign = vaCenter
       end
       object Prix: TfrxMemoView
         Align = baWidth
+        AllowVectorExport = True
         Top = 83.149669760000000000
         Width = 219.212740000000000000
         Height = 68.031530240000000000
@@ -1516,6 +1614,7 @@ object FSplashPrinting: TFSplashPrinting
         Font.Height = -19
         Font.Name = 'Helvetica LT Std'
         Font.Style = [fsBold]
+        Frame.Typ = []
         HAlign = haCenter
         ParentFont = False
       end

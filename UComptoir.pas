@@ -1,4 +1,4 @@
-unit UComptoir;
+ï»¿unit UComptoir;
 
 interface
 
@@ -315,7 +315,7 @@ type
     procedure loadData;
     procedure GettingData57;
   public
-    
+
     const BCLSQL=  'SELECT BCL.code_bvctr,BCL.code_bvctrl,BCL.qut_p,BCL.prixht_p,BCL.prixvd_p,BCL.cond_p,BCL.code_p,BCL.tva_p,BCL.code_barec,P.prixht_p,P.nom_p as nomp, P.refer_p as referp,  '
               +'   (((BCL.prixvd_p * BCL.tva_p)/100)+BCL.prixvd_p) AS PrixVTTC,  '
               +'   ((BCL.prixht_p * BCL.qut_p) * cond_p) AS MontantAHT,  '
@@ -570,7 +570,7 @@ begin
   ValiderBVCtrBonCtrGImg.ImageIndex := 1; //0 fo D
   ValiderBVCtrBonCtrGLbl.Color := $007374FF; // $004AC38B for D
   ValiderBVCtrBonCtrGLbl.Font.Color := clWhite; // clBlack for D
-  ValiderBVCtrBonCtrGLbl.Caption := 'Ce bon n''est pas encore Validé'; // 'Ce bon est Valid' for D
+  ValiderBVCtrBonCtrGLbl.Caption := 'Ce bon n''est pas encore Validï¿½'; // 'Ce bon est Valid' for D
 
   CameraBonCtrGBtn.Enabled:= True;
 
@@ -617,7 +617,7 @@ begin
       BonCtrGestionF.ComPort1.WriteUnicodeString(Msg + #13#10); // send test command
       BonCtrGestionF.ComPort1.Close;
     except
-//           ShowMessage('Svp, brancher l''Afficheur Client ou désactiver le dans la configuration->utilites');
+//           ShowMessage('Svp, brancher l''Afficheur Client ou dï¿½sactiver le dans la configuration->utilites');
     end;
   end;
 
@@ -1048,7 +1048,7 @@ var
   PORT, Msg2, PRIXTTC: string;
   Total,Numcheck: Integer;
 
-  isBalCode : Boolean;
+  isBalCode,isBalDIGI100,isBalRLS1000 : Boolean;
   BalQut : Double;
 
 begin
@@ -1059,7 +1059,7 @@ begin
     if (ProduitBonCtrGCbx.Text <> '') AND NOT (ProduitBonCtrGCbx.Text[1] in N ) then
     begin
 
-       if  (Copy(ProduitBonCtrGCbx.Text,1,2) = '55') then
+       if  (Copy(ProduitBonCtrGCbx.Text,1,2) = '55') OR (Copy(ProduitBonCtrGCbx.Text,1,2) = '25') then
        begin
          isBalCode:= True;
        end;
@@ -1086,8 +1086,7 @@ begin
           if MainForm.SQLQuery.FieldValues['code_p'] <> null then
           begin
             CodeCB := MainForm.SQLQuery.FieldValues['code_p'];
-          end else
-              begin
+          end;
                 MainForm.FDQuery2.Active := False;
                 MainForm.FDQuery2.SQL.Clear;
                 MainForm.FDQuery2.SQL.Text := 'SELECT code_p,nom_p,codebar_p,prixht_p,prixvd_p,prixvr_p,prixvg_p,prixva_p,prixva2_p,tva_p,perissable_p FROM produit WHERE code_p = ' + QuotedStr(IntToStr(CodeCB)) + 'OR' + ' LOWER(codebar_p) LIKE LOWER(' + QuotedStr(ProduitBonCtrGCbx.Text) + ')';
@@ -1111,14 +1110,30 @@ begin
                       begin //This is For Divers XXXX
                         CodeP:= 0;
                       end;
-                 end;
-              end;
+                 end
+
 
 
         end else
           begin
 
-           CodeP := StrToInt( Copy(ProduitBonCtrGCbx.Text,3,5) );
+           if Copy(ProduitBonCtrGCbx.Text,1,2) = '55' then
+           begin
+            isBalDIGI100:= True;
+            CodeP := StrToInt( Copy(ProduitBonCtrGCbx.Text,3,5) );
+//             BalQut:= (StrToFloat( Copy(ProduitBonCtrGCbx.Text,8,5 )) /100)/MainForm.FDQuery2.FieldByName('prixvd_p').AsCurrency;  // divid by 1000 cuz in codebare qut = AAAAA
+
+             BalQut:= (StrToFloat( Copy(ProduitBonCtrGCbx.Text,8,5 )) /1000)  //becouse i managed to do qut in rightdata in codebar by using balance config
+           end else
+           if Copy(ProduitBonCtrGCbx.Text,1,2) = '25' then
+           begin
+            isBalRLS1000:= True;
+            CodeP := StrToInt( Copy(ProduitBonCtrGCbx.Text,4,5) );
+            BalQut:= (StrToFloat( Copy(ProduitBonCtrGCbx.Text,9,4 )) / 1000 )  //becouse i managed to do qut in rightdata in codebar by using balance config
+           end;
+
+
+//           CodeP := StrToInt( Copy(ProduitBonCtrGCbx.Text,3,5) );
 
            MainForm.FDQuery2.Active := False;
            MainForm.FDQuery2.SQL.Clear;
@@ -1126,9 +1141,6 @@ begin
            MainForm.FDQuery2.Active := True;
 
 
-//           BalQut:= (StrToFloat( Copy(ProduitBonCtrGCbx.Text,8,5 )) /100)/MainForm.FDQuery2.FieldByName('prixvd_p').AsCurrency;  // divid by 1000 cuz in codebare qut = AAAAA
-
-             BalQut:= (StrToFloat( Copy(ProduitBonCtrGCbx.Text,8,5 )) /1000)  //becouse i managed to do qut in rightdata in codebar by using balance config
           end;
 
         DataModuleF.PerissBona_recTable.Active := False;
@@ -1282,7 +1294,7 @@ begin
 
                   ComPort1.Close;
                 except
-//                 ShowMessage('Svp, brancher l''Afficheur Client ou désactiver le dans la configuration->utilites');
+//                 ShowMessage('Svp, brancher l''Afficheur Client ou dï¿½sactiver le dans la configuration->utilites');
                 end;
               end;
 
@@ -1375,7 +1387,7 @@ begin
 
                       ComPort1.Close;
                     except
-    //                 ShowMessage('Svp, brancher l''Afficheur Client ou désactiver le dans la configuration->utilites');
+    //                 ShowMessage('Svp, brancher l''Afficheur Client ou dï¿½sactiver le dans la configuration->utilites');
                     end;
                   end;
 
@@ -1467,7 +1479,7 @@ begin
 
                       ComPort1.Close;
                     except
-    //                 ShowMessage('Svp, brancher l''Afficheur Client ou désactiver le dans la configuration->utilites');
+    //                 ShowMessage('Svp, brancher l''Afficheur Client ou dï¿½sactiver le dans la configuration->utilites');
                     end;
                   end;
 
@@ -1484,7 +1496,9 @@ begin
           else
           begin
             //This is for adding qut if it the same produit
-            if (Panel1.Tag = 0) AND NOT(Copy(ProduitBonCtrGCbx.Text,1,1) = '-') AND NOT(Copy(ProduitBonCtrGCbx.Text,1,1) = '+') AND NOT TryStrToInt(Copy(ProduitBonCtrGCbx.Text,2,Length(ProduitBonCtrGCbx.Text)),Numcheck) then
+            if (Panel1.Tag = 0) AND NOT(Copy(ProduitBonCtrGCbx.Text,1,1) = '-') AND NOT(Copy(ProduitBonCtrGCbx.Text,1,1) = '+')
+            //AND NOT TryStrToInt(Copy(ProduitBonCtrGCbx.Text,2,Length(ProduitBonCtrGCbx.Text)),Numcheck)
+            then
             begin
               MainForm.Bonv_ctr_listTable.First;
               while not MainForm.Bonv_ctr_listTable.Eof do
@@ -1513,7 +1527,9 @@ begin
               end;
 
             end   //This is for deleting when it supression mode
-            else if (Panel1.Tag = 1) and (MainForm.Bonv_ctr_listTable.IsEmpty = False) AND NOT(Copy(ProduitBonCtrGCbx.Text,1,1) = '-') AND NOT(Copy(ProduitBonCtrGCbx.Text,1,1) = '+') AND NOT TryStrToInt(Copy(ProduitBonCtrGCbx.Text,2,Length(ProduitBonCtrGCbx.Text)),Numcheck) then
+            else if (Panel1.Tag = 1) and (MainForm.Bonv_ctr_listTable.IsEmpty = False) AND NOT(Copy(ProduitBonCtrGCbx.Text,1,1) = '-') AND NOT(Copy(ProduitBonCtrGCbx.Text,1,1) = '+')
+            //AND NOT TryStrToInt(Copy(ProduitBonCtrGCbx.Text,2,Length(ProduitBonCtrGCbx.Text)),Numcheck)
+            then
             begin
               MainForm.Bonv_ctr_listTable.First;
               while not MainForm.Bonv_ctr_listTable.Eof do
@@ -1634,7 +1650,7 @@ begin
 
                       ComPort1.Close;
                     except
-    //                 ShowMessage('Svp, brancher l''Afficheur Client ou désactiver le dans la configuration->utilites');
+    //                 ShowMessage('Svp, brancher l''Afficheur Client ou dï¿½sactiver le dans la configuration->utilites');
                     end;
                   end;
 
@@ -1724,7 +1740,7 @@ begin
 
                       ComPort1.Close;
                     except
-    //                 ShowMessage('Svp, brancher l''Afficheur Client ou désactiver le dans la configuration->utilites');
+    //                 ShowMessage('Svp, brancher l''Afficheur Client ou dï¿½sactiver le dans la configuration->utilites');
                     end;
                   end;
 
@@ -1797,7 +1813,7 @@ begin
 //          BonCtrGestionF. ComPort1.WriteUnicodeString(Msg+#13#10); // send test command
       BonCtrGestionF.ComPort1.Close;
     except
-//           ShowMessage('Svp, brancher l''Afficheur Client ou désactiver le dans la configuration->utilites');
+//           ShowMessage('Svp, brancher l''Afficheur Client ou dï¿½sactiver le dans la configuration->utilites');
     end;
   end;
 
@@ -1850,15 +1866,15 @@ begin
 //    MainForm.Bonv_CtrTable.Active:= True;
 //    MainForm.Bonv_ctrTable.EnableControls;
 //  end;
-  
-        
+
+
     MainForm.Bonv_ctr_listTable.Active := false;
     MainForm.Bonv_ctr_listTable.SQL.Clear;
     MainForm.Bonv_ctr_listTable.SQL.Text := BCLSQL ;
     MainForm.Bonv_ctr_listTable.Active := True;
     MainForm.Bonv_ctr_listTable.EnableControls;
-  
-  
+
+
 
   MainForm.Bonv_ctr_listTable.IndexFieldNames := 'code_bvctr';
 
@@ -1939,7 +1955,7 @@ begin
       begin
         sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT or SND_ASYNC or SND_RING);
         ClientBonCtrGCbx.StyleElements := [];
-        RequiredClientGlbl.Caption := 'Ce Client est bloqué';
+        RequiredClientGlbl.Caption := 'Ce Client est bloquï¿½';
         RequiredClientGlbl.Visible := True;
         NameClientGErrorP.Visible := True;
         ClientBonCtrGCbx.SetFocus;
@@ -2116,7 +2132,7 @@ begin
       begin
         sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT or SND_ASYNC or SND_RING);
         ClientBonCtrGCbx.StyleElements := [];
-        RequiredClientGlbl.Caption := 'Ce Client est bloqué';
+        RequiredClientGlbl.Caption := 'Ce Client est bloquï¿½';
         RequiredClientGlbl.Visible := True;
         NameClientGErrorP.Visible := True;
         ClientBonCtrGCbx.SetFocus;
@@ -2224,12 +2240,12 @@ begin
           //------------ this will show notification if the price is lower the the achat price------------
       if MainForm.Bonv_ctr_listTable.FieldByName('prixvd_p').AsFloat < MainForm.SQLQuery.FieldByName('prixht_p').AsFloat then
       begin
-        Label3.Caption := 'Alerte !! Le prix de vente est inférieur au prix d''achat';
+        Label3.Caption := 'Alerte !! Le prix de vente est infï¿½rieur au prix d''achat';
         Timer2.Enabled := true;
       end
       else if MainForm.Bonv_ctr_listTable.FieldByName('prixvd_p').AsFloat = MainForm.SQLQuery.FieldByName('prixht_p').AsFloat then
       begin
-        Label3.Caption := 'Alerte !! Le prix de vente est égal au prix d''achat';
+        Label3.Caption := 'Alerte !! Le prix de vente est ï¿½gal au prix d''achat';
         Timer2.Enabled := true;
       end
       else
@@ -2419,7 +2435,7 @@ begin
 
           ComPort1.Close;
         except
-//                 ShowMessage('Svp, brancher l''Afficheur Client ou désactiver le dans la configuration->utilites');
+//                 ShowMessage('Svp, brancher l''Afficheur Client ou dï¿½sactiver le dans la configuration->utilites');
         end;
       end;
 
@@ -2561,7 +2577,7 @@ begin
       ComPort1.WriteUnicodeString(' ' + StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll]) + ' DA'#13#10);
       ComPort1.Close;
     except
-//           ShowMessage('Svp, brancher l''Afficheur Client ou désactiver le dans la configuration->utilites');
+//           ShowMessage('Svp, brancher l''Afficheur Client ou dï¿½sactiver le dans la configuration->utilites');
     end;
   end;
 
@@ -2678,7 +2694,7 @@ begin
         ComPort1.WriteUnicodeString(' ' + StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll]) + ' DA'#13#10);
         ComPort1.Close;
       except
-//           ShowMessage('Svp, brancher l''Afficheur Client ou désactiver le dans la configuration->utilites');
+//           ShowMessage('Svp, brancher l''Afficheur Client ou dï¿½sactiver le dans la configuration->utilites');
       end;
     end;
 
@@ -2851,11 +2867,11 @@ begin
   begin
     FastProduitsListF.ProduitsListDBGridEh.Columns[I].Visible:= False;
   end;
-    
+
   //Change the dataSet
   FastProduitsListF.ProduitListDataS.DataSet:= MainForm.FDQuery2;
   FastProduitsListF.ProduitsListDBGridEh.Columns[0].FieldName:='code_c';
-  FastProduitsListF.ProduitsListDBGridEh.Columns[0].Title.Caption:='N°';
+  FastProduitsListF.ProduitsListDBGridEh.Columns[0].Title.Caption:='Nï¿½';
   FastProduitsListF.ProduitsListDBGridEh.Columns[0].Visible:= True;
   FastProduitsListF.ProduitsListDBGridEh.Columns[0].Width:= 70;
 
@@ -2865,17 +2881,17 @@ begin
   FastProduitsListF.ProduitsListDBGridEh.Columns[1].Width:= 300;
 
   FastProduitsListF.ProduitsListDBGridEh.Columns[2].FieldName:='activite_c';
-  FastProduitsListF.ProduitsListDBGridEh.Columns[2].Title.Caption:='Activité';
+  FastProduitsListF.ProduitsListDBGridEh.Columns[2].Title.Caption:='Activitï¿½';
   FastProduitsListF.ProduitsListDBGridEh.Columns[2].Visible:= True;
   FastProduitsListF.ProduitsListDBGridEh.Columns[2].Width:= 130;;
 
   FastProduitsListF.ProduitsListDBGridEh.Columns[3].FieldName:='fix_c';
-  FastProduitsListF.ProduitsListDBGridEh.Columns[3].Title.Caption:='Téléphone';
+  FastProduitsListF.ProduitsListDBGridEh.Columns[3].Title.Caption:='Tï¿½lï¿½phone';
   FastProduitsListF.ProduitsListDBGridEh.Columns[3].Visible:= True;
   FastProduitsListF.ProduitsListDBGridEh.Columns[3].Width:= 130;;
 
   FastProduitsListF.ProduitsListDBGridEh.Columns[4].FieldName:='mob_c';
-  FastProduitsListF.ProduitsListDBGridEh.Columns[4].Title.Caption:='Téléphone';
+  FastProduitsListF.ProduitsListDBGridEh.Columns[4].Title.Caption:='Tï¿½lï¿½phone';
   FastProduitsListF.ProduitsListDBGridEh.Columns[4].Visible:= True;
   FastProduitsListF.ProduitsListDBGridEh.Columns[4].Width:= 130;;
 
@@ -2885,11 +2901,11 @@ begin
   FastProduitsListF.ProduitsListDBGridEh.Columns[5].Width:= 150;;
 
   FastProduitsListF.ProduitsListDBGridEh.Columns[6].FieldName:='credit_c';
-  FastProduitsListF.ProduitsListDBGridEh.Columns[6].Title.Caption:='Crédit';
+  FastProduitsListF.ProduitsListDBGridEh.Columns[6].Title.Caption:='Crï¿½dit';
   FastProduitsListF.ProduitsListDBGridEh.Columns[6].Visible:= True;
   FastProduitsListF.ProduitsListDBGridEh.Columns[6].Width:= 130;;
-  
-  
+
+
   FastProduitsListF.ProduitsListDBGridEh.Refresh;
 
 //-------- Show the splash screan for the produit familly to add new one---------//
@@ -2957,7 +2973,7 @@ begin
   if (MainForm.Bonv_ctrTable.FieldByName('num_bvctr').AsString <> '') AND (MainForm.Bonv_ctrTable.FieldByName('num_bvctr').AsString <> null) then
   begin
     NumBonCtrGEdt.Caption := MainForm.Bonv_ctrTable.FieldByName('num_bvctr').AsString;
-    
+
   end;
 
   if (MainForm.Bonv_ctrTable.FieldByName('date_bvctr').AsDateTime <> null) then
@@ -3395,16 +3411,16 @@ begin
     MainForm.Bonv_ctrTable.FieldByName('valider_bvctr').AsBoolean := True;
     MainForm.Bonv_ctrTable.FieldValues['code_ur'] := StrToInt(MainForm.UserIDLbl.Caption);
 
-//          if (LowerCase(ModePaieBonCtrGCbx.Text)='espèce') OR (LowerCase(ModePaieBonCtrGCbx.Text)='espece') then
+//          if (LowerCase(ModePaieBonCtrGCbx.Text)='espï¿½ce') OR (LowerCase(ModePaieBonCtrGCbx.Text)='espece') then
 //          begin
 //           MainForm.Bonv_ctrTable.FieldValues['code_mdpai']:=1 ;
 //          end;
-//           if (LowerCase(ModePaieBonCtrGCbx.Text)='chèque') OR (LowerCase(ModePaieBonCtrGCbx.Text)='cheque') then
+//           if (LowerCase(ModePaieBonCtrGCbx.Text)='chï¿½que') OR (LowerCase(ModePaieBonCtrGCbx.Text)='cheque') then
 //          begin
 //           MainForm.Bonv_ctrTable.FieldValues['code_mdpai']:=2 ;
 //          end;
-//          if (LowerCase(ModePaieBonCtrGCbx.Text)='à terme' ) OR (LowerCase(ModePaieBonCtrGCbx.Text)='a terme' )
-//             OR (LowerCase(ModePaieBonCtrGCbx.Text)='À terme' ) then
+//          if (LowerCase(ModePaieBonCtrGCbx.Text)='ï¿½ terme' ) OR (LowerCase(ModePaieBonCtrGCbx.Text)='a terme' )
+//             OR (LowerCase(ModePaieBonCtrGCbx.Text)='ï¿½ terme' ) then
 //          begin
 //           MainForm.Bonv_ctrTable.FieldValues['code_mdpai']:=3 ;
 //          end;
@@ -3442,16 +3458,16 @@ begin
 
         MainForm.RegclientTable.FieldByName('montver_rc').AsCurrency := StrToCurr(StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
 
-//            if (LowerCase(BonCtrGestionF.ModePaieBonCtrGCbx.Text)='espèce') OR (LowerCase(ModePaieBonCtrGCbx.Text)='espece') then
+//            if (LowerCase(BonCtrGestionF.ModePaieBonCtrGCbx.Text)='espï¿½ce') OR (LowerCase(ModePaieBonCtrGCbx.Text)='espece') then
 //            begin
 //             MainForm.RegclientTable.FieldValues['code_mdpai']:=1 ;
 //            end;
-//             if (LowerCase(BonCtrGestionF.ModePaieBonCtrGCbx.Text)='chèque') OR (LowerCase(BonCtrGestionFodePaieBonCtrGCbx.Text)='cheque') then
+//             if (LowerCase(BonCtrGestionF.ModePaieBonCtrGCbx.Text)='chï¿½que') OR (LowerCase(BonCtrGestionFodePaieBonCtrGCbx.Text)='cheque') then
 //            begin
 //             MainForm.RegclientTable.FieldValues['code_mdpai']:=2 ;
 //            end;
-//            if (LowerCase(BonCtrGestionF.ModePaieBonCtrGCbx.Text)='à terme' ) OR (LowerCase(BonCtrGestionFModePaieBonCtrGCbx.Text)='a terme' )
-//               OR (LowerCase(BonCtrGestionF.ModePaieBonCtrGCbx.Text)='À terme' ) then
+//            if (LowerCase(BonCtrGestionF.ModePaieBonCtrGCbx.Text)='ï¿½ terme' ) OR (LowerCase(BonCtrGestionFModePaieBonCtrGCbx.Text)='a terme' )
+//               OR (LowerCase(BonCtrGestionF.ModePaieBonCtrGCbx.Text)='ï¿½ terme' ) then
 //            begin
 //             MainForm.RegclientTable.FieldValues['code_mdpai']:=3 ;
 //            end;
@@ -3483,16 +3499,16 @@ begin
 
         MainForm.RegclientTable.FieldByName('montver_rc').AsCurrency := StrToCurr(StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
 
-//                  if (LowerCase(ModePaieBonCtrGCbx.Text)='espèce') OR (LowerCase(ModePaieBonCtrGCbx.Text)='espece') then
+//                  if (LowerCase(ModePaieBonCtrGCbx.Text)='espï¿½ce') OR (LowerCase(ModePaieBonCtrGCbx.Text)='espece') then
 //                  begin
 //                   MainForm.RegclientTable.FieldValues['code_mdpai']:=1 ;
 //                  end;
-//                   if (LowerCase(BonCtrGestionF.ModePaieBonCtrGCbx.Text)='chèque') OR (LowerCase(ModePaieBonCtrGCbx.Text)='cheque') then
+//                   if (LowerCase(BonCtrGestionF.ModePaieBonCtrGCbx.Text)='chï¿½que') OR (LowerCase(ModePaieBonCtrGCbx.Text)='cheque') then
 //                  begin
 //                   MainForm.RegclientTable.FieldValues['code_mdpai']:=2 ;
 //                  end;
-//                  if (LowerCase(ModePaieBonCtrGCbx.Text)='à terme' ) OR (LowerCase(ModePaieBonCtrGCbx.Text)='a terme' )
-//                     OR (LowerCase(ModePaieBonCtrGCbx.Text)='À terme' ) then
+//                  if (LowerCase(ModePaieBonCtrGCbx.Text)='ï¿½ terme' ) OR (LowerCase(ModePaieBonCtrGCbx.Text)='a terme' )
+//                     OR (LowerCase(ModePaieBonCtrGCbx.Text)='ï¿½ terme' ) then
 //                  begin
 //                   MainForm.RegclientTable.FieldValues['code_mdpai']:=3 ;
 //                  end;
@@ -3551,21 +3567,21 @@ begin
         MainForm.Opt_cas_bnk_CaisseTable.FieldValues['date_ocb'] := DateOf(Today);
         MainForm.Opt_cas_bnk_CaisseTable.FieldValues['time_ocb'] := TimeOf(Now);
         ;
-        MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nom_ocb'] := 'Vente au Comptoir N° ' + NumBonCtrGEdt.Caption;
+        MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nom_ocb'] := 'Vente au Comptoir Nï¿½ ' + NumBonCtrGEdt.Caption;
         MainForm.Opt_cas_bnk_CaisseTable.FieldValues['third_ocb'] := ClientBonCtrGCbx.Text;
         MainForm.Opt_cas_bnk_CaisseTable.FieldValues['encaiss_ocb'] := StrToCurr(StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
             //        MainForm.Opt_cas_bnk_CaisseTable.FieldValues['decaiss_ocb']:= ;
 
-        //             if (LowerCase(ModePaieBonCtrGCbx.Text)='espèce') OR (LowerCase(ModePaieBonCtrGCbx.Text)='espece') then
+        //             if (LowerCase(ModePaieBonCtrGCbx.Text)='espï¿½ce') OR (LowerCase(ModePaieBonCtrGCbx.Text)='espece') then
         //            begin
         MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai'] := 1;
         //            end;
-        //             if (LowerCase(ModePaieBonCtrGCbx.Text)='chèque') OR (LowerCase(ModePaieBonCtrGCbx.Text)='cheque') then
+        //             if (LowerCase(ModePaieBonCtrGCbx.Text)='chï¿½que') OR (LowerCase(ModePaieBonCtrGCbx.Text)='cheque') then
         //            begin
         //             MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=2 ;
         //            end;
-        //            if (LowerCase(ModePaieBonCtrGCbx.Text)='à terme' ) OR (LowerCase(ModePaieBonCtrGCbx.Text)='a terme' )
-        //               OR (LowerCase(ModePaieBonCtrGCbx.Text)='À terme' ) then
+        //            if (LowerCase(ModePaieBonCtrGCbx.Text)='ï¿½ terme' ) OR (LowerCase(ModePaieBonCtrGCbx.Text)='a terme' )
+        //               OR (LowerCase(ModePaieBonCtrGCbx.Text)='ï¿½ terme' ) then
         //            begin
         //             MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=3 ;
         //            end;
@@ -3598,21 +3614,21 @@ begin
         MainForm.Opt_cas_bnk_CaisseTable.FieldValues['date_ocb'] := DateOf(Today);
         MainForm.Opt_cas_bnk_CaisseTable.FieldValues['time_ocb'] := TimeOf(Now);
         ;
-        MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nom_ocb'] := 'Vente au Comptoir N° ' + NumBonCtrGEdt.Caption;
+        MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nom_ocb'] := 'Vente au Comptoir Nï¿½ ' + NumBonCtrGEdt.Caption;
         MainForm.Opt_cas_bnk_CaisseTable.FieldValues['third_ocb'] := ClientBonCtrGCbx.Text;
         MainForm.Opt_cas_bnk_CaisseTable.FieldValues['encaiss_ocb'] := StrToCurr(StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
             //        MainForm.Opt_cas_bnk_CaisseTable.FieldValues['decaiss_ocb']:= ;
 
-        //             if (LowerCase(ModePaieBonCtrGCbx.Text)='espèce') OR (LowerCase(ModePaieBonCtrGCbx.Text)='espece') then
+        //             if (LowerCase(ModePaieBonCtrGCbx.Text)='espï¿½ce') OR (LowerCase(ModePaieBonCtrGCbx.Text)='espece') then
         //            begin
         MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai'] := 1;
         //            end;
-        //             if (LowerCase(ModePaieBonCtrGCbx.Text)='chèque') OR (LowerCase(ModePaieBonCtrGCbx.Text)='cheque') then
+        //             if (LowerCase(ModePaieBonCtrGCbx.Text)='chï¿½que') OR (LowerCase(ModePaieBonCtrGCbx.Text)='cheque') then
         //            begin
         //             MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=2 ;
         //            end;
-        //            if (LowerCase(ModePaieBonCtrGCbx.Text)='à terme' ) OR (LowerCase(ModePaieBonCtrGCbx.Text)='a terme' )
-        //               OR (LowerCase(ModePaieBonCtrGCbx.Text)='À terme' ) then
+        //            if (LowerCase(ModePaieBonCtrGCbx.Text)='ï¿½ terme' ) OR (LowerCase(ModePaieBonCtrGCbx.Text)='a terme' )
+        //               OR (LowerCase(ModePaieBonCtrGCbx.Text)='ï¿½ terme' ) then
         //            begin
         //             MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=3 ;
         //            end;
@@ -3854,7 +3870,7 @@ begin
 //          BonCtrGestionF. ComPort1.WriteUnicodeString(Msg+#13#10); // send test command
         BonCtrGestionF.ComPort1.Close;
       except
-//           ShowMessage('Svp, brancher l''Afficheur Client ou désactiver le dans la configuration->utilites');
+//           ShowMessage('Svp, brancher l''Afficheur Client ou dï¿½sactiver le dans la configuration->utilites');
       end;
     end;
 
@@ -3894,7 +3910,7 @@ begin
           ComPort1.WriteUnicodeString(Msg + #13#10); // send test command
           ComPort1.Close;
         except
-//           ShowMessage('Svp, brancher l''Afficheur Client ou désactiver le dans la configuration->utilites');
+//           ShowMessage('Svp, brancher l''Afficheur Client ou dï¿½sactiver le dans la configuration->utilites');
         end;
       end;
 
@@ -3909,6 +3925,8 @@ begin
 end;
 
 procedure TBonCtrGestionF.PrintTicketBVCtrBonCtrGBtnClick(Sender: TObject);
+var
+Ini: TIniFile;
 begin
 
   if PrinterCaisseSizeBVCtrBonCtrLbl.Caption = '80mm' then
@@ -3916,16 +3934,17 @@ begin
 
     if ValiderBVCtrBonCtrGImg.ImageIndex <> 1 then
     begin
+      Ini := TIniFile.Create(ChangeFileExt(Application.ExeName,'.ini')) ;
       MainForm.Bonv_ctr_listTable.DisableControls;
-      ComptoirTicketfrxRprt.PrepareReport;
+//      ComptoirTicketfrxRprt.PrepareReport;
       GettingData;
+//      ComptoirTicketfrxRprt.PrintOptions.Printer := FOptions.PrintersListFOptionCaisseCbx.Text;
+      ComptoirTicketfrxRprt.PrintOptions.Printer := Ini.ReadString('', 'Printer Caisse Text',ComptoirTicketfrxRprt.PrintOptions.Printer);
       ComptoirTicketfrxRprt.PrintOptions.ShowDialog := False;
       ComptoirTicketfrxRprt.PrepareReport;
-
-      ComptoirTicketfrxRprt.PrintOptions.Printer := FOptions.PrintersListFOptionCaisseCbx.Text;
-
       ComptoirTicketfrxRprt.Print;
       MainForm.Bonv_ctr_listTable.EnableControls;
+      Ini.Free;
     end;
   end;
 
@@ -3934,15 +3953,17 @@ begin
 
     if ValiderBVCtrBonCtrGImg.ImageIndex <> 1 then
     begin
+      Ini := TIniFile.Create(ChangeFileExt(Application.ExeName,'.ini')) ;
       MainForm.Bonv_ctr_listTable.DisableControls;
-      ComptoirTicket57frxRprt.PrepareReport;
+//      ComptoirTicket57frxRprt.PrepareReport;
       GettingData57;
+//      ComptoirTicketfrxRprt.PrintOptions.Printer := FOptions.PrintersListFOptionCaisseCbx.Text;
+      ComptoirTicketfrxRprt.PrintOptions.Printer := Ini.ReadString('', 'Printer Caisse Text',ComptoirTicketfrxRprt.PrintOptions.Printer);
       ComptoirTicket57frxRprt.PrintOptions.ShowDialog := False;
       ComptoirTicket57frxRprt.PrepareReport;
-
-      ComptoirTicket57frxRprt.PrintOptions.Printer := FOptions.PrintersListFOptionCaisseCbx.Text;
       ComptoirTicket57frxRprt.Print;
       MainForm.Bonv_ctr_listTable.EnableControls;
+      Ini.Free;
     end;
   end;
 
@@ -3953,7 +3974,7 @@ begin
   GettingData;
   MainForm.Bonv_ctr_listTable.DisableControls;
   ComptoirTicketfrxRprt.PrepareReport;
-  frxXLSExport1.FileName := 'Ticket De Caisse N° ' + IntToStr(YearOf(Today)) + '-' + Format('%.*d', [5, (MainForm.Bonv_ctrTable.FieldByName('code_bvctr').AsInteger)]);
+  frxXLSExport1.FileName := 'Ticket De Caisse Nï¿½ ' + IntToStr(YearOf(Today)) + '-' + Format('%.*d', [5, (MainForm.Bonv_ctrTable.FieldByName('code_bvctr').AsInteger)]);
   ComptoirTicketfrxRprt.Export(frxXLSExport1);
   MainForm.Bonv_ctr_listTable.EnableControls;
 end;
@@ -3964,7 +3985,7 @@ begin
   MainForm.Bonv_ctr_listTable.DisableControls;
   ComptoirTicketfrxRprt.PrepareReport;
 
-  frxPDFExport1.FileName := 'Ticket De Caisse N° ' + IntToStr(YearOf(Today)) + '-' + Format('%.*d', [5, (MainForm.Bonv_ctrTable.FieldByName('code_bvctr').AsInteger)]);
+  frxPDFExport1.FileName := 'Ticket De Caisse Nï¿½ ' + IntToStr(YearOf(Today)) + '-' + Format('%.*d', [5, (MainForm.Bonv_ctrTable.FieldByName('code_bvctr').AsInteger)]);
 
   frxPDFExport1.EmbeddedFonts := True;
 
@@ -4026,7 +4047,7 @@ begin
       BonCtrGestionF.ComPort1.WriteUnicodeString(Msg + #13#10); // send test command
       BonCtrGestionF.ComPort1.Close;
     except
-//           ShowMessage('Svp, brancher l''Afficheur Client ou désactiver le dans la configuration->utilites');
+//           ShowMessage('Svp, brancher l''Afficheur Client ou dï¿½sactiver le dans la configuration->utilites');
     end;
   end;
   Ini.UpdateFile;
@@ -4091,7 +4112,7 @@ begin
       begin
         sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT or SND_ASYNC or SND_RING);
         ClientBonCtrGCbx.StyleElements := [];
-        RequiredClientGlbl.Caption := 'Ce Client est bloqué';
+        RequiredClientGlbl.Caption := 'Ce Client est bloquï¿½';
         RequiredClientGlbl.Visible := True;
         NameClientGErrorP.Visible := True;
         ClientBonCtrGCbx.SetFocus;
@@ -4185,6 +4206,7 @@ begin
 
   MainForm.SQLQuery.Active := False;
   MainForm.SQLQuery.SQL.Clear;
+
 
   MainForm.Bonv_ctr_listTable.Refresh;
   BonCtrTotalTTCLbl.Caption :=    CurrToStrF(0, ffNumber, 2);
@@ -4682,7 +4704,7 @@ begin
 
           ComPort1.Close;
         except
-//           ShowMessage('Svp, brancher l''Afficheur Client ou désactiver le dans la configuration->utilites');
+//           ShowMessage('Svp, brancher l''Afficheur Client ou dï¿½sactiver le dans la configuration->utilites');
         end;
       end;
 
@@ -4913,7 +4935,7 @@ begin
             MainForm.Opt_cas_bnk_CaisseTable.FieldValues['date_ocb'] := DateBonCtrGD.DateTime;
             MainForm.Opt_cas_bnk_CaisseTable.FieldValues['time_ocb'] := TimeOf(Now);
             ;
-            MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nom_ocb'] := 'Vente au Comptoir N° ' + NumBonCtrGEdt.Caption;
+            MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nom_ocb'] := 'Vente au Comptoir Nï¿½ ' + NumBonCtrGEdt.Caption;
             MainForm.Opt_cas_bnk_CaisseTable.FieldValues['third_ocb'] := ClientBonCtrGCbx.Text;
             MainForm.Opt_cas_bnk_CaisseTable.FieldValues['encaiss_ocb'] := StrToCurr(StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
 
@@ -4950,7 +4972,7 @@ begin
               MainForm.Opt_cas_bnk_CaisseTable.FieldValues['date_ocb'] := DateBonCtrGD.DateTime;
               MainForm.Opt_cas_bnk_CaisseTable.FieldValues['time_ocb'] := TimeOf(Now);
               ;
-              MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nom_ocb'] := 'Vente au Comptoir N° ' + NumBonCtrGEdt.Caption;
+              MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nom_ocb'] := 'Vente au Comptoir Nï¿½ ' + NumBonCtrGEdt.Caption;
               MainForm.Opt_cas_bnk_CaisseTable.FieldValues['third_ocb'] := ClientBonCtrGCbx.Text;
               MainForm.Opt_cas_bnk_CaisseTable.FieldValues['encaiss_ocb'] := StrToCurr(StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
 
@@ -4990,7 +5012,7 @@ begin
               MainForm.Opt_cas_bnk_CaisseTable.FieldValues['date_ocb'] := DateBonCtrGD.DateTime;
               MainForm.Opt_cas_bnk_CaisseTable.FieldValues['time_ocb'] := TimeOf(Now);
               ;
-              MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nom_ocb'] := 'Vente au Comptoir N° ' + NumBonCtrGEdt.Caption;
+              MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nom_ocb'] := 'Vente au Comptoir Nï¿½ ' + NumBonCtrGEdt.Caption;
               MainForm.Opt_cas_bnk_CaisseTable.FieldValues['third_ocb'] := ClientBonCtrGCbx.Text;
               MainForm.Opt_cas_bnk_CaisseTable.FieldValues['encaiss_ocb'] := StrToCurr(StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
 
@@ -5025,6 +5047,10 @@ begin
       begin
         PrintTicketBVCtrBonCtrGBtnClick(Sender);
       end;
+
+      // Here we create new empty bon
+      AddBVCtrBonCtrGBtnClick(Sender);
+
     end
     else
     begin
@@ -5141,7 +5167,7 @@ begin
 
     if ( CodeP <> 0 ) AND (CodeP <> Null) then
    begin
-   
+
     MainForm.FDQuery2.Active := false;
     MainForm.FDQuery2.SQL.Clear;
     MainForm.FDQuery2.SQL.Text :=
@@ -5242,7 +5268,7 @@ begin
 
           ComPort1.Close;
         except
-//                 ShowMessage('Svp, brancher l''Afficheur Client ou désactiver le dans la configuration->utilites');
+//                 ShowMessage('Svp, brancher l''Afficheur Client ou dï¿½sactiver le dans la configuration->utilites');
         end;
       end;
 
@@ -5318,7 +5344,7 @@ begin
       end;
 
     end;
-    
+
    end;
 
     MainForm.FDQuery2.Active := false;
@@ -5354,7 +5380,7 @@ begin
 //   ProduitsListDBGridEh.ShowHint:= True;
 //
 //     ChangeHint(TDBGridEh(Sender),
-//      ( 'Dés: '+ (MainForm.Bonv_ctr_listTable.FieldValues['nomp'])
+//      ( 'Dï¿½s: '+ (MainForm.Bonv_ctr_listTable.FieldValues['nomp'])
 //       + sLineBreak +
 //         'Prix HT= '+ CurrToStrF((MainForm.Bonv_ctr_listTable.FieldValues['prixht_p']),ffNumber,2)
 //       + sLineBreak +

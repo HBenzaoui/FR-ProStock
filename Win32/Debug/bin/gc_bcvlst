@@ -11,6 +11,6 @@
 10~ montttc_bvcom~ Montant TTC~ 150~ -1
 11~ montver_bvcom~ Montant Versé~ 150~ -1
 12~ montantres~ Montant Resté~ 150~ -1
-13~ montaht_bvcom~ Montant A HT~ 0~ 0
+13~ montaht_bvcom~ Montant A HT~ 150~ -1
 14~ marge_bvcom~ Marge~ 150~ -1
 15~ Agent~ Agent~ 150~ -1

@@ -26,7 +26,7 @@ object FSplashVersement: TFSplashVersement
   object Label3: TLabel
     Left = 8
     Top = 86
-    Width = 92
+    Width = 97
     Height = 18
     Anchors = [akLeft, akBottom]
     Caption = 'Ancien Solde:'
@@ -55,7 +55,7 @@ object FSplashVersement: TFSplashVersement
   object Label9: TLabel
     Left = 8
     Top = 225
-    Width = 75
+    Width = 79
     Height = 18
     Anchors = [akLeft, akBottom]
     Caption = 'Versement:'
@@ -69,7 +69,7 @@ object FSplashVersement: TFSplashVersement
   object Label10: TLabel
     Left = 8
     Top = 296
-    Width = 65
+    Width = 67
     Height = 18
     Anchors = [akLeft, akBottom]
     Caption = 'Le Reste:'

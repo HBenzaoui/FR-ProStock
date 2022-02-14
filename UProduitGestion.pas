@@ -116,6 +116,8 @@ type
     DatePerProduitGD: TDateTimePicker;
     ShowKeyBoardProduitGBtn: TAdvToolButton;
     Shape1: TShape;
+    PMPProduitLbl: TLabel;
+    PMPProduitEdt: TEdit;
     procedure ShowCalculaturProduitGBtnClick(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);

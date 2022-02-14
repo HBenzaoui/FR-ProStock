@@ -3,7 +3,7 @@ object LoginUserF: TLoginUserF
   Top = 0
   BorderStyle = bsNone
   Caption = 'LoginUserF'
-  ClientHeight = 200
+  ClientHeight = 237
   ClientWidth = 398
   Color = 15527148
   Font.Charset = DEFAULT_CHARSET
@@ -19,15 +19,14 @@ object LoginUserF: TLoginUserF
   OnShow = FormShow
   DesignSize = (
     398
-    200)
+    237)
   PixelsPerInch = 96
   TextHeight = 13
   object UserL: TLabel
     Left = 111
-    Top = 64
+    Top = 101
     Width = 60
     Height = 16
-    Anchors = []
     Caption = 'Utilisateur'
     Color = 15722984
     Font.Charset = DEFAULT_CHARSET
@@ -41,10 +40,9 @@ object LoginUserF: TLoginUserF
   end
   object PasswordL: TLabel
     Left = 90
-    Top = 112
+    Top = 144
     Width = 81
     Height = 16
-    Anchors = []
     Caption = 'Mot de Passe'
     Color = 15722984
     Font.Charset = DEFAULT_CHARSET
@@ -58,7 +56,7 @@ object LoginUserF: TLoginUserF
   end
   object Image1: TImage
     Left = 14
-    Top = 61
+    Top = 74
     Width = 65
     Height = 70
     Picture.Data = {
@@ -580,7 +578,7 @@ object LoginUserF: TLoginUserF
   end
   object PassCheckEroorGLbl: TLabel
     Left = 178
-    Top = 89
+    Top = 124
     Width = 209
     Height = 15
     Alignment = taCenter
@@ -600,7 +598,7 @@ object LoginUserF: TLoginUserF
   end
   object UserCheckEroorGLbl: TLabel
     Left = 178
-    Top = 42
+    Top = 80
     Width = 209
     Height = 15
     Alignment = taCenter
@@ -618,9 +616,25 @@ object LoginUserF: TLoginUserF
     WordWrap = True
     StyleElements = [seClient, seBorder]
   end
+  object FolderL: TLabel
+    Left = 125
+    Top = 59
+    Width = 46
+    Height = 16
+    Caption = 'Dossier'
+    Color = 15722984
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = 4207405
+    Font.Height = 16
+    Font.Name = 'Roboto'
+    Font.Style = []
+    ParentColor = False
+    ParentFont = False
+    StyleElements = []
+  end
   object UserCheckGErrorP: TPanel
     Left = 177
-    Top = 57
+    Top = 94
     Width = 211
     Height = 30
     BevelOuter = bvNone
@@ -637,7 +651,7 @@ object LoginUserF: TLoginUserF
   end
   object PassCheckGErrorP: TPanel
     Left = 177
-    Top = 105
+    Top = 137
     Width = 211
     Height = 30
     BevelOuter = bvNone
@@ -673,10 +687,10 @@ object LoginUserF: TLoginUserF
   end
   object LineP: TPanel
     Left = 0
-    Top = 150
+    Top = 178
     Width = 398
     Height = 2
-    Anchors = [akLeft, akTop, akRight]
+    Anchors = []
     BevelOuter = bvNone
     Color = 12148480
     ParentBackground = False
@@ -685,7 +699,7 @@ object LoginUserF: TLoginUserF
   end
   object OKP: TPanel
     Left = 170
-    Top = 157
+    Top = 189
     Width = 110
     Height = 38
     Anchors = []
@@ -726,13 +740,13 @@ object LoginUserF: TLoginUserF
       Shaded = False
       Spacing = -1
       OnClick = LoginBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
   end
   object CancelP: TPanel
     Left = 282
-    Top = 157
+    Top = 189
     Width = 110
     Height = 38
     Anchors = []
@@ -777,16 +791,15 @@ object LoginUserF: TLoginUserF
       Shaded = False
       Spacing = -1
       OnClick = CancelBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
   end
   object UserCbx: TComboBox
     Left = 179
-    Top = 59
+    Top = 96
     Width = 207
     Height = 26
-    Anchors = []
     Ctl3D = True
     DoubleBuffered = True
     Font.Charset = DEFAULT_CHARSET
@@ -805,7 +818,7 @@ object LoginUserF: TLoginUserF
   end
   object PasswordEdt: TcxTextEdit
     Left = 179
-    Top = 107
+    Top = 139
     ParentFont = False
     Properties.EchoMode = eemPassword
     Properties.PasswordChar = #8226
@@ -822,5 +835,25 @@ object LoginUserF: TLoginUserF
     OnKeyPress = PasswordEdtKeyPress
     OnMouseEnter = PasswordEdtMouseEnter
     Width = 207
+  end
+  object FolderCbx: TComboBox
+    Left = 179
+    Top = 54
+    Width = 207
+    Height = 26
+    Style = csDropDownList
+    Ctl3D = True
+    DoubleBuffered = True
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = 4207405
+    Font.Height = 18
+    Font.Name = 'Helvetica LT Std'
+    Font.Style = []
+    ParentCtl3D = False
+    ParentDoubleBuffered = False
+    ParentFont = False
+    TabOrder = 8
+    StyleElements = [seClient, seBorder]
+    OnEnter = FolderCbxEnter
   end
 end

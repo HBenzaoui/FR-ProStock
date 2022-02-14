@@ -68,6 +68,7 @@ type
     procedure DisableBonFacP;
     procedure DisableBonComA;
     procedure DisableBonComV;
+    procedure DisableBonRetV;
 
   end;
 
@@ -78,7 +79,7 @@ implementation
 
 uses System.Contnrs,
   UMainF, UClientGestion, UBonRecGestion, UBonLivGestion, UBonFacVGestion,
-  UBonFacAGestion, UComptoir, UDataModule, UBonFacPGestion, UBonComAGestion, UBonComVGestion;
+  UBonFacAGestion, UComptoir, UDataModule, UBonFacPGestion, UBonComAGestion, UBonComVGestion, UBonRetVGestion;
 
 {$R *.dfm}
 
@@ -205,6 +206,65 @@ begin
           BonComVGestionF.EditBVComBonComGBtn.ImageIndex:=5; // 29 For A
           BonComVGestionF.ValiderBVComBonComGBtn.ImageIndex:=30; // 12 For A
           BonComVGestionF.ValiderBVComBonComGBtn.Enabled:= False;
+end;
+
+procedure TFSplashVersement.DisableBonRetV;
+begin
+
+
+          BonRetVGestionF.DateBonRetVGD.Enabled:= False;
+          BonRetVGestionF.ObserBonRetVGMem.Enabled:= False;
+          BonRetVGestionF.ClientBonRetVGCbx.Enabled:= False;
+          BonRetVGestionF.ListClientBonRetGBtn.Enabled:= False;
+          BonRetVGestionF.ListClientBonRetGBtn.ImageIndex:= 61;
+          BonRetVGestionF.AddClientBonRetGBtn.Enabled:= False ; //
+          BonRetVGestionF.AddClientBonRetGBtn.ImageIndex:=35;//10 fo A
+          BonRetVGestionF.ModePaieBonRetVGCbx.Enabled:= False;
+          BonRetVGestionF.AddModePaieBonRetGBtn.Enabled:= False ;
+          BonRetVGestionF.AddModePaieBonRetGBtn.ImageIndex:=35;//10 fo A
+          BonRetVGestionF.CompteBonRetVGCbx.Enabled:= False;
+          BonRetVGestionF.AddCompteBonRetGBtn.Enabled:= False ;
+          BonRetVGestionF.AddCompteBonRetGBtn.ImageIndex:=35;//10 fo A
+          BonRetVGestionF.NChequeBonRetVGCbx.Enabled:= False;
+          BonRetVGestionF.ProduitBonRetGCbx.Enabled:= False;
+          BonRetVGestionF.EnterAddProduitBonRetGBtn.Enabled:= False;
+          BonRetVGestionF.EnterAddProduitBonRetGBtn.ImageIndex:=40;//15 fo A
+          BonRetVGestionF.ListAddProduitBonRetGBtn.Enabled:= False;
+          BonRetVGestionF.ListAddProduitBonRetGBtn.ImageIndex:=41;//13 fo A
+          BonRetVGestionF.NewAddProduitBonRetGBtn.Enabled:= False;
+          BonRetVGestionF.NewAddProduitBonRetGBtn.ImageIndex:=28;//4 fo A
+          BonRetVGestionF.DeleteProduitBonRetGBtn.Enabled:= False;
+          BonRetVGestionF.DeleteProduitBonRetGBtn.ImageIndex:=36;//14 fo A
+          BonRetVGestionF.ClearProduitBonRetGBtn.Enabled:= False;
+          BonRetVGestionF.ClearProduitBonRetGBtn.ImageIndex:=39;//16 fo A
+//          BonRetVGestionF.ProduitsListDBGridEh.DataSource.DataSet.DisableControls;//EnableControls    For A
+          BonRetVGestionF.ProduitsListDBGridEh.Columns[2].TextEditing :=False;//True for A
+          BonRetVGestionF.ProduitsListDBGridEh.Columns[3].TextEditing:=False;//True for A
+          BonRetVGestionF.ProduitsListDBGridEh.Columns[4].TextEditing:=False;//True for A
+          BonRetVGestionF.ProduitsListDBGridEh.Options:=
+          BonRetVGestionF.ProduitsListDBGridEh.Options + [dgRowSelect]-[dgAlwaysShowSelection]-[dgMultiSelect] ; //flip + and -  for A
+          BonRetVGestionF.ProduitsListDBGridEh.Color:= $00EFE9E8;// clWhite for A
+          BonRetVGestionF.ProduitsListDBGridEh.FixedColor:=$00D9D7D3;//clwindow for A
+          BonRetVGestionF.ProduitsListDBGridEh.EvenRowColor:=$00D9D7D3;//clwindow for A
+          BonRetVGestionF.RemisePerctageBonRetVGEdt.Enabled:=False;//True for A
+          BonRetVGestionF.RemiseBonRetVGEdt.Enabled:=False;//True for A
+          BonRetVGestionF.RemiseTypeBonRetGCbx.Enabled:= False;//True for A;
+
+          BonRetVGestionF.ResherchPARDesProduitsRdioBtn.Enabled:= False;//True for A
+          BonRetVGestionF.ResherchPARRefProduitsRdioBtn.Enabled:= False;//True for A                                   Ce bon n'est pas encore valid�
+          BonRetVGestionF.ResherchPARCBProduitsRdioBtn.Enabled:= False;//True for A
+
+          BonRetVGestionF.ValiderBVRetBonRetGImg.ImageIndex:=0;//1 fo A
+          BonRetVGestionF.ValiderBVRetBonRetGLbl.Color:=$004AC38B;// $007374FF for A
+          BonRetVGestionF.ValiderBVRetBonRetGLbl.Font.Color:= clBlack;// clWhite for A
+          BonRetVGestionF.ValiderBVRetBonRetGLbl.Caption:='Ce bon est Valid�';// 'Ce bon n''est pas encore Valid�' for A
+
+          BonRetVGestionF.AddBVRetBonRetGBtn.Enabled:= True;
+          BonRetVGestionF.AddBVRetBonRetGBtn.ImageIndex:=4;// 28 For A
+          BonRetVGestionF.EditBVRetBonRetGBtn.Enabled:= True;
+          BonRetVGestionF.EditBVRetBonRetGBtn.ImageIndex:=5; // 29 For A
+          BonRetVGestionF.ValiderBVRetBonRetGBtn.ImageIndex:=30; // 12 For A
+          BonRetVGestionF.ValiderBVRetBonRetGBtn.Enabled:= False;
 end;
 
 
@@ -974,6 +1034,28 @@ begin
 
 end;
 
+function CalcPMPonRec(CodeP: Integer): Double;
+begin
+
+
+
+   MainForm.Sqlquery3.Active:=False;
+   MainForm.Sqlquery3.Sql.Clear;
+   MainForm.Sqlquery3.Sql.Text:='SELECT prixht_p, qut_p ,qutini_p from produit WHERE code_p =' + IntToStr (CodeP) ;
+   MainForm.Sqlquery3.Active:=True;
+
+  Result:=
+  ((MainForm.Sqlquery3.FieldValues['prixht_p'] * (MainForm.Sqlquery3.FieldValues['qut_p'] + MainForm.Sqlquery3.FieldValues['qutini_p']))
+  +(MainForm.FDQuery2.FieldValues['prixht_p'] * MainForm.FDQuery2.FieldValues['qut_p']))
+  / (MainForm.Sqlquery3.FieldValues['qut_p'] + MainForm.Sqlquery3.FieldValues['qutini_p'] + MainForm.FDQuery2.FieldValues['qut_p']);
+
+   MainForm.Sqlquery3.Active:=False;
+   MainForm.Sqlquery3.Sql.Clear;
+
+
+
+end;
+
 procedure TFSplashVersement.OKVersementSBtnClick(Sender: TObject);
 var CodeOCB,CodeRF: Integer;
 
@@ -981,6 +1063,7 @@ Ini: TIniFile;
 PoleA,CaisseA : Boolean;
 PORT,Msg2 : string;
 Total: Integer;
+PMP_P : Double;
 begin
 //--------- this tag = 1 is for validating a bon recption-------------------
 
@@ -1006,7 +1089,7 @@ begin
       begin
            Mainform.Sqlquery.Active:=False;
            Mainform.Sqlquery.Sql.Clear;
-           Mainform.Sqlquery.Sql.Text:='SELECT code_barecl,code_p,  qut_p, cond_p , prixht_p,tva_p,prixvd_p,prixvr_p,prixvg_p,prixva_p,prixva2_p,qutinstock_p FROM bona_rec_list WHERE code_barec =  '
+           Mainform.Sqlquery.Sql.Text:='SELECT code_barecl,code_p, qut_p, cond_p, prixht_p,tva_p,prixvd_p,prixvr_p,prixvg_p,prixva_p,prixva2_p,qutinstock_p FROM bona_rec_list WHERE code_barec =  '
                                                  + IntToStr (MainForm.Bona_recTable.FieldValues['code_barec'])
                                                  + 'GROUP BY code_barecl, code_p, qut_p, cond_p,prixht_p,tva_p,prixvd_p,prixvr_p,prixvg_p,prixva_p,prixva2_p,qutinstock_p' ;
            MainForm.SQLQuery.Active:=True;
@@ -1016,14 +1099,18 @@ begin
            begin
             MainForm.FDQuery2.Active:=False;
             MainForm.FDQuery2.SQL.Clear;
-            MainForm.FDQuery2.SQL.Text:='SELECT code_p,qut_p,prixht_p,tva_p,prixvd_p,prixvr_p,prixvg_p,prixva_p,prixva2_p FROM produit WHERE code_p = '
+            MainForm.FDQuery2.SQL.Text:='SELECT code_p,qut_p,prixht_p,pmp_p,tva_p,prixvd_p,prixvr_p,prixvg_p,prixva_p,prixva2_p FROM produit WHERE code_p = '
             +IntToStr(MainForm.SQLQuery.FieldByName('code_p').AsInteger) ;
             MainForm.FDQuery2.Active:=True;
+
+
 
             MainForm.FDQuery2.Edit;
             MainForm.FDQuery2.FieldValues['qut_p']:= ((MainForm.SQLQuery.FieldValues['qut_p']) * ((MainForm.SQLQuery.FieldValues['cond_p']))
                                                          + MainForm.FDQuery2.FieldValues['qut_p']);
-            MainForm.FDQuery2.FieldValues['prixht_p']:= MainForm.SQLQuery.FieldValues['prixht_p'];
+//            we dont change prix achter bcuz we use pmp
+//            MainForm.FDQuery2.FieldValues['prixht_p']:= MainForm.SQLQuery.FieldValues['prixht_p'];
+            MainForm.FDQuery2.FieldByName('pmp_p').AsCurrency:=  CalcPMPonRec(MainForm.SQLQuery.FieldByName('code_p').AsInteger);
             MainForm.FDQuery2.FieldValues['tva_p']:= MainForm.SQLQuery.FieldValues['tva_p'];
             MainForm.FDQuery2.FieldByName('prixvd_p').AsCurrency:=  MainForm.SQLQuery.FieldByName('prixvd_p').AsCurrency;
             MainForm.FDQuery2.FieldByName('prixvr_p').AsCurrency:=  MainForm.SQLQuery.FieldByName('prixvr_p').AsCurrency;

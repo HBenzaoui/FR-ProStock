@@ -1047,7 +1047,7 @@ object ClientListF: TClientListF
       ShowHint = True
       Spacing = -1
       OnClick = EditClientsBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object DeleteClientsBtn: TAdvToolButton
@@ -1079,7 +1079,7 @@ object ClientListF: TClientListF
       ShowHint = True
       Spacing = -2
       OnClick = DeleteClientsBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object AddClientsBtn: TAdvToolButton
@@ -1111,7 +1111,7 @@ object ClientListF: TClientListF
       ShowHint = True
       Spacing = -1
       OnClick = AddClientsBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object ResearchClientsLbl: TLabel
@@ -1182,13 +1182,12 @@ object ClientListF: TClientListF
       Height = 30
       Hint = 'Modifer'
       Anchors = [akTop, akRight]
+      ImageIndex = 9
+      Images = MainForm.PanelIcons24
       ParentShowHint = False
       ShowHint = True
       Visible = False
       OnClick = sSpeedButton3Click
-      SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
-      ImageIndex = 9
       ExplicitLeft = 940
     end
     object FisrtClientbtn: TsSpeedButton
@@ -1196,12 +1195,11 @@ object ClientListF: TClientListF
       Top = 23
       Width = 25
       Height = 25
+      ImageIndex = 0
+      Images = MainForm.PanelIcons24
       ParentShowHint = False
       ShowHint = True
       OnClick = FisrtClientbtnClick
-      SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
-      ImageIndex = 0
       ShowCaption = False
     end
     object PreviosClientbtn: TsSpeedButton
@@ -1209,24 +1207,22 @@ object ClientListF: TClientListF
       Top = 23
       Width = 25
       Height = 25
+      ImageIndex = 1
+      Images = MainForm.PanelIcons24
       ParentShowHint = False
       ShowHint = True
       OnClick = PreviosClientbtnClick
-      SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
-      ImageIndex = 1
     end
     object NextClientbtn: TsSpeedButton
       Left = 367
       Top = 23
       Width = 25
       Height = 25
+      ImageIndex = 2
+      Images = MainForm.PanelIcons24
       ParentShowHint = False
       ShowHint = True
       OnClick = NextClientbtnClick
-      SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
-      ImageIndex = 2
       ShowCaption = False
     end
     object LastClientbtn: TsSpeedButton
@@ -1234,12 +1230,11 @@ object ClientListF: TClientListF
       Top = 23
       Width = 25
       Height = 25
+      ImageIndex = 3
+      Images = MainForm.PanelIcons24
       ParentShowHint = False
       ShowHint = True
       OnClick = LastClientbtnClick
-      SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
-      ImageIndex = 3
     end
     object Label26: TLabel
       Left = 535
@@ -1311,7 +1306,7 @@ object ClientListF: TClientListF
       Shaded = False
       ShowHint = True
       Spacing = -1
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object sImage1: TsImage
@@ -1598,7 +1593,7 @@ object ClientListF: TClientListF
       ShowHint = True
       Spacing = -2
       OnClick = SumGirdBBVlivBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object RefreshGirdBtn: TAdvToolButton
@@ -1632,7 +1627,7 @@ object ClientListF: TClientListF
       ShowHint = True
       Spacing = -2
       OnClick = RefreshGirdBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object AdvToolButton1: TAdvToolButton
@@ -1667,7 +1662,7 @@ object ClientListF: TClientListF
       Shaded = False
       ShowHint = True
       Spacing = -2
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object AdvToolButton2: TAdvToolButton
@@ -1701,7 +1696,7 @@ object ClientListF: TClientListF
       ShowHint = True
       Spacing = -2
       OnClick = AdvToolButton2Click
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object AdvToolButton3: TAdvToolButton
@@ -1735,7 +1730,7 @@ object ClientListF: TClientListF
       ShowHint = True
       Spacing = -2
       OnClick = AdvToolButton3Click
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object AdvToolButton4: TAdvToolButton
@@ -1769,7 +1764,7 @@ object ClientListF: TClientListF
       ShowHint = True
       Spacing = -2
       OnClick = AdvToolButton4Click
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object Panel6: TPanel
@@ -1840,6 +1835,7 @@ object ClientListF: TClientListF
     OverwritePrompt = True
     DataOnly = False
     EmbeddedFonts = True
+    InteractiveFormsFontSubset = 'A-Z,a-z,0-9,#43-#47 '
     OpenAfterExport = True
     PrintOptimized = False
     Outline = False
@@ -1914,7 +1910,7 @@ object ClientListF: TClientListF
     Top = 320
   end
   object ClientListfrxRprt: TfrxReport
-    Version = '6.3.12'
+    Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -2001,6 +1997,10 @@ object ClientListF: TClientListF
       Width = 1000.000000000000000000
     end
     object Page1: TfrxReportPage
+      VGuides.Strings = (
+        '309,92146'
+        '351,49629'
+        '593,38621')
       Orientation = poLandscape
       PaperWidth = 297.000000000000000000
       PaperHeight = 210.000000000000000000
@@ -2011,10 +2011,6 @@ object ClientListF: TClientListF
       BottomMargin = 10.000000000000000000
       Frame.Typ = []
       MirrorMode = []
-      VGuides.Strings = (
-        '309,92146'
-        '351,49629'
-        '593,38621')
       object PageHeader1: TfrxPageHeader
         FillType = ftBrush
         Frame.Typ = []

@@ -1222,7 +1222,6 @@ object ProduitsListF: TProduitsListF
       ParentShowHint = False
       ShowHint = True
       OnClick = FisrtClientbtnClick
-      SkinData.SkinSection = 'SPEEDBUTTON'
       Images = MainForm.PanelIcons24
       ImageIndex = 0
       ShowCaption = False
@@ -1235,7 +1234,6 @@ object ProduitsListF: TProduitsListF
       ParentShowHint = False
       ShowHint = True
       OnClick = PreviosClientbtnClick
-      SkinData.SkinSection = 'SPEEDBUTTON'
       Images = MainForm.PanelIcons24
       ImageIndex = 1
     end
@@ -1247,7 +1245,6 @@ object ProduitsListF: TProduitsListF
       ParentShowHint = False
       ShowHint = True
       OnClick = NextClientbtnClick
-      SkinData.SkinSection = 'SPEEDBUTTON'
       Images = MainForm.PanelIcons24
       ImageIndex = 2
       ShowCaption = False
@@ -1260,7 +1257,6 @@ object ProduitsListF: TProduitsListF
       ParentShowHint = False
       ShowHint = True
       OnClick = LastClientbtnClick
-      SkinData.SkinSection = 'SPEEDBUTTON'
       Images = MainForm.PanelIcons24
       ImageIndex = 3
     end
@@ -2867,15 +2863,10 @@ object ProduitsListF: TProduitsListF
       end>
     Left = 856
     Top = 512
-    Bitmap = {
-      494C010100000800080001000100FFFFFFFF0400FFFFFFFFFFFFFFFF424D7600
-      0000000000007600000028000000040000000100000001000400000000000400
-      0000000000000000000000000000000000000000000000008000008000000080
-      8000800000008000800080800000C0C0C000808080000000FF0000FF000000FF
-      FF00FF000000FF00FF00FFFF0000FFFFFF0000000000}
+    Bitmap = {}
   end
   object ProduitListfrxRprt: TfrxReport
-    Version = '6.3.12'
+    Version = '6.8.4'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -3525,6 +3516,7 @@ object ProduitsListF: TProduitsListF
     OverwritePrompt = True
     DataOnly = False
     EmbeddedFonts = True
+    InteractiveFormsFontSubset = 'A-Z,a-z,0-9,#43-#47 '
     OpenAfterExport = True
     PrintOptimized = False
     Outline = False

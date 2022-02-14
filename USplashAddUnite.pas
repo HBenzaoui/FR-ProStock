@@ -3355,6 +3355,31 @@ begin
    end;
 
 
+      //---- this tag = 8 is for Delting Bon de recption ------///
+   if OKAddUniteSBtn.Tag = 50 then
+   begin
+
+      //------ this is a executable SQL use it for quick delete code barres in the DB when we cancel
+      codeBR:= DataModuleF.Bonv_retTable.FieldByName('code_bvret').AsInteger;
+      //----- this is to delte the old ciredit when we delte the bon rec
+      if (DataModuleF.Bonv_retTable.FieldByName('code_c').AsInteger <> 0) AND (DataModuleF.Bonv_retTable.FieldByName('code_c').AsInteger <> null)  then
+
+      MainForm.GstockdcConnection.ExecSQL('DELETE FROM bonv_ret_list where code_bvret = ' + IntToStr(codeBR));
+      MainForm.GstockdcConnection.ExecSQL('DELETE FROM regclient where code_bvret = ' + IntToStr(codeBR));
+      MainForm.GstockdcConnection.ExecSQL('DELETE FROM opt_cas_bnk where code_bvret = ' + IntToStr(codeBR));
+      DataModuleF.Bonv_retTable.Delete ;
+      DataModuleF.Bonv_retTable.Refresh ;
+      MainForm.RegclientTable.Refresh ;
+      MainForm.Opt_cas_bnk_CaisseTable.Refresh ;
+
+    sndPlaySound('C:\Windows\Media\speech off.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+          AnimateWindow(FSplashAddUnite.Handle, 175, AW_VER_NEGATIVE OR AW_SLIDE OR AW_HIDE);
+      FSplashAddUnite.Release;
+
+
+   end;
+
+
 
 end;
 

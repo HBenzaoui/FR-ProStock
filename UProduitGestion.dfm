@@ -920,6 +920,22 @@ object ProduitGestionF: TProduitGestionF
           Version = '1.6.2.0'
           TMSStyle = 0
         end
+        object PMPProduitLbl: TLabel
+          Left = 34
+          Top = 439
+          Width = 45
+          Height = 18
+          Caption = 'P.M.P:'
+          Color = 4207405
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 4207405
+          Font.Height = 18
+          Font.Name = 'Roboto'
+          Font.Style = []
+          ParentColor = False
+          ParentFont = False
+          StyleElements = []
+        end
         object NameProduitGErrorP: TPanel
           Left = 111
           Top = 60
@@ -1682,6 +1698,27 @@ object ProduitGestionF: TProduitGestionF
           OnExit = CodeBarProduitGEdtExit
           OnKeyPress = CodeBarProduitGEdtKeyPress
         end
+        object PMPProduitEdt: TEdit
+          Left = 85
+          Top = 435
+          Width = 114
+          Height = 26
+          TabStop = False
+          Alignment = taRightJustify
+          CharCase = ecUpperCase
+          Color = 15722984
+          DoubleBuffered = True
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 4207405
+          Font.Height = 18
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = []
+          ParentDoubleBuffered = False
+          ParentFont = False
+          ReadOnly = True
+          TabOrder = 38
+          Text = '0'
+        end
       end
     end
     object PlusInfoClientGTB: TsTabSheet
@@ -2148,11 +2185,6 @@ object ProduitGestionF: TProduitGestionF
       end>
     Left = 634
     Top = 184
-    Bitmap = {
-      494C010100000800080001000100FFFFFFFF0400FFFFFFFFFFFFFFFF424D7600
-      0000000000007600000028000000040000000100000001000400000000000400
-      0000000000000000000000000000000000000000000000008000008000000080
-      8000800000008000800080800000C0C0C000808080000000FF0000FF000000FF
-      FF00FF000000FF00FF00FFFF0000FFFFFF0000000000}
+    Bitmap = {}
   end
 end

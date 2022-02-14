@@ -684,6 +684,15 @@ begin
           ProduitGestionF.PrixAHTProduitEdt.Text := '';
         end;
 
+         if FieldValues['pmp_p'] <> 0 then
+        begin
+          ProduitGestionF.PMPProduitEdt.Text := CurrToStrF(FieldValues['pmp_p'], ffNumber, 2);
+        end
+        else
+        begin
+          ProduitGestionF.PMPProduitEdt.Text := '';
+        end;
+
         if FieldValues['PrixATTC'] <> 0 then
         begin
           ProduitGestionF.PrixATTCProduitEdt.Text := CurrToStrF(FieldValues['PrixATTC'], ffNumber, 2);

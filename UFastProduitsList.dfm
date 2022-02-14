@@ -39,7 +39,7 @@ object FastProduitsListF: TFastProduitsListF
     object ResearchProduitsLbl: TLabel
       Left = 11
       Top = 24
-      Width = 76
+      Width = 74
       Height = 16
       Caption = 'Rechercher'
       Color = 15722984
@@ -80,7 +80,7 @@ object FastProduitsListF: TFastProduitsListF
       ShowHint = True
       Spacing = -1
       OnClick = CancelProduitGBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object OKProduitGBtn: TAdvToolButton
@@ -113,7 +113,7 @@ object FastProduitsListF: TFastProduitsListF
       ShowHint = True
       Spacing = 10
       OnClick = OKProduitGBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object LastClientbtn: TsSpeedButton
@@ -121,24 +121,22 @@ object FastProduitsListF: TFastProduitsListF
       Top = 17
       Width = 30
       Height = 30
+      ImageIndex = 3
+      Images = MainForm.PanelIcons24
       ParentShowHint = False
       ShowHint = True
       OnClick = LastClientbtnClick
-      SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
-      ImageIndex = 3
     end
     object NextClientbtn: TsSpeedButton
       Left = 600
       Top = 17
       Width = 30
       Height = 30
+      ImageIndex = 2
+      Images = MainForm.PanelIcons24
       ParentShowHint = False
       ShowHint = True
       OnClick = NextClientbtnClick
-      SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
-      ImageIndex = 2
       ShowCaption = False
     end
     object PreviosClientbtn: TsSpeedButton
@@ -146,24 +144,22 @@ object FastProduitsListF: TFastProduitsListF
       Top = 17
       Width = 30
       Height = 30
+      ImageIndex = 1
+      Images = MainForm.PanelIcons24
       ParentShowHint = False
       ShowHint = True
       OnClick = PreviosClientbtnClick
-      SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
-      ImageIndex = 1
     end
     object FisrtClientbtn: TsSpeedButton
       Left = 530
       Top = 17
       Width = 30
       Height = 30
+      ImageIndex = 0
+      Images = MainForm.PanelIcons24
       ParentShowHint = False
       ShowHint = True
       OnClick = FisrtClientbtnClick
-      SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
-      ImageIndex = 0
       ShowCaption = False
     end
     object SelectAllLbl: TLabel

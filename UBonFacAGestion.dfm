@@ -408,7 +408,7 @@ object BonFacAGestionF: TBonFacAGestionF
       ShowHint = True
       Spacing = -1
       OnClick = EditBAFacBonFacAGBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object AddBAFacBonFacAGBtn: TAdvToolButton
@@ -441,13 +441,13 @@ object BonFacAGestionF: TBonFacAGestionF
       ShowHint = True
       Spacing = -1
       OnClick = AddBAFacBonFacAGBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object Label3: TLabel
       Left = 9
       Top = 252
-      Width = 93
+      Width = 92
       Height = 18
       Anchors = [akLeft, akBottom]
       Caption = 'Les Produits:'
@@ -467,12 +467,11 @@ object BonFacAGestionF: TBonFacAGestionF
       Width = 30
       Height = 30
       Anchors = [akTop, akRight]
+      ImageIndex = 7
+      Images = MainForm.PanelIcons24
       ParentShowHint = False
       ShowHint = True
       OnClick = sSpeedButton1Click
-      SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
-      ImageIndex = 7
       ExplicitLeft = 1010
     end
     object sSpeedButton2: TsSpeedButton
@@ -481,13 +480,12 @@ object BonFacAGestionF: TBonFacAGestionF
       Width = 39
       Height = 30
       Anchors = [akTop, akRight]
+      ImageIndex = 8
+      Images = MainForm.PanelIcons24
       ParentShowHint = False
       ShowHint = True
       ButtonStyle = tbsDropDown
-      SkinData.SkinSection = 'SPEEDBUTTON'
       DropdownMenu = PopupMenu1
-      Images = MainForm.PanelIcons24
-      ImageIndex = 8
       ExplicitLeft = 965
     end
     object sSpeedButton3: TsSpeedButton
@@ -496,12 +494,11 @@ object BonFacAGestionF: TBonFacAGestionF
       Width = 30
       Height = 30
       Anchors = [akTop, akRight]
+      ImageIndex = 9
+      Images = MainForm.PanelIcons24
       ParentShowHint = False
       ShowHint = True
       OnClick = sSpeedButton3Click
-      SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
-      ImageIndex = 9
       ExplicitLeft = 1046
     end
     object Label4: TLabel
@@ -582,7 +579,7 @@ object BonFacAGestionF: TBonFacAGestionF
       ShowHint = True
       Spacing = -1
       OnClick = AddFourBonFacAGBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object Label6: TLabel
@@ -631,7 +628,7 @@ object BonFacAGestionF: TBonFacAGestionF
       ShowHint = True
       Spacing = -1
       OnClick = ValiderBAFacBonFacAGBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object Label7: TLabel
@@ -679,7 +676,7 @@ object BonFacAGestionF: TBonFacAGestionF
       ShowHint = True
       Spacing = -1
       OnClick = AddModePaieBonFacAGBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object Label8: TLabel
@@ -727,7 +724,7 @@ object BonFacAGestionF: TBonFacAGestionF
       ShowHint = True
       Spacing = -1
       OnClick = AddCompteBonFacAGBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object ListAddProduitBonFacAGBtn: TAdvToolButton
@@ -760,7 +757,7 @@ object BonFacAGestionF: TBonFacAGestionF
       ShowHint = True
       Spacing = -1
       OnClick = ListAddProduitBonFacAGBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object DeleteProduitBonFacAGBtn: TAdvToolButton
@@ -794,7 +791,7 @@ object BonFacAGestionF: TBonFacAGestionF
       Spacing = -1
       Visible = False
       OnClick = DeleteProduitBonFacAGBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object NewAddProduitBonFacAGBtn: TAdvToolButton
@@ -827,7 +824,7 @@ object BonFacAGestionF: TBonFacAGestionF
       ShowHint = True
       Spacing = -1
       OnClick = NewAddProduitBonFacAGBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object RequiredFourGlbl: TLabel
@@ -879,7 +876,7 @@ object BonFacAGestionF: TBonFacAGestionF
       ShowHint = True
       Spacing = -1
       OnClick = EnterAddProduitBonFacAGBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object ClearProduitBonFacAGBtn: TAdvToolButton
@@ -913,7 +910,7 @@ object BonFacAGestionF: TBonFacAGestionF
       Spacing = -1
       Visible = False
       OnClick = ClearProduitBonFacAGBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object ValiderBAFacBonFacAGImg: TsImage
@@ -1065,24 +1062,22 @@ object BonFacAGestionF: TBonFacAGestionF
       Top = 18
       Width = 30
       Height = 30
+      ImageIndex = 3
+      Images = MainForm.PanelIcons24
       ParentShowHint = False
       ShowHint = True
       OnClick = sSpeedButton4Click
-      SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
-      ImageIndex = 3
     end
     object sSpeedButton5: TsSpeedButton
       Left = 412
       Top = 18
       Width = 30
       Height = 30
+      ImageIndex = 2
+      Images = MainForm.PanelIcons24
       ParentShowHint = False
       ShowHint = True
       OnClick = sSpeedButton5Click
-      SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
-      ImageIndex = 2
       ShowCaption = False
     end
     object sSpeedButton6: TsSpeedButton
@@ -1090,24 +1085,22 @@ object BonFacAGestionF: TBonFacAGestionF
       Top = 18
       Width = 30
       Height = 30
+      ImageIndex = 1
+      Images = MainForm.PanelIcons24
       ParentShowHint = False
       ShowHint = True
       OnClick = sSpeedButton6Click
-      SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
-      ImageIndex = 1
     end
     object sSpeedButton7: TsSpeedButton
       Left = 344
       Top = 18
       Width = 30
       Height = 30
+      ImageIndex = 0
+      Images = MainForm.PanelIcons24
       ParentShowHint = False
       ShowHint = True
       OnClick = sSpeedButton7Click
-      SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
-      ImageIndex = 0
       ShowCaption = False
     end
     object RequiredMPGlbl: TLabel
@@ -1275,7 +1268,7 @@ object BonFacAGestionF: TBonFacAGestionF
       ShowHint = True
       Spacing = -1
       OnClick = ListFourBonFacAGBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object CompteGErrorP: TPanel
@@ -1470,9 +1463,9 @@ object BonFacAGestionF: TBonFacAGestionF
       Left = 432
       Top = 82
       Width = 328
-      Height = 28
+      Height = 27
       Ctl3D = True
-      Font.Charset = DEFAULT_CHARSET
+      Font.Charset = ARABIC_CHARSET
       Font.Color = clWindowText
       Font.Height = -17
       Font.Name = 'Helvetica LT Std'
@@ -1700,7 +1693,7 @@ object BonFacAGestionF: TBonFacAGestionF
       object Label16: TLabel
         Left = 6
         Top = 78
-        Width = 102
+        Width = 101
         Height = 16
         Anchors = [akTop, akRight]
         Caption = 'Nouveau Solde:'
@@ -1717,7 +1710,7 @@ object BonFacAGestionF: TBonFacAGestionF
       object Label17: TLabel
         Left = 6
         Top = 6
-        Width = 89
+        Width = 87
         Height = 16
         Anchors = [akTop, akRight]
         Caption = 'Ancien Solde:'
@@ -2425,7 +2418,7 @@ object BonFacAGestionF: TBonFacAGestionF
     object label13: TLabel
       Left = 612
       Top = 7
-      Width = 43
+      Width = 42
       Height = 17
       Caption = 'R'#233'gl'#233':'
       Color = clWhite
@@ -2457,7 +2450,7 @@ object BonFacAGestionF: TBonFacAGestionF
     object Label1: TLabel
       Left = 413
       Top = 7
-      Width = 61
+      Width = 65
       Height = 17
       Caption = 'Total TVA:'
       Color = clWhite
@@ -2473,7 +2466,7 @@ object BonFacAGestionF: TBonFacAGestionF
     object Label2: TLabel
       Left = 12
       Top = 7
-      Width = 54
+      Width = 58
       Height = 17
       Caption = 'Total HT:'
       Color = clWhite
@@ -2614,7 +2607,7 @@ object BonFacAGestionF: TBonFacAGestionF
     object Label10: TLabel
       Left = 412
       Top = 64
-      Width = 63
+      Width = 66
       Height = 17
       Caption = 'Total TTC:'
       Color = 15722984
@@ -2712,7 +2705,7 @@ object BonFacAGestionF: TBonFacAGestionF
     object Label15: TLabel
       Left = 12
       Top = 62
-      Width = 86
+      Width = 83
       Height = 84
       Caption = 'Facture'#13#10'D'#39'Achat'#13#10
       Color = 15722984
@@ -3120,6 +3113,7 @@ object BonFacAGestionF: TBonFacAGestionF
     OverwritePrompt = True
     DataOnly = False
     EmbeddedFonts = True
+    InteractiveFormsFontSubset = 'A-Z,a-z,0-9,#43-#47 '
     OpenAfterExport = True
     PrintOptimized = False
     Outline = False
@@ -3143,14 +3137,13 @@ object BonFacAGestionF: TBonFacAGestionF
     Top = 480
   end
   object BonFacAPListfrxRprt: TfrxReport
-    Version = '6.3.12'
+    Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
     PreviewOptions.Zoom = 1.000000000000000000
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
-    PrintOptions.ShowDialog = False
     ReportOptions.CreateDate = 42576.399521435210000000
     ReportOptions.LastChange = 43998.476302465280000000
     ScriptLanguage = 'PascalScript'
@@ -3239,6 +3232,10 @@ object BonFacAGestionF: TBonFacAGestionF
       Width = 1000.000000000000000000
     end
     object Page1: TfrxReportPage
+      VGuides.Strings = (
+        '404,40971'
+        '18.89765'
+        '574.48856')
       PaperWidth = 210.000000000000000000
       PaperHeight = 297.000000000000000000
       PaperSize = 9
@@ -3248,10 +3245,6 @@ object BonFacAGestionF: TBonFacAGestionF
       BottomMargin = 10.000000000000000000
       Frame.Typ = []
       MirrorMode = []
-      VGuides.Strings = (
-        '404,40971'
-        '18.89765'
-        '574.48856')
       object PageFooter1: TfrxPageFooter
         FillType = ftBrush
         Frame.Typ = []

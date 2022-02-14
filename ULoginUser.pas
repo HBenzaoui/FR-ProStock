@@ -40,6 +40,8 @@ type
     UserCheckEroorGLbl: TLabel;
     UserCheckGErrorP: TPanel;
     PasswordEdt: TcxTextEdit;
+    FolderL: TLabel;
+    FolderCbx: TComboBox;
     procedure CancelBtnClick(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure UserCbxEnter(Sender: TObject);
@@ -52,6 +54,7 @@ type
     procedure PasswordEdtMouseEnter(Sender: TObject);
     procedure PasswordEdtDblClick(Sender: TObject);
     procedure PasswordEdtKeyPress(Sender: TObject; var Key: Char);
+    procedure FolderCbxEnter(Sender: TObject);
   private
     { Private declarations }
   public
@@ -142,6 +145,55 @@ begin
 //   MainForm.KillTask('cmd.exe');                                         // Eable this is only for releasing
  Application.Terminate;
  end;
+end;
+
+procedure TLoginUserF.FolderCbxEnter(Sender: TObject);
+var
+I : Integer;
+
+begin
+
+   FolderCbx.Items.Clear;
+   DataModuleF.SQLQuery1.Active:= False;
+   DataModuleF.SQLQuery1.SQL.Clear;
+   DataModuleF.SQLQuery1.SQL.Text:= 'SELECT * FROM dblist';
+   DataModuleF.SQLQuery1.Active:= true;
+
+   //Here we add the existed databases in dblist table
+   if DataModuleF.SQLQuery1.IsEmpty then
+   begin
+
+     DataModuleF.SQLQuery2.Active:= False;
+     DataModuleF.SQLQuery2.SQL.Clear;
+     DataModuleF.SQLQuery2.SQL.Text:= 'SELECT (pg_stat_file(''base/''||oid ||''/PG_VERSION'')).modification, datname FROM pg_database '
+     +'WHERE datname = ''GSTOCKDC'';';
+     DataModuleF.SQLQuery2.Active:= true;
+
+
+    DataModuleF.SQLQuery1.insert;
+    DataModuleF.SQLQuery1.FieldByName('dbname_db').AsString:='GSTOCKDC';
+    DataModuleF.SQLQuery1.FieldByName('dbdesc_db').AsString:='Dossier initial '
+    + formatdatetime('yyyy',DataModuleF.SQLQuery2.FieldByName('modification').AsDateTime) ;
+
+    DataModuleF.SQLQuery1.FieldByName('createdate_db').AsDateTime:=DataModuleF.SQLQuery2.FieldByName('modification').AsDateTime;
+    DataModuleF.SQLQuery1.Post;
+
+     DataModuleF.SQLQuery2.Active:= False;
+     DataModuleF.SQLQuery2.SQL.Clear;
+
+   end;
+
+
+     for I := 0 to DataModuleF.SQLQuery1.RecordCount - 1 do
+     if ( DataModuleF.SQLQuery1.FieldByName('dbdesc_db').IsNull = False )  then
+     begin
+       FolderCbx.Items.Add(DataModuleF.SQLQuery1.FieldByName('dbdesc_db').AsString );
+       DataModuleF.SQLQuery1.Next;
+      end;
+
+    DataModuleF.SQLQuery1.Active:= False;
+    DataModuleF.SQLQuery1.SQL.Clear;
+
 end;
 
 procedure TLoginUserF.FormDestroy(Sender: TObject);
@@ -439,11 +491,11 @@ end;
 
 procedure TLoginUserF.PasswordEdtKeyPress(Sender: TObject; var Key: Char);
 begin
-       if Key = #13 then
+  if Key = #13 then
   begin
     Key := #0;
-    LoginBtnClick(Sender);
 
+    LoginBtnClick(Sender);
   end;
 end;
 

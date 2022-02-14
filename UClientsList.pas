@@ -832,9 +832,9 @@ begin
 
      // setup the color and draw the rectangle in a width of the matching text
      if gdSelected in AState then
-       AGrid.Canvas.Brush.Color := $006DCEFE//$00626262//$0000FFFF//$00F8CA90//$0083CAF4    $00FD9732 //
+       AGrid.Canvas.Brush.Color := $0000FFFF//$00F8CA90//$0083CAF4
      else
-       AGrid.Canvas.Brush.Color := $006DCEFE;//$00626262;//$0000FFFF;//$00F8CA90;//$0083CAF4; $00FD9732;
+       AGrid.Canvas.Brush.Color := $0000FFFF;//$00F8CA90;//$0083CAF4;
 
      AGrid.Canvas.FillRect(HlRect);
 
@@ -879,7 +879,7 @@ if  ClientListDataS.DataSet = MainForm.ClientTable then
  end;
  end;
 
-  HighlightCellText(TDBGridEh(Sender),Rect, Column,ResearchClientsEdt.Text,State);
+//  HighlightCellText(TDBGridEh(Sender),Rect, Column,ResearchClientsEdt.Text,State);
 end;
 
 procedure TClientListF.ClientsListDBGridEhKeyDown(Sender: TObject; var Key: Word;

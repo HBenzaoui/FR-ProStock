@@ -77,6 +77,7 @@ type
     Label28: TLabel;
     ApplicationEvents1: TApplicationEvents;
     ProduitListSaveDg: TSaveDialog;
+    Button1: TButton;
     procedure AddBVCtrBtnClick(Sender: TObject);
     procedure EditBVCtrBtnClick(Sender: TObject);
     procedure DeleteBVCtrBtnClick(Sender: TObject);
@@ -121,6 +122,7 @@ type
     procedure BVCtrListDBGridEhTitleBtnClick(Sender: TObject; ACol: Integer;
       Column: TColumnEh);
     procedure BVCtrListDBGridEhSelectionChanged(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
   private
     procedure GettingData;
     procedure FilteredColor;
@@ -1150,6 +1152,25 @@ Select_Valid_ATerme;
      Select_NOT_Regle;
     end;
   end;
+end;
+
+procedure TBonCtrF.Button1Click(Sender: TObject);
+var i, j :Integer;
+begin
+
+  i:= 1;
+  j:= 1;
+  while i <= 3000 do
+  begin
+
+
+
+
+
+
+  end;
+
+
 end;
 
 procedure TBonCtrF.BVCtrListDBGridEhDblClick(Sender: TObject);

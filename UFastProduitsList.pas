@@ -65,6 +65,7 @@ type
   private
     { Private declarations }
   public
+    { Public declarations }
     CodePForFastPList: Integer;
     const PSQL= 'SELECT *, '
     +'   ((prixht_p * tva_p)/100+ prixht_p ) AS PrixATTC,  '
@@ -311,7 +312,7 @@ begin
       ProduitsListDBGridEh.Canvas.Font.Color:=$00519509;//   Brush.Color:=green;
       ProduitsListDBGridEh.DefaultDrawColumnCell(Rect, DataCol, Column, State);
    end;
-  
+
  end;
 
   if Caption='Liste des Fournisseurs' then
@@ -336,7 +337,7 @@ begin
       ProduitsListDBGridEh.Canvas.Font.Color:=$00519509;//   Brush.Color:=green;
       ProduitsListDBGridEh.DefaultDrawColumnCell(Rect, DataCol, Column, State);
    end;
-   
+
  end;
 
   HighlightCellText(TDBGridEh(Sender),Rect, Column,ResearchProduitsEdt.Text,State);
@@ -384,7 +385,7 @@ begin
       MainForm.SQLQuery.Active:=True;
       if MainForm.SQLQuery.FieldByName('code_p').AsInteger <> null then
      begin
-      CodeCB:=MainForm.SQLQuery.FieldByName('code_p').AsInteger;
+       CodeCB:=MainForm.SQLQuery.FieldByName('code_p').AsInteger;
      end;
     if ResherchPARDesProduitsRdioBtn.Checked then
     if (ResearchProduitsEdt.text <> '') AND NOT (ResearchProduitsEdt.Text[1] in E ) then
@@ -409,12 +410,12 @@ begin
      if ResherchPARDCodProduitsRdioBtn.Checked then
     if (ResearchProduitsEdt.text <> '') then
     begin
-        MainForm.ProduitTable.DisableControls;
-        MainForm.ProduitTable.Active:=False;
-        MainForm.ProduitTable.SQL.Clear;
-        MainForm.ProduitTable.SQL.Text:= PSQL +' WHERE LOWER(codebar_p) LIKE LOWER'+'('''+'%'+(ResearchProduitsEdt.Text)+'%'+''')'+ ' OR code_p = ' + IntToStr(CodeCB);
-        MainForm.ProduitTable.Active:=True;
-        MainForm.ProduitTable.EnableControls;
+      MainForm.ProduitTable.DisableControls;
+      MainForm.ProduitTable.Active:=False;
+      MainForm.ProduitTable.SQL.Clear;
+      MainForm.ProduitTable.SQL.Text:= PSQL +' WHERE LOWER(codebar_p) LIKE LOWER'+'('''+'%'+(ResearchProduitsEdt.Text)+'%'+''')'+ ' OR code_p = ' + IntToStr(CodeCB);
+      MainForm.ProduitTable.Active:=True;
+      MainForm.ProduitTable.EnableControls;
     end
     else
     begin
@@ -844,7 +845,7 @@ begin
                 end else begin
                 NomP:='';
                 end;
-                FSplashAddUnite.NameAddUniteSLbl.Caption:='Article d�ja ins�r� : '+ sLineBreak +  sLineBreak + QuotedStr(NomP);
+                FSplashAddUnite.NameAddUniteSLbl.Caption:='Article déja inséré : '+ sLineBreak +  sLineBreak + QuotedStr(NomP);
                 FSplashAddUnite.NameAddUniteSLbl.Font.Height:= 22;
                 FSplashAddUnite.NameAddUniteSLbl.Top:= (FSplashAddUnite.Panel1.Height) + 10 ;
                 FSplashAddUnite.NameAddUniteSLbl.Font.Height:=18;
@@ -958,7 +959,7 @@ begin
           end else begin
             NomP:='';
           end;
-          FSplashAddUnite.NameAddUniteSLbl.Caption:='Article d�ja ins�r� : '+ sLineBreak +  sLineBreak + QuotedStr(NomP);
+          FSplashAddUnite.NameAddUniteSLbl.Caption:='Article déja inséré : '+ sLineBreak +  sLineBreak + QuotedStr(NomP);
           FSplashAddUnite.NameAddUniteSLbl.Font.Height:= 22;
           FSplashAddUnite.NameAddUniteSLbl.Top:= (FSplashAddUnite.Panel1.Height) + 10 ;
           FSplashAddUnite.NameAddUniteSLbl.Font.Height:=18;
@@ -1137,7 +1138,7 @@ begin
                 end else begin
                 NomP:='';
                 end;
-                FSplashAddUnite.NameAddUniteSLbl.Caption:='Article d�ja ins�r� : '+ sLineBreak +  sLineBreak + QuotedStr(NomP);
+                FSplashAddUnite.NameAddUniteSLbl.Caption:='Article déja inséré : '+ sLineBreak +  sLineBreak + QuotedStr(NomP);
                 FSplashAddUnite.NameAddUniteSLbl.Font.Height:= 22;
                 FSplashAddUnite.NameAddUniteSLbl.Top:= (FSplashAddUnite.Panel1.Height) + 10 ;
                 FSplashAddUnite.NameAddUniteSLbl.Font.Height:=18;
@@ -1285,7 +1286,7 @@ begin
           end else begin
             NomP:='';
           end;
-          FSplashAddUnite.NameAddUniteSLbl.Caption:='Article d�ja ins�r� : '+ sLineBreak +  sLineBreak + QuotedStr(NomP);
+          FSplashAddUnite.NameAddUniteSLbl.Caption:='Article déja inséré : '+ sLineBreak +  sLineBreak + QuotedStr(NomP);
           FSplashAddUnite.NameAddUniteSLbl.Font.Height:= 22;
           FSplashAddUnite.NameAddUniteSLbl.Top:= (FSplashAddUnite.Panel1.Height) + 10 ;
           FSplashAddUnite.NameAddUniteSLbl.Font.Height:=18;
@@ -1453,7 +1454,7 @@ begin
                 end else begin
                 NomP:='';
                 end;
-                FSplashAddUnite.NameAddUniteSLbl.Caption:='Article d�ja ins�r� : '+ sLineBreak +  sLineBreak + QuotedStr(NomP);
+                FSplashAddUnite.NameAddUniteSLbl.Caption:='Article déja inséré : '+ sLineBreak +  sLineBreak + QuotedStr(NomP);
                 FSplashAddUnite.NameAddUniteSLbl.Font.Height:= 22;
                 FSplashAddUnite.NameAddUniteSLbl.Top:= (FSplashAddUnite.Panel1.Height) + 10 ;
                 FSplashAddUnite.NameAddUniteSLbl.Font.Height:=18;
@@ -1603,7 +1604,7 @@ begin
           end else begin
             NomP:='';
           end;
-          FSplashAddUnite.NameAddUniteSLbl.Caption:='Article d�ja ins�r� : '+ sLineBreak +  sLineBreak + QuotedStr(NomP);
+          FSplashAddUnite.NameAddUniteSLbl.Caption:='Article déja inséré : '+ sLineBreak +  sLineBreak + QuotedStr(NomP);
           FSplashAddUnite.NameAddUniteSLbl.Font.Height:= 22;
           FSplashAddUnite.NameAddUniteSLbl.Top:= (FSplashAddUnite.Panel1.Height) + 10 ;
           FSplashAddUnite.NameAddUniteSLbl.Font.Height:=18;
@@ -1743,7 +1744,7 @@ begin
                 end else begin
                 NomP:='';
                 end;
-                FSplashAddUnite.NameAddUniteSLbl.Caption:='Article d�ja ins�r� : '+ sLineBreak +  sLineBreak + QuotedStr(NomP);
+                FSplashAddUnite.NameAddUniteSLbl.Caption:='Article déja inséré : '+ sLineBreak +  sLineBreak + QuotedStr(NomP);
                 FSplashAddUnite.NameAddUniteSLbl.Font.Height:= 22;
                 FSplashAddUnite.NameAddUniteSLbl.Top:= (FSplashAddUnite.Panel1.Height) + 10 ;
                 FSplashAddUnite.NameAddUniteSLbl.Font.Height:=18;
@@ -1858,7 +1859,7 @@ begin
           end else begin
             NomP:='';
           end;
-          FSplashAddUnite.NameAddUniteSLbl.Caption:='Article d�ja ins�r� : '+ sLineBreak +  sLineBreak + QuotedStr(NomP);
+          FSplashAddUnite.NameAddUniteSLbl.Caption:='Article déja inséré : '+ sLineBreak +  sLineBreak + QuotedStr(NomP);
           FSplashAddUnite.NameAddUniteSLbl.Font.Height:= 22;
           FSplashAddUnite.NameAddUniteSLbl.Top:= (FSplashAddUnite.Panel1.Height) + 10 ;
           FSplashAddUnite.NameAddUniteSLbl.Font.Height:=18;
@@ -2016,7 +2017,7 @@ begin
                 end else begin
                 NomP:='';
                 end;
-                FSplashAddUnite.NameAddUniteSLbl.Caption:='Article d�ja ins�r� : '+ sLineBreak +  sLineBreak + QuotedStr(NomP);
+                FSplashAddUnite.NameAddUniteSLbl.Caption:='Article déja inséré : '+ sLineBreak +  sLineBreak + QuotedStr(NomP);
                 FSplashAddUnite.NameAddUniteSLbl.Font.Height:= 22;
                 FSplashAddUnite.NameAddUniteSLbl.Top:= (FSplashAddUnite.Panel1.Height) + 10 ;
                 FSplashAddUnite.NameAddUniteSLbl.Font.Height:=18;
@@ -2148,7 +2149,7 @@ begin
           end else begin
             NomP:='';
           end;
-          FSplashAddUnite.NameAddUniteSLbl.Caption:='Article d�ja ins�r� : '+ sLineBreak +  sLineBreak + QuotedStr(NomP);
+          FSplashAddUnite.NameAddUniteSLbl.Caption:='Article déja inséré : '+ sLineBreak +  sLineBreak + QuotedStr(NomP);
           FSplashAddUnite.NameAddUniteSLbl.Font.Height:= 22;
           FSplashAddUnite.NameAddUniteSLbl.Top:= (FSplashAddUnite.Panel1.Height) + 10 ;
           FSplashAddUnite.NameAddUniteSLbl.Font.Height:=18;
@@ -2332,7 +2333,7 @@ begin
                 end else begin
                 NomP:='';
                 end;
-                FSplashAddUnite.NameAddUniteSLbl.Caption:='Article d�ja ins�r� : '+ sLineBreak +  sLineBreak + QuotedStr(NomP);
+                FSplashAddUnite.NameAddUniteSLbl.Caption:='Article déja inséré : '+ sLineBreak +  sLineBreak + QuotedStr(NomP);
                 FSplashAddUnite.NameAddUniteSLbl.Font.Height:= 22;
                 FSplashAddUnite.NameAddUniteSLbl.Top:= (FSplashAddUnite.Panel1.Height) + 10 ;
                 FSplashAddUnite.NameAddUniteSLbl.Font.Height:=18;
@@ -2476,7 +2477,7 @@ begin
           end else begin
             NomP:='';
           end;
-          FSplashAddUnite.NameAddUniteSLbl.Caption:='Article d�ja ins�r� : '+ sLineBreak +  sLineBreak + QuotedStr(NomP);
+          FSplashAddUnite.NameAddUniteSLbl.Caption:='Article déja inséré : '+ sLineBreak +  sLineBreak + QuotedStr(NomP);
           FSplashAddUnite.NameAddUniteSLbl.Font.Height:= 22;
           FSplashAddUnite.NameAddUniteSLbl.Top:= (FSplashAddUnite.Panel1.Height) + 10 ;
           FSplashAddUnite.NameAddUniteSLbl.Font.Height:=18;
@@ -2533,7 +2534,6 @@ begin
         MainForm.ProduitTable.Post;
 
         //Get the clicke button Sender and set it caption
-
         FOptions.FavBtn.Caption := MainForm.ProduitTable.FieldByName('nom_p').AsString;
         Close;
 
@@ -2626,7 +2626,7 @@ begin
           lookupResultRefP := DataModuleF.Inventory_listTable.Lookup('code_p',(CodeP),'code_p');
           if VarIsnull( lookupResultRefP) then
           begin
-           if DataModuleF.Inventory_listTable.IsEmpty then
+           if (DataModuleF.Inventory_listTable.IsEmpty) then
            begin
              DataModuleF.Inventory_listTable.Last;
              CodeINVL := 1;
@@ -2754,16 +2754,22 @@ begin
         DataModuleF.Inventory_listTable.Last;
 
 
-       end;
+       end else
+           begin
+              DataModuleF.Inventory_listTable.Locate('code_p',(CodeP));
+           end;
 
       end;
 
-      DataModuleF.Inventory_listTable.Close;
-      DataModuleF.Inventory_listTable.Open;
+//      DataModuleF.Inventory_listTable.Close;
+//      DataModuleF.Inventory_listTable.Open;
       Close;
 
      end;
-     //-------------------------------------------------------------------------------------------------
+
+      //-------------------------------------------------------------------------------------------------
+
+         //-------------------------------------------------------------------------------------------------
 
 
      //-------------------------------------------------------------------------------------------
@@ -2814,7 +2820,7 @@ begin
                  if MainForm.ProduitTable.FieldByName('perissable_p').AsBoolean = True then
                  begin
                   BonComAGestionF.ProduitsListDBGridEh.Columns[4].Visible := True
-                 end;               
+                 end;
 
              DataModuleF.Bona_com_listTable.Last;
              DataModuleF.Bona_com_listTable.Append;
@@ -2830,10 +2836,10 @@ begin
              DataModuleF.Bona_com_listTable.FieldByName('prixva_p').AsCurrency:=  MainForm.ProduitTable.FieldByName('prixva_p').AsCurrency;
              DataModuleF.Bona_com_listTable.FieldByName('prixva2_p').AsCurrency:= MainForm.ProduitTable.FieldByName('prixva2_p').AsCurrency;
              DataModuleF.Bona_com_listTable.FieldValues['cond_p']:=  01;
-             
-             DataModuleF.Bona_com_listTable.FieldValues['qutinstock_p']:= 
-             (DataModuleF.Bona_com_listTable.FieldValues['qut_p'])*(DataModuleF.Bona_com_listTable.FieldValues['cond_p']);    
-             
+
+             DataModuleF.Bona_com_listTable.FieldValues['qutinstock_p']:=
+             (DataModuleF.Bona_com_listTable.FieldValues['qut_p'])*(DataModuleF.Bona_com_listTable.FieldValues['cond_p']);
+
              DataModuleF.Bona_com_listTable.Post ;
 
       end;
@@ -2922,8 +2928,8 @@ begin
                  if MainForm.ProduitTable.FieldByName('perissable_p').AsBoolean = True then
                  begin
                   BonComAGestionF.ProduitsListDBGridEh.Columns[4].Visible := True
-                 end;   
-                 
+                 end;
+
              DataModuleF.Bona_com_listTable.Last;
              DataModuleF.Bona_com_listTable.Append;
              DataModuleF.Bona_com_listTable.FieldValues['code_bacoml']:= CodeBR ;
@@ -2939,9 +2945,9 @@ begin
              DataModuleF.Bona_com_listTable.FieldByName('prixva_p').AsCurrency:=  MainForm.ProduitTable.FieldByName('prixva_p').AsCurrency;
              DataModuleF.Bona_com_listTable.FieldByName('prixva2_p').AsCurrency:= MainForm.ProduitTable.FieldByName('prixva2_p').AsCurrency;
 
-             DataModuleF.Bona_com_listTable.FieldValues['qutinstock_p']:= 
-             (DataModuleF.Bona_com_listTable.FieldValues['qut_p'])*(DataModuleF.Bona_com_listTable.FieldValues['cond_p']);                 
-             
+             DataModuleF.Bona_com_listTable.FieldValues['qutinstock_p']:=
+             (DataModuleF.Bona_com_listTable.FieldValues['qut_p'])*(DataModuleF.Bona_com_listTable.FieldValues['cond_p']);
+
              DataModuleF.Bona_com_listTable.Post ;
            DataModuleF.Bona_com_listTable.IndexFieldNames:='code_bacom';
            DataModuleF.Bona_com_listTable.Last;
@@ -3345,6 +3351,7 @@ begin
       if (OKProduitGBtn.Tag = 2) AND (FastProduitsListF.Tag = 12)  then
       begin
        CancelProduitGBtnClick(Sender);
+      //-------------------------------------------------------------------------------------------------
 
     end;
     //End of Add in Coomande Client---------------------------
@@ -3352,8 +3359,6 @@ begin
     end;//---End if produit is empty
 
    end;//------End for produit---------
-
-
 
    //This is for chosing clients
    if Caption='Liste des Clients' then
@@ -3425,8 +3430,7 @@ begin
 
     end;
 
-
-            //This tag = 5 if for choosing client in Commande Client
+        //This tag = 6 if for choosing client in Commande Client
     if Tag = 6 then
     begin
 
@@ -3437,14 +3441,13 @@ begin
 
     end;
 
-   
    end;
 
 
       //This is for chosing Four
    if Caption='Liste des Fournisseurs' then
    begin
-    //This tag = 0 if for choosing client in bon reception
+    //This tag = 0 if for choosing four in bon reception
     if Tag = 0 then
     begin
 
@@ -3484,19 +3487,20 @@ begin
      FSplashPrintReport.NameReportPCbx.Text:= MainForm.FDQuery2.fieldbyName('nom_f').asString;
      FSplashPrintReport.NameReportPCbxChange(Sender);
      Close;
-
+      
     end;
-        //This tag = 4 if for choosing four in Bon Commande Four
+
+       //This tag = 4 if for choosing four in Bon Commande Four
     if Tag = 4 then
     begin
 
      BonComAGestionF.FournisseurBonComGCbx.Text:= MainForm.FDQuery2.fieldbyName('nom_f').asString;
+     BonComAGestionF.FournisseurBonComGCbxExit(Sender);
      BonComAGestionF.ProduitBonComGCbx.SetFocus;
      Close;
-      
+
     end;
 
-   
    end;
    
    
