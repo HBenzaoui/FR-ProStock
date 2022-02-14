@@ -224,10 +224,17 @@ begin
 end;
 
 procedure TLoginUserF.FormShow(Sender: TObject);
+var
+  Ini: TIniFile;
 begin
-GrayFormsLUR;
-UserCbxEnter(Sender);
-UserCbx.ItemIndex:=0;
+  Ini := TIniFile.Create(ChangeFileExt(Application.ExeName,'.ini')) ;
+  FolderCbxEnter(Sender);
+  FolderCbx.ItemIndex:= Ini.ReadInteger('','default db', FolderCbx.ItemIndex);
+  Ini.Free;
+
+  GrayFormsLUR;
+  UserCbxEnter(Sender);
+  UserCbx.ItemIndex:=0;
 end;
 
 procedure TLoginUserF.LoginBtnClick(Sender: TObject);
@@ -239,6 +246,7 @@ begin
       //---- This is just to check if Tiroir caisse is Active so whe can shoe the open button in MainMenu
       Ini       := TIniFile.Create(ChangeFileExt(Application.ExeName,'.ini')) ;
       TiroirA   := Ini.ReadBool('', 'Tiroir caisse Active',TiroirA);
+      Ini.WriteInteger('','default db', FolderCbx.ItemIndex);
       Ini.Free;
       if TiroirA then
       begin
