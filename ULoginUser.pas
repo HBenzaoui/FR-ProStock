@@ -55,6 +55,7 @@ type
     procedure PasswordEdtDblClick(Sender: TObject);
     procedure PasswordEdtKeyPress(Sender: TObject; var Key: Char);
     procedure FolderCbxEnter(Sender: TObject);
+    procedure FolderCbxExit(Sender: TObject);
   private
     { Private declarations }
   public
@@ -194,6 +195,12 @@ begin
     DataModuleF.SQLQuery1.Active:= False;
     DataModuleF.SQLQuery1.SQL.Clear;
 
+end;
+
+procedure TLoginUserF.FolderCbxExit(Sender: TObject);
+begin
+if FolderCbx.Text = '' then
+ FolderCbx.ItemIndex:=0
 end;
 
 procedure TLoginUserF.FormDestroy(Sender: TObject);

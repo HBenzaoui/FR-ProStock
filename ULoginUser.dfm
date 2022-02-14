@@ -855,5 +855,6 @@ object LoginUserF: TLoginUserF
     TabOrder = 8
     StyleElements = [seClient, seBorder]
     OnEnter = FolderCbxEnter
+    OnExit = FolderCbxExit
   end
 end
