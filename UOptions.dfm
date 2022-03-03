@@ -25,7 +25,7 @@ object FOptions: TFOptions
     Top = 27
     Width = 437
     Height = 655
-    ActivePage = GeneralOptionGTB
+    ActivePage = sTabSheet2
     Align = alClient
     DoubleBuffered = True
     Font.Charset = DEFAULT_CHARSET
@@ -40,11 +40,8 @@ object FOptions: TFOptions
     StyleElements = []
     AnimatEvents = [aeMouseEnter, aeMouseLeave, aeMouseDown, aeMouseUp, aeGlobalDef]
     TabsLineSkin = 'BAR'
-    ExplicitHeight = 611
     object GeneralOptionGTB: TsTabSheet
       Caption = 'Enterprise'
-      ExplicitTop = 50
-      ExplicitHeight = 610
       DesignSize = (
         429
         605)
@@ -78,7 +75,7 @@ object FOptions: TFOptions
         Spacing = -1
         Visible = False
         OnClick = ImageDeleteProduitGBtnClick
-        Version = '1.6.2.0'
+        Version = '1.7.2.0'
         TMSStyle = 0
       end
       object ImageEditProduitGBtn: TAdvToolButton
@@ -110,7 +107,7 @@ object FOptions: TFOptions
         ShowHint = True
         Spacing = -1
         Visible = False
-        Version = '1.6.2.0'
+        Version = '1.7.2.0'
         TMSStyle = 0
       end
       object Label10: TLabel
@@ -459,7 +456,6 @@ object FOptions: TFOptions
     end
     object sTabSheet7: TsTabSheet
       Caption = 'Impression'
-      ExplicitHeight = 561
       DesignSize = (
         429
         605)
@@ -879,7 +875,6 @@ object FOptions: TFOptions
     end
     object sTabSheet1: TsTabSheet
       Caption = 'Utilit'#233's'
-      ExplicitHeight = 561
       object Panel1: TPanel
         Left = 3
         Top = 6
@@ -895,7 +890,7 @@ object FOptions: TFOptions
         object Label11: TLabel
           Left = 7
           Top = 0
-          Width = 128
+          Width = 130
           Height = 21
           Caption = 'Afficheur client'
           Color = 4207405
@@ -998,13 +993,12 @@ object FOptions: TFOptions
           Height = 30
           Hint = 'Ferm'#233'r'
           Anchors = [akTop, akRight]
+          ImageIndex = 51
+          Images = MainForm.PanelIcons24
           Enabled = False
           ParentShowHint = False
           ShowHint = True
           OnClick = TestPoleBtnClick
-          SkinData.SkinSection = 'SPEEDBUTTON'
-          Images = MainForm.PanelIcons24
-          ImageIndex = 51
         end
         object TestPoleLbl: TLabel
           Left = 385
@@ -1157,7 +1151,7 @@ object FOptions: TFOptions
         object Label17: TLabel
           Left = 10
           Top = -2
-          Width = 103
+          Width = 106
           Height = 21
           Caption = 'Tiroir caisse'
           Color = 4207405
@@ -1243,13 +1237,12 @@ object FOptions: TFOptions
           Height = 30
           Hint = 'Ferm'#233'r'
           Anchors = [akTop, akRight]
+          ImageIndex = 52
+          Images = MainForm.PanelIcons24
           Enabled = False
           ParentShowHint = False
           ShowHint = True
           OnClick = TestTeroirBtnClick
-          SkinData.SkinSection = 'SPEEDBUTTON'
-          Images = MainForm.PanelIcons24
-          ImageIndex = 52
         end
         object TestTeroirLbl: TLabel
           Left = 391
@@ -1447,7 +1440,6 @@ object FOptions: TFOptions
         Color = 15658734
         ParentBackground = False
         TabOrder = 3
-        ExplicitHeight = 561
       end
       object Panel9: TPanel
         Left = 424
@@ -1459,12 +1451,10 @@ object FOptions: TFOptions
         Color = 15658734
         ParentBackground = False
         TabOrder = 4
-        ExplicitHeight = 561
       end
     end
     object sTabSheet2: TsTabSheet
       Caption = 'Base de donn'#233
-      ExplicitHeight = 561
       object Panel11: TPanel
         Left = 3
         Top = 6
@@ -1480,7 +1470,7 @@ object FOptions: TFOptions
         object Label13: TLabel
           Left = 8
           Top = 0
-          Width = 104
+          Width = 105
           Height = 21
           Caption = 'Initialisation'
           Color = 4207405
@@ -1516,13 +1506,12 @@ object FOptions: TFOptions
           Height = 30
           Hint = 'Ferm'#233'r'
           Anchors = [akTop, akRight]
+          ImageIndex = 53
+          Images = MainForm.PanelIcons24
           Enabled = False
           ParentShowHint = False
           ShowHint = True
           OnClick = ResetDBBtnClick
-          SkinData.SkinSection = 'SPEEDBUTTON'
-          Images = MainForm.PanelIcons24
-          ImageIndex = 53
         end
         object Label21: TLabel
           Left = 374
@@ -1912,7 +1901,7 @@ object FOptions: TFOptions
         object Label48: TLabel
           Left = 65
           Top = 54
-          Width = 65
+          Width = 66
           Height = 18
           Caption = 'Les Bons'
           Color = 4207405
@@ -1927,7 +1916,7 @@ object FOptions: TFOptions
         object Label49: TLabel
           Left = 162
           Top = 54
-          Width = 103
+          Width = 104
           Height = 18
           Caption = 'Les op'#233'rations'
           Color = 4207405
@@ -1942,7 +1931,7 @@ object FOptions: TFOptions
         object Label50: TLabel
           Left = 340
           Top = 54
-          Width = 47
+          Width = 48
           Height = 18
           Caption = 'Listing'
           Color = 4207405
@@ -2859,7 +2848,6 @@ object FOptions: TFOptions
         Color = 15658734
         ParentBackground = False
         TabOrder = 1
-        ExplicitHeight = 561
       end
       object Panel17: TPanel
         Left = 424
@@ -2871,12 +2859,10 @@ object FOptions: TFOptions
         Color = 15658734
         ParentBackground = False
         TabOrder = 2
-        ExplicitHeight = 561
       end
     end
     object sTabSheet3: TsTabSheet
       Caption = 'Produit Favoris'
-      ExplicitHeight = 561
       DesignSize = (
         429
         605)
@@ -2906,12 +2892,11 @@ object FOptions: TFOptions
         Height = 30
         Hint = 'Ajout Fav'
         Anchors = [akTop, akRight]
+        ImageIndex = 55
+        Images = MainForm.PanelIcons24
         ParentShowHint = False
         ShowHint = True
         OnClick = EditFavOSpClick
-        SkinData.SkinSection = 'SPEEDBUTTON'
-        Images = MainForm.PanelIcons24
-        ImageIndex = 55
         ExplicitLeft = 371
       end
       object SaveFavOSp: TsSpeedButton
@@ -2921,13 +2906,12 @@ object FOptions: TFOptions
         Height = 30
         Hint = 'Ferm'#233'r'
         Anchors = [akTop, akRight]
+        ImageIndex = 17
+        Images = MainForm.PanelIcons24
         Enabled = False
         ParentShowHint = False
         ShowHint = True
         OnClick = SaveFavOSpClick
-        SkinData.SkinSection = 'SPEEDBUTTON'
-        Images = MainForm.PanelIcons24
-        ImageIndex = 17
         ExplicitLeft = 407
       end
       object FavProduitOptPgControl: TsPageControl
@@ -2952,7 +2936,6 @@ object FOptions: TFOptions
         StyleElements = []
         ShowFocus = False
         TabsLineSkin = 'DIVIDER'
-        ExplicitHeight = 521
         object Fav1ListTB: TsTabSheet
           Caption = 'Liste 1'
           Font.Charset = DEFAULT_CHARSET
@@ -2961,7 +2944,6 @@ object FOptions: TFOptions
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
           ParentFont = False
-          ExplicitHeight = 471
           object Panel12: TPanel
             Left = 0
             Top = 0
@@ -3077,13 +3059,12 @@ object FOptions: TFOptions
               end>
             ShowCaption = False
             TabOrder = 1
-            ExplicitHeight = 469
             DesignSize = (
               421
               513)
             object Fav1sp: TsSpeedButton
               Left = 25
-              Top = 12
+              Top = 13
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -3108,7 +3089,7 @@ object FOptions: TFOptions
             end
             object Fav2sp: TsSpeedButton
               Left = 235
-              Top = 12
+              Top = 13
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -3133,7 +3114,7 @@ object FOptions: TFOptions
             end
             object Fav3sp: TsSpeedButton
               Left = 25
-              Top = 97
+              Top = 98
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -3158,7 +3139,7 @@ object FOptions: TFOptions
             end
             object Fav4sp: TsSpeedButton
               Left = 235
-              Top = 97
+              Top = 98
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -3183,7 +3164,7 @@ object FOptions: TFOptions
             end
             object Fav5sp: TsSpeedButton
               Left = 25
-              Top = 182
+              Top = 184
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -3204,10 +3185,11 @@ object FOptions: TFOptions
               OnMouseEnter = Fav1spMouseEnter
               SkinData.SkinSection = 'EDIT'
               ExplicitLeft = 28
+              ExplicitTop = 182
             end
             object Fav6sp: TsSpeedButton
               Left = 235
-              Top = 182
+              Top = 184
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -3228,10 +3210,11 @@ object FOptions: TFOptions
               OnMouseEnter = Fav1spMouseEnter
               SkinData.SkinSection = 'EDIT'
               ExplicitLeft = 244
+              ExplicitTop = 182
             end
             object Fav7sp: TsSpeedButton
               Left = 25
-              Top = 267
+              Top = 269
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -3256,7 +3239,7 @@ object FOptions: TFOptions
             end
             object Fav8sp: TsSpeedButton
               Left = 235
-              Top = 267
+              Top = 269
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -3281,7 +3264,7 @@ object FOptions: TFOptions
             end
             object Fav9sp: TsSpeedButton
               Left = 25
-              Top = 352
+              Top = 355
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -3306,7 +3289,7 @@ object FOptions: TFOptions
             end
             object Fav10sp: TsSpeedButton
               Left = 235
-              Top = 352
+              Top = 355
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -3331,7 +3314,7 @@ object FOptions: TFOptions
             end
             object Fav11sp: TsSpeedButton
               Left = 25
-              Top = 439
+              Top = 440
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -3356,7 +3339,7 @@ object FOptions: TFOptions
             end
             object Fav12sp: TsSpeedButton
               Left = 235
-              Top = 439
+              Top = 440
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -3383,7 +3366,6 @@ object FOptions: TFOptions
         end
         object Fav2ListTB: TsTabSheet
           Caption = 'Liste 2'
-          ExplicitHeight = 471
           object Panel31: TPanel
             Left = 0
             Top = 0
@@ -3499,13 +3481,12 @@ object FOptions: TFOptions
               end>
             ShowCaption = False
             TabOrder = 1
-            ExplicitHeight = 469
             DesignSize = (
               421
               513)
             object Fav13sp: TsSpeedButton
               Left = 25
-              Top = 12
+              Top = 13
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -3530,7 +3511,7 @@ object FOptions: TFOptions
             end
             object Fav14sp: TsSpeedButton
               Left = 235
-              Top = 12
+              Top = 13
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -3555,7 +3536,7 @@ object FOptions: TFOptions
             end
             object Fav15sp: TsSpeedButton
               Left = 25
-              Top = 97
+              Top = 98
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -3580,7 +3561,7 @@ object FOptions: TFOptions
             end
             object Fav16sp: TsSpeedButton
               Left = 235
-              Top = 97
+              Top = 98
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -3605,7 +3586,7 @@ object FOptions: TFOptions
             end
             object Fav17sp: TsSpeedButton
               Left = 25
-              Top = 182
+              Top = 184
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -3630,7 +3611,7 @@ object FOptions: TFOptions
             end
             object Fav18sp: TsSpeedButton
               Left = 235
-              Top = 182
+              Top = 184
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -3655,7 +3636,7 @@ object FOptions: TFOptions
             end
             object Fav19sp: TsSpeedButton
               Left = 25
-              Top = 267
+              Top = 269
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -3680,7 +3661,7 @@ object FOptions: TFOptions
             end
             object Fav20sp: TsSpeedButton
               Left = 235
-              Top = 267
+              Top = 269
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -3705,7 +3686,7 @@ object FOptions: TFOptions
             end
             object Fav21sp: TsSpeedButton
               Left = 25
-              Top = 352
+              Top = 355
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -3730,7 +3711,7 @@ object FOptions: TFOptions
             end
             object Fav22sp: TsSpeedButton
               Left = 235
-              Top = 352
+              Top = 355
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -3755,7 +3736,7 @@ object FOptions: TFOptions
             end
             object Fav23sp: TsSpeedButton
               Left = 25
-              Top = 439
+              Top = 440
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -3780,7 +3761,7 @@ object FOptions: TFOptions
             end
             object Fav24sp: TsSpeedButton
               Left = 235
-              Top = 439
+              Top = 440
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -3807,7 +3788,6 @@ object FOptions: TFOptions
         end
         object Fav3ListTB: TsTabSheet
           Caption = 'Liste 3'
-          ExplicitHeight = 471
           object Panel32: TPanel
             Left = 0
             Top = 0
@@ -3923,13 +3903,12 @@ object FOptions: TFOptions
               end>
             ShowCaption = False
             TabOrder = 1
-            ExplicitHeight = 469
             DesignSize = (
               421
               513)
             object Fav25sp: TsSpeedButton
               Left = 25
-              Top = 12
+              Top = 13
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -3954,7 +3933,7 @@ object FOptions: TFOptions
             end
             object Fav26sp: TsSpeedButton
               Left = 235
-              Top = 12
+              Top = 13
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -3979,7 +3958,7 @@ object FOptions: TFOptions
             end
             object Fav27sp: TsSpeedButton
               Left = 25
-              Top = 97
+              Top = 98
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -4004,7 +3983,7 @@ object FOptions: TFOptions
             end
             object Fav28sp: TsSpeedButton
               Left = 235
-              Top = 97
+              Top = 98
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -4029,7 +4008,7 @@ object FOptions: TFOptions
             end
             object Fav29sp: TsSpeedButton
               Left = 25
-              Top = 182
+              Top = 184
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -4050,10 +4029,11 @@ object FOptions: TFOptions
               OnMouseEnter = Fav1spMouseEnter
               SkinData.SkinSection = 'EDIT'
               ExplicitLeft = 28
+              ExplicitTop = 182
             end
             object Fav30sp: TsSpeedButton
               Left = 235
-              Top = 182
+              Top = 184
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -4074,10 +4054,11 @@ object FOptions: TFOptions
               OnMouseEnter = Fav1spMouseEnter
               SkinData.SkinSection = 'EDIT'
               ExplicitLeft = 244
+              ExplicitTop = 182
             end
             object Fav31sp: TsSpeedButton
               Left = 25
-              Top = 267
+              Top = 269
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -4102,7 +4083,7 @@ object FOptions: TFOptions
             end
             object Fav32sp: TsSpeedButton
               Left = 235
-              Top = 267
+              Top = 269
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -4127,7 +4108,7 @@ object FOptions: TFOptions
             end
             object Fav33sp: TsSpeedButton
               Left = 25
-              Top = 352
+              Top = 355
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -4152,7 +4133,7 @@ object FOptions: TFOptions
             end
             object Fav34sp: TsSpeedButton
               Left = 235
-              Top = 352
+              Top = 355
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -4177,7 +4158,7 @@ object FOptions: TFOptions
             end
             object Fav35sp: TsSpeedButton
               Left = 25
-              Top = 439
+              Top = 440
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -4202,7 +4183,7 @@ object FOptions: TFOptions
             end
             object Fav36sp: TsSpeedButton
               Left = 235
-              Top = 439
+              Top = 440
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -4229,7 +4210,6 @@ object FOptions: TFOptions
         end
         object Fav4ListTB: TsTabSheet
           Caption = 'Liste 4'
-          ExplicitHeight = 471
           object Panel33: TPanel
             Left = 0
             Top = 0
@@ -4345,13 +4325,12 @@ object FOptions: TFOptions
               end>
             ShowCaption = False
             TabOrder = 1
-            ExplicitHeight = 469
             DesignSize = (
               421
               513)
             object Fav37sp: TsSpeedButton
               Left = 25
-              Top = 12
+              Top = 13
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -4376,7 +4355,7 @@ object FOptions: TFOptions
             end
             object Fav38sp: TsSpeedButton
               Left = 235
-              Top = 12
+              Top = 13
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -4401,7 +4380,7 @@ object FOptions: TFOptions
             end
             object Fav39sp: TsSpeedButton
               Left = 25
-              Top = 97
+              Top = 98
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -4426,7 +4405,7 @@ object FOptions: TFOptions
             end
             object Fav40sp: TsSpeedButton
               Left = 235
-              Top = 97
+              Top = 98
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -4451,7 +4430,7 @@ object FOptions: TFOptions
             end
             object Fav41sp: TsSpeedButton
               Left = 25
-              Top = 182
+              Top = 184
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -4476,7 +4455,7 @@ object FOptions: TFOptions
             end
             object Fav42sp: TsSpeedButton
               Left = 235
-              Top = 182
+              Top = 184
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -4501,7 +4480,7 @@ object FOptions: TFOptions
             end
             object Fav43sp: TsSpeedButton
               Left = 25
-              Top = 267
+              Top = 269
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -4526,7 +4505,7 @@ object FOptions: TFOptions
             end
             object Fav44sp: TsSpeedButton
               Left = 235
-              Top = 267
+              Top = 269
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -4551,7 +4530,7 @@ object FOptions: TFOptions
             end
             object Fav45sp: TsSpeedButton
               Left = 25
-              Top = 352
+              Top = 355
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -4576,7 +4555,7 @@ object FOptions: TFOptions
             end
             object Fav46sp: TsSpeedButton
               Left = 235
-              Top = 352
+              Top = 355
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -4601,7 +4580,7 @@ object FOptions: TFOptions
             end
             object Fav47sp: TsSpeedButton
               Left = 25
-              Top = 439
+              Top = 440
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -4626,7 +4605,7 @@ object FOptions: TFOptions
             end
             object Fav48sp: TsSpeedButton
               Left = 235
-              Top = 439
+              Top = 440
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -4653,7 +4632,6 @@ object FOptions: TFOptions
         end
         object Fav5ListTB: TsTabSheet
           Caption = 'Liste 5'
-          ExplicitHeight = 471
           object Panel34: TPanel
             Left = 0
             Top = 0
@@ -4769,13 +4747,12 @@ object FOptions: TFOptions
               end>
             ShowCaption = False
             TabOrder = 1
-            ExplicitHeight = 469
             DesignSize = (
               421
               513)
             object Fav49sp: TsSpeedButton
               Left = 25
-              Top = 12
+              Top = 13
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -4800,7 +4777,7 @@ object FOptions: TFOptions
             end
             object Fav50sp: TsSpeedButton
               Left = 235
-              Top = 12
+              Top = 13
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -4825,7 +4802,7 @@ object FOptions: TFOptions
             end
             object Fav51sp: TsSpeedButton
               Left = 25
-              Top = 97
+              Top = 98
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -4850,7 +4827,7 @@ object FOptions: TFOptions
             end
             object Fav52sp: TsSpeedButton
               Left = 235
-              Top = 97
+              Top = 98
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -4875,7 +4852,7 @@ object FOptions: TFOptions
             end
             object Fav53sp: TsSpeedButton
               Left = 25
-              Top = 182
+              Top = 184
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -4896,10 +4873,11 @@ object FOptions: TFOptions
               OnMouseEnter = Fav1spMouseEnter
               SkinData.SkinSection = 'EDIT'
               ExplicitLeft = 28
+              ExplicitTop = 182
             end
             object Fav54sp: TsSpeedButton
               Left = 235
-              Top = 182
+              Top = 184
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -4920,10 +4898,11 @@ object FOptions: TFOptions
               OnMouseEnter = Fav1spMouseEnter
               SkinData.SkinSection = 'EDIT'
               ExplicitLeft = 244
+              ExplicitTop = 182
             end
             object Fav55sp: TsSpeedButton
               Left = 25
-              Top = 267
+              Top = 269
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -4948,7 +4927,7 @@ object FOptions: TFOptions
             end
             object Fav56sp: TsSpeedButton
               Left = 235
-              Top = 267
+              Top = 269
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -4973,7 +4952,7 @@ object FOptions: TFOptions
             end
             object Fav57sp: TsSpeedButton
               Left = 25
-              Top = 352
+              Top = 355
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -4998,7 +4977,7 @@ object FOptions: TFOptions
             end
             object Fav58sp: TsSpeedButton
               Left = 235
-              Top = 352
+              Top = 355
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -5023,7 +5002,7 @@ object FOptions: TFOptions
             end
             object Fav59sp: TsSpeedButton
               Left = 25
-              Top = 439
+              Top = 440
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -5048,7 +5027,7 @@ object FOptions: TFOptions
             end
             object Fav60sp: TsSpeedButton
               Left = 235
-              Top = 439
+              Top = 440
               Width = 160
               Height = 60
               ParentCustomHint = False
@@ -5077,7 +5056,6 @@ object FOptions: TFOptions
     end
     object sTabSheet4: TsTabSheet
       Caption = 'Modules'
-      ExplicitHeight = 561
       object Panel13: TPanel
         Left = 2
         Top = 7
@@ -5179,13 +5157,12 @@ object FOptions: TFOptions
           Height = 30
           Hint = 'Ferm'#233'r'
           Anchors = [akTop, akRight]
+          ImageIndex = 56
+          Images = MainForm.PanelIcons24
           Enabled = False
           ParentShowHint = False
           ShowHint = True
           OnClick = TestBalanceIPBtnClick
-          SkinData.SkinSection = 'SPEEDBUTTON'
-          Images = MainForm.PanelIcons24
-          ImageIndex = 56
         end
         object TestBalanceIPLbl: TLabel
           Left = 340
@@ -5225,13 +5202,12 @@ object FOptions: TFOptions
           Height = 30
           Hint = 'Ferm'#233'r'
           Anchors = [akTop, akRight]
+          ImageIndex = 57
+          Images = MainForm.PanelIcons24
           Enabled = False
           ParentShowHint = False
           ShowHint = True
           OnClick = UploadToBalBtnClick
-          SkinData.SkinSection = 'SPEEDBUTTON'
-          Images = MainForm.PanelIcons24
-          ImageIndex = 57
         end
         object UploadToBalLbl: TLabel
           Left = 375
@@ -5382,7 +5358,6 @@ object FOptions: TFOptions
         Color = 15658734
         ParentBackground = False
         TabOrder = 2
-        ExplicitHeight = 561
       end
       object Panel22: TPanel
         Left = 424
@@ -5394,7 +5369,6 @@ object FOptions: TFOptions
         Color = 15658734
         ParentBackground = False
         TabOrder = 3
-        ExplicitHeight = 561
       end
       object Panel14: TPanel
         Left = 3
@@ -5745,15 +5719,15 @@ object FOptions: TFOptions
               Value = 14.285857141785720000
             end
             item
-              Value = 14.285928570714290000
+              Value = 14.285928570714280000
             end>
           ShowCaption = False
           TabOrder = 0
           object Bal1sp: TsSpeedButton
             Left = 0
             Top = 0
-            Width = 53
-            Height = 48
+            Width = 54
+            Height = 49
             ParentCustomHint = False
             Align = alClient
             BiDiMode = bdLeftToRight
@@ -5775,10 +5749,10 @@ object FOptions: TFOptions
             ExplicitHeight = 42
           end
           object Bal2sp: TsSpeedButton
-            Left = 53
+            Left = 54
             Top = 0
-            Width = 53
-            Height = 48
+            Width = 54
+            Height = 49
             ParentCustomHint = False
             Align = alClient
             BiDiMode = bdLeftToRight
@@ -5796,14 +5770,15 @@ object FOptions: TFOptions
             OnClick = Bal1spClick
             OnMouseEnter = Bal1spMouseEnter
             SkinData.SkinSection = 'EDIT'
+            ExplicitLeft = 53
             ExplicitWidth = 52
             ExplicitHeight = 42
           end
           object Bal3sp: TsSpeedButton
-            Left = 106
+            Left = 108
             Top = 0
-            Width = 53
-            Height = 48
+            Width = 54
+            Height = 49
             ParentCustomHint = False
             Align = alClient
             BiDiMode = bdLeftToRight
@@ -5821,14 +5796,15 @@ object FOptions: TFOptions
             OnClick = Bal1spClick
             OnMouseEnter = Bal1spMouseEnter
             SkinData.SkinSection = 'EDIT'
+            ExplicitLeft = 106
             ExplicitWidth = 52
             ExplicitHeight = 42
           end
           object Bal4sp: TsSpeedButton
-            Left = 159
+            Left = 162
             Top = 0
-            Width = 53
-            Height = 48
+            Width = 54
+            Height = 49
             ParentCustomHint = False
             Align = alClient
             BiDiMode = bdLeftToRight
@@ -5846,14 +5822,15 @@ object FOptions: TFOptions
             OnClick = Bal1spClick
             OnMouseEnter = Bal1spMouseEnter
             SkinData.SkinSection = 'EDIT'
+            ExplicitLeft = 159
             ExplicitWidth = 52
             ExplicitHeight = 42
           end
           object Bal5sp: TsSpeedButton
-            Left = 212
+            Left = 216
             Top = 0
             Width = 53
-            Height = 48
+            Height = 49
             ParentCustomHint = False
             Align = alClient
             BiDiMode = bdLeftToRight
@@ -5871,14 +5848,15 @@ object FOptions: TFOptions
             OnClick = Bal1spClick
             OnMouseEnter = Bal1spMouseEnter
             SkinData.SkinSection = 'EDIT'
+            ExplicitLeft = 212
             ExplicitWidth = 52
             ExplicitHeight = 42
           end
           object Bal6sp: TsSpeedButton
-            Left = 265
+            Left = 269
             Top = 0
-            Width = 53
-            Height = 48
+            Width = 54
+            Height = 49
             ParentCustomHint = False
             Align = alClient
             BiDiMode = bdLeftToRight
@@ -5896,14 +5874,15 @@ object FOptions: TFOptions
             OnClick = Bal1spClick
             OnMouseEnter = Bal1spMouseEnter
             SkinData.SkinSection = 'EDIT'
+            ExplicitLeft = 265
             ExplicitWidth = 52
             ExplicitHeight = 42
           end
           object Bal7sp: TsSpeedButton
-            Left = 318
+            Left = 323
             Top = 0
-            Width = 53
-            Height = 48
+            Width = 54
+            Height = 49
             ParentCustomHint = False
             Align = alClient
             BiDiMode = bdLeftToRight
@@ -5921,14 +5900,15 @@ object FOptions: TFOptions
             OnClick = Bal1spClick
             OnMouseEnter = Bal1spMouseEnter
             SkinData.SkinSection = 'EDIT'
+            ExplicitLeft = 318
             ExplicitWidth = 52
             ExplicitHeight = 42
           end
           object Bal8sp: TsSpeedButton
-            Left = 371
+            Left = 377
             Top = 0
-            Width = 60
-            Height = 48
+            Width = 54
+            Height = 49
             ParentCustomHint = False
             Align = alClient
             BiDiMode = bdLeftToRight
@@ -5952,8 +5932,8 @@ object FOptions: TFOptions
           end
           object Bal9sp: TsSpeedButton
             Left = 0
-            Top = 48
-            Width = 53
+            Top = 49
+            Width = 54
             Height = 48
             ParentCustomHint = False
             Align = alClient
@@ -5972,13 +5952,14 @@ object FOptions: TFOptions
             OnClick = Bal1spClick
             OnMouseEnter = Bal1spMouseEnter
             SkinData.SkinSection = 'EDIT'
+            ExplicitTop = 48
             ExplicitWidth = 52
             ExplicitHeight = 42
           end
           object Bal10sp: TsSpeedButton
-            Left = 53
-            Top = 48
-            Width = 53
+            Left = 54
+            Top = 49
+            Width = 54
             Height = 48
             ParentCustomHint = False
             Align = alClient
@@ -5997,13 +5978,15 @@ object FOptions: TFOptions
             OnClick = Bal1spClick
             OnMouseEnter = Bal1spMouseEnter
             SkinData.SkinSection = 'EDIT'
+            ExplicitLeft = 53
+            ExplicitTop = 48
             ExplicitWidth = 52
             ExplicitHeight = 42
           end
           object Bal11sp: TsSpeedButton
-            Left = 106
-            Top = 48
-            Width = 53
+            Left = 108
+            Top = 49
+            Width = 54
             Height = 48
             ParentCustomHint = False
             Align = alClient
@@ -6022,13 +6005,15 @@ object FOptions: TFOptions
             OnClick = Bal1spClick
             OnMouseEnter = Bal1spMouseEnter
             SkinData.SkinSection = 'EDIT'
+            ExplicitLeft = 106
+            ExplicitTop = 48
             ExplicitWidth = 52
             ExplicitHeight = 42
           end
           object Bal12sp: TsSpeedButton
-            Left = 159
-            Top = 48
-            Width = 53
+            Left = 162
+            Top = 49
+            Width = 54
             Height = 48
             ParentCustomHint = False
             Align = alClient
@@ -6047,12 +6032,14 @@ object FOptions: TFOptions
             OnClick = Bal1spClick
             OnMouseEnter = Bal1spMouseEnter
             SkinData.SkinSection = 'EDIT'
+            ExplicitLeft = 159
+            ExplicitTop = 48
             ExplicitWidth = 52
             ExplicitHeight = 42
           end
           object Bal13sp: TsSpeedButton
-            Left = 212
-            Top = 48
+            Left = 216
+            Top = 49
             Width = 53
             Height = 48
             ParentCustomHint = False
@@ -6072,13 +6059,15 @@ object FOptions: TFOptions
             OnClick = Bal1spClick
             OnMouseEnter = Bal1spMouseEnter
             SkinData.SkinSection = 'EDIT'
+            ExplicitLeft = 212
+            ExplicitTop = 48
             ExplicitWidth = 52
             ExplicitHeight = 42
           end
           object Bal14sp: TsSpeedButton
-            Left = 265
-            Top = 48
-            Width = 53
+            Left = 269
+            Top = 49
+            Width = 54
             Height = 48
             ParentCustomHint = False
             Align = alClient
@@ -6097,13 +6086,15 @@ object FOptions: TFOptions
             OnClick = Bal1spClick
             OnMouseEnter = Bal1spMouseEnter
             SkinData.SkinSection = 'EDIT'
+            ExplicitLeft = 265
+            ExplicitTop = 48
             ExplicitWidth = 52
             ExplicitHeight = 42
           end
           object Bal15sp: TsSpeedButton
-            Left = 318
-            Top = 48
-            Width = 53
+            Left = 323
+            Top = 49
+            Width = 54
             Height = 48
             ParentCustomHint = False
             Align = alClient
@@ -6122,13 +6113,15 @@ object FOptions: TFOptions
             OnClick = Bal1spClick
             OnMouseEnter = Bal1spMouseEnter
             SkinData.SkinSection = 'EDIT'
+            ExplicitLeft = 318
+            ExplicitTop = 48
             ExplicitWidth = 52
             ExplicitHeight = 42
           end
           object Bal16sp: TsSpeedButton
-            Left = 371
-            Top = 48
-            Width = 60
+            Left = 377
+            Top = 49
+            Width = 54
             Height = 48
             ParentCustomHint = False
             Align = alClient
@@ -6148,14 +6141,15 @@ object FOptions: TFOptions
             OnMouseEnter = Bal1spMouseEnter
             SkinData.SkinSection = 'EDIT'
             ExplicitLeft = 373
+            ExplicitTop = 48
             ExplicitWidth = 52
             ExplicitHeight = 42
           end
           object Bal17sp: TsSpeedButton
             Left = 0
-            Top = 96
-            Width = 53
-            Height = 48
+            Top = 97
+            Width = 54
+            Height = 49
             ParentCustomHint = False
             Align = alClient
             BiDiMode = bdLeftToRight
@@ -6173,14 +6167,15 @@ object FOptions: TFOptions
             OnClick = Bal1spClick
             OnMouseEnter = Bal1spMouseEnter
             SkinData.SkinSection = 'EDIT'
+            ExplicitTop = 96
             ExplicitWidth = 52
             ExplicitHeight = 42
           end
           object Bal18sp: TsSpeedButton
-            Left = 53
-            Top = 96
-            Width = 53
-            Height = 48
+            Left = 54
+            Top = 97
+            Width = 54
+            Height = 49
             ParentCustomHint = False
             Align = alClient
             BiDiMode = bdLeftToRight
@@ -6198,14 +6193,16 @@ object FOptions: TFOptions
             OnClick = Bal1spClick
             OnMouseEnter = Bal1spMouseEnter
             SkinData.SkinSection = 'EDIT'
+            ExplicitLeft = 53
+            ExplicitTop = 96
             ExplicitWidth = 52
             ExplicitHeight = 42
           end
           object Bal19sp: TsSpeedButton
-            Left = 106
-            Top = 96
-            Width = 53
-            Height = 48
+            Left = 108
+            Top = 97
+            Width = 54
+            Height = 49
             ParentCustomHint = False
             Align = alClient
             BiDiMode = bdLeftToRight
@@ -6223,14 +6220,16 @@ object FOptions: TFOptions
             OnClick = Bal1spClick
             OnMouseEnter = Bal1spMouseEnter
             SkinData.SkinSection = 'EDIT'
+            ExplicitLeft = 106
+            ExplicitTop = 96
             ExplicitWidth = 52
             ExplicitHeight = 42
           end
           object Bal20sp: TsSpeedButton
-            Left = 159
-            Top = 96
-            Width = 53
-            Height = 48
+            Left = 162
+            Top = 97
+            Width = 54
+            Height = 49
             ParentCustomHint = False
             Align = alClient
             BiDiMode = bdLeftToRight
@@ -6248,14 +6247,16 @@ object FOptions: TFOptions
             OnClick = Bal1spClick
             OnMouseEnter = Bal1spMouseEnter
             SkinData.SkinSection = 'EDIT'
+            ExplicitLeft = 159
+            ExplicitTop = 96
             ExplicitWidth = 52
             ExplicitHeight = 42
           end
           object Bal21sp: TsSpeedButton
-            Left = 212
-            Top = 96
+            Left = 216
+            Top = 97
             Width = 53
-            Height = 48
+            Height = 49
             ParentCustomHint = False
             Align = alClient
             BiDiMode = bdLeftToRight
@@ -6273,14 +6274,16 @@ object FOptions: TFOptions
             OnClick = Bal1spClick
             OnMouseEnter = Bal1spMouseEnter
             SkinData.SkinSection = 'EDIT'
+            ExplicitLeft = 212
+            ExplicitTop = 96
             ExplicitWidth = 52
             ExplicitHeight = 42
           end
           object Bal22sp: TsSpeedButton
-            Left = 265
-            Top = 96
-            Width = 53
-            Height = 48
+            Left = 269
+            Top = 97
+            Width = 54
+            Height = 49
             ParentCustomHint = False
             Align = alClient
             BiDiMode = bdLeftToRight
@@ -6298,14 +6301,16 @@ object FOptions: TFOptions
             OnClick = Bal1spClick
             OnMouseEnter = Bal1spMouseEnter
             SkinData.SkinSection = 'EDIT'
+            ExplicitLeft = 265
+            ExplicitTop = 96
             ExplicitWidth = 52
             ExplicitHeight = 42
           end
           object Bal23sp: TsSpeedButton
-            Left = 318
-            Top = 96
-            Width = 53
-            Height = 48
+            Left = 323
+            Top = 97
+            Width = 54
+            Height = 49
             ParentCustomHint = False
             Align = alClient
             BiDiMode = bdLeftToRight
@@ -6323,14 +6328,16 @@ object FOptions: TFOptions
             OnClick = Bal1spClick
             OnMouseEnter = Bal1spMouseEnter
             SkinData.SkinSection = 'EDIT'
+            ExplicitLeft = 318
+            ExplicitTop = 96
             ExplicitWidth = 52
             ExplicitHeight = 42
           end
           object Bal24sp: TsSpeedButton
-            Left = 371
-            Top = 96
-            Width = 60
-            Height = 48
+            Left = 377
+            Top = 97
+            Width = 54
+            Height = 49
             ParentCustomHint = False
             Align = alClient
             BiDiMode = bdLeftToRight
@@ -6349,13 +6356,14 @@ object FOptions: TFOptions
             OnMouseEnter = Bal1spMouseEnter
             SkinData.SkinSection = 'EDIT'
             ExplicitLeft = 373
+            ExplicitTop = 96
             ExplicitWidth = 52
             ExplicitHeight = 42
           end
           object Bal25sp: TsSpeedButton
             Left = 0
-            Top = 144
-            Width = 53
+            Top = 146
+            Width = 54
             Height = 48
             ParentCustomHint = False
             Align = alClient
@@ -6374,13 +6382,14 @@ object FOptions: TFOptions
             OnClick = Bal1spClick
             OnMouseEnter = Bal1spMouseEnter
             SkinData.SkinSection = 'EDIT'
+            ExplicitTop = 144
             ExplicitWidth = 52
             ExplicitHeight = 42
           end
           object Bal26sp: TsSpeedButton
-            Left = 53
-            Top = 144
-            Width = 53
+            Left = 54
+            Top = 146
+            Width = 54
             Height = 48
             ParentCustomHint = False
             Align = alClient
@@ -6399,13 +6408,15 @@ object FOptions: TFOptions
             OnClick = Bal1spClick
             OnMouseEnter = Bal1spMouseEnter
             SkinData.SkinSection = 'EDIT'
+            ExplicitLeft = 53
+            ExplicitTop = 144
             ExplicitWidth = 52
             ExplicitHeight = 42
           end
           object Bal27sp: TsSpeedButton
-            Left = 106
-            Top = 144
-            Width = 53
+            Left = 108
+            Top = 146
+            Width = 54
             Height = 48
             ParentCustomHint = False
             Align = alClient
@@ -6424,13 +6435,15 @@ object FOptions: TFOptions
             OnClick = Bal1spClick
             OnMouseEnter = Bal1spMouseEnter
             SkinData.SkinSection = 'EDIT'
+            ExplicitLeft = 106
+            ExplicitTop = 144
             ExplicitWidth = 52
             ExplicitHeight = 42
           end
           object Bal28sp: TsSpeedButton
-            Left = 159
-            Top = 144
-            Width = 53
+            Left = 162
+            Top = 146
+            Width = 54
             Height = 48
             ParentCustomHint = False
             Align = alClient
@@ -6449,12 +6462,14 @@ object FOptions: TFOptions
             OnClick = Bal1spClick
             OnMouseEnter = Bal1spMouseEnter
             SkinData.SkinSection = 'EDIT'
+            ExplicitLeft = 159
+            ExplicitTop = 144
             ExplicitWidth = 52
             ExplicitHeight = 42
           end
           object Bal29sp: TsSpeedButton
-            Left = 212
-            Top = 144
+            Left = 216
+            Top = 146
             Width = 53
             Height = 48
             ParentCustomHint = False
@@ -6474,13 +6489,15 @@ object FOptions: TFOptions
             OnClick = Bal1spClick
             OnMouseEnter = Bal1spMouseEnter
             SkinData.SkinSection = 'EDIT'
+            ExplicitLeft = 212
+            ExplicitTop = 144
             ExplicitWidth = 52
             ExplicitHeight = 42
           end
           object Bal30sp: TsSpeedButton
-            Left = 265
-            Top = 144
-            Width = 53
+            Left = 269
+            Top = 146
+            Width = 54
             Height = 48
             ParentCustomHint = False
             Align = alClient
@@ -6499,13 +6516,15 @@ object FOptions: TFOptions
             OnClick = Bal1spClick
             OnMouseEnter = Bal1spMouseEnter
             SkinData.SkinSection = 'EDIT'
+            ExplicitLeft = 265
+            ExplicitTop = 144
             ExplicitWidth = 52
             ExplicitHeight = 42
           end
           object Bal31sp: TsSpeedButton
-            Left = 318
-            Top = 144
-            Width = 53
+            Left = 323
+            Top = 146
+            Width = 54
             Height = 48
             ParentCustomHint = False
             Align = alClient
@@ -6524,13 +6543,15 @@ object FOptions: TFOptions
             OnClick = Bal1spClick
             OnMouseEnter = Bal1spMouseEnter
             SkinData.SkinSection = 'EDIT'
+            ExplicitLeft = 318
+            ExplicitTop = 144
             ExplicitWidth = 52
             ExplicitHeight = 42
           end
           object Bal32sp: TsSpeedButton
-            Left = 371
-            Top = 144
-            Width = 60
+            Left = 377
+            Top = 146
+            Width = 54
             Height = 48
             ParentCustomHint = False
             Align = alClient
@@ -6550,14 +6571,15 @@ object FOptions: TFOptions
             OnMouseEnter = Bal1spMouseEnter
             SkinData.SkinSection = 'EDIT'
             ExplicitLeft = 373
+            ExplicitTop = 144
             ExplicitWidth = 52
             ExplicitHeight = 42
           end
           object Bal33sp: TsSpeedButton
             Left = 0
-            Top = 192
-            Width = 53
-            Height = 48
+            Top = 194
+            Width = 54
+            Height = 49
             ParentCustomHint = False
             Align = alClient
             BiDiMode = bdLeftToRight
@@ -6580,10 +6602,10 @@ object FOptions: TFOptions
             ExplicitHeight = 42
           end
           object Bal34sp: TsSpeedButton
-            Left = 53
-            Top = 192
-            Width = 53
-            Height = 48
+            Left = 54
+            Top = 194
+            Width = 54
+            Height = 49
             ParentCustomHint = False
             Align = alClient
             BiDiMode = bdLeftToRight
@@ -6601,15 +6623,16 @@ object FOptions: TFOptions
             OnClick = Bal1spClick
             OnMouseEnter = Bal1spMouseEnter
             SkinData.SkinSection = 'EDIT'
+            ExplicitLeft = 53
             ExplicitTop = 191
             ExplicitWidth = 52
             ExplicitHeight = 42
           end
           object Bal35sp: TsSpeedButton
-            Left = 106
-            Top = 192
-            Width = 53
-            Height = 48
+            Left = 108
+            Top = 194
+            Width = 54
+            Height = 49
             ParentCustomHint = False
             Align = alClient
             BiDiMode = bdLeftToRight
@@ -6627,15 +6650,16 @@ object FOptions: TFOptions
             OnClick = Bal1spClick
             OnMouseEnter = Bal1spMouseEnter
             SkinData.SkinSection = 'EDIT'
+            ExplicitLeft = 106
             ExplicitTop = 191
             ExplicitWidth = 52
             ExplicitHeight = 42
           end
           object Bal36sp: TsSpeedButton
-            Left = 159
-            Top = 192
-            Width = 53
-            Height = 48
+            Left = 162
+            Top = 194
+            Width = 54
+            Height = 49
             ParentCustomHint = False
             Align = alClient
             BiDiMode = bdLeftToRight
@@ -6653,15 +6677,16 @@ object FOptions: TFOptions
             OnClick = Bal1spClick
             OnMouseEnter = Bal1spMouseEnter
             SkinData.SkinSection = 'EDIT'
+            ExplicitLeft = 159
             ExplicitTop = 191
             ExplicitWidth = 52
             ExplicitHeight = 42
           end
           object Bal37sp: TsSpeedButton
-            Left = 212
-            Top = 192
+            Left = 216
+            Top = 194
             Width = 53
-            Height = 48
+            Height = 49
             ParentCustomHint = False
             Align = alClient
             BiDiMode = bdLeftToRight
@@ -6679,15 +6704,16 @@ object FOptions: TFOptions
             OnClick = Bal1spClick
             OnMouseEnter = Bal1spMouseEnter
             SkinData.SkinSection = 'EDIT'
+            ExplicitLeft = 212
             ExplicitTop = 191
             ExplicitWidth = 52
             ExplicitHeight = 42
           end
           object Bal38sp: TsSpeedButton
-            Left = 265
-            Top = 192
-            Width = 53
-            Height = 48
+            Left = 269
+            Top = 194
+            Width = 54
+            Height = 49
             ParentCustomHint = False
             Align = alClient
             BiDiMode = bdLeftToRight
@@ -6705,15 +6731,16 @@ object FOptions: TFOptions
             OnClick = Bal1spClick
             OnMouseEnter = Bal1spMouseEnter
             SkinData.SkinSection = 'EDIT'
+            ExplicitLeft = 265
             ExplicitTop = 191
             ExplicitWidth = 52
             ExplicitHeight = 42
           end
           object Bal39sp: TsSpeedButton
-            Left = 318
-            Top = 192
-            Width = 53
-            Height = 48
+            Left = 323
+            Top = 194
+            Width = 54
+            Height = 49
             ParentCustomHint = False
             Align = alClient
             BiDiMode = bdLeftToRight
@@ -6731,15 +6758,16 @@ object FOptions: TFOptions
             OnClick = Bal1spClick
             OnMouseEnter = Bal1spMouseEnter
             SkinData.SkinSection = 'EDIT'
+            ExplicitLeft = 318
             ExplicitTop = 191
             ExplicitWidth = 52
             ExplicitHeight = 42
           end
           object Bal40sp: TsSpeedButton
-            Left = 371
-            Top = 192
-            Width = 60
-            Height = 48
+            Left = 377
+            Top = 194
+            Width = 54
+            Height = 49
             ParentCustomHint = False
             Align = alClient
             BiDiMode = bdLeftToRight
@@ -6764,8 +6792,8 @@ object FOptions: TFOptions
           end
           object Bal41sp: TsSpeedButton
             Left = 0
-            Top = 240
-            Width = 53
+            Top = 243
+            Width = 54
             Height = 48
             ParentCustomHint = False
             Align = alClient
@@ -6789,9 +6817,9 @@ object FOptions: TFOptions
             ExplicitHeight = 42
           end
           object Bal42sp: TsSpeedButton
-            Left = 53
-            Top = 240
-            Width = 53
+            Left = 54
+            Top = 243
+            Width = 54
             Height = 48
             ParentCustomHint = False
             Align = alClient
@@ -6810,14 +6838,15 @@ object FOptions: TFOptions
             OnClick = Bal1spClick
             OnMouseEnter = Bal1spMouseEnter
             SkinData.SkinSection = 'EDIT'
+            ExplicitLeft = 53
             ExplicitTop = 238
             ExplicitWidth = 52
             ExplicitHeight = 42
           end
           object Bal43sp: TsSpeedButton
-            Left = 106
-            Top = 240
-            Width = 53
+            Left = 108
+            Top = 243
+            Width = 54
             Height = 48
             ParentCustomHint = False
             Align = alClient
@@ -6836,14 +6865,15 @@ object FOptions: TFOptions
             OnClick = Bal1spClick
             OnMouseEnter = Bal1spMouseEnter
             SkinData.SkinSection = 'EDIT'
+            ExplicitLeft = 106
             ExplicitTop = 238
             ExplicitWidth = 52
             ExplicitHeight = 42
           end
           object Bal44sp: TsSpeedButton
-            Left = 159
-            Top = 240
-            Width = 53
+            Left = 162
+            Top = 243
+            Width = 54
             Height = 48
             ParentCustomHint = False
             Align = alClient
@@ -6862,13 +6892,14 @@ object FOptions: TFOptions
             OnClick = Bal1spClick
             OnMouseEnter = Bal1spMouseEnter
             SkinData.SkinSection = 'EDIT'
+            ExplicitLeft = 159
             ExplicitTop = 238
             ExplicitWidth = 52
             ExplicitHeight = 42
           end
           object Bal45sp: TsSpeedButton
-            Left = 212
-            Top = 240
+            Left = 216
+            Top = 243
             Width = 53
             Height = 48
             ParentCustomHint = False
@@ -6888,14 +6919,15 @@ object FOptions: TFOptions
             OnClick = Bal1spClick
             OnMouseEnter = Bal1spMouseEnter
             SkinData.SkinSection = 'EDIT'
+            ExplicitLeft = 212
             ExplicitTop = 238
             ExplicitWidth = 52
             ExplicitHeight = 42
           end
           object Bal46sp: TsSpeedButton
-            Left = 265
-            Top = 240
-            Width = 53
+            Left = 269
+            Top = 243
+            Width = 54
             Height = 48
             ParentCustomHint = False
             Align = alClient
@@ -6914,14 +6946,15 @@ object FOptions: TFOptions
             OnClick = Bal1spClick
             OnMouseEnter = Bal1spMouseEnter
             SkinData.SkinSection = 'EDIT'
+            ExplicitLeft = 265
             ExplicitTop = 238
             ExplicitWidth = 52
             ExplicitHeight = 42
           end
           object Bal47sp: TsSpeedButton
-            Left = 318
-            Top = 240
-            Width = 53
+            Left = 323
+            Top = 243
+            Width = 54
             Height = 48
             ParentCustomHint = False
             Align = alClient
@@ -6940,14 +6973,15 @@ object FOptions: TFOptions
             OnClick = Bal1spClick
             OnMouseEnter = Bal1spMouseEnter
             SkinData.SkinSection = 'EDIT'
+            ExplicitLeft = 318
             ExplicitTop = 238
             ExplicitWidth = 52
             ExplicitHeight = 42
           end
           object Bal48sp: TsSpeedButton
-            Left = 371
-            Top = 240
-            Width = 60
+            Left = 377
+            Top = 243
+            Width = 54
             Height = 48
             ParentCustomHint = False
             Align = alClient
@@ -6973,9 +7007,9 @@ object FOptions: TFOptions
           end
           object Bal49sp: TsSpeedButton
             Left = 0
-            Top = 288
-            Width = 53
-            Height = 52
+            Top = 291
+            Width = 54
+            Height = 49
             ParentCustomHint = False
             Align = alClient
             BiDiMode = bdLeftToRight
@@ -6998,10 +7032,10 @@ object FOptions: TFOptions
             ExplicitHeight = 42
           end
           object Bal50sp: TsSpeedButton
-            Left = 53
-            Top = 288
-            Width = 53
-            Height = 52
+            Left = 54
+            Top = 291
+            Width = 54
+            Height = 49
             ParentCustomHint = False
             Align = alClient
             BiDiMode = bdLeftToRight
@@ -7019,15 +7053,16 @@ object FOptions: TFOptions
             OnClick = Bal1spClick
             OnMouseEnter = Bal1spMouseEnter
             SkinData.SkinSection = 'EDIT'
+            ExplicitLeft = 53
             ExplicitTop = 285
             ExplicitWidth = 52
             ExplicitHeight = 42
           end
           object Bal51sp: TsSpeedButton
-            Left = 106
-            Top = 288
-            Width = 53
-            Height = 52
+            Left = 108
+            Top = 291
+            Width = 54
+            Height = 49
             ParentCustomHint = False
             Align = alClient
             BiDiMode = bdLeftToRight
@@ -7045,15 +7080,16 @@ object FOptions: TFOptions
             OnClick = Bal1spClick
             OnMouseEnter = Bal1spMouseEnter
             SkinData.SkinSection = 'EDIT'
+            ExplicitLeft = 106
             ExplicitTop = 285
             ExplicitWidth = 52
             ExplicitHeight = 42
           end
           object Bal52sp: TsSpeedButton
-            Left = 159
-            Top = 288
-            Width = 53
-            Height = 52
+            Left = 162
+            Top = 291
+            Width = 54
+            Height = 49
             ParentCustomHint = False
             Align = alClient
             BiDiMode = bdLeftToRight
@@ -7071,15 +7107,16 @@ object FOptions: TFOptions
             OnClick = Bal1spClick
             OnMouseEnter = Bal1spMouseEnter
             SkinData.SkinSection = 'EDIT'
+            ExplicitLeft = 159
             ExplicitTop = 285
             ExplicitWidth = 52
             ExplicitHeight = 42
           end
           object Bal53sp: TsSpeedButton
-            Left = 212
-            Top = 288
+            Left = 216
+            Top = 291
             Width = 53
-            Height = 52
+            Height = 49
             ParentCustomHint = False
             Align = alClient
             BiDiMode = bdLeftToRight
@@ -7097,15 +7134,16 @@ object FOptions: TFOptions
             OnClick = Bal1spClick
             OnMouseEnter = Bal1spMouseEnter
             SkinData.SkinSection = 'EDIT'
+            ExplicitLeft = 212
             ExplicitTop = 285
             ExplicitWidth = 52
             ExplicitHeight = 42
           end
           object Bal54sp: TsSpeedButton
-            Left = 265
-            Top = 288
-            Width = 53
-            Height = 52
+            Left = 269
+            Top = 291
+            Width = 54
+            Height = 49
             ParentCustomHint = False
             Align = alClient
             BiDiMode = bdLeftToRight
@@ -7123,15 +7161,16 @@ object FOptions: TFOptions
             OnClick = Bal1spClick
             OnMouseEnter = Bal1spMouseEnter
             SkinData.SkinSection = 'EDIT'
+            ExplicitLeft = 265
             ExplicitTop = 285
             ExplicitWidth = 52
             ExplicitHeight = 42
           end
           object Bal55sp: TsSpeedButton
-            Left = 318
-            Top = 288
-            Width = 53
-            Height = 52
+            Left = 323
+            Top = 291
+            Width = 54
+            Height = 49
             ParentCustomHint = False
             Align = alClient
             BiDiMode = bdLeftToRight
@@ -7149,15 +7188,16 @@ object FOptions: TFOptions
             OnClick = Bal1spClick
             OnMouseEnter = Bal1spMouseEnter
             SkinData.SkinSection = 'EDIT'
+            ExplicitLeft = 318
             ExplicitTop = 285
             ExplicitWidth = 52
             ExplicitHeight = 42
           end
           object Bal56sp: TsSpeedButton
-            Left = 371
-            Top = 288
-            Width = 60
-            Height = 52
+            Left = 377
+            Top = 291
+            Width = 54
+            Height = 49
             ParentCustomHint = False
             Align = alClient
             BiDiMode = bdLeftToRight
@@ -7224,7 +7264,6 @@ object FOptions: TFOptions
     ParentFont = False
     TabOrder = 2
     StyleElements = []
-    ExplicitTop = 638
     DesignSize = (
       437
       36)
@@ -7260,7 +7299,7 @@ object FOptions: TFOptions
       ShowHint = True
       Spacing = -1
       OnClick = OKFPrintingBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
   end
@@ -7325,12 +7364,7 @@ object FOptions: TFOptions
       end>
     Left = 222
     Top = 216
-    Bitmap = {
-      494C010100000800080001000100FFFFFFFF0400FFFFFFFFFFFFFFFF424D7600
-      0000000000007600000028000000040000000100000001000400000000000400
-      0000000000000000000000000000000000000000000000008000008000000080
-      8000800000008000800080800000C0C0C000808080000000FF0000FF000000FF
-      FF00FF000000FF00FF00FFFF0000FFFFFF0000000000}
+    Bitmap = {}
   end
   object ComPort1: TComPort
     BaudRate = br9600

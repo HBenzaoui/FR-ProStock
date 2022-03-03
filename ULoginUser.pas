@@ -1,4 +1,4 @@
-unit ULoginUser;
+﻿unit ULoginUser;
 
 interface
 
@@ -21,7 +21,7 @@ uses   MMSystem,Vcl.Printers,System.IniFiles,
   dxSkinTheAsphaltWorld, dxSkinsDefaultPainters, dxSkinValentine,
   dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
   dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
-  dxSkinXmas2008Blue, cxTextEdit;
+  dxSkinXmas2008Blue, cxTextEdit, sPanel, acSlider;
 
 type
   TLoginUserF = class(TForm)
@@ -42,6 +42,7 @@ type
     PasswordEdt: TcxTextEdit;
     FolderL: TLabel;
     FolderCbx: TComboBox;
+    FolderAddLogUsrSBtn: TAdvToolButton;
     procedure CancelBtnClick(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure UserCbxEnter(Sender: TObject);
@@ -56,6 +57,7 @@ type
     procedure PasswordEdtKeyPress(Sender: TObject; var Key: Char);
     procedure FolderCbxEnter(Sender: TObject);
     procedure FolderCbxExit(Sender: TObject);
+    procedure FolderAddLogUsrSBtnClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -70,7 +72,7 @@ implementation
 {$R *.dfm}
 
 
-uses UMainF, UDataModule,System.Contnrs, ULogin,Winapi.ShellAPI, UOptions;
+uses UMainF, UDataModule,System.Contnrs, ULogin,Winapi.ShellAPI, UOptions, USplashAddUnite;
 
 
   var
@@ -146,6 +148,129 @@ begin
 //   MainForm.KillTask('cmd.exe');                                         // Eable this is only for releasing
  Application.Terminate;
  end;
+end;
+
+procedure TLoginUserF.FolderAddLogUsrSBtnClick(Sender: TObject);
+var
+  DescMigrationLbl: TLabel;
+  ProduitLbl: TLabel;
+
+  ProduitSdr11: TsSlider;
+begin
+   //-------- Show the splash screan for the databse creation ---------//
+
+    FSplashAddUnite:=TFSplashAddUnite.Create(self);
+    FSplashAddUnite.Width:= 330;
+//    FSplashAddUnite.Height:=185;
+    FSplashAddUnite.Height:=285;
+    FSplashAddUnite.Panel1.Color:= $0028CAFF;
+    FSplashAddUnite.LineP.Color:= $0028CAFF;
+    FSplashAddUnite.FormCaptionAddUniteSLbl.Font.Color:= $0040332D;
+    FSplashAddUnite.OKAddUniteSBtn.Left:=(FSplashAddUnite.Width div 4) - (FSplashAddUnite.OKAddUniteSBtn.Width div 2) + 18 ;
+    FSplashAddUnite.CancelAddUniteSBtn.Left:= ((FSplashAddUnite.Width div 2 )+((FSplashAddUnite.Width div 2)div 2 ) ) - (FSplashAddUnite.CancelAddUniteSBtn.Width div 2) - 18;
+    FSplashAddUnite.CompteAddUniteSLbl.Visible:=True;
+    FSplashAddUnite.CompteAddUniteSLbl.Caption:='Session:';
+    FSplashAddUnite.CompteAddUniteSLbl.Left:= 60;
+    FSplashAddUnite.CompteAddUniteSCbx.Visible:= True;
+    FSplashAddUnite.CompteAddUniteSCbx.Left:=  FSplashAddUnite.NameAddUniteSEdt.Left;
+    FSplashAddUnite.CompteAddUniteSCbx.Text:= FormatDateTime('YYYY',Date);
+    FSplashAddUnite.CompteAddUniteSCbx.Enabled:=False;
+    FSplashAddUnite.NameAddUniteSLbl.Caption:='Dossier:';
+    FSplashAddUnite.RequiredAddUniteSlbl.Caption:='S''il vous pla�t entrer un dossier' ;
+    FSplashAddUnite.RequiredAddUniteSlbl.Left:= FSplashAddUnite.NameAddUniteSEdt.Left;
+    FSplashAddUnite.FormCaptionAddUniteSLbl.Caption:='Création de dossier';
+    FSplashAddUnite.RequiredStarAddUniteSLbl.Left:= (FSplashAddUnite.NameAddUniteSEdt.Left )+( FSplashAddUnite.NameAddUniteSEdt.Width) + 3 ;
+    FSplashAddUnite.FormCaptionAddUniteSLbl.Left:=( FSplashAddUnite.Width div 2) -  ( FSplashAddUnite.FormCaptionAddUniteSLbl.Width div 2);
+    FSplashAddUnite.Left:= (MainForm.Left + MainForm.Width div 2) - (FSplashAddUnite.Width div 2) ;
+    FSplashAddUnite.Top:=   MainForm.Top + 5;
+    FSplashAddUnite.NameAddUniteSLbl.Left:= (FSplashAddUnite.NameAddUniteSedt.Left )- (FSplashAddUnite.NameAddUniteSLbl.Width) - 5 ;
+    FSplashAddUnite.Image1.Visible:= True;
+    FSplashAddUnite.Image1.top:= FSplashAddUnite.Image1.top + 20;
+    FSplashAddUnite.Image1.ImageIndex:=20;
+    FSplashAddUnite.NameAddUniteSErrorP.Left:= (FSplashAddUnite.NameAddUniteSEdt.Left) - 1;
+
+    AnimateWindow(FSplashAddUnite.Handle, 175, AW_VER_POSITIVE OR AW_SLIDE OR AW_ACTIVATE );
+    FSplashAddUnite.Show;
+    FSplashAddUnite.NameAddUniteSEdt.SetFocus;
+
+
+    FSplashAddUnite.OKAddUniteSBtn.Tag:= 51 ;
+
+
+
+
+//------ here we create dynamiclly couple of bttn and slider to use for copying data from db to db----
+
+
+  DescMigrationLbl := TLabel.Create(FSplashAddUnite);
+  with DescMigrationLbl do
+  begin
+    Parent := FSplashAddUnite;
+    Left := Image1.Left - 5;
+    Top := UserL.top + 50;
+    Width := 48;
+    Height := 18;
+    Caption := 'Migration des Listings';
+    Color := $0040332D;
+    Font.Charset := DEFAULT_CHARSET;
+    Font.Color := $0040332D;
+    Font.Height := 18;
+    Font.Name := 'Helvetica LT Std';
+    Font.Style := [fsBold];
+    ParentColor := False;
+    ParentFont := False;
+  end;
+
+  ProduitLbl := TLabel.Create(FSplashAddUnite);
+  with ProduitLbl do
+  begin
+    Parent := FSplashAddUnite;
+    Left := Image1.Left - 5;
+    Top := UserL.top + 80;
+    Width := 48;
+    Height := 14;
+    Caption := 'Produits:';
+    Color := $0040332D;
+    Font.Charset := DEFAULT_CHARSET;
+    Font.Color := $0040332D;
+    Font.Height := 14;
+    Font.Name := 'Roboto';
+    Font.Style := [];
+    ParentColor := False;
+    ParentFont := False;
+    StyleElements := [];
+  end;
+
+
+    ProduitSdr11 := TsSlider.Create(FSplashAddUnite);
+
+  ProduitSdr11.Name := 'ProduitSdr11';
+  ProduitSdr11.Parent := FSplashAddUnite;
+  ProduitSdr11.Left := 379;
+  ProduitSdr11.Top := 88;
+  ProduitSdr11.Width := 35;
+  ProduitSdr11.Height := 12;
+  ProduitSdr11.BevelOuter := bvNone;
+  ProduitSdr11.BiDiMode := bdLeftToRight;
+  ProduitSdr11.Color := 2497560;
+  ProduitSdr11.Ctl3D := False;
+  ProduitSdr11.StyleElements := [];
+  ProduitSdr11.ParentBiDiMode := False;
+  ProduitSdr11.ParentBackground := False;
+  ProduitSdr11.ParentCtl3D := False;
+  ProduitSdr11.ParentFont := False;
+  ProduitSdr11.TabOrder := 20;
+  ProduitSdr11.SliderCursor := crHandPoint;
+  ProduitSdr11.Reversed := True;
+  ProduitSdr11.SliderOn := False;
+//  ProduitSdr11.OnChanging := ProduitSdr11Changing;
+
+
+
+
+
+
+
 end;
 
 procedure TLoginUserF.FolderCbxEnter(Sender: TObject);
@@ -362,7 +487,7 @@ begin
               Canvas.Font.Color  := clBlack;
 
               // Write out the page size
-              Canvas.TextOut(20, 40, 'Le ' + DateToStr(Now)+' � '+TimeToStr(Now)  );
+              Canvas.TextOut(20, 40, 'Le ' + DateToStr(Now)+' â '+TimeToStr(Now)  );
               Canvas.TextOut(20, 80, 'L''utilisateur "'+UserCbx.Text+'" a ouvert le Tiroir Caisse');
               // Finish printing
               EndDoc;

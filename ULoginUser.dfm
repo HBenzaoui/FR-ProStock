@@ -4,7 +4,7 @@ object LoginUserF: TLoginUserF
   BorderStyle = bsNone
   Caption = 'LoginUserF'
   ClientHeight = 237
-  ClientWidth = 398
+  ClientWidth = 419
   Color = 15527148
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -18,7 +18,7 @@ object LoginUserF: TLoginUserF
   OnKeyPress = FormKeyPress
   OnShow = FormShow
   DesignSize = (
-    398
+    419
     237)
   PixelsPerInch = 96
   TextHeight = 13
@@ -55,7 +55,7 @@ object LoginUserF: TLoginUserF
     StyleElements = []
   end
   object Image1: TImage
-    Left = 14
+    Left = 22
     Top = 74
     Width = 65
     Height = 70
@@ -632,6 +632,38 @@ object LoginUserF: TLoginUserF
     ParentFont = False
     StyleElements = []
   end
+  object FolderAddLogUsrSBtn: TAdvToolButton
+    Left = 389
+    Top = 54
+    Width = 26
+    Height = 26
+    Cursor = crHandPoint
+    AutoThemeAdapt = False
+    BorderColor = 15722984
+    BorderDownColor = 7854350
+    BorderHotColor = 15970832
+    Color = 15722984
+    ColorDown = 7854350
+    ColorHot = clBtnFace
+    ColorChecked = clNone
+    DropDownSplit = False
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = 4207405
+    Font.Height = 18
+    Font.Name = 'Roboto'
+    Font.Style = []
+    ImageIndex = 10
+    Images = MainForm.PanelIcons24
+    ParentFont = False
+    ParentShowHint = False
+    Rounded = True
+    Shaded = False
+    ShowHint = True
+    Spacing = -1
+    OnClick = FolderAddLogUsrSBtnClick
+    Version = '1.7.2.0'
+    TMSStyle = 0
+  end
   object UserCheckGErrorP: TPanel
     Left = 177
     Top = 94
@@ -669,7 +701,7 @@ object LoginUserF: TLoginUserF
   object TopP: TPanel
     Left = 0
     Top = 0
-    Width = 398
+    Width = 419
     Height = 41
     Align = alTop
     BevelOuter = bvNone
@@ -686,9 +718,9 @@ object LoginUserF: TLoginUserF
     StyleElements = []
   end
   object LineP: TPanel
-    Left = 0
+    Left = -1
     Top = 178
-    Width = 398
+    Width = 421
     Height = 2
     Anchors = []
     BevelOuter = bvNone
@@ -698,7 +730,7 @@ object LoginUserF: TLoginUserF
     StyleElements = []
   end
   object OKP: TPanel
-    Left = 170
+    Left = 182
     Top = 189
     Width = 110
     Height = 38
@@ -745,7 +777,7 @@ object LoginUserF: TLoginUserF
     end
   end
   object CancelP: TPanel
-    Left = 282
+    Left = 300
     Top = 189
     Width = 110
     Height = 38

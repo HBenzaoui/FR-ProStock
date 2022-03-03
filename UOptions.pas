@@ -1,7 +1,6 @@
 unit UOptions;
 
 interface
-
 uses  DigiSM_TLB,    Winapi.WinSock,
   Winapi.Windows,Data.DB,Vcl.Imaging.jpeg, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, sPanel,
@@ -24,7 +23,6 @@ uses  DigiSM_TLB,    Winapi.WinSock,
   dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
   dxSkinXmas2008Blue, cxRadioGroup, cxGroupBox, sTrackBar, cxTrackBar,
   Vcl.Buttons, sSpeedButton, CPort,DBGridEh, Vcl.Menus;
-
 type
   TFOptions = class(TForm)
     TopP: TPanel;
@@ -388,26 +386,17 @@ type
     procedure DisableFavBtns;
     procedure DisableBalBtns;
     procedure EnableBalBtns;
-
   public
-
    FavBtn,BalBtn : TsSpeedButton;
-
   end;
-
 var
   FOptions: TFOptions;
-
   ScaleLib:IScale;
-
 implementation
-
 uses      PLU,ScaleAPI,ShopName,
 Printers,IniFiles, UClientGestion, UMainF, UWorkingSplash, UFastProduitsList;
 
-
 {$R *.dfm}
-
 procedure TFOptions.AllSdr0Changing(Sender: TObject; var CanChange: Boolean);
 begin
  if AllSdr0.SliderOn = False then
@@ -689,15 +678,11 @@ end;
 
 procedure TFOptions.FormCreate(Sender: TObject);
 begin
-
    PrintersListFOptionCaisseCbx.Items.Assign(Printer.Printers);
    PrintersListFOptionCodeBCbx.Items.Assign(Printer.Printers);
    TiroirCaissePrinterListCbx.Items.Assign(Printer.Printers);
-
 //   OptionsPgControl.SkinData.SkinManager:= ;
-
 end;
-
 
 procedure TFOptions.FormShow(Sender: TObject);
 var
@@ -710,17 +695,12 @@ var
 begin
  GrayForms;
  OptionsPgControl.TabIndex:= 0;
-
 //    inherited;
-
-
 
     Ini := TIniFile.Create(ChangeFileExt(Application.ExeName,'.ini')) ;
     APrintOptionGSlider.SliderOn:=           Ini.ReadBool('', 'Auto Print',APrintOptionGSlider.SliderOn);
     PrintersListFOptionCaisseCbx.ItemIndex:= Ini.ReadInteger('', 'Printer Caisse',PrintersListFOptionCaisseCbx.ItemIndex);
-
     PrinterCaisseSize:= Ini.ReadString('', 'Printer Caisse Size', PrinterCaisseSize);
-
     if PrinterCaisseSize = '80mm' then
     begin
       PrinterCaisse80mmOptionCaisseRdioBtn.Checked := True;
@@ -729,22 +709,20 @@ begin
     begin
       PrinterCaisse57mmOptionCaisseRdioBtn.Checked := True;
     end;
-
     PrintersListFOptionCodeBCbx.ItemIndex := Ini.ReadInteger('', 'Printer Barcode',PrintersListFOptionCodeBCbx.ItemIndex);
     FormatFOptionCodeBCbx.ItemIndex :=       Ini.ReadInteger('', 'Format Barcode',FormatFOptionCodeBCbx.ItemIndex);
     PrixVenteListFOptionCodeBCbx.ItemIndex:= Ini.ReadInteger('', 'Prix de Vente',PrixVenteListFOptionCodeBCbx.ItemIndex);
-
     FormatBLOptionCbx.ItemIndex:= Ini.ReadInteger('', 'Format BL',FormatBLOptionCbx.ItemIndex);
     FormatFPOptionCbx.ItemIndex:= Ini.ReadInteger('', 'Format FP',FormatFPOptionCbx.ItemIndex);
     FormatFVOptionCbx.ItemIndex:= Ini.ReadInteger('', 'Format FV',FormatFVOptionCbx.ItemIndex);
     FormatBROptionCbx.ItemIndex:= Ini.ReadInteger('', 'Format BR',FormatBROptionCbx.ItemIndex);
     FormatFAOptionCbx.ItemIndex:= Ini.ReadInteger('', 'Format FA',FormatFAOptionCbx.ItemIndex);
 
-
     PoleDisplayActiveSdr.SliderOn:=          Ini.ReadBool('', 'Afficheur client Active',PoleDisplayActiveSdr.SliderOn);
      if PoleDisplayActiveSdr.SliderOn then
      begin
-      PoleDisplayActiveSdr.SliderOn:=       Ini.ReadBool('',    'Afficheur client Active', PoleDisplayActiveSdr.SliderOn);
+
+      PoleDisplayActiveSdr.SliderOn:=       Ini.ReadBool('',    'Afficheur client Active', PoleDisplayActiveSdr.SliderOn);
       PoleDisplayCOMListCbx.Text:=          Ini.ReadString('',  'Afficheur client PORT', PoleDisplayCOMListCbx.Text);
       PoleDisplayMsgEdt.Text:=              Ini.ReadString('',  'Afficheur client Msg', PoleDisplayMsgEdt.Text);
       PoleDisplayMsg2Edt.Text:=             Ini.ReadString('',  'Afficheur client Msg2', PoleDisplayMsg2Edt.Text);
@@ -830,7 +808,6 @@ begin
 
        Ini.Free;
 
-
       ImageEditProduitGBtn.Visible:=false;
       ImageDeleteProduitGBtn.Visible:=false;
       ImageCompanyOptionImg.ImageIndex:=0;
@@ -839,7 +816,6 @@ begin
       ImageCompanyOptionImg.Blend:=40;
       ImageCompanyOptionImg.Picture.Graphic:= nil;
       OpenPictureDialogProduitG.CleanupInstance;
-
 
  if not (MainForm.CompanyTable.IsEmpty) then
     begin
@@ -862,27 +838,22 @@ begin
         begin
          AdrCompanyOptionEdt.Text := fieldbyname('adr_comp').Value;
         end;
-
         if (fieldbyname('rc_comp').Value <> null) then
         begin
          RCCompanyGEdt.Text := fieldbyname('rc_comp').Value;
         end;
-
         if (fieldbyname('nif_comp').Value <> null) then
         begin
          NIFCompanyGEdt.Text := fieldbyname('nif_comp').Value;
         end;
-
         if (fieldbyname('nart_comp').Value <> null) then
         begin
          NArtCompanyGEdt.Text := fieldbyname('nart_comp').Value;
         end;
-
         if (fieldbyname('nis_comp').Value <> null) then
         begin
          NISCompanyGEdt.Text := fieldbyname('nis_comp').Value;
         end;
-
         if (fieldbyname('logo_comp').Value <> null) then
         begin
           S := TMemoryStream.Create;
@@ -906,17 +877,12 @@ begin
             S.Free;
           end;
         end
-
       end;
-
     end;
 
-
 //    NameCompanyOptionEdt.SetFocus;
-
     BalBtnLblDrawerTimer.Enabled:=True;
 end;
-
 
 
 procedure TFOptions.FourSdr13Changing(Sender: TObject; var CanChange: Boolean);
@@ -952,7 +918,6 @@ var  S : TStream;
 Ini: TIniFile;
 I : Integer;
 begin
-
    if NameCompanyOptionEdt.Text <> '' then
     begin
      if MainForm.CompanyTable.IsEmpty then
@@ -964,15 +929,12 @@ begin
             fieldbyname('fix_comp').Value := TelCompanyOptionEdt.Text;
             fieldbyname('mob_comp').Value := MobCompanyOptionEdt.Text;
             fieldbyname('adr_comp').Value := AdrCompanyOptionEdt.Text;
-
             fieldbyname('rc_comp').Value := RCCompanyGEdt.Text;
             fieldbyname('nif_comp').Value := NIFCompanyGEdt.Text;
             fieldbyname('nart_comp').Value := NArtCompanyGEdt.Text;
             fieldbyname('nis_comp').Value := NISCompanyGEdt.Text;
             fieldbyname('rib_comp').Value := RIBCompanyGEdt.Text;
-
               {Creat the stream using BlobStream is better the to the blob dictely }
-
               S :=CreateBlobStream(FieldByName('logo_comp'), bmWrite);
              try
               if NOt (ImageCompanyOptionImg.ImageIndex = 0) then
@@ -986,33 +948,25 @@ begin
                ImageCompanyOptionImg.ImageIndex:=0;
                ImageCompanyOptionImg.Grayed:=True;
                  end ;
-
              finally
               S.Free;
              end;
-
              post;
            end;
-
       end else
           begin
-
                with MainForm.CompanyTable do  begin
-
               Edit;
               fieldbyname('nom_comp').Value := NameCompanyOptionEdt.Text;
               fieldbyname('fix_comp').Value := TelCompanyOptionEdt.Text;
               fieldbyname('mob_comp').Value := MobCompanyOptionEdt.Text;
               fieldbyname('adr_comp').Value := AdrCompanyOptionEdt.Text;
-
               fieldbyname('rc_comp').Value := RCCompanyGEdt.Text;
               fieldbyname('nif_comp').Value := NIFCompanyGEdt.Text;
               fieldbyname('nart_comp').Value := NArtCompanyGEdt.Text;
               fieldbyname('nis_comp').Value := NISCompanyGEdt.Text;
               fieldbyname('rib_comp').Value := RIBCompanyGEdt.Text;
-
               {Creat the stream using BlobStream is better the to the blob dictely }
-
               S :=CreateBlobStream(FieldByName('logo_comp'), bmWrite);
              try
               if NOt (ImageCompanyOptionImg.ImageIndex = 0) then
@@ -1026,24 +980,17 @@ begin
                ImageCompanyOptionImg.ImageIndex:=0;
                ImageCompanyOptionImg.Grayed:=True;
                  end ;
-
              finally
               S.Free;
              end;
-
               post;
-
             end;
-
           end;
-
     end;
-
   begin
     Ini := TIniFile.Create(ChangeFileExt(Application.ExeName,'.ini'));
     Ini.WriteBool(Caption,   'Auto Print', APrintOptionGSlider.SliderOn);
     Ini.WriteInteger(Caption, 'Printer Caisse', PrintersListFOptionCaisseCbx.ItemIndex);
-
     if PrinterCaisse80mmOptionCaisseRdioBtn.Checked then
     begin
     Ini.WriteString(Caption, 'Printer Caisse Size', '80mm');
@@ -1052,17 +999,14 @@ begin
     begin
     Ini.WriteString(Caption, 'Printer Caisse Size', '57mm');
     end;
-
     Ini.WriteInteger(Caption, 'Printer Barcode', PrintersListFOptionCodeBCbx.ItemIndex);
     Ini.WriteInteger(Caption,'Format Barcode', FormatFOptionCodeBCbx.ItemIndex);
     Ini.WriteInteger(Caption,'Prix de Vente', PrixVenteListFOptionCodeBCbx.ItemIndex);
-
     Ini.WriteInteger(Caption,'Format BL', FormatBLOptionCbx.ItemIndex);
     Ini.WriteInteger(Caption,'Format FP', FormatFPOptionCbx.ItemIndex);
     Ini.WriteInteger(Caption,'Format FV', FormatFVOptionCbx.ItemIndex);
     Ini.WriteInteger(Caption,'Format BR', FormatBROptionCbx.ItemIndex);
     Ini.WriteInteger(Caption,'Format FA', FormatFAOptionCbx.ItemIndex);
-
     if PoleDisplayActiveSdr.SliderOn then
     begin
     Ini.WriteBool(Caption,'Afficheur client Active', PoleDisplayActiveSdr.SliderOn);
@@ -1074,7 +1018,6 @@ begin
         begin
            Ini.WriteBool(Caption,'Afficheur client Active', PoleDisplayActiveSdr.SliderOn);
         end;
-
     if TiroirCaisseActiveSdr.SliderOn then
     begin
     Ini.WriteBool(Caption,'Tiroir caisse Active', TiroirCaisseActiveSdr.SliderOn);
@@ -1091,16 +1034,13 @@ begin
           end;
          end;
      Ini.WriteBool(Caption,'Tiroir caisse PASSWORD', TiroirCaisseCasePasswordSdr.SliderOn);
-
      MainForm.OuvertureduTiroirCaisse1.Visible:= True;
-
     end else
         begin
              Ini.WriteBool(Caption,'Tiroir caisse Active', TiroirCaisseActiveSdr.SliderOn);
 
              MainForm.OuvertureduTiroirCaisse1.Visible:= False;
         end;
-
 
     if BalanceIPActiveSdr.SliderOn  then
     begin
@@ -1109,7 +1049,6 @@ begin
     Ini.WriteString(Caption,'Balance Adresse IP', BalanceIPAdressIPEdt.Text);
     Ini.WriteInteger(Caption,'Type de Code a Barre', BalanceIPBareCodeListCbx.ItemIndex);
     end;
-
     for I := 1 to 56 do
     begin
      BalBtn := (FindComponent('Bal'+IntToStr(I)+'sp') as TsSpeedButton);
@@ -1126,14 +1065,11 @@ begin
     MainForm.SQLQuery.Active:= False;
     MainForm.SQLQuery.SQL.Clear;
 
-
     Ini.Free;
 //  inherited;
   end;
-
    Close;
   end;
-
 procedure TFOptions.ImageCompanyOptionImgMouseEnter(Sender: TObject);
 begin
 //---- use this code to change color and grayad the icon wehn mouse enter
@@ -1147,7 +1083,6 @@ begin
       ImageCompanyOptionImg.Blend:=20;
       end;
 end;
-
 procedure TFOptions.ImageCompanyOptionImgMouseLeave(Sender: TObject);
 begin
 //---- use this code to change color and grayad the icon wehn mouse leave
@@ -1161,14 +1096,12 @@ begin
     ImageCompanyOptionImg.Blend:=50;
     end;
 end;
-
 procedure TFOptions.ImageCompanyOptionImgClick(Sender: TObject);
 var
  Jpg:  TJPEGImage;
  bmp: TBitmap;
  scale: Double;
 begin
-
  if  OpenPictureDialogProduitG.Execute then
  begin
    Jpg := TJPEGImage.Create;
@@ -1179,7 +1112,6 @@ begin
    ImageCompanyOptionImg.Grayed:=False;
    ImageCompanyOptionImg.Blend:=0;
    ImageCompanyOptionImg.ImageIndex:= -1;
-
     Jpg.LoadFromFile(OpenPictureDialogProduitG.FileName);
           if jpg.Height > jpg.Width then
         scale := 1200 / jpg.Height
@@ -1194,26 +1126,18 @@ begin
         {Convert back to JPEG and save to file}
           jpg.Assign(bmp);
         {CompressionQuality JPEG and save to file}
-
 //          Jpg.CompressionQuality:= 50;
 //          Jpg.Compress;
-
           ImageCompanyOptionImg.Picture.Assign(Jpg);
       finally
         bmp.free;
       end;
-
    finally
-
      Jpg.Free
-
    end;
-
  end else begin exit
  end;
-
 end;
-
 procedure TFOptions.ImageDeleteProduitGBtnClick(Sender: TObject);
 begin
 ImageEditProduitGBtn.Visible:=false;
@@ -1230,18 +1154,13 @@ MainForm.CompanyTable.Post;
 end;
 
 
-
-
 procedure TFOptions.FormKeyPress(Sender: TObject; var Key: Char);
 begin
      if key = #27 then
  begin
  key := #0;
-
   close;
-
  end;
-
  if key = #13 then
 
   begin
@@ -1251,11 +1170,8 @@ begin
   end;
 end;
 
-
-
 procedure TFOptions.FormPaint(Sender: TObject);
 begin
-
 end;
 
 // this function is to get a liot of available COM ports
@@ -1284,7 +1200,6 @@ begin
   else
     Result := GetLastError;
 end;
-
 
 procedure TFOptions.PoleDisplayCOMListCbxDropDown(Sender: TObject);
 //var
@@ -2299,7 +2214,6 @@ begin
 
 
 end;
-
 procedure TFOptions.TiroirCaisseCasePRINTRbtnClick(Sender: TObject);
 begin
 

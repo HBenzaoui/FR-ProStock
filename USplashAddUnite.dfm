@@ -70,7 +70,7 @@ object FSplashAddUnite: TFSplashAddUnite
     ShowHint = True
     Spacing = 10
     OnClick = OKAddUniteSBtnClick
-    Version = '1.6.2.0'
+    Version = '1.7.2.0'
     TMSStyle = 0
   end
   object CancelAddUniteSBtn: TAdvToolButton
@@ -102,7 +102,7 @@ object FSplashAddUnite: TFSplashAddUnite
     ShowHint = True
     Spacing = -1
     OnClick = CancelAddUniteSBtnClick
-    Version = '1.6.2.0'
+    Version = '1.7.2.0'
     TMSStyle = 0
   end
   object RequiredAddUniteSlbl: TLabel
@@ -186,7 +186,7 @@ object FSplashAddUnite: TFSplashAddUnite
     Spacing = -1
     Visible = False
     OnClick = CompteAddUniteSBtnClick
-    Version = '1.6.2.0'
+    Version = '1.7.2.0'
     TMSStyle = 0
   end
   object CompteAddUniteSLbl: TLabel

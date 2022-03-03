@@ -1386,7 +1386,9 @@ begin
     (OKAddUniteSBtn.Tag <> 19)AND (OKAddUniteSBtn.Tag <> 30)AND (OKAddUniteSBtn.Tag <> 31)AND (OKAddUniteSBtn.Tag <> 38)AND
     (OKAddUniteSBtn.Tag <> 33)     then
  begin
-    if (key = #13) OR (key = #32) then
+    if (key = #13)
+    // OR (key = #32) //used the space button for something i forget but i had to disbale it
+    then
  begin
      key := #0;
    OKAddUniteSBtnClick(Sender);
@@ -3355,7 +3357,7 @@ begin
    end;
 
 
-      //---- this tag = 8 is for Delting Bon de recption ------///
+      //---- this tag = 50 is for Delting Bon de retur ------///
    if OKAddUniteSBtn.Tag = 50 then
    begin
 
@@ -3376,6 +3378,58 @@ begin
           AnimateWindow(FSplashAddUnite.Handle, 175, AW_VER_NEGATIVE OR AW_SLIDE OR AW_HIDE);
       FSplashAddUnite.Release;
 
+
+   end;
+
+
+         //---- this tag = 51 is for creating a new databse folder ------///
+   if OKAddUniteSBtn.Tag = 51 then
+   begin
+
+     if NameAddUniteSEdt.Text <> '' then
+     begin
+          with DataModuleF.PSDBConfigConnection do  begin
+           ExecSQL(
+                    'CREATE DATABASE "GSTOCKDC_'+
+                    CompteAddUniteSCbx.Text  +
+                    '" WITH OWNER = postgres '+
+                         'ENCODING = ''UTF8'' '+
+                         'TABLESPACE = pg_default '+
+                         'CONNECTION LIMIT = -1; '
+                   );
+           ExecSQL(
+                    'CREATE DATABASE "GSTOCKDC2_'+
+                    CompteAddUniteSCbx.Text  +
+                    '" WITH OWNER = postgres '+
+                         'ENCODING = ''UTF8'' '+
+                         'TABLESPACE = pg_default '+
+                         'CONNECTION LIMIT = -1;'
+                   );
+          end;
+
+         NameAddUniteSErrorP.Visible:=False;
+         RequiredAddUniteSlbl.Visible:=False;
+         AnimateWindow(FSplashAddUnite.Handle, 175, AW_VER_NEGATIVE OR AW_SLIDE OR AW_HIDE);
+         FSplashAddUnite.Release;
+          sndPlaySound('C:\Windows\Media\speech on.wav', SND_NODEFAULT Or SND_ASYNC Or  SND_RING);
+//         if Assigned(ProduitGestionF) then
+//         begin
+//         ProduitGestionF.UniteProduitGCbx.Text:= NameAddUniteSEdt.Text;
+//         ProduitGestionF.UniteProduitGCbx.SetFocus;
+//         end;
+         end
+        else
+        try
+        NameAddUniteSEdt.BorderStyle:= bsNone;
+        NameAddUniteSEdt.StyleElements:= [];
+        RequiredAddUniteSlbl.Visible:= True;
+        NameAddUniteSErrorP.Visible:= True;
+        sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+       OKAddUniteSBtn.Enabled := False;
+       OKAddUniteSBtn.ImageIndex := 18;
+        finally
+        NameAddUniteSEdt.SetFocus;
+     end;
 
    end;
 
