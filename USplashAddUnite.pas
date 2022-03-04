@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages,MMSystem, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, AdvToolBtn, System.ImageList,
   Vcl.ImgList, acAlphaImageList, Vcl.ExtCtrls, Vcl.StdCtrls, acPNG, acImage,
-  Data.DB;
+  Data.DB, sPanel, acSlider;
 
 type
   TFSplashAddUnite = class(TForm)

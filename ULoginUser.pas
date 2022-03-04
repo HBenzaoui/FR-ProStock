@@ -152,17 +152,16 @@ end;
 
 procedure TLoginUserF.FolderAddLogUsrSBtnClick(Sender: TObject);
 var
-  DescMigrationLbl: TLabel;
-  ProduitLbl: TLabel;
-
-  ProduitSdr11: TsSlider;
+  LineP2: TPanel;
+  DescMigrationLbl,ProduitLbl,ClientLbl,FourLbl : TLabel;
+  ProduitSdr,ClientSdr,FourSdr: TsSlider;
 begin
    //-------- Show the splash screan for the databse creation ---------//
 
     FSplashAddUnite:=TFSplashAddUnite.Create(self);
+    FSplashAddUnite.OKAddUniteSBtn.Tag:= 51 ;
     FSplashAddUnite.Width:= 330;
-//    FSplashAddUnite.Height:=185;
-    FSplashAddUnite.Height:=285;
+    FSplashAddUnite.Height:=290;
     FSplashAddUnite.Panel1.Color:= $0028CAFF;
     FSplashAddUnite.LineP.Color:= $0028CAFF;
     FSplashAddUnite.FormCaptionAddUniteSLbl.Font.Color:= $0040332D;
@@ -188,18 +187,33 @@ begin
     FSplashAddUnite.Image1.top:= FSplashAddUnite.Image1.top + 20;
     FSplashAddUnite.Image1.ImageIndex:=20;
     FSplashAddUnite.NameAddUniteSErrorP.Left:= (FSplashAddUnite.NameAddUniteSEdt.Left) - 1;
-
     AnimateWindow(FSplashAddUnite.Handle, 175, AW_VER_POSITIVE OR AW_SLIDE OR AW_ACTIVATE );
+
     FSplashAddUnite.Show;
     FSplashAddUnite.NameAddUniteSEdt.SetFocus;
 
 
-    FSplashAddUnite.OKAddUniteSBtn.Tag:= 51 ;
+
+//------ here we create dynamiclly couple of btn and slider to use for copying data from db to db----
 
 
-
-
-//------ here we create dynamiclly couple of bttn and slider to use for copying data from db to db----
+  LineP := TPanel.Create(FSplashAddUnite);
+  with LineP do
+  begin
+    Parent := FSplashAddUnite;
+    Left := 0;
+    Top := FSplashAddUnite.CompteAddUniteSCbx.Top + FSplashAddUnite.CompteAddUniteSCbx.Height+ 15;
+    Width := FSplashAddUnite.LineP.Width;
+    Height := 2;
+    Anchors := [akLeft, akRight, akBottom];
+    BevelOuter := bvNone;
+    Color := FSplashAddUnite.LineP.Color;
+    DoubleBuffered := True;
+    ParentBackground := False;
+    ParentDoubleBuffered := False;
+    TabOrder := 1;
+    StyleElements := [];
+  end;
 
 
   DescMigrationLbl := TLabel.Create(FSplashAddUnite);
@@ -207,7 +221,7 @@ begin
   begin
     Parent := FSplashAddUnite;
     Left := Image1.Left - 5;
-    Top := UserL.top + 50;
+    Top := FSplashAddUnite.CompteAddUniteSLbl.top + 45;
     Width := 48;
     Height := 18;
     Caption := 'Migration des Listings';
@@ -221,12 +235,14 @@ begin
     ParentFont := False;
   end;
 
+
+//---Produit------------------------
   ProduitLbl := TLabel.Create(FSplashAddUnite);
   with ProduitLbl do
   begin
     Parent := FSplashAddUnite;
     Left := Image1.Left - 5;
-    Top := UserL.top + 80;
+    Top := FSplashAddUnite.CompteAddUniteSLbl.top + 75;
     Width := 48;
     Height := 14;
     Caption := 'Produits:';
@@ -241,32 +257,168 @@ begin
     StyleElements := [];
   end;
 
+//----- Slider
+  ProduitSdr := TsSlider.Create(FSplashAddUnite);
+  with  ProduitSdr do
+  begin
 
-    ProduitSdr11 := TsSlider.Create(FSplashAddUnite);
+    Parent := FSplashAddUnite;
+    Left := FSplashAddUnite.OKAddUniteSBtn.Left + (FSplashAddUnite.OKAddUniteSBtn.Width div 2) -5;
+    Top := ProduitLbl.Top + 1;
+    Width := 35;
+    Height := 12;
+    BevelOuter := bvNone;
+    BiDiMode := bdLeftToRight;
+    Color := 97560;
+    Ctl3D := False;
+    Font.Charset := DEFAULT_CHARSET;
+    Font.Color := 4207405;
+    Font.Height := 12;
+    Font.Name := 'Roboto';
+    Font.Style := [];
+    StyleElements := [];
+    ParentBiDiMode := False;
+    ParentBackground := False;
+    ParentCtl3D := False;
+    ParentFont := False;
+    TabOrder := 20;
+//    BoundLabel.Caption := 'sSlider1';
+//    BoundLabel.Layout := sclBottomCenter;
+    FontOn.Charset := DEFAULT_CHARSET;
+    FontOn.Color := 4207405;
+    FontOn.Height := 12;
+    FontOn.Name := 'Roboto';
+    FontOn.Style := [];
+    SliderCursor := crHandPoint;
+    Reversed := True;
+    SliderOn := False;
+    Cursor:=  crHandPoint;
 
-  ProduitSdr11.Name := 'ProduitSdr11';
-  ProduitSdr11.Parent := FSplashAddUnite;
-  ProduitSdr11.Left := 379;
-  ProduitSdr11.Top := 88;
-  ProduitSdr11.Width := 35;
-  ProduitSdr11.Height := 12;
-  ProduitSdr11.BevelOuter := bvNone;
-  ProduitSdr11.BiDiMode := bdLeftToRight;
-  ProduitSdr11.Color := 2497560;
-  ProduitSdr11.Ctl3D := False;
-  ProduitSdr11.StyleElements := [];
-  ProduitSdr11.ParentBiDiMode := False;
-  ProduitSdr11.ParentBackground := False;
-  ProduitSdr11.ParentCtl3D := False;
-  ProduitSdr11.ParentFont := False;
-  ProduitSdr11.TabOrder := 20;
-  ProduitSdr11.SliderCursor := crHandPoint;
-  ProduitSdr11.Reversed := True;
-  ProduitSdr11.SliderOn := False;
-//  ProduitSdr11.OnChanging := ProduitSdr11Changing;
+  end;
 
 
 
+//---Client------------------------
+  ClientLbl := TLabel.Create(FSplashAddUnite);
+  with ClientLbl do
+  begin
+    Parent := FSplashAddUnite;
+    Left := Image1.Left - 5;
+    Top := ProduitLbl.top + 20;
+    Width := 48;
+    Height := 14;
+    Caption := 'Clients:';
+    Color := $0040332D;
+    Font.Charset := DEFAULT_CHARSET;
+    Font.Color := $0040332D;
+    Font.Height := 14;
+    Font.Name := 'Roboto';
+    Font.Style := [];
+    ParentColor := False;
+    ParentFont := False;
+    StyleElements := [];
+  end;
+
+//-----  Slider
+  ClientSdr := TsSlider.Create(FSplashAddUnite);
+  with  ClientSdr do
+  begin
+
+    Parent := FSplashAddUnite;
+    Left := FSplashAddUnite.OKAddUniteSBtn.Left + (FSplashAddUnite.OKAddUniteSBtn.Width div 2) - 5;
+    Top := ClientLbl.Top + 1;
+    Width := 35;
+    Height := 12;
+    BevelOuter := bvNone;
+    BiDiMode := bdLeftToRight;
+    Color := 97560;
+    Ctl3D := False;
+    Font.Charset := DEFAULT_CHARSET;
+    Font.Color := 4207405;
+    Font.Height := 12;
+    Font.Name := 'Roboto';
+    Font.Style := [];
+    StyleElements := [];
+    ParentBiDiMode := False;
+    ParentBackground := False;
+    ParentCtl3D := False;
+    ParentFont := False;
+    TabOrder := 20;
+//    BoundLabel.Caption := 'sSlider1';
+//    BoundLabel.Layout := sclBottomCenter;
+    FontOn.Charset := DEFAULT_CHARSET;
+    FontOn.Color := 4207405;
+    FontOn.Height := 12;
+    FontOn.Name := 'Roboto';
+    FontOn.Style := [];
+    SliderCursor := crHandPoint;
+    Reversed := True;
+    SliderOn := False;
+    Cursor:=  crHandPoint;
+
+  end;
+
+
+//---Four------------------------
+  FourLbl := TLabel.Create(FSplashAddUnite);
+  with FourLbl do
+  begin
+    Parent := FSplashAddUnite;
+    Left := Image1.Left - 5;
+    Top := ClientLbl.top + 20;
+    Width := 48;
+    Height := 14;
+    Caption := 'Fournisseurs:';
+    Color := $0040332D;
+    Font.Charset := DEFAULT_CHARSET;
+    Font.Color := $0040332D;
+    Font.Height := 14;
+    Font.Name := 'Roboto';
+    Font.Style := [];
+    ParentColor := False;
+    ParentFont := False;
+    StyleElements := [];
+  end;
+
+//----- Slider
+  FourSdr := TsSlider.Create(FSplashAddUnite);
+  with  FourSdr do
+  begin
+
+    Parent := FSplashAddUnite;
+    Left := FSplashAddUnite.OKAddUniteSBtn.Left + (FSplashAddUnite.OKAddUniteSBtn.Width div 2) - 5;
+    Top := FourLbl.Top + 1;
+    Width := 35;
+    Height := 12;
+    BevelOuter := bvNone;
+    BiDiMode := bdLeftToRight;
+    Color := 97560;
+    Ctl3D := False;
+    Font.Charset := DEFAULT_CHARSET;
+    Font.Color := 4207405;
+    Font.Height := 12;
+    Font.Name := 'Roboto';
+    Font.Style := [];
+    StyleElements := [];
+    ParentBiDiMode := False;
+    ParentBackground := False;
+    ParentCtl3D := False;
+    ParentFont := False;
+    TabOrder := 20;
+//    BoundLabel.Caption := 'sSlider1';
+//    BoundLabel.Layout := sclBottomCenter;
+    FontOn.Charset := DEFAULT_CHARSET;
+    FontOn.Color := 4207405;
+    FontOn.Height := 12;
+    FontOn.Name := 'Roboto';
+    FontOn.Style := [];
+    SliderCursor := crHandPoint;
+    Reversed := True;
+    SliderOn := False;
+    Cursor:=  crHandPoint;
+
+  end;
+//
 
 
 
