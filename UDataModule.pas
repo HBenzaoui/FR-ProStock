@@ -1188,6 +1188,8 @@ begin
  end;
 end;
 
+
+
 procedure TDataModuleF.ConnectToDB;
 var
  buttonSelected : Integer;
@@ -1205,6 +1207,7 @@ begin
 
 
 // CreateTablesFDScript.ExecuteAll;
+
 
   GstockdcConnection02.Params.Values['Database'] := 'GSTOCKDC';
   GstockdcConnection02.Connected:= True;

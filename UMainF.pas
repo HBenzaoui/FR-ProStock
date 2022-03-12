@@ -881,7 +881,7 @@ type
   private
    //---- this to value of changege we need it to check if theuser changed something
      CountInsert,CountUpdate,CountDelete   : Int64;
-     CountInsertCheck,CountUpdateCheck,CountDeleteCheck :Int64; 
+     CountInsertCheck,CountUpdateCheck,CountDeleteCheck :Int64;
      
     TimerStart: TDateTime;
 //    procedure ActiveTables;
@@ -894,6 +894,7 @@ type
 
    public
     function KillTask(ExeFileName: string): Integer;
+    function getDBName(): String;
 
     procedure ConnectToDBonMainCreate;
    
@@ -3344,10 +3345,35 @@ begin
 end;
 
 
+function TMainForm.getDBName() :string;
+begin
+
+  DataModuleF.SQLQuery1.Active:= False;
+  DataModuleF.SQLQuery1.SQL.Clear;
+  DataModuleF.SQLQuery1.SQL.Text:= 'SELECT code_db,dbname_db,dbdesc_db FROM dblist WHERE dbdesc_db LIKE '+ QuotedStr(LoginUserF.FolderCbx.Text) ;
+  DataModuleF.SQLQuery1.Active:= true;
+
+  if NOT DataModuleF.SQLQuery1.IsEmpty then
+  begin
+     result:= DataModuleF.SQLQuery1.FieldByName('dbname_db').AsString;
+  end else
+  begin
+     result:= 'GSTOCKDC';
+  end;
+
+  DataModuleF.SQLQuery1.Active:= False;
+  DataModuleF.SQLQuery1.SQL.Clear;
+
+
+
+end;
+
+
 
 procedure TMainForm.ConnectToDBonMainCreate;
 Var
  buttonSelected : Integer;
+ FromCaption: String;
 begin
 
  try
@@ -3358,9 +3384,10 @@ begin
    GstockdcConnection.Params.Values['Port'] := '5432';
    GstockdcConnection.LoginPrompt := False;
 
-   GstockdcConnection.Params.Values['Database'] := 'GSTOCKDC';
-   GstockdcConnection.Connected:= True;
+   GstockdcConnection.Params.Values['Database'] := getDBName;
 
+//   GstockdcConnection.Params.Values['Database'] := 'GSTOCKDC';
+   GstockdcConnection.Connected:= True;
 
 
   //----this is to check if the tables is exsit or not if not creat them -----
@@ -3372,9 +3399,10 @@ begin
      if SQLQuery.FieldByName('ntable').AsInteger <> 36 then
      begin
 
-//      CreateTablesFDScript.ExecuteAll;                                 // Eable this is only for releasing
-//      InsertDataFDScript.ExecuteAll;                                   // Eable this is only for releasing
-      FunctionsTriggesFDScript.ExecuteAll;                                   // Eable this is only for releasing
+      CreateTablesFDScript.ExecuteAll;                                 // Eable this is only for releasing
+      InsertDataFDScript.ExecuteAll;                                   // Eable this is only for releasing
+      FunctionsTriggesFDScript.ExecuteAll;                             // Eable this is only for releasing
+      AltersDBChangesFDScript.ExecuteAll;                              // Eable this is only for releasing
 
      end;
      SQLQuery.SQL.Clear;
@@ -3401,7 +3429,10 @@ begin
   SQLQuery.SQL.Clear;
   SQLQuery.Active:= False;
 
-
+  //-- put the database name on the form caption
+  FromCaption:=MainForm.Caption;
+  Delete( FromCaption, Pos('//',FromCaption), MaxInt );
+  MainForm.Caption:= FromCaption + ' //'+ LoginUserF.FolderCbx.Text;
 
                   except
 
@@ -5222,6 +5253,8 @@ procedure TMainForm.SwitchingDB();
 var
  buttonSelected : Integer;
 
+ DBName,DBName2 :String;
+
 begin
 
 
@@ -5229,15 +5262,32 @@ begin
 
 //   try
 
-     if sImage1.Tag = 0 then
+
+   //--at first we get the database name
+   DBName:= getDBName;
+
+   //--make sure to change to the second database name
+   DBName2:=DBName;
+   if DBName <> 'GSTOCKDC' then
    begin
-        GstockdcConnection.Connected:= False;
-        GstockdcConnection.Params.Values['Database'] := 'GSTOCKDC';
-        GstockdcConnection.Connected:= True;
+    insert('2~', DBName2, Pos('~',DBName)+1 );
+   end else
+   begin
+    DBName2:='GSTOCKDC2'
+   end;
+
+   if sImage1.Tag = 0 then
+   begin
+
+
+
+      GstockdcConnection.Connected:= False;
+      GstockdcConnection.Params.Values['Database'] := DBName;
+      GstockdcConnection.Connected:= True;
 
 
       DataModuleF.GstockdcConnection02.Connected:= False;
-      DataModuleF.GstockdcConnection02.Params.Values['Database'] := 'GSTOCKDC';
+      DataModuleF.GstockdcConnection02.Params.Values['Database'] := DBName;
       DataModuleF.GstockdcConnection02.Connected:= True;
 
 
@@ -5264,11 +5314,11 @@ begin
 
 
       GstockdcConnection.Connected:= False;
-      GstockdcConnection.Params.Values['Database'] := 'GSTOCKDC2';
+      GstockdcConnection.Params.Values['Database'] :=    DBName2;
       GstockdcConnection.Connected:= True;
 
       DataModuleF.GstockdcConnection02.Connected:= False;
-      DataModuleF.GstockdcConnection02.Params.Values['Database'] := 'GSTOCKDC2';
+      DataModuleF.GstockdcConnection02.Params.Values['Database'] := DBName2;
       DataModuleF.GstockdcConnection02.Connected:= True;
 
 

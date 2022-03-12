@@ -382,7 +382,6 @@ object DataModuleF: TDataModuleF
     Top = 22
   end
   object UsersTable: TFDQuery
-    FilterOptions = [foCaseInsensitive]
     IndexFieldNames = 'code_ur'
     Connection = PSDBConfigConnection
     SQL.Strings = (
@@ -1987,7 +1986,6 @@ object DataModuleF: TDataModuleF
     end
   end
   object SQLQuery1: TFDQuery
-    FilterOptions = [foCaseInsensitive]
     Connection = PSDBConfigConnection
     Left = 76
     Top = 216

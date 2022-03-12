@@ -434,7 +434,7 @@ begin
    FolderCbx.Items.Clear;
    DataModuleF.SQLQuery1.Active:= False;
    DataModuleF.SQLQuery1.SQL.Clear;
-   DataModuleF.SQLQuery1.SQL.Text:= 'SELECT * FROM dblist';
+   DataModuleF.SQLQuery1.SQL.Text:= 'SELECT code_db,dbname_db,dbdesc_db,createdate_db FROM dblist';
    DataModuleF.SQLQuery1.Active:= true;
 
    //Here we add the existed databases in dblist table

@@ -23,7 +23,6 @@ type
     ClientFaceBtn: TAdvToolButton;
     FourFaceBtn: TAdvToolButton;
     ProduitFaceBtn: TAdvToolButton;
-    Image2: TImage;
     sImage2: TsImage;
     CTRFaceBtn: TAdvToolButton;
     FCPFaceBtn: TAdvToolButton;

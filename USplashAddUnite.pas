@@ -50,7 +50,7 @@ uses System.IniFiles, Contnrs, Types, UProduitGestion, UMainF, UBonRecGestion, U
   USplashAddCompte, UBonLivGestion, UBonFacVGestion, UBonFacAGestion,
   UComptoir, UReglementCGestion, UReglementFGestion, UDataModule,
   UChargesGestion, UChargesFList, UPertesGestion, UBonFacPGestion,
-  UTransferComptesGestion, UBonComAGestion, UBonComVGestion;
+  UTransferComptesGestion, UBonComAGestion, UBonComVGestion, ULoginUser;
 
 var
   gGrayForms: TComponentList;
@@ -3388,35 +3388,88 @@ begin
 
      if NameAddUniteSEdt.Text <> '' then
      begin
-          with DataModuleF.PSDBConfigConnection do  begin
-           ExecSQL(
-                    'CREATE DATABASE "GSTOCKDC_'+
-                    CompteAddUniteSCbx.Text  +
-                    '" WITH OWNER = postgres '+
-                         'ENCODING = ''UTF8'' '+
-                         'TABLESPACE = pg_default '+
-                         'CONNECTION LIMIT = -1; '
-                   );
-           ExecSQL(
-                    'CREATE DATABASE "GSTOCKDC2_'+
-                    CompteAddUniteSCbx.Text  +
-                    '" WITH OWNER = postgres '+
-                         'ENCODING = ''UTF8'' '+
-                         'TABLESPACE = pg_default '+
-                         'CONNECTION LIMIT = -1;'
-                   );
-          end;
 
-         NameAddUniteSErrorP.Visible:=False;
-         RequiredAddUniteSlbl.Visible:=False;
-         AnimateWindow(FSplashAddUnite.Handle, 175, AW_VER_NEGATIVE OR AW_SLIDE OR AW_HIDE);
-         FSplashAddUnite.Release;
-          sndPlaySound('C:\Windows\Media\speech on.wav', SND_NODEFAULT Or SND_ASYNC Or  SND_RING);
+          //--- here we check if the database name is doenst exist already-----
+          DataModuleF.SQLQuery1.Active:= False;
+          DataModuleF.SQLQuery1.SQL.Clear;
+          DataModuleF.SQLQuery1.SQL.Text:= 'SELECT code_db,dbname_db,dbdesc_db,createdate_db FROM dblist WHERE dbname_db LIKE '+
+              QuotedStr(Copy(StringReplace(NameAddUniteSEdt.Text, ' ', '', [rfReplaceAll]),1,10)  +'~'+CompteAddUniteSCbx.Text) ;
+          DataModuleF.SQLQuery1.Active:= true;
+
+          if DataModuleF.SQLQuery1.IsEmpty then
+          begin
+
+              //--- Here we create the database and it double db
+              with DataModuleF.PSDBConfigConnection do  begin
+               ExecSQL(                    //--- Here we remove the spaces and take only the fisrt 10 charactars for the db name
+                        'CREATE DATABASE "'+ Copy(StringReplace(NameAddUniteSEdt.Text, ' ', '', [rfReplaceAll]),1,10)  +'~'+
+                        CompteAddUniteSCbx.Text  +
+                        '" WITH OWNER = postgres '+
+                             'ENCODING = ''UTF8'' '+
+                             'TABLESPACE = pg_default '+
+                             'CONNECTION LIMIT = -1; '
+                       );
+               ExecSQL(                    //--- Here we remove the spaces and take only the fisrt 10 charactars for the db name
+                        'CREATE DATABASE "'+ Copy(StringReplace(NameAddUniteSEdt.Text, ' ', '', [rfReplaceAll]),1,10) +'~2~'+
+                        CompteAddUniteSCbx.Text  +
+                        '" WITH OWNER = postgres '+
+                             'ENCODING = ''UTF8'' '+
+                             'TABLESPACE = pg_default '+
+                             'CONNECTION LIMIT = -1;'
+                       );
+              end;
+
+              //--- here we add the db name to dblist table in DBConfig-----
+              DataModuleF.SQLQuery1.insert;
+              DataModuleF.SQLQuery1.FieldByName('dbname_db').AsString:=
+                //--- Here we remove the spaces and take only the fisrt 10 charactars for the db name
+                Copy(StringReplace(NameAddUniteSEdt.Text, ' ', '', [rfReplaceAll]),1,10) +'~'+ CompteAddUniteSCbx.Text ;
+              DataModuleF.SQLQuery1.FieldByName('dbdesc_db').AsString:= NameAddUniteSEdt.Text ;
+
+              DataModuleF.SQLQuery1.FieldByName('createdate_db').AsDateTime:= Now;
+              DataModuleF.SQLQuery1.Post;
+
+              DataModuleF.SQLQuery1.Active:= False;
+              DataModuleF.SQLQuery1.SQL.Clear;
+
+              //---here we make sure that we select the created db and set focus on pasword edt--
+              LoginUserF.FolderCbxEnter(Sender);
+              LoginUserF.FolderCbx.ItemIndex:= LoginUserF.FolderCbx.Items.Count -1 ;
+              LoginUserF.PasswordEdt.SetFocus;
+
+
+
+              NameAddUniteSErrorP.Visible:=False;
+              RequiredAddUniteSlbl.Visible:=False;
+              AnimateWindow(FSplashAddUnite.Handle, 175, AW_VER_NEGATIVE OR AW_SLIDE OR AW_HIDE);
+              FSplashAddUnite.Release;
+              sndPlaySound('C:\Windows\Media\speech on.wav', SND_NODEFAULT Or SND_ASYNC Or  SND_RING);
 //         if Assigned(ProduitGestionF) then
 //         begin
 //         ProduitGestionF.UniteProduitGCbx.Text:= NameAddUniteSEdt.Text;
 //         ProduitGestionF.UniteProduitGCbx.SetFocus;
 //         end;
+
+
+          end else
+              begin
+                 try
+                    NameAddUniteSEdt.BorderStyle:= bsNone;
+                    NameAddUniteSEdt.StyleElements:= [];
+                    RequiredAddUniteSlbl.Visible:= True;
+                    RequiredAddUniteSlbl.Caption:= 'Ce nom de dossier existe déjà';
+
+                    NameAddUniteSErrorP.Visible:= True;
+                    sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+                   OKAddUniteSBtn.Enabled := False;
+                   OKAddUniteSBtn.ImageIndex := 18;
+                    finally
+                    NameAddUniteSEdt.SetFocus;
+                 end;
+              end;
+
+
+
          end
         else
         try
