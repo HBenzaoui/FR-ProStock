@@ -62,6 +62,10 @@ type
     { Private declarations }
   public
     { Public declarations }
+    //--Those are for creating new datatbase panel
+    DBLineP2: TPanel;
+    DBDescMigrationLbl,DBProduitLbl,DBClientLbl,DBFourLbl : TLabel;
+    DBProduitSdr,DBClientSdr,DBFourSdr: TsSlider;
   end;
 
 var
@@ -151,10 +155,6 @@ begin
 end;
 
 procedure TLoginUserF.FolderAddLogUsrSBtnClick(Sender: TObject);
-var
-  LineP2: TPanel;
-  DescMigrationLbl,ProduitLbl,ClientLbl,FourLbl : TLabel;
-  ProduitSdr,ClientSdr,FourSdr: TsSlider;
 begin
    //-------- Show the splash screan for the databse creation ---------//
 
@@ -197,8 +197,8 @@ begin
 //------ here we create dynamiclly couple of btn and slider to use for copying data from db to db----
 
 
-  LineP := TPanel.Create(FSplashAddUnite);
-  with LineP do
+  DBLineP2 := TPanel.Create(FSplashAddUnite);
+  with DBLineP2 do
   begin
     Parent := FSplashAddUnite;
     Left := 0;
@@ -216,8 +216,8 @@ begin
   end;
 
 
-  DescMigrationLbl := TLabel.Create(FSplashAddUnite);
-  with DescMigrationLbl do
+  DBDescMigrationLbl := TLabel.Create(FSplashAddUnite);
+  with DBDescMigrationLbl do
   begin
     Parent := FSplashAddUnite;
     Left := Image1.Left - 5;
@@ -237,8 +237,8 @@ begin
 
 
 //---Produit------------------------
-  ProduitLbl := TLabel.Create(FSplashAddUnite);
-  with ProduitLbl do
+  DBProduitLbl := TLabel.Create(FSplashAddUnite);
+  with DBProduitLbl do
   begin
     Parent := FSplashAddUnite;
     Left := Image1.Left - 5;
@@ -258,13 +258,13 @@ begin
   end;
 
 //----- Slider
-  ProduitSdr := TsSlider.Create(FSplashAddUnite);
-  with  ProduitSdr do
+  DBProduitSdr := TsSlider.Create(FSplashAddUnite);
+  with  DBProduitSdr do
   begin
 
     Parent := FSplashAddUnite;
     Left := FSplashAddUnite.OKAddUniteSBtn.Left + (FSplashAddUnite.OKAddUniteSBtn.Width div 2) -5;
-    Top := ProduitLbl.Top + 1;
+    Top := DBProduitLbl.Top + 1;
     Width := 35;
     Height := 12;
     BevelOuter := bvNone;
@@ -299,12 +299,12 @@ begin
 
 
 //---Client------------------------
-  ClientLbl := TLabel.Create(FSplashAddUnite);
-  with ClientLbl do
+  DBClientLbl := TLabel.Create(FSplashAddUnite);
+  with DBClientLbl do
   begin
     Parent := FSplashAddUnite;
     Left := Image1.Left - 5;
-    Top := ProduitLbl.top + 20;
+    Top := DBProduitLbl.top + 20;
     Width := 48;
     Height := 14;
     Caption := 'Clients:';
@@ -320,13 +320,13 @@ begin
   end;
 
 //-----  Slider
-  ClientSdr := TsSlider.Create(FSplashAddUnite);
-  with  ClientSdr do
+  DBClientSdr := TsSlider.Create(FSplashAddUnite);
+  with  DBClientSdr do
   begin
 
     Parent := FSplashAddUnite;
     Left := FSplashAddUnite.OKAddUniteSBtn.Left + (FSplashAddUnite.OKAddUniteSBtn.Width div 2) - 5;
-    Top := ClientLbl.Top + 1;
+    Top := DBClientLbl.Top + 1;
     Width := 35;
     Height := 12;
     BevelOuter := bvNone;
@@ -360,12 +360,12 @@ begin
 
 
 //---Four------------------------
-  FourLbl := TLabel.Create(FSplashAddUnite);
-  with FourLbl do
+  DBFourLbl := TLabel.Create(FSplashAddUnite);
+  with DBFourLbl do
   begin
     Parent := FSplashAddUnite;
     Left := Image1.Left - 5;
-    Top := ClientLbl.top + 20;
+    Top := DBClientLbl.top + 20;
     Width := 48;
     Height := 14;
     Caption := 'Fournisseurs:';
@@ -381,13 +381,13 @@ begin
   end;
 
 //----- Slider
-  FourSdr := TsSlider.Create(FSplashAddUnite);
-  with  FourSdr do
+  DBFourSdr := TsSlider.Create(FSplashAddUnite);
+  with  DBFourSdr do
   begin
 
     Parent := FSplashAddUnite;
     Left := FSplashAddUnite.OKAddUniteSBtn.Left + (FSplashAddUnite.OKAddUniteSBtn.Width div 2) - 5;
-    Top := FourLbl.Top + 1;
+    Top := DBFourLbl.Top + 1;
     Width := 35;
     Height := 12;
     BevelOuter := bvNone;
