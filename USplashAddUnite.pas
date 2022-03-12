@@ -3402,7 +3402,7 @@ begin
               //--- Here we create the database and it double db
               with DataModuleF.PSDBConfigConnection do  begin
                ExecSQL(                    //--- Here we remove the spaces and take only the fisrt 10 charactars for the db name
-                        'CREATE DATABASE "'+ Copy(StringReplace(NameAddUniteSEdt.Text, ' ', '', [rfReplaceAll]),1,10)  +'~'+
+                        'CREATE DATABASE "'+ Copy(StringReplace(LowerCase (NameAddUniteSEdt.Text), ' ', '', [rfReplaceAll]),1,10)  +'~'+
                         CompteAddUniteSCbx.Text  +
                         '" WITH OWNER = postgres '+
                              'ENCODING = ''UTF8'' '+
@@ -3410,7 +3410,7 @@ begin
                              'CONNECTION LIMIT = -1; '
                        );
                ExecSQL(                    //--- Here we remove the spaces and take only the fisrt 10 charactars for the db name
-                        'CREATE DATABASE "'+ Copy(StringReplace(NameAddUniteSEdt.Text, ' ', '', [rfReplaceAll]),1,10) +'~2~'+
+                        'CREATE DATABASE "'+ Copy(StringReplace(LowerCase (NameAddUniteSEdt.Text), ' ', '', [rfReplaceAll]),1,10) +'~2~'+
                         CompteAddUniteSCbx.Text  +
                         '" WITH OWNER = postgres '+
                              'ENCODING = ''UTF8'' '+
@@ -3423,7 +3423,7 @@ begin
               DataModuleF.SQLQuery1.insert;
               DataModuleF.SQLQuery1.FieldByName('dbname_db').AsString:=
                 //--- Here we remove the spaces and take only the fisrt 10 charactars for the db name
-                Copy(StringReplace(NameAddUniteSEdt.Text, ' ', '', [rfReplaceAll]),1,10) +'~'+ CompteAddUniteSCbx.Text ;
+                Copy(StringReplace(LowerCase (NameAddUniteSEdt.Text), ' ', '', [rfReplaceAll]),1,10) +'~'+ CompteAddUniteSCbx.Text ;
               DataModuleF.SQLQuery1.FieldByName('dbdesc_db').AsString:= NameAddUniteSEdt.Text ;
 
               DataModuleF.SQLQuery1.FieldByName('createdate_db').AsDateTime:= Now;
