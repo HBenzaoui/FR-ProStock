@@ -3432,6 +3432,28 @@ begin
               DataModuleF.SQLQuery1.Active:= False;
               DataModuleF.SQLQuery1.SQL.Clear;
 
+              //----here we check which table were checked so we can dump the contanet into the new database
+
+              if Assigned(LoginUserF.DBProduitSdr) and  LoginUserF.DBProduitSdr.SliderOn then
+              begin
+
+              end;
+
+              if Assigned(LoginUserF.DBClientSdr) and  LoginUserF.DBClientSdr.SliderOn then
+              begin
+
+              end;
+
+              if Assigned(LoginUserF.DBFourSdr) and  LoginUserF.DBFourSdr.SliderOn then
+              begin
+
+              end;
+
+
+
+
+
+
               //---here we make sure that we select the created db and set focus on pasword edt--
               LoginUserF.FolderCbxEnter(Sender);
               LoginUserF.FolderCbx.ItemIndex:= LoginUserF.FolderCbx.Items.Count -1 ;
