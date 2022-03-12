@@ -58,14 +58,16 @@ type
     procedure FolderCbxEnter(Sender: TObject);
     procedure FolderCbxExit(Sender: TObject);
     procedure FolderAddLogUsrSBtnClick(Sender: TObject);
+    procedure DBSilderChange(Sender: TObject);
   private
     { Private declarations }
   public
     { Public declarations }
     //--Those are for creating new datatbase panel
     DBLineP2: TPanel;
-    DBDescMigrationLbl,DBProduitLbl,DBClientLbl,DBFourLbl : TLabel;
+    DBDescMigrationLbl,DBProduitLbl,DBClientLbl,DBFourLbl,DBSourceDBLbl : TLabel;
     DBProduitSdr,DBClientSdr,DBFourSdr: TsSlider;
+    DBSourceDBCbx :TComboBox;
   end;
 
 var
@@ -154,6 +156,22 @@ begin
  end;
 end;
 
+
+procedure TLoginUserF.DBSilderChange(Sender: TObject);
+begin
+
+  if DBProduitSdr.SliderOn OR DBClientSdr.SliderOn OR DBFourSdr.SliderOn then
+  begin
+    DBSourceDBLbl.Enabled:= True;
+    DBSourceDBCbx.Enabled:= True;
+  end else
+      begin
+        DBSourceDBLbl.Enabled:= False;
+        DBSourceDBCbx.Enabled:= False;
+      end;
+
+end;
+
 procedure TLoginUserF.FolderAddLogUsrSBtnClick(Sender: TObject);
 begin
    //-------- Show the splash screan for the databse creation ---------//
@@ -161,7 +179,7 @@ begin
     FSplashAddUnite:=TFSplashAddUnite.Create(self);
     FSplashAddUnite.OKAddUniteSBtn.Tag:= 51 ;
     FSplashAddUnite.Width:= 330;
-    FSplashAddUnite.Height:=290;
+    FSplashAddUnite.Height:=330;
     FSplashAddUnite.Panel1.Color:= $0028CAFF;
     FSplashAddUnite.LineP.Color:= $0028CAFF;
     FSplashAddUnite.FormCaptionAddUniteSLbl.Font.Color:= $0040332D;
@@ -294,6 +312,9 @@ begin
     SliderOn := False;
     Cursor:=  crHandPoint;
 
+
+    OnSliderChange:= DBSilderChange;
+
   end;
 
 
@@ -356,6 +377,8 @@ begin
     SliderOn := False;
     Cursor:=  crHandPoint;
 
+    OnSliderChange:= DBSilderChange;
+
   end;
 
 
@@ -417,7 +440,62 @@ begin
     SliderOn := False;
     Cursor:=  crHandPoint;
 
+    OnSliderChange:= DBSilderChange;
+
   end;
+
+
+ //---DBSource lable------------------------
+  DBSourceDBLbl := TLabel.Create(FSplashAddUnite);
+  with DBSourceDBLbl do
+  begin
+    Parent := FSplashAddUnite;
+    Left := Image1.Left - 5;
+    Top := DBFourLbl.top + 30;
+    Width := 48;
+    Height := 14;
+    Caption := 'Source:';
+    Color := $0040332D;
+    Font.Charset := DEFAULT_CHARSET;
+    Font.Color := $0040332D;
+    Font.Height := 14;
+    Font.Name := 'Roboto';
+    Font.Style := [];
+    ParentColor := False;
+    ParentFont := False;
+    StyleElements := [];
+    Enabled:= False;
+  end;
+
+
+ //---DBSource Combobox------------------------
+  DBSourceDBCbx := TComboBox.Create(FSplashAddUnite);
+  with  DBSourceDBCbx do
+  begin
+    Parent := FSplashAddUnite;
+    Left := 65;
+    Top := DBSourceDBLbl.Top - 5;
+    Width := 188;
+    Height := 26;
+    Style := csDropDownList;
+    Ctl3D := True;
+    DoubleBuffered := True;
+    Font.Charset := DEFAULT_CHARSET;
+    Font.Color := 4207405;
+    Font.Height := 18;
+    Font.Name := 'Helvetica LT Std';
+    Font.Style := [];
+    ParentCtl3D := False;
+    ParentDoubleBuffered := False;
+    ParentFont := False;
+    TabOrder := 8;
+    StyleElements := [seClient, seBorder];
+
+    Items:= FolderCbx.Items;
+    ItemIndex:= FolderCbx.ItemIndex;
+    Enabled:= False;
+  end;
+
 //
 
 
