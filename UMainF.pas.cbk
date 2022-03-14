@@ -1,4 +1,4 @@
-unit UMainF;
+ï»¿unit UMainF;
 
 interface
 
@@ -729,6 +729,7 @@ type
     Bona_recPlistTableCalcPMP: TCurrencyField;
     ProduitTablepmp_p: TCurrencyField;
     FDEventAlerter: TFDEventAlerter;
+    SQLQuery4: TFDQuery;
     procedure ClientMainFBtnClick(Sender: TObject);
     procedure FourMainFBtnClick(Sender: TObject);
     procedure ProduitMainFBtnClick(Sender: TObject);
@@ -897,11 +898,13 @@ type
     function getDBName(): String;
 
     procedure ConnectToDBonMainCreate;
-   
+
+
     procedure ActiveTables;
     procedure InactiveTables;
     procedure RerfreshTables;
     procedure ActiveTablesControls;
+    procedure BonCTRListTRefresh;
 
      procedure WMUserCloseTab(var Message: TMessage); message
     WM_USER_CLOSETAB;
@@ -910,6 +913,9 @@ type
 
     procedure LoadGridLayout(Mydbgrid: TDBGridEh; fileName: string);
     procedure SaveGridLayout(Mydbgrid: TDBGridEh; fileName: string);
+
+
+
   end;
 
 var
@@ -1204,7 +1210,7 @@ begin
   
  begin
   GrayForms;
-  msg:='Vous n''avez pas sauvé. Voulez-vous vraiment fermer?';
+  msg:='Vous n''avez pas sauvÃ©. Voulez-vous vraiment fermer?';
 
   if MessageDlg(msg, mtConfirmation, [mbOk, mbCancel], 0) = mrCancel then
    begin 
@@ -3145,48 +3151,58 @@ begin
 
 end;
 
-procedure TMainForm.Bonv_ctr_listTableAfterRefresh(DataSet: TDataSet);
+
+procedure TMainForm.BonCTRListTRefresh;
 var TotalHT,TotalAHT,TotalTVA,TVA,TotalTTC,LeRendu,Regle,Marge,NewHT,BonFCTotalHT: Currency;
 InvoiceID :Integer;
   begin
    if Assigned(BonCtrGestionF) then
   begin
 
-      SQLQuery3.Active:= False;
-      SQLQuery3.SQL.Clear;
-      SQLQuery3.SQL.Text:= BonCtrGestionF.BCLSQL+ ' WHERE code_bvctr= '+ IntToStr(Bonv_ctrTable.FieldByName('code_bvctr').AsInteger) +' ORDER BY code_bvctrl ';
-      SQLQuery3.Active:= True;
+      MainForm.SQLQuery3.Active:= False;
+      MainForm.SQLQuery3.SQL.Clear;
+      MainForm.SQLQuery3.SQL.Text:= BonCtrGestionF.BCLSQL+ ' WHERE code_bvctr= '+
+       IntToStr(MainForm.Bonv_ctrTable.FieldByName('code_bvctr').AsInteger) +' ORDER BY code_bvctrl ';
+      MainForm.SQLQuery3.Active:= True;
 
-      SQLQuery3.First;
-      while not SQLQuery3.Eof do
+      MainForm.SQLQuery3.First;
+      while not MainForm.SQLQuery3.Eof do
       begin
-        TotalAHT:= TotalAHT + (SQLQuery3.FieldByName('MontantAHT').AsCurrency );
-        TotalHT:= TotalHT + (SQLQuery3.FieldValues['MontantHT'] );
-        TotalTVA:= TotalTVA + SQLQuery3.FieldValues['MontantTVA'];
-        TotalTTC:= TotalTTC + SQLQuery3.FieldValues['MontantTTC'];
-        TVA:=TVA + SQLQuery3.FieldValues['tva_p'] ;
-         if SQLQuery3.FieldValues['MargeM'] <> null then
+        TotalAHT:= TotalAHT + (MainForm.SQLQuery3.FieldByName('MontantAHT').AsCurrency );
+        TotalHT:= TotalHT + (MainForm.SQLQuery3.FieldValues['MontantHT'] );
+        TotalTVA:= TotalTVA + MainForm.SQLQuery3.FieldValues['MontantTVA'];
+        TotalTTC:= TotalTTC + MainForm.SQLQuery3.FieldValues['MontantTTC'];
+        TVA:=TVA + MainForm.SQLQuery3.FieldValues['tva_p'] ;
+         if MainForm.SQLQuery3.FieldValues['MargeM'] <> null then
          begin
-         Marge:=Marge + SQLQuery3.FieldValues['MargeM'] ;
+         Marge:=Marge + MainForm.SQLQuery3.FieldValues['MargeM'] ;
          end;
         LeRendu:=  (StrToCurr(StringReplace(BonCtrGestionF.BonCtrRegleLbl.Caption, #32, '', [rfReplaceAll]))) - TotalTTC  ;
-        SQLQuery3.Next;
+        MainForm.SQLQuery3.Next;
       end;
 
-         SQLQuery3.Active:=false;
-         SQLQuery3.SQL.Clear;
+         MainForm.SQLQuery3.Active:=false;
+         MainForm.SQLQuery3.SQL.Clear;
 
 
 //=======This what slows the CTR================
 
-         InvoiceID := Bonv_ctr_listTable.FieldByName('code_bvctrl').AsInteger;
+//         InvoiceID := Bonv_ctr_listTable.FieldByName('code_bvctrl').AsInteger;
 
-         Bonv_ctr_listTable.Active:=false;
-         Bonv_ctr_listTable.SQL.Clear;
-         Bonv_ctr_listTable.SQL.Text:=BonCtrGestionF.BCLSQL +' ORDER BY code_bvctrl ' ;
-         Bonv_ctr_listTable.Active:=True;
+////////////VERY SLOW///////////////////////
 
-         Bonv_ctr_listTable.Locate('code_bvctrl',InvoiceID,[]);
+
+//         Bonv_ctr_listTable.Active:=false;
+//         Bonv_ctr_listTable.SQL.Clear;
+//         Bonv_ctr_listTable.SQL.Text:=BonCtrGestionF.BCLSQL +' ORDER BY code_bvctrl ' ;
+//         Bonv_ctr_listTable.Active:=True;
+
+
+////////////VERY SLOW///////////////////////
+///
+///
+///
+//         Bonv_ctr_listTable.Locate('code_bvctrl',InvoiceID,[]);
 
 //=======This what slows the CTR================
 
@@ -3215,7 +3231,7 @@ InvoiceID :Integer;
     BonCtrGestionF.BonCtrRegleLbl.Caption :=      CurrToStrF(((Regle)),ffNumber,2) ;
     end;
 
-    if NOT (Bonv_ctr_listTable.IsEmpty) then
+    if NOT (MainForm.Bonv_ctr_listTable.IsEmpty) then
     begin
 //    if BonCtrGestionF.ClientBonCtrGCbx.Text<>'' then
 //    begin
@@ -3244,8 +3260,124 @@ InvoiceID :Integer;
             end;
     end;
 
-
        end;
+
+
+end;
+
+procedure TMainForm.Bonv_ctr_listTableAfterRefresh(DataSet: TDataSet);
+//var TotalHT,TotalAHT,TotalTVA,TVA,TotalTTC,LeRendu,Regle,Marge,NewHT,BonFCTotalHT: Currency;
+//InvoiceID :Integer;
+  begin
+
+  BonCTRListTRefresh();
+
+
+
+//   if Assigned(BonCtrGestionF) then
+//  begin
+//
+//      SQLQuery3.Active:= False;
+//      SQLQuery3.SQL.Clear;
+//      SQLQuery3.SQL.Text:= BonCtrGestionF.BCLSQL+ ' WHERE code_bvctr= '+ IntToStr(Bonv_ctrTable.FieldByName('code_bvctr').AsInteger) +' ORDER BY code_bvctrl ';
+//      SQLQuery3.Active:= True;
+//
+//      SQLQuery3.First;
+//      while not SQLQuery3.Eof do
+//      begin
+//        TotalAHT:= TotalAHT + (SQLQuery3.FieldByName('MontantAHT').AsCurrency );
+//        TotalHT:= TotalHT + (SQLQuery3.FieldValues['MontantHT'] );
+//        TotalTVA:= TotalTVA + SQLQuery3.FieldValues['MontantTVA'];
+//        TotalTTC:= TotalTTC + SQLQuery3.FieldValues['MontantTTC'];
+//        TVA:=TVA + SQLQuery3.FieldValues['tva_p'] ;
+//         if SQLQuery3.FieldValues['MargeM'] <> null then
+//         begin
+//         Marge:=Marge + SQLQuery3.FieldValues['MargeM'] ;
+//         end;
+//        LeRendu:=  (StrToCurr(StringReplace(BonCtrGestionF.BonCtrRegleLbl.Caption, #32, '', [rfReplaceAll]))) - TotalTTC  ;
+//        SQLQuery3.Next;
+//      end;
+//
+//         SQLQuery3.Active:=false;
+//         SQLQuery3.SQL.Clear;
+//
+//
+////=======This what slows the CTR================
+//
+////         InvoiceID := Bonv_ctr_listTable.FieldByName('code_bvctrl').AsInteger;
+//
+//////////////VERY SLOW///////////////////////
+//
+//
+////         Bonv_ctr_listTable.Active:=false;
+////         Bonv_ctr_listTable.SQL.Clear;
+////         Bonv_ctr_listTable.SQL.Text:=BonCtrGestionF.BCLSQL +' ORDER BY code_bvctrl ' ;
+////         Bonv_ctr_listTable.Active:=True;
+//
+//
+//////////////VERY SLOW///////////////////////
+/////
+/////
+/////
+////         Bonv_ctr_listTable.Locate('code_bvctrl',InvoiceID,[]);
+//
+////=======This what slows the CTR================
+//
+//
+//   BonCtrGestionF.BonCtrTotalHTLbl.Caption :=    CurrToStrF((TotalHT),ffNumber,2) ;
+//    BonCtrGestionF.BonCtrTotalTVALbl.Caption :=   CurrToStrF((TotalTVA),ffNumber,2) ;
+//
+//    BonCtrGestionF.BonCtrTotalTTCLbl.Caption :=   CurrToStrF((TotalTTC),ffNumber,2) ;
+//    if LeRendu > 0 then
+//    begin
+//      BonCtrGestionF.BonCtrRenduLbl.Caption :=      CurrToStrF((LeRendu),ffNumber,2) ;
+//    end else
+//    begin
+//       BonCtrGestionF.BonCtrRenduLbl.Caption :=     CurrToStrF((0),ffNumber,2) ;
+//    end;
+//
+//   BonCtrGestionF.BonCtrTotalAHTLbl.Caption :=    CurrToStrF((TotalAHT),ffNumber,2) ;
+//   BonCtrGestionF.BonCTotalTTCNewLbl.Caption :=  CurrToStrF(((TotalTTC)),ffNumber,2) ;
+//   BonCtrGestionF.BonCTotalHTNewLbl.Caption :=   CurrToStrF(((TotalHT)),ffNumber,2) ;
+//   BonCtrGestionF.TotalTVANewLbl.Caption :=      CurrToStrF(((TotalTVA)),ffNumber,2) ;
+//   BonCtrGestionF.BonCTRTotalMargeLbl.Caption :=  CurrToStrF(((Marge)),ffNumber,2) ;
+//
+//    if MainForm.Bonv_ctrTable.FieldValues['montver_bvctr']<> Null then
+//    begin
+//    Regle:= MainForm.Bonv_ctrTable.FieldValues['montver_bvctr'];
+//    BonCtrGestionF.BonCtrRegleLbl.Caption :=      CurrToStrF(((Regle)),ffNumber,2) ;
+//    end;
+//
+//    if NOT (Bonv_ctr_listTable.IsEmpty) then
+//    begin
+////    if BonCtrGestionF.ClientBonCtrGCbx.Text<>'' then
+////    begin
+////    BonCtrGestionF.BonCtrGClientNEWCredit.Caption:=
+////    CurrToStrF((LeReste + ((StrToCurr(StringReplace(BonCtrGestionF.BonCtrGClientOLDCredit.Caption, #32, '', [rfReplaceAll]))))),ffNumber,2) ;
+////    end ;
+//
+////     BonCtrGestionF.RemisePerctageBonCtrGEdt.Text:='';
+//
+//
+//             BonCtrGestionF.RemisePerctageBonCtrGEdtChange(Self);
+//
+//            if BonCtrGestionF.BonCTotalHTNewLbl.Caption <>'' then
+//            begin
+//            NewHT:=StrToFloat (StringReplace(BonCtrGestionF.BonCTotalHTNewLbl.Caption , #32, '', [rfReplaceAll]));
+//            end;
+//
+//             if BonCtrGestionF.BonCtrTotalHTLbl.Caption<>'' then
+//            begin
+//            BonFCTotalHT:=StrToFloat (StringReplace(BonCtrGestionF.BonCtrTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
+//            end;
+//
+//            if BonCtrGestionF.Tag = 0 then
+//            begin
+//            BonCtrGestionF.RemiseBonCtrGEdt.Text:=FloatToStrF((BonFCTotalHT - NewHT),ffNumber,14,2);
+//            end;
+//    end;
+//
+//       end;
 end;
 
 procedure TMainForm.Bonv_ctr_listTableCalcFields(DataSet: TDataSet);
@@ -3272,7 +3404,7 @@ begin
 //((((Bonv_ctr_listTable.FieldValues['MontantHT']) - (Bonv_ctr_listTable.FieldValues['MontantAHT'])) / (Bonv_ctr_listTable.FieldValues['MontantAHT']) ) * 100) ;
 // end else
 //     begin
-//      Bonv_ctr_listTable.FieldValues['Marge']:= 100; 
+//      Bonv_ctr_listTable.FieldValues['Marge']:= 100;
 //     end;
 // end;
 //
@@ -3442,9 +3574,9 @@ begin
 
 
       // Show a custom dialog
-    buttonSelected := DataModuleF.MyMessageDialog('Le serveur ne répond pa! Assurer-tu que le serveur est activé'
+    buttonSelected := DataModuleF.MyMessageDialog('Le serveur ne rÃ©pond pa! Assurer-tu que le serveur est activÃ©'
     ,mtCustom,[mbRetry,mbCancel],
-                              ['Annuler','Réessayer']);
+                              ['Annuler','RÃ©essayer']);
 
 
           if buttonSelected = mrRetry then
@@ -5130,9 +5262,9 @@ begin
 //
 //
 //           // Show a custom dialog
-//     buttonSelected := DataModuleF.MyMessageDialog('Le serveur ne répond pas! Assurer-tu que le serveur est activé'
+//     buttonSelected := DataModuleF.MyMessageDialog('Le serveur ne rÃ©pond pas! Assurer-tu que le serveur est activÃ©'
 //     ,mtCustom,[mbRetry,mbCancel],
-//                              ['Annuler','Réessayer']);
+//                              ['Annuler','RÃ©essayer']);
 //
 //
 //          if buttonSelected = mrRetry then
@@ -5360,8 +5492,8 @@ begin
 //               except
 //
 //    // Show a custom dialog
-//    buttonSelected := DataModuleF.MyMessageDialog('Le serveur ne répond pas! Assurer-tu que le serveur est activé',mtCustom,[mbRetry,mbCancel],
-//                              ['Annuler','Réessayer']);
+//    buttonSelected := DataModuleF.MyMessageDialog('Le serveur ne rÃ©pond pas! Assurer-tu que le serveur est activÃ©',mtCustom,[mbRetry,mbCancel],
+//                              ['Annuler','RÃ©essayer']);
 //
 //
 //          if buttonSelected = mrRetry then

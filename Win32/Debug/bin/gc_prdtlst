@@ -1,5 +1,5 @@
 0~ refer_p~ Réference~ 150~ -1
-1~ nom_p~ Désignation~ 570~ -1
+1~ nom_p~ Désignation~ 382~ -1
 2~ tva_p~ TVA %~ 105~ 0
 3~ famp~ Famille~ 225~ 0
 4~ sfamp~ Sous Famille~ 225~ 0
@@ -21,4 +21,4 @@
 20~ fourp~ Fournisseur~ 300~ 0
 21~ perissable_p~ Périssable~ 150~ 0
 22~ local~ Localisation~ 225~ 0
-23~ codebar_p~ Code â Barre~ 300~ 0
+23~ codebar_p~ Code â Barre~ 300~ -1

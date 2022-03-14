@@ -937,7 +937,7 @@ begin
   MainForm.ProduitTable.Refresh;
   MainForm.ClientTable.Refresh;
   MainForm.Bonv_ctrTable.Refresh;
-  MainForm.Bonv_ctr_listTable.Refresh;
+//  MainForm.Bonv_ctr_listTable.Refresh;
 //   MainForm.Mode_paiementTable.Refresh;
 //   MainForm.CompteTable.Refresh;
   BonCtrPListDataS.DataSet.Refresh;
@@ -966,12 +966,12 @@ begin
   begin
     MainForm.Bonv_ctrTable.Last;
     codeCT := MainForm.Bonv_ctrTable.FieldValues['code_bvctr'];
-    MainForm.Bonv_ctr_listTable.Active := False;
-    MainForm.Bonv_ctr_listTable.SQL.Clear;
-    MainForm.Bonv_ctr_listTable.SQL.Text := BCLSQL +' WHERE code_bvctr = ' + QuotedStr(IntToStr(codeCT));
-    MainForm.Bonv_ctr_listTable.Active := True;
+    MainForm.SQLQuery4.Active := False;
+    MainForm.SQLQuery4.SQL.Clear;
+    MainForm.SQLQuery4.SQL.Text := BCLSQL +' WHERE code_bvctr = ' + QuotedStr(IntToStr(codeCT));
+    MainForm.SQLQuery4.Active := True;
 
-    if MainForm.Bonv_ctr_listTable.RecordCount <= 0 then
+    if MainForm.SQLQuery4.RecordCount <= 0 then
     begin
         //   MainForm.Bonv_ctrTable.Last;
       codeCT := MainForm.Bonv_ctrTable.FieldValues['code_bvctr'];
@@ -1171,46 +1171,46 @@ begin
             if MainForm.FDQuery2.RecordCount > 0 then
             begin
 
-              MainForm.Bonv_ctr_listTable.DisableControls;
-              MainForm.Bonv_ctr_listTable.IndexFieldNames := '';
-              MainForm.Bonv_ctr_listTable.Active := False;
-              MainForm.Bonv_ctr_listTable.SQL.Clear;
-              MainForm.Bonv_ctr_listTable.SQL.Text := BCLSQL +' ORDER by code_bvctrl';
-              MainForm.Bonv_ctr_listTable.Active := True;
+//              MainForm.Bonv_ctr_listTable.DisableControls;
+//              MainForm.Bonv_ctr_listTable.IndexFieldNames := '';
+              MainForm.SQLQuery4.Active := False;
+              MainForm.SQLQuery4.SQL.Clear;
+              MainForm.SQLQuery4.SQL.Text := BCLSQL +' ORDER by code_bvctrl';
+              MainForm.SQLQuery4.Active := True;
 
-              MainForm.Bonv_ctr_listTable.Last;
-              if MainForm.Bonv_ctr_listTable.IsEmpty then
+//              MainForm.SQLQuery4.Last;
+              if MainForm.SQLQuery4.IsEmpty then
               begin
-                MainForm.Bonv_ctr_listTable.Last;
+                MainForm.SQLQuery4.Last;
                 CodeCT := 1;
               end
               else
               begin
-                MainForm.Bonv_ctr_listTable.Last;
-                CodeCT := MainForm.Bonv_ctr_listTable.FieldValues['code_bvctrl'] + 1;
+                MainForm.SQLQuery4.Last;
+                CodeCT := MainForm.SQLQuery4.FieldValues['code_bvctrl'] + 1;
               end;
 
 
 
-              MainForm.Bonv_ctr_listTable.Last;
-              MainForm.Bonv_ctr_listTable.Append;
-              MainForm.Bonv_ctr_listTable.FieldValues['code_bvctrl'] := CodeCT;
-              MainForm.Bonv_ctr_listTable.FieldValues['code_bvctr'] := MainForm.Bonv_ctrTable.FieldValues['code_bvctr'];
-              MainForm.Bonv_ctr_listTable.FieldValues['code_p'] := MainForm.FDQuery2.FieldValues['code_p'];
+//              MainForm.SQLQuery4.Last;
+              MainForm.SQLQuery4.Append;
+              MainForm.SQLQuery4.FieldValues['code_bvctrl'] := CodeCT;
+              MainForm.SQLQuery4.FieldValues['code_bvctr'] := MainForm.Bonv_ctrTable.FieldValues['code_bvctr'];
+              MainForm.SQLQuery4.FieldValues['code_p'] := MainForm.FDQuery2.FieldValues['code_p'];
               if NOT isBalCode then
               begin
-              MainForm.Bonv_ctr_listTable.FieldValues['qut_p'] := 01;
+              MainForm.SQLQuery4.FieldValues['qut_p'] := 01;
               end else
                    begin
-                    MainForm.Bonv_ctr_listTable.FieldValues['qut_p']:= BalQut;
+                    MainForm.SQLQuery4.FieldValues['qut_p']:= BalQut;
                    end;
-              MainForm.Bonv_ctr_listTable.FieldValues['cond_p'] := 01;
-              MainForm.Bonv_ctr_listTable.FieldValues['tva_p'] := MainForm.FDQuery2.FieldValues['tva_p'];
-              MainForm.Bonv_ctr_listTable.FieldValues['prixht_p'] := MainForm.FDQuery2.FieldValues['prixht_p'];
+              MainForm.SQLQuery4.FieldValues['cond_p'] := 01;
+              MainForm.SQLQuery4.FieldValues['tva_p'] := MainForm.FDQuery2.FieldValues['tva_p'];
+              MainForm.SQLQuery4.FieldValues['prixht_p'] := MainForm.FDQuery2.FieldValues['prixht_p'];
 
               if DataModuleF.PerissBona_recTable.RecordCount = 1 then
               begin
-                MainForm.Bonv_ctr_listTable.FieldValues['code_barec'] := DataModuleF.PerissBona_recTable.FieldValues['code_barec'];
+                MainForm.SQLQuery4.FieldValues['code_barec'] := DataModuleF.PerissBona_recTable.FieldValues['code_barec'];
               end;
 
               if not (MainForm.SQLQuery3.IsEmpty) and (ClientBonCtrGCbx.Text <> '') then
@@ -1218,37 +1218,37 @@ begin
 
                 if MainForm.SQLQuery3.FieldByName('tarification_c').AsInteger = 0 then
                 begin
-                  MainForm.Bonv_ctr_listTable.FieldValues['prixvd_p'] := MainForm.FDQuery2.FieldValues['prixvd_p'];
+                  MainForm.SQLQuery4.FieldValues['prixvd_p'] := MainForm.FDQuery2.FieldValues['prixvd_p'];
                 end;
                 if MainForm.SQLQuery3.FieldByName('tarification_c').AsInteger = 1 then
                 begin
-                  MainForm.Bonv_ctr_listTable.FieldValues['prixvd_p'] := MainForm.FDQuery2.FieldValues['prixvr_p'];
+                  MainForm.SQLQuery4.FieldValues['prixvd_p'] := MainForm.FDQuery2.FieldValues['prixvr_p'];
                 end;
                 if MainForm.SQLQuery3.FieldByName('tarification_c').AsInteger = 2 then
                 begin
-                  MainForm.Bonv_ctr_listTable.FieldValues['prixvd_p'] := MainForm.FDQuery2.FieldValues['prixvg_p'];
+                  MainForm.SQLQuery4.FieldValues['prixvd_p'] := MainForm.FDQuery2.FieldValues['prixvg_p'];
                 end;
                 if MainForm.SQLQuery3.FieldByName('tarification_c').AsInteger = 3 then
                 begin
-                  MainForm.Bonv_ctr_listTable.FieldValues['prixvd_p'] := MainForm.FDQuery2.FieldValues['prixva_p'];
+                  MainForm.SQLQuery4.FieldValues['prixvd_p'] := MainForm.FDQuery2.FieldValues['prixva_p'];
                 end;
                 if MainForm.SQLQuery3.FieldByName('tarification_c').AsInteger = 4 then
                 begin
-                  MainForm.Bonv_ctr_listTable.FieldValues['prixvd_p'] := MainForm.FDQuery2.FieldValues['prixva2_p'];
+                  MainForm.SQLQuery4.FieldValues['prixvd_p'] := MainForm.FDQuery2.FieldValues['prixva2_p'];
                 end;
               end
               else
               begin
-                MainForm.Bonv_ctr_listTable.FieldValues['prixvd_p'] := MainForm.FDQuery2.FieldValues['prixvd_p'];
+                MainForm.SQLQuery4.FieldValues['prixvd_p'] := MainForm.FDQuery2.FieldValues['prixvd_p'];
               end;
 
-              MainForm.Bonv_ctr_listTable.Post;
-              MainForm.Bonv_ctr_listTable.IndexFieldNames := 'code_bvctr';
+              MainForm.SQLQuery4.Post;
+//              MainForm.Bonv_ctr_listTable.IndexFieldNames := 'code_bvctr';
 
-              MainForm.Bonv_ctr_listTable.Active := False;
-              MainForm.Bonv_ctr_listTable.SQL.Clear;
-              MainForm.Bonv_ctr_listTable.SQL.Text := BCLSQL +' WHERE code_bvctr = ' + QuotedStr(IntToStr(MainForm.Bonv_ctrTable.FieldValues['code_bvctr']));
-              MainForm.Bonv_ctr_listTable.Active := True;
+              MainForm.SQLQuery4.Active := False;
+              MainForm.SQLQuery4.SQL.Clear;
+              MainForm.SQLQuery4.SQL.Text := BCLSQL +' WHERE code_bvctr = ' + QuotedStr(IntToStr(MainForm.Bonv_ctrTable.FieldValues['code_bvctr']));
+              MainForm.SQLQuery4.Active := True;
 
               ProduitBonCtrGCbx.Text := '';
 //            ProduitsListDBGridEh.SetFocus;
@@ -1256,8 +1256,8 @@ begin
 //           ProduitsListDBGridEh.SelectedIndex:=2;
               ProduitsListDBGridEh.EditorMode := True;
 
-              MainForm.Bonv_ctr_listTable.EnableControls;
-              MainForm.Bonv_ctr_listTable.Last;
+//              MainForm.Bonv_ctr_listTable.EnableControls;
+//              MainForm.Bonv_ctr_listTable.Last;
               if ClientBonCtrGCbx.Text <> '' then
               begin
                 ValiderBVCtrBonCtrGBtn.Enabled := True;
@@ -1305,52 +1305,52 @@ begin
                 if  (Copy(ProduitBonCtrGCbx.Text,1,1) = '+') AND  TryStrToInt(Copy(ProduitBonCtrGCbx.Text,2,Length(ProduitBonCtrGCbx.Text)),Numcheck)   then
                 begin
 
-                  MainForm.Bonv_ctr_listTable.DisableControls;
-                  MainForm.Bonv_ctr_listTable.IndexFieldNames := '';
-                  MainForm.Bonv_ctr_listTable.Active := False;
-                  MainForm.Bonv_ctr_listTable.SQL.Clear;
-                  MainForm.Bonv_ctr_listTable.SQL.Text := BCLSQL +' ORDER by code_bvctrl';
-                  MainForm.Bonv_ctr_listTable.Active := True;
+//                  MainForm.Bonv_ctr_listTable.DisableControls;
+//                  MainForm.Bonv_ctr_listTable.IndexFieldNames := '';
+                  MainForm.SQLQuery4.Active := False;
+                  MainForm.SQLQuery4.SQL.Clear;
+                  MainForm.SQLQuery4.SQL.Text := BCLSQL +' ORDER by code_bvctrl';
+                  MainForm.SQLQuery4.Active := True;
 
-                  MainForm.Bonv_ctr_listTable.Last;
-                  if MainForm.Bonv_ctr_listTable.IsEmpty then
+//                  MainForm.SQLQuery4.Last;
+                  if MainForm.SQLQuery4.IsEmpty then
                   begin
-                    MainForm.Bonv_ctr_listTable.Last;
+                    MainForm.SQLQuery4.Last;
                     CodeCT := 1;
                   end
                   else
                   begin
-                    MainForm.Bonv_ctr_listTable.Last;
-                    CodeCT := MainForm.Bonv_ctr_listTable.FieldValues['code_bvctrl'] + 1;
+                    MainForm.SQLQuery4.Last;
+                    CodeCT := MainForm.SQLQuery4.FieldValues['code_bvctrl'] + 1;
                   end;
 
 
 
-                  MainForm.Bonv_ctr_listTable.Last;
-                  MainForm.Bonv_ctr_listTable.Append;
-                  MainForm.Bonv_ctr_listTable.FieldValues['code_bvctrl'] := CodeCT;
-                  MainForm.Bonv_ctr_listTable.FieldValues['code_bvctr'] := MainForm.Bonv_ctrTable.FieldValues['code_bvctr'];
-                  MainForm.Bonv_ctr_listTable.FieldValues['code_p'] := 0;
-                  MainForm.Bonv_ctr_listTable.FieldValues['qut_p'] := 01;
-                  MainForm.Bonv_ctr_listTable.FieldValues['cond_p'] := 01;
-                  MainForm.Bonv_ctr_listTable.FieldValues['tva_p'] := 0;
-                  MainForm.Bonv_ctr_listTable.FieldValues['prixht_p'] := 0;
+//                  MainForm.Bonv_ctr_listTable.Last;
+                  MainForm.SQLQuery4.Append;
+                  MainForm.SQLQuery4.FieldValues['code_bvctrl'] := CodeCT;
+                  MainForm.SQLQuery4.FieldValues['code_bvctr'] := MainForm.Bonv_ctrTable.FieldValues['code_bvctr'];
+                  MainForm.SQLQuery4.FieldValues['code_p'] := 0;
+                  MainForm.SQLQuery4.FieldValues['qut_p'] := 01;
+                  MainForm.SQLQuery4.FieldValues['cond_p'] := 01;
+                  MainForm.SQLQuery4.FieldValues['tva_p'] := 0;
+                  MainForm.SQLQuery4.FieldValues['prixht_p'] := 0;
 
-                  MainForm.Bonv_ctr_listTable.FieldValues['prixvd_p'] := Copy(ProduitBonCtrGCbx.Text,2,Length(ProduitBonCtrGCbx.Text)-1);
+                  MainForm.SQLQuery4.FieldValues['prixvd_p'] := Copy(ProduitBonCtrGCbx.Text,2,Length(ProduitBonCtrGCbx.Text)-1);
 
-                  MainForm.Bonv_ctr_listTable.Post;
-                  MainForm.Bonv_ctr_listTable.IndexFieldNames := 'code_bvctr';
+                  MainForm.SQLQuery4.Post;
+                  MainForm.SQLQuery4.IndexFieldNames := 'code_bvctr';
 
-                  MainForm.Bonv_ctr_listTable.Active := False;
-                  MainForm.Bonv_ctr_listTable.SQL.Clear;
-                  MainForm.Bonv_ctr_listTable.SQL.Text :=  BCLSQL +' WHERE code_bvctr = ' + QuotedStr(IntToStr(MainForm.Bonv_ctrTable.FieldValues['code_bvctr']));
-                  MainForm.Bonv_ctr_listTable.Active := True;
+                  MainForm.SQLQuery4.Active := False;
+                  MainForm.SQLQuery4.SQL.Clear;
+                  MainForm.SQLQuery4.SQL.Text :=  BCLSQL +' WHERE code_bvctr = ' + QuotedStr(IntToStr(MainForm.Bonv_ctrTable.FieldValues['code_bvctr']));
+                  MainForm.SQLQuery4.Active := True;
 
                   ProduitBonCtrGCbx.Text := '';
                   ProduitsListDBGridEh.EditorMode := True;
 
-                  MainForm.Bonv_ctr_listTable.EnableControls;
-                  MainForm.Bonv_ctr_listTable.Last;
+//                  MainForm.Bonv_ctr_listTable.EnableControls;
+//                  MainForm.Bonv_ctr_listTable.Last;
                   if ClientBonCtrGCbx.Text <> '' then
                   begin
                     ValiderBVCtrBonCtrGBtn.Enabled := True;
@@ -1365,7 +1365,7 @@ begin
                   if PoleA = True then
                   begin
 
-                    PRIXTTC := MainForm.Bonv_ctr_listTable.FieldValues['prixvd_p'];
+                    PRIXTTC := MainForm.SQLQuery4.FieldValues['prixvd_p'];
 
                     try
                       PORT := Ini.ReadString('', 'Afficheur client PORT', PORT);
@@ -1398,52 +1398,52 @@ begin
                 if  (Copy(ProduitBonCtrGCbx.Text,1,1) = '-') AND  TryStrToInt(Copy(ProduitBonCtrGCbx.Text,2,Length(ProduitBonCtrGCbx.Text)),Numcheck)  then
                 begin
 
-                  MainForm.Bonv_ctr_listTable.DisableControls;
-                  MainForm.Bonv_ctr_listTable.IndexFieldNames := '';
-                  MainForm.Bonv_ctr_listTable.Active := False;
-                  MainForm.Bonv_ctr_listTable.SQL.Clear;
-                  MainForm.Bonv_ctr_listTable.SQL.Text := BCLSQL +' ORDER by code_bvctrl';
-                  MainForm.Bonv_ctr_listTable.Active := True;
+//                  MainForm.Bonv_ctr_listTable.DisableControls;
+//                  MainForm.Bonv_ctr_listTable.IndexFieldNames := '';
+                  MainForm.SQLQuery4.Active := False;
+                  MainForm.SQLQuery4.SQL.Clear;
+                  MainForm.SQLQuery4.SQL.Text := BCLSQL +' ORDER by code_bvctrl';
+                  MainForm.SQLQuery4.Active := True;
 
-                  MainForm.Bonv_ctr_listTable.Last;
-                  if MainForm.Bonv_ctr_listTable.IsEmpty then
+//                  MainForm.SQLQuery4.Last;
+                  if MainForm.SQLQuery4.IsEmpty then
                   begin
-                    MainForm.Bonv_ctr_listTable.Last;
+                    MainForm.SQLQuery4.Last;
                     CodeCT := 1;
                   end
                   else
                   begin
-                    MainForm.Bonv_ctr_listTable.Last;
-                    CodeCT := MainForm.Bonv_ctr_listTable.FieldValues['code_bvctrl'] + 1;
+                    MainForm.SQLQuery4.Last;
+                    CodeCT := MainForm.SQLQuery4.FieldValues['code_bvctrl'] + 1;
                   end;
 
 
 
-                  MainForm.Bonv_ctr_listTable.Last;
-                  MainForm.Bonv_ctr_listTable.Append;
-                  MainForm.Bonv_ctr_listTable.FieldValues['code_bvctrl'] := CodeCT;
-                  MainForm.Bonv_ctr_listTable.FieldValues['code_bvctr'] := MainForm.Bonv_ctrTable.FieldValues['code_bvctr'];
-                  MainForm.Bonv_ctr_listTable.FieldValues['code_p'] := 0;
-                  MainForm.Bonv_ctr_listTable.FieldValues['qut_p'] := 01;
-                  MainForm.Bonv_ctr_listTable.FieldValues['cond_p'] := 01;
-                  MainForm.Bonv_ctr_listTable.FieldValues['tva_p'] := 0;
-                  MainForm.Bonv_ctr_listTable.FieldValues['prixht_p'] := 0;
+//                  MainForm.Bonv_ctr_listTable.Last;
+                  MainForm.SQLQuery4.Append;
+                  MainForm.SQLQuery4.FieldValues['code_bvctrl'] := CodeCT;
+                  MainForm.SQLQuery4.FieldValues['code_bvctr'] := MainForm.Bonv_ctrTable.FieldValues['code_bvctr'];
+                  MainForm.SQLQuery4.FieldValues['code_p'] := 0;
+                  MainForm.SQLQuery4.FieldValues['qut_p'] := 01;
+                  MainForm.SQLQuery4.FieldValues['cond_p'] := 01;
+                  MainForm.SQLQuery4.FieldValues['tva_p'] := 0;
+                  MainForm.SQLQuery4.FieldValues['prixht_p'] := 0;
 
-                  MainForm.Bonv_ctr_listTable.FieldValues['prixvd_p'] := -1 * StrToInt(Copy(ProduitBonCtrGCbx.Text,2,Length(ProduitBonCtrGCbx.Text)-1));
+                  MainForm.SQLQuery4.FieldValues['prixvd_p'] := -1 * StrToInt(Copy(ProduitBonCtrGCbx.Text,2,Length(ProduitBonCtrGCbx.Text)-1));
 
-                  MainForm.Bonv_ctr_listTable.Post;
-                  MainForm.Bonv_ctr_listTable.IndexFieldNames := 'code_bvctr';
+                  MainForm.SQLQuery4.Post;
+//                  MainForm.SQLQuery4.IndexFieldNames := 'code_bvctr';
 
-                  MainForm.Bonv_ctr_listTable.Active := False;
-                  MainForm.Bonv_ctr_listTable.SQL.Clear;
-                  MainForm.Bonv_ctr_listTable.SQL.Text := BCLSQL +' WHERE code_bvctr = ' + QuotedStr(IntToStr(MainForm.Bonv_ctrTable.FieldValues['code_bvctr']));
-                  MainForm.Bonv_ctr_listTable.Active := True;
+                  MainForm.SQLQuery4.Active := False;
+                  MainForm.SQLQuery4.SQL.Clear;
+                  MainForm.SQLQuery4.SQL.Text := BCLSQL +' WHERE code_bvctr = ' + QuotedStr(IntToStr(MainForm.Bonv_ctrTable.FieldValues['code_bvctr']));
+                  MainForm.SQLQuery4.Active := True;
 
                   ProduitBonCtrGCbx.Text := '';
                   ProduitsListDBGridEh.EditorMode := True;
 
-                  MainForm.Bonv_ctr_listTable.EnableControls;
-                  MainForm.Bonv_ctr_listTable.Last;
+//                  MainForm.Bonv_ctr_listTable.EnableControls;
+//                  MainForm.Bonv_ctr_listTable.Last;
                   if ClientBonCtrGCbx.Text <> '' then
                   begin
                     ValiderBVCtrBonCtrGBtn.Enabled := True;
@@ -1458,7 +1458,7 @@ begin
                   if PoleA = True then
                   begin
 
-                    PRIXTTC := MainForm.Bonv_ctr_listTable.FieldValues['prixvd_p'];
+                    PRIXTTC := MainForm.SQLQuery4.FieldValues['prixvd_p'];
 
                     try
                       PORT := Ini.ReadString('', 'Afficheur client PORT', PORT);
@@ -1500,21 +1500,21 @@ begin
             //AND NOT TryStrToInt(Copy(ProduitBonCtrGCbx.Text,2,Length(ProduitBonCtrGCbx.Text)),Numcheck)
             then
             begin
-              MainForm.Bonv_ctr_listTable.First;
-              while not MainForm.Bonv_ctr_listTable.Eof do
+              MainForm.SQLQuery4.First;
+              while not MainForm.SQLQuery4.Eof do
               begin
 
-                if MainForm.Bonv_ctr_listTable.FieldByName('code_p').AsInteger = CodeP then
+                if MainForm.SQLQuery4.FieldByName('code_p').AsInteger = CodeP then
                 begin
-                  MainForm.Bonv_ctr_listTable.Edit;
+                  MainForm.SQLQuery4.Edit;
                   if NOT isBalCode then
                   begin
-                  MainForm.Bonv_ctr_listTable.FieldByName('qut_p').AsFloat := MainForm.Bonv_ctr_listTable.FieldByName('qut_p').AsFloat + 1;
+                  MainForm.SQLQuery4.FieldByName('qut_p').AsFloat := MainForm.SQLQuery4.FieldByName('qut_p').AsFloat + 1;
                   end else
                       begin
-                      MainForm.Bonv_ctr_listTable.FieldByName('qut_p').AsFloat := MainForm.Bonv_ctr_listTable.FieldByName('qut_p').AsFloat + BalQut;
+                      MainForm.SQLQuery4.FieldByName('qut_p').AsFloat := MainForm.SQLQuery4.FieldByName('qut_p').AsFloat + BalQut;
                       end;
-                  MainForm.Bonv_ctr_listTable.Post;
+                  MainForm.SQLQuery4.Post;
                   Refresh_PreservePosition;
                   ProduitBonCtrGCbx.Clear;
                   sndPlaySound('C:\Windows\Media\speech on.wav', SND_NODEFAULT or SND_ASYNC or SND_RING);
@@ -1523,35 +1523,35 @@ begin
                   Exit;
 
                 end;
-                MainForm.Bonv_ctr_listTable.Next;
+                MainForm.SQLQuery4.Next;
               end;
 
             end   //This is for deleting when it supression mode
-            else if (Panel1.Tag = 1) and (MainForm.Bonv_ctr_listTable.IsEmpty = False) AND NOT(Copy(ProduitBonCtrGCbx.Text,1,1) = '-') AND NOT(Copy(ProduitBonCtrGCbx.Text,1,1) = '+')
+            else if (Panel1.Tag = 1) and (MainForm.SQLQuery4.IsEmpty = False) AND NOT(Copy(ProduitBonCtrGCbx.Text,1,1) = '-') AND NOT(Copy(ProduitBonCtrGCbx.Text,1,1) = '+')
             //AND NOT TryStrToInt(Copy(ProduitBonCtrGCbx.Text,2,Length(ProduitBonCtrGCbx.Text)),Numcheck)
             then
             begin
-              MainForm.Bonv_ctr_listTable.First;
-              while not MainForm.Bonv_ctr_listTable.Eof do
+              MainForm.SQLQuery4.First;
+              while not MainForm.SQLQuery4.Eof do
               begin
 
-                if MainForm.Bonv_ctr_listTable.FieldByName('code_p').AsInteger = CodeP then
+                if MainForm.SQLQuery4.FieldByName('code_p').AsInteger = CodeP then
                 begin
-                  if MainForm.Bonv_ctr_listTable.FieldByName('qut_p').AsFloat > 1 then
+                  if MainForm.SQLQuery4.FieldByName('qut_p').AsFloat > 1 then
                   begin
-                    MainForm.Bonv_ctr_listTable.Edit;
+                    MainForm.SQLQuery4.Edit;
                     if NOT isBalCode then
                     begin
-                    MainForm.Bonv_ctr_listTable.FieldByName('qut_p').AsFloat := MainForm.Bonv_ctr_listTable.FieldByName('qut_p').AsFloat - 1;
+                    MainForm.SQLQuery4.FieldByName('qut_p').AsFloat := MainForm.SQLQuery4.FieldByName('qut_p').AsFloat - 1;
                     end else
                         begin
-                         MainForm.Bonv_ctr_listTable.FieldByName('qut_p').AsFloat := MainForm.Bonv_ctr_listTable.FieldByName('qut_p').AsFloat - BalQut;
+                         MainForm.SQLQuery4.FieldByName('qut_p').AsFloat := MainForm.SQLQuery4.FieldByName('qut_p').AsFloat - BalQut;
                         end;
-                    MainForm.Bonv_ctr_listTable.Post;
+                    MainForm.SQLQuery4.Post;
                   end
                   else
                   begin
-                    MainForm.Bonv_ctr_listTable.Delete;
+                    MainForm.SQLQuery4.Delete;
                   end;
                   Refresh_PreservePosition;
                   ProduitBonCtrGCbx.Clear;
@@ -1561,7 +1561,7 @@ begin
                   Exit;
 
                 end;
-                MainForm.Bonv_ctr_listTable.Next;
+                MainForm.SQLQuery4.Next;
               end;
 
             end else //This is for adding DIVERS
@@ -1570,50 +1570,50 @@ begin
                 if  (Copy(ProduitBonCtrGCbx.Text,1,1) = '+') AND  TryStrToInt(Copy(ProduitBonCtrGCbx.Text,2,Length(ProduitBonCtrGCbx.Text)),Numcheck)   then
                 begin
 
-                  MainForm.Bonv_ctr_listTable.DisableControls;
-                  MainForm.Bonv_ctr_listTable.IndexFieldNames := '';
-                  MainForm.Bonv_ctr_listTable.Active := False;
-                  MainForm.Bonv_ctr_listTable.SQL.Clear;
-                  MainForm.Bonv_ctr_listTable.SQL.Text := BCLSQL +' ORDER by code_bvctrl';
-                  MainForm.Bonv_ctr_listTable.Active := True;
+//                  MainForm.Bonv_ctr_listTable.DisableControls;
+//                  MainForm.Bonv_ctr_listTable.IndexFieldNames := '';
+                  MainForm.SQLQuery4.Active := False;
+                  MainForm.SQLQuery4.SQL.Clear;
+                  MainForm.SQLQuery4.SQL.Text := BCLSQL +' ORDER by code_bvctrl';
+                  MainForm.SQLQuery4.Active := True;
 
-                  MainForm.Bonv_ctr_listTable.Last;
-                  if MainForm.Bonv_ctr_listTable.IsEmpty then
+//                  MainForm.SQLQuery4.Last;
+                  if MainForm.SQLQuery4.IsEmpty then
                   begin
-                    MainForm.Bonv_ctr_listTable.Last;
+                    MainForm.SQLQuery4.Last;
                     CodeCT := 1;
                   end
                   else
                   begin
-                    MainForm.Bonv_ctr_listTable.Last;
-                    CodeCT := MainForm.Bonv_ctr_listTable.FieldValues['code_bvctrl'] + 1;
+                    MainForm.SQLQuery4.Last;
+                    CodeCT := MainForm.SQLQuery4.FieldValues['code_bvctrl'] + 1;
                   end;
 
-                  MainForm.Bonv_ctr_listTable.Last;
-                  MainForm.Bonv_ctr_listTable.Append;
-                  MainForm.Bonv_ctr_listTable.FieldValues['code_bvctrl'] := CodeCT;
-                  MainForm.Bonv_ctr_listTable.FieldValues['code_bvctr'] := MainForm.Bonv_ctrTable.FieldValues['code_bvctr'];
-                  MainForm.Bonv_ctr_listTable.FieldValues['code_p'] := 0;
-                  MainForm.Bonv_ctr_listTable.FieldValues['qut_p'] := 01;
-                  MainForm.Bonv_ctr_listTable.FieldValues['cond_p'] := 01;
-                  MainForm.Bonv_ctr_listTable.FieldValues['tva_p'] := 0;
-                  MainForm.Bonv_ctr_listTable.FieldValues['prixht_p'] := 0;
+//                  MainForm.Bonv_ctr_listTable.Last;
+                  MainForm.SQLQuery4.Append;
+                  MainForm.SQLQuery4.FieldValues['code_bvctrl'] := CodeCT;
+                  MainForm.SQLQuery4.FieldValues['code_bvctr'] := MainForm.Bonv_ctrTable.FieldValues['code_bvctr'];
+                  MainForm.SQLQuery4.FieldValues['code_p'] := 0;
+                  MainForm.SQLQuery4.FieldValues['qut_p'] := 01;
+                  MainForm.SQLQuery4.FieldValues['cond_p'] := 01;
+                  MainForm.SQLQuery4.FieldValues['tva_p'] := 0;
+                  MainForm.SQLQuery4.FieldValues['prixht_p'] := 0;
 
-                  MainForm.Bonv_ctr_listTable.FieldValues['prixvd_p'] := Copy(ProduitBonCtrGCbx.Text,2,Length(ProduitBonCtrGCbx.Text)-1);
+                  MainForm.SQLQuery4.FieldValues['prixvd_p'] := Copy(ProduitBonCtrGCbx.Text,2,Length(ProduitBonCtrGCbx.Text)-1);
 
-                  MainForm.Bonv_ctr_listTable.Post;
-                  MainForm.Bonv_ctr_listTable.IndexFieldNames := 'code_bvctr';
+                  MainForm.SQLQuery4.Post;
+                  MainForm.SQLQuery4.IndexFieldNames := 'code_bvctr';
 
-                  MainForm.Bonv_ctr_listTable.Active := False;
-                  MainForm.Bonv_ctr_listTable.SQL.Clear;
-                  MainForm.Bonv_ctr_listTable.SQL.Text := BCLSQL +' WHERE code_bvctr = ' + QuotedStr(IntToStr(MainForm.Bonv_ctrTable.FieldValues['code_bvctr']));
-                  MainForm.Bonv_ctr_listTable.Active := True;
+                  MainForm.SQLQuery4.Active := False;
+                  MainForm.SQLQuery4.SQL.Clear;
+                  MainForm.SQLQuery4.SQL.Text := BCLSQL +' WHERE code_bvctr = ' + QuotedStr(IntToStr(MainForm.Bonv_ctrTable.FieldValues['code_bvctr']));
+                  MainForm.SQLQuery4.Active := True;
 
                   ProduitBonCtrGCbx.Text := '';
                   ProduitsListDBGridEh.EditorMode := True;
 
-                  MainForm.Bonv_ctr_listTable.EnableControls;
-                  MainForm.Bonv_ctr_listTable.Last;
+//                  MainForm.Bonv_ctr_listTable.EnableControls;
+//                  MainForm.Bonv_ctr_listTable.Last;
                   if ClientBonCtrGCbx.Text <> '' then
                   begin
                     ValiderBVCtrBonCtrGBtn.Enabled := True;
@@ -1628,7 +1628,7 @@ begin
                   if PoleA = True then
                   begin
 
-                    PRIXTTC := MainForm.Bonv_ctr_listTable.FieldValues['prixvd_p'];
+                    PRIXTTC := MainForm.SQLQuery4.FieldValues['prixvd_p'];
 
                     try
                       PORT := Ini.ReadString('', 'Afficheur client PORT', PORT);
@@ -1661,50 +1661,50 @@ begin
 
                 if  (Copy(ProduitBonCtrGCbx.Text,1,1) = '-') AND  TryStrToInt(Copy(ProduitBonCtrGCbx.Text,2,Length(ProduitBonCtrGCbx.Text)),Numcheck)  then
                 begin
-                  MainForm.Bonv_ctr_listTable.DisableControls;
-                  MainForm.Bonv_ctr_listTable.IndexFieldNames := '';
-                  MainForm.Bonv_ctr_listTable.Active := False;
-                  MainForm.Bonv_ctr_listTable.SQL.Clear;
-                  MainForm.Bonv_ctr_listTable.SQL.Text := BCLSQL +' ORDER by code_bvctrl';
-                  MainForm.Bonv_ctr_listTable.Active := True;
+//                  MainForm.Bonv_ctr_listTable.DisableControls;
+//                  MainForm.Bonv_ctr_listTable.IndexFieldNames := '';
+                  MainForm.SQLQuery4.Active := False;
+                  MainForm.SQLQuery4.SQL.Clear;
+                  MainForm.SQLQuery4.SQL.Text := BCLSQL +' ORDER by code_bvctrl';
+                  MainForm.SQLQuery4.Active := True;
 
-                  MainForm.Bonv_ctr_listTable.Last;
-                  if MainForm.Bonv_ctr_listTable.IsEmpty then
+//                  MainForm.SQLQuery4.Last;
+                  if MainForm.SQLQuery4.IsEmpty then
                   begin
-                    MainForm.Bonv_ctr_listTable.Last;
+                    MainForm.SQLQuery4.Last;
                     CodeCT := 1;
                   end
                   else
                   begin
-                    MainForm.Bonv_ctr_listTable.Last;
-                    CodeCT := MainForm.Bonv_ctr_listTable.FieldValues['code_bvctrl'] + 1;
+                    MainForm.SQLQuery4.Last;
+                    CodeCT := MainForm.SQLQuery4.FieldValues['code_bvctrl'] + 1;
                   end;
 
-                  MainForm.Bonv_ctr_listTable.Last;
-                  MainForm.Bonv_ctr_listTable.Append;
-                  MainForm.Bonv_ctr_listTable.FieldValues['code_bvctrl'] := CodeCT;
-                  MainForm.Bonv_ctr_listTable.FieldValues['code_bvctr'] := MainForm.Bonv_ctrTable.FieldValues['code_bvctr'];
-                  MainForm.Bonv_ctr_listTable.FieldValues['code_p'] := 0;
-                  MainForm.Bonv_ctr_listTable.FieldValues['qut_p'] := 01;
-                  MainForm.Bonv_ctr_listTable.FieldValues['cond_p'] := 01;
-                  MainForm.Bonv_ctr_listTable.FieldValues['tva_p'] := 0;
-                  MainForm.Bonv_ctr_listTable.FieldValues['prixht_p'] := 0;
+//                  MainForm.Bonv_ctr_listTable.Last;
+                  MainForm.SQLQuery4.Append;
+                  MainForm.SQLQuery4.FieldValues['code_bvctrl'] := CodeCT;
+                  MainForm.SQLQuery4.FieldValues['code_bvctr'] := MainForm.Bonv_ctrTable.FieldValues['code_bvctr'];
+                  MainForm.SQLQuery4.FieldValues['code_p'] := 0;
+                  MainForm.SQLQuery4.FieldValues['qut_p'] := 01;
+                  MainForm.SQLQuery4.FieldValues['cond_p'] := 01;
+                  MainForm.SQLQuery4.FieldValues['tva_p'] := 0;
+                  MainForm.SQLQuery4.FieldValues['prixht_p'] := 0;
 
-                  MainForm.Bonv_ctr_listTable.FieldValues['prixvd_p'] := -1 * StrToInt(Copy(ProduitBonCtrGCbx.Text,2,Length(ProduitBonCtrGCbx.Text)-1));
+                  MainForm.SQLQuery4.FieldValues['prixvd_p'] := -1 * StrToInt(Copy(ProduitBonCtrGCbx.Text,2,Length(ProduitBonCtrGCbx.Text)-1));
 
-                  MainForm.Bonv_ctr_listTable.Post;
-                  MainForm.Bonv_ctr_listTable.IndexFieldNames := 'code_bvctr';
+                  MainForm.SQLQuery4.Post;
+                  MainForm.SQLQuery4.IndexFieldNames := 'code_bvctr';
 
-                  MainForm.Bonv_ctr_listTable.Active := False;
-                  MainForm.Bonv_ctr_listTable.SQL.Clear;
-                  MainForm.Bonv_ctr_listTable.SQL.Text := BCLSQL +' WHERE code_bvctr = ' + QuotedStr(IntToStr(MainForm.Bonv_ctrTable.FieldValues['code_bvctr']));
-                  MainForm.Bonv_ctr_listTable.Active := True;
+                  MainForm.SQLQuery4.Active := False;
+                  MainForm.SQLQuery4.SQL.Clear;
+                  MainForm.SQLQuery4.SQL.Text := BCLSQL +' WHERE code_bvctr = ' + QuotedStr(IntToStr(MainForm.Bonv_ctrTable.FieldValues['code_bvctr']));
+                  MainForm.SQLQuery4.Active := True;
 
                   ProduitBonCtrGCbx.Text := '';
                   ProduitsListDBGridEh.EditorMode := True;
 
-                  MainForm.Bonv_ctr_listTable.EnableControls;
-                  MainForm.Bonv_ctr_listTable.Last;
+//                  MainForm.Bonv_ctr_listTable.EnableControls;
+//                  MainForm.Bonv_ctr_listTable.Last;
                   if ClientBonCtrGCbx.Text <> '' then
                   begin
                     ValiderBVCtrBonCtrGBtn.Enabled := True;
@@ -1719,7 +1719,7 @@ begin
                   if PoleA = True then
                   begin
 
-                    PRIXTTC := MainForm.Bonv_ctr_listTable.FieldValues['prixvd_p'];
+                    PRIXTTC := MainForm.SQLQuery4.FieldValues['prixvd_p'];
                     try
                       PORT := Ini.ReadString('', 'Afficheur client PORT', PORT);
     //                 Msg2:= Ini.ReadString('',  'Afficheur client Msg2', Msg2);
@@ -1770,6 +1770,7 @@ begin
       MainForm.FDQuery2.SQL.Clear;
 
       MainForm.Bonv_ctr_listTable.Refresh;
+      MainForm.Bonv_ctr_listTable.Last;
       DataModuleF.Top5produit.Refresh;
 //        ProduitBonCtrGCbx.AutoDropDown:=False;
       ProduitBonCtrGCbx.SelectAll;
@@ -1778,7 +1779,9 @@ begin
         begin
           ProduitBonCtrGCbx.Text:= '';
         end;
-    MainForm.Bonv_ctr_listTable.Last;
+//    MainForm.Bonv_ctr_listTable.Last;
+
+//     MainForm.BonCTRListTRefresh();
   end;
 
 end;
@@ -4139,12 +4142,11 @@ begin
   MainForm.ProduitTable.Refresh;
   MainForm.ClientTable.Refresh;
   MainForm.Bonv_ctrTable.Refresh;
-  MainForm.Bonv_ctr_listTable.Refresh;
+//  MainForm.Bonv_ctr_listTable.Refresh;
 //   MainForm.Mode_paiementTable.Refresh;
 //   MainForm.CompteTable.Refresh;
   BonCtrPListDataS.DataSet.Refresh;
 //   BonCtrF.BonCtrListDataS.DataSet.Refresh;
-  MainForm.Bonv_ctrTable.Refresh;
   Refresh;
 
   begin
@@ -4217,6 +4219,11 @@ begin
   MainForm.SQLQuery.Active := False;
   MainForm.SQLQuery.SQL.Clear;
 
+         MainForm.Bonv_ctr_listTable.IndexFieldNames:='code_bvctr';
+         MainForm.Bonv_ctr_listTable.Active:=false;
+         MainForm.Bonv_ctr_listTable.SQL.Clear;
+         MainForm.Bonv_ctr_listTable.SQL.Text:=BonCtrGestionF.BCLSQL +' ORDER BY code_bvctrl ' ;
+         MainForm.Bonv_ctr_listTable.Active:=True;
 
   MainForm.Bonv_ctr_listTable.Refresh;
   BonCtrTotalTTCLbl.Caption :=    CurrToStrF(0, ffNumber, 2);
@@ -5071,6 +5078,9 @@ begin
       ClientBonCtrGCbx.SetFocus;
     end;
 
+
+
+
   end;
 end;
 
@@ -5449,7 +5459,9 @@ end;
 procedure TBonCtrGestionF.FormPaint(Sender: TObject);
 begin
   OnActivate(Sender);
-  DataModuleF.Top5produit.Refresh;
+//  DataModuleF.Top5produit.Refresh;
+
+
 end;
 
 end.
