@@ -4734,6 +4734,7 @@ object BonCtrGestionF: TBonCtrGestionF
   end
   object BonCtrTop10produit: TDataSource
     DataSet = DataModuleF.Top5produit
+    Enabled = False
     Left = 826
     Top = 539
   end
