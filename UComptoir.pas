@@ -1175,7 +1175,7 @@ begin
 //              MainForm.Bonv_ctr_listTable.IndexFieldNames := '';
               MainForm.SQLQuery4.Active := False;
               MainForm.SQLQuery4.SQL.Clear;
-              MainForm.SQLQuery4.SQL.Text := BCLSQL +' ORDER by code_bvctrl';
+              MainForm.SQLQuery4.SQL.Text := BCLSQL +' ORDER by code_bvctrl DESC LIMIT 1';
               MainForm.SQLQuery4.Active := True;
 
 //              MainForm.SQLQuery4.Last;
@@ -1309,7 +1309,7 @@ begin
 //                  MainForm.Bonv_ctr_listTable.IndexFieldNames := '';
                   MainForm.SQLQuery4.Active := False;
                   MainForm.SQLQuery4.SQL.Clear;
-                  MainForm.SQLQuery4.SQL.Text := BCLSQL +' ORDER by code_bvctrl';
+                  MainForm.SQLQuery4.SQL.Text := BCLSQL +' ORDER by code_bvctrl DESC LIMIT 1';
                   MainForm.SQLQuery4.Active := True;
 
 //                  MainForm.SQLQuery4.Last;
@@ -1402,7 +1402,7 @@ begin
 //                  MainForm.Bonv_ctr_listTable.IndexFieldNames := '';
                   MainForm.SQLQuery4.Active := False;
                   MainForm.SQLQuery4.SQL.Clear;
-                  MainForm.SQLQuery4.SQL.Text := BCLSQL +' ORDER by code_bvctrl';
+                  MainForm.SQLQuery4.SQL.Text := BCLSQL +' ORDER by code_bvctrl DESC LIMIT 1';
                   MainForm.SQLQuery4.Active := True;
 
 //                  MainForm.SQLQuery4.Last;
@@ -1574,7 +1574,7 @@ begin
 //                  MainForm.Bonv_ctr_listTable.IndexFieldNames := '';
                   MainForm.SQLQuery4.Active := False;
                   MainForm.SQLQuery4.SQL.Clear;
-                  MainForm.SQLQuery4.SQL.Text := BCLSQL +' ORDER by code_bvctrl';
+                  MainForm.SQLQuery4.SQL.Text := BCLSQL +' ORDER by code_bvctrl DESC LIMIT 1';
                   MainForm.SQLQuery4.Active := True;
 
 //                  MainForm.SQLQuery4.Last;
@@ -1665,7 +1665,7 @@ begin
 //                  MainForm.Bonv_ctr_listTable.IndexFieldNames := '';
                   MainForm.SQLQuery4.Active := False;
                   MainForm.SQLQuery4.SQL.Clear;
-                  MainForm.SQLQuery4.SQL.Text := BCLSQL +' ORDER by code_bvctrl';
+                  MainForm.SQLQuery4.SQL.Text := BCLSQL +' ORDER by code_bvctrl DESC LIMIT 1';
                   MainForm.SQLQuery4.Active := True;
 
 //                  MainForm.SQLQuery4.Last;
@@ -2362,7 +2362,7 @@ begin
       MainForm.Bonv_ctr_listTable.IndexFieldNames := '';
       MainForm.SQLQuery.Active := False;
       MainForm.SQLQuery.SQL.Clear;
-      MainForm.SQLQuery.SQL.Text := BCLSQL +' ORDER by code_bvctrl';
+      MainForm.SQLQuery.SQL.Text := BCLSQL +' ORDER by code_bvctrl DESC LIMIT 1';
       MainForm.SQLQuery.Active := True;
 
       MainForm.SQLQuery.Last;
@@ -2957,6 +2957,14 @@ end;
 
 procedure TBonCtrGestionF.loadData();
 begin
+
+    ///========Here we make sure the opend bon is the picked in bon list table----
+         MainForm.Bonv_ctr_listTable.IndexFieldNames:='code_bvctr';
+         MainForm.Bonv_ctr_listTable.Active:=false;
+         MainForm.Bonv_ctr_listTable.SQL.Clear;
+         MainForm.Bonv_ctr_listTable.SQL.Text:=BonCtrGestionF.BCLSQL +' ORDER BY code_bvctrl ' ;
+         MainForm.Bonv_ctr_listTable.Active:=True;
+  ///========Here we make sure the opend bon is the picked in bon list table---
 
   MainForm.Bonv_ctrTable.Refresh;
   MainForm.Bonv_ctr_listTable.Refresh;
@@ -4219,11 +4227,13 @@ begin
   MainForm.SQLQuery.Active := False;
   MainForm.SQLQuery.SQL.Clear;
 
+  ///========Here we make sure the opend bon is the picked in bon list table----
          MainForm.Bonv_ctr_listTable.IndexFieldNames:='code_bvctr';
          MainForm.Bonv_ctr_listTable.Active:=false;
          MainForm.Bonv_ctr_listTable.SQL.Clear;
          MainForm.Bonv_ctr_listTable.SQL.Text:=BonCtrGestionF.BCLSQL +' ORDER BY code_bvctrl ' ;
          MainForm.Bonv_ctr_listTable.Active:=True;
+  ///========Here we make sure the opend bon is the picked in bon list table----
 
   MainForm.Bonv_ctr_listTable.Refresh;
   BonCtrTotalTTCLbl.Caption :=    CurrToStrF(0, ffNumber, 2);
@@ -5202,7 +5212,7 @@ begin
       MainForm.Bonv_ctr_listTable.IndexFieldNames := '';
       MainForm.SQLQuery.Active := False;
       MainForm.SQLQuery.SQL.Clear;
-      MainForm.SQLQuery.SQL.Text := 'SELECT code_bvctrl FROM bonv_ctr_list ORDER by code_bvctrl';
+      MainForm.SQLQuery.SQL.Text := 'SELECT code_bvctrl FROM bonv_ctr_list ORDER by code_bvctrl DESC LIMIT 1';
       MainForm.SQLQuery.Active := True;
 
       MainForm.SQLQuery.Last;
