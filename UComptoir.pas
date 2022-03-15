@@ -934,16 +934,16 @@ begin
 //     NChequeBonCtrGCbx.Clear;
   end;
 
-  MainForm.ProduitTable.Refresh;
-  MainForm.ClientTable.Refresh;
-  MainForm.Bonv_ctrTable.Refresh;
+//  MainForm.ProduitTable.Refresh;
+//  MainForm.ClientTable.Refresh;
+//  MainForm.Bonv_ctrTable.Refresh;
 //  MainForm.Bonv_ctr_listTable.Refresh;
 //   MainForm.Mode_paiementTable.Refresh;
 //   MainForm.CompteTable.Refresh;
   BonCtrPListDataS.DataSet.Refresh;
 //   BonCtrF.BonCtrListDataS.DataSet.Refresh;
   MainForm.Bonv_ctrTable.Refresh;
-  Refresh;
+//  Refresh;
 
   begin
     EnableBonCtr;
@@ -3263,9 +3263,9 @@ begin
  //----------------------------------------
 
   begin
-    MainForm.ProduitTable.Active := False;
-    MainForm.ProduitTable.SQL.Clear;
-    MainForm.ProduitTable.SQL.Text := 'SELECT *, '
+    MainForm.SQLQuery4.Active := False;
+    MainForm.SQLQuery4.SQL.Clear;
+    MainForm.SQLQuery4.SQL.Text := 'SELECT *, '
     +' ((prixht_p * tva_p)/100+ prixht_p ) AS PrixATTC, '
     +' ((prixvd_p * tva_p)/100+ prixvd_p ) AS PrixVTTCD, '
     +' ((prixvr_p * tva_p)/100+ prixvr_p ) AS PrixVTTCR, '
@@ -3275,18 +3275,19 @@ begin
     +' (qut_p + qutini_p ) AS QutDispo, '
     +' ((qut_p + qutini_p) * prixht_p ) AS ValueStock '
     +' FROM produit ';
-    MainForm.ProduitTable.Active := True;
+    MainForm.SQLQuery4.Active := True;
     Mainform.Sqlquery.Active := False;
     Mainform.Sqlquery.Sql.Clear;
-    Mainform.Sqlquery.Sql.Text := 'SELECT code_bvctrl,code_p,  qut_p, cond_p , prixvd_p FROM bonv_ctr_list WHERE code_bvctr =  ' + IntToStr(MainForm.Bonv_ctrTable.FieldValues['code_bvctr']) + 'GROUP BY code_bvctrl, code_p, qut_p, cond_p,prixvd_p ';
+    Mainform.Sqlquery.Sql.Text := 'SELECT code_bvctrl,code_p,  qut_p, cond_p , prixvd_p FROM bonv_ctr_list WHERE code_bvctr =  '+
+      IntToStr(MainForm.Bonv_ctrTable.FieldValues['code_bvctr']) + 'GROUP BY code_bvctrl, code_p, qut_p, cond_p,prixvd_p ';
     MainForm.SQLQuery.Active := True;
     MainForm.SQLQuery.First;
     while not (MainForm.SQLQuery.Eof) do
     begin
-      MainForm.ProduitTable.DisableControls;
-      MainForm.ProduitTable.Active := False;
-      MainForm.ProduitTable.SQL.Clear;
-      MainForm.ProduitTable.SQL.Text := 'SELECT *, '
+//      MainForm.ProduitTable.DisableControls;
+      MainForm.SQLQuery4.Active := False;
+      MainForm.SQLQuery4.SQL.Clear;
+      MainForm.SQLQuery4.SQL.Text := 'SELECT *, '
       +' ((prixht_p * tva_p)/100+ prixht_p ) AS PrixATTC, '
       +' ((prixvd_p * tva_p)/100+ prixvd_p ) AS PrixVTTCD, '
       +' ((prixvr_p * tva_p)/100+ prixvr_p ) AS PrixVTTCR, '
@@ -3296,22 +3297,23 @@ begin
       +' (qut_p + qutini_p ) AS QutDispo, '
       +' ((qut_p + qutini_p) * prixht_p ) AS ValueStock '
       +' FROM produit WHERE code_p = ' + QuotedStr(MainForm.SQLQuery.FieldValues['code_p']);
-      MainForm.ProduitTable.Active := True;
-      MainForm.ProduitTable.Edit;
-      MainForm.ProduitTable.FieldValues['qut_p'] := (MainForm.ProduitTable.FieldValues['qut_p'] + ((MainForm.SQLQuery.FieldValues['qut_p']) * ((MainForm.SQLQuery.FieldValues['cond_p']))));
-      MainForm.ProduitTable.FieldValues['prixvd_p'] := MainForm.SQLQuery.FieldValues['prixvd_p'];
-      MainForm.ProduitTable.Post;
+      MainForm.SQLQuery4.Active := True;
+      MainForm.SQLQuery4.Edit;
+      MainForm.SQLQuery4.FieldValues['qut_p'] := (MainForm.SQLQuery4.FieldValues['qut_p'] + ((MainForm.SQLQuery.FieldValues['qut_p']) * ((MainForm.SQLQuery.FieldValues['cond_p']))));
+      MainForm.SQLQuery4.FieldValues['prixvd_p'] := MainForm.SQLQuery.FieldValues['prixvd_p'];
+      MainForm.SQLQuery4.Post;
       MainForm.SQLQuery.Next;
     end;
 
-    MainForm.ProduitTable.Active := False;
-    MainForm.ProduitTable.SQL.Clear;
-    MainForm.ProduitTable.SQL.Text := 'SELECT * FROM produit ';
-    MainForm.ProduitTable.Active := True;
-    MainForm.ProduitTable.EnableControls;
+    MainForm.SQLQuery4.Active := False;
+    MainForm.SQLQuery4.SQL.Clear;
+//    MainForm.ProduitTable.SQL.Text := 'SELECT * FROM produit ';
+//    MainForm.ProduitTable.Active := True;
+//    MainForm.ProduitTable.EnableControls;
     MainForm.SQLQuery.Active := False;
     MainForm.SQLQuery.SQL.Clear;
     MainForm.Bonv_ctrTable.Refresh;
+    MainForm.ProduitTable.Refresh;
 
   end;
 
@@ -3454,30 +3456,36 @@ begin
       if Tag = 0 then
       begin
 
-        if not (MainForm.RegclientTable.IsEmpty) then
+        MainForm.SQLQuery4.Active:=false;
+        MainForm.SQLQuery4.SQL.Clear;
+        MainForm.SQLQuery4.SQL.Text:='Select * from regclient ORDER BY code_rc'  ;
+        MainForm.SQLQuery4.Active:=True;
+
+
+        if not (MainForm.SQLQuery4.IsEmpty) then
         begin
-          MainForm.RegclientTable.Last;
-          CodeRF := MainForm.RegclientTable.FieldValues['code_rc'] + 1;
+          MainForm.SQLQuery4.Last;
+          CodeRF := MainForm.SQLQuery4.FieldValues['code_rc'] + 1;
         end
         else
         begin
           CodeRF := 1;
         end;
 
-        MainForm.RegclientTable.Append;
-        MainForm.RegclientTable.FieldValues['code_rc'] := CodeRF;
-        MainForm.RegclientTable.FieldValues['code_bvctr'] := MainForm.Bonv_ctrTable.FieldValues['code_bvctr'];
-        MainForm.RegclientTable.FieldValues['nom_rc'] := NumBonCtrGEdt.Caption;
-        MainForm.RegclientTable.FieldValues['code_c'] := MainForm.ClientTable.FieldByName('code_c').AsInteger;
-        MainForm.RegclientTable.FieldValues['date_rc'] := DateOf(Today);
-        MainForm.RegclientTable.FieldValues['time_rc'] := TimeOf(Now);
-        MainForm.RegclientTable.FieldValues['code_mdpai'] := MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
-        MainForm.RegclientTable.FieldValues['code_cmpt'] := MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
+        MainForm.SQLQuery4.Append;
+        MainForm.SQLQuery4.FieldValues['code_rc'] := CodeRF;
+        MainForm.SQLQuery4.FieldValues['code_bvctr'] := MainForm.Bonv_ctrTable.FieldValues['code_bvctr'];
+        MainForm.SQLQuery4.FieldValues['nom_rc'] := NumBonCtrGEdt.Caption;
+        MainForm.SQLQuery4.FieldValues['code_c'] := MainForm.ClientTable.FieldByName('code_c').AsInteger;
+        MainForm.SQLQuery4.FieldValues['date_rc'] := DateOf(Today);
+        MainForm.SQLQuery4.FieldValues['time_rc'] := TimeOf(Now);
+        MainForm.SQLQuery4.FieldValues['code_mdpai'] := MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
+        MainForm.SQLQuery4.FieldValues['code_cmpt'] := MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
 //            MainForm.RegclientTable.FieldValues['obser_rc']:= ObserBonCtrGMem.Text;
 //            MainForm.RegclientTable.FieldValues['num_cheque_rc']:= NChequeBonCtrGCbx.Text;
-        MainForm.RegclientTable.FieldValues['bon_or_no_rc'] := 4;
+        MainForm.SQLQuery4.FieldValues['bon_or_no_rc'] := 4;
 
-        MainForm.RegclientTable.FieldByName('montver_rc').AsCurrency := StrToCurr(StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
+        MainForm.SQLQuery4.FieldByName('montver_rc').AsCurrency := StrToCurr(StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
 
 //            if (LowerCase(BonCtrGestionF.ModePaieBonCtrGCbx.Text)='esp�ce') OR (LowerCase(ModePaieBonCtrGCbx.Text)='espece') then
 //            begin
@@ -3493,32 +3501,32 @@ begin
 //             MainForm.RegclientTable.FieldValues['code_mdpai']:=3 ;
 //            end;
 
-        MainForm.RegclientTable.Post;
+        MainForm.SQLQuery4.Post;
         MainForm.RegclientTable.Refresh;
 
       end
       else
       begin
 
-        MainForm.RegclientTable.DisableControls;
-        MainForm.RegclientTable.Active := false;
-        MainForm.RegclientTable.SQL.Clear;
-        MainForm.RegclientTable.SQL.Text := 'SELECT * FROM regclient WHERE code_bvctr =' + IntToStr(MainForm.Bonv_ctrTable.FieldValues['code_bvctr']);
-        MainForm.RegclientTable.Active := True;
+//        MainForm.SQLQuery4.DisableControls;
+        MainForm.SQLQuery4.Active := false;
+        MainForm.SQLQuery4.SQL.Clear;
+        MainForm.SQLQuery4.SQL.Text := 'SELECT * FROM regclient WHERE code_bvctr =' + IntToStr(MainForm.Bonv_ctrTable.FieldValues['code_bvctr']);
+        MainForm.SQLQuery4.Active := True;
 
-        MainForm.RegclientTable.Edit;
-        MainForm.RegclientTable.FieldValues['code_bvctr'] := MainForm.Bonv_ctrTable.FieldValues['code_bvctr'];
-        MainForm.RegclientTable.FieldValues['nom_rc'] := NumBonCtrGEdt.Caption;
-        MainForm.RegclientTable.FieldValues['code_c'] := MainForm.ClientTable.FieldByName('code_c').AsInteger;
-        MainForm.RegclientTable.FieldValues['date_rc'] := DateOf(Today);
-        MainForm.RegclientTable.FieldValues['time_rc'] := TimeOf(Now);
-        MainForm.RegclientTable.FieldValues['code_mdpai'] := MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
-        MainForm.RegclientTable.FieldValues['code_cmpt'] := MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
+        MainForm.SQLQuery4.Edit;
+        MainForm.SQLQuery4.FieldValues['code_bvctr'] := MainForm.Bonv_ctrTable.FieldValues['code_bvctr'];
+        MainForm.SQLQuery4.FieldValues['nom_rc'] := NumBonCtrGEdt.Caption;
+        MainForm.SQLQuery4.FieldValues['code_c'] := MainForm.ClientTable.FieldByName('code_c').AsInteger;
+        MainForm.SQLQuery4.FieldValues['date_rc'] := DateOf(Today);
+        MainForm.SQLQuery4.FieldValues['time_rc'] := TimeOf(Now);
+        MainForm.SQLQuery4.FieldValues['code_mdpai'] := MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
+        MainForm.SQLQuery4.FieldValues['code_cmpt'] := MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
 //                  MainForm.RegclientTable.FieldValues['obser_rc']:= ObserBonLivGMem.Text;
 //                  MainForm.RegclientTable.FieldValues['num_cheque_rc']:= NChequeBonLivGCbx.Text;
-        MainForm.RegclientTable.FieldValues['bon_or_no_rc'] := 4;
+        MainForm.SQLQuery4.FieldValues['bon_or_no_rc'] := 4;
 
-        MainForm.RegclientTable.FieldByName('montver_rc').AsCurrency := StrToCurr(StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
+        MainForm.SQLQuery4.FieldByName('montver_rc').AsCurrency := StrToCurr(StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
 
 //                  if (LowerCase(ModePaieBonCtrGCbx.Text)='esp�ce') OR (LowerCase(ModePaieBonCtrGCbx.Text)='espece') then
 //                  begin
@@ -3534,14 +3542,14 @@ begin
 //                   MainForm.RegclientTable.FieldValues['code_mdpai']:=3 ;
 //                  end;
 
-        MainForm.RegclientTable.Post;
+        MainForm.SQLQuery4.Post;
         MainForm.RegclientTable.Refresh;
 
-        MainForm.RegclientTable.Active := false;
-        MainForm.RegclientTable.SQL.Clear;
-        MainForm.RegclientTable.SQL.Text := 'SELECT * FROM regclient ';
-        MainForm.RegclientTable.Active := True;
-        MainForm.RegclientTable.EnableControls;
+        MainForm.SQLQuery4.Active := false;
+        MainForm.SQLQuery4.SQL.Clear;
+//        MainForm.RegclientTable.SQL.Text := 'SELECT * FROM regclient ';
+//        MainForm.RegclientTable.Active := True;
+//        MainForm.RegclientTable.EnableControls;
 
       end;
 
@@ -3567,35 +3575,35 @@ begin
 
       if Tag = 0 then
       begin
-        MainForm.Opt_cas_bnk_CaisseTable.DisableControls;
-        MainForm.Opt_cas_bnk_CaisseTable.Active := false;
-        MainForm.Opt_cas_bnk_CaisseTable.SQL.Clear;
-        MainForm.Opt_cas_bnk_CaisseTable.SQL.Text := 'SELECT * FROM opt_cas_bnk';
-        MainForm.Opt_cas_bnk_CaisseTable.Active := True;
+        MainForm.SQLQuery4.DisableControls;
+        MainForm.SQLQuery4.Active := false;
+        MainForm.SQLQuery4.SQL.Clear;
+        MainForm.SQLQuery4.SQL.Text := 'SELECT * FROM opt_cas_bnk';
+        MainForm.SQLQuery4.Active := True;
 
-        if not (MainForm.Opt_cas_bnk_CaisseTable.IsEmpty) then
+        if not (MainForm.SQLQuery4.IsEmpty) then
         begin
-          MainForm.Opt_cas_bnk_CaisseTable.Last;
-          CodeOCB := MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ocb'] + 1;
+          MainForm.SQLQuery4.Last;
+          CodeOCB := MainForm.SQLQuery4.FieldValues['code_ocb'] + 1;
         end
         else
         begin
           CodeOCB := 1;
         end;
 
-        MainForm.Opt_cas_bnk_CaisseTable.Append;
-        MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ocb'] := CodeOCB;
-        MainForm.Opt_cas_bnk_CaisseTable.FieldValues['date_ocb'] := DateOf(Today);
-        MainForm.Opt_cas_bnk_CaisseTable.FieldValues['time_ocb'] := TimeOf(Now);
+        MainForm.SQLQuery4.Append;
+        MainForm.SQLQuery4.FieldValues['code_ocb'] := CodeOCB;
+        MainForm.SQLQuery4.FieldValues['date_ocb'] := DateOf(Today);
+        MainForm.SQLQuery4.FieldValues['time_ocb'] := TimeOf(Now);
         ;
-        MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nom_ocb'] := 'Vente au Comptoir N� ' + NumBonCtrGEdt.Caption;
-        MainForm.Opt_cas_bnk_CaisseTable.FieldValues['third_ocb'] := ClientBonCtrGCbx.Text;
-        MainForm.Opt_cas_bnk_CaisseTable.FieldValues['encaiss_ocb'] := StrToCurr(StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
+        MainForm.SQLQuery4.FieldValues['nom_ocb'] := 'Vente au Comptoir N� ' + NumBonCtrGEdt.Caption;
+        MainForm.SQLQuery4.FieldValues['third_ocb'] := ClientBonCtrGCbx.Text;
+        MainForm.SQLQuery4.FieldValues['encaiss_ocb'] := StrToCurr(StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
             //        MainForm.Opt_cas_bnk_CaisseTable.FieldValues['decaiss_ocb']:= ;
 
         //             if (LowerCase(ModePaieBonCtrGCbx.Text)='esp�ce') OR (LowerCase(ModePaieBonCtrGCbx.Text)='espece') then
         //            begin
-        MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai'] := 1;
+        MainForm.SQLQuery4.FieldValues['code_mdpai'] := 1;
         //            end;
         //             if (LowerCase(ModePaieBonCtrGCbx.Text)='ch�que') OR (LowerCase(ModePaieBonCtrGCbx.Text)='cheque') then
         //            begin
@@ -3607,42 +3615,42 @@ begin
         //             MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=3 ;
         //            end;
 
-        MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_cmpt'] := MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
-        MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nature_ocb'] := MainForm.CompteTable.FieldByName('nature_cmpt').AsBoolean;
-        MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ur'] := StrToInt(MainForm.UserIDLbl.Caption);
-        MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_bvctr'] := MainForm.Bonv_ctrTable.FieldValues['code_bvctr'];
+        MainForm.SQLQuery4.FieldValues['code_cmpt'] := MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
+        MainForm.SQLQuery4.FieldValues['nature_ocb'] := MainForm.CompteTable.FieldByName('nature_cmpt').AsBoolean;
+        MainForm.SQLQuery4.FieldValues['code_ur'] := StrToInt(MainForm.UserIDLbl.Caption);
+        MainForm.SQLQuery4.FieldValues['code_bvctr'] := MainForm.Bonv_ctrTable.FieldValues['code_bvctr'];
 
-        MainForm.Opt_cas_bnk_CaisseTable.Post;
+        MainForm.SQLQuery4.Post;
         MainForm.Opt_cas_bnk_CaisseTable.Refresh;
         MainForm.Opt_cas_bnk_BankTable.Refresh;
 
-        MainForm.Opt_cas_bnk_CaisseTable.Active := false;
-        MainForm.Opt_cas_bnk_CaisseTable.SQL.Clear;
-        MainForm.Opt_cas_bnk_CaisseTable.SQL.Text := 'SELECT * FROM opt_cas_bnk where nature_ocb = false';
-        MainForm.Opt_cas_bnk_CaisseTable.Active := True;
-        MainForm.Opt_cas_bnk_CaisseTable.EnableControls;
+        MainForm.SQLQuery4.Active := false;
+        MainForm.SQLQuery4.SQL.Clear;
+//        MainForm.Opt_cas_bnk_CaisseTable.SQL.Text := 'SELECT * FROM opt_cas_bnk where nature_ocb = false';
+//        MainForm.Opt_cas_bnk_CaisseTable.Active := True;
+//        MainForm.Opt_cas_bnk_CaisseTable.EnableControls;
 
       end
       else
       begin
-        MainForm.Opt_cas_bnk_CaisseTable.DisableControls;
-        MainForm.Opt_cas_bnk_CaisseTable.Active := false;
-        MainForm.Opt_cas_bnk_CaisseTable.SQL.Clear;
-        MainForm.Opt_cas_bnk_CaisseTable.SQL.Text := 'SELECT * FROM opt_cas_bnk WHERE code_bvctr =' + IntToStr(MainForm.Bonv_ctrTable.FieldValues['code_bvctr']);
-        MainForm.Opt_cas_bnk_CaisseTable.Active := True;
+//        MainForm.Opt_cas_bnk_CaisseTable.DisableControls;
+        MainForm.SQLQuery4.Active := false;
+        MainForm.SQLQuery4.SQL.Clear;
+        MainForm.SQLQuery4.SQL.Text := 'SELECT * FROM opt_cas_bnk WHERE code_bvctr =' + IntToStr(MainForm.Bonv_ctrTable.FieldValues['code_bvctr']);
+        MainForm.SQLQuery4.Active := True;
 
-        MainForm.Opt_cas_bnk_CaisseTable.Edit;
-        MainForm.Opt_cas_bnk_CaisseTable.FieldValues['date_ocb'] := DateOf(Today);
-        MainForm.Opt_cas_bnk_CaisseTable.FieldValues['time_ocb'] := TimeOf(Now);
+        MainForm.SQLQuery4.Edit;
+        MainForm.SQLQuery4.FieldValues['date_ocb'] := DateOf(Today);
+        MainForm.SQLQuery4.FieldValues['time_ocb'] := TimeOf(Now);
         ;
-        MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nom_ocb'] := 'Vente au Comptoir N� ' + NumBonCtrGEdt.Caption;
-        MainForm.Opt_cas_bnk_CaisseTable.FieldValues['third_ocb'] := ClientBonCtrGCbx.Text;
-        MainForm.Opt_cas_bnk_CaisseTable.FieldValues['encaiss_ocb'] := StrToCurr(StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
+        MainForm.SQLQuery4.FieldValues['nom_ocb'] := 'Vente au Comptoir N� ' + NumBonCtrGEdt.Caption;
+        MainForm.SQLQuery4.FieldValues['third_ocb'] := ClientBonCtrGCbx.Text;
+        MainForm.SQLQuery4.FieldValues['encaiss_ocb'] := StrToCurr(StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
             //        MainForm.Opt_cas_bnk_CaisseTable.FieldValues['decaiss_ocb']:= ;
 
         //             if (LowerCase(ModePaieBonCtrGCbx.Text)='esp�ce') OR (LowerCase(ModePaieBonCtrGCbx.Text)='espece') then
         //            begin
-        MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai'] := 1;
+        MainForm.SQLQuery4.FieldValues['code_mdpai'] := 1;
         //            end;
         //             if (LowerCase(ModePaieBonCtrGCbx.Text)='ch�que') OR (LowerCase(ModePaieBonCtrGCbx.Text)='cheque') then
         //            begin
@@ -3654,20 +3662,20 @@ begin
         //             MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=3 ;
         //            end;
 
-        MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_cmpt'] := MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
-        MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nature_ocb'] := MainForm.CompteTable.FieldByName('nature_cmpt').AsBoolean;
-        MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ur'] := StrToInt(MainForm.UserIDLbl.Caption);
-        MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_bvctr'] := MainForm.Bonv_ctrTable.FieldValues['code_bvctr'];
+        MainForm.SQLQuery4.FieldValues['code_cmpt'] := MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
+        MainForm.SQLQuery4.FieldValues['nature_ocb'] := MainForm.CompteTable.FieldByName('nature_cmpt').AsBoolean;
+        MainForm.SQLQuery4.FieldValues['code_ur'] := StrToInt(MainForm.UserIDLbl.Caption);
+        MainForm.SQLQuery4.FieldValues['code_bvctr'] := MainForm.Bonv_ctrTable.FieldValues['code_bvctr'];
 
-        MainForm.Opt_cas_bnk_CaisseTable.Post;
+        MainForm.SQLQuery4.Post;
         MainForm.Opt_cas_bnk_CaisseTable.Refresh;
         MainForm.Opt_cas_bnk_BankTable.Refresh;
 
-        MainForm.Opt_cas_bnk_CaisseTable.Active := false;
-        MainForm.Opt_cas_bnk_CaisseTable.SQL.Clear;
-        MainForm.Opt_cas_bnk_CaisseTable.SQL.Text := 'SELECT * FROM opt_cas_bnk where nature_ocb = false';
-        MainForm.Opt_cas_bnk_CaisseTable.Active := True;
-        MainForm.Opt_cas_bnk_CaisseTable.EnableControls;
+        MainForm.SQLQuery4.Active := false;
+        MainForm.SQLQuery4.SQL.Clear;
+//        MainForm.Opt_cas_bnk_CaisseTable.SQL.Text := 'SELECT * FROM opt_cas_bnk where nature_ocb = false';
+//        MainForm.Opt_cas_bnk_CaisseTable.Active := True;
+//        MainForm.Opt_cas_bnk_CaisseTable.EnableControls;
       end;
 
     end;
@@ -4744,9 +4752,11 @@ begin
       begin
         Mainform.Sqlquery.Active := False;
         Mainform.Sqlquery.Sql.Clear;
-        Mainform.Sqlquery.Sql.Text := 'SELECT code_bvctrl,code_p,  qut_p, cond_p , prixvd_p,tva_p,code_barec FROM bonv_ctr_list WHERE code_bvctr =  ' + IntToStr(MainForm.Bonv_ctrTable.FieldValues['code_bvctr']) + 'GROUP BY code_bvctrl, code_p, qut_p, cond_p,prixvd_p,tva_p,code_barec ';
+        Mainform.Sqlquery.Sql.Text := 'SELECT code_bvctrl,code_p,  qut_p, cond_p , prixvd_p,tva_p,code_barec FROM bonv_ctr_list WHERE code_bvctr =  '+
+          IntToStr(MainForm.Bonv_ctrTable.FieldValues['code_bvctr']) + 'GROUP BY code_bvctrl, code_p, qut_p, cond_p,prixvd_p,tva_p,code_barec ';
         MainForm.SQLQuery.Active := True;
         MainForm.SQLQuery.First;
+
         while not (MainForm.SQLQuery.Eof) do
         begin
           MainForm.SQLQuery3.Active := False;
@@ -4764,12 +4774,14 @@ begin
 
           Mainform.FDQuery2.Active := False;
           Mainform.FDQuery2.Sql.Clear;
-          Mainform.FDQuery2.Sql.Text := 'SELECT code_barec, code_p,qutinstock_p FROM bona_rec_list  WHERE code_barec =' + QuotedStr(MainForm.SQLQuery.FieldValues['code_barec']);
+          Mainform.FDQuery2.Sql.Text := 'SELECT code_barec, code_p,qutinstock_p FROM bona_rec_list  WHERE code_barec ='+
+            QuotedStr(MainForm.SQLQuery.FieldValues['code_barec']);
           MainForm.FDQuery2.Active := True;
           if not (MainForm.FDQuery2.IsEmpty) then
           begin
             MainForm.FDQuery2.Edit;
-            MainForm.FDQuery2.FieldValues['qutinstock_p'] := (MainForm.FDQuery2.FieldValues['qutinstock_p'] - ((MainForm.SQLQuery.FieldValues['qut_p']) * ((MainForm.SQLQuery.FieldValues['cond_p']))));
+            MainForm.FDQuery2.FieldValues['qutinstock_p'] :=
+              (MainForm.FDQuery2.FieldValues['qutinstock_p'] - ((MainForm.SQLQuery.FieldValues['qut_p']) * ((MainForm.SQLQuery.FieldValues['cond_p']))));
             MainForm.FDQuery2.Post;
 
           end;
@@ -4829,105 +4841,110 @@ begin
           if Tag = 0 then
           begin
 
-            if not (MainForm.RegclientTable.IsEmpty) then
+              MainForm.SQLQuery4.Active := false;
+              MainForm.SQLQuery4.SQL.Clear;
+              MainForm.SQLQuery4.SQL.Text := 'SELECT * FROM regclient ';
+              MainForm.SQLQuery4.Active := True;
+
+            if not (MainForm.SQLQuery4.IsEmpty) then
             begin
-              MainForm.RegclientTable.Last;
-              CodeRF := MainForm.RegclientTable.FieldValues['code_rc'] + 1;
+              MainForm.SQLQuery4.Last;
+              CodeRF := MainForm.SQLQuery4.FieldValues['code_rc'] + 1;
             end
             else
             begin
               CodeRF := 1;
             end;
 
-            MainForm.RegclientTable.Append;
-            MainForm.RegclientTable.FieldValues['code_rc'] := CodeRF;
-            MainForm.RegclientTable.FieldValues['code_bvctr'] := MainForm.Bonv_ctrTable.FieldValues['code_bvctr'];
-            MainForm.RegclientTable.FieldValues['nom_rc'] := NumBonCtrGEdt.Caption;
-            MainForm.RegclientTable.FieldValues['code_c'] := MainForm.SQLQuery.FieldByName('code_c').AsInteger;
-            MainForm.RegclientTable.FieldValues['date_rc'] := DateBonCtrGD.DateTime;
-            MainForm.RegclientTable.FieldValues['time_rc'] := TimeOf(Now);
-            MainForm.RegclientTable.FieldValues['code_mdpai'] := MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
-            MainForm.RegclientTable.FieldValues['code_cmpt'] := MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
-            MainForm.RegclientTable.FieldValues['bon_or_no_rc'] := 4;
-            MainForm.RegclientTable.FieldValues['code_ur'] := StrToInt(MainForm.UserIDLbl.Caption);
+            MainForm.SQLQuery4.Append;
+            MainForm.SQLQuery4.FieldValues['code_rc'] := CodeRF;
+            MainForm.SQLQuery4.FieldValues['code_bvctr'] := MainForm.Bonv_ctrTable.FieldValues['code_bvctr'];
+            MainForm.SQLQuery4.FieldValues['nom_rc'] := NumBonCtrGEdt.Caption;
+            MainForm.SQLQuery4.FieldValues['code_c'] := MainForm.SQLQuery.FieldByName('code_c').AsInteger;
+            MainForm.SQLQuery4.FieldValues['date_rc'] := DateBonCtrGD.DateTime;
+            MainForm.SQLQuery4.FieldValues['time_rc'] := TimeOf(Now);
+            MainForm.SQLQuery4.FieldValues['code_mdpai'] := MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
+            MainForm.SQLQuery4.FieldValues['code_cmpt'] := MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
+            MainForm.SQLQuery4.FieldValues['bon_or_no_rc'] := 4;
+            MainForm.SQLQuery4.FieldValues['code_ur'] := StrToInt(MainForm.UserIDLbl.Caption);
 
-            MainForm.RegclientTable.FieldByName('montver_rc').AsCurrency := StrToCurr(StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
+            MainForm.SQLQuery4.FieldByName('montver_rc').AsCurrency := StrToCurr(StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
 
-            MainForm.RegclientTable.Post;
+            MainForm.SQLQuery4.Post;
             MainForm.RegclientTable.Refresh;
 
           end
           else
           begin
 
-            MainForm.RegclientTable.DisableControls;
-            MainForm.RegclientTable.Active := false;
-            MainForm.RegclientTable.SQL.Clear;
-            MainForm.RegclientTable.SQL.Text := 'SELECT * FROM regclient WHERE code_bvctr =' + IntToStr(MainForm.Bonv_ctrTable.FieldValues['code_bvctr']);
-            MainForm.RegclientTable.Active := True;
+//            MainForm.RegclientTable.DisableControls;
+            MainForm.SQLQuery4.Active := false;
+            MainForm.SQLQuery4.SQL.Clear;
+            MainForm.SQLQuery4.SQL.Text := 'SELECT * FROM regclient WHERE code_bvctr =' + IntToStr(MainForm.Bonv_ctrTable.FieldValues['code_bvctr']);
+            MainForm.SQLQuery4.Active := True;
 
-            if not (MainForm.RegclientTable.IsEmpty) then
+            if not (MainForm.SQLQuery4.IsEmpty) then
             begin
 
-              MainForm.RegclientTable.Edit;
-              MainForm.RegclientTable.FieldValues['code_bvctr'] := MainForm.Bonv_ctrTable.FieldValues['code_bvctr'];
-              MainForm.RegclientTable.FieldValues['nom_rc'] := NumBonCtrGEdt.Caption;
-              MainForm.RegclientTable.FieldValues['code_c'] := MainForm.SQLQuery.FieldByName('code_c').AsInteger;
-              MainForm.RegclientTable.FieldValues['date_rc'] := DateBonCtrGD.DateTime;
-              MainForm.RegclientTable.FieldValues['time_rc'] := TimeOf(Now);
-              MainForm.RegclientTable.FieldValues['code_mdpai'] := MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
-              MainForm.RegclientTable.FieldValues['code_cmpt'] := MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
-              MainForm.RegclientTable.FieldValues['bon_or_no_rc'] := 4;
-              MainForm.RegclientTable.FieldValues['code_ur'] := StrToInt(MainForm.UserIDLbl.Caption);
+              MainForm.SQLQuery4.Edit;
+              MainForm.SQLQuery4.FieldValues['code_bvctr'] := MainForm.Bonv_ctrTable.FieldValues['code_bvctr'];
+              MainForm.SQLQuery4.FieldValues['nom_rc'] := NumBonCtrGEdt.Caption;
+              MainForm.SQLQuery4.FieldValues['code_c'] := MainForm.SQLQuery.FieldByName('code_c').AsInteger;
+              MainForm.SQLQuery4.FieldValues['date_rc'] := DateBonCtrGD.DateTime;
+              MainForm.SQLQuery4.FieldValues['time_rc'] := TimeOf(Now);
+              MainForm.SQLQuery4.FieldValues['code_mdpai'] := MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
+              MainForm.SQLQuery4.FieldValues['code_cmpt'] := MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
+              MainForm.SQLQuery4.FieldValues['bon_or_no_rc'] := 4;
+              MainForm.SQLQuery4.FieldValues['code_ur'] := StrToInt(MainForm.UserIDLbl.Caption);
 
-              MainForm.RegclientTable.FieldByName('montver_rc').AsCurrency := StrToCurr(StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
+              MainForm.SQLQuery4.FieldByName('montver_rc').AsCurrency := StrToCurr(StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
 
-              MainForm.RegclientTable.Post;
+              MainForm.SQLQuery4.Post;
               MainForm.RegclientTable.Refresh;
 
             end
             else
             begin
 
-              MainForm.RegclientTable.Active := false;
-              MainForm.RegclientTable.SQL.Clear;
-              MainForm.RegclientTable.SQL.Text := 'SELECT * FROM regclient ';
-              MainForm.RegclientTable.Active := True;
+              MainForm.SQLQuery4.Active := false;
+              MainForm.SQLQuery4.SQL.Clear;
+              MainForm.SQLQuery4.SQL.Text := 'SELECT * FROM regclient ';
+              MainForm.SQLQuery4.Active := True;
 
-              if not (MainForm.RegclientTable.IsEmpty) then
+              if not (MainForm.SQLQuery4.IsEmpty) then
               begin
-                MainForm.RegclientTable.Last;
-                CodeRF := MainForm.RegclientTable.FieldValues['code_rc'] + 1;
+                MainForm.SQLQuery4.Last;
+                CodeRF := MainForm.SQLQuery4.FieldValues['code_rc'] + 1;
               end
               else
               begin
                 CodeRF := 1;
               end;
 
-              MainForm.RegclientTable.Append;
-              MainForm.RegclientTable.FieldValues['code_rc'] := CodeRF;
-              MainForm.RegclientTable.FieldValues['code_bvctr'] := MainForm.Bonv_ctrTable.FieldValues['code_bvctr'];
-              MainForm.RegclientTable.FieldValues['nom_rc'] := NumBonCtrGEdt.Caption;
-              MainForm.RegclientTable.FieldValues['code_c'] := MainForm.SQLQuery.FieldByName('code_c').AsInteger;
-              MainForm.RegclientTable.FieldValues['date_rc'] := DateBonCtrGD.DateTime;
-              MainForm.RegclientTable.FieldValues['time_rc'] := TimeOf(Now);
-              MainForm.RegclientTable.FieldValues['code_mdpai'] := MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
-              MainForm.RegclientTable.FieldValues['code_cmpt'] := MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
-              MainForm.RegclientTable.FieldValues['bon_or_no_rc'] := 4;
-              MainForm.RegclientTable.FieldValues['code_ur'] := StrToInt(MainForm.UserIDLbl.Caption);
+              MainForm.SQLQuery4.Append;
+              MainForm.SQLQuery4.FieldValues['code_rc'] := CodeRF;
+              MainForm.SQLQuery4.FieldValues['code_bvctr'] := MainForm.Bonv_ctrTable.FieldValues['code_bvctr'];
+              MainForm.SQLQuery4.FieldValues['nom_rc'] := NumBonCtrGEdt.Caption;
+              MainForm.SQLQuery4.FieldValues['code_c'] := MainForm.SQLQuery.FieldByName('code_c').AsInteger;
+              MainForm.SQLQuery4.FieldValues['date_rc'] := DateBonCtrGD.DateTime;
+              MainForm.SQLQuery4.FieldValues['time_rc'] := TimeOf(Now);
+              MainForm.SQLQuery4.FieldValues['code_mdpai'] := MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
+              MainForm.SQLQuery4.FieldValues['code_cmpt'] := MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
+              MainForm.SQLQuery4.FieldValues['bon_or_no_rc'] := 4;
+              MainForm.SQLQuery4.FieldValues['code_ur'] := StrToInt(MainForm.UserIDLbl.Caption);
 
-              MainForm.RegclientTable.FieldByName('montver_rc').AsCurrency := StrToCurr(StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
+              MainForm.SQLQuery4.FieldByName('montver_rc').AsCurrency := StrToCurr(StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
 
-              MainForm.RegclientTable.Post;
+              MainForm.SQLQuery4.Post;
               MainForm.RegclientTable.Refresh;
 
             end;
 
-            MainForm.RegclientTable.Active := false;
-            MainForm.RegclientTable.SQL.Clear;
-            MainForm.RegclientTable.SQL.Text := 'SELECT * FROM regclient ';
-            MainForm.RegclientTable.Active := True;
-            MainForm.RegclientTable.EnableControls;
+            MainForm.SQLQuery4.Active := false;
+            MainForm.SQLQuery4.SQL.Clear;
+//            MainForm.RegclientTable.SQL.Text := 'SELECT * FROM regclient ';
+//            MainForm.RegclientTable.Active := True;
+//            MainForm.RegclientTable.EnableControls;
           end;
         end;
     //-----------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -4940,77 +4957,77 @@ begin
 
           if Tag = 0 then
           begin
-            MainForm.Opt_cas_bnk_CaisseTable.DisableControls;
-            MainForm.Opt_cas_bnk_CaisseTable.Filtered := false;
-            MainForm.Opt_cas_bnk_CaisseTable.Active := false;
-            MainForm.Opt_cas_bnk_CaisseTable.SQL.Clear;
-            MainForm.Opt_cas_bnk_CaisseTable.SQL.Text := 'SELECT * FROM opt_cas_bnk';
-            MainForm.Opt_cas_bnk_CaisseTable.Active := True;
+//            MainForm.Opt_cas_bnk_CaisseTable.DisableControls;
+            MainForm.SQLQuery4.Filtered := false;
+            MainForm.SQLQuery4.Active := false;
+            MainForm.SQLQuery4.SQL.Clear;
+            MainForm.SQLQuery4.SQL.Text := 'SELECT * FROM opt_cas_bnk';
+            MainForm.SQLQuery4.Active := True;
 
-            if not (MainForm.Opt_cas_bnk_CaisseTable.IsEmpty) then
+            if not (MainForm.SQLQuery4.IsEmpty) then
             begin
-              MainForm.Opt_cas_bnk_CaisseTable.Last;
-              CodeOCB := MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ocb'] + 1;
+              MainForm.SQLQuery4.Last;
+              CodeOCB := MainForm.SQLQuery4.FieldValues['code_ocb'] + 1;
             end
             else
             begin
               CodeOCB := 1;
             end;
 
-            MainForm.Opt_cas_bnk_CaisseTable.Append;
-            MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ocb'] := CodeOCB;
-            MainForm.Opt_cas_bnk_CaisseTable.FieldValues['date_ocb'] := DateBonCtrGD.DateTime;
-            MainForm.Opt_cas_bnk_CaisseTable.FieldValues['time_ocb'] := TimeOf(Now);
+            MainForm.SQLQuery4.Append;
+            MainForm.SQLQuery4.FieldValues['code_ocb'] := CodeOCB;
+            MainForm.SQLQuery4.FieldValues['date_ocb'] := DateBonCtrGD.DateTime;
+            MainForm.SQLQuery4.FieldValues['time_ocb'] := TimeOf(Now);
             ;
-            MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nom_ocb'] := 'Vente au Comptoir N� ' + NumBonCtrGEdt.Caption;
-            MainForm.Opt_cas_bnk_CaisseTable.FieldValues['third_ocb'] := ClientBonCtrGCbx.Text;
-            MainForm.Opt_cas_bnk_CaisseTable.FieldValues['encaiss_ocb'] := StrToCurr(StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
+            MainForm.SQLQuery4.FieldValues['nom_ocb'] := 'Vente au Comptoir N� ' + NumBonCtrGEdt.Caption;
+            MainForm.SQLQuery4.FieldValues['third_ocb'] := ClientBonCtrGCbx.Text;
+            MainForm.SQLQuery4.FieldValues['encaiss_ocb'] := StrToCurr(StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
 
-            MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai'] := 1;
+            MainForm.SQLQuery4.FieldValues['code_mdpai'] := 1;
 
-            MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_cmpt'] := MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
-            MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nature_ocb'] := MainForm.CompteTable.FieldByName('nature_cmpt').AsBoolean;
-            MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ur'] := StrToInt(MainForm.UserIDLbl.Caption);
-            MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_bvctr'] := MainForm.Bonv_ctrTable.FieldValues['code_bvctr'];
+            MainForm.SQLQuery4.FieldValues['code_cmpt'] := MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
+            MainForm.SQLQuery4.FieldValues['nature_ocb'] := MainForm.CompteTable.FieldByName('nature_cmpt').AsBoolean;
+            MainForm.SQLQuery4.FieldValues['code_ur'] := StrToInt(MainForm.UserIDLbl.Caption);
+            MainForm.SQLQuery4.FieldValues['code_bvctr'] := MainForm.Bonv_ctrTable.FieldValues['code_bvctr'];
 
-            MainForm.Opt_cas_bnk_CaisseTable.Post;
+            MainForm.SQLQuery4.Post;
             MainForm.Opt_cas_bnk_CaisseTable.Refresh;
             MainForm.Opt_cas_bnk_BankTable.Refresh;
 
-            MainForm.Opt_cas_bnk_CaisseTable.Active := false;
-            MainForm.Opt_cas_bnk_CaisseTable.SQL.Clear;
-            MainForm.Opt_cas_bnk_CaisseTable.SQL.Text := 'SELECT * FROM opt_cas_bnk where nature_ocb = false';
-            MainForm.Opt_cas_bnk_CaisseTable.Active := True;
-            MainForm.Opt_cas_bnk_CaisseTable.EnableControls;
+            MainForm.SQLQuery4.Active := false;
+            MainForm.SQLQuery4.SQL.Clear;
+//            MainForm.Opt_cas_bnk_CaisseTable.SQL.Text := 'SELECT * FROM opt_cas_bnk where nature_ocb = false';
+//            MainForm.Opt_cas_bnk_CaisseTable.Active := True;
+//            MainForm.Opt_cas_bnk_CaisseTable.EnableControls;
 
           end
           else
           begin
-            MainForm.Opt_cas_bnk_CaisseTable.DisableControls;
-            MainForm.Opt_cas_bnk_CaisseTable.Filtered := false;
-            MainForm.Opt_cas_bnk_CaisseTable.Active := false;
-            MainForm.Opt_cas_bnk_CaisseTable.SQL.Clear;
-            MainForm.Opt_cas_bnk_CaisseTable.SQL.Text := 'SELECT * FROM opt_cas_bnk WHERE code_bvctr =' + IntToStr(MainForm.Bonv_ctrTable.FieldValues['code_bvctr']);
-            MainForm.Opt_cas_bnk_CaisseTable.Active := True;
+//            MainForm.Opt_cas_bnk_CaisseTable.DisableControls;
+            MainForm.SQLQuery4.Filtered := false;
+            MainForm.SQLQuery4.Active := false;
+            MainForm.SQLQuery4.SQL.Clear;
+            MainForm.SQLQuery4.SQL.Text := 'SELECT * FROM opt_cas_bnk WHERE code_bvctr =' + IntToStr(MainForm.Bonv_ctrTable.FieldValues['code_bvctr']);
+            MainForm.SQLQuery4.Active := True;
 
-            if not (MainForm.Opt_cas_bnk_CaisseTable.IsEmpty) then
+            if not (MainForm.SQLQuery4.IsEmpty) then
             begin
-              MainForm.Opt_cas_bnk_CaisseTable.Edit;
-              MainForm.Opt_cas_bnk_CaisseTable.FieldValues['date_ocb'] := DateBonCtrGD.DateTime;
-              MainForm.Opt_cas_bnk_CaisseTable.FieldValues['time_ocb'] := TimeOf(Now);
+              MainForm.SQLQuery4.Edit;
+              MainForm.SQLQuery4.FieldValues['date_ocb'] := DateBonCtrGD.DateTime;
+              MainForm.SQLQuery4.FieldValues['time_ocb'] := TimeOf(Now);
               ;
-              MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nom_ocb'] := 'Vente au Comptoir N� ' + NumBonCtrGEdt.Caption;
-              MainForm.Opt_cas_bnk_CaisseTable.FieldValues['third_ocb'] := ClientBonCtrGCbx.Text;
-              MainForm.Opt_cas_bnk_CaisseTable.FieldValues['encaiss_ocb'] := StrToCurr(StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
+              MainForm.SQLQuery4.FieldValues['nom_ocb'] := 'Vente au Comptoir N� ' + NumBonCtrGEdt.Caption;
+              MainForm.SQLQuery4.FieldValues['third_ocb'] := ClientBonCtrGCbx.Text;
+              MainForm.SQLQuery4.FieldValues['encaiss_ocb'] := StrToCurr(StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
 
-              MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai'] := 1;
+              MainForm.SQLQuery4.FieldValues['code_mdpai'] := 1;
 
-              MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_cmpt'] := MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
-              MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nature_ocb'] := MainForm.CompteTable.FieldByName('nature_cmpt').AsBoolean;
-              MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ur'] := StrToInt(MainForm.UserIDLbl.Caption);
-              MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_bvctr'] := MainForm.Bonv_ctrTable.FieldValues['code_bvctr'];
+              MainForm.SQLQuery4.FieldValues['code_cmpt'] := MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
+              MainForm.SQLQuery4.FieldValues['nature_ocb'] := MainForm.CompteTable.FieldByName('nature_cmpt').AsBoolean;
+              MainForm.SQLQuery4.FieldValues['code_ur'] := StrToInt(MainForm.UserIDLbl.Caption);
+              MainForm.SQLQuery4.FieldValues['code_bvctr'] := MainForm.Bonv_ctrTable.FieldValues['code_bvctr'];
 
-              MainForm.Opt_cas_bnk_CaisseTable.Post;
+              MainForm.SQLQuery4.Post;
               MainForm.Opt_cas_bnk_CaisseTable.Refresh;
               MainForm.Opt_cas_bnk_BankTable.Refresh;
 
@@ -5018,54 +5035,54 @@ begin
             else
             begin
 
-              MainForm.Opt_cas_bnk_CaisseTable.Active := false;
-              MainForm.Opt_cas_bnk_CaisseTable.Filtered := false;
-              MainForm.Opt_cas_bnk_CaisseTable.SQL.Clear;
-              MainForm.Opt_cas_bnk_CaisseTable.SQL.Text := 'SELECT * FROM opt_cas_bnk';
-              MainForm.Opt_cas_bnk_CaisseTable.Active := True;
+              MainForm.SQLQuery4.Active := false;
+              MainForm.SQLQuery4.Filtered := false;
+              MainForm.SQLQuery4.SQL.Clear;
+              MainForm.SQLQuery4.SQL.Text := 'SELECT * FROM opt_cas_bnk';
+              MainForm.SQLQuery4.Active := True;
 
-              if not (MainForm.Opt_cas_bnk_CaisseTable.IsEmpty) then
+              if not (MainForm.SQLQuery4.IsEmpty) then
               begin
-                MainForm.Opt_cas_bnk_CaisseTable.Last;
-                CodeOCB := MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ocb'] + 1;
+                MainForm.SQLQuery4.Last;
+                CodeOCB := MainForm.SQLQuery4.FieldValues['code_ocb'] + 1;
               end
               else
               begin
                 CodeOCB := 1;
               end;
 
-              MainForm.Opt_cas_bnk_CaisseTable.Append;
-              MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ocb'] := CodeOCB;
-              MainForm.Opt_cas_bnk_CaisseTable.FieldValues['date_ocb'] := DateBonCtrGD.DateTime;
-              MainForm.Opt_cas_bnk_CaisseTable.FieldValues['time_ocb'] := TimeOf(Now);
+              MainForm.SQLQuery4.Append;
+              MainForm.SQLQuery4.FieldValues['code_ocb'] := CodeOCB;
+              MainForm.SQLQuery4.FieldValues['date_ocb'] := DateBonCtrGD.DateTime;
+              MainForm.SQLQuery4.FieldValues['time_ocb'] := TimeOf(Now);
               ;
-              MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nom_ocb'] := 'Vente au Comptoir N� ' + NumBonCtrGEdt.Caption;
-              MainForm.Opt_cas_bnk_CaisseTable.FieldValues['third_ocb'] := ClientBonCtrGCbx.Text;
-              MainForm.Opt_cas_bnk_CaisseTable.FieldValues['encaiss_ocb'] := StrToCurr(StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
+              MainForm.SQLQuery4.FieldValues['nom_ocb'] := 'Vente au Comptoir N� ' + NumBonCtrGEdt.Caption;
+              MainForm.SQLQuery4.FieldValues['third_ocb'] := ClientBonCtrGCbx.Text;
+              MainForm.SQLQuery4.FieldValues['encaiss_ocb'] := StrToCurr(StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
 
-              MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai'] := 1;
+              MainForm.SQLQuery4.FieldValues['code_mdpai'] := 1;
 
-              MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_cmpt'] := MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
-              MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nature_ocb'] := MainForm.CompteTable.FieldByName('nature_cmpt').AsBoolean;
-              MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ur'] := StrToInt(MainForm.UserIDLbl.Caption);
-              MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_bvctr'] := MainForm.Bonv_ctrTable.FieldValues['code_bvctr'];
+              MainForm.SQLQuery4.FieldValues['code_cmpt'] := MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
+              MainForm.SQLQuery4.FieldValues['nature_ocb'] := MainForm.CompteTable.FieldByName('nature_cmpt').AsBoolean;
+              MainForm.SQLQuery4.FieldValues['code_ur'] := StrToInt(MainForm.UserIDLbl.Caption);
+              MainForm.SQLQuery4.FieldValues['code_bvctr'] := MainForm.Bonv_ctrTable.FieldValues['code_bvctr'];
 
-              MainForm.Opt_cas_bnk_CaisseTable.Post;
+              MainForm.SQLQuery4.Post;
               MainForm.Opt_cas_bnk_CaisseTable.Refresh;
               MainForm.Opt_cas_bnk_BankTable.Refresh;
 
-              MainForm.Opt_cas_bnk_CaisseTable.Active := false;
-              MainForm.Opt_cas_bnk_CaisseTable.SQL.Clear;
-              MainForm.Opt_cas_bnk_CaisseTable.SQL.Text := 'SELECT * FROM opt_cas_bnk where nature_ocb = false';
-              MainForm.Opt_cas_bnk_CaisseTable.Active := True;
+              MainForm.SQLQuery4.Active := false;
+              MainForm.SQLQuery4.SQL.Clear;
+//              MainForm.Opt_cas_bnk_CaisseTable.SQL.Text := 'SELECT * FROM opt_cas_bnk where nature_ocb = false';
+//              MainForm.Opt_cas_bnk_CaisseTable.Active := True;
             end;
 
-            MainForm.Opt_cas_bnk_CaisseTable.Active := false;
-            MainForm.Opt_cas_bnk_CaisseTable.Filtered := false;
-            MainForm.Opt_cas_bnk_CaisseTable.SQL.Clear;
-            MainForm.Opt_cas_bnk_CaisseTable.SQL.Text := 'SELECT * FROM opt_cas_bnk where nature_ocb = false';
-            MainForm.Opt_cas_bnk_CaisseTable.Active := True;
-            MainForm.Opt_cas_bnk_CaisseTable.EnableControls;
+            MainForm.SQLQuery4.Active := false;
+            MainForm.SQLQuery4.Filtered := false;
+            MainForm.SQLQuery4.SQL.Clear;
+//            MainForm.Opt_cas_bnk_CaisseTable.SQL.Text := 'SELECT * FROM opt_cas_bnk where nature_ocb = false';
+//            MainForm.Opt_cas_bnk_CaisseTable.Active := True;
+//            MainForm.Opt_cas_bnk_CaisseTable.EnableControls;
           end;
         end;
       end;
