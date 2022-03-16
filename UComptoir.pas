@@ -3341,9 +3341,9 @@ begin
 
 //--- this is for adding to the priduit
   begin
-    MainForm.ProduitTable.Active := False;
-    MainForm.ProduitTable.SQL.Clear;
-    MainForm.ProduitTable.SQL.Text := 'SELECT *, '
+    MainForm.SQLQuery3.Active := False;
+    MainForm.SQLQuery3.SQL.Clear;
+    MainForm.SQLQuery3.SQL.Text := 'SELECT *, '
     +' ((prixht_p * tva_p)/100+ prixht_p ) AS PrixATTC, '
     +' ((prixvd_p * tva_p)/100+ prixvd_p ) AS PrixVTTCD, '
     +' ((prixvr_p * tva_p)/100+ prixvr_p ) AS PrixVTTCR, '
@@ -3353,7 +3353,7 @@ begin
     +' (qut_p + qutini_p ) AS QutDispo, '
     +' ((qut_p + qutini_p) * prixht_p ) AS ValueStock '
     +' FROM produit ';
-    MainForm.ProduitTable.Active := True;
+    MainForm.SQLQuery3.Active := True;
     Mainform.Sqlquery.Active := False;
     Mainform.Sqlquery.Sql.Clear;
     Mainform.Sqlquery.Sql.Text := 'SELECT code_bvctrl,code_p,  qut_p, cond_p , prixvd_p FROM bonv_ctr_list WHERE code_bvctr =  ' + IntToStr(MainForm.Bonv_ctrTable.FieldValues['code_bvctr']) + 'GROUP BY code_bvctrl, code_p, qut_p, cond_p,prixvd_p ';
@@ -3361,10 +3361,10 @@ begin
     MainForm.SQLQuery.First;
     while not (MainForm.SQLQuery.Eof) do
     begin
-      MainForm.ProduitTable.DisableControls;
-      MainForm.ProduitTable.Active := False;
-      MainForm.ProduitTable.SQL.Clear;
-      MainForm.ProduitTable.SQL.Text := 'SELECT *, '
+//      MainForm.ProduitTable.DisableControls;
+      MainForm.SQLQuery3.Active := False;
+      MainForm.SQLQuery3.SQL.Clear;
+      MainForm.SQLQuery3.SQL.Text := 'SELECT *, '
       +' ((prixht_p * tva_p)/100+ prixht_p ) AS PrixATTC, '
       +' ((prixvd_p * tva_p)/100+ prixvd_p ) AS PrixVTTCD, '
       +' ((prixvr_p * tva_p)/100+ prixvr_p ) AS PrixVTTCR, '
@@ -3374,19 +3374,20 @@ begin
       +' (qut_p + qutini_p ) AS QutDispo, '
       +' ((qut_p + qutini_p) * prixht_p ) AS ValueStock '
       +' FROM produit WHERE code_p = ' + QuotedStr(MainForm.SQLQuery.FieldValues['code_p']);
-      MainForm.ProduitTable.Active := True;
-      MainForm.ProduitTable.Edit;
-      MainForm.ProduitTable.FieldValues['qut_p'] := (MainForm.ProduitTable.FieldValues['qut_p'] - ((MainForm.SQLQuery.FieldValues['qut_p']) * ((MainForm.SQLQuery.FieldValues['cond_p']))));
-      MainForm.ProduitTable.FieldValues['prixvd_p'] := MainForm.SQLQuery.FieldValues['prixvd_p'];
-      MainForm.ProduitTable.Post;
+      MainForm.SQLQuery3.Active := True;
+      MainForm.SQLQuery3.Edit;
+      MainForm.SQLQuery3.FieldValues['qut_p'] := (MainForm.SQLQuery3.FieldValues['qut_p'] - ((MainForm.SQLQuery.FieldValues['qut_p']) * ((MainForm.SQLQuery.FieldValues['cond_p']))));
+      MainForm.SQLQuery3.FieldValues['prixvd_p'] := MainForm.SQLQuery.FieldValues['prixvd_p'];
+      MainForm.SQLQuery3.Post;
       MainForm.SQLQuery.Next;
     end;
 
-    MainForm.ProduitTable.Active := False;
-    MainForm.ProduitTable.SQL.Clear;
-    MainForm.ProduitTable.SQL.Text := 'SELECT * FROM produit ';
-    MainForm.ProduitTable.Active := True;
-    MainForm.ProduitTable.EnableControls;
+    MainForm.SQLQuery3.Active := False;
+    MainForm.SQLQuery3.SQL.Clear;
+    MainForm.ProduitTable.Refresh;
+//    MainForm.ProduitTable.SQL.Text := 'SELECT * FROM produit ';
+//    MainForm.ProduitTable.Active := True;
+//    MainForm.ProduitTable.EnableControls;
     MainForm.SQLQuery.Active := False;
     MainForm.SQLQuery.SQL.Clear;
     MainForm.Bonv_ctrTable.Refresh;
@@ -3458,7 +3459,7 @@ begin
 
         MainForm.SQLQuery4.Active:=false;
         MainForm.SQLQuery4.SQL.Clear;
-        MainForm.SQLQuery4.SQL.Text:='Select * from regclient ORDER BY code_rc'  ;
+        MainForm.SQLQuery4.SQL.Text:='Select * from regclient ORDER BY code_rc DESC LIMIT 1'  ;
         MainForm.SQLQuery4.Active:=True;
 
 
@@ -3575,7 +3576,7 @@ begin
 
       if Tag = 0 then
       begin
-        MainForm.SQLQuery4.DisableControls;
+//        MainForm.Opt_cas_bnk_CaisseTable.DisableControls;
         MainForm.SQLQuery4.Active := false;
         MainForm.SQLQuery4.SQL.Clear;
         MainForm.SQLQuery4.SQL.Text := 'SELECT * FROM opt_cas_bnk';
@@ -4522,11 +4523,11 @@ begin
 
   if ClientBonCtrGCbx.Text <> 'Comptoir' then
   begin
-    MainForm.ClientTable.DisableControls;
-    MainForm.ClientTable.Active := false;
-    MainForm.ClientTable.SQL.Clear;
-    MainForm.ClientTable.SQL.Text := 'Select * FROM client WHERE LOWER(nom_c) LIKE LOWER(' + QuotedStr(ClientBonCtrGCbx.Text) + ')';
-    MainForm.ClientTable.Active := True;
+//    MainForm.ClientTable.DisableControls;
+    MainForm.SQLQuery4.Active := false;
+    MainForm.SQLQuery4.SQL.Clear;
+    MainForm.SQLQuery4.SQL.Text := 'Select * FROM client WHERE LOWER(nom_c) LIKE LOWER(' + QuotedStr(ClientBonCtrGCbx.Text) + ')';
+    MainForm.SQLQuery4.Active := True;
 
 // use this code to rest the old credit to the to the last time before he pay anything in that bon so you can aclculate again
 //  BonCtrGClientOLDCredit.Caption:=
@@ -4534,16 +4535,17 @@ begin
 
 //      if (MainForm.ClientTable.FieldByName('code_c').AsInteger <> 1) then
 //      begin
-    MainForm.ClientTable.Edit;
-    MainForm.ClientTable.FieldByName('credit_c').AsCurrency := (MainForm.ClientTable.FieldByName('credit_c').AsCurrency) - ((-1) * MainForm.Bonv_ctrTable.FieldByName('MontantRen').AsCurrency);
-    MainForm.ClientTable.Post;
+    MainForm.SQLQuery4.Edit;
+    MainForm.SQLQuery4.FieldByName('credit_c').AsCurrency := (MainForm.SQLQuery4.FieldByName('credit_c').AsCurrency) - ((-1) * MainForm.Bonv_ctrTable.FieldByName('MontantRen').AsCurrency);
+    MainForm.SQLQuery4.Post;
 //      end;
 
-    MainForm.ClientTable.Active := false;
-    MainForm.ClientTable.SQL.Clear;
-    MainForm.ClientTable.SQL.Text := 'Select * FROM client ';
-    MainForm.ClientTable.Active := True;
-    MainForm.ClientTable.EnableControls;
+    MainForm.SQLQuery4.Active := false;
+    MainForm.SQLQuery4.SQL.Clear;
+//    MainForm.ClientTable.SQL.Text := 'Select * FROM client ';
+//    MainForm.ClientTable.Active := True;
+//    MainForm.ClientTable.EnableControls;
+    MainForm.ClientTable.Refresh
   end;
 
   BonCtrRegleLbl.Caption := FloatToStrF(0, ffNumber, 14, 2);
@@ -4843,7 +4845,7 @@ begin
 
               MainForm.SQLQuery4.Active := false;
               MainForm.SQLQuery4.SQL.Clear;
-              MainForm.SQLQuery4.SQL.Text := 'SELECT * FROM regclient ';
+              MainForm.SQLQuery4.SQL.Text := 'SELECT * FROM regclient ORDER BY code_rc DESC LIMIT 1';
               MainForm.SQLQuery4.Active := True;
 
             if not (MainForm.SQLQuery4.IsEmpty) then
@@ -4908,7 +4910,7 @@ begin
 
               MainForm.SQLQuery4.Active := false;
               MainForm.SQLQuery4.SQL.Clear;
-              MainForm.SQLQuery4.SQL.Text := 'SELECT * FROM regclient ';
+              MainForm.SQLQuery4.SQL.Text := 'SELECT * FROM regclient ORDER BY code_rc DESC LIMIT 1';
               MainForm.SQLQuery4.Active := True;
 
               if not (MainForm.SQLQuery4.IsEmpty) then
@@ -5485,7 +5487,7 @@ end;
 
 procedure TBonCtrGestionF.FormPaint(Sender: TObject);
 begin
-  OnActivate(Sender);
+//  OnActivate(Sender);
 //  DataModuleF.Top5produit.Refresh;
 
 

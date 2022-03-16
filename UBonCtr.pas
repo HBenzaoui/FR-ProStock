@@ -410,10 +410,10 @@ codeCT:= 0;
               MainForm.Bonv_ctrTable.Last;
 
               codeCT := MainForm.Bonv_ctrTable.FieldByName('code_bvctr').AsInteger;
-              MainForm.SQLQuery.Active:=False;
-              MainForm.SQLQuery.SQL.Clear;
-              MainForm.SQLQuery.SQL.Text:= 'SELECT code_bvctr FROM bonv_ctr_list WHERE code_bvctr = ' + IntToStr(codeCT);
-              MainForm.SQLQuery.Active:=True;
+//              MainForm.SQLQuery.Active:=False;
+//              MainForm.SQLQuery.SQL.Clear;
+//              MainForm.SQLQuery.SQL.Text:= 'SELECT code_bvctr FROM bonv_ctr_list WHERE code_bvctr = ' + IntToStr(codeCT);
+//              MainForm.SQLQuery.Active:=True;
 //Disable this code to alway create new bon when open ctr
 //             if MainForm.SQLQuery.RecordCount <= 0 then
 //             begin
