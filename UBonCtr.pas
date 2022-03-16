@@ -462,13 +462,19 @@ BonCtrGestionF.ShowModal;
   //    end;
    MainForm.Bonv_CtrTable.Active:= False;
    MainForm.Bonv_CtrTable.SQL.clear;
-   
+
    if Assigned(BonCtrF) then
    begin
      MainForm.Bonv_ctrTable.SQL.Text:= BCSQL+' WHERE date_bvctr BETWEEN '''+(DateToStr(DateStartBVCtrD.Date))+ ''' AND ''' +(DateToStr(DateEndBVCtrD.Date))+'''';
    end else
        begin
-         Mainform.Bonv_CtrTable.sql.Text:= BCSQL ;
+
+//         DateStartBVLivD.Date:=EncodeDate (YearOf(Now),MonthOf(Now),01);
+//         DateEndBVlivD.Date:=EncodeDate (YearOf(Now),MonthOf(Now),DayOf(Now));
+
+         Mainform.Bonv_CtrTable.sql.Text:= BCSQL+
+            ' WHERE date_bvctr BETWEEN '''+(DateToStr(EncodeDate (YearOf(Now),MonthOf(Now),01)))+
+            ''' AND ''' +(DateToStr(EncodeDate (YearOf(Now),MonthOf(Now),DayOf(Now))))+'''' ;
        end;
    
    MainForm.Bonv_ctrTable.Active:= True;
