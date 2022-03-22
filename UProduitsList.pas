@@ -195,7 +195,8 @@ begin
   +' ((prixva_p * tva_p)/100+ prixva_p ) AS PrixVTTCA, '
   +' ((prixva2_p * tva_p)/100+ prixva2_p ) AS PrixVTTCA2, '
   +' (qut_p + qutini_p ) AS QutDispo, '
-  +' ((qut_p + qutini_p) * prixht_p ) AS ValueStock '
+  +' ((qut_p + qutini_p) * prixht_p ) AS ValueStock, '
+  +' ((qut_p + qutini_p) * prixvd_p ) AS ValueStockVD '
   +' FROM produit ';
   MainForm.ProduitTable.Active := True;
   MainForm.ProduitTable.EnableControls;

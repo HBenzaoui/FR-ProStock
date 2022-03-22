@@ -614,7 +614,7 @@ object ProduitsListF: TProduitsListF
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = 4207405
         Title.Font.Height = 16
-        Title.Font.Name = 'Roboto'
+        Title.Font.Name = 'Helvetica LT Std'
         Title.Font.Style = []
         Title.Font.Quality = fqProof
         Visible = False
@@ -719,7 +719,7 @@ object ProduitsListF: TProduitsListF
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = 4207405
         Title.Font.Height = 16
-        Title.Font.Name = 'Roboto'
+        Title.Font.Name = 'Helvetica LT Std'
         Title.Font.Style = []
         Title.Font.Quality = fqProof
         Visible = False
