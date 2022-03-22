@@ -730,6 +730,7 @@ type
     ProduitTablepmp_p: TCurrencyField;
     FDEventAlerter: TFDEventAlerter;
     SQLQuery4: TFDQuery;
+    ProduitTablevaluestockvd: TCurrencyField;
     procedure ClientMainFBtnClick(Sender: TObject);
     procedure FourMainFBtnClick(Sender: TObject);
     procedure ProduitMainFBtnClick(Sender: TObject);
@@ -4820,7 +4821,7 @@ begin
   StartInfo.cb := SizeOf(TStartupInfo);
   StartInfo.dwFlags := STARTF_USESHOWWINDOW or STARTF_FORCEONFEEDBACK;
   NamePathRS:=  StringReplace((ExtractFileName(RestoreDbODlg.FileName)) , #32 , '_', [rfReplaceAll]) ;
-  
+
   PathRS :=ExtractFilePath(RestoreDbODlg.FileName);
   cmd := 'C:\Windows\System32\cmd.exe';
   //debug

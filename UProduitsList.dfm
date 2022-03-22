@@ -692,6 +692,40 @@ object ProduitsListF: TProduitsListF
         WordWrap = False
       end
       item
+        Alignment = taRightJustify
+        CellButtons = <>
+        DisplayFormat = '#,##0.00'
+        DynProps = <>
+        EditButtons = <>
+        FieldName = 'valuestockvd'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 14
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        Footer.Color = 15722984
+        Footer.DisplayFormat = '#,##0.00'
+        Footer.FieldName = 'valuestockvd'
+        Footer.Font.Charset = DEFAULT_CHARSET
+        Footer.Font.Color = 4207405
+        Footer.Font.Height = 18
+        Footer.Font.Name = 'Helvetica LT Std'
+        Footer.Font.Style = [fsBold]
+        Footer.ValueType = fvtSum
+        Footers = <>
+        Layout = tlCenter
+        Title.Alignment = taCenter
+        Title.Caption = 'Valeur de Stock VD'
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = 4207405
+        Title.Font.Height = 16
+        Title.Font.Name = 'Roboto'
+        Title.Font.Style = []
+        Title.Font.Quality = fqProof
+        Visible = False
+        Width = 130
+      end
+      item
         CellButtons = <>
         DisplayFormat = '#,##0.00'
         DynProps = <>
@@ -1131,7 +1165,7 @@ object ProduitsListF: TProduitsListF
       ShowHint = True
       Spacing = -1
       OnClick = EditProduitsBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object DeleteProduitsBtn: TAdvToolButton
@@ -1163,7 +1197,7 @@ object ProduitsListF: TProduitsListF
       ShowHint = True
       Spacing = -2
       OnClick = DeleteProduitsBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object AddProduitsBtn: TAdvToolButton
@@ -1195,7 +1229,7 @@ object ProduitsListF: TProduitsListF
       ShowHint = True
       Spacing = -1
       OnClick = AddProduitsBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object ResearchProduitsLbl: TLabel
@@ -1219,11 +1253,11 @@ object ProduitsListF: TProduitsListF
       Top = 23
       Width = 25
       Height = 25
+      ImageIndex = 0
+      Images = MainForm.PanelIcons24
       ParentShowHint = False
       ShowHint = True
       OnClick = FisrtClientbtnClick
-      Images = MainForm.PanelIcons24
-      ImageIndex = 0
       ShowCaption = False
     end
     object sSpeedButton6: TsSpeedButton
@@ -1231,22 +1265,22 @@ object ProduitsListF: TProduitsListF
       Top = 23
       Width = 25
       Height = 25
+      ImageIndex = 1
+      Images = MainForm.PanelIcons24
       ParentShowHint = False
       ShowHint = True
       OnClick = PreviosClientbtnClick
-      Images = MainForm.PanelIcons24
-      ImageIndex = 1
     end
     object sSpeedButton7: TsSpeedButton
       Left = 450
       Top = 23
       Width = 25
       Height = 25
+      ImageIndex = 2
+      Images = MainForm.PanelIcons24
       ParentShowHint = False
       ShowHint = True
       OnClick = NextClientbtnClick
-      Images = MainForm.PanelIcons24
-      ImageIndex = 2
       ShowCaption = False
     end
     object sSpeedButton8: TsSpeedButton
@@ -1254,11 +1288,11 @@ object ProduitsListF: TProduitsListF
       Top = 23
       Width = 25
       Height = 25
+      ImageIndex = 3
+      Images = MainForm.PanelIcons24
       ParentShowHint = False
       ShowHint = True
       OnClick = LastClientbtnClick
-      Images = MainForm.PanelIcons24
-      ImageIndex = 3
     end
     object sImage1: TsImage
       Left = 512
@@ -1306,7 +1340,7 @@ object ProduitsListF: TProduitsListF
       Shaded = False
       ShowHint = True
       Spacing = -1
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object TVAFilterLbl: TLabel
@@ -1571,7 +1605,7 @@ object ProduitsListF: TProduitsListF
       ShowHint = True
       Spacing = -2
       OnClick = SumGirdProduitBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object RefreshGirdBtn: TAdvToolButton
@@ -1605,7 +1639,7 @@ object ProduitsListF: TProduitsListF
       ShowHint = True
       Spacing = -2
       OnClick = RefreshGirdBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object AdvToolButton1: TAdvToolButton
@@ -1640,7 +1674,7 @@ object ProduitsListF: TProduitsListF
       Shaded = False
       ShowHint = True
       Spacing = -2
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object AdvToolButton2: TAdvToolButton
@@ -1674,7 +1708,7 @@ object ProduitsListF: TProduitsListF
       ShowHint = True
       Spacing = -2
       OnClick = AdvToolButton2Click
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object AdvToolButton3: TAdvToolButton
@@ -1708,7 +1742,7 @@ object ProduitsListF: TProduitsListF
       ShowHint = True
       Spacing = -2
       OnClick = AdvToolButton3Click
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object AdvToolButton4: TAdvToolButton
@@ -1742,7 +1776,7 @@ object ProduitsListF: TProduitsListF
       ShowHint = True
       Spacing = -2
       OnClick = AdvToolButton4Click
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object ProduitMovementBtn: TAdvToolButton
@@ -1776,7 +1810,7 @@ object ProduitsListF: TProduitsListF
       ShowHint = True
       Spacing = -2
       OnClick = ProduitMovementBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object ProduitMovementAllBtn: TAdvToolButton
@@ -1810,7 +1844,7 @@ object ProduitsListF: TProduitsListF
       ShowHint = True
       Spacing = -2
       OnClick = ProduitMovementAllBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object Panel5: TPanel
@@ -2866,7 +2900,7 @@ object ProduitsListF: TProduitsListF
     Bitmap = {}
   end
   object ProduitListfrxRprt: TfrxReport
-    Version = '6.8.4'
+    Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -2953,6 +2987,9 @@ object ProduitsListF: TProduitsListF
       Width = 1000.000000000000000000
     end
     object Page1: TfrxReportPage
+      VGuides.Strings = (
+        '385,51206'
+        '434,64595')
       Orientation = poLandscape
       PaperWidth = 297.000000000000000000
       PaperHeight = 210.000000000000000000
@@ -2963,9 +3000,6 @@ object ProduitsListF: TProduitsListF
       BottomMargin = 10.000000000000000000
       Frame.Typ = []
       MirrorMode = []
-      VGuides.Strings = (
-        '385,51206'
-        '434,64595')
       object PageHeader1: TfrxPageHeader
         FillType = ftBrush
         Frame.Typ = []
