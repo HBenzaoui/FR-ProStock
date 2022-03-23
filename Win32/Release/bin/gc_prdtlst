@@ -5,7 +5,7 @@
 4~ sfamp~ Sous Famille~ 150~ -1
 5~ prixht_p~ PrixAHT~ 130~ -1
 6~ prixattc~ PrixATTC~ 130~ -1
-7~ valuestock~ Valeur de Stock~ 130~ 0
+7~ valuestock~ Valeur de Stock~ 130~ -1
 8~ prixvd_p~ PrixVHT Détail~ 130~ -1
 9~ prixvttcd~ PrixVTTC Détail~ 130~ 0
 10~ prixvr_p~ PrixVHT Rev~ 130~ 0
@@ -22,3 +22,4 @@
 21~ perissable_p~ Périssable~ 100~ 0
 22~ local~ Localisation~ 150~ -1
 23~ codebar_p~ Code â Barre~ 200~ -1
+24~ valuestockvd~ Valeur de Stock VD~ 130~ -1

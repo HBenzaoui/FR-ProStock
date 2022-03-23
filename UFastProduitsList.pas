@@ -75,7 +75,8 @@ type
     +'   ((prixva_p * tva_p)/100+ prixva_p ) AS PrixVTTCA, '
     +'   ((prixva2_p * tva_p)/100+ prixva2_p ) AS PrixVTTCA2,  '
     +'   (qut_p + qutini_p ) AS QutDispo, '
-    +'   ((qut_p + qutini_p) * prixht_p ) AS ValueStock '
+    +'   ((qut_p + qutini_p) * prixht_p ) AS ValueStock, '
+    +'   ((qut_p + qutini_p) * prixvd_p ) AS ValueStockVD '
     +' FROM produit ' ;
   end;
 
@@ -1998,6 +1999,16 @@ begin
            OKProduitGBtn.Tag:=2;
          end else
              begin
+
+                //In ctr we add dictrly to the qut if the produit is laready exist
+
+
+
+
+
+
+
+
                 FSplashAddUnite:=TFSplashAddUnite.Create(FastProduitsListF);
                 FSplashAddUnite.Image1.ImageIndex:=3;
                 FSplashAddUnite.Width:=300;
@@ -2771,16 +2782,11 @@ begin
 
          //-------------------------------------------------------------------------------------------------
 
-
      //-------------------------------------------------------------------------------------------
-
 //----------- from this is to add produit to the bon de command with fastform tag = 11 --------------
-
   //----- this tag is for multiple products ------//
-
       if (OKProduitGBtn.Tag = 0) AND (FastProduitsListF.Tag = 11) then
     begin
-
     CodeP:= MainForm.ProduitTable.FieldByName('code_p').AsInteger ;
      ResearchProduitsEdt.Text:='';
      ResearchProduitsEdt.SetFocus;
@@ -2788,9 +2794,7 @@ begin
     lookupResultRefP := DataModuleF.Bona_com_listTable.Lookup('code_p',(CodeP),'code_p');
      if VarIsnull( lookupResultRefP) then
      begin
-
       MainForm.ProduitTable.DisableControls;
-
       DataModuleF.Bona_com_listTable.DisableControls;
       DataModuleF.Bona_com_listTable.IndexFieldNames:='';
       DataModuleF.Bona_com_listTable.Active:=False;
@@ -2798,14 +2802,12 @@ begin
       DataModuleF.Bona_com_listTable.SQL.Text:= BonComAGestionF.BCALSQL+ ' ORDER by code_bacoml' ;
       DataModuleF.Bona_com_listTable.Active:=True;
       DataModuleF.Bona_com_listTable.Last;
-
 //----- use this code to select more than one produit ------//
       if ProduitsListDBGridEh.SelectedRows.Count > 0 then
       with ProduitsListDBGridEh.DataSource.DataSet do
       for i:=0 to ProduitsListDBGridEh.SelectedRows.Count-1 do
       begin
       //   while ProduitsListDBGridEh.SelectedRows. do
-
         GotoBookmark(ProduitsListDBGridEh.SelectedRows.Items[i]);
            if  DataModuleF.Bona_com_listTable.IsEmpty then
            begin
@@ -2816,12 +2818,10 @@ begin
                 DataModuleF.Bona_com_listTable.Last;
                 CodeBR:= DataModuleF.Bona_com_listTable.FieldValues['code_bacoml'] + 1 ;
                end;
-
                  if MainForm.ProduitTable.FieldByName('perissable_p').AsBoolean = True then
                  begin
                   BonComAGestionF.ProduitsListDBGridEh.Columns[4].Visible := True
                  end;
-
              DataModuleF.Bona_com_listTable.Last;
              DataModuleF.Bona_com_listTable.Append;
              DataModuleF.Bona_com_listTable.FieldValues['code_bacoml']:= CodeBR ;
@@ -2836,12 +2836,9 @@ begin
              DataModuleF.Bona_com_listTable.FieldByName('prixva_p').AsCurrency:=  MainForm.ProduitTable.FieldByName('prixva_p').AsCurrency;
              DataModuleF.Bona_com_listTable.FieldByName('prixva2_p').AsCurrency:= MainForm.ProduitTable.FieldByName('prixva2_p').AsCurrency;
              DataModuleF.Bona_com_listTable.FieldValues['cond_p']:=  01;
-
              DataModuleF.Bona_com_listTable.FieldValues['qutinstock_p']:=
              (DataModuleF.Bona_com_listTable.FieldValues['qut_p'])*(DataModuleF.Bona_com_listTable.FieldValues['cond_p']);
-
              DataModuleF.Bona_com_listTable.Post ;
-
       end;
            ProduitsListDBGridEh.SelectedRows.Clear;
            DataModuleF.Bona_com_listTable.IndexFieldNames:='code_bacom';
@@ -2892,22 +2889,16 @@ begin
                 //--- this tage = 0 is for multi name added by fastproduitx----//
                 FSplashAddUnite.Tag:=1;
              end;
-
            DataModuleF.Bona_com_listTable.Refresh;
            DataModuleF.Bona_com_listTable.Last;
-
     end else
-
     if (OKproduitGBtn.Tag = 1) AND (FastProduitsListF.Tag = 11) then
     begin
-
         CodeP:= MainForm.ProduitTable.FieldByName('code_p').AsInteger ;
-
            lookupResultRefP := DataModuleF.Bona_com_listTable.Lookup('code_p',(CodeP),'code_p');
          if VarIsnull( lookupResultRefP) then
          begin
      MainForm.ProduitTable.DisableControls;
-
       DataModuleF.Bona_com_listTable.DisableControls;
       DataModuleF.Bona_com_listTable.IndexFieldNames:='';
       DataModuleF.Bona_com_listTable.Active:=False;
@@ -2924,12 +2915,10 @@ begin
                 DataModuleF.Bona_com_listTable.Last;
                 CodeBR:= DataModuleF.Bona_com_listTable.FieldValues['code_bacoml'] + 1 ;
                end;
-
                  if MainForm.ProduitTable.FieldByName('perissable_p').AsBoolean = True then
                  begin
                   BonComAGestionF.ProduitsListDBGridEh.Columns[4].Visible := True
                  end;
-
              DataModuleF.Bona_com_listTable.Last;
              DataModuleF.Bona_com_listTable.Append;
              DataModuleF.Bona_com_listTable.FieldValues['code_bacoml']:= CodeBR ;
@@ -2944,10 +2933,8 @@ begin
              DataModuleF.Bona_com_listTable.FieldByName('prixvg_p').AsCurrency:=  MainForm.ProduitTable.FieldByName('prixvg_p').AsCurrency;
              DataModuleF.Bona_com_listTable.FieldByName('prixva_p').AsCurrency:=  MainForm.ProduitTable.FieldByName('prixva_p').AsCurrency;
              DataModuleF.Bona_com_listTable.FieldByName('prixva2_p').AsCurrency:= MainForm.ProduitTable.FieldByName('prixva2_p').AsCurrency;
-
              DataModuleF.Bona_com_listTable.FieldValues['qutinstock_p']:=
              (DataModuleF.Bona_com_listTable.FieldValues['qut_p'])*(DataModuleF.Bona_com_listTable.FieldValues['cond_p']);
-
              DataModuleF.Bona_com_listTable.Post ;
            DataModuleF.Bona_com_listTable.IndexFieldNames:='code_bacom';
            DataModuleF.Bona_com_listTable.Last;
@@ -2958,9 +2945,7 @@ begin
           DataModuleF.Bona_com_listTable.SQL.Clear;
           DataModuleF.Bona_com_listTable.SQL.Text:= BonComAGestionF.BCALSQL+ ' WHERE code_bacom = ' + QuotedStr(IntToStr(DataModuleF.Bona_comTable.FieldValues['code_bacom']));
           DataModuleF.Bona_com_listTable.Active:=True;
-
           Close;
-
    end else
        begin
           FSplashAddUnite:=TFSplashAddUnite.Create(FastProduitsListF);
@@ -3007,35 +2992,23 @@ begin
           FSplashAddUnite.Tag:=7;
        end;
 
-
        DataModuleF.Bona_com_listTable.Refresh;
-
         BonComAGestionF.ProduitsListDBGridEh.SetFocus;
-
         BonComAGestionF.ProduitsListDBGridEh.SelectedIndex:=2;
         BonComAGestionF.ProduitsListDBGridEh.EditorMode:=True;
-
         DataModuleF.Bona_com_listTable.Last;
-
     end
      else
-
     if (OKProduitGBtn.Tag = 2) AND (FastProduitsListF.Tag = 11)  then
     begin
      CancelProduitGBtnClick(Sender);
-
     end;
-
 //End of Add in bon command---------------------------
-
          //-------------------------------------------------------------------------------------------------
-
 //---------- from this is to add produit to the Commande Client with fastform tag = 12-------------------------------------------
-
   //----- this tag is for multiple products ------//
       if (OKProduitGBtn.Tag = 0) AND (FastProduitsListF.Tag = 12) then
       begin
-
       CodeP:= MainForm.ProduitTable.FieldByName('code_p').AsInteger ;
        ResearchProduitsEdt.Text:='';
        ResearchProduitsEdt.SetFocus;
@@ -3043,9 +3016,7 @@ begin
       lookupResultRefP := DataModuleF.Bonv_com_listTable.Lookup('code_p',(CodeP),'code_p');
        if VarIsnull( lookupResultRefP) then
        begin
-
         MainForm.ProduitTable.DisableControls;
-
         MainForm.SQLQuery.DisableControls;
         MainForm.SQLQuery.IndexFieldNames:='';
         MainForm.SQLQuery.Active:=False;
@@ -3053,14 +3024,12 @@ begin
         MainForm.SQLQuery.SQL.Text:= 'SELECT * FROM bonv_com_list ORDER by code_bvcoml' ;
         MainForm.SQLQuery.Active:=True;
         MainForm.SQLQuery.Last;
-
   //----- use this code to select more than one produit ------//
         if ProduitsListDBGridEh.SelectedRows.Count > 0 then
         with ProduitsListDBGridEh.DataSource.DataSet do
         for i:=0 to ProduitsListDBGridEh.SelectedRows.Count-1 do
         begin
         //   while ProduitsListDBGridEh.SelectedRows. do
-
                  if BonComVGestionF.ClientBonComGCbx.Text<> '' then
            begin
              MainForm.ClientTable.DisableControls;
@@ -3068,9 +3037,7 @@ begin
               MainForm.ClientTable.SQL.Clear;
               MainForm.ClientTable.SQL.Text:='Select * FROM client WHERE LOWER(nom_c) LIKE LOWER('+ QuotedStr( BonComVGestionF.ClientBonComGCbx.Text )+')'  ;
               MainForm.ClientTable.Active:=True;
-
            end;
-
           GotoBookmark(ProduitsListDBGridEh.SelectedRows.Items[i]);
              if  MainForm.SQLQuery.IsEmpty then
              begin
@@ -3081,7 +3048,6 @@ begin
                   MainForm.SQLQuery.Last;
                   CodeBR:= MainForm.SQLQuery.FieldByName('code_bvcoml').AsInteger + 1 ;
                  end;
-
                MainForm.SQLQuery.Last;
                MainForm.SQLQuery.Append;
                MainForm.SQLQuery.FieldByName('code_bvcoml').AsInteger:= CodeBR ;
@@ -3091,10 +3057,8 @@ begin
                MainForm.SQLQuery.FieldByName('cond_p').AsInteger:=  01;
                MainForm.SQLQuery.FieldByName('tva_p').AsInteger:= MainForm.ProduitTable.FieldByName('tva_p').AsInteger;
                MainForm.SQLQuery.FieldValues['prixht_p']:=  MainForm.ProduitTable.FieldValues['prixht_p'] ;
-
              if  NOT (MainForm.ClientTable.IsEmpty) AND (BonComVGestionF.ClientBonComGCbx.Text<> '' ) then
              begin
-
                if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 0 then
                begin
                MainForm.SQLQuery.FieldByName('prixvd_p').AsCurrency:= MainForm.ProduitTable.FieldByName('prixvd_p').AsCurrency;
@@ -3119,24 +3083,19 @@ begin
                    begin
                     MainForm.SQLQuery.FieldByName('prixvd_p').AsCurrency:= MainForm.ProduitTable.FieldByName('prixvd_p').AsCurrency;
                    end;
-
                MainForm.SQLQuery.Post ;
-
             MainForm.ClientTable.Active:=false;
             MainForm.ClientTable.SQL.Clear;
             MainForm.ClientTable.SQL.Text:='Select * FROM client' ;
             MainForm.ClientTable.Active:=True;
             MainForm.ClientTable.EnableControls;
-
   //          DataModuleF.Bonv_com_listTable.Next;
         end;
              ProduitsListDBGridEh.SelectedRows.Clear;
-
   //           BonComVGestionF.ProduitsListDBGridEh.SetFocus;
   //
   //           BonComVGestionF.ProduitsListDBGridEh.SelectedIndex:=2;
   //           BonComVGestionF.ProduitsListDBGridEh.EditorMode:=True;
-
   //           DataModuleF.Bonv_com_listTable.Refresh;
   //           DataModuleF.Bonv_com_listTable.IndexFieldNames:='code_bvcom';
              DataModuleF.Bonv_com_listTable.Filtered:= False;
@@ -3187,17 +3146,12 @@ begin
                   //--- this tage = 0 is for multi name added by fastproduitx----//
                   FSplashAddUnite.Tag:=1;
                end;
-
                 DataModuleF.Bonv_com_listTable.Refresh;
                 DataModuleF.Bonv_com_listTable.Last;
-
         end else
-
       if (OKproduitGBtn.Tag = 1) AND (FastProduitsListF.Tag = 12) then
       begin
-
           CodeP:= MainForm.ProduitTable.FieldByName('code_p').AsInteger ;
-
              lookupResultRefP := DataModuleF.Bonv_com_listTable.Lookup('code_p',(CodeP),'code_p');
            if VarIsnull( lookupResultRefP) then
         begin
@@ -3208,12 +3162,9 @@ begin
                 MainForm.ClientTable.SQL.Clear;
                 MainForm.ClientTable.SQL.Text:='Select * FROM client WHERE LOWER(nom_c) LIKE LOWER('+ QuotedStr( BonComVGestionF.ClientBonComGCbx.Text )+')'  ;
                 MainForm.ClientTable.Active:=True;
-
              end;
 
-
             MainForm.ProduitTable.DisableControls;
-
             DataModuleF.Bonv_com_listTable.DisableControls;
             DataModuleF.Bonv_com_listTable.IndexFieldNames:='';
             DataModuleF.Bonv_com_listTable.Active:=False;
@@ -3239,7 +3190,6 @@ begin
                DataModuleF.Bonv_com_listTable.FieldValues['cond_p']:= 01;
                DataModuleF.Bonv_com_listTable.FieldValues['tva_p']:= MainForm.ProduitTable.FieldValues['tva_p'];
                DataModuleF.Bonv_com_listTable.FieldValues['prixht_p']:=  MainForm.ProduitTable.FieldValues['prixht_p'] ;
-
              if  NOT (MainForm.ClientTable.IsEmpty) AND (BonComVGestionF.ClientBonComGCbx.Text<> '' ) then
              begin
                if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 0 then
@@ -3266,9 +3216,7 @@ begin
                    begin
                     DataModuleF.Bonv_com_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixvd_p'];
                    end;
-
                DataModuleF.Bonv_com_listTable.Post ;
-
              DataModuleF.Bonv_com_listTable.IndexFieldNames:='code_bvcom';
              DataModuleF.Bonv_com_listTable.Last;
              DataModuleF.Bonv_com_listTable.EnableControls;
@@ -3278,17 +3226,13 @@ begin
              DataModuleF.Bonv_com_listTable.SQL.Clear;
              DataModuleF.Bonv_com_listTable.SQL.Text:= BonComVGestionF.BCVLSQL+' WHERE code_bvcom = ' + QuotedStr(IntToStr(DataModuleF.Bonv_comTable.FieldValues['code_bvcom']))+' ';
              DataModuleF.Bonv_com_listTable.Active:=True;
-
             MainForm.ClientTable.Active:=false;
             MainForm.ClientTable.SQL.Clear;
             MainForm.ClientTable.SQL.Text:='Select * FROM client' ;
             MainForm.ClientTable.Active:=True;
             MainForm.ClientTable.EnableControls;
 
-
             Close;
-
-
 
        end else
          begin
@@ -3335,29 +3279,21 @@ begin
       //--- this tage = 0 is for multi name added by fastproduit----//
             FSplashAddUnite.Tag:=3;
          end;
-
          DataModuleF.Bonv_com_listTable.Refresh;
-
             BonComVGestionF.ProduitsListDBGridEh.SetFocus;
-
              BonComVGestionF.ProduitsListDBGridEh.SelectedIndex:=2;
              BonComVGestionF.ProduitsListDBGridEh.EditorMode:=True;
-
              DataModuleF.Bonv_com_listTable.Last;
       end
        else
-
 
       if (OKProduitGBtn.Tag = 2) AND (FastProduitsListF.Tag = 12)  then
       begin
        CancelProduitGBtnClick(Sender);
       //-------------------------------------------------------------------------------------------------
-
     end;
     //End of Add in Coomande Client---------------------------
-
     end;//---End if produit is empty
-
    end;//------End for produit---------
 
    //This is for chosing clients
@@ -3433,12 +3369,10 @@ begin
         //This tag = 6 if for choosing client in Commande Client
     if Tag = 6 then
     begin
-
      BonComVGestionF.ClientBonComGCbx.Text:= MainForm.FDQuery2.fieldbyName('nom_c').asString;
      BonComVGestionF.ClientBonComGCbxExit(Sender);
      BonComVGestionF.ProduitBonComGCbx.SetFocus;
      Close;
-
     end;
 
    end;
@@ -3493,12 +3427,10 @@ begin
        //This tag = 4 if for choosing four in Bon Commande Four
     if Tag = 4 then
     begin
-
      BonComAGestionF.FournisseurBonComGCbx.Text:= MainForm.FDQuery2.fieldbyName('nom_f').asString;
      BonComAGestionF.FournisseurBonComGCbxExit(Sender);
      BonComAGestionF.ProduitBonComGCbx.SetFocus;
      Close;
-
     end;
 
    end;

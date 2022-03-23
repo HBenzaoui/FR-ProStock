@@ -215,7 +215,8 @@ begin
   +' ((prixva_p * tva_p)/100+ prixva_p ) AS PrixVTTCA, '
   +' ((prixva2_p * tva_p)/100+ prixva2_p ) AS PrixVTTCA2, '
   +' (qut_p + qutini_p ) AS QutDispo, '
-  +' ((qut_p + qutini_p) * prixht_p ) AS ValueStock '
+  +' ((qut_p + qutini_p) * prixht_p ) AS ValueStock, '
+  +' ((qut_p + qutini_p) * prixvd_p ) AS ValueStockVD '
   +' FROM produit WHERE prixht_p <> ''0'' ';
   MainForm.ProduitTable.Active := True;
   MainForm.ProduitTable.EnableControls;
@@ -234,7 +235,8 @@ begin
   +' ((prixva_p * tva_p)/100+ prixva_p ) AS PrixVTTCA, '
   +' ((prixva2_p * tva_p)/100+ prixva2_p ) AS PrixVTTCA2, '
   +' (qut_p + qutini_p ) AS QutDispo, '
-  +' ((qut_p + qutini_p) * prixht_p ) AS ValueStock '
+  +' ((qut_p + qutini_p) * prixht_p ) AS ValueStock, '
+  +' ((qut_p + qutini_p) * prixvd_p ) AS ValueStockVD '
   +' FROM produit WHERE prixht_p = ''0'' ';
   MainForm.ProduitTable.Active := True;
   MainForm.ProduitTable.EnableControls;
@@ -253,7 +255,8 @@ begin
   +' ((prixva_p * tva_p)/100+ prixva_p ) AS PrixVTTCA, '
   +' ((prixva2_p * tva_p)/100+ prixva2_p ) AS PrixVTTCA2, '
   +' (qut_p + qutini_p ) AS QutDispo, '
-  +' ((qut_p + qutini_p) * prixht_p ) AS ValueStock '
+  +' ((qut_p + qutini_p) * prixht_p ) AS ValueStock, '
+  +' ((qut_p + qutini_p) * prixvd_p ) AS ValueStockVD '
   +' FROM produit WHERE prixvd_p <> ''0'' OR prixvr_p <> ''0'' OR prixvg_p <> ''0'' OR prixva_p <> ''0'' OR prixva2_p <> ''0'' ';
   MainForm.ProduitTable.Active := True;
   MainForm.ProduitTable.EnableControls;
@@ -272,7 +275,8 @@ begin
   +' ((prixva_p * tva_p)/100+ prixva_p ) AS PrixVTTCA, '
   +' ((prixva2_p * tva_p)/100+ prixva2_p ) AS PrixVTTCA2, '
   +' (qut_p + qutini_p ) AS QutDispo, '
-  +' ((qut_p + qutini_p) * prixht_p ) AS ValueStock '
+  +' ((qut_p + qutini_p) * prixht_p ) AS ValueStock, '
+  +' ((qut_p + qutini_p) * prixvd_p ) AS ValueStockVD '
   +' FROM produit WHERE prixvd_p = ''0'' AND prixvr_p = ''0'' AND prixvg_p = ''0'' AND prixva_p = ''0'' AND prixva2_p = ''0'' ';
   MainForm.ProduitTable.Active := True;
   MainForm.ProduitTable.EnableControls;
@@ -291,7 +295,8 @@ begin
   +' ((prixva_p * tva_p)/100+ prixva_p ) AS PrixVTTCA, '
   +' ((prixva2_p * tva_p)/100+ prixva2_p ) AS PrixVTTCA2, '
   +' (qut_p + qutini_p ) AS QutDispo, '
-  +' ((qut_p + qutini_p) * prixht_p ) AS ValueStock '
+  +' ((qut_p + qutini_p) * prixht_p ) AS ValueStock, '
+  +' ((qut_p + qutini_p) * prixvd_p ) AS ValueStockVD '
   +' FROM produit WHERE tva_p = ''0'' ';
   MainForm.ProduitTable.Active := True;
   MainForm.ProduitTable.EnableControls;
@@ -310,7 +315,8 @@ begin
   +' ((prixva_p * tva_p)/100+ prixva_p ) AS PrixVTTCA, '
   +' ((prixva2_p * tva_p)/100+ prixva2_p ) AS PrixVTTCA2, '
   +' (qut_p + qutini_p ) AS QutDispo, '
-  +' ((qut_p + qutini_p) * prixht_p ) AS ValueStock '
+  +' ((qut_p + qutini_p) * prixht_p ) AS ValueStock, '
+  +' ((qut_p + qutini_p) * prixvd_p ) AS ValueStockVD '
   +' FROM produit WHERE tva_p = ''9'' ';
   MainForm.ProduitTable.Active := True;
   MainForm.ProduitTable.EnableControls;
@@ -329,7 +335,8 @@ begin
   +' ((prixva_p * tva_p)/100+ prixva_p ) AS PrixVTTCA, '
   +' ((prixva2_p * tva_p)/100+ prixva2_p ) AS PrixVTTCA2, '
   +' (qut_p + qutini_p ) AS QutDispo, '
-  +' ((qut_p + qutini_p) * prixht_p ) AS ValueStock '
+  +' ((qut_p + qutini_p) * prixht_p ) AS ValueStock, '
+  +' ((qut_p + qutini_p) * prixvd_p ) AS ValueStockVD '
   +' FROM produit WHERE tva_p = ''19'' ';
   MainForm.ProduitTable.Active := True;
   MainForm.ProduitTable.EnableControls;
@@ -353,7 +360,8 @@ begin
   +' ((prixva_p * tva_p)/100+ prixva_p ) AS PrixVTTCA, '
   +' ((prixva2_p * tva_p)/100+ prixva2_p ) AS PrixVTTCA2, '
   +' (qut_p + qutini_p ) AS QutDispo, '
-  +' ((qut_p + qutini_p) * prixht_p ) AS ValueStock '
+  +' ((qut_p + qutini_p) * prixht_p ) AS ValueStock, '
+  +' ((qut_p + qutini_p) * prixvd_p ) AS ValueStockVD '
   +' FROM produit WHERE (qut_p + qutini_p) > ''0'' ';
   MainForm.ProduitTable.Active := True;
   MainForm.ProduitTable.EnableControls;
@@ -377,7 +385,8 @@ begin
   +' ((prixva_p * tva_p)/100+ prixva_p ) AS PrixVTTCA, '
   +' ((prixva2_p * tva_p)/100+ prixva2_p ) AS PrixVTTCA2, '
   +' (qut_p + qutini_p ) AS QutDispo, '
-  +' ((qut_p + qutini_p) * prixht_p ) AS ValueStock '
+  +' ((qut_p + qutini_p) * prixht_p ) AS ValueStock, '
+  +' ((qut_p + qutini_p) * prixvd_p ) AS ValueStockVD '
   +' FROM produit WHERE (qut_p + qutini_p) <= ''0'' ';
   MainForm.ProduitTable.Active := True;
   MainForm.ProduitTable.EnableControls;

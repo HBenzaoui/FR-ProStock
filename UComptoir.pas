@@ -4963,7 +4963,7 @@ begin
             MainForm.SQLQuery4.Filtered := false;
             MainForm.SQLQuery4.Active := false;
             MainForm.SQLQuery4.SQL.Clear;
-            MainForm.SQLQuery4.SQL.Text := 'SELECT * FROM opt_cas_bnk';
+            MainForm.SQLQuery4.SQL.Text := 'SELECT * FROM opt_cas_bnk ORDER BY code_ocb DESC LIMIT 1';
             MainForm.SQLQuery4.Active := True;
 
             if not (MainForm.SQLQuery4.IsEmpty) then
@@ -5040,7 +5040,7 @@ begin
               MainForm.SQLQuery4.Active := false;
               MainForm.SQLQuery4.Filtered := false;
               MainForm.SQLQuery4.SQL.Clear;
-              MainForm.SQLQuery4.SQL.Text := 'SELECT * FROM opt_cas_bnk';
+              MainForm.SQLQuery4.SQL.Text := 'SELECT * FROM opt_cas_bnk ORDER BY code_ocb DESC LIMIT 1';
               MainForm.SQLQuery4.Active := True;
 
               if not (MainForm.SQLQuery4.IsEmpty) then
