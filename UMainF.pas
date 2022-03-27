@@ -3637,7 +3637,7 @@ begin
   SQLQuery.Active:= False;
 
   //-- put the database name on the form caption
-  FromCaption:=MainForm.Caption;
+  FromCaption:=StringReplace(MainForm.Caption, ' ', '', [rfReplaceAll]) ;
   Delete( FromCaption, Pos('//',FromCaption), MaxInt );
   MainForm.Caption:= FromCaption + ' //'+ LoginUserF.FolderCbx.Text;
 
