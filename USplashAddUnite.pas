@@ -3470,12 +3470,41 @@ begin
                 begin
  //""C:\Program Files (x86)\PostgreSQL\10\bin\pg_dump.exe" -U postgres -t produit "GSTOCKDC"|"C:\Program Files (x86)\PostgreSQL\10\bin\psql.exe" -U postgres "hamza~2022""
 
+                  //---List des produits
                   aCmdLine:= PChar('/c ""'+GetCurrentDir+'\bin\pg_dump.exe" -U postgres -t produit "'+ DataModuleF.SQLQuery1.FieldByName('dbname_db').AsString +
                   '"|"'+GetCurrentDir+'\bin\psql.exe" -U postgres "'+ DBName +'~'+ CompteAddUniteSCbx.Text +'""');
 
                   ShellExecute(Handle,nil,'CMD',aCmdLine,nil,SW_HIDE);
 
+                  //---List des produit code barres
+                  aCmdLine:= PChar('/c ""'+GetCurrentDir+'\bin\pg_dump.exe" -U postgres -t codebarres "'+ DataModuleF.SQLQuery1.FieldByName('dbname_db').AsString +
+                  '"|"'+GetCurrentDir+'\bin\psql.exe" -U postgres "'+ DBName +'~'+ CompteAddUniteSCbx.Text +'""');
 
+                  ShellExecute(Handle,nil,'CMD',aCmdLine,nil,SW_HIDE);
+
+                  //---List des familles
+                  aCmdLine:= PChar('/c ""'+GetCurrentDir+'\bin\pg_dump.exe" -U postgres -t famproduit "'+ DataModuleF.SQLQuery1.FieldByName('dbname_db').AsString +
+                  '"|"'+GetCurrentDir+'\bin\psql.exe" -U postgres "'+ DBName +'~'+ CompteAddUniteSCbx.Text +'""');
+
+                  ShellExecute(Handle,nil,'CMD',aCmdLine,nil,SW_HIDE);
+
+                  //---List des sous familes
+                   aCmdLine:= PChar('/c ""'+GetCurrentDir+'\bin\pg_dump.exe" -U postgres -t sfamproduit "'+ DataModuleF.SQLQuery1.FieldByName('dbname_db').AsString +
+                  '"|"'+GetCurrentDir+'\bin\psql.exe" -U postgres "'+ DBName +'~'+ CompteAddUniteSCbx.Text +'""');
+
+                  ShellExecute(Handle,nil,'CMD',aCmdLine,nil,SW_HIDE);
+
+                  //---List des units
+                   aCmdLine:= PChar('/c ""'+GetCurrentDir+'\bin\pg_dump.exe" -U postgres -t unite "'+ DataModuleF.SQLQuery1.FieldByName('dbname_db').AsString +
+                  '"|"'+GetCurrentDir+'\bin\psql.exe" -U postgres "'+ DBName +'~'+ CompteAddUniteSCbx.Text +'""');
+
+                  ShellExecute(Handle,nil,'CMD',aCmdLine,nil,SW_HIDE);
+
+                  //---List des locations
+                   aCmdLine:= PChar('/c ""'+GetCurrentDir+'\bin\pg_dump.exe" -U postgres -t localisation "'+ DataModuleF.SQLQuery1.FieldByName('dbname_db').AsString +
+                  '"|"'+GetCurrentDir+'\bin\psql.exe" -U postgres "'+ DBName +'~'+ CompteAddUniteSCbx.Text +'""');
+
+                  ShellExecute(Handle,nil,'CMD',aCmdLine,nil,SW_HIDE);
                 end;
 
                 if Assigned(LoginUserF.DBClientSdr) and  LoginUserF.DBClientSdr.SliderOn then
@@ -3501,18 +3530,11 @@ begin
               LoginUserF.FolderCbx.ItemIndex:= LoginUserF.FolderCbx.Items.Count -1 ;
               LoginUserF.PasswordEdt.SetFocus;
 
-
-
               NameAddUniteSErrorP.Visible:=False;
               RequiredAddUniteSlbl.Visible:=False;
               AnimateWindow(FSplashAddUnite.Handle, 175, AW_VER_NEGATIVE OR AW_SLIDE OR AW_HIDE);
               FSplashAddUnite.Release;
               sndPlaySound('C:\Windows\Media\speech on.wav', SND_NODEFAULT Or SND_ASYNC Or  SND_RING);
-//         if Assigned(ProduitGestionF) then
-//         begin
-//         ProduitGestionF.UniteProduitGCbx.Text:= NameAddUniteSEdt.Text;
-//         ProduitGestionF.UniteProduitGCbx.SetFocus;
-//         end;
 
 
           end else
