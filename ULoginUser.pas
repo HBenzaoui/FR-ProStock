@@ -589,15 +589,18 @@ procedure TLoginUserF.FormShow(Sender: TObject);
 var
   Ini: TIniFile;
 begin
+ 
+
+  GrayFormsLUR;
+//  UserCbx.ItemIndex:=0;
   Ini := TIniFile.Create(ChangeFileExt(Application.ExeName,'.ini')) ;
   FolderCbxEnter(Sender);
   FolderCbx.ItemIndex:= Ini.ReadInteger('','default db', FolderCbx.ItemIndex);
+  UserCbxEnter(Sender);
+  UserCbx.ItemIndex:= Ini.ReadInteger('','default usr', UserCbx.ItemIndex);
   Ini.Free;
 
-  GrayFormsLUR;
-  UserCbxEnter(Sender);
-  UserCbx.ItemIndex:=0;
-end;
+  end;
 
 procedure TLoginUserF.LoginBtnClick(Sender: TObject);
 var myPrinter   : TPrinter;
@@ -609,6 +612,7 @@ begin
       Ini       := TIniFile.Create(ChangeFileExt(Application.ExeName,'.ini')) ;
       TiroirA   := Ini.ReadBool('', 'Tiroir caisse Active',TiroirA);
       Ini.WriteInteger('','default db', FolderCbx.ItemIndex);
+      Ini.WriteInteger('','default usr', UserCbx.ItemIndex);
       Ini.Free;
       if TiroirA then
       begin
@@ -666,6 +670,7 @@ begin
          // This tag = 0 is for the first Loging
             if Tag = 0 then
             begin
+                PasswordEdt.Clear;
                 Close;
                 MainForm.Show;
             end;
@@ -674,6 +679,7 @@ begin
           // This tag = 1 is for changing user
           if Tag = 1 then
           begin
+            PasswordEdt.Clear;
             Close;
             MainForm.FormShow(Sender);
           end;
@@ -687,6 +693,7 @@ begin
                TiroirCas := Ini.ReadBool('', 'Tiroir caisse Cas',   TiroirCas);
                PORT      :=Ini.ReadString(Caption,'Tiroir caisse COM', PORT);
 
+               PasswordEdt.Clear;
                Close;
 
            if TiroirCas = False then   // means = 0   Case COM
@@ -730,6 +737,7 @@ begin
 
          end else
              begin
+              PasswordEdt.Clear;
               Close;
               LoginF.Top:=  (Screen.Width-Width)  div 2;
               LoginF.Left:= (Screen.Height-Height) div 2;
