@@ -123,6 +123,7 @@
         <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
         <AppExecutionLevel>requireAdministrator</AppExecutionLevel>
         <AppDPIAwarenessMode>PerMonitor</AppDPIAwarenessMode>
+        <BT_BuildType>Debug</BT_BuildType>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2_Win64)'!=''">
         <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>

@@ -1641,7 +1641,6 @@ input := '/c ""C:\Program Files (x86)\PostgreSQL\10\bin\pg_dump.exe" -a -U postg
 
     GstockdcConnection.Connected:= False;
 
-     try
           CreateOk := CreateProcess(PChar(cmd), PChar(input), nil, nil, false, CREATE_NEW_PROCESS_GROUP + NORMAL_PRIORITY_CLASS, nil,
           nil, StartInfo, ProcInfo);
           { check to see if successful }
@@ -1651,14 +1650,7 @@ input := '/c ""C:\Program Files (x86)\PostgreSQL\10\bin\pg_dump.exe" -a -U postg
           //    CloseHandle(ProcInfo.hProcess);
           //    CloseHandle(ProcInfo.hThread);
           //          RestoreTask.CheckCanceled;
-     except
-       on E : Exception do
-       begin
-         ShowMessage('Exception class name = '+E.ClassName);
-        ShowMessage('Exception message = '+E.Message);
-       end;
 
-     end;
     GstockdcConnection.Connected:= True;
     ActiveTables;
     //      RerfreshTables;

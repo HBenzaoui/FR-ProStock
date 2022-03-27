@@ -832,6 +832,7 @@ object LoginUserF: TLoginUserF
     Top = 96
     Width = 207
     Height = 26
+    Style = csDropDownList
     Ctl3D = True
     DoubleBuffered = True
     Font.Charset = DEFAULT_CHARSET

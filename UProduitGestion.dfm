@@ -657,7 +657,7 @@ object ProduitGestionF: TProduitGestionF
           ShowHint = True
           Spacing = -1
           OnClick = RandomCBProduitGBtnClick
-          Version = '1.6.2.0'
+          Version = '1.7.2.0'
           TMSStyle = 0
         end
         object Label9: TLabel
@@ -705,7 +705,7 @@ object ProduitGestionF: TProduitGestionF
           ShowHint = True
           Spacing = -1
           OnClick = AddSousFamilleProduitGBtnClick
-          Version = '1.6.2.0'
+          Version = '1.7.2.0'
           TMSStyle = 0
         end
         object AddFamilleProduitGBtn: TAdvToolButton
@@ -737,7 +737,7 @@ object ProduitGestionF: TProduitGestionF
           ShowHint = True
           Spacing = -1
           OnClick = AddFamilleProduitGBtnClick
-          Version = '1.6.2.0'
+          Version = '1.7.2.0'
           TMSStyle = 0
         end
         object AddUniteProduitGBtn: TAdvToolButton
@@ -769,7 +769,7 @@ object ProduitGestionF: TProduitGestionF
           ShowHint = True
           Spacing = -1
           OnClick = AddUniteProduitGBtnClick
-          Version = '1.6.2.0'
+          Version = '1.7.2.0'
           TMSStyle = 0
         end
         object AddFourProduitGBtn: TAdvToolButton
@@ -801,7 +801,7 @@ object ProduitGestionF: TProduitGestionF
           ShowHint = True
           Spacing = -1
           OnClick = AddFourProduitGBtnClick
-          Version = '1.6.2.0'
+          Version = '1.7.2.0'
           TMSStyle = 0
         end
         object ShowCalculaturProduitGBtn: TAdvToolButton
@@ -833,7 +833,7 @@ object ProduitGestionF: TProduitGestionF
           ShowHint = True
           Spacing = -1
           OnClick = ShowCalculaturProduitGBtnClick
-          Version = '1.6.2.0'
+          Version = '1.7.2.0'
           TMSStyle = 0
         end
         object MulteCBProduitGBtn: TAdvToolButton
@@ -866,7 +866,7 @@ object ProduitGestionF: TProduitGestionF
           ShowHint = True
           Spacing = -1
           OnClick = MulteCBProduitGBtnClick
-          Version = '1.6.2.0'
+          Version = '1.7.2.0'
           TMSStyle = 0
         end
         object RequiredRefProduitGlbl: TLabel
@@ -917,7 +917,7 @@ object ProduitGestionF: TProduitGestionF
           ShowHint = True
           Spacing = -1
           OnClick = ShowKeyBoardProduitGBtnClick
-          Version = '1.6.2.0'
+          Version = '1.7.2.0'
           TMSStyle = 0
         end
         object PMPProduitLbl: TLabel
@@ -1798,7 +1798,7 @@ object ProduitGestionF: TProduitGestionF
           ShowHint = True
           Spacing = -1
           OnClick = AddLocationProduitGBtnClick
-          Version = '1.6.2.0'
+          Version = '1.7.2.0'
           TMSStyle = 0
         end
         object Label31: TLabel
@@ -1880,7 +1880,7 @@ object ProduitGestionF: TProduitGestionF
           Spacing = -1
           Visible = False
           OnClick = ImageShowProduitGClick
-          Version = '1.6.2.0'
+          Version = '1.7.2.0'
           TMSStyle = 0
         end
         object ImageDeleteProduitGBtn: TAdvToolButton
@@ -1913,7 +1913,7 @@ object ProduitGestionF: TProduitGestionF
           Spacing = -1
           Visible = False
           OnClick = ImageDeleteProduitGBtnClick
-          Version = '1.6.2.0'
+          Version = '1.7.2.0'
           TMSStyle = 0
         end
         object Shape1: TShape
@@ -2089,7 +2089,7 @@ object ProduitGestionF: TProduitGestionF
       ShowHint = True
       Spacing = 10
       OnClick = OKProduitGBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object CancelProduitGBtn: TAdvToolButton
@@ -2120,7 +2120,7 @@ object ProduitGestionF: TProduitGestionF
       ShowHint = True
       Spacing = -1
       OnClick = CancelProduitGBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
   end

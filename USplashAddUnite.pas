@@ -46,7 +46,7 @@ implementation
 
 {$R *.dfm}
 
-uses System.IniFiles, Contnrs, Types, UProduitGestion, UMainF, UBonRecGestion, UFastProduitsList,
+uses System.IniFiles, Contnrs, Types,Winapi.ShellAPI, UProduitGestion, UMainF, UBonRecGestion, UFastProduitsList,
   USplashAddCompte, UBonLivGestion, UBonFacVGestion, UBonFacAGestion,
   UComptoir, UReglementCGestion, UReglementFGestion, UDataModule,
   UChargesGestion, UChargesFList, UPertesGestion, UBonFacPGestion,
@@ -1427,7 +1427,8 @@ var codeP,CodeMDPai,codeBR,CodeF,CodeUNIT: Integer;
 
   Ini: TIniFile;
   I: Integer;
-
+  aCmdLine : PChar;
+  DBName :String;
 begin
   //---This TAG = 0 for Add in Produit Famille--///
   if OKAddUniteSBtn.Tag = 0 then
@@ -3389,11 +3390,13 @@ begin
      if NameAddUniteSEdt.Text <> '' then
      begin
 
+          DBName:= Copy(StringReplace(LowerCase (NameAddUniteSEdt.Text), ' ', '', [rfReplaceAll]),1,10);
+
           //--- here we check if the database name is doenst exist already-----
           DataModuleF.SQLQuery1.Active:= False;
           DataModuleF.SQLQuery1.SQL.Clear;
           DataModuleF.SQLQuery1.SQL.Text:= 'SELECT code_db,dbname_db,dbdesc_db,createdate_db FROM dblist WHERE dbname_db LIKE '+
-              QuotedStr(Copy(StringReplace(NameAddUniteSEdt.Text, ' ', '', [rfReplaceAll]),1,10)  +'~'+CompteAddUniteSCbx.Text) ;
+              QuotedStr(DBName  +'~'+CompteAddUniteSCbx.Text) ;
           DataModuleF.SQLQuery1.Active:= true;
 
           if DataModuleF.SQLQuery1.IsEmpty then
@@ -3402,7 +3405,7 @@ begin
               //--- Here we create the database and it double db
               with DataModuleF.PSDBConfigConnection do  begin
                ExecSQL(                    //--- Here we remove the spaces and take only the fisrt 10 charactars for the db name
-                        'CREATE DATABASE "'+ Copy(StringReplace(LowerCase (NameAddUniteSEdt.Text), ' ', '', [rfReplaceAll]),1,10)  +'~'+
+                        'CREATE DATABASE "'+ DBName +'~'+
                         CompteAddUniteSCbx.Text  +
                         '" WITH OWNER = postgres '+
                              'ENCODING = ''UTF8'' '+
@@ -3410,7 +3413,7 @@ begin
                              'CONNECTION LIMIT = -1; '
                        );
                ExecSQL(                    //--- Here we remove the spaces and take only the fisrt 10 charactars for the db name
-                        'CREATE DATABASE "'+ Copy(StringReplace(LowerCase (NameAddUniteSEdt.Text), ' ', '', [rfReplaceAll]),1,10) +'~2~'+
+                        'CREATE DATABASE "'+ DBName +'~2~'+
                         CompteAddUniteSCbx.Text  +
                         '" WITH OWNER = postgres '+
                              'ENCODING = ''UTF8'' '+
@@ -3423,36 +3426,75 @@ begin
               DataModuleF.SQLQuery1.insert;
               DataModuleF.SQLQuery1.FieldByName('dbname_db').AsString:=
                 //--- Here we remove the spaces and take only the fisrt 10 charactars for the db name
-                Copy(StringReplace(LowerCase (NameAddUniteSEdt.Text), ' ', '', [rfReplaceAll]),1,10) +'~'+ CompteAddUniteSCbx.Text ;
+                DBName +'~'+ CompteAddUniteSCbx.Text ;
               DataModuleF.SQLQuery1.FieldByName('dbdesc_db').AsString:= NameAddUniteSEdt.Text ;
 
               DataModuleF.SQLQuery1.FieldByName('createdate_db').AsDateTime:= Now;
               DataModuleF.SQLQuery1.Post;
 
-              DataModuleF.SQLQuery1.Active:= False;
-              DataModuleF.SQLQuery1.SQL.Clear;
-
               //----here we check which table were checked so we can dump the contanet into the new database
-
-              if Assigned(LoginUserF.DBProduitSdr) and  LoginUserF.DBProduitSdr.SliderOn then
+              if  //---chek if any of the silders is on so we create the tables here
+                (Assigned(LoginUserF.DBProduitSdr) and  LoginUserF.DBProduitSdr.SliderOn) OR
+                (Assigned(LoginUserF.DBClientSdr) and  LoginUserF.DBClientSdr.SliderOn) OR
+                (Assigned(LoginUserF.DBFourSdr) and  LoginUserF.DBFourSdr.SliderOn)
+              then
               begin
 
+                  MainForm.GstockdcConnection.DriverName := 'PG';
+                  MainForm.GstockdcConnection.Params.Values['Server'] :='localhost';
+                  MainForm.GstockdcConnection.Params.Values['user_name'] := 'postgres';
+                  MainForm.GstockdcConnection.Params.Values['password'] := ''; // ditto
+                  MainForm.GstockdcConnection.Params.Values['Port'] := '5432';
+                  MainForm.GstockdcConnection.LoginPrompt := False;
+
+                  MainForm.GstockdcConnection.Params.Values['Database'] :=
+                    DBName +'~'+ CompteAddUniteSCbx.Text;
+
+                  MainForm.GstockdcConnection.Connected:= True;
+
+//                  MainForm.CreateTablesFDScript.ExecuteAll;
+//                  MainForm.InsertDataFDScript.ExecuteAll;
+//                  MainForm.FunctionsTriggesFDScript.ExecuteAll;
+//                  MainForm.AltersDBChangesFDScript.ExecuteAll;
+
+
+
+                //--- get the source database name-----
+                DataModuleF.SQLQuery1.Active:= False;
+                DataModuleF.SQLQuery1.SQL.Clear;
+                DataModuleF.SQLQuery1.SQL.Text:= 'SELECT dbname_db FROM dblist WHERE dbdesc_db LIKE '+ QuotedStr(LoginUserF.DBSourceDBCbx.Text) ;
+//                QuotedStr(Copy(StringReplace(NameAddUniteSEdt.Text, ' ', '', [rfReplaceAll]),1,10)  +'~'+CompteAddUniteSCbx.Text) ;
+                DataModuleF.SQLQuery1.Active:= true;
+
+                if Assigned(LoginUserF.DBProduitSdr) and  LoginUserF.DBProduitSdr.SliderOn then
+                begin
+ //""C:\Program Files (x86)\PostgreSQL\10\bin\pg_dump.exe" -U postgres -t produit "GSTOCKDC"|"C:\Program Files (x86)\PostgreSQL\10\bin\psql.exe" -U postgres "hamza~2022""
+
+                  aCmdLine:= PChar('/c ""'+GetCurrentDir+'\bin\pg_dump.exe" -U postgres -t produit "'+ DataModuleF.SQLQuery1.FieldByName('dbname_db').AsString +
+                  '"|"'+GetCurrentDir+'\bin\psql.exe" -U postgres "'+ DBName +'~'+ CompteAddUniteSCbx.Text +'""');
+
+                  ShellExecute(Handle,nil,'CMD',aCmdLine,nil,SW_HIDE);
+
+
+                end;
+
+                if Assigned(LoginUserF.DBClientSdr) and  LoginUserF.DBClientSdr.SliderOn then
+                begin
+                    aCmdLine:= PChar('/c ""'+GetCurrentDir+'\bin\pg_dump.exe" -U postgres -t client "'+ DataModuleF.SQLQuery1.FieldByName('dbname_db').AsString +
+                  '"|"'+GetCurrentDir+'\bin\psql.exe" -U postgres "'+ DBName +'~'+ CompteAddUniteSCbx.Text +'""');
+
+                  ShellExecute(Handle,nil,'CMD',aCmdLine,nil,SW_HIDE);
+                end;
+
+                if Assigned(LoginUserF.DBFourSdr) and  LoginUserF.DBFourSdr.SliderOn then
+                begin
+                   aCmdLine:= PChar('/c ""'+GetCurrentDir+'\bin\pg_dump.exe" -U postgres -t fournisseur "'+ DataModuleF.SQLQuery1.FieldByName('dbname_db').AsString +
+                  '"|"'+GetCurrentDir+'\bin\psql.exe" -U postgres "'+ DBName +'~'+ CompteAddUniteSCbx.Text +'""');
+
+                  ShellExecute(Handle,nil,'CMD',aCmdLine,nil,SW_HIDE);
+                end;
+
               end;
-
-              if Assigned(LoginUserF.DBClientSdr) and  LoginUserF.DBClientSdr.SliderOn then
-              begin
-
-              end;
-
-              if Assigned(LoginUserF.DBFourSdr) and  LoginUserF.DBFourSdr.SliderOn then
-              begin
-
-              end;
-
-
-
-
-
 
               //---here we make sure that we select the created db and set focus on pasword edt--
               LoginUserF.FolderCbxEnter(Sender);
@@ -3490,7 +3532,8 @@ begin
                  end;
               end;
 
-
+        DataModuleF.SQLQuery1.Active:= False;
+        DataModuleF.SQLQuery1.SQL.Clear;
 
          end
         else

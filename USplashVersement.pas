@@ -1109,7 +1109,7 @@ begin
             MainForm.FDQuery2.FieldValues['qut_p']:= ((MainForm.SQLQuery.FieldValues['qut_p']) * ((MainForm.SQLQuery.FieldValues['cond_p']))
                                                          + MainForm.FDQuery2.FieldValues['qut_p']);
 //            we dont change prix achter bcuz we use pmp
-//            MainForm.FDQuery2.FieldValues['prixht_p']:= MainForm.SQLQuery.FieldValues['prixht_p'];
+            MainForm.FDQuery2.FieldValues['prixht_p']:= MainForm.SQLQuery.FieldValues['prixht_p'];
             MainForm.FDQuery2.FieldByName('pmp_p').AsCurrency:=  CalcPMPonRec(MainForm.SQLQuery.FieldByName('code_p').AsInteger);
             MainForm.FDQuery2.FieldValues['tva_p']:= MainForm.SQLQuery.FieldValues['tva_p'];
             MainForm.FDQuery2.FieldByName('prixvd_p').AsCurrency:=  MainForm.SQLQuery.FieldByName('prixvd_p').AsCurrency;

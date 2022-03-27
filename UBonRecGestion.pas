@@ -2498,7 +2498,8 @@ procedure TBonRecGestionF.EditBARecBonRecGBtnClick(Sender: TObject);
             +' ((prixva_p * tva_p)/100+ prixva_p ) AS PrixVTTCA, '
             +' ((prixva2_p * tva_p)/100+ prixva2_p ) AS PrixVTTCA2, '
             +' (qut_p + qutini_p ) AS QutDispo, '
-            +' ((qut_p + qutini_p) * prixht_p ) AS ValueStock '
+            +' ((qut_p + qutini_p) * prixht_p ) AS ValueStock, '
+            +' ((qut_p + qutini_p) * prixvd_p ) AS ValueStockVD '
             +' FROM produit ' ;
            MainForm.ProduitTable.Active:=True;
            Mainform.Sqlquery.Active:=False;
@@ -2521,7 +2522,8 @@ procedure TBonRecGestionF.EditBARecBonRecGBtnClick(Sender: TObject);
             +' ((prixva_p * tva_p)/100+ prixva_p ) AS PrixVTTCA, '
             +' ((prixva2_p * tva_p)/100+ prixva2_p ) AS PrixVTTCA2, '
             +' (qut_p + qutini_p ) AS QutDispo, '
-            +' ((qut_p + qutini_p) * prixht_p ) AS ValueStock '
+            +' ((qut_p + qutini_p) * prixht_p ) AS ValueStock, '
+            +' ((qut_p + qutini_p) * prixvd_p ) AS ValueStockVD '
             +' FROM produit WHERE code_p = ' +QuotedStr(MainForm.SQLQuery.FieldValues['code_p']) ;
             MainForm.ProduitTable.Active:=True;
 
@@ -2543,7 +2545,8 @@ procedure TBonRecGestionF.EditBARecBonRecGBtnClick(Sender: TObject);
             +' ((prixva_p * tva_p)/100+ prixva_p ) AS PrixVTTCA, '
             +' ((prixva2_p * tva_p)/100+ prixva2_p ) AS PrixVTTCA2, '
             +' (qut_p + qutini_p ) AS QutDispo, '
-            +' ((qut_p + qutini_p) * prixht_p ) AS ValueStock '
+            +' ((qut_p + qutini_p) * prixht_p ) AS ValueStock, '
+            +' ((qut_p + qutini_p) * prixvd_p ) AS ValueStockVD '
             +' FROM produit ' ;
            MainForm.ProduitTable.Active:=True;
            MainForm.ProduitTable.EnableControls;

@@ -127,7 +127,7 @@ object FSplashVersement: TFSplashVersement
     ShowHint = True
     Spacing = 10
     OnClick = OKVersementSBtnClick
-    Version = '1.6.2.0'
+    Version = '1.7.2.0'
     TMSStyle = 0
   end
   object CancelVersementSBtn: TAdvToolButton
@@ -159,7 +159,7 @@ object FSplashVersement: TFSplashVersement
     ShowHint = True
     Spacing = -1
     OnClick = CancelVersementSBtnClick
-    Version = '1.6.2.0'
+    Version = '1.7.2.0'
     ExplicitTop = 381
     TMSStyle = 0
   end
@@ -646,7 +646,7 @@ object FSplashVersement: TFSplashVersement
     SmallFont.Height = -9
     SmallFont.Name = 'Segoe UI'
     SmallFont.Style = []
-    Version = '1.8.5.1'
+    Version = '1.9.2.0'
     OnKeyClick = AdvSmoothTouchKeyBoard1KeyClick
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
