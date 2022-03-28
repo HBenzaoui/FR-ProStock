@@ -6,7 +6,8 @@ uses
   Winapi.Windows, Winapi.Messages,MMSystem, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, AdvToolBtn, System.ImageList,
   Vcl.ImgList, acAlphaImageList, Vcl.ExtCtrls, Vcl.StdCtrls, acPNG, acImage,
-  Data.DB, sPanel, acSlider;
+  Data.DB, sPanel, acSlider, cxGraphics, cxControls, cxLookAndFeels,
+  cxLookAndFeelPainters, dxActivityIndicator;
 
 type
   TFSplashAddUnite = class(TForm)
@@ -24,6 +25,7 @@ type
     CompteAddUniteSCbx: TComboBox;
     CompteAddUniteSBtn: TAdvToolButton;
     CompteAddUniteSLbl: TLabel;
+    DBActivityIndicator: TdxActivityIndicator;
     procedure NameAddUniteSEdtChange(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);

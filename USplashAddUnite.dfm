@@ -307,4 +307,18 @@ object FSplashAddUnite: TFSplashAddUnite
     OnDropDown = CompteAddUniteSCbxEnter
     OnEnter = CompteAddUniteSCbxEnter
   end
+  object DBActivityIndicator: TdxActivityIndicator
+    Left = 1
+    Top = 128
+    Width = 312
+    Height = 18
+    Anchors = [akLeft, akRight, akBottom]
+    LookAndFeel.NativeStyle = False
+    PropertiesClassName = 'TdxActivityIndicatorHorizontalDotsProperties'
+    Properties.DotColor = -9539986
+    Properties.DotCount = 7
+    Properties.DotSize = 4
+    Transparent = True
+    Visible = False
+  end
 end

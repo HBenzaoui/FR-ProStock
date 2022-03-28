@@ -731,8 +731,6 @@ type
     FDEventAlerter: TFDEventAlerter;
     SQLQuery4: TFDQuery;
     ProduitTablevaluestockvd: TCurrencyField;
-    Button20: TButton;
-    Button21: TButton;
     procedure ClientMainFBtnClick(Sender: TObject);
     procedure FourMainFBtnClick(Sender: TObject);
     procedure ProduitMainFBtnClick(Sender: TObject);
@@ -882,8 +880,6 @@ type
     procedure BRVMainFMmnClick(Sender: TObject);
     procedure FDEventAlerterAlert(ASender: TFDCustomEventAlerter;
       const AEventName: string; const AArgument: Variant);
-    procedure Button20Click(Sender: TObject);
-    procedure Button21Click(Sender: TObject);
   private
    //---- this to value of changege we need it to check if theuser changed something
      CountInsert,CountUpdate,CountDelete   : Int64;
@@ -1613,72 +1609,6 @@ end;
 
 
 
-
-procedure TMainForm.Button20Click(Sender: TObject);
-var
- RestoreTask,ShowTask: ITask;
- Backupname,input,cmd,PathRS,NamePathRS : string;
- StartInfo: TStartupInfo;
- ProcInfo: TProcessInformation;
- CreateOk: boolean;
-
-begin
-
-    { fill with known state }
-    FillChar(StartInfo, SizeOf(TStartupInfo), #0);
-    FillChar(ProcInfo, SizeOf(TProcessInformation), #0);
-    StartInfo.cb := SizeOf(TStartupInfo);
-    StartInfo.dwFlags := STARTF_USESHOWWINDOW or STARTF_FORCEONFEEDBACK;
-//    NamePathRS:=  StringReplace((ExtractFileName(Application.Name)) , #32 , '_', [rfReplaceAll]) ;
-
-//    PathRS :=ExtractFilePath(Application.Name);
-    PathRS :=ExtractFilePath(Application.ExeName);
-    cmd := 'C:\Windows\System32\cmd.exe';
-    //debug
-    //  input := '/c "C:\Program Files (x86)\PostgreSQL\9.6\bin\pg_restore.exe" --username postgres --dbname='+ GstockdcConnection.Params.Database +' --no-password --clean '+ NamePathRS;
-    //pg_dump -U postgres -t produit "GSTOCKDC" | psql -U postgres "hamza~2022"
-input := '/c ""C:\Program Files (x86)\PostgreSQL\10\bin\pg_dump.exe" -a -U postgres -t produit "GSTOCKDC"|"C:\Program Files (x86)\PostgreSQL\10\bin\psql.exe" -U postgres "hamza~2022""';
-
-    GstockdcConnection.Connected:= False;
-
-          CreateOk := CreateProcess(PChar(cmd), PChar(input), nil, nil, false, CREATE_NEW_PROCESS_GROUP + NORMAL_PRIORITY_CLASS, nil,
-          nil, StartInfo, ProcInfo);
-          { check to see if successful }
-          //  if CreateOk then
-          //     may or may not be needed. Usually wait for child processes
-          WaitForSingleObject(ProcInfo.hProcess, INFINITE);
-          //    CloseHandle(ProcInfo.hProcess);
-          //    CloseHandle(ProcInfo.hThread);
-          //          RestoreTask.CheckCanceled;
-
-    GstockdcConnection.Connected:= True;
-    ActiveTables;
-    //      RerfreshTables;
-
-
-end;
-
-procedure TMainForm.Button21Click(Sender: TObject);
-begin
-// try
-// ShellExecute(0, nil, 'cmd.exe', '/c "C:\Program Files (x86)\PostgreSQL\10\bin\pg_dump.exe" -U postgres -t produit "GSTOCKDC" | "C:\Program Files (x86)\PostgreSQL\10\bin\psql.exe" -U postgres "hamza~2022"', nil, SW_SHOW);
-//     except
-//       on E : Exception do
-//       begin
-//         ShowMessage('Exception class name = '+E.ClassName);
-//        ShowMessage('Exception message = '+E.Message);
-//       end;
-//
-//     end;
-//
-
-
-     ShellExecute(Handle, Nil, 'CMD' ,
-'/c ""C:\Program Files (x86)\PostgreSQL\10\bin\pg_dump.exe" -U postgres -t produit "GSTOCKDC"|"C:\Program Files (x86)\PostgreSQL\10\bin\psql.exe" -U postgres "hamza~2022""', Nil ,
-      SW_HIDE);
-
-
-end;
 
 procedure TMainForm.Button2Click(Sender: TObject);
 begin

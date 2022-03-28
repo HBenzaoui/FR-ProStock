@@ -205,6 +205,8 @@ begin
     FSplashAddUnite.Image1.top:= FSplashAddUnite.Image1.top + 20;
     FSplashAddUnite.Image1.ImageIndex:=20;
     FSplashAddUnite.NameAddUniteSErrorP.Left:= (FSplashAddUnite.NameAddUniteSEdt.Left) - 1;
+    FSplashAddUnite.DBActivityIndicator.Width:=FSplashAddUnite.Width;
+    FSplashAddUnite.DBActivityIndicator.Top:=FSplashAddUnite.LineP.Top - 13;
     AnimateWindow(FSplashAddUnite.Handle, 175, AW_VER_POSITIVE OR AW_SLIDE OR AW_ACTIVATE );
 
     FSplashAddUnite.Show;
