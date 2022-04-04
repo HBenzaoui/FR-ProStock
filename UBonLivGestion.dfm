@@ -11656,7 +11656,7 @@ object BonLivGestionF: TBonLivGestionF
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 44655.702118263890000000
-    ReportOptions.LastChange = 44655.971197106480000000
+    ReportOptions.LastChange = 44655.972947037040000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       'begin'
@@ -12095,7 +12095,7 @@ object BonLivGestionF: TBonLivGestionF
           Font.Style = [fsBold]
           Frame.Typ = []
           Fill.BackColor = 13948116
-          HAlign = haCenter
+          HAlign = haRight
           Memo.UTF8W = (
             'TVA%')
           ParentFont = False

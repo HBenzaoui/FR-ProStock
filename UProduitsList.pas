@@ -1285,8 +1285,7 @@ end;
 
 procedure TProduitsListF.RefreshGirdBtnClick(Sender: TObject);
 begin
-  MainForm.ProduitTable.Close;
-  MainForm.ProduitTable.Open;
+  MainForm.ProduitTable.Refresh;
 end;
 
 procedure TProduitsListF.RegleFilterBVLivPMenuClick(Sender: TObject);
