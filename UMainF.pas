@@ -3533,7 +3533,8 @@ begin
    SQLQuery.SQL.Text:= 'SELECT COUNT(*) as ntable from information_schema.tables WHERE table_schema = ''public''' ;
    SQLQuery.Active:= True;
 
-     if SQLQuery.FieldByName('ntable').AsInteger <> 36 then
+     //---always update tbale numbers when we add new table
+     if SQLQuery.FieldByName('ntable').AsInteger <> 42 then
      begin
 
       CreateTablesFDScript.ExecuteAll;                                 // Eable this is only for releasing

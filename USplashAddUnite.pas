@@ -48,7 +48,8 @@ implementation
 
 {$R *.dfm}
 
-uses System.IniFiles, Contnrs, Types,Winapi.ShellAPI, UProduitGestion, UMainF, UBonRecGestion, UFastProduitsList,
+uses System.IniFiles, Contnrs, Types,Winapi.ShellAPI, Threading,
+  UProduitGestion,UMainF, UBonRecGestion, UFastProduitsList,
   USplashAddCompte, UBonLivGestion, UBonFacVGestion, UBonFacAGestion,
   UComptoir, UReglementCGestion, UReglementFGestion, UDataModule,
   UChargesGestion, UChargesFList, UPertesGestion, UBonFacPGestion,
@@ -1431,6 +1432,7 @@ var codeP,CodeMDPai,codeBR,CodeF,CodeUNIT: Integer;
   I: Integer;
   aCmdLine : PChar;
   DBName :String;
+  CreateDBTask: ITask;
 begin
   //---This TAG = 0 for Add in Produit Famille--///
   if OKAddUniteSBtn.Tag = 0 then
@@ -3392,6 +3394,13 @@ begin
      if NameAddUniteSEdt.Text <> '' then
      begin
 
+       DBActivityIndicator.Visible:= True;
+       DBActivityIndicator.Active:= True;
+       OKAddUniteSBtn.Enabled:=False;
+       CreateDBTask := TTask.Create (
+       procedure ()
+       begin
+
           DBName:= Copy(StringReplace(LowerCase (NameAddUniteSEdt.Text), ' ', '', [rfReplaceAll]),1,10);
 
           //--- here we check if the database name is doenst exist already-----
@@ -3556,8 +3565,18 @@ begin
                  end;
               end;
 
+        DBActivityIndicator.Visible:= False;
+        DBActivityIndicator.Active:= False;
+        OKAddUniteSBtn.Enabled;
+       end);
+       CreateDBTask.Start;
+
+
         DataModuleF.SQLQuery1.Active:= False;
         DataModuleF.SQLQuery1.SQL.Clear;
+
+
+
 
          end
         else

@@ -308,7 +308,7 @@ object FSplashAddUnite: TFSplashAddUnite
     OnEnter = CompteAddUniteSCbxEnter
   end
   object DBActivityIndicator: TdxActivityIndicator
-    Left = 1
+    Left = 0
     Top = 128
     Width = 312
     Height = 18
