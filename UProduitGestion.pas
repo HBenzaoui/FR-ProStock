@@ -118,6 +118,9 @@ type
     Shape1: TShape;
     PMPProduitLbl: TLabel;
     PMPProduitEdt: TEdit;
+    Label6: TLabel;
+    ComboBox1: TComboBox;
+    AdvToolButton1: TAdvToolButton;
     procedure ShowCalculaturProduitGBtnClick(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);

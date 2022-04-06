@@ -62,7 +62,7 @@ object ProduitGestionF: TProduitGestionF
           677
           579)
         object FamilleProduitGLbl: TLabel
-          Left = 52
+          Left = 36
           Top = 110
           Width = 53
           Height = 18
@@ -70,7 +70,7 @@ object ProduitGestionF: TProduitGestionF
           Color = 4207405
           Font.Charset = DEFAULT_CHARSET
           Font.Color = 4207405
-          Font.Height = 18
+          Font.Height = -15
           Font.Name = 'Roboto'
           Font.Style = []
           ParentColor = False
@@ -78,7 +78,7 @@ object ProduitGestionF: TProduitGestionF
           StyleElements = []
         end
         object RefProduitGLbl: TLabel
-          Left = 32
+          Left = 16
           Top = 17
           Width = 73
           Height = 18
@@ -86,7 +86,7 @@ object ProduitGestionF: TProduitGestionF
           Color = 4207405
           Font.Charset = DEFAULT_CHARSET
           Font.Color = 4207405
-          Font.Height = 18
+          Font.Height = -15
           Font.Name = 'Roboto'
           Font.Style = []
           ParentColor = False
@@ -94,7 +94,7 @@ object ProduitGestionF: TProduitGestionF
           StyleElements = []
         end
         object NameProduitGLbl: TLabel
-          Left = 18
+          Left = 2
           Top = 66
           Width = 87
           Height = 18
@@ -102,7 +102,7 @@ object ProduitGestionF: TProduitGestionF
           Color = 4207405
           Font.Charset = DEFAULT_CHARSET
           Font.Color = 4207405
-          Font.Height = 18
+          Font.Height = -15
           Font.Name = 'Roboto'
           Font.Style = []
           ParentColor = False
@@ -118,7 +118,7 @@ object ProduitGestionF: TProduitGestionF
           Color = 4207405
           Font.Charset = DEFAULT_CHARSET
           Font.Color = 4207405
-          Font.Height = 18
+          Font.Height = -15
           Font.Name = 'Roboto'
           Font.Style = []
           ParentColor = False
@@ -142,7 +142,7 @@ object ProduitGestionF: TProduitGestionF
           StyleElements = [seClient, seBorder]
         end
         object RequiredProduitGlbl: TLabel
-          Left = 264
+          Left = 257
           Top = 42
           Width = 203
           Height = 15
@@ -161,15 +161,15 @@ object ProduitGestionF: TProduitGestionF
           StyleElements = [seClient, seBorder]
         end
         object Label1: TLabel
-          Left = 349
+          Left = 239
           Top = 110
-          Width = 92
+          Width = 66
           Height = 18
-          Caption = 'Sous Famille:'
+          Caption = 'S.Famille:'
           Color = 4207405
           Font.Charset = DEFAULT_CHARSET
           Font.Color = 4207405
-          Font.Height = 18
+          Font.Height = -15
           Font.Name = 'Roboto'
           Font.Style = []
           ParentColor = False
@@ -177,7 +177,7 @@ object ProduitGestionF: TProduitGestionF
           StyleElements = []
         end
         object Label2: TLabel
-          Left = 65
+          Left = 49
           Top = 155
           Width = 40
           Height = 18
@@ -185,7 +185,7 @@ object ProduitGestionF: TProduitGestionF
           Color = 4207405
           Font.Charset = DEFAULT_CHARSET
           Font.Color = 4207405
-          Font.Height = 18
+          Font.Height = -15
           Font.Name = 'Roboto'
           Font.Style = []
           ParentColor = False
@@ -201,7 +201,7 @@ object ProduitGestionF: TProduitGestionF
           Color = 4207405
           Font.Charset = DEFAULT_CHARSET
           Font.Color = 4207405
-          Font.Height = 18
+          Font.Height = -15
           Font.Name = 'Roboto'
           Font.Style = []
           ParentColor = False
@@ -209,7 +209,7 @@ object ProduitGestionF: TProduitGestionF
           StyleElements = []
         end
         object Label4: TLabel
-          Left = 29
+          Left = 13
           Top = 198
           Width = 76
           Height = 18
@@ -217,7 +217,7 @@ object ProduitGestionF: TProduitGestionF
           Color = 4207405
           Font.Charset = DEFAULT_CHARSET
           Font.Color = 4207405
-          Font.Height = 18
+          Font.Height = -15
           Font.Name = 'Roboto'
           Font.Style = []
           ParentColor = False
@@ -225,7 +225,7 @@ object ProduitGestionF: TProduitGestionF
           StyleElements = []
         end
         object PerProduitGLbl: TLabel
-          Left = 159
+          Left = 140
           Top = 202
           Width = 22
           Height = 14
@@ -251,7 +251,7 @@ object ProduitGestionF: TProduitGestionF
           Enabled = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = 4207405
-          Font.Height = 18
+          Font.Height = -15
           Font.Name = 'Roboto'
           Font.Style = []
           ParentColor = False
@@ -268,7 +268,7 @@ object ProduitGestionF: TProduitGestionF
           Enabled = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = 4207405
-          Font.Height = 18
+          Font.Height = -15
           Font.Name = 'Roboto'
           Font.Style = []
           ParentColor = False
@@ -301,7 +301,7 @@ object ProduitGestionF: TProduitGestionF
           Color = 4207405
           Font.Charset = DEFAULT_CHARSET
           Font.Color = 4207405
-          Font.Height = 18
+          Font.Height = -15
           Font.Name = 'Roboto'
           Font.Style = []
           ParentColor = False
@@ -557,7 +557,7 @@ object ProduitGestionF: TProduitGestionF
           Color = 4207405
           Font.Charset = DEFAULT_CHARSET
           Font.Color = 4207405
-          Font.Height = 18
+          Font.Height = -15
           Font.Name = 'Roboto'
           Font.Style = []
           ParentColor = False
@@ -573,7 +573,7 @@ object ProduitGestionF: TProduitGestionF
           Color = 4207405
           Font.Charset = DEFAULT_CHARSET
           Font.Color = 4207405
-          Font.Height = 18
+          Font.Height = -15
           Font.Name = 'Roboto'
           Font.Style = []
           ParentColor = False
@@ -589,7 +589,7 @@ object ProduitGestionF: TProduitGestionF
           Color = 4207405
           Font.Charset = DEFAULT_CHARSET
           Font.Color = 4666873
-          Font.Height = 18
+          Font.Height = -15
           Font.Name = 'Roboto'
           Font.Style = []
           ParentColor = False
@@ -605,7 +605,7 @@ object ProduitGestionF: TProduitGestionF
           Color = 4207405
           Font.Charset = DEFAULT_CHARSET
           Font.Color = 4207405
-          Font.Height = 18
+          Font.Height = -15
           Font.Name = 'Roboto'
           Font.Style = []
           ParentColor = False
@@ -669,7 +669,7 @@ object ProduitGestionF: TProduitGestionF
           Color = 4207405
           Font.Charset = DEFAULT_CHARSET
           Font.Color = 4207405
-          Font.Height = 18
+          Font.Height = -15
           Font.Name = 'Roboto'
           Font.Style = []
           ParentColor = False
@@ -677,8 +677,8 @@ object ProduitGestionF: TProduitGestionF
           StyleElements = []
         end
         object AddSousFamilleProduitGBtn: TAdvToolButton
-          Left = 626
-          Top = 107
+          Left = 422
+          Top = 106
           Width = 26
           Height = 26
           Cursor = crHandPoint
@@ -709,8 +709,8 @@ object ProduitGestionF: TProduitGestionF
           TMSStyle = 0
         end
         object AddFamilleProduitGBtn: TAdvToolButton
-          Left = 290
-          Top = 107
+          Left = 208
+          Top = 106
           Width = 26
           Height = 26
           Cursor = crHandPoint
@@ -741,7 +741,7 @@ object ProduitGestionF: TProduitGestionF
           TMSStyle = 0
         end
         object AddUniteProduitGBtn: TAdvToolButton
-          Left = 186
+          Left = 169
           Top = 152
           Width = 26
           Height = 26
@@ -870,7 +870,7 @@ object ProduitGestionF: TProduitGestionF
           TMSStyle = 0
         end
         object RequiredRefProduitGlbl: TLabel
-          Left = 109
+          Left = 92
           Top = -2
           Width = 149
           Height = 15
@@ -929,17 +929,65 @@ object ProduitGestionF: TProduitGestionF
           Color = 4207405
           Font.Charset = DEFAULT_CHARSET
           Font.Color = 4207405
-          Font.Height = 18
+          Font.Height = -15
           Font.Name = 'Roboto'
           Font.Style = []
           ParentColor = False
           ParentFont = False
           StyleElements = []
         end
+        object Label6: TLabel
+          Left = 451
+          Top = 110
+          Width = 56
+          Height = 18
+          Caption = 'Marque:'
+          Color = 4207405
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 4207405
+          Font.Height = -15
+          Font.Name = 'Roboto'
+          Font.Style = []
+          ParentColor = False
+          ParentFont = False
+          StyleElements = []
+        end
+        object AdvToolButton1: TAdvToolButton
+          Left = 626
+          Top = 106
+          Width = 26
+          Height = 26
+          Cursor = crHandPoint
+          AutoThemeAdapt = False
+          BorderColor = clWhite
+          BorderDownColor = 7854350
+          BorderHotColor = 15970832
+          Color = clWhite
+          ColorDown = 7854350
+          ColorHot = clBtnFace
+          ColorChecked = clNone
+          DropDownSplit = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 4207405
+          Font.Height = 18
+          Font.Name = 'Roboto'
+          Font.Style = []
+          ImageIndex = 10
+          Images = MainForm.PanelIcons24
+          ParentFont = False
+          ParentShowHint = False
+          Rounded = True
+          Shaded = False
+          ShowHint = True
+          Spacing = -1
+          OnClick = AddSousFamilleProduitGBtnClick
+          Version = '1.7.2.0'
+          TMSStyle = 0
+        end
         object NameProduitGErrorP: TPanel
-          Left = 111
+          Left = 90
           Top = 60
-          Width = 516
+          Width = 535
           Height = 30
           BevelOuter = bvNone
           BevelWidth = 2
@@ -990,9 +1038,9 @@ object ProduitGestionF: TProduitGestionF
           OnKeyPress = PrixAHTProduitEdtKeyPress
         end
         object NameProduitGEdt: TEdit
-          Left = 113
+          Left = 92
           Top = 62
-          Width = 512
+          Width = 531
           Height = 26
           BevelInner = bvSpace
           BevelKind = bkFlat
@@ -1015,37 +1063,42 @@ object ProduitGestionF: TProduitGestionF
           OnMouseEnter = NameProduitGEdtMouseEnter
         end
         object FamilleProduitGCbx: TComboBox
-          Left = 111
-          Top = 107
-          Width = 178
+          Left = 92
+          Top = 106
+          Width = 115
           Height = 26
+          BevelEdges = []
+          Style = csOwnerDrawFixed
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = 18
+          Font.Height = -15
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          ItemHeight = 20
           ParentFont = False
           TabOrder = 3
           OnDropDown = FamilleProduitGCbxEnter
           OnEnter = FamilleProduitGCbxEnter
         end
         object SFamilleProduitGCbx: TComboBox
-          Left = 447
-          Top = 107
-          Width = 178
+          Left = 306
+          Top = 106
+          Width = 115
           Height = 26
+          Style = csOwnerDrawVariable
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = 18
+          Font.Height = -15
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          ItemHeight = 20
           ParentFont = False
           TabOrder = 4
           OnDropDown = SFamilleProduitGCbxEnter
           OnEnter = SFamilleProduitGCbxEnter
         end
         object UniteProduitGCbx: TComboBox
-          Left = 111
+          Left = 92
           Top = 152
           Width = 74
           Height = 26
@@ -1084,7 +1137,7 @@ object ProduitGestionF: TProduitGestionF
             '19')
         end
         object PerProduitGSlider: TsSlider
-          Left = 111
+          Left = 92
           Top = 200
           Width = 40
           Height = 16
@@ -1626,7 +1679,7 @@ object ProduitGestionF: TProduitGestionF
           StyleElements = []
         end
         object RefProduitGErrorP: TPanel
-          Left = 109
+          Left = 90
           Top = 12
           Width = 147
           Height = 30
@@ -1643,7 +1696,7 @@ object ProduitGestionF: TProduitGestionF
           StyleElements = []
         end
         object RefProduitGEdt: TEdit
-          Left = 111
+          Left = 92
           Top = 14
           Width = 143
           Height = 26
@@ -1718,6 +1771,23 @@ object ProduitGestionF: TProduitGestionF
           ReadOnly = True
           TabOrder = 38
           Text = '0'
+        end
+        object ComboBox1: TComboBox
+          Left = 508
+          Top = 106
+          Width = 115
+          Height = 26
+          Style = csOwnerDrawFixed
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -15
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = []
+          ItemHeight = 20
+          ParentFont = False
+          TabOrder = 39
+          OnDropDown = SFamilleProduitGCbxEnter
+          OnEnter = SFamilleProduitGCbxEnter
         end
       end
     end
