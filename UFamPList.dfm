@@ -51,7 +51,7 @@ object FamPListF: TFamPListF
     ShowHint = True
     Spacing = -1
     OnClick = AdvToolButton1Click
-    Version = '1.6.1.2'
+    Version = '1.7.2.0'
     TMSStyle = 0
   end
   object AdvToolButton2: TAdvToolButton
@@ -83,7 +83,7 @@ object FamPListF: TFamPListF
     ShowHint = True
     Spacing = -1
     OnClick = AdvToolButton2Click
-    Version = '1.6.1.2'
+    Version = '1.7.2.0'
     TMSStyle = 0
   end
   object AdvToolButton3: TAdvToolButton
@@ -115,7 +115,7 @@ object FamPListF: TFamPListF
     ShowHint = True
     Spacing = -2
     OnClick = AdvToolButton3Click
-    Version = '1.6.1.2'
+    Version = '1.7.2.0'
     TMSStyle = 0
   end
   object Label1: TLabel
@@ -199,7 +199,7 @@ object FamPListF: TFamPListF
       ShowHint = True
       Spacing = -1
       OnClick = OKAddCompteSBtnClick
-      Version = '1.6.1.2'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
   end
@@ -254,6 +254,7 @@ object FamPListF: TFamPListF
       item
         Alignment = taCenter
         CaseInsensitiveTextSearch = False
+        CellButtons = <>
         DynProps = <>
         EditButtons = <>
         FieldName = 'nom_famp'
