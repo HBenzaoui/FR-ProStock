@@ -936,7 +936,7 @@ object ProduitGestionF: TProduitGestionF
           ParentFont = False
           StyleElements = []
         end
-        object Label6: TLabel
+        object MarkProduitGLbl: TLabel
           Left = 451
           Top = 110
           Width = 56
@@ -952,7 +952,7 @@ object ProduitGestionF: TProduitGestionF
           ParentFont = False
           StyleElements = []
         end
-        object AdvToolButton1: TAdvToolButton
+        object AddMarkProduitGBtn: TAdvToolButton
           Left = 626
           Top = 106
           Width = 26
@@ -980,7 +980,6 @@ object ProduitGestionF: TProduitGestionF
           Shaded = False
           ShowHint = True
           Spacing = -1
-          OnClick = AddSousFamilleProduitGBtnClick
           Version = '1.7.2.0'
           TMSStyle = 0
         end
@@ -1081,7 +1080,7 @@ object ProduitGestionF: TProduitGestionF
           OnEnter = FamilleProduitGCbxEnter
         end
         object SFamilleProduitGCbx: TComboBox
-          Left = 306
+          Left = 307
           Top = 106
           Width = 115
           Height = 26
@@ -1772,7 +1771,7 @@ object ProduitGestionF: TProduitGestionF
           TabOrder = 38
           Text = '0'
         end
-        object ComboBox1: TComboBox
+        object MarkProduitGCbx: TComboBox
           Left = 508
           Top = 106
           Width = 115
@@ -1786,8 +1785,6 @@ object ProduitGestionF: TProduitGestionF
           ItemHeight = 20
           ParentFont = False
           TabOrder = 39
-          OnDropDown = SFamilleProduitGCbxEnter
-          OnEnter = SFamilleProduitGCbxEnter
         end
       end
     end
