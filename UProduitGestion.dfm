@@ -709,7 +709,7 @@ object ProduitGestionF: TProduitGestionF
           TMSStyle = 0
         end
         object AddFamilleProduitGBtn: TAdvToolButton
-          Left = 208
+          Left = 207
           Top = 106
           Width = 26
           Height = 26
@@ -980,6 +980,7 @@ object ProduitGestionF: TProduitGestionF
           Shaded = False
           ShowHint = True
           Spacing = -1
+          OnClick = AddMarkProduitGBtnClick
           Version = '1.7.2.0'
           TMSStyle = 0
         end
@@ -1785,6 +1786,8 @@ object ProduitGestionF: TProduitGestionF
           ItemHeight = 20
           ParentFont = False
           TabOrder = 39
+          OnDropDown = MarkProduitGCbxEnter
+          OnEnter = MarkProduitGCbxEnter
         end
       end
     end

@@ -226,6 +226,8 @@ type
     procedure TVAProduitGCbxKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure TVAProduitGCbxKeyPress(Sender: TObject; var Key: Char);
+    procedure MarkProduitGCbxEnter(Sender: TObject);
+    procedure AddMarkProduitGBtnClick(Sender: TObject);
 
   private
     { Private declarations }
@@ -614,6 +616,35 @@ begin
 
 end;
 
+procedure TProduitGestionF.AddMarkProduitGBtnClick(Sender: TObject);
+begin
+//-------- Show the splash screan for the produit mark to add new one---------//
+  FSplashAddUnite:=TFSplashAddUnite.Create(ProduitGestionF);
+  FSplashAddUnite.Width:= 330;
+  FSplashAddUnite.Panel1.Color:= $00B0279C;
+  FSplashAddUnite.LineP.Color:= $00B0279C;
+  FSplashAddUnite.FormCaptionAddUniteSLbl.Font.Color:= $00EFE9E8;
+  FSplashAddUnite.OKAddUniteSBtn.Left:=(FSplashAddUnite.Width div 4) - (FSplashAddUnite.OKAddUniteSBtn.Width div 2) + 18 ;
+  FSplashAddUnite.CancelAddUniteSBtn.Left:= ((FSplashAddUnite.Width div 2 )+((FSplashAddUnite.Width div 2)div 2 ) ) - (FSplashAddUnite.CancelAddUniteSBtn.Width div 2) - 18;
+  FSplashAddUnite.NameAddUniteSLbl.Caption:='Marque:';
+  FSplashAddUnite.RequiredAddUniteSlbl.Caption:='S''il vous pla�t entrer une Marque' ;
+  FSplashAddUnite.RequiredAddUniteSlbl.Left:= FSplashAddUnite.NameAddUniteSEdt.Left;
+  FSplashAddUnite.FormCaptionAddUniteSLbl.Caption:='Ajouter Marque';
+  FSplashAddUnite.RequiredStarAddUniteSLbl.Left:= (FSplashAddUnite.NameAddUniteSEdt.Left )+( FSplashAddUnite.NameAddUniteSEdt.Width) + 3 ;
+  FSplashAddUnite.FormCaptionAddUniteSLbl.Left:=( FSplashAddUnite.Width div 2) -  ( FSplashAddUnite.FormCaptionAddUniteSLbl.Width div 2);
+  FSplashAddUnite.Left:= (ProduitGestionF.Left + ProduitGestionF.Width div 2) - (FSplashAddUnite.Width div 2) ;
+  FSplashAddUnite.Top:=   MainForm.Top + 5;
+  FSplashAddUnite.NameAddUniteSLbl.Left:= (FSplashAddUnite.NameAddUniteSedt.Left )- (FSplashAddUnite.NameAddUniteSLbl.Width) - 5 ;
+  FSplashAddUnite.Image1.Visible:= True;
+  FSplashAddUnite.Image1.ImageIndex:=7;
+  FSplashAddUnite.NameAddUniteSErrorP.Left:= (FSplashAddUnite.NameAddUniteSEdt.Left) - 1;
+
+  AnimateWindow(FSplashAddUnite.Handle, 175, AW_VER_POSITIVE OR AW_SLIDE OR AW_ACTIVATE );
+  FSplashAddUnite.Show;
+  FSplashAddUnite.NameAddUniteSEdt.SetFocus;
+  FSplashAddUnite.OKAddUniteSBtn.Tag:= 0 ;
+end;
+
 procedure TProduitGestionF.ShowCalculaturProduitGBtnClick(Sender: TObject);
 begin
  WinExec('C:\Windows\system32\Calc.exe' ,SW_SHOW) ;WinExec('c:\windows\calc.exe', sw_Normal);
@@ -990,12 +1021,12 @@ begin
 
  end;
 
- if key = #13 then
-  begin
-   key := #0;
-   OKProduitGBtnClick(Sender);
-
-  end;
+// if key = #13 then
+//  begin
+//   key := #0;
+//   OKProduitGBtnClick(Sender);
+//
+//  end;
 
 end;
 
@@ -3482,6 +3513,31 @@ begin
   begin
       Key := #0;
   end;
+end;
+
+procedure TProduitGestionF.MarkProduitGCbxEnter(Sender: TObject);
+var
+I : Integer;
+
+begin
+
+   MarkProduitGCbx.Items.Clear;
+   MainForm.SQLQuery4.Active:= False;
+   MainForm.SQLQuery4.SQL.Clear;
+   MainForm.SQLQuery4.SQL.Text:= 'SELECT nom_mrkp FROM markproduit ORDER BY code_mrkp';
+   MainForm.SQLQuery4.Active:= true;
+
+    for I := 0 to MainForm.SQLQuery4.RecordCount - 1 do
+     if ( MainForm.SQLQuery4.FieldByName('nom_mrkp').IsNull = False )  then
+     begin
+       MarkProduitGCbx.Items.Add(MainForm.SQLQuery4.FieldByName('nom_mrkp').AsString );
+       MainForm.SQLQuery4.Next;
+      end;
+
+    MainForm.SQLQuery4.Active:= False;
+    MainForm.SQLQuery4.SQL.Clear;
+
+
 end;
 
 procedure TProduitGestionF.PrixVHTGProduitEdtKeyPress(Sender: TObject;
