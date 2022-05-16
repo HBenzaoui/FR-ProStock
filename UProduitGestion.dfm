@@ -30,7 +30,7 @@ object ProduitGestionF: TProduitGestionF
     Top = 0
     Width = 685
     Height = 614
-    ActivePage = GeneralClientGTB
+    ActivePage = PlusInfoClientGTB
     Align = alClient
     DoubleBuffered = True
     Font.Charset = DEFAULT_CHARSET
@@ -950,6 +950,7 @@ object ProduitGestionF: TProduitGestionF
           Font.Style = []
           ParentColor = False
           ParentFont = False
+          Visible = False
           StyleElements = []
         end
         object AddMarkProduitGBtn: TAdvToolButton
@@ -980,6 +981,7 @@ object ProduitGestionF: TProduitGestionF
           Shaded = False
           ShowHint = True
           Spacing = -1
+          Visible = False
           OnClick = AddMarkProduitGBtnClick
           Version = '1.7.2.0'
           TMSStyle = 0
@@ -1786,6 +1788,7 @@ object ProduitGestionF: TProduitGestionF
           ItemHeight = 20
           ParentFont = False
           TabOrder = 39
+          Visible = False
           OnDropDown = MarkProduitGCbxEnter
           OnEnter = MarkProduitGCbxEnter
         end
@@ -1809,9 +1812,9 @@ object ProduitGestionF: TProduitGestionF
           579)
         object ObserClientGLbl: TLabel
           Left = 11
-          Top = 254
+          Top = 414
           Width = 95
-          Height = 18
+          Height = 20
           Caption = 'Observations:'
           Color = 4207405
           Font.Charset = DEFAULT_CHARSET
@@ -2011,6 +2014,22 @@ object ProduitGestionF: TProduitGestionF
           Grayed = True
           SkinData.SkinSection = 'CHECKBOX'
         end
+        object Label6: TLabel
+          Left = 11
+          Top = 256
+          Width = 95
+          Height = 18
+          Caption = 'Les N'#176' S'#233'ries:'
+          Color = 4207405
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 4207405
+          Font.Height = 18
+          Font.Name = 'Roboto'
+          Font.Style = []
+          ParentColor = False
+          ParentFont = False
+          StyleElements = []
+        end
         object LineP03: TPanel
           Left = 0
           Top = 246
@@ -2027,9 +2046,9 @@ object ProduitGestionF: TProduitGestionF
         end
         object ObserProduitGMem: TMemo
           Left = 22
-          Top = 280
+          Top = 435
           Width = 633
-          Height = 281
+          Height = 128
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = 18
@@ -2112,6 +2131,19 @@ object ProduitGestionF: TProduitGestionF
           ParentDoubleBuffered = False
           TabOrder = 6
           StyleElements = []
+        end
+        object Memo1: TMemo
+          Left = 22
+          Top = 277
+          Width = 633
+          Height = 128
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = 18
+          Font.Name = 'Roboto'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 7
         end
       end
     end

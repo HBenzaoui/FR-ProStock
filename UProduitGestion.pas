@@ -121,6 +121,8 @@ type
     MarkProduitGLbl: TLabel;
     MarkProduitGCbx: TComboBox;
     AddMarkProduitGBtn: TAdvToolButton;
+    Memo1: TMemo;
+    Label6: TLabel;
     procedure ShowCalculaturProduitGBtnClick(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
