@@ -839,6 +839,26 @@ begin
         begin
           ProduitGestionF.ObserProduitGMem.Text := fieldbyname('obser_p').Value;
         end;
+
+        //check if it has serial numbers
+        begin
+          MainForm.SQLQuery4.Active:=false;
+          MainForm.SQLQuery4.SQL.Clear;
+          MainForm.SQLQuery4.SQL.Text:='Select * FROM n_series where code_p = '+ IntToStr(MainForm.ProduitTable.FieldByName('code_p').AsInteger);
+          MainForm.SQLQuery4.Active:=True;
+          if NOT MainForm.SQLQuery4.IsEmpty then
+          begin
+
+            MainForm.SQLQuery4.First;
+            while not MainForm.SQLQuery4.Eof do
+            begin
+              ProduitGestionF.NSeriesProduitGMem.Lines.Add(MainForm.SQLQuery4.FieldByName('nom_ns').AsString);
+              MainForm.SQLQuery4.Next;
+            end;
+
+          end;
+        end;
+
         if (fieldbyname('logo_p').Value <> null) then
         begin
           S := TMemoryStream.Create;

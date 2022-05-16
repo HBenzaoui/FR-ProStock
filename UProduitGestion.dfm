@@ -2014,7 +2014,7 @@ object ProduitGestionF: TProduitGestionF
           Grayed = True
           SkinData.SkinSection = 'CHECKBOX'
         end
-        object Label6: TLabel
+        object NSeriesProduitGLbl: TLabel
           Left = 11
           Top = 256
           Width = 95
@@ -2041,7 +2041,7 @@ object ProduitGestionF: TProduitGestionF
           DoubleBuffered = True
           ParentBackground = False
           ParentDoubleBuffered = False
-          TabOrder = 1
+          TabOrder = 5
           StyleElements = []
         end
         object ObserProduitGMem: TMemo
@@ -2055,7 +2055,7 @@ object ProduitGestionF: TProduitGestionF
           Font.Name = 'Roboto'
           Font.Style = []
           ParentFont = False
-          TabOrder = 0
+          TabOrder = 4
         end
         object LocalisationProduitGCbx: TComboBox
           Left = 112
@@ -2086,7 +2086,7 @@ object ProduitGestionF: TProduitGestionF
           Font.Style = []
           ParentDoubleBuffered = False
           ParentFont = False
-          TabOrder = 3
+          TabOrder = 0
         end
         object MaxStockProduitGCbx: TEdit
           Left = 112
@@ -2102,7 +2102,7 @@ object ProduitGestionF: TProduitGestionF
           Font.Style = []
           ParentDoubleBuffered = False
           ParentFont = False
-          TabOrder = 4
+          TabOrder = 1
         end
         object Panel3: TPanel
           Left = 478
@@ -2115,7 +2115,7 @@ object ProduitGestionF: TProduitGestionF
           DoubleBuffered = True
           ParentBackground = False
           ParentDoubleBuffered = False
-          TabOrder = 5
+          TabOrder = 6
           StyleElements = []
         end
         object Panel4: TPanel
@@ -2129,10 +2129,10 @@ object ProduitGestionF: TProduitGestionF
           DoubleBuffered = True
           ParentBackground = False
           ParentDoubleBuffered = False
-          TabOrder = 6
+          TabOrder = 7
           StyleElements = []
         end
-        object Memo1: TMemo
+        object NSeriesProduitGMem: TMemo
           Left = 22
           Top = 277
           Width = 633
@@ -2143,7 +2143,7 @@ object ProduitGestionF: TProduitGestionF
           Font.Name = 'Roboto'
           Font.Style = []
           ParentFont = False
-          TabOrder = 7
+          TabOrder = 3
         end
       end
     end

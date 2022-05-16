@@ -121,8 +121,8 @@ type
     MarkProduitGLbl: TLabel;
     MarkProduitGCbx: TComboBox;
     AddMarkProduitGBtn: TAdvToolButton;
-    Memo1: TMemo;
-    Label6: TLabel;
+    NSeriesProduitGMem: TMemo;
+    NSeriesProduitGLbl: TLabel;
     procedure ShowCalculaturProduitGBtnClick(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -1389,6 +1389,8 @@ AlertJours,MinStock,MaxStock,StockIN,StockAlert ,FamP,FamSP,UnitP,FourP,LoucP,Co
 
   testInt : Integer;
 
+  I : Integer;
+
 begin
                   //AND  TryStrToInt(NameProduitGEdt.Text,testInt) = True
  if (NameProduitGEdt.Text <> '')  then
@@ -1614,6 +1616,25 @@ begin
             end else begin fieldbyname('qutmax_p').Value:= StrToFloat('0') end;
             fieldbyname('code_l').Value := LoucP;
             fieldbyname('obser_p').Value := ObserProduitGMem.Text;
+
+            if NSeriesProduitGMem.Text<>'' then
+            begin
+              MainForm.SQLQuery4.Active:=false;
+              MainForm.SQLQuery4.SQL.Clear;
+              MainForm.SQLQuery4.SQL.Text:='Select * FROM n_series '  ;
+              MainForm.SQLQuery4.Active:=True;
+              for I := 0 to NSeriesProduitGMem.Lines.Count-1 do
+              begin
+               MainForm.SQLQuery4.Append;
+               MainForm.SQLQuery4.FieldByName('nom_ns').AsString:= NSeriesProduitGMem.Lines.Strings[i];
+               MainForm.SQLQuery4.FieldByName('code_p').AsInteger:= MainForm.ProduitTable.FieldByName('code_p').AsInteger;
+               MainForm.SQLQuery4.Post;
+              end;
+              MainForm.SQLQuery4.Active:=false;
+              MainForm.SQLQuery4.SQL.Clear;
+            end;
+
+
             {Creat the stream using BlobStream is better the to the blob dictely }
             S :=CreateBlobStream(FieldByName('logo_p'), bmWrite);
            try
@@ -2012,6 +2033,30 @@ begin
             end else begin fieldbyname('qutmax_p').Value:= StrToFloat('0') end;
             fieldbyname('code_l').Value := LoucP;
             fieldbyname('obser_p').Value := ObserProduitGMem.Text;
+            if NSeriesProduitGMem.Text<>'' then
+            begin
+              MainForm.SQLQuery4.Active:=false;
+              MainForm.SQLQuery4.SQL.Clear;
+              MainForm.SQLQuery4.SQL.Text:='Select * FROM n_series where code_p = '+ IntToStr(MainForm.ProduitTable.FieldByName('code_p').AsInteger) ;
+              MainForm.SQLQuery4.Active:=True;
+              if NOT MainForm.SQLQuery4.IsEmpty then
+              begin
+                MainForm.GstockdcConnection.ExecSQL('DELETE FROM n_series WHERE code_p = '+ IntToStr(MainForm.ProduitTable.FieldByName('code_p').AsInteger))
+              end;
+
+              for I := 0 to NSeriesProduitGMem.Lines.Count-1 do
+              begin
+               if NSeriesProduitGMem.Lines.Strings[i] <> '' then
+               begin
+                 MainForm.SQLQuery4.Append;
+                 MainForm.SQLQuery4.FieldByName('nom_ns').AsString:= NSeriesProduitGMem.Lines.Strings[i];
+                 MainForm.SQLQuery4.FieldByName('code_p').AsInteger:= MainForm.ProduitTable.FieldByName('code_p').AsInteger;
+                 MainForm.SQLQuery4.Post;
+               end;
+              end;
+              MainForm.SQLQuery4.Active:=false;
+              MainForm.SQLQuery4.SQL.Clear;
+            end;
               {Creat the stream using BlobStream is better the to the blob dictely }
               S :=CreateBlobStream(FieldByName('logo_p'), bmWrite);
                try
@@ -2031,7 +2076,7 @@ begin
                 S.Free;
                end;
              post;
-            end;
+          end;
            MainForm.ProduitTable.EnableControls;
            MainForm.FamproduitTable.Active := False;
            MainForm.FamproduitTable.sql.Clear;
