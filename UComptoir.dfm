@@ -5274,7 +5274,7 @@ object BonCtrGestionF: TBonCtrGestionF
         object Memo67: TfrxMemoView
           AllowVectorExport = True
           Left = 187.102362200000000000
-          Top = 4.425191970000010000
+          Top = 4.425191970000000000
           Width = 79.370088500000000000
           Height = 18.897650000000000000
           DataField = 'montht_bvctr'

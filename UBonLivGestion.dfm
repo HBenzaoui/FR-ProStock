@@ -3978,7 +3978,7 @@ object BonLivGestionF: TBonLivGestionF
         object OLDCreditLbl: TfrxMemoView
           AllowVectorExport = True
           Left = 55.118120000000000000
-          Top = 25.456710000000040000
+          Top = 25.456710000000000000
           Width = 98.007122760000000000
           Height = 15.639434480000000000
           Font.Charset = DEFAULT_CHARSET
@@ -3996,7 +3996,7 @@ object BonLivGestionF: TBonLivGestionF
         object OLDCredit: TfrxMemoView
           AllowVectorExport = True
           Left = 154.826840000000000000
-          Top = 23.456710000000040000
+          Top = 23.456710000000000000
           Width = 131.596362730000000000
           Height = 20.272024550000000000
           Font.Charset = DEFAULT_CHARSET
@@ -4014,7 +4014,7 @@ object BonLivGestionF: TBonLivGestionF
         object TotalACHATLbl: TfrxMemoView
           AllowVectorExport = True
           Left = 43.779530000000000000
-          Top = 49.099773329999950000
+          Top = 49.099773330000000000
           Width = 109.345712760000000000
           Height = 15.639434480000000000
           Font.Charset = DEFAULT_CHARSET
@@ -4032,7 +4032,7 @@ object BonLivGestionF: TBonLivGestionF
         object TotalACHAT: TfrxMemoView
           AllowVectorExport = True
           Left = 154.826840000000000000
-          Top = 47.099773329999950000
+          Top = 47.099773330000000000
           Width = 131.596362730000000000
           Height = 20.272024550000000000
           DataSet = frxBonLivDT
@@ -4064,7 +4064,7 @@ object BonLivGestionF: TBonLivGestionF
         object VersementLbl: TfrxMemoView
           AllowVectorExport = True
           Left = 55.118120000000000000
-          Top = 72.742836669999970000
+          Top = 72.742836670000000000
           Width = 98.007122760000000000
           Height = 15.639434480000000000
           Font.Charset = DEFAULT_CHARSET
@@ -4082,7 +4082,7 @@ object BonLivGestionF: TBonLivGestionF
         object Versement: TfrxMemoView
           AllowVectorExport = True
           Left = 154.826840000000000000
-          Top = 70.742836669999970000
+          Top = 70.742836670000000000
           Width = 131.596362730000000000
           Height = 20.272024550000000000
           DataSet = frxBonLivDT
@@ -4104,7 +4104,7 @@ object BonLivGestionF: TBonLivGestionF
         object NEWCreditLbl: TfrxMemoView
           AllowVectorExport = True
           Left = 43.779530000000000000
-          Top = 96.385899999999990000
+          Top = 96.385900000000000000
           Width = 109.345712760000000000
           Height = 15.639434480000000000
           Font.Charset = DEFAULT_CHARSET
@@ -4122,7 +4122,7 @@ object BonLivGestionF: TBonLivGestionF
         object NEWCredit: TfrxMemoView
           AllowVectorExport = True
           Left = 154.826840000000000000
-          Top = 94.385899999999990000
+          Top = 94.385900000000000000
           Width = 131.596362730000000000
           Height = 20.272024550000000000
           Font.Charset = DEFAULT_CHARSET
@@ -4302,6 +4302,13 @@ object BonLivGestionF: TBonLivGestionF
     object BondeCaisseSimple2: TMenuItem
       Caption = 'Bon de caisse sans les cr'#233'dits'
       OnClick = BondeCaisseSimple2Click
+    end
+    object N3: TMenuItem
+      Caption = '-'
+    end
+    object TicketCaisse80: TMenuItem
+      Caption = 'Ticket de caisse 80mm'
+      OnClick = TicketCaisse80Click
     end
     object N2: TMenuItem
       Caption = '-'
@@ -12863,6 +12870,1117 @@ object BonLivGestionF: TBonLivGestionF
             '[frxBonLivPListDB."tva_p"]')
           ParentFont = False
           VAlign = vaCenter
+        end
+      end
+    end
+  end
+  object TicketCaisse80frxRprt: TfrxReport
+    Version = '6.9.3'
+    DotMatrixReport = False
+    IniFile = '\Software\Fast Reports'
+    PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick, pbNoClose, pbNoFullScreen, pbNoEmail]
+    PreviewOptions.Zoom = 1.000000000000000000
+    PrintOptions.Printer = 'Par d'#233'faut'
+    PrintOptions.PrintOnSheet = 0
+    PrintOptions.ShowDialog = False
+    ReportOptions.CreateDate = 41863.570242476900000000
+    ReportOptions.LastChange = 44712.120925902770000000
+    ScriptLanguage = 'PascalScript'
+    ScriptText.Strings = (
+      '//procedure Page1OnBeforePrint(Sender: TfrxComponent);'
+      '//begin'
+      '//if <S_BL1."CLIENT"> = '#39'VENTE-COMPTOIR'#39' then'
+      '//    begin'
+      '//    memo1.Visible := True;'
+      '//    memo3.Visible := True;'
+      '//    memo6.Visible := True;'
+      '//    memo7.Visible := True;'
+      '//    memo14.Visible := False;'
+      '//    memo15.Visible := False;'
+      '//    memo16.Visible := False;'
+      '//    memo17.Visible := False;'
+      '//    memo19.Visible := False;'
+      '//    memo20.Visible := False;'
+      '//    memo21.Visible := False;'
+      '//    memo22.Visible := False;'
+      '//    end'
+      '//    else'
+      '//    begin'
+      '//    memo1.Visible := False;'
+      '//    memo3.Visible := False;'
+      '//    memo6.Visible := False;'
+      '//    memo7.Visible := False;'
+      '//    memo14.Visible := True;'
+      '//    memo15.Visible := True;'
+      '//    memo16.Visible := True;'
+      '//    memo17.Visible := True;'
+      '//    memo19.Visible := True;'
+      '//    memo20.Visible := True;'
+      '//    memo21.Visible := True;'
+      '//    memo22.Visible := True;'
+      '//    end;'
+      '//end;'
+      ''
+      '//procedure ADR_FRSOnAfterPrint(Sender: TfrxComponent);'
+      '//begin'
+      '//end;'
+      ''
+      '//procedure Memo7OnBeforePrint(Sender: TfrxComponent);'
+      '//begin'
+      
+        '//MEMO7.Text :=FormatFloat('#39'# ### ### #00.00'#39',<S_BL1."VERSER">-<' +
+        'S_BL1."TTC">);'
+      '//end;'
+      ''
+      '//procedure Footer1OnAfterPrint(Sender: TfrxComponent);'
+      '//begin'
+      ''
+      '//end;'
+      ''
+      '//procedure Memo11OnBeforePrint(Sender: TfrxComponent);'
+      '//begin'
+      
+        '//IF <TAGS>=1 THEN MEMO11.TEXT:='#39'Bon de livraison n'#176':'#39'+<PREFIX_L' +
+        '>+<S_BL1."NUM_BON">+<PREFIX_R>;'
+      
+        '//IF <TAGS>=2 THEN MEMO11.TEXT:='#39'Bon de retour  n'#176':'#39'+<PREFIX_L>+' +
+        '<S_BL1."NUM_BON">+<PREFIX_R>;'
+      
+        '//IF <TAGS>=3 THEN MEMO11.TEXT:='#39'Bon de commande n'#176':'#39'+<PREFIX_L>' +
+        '+<S_BL1."NUM_BON">+<PREFIX_R>;'
+      '//end;'
+      ''
+      '//procedure PageHeader1OnBeforePrint(Sender: TfrxComponent);'
+      '//begin'
+      '//IF <PAGE> > 1 THEN  PageHeader1.VISIBLE:=FALSE'
+      '//              ELSE  PageHeader1.VISIBLE:=TRUE;'
+      ''
+      '//end;'
+      ''
+      '//procedure ReportTitle1OnBeforePrint(Sender: TfrxComponent);'
+      '//begin'
+      '///if <S_ENTREP."LOGO"> = '#39#39' then ReportTitle1.visible := false'
+      '//                          else ReportTitle1.visible := true;'
+      '//end;'
+      ''
+      '//procedure Memo22OnBeforePrint(Sender: TfrxComponent);'
+      '//begin'
+      
+        '//IF <TAGS>=1 THEN MEMO22.TEXT:=FormatFloat('#39'# ### ##0.00'#39',<S_BL' +
+        '1."ANCIEN_SOLDE">+<S_BL1."TTC">-<S_BL1."VERSER">)  ;'
+      
+        '//IF <TAGS>=2 THEN MEMO22.TEXT:=FormatFloat('#39'# ### ##0.00'#39',<S_BL' +
+        '1."ANCIEN_SOLDE">-<S_BL1."TTC">-<S_BL1."VERSER">) ;'
+      '//end;'
+      ''
+      'begin'
+      '//Page1.LeftMargin:=<MARGE_IMP>'
+      ''
+      'end.')
+    Left = 656
+    Top = 344
+    Datasets = <
+      item
+        DataSet = frxBonLivDT
+        DataSetName = 'frxBonLivDT'
+      end
+      item
+        DataSet = frxBonLivPListDB
+        DataSetName = 'frxBonLivPListDB'
+      end>
+    Variables = <>
+    Style = <>
+    object Data: TfrxDataPage
+      Height = 1000.000000000000000000
+      Width = 1000.000000000000000000
+    end
+    object Page1: TfrxReportPage
+      PaperWidth = 73.000000000000000000
+      PaperHeight = 297.000000000000000000
+      PaperSize = 256
+      MirrorMargins = True
+      DataSetName = 'MasterData'
+      Frame.Typ = []
+      MirrorMode = []
+      OnBeforePrint = 'Page1OnBeforePrint'
+      object PageHeader1: TfrxPageHeader
+        FillType = ftBrush
+        Frame.Typ = []
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -9
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+        Height = 28.708720000000000000
+        ParentFont = False
+        Top = 196.535560000000000000
+        Width = 275.905690000000000000
+        OnBeforePrint = 'PageHeader1OnBeforePrint'
+        Stretched = True
+        object Memo18: TfrxMemoView
+          AllowVectorExport = True
+          Left = 208.031496060000000000
+          Top = 8.976377950000000000
+          Width = 60.472443390000000000
+          Height = 19.275595430000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Frame.Style = fsDashDot
+          Frame.Typ = []
+          GapY = 4.000000000000000000
+          HAlign = haRight
+          Memo.UTF8W = (
+            'TOTAL')
+          ParentFont = False
+        end
+        object Memo4: TfrxMemoView
+          AllowVectorExport = True
+          Left = 148.960730000000000000
+          Top = 8.976377950000000000
+          Width = 58.582677170000000000
+          Height = 19.275595430000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Frame.Style = fsDashDot
+          Frame.Typ = []
+          GapY = 4.000000000000000000
+          HAlign = haRight
+          Memo.UTF8W = (
+            'P.U')
+          ParentFont = False
+        end
+        object Memo5: TfrxMemoView
+          AllowVectorExport = True
+          Left = 109.385924410000000000
+          Top = 8.976377950000000000
+          Width = 39.685036930000000000
+          Height = 19.275595430000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Frame.Style = fsDashDot
+          Frame.Typ = []
+          GapY = 4.000000000000000000
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'QTE')
+          ParentFont = False
+        end
+        object Memo2: TfrxMemoView
+          AllowVectorExport = True
+          Left = 1.889763780000000000
+          Top = 8.976377950000000000
+          Width = 108.094478430000000000
+          Height = 19.275595430000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Frame.Style = fsDash
+          Frame.Typ = []
+          GapY = 4.000000000000000000
+          Memo.UTF8W = (
+            'DESCRIPTION')
+          ParentFont = False
+        end
+        object Line1: TfrxLineView
+          AllowVectorExport = True
+          Left = 3.000000000000000000
+          Top = 28.708720000000000000
+          Width = 264.567100000000000000
+          Color = clBlack
+          Frame.Style = fsDash
+          Frame.Typ = [ftTop]
+          Frame.Width = 0.500000000000000000
+          Frame.LeftLine.Color = clNone
+          Frame.TopLine.Color = clNone
+          Frame.TopLine.Style = fsDot
+          Frame.RightLine.Color = clNone
+          Frame.BottomLine.Color = clNone
+        end
+        object Line8: TfrxLineView
+          AllowVectorExport = True
+          Left = 2.779530000000000000
+          Top = 0.779529999999994000
+          Width = 264.567100000000000000
+          Color = clBlack
+          Frame.Style = fsDashDot
+          Frame.Typ = [ftTop]
+          Frame.Width = 0.600000000000000000
+          Frame.LeftLine.Color = clNone
+          Frame.TopLine.Color = clNone
+          Frame.RightLine.Color = clNone
+          Frame.BottomLine.Color = clNone
+        end
+      end
+      object PageFooter1: TfrxPageFooter
+        FillType = ftBrush
+        Frame.Typ = []
+        Height = 27.000000000000000000
+        Top = 574.488560000000000000
+        Width = 275.905690000000000000
+      end
+      object MasterData1: TfrxMasterData
+        FillType = ftBrush
+        Frame.Typ = []
+        Height = 18.897637800000000000
+        Top = 287.244280000000000000
+        Width = 275.905690000000000000
+        DataSet = frxBonLivPListDB
+        DataSetName = 'frxBonLivPListDB'
+        RowCount = 0
+        Stretched = True
+        object Memo46: TfrxMemoView
+          AllowVectorExport = True
+          Left = 110.102362200000000000
+          Top = 0.889763780000000000
+          Width = 38.551178660000000000
+          Height = 17.007874020000000000
+          StretchMode = smActualHeight
+          DataField = 'qut_p'
+          DataSet = frxBonLivPListDB
+          DataSetName = 'frxBonLivPListDB'
+          DisplayFormat.DecimalSeparator = '.'
+          DisplayFormat.ThousandSeparator = ' '
+          DisplayFormat.FormatStr = '%g'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Frame.Typ = []
+          HAlign = haCenter
+          Memo.UTF8W = (
+            '[frxBonLivPListDB."qut_p"]')
+          ParentFont = False
+          WordWrap = False
+          VAlign = vaBottom
+        end
+        object Memo47: TfrxMemoView
+          AllowVectorExport = True
+          Left = 148.787401570000000000
+          Top = 0.889763780000000000
+          Width = 60.094488190000000000
+          Height = 17.007874020000000000
+          StretchMode = smActualHeight
+          DataField = 'prixvd_p'
+          DataSet = frxBonLivPListDB
+          DataSetName = 'frxBonLivPListDB'
+          DisplayFormat.DecimalSeparator = '.'
+          DisplayFormat.ThousandSeparator = ' '
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Frame.Typ = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[frxBonLivPListDB."prixvd_p"]')
+          ParentFont = False
+          WordWrap = False
+          VAlign = vaBottom
+        end
+        object Memo50: TfrxMemoView
+          AllowVectorExport = True
+          Left = 209.031496060000000000
+          Top = 0.889763780000000000
+          Width = 60.094488190000000000
+          Height = 17.007874020000000000
+          StretchMode = smActualHeight
+          DataField = 'montantttc'
+          DataSet = frxBonLivPListDB
+          DataSetName = 'frxBonLivPListDB'
+          DisplayFormat.DecimalSeparator = '.'
+          DisplayFormat.ThousandSeparator = ' '
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Frame.Typ = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[frxBonLivPListDB."montantttc"]')
+          ParentFont = False
+          WordWrap = False
+          VAlign = vaBottom
+        end
+        object Memo24: TfrxMemoView
+          AllowVectorExport = True
+          Left = 1.889763780000000000
+          Top = 0.889763780000000000
+          Width = 108.094478430000000000
+          Height = 17.007874020000000000
+          StretchMode = smActualHeight
+          DataField = 'nomp'
+          DataSet = frxBonLivPListDB
+          DataSetName = 'frxBonLivPListDB'
+          DisplayFormat.DecimalSeparator = '.'
+          DisplayFormat.ThousandSeparator = ' '
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -9
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[frxBonLivPListDB."nomp"]')
+          ParentFont = False
+          WordWrap = False
+          VAlign = vaCenter
+        end
+      end
+      object Footer1: TfrxFooter
+        FillType = ftBrush
+        Frame.Typ = []
+        Height = 185.283532910000000000
+        Top = 328.819110000000000000
+        Width = 275.905690000000000000
+        OnAfterPrint = 'Footer1OnAfterPrint'
+        OnBeforePrint = 'Footer1OnBeforePrint'
+        Stretched = True
+        object Memo61: TfrxMemoView
+          AllowVectorExport = True
+          Left = 158.425323780000000000
+          Top = 4.425191970000000000
+          Width = 32.125964720000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -9
+          Font.Name = 'arial'
+          Font.Style = []
+          Frame.Typ = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            'Total :')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo62: TfrxMemoView
+          AllowVectorExport = True
+          Left = 150.866263780000000000
+          Top = 24.322829760000000000
+          Width = 39.685024720000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -9
+          Font.Name = 'arial'
+          Font.Style = []
+          Frame.Typ = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            'Remise :')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo63: TfrxMemoView
+          AllowVectorExport = True
+          Left = 105.842467200000000000
+          Top = 90.677177560000000000
+          Width = 73.700794720000000000
+          Height = 18.897650000000000000
+          Visible = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -9
+          Font.Name = 'arial'
+          Font.Style = []
+          Frame.Typ = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            'Net a payer:')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo67: TfrxMemoView
+          AllowVectorExport = True
+          Left = 187.102362200000000000
+          Top = 4.425191970000000000
+          Width = 79.370088500000000000
+          Height = 18.897650000000000000
+          DataField = 'montht_bvliv'
+          DataSet = frxBonLivDT
+          DataSetName = 'frxBonLivDT'
+          DisplayFormat.DecimalSeparator = '.'
+          DisplayFormat.ThousandSeparator = ' '
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Frame.Typ = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[frxBonLivDT."montht_bvliv"]')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo68: TfrxMemoView
+          AllowVectorExport = True
+          Left = 187.102362200000000000
+          Top = 24.322829760000000000
+          Width = 79.370088500000000000
+          Height = 18.897650000000000000
+          DataField = 'remise_bvliv'
+          DataSet = frxBonLivDT
+          DataSetName = 'frxBonLivDT'
+          DisplayFormat.DecimalSeparator = '.'
+          DisplayFormat.ThousandSeparator = ' '
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Frame.Typ = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[frxBonLivDT."remise_bvliv"]')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo69: TfrxMemoView
+          AllowVectorExport = True
+          Left = 88.834582200000000000
+          Top = 90.677177560000000000
+          Width = 77.480324720000000000
+          Height = 18.897650000000000000
+          Visible = False
+          DisplayFormat.DecimalSeparator = '.'
+          DisplayFormat.ThousandSeparator = ' '
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Frame.Typ = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[frxComptoirDB."montttc_bvctr"]')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object VersementLbl: TfrxMemoView
+          AllowVectorExport = True
+          Left = 1.464593780000000000
+          Top = 58.661407560000000000
+          Width = 47.244084720000000000
+          Height = 11.338590000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -8
+          Font.Name = 'arial'
+          Font.Style = []
+          Frame.Typ = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            'Versement :')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Versement: TfrxMemoView
+          AllowVectorExport = True
+          Left = 48.259752200000000000
+          Top = 58.661407560000000000
+          Width = 60.472438500000000000
+          Height = 11.338590000000000000
+          DataField = 'montver_bvliv'
+          DataSet = frxBonLivDT
+          DataSetName = 'frxBonLivDT'
+          DisplayFormat.DecimalSeparator = '.'
+          DisplayFormat.ThousandSeparator = ' '
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -8
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Frame.Typ = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[frxBonLivDT."montver_bvliv"]')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo6: TfrxMemoView
+          AllowVectorExport = True
+          Left = 131.968613780000000000
+          Top = 44.559057560000000000
+          Width = 58.582674720000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -9
+          Font.Name = 'arial'
+          Font.Style = []
+          Frame.Typ = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            'Net '#224' payer :')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo7: TfrxMemoView
+          AllowVectorExport = True
+          Left = 187.102362200000000000
+          Top = 44.559057560000000000
+          Width = 79.370088500000000000
+          Height = 18.897650000000000000
+          OnBeforePrint = 'Memo7OnBeforePrint'
+          DataField = 'montttc_bvliv'
+          DataSet = frxBonLivDT
+          DataSetName = 'frxBonLivDT'
+          DisplayFormat.DecimalSeparator = '.'
+          DisplayFormat.ThousandSeparator = ' '
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Frame.Typ = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[frxBonLivDT."montttc_bvliv"]')
+          ParentFont = False
+        end
+        object Memo8: TfrxMemoView
+          AllowVectorExport = True
+          Left = 2.669291340000000000
+          Top = 2.047307560000000000
+          Width = 39.685027170000000000
+          Height = 11.338590000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -9
+          Font.Name = 'arial'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            'Nb Prod:')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo9: TfrxMemoView
+          AllowVectorExport = True
+          Left = 43.811026060000000000
+          Top = 2.047307560000000000
+          Width = 92.598444720000000000
+          Height = 11.338590000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -9
+          Font.Name = 'arial'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[COUNT(MasterData1)]')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo10: TfrxMemoView
+          AllowVectorExport = True
+          Left = 4.000000000000000000
+          Top = 168.960730000000000000
+          Width = 264.567100000000000000
+          Height = 11.338575350000000000
+          StretchMode = smActualHeight
+          DataSetName = 'S_CONFIG'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -7
+          Font.Name = 'arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'MERCI ET A BIENTOT')
+          ParentFont = False
+        end
+        object Memo11: TfrxMemoView
+          AllowVectorExport = True
+          Left = 167.519814410000000000
+          Top = 117.653577480000000000
+          Width = 109.606345590000000000
+          Height = 19.275595430000000000
+          OnBeforePrint = 'Memo11OnBeforePrint'
+          StretchMode = smActualHeight
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            'N: [frxBonLivDT."num_bvliv"]')
+          ParentFont = False
+        end
+        object Memo12: TfrxMemoView
+          AllowVectorExport = True
+          Left = 4.000000000000000000
+          Top = 117.653577480000000000
+          Width = 102.047310000000000000
+          Height = 19.275595430000000000
+          StretchMode = smActualHeight
+          DisplayFormat.FormatStr = 'dd/mm/yyyy'
+          DisplayFormat.Kind = fkDateTime
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            'Le: [frxBonLivDT."date_bvliv"]')
+          ParentFont = False
+        end
+        object Client: TfrxMemoView
+          AllowVectorExport = True
+          Left = 4.897581650000000000
+          Top = 138.433107480000000000
+          Width = 158.740260000000000000
+          Height = 19.275595430000000000
+          StretchMode = smActualHeight
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            'Client: [frxBonLivDT."clientbvliv"]')
+          ParentFont = False
+        end
+        object Memo21: TfrxMemoView
+          AllowVectorExport = True
+          Left = 6.448821340000000000
+          Top = 14.354357560000000000
+          Width = 35.905497170000000000
+          Height = 11.338590000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -9
+          Font.Name = 'arial'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            'Mode.P:')
+          ParentFont = False
+        end
+        object Agent: TfrxMemoView
+          AllowVectorExport = True
+          Left = 167.519814410000000000
+          Top = 138.433107480000000000
+          Width = 107.716564720000000000
+          Height = 19.275595430000000000
+          StretchMode = smActualHeight
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            'Agent: [frxBonLivDT."Agent"]')
+          ParentFont = False
+        end
+        object Line2: TfrxLineView
+          AllowVectorExport = True
+          Left = 3.779530000000000000
+          Top = 2.000000000000000000
+          Width = 264.567100000000000000
+          Color = clBlack
+          Frame.Style = fsDash
+          Frame.Typ = [ftTop]
+          Frame.Width = 0.500000000000000000
+          Frame.LeftLine.Color = clNone
+          Frame.TopLine.Color = clNone
+          Frame.TopLine.Style = fsDot
+          Frame.RightLine.Color = clNone
+          Frame.BottomLine.Color = clNone
+        end
+        object Line3: TfrxLineView
+          AllowVectorExport = True
+          Left = 3.779530000000000000
+          Top = 92.811070000000000000
+          Width = 264.567100000000000000
+          StretchMode = smActualHeight
+          Color = clBlack
+          Frame.Style = fsDash
+          Frame.Typ = [ftTop]
+          Frame.Width = 0.500000000000000000
+          Frame.LeftLine.Color = clNone
+          Frame.TopLine.Color = clNone
+          Frame.TopLine.Style = fsDot
+          Frame.RightLine.Color = clNone
+          Frame.BottomLine.Color = clNone
+        end
+        object Line4: TfrxLineView
+          AllowVectorExport = True
+          Left = 3.779530000000000000
+          Top = 113.488250000000000000
+          Width = 264.567100000000000000
+          StretchMode = smActualHeight
+          Color = clBlack
+          Frame.Style = fsDash
+          Frame.Typ = [ftTop]
+          Frame.Width = 0.500000000000000000
+          Frame.LeftLine.Color = clNone
+          Frame.TopLine.Color = clNone
+          Frame.TopLine.Style = fsDot
+          Frame.RightLine.Color = clNone
+          Frame.BottomLine.Color = clNone
+        end
+        object MoneyWordRX: TfrxMemoView
+          AllowVectorExport = True
+          Left = 4.338590000000000000
+          Top = 95.590600000000000000
+          Width = 262.677297170000000000
+          Height = 15.118120000000000000
+          StretchMode = smActualHeight
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -9
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            'Moeny in words')
+          ParentFont = False
+        end
+        object Line7: TfrxLineView
+          AllowVectorExport = True
+          Left = 3.779530000000000000
+          Top = 163.063080000000000000
+          Width = 268.346630000000000000
+          Color = clBlack
+          Frame.Style = fsDash
+          Frame.Typ = [ftTop]
+          Frame.Width = 0.500000000000000000
+          Frame.LeftLine.Color = clNone
+          Frame.TopLine.Color = clNone
+          Frame.TopLine.Style = fsDot
+          Frame.RightLine.Color = clNone
+          Frame.BottomLine.Color = clNone
+        end
+        object Line5: TfrxLineView
+          AllowVectorExport = True
+          Left = 8.559060000000000000
+          Top = 184.756030000000000000
+          Width = 264.567100000000000000
+          Color = clBlack
+          Frame.Style = fsDashDot
+          Frame.Typ = [ftTop]
+          Frame.Width = 0.600000000000000000
+          Frame.LeftLine.Color = clNone
+          Frame.TopLine.Color = clNone
+          Frame.RightLine.Color = clNone
+          Frame.BottomLine.Color = clNone
+        end
+        object Memo13: TfrxMemoView
+          AllowVectorExport = True
+          Left = 107.826840000000000000
+          Top = 117.653577480000000000
+          Width = 57.448838430000000000
+          Height = 19.275595430000000000
+          StretchMode = smActualHeight
+          DisplayFormat.FormatStr = 'hh:mm'
+          DisplayFormat.Kind = fkDateTime
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '| [frxBonLivDT."time_bvliv"]')
+          ParentFont = False
+        end
+        object Memo14: TfrxMemoView
+          AllowVectorExport = True
+          Left = 94.503877200000000000
+          Top = 94.456707560000000000
+          Width = 73.700794720000000000
+          Height = 18.897650000000000000
+          Visible = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -9
+          Font.Name = 'arial'
+          Font.Style = []
+          Frame.Typ = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            'TVA :')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo15: TfrxMemoView
+          AllowVectorExport = True
+          Left = 111.511762200000000000
+          Top = 98.236237560000000000
+          Width = 77.480324720000000000
+          Height = 18.897650000000000000
+          Visible = False
+          DisplayFormat.DecimalSeparator = '.'
+          DisplayFormat.ThousandSeparator = ' '
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Frame.Typ = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[frxComptoirDB."MontantTVA"]')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object OLDCreditLbl: TfrxMemoView
+          AllowVectorExport = True
+          Left = 1.000000000000000000
+          Top = 44.779530000000000000
+          Width = 47.244084720000000000
+          Height = 11.338590000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -8
+          Font.Name = 'arial'
+          Font.Style = []
+          Frame.Typ = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            'Ancien S.:')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object OLDCredit: TfrxMemoView
+          AllowVectorExport = True
+          Left = 47.795158420000000000
+          Top = 44.779530000000000000
+          Width = 60.472438500000000000
+          Height = 11.338590000000000000
+          DataSet = frxBonLivDT
+          DataSetName = 'frxBonLivDT'
+          DisplayFormat.DecimalSeparator = '.'
+          DisplayFormat.ThousandSeparator = ' '
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -8
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Frame.Typ = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            '0,00')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object NEWCreditLbl: TfrxMemoView
+          AllowVectorExport = True
+          Top = 74.354360000000000000
+          Width = 51.023614720000000000
+          Height = 11.338590000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -8
+          Font.Name = 'arial'
+          Font.Style = []
+          Frame.Typ = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            'Nouveau S.:')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object NEWCredit: TfrxMemoView
+          AllowVectorExport = True
+          Left = 47.795158420000000000
+          Top = 74.354360000000000000
+          Width = 60.472438500000000000
+          Height = 11.338590000000000000
+          DataSet = frxBonLivDT
+          DataSetName = 'frxBonLivDT'
+          DisplayFormat.DecimalSeparator = '.'
+          DisplayFormat.ThousandSeparator = ' '
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -8
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Frame.Typ = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            '0,00')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object LineCredit: TfrxLineView
+          AllowVectorExport = True
+          Left = 2.000000000000000000
+          Top = 72.236240000000000000
+          Width = 105.826840000000000000
+          Color = clBlack
+          Frame.Style = fsDash
+          Frame.Typ = [ftTop]
+          Frame.Width = 0.500000000000000000
+          Frame.LeftLine.Color = clNone
+          Frame.TopLine.Color = clNone
+          Frame.TopLine.Style = fsDot
+          Frame.RightLine.Color = clNone
+          Frame.BottomLine.Color = clNone
+        end
+        object MPRX: TfrxMemoView
+          AllowVectorExport = True
+          Left = 43.811026060000000000
+          Top = 14.354357560000000000
+          Width = 62.362204720000000000
+          Height = 11.338590000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -9
+          Font.Name = 'arial'
+          Font.Style = []
+          Frame.Typ = []
+          ParentFont = False
+          VAlign = vaCenter
+        end
+      end
+      object ReportTitle1: TfrxReportTitle
+        FillType = ftBrush
+        Frame.Typ = []
+        Height = 155.740245350000000000
+        Top = 18.897650000000000000
+        Width = 275.905690000000000000
+        OnBeforePrint = 'ReportTitle1OnBeforePrint'
+        Stretched = True
+        object Name: TfrxMemoView
+          Align = baCenter
+          AllowVectorExport = True
+          Top = 58.252085670000000000
+          Width = 275.905690000000000000
+          Height = 49.133875350000000000
+          Visible = False
+          DataSetName = 'S_CONFIG'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -15
+          Font.Name = 'arial'
+          Font.Style = []
+          Frame.Typ = []
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'Name')
+          ParentFont = False
+        end
+        object Logo: TfrxPictureView
+          Align = baCenter
+          AllowVectorExport = True
+          Left = 5.669295000000000000
+          Top = 0.559060000000000000
+          Width = 264.567100000000000000
+          Height = 56.692876770000000000
+          Visible = False
+          Center = True
+          DataField = 'LOGO'
+          DataSetName = 'S_ENTREP'
+          Frame.Typ = []
+          HightQuality = False
+          Transparent = True
+          TransparentColor = clWhite
+        end
+        object Tel: TfrxMemoView
+          AllowVectorExport = True
+          Left = 3.905515630000000000
+          Top = 108.929190000000000000
+          Width = 133.937094370000000000
+          Height = 15.118105350000000000
+          Visible = False
+          DataSetName = 'S_CONFIG'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Frame.Typ = []
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'Tel:')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Mob: TfrxMemoView
+          AllowVectorExport = True
+          Left = 139.110409530000000000
+          Top = 108.929190000000000000
+          Width = 133.795280470000000000
+          Height = 15.118105350000000000
+          Visible = False
+          DataSetName = 'S_CONFIG'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Frame.Typ = []
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'Mob:')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Adr: TfrxMemoView
+          Align = baCenter
+          AllowVectorExport = True
+          Left = 7.559060000000000000
+          Top = 126.826840000000000000
+          Width = 260.787570000000000000
+          Height = 26.456695350000000000
+          Visible = False
+          StretchMode = smActualHeight
+          DataSetName = 'S_CONFIG'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Frame.Typ = []
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'Adr')
+          ParentFont = False
         end
       end
     end

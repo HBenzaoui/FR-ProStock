@@ -177,6 +177,9 @@ type
     BonFacturePListfrxRprt: TfrxReport;
     Bondelivraison4: TMenuItem;
     BonLivPListTVAfrxRprt: TfrxReport;
+    TicketCaisse80frxRprt: TfrxReport;
+    N3: TMenuItem;
+    TicketCaisse80: TMenuItem;
     procedure FormShow(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
@@ -247,6 +250,7 @@ type
     procedure Bondecaissesimple3Click(Sender: TObject);
     procedure BonDeFactureClick(Sender: TObject);
     procedure Bondelivraison4Click(Sender: TObject);
+    procedure TicketCaisse80Click(Sender: TObject);
   private
     { Private declarations }
     procedure GettingData;
@@ -257,6 +261,9 @@ type
     procedure GettingDataBLSimple;
     procedure GettingDataFacture;
     procedure GettingDataBLTVA;
+    procedure GettingDataTicketCaisse80;
+
+
   public
      
      const BLLSQL = 'Select BLL.code_bvliv,BLL.code_bvlivl,BLL.qut_p,BLL.prixht_p,BLL.prixvd_p,BLL.cond_p,BLL.code_p,BLL.tva_p,BLL.code_barec,P.prixht_p,P.nom_p as nomp, P.refer_p as referp,L.nom_l AS Localisation, '
@@ -2179,6 +2186,46 @@ BonLivPListfrxRprt.ShowReport;
 //BonLivPListfrxRprt.Print;   // this is to print directly
 MainForm.Bonv_liv_listTable.EnableControls;
  end;
+end;
+
+procedure TBonLivGestionF.TicketCaisse80Click(Sender: TObject);
+ var
+NEWCredit,OLDCredit,NEWCreditLbl,OLDCreditLbl , Versement,VersementLbl   : TfrxMemoView;
+LineCredit :TfrxLineView;
+begin
+if ValiderBVlivBonLivGImg.ImageIndex <> 1 then
+ begin
+MainForm.Bonv_liv_listTable.DisableControls;
+ GettingDataTicketCaisse80;
+
+   OLDCredit:= TicketCaisse80frxRprt.FindObject('OLDCredit') as TfrxMemoView;
+  OLDCredit.Visible:= True;
+  NEWCredit:= TicketCaisse80frxRprt.FindObject('NEWCredit') as TfrxMemoView;
+  NEWCredit.Visible:= True;
+  OLDCreditLbl:= TicketCaisse80frxRprt.FindObject('OLDCreditLbl') as TfrxMemoView;
+  OLDCreditLbl.Visible:= True;
+  NEWCreditLbl:= TicketCaisse80frxRprt.FindObject('NEWCreditLbl') as TfrxMemoView;
+  NEWCreditLbl.Visible:= True;
+
+
+  Versement:= TicketCaisse80frxRprt.FindObject('Versement') as TfrxMemoView;
+  Versement.Visible:= True;
+
+
+  VersementLbl:= TicketCaisse80frxRprt.FindObject('VersementLbl') as TfrxMemoView;
+  VersementLbl.Visible:= True;
+
+  LineCredit:= TicketCaisse80frxRprt.FindObject('LineCredit') as TfrxLineView;
+  LineCredit.Visible:= True;
+
+TicketCaisse80frxRprt.PrepareReport;
+//BonLivPListfrxRprt.PrintOptions.ShowDialog := False;
+TicketCaisse80frxRprt.ShowReport;
+
+//BonLivPListfrxRprt.Print;   // this is to print directly
+MainForm.Bonv_liv_listTable.EnableControls;
+ end;
+
 end;
 
 procedure TBonLivGestionF.BondeCaisseSimple1Click(Sender: TObject);
@@ -4490,6 +4537,111 @@ begin
   NEWCredit.Text:= BonLivGClientNEWCredit.Caption;
 
 end;
+
+procedure TBonLivGestionF.GettingDataTicketCaisse80;
+ var
+  MoneyWordRX,AdrRX,VilleRX,WilayaRX,MPRX,NEWCredit,OLDCredit : TfrxMemoView;
+  str1 : string;
+  Name,Tel,Mob,Adr : TfrxMemoView;
+  Logo : TfrxPictureView;
+    S: TMemoryStream;
+  Jpg: TJPEGImage;
+begin
+
+  if NOT (MainForm.CompanyTable.IsEmpty) then
+  begin
+
+    Name:= TicketCaisse80frxRprt.FindObject('Name') as TfrxMemoView;
+    Name.Text:= MainForm.CompanyTable.FieldByName('nom_comp').AsString ;
+    Name.Visible:=True;
+
+    Tel:= TicketCaisse80frxRprt.FindObject('Tel') as TfrxMemoView;
+    Tel.Text:= MainForm.CompanyTable.FieldByName('fix_comp').AsString ;
+    Tel.Visible:=True;
+
+      Mob:= TicketCaisse80frxRprt.FindObject('Mob') as TfrxMemoView;
+    Mob.Text:= MainForm.CompanyTable.FieldByName('mob_comp').AsString ;
+    Mob.Visible:=True;
+
+      Adr:= TicketCaisse80frxRprt.FindObject('Adr') as TfrxMemoView;
+    Adr.Text:= MainForm.CompanyTable.FieldByName('adr_comp').AsString ;
+    Adr.Visible:=True;
+
+      Logo:= TicketCaisse80frxRprt.FindObject('Logo') as TfrxPictureView;
+      Logo.Visible:=True;
+
+        if (MainForm.CompanyTable.fieldbyname('logo_comp').Value <> null) then
+      begin
+              S := TMemoryStream.Create;
+          try
+            TBlobField(MainForm.CompanyTable.FieldByName('logo_comp')).SaveToStream(S);
+            S.Position := 0;
+            Jpg := TJPEGImage.Create;
+            try
+              Jpg.LoadFromStream(S);
+              Logo.Picture.Assign(Jpg);
+                finally
+              Jpg.Free;
+            end;
+          finally
+            S.Free;
+          end;
+
+           end;
+
+  end;
+
+
+
+  str1:= MontantEnToutesLettres(StrToFloat(StringReplace(BonLivTotalTTCLbl.Caption, #32, '', [rfReplaceAll])));
+  str1[1] := Upcase(str1[1]);
+  MoneyWordRX := TicketCaisse80frxRprt.FindObject('MoneyWordRX') as TfrxMemoView;
+  MoneyWordRX.Text :=str1;// StringReplace(ObserBonLivGLbl.Caption, '%my_str%', 'new string', [rfReplaceAll]);
+
+//  NumRX:= TicketCaisse80frxRprt.FindObject('NumRX') as TfrxMemoView;
+//  NumRX.Text:= NumBonLivGEdt.Caption;
+
+//  DateRX:= TicketCaisse80frxRprt.FindObject('DateRX') as TfrxMemoView;
+//  DateRX.Text:= DateToStr(DateBonLivGD.Date);
+
+//  NameRX:= TicketCaisse80frxRprt.FindObject('NameRX') as TfrxMemoView;
+//  NameRX.Text:= ClientBonLivGCbx.Text;
+
+//    MainForm.SQLQuery.Active:=False;
+//    MainForm.SQLQuery.SQL.Clear;
+//    MainForm.SQLQuery.SQL.Text:='SELECT code_c,adr_c,ville_c,willaya_c'
+//    +',fix_c,mob_c,mob2_c,fax_c,rc_c,nart_c,nif_c,nis_c FROM client WHERE code_c ='
+//    + IntToStr(MainForm.Bonv_livTable.FieldByName('code_c').AsInteger);
+//    MainForm.SQLQuery.Active:=True;
+//
+//    with MainForm.SQLQuery do
+//    begin
+//      AdrRX:= TicketCaisse80frxRprt.FindObject('AdrRX') as TfrxMemoView;
+//      AdrRX.Text:= FieldByName('adr_c').AsString;
+//
+//      VilleRX:= TicketCaisse80frxRprt.FindObject('VilleRX') as TfrxMemoView;
+//      VilleRX.Text:= FieldByName('ville_c').AsString;
+//
+//      WilayaRX:= TicketCaisse80frxRprt.FindObject('WilayaRX') as TfrxMemoView;
+//      WilayaRX.Text:=  FieldByName('willaya_c').AsString;
+//    end;
+//
+//
+//    MainForm.SQLQuery.Active:=False;
+//    MainForm.SQLQuery.SQL.Clear;
+
+    MPRX:= TicketCaisse80frxRprt.FindObject('MPRX') as TfrxMemoView;
+  MPRX.Text:= ModePaieBonLivGCbx.Text;
+
+
+        OLDCredit:= TicketCaisse80frxRprt.FindObject('OLDCredit') as TfrxMemoView;
+  OLDCredit.Text:= BonLivGClientOLDCredit.Caption;
+
+
+      NEWCredit:= TicketCaisse80frxRprt.FindObject('NEWCredit') as TfrxMemoView;
+  NEWCredit.Text:= BonLivGClientNEWCredit.Caption;
+
+ end;
 
 procedure TBonLivGestionF.sSpeedButton1Click(Sender: TObject);
 begin
