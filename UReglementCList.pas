@@ -4,8 +4,7 @@ interface
 
 uses
   Winapi.Windows,DateUtils,DBGridEhImpExp,ShellAPI,
-  EhLibFireDAC,
-   Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, DBGridEhGrouping, ToolCtrlsEh,
   DBGridEhToolCtrls, DynVarsEh, Data.DB, EhLibVCL, GridsEh, DBAxisGridsEh,
   DBGridEh, Vcl.StdCtrls, Vcl.ComCtrls, Vcl.WinXCtrls, Vcl.Buttons,
@@ -74,6 +73,10 @@ type
     ApplicationEvents1: TApplicationEvents;
     ProduitListSaveDg: TSaveDialog;
     RglementClients1: TMenuItem;
+    PopupMenu1: TPopupMenu;
+    P1: TMenuItem;
+    P2: TMenuItem;
+    ReglementfrxRprt: TfrxReport;
     procedure AddBARecBtnClick(Sender: TObject);
     procedure ResearchRegCEdtChange(Sender: TObject);
     procedure DateStartRegCDChange(Sender: TObject);
@@ -115,8 +118,11 @@ type
     procedure ApplicationEvents1ShortCut(var Msg: TWMKey; var Handled: Boolean);
     procedure RglementClients1Click(Sender: TObject);
     procedure BVLivListDBGridEhSortMarkingChanged(Sender: TObject);
+    procedure P2Click(Sender: TObject);
+    procedure P1Click(Sender: TObject);
   private
     procedure GettingData;
+    procedure GettingDataRecuPai;
     procedure FilteredColor;
     procedure NOT_FilteredColor;
     procedure Select_ALL;
@@ -138,7 +144,7 @@ var
 
 implementation
 
-uses Winapi.MMSystem,Threading,
+uses Winapi.MMSystem,Threading,Vcl.Imaging.jpeg,StringTool,
   UReglementCGestion, UMainF, USplashAddUnite, USplash, UComptoir;
 
 {$R *.dfm}
@@ -790,6 +796,38 @@ begin
 MainForm.RegclientTable.First;
 end;
 
+procedure TReglementCListF.P1Click(Sender: TObject);
+begin
+ if not MainForm.RegclientTable.IsEmpty then
+ begin
+
+  MainForm.RegclientTable.DisableControls;
+
+  GettingDataRecuPai;
+
+  ReglementfrxRprt.PrepareReport;
+  ReglementfrxRprt.ShowReport;
+
+  MainForm.RegclientTable.EnableControls;
+
+
+
+
+ end;
+end;
+
+procedure TReglementCListF.P2Click(Sender: TObject);
+begin
+  MainForm.RegclientTable.DisableControls;
+
+   GettingData;
+
+  RegCListfrxRprt.PrepareReport;
+  RegCListfrxRprt.ShowReport;
+
+  MainForm.RegclientTable.EnableControls;
+end;
+
 procedure TReglementCListF.PreviosBARecbtnClick(Sender: TObject);
 begin
 MainForm.RegclientTable.Prior;
@@ -1055,6 +1093,74 @@ begin
       Agent:= RegCListfrxRprt.FindObject('Agent') as TfrxMemoView;
   Agent.Text:= MainForm.UserNameLbl.Caption ;
   end;
+
+  procedure TReglementCListF.GettingDataRecuPai;
+var
+  Name,Tel,Mob,Adr,MoneyWordRX : TfrxMemoView;
+  str1 : string;
+
+  Logo : TfrxPictureView;
+    S: TMemoryStream;
+  Jpg: TJPEGImage;
+begin
+
+
+
+  if NOT (MainForm.CompanyTable.IsEmpty) then
+  begin
+
+    Name:= ReglementfrxRprt.FindObject('Name') as TfrxMemoView;
+    Name.Text:= MainForm.CompanyTable.FieldByName('nom_comp').AsString ;
+    Name.Visible:=True;
+
+    Tel:= ReglementfrxRprt.FindObject('Tel') as TfrxMemoView;
+    Tel.Text:= MainForm.CompanyTable.FieldByName('fix_comp').AsString ;
+    Tel.Visible:=True;
+
+      Mob:= ReglementfrxRprt.FindObject('Mob') as TfrxMemoView;
+    Mob.Text:= MainForm.CompanyTable.FieldByName('mob_comp').AsString ;
+    Mob.Visible:=True;
+
+      Adr:= ReglementfrxRprt.FindObject('Adr') as TfrxMemoView;
+    Adr.Text:= MainForm.CompanyTable.FieldByName('adr_comp').AsString ;
+    Adr.Visible:=True;
+
+      Logo:= ReglementfrxRprt.FindObject('Logo') as TfrxPictureView;
+      Logo.Visible:=True;
+
+        if (MainForm.CompanyTable.fieldbyname('logo_comp').Value <> null) then
+      begin
+              S := TMemoryStream.Create;
+          try
+            TBlobField(MainForm.CompanyTable.FieldByName('logo_comp')).SaveToStream(S);
+            S.Position := 0;
+            Jpg := TJPEGImage.Create;
+            try
+              Jpg.LoadFromStream(S);
+              Logo.Picture.Assign(Jpg);
+                finally
+              Jpg.Free;
+            end;
+          finally
+            S.Free;
+          end;
+
+           end;
+
+  end;
+
+
+
+      str1:='';
+    str1:= MontantEnToutesLettres(MainForm.RegclientTable.FieldByName('montver_rc').AsCurrency);
+    str1[1] := Upcase(str1[1]);
+    MoneyWordRX := ReglementfrxRprt.FindObject('MoneyWordRX') as TfrxMemoView;
+    MoneyWordRX.Text:='';
+    MoneyWordRX.Text :=str1;// StringReplace(ObserBonLivGLbl.Caption, '%my_str%', 'new string', [rfReplaceAll]);
+
+  end;
+
+
 
 
 procedure TReglementCListF.SumGirdProduitBtnClick(Sender: TObject);

@@ -371,7 +371,7 @@ object ChargesFListF: TChargesFListF
       ShowHint = True
       Spacing = -1
       OnClick = EditBARecBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object DeleteBARecBtn: TAdvToolButton
@@ -403,7 +403,7 @@ object ChargesFListF: TChargesFListF
       ShowHint = True
       Spacing = -2
       OnClick = DeleteBARecBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object AddBARecBtn: TAdvToolButton
@@ -435,7 +435,7 @@ object ChargesFListF: TChargesFListF
       ShowHint = True
       Spacing = -1
       OnClick = AddBARecBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object ResearchBACtrLbl: TLabel
@@ -491,12 +491,11 @@ object ChargesFListF: TChargesFListF
       Top = 23
       Width = 25
       Height = 25
+      ImageIndex = 0
+      Images = MainForm.PanelIcons24
       ParentShowHint = False
       ShowHint = True
       OnClick = FisrtBARecbtnClick
-      SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
-      ImageIndex = 0
       ShowCaption = False
     end
     object PreviosBARecbtn: TsSpeedButton
@@ -504,24 +503,22 @@ object ChargesFListF: TChargesFListF
       Top = 23
       Width = 25
       Height = 25
+      ImageIndex = 1
+      Images = MainForm.PanelIcons24
       ParentShowHint = False
       ShowHint = True
       OnClick = PreviosBARecbtnClick
-      SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
-      ImageIndex = 1
     end
     object NextBARecbtn: TsSpeedButton
       Left = 465
       Top = 23
       Width = 25
       Height = 25
+      ImageIndex = 2
+      Images = MainForm.PanelIcons24
       ParentShowHint = False
       ShowHint = True
       OnClick = NextBARecbtnClick
-      SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
-      ImageIndex = 2
       ShowCaption = False
     end
     object LastBARecbtn: TsSpeedButton
@@ -529,12 +526,11 @@ object ChargesFListF: TChargesFListF
       Top = 23
       Width = 25
       Height = 25
+      ImageIndex = 3
+      Images = MainForm.PanelIcons24
       ParentShowHint = False
       ShowHint = True
       OnClick = LastBARecbtnClick
-      SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
-      ImageIndex = 3
     end
     object PeriodCaiseeListLbl: TLabel
       Left = 538
@@ -1383,7 +1379,7 @@ object ChargesFListF: TChargesFListF
       ShowHint = True
       Spacing = -2
       OnClick = SumGirdProduitBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object RefreshGirdBtn: TAdvToolButton
@@ -1417,7 +1413,7 @@ object ChargesFListF: TChargesFListF
       ShowHint = True
       Spacing = -2
       OnClick = RefreshGirdBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object AdvToolButton1: TAdvToolButton
@@ -1451,7 +1447,7 @@ object ChargesFListF: TChargesFListF
       ShowHint = True
       Spacing = -2
       OnClick = AdvToolButton1Click
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object AdvToolButton2: TAdvToolButton
@@ -1485,7 +1481,7 @@ object ChargesFListF: TChargesFListF
       ShowHint = True
       Spacing = -2
       OnClick = AdvToolButton2Click
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object AdvToolButton3: TAdvToolButton
@@ -1520,7 +1516,7 @@ object ChargesFListF: TChargesFListF
       Shaded = False
       ShowHint = True
       Spacing = -2
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object Panel5: TPanel
@@ -1586,7 +1582,7 @@ object ChargesFListF: TChargesFListF
     Top = 618
   end
   object ChargeListfrxRprt: TfrxReport
-    Version = '6.3.12'
+    Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -2428,6 +2424,7 @@ object ChargesFListF: TChargesFListF
     OverwritePrompt = True
     DataOnly = False
     EmbeddedFonts = True
+    InteractiveFormsFontSubset = 'A-Z,a-z,0-9,#43-#47 '
     OpenAfterExport = True
     PrintOptimized = False
     Outline = False
@@ -2464,7 +2461,7 @@ object ChargesFListF: TChargesFListF
     end
   end
   object ChargefrxRprt: TfrxReport
-    Version = '6.3.12'
+    Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -2472,7 +2469,7 @@ object ChargesFListF: TChargesFListF
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 42576.399521435200000000
-    ReportOptions.LastChange = 42744.700686724540000000
+    ReportOptions.LastChange = 44716.546708599540000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       ''
@@ -2616,8 +2613,6 @@ object ChargesFListF: TChargesFListF
           Frame.Style = fsDot
           Frame.Typ = [ftBottom]
           Frame.Width = 0.100000000000000000
-          Memo.UTF8W = (
-            'Nous soussign'#233's:')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -2864,8 +2859,8 @@ object ChargesFListF: TChargesFListF
           AllowVectorExport = True
           Left = 4.889765000000000000
           Top = 2.220545670000000000
-          Width = 260.787570000000000000
-          Height = 22.677165350000000000
+          Width = 464.882190000000000000
+          Height = 26.456695350000000000
           Visible = False
           DataSetName = 'S_CONFIG'
           Font.Charset = ANSI_CHARSET
@@ -2897,8 +2892,8 @@ object ChargesFListF: TChargesFListF
           AllowVectorExport = True
           Left = 6.015750630000000000
           Top = 29.236240000000000000
-          Width = 149.055214370000000000
-          Height = 15.118105350000000000
+          Width = 462.756204370000000000
+          Height = 18.897635350000000000
           Visible = False
           DataSetName = 'S_CONFIG'
           Font.Charset = ANSI_CHARSET
@@ -2915,8 +2910,8 @@ object ChargesFListF: TChargesFListF
           AllowVectorExport = True
           Left = 6.015750630000000000
           Top = 51.913420000000000000
-          Width = 148.913400470000000000
-          Height = 15.118105350000000000
+          Width = 462.614390470000000000
+          Height = 18.897635350000000000
           Visible = False
           DataSetName = 'S_CONFIG'
           Font.Charset = ANSI_CHARSET
@@ -2933,8 +2928,8 @@ object ChargesFListF: TChargesFListF
           AllowVectorExport = True
           Left = 4.889765000000000000
           Top = 73.811070000000000000
-          Width = 215.433210000000000000
-          Height = 34.015755350000000000
+          Width = 234.330860000000000000
+          Height = 49.133875350000000000
           Visible = False
           StretchMode = smActualHeight
           DataSetName = 'S_CONFIG'
