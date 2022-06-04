@@ -854,8 +854,8 @@ var
       try
 
 
-         BonRecGestionF.NumBonRecGEdt.Caption := MainForm.Bona_recTable.FieldValues['num_barec'];
-         BonRecGestionF.DateBonRecGD.Date:= MainForm.Bona_recTable.FieldValues['date_barec'];
+         BonRecGestionF.NumBonRecGEdt.Caption := MainForm.Bona_recTable.FieldByName('num_barec').AsString;
+         BonRecGestionF.DateBonRecGD.Date:= MainForm.Bona_recTable.FieldByName('date_barec').AsDateTime;
          BonRecGestionF.ObserBonRecGMem.Lines.Text := MainForm.Bona_recTable.FieldByName('obser_barec').AsString;
          if (MainForm.Bona_recTable.FieldValues['code_f']<> null) and (MainForm.Bona_recTable.FieldValues['code_f']<> 0) then
          begin

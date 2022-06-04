@@ -781,8 +781,8 @@ begin
     BonFacAGestionF := TBonFacAGestionF.Create(nil);
     try
 //       MainForm.Bona_facTable.Refresh;
-       BonFacAGestionF.NumBonFacAGEdt.Caption := MainForm.Bona_facTable.FieldValues['num_bafac'];
-       BonFacAGestionF.DateBonFacAGD.Date:= MainForm.Bona_facTable.FieldValues['date_bafac'];
+       BonFacAGestionF.NumBonFacAGEdt.Caption := MainForm.Bona_facTable.FieldByName('num_bafac').AsString;
+       BonFacAGestionF.DateBonFacAGD.Date:= MainForm.Bona_facTable.FieldByName('date_bafac').AsDateTime;
        BonFacAGestionF.ObserBonFacAGMem.Lines.Text := MainForm.Bona_facTable.FieldByName('obser_bafac').AsString;
        if (MainForm.Bona_facTable.FieldValues['code_f']<> null) and (MainForm.Bona_facTable.FieldValues['code_f']<> 0) then
        begin

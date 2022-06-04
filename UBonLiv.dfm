@@ -370,7 +370,7 @@ object BonLivF: TBonLivF
       ShowHint = True
       Spacing = -1
       OnClick = EditBVLivBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object DeleteBVLivBtn: TAdvToolButton
@@ -402,7 +402,7 @@ object BonLivF: TBonLivF
       ShowHint = True
       Spacing = -2
       OnClick = DeleteBVLivBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object AddBVLivBtn: TAdvToolButton
@@ -434,7 +434,7 @@ object BonLivF: TBonLivF
       ShowHint = True
       Spacing = -1
       OnClick = AddBVLivBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object ResearchBALivLbl: TLabel
@@ -516,7 +516,7 @@ object BonLivF: TBonLivF
       Shaded = False
       ShowHint = True
       Spacing = -1
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object FisrtBARecbtn: TsSpeedButton
@@ -524,12 +524,11 @@ object BonLivF: TBonLivF
       Top = 23
       Width = 25
       Height = 25
+      ImageIndex = 0
+      Images = MainForm.PanelIcons24
       ParentShowHint = False
       ShowHint = True
       OnClick = FisrtBARecbtnClick
-      SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
-      ImageIndex = 0
       ShowCaption = False
     end
     object LastBARecbtn: TsSpeedButton
@@ -537,24 +536,22 @@ object BonLivF: TBonLivF
       Top = 23
       Width = 25
       Height = 25
+      ImageIndex = 3
+      Images = MainForm.PanelIcons24
       ParentShowHint = False
       ShowHint = True
       OnClick = LastBARecbtnClick
-      SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
-      ImageIndex = 3
     end
     object NextBARecbtn: TsSpeedButton
       Left = 502
       Top = 23
       Width = 25
       Height = 25
+      ImageIndex = 2
+      Images = MainForm.PanelIcons24
       ParentShowHint = False
       ShowHint = True
       OnClick = NextBARecbtnClick
-      SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
-      ImageIndex = 2
       ShowCaption = False
     end
     object PreviosBARecbtn: TsSpeedButton
@@ -562,12 +559,11 @@ object BonLivF: TBonLivF
       Top = 23
       Width = 25
       Height = 25
+      ImageIndex = 1
+      Images = MainForm.PanelIcons24
       ParentShowHint = False
       ShowHint = True
       OnClick = PreviosBARecbtnClick
-      SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
-      ImageIndex = 1
     end
     object sImage1: TsImage
       Left = 564
@@ -1497,7 +1493,7 @@ object BonLivF: TBonLivF
       ShowHint = True
       Spacing = -2
       OnClick = SumGirdBBVlivBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object RefreshGirdBtn: TAdvToolButton
@@ -1531,7 +1527,7 @@ object BonLivF: TBonLivF
       ShowHint = True
       Spacing = -2
       OnClick = RefreshGirdBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object AdvToolButton1: TAdvToolButton
@@ -1565,7 +1561,7 @@ object BonLivF: TBonLivF
       ShowHint = True
       Spacing = -2
       OnClick = AdvToolButton1Click
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object AdvToolButton2: TAdvToolButton
@@ -1599,7 +1595,7 @@ object BonLivF: TBonLivF
       ShowHint = True
       Spacing = -2
       OnClick = AdvToolButton2Click
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object AdvToolButton3: TAdvToolButton
@@ -1633,7 +1629,7 @@ object BonLivF: TBonLivF
       ShowHint = True
       Spacing = -2
       OnClick = AdvToolButton3Click
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object S01: TPanel
@@ -1717,6 +1713,7 @@ object BonLivF: TBonLivF
     OverwritePrompt = True
     DataOnly = False
     EmbeddedFonts = True
+    InteractiveFormsFontSubset = 'A-Z,a-z,0-9,#43-#47 '
     OpenAfterExport = True
     PrintOptimized = False
     Outline = False
@@ -1773,7 +1770,7 @@ object BonLivF: TBonLivF
     Top = 392
   end
   object BonLivfrxRprt: TfrxReport
-    Version = '6.3.12'
+    Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -1860,6 +1857,8 @@ object BonLivF: TBonLivF
       Width = 1000.000000000000000000
     end
     object Page1: TfrxReportPage
+      HGuides.Strings = (
+        '113,3859')
       Orientation = poLandscape
       PaperWidth = 297.000000000000000000
       PaperHeight = 210.000000000000000000
@@ -1870,8 +1869,6 @@ object BonLivF: TBonLivF
       BottomMargin = 10.000000000000000000
       Frame.Typ = []
       MirrorMode = []
-      HGuides.Strings = (
-        '113,3859')
       object PageHeader1: TfrxPageHeader
         FillType = ftBrush
         Frame.Typ = []

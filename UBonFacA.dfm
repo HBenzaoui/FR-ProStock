@@ -911,7 +911,7 @@ object BonFacAF: TBonFacAF
       ShowHint = True
       Spacing = -1
       OnClick = EditBAFacBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object DeleteBAFacBtn: TAdvToolButton
@@ -943,7 +943,7 @@ object BonFacAF: TBonFacAF
       ShowHint = True
       Spacing = -2
       OnClick = DeleteBAFacBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object AddBAFacBtn: TAdvToolButton
@@ -975,7 +975,7 @@ object BonFacAF: TBonFacAF
       ShowHint = True
       Spacing = -1
       OnClick = AddBAFacBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object ResearchBARecLbl: TLabel
@@ -1031,12 +1031,11 @@ object BonFacAF: TBonFacAF
       Top = 23
       Width = 25
       Height = 25
+      ImageIndex = 0
+      Images = MainForm.PanelIcons24
       ParentShowHint = False
       ShowHint = True
       OnClick = FisrtBAFacbtnClick
-      SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
-      ImageIndex = 0
       ShowCaption = False
     end
     object PreviosBAFacbtn: TsSpeedButton
@@ -1044,24 +1043,22 @@ object BonFacAF: TBonFacAF
       Top = 23
       Width = 25
       Height = 25
+      ImageIndex = 1
+      Images = MainForm.PanelIcons24
       ParentShowHint = False
       ShowHint = True
       OnClick = PreviosBAFacbtnClick
-      SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
-      ImageIndex = 1
     end
     object NextBAFacbtn: TsSpeedButton
       Left = 502
       Top = 23
       Width = 25
       Height = 25
+      ImageIndex = 2
+      Images = MainForm.PanelIcons24
       ParentShowHint = False
       ShowHint = True
       OnClick = NextBAFacbtnClick
-      SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
-      ImageIndex = 2
       ShowCaption = False
     end
     object LastBAFacbtn: TsSpeedButton
@@ -1069,12 +1066,11 @@ object BonFacAF: TBonFacAF
       Top = 23
       Width = 25
       Height = 25
+      ImageIndex = 3
+      Images = MainForm.PanelIcons24
       ParentShowHint = False
       ShowHint = True
       OnClick = LastBAFacbtnClick
-      SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
-      ImageIndex = 3
     end
     object FilterBVLivBtn: TAdvToolButton
       Left = 562
@@ -1107,7 +1103,7 @@ object BonFacAF: TBonFacAF
       Shaded = False
       ShowHint = True
       Spacing = -1
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object sImage6: TsImage
@@ -1434,7 +1430,7 @@ object BonFacAF: TBonFacAF
       ShowHint = True
       Spacing = -2
       OnClick = SumGirdBAFacBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object RefreshGirdBtn: TAdvToolButton
@@ -1468,7 +1464,7 @@ object BonFacAF: TBonFacAF
       ShowHint = True
       Spacing = -2
       OnClick = RefreshGirdBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object AdvToolButton1: TAdvToolButton
@@ -1502,7 +1498,7 @@ object BonFacAF: TBonFacAF
       ShowHint = True
       Spacing = -2
       OnClick = AdvToolButton1Click
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object AdvToolButton2: TAdvToolButton
@@ -1536,7 +1532,7 @@ object BonFacAF: TBonFacAF
       ShowHint = True
       Spacing = -2
       OnClick = AdvToolButton2Click
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object AdvToolButton3: TAdvToolButton
@@ -1570,7 +1566,7 @@ object BonFacAF: TBonFacAF
       ShowHint = True
       Spacing = -2
       OnClick = AdvToolButton3Click
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object Panel5: TPanel
@@ -1631,7 +1627,7 @@ object BonFacAF: TBonFacAF
     end
   end
   object BonFacAfrxRprt: TfrxReport
-    Version = '6.3.12'
+    Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -1718,6 +1714,14 @@ object BonFacAF: TBonFacAF
       Width = 1000.000000000000000000
     end
     object Page1: TfrxReportPage
+      HGuides.Strings = (
+        '113,3859')
+      VGuides.Strings = (
+        '11,33859'
+        '196,53556'
+        '597,16574'
+        '952,44156'
+        '105,82684')
       Orientation = poLandscape
       PaperWidth = 297.000000000000000000
       PaperHeight = 210.000000000000000000
@@ -1728,14 +1732,6 @@ object BonFacAF: TBonFacAF
       BottomMargin = 10.000000000000000000
       Frame.Typ = []
       MirrorMode = []
-      HGuides.Strings = (
-        '113,3859')
-      VGuides.Strings = (
-        '11,33859'
-        '196,53556'
-        '597,16574'
-        '952,44156'
-        '105,82684')
       object PageHeader1: TfrxPageHeader
         FillType = ftBrush
         Frame.Typ = []
@@ -2622,6 +2618,7 @@ object BonFacAF: TBonFacAF
     OverwritePrompt = True
     DataOnly = False
     EmbeddedFonts = True
+    InteractiveFormsFontSubset = 'A-Z,a-z,0-9,#43-#47 '
     OpenAfterExport = True
     PrintOptimized = False
     Outline = False

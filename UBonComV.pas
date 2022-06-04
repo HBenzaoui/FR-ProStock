@@ -838,7 +838,7 @@ begin
     try
        DataModuleF.Bonv_com_listTable.Active := True;
        BonComVGestionF.NumBonComGEdt.Caption := DataModuleF.Bonv_comTable.FieldByName('num_bvcom').AsString;
-       BonComVGestionF.DateBonComGD.Date:= DataModuleF.Bonv_comTable.FieldValues['date_bvcom'];
+       BonComVGestionF.DateBonComGD.Date:= DataModuleF.Bonv_comTable.FieldByName('date_bvcom').AsDateTime;
        BonComVGestionF.ObserBonComGMem.Lines.Text := DataModuleF.Bonv_comTable.FieldByName('obser_bvcom').AsString;
        if (DataModuleF.Bonv_comTable.FieldValues['code_c']<> null) and (DataModuleF.Bonv_comTable.FieldValues['code_c']<> 0) then
        begin

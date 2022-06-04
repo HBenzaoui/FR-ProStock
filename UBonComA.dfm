@@ -910,7 +910,7 @@ object BonComAF: TBonComAF
       ShowHint = True
       Spacing = -1
       OnClick = EditBAComBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object DeleteBAComBtn: TAdvToolButton
@@ -942,7 +942,7 @@ object BonComAF: TBonComAF
       ShowHint = True
       Spacing = -2
       OnClick = DeleteBAComBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object AddBAComBtn: TAdvToolButton
@@ -974,13 +974,13 @@ object BonComAF: TBonComAF
       ShowHint = True
       Spacing = -1
       OnClick = AddBAComBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object ResearchBAComLbl: TLabel
       Left = 3
       Top = 31
-      Width = 76
+      Width = 74
       Height = 16
       Caption = 'Rechercher'
       Color = 15722984
@@ -1030,24 +1030,22 @@ object BonComAF: TBonComAF
       Top = 23
       Width = 25
       Height = 25
+      ImageIndex = 1
+      Images = MainForm.PanelIcons24
       ParentShowHint = False
       ShowHint = True
       OnClick = PreviosBACombtnClick
-      SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
-      ImageIndex = 1
     end
     object NextBACombtn: TsSpeedButton
       Left = 502
       Top = 23
       Width = 25
       Height = 25
+      ImageIndex = 2
+      Images = MainForm.PanelIcons24
       ParentShowHint = False
       ShowHint = True
       OnClick = NextBACombtnClick
-      SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
-      ImageIndex = 2
       ShowCaption = False
     end
     object LastBACombtn: TsSpeedButton
@@ -1055,24 +1053,22 @@ object BonComAF: TBonComAF
       Top = 23
       Width = 25
       Height = 25
+      ImageIndex = 3
+      Images = MainForm.PanelIcons24
       ParentShowHint = False
       ShowHint = True
       OnClick = LastBACombtnClick
-      SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
-      ImageIndex = 3
     end
     object FisrtBACombtn: TsSpeedButton
       Left = 442
       Top = 23
       Width = 25
       Height = 25
+      ImageIndex = 0
+      Images = MainForm.PanelIcons24
       ParentShowHint = False
       ShowHint = True
       OnClick = FisrtBACombtnClick
-      SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
-      ImageIndex = 0
       ShowCaption = False
     end
     object FilterBVLivBtn: TAdvToolButton
@@ -1106,7 +1102,7 @@ object BonComAF: TBonComAF
       Shaded = False
       ShowHint = True
       Spacing = -1
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object sImage1: TsImage
@@ -1433,7 +1429,7 @@ object BonComAF: TBonComAF
       ShowHint = True
       Spacing = -2
       OnClick = SumGirdBAComBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object RefreshGirdBtn: TAdvToolButton
@@ -1467,7 +1463,7 @@ object BonComAF: TBonComAF
       ShowHint = True
       Spacing = -2
       OnClick = RefreshGirdBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object AdvToolButton1: TAdvToolButton
@@ -1501,7 +1497,7 @@ object BonComAF: TBonComAF
       ShowHint = True
       Spacing = -2
       OnClick = AdvToolButton1Click
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object AdvToolButton2: TAdvToolButton
@@ -1535,7 +1531,7 @@ object BonComAF: TBonComAF
       ShowHint = True
       Spacing = -2
       OnClick = AdvToolButton2Click
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object AdvToolButton3: TAdvToolButton
@@ -1569,7 +1565,7 @@ object BonComAF: TBonComAF
       ShowHint = True
       Spacing = -2
       OnClick = AdvToolButton3Click
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object Panel5: TPanel
@@ -1687,6 +1683,7 @@ object BonComAF: TBonComAF
     OverwritePrompt = True
     DataOnly = False
     EmbeddedFonts = True
+    InteractiveFormsFontSubset = 'A-Z,a-z,0-9,#43-#47 '
     OpenAfterExport = True
     PrintOptimized = False
     Outline = False
@@ -1710,7 +1707,7 @@ object BonComAF: TBonComAF
     Top = 480
   end
   object BonComAfrxRprt: TfrxReport
-    Version = '6.3.12'
+    Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -1797,6 +1794,13 @@ object BonComAF: TBonComAF
       Width = 1000.000000000000000000
     end
     object Page1: TfrxReportPage
+      HGuides.Strings = (
+        '113,3859')
+      VGuides.Strings = (
+        '11,33859'
+        '196,53556'
+        '574,48856'
+        '952,44156')
       Orientation = poLandscape
       PaperWidth = 297.000000000000000000
       PaperHeight = 210.000000000000000000
@@ -1807,13 +1811,6 @@ object BonComAF: TBonComAF
       BottomMargin = 10.000000000000000000
       Frame.Typ = []
       MirrorMode = []
-      HGuides.Strings = (
-        '113,3859')
-      VGuides.Strings = (
-        '11,33859'
-        '196,53556'
-        '574,48856'
-        '952,44156')
       object PageHeader1: TfrxPageHeader
         FillType = ftBrush
         Frame.Typ = []

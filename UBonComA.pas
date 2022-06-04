@@ -854,8 +854,8 @@ var
       try
 
 
-         BonComAGestionF.NumBonComGEdt.Caption := DataModuleF.Bona_comTable.FieldValues['num_bacom'];
-         BonComAGestionF.DateBonComGD.Date:= DataModuleF.Bona_comTable.FieldValues['date_bacom'];
+         BonComAGestionF.NumBonComGEdt.Caption := DataModuleF.Bona_comTable.FieldByName('num_bacom').AsString;
+         BonComAGestionF.DateBonComGD.Date:= DataModuleF.Bona_comTable.FieldByName('date_bacom').AsDateTime;
          BonComAGestionF.ObserBonComGMem.Lines.Text := DataModuleF.Bona_comTable.FieldByName('obser_bacom').AsString;
          if (DataModuleF.Bona_comTable.FieldValues['code_f']<> null) and (DataModuleF.Bona_comTable.FieldValues['code_f']<> 0) then
          begin

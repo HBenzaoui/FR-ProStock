@@ -425,7 +425,7 @@ object BonRetVGestionF: TBonRetVGestionF
       ShowHint = True
       Spacing = -1
       OnClick = EditBVRetBonRetGBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object AddBVRetBonRetGBtn: TAdvToolButton
@@ -458,13 +458,13 @@ object BonRetVGestionF: TBonRetVGestionF
       ShowHint = True
       Spacing = -1
       OnClick = AddBVRetBonRetGBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object Label4: TLabel
       Left = 9
       Top = 252
-      Width = 93
+      Width = 92
       Height = 18
       Anchors = [akLeft, akBottom]
       Caption = 'Les Produits:'
@@ -484,12 +484,11 @@ object BonRetVGestionF: TBonRetVGestionF
       Width = 30
       Height = 30
       Anchors = [akTop, akRight]
+      ImageIndex = 7
+      Images = MainForm.PanelIcons24
       ParentShowHint = False
       ShowHint = True
       OnClick = sSpeedButton4Click
-      SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
-      ImageIndex = 7
       ExplicitLeft = 1009
     end
     object sSpeedButton5: TsSpeedButton
@@ -498,13 +497,12 @@ object BonRetVGestionF: TBonRetVGestionF
       Width = 39
       Height = 30
       Anchors = [akTop, akRight]
+      ImageIndex = 8
+      Images = MainForm.PanelIcons24
       ParentShowHint = False
       ShowHint = True
       ButtonStyle = tbsDropDown
-      SkinData.SkinSection = 'SPEEDBUTTON'
       DropdownMenu = PopupMenu1
-      Images = MainForm.PanelIcons24
-      ImageIndex = 8
       ExplicitLeft = 964
     end
     object sSpeedButton6: TsSpeedButton
@@ -513,12 +511,11 @@ object BonRetVGestionF: TBonRetVGestionF
       Width = 30
       Height = 30
       Anchors = [akTop, akRight]
+      ImageIndex = 9
+      Images = MainForm.PanelIcons24
       ParentShowHint = False
       ShowHint = True
       OnClick = sSpeedButton6Click
-      SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
-      ImageIndex = 9
       ExplicitLeft = 1045
     end
     object Label5: TLabel
@@ -599,7 +596,7 @@ object BonRetVGestionF: TBonRetVGestionF
       ShowHint = True
       Spacing = -1
       OnClick = AddClientBonRetGBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object Label8: TLabel
@@ -648,7 +645,7 @@ object BonRetVGestionF: TBonRetVGestionF
       ShowHint = True
       Spacing = -1
       OnClick = ValiderBVRetBonRetGBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object Label7: TLabel
@@ -696,7 +693,7 @@ object BonRetVGestionF: TBonRetVGestionF
       ShowHint = True
       Spacing = -1
       OnClick = AddModePaieBonRetGBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object Label16: TLabel
@@ -744,7 +741,7 @@ object BonRetVGestionF: TBonRetVGestionF
       ShowHint = True
       Spacing = -1
       OnClick = AddCompteBonRetGBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object ListAddProduitBonRetGBtn: TAdvToolButton
@@ -777,7 +774,7 @@ object BonRetVGestionF: TBonRetVGestionF
       ShowHint = True
       Spacing = -1
       OnClick = ListAddProduitBonRetGBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object DeleteProduitBonRetGBtn: TAdvToolButton
@@ -811,7 +808,7 @@ object BonRetVGestionF: TBonRetVGestionF
       Spacing = -1
       Visible = False
       OnClick = DeleteProduitBonRetGBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object NewAddProduitBonRetGBtn: TAdvToolButton
@@ -844,7 +841,7 @@ object BonRetVGestionF: TBonRetVGestionF
       ShowHint = True
       Spacing = -1
       OnClick = NewAddProduitBonRetGBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object RequiredClientGlbl: TLabel
@@ -896,7 +893,7 @@ object BonRetVGestionF: TBonRetVGestionF
       ShowHint = True
       Spacing = -1
       OnClick = EnterAddProduitBonRetGBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object ClearProduitBonRetGBtn: TAdvToolButton
@@ -930,7 +927,7 @@ object BonRetVGestionF: TBonRetVGestionF
       Spacing = -1
       Visible = False
       OnClick = ClearProduitBonRetGBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object ValiderBVRetBonRetGImg: TsImage
@@ -1050,24 +1047,22 @@ object BonRetVGestionF: TBonRetVGestionF
       Top = 18
       Width = 30
       Height = 30
+      ImageIndex = 1
+      Images = MainForm.PanelIcons24
       ParentShowHint = False
       ShowHint = True
       OnClick = sSpeedButton9Click
-      SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
-      ImageIndex = 1
     end
     object sSpeedButton8: TsSpeedButton
       Left = 412
       Top = 18
       Width = 30
       Height = 30
+      ImageIndex = 2
+      Images = MainForm.PanelIcons24
       ParentShowHint = False
       ShowHint = True
       OnClick = sSpeedButton8Click
-      SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
-      ImageIndex = 2
       ShowCaption = False
     end
     object sSpeedButton10: TsSpeedButton
@@ -1075,12 +1070,11 @@ object BonRetVGestionF: TBonRetVGestionF
       Top = 18
       Width = 30
       Height = 30
+      ImageIndex = 0
+      Images = MainForm.PanelIcons24
       ParentShowHint = False
       ShowHint = True
       OnClick = sSpeedButton10Click
-      SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
-      ImageIndex = 0
       ShowCaption = False
     end
     object sSpeedButton7: TsSpeedButton
@@ -1088,12 +1082,11 @@ object BonRetVGestionF: TBonRetVGestionF
       Top = 18
       Width = 30
       Height = 30
+      ImageIndex = 3
+      Images = MainForm.PanelIcons24
       ParentShowHint = False
       ShowHint = True
       OnClick = sSpeedButton7Click
-      SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
-      ImageIndex = 3
     end
     object Label21: TLabel
       Left = 762
@@ -1276,7 +1269,7 @@ object BonRetVGestionF: TBonRetVGestionF
       ShowHint = True
       Spacing = -1
       OnClick = ListClientBonRetGBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object CompteGErrorP: TPanel
@@ -1701,7 +1694,7 @@ object BonRetVGestionF: TBonRetVGestionF
       object Label18: TLabel
         Left = 6
         Top = 78
-        Width = 102
+        Width = 101
         Height = 16
         Anchors = [akTop, akRight]
         Caption = 'Nouveau Solde:'
@@ -1718,7 +1711,7 @@ object BonRetVGestionF: TBonRetVGestionF
       object Label17: TLabel
         Left = 6
         Top = 6
-        Width = 89
+        Width = 87
         Height = 16
         Anchors = [akTop, akRight]
         Caption = 'Ancien Solde:'
@@ -2239,7 +2232,7 @@ object BonRetVGestionF: TBonRetVGestionF
     object label13: TLabel
       Left = 612
       Top = 6
-      Width = 43
+      Width = 42
       Height = 17
       Caption = 'R'#233'gl'#233':'
       Color = clWhite
@@ -2271,7 +2264,7 @@ object BonRetVGestionF: TBonRetVGestionF
     object Label1: TLabel
       Left = 413
       Top = 6
-      Width = 61
+      Width = 65
       Height = 17
       Caption = 'Total TVA:'
       Color = clWhite
@@ -2287,7 +2280,7 @@ object BonRetVGestionF: TBonRetVGestionF
     object Label2: TLabel
       Left = 12
       Top = 6
-      Width = 54
+      Width = 58
       Height = 17
       Caption = 'Total HT:'
       Color = clWhite
@@ -2428,7 +2421,7 @@ object BonRetVGestionF: TBonRetVGestionF
     object Label10: TLabel
       Left = 412
       Top = 64
-      Width = 63
+      Width = 66
       Height = 17
       Caption = 'Total TTC:'
       Color = 15722984
@@ -2900,6 +2893,7 @@ object BonRetVGestionF: TBonRetVGestionF
     OverwritePrompt = True
     DataOnly = False
     EmbeddedFonts = True
+    InteractiveFormsFontSubset = 'A-Z,a-z,0-9,#43-#47 '
     OpenAfterExport = True
     PrintOptimized = False
     Outline = False
@@ -2923,7 +2917,7 @@ object BonRetVGestionF: TBonRetVGestionF
     Top = 480
   end
   object BonRetPListfrxRprt: TfrxReport
-    Version = '6.3.12'
+    Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -4208,7 +4202,7 @@ object BonRetVGestionF: TBonRetVGestionF
     end
   end
   object BonRetPListSanTAXfrxRprt: TfrxReport
-    Version = '6.3.12'
+    Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]

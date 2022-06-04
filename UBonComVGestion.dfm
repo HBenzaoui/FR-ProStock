@@ -425,7 +425,7 @@ object BonComVGestionF: TBonComVGestionF
       ShowHint = True
       Spacing = -1
       OnClick = EditBVComBonComGBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object AddBVComBonComGBtn: TAdvToolButton
@@ -458,13 +458,13 @@ object BonComVGestionF: TBonComVGestionF
       ShowHint = True
       Spacing = -1
       OnClick = AddBVComBonComGBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object Label4: TLabel
       Left = 9
       Top = 252
-      Width = 93
+      Width = 92
       Height = 18
       Anchors = [akLeft, akBottom]
       Caption = 'Les Produits:'
@@ -484,12 +484,11 @@ object BonComVGestionF: TBonComVGestionF
       Width = 30
       Height = 30
       Anchors = [akTop, akRight]
+      ImageIndex = 7
+      Images = MainForm.PanelIcons24
       ParentShowHint = False
       ShowHint = True
       OnClick = sSpeedButton1Click
-      SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
-      ImageIndex = 7
       ExplicitLeft = 1010
     end
     object sSpeedButton2: TsSpeedButton
@@ -498,13 +497,12 @@ object BonComVGestionF: TBonComVGestionF
       Width = 39
       Height = 30
       Anchors = [akTop, akRight]
+      ImageIndex = 8
+      Images = MainForm.PanelIcons24
       ParentShowHint = False
       ShowHint = True
       ButtonStyle = tbsDropDown
-      SkinData.SkinSection = 'SPEEDBUTTON'
       DropdownMenu = PopupMenu1
-      Images = MainForm.PanelIcons24
-      ImageIndex = 8
       ExplicitLeft = 965
     end
     object sSpeedButton3: TsSpeedButton
@@ -513,12 +511,11 @@ object BonComVGestionF: TBonComVGestionF
       Width = 30
       Height = 30
       Anchors = [akTop, akRight]
+      ImageIndex = 9
+      Images = MainForm.PanelIcons24
       ParentShowHint = False
       ShowHint = True
       OnClick = sSpeedButton3Click
-      SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
-      ImageIndex = 9
       ExplicitLeft = 1046
     end
     object Label5: TLabel
@@ -599,7 +596,7 @@ object BonComVGestionF: TBonComVGestionF
       ShowHint = True
       Spacing = -1
       OnClick = AddClientBonComGBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object Label8: TLabel
@@ -648,7 +645,7 @@ object BonComVGestionF: TBonComVGestionF
       ShowHint = True
       Spacing = -1
       OnClick = ValiderBVComBonComGBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object Label7: TLabel
@@ -696,7 +693,7 @@ object BonComVGestionF: TBonComVGestionF
       ShowHint = True
       Spacing = -1
       OnClick = AddModePaieBonComGBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object Label16: TLabel
@@ -744,7 +741,7 @@ object BonComVGestionF: TBonComVGestionF
       ShowHint = True
       Spacing = -1
       OnClick = AddCompteBonComGBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object ListAddProduitBonComGBtn: TAdvToolButton
@@ -777,7 +774,7 @@ object BonComVGestionF: TBonComVGestionF
       ShowHint = True
       Spacing = -1
       OnClick = ListAddProduitBonComGBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object DeleteProduitBonComGBtn: TAdvToolButton
@@ -811,7 +808,7 @@ object BonComVGestionF: TBonComVGestionF
       Spacing = -1
       Visible = False
       OnClick = DeleteProduitBonComGBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object NewAddProduitBonComGBtn: TAdvToolButton
@@ -844,7 +841,7 @@ object BonComVGestionF: TBonComVGestionF
       ShowHint = True
       Spacing = -1
       OnClick = NewAddProduitBonComGBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object RequiredClientGlbl: TLabel
@@ -896,7 +893,7 @@ object BonComVGestionF: TBonComVGestionF
       ShowHint = True
       Spacing = -1
       OnClick = EnterAddProduitBonComGBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object ClearProduitBonComGBtn: TAdvToolButton
@@ -930,7 +927,7 @@ object BonComVGestionF: TBonComVGestionF
       Spacing = -1
       Visible = False
       OnClick = ClearProduitBonComGBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object ValiderBVComBonComGImg: TsImage
@@ -1068,12 +1065,11 @@ object BonComVGestionF: TBonComVGestionF
       Top = 18
       Width = 30
       Height = 30
+      ImageIndex = 0
+      Images = MainForm.PanelIcons24
       ParentShowHint = False
       ShowHint = True
       OnClick = sSpeedButton7Click
-      SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
-      ImageIndex = 0
       ShowCaption = False
     end
     object sSpeedButton6: TsSpeedButton
@@ -1081,24 +1077,22 @@ object BonComVGestionF: TBonComVGestionF
       Top = 18
       Width = 30
       Height = 30
+      ImageIndex = 1
+      Images = MainForm.PanelIcons24
       ParentShowHint = False
       ShowHint = True
       OnClick = sSpeedButton6Click
-      SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
-      ImageIndex = 1
     end
     object sSpeedButton5: TsSpeedButton
       Left = 412
       Top = 18
       Width = 30
       Height = 30
+      ImageIndex = 2
+      Images = MainForm.PanelIcons24
       ParentShowHint = False
       ShowHint = True
       OnClick = sSpeedButton5Click
-      SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
-      ImageIndex = 2
       ShowCaption = False
     end
     object sSpeedButton4: TsSpeedButton
@@ -1106,12 +1100,11 @@ object BonComVGestionF: TBonComVGestionF
       Top = 18
       Width = 30
       Height = 30
+      ImageIndex = 3
+      Images = MainForm.PanelIcons24
       ParentShowHint = False
       ShowHint = True
       OnClick = sSpeedButton4Click
-      SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
-      ImageIndex = 3
     end
     object Label24: TLabel
       Left = 761
@@ -1316,7 +1309,7 @@ object BonComVGestionF: TBonComVGestionF
       ShowHint = True
       Spacing = -1
       OnClick = ListClientBonComGBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object CompteGErrorP: TPanel
@@ -1741,7 +1734,7 @@ object BonComVGestionF: TBonComVGestionF
       object Label18: TLabel
         Left = 6
         Top = 78
-        Width = 102
+        Width = 101
         Height = 16
         Anchors = [akTop, akRight]
         Caption = 'Nouveau Solde:'
@@ -1758,7 +1751,7 @@ object BonComVGestionF: TBonComVGestionF
       object Label17: TLabel
         Left = 6
         Top = 6
-        Width = 89
+        Width = 87
         Height = 16
         Anchors = [akTop, akRight]
         Caption = 'Ancien Solde:'
@@ -2258,7 +2251,7 @@ object BonComVGestionF: TBonComVGestionF
     object label13: TLabel
       Left = 612
       Top = 6
-      Width = 43
+      Width = 42
       Height = 17
       Caption = 'R'#233'gl'#233':'
       Color = clWhite
@@ -2290,7 +2283,7 @@ object BonComVGestionF: TBonComVGestionF
     object Label1: TLabel
       Left = 413
       Top = 6
-      Width = 61
+      Width = 65
       Height = 17
       Caption = 'Total TVA:'
       Color = clWhite
@@ -2306,7 +2299,7 @@ object BonComVGestionF: TBonComVGestionF
     object Label2: TLabel
       Left = 12
       Top = 6
-      Width = 54
+      Width = 58
       Height = 17
       Caption = 'Total HT:'
       Color = clWhite
@@ -2447,7 +2440,7 @@ object BonComVGestionF: TBonComVGestionF
     object Label10: TLabel
       Left = 412
       Top = 64
-      Width = 63
+      Width = 66
       Height = 17
       Caption = 'Total TTC:'
       Color = 15722984
@@ -2545,7 +2538,7 @@ object BonComVGestionF: TBonComVGestionF
     object Label15: TLabel
       Left = 12
       Top = 62
-      Width = 131
+      Width = 129
       Height = 56
       Caption = 'Commande '#13#10'Client'
       Color = 15722984
@@ -2851,7 +2844,7 @@ object BonComVGestionF: TBonComVGestionF
     Top = 480
   end
   object BonComPListfrxRprt: TfrxReport
-    Version = '6.3.12'
+    Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -4181,6 +4174,7 @@ object BonComVGestionF: TBonComVGestionF
     OverwritePrompt = True
     DataOnly = False
     EmbeddedFonts = True
+    InteractiveFormsFontSubset = 'A-Z,a-z,0-9,#43-#47 '
     OpenAfterExport = True
     PrintOptimized = False
     Outline = False
@@ -4295,7 +4289,7 @@ object BonComVGestionF: TBonComVGestionF
     end
   end
   object BonComPListSansTaxfrxRprt: TfrxReport
-    Version = '6.3.12'
+    Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -4387,6 +4381,8 @@ object BonComVGestionF: TBonComVGestionF
       Width = 1000.000000000000000000
     end
     object Page1: TfrxReportPage
+      HGuides.Strings = (
+        '514,01608')
       PaperWidth = 210.000000000000000000
       PaperHeight = 297.000000000000000000
       PaperSize = 9
@@ -4396,8 +4392,6 @@ object BonComVGestionF: TBonComVGestionF
       BottomMargin = 10.000000000000000000
       Frame.Typ = []
       MirrorMode = []
-      HGuides.Strings = (
-        '514,01608')
       object PageFooter1: TfrxPageFooter
         FillType = ftBrush
         Frame.Typ = []
@@ -5434,7 +5428,7 @@ object BonComVGestionF: TBonComVGestionF
     end
   end
   object BonComPListBonCaissefrxRprt: TfrxReport
-    Version = '6.3.12'
+    Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -5526,6 +5520,8 @@ object BonComVGestionF: TBonComVGestionF
       Width = 1000.000000000000000000
     end
     object Page1: TfrxReportPage
+      HGuides.Strings = (
+        '514,01608')
       PaperWidth = 210.000000000000000000
       PaperHeight = 297.000000000000000000
       PaperSize = 9
@@ -5535,8 +5531,6 @@ object BonComVGestionF: TBonComVGestionF
       BottomMargin = 10.000000000000000000
       Frame.Typ = []
       MirrorMode = []
-      HGuides.Strings = (
-        '514,01608')
       object PageFooter1: TfrxPageFooter
         FillType = ftBrush
         Frame.Typ = []
@@ -6626,7 +6620,7 @@ object BonComVGestionF: TBonComVGestionF
     Top = 482
   end
   object BonComPListfrxRprtA5: TfrxReport
-    Version = '6.3.12'
+    Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -7915,7 +7909,7 @@ object BonComVGestionF: TBonComVGestionF
     end
   end
   object BonComPListComSimplefrxRprt: TfrxReport
-    Version = '6.3.12'
+    Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -8006,6 +8000,8 @@ object BonComVGestionF: TBonComVGestionF
       Width = 1000.000000000000000000
     end
     object Page1: TfrxReportPage
+      HGuides.Strings = (
+        '514,01608')
       PaperWidth = 210.000000000000000000
       PaperHeight = 297.000000000000000000
       PaperSize = 9
@@ -8015,8 +8011,6 @@ object BonComVGestionF: TBonComVGestionF
       BottomMargin = 10.000000000000000000
       Frame.Typ = []
       MirrorMode = []
-      HGuides.Strings = (
-        '514,01608')
       object PageFooter1: TfrxPageFooter
         FillType = ftBrush
         Frame.Typ = []
@@ -8958,7 +8952,7 @@ object BonComVGestionF: TBonComVGestionF
     end
   end
   object BonComPListfrxCaisseRprtA5: TfrxReport
-    Version = '6.3.12'
+    Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]

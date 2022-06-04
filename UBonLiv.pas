@@ -839,7 +839,7 @@ begin
     try
        MainForm.Bonv_liv_listTable.Active := True;
        BonLivGestionF.NumBonLivGEdt.Caption := MainForm.Bonv_livTable.FieldByName('num_bvliv').AsString;
-       BonLivGestionF.DateBonLivGD.Date:= MainForm.Bonv_livTable.FieldValues['date_bvliv'];
+       BonLivGestionF.DateBonLivGD.Date:= MainForm.Bonv_livTable.FieldByName('date_bvliv').AsDateTime;
        BonLivGestionF.ObserBonLivGMem.Lines.Text := MainForm.Bonv_livTable.FieldByName('obser_bvliv').AsString;
        if (MainForm.Bonv_livTable.FieldValues['code_c']<> null) and (MainForm.Bonv_livTable.FieldValues['code_c']<> 0) then
        begin

@@ -521,8 +521,8 @@ begin
      MainForm.Bonv_ctr_listTable.IndexFieldNames:='code_bvctr';
 
 //       MainForm.Bonv_ctrTable.Refresh;
-       BonCtrGestionF.NumBonCtrGEdt.Caption := MainForm.Bonv_ctrTable.FieldValues['num_bvctr'];
-       BonCtrGestionF.DateBonCtrGD.Date:= MainForm.Bonv_ctrTable.FieldValues['date_bvctr'];
+       BonCtrGestionF.NumBonCtrGEdt.Caption := MainForm.Bonv_ctrTable.FieldByName('num_bvctr').AsString;
+       BonCtrGestionF.DateBonCtrGD.Date:= MainForm.Bonv_ctrTable.FieldByName('date_bvctr').AsDateTime;
        BonCtrGestionF.HourBonCtrGD.Caption:= MainForm.Bonv_ctrTable.FieldValues['time_bvctr'];
        if (MainForm.Bonv_ctrTable.FieldValues['code_c']<> null) and (MainForm.Bonv_ctrTable.FieldValues['code_c']<> 0) then
        begin

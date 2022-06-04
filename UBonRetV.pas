@@ -854,8 +854,8 @@ var
       try
 
 
-         BonRetVGestionF.NumBonRetVGEdt.Caption := DataModuleF.Bonv_retTable.FieldValues['num_bvret'];
-         BonRetVGestionF.DateBonRetVGD.Date:= DataModuleF.Bonv_retTable.FieldValues['date_bvret'];
+         BonRetVGestionF.NumBonRetVGEdt.Caption := DataModuleF.Bonv_retTable.FieldByName('num_bvret').AsString;
+         BonRetVGestionF.DateBonRetVGD.Date:= DataModuleF.Bonv_retTable.FieldByName('date_bvret').AsDateTime;
          BonRetVGestionF.ObserBonRetVGMem.Lines.Text := DataModuleF.Bonv_retTable.FieldByName('obser_bvret').AsString;
          if (DataModuleF.Bonv_retTable.FieldValues['code_c']<> null) and (DataModuleF.Bonv_retTable.FieldValues['code_c']<> 0) then
          begin

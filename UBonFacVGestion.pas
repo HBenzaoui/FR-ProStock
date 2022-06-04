@@ -2630,6 +2630,8 @@ begin
           MainForm.Bonv_facTable.DisableControls;
           MainForm.Bonv_facTable.Edit;
           MainForm.Bonv_facTable.FieldValues['code_c']:= MainForm.ClientTable.FieldByName('code_c').AsInteger;
+          MainForm.Bonv_facTable.FieldByName('date_bvfac').AsDateTime:= DateBonFacVGD.DateTime;
+          MainForm.Bonv_facTable.FieldValues['time_bvfac']:=TimeOf(Now);
           MainForm.Bonv_facTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
           MainForm.Bonv_facTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
           MainForm.Bonv_facTable.FieldValues['obser_bvfac']:= ObserBonFacVGMem.Text;

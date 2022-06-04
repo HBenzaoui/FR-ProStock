@@ -1919,6 +1919,8 @@ begin
           MainForm.Bonv_ctrTable.DisableControls;
           MainForm.Bonv_ctrTable.Edit;
           MainForm.Bonv_ctrTable.FieldValues['code_c'] := MainForm.ClientTable.FieldByName('code_c').AsInteger;
+          MainForm.Bonv_ctrTable.FieldByName('date_bvctr').AsDateTime:= DateBonCtrGD.DateTime;
+          MainForm.Bonv_ctrTable.FieldValues['time_bvctr']:=TimeOf(Now);
           MainForm.Bonv_ctrTable.FieldByName('montaht_bvctr').AsCurrency := StrToCurr(StringReplace(BonCtrTotalAHTLbl.Caption, #32, '', [rfReplaceAll]));
           MainForm.Bonv_ctrTable.FieldByName('montht_bvctr').AsCurrency := StrToCurr(StringReplace(BonCtrTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
 
@@ -1981,6 +1983,8 @@ begin
       MainForm.Bonv_ctrTable.DisableControls;
       MainForm.Bonv_ctrTable.Edit;
       MainForm.Bonv_ctrTable.FieldValues['code_c'] := MainForm.ClientTable.FieldByName('code_c').AsInteger;
+      MainForm.Bonv_ctrTable.FieldByName('date_bvctr').AsDateTime:= DateBonCtrGD.DateTime;
+      MainForm.Bonv_ctrTable.FieldValues['time_bvctr']:=TimeOf(Now);
 
       if RemiseBonCtrGEdt.Text <> '' then
       begin

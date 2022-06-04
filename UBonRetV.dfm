@@ -975,7 +975,7 @@ object BonRetVF: TBonRetVF
       ShowHint = True
       Spacing = -1
       OnClick = EditBVRetBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object DeleteBVRetBtn: TAdvToolButton
@@ -1007,7 +1007,7 @@ object BonRetVF: TBonRetVF
       ShowHint = True
       Spacing = -2
       OnClick = DeleteBVRetBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object AddBVRetBtn: TAdvToolButton
@@ -1039,13 +1039,13 @@ object BonRetVF: TBonRetVF
       ShowHint = True
       Spacing = -1
       OnClick = AddBVRetBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object ResearchBVRetLbl: TLabel
       Left = 3
       Top = 31
-      Width = 76
+      Width = 74
       Height = 16
       Caption = 'Rechercher'
       Color = 15722984
@@ -1095,24 +1095,22 @@ object BonRetVF: TBonRetVF
       Top = 23
       Width = 25
       Height = 25
+      ImageIndex = 1
+      Images = MainForm.PanelIcons24
       ParentShowHint = False
       ShowHint = True
       OnClick = PreviosBVRetbtnClick
-      SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
-      ImageIndex = 1
     end
     object NextBVRetbtn: TsSpeedButton
       Left = 502
       Top = 23
       Width = 25
       Height = 25
+      ImageIndex = 2
+      Images = MainForm.PanelIcons24
       ParentShowHint = False
       ShowHint = True
       OnClick = NextBVRetbtnClick
-      SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
-      ImageIndex = 2
       ShowCaption = False
     end
     object LastBVRetbtn: TsSpeedButton
@@ -1120,24 +1118,22 @@ object BonRetVF: TBonRetVF
       Top = 23
       Width = 25
       Height = 25
+      ImageIndex = 3
+      Images = MainForm.PanelIcons24
       ParentShowHint = False
       ShowHint = True
       OnClick = LastBVRetbtnClick
-      SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
-      ImageIndex = 3
     end
     object FisrtBVRetbtn: TsSpeedButton
       Left = 442
       Top = 23
       Width = 25
       Height = 25
+      ImageIndex = 0
+      Images = MainForm.PanelIcons24
       ParentShowHint = False
       ShowHint = True
       OnClick = FisrtBVRetbtnClick
-      SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
-      ImageIndex = 0
       ShowCaption = False
     end
     object FilterBVLivBtn: TAdvToolButton
@@ -1171,7 +1167,7 @@ object BonRetVF: TBonRetVF
       Shaded = False
       ShowHint = True
       Spacing = -1
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object sImage1: TsImage
@@ -1498,7 +1494,7 @@ object BonRetVF: TBonRetVF
       ShowHint = True
       Spacing = -2
       OnClick = SumGirdBVRetBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object RefreshGirdBtn: TAdvToolButton
@@ -1532,7 +1528,7 @@ object BonRetVF: TBonRetVF
       ShowHint = True
       Spacing = -2
       OnClick = RefreshGirdBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object AdvToolButton1: TAdvToolButton
@@ -1566,7 +1562,7 @@ object BonRetVF: TBonRetVF
       ShowHint = True
       Spacing = -2
       OnClick = AdvToolButton1Click
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object AdvToolButton2: TAdvToolButton
@@ -1600,7 +1596,7 @@ object BonRetVF: TBonRetVF
       ShowHint = True
       Spacing = -2
       OnClick = AdvToolButton2Click
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object AdvToolButton3: TAdvToolButton
@@ -1634,7 +1630,7 @@ object BonRetVF: TBonRetVF
       ShowHint = True
       Spacing = -2
       OnClick = AdvToolButton3Click
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object Panel5: TPanel
@@ -1751,6 +1747,7 @@ object BonRetVF: TBonRetVF
     OverwritePrompt = True
     DataOnly = False
     EmbeddedFonts = True
+    InteractiveFormsFontSubset = 'A-Z,a-z,0-9,#43-#47 '
     OpenAfterExport = True
     PrintOptimized = False
     Outline = False
@@ -1774,7 +1771,7 @@ object BonRetVF: TBonRetVF
     Top = 480
   end
   object BonRetVfrxRprt: TfrxReport
-    Version = '6.3.12'
+    Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -1861,6 +1858,13 @@ object BonRetVF: TBonRetVF
       Width = 1000.000000000000000000
     end
     object Page1: TfrxReportPage
+      HGuides.Strings = (
+        '113,3859')
+      VGuides.Strings = (
+        '11,33859'
+        '196,53556'
+        '574,48856'
+        '952,44156')
       Orientation = poLandscape
       PaperWidth = 297.000000000000000000
       PaperHeight = 210.000000000000000000
@@ -1871,13 +1875,6 @@ object BonRetVF: TBonRetVF
       BottomMargin = 10.000000000000000000
       Frame.Typ = []
       MirrorMode = []
-      HGuides.Strings = (
-        '113,3859')
-      VGuides.Strings = (
-        '11,33859'
-        '196,53556'
-        '574,48856'
-        '952,44156')
       object PageHeader1: TfrxPageHeader
         FillType = ftBrush
         Frame.Typ = []

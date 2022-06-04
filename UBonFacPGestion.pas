@@ -2446,6 +2446,8 @@ begin
           MainForm.Bonp_facTable.DisableControls;
           MainForm.Bonp_facTable.Edit;
           MainForm.Bonp_facTable.FieldValues['code_c']:= MainForm.ClientTable.FieldByName('code_c').AsInteger;
+          MainForm.Bonp_facTable.FieldByName('date_bpfac').AsDateTime:= DateBonFacVGD.DateTime;
+          MainForm.Bonp_facTable.FieldValues['time_bpfac']:=TimeOf(Now);
           MainForm.Bonp_facTable.FieldValues['obser_bpfac']:= ObserBonFacVGMem.Text;
           MainForm.Bonp_facTable.FieldByName('montht_bpfac').AsCurrency:= StrToCurr(StringReplace(BonFacVTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
           MainForm.Bonp_facTable.FieldByName('montaht_bpfac').AsCurrency:= StrToCurr(StringReplace(BonFacVTotalAHTLbl.Caption, #32, '', [rfReplaceAll]));
@@ -2508,6 +2510,8 @@ begin
           MainForm.Bonp_facTable.DisableControls;
           MainForm.Bonp_facTable.Edit;
           MainForm.Bonp_facTable.FieldValues['code_c']:= MainForm.ClientTable.FieldByName('code_c').AsInteger;
+          MainForm.Bonp_facTable.FieldByName('date_bpfac').AsDateTime:= DateBonFacVGD.DateTime;
+          MainForm.Bonp_facTable.FieldValues['time_bpfac']:=TimeOf(Now);
           MainForm.Bonp_facTable.FieldValues['obser_bpfac']:= ObserBonFacVGMem.Text;
           MainForm.Bonp_facTable.FieldByName('montht_bpfac').AsCurrency:= StrToCurr(StringReplace(BonFacVTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
 
