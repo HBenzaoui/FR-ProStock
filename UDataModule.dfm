@@ -2062,23 +2062,23 @@ object DataModuleF: TDataModuleF
       'UNION ALL '
       'SELECT'
       
-        '  '#39'BL'#39' AS Source, BL.num_bvcom AS Num, T.nom_c AS Tiers, BL.date' +
-        '_bvcom as Date,'
-      '  BL.time_bvcom as Time, (BLL.qut_p * BLL.cond_p) * -1 AS Qut,'
+        '  '#39'BL'#39' AS Source, BL.num_bvliv AS Num, T.nom_c AS Tiers, BL.date' +
+        '_bvliv as Date,'
+      '  BL.time_bvliv as Time, (BLL.qut_p * BLL.cond_p) * -1 AS Qut,'
       
         '  BLL.prixvd_p AS PrixU, ((BLL.qut_p * BLL.cond_p) * BLL.prixvd_' +
         'p ) AS Montant, (BLL.prixvd_p - BLL.prixht_p) AS Marge, Bl.code_' +
         'ur AS Agent'
       'FROM produit P'
-      'INNER JOIN Bonv_com_list BLL'
+      'INNER JOIN bonv_liv_list BLL'
       '  ON P.code_p = BLL.code_p'
-      'INNER JOIN bonv_com BL'
-      '  ON BLL.code_bvcom = BL.code_bvcom'
+      'INNER JOIN bonv_liv BL'
+      '  ON BLL.code_bvliv = BL.code_bvliv'
       'INNER JOIN client AS T'
       '  ON BL.code_c = T.code_c'
       
-        '  WHERE P.code_p = :CodeP AND BL.valider_bvcom = TRUE AND BL.dat' +
-        'e_bvcom BETWEEN :DateStartP AND :DateEndP'
+        '  WHERE P.code_p = :CodeP AND BL.valider_bvliv = TRUE AND BL.dat' +
+        'e_bvliv BETWEEN :DateStartP AND :DateEndP'
       ''
       'UNION ALL '
       'SELECT'
