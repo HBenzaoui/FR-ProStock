@@ -946,16 +946,6 @@ object BonComVGestionF: TBonComVGestionF
       SkinData.SkinSection = 'CHECKBOX'
       ExplicitLeft = 966
     end
-    object Shape5: TShape
-      Left = 838
-      Top = 65
-      Width = 186
-      Height = 148
-      Anchors = [akTop, akRight]
-      Brush.Color = 4207405
-      Pen.Color = 4666873
-      ExplicitLeft = 903
-    end
     object BonCVTotalTTCNewLbl: TLabel
       Left = 266
       Top = 51
@@ -1026,9 +1016,9 @@ object BonComVGestionF: TBonComVGestionF
     end
     object ValiderBVComBonComGLbl: TLabel
       Left = 838
-      Top = 213
+      Top = 212
       Width = 186
-      Height = 19
+      Height = 20
       Alignment = taCenter
       Anchors = [akRight, akBottom]
       AutoSize = False
@@ -1044,7 +1034,6 @@ object BonComVGestionF: TBonComVGestionF
       Transparent = False
       Layout = tlCenter
       StyleElements = []
-      ExplicitLeft = 903
     end
     object BonComTotalMargeLbl: TLabel
       Left = 691
@@ -1366,7 +1355,7 @@ object BonComVGestionF: TBonComVGestionF
     object Panel7: TPanel
       Left = 337
       Top = 65
-      Width = 501
+      Width = 686
       Height = 2
       Anchors = [akLeft, akTop, akRight]
       BevelOuter = bvNone
@@ -1525,7 +1514,7 @@ object BonComVGestionF: TBonComVGestionF
     object Panel12: TPanel
       Left = 0
       Top = 210
-      Width = 838
+      Width = 1024
       Height = 2
       Anchors = [akLeft, akTop, akRight]
       BevelOuter = bvNone
@@ -1674,7 +1663,7 @@ object BonComVGestionF: TBonComVGestionF
       Height = 140
       Anchors = [akTop, akRight]
       BevelOuter = bvNone
-      Color = 4207405
+      Color = 15527148
       ParentBackground = False
       TabOrder = 16
       StyleElements = []
@@ -1734,15 +1723,15 @@ object BonComVGestionF: TBonComVGestionF
       object Label18: TLabel
         Left = 6
         Top = 78
-        Width = 101
-        Height = 16
+        Width = 109
+        Height = 18
         Anchors = [akTop, akRight]
         Caption = 'Nouveau Solde:'
         Color = 4207405
         Font.Charset = ANSI_CHARSET
-        Font.Color = 15722984
-        Font.Height = 16
-        Font.Name = 'Helvetica LT Std'
+        Font.Color = 4207405
+        Font.Height = 18
+        Font.Name = 'Roboto'
         Font.Style = []
         ParentColor = False
         ParentFont = False
@@ -1751,15 +1740,15 @@ object BonComVGestionF: TBonComVGestionF
       object Label17: TLabel
         Left = 6
         Top = 6
-        Width = 87
-        Height = 16
+        Width = 94
+        Height = 18
         Anchors = [akTop, akRight]
         Caption = 'Ancien Solde:'
         Color = 4207405
         Font.Charset = ANSI_CHARSET
-        Font.Color = 15722984
-        Font.Height = 16
-        Font.Name = 'Helvetica LT Std'
+        Font.Color = 4207405
+        Font.Height = 18
+        Font.Name = 'Roboto'
         Font.Style = []
         ParentColor = False
         ParentFont = False

@@ -111,7 +111,6 @@ type
     Shape3: TShape;
     Shape4: TShape;
     Panel1: TPanel;
-    Shape5: TShape;
     RemiseTypeBonRetGCbx: TComboBox;
     Label15: TLabel;
     BonRVTotalTTCNewLbl: TLabel;

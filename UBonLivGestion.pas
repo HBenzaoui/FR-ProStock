@@ -58,7 +58,6 @@ type
     EnterAddProduitBonLivGBtn: TAdvToolButton;
     ClearProduitBonLivGBtn: TAdvToolButton;
     ValiderBVlivBonLivGImg: TsImage;
-    Shape5: TShape;
     BonLTotalTTCNewLbl: TLabel;
     BonLTotalHTNewLbl: TLabel;
     TotalTVANewLbl: TLabel;

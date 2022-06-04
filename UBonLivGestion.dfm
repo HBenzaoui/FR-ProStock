@@ -946,16 +946,6 @@ object BonLivGestionF: TBonLivGestionF
       SkinData.SkinSection = 'CHECKBOX'
       ExplicitLeft = 966
     end
-    object Shape5: TShape
-      Left = 838
-      Top = 65
-      Width = 186
-      Height = 148
-      Anchors = [akTop, akRight]
-      Brush.Color = 4207405
-      Pen.Color = 4666873
-      ExplicitLeft = 903
-    end
     object BonLTotalTTCNewLbl: TLabel
       Left = 266
       Top = 51
@@ -1026,9 +1016,9 @@ object BonLivGestionF: TBonLivGestionF
     end
     object ValiderBVLivBonLivGLbl: TLabel
       Left = 838
-      Top = 213
+      Top = 212
       Width = 186
-      Height = 19
+      Height = 20
       Alignment = taCenter
       Anchors = [akRight, akBottom]
       AutoSize = False
@@ -1044,7 +1034,6 @@ object BonLivGestionF: TBonLivGestionF
       Transparent = False
       Layout = tlCenter
       StyleElements = []
-      ExplicitLeft = 903
     end
     object BonLivTotalMargeLbl: TLabel
       Left = 691
@@ -1364,9 +1353,9 @@ object BonLivGestionF: TBonLivGestionF
       StyleElements = []
     end
     object Panel7: TPanel
-      Left = 337
+      Left = 338
       Top = 65
-      Width = 501
+      Width = 686
       Height = 2
       Anchors = [akLeft, akTop, akRight]
       BevelOuter = bvNone
@@ -1525,7 +1514,7 @@ object BonLivGestionF: TBonLivGestionF
     object Panel12: TPanel
       Left = 0
       Top = 210
-      Width = 838
+      Width = 1024
       Height = 2
       Anchors = [akLeft, akTop, akRight]
       BevelOuter = bvNone
@@ -1674,7 +1663,7 @@ object BonLivGestionF: TBonLivGestionF
       Height = 140
       Anchors = [akTop, akRight]
       BevelOuter = bvNone
-      Color = 4207405
+      Color = 15527148
       ParentBackground = False
       TabOrder = 16
       StyleElements = []
@@ -1734,15 +1723,15 @@ object BonLivGestionF: TBonLivGestionF
       object Label18: TLabel
         Left = 6
         Top = 78
-        Width = 101
-        Height = 16
+        Width = 109
+        Height = 18
         Anchors = [akTop, akRight]
         Caption = 'Nouveau Solde:'
         Color = 4207405
         Font.Charset = ANSI_CHARSET
-        Font.Color = 15722984
-        Font.Height = 16
-        Font.Name = 'Helvetica LT Std'
+        Font.Color = 4207405
+        Font.Height = 18
+        Font.Name = 'Roboto'
         Font.Style = []
         ParentColor = False
         ParentFont = False
@@ -1751,15 +1740,15 @@ object BonLivGestionF: TBonLivGestionF
       object Label17: TLabel
         Left = 6
         Top = 6
-        Width = 87
-        Height = 16
+        Width = 94
+        Height = 18
         Anchors = [akTop, akRight]
         Caption = 'Ancien Solde:'
         Color = 4207405
         Font.Charset = ANSI_CHARSET
-        Font.Color = 15722984
-        Font.Height = 16
-        Font.Name = 'Helvetica LT Std'
+        Font.Color = 4207405
+        Font.Height = 18
+        Font.Name = 'Roboto'
         Font.Style = []
         ParentColor = False
         ParentFont = False
@@ -2274,7 +2263,7 @@ object BonLivGestionF: TBonLivGestionF
       Width = 42
       Height = 17
       Caption = 'R'#233'gl'#233':'
-      Color = clWhite
+      Color = 4207405
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
       Font.Height = 17
@@ -2290,7 +2279,7 @@ object BonLivGestionF: TBonLivGestionF
       Width = 63
       Height = 17
       Caption = 'Le Reste:'
-      Color = clWhite
+      Color = 4207405
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
       Font.Height = 17
@@ -2306,7 +2295,7 @@ object BonLivGestionF: TBonLivGestionF
       Width = 65
       Height = 17
       Caption = 'Total TVA:'
-      Color = clWhite
+      Color = 4207405
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
       Font.Height = 17
@@ -2463,7 +2452,7 @@ object BonLivGestionF: TBonLivGestionF
       Width = 66
       Height = 17
       Caption = 'Total TTC:'
-      Color = 15722984
+      Color = 4207405
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
       Font.Height = 17
@@ -2561,7 +2550,7 @@ object BonLivGestionF: TBonLivGestionF
       Width = 94
       Height = 56
       Caption = 'Bon de '#13#10'Livraison'
-      Color = 15722984
+      Color = 4207405
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
       Font.Height = -24
@@ -2580,7 +2569,7 @@ object BonLivGestionF: TBonLivGestionF
       Anchors = [akLeft, akTop, akRight]
       AutoSize = False
       Caption = 'Stock Actuel'
-      Color = clWhite
+      Color = 4207405
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
       Font.Height = 17
@@ -2600,7 +2589,7 @@ object BonLivGestionF: TBonLivGestionF
       Anchors = [akLeft, akTop, akRight]
       AutoSize = False
       Caption = 'Nouveau Stock'
-      Color = clWhite
+      Color = 4207405
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
       Font.Height = 17
@@ -2625,7 +2614,7 @@ object BonLivGestionF: TBonLivGestionF
       AutoSize = False
       BiDiMode = bdLeftToRight
       Caption = '0'
-      Color = 15722984
+      Color = 4207405
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 15722984
       Font.Height = 20
@@ -2705,9 +2694,9 @@ object BonLivGestionF: TBonLivGestionF
     end
     object BonLivTotalAHTLbl: TLabel
       AlignWithMargins = True
-      Left = -1
+      Left = 132
       Top = 4
-      Width = 200
+      Width = 67
       Height = 25
       Margins.Left = 0
       Margins.Top = 0
@@ -2716,7 +2705,7 @@ object BonLivGestionF: TBonLivGestionF
       AutoSize = False
       BiDiMode = bdLeftToRight
       Caption = '0'
-      Color = 15722984
+      Color = 4207405
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 7854350
       Font.Height = 20
@@ -10289,8 +10278,6 @@ object BonLivGestionF: TBonLivGestionF
           Top = 0.779530000000000000
           Width = 302.362400000000000000
           Height = 18.897650000000000000
-          DataSet = BonFacVF.frxBonFacVDB
-          DataSetName = 'frxBonFacVDB'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -9
@@ -11339,8 +11326,6 @@ object BonLivGestionF: TBonLivGestionF
           Top = 60.472480000000000000
           Width = 151.181200000000000000
           Height = 18.897650000000000000
-          DataSet = BonFacVF.frxBonFacVDB
-          DataSetName = 'frxBonFacVDB'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -11361,8 +11346,6 @@ object BonLivGestionF: TBonLivGestionF
           Top = 31.236240000000000000
           Width = 151.181200000000000000
           Height = 18.897650000000000000
-          DataSet = BonFacVF.frxBonFacVDB
-          DataSetName = 'frxBonFacVDB'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -11383,8 +11366,6 @@ object BonLivGestionF: TBonLivGestionF
           Top = 120.944960000000000000
           Width = 151.181200000000000000
           Height = 18.897650000000000000
-          DataSet = BonFacVF.frxBonFacVDB
-          DataSetName = 'frxBonFacVDB'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -11405,8 +11386,6 @@ object BonLivGestionF: TBonLivGestionF
           Top = 203.338582680000000000
           Width = 154.960730000000000000
           Height = 31.370086060000000000
-          DataSet = BonFacVF.frxBonFacVDB
-          DataSetName = 'frxBonFacVDB'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -11428,8 +11407,6 @@ object BonLivGestionF: TBonLivGestionF
           Top = 90.708720000000000000
           Width = 151.181200000000000000
           Height = 18.897650000000000000
-          DataSet = BonFacVF.frxBonFacVDB
-          DataSetName = 'frxBonFacVDB'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -11538,8 +11515,6 @@ object BonLivGestionF: TBonLivGestionF
           Top = 151.181200000000000000
           Width = 151.181200000000000000
           Height = 18.897650000000000000
-          DataSet = BonFacVF.frxBonFacVDB
-          DataSetName = 'frxBonFacVDB'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -11578,8 +11553,6 @@ object BonLivGestionF: TBonLivGestionF
           Top = 177.637910000000000000
           Width = 151.181200000000000000
           Height = 18.897650000000000000
-          DataSet = BonFacVF.frxBonFacVDB
-          DataSetName = 'frxBonFacVDB'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
