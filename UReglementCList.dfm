@@ -2175,7 +2175,7 @@ object ReglementCListF: TReglementCListF
       OnClick = P2Click
     end
   end
-  object ReglementfrxRprt: TfrxReport
+  object ReglementCfrxRprt: TfrxReport
     Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'

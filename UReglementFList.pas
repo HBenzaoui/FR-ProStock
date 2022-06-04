@@ -74,6 +74,10 @@ type
     ApplicationEvents1: TApplicationEvents;
     ProduitListSaveDg: TSaveDialog;
     RglementFournisseur1: TMenuItem;
+    PopupMenu1: TPopupMenu;
+    P1: TMenuItem;
+    P2: TMenuItem;
+    ReglementFfrxRprt: TfrxReport;
     procedure AddBARecBtnClick(Sender: TObject);
     procedure EditBARecBtnClick(Sender: TObject);
     procedure DeleteBARecBtnClick(Sender: TObject);
@@ -105,7 +109,6 @@ type
     procedure ResearchRegFEdtKeyPress(Sender: TObject; var Key: Char);
     procedure AdvToolButton1Click(Sender: TObject);
     procedure AdvToolButton2Click(Sender: TObject);
-    procedure AdvToolButton3Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure BARecListDBGridEhDrawColumnCell(Sender: TObject;
       const Rect: TRect; DataCol: Integer; Column: TColumnEh;
@@ -115,8 +118,11 @@ type
     procedure ApplicationEvents1ShortCut(var Msg: TWMKey; var Handled: Boolean);
     procedure RglementFournisseur1Click(Sender: TObject);
     procedure BARecListDBGridEhSortMarkingChanged(Sender: TObject);
+    procedure P2Click(Sender: TObject);
+    procedure P1Click(Sender: TObject);
   private
     procedure GettingData;
+    procedure GettingDataRecuPai;
     procedure FilteredColor;
     procedure NOT_FilteredColor;
     procedure Select_ALL;
@@ -138,7 +144,7 @@ var
 
 implementation
 
-uses   Winapi.MMSystem,Threading,
+uses   Winapi.MMSystem,Threading,Vcl.Imaging.jpeg,StringTool,
   UReglementFGestion, UMainF, UBonRec, UBonFacA, UBonRecGestion,
   USplashVersement, USplashAddUnite, USplash, UComptoir;
 
@@ -711,18 +717,6 @@ RegFListfrxRprt.Export(frxPDFExport1);
 MainForm.RegfournisseurTable.EnableControls;
 end;
 
-procedure TReglementFListF.AdvToolButton3Click(Sender: TObject);
-begin
-  MainForm.RegfournisseurTable.DisableControls;
-
-   GettingData;
-
-  RegFListfrxRprt.PrepareReport;
-  RegFListfrxRprt.ShowReport;
-
-  MainForm.RegfournisseurTable.EnableControls;
-end;
-
 procedure TReglementFListF.ApplicationEvents1ShortCut(var Msg: TWMKey;
   var Handled: Boolean);
 begin
@@ -747,11 +741,19 @@ begin
       DeleteBARecBtnClick(Screen);
     Handled := true;
   end;
-     if  (GetKeyState(VK_F12) < 0)  then
+  if  (GetKeyState(VK_F11) < 0)  then
   begin
-    AdvToolButton3Click(Screen) ;
+    P1Click(Screen) ;
     Handled := true;
   end;
+
+  if  (GetKeyState(VK_F12) < 0)  then
+  begin
+    P2Click(Screen) ;
+    Handled := true;
+  end;
+
+
  end else
      begin
       if  (ReglementFListF.Active = True)  AND (ReglementFGestionF.Showing = False)   then
@@ -771,9 +773,15 @@ begin
               DeleteBARecBtnClick(Screen);
             Handled := true;
           end;
-             if  (GetKeyState(VK_F12) < 0)  then
+          if  (GetKeyState(VK_F11) < 0)  then
           begin
-            AdvToolButton3Click(Screen) ;
+            P1Click(Screen) ;
+            Handled := true;
+          end;
+
+          if  (GetKeyState(VK_F12) < 0)  then
+          begin
+            P2Click(Screen) ;
             Handled := true;
           end;
       end;
@@ -798,9 +806,15 @@ begin
       DeleteBARecBtnClick(Screen);
     Handled := true;
   end;
-     if  (GetKeyState(VK_F12) < 0)  then
+  if  (GetKeyState(VK_F11) < 0)  then
   begin
-    AdvToolButton3Click(Screen) ;
+    P1Click(Screen) ;
+    Handled := true;
+  end;
+
+  if  (GetKeyState(VK_F12) < 0)  then
+  begin
+    P2Click(Screen) ;
     Handled := true;
   end;
  end else
@@ -822,9 +836,15 @@ begin
               DeleteBARecBtnClick(Screen);
             Handled := true;
           end;
-             if  (GetKeyState(VK_F12) < 0)  then
+          if  (GetKeyState(VK_F11) < 0)  then
           begin
-            AdvToolButton3Click(Screen) ;
+            P1Click(Screen) ;
+            Handled := true;
+          end;
+
+          if  (GetKeyState(VK_F12) < 0)  then
+          begin
+            P2Click(Screen) ;
             Handled := true;
           end;
       end;
@@ -1031,6 +1051,35 @@ begin
 MainForm.RegfournisseurTable.First;
 end;
 
+procedure TReglementFListF.P1Click(Sender: TObject);
+begin
+ if not MainForm.RegfournisseurTable.IsEmpty then
+ begin
+
+  MainForm.RegfournisseurTable.DisableControls;
+
+  GettingDataRecuPai;
+
+  ReglementFfrxRprt.PrepareReport;
+  ReglementFfrxRprt.ShowReport;
+
+  MainForm.RegfournisseurTable.EnableControls;
+
+ end;
+end;
+
+procedure TReglementFListF.P2Click(Sender: TObject);
+begin
+  MainForm.RegfournisseurTable.DisableControls;
+
+   GettingData;
+
+  RegFListfrxRprt.PrepareReport;
+  RegFListfrxRprt.ShowReport;
+
+  MainForm.RegfournisseurTable.EnableControls;
+end;
+
 procedure TReglementFListF.PreviosBARecbtnClick(Sender: TObject);
 begin
 MainForm.RegfournisseurTable.Prior;
@@ -1072,6 +1121,73 @@ begin
       Agent:= RegFListfrxRprt.FindObject('Agent') as TfrxMemoView;
   Agent.Text:= MainForm.UserNameLbl.Caption ;
   end;
+
+
+procedure TReglementFListF.GettingDataRecuPai;
+var
+  Name,Tel,Mob,Adr,MoneyWordRX : TfrxMemoView;
+  str1 : string;
+
+  Logo : TfrxPictureView;
+    S: TMemoryStream;
+  Jpg: TJPEGImage;
+begin
+
+
+
+  if NOT (MainForm.CompanyTable.IsEmpty) then
+  begin
+
+    Name:= ReglementFfrxRprt.FindObject('Name') as TfrxMemoView;
+    Name.Text:= MainForm.CompanyTable.FieldByName('nom_comp').AsString ;
+    Name.Visible:=True;
+
+    Tel:= ReglementFfrxRprt.FindObject('Tel') as TfrxMemoView;
+    Tel.Text:= MainForm.CompanyTable.FieldByName('fix_comp').AsString ;
+    Tel.Visible:=True;
+
+      Mob:= ReglementFfrxRprt.FindObject('Mob') as TfrxMemoView;
+    Mob.Text:= MainForm.CompanyTable.FieldByName('mob_comp').AsString ;
+    Mob.Visible:=True;
+
+      Adr:= ReglementFfrxRprt.FindObject('Adr') as TfrxMemoView;
+    Adr.Text:= MainForm.CompanyTable.FieldByName('adr_comp').AsString ;
+    Adr.Visible:=True;
+
+      Logo:= ReglementFfrxRprt.FindObject('Logo') as TfrxPictureView;
+      Logo.Visible:=True;
+
+        if (MainForm.CompanyTable.fieldbyname('logo_comp').Value <> null) then
+      begin
+              S := TMemoryStream.Create;
+          try
+            TBlobField(MainForm.CompanyTable.FieldByName('logo_comp')).SaveToStream(S);
+            S.Position := 0;
+            Jpg := TJPEGImage.Create;
+            try
+              Jpg.LoadFromStream(S);
+              Logo.Picture.Assign(Jpg);
+                finally
+              Jpg.Free;
+            end;
+          finally
+            S.Free;
+          end;
+
+           end;
+
+  end;
+
+
+
+      str1:='';
+    str1:= MontantEnToutesLettres(MainForm.RegfournisseurTable.FieldByName('montver_rf').AsCurrency);
+    str1[1] := Upcase(str1[1]);
+    MoneyWordRX := ReglementFfrxRprt.FindObject('MoneyWordRX') as TfrxMemoView;
+    MoneyWordRX.Text:='';
+    MoneyWordRX.Text :=str1;// StringReplace(ObserBonLivGLbl.Caption, '%my_str%', 'new string', [rfReplaceAll]);
+  end;
+
 
 
 procedure TReglementFListF.SumGirdProduitBtnClick(Sender: TObject);

@@ -76,7 +76,7 @@ type
     PopupMenu1: TPopupMenu;
     P1: TMenuItem;
     P2: TMenuItem;
-    ReglementfrxRprt: TfrxReport;
+    ReglementCfrxRprt: TfrxReport;
     procedure AddBARecBtnClick(Sender: TObject);
     procedure ResearchRegCEdtChange(Sender: TObject);
     procedure DateStartRegCDChange(Sender: TObject);
@@ -107,7 +107,6 @@ type
     procedure ResearchRegCEdtKeyPress(Sender: TObject; var Key: Char);
     procedure AdvToolButton1Click(Sender: TObject);
     procedure AdvToolButton2Click(Sender: TObject);
-    procedure AdvToolButton3Click(Sender: TObject);
     procedure FormPaint(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure BVLivListDBGridEhDrawColumnCell(Sender: TObject;
@@ -481,18 +480,6 @@ RegCListfrxRprt.Export(frxPDFExport1);
 MainForm.RegclientTable.EnableControls;
 end;
 
-procedure TReglementCListF.AdvToolButton3Click(Sender: TObject);
-begin
-  MainForm.RegclientTable.DisableControls;
-
-   GettingData;
-
-  RegCListfrxRprt.PrepareReport;
-  RegCListfrxRprt.ShowReport;
-
-  MainForm.RegclientTable.EnableControls;
-end;
-
 procedure TReglementCListF.ApplicationEvents1ShortCut(var Msg: TWMKey;
   var Handled: Boolean);
 begin
@@ -517,9 +504,15 @@ begin
       DeleteBARecBtnClick(Screen);
     Handled := true;
   end;
-     if  (GetKeyState(VK_F12) < 0)  then
+  if  (GetKeyState(VK_F11) < 0)  then
   begin
-    AdvToolButton3Click(Screen) ;
+    P1Click(Screen) ;
+    Handled := true;
+  end;
+
+  if  (GetKeyState(VK_F12) < 0)  then
+  begin
+    P2Click(Screen) ;
     Handled := true;
   end;
  end else
@@ -541,9 +534,15 @@ begin
               DeleteBARecBtnClick(Screen);
             Handled := true;
           end;
-             if  (GetKeyState(VK_F12) < 0)  then
+          if  (GetKeyState(VK_F11) < 0)  then
           begin
-            AdvToolButton3Click(Screen) ;
+            P1Click(Screen) ;
+            Handled := true;
+          end;
+
+          if  (GetKeyState(VK_F12) < 0)  then
+          begin
+            P2Click(Screen) ;
             Handled := true;
           end;
       end;
@@ -568,9 +567,15 @@ begin
       DeleteBARecBtnClick(Screen);
     Handled := true;
   end;
-     if  (GetKeyState(VK_F12) < 0)  then
+  if  (GetKeyState(VK_F11) < 0)  then
   begin
-    AdvToolButton3Click(Screen) ;
+    P1Click(Screen) ;
+    Handled := true;
+  end;
+
+  if  (GetKeyState(VK_F12) < 0)  then
+  begin
+    P2Click(Screen) ;
     Handled := true;
   end;
  end else
@@ -592,9 +597,15 @@ begin
               DeleteBARecBtnClick(Screen);
             Handled := true;
           end;
-             if  (GetKeyState(VK_F12) < 0)  then
+          if  (GetKeyState(VK_F11) < 0)  then
           begin
-            AdvToolButton3Click(Screen) ;
+            P1Click(Screen) ;
+            Handled := true;
+          end;
+
+          if  (GetKeyState(VK_F12) < 0)  then
+          begin
+            P2Click(Screen) ;
             Handled := true;
           end;
       end;
@@ -805,13 +816,10 @@ begin
 
   GettingDataRecuPai;
 
-  ReglementfrxRprt.PrepareReport;
-  ReglementfrxRprt.ShowReport;
+  ReglementCfrxRprt.PrepareReport;
+  ReglementCfrxRprt.ShowReport;
 
   MainForm.RegclientTable.EnableControls;
-
-
-
 
  end;
 end;
@@ -1109,23 +1117,23 @@ begin
   if NOT (MainForm.CompanyTable.IsEmpty) then
   begin
 
-    Name:= ReglementfrxRprt.FindObject('Name') as TfrxMemoView;
+    Name:= ReglementCfrxRprt.FindObject('Name') as TfrxMemoView;
     Name.Text:= MainForm.CompanyTable.FieldByName('nom_comp').AsString ;
     Name.Visible:=True;
 
-    Tel:= ReglementfrxRprt.FindObject('Tel') as TfrxMemoView;
+    Tel:= ReglementCfrxRprt.FindObject('Tel') as TfrxMemoView;
     Tel.Text:= MainForm.CompanyTable.FieldByName('fix_comp').AsString ;
     Tel.Visible:=True;
 
-      Mob:= ReglementfrxRprt.FindObject('Mob') as TfrxMemoView;
+      Mob:= ReglementCfrxRprt.FindObject('Mob') as TfrxMemoView;
     Mob.Text:= MainForm.CompanyTable.FieldByName('mob_comp').AsString ;
     Mob.Visible:=True;
 
-      Adr:= ReglementfrxRprt.FindObject('Adr') as TfrxMemoView;
+      Adr:= ReglementCfrxRprt.FindObject('Adr') as TfrxMemoView;
     Adr.Text:= MainForm.CompanyTable.FieldByName('adr_comp').AsString ;
     Adr.Visible:=True;
 
-      Logo:= ReglementfrxRprt.FindObject('Logo') as TfrxPictureView;
+      Logo:= ReglementCfrxRprt.FindObject('Logo') as TfrxPictureView;
       Logo.Visible:=True;
 
         if (MainForm.CompanyTable.fieldbyname('logo_comp').Value <> null) then
@@ -1154,7 +1162,7 @@ begin
       str1:='';
     str1:= MontantEnToutesLettres(MainForm.RegclientTable.FieldByName('montver_rc').AsCurrency);
     str1[1] := Upcase(str1[1]);
-    MoneyWordRX := ReglementfrxRprt.FindObject('MoneyWordRX') as TfrxMemoView;
+    MoneyWordRX := ReglementCfrxRprt.FindObject('MoneyWordRX') as TfrxMemoView;
     MoneyWordRX.Text:='';
     MoneyWordRX.Text :=str1;// StringReplace(ObserBonLivGLbl.Caption, '%my_str%', 'new string', [rfReplaceAll]);
 
