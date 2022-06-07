@@ -1008,7 +1008,7 @@ object FournisseurGestionF: TFournisseurGestionF
       object Label3: TLabel
         Left = 12
         Top = 129
-        Width = 48
+        Width = 47
         Height = 18
         Caption = 'R'#233'gl'#233':'
         Color = clWhite
@@ -1046,7 +1046,7 @@ object FournisseurGestionF: TFournisseurGestionF
       object Label6: TLabel
         Left = 12
         Top = 187
-        Width = 48
+        Width = 47
         Height = 18
         Caption = 'Cr'#233'dit:'
         Color = clWhite
@@ -1119,7 +1119,7 @@ object FournisseurGestionF: TFournisseurGestionF
         AlignWithMargins = True
         Left = 315
         Top = 267
-        Width = 26
+        Width = 27
         Height = 21
         BiDiMode = bdLeftToRight
         Caption = 'OK'
@@ -1301,7 +1301,7 @@ object FournisseurGestionF: TFournisseurGestionF
       ShowHint = True
       Spacing = 10
       OnClick = OKFournisseurGBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object CancelFournisseurGBtn: TAdvToolButton
@@ -1332,7 +1332,7 @@ object FournisseurGestionF: TFournisseurGestionF
       ShowHint = True
       Spacing = -1
       OnClick = CancelFournisseurGBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
   end

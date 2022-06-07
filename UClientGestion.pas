@@ -472,7 +472,7 @@ begin
           fieldbyname('fix_c').AsString := FixClientGEdt.Text;
           fieldbyname('fax_c').AsString := FaxClientGEdt.Text;
           fieldbyname('mob_c').AsString := MobileClientGEdt.Text;
-          fieldbyname('mob2_c').AsString := MobileClientGEdt.Text;
+          fieldbyname('mob2_c').AsString := Mobile2ClientGEdt.Text;
           fieldbyname('email_c').AsString := EmailClientGEdt.Text;
           fieldbyname('siteweb_c').AsString := SiteClientGEdt.Text;
           fieldbyname('rc_c').AsString := RCClientGEdt.Text;
@@ -1517,7 +1517,7 @@ begin
           fieldbyname('fix_f').Value := FixClientGEdt.Text;
           fieldbyname('fax_f').Value := FaxClientGEdt.Text;
           fieldbyname('mob_f').Value := MobileClientGEdt.Text;
-          fieldbyname('mob2_f').Value := MobileClientGEdt.Text;
+          fieldbyname('mob2_f').Value := Mobile2ClientGEdt.Text;
           fieldbyname('email_f').Value := EmailClientGEdt.Text;
           fieldbyname('siteweb_f').Value := SiteClientGEdt.Text;
 

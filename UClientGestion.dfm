@@ -555,10 +555,6 @@ object ClientGestionF: TClientGestionF
     end
     object PlusInfoClientGTB: TsTabSheet
       Caption = 'Plus D'#39'info'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object PlusInfoTB: TPanel
         Left = 0
         Top = 0
@@ -990,10 +986,6 @@ object ClientGestionF: TClientGestionF
     end
     object FicheClientTB: TsTabSheet
       Caption = 'Fiche Client'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       DesignSize = (
         508
         458)
@@ -1055,7 +1047,7 @@ object ClientGestionF: TClientGestionF
       object Label3: TLabel
         Left = 12
         Top = 129
-        Width = 48
+        Width = 47
         Height = 18
         Caption = 'R'#233'gl'#233':'
         Color = clWhite
@@ -1093,7 +1085,7 @@ object ClientGestionF: TClientGestionF
       object Label6: TLabel
         Left = 12
         Top = 187
-        Width = 48
+        Width = 47
         Height = 18
         Caption = 'Cr'#233'dit:'
         Color = clWhite
@@ -1166,7 +1158,7 @@ object ClientGestionF: TClientGestionF
         AlignWithMargins = True
         Left = 315
         Top = 267
-        Width = 26
+        Width = 27
         Height = 21
         BiDiMode = bdLeftToRight
         Caption = 'OK'
@@ -1348,7 +1340,7 @@ object ClientGestionF: TClientGestionF
       ShowHint = True
       Spacing = 10
       OnClick = OKClientGBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object CancelClientGBtn: TAdvToolButton
@@ -1379,7 +1371,7 @@ object ClientGestionF: TClientGestionF
       ShowHint = True
       Spacing = -1
       OnClick = CancelClientGBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
   end

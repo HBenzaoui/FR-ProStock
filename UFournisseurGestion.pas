@@ -394,7 +394,7 @@ begin
           fieldbyname('fix_f').Value := FixFournisseurGEdt.Text;
           fieldbyname('fax_f').Value := FaxFournisseurGEdt.Text;
           fieldbyname('mob_f').Value := MobileFournisseurGEdt.Text;
-          fieldbyname('mob2_f').Value := MobileFournisseurGEdt.Text;
+          fieldbyname('mob2_f').Value := Mobile2FournisseurGEdt.Text;
           fieldbyname('email_f').Value := EmailFournisseurGEdt.Text;
           fieldbyname('siteweb_f').Value := SiteFournisseurGEdt.Text;
 
@@ -1387,7 +1387,7 @@ begin
           fieldbyname('fix_c').Value := FixFournisseurGEdt.Text;
           fieldbyname('fax_c').Value := FaxFournisseurGEdt.Text;
           fieldbyname('mob_c').Value := MobileFournisseurGEdt.Text;
-          fieldbyname('mob2_c').Value := MobileFournisseurGEdt.Text;
+          fieldbyname('mob2_c').Value := Mobile2FournisseurGEdt.Text;
           fieldbyname('email_c').Value := EmailFournisseurGEdt.Text;
           fieldbyname('siteweb_c').Value := SiteFournisseurGEdt.Text;
 
