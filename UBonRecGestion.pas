@@ -158,6 +158,9 @@ type
     ApplicationEvents1: TApplicationEvents;
     Label31: TLabel;
     ListFourBonRecGBtn: TAdvToolButton;
+    S02: TPanel;
+    NSeriesProduitBonRecGBtn: TAdvToolButton;
+    S01: TPanel;
     procedure ProduitBonRecGCbxEnter(Sender: TObject);
     procedure ProduitBonRecGCbxKeyPress(Sender: TObject; var Key: Char);
     procedure FournisseurBonRecGCbxEnter(Sender: TObject);
@@ -1792,6 +1795,9 @@ procedure TBonRecGestionF.BonRecPListDataSDataChange(Sender: TObject;
 begin
   if NOT BonRecPListDataS.DataSet.IsEmpty then
   begin
+    NSeriesProduitBonRecGBtn.Visible:= True;
+    S01.Visible:= True;
+    S02.Visible:= True;
     DeleteProduitBonRecGBtn.Visible:= True;
     ClearProduitBonRecGBtn.Visible:= True;
 
@@ -1840,6 +1846,9 @@ begin
      ProduitsListDBGridEh.ReadOnly:=False;
     end else
     begin
+    NSeriesProduitBonRecGBtn.Visible:= False;
+    S01.Visible:= False;
+    S02.Visible:= False;
     DeleteProduitBonRecGBtn.Visible:= False;
     ClearProduitBonRecGBtn.Visible:= False;
 
