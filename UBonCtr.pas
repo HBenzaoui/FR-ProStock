@@ -1474,6 +1474,7 @@ procedure TBonCtrF.SumGirdBVCtrBtnClick(Sender: TObject);
 begin
   if SumGirdBVCtrBtn.Tag = 0 then
   begin
+    ValideFilterBVLivPMenuClick(Sender);
     BVCtrListDBGridEh.FooterRowCount:=1;
     SumGirdBVCtrBtn.Tag := 1;
   end else

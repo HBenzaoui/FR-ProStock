@@ -1398,6 +1398,7 @@ procedure TBonFacAF.SumGirdBAFacBtnClick(Sender: TObject);
 begin
   if SumGirdBAFacBtn.Tag = 0 then
   begin
+    ValideFilterBVLivPMenuClick(Sender);
     BAFacListDBGridEh.FooterRowCount:=1;
     SumGirdBAFacBtn.Tag := 1;
   end else

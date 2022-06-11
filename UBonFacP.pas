@@ -1367,6 +1367,7 @@ procedure TBonFacPF.SumGirdBBVFacBtnClick(Sender: TObject);
 begin
   if SumGirdBBVFacBtn.Tag = 0 then
   begin
+    ValideFilterBVLivPMenuClick(Sender);
     BVFacListDBGridEh.FooterRowCount:=1;
     SumGirdBBVFacBtn.Tag := 1;
   end else

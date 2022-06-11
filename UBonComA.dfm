@@ -589,6 +589,7 @@ object BonComAF: TBonComAF
         Font.Height = 16
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
+        Footer.DisplayFormat = '#,##0.00'
         Footer.Font.Charset = DEFAULT_CHARSET
         Footer.Font.Color = 4207405
         Footer.Font.Height = 16
@@ -631,6 +632,7 @@ object BonComAF: TBonComAF
         Font.Height = 16
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
+        Footer.DisplayFormat = '#,##0.00'
         Footers = <
           item
             Color = 15722984
@@ -668,6 +670,7 @@ object BonComAF: TBonComAF
         Font.Height = 16
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
+        Footer.DisplayFormat = '#,##0.00'
         Footers = <
           item
             Color = 15722984
@@ -703,6 +706,7 @@ object BonComAF: TBonComAF
         Font.Height = 16
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
+        Footer.DisplayFormat = '#,##0.00'
         Footers = <
           item
             Color = 15722984
@@ -740,6 +744,7 @@ object BonComAF: TBonComAF
         Font.Height = 16
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
+        Footer.DisplayFormat = '#,##0.00'
         Footers = <
           item
             Color = 15722984
@@ -776,6 +781,7 @@ object BonComAF: TBonComAF
         Font.Height = 16
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
+        Footer.DisplayFormat = '#,##0.00'
         Footers = <
           item
             Color = 15722984
@@ -813,6 +819,7 @@ object BonComAF: TBonComAF
         Font.Height = 16
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
+        Footer.DisplayFormat = '#,##0.00'
         Footers = <
           item
             Color = 15722984

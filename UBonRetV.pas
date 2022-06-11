@@ -1355,6 +1355,7 @@ procedure TBonRetVF.SumGirdBVRetBtnClick(Sender: TObject);
 begin
   if SumGirdBVRetBtn.Tag = 0 then
   begin
+    ValideFilterBVLivPMenuClick(Sender);
     BVRetListDBGridEh.FooterRowCount:=1;
     SumGirdBVRetBtn.Tag := 1;
   end else

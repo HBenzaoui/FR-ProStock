@@ -1355,6 +1355,7 @@ procedure TBonComAF.SumGirdBAComBtnClick(Sender: TObject);
 begin
   if SumGirdBAComBtn.Tag = 0 then
   begin
+    ValideFilterBVLivPMenuClick(Sender);
     BAComListDBGridEh.FooterRowCount:=1;
     SumGirdBAComBtn.Tag := 1;
   end else

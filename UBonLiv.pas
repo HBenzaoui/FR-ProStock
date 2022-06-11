@@ -1284,6 +1284,7 @@ procedure TBonLivF.SumGirdBBVlivBtnClick(Sender: TObject);
 begin
   if SumGirdBBVlivBtn.Tag = 0 then
   begin
+    ValideFilterBVLivPMenuClick(Sender);
     BVlivListDBGridEh.FooterRowCount:=1;
     SumGirdBBVlivBtn.Tag := 1;
   end else

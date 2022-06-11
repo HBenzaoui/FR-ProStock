@@ -533,6 +533,7 @@ object ProduitsListF: TProduitsListF
         Font.Name = 'Segoe UI'
         Font.Style = []
         Footer.Color = 15722984
+        Footer.DisplayFormat = '#,##0.00'
         Footer.Font.Charset = DEFAULT_CHARSET
         Footer.Font.Color = 4207405
         Footer.Font.Height = 18
@@ -633,6 +634,7 @@ object ProduitsListF: TProduitsListF
         Font.Style = []
         Font.Quality = fqProof
         Footer.Color = 15722984
+        Footer.DisplayFormat = '#,##0.00'
         Footer.FieldName = 'prixvd_p'
         Footer.Font.Charset = DEFAULT_CHARSET
         Footer.Font.Color = 4207405
@@ -738,6 +740,7 @@ object ProduitsListF: TProduitsListF
         Font.Style = []
         Font.Quality = fqProof
         Footer.Color = 15722984
+        Footer.DisplayFormat = '#,##0.00'
         Footer.FieldName = 'prixvr_p'
         Footer.Font.Charset = DEFAULT_CHARSET
         Footer.Font.Color = 4207405
@@ -807,6 +810,7 @@ object ProduitsListF: TProduitsListF
         Font.Style = []
         Font.Quality = fqProof
         Footer.Color = 15722984
+        Footer.DisplayFormat = '#,##0.00'
         Footer.FieldName = 'prixvg_p'
         Footer.Font.Charset = DEFAULT_CHARSET
         Footer.Font.Color = 4207405
@@ -874,6 +878,7 @@ object ProduitsListF: TProduitsListF
         Font.Height = -12
         Font.Name = 'Segoe UI'
         Font.Style = []
+        Footer.DisplayFormat = '#,##0.00'
         Footers = <>
         Layout = tlCenter
         Title.Alignment = taCenter
@@ -899,6 +904,7 @@ object ProduitsListF: TProduitsListF
         Font.Height = -12
         Font.Name = 'Segoe UI'
         Font.Style = []
+        Footer.DisplayFormat = '#,##0.00'
         Footers = <>
         Layout = tlCenter
         Title.Alignment = taCenter
@@ -924,6 +930,7 @@ object ProduitsListF: TProduitsListF
         Font.Height = -12
         Font.Name = 'Segoe UI'
         Font.Style = []
+        Footer.DisplayFormat = '#,##0.00'
         Footers = <>
         Layout = tlCenter
         Title.Alignment = taCenter
@@ -949,6 +956,7 @@ object ProduitsListF: TProduitsListF
         Font.Height = -12
         Font.Name = 'Segoe UI'
         Font.Style = []
+        Footer.DisplayFormat = '#,##0.00'
         Footers = <>
         Layout = tlCenter
         Title.Alignment = taCenter
@@ -977,7 +985,7 @@ object ProduitsListF: TProduitsListF
         Font.Name = 'Segoe UI'
         Font.Style = []
         Footer.Color = 15722984
-        Footer.DisplayFormat = '#,##0.00'
+        Footer.DisplayFormat = '0.00'
         Footer.FieldName = 'QutDispo'
         Footer.Font.Charset = DEFAULT_CHARSET
         Footer.Font.Color = 4207405

@@ -1283,6 +1283,7 @@ procedure TBonComVF.SumGirdBVComBtnClick(Sender: TObject);
 begin
   if SumGirdBVComBtn.Tag = 0 then
   begin
+    ValideFilterBVLivPMenuClick(Sender);
     BVComListDBGridEh.FooterRowCount:=1;
     SumGirdBVComBtn.Tag := 1;
   end else

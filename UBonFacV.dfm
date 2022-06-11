@@ -611,6 +611,7 @@ object BonFacVF: TBonFacVF
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
         Footer.Color = 15722984
+        Footer.DisplayFormat = '#,##0.00'
         Footer.Font.Charset = DEFAULT_CHARSET
         Footer.Font.Color = 4207405
         Footer.Font.Height = 18
@@ -645,6 +646,7 @@ object BonFacVF: TBonFacVF
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
         Footer.Color = 15722984
+        Footer.DisplayFormat = '#,##0.00'
         Footer.Font.Charset = DEFAULT_CHARSET
         Footer.Font.Color = 4207405
         Footer.Font.Height = 18
@@ -679,6 +681,7 @@ object BonFacVF: TBonFacVF
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
         Footer.Color = 15722984
+        Footer.DisplayFormat = '#,##0.00'
         Footer.Font.Charset = DEFAULT_CHARSET
         Footer.Font.Color = 4207405
         Footer.Font.Height = 18
@@ -711,6 +714,7 @@ object BonFacVF: TBonFacVF
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
         Footer.Color = 15722984
+        Footer.DisplayFormat = '#,##0.00'
         Footer.Font.Charset = DEFAULT_CHARSET
         Footer.Font.Color = 4207405
         Footer.Font.Height = 18
@@ -743,6 +747,7 @@ object BonFacVF: TBonFacVF
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
         Footer.Color = 15722984
+        Footer.DisplayFormat = '#,##0.00'
         Footer.Font.Charset = DEFAULT_CHARSET
         Footer.Font.Color = 4207405
         Footer.Font.Height = 18
@@ -777,6 +782,7 @@ object BonFacVF: TBonFacVF
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
         Footer.Color = 15722984
+        Footer.DisplayFormat = '#,##0.00'
         Footer.Font.Charset = DEFAULT_CHARSET
         Footer.Font.Color = 4207405
         Footer.Font.Height = 18
@@ -810,6 +816,7 @@ object BonFacVF: TBonFacVF
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
         Footer.Color = 15722984
+        Footer.DisplayFormat = '#,##0.00'
         Footer.Font.Charset = DEFAULT_CHARSET
         Footer.Font.Color = 4207405
         Footer.Font.Height = 18
@@ -844,6 +851,7 @@ object BonFacVF: TBonFacVF
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
         Footer.Color = 15722984
+        Footer.DisplayFormat = '#,##0.00'
         Footer.Font.Charset = DEFAULT_CHARSET
         Footer.Font.Color = 4207405
         Footer.Font.Height = 18
@@ -878,6 +886,7 @@ object BonFacVF: TBonFacVF
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
         Footer.Color = 15722984
+        Footer.DisplayFormat = '#,##0.00'
         Footer.Font.Charset = DEFAULT_CHARSET
         Footer.Font.Color = 4207405
         Footer.Font.Height = 18
@@ -912,6 +921,7 @@ object BonFacVF: TBonFacVF
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
         Footer.Color = 15722984
+        Footer.DisplayFormat = '#,##0.00'
         Footer.Font.Charset = DEFAULT_CHARSET
         Footer.Font.Color = 4207405
         Footer.Font.Height = 18

@@ -1355,6 +1355,7 @@ procedure TBonRecF.SumGirdBARecBtnClick(Sender: TObject);
 begin
   if SumGirdBARecBtn.Tag = 0 then
   begin
+    ValideFilterBVLivPMenuClick(Sender);
     BARecListDBGridEh.FooterRowCount:=1;
     SumGirdBARecBtn.Tag := 1;
   end else
