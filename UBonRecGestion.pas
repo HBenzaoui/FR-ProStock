@@ -353,6 +353,8 @@ procedure TBonRecGestionF.EnableBonRec;
         ListAddProduitBonRecGBtn.ImageIndex:=13;//41 fo D
         NewAddProduitBonRecGBtn.Enabled:= True;
         NewAddProduitBonRecGBtn.ImageIndex:=4;//28 fo D
+        NSeriesProduitBonRecGBtn.Enabled:= True;
+        NSeriesProduitBonRecGBtn.ImageIndex:=63;//64 fo D
         DeleteProduitBonRecGBtn.Enabled:= True;
         DeleteProduitBonRecGBtn.ImageIndex:=14;//36 fo D
         ClearProduitBonRecGBtn.Enabled:= True;

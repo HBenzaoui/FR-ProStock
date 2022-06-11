@@ -358,6 +358,8 @@ begin
       ListAddProduitBonLivGBtn.ImageIndex:=13;//41 fo D
       NewAddProduitBonLivGBtn.Enabled:= True;
       NewAddProduitBonLivGBtn.ImageIndex:=4;//28 fo D
+      NSeriesProduitBonLivGBtn.Enabled:= True;
+      NSeriesProduitBonLivGBtn.ImageIndex:=63;//64 fo D
       DeleteProduitBonLivGBtn.Enabled:= True;
       DeleteProduitBonLivGBtn.ImageIndex:=14;//36 fo D
       ClearProduitBonLivGBtn.Enabled:= True;
