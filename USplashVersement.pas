@@ -1201,6 +1201,7 @@ begin
           end;
 
           MainForm.Bona_recTable.Post;
+          MainForm.Bona_recTable.Refresh;
      //     MainForm.Bona_recTable.EnableControls;
 
     //-----------------------------------------------------------------------------------------------------------------------------------
@@ -1714,6 +1715,7 @@ begin
           end;
 
           MainForm.Bonv_livTable.Post;
+          MainForm.Bonv_livTable.Refresh;
      //     MainForm.Bona_recTable.EnableControls;
 
               //-----------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -2243,6 +2245,7 @@ begin
           MainForm.Bonv_ctrTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption) ;
 
           MainForm.Bonv_ctrTable.Post;
+          MainForm.Bonv_ctrTable.Refresh;
 
           BonCtrGestionF.HourBonCtrGD.Caption:= TimeToStr(MainForm.Bonv_ctrTable.FieldByName('time_bvctr').AsDateTime);
 
@@ -2677,6 +2680,7 @@ begin
           end;
 
           DataModuleF.Bona_comTable.Post;
+          DataModuleF.Bona_comTable.Refresh;
      //     DataModuleF.Bona_comTable.EnableControls;
 
     //-----------------------------------------------------------------------------------------------------------------------------------
@@ -3145,6 +3149,7 @@ begin
           end;
 
           DataModuleF.Bonv_comTable.Post;
+          DataModuleF.Bonv_comTable.Refresh;
      //     MainForm.Bona_recTable.EnableControls;
 
               //-----------------------------------------------------------------------------------------------------------------------------------------------------------

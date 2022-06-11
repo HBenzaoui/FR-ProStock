@@ -897,31 +897,31 @@ var
 
 
 
-     if (MainForm.Bona_recTable.FieldValues['RemisePerc']<> null) AND (MainForm.Bona_recTable.FieldValues['remise_barec']<> 0) then
+     if (MainForm.Bona_recTable.FieldByName('RemisePerc').AsFloat<> null) AND (MainForm.Bona_recTable.FieldByName('remise_barec').AsFloat<> 0) then
      begin
-      BonRecGestionF.RemisePerctageBonRecGEdt.Text :=     CurrToStrF(MainForm.Bona_recTable.FieldValues['RemisePerc'], ffNumber, 2);
-      BonRecGestionF.RemiseBonRecGEdt.Text :=     CurrToStrF(MainForm.Bona_recTable.FieldValues['remise_barec'], ffNumber, 2);
+      BonRecGestionF.RemisePerctageBonRecGEdt.Text :=     FloatToStrF(MainForm.Bona_recTable.FieldByName('RemisePerc').AsFloat, ffCurrency, 14, 2);
+      BonRecGestionF.RemiseBonRecGEdt.Text :=     FloatToStrF(MainForm.Bona_recTable.FieldByName('remise_barec').AsFloat, ffCurrency, 14, 2);
      end;
 
-       if (MainForm.Bona_recTable.FieldValues['montht_barec']<> null) then
+       if (MainForm.Bona_recTable.FieldByName('montht_barec').AsFloat <> null) then
        begin
-      BonRecGestionF.BonRecTotalHTLbl.Caption :=    CurrToStrF(MainForm.Bona_recTable.FieldValues['montht_barec'], ffNumber, 2);
+      BonRecGestionF.BonRecTotalHTLbl.Caption :=    FloatToStrF(MainForm.Bona_recTable.FieldByName('montht_barec').AsFloat, ffCurrency, 14, 2);
        end;
-      if (MainForm.Bona_recTable.FieldValues['MontantTVA']<> null) then
+      if (MainForm.Bona_recTable.FieldByName('MontantTVA').AsFloat <> null) then
        begin
-      BonRecGestionF.BonRecTotalTVALbl.Caption :=   CurrToStrF(MainForm.Bona_recTable.FieldValues['MontantTVA'], ffNumber, 2);
+      BonRecGestionF.BonRecTotalTVALbl.Caption :=   FloatToStrF(MainForm.Bona_recTable.FieldByName('MontantTVA').AsFloat, ffCurrency, 14, 2);
        end;
-       if (MainForm.Bona_recTable.FieldValues['montttc_barec']<> null) then
+       if (MainForm.Bona_recTable.FieldByName('montttc_barec').AsFloat <> null) then
        begin
-      BonRecGestionF.BonRecTotalTTCLbl.Caption :=   CurrToStrF(MainForm.Bona_recTable.FieldValues['montttc_barec'], ffNumber, 2);
+      BonRecGestionF.BonRecTotalTTCLbl.Caption :=   FloatToStrF(MainForm.Bona_recTable.FieldByName('montttc_barec').AsFloat, ffCurrency, 14, 2);
        end;
-       if (MainForm.Bona_recTable.FieldValues['montver_barec']<> null) then
+       if (MainForm.Bona_recTable.FieldByName('montver_barec').AsFloat <> null) then
        begin
-      BonRecGestionF.BonRecRegleLbl.Caption :=      CurrToStrF(MainForm.Bona_recTable.FieldValues['montver_barec'], ffNumber, 2);
+      BonRecGestionF.BonRecRegleLbl.Caption :=      FloatToStrF(MainForm.Bona_recTable.FieldByName('montver_barec').AsFloat, ffCurrency, 14, 2);
        end;
-       if (MainForm.Bona_recTable.FieldValues['MontantRes']<> null) then
+       if (MainForm.Bona_recTable.FieldByName('MontantRes').AsFloat <> null) then
        begin
-      BonRecGestionF.BonRecResteLbl.Caption :=      CurrToStrF(MainForm.Bona_recTable.FieldValues['MontantRes'], ffNumber, 2);
+      BonRecGestionF.BonRecResteLbl.Caption :=      FloatToStrF(MainForm.Bona_recTable.FieldByName('MontantRes').AsFloat, ffCurrency, 14, 2);
        end;
 
 

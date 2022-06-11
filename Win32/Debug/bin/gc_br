@@ -1,9 +1,9 @@
 0~ referp~ Réference~ 150~ -1
-1~ nomp~ Désignation~ 350~ -1
+1~ nomp~ Désignation~ 432~ -1
 2~ qut_p~ Quantité~ 100~ -1
-3~ cond_p~ Cond~ 70~ -1
+3~ cond_p~ Cond~ 126~ -1
 4~ dateperiss_p~ Date.Exp~ 120~ 0
-5~ prixht_p~ Prix A HT~ 170~ -1
+5~ prixht_p~ Prix A HT~ 215~ -1
 6~ CalcPMP~ P.M.P~ 170~ 0
 7~ tva_p~ TVA %~ 84~ -1
 8~ prixattc~ Prix A TTC~ 170~ -1

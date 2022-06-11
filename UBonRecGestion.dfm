@@ -1997,8 +1997,6 @@ object BonRecGestionF: TBonRecGestionF
         Font.Style = []
         Footers = <>
         Layout = tlCenter
-        MaxWidth = 100
-        MinWidth = 100
         Title.Alignment = taCenter
         Title.Caption = 'Quantit'#233
         Title.Font.Charset = DEFAULT_CHARSET

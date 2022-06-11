@@ -882,31 +882,31 @@ begin
        end;
 
 
-     if (MainForm.Bonv_livTable.FieldValues['RemisePerc']<> null) AND (MainForm.Bonv_livTable.FieldValues['remise_bvliv']<> 0) then
+     if (MainForm.Bonv_livTable.FieldByName('RemisePerc').AsFloat<> null) AND (MainForm.Bonv_livTable.FieldByName('remise_bvliv').AsFloat<> 0) then
      begin
-     BonLivGestionF.RemisePerctageBonLivGEdt.Text :=     CurrToStrF(MainForm.Bonv_livTable.FieldValues['RemisePerc'], ffNumber, 2);
-      BonLivGestionF.RemiseBonLivGEdt.Text :=     CurrToStrF(MainForm.Bonv_livTable.FieldValues['remise_bvliv'], ffNumber, 2);
+     BonLivGestionF.RemisePerctageBonLivGEdt.Text :=     FloatToStrF(MainForm.Bonv_livTable.FieldByName('RemisePerc').AsFloat, ffCurrency,14, 2);
+      BonLivGestionF.RemiseBonLivGEdt.Text :=     FloatToStrF(MainForm.Bonv_livTable.FieldByName('remise_bvliv').AsFloat, ffCurrency,14, 2);
      end;
 
-       if (MainForm.Bonv_livTable.FieldValues['montht_bvliv']<> null) then
+       if (MainForm.Bonv_livTable.FieldByName('montht_bvliv').AsFloat<> null) then
        begin
-      BonLivGestionF.BonLivTotalHTLbl.Caption :=    CurrToStrF(MainForm.Bonv_livTable.FieldValues['montht_bvliv'], ffNumber, 2);
+      BonLivGestionF.BonLivTotalHTLbl.Caption :=    FloatToStrF(MainForm.Bonv_livTable.FieldByName('montht_bvliv').AsFloat, ffCurrency,14, 2);
        end;
-      if (MainForm.Bonv_livTable.FieldValues['MontantTVA']<> null) then
+      if (MainForm.Bonv_livTable.FieldByName('MontantTVA').AsFloat<> null) then
        begin
-      BonLivGestionF.BonLivTotalTVALbl.Caption :=   CurrToStrF(MainForm.Bonv_livTable.FieldValues['MontantTVA'], ffNumber, 2);
+      BonLivGestionF.BonLivTotalTVALbl.Caption :=   FloatToStrF(MainForm.Bonv_livTable.FieldByName('MontantTVA').AsFloat, ffCurrency,14, 2);
        end;
-       if (MainForm.Bonv_livTable.FieldValues['montttc_bvliv']<> null) then
+       if (MainForm.Bonv_livTable.FieldByName('montttc_bvliv').AsFloat<> null) then
        begin
-      BonLivGestionF.BonLivTotalTTCLbl.Caption :=   CurrToStrF(MainForm.Bonv_livTable.FieldValues['montttc_bvliv'], ffNumber, 2);
+      BonLivGestionF.BonLivTotalTTCLbl.Caption :=   FloatToStrF(MainForm.Bonv_livTable.FieldByName('montttc_bvliv').AsFloat, ffCurrency,14, 2);
        end;
-       if (MainForm.Bonv_livTable.FieldValues['montver_bvliv']<> null) then
+       if (MainForm.Bonv_livTable.FieldByName('montver_bvliv').AsFloat<> null) then
        begin
-      BonLivGestionF.BonLivRegleLbl.Caption :=      CurrToStrF(MainForm.Bonv_livTable.FieldValues['montver_bvliv'], ffNumber, 2);
+      BonLivGestionF.BonLivRegleLbl.Caption :=      FloatToStrF(MainForm.Bonv_livTable.FieldByName('montver_bvliv').AsFloat, ffCurrency,14, 2);
        end;
-       if (MainForm.Bonv_livTable.FieldValues['MontantRes']<> null) then
+       if (MainForm.Bonv_livTable.FieldByName('MontantRes').AsFloat<> null) then
        begin
-      BonLivGestionF.BonLivResteLbl.Caption :=      CurrToStrF(MainForm.Bonv_livTable.FieldValues['MontantRes'], ffNumber, 2);
+      BonLivGestionF.BonLivResteLbl.Caption :=      FloatToStrF(MainForm.Bonv_livTable.FieldByName('MontantRes').AsFloat, ffCurrency,14, 2);
        end;
 
 

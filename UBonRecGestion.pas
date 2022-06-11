@@ -1005,8 +1005,8 @@ begin
 // use this tage when i click on edit button for bon
  if Tag = 1 then
  begin
-     BonRecGFourOLDCredit.Caption:= FloatToStrF(StrToFloat(StringReplace(BonRecGFourOLDCredit.Caption, #32, '', [rfReplaceAll])),ffNumber,14,2) ;
-     BonRecGFourNEWCredit.Caption:= FloatToStrF(StrToFloat(StringReplace(BonRecGFourNEWCredit.Caption, #32, '', [rfReplaceAll])),ffNumber,14,2) ;
+     BonRecGFourOLDCredit.Caption:= FloatToStrF(StrToFloat(StringReplace(BonRecGFourOLDCredit.Caption, #32, '', [rfReplaceAll])),ffCurrency,14,2) ;
+     BonRecGFourNEWCredit.Caption:= FloatToStrF(StrToFloat(StringReplace(BonRecGFourNEWCredit.Caption, #32, '', [rfReplaceAll])),ffCurrency,14,2) ;
 
    if MainForm.Bona_recTable.FieldByName('valider_barec').AsBoolean = True then
    begin
@@ -1021,8 +1021,8 @@ begin
 
       NewCredit:=  MainForm.SQLQuery.FieldByName('credit_f').AsFloat;
 
-     BonRecGFourOLDCredit.Caption:= FloatToStrF(StrToFloat(StringReplace(CurrToStr( OLDCredit), #32, '', [rfReplaceAll])),ffNumber,14,2) ;
-     BonRecGFourNEWCredit.Caption:= FloatToStrF(StrToFloat(StringReplace(CurrToStr( NewCredit), #32, '', [rfReplaceAll])),ffNumber,14,2) ;
+     BonRecGFourOLDCredit.Caption:= FloatToStrF(StrToFloat(StringReplace(FloatToStr( OLDCredit), #32, '', [rfReplaceAll])),ffCurrency,14,2) ;
+     BonRecGFourNEWCredit.Caption:= FloatToStrF(StrToFloat(StringReplace(FloatToStr( NewCredit), #32, '', [rfReplaceAll])),ffCurrency,14,2) ;
 
      end;
         MainForm.SQLQuery.Active:= False;
@@ -1096,7 +1096,7 @@ begin
       if NOT (OLDCreditFINI = 0) then
       begin
 //       MainForm.Bona_recTableCredit.last;
-       BonRecGFourOLDCredit.Caption:= CurrToStrF((OLDCreditFINI ),ffNumber,2) ;
+       BonRecGFourOLDCredit.Caption:= FloatToStrF((OLDCreditFINI ),ffCurrency,14,2) ;
 
        if NOT (BonRecPListDataS.DataSet.IsEmpty) then
         begin
@@ -1114,7 +1114,7 @@ begin
         end;
         end else
         begin
-         BonRecGFourOLDCredit.Caption:= CurrToStrF(0,ffNumber,2) ;
+         BonRecGFourOLDCredit.Caption:= FloatToStrF(0,ffCurrency,14,2) ;
         end;
 
 //      MainForm.Bona_recTableCredit.DisableControls;
@@ -2483,7 +2483,7 @@ procedure TBonRecGestionF.EditBARecBonRecGBtnClick(Sender: TObject);
 
 // use this code to rest the old credit to the to the last time before he pay anything in that bon so you can aclculate again
   BonRecGFourOLDCredit.Caption:=
-  CurrToStrF((((MainForm.FournisseurTable.FieldValues['credit_f'])-(StringReplace(BonRecResteLbl.Caption, #32, '', [rfReplaceAll])))),ffNumber,2);
+  FloatToStrF((((MainForm.FournisseurTable.FieldByName('credit_f').AsFloat)- StrToFloat(StringReplace(BonRecResteLbl.Caption, #32, '', [rfReplaceAll])))),ffCurrency,14,2);
 
         begin
       MainForm.FournisseurTable.Edit;
@@ -2705,7 +2705,7 @@ begin
 
   if  (MainForm.Bona_recTable.FieldValues['MontantRes']<>null)  then
   begin
-  BonRecResteLbl.Caption:=CurrToStrF(((MainForm.Bona_recTable.FieldValues['MontantRes'])),ffNumber,2) ;
+  BonRecResteLbl.Caption:=FloatToStrF(((MainForm.Bona_recTable.FieldByName('MontantRes').AsFloat)),ffCurrency,14,2) ;
   end;
 
   NumBonRecGEdt.Caption:= MainForm.Bona_recTable.FieldByName('num_barec').AsString;
@@ -2748,7 +2748,7 @@ end;
 
 if  (MainForm.Bona_recTable.FieldValues['MontantRes']<>null)  then
 begin
-BonRecResteLbl.Caption:=CurrToStrF(((MainForm.Bona_recTable.FieldValues['MontantRes'])),ffNumber,2) ;
+BonRecResteLbl.Caption:=FloatToStrF(((MainForm.Bona_recTable.FieldByName('MontantRes').AsFloat)),ffCurrency,14,2) ;
 end;
 
  NumBonRecGEdt.Caption:= MainForm.Bona_recTable.FieldByName('num_barec').AsString;
@@ -2789,7 +2789,7 @@ end;
 
 if  (MainForm.Bona_recTable.FieldValues['MontantRes']<>null)  then
 begin
-BonRecResteLbl.Caption:=CurrToStrF(((MainForm.Bona_recTable.FieldValues['MontantRes'])),ffNumber,2) ;
+BonRecResteLbl.Caption:=FloatToStrF(((MainForm.Bona_recTable.FieldByName('MontantRes').AsFloat)),ffCurrency,14,2) ;
 end;
 
  NumBonRecGEdt.Caption:= MainForm.Bona_recTable.FieldByName('num_barec').AsString;
@@ -2830,7 +2830,7 @@ end;
 
 if  (MainForm.Bona_recTable.FieldValues['MontantRes']<>null)  then
 begin
-BonRecResteLbl.Caption:=CurrToStrF(((MainForm.Bona_recTable.FieldValues['MontantRes'])),ffNumber,2) ;
+BonRecResteLbl.Caption:=FloatToStrF(((MainForm.Bona_recTable.FieldByName('MontantRes').AsFloat)),ffCurrency,14,2) ;
 end;
 
  NumBonRecGEdt.Caption:= MainForm.Bona_recTable.FieldByName('num_barec').AsString;

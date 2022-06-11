@@ -897,31 +897,31 @@ var
 
 
 
-     if (DataModuleF.Bona_comTable.FieldValues['RemisePerc']<> null) AND (DataModuleF.Bona_comTable.FieldValues['remise_bacom']<> 0) then
+     if (DataModuleF.Bona_comTable.FieldByName('RemisePerc').AsFloat<> null) AND (DataModuleF.Bona_comTable.FieldByName('remise_bacom').AsFloat<> 0) then
      begin
-      BonComAGestionF.RemisePerctageBonComGEdt.Text :=     CurrToStrF(DataModuleF.Bona_comTable.FieldValues['RemisePerc'], ffNumber, 2);
-      BonComAGestionF.RemiseBonComGEdt.Text :=     CurrToStrF(DataModuleF.Bona_comTable.FieldValues['remise_bacom'], ffNumber, 2);
+      BonComAGestionF.RemisePerctageBonComGEdt.Text :=     FloatToStrF(DataModuleF.Bona_comTable.FieldByName('RemisePerc').AsFloat, ffCurrency, 8, 2);
+      BonComAGestionF.RemiseBonComGEdt.Text :=     FloatToStrF(DataModuleF.Bona_comTable.FieldByName('remise_bacom').AsFloat, ffCurrency, 14, 2);
      end;
 
-       if (DataModuleF.Bona_comTable.FieldValues['montht_bacom']<> null) then
+       if (DataModuleF.Bona_comTable.FieldByName('montht_bacom').AsFloat<> null) then
        begin
-      BonComAGestionF.BonComTotalHTLbl.Caption :=    CurrToStrF(DataModuleF.Bona_comTable.FieldValues['montht_bacom'], ffNumber, 2);
+      BonComAGestionF.BonComTotalHTLbl.Caption :=    FloatToStrF(DataModuleF.Bona_comTable.FieldByName('montht_bacom').AsFloat, ffCurrency, 14, 2);
        end;
-      if (DataModuleF.Bona_comTable.FieldValues['MontantTVA']<> null) then
+      if (DataModuleF.Bona_comTable.FieldByName('MontantTVA').AsFloat<> null) then
        begin
-      BonComAGestionF.BonComTotalTVALbl.Caption :=   CurrToStrF(DataModuleF.Bona_comTable.FieldValues['MontantTVA'], ffNumber, 2);
+      BonComAGestionF.BonComTotalTVALbl.Caption :=   FloatToStrF(DataModuleF.Bona_comTable.FieldByName('MontantTVA').AsFloat, ffCurrency, 14, 2);
        end;
-       if (DataModuleF.Bona_comTable.FieldValues['montttc_bacom']<> null) then
+       if (DataModuleF.Bona_comTable.FieldByName('montttc_bacom').AsFloat<> null) then
        begin
-      BonComAGestionF.BonComTotalTTCLbl.Caption :=   CurrToStrF(DataModuleF.Bona_comTable.FieldValues['montttc_bacom'], ffNumber, 2);
+      BonComAGestionF.BonComTotalTTCLbl.Caption :=   FloatToStrF(DataModuleF.Bona_comTable.FieldByName('montttc_bacom').AsFloat, ffCurrency, 14, 2);
        end;
-       if (DataModuleF.Bona_comTable.FieldValues['montver_bacom']<> null) then
+       if (DataModuleF.Bona_comTable.FieldByName('montver_bacom').AsFloat<> null) then
        begin
-      BonComAGestionF.BonComRegleLbl.Caption :=      CurrToStrF(DataModuleF.Bona_comTable.FieldValues['montver_bacom'], ffNumber, 2);
+      BonComAGestionF.BonComRegleLbl.Caption :=      FloatToStrF(DataModuleF.Bona_comTable.FieldByName('montver_bacom').AsFloat, ffCurrency, 14, 2);
        end;
-       if (DataModuleF.Bona_comTable.FieldValues['MontantRes']<> null) then
+       if (DataModuleF.Bona_comTable.FieldByName('MontantRes').AsFloat<> null) then
        begin
-      BonComAGestionF.BonComResteLbl.Caption :=      CurrToStrF(DataModuleF.Bona_comTable.FieldValues['MontantRes'], ffNumber, 2);
+      BonComAGestionF.BonComResteLbl.Caption :=      FloatToStrF(DataModuleF.Bona_comTable.FieldByName('MontantRes').AsFloat, ffCurrency, 14, 2);
        end;
 
 
