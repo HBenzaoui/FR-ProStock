@@ -103,7 +103,7 @@ object TransferComptesGestionF: TTransferComptesGestionF
     ShowHint = True
     Spacing = -1
     OnClick = AddCompte1TransfeGBtnClick
-    Version = '1.6.2.0'
+    Version = '1.7.2.0'
     TMSStyle = 0
   end
   object Label5: TLabel
@@ -197,7 +197,7 @@ object TransferComptesGestionF: TTransferComptesGestionF
     ShowHint = True
     Spacing = -1
     OnClick = AddCompte2TransfeGBtnClick
-    Version = '1.6.2.0'
+    Version = '1.7.2.0'
     TMSStyle = 0
   end
   object OKTransferGBtn: TAdvToolButton
@@ -231,7 +231,7 @@ object TransferComptesGestionF: TTransferComptesGestionF
     ShowHint = True
     Spacing = 10
     OnClick = OKTransferGBtnClick
-    Version = '1.6.2.0'
+    Version = '1.7.2.0'
     ExplicitTop = 462
     TMSStyle = 0
   end
@@ -264,7 +264,7 @@ object TransferComptesGestionF: TTransferComptesGestionF
     ShowHint = True
     Spacing = -1
     OnClick = CancelTransferGBtnClick
-    Version = '1.6.2.0'
+    Version = '1.7.2.0'
     ExplicitTop = 356
     TMSStyle = 0
   end
@@ -341,7 +341,7 @@ object TransferComptesGestionF: TTransferComptesGestionF
   object Label4: TLabel
     Left = 506
     Top = 88
-    Width = 7
+    Width = 6
     Height = 16
     Caption = '*'
     Color = clBtnFace
@@ -357,7 +357,7 @@ object TransferComptesGestionF: TTransferComptesGestionF
   object Label6: TLabel
     Left = 354
     Top = 150
-    Width = 7
+    Width = 6
     Height = 16
     Caption = '*'
     Color = clBtnFace
@@ -373,7 +373,7 @@ object TransferComptesGestionF: TTransferComptesGestionF
   object Label9: TLabel
     Left = 506
     Top = 197
-    Width = 7
+    Width = 6
     Height = 16
     Caption = '*'
     Color = clBtnFace
@@ -431,13 +431,13 @@ object TransferComptesGestionF: TTransferComptesGestionF
     ShowHint = True
     Spacing = -1
     OnClick = AddModePaieRegCGBtnClick
-    Version = '1.6.2.0'
+    Version = '1.7.2.0'
     TMSStyle = 0
   end
   object Label10: TLabel
     Left = 298
     Top = 292
-    Width = 6
+    Width = 5
     Height = 15
     Caption = '*'
     Color = clBtnFace

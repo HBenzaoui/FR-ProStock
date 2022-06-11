@@ -1121,7 +1121,7 @@ begin
            begin
             isBalDIGI100:= True;
             CodeP := StrToInt( Copy(ProduitBonCtrGCbx.Text,3,5) );
-//             BalQut:= (StrToFloat( Copy(ProduitBonCtrGCbx.Text,8,5 )) /100)/MainForm.FDQuery2.FieldByName('prixvd_p').AsCurrency;  // divid by 1000 cuz in codebare qut = AAAAA
+//             BalQut:= (StrToFloat( Copy(ProduitBonCtrGCbx.Text,8,5 )) /100)/MainForm.FDQuery2.FieldByName('prixvd_p').AsFloat;  // divid by 1000 cuz in codebare qut = AAAAA
 
              BalQut:= (StrToFloat( Copy(ProduitBonCtrGCbx.Text,8,5 )) /1000)  //becouse i managed to do qut in rightdata in codebar by using balance config
            end else
@@ -1921,20 +1921,20 @@ begin
           MainForm.Bonv_ctrTable.FieldValues['code_c'] := MainForm.ClientTable.FieldByName('code_c').AsInteger;
           MainForm.Bonv_ctrTable.FieldByName('date_bvctr').AsDateTime:= DateBonCtrGD.DateTime;
           MainForm.Bonv_ctrTable.FieldValues['time_bvctr']:=TimeOf(Now);
-          MainForm.Bonv_ctrTable.FieldByName('montaht_bvctr').AsCurrency := StrToCurr(StringReplace(BonCtrTotalAHTLbl.Caption, #32, '', [rfReplaceAll]));
-          MainForm.Bonv_ctrTable.FieldByName('montht_bvctr').AsCurrency := StrToCurr(StringReplace(BonCtrTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
+          MainForm.Bonv_ctrTable.FieldByName('montaht_bvctr').AsFloat := StrToFloat(StringReplace(BonCtrTotalAHTLbl.Caption, #32, '', [rfReplaceAll]));
+          MainForm.Bonv_ctrTable.FieldByName('montht_bvctr').AsFloat := StrToFloat(StringReplace(BonCtrTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
 
           if RemiseBonCtrGEdt.Text <> '' then
           begin
-            MainForm.Bonv_ctrTable.FieldByName('remise_bvctr').AsCurrency := StrToCurr(StringReplace(RemiseBonCtrGEdt.Text, #32, '', [rfReplaceAll]));
+            MainForm.Bonv_ctrTable.FieldByName('remise_bvctr').AsFloat := StrToFloat(StringReplace(RemiseBonCtrGEdt.Text, #32, '', [rfReplaceAll]));
           end
           else
           begin
-            MainForm.Bonv_ctrTable.FieldByName('remise_bvctr').AsCurrency := 0;
+            MainForm.Bonv_ctrTable.FieldByName('remise_bvctr').AsFloat := 0;
           end;
 
-          MainForm.Bonv_ctrTable.FieldByName('montver_bvctr').AsCurrency := StrToCurr(StringReplace(BonCtrRegleLbl.Caption, #32, '', [rfReplaceAll]));
-          MainForm.Bonv_ctrTable.FieldByName('montttc_bvctr').AsCurrency := StrToCurr(StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
+          MainForm.Bonv_ctrTable.FieldByName('montver_bvctr').AsFloat := StrToFloat(StringReplace(BonCtrRegleLbl.Caption, #32, '', [rfReplaceAll]));
+          MainForm.Bonv_ctrTable.FieldByName('montttc_bvctr').AsFloat := StrToFloat(StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
 
           MainForm.Bonv_ctrTable.Post;
           MainForm.Bonv_ctrTable.EnableControls;
@@ -1988,15 +1988,15 @@ begin
 
       if RemiseBonCtrGEdt.Text <> '' then
       begin
-        MainForm.Bonv_ctrTable.FieldByName('remise_bvctr').AsCurrency := StrToCurr(StringReplace(RemiseBonCtrGEdt.Text, #32, '', [rfReplaceAll]));
+        MainForm.Bonv_ctrTable.FieldByName('remise_bvctr').AsFloat := StrToFloat(StringReplace(RemiseBonCtrGEdt.Text, #32, '', [rfReplaceAll]));
       end
       else
       begin
-        MainForm.Bonv_ctrTable.FieldByName('remise_bvctr').AsCurrency := 0;
+        MainForm.Bonv_ctrTable.FieldByName('remise_bvctr').AsFloat := 0;
       end;
 
-      MainForm.Bonv_ctrTable.FieldByName('montver_bvctr').AsCurrency := StrToCurr(StringReplace(BonCtrRegleLbl.Caption, #32, '', [rfReplaceAll]));
-      MainForm.Bonv_ctrTable.FieldByName('montttc_bvctr').AsCurrency := StrToCurr(StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
+      MainForm.Bonv_ctrTable.FieldByName('montver_bvctr').AsFloat := StrToFloat(StringReplace(BonCtrRegleLbl.Caption, #32, '', [rfReplaceAll]));
+      MainForm.Bonv_ctrTable.FieldByName('montttc_bvctr').AsFloat := StrToFloat(StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
 
       MainForm.Bonv_ctrTable.Post;
       MainForm.Bonv_ctrTable.EnableControls;
@@ -2057,7 +2057,7 @@ end;
 
 procedure TBonCtrGestionF.ClientBonCtrGCbxExit(Sender: TObject);
 //var CodeC: Integer;
-//OLDCreditC : Currency;
+//OLDCreditC : Double;
 begin
 
   if ClientBonCtrGCbx.Text <> '' then
@@ -3061,7 +3061,7 @@ end;
 
 procedure TBonCtrGestionF.RemisePerctageBonCtrGEdtChange(Sender: TObject);
 var
-  BonLTotalHT, RemisePerctageBonCtr, TotalTVANet, NewHT, NewTVA, NewTTC, Remise, OldTTC, OldClientCredit: Currency;
+  BonLTotalHT, RemisePerctageBonCtr, TotalTVANet, NewHT, NewTVA, NewTTC, Remise, OldTTC, OldClientCredit: Double;
 begin
   if RemisePerctageBonCtrGEdt.Text <> '' then
   begin
@@ -3132,7 +3132,7 @@ end;
 
 procedure TBonCtrGestionF.RemiseBonCtrGEdtChange(Sender: TObject);
 var
-  RemiseBonCtrG, BonLTotalHT, BonLTotalTVA, OLDTTC: Currency;
+  RemiseBonCtrG, BonLTotalHT, BonLTotalTVA, OLDTTC: Double;
 begin
   if RemiseBonCtrGEdt.Focused then
   begin
@@ -3424,18 +3424,18 @@ begin
 //          MainForm.Bonv_ctrTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
 //          MainForm.Bonv_ctrTable.FieldValues['obser_bvctr']:= ObserBonCtrGMem.Text;
 //          MainForm.Bonv_ctrTable.FieldValues['num_cheque_bvctr']:= NChequeBonCtrGCbx.Text;
-    MainForm.Bonv_ctrTable.FieldByName('montht_bvctr').AsCurrency := StrToCurr(StringReplace(BonCtrTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
+    MainForm.Bonv_ctrTable.FieldByName('montht_bvctr').AsFloat := StrToFloat(StringReplace(BonCtrTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
     if RemiseBonCtrGEdt.Text <> '' then
     begin
-      MainForm.Bonv_ctrTable.FieldByName('remise_bvctr').AsCurrency := StrToCurr(StringReplace(RemiseBonCtrGEdt.Text, #32, '', [rfReplaceAll]));
+      MainForm.Bonv_ctrTable.FieldByName('remise_bvctr').AsFloat := StrToFloat(StringReplace(RemiseBonCtrGEdt.Text, #32, '', [rfReplaceAll]));
     end
     else
     begin
-      MainForm.Bonv_ctrTable.FieldByName('remise_bvctr').AsCurrency := 0;
+      MainForm.Bonv_ctrTable.FieldByName('remise_bvctr').AsFloat := 0;
     end;
 
-    MainForm.Bonv_ctrTable.FieldByName('montver_bvctr').AsCurrency := StrToCurr(StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
-    MainForm.Bonv_ctrTable.FieldByName('montttc_bvctr').AsCurrency := StrToCurr(StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
+    MainForm.Bonv_ctrTable.FieldByName('montver_bvctr').AsFloat := StrToFloat(StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
+    MainForm.Bonv_ctrTable.FieldByName('montttc_bvctr').AsFloat := StrToFloat(StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
     MainForm.Bonv_ctrTable.FieldByName('valider_bvctr').AsBoolean := True;
     MainForm.Bonv_ctrTable.FieldValues['code_ur'] := StrToInt(MainForm.UserIDLbl.Caption);
 
@@ -3490,7 +3490,7 @@ begin
 //            MainForm.RegclientTable.FieldValues['num_cheque_rc']:= NChequeBonCtrGCbx.Text;
         MainForm.SQLQuery4.FieldValues['bon_or_no_rc'] := 4;
 
-        MainForm.SQLQuery4.FieldByName('montver_rc').AsCurrency := StrToCurr(StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
+        MainForm.SQLQuery4.FieldByName('montver_rc').AsFloat := StrToFloat(StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
 
 //            if (LowerCase(BonCtrGestionF.ModePaieBonCtrGCbx.Text)='esp�ce') OR (LowerCase(ModePaieBonCtrGCbx.Text)='espece') then
 //            begin
@@ -3531,7 +3531,7 @@ begin
 //                  MainForm.RegclientTable.FieldValues['num_cheque_rc']:= NChequeBonLivGCbx.Text;
         MainForm.SQLQuery4.FieldValues['bon_or_no_rc'] := 4;
 
-        MainForm.SQLQuery4.FieldByName('montver_rc').AsCurrency := StrToCurr(StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
+        MainForm.SQLQuery4.FieldByName('montver_rc').AsFloat := StrToFloat(StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
 
 //                  if (LowerCase(ModePaieBonCtrGCbx.Text)='esp�ce') OR (LowerCase(ModePaieBonCtrGCbx.Text)='espece') then
 //                  begin
@@ -3565,8 +3565,8 @@ begin
      //     MainForm.Bona_recTable.EnableControls;
 
 //          MainForm.ClientTable.Edit;
-//          MainForm.ClientTable.FieldByName('oldcredit_c').AsCurrency:=
-//          ((StrToCurr(StringReplace(BonCtrGClientNEWCredit.Caption, #32, '', [rfReplaceAll]))));
+//          MainForm.ClientTable.FieldByName('oldcredit_c').AsFloat:=
+//          ((StrToFloat(StringReplace(BonCtrGClientNEWCredit.Caption, #32, '', [rfReplaceAll]))));
 //          MainForm.ClientTable.Post;
 
     MainForm.ClientTable.Active := false;
@@ -3603,7 +3603,7 @@ begin
         ;
         MainForm.SQLQuery4.FieldValues['nom_ocb'] := 'Vente au Comptoir N� ' + NumBonCtrGEdt.Caption;
         MainForm.SQLQuery4.FieldValues['third_ocb'] := ClientBonCtrGCbx.Text;
-        MainForm.SQLQuery4.FieldValues['encaiss_ocb'] := StrToCurr(StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
+        MainForm.SQLQuery4.FieldValues['encaiss_ocb'] := StrToFloat(StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
             //        MainForm.Opt_cas_bnk_CaisseTable.FieldValues['decaiss_ocb']:= ;
 
         //             if (LowerCase(ModePaieBonCtrGCbx.Text)='esp�ce') OR (LowerCase(ModePaieBonCtrGCbx.Text)='espece') then
@@ -3650,7 +3650,7 @@ begin
         ;
         MainForm.SQLQuery4.FieldValues['nom_ocb'] := 'Vente au Comptoir N� ' + NumBonCtrGEdt.Caption;
         MainForm.SQLQuery4.FieldValues['third_ocb'] := ClientBonCtrGCbx.Text;
-        MainForm.SQLQuery4.FieldValues['encaiss_ocb'] := StrToCurr(StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
+        MainForm.SQLQuery4.FieldValues['encaiss_ocb'] := StrToFloat(StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
             //        MainForm.Opt_cas_bnk_CaisseTable.FieldValues['decaiss_ocb']:= ;
 
         //             if (LowerCase(ModePaieBonCtrGCbx.Text)='esp�ce') OR (LowerCase(ModePaieBonCtrGCbx.Text)='espece') then
@@ -4108,19 +4108,19 @@ begin
           MainForm.Bonv_ctrTable.DisableControls;
           MainForm.Bonv_ctrTable.Edit;
           MainForm.Bonv_ctrTable.FieldValues['code_c'] := MainForm.ClientTable.FieldByName('code_c').AsInteger;
-          MainForm.Bonv_ctrTable.FieldByName('montht_bvctr').AsCurrency := StrToCurr(StringReplace(BonCtrTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
+          MainForm.Bonv_ctrTable.FieldByName('montht_bvctr').AsFloat := StrToFloat(StringReplace(BonCtrTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
 
           if RemiseBonCtrGEdt.Text <> '' then
           begin
-            MainForm.Bonv_ctrTable.FieldByName('remise_bvctr').AsCurrency := StrToCurr(StringReplace(RemiseBonCtrGEdt.Text, #32, '', [rfReplaceAll]));
+            MainForm.Bonv_ctrTable.FieldByName('remise_bvctr').AsFloat := StrToFloat(StringReplace(RemiseBonCtrGEdt.Text, #32, '', [rfReplaceAll]));
           end
           else
           begin
-            MainForm.Bonv_ctrTable.FieldByName('remise_bvctr').AsCurrency := 0;
+            MainForm.Bonv_ctrTable.FieldByName('remise_bvctr').AsFloat := 0;
           end;
 
-          MainForm.Bonv_ctrTable.FieldByName('montver_bvctr').AsCurrency := StrToCurr(StringReplace(BonCtrRegleLbl.Caption, #32, '', [rfReplaceAll]));
-          MainForm.Bonv_ctrTable.FieldByName('montttc_bvctr').AsCurrency := StrToCurr(StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
+          MainForm.Bonv_ctrTable.FieldByName('montver_bvctr').AsFloat := StrToFloat(StringReplace(BonCtrRegleLbl.Caption, #32, '', [rfReplaceAll]));
+          MainForm.Bonv_ctrTable.FieldByName('montttc_bvctr').AsFloat := StrToFloat(StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
 
           MainForm.Bonv_ctrTable.Post;
           MainForm.Bonv_ctrTable.EnableControls;
@@ -4272,8 +4272,8 @@ procedure TBonCtrGestionF.addingState();
 begin
 
   Panel1.Color := $0040332D;  //Black
-  Panel2.Color := $0040332D;  //Black
-  Panel26.Color := $0040332D; //Black
+//  Panel2.Color := $0040332D;  //Black
+//  Panel26.Color := $0040332D; //Black
 
   BonCtrTotalTTCLbl.Font.Color := $0077D90E; //Green
 
@@ -4282,24 +4282,24 @@ begin
   Label10.Font.Color := $001ABCFF; //Orange
   Label11.Font.Color := $001ABCFF; //Orange
 
-  Label2.Font.Color := $001ABCFF; //Orange
-  Label7.Font.Color := $001ABCFF; //Orange
-  Label4.Font.Color := $001ABCFF; //Orange
+//  Label2.Font.Color := $001ABCFF; //Orange
+//  Label7.Font.Color := $001ABCFF; //Orange
+//  Label4.Font.Color := $001ABCFF; //Orange
 
-  Label18.Font.Color := clWhite; //White
-  Label22.Font.Color := clWhite; //White
-  Label20.Font.Color := clWhite; //White
-  Label23.Font.Color := clWhite; //White
+//  Label18.Font.Color := clWhite; //White
+//  Label22.Font.Color := clWhite; //White
+//  Label20.Font.Color := clWhite; //White
+//  Label23.Font.Color := clWhite; //White
 
   Label12.Visible := False;
 
-  NumBonCtrGEdt.Font.Color := $00E5E5E5;  //BlueClear
+//  NumBonCtrGEdt.Font.Color := $00E5E5E5;  //BlueClear
 
-  HourBonCtrGD.Font.Color := $00E5E5E5;  //BlueClear
+//  HourBonCtrGD.Font.Color := $00E5E5E5;  //BlueClear
 
   BonCtrGOLDStock.Font.Color := $00FFE8CD;  //BlueClear
 
-  BonCTotalTTCNewLbl.Font.Color := $00FFE8CD;  //BlueClear
+//  BonCTotalTTCNewLbl.Font.Color := $00FFE8CD;  //BlueClear
 
 
   Panel1.Tag := 0;
@@ -4310,8 +4310,8 @@ procedure TBonCtrGestionF.deletingState();
 begin
 
   Panel1.Color := $00ECECEC;   //white
-  Panel2.Color := $00ECECEC;   //white
-  Panel26.Color := $00ECECEC;  //white
+//  Panel2.Color := $00ECECEC;   //white
+//  Panel26.Color := $00ECECEC;  //white
 
   BonCtrTotalTTCLbl.Font.Color := $004735F9; //Red
 
@@ -4321,24 +4321,24 @@ begin
   Label10.Font.Color := $004735F9; //Red
   Label11.Font.Color := $004735F9; //Red
 
-  Label2.Font.Color := $004735F9; //Red
-  Label7.Font.Color := $004735F9; //Red
-  Label4.Font.Color := $004735F9; //Red
+//  Label2.Font.Color := $004735F9; //Red
+//  Label7.Font.Color := $004735F9; //Red
+//  Label4.Font.Color := $004735F9; //Red
 
-  Label18.Font.Color := $0040332D; //Black
-  Label22.Font.Color := $0040332D; //Black
-  Label20.Font.Color := $0040332D; //Black
-  Label23.Font.Color := $0040332D; //Black
+//  Label18.Font.Color := $0040332D; //Black
+//  Label22.Font.Color := $0040332D; //Black
+//  Label20.Font.Color := $0040332D; //Black
+//  Label23.Font.Color := $0040332D; //Black
 
   Label12.Visible := True;
 
-  NumBonCtrGEdt.Font.Color := $0040332D;  //Black
+//  NumBonCtrGEdt.Font.Color := $0040332D;  //Black
 
-  HourBonCtrGD.Font.Color := $0040332D;  //Black
+//  HourBonCtrGD.Font.Color := $0040332D;  //Black
 
   BonCtrGOLDStock.Font.Color := $0040332D;  //Black
 
-  BonCTotalTTCNewLbl.Font.Color := $0040332D;  //Black
+//  BonCTotalTTCNewLbl.Font.Color := $0040332D;  //Black
 
 
   Panel1.Tag := 1;
@@ -4540,7 +4540,7 @@ begin
 //      if (MainForm.ClientTable.FieldByName('code_c').AsInteger <> 1) then
 //      begin
     MainForm.SQLQuery4.Edit;
-    MainForm.SQLQuery4.FieldByName('credit_c').AsCurrency := (MainForm.SQLQuery4.FieldByName('credit_c').AsCurrency) - ((-1) * MainForm.Bonv_ctrTable.FieldByName('MontantRen').AsCurrency);
+    MainForm.SQLQuery4.FieldByName('credit_c').AsFloat := (MainForm.SQLQuery4.FieldByName('credit_c').AsFloat) - ((-1) * MainForm.Bonv_ctrTable.FieldByName('MontantRen').AsFloat);
     MainForm.SQLQuery4.Post;
 //      end;
 
@@ -4817,20 +4817,20 @@ begin
         MainForm.Bonv_ctrTable.Edit;
         MainForm.Bonv_ctrTable.FieldValues['code_c'] := MainForm.SQLQuery.FieldByName('code_c').AsInteger;
         MainForm.Bonv_ctrTable.FieldValues['code_ur'] := StrToInt(MainForm.UserIDLbl.Caption);
-        MainForm.Bonv_ctrTable.FieldByName('montaht_bvctr').AsCurrency := StrToCurr(StringReplace(BonCtrTotalAHTLbl.Caption, #32, '', [rfReplaceAll]));
-        MainForm.Bonv_ctrTable.FieldByName('montht_bvctr').AsCurrency := StrToCurr(StringReplace(BonCtrTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
+        MainForm.Bonv_ctrTable.FieldByName('montaht_bvctr').AsFloat := StrToFloat(StringReplace(BonCtrTotalAHTLbl.Caption, #32, '', [rfReplaceAll]));
+        MainForm.Bonv_ctrTable.FieldByName('montht_bvctr').AsFloat := StrToFloat(StringReplace(BonCtrTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
         if RemiseBonCtrGEdt.Text <> '' then
         begin
-          MainForm.Bonv_ctrTable.FieldByName('remise_bvctr').AsCurrency := StrToCurr(StringReplace(RemiseBonCtrGEdt.Text, #32, '', [rfReplaceAll]));
+          MainForm.Bonv_ctrTable.FieldByName('remise_bvctr').AsFloat := StrToFloat(StringReplace(RemiseBonCtrGEdt.Text, #32, '', [rfReplaceAll]));
         end
         else
         begin
-          MainForm.Bonv_ctrTable.FieldByName('remise_bvctr').AsCurrency := 0;
+          MainForm.Bonv_ctrTable.FieldByName('remise_bvctr').AsFloat := 0;
         end;
 
-        MainForm.Bonv_ctrTable.FieldByName('montver_bvctr').AsCurrency := StrToCurr(StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
-        MainForm.Bonv_ctrTable.FieldByName('montttc_bvctr').AsCurrency := StrToCurr(StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
-        MainForm.Bonv_ctrTable.FieldByName('marge_bvctr').AsCurrency := StrToCurr(StringReplace(BonCTRTotalMargeLbl.Caption, #32, '', [rfReplaceAll]));
+        MainForm.Bonv_ctrTable.FieldByName('montver_bvctr').AsFloat := StrToFloat(StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
+        MainForm.Bonv_ctrTable.FieldByName('montttc_bvctr').AsFloat := StrToFloat(StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
+        MainForm.Bonv_ctrTable.FieldByName('marge_bvctr').AsFloat := StrToFloat(StringReplace(BonCTRTotalMargeLbl.Caption, #32, '', [rfReplaceAll]));
         MainForm.Bonv_ctrTable.FieldByName('valider_bvctr').AsBoolean := True;
         MainForm.Bonv_ctrTable.FieldValues['code_ur'] := StrToInt(MainForm.UserIDLbl.Caption);
         if Tag = 0 then
@@ -4874,7 +4874,7 @@ begin
             MainForm.SQLQuery4.FieldValues['bon_or_no_rc'] := 4;
             MainForm.SQLQuery4.FieldValues['code_ur'] := StrToInt(MainForm.UserIDLbl.Caption);
 
-            MainForm.SQLQuery4.FieldByName('montver_rc').AsCurrency := StrToCurr(StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
+            MainForm.SQLQuery4.FieldByName('montver_rc').AsFloat := StrToFloat(StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
 
             MainForm.SQLQuery4.Post;
             MainForm.RegclientTable.Refresh;
@@ -4903,7 +4903,7 @@ begin
               MainForm.SQLQuery4.FieldValues['bon_or_no_rc'] := 4;
               MainForm.SQLQuery4.FieldValues['code_ur'] := StrToInt(MainForm.UserIDLbl.Caption);
 
-              MainForm.SQLQuery4.FieldByName('montver_rc').AsCurrency := StrToCurr(StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
+              MainForm.SQLQuery4.FieldByName('montver_rc').AsFloat := StrToFloat(StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
 
               MainForm.SQLQuery4.Post;
               MainForm.RegclientTable.Refresh;
@@ -4939,7 +4939,7 @@ begin
               MainForm.SQLQuery4.FieldValues['bon_or_no_rc'] := 4;
               MainForm.SQLQuery4.FieldValues['code_ur'] := StrToInt(MainForm.UserIDLbl.Caption);
 
-              MainForm.SQLQuery4.FieldByName('montver_rc').AsCurrency := StrToCurr(StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
+              MainForm.SQLQuery4.FieldByName('montver_rc').AsFloat := StrToFloat(StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
 
               MainForm.SQLQuery4.Post;
               MainForm.RegclientTable.Refresh;
@@ -4987,7 +4987,7 @@ begin
             ;
             MainForm.SQLQuery4.FieldValues['nom_ocb'] := 'Vente au Comptoir N� ' + NumBonCtrGEdt.Caption;
             MainForm.SQLQuery4.FieldValues['third_ocb'] := ClientBonCtrGCbx.Text;
-            MainForm.SQLQuery4.FieldValues['encaiss_ocb'] := StrToCurr(StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
+            MainForm.SQLQuery4.FieldValues['encaiss_ocb'] := StrToFloat(StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
 
             MainForm.SQLQuery4.FieldValues['code_mdpai'] := 1;
 
@@ -5024,7 +5024,7 @@ begin
               ;
               MainForm.SQLQuery4.FieldValues['nom_ocb'] := 'Vente au Comptoir N� ' + NumBonCtrGEdt.Caption;
               MainForm.SQLQuery4.FieldValues['third_ocb'] := ClientBonCtrGCbx.Text;
-              MainForm.SQLQuery4.FieldValues['encaiss_ocb'] := StrToCurr(StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
+              MainForm.SQLQuery4.FieldValues['encaiss_ocb'] := StrToFloat(StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
 
               MainForm.SQLQuery4.FieldValues['code_mdpai'] := 1;
 
@@ -5064,7 +5064,7 @@ begin
               ;
               MainForm.SQLQuery4.FieldValues['nom_ocb'] := 'Vente au Comptoir N� ' + NumBonCtrGEdt.Caption;
               MainForm.SQLQuery4.FieldValues['third_ocb'] := ClientBonCtrGCbx.Text;
-              MainForm.SQLQuery4.FieldValues['encaiss_ocb'] := StrToCurr(StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
+              MainForm.SQLQuery4.FieldValues['encaiss_ocb'] := StrToFloat(StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
 
               MainForm.SQLQuery4.FieldValues['code_mdpai'] := 1;
 
@@ -5141,13 +5141,13 @@ begin
   and NOT(MainForm.Bonv_ctr_listTable.IsEmpty) then
  begin
 
-    if (MainForm.Bonv_ctr_listTable.FieldByName('prixvd_p').AsCurrency ) > 0  then
+    if (MainForm.Bonv_ctr_listTable.FieldByName('prixvd_p').AsFloat ) > 0  then
     begin
       ProduitsListDBGridEh.Canvas.Font.Color:=$00519509;//   Brush.Color:=green;
       ProduitsListDBGridEh.DefaultDrawColumnCell(Rect, DataCol, Column, State);
     end;
 
-    if (MainForm.Bonv_ctr_listTable.FieldByName('prixvd_p').AsCurrency ) < 0  then
+    if (MainForm.Bonv_ctr_listTable.FieldByName('prixvd_p').AsFloat ) < 0  then
     begin
       ProduitsListDBGridEh.Canvas.Font.Color:=$004735F9;//   Brush.Color:=green;
       ProduitsListDBGridEh.DefaultDrawColumnCell(Rect, DataCol, Column, State);

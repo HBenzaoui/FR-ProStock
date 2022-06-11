@@ -30,7 +30,6 @@ type
     dxActivityIndicator1: TdxActivityIndicator;
     ImageCompanyOptionImg: TsImage;
     Label3: TLabel;
-    sImage1: TsImage;
     Label4: TLabel;
     Label5: TLabel;
     Label6: TLabel;

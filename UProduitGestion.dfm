@@ -30,7 +30,7 @@ object ProduitGestionF: TProduitGestionF
     Top = 0
     Width = 685
     Height = 614
-    ActivePage = PlusInfoClientGTB
+    ActivePage = GeneralClientGTB
     Align = alClient
     DoubleBuffered = True
     Font.Charset = DEFAULT_CHARSET
@@ -1814,7 +1814,7 @@ object ProduitGestionF: TProduitGestionF
           Left = 11
           Top = 414
           Width = 95
-          Height = 20
+          Height = 18
           Caption = 'Observations:'
           Color = 4207405
           Font.Charset = DEFAULT_CHARSET

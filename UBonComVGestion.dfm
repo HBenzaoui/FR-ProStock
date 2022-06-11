@@ -2842,7 +2842,7 @@ object BonComVGestionF: TBonComVGestionF
     PrintOptions.PrintOnSheet = 0
     PrintOptions.ShowDialog = False
     ReportOptions.CreateDate = 42576.399521435210000000
-    ReportOptions.LastChange = 43362.841095439810000000
+    ReportOptions.LastChange = 44722.953991666670000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       ''
@@ -3132,8 +3132,8 @@ object BonComVGestionF: TBonComVGestionF
         object Memo19: TfrxMemoView
           AllowVectorExport = True
           Left = 355.897650000000000000
-          Top = 7.897649999999999000
-          Width = 324.352392730000000000
+          Top = 7.897650000000000000
+          Width = 331.911452730000000000
           Height = 39.169674550000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = 4144959
@@ -4252,10 +4252,12 @@ object BonComVGestionF: TBonComVGestionF
     end
     object BondeCaisseSimple1: TMenuItem
       Caption = 'Bon de r'#232'glement'
+      Visible = False
       OnClick = BondeCaisseSimple1Click
     end
     object Bondecaissesimple3: TMenuItem
       Caption = 'Bon de r'#232'glement (A5)'
+      Visible = False
       OnClick = Bondecaissesimple3Click
     end
     object N1: TMenuItem
@@ -4271,6 +4273,7 @@ object BonComVGestionF: TBonComVGestionF
     end
     object BondeCaisseSimple2: TMenuItem
       Caption = 'Bon de caisse sans les cr'#233'dits'
+      Visible = False
       OnClick = BondeCaisseSimple2Click
     end
     object N2: TMenuItem
@@ -4287,7 +4290,7 @@ object BonComVGestionF: TBonComVGestionF
     PrintOptions.PrintOnSheet = 0
     PrintOptions.ShowDialog = False
     ReportOptions.CreateDate = 42576.399521435210000000
-    ReportOptions.LastChange = 43191.716549259260000000
+    ReportOptions.LastChange = 44722.957793750000000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       ''
@@ -4564,8 +4567,8 @@ object BonComVGestionF: TBonComVGestionF
         object Memo19: TfrxMemoView
           AllowVectorExport = True
           Left = 355.897650000000000000
-          Top = 7.897649999999999000
-          Width = 324.352392730000000000
+          Top = 7.897650000000000000
+          Width = 331.911452730000000000
           Height = 39.169674550000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = 4144959
@@ -4954,7 +4957,7 @@ object BonComVGestionF: TBonComVGestionF
         FillType = ftBrush
         Frame.Typ = []
         Height = 206.956485460000000000
-        Top = 548.031849999999900000
+        Top = 548.031850000000000000
         Width = 718.110700000000000000
         object Shape3: TfrxShapeView
           AllowVectorExport = True
@@ -6618,7 +6621,7 @@ object BonComVGestionF: TBonComVGestionF
     PrintOptions.PrintOnSheet = 0
     PrintOptions.ShowDialog = False
     ReportOptions.CreateDate = 42576.399521435200000000
-    ReportOptions.LastChange = 43191.715040208300000000
+    ReportOptions.LastChange = 44722.956963912040000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       ''
@@ -7906,7 +7909,7 @@ object BonComVGestionF: TBonComVGestionF
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 42576.399521435210000000
-    ReportOptions.LastChange = 43191.715619270840000000
+    ReportOptions.LastChange = 44722.958104456020000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       ''
@@ -8183,8 +8186,8 @@ object BonComVGestionF: TBonComVGestionF
         object Memo19: TfrxMemoView
           AllowVectorExport = True
           Left = 355.897650000000000000
-          Top = 7.897649999999999000
-          Width = 324.352392730000000000
+          Top = 7.897650000000000000
+          Width = 331.911452730000000000
           Height = 39.169674550000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = 4144959

@@ -69,7 +69,7 @@ object FSplashAddCompte: TFSplashAddCompte
     ShowHint = True
     Spacing = 10
     OnClick = OKAddCompteSBtnClick
-    Version = '1.6.2.0'
+    Version = '1.7.2.0'
     TMSStyle = 0
   end
   object CancelAddCompteSBtn: TAdvToolButton
@@ -101,7 +101,7 @@ object FSplashAddCompte: TFSplashAddCompte
     ShowHint = True
     Spacing = -1
     OnClick = CancelAddCompteSBtnClick
-    Version = '1.6.2.0'
+    Version = '1.7.2.0'
     ExplicitTop = 219
     TMSStyle = 0
   end
@@ -191,7 +191,7 @@ object FSplashAddCompte: TFSplashAddCompte
   object Label2: TLabel
     Left = 28
     Top = 170
-    Width = 89
+    Width = 88
     Height = 18
     Caption = 'Solde Initial:'
     Color = 4207405

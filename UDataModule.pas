@@ -21,7 +21,6 @@ type
     TopClientbest_client: TLargeintField;
     TopClientnomclient: TStringField;
     TotalProduit: TFDQuery;
-    TotalProduittotat: TFloatField;
     Top5produitOLDnomp: TStringField;
     TopVerClient: TFDQuery;
     TopFour: TFDQuery;
@@ -29,32 +28,24 @@ type
     TopFourcode_f: TIntegerField;
     TopFourbest_four: TLargeintField;
     ToatalVerMonthVLIV: TFDQuery;
-    ToatalVerMonthVLIVmon: TStringField;
     ToatalVerMonthVLIVyyyy: TFloatField;
-    ToatalVerMonthVLIVsales: TCurrencyField;
     GstockdcConnection02: TFDConnection;
     ToatalVerMonthVCTR: TFDQuery;
     StringField1: TStringField;
     FloatField1: TFloatField;
-    CurrencyField1: TCurrencyField;
     ToatalVerMonthVFAC: TFDQuery;
     StringField2: TStringField;
     FloatField2: TFloatField;
-    CurrencyField2: TCurrencyField;
     ToatalVerMonthAREC: TFDQuery;
     StringField3: TStringField;
     FloatField3: TFloatField;
-    CurrencyField3: TCurrencyField;
     ToatalVerMonthAFAC: TFDQuery;
     StringField4: TStringField;
     FloatField4: TFloatField;
-    CurrencyField4: TCurrencyField;
     Top5produitOLDcode_p: TIntegerField;
-    Top5produitOLDsum: TFloatField;
     Top5produit: TFDQuery;
     IntegerField1: TIntegerField;
     StringField5: TStringField;
-    Top5produittotalall: TFloatField;
     PSDBConfigConnection: TFDConnection;
     UsersTable: TFDQuery;
     CreateDBConfigTables: TFDScript;
@@ -92,19 +83,14 @@ type
     ChargesTablenom_ch: TWideStringField;
     ChargesTabledate_ch: TDateField;
     ChargesTabletime_ch: TTimeField;
-    ChargesTablemontht_ch: TCurrencyField;
-    ChargesTablemontttc_ch: TCurrencyField;
     ChargesTablenum_cheque_ch: TWideStringField;
     ChargesTablecode_mdpai: TSmallintField;
     ChargesTablecode_cmpt: TSmallintField;
     ChargesTablecode_ur: TIntegerField;
-    ChargesTabletimber_ch: TCurrencyField;
     PertesTablecode_pr: TIntegerField;
     PertesTabledate_pr: TDateField;
     PertesTabletime_pr: TTimeField;
     PertesTablecode_p: TIntegerField;
-    PertesTablequt_p: TFloatField;
-    PertesTableprixht_p: TCurrencyField;
     PertesTabletva_p: TSmallintField;
     PertesTablecode_ur: TIntegerField;
     PertesTablecode_prt: TSmallintField;
@@ -112,10 +98,6 @@ type
     PertesTablePRType: TStringField;
     PertesTablenomp: TStringField;
     PertesTablereferp: TStringField;
-    PertesTableMontantHT: TCurrencyField;
-    PertesTableMontantTVA: TCurrencyField;
-    PertesTableMontantTTC: TCurrencyField;
-    ChargesTablemonttva_ch: TCurrencyField;
     ChargesTableCompte: TStringField;
     ChargesTableCHType: TStringField;
     Charge_s_typeTablecode_chst: TSmallintField;
@@ -128,12 +110,10 @@ type
     ChargesTablerefer_ch: TWideStringField;
     PertesTablerefer_pr: TWideStringField;
     ChargesTableAgent: TStringField;
-    PertesTablePrixATTC: TCurrencyField;
     Transfer_comptesTable: TFDQuery;
     Transfer_comptesTablecode_transfer: TIntegerField;
     Transfer_comptesTabledate_transfer: TDateField;
     Transfer_comptesTabletime_transfer: TTimeField;
-    Transfer_comptesTablemont_transfer: TCurrencyField;
     Transfer_comptesTablenum_cheque_transfer: TWideStringField;
     Transfer_comptesTablecode_mdpai: TSmallintField;
     Transfer_comptesTablecode_cmpts: TSmallintField;
@@ -149,37 +129,29 @@ type
     PZeroQCnotifcode_p: TIntegerField;
     PZeroQCnotifnom_p: TWideStringField;
     PZeroQCnotifrefer_p: TWideStringField;
-    PZeroQCnotifqut_p: TFloatField;
     PZeroQCnotifcode_famp: TIntegerField;
     PZeroQCnotifcode_f: TIntegerField;
     PZeroQCnotifcode_l: TIntegerField;
     PZeroQCnotifcode_sfamp: TIntegerField;
     PZeroQCnotifcode_u: TSmallintField;
-    PZeroQCnotifqutini_p: TFloatField;
     PZeroQCnotifQutDispo: TFloatField;
     PCloseZeroQCnotifcode_p: TIntegerField;
     PCloseZeroQCnotifnom_p: TWideStringField;
     PCloseZeroQCnotifrefer_p: TWideStringField;
-    PCloseZeroQCnotifqut_p: TFloatField;
     PCloseZeroQCnotifcode_famp: TIntegerField;
     PCloseZeroQCnotifalertqut_p: TIntegerField;
     PCloseZeroQCnotifcode_f: TIntegerField;
     PCloseZeroQCnotifcode_l: TIntegerField;
     PCloseZeroQCnotifcode_sfamp: TIntegerField;
-    PCloseZeroQCnotifqutmin_p: TFloatField;
     PCloseZeroQCnotifcode_u: TSmallintField;
-    PCloseZeroQCnotifqutini_p: TFloatField;
     PMoreMaxQCnotifcode_p: TIntegerField;
     PMoreMaxQCnotifnom_p: TWideStringField;
     PMoreMaxQCnotifrefer_p: TWideStringField;
-    PMoreMaxQCnotifqut_p: TFloatField;
     PMoreMaxQCnotifcode_famp: TIntegerField;
     PMoreMaxQCnotifcode_f: TIntegerField;
     PMoreMaxQCnotifcode_l: TIntegerField;
     PMoreMaxQCnotifcode_sfamp: TIntegerField;
-    PMoreMaxQCnotifqutmax_p: TFloatField;
     PMoreMaxQCnotifcode_u: TSmallintField;
-    PMoreMaxQCnotifqutini_p: TFloatField;
     PCloseZeroQCnotifQutDispo: TFloatField;
     PMoreMaxQCnotifQutDispo: TFloatField;
     PDiedCnotifcode_famp: TIntegerField;
@@ -216,7 +188,6 @@ type
     PDiedCnotiflocal: TStringField;
     PerissBona_recTable: TFDQuery;
     PerissBona_recTablecode_p: TIntegerField;
-    PerissBona_recTablequtinstock_p: TFloatField;
     PerissBona_recTabledateperiss_p: TDateField;
     PerissBona_recTabledaysleft: TIntegerField;
     PerissBona_recTablenumbrec: TStringField;
@@ -224,24 +195,18 @@ type
     PerissBona_facTable: TFDQuery;
     PerissBona_facTablecode_bafac: TIntegerField;
     PerissBona_facTablecode_p: TIntegerField;
-    PerissBona_facTablequtinstock_p: TFloatField;
     PerissBona_facTabledateperiss_p: TDateField;
     PerissBona_facTabledaysleft: TIntegerField;
     PerissBona_facTablenumfac: TStringField;
     PDiedCnotifcode_barec: TIntegerField;
     PDiedCnotifnum_barec: TWideStringField;
-    PDiedCnotifqutinstock_p: TFloatField;
     PCloseDiedCnotifcode_barec: TIntegerField;
     PCloseDiedCnotifnum_barec: TWideStringField;
-    PCloseDiedCnotifqutinstock_p: TFloatField;
     ClientSituationQR: TFDQuery;
     ClientSituationQRnum: TWideStringField;
     ClientSituationQRsource: TWideStringField;
     ClientSituationQRdate_bvcom: TDateField;
     ClientSituationQRtime_bvcom: TTimeField;
-    ClientSituationQRtotal: TCurrencyField;
-    ClientSituationQRversemt: TCurrencyField;
-    ClientSituationQRrest: TCurrencyField;
     ClientSituationQRmp: TWideStringField;
     ClientSituationQRagent: TIntegerField;
     ClientSituationQRAgentName: TStringField;
@@ -250,9 +215,6 @@ type
     WideStringField2: TWideStringField;
     DateField1: TDateField;
     TimeField1: TTimeField;
-    CurrencyField5: TCurrencyField;
-    CurrencyField6: TCurrencyField;
-    CurrencyField7: TCurrencyField;
     WideStringField3: TWideStringField;
     IntegerField2: TIntegerField;
     StringField6: TStringField;
@@ -264,9 +226,6 @@ type
     ProduitMovementQRtiers: TWideStringField;
     ProduitMovementQRdate: TDateField;
     ProduitMovementQRtime: TTimeField;
-    ProduitMovementQRqut: TFloatField;
-    ProduitMovementQRprixuva: TCurrencyField;
-    ProduitMovementQRmontant: TCurrencyField;
     ProduitMovementQRagent: TIntegerField;
     ProduitMovementQRAgentName: TStringField;
     AllProduitMovementQR: TFDQuery;
@@ -277,17 +236,12 @@ type
     AllProduitMovementQRtiers: TWideStringField;
     AllProduitMovementQRdate: TDateField;
     AllProduitMovementQRtime: TTimeField;
-    AllProduitMovementQRqut: TFloatField;
-    AllProduitMovementQRprixuva: TCurrencyField;
-    AllProduitMovementQRmontant: TCurrencyField;
     AllProduitMovementQRagent: TIntegerField;
     AllProduitMovementQRAgentName: TStringField;
     PCloseDiedCnotifrefer_p: TWideStringField;
     PCloseDiedCnotifnom_p: TWideStringField;
     PDiedCnotifrefer_p: TWideStringField;
     PDiedCnotifnom_p: TWideStringField;
-    ProduitMovementQRmarge: TCurrencyField;
-    AllProduitMovementQRmarge: TCurrencyField;
     InventoryTable: TFDQuery;
     Inventory_listTable: TFDQuery;
     InventoryTableAgent: TStringField;
@@ -297,9 +251,6 @@ type
     Inventory_listTablecode_p: TIntegerField;
     Inventory_listTablerefer_p: TWideStringField;
     Inventory_listTablenom_p: TWideStringField;
-    Inventory_listTablequttheo_il: TFloatField;
-    Inventory_listTablequtphys_il: TFloatField;
-    Inventory_listTableprixht_p: TCurrencyField;
     Inventory_listTablecode_u: TIntegerField;
     Inventory_listTablecode_l: TIntegerField;
     Inventory_listTablenom_u: TWideStringField;
@@ -310,22 +261,15 @@ type
     InventoryTabletime_i: TTimeField;
     InventoryTablenom_i: TWideStringField;
     InventoryTablevalider_i: TBooleanField;
-    InventoryTabletotalpgap_i: TFloatField;
     InventoryTableobser_i: TWideStringField;
     InventoryTablenump_i: TWideStringField;
-    Inventory_listTablecalcgap_il: TFloatField;
-    Inventory_listTablegap_il: TFloatField;
     Bona_comTable: TFDQuery;
     Bona_comTablecode_bacom: TIntegerField;
     Bona_comTabledate_bacom: TDateField;
     Bona_comTabletime_bacom: TTimeField;
-    Bona_comTablemontht_bacom: TCurrencyField;
-    rr: TCurrencyField;
     Bona_comTablevalider_bacom: TBooleanField;
     Bona_comTablenum_bacom: TWideStringField;
     Bona_comTablefourbacom: TStringField;
-    Bona_comTablemonttc_bacom: TCurrencyField;
-    Bona_comTableremise_bacom: TCurrencyField;
     Bona_comTablenum_cheque_bacom: TWideStringField;
     Bona_comTablecode_mdpai: TSmallintField;
     Bona_comTablecode_cmpt: TSmallintField;
@@ -336,190 +280,248 @@ type
     Bona_comTablebon_or_no_bacom: TBooleanField;
     Bona_comTableAgent: TStringField;
     Bona_comTableobser_bacom: TWideStringField;
-    Bona_comTablemontanttva: TCurrencyField;
-    Bona_comTablemontantres: TCurrencyField;
-    Bona_comTableremiseperc: TFMTBCDField;
-    Bona_comTablenetht: TCurrencyField;
     Bona_com_listTable: TFDQuery;
     Bona_com_listTablecode_bacoml: TIntegerField;
     Bona_com_listTablecode_bacom: TIntegerField;
-    Bona_com_listTablequt_p: TFloatField;
-    Bona_com_listTableprixht_p: TCurrencyField;
     Bona_com_listTablecond_p: TIntegerField;
     Bona_com_listTablecode_p: TIntegerField;
-    Bona_com_listTableprixvd_p: TCurrencyField;
-    Bona_com_listTableprixvr_p: TCurrencyField;
-    Bona_com_listTableprixvg_p: TCurrencyField;
-    Bona_com_listTableprixva_p: TCurrencyField;
-    Bona_com_listTableprixva2_p: TCurrencyField;
     Bona_com_listTabledateperiss_p: TDateField;
-    Bona_com_listTablequtinstock_p: TFloatField;
     Bona_com_listTabletva_p: TSmallintField;
     Bona_com_listTablenomp: TWideStringField;
     Bona_com_listTablereferp: TWideStringField;
-    Bona_com_listTableprixattc: TCurrencyField;
-    Bona_com_listTablemontantht: TCurrencyField;
-    Bona_com_listTablemontantttc: TCurrencyField;
-    Bona_com_listTablemontanttva: TCurrencyField;
-    Bona_com_listTablemontantaht: TCurrencyField;
-    Bona_com_listTablemarged: TFloatField;
-    Bona_com_listTablemarger: TFloatField;
-    Bona_com_listTablemargeg: TFloatField;
-    Bona_com_listTablemargea: TFloatField;
-    Bona_com_listTablemargea2: TFloatField;
     BonComAListDataS: TDataSource;
     Bonv_comTable: TFDQuery;
     Bonv_comTablecode_bvcom: TIntegerField;
     Bonv_comTabledate_bvcom: TDateField;
     Bonv_comTabletime_bvcom: TTimeField;
     Bonv_comTablecode_c: TIntegerField;
-    Bonv_comTablemontaht_bvcom: TCurrencyField;
-    Bonv_comTablemontht_bvcom: TCurrencyField;
-    Bonv_comTablemontver_bvcom: TCurrencyField;
     Bonv_comTablevalider_bvcom: TBooleanField;
     Bonv_comTablenum_bvcom: TWideStringField;
     Bonv_comTableclientbvcom: TStringField;
-    Bonv_comTablemontttc_bvcom: TCurrencyField;
-    Bonv_comTableremise_bvcom: TCurrencyField;
     Bonv_comTablenum_cheque_bvcom: TWideStringField;
     Bonv_comTablecode_mdpai: TSmallintField;
     Bonv_comTablecode_cmpt: TSmallintField;
     Bonv_comTableModePaie: TStringField;
     Bonv_comTableCompte: TStringField;
-    Bonv_comTableNEWTTC: TCurrencyField;
     Bonv_comTablecode_ur: TIntegerField;
-    Bonv_comTablemarge_bvcom: TCurrencyField;
-    Bonv_comTablemontanttva: TCurrencyField;
-    Bonv_comTablemontantres: TCurrencyField;
-    Bonv_comTableremiseperc: TFMTBCDField;
-    Bonv_comTablenetht: TCurrencyField;
     Bonv_comTableobser_bvcom: TWideStringField;
     Bonv_comTableAgent: TStringField;
     Bonv_com_listTable: TFDQuery;
     Bonv_com_listTablecode_bvcoml: TIntegerField;
     Bonv_com_listTablecode_bvcom: TIntegerField;
-    Bonv_com_listTablequt_p: TFloatField;
-    Bonv_com_listTableprixvd_p: TCurrencyField;
     Bonv_com_listTablecond_p: TIntegerField;
     Bonv_com_listTablecode_p: TIntegerField;
     Bonv_com_listTabletva_p: TSmallintField;
     Bonv_com_listTablecode_barec: TIntegerField;
-    Bonv_com_listTableprixvttc: TCurrencyField;
-    Bonv_com_listTablemontantht: TCurrencyField;
-    Bonv_com_listTablemontantttc: TCurrencyField;
-    Bonv_com_listTablemontanttva: TCurrencyField;
-    Bonv_com_listTablemontantaht: TCurrencyField;
-    Bonv_com_listTablemarge: TFloatField;
-    Bonv_com_listTablemargem: TCurrencyField;
-    Bonv_com_listTableprixht_p: TCurrencyField;
     Bonv_com_listTablenomp: TWideStringField;
     Bonv_com_listTablereferp: TWideStringField;
     BonComVListDataS: TDataSource;
-    Inventory_listTablevaltheo_il: TCurrencyField;
-    Inventory_listTablevalphys_il: TCurrencyField;
-    Inventory_listTablevalgap_il: TCurrencyField;
     Bona_retTable: TFDQuery;
-    IntegerField3: TIntegerField;
-    DateField2: TDateField;
-    TimeField2: TTimeField;
-    CurrencyField8: TCurrencyField;
-    CurrencyField9: TCurrencyField;
-    BooleanField1: TBooleanField;
-    WideStringField4: TWideStringField;
-    StringField7: TStringField;
-    CurrencyField10: TCurrencyField;
-    CurrencyField11: TCurrencyField;
-    WideStringField5: TWideStringField;
-    SmallintField1: TSmallintField;
-    SmallintField2: TSmallintField;
-    StringField8: TStringField;
-    StringField9: TStringField;
-    IntegerField4: TIntegerField;
-    IntegerField5: TIntegerField;
-    BooleanField2: TBooleanField;
-    StringField10: TStringField;
-    WideStringField6: TWideStringField;
-    CurrencyField12: TCurrencyField;
-    CurrencyField13: TCurrencyField;
-    FMTBCDField1: TFMTBCDField;
-    CurrencyField14: TCurrencyField;
     Bona_ret_listTable: TFDQuery;
-    IntegerField6: TIntegerField;
-    IntegerField7: TIntegerField;
-    FloatField5: TFloatField;
-    CurrencyField15: TCurrencyField;
-    IntegerField8: TIntegerField;
-    IntegerField9: TIntegerField;
-    CurrencyField16: TCurrencyField;
-    CurrencyField17: TCurrencyField;
-    CurrencyField18: TCurrencyField;
-    CurrencyField19: TCurrencyField;
-    CurrencyField20: TCurrencyField;
-    DateField3: TDateField;
-    FloatField6: TFloatField;
-    SmallintField3: TSmallintField;
-    WideStringField7: TWideStringField;
-    WideStringField8: TWideStringField;
-    CurrencyField21: TCurrencyField;
-    CurrencyField22: TCurrencyField;
-    CurrencyField23: TCurrencyField;
-    CurrencyField24: TCurrencyField;
-    CurrencyField25: TCurrencyField;
-    FloatField7: TFloatField;
-    FloatField8: TFloatField;
-    FloatField9: TFloatField;
-    FloatField10: TFloatField;
-    FloatField11: TFloatField;
     BonRetAListDataS: TDataSource;
     Bonv_retTable: TFDQuery;
     Bonv_retTablecode_bvret: TIntegerField;
     Bonv_retTabledate_bvret: TDateField;
     Bonv_retTabletime_bvret: TTimeField;
     Bonv_retTablecode_c: TIntegerField;
-    Bonv_retTablemontaht_bvret: TCurrencyField;
-    Bonv_retTablemontht_bvret: TCurrencyField;
-    Bonv_retTablemontver_bvret: TCurrencyField;
     Bonv_retTablevalider_bvret: TBooleanField;
     Bonv_retTablenum_bvret: TWideStringField;
     Bonv_retTableclientbvret: TStringField;
-    Bonv_retTablemontttc_bvret: TCurrencyField;
-    Bonv_retTableremise_bvret: TCurrencyField;
     Bonv_retTablenum_cheque_bvret: TWideStringField;
     Bonv_retTablecode_mdpai: TSmallintField;
     Bonv_retTablecode_cmpt: TSmallintField;
     Bonv_retTableModePaie: TStringField;
     Bonv_retTableCompte: TStringField;
-    Bonv_retTableNEWTTC: TCurrencyField;
     Bonv_retTablecode_ur: TIntegerField;
-    Bonv_retTablemarge_bvret: TCurrencyField;
-    Bonv_retTablemontanttva: TCurrencyField;
-    Bonv_retTablemontantres: TCurrencyField;
-    Bonv_retTableremiseperc: TFMTBCDField;
-    Bonv_retTablenetht: TCurrencyField;
     Bonv_retTableobser_bvret: TWideStringField;
     Bonv_retTableAgent: TStringField;
     Bonv_ret_listTable: TFDQuery;
     Bonv_ret_listTablecode_bvretl: TIntegerField;
     Bonv_ret_listTablecode_bvret: TIntegerField;
-    Bonv_ret_listTablequt_p: TFloatField;
-    Bonv_ret_listTableprixvd_p: TCurrencyField;
     Bonv_ret_listTablecond_p: TIntegerField;
     Bonv_ret_listTablecode_p: TIntegerField;
     Bonv_ret_listTabletva_p: TSmallintField;
     Bonv_ret_listTablecode_barec: TIntegerField;
-    Bonv_ret_listTableprixvttc: TCurrencyField;
-    Bonv_ret_listTablemontantht: TCurrencyField;
-    Bonv_ret_listTablemontantttc: TCurrencyField;
-    Bonv_ret_listTablemontanttva: TCurrencyField;
-    Bonv_ret_listTablemontantaht: TCurrencyField;
-    Bonv_ret_listTablemarge: TFloatField;
-    Bonv_ret_listTablemargem: TCurrencyField;
-    Bonv_ret_listTableprixht_p: TCurrencyField;
     Bonv_ret_listTablenomp: TWideStringField;
     Bonv_ret_listTablereferp: TWideStringField;
     BonRetVListDataS: TDataSource;
     Bonv_ret_listTablelocalisation: TWideStringField;
     SQLQuery2: TFDQuery;
+    ToatalVerMonthVLIVsales: TFMTBCDField;
+    ToatalVerMonthVFACsales: TFMTBCDField;
+    ToatalVerMonthVCTRsales: TFMTBCDField;
+    ToatalVerMonthARECsales: TFMTBCDField;
+    ToatalVerMonthAFACsales: TFMTBCDField;
+    Bona_com_listTablequt_p: TFMTBCDField;
+    Bona_com_listTableprixht_p: TFMTBCDField;
+    Bona_com_listTableprixvd_p: TFMTBCDField;
+    Bona_com_listTableprixvr_p: TFMTBCDField;
+    Bona_com_listTableprixvg_p: TFMTBCDField;
+    Bona_com_listTableprixva_p: TFMTBCDField;
+    Bona_com_listTableprixva2_p: TFMTBCDField;
+    Bona_com_listTablequtinstock_p: TFMTBCDField;
+    Bona_com_listTableprixattc: TFMTBCDField;
+    Bona_com_listTablemontantht: TFMTBCDField;
+    Bona_com_listTablemontantttc: TFMTBCDField;
+    Bona_com_listTablemontanttva: TFMTBCDField;
+    Bona_com_listTablemontantaht: TFMTBCDField;
+    Bona_com_listTablemarged: TFMTBCDField;
+    Bona_com_listTablemarger: TFMTBCDField;
+    Bona_com_listTablemargeg: TFMTBCDField;
+    Bona_com_listTablemargea: TFMTBCDField;
+    Bona_com_listTablemargea2: TFMTBCDField;
+    Bonv_com_listTablequt_p: TFMTBCDField;
+    Bonv_com_listTableprixvd_p: TFMTBCDField;
+    Bonv_com_listTableprixht_p: TFMTBCDField;
+    Bonv_com_listTableprixvttc: TFMTBCDField;
+    Bonv_com_listTablemontantht: TFMTBCDField;
+    Bonv_com_listTablemontantttc: TFMTBCDField;
+    Bonv_com_listTablemontanttva: TFMTBCDField;
+    Bonv_com_listTablemontantaht: TFMTBCDField;
+    Bonv_com_listTablemarge: TFMTBCDField;
+    Bonv_com_listTablemargem: TFMTBCDField;
+    Bonv_ret_listTablequt_p: TFMTBCDField;
+    Bonv_ret_listTableprixvd_p: TFMTBCDField;
+    Bonv_ret_listTableprixht_p: TFMTBCDField;
+    Bonv_ret_listTableprixvttc: TFMTBCDField;
+    Bonv_ret_listTablemontantht: TFMTBCDField;
+    Bonv_ret_listTablemontantttc: TFMTBCDField;
+    Bonv_ret_listTablemontanttva: TFMTBCDField;
+    Bonv_ret_listTablemontantaht: TFMTBCDField;
+    Bonv_ret_listTablemarge: TFMTBCDField;
+    Bonv_ret_listTablemargem: TFMTBCDField;
+    Inventory_listTablequttheo_il: TFMTBCDField;
+    Inventory_listTablequtphys_il: TFMTBCDField;
+    Inventory_listTablecalcgap_il: TFMTBCDField;
+    Inventory_listTablevaltheo_il: TFMTBCDField;
+    Inventory_listTablevalphys_il: TFMTBCDField;
+    Inventory_listTablevalgap_il: TFMTBCDField;
+    Inventory_listTablegap_il: TFMTBCDField;
+    Inventory_listTableprixht_p: TFMTBCDField;
+    PZeroQCnotifqut_p: TFMTBCDField;
+    PZeroQCnotifqutini_p: TFMTBCDField;
+    ChargesTablemontht_ch: TFMTBCDField;
+    ChargesTablemonttva_ch: TFMTBCDField;
+    ChargesTablemontttc_ch: TFMTBCDField;
+    ChargesTabletimber_ch: TFMTBCDField;
+    PertesTablequt_p: TFMTBCDField;
+    PertesTableprixht_p: TFMTBCDField;
+    PertesTablePrixATTC: TFMTBCDField;
+    PertesTableMontantHT: TFMTBCDField;
+    PertesTableMontantTVA: TFMTBCDField;
+    PertesTableMontantTTC: TFMTBCDField;
+    Bona_comTablemontht_bacom: TFMTBCDField;
+    Bona_comTablemontver_bacom: TFMTBCDField;
+    Bona_comTablemontttc_bacom: TFMTBCDField;
+    Bona_comTableremise_bacom: TFMTBCDField;
+    Bona_comTabletimber_bacom: TFMTBCDField;
+    Bona_comTablemontanttva: TFMTBCDField;
+    Bona_comTablemontantres: TFMTBCDField;
+    Bona_comTableremiseperc: TFMTBCDField;
+    Bona_comTablenetht: TFMTBCDField;
+    Bona_retTablecode_baret: TIntegerField;
+    Bona_retTabledate_baret: TDateField;
+    Bona_retTabletime_baret: TTimeField;
+    Bona_retTablecode_f: TIntegerField;
+    Bona_retTablemontht_baret: TFMTBCDField;
+    Bona_retTablemontver_baret: TFMTBCDField;
+    Bona_retTablevalider_baret: TBooleanField;
+    Bona_retTablenum_baret: TWideStringField;
+    Bona_retTableobser_baret: TWideStringField;
+    Bona_retTablemontttc_baret: TFMTBCDField;
+    Bona_retTableremise_baret: TFMTBCDField;
+    Bona_retTablenum_cheque_baret: TWideStringField;
+    Bona_retTablecode_mdpai: TSmallintField;
+    Bona_retTablecode_cmpt: TSmallintField;
+    Bona_retTablecode_ur: TIntegerField;
+    Bona_retTablebon_or_no_baret: TBooleanField;
+    Bona_retTablemontanttva: TFMTBCDField;
+    Bona_retTablemontantres: TFMTBCDField;
+    Bona_retTableremiseperc: TFMTBCDField;
+    Bona_retTablenetht: TFMTBCDField;
+    Bona_ret_listTablecode_baret: TIntegerField;
+    Bona_ret_listTablecode_baretl: TIntegerField;
+    Bona_ret_listTablequt_p: TFloatField;
+    Bona_ret_listTablecond_p: TIntegerField;
+    Bona_ret_listTablecode_p: TIntegerField;
+    Bona_ret_listTabletva_p: TSmallintField;
+    Bona_ret_listTableprixht_p: TFMTBCDField;
+    Bona_ret_listTablenomp: TWideStringField;
+    Bona_ret_listTablereferp: TWideStringField;
+    Bona_ret_listTableprixvd_p: TFMTBCDField;
+    Bona_ret_listTableprixvr_p: TFMTBCDField;
+    Bona_ret_listTableprixvg_p: TFMTBCDField;
+    Bona_ret_listTableprixva_p: TFMTBCDField;
+    Bona_ret_listTableprixva2_p: TFMTBCDField;
+    Bona_ret_listTabledateperiss_p: TDateField;
+    Bona_ret_listTablequtinstock_p: TFloatField;
+    Bona_ret_listTableprixattc: TFMTBCDField;
+    Bona_ret_listTablemontantht: TFloatField;
+    Bona_ret_listTablemontantttc: TFloatField;
+    Bona_ret_listTablemontanttva: TFloatField;
+    Bona_ret_listTablemontantaht: TFloatField;
+    Bona_ret_listTablemarged: TFMTBCDField;
+    Bona_ret_listTablemarger: TFMTBCDField;
+    Bona_ret_listTablemargeg: TFMTBCDField;
+    Bona_ret_listTablemargea: TFMTBCDField;
+    Bona_ret_listTablemargea2: TFMTBCDField;
+    Bonv_comTablemontht_bvcom: TFMTBCDField;
+    Bonv_comTablemontver_bvcom: TFMTBCDField;
+    Bonv_comTablemontttc_bvcom: TFMTBCDField;
+    Bonv_comTableremise_bvcom: TFMTBCDField;
+    Bonv_comTablemarge_bvcom: TFMTBCDField;
+    Bonv_comTablemontaht_bvcom: TFMTBCDField;
+    Bonv_comTablemontanttva: TFMTBCDField;
+    Bonv_comTablemontantres: TFMTBCDField;
+    Bonv_comTableremiseperc: TFMTBCDField;
+    Bonv_comTablenetht: TFMTBCDField;
+    Bonv_retTablemontht_bvret: TFMTBCDField;
+    Bonv_retTablemontver_bvret: TFMTBCDField;
+    Bonv_retTablemontttc_bvret: TFMTBCDField;
+    Bonv_retTableremise_bvret: TFMTBCDField;
+    Bonv_retTablemarge_bvret: TFMTBCDField;
+    Bonv_retTablemontaht_bvret: TFMTBCDField;
+    Bonv_retTablemontanttva: TFMTBCDField;
+    Bonv_retTablemontantres: TFMTBCDField;
+    Bonv_retTableremiseperc: TFMTBCDField;
+    Bonv_retTablenetht: TFMTBCDField;
+    InventoryTabletotalpgap_i: TFMTBCDField;
+    PCloseZeroQCnotifqut_p: TFMTBCDField;
+    PCloseZeroQCnotifqutini_p: TFMTBCDField;
+    PCloseZeroQCnotifqutmin_p: TFMTBCDField;
+    PMoreMaxQCnotifqut_p: TFMTBCDField;
+    PMoreMaxQCnotifqutini_p: TFMTBCDField;
+    PMoreMaxQCnotifqutmax_p: TFMTBCDField;
+    PCloseDiedCnotifqutinstock_p: TFMTBCDField;
+    PDiedCnotifqutinstock_p: TFMTBCDField;
+    PerissBona_recTablequtinstock_p: TFMTBCDField;
+    PerissBona_facTablequtinstock_p: TFMTBCDField;
+    Transfer_comptesTablemont_transfer: TFMTBCDField;
+    UsersTablecode_ur: TIntegerField;
+    UsersTablenom_ur: TWideStringField;
+    UsersTablepassword_ur: TWideStringField;
+    UsersTablebl_ur: TBooleanField;
+    UsersTablefcv_ur: TBooleanField;
+    UsersTablergc_ur: TBooleanField;
+    UsersTablebr_ur: TBooleanField;
+    UsersTablefca_ur: TBooleanField;
+    UsersTablergf_ur: TBooleanField;
+    UsersTablecaisse_ur: TBooleanField;
+    UsersTablebank_ur: TBooleanField;
+    UsersTableclient_ur: TBooleanField;
+    UsersTablefour_ur: TBooleanField;
+    UsersTabletype_ur: TSmallintField;
+    UsersTablectr_ur: TBooleanField;
+    UsersTableproduit_ur: TBooleanField;
+    UsersTablefamp_ur: TBooleanField;
+    UsersTablesfamp_ur: TBooleanField;
+    UsersTablemdpai_ur: TBooleanField;
+    UsersTablecmpt_ur: TBooleanField;
+    UsersTableunit_ur: TBooleanField;
+    UsersTablelocal_ur: TBooleanField;
+    UsersTabletotaux_ur: TBooleanField;
+    UsersTableviewprixa_ur: TBooleanField;
+    UsersTablestock_ur: TBooleanField;
     procedure DataModuleCreate(Sender: TObject);
     procedure PZeroQCnotifCalcFields(DataSet: TDataSet);
     procedure PCloseZeroQCnotifCalcFields(DataSet: TDataSet);
@@ -624,7 +626,7 @@ end;
 
 
 procedure TDataModuleF.Bona_com_listTableAfterRefresh(DataSet: TDataSet);
-var TotalHT,TotalTVA,TVA,TotalTTC,LeReste,Regle,NewHT,BonRTotalHT: Currency;
+var TotalHT,TotalTVA,TVA,TotalTTC,LeReste,Regle,NewHT,BonRTotalHT: Double;
 InvoiceID :Integer;
   begin
 
@@ -643,7 +645,7 @@ InvoiceID :Integer;
             TotalTVA:= TotalTVA + MainForm.SQLQuery3.FieldValues['MontantTVA'];
             TotalTTC:= TotalTTC + MainForm.SQLQuery3.FieldValues['MontantTTC'];
             TVA:=TVA + MainForm.SQLQuery3.FieldValues['tva_p'] ;
-            LeReste:= TotalTTC - StrToCurr(StringReplace(BonComAGestionF.BonComRegleLbl.Caption, #32, '', [rfReplaceAll]))  ;
+            LeReste:= TotalTTC - StrToFloat(StringReplace(BonComAGestionF.BonComRegleLbl.Caption, #32, '', [rfReplaceAll]))  ;
             MainForm.SQLQuery3.Next;
           end;
 
@@ -679,7 +681,7 @@ InvoiceID :Integer;
 //    if BonRecGestionF.FournisseurBonRecGCbx.Text<>'' then
 //    begin
 //    BonRecGestionF.BonRecGFourNEWCredit.Caption:=
-//    CurrToStrF((LeReste + ((StrToCurr(StringReplace(BonRecGestionF.BonRecGFourOLDCredit.Caption, #32, '', [rfReplaceAll]))))),ffNumber,2) ;
+//    CurrToStrF((LeReste + ((StrToFloat(StringReplace(BonRecGestionF.BonRecGFourOLDCredit.Caption, #32, '', [rfReplaceAll]))))),ffNumber,2) ;
 //    end ;
 
 //     BonRecGestionF.RemisePerctageBonRecGEdt.Text:='';
@@ -770,7 +772,7 @@ begin
 end;
 
 procedure TDataModuleF.Bonv_com_listTableAfterRefresh(DataSet: TDataSet);
-var TotalHT,TotalAHT,TotalTVA,TVA,TotalTTC,LeReste,Regle,Marge,NewHT,BonCVTotalHT: Currency;
+var TotalHT,TotalAHT,TotalTVA,TVA,TotalTTC,LeReste,Regle,Marge,NewHT,BonCVTotalHT: Double;
 InvoiceID :Integer;
   begin
        if Assigned(BonComVGestionF) then
@@ -784,13 +786,13 @@ InvoiceID :Integer;
           MainForm.SQLQuery3.First;
           while not MainForm.SQLQuery3.Eof do
           begin
-            TotalAHT:= TotalAHT + (MainForm.SQLQuery3.FieldByName('MontantAHT').AsCurrency );
-            TotalHT:= TotalHT + (MainForm.SQLQuery3.FieldByName('MontantHT').AsCurrency );
-            TotalTVA:= TotalTVA + MainForm.SQLQuery3.FieldByName('MontantTVA').AsCurrency;
-            TotalTTC:= TotalTTC + MainForm.SQLQuery3.FieldByName('MontantTTC').AsCurrency;
+            TotalAHT:= TotalAHT + (MainForm.SQLQuery3.FieldByName('MontantAHT').AsFloat );
+            TotalHT:= TotalHT + (MainForm.SQLQuery3.FieldByName('MontantHT').AsFloat );
+            TotalTVA:= TotalTVA + MainForm.SQLQuery3.FieldByName('MontantTVA').AsFloat;
+            TotalTTC:= TotalTTC + MainForm.SQLQuery3.FieldByName('MontantTTC').AsFloat;
             TVA:=TVA + MainForm.SQLQuery3.FieldByName('tva_p').AsInteger;
-            Marge:=Marge + MainForm.SQLQuery3.FieldByName('MargeM').AsCurrency ;
-            LeReste:= TotalTTC - StrToCurr(StringReplace(BonComVGestionF.BonComRegleLbl.Caption, #32, '', [rfReplaceAll]))  ;
+            Marge:=Marge + MainForm.SQLQuery3.FieldByName('MargeM').AsFloat ;
+            LeReste:= TotalTTC - StrToFloat(StringReplace(BonComVGestionF.BonComRegleLbl.Caption, #32, '', [rfReplaceAll]))  ;
             MainForm.SQLQuery3.Next;
           end;
 
@@ -817,9 +819,9 @@ InvoiceID :Integer;
     BonComVGestionF.TotalTVANewLbl.Caption :=      CurrToStrF(((TotalTVA)),ffNumber,2) ;
     BonComVGestionF.BonComTotalMargeLbl.Caption := CurrToStrF(((Marge)),ffNumber,2) ;
 
-    if Bonv_comTable.FieldByName('montver_bvcom').AsCurrency<> Null then
+    if Bonv_comTable.FieldByName('montver_bvcom').AsFloat <> Null then
     begin
-    Regle:= Bonv_comTable.FieldByName('montver_bvcom').AsCurrency;
+    Regle:= Bonv_comTable.FieldByName('montver_bvcom').AsFloat;
     BonComVGestionF.BonComRegleLbl.Caption :=      CurrToStrF(((Regle)),ffNumber,2) ;
     end;
 
@@ -828,7 +830,7 @@ InvoiceID :Integer;
 //    if BonComVGestionF.ClientBonLivGCbx.Text<>'' then
 //    begin
 //    BonComVGestionF.BonLivGClientNEWCredit.Caption:=
-//    CurrToStrF((LeReste + ((StrToCurr(StringReplace(BonComVGestionF.BonLivGClientOLDCredit.Caption, #32, '', [rfReplaceAll]))))),ffNumber,2) ;
+//    CurrToStrF((LeReste + ((StrToFloat(StringReplace(BonComVGestionF.BonLivGClientOLDCredit.Caption, #32, '', [rfReplaceAll]))))),ffNumber,2) ;
 //    end ;
 //         if  (Bonv_livTable.FieldValues['RemisePerc']= null) OR (Bonv_livTable.FieldValues['remise_bvcom']= 0) then
 //         begin
@@ -917,7 +919,7 @@ if (Bonv_com_listTablequt_p.Value > 9999999) OR (Bonv_com_listTablequt_p.Value <
 end;
 
 procedure TDataModuleF.Bonv_ret_listTableAfterRefresh(DataSet: TDataSet);
-var TotalHT,TotalAHT,TotalTVA,TVA,TotalTTC,LeReste,Regle,Marge,NewHT,BonCVTotalHT: Currency;
+var TotalHT,TotalAHT,TotalTVA,TVA,TotalTTC,LeReste,Regle,Marge,NewHT,BonCVTotalHT: Double;
 InvoiceID :Integer;
   begin
        if Assigned(BonRetVGestionF) then
@@ -931,13 +933,13 @@ InvoiceID :Integer;
           MainForm.SQLQuery3.First;
           while not MainForm.SQLQuery3.Eof do
           begin
-            TotalAHT:= TotalAHT + (MainForm.SQLQuery3.FieldByName('MontantAHT').AsCurrency );
-            TotalHT:= TotalHT + (MainForm.SQLQuery3.FieldByName('MontantHT').AsCurrency );
-            TotalTVA:= TotalTVA + MainForm.SQLQuery3.FieldByName('MontantTVA').AsCurrency;
-            TotalTTC:= TotalTTC + MainForm.SQLQuery3.FieldByName('MontantTTC').AsCurrency;
+            TotalAHT:= TotalAHT + (MainForm.SQLQuery3.FieldByName('MontantAHT').AsFloat );
+            TotalHT:= TotalHT + (MainForm.SQLQuery3.FieldByName('MontantHT').AsFloat );
+            TotalTVA:= TotalTVA + MainForm.SQLQuery3.FieldByName('MontantTVA').AsFloat;
+            TotalTTC:= TotalTTC + MainForm.SQLQuery3.FieldByName('MontantTTC').AsFloat;
             TVA:=TVA + MainForm.SQLQuery3.FieldByName('tva_p').AsInteger;
-            Marge:=Marge + MainForm.SQLQuery3.FieldByName('MargeM').AsCurrency ;
-            LeReste:= TotalTTC - StrToCurr(StringReplace(BonRetVGestionF.BonRetRegleLbl.Caption, #32, '', [rfReplaceAll]))  ;
+            Marge:=Marge + MainForm.SQLQuery3.FieldByName('MargeM').AsFloat ;
+            LeReste:= TotalTTC - StrToFloat(StringReplace(BonRetVGestionF.BonRetRegleLbl.Caption, #32, '', [rfReplaceAll]))  ;
             MainForm.SQLQuery3.Next;
           end;
 
@@ -964,9 +966,9 @@ InvoiceID :Integer;
     BonRetVGestionF.TotalTVANewLbl.Caption :=      CurrToStrF(((TotalTVA)),ffNumber,2) ;
 //    BonRetVGestionF.BonRetTotalMargeLbl.Caption := CurrToStrF(((Marge)),ffNumber,2) ;
 
-    if Bonv_retTable.FieldByName('montver_bvret').AsCurrency<> Null then
+    if Bonv_retTable.FieldByName('montver_bvret').AsFloat <> Null then
     begin
-    Regle:= Bonv_retTable.FieldByName('montver_bvret').AsCurrency;
+    Regle:= Bonv_retTable.FieldByName('montver_bvret').AsFloat ;
     BonRetVGestionF.BonRetRegleLbl.Caption :=      CurrToStrF(((Regle)),ffNumber,2) ;
     end;
 
@@ -975,7 +977,7 @@ InvoiceID :Integer;
 //    if BonRetVGestionF.ClientBonRetCbx.Text<>'' then
 //    begin
 //    BonRetVGestionF.BonRetGClientNEWCredit.Caption:=
-//    CurrToStrF((LeReste + ((StrToCurr(StringReplace(BonRetVGestionF.BonRetGClientOLDCredit.Caption, #32, '', [rfReplaceAll]))))),ffNumber,2) ;
+//    CurrToStrF((LeReste + ((StrToFloat(StringReplace(BonRetVGestionF.BonRetGClientOLDCredit.Caption, #32, '', [rfReplaceAll]))))),ffNumber,2) ;
 //    end ;
 //         if  (Bonv_retTable.FieldValues['RemisePerc']= null) OR (Bonv_retTable.FieldValues['remise_bvret']= 0) then
 //         begin
@@ -1305,38 +1307,38 @@ end;
 
 procedure TDataModuleF.PCloseZeroQCnotifCalcFields(DataSet: TDataSet);
 begin
-    PCloseZeroQCnotif.FieldValues['QutDispo']:=
- (PCloseZeroQCnotif.FieldValues['qut_p'] + PCloseZeroQCnotif.FieldValues['qutini_p']);
+    PCloseZeroQCnotif.FieldByName('QutDispo').AsFloat:=
+ (PCloseZeroQCnotif.FieldByName('qut_p').AsFloat + PCloseZeroQCnotif.FieldByName('qutini_p').AsFloat);
 end;
 
 procedure TDataModuleF.PertesTableCalcFields(DataSet: TDataSet);
 begin
-  PertesTable.FieldValues['PrixATTC']:=
- (((PertesTable.FieldValues['prixht_p'] * PertesTable.FieldValues['tva_p'])/100) + (PertesTable.FieldValues['prixht_p'])) ;
+  PertesTable.FieldByName('PrixATTC').AsFloat:=
+ (((PertesTable.FieldByName('prixht_p').AsFloat * PertesTable.FieldByName('tva_p').AsFloat)/100) + (PertesTable.FieldByName('prixht_p').AsFloat)) ;
 
-  PertesTable.FieldValues['MontantHT']:=
- (PertesTable.FieldValues['prixht_p'] * PertesTable.FieldValues['qut_p'] ) ;
- 
-  PertesTable.FieldValues['MontantTTC']:=
- (PertesTable.FieldValues['PrixATTC'] * PertesTable.FieldValues['qut_p'] ) ;
+  PertesTable.FieldByName('MontantHT').AsFloat:=
+ (PertesTable.FieldByName('prixht_p').AsFloat * PertesTable.FieldByName('qut_p').AsFloat ) ;
 
-   PertesTable.FieldValues['MontantTVA']:=
- ((PertesTable.FieldValues['MontantTTC']) - (PertesTable.FieldValues['MontantHT'])) ;
+  PertesTable.FieldByName('MontantTTC').AsFloat:=
+ (PertesTable.FieldByName('PrixATTC').AsFloat * PertesTable.FieldByName('qut_p').AsFloat ) ;
+
+   PertesTable.FieldByName('MontantTVA').AsFloat:=
+ ((PertesTable.FieldByName('MontantTTC').AsFloat) - (PertesTable.FieldByName('MontantHT').AsFloat)) ;
 
  
 end;
 
 procedure TDataModuleF.PMoreMaxQCnotifCalcFields(DataSet: TDataSet);
 begin
-    PMoreMaxQCnotif.FieldValues['QutDispo']:=
- (PMoreMaxQCnotif.FieldValues['qut_p'] + PMoreMaxQCnotif.FieldValues['qutini_p']);
+    PMoreMaxQCnotif.FieldByName('QutDispo').AsFloat:=
+ (PMoreMaxQCnotif.FieldByName('qut_p').AsFloat + PMoreMaxQCnotif.FieldByName('qutini_p').AsFloat);
 end;
 
 procedure TDataModuleF.PZeroQCnotifCalcFields(DataSet: TDataSet);
 begin
 
-    PZeroQCnotif.FieldValues['QutDispo']:=
- (PZeroQCnotif.FieldValues['qut_p'] + PZeroQCnotif.FieldValues['qutini_p']);
+    PZeroQCnotif.FieldByName('QutDispo').AsFloat:=
+ (PZeroQCnotif.FieldByName('qut_p').AsFloat + PZeroQCnotif.FieldByName('qutini_p').AsFloat);
 end;
 
 end.

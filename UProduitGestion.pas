@@ -1096,7 +1096,7 @@ I : Integer;
 
 procedure TProduitGestionF.MargeA1ProduitEdtChange(Sender: TObject);
 var
-PrixAHTProduit,PrixVHTA1Produit,MargeA1 : Currency;
+PrixAHTProduit,PrixVHTA1Produit,MargeA1 : Double;
 begin
  if MargeA1ProduitEdt.Focused then
   begin
@@ -1116,7 +1116,7 @@ begin
     end;
   end;
  TVAProduitGCbxChange(Sender);
-//  if (TryStrToCurr(MargeA1ProduitEdt.Text, MargeA1))then
+//  if (TryStrToFloat(MargeA1ProduitEdt.Text, MargeA1))then
     if MargeA1ProduitEdt.Text <> '' then
     begin
     MargeA1:=StrToFloat(StringReplace(MargeA1ProduitEdt.Text, #32, '', [rfReplaceAll]));
@@ -1127,7 +1127,7 @@ begin
   begin
   MargeA1ProduitEdt.Font.Color:= clWindowText ;
   end;
- // if(TryStrToCurr(PrixVHTA1ProduitEdt.Text, PrixVHTA1Produit))then
+ // if(TryStrToFloat(PrixVHTA1ProduitEdt.Text, PrixVHTA1Produit))then
      if PrixVHTA1ProduitEdt.Text <> '' then
     begin
     PrixVHTA1Produit:=StrToFloat(StringReplace(PrixVHTA1ProduitEdt.Text, #32, '', [rfReplaceAll]));
@@ -1138,7 +1138,7 @@ end;
 
 procedure TProduitGestionF.MargeA2ProduitEdtChange(Sender: TObject);
 var
-PrixAHTProduit,PrixVHTA2Produit,MargeA2 : Currency;
+PrixAHTProduit,PrixVHTA2Produit,MargeA2 : Double;
  begin
   if MargeA2ProduitEdt.Focused then
   begin
@@ -1158,7 +1158,7 @@ PrixAHTProduit,PrixVHTA2Produit,MargeA2 : Currency;
     end;
   end;
  TVAProduitGCbxChange(Sender);
-//  if (TryStrToCurr(MargeA2ProduitEdt.Text, MargeA2))then
+//  if (TryStrToFloat(MargeA2ProduitEdt.Text, MargeA2))then
      if MargeA2ProduitEdt.Text <> '' then
     begin
     MargeA2:=StrToFloat(StringReplace(MargeA2ProduitEdt.Text, #32, '', [rfReplaceAll]));
@@ -1170,7 +1170,7 @@ PrixAHTProduit,PrixVHTA2Produit,MargeA2 : Currency;
   begin
   MargeA2ProduitEdt.Font.Color:= clWindowText ;
   end;
- // if(TryStrToCurr(PrixVHTA2ProduitEdt.Text, PrixVHTA2Produit))then
+ // if(TryStrToFloat(PrixVHTA2ProduitEdt.Text, PrixVHTA2Produit))then
     if PrixVHTA2ProduitEdt.Text <> '' then
     begin
     PrixVHTA2Produit:=StrToFloat(StringReplace(PrixVHTA2ProduitEdt.Text, #32, '', [rfReplaceAll]));
@@ -1195,7 +1195,7 @@ PrixAHTProduit,PrixVHTA2Produit,MargeA2 : Currency;
 
 procedure TProduitGestionF.MargeDProduitEdtChange(Sender: TObject);
 var
-PrixAHTProduit,PrixVHTDProduit,MargeD : Currency;
+PrixAHTProduit,PrixVHTDProduit,MargeD : Double;
 begin
  if MargeDProduitEdt.Focused then
   begin
@@ -1215,7 +1215,7 @@ begin
     end;
   end;
  TVAProduitGCbxChange(Sender);
-//  if (TryStrToCurr(MargeDProduitEdt.Text, MargeD))then
+//  if (TryStrToFloat(MargeDProduitEdt.Text, MargeD))then
     if MargeDProduitEdt.Text <> '' then
     begin
     MargeD:=StrToFloat(StringReplace(MargeDProduitEdt.Text, #32, '', [rfReplaceAll]));
@@ -1227,7 +1227,7 @@ begin
   begin
   MargeDProduitEdt.Font.Color:= clWindowText ;
   end;
- // if(TryStrToCurr(PrixVHTDProduitEdt.Text, PrixVHTDProduit))then
+ // if(TryStrToFloat(PrixVHTDProduitEdt.Text, PrixVHTDProduit))then
      if PrixVHTDProduitEdt.Text <> '' then
     begin
     PrixVHTDProduit:=StrToFloat(StringReplace(PrixVHTDProduitEdt.Text, #32, '', [rfReplaceAll]));
@@ -1238,7 +1238,7 @@ end;
 
 procedure TProduitGestionF.MargeDProduitEdtExit(Sender: TObject);
 var
-PrixVHTDProduit,PrixAHTProduit: Currency;
+PrixVHTDProduit,PrixAHTProduit: Double;
 begin
         if PrixVHTDProduitEdt.Text<>'' then
         begin
@@ -1253,7 +1253,7 @@ end;
 
 procedure TProduitGestionF.MargeGProduitEdtChange(Sender: TObject);
 var
-PrixAHTProduit,PrixVHTGProduit,MargeG : Currency;
+PrixAHTProduit,PrixVHTGProduit,MargeG : Double;
 begin
  if MargeGProduitEdt.Focused then
   begin
@@ -1273,7 +1273,7 @@ begin
     end;
   end;
  TVAProduitGCbxChange(Sender);
-//  if (TryStrToCurr(MargeGProduitEdt.Text, MargeG))then
+//  if (TryStrToFloat(MargeGProduitEdt.Text, MargeG))then
     if MargeGProduitEdt.Text <> '' then
     begin
     MargeG:=StrToFloat(StringReplace(MargeGProduitEdt.Text, #32, '', [rfReplaceAll]));
@@ -1284,7 +1284,7 @@ begin
   begin
   MargeGProduitEdt.Font.Color:= clWindowText ;
   end;
-//  if(TryStrToCurr(PrixVHTGProduitEdt.Text, PrixVHTGProduit))then
+//  if(TryStrToFloat(PrixVHTGProduitEdt.Text, PrixVHTGProduit))then
     if PrixVHTGProduitEdt.Text <> '' then
     begin
     PrixVHTGProduit:=StrToFloat(StringReplace(PrixVHTGProduitEdt.Text, #32, '', [rfReplaceAll]));
@@ -1296,7 +1296,7 @@ end;
 
 procedure TProduitGestionF.MargeRProduitEdtChange(Sender: TObject);
 var
-PrixAHTProduit,PrixVHTRProduit,MargeR : Currency;
+PrixAHTProduit,PrixVHTRProduit,MargeR : Double;
 
 begin
  if MargeRProduitEdt.Focused then
@@ -1317,7 +1317,7 @@ begin
     end;
   end;
  TVAProduitGCbxChange(Sender);
-//  if (TryStrToCurr(MargeRProduitEdt.Text, MargeR))then
+//  if (TryStrToFloat(MargeRProduitEdt.Text, MargeR))then
     if MargeRProduitEdt.Text <> '' then
     begin
     MargeR:=StrToFloat(StringReplace(MargeRProduitEdt.Text, #32, '', [rfReplaceAll]));
@@ -1328,7 +1328,7 @@ begin
   begin
   MargeRProduitEdt.Font.Color:= clWindowText ;
   end;
-//  if(TryStrToCurr(PrixVHTRProduitEdt.Text, PrixVHTRProduit))then
+//  if(TryStrToFloat(PrixVHTRProduitEdt.Text, PrixVHTRProduit))then
     if PrixVHTRProduitEdt.Text <> '' then
     begin
    PrixVHTRProduit:=StrToFloat(StringReplace(PrixVHTRProduitEdt.Text, #32, '', [rfReplaceAll]));
@@ -1339,10 +1339,10 @@ end;
 
 procedure TProduitGestionF.MargeRProduitEdtExit(Sender: TObject);
 var
-PrixVHTRProduit,PrixAHTProduit: Currency;
+PrixVHTRProduit,PrixAHTProduit: Double;
 begin
-        if TryStrToCurr(PrixVHTRProduitEdt.Text, PrixVHTRProduit) then
-        if TryStrToCurr(PrixAHTProduitEdt.Text, PrixAHTProduit) then
+        if TryStrToFloat(PrixVHTRProduitEdt.Text, PrixVHTRProduit) then
+        if TryStrToFloat(PrixAHTProduitEdt.Text, PrixAHTProduit) then
         MargeRProduitEdt.Text := FloatToStrF(((((PrixVHTRProduit - PrixAHTProduit) / (PrixAHTProduit)) * 100)),ffNumber,14,2) ;
 end;
 
@@ -1561,40 +1561,40 @@ begin
             fieldbyname('alertdays_p').Value := AlertJours;
             if PrixAHTProduitEdt.Text<>'' then
             begin
-            FieldValues['prixht_p'] :=       StrToCurr(StringReplace(PrixAHTProduitEdt.Text, #32, '', [rfReplaceAll]));
+            FieldValues['prixht_p'] :=       StrToFloat(StringReplace(PrixAHTProduitEdt.Text, #32, '', [rfReplaceAll]));
             end else begin FieldValues['prixht_p']:=  StrToFloat('0')  end;
             if PrixVHTDProduitEdt.Text<>'' then
             begin
-            fieldbyname('prixvd_p').Value := StrToCurr(StringReplace(PrixVHTDProduitEdt.Text, #32, '', [rfReplaceAll]));
+            fieldbyname('prixvd_p').Value := StrToFloat(StringReplace(PrixVHTDProduitEdt.Text, #32, '', [rfReplaceAll]));
             end else begin fieldbyname('prixvd_p').Value:=  StrToFloat('0')  end;
             if PrixVHTRProduitEdt.Text<>'' then
             begin
-            fieldbyname('prixvr_p').Value := StrToCurr(StringReplace(PrixVHTRProduitEdt.Text, #32, '', [rfReplaceAll]));
+            fieldbyname('prixvr_p').Value := StrToFloat(StringReplace(PrixVHTRProduitEdt.Text, #32, '', [rfReplaceAll]));
             end else begin fieldbyname('prixvr_p').Value := StrToFloat('0')  end;
             if PrixVHTGProduitEdt.Text<>'' then
             begin
-            fieldbyname('prixvg_p').Value := StrToCurr(StringReplace(PrixVHTGProduitEdt.Text, #32, '', [rfReplaceAll]));
+            fieldbyname('prixvg_p').Value := StrToFloat(StringReplace(PrixVHTGProduitEdt.Text, #32, '', [rfReplaceAll]));
             end else begin fieldbyname('prixvg_p').Value := StrToFloat('0')  end;
             if PrixVHTA1ProduitEdt.Text<>'' then
             begin
-            fieldbyname('prixva_p').Value := StrToCurr(StringReplace(PrixVHTA1ProduitEdt.Text, #32, '', [rfReplaceAll]));
+            fieldbyname('prixva_p').Value := StrToFloat(StringReplace(PrixVHTA1ProduitEdt.Text, #32, '', [rfReplaceAll]));
             end else begin fieldbyname('prixva_p').Value := StrToFloat('0')  end;
             if PrixVHTA2ProduitEdt.Text<>''  then
             begin
-            fieldbyname('prixva2_p').Value:= StrToCurr(StringReplace(PrixVHTA2ProduitEdt.Text, #32, '', [rfReplaceAll]));
+            fieldbyname('prixva2_p').Value:= StrToFloat(StringReplace(PrixVHTA2ProduitEdt.Text, #32, '', [rfReplaceAll]));
             end else begin fieldbyname('prixva2_p').Value:= StrToFloat('0') end;
 
             {
             if StockINProduitEdt.Text<>''  then
             begin
-            fieldbyname('qut_p').Value:= StrToCurr(StringReplace(StockINProduitEdt.Text, #32, '', [rfReplaceAll]));
-            fieldbyname('qutini_p').Value:= StrToCurr(StringReplace(StockINProduitEdt.Text, #32, '', [rfReplaceAll]));
+            fieldbyname('qut_p').Value:= StrToFloat(StringReplace(StockINProduitEdt.Text, #32, '', [rfReplaceAll]));
+            fieldbyname('qutini_p').Value:= StrToFloat(StringReplace(StockINProduitEdt.Text, #32, '', [rfReplaceAll]));
             end else begin fieldbyname('qut_p').Value:= StrToFloat('0'); fieldbyname('qutini_p').Value:= StrToFloat('0');end;
             }
 
            if StockINProduitEdt.Text<>''  then
             begin
-             fieldbyname('qutini_p').Value:= StrToCurr(StringReplace(StockINProduitEdt.Text, #32, '', [rfReplaceAll]));
+             fieldbyname('qutini_p').Value:= StrToFloat(StringReplace(StockINProduitEdt.Text, #32, '', [rfReplaceAll]));
             end else
                 begin
                  fieldbyname('qutini_p').Value:= StrToFloat('0');
@@ -1603,16 +1603,16 @@ begin
 
             if StockAlertProduitEdt.Text<>''  then
             begin
-            fieldbyname('alertqut_p').Value:= StrToCurr(StringReplace(StockAlertProduitEdt.Text, #32, '', [rfReplaceAll]));
+            fieldbyname('alertqut_p').Value:= StrToFloat(StringReplace(StockAlertProduitEdt.Text, #32, '', [rfReplaceAll]));
             end else begin fieldbyname('alertqut_p').Value:= StrToInt('0') end;
             fieldbyname('code_f').Value := FourP;
             if MinStockProduitGCbx.Text<>''  then
             begin
-            fieldbyname('qutmin_p').Value:= StrToCurr(StringReplace(MinStockProduitGCbx.Text, #32, '', [rfReplaceAll]));
+            fieldbyname('qutmin_p').Value:= StrToFloat(StringReplace(MinStockProduitGCbx.Text, #32, '', [rfReplaceAll]));
             end else begin fieldbyname('qutmin_p').Value:= StrToFloat('0') end;
             if MaxStockProduitGCbx.Text<>''  then
             begin
-            fieldbyname('qutmax_p').Value:= StrToCurr(StringReplace(MaxStockProduitGCbx.Text, #32, '', [rfReplaceAll]));
+            fieldbyname('qutmax_p').Value:= StrToFloat(StringReplace(MaxStockProduitGCbx.Text, #32, '', [rfReplaceAll]));
             end else begin fieldbyname('qutmax_p').Value:= StrToFloat('0') end;
             fieldbyname('code_l').Value := LoucP;
             fieldbyname('obser_p').Value := ObserProduitGMem.Text;
@@ -1846,10 +1846,10 @@ begin
           +' FROM produit WHERE code_p <> '+IntToStr(CodeP);
            MainForm.SQLQuery.Active:= True;
 
-               lookupResultNomP := MainForm.SQLQuery.Lookup('LOWER(nom_p)',(LowerCase(NameProduitGEdt.Text)),'nom_p');
+               lookupResultNomP := MainForm.SQLQuery.Lookup(LowerCase('nom_p'),(LowerCase(NameProduitGEdt.Text)),'nom_p');
      if  VarIsnull( lookupResultNomP) then
       begin
-        lookupResultRefP := MainForm.SQLQuery.Lookup('LOWER(refer_p)',(LowerCase(RefProduitGEdt.Text)),'refer_p');
+        lookupResultRefP := MainForm.SQLQuery.Lookup(LowerCase('refer_p'),(LowerCase(RefProduitGEdt.Text)),'refer_p');
        if  VarIsnull(lookupResultRefP) then
         begin
 
@@ -1991,45 +1991,45 @@ begin
             fieldbyname('alertdays_p').Value := AlertJours;
             if PrixAHTProduitEdt.Text<>'' then
             begin
-            FieldValues['prixht_p'] :=       StrToCurr(StringReplace(PrixAHTProduitEdt.Text, #32, '', [rfReplaceAll]));
+            FieldValues['prixht_p'] :=       StrToFloat(StringReplace(PrixAHTProduitEdt.Text, #32, '', [rfReplaceAll]));
             end else begin FieldValues['prixht_p']:=  StrToInt('0')  end;
             if PrixVHTDProduitEdt.Text<>'' then
             begin
-            fieldbyname('prixvd_p').Value := StrToCurr(StringReplace(PrixVHTDProduitEdt.Text, #32, '', [rfReplaceAll]));
+            fieldbyname('prixvd_p').Value := StrToFloat(StringReplace(PrixVHTDProduitEdt.Text, #32, '', [rfReplaceAll]));
             end else begin fieldbyname('prixvd_p').Value:=  StrToInt('0')  end;
             if PrixVHTRProduitEdt.Text<>'' then
             begin
-            fieldbyname('prixvr_p').Value := StrToCurr(StringReplace(PrixVHTRProduitEdt.Text, #32, '', [rfReplaceAll]));
+            fieldbyname('prixvr_p').Value := StrToFloat(StringReplace(PrixVHTRProduitEdt.Text, #32, '', [rfReplaceAll]));
             end else begin fieldbyname('prixvr_p').Value := StrToInt('0')  end;
             if PrixVHTGProduitEdt.Text<>'' then
             begin
-            fieldbyname('prixvg_p').Value := StrToCurr(StringReplace(PrixVHTGProduitEdt.Text, #32, '', [rfReplaceAll]));
+            fieldbyname('prixvg_p').Value := StrToFloat(StringReplace(PrixVHTGProduitEdt.Text, #32, '', [rfReplaceAll]));
             end else begin fieldbyname('prixvg_p').Value := StrToInt('0')  end;
             if PrixVHTA1ProduitEdt.Text<>'' then
             begin
-            fieldbyname('prixva_p').Value := StrToCurr(StringReplace(PrixVHTA1ProduitEdt.Text, #32, '', [rfReplaceAll]));
+            fieldbyname('prixva_p').Value := StrToFloat(StringReplace(PrixVHTA1ProduitEdt.Text, #32, '', [rfReplaceAll]));
             end else begin fieldbyname('prixva_p').Value := StrToInt('0')  end;
             if PrixVHTA2ProduitEdt.Text<>''  then
             begin
-            fieldbyname('prixva2_p').Value:= StrToCurr(StringReplace(PrixVHTA2ProduitEdt.Text, #32, '', [rfReplaceAll]));
+            fieldbyname('prixva2_p').Value:= StrToFloat(StringReplace(PrixVHTA2ProduitEdt.Text, #32, '', [rfReplaceAll]));
             end else begin fieldbyname('prixva2_p').Value:= StrToInt('0') end;
 
             if StockINProduitEdt.Text<>''then
             begin
-            fieldbyname('qutini_p').Value:= StrToCurr(StringReplace(StockINProduitEdt.Text, #32, '', [rfReplaceAll]));
+            fieldbyname('qutini_p').Value:= StrToFloat(StringReplace(StockINProduitEdt.Text, #32, '', [rfReplaceAll]));
             end else begin fieldbyname('qutini_p').Value:= StrToFloat('0'); end;
             if StockAlertProduitEdt.Text<>''  then
             begin
-            fieldbyname('alertqut_p').Value:= StrToCurr(StringReplace(StockAlertProduitEdt.Text, #32, '', [rfReplaceAll]));
+            fieldbyname('alertqut_p').Value:= StrToFloat(StringReplace(StockAlertProduitEdt.Text, #32, '', [rfReplaceAll]));
             end else begin fieldbyname('alertqut_p').Value:= StrToInt('0') end;
             fieldbyname('code_f').Value := FourP;
             if MinStockProduitGCbx.Text<>''  then
             begin
-            fieldbyname('qutmin_p').Value:= StrToCurr(StringReplace(MinStockProduitGCbx.Text, #32, '', [rfReplaceAll]));
+            fieldbyname('qutmin_p').Value:= StrToFloat(StringReplace(MinStockProduitGCbx.Text, #32, '', [rfReplaceAll]));
             end else begin fieldbyname('qutmin_p').Value:= StrToFloat('0') end;
             if MaxStockProduitGCbx.Text<>''  then
             begin
-            fieldbyname('qutmax_p').Value:= StrToCurr(StringReplace(MaxStockProduitGCbx.Text, #32, '', [rfReplaceAll]));
+            fieldbyname('qutmax_p').Value:= StrToFloat(StringReplace(MaxStockProduitGCbx.Text, #32, '', [rfReplaceAll]));
             end else begin fieldbyname('qutmax_p').Value:= StrToFloat('0') end;
             fieldbyname('code_l').Value := LoucP;
             fieldbyname('obser_p').Value := ObserProduitGMem.Text;
@@ -2264,7 +2264,7 @@ end;
 
 procedure TProduitGestionF.PrixAHTProduitEdtChange(Sender: TObject);
 var
-PrixAHTProduit,TVAProduit,PrixATTCProduit,PrixVHTDProduit,PrixVHTRProduit,PrixVHTGProduit,PrixVHTa1Produit,PrixVHTa2Produit : Currency;
+PrixAHTProduit,TVAProduit,PrixATTCProduit,PrixVHTDProduit,PrixVHTRProduit,PrixVHTGProduit,PrixVHTa1Produit,PrixVHTa2Produit : Double;
 Key : CHar;
 begin
   //--------- to calculate the PrixATTC using TVA------//
@@ -2422,7 +2422,7 @@ end;
 
 procedure TProduitGestionF.PrixAHTProduitEdtExit(Sender: TObject);
 var
-PrixHTCProduit: Currency;
+PrixHTCProduit: Double;
 begin
 
   if PrixAHTProduitEdt.Text<>'' then
@@ -2434,7 +2434,7 @@ end;
 
 procedure TProduitGestionF.PrixATTCProduitEdtExit(Sender: TObject);
 var
-PrixATTCProduit,PrixVHTDProduit,PrixAHTProduit,PrixVHTRProduit,PrixVHTGProduit,PrixVHTa1Produit,PrixVHTa2Produit: Currency;
+PrixATTCProduit,PrixVHTDProduit,PrixAHTProduit,PrixVHTRProduit,PrixVHTGProduit,PrixVHTa1Produit,PrixVHTa2Produit: Double;
 begin
  if PrixATTCProduitEdt.Text<>'' then
    begin
@@ -2489,7 +2489,7 @@ end;
 
 procedure TProduitGestionF.PrixVHTA1ProduitEdtChange(Sender: TObject);
 var
-PrixVHTA1Produit,PrixAHTProduit,PrixVTTCA1Produit,TVAProduit : Currency;
+PrixVHTA1Produit,PrixAHTProduit,PrixVTTCA1Produit,TVAProduit : Double;
 begin
      if PrixVHTA1ProduitEdt.Focused then
       begin
@@ -2540,7 +2540,7 @@ end;
 
 procedure TProduitGestionF.PrixVHTA1ProduitEdtExit(Sender: TObject);
 var
-PrixVHTA1Produit: Currency;
+PrixVHTA1Produit: Double;
 begin
   if PrixVHTA1ProduitEdt.Text<>'' then
   begin
@@ -2551,7 +2551,7 @@ end;
 
 procedure TProduitGestionF.PrixVHTA2ProduitEdtChange(Sender: TObject);
 var
-PrixVHTA2Produit,PrixAHTProduit,PrixVTTCA2Produit,TVAProduit : Currency;
+PrixVHTA2Produit,PrixAHTProduit,PrixVTTCA2Produit,TVAProduit : Double;
 begin
      if PrixVHTA2ProduitEdt.Focused then
       begin
@@ -2628,7 +2628,7 @@ end;
 
 procedure TProduitGestionF.PrixVHTA2ProduitEdtExit(Sender: TObject);
 var
-PrixVHTA2Produit: Currency;
+PrixVHTA2Produit: Double;
 begin
   if PrixVHTA2ProduitEdt.Text<>'' then
   begin
@@ -2639,7 +2639,7 @@ end;
 
 procedure TProduitGestionF.PrixVHTDProduitEdtChange(Sender: TObject);
 var
-PrixVHTDProduit,PrixAHTProduit,PrixVTTCDProduit,TVAProduit : Currency;
+PrixVHTDProduit,PrixAHTProduit,PrixVTTCDProduit,TVAProduit : Double;
 begin
   if PrixVHTDProduitEdt.Focused then
   begin
@@ -2691,7 +2691,7 @@ end;
 
 procedure TProduitGestionF.PrixVHTDProduitEdtExit(Sender: TObject);
 var
-PrixVHTDProduit: Currency;
+PrixVHTDProduit: Double;
 begin
     if PrixVHTDProduitEdt.Text<>'' then
     begin
@@ -2702,7 +2702,7 @@ end;
 
 procedure TProduitGestionF.PrixVHTGProduitEdtChange(Sender: TObject);
 var
-PrixVHTGProduit,PrixAHTProduit,PrixVTTCGProduit,TVAProduit : Currency;
+PrixVHTGProduit,PrixAHTProduit,PrixVTTCGProduit,TVAProduit : Double;
 begin
      if PrixVHTGProduitEdt.Focused then
       begin
@@ -2753,7 +2753,7 @@ end;
 
 procedure TProduitGestionF.PrixVHTGProduitEdtExit(Sender: TObject);
 var
-PrixVHTGProduit: Currency;
+PrixVHTGProduit: Double;
 begin
   if PrixVHTGProduitEdt.Text<>'' then
   begin
@@ -2764,7 +2764,7 @@ end;
 
 procedure TProduitGestionF.PrixVHTRProduitEdtChange(Sender: TObject);
 var
-PrixVHTRProduit,PrixAHTProduit,PrixVTTCRProduit,TVAProduit : Currency;
+PrixVHTRProduit,PrixAHTProduit,PrixVTTCRProduit,TVAProduit : Double;
 begin
      if PrixVHTRProduitEdt.Focused then
       begin
@@ -2815,7 +2815,7 @@ end;
 
 procedure TProduitGestionF.PrixVHTRProduitEdtExit(Sender: TObject);
 var
-PrixVHTRProduit: Currency;
+PrixVHTRProduit: Double;
 begin
     if PrixVHTRProduitEdt.Text<>'' then
     begin
@@ -2826,7 +2826,7 @@ end;
 
 procedure TProduitGestionF.PrixVTTCA1ProduitEdtExit(Sender: TObject);
 var
-PrixVTTCA1Produit,PrixVHTA1Produit,PrixAHTProduit: Currency;
+PrixVTTCA1Produit,PrixVHTA1Produit,PrixAHTProduit: Double;
 begin
   if PrixVTTCA1ProduitEdt.Text<>'' then
   begin
@@ -2852,7 +2852,7 @@ begin
 
 procedure TProduitGestionF.PrixVTTCA2ProduitEdtExit(Sender: TObject);
 var
-PrixVTTCA2Produit,PrixVHTA2Produit,PrixAHTProduit: Currency;
+PrixVTTCA2Produit,PrixVHTA2Produit,PrixAHTProduit: Double;
 begin
   if PrixVTTCA2ProduitEdt.Text<>'' then
   begin
@@ -2878,7 +2878,7 @@ end;
 
 procedure TProduitGestionF.PrixVTTCDProduitEdtExit(Sender: TObject);
 var
-PrixVTTCDProduit,PrixVHTDProduit,PrixAHTProduit: Currency;
+PrixVTTCDProduit,PrixVHTDProduit,PrixAHTProduit: Double;
 begin
   if PrixVTTCDProduitEdt.Text<>'' then
   begin
@@ -2904,7 +2904,7 @@ end;
 
 procedure TProduitGestionF.PrixVTTCGProduitEdtExit(Sender: TObject);
 var
-PrixVTTCGProduit,PrixVHTGProduit,PrixAHTProduit: Currency;
+PrixVTTCGProduit,PrixVHTGProduit,PrixAHTProduit: Double;
 begin
   if PrixVTTCGProduitEdt.Text<>'' then
   begin
@@ -2930,7 +2930,7 @@ end;
 
 procedure TProduitGestionF.PrixVTTCRProduitEdtExit(Sender: TObject);
 var
-PrixVTTCRProduit,PrixVHTRProduit,PrixAHTProduit: Currency;
+PrixVTTCRProduit,PrixVHTRProduit,PrixAHTProduit: Double;
 begin
   if PrixVTTCRProduitEdt.Text<>'' then
   begin
@@ -2972,7 +2972,7 @@ end;
 
 procedure TProduitGestionF.TVAProduitGCbxChange(Sender: TObject);
 var
-PrixAHTProduit,TVAProduit,PrixVHTDProduit,PrixVHTRProduit,PrixVHTGProduit,PrixVHTA1Produit,PrixVHTA2Produit : Currency;
+PrixAHTProduit,TVAProduit,PrixVHTDProduit,PrixVHTRProduit,PrixVHTGProduit,PrixVHTA1Produit,PrixVHTA2Produit : Double;
 begin
    if TVAProduitGCbx.Text= '' then
    begin

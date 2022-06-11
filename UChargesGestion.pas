@@ -389,7 +389,7 @@ end;
 
 procedure TChargesGestionF.MontantHTChargeGEdtChange(Sender: TObject);
 var
-MontantHTCharge,MontantTVACharge,MontantTimberCharge : Currency; 
+MontantHTCharge,MontantTVACharge,MontantTimberCharge : Double;
 begin
   MontantHTCharge:= 0;
   MontantTVACharge:= 0;
@@ -422,7 +422,7 @@ end;
 
 procedure TChargesGestionF.MontantHTChargeGEdtExit(Sender: TObject);
 var
-MontantHTCharge: Currency;
+MontantHTCharge: Double;
 begin
 
   if MontantHTChargeGEdt.Text<>'' then
@@ -464,7 +464,7 @@ end;
 
 procedure TChargesGestionF.MontantTimberChargeGEdtExit(Sender: TObject);
 var
-MontantTimberCharge: Currency;
+MontantTimberCharge: Double;
 begin
 
   if MontantTimberChargeGEdt.Text<>'' then
@@ -520,7 +520,7 @@ end;
 
 procedure TChargesGestionF.MontantTTCChargeGEdtExit(Sender: TObject);
 var
-MontantTTCCharge: Currency;
+MontantTTCCharge: Double;
 begin
 
   if MontantTTCChargeGEdt.Text<>'' then
@@ -562,7 +562,7 @@ end;
 
 procedure TChargesGestionF.MontantTVAChargeGEdtExit(Sender: TObject);
 var
-MontantTVACharge: Currency;
+MontantTVACharge: Double;
 begin
 
   if MontantTVAChargeGEdt.Text<>'' then
@@ -779,22 +779,22 @@ begin
 
             if MontantHTChargeGEdt.Text<>'' then
             begin
-            FieldByName('montht_ch').AsCurrency:=StrToCurr(StringReplace(MontantHTChargeGEdt.Text, #32, '', [rfReplaceAll]));
+            FieldByName('montht_ch').AsFloat:=StrToFloat(StringReplace(MontantHTChargeGEdt.Text, #32, '', [rfReplaceAll]));
             end else begin FieldValues['montht_ch']:=  StrToInt('0')  end;
 
             if MontantTVAChargeGEdt.Text<>'' then
             begin
-             FieldByName('monttva_ch').AsCurrency:=StrToCurr(StringReplace(MontantTVAChargeGEdt.Text, #32, '', [rfReplaceAll]));
+             FieldByName('monttva_ch').AsFloat:=StrToFloat(StringReplace(MontantTVAChargeGEdt.Text, #32, '', [rfReplaceAll]));
             end else begin FieldValues['monttva_ch']:=  StrToInt('0')  end;
 
             if MontantTimberChargeGEdt.Text<>'' then
             begin
-            FieldByName('timber_ch').AsCurrency:=StrToCurr(StringReplace(MontantTimberChargeGEdt.Text, #32, '', [rfReplaceAll]));
+            FieldByName('timber_ch').AsFloat:=StrToFloat(StringReplace(MontantTimberChargeGEdt.Text, #32, '', [rfReplaceAll]));
             end else begin FieldValues['timber_ch']:=  StrToInt('0')  end;
 
             if MontantTTCChargeGEdt.Text<>'' then
             begin
-            FieldByName('montttc_ch').AsCurrency:=StrToCurr(StringReplace(MontantTTCChargeGEdt.Text, #32, '', [rfReplaceAll]));
+            FieldByName('montttc_ch').AsFloat:=StrToFloat(StringReplace(MontantTTCChargeGEdt.Text, #32, '', [rfReplaceAll]));
             end else begin FieldValues['montttc_ch']:=  StrToInt('0')  end;
             
           
@@ -842,22 +842,22 @@ begin
 
             if MontantHTChargeGEdt.Text<>'' then
             begin
-            FieldByName('montht_ch').AsCurrency:=StrToCurr(StringReplace(MontantHTChargeGEdt.Text, #32, '', [rfReplaceAll]));
+            FieldByName('montht_ch').AsFloat:=StrToFloat(StringReplace(MontantHTChargeGEdt.Text, #32, '', [rfReplaceAll]));
             end else begin FieldValues['montht_ch']:=  StrToInt('0')  end;
 
             if MontantTVAChargeGEdt.Text<>'' then
             begin
-             FieldByName('monttva_ch').AsCurrency:=StrToCurr(StringReplace(MontantTVAChargeGEdt.Text, #32, '', [rfReplaceAll]));
+             FieldByName('monttva_ch').AsFloat:=StrToFloat(StringReplace(MontantTVAChargeGEdt.Text, #32, '', [rfReplaceAll]));
             end else begin FieldValues['monttva_ch']:=  StrToInt('0')  end;
 
             if MontantTimberChargeGEdt.Text<>'' then
             begin
-            FieldByName('timber_ch').AsCurrency:=StrToCurr(StringReplace(MontantTimberChargeGEdt.Text, #32, '', [rfReplaceAll]));
+            FieldByName('timber_ch').AsFloat:=StrToFloat(StringReplace(MontantTimberChargeGEdt.Text, #32, '', [rfReplaceAll]));
             end else begin FieldValues['timber_ch']:=  StrToInt('0')  end;
 
             if MontantTTCChargeGEdt.Text<>'' then
             begin
-            FieldByName('montttc_ch').AsCurrency:=StrToCurr(StringReplace(MontantTTCChargeGEdt.Text, #32, '', [rfReplaceAll]));
+            FieldByName('montttc_ch').AsFloat:=StrToFloat(StringReplace(MontantTTCChargeGEdt.Text, #32, '', [rfReplaceAll]));
             end else begin FieldValues['montttc_ch']:=  StrToInt('0')  end;
             
           
@@ -914,8 +914,8 @@ begin
             MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
             MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nom_ocb']:= 'Paiement de Charge Pièce N° '+NumChargeGEdt.Caption;
             MainForm.Opt_cas_bnk_CaisseTable.FieldValues['third_ocb']:= MainForm.UserNameLbl.Caption;
-      //      MainForm.Opt_cas_bnk_CaisseTable.FieldValues['encaiss_ocb']:= StrToCurr(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll]));
-           MainForm.Opt_cas_bnk_CaisseTable.FieldValues['decaiss_ocb']:= StrToCurr(StringReplace(MontantTTCChargeGEdt.Text, #32, '', [rfReplaceAll]));
+      //      MainForm.Opt_cas_bnk_CaisseTable.FieldValues['encaiss_ocb']:= StrToFloat(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll]));
+           MainForm.Opt_cas_bnk_CaisseTable.FieldValues['decaiss_ocb']:= StrToFloat(StringReplace(MontantTTCChargeGEdt.Text, #32, '', [rfReplaceAll]));
 
              if (LowerCase(ModePaieChargeGCbx.Text)='espèce') OR (LowerCase(ModePaieChargeGCbx.Text)='espece') then
             begin
@@ -974,8 +974,8 @@ begin
                     MainForm.Opt_cas_bnk_CaisseTable.FieldValues['time_ocb']:= TimeOf(Now);;
                     MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nom_ocb']:= 'Paiement de Charge Pièce N° '+NumChargeGEdt.Caption;
                     MainForm.Opt_cas_bnk_CaisseTable.FieldValues['third_ocb']:= MainForm.UserNameLbl.Caption;
-              //      MainForm.Opt_cas_bnk_CaisseTable.FieldValues['encaiss_ocb']:= StrToCurr(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll]));
-                   MainForm.Opt_cas_bnk_CaisseTable.FieldValues['decaiss_ocb']:= StrToCurr(StringReplace(MontantTTCChargeGEdt.Text, #32, '', [rfReplaceAll]));
+              //      MainForm.Opt_cas_bnk_CaisseTable.FieldValues['encaiss_ocb']:= StrToFloat(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll]));
+                   MainForm.Opt_cas_bnk_CaisseTable.FieldValues['decaiss_ocb']:= StrToFloat(StringReplace(MontantTTCChargeGEdt.Text, #32, '', [rfReplaceAll]));
 
                      if (LowerCase(ModePaieChargeGCbx.Text)='espèce') OR (LowerCase(ModePaieChargeGCbx.Text)='espece') then
                     begin

@@ -530,11 +530,11 @@ begin
              DataModuleF.Bona_com_listTable.FieldValues['prixht_p']:= MainForm.SQLQuery.FieldValues['prixht_p'];
              DataModuleF.Bona_com_listTable.FieldValues['cond_p']:= 01;
              DataModuleF.Bona_com_listTable.FieldValues['tva_p']:= MainForm.SQLQuery.FieldValues['tva_p'];
-             DataModuleF.Bona_com_listTable.FieldByName('prixvd_p').AsCurrency:=  MainForm.SQLQuery.FieldByName('prixvd_p').AsCurrency;
-             DataModuleF.Bona_com_listTable.FieldByName('prixvr_p').AsCurrency:=  MainForm.SQLQuery.FieldByName('prixvr_p').AsCurrency;
-             DataModuleF.Bona_com_listTable.FieldByName('prixvg_p').AsCurrency:=  MainForm.SQLQuery.FieldByName('prixvg_p').AsCurrency;
-             DataModuleF.Bona_com_listTable.FieldByName('prixva_p').AsCurrency:=  MainForm.SQLQuery.FieldByName('prixva_p').AsCurrency;
-             DataModuleF.Bona_com_listTable.FieldByName('prixva2_p').AsCurrency:= MainForm.SQLQuery.FieldByName('prixva2_p').AsCurrency;
+             DataModuleF.Bona_com_listTable.FieldByName('prixvd_p').AsFloat:=  MainForm.SQLQuery.FieldByName('prixvd_p').AsFloat;
+             DataModuleF.Bona_com_listTable.FieldByName('prixvr_p').AsFloat:=  MainForm.SQLQuery.FieldByName('prixvr_p').AsFloat;
+             DataModuleF.Bona_com_listTable.FieldByName('prixvg_p').AsFloat:=  MainForm.SQLQuery.FieldByName('prixvg_p').AsFloat;
+             DataModuleF.Bona_com_listTable.FieldByName('prixva_p').AsFloat:=  MainForm.SQLQuery.FieldByName('prixva_p').AsFloat;
+             DataModuleF.Bona_com_listTable.FieldByName('prixva2_p').AsFloat:= MainForm.SQLQuery.FieldByName('prixva2_p').AsFloat;
 
              DataModuleF.Bona_com_listTable.FieldValues['qutinstock_p']:= 
              (DataModuleF.Bona_com_listTable.FieldValues['qut_p'])*(DataModuleF.Bona_com_listTable.FieldValues['cond_p']);     
@@ -653,11 +653,11 @@ begin
              DataModuleF.Bona_com_listTable.FieldValues['prixht_p']:= MainForm.SQLQuery.FieldValues['prixht_p'];
              DataModuleF.Bona_com_listTable.FieldValues['cond_p']:= 01;
              DataModuleF.Bona_com_listTable.FieldValues['tva_p']:= MainForm.SQLQuery.FieldValues['tva_p'];
-             DataModuleF.Bona_com_listTable.FieldByName('prixvd_p').AsCurrency:=  MainForm.SQLQuery.FieldByName('prixvd_p').AsCurrency;
-             DataModuleF.Bona_com_listTable.FieldByName('prixvr_p').AsCurrency:=  MainForm.SQLQuery.FieldByName('prixvr_p').AsCurrency;
-             DataModuleF.Bona_com_listTable.FieldByName('prixvg_p').AsCurrency:=  MainForm.SQLQuery.FieldByName('prixvg_p').AsCurrency;
-             DataModuleF.Bona_com_listTable.FieldByName('prixva_p').AsCurrency:=  MainForm.SQLQuery.FieldByName('prixva_p').AsCurrency;
-             DataModuleF.Bona_com_listTable.FieldByName('prixva2_p').AsCurrency:= MainForm.SQLQuery.FieldByName('prixva2_p').AsCurrency;
+             DataModuleF.Bona_com_listTable.FieldByName('prixvd_p').AsFloat:=  MainForm.SQLQuery.FieldByName('prixvd_p').AsFloat;
+             DataModuleF.Bona_com_listTable.FieldByName('prixvr_p').AsFloat:=  MainForm.SQLQuery.FieldByName('prixvr_p').AsFloat;
+             DataModuleF.Bona_com_listTable.FieldByName('prixvg_p').AsFloat:=  MainForm.SQLQuery.FieldByName('prixvg_p').AsFloat;
+             DataModuleF.Bona_com_listTable.FieldByName('prixva_p').AsFloat:=  MainForm.SQLQuery.FieldByName('prixva_p').AsFloat;
+             DataModuleF.Bona_com_listTable.FieldByName('prixva2_p').AsFloat:= MainForm.SQLQuery.FieldByName('prixva2_p').AsFloat;
 
               DataModuleF.Bona_com_listTable.FieldValues['qutinstock_p']:= 
              (DataModuleF.Bona_com_listTable.FieldValues['qut_p'])*(DataModuleF.Bona_com_listTable.FieldValues['cond_p']);     
@@ -786,11 +786,11 @@ begin
              DataModuleF.Bona_com_listTable.FieldValues['prixht_p']:= MainForm.SQLQuery.FieldValues['prixht_p'];
              DataModuleF.Bona_com_listTable.FieldValues['cond_p']:= 01;
              DataModuleF.Bona_com_listTable.FieldValues['tva_p']:= MainForm.SQLQuery.FieldValues['tva_p'];
-             DataModuleF.Bona_com_listTable.FieldByName('prixvd_p').AsCurrency:=  MainForm.SQLQuery.FieldByName('prixvd_p').AsCurrency;
-             DataModuleF.Bona_com_listTable.FieldByName('prixvr_p').AsCurrency:=  MainForm.SQLQuery.FieldByName('prixvr_p').AsCurrency;
-             DataModuleF.Bona_com_listTable.FieldByName('prixvg_p').AsCurrency:=  MainForm.SQLQuery.FieldByName('prixvg_p').AsCurrency;
-             DataModuleF.Bona_com_listTable.FieldByName('prixva_p').AsCurrency:=  MainForm.SQLQuery.FieldByName('prixva_p').AsCurrency;
-             DataModuleF.Bona_com_listTable.FieldByName('prixva2_p').AsCurrency:= MainForm.SQLQuery.FieldByName('prixva2_p').AsCurrency;
+             DataModuleF.Bona_com_listTable.FieldByName('prixvd_p').AsFloat:=  MainForm.SQLQuery.FieldByName('prixvd_p').AsFloat;
+             DataModuleF.Bona_com_listTable.FieldByName('prixvr_p').AsFloat:=  MainForm.SQLQuery.FieldByName('prixvr_p').AsFloat;
+             DataModuleF.Bona_com_listTable.FieldByName('prixvg_p').AsFloat:=  MainForm.SQLQuery.FieldByName('prixvg_p').AsFloat;
+             DataModuleF.Bona_com_listTable.FieldByName('prixva_p').AsFloat:=  MainForm.SQLQuery.FieldByName('prixva_p').AsFloat;
+             DataModuleF.Bona_com_listTable.FieldByName('prixva2_p').AsFloat:= MainForm.SQLQuery.FieldByName('prixva2_p').AsFloat;
 
              DataModuleF.Bona_com_listTable.FieldValues['qutinstock_p']:= 
              (DataModuleF.Bona_com_listTable.FieldValues['qut_p'])*(DataModuleF.Bona_com_listTable.FieldValues['cond_p']);             
@@ -955,7 +955,7 @@ MainForm.SaveGridLayout(ProduitsListDBGridEh,GetCurrentDir +'\bin\gc_bca');
 
 procedure TBonComAGestionF.FormShow(Sender: TObject);
 var CodeCB: Integer;
-OLDCredit,NEWCredit : Currency;
+OLDCredit,NEWCredit : Double;
 begin
 // use this tage when i click AddBAComBonComGBtn bon button
  if Tag = 0 then
@@ -1010,9 +1010,9 @@ begin
 
       if NOT (MainForm.SQLQuery.IsEmpty) then
      begin
-      OLDCredit:= (MainForm.SQLQuery.FieldByName('credit_f').AsCurrency);// - (DataModuleF.Bona_comTable.FieldByName('MontantRes').AsCurrency) ;
+      OLDCredit:= (MainForm.SQLQuery.FieldByName('credit_f').AsFloat);// - (DataModuleF.Bona_comTable.FieldByName('MontantRes').AsFloat) ;
 
-      NewCredit:=  MainForm.SQLQuery.FieldByName('credit_f').AsCurrency;
+      NewCredit:=  MainForm.SQLQuery.FieldByName('credit_f').AsFloat;
 
      BonComGFourOLDCredit.Caption:= FloatToStrF(StrToFloat(StringReplace(CurrToStr( OLDCredit), #32, '', [rfReplaceAll])),ffNumber,14,2) ;
      BonComGFourNEWCredit.Caption:= FloatToStrF(StrToFloat(StringReplace(CurrToStr( NewCredit), #32, '', [rfReplaceAll])),ffNumber,14,2) ;
@@ -1032,7 +1032,7 @@ begin
 
 procedure TBonComAGestionF.FournisseurBonComGCbxExit(Sender: TObject);
 var CodeF: Integer;
-OLDCreditF,RegFCreditF,OLDCreditFV,OLDCreditFINI : Currency;
+OLDCreditF,RegFCreditF,OLDCreditFV,OLDCreditFINI : Double;
 begin
 
   if FournisseurBonComGCbx.Text <> '' then
@@ -1045,7 +1045,7 @@ begin
       MainForm.SQLQuery.Active:=True;
       if NOT  MainForm.SQLQuery.IsEmpty then
      begin
-      OLDCreditFINI:= MainForm.SQLQuery.FieldByName('credit_f').AsCurrency ;
+      OLDCreditFINI:= MainForm.SQLQuery.FieldByName('credit_f').AsFloat ;
 
      if MainForm.SQLQuery.FieldByName('activ_f').AsBoolean <> False then
      begin
@@ -1096,11 +1096,11 @@ begin
 //         if Tag = 0 then
 //         begin
 //         BonComGFourNEWCredit.Caption:=
-//         CurrToStrF((DataModuleF.Bona_comTableCredit.FieldByName('MontantRes').AsCurrency )+ StrToCurr (StringReplace(BonComResteLbl.Caption, #32, '', [rfReplaceAll])),ffNumber,2);//  anyways i'm software developer
+//         CurrToStrF((DataModuleF.Bona_comTableCredit.FieldByName('MontantRes').AsFloat )+ StrToFloat (StringReplace(BonComResteLbl.Caption, #32, '', [rfReplaceAll])),ffNumber,2);//  anyways i'm software developer
 //        end else
 //            begin
 //              BonComGFourNEWCredit.Caption:=
-//              CurrToStrF((DataModuleF.Bona_comTableCredit.FieldByName('MontantRes').AsCurrency )+ StrToCurr (StringReplace(BonComResteLbl.Caption, #32, '', [rfReplaceAll])),ffNumber,2);//  anyways i'm software developer
+//              CurrToStrF((DataModuleF.Bona_comTableCredit.FieldByName('MontantRes').AsFloat )+ StrToFloat (StringReplace(BonComResteLbl.Caption, #32, '', [rfReplaceAll])),ffNumber,2);//  anyways i'm software developer
 //
 //            end;
 
@@ -1481,18 +1481,18 @@ procedure TBonComAGestionF.FormCloseQuery(Sender: TObject;
               DataModuleF.Bona_comTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
               DataModuleF.Bona_comTable.FieldValues['obser_bacom']:= ObserBonComGMem.Text;
               DataModuleF.Bona_comTable.FieldValues['num_cheque_bacom']:= NChequeBonComGCbx.Text;
-              DataModuleF.Bona_comTable.FieldByName('montht_bacom').AsCurrency:= StrToCurr(StringReplace(BonComTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
+              DataModuleF.Bona_comTable.FieldByName('montht_bacom').AsFloat:= StrToFloat(StringReplace(BonComTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
 
               if RemiseBonComGEdt.Text<>'' then
               begin
-                 DataModuleF.Bona_comTable.FieldByName('remise_bacom').AsCurrency:=StrToCurr(StringReplace(RemiseBonComGEdt.Text, #32, '', [rfReplaceAll]));
+                 DataModuleF.Bona_comTable.FieldByName('remise_bacom').AsFloat:=StrToFloat(StringReplace(RemiseBonComGEdt.Text, #32, '', [rfReplaceAll]));
               end else begin
-                        DataModuleF.Bona_comTable.FieldByName('remise_bacom').AsCurrency:=0;
+                        DataModuleF.Bona_comTable.FieldByName('remise_bacom').AsFloat:=0;
                        end;
 
 
-              DataModuleF.Bona_comTable.FieldByName('montver_bacom').AsCurrency:=StrToCurr(StringReplace(BonComRegleLbl.Caption, #32, '', [rfReplaceAll]));
-              DataModuleF.Bona_comTable.FieldByName('montttc_bacom').AsCurrency:=StrToCurr(StringReplace(BonComTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
+              DataModuleF.Bona_comTable.FieldByName('montver_bacom').AsFloat:=StrToFloat(StringReplace(BonComRegleLbl.Caption, #32, '', [rfReplaceAll]));
+              DataModuleF.Bona_comTable.FieldByName('montttc_bacom').AsFloat:=StrToFloat(StringReplace(BonComTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
 
               DataModuleF.Bona_comTable.Post;
               DataModuleF.Bona_comTable.EnableControls;
@@ -1577,18 +1577,18 @@ procedure TBonComAGestionF.FormCloseQuery(Sender: TObject;
           DataModuleF.Bona_comTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
           DataModuleF.Bona_comTable.FieldValues['obser_bacom']:= ObserBonComGMem.Text;
           DataModuleF.Bona_comTable.FieldValues['num_cheque_bacom']:= NChequeBonComGCbx.Text;
-          DataModuleF.Bona_comTable.FieldByName('montht_bacom').AsCurrency:= StrToCurr(StringReplace(BonComTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
+          DataModuleF.Bona_comTable.FieldByName('montht_bacom').AsFloat:= StrToFloat(StringReplace(BonComTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
 
           if RemiseBonComGEdt.Text<>'' then
           begin
-             DataModuleF.Bona_comTable.FieldByName('remise_bacom').AsCurrency:=StrToCurr(StringReplace(RemiseBonComGEdt.Text, #32, '', [rfReplaceAll]));
+             DataModuleF.Bona_comTable.FieldByName('remise_bacom').AsFloat:=StrToFloat(StringReplace(RemiseBonComGEdt.Text, #32, '', [rfReplaceAll]));
           end else begin
-                    DataModuleF.Bona_comTable.FieldByName('remise_bacom').AsCurrency:=0;
+                    DataModuleF.Bona_comTable.FieldByName('remise_bacom').AsFloat:=0;
                    end;
 
 
-          DataModuleF.Bona_comTable.FieldByName('montver_bacom').AsCurrency:=StrToCurr(StringReplace(BonComRegleLbl.Caption, #32, '', [rfReplaceAll]));
-          DataModuleF.Bona_comTable.FieldByName('montttc_bacom').AsCurrency:=StrToCurr(StringReplace(BonComTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
+          DataModuleF.Bona_comTable.FieldByName('montver_bacom').AsFloat:=StrToFloat(StringReplace(BonComRegleLbl.Caption, #32, '', [rfReplaceAll]));
+          DataModuleF.Bona_comTable.FieldByName('montttc_bacom').AsFloat:=StrToFloat(StringReplace(BonComTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
 
           DataModuleF.Bona_comTable.Post;
           DataModuleF.Bona_comTable.EnableControls;
@@ -2188,7 +2188,7 @@ end;
 
 procedure TBonComAGestionF.RemiseBonComGEdtExit(Sender: TObject);
 var
-RemiseBonComG: Currency;
+RemiseBonComG: Double;
 begin
   if RemiseBonComGEdt.Text<>'' then
   begin
@@ -2205,7 +2205,7 @@ RemiseBonComGEdt.SelectAll;
 end;
 
 procedure TBonComAGestionF.RemiseBonComGEdtChange(Sender: TObject);
-var RemiseBonComG,BonRTotalHT,BonRTotalTVA,OLDTTC : Currency;
+var RemiseBonComG,BonRTotalHT,BonRTotalTVA,OLDTTC : Double;
 begin
 if RemiseBonComGEdt.Focused then
  begin
@@ -2258,7 +2258,7 @@ RemisePerctageBonComGEdt.SelectAll;
 end;
 
 procedure TBonComAGestionF.RemisePerctageBonComGEdtChange(Sender: TObject);
-var BonRTotalHT,RemisePerctageBonCom,TotalTVANet,NewHT,NewTVA,NewTTC,Remise,OldTTC,OldFourCredit : Currency;
+var BonRTotalHT,RemisePerctageBonCom,TotalTVANet,NewHT,NewTVA,NewTTC,Remise,OldTTC,OldFourCredit : Double;
 begin
 //------ this is to set the remise on tyhe prix HT ---------//
 
@@ -2475,7 +2475,7 @@ procedure TBonComAGestionF.EditBAComBonComGBtnClick(Sender: TObject);
 
         begin
       MainForm.FournisseurTable.Edit;
-      MainForm.FournisseurTable.FieldByName('credit_f').AsCurrency:= (MainForm.FournisseurTable.FieldByName('credit_f').AsCurrency) - (DataModuleF.Bona_comTable.FieldByName('MontantRes').AsCurrency);
+      MainForm.FournisseurTable.FieldByName('credit_f').AsFloat:= (MainForm.FournisseurTable.FieldByName('credit_f').AsFloat) - (DataModuleF.Bona_comTable.FieldByName('MontantRes').AsFloat);
       MainForm.FournisseurTable.Post;
       end;
 
@@ -3129,11 +3129,11 @@ begin
 //   ProduitsListDBGridEh.DefaultDrawColumnCell(Rect, DataCol, Column, State);
 //end;
 //
-//  if  (DataModuleF.Bona_com_listTable.FieldByName('prixht_p').AsCurrency > DataModuleF.Bona_com_listTable.FieldByName('prixvd_p').AsCurrency )
-//    OR(DataModuleF.Bona_com_listTable.FieldByName('prixht_p').AsCurrency > DataModuleF.Bona_com_listTable.FieldByName('prixvr_p').AsCurrency )
-//    OR(DataModuleF.Bona_com_listTable.FieldByName('prixht_p').AsCurrency > DataModuleF.Bona_com_listTable.FieldByName('prixvg_p').AsCurrency )
-//    OR(DataModuleF.Bona_com_listTable.FieldByName('prixht_p').AsCurrency > DataModuleF.Bona_com_listTable.FieldByName('prixva_p').AsCurrency )
-//    OR(DataModuleF.Bona_com_listTable.FieldByName('prixht_p').AsCurrency > DataModuleF.Bona_com_listTable.FieldByName('prixva2_p').AsCurrency )
+//  if  (DataModuleF.Bona_com_listTable.FieldByName('prixht_p').AsFloat > DataModuleF.Bona_com_listTable.FieldByName('prixvd_p').AsFloat )
+//    OR(DataModuleF.Bona_com_listTable.FieldByName('prixht_p').AsFloat > DataModuleF.Bona_com_listTable.FieldByName('prixvr_p').AsFloat )
+//    OR(DataModuleF.Bona_com_listTable.FieldByName('prixht_p').AsFloat > DataModuleF.Bona_com_listTable.FieldByName('prixvg_p').AsFloat )
+//    OR(DataModuleF.Bona_com_listTable.FieldByName('prixht_p').AsFloat > DataModuleF.Bona_com_listTable.FieldByName('prixva_p').AsFloat )
+//    OR(DataModuleF.Bona_com_listTable.FieldByName('prixht_p').AsFloat > DataModuleF.Bona_com_listTable.FieldByName('prixva2_p').AsFloat )
 //         then
 // begin
 // ProduitsListDBGridEh.Canvas.Font.Color:=$004735F9;

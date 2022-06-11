@@ -119,7 +119,7 @@ object ChargesGestionF: TChargesGestionF
   object Label7: TLabel
     Left = 36
     Top = 173
-    Width = 55
+    Width = 57
     Height = 18
     Caption = 'Mode.P:'
     Color = 4207405
@@ -161,7 +161,7 @@ object ChargesGestionF: TChargesGestionF
     ShowHint = True
     Spacing = -1
     OnClick = AddModePaieChargeGBtnClick
-    Version = '1.6.2.0'
+    Version = '1.7.2.0'
     TMSStyle = 0
   end
   object Label5: TLabel
@@ -183,7 +183,7 @@ object ChargesGestionF: TChargesGestionF
   object ChargeGLbl: TLabel
     Left = 55
     Top = 122
-    Width = 35
+    Width = 38
     Height = 18
     Caption = 'Type:'
     Color = 4207405
@@ -225,13 +225,13 @@ object ChargesGestionF: TChargesGestionF
     ShowHint = True
     Spacing = -1
     OnClick = AddTypeChargeGBtnClick
-    Version = '1.6.2.0'
+    Version = '1.7.2.0'
     TMSStyle = 0
   end
   object Label1: TLabel
     Left = 327
     Top = 122
-    Width = 73
+    Width = 77
     Height = 18
     Caption = 'Sous Type:'
     Color = 4207405
@@ -273,13 +273,13 @@ object ChargesGestionF: TChargesGestionF
     ShowHint = True
     Spacing = -1
     OnClick = AddSousTypeChargeGBtnClick
-    Version = '1.6.2.0'
+    Version = '1.7.2.0'
     TMSStyle = 0
   end
   object NameChargeGLbl: TLabel
     Left = 6
     Top = 71
-    Width = 84
+    Width = 87
     Height = 18
     Caption = 'D'#233'signation:'
     Color = 4207405
@@ -315,7 +315,7 @@ object ChargesGestionF: TChargesGestionF
   object Label19: TLabel
     Left = 16
     Top = 224
-    Width = 76
+    Width = 77
     Height = 18
     Caption = 'N'#176' Ch'#233'que:'
     Color = 4207405
@@ -357,7 +357,7 @@ object ChargesGestionF: TChargesGestionF
     ShowHint = True
     Spacing = -1
     OnClick = AddCompteChargeGBtnClick
-    Version = '1.6.2.0'
+    Version = '1.7.2.0'
     TMSStyle = 0
   end
   object Label16: TLabel
@@ -379,7 +379,7 @@ object ChargesGestionF: TChargesGestionF
   object ObserChargeGLbl: TLabel
     Left = 5
     Top = 276
-    Width = 86
+    Width = 88
     Height = 17
     Caption = 'Observations:'
     Color = 4207405
@@ -395,7 +395,7 @@ object ChargesGestionF: TChargesGestionF
   object MontantAHTChargeLbl: TLabel
     Left = 15
     Top = 347
-    Width = 84
+    Width = 86
     Height = 18
     Caption = 'Montant HT:'
     Color = 4207405
@@ -411,7 +411,7 @@ object ChargesGestionF: TChargesGestionF
   object MonatntTTCChargeLbl: TLabel
     Left = 49
     Top = 398
-    Width = 51
+    Width = 52
     Height = 18
     Caption = 'Timber:'
     Color = 4207405
@@ -427,7 +427,7 @@ object ChargesGestionF: TChargesGestionF
   object Label2: TLabel
     Left = 317
     Top = 347
-    Width = 92
+    Width = 93
     Height = 18
     Caption = 'Montant TVA:'
     Color = 4207405
@@ -443,7 +443,7 @@ object ChargesGestionF: TChargesGestionF
   object Label3: TLabel
     Left = 317
     Top = 398
-    Width = 92
+    Width = 93
     Height = 18
     Caption = 'Montant TTC:'
     Color = 4207405
@@ -459,7 +459,7 @@ object ChargesGestionF: TChargesGestionF
   object RefChargeGLbl: TLabel
     Left = 20
     Top = 23
-    Width = 72
+    Width = 73
     Height = 18
     Caption = 'Charge N'#176':'
     Color = 4207405
@@ -633,8 +633,8 @@ object ChargesGestionF: TChargesGestionF
     Top = 18
     Width = 117
     Height = 26
-    Date = 42571.604963831020000000
-    Time = 42571.604963831020000000
+    Date = 42571.000000000000000000
+    Time = 0.604963831021450500
     Font.Charset = DEFAULT_CHARSET
     Font.Color = 4207405
     Font.Height = 19
@@ -770,7 +770,7 @@ object ChargesGestionF: TChargesGestionF
       ShowHint = True
       Spacing = 10
       OnClick = OKChargeGBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object CancelChargeGBtn: TAdvToolButton
@@ -801,7 +801,7 @@ object ChargesGestionF: TChargesGestionF
       ShowHint = True
       Spacing = -1
       OnClick = CancelChargeGBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
   end

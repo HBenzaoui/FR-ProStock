@@ -335,7 +335,7 @@ object BonCtrGestionF: TBonCtrGestionF
     Height = 133
     Align = alTop
     BevelOuter = bvNone
-    Color = clBlack
+    Color = 4207405
     ParentBackground = False
     TabOrder = 0
     DesignSize = (
@@ -350,11 +350,13 @@ object BonCtrGestionF: TBonCtrGestionF
       Anchors = [akLeft, akRight]
       AutoSize = False
       Caption = '0'
+      Color = 4207405
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 7854350
       Font.Height = -120
       Font.Name = 'DS-Digital'
       Font.Style = [fsBold]
+      ParentColor = False
       ParentFont = False
       Layout = tlCenter
     end
@@ -1390,7 +1392,7 @@ object BonCtrGestionF: TBonCtrGestionF
       Height = 125
       Align = alTop
       BevelOuter = bvNone
-      Color = clBlack
+      Color = 15527148
       ParentBackground = False
       TabOrder = 2
       object Label18: TLabel
@@ -1400,7 +1402,7 @@ object BonCtrGestionF: TBonCtrGestionF
         Height = 16
         Caption = 'Montant:'
         Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWhite
+        Font.Color = 4207405
         Font.Height = 16
         Font.Name = 'Roboto'
         Font.Style = []
@@ -1414,7 +1416,7 @@ object BonCtrGestionF: TBonCtrGestionF
         Alignment = taRightJustify
         Caption = '0'
         Font.Charset = DEFAULT_CHARSET
-        Font.Color = 16771277
+        Font.Color = 14727239
         Font.Height = 21
         Font.Name = 'Roboto'
         Font.Style = []
@@ -1427,7 +1429,7 @@ object BonCtrGestionF: TBonCtrGestionF
         Height = 16
         Caption = 'Verse:'
         Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWhite
+        Font.Color = 4207405
         Font.Height = 16
         Font.Name = 'Roboto'
         Font.Style = []
@@ -1454,7 +1456,7 @@ object BonCtrGestionF: TBonCtrGestionF
         Height = 16
         Caption = 'Remise:'
         Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWhite
+        Font.Color = 4207405
         Font.Height = 16
         Font.Name = 'Roboto'
         Font.Style = []
@@ -1467,7 +1469,7 @@ object BonCtrGestionF: TBonCtrGestionF
         Height = 16
         Caption = 'Rendu:'
         Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWhite
+        Font.Color = 4207405
         Font.Height = 16
         Font.Name = 'Roboto'
         Font.Style = []
@@ -1519,7 +1521,7 @@ object BonCtrGestionF: TBonCtrGestionF
         Alignment = taRightJustify
         Caption = '0'
         Font.Charset = DEFAULT_CHARSET
-        Font.Color = 16771277
+        Font.Color = 14727239
         Font.Height = 21
         Font.Name = 'Roboto'
         Font.Style = []
@@ -1599,7 +1601,7 @@ object BonCtrGestionF: TBonCtrGestionF
       Align = alTop
       Alignment = taRightJustify
       BevelOuter = bvNone
-      Color = clBlack
+      Color = 15527148
       ParentBackground = False
       TabOrder = 3
       object Label2: TLabel
@@ -1609,7 +1611,7 @@ object BonCtrGestionF: TBonCtrGestionF
         Height = 16
         Caption = 'Bon N'#176':'
         Font.Charset = DEFAULT_CHARSET
-        Font.Color = 1752319
+        Font.Color = 4207405
         Font.Height = 16
         Font.Name = 'Roboto'
         Font.Style = []
@@ -1623,7 +1625,7 @@ object BonCtrGestionF: TBonCtrGestionF
         Alignment = taRightJustify
         Caption = '0'
         Font.Charset = DEFAULT_CHARSET
-        Font.Color = 15066597
+        Font.Color = 4207405
         Font.Height = 21
         Font.Name = 'Roboto'
         Font.Style = []
@@ -1636,7 +1638,7 @@ object BonCtrGestionF: TBonCtrGestionF
         Height = 16
         Caption = 'Date:'
         Font.Charset = DEFAULT_CHARSET
-        Font.Color = 1752319
+        Font.Color = 4207405
         Font.Height = 16
         Font.Name = 'Roboto'
         Font.Style = []
@@ -1649,7 +1651,7 @@ object BonCtrGestionF: TBonCtrGestionF
         Height = 16
         Caption = 'Heure:'
         Font.Charset = DEFAULT_CHARSET
-        Font.Color = 1752319
+        Font.Color = 4207405
         Font.Height = 16
         Font.Name = 'Roboto'
         Font.Style = []
@@ -1663,7 +1665,7 @@ object BonCtrGestionF: TBonCtrGestionF
         Alignment = taRightJustify
         Caption = '0'
         Font.Charset = DEFAULT_CHARSET
-        Font.Color = 15066597
+        Font.Color = 4207405
         Font.Height = 21
         Font.Name = 'Roboto'
         Font.Style = []

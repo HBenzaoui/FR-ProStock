@@ -778,10 +778,10 @@ object BonLivGestionF: TBonLivGestionF
       TMSStyle = 0
     end
     object DeleteProduitBonLivGBtn: TAdvToolButton
-      Left = 724
-      Top = 247
-      Width = 26
-      Height = 26
+      Left = 777
+      Top = 245
+      Width = 30
+      Height = 30
       Cursor = crHandPoint
       Anchors = [akLeft, akBottom]
       AutoThemeAdapt = False
@@ -897,10 +897,10 @@ object BonLivGestionF: TBonLivGestionF
       TMSStyle = 0
     end
     object ClearProduitBonLivGBtn: TAdvToolButton
-      Left = 756
-      Top = 247
-      Width = 26
-      Height = 26
+      Left = 813
+      Top = 245
+      Width = 30
+      Height = 30
       Cursor = crHandPoint
       Anchors = [akLeft, akBottom]
       AutoThemeAdapt = False
@@ -1036,7 +1036,7 @@ object BonLivGestionF: TBonLivGestionF
       StyleElements = []
     end
     object BonLivTotalMargeLbl: TLabel
-      Left = 691
+      Left = 528
       Top = 218
       Width = 147
       Height = 20
@@ -1298,6 +1298,39 @@ object BonLivGestionF: TBonLivGestionF
       ShowHint = True
       Spacing = -1
       OnClick = ListClientBonLivGBtnClick
+      Version = '1.7.2.0'
+      TMSStyle = 0
+    end
+    object NSeriesProduitBonLivGBtn: TAdvToolButton
+      Left = 732
+      Top = 245
+      Width = 30
+      Height = 30
+      Cursor = crHandPoint
+      Anchors = [akLeft, akBottom]
+      AutoThemeAdapt = False
+      BorderColor = 15722984
+      BorderDownColor = 7854350
+      BorderHotColor = 15970832
+      Color = 15722984
+      ColorDown = 7854350
+      ColorHot = clBtnFace
+      ColorChecked = clNone
+      DropDownSplit = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 4207405
+      Font.Height = 18
+      Font.Name = 'Roboto'
+      Font.Style = []
+      ImageIndex = 63
+      Images = MainForm.PanelIcons24
+      ParentFont = False
+      ParentShowHint = False
+      Rounded = True
+      Shaded = False
+      ShowHint = True
+      Spacing = -1
+      Visible = False
       Version = '1.7.2.0'
       TMSStyle = 0
     end
@@ -1812,6 +1845,64 @@ object BonLivGestionF: TBonLivGestionF
       OnKeyPress = ProduitBonLivGCbxKeyPress
       Height = 30
       Width = 386
+    end
+    object S02: TPanel
+      Left = 769
+      Top = 245
+      Width = 1
+      Height = 30
+      ParentCustomHint = False
+      Anchors = [akTop, akRight]
+      BevelEdges = []
+      BevelOuter = bvNone
+      BiDiMode = bdLeftToRight
+      Color = 13421772
+      Ctl3D = True
+      DoubleBuffered = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentBiDiMode = False
+      ParentBackground = False
+      ParentCtl3D = False
+      ParentDoubleBuffered = False
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = False
+      TabOrder = 22
+      Visible = False
+      StyleElements = []
+    end
+    object S01: TPanel
+      Left = 724
+      Top = 245
+      Width = 1
+      Height = 30
+      ParentCustomHint = False
+      Anchors = [akTop, akRight]
+      BevelEdges = []
+      BevelOuter = bvNone
+      BiDiMode = bdLeftToRight
+      Color = 13421772
+      Ctl3D = True
+      DoubleBuffered = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentBiDiMode = False
+      ParentBackground = False
+      ParentCtl3D = False
+      ParentDoubleBuffered = False
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = False
+      TabOrder = 23
+      Visible = False
+      StyleElements = []
     end
   end
   object ProduitsListDBGridEh: TDBGridEh
@@ -6658,8 +6749,8 @@ object BonLivGestionF: TBonLivGestionF
   end
   object ApplicationEvents1: TApplicationEvents
     OnShortCut = ApplicationEvents1ShortCut
-    Left = 832
-    Top = 250
+    Left = 976
+    Top = 244
   end
   object Timer2: TTimer
     Enabled = False

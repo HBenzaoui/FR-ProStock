@@ -356,7 +356,7 @@ CompteRegFGCbx.AutoDropDown:=True;
 end;
 
 procedure TReglementFGestionF.VerRegFGEdtChange(Sender: TObject);
-var TOTAL,VER,ResteVersement : Currency;
+var TOTAL,VER,ResteVersement : Double;
 begin
     if VerRegFGEdt.Text<>'' then
      begin
@@ -411,13 +411,13 @@ end;
 
 procedure TReglementFGestionF.OKRegFGBtnClick(Sender: TObject);
 var CodeOCB,CodeF,CodeRF,CodeBR :Integer;
-    OLDCreditF : Currency;
+    OLDCreditF : Double;
 begin
   if FournisseurRegFGCbx.Text<>'' then
   begin
 
 
-    if (VerRegFGEdt.Text <> '' ) AND (VerRegFGEdt.Text <> '0' ) AND ((StrToCurr(StringReplace(VerRegFGEdt.Text, #32, '', [rfReplaceAll])))<> 0 ) then
+    if (VerRegFGEdt.Text <> '' ) AND (VerRegFGEdt.Text <> '0' ) AND ((StrToFloat(StringReplace(VerRegFGEdt.Text, #32, '', [rfReplaceAll])))<> 0 ) then
 
         begin
 
@@ -433,7 +433,7 @@ begin
           begin
           MainForm.SQLQuery.Edit;
           MainForm.SQLQuery.FieldByName('credit_f').AsCurrency:=  (MainForm.SQLQuery.FieldByName('credit_f').AsCurrency) -
-          ((StrToCurr(StringReplace(VerRegFGEdt.Text, #32, '', [rfReplaceAll]))));
+          ((StrToFloat(StringReplace(VerRegFGEdt.Text, #32, '', [rfReplaceAll]))));
           MainForm.SQLQuery.Post;
           end;
 
@@ -487,7 +487,7 @@ begin
           MainForm.SQLQuery3.FieldValues['bon_or_no_rf']:= 1;
 
 
-          MainForm.SQLQuery3.FieldByName('montver_rf').AsCurrency:=StrToCurr(StringReplace(VerRegFGEdt.Text, #32, '', [rfReplaceAll]));
+          MainForm.SQLQuery3.FieldByName('montver_rf').AsCurrency:=StrToFloat(StringReplace(VerRegFGEdt.Text, #32, '', [rfReplaceAll]));
 
 
           if (LowerCase(ReglementFGestionF.ModePaieRegFGCbx.Text)='espèce') OR (LowerCase(ReglementFGestionF.ModePaieRegFGCbx.Text)='espece') then
@@ -522,7 +522,7 @@ begin
                 MainForm.RegfournisseurTable.FieldValues['bon_or_no_rf']:= 1;
 
 
-                MainForm.RegfournisseurTable.FieldByName('montver_rf').AsCurrency:=StrToCurr(StringReplace(VerRegFGEdt.Text, #32, '', [rfReplaceAll]));
+                MainForm.RegfournisseurTable.FieldByName('montver_rf').AsCurrency:=StrToFloat(StringReplace(VerRegFGEdt.Text, #32, '', [rfReplaceAll]));
 
 
                 if (LowerCase(ReglementFGestionF.ModePaieRegFGCbx.Text)='espèce') OR (LowerCase(ReglementFGestionF.ModePaieRegFGCbx.Text)='espece') then
@@ -547,7 +547,7 @@ begin
 
           MainForm.SQLQuery.Edit;
           MainForm.SQLQuery.FieldByName('credit_f').AsCurrency:=
-          ((StrToCurr(StringReplace(RegFGFourNEWCredit.Caption, #32, '', [rfReplaceAll]))));
+          ((StrToFloat(StringReplace(RegFGFourNEWCredit.Caption, #32, '', [rfReplaceAll]))));
           MainForm.SQLQuery.Post;
 
 
@@ -586,8 +586,8 @@ begin
             MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
             MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nom_ocb']:= 'Versement au Fournisseur Pièce N° '+ReglementFGestionF.NumRegFGEdt.Caption;
             MainForm.Opt_cas_bnk_CaisseTable.FieldValues['third_ocb']:= ReglementFGestionF.FournisseurRegFGCbx.Text;
-      //      MainForm.Opt_cas_bnk_CaisseTable.FieldValues['encaiss_ocb']:= StrToCurr(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll]));
-           MainForm.Opt_cas_bnk_CaisseTable.FieldValues['decaiss_ocb']:= StrToCurr(StringReplace(VerRegFGEdt.Text, #32, '', [rfReplaceAll]));
+      //      MainForm.Opt_cas_bnk_CaisseTable.FieldValues['encaiss_ocb']:= StrToFloat(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll]));
+           MainForm.Opt_cas_bnk_CaisseTable.FieldValues['decaiss_ocb']:= StrToFloat(StringReplace(VerRegFGEdt.Text, #32, '', [rfReplaceAll]));
 
              if (LowerCase(ReglementFGestionF.ModePaieRegFGCbx.Text)='espèce') OR (LowerCase(ReglementFGestionF.ModePaieRegFGCbx.Text)='espece') then
             begin
@@ -646,8 +646,8 @@ begin
                     MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
                     MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nom_ocb']:= 'Versement au Fournisseur Pièce N° '+ReglementFGestionF.NumRegFGEdt.Caption;
                     MainForm.Opt_cas_bnk_CaisseTable.FieldValues['third_ocb']:= ReglementFGestionF.FournisseurRegFGCbx.Text;
-              //      MainForm.Opt_cas_bnk_CaisseTable.FieldValues['encaiss_ocb']:= StrToCurr(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll]));
-                   MainForm.Opt_cas_bnk_CaisseTable.FieldValues['decaiss_ocb']:= StrToCurr(StringReplace(VerRegFGEdt.Text, #32, '', [rfReplaceAll]));
+              //      MainForm.Opt_cas_bnk_CaisseTable.FieldValues['encaiss_ocb']:= StrToFloat(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll]));
+                   MainForm.Opt_cas_bnk_CaisseTable.FieldValues['decaiss_ocb']:= StrToFloat(StringReplace(VerRegFGEdt.Text, #32, '', [rfReplaceAll]));
 
                      if (LowerCase(ReglementFGestionF.ModePaieRegFGCbx.Text)='espèce') OR (LowerCase(ReglementFGestionF.ModePaieRegFGCbx.Text)='espece') then
                     begin
@@ -735,7 +735,7 @@ end;
 
 procedure TReglementFGestionF.FournisseurRegFGCbxExit(Sender: TObject);
 var CodeF: Integer;
-OLDCreditC,RegFCreditF,OLDCreditFV,OLDCreditFINI : Currency;
+OLDCreditC,RegFCreditF,OLDCreditFV,OLDCreditFINI : Double;
 begin
 
   if FournisseurRegFGCbx.Text <> '' then

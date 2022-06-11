@@ -943,7 +943,7 @@ end;
 
 procedure TFSplashAddCompte.SoldeAddCompteSCbxExit(Sender: TObject);
 var
-SoldeCompte: Currency;
+SoldeCompte: Double;
 begin
   if SoldeAddCompteSCbx.Text<>'' then
   begin

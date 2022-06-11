@@ -645,7 +645,7 @@ ClearMPFilterBVLivPMenu.Checked:= True;
 end;
 
 procedure TCaisseListF.CaisseListCbxChange(Sender: TObject);
-Var TotalEncaiss,TotalDecaiss,cmptsum,TotalSoldComptEnc,TotalSoldComptDic : Currency;
+Var TotalEncaiss,TotalDecaiss,cmptsum,TotalSoldComptEnc,TotalSoldComptDic : Double;
 CodeC : Integer;
 begin
 if CaisseListCbx.Text <> 'Tous' then
@@ -809,7 +809,7 @@ if CaisseListCbx.Text <> 'Tous' then
 end;
 
 procedure TCaisseListF.FormShow(Sender: TObject);
-Var TotalEncaiss,TotalDecaiss,cmptsum,TotalSoldComptEnc,TotalSoldComptDic : Currency;
+Var TotalEncaiss,TotalDecaiss,cmptsum,TotalSoldComptEnc,TotalSoldComptDic : Double;
 begin
 
  if (DaysCaisseListCbx.ItemIndex = 2) AND (CaisseListCbx.ItemIndex = 0) then

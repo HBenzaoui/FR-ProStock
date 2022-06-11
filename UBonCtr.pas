@@ -523,7 +523,7 @@ begin
 //       MainForm.Bonv_ctrTable.Refresh;
        BonCtrGestionF.NumBonCtrGEdt.Caption := MainForm.Bonv_ctrTable.FieldByName('num_bvctr').AsString;
        BonCtrGestionF.DateBonCtrGD.Date:= MainForm.Bonv_ctrTable.FieldByName('date_bvctr').AsDateTime;
-       BonCtrGestionF.HourBonCtrGD.Caption:= MainForm.Bonv_ctrTable.FieldValues['time_bvctr'];
+       BonCtrGestionF.HourBonCtrGD.Caption:= TimeToStr(MainForm.Bonv_ctrTable.FieldByName('time_bvctr').AsDateTime); //MainForm.Bonv_ctrTable.FieldValues['time_bvctr'];
        if (MainForm.Bonv_ctrTable.FieldValues['code_c']<> null) and (MainForm.Bonv_ctrTable.FieldValues['code_c']<> 0) then
        begin
        CodeC:=MainForm.Bonv_ctrTable.FieldValues['code_c'];

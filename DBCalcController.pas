@@ -19,7 +19,7 @@ begin
  MainForm.FDQuery2.SQL.Text:= 'SELECT code_p, prixht_p FROM produit WHERE code_p = '+IntToStr(CodeP)+' ';
  MainForm.FDQuery2.Active:= true;
 
- Result:= MainForm.FDQuery2.FieldByName('prixht_p').AsCurrency;
+ Result:= MainForm.FDQuery2.FieldByName('prixht_p').AsFloat;
 
  MainForm.FDQuery2.Active:= false;
  MainForm.FDQuery2.SQL.Clear;
@@ -29,7 +29,7 @@ end;
 
 
 procedure BLVCalcPrixA();
-Var PrixP, sumPrixInBon :Currency;
+Var PrixP, sumPrixInBon :Double;
 CodeP : Integer;
 QutP, CondP : Double;
 C: TDataSource;
@@ -72,7 +72,7 @@ begin
                    CondP:= MainForm.SQLQuery.FieldByName('cond_p').AsFloat;
 
                    MainForm.SQLQuery.edit;
-                   MainForm.SQLQuery.FieldByName('prixht_p').AsCurrency:= PrixP;
+                   MainForm.SQLQuery.FieldByName('prixht_p').AsFloat:= PrixP;
                    MainForm.SQLQuery.Post;
 
                    sumPrixInBon:= sumPrixInBon + ((PrixP * QutP) * CondP );
@@ -81,7 +81,7 @@ begin
                  end;
 
          MainForm.SQLQuery3.edit;
-         MainForm.SQLQuery3.FieldByName('montaht_bvliv').AsCurrency:= sumPrixInBon;
+         MainForm.SQLQuery3.FieldByName('montaht_bvliv').AsFloat:= sumPrixInBon;
          MainForm.SQLQuery3.Post;
 
          MainForm.SQLQuery3.next;
@@ -109,7 +109,7 @@ begin
 end;
 
 procedure FPVCalcPrixA();
-Var PrixP, sumPrixInBon :Currency;
+Var PrixP, sumPrixInBon :Double;
 CodeP : Integer;
 QutP, CondP : Double;
 C: TDataSource;
@@ -152,7 +152,7 @@ begin
                    CondP:= MainForm.SQLQuery.FieldByName('cond_p').AsFloat;
 
                    MainForm.SQLQuery.edit;
-                   MainForm.SQLQuery.FieldByName('prixht_p').AsCurrency:= PrixP;
+                   MainForm.SQLQuery.FieldByName('prixht_p').AsFloat:= PrixP;
                    MainForm.SQLQuery.Post;
 
                    sumPrixInBon:= sumPrixInBon + ((PrixP * QutP) * CondP );
@@ -161,7 +161,7 @@ begin
                  end;
 
          MainForm.SQLQuery3.edit;
-         MainForm.SQLQuery3.FieldByName('montaht_bpfac').AsCurrency:= sumPrixInBon;
+         MainForm.SQLQuery3.FieldByName('montaht_bpfac').AsFloat:= sumPrixInBon;
          MainForm.SQLQuery3.Post;
 
          MainForm.SQLQuery3.next;
@@ -189,7 +189,7 @@ begin
 end;
 
 procedure FVVCalcPrixA();
-Var PrixP, sumPrixInBon :Currency;
+Var PrixP, sumPrixInBon :Double;
 CodeP : Integer;
 QutP, CondP : Double;
 C: TDataSource;
@@ -232,7 +232,7 @@ begin
                    CondP:= MainForm.SQLQuery.FieldByName('cond_p').AsFloat;
 
                    MainForm.SQLQuery.edit;
-                   MainForm.SQLQuery.FieldByName('prixht_p').AsCurrency:= PrixP;
+                   MainForm.SQLQuery.FieldByName('prixht_p').AsFloat:= PrixP;
                    MainForm.SQLQuery.Post;
 
                    sumPrixInBon:= sumPrixInBon + ((PrixP * QutP) * CondP );
@@ -241,7 +241,7 @@ begin
                  end;
 
          MainForm.SQLQuery3.edit;
-         MainForm.SQLQuery3.FieldByName('montaht_bvfac').AsCurrency:= sumPrixInBon;
+         MainForm.SQLQuery3.FieldByName('montaht_bvfac').AsFloat:= sumPrixInBon;
          MainForm.SQLQuery3.Post;
 
          MainForm.SQLQuery3.next;
@@ -269,7 +269,7 @@ begin
 end;
 
 procedure CTRCalcPrixA();
-Var PrixP, sumPrixInBon :Currency;
+Var PrixP, sumPrixInBon :Double;
 CodeP : Integer;
 QutP, CondP : Double;
 C: TDataSource;
@@ -312,7 +312,7 @@ begin
                    CondP:= MainForm.SQLQuery.FieldByName('cond_p').AsFloat;
 
                    MainForm.SQLQuery.edit;
-                   MainForm.SQLQuery.FieldByName('prixht_p').AsCurrency:= PrixP;
+                   MainForm.SQLQuery.FieldByName('prixht_p').AsFloat:= PrixP;
                    MainForm.SQLQuery.Post;
 
                    sumPrixInBon:= sumPrixInBon + ((PrixP * QutP) * CondP );
@@ -321,7 +321,7 @@ begin
                  end;
 
          MainForm.SQLQuery3.edit;
-         MainForm.SQLQuery3.FieldByName('montaht_bvctr').AsCurrency:= sumPrixInBon;
+         MainForm.SQLQuery3.FieldByName('montaht_bvctr').AsFloat:= sumPrixInBon;
          MainForm.SQLQuery3.Post;
 
          MainForm.SQLQuery3.next;

@@ -339,7 +339,7 @@ end;
 
 
 procedure TBankListF.FormShow(Sender: TObject);
-Var TotalEncaiss,TotalDecaiss,cmptsum,TotalSoldComptEnc,TotalSoldComptDic : Currency;
+Var TotalEncaiss,TotalDecaiss,cmptsum,TotalSoldComptEnc,TotalSoldComptDic : Double;
 begin
  if (DaysBankListCbx.ItemIndex = 2) AND (BankListCbx.ItemIndex = 0) then
  begin
@@ -771,7 +771,7 @@ ClearRegleFilterBVLivPMenu.Checked:= True;
 end;
 
 procedure TBankListF.BankListCbxChange(Sender: TObject);
-Var TotalEncaiss,TotalDecaiss,cmptsum,TotalSoldComptEnc,TotalSoldComptDic : Currency;
+Var TotalEncaiss,TotalDecaiss,cmptsum,TotalSoldComptEnc,TotalSoldComptDic : Double;
 CodeC : Integer;
 begin
 if BankListCbx.Text <> 'Tous' then

@@ -367,7 +367,7 @@ begin
 
 procedure TBonComVGestionF.FormShow(Sender: TObject);
 var CodeBCV: Integer;
-OLDCredit,NEWCredit : Currency;
+OLDCredit,NEWCredit : Double;
 begin
 
 
@@ -427,9 +427,9 @@ begin
 
       if NOT (MainForm.SQLQuery.IsEmpty) AND (MainForm.SQLQuery.FieldByName('code_c').AsInteger <> 1) then
      begin
-      OLDCredit:= (MainForm.SQLQuery.FieldByName('credit_c').AsCurrency);// - (DataModuleF.Bonv_comTable.FieldByName('MontantRes').AsCurrency) ;
+      OLDCredit:= (MainForm.SQLQuery.FieldByName('credit_c').AsFloat);// - (DataModuleF.Bonv_comTable.FieldByName('MontantRes').AsFloat) ;
 
-      NewCredit:=  MainForm.SQLQuery.FieldByName('credit_c').AsCurrency;
+      NewCredit:=  MainForm.SQLQuery.FieldByName('credit_c').AsFloat;
 
      BonComGClientOLDCredit.Caption:= FloatToStrF(StrToFloat(StringReplace(CurrToStr( OLDCredit), #32, '', [rfReplaceAll])),ffNumber,14,2) ;
      BonComGClientNEWCredit.Caption:= FloatToStrF(StrToFloat(StringReplace(CurrToStr( NewCredit), #32, '', [rfReplaceAll])),ffNumber,14,2) ;
@@ -612,19 +612,19 @@ codeBCV:=DataModuleF.Bonv_comTable.FieldByName('code_bvcom').AsInteger;
           DataModuleF.Bonv_comTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
           DataModuleF.Bonv_comTable.FieldValues['obser_bvcom']:= ObserBonComGMem.Text;
           DataModuleF.Bonv_comTable.FieldValues['num_cheque_bvcom']:= NChequeBonComGCbx.Text;
-          DataModuleF.Bonv_comTable.FieldByName('montht_bvcom').AsCurrency:= StrToCurr(StringReplace(BonComTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
-          DataModuleF.Bonv_comTable.FieldByName('montaht_bvcom').AsCurrency:= StrToCurr(StringReplace(BonComTotalAHTLbl.Caption, #32, '', [rfReplaceAll]));
+          DataModuleF.Bonv_comTable.FieldByName('montht_bvcom').AsFloat:= StrToFloat(StringReplace(BonComTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
+          DataModuleF.Bonv_comTable.FieldByName('montaht_bvcom').AsFloat:= StrToFloat(StringReplace(BonComTotalAHTLbl.Caption, #32, '', [rfReplaceAll]));
 
           if RemiseBonComGEdt.Text<>'' then
           begin
-             DataModuleF.Bonv_comTable.FieldByName('remise_bvcom').AsCurrency:=StrToCurr(StringReplace(RemiseBonComGEdt.Text, #32, '', [rfReplaceAll]));
+             DataModuleF.Bonv_comTable.FieldByName('remise_bvcom').AsFloat:=StrToFloat(StringReplace(RemiseBonComGEdt.Text, #32, '', [rfReplaceAll]));
           end else begin
-                    DataModuleF.Bonv_comTable.FieldByName('remise_bvcom').AsCurrency:=0;
+                    DataModuleF.Bonv_comTable.FieldByName('remise_bvcom').AsFloat:=0;
                    end;
 
 
-          DataModuleF.Bonv_comTable.FieldByName('montver_bvcom').AsCurrency:=StrToCurr(StringReplace(BonComRegleLbl.Caption, #32, '', [rfReplaceAll]));
-          DataModuleF.Bonv_comTable.FieldByName('montttc_bvcom').AsCurrency:=StrToCurr(StringReplace(BonComTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
+          DataModuleF.Bonv_comTable.FieldByName('montver_bvcom').AsFloat:=StrToFloat(StringReplace(BonComRegleLbl.Caption, #32, '', [rfReplaceAll]));
+          DataModuleF.Bonv_comTable.FieldByName('montttc_bvcom').AsFloat:=StrToFloat(StringReplace(BonComTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
 
           DataModuleF.Bonv_comTable.Post;
           DataModuleF.Bonv_comTable.EnableControls;
@@ -709,18 +709,18 @@ codeBCV:=DataModuleF.Bonv_comTable.FieldByName('code_bvcom').AsInteger;
           DataModuleF.Bonv_comTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
           DataModuleF.Bonv_comTable.FieldValues['obser_bvcom']:= ObserBonComGMem.Text;
           DataModuleF.Bonv_comTable.FieldValues['num_cheque_bvcom']:= NChequeBonComGCbx.Text;
-          DataModuleF.Bonv_comTable.FieldByName('montht_bvcom').AsCurrency:= StrToCurr(StringReplace(BonComTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
+          DataModuleF.Bonv_comTable.FieldByName('montht_bvcom').AsFloat:= StrToFloat(StringReplace(BonComTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
 
           if RemiseBonComGEdt.Text<>'' then
           begin
-             DataModuleF.Bonv_comTable.FieldByName('remise_bvcom').AsCurrency:=StrToCurr(StringReplace(RemiseBonComGEdt.Text, #32, '', [rfReplaceAll]));
+             DataModuleF.Bonv_comTable.FieldByName('remise_bvcom').AsFloat:=StrToFloat(StringReplace(RemiseBonComGEdt.Text, #32, '', [rfReplaceAll]));
           end else begin
-                    DataModuleF.Bonv_comTable.FieldByName('remise_bvcom').AsCurrency:=0;
+                    DataModuleF.Bonv_comTable.FieldByName('remise_bvcom').AsFloat:=0;
                    end;
 
 
-          DataModuleF.Bonv_comTable.FieldByName('montver_bvcom').AsCurrency:=StrToCurr(StringReplace(BonComRegleLbl.Caption, #32, '', [rfReplaceAll]));
-          DataModuleF.Bonv_comTable.FieldByName('montttc_bvcom').AsCurrency:=StrToCurr(StringReplace(BonComTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
+          DataModuleF.Bonv_comTable.FieldByName('montver_bvcom').AsFloat:=StrToFloat(StringReplace(BonComRegleLbl.Caption, #32, '', [rfReplaceAll]));
+          DataModuleF.Bonv_comTable.FieldByName('montttc_bvcom').AsFloat:=StrToFloat(StringReplace(BonComTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
 
           DataModuleF.Bonv_comTable.Post;
           DataModuleF.Bonv_comTable.EnableControls;
@@ -1497,7 +1497,7 @@ end;
 
 procedure TBonComVGestionF.ClientBonComGCbxExit(Sender: TObject);
 var CodeC: Integer;
-OLDCreditC,RegCCreditC,OLDCreditCINI : Currency;
+OLDCreditC,RegCCreditC,OLDCreditCINI : Double;
 begin
   if ClientBonComGCbx.Text <> '' then
     begin
@@ -1510,7 +1510,7 @@ begin
 
      if NOT (MainForm.SQLQuery.IsEmpty)   then
      begin
-      OLDCreditCINI:=MainForm.SQLQuery.FieldByName('credit_c').AsCurrency;
+      OLDCreditCINI:=MainForm.SQLQuery.FieldByName('credit_c').AsFloat;
 
       if MainForm.SQLQuery.FieldByName('activ_c').AsBoolean <> False then
       begin
@@ -1560,11 +1560,11 @@ begin
 //          if Tag = 0 then
 //           begin
 //           BonComGClientNEWCredit.Caption:=
-//           CurrToStrF((DataModuleF.Bonv_comTableCredit.FieldByName('MontantRes').AsCurrency ) + StrToCurr(StringReplace(BonComResteLbl.Caption, #32, '', [rfReplaceAll])),ffNumber,2);//  anyways i'm software developer
+//           CurrToStrF((DataModuleF.Bonv_comTableCredit.FieldByName('MontantRes').AsFloat ) + StrToFloat(StringReplace(BonComResteLbl.Caption, #32, '', [rfReplaceAll])),ffNumber,2);//  anyways i'm software developer
 //           end else
 //               begin
 //                BonComGClientNEWCredit.Caption:=
-//                CurrToStrF((DataModuleF.Bonv_comTableCredit.FieldByName('MontantRes').AsCurrency ) + StrToCurr(StringReplace(BonComTotalTTCLbl.Caption, #32, '', [rfReplaceAll])),ffNumber,2);//  anyways i'm software developer
+//                CurrToStrF((DataModuleF.Bonv_comTableCredit.FieldByName('MontantRes').AsFloat ) + StrToFloat(StringReplace(BonComTotalTTCLbl.Caption, #32, '', [rfReplaceAll])),ffNumber,2);//  anyways i'm software developer
 //
 //
 //               end;
@@ -2599,7 +2599,7 @@ ProduitBonComGCbx.SetFocus;
 end;
 
 procedure TBonComVGestionF.RemisePerctageBonComGEdtChange(Sender: TObject);
-var BonCVTotalHT,RemisePerctageBonCom,TotalTVANet,NewHT,NewTVA,NewTTC,Remise,OldTTC,OldClientCredit : Currency;
+var BonCVTotalHT,RemisePerctageBonCom,TotalTVANet,NewHT,NewTVA,NewTTC,Remise,OldTTC,OldClientCredit : Double;
 begin
 //------ this is to set the remise on tyhe prix HT ---------//
 
@@ -2804,7 +2804,7 @@ end;
 
 procedure TBonComVGestionF.RemiseBonComGEdtExit(Sender: TObject);
 var
-RemiseBonComG: Currency;
+RemiseBonComG: Double;
 begin
   if RemiseBonComGEdt.Text<>'' then
   begin
@@ -2826,7 +2826,7 @@ RemiseBonComGEdt.SelectAll;
 end;
 
 procedure TBonComVGestionF.RemiseBonComGEdtChange(Sender: TObject);
-var RemiseBonComG,BonCVTotalHT,BonCVTotalTVA,OLDTTC : Currency;
+var RemiseBonComG,BonCVTotalHT,BonCVTotalTVA,OLDTTC : Double;
 begin
 if RemiseBonComGEdt.Focused then
  begin
@@ -3166,7 +3166,7 @@ begin
       if  (MainForm.ClientTable.FieldByName('code_c').AsInteger <> 1) then
       begin
       MainForm.ClientTable.Edit;
-      MainForm.ClientTable.FieldByName('credit_c').AsCurrency:= (MainForm.ClientTable.FieldByName('credit_c').AsCurrency) - (DataModuleF.Bonv_comTable.FieldByName('MontantRes').AsCurrency);
+      MainForm.ClientTable.FieldByName('credit_c').AsFloat:= (MainForm.ClientTable.FieldByName('credit_c').AsFloat) - (DataModuleF.Bonv_comTable.FieldByName('MontantRes').AsFloat);
       MainForm.ClientTable.Post;
       end;
 

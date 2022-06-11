@@ -13,7 +13,6 @@ type
     NameAboutF: TLabel;
     Label1: TLabel;
     ImageCompanyOptionImg: TsImage;
-    sImage1: TsImage;
     Label2: TLabel;
     Label3: TLabel;
     Label4: TLabel;

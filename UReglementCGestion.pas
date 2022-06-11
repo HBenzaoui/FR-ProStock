@@ -442,7 +442,7 @@ end;
 
 procedure TReglementCGestionF.ClientRegCGCbxExit(Sender: TObject);
 var CodeC: Integer;
-OLDCreditC,RegCCreditC,OLDCreditCINI : Currency;
+OLDCreditC,RegCCreditC,OLDCreditCINI : Double;
 begin
 
   if ClientRegCGCbx.Text <> '' then
@@ -558,7 +558,7 @@ begin
 end;
 
 procedure TReglementCGestionF.VerRegCGEdtChange(Sender: TObject);
-var TOTAL,VER,ResteVersement : Currency;
+var TOTAL,VER,ResteVersement : Double;
 begin
     if VerRegCGEdt.Text<>'' then
      begin
@@ -593,13 +593,13 @@ end;
 
 procedure TReglementCGestionF.OKRegCGBtnClick(Sender: TObject);
 var CodeOCB,CodeF,CodeRF,CodeBR :Integer;
-    OLDCreditF : Currency;
+    OLDCreditF : Double;
 begin
   if ClientRegCGCbx.Text<>'' then
   begin
 
 
-    if (VerRegCGEdt.Text <> '' ) AND (VerRegCGEdt.Text <> '0' ) AND ((StrToCurr(StringReplace(VerRegCGEdt.Text, #32, '', [rfReplaceAll])))<> 0 ) then
+    if (VerRegCGEdt.Text <> '' ) AND (VerRegCGEdt.Text <> '0' ) AND ((StrToFloat(StringReplace(VerRegCGEdt.Text, #32, '', [rfReplaceAll])))<> 0 ) then
 
         begin
 
@@ -615,7 +615,7 @@ begin
           begin
           MainForm.SQLQuery.Edit;
           MainForm.SQLQuery.FieldByName('credit_c').AsCurrency:=  (MainForm.SQLQuery.FieldByName('credit_c').AsCurrency) -
-          ((StrToCurr(StringReplace(VerRegCGEdt.Text, #32, '', [rfReplaceAll]))));
+          ((StrToFloat(StringReplace(VerRegCGEdt.Text, #32, '', [rfReplaceAll]))));
           MainForm.SQLQuery.Post;
           end;
 
@@ -667,7 +667,7 @@ begin
           MainForm.SQLQuery3.FieldValues['bon_or_no_rc']:= 1;
 
 
-          MainForm.SQLQuery3.FieldByName('montver_rc').AsCurrency:=StrToCurr(StringReplace(VerRegCGEdt.Text, #32, '', [rfReplaceAll]));
+          MainForm.SQLQuery3.FieldByName('montver_rc').AsCurrency:=StrToFloat(StringReplace(VerRegCGEdt.Text, #32, '', [rfReplaceAll]));
 
 
           if (LowerCase(ReglementCGestionF.ModePaieRegCGCbx.Text)='espèce') OR (LowerCase(ReglementCGestionF.ModePaieRegCGCbx.Text)='espece') then
@@ -703,7 +703,7 @@ begin
                   MainForm.RegclientTable.FieldValues['bon_or_no_rc']:= 1;
 
 
-                  MainForm.RegclientTable.FieldByName('montver_rc').AsCurrency:=StrToCurr(StringReplace(VerRegCGEdt.Text, #32, '', [rfReplaceAll]));
+                  MainForm.RegclientTable.FieldByName('montver_rc').AsCurrency:=StrToFloat(StringReplace(VerRegCGEdt.Text, #32, '', [rfReplaceAll]));
 
 
                   if (LowerCase(ReglementCGestionF.ModePaieRegCGCbx.Text)='espèce') OR (LowerCase(ReglementCGestionF.ModePaieRegCGCbx.Text)='espece') then
@@ -730,7 +730,7 @@ begin
 
           MainForm.SQLQuery.Edit;
           MainForm.SQLQuery.FieldByName('credit_c').AsCurrency:=
-          ((StrToCurr(StringReplace(RegCGClientNEWCredit.Caption, #32, '', [rfReplaceAll]))));
+          ((StrToFloat(StringReplace(RegCGClientNEWCredit.Caption, #32, '', [rfReplaceAll]))));
           MainForm.SQLQuery.Post;
 
           MainForm.SQLQuery.Active:=false;
@@ -768,8 +768,8 @@ begin
                 MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
                 MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nom_ocb']:= 'Versement au Client Pièce N° '+ReglementCGestionF.NumRegCGEdt.Caption;
                 MainForm.Opt_cas_bnk_CaisseTable.FieldValues['third_ocb']:= ReglementCGestionF.ClientRegCGCbx.Text;
-                MainForm.Opt_cas_bnk_CaisseTable.FieldValues['encaiss_ocb']:= StrToCurr(StringReplace(VerRegCGEdt.Text, #32, '', [rfReplaceAll]));
-    //           MainForm.Opt_cas_bnk_CaisseTable.FieldValues['decaiss_ocb']:= StrToCurr(StringReplace(VerRegCGEdt.Text, #32, '', [rfReplaceAll]));
+                MainForm.Opt_cas_bnk_CaisseTable.FieldValues['encaiss_ocb']:= StrToFloat(StringReplace(VerRegCGEdt.Text, #32, '', [rfReplaceAll]));
+    //           MainForm.Opt_cas_bnk_CaisseTable.FieldValues['decaiss_ocb']:= StrToFloat(StringReplace(VerRegCGEdt.Text, #32, '', [rfReplaceAll]));
 
                  if (LowerCase(ReglementCGestionF.ModePaieRegCGCbx.Text)='espèce') OR (LowerCase(ReglementCGestionF.ModePaieRegCGCbx.Text)='espece') then
                 begin
@@ -817,8 +817,8 @@ begin
                 MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
                 MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nom_ocb']:= 'Versement au Client Pièce N° '+ReglementCGestionF.NumRegCGEdt.Caption;
                 MainForm.Opt_cas_bnk_CaisseTable.FieldValues['third_ocb']:= ReglementCGestionF.ClientRegCGCbx.Text;
-                MainForm.Opt_cas_bnk_CaisseTable.FieldValues['encaiss_ocb']:= StrToCurr(StringReplace(VerRegCGEdt.Text, #32, '', [rfReplaceAll]));
-    //           MainForm.Opt_cas_bnk_CaisseTable.FieldValues['decaiss_ocb']:= StrToCurr(StringReplace(VerRegCGEdt.Text, #32, '', [rfReplaceAll]));
+                MainForm.Opt_cas_bnk_CaisseTable.FieldValues['encaiss_ocb']:= StrToFloat(StringReplace(VerRegCGEdt.Text, #32, '', [rfReplaceAll]));
+    //           MainForm.Opt_cas_bnk_CaisseTable.FieldValues['decaiss_ocb']:= StrToFloat(StringReplace(VerRegCGEdt.Text, #32, '', [rfReplaceAll]));
 
                  if (LowerCase(ReglementCGestionF.ModePaieRegCGCbx.Text)='espèce') OR (LowerCase(ReglementCGestionF.ModePaieRegCGCbx.Text)='espece') then
                 begin

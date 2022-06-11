@@ -179,6 +179,9 @@ type
     TicketCaisse80frxRprt: TfrxReport;
     N3: TMenuItem;
     TicketCaisse80: TMenuItem;
+    S02: TPanel;
+    NSeriesProduitBonLivGBtn: TAdvToolButton;
+    S01: TPanel;
     procedure FormShow(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
@@ -384,7 +387,7 @@ begin
 
 procedure TBonLivGestionF.FormShow(Sender: TObject);
 var CodeBL: Integer;
-OLDCredit,NEWCredit : Currency;
+OLDCredit,NEWCredit : Double;
 begin
 
 
@@ -444,9 +447,9 @@ begin
 
       if NOT (MainForm.SQLQuery.IsEmpty) AND (MainForm.SQLQuery.FieldByName('code_c').AsInteger <> 1) then
      begin
-      OLDCredit:= (MainForm.SQLQuery.FieldByName('credit_c').AsCurrency);// - (MainForm.Bonv_livTable.FieldByName('MontantRes').AsCurrency) ;
+      OLDCredit:= (MainForm.SQLQuery.FieldByName('credit_c').AsFloat);// - (MainForm.Bonv_livTable.FieldByName('MontantRes').AsFloat) ;
 
-      NewCredit:=  MainForm.SQLQuery.FieldByName('credit_c').AsCurrency;
+      NewCredit:=  MainForm.SQLQuery.FieldByName('credit_c').AsFloat;
 
      BonLivGClientOLDCredit.Caption:= FloatToStrF(StrToFloat(StringReplace(CurrToStr( OLDCredit), #32, '', [rfReplaceAll])),ffNumber,14,2) ;
      BonLivGClientNEWCredit.Caption:= FloatToStrF(StrToFloat(StringReplace(CurrToStr( NewCredit), #32, '', [rfReplaceAll])),ffNumber,14,2) ;
@@ -629,19 +632,19 @@ codeBL:=MainForm.Bonv_livTable.FieldByName('code_bvliv').AsInteger;
           MainForm.Bonv_livTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
           MainForm.Bonv_livTable.FieldValues['obser_bvliv']:= ObserBonLivGMem.Text;
           MainForm.Bonv_livTable.FieldValues['num_cheque_bvliv']:= NChequeBonLivGCbx.Text;
-          MainForm.Bonv_livTable.FieldByName('montht_bvliv').AsCurrency:= StrToCurr(StringReplace(BonLivTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
-          MainForm.Bonv_livTable.FieldByName('montaht_bvliv').AsCurrency:= StrToCurr(StringReplace(BonLivTotalAHTLbl.Caption, #32, '', [rfReplaceAll]));
+          MainForm.Bonv_livTable.FieldByName('montht_bvliv').AsFloat:= StrToFloat(StringReplace(BonLivTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
+          MainForm.Bonv_livTable.FieldByName('montaht_bvliv').AsFloat:= StrToFloat(StringReplace(BonLivTotalAHTLbl.Caption, #32, '', [rfReplaceAll]));
 
           if RemiseBonLivGEdt.Text<>'' then
           begin
-             MainForm.Bonv_livTable.FieldByName('remise_bvliv').AsCurrency:=StrToCurr(StringReplace(RemiseBonLivGEdt.Text, #32, '', [rfReplaceAll]));
+             MainForm.Bonv_livTable.FieldByName('remise_bvliv').AsFloat:=StrToFloat(StringReplace(RemiseBonLivGEdt.Text, #32, '', [rfReplaceAll]));
           end else begin
-                    MainForm.Bonv_livTable.FieldByName('remise_bvliv').AsCurrency:=0;
+                    MainForm.Bonv_livTable.FieldByName('remise_bvliv').AsFloat:=0;
                    end;
 
 
-          MainForm.Bonv_livTable.FieldByName('montver_bvliv').AsCurrency:=StrToCurr(StringReplace(BonLivRegleLbl.Caption, #32, '', [rfReplaceAll]));
-          MainForm.Bonv_livTable.FieldByName('montttc_bvliv').AsCurrency:=StrToCurr(StringReplace(BonLivTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
+          MainForm.Bonv_livTable.FieldByName('montver_bvliv').AsFloat:=StrToFloat(StringReplace(BonLivRegleLbl.Caption, #32, '', [rfReplaceAll]));
+          MainForm.Bonv_livTable.FieldByName('montttc_bvliv').AsFloat:=StrToFloat(StringReplace(BonLivTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
 
           MainForm.Bonv_livTable.Post;
           MainForm.Bonv_livTable.EnableControls;
@@ -726,18 +729,18 @@ codeBL:=MainForm.Bonv_livTable.FieldByName('code_bvliv').AsInteger;
           MainForm.Bonv_livTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
           MainForm.Bonv_livTable.FieldValues['obser_bvliv']:= ObserBonLivGMem.Text;
           MainForm.Bonv_livTable.FieldValues['num_cheque_bvliv']:= NChequeBonLivGCbx.Text;
-          MainForm.Bonv_livTable.FieldByName('montht_bvliv').AsCurrency:= StrToCurr(StringReplace(BonLivTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
+          MainForm.Bonv_livTable.FieldByName('montht_bvliv').AsFloat:= StrToFloat(StringReplace(BonLivTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
 
           if RemiseBonLivGEdt.Text<>'' then
           begin
-             MainForm.Bonv_livTable.FieldByName('remise_bvliv').AsCurrency:=StrToCurr(StringReplace(RemiseBonLivGEdt.Text, #32, '', [rfReplaceAll]));
+             MainForm.Bonv_livTable.FieldByName('remise_bvliv').AsFloat:=StrToFloat(StringReplace(RemiseBonLivGEdt.Text, #32, '', [rfReplaceAll]));
           end else begin
-                    MainForm.Bonv_livTable.FieldByName('remise_bvliv').AsCurrency:=0;
+                    MainForm.Bonv_livTable.FieldByName('remise_bvliv').AsFloat:=0;
                    end;
 
 
-          MainForm.Bonv_livTable.FieldByName('montver_bvliv').AsCurrency:=StrToCurr(StringReplace(BonLivRegleLbl.Caption, #32, '', [rfReplaceAll]));
-          MainForm.Bonv_livTable.FieldByName('montttc_bvliv').AsCurrency:=StrToCurr(StringReplace(BonLivTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
+          MainForm.Bonv_livTable.FieldByName('montver_bvliv').AsFloat:=StrToFloat(StringReplace(BonLivRegleLbl.Caption, #32, '', [rfReplaceAll]));
+          MainForm.Bonv_livTable.FieldByName('montttc_bvliv').AsFloat:=StrToFloat(StringReplace(BonLivTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
 
           MainForm.Bonv_livTable.Post;
           MainForm.Bonv_livTable.EnableControls;
@@ -1514,7 +1517,7 @@ end;
 
 procedure TBonLivGestionF.ClientBonLivGCbxExit(Sender: TObject);
 var CodeC: Integer;
-OLDCreditC,RegCCreditC,OLDCreditCINI : Currency;
+OLDCreditC,RegCCreditC,OLDCreditCINI : Double;
 begin
   if ClientBonLivGCbx.Text <> '' then
     begin
@@ -1527,7 +1530,7 @@ begin
 
      if NOT (MainForm.SQLQuery.IsEmpty)   then
      begin
-      OLDCreditCINI:=MainForm.SQLQuery.FieldByName('credit_c').AsCurrency;
+      OLDCreditCINI:=MainForm.SQLQuery.FieldByName('credit_c').AsFloat;
 
       if MainForm.SQLQuery.FieldByName('activ_c').AsBoolean <> False then
       begin
@@ -1577,11 +1580,11 @@ begin
 //          if Tag = 0 then
 //           begin
 //           BonLivGClientNEWCredit.Caption:=
-//           CurrToStrF((MainForm.Bonv_livTableCredit.FieldByName('MontantRes').AsCurrency ) + StrToCurr(StringReplace(BonLivResteLbl.Caption, #32, '', [rfReplaceAll])),ffNumber,2);//  anyways i'm software developer
+//           CurrToStrF((MainForm.Bonv_livTableCredit.FieldByName('MontantRes').AsFloat ) + StrToFloat(StringReplace(BonLivResteLbl.Caption, #32, '', [rfReplaceAll])),ffNumber,2);//  anyways i'm software developer
 //           end else
 //               begin
 //                BonLivGClientNEWCredit.Caption:=
-//                CurrToStrF((MainForm.Bonv_livTableCredit.FieldByName('MontantRes').AsCurrency ) + StrToCurr(StringReplace(BonLivTotalTTCLbl.Caption, #32, '', [rfReplaceAll])),ffNumber,2);//  anyways i'm software developer
+//                CurrToStrF((MainForm.Bonv_livTableCredit.FieldByName('MontantRes').AsFloat ) + StrToFloat(StringReplace(BonLivTotalTTCLbl.Caption, #32, '', [rfReplaceAll])),ffNumber,2);//  anyways i'm software developer
 //
 //
 //               end;
@@ -2663,6 +2666,9 @@ procedure TBonLivGestionF.BonLivPListDataSDataChange(Sender: TObject;
 begin
   if NOT BonLivPListDataS.DataSet.IsEmpty then
   begin
+    NSeriesProduitBonLivGBtn.Visible:= True;
+    S01.Visible:= True;
+    S02.Visible:= True;
     DeleteProduitBonLivGBtn.Visible:= True;
     ClearProduitBonLivGBtn.Visible:= True;
 
@@ -2727,8 +2733,11 @@ begin
 
     end else
     begin
-    DeleteProduitBonLivGBtn.Visible:= False;
-    ClearProduitBonLivGBtn.Visible:= False;
+     NSeriesProduitBonLivGBtn.Visible:= False;
+     S01.Visible:= False;
+     S02.Visible:= False;
+     DeleteProduitBonLivGBtn.Visible:= False;
+     ClearProduitBonLivGBtn.Visible:= False;
      Timer1.Enabled:=False;
      Timer2.Enabled:=False;
 
@@ -2761,7 +2770,7 @@ ProduitBonLivGCbx.SetFocus;
 end;
 
 procedure TBonLivGestionF.RemisePerctageBonLivGEdtChange(Sender: TObject);
-var BonLTotalHT,RemisePerctageBonLiv,TotalTVANet,NewHT,NewTVA,NewTTC,Remise,OldTTC,OldClientCredit : Currency;
+var BonLTotalHT,RemisePerctageBonLiv,TotalTVANet,NewHT,NewTVA,NewTTC,Remise,OldTTC,OldClientCredit : Double;
 begin
 //------ this is to set the remise on tyhe prix HT ---------//
 
@@ -2966,7 +2975,7 @@ end;
 
 procedure TBonLivGestionF.RemiseBonLivGEdtExit(Sender: TObject);
 var
-RemiseBonLivG: Currency;
+RemiseBonLivG: Double;
 begin
   if RemiseBonLivGEdt.Text<>'' then
   begin
@@ -2988,7 +2997,7 @@ RemiseBonLivGEdt.SelectAll;
 end;
 
 procedure TBonLivGestionF.RemiseBonLivGEdtChange(Sender: TObject);
-var RemiseBonLivG,BonLTotalHT,BonLTotalTVA,OLDTTC : Currency;
+var RemiseBonLivG,BonLTotalHT,BonLTotalTVA,OLDTTC : Double;
 begin
 if RemiseBonLivGEdt.Focused then
  begin
@@ -3328,7 +3337,7 @@ begin
       if  (MainForm.ClientTable.FieldByName('code_c').AsInteger <> 1) then
       begin
       MainForm.ClientTable.Edit;
-      MainForm.ClientTable.FieldByName('credit_c').AsCurrency:= (MainForm.ClientTable.FieldByName('credit_c').AsCurrency) - (MainForm.Bonv_livTable.FieldByName('MontantRes').AsCurrency);
+      MainForm.ClientTable.FieldByName('credit_c').AsFloat:= (MainForm.ClientTable.FieldByName('credit_c').AsFloat) - (MainForm.Bonv_livTable.FieldByName('MontantRes').AsFloat);
       MainForm.ClientTable.Post;
       end;
 

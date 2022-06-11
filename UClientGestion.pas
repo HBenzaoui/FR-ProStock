@@ -133,7 +133,7 @@ type
     procedure addNewClient;
     function isClientExist(NameC: String): Boolean;
     function isFourExist(NameF: String): Boolean;
-    procedure editClient(OLDCredit: Currency);
+    procedure editClient(OLDCredit: Double);
     function isClientExistTwiceForEdit(NameC: String): Boolean;
     { Private declarations }
   public
@@ -213,7 +213,7 @@ end;
 // -------------- This procedure will make the edi rest to 0.00 when ceaning ------///
 procedure RestToZiro;
 var
-  RestToZiro: Currency;
+  RestToZiro: Double;
 begin
   RestToZiro := 000;
 
@@ -246,7 +246,7 @@ end;
 
 procedure TClientGestionF.OldCreditClientGEdtExit(Sender: TObject);
 var
-  OldCreditClient: Currency;
+  OldCreditClient: Double;
 begin
   if OldCreditClientGEdt.Text<>'' then
   begin
@@ -288,7 +288,7 @@ procedure TClientGestionF.PayClientFourGSliderChanging(Sender: TObject;
   var CanChange: Boolean);
 
 Var
-ClientCredit,FourCredit,CreditAfter : Currency;
+ClientCredit,FourCredit,CreditAfter : Double;
   
 begin
 
@@ -483,8 +483,8 @@ begin
           fieldbyname('rib_c').AsString := RIBClientGEdt.Text;
           if OldCreditClientGEdt.Text <> '' then
           begin
-            fieldbyname('oldcredit_c').Value := StrToCurr(StringReplace(OldCreditClientGEdt.Text, #32, '', [rfReplaceAll]));
-            fieldbyname('credit_c').Value := StrToCurr(StringReplace(OldCreditClientGEdt.Text, #32, '', [rfReplaceAll]));
+            fieldbyname('oldcredit_c').Value := StrToFloat(StringReplace(OldCreditClientGEdt.Text, #32, '', [rfReplaceAll]));
+            fieldbyname('credit_c').Value := StrToFloat(StringReplace(OldCreditClientGEdt.Text, #32, '', [rfReplaceAll]));
           end
           else
           begin
@@ -493,7 +493,7 @@ begin
           end;
           if MaxCreditClientGEdt.Text <> '' then
           begin
-            fieldbyname('maxcredit_c').Value := StrToCurr(StringReplace(MaxCreditClientGEdt.Text, #32, '', [rfReplaceAll]));
+            fieldbyname('maxcredit_c').Value := StrToFloat(StringReplace(MaxCreditClientGEdt.Text, #32, '', [rfReplaceAll]));
           end
           else
           begin
@@ -515,7 +515,7 @@ function TClientGestionF.isClientExist(NameC :String) : Boolean;
 var
 lookupResultNomC : Variant;
 begin
-   lookupResultNomC := MainForm.ClientTable.Lookup('LOWER(nom_c)',(LowerCase( NameC)),'nom_c');
+   lookupResultNomC := MainForm.ClientTable.Lookup(LowerCase('nom_c'),(LowerCase( NameC)),'nom_c');
      if  VarIsnull( lookupResultNomC) then
      begin
        Result := False;
@@ -532,7 +532,7 @@ function TClientGestionF.isFourExist(NameF :String) : Boolean;
 var
 lookupResultNomF : Variant;
 begin
-   lookupResultNomF := MainForm.FournisseurTable.Lookup('LOWER(nom_f)',(LowerCase( NameF)),'nom_f');
+   lookupResultNomF := MainForm.FournisseurTable.Lookup(LowerCase('nom_f'),(LowerCase( NameF)),'nom_f');
      if  VarIsnull( lookupResultNomF) then
      begin
        Result := False;
@@ -558,7 +558,7 @@ begin
    MainForm.SQLQuery.SQL.Text:= 'SELECT * FROM client WHERE code_c <> '+IntToStr(CodeCEdit);
    MainForm.SQLQuery.Active:= True;
 
-    lookupResultNomC := MainForm.SQLQuery.Lookup('LOWER(nom_c)',(LowerCase( NameC)),'nom_c');
+    lookupResultNomC := MainForm.SQLQuery.Lookup(LowerCase('nom_c'),(LowerCase( NameC)),'nom_c');
      if  VarIsnull( lookupResultNomC) then
      begin
        Result := False;
@@ -573,7 +573,7 @@ begin
 end;
 
 
-procedure TClientGestionF.editClient(OLDCredit: Currency);
+procedure TClientGestionF.editClient(OLDCredit: Double);
 
 begin
 
@@ -601,17 +601,17 @@ begin
       fieldbyname('rib_c').AsString := RIBClientGEdt.Text;
       if OldCreditClientGEdt.Text <> '' then
       begin
-        fieldbyname('oldcredit_c').Value := StrToCurr(StringReplace(OldCreditClientGEdt.Text, #32, '', [rfReplaceAll]));
-        fieldbyname('credit_c').Value := (fieldbyname('credit_c').Value - OLDCredit)+ StrToCurr(StringReplace(OldCreditClientGEdt.Text, #32, '', [rfReplaceAll]));
+        fieldbyname('oldcredit_c').Value := StrToFloat(StringReplace(OldCreditClientGEdt.Text, #32, '', [rfReplaceAll]));
+        fieldbyname('credit_c').Value := (fieldbyname('credit_c').Value - OLDCredit)+ StrToFloat(StringReplace(OldCreditClientGEdt.Text, #32, '', [rfReplaceAll]));
       end
       else
       begin
         fieldbyname('oldcredit_c').Value := StrToInt('0');
-        fieldbyname('credit_c').Value := (fieldbyname('credit_c').Value - OLDCredit)+ StrToCurr('0');
+        fieldbyname('credit_c').Value := (fieldbyname('credit_c').Value - OLDCredit)+ StrToFloat('0');
       end;
       if MaxCreditClientGEdt.Text <> '' then
       begin
-        fieldbyname('maxcredit_c').Value := StrToCurr(StringReplace(MaxCreditClientGEdt.Text, #32, '', [rfReplaceAll]));
+        fieldbyname('maxcredit_c').Value := StrToFloat(StringReplace(MaxCreditClientGEdt.Text, #32, '', [rfReplaceAll]));
       end
       else
       begin
@@ -1307,7 +1307,7 @@ end;
 
 procedure TClientGestionF.MaxCreditClientGEdtExit(Sender: TObject);
 var
-  MaxCredit: Currency;
+  MaxCredit: Double;
 begin
   if MaxCreditClientGEdt.Text<>'' then
   begin
@@ -1487,7 +1487,7 @@ codeF: Integer;
 lookupResultNomF : Variant;
 begin
 
-  lookupResultNomF := MainForm.FournisseurTable.Lookup('LOWER(nom_f)',(LowerCase( NameF)),'nom_f');
+  lookupResultNomF := MainForm.FournisseurTable.Lookup(LowerCase('nom_f'),(LowerCase( NameF)),'nom_f');
  if  VarIsnull( lookupResultNomF) then
  begin
 

@@ -158,7 +158,7 @@ Close;
 end;
 
 procedure TTransferComptesGestionF.CompteDisTransfeGCbxChange(Sender: TObject);
-Var TotalEncaiss,TotalDecaiss,OLDSold,TotalSoldComptEnc,TotalSoldComptDic,SOLDTransfer : Currency;
+Var TotalEncaiss,TotalDecaiss,OLDSold,TotalSoldComptEnc,TotalSoldComptDic,SOLDTransfer : Double;
 CodeC : Integer;
 begin
 
@@ -278,7 +278,7 @@ end;
 
 procedure TTransferComptesGestionF.CompteSourceTransfeGCbxChange(
   Sender: TObject);
-Var TotalEncaiss,TotalDecaiss,OLDSold,TotalSoldComptEnc,TotalSoldComptDic : Currency;
+Var TotalEncaiss,TotalDecaiss,OLDSold,TotalSoldComptEnc,TotalSoldComptDic : Double;
 CodeC : Integer;
 begin
 
@@ -405,7 +405,7 @@ begin
 end;
 
 procedure TTransferComptesGestionF.TranferTransferEdtChange(Sender: TObject);
-var TOTAL,VER,ResteVersement : Currency;
+var TOTAL,VER,ResteVersement : Double;
 begin
    if TranferTransferEdt.Focused then
    begin
@@ -463,7 +463,7 @@ end;
 
 procedure TTransferComptesGestionF.TranferTransferEdtExit(Sender: TObject);
 var
-SoldeCompte: Currency;
+SoldeCompte: Double;
 begin
   if TranferTransferEdt.Text<>'' then
   begin
@@ -499,7 +499,7 @@ begin
 end;
 
 procedure TTransferComptesGestionF.RestTransferEdtChange(Sender: TObject);
-var TOTAL,VER,ResteVersement : Currency;
+var TOTAL,VER,ResteVersement : Double;
 begin
    if RestTransferEdt.Focused then
    begin
@@ -548,7 +548,7 @@ end;
 
 procedure TTransferComptesGestionF.RestTransferEdtExit(Sender: TObject);
 var
-SoldeCompte: Currency;
+SoldeCompte: Double;
 begin
   if RestTransferEdt.Text<>'' then
   begin
@@ -675,10 +675,10 @@ begin
   if CompteSourceTransfeGCbx.Text<>'' then
   begin
 
-      if (TranferTransferEdt.Text<>'') AND ((StrToCurr(StringReplace(TranferTransferEdt.Text, #32, '', [rfReplaceAll])))<> 0 )  then
+      if (TranferTransferEdt.Text<>'') AND ((StrToFloat(StringReplace(TranferTransferEdt.Text, #32, '', [rfReplaceAll])))<> 0 )  then
     begin
 
-//     if (RestTransferEdt.Text<>'') AND ((StrToCurr(StringReplace(RestTransferEdt.Text, #32, '', [rfReplaceAll])))<> 0 ) then
+//     if (RestTransferEdt.Text<>'') AND ((StrToFloat(StringReplace(RestTransferEdt.Text, #32, '', [rfReplaceAll])))<> 0 ) then
 //     begin
 
       if CompteDisTransfeGCbx.Text<>'' then
@@ -748,7 +748,7 @@ begin
 
                       if TranferTransferEdt.Text<>'' then
                       begin
-                      FieldByName('mont_transfer').AsCurrency:=StrToCurr(StringReplace(TranferTransferEdt.Text, #32, '', [rfReplaceAll]));
+                      FieldByName('mont_transfer').AsCurrency:=StrToFloat(StringReplace(TranferTransferEdt.Text, #32, '', [rfReplaceAll]));
                       end else begin FieldValues['montht_transfer']:=  StrToInt('0')  end;
 
 
@@ -793,8 +793,8 @@ begin
                 MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
                 MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nom_ocb']:= 'Transférer depuis le compte '+CompteSourceTransfeGCbx.Text;
                 MainForm.Opt_cas_bnk_CaisseTable.FieldValues['third_ocb']:= MainForm.UserNameLbl.Caption;;
-//                MainForm.Opt_cas_bnk_CaisseTable.FieldValues['encaiss_ocb']:= StrToCurr(StringReplace(VerRegCGEdt.Text, #32, '', [rfReplaceAll]));
-                MainForm.Opt_cas_bnk_CaisseTable.FieldValues['decaiss_ocb']:= StrToCurr(StringReplace(TranferTransferEdt.Text, #32, '', [rfReplaceAll]));
+//                MainForm.Opt_cas_bnk_CaisseTable.FieldValues['encaiss_ocb']:= StrToFloat(StringReplace(VerRegCGEdt.Text, #32, '', [rfReplaceAll]));
+                MainForm.Opt_cas_bnk_CaisseTable.FieldValues['decaiss_ocb']:= StrToFloat(StringReplace(TranferTransferEdt.Text, #32, '', [rfReplaceAll]));
 
                  if (LowerCase(ModePaieTransferGCbx.Text)='espèce') OR (LowerCase(ModePaieTransferGCbx.Text)='espece') then
                 begin
@@ -838,8 +838,8 @@ begin
                 MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
                 MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nom_ocb']:= 'Transférer vers le compte '+CompteDisTransfeGCbx.Text;
                 MainForm.Opt_cas_bnk_CaisseTable.FieldValues['third_ocb']:= MainForm.UserNameLbl.Caption;;
-                MainForm.Opt_cas_bnk_CaisseTable.FieldValues['encaiss_ocb']:= StrToCurr(StringReplace(TranferTransferEdt.Text, #32, '', [rfReplaceAll]));
-//                MainForm.Opt_cas_bnk_CaisseTable.FieldValues['decaiss_ocb']:= StrToCurr(StringReplace(TranferTransferEdt.Text, #32, '', [rfReplaceAll]));
+                MainForm.Opt_cas_bnk_CaisseTable.FieldValues['encaiss_ocb']:= StrToFloat(StringReplace(TranferTransferEdt.Text, #32, '', [rfReplaceAll]));
+//                MainForm.Opt_cas_bnk_CaisseTable.FieldValues['decaiss_ocb']:= StrToFloat(StringReplace(TranferTransferEdt.Text, #32, '', [rfReplaceAll]));
 
                  if (LowerCase(ModePaieTransferGCbx.Text)='espèce') OR (LowerCase(ModePaieTransferGCbx.Text)='espece') then
                 begin
@@ -911,7 +911,7 @@ begin
 
                       if TranferTransferEdt.Text<>'' then
                       begin
-                      FieldByName('mont_transfer').AsCurrency:=StrToCurr(StringReplace(TranferTransferEdt.Text, #32, '', [rfReplaceAll]));
+                      FieldByName('mont_transfer').AsCurrency:=StrToFloat(StringReplace(TranferTransferEdt.Text, #32, '', [rfReplaceAll]));
                       end else begin FieldValues['montht_transfer']:=  StrToInt('0')  end;
 
 
@@ -955,8 +955,8 @@ begin
                 MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
                 MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nom_ocb']:= 'Transférer depuis le compte '+CompteSourceTransfeGCbx.Text;
                 MainForm.Opt_cas_bnk_CaisseTable.FieldValues['third_ocb']:= MainForm.UserNameLbl.Caption;;
-//                MainForm.Opt_cas_bnk_CaisseTable.FieldValues['encaiss_ocb']:= StrToCurr(StringReplace(VerRegCGEdt.Text, #32, '', [rfReplaceAll]));
-                MainForm.Opt_cas_bnk_CaisseTable.FieldValues['decaiss_ocb']:= StrToCurr(StringReplace(TranferTransferEdt.Text, #32, '', [rfReplaceAll]));
+//                MainForm.Opt_cas_bnk_CaisseTable.FieldValues['encaiss_ocb']:= StrToFloat(StringReplace(VerRegCGEdt.Text, #32, '', [rfReplaceAll]));
+                MainForm.Opt_cas_bnk_CaisseTable.FieldValues['decaiss_ocb']:= StrToFloat(StringReplace(TranferTransferEdt.Text, #32, '', [rfReplaceAll]));
 
                  if (LowerCase(ModePaieTransferGCbx.Text)='espèce') OR (LowerCase(ModePaieTransferGCbx.Text)='espece') then
                 begin
@@ -999,8 +999,8 @@ begin
                 MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
                 MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nom_ocb']:= 'Transférer vers le compte '+CompteDisTransfeGCbx.Text;
                 MainForm.Opt_cas_bnk_CaisseTable.FieldValues['third_ocb']:= MainForm.UserNameLbl.Caption;;
-                MainForm.Opt_cas_bnk_CaisseTable.FieldValues['encaiss_ocb']:= StrToCurr(StringReplace(TranferTransferEdt.Text, #32, '', [rfReplaceAll]));
-//                MainForm.Opt_cas_bnk_CaisseTable.FieldValues['decaiss_ocb']:= StrToCurr(StringReplace(TranferTransferEdt.Text, #32, '', [rfReplaceAll]));
+                MainForm.Opt_cas_bnk_CaisseTable.FieldValues['encaiss_ocb']:= StrToFloat(StringReplace(TranferTransferEdt.Text, #32, '', [rfReplaceAll]));
+//                MainForm.Opt_cas_bnk_CaisseTable.FieldValues['decaiss_ocb']:= StrToFloat(StringReplace(TranferTransferEdt.Text, #32, '', [rfReplaceAll]));
 
                  if (LowerCase(ModePaieTransferGCbx.Text)='espèce') OR (LowerCase(ModePaieTransferGCbx.Text)='espece') then
                 begin

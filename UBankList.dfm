@@ -345,7 +345,7 @@ object BankListF: TBankListF
     object PeriodBankListLbl: TLabel
       Left = 390
       Top = 27
-      Width = 54
+      Width = 53
       Height = 17
       Caption = 'P'#233'riode:'
       Color = 15722984
@@ -393,7 +393,7 @@ object BankListF: TBankListF
     object Label3: TLabel
       Left = 12
       Top = 27
-      Width = 163
+      Width = 161
       Height = 17
       Caption = 'Les Comptes Bancaires:'
       Color = 15722984
@@ -411,12 +411,11 @@ object BankListF: TBankListF
       Top = 21
       Width = 25
       Height = 25
+      ImageIndex = 0
+      Images = MainForm.PanelIcons24
       ParentShowHint = False
       ShowHint = True
       OnClick = FisrtBankbtnClick
-      SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
-      ImageIndex = 0
       ShowCaption = False
     end
     object PreviosBankbtn: TsSpeedButton
@@ -424,24 +423,22 @@ object BankListF: TBankListF
       Top = 21
       Width = 25
       Height = 25
+      ImageIndex = 1
+      Images = MainForm.PanelIcons24
       ParentShowHint = False
       ShowHint = True
       OnClick = PreviosBankbtnClick
-      SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
-      ImageIndex = 1
     end
     object NextBankbtn: TsSpeedButton
       Left = 834
       Top = 21
       Width = 25
       Height = 25
+      ImageIndex = 2
+      Images = MainForm.PanelIcons24
       ParentShowHint = False
       ShowHint = True
       OnClick = NextBankbtnClick
-      SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
-      ImageIndex = 2
       ShowCaption = False
     end
     object LastBBankbtn: TsSpeedButton
@@ -449,12 +446,11 @@ object BankListF: TBankListF
       Top = 21
       Width = 25
       Height = 25
+      ImageIndex = 3
+      Images = MainForm.PanelIcons24
       ParentShowHint = False
       ShowHint = True
       OnClick = LastBBankbtnClick
-      SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
-      ImageIndex = 3
     end
     object FilterBVLivBtn: TAdvToolButton
       Left = 894
@@ -487,7 +483,7 @@ object BankListF: TBankListF
       Shaded = False
       ShowHint = True
       Spacing = -1
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object sImage1: TsImage
@@ -1102,7 +1098,7 @@ object BankListF: TBankListF
     object Label4: TLabel
       Left = 9
       Top = 5
-      Width = 83
+      Width = 82
       Height = 17
       Caption = 'Solde Initial :'
       Color = clWhite
@@ -1140,7 +1136,7 @@ object BankListF: TBankListF
     object Label5: TLabel
       Left = 326
       Top = 5
-      Width = 136
+      Width = 132
       Height = 17
       Caption = 'Solde de la p'#233'riode :'
       Color = clWhite
@@ -1208,7 +1204,7 @@ object BankListF: TBankListF
     object Label6: TLabel
       Left = 717
       Top = 5
-      Width = 46
+      Width = 45
       Height = 17
       Anchors = [akTop, akRight]
       Caption = 'Solde :'
@@ -1277,7 +1273,7 @@ object BankListF: TBankListF
       ShowHint = True
       Spacing = -2
       OnClick = PaidOnlyCaisseBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object RefreshGirdBtn: TAdvToolButton
@@ -1311,7 +1307,7 @@ object BankListF: TBankListF
       ShowHint = True
       Spacing = -2
       OnClick = RefreshGirdBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object AdvToolButton1: TAdvToolButton
@@ -1345,7 +1341,7 @@ object BankListF: TBankListF
       ShowHint = True
       Spacing = -2
       OnClick = AdvToolButton1Click
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object AdvToolButton2: TAdvToolButton
@@ -1379,7 +1375,7 @@ object BankListF: TBankListF
       ShowHint = True
       Spacing = -2
       OnClick = AdvToolButton2Click
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object AdvToolButton3: TAdvToolButton
@@ -1413,7 +1409,7 @@ object BankListF: TBankListF
       ShowHint = True
       Spacing = -2
       OnClick = AdvToolButton3Click
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object Panel8: TPanel
@@ -1531,6 +1527,7 @@ object BankListF: TBankListF
     OverwritePrompt = True
     DataOnly = False
     EmbeddedFonts = True
+    InteractiveFormsFontSubset = 'A-Z,a-z,0-9,#43-#47 '
     OpenAfterExport = True
     PrintOptimized = False
     Outline = False
@@ -1554,7 +1551,7 @@ object BankListF: TBankListF
     Top = 480
   end
   object BAnkListfrxRprt: TfrxReport
-    Version = '6.3.12'
+    Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -1641,6 +1638,12 @@ object BankListF: TBankListF
       Width = 1000.000000000000000000
     end
     object Page1: TfrxReportPage
+      HGuides.Strings = (
+        '113,3859')
+      VGuides.Strings = (
+        '309,92146'
+        '351,49629'
+        '593,38621')
       Orientation = poLandscape
       PaperWidth = 297.000000000000000000
       PaperHeight = 210.000000000000000000
@@ -1651,12 +1654,6 @@ object BankListF: TBankListF
       BottomMargin = 10.000000000000000000
       Frame.Typ = []
       MirrorMode = []
-      HGuides.Strings = (
-        '113,3859')
-      VGuides.Strings = (
-        '309,92146'
-        '351,49629'
-        '593,38621')
       object PageHeader1: TfrxPageHeader
         FillType = ftBrush
         Frame.Typ = []

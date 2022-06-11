@@ -489,22 +489,22 @@ CodeFA := MainForm.Bona_facTable.FieldByName('code_bafac').AsInteger;
           MainForm.Bona_facTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
           MainForm.Bona_facTable.FieldValues['obser_bafac']:= ObserBonFacAGMem.Text;
           MainForm.Bona_facTable.FieldValues['num_cheque_bafac']:= NChequeBonFacAGCbx.Text;
-          MainForm.Bona_facTable.FieldByName('montht_bafac').AsCurrency:= StrToCurr(StringReplace(BonFacATotalHTLbl.Caption, #32, '', [rfReplaceAll]));
+          MainForm.Bona_facTable.FieldByName('montht_bafac').AsFloat:= StrToFloat(StringReplace(BonFacATotalHTLbl.Caption, #32, '', [rfReplaceAll]));
 
           if RemiseBonFacAGEdt.Text<>'' then
           begin
-             MainForm.Bona_facTable.FieldByName('remise_bafac').AsCurrency:=StrToCurr(StringReplace(RemiseBonFacAGEdt.Text, #32, '', [rfReplaceAll]));
+             MainForm.Bona_facTable.FieldByName('remise_bafac').AsFloat:=StrToFloat(StringReplace(RemiseBonFacAGEdt.Text, #32, '', [rfReplaceAll]));
           end else begin
-                    MainForm.Bona_facTable.FieldByName('remise_bafac').AsCurrency:=0;
+                    MainForm.Bona_facTable.FieldByName('remise_bafac').AsFloat:=0;
                    end;
 
 
-          MainForm.Bona_facTable.FieldByName('montver_bafac').AsCurrency:=StrToCurr(StringReplace(BonFacARegleLbl.Caption, #32, '', [rfReplaceAll]));
-          MainForm.Bona_facTable.FieldByName('montttc_bafac').AsCurrency:=StrToCurr(StringReplace(BonFacATotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
+          MainForm.Bona_facTable.FieldByName('montver_bafac').AsFloat:=StrToFloat(StringReplace(BonFacARegleLbl.Caption, #32, '', [rfReplaceAll]));
+          MainForm.Bona_facTable.FieldByName('montttc_bafac').AsFloat:=StrToFloat(StringReplace(BonFacATotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
 
           if (TimberBonFacAGEdt.Visible = True) AND (TimberBonFacAGEdt.Text <> '') then
           begin
-          MainForm.Bona_facTable.FieldByName('timber_bafac').AsCurrency:=StrToCurr(StringReplace(TimberBonFacAGEdt.Text, #32, '', [rfReplaceAll]));
+          MainForm.Bona_facTable.FieldByName('timber_bafac').AsFloat:=StrToFloat(StringReplace(TimberBonFacAGEdt.Text, #32, '', [rfReplaceAll]));
           end;
 
           MainForm.Bona_facTable.Post;
@@ -590,22 +590,22 @@ CodeFA := MainForm.Bona_facTable.FieldByName('code_bafac').AsInteger;
           MainForm.Bona_facTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
           MainForm.Bona_facTable.FieldValues['obser_bafac']:= ObserBonFacAGMem.Text;
           MainForm.Bona_facTable.FieldValues['num_cheque_bafac']:= NChequeBonFacAGCbx.Text;
-          MainForm.Bona_facTable.FieldByName('montht_bafac').AsCurrency:= StrToCurr(StringReplace(BonFacATotalHTLbl.Caption, #32, '', [rfReplaceAll]));
+          MainForm.Bona_facTable.FieldByName('montht_bafac').AsFloat:= StrToFloat(StringReplace(BonFacATotalHTLbl.Caption, #32, '', [rfReplaceAll]));
 
           if RemiseBonFacAGEdt.Text<>'' then
           begin
-             MainForm.Bona_facTable.FieldByName('remise_bafac').AsCurrency:=StrToCurr(StringReplace(RemiseBonFacAGEdt.Text, #32, '', [rfReplaceAll]));
+             MainForm.Bona_facTable.FieldByName('remise_bafac').AsFloat:=StrToFloat(StringReplace(RemiseBonFacAGEdt.Text, #32, '', [rfReplaceAll]));
           end else begin
-                    MainForm.Bona_facTable.FieldByName('remise_bafac').AsCurrency:=0;
+                    MainForm.Bona_facTable.FieldByName('remise_bafac').AsFloat:=0;
                    end;
 
 
-          MainForm.Bona_facTable.FieldByName('montver_bafac').AsCurrency:=StrToCurr(StringReplace(BonFacARegleLbl.Caption, #32, '', [rfReplaceAll]));
-          MainForm.Bona_facTable.FieldByName('montttc_bafac').AsCurrency:=StrToCurr(StringReplace(BonFacATotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
+          MainForm.Bona_facTable.FieldByName('montver_bafac').AsFloat:=StrToFloat(StringReplace(BonFacARegleLbl.Caption, #32, '', [rfReplaceAll]));
+          MainForm.Bona_facTable.FieldByName('montttc_bafac').AsFloat:=StrToFloat(StringReplace(BonFacATotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
 
           if (TimberBonFacAGEdt.Visible = True) AND (TimberBonFacAGEdt.Text <> '') then
           begin
-          MainForm.Bona_facTable.FieldByName('timber_bafac').AsCurrency:=StrToCurr(StringReplace(TimberBonFacAGEdt.Text, #32, '', [rfReplaceAll]));
+          MainForm.Bona_facTable.FieldByName('timber_bafac').AsFloat:=StrToFloat(StringReplace(TimberBonFacAGEdt.Text, #32, '', [rfReplaceAll]));
           end;
 
           MainForm.Bona_facTable.Post;
@@ -647,7 +647,7 @@ end;
 
 procedure TBonFacAGestionF.FormShow(Sender: TObject);
 var CodeFA: Integer;
-OLDCredit,NEWCredit : Currency;
+OLDCredit,NEWCredit : Double;
 begin
 
 // use this tage when i click AddBVFacBonRecGBtn bon button
@@ -702,9 +702,9 @@ AND (MainForm.Bona_facTable.FieldByName('code_f').AsInteger <> 0)  then
 
       if NOT (MainForm.SQLQuery.IsEmpty) then
      begin
-      OLDCredit:= (MainForm.SQLQuery.FieldByName('credit_f').AsCurrency);//  - (MainForm.Bona_facTable.FieldByName('MontantRes').AsCurrency) ;
+      OLDCredit:= (MainForm.SQLQuery.FieldByName('credit_f').AsFloat);//  - (MainForm.Bona_facTable.FieldByName('MontantRes').AsFloat) ;
 
-      NewCredit:=  MainForm.SQLQuery.FieldByName('credit_f').AsCurrency;
+      NewCredit:=  MainForm.SQLQuery.FieldByName('credit_f').AsFloat;
 
      BonFacAGFourOLDCredit.Caption:= FloatToStrF(StrToFloat(StringReplace(CurrToStr( OLDCredit), #32, '', [rfReplaceAll])),ffNumber,14,2) ;
      BonFacAGFourNEWCredit.Caption:= FloatToStrF(StrToFloat(StringReplace(CurrToStr( NewCredit), #32, '', [rfReplaceAll])),ffNumber,14,2) ;
@@ -1191,11 +1191,11 @@ begin
                                                          + ((MainForm.SQLQuery.FieldValues['qut_p']) * ((MainForm.SQLQuery.FieldValues['cond_p']))));
             MainForm.SQLQuery3.FieldValues['prixht_p']:= MainForm.SQLQuery.FieldValues['prixht_p'];
             MainForm.SQLQuery3.FieldValues['tva_p']:= MainForm.SQLQuery.FieldValues['tva_p'];
-            MainForm.SQLQuery3.FieldByName('prixvd_p').AsCurrency:=  MainForm.SQLQuery.FieldByName('prixvd_p').AsCurrency;
-            MainForm.SQLQuery3.FieldByName('prixvr_p').AsCurrency:=  MainForm.SQLQuery.FieldByName('prixvr_p').AsCurrency;
-            MainForm.SQLQuery3.FieldByName('prixvg_p').AsCurrency:=  MainForm.SQLQuery.FieldByName('prixvg_p').AsCurrency;
-            MainForm.SQLQuery3.FieldByName('prixva_p').AsCurrency:=  MainForm.SQLQuery.FieldByName('prixva_p').AsCurrency;
-            MainForm.SQLQuery3.FieldByName('prixva2_p').AsCurrency:= MainForm.SQLQuery.FieldByName('prixva2_p').AsCurrency;
+            MainForm.SQLQuery3.FieldByName('prixvd_p').AsFloat:=  MainForm.SQLQuery.FieldByName('prixvd_p').AsFloat;
+            MainForm.SQLQuery3.FieldByName('prixvr_p').AsFloat:=  MainForm.SQLQuery.FieldByName('prixvr_p').AsFloat;
+            MainForm.SQLQuery3.FieldByName('prixvg_p').AsFloat:=  MainForm.SQLQuery.FieldByName('prixvg_p').AsFloat;
+            MainForm.SQLQuery3.FieldByName('prixva_p').AsFloat:=  MainForm.SQLQuery.FieldByName('prixva_p').AsFloat;
+            MainForm.SQLQuery3.FieldByName('prixva2_p').AsFloat:= MainForm.SQLQuery.FieldByName('prixva2_p').AsFloat;
             MainForm.SQLQuery3.Post;
 
              MainForm.SQLQuery.Edit;   
@@ -1244,22 +1244,22 @@ begin
           MainForm.Bona_facTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
           MainForm.Bona_facTable.FieldValues['obser_bafac']:= ObserBonFacAGMem.Text;
           MainForm.Bona_facTable.FieldValues['num_cheque_bafac']:= NChequeBonFacAGCbx.Text;
-          MainForm.Bona_facTable.FieldByName('montht_bafac').AsCurrency:= StrToCurr(StringReplace(BonFacATotalHTLbl.Caption, #32, '', [rfReplaceAll]));
+          MainForm.Bona_facTable.FieldByName('montht_bafac').AsFloat:= StrToFloat(StringReplace(BonFacATotalHTLbl.Caption, #32, '', [rfReplaceAll]));
 
           if TimberBonFacaGEdt.Visible = True then
           begin
-          MainForm.Bona_facTable.FieldByName('timber_bafac').AsCurrency:= StrToCurr(StringReplace(TimberBonFacaGEdt.Text, #32, '', [rfReplaceAll]));
+          MainForm.Bona_facTable.FieldByName('timber_bafac').AsFloat:= StrToFloat(StringReplace(TimberBonFacaGEdt.Text, #32, '', [rfReplaceAll]));
           end;
 
           if RemiseBonFacAGEdt.Text<>'' then
           begin
-          MainForm.Bona_facTable.FieldByName('remise_bafac').AsCurrency:=StrToCurr(StringReplace(RemiseBonFacAGEdt.Text, #32, '', [rfReplaceAll]));
+          MainForm.Bona_facTable.FieldByName('remise_bafac').AsFloat:=StrToFloat(StringReplace(RemiseBonFacAGEdt.Text, #32, '', [rfReplaceAll]));
           end else begin
-                    MainForm.Bona_facTable.FieldByName('remise_bafac').AsCurrency:=0;
+                    MainForm.Bona_facTable.FieldByName('remise_bafac').AsFloat:=0;
                    end;
 
-          MainForm.Bona_facTable.FieldByName('montver_bafac').AsCurrency:=StrToCurr(StringReplace(BonFacATotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
-          MainForm.Bona_facTable.FieldByName('montttc_bafac').AsCurrency:=StrToCurr(StringReplace(BonFacATotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
+          MainForm.Bona_facTable.FieldByName('montver_bafac').AsFloat:=StrToFloat(StringReplace(BonFacATotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
+          MainForm.Bona_facTable.FieldByName('montttc_bafac').AsFloat:=StrToFloat(StringReplace(BonFacATotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
           MainForm.Bona_facTable.FieldByName('valider_bafac').AsBoolean:= True;
 
           if (LowerCase(ModePaieBonFacAGCbx.Text)='espèce') OR (LowerCase(ModePaieBonFacAGCbx.Text)='espece') then
@@ -1282,7 +1282,7 @@ begin
 
           MainForm.Bona_facTable.Post;
 
-       //if (VerVersementSEdt.Text <> '' ) AND (VerVersementSEdt.Text <> '0' ) AND ((StrToCurr(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll])))<> 0 ) then
+       //if (VerVersementSEdt.Text <> '' ) AND (VerVersementSEdt.Text <> '0' ) AND ((StrToFloat(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll])))<> 0 ) then
 
         begin
 
@@ -1313,7 +1313,7 @@ begin
             MainForm.RegfournisseurTable.FieldValues['bon_or_no_rf']:= 3;
             MainForm.RegfournisseurTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
 
-            MainForm.RegfournisseurTable.FieldByName('montver_rf').AsCurrency:=StrToCurr(StringReplace(BonFacATotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
+            MainForm.RegfournisseurTable.FieldByName('montver_rf').AsFloat:=StrToFloat(StringReplace(BonFacATotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
 
             if (LowerCase(ModePaieBonFacAGCbx.Text)='espèce') OR (LowerCase(ModePaieBonFacAGCbx.Text)='espece') then
             begin
@@ -1360,7 +1360,7 @@ begin
                   MainForm.RegfournisseurTable.FieldValues['bon_or_no_rf']:= 3;
                   MainForm.RegfournisseurTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
 
-                  MainForm.RegfournisseurTable.FieldByName('montver_rf').AsCurrency:=StrToCurr(StringReplace(BonFacATotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
+                  MainForm.RegfournisseurTable.FieldByName('montver_rf').AsFloat:=StrToFloat(StringReplace(BonFacATotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
 
                   if (LowerCase(ModePaieBonFacAGCbx.Text)='espèce') OR (LowerCase(ModePaieBonFacAGCbx.Text)='espece') then
                   begin
@@ -1410,7 +1410,7 @@ begin
                       MainForm.RegfournisseurTable.FieldValues['bon_or_no_rf']:= 3;
                       MainForm.RegfournisseurTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
 
-                      MainForm.RegfournisseurTable.FieldByName('montver_rf').AsCurrency:=StrToCurr(StringReplace(BonFacATotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
+                      MainForm.RegfournisseurTable.FieldByName('montver_rf').AsFloat:=StrToFloat(StringReplace(BonFacATotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
 
                       if (LowerCase(ModePaieBonFacAGCbx.Text)='espèce') OR (LowerCase(ModePaieBonFacAGCbx.Text)='espece') then
                       begin
@@ -1480,8 +1480,8 @@ begin
                     MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
                     MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nom_ocb']:= 'Versement au Fournisseur pièce N° '+NumBonFacAGEdt.Caption;
                     MainForm.Opt_cas_bnk_CaisseTable.FieldValues['third_ocb']:= FourBonFacAGCbx.Text;
-                 //   MainForm.Opt_cas_bnk_CaisseTable.FieldValues['encaiss_ocb']:= StrToCurr(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll]));
-                    MainForm.Opt_cas_bnk_CaisseTable.FieldValues['decaiss_ocb']:= StrToCurr(StringReplace(BonFacATotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
+                 //   MainForm.Opt_cas_bnk_CaisseTable.FieldValues['encaiss_ocb']:= StrToFloat(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll]));
+                    MainForm.Opt_cas_bnk_CaisseTable.FieldValues['decaiss_ocb']:= StrToFloat(StringReplace(BonFacATotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
 
                      if (LowerCase(ModePaieBonFacAGCbx.Text)='espèce') OR (LowerCase(ModePaieBonFacAGCbx.Text)='espece') then
                     begin
@@ -1536,7 +1536,7 @@ begin
                           MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
                           MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nom_ocb']:= 'Versement au Fournisseur pièce N° '+NumBonFacAGEdt.Caption;
                           MainForm.Opt_cas_bnk_CaisseTable.FieldValues['third_ocb']:= FourBonFacAGCbx.Text;
-                          MainForm.Opt_cas_bnk_CaisseTable.FieldValues['decaiss_ocb']:= StrToCurr(StringReplace(BonFacATotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
+                          MainForm.Opt_cas_bnk_CaisseTable.FieldValues['decaiss_ocb']:= StrToFloat(StringReplace(BonFacATotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
 
                            if (LowerCase(ModePaieBonFacAGCbx.Text)='espèce') OR (LowerCase(ModePaieBonFacAGCbx.Text)='espece') then
                           begin
@@ -1590,7 +1590,7 @@ begin
                                 MainForm.Opt_cas_bnk_CaisseTable.FieldValues['time_ocb']:= TimeOf(Now);;
                                 MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nom_ocb']:= 'Versement au Fournisseur pièce N° '+NumBonFacAGEdt.Caption;
                                 MainForm.Opt_cas_bnk_CaisseTable.FieldValues['third_ocb']:= FourBonFacAGCbx.Text;
-                                MainForm.Opt_cas_bnk_CaisseTable.FieldValues['decaiss_ocb']:= StrToCurr(StringReplace(BonFacATotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
+                                MainForm.Opt_cas_bnk_CaisseTable.FieldValues['decaiss_ocb']:= StrToFloat(StringReplace(BonFacATotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
 
                                  if (LowerCase(ModePaieBonFacAGCbx.Text)='espèce') OR (LowerCase(ModePaieBonFacAGCbx.Text)='espece') then
                                 begin
@@ -1704,7 +1704,7 @@ end;
 
 procedure TBonFacAGestionF.FourBonFacAGCbxExit(Sender: TObject);
 var CodeF: Integer;
-RegFCreditF,OLDCreditC,OLDCreditFINI : Currency;
+RegFCreditF,OLDCreditC,OLDCreditFINI : Double;
 begin
 
   if FourBonFacAGCbx.Text <> '' then
@@ -1717,7 +1717,7 @@ begin
       MainForm.SQLQuery.Active:=True;
      if NOT  MainForm.SQLQuery.IsEmpty then
      begin
-      OLDCreditFINI:= MainForm.SQLQuery.FieldByName('credit_f').AsCurrency;
+      OLDCreditFINI:= MainForm.SQLQuery.FieldByName('credit_f').AsFloat;
 
       if MainForm.SQLQuery.FieldByName('activ_f').AsBoolean <> False then
       begin
@@ -1768,7 +1768,7 @@ begin
 //         if NOT (BonFacAPListDataS.DataSet.IsEmpty) then
 //          begin
 //           BonFacAGFourNEWCredit.Caption:=
-//           CurrToStrF((MainForm.Bona_recTableCredit.FieldByName('MontantRes').AsCurrency ) + StrToCurr(StringReplace(BonFacAResteLbl.Caption, #32, '', [rfReplaceAll])),ffNumber,2);//  anyways i'm software developer
+//           CurrToStrF((MainForm.Bona_recTableCredit.FieldByName('MontantRes').AsFloat ) + StrToFloat(StringReplace(BonFacAResteLbl.Caption, #32, '', [rfReplaceAll])),ffNumber,2);//  anyways i'm software developer
 //          end;
           end else
           begin
@@ -2135,11 +2135,11 @@ if key = #13 then
              MainForm.Bona_fac_listTable.FieldValues['prixht_p']:= MainForm.SQLQuery.FieldValues['prixht_p'];
              MainForm.Bona_fac_listTable.FieldValues['cond_p']:= 01;
              MainForm.Bona_fac_listTable.FieldValues['tva_p']:= MainForm.SQLQuery.FieldValues['tva_p'];
-             MainForm.Bona_fac_listTable.FieldByName('prixvd_p').AsCurrency:=  MainForm.SQLQuery.FieldByName('prixvd_p').AsCurrency;
-             MainForm.Bona_fac_listTable.FieldByName('prixvr_p').AsCurrency:=  MainForm.SQLQuery.FieldByName('prixvr_p').AsCurrency;
-             MainForm.Bona_fac_listTable.FieldByName('prixvg_p').AsCurrency:=  MainForm.SQLQuery.FieldByName('prixvg_p').AsCurrency;
-             MainForm.Bona_fac_listTable.FieldByName('prixva_p').AsCurrency:=  MainForm.SQLQuery.FieldByName('prixva_p').AsCurrency;
-             MainForm.Bona_fac_listTable.FieldByName('prixva2_p').AsCurrency:= MainForm.SQLQuery.FieldByName('prixva2_p').AsCurrency;
+             MainForm.Bona_fac_listTable.FieldByName('prixvd_p').AsFloat:=  MainForm.SQLQuery.FieldByName('prixvd_p').AsFloat;
+             MainForm.Bona_fac_listTable.FieldByName('prixvr_p').AsFloat:=  MainForm.SQLQuery.FieldByName('prixvr_p').AsFloat;
+             MainForm.Bona_fac_listTable.FieldByName('prixvg_p').AsFloat:=  MainForm.SQLQuery.FieldByName('prixvg_p').AsFloat;
+             MainForm.Bona_fac_listTable.FieldByName('prixva_p').AsFloat:=  MainForm.SQLQuery.FieldByName('prixva_p').AsFloat;
+             MainForm.Bona_fac_listTable.FieldByName('prixva2_p').AsFloat:= MainForm.SQLQuery.FieldByName('prixva2_p').AsFloat;
              
              MainForm.Bona_fac_listTable.FieldValues['qutinstock_p']:= 
              (MainForm.Bona_fac_listTable.FieldValues['qut_p'])*(MainForm.Bona_fac_listTable.FieldValues['cond_p']);
@@ -2260,11 +2260,11 @@ if key = #13 then
              MainForm.Bona_fac_listTable.FieldValues['prixht_p']:= MainForm.SQLQuery.FieldValues['prixht_p'];
              MainForm.Bona_fac_listTable.FieldValues['cond_p']:= 01;
              MainForm.Bona_fac_listTable.FieldValues['tva_p']:= MainForm.SQLQuery.FieldValues['tva_p'];
-             MainForm.Bona_fac_listTable.FieldByName('prixvd_p').AsCurrency:=  MainForm.SQLQuery.FieldByName('prixvd_p').AsCurrency;
-             MainForm.Bona_fac_listTable.FieldByName('prixvr_p').AsCurrency:=  MainForm.SQLQuery.FieldByName('prixvr_p').AsCurrency;
-             MainForm.Bona_fac_listTable.FieldByName('prixvg_p').AsCurrency:=  MainForm.SQLQuery.FieldByName('prixvg_p').AsCurrency;
-             MainForm.Bona_fac_listTable.FieldByName('prixva_p').AsCurrency:=  MainForm.SQLQuery.FieldByName('prixva_p').AsCurrency;
-             MainForm.Bona_fac_listTable.FieldByName('prixva2_p').AsCurrency:= MainForm.SQLQuery.FieldByName('prixva2_p').AsCurrency;
+             MainForm.Bona_fac_listTable.FieldByName('prixvd_p').AsFloat:=  MainForm.SQLQuery.FieldByName('prixvd_p').AsFloat;
+             MainForm.Bona_fac_listTable.FieldByName('prixvr_p').AsFloat:=  MainForm.SQLQuery.FieldByName('prixvr_p').AsFloat;
+             MainForm.Bona_fac_listTable.FieldByName('prixvg_p').AsFloat:=  MainForm.SQLQuery.FieldByName('prixvg_p').AsFloat;
+             MainForm.Bona_fac_listTable.FieldByName('prixva_p').AsFloat:=  MainForm.SQLQuery.FieldByName('prixva_p').AsFloat;
+             MainForm.Bona_fac_listTable.FieldByName('prixva2_p').AsFloat:= MainForm.SQLQuery.FieldByName('prixva2_p').AsFloat;
 
              MainForm.Bona_fac_listTable.FieldValues['qutinstock_p']:= 
              (MainForm.Bona_fac_listTable.FieldValues['qut_p'])*(MainForm.Bona_fac_listTable.FieldValues['cond_p']);
@@ -2391,11 +2391,11 @@ if key = #13 then
              MainForm.Bona_fac_listTable.FieldValues['prixht_p']:= MainForm.SQLQuery.FieldValues['prixht_p'];
              MainForm.Bona_fac_listTable.FieldValues['cond_p']:= 01;
              MainForm.Bona_fac_listTable.FieldValues['tva_p']:= MainForm.SQLQuery.FieldValues['tva_p'];
-             MainForm.Bona_fac_listTable.FieldByName('prixvd_p').AsCurrency:=  MainForm.SQLQuery.FieldByName('prixvd_p').AsCurrency;
-             MainForm.Bona_fac_listTable.FieldByName('prixvr_p').AsCurrency:=  MainForm.SQLQuery.FieldByName('prixvr_p').AsCurrency;
-             MainForm.Bona_fac_listTable.FieldByName('prixvg_p').AsCurrency:=  MainForm.SQLQuery.FieldByName('prixvg_p').AsCurrency;
-             MainForm.Bona_fac_listTable.FieldByName('prixva_p').AsCurrency:=  MainForm.SQLQuery.FieldByName('prixva_p').AsCurrency;
-             MainForm.Bona_fac_listTable.FieldByName('prixva2_p').AsCurrency:= MainForm.SQLQuery.FieldByName('prixva2_p').AsCurrency;
+             MainForm.Bona_fac_listTable.FieldByName('prixvd_p').AsFloat:=  MainForm.SQLQuery.FieldByName('prixvd_p').AsFloat;
+             MainForm.Bona_fac_listTable.FieldByName('prixvr_p').AsFloat:=  MainForm.SQLQuery.FieldByName('prixvr_p').AsFloat;
+             MainForm.Bona_fac_listTable.FieldByName('prixvg_p').AsFloat:=  MainForm.SQLQuery.FieldByName('prixvg_p').AsFloat;
+             MainForm.Bona_fac_listTable.FieldByName('prixva_p').AsFloat:=  MainForm.SQLQuery.FieldByName('prixva_p').AsFloat;
+             MainForm.Bona_fac_listTable.FieldByName('prixva2_p').AsFloat:= MainForm.SQLQuery.FieldByName('prixva2_p').AsFloat;
 
              MainForm.Bona_fac_listTable.FieldValues['qutinstock_p']:= 
              (MainForm.Bona_fac_listTable.FieldValues['qut_p'])*(MainForm.Bona_fac_listTable.FieldValues['cond_p']);
@@ -2652,7 +2652,7 @@ end;
 
 procedure TBonFacAGestionF.BonFacAPListDataSDataChange(Sender: TObject;
   Field: TField);
-var  TTCbeforeTimber,TTCafterTimber: Currency;
+var  TTCbeforeTimber,TTCafterTimber: Double;
 begin
   if NOT BonFacAPListDataS.DataSet.IsEmpty then
   begin
@@ -2737,7 +2737,7 @@ ProduitBonFacAGCbx.SetFocus;
 end;
 
 procedure TBonFacAGestionF.RemisePerctageBonFacAGEdtChange(Sender: TObject);
-var BonFATotalHT,RemisePerctageBonFacA,TotalTVANet,NewHT,NewTVA,NewTTC,Remise,OldTTC,OldFourCredit,Timber : Currency;
+var BonFATotalHT,RemisePerctageBonFacA,TotalTVANet,NewHT,NewTVA,NewTTC,Remise,OldTTC,OldFourCredit,Timber : Double;
 begin
 //------ this is to set the remise on tyhe prix HT ---------//
 
@@ -2934,7 +2934,7 @@ begin
 end;
 
 procedure TBonFacAGestionF.RemiseBonFacAGEdtChange(Sender: TObject);
-var RemiseBonFacAG,BonFATotalHT,BonFATotalTVA,OLDTTC : Currency;
+var RemiseBonFacAG,BonFATotalHT,BonFATotalTVA,OLDTTC : Double;
 begin
 if RemiseBonFacAGEdt.Focused then
  begin
@@ -2991,7 +2991,7 @@ end;
 
 procedure TBonFacAGestionF.RemiseBonFacAGEdtExit(Sender: TObject);
 var
-RemiseBonFacAG: Currency;
+RemiseBonFacAG: Double;
 begin
   if RemiseBonFacAGEdt.Text<>'' then
   begin
@@ -3368,7 +3368,7 @@ procedure TBonFacAGestionF.GettingData;
   MoneyWordRX,NumRX,DateRX,NameRX,AdrRX,VilleRX,WilayaRX,MPRX,NCHeqRX,
   TauxTVA9,TauxTVA19,MontantTVA9,MontantTVA19,RC,NArt,NIF,NIS,NEWCredit,OLDCredit : TfrxMemoView;
   str1 : string;
-  Taux9,Taux19,Montant9,Montant19,RemisePerctageBonFacA : Currency;
+  Taux9,Taux19,Montant9,Montant19,RemisePerctageBonFacA : Double;
   Name,Tel,Mob,Adr,ComRC,ComNArt,ComNIF,ComNIS,ComRIB : TfrxMemoView;
   RCLbl,NArtLbl,NIFLbl,NISLbl,ComRCLbl,ComNArtLbl,ComNIFLbl,ComNISLbl,ComRIBLbl : TfrxMemoView;
   Logo : TfrxPictureView;
@@ -3666,11 +3666,11 @@ begin
 //   ProduitsListDBGridEh.DefaultDrawColumnCell(Rect, DataCol, Column, State);
 //end;
 //
-//  if  (MainForm.Bona_fac_listTable.FieldByName('prixht_p').AsCurrency > MainForm.Bona_fac_listTable.FieldByName('prixvd_p').AsCurrency )
-//    OR(MainForm.Bona_fac_listTable.FieldByName('prixht_p').AsCurrency > MainForm.Bona_fac_listTable.FieldByName('prixvr_p').AsCurrency )
-//    OR(MainForm.Bona_fac_listTable.FieldByName('prixht_p').AsCurrency > MainForm.Bona_fac_listTable.FieldByName('prixvg_p').AsCurrency )
-//    OR(MainForm.Bona_fac_listTable.FieldByName('prixht_p').AsCurrency > MainForm.Bona_fac_listTable.FieldByName('prixva_p').AsCurrency )
-//    OR(MainForm.Bona_fac_listTable.FieldByName('prixht_p').AsCurrency > MainForm.Bona_fac_listTable.FieldByName('prixva2_p').AsCurrency )
+//  if  (MainForm.Bona_fac_listTable.FieldByName('prixht_p').AsFloat > MainForm.Bona_fac_listTable.FieldByName('prixvd_p').AsFloat )
+//    OR(MainForm.Bona_fac_listTable.FieldByName('prixht_p').AsFloat > MainForm.Bona_fac_listTable.FieldByName('prixvr_p').AsFloat )
+//    OR(MainForm.Bona_fac_listTable.FieldByName('prixht_p').AsFloat > MainForm.Bona_fac_listTable.FieldByName('prixvg_p').AsFloat )
+//    OR(MainForm.Bona_fac_listTable.FieldByName('prixht_p').AsFloat > MainForm.Bona_fac_listTable.FieldByName('prixva_p').AsFloat )
+//    OR(MainForm.Bona_fac_listTable.FieldByName('prixht_p').AsFloat > MainForm.Bona_fac_listTable.FieldByName('prixva2_p').AsFloat )
 //         then
 // begin
 // ProduitsListDBGridEh.Canvas.Font.Color:=$004735F9;

@@ -353,7 +353,7 @@ end;
 
 procedure TBonFacVGestionF.FormShow(Sender: TObject);
 var CodeFV: Integer;
-OLDCredit,NEWCredit : Currency;
+OLDCredit,NEWCredit : Double;
 begin
 
 // use this tage when i click AddBVFacBonRecGBtn bon button
@@ -408,9 +408,9 @@ begin
 
       if NOT (MainForm.SQLQuery.IsEmpty) AND (MainForm.SQLQuery.FieldByName('code_c').AsInteger <> 1) then
      begin
-      OLDCredit:= (MainForm.SQLQuery.FieldByName('credit_c').AsCurrency);// - (MainForm.Bonv_facTable.FieldByName('MontantRes').AsCurrency) ;
+      OLDCredit:= (MainForm.SQLQuery.FieldByName('credit_c').AsFloat);// - (MainForm.Bonv_facTable.FieldByName('MontantRes').AsFloat) ;
 
-      NewCredit:=  MainForm.SQLQuery.FieldByName('credit_c').AsCurrency;
+      NewCredit:=  MainForm.SQLQuery.FieldByName('credit_c').AsFloat;
 
      BonFacVGClientOLDCredit.Caption:= FloatToStrF(StrToFloat(StringReplace(CurrToStr( OLDCredit), #32, '', [rfReplaceAll])),ffNumber,14,2) ;
      BonFacVGClientNEWCredit.Caption:= FloatToStrF(StrToFloat(StringReplace(CurrToStr( NewCredit), #32, '', [rfReplaceAll])),ffNumber,14,2) ;
@@ -1822,7 +1822,7 @@ end;
 
 procedure TBonFacVGestionF.BonFacVPListDataSDataChange(Sender: TObject;
   Field: TField);
-var  TimberFV,TTCbeforeTimber,TTCafterTimber: Currency;
+var  TimberFV,TTCbeforeTimber,TTCafterTimber: Double;
 begin
   if NOT BonFacVPListDataS.DataSet.IsEmpty then
   begin
@@ -2019,7 +2019,7 @@ end;
 
 procedure TBonFacVGestionF.ClientBonFacVGCbxExit(Sender: TObject);
 var CodeC: Integer;
-OLDCreditC,RegCCreditC,OLDCreditCINI : Currency;
+OLDCreditC,RegCCreditC,OLDCreditCINI : Double;
 begin
 
   if ClientBonFacVGCbx.Text <> '' then
@@ -2032,7 +2032,7 @@ begin
       MainForm.SQLQuery.Active:=True;
      if NOT MainForm.SQLQuery.IsEmpty then
      begin
-      OLDCreditCINI:= MainForm.SQLQuery.FieldByName('credit_c').AsCurrency;
+      OLDCreditCINI:= MainForm.SQLQuery.FieldByName('credit_c').AsFloat;
 
       if MainForm.SQLQuery.FieldByName('activ_c').AsBoolean <> False then
       begin
@@ -2080,7 +2080,7 @@ begin
 //           if NOT (BonFacVPListDataS.DataSet.IsEmpty) then
 //            begin
 //             BonFacVGClientNEWCredit.Caption:=
-//             CurrToStrF((MainForm.Bonv_livTableCredit.FieldByName('MontantRes').AsCurrency) + StrToCurr(StringReplace(BonFacVResteLbl.Caption, #32, '', [rfReplaceAll]))  ,ffNumber,2);//  anyways i'm software developer
+//             CurrToStrF((MainForm.Bonv_livTableCredit.FieldByName('MontantRes').AsFloat) + StrToCurr(StringReplace(BonFacVResteLbl.Caption, #32, '', [rfReplaceAll]))  ,ffNumber,2);//  anyways i'm software developer
 //            end;
             end else
             begin
@@ -2211,7 +2211,7 @@ ProduitBonFacVGCbx.SetFocus;
 end;
 
 procedure TBonFacVGestionF.RemisePerctageBonFacVGEdtChange(Sender: TObject);
-var BonFVTotalHT,RemisePerctageBonFacV,TotalTVANet,NewHT,NewTVA,NewTTC,Remise,OldTTC,OldClientCredit,Timber : Currency;
+var BonFVTotalHT,RemisePerctageBonFacV,TotalTVANet,NewHT,NewTVA,NewTTC,Remise,OldTTC,OldClientCredit,Timber : Double;
 begin
 //------ this is to set the remise on tyhe prix HT ---------//
 
@@ -2409,7 +2409,7 @@ begin
 end;
 
 procedure TBonFacVGestionF.RemiseBonFacVGEdtChange(Sender: TObject);
-var RemiseBonFacVG,BonFVTotalHT,BonFVTotalTVA,OLDTTC : Currency;
+var RemiseBonFacVG,BonFVTotalHT,BonFVTotalTVA,OLDTTC : Double;
 begin
 if RemiseBonFacVGEdt.Focused then
  begin
@@ -2466,7 +2466,7 @@ end;
 
 procedure TBonFacVGestionF.RemiseBonFacVGEdtExit(Sender: TObject);
 var
-RemiseBonFacVG: Currency;
+RemiseBonFacVG: Double;
 begin
   if RemiseBonFacVGEdt.Text<>'' then
   begin
@@ -2635,22 +2635,22 @@ begin
           MainForm.Bonv_facTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
           MainForm.Bonv_facTable.FieldValues['obser_bvfac']:= ObserBonFacVGMem.Text;
           MainForm.Bonv_facTable.FieldValues['num_cheque_bvfac']:= NChequeBonFacVGCbx.Text;
-          MainForm.Bonv_facTable.FieldByName('montht_bvfac').AsCurrency:= StrToCurr(StringReplace(BonFacVTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
-          MainForm.Bonv_facTable.FieldByName('montaht_bvfac').AsCurrency:= StrToCurr(StringReplace(BonFacVTotalAHTLbl.Caption, #32, '', [rfReplaceAll]));
+          MainForm.Bonv_facTable.FieldByName('montht_bvfac').AsFloat:= StrToCurr(StringReplace(BonFacVTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
+          MainForm.Bonv_facTable.FieldByName('montaht_bvfac').AsFloat:= StrToCurr(StringReplace(BonFacVTotalAHTLbl.Caption, #32, '', [rfReplaceAll]));
 
           if RemiseBonFacVGEdt.Text<>'' then
           begin
-             MainForm.Bonv_facTable.FieldByName('remise_bvfac').AsCurrency:=StrToCurr(StringReplace(RemiseBonFacVGEdt.Text, #32, '', [rfReplaceAll]));
+             MainForm.Bonv_facTable.FieldByName('remise_bvfac').AsFloat:=StrToCurr(StringReplace(RemiseBonFacVGEdt.Text, #32, '', [rfReplaceAll]));
           end else begin
-                    MainForm.Bonv_facTable.FieldByName('remise_bvfac').AsCurrency:=0;
+                    MainForm.Bonv_facTable.FieldByName('remise_bvfac').AsFloat:=0;
                 end;
 
-          MainForm.Bonv_facTable.FieldByName('montver_bvfac').AsCurrency:=StrToCurr(StringReplace(BonFacVRegleLbl.Caption, #32, '', [rfReplaceAll]));
-          MainForm.Bonv_facTable.FieldByName('montttc_bvfac').AsCurrency:=StrToCurr(StringReplace(BonFacVTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
+          MainForm.Bonv_facTable.FieldByName('montver_bvfac').AsFloat:=StrToCurr(StringReplace(BonFacVRegleLbl.Caption, #32, '', [rfReplaceAll]));
+          MainForm.Bonv_facTable.FieldByName('montttc_bvfac').AsFloat:=StrToCurr(StringReplace(BonFacVTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
 
           if (TimberBonFacVGEdt.Visible = True) AND (TimberBonFacVGEdt.Text <> '') then
           begin
-          MainForm.Bonv_facTable.FieldByName('timber_bvfac').AsCurrency:=StrToCurr(StringReplace(TimberBonFacVGEdt.Text, #32, '', [rfReplaceAll]));
+          MainForm.Bonv_facTable.FieldByName('timber_bvfac').AsFloat:=StrToCurr(StringReplace(TimberBonFacVGEdt.Text, #32, '', [rfReplaceAll]));
           end;
 
             MainForm.Bonv_facTable.Post;
@@ -2730,21 +2730,21 @@ begin
           MainForm.Bonv_facTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
           MainForm.Bonv_facTable.FieldValues['obser_bvfac']:= ObserBonFacVGMem.Text;
           MainForm.Bonv_facTable.FieldValues['num_cheque_bvfac']:= NChequeBonFacVGCbx.Text;
-          MainForm.Bonv_facTable.FieldByName('montht_bvfac').AsCurrency:= StrToCurr(StringReplace(BonFacVTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
+          MainForm.Bonv_facTable.FieldByName('montht_bvfac').AsFloat:= StrToCurr(StringReplace(BonFacVTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
 
           if RemiseBonFacVGEdt.Text<>'' then
           begin
-             MainForm.Bonv_facTable.FieldByName('remise_bvfac').AsCurrency:=StrToCurr(StringReplace(RemiseBonFacVGEdt.Text, #32, '', [rfReplaceAll]));
+             MainForm.Bonv_facTable.FieldByName('remise_bvfac').AsFloat:=StrToCurr(StringReplace(RemiseBonFacVGEdt.Text, #32, '', [rfReplaceAll]));
           end else begin
-                    MainForm.Bonv_facTable.FieldByName('remise_bvfac').AsCurrency:=0;
+                    MainForm.Bonv_facTable.FieldByName('remise_bvfac').AsFloat:=0;
                 end;
 
-          MainForm.Bonv_facTable.FieldByName('montver_bvfac').AsCurrency:=StrToCurr(StringReplace(BonFacVRegleLbl.Caption, #32, '', [rfReplaceAll]));
-          MainForm.Bonv_facTable.FieldByName('montttc_bvfac').AsCurrency:=StrToCurr(StringReplace(BonFacVTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
+          MainForm.Bonv_facTable.FieldByName('montver_bvfac').AsFloat:=StrToCurr(StringReplace(BonFacVRegleLbl.Caption, #32, '', [rfReplaceAll]));
+          MainForm.Bonv_facTable.FieldByName('montttc_bvfac').AsFloat:=StrToCurr(StringReplace(BonFacVTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
 
           if (TimberBonFacVGEdt.Visible = True) AND (TimberBonFacVGEdt.Text <> '') then
           begin
-           MainForm.Bonv_facTable.FieldByName('timber_bvfac').AsCurrency:=StrToCurr(StringReplace(TimberBonFacVGEdt.Text, #32, '', [rfReplaceAll]));
+           MainForm.Bonv_facTable.FieldByName('timber_bvfac').AsFloat:=StrToCurr(StringReplace(TimberBonFacVGEdt.Text, #32, '', [rfReplaceAll]));
           end;
 
             MainForm.Bonv_facTable.Post;
@@ -2938,28 +2938,28 @@ begin
           MainForm.Bonv_facTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
           MainForm.Bonv_facTable.FieldValues['obser_bvfac']:= ObserBonFacVGMem.Text;
           MainForm.Bonv_facTable.FieldValues['num_cheque_bvfac']:= NChequeBonFacVGCbx.Text;
-          MainForm.Bonv_facTable.FieldByName('montht_bvfac').AsCurrency:= StrToCurr(StringReplace(BonFacVTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
-          MainForm.Bonv_facTable.FieldByName('montaht_bvfac').AsCurrency:= StrToCurr(StringReplace(BonFacVTotalAHTLbl.Caption, #32, '', [rfReplaceAll]));
+          MainForm.Bonv_facTable.FieldByName('montht_bvfac').AsFloat:= StrToCurr(StringReplace(BonFacVTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
+          MainForm.Bonv_facTable.FieldByName('montaht_bvfac').AsFloat:= StrToCurr(StringReplace(BonFacVTotalAHTLbl.Caption, #32, '', [rfReplaceAll]));
 
           if TimberBonFacVGEdt.Visible = True then
           begin
-          MainForm.Bonv_facTable.FieldByName('timber_bvfac').AsCurrency:= StrToCurr(StringReplace(TimberBonFacVGEdt.Text, #32, '', [rfReplaceAll]));
+          MainForm.Bonv_facTable.FieldByName('timber_bvfac').AsFloat:= StrToCurr(StringReplace(TimberBonFacVGEdt.Text, #32, '', [rfReplaceAll]));
 
           end else
               begin
-                MainForm.Bonv_facTable.FieldByName('timber_bvfac').AsCurrency:= 0;
+                MainForm.Bonv_facTable.FieldByName('timber_bvfac').AsFloat:= 0;
               end;
 
           if RemiseBonFAcVGEdt.Text<>'' then
           begin
-          MainForm.Bonv_facTable.FieldByName('remise_bvfac').AsCurrency:=StrToCurr(StringReplace(RemiseBonFacVGEdt.Text, #32, '', [rfReplaceAll]));
+          MainForm.Bonv_facTable.FieldByName('remise_bvfac').AsFloat:=StrToCurr(StringReplace(RemiseBonFacVGEdt.Text, #32, '', [rfReplaceAll]));
           end else begin
-                    MainForm.Bonv_facTable.FieldByName('remise_bvfac').AsCurrency:=0;
+                    MainForm.Bonv_facTable.FieldByName('remise_bvfac').AsFloat:=0;
                    end;
 
-          MainForm.Bonv_facTable.FieldByName('montver_bvfac').AsCurrency:=StrToCurr(StringReplace(BonFacVTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
-          MainForm.Bonv_facTable.FieldByName('montttc_bvfac').AsCurrency:=StrToCurr(StringReplace(BonFacVTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
-          MainForm.Bonv_facTable.FieldByName('marge_bvfac').AsCurrency:=StrToCurr(StringReplace(BonFacVTotalMargeLbl.Caption, #32, '', [rfReplaceAll]));
+          MainForm.Bonv_facTable.FieldByName('montver_bvfac').AsFloat:=StrToCurr(StringReplace(BonFacVTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
+          MainForm.Bonv_facTable.FieldByName('montttc_bvfac').AsFloat:=StrToCurr(StringReplace(BonFacVTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
+          MainForm.Bonv_facTable.FieldByName('marge_bvfac').AsFloat:=StrToCurr(StringReplace(BonFacVTotalMargeLbl.Caption, #32, '', [rfReplaceAll]));
           MainForm.Bonv_facTable.FieldByName('valider_bvfac').AsBoolean:= True;
 
           if (LowerCase(ModePaieBonFacVGCbx.Text)='espèce') OR (LowerCase(ModePaieBonFacVGCbx.Text)='espece') then
@@ -3011,7 +3011,7 @@ begin
             MainForm.RegclientTable.FieldValues['bon_or_no_rc']:= 3;
             MainForm.RegclientTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
 
-            MainForm.RegclientTable.FieldByName('montver_rc').AsCurrency:=StrToCurr(StringReplace(BonFacVTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
+            MainForm.RegclientTable.FieldByName('montver_rc').AsFloat:=StrToCurr(StringReplace(BonFacVTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
 
             if (LowerCase(ModePaieBonFacVGCbx.Text)='espèce') OR (LowerCase(ModePaieBonFacVGCbx.Text)='espece') then
             begin
@@ -3058,7 +3058,7 @@ begin
                   MainForm.RegclientTable.FieldValues['bon_or_no_rc']:= 3;
                   MainForm.RegclientTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
 
-                  MainForm.RegclientTable.FieldByName('montver_rc').AsCurrency:=StrToCurr(StringReplace(BonFacVTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
+                  MainForm.RegclientTable.FieldByName('montver_rc').AsFloat:=StrToCurr(StringReplace(BonFacVTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
 
                   if (LowerCase(ModePaieBonFacVGCbx.Text)='espèce') OR (LowerCase(ModePaieBonFacVGCbx.Text)='espece') then
                   begin
@@ -3110,7 +3110,7 @@ begin
                           MainForm.RegclientTable.FieldValues['bon_or_no_rc']:= 3;
                           MainForm.RegclientTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
 
-                          MainForm.RegclientTable.FieldByName('montver_rc').AsCurrency:=StrToCurr(StringReplace(BonFacVTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
+                          MainForm.RegclientTable.FieldByName('montver_rc').AsFloat:=StrToCurr(StringReplace(BonFacVTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
 
                           if (LowerCase(ModePaieBonFacVGCbx.Text)='espèce') OR (LowerCase(ModePaieBonFacVGCbx.Text)='espece') then
                           begin
@@ -3628,7 +3628,7 @@ procedure TBonFacVGestionF.GettingData;
   MoneyWordRX,NumRX,DateRX,NameRX,AdrRX,VilleRX,WilayaRX,MPRX,NCHeqRX,
   TauxTVA9,TauxTVA19,MontantTVA9,MontantTVA19,RC,NArt,NIF,NIS,NEWCredit,OLDCredit : TfrxMemoView;
   str1 : string;
-  Taux19,Montant9,Montant19,RemisePerctageBonFacV : Currency;
+  Taux19,Montant9,Montant19,RemisePerctageBonFacV : Double;
   Name,Tel,Mob,Adr,ComRC,ComNArt,ComNIF,ComNIS,ComRIB : TfrxMemoView;
   RCLbl,NArtLbl,NIFLbl,NISLbl,ComRCLbl,ComNArtLbl,ComNIFLbl,ComNISLbl,ComRIBLbl : TfrxMemoView;
   Logo : TfrxPictureView;

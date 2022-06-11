@@ -85,7 +85,7 @@ type
   private
     { Private declarations }
      CodeP,TVAP : Integer;
-     FirstPrixHTPerte, FirstPrixTTCPerte,FirstQuantityOLDPerte : Currency;
+     FirstPrixHTPerte, FirstPrixTTCPerte,FirstQuantityOLDPerte : Double;
      
   public
     { Public declarations }
@@ -102,58 +102,7 @@ uses System.DateUtils,Winapi.MMSystem,Data.DB, System.Contnrs,
 UMainF, UDataModule, USplashAddUnite, UProduitsList, USplash, UFastProduitsList;
 
 
-  var
-    gGrayForms: TComponentList;
-
-procedure PerteGrayForms;
-var
-  loop: integer;
-  wScrnFrm: TForm;
-  wForm: TForm;
-//  wPoint: TPoint;
-  wScreens: TList;
-begin
-  if not assigned(gGrayForms) then
-  begin
-    gGrayForms := TComponentList.Create;
-    gGrayForms.OwnsObjects := true;
-    wScreens := TList.Create;
-    try
-      for loop := 0 to 0 do
-        wScreens.Add(Screen.Forms[loop]);
-      for loop := 0 to 0 do
-      begin
-        wScrnFrm := wScreens[loop];
-        if wScrnFrm.Visible then
-        begin
-          wForm := TForm.Create(wScrnFrm);
-       ///wForm.Align:= alClient;
-          wForm.WindowState := wsMaximized;
-          gGrayForms.Add(wForm);
-          wForm.Position := MainForm.Position;
-          wForm.AlphaBlend := true;
-          wForm.AlphaBlendValue := 80;
-          wForm.Color := clBlack;
-          wForm.BorderStyle := bsNone;
-          wForm.StyleElements := [];
-          wForm.Enabled := false;
-          wForm.BoundsRect := wScrnFrm.BoundsRect;
-          SetWindowLong(wForm.Handle, GWL_HWNDPARENT, wScrnFrm.Handle);
-          SetWindowPos(wForm.Handle, wScrnFrm.Handle, 0, 0, 0, 0,
-            SWP_NOSIZE or SWP_NOMOVE);
-          wForm.Visible := true;
-        end;
-      end;
-    finally
-      wScreens.free;
-    end;
-  end;
-end;
-
-procedure PerteNormalForms;
-begin
-  FreeAndNil(gGrayForms);
-end;
+  
 
 procedure TPertesGestionF.AddProduitPerteGBtnClick(Sender: TObject);
 begin
@@ -196,7 +145,7 @@ end;
 
 procedure TPertesGestionF.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-PerteNormalForms  ;
+NormalForms  ;
 //if Tag = 0 then
 //begin
 //
@@ -243,7 +192,7 @@ end;
 
 procedure TPertesGestionF.FormShow(Sender: TObject);
 begin
-PerteGrayForms  ;
+GrayForms  ;
 
     if tag = 0 then
     begin
@@ -352,7 +301,7 @@ begin
   begin
   CodeP:= MainForm.SQLQuery.FieldByName('code_p').AsInteger ;
   TVAP:= MainForm.SQLQuery.FieldByName('tva_p').AsInteger ;
-  FirstPrixHTPerte:=MainForm.SQLQuery.FieldByName('prixht_p').AsCurrency;
+  FirstPrixHTPerte:=MainForm.SQLQuery.FieldByName('prixht_p').AsFloat;
 
   PrixHTPerteGEdt.Text:=  CurrToStrF(MainForm.SQLQuery.FieldValues['prixht_p'], ffNumber, 2);
   PrixTTCPerteGEdt.Text:= 
@@ -393,6 +342,7 @@ end;
 
 procedure TPertesGestionF.OKPerteGBtnClick(Sender: TObject);
 var CodePR,PRTypeP : Integer;
+QutP : Double;
 begin
 if NamePerteGCbx.Text <>'' then
  begin
@@ -449,6 +399,9 @@ if NamePerteGCbx.Text <>'' then
                   CodePR:= DataModuleF.PertesTable.FieldValues['code_pr'] + 1 ;
                  end;
 
+
+             QutP:= StrToFloat(StringReplace(QuantityPerteGEdt.Text, #32, '', [rfReplaceAll]));
+
              DataModuleF.PertesTable.Last;
              DataModuleF.PertesTable.Append;
              DataModuleF.PertesTable.FieldValues['code_pr']:= CodePR ;
@@ -456,7 +409,7 @@ if NamePerteGCbx.Text <>'' then
              DataModuleF.PertesTable.FieldValues['date_pr']:= DatePerteGD.Date;
              DataModuleF.PertesTable.FieldValues['time_pr']:=TimeOf(Now);
              DataModuleF.PertesTable.FieldValues['code_p']:=  CodeP ;
-             DataModuleF.PertesTable.FieldValues['qut_p'] :=  StrToFloat(QuantityPerteGEdt.Text);
+             DataModuleF.PertesTable.FieldByName('qut_p').AsFloat :=  2;
              DataModuleF.PertesTable.FieldValues['prixht_p'] := FirstPrixHTPerte ;
              DataModuleF.PertesTable.FieldValues['tva_p']:=   TVAP;
              DataModuleF.PertesTable.FieldValues['obser_pr']:=   ObserPerteGMem.Text;
@@ -466,7 +419,7 @@ if NamePerteGCbx.Text <>'' then
              DataModuleF.PertesTable.Post ;
 
              DataModuleF.PertesTable.EnableControls;
-             DataModuleF.PertesTable.Last;  
+             DataModuleF.PertesTable.Last;
 
              //--- this is for take from the stock
              MainForm.SQLQuery.Active:= False;
@@ -568,7 +521,7 @@ end;
 
 procedure TPertesGestionF.QuantityPerteGEdtChange(Sender: TObject);
 var
-QuantityPerte,NEWPAHT,NEWPATTC,NEWQUNT : Currency; 
+QuantityPerte,NEWPAHT,NEWPATTC,NEWQUNT : Double;
 begin
                                  
    if QuantityPerteGEdt.Text<>'' then
@@ -620,7 +573,7 @@ end;
 
 procedure TPertesGestionF.QuantityPerteGEdtExit(Sender: TObject);
 var
-QuantityPerte: Currency;
+QuantityPerte: Double;
 begin
 
   if QuantityPerteGEdt.Text<>'' then                     
