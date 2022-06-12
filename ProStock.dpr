@@ -83,7 +83,14 @@ uses
   UBonComVGestion in 'UBonComVGestion.pas' {BonComVGestionF},
   UBonComV in 'UBonComV.pas' {BonComVF},
   UBonRetVGestion in 'UBonRetVGestion.pas' {BonRetVGestionF},
-  UBonRetV in 'UBonRetV.pas' {BonRetVF};
+  UBonRetV in 'UBonRetV.pas' {BonRetVF},
+  USNumberGestion in 'USNumberGestion.pas' {SNumberGestionF},
+  UBonRetA in 'UBonRetA.pas' {BonRetAF},
+  UBonRetAGestion in 'UBonRetAGestion.pas' {BonRetAGestionF},
+  UBonFacRA in 'UBonFacRA.pas' {BonFacRAF},
+  UBonFacRV in 'UBonFacRV.pas' {BonFacRVF},
+  UBonFacRAGestion in 'UBonFacRAGestion.pas' {BonFacRAGestionF},
+  UBonFacRVGestion in 'UBonFacRVGestion.pas' {BonFacRVGestionF};
 
 {$R *.res}
 

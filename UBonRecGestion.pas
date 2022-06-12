@@ -159,7 +159,7 @@ type
     Label31: TLabel;
     ListFourBonRecGBtn: TAdvToolButton;
     S02: TPanel;
-    NSeriesProduitBonRecGBtn: TAdvToolButton;
+    SNumberProduitBonRecGBtn: TAdvToolButton;
     S01: TPanel;
     procedure ProduitBonRecGCbxEnter(Sender: TObject);
     procedure ProduitBonRecGCbxKeyPress(Sender: TObject; var Key: Char);
@@ -225,6 +225,7 @@ type
     procedure ListFourBonRecGBtnClick(Sender: TObject);
     procedure ProduitsListDBGridEhKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
+    procedure SNumberProduitBonRecGBtnClick(Sender: TObject);
   private
     procedure GettingData;
     procedure GettingDataSansTax;
@@ -292,7 +293,7 @@ implementation
 uses   StringTool,Vcl.Imaging.jpeg, IniFiles,
   UBonRec, UMainF, UFournisseurGestion, UFournisseurList, UFastProduitsList,
   UProduitGestion, USplashAddUnite, UProduitsList, USplashAddCompte,
-  USplashVersement;
+  USplashVersement, USNumberGestion, UComptoir;
 
 {$R *.dfm}
 
@@ -353,8 +354,8 @@ procedure TBonRecGestionF.EnableBonRec;
         ListAddProduitBonRecGBtn.ImageIndex:=13;//41 fo D
         NewAddProduitBonRecGBtn.Enabled:= True;
         NewAddProduitBonRecGBtn.ImageIndex:=4;//28 fo D
-        NSeriesProduitBonRecGBtn.Enabled:= True;
-        NSeriesProduitBonRecGBtn.ImageIndex:=63;//64 fo D
+        SNumberProduitBonRecGBtn.Enabled:= True;
+        SNumberProduitBonRecGBtn.ImageIndex:=63;//64 fo D
         DeleteProduitBonRecGBtn.Enabled:= True;
         DeleteProduitBonRecGBtn.ImageIndex:=14;//36 fo D
         ClearProduitBonRecGBtn.Enabled:= True;
@@ -1797,7 +1798,7 @@ procedure TBonRecGestionF.BonRecPListDataSDataChange(Sender: TObject;
 begin
   if NOT BonRecPListDataS.DataSet.IsEmpty then
   begin
-    NSeriesProduitBonRecGBtn.Visible:= True;
+    SNumberProduitBonRecGBtn.Visible:= True;
     S01.Visible:= True;
     S02.Visible:= True;
     DeleteProduitBonRecGBtn.Visible:= True;
@@ -1848,7 +1849,7 @@ begin
      ProduitsListDBGridEh.ReadOnly:=False;
     end else
     begin
-    NSeriesProduitBonRecGBtn.Visible:= False;
+    SNumberProduitBonRecGBtn.Visible:= False;
     S01.Visible:= False;
     S02.Visible:= False;
     DeleteProduitBonRecGBtn.Visible:= False;
@@ -2430,6 +2431,17 @@ begin
 ProduitBonRecGCbx.Clear;
 ProduitBonRecGCbx.SetFocus;
 ProduitBonRecGCbx.EditText:= '0';
+end;
+
+procedure TBonRecGestionF.SNumberProduitBonRecGBtnClick(Sender: TObject);
+begin
+          SNumberGestionF := TSNumberGestionF.Create(BonRecGestionF);
+          SNumberGestionF.Tag := 2;
+          SNumberGestionF.Left := (MainForm.Left + MainForm.Width div 2) - (SNumberGestionF.Width div 2);
+          SNumberGestionF.Top := MainForm.Top + 5;
+          AnimateWindow(SNumberGestionF.Handle, 175, AW_VER_POSITIVE or AW_SLIDE or AW_ACTIVATE);
+
+          SNumberGestionF.Show;
 end;
 
 procedure TBonRecGestionF.RemisePerctageBonRecGEdtKeyPress(Sender: TObject;

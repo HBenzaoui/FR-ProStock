@@ -180,7 +180,7 @@ type
     N3: TMenuItem;
     TicketCaisse80: TMenuItem;
     S02: TPanel;
-    NSeriesProduitBonLivGBtn: TAdvToolButton;
+    SNumberProduitBonLivGBtn: TAdvToolButton;
     S01: TPanel;
     procedure FormShow(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -253,6 +253,7 @@ type
     procedure BonDeFactureClick(Sender: TObject);
     procedure Bondelivraison4Click(Sender: TObject);
     procedure TicketCaisse80Click(Sender: TObject);
+    procedure SNumberProduitBonLivGBtnClick(Sender: TObject);
   private
     { Private declarations }
     procedure GettingData;
@@ -299,7 +300,7 @@ implementation
 uses   WinSpool,Vcl.Imaging.jpeg, IniFiles,
   StringTool, UMainF, USplashAddUnite, UClientsList, UClientGestion, USplashAddCompte,
   UFastProduitsList, UProduitsList, USplashVersement, UBonLiv, UProduitGestion,
-  UDataModule, UPerissableProduit;
+  UDataModule, UPerissableProduit, USNumberGestion;
 
   {$R *.dfm}
 
@@ -358,8 +359,8 @@ begin
       ListAddProduitBonLivGBtn.ImageIndex:=13;//41 fo D
       NewAddProduitBonLivGBtn.Enabled:= True;
       NewAddProduitBonLivGBtn.ImageIndex:=4;//28 fo D
-      NSeriesProduitBonLivGBtn.Enabled:= True;
-      NSeriesProduitBonLivGBtn.ImageIndex:=63;//64 fo D
+      SNumberProduitBonLivGBtn.Enabled:= True;
+      SNumberProduitBonLivGBtn.ImageIndex:=63;//64 fo D
       DeleteProduitBonLivGBtn.Enabled:= True;
       DeleteProduitBonLivGBtn.ImageIndex:=14;//36 fo D
       ClearProduitBonLivGBtn.Enabled:= True;
@@ -2668,7 +2669,7 @@ procedure TBonLivGestionF.BonLivPListDataSDataChange(Sender: TObject;
 begin
   if NOT BonLivPListDataS.DataSet.IsEmpty then
   begin
-    NSeriesProduitBonLivGBtn.Visible:= True;
+    SNumberProduitBonLivGBtn.Visible:= True;
     S01.Visible:= True;
     S02.Visible:= True;
     DeleteProduitBonLivGBtn.Visible:= True;
@@ -2735,7 +2736,7 @@ begin
 
     end else
     begin
-     NSeriesProduitBonLivGBtn.Visible:= False;
+     SNumberProduitBonLivGBtn.Visible:= False;
      S01.Visible:= False;
      S02.Visible:= False;
      DeleteProduitBonLivGBtn.Visible:= False;
@@ -2769,6 +2770,17 @@ end;
 procedure TBonLivGestionF.ResherchPARDesProduitsRdioBtnClick(Sender: TObject);
 begin
 ProduitBonLivGCbx.SetFocus;
+end;
+
+procedure TBonLivGestionF.SNumberProduitBonLivGBtnClick(Sender: TObject);
+begin
+          SNumberGestionF := TSNumberGestionF.Create(BonLivGestionF);
+          SNumberGestionF.Tag := 2;
+          SNumberGestionF.Left := (MainForm.Left + MainForm.Width div 2) - (SNumberGestionF.Width div 2);
+          SNumberGestionF.Top := MainForm.Top + 5;
+          AnimateWindow(SNumberGestionF.Handle, 175, AW_VER_POSITIVE or AW_SLIDE or AW_ACTIVATE);
+
+          SNumberGestionF.Show;
 end;
 
 procedure TBonLivGestionF.RemisePerctageBonLivGEdtChange(Sender: TObject);

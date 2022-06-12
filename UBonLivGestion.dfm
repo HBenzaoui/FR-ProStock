@@ -1301,7 +1301,7 @@ object BonLivGestionF: TBonLivGestionF
       Version = '1.7.2.0'
       TMSStyle = 0
     end
-    object NSeriesProduitBonLivGBtn: TAdvToolButton
+    object SNumberProduitBonLivGBtn: TAdvToolButton
       Left = 732
       Top = 245
       Width = 30
@@ -1331,6 +1331,7 @@ object BonLivGestionF: TBonLivGestionF
       ShowHint = True
       Spacing = -1
       Visible = False
+      OnClick = SNumberProduitBonLivGBtnClick
       Version = '1.7.2.0'
       TMSStyle = 0
     end

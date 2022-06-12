@@ -485,8 +485,8 @@ begin
           BonRecGestionF.ListAddProduitBonRecGBtn.ImageIndex:=41;//13 fo A
           BonRecGestionF.NewAddProduitBonRecGBtn.Enabled:= False;
           BonRecGestionF.NewAddProduitBonRecGBtn.ImageIndex:=28;//4 fo A
-          BonRecGestionF.NSeriesProduitBonRecGBtn.Enabled:= False;
-          BonRecGestionF.NSeriesProduitBonRecGBtn.ImageIndex:=64;//63 fo A
+          BonRecGestionF.SNumberProduitBonRecGBtn.Enabled:= False;
+          BonRecGestionF.SNumberProduitBonRecGBtn.ImageIndex:=64;//63 fo A
           BonRecGestionF.DeleteProduitBonRecGBtn.Enabled:= False;
           BonRecGestionF.DeleteProduitBonRecGBtn.ImageIndex:=36;//14 fo A
           BonRecGestionF.ClearProduitBonRecGBtn.Enabled:= False;
@@ -608,8 +608,8 @@ begin
           BonLivGestionF.ListAddProduitBonLivGBtn.ImageIndex:=41;//13 fo A
           BonLivGestionF.NewAddProduitBonLivGBtn.Enabled:= False;
           BonLivGestionF.NewAddProduitBonLivGBtn.ImageIndex:=28;//4 fo A
-          BonLivGestionF.NSeriesProduitBonLivGBtn.Enabled:= False;
-          BonLivGestionF.NSeriesProduitBonLivGBtn.ImageIndex:=64;//63 fo A
+          BonLivGestionF.SNumberProduitBonLivGBtn.Enabled:= False;
+          BonLivGestionF.SNumberProduitBonLivGBtn.ImageIndex:=64;//63 fo A
           BonLivGestionF.DeleteProduitBonLivGBtn.Enabled:= False;
           BonLivGestionF.DeleteProduitBonLivGBtn.ImageIndex:=36;//14 fo A
           BonLivGestionF.ClearProduitBonLivGBtn.Enabled:= False;

@@ -1261,7 +1261,7 @@ object BonRecGestionF: TBonRecGestionF
       Version = '1.7.2.0'
       TMSStyle = 0
     end
-    object NSeriesProduitBonRecGBtn: TAdvToolButton
+    object SNumberProduitBonRecGBtn: TAdvToolButton
       Left = 732
       Top = 246
       Width = 30
@@ -1291,6 +1291,7 @@ object BonRecGestionF: TBonRecGestionF
       ShowHint = True
       Spacing = -1
       Visible = False
+      OnClick = SNumberProduitBonRecGBtnClick
       Version = '1.7.2.0'
       TMSStyle = 0
     end
