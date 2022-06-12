@@ -4236,4 +4236,10 @@ object DataModuleF: TDataModuleF
     Left = 76
     Top = 272
   end
+  object FDQuery1: TFDQuery
+    FilterOptions = [foCaseInsensitive]
+    Connection = MainForm.GstockdcConnection
+    Left = 884
+    Top = 362
+  end
 end
