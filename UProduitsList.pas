@@ -844,7 +844,8 @@ begin
         begin
           MainForm.SQLQuery4.Active:=false;
           MainForm.SQLQuery4.SQL.Clear;
-          MainForm.SQLQuery4.SQL.Text:='Select * FROM n_series where code_p = '+ IntToStr(MainForm.ProduitTable.FieldByName('code_p').AsInteger);
+          MainForm.SQLQuery4.SQL.Text:='Select * FROM n_series where code_p = '+
+           IntToStr(MainForm.ProduitTable.FieldByName('code_p').AsInteger) + ' AND (sold_ns = false OR sold_ns is NULL)';
           MainForm.SQLQuery4.Active:=True;
           if NOT MainForm.SQLQuery4.IsEmpty then
           begin

@@ -1,0 +1,11 @@
+0~ refer_p~ Réference~ 80~ -1
+1~ nom_p~ Désignation~ 250~ -1
+2~ nom_u~ Unité~ 40~ -1
+3~ quttheo_il~ Qté Théorique~ 85~ -1
+4~ qutphys_il~ Qté Physique~ 85~ -1
+5~ calcgap_il~ Ecart~ 85~ -1
+6~ TDBGridColumnEh~ P.M.P~ 100~ 0
+7~ valtheo_il~ Valeur Stock Théo.~ 100~ -1
+8~ valphys_il~ Valeur Stock Phys.~ 100~ -1
+9~ valgap_il~ Valeur Stock Ecart.~ 100~ -1
+10~ nom_l~ Localisation~ 150~ -1

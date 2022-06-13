@@ -2441,7 +2441,32 @@ begin
           SNumberGestionF.Top := MainForm.Top + 5;
           AnimateWindow(SNumberGestionF.Handle, 175, AW_VER_POSITIVE or AW_SLIDE or AW_ACTIVATE);
 
-          SNumberGestionF.Show;
+
+
+          //check if it has serial numbers
+        begin
+          MainForm.SQLQuery4.Active:=false;
+          MainForm.SQLQuery4.SQL.Clear;
+          MainForm.SQLQuery4.SQL.Text:='Select * FROM n_series WHERE code_p = '+
+           IntToStr(MainForm.Bona_recPlistTable.FieldByName('code_p').AsInteger) + ' AND (sold_ns = false OR sold_ns is NULL)';
+          MainForm.SQLQuery4.Active:=True;
+          if NOT MainForm.SQLQuery4.IsEmpty then
+          begin
+
+            MainForm.SQLQuery4.First;
+            while not MainForm.SQLQuery4.Eof do
+            begin
+              SNumberGestionF.NSeriesDispoLsBox.Items.Add(MainForm.SQLQuery4.FieldByName('nom_ns').AsString);
+              MainForm.SQLQuery4.Next;
+            end;
+
+          end;
+        end;
+
+        MainForm.SQLQuery4.Active:=false;
+        MainForm.SQLQuery4.SQL.Clear;
+
+        SNumberGestionF.Show;
 end;
 
 procedure TBonRecGestionF.RemisePerctageBonRecGEdtKeyPress(Sender: TObject;

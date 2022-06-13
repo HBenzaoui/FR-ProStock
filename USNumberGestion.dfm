@@ -3,8 +3,8 @@ object SNumberGestionF: TSNumberGestionF
   Top = 0
   BorderStyle = bsNone
   Caption = 'SNumberGestionF'
-  ClientHeight = 313
-  ClientWidth = 495
+  ClientHeight = 420
+  ClientWidth = 610
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -15,32 +15,30 @@ object SNumberGestionF: TSNumberGestionF
   OldCreateOrder = False
   OnCreate = FormCreate
   OnDestroy = FormDestroy
+  OnKeyPress = FormKeyPress
   DesignSize = (
-    495
-    313)
+    610
+    420)
   PixelsPerInch = 96
   TextHeight = 13
-  object OKAddUniteSBtn: TAdvToolButton
-    Tag = 2
-    Left = 154
-    Top = 275
-    Width = 187
+  object CancelBtn: TAdvToolButton
+    Left = 365
+    Top = 382
+    Width = 100
     Height = 30
     Cursor = crHandPoint
-    Anchors = [akLeft, akBottom]
     AutoThemeAdapt = False
-    BorderColor = 7854350
-    BorderDownColor = 7854350
-    BorderHotColor = 15970832
-    Color = clWhite
-    ColorDown = 7854350
-    ColorHot = clBtnFace
+    BorderColor = 4666873
+    BorderDownColor = 4666873
+    BorderHotColor = 4666840
+    ColorDown = clBtnFace
+    ColorHot = clWhite
     ColorChecked = clNone
     DropDownSplit = False
-    Caption = 'OK'
+    Caption = 'Annuler'
     Font.Charset = DEFAULT_CHARSET
-    Font.Color = 4207405
-    Font.Height = 18
+    Font.Color = 4666873
+    Font.Height = -16
     Font.Name = 'Roboto'
     Font.Style = []
     ParentFont = False
@@ -48,13 +46,127 @@ object SNumberGestionF: TSNumberGestionF
     Rounded = True
     ShowHint = True
     Spacing = -1
+    OnClick = CancelBtnClick
     Version = '1.7.2.0'
     TMSStyle = 0
+  end
+  object OKBtn: TAdvToolButton
+    Left = 479
+    Top = 382
+    Width = 100
+    Height = 30
+    Cursor = crHandPoint
+    AutoThemeAdapt = False
+    BorderColor = 7854350
+    BorderDownColor = 7854350
+    BorderHotColor = clBtnFace
+    Color = 7854350
+    ColorTo = 7854350
+    ColorDown = 7854350
+    ColorDownTo = 7854350
+    ColorHot = 8453888
+    ColorHotTo = 8453888
+    ColorChecked = clNone
+    DropDownSplit = False
+    Caption = 'Valider'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWhite
+    Font.Height = -16
+    Font.Name = 'Roboto'
+    Font.Style = [fsBold]
+    ParentFont = False
+    ParentShowHint = False
+    Rounded = True
+    ShowHint = True
+    Spacing = -1
+    OnClick = OKBtnClick
+    Version = '1.7.2.0'
+    TMSStyle = 0
+  end
+  object label1: TLabel
+    Left = 22
+    Top = 50
+    Width = 73
+    Height = 18
+    Caption = 'R'#233'ference:'
+    Color = 4207405
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = 4207405
+    Font.Height = -15
+    Font.Name = 'Roboto'
+    Font.Style = []
+    ParentColor = False
+    ParentFont = False
+    StyleElements = []
+  end
+  object RefNSeriesLbl: TLabel
+    Left = 104
+    Top = 51
+    Width = 47
+    Height = 18
+    Caption = 'Article:'
+    Color = 4207405
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = 4207405
+    Font.Height = -15
+    Font.Name = 'Roboto'
+    Font.Style = []
+    ParentColor = False
+    ParentFont = False
+    StyleElements = []
+  end
+  object Label3: TLabel
+    Left = 302
+    Top = 219
+    Width = 8
+    Height = 18
+    Caption = '>'
+    Color = 9532518
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = 4207405
+    Font.Height = -15
+    Font.Name = 'Roboto'
+    Font.Style = []
+    ParentColor = False
+    ParentFont = False
+    StyleElements = []
+  end
+  object Label2: TLabel
+    Left = 8
+    Top = 73
+    Width = 87
+    Height = 18
+    Caption = 'D'#233'signation:'
+    Color = 4207405
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = 4207405
+    Font.Height = -15
+    Font.Name = 'Roboto'
+    Font.Style = []
+    ParentColor = False
+    ParentFont = False
+    StyleElements = []
+  end
+  object NameNSeriesLbl: TLabel
+    Left = 104
+    Top = 73
+    Width = 47
+    Height = 18
+    Caption = 'Article:'
+    Color = 4207405
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = 4207405
+    Font.Height = -15
+    Font.Name = 'Roboto'
+    Font.Style = []
+    ParentColor = False
+    ParentFont = False
+    StyleElements = []
   end
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 495
+    Width = 610
     Height = 45
     Align = alTop
     BevelOuter = bvNone
@@ -63,7 +175,7 @@ object SNumberGestionF: TSNumberGestionF
     DoubleBuffered = True
     Font.Charset = DEFAULT_CHARSET
     Font.Color = 4207405
-    Font.Height = 22
+    Font.Height = -24
     Font.Name = 'Roboto'
     Font.Style = []
     ParentBackground = False
@@ -71,19 +183,63 @@ object SNumberGestionF: TSNumberGestionF
     ParentFont = False
     TabOrder = 0
     StyleElements = []
+    ExplicitWidth = 510
   end
   object Panel2: TPanel
     Left = 0
-    Top = 265
-    Width = 495
+    Top = 372
+    Width = 610
     Height = 2
     Anchors = [akLeft, akBottom]
     BevelOuter = bvNone
-    Color = 10379008
+    Color = 2673406
     DoubleBuffered = True
     ParentBackground = False
     ParentDoubleBuffered = False
     TabOrder = 1
     StyleElements = []
+  end
+  object NSeriesDispoLsBox: TListBox
+    Left = 32
+    Top = 98
+    Width = 266
+    Height = 268
+    Cursor = crHandPoint
+    Style = lbOwnerDrawFixed
+    BevelInner = bvSpace
+    BevelKind = bkFlat
+    BevelOuter = bvSpace
+    BorderStyle = bsNone
+    Color = 15395562
+    Ctl3D = False
+    ExtendedSelect = False
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -15
+    Font.Name = 'Roboto'
+    Font.Style = []
+    ItemHeight = 26
+    ParentCtl3D = False
+    ParentFont = False
+    TabOrder = 2
+    OnClick = NSeriesDispoLsBoxClick
+    OnDrawItem = NSeriesDispoLsBoxDrawItem
+  end
+  object NSeriesNewMem: TMemo
+    Left = 314
+    Top = 98
+    Width = 265
+    Height = 268
+    BevelInner = bvSpace
+    BevelKind = bkFlat
+    BevelOuter = bvSpace
+    BorderStyle = bsNone
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -15
+    Font.Name = 'Roboto'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 3
   end
 end

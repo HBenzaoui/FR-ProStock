@@ -23,15 +23,15 @@ object LoginUserF: TLoginUserF
   PixelsPerInch = 96
   TextHeight = 13
   object UserL: TLabel
-    Left = 111
+    Left = 109
     Top = 101
-    Width = 60
-    Height = 16
+    Width = 59
+    Height = 15
     Caption = 'Utilisateur'
     Color = 15722984
     Font.Charset = DEFAULT_CHARSET
     Font.Color = 4207405
-    Font.Height = 16
+    Font.Height = -13
     Font.Name = 'Roboto'
     Font.Style = []
     ParentColor = False
@@ -39,15 +39,15 @@ object LoginUserF: TLoginUserF
     StyleElements = []
   end
   object PasswordL: TLabel
-    Left = 90
+    Left = 88
     Top = 144
-    Width = 81
-    Height = 16
+    Width = 78
+    Height = 15
     Caption = 'Mot de Passe'
     Color = 15722984
     Font.Charset = DEFAULT_CHARSET
     Font.Color = 4207405
-    Font.Height = 16
+    Font.Height = -13
     Font.Name = 'Roboto'
     Font.Style = []
     ParentColor = False
@@ -55,7 +55,7 @@ object LoginUserF: TLoginUserF
     StyleElements = []
   end
   object Image1: TImage
-    Left = 22
+    Left = 20
     Top = 74
     Width = 65
     Height = 70
@@ -577,9 +577,9 @@ object LoginUserF: TLoginUserF
       FF00FFFFFF00}
   end
   object PassCheckEroorGLbl: TLabel
-    Left = 178
+    Left = 171
     Top = 124
-    Width = 209
+    Width = 215
     Height = 15
     Alignment = taCenter
     AutoSize = False
@@ -597,9 +597,9 @@ object LoginUserF: TLoginUserF
     StyleElements = [seClient, seBorder]
   end
   object UserCheckEroorGLbl: TLabel
-    Left = 178
+    Left = 171
     Top = 80
-    Width = 209
+    Width = 215
     Height = 15
     Alignment = taCenter
     AutoSize = False
@@ -617,15 +617,15 @@ object LoginUserF: TLoginUserF
     StyleElements = [seClient, seBorder]
   end
   object FolderL: TLabel
-    Left = 125
+    Left = 123
     Top = 59
-    Width = 46
-    Height = 16
+    Width = 45
+    Height = 15
     Caption = 'Dossier'
     Color = 15722984
     Font.Charset = DEFAULT_CHARSET
     Font.Color = 4207405
-    Font.Height = 16
+    Font.Height = -13
     Font.Name = 'Roboto'
     Font.Style = []
     ParentColor = False
@@ -665,9 +665,9 @@ object LoginUserF: TLoginUserF
     TMSStyle = 0
   end
   object UserCheckGErrorP: TPanel
-    Left = 177
+    Left = 170
     Top = 94
-    Width = 211
+    Width = 217
     Height = 30
     BevelOuter = bvNone
     BevelWidth = 2
@@ -682,9 +682,9 @@ object LoginUserF: TLoginUserF
     StyleElements = []
   end
   object PassCheckGErrorP: TPanel
-    Left = 177
+    Left = 170
     Top = 137
-    Width = 211
+    Width = 217
     Height = 30
     BevelOuter = bvNone
     BevelWidth = 2
@@ -706,10 +706,10 @@ object LoginUserF: TLoginUserF
     Align = alTop
     BevelOuter = bvNone
     Caption = 'Identifiez-vouz'
-    Color = 10444545
+    Color = 7854350
     Font.Charset = DEFAULT_CHARSET
-    Font.Color = 15722984
-    Font.Height = 27
+    Font.Color = clBtnFace
+    Font.Height = -24
     Font.Name = 'Roboto'
     Font.Style = []
     ParentBackground = False
@@ -724,14 +724,14 @@ object LoginUserF: TLoginUserF
     Height = 2
     Anchors = []
     BevelOuter = bvNone
-    Color = 12148480
+    Color = 7854350
     ParentBackground = False
     TabOrder = 3
     StyleElements = []
   end
   object OKP: TPanel
-    Left = 182
-    Top = 189
+    Left = 277
+    Top = 191
     Width = 110
     Height = 38
     Anchors = []
@@ -754,6 +754,9 @@ object LoginUserF: TLoginUserF
       Height = 30
       Cursor = crHandPoint
       AutoThemeAdapt = False
+      BorderColor = 7854350
+      BorderDownColor = 7854350
+      BorderHotColor = clBtnFace
       Color = 7854350
       ColorTo = 7854350
       ColorDown = 7854350
@@ -762,14 +765,16 @@ object LoginUserF: TLoginUserF
       ColorHotTo = 8453888
       ColorChecked = clNone
       DropDownSplit = False
-      Caption = 'Login'
+      Caption = 'Valider'
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = 4207405
-      Font.Height = 18
+      Font.Color = clWhite
+      Font.Height = -16
       Font.Name = 'Roboto'
-      Font.Style = []
+      Font.Style = [fsBold]
       ParentFont = False
-      Shaded = False
+      ParentShowHint = False
+      Rounded = True
+      ShowHint = True
       Spacing = -1
       OnClick = LoginBtnClick
       Version = '1.7.2.0'
@@ -777,8 +782,8 @@ object LoginUserF: TLoginUserF
     end
   end
   object CancelP: TPanel
-    Left = 300
-    Top = 189
+    Left = 168
+    Top = 191
     Width = 110
     Height = 38
     Anchors = []
@@ -801,26 +806,23 @@ object LoginUserF: TLoginUserF
       Height = 30
       Cursor = crHandPoint
       AutoThemeAdapt = False
-      BorderColor = 8819962
-      BorderDownColor = 15722984
-      BorderHotColor = 4666873
-      Color = 15722984
-      ColorTo = 15722984
-      ColorDown = 4666873
-      ColorDownTo = 4666873
-      ColorHot = 15722984
-      ColorHotTo = 15722984
-      ColorChecked = 15722984
-      ColorCheckedTo = 15722984
+      BorderColor = 4666873
+      BorderDownColor = 4666873
+      BorderHotColor = 4666840
+      ColorDown = clBtnFace
+      ColorHot = clWhite
+      ColorChecked = clNone
       DropDownSplit = False
       Caption = 'Annuler'
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = 4207405
-      Font.Height = 18
+      Font.Color = 4666873
+      Font.Height = -16
       Font.Name = 'Roboto'
       Font.Style = []
       ParentFont = False
-      Shaded = False
+      ParentShowHint = False
+      Rounded = True
+      ShowHint = True
       Spacing = -1
       OnClick = CancelBtnClick
       Version = '1.7.2.0'
@@ -828,9 +830,9 @@ object LoginUserF: TLoginUserF
     end
   end
   object UserCbx: TComboBox
-    Left = 179
+    Left = 172
     Top = 96
-    Width = 207
+    Width = 213
     Height = 26
     Style = csDropDownList
     Ctl3D = True
@@ -850,7 +852,7 @@ object LoginUserF: TLoginUserF
     OnExit = UserCbxExit
   end
   object PasswordEdt: TcxTextEdit
-    Left = 179
+    Left = 172
     Top = 139
     ParentFont = False
     Properties.EchoMode = eemPassword
@@ -867,12 +869,12 @@ object LoginUserF: TLoginUserF
     OnDblClick = PasswordEdtDblClick
     OnKeyPress = PasswordEdtKeyPress
     OnMouseEnter = PasswordEdtMouseEnter
-    Width = 207
+    Width = 213
   end
   object FolderCbx: TComboBox
-    Left = 179
+    Left = 172
     Top = 54
-    Width = 207
+    Width = 213
     Height = 26
     Style = csDropDownList
     Ctl3D = True
