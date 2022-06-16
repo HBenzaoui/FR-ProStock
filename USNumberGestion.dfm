@@ -2,7 +2,7 @@ object SNumberGestionF: TSNumberGestionF
   Left = 0
   Top = 0
   BorderStyle = bsNone
-  Caption = 'SNumberGestionF'
+  Caption = 'Serial Number '
   ClientHeight = 420
   ClientWidth = 610
   Color = clBtnFace
@@ -84,14 +84,14 @@ object SNumberGestionF: TSNumberGestionF
     TMSStyle = 0
   end
   object label1: TLabel
-    Left = 22
-    Top = 50
-    Width = 73
+    Left = 64
+    Top = 51
+    Width = 27
     Height = 18
-    Caption = 'R'#233'ference:'
-    Color = 4207405
+    Caption = 'Ref:'
+    Color = 10066329
     Font.Charset = DEFAULT_CHARSET
-    Font.Color = 4207405
+    Font.Color = 10066329
     Font.Height = -15
     Font.Name = 'Roboto'
     Font.Style = []
@@ -100,11 +100,11 @@ object SNumberGestionF: TSNumberGestionF
     StyleElements = []
   end
   object RefNSeriesLbl: TLabel
-    Left = 104
+    Left = 95
     Top = 51
-    Width = 47
+    Width = 23
     Height = 18
-    Caption = 'Article:'
+    Caption = 'Ref'
     Color = 4207405
     Font.Charset = DEFAULT_CHARSET
     Font.Color = 4207405
@@ -121,9 +121,9 @@ object SNumberGestionF: TSNumberGestionF
     Width = 8
     Height = 18
     Caption = '>'
-    Color = 9532518
+    Color = 10066329
     Font.Charset = DEFAULT_CHARSET
-    Font.Color = 4207405
+    Font.Color = 10066329
     Font.Height = -15
     Font.Name = 'Roboto'
     Font.Style = []
@@ -132,14 +132,14 @@ object SNumberGestionF: TSNumberGestionF
     StyleElements = []
   end
   object Label2: TLabel
-    Left = 8
+    Left = 4
     Top = 73
     Width = 87
     Height = 18
     Caption = 'D'#233'signation:'
     Color = 4207405
     Font.Charset = DEFAULT_CHARSET
-    Font.Color = 4207405
+    Font.Color = 10066329
     Font.Height = -15
     Font.Name = 'Roboto'
     Font.Style = []
@@ -148,11 +148,11 @@ object SNumberGestionF: TSNumberGestionF
     StyleElements = []
   end
   object NameNSeriesLbl: TLabel
-    Left = 104
-    Top = 73
-    Width = 47
+    Left = 95
+    Top = 74
+    Width = 43
     Height = 18
-    Caption = 'Article:'
+    Caption = 'Article'
     Color = 4207405
     Font.Charset = DEFAULT_CHARSET
     Font.Color = 4207405
@@ -181,9 +181,8 @@ object SNumberGestionF: TSNumberGestionF
     ParentBackground = False
     ParentDoubleBuffered = False
     ParentFont = False
-    TabOrder = 0
+    TabOrder = 1
     StyleElements = []
-    ExplicitWidth = 510
   end
   object Panel2: TPanel
     Left = 0
@@ -196,7 +195,7 @@ object SNumberGestionF: TSNumberGestionF
     DoubleBuffered = True
     ParentBackground = False
     ParentDoubleBuffered = False
-    TabOrder = 1
+    TabOrder = 2
     StyleElements = []
   end
   object NSeriesDispoLsBox: TListBox
@@ -214,32 +213,36 @@ object SNumberGestionF: TSNumberGestionF
     Ctl3D = False
     ExtendedSelect = False
     Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
+    Font.Color = 4207405
     Font.Height = -15
     Font.Name = 'Roboto'
     Font.Style = []
     ItemHeight = 26
     ParentCtl3D = False
     ParentFont = False
-    TabOrder = 2
+    TabOrder = 0
     OnClick = NSeriesDispoLsBoxClick
     OnDrawItem = NSeriesDispoLsBoxDrawItem
   end
-  object NSeriesNewMem: TMemo
-    Left = 314
+  object NSeriesNewMem: TRichEdit
+    Left = 316
     Top = 98
     Width = 265
     Height = 268
     BevelInner = bvSpace
-    BevelKind = bkFlat
     BevelOuter = bvSpace
+    BevelKind = bkFlat
     BorderStyle = bsNone
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
+    BorderWidth = 1
+    Font.Charset = ANSI_CHARSET
+    Font.Color = 4207405
     Font.Height = -15
     Font.Name = 'Roboto'
     Font.Style = []
+    HideScrollBars = False
+    MaxLength = 7
     ParentFont = False
     TabOrder = 3
+    Zoom = 100
   end
 end

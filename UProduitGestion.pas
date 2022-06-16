@@ -33,8 +33,6 @@ type
     LineP03: TPanel;
     ObserProduitGMem: TMemo;
     BottomP: TPanel;
-    OKProduitGBtn: TAdvToolButton;
-    CancelProduitGBtn: TAdvToolButton;
     UniteProduitGCbx: TComboBox;
     Label2: TLabel;
     TVAProduitGCbx: TComboBox;
@@ -123,6 +121,8 @@ type
     AddMarkProduitGBtn: TAdvToolButton;
     NSeriesProduitGMem: TMemo;
     NSeriesProduitGLbl: TLabel;
+    CancelProduitGBtn: TAdvToolButton;
+    OKProduitGBtn: TAdvToolButton;
     procedure ShowCalculaturProduitGBtnClick(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -230,6 +230,8 @@ type
     procedure TVAProduitGCbxKeyPress(Sender: TObject; var Key: Char);
     procedure MarkProduitGCbxEnter(Sender: TObject);
     procedure AddMarkProduitGBtnClick(Sender: TObject);
+    procedure CancelProduitGBtnMouseEnter(Sender: TObject);
+    procedure CancelProduitGBtnMouseLeave(Sender: TObject);
 
   private
     { Private declarations }
@@ -890,6 +892,18 @@ begin
     end;
     PAdded := False;
     FreeAndNil(ProduitGestionF);
+end;
+
+procedure TProduitGestionF.CancelProduitGBtnMouseEnter(Sender: TObject);
+begin
+CancelProduitGBtn.Font.Color:= $00C90E84;
+end;
+
+procedure TProduitGestionF.CancelProduitGBtnMouseLeave(Sender: TObject);
+begin
+if Assigned(CancelProduitGBtn) then
+
+CancelProduitGBtn.Font.Color:= $00FC575A;
 end;
 
 procedure TProduitGestionF.CodeBarProduitGEdtChange(Sender: TObject);

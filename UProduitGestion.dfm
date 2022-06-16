@@ -4,7 +4,7 @@ object ProduitGestionF: TProduitGestionF
   BorderStyle = bsDialog
   Caption = 'Nouveau Produit'
   ClientHeight = 668
-  ClientWidth = 685
+  ClientWidth = 662
   Color = 15527148
   DoubleBuffered = True
   Font.Charset = DEFAULT_CHARSET
@@ -28,8 +28,8 @@ object ProduitGestionF: TProduitGestionF
   object ProduitGPgControl: TsPageControl
     Left = 0
     Top = 0
-    Width = 685
-    Height = 614
+    Width = 662
+    Height = 668
     ActivePage = GeneralClientGTB
     Align = alClient
     DoubleBuffered = True
@@ -50,17 +50,18 @@ object ProduitGestionF: TProduitGestionF
       object GeneralTB: TPanel
         Left = 0
         Top = 0
-        Width = 677
-        Height = 579
+        Width = 654
+        Height = 633
         Align = alClient
         BevelOuter = bvNone
         Color = clWhite
         ParentBackground = False
         TabOrder = 0
         StyleElements = []
+        ExplicitLeft = -210
         DesignSize = (
-          677
-          579)
+          654
+          633)
         object FamilleProduitGLbl: TLabel
           Left = 36
           Top = 110
@@ -341,7 +342,7 @@ object ProduitGestionF: TProduitGestionF
           StyleElements = []
         end
         object Label12: TLabel
-          Left = 472
+          Left = 469
           Top = 285
           Width = 50
           Height = 16
@@ -373,7 +374,7 @@ object ProduitGestionF: TProduitGestionF
           StyleElements = []
         end
         object Label14: TLabel
-          Left = 578
+          Left = 574
           Top = 285
           Width = 39
           Height = 16
@@ -469,7 +470,7 @@ object ProduitGestionF: TProduitGestionF
           StyleElements = []
         end
         object Label20: TLabel
-          Left = 633
+          Left = 626
           Top = 312
           Width = 11
           Height = 18
@@ -485,7 +486,7 @@ object ProduitGestionF: TProduitGestionF
           StyleElements = [seClient, seBorder]
         end
         object Label21: TLabel
-          Left = 633
+          Left = 626
           Top = 344
           Width = 11
           Height = 18
@@ -501,7 +502,7 @@ object ProduitGestionF: TProduitGestionF
           StyleElements = [seClient, seBorder]
         end
         object Label22: TLabel
-          Left = 633
+          Left = 626
           Top = 377
           Width = 11
           Height = 18
@@ -517,7 +518,7 @@ object ProduitGestionF: TProduitGestionF
           StyleElements = [seClient, seBorder]
         end
         object Label23: TLabel
-          Left = 633
+          Left = 626
           Top = 408
           Width = 11
           Height = 18
@@ -533,7 +534,7 @@ object ProduitGestionF: TProduitGestionF
           StyleElements = [seClient, seBorder]
         end
         object Label24: TLabel
-          Left = 633
+          Left = 626
           Top = 440
           Width = 11
           Height = 18
@@ -549,11 +550,11 @@ object ProduitGestionF: TProduitGestionF
           StyleElements = [seClient, seBorder]
         end
         object Label25: TLabel
-          Left = 18
+          Left = 3
           Top = 496
-          Width = 89
+          Width = 85
           Height = 18
-          Caption = 'Stock Initial :'
+          Caption = 'Stock Initial:'
           Color = 4207405
           Font.Charset = DEFAULT_CHARSET
           Font.Color = 4207405
@@ -565,7 +566,7 @@ object ProduitGestionF: TProduitGestionF
           StyleElements = []
         end
         object Label26: TLabel
-          Left = 494
+          Left = 464
           Top = 496
           Width = 47
           Height = 18
@@ -581,8 +582,8 @@ object ProduitGestionF: TProduitGestionF
           StyleElements = []
         end
         object Label27: TLabel
-          Left = 238
-          Top = 497
+          Left = 214
+          Top = 496
           Width = 94
           Height = 18
           Caption = 'Stock Actuel :'
@@ -597,8 +598,8 @@ object ProduitGestionF: TProduitGestionF
           StyleElements = []
         end
         object Label28: TLabel
-          Left = 21
-          Top = 542
+          Left = 3
+          Top = 543
           Width = 86
           Height = 18
           Caption = 'Fournisseur:'
@@ -629,7 +630,7 @@ object ProduitGestionF: TProduitGestionF
           StyleElements = [seClient, seBorder]
         end
         object RandomCBProduitGBtn: TAdvToolButton
-          Left = 626
+          Left = 601
           Top = 14
           Width = 26
           Height = 26
@@ -661,7 +662,7 @@ object ProduitGestionF: TProduitGestionF
           TMSStyle = 0
         end
         object Label9: TLabel
-          Left = 350
+          Left = 320
           Top = 18
           Width = 91
           Height = 18
@@ -773,7 +774,7 @@ object ProduitGestionF: TProduitGestionF
           TMSStyle = 0
         end
         object AddFourProduitGBtn: TAdvToolButton
-          Left = 423
+          Left = 627
           Top = 539
           Width = 26
           Height = 26
@@ -805,7 +806,7 @@ object ProduitGestionF: TProduitGestionF
           TMSStyle = 0
         end
         object ShowCalculaturProduitGBtn: TAdvToolButton
-          Left = 612
+          Left = 601
           Top = 244
           Width = 26
           Height = 26
@@ -837,7 +838,7 @@ object ProduitGestionF: TProduitGestionF
           TMSStyle = 0
         end
         object MulteCBProduitGBtn: TAdvToolButton
-          Left = 652
+          Left = 627
           Top = 14
           Width = 26
           Height = 26
@@ -889,7 +890,7 @@ object ProduitGestionF: TProduitGestionF
           StyleElements = [seClient, seBorder]
         end
         object ShowKeyBoardProduitGBtn: TAdvToolButton
-          Left = 644
+          Left = 627
           Top = 244
           Width = 26
           Height = 26
@@ -954,7 +955,7 @@ object ProduitGestionF: TProduitGestionF
           StyleElements = []
         end
         object AddMarkProduitGBtn: TAdvToolButton
-          Left = 626
+          Left = 627
           Top = 106
           Width = 26
           Height = 26
@@ -986,6 +987,74 @@ object ProduitGestionF: TProduitGestionF
           Version = '1.7.2.0'
           TMSStyle = 0
         end
+        object CancelProduitGBtn: TAdvToolButton
+          Left = 410
+          Top = 594
+          Width = 100
+          Height = 30
+          Cursor = crHandPoint
+          AutoThemeAdapt = False
+          BorderColor = 16537434
+          BorderDownColor = 16537434
+          BorderHotColor = 13176452
+          Color = clWhite
+          ColorTo = clWhite
+          ColorDown = clWhite
+          ColorDownTo = clWhite
+          ColorHot = clWhite
+          ColorHotTo = clWhite
+          ColorChecked = clNone
+          DropDownSplit = False
+          Caption = 'Annuler'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 16537434
+          Font.Height = -16
+          Font.Name = 'Roboto'
+          Font.Style = []
+          ParentFont = False
+          ParentShowHint = False
+          Rounded = True
+          ShowHint = True
+          Spacing = -1
+          OnClick = CancelProduitGBtnClick
+          OnMouseEnter = CancelProduitGBtnMouseEnter
+          OnMouseLeave = CancelProduitGBtnMouseLeave
+          Version = '1.7.2.0'
+          TMSStyle = 0
+        end
+        object OKProduitGBtn: TAdvToolButton
+          Left = 523
+          Top = 594
+          Width = 100
+          Height = 30
+          Cursor = crHandPoint
+          AutoThemeAdapt = False
+          BorderColor = 16537434
+          BorderDownColor = 16537434
+          BorderHotColor = 13176452
+          Color = 16537434
+          ColorTo = 16537434
+          ColorDown = 16537434
+          ColorDownTo = 16537434
+          ColorHot = 13176452
+          ColorHotTo = 13176452
+          ColorChecked = clNone
+          DropDownSplit = False
+          Caption = 'Valider'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWhite
+          Font.Height = -16
+          Font.Name = 'Roboto'
+          Font.Style = []
+          ParentFont = False
+          ParentShowHint = False
+          Rounded = True
+          ShowHint = True
+          Spacing = -1
+          OnClick = OKProduitGBtnClick
+          Version = '1.7.2.0'
+          TMSStyle = 0
+        end
         object NameProduitGErrorP: TPanel
           Left = 90
           Top = 60
@@ -1006,11 +1075,11 @@ object ProduitGestionF: TProduitGestionF
         object LineP: TPanel
           Left = 0
           Top = 236
-          Width = 684
-          Height = 2
+          Width = 661
+          Height = 1
           Anchors = [akLeft, akTop, akRight]
           BevelOuter = bvNone
-          Color = 7854350
+          Color = 16537434
           DoubleBuffered = True
           ParentBackground = False
           ParentDoubleBuffered = False
@@ -1214,13 +1283,13 @@ object ProduitGestionF: TProduitGestionF
           OnKeyPress = PrixATTCProduitEdtKeyPress
         end
         object LineP3: TPanel
-          Left = 73
+          Left = 86
           Top = 270
-          Width = 83
+          Width = 60
           Height = 1
           Anchors = [akLeft, akTop, akRight]
           BevelOuter = bvNone
-          Color = 7854350
+          Color = 16537434
           DoubleBuffered = True
           ParentBackground = False
           ParentDoubleBuffered = False
@@ -1251,7 +1320,7 @@ object ProduitGestionF: TProduitGestionF
           OnKeyPress = PrixVHTDProduitEdtKeyPress
         end
         object PrixVTTCDProduitEdt: TEdit
-          Left = 441
+          Left = 438
           Top = 307
           Width = 114
           Height = 26
@@ -1274,13 +1343,13 @@ object ProduitGestionF: TProduitGestionF
           OnKeyPress = PrixVTTCDProduitEdtKeyPress
         end
         object LineP4: TPanel
-          Left = 394
+          Left = 406
           Top = 271
-          Width = 94
+          Width = 71
           Height = 1
           Anchors = [akLeft, akTop, akRight]
           BevelOuter = bvNone
-          Color = 7854350
+          Color = 16537434
           DoubleBuffered = True
           ParentBackground = False
           ParentDoubleBuffered = False
@@ -1288,7 +1357,7 @@ object ProduitGestionF: TProduitGestionF
           StyleElements = []
         end
         object MargeDProduitEdt: TEdit
-          Left = 567
+          Left = 563
           Top = 307
           Width = 60
           Height = 26
@@ -1334,7 +1403,7 @@ object ProduitGestionF: TProduitGestionF
           OnKeyPress = PrixVHTRProduitEdtKeyPress
         end
         object PrixVTTCRProduitEdt: TEdit
-          Left = 441
+          Left = 438
           Top = 339
           Width = 114
           Height = 26
@@ -1357,7 +1426,7 @@ object ProduitGestionF: TProduitGestionF
           OnKeyPress = PrixVTTCRProduitEdtKeyPress
         end
         object MargeRProduitEdt: TEdit
-          Left = 567
+          Left = 563
           Top = 339
           Width = 60
           Height = 26
@@ -1402,7 +1471,7 @@ object ProduitGestionF: TProduitGestionF
           OnKeyPress = PrixVHTGProduitEdtKeyPress
         end
         object PrixVTTCGProduitEdt: TEdit
-          Left = 441
+          Left = 438
           Top = 371
           Width = 114
           Height = 26
@@ -1425,7 +1494,7 @@ object ProduitGestionF: TProduitGestionF
           OnKeyPress = PrixVTTCGProduitEdtKeyPress
         end
         object MargeGProduitEdt: TEdit
-          Left = 567
+          Left = 563
           Top = 371
           Width = 60
           Height = 26
@@ -1470,7 +1539,7 @@ object ProduitGestionF: TProduitGestionF
           OnKeyPress = PrixVHTA1ProduitEdtKeyPress
         end
         object PrixVTTCA1ProduitEdt: TEdit
-          Left = 441
+          Left = 438
           Top = 403
           Width = 114
           Height = 26
@@ -1493,7 +1562,7 @@ object ProduitGestionF: TProduitGestionF
           OnKeyPress = PrixVTTCA1ProduitEdtKeyPress
         end
         object MargeA1ProduitEdt: TEdit
-          Left = 567
+          Left = 563
           Top = 403
           Width = 60
           Height = 26
@@ -1538,7 +1607,7 @@ object ProduitGestionF: TProduitGestionF
           OnKeyPress = PrixVHTA2ProduitEdtKeyPress
         end
         object PrixVTTCA2ProduitEdt: TEdit
-          Left = 441
+          Left = 438
           Top = 435
           Width = 114
           Height = 26
@@ -1561,7 +1630,7 @@ object ProduitGestionF: TProduitGestionF
           OnKeyPress = PrixVTTCA2ProduitEdtKeyPress
         end
         object MargeA2ProduitEdt: TEdit
-          Left = 567
+          Left = 563
           Top = 435
           Width = 60
           Height = 26
@@ -1585,11 +1654,11 @@ object ProduitGestionF: TProduitGestionF
         object LineP2: TPanel
           Left = 0
           Top = 475
-          Width = 684
-          Height = 2
+          Width = 661
+          Height = 1
           Anchors = [akLeft, akTop, akRight]
           BevelOuter = bvNone
-          Color = 7854350
+          Color = 16537434
           DoubleBuffered = True
           ParentBackground = False
           ParentDoubleBuffered = False
@@ -1597,7 +1666,7 @@ object ProduitGestionF: TProduitGestionF
           StyleElements = []
         end
         object StockINProduitEdt: TEdit
-          Left = 113
+          Left = 92
           Top = 493
           Width = 108
           Height = 26
@@ -1614,7 +1683,7 @@ object ProduitGestionF: TProduitGestionF
           OnKeyDown = PrixVHTDProduitEdtKeyDown
         end
         object StockAlertProduitEdt: TEdit
-          Left = 547
+          Left = 515
           Top = 493
           Width = 108
           Height = 26
@@ -1631,9 +1700,9 @@ object ProduitGestionF: TProduitGestionF
           OnKeyDown = PrixVHTDProduitEdtKeyDown
         end
         object StockActuelProduitEdt: TEdit
-          Left = 341
+          Left = 314
           Top = 493
-          Width = 108
+          Width = 114
           Height = 26
           TabStop = False
           Alignment = taCenter
@@ -1652,9 +1721,9 @@ object ProduitGestionF: TProduitGestionF
           Text = '0'
         end
         object FournisseurProduitGCbx: TComboBox
-          Left = 113
+          Left = 92
           Top = 539
-          Width = 309
+          Width = 531
           Height = 26
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -1669,11 +1738,11 @@ object ProduitGestionF: TProduitGestionF
         end
         object LineP5: TPanel
           Left = 220
-          Top = 238
+          Top = 236
           Width = 1
           Height = 239
           BevelOuter = bvNone
-          Color = 7854350
+          Color = 16537434
           DoubleBuffered = True
           ParentBackground = False
           ParentDoubleBuffered = False
@@ -1733,7 +1802,7 @@ object ProduitGestionF: TProduitGestionF
           OnKeyUp = DatePerProduitGDKeyUp
         end
         object CodeBarProduitGEdt: TEdit
-          Left = 447
+          Left = 417
           Top = 14
           Width = 178
           Height = 26
@@ -1799,17 +1868,19 @@ object ProduitGestionF: TProduitGestionF
       object PlusInfoTB: TPanel
         Left = 0
         Top = 0
-        Width = 677
-        Height = 579
+        Width = 654
+        Height = 633
         Align = alClient
         BevelOuter = bvNone
         Color = clWhite
         ParentBackground = False
         TabOrder = 0
         StyleElements = []
+        ExplicitWidth = 677
+        ExplicitHeight = 579
         DesignSize = (
-          677
-          579)
+          654
+          633)
         object ObserClientGLbl: TLabel
           Left = 11
           Top = 414
@@ -2033,16 +2104,17 @@ object ProduitGestionF: TProduitGestionF
         object LineP03: TPanel
           Left = 0
           Top = 246
-          Width = 679
+          Width = 656
           Height = 2
           Anchors = [akLeft, akTop, akRight]
           BevelOuter = bvNone
-          Color = 7854350
+          Color = 16537434
           DoubleBuffered = True
           ParentBackground = False
           ParentDoubleBuffered = False
           TabOrder = 5
           StyleElements = []
+          ExplicitWidth = 679
         end
         object ObserProduitGMem: TMemo
           Left = 22
@@ -2150,81 +2222,16 @@ object ProduitGestionF: TProduitGestionF
   end
   object BottomP: TPanel
     Left = 0
-    Top = 614
-    Width = 685
-    Height = 54
-    Align = alBottom
+    Top = 612
+    Width = 665
+    Height = 2
     BevelOuter = bvNone
-    Color = 7854350
+    Color = 16537434
     DoubleBuffered = True
     ParentBackground = False
     ParentDoubleBuffered = False
     TabOrder = 1
     StyleElements = []
-    object OKProduitGBtn: TAdvToolButton
-      Left = 212
-      Top = 12
-      Width = 100
-      Height = 30
-      Cursor = crHandPoint
-      AutoThemeAdapt = False
-      BorderColor = 7854350
-      BorderDownColor = 7854350
-      BorderHotColor = 15970832
-      ColorDown = 7854350
-      ColorHot = clBtnFace
-      ColorChecked = clNone
-      DropDownSplit = False
-      Caption = 'OK'
-      Enabled = False
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = 4207405
-      Font.Height = 18
-      Font.Name = 'Roboto'
-      Font.Style = []
-      ImageIndex = 18
-      Images = MainForm.PanelIcons24
-      Margin = 10
-      ParentFont = False
-      ParentShowHint = False
-      Rounded = True
-      ShowHint = True
-      Spacing = 10
-      OnClick = OKProduitGBtnClick
-      Version = '1.7.2.0'
-      TMSStyle = 0
-    end
-    object CancelProduitGBtn: TAdvToolButton
-      Left = 378
-      Top = 12
-      Width = 100
-      Height = 30
-      Cursor = crHandPoint
-      AutoThemeAdapt = False
-      BorderColor = 4666873
-      BorderDownColor = 4666873
-      BorderHotColor = 15970832
-      ColorDown = clBtnFace
-      ColorHot = clBtnFace
-      ColorChecked = clNone
-      DropDownSplit = False
-      Caption = 'Annuler'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = 4207405
-      Font.Height = 18
-      Font.Name = 'Roboto'
-      Font.Style = []
-      ImageIndex = 19
-      Images = MainForm.PanelIcons24
-      ParentFont = False
-      ParentShowHint = False
-      Rounded = True
-      ShowHint = True
-      Spacing = -1
-      OnClick = CancelProduitGBtnClick
-      Version = '1.7.2.0'
-      TMSStyle = 0
-    end
   end
   object OpenPictureDialogProduitG: TOpenPictureDialog
     Filter = 'JPEG graphics|*.jpg'

@@ -2439,24 +2439,31 @@ begin
           SNumberGestionF.Tag := 2;
           SNumberGestionF.Left := (MainForm.Left + MainForm.Width div 2) - (SNumberGestionF.Width div 2);
           SNumberGestionF.Top := MainForm.Top + 5;
-          AnimateWindow(SNumberGestionF.Handle, 175, AW_VER_POSITIVE or AW_SLIDE or AW_ACTIVATE);
+          SNumberGestionF.NSeriesNewMem.Left:= 32;
+           SNumberGestionF.NSeriesNewMem.Width:= 548;
 
-
+          SNumberGestionF.RefNSeriesLbl.Caption:= MainForm.Bona_recPlistTable.FieldByName('referp').AsString;
+          SNumberGestionF.NameNSeriesLbl.Caption:= MainForm.Bona_recPlistTable.FieldByName('nomp').AsString;
 
           //check if it has serial numbers
         begin
           MainForm.SQLQuery4.Active:=false;
           MainForm.SQLQuery4.SQL.Clear;
-          MainForm.SQLQuery4.SQL.Text:='Select * FROM n_series WHERE code_p = '+
-           IntToStr(MainForm.Bona_recPlistTable.FieldByName('code_p').AsInteger) + ' AND (sold_ns = false OR sold_ns is NULL)';
+          MainForm.SQLQuery4.SQL.Text:='Select code_ns,nom_ns FROM n_series WHERE code_p = '
+          + IntToStr(MainForm.Bona_recPlistTable.FieldByName('code_p').AsInteger)
+          + ' AND (sold_ns = false OR sold_ns is NULL)'
+          + ' AND code_barec = '
+          + IntToStr(MainForm.Bona_recPlistTable.FieldByName('code_barec').AsInteger)
+          + ' ORDER BY code_ns';
           MainForm.SQLQuery4.Active:=True;
           if NOT MainForm.SQLQuery4.IsEmpty then
           begin
-
+//            SNumberGestionF.Font.Color:= $0040332D;
+            SNumberGestionF.NSeriesNewMem.Lines.Clear;
             MainForm.SQLQuery4.First;
             while not MainForm.SQLQuery4.Eof do
             begin
-              SNumberGestionF.NSeriesDispoLsBox.Items.Add(MainForm.SQLQuery4.FieldByName('nom_ns').AsString);
+              SNumberGestionF.NSeriesNewMem.Lines.Add(MainForm.SQLQuery4.FieldByName('nom_ns').AsString);
               MainForm.SQLQuery4.Next;
             end;
 
@@ -2466,7 +2473,10 @@ begin
         MainForm.SQLQuery4.Active:=false;
         MainForm.SQLQuery4.SQL.Clear;
 
+        SNumberGestionF.Tag:= 0;// This Tag is for adding Serial Number in BonRecGestion
+        AnimateWindow(SNumberGestionF.Handle, 175, AW_VER_POSITIVE or AW_SLIDE or AW_ACTIVATE);
         SNumberGestionF.Show;
+        SNumberGestionF.NSeriesNewMem.SetFocus;
 end;
 
 procedure TBonRecGestionF.RemisePerctageBonRecGEdtKeyPress(Sender: TObject;

@@ -664,6 +664,38 @@ object LoginUserF: TLoginUserF
     Version = '1.7.2.0'
     TMSStyle = 0
   end
+  object RequiredStarProduitGLbl: TLabel
+    Left = 387
+    Top = 98
+    Width = 8
+    Height = 22
+    Caption = '*'
+    Color = clBtnFace
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = 4666873
+    Font.Height = 22
+    Font.Name = 'Roboto'
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+    StyleElements = [seClient, seBorder]
+  end
+  object Label1: TLabel
+    Left = 387
+    Top = 142
+    Width = 8
+    Height = 22
+    Caption = '*'
+    Color = clBtnFace
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = 4666873
+    Font.Height = 22
+    Font.Name = 'Roboto'
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+    StyleElements = [seClient, seBorder]
+  end
   object UserCheckGErrorP: TPanel
     Left = 170
     Top = 94
@@ -706,10 +738,10 @@ object LoginUserF: TLoginUserF
     Align = alTop
     BevelOuter = bvNone
     Caption = 'Identifiez-vouz'
-    Color = 7854350
+    Color = 16537434
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clBtnFace
-    Font.Height = -24
+    Font.Height = -21
     Font.Name = 'Roboto'
     Font.Style = []
     ParentBackground = False
@@ -724,7 +756,7 @@ object LoginUserF: TLoginUserF
     Height = 2
     Anchors = []
     BevelOuter = bvNone
-    Color = 7854350
+    Color = 16537434
     ParentBackground = False
     TabOrder = 3
     StyleElements = []
@@ -748,29 +780,29 @@ object LoginUserF: TLoginUserF
     TabOrder = 4
     StyleElements = []
     object LoginBtn: TAdvToolButton
-      Left = 9
+      Left = 8
       Top = 3
       Width = 100
       Height = 30
       Cursor = crHandPoint
       AutoThemeAdapt = False
-      BorderColor = 7854350
-      BorderDownColor = 7854350
-      BorderHotColor = clBtnFace
-      Color = 7854350
-      ColorTo = 7854350
-      ColorDown = 7854350
-      ColorDownTo = 7854350
-      ColorHot = 8453888
-      ColorHotTo = 8453888
+      BorderColor = 16537434
+      BorderDownColor = 16537434
+      BorderHotColor = 13176452
+      Color = 16537434
+      ColorTo = 16537434
+      ColorDown = 16537434
+      ColorDownTo = 16537434
+      ColorHot = 13176452
+      ColorHotTo = 13176452
       ColorChecked = clNone
       DropDownSplit = False
       Caption = 'Valider'
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWhite
+      Font.Color = 15527148
       Font.Height = -16
       Font.Name = 'Roboto'
-      Font.Style = [fsBold]
+      Font.Style = []
       ParentFont = False
       ParentShowHint = False
       Rounded = True
@@ -806,16 +838,20 @@ object LoginUserF: TLoginUserF
       Height = 30
       Cursor = crHandPoint
       AutoThemeAdapt = False
-      BorderColor = 4666873
-      BorderDownColor = 4666873
-      BorderHotColor = 4666840
-      ColorDown = clBtnFace
-      ColorHot = clWhite
+      BorderColor = 16537434
+      BorderDownColor = 16537434
+      BorderHotColor = 13176452
+      Color = 15527148
+      ColorTo = 15527148
+      ColorDown = 15527148
+      ColorDownTo = 15527148
+      ColorHot = 15527148
+      ColorHotTo = 15527148
       ColorChecked = clNone
       DropDownSplit = False
       Caption = 'Annuler'
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = 4666873
+      Font.Color = 16537434
       Font.Height = -16
       Font.Name = 'Roboto'
       Font.Style = []
@@ -825,6 +861,8 @@ object LoginUserF: TLoginUserF
       ShowHint = True
       Spacing = -1
       OnClick = CancelBtnClick
+      OnMouseEnter = CancelBtnMouseEnter
+      OnMouseLeave = CancelBtnMouseLeave
       Version = '1.7.2.0'
       TMSStyle = 0
     end

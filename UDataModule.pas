@@ -522,7 +522,7 @@ type
     UsersTabletotaux_ur: TBooleanField;
     UsersTableviewprixa_ur: TBooleanField;
     UsersTablestock_ur: TBooleanField;
-    FDQuery1: TFDQuery;
+    SQLQuery3: TFDQuery;
     procedure DataModuleCreate(Sender: TObject);
     procedure PZeroQCnotifCalcFields(DataSet: TDataSet);
     procedure PCloseZeroQCnotifCalcFields(DataSet: TDataSet);

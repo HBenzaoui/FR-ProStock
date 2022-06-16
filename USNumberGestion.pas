@@ -20,7 +20,7 @@ type
     Label2: TLabel;
     NameNSeriesLbl: TLabel;
     NSeriesDispoLsBox: TListBox;
-    NSeriesNewMem: TMemo;
+    NSeriesNewMem: TRichEdit;
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
@@ -43,7 +43,7 @@ implementation
 {$R *.dfm}
 
 uses UMainF, UBonRecGestion, UBonLivGestion, UComptoir, UBonRetAGestion,
-  UBonRetVGestion;
+  UBonRetVGestion, UDataModule;
 
 procedure TSNumberGestionF.CancelBtnClick(Sender: TObject);
 begin
@@ -118,8 +118,54 @@ end;
 
 
 procedure TSNumberGestionF.OKBtnClick(Sender: TObject);
+Var I : Integer;
 begin
-//
+
+
+ //Check if Serial number memo is not empty
+ if NSeriesNewMem.Text <> '' then
+ begin
+
+    // This Tag = 0 is for adding Serial Number in BonRecGestion
+   if Tag = 0 then
+   begin
+        for I := 0 to NSeriesNewMem.Lines.Count-1 do
+        begin
+
+          DataModuleF.SQLQuery3.Active:=false;
+          DataModuleF.SQLQuery3.SQL.Clear;
+          DataModuleF.SQLQuery3.SQL.Text:='Select code_ns,nom_ns,code_p,code_barec,sold_ns FROM n_series WHERE nom_ns = '
+          + QuotedStr(NSeriesNewMem.Lines.Strings[i]);
+          DataModuleF.SQLQuery3.Active:=True;
+
+          if (DataModuleF.SQLQuery3.IsEmpty) AND (NSeriesNewMem.Lines.Strings[i] <> '') then
+          begin
+            DataModuleF.SQLQuery3.Append;
+            DataModuleF.SQLQuery3.FieldByName('nom_ns').AsString:= NSeriesNewMem.Lines.Strings[i];
+            DataModuleF.SQLQuery3.FieldByName('code_p').AsInteger:= MainForm.Bona_recPlistTable.FieldByName('code_p').AsInteger;
+            DataModuleF.SQLQuery3.FieldByName('code_barec').AsInteger:= MainForm.Bona_recPlistTable.FieldByName('code_barec').AsInteger;
+            DataModuleF.SQLQuery3.FieldByName('sold_ns').AsBoolean:= False;
+            DataModuleF.SQLQuery3.Post;
+          end;
+        end;
+
+      MainForm.SQLQuery3.Active:=false;
+      MainForm.SQLQuery3.SQL.Clear;
+   end;
+
+
+ end else
+ begin
+
+
+
+
+ end;
+
+
+  AnimateWindow(SNumberGestionF.Handle, 175, AW_VER_NEGATIVE OR AW_SLIDE OR AW_HIDE);
+  SNumberGestionF.Release;
+
 end;
 
 end.

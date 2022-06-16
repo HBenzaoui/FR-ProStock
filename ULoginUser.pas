@@ -43,6 +43,8 @@ type
     FolderL: TLabel;
     FolderCbx: TComboBox;
     FolderAddLogUsrSBtn: TAdvToolButton;
+    RequiredStarProduitGLbl: TLabel;
+    Label1: TLabel;
     procedure CancelBtnClick(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure UserCbxEnter(Sender: TObject);
@@ -59,6 +61,8 @@ type
     procedure FolderCbxExit(Sender: TObject);
     procedure FolderAddLogUsrSBtnClick(Sender: TObject);
     procedure DBSilderChange(Sender: TObject);
+    procedure CancelBtnMouseEnter(Sender: TObject);
+    procedure CancelBtnMouseLeave(Sender: TObject);
   private
     { Private declarations }
   public
@@ -156,6 +160,16 @@ begin
  end;
 end;
 
+
+procedure TLoginUserF.CancelBtnMouseEnter(Sender: TObject);
+begin
+   CancelBtn.Font.Color:= $00C90E84;
+end;
+
+procedure TLoginUserF.CancelBtnMouseLeave(Sender: TObject);
+begin
+   CancelBtn.Font.Color:= $00FC575A;
+end;
 
 procedure TLoginUserF.DBSilderChange(Sender: TObject);
 begin
