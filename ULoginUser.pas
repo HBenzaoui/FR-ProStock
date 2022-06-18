@@ -43,8 +43,6 @@ type
     FolderL: TLabel;
     FolderCbx: TComboBox;
     FolderAddLogUsrSBtn: TAdvToolButton;
-    RequiredStarProduitGLbl: TLabel;
-    Label1: TLabel;
     procedure CancelBtnClick(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure UserCbxEnter(Sender: TObject);

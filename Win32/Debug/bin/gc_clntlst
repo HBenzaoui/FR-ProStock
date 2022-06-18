@@ -8,7 +8,7 @@
 7~ mob_c~ Mobile~ 130~ -1
 8~ mob2_c~ Mobile 2~ 130~ -1
 9~ fax_c~ Fax~ 130~ -1
-10~ adr_c~ Adresse~ 130~ -1
+10~ adr_c~ Adresse~ 170~ -1
 11~ ville_c~ Ville~ 130~ -1
 12~ willaya_c~ Willaya~ 130~ -1
 13~ email_c~ Email~ 266~ -1

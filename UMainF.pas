@@ -147,11 +147,8 @@ type
     Bona_recTablenum_barec: TWideStringField;
     Bona_recTablefourbarec: TStringField;
     Bona_recPlistTable: TFDQuery;
-    Bona_recPlistTablecode_barecl: TIntegerField;
-    Bona_recPlistTablecond_p: TIntegerField;
     ProduitTableQUT: TIntegerField;
     FDQuery2: TFDQuery;
-    Bona_recPlistTablecode_p: TIntegerField;
     Button1: TButton;
     Button2: TButton;
     ComptesMainFMmn: TMenuItem;
@@ -453,7 +450,6 @@ type
     Button13: TButton;
     CNotificationLbl: TLabel;
     CNotificationPaintBox: TPaintBox;
-    Bona_recPlistTabledateperiss_p: TDateField;
     L1: TMenuItem;
     ListedetypesdeCharge1: TMenuItem;
     ListedetypesdeCharge2: TMenuItem;
@@ -500,7 +496,6 @@ type
     N24: TMenuItem;
     OuvertureduTiroirCaisse1: TMenuItem;
     Reconnectez1: TMenuItem;
-    Bona_recPlistTablecode_barec: TIntegerField;
     FunctionsTriggesFDScript: TFDScript;
     Bonv_livTableobser_bvliv: TWideStringField;
     Bonv_livTableAgent: TStringField;
@@ -522,9 +517,6 @@ type
     Bonp_fac_listTablenomp: TWideStringField;
     Bonp_fac_listTablereferp: TWideStringField;
     Bona_recTableremiseperc: TFMTBCDField;
-    Bona_recPlistTabletva_p: TSmallintField;
-    Bona_recPlistTablenomp: TWideStringField;
-    Bona_recPlistTablereferp: TWideStringField;
     Bona_fac_listTabletva_p: TSmallintField;
     Bona_fac_listTablenomp: TWideStringField;
     Bona_fac_listTablereferp: TWideStringField;
@@ -545,7 +537,6 @@ type
     Opt_cas_bnk_CaisseTablecode_bvcom: TIntegerField;
     Opt_cas_bnk_BankTablecode_bvcom: TIntegerField;
     Bonv_ctr_listTablelocalisation: TWideStringField;
-    Bona_recPlistTablelocalisation: TWideStringField;
     Bonp_fac_listTablelocalisation: TWideStringField;
     Bonv_liv_listTablelocalisation: TWideStringField;
     BRVMainFMmn: TMenuItem;
@@ -570,24 +561,6 @@ type
     Bonv_ctr_listTablemontantaht: TFMTBCDField;
     Bonv_ctr_listTablemarge: TFMTBCDField;
     Bonv_ctr_listTablemargem: TFMTBCDField;
-    Bona_recPlistTablequt_p: TFMTBCDField;
-    Bona_recPlistTableprixht_p: TFMTBCDField;
-    Bona_recPlistTableprixvd_p: TFMTBCDField;
-    Bona_recPlistTableprixvr_p: TFMTBCDField;
-    Bona_recPlistTableprixvg_p: TFMTBCDField;
-    Bona_recPlistTableprixva_p: TFMTBCDField;
-    Bona_recPlistTableprixva2_p: TFMTBCDField;
-    Bona_recPlistTablequtinstock_p: TFMTBCDField;
-    Bona_recPlistTableprixattc: TFMTBCDField;
-    Bona_recPlistTablemontantht: TFMTBCDField;
-    Bona_recPlistTablemontantttc: TFMTBCDField;
-    Bona_recPlistTablemontanttva: TFMTBCDField;
-    Bona_recPlistTablemontantaht: TFMTBCDField;
-    Bona_recPlistTablemarged: TFMTBCDField;
-    Bona_recPlistTablemarger: TFMTBCDField;
-    Bona_recPlistTablemargeg: TFMTBCDField;
-    Bona_recPlistTablemargea: TFMTBCDField;
-    Bona_recPlistTablemargea2: TFMTBCDField;
     Bonp_fac_listTablequt_p: TFMTBCDField;
     Bonp_fac_listTableprixvd_p: TFMTBCDField;
     Bonp_fac_listTableprixht_p: TFMTBCDField;
@@ -722,7 +695,33 @@ type
     Bonv_facTableremiseperc: TFMTBCDField;
     Bonv_facTablenetht: TFMTBCDField;
     Bonv_facTablenetttc: TFMTBCDField;
-    Bona_recPlistTableCalcPMP: TFMTBCDField;
+    Bona_recPlistTablecode_barec: TIntegerField;
+    Bona_recPlistTablecode_barecl: TIntegerField;
+    Bona_recPlistTablequt_p: TFMTBCDField;
+    Bona_recPlistTablecond_p: TIntegerField;
+    Bona_recPlistTablecode_p: TIntegerField;
+    Bona_recPlistTabletva_p: TSmallintField;
+    Bona_recPlistTableprixht_p: TFMTBCDField;
+    Bona_recPlistTablenomp: TWideStringField;
+    Bona_recPlistTablereferp: TWideStringField;
+    Bona_recPlistTableprixvd_p: TFMTBCDField;
+    Bona_recPlistTableprixvr_p: TFMTBCDField;
+    Bona_recPlistTableprixvg_p: TFMTBCDField;
+    Bona_recPlistTableprixva_p: TFMTBCDField;
+    Bona_recPlistTableprixva2_p: TFMTBCDField;
+    Bona_recPlistTabledateperiss_p: TDateField;
+    Bona_recPlistTablequtinstock_p: TFMTBCDField;
+    Bona_recPlistTablelocalisation: TWideStringField;
+    Bona_recPlistTableprixattc: TFMTBCDField;
+    Bona_recPlistTablemontantht: TFMTBCDField;
+    Bona_recPlistTablemontantttc: TFMTBCDField;
+    Bona_recPlistTablemontanttva: TFMTBCDField;
+    Bona_recPlistTablemontantaht: TFMTBCDField;
+    Bona_recPlistTablemarged: TFMTBCDField;
+    Bona_recPlistTablemarger: TFMTBCDField;
+    Bona_recPlistTablemargeg: TFMTBCDField;
+    Bona_recPlistTablemargea: TFMTBCDField;
+    Bona_recPlistTablemargea2: TFMTBCDField;
     procedure ClientMainFBtnClick(Sender: TObject);
     procedure FourMainFBtnClick(Sender: TObject);
     procedure ProduitMainFBtnClick(Sender: TObject);
@@ -1406,7 +1405,7 @@ begin
       Bona_recPlistTable.Edit;
       Bona_recPlistTableprixva2_p.Value := 0;
       Bona_recPlistTable.Post;
-
+//
      end;
 end;
 

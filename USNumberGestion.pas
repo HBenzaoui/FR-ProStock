@@ -42,8 +42,8 @@ implementation
 
 {$R *.dfm}
 
-uses UMainF, UBonRecGestion, UBonLivGestion, UComptoir, UBonRetAGestion,
-  UBonRetVGestion, UDataModule;
+uses UMainF, Winapi.MMSystem,
+   UBonRecGestion, UBonLivGestion, UComptoir, UBonRetAGestion,UBonRetVGestion, UDataModule;
 
 procedure TSNumberGestionF.CancelBtnClick(Sender: TObject);
 begin
@@ -67,7 +67,7 @@ begin
  begin
  key := #0;
 
-   OKBtnClick(Sender);
+   CancelBtnClick(Sender);
  end;
 
   if (NSeriesNewMem.Focused = False) and (key = #13) then
@@ -134,7 +134,7 @@ begin
 
           DataModuleF.SQLQuery3.Active:=false;
           DataModuleF.SQLQuery3.SQL.Clear;
-          DataModuleF.SQLQuery3.SQL.Text:='Select code_ns,nom_ns,code_p,code_barec,sold_ns FROM n_series WHERE nom_ns = '
+          DataModuleF.SQLQuery3.SQL.Text:='Select code_ns,nom_ns,code_p,code_barec,code_f,sold_ns FROM n_series WHERE nom_ns = '
           + QuotedStr(NSeriesNewMem.Lines.Strings[i]);
           DataModuleF.SQLQuery3.Active:=True;
 
@@ -144,6 +144,7 @@ begin
             DataModuleF.SQLQuery3.FieldByName('nom_ns').AsString:= NSeriesNewMem.Lines.Strings[i];
             DataModuleF.SQLQuery3.FieldByName('code_p').AsInteger:= MainForm.Bona_recPlistTable.FieldByName('code_p').AsInteger;
             DataModuleF.SQLQuery3.FieldByName('code_barec').AsInteger:= MainForm.Bona_recPlistTable.FieldByName('code_barec').AsInteger;
+            DataModuleF.SQLQuery3.FieldByName('code_f').AsInteger:= MainForm.Bona_recTable.FieldByName('code_f').AsInteger;
             DataModuleF.SQLQuery3.FieldByName('sold_ns').AsBoolean:= False;
             DataModuleF.SQLQuery3.Post;
           end;
@@ -164,6 +165,7 @@ begin
 
 
   AnimateWindow(SNumberGestionF.Handle, 175, AW_VER_NEGATIVE OR AW_SLIDE OR AW_HIDE);
+  sndPlaySound('C:\Windows\Media\speech on.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
   SNumberGestionF.Release;
 
 end;

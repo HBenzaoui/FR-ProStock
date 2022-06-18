@@ -366,7 +366,7 @@ object ProduitsListF: TProduitsListF
     ParentFont = False
     ParentShowHint = False
     RowDetailPanel.Color = clBtnFace
-    RowHeight = 28
+    RowHeight = 24
     SearchPanel.FilterOnTyping = True
     ShowHint = True
     SumList.Active = True

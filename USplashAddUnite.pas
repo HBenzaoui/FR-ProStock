@@ -1701,6 +1701,7 @@ begin
 //---- this tag = 6 is for empty the bon reception
    if OKAddUniteSBtn.Tag = 6 then
    begin
+   MainForm.SQLQuery.ExecSQL('DELETE FROM n_series WHERE sold_ns = false AND code_barec = ' +QuotedStr(IntToStr(MainForm.Bona_recTable.FieldByName('code_barec').AsInteger)));
    MainForm.SQLQuery.ExecSQL('DELETE FROM bona_rec_list WHERE code_barec = ' +QuotedStr(IntToStr(MainForm.Bona_recTable.FieldByName('code_barec').AsInteger)));
    MainForm.Bona_recPlistTable.Refresh;
    BonRecGestionF.BonRecGFourNEWCredit.Caption:= BonRecGestionF.BonRecTotalTTCLbl.Caption;
@@ -1803,6 +1804,7 @@ begin
       MainForm.GstockdcConnection.ExecSQL('DELETE FROM bona_rec_list where code_barec = ' + IntToStr(codeBR));
       MainForm.GstockdcConnection.ExecSQL('DELETE FROM regfournisseur where code_barec = ' + IntToStr(codeBR));
       MainForm.GstockdcConnection.ExecSQL('DELETE FROM opt_cas_bnk where code_barec = ' + IntToStr(codeBR));
+      MainForm.GstockdcConnection.ExecSQL('DELETE FROM n_series WHERE sold_ns = false AND code_barec = ' +IntToStr(codeBR));
       MainForm.Bona_recTable.Delete ;
       MainForm.Bona_recTable.Refresh ;
       MainForm.RegfournisseurTable.Refresh ;

@@ -387,7 +387,7 @@ object FastProduitsListF: TFastProduitsListF
     ParentFont = False
     ParentShowHint = False
     RowDetailPanel.Color = clBtnFace
-    RowHeight = 22
+    RowHeight = 24
     SearchPanel.FilterOnTyping = True
     ShowHint = True
     TabOrder = 2

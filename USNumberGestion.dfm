@@ -240,7 +240,6 @@ object SNumberGestionF: TSNumberGestionF
     Font.Name = 'Roboto'
     Font.Style = []
     HideScrollBars = False
-    MaxLength = 7
     ParentFont = False
     TabOrder = 3
     Zoom = 100

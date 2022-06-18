@@ -1926,8 +1926,15 @@ begin
  begin
     MainForm.Bona_recPlistTable.DisableControls;
     MainForm.Bona_recPlistTable.Refresh;
+
+    //Here we delete all serial numbers related to this product
+
+    MainForm.GstockdcConnection.ExecSQL('DELETE FROM n_series WHERE sold_ns = false AND code_p ='
+    + IntToStr(MainForm.Bona_recPlistTable.FieldByName('code_p').AsInteger)
+    + ' AND code_barec ='+ IntToStr(MainForm.Bona_recPlistTable.FieldByName('code_barec').AsInteger)
+    );
     MainForm.Bona_recPlistTable.Delete;
-    ProduitsListDBGridEh.Refresh;
+//    ProduitsListDBGridEh.Refresh;
     MainForm.Bona_recPlistTable.EnableControls;
     FournisseurBonRecGCbx.StyleElements:= [];
     RequiredFourGlbl.Visible:= False;
@@ -1946,9 +1953,18 @@ begin
  else
      begin
       MainForm.Bona_recPlistTable.DisableControls;
+
+      //Here we delete all serial numbers related to this product
+
+      MainForm.GstockdcConnection.ExecSQL('DELETE FROM n_series WHERE sold_ns = false AND code_p ='
+      + IntToStr(MainForm.Bona_recPlistTable.FieldByName('code_p').AsInteger)
+      + ' AND code_barec ='+ IntToStr(MainForm.Bona_recPlistTable.FieldByName('code_barec').AsInteger)
+      );
+
+
       MainForm.Bona_recPlistTable.Delete;
       ProduitsListDBGridEh.Refresh;
-      MainForm.Bona_recPlistTable.Refresh;
+//      MainForm.Bona_recPlistTable.Refresh;
       MainForm.Bona_recPlistTable.EnableControls;
      end;
 end;

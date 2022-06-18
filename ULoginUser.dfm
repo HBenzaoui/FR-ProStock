@@ -664,38 +664,6 @@ object LoginUserF: TLoginUserF
     Version = '1.7.2.0'
     TMSStyle = 0
   end
-  object RequiredStarProduitGLbl: TLabel
-    Left = 387
-    Top = 98
-    Width = 8
-    Height = 22
-    Caption = '*'
-    Color = clBtnFace
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = 4666873
-    Font.Height = 22
-    Font.Name = 'Roboto'
-    Font.Style = [fsBold]
-    ParentColor = False
-    ParentFont = False
-    StyleElements = [seClient, seBorder]
-  end
-  object Label1: TLabel
-    Left = 387
-    Top = 142
-    Width = 8
-    Height = 22
-    Caption = '*'
-    Color = clBtnFace
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = 4666873
-    Font.Height = 22
-    Font.Name = 'Roboto'
-    Font.Style = [fsBold]
-    ParentColor = False
-    ParentFont = False
-    StyleElements = [seClient, seBorder]
-  end
   object UserCheckGErrorP: TPanel
     Left = 170
     Top = 94
