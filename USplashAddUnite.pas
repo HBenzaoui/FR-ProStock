@@ -1850,9 +1850,38 @@ begin
 //      MainForm.ClientTable.Post;
 //      end;
 
-      MainForm.GstockdcConnection.ExecSQL('DELETE FROM bonv_liv_list where code_bvliv = ' + IntToStr(codeBR));
+
+      //Here we delete all serial numbers related to this product
+      DataModuleF.SQLQuery3.Active:=false;
+      DataModuleF.SQLQuery3.SQL.Clear;
+      DataModuleF.SQLQuery3.SQL.Text:='Select code_ns,code_bvliv FROM n_series WHERE code_bvliv = '+ IntToStr(codeBR);
+      DataModuleF.SQLQuery3.Active:=True;
+
+      if (NOT DataModuleF.SQLQuery3.IsEmpty) then
+      begin
+        DataModuleF.SQLQuery3.First;
+        while NOT DataModuleF.SQLQuery3.Eof do
+        begin
+         DataModuleF.SQLQuery3.Edit;
+         DataModuleF.SQLQuery3.FieldByName('code_bvliv').AsInteger:= 0;
+         DataModuleF.SQLQuery3.Post;
+
+         DataModuleF.SQLQuery3.Next;
+        end;
+
+
+      end;
+      MainForm.SQLQuery3.Active:=false;
+      MainForm.SQLQuery3.SQL.Clear;
+
+
       MainForm.GstockdcConnection.ExecSQL('DELETE FROM regclient where code_bvliv = ' + IntToStr(codeBR));
       MainForm.GstockdcConnection.ExecSQL('DELETE FROM opt_cas_bnk where code_bvliv = ' + IntToStr(codeBR));
+      MainForm.GstockdcConnection.ExecSQL('DELETE FROM bonv_liv_list where code_bvliv = ' + IntToStr(codeBR));
+
+
+
+
       MainForm.Bonv_livTable.Delete ;
       MainForm.Bonv_livTable.Refresh ;
       MainForm.RegclientTable.Refresh ;
@@ -1952,11 +1981,37 @@ begin
  //---- this tag = 12 is for empty the bon livration   ------///
    if OKAddUniteSBtn.Tag = 12 then
    begin
-        MainForm.SQLQuery.ExecSQL('DELETE FROM bonv_liv_list WHERE code_bvliv = ' +QuotedStr(IntToStr(MainForm.Bonv_livTable.FieldByName('code_bvliv').AsInteger)));
-   MainForm.Bonv_liv_listTable.Refresh;
-   BonLivGestionF.BonLivGClientNEWCredit.Caption:= BonLivGestionF.BonLivTotalTTCLbl.Caption;
-   sndPlaySound('C:\Windows\Media\recycle.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
-     AnimateWindow(FSplashAddUnite.Handle, 175, AW_VER_NEGATIVE OR AW_SLIDE OR AW_HIDE);
+
+    //Here we delete all serial numbers related to this product
+        DataModuleF.SQLQuery3.Active:=false;
+        DataModuleF.SQLQuery3.SQL.Clear;
+        DataModuleF.SQLQuery3.SQL.Text:='Select code_ns,code_bvliv FROM n_series WHERE code_bvliv = '
+        + IntToStr(MainForm.Bonv_liv_listTable.FieldByName('code_bvliv').AsInteger);
+        DataModuleF.SQLQuery3.Active:=True;
+
+        if (NOT DataModuleF.SQLQuery3.IsEmpty) then
+        begin
+          DataModuleF.SQLQuery3.First;
+          while NOT DataModuleF.SQLQuery3.Eof do
+          begin
+           DataModuleF.SQLQuery3.Edit;
+           DataModuleF.SQLQuery3.FieldByName('code_bvliv').AsInteger:= 0;
+           DataModuleF.SQLQuery3.Post;
+
+           DataModuleF.SQLQuery3.Next;
+          end;
+
+
+        end;
+
+    MainForm.SQLQuery3.Active:=false;
+    MainForm.SQLQuery3.SQL.Clear;
+
+    MainForm.SQLQuery.ExecSQL('DELETE FROM bonv_liv_list WHERE code_bvliv = ' +QuotedStr(IntToStr(MainForm.Bonv_livTable.FieldByName('code_bvliv').AsInteger)));
+    MainForm.Bonv_liv_listTable.Refresh;
+    BonLivGestionF.BonLivGClientNEWCredit.Caption:= BonLivGestionF.BonLivTotalTTCLbl.Caption;
+    sndPlaySound('C:\Windows\Media\recycle.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+    AnimateWindow(FSplashAddUnite.Handle, 175, AW_VER_NEGATIVE OR AW_SLIDE OR AW_HIDE);
     FSplashAddUnite.Release;
    end;
 

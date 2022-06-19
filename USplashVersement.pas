@@ -1643,6 +1643,31 @@ begin
            end;
 
 
+            //Here we validate the vente with the serial numbers related to this bon
+            DataModuleF.SQLQuery3.Active:=false;
+            DataModuleF.SQLQuery3.SQL.Clear;
+            DataModuleF.SQLQuery3.SQL.Text:='Select code_ns,sold_ns FROM n_series WHERE code_bvliv = '
+            + IntToStr(MainForm.Bonv_livTable.FieldByName('code_bvliv').AsInteger);
+            DataModuleF.SQLQuery3.Active:=True;
+
+            if (NOT DataModuleF.SQLQuery3.IsEmpty) then
+            begin
+              DataModuleF.SQLQuery3.First;
+              while NOT DataModuleF.SQLQuery3.Eof do
+              begin
+               DataModuleF.SQLQuery3.Edit;
+               DataModuleF.SQLQuery3.FieldByName('sold_ns').AsBoolean:= true;
+               DataModuleF.SQLQuery3.Post;
+
+               DataModuleF.SQLQuery3.Next;
+              end;
+
+
+            end;
+            MainForm.SQLQuery3.Active:=false;
+            MainForm.SQLQuery3.SQL.Clear;
+
+
            MainForm.SQLQuery3.Active:=False;
            MainForm.SQLQuery3.SQL.Clear;
            MainForm.SQLQuery.Active:=False;

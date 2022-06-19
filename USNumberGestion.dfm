@@ -91,7 +91,7 @@ object SNumberGestionF: TSNumberGestionF
     Caption = 'Ref:'
     Color = 10066329
     Font.Charset = DEFAULT_CHARSET
-    Font.Color = 10066329
+    Font.Color = 5064001
     Font.Height = -15
     Font.Name = 'Roboto'
     Font.Style = []
@@ -105,9 +105,9 @@ object SNumberGestionF: TSNumberGestionF
     Width = 23
     Height = 18
     Caption = 'Ref'
-    Color = 4207405
+    Color = 4666840
     Font.Charset = DEFAULT_CHARSET
-    Font.Color = 4207405
+    Font.Color = 4666840
     Font.Height = -15
     Font.Name = 'Roboto'
     Font.Style = []
@@ -139,7 +139,7 @@ object SNumberGestionF: TSNumberGestionF
     Caption = 'D'#233'signation:'
     Color = 4207405
     Font.Charset = DEFAULT_CHARSET
-    Font.Color = 10066329
+    Font.Color = 5064001
     Font.Height = -15
     Font.Name = 'Roboto'
     Font.Style = []
@@ -153,9 +153,9 @@ object SNumberGestionF: TSNumberGestionF
     Width = 43
     Height = 18
     Caption = 'Article'
-    Color = 4207405
+    Color = 4666840
     Font.Charset = DEFAULT_CHARSET
-    Font.Color = 4207405
+    Font.Color = 4666840
     Font.Height = -15
     Font.Name = 'Roboto'
     Font.Style = []
@@ -213,11 +213,11 @@ object SNumberGestionF: TSNumberGestionF
     Ctl3D = False
     ExtendedSelect = False
     Font.Charset = DEFAULT_CHARSET
-    Font.Color = 4207405
+    Font.Color = 5064001
     Font.Height = -15
     Font.Name = 'Roboto'
     Font.Style = []
-    ItemHeight = 26
+    ItemHeight = 24
     ParentCtl3D = False
     ParentFont = False
     TabOrder = 0
@@ -236,7 +236,7 @@ object SNumberGestionF: TSNumberGestionF
     BorderWidth = 1
     Font.Charset = ANSI_CHARSET
     Font.Color = 4207405
-    Font.Height = -15
+    Font.Height = -16
     Font.Name = 'Roboto'
     Font.Style = []
     HideScrollBars = False

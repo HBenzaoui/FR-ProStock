@@ -2092,13 +2092,40 @@ ProduitsListF.AddProduitsBtnClick(Sender);
 end;
 
 procedure TBonLivGestionF.DeleteProduitBonLivGBtnClick(Sender: TObject);
+
 begin
  if  MainForm.Bonv_liv_listTable.RecordCount = 1 then
  begin
     MainForm.Bonv_liv_listTable.DisableControls;
     MainForm.Bonv_liv_listTable.Refresh;
+
+    //Here we delete all serial numbers related to this product
+      DataModuleF.SQLQuery3.Active:=false;
+      DataModuleF.SQLQuery3.SQL.Clear;
+      DataModuleF.SQLQuery3.SQL.Text:='Select code_ns,nom_ns,code_p,code_bvliv,sold_ns FROM n_series WHERE code_bvliv = '
+      + IntToStr(MainForm.Bonv_liv_listTable.FieldByName('code_bvliv').AsInteger);
+      DataModuleF.SQLQuery3.Active:=True;
+
+      if (NOT DataModuleF.SQLQuery3.IsEmpty) then
+      begin
+        DataModuleF.SQLQuery3.First;
+        while NOT DataModuleF.SQLQuery3.Eof do
+        begin
+         DataModuleF.SQLQuery3.Edit;
+         DataModuleF.SQLQuery3.FieldByName('code_bvliv').AsInteger:= 0;
+         DataModuleF.SQLQuery3.Post;
+
+         DataModuleF.SQLQuery3.Next;
+        end;
+
+      end;
+
+      MainForm.SQLQuery3.Active:=false;
+      MainForm.SQLQuery3.SQL.Clear;
+
+
     MainForm.Bonv_liv_listTable.Delete;
-    ProduitsListDBGridEh.Refresh;
+//    ProduitsListDBGridEh.Refresh;
     MainForm.Bonv_liv_listTable.EnableControls;
     ClientBonLivGCbx.StyleElements:= [];
     RequiredClientGlbl.Visible:= False;
@@ -2117,8 +2144,35 @@ begin
  else
      begin
       MainForm.Bonv_liv_listTable.DisableControls;
+
+
+          //Here we delete all serial numbers related to this product
+          DataModuleF.SQLQuery3.Active:=false;
+          DataModuleF.SQLQuery3.SQL.Clear;
+          DataModuleF.SQLQuery3.SQL.Text:='Select code_ns,code_bvliv FROM n_series WHERE code_bvliv = '
+          + IntToStr(MainForm.Bonv_liv_listTable.FieldByName('code_bvliv').AsInteger);
+          DataModuleF.SQLQuery3.Active:=True;
+
+          if (NOT DataModuleF.SQLQuery3.IsEmpty) then
+          begin
+            DataModuleF.SQLQuery3.First;
+            while NOT DataModuleF.SQLQuery3.Eof do
+            begin
+             DataModuleF.SQLQuery3.Edit;
+             DataModuleF.SQLQuery3.FieldByName('code_bvliv').AsInteger:= 0;
+             DataModuleF.SQLQuery3.Post;
+
+             DataModuleF.SQLQuery3.Next;
+            end;
+
+
+          end;
+
+      MainForm.SQLQuery3.Active:=false;
+      MainForm.SQLQuery3.SQL.Clear;
+
       MainForm.Bonv_liv_listTable.Delete;
-      ProduitsListDBGridEh.Refresh;
+//      ProduitsListDBGridEh.Refresh;
       MainForm.Bonv_liv_listTable.Refresh;
       MainForm.Bonv_liv_listTable.EnableControls;
      end;
@@ -2778,9 +2832,77 @@ begin
           SNumberGestionF.Tag := 2;
           SNumberGestionF.Left := (MainForm.Left + MainForm.Width div 2) - (SNumberGestionF.Width div 2);
           SNumberGestionF.Top := MainForm.Top + 5;
-          AnimateWindow(SNumberGestionF.Handle, 175, AW_VER_POSITIVE or AW_SLIDE or AW_ACTIVATE);
 
+          SNumberGestionF.RefNSeriesLbl.Caption:= MainForm.Bonv_liv_listTable.FieldByName('referp').AsString;
+          SNumberGestionF.NameNSeriesLbl.Caption:= MainForm.Bonv_liv_listTable.FieldByName('nomp').AsString;
+
+          //check if it has serial numbers
+          begin
+            MainForm.SQLQuery4.Active:=false;
+            MainForm.SQLQuery4.SQL.Clear;
+            MainForm.SQLQuery4.SQL.Text:='Select code_ns,nom_ns FROM n_series n'
+            +' INNER JOIN bona_rec br on n.code_barec = br.code_barec'
+            +' WHERE n.code_p = '
+            + IntToStr(MainForm.Bonv_liv_listTable.FieldByName('code_p').AsInteger)
+            + ' AND (n.sold_ns = false OR n.sold_ns is NULL)'
+            + ' AND br.valider_barec = true'
+//            + ' AND (n.code_bvliv = 0 OR n.code_bvliv IS NULL)'
+            + ' ORDER BY n.code_ns';
+            MainForm.SQLQuery4.Active:=True;
+            if NOT MainForm.SQLQuery4.IsEmpty then
+            begin
+    //            SNumberGestionF.Font.Color:= $0040332D;
+              SNumberGestionF.NSeriesDispoLsBox.Items.Clear;
+              MainForm.SQLQuery4.First;
+              while not MainForm.SQLQuery4.Eof do
+              begin
+                SNumberGestionF.NSeriesDispoLsBox.Items.Add(MainForm.SQLQuery4.FieldByName('nom_ns').AsString);
+                MainForm.SQLQuery4.Next;
+              end;
+
+            end;
+
+            
+          end;
+
+
+          //check if we already add a serial numbers in this bon adn didnt validate it yet
+          begin
+            MainForm.SQLQuery4.Active:=false;
+            MainForm.SQLQuery4.SQL.Clear;
+            MainForm.SQLQuery4.SQL.Text:='Select code_ns,nom_ns FROM n_series n'
+            +' INNER JOIN bona_rec br on n.code_barec = br.code_barec'
+            +' WHERE n.code_p = '
+            + IntToStr(MainForm.Bonv_liv_listTable.FieldByName('code_p').AsInteger)
+            + ' AND (n.sold_ns = false OR n.sold_ns is NULL)'
+            + ' AND br.valider_barec = true'
+            + ' AND n.code_bvliv = '
+            + IntToStr(MainForm.Bonv_liv_listTable.FieldByName('code_bvliv').AsInteger)
+            + ' ORDER BY n.code_ns';
+            MainForm.SQLQuery4.Active:=True;
+            if NOT MainForm.SQLQuery4.IsEmpty then
+            begin
+    //            SNumberGestionF.Font.Color:= $0040332D;
+              SNumberGestionF.NSeriesNewMem.Lines.Clear;
+              MainForm.SQLQuery4.First;
+              while not MainForm.SQLQuery4.Eof do
+              begin
+                SNumberGestionF.NSeriesNewMem.Lines.Add(MainForm.SQLQuery4.FieldByName('nom_ns').AsString);
+                MainForm.SQLQuery4.Next;
+              end;
+
+            end;
+
+
+          end;
+
+          MainForm.SQLQuery4.Active:=false;
+          MainForm.SQLQuery4.SQL.Clear;
+
+          SNumberGestionF.Tag:= 1;// This Tag is for adding Serial Number in BonLivGestion
+          AnimateWindow(SNumberGestionF.Handle, 175, AW_VER_POSITIVE or AW_SLIDE or AW_ACTIVATE);
           SNumberGestionF.Show;
+          SNumberGestionF.NSeriesNewMem.SetFocus;
 end;
 
 procedure TBonLivGestionF.RemisePerctageBonLivGEdtChange(Sender: TObject);
@@ -3419,6 +3541,35 @@ begin
 
             MainForm.SQLQuery.Next;
            end;
+
+
+
+           //Here we validate the vente with the serial numbers related to this bon
+            DataModuleF.SQLQuery3.Active:=false;
+            DataModuleF.SQLQuery3.SQL.Clear;
+            DataModuleF.SQLQuery3.SQL.Text:='Select code_ns,sold_ns FROM n_series WHERE code_bvliv = '
+            + IntToStr(codeBL);
+            DataModuleF.SQLQuery3.Active:=True;
+
+            if (NOT DataModuleF.SQLQuery3.IsEmpty) then
+            begin
+              DataModuleF.SQLQuery3.First;
+              while NOT DataModuleF.SQLQuery3.Eof do
+              begin
+               DataModuleF.SQLQuery3.Edit;
+               DataModuleF.SQLQuery3.FieldByName('sold_ns').AsBoolean:= False;
+               DataModuleF.SQLQuery3.Post;
+
+               DataModuleF.SQLQuery3.Next;
+              end;
+
+
+            end;
+            MainForm.SQLQuery3.Active:=false;
+            MainForm.SQLQuery3.SQL.Clear;
+
+
+
 
            MainForm.SQLQuery3.Active:=False;
            MainForm.SQLQuery3.SQL.Clear;

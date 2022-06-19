@@ -617,7 +617,7 @@ object BonLivGestionF: TBonLivGestionF
     end
     object ValiderBVlivBonLivGBtn: TAdvToolButton
       Left = 693
-      Top = 17
+      Top = 18
       Width = 100
       Height = 30
       Cursor = crHandPoint

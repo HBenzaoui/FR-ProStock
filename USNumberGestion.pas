@@ -42,7 +42,7 @@ implementation
 
 {$R *.dfm}
 
-uses UMainF, Winapi.MMSystem,
+uses UMainF, Winapi.MMSystem, System.StrUtils ,
    UBonRecGestion, UBonLivGestion, UComptoir, UBonRetAGestion,UBonRetVGestion, UDataModule;
 
 procedure TSNumberGestionF.CancelBtnClick(Sender: TObject);
@@ -80,14 +80,27 @@ begin
 end;
 
 procedure TSNumberGestionF.NSeriesDispoLsBoxClick(Sender: TObject);
-var i : integer;
 begin
 
-for i := NSeriesDispoLsBox.Items.Count - 1 downto 0 do
-  if NSeriesDispoLsBox.Selected[i] then begin
-    NSeriesNewMem.Lines.Add(NSeriesDispoLsBox.Items[i]);
-    NSeriesDispoLsBox.Items.Delete(i);
+
+  if NSeriesDispoLsBox.ItemIndex <> -1 then
+  begin
+
+    if NSeriesNewMem.Lines.IndexOf(NSeriesDispoLsBox.Items[NSeriesDispoLsBox.ItemIndex]) = -1 then
+    begin
+      // Doesn't exist yet. Safe to add
+
+      NSeriesNewMem.Lines.Add(NSeriesDispoLsBox.Items[NSeriesDispoLsBox.ItemIndex]);
+      NSeriesDispoLsBox.Items.Delete(NSeriesDispoLsBox.ItemIndex);
+
+
+    end;
+
+
   end;
+  NSeriesNewMem.SetFocus;
+
+
 //  ListBox2.Sorted := true;
 //  NSeriesProduitGLsBox.Sorted := true;
 
@@ -134,7 +147,7 @@ begin
 
           DataModuleF.SQLQuery3.Active:=false;
           DataModuleF.SQLQuery3.SQL.Clear;
-          DataModuleF.SQLQuery3.SQL.Text:='Select code_ns,nom_ns,code_p,code_barec,code_f,sold_ns FROM n_series WHERE nom_ns = '
+          DataModuleF.SQLQuery3.SQL.Text:='Select code_ns,nom_ns,code_p,code_barec,sold_ns FROM n_series WHERE nom_ns = '
           + QuotedStr(NSeriesNewMem.Lines.Strings[i]);
           DataModuleF.SQLQuery3.Active:=True;
 
@@ -144,7 +157,7 @@ begin
             DataModuleF.SQLQuery3.FieldByName('nom_ns').AsString:= NSeriesNewMem.Lines.Strings[i];
             DataModuleF.SQLQuery3.FieldByName('code_p').AsInteger:= MainForm.Bona_recPlistTable.FieldByName('code_p').AsInteger;
             DataModuleF.SQLQuery3.FieldByName('code_barec').AsInteger:= MainForm.Bona_recPlistTable.FieldByName('code_barec').AsInteger;
-            DataModuleF.SQLQuery3.FieldByName('code_f').AsInteger:= MainForm.Bona_recTable.FieldByName('code_f').AsInteger;
+//            DataModuleF.SQLQuery3.FieldByName('code_f').AsInteger:= MainForm.Bona_recTable.FieldByName('code_f').AsInteger;
             DataModuleF.SQLQuery3.FieldByName('sold_ns').AsBoolean:= False;
             DataModuleF.SQLQuery3.Post;
           end;
@@ -153,6 +166,36 @@ begin
       MainForm.SQLQuery3.Active:=false;
       MainForm.SQLQuery3.SQL.Clear;
    end;
+
+    // This Tag = 1 is for adding Serial Number in BonLivGestion
+   if Tag = 1 then
+   begin
+        for I := 0 to NSeriesNewMem.Lines.Count-1 do
+        begin
+
+          DataModuleF.SQLQuery3.Active:=false;
+          DataModuleF.SQLQuery3.SQL.Clear;
+          DataModuleF.SQLQuery3.SQL.Text:='Select code_ns,nom_ns,code_p,code_bvliv,sold_ns FROM n_series WHERE nom_ns = '
+          + QuotedStr(NSeriesNewMem.Lines.Strings[i])
+          +' AND sold_ns = false ';
+          DataModuleF.SQLQuery3.Active:=True;
+
+          if (NOT DataModuleF.SQLQuery3.IsEmpty) AND (NSeriesNewMem.Lines.Strings[i] <> '') then
+          begin
+            DataModuleF.SQLQuery3.Edit;
+            DataModuleF.SQLQuery3.FieldByName('code_bvliv').AsInteger:= MainForm.Bonv_liv_listTable.FieldByName('code_bvliv').AsInteger;
+            DataModuleF.SQLQuery3.Post;
+          end;
+        end;
+
+      MainForm.SQLQuery3.Active:=false;
+      MainForm.SQLQuery3.SQL.Clear;
+
+
+
+   end;
+
+
 
 
  end else
