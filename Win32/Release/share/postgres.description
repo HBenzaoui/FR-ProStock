@@ -2013,7 +2013,7 @@
 6009	pg_proc	0	get the replication progress of the current session
 6010	pg_proc	0	setup the transaction's origin lsn and timestamp
 6011	pg_proc	0	reset the transaction's origin lsn and timestamp
-6012	pg_proc	0	advance replication identifier to specific location
+6012	pg_proc	0	advance replication origin to specific location
 6013	pg_proc	0	get an individual replication origin's replication progress
 6014	pg_proc	0	get progress for all replication origins
 6119	pg_proc	0	get OIDs of tables in a publication

@@ -364,6 +364,7 @@ object DataModuleF: TDataModuleF
       'User_Name=postgres'
       'DriverID=pG'
       'LoginTimeout=15')
+    Connected = True
     LoginPrompt = False
     Left = 85
     Top = 22
@@ -505,10 +506,16 @@ object DataModuleF: TDataModuleF
           '"mdpai_ur" bool,'
           '"cmpt_ur" bool,'
           '"unit_ur" bool,'
-          '"local_ur" bool'
+          '"local_ur" bool,'
+          'totaux_ur bool,'
+          'viewprixa_ur bool,'
+          'stock_ur bool'
+          ''
           ')'
           'WITH (OIDS=FALSE)'
           ';'
+          ''
+          ''
           ''
           ''
           'COMMENT ON COLUMN "users"."ctr_ur" IS '#39
@@ -2095,7 +2102,9 @@ object DataModuleF: TDataModuleF
           ''
           'ALTER TABLE users ADD viewprixa_ur bool DEFAULT '#39'f'#39';'
           ''
-          'ALTER TABLE users ADD stock_ur bool DEFAULT '#39't'#39';')
+          'ALTER TABLE users ADD stock_ur bool DEFAULT '#39't'#39';'
+          ''
+          'ALTER TABLE users ADD totaux_ur bool DEFAULT '#39't'#39';')
       end>
     Connection = PSDBConfigConnection
     Params = <>
