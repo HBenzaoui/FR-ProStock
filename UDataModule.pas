@@ -601,7 +601,7 @@ end;
 
 
 procedure TDataModuleF.CheckdbVersionAndAlterDb();
-Var dbVersion : String;
+Var dbVersion : Integer;
 begin
 
      SQLQuery1.Active:= false;
@@ -609,14 +609,18 @@ begin
      SQLQuery1.SQL.Text:= 'SELECT dbversion FROM dbinfo WHERE apptype = ''S'' ';
      SQLQuery1.Active:= True;
 
-     dbVersion:= SQLQuery1.FieldByName('dbversion').AsString;
+     dbVersion:=  StrToInt(SQLQuery1.FieldByName('dbversion').AsString);
 
-     if dbVersion = '1' then
+     if dbVersion < 2 then
      begin
       AltersDBInfoChangesFDScript.ExecuteAll;
 
       MainForm.AltersDBChangesFDScript.ExecuteAll;
 
+
+//      SQLQuery1.Edit;
+//      SQLQuery1.FieldByName('dbversion').AsString:='2';
+//      SQLQuery1.Post;
 
      end;
 
@@ -1233,7 +1237,8 @@ begin
   SQLQuery1.SQL.Text:= 'SELECT * FROM dbinfo WHERE hddserial ='''+ LoginF.GetWMIstring('Win32_PhysicalMedia','SerialNumber') +'''';
   SQLQuery1.Active:= true;
 
-  if SQLQuery1.IsEmpty then with SQLQuery1 do
+  if SQLQuery1.IsEmpty then
+  with SQLQuery1 do
   begin
 
     SQL.Text := 'INSERT INTO dbinfo (dbversion, apptype, appversion, create_date, modified_date, activated, appserial, appkey, hddserial, developer, owner) '+
@@ -1262,9 +1267,9 @@ begin
              except
 
     // Show a custom dialog
-    buttonSelected := MyMessageDialog('Le serveur ne r�pond pas! Assurer-tu que le serveur est activ�'
+    buttonSelected := MyMessageDialog('Le serveur ne répond pas Assurer-tu que le serveur est activé'
     ,mtCustom,[mbRetry,mbCancel],
-                              ['Annuler','R�essayer']);
+                              ['Annuler','Réessayer']);
 
 
           if buttonSelected = mrRetry then

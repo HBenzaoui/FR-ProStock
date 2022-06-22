@@ -25,7 +25,7 @@ object FOptions: TFOptions
     Top = 27
     Width = 437
     Height = 655
-    ActivePage = sTabSheet2
+    ActivePage = GeneralOptionGTB
     Align = alClient
     DoubleBuffered = True
     Font.Charset = DEFAULT_CHARSET
@@ -438,8 +438,8 @@ object FOptions: TFOptions
         StyleElements = []
       end
       object RIBCompanyGEdt: TEdit
-        Left = 25
-        Top = 570
+        Left = 26
+        Top = 569
         Width = 381
         Height = 26
         Alignment = taCenter

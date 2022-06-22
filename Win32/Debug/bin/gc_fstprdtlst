@@ -4,9 +4,9 @@
 3~ unit~ Unité~ 73~ -1
 4~ famp~ Famille~ 130~ -1
 5~ sfamp~ Sous Famille~ 130~ -1
-6~ prixht_p~ PrixA HT~ 100~ -1
+6~ prixht_p~ PrixA HT~ 0~ 0
 7~ tva_p~ TVA~ 50~ -1
-8~ prixattc~ PrixA TTC~ 100~ -1
+8~ prixattc~ PrixA TTC~ 0~ 0
 9~ prixvttcd~ PrixV TTC D~ 100~ -1
 10~ prixvttcr~ PrixV TTC R~ 100~ -1
 11~ prixvttcg~ PrixV TTC G~ 100~ -1

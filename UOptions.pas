@@ -854,6 +854,10 @@ begin
         begin
          NISCompanyGEdt.Text := fieldbyname('nis_comp').Value;
         end;
+        if (fieldbyname('rib_comp').Value <> null) then
+        begin
+         RIBCompanyGEdt.Text := fieldbyname('rib_comp').Value;
+        end;
         if (fieldbyname('logo_comp').Value <> null) then
         begin
           S := TMemoryStream.Create;

@@ -364,7 +364,6 @@ object DataModuleF: TDataModuleF
       'User_Name=postgres'
       'DriverID=pG'
       'LoginTimeout=15')
-    Connected = True
     LoginPrompt = False
     Left = 85
     Top = 22
@@ -485,7 +484,7 @@ object DataModuleF: TDataModuleF
         Name = 'CreateTable'
         SQL.Strings = (
           'CREATE TABLE "users" ('
-          '"code_ur" int4 NOT NULL,'
+          '"code_ur" int4 NOT NULL CONSTRAINT code_ur PRIMARY KEY,'
           '"nom_ur" varchar(40) COLLATE "default",'
           '"password_ur" varchar(32) COLLATE "default",'
           '"bl_ur" bool,'
@@ -571,9 +570,10 @@ object DataModuleF: TDataModuleF
             ', "bl_ur", "fcv_ur", "rgc_ur", "br_ur", "fca_ur", "rgf_ur", "cai' +
             'sse_ur", "bank_ur", "client_ur", "four_ur", "type_ur", "ctr_ur",' +
             ' "produit_ur", "famp_ur", "sfamp_ur", "mdpai_ur", "cmpt_ur", "un' +
-            'it_ur", "local_ur") VALUES ('#39'1'#39', '#39'Admin'#39', '#39'admin'#39', '#39't'#39', '#39't'#39', '#39't'#39 +
-            ', '#39't'#39', '#39't'#39', '#39't'#39', '#39't'#39', '#39't'#39', '#39't'#39', '#39't'#39', '#39'0'#39', '#39't'#39', '#39't'#39', '#39't'#39', '#39't'#39', '#39't' +
-            #39', '#39't'#39', '#39't'#39', '#39't'#39');')
+            'it_ur", "local_ur", "totaux_ur", "viewprixa_ur", "stock_ur") VAL' +
+            'UES ('#39'1'#39', '#39'Admin'#39', '#39'admin'#39', '#39't'#39', '#39't'#39', '#39't'#39', '#39't'#39', '#39't'#39', '#39't'#39', '#39't'#39', '#39 +
+            't'#39', '#39't'#39', '#39't'#39', '#39'0'#39', '#39't'#39', '#39't'#39', '#39't'#39', '#39't'#39', '#39't'#39', '#39't'#39', '#39't'#39', '#39't'#39', '#39't'#39', ' +
+            #39't'#39', '#39't'#39');')
       end>
     Connection = PSDBConfigConnection
     Params = <>
@@ -2102,9 +2102,7 @@ object DataModuleF: TDataModuleF
           ''
           'ALTER TABLE users ADD viewprixa_ur bool DEFAULT '#39'f'#39';'
           ''
-          'ALTER TABLE users ADD stock_ur bool DEFAULT '#39't'#39';'
-          ''
-          'ALTER TABLE users ADD totaux_ur bool DEFAULT '#39't'#39';')
+          'ALTER TABLE users ADD stock_ur bool DEFAULT '#39't'#39';')
       end>
     Connection = PSDBConfigConnection
     Params = <>
@@ -2115,7 +2113,7 @@ object DataModuleF: TDataModuleF
     ResourceOptions.AssignedValues = [rvMacroCreate, rvMacroExpand, rvDirectExecute, rvPersistent]
     ResourceOptions.MacroCreate = False
     ResourceOptions.DirectExecute = True
-    Left = 255
+    Left = 257
     Top = 100
   end
   object ProduitMovementQR: TFDQuery

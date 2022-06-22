@@ -2968,13 +2968,16 @@ begin
 
 
   //----this is to check if the tables is exsit or not if not creat them -----
-   SQLQuery.Active:= False;
-   SQLQuery.SQL.Clear;
-   SQLQuery.SQL.Text:= 'SELECT COUNT(*) as ntable from information_schema.tables WHERE table_schema = ''public''' ;
-   SQLQuery.Active:= True;
+   DataModuleF.SQLQuery1.Active:= False;
+   DataModuleF.SQLQuery1.SQL.Clear;
+//   SQLQuery.SQL.Text:= 'SELECT COUNT(*) as ntable from information_schema.tables WHERE table_schema = ''public''' ;
+   DataModuleF.SQLQuery1.SQL.Text:= 'SELECT dbversion FROM dbinfo WHERE apptype = ''S'' ' ;
+
+   DataModuleF.SQLQuery1.Active:= True;
 
      //---always update tbale numbers when we add new table
-     if SQLQuery.FieldByName('ntable').AsInteger <> 42 then
+//     if SQLQuery.FieldByName('ntable').AsInteger <> 42 then
+     if StrToInt(DataModuleF.SQLQuery1.FieldByName('dbversion').AsString) < 2 then
      begin
 
       CreateTablesFDScript.ExecuteAll;                                 // Eable this is only for releasing
@@ -2982,9 +2985,13 @@ begin
       FunctionsTriggesFDScript.ExecuteAll;                             // Eable this is only for releasing
       AltersDBChangesFDScript.ExecuteAll;                              // Eable this is only for releasing
 
+      DataModuleF.SQLQuery1.Edit;
+      DataModuleF.SQLQuery1.FieldByName('dbversion').AsString:='2';
+      DataModuleF.SQLQuery1.Post;
+
      end;
-     SQLQuery.SQL.Clear;
-     SQLQuery.Active:= False;
+     DataModuleF.SQLQuery1.SQL.Clear;
+     DataModuleF.SQLQuery1.Active:= False;
 
 
     ActiveTables;
@@ -3016,7 +3023,7 @@ begin
 
 
       // Show a custom dialog
-    buttonSelected := DataModuleF.MyMessageDialog('Le serveur ne répond pa! Assurer-tu que le serveur est activé'
+    buttonSelected := DataModuleF.MyMessageDialog('Le serveur ne répond pas Assurer-tu que le serveur est activé'
     ,mtCustom,[mbRetry,mbCancel],
                               ['Annuler','Réessayer']);
 
@@ -3830,8 +3837,8 @@ end;
 procedure TMainForm.ActiveTables;
 begin
 
-      
-    
+
+
       DataModuleF.UsersTable.Active := True;
 
       FDEventAlerter.Active:= True;
@@ -3897,7 +3904,6 @@ begin
 
       DataModuleF.InventoryTable.Active:= True;
       DataModuleF.Inventory_listTable.Active:= True;
-
 
 
 end;
