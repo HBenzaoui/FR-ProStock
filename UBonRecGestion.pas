@@ -161,6 +161,7 @@ type
     S02: TPanel;
     SNumberProduitBonRecGBtn: TAdvToolButton;
     S01: TPanel;
+    Label33: TLabel;
     procedure ProduitBonRecGCbxEnter(Sender: TObject);
     procedure ProduitBonRecGCbxKeyPress(Sender: TObject; var Key: Char);
     procedure FournisseurBonRecGCbxEnter(Sender: TObject);
@@ -1275,6 +1276,15 @@ begin
   begin
 
       ValiderBARecBonRecGBtnClick(Screen);
+
+    Handled := true;
+  end;
+
+
+
+  if  (GetKeyState(VK_F10) < 0) and (EditBARecBonRecGBtn.Enabled = False ) then
+  begin
+      ListFourBonRecGBtnClick(Screen);
 
     Handled := true;
   end;

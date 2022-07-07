@@ -1307,6 +1307,7 @@ object BonLivGestionF: TBonLivGestionF
       Width = 30
       Height = 30
       Cursor = crHandPoint
+      Hint = 'Num'#233'ro de s'#233'rie'
       Anchors = [akLeft, akBottom]
       AutoThemeAdapt = False
       BorderColor = 15722984
@@ -1334,6 +1335,19 @@ object BonLivGestionF: TBonLivGestionF
       OnClick = SNumberProduitBonLivGBtnClick
       Version = '1.7.2.0'
       TMSStyle = 0
+    end
+    object Label33: TLabel
+      Left = 776
+      Top = 111
+      Width = 20
+      Height = 12
+      Caption = '[F10]'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 10395294
+      Font.Height = -9
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
     end
     object CompteGErrorP: TPanel
       Left = 632

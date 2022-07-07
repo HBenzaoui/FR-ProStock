@@ -1,0 +1,16 @@
+0~ valider_bvcom~ VA~ 24~ -1
+1~ num_bvcom~ N° du bon~ 100~ -1
+2~ date_bvcom~ Date~ 100~ -1
+3~ time_bvcom~ Heure~ 100~ -1
+4~ clientbvcom~ Client~ 300~ -1
+5~ code_mdpai~ MP~ 28~ -1
+6~ montht_bvcom~ Montant HT~ 150~ -1
+7~ remise_bvcom~ Remise HT~ 150~ -1
+8~ netht~ Net â Payer HT~ 150~ -1
+9~ montanttva~ Montant TVA~ 150~ -1
+10~ montttc_bvcom~ Montant TTC~ 150~ -1
+11~ montver_bvcom~ Montant Versé~ 150~ -1
+12~ montantres~ Montant Resté~ 150~ -1
+13~ montaht_bvcom~ Montant A HT~ 150~ -1
+14~ marge_bvcom~ Marge~ 150~ -1
+15~ Agent~ Agent~ 150~ -1

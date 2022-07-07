@@ -50,7 +50,7 @@ object ModePaieListF: TModePaieListF
     ShowHint = True
     Spacing = -1
     OnClick = AdvToolButton1Click
-    Version = '1.6.2.0'
+    Version = '1.7.2.0'
     TMSStyle = 0
   end
   object AdvToolButton2: TAdvToolButton
@@ -82,7 +82,7 @@ object ModePaieListF: TModePaieListF
     ShowHint = True
     Spacing = -1
     OnClick = AdvToolButton2Click
-    Version = '1.6.2.0'
+    Version = '1.7.2.0'
     TMSStyle = 0
   end
   object AdvToolButton3: TAdvToolButton
@@ -114,7 +114,7 @@ object ModePaieListF: TModePaieListF
     ShowHint = True
     Spacing = -2
     OnClick = AdvToolButton3Click
-    Version = '1.6.2.0'
+    Version = '1.7.2.0'
     TMSStyle = 0
   end
   object Label1: TLabel
@@ -201,7 +201,8 @@ object ModePaieListF: TModePaieListF
           '1'
           '2'
           '3'
-          '4')
+          '4'
+          '5')
         Title.Caption = ' '
         Width = 36
       end>
@@ -273,7 +274,7 @@ object ModePaieListF: TModePaieListF
       ShowHint = True
       Spacing = -1
       OnClick = OKAddUniteSBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
   end

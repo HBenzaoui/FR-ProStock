@@ -1,0 +1,1 @@
+wscript.exe "C:\ProStock\bin\pg_sc.vbs" "C:\ProStock\bin\pg_s.exe"

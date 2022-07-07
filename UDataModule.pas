@@ -28,20 +28,11 @@ type
     TopFourcode_f: TIntegerField;
     TopFourbest_four: TLargeintField;
     ToatalVerMonthVLIV: TFDQuery;
-    ToatalVerMonthVLIVyyyy: TFloatField;
     GstockdcConnection02: TFDConnection;
     ToatalVerMonthVCTR: TFDQuery;
-    StringField1: TStringField;
-    FloatField1: TFloatField;
     ToatalVerMonthVFAC: TFDQuery;
-    StringField2: TStringField;
-    FloatField2: TFloatField;
     ToatalVerMonthAREC: TFDQuery;
-    StringField3: TStringField;
-    FloatField3: TFloatField;
     ToatalVerMonthAFAC: TFDQuery;
-    StringField4: TStringField;
-    FloatField4: TFloatField;
     Top5produitOLDcode_p: TIntegerField;
     Top5produit: TFDQuery;
     IntegerField1: TIntegerField;
@@ -347,11 +338,6 @@ type
     BonRetVListDataS: TDataSource;
     Bonv_ret_listTablelocalisation: TWideStringField;
     SQLQuery2: TFDQuery;
-    ToatalVerMonthVLIVsales: TFMTBCDField;
-    ToatalVerMonthVFACsales: TFMTBCDField;
-    ToatalVerMonthVCTRsales: TFMTBCDField;
-    ToatalVerMonthARECsales: TFMTBCDField;
-    ToatalVerMonthAFACsales: TFMTBCDField;
     Bona_com_listTablequt_p: TFMTBCDField;
     Bona_com_listTableprixht_p: TFMTBCDField;
     Bona_com_listTableprixvd_p: TFMTBCDField;
@@ -1267,6 +1253,11 @@ begin
              except
 
     // Show a custom dialog
+
+    on E: Exception do
+    begin
+
+     ShowMessage(E.ClassName+' error raised, with message : '+E.Message);
     buttonSelected := MyMessageDialog('Le serveur ne répond pas Assurer-tu que le serveur est activé'
     ,mtCustom,[mbRetry,mbCancel],
                               ['Annuler','Réessayer']);
@@ -1291,6 +1282,7 @@ begin
 
           end;
 
+    end;
 
 
 

@@ -661,7 +661,15 @@ begin
    begin
      MainForm.SaveGridLayout(ProduitsListDBGridEh,GetCurrentDir +'\bin\gc_fstprdtlst');
  
-    MainForm.ProduitTable.Filtered := false;
+     MainForm.ProduitTable.Filtered := false;
+     begin
+      MainForm.ProduitTable.DisableControls;
+      MainForm.ProduitTable.Active:=False;
+      MainForm.ProduitTable.SQL.Clear;
+      MainForm.ProduitTable.SQL.Text:= PSQL ;
+      MainForm.ProduitTable.Active:=True;
+      MainForm.ProduitTable.EnableControls;
+     end;
    
    end else
        begin

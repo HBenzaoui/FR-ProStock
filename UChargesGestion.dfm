@@ -3,7 +3,7 @@ object ChargesGestionF: TChargesGestionF
   Top = 0
   BorderStyle = bsDialog
   Caption = 'Nouveau Charge'
-  ClientHeight = 494
+  ClientHeight = 523
   ClientWidth = 637
   Color = clWhite
   Font.Charset = DEFAULT_CHARSET
@@ -21,12 +21,12 @@ object ChargesGestionF: TChargesGestionF
   OnShow = FormShow
   DesignSize = (
     637
-    494)
+    523)
   PixelsPerInch = 96
   TextHeight = 13
   object Label9: TLabel
     Left = 612
-    Top = 397
+    Top = 431
     Width = 8
     Height = 22
     Caption = '*'
@@ -42,7 +42,7 @@ object ChargesGestionF: TChargesGestionF
   end
   object RequiredMontantTTCChargeGlbl: TLabel
     Left = 411
-    Top = 375
+    Top = 410
     Width = 200
     Height = 15
     Alignment = taCenter
@@ -394,7 +394,7 @@ object ChargesGestionF: TChargesGestionF
   end
   object MontantAHTChargeLbl: TLabel
     Left = 15
-    Top = 347
+    Top = 382
     Width = 86
     Height = 18
     Caption = 'Montant HT:'
@@ -410,7 +410,7 @@ object ChargesGestionF: TChargesGestionF
   end
   object MonatntTTCChargeLbl: TLabel
     Left = 49
-    Top = 398
+    Top = 433
     Width = 52
     Height = 18
     Caption = 'Timber:'
@@ -426,7 +426,7 @@ object ChargesGestionF: TChargesGestionF
   end
   object Label2: TLabel
     Left = 317
-    Top = 347
+    Top = 382
     Width = 93
     Height = 18
     Caption = 'Montant TVA:'
@@ -442,7 +442,7 @@ object ChargesGestionF: TChargesGestionF
   end
   object Label3: TLabel
     Left = 317
-    Top = 398
+    Top = 433
     Width = 93
     Height = 18
     Caption = 'Montant TTC:'
@@ -539,7 +539,7 @@ object ChargesGestionF: TChargesGestionF
   end
   object MontantTTCChargeGErrorP: TPanel
     Left = 409
-    Top = 392
+    Top = 427
     Width = 204
     Height = 30
     BevelOuter = bvNone
@@ -706,7 +706,7 @@ object ChargesGestionF: TChargesGestionF
     Left = 97
     Top = 271
     Width = 512
-    Height = 26
+    Height = 74
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = 18
@@ -717,7 +717,7 @@ object ChargesGestionF: TChargesGestionF
   end
   object LineP: TPanel
     Left = 1
-    Top = 319
+    Top = 360
     Width = 638
     Height = 2
     Anchors = [akLeft, akTop, akRight]
@@ -729,7 +729,7 @@ object ChargesGestionF: TChargesGestionF
   end
   object BottomP: TPanel
     Left = 0
-    Top = 440
+    Top = 469
     Width = 637
     Height = 54
     Align = alBottom
@@ -807,7 +807,7 @@ object ChargesGestionF: TChargesGestionF
   end
   object MontantTimberChargeGEdt: TEdit
     Left = 103
-    Top = 394
+    Top = 429
     Width = 200
     Height = 26
     Alignment = taRightJustify
@@ -828,7 +828,7 @@ object ChargesGestionF: TChargesGestionF
   end
   object MontantHTChargeGEdt: TEdit
     Left = 104
-    Top = 343
+    Top = 378
     Width = 200
     Height = 26
     Alignment = taRightJustify
@@ -849,7 +849,7 @@ object ChargesGestionF: TChargesGestionF
   end
   object MontantTTCChargeGEdt: TEdit
     Left = 411
-    Top = 394
+    Top = 429
     Width = 200
     Height = 26
     Alignment = taRightJustify
@@ -870,7 +870,7 @@ object ChargesGestionF: TChargesGestionF
   end
   object MontantTVAChargeGEdt: TEdit
     Left = 411
-    Top = 343
+    Top = 378
     Width = 200
     Height = 26
     Alignment = taRightJustify

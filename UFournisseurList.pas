@@ -831,7 +831,7 @@ begin
         FournisseurGestionF.MobileFournisseurGEdt.Text:= fieldbyname('mob_f').Value;
         end;
         if fieldbyname('mob2_f').Value <> null then begin
-        FournisseurGestionF.MobileFournisseurGEdt.Text:= fieldbyname('mob2_f').Value;
+        FournisseurGestionF.Mobile2FournisseurGEdt.Text:= fieldbyname('mob2_f').Value;
         end;
         if fieldbyname('email_f').Value <> null then begin
         FournisseurGestionF.EmailFournisseurGEdt.Text:= fieldbyname('email_f').Value;

@@ -168,7 +168,8 @@ begin
 
      if NOT processExists('postgres.exe') then
      begin
-        sCmd := Pwidechar(GetCurrentDir+ '\bin\pg_s.bat' );                // Eable this is only for releasing
+//        sCmd := Pwidechar(GetCurrentDir+ '\bin\pg_s.bat' );                // Eable this is only for releasing   before version 5.1.6
+        sCmd := Pwidechar(GetCurrentDir+ '\bin\pg_s.exe' );                // Eable this is only for releasing
      ShellExecute(0, 'open', PChar(sCmd) , PChar(sCmd), nil, SW_HIDE);  // Eable this is only for releasing 1 OR 2
 //    Sleep(5000);
 

@@ -393,7 +393,7 @@ begin
       ClientGestionF.FixClientGEdt.Text:= fieldbyname('fix_c').AsString;
       ClientGestionF.FaxClientGEdt.Text:= fieldbyname('fax_c').AsString;
       ClientGestionF.MobileClientGEdt.Text:= fieldbyname('mob_c').AsString;
-      ClientGestionF.MobileClientGEdt.Text:= fieldbyname('mob2_c').AsString;
+      ClientGestionF.Mobile2ClientGEdt.Text:= fieldbyname('mob2_c').AsString;
       ClientGestionF.EmailClientGEdt.Text:= fieldbyname('email_c').AsString;
       ClientGestionF.SiteClientGEdt.Text:= fieldbyname('siteWeb_c').AsString;
 

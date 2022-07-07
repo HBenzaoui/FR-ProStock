@@ -182,6 +182,7 @@ type
     S02: TPanel;
     SNumberProduitBonLivGBtn: TAdvToolButton;
     S01: TPanel;
+    Label33: TLabel;
     procedure FormShow(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
@@ -1844,6 +1845,7 @@ begin
     Handled := true;
   end;
 
+
    //--- this is to switch between produits and quntity--------------------------
    if  (GetKeyState(VK_F6) < 0) and (EditBVlivBonLivGBtn.Enabled = False ) then
   begin
@@ -1906,6 +1908,14 @@ begin
           Handled := true;
 
       end;
+
+
+  if  (GetKeyState(VK_F10) < 0) and (EditBVlivBonLivGBtn.Enabled = False ) then
+  begin
+      ListClientBonLivGBtnClick(Screen);
+
+    Handled := true;
+  end;
 
        //--- this is for new produit--------------------------
   if  (GetKeyState(VK_F11) < 0) AND (NewAddProduitBonLivGBtn.Enabled = True) AND NOT (Assigned(ProduitGestionF)) AND NOT (Assigned(FSplashVersement)) then

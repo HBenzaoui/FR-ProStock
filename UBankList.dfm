@@ -932,7 +932,8 @@ object BankListF: TBankListF
           '1'
           '2'
           '3'
-          '4')
+          '4'
+          '5')
         Layout = tlCenter
         ReadOnly = True
         Title.Alignment = taCenter
@@ -1088,7 +1089,7 @@ object BankListF: TBankListF
       Font.Color = 7854350
       Font.Height = 20
       Font.Name = 'Helvetica LT Std'
-      Font.Style = [fsBold, fsItalic]
+      Font.Style = [fsBold]
       ParentBiDiMode = False
       ParentColor = False
       ParentFont = False
@@ -1167,7 +1168,7 @@ object BankListF: TBankListF
       Font.Color = 1752319
       Font.Height = 20
       Font.Name = 'Helvetica LT Std'
-      Font.Style = [fsBold, fsItalic]
+      Font.Style = [fsBold]
       ParentBiDiMode = False
       ParentColor = False
       ParentFont = False
@@ -1193,7 +1194,7 @@ object BankListF: TBankListF
       Font.Color = 16771277
       Font.Height = 20
       Font.Name = 'Helvetica LT Std'
-      Font.Style = [fsBold, fsItalic]
+      Font.Style = [fsBold]
       ParentBiDiMode = False
       ParentColor = False
       ParentFont = False

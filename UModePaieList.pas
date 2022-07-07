@@ -106,7 +106,8 @@ begin
    if  (MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger  <> 1) AND
     (MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger  <> 2) AND
     (MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger  <> 3) AND
-    (MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger  <> 4) then
+    (MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger  <> 4) AND
+    (MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger  <> 5) then
     begin
     FSplashAddUnite:=TFSplashAddUnite.Create(ModePaieListF);
 
@@ -169,7 +170,8 @@ begin
   if  (MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger  <> 1) AND
       (MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger  <> 2) AND
       (MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger  <> 3) AND
-      (MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger  <> 4) then
+      (MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger  <> 4) AND
+      (MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger  <> 5) then
   begin
     if NOT (MainForm.Mode_paiementTable.IsEmpty) then
        begin

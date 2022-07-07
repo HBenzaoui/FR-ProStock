@@ -107,8 +107,6 @@ type
     ImageDeleteProduitGBtn: TAdvToolButton;
     OpenPictureDialogProduitG: TOpenPictureDialog;
     sAlphaImageList1: TsAlphaImageList;
-    Panel3: TPanel;
-    Panel4: TPanel;
     RequiredRefProduitGlbl: TLabel;
     RefProduitGErrorP: TPanel;
     DatePerProduitGD: TDateTimePicker;

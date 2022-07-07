@@ -564,7 +564,8 @@ object BonRecF: TBonRecF
           '1'
           '2'
           '3'
-          '4')
+          '4'
+          '5')
         Layout = tlCenter
         ReadOnly = True
         Title.Alignment = taCenter
@@ -589,23 +590,15 @@ object BonRecF: TBonRecF
         Font.Height = 16
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
+        Footer.Color = 15722984
         Footer.DisplayFormat = '#,##0.00'
         Footer.Font.Charset = DEFAULT_CHARSET
         Footer.Font.Color = 4207405
-        Footer.Font.Height = 16
+        Footer.Font.Height = 18
         Footer.Font.Name = 'Helvetica LT Std'
-        Footer.Font.Style = []
-        Footers = <
-          item
-            Color = 15722984
-            FieldName = 'montht_barec'
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = 4207405
-            Font.Height = 18
-            Font.Name = 'Helvetica LT Std'
-            Font.Style = [fsBold]
-            ValueType = fvtSum
-          end>
+        Footer.Font.Style = [fsBold]
+        Footer.ValueType = fvtSum
+        Footers = <>
         Layout = tlCenter
         MinWidth = 150
         Title.Alignment = taCenter
@@ -632,18 +625,15 @@ object BonRecF: TBonRecF
         Font.Height = 16
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
+        Footer.Color = 15722984
         Footer.DisplayFormat = '#,##0.00'
-        Footers = <
-          item
-            Color = 15722984
-            FieldName = 'remise_barec'
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = 4207405
-            Font.Height = 18
-            Font.Name = 'Helvetica LT Std'
-            Font.Style = [fsBold]
-            ValueType = fvtSum
-          end>
+        Footer.Font.Charset = DEFAULT_CHARSET
+        Footer.Font.Color = 4207405
+        Footer.Font.Height = 18
+        Footer.Font.Name = 'Helvetica LT Std'
+        Footer.Font.Style = [fsBold]
+        Footer.ValueType = fvtSum
+        Footers = <>
         Layout = tlCenter
         MinWidth = 150
         Title.Alignment = taCenter
@@ -670,18 +660,15 @@ object BonRecF: TBonRecF
         Font.Height = 16
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
+        Footer.Color = 15722984
         Footer.DisplayFormat = '#,##0.00'
-        Footers = <
-          item
-            Color = 15722984
-            FieldName = 'NeTHT'
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = 4207405
-            Font.Height = 18
-            Font.Name = 'Helvetica LT Std'
-            Font.Style = [fsBold]
-            ValueType = fvtSum
-          end>
+        Footer.Font.Charset = DEFAULT_CHARSET
+        Footer.Font.Color = 4207405
+        Footer.Font.Height = 18
+        Footer.Font.Name = 'Helvetica LT Std'
+        Footer.Font.Style = [fsBold]
+        Footer.ValueType = fvtSum
+        Footers = <>
         Layout = tlCenter
         MinWidth = 150
         Title.Alignment = taCenter
@@ -706,18 +693,15 @@ object BonRecF: TBonRecF
         Font.Height = 16
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
+        Footer.Color = 15722984
         Footer.DisplayFormat = '#,##0.00'
-        Footers = <
-          item
-            Color = 15722984
-            FieldName = 'MontantTVA'
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = 4207405
-            Font.Height = 18
-            Font.Name = 'Helvetica LT Std'
-            Font.Style = [fsBold]
-            ValueType = fvtSum
-          end>
+        Footer.Font.Charset = DEFAULT_CHARSET
+        Footer.Font.Color = 4207405
+        Footer.Font.Height = 18
+        Footer.Font.Name = 'Helvetica LT Std'
+        Footer.Font.Style = [fsBold]
+        Footer.ValueType = fvtSum
+        Footers = <>
         Layout = tlCenter
         MinWidth = 150
         Title.Alignment = taCenter
@@ -744,18 +728,15 @@ object BonRecF: TBonRecF
         Font.Height = 16
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
+        Footer.Color = 15722984
         Footer.DisplayFormat = '#,##0.00'
-        Footers = <
-          item
-            Color = 15722984
-            FieldName = 'montttc_barec'
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = 4207405
-            Font.Height = 18
-            Font.Name = 'Helvetica LT Std'
-            Font.Style = [fsBold]
-            ValueType = fvtSum
-          end>
+        Footer.Font.Charset = DEFAULT_CHARSET
+        Footer.Font.Color = 4207405
+        Footer.Font.Height = 18
+        Footer.Font.Name = 'Helvetica LT Std'
+        Footer.Font.Style = [fsBold]
+        Footer.ValueType = fvtSum
+        Footers = <>
         Layout = tlCenter
         Title.Alignment = taCenter
         Title.Caption = 'Montant TTC'
@@ -781,18 +762,15 @@ object BonRecF: TBonRecF
         Font.Height = 16
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
+        Footer.Color = 15722984
         Footer.DisplayFormat = '#,##0.00'
-        Footers = <
-          item
-            Color = 15722984
-            FieldName = 'montver_barec'
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = 4207405
-            Font.Height = 18
-            Font.Name = 'Helvetica LT Std'
-            Font.Style = [fsBold]
-            ValueType = fvtSum
-          end>
+        Footer.Font.Charset = DEFAULT_CHARSET
+        Footer.Font.Color = 4207405
+        Footer.Font.Height = 18
+        Footer.Font.Name = 'Helvetica LT Std'
+        Footer.Font.Style = [fsBold]
+        Footer.ValueType = fvtSum
+        Footers = <>
         Layout = tlCenter
         MinWidth = 150
         Title.Alignment = taCenter
@@ -819,18 +797,15 @@ object BonRecF: TBonRecF
         Font.Height = 16
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
+        Footer.Color = 15722984
         Footer.DisplayFormat = '#,##0.00'
-        Footers = <
-          item
-            Color = 15722984
-            FieldName = 'MontantRes'
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = 4207405
-            Font.Height = 18
-            Font.Name = 'Helvetica LT Std'
-            Font.Style = [fsBold]
-            ValueType = fvtSum
-          end>
+        Footer.Font.Charset = DEFAULT_CHARSET
+        Footer.Font.Color = 4207405
+        Footer.Font.Height = 18
+        Footer.Font.Name = 'Helvetica LT Std'
+        Footer.Font.Style = [fsBold]
+        Footer.ValueType = fvtSum
+        Footers = <>
         Layout = tlCenter
         MinWidth = 150
         Title.Alignment = taCenter

@@ -11,6 +11,6 @@
 10~ montttc_bpfac~ Montant TTC~ 150~ -1
 11~ montver_bpfac~ Montant Versé~ 150~ -1
 12~ montantres~ Montant Resté~ 150~ -1
-13~ montaht_bpfac~ Montant A HT~ 0~ 0
+13~ montaht_bpfac~ Montant A HT~ 150~ -1
 14~ marge_bpfac~ Marge~ 150~ -1
 15~ Agent~ Agent~ 150~ -1

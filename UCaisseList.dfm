@@ -529,7 +529,8 @@ object CaisseListF: TCaisseListF
           '1'
           '2'
           '3'
-          '4')
+          '4'
+          '5')
         Layout = tlCenter
         ReadOnly = True
         Title.Alignment = taCenter
@@ -696,7 +697,7 @@ object CaisseListF: TCaisseListF
       Font.Color = 7854350
       Font.Height = 20
       Font.Name = 'Helvetica LT Std'
-      Font.Style = [fsBold, fsItalic]
+      Font.Style = [fsBold]
       ParentBiDiMode = False
       ParentColor = False
       ParentFont = False
@@ -761,7 +762,7 @@ object CaisseListF: TCaisseListF
       AlignWithMargins = True
       Left = 480
       Top = 1
-      Width = 209
+      Width = 211
       Height = 25
       Margins.Left = 0
       Margins.Top = 0
@@ -775,7 +776,7 @@ object CaisseListF: TCaisseListF
       Font.Color = 1752319
       Font.Height = 20
       Font.Name = 'Helvetica LT Std'
-      Font.Style = [fsBold, fsItalic]
+      Font.Style = [fsBold]
       ParentBiDiMode = False
       ParentColor = False
       ParentFont = False
@@ -801,7 +802,7 @@ object CaisseListF: TCaisseListF
       Font.Color = 16771277
       Font.Height = 20
       Font.Name = 'Helvetica LT Std'
-      Font.Style = [fsBold, fsItalic]
+      Font.Style = [fsBold]
       ParentBiDiMode = False
       ParentColor = False
       ParentFont = False

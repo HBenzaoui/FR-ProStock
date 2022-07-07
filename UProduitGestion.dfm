@@ -58,7 +58,6 @@ object ProduitGestionF: TProduitGestionF
         ParentBackground = False
         TabOrder = 0
         StyleElements = []
-        ExplicitLeft = -210
         DesignSize = (
           654
           633)
@@ -1876,8 +1875,6 @@ object ProduitGestionF: TProduitGestionF
         ParentBackground = False
         TabOrder = 0
         StyleElements = []
-        ExplicitWidth = 677
-        ExplicitHeight = 579
         DesignSize = (
           654
           633)
@@ -1978,7 +1975,7 @@ object ProduitGestionF: TProduitGestionF
           StyleElements = []
         end
         object Label5: TLabel
-          Left = 512
+          Left = 494
           Top = 6
           Width = 109
           Height = 17
@@ -1995,7 +1992,7 @@ object ProduitGestionF: TProduitGestionF
           StyleElements = []
         end
         object ImageEditProduitGBtn: TAdvToolButton
-          Left = 449
+          Left = 431
           Top = 28
           Width = 26
           Height = 26
@@ -2028,7 +2025,7 @@ object ProduitGestionF: TProduitGestionF
           TMSStyle = 0
         end
         object ImageDeleteProduitGBtn: TAdvToolButton
-          Left = 449
+          Left = 431
           Top = 57
           Width = 26
           Height = 26
@@ -2061,15 +2058,15 @@ object ProduitGestionF: TProduitGestionF
           TMSStyle = 0
         end
         object Shape1: TShape
-          Left = 477
+          Left = 459
           Top = 25
           Width = 179
           Height = 205
           Pen.Color = 7854350
         end
         object ImageShowProduitG: TsImage
-          Left = 478
-          Top = 26
+          Left = 460
+          Top = 25
           Width = 177
           Height = 203
           Cursor = crHandPoint
@@ -2104,7 +2101,7 @@ object ProduitGestionF: TProduitGestionF
         object LineP03: TPanel
           Left = 0
           Top = 246
-          Width = 656
+          Width = 661
           Height = 2
           Anchors = [akLeft, akTop, akRight]
           BevelOuter = bvNone
@@ -2114,12 +2111,11 @@ object ProduitGestionF: TProduitGestionF
           ParentDoubleBuffered = False
           TabOrder = 5
           StyleElements = []
-          ExplicitWidth = 679
         end
         object ObserProduitGMem: TMemo
           Left = 22
           Top = 435
-          Width = 633
+          Width = 616
           Height = 128
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -2176,38 +2172,10 @@ object ProduitGestionF: TProduitGestionF
           ParentFont = False
           TabOrder = 1
         end
-        object Panel3: TPanel
-          Left = 478
-          Top = 25
-          Width = 0
-          Height = 203
-          Anchors = [akLeft, akTop, akRight]
-          BevelOuter = bvNone
-          Color = 7854350
-          DoubleBuffered = True
-          ParentBackground = False
-          ParentDoubleBuffered = False
-          TabOrder = 6
-          StyleElements = []
-        end
-        object Panel4: TPanel
-          Left = 655
-          Top = 25
-          Width = 0
-          Height = 203
-          Anchors = [akLeft, akTop, akRight]
-          BevelOuter = bvNone
-          Color = 7854350
-          DoubleBuffered = True
-          ParentBackground = False
-          ParentDoubleBuffered = False
-          TabOrder = 7
-          StyleElements = []
-        end
         object NSeriesProduitGMem: TMemo
           Left = 22
           Top = 277
-          Width = 633
+          Width = 616
           Height = 128
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -2223,7 +2191,7 @@ object ProduitGestionF: TProduitGestionF
   object BottomP: TPanel
     Left = 0
     Top = 612
-    Width = 665
+    Width = 661
     Height = 2
     BevelOuter = bvNone
     Color = 16537434

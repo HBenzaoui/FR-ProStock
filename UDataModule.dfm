@@ -131,23 +131,12 @@ object DataModuleF: TDataModuleF
       ' group by 1,2')
     Left = 186
     Top = 434
-    object ToatalVerMonthVLIVyyyy: TFloatField
-      AutoGenerateValue = arDefault
-      FieldName = 'yyyy'
-      Origin = 'yyyy'
-      ReadOnly = True
-    end
-    object ToatalVerMonthVLIVsales: TFMTBCDField
-      AutoGenerateValue = arDefault
-      FieldName = 'sales'
-      Origin = 'sales'
-      ReadOnly = True
-      Precision = 64
-      Size = 0
-    end
   end
   object GstockdcConnection02: TFDConnection
     Params.Strings = (
+      'Database=GSTOCKDC'
+      'User_Name=postgres'
+      'Password=root'
       'DriverID=pG')
     LoginPrompt = False
     Left = 69
@@ -170,27 +159,6 @@ object DataModuleF: TDataModuleF
       ' group by 1,2')
     Left = 186
     Top = 546
-    object StringField1: TStringField
-      AutoGenerateValue = arDefault
-      FieldName = 'mon'
-      Origin = 'mon'
-      ReadOnly = True
-      Size = 2
-    end
-    object FloatField1: TFloatField
-      AutoGenerateValue = arDefault
-      FieldName = 'yyyy'
-      Origin = 'yyyy'
-      ReadOnly = True
-    end
-    object ToatalVerMonthVCTRsales: TFMTBCDField
-      AutoGenerateValue = arDefault
-      FieldName = 'sales'
-      Origin = 'sales'
-      ReadOnly = True
-      Precision = 64
-      Size = 0
-    end
   end
   object ToatalVerMonthVFAC: TFDQuery
     Connection = GstockdcConnection02
@@ -209,27 +177,6 @@ object DataModuleF: TDataModuleF
       ' group by 1,2')
     Left = 186
     Top = 490
-    object StringField2: TStringField
-      AutoGenerateValue = arDefault
-      FieldName = 'mon'
-      Origin = 'mon'
-      ReadOnly = True
-      Size = 2
-    end
-    object FloatField2: TFloatField
-      AutoGenerateValue = arDefault
-      FieldName = 'yyyy'
-      Origin = 'yyyy'
-      ReadOnly = True
-    end
-    object ToatalVerMonthVFACsales: TFMTBCDField
-      AutoGenerateValue = arDefault
-      FieldName = 'sales'
-      Origin = 'sales'
-      ReadOnly = True
-      Precision = 64
-      Size = 0
-    end
   end
   object ToatalVerMonthAREC: TFDQuery
     Connection = GstockdcConnection02
@@ -248,27 +195,6 @@ object DataModuleF: TDataModuleF
       ' group by 1,2')
     Left = 324
     Top = 444
-    object StringField3: TStringField
-      AutoGenerateValue = arDefault
-      FieldName = 'mon'
-      Origin = 'mon'
-      ReadOnly = True
-      Size = 2
-    end
-    object FloatField3: TFloatField
-      AutoGenerateValue = arDefault
-      FieldName = 'yyyy'
-      Origin = 'yyyy'
-      ReadOnly = True
-    end
-    object ToatalVerMonthARECsales: TFMTBCDField
-      AutoGenerateValue = arDefault
-      FieldName = 'sales'
-      Origin = 'sales'
-      ReadOnly = True
-      Precision = 64
-      Size = 0
-    end
   end
   object ToatalVerMonthAFAC: TFDQuery
     Connection = GstockdcConnection02
@@ -287,27 +213,6 @@ object DataModuleF: TDataModuleF
       ' group by 1,2')
     Left = 324
     Top = 500
-    object StringField4: TStringField
-      AutoGenerateValue = arDefault
-      FieldName = 'mon'
-      Origin = 'mon'
-      ReadOnly = True
-      Size = 2
-    end
-    object FloatField4: TFloatField
-      AutoGenerateValue = arDefault
-      FieldName = 'yyyy'
-      Origin = 'yyyy'
-      ReadOnly = True
-    end
-    object ToatalVerMonthAFACsales: TFMTBCDField
-      AutoGenerateValue = arDefault
-      FieldName = 'sales'
-      Origin = 'sales'
-      ReadOnly = True
-      Precision = 64
-      Size = 0
-    end
   end
   object Top5produit: TFDQuery
     Connection = MainForm.GstockdcConnection

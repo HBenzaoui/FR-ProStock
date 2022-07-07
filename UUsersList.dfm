@@ -50,7 +50,7 @@ object UsersListF: TUsersListF
     ShowHint = True
     Spacing = -1
     OnClick = AdvToolButton1Click
-    Version = '1.6.2.0'
+    Version = '1.7.2.0'
     TMSStyle = 0
   end
   object AdvToolButton2: TAdvToolButton
@@ -82,7 +82,7 @@ object UsersListF: TUsersListF
     ShowHint = True
     Spacing = -1
     OnClick = AdvToolButton2Click
-    Version = '1.6.2.0'
+    Version = '1.7.2.0'
     TMSStyle = 0
   end
   object AdvToolButton3: TAdvToolButton
@@ -114,13 +114,13 @@ object UsersListF: TUsersListF
     ShowHint = True
     Spacing = -2
     OnClick = AdvToolButton3Click
-    Version = '1.6.2.0'
+    Version = '1.7.2.0'
     TMSStyle = 0
   end
   object Label1: TLabel
     Left = 8
     Top = 105
-    Width = 73
+    Width = 74
     Height = 18
     Caption = 'Utilisateur:'
     Color = clWhite
@@ -198,7 +198,7 @@ object UsersListF: TUsersListF
       ShowHint = True
       Spacing = -1
       OnClick = OKAddUniteSBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
   end

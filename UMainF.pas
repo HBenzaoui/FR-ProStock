@@ -722,6 +722,10 @@ type
     Bona_recPlistTablemargeg: TFMTBCDField;
     Bona_recPlistTablemargea: TFMTBCDField;
     Bona_recPlistTablemargea2: TFMTBCDField;
+    investissement1: TMenuItem;
+    N26: TMenuItem;
+    ypesdesCharge1: TMenuItem;
+    SousTypesdesCharges1: TMenuItem;
     procedure ClientMainFBtnClick(Sender: TObject);
     procedure FourMainFBtnClick(Sender: TObject);
     procedure ProduitMainFBtnClick(Sender: TObject);
@@ -1219,7 +1223,8 @@ var sCmd: string;
 Ini: TIniFile;
 begin
 //  MainForm.FDPhysPgDriverLink1.VendorLib:= 'C:\Program Files (x86)\PostgreSQL\9.6\bin\libpq.dll' ; // Eable this is only for Debuggin
-     FDPhysPgDriverLink1.VendorLib:= GetCurrentDir+'\bin\libpq.dll' ;    // Eable this is only for releasing
+//     FDPhysPgDriverLink1.VendorLib:= GetCurrentDir+'\bin\libpq.dll' ;    // Eable this is only for Debuggin
+     FDPhysPgDriverLink1.VendorLib:= GetCurrentDir+'\lib\libpq.dll' ;    // Eable this is only for releasing
 
 //  Application.UpdateFormatSettings := false;
 //  FormatSettings.DecimalSeparator := ',';
@@ -3020,7 +3025,10 @@ begin
   MainForm.Caption:= FromCaption + ' //'+ LoginUserF.FolderCbx.Text;
 
                   except
+        on E: Exception do
+      begin
 
+      ShowMessage(E.ClassName+' error raised, with message : '+E.Message);
 
       // Show a custom dialog
     buttonSelected := DataModuleF.MyMessageDialog('Le serveur ne répond pas Assurer-tu que le serveur est activé'
@@ -3048,6 +3056,8 @@ begin
           end;
 
    end;
+   end;
+
 
 end;
 
@@ -4858,9 +4868,14 @@ begin
 
 
 
-          CreateTablesFDScript.ExecuteAll;                                              // Eable this is only for releasing
-          InsertDataFDScript.ExecuteAll;                                                // Eable this is only for releasing
-          DataModuleF.CheckdbVersionAndAlterDb;                                         // Eable this is only for releasing
+
+
+      CreateTablesFDScript.ExecuteAll;                                 // Eable this is only for releasing
+      InsertDataFDScript.ExecuteAll;                                   // Eable this is only for releasing
+      FunctionsTriggesFDScript.ExecuteAll;                             // Eable this is only for releasing
+      AltersDBChangesFDScript.ExecuteAll;                              // Eable this is only for releasing
+
+      DataModuleF.CheckdbVersionAndAlterDb;                            // Eable this is only for releasing
 
 
           CalcPrixAchatInBonVentes();
@@ -4888,10 +4903,12 @@ begin
       DataModuleF.GstockdcConnection02.Connected:= True;
 
 
-          CreateTablesFDScript.ExecuteAll;                                              // Eable this is only for releasing
-          InsertDataFDScript.ExecuteAll;                                                // Eable this is only for releasing
-          DataModuleF.CheckdbVersionAndAlterDb;                                         // Eable this is only for releasing
+      CreateTablesFDScript.ExecuteAll;                                 // Eable this is only for releasing
+      InsertDataFDScript.ExecuteAll;                                   // Eable this is only for releasing
+      FunctionsTriggesFDScript.ExecuteAll;                             // Eable this is only for releasing
+      AltersDBChangesFDScript.ExecuteAll;                              // Eable this is only for releasing
 
+      DataModuleF.CheckdbVersionAndAlterDb;                            // Eable this is only for releasing
 
           CalcPrixAchatInBonVentes();
 

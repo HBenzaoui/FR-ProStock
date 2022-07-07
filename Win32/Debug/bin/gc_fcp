@@ -8,7 +8,7 @@
 7~ montantht~ MontantHT~ 170~ -1
 8~ montanttva~ MontantTVA~ 170~ -1
 9~ montantttc~ MontantTTC~ 170~ -1
-10~ prixht_p~ Prix A HT~ 0~ 0
+10~ prixht_p~ Prix A HT~ 170~ -1
 11~ margem~ Marge~ 170~ -1
 12~ marge~ Marge %~ 524~ -1
 13~ localisation~ Localisation~ 200~ -1

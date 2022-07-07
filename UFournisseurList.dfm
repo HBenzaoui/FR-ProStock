@@ -677,7 +677,7 @@ object FournisseurListF: TFournisseurListF
         CellButtons = <>
         DynProps = <>
         EditButtons = <>
-        FieldName = 'siteweb_c'
+        FieldName = 'siteweb_f'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
         Font.Height = 16
@@ -996,7 +996,7 @@ object FournisseurListF: TFournisseurListF
       ShowHint = True
       Spacing = -1
       OnClick = EditFournisseursBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object DeleteFournisseursBtn: TAdvToolButton
@@ -1028,7 +1028,7 @@ object FournisseurListF: TFournisseurListF
       ShowHint = True
       Spacing = -2
       OnClick = DeleteFournisseursBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object AddFournisseursBtn: TAdvToolButton
@@ -1060,13 +1060,13 @@ object FournisseurListF: TFournisseurListF
       ShowHint = True
       Spacing = -1
       OnClick = AddFournisseursBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object ResearchFournisseursLbl: TLabel
       Left = 1
       Top = 28
-      Width = 76
+      Width = 74
       Height = 16
       Caption = 'Rechercher'
       Color = 15722984
@@ -1131,13 +1131,12 @@ object FournisseurListF: TFournisseurListF
       Height = 30
       Hint = 'Modifer'
       Anchors = [akTop, akRight]
+      ImageIndex = 9
+      Images = MainForm.PanelIcons24
       ParentShowHint = False
       ShowHint = True
       Visible = False
       OnClick = sSpeedButton3Click
-      SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
-      ImageIndex = 9
       ExplicitLeft = 940
     end
     object LastClientbtn: TsSpeedButton
@@ -1145,24 +1144,22 @@ object FournisseurListF: TFournisseurListF
       Top = 23
       Width = 25
       Height = 25
+      ImageIndex = 3
+      Images = MainForm.PanelIcons24
       ParentShowHint = False
       ShowHint = True
       OnClick = LastClientbtnClick
-      SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
-      ImageIndex = 3
     end
     object NextClientbtn: TsSpeedButton
       Left = 367
       Top = 23
       Width = 25
       Height = 25
+      ImageIndex = 2
+      Images = MainForm.PanelIcons24
       ParentShowHint = False
       ShowHint = True
       OnClick = NextClientbtnClick
-      SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
-      ImageIndex = 2
       ShowCaption = False
     end
     object FisrtFournisseursbtn: TsSpeedButton
@@ -1170,12 +1167,11 @@ object FournisseurListF: TFournisseurListF
       Top = 23
       Width = 25
       Height = 25
+      ImageIndex = 0
+      Images = MainForm.PanelIcons24
       ParentShowHint = False
       ShowHint = True
       OnClick = FisrtFournisseursbtnClick
-      SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
-      ImageIndex = 0
       ShowCaption = False
     end
     object PreviosClientbtn: TsSpeedButton
@@ -1183,12 +1179,11 @@ object FournisseurListF: TFournisseurListF
       Top = 23
       Width = 25
       Height = 25
+      ImageIndex = 1
+      Images = MainForm.PanelIcons24
       ParentShowHint = False
       ShowHint = True
       OnClick = PreviosClientbtnClick
-      SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
-      ImageIndex = 1
     end
     object Label26: TLabel
       Left = 536
@@ -1260,7 +1255,7 @@ object FournisseurListF: TFournisseurListF
       Shaded = False
       ShowHint = True
       Spacing = -1
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object sImage1: TsImage
@@ -1547,7 +1542,7 @@ object FournisseurListF: TFournisseurListF
       ShowHint = True
       Spacing = -2
       OnClick = SumGirdBBVlivBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object RefreshGirdBtn: TAdvToolButton
@@ -1581,7 +1576,7 @@ object FournisseurListF: TFournisseurListF
       ShowHint = True
       Spacing = -2
       OnClick = RefreshGirdBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object AdvToolButton1: TAdvToolButton
@@ -1616,7 +1611,7 @@ object FournisseurListF: TFournisseurListF
       Shaded = False
       ShowHint = True
       Spacing = -2
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object AdvToolButton2: TAdvToolButton
@@ -1650,7 +1645,7 @@ object FournisseurListF: TFournisseurListF
       ShowHint = True
       Spacing = -2
       OnClick = AdvToolButton2Click
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object AdvToolButton3: TAdvToolButton
@@ -1684,7 +1679,7 @@ object FournisseurListF: TFournisseurListF
       ShowHint = True
       Spacing = -2
       OnClick = AdvToolButton3Click
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object AdvToolButton4: TAdvToolButton
@@ -1718,7 +1713,7 @@ object FournisseurListF: TFournisseurListF
       ShowHint = True
       Spacing = -2
       OnClick = AdvToolButton4Click
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object Panel6: TPanel
@@ -1789,6 +1784,7 @@ object FournisseurListF: TFournisseurListF
     OverwritePrompt = True
     DataOnly = False
     EmbeddedFonts = True
+    InteractiveFormsFontSubset = 'A-Z,a-z,0-9,#43-#47 '
     OpenAfterExport = True
     PrintOptimized = False
     Outline = False
@@ -1861,7 +1857,7 @@ object FournisseurListF: TFournisseurListF
     Top = 304
   end
   object FourListfrxRprt: TfrxReport
-    Version = '6.3.12'
+    Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -1948,6 +1944,9 @@ object FournisseurListF: TFournisseurListF
       Width = 1000.000000000000000000
     end
     object Page1: TfrxReportPage
+      VGuides.Strings = (
+        '385,51206'
+        '434,64595')
       Orientation = poLandscape
       PaperWidth = 297.000000000000000000
       PaperHeight = 210.000000000000000000
@@ -1958,9 +1957,6 @@ object FournisseurListF: TFournisseurListF
       BottomMargin = 10.000000000000000000
       Frame.Typ = []
       MirrorMode = []
-      VGuides.Strings = (
-        '385,51206'
-        '434,64595')
       object PageHeader1: TfrxPageHeader
         FillType = ftBrush
         Frame.Typ = []
