@@ -1,8 +1,0 @@
-0~ valider_i~ VA~ 24~ -1
-1~ num_i~ N° du piéce~ 100~ -1
-2~ date_i~ Date~ 100~ -1
-3~ time_i~ Heure~ 100~ -1
-4~ nom_i~ Désignation/Motif~ 300~ -1
-5~ nump_i~ Nombre de produits~ 250~ -1
-6~ totalpgap_i~ Total Ecarts~ 150~ -1
-7~ Agent~ Agent~ 150~ -1
