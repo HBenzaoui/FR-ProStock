@@ -2901,6 +2901,8 @@ begin
   end;
 
    NumBonComGEdt.Caption:= DataModuleF.Bonv_comTable.FieldByName('num_bvcom').AsString;
+   DateBonComGD.DateTime:= DataModuleF.Bonv_comTable.FieldByName('date_bvcom').AsDateTime;
+   ObserBonComGMem.Text:= DataModuleF.Bonv_comTable.FieldByName('obser_bvcom').AsString;
 
       if DataModuleF.bonv_com_listTable.ControlsDisabled  then
    begin
@@ -2943,6 +2945,8 @@ begin
   end;
 
   NumBonComGEdt.Caption:= DataModuleF.Bonv_comTable.FieldByName('num_bvcom').AsString;
+   DateBonComGD.DateTime:= DataModuleF.Bonv_comTable.FieldByName('date_bvcom').AsDateTime;
+   ObserBonComGMem.Text:= DataModuleF.Bonv_comTable.FieldByName('obser_bvcom').AsString;
 
     if DataModuleF.bonv_com_listTable.ControlsDisabled  then
    begin
@@ -2985,6 +2989,8 @@ begin
   end;
 
   NumBonComGEdt.Caption:= DataModuleF.Bonv_comTable.FieldByName('num_bvcom').AsString;
+   DateBonComGD.DateTime:= DataModuleF.Bonv_comTable.FieldByName('date_bvcom').AsDateTime;
+   ObserBonComGMem.Text:= DataModuleF.Bonv_comTable.FieldByName('obser_bvcom').AsString;
 
         if DataModuleF.bonv_com_listTable.ControlsDisabled  then
    begin
@@ -3027,6 +3033,8 @@ begin
   end;
 
   NumBonComGEdt.Caption:= DataModuleF.Bonv_comTable.FieldByName('num_bvcom').AsString;
+   DateBonComGD.DateTime:= DataModuleF.Bonv_comTable.FieldByName('date_bvcom').AsDateTime;
+   ObserBonComGMem.Text:= DataModuleF.Bonv_comTable.FieldByName('obser_bvcom').AsString;
 
         if DataModuleF.bonv_com_listTable.ControlsDisabled  then
    begin

@@ -2695,6 +2695,8 @@ begin
   end;
 
   NumBonRetVGEdt.Caption:= DataModuleF.Bonv_retTable.FieldByName('num_bvret').AsString;
+  DateBonRetVGD.DateTime:= DataModuleF.Bonv_retTable.FieldByName('date_bvret').AsDateTime;
+  ObserBonRetVGMem.Text:= DataModuleF.Bonv_retTable.FieldByName('obser_bvret').AsString;
 
    if DataModuleF.Bonv_ret_listTable.ControlsDisabled  then
    begin
@@ -2738,6 +2740,8 @@ BonRetResteLbl.Caption:=CurrToStrF(((DataModuleF.Bonv_retTable.FieldValues['Mont
 end;
 
  NumBonRetVGEdt.Caption:= DataModuleF.Bonv_retTable.FieldByName('num_bvret').AsString;
+  DateBonRetVGD.DateTime:= DataModuleF.Bonv_retTable.FieldByName('date_bvret').AsDateTime;
+  ObserBonRetVGMem.Text:= DataModuleF.Bonv_retTable.FieldByName('obser_bvret').AsString;
 
     if DataModuleF.Bonv_ret_listTable.ControlsDisabled  then
    begin
@@ -2779,6 +2783,8 @@ BonRetResteLbl.Caption:=CurrToStrF(((DataModuleF.Bonv_retTable.FieldValues['Mont
 end;
 
  NumBonRetVGEdt.Caption:= DataModuleF.Bonv_retTable.FieldByName('num_bvret').AsString;
+  DateBonRetVGD.DateTime:= DataModuleF.Bonv_retTable.FieldByName('date_bvret').AsDateTime;
+  ObserBonRetVGMem.Text:= DataModuleF.Bonv_retTable.FieldByName('obser_bvret').AsString;
 
     if DataModuleF.Bonv_ret_listTable.ControlsDisabled  then
    begin
@@ -2820,6 +2826,8 @@ BonRetResteLbl.Caption:=CurrToStrF(((DataModuleF.Bonv_retTable.FieldValues['Mont
 end;
 
  NumBonRetVGEdt.Caption:= DataModuleF.Bonv_retTable.FieldByName('num_bvret').AsString;
+  DateBonRetVGD.DateTime:= DataModuleF.Bonv_retTable.FieldByName('date_bvret').AsDateTime;
+  ObserBonRetVGMem.Text:= DataModuleF.Bonv_retTable.FieldByName('obser_bvret').AsString;
 
     if DataModuleF.Bonv_ret_listTable.ControlsDisabled  then
    begin

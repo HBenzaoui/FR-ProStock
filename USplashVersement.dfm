@@ -26,10 +26,10 @@ object FSplashVersement: TFSplashVersement
   object Label3: TLabel
     Left = 8
     Top = 86
-    Width = 97
+    Width = 94
     Height = 18
     Anchors = [akLeft, akBottom]
-    Caption = 'Ancien Solde:'
+    Caption = 'Ancien solde:'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = 4207405
     Font.Height = 18
@@ -69,10 +69,10 @@ object FSplashVersement: TFSplashVersement
   object Label10: TLabel
     Left = 8
     Top = 296
-    Width = 67
+    Width = 61
     Height = 18
     Anchors = [akLeft, akBottom]
-    Caption = 'Le Reste:'
+    Caption = 'Le reste:'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = 2497560
     Font.Height = 18
@@ -166,10 +166,10 @@ object FSplashVersement: TFSplashVersement
   object Label8: TLabel
     Left = 8
     Top = 155
-    Width = 133
+    Width = 73
     Height = 18
     Anchors = [akLeft, akBottom]
-    Caption = 'Montant Bon Actuel'
+    Caption = 'Bon actuel'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = 2497560
     Font.Height = 18

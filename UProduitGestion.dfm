@@ -986,74 +986,6 @@ object ProduitGestionF: TProduitGestionF
           Version = '1.7.2.0'
           TMSStyle = 0
         end
-        object CancelProduitGBtn: TAdvToolButton
-          Left = 410
-          Top = 594
-          Width = 100
-          Height = 30
-          Cursor = crHandPoint
-          AutoThemeAdapt = False
-          BorderColor = 16537434
-          BorderDownColor = 16537434
-          BorderHotColor = 13176452
-          Color = clWhite
-          ColorTo = clWhite
-          ColorDown = clWhite
-          ColorDownTo = clWhite
-          ColorHot = clWhite
-          ColorHotTo = clWhite
-          ColorChecked = clNone
-          DropDownSplit = False
-          Caption = 'Annuler'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = 16537434
-          Font.Height = -16
-          Font.Name = 'Roboto'
-          Font.Style = []
-          ParentFont = False
-          ParentShowHint = False
-          Rounded = True
-          ShowHint = True
-          Spacing = -1
-          OnClick = CancelProduitGBtnClick
-          OnMouseEnter = CancelProduitGBtnMouseEnter
-          OnMouseLeave = CancelProduitGBtnMouseLeave
-          Version = '1.7.2.0'
-          TMSStyle = 0
-        end
-        object OKProduitGBtn: TAdvToolButton
-          Left = 523
-          Top = 594
-          Width = 100
-          Height = 30
-          Cursor = crHandPoint
-          AutoThemeAdapt = False
-          BorderColor = 16537434
-          BorderDownColor = 16537434
-          BorderHotColor = 13176452
-          Color = 16537434
-          ColorTo = 16537434
-          ColorDown = 16537434
-          ColorDownTo = 16537434
-          ColorHot = 13176452
-          ColorHotTo = 13176452
-          ColorChecked = clNone
-          DropDownSplit = False
-          Caption = 'Valider'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWhite
-          Font.Height = -16
-          Font.Name = 'Roboto'
-          Font.Style = []
-          ParentFont = False
-          ParentShowHint = False
-          Rounded = True
-          ShowHint = True
-          Spacing = -1
-          OnClick = OKProduitGBtnClick
-          Version = '1.7.2.0'
-          TMSStyle = 0
-        end
         object NameProduitGErrorP: TPanel
           Left = 90
           Top = 60
@@ -1193,18 +1125,19 @@ object ProduitGestionF: TProduitGestionF
           Font.Height = 18
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
+          ItemIndex = 2
           MaxLength = 3
           ParentBiDiMode = False
           ParentFont = False
           TabOrder = 6
-          Text = '0'
+          Text = '20'
           OnChange = TVAProduitGCbxChange
           OnKeyDown = TVAProduitGCbxKeyDown
           OnKeyPress = TVAProduitGCbxKeyPress
           Items.Strings = (
             '0'
-            '9'
-            '19')
+            '10'
+            '20')
         end
         object PerProduitGSlider: TsSlider
           Left = 92
@@ -2200,6 +2133,84 @@ object ProduitGestionF: TProduitGestionF
     ParentDoubleBuffered = False
     TabOrder = 1
     StyleElements = []
+  end
+  object Panel1: TPanel
+    Left = -3
+    Top = 614
+    Width = 668
+    Height = 54
+    BevelOuter = bvSpace
+    Color = clWhite
+    ParentBackground = False
+    TabOrder = 2
+    object CancelProduitGBtn: TAdvToolButton
+      Left = 419
+      Top = 12
+      Width = 100
+      Height = 30
+      Cursor = crHandPoint
+      AutoThemeAdapt = False
+      BorderColor = 16537434
+      BorderDownColor = 16537434
+      BorderHotColor = 13176452
+      Color = clWhite
+      ColorTo = clWhite
+      ColorDown = clWhite
+      ColorDownTo = clWhite
+      ColorHot = clWhite
+      ColorHotTo = clWhite
+      ColorChecked = clNone
+      DropDownSplit = False
+      Caption = 'Annuler'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 16537434
+      Font.Height = -16
+      Font.Name = 'Roboto'
+      Font.Style = []
+      ParentFont = False
+      ParentShowHint = False
+      Rounded = True
+      ShowHint = True
+      Spacing = -1
+      OnClick = CancelProduitGBtnClick
+      OnMouseEnter = CancelProduitGBtnMouseEnter
+      OnMouseLeave = CancelProduitGBtnMouseLeave
+      Version = '1.7.2.0'
+      TMSStyle = 0
+    end
+    object OKProduitGBtn: TAdvToolButton
+      Left = 532
+      Top = 12
+      Width = 100
+      Height = 30
+      Cursor = crHandPoint
+      AutoThemeAdapt = False
+      BorderColor = 16537434
+      BorderDownColor = 16537434
+      BorderHotColor = 13176452
+      Color = 16537434
+      ColorTo = 16537434
+      ColorDown = 16537434
+      ColorDownTo = 16537434
+      ColorHot = 13176452
+      ColorHotTo = 13176452
+      ColorChecked = clNone
+      DropDownSplit = False
+      Caption = 'Valider'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Height = -16
+      Font.Name = 'Roboto'
+      Font.Style = []
+      ParentFont = False
+      ParentShowHint = False
+      Rounded = True
+      ShowHint = True
+      Spacing = -1
+      OnClick = OKProduitGBtnClick
+      Version = '1.7.2.0'
+      TMSStyle = 0
+    end
   end
   object OpenPictureDialogProduitG: TOpenPictureDialog
     Filter = 'JPEG graphics|*.jpg'

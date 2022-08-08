@@ -153,13 +153,13 @@ var
 begin
 
   Application.UpdateFormatSettings := false;
-  FormatSettings.DecimalSeparator := ',';
-  FormatSettings.ThousandSeparator := ' ';
-  FormatSettings.CurrencyDecimals := 2;
+//  FormatSettings.DecimalSeparator := ',';
+//  FormatSettings.ThousandSeparator := ' ';
+//  FormatSettings.CurrencyDecimals := 2;
   FormatSettings.DateSeparator:= '/';
   FormatSettings.ShortDateFormat:= 'dd/mm/yyyy';
-  FormatSettings.CurrencyString:= ' ';
-  FormatSettings.CurrencyFormat:= 1;
+//  FormatSettings.CurrencyString:= ' ';   //This is responsible for currncy symbole
+//  FormatSettings.CurrencyFormat:= 1;     //This is responsible for currncy format
 
 
 

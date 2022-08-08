@@ -121,6 +121,7 @@ type
     NSeriesProduitGLbl: TLabel;
     CancelProduitGBtn: TAdvToolButton;
     OKProduitGBtn: TAdvToolButton;
+    Panel1: TPanel;
     procedure ShowCalculaturProduitGBtnClick(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -497,17 +498,8 @@ begin
          begin
          MainForm.ProduitTable.DisableControls;
          MainForm.ProduitTable.Active:= False;
-         MainForm.ProduitTable.SQL.Text:= 'SELECT *, '
-          +' ((prixht_p * tva_p)/100+ prixht_p ) AS PrixATTC, '
-          +' ((prixvd_p * tva_p)/100+ prixvd_p ) AS PrixVTTCD, '
-          +' ((prixvr_p * tva_p)/100+ prixvr_p ) AS PrixVTTCR, '
-          +' ((prixvg_p * tva_p)/100+ prixvg_p ) AS PrixVTTCG, '
-          +' ((prixva_p * tva_p)/100+ prixva_p ) AS PrixVTTCA, '
-          +' ((prixva2_p * tva_p)/100+ prixva2_p ) AS PrixVTTCA2, '
-          +' (qut_p + qutini_p ) AS QutDispo, '
-          +' ((qut_p + qutini_p) * prixht_p ) AS ValueStock, '
-          +' ((qut_p + qutini_p) * prixvd_p ) AS ValueStockVD '
-          +' FROM produit WHERE code_p = ' +IntToStr(CodeP);
+         MainForm.ProduitTable.SQL.Text:= ProduitsListF.PSQL
+          +' WHERE code_p = ' +IntToStr(CodeP);
          MainForm.ProduitTable.Active:= True;
          MainForm.ProduitTable.EnableControls;
 
@@ -865,17 +857,7 @@ begin
            codeP:= MainForm.ProduitTable.FieldValues['code_p'];
            MainForm.ProduitTable.DisableControls;
            MainForm.ProduitTable.Active:= False;
-           MainForm.ProduitTable.SQL.Text:= 'SELECT *, '
-            +' ((prixht_p * tva_p)/100+ prixht_p ) AS PrixATTC, '
-            +' ((prixvd_p * tva_p)/100+ prixvd_p ) AS PrixVTTCD, '
-            +' ((prixvr_p * tva_p)/100+ prixvr_p ) AS PrixVTTCR, '
-            +' ((prixvg_p * tva_p)/100+ prixvg_p ) AS PrixVTTCG, '
-            +' ((prixva_p * tva_p)/100+ prixva_p ) AS PrixVTTCA, '
-            +' ((prixva2_p * tva_p)/100+ prixva2_p ) AS PrixVTTCA2, '
-            +' (qut_p + qutini_p ) AS QutDispo, '
-            +' ((qut_p + qutini_p) * prixht_p ) AS ValueStock, '
-            +' ((qut_p + qutini_p) * prixvd_p ) AS ValueStockVD '
-            +' FROM produit ';
+           MainForm.ProduitTable.SQL.Text:= ProduitsListF.PSQL;
            MainForm.ProduitTable.Active:= True;
            MainForm.ProduitTable.EnableControls;
 
@@ -1845,17 +1827,8 @@ begin
        //---- WE need to use difrent sqlQuery to check if the same name and ref are not used twice
            MainForm.SQLQuery.Active:= False;
            MainForm.SQLQuery.SQL.Clear;
-           MainForm.SQLQuery.SQL.Text:= 'SELECT *, '
-          +' ((prixht_p * tva_p)/100+ prixht_p ) AS PrixATTC, '
-          +' ((prixvd_p * tva_p)/100+ prixvd_p ) AS PrixVTTCD, '
-          +' ((prixvr_p * tva_p)/100+ prixvr_p ) AS PrixVTTCR, '
-          +' ((prixvg_p * tva_p)/100+ prixvg_p ) AS PrixVTTCG, '
-          +' ((prixva_p * tva_p)/100+ prixva_p ) AS PrixVTTCA, '
-          +' ((prixva2_p * tva_p)/100+ prixva2_p ) AS PrixVTTCA2, '
-          +' (qut_p + qutini_p ) AS QutDispo, '
-          +' ((qut_p + qutini_p) * prixht_p ) AS ValueStock, '
-          +' ((qut_p + qutini_p) * prixvd_p ) AS ValueStockVD '
-          +' FROM produit WHERE code_p <> '+IntToStr(CodeP);
+           MainForm.SQLQuery.SQL.Text:= ProduitsListF.PSQL
+          +' WHERE code_p <> '+IntToStr(CodeP);
            MainForm.SQLQuery.Active:= True;
 
                lookupResultNomP := MainForm.SQLQuery.Lookup(LowerCase('nom_p'),(LowerCase(NameProduitGEdt.Text)),'nom_p');
@@ -2119,17 +2092,7 @@ begin
 //           CodeP:= MainForm.ProduitTable.FieldByName('code_p').AsInteger;
            MainForm.ProduitTable.DisableControls;
            MainForm.ProduitTable.Active:= False;
-           MainForm.ProduitTable.SQL.Text:= 'SELECT *, '
-            +' ((prixht_p * tva_p)/100+ prixht_p ) AS PrixATTC, '
-            +' ((prixvd_p * tva_p)/100+ prixvd_p ) AS PrixVTTCD, '
-            +' ((prixvr_p * tva_p)/100+ prixvr_p ) AS PrixVTTCR, '
-            +' ((prixvg_p * tva_p)/100+ prixvg_p ) AS PrixVTTCG, '
-            +' ((prixva_p * tva_p)/100+ prixva_p ) AS PrixVTTCA, '
-            +' ((prixva2_p * tva_p)/100+ prixva2_p ) AS PrixVTTCA2, '
-            +' (qut_p + qutini_p ) AS QutDispo, '
-            +' ((qut_p + qutini_p) * prixht_p ) AS ValueStock, '
-            +' ((qut_p + qutini_p) * prixvd_p ) AS ValueStockVD '
-            +' FROM produit ';
+           MainForm.ProduitTable.SQL.Text:= ProduitsListF.PSQL;
            MainForm.ProduitTable.Active:= True;
            MainForm.ProduitTable.EnableControls;
 
@@ -3385,6 +3348,10 @@ if Key = #13 then
 begin
 Key:=#0;
 CodeBarProduitGEdtExit(Sender);
+
+ //This to make sure that it wont enter codebarre twice
+ CodeBarProduitGEdt.SelectAll;
+ CodeBarProduitGEdt.SetFocus;
 end;
 
 end;

@@ -439,8 +439,8 @@ begin
 // use this tage when i click on edit button for bon
  if Tag = 1 then
  begin
-     BonLivGClientOLDCredit.Caption:= FloatToStrF(StrToFloat(StringReplace(BonLivGClientOLDCredit.Caption, #32, '', [rfReplaceAll])),ffCurrency,14,2) ;
-     BonLivGClientNEWCredit.Caption:= FloatToStrF(StrToFloat(StringReplace(BonLivGClientNEWCredit.Caption, #32, '', [rfReplaceAll])),ffCurrency,14,2) ;
+     BonLivGClientOLDCredit.Caption:= FloatToStrF(StrToFloat(StringReplace(BonLivGClientOLDCredit.Caption, #32, '', [rfReplaceAll])),ffNumber,14,2) ;
+     BonLivGClientNEWCredit.Caption:= FloatToStrF(StrToFloat(StringReplace(BonLivGClientNEWCredit.Caption, #32, '', [rfReplaceAll])),ffNumber,14,2) ;
 
    if MainForm.Bonv_livTable.FieldByName('valider_bvliv').AsBoolean = True then
    begin
@@ -455,8 +455,8 @@ begin
 
       NewCredit:=  MainForm.SQLQuery.FieldByName('credit_c').AsFloat;
 
-     BonLivGClientOLDCredit.Caption:= FloatToStrF(StrToFloat(StringReplace(FloatToStr( OLDCredit), #32, '', [rfReplaceAll])),ffCurrency,14,2) ;
-     BonLivGClientNEWCredit.Caption:= FloatToStrF(StrToFloat(StringReplace(FloatToStr( NewCredit), #32, '', [rfReplaceAll])),ffCurrency,14,2) ;
+     BonLivGClientOLDCredit.Caption:= FloatToStrF(StrToFloat(StringReplace(FloatToStr( OLDCredit), #32, '', [rfReplaceAll])),ffNumber,14,2) ;
+     BonLivGClientNEWCredit.Caption:= FloatToStrF(StrToFloat(StringReplace(FloatToStr( NewCredit), #32, '', [rfReplaceAll])),ffNumber,14,2) ;
 
      end;
         MainForm.SQLQuery.Active:= False;
@@ -1577,7 +1577,7 @@ begin
         if (NOT (OLDCreditCINI = 0)) AND (MainForm.SQLQuery.FieldByName('code_c').AsInteger <> 1) then
         begin
 //         MainForm.Bonv_livTableCredit.last;
-         BonLivGClientOLDCredit.Caption:= FloatToStrF((OLDCreditCINI ),ffCurrency,14,2) ;
+         BonLivGClientOLDCredit.Caption:= FloatToStrF((OLDCreditCINI ),ffNumber,14,2) ;
 
 //         if NOT (BonLivPListDataS.DataSet.IsEmpty)  then
 //          begin
@@ -1596,7 +1596,7 @@ begin
 //          end;
           end else
           begin
-           BonLivGClientOLDCredit.Caption:= FloatToStrF(0,ffCurrency,14,2) ;
+           BonLivGClientOLDCredit.Caption:= FloatToStrF(0,ffNumber,14,2) ;
           end;
 
 
@@ -3214,10 +3214,12 @@ begin
 
   if  (MainForm.Bonv_livTable.FieldByName('MontantRes').AsFloat<>null)  then
   begin
-  BonLivResteLbl.Caption:=FloatToStrF(((MainForm.Bonv_livTable.FieldByName('MontantRes').AsFloat)),ffCurrency,14,2) ;
+  BonLivResteLbl.Caption:=FloatToStrF(((MainForm.Bonv_livTable.FieldByName('MontantRes').AsFloat)),ffNumber,14,2) ;
   end;
 
-   NumBonLivGEdt.Caption:= MainForm.Bonv_livTable.FieldByName('num_bvliv').AsString;
+  NumBonLivGEdt.Caption:= MainForm.Bonv_livTable.FieldByName('num_bvliv').AsString;
+  DateBonLivGD.DateTime:= MainForm.Bonv_livTable.FieldByName('date_bvliv').AsDateTime;
+  ObserBonLivGMem.Text:= MainForm.Bonv_livTable.FieldByName('obser_bvliv').AsString;
 
       if MainForm.Bonv_liv_listTable.ControlsDisabled  then
    begin
@@ -3256,10 +3258,12 @@ begin
 
   if  (MainForm.Bonv_livTable.FieldByName('MontantRes').AsFloat<>null)  then
   begin
-  BonLivResteLbl.Caption:=FloatToStrF(((MainForm.Bonv_livTable.FieldByName('MontantRes').AsFloat)),ffCurrency,14,2) ;
+  BonLivResteLbl.Caption:=FloatToStrF(((MainForm.Bonv_livTable.FieldByName('MontantRes').AsFloat)),ffNumber,14,2) ;
   end;
 
   NumBonLivGEdt.Caption:= MainForm.Bonv_livTable.FieldByName('num_bvliv').AsString;
+  DateBonLivGD.DateTime:= MainForm.Bonv_livTable.FieldByName('date_bvliv').AsDateTime;
+  ObserBonLivGMem.Text:= MainForm.Bonv_livTable.FieldByName('obser_bvliv').AsString;
 
     if MainForm.Bonv_liv_listTable.ControlsDisabled  then
    begin
@@ -3298,10 +3302,14 @@ begin
 
   if  (MainForm.Bonv_livTable.FieldByName('MontantRes').AsFloat<>null)  then
   begin
-  BonLivResteLbl.Caption:=FloatToStrF(((MainForm.Bonv_livTable.FieldByName('MontantRes').AsFloat)),ffCurrency,14,2) ;
+  BonLivResteLbl.Caption:=FloatToStrF(((MainForm.Bonv_livTable.FieldByName('MontantRes').AsFloat)),ffNumber,14,2) ;
   end;
 
   NumBonLivGEdt.Caption:= MainForm.Bonv_livTable.FieldByName('num_bvliv').AsString;
+  DateBonLivGD.DateTime:= MainForm.Bonv_livTable.FieldByName('date_bvliv').AsDateTime;
+  ObserBonLivGMem.Text:= MainForm.Bonv_livTable.FieldByName('obser_bvliv').AsString;
+
+
 
         if MainForm.Bonv_liv_listTable.ControlsDisabled  then
    begin
@@ -3340,10 +3348,12 @@ begin
 
   if  (MainForm.Bonv_livTable.FieldByName('MontantRes').AsFloat<>null)  then
   begin
-  BonLivResteLbl.Caption:=FloatToStrF(((MainForm.Bonv_livTable.FieldByName('MontantRes').AsFloat)),ffCurrency,14,2) ;
+  BonLivResteLbl.Caption:=FloatToStrF(((MainForm.Bonv_livTable.FieldByName('MontantRes').AsFloat)),ffNumber,14,2) ;
   end;
 
   NumBonLivGEdt.Caption:= MainForm.Bonv_livTable.FieldByName('num_bvliv').AsString;
+  DateBonLivGD.DateTime:= MainForm.Bonv_livTable.FieldByName('date_bvliv').AsDateTime;
+  ObserBonLivGMem.Text:= MainForm.Bonv_livTable.FieldByName('obser_bvliv').AsString;
 
         if MainForm.Bonv_liv_listTable.ControlsDisabled  then
    begin
@@ -3478,7 +3488,7 @@ begin
 
 // use this code to rest the old credit to the to the last time before he pay anything in that bon so you can aclculate again
   BonLivGClientOLDCredit.Caption:=
-  FloatToStrF((((MainForm.ClientTable.FieldByName('credit_c').AsFloat) - StrToFloat(StringReplace( BonLivResteLbl.Caption, #32, '', [rfReplaceAll])))),ffCurrency,14,2);
+  FloatToStrF((((MainForm.ClientTable.FieldByName('credit_c').AsFloat) - StrToFloat(StringReplace( BonLivResteLbl.Caption, #32, '', [rfReplaceAll])))),ffNumber,14,2);
 
       if  (MainForm.ClientTable.FieldByName('code_c').AsInteger <> 1) then
       begin

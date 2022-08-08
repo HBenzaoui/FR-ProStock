@@ -1007,8 +1007,8 @@ begin
 // use this tage when i click on edit button for bon
  if Tag = 1 then
  begin
-     BonRecGFourOLDCredit.Caption:= FloatToStrF(StrToFloat(StringReplace(BonRecGFourOLDCredit.Caption, #32, '', [rfReplaceAll])),ffCurrency,14,2) ;
-     BonRecGFourNEWCredit.Caption:= FloatToStrF(StrToFloat(StringReplace(BonRecGFourNEWCredit.Caption, #32, '', [rfReplaceAll])),ffCurrency,14,2) ;
+     BonRecGFourOLDCredit.Caption:= FloatToStrF(StrToFloat(StringReplace(BonRecGFourOLDCredit.Caption, #32, '', [rfReplaceAll])),ffNumber,14,2) ;
+     BonRecGFourNEWCredit.Caption:= FloatToStrF(StrToFloat(StringReplace(BonRecGFourNEWCredit.Caption, #32, '', [rfReplaceAll])),ffNumber,14,2) ;
 
    if MainForm.Bona_recTable.FieldByName('valider_barec').AsBoolean = True then
    begin
@@ -1023,8 +1023,8 @@ begin
 
       NewCredit:=  MainForm.SQLQuery.FieldByName('credit_f').AsFloat;
 
-     BonRecGFourOLDCredit.Caption:= FloatToStrF(StrToFloat(StringReplace(FloatToStr( OLDCredit), #32, '', [rfReplaceAll])),ffCurrency,14,2) ;
-     BonRecGFourNEWCredit.Caption:= FloatToStrF(StrToFloat(StringReplace(FloatToStr( NewCredit), #32, '', [rfReplaceAll])),ffCurrency,14,2) ;
+     BonRecGFourOLDCredit.Caption:= FloatToStrF(StrToFloat(StringReplace(FloatToStr( OLDCredit), #32, '', [rfReplaceAll])),ffNumber,14,2) ;
+     BonRecGFourNEWCredit.Caption:= FloatToStrF(StrToFloat(StringReplace(FloatToStr( NewCredit), #32, '', [rfReplaceAll])),ffNumber,14,2) ;
 
      end;
         MainForm.SQLQuery.Active:= False;
@@ -1098,7 +1098,7 @@ begin
       if NOT (OLDCreditFINI = 0) then
       begin
 //       MainForm.Bona_recTableCredit.last;
-       BonRecGFourOLDCredit.Caption:= FloatToStrF((OLDCreditFINI ),ffCurrency,14,2) ;
+       BonRecGFourOLDCredit.Caption:= FloatToStrF((OLDCreditFINI ),ffNumber,14,2) ;
 
        if NOT (BonRecPListDataS.DataSet.IsEmpty) then
         begin
@@ -1116,7 +1116,7 @@ begin
         end;
         end else
         begin
-         BonRecGFourOLDCredit.Caption:= FloatToStrF(0,ffCurrency,14,2) ;
+         BonRecGFourOLDCredit.Caption:= FloatToStrF(0,ffNumber,14,2) ;
         end;
 
 //      MainForm.Bona_recTableCredit.DisableControls;
@@ -2558,7 +2558,7 @@ procedure TBonRecGestionF.EditBARecBonRecGBtnClick(Sender: TObject);
 
 // use this code to rest the old credit to the to the last time before he pay anything in that bon so you can aclculate again
   BonRecGFourOLDCredit.Caption:=
-  FloatToStrF((((MainForm.FournisseurTable.FieldByName('credit_f').AsFloat)- StrToFloat(StringReplace(BonRecResteLbl.Caption, #32, '', [rfReplaceAll])))),ffCurrency,14,2);
+  FloatToStrF((((MainForm.FournisseurTable.FieldByName('credit_f').AsFloat)- StrToFloat(StringReplace(BonRecResteLbl.Caption, #32, '', [rfReplaceAll])))),ffNumber,14,2);
 
         begin
       MainForm.FournisseurTable.Edit;
@@ -2579,17 +2579,18 @@ procedure TBonRecGestionF.EditBARecBonRecGBtnClick(Sender: TObject);
            MainForm.ProduitTable.DisableControls;
            MainForm.ProduitTable.Active:=False;
            MainForm.ProduitTable.SQL.Clear;
-           MainForm.ProduitTable.SQL.Text:='SELECT *, '
-            +' ((prixht_p * tva_p)/100+ prixht_p ) AS PrixATTC, '
-            +' ((prixvd_p * tva_p)/100+ prixvd_p ) AS PrixVTTCD, '
-            +' ((prixvr_p * tva_p)/100+ prixvr_p ) AS PrixVTTCR, '
-            +' ((prixvg_p * tva_p)/100+ prixvg_p ) AS PrixVTTCG, '
-            +' ((prixva_p * tva_p)/100+ prixva_p ) AS PrixVTTCA, '
-            +' ((prixva2_p * tva_p)/100+ prixva2_p ) AS PrixVTTCA2, '
-            +' (qut_p + qutini_p ) AS QutDispo, '
-            +' ((qut_p + qutini_p) * prixht_p ) AS ValueStock, '
-            +' ((qut_p + qutini_p) * prixvd_p ) AS ValueStockVD '
-            +' FROM produit ' ;
+           MainForm.ProduitTable.SQL.Text:= ProduitsListF.PSQL;
+//            'SELECT *, '
+//            +' ((prixht_p * tva_p)/100+ prixht_p ) AS PrixATTC, '
+//            +' ((prixvd_p * tva_p)/100+ prixvd_p ) AS PrixVTTCD, '
+//            +' ((prixvr_p * tva_p)/100+ prixvr_p ) AS PrixVTTCR, '
+//            +' ((prixvg_p * tva_p)/100+ prixvg_p ) AS PrixVTTCG, '
+//            +' ((prixva_p * tva_p)/100+ prixva_p ) AS PrixVTTCA, '
+//            +' ((prixva2_p * tva_p)/100+ prixva2_p ) AS PrixVTTCA2, '
+//            +' (qut_p + qutini_p ) AS QutDispo, '
+//            +' ((qut_p + qutini_p) * prixht_p ) AS ValueStock, '
+//            +' ((qut_p + qutini_p) * prixvd_p ) AS ValueStockVD '
+//            +' FROM produit ' ;
            MainForm.ProduitTable.Active:=True;
            Mainform.Sqlquery.Active:=False;
            Mainform.Sqlquery.Sql.Clear;
@@ -2603,17 +2604,18 @@ procedure TBonRecGestionF.EditBARecBonRecGBtnClick(Sender: TObject);
            begin
             MainForm.ProduitTable.Active:=False;
             MainForm.ProduitTable.SQL.Clear;
-            MainForm.ProduitTable.SQL.Text:='SELECT *, '
-            +' ((prixht_p * tva_p)/100+ prixht_p ) AS PrixATTC, '
-            +' ((prixvd_p * tva_p)/100+ prixvd_p ) AS PrixVTTCD, '
-            +' ((prixvr_p * tva_p)/100+ prixvr_p ) AS PrixVTTCR, '
-            +' ((prixvg_p * tva_p)/100+ prixvg_p ) AS PrixVTTCG, '
-            +' ((prixva_p * tva_p)/100+ prixva_p ) AS PrixVTTCA, '
-            +' ((prixva2_p * tva_p)/100+ prixva2_p ) AS PrixVTTCA2, '
-            +' (qut_p + qutini_p ) AS QutDispo, '
-            +' ((qut_p + qutini_p) * prixht_p ) AS ValueStock, '
-            +' ((qut_p + qutini_p) * prixvd_p ) AS ValueStockVD '
-            +' FROM produit WHERE code_p = ' +QuotedStr(MainForm.SQLQuery.FieldValues['code_p']) ;
+            MainForm.ProduitTable.SQL.Text:= ProduitsListF.PSQL
+//            'SELECT *, '
+//            +' ((prixht_p * tva_p)/100+ prixht_p ) AS PrixATTC, '
+//            +' ((prixvd_p * tva_p)/100+ prixvd_p ) AS PrixVTTCD, '
+//            +' ((prixvr_p * tva_p)/100+ prixvr_p ) AS PrixVTTCR, '
+//            +' ((prixvg_p * tva_p)/100+ prixvg_p ) AS PrixVTTCG, '
+//            +' ((prixva_p * tva_p)/100+ prixva_p ) AS PrixVTTCA, '
+//            +' ((prixva2_p * tva_p)/100+ prixva2_p ) AS PrixVTTCA2, '
+//            +' (qut_p + qutini_p ) AS QutDispo, '
+//            +' ((qut_p + qutini_p) * prixht_p ) AS ValueStock, '
+//            +' ((qut_p + qutini_p) * prixvd_p ) AS ValueStockVD '
+            +' WHERE code_p = ' +QuotedStr(MainForm.SQLQuery.FieldValues['code_p']) ;
             MainForm.ProduitTable.Active:=True;
 
             MainForm.ProduitTable.Edit;
@@ -2626,17 +2628,18 @@ procedure TBonRecGestionF.EditBARecBonRecGBtnClick(Sender: TObject);
 
            MainForm.ProduitTable.Active:=False;
            MainForm.ProduitTable.SQL.Clear;
-           MainForm.ProduitTable.SQL.Text:='SELECT *, '
-            +' ((prixht_p * tva_p)/100+ prixht_p ) AS PrixATTC, '
-            +' ((prixvd_p * tva_p)/100+ prixvd_p ) AS PrixVTTCD, '
-            +' ((prixvr_p * tva_p)/100+ prixvr_p ) AS PrixVTTCR, '
-            +' ((prixvg_p * tva_p)/100+ prixvg_p ) AS PrixVTTCG, '
-            +' ((prixva_p * tva_p)/100+ prixva_p ) AS PrixVTTCA, '
-            +' ((prixva2_p * tva_p)/100+ prixva2_p ) AS PrixVTTCA2, '
-            +' (qut_p + qutini_p ) AS QutDispo, '
-            +' ((qut_p + qutini_p) * prixht_p ) AS ValueStock, '
-            +' ((qut_p + qutini_p) * prixvd_p ) AS ValueStockVD '
-            +' FROM produit ' ;
+           MainForm.ProduitTable.SQL.Text:=ProduitsListF.PSQL;
+//           'SELECT *, '
+//            +' ((prixht_p * tva_p)/100+ prixht_p ) AS PrixATTC, '
+//            +' ((prixvd_p * tva_p)/100+ prixvd_p ) AS PrixVTTCD, '
+//            +' ((prixvr_p * tva_p)/100+ prixvr_p ) AS PrixVTTCR, '
+//            +' ((prixvg_p * tva_p)/100+ prixvg_p ) AS PrixVTTCG, '
+//            +' ((prixva_p * tva_p)/100+ prixva_p ) AS PrixVTTCA, '
+//            +' ((prixva2_p * tva_p)/100+ prixva2_p ) AS PrixVTTCA2, '
+//            +' (qut_p + qutini_p ) AS QutDispo, '
+//            +' ((qut_p + qutini_p) * prixht_p ) AS ValueStock, '
+//            +' ((qut_p + qutini_p) * prixvd_p ) AS ValueStockVD '
+//            +' FROM produit ' ;
            MainForm.ProduitTable.Active:=True;
            MainForm.ProduitTable.EnableControls;
            MainForm.SQLQuery.Active:=False;
@@ -2780,10 +2783,12 @@ begin
 
   if  (MainForm.Bona_recTable.FieldValues['MontantRes']<>null)  then
   begin
-  BonRecResteLbl.Caption:=FloatToStrF(((MainForm.Bona_recTable.FieldByName('MontantRes').AsFloat)),ffCurrency,14,2) ;
+  BonRecResteLbl.Caption:=FloatToStrF(((MainForm.Bona_recTable.FieldByName('MontantRes').AsFloat)),ffNumber,14,2) ;
   end;
 
   NumBonRecGEdt.Caption:= MainForm.Bona_recTable.FieldByName('num_barec').AsString;
+  DateBonRecGD.DateTime:= MainForm.Bona_recTable.FieldByName('date_barec').AsDateTime;
+  ObserBonRecGMem.Text:= MainForm.Bona_recTable.FieldByName('obser_barec').AsString;
 
    if MainForm.Bona_recPlistTable.ControlsDisabled  then
    begin
@@ -2823,10 +2828,12 @@ end;
 
 if  (MainForm.Bona_recTable.FieldValues['MontantRes']<>null)  then
 begin
-BonRecResteLbl.Caption:=FloatToStrF(((MainForm.Bona_recTable.FieldByName('MontantRes').AsFloat)),ffCurrency,14,2) ;
+BonRecResteLbl.Caption:=FloatToStrF(((MainForm.Bona_recTable.FieldByName('MontantRes').AsFloat)),ffNumber,14,2) ;
 end;
 
  NumBonRecGEdt.Caption:= MainForm.Bona_recTable.FieldByName('num_barec').AsString;
+  DateBonRecGD.DateTime:= MainForm.Bona_recTable.FieldByName('date_barec').AsDateTime;
+  ObserBonRecGMem.Text:= MainForm.Bona_recTable.FieldByName('obser_barec').AsString;
 
     if MainForm.Bona_recPlistTable.ControlsDisabled  then
    begin
@@ -2864,10 +2871,12 @@ end;
 
 if  (MainForm.Bona_recTable.FieldValues['MontantRes']<>null)  then
 begin
-BonRecResteLbl.Caption:=FloatToStrF(((MainForm.Bona_recTable.FieldByName('MontantRes').AsFloat)),ffCurrency,14,2) ;
+BonRecResteLbl.Caption:=FloatToStrF(((MainForm.Bona_recTable.FieldByName('MontantRes').AsFloat)),ffNumber,14,2) ;
 end;
 
  NumBonRecGEdt.Caption:= MainForm.Bona_recTable.FieldByName('num_barec').AsString;
+  DateBonRecGD.DateTime:= MainForm.Bona_recTable.FieldByName('date_barec').AsDateTime;
+  ObserBonRecGMem.Text:= MainForm.Bona_recTable.FieldByName('obser_barec').AsString;
 
     if MainForm.Bona_recPlistTable.ControlsDisabled  then
    begin
@@ -2905,10 +2914,12 @@ end;
 
 if  (MainForm.Bona_recTable.FieldValues['MontantRes']<>null)  then
 begin
-BonRecResteLbl.Caption:=FloatToStrF(((MainForm.Bona_recTable.FieldByName('MontantRes').AsFloat)),ffCurrency,14,2) ;
+BonRecResteLbl.Caption:=FloatToStrF(((MainForm.Bona_recTable.FieldByName('MontantRes').AsFloat)),ffNumber,14,2) ;
 end;
 
  NumBonRecGEdt.Caption:= MainForm.Bona_recTable.FieldByName('num_barec').AsString;
+  DateBonRecGD.DateTime:= MainForm.Bona_recTable.FieldByName('date_barec').AsDateTime;
+  ObserBonRecGMem.Text:= MainForm.Bona_recTable.FieldByName('obser_barec').AsString;
 
     if MainForm.Bona_recPlistTable.ControlsDisabled  then
    begin

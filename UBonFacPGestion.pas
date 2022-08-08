@@ -479,6 +479,8 @@ begin
   end;
 
   NumBonFacVGEdt.Caption:= MainForm.Bonp_facTable.FieldByName('num_bpfac').AsString;
+  DateBonFacVGD.DateTime:= MainForm.Bonp_facTable.FieldByName('date_bpfac').AsDateTime;
+  ObserBonFacVGMem.Text:= MainForm.Bonp_facTable.FieldByName('obser_bpfac').AsString;
 
           if MainForm.Bonp_fac_listTable.ControlsDisabled  then
    begin
@@ -521,6 +523,8 @@ begin
   end;
 
   NumBonFacVGEdt.Caption:= MainForm.Bonp_facTable.FieldByName('num_bpfac').AsString;
+  DateBonFacVGD.DateTime:= MainForm.Bonp_facTable.FieldByName('date_bpfac').AsDateTime;
+  ObserBonFacVGMem.Text:= MainForm.Bonp_facTable.FieldByName('obser_bpfac').AsString;
 
             if MainForm.Bonp_fac_listTable.ControlsDisabled  then
    begin
@@ -563,6 +567,8 @@ begin
   end;
 
   NumBonFacVGEdt.Caption:= MainForm.Bonp_facTable.FieldByName('num_bpfac').AsString;
+  DateBonFacVGD.DateTime:= MainForm.Bonp_facTable.FieldByName('date_bpfac').AsDateTime;
+  ObserBonFacVGMem.Text:= MainForm.Bonp_facTable.FieldByName('obser_bpfac').AsString;
 
             if MainForm.Bonp_fac_listTable.ControlsDisabled  then
    begin
@@ -605,6 +611,8 @@ begin
   end;
 
   NumBonFacVGEdt.Caption:= MainForm.Bonp_facTable.FieldByName('num_bpfac').AsString;
+  DateBonFacVGD.DateTime:= MainForm.Bonp_facTable.FieldByName('date_bpfac').AsDateTime;
+  ObserBonFacVGMem.Text:= MainForm.Bonp_facTable.FieldByName('obser_bpfac').AsString;
 
             if MainForm.Bonp_fac_listTable.ControlsDisabled  then
    begin

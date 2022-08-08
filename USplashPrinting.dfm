@@ -26,7 +26,7 @@ object FSplashPrinting: TFSplashPrinting
   object NameAddCompteSLbl: TLabel
     Left = 56
     Top = 112
-    Width = 84
+    Width = 83
     Height = 18
     Caption = 'Imprimante:'
     Color = 4207405
@@ -71,7 +71,7 @@ object FSplashPrinting: TFSplashPrinting
   object Label1: TLabel
     Left = 103
     Top = 64
-    Width = 35
+    Width = 36
     Height = 18
     Caption = 'Titre:'
     Color = 4207405
@@ -87,7 +87,7 @@ object FSplashPrinting: TFSplashPrinting
   object Label2: TLabel
     Left = 43
     Top = 209
-    Width = 97
+    Width = 96
     Height = 18
     Caption = 'Prix de vente:'
     Color = 4207405
@@ -128,7 +128,7 @@ object FSplashPrinting: TFSplashPrinting
     ShowHint = True
     Spacing = -1
     OnClick = OKFPrintingBtnClick
-    Version = '1.6.2.0'
+    Version = '1.7.2.0'
     ExplicitTop = 259
     TMSStyle = 0
   end
@@ -139,12 +139,11 @@ object FSplashPrinting: TFSplashPrinting
     Height = 27
     Cursor = crHandPoint
     Hint = 'Modifer'
+    ImageIndex = 48
+    Images = MainForm.PanelIcons24
     ParentShowHint = False
     ShowHint = True
     OnClick = PrintFPrintingBtnClick
-    SkinData.SkinSection = 'SPEEDBUTTON'
-    Images = MainForm.PanelIcons24
-    ImageIndex = 48
   end
   object SetDeafultFPrintingBtn: TAdvToolButton
     Left = 323
@@ -177,7 +176,7 @@ object FSplashPrinting: TFSplashPrinting
     Spacing = -1
     Visible = False
     OnClick = SetDeafultFPrintingBtnClick
-    Version = '1.6.2.0'
+    Version = '1.7.2.0'
     TMSStyle = 0
   end
   object PrintTicketfrxPreview: TfrxPreview
@@ -194,7 +193,10 @@ object FSplashPrinting: TFSplashPrinting
     OutlineVisible = False
     OutlineWidth = 120
     ThumbnailVisible = False
+    FindFmVisible = False
     UseReportHints = False
+    OutlineTreeSortType = dtsUnsorted
+    HideScrolls = False
   end
   object Panel1: TPanel
     Left = 0
@@ -335,7 +337,7 @@ object FSplashPrinting: TFSplashPrinting
     Value = 1
   end
   object PrintTicketfrxRprt: TfrxReport
-    Version = '6.3.12'
+    Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     Preview = PrintTicketfrxPreview
@@ -404,13 +406,13 @@ object FSplashPrinting: TFSplashPrinting
       Width = 1000.000000000000000000
     end
     object Page1: TfrxReportPage
+      HGuides.Strings = (
+        '22.67718')
       PaperWidth = 40.000000000000000000
       PaperHeight = 20.000000000000000000
       PaperSize = 256
       Frame.Typ = []
       MirrorMode = []
-      HGuides.Strings = (
-        '22.67718')
       object PRODUIT: TfrxMemoView
         Align = baCenter
         AllowVectorExport = True
@@ -470,9 +472,9 @@ object FSplashPrinting: TFSplashPrinting
       object BAR_CODE: TfrxBarCodeView
         Align = baCenter
         AllowVectorExport = True
-        Left = 36.090600000000000000
+        Left = 35.590600000000000000
         Top = 28.338590000000000000
-        Width = 79.000000000000000000
+        Width = 80.000000000000000000
         Height = 29.480312520000000000
         OnBeforePrint = 'BAR_CODEOnBeforePrint'
         BarType = bcCode128
@@ -493,6 +495,7 @@ object FSplashPrinting: TFSplashPrinting
         Font.Height = -9
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
+        ColorBar = clBlack
       end
     end
   end
@@ -544,7 +547,7 @@ object FSplashPrinting: TFSplashPrinting
     Top = 56
   end
   object frxReport2: TfrxReport
-    Version = '6.3.12'
+    Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     Preview = PrintTicketfrxPreview
@@ -612,13 +615,13 @@ object FSplashPrinting: TFSplashPrinting
       Width = 1000.000000000000000000
     end
     object Page1: TfrxReportPage
+      HGuides.Strings = (
+        '30.23624')
       PaperWidth = 40.000000000000000000
       PaperHeight = 20.000000000000000000
       PaperSize = 256
       Frame.Typ = []
       MirrorMode = []
-      HGuides.Strings = (
-        '30.23624')
       object Name: TfrxMemoView
         AllowVectorExport = True
         Width = 152.314967950000000000
@@ -637,9 +640,9 @@ object FSplashPrinting: TFSplashPrinting
       object BAR_CODE: TfrxBarCodeView
         Align = baCenter
         AllowVectorExport = True
-        Left = 36.090600000000000000
+        Left = 35.590600000000000000
         Top = 15.118120000000000000
-        Width = 79.000000000000000000
+        Width = 80.000000000000000000
         Height = 59.716552520000000000
         OnBeforePrint = 'BAR_CODEOnBeforePrint'
         BarType = bcCode128
@@ -659,11 +662,12 @@ object FSplashPrinting: TFSplashPrinting
         Font.Height = -9
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
+        ColorBar = clBlack
       end
     end
   end
   object frxReport1: TfrxReport
-    Version = '6.3.12'
+    Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     Preview = PrintTicketfrxPreview
@@ -731,13 +735,13 @@ object FSplashPrinting: TFSplashPrinting
       Width = 1000.000000000000000000
     end
     object Page1: TfrxReportPage
+      HGuides.Strings = (
+        '30.23624')
       PaperWidth = 40.000000000000000000
       PaperHeight = 20.000000000000000000
       PaperSize = 256
       Frame.Typ = []
       MirrorMode = []
-      HGuides.Strings = (
-        '30.23624')
       object PRODUIT: TfrxMemoView
         Align = baCenter
         AllowVectorExport = True
@@ -778,9 +782,9 @@ object FSplashPrinting: TFSplashPrinting
       object BAR_CODE: TfrxBarCodeView
         Align = baCenter
         AllowVectorExport = True
-        Left = 36.090600000000000000
+        Left = 35.590600000000000000
         Top = 29.338590000000000000
-        Width = 79.000000000000000000
+        Width = 80.000000000000000000
         Height = 44.598432520000000000
         OnBeforePrint = 'BAR_CODEOnBeforePrint'
         BarType = bcCode128
@@ -800,11 +804,12 @@ object FSplashPrinting: TFSplashPrinting
         Font.Height = -9
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
+        ColorBar = clBlack
       end
     end
   end
   object frxReport3: TfrxReport
-    Version = '6.3.12'
+    Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     Preview = PrintTicketfrxPreview
@@ -907,9 +912,9 @@ object FSplashPrinting: TFSplashPrinting
       object BAR_CODE: TfrxBarCodeView
         Align = baCenter
         AllowVectorExport = True
-        Left = 29.039425000000000000
+        Left = 28.539425000000000000
         Top = 48.795300000000000000
-        Width = 112.000000000000000000
+        Width = 113.000000000000000000
         Height = 52.913398030000000000
         OnBeforePrint = 'BAR_CODEOnBeforePrint'
         BarType = bcCode128
@@ -929,11 +934,12 @@ object FSplashPrinting: TFSplashPrinting
         Font.Height = -11
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
+        ColorBar = clBlack
       end
     end
   end
   object frxReport4: TfrxReport
-    Version = '6.3.12'
+    Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     Preview = PrintTicketfrxPreview
@@ -1014,9 +1020,9 @@ object FSplashPrinting: TFSplashPrinting
       object BAR_CODE: TfrxBarCodeView
         Align = baCenter
         AllowVectorExport = True
-        Left = 29.039425000000000000
+        Left = 28.539425000000000000
         Top = 53.795300000000000000
-        Width = 112.000000000000000000
+        Width = 113.000000000000000000
         Height = 75.590578030000000000
         OnBeforePrint = 'BAR_CODEOnBeforePrint'
         BarType = bcCode128
@@ -1036,11 +1042,12 @@ object FSplashPrinting: TFSplashPrinting
         Font.Height = -11
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
+        ColorBar = clBlack
       end
     end
   end
   object frxReport5: TfrxReport
-    Version = '6.3.12'
+    Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     Preview = PrintTicketfrxPreview
@@ -1109,13 +1116,13 @@ object FSplashPrinting: TFSplashPrinting
       Width = 1000.000000000000000000
     end
     object Page1: TfrxReportPage
+      HGuides.Strings = (
+        '22.67718')
       PaperWidth = 40.000000000000000000
       PaperHeight = 20.000000000000000000
       PaperSize = 256
       Frame.Typ = []
       MirrorMode = []
-      HGuides.Strings = (
-        '22.67718')
       object PRODUIT: TfrxMemoView
         Align = baCenter
         AllowVectorExport = True
@@ -1176,7 +1183,7 @@ object FSplashPrinting: TFSplashPrinting
     end
   end
   object frxReport47X30: TfrxReport
-    Version = '6.3.12'
+    Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     Preview = PrintTicketfrxPreview
@@ -1245,14 +1252,14 @@ object FSplashPrinting: TFSplashPrinting
       Width = 1000.000000000000000000
     end
     object Page1: TfrxReportPage
+      HGuides.Strings = (
+        '86.92919'
+        '41.57483')
       PaperWidth = 47.000000000000000000
       PaperHeight = 30.000000000000000000
       PaperSize = 256
       Frame.Typ = []
       MirrorMode = []
-      HGuides.Strings = (
-        '86.92919'
-        '41.57483')
       object PRODUIT: TfrxMemoView
         Align = baWidth
         AllowVectorExport = True
@@ -1315,9 +1322,9 @@ object FSplashPrinting: TFSplashPrinting
       object BAR_CODE: TfrxBarCodeView
         Align = baCenter
         AllowVectorExport = True
-        Left = 49.318955000000000000
+        Left = 48.818955000000000000
         Top = 46.236240000000000000
-        Width = 79.000000000000000000
+        Width = 80.000000000000000000
         Height = 33.259842520000000000
         OnBeforePrint = 'BAR_CODEOnBeforePrint'
         BarType = bcCode128
@@ -1338,11 +1345,12 @@ object FSplashPrinting: TFSplashPrinting
         Font.Height = -9
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
+        ColorBar = clBlack
       end
     end
   end
   object frxReport47X30s: TfrxReport
-    Version = '6.3.12'
+    Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     Preview = PrintTicketfrxPreview
@@ -1411,13 +1419,13 @@ object FSplashPrinting: TFSplashPrinting
       Width = 1000.000000000000000000
     end
     object Page1: TfrxReportPage
+      HGuides.Strings = (
+        '45.35436')
       PaperWidth = 47.000000000000000000
       PaperHeight = 30.000000000000000000
       PaperSize = 256
       Frame.Typ = []
       MirrorMode = []
-      HGuides.Strings = (
-        '45.35436')
       object PRODUIT: TfrxMemoView
         Align = baWidth
         AllowVectorExport = True
@@ -1459,9 +1467,9 @@ object FSplashPrinting: TFSplashPrinting
       object BAR_CODE: TfrxBarCodeView
         Align = baCenter
         AllowVectorExport = True
-        Left = 49.318955000000000000
+        Left = 48.818955000000000000
         Top = 46.236240000000000000
-        Width = 79.000000000000000000
+        Width = 80.000000000000000000
         Height = 55.937022520000000000
         OnBeforePrint = 'BAR_CODEOnBeforePrint'
         BarType = bcCode128
@@ -1482,11 +1490,12 @@ object FSplashPrinting: TFSplashPrinting
         Font.Height = -9
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
+        ColorBar = clBlack
       end
     end
   end
   object frxReport58X45p: TfrxReport
-    Version = '6.3.12'
+    Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     Preview = PrintTicketfrxPreview

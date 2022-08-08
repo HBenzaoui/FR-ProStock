@@ -990,9 +990,12 @@ begin
 
   end;
 
+  RegleVersementSGSlider.SliderOn:= True;
+  VerVersementSEdt.SetFocus;
+  VerVersementSEdt.SelectAll;
 
-//  VerVersementSEdt.SetFocus;
-//  VerVersementSEdt.SelectAll;
+
+
 
 end;
 
@@ -1138,9 +1141,9 @@ begin
            MainForm.Bona_recTable.Refresh;
            DataModuleF.Top5produit.Refresh;
 
-     end;
+      end;
 //--- this is to set the bon reception fileds
-     begin
+      begin
 //          MainForm.SQLQuery.DisableControls;
           MainForm.SQLQuery.Active:=false;
           MainForm.SQLQuery.SQL.Clear;
@@ -1559,6 +1562,9 @@ begin
           MainForm.CompteTable.EnableControls;
        end;
 
+
+       MainForm.ProduitTable.Refresh;
+
    end else
       begin
       try
@@ -1582,8 +1588,8 @@ begin
 
  if FSplashVersement.Tag = 2 then
   begin
-        if VerVersementSEdt.Text<>'' then
-     begin
+   if VerVersementSEdt.Text<>'' then
+   begin
 
 
      BonLivGestionF.BonLivRegleLbl.Caption:=  FloatToStrF(StrToFloat(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll])),ffNumber,14,2);
@@ -2107,6 +2113,9 @@ begin
           MainForm.CompteTable.Active:=True;
           MainForm.CompteTable.EnableControls;
        end;
+
+       MainForm.ProduitTable.Refresh;
+
    end else
       begin
       try
@@ -2130,7 +2139,7 @@ begin
  if FSplashVersement.Tag = 3 then
   begin
    if VerVersementSEdt.Text<>'' then
-     begin
+   begin
     BonCtrGestionF.BonCtrRegleLbl.Caption:=  FloatToStrF(StrToFloat(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll])),ffNumber,14,2);
 
      BonCtrGestionF.BonCtrRenduLbl.Caption:=  FloatToStrF((

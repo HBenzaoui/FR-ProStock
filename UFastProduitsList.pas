@@ -75,8 +75,18 @@ type
     +'   ((prixva_p * tva_p)/100+ prixva_p ) AS PrixVTTCA, '
     +'   ((prixva2_p * tva_p)/100+ prixva2_p ) AS PrixVTTCA2,  '
     +'   (qut_p + qutini_p ) AS QutDispo, '
-    +'   ((qut_p + qutini_p) * prixht_p ) AS ValueStock, '
-    +'   ((qut_p + qutini_p) * prixvd_p ) AS ValueStockVD '
+    +'   ((qut_p + qutini_p) * prixht_p ) AS ValueStockAHT, '
+    +'   ((((qut_p + qutini_p) * prixht_p ) * tva_p)/100+ ((qut_p + qutini_p) * prixht_p )) AS ValueStockATTC, '
+    +'   ((qut_p + qutini_p) * prixvd_p ) AS ValueStockVDHT, '
+    +'   ((((qut_p + qutini_p) * prixvd_p ) * tva_p)/100+ ((qut_p + qutini_p) * prixvd_p )) AS ValueStockVDTTC, '
+    +'   ((qut_p + qutini_p) * prixvr_p ) AS ValueStockVRHT, '
+    +'   ((((qut_p + qutini_p) * prixvr_p ) * tva_p)/100+ ((qut_p + qutini_p) * prixvr_p )) AS ValueStockVRTTC, '
+    +'   ((qut_p + qutini_p) * prixvg_p ) AS ValueStockVGHT, '
+    +'   ((((qut_p + qutini_p) * prixvg_p ) * tva_p)/100+ ((qut_p + qutini_p) * prixvg_p )) AS ValueStockVGTTC, '
+    +'   ((qut_p + qutini_p) * prixva_p ) AS ValueStockVAHT, '
+    +'   ((((qut_p + qutini_p) * prixva_p ) * tva_p)/100+ ((qut_p + qutini_p) * prixva_p )) AS ValueStockVATTC, '
+    +'   ((qut_p + qutini_p) * prixva2_p ) AS ValueStockVA2HT, '
+    +'   ((((qut_p + qutini_p) * prixva2_p ) * tva_p)/100+ ((qut_p + qutini_p) * prixva2_p )) AS ValueStockVA2TTC '
     +' FROM produit ' ;
   end;
 

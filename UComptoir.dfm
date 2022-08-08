@@ -4467,6 +4467,7 @@ object BonCtrGestionF: TBonCtrGestionF
           Title.Font.Name = 'Helvetica LT Std'
           Title.Font.Style = []
           Title.Font.Quality = fqProof
+          Visible = False
           Width = 55
           WordWrap = False
         end
@@ -5857,8 +5858,8 @@ object BonCtrGestionF: TBonCtrGestionF
   end
   object ApplicationEvents1: TApplicationEvents
     OnShortCut = ApplicationEvents1ShortCut
-    Left = 662
-    Top = 282
+    Left = 634
+    Top = 342
   end
   object ComPort1: TComPort
     BaudRate = br9600

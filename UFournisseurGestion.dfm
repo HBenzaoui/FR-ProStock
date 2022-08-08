@@ -688,6 +688,7 @@ object FournisseurGestionF: TFournisseurGestionF
           Font.Style = [fsBold]
           ParentColor = False
           ParentFont = False
+          Visible = False
           StyleElements = [seClient, seBorder]
         end
         object CurrencyFournisseurG1: TLabel
@@ -705,6 +706,7 @@ object FournisseurGestionF: TFournisseurGestionF
           Font.Style = [fsBold]
           ParentColor = False
           ParentFont = False
+          Visible = False
           StyleElements = [seClient, seBorder]
         end
         object OldCreditFournisseurGLbl: TLabel

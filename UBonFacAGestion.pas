@@ -757,6 +757,8 @@ begin
   end;
 
   NumBonFacAGEdt.Caption:= MainForm.Bona_facTable.FieldByName('num_bafac').AsString;
+  DateBonFacAGD.DateTime:= MainForm.Bona_facTable.FieldByName('date_bafac').AsDateTime;
+  ObserBonFacAGMem.Text:= MainForm.Bona_facTable.FieldByName('obser_bafac').AsString;
 
    if MainForm.Bona_fac_listTable.ControlsDisabled  then
    begin
@@ -799,6 +801,8 @@ begin
   end;
 
   NumBonFacAGEdt.Caption:= MainForm.Bona_facTable.FieldByName('num_bafac').AsString;
+  DateBonFacAGD.DateTime:= MainForm.Bona_facTable.FieldByName('date_bafac').AsDateTime;
+  ObserBonFacAGMem.Text:= MainForm.Bona_facTable.FieldByName('obser_bafac').AsString;
 
   if MainForm.Bona_fac_listTable.ControlsDisabled  then
    begin
@@ -841,6 +845,8 @@ begin
   end;
 
   NumBonFacAGEdt.Caption:= MainForm.Bona_facTable.FieldByName('num_bafac').AsString;
+  DateBonFacAGD.DateTime:= MainForm.Bona_facTable.FieldByName('date_bafac').AsDateTime;
+  ObserBonFacAGMem.Text:= MainForm.Bona_facTable.FieldByName('obser_bafac').AsString;
 
   if MainForm.Bona_fac_listTable.ControlsDisabled  then
    begin
@@ -883,6 +889,8 @@ begin
   end;
 
   NumBonFacAGEdt.Caption:= MainForm.Bona_facTable.FieldByName('num_bafac').AsString;
+  DateBonFacAGD.DateTime:= MainForm.Bona_facTable.FieldByName('date_bafac').AsDateTime;
+  ObserBonFacAGMem.Text:= MainForm.Bona_facTable.FieldByName('obser_bafac').AsString;
 
   if MainForm.Bona_fac_listTable.ControlsDisabled  then
    begin
@@ -3543,10 +3551,10 @@ begin
 
              if (RemisePerctageBonFacAGEdt.Text = '') OR (RemisePerctageBonFacA = 0) then
              begin
-             MontantTVA9.Text:= CurrToStrF(Montant9,ffCurrency,2);
+             MontantTVA9.Text:= CurrToStrF(Montant9,ffNumber,2);
              end else
                  begin
-                   MontantTVA9.Text:=   CurrToStrF((Montant9 - (Montant9*RemisePerctageBonFacA)/100) ,ffCurrency,2);
+                   MontantTVA9.Text:=   CurrToStrF((Montant9 - (Montant9*RemisePerctageBonFacA)/100) ,ffNumber,2);
                  end;
 
                  MontantTVA9.Visible:=True;

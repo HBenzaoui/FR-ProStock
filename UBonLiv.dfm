@@ -1642,6 +1642,40 @@ object BonLivF: TBonLivF
       Version = '1.7.2.0'
       TMSStyle = 0
     end
+    object AdvToolButton4: TAdvToolButton
+      Left = 267
+      Top = 0
+      Width = 26
+      Height = 20
+      Cursor = crHandPoint
+      Hint = 'Transformer'
+      Anchors = [akRight]
+      AutoThemeAdapt = False
+      BorderColor = 15722984
+      BorderDownColor = 15722984
+      BorderHotColor = 14079702
+      Color = 15722984
+      ColorDown = 15722984
+      ColorHot = 14079702
+      ColorHotTo = 14079702
+      ColorChecked = clNone
+      DropDownSplit = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 4207405
+      Font.Height = 18
+      Font.Name = 'Roboto'
+      Font.Style = []
+      ImageIndex = 39
+      Images = MainForm.PanelIcons16
+      ParentFont = False
+      ParentShowHint = False
+      Shaded = False
+      ShowHint = True
+      Spacing = -2
+      OnClick = AdvToolButton3Click
+      Version = '1.7.2.0'
+      TMSStyle = 0
+    end
     object S01: TPanel
       Left = 170
       Top = 0

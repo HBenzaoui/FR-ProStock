@@ -777,8 +777,8 @@ begin
        BonFacPGestionF.ObserBonFacVGMem.Lines.Text := MainForm.Bonp_facTable.FieldByName('obser_bpfac').AsString;
        if (MainForm.Bonp_facTable.FieldValues['code_c']<> null) and (MainForm.Bonp_facTable.FieldValues['code_c']<> 0) then
        begin
-       CodeC:=MainForm.Bonp_facTable.FieldValues['code_c'];
-       BonFacPGestionF.ClientBonFacVGCbx.Text:= MainForm.Bonp_facTable.FieldValues['clientbvfac'];
+       CodeC:=MainForm.Bonp_facTable.FieldByName('code_c').AsInteger;
+       BonFacPGestionF.ClientBonFacVGCbx.Text:= MainForm.Bonp_facTable.FieldByName('clientbvfac').AsString;
 
         end;
 

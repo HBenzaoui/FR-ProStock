@@ -282,31 +282,31 @@ if FormatFPrintingCbx.ItemIndex <> -1 then
         if PrixFPrintingCbx.ItemIndex = 0 then
         begin
                  Prix:= frxReport3.FindObject('Prix') as TfrxMemoView;
-          Prix.Text:= CurrToStrF (MainForm.ProduitTable.FieldByName('PrixVTTCD').AsCurrency,ffNumber,2) + ' DA';
+          Prix.Text:= CurrToStrF (MainForm.ProduitTable.FieldByName('PrixVTTCD').AsFloat,ffCurrency,2);
             frxReport3.PrepareReport;
         end;
             if PrixFPrintingCbx.ItemIndex = 1 then
         begin
             Prix:= frxReport3.FindObject('Prix') as TfrxMemoView;
-          Prix.Text:= CurrToStrF (MainForm.ProduitTable.FieldByName('PrixVTTCR').AsCurrency,ffNumber,2) + ' DA';
+          Prix.Text:= CurrToStrF (MainForm.ProduitTable.FieldByName('PrixVTTCR').AsFloat,ffCurrency,2);
             frxReport3.PrepareReport;
         end;
             if PrixFPrintingCbx.ItemIndex = 2 then
         begin
               Prix:= frxReport3.FindObject('Prix') as TfrxMemoView;
-          Prix.Text:= CurrToStrF (MainForm.ProduitTable.FieldByName('PrixVTTCG').AsCurrency,ffNumber,2) + ' DA';
+          Prix.Text:= CurrToStrF (MainForm.ProduitTable.FieldByName('PrixVTTCG').AsFloat,ffCurrency,2);
            frxReport3.PrepareReport;
         end;
             if PrixFPrintingCbx.ItemIndex = 3 then
         begin
             Prix:= frxReport3.FindObject('Prix') as TfrxMemoView;
-          Prix.Text:= CurrToStrF (MainForm.ProduitTable.FieldByName('PrixVTTCA').AsCurrency,ffNumber,2) + ' DA';
+          Prix.Text:= CurrToStrF (MainForm.ProduitTable.FieldByName('PrixVTTCA').AsFloat,ffCurrency,2);
             frxReport3.PrepareReport;
         end;
             if PrixFPrintingCbx.ItemIndex = 4 then
         begin
              Prix:= frxReport3.FindObject('Prix') as TfrxMemoView;
-          Prix.Text:= CurrToStrF (MainForm.ProduitTable.FieldByName('PrixVTTCA2').AsCurrency,ffNumber,2) + ' DA';
+          Prix.Text:= CurrToStrF (MainForm.ProduitTable.FieldByName('PrixVTTCA2').AsFloat,ffCurrency,2);
             frxReport3.PrepareReport;
         end;
       end;
@@ -344,31 +344,31 @@ if FormatFPrintingCbx.ItemIndex <> -1 then
         if PrixFPrintingCbx.ItemIndex = 0 then
         begin
                  Prix:= frxReport5.FindObject('Prix') as TfrxMemoView;
-          Prix.Text:= CurrToStrF (MainForm.ProduitTable.FieldByName('PrixVTTCD').AsCurrency,ffNumber,2) + ' DA';
+          Prix.Text:= CurrToStrF (MainForm.ProduitTable.FieldByName('PrixVTTCD').AsFloat,ffCurrency,2);
             frxReport5.PrepareReport;
         end;
             if PrixFPrintingCbx.ItemIndex = 1 then
         begin
             Prix:= frxReport5.FindObject('Prix') as TfrxMemoView;
-          Prix.Text:= CurrToStrF (MainForm.ProduitTable.FieldByName('PrixVTTCR').AsCurrency,ffNumber,2) + ' DA';
+          Prix.Text:= CurrToStrF (MainForm.ProduitTable.FieldByName('PrixVTTCR').AsFloat,ffCurrency,2);
             frxReport5.PrepareReport;
         end;
             if PrixFPrintingCbx.ItemIndex = 2 then
         begin
               Prix:= frxReport5.FindObject('Prix') as TfrxMemoView;
-          Prix.Text:= CurrToStrF (MainForm.ProduitTable.FieldByName('PrixVTTCG').AsCurrency,ffNumber,2) + ' DA';
+          Prix.Text:= CurrToStrF (MainForm.ProduitTable.FieldByName('PrixVTTCG').AsFloat,ffCurrency,2);
            frxReport5.PrepareReport;
         end;
             if PrixFPrintingCbx.ItemIndex = 3 then
         begin
             Prix:= frxReport5.FindObject('Prix') as TfrxMemoView;
-          Prix.Text:= CurrToStrF (MainForm.ProduitTable.FieldByName('PrixVTTCA').AsCurrency,ffNumber,2) + ' DA';
+          Prix.Text:= CurrToStrF (MainForm.ProduitTable.FieldByName('PrixVTTCA').AsFloat,ffCurrency,2);
             frxReport5.PrepareReport;
         end;
             if PrixFPrintingCbx.ItemIndex = 4 then
         begin
              Prix:= frxReport5.FindObject('Prix') as TfrxMemoView;
-          Prix.Text:= CurrToStrF (MainForm.ProduitTable.FieldByName('PrixVTTCA2').AsCurrency,ffNumber,2) + ' DA';
+          Prix.Text:= CurrToStrF (MainForm.ProduitTable.FieldByName('PrixVTTCA2').AsFloat,ffCurrency,2);
             frxReport5.PrepareReport;
         end;
       end;
@@ -393,31 +393,31 @@ if FormatFPrintingCbx.ItemIndex <> -1 then
         if PrixFPrintingCbx.ItemIndex = 0 then
         begin
                  Prix:= frxReport47X30.FindObject('Prix') as TfrxMemoView;
-          Prix.Text:= CurrToStrF (MainForm.ProduitTable.FieldByName('PrixVTTCD').AsCurrency,ffNumber,2) + ' DA';
+          Prix.Text:= CurrToStrF (MainForm.ProduitTable.FieldByName('PrixVTTCD').AsFloat,ffCurrency,2);
             frxReport47X30.PrepareReport;
         end;
             if PrixFPrintingCbx.ItemIndex = 1 then
         begin
             Prix:= frxReport47X30.FindObject('Prix') as TfrxMemoView;
-          Prix.Text:= CurrToStrF (MainForm.ProduitTable.FieldByName('PrixVTTCR').AsCurrency,ffNumber,2) + ' DA';
+          Prix.Text:= CurrToStrF (MainForm.ProduitTable.FieldByName('PrixVTTCR').AsFloat,ffCurrency,2);
             frxReport47X30.PrepareReport;
         end;
             if PrixFPrintingCbx.ItemIndex = 2 then
         begin
               Prix:= frxReport47X30.FindObject('Prix') as TfrxMemoView;
-          Prix.Text:= CurrToStrF (MainForm.ProduitTable.FieldByName('PrixVTTCG').AsCurrency,ffNumber,2) + ' DA';
+          Prix.Text:= CurrToStrF (MainForm.ProduitTable.FieldByName('PrixVTTCG').AsFloat,ffCurrency,2);
            frxReport47X30.PrepareReport;
         end;
             if PrixFPrintingCbx.ItemIndex = 3 then
         begin
             Prix:= frxReport47X30.FindObject('Prix') as TfrxMemoView;
-          Prix.Text:= CurrToStrF (MainForm.ProduitTable.FieldByName('PrixVTTCA').AsCurrency,ffNumber,2) + ' DA';
+          Prix.Text:= CurrToStrF (MainForm.ProduitTable.FieldByName('PrixVTTCA').AsFloat,ffCurrency,2);
             frxReport47X30.PrepareReport;
         end;
             if PrixFPrintingCbx.ItemIndex = 4 then
         begin
              Prix:= frxReport47X30.FindObject('Prix') as TfrxMemoView;
-          Prix.Text:= CurrToStrF (MainForm.ProduitTable.FieldByName('PrixVTTCA2').AsCurrency,ffNumber,2) + ' DA';
+          Prix.Text:= CurrToStrF (MainForm.ProduitTable.FieldByName('PrixVTTCA2').AsFloat,ffCurrency,2);
             frxReport47X30.PrepareReport;
         end;
       end;
@@ -456,31 +456,31 @@ if FormatFPrintingCbx.ItemIndex <> -1 then
         if PrixFPrintingCbx.ItemIndex = 0 then
         begin
                  Prix:= frxReport58X45p.FindObject('Prix') as TfrxMemoView;
-          Prix.Text:= CurrToStrF (MainForm.ProduitTable.FieldByName('PrixVTTCD').AsCurrency,ffNumber,2) + ' DA';
+          Prix.Text:= CurrToStrF (MainForm.ProduitTable.FieldByName('PrixVTTCD').AsFloat,ffCurrency,2);
             frxReport58X45p.PrepareReport;
         end;
             if PrixFPrintingCbx.ItemIndex = 1 then
         begin
             Prix:= frxReport58X45p.FindObject('Prix') as TfrxMemoView;
-          Prix.Text:= CurrToStrF (MainForm.ProduitTable.FieldByName('PrixVTTCR').AsCurrency,ffNumber,2) + ' DA';
+          Prix.Text:= CurrToStrF (MainForm.ProduitTable.FieldByName('PrixVTTCR').AsFloat,ffCurrency,2);
             frxReport58X45p.PrepareReport;
         end;
             if PrixFPrintingCbx.ItemIndex = 2 then
         begin
               Prix:= frxReport58X45p.FindObject('Prix') as TfrxMemoView;
-          Prix.Text:= CurrToStrF (MainForm.ProduitTable.FieldByName('PrixVTTCG').AsCurrency,ffNumber,2) + ' DA';
+          Prix.Text:= CurrToStrF (MainForm.ProduitTable.FieldByName('PrixVTTCG').AsFloat,ffCurrency,2);
            frxReport58X45p.PrepareReport;
         end;
             if PrixFPrintingCbx.ItemIndex = 3 then
         begin
             Prix:= frxReport58X45p.FindObject('Prix') as TfrxMemoView;
-          Prix.Text:= CurrToStrF (MainForm.ProduitTable.FieldByName('PrixVTTCA').AsCurrency,ffNumber,2) + ' DA';
+          Prix.Text:= CurrToStrF (MainForm.ProduitTable.FieldByName('PrixVTTCA').AsFloat,ffCurrency,2);
             frxReport58X45p.PrepareReport;
         end;
             if PrixFPrintingCbx.ItemIndex = 4 then
         begin
              Prix:= frxReport58X45p.FindObject('Prix') as TfrxMemoView;
-          Prix.Text:= CurrToStrF (MainForm.ProduitTable.FieldByName('PrixVTTCA2').AsCurrency,ffNumber,2) + ' DA';
+          Prix.Text:= CurrToStrF (MainForm.ProduitTable.FieldByName('PrixVTTCA2').AsFloat,ffCurrency,2);
             frxReport58X45p.PrepareReport;
         end;
       end;
@@ -567,7 +567,7 @@ begin
         if PrixFPrintingCbx.ItemIndex = 0 then
       begin
          Prix:= PrintTicketfrxRprt.FindObject('Prix') as TfrxMemoView;
-       Prix.Text:= CurrToStrF (MainForm.ProduitTable.FieldByName('PrixVTTCD').AsCurrency,ffNumber,2) + ' DA';
+       Prix.Text:= CurrToStrF (MainForm.ProduitTable.FieldByName('PrixVTTCD').AsCurrency,ffCurrency,2);
 
        PrintTicketfrxRprt.PrepareReport;
         PrintTicketfrxPreview.Zoom:=1.12;
@@ -576,7 +576,7 @@ begin
           if PrixFPrintingCbx.ItemIndex = 1 then
       begin
              Prix:= PrintTicketfrxRprt.FindObject('Prix') as TfrxMemoView;
-       Prix.Text:= CurrToStrF (MainForm.ProduitTable.FieldByName('PrixVTTCR').AsCurrency,ffNumber,2) + ' DA';
+       Prix.Text:= CurrToStrF (MainForm.ProduitTable.FieldByName('PrixVTTCR').AsCurrency,ffCurrency,2);
 
           PrintTicketfrxRprt.PrepareReport;
          PrintTicketfrxPreview.Zoom:=1.12;
@@ -585,7 +585,7 @@ begin
           if PrixFPrintingCbx.ItemIndex = 2 then
       begin
              Prix:= PrintTicketfrxRprt.FindObject('Prix') as TfrxMemoView;
-       Prix.Text:= CurrToStrF (MainForm.ProduitTable.FieldByName('PrixVTTCG').AsCurrency,ffNumber,2) + ' DA';
+       Prix.Text:= CurrToStrF (MainForm.ProduitTable.FieldByName('PrixVTTCG').AsCurrency,ffCurrency,2);
 
           PrintTicketfrxRprt.PrepareReport;
           PrintTicketfrxPreview.Zoom:=1.12;
@@ -594,7 +594,7 @@ begin
       begin
 
              Prix:= PrintTicketfrxRprt.FindObject('Prix') as TfrxMemoView;
-       Prix.Text:= CurrToStrF (MainForm.ProduitTable.FieldByName('PrixVTTCA').AsCurrency,ffNumber,2) + ' DA';
+       Prix.Text:= CurrToStrF (MainForm.ProduitTable.FieldByName('PrixVTTCA').AsCurrency,ffCurrency,2);
 
           PrintTicketfrxRprt.PrepareReport;
           PrintTicketfrxPreview.Zoom:=1.12;
@@ -602,7 +602,7 @@ begin
           if PrixFPrintingCbx.ItemIndex = 4 then
       begin
              Prix:= PrintTicketfrxRprt.FindObject('Prix') as TfrxMemoView;
-       Prix.Text:= CurrToStrF (MainForm.ProduitTable.FieldByName('PrixVTTCA2').AsCurrency,ffNumber,2) + ' DA';
+       Prix.Text:= CurrToStrF (MainForm.ProduitTable.FieldByName('PrixVTTCA2').AsCurrency,ffCurrency,2);
 
           PrintTicketfrxRprt.PrepareReport;
          PrintTicketfrxPreview.Zoom:=1.12;
@@ -621,7 +621,7 @@ begin
       if PrixFPrintingCbx.ItemIndex = 0 then
       begin
                Prix:= frxReport3.FindObject('Prix') as TfrxMemoView;
-        Prix.Text:= CurrToStrF (MainForm.ProduitTable.FieldByName('PrixVTTCD').AsCurrency,ffNumber,2) + ' DA';
+        Prix.Text:= CurrToStrF (MainForm.ProduitTable.FieldByName('PrixVTTCD').AsFloat,ffCurrency,2);
 
           frxReport3.PrepareReport;
 
@@ -629,7 +629,7 @@ begin
           if PrixFPrintingCbx.ItemIndex = 1 then
       begin
           Prix:= frxReport3.FindObject('Prix') as TfrxMemoView;
-        Prix.Text:= CurrToStrF (MainForm.ProduitTable.FieldByName('PrixVTTCR').AsCurrency,ffNumber,2) + ' DA';
+        Prix.Text:= CurrToStrF (MainForm.ProduitTable.FieldByName('PrixVTTCR').AsFloat,ffCurrency,2);
 
           frxReport3.PrepareReport;
 
@@ -637,21 +637,21 @@ begin
           if PrixFPrintingCbx.ItemIndex = 2 then
       begin
             Prix:= frxReport3.FindObject('Prix') as TfrxMemoView;
-        Prix.Text:= CurrToStrF (MainForm.ProduitTable.FieldByName('PrixVTTCG').AsCurrency,ffNumber,2) + ' DA';
+        Prix.Text:= CurrToStrF (MainForm.ProduitTable.FieldByName('PrixVTTCG').AsFloat,ffCurrency,2);
 
          frxReport3.PrepareReport;
       end;
           if PrixFPrintingCbx.ItemIndex = 3 then
       begin
           Prix:= frxReport3.FindObject('Prix') as TfrxMemoView;
-        Prix.Text:= CurrToStrF (MainForm.ProduitTable.FieldByName('PrixVTTCA').AsCurrency,ffNumber,2) + ' DA';
+        Prix.Text:= CurrToStrF (MainForm.ProduitTable.FieldByName('PrixVTTCA').AsFloat,ffCurrency,2);
 
           frxReport3.PrepareReport;
       end;
           if PrixFPrintingCbx.ItemIndex = 4 then
       begin
            Prix:= frxReport3.FindObject('Prix') as TfrxMemoView;
-        Prix.Text:= CurrToStrF (MainForm.ProduitTable.FieldByName('PrixVTTCA2').AsCurrency,ffNumber,2) + ' DA';
+        Prix.Text:= CurrToStrF (MainForm.ProduitTable.FieldByName('PrixVTTCA2').AsFloat,ffCurrency,2);
 
           frxReport3.PrepareReport;
 
@@ -669,7 +669,7 @@ begin
       if PrixFPrintingCbx.ItemIndex = 0 then
       begin
                Prix:= frxReport5.FindObject('Prix') as TfrxMemoView;
-        Prix.Text:= CurrToStrF (MainForm.ProduitTable.FieldByName('PrixVTTCD').AsCurrency,ffNumber,2) + ' DA';
+        Prix.Text:= CurrToStrF (MainForm.ProduitTable.FieldByName('PrixVTTCD').AsFloat,ffCurrency,2);
 
         frxReport5.PrepareReport;
         PrintTicketfrxPreview.Zoom:=1.12;
@@ -678,7 +678,7 @@ begin
           if PrixFPrintingCbx.ItemIndex = 1 then
       begin
           Prix:= frxReport5.FindObject('Prix') as TfrxMemoView;
-        Prix.Text:= CurrToStrF (MainForm.ProduitTable.FieldByName('PrixVTTCR').AsCurrency,ffNumber,2) + ' DA';
+        Prix.Text:= CurrToStrF (MainForm.ProduitTable.FieldByName('PrixVTTCR').AsFloat,ffCurrency,2);
 
           frxReport5.PrepareReport;
           PrintTicketfrxPreview.Zoom:=1.12;
@@ -687,7 +687,7 @@ begin
           if PrixFPrintingCbx.ItemIndex = 2 then
       begin
             Prix:= frxReport5.FindObject('Prix') as TfrxMemoView;
-        Prix.Text:= CurrToStrF (MainForm.ProduitTable.FieldByName('PrixVTTCG').AsCurrency,ffNumber,2) + ' DA';
+        Prix.Text:= CurrToStrF (MainForm.ProduitTable.FieldByName('PrixVTTCG').AsFloat,ffCurrency,2);
 
          frxReport5.PrepareReport;
          PrintTicketfrxPreview.Zoom:=1.12;
@@ -695,7 +695,7 @@ begin
           if PrixFPrintingCbx.ItemIndex = 3 then
       begin
           Prix:= frxReport5.FindObject('Prix') as TfrxMemoView;
-        Prix.Text:= CurrToStrF (MainForm.ProduitTable.FieldByName('PrixVTTCA').AsCurrency,ffNumber,2) + ' DA';
+        Prix.Text:= CurrToStrF (MainForm.ProduitTable.FieldByName('PrixVTTCA').AsFloat,ffCurrency,2);
 
           frxReport5.PrepareReport;
           PrintTicketfrxPreview.Zoom:=1.12;
@@ -703,7 +703,7 @@ begin
           if PrixFPrintingCbx.ItemIndex = 4 then
       begin
            Prix:= frxReport5.FindObject('Prix') as TfrxMemoView;
-        Prix.Text:= CurrToStrF (MainForm.ProduitTable.FieldByName('PrixVTTCA2').AsCurrency,ffNumber,2) + ' DA';
+        Prix.Text:= CurrToStrF (MainForm.ProduitTable.FieldByName('PrixVTTCA2').AsFloat,ffCurrency,2);
 
           frxReport5.PrepareReport;
           PrintTicketfrxPreview.Zoom:=1.12;
@@ -722,7 +722,7 @@ begin
       if PrixFPrintingCbx.ItemIndex = 0 then
       begin
                Prix:= frxReport47X30.FindObject('Prix') as TfrxMemoView;
-        Prix.Text:= CurrToStrF (MainForm.ProduitTable.FieldByName('PrixVTTCD').AsCurrency,ffNumber,2) + ' DA';
+        Prix.Text:= CurrToStrF (MainForm.ProduitTable.FieldByName('PrixVTTCD').AsFloat,ffCurrency,2);
 
           frxReport47X30.PrepareReport;
 
@@ -730,7 +730,7 @@ begin
           if PrixFPrintingCbx.ItemIndex = 1 then
       begin
           Prix:= frxReport47X30.FindObject('Prix') as TfrxMemoView;
-        Prix.Text:= CurrToStrF (MainForm.ProduitTable.FieldByName('PrixVTTCR').AsCurrency,ffNumber,2) + ' DA';
+        Prix.Text:= CurrToStrF (MainForm.ProduitTable.FieldByName('PrixVTTCR').AsFloat,ffCurrency,2);
 
           frxReport47X30.PrepareReport;
 
@@ -738,21 +738,21 @@ begin
           if PrixFPrintingCbx.ItemIndex = 2 then
       begin
             Prix:= frxReport47X30.FindObject('Prix') as TfrxMemoView;
-        Prix.Text:= CurrToStrF (MainForm.ProduitTable.FieldByName('PrixVTTCG').AsCurrency,ffNumber,2) + ' DA';
+        Prix.Text:= CurrToStrF (MainForm.ProduitTable.FieldByName('PrixVTTCG').AsFloat,ffCurrency,2);
 
          frxReport47X30.PrepareReport;
       end;
           if PrixFPrintingCbx.ItemIndex = 3 then
       begin
           Prix:= frxReport47X30.FindObject('Prix') as TfrxMemoView;
-        Prix.Text:= CurrToStrF (MainForm.ProduitTable.FieldByName('PrixVTTCA').AsCurrency,ffNumber,2) + ' DA';
+        Prix.Text:= CurrToStrF (MainForm.ProduitTable.FieldByName('PrixVTTCA').AsFloat,ffCurrency,2);
 
           frxReport47X30.PrepareReport;
       end;
           if PrixFPrintingCbx.ItemIndex = 4 then
       begin
            Prix:= frxReport47X30.FindObject('Prix') as TfrxMemoView;
-        Prix.Text:= CurrToStrF (MainForm.ProduitTable.FieldByName('PrixVTTCA2').AsCurrency,ffNumber,2) + ' DA';
+        Prix.Text:= CurrToStrF (MainForm.ProduitTable.FieldByName('PrixVTTCA2').AsFloat,ffCurrency,2);
 
           frxReport47X30.PrepareReport;
 
@@ -771,7 +771,7 @@ begin
       if PrixFPrintingCbx.ItemIndex = 0 then
       begin
                Prix:= frxReport58X45p.FindObject('Prix') as TfrxMemoView;
-        Prix.Text:= CurrToStrF (MainForm.ProduitTable.FieldByName('PrixVTTCD').AsCurrency,ffNumber,2) + ' DA';
+        Prix.Text:= CurrToStrF (MainForm.ProduitTable.FieldByName('PrixVTTCD').AsFloat,ffCurrency,2);
 
           frxReport58X45p.PrepareReport;
           PrintTicketfrxPreview.Zoom:=0.775;
@@ -780,7 +780,7 @@ begin
           if PrixFPrintingCbx.ItemIndex = 1 then
       begin
           Prix:= frxReport58X45p.FindObject('Prix') as TfrxMemoView;
-        Prix.Text:= CurrToStrF (MainForm.ProduitTable.FieldByName('PrixVTTCR').AsCurrency,ffNumber,2) + ' DA';
+        Prix.Text:= CurrToStrF (MainForm.ProduitTable.FieldByName('PrixVTTCR').AsFloat,ffCurrency,2);
 
           frxReport58X45p.PrepareReport;
           PrintTicketfrxPreview.Zoom:=0.775;
@@ -789,7 +789,7 @@ begin
           if PrixFPrintingCbx.ItemIndex = 2 then
       begin
             Prix:= frxReport58X45p.FindObject('Prix') as TfrxMemoView;
-        Prix.Text:= CurrToStrF (MainForm.ProduitTable.FieldByName('PrixVTTCG').AsCurrency,ffNumber,2) + ' DA';
+        Prix.Text:= CurrToStrF (MainForm.ProduitTable.FieldByName('PrixVTTCG').AsFloat,ffCurrency,2);
 
          frxReport58X45p.PrepareReport;
          PrintTicketfrxPreview.Zoom:=0.775;
@@ -798,7 +798,7 @@ begin
           if PrixFPrintingCbx.ItemIndex = 3 then
       begin
           Prix:= frxReport58X45p.FindObject('Prix') as TfrxMemoView;
-        Prix.Text:= CurrToStrF (MainForm.ProduitTable.FieldByName('PrixVTTCA').AsCurrency,ffNumber,2) + ' DA';
+        Prix.Text:= CurrToStrF (MainForm.ProduitTable.FieldByName('PrixVTTCA').AsFloat,ffCurrency,2);
 
           frxReport58X45p.PrepareReport;
           PrintTicketfrxPreview.Zoom:=0.775;
@@ -807,7 +807,7 @@ begin
           if PrixFPrintingCbx.ItemIndex = 4 then
       begin
            Prix:= frxReport58X45p.FindObject('Prix') as TfrxMemoView;
-        Prix.Text:= CurrToStrF (MainForm.ProduitTable.FieldByName('PrixVTTCA2').AsCurrency,ffNumber,2) + ' DA';
+        Prix.Text:= CurrToStrF (MainForm.ProduitTable.FieldByName('PrixVTTCA2').AsFloat,ffCurrency,2);
 
           frxReport58X45p.PrepareReport;
           PrintTicketfrxPreview.Zoom:=0.775;

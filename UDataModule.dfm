@@ -1865,6 +1865,30 @@ object DataModuleF: TDataModuleF
       KeyFields = 'agent'
       Lookup = True
     end
+    object ClientSituationQRtotal: TFMTBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'total'
+      Origin = 'total'
+      ReadOnly = True
+      Precision = 64
+      Size = 0
+    end
+    object ClientSituationQRversemt: TFMTBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'versemt'
+      Origin = 'versemt'
+      ReadOnly = True
+      Precision = 64
+      Size = 0
+    end
+    object ClientSituationQRrest: TFMTBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'rest'
+      Origin = 'rest'
+      ReadOnly = True
+      Precision = 64
+      Size = 0
+    end
   end
   object FourSituationQR: TFDQuery
     Connection = MainForm.GstockdcConnection
@@ -1990,6 +2014,30 @@ object DataModuleF: TDataModuleF
       LookupResultField = 'nom_ur'
       KeyFields = 'agent'
       Lookup = True
+    end
+    object FourSituationQRtotal: TFMTBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'total'
+      Origin = 'total'
+      ReadOnly = True
+      Precision = 64
+      Size = 0
+    end
+    object FourSituationQRversemt: TFMTBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'versemt'
+      Origin = 'versemt'
+      ReadOnly = True
+      Precision = 64
+      Size = 0
+    end
+    object FourSituationQRrest: TFMTBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'rest'
+      Origin = 'rest'
+      ReadOnly = True
+      Precision = 64
+      Size = 0
     end
   end
   object SQLQuery1: TFDQuery
@@ -2222,6 +2270,38 @@ object DataModuleF: TDataModuleF
       KeyFields = 'agent'
       Lookup = True
     end
+    object ProduitMovementQRqut: TFMTBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'qut'
+      Origin = 'qut'
+      ReadOnly = True
+      Precision = 64
+      Size = 0
+    end
+    object ProduitMovementQRprixuva: TFMTBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'prixuva'
+      Origin = 'prixuva'
+      ReadOnly = True
+      Precision = 64
+      Size = 0
+    end
+    object ProduitMovementQRmontant: TFMTBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'montant'
+      Origin = 'montant'
+      ReadOnly = True
+      Precision = 64
+      Size = 0
+    end
+    object ProduitMovementQRmarge: TFMTBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'marge'
+      Origin = 'marge'
+      ReadOnly = True
+      Precision = 64
+      Size = 0
+    end
   end
   object AllProduitMovementQR: TFDQuery
     Connection = MainForm.GstockdcConnection
@@ -2434,6 +2514,38 @@ object DataModuleF: TDataModuleF
       LookupResultField = 'nom_ur'
       KeyFields = 'agent'
       Lookup = True
+    end
+    object AllProduitMovementQRqut: TFMTBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'qut'
+      Origin = 'qut'
+      ReadOnly = True
+      Precision = 64
+      Size = 0
+    end
+    object AllProduitMovementQRprixuva: TFMTBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'prixuva'
+      Origin = 'prixuva'
+      ReadOnly = True
+      Precision = 64
+      Size = 0
+    end
+    object AllProduitMovementQRmontant: TFMTBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'montant'
+      Origin = 'montant'
+      ReadOnly = True
+      Precision = 64
+      Size = 0
+    end
+    object AllProduitMovementQRmarge: TFMTBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'marge'
+      Origin = 'marge'
+      ReadOnly = True
+      Precision = 64
+      Size = 0
     end
   end
   object InventoryTable: TFDQuery

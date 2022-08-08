@@ -2635,6 +2635,8 @@ begin
   end;
 
   NumBonComGEdt.Caption:= DataModuleF.Bona_comTable.FieldByName('num_bacom').AsString;
+  DateBonComGD.DateTime:= DataModuleF.Bona_comTable.FieldByName('date_bacom').AsDateTime;
+  ObserBonComGMem.Text:= DataModuleF.Bona_comTable.FieldByName('obser_bacom').AsString;
 
    if DataModuleF.Bona_com_listTable.ControlsDisabled  then
    begin
@@ -2678,6 +2680,8 @@ BonComResteLbl.Caption:=CurrToStrF(((DataModuleF.Bona_comTable.FieldValues['Mont
 end;
 
  NumBonComGEdt.Caption:= DataModuleF.Bona_comTable.FieldByName('num_bacom').AsString;
+  DateBonComGD.DateTime:= DataModuleF.Bona_comTable.FieldByName('date_bacom').AsDateTime;
+  ObserBonComGMem.Text:= DataModuleF.Bona_comTable.FieldByName('obser_bacom').AsString;
 
     if DataModuleF.Bona_com_listTable.ControlsDisabled  then
    begin
@@ -2719,6 +2723,8 @@ BonComResteLbl.Caption:=CurrToStrF(((DataModuleF.Bona_comTable.FieldValues['Mont
 end;
 
  NumBonComGEdt.Caption:= DataModuleF.Bona_comTable.FieldByName('num_bacom').AsString;
+  DateBonComGD.DateTime:= DataModuleF.Bona_comTable.FieldByName('date_bacom').AsDateTime;
+  ObserBonComGMem.Text:= DataModuleF.Bona_comTable.FieldByName('obser_bacom').AsString;
 
     if DataModuleF.Bona_com_listTable.ControlsDisabled  then
    begin
@@ -2760,6 +2766,8 @@ BonComResteLbl.Caption:=CurrToStrF(((DataModuleF.Bona_comTable.FieldValues['Mont
 end;
 
  NumBonComGEdt.Caption:= DataModuleF.Bona_comTable.FieldByName('num_bacom').AsString;
+  DateBonComGD.DateTime:= DataModuleF.Bona_comTable.FieldByName('date_bacom').AsDateTime;
+  ObserBonComGMem.Text:= DataModuleF.Bona_comTable.FieldByName('obser_bacom').AsString;
 
     if DataModuleF.Bona_com_listTable.ControlsDisabled  then
    begin

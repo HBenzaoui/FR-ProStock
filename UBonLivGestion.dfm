@@ -2083,6 +2083,7 @@ object BonLivGestionF: TBonLivGestionF
         Title.Font.Name = 'Helvetica LT Std'
         Title.Font.Style = []
         Title.Font.Quality = fqProof
+        Visible = False
         Width = 70
       end
       item

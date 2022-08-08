@@ -628,8 +628,6 @@ type
     ProduitTableprixvttca: TFMTBCDField;
     ProduitTableprixvttca2: TFMTBCDField;
     ProduitTablequtdispo: TFMTBCDField;
-    ProduitTablevaluestock: TFMTBCDField;
-    ProduitTablevaluestockvd: TFMTBCDField;
     Opt_cas_bnk_CaisseTableencaiss_ocb: TFMTBCDField;
     Opt_cas_bnk_CaisseTabledecaiss_ocb: TFMTBCDField;
     Opt_cas_bnk_CaisseTablecode_bvret: TIntegerField;
@@ -726,6 +724,18 @@ type
     N26: TMenuItem;
     ypesdesCharge1: TMenuItem;
     SousTypesdesCharges1: TMenuItem;
+    ProduitTablevaluestockaht: TFMTBCDField;
+    ProduitTablevaluestockattc: TFMTBCDField;
+    ProduitTablevaluestockvdht: TFMTBCDField;
+    ProduitTablevaluestockvdttc: TFMTBCDField;
+    ProduitTablevaluestockvrht: TFMTBCDField;
+    ProduitTablevaluestockvrttc: TFMTBCDField;
+    ProduitTablevaluestockvght: TFMTBCDField;
+    ProduitTablevaluestockvgttc: TFMTBCDField;
+    ProduitTablevaluestockvaht: TFMTBCDField;
+    ProduitTablevaluestockvattc: TFMTBCDField;
+    ProduitTablevaluestockva2ht: TFMTBCDField;
+    ProduitTablevaluestockva2ttc: TFMTBCDField;
     procedure ClientMainFBtnClick(Sender: TObject);
     procedure FourMainFBtnClick(Sender: TObject);
     procedure ProduitMainFBtnClick(Sender: TObject);
@@ -3866,6 +3876,8 @@ begin
       Bonv_fac_listTable.Active := True;
       Bonv_ctrTable.Active := True;
       Bonv_ctr_listTable.Active := True;
+      Bonp_facTable.Active := True;
+      Bonp_fac_listTable.Active := True;
       Mode_paiementTable.Active := True;
       CompteTable.Active := True;
       FamproduitTable.Active := True;
@@ -4004,6 +4016,8 @@ begin
       if Bonv_fac_listTable.ControlsDisabled then  begin Bonv_fac_listTable.EnableControls; end;
       if Bonv_ctrTable.ControlsDisabled      then  begin Bonv_ctrTable.EnableControls; end;
       if Bonv_ctr_listTable.ControlsDisabled then  begin Bonv_ctr_listTable.EnableControls; end;
+      if Bonp_facTable.ControlsDisabled      then  begin Bonp_facTable.EnableControls; end;
+      if Bonp_fac_listTable.ControlsDisabled then  begin Bonp_fac_listTable.EnableControls; end;
       if Mode_paiementTable.ControlsDisabled then  begin Mode_paiementTable.EnableControls; end;
       if CompteTable.ControlsDisabled        then  begin CompteTable.EnableControls; end;
       if FamproduitTable.ControlsDisabled    then  begin FamproduitTable.EnableControls; end;

@@ -60,6 +60,17 @@ __history/
 
 #grids congif
 *.file
-
+gp
 #folders
 __recovery/
+Win32/
+"SQL Queries"/
+"Setup old"/
+Setup/
+"Seperate Produit List"/
+"Import Model"/
+Package/
+images/
+Help/
+DBBackup/
+.vscode/

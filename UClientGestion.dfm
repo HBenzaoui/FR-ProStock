@@ -696,6 +696,7 @@ object ClientGestionF: TClientGestionF
           Font.Style = [fsBold]
           ParentColor = False
           ParentFont = False
+          Visible = False
           StyleElements = [seClient, seBorder]
         end
         object CurrencyClientG1: TLabel
@@ -713,6 +714,7 @@ object ClientGestionF: TClientGestionF
           Font.Style = [fsBold]
           ParentColor = False
           ParentFont = False
+          Visible = False
           StyleElements = [seClient, seBorder]
         end
         object OldCreditClientGLbl: TLabel
