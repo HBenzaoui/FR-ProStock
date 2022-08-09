@@ -1462,7 +1462,6 @@ object BonComAGestionF: TBonComAGestionF
       Font.Style = []
       ParentCtl3D = False
       ParentFont = False
-      Sorted = True
       TabOrder = 0
       OnChange = FournisseurBonComGCbxChange
       OnClick = FournisseurBonComGCbxExit
@@ -3262,8 +3261,6 @@ object BonComAGestionF: TBonComAGestionF
           Top = 1.159731430000000000
           Width = 302.362400000000000000
           Height = 18.897650000000000000
-          DataSet = BonLivGestionF.frxBonLivPListDB
-          DataSetName = 'frxBonLivPListDB'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -9
@@ -4258,8 +4255,6 @@ object BonComAGestionF: TBonComAGestionF
           Top = 50.099773330000000000
           Width = 131.596362730000000000
           Height = 20.272024550000000000
-          DataSet = BonLivGestionF.frxBonLivDT
-          DataSetName = 'frxBonLivDT'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -4298,8 +4293,6 @@ object BonComAGestionF: TBonComAGestionF
           Top = 73.742836670000000000
           Width = 131.596362730000000000
           Height = 20.272024550000000000
-          DataSet = BonLivGestionF.frxBonLivDT
-          DataSetName = 'frxBonLivDT'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -4547,8 +4540,6 @@ object BonComAGestionF: TBonComAGestionF
           Top = 1.159731430000000000
           Width = 302.362400000000000000
           Height = 18.897650000000000000
-          DataSet = BonLivGestionF.frxBonLivPListDB
-          DataSetName = 'frxBonLivPListDB'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -9
@@ -5422,8 +5413,6 @@ object BonComAGestionF: TBonComAGestionF
           Top = 42.893713290000000000
           Width = 131.596362730000000000
           Height = 16.492494550000000000
-          DataSet = BonLivGestionF.frxBonLivDT
-          DataSetName = 'frxBonLivDT'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -5462,8 +5451,6 @@ object BonComAGestionF: TBonComAGestionF
           Top = 62.536776630000000000
           Width = 131.596362730000000000
           Height = 16.492494550000000000
-          DataSet = BonLivGestionF.frxBonLivDT
-          DataSetName = 'frxBonLivDT'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET

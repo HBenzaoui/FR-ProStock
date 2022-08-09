@@ -891,7 +891,7 @@ I : Integer;
 //          MainForm.SQLQuery.DisableControls;
           MainForm.SQLQuery.Active:=false;
           MainForm.SQLQuery.SQL.Clear;
-          MainForm.SQLQuery.SQL.Text:='Select nom_f FROM fournisseur '  ;
+          MainForm.SQLQuery.SQL.Text:='Select nom_f FROM fournisseur ORDER BY code_f'  ;
           MainForm.SQLQuery.Active:=True;
 
        MainForm.SQLQuery.first;

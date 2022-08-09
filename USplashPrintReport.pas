@@ -160,7 +160,7 @@ I : Integer;
    begin
       MainForm.SQLQuery.Active:=false;
       MainForm.SQLQuery.SQL.Clear;
-      MainForm.SQLQuery.SQL.Text:='Select code_c,nom_c FROM client '  ;
+      MainForm.SQLQuery.SQL.Text:='Select code_c,nom_c FROM client ORDER by code_c'  ;
       MainForm.SQLQuery.Active:=True;
 
        MainForm.SQLQuery.Refresh;
@@ -183,7 +183,7 @@ I : Integer;
    begin
       MainForm.SQLQuery.Active:=false;
       MainForm.SQLQuery.SQL.Clear;
-      MainForm.SQLQuery.SQL.Text:='Select code_f,nom_f FROM fournisseur '  ;
+      MainForm.SQLQuery.SQL.Text:='Select code_f,nom_f FROM fournisseur ORDER BY code_f'  ;
       MainForm.SQLQuery.Active:=True;
 
        MainForm.SQLQuery.Refresh;

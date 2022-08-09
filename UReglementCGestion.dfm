@@ -593,7 +593,6 @@ object ReglementCGestionF: TReglementCGestionF
     Font.Style = []
     ParentCtl3D = False
     ParentFont = False
-    Sorted = True
     TabOrder = 3
     OnChange = ClientRegCGCbxChange
     OnDropDown = ClientRegCGCbxDropDown

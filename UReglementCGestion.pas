@@ -310,7 +310,7 @@ I : Integer;
 
           MainForm.SQLQuery.Active:=false;
           MainForm.SQLQuery.SQL.Clear;
-          MainForm.SQLQuery.SQL.Text:='Select nom_c FROM client '  ;
+          MainForm.SQLQuery.SQL.Text:='Select nom_c FROM client ORDER by code_c'  ;
           MainForm.SQLQuery.Active:=True;
 
        MainForm.SQLQuery.Refresh;

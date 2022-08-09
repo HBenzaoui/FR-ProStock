@@ -1462,7 +1462,6 @@ object BonRetVGestionF: TBonRetVGestionF
       Font.Style = []
       ParentCtl3D = False
       ParentFont = False
-      Sorted = True
       TabOrder = 0
       OnChange = ClientBonRetVGCbxChange
       OnClick = ClientBonRetVGCbxExit

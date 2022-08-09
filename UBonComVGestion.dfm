@@ -1502,7 +1502,6 @@ object BonComVGestionF: TBonComVGestionF
       Font.Style = []
       ParentCtl3D = False
       ParentFont = False
-      Sorted = True
       TabOrder = 0
       OnChange = ClientBonComGCbxChange
       OnClick = ClientBonComGCbxExit

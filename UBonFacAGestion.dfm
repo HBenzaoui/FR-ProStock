@@ -1461,7 +1461,6 @@ object BonFacAGestionF: TBonFacAGestionF
       Font.Style = []
       ParentCtl3D = False
       ParentFont = False
-      Sorted = True
       TabOrder = 0
       OnChange = FourBonFacAGCbxChange
       OnClick = FourBonFacAGCbxExit

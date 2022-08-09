@@ -311,7 +311,6 @@ object FSplashPrintReport: TFSplashPrintReport
     Font.Style = []
     ParentCtl3D = False
     ParentFont = False
-    Sorted = True
     TabOrder = 0
     OnChange = NameReportPCbxChange
     OnDropDown = NameReportPCbxDropDown

@@ -1375,7 +1375,6 @@ object BonCtrGestionF: TBonCtrGestionF
         Font.Style = []
         ParentCtl3D = False
         ParentFont = False
-        Sorted = True
         TabOrder = 2
         Text = 'Comptoir'
         OnChange = ClientBonCtrGCbxChange

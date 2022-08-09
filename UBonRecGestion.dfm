@@ -1510,7 +1510,6 @@ object BonRecGestionF: TBonRecGestionF
       Font.Style = []
       ParentCtl3D = False
       ParentFont = False
-      Sorted = True
       TabOrder = 0
       OnChange = FournisseurBonRecGCbxChange
       OnClick = FournisseurBonRecGCbxExit

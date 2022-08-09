@@ -1068,6 +1068,10 @@ begin
       end;
       CodeF:= MainForm.SQLQuery.FieldByName('code_f').AsInteger ;
 
+            //Here we pot code_f in bonrec table
+        MainForm.Bona_recTable.Edit;
+        MainForm.Bona_recTable.FieldByName('code_f').AsInteger := CodeF;
+        MainForm.Bona_recTable.Post;
 
 //      MainForm.Bona_recTableCredit.DisableControls;
 //      MainForm.Bona_recTableCredit.Active:=false;

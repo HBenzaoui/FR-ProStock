@@ -591,7 +591,6 @@ object ReglementFGestionF: TReglementFGestionF
     Font.Style = []
     ParentCtl3D = False
     ParentFont = False
-    Sorted = True
     TabOrder = 3
     OnChange = FournisseurRegFGCbxChange
     OnDropDown = FournisseurRegFGCbxDropDown

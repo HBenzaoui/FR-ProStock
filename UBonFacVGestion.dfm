@@ -1497,7 +1497,6 @@ object BonFacVGestionF: TBonFacVGestionF
       Font.Style = []
       ParentCtl3D = False
       ParentFont = False
-      Sorted = True
       TabOrder = 0
       OnChange = ClientBonFacVGCbxChange
       OnClick = ClientBonFacVGCbxExit
