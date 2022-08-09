@@ -2970,29 +2970,29 @@ begin
          MainForm.Bonv_ctr_listTable.Active:=True;
   ///========Here we make sure the opend bon is the picked in bon list table---
 
-  MainForm.Bonv_ctrTable.Refresh;
+//  MainForm.Bonv_ctrTable.Refresh;
   MainForm.Bonv_ctr_listTable.Refresh;
 
-  if MainForm.Bonv_ctrTable.FieldValues['valider_bvctr'] = True then
+  if MainForm.Bonv_ctrTable.FieldByName('valider_bvctr').AsBoolean = True then
   begin
     FSplashVersement.DisableBonCtr;
   end;
-  if MainForm.Bonv_ctrTable.FieldValues['valider_bvctr'] = False then
+  if MainForm.Bonv_ctrTable.FieldByName('valider_bvctr').AsBoolean = False then
   begin
     EnableBonCtr;
   end;
 
-  if (MainForm.Bonv_ctrTable.FieldValues['code_c'] <> 0) and (MainForm.Bonv_ctrTable.FieldValues['code_c'] <> null) then
+  if (MainForm.Bonv_ctrTable.FieldByName('code_c').AsInteger <> 0) and (MainForm.Bonv_ctrTable.FieldByName('code_c').AsInteger <> null) then
   begin
-    ClientBonCtrGCbx.Text := MainForm.Bonv_ctrTable.FieldValues['clientbvctr'];
+    ClientBonCtrGCbx.Text := MainForm.Bonv_ctrTable.FieldByName('clientbvctr').AsString;
   end;
-//  if (MainForm.Bonv_ctrTable.FieldValues['code_mdpai']<> 0) AND (MainForm.Bonv_ctrTable.FieldValues['code_mdpai']<>null)  then
+//  if (MainForm.Bonv_ctrTable.FieldByName('code_mdpai']<> 0) AND (MainForm.Bonv_ctrTable.FieldByName('code_mdpai']<>null)  then
 //  begin
-//  ModePaieBonCtrGCbx.Text:=MainForm.Bonv_ctrTable.FieldValues['ModePaie'];
+//  ModePaieBonCtrGCbx.Text:=MainForm.Bonv_ctrTable.FieldByName('ModePaie'];
 //  end;
-//  if (MainForm.Bonv_ctrTable.FieldValues['code_cmpt']<> 0) AND (MainForm.Bonv_ctrTable.FieldValues['code_cmpt']<>null)  then
+//  if (MainForm.Bonv_ctrTable.FieldByName('code_cmpt']<> 0) AND (MainForm.Bonv_ctrTable.FieldByName('code_cmpt']<>null)  then
 //  begin
-//  CompteBonCtrGCbx.Text:=MainForm.Bonv_ctrTable.FieldValues['Compte'];
+//  CompteBonCtrGCbx.Text:=MainForm.Bonv_ctrTable.FieldByName('Compte'];
 //  end;
 
   if (MainForm.Bonv_ctrTable.FieldByName('num_bvctr').AsString <> '') AND (MainForm.Bonv_ctrTable.FieldByName('num_bvctr').AsString <> null) then
@@ -3011,19 +3011,19 @@ begin
     HourBonCtrGD.Caption := TimeToStr(MainForm.Bonv_ctrTable.FieldByName('time_bvctr').AsDateTime);
   end;
 
-  if (MainForm.Bonv_ctrTable.FieldValues['montttc_bvctr']<> null) then
+  if (MainForm.Bonv_ctrTable.FieldByName('montttc_bvctr').AsFloat<> null) then
   begin
-    BonCtrTotalTTCLbl.Caption :=   CurrToStrF(MainForm.Bonv_ctrTable.FieldValues['montttc_bvctr'], ffNumber, 2);
-    BonCTotalTTCNewLbl.Caption :=  CurrToStrF(MainForm.Bonv_ctrTable.FieldValues['montttc_bvctr'], ffNumber, 2);
+    BonCtrTotalTTCLbl.Caption :=   CurrToStrF(MainForm.Bonv_ctrTable.FieldByName('montttc_bvctr').AsFloat, ffNumber, 2);
+    BonCTotalTTCNewLbl.Caption :=  CurrToStrF(MainForm.Bonv_ctrTable.FieldByName('montttc_bvctr').AsFloat, ffNumber, 2);
   end else
       begin
         BonCtrTotalTTCLbl.Caption :=   CurrToStrF(0, ffNumber, 2);
         BonCTotalTTCNewLbl.Caption :=  CurrToStrF(0, ffNumber, 2);
       end;
 
-  if (MainForm.Bonv_ctrTable.FieldValues['MontantRen'] <> null) then
+  if (MainForm.Bonv_ctrTable.FieldByName('MontantRen').AsFloat <> null) then
   begin
-    BonCtrRenduLbl.Caption := CurrToStrF(((MainForm.Bonv_ctrTable.FieldValues['MontantRen'])), ffNumber, 2);
+    BonCtrRenduLbl.Caption := CurrToStrF(((MainForm.Bonv_ctrTable.FieldByName('MontantRen').AsFloat)), ffNumber, 2);
   end;
 
 
@@ -3036,27 +3036,78 @@ end;
 
 procedure TBonCtrGestionF.sSpeedButton7Click(Sender: TObject);
 begin
-  MainForm.Bonv_ctrTable.First;
-  loadData;
+  if (MainForm.Bonv_ctrTable.FieldByName('code_c').AsInteger <> 0)
+     and (MainForm.Bonv_ctrTable.FieldValues['code_c'] <> Null )  then
+
+    begin
+     MainForm.Bonv_ctrTable.First;
+     loadData;
+  end else
+    begin
+      MainForm.Bonv_ctrTable.Edit;
+      MainForm.Bonv_ctrTable.FieldByName('code_c').AsInteger := 1;
+      MainForm.Bonv_ctrTable.Post;
+
+      MainForm.Bonv_ctrTable.First;
+      loadData;
+    end
 end;
 
 procedure TBonCtrGestionF.sSpeedButton6Click(Sender: TObject);
 begin
-  MainForm.Bonv_ctrTable.Prior;
-  loadData;
+  if (MainForm.Bonv_ctrTable.FieldByName('code_c').AsInteger <> 0)
+     and (MainForm.Bonv_ctrTable.FieldValues['code_c'] <> Null )  then
 
+    begin
+     MainForm.Bonv_ctrTable.Prior;
+     loadData;
+  end else
+    begin
+      MainForm.Bonv_ctrTable.Edit;
+      MainForm.Bonv_ctrTable.FieldByName('code_c').AsInteger := 1;
+      MainForm.Bonv_ctrTable.Post;
+
+      MainForm.Bonv_ctrTable.Prior;
+      loadData;
+    end
 end;
 
 procedure TBonCtrGestionF.sSpeedButton5Click(Sender: TObject);
 begin
-  MainForm.Bonv_ctrTable.Next;
-  loadData;
+  if (MainForm.Bonv_ctrTable.FieldByName('code_c').AsInteger <> 0)
+     and (MainForm.Bonv_ctrTable.FieldValues['code_c'] <> Null )  then
+
+    begin
+     MainForm.Bonv_ctrTable.Next;
+     loadData;
+  end else
+    begin
+      MainForm.Bonv_ctrTable.Edit;
+      MainForm.Bonv_ctrTable.FieldByName('code_c').AsInteger := 1;
+      MainForm.Bonv_ctrTable.Post;
+
+      MainForm.Bonv_ctrTable.Next;
+      loadData;
+    end
 end;
 
 procedure TBonCtrGestionF.sSpeedButton4Click(Sender: TObject);
 begin
-  MainForm.Bonv_ctrTable.Last;
-  loadData;
+  if (MainForm.Bonv_ctrTable.FieldByName('code_c').AsInteger <> 0)
+     and (MainForm.Bonv_ctrTable.FieldValues['code_c'] <> Null )  then
+
+    begin
+     MainForm.Bonv_ctrTable.Last;
+     loadData;
+  end else
+    begin
+      MainForm.Bonv_ctrTable.Edit;
+      MainForm.Bonv_ctrTable.FieldByName('code_c').AsInteger := 1;
+      MainForm.Bonv_ctrTable.Post;
+
+      MainForm.Bonv_ctrTable.Last;
+      loadData;
+    end
 end;
 
 procedure TBonCtrGestionF.RemisePerctageBonCtrGEdtChange(Sender: TObject);

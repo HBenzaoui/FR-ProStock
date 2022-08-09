@@ -444,25 +444,21 @@ begin
 
 end;
 
-procedure TBonFacPGestionF.sSpeedButton7Click(Sender: TObject);
+procedure FullfillFormBonFacP;
 begin
-  MainForm.Bonp_facTable.First;
-  MainForm.Bonp_facTable.Refresh;
-  MainForm.Bonp_fac_listTable.Refresh;
-
-  if MainForm.Bonp_facTable.FieldValues['valider_bpfac'] = True then
+     if MainForm.Bonp_facTable.FieldByName('valider_bpfac').AsBoolean = True then
   begin
        FSplashVersement.DisableBonFacP;
   end;
-  if MainForm.Bonp_facTable.FieldValues['valider_bpfac'] = False then
+  if MainForm.Bonp_facTable.FieldByName('valider_bpfac').AsBoolean = False then
    begin
-     EnableBonFacP;
+     BonFacPGestionF.EnableBonFacP;
     end;
 
 
-  if (MainForm.Bonp_facTable.FieldValues['code_c']<> 0) AND (MainForm.Bonp_facTable.FieldValues['code_c']<> null) then
+  if (MainForm.Bonp_facTable.FieldByName('code_c').AsInteger<> 0) AND (MainForm.Bonp_facTable.FieldByName('code_c').AsInteger<> null) then
   begin
-  ClientBonFacVGCbx.Text:=MainForm.Bonp_facTable.FieldValues['clientbvfac'];
+  BonFacPGestionF.ClientBonFacVGCbx.Text:=MainForm.Bonp_facTable.FieldByName('clientbvfac').AsString;
   end;
 //  if (MainForm.Bonp_facTable.FieldValues['code_mdpai']<> 0) AND (MainForm.Bonp_facTable.FieldValues['code_mdpai']<>null)  then
 //  begin
@@ -473,14 +469,14 @@ begin
 //  CompteBonFacVGCbx.Text:=MainForm.Bonp_facTable.FieldValues['Compte'];
 //  end;
 
-  if  (MainForm.Bonp_facTable.FieldValues['MontantRes']<>null)  then
+  if  (MainForm.Bonp_facTable.FieldByName('MontantRes').AsFloat<>null)  then
   begin
-  BonFacVResteLbl.Caption:=CurrToStrF(((MainForm.Bonp_facTable.FieldValues['MontantRes'])),ffNumber,2) ;
+  BonFacPGestionF.BonFacVResteLbl.Caption:=CurrToStrF(((MainForm.Bonp_facTable.FieldByName('MontantRes').AsFloat)),ffNumber,2) ;
   end;
 
-  NumBonFacVGEdt.Caption:= MainForm.Bonp_facTable.FieldByName('num_bpfac').AsString;
-  DateBonFacVGD.DateTime:= MainForm.Bonp_facTable.FieldByName('date_bpfac').AsDateTime;
-  ObserBonFacVGMem.Text:= MainForm.Bonp_facTable.FieldByName('obser_bpfac').AsString;
+  BonFacPGestionF.NumBonFacVGEdt.Caption:= MainForm.Bonp_facTable.FieldByName('num_bpfac').AsString;
+  BonFacPGestionF.DateBonFacVGD.DateTime:= MainForm.Bonp_facTable.FieldByName('date_bpfac').AsDateTime;
+  BonFacPGestionF.ObserBonFacVGMem.Text:= MainForm.Bonp_facTable.FieldByName('obser_bpfac').AsString;
 
           if MainForm.Bonp_fac_listTable.ControlsDisabled  then
    begin
@@ -488,136 +484,106 @@ begin
    end;
 end;
 
+procedure TBonFacPGestionF.sSpeedButton7Click(Sender: TObject);
+begin
+
+   if (ClientBonFacVGCbx.Text <> '')
+    and (MainForm.Bonp_facTable.FieldByName('code_c').AsInteger <> 0)
+    and (MainForm.Bonp_facTable.FieldValues['code_c'] <> Null )  then
+
+    begin
+    MainForm.Bonp_facTable.First;
+    //  MainForm.Bonp_facTable.Refresh;
+    MainForm.Bonp_fac_listTable.Refresh;
+
+    FullfillFormBonFacP();
+  end else
+    begin
+      sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+      ClientBonFacVGCbx.StyleElements:= [];
+      RequiredClientGlbl.Caption:= 'S''il vous plaît entrer le nom de le Client' ;
+      RequiredClientGlbl.Visible:= True;
+      NameClientGErrorP.Visible:= True;
+
+      ClientBonFacVGCbx.SetFocus;
+    end
+
+end;
+
 procedure TBonFacPGestionF.sSpeedButton6Click(Sender: TObject);
 begin
-  MainForm.Bonp_facTable.Prior;
-  MainForm.Bonp_facTable.Refresh;
-  MainForm.Bonp_fac_listTable.Refresh;
+    if (ClientBonFacVGCbx.Text <> '')
+    and (MainForm.Bonp_facTable.FieldByName('code_c').AsInteger <> 0)
+    and (MainForm.Bonp_facTable.FieldValues['code_c'] <> Null )  then
 
-  if MainForm.Bonp_facTable.FieldValues['valider_bpfac'] = True then
-  begin
-       FSplashVersement.DisableBonFacP;
-  end;
-  if MainForm.Bonp_facTable.FieldValues['valider_bpfac'] = False then
-   begin
-     EnableBonFacP;
-    end;
+    begin
+      MainForm.Bonp_facTable.Prior;
+      //  MainForm.Bonp_facTable.Refresh;
+      MainForm.Bonp_fac_listTable.Refresh;
 
+      FullfillFormBonFacP();
+        end else
+    begin
+      sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+      ClientBonFacVGCbx.StyleElements:= [];
+      RequiredClientGlbl.Caption:= 'S''il vous plaît entrer le nom de le Client' ;
+      RequiredClientGlbl.Visible:= True;
+      NameClientGErrorP.Visible:= True;
 
-  if (MainForm.Bonp_facTable.FieldValues['code_c']<> 0) AND (MainForm.Bonp_facTable.FieldValues['code_c']<> null) then
-  begin
-  ClientBonFacVGCbx.Text:=MainForm.Bonp_facTable.FieldValues['clientbvfac'];
-  end;
-//  if (MainForm.Bonp_facTable.FieldValues['code_mdpai']<> 0) AND (MainForm.Bonp_facTable.FieldValues['code_mdpai']<>null)  then
-//  begin
-//  ModePaieBonFacVGCbx.Text:=MainForm.Bonp_facTable.FieldValues['ModePaie'];
-//  end;
-//  if (MainForm.Bonp_facTable.FieldValues['code_cmpt']<> 0) AND (MainForm.Bonp_facTable.FieldValues['code_cmpt']<>null)  then
-//  begin
-//  CompteBonFacVGCbx.Text:=MainForm.Bonp_facTable.FieldValues['Compte'];
-//  end;
-
-  if  (MainForm.Bonp_facTable.FieldValues['MontantRes']<>null)  then
-  begin
-  BonFacVResteLbl.Caption:=CurrToStrF(((MainForm.Bonp_facTable.FieldValues['MontantRes'])),ffNumber,2) ;
-  end;
-
-  NumBonFacVGEdt.Caption:= MainForm.Bonp_facTable.FieldByName('num_bpfac').AsString;
-  DateBonFacVGD.DateTime:= MainForm.Bonp_facTable.FieldByName('date_bpfac').AsDateTime;
-  ObserBonFacVGMem.Text:= MainForm.Bonp_facTable.FieldByName('obser_bpfac').AsString;
-
-            if MainForm.Bonp_fac_listTable.ControlsDisabled  then
-   begin
-     MainForm.Bonp_fac_listTable.EnableControls;
-   end;
+      ClientBonFacVGCbx.SetFocus;
+    end
 end;
 
 procedure TBonFacPGestionF.sSpeedButton5Click(Sender: TObject);
 begin
-  MainForm.Bonp_facTable.Next;
-  MainForm.Bonp_facTable.Refresh;
-  MainForm.Bonp_fac_listTable.Refresh;
-
-  if MainForm.Bonp_facTable.FieldValues['valider_bpfac'] = True then
-  begin
-       FSplashVersement.DisableBonFacP;
-  end;
-  if MainForm.Bonp_facTable.FieldValues['valider_bpfac'] = False then
-   begin
-     EnableBonFacP;
-    end;
 
 
-  if (MainForm.Bonp_facTable.FieldValues['code_c']<> 0) AND (MainForm.Bonp_facTable.FieldValues['code_c']<> null) then
-  begin
-  ClientBonFacVGCbx.Text:=MainForm.Bonp_facTable.FieldValues['clientbvfac'];
-  end;
-//  if (MainForm.Bonp_facTable.FieldValues['code_mdpai']<> 0) AND (MainForm.Bonp_facTable.FieldValues['code_mdpai']<>null)  then
-//  begin
-//  ModePaieBonFacVGCbx.Text:=MainForm.Bonp_facTable.FieldValues['ModePaie'];
-//  end;
-//  if (MainForm.Bonp_facTable.FieldValues['code_cmpt']<> 0) AND (MainForm.Bonp_facTable.FieldValues['code_cmpt']<>null)  then
-//  begin
-//  CompteBonFacVGCbx.Text:=MainForm.Bonp_facTable.FieldValues['Compte'];
-//  end;
+    if (ClientBonFacVGCbx.Text <> '')
+    and (MainForm.Bonp_facTable.FieldByName('code_c').AsInteger <> 0)
+    and (MainForm.Bonp_facTable.FieldValues['code_c'] <> Null )  then
 
-  if  (MainForm.Bonp_facTable.FieldValues['MontantRes']<>null)  then
-  begin
-  BonFacVResteLbl.Caption:=CurrToStrF(((MainForm.Bonp_facTable.FieldValues['MontantRes'])),ffNumber,2) ;
-  end;
+    begin
+      MainForm.Bonp_facTable.Next;
+      //  MainForm.Bonp_facTable.Refresh;
+      MainForm.Bonp_fac_listTable.Refresh;
 
-  NumBonFacVGEdt.Caption:= MainForm.Bonp_facTable.FieldByName('num_bpfac').AsString;
-  DateBonFacVGD.DateTime:= MainForm.Bonp_facTable.FieldByName('date_bpfac').AsDateTime;
-  ObserBonFacVGMem.Text:= MainForm.Bonp_facTable.FieldByName('obser_bpfac').AsString;
+      FullfillFormBonFacP();
+  end else
+    begin
+      sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+      ClientBonFacVGCbx.StyleElements:= [];
+      RequiredClientGlbl.Caption:= 'S''il vous plaît entrer le nom de le Client' ;
+      RequiredClientGlbl.Visible:= True;
+      NameClientGErrorP.Visible:= True;
 
-            if MainForm.Bonp_fac_listTable.ControlsDisabled  then
-   begin
-     MainForm.Bonp_fac_listTable.EnableControls;
-   end;
+      ClientBonFacVGCbx.SetFocus;
+    end
 end;
 
 procedure TBonFacPGestionF.sSpeedButton4Click(Sender: TObject);
 begin
-  MainForm.Bonp_facTable.Last;
-  MainForm.Bonp_facTable.Refresh;
-  MainForm.Bonp_fac_listTable.Refresh;
-
-  if MainForm.Bonp_facTable.FieldValues['valider_bpfac'] = True then
-  begin
-       FSplashVersement.DisableBonFacP;
-  end;
-  if MainForm.Bonp_facTable.FieldValues['valider_bpfac'] = False then
-   begin
-     EnableBonFacP;
-    end;
 
 
-  if (MainForm.Bonp_facTable.FieldValues['code_c']<> 0) AND (MainForm.Bonp_facTable.FieldValues['code_c']<> null) then
-  begin
-  ClientBonFacVGCbx.Text:=MainForm.Bonp_facTable.FieldValues['clientbvfac'];
-  end;
-//  if (MainForm.Bonp_facTable.FieldValues['code_mdpai']<> 0) AND (MainForm.Bonp_facTable.FieldValues['code_mdpai']<>null)  then
-//  begin
-//  ModePaieBonFacVGCbx.Text:=MainForm.Bonp_facTable.FieldValues['ModePaie'];
-//  end;
-//  if (MainForm.Bonp_facTable.FieldValues['code_cmpt']<> 0) AND (MainForm.Bonp_facTable.FieldValues['code_cmpt']<>null)  then
-//  begin
-//  CompteBonFacVGCbx.Text:=MainForm.Bonp_facTable.FieldValues['Compte'];
-//  end;
+     if (ClientBonFacVGCbx.Text <> '')
+    and (MainForm.Bonp_facTable.FieldByName('code_c').AsInteger <> 0)
+    and (MainForm.Bonp_facTable.FieldValues['code_c'] <> Null )  then
 
-  if  (MainForm.Bonp_facTable.FieldValues['MontantRes']<>null)  then
-  begin
-  BonFacVResteLbl.Caption:=CurrToStrF(((MainForm.Bonp_facTable.FieldValues['MontantRes'])),ffNumber,2) ;
-  end;
+    begin
+    MainForm.Bonp_facTable.Last;
+  //  MainForm.Bonp_facTable.Refresh;
+    MainForm.Bonp_fac_listTable.Refresh;
 
-  NumBonFacVGEdt.Caption:= MainForm.Bonp_facTable.FieldByName('num_bpfac').AsString;
-  DateBonFacVGD.DateTime:= MainForm.Bonp_facTable.FieldByName('date_bpfac').AsDateTime;
-  ObserBonFacVGMem.Text:= MainForm.Bonp_facTable.FieldByName('obser_bpfac').AsString;
+    FullfillFormBonFacP();
+  end else
+    begin
+      sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+      ClientBonFacVGCbx.StyleElements:= [];
+      RequiredClientGlbl.Caption:= 'S''il vous plaît entrer le nom de le Client' ;
+      RequiredClientGlbl.Visible:= True;
+      NameClientGErrorP.Visible:= True;
 
-            if MainForm.Bonp_fac_listTable.ControlsDisabled  then
-   begin
-     MainForm.Bonp_fac_listTable.EnableControls;
-   end;
+      ClientBonFacVGCbx.SetFocus;
+    end
 end;
 
 procedure TBonFacPGestionF.AddBVFacBonFacVGBtnClick(Sender: TObject);

@@ -2866,43 +2866,39 @@ if RemiseBonComGEdt.Focused then
  end;
 end;
 
-procedure TBonComVGestionF.sSpeedButton7Click(Sender: TObject);
+procedure FullfillFormBonComV;
 begin
-  DataModuleF.Bonv_comTable.First;
-  DataModuleF.Bonv_comTable.Refresh;
-  DataModuleF.bonv_com_listTable.Refresh;
-
-  if DataModuleF.Bonv_comTable.FieldValues['valider_bvcom'] = True then
+ if DataModuleF.Bonv_comTable.FieldByName('valider_bvcom').AsBoolean = True then
   begin
        FSplashVersement.DisableBonComV;
   end;
-  if DataModuleF.Bonv_comTable.FieldValues['valider_bvcom'] = False then
+  if DataModuleF.Bonv_comTable.FieldByName('valider_bvcom').AsBoolean = False then
    begin
-     EnableBonComV;
+     BonComVGestionF.EnableBonComV;
     end;
 
 
-  if (DataModuleF.Bonv_comTable.FieldValues['code_c']<> 0) AND (DataModuleF.Bonv_comTable.FieldValues['code_c']<> null) then
+  if (DataModuleF.Bonv_comTable.FieldByName('code_c').AsInteger<> 0) AND (DataModuleF.Bonv_comTable.FieldByName('code_c').AsInteger<> null) then
   begin
-  ClientBonComGCbx.Text:=DataModuleF.Bonv_comTable.FieldValues['clientbvcom'];
+  BonComVGestionF.ClientBonComGCbx.Text:=DataModuleF.Bonv_comTable.FieldByName('clientbvcom').AsString;
   end;
-  if (DataModuleF.Bonv_comTable.FieldValues['code_mdpai']<> 0) AND (DataModuleF.Bonv_comTable.FieldValues['code_mdpai']<>null)  then
+  if (DataModuleF.Bonv_comTable.FieldByName('code_mdpai').AsInteger<> 0) AND (DataModuleF.Bonv_comTable.FieldByName('code_mdpai').AsInteger<>null)  then
   begin
-  ModePaieBonComGCbx.Text:=DataModuleF.Bonv_comTable.FieldValues['ModePaie'];
+  BonComVGestionF.ModePaieBonComGCbx.Text:=DataModuleF.Bonv_comTable.FieldByName('ModePaie').AsString;
   end;
-  if (DataModuleF.Bonv_comTable.FieldValues['code_cmpt']<> 0) AND (DataModuleF.Bonv_comTable.FieldValues['code_cmpt']<>null)  then
+  if (DataModuleF.Bonv_comTable.FieldByName('code_cmpt').AsInteger<> 0) AND (DataModuleF.Bonv_comTable.FieldByName('code_cmpt').AsInteger<>null)  then
   begin
-  CompteBonComGCbx.Text:=DataModuleF.Bonv_comTable.FieldValues['Compte'];
-  end;
-
-  if  (DataModuleF.Bonv_comTable.FieldValues['MontantRes']<>null)  then
-  begin
-  BonComResteLbl.Caption:=CurrToStrF(((DataModuleF.Bonv_comTable.FieldValues['MontantRes'])),ffNumber,2) ;
+  BonComVGestionF.CompteBonComGCbx.Text:=DataModuleF.Bonv_comTable.FieldByName('Compte').AsString;
   end;
 
-   NumBonComGEdt.Caption:= DataModuleF.Bonv_comTable.FieldByName('num_bvcom').AsString;
-   DateBonComGD.DateTime:= DataModuleF.Bonv_comTable.FieldByName('date_bvcom').AsDateTime;
-   ObserBonComGMem.Text:= DataModuleF.Bonv_comTable.FieldByName('obser_bvcom').AsString;
+  if  (DataModuleF.Bonv_comTable.FieldByName('MontantRes').AsFloat<>null)  then
+  begin
+  BonComVGestionF.BonComResteLbl.Caption:=CurrToStrF(((DataModuleF.Bonv_comTable.FieldByName('MontantRes').AsFloat)),ffNumber,2) ;
+  end;
+
+   BonComVGestionF.NumBonComGEdt.Caption:= DataModuleF.Bonv_comTable.FieldByName('num_bvcom').AsString;
+   BonComVGestionF.DateBonComGD.DateTime:= DataModuleF.Bonv_comTable.FieldByName('date_bvcom').AsDateTime;
+   BonComVGestionF.ObserBonComGMem.Text:= DataModuleF.Bonv_comTable.FieldByName('obser_bvcom').AsString;
 
       if DataModuleF.bonv_com_listTable.ControlsDisabled  then
    begin
@@ -2910,136 +2906,101 @@ begin
    end;
 end;
 
+procedure TBonComVGestionF.sSpeedButton7Click(Sender: TObject);
+begin
+  if (ClientBonComGCbx.Text <> '')
+    and (DataModuleF.Bonv_comTable.FieldByName('code_c').AsInteger <> 0)
+    and (DataModuleF.Bonv_comTable.FieldValues['code_c'] <> Null )  then
+
+    begin
+    DataModuleF.Bonv_comTable.First;
+  //  DataModuleF.Bonv_comTable.Refresh;
+    DataModuleF.bonv_com_listTable.Refresh;
+
+    FullfillFormBonComV();
+  end else
+    begin
+      sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+      ClientBonComGCbx.StyleElements:= [];
+      RequiredClientGlbl.Caption:= 'S''il vous pla�t entrer le nom de le Client' ;
+      RequiredClientGlbl.Visible:= True;
+      NameClientGErrorP.Visible:= True;
+
+      ClientBonComGCbx.SetFocus;
+    end
+end;
+
 procedure TBonComVGestionF.sSpeedButton6Click(Sender: TObject);
 begin
-  DataModuleF.Bonv_comTable.Prior;
-  DataModuleF.Bonv_comTable.Refresh;
-  DataModuleF.bonv_com_listTable.Refresh;
 
-  if DataModuleF.Bonv_comTable.FieldValues['valider_bvcom'] = True then
-  begin
-       FSplashVersement.DisableBonComV;
-  end;
-  if DataModuleF.Bonv_comTable.FieldValues['valider_bvcom'] = False then
-   begin
-     EnableBonComV;
-    end;
+  if (ClientBonComGCbx.Text <> '')
+    and (DataModuleF.Bonv_comTable.FieldByName('code_c').AsInteger <> 0)
+    and (DataModuleF.Bonv_comTable.FieldValues['code_c'] <> Null )  then
 
+    begin
+    DataModuleF.Bonv_comTable.Prior;
+  //  DataModuleF.Bonv_comTable.Refresh;
+    DataModuleF.bonv_com_listTable.Refresh;
 
-  if (DataModuleF.Bonv_comTable.FieldValues['code_c']<> 0) AND (DataModuleF.Bonv_comTable.FieldValues['code_c']<> null) then
-  begin
-  ClientBonComGCbx.Text:=DataModuleF.Bonv_comTable.FieldValues['clientbvcom'];
-  end;
-  if (DataModuleF.Bonv_comTable.FieldValues['code_mdpai']<> 0) AND (DataModuleF.Bonv_comTable.FieldValues['code_mdpai']<>null)  then
-  begin
-  ModePaieBonComGCbx.Text:=DataModuleF.Bonv_comTable.FieldValues['ModePaie'];
-  end;
-  if (DataModuleF.Bonv_comTable.FieldValues['code_cmpt']<> 0) AND (DataModuleF.Bonv_comTable.FieldValues['code_cmpt']<>null)  then
-  begin
-  CompteBonComGCbx.Text:=DataModuleF.Bonv_comTable.FieldValues['Compte'];
-  end;
+    FullfillFormBonComV();
+  end else
+    begin
+      sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+      ClientBonComGCbx.StyleElements:= [];
+      RequiredClientGlbl.Caption:= 'S''il vous pla�t entrer le nom de le Client' ;
+      RequiredClientGlbl.Visible:= True;
+      NameClientGErrorP.Visible:= True;
 
-  if  (DataModuleF.Bonv_comTable.FieldValues['MontantRes']<>null)  then
-  begin
-  BonComResteLbl.Caption:=CurrToStrF(((DataModuleF.Bonv_comTable.FieldValues['MontantRes'])),ffNumber,2) ;
-  end;
-
-  NumBonComGEdt.Caption:= DataModuleF.Bonv_comTable.FieldByName('num_bvcom').AsString;
-   DateBonComGD.DateTime:= DataModuleF.Bonv_comTable.FieldByName('date_bvcom').AsDateTime;
-   ObserBonComGMem.Text:= DataModuleF.Bonv_comTable.FieldByName('obser_bvcom').AsString;
-
-    if DataModuleF.bonv_com_listTable.ControlsDisabled  then
-   begin
-     DataModuleF.bonv_com_listTable.EnableControls;
-   end;
+      ClientBonComGCbx.SetFocus;
+    end
 end;
 
 procedure TBonComVGestionF.sSpeedButton5Click(Sender: TObject);
 begin
-  DataModuleF.Bonv_comTable.Next;
-  DataModuleF.Bonv_comTable.Refresh;
-  DataModuleF.bonv_com_listTable.Refresh;
+    if (ClientBonComGCbx.Text <> '')
+    and (DataModuleF.Bonv_comTable.FieldByName('code_c').AsInteger <> 0)
+    and (DataModuleF.Bonv_comTable.FieldValues['code_c'] <> Null )  then
 
-  if DataModuleF.Bonv_comTable.FieldValues['valider_bvcom'] = True then
-  begin
-       FSplashVersement.DisableBonComV;
-  end;
-  if DataModuleF.Bonv_comTable.FieldValues['valider_bvcom'] = False then
-   begin
-     EnableBonComV;
-    end;
+    begin
+    DataModuleF.Bonv_comTable.Next;
+  //  DataModuleF.Bonv_comTable.Refresh;
+    DataModuleF.bonv_com_listTable.Refresh;
 
+    FullfillFormBonComV();
+  end else
+    begin
+      sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+      ClientBonComGCbx.StyleElements:= [];
+      RequiredClientGlbl.Caption:= 'S''il vous pla�t entrer le nom de le Client' ;
+      RequiredClientGlbl.Visible:= True;
+      NameClientGErrorP.Visible:= True;
 
-  if (DataModuleF.Bonv_comTable.FieldValues['code_c']<> 0) AND (DataModuleF.Bonv_comTable.FieldValues['code_c']<> null) then
-  begin
-  ClientBonComGCbx.Text:=DataModuleF.Bonv_comTable.FieldValues['clientbvcom'];
-  end;
-  if (DataModuleF.Bonv_comTable.FieldValues['code_mdpai']<> 0) AND (DataModuleF.Bonv_comTable.FieldValues['code_mdpai']<>null)  then
-  begin
-  ModePaieBonComGCbx.Text:=DataModuleF.Bonv_comTable.FieldValues['ModePaie'];
-  end;
-  if (DataModuleF.Bonv_comTable.FieldValues['code_cmpt']<> 0) AND (DataModuleF.Bonv_comTable.FieldValues['code_cmpt']<>null)  then
-  begin
-  CompteBonComGCbx.Text:=DataModuleF.Bonv_comTable.FieldValues['Compte'];
-  end;
-
-  if  (DataModuleF.Bonv_comTable.FieldValues['MontantRes']<>null)  then
-  begin
-  BonComResteLbl.Caption:=CurrToStrF(((DataModuleF.Bonv_comTable.FieldValues['MontantRes'])),ffNumber,2) ;
-  end;
-
-  NumBonComGEdt.Caption:= DataModuleF.Bonv_comTable.FieldByName('num_bvcom').AsString;
-   DateBonComGD.DateTime:= DataModuleF.Bonv_comTable.FieldByName('date_bvcom').AsDateTime;
-   ObserBonComGMem.Text:= DataModuleF.Bonv_comTable.FieldByName('obser_bvcom').AsString;
-
-        if DataModuleF.bonv_com_listTable.ControlsDisabled  then
-   begin
-     DataModuleF.bonv_com_listTable.EnableControls;
-   end;
+      ClientBonComGCbx.SetFocus;
+    end
 end;
 
 procedure TBonComVGestionF.sSpeedButton4Click(Sender: TObject);
 begin
-  DataModuleF.Bonv_comTable.Last;
-  DataModuleF.Bonv_comTable.Refresh;
-  DataModuleF.bonv_com_listTable.Refresh;
+  if (ClientBonComGCbx.Text <> '')
+    and (DataModuleF.Bonv_comTable.FieldByName('code_c').AsInteger <> 0)
+    and (DataModuleF.Bonv_comTable.FieldValues['code_c'] <> Null )  then
 
-  if DataModuleF.Bonv_comTable.FieldValues['valider_bvcom'] = True then
-  begin
-       FSplashVersement.DisableBonComV;
-  end;
-  if DataModuleF.Bonv_comTable.FieldValues['valider_bvcom'] = False then
-   begin
-     EnableBonComV;
-    end;
+    begin
+    DataModuleF.Bonv_comTable.Last;
+  //  DataModuleF.Bonv_comTable.Refresh;
+    DataModuleF.bonv_com_listTable.Refresh;
 
+    FullfillFormBonComV();
+  end else
+    begin
+      sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+      ClientBonComGCbx.StyleElements:= [];
+      RequiredClientGlbl.Caption:= 'S''il vous pla�t entrer le nom de le Client' ;
+      RequiredClientGlbl.Visible:= True;
+      NameClientGErrorP.Visible:= True;
 
-  if (DataModuleF.Bonv_comTable.FieldValues['code_c']<> 0) AND (DataModuleF.Bonv_comTable.FieldValues['code_c']<> null) then
-  begin
-  ClientBonComGCbx.Text:=DataModuleF.Bonv_comTable.FieldValues['clientbvcom'];
-  end;
-  if (DataModuleF.Bonv_comTable.FieldValues['code_mdpai']<> 0) AND (DataModuleF.Bonv_comTable.FieldValues['code_mdpai']<>null)  then
-  begin
-  ModePaieBonComGCbx.Text:=DataModuleF.Bonv_comTable.FieldValues['ModePaie'];
-  end;
-  if (DataModuleF.Bonv_comTable.FieldValues['code_cmpt']<> 0) AND (DataModuleF.Bonv_comTable.FieldValues['code_cmpt']<>null)  then
-  begin
-  CompteBonComGCbx.Text:=DataModuleF.Bonv_comTable.FieldValues['Compte'];
-  end;
-
-  if  (DataModuleF.Bonv_comTable.FieldValues['MontantRes']<>null)  then
-  begin
-  BonComResteLbl.Caption:=CurrToStrF(((DataModuleF.Bonv_comTable.FieldValues['MontantRes'])),ffNumber,2) ;
-  end;
-
-  NumBonComGEdt.Caption:= DataModuleF.Bonv_comTable.FieldByName('num_bvcom').AsString;
-   DateBonComGD.DateTime:= DataModuleF.Bonv_comTable.FieldByName('date_bvcom').AsDateTime;
-   ObserBonComGMem.Text:= DataModuleF.Bonv_comTable.FieldByName('obser_bvcom').AsString;
-
-        if DataModuleF.bonv_com_listTable.ControlsDisabled  then
-   begin
-     DataModuleF.bonv_com_listTable.EnableControls;
-   end;
+      ClientBonComGCbx.SetFocus;
+    end
 end;
 
 procedure TBonComVGestionF.AddBVComBonComGBtnClick(Sender: TObject);

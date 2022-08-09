@@ -1390,7 +1390,7 @@ begin
     (OKAddUniteSBtn.Tag <> 33)     then
  begin
     if (key = #13)
-    // OR (key = #32) //used the space button for something i forget but i had to disbale it
+     OR ( (key = #32) AND ( (CompteAddUniteSCbx.Visible = False) AND (NameAddUniteSEdt.Visible = False) {Tag=4 for delete produit from ProduitList})) //used the space button only whne there is no typing in TEdit or so
     then
  begin
      key := #0;
@@ -1785,7 +1785,7 @@ begin
       //------ this is a executable SQL use it for quick delete code barres in the DB when we cancel
       codeBR:= MainForm.Bona_recTable.FieldByName('code_barec').AsInteger;
       //----- this is to delte the old ciredit when we delte the bon rec
-      if (MainForm.Bona_recTable.FieldByName('code_f').AsInteger <> 0) AND (MainForm.Bona_recTable.FieldByName('code_f').AsInteger <> null)  then
+//      if (MainForm.Bona_recTable.FieldByName('code_f').AsInteger <> 0) AND (MainForm.Bona_recTable.FieldByName('code_f').AsInteger <> null)  then
 //      begin
 //      CodeF:=  MainForm.Bona_recTable.FieldByName('code_f').AsInteger;
 //      end;

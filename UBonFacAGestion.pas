@@ -722,43 +722,39 @@ AND (MainForm.Bona_facTable.FieldByName('code_f').AsInteger <> 0)  then
   sImage1.ImageIndex:= MainForm.sImage1.ImageIndex;
 end;
 
-procedure TBonFacAGestionF.sSpeedButton7Click(Sender: TObject);
+procedure FullfillFormBonFacA;
 begin
-  MainForm.Bona_facTable.First;
-  MainForm.Bona_facTable.Refresh;
-  MainForm.Bona_fac_listTable.Refresh;
-
-  if MainForm.Bona_facTable.FieldValues['valider_bafac'] = True then
+   if MainForm.Bona_facTable.FieldByName('valider_bafac').AsBoolean = True then
   begin
        FSplashVersement.DisableBonFacA;
   end;
-  if MainForm.Bona_facTable.FieldValues['valider_bafac'] = False then
+  if MainForm.Bona_facTable.FieldByName('valider_bafac').AsBoolean = False then
    begin
-     EnableBonFacA;
+     BonFacAGestionF.EnableBonFacA;
     end;
 
 
-  if (MainForm.Bona_facTable.FieldValues['code_f']<> 0) AND (MainForm.Bona_facTable.FieldValues['code_f']<> null) then
+  if (MainForm.Bona_facTable.FieldByName('code_f').AsInteger<> 0) AND (MainForm.Bona_facTable.FieldByName('code_f').AsInteger<> null) then
   begin
-  FourBonFacAGCbx.Text:=MainForm.Bona_facTable.FieldValues['fourbafac'];
+  BonFacAGestionF.FourBonFacAGCbx.Text:=MainForm.Bona_facTable.FieldByName('fourbafac').AsString;
   end;
-  if (MainForm.Bona_facTable.FieldValues['code_mdpai']<> 0) AND (MainForm.Bona_facTable.FieldValues['code_mdpai']<>null)  then
+  if (MainForm.Bona_facTable.FieldByName('code_mdpai').AsInteger<> 0) AND (MainForm.Bona_facTable.FieldByName('code_mdpai').AsInteger<>null)  then
   begin
-  ModePaieBonFacAGCbx.Text:=MainForm.Bona_facTable.FieldValues['ModePaie'];
+  BonFacAGestionF.ModePaieBonFacAGCbx.Text:=MainForm.Bona_facTable.FieldByName('ModePaie').AsString;
   end;
-  if (MainForm.Bona_facTable.FieldValues['code_cmpt']<> 0) AND (MainForm.Bona_facTable.FieldValues['code_cmpt']<>null)  then
+  if (MainForm.Bona_facTable.FieldByName('code_cmpt').AsInteger<> 0) AND (MainForm.Bona_facTable.FieldByName('code_cmpt').AsInteger<>null)  then
   begin
-  CompteBonFacAGCbx.Text:=MainForm.Bona_facTable.FieldValues['Compte'];
-  end;
-
-  if  (MainForm.Bona_facTable.FieldValues['MontantRes']<>null)  then
-  begin
-  BonFacAResteLbl.Caption:=CurrToStrF(((MainForm.Bona_facTable.FieldValues['MontantRes'])),ffNumber,2) ;
+  BonFacAGestionF.CompteBonFacAGCbx.Text:=MainForm.Bona_facTable.FieldByName('Compte').AsString;
   end;
 
-  NumBonFacAGEdt.Caption:= MainForm.Bona_facTable.FieldByName('num_bafac').AsString;
-  DateBonFacAGD.DateTime:= MainForm.Bona_facTable.FieldByName('date_bafac').AsDateTime;
-  ObserBonFacAGMem.Text:= MainForm.Bona_facTable.FieldByName('obser_bafac').AsString;
+  if  (MainForm.Bona_facTable.FieldByName('MontantRes').AsFloat<>null)  then
+  begin
+  BonFacAGestionF.BonFacAResteLbl.Caption:=CurrToStrF(((MainForm.Bona_facTable.FieldByName('MontantRes').AsFloat)),ffNumber,2) ;
+  end;
+
+  BonFacAGestionF.NumBonFacAGEdt.Caption:= MainForm.Bona_facTable.FieldByName('num_bafac').AsString;
+  BonFacAGestionF.DateBonFacAGD.DateTime:= MainForm.Bona_facTable.FieldByName('date_bafac').AsDateTime;
+  BonFacAGestionF.ObserBonFacAGMem.Text:= MainForm.Bona_facTable.FieldByName('obser_bafac').AsString;
 
    if MainForm.Bona_fac_listTable.ControlsDisabled  then
    begin
@@ -766,136 +762,107 @@ begin
    end;
 end;
 
+procedure TBonFacAGestionF.sSpeedButton7Click(Sender: TObject);
+begin
+
+  if (FourBonFacAGCbx.Text <> '')
+    and (MainForm.Bona_facTable.FieldByName('code_f').AsInteger <> 0)
+    and (MainForm.Bona_facTable.FieldValues['code_f'] <> Null )  then
+
+    begin
+    MainForm.Bona_facTable.First;
+  //  MainForm.Bona_facTable.Refresh;
+    MainForm.Bona_fac_listTable.Refresh;
+
+    FullfillFormBonFacA();
+  end else
+
+    begin
+      sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+      FourBonFacAGCbx.StyleElements:= [];
+      RequiredFourGlbl.Caption:= 'S''il vous plaît entrer le nom de le Fournisseur' ;
+      RequiredFourGlbl.Visible:= True;
+      NameFourGErrorP.Visible:= True;
+
+      FourBonFacAGCbx.SetFocus;
+   end
+
+end;
+
 procedure TBonFacAGestionF.sSpeedButton6Click(Sender: TObject);
 begin
-  MainForm.Bona_facTable.Prior;
-  MainForm.Bona_facTable.Refresh;
-  MainForm.Bona_fac_listTable.Refresh;
 
-  if MainForm.Bona_facTable.FieldValues['valider_bafac'] = True then
-  begin
-       FSplashVersement.DisableBonFacA;
-  end;
-  if MainForm.Bona_facTable.FieldValues['valider_bafac'] = False then
-   begin
-     EnableBonFacA;
-    end;
+  if (FourBonFacAGCbx.Text <> '')
+    and (MainForm.Bona_facTable.FieldByName('code_f').AsInteger <> 0)
+    and (MainForm.Bona_facTable.FieldValues['code_f'] <> Null )  then
 
+    begin
+    MainForm.Bona_facTable.Prior;
+  //  MainForm.Bona_facTable.Refresh;
+    MainForm.Bona_fac_listTable.Refresh;
 
-  if (MainForm.Bona_facTable.FieldValues['code_f']<> 0) AND (MainForm.Bona_facTable.FieldValues['code_f']<> null) then
-  begin
-  FourBonFacAGCbx.Text:=MainForm.Bona_facTable.FieldValues['fourbafac'];
-  end;
-  if (MainForm.Bona_facTable.FieldValues['code_mdpai']<> 0) AND (MainForm.Bona_facTable.FieldValues['code_mdpai']<>null)  then
-  begin
-  ModePaieBonFacAGCbx.Text:=MainForm.Bona_facTable.FieldValues['ModePaie'];
-  end;
-  if (MainForm.Bona_facTable.FieldValues['code_cmpt']<> 0) AND (MainForm.Bona_facTable.FieldValues['code_cmpt']<>null)  then
-  begin
-  CompteBonFacAGCbx.Text:=MainForm.Bona_facTable.FieldValues['Compte'];
-  end;
+    FullfillFormBonFacA();
+  end else
 
-  if  (MainForm.Bona_facTable.FieldValues['MontantRes']<>null)  then
-  begin
-  BonFacAResteLbl.Caption:=CurrToStrF(((MainForm.Bona_facTable.FieldValues['MontantRes'])),ffNumber,2) ;
-  end;
+    begin
+      sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+      FourBonFacAGCbx.StyleElements:= [];
+      RequiredFourGlbl.Caption:= 'S''il vous plaît entrer le nom de le Fournisseur' ;
+      RequiredFourGlbl.Visible:= True;
+      NameFourGErrorP.Visible:= True;
 
-  NumBonFacAGEdt.Caption:= MainForm.Bona_facTable.FieldByName('num_bafac').AsString;
-  DateBonFacAGD.DateTime:= MainForm.Bona_facTable.FieldByName('date_bafac').AsDateTime;
-  ObserBonFacAGMem.Text:= MainForm.Bona_facTable.FieldByName('obser_bafac').AsString;
-
-  if MainForm.Bona_fac_listTable.ControlsDisabled  then
-   begin
-     MainForm.Bona_fac_listTable.EnableControls;
-   end;
+      FourBonFacAGCbx.SetFocus;
+   end
 end;
 
 procedure TBonFacAGestionF.sSpeedButton5Click(Sender: TObject);
 begin
-  MainForm.Bona_facTable.Next;
-  MainForm.Bona_facTable.Refresh;
-  MainForm.Bona_fac_listTable.Refresh;
 
-  if MainForm.Bona_facTable.FieldValues['valider_bafac'] = True then
-  begin
-       FSplashVersement.DisableBonFacA;
-  end;
-  if MainForm.Bona_facTable.FieldValues['valider_bafac'] = False then
-   begin
-     EnableBonFacA;
-    end;
+  if (FourBonFacAGCbx.Text <> '')
+    and (MainForm.Bona_facTable.FieldByName('code_f').AsInteger <> 0)
+    and (MainForm.Bona_facTable.FieldValues['code_f'] <> Null )  then
 
+    begin
+    MainForm.Bona_facTable.Next;
+  //  MainForm.Bona_facTable.Refresh;
+    MainForm.Bona_fac_listTable.Refresh;
 
-  if (MainForm.Bona_facTable.FieldValues['code_f']<> 0) AND (MainForm.Bona_facTable.FieldValues['code_f']<> null) then
-  begin
-  FourBonFacAGCbx.Text:=MainForm.Bona_facTable.FieldValues['fourbafac'];
-  end;
-  if (MainForm.Bona_facTable.FieldValues['code_mdpai']<> 0) AND (MainForm.Bona_facTable.FieldValues['code_mdpai']<>null)  then
-  begin
-  ModePaieBonFacAGCbx.Text:=MainForm.Bona_facTable.FieldValues['ModePaie'];
-  end;
-  if (MainForm.Bona_facTable.FieldValues['code_cmpt']<> 0) AND (MainForm.Bona_facTable.FieldValues['code_cmpt']<>null)  then
-  begin
-  CompteBonFacAGCbx.Text:=MainForm.Bona_facTable.FieldValues['Compte'];
-  end;
+    FullfillFormBonFacA();
+  end else
+    begin
+      sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+      FourBonFacAGCbx.StyleElements:= [];
+      RequiredFourGlbl.Caption:= 'S''il vous plaît entrer le nom de le Fournisseur' ;
+      RequiredFourGlbl.Visible:= True;
+      NameFourGErrorP.Visible:= True;
 
-  if  (MainForm.Bona_facTable.FieldValues['MontantRes']<>null)  then
-  begin
-  BonFacAResteLbl.Caption:=CurrToStrF(((MainForm.Bona_facTable.FieldValues['MontantRes'])),ffNumber,2) ;
-  end;
-
-  NumBonFacAGEdt.Caption:= MainForm.Bona_facTable.FieldByName('num_bafac').AsString;
-  DateBonFacAGD.DateTime:= MainForm.Bona_facTable.FieldByName('date_bafac').AsDateTime;
-  ObserBonFacAGMem.Text:= MainForm.Bona_facTable.FieldByName('obser_bafac').AsString;
-
-  if MainForm.Bona_fac_listTable.ControlsDisabled  then
-   begin
-     MainForm.Bona_fac_listTable.EnableControls;
-   end;
+      FourBonFacAGCbx.SetFocus;
+   end
 end;
 
 procedure TBonFacAGestionF.sSpeedButton4Click(Sender: TObject);
 begin
-  MainForm.Bona_facTable.Last;
-  MainForm.Bona_facTable.Refresh;
-  MainForm.Bona_fac_listTable.Refresh;
 
-  if MainForm.Bona_facTable.FieldValues['valider_bafac'] = True then
-  begin
-       FSplashVersement.DisableBonFacA;
-  end;
-  if MainForm.Bona_facTable.FieldValues['valider_bafac'] = False then
-   begin
-     EnableBonFacA;
-    end;
+  if (FourBonFacAGCbx.Text <> '')
+    and (MainForm.Bona_facTable.FieldByName('code_f').AsInteger <> 0)
+    and (MainForm.Bona_facTable.FieldValues['code_f'] <> Null )  then
 
+    begin
+    MainForm.Bona_facTable.Last;
+  //  MainForm.Bona_facTable.Refresh;
+    MainForm.Bona_fac_listTable.Refresh;
 
-  if (MainForm.Bona_facTable.FieldValues['code_f']<> 0) AND (MainForm.Bona_facTable.FieldValues['code_f']<> null) then
-  begin
-  FourBonFacAGCbx.Text:=MainForm.Bona_facTable.FieldValues['fourbafac'];
-  end;
-  if (MainForm.Bona_facTable.FieldValues['code_mdpai']<> 0) AND (MainForm.Bona_facTable.FieldValues['code_mdpai']<>null)  then
-  begin
-  ModePaieBonFacAGCbx.Text:=MainForm.Bona_facTable.FieldValues['ModePaie'];
-  end;
-  if (MainForm.Bona_facTable.FieldValues['code_cmpt']<> 0) AND (MainForm.Bona_facTable.FieldValues['code_cmpt']<>null)  then
-  begin
-  CompteBonFacAGCbx.Text:=MainForm.Bona_facTable.FieldValues['Compte'];
-  end;
+    FullfillFormBonFacA();
+  end else
+    begin
+      sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+      FourBonFacAGCbx.StyleElements:= [];
+      RequiredFourGlbl.Caption:= 'S''il vous plaît entrer le nom de le Fournisseur' ;
+      RequiredFourGlbl.Visible:= True;
+      NameFourGErrorP.Visible:= True;
 
-  if  (MainForm.Bona_facTable.FieldValues['MontantRes']<>null)  then
-  begin
-  BonFacAResteLbl.Caption:=CurrToStrF(((MainForm.Bona_facTable.FieldValues['MontantRes'])),ffNumber,2) ;
-  end;
-
-  NumBonFacAGEdt.Caption:= MainForm.Bona_facTable.FieldByName('num_bafac').AsString;
-  DateBonFacAGD.DateTime:= MainForm.Bona_facTable.FieldByName('date_bafac').AsDateTime;
-  ObserBonFacAGMem.Text:= MainForm.Bona_facTable.FieldByName('obser_bafac').AsString;
-
-  if MainForm.Bona_fac_listTable.ControlsDisabled  then
-   begin
-     MainForm.Bona_fac_listTable.EnableControls;
-   end;
+      FourBonFacAGCbx.SetFocus;
+   end
 end;
 
 procedure TBonFacAGestionF.AddBAFacBonFacAGBtnClick(Sender: TObject);

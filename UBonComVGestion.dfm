@@ -1073,7 +1073,7 @@ object BonComVGestionF: TBonComVGestionF
       OnClick = sSpeedButton6Click
     end
     object sSpeedButton5: TsSpeedButton
-      Left = 412
+      Left = 410
       Top = 18
       Width = 30
       Height = 30

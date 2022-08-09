@@ -3183,43 +3183,39 @@ if RemiseBonLivGEdt.Focused then
  end;
 end;
 
-procedure TBonLivGestionF.sSpeedButton7Click(Sender: TObject);
+procedure FullfillFormBonLiv;
 begin
-  MainForm.Bonv_livTable.First;
-  MainForm.Bonv_livTable.Refresh;
-  MainForm.Bonv_liv_listTable.Refresh;
-
-  if MainForm.Bonv_livTable.FieldValues['valider_bvliv'] = True then
+   if MainForm.Bonv_livTable.FieldByName('valider_bvliv').AsBoolean = True then
   begin
        FSplashVersement.DisableBonLiv;
   end;
-  if MainForm.Bonv_livTable.FieldValues['valider_bvliv'] = False then
+  if MainForm.Bonv_livTable.FieldByName('valider_bvliv').AsBoolean = False then
    begin
-     EnableBonLiv;
+     BonLivGestionF.EnableBonLiv;
     end;
 
 
-  if (MainForm.Bonv_livTable.FieldValues['code_c']<> 0) AND (MainForm.Bonv_livTable.FieldValues['code_c']<> null) then
+  if (MainForm.Bonv_livTable.FieldByName('code_c').AsInteger<> 0) AND (MainForm.Bonv_livTable.FieldByName('code_c').AsInteger<> null) then
   begin
-  ClientBonLivGCbx.Text:=MainForm.Bonv_livTable.FieldValues['clientbvliv'];
+  BonLivGestionF.ClientBonLivGCbx.Text:=MainForm.Bonv_livTable.FieldByName('clientbvliv').AsString;
   end;
-  if (MainForm.Bonv_livTable.FieldValues['code_mdpai']<> 0) AND (MainForm.Bonv_livTable.FieldValues['code_mdpai']<>null)  then
+  if (MainForm.Bonv_livTable.FieldByName('code_mdpai').AsInteger<> 0) AND (MainForm.Bonv_livTable.FieldByName('code_mdpai').AsInteger<>null)  then
   begin
-  ModePaieBonLivGCbx.Text:=MainForm.Bonv_livTable.FieldValues['ModePaie'];
+  BonLivGestionF.ModePaieBonLivGCbx.Text:=MainForm.Bonv_livTable.FieldByName('ModePaie').AsString;
   end;
-  if (MainForm.Bonv_livTable.FieldValues['code_cmpt']<> 0) AND (MainForm.Bonv_livTable.FieldValues['code_cmpt']<>null)  then
+  if (MainForm.Bonv_livTable.FieldByName('code_cmpt').AsInteger<> 0) AND (MainForm.Bonv_livTable.FieldByName('code_cmpt').AsInteger<>null)  then
   begin
-  CompteBonLivGCbx.Text:=MainForm.Bonv_livTable.FieldValues['Compte'];
+  BonLivGestionF.CompteBonLivGCbx.Text:=MainForm.Bonv_livTable.FieldByName('Compte').AsString;
   end;
 
   if  (MainForm.Bonv_livTable.FieldByName('MontantRes').AsFloat<>null)  then
   begin
-  BonLivResteLbl.Caption:=FloatToStrF(((MainForm.Bonv_livTable.FieldByName('MontantRes').AsFloat)),ffNumber,14,2) ;
+  BonLivGestionF.BonLivResteLbl.Caption:=FloatToStrF(((MainForm.Bonv_livTable.FieldByName('MontantRes').AsFloat)),ffNumber,14,2) ;
   end;
 
-  NumBonLivGEdt.Caption:= MainForm.Bonv_livTable.FieldByName('num_bvliv').AsString;
-  DateBonLivGD.DateTime:= MainForm.Bonv_livTable.FieldByName('date_bvliv').AsDateTime;
-  ObserBonLivGMem.Text:= MainForm.Bonv_livTable.FieldByName('obser_bvliv').AsString;
+  BonLivGestionF.NumBonLivGEdt.Caption:= MainForm.Bonv_livTable.FieldByName('num_bvliv').AsString;
+  BonLivGestionF.DateBonLivGD.DateTime:= MainForm.Bonv_livTable.FieldByName('date_bvliv').AsDateTime;
+  BonLivGestionF.ObserBonLivGMem.Text:= MainForm.Bonv_livTable.FieldByName('obser_bvliv').AsString;
 
       if MainForm.Bonv_liv_listTable.ControlsDisabled  then
    begin
@@ -3227,138 +3223,100 @@ begin
    end;
 end;
 
+procedure TBonLivGestionF.sSpeedButton7Click(Sender: TObject);
+begin
+  if (ClientBonLivGCbx.Text <> '')
+    and (MainForm.Bonv_livTable.FieldByName('code_c').AsInteger <> 0)
+    and (MainForm.Bonv_livTable.FieldValues['code_c'] <> Null )  then
+
+    begin
+    MainForm.Bonv_livTable.First;
+  //  MainForm.Bonv_livTable.Refresh;
+    MainForm.Bonv_liv_listTable.Refresh;
+
+    FullfillFormBonLiv();
+  end else
+    begin
+      sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+      ClientBonLivGCbx.StyleElements:= [];
+      RequiredClientGlbl.Caption:= 'S''il vous plaît entrer le nom de le Client' ;
+      RequiredClientGlbl.Visible:= True;
+      NameClientGErrorP.Visible:= True;
+
+      ClientBonLivGCbx.SetFocus;
+    end
+end;
+
 procedure TBonLivGestionF.sSpeedButton6Click(Sender: TObject);
 begin
-  MainForm.Bonv_livTable.Prior;
-  MainForm.Bonv_livTable.Refresh;
-  MainForm.Bonv_liv_listTable.Refresh;
+  if (ClientBonLivGCbx.Text <> '')
+    and (MainForm.Bonv_livTable.FieldByName('code_c').AsInteger <> 0)
+    and (MainForm.Bonv_livTable.FieldValues['code_c'] <> Null )  then
 
-  if MainForm.Bonv_livTable.FieldValues['valider_bvliv'] = True then
-  begin
-       FSplashVersement.DisableBonLiv;
-  end;
-  if MainForm.Bonv_livTable.FieldValues['valider_bvliv'] = False then
-   begin
-     EnableBonLiv;
-    end;
+    begin
+    MainForm.Bonv_livTable.Prior;
+  //  MainForm.Bonv_livTable.Refresh;
+    MainForm.Bonv_liv_listTable.Refresh;
 
+    FullfillFormBonLiv();
+  end else
+    begin
+      sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+      ClientBonLivGCbx.StyleElements:= [];
+      RequiredClientGlbl.Caption:= 'S''il vous plaît entrer le nom de le Client' ;
+      RequiredClientGlbl.Visible:= True;
+      NameClientGErrorP.Visible:= True;
 
-  if (MainForm.Bonv_livTable.FieldValues['code_c']<> 0) AND (MainForm.Bonv_livTable.FieldValues['code_c']<> null) then
-  begin
-  ClientBonLivGCbx.Text:=MainForm.Bonv_livTable.FieldValues['clientbvliv'];
-  end;
-  if (MainForm.Bonv_livTable.FieldValues['code_mdpai']<> 0) AND (MainForm.Bonv_livTable.FieldValues['code_mdpai']<>null)  then
-  begin
-  ModePaieBonLivGCbx.Text:=MainForm.Bonv_livTable.FieldValues['ModePaie'];
-  end;
-  if (MainForm.Bonv_livTable.FieldValues['code_cmpt']<> 0) AND (MainForm.Bonv_livTable.FieldValues['code_cmpt']<>null)  then
-  begin
-  CompteBonLivGCbx.Text:=MainForm.Bonv_livTable.FieldValues['Compte'];
-  end;
-
-  if  (MainForm.Bonv_livTable.FieldByName('MontantRes').AsFloat<>null)  then
-  begin
-  BonLivResteLbl.Caption:=FloatToStrF(((MainForm.Bonv_livTable.FieldByName('MontantRes').AsFloat)),ffNumber,14,2) ;
-  end;
-
-  NumBonLivGEdt.Caption:= MainForm.Bonv_livTable.FieldByName('num_bvliv').AsString;
-  DateBonLivGD.DateTime:= MainForm.Bonv_livTable.FieldByName('date_bvliv').AsDateTime;
-  ObserBonLivGMem.Text:= MainForm.Bonv_livTable.FieldByName('obser_bvliv').AsString;
-
-    if MainForm.Bonv_liv_listTable.ControlsDisabled  then
-   begin
-     MainForm.Bonv_liv_listTable.EnableControls;
-   end;
+      ClientBonLivGCbx.SetFocus;
+    end
 end;
 
 procedure TBonLivGestionF.sSpeedButton5Click(Sender: TObject);
 begin
-  MainForm.Bonv_livTable.Next;
-  MainForm.Bonv_livTable.Refresh;
-  MainForm.Bonv_liv_listTable.Refresh;
+  if (ClientBonLivGCbx.Text <> '')
+    and (MainForm.Bonv_livTable.FieldByName('code_c').AsInteger <> 0)
+    and (MainForm.Bonv_livTable.FieldValues['code_c'] <> Null )  then
 
-  if MainForm.Bonv_livTable.FieldValues['valider_bvliv'] = True then
-  begin
-       FSplashVersement.DisableBonLiv;
-  end;
-  if MainForm.Bonv_livTable.FieldValues['valider_bvliv'] = False then
-   begin
-     EnableBonLiv;
-    end;
+    begin
+    MainForm.Bonv_livTable.Next;
+  //  MainForm.Bonv_livTable.Refresh;
+    MainForm.Bonv_liv_listTable.Refresh;
 
+    FullfillFormBonLiv();
+  end else
+    begin
+      sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+      ClientBonLivGCbx.StyleElements:= [];
+      RequiredClientGlbl.Caption:= 'S''il vous plaît entrer le nom de le Client' ;
+      RequiredClientGlbl.Visible:= True;
+      NameClientGErrorP.Visible:= True;
 
-  if (MainForm.Bonv_livTable.FieldValues['code_c']<> 0) AND (MainForm.Bonv_livTable.FieldValues['code_c']<> null) then
-  begin
-  ClientBonLivGCbx.Text:=MainForm.Bonv_livTable.FieldValues['clientbvliv'];
-  end;
-  if (MainForm.Bonv_livTable.FieldValues['code_mdpai']<> 0) AND (MainForm.Bonv_livTable.FieldValues['code_mdpai']<>null)  then
-  begin
-  ModePaieBonLivGCbx.Text:=MainForm.Bonv_livTable.FieldValues['ModePaie'];
-  end;
-  if (MainForm.Bonv_livTable.FieldValues['code_cmpt']<> 0) AND (MainForm.Bonv_livTable.FieldValues['code_cmpt']<>null)  then
-  begin
-  CompteBonLivGCbx.Text:=MainForm.Bonv_livTable.FieldValues['Compte'];
-  end;
-
-  if  (MainForm.Bonv_livTable.FieldByName('MontantRes').AsFloat<>null)  then
-  begin
-  BonLivResteLbl.Caption:=FloatToStrF(((MainForm.Bonv_livTable.FieldByName('MontantRes').AsFloat)),ffNumber,14,2) ;
-  end;
-
-  NumBonLivGEdt.Caption:= MainForm.Bonv_livTable.FieldByName('num_bvliv').AsString;
-  DateBonLivGD.DateTime:= MainForm.Bonv_livTable.FieldByName('date_bvliv').AsDateTime;
-  ObserBonLivGMem.Text:= MainForm.Bonv_livTable.FieldByName('obser_bvliv').AsString;
-
-
-
-        if MainForm.Bonv_liv_listTable.ControlsDisabled  then
-   begin
-     MainForm.Bonv_liv_listTable.EnableControls;
-   end;
+      ClientBonLivGCbx.SetFocus;
+    end
 end;
 
 procedure TBonLivGestionF.sSpeedButton4Click(Sender: TObject);
 begin
-  MainForm.Bonv_livTable.Last;
-  MainForm.Bonv_livTable.Refresh;
-  MainForm.Bonv_liv_listTable.Refresh;
+  if (ClientBonLivGCbx.Text <> '')
+    and (MainForm.Bonv_livTable.FieldByName('code_c').AsInteger <> 0)
+    and (MainForm.Bonv_livTable.FieldValues['code_c'] <> Null )  then
 
-  if MainForm.Bonv_livTable.FieldValues['valider_bvliv'] = True then
-  begin
-       FSplashVersement.DisableBonLiv;
-  end;
-  if MainForm.Bonv_livTable.FieldValues['valider_bvliv'] = False then
-   begin
-     EnableBonLiv;
-    end;
+    begin
+    MainForm.Bonv_livTable.Last;
+  //  MainForm.Bonv_livTable.Refresh;
+    MainForm.Bonv_liv_listTable.Refresh;
 
+    FullfillFormBonLiv();
+  end else
+    begin
+      sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+      ClientBonLivGCbx.StyleElements:= [];
+      RequiredClientGlbl.Caption:= 'S''il vous plaît entrer le nom de le Client' ;
+      RequiredClientGlbl.Visible:= True;
+      NameClientGErrorP.Visible:= True;
 
-  if (MainForm.Bonv_livTable.FieldValues['code_c']<> 0) AND (MainForm.Bonv_livTable.FieldValues['code_c']<> null) then
-  begin
-  ClientBonLivGCbx.Text:=MainForm.Bonv_livTable.FieldValues['clientbvliv'];
-  end;
-  if (MainForm.Bonv_livTable.FieldValues['code_mdpai']<> 0) AND (MainForm.Bonv_livTable.FieldValues['code_mdpai']<>null)  then
-  begin
-  ModePaieBonLivGCbx.Text:=MainForm.Bonv_livTable.FieldValues['ModePaie'];
-  end;
-  if (MainForm.Bonv_livTable.FieldValues['code_cmpt']<> 0) AND (MainForm.Bonv_livTable.FieldValues['code_cmpt']<>null)  then
-  begin
-  CompteBonLivGCbx.Text:=MainForm.Bonv_livTable.FieldValues['Compte'];
-  end;
-
-  if  (MainForm.Bonv_livTable.FieldByName('MontantRes').AsFloat<>null)  then
-  begin
-  BonLivResteLbl.Caption:=FloatToStrF(((MainForm.Bonv_livTable.FieldByName('MontantRes').AsFloat)),ffNumber,14,2) ;
-  end;
-
-  NumBonLivGEdt.Caption:= MainForm.Bonv_livTable.FieldByName('num_bvliv').AsString;
-  DateBonLivGD.DateTime:= MainForm.Bonv_livTable.FieldByName('date_bvliv').AsDateTime;
-  ObserBonLivGMem.Text:= MainForm.Bonv_livTable.FieldByName('obser_bvliv').AsString;
-
-        if MainForm.Bonv_liv_listTable.ControlsDisabled  then
-   begin
-     MainForm.Bonv_liv_listTable.EnableControls;
-   end;
+      ClientBonLivGCbx.SetFocus;
+    end
 end;
 
 procedure TBonLivGestionF.AddBVlivBonLivGBtnClick(Sender: TObject);

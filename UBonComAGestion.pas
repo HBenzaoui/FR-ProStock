@@ -2600,179 +2600,145 @@ begin
     end;
 end;
 
-procedure TBonComAGestionF.sSpeedButton10Click(Sender: TObject);
-begin
-  DataModuleF.Bona_comTable.First;
-  DataModuleF.Bona_comTable.Refresh;
-  DataModuleF.Bona_com_listTable.Refresh;
 
-  if DataModuleF.Bona_comTable.FieldValues['valider_bacom'] = True then
+procedure FullfillFormBonComA;
+begin
+  if DataModuleF.Bona_comTable.FieldByName('valider_bacom').AsBoolean = True then
   begin
        FSplashVersement.DisableBonComA;
   end;
-  if DataModuleF.Bona_comTable.FieldValues['valider_bacom'] = False then
+  if DataModuleF.Bona_comTable.FieldByName('valider_bacom').AsBoolean = False then
    begin
-     EnableBonCom;
+     BonComAGestionF.EnableBonCom;
     end;
 
 
-  if (DataModuleF.Bona_comTable.FieldValues['code_f']<> 0) AND (DataModuleF.Bona_comTable.FieldValues['code_f']<> null) then
+  if (DataModuleF.Bona_comTable.FieldByName('code_f').AsInteger<> 0) AND (DataModuleF.Bona_comTable.FieldByName('code_f').AsInteger<> null) then
   begin
-  FournisseurBonComGCbx.Text:=DataModuleF.Bona_comTable.FieldValues['fourbacom'];
+  BonComAGestionF.FournisseurBonComGCbx.Text:=DataModuleF.Bona_comTable.FieldByName('fourbacom').AsString;
   end;
-  if (DataModuleF.Bona_comTable.FieldValues['code_mdpai']<> 0) AND (DataModuleF.Bona_comTable.FieldValues['code_mdpai']<>null)  then
+  if (DataModuleF.Bona_comTable.FieldByName('code_mdpai').AsInteger<> 0) AND (DataModuleF.Bona_comTable.FieldByName('code_mdpai').AsInteger<>null)  then
   begin
-  ModePaieBonComGCbx.Text:=DataModuleF.Bona_comTable.FieldValues['ModePaie'];
+  BonComAGestionF.ModePaieBonComGCbx.Text:=DataModuleF.Bona_comTable.FieldByName('ModePaie').AsString;
   end;
-  if (DataModuleF.Bona_comTable.FieldValues['code_cmpt']<> 0) AND (DataModuleF.Bona_comTable.FieldValues['code_cmpt']<>null)  then
+  if (DataModuleF.Bona_comTable.FieldByName('code_cmpt').AsInteger<> 0) AND (DataModuleF.Bona_comTable.FieldByName('code_cmpt').AsInteger<>null)  then
   begin
-  CompteBonComGCbx.Text:=DataModuleF.Bona_comTable.FieldValues['Compte'];
-  end;
-
-  if  (DataModuleF.Bona_comTable.FieldValues['MontantRes']<>null)  then
-  begin
-  BonComResteLbl.Caption:=CurrToStrF(((DataModuleF.Bona_comTable.FieldValues['MontantRes'])),ffNumber,2) ;
+  BonComAGestionF.CompteBonComGCbx.Text:=DataModuleF.Bona_comTable.FieldByName('Compte').AsString;
   end;
 
-  NumBonComGEdt.Caption:= DataModuleF.Bona_comTable.FieldByName('num_bacom').AsString;
-  DateBonComGD.DateTime:= DataModuleF.Bona_comTable.FieldByName('date_bacom').AsDateTime;
-  ObserBonComGMem.Text:= DataModuleF.Bona_comTable.FieldByName('obser_bacom').AsString;
+  if  (DataModuleF.Bona_comTable.FieldByName('MontantRes').AsFloat<>null)  then
+  begin
+  BonComAGestionF.BonComResteLbl.Caption:=CurrToStrF(((DataModuleF.Bona_comTable.FieldByName('MontantRes').AsFloat)),ffNumber,2) ;
+  end;
+
+  BonComAGestionF.NumBonComGEdt.Caption:= DataModuleF.Bona_comTable.FieldByName('num_bacom').AsString;
+  BonComAGestionF.DateBonComGD.DateTime:= DataModuleF.Bona_comTable.FieldByName('date_bacom').AsDateTime;
+  BonComAGestionF.ObserBonComGMem.Text:= DataModuleF.Bona_comTable.FieldByName('obser_bacom').AsString;
 
    if DataModuleF.Bona_com_listTable.ControlsDisabled  then
    begin
      DataModuleF.Bona_com_listTable.EnableControls;
    end;
+end;
+
+procedure TBonComAGestionF.sSpeedButton10Click(Sender: TObject);
+begin
+  if (FournisseurBonComGCbx.Text <> '')
+    and (DataModuleF.Bona_comTable.FieldByName('code_f').AsInteger <> 0)
+    and (DataModuleF.Bona_comTable.FieldValues['code_f'] <> Null )  then
+
+    begin
+    DataModuleF.Bona_comTable.First;
+  //  DataModuleF.Bona_comTable.Refresh;
+    DataModuleF.Bona_com_listTable.Refresh;
+
+    FullfillFormBonComA();
+  end else
+    begin
+      sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+      FournisseurBonComGCbx.StyleElements:= [];
+      RequiredFourGlbl.Caption:= 'S''il vous plaît entrer le nom de le Fournisseur' ;
+      RequiredFourGlbl.Visible:= True;
+      NameFourGErrorP.Visible:= True;
+
+      FournisseurBonComGCbx.SetFocus;
+  end
 
 end;
 
 procedure TBonComAGestionF.sSpeedButton9Click(Sender: TObject);
 begin
-DataModuleF.Bona_comTable.Prior;
-DataModuleF.Bona_comTable.Refresh;
-DataModuleF.Bona_com_listTable.Refresh;
 
-if DataModuleF.Bona_comTable.FieldValues['valider_bacom'] = True then
-begin
-     FSplashVersement.DisableBonComA;
-end;
-if DataModuleF.Bona_comTable.FieldValues['valider_bacom'] = False then
- begin
-   EnableBonCom;
-  end;
+  if (FournisseurBonComGCbx.Text <> '')
+    and (DataModuleF.Bona_comTable.FieldByName('code_f').AsInteger <> 0)
+    and (DataModuleF.Bona_comTable.FieldValues['code_f'] <> Null )  then
 
+    begin
+    DataModuleF.Bona_comTable.Prior;
+    //DataModuleF.Bona_comTable.Refresh;
+    DataModuleF.Bona_com_listTable.Refresh;
 
-if (DataModuleF.Bona_comTable.FieldValues['code_f']<> 0) AND (DataModuleF.Bona_comTable.FieldValues['code_f']<> null) then
-begin
-FournisseurBonComGCbx.Text:=DataModuleF.Bona_comTable.FieldValues['fourbacom'];
-end;
-if (DataModuleF.Bona_comTable.FieldValues['code_mdpai']<> 0) AND (DataModuleF.Bona_comTable.FieldValues['code_mdpai']<>null)  then
-begin
-ModePaieBonComGCbx.Text:=DataModuleF.Bona_comTable.FieldValues['ModePaie'];
-end;
-if (DataModuleF.Bona_comTable.FieldValues['code_cmpt']<> 0) AND (DataModuleF.Bona_comTable.FieldValues['code_cmpt']<>null)  then
-begin
-CompteBonComGCbx.Text:=DataModuleF.Bona_comTable.FieldValues['Compte'];
-end;
+    FullfillFormBonComA();
+  end else
+    begin
+      sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+      FournisseurBonComGCbx.StyleElements:= [];
+      RequiredFourGlbl.Caption:= 'S''il vous plaît entrer le nom de le Fournisseur' ;
+      RequiredFourGlbl.Visible:= True;
+      NameFourGErrorP.Visible:= True;
 
-if  (DataModuleF.Bona_comTable.FieldValues['MontantRes']<>null)  then
-begin
-BonComResteLbl.Caption:=CurrToStrF(((DataModuleF.Bona_comTable.FieldValues['MontantRes'])),ffNumber,2) ;
-end;
-
- NumBonComGEdt.Caption:= DataModuleF.Bona_comTable.FieldByName('num_bacom').AsString;
-  DateBonComGD.DateTime:= DataModuleF.Bona_comTable.FieldByName('date_bacom').AsDateTime;
-  ObserBonComGMem.Text:= DataModuleF.Bona_comTable.FieldByName('obser_bacom').AsString;
-
-    if DataModuleF.Bona_com_listTable.ControlsDisabled  then
-   begin
-     DataModuleF.Bona_com_listTable.EnableControls;
-   end;
+      FournisseurBonComGCbx.SetFocus;
+  end
 end;
 
 procedure TBonComAGestionF.sSpeedButton8Click(Sender: TObject);
 begin
-DataModuleF.Bona_comTable.Next;
-DataModuleF.Bona_comTable.Refresh;
-DataModuleF.Bona_com_listTable.Refresh;
+;
+  if (FournisseurBonComGCbx.Text <> '')
+    and (DataModuleF.Bona_comTable.FieldByName('code_f').AsInteger <> 0)
+    and (DataModuleF.Bona_comTable.FieldValues['code_f'] <> Null )  then
 
-if DataModuleF.Bona_comTable.FieldValues['valider_bacom'] = True then
-begin
-     FSplashVersement.DisableBonComA;
-end;
-if DataModuleF.Bona_comTable.FieldValues['valider_bacom'] = False then
- begin
-   EnableBonCom;
-  end;
+    begin
+    DataModuleF.Bona_comTable.Next;
+    //DataModuleF.Bona_comTable.Refresh;
+    DataModuleF.Bona_com_listTable.Refresh;
 
-if (DataModuleF.Bona_comTable.FieldValues['code_f']<> 0) AND (DataModuleF.Bona_comTable.FieldValues['code_f']<> null) then
-begin
-FournisseurBonComGCbx.Text:=DataModuleF.Bona_comTable.FieldValues['fourbacom'];
-end;
-if (DataModuleF.Bona_comTable.FieldValues['code_mdpai']<> 0) AND (DataModuleF.Bona_comTable.FieldValues['code_mdpai']<>null)  then
-begin
-ModePaieBonComGCbx.Text:=DataModuleF.Bona_comTable.FieldValues['ModePaie'];
-end;
-if (DataModuleF.Bona_comTable.FieldValues['code_cmpt']<> 0) AND (DataModuleF.Bona_comTable.FieldValues['code_cmpt']<>null)  then
-begin
-CompteBonComGCbx.Text:=DataModuleF.Bona_comTable.FieldValues['Compte'];
-end;
+    FullfillFormBonComA();
+  end else
+    begin
+      sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+      FournisseurBonComGCbx.StyleElements:= [];
+      RequiredFourGlbl.Caption:= 'S''il vous plaît entrer le nom de le Fournisseur' ;
+      RequiredFourGlbl.Visible:= True;
+      NameFourGErrorP.Visible:= True;
 
-if  (DataModuleF.Bona_comTable.FieldValues['MontantRes']<>null)  then
-begin
-BonComResteLbl.Caption:=CurrToStrF(((DataModuleF.Bona_comTable.FieldValues['MontantRes'])),ffNumber,2) ;
-end;
-
- NumBonComGEdt.Caption:= DataModuleF.Bona_comTable.FieldByName('num_bacom').AsString;
-  DateBonComGD.DateTime:= DataModuleF.Bona_comTable.FieldByName('date_bacom').AsDateTime;
-  ObserBonComGMem.Text:= DataModuleF.Bona_comTable.FieldByName('obser_bacom').AsString;
-
-    if DataModuleF.Bona_com_listTable.ControlsDisabled  then
-   begin
-     DataModuleF.Bona_com_listTable.EnableControls;
-   end;
+      FournisseurBonComGCbx.SetFocus;
+  end
 end;
 
 procedure TBonComAGestionF.sSpeedButton7Click(Sender: TObject);
 begin
-DataModuleF.Bona_comTable.Last;
-DataModuleF.Bona_comTable.Refresh;
-DataModuleF.Bona_com_listTable.Refresh;
 
-if DataModuleF.Bona_comTable.FieldValues['valider_bacom'] = True then
-begin
-     FSplashVersement.DisableBonComA;
-end;
-if DataModuleF.Bona_comTable.FieldValues['valider_bacom'] = False then
- begin
-   EnableBonCom;
-  end;
+  if (FournisseurBonComGCbx.Text <> '')
+    and (DataModuleF.Bona_comTable.FieldByName('code_f').AsInteger <> 0)
+    and (DataModuleF.Bona_comTable.FieldValues['code_f'] <> Null )  then
 
-if (DataModuleF.Bona_comTable.FieldValues['code_f']<> 0) AND (DataModuleF.Bona_comTable.FieldValues['code_f']<> null) then
-begin
-FournisseurBonComGCbx.Text:=DataModuleF.Bona_comTable.FieldValues['fourbacom'];
-end;
-if (DataModuleF.Bona_comTable.FieldValues['code_mdpai']<> 0) AND (DataModuleF.Bona_comTable.FieldValues['code_mdpai']<>null)  then
-begin
-ModePaieBonComGCbx.Text:=DataModuleF.Bona_comTable.FieldValues['ModePaie'];
-end;
-if (DataModuleF.Bona_comTable.FieldValues['code_cmpt']<> 0) AND (DataModuleF.Bona_comTable.FieldValues['code_cmpt']<>null)  then
-begin
-CompteBonComGCbx.Text:=DataModuleF.Bona_comTable.FieldValues['Compte'];
-end;
+    begin
+    DataModuleF.Bona_comTable.Last;
+    //DataModuleF.Bona_comTable.Refresh;
+    DataModuleF.Bona_com_listTable.Refresh;
 
-if  (DataModuleF.Bona_comTable.FieldValues['MontantRes']<>null)  then
-begin
-BonComResteLbl.Caption:=CurrToStrF(((DataModuleF.Bona_comTable.FieldValues['MontantRes'])),ffNumber,2) ;
-end;
+    FullfillFormBonComA();
+  end else
+    begin
+      sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+      FournisseurBonComGCbx.StyleElements:= [];
+      RequiredFourGlbl.Caption:= 'S''il vous plaît entrer le nom de le Fournisseur' ;
+      RequiredFourGlbl.Visible:= True;
+      NameFourGErrorP.Visible:= True;
 
- NumBonComGEdt.Caption:= DataModuleF.Bona_comTable.FieldByName('num_bacom').AsString;
-  DateBonComGD.DateTime:= DataModuleF.Bona_comTable.FieldByName('date_bacom').AsDateTime;
-  ObserBonComGMem.Text:= DataModuleF.Bona_comTable.FieldByName('obser_bacom').AsString;
-
-    if DataModuleF.Bona_com_listTable.ControlsDisabled  then
-   begin
-     DataModuleF.Bona_com_listTable.EnableControls;
-   end;
+      FournisseurBonComGCbx.SetFocus;
+  end
 end;
 
 procedure TBonComAGestionF.FournisseurBonComGCbxChange(Sender: TObject);

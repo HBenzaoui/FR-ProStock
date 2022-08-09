@@ -445,7 +445,20 @@ begin
 // ------ this code is to check if the produit are in bons if it is the user cant delte it ------------
   MainForm.SQLQuery.Active := False;
   MainForm.SQLQuery.SQL.Clear;
-  MainForm.SQLQuery.SQL.Text := 'select * ' + 'from (   ' + 'select code_p as code_p from bona_fac_list ' + 'union all ' + 'select code_p from bona_rec_list ' + 'union all ' + 'select code_p from bonv_ctr_list ' + 'union all ' + 'select code_p from bonv_fac_list ' + 'union all ' + 'select code_p from bonv_liv_list ' + ') a ' + 'where code_p = ' + IntToStr(MainForm.ProduitTable.FieldByName('code_p').AsInteger);
+  MainForm.SQLQuery.SQL.Text := 'SELECT code_p '
+    + 'FROM (  SELECT code_p as code_p FROM bona_fac_list '
+    + 'UNION ALL ' + 'SELECT code_p FROM bona_rec_list '
+    + 'UNION ALL ' + 'SELECT code_p FROM bonv_ctr_list '
+    + 'UNION ALL ' + 'SELECT code_p FROM bonv_fac_list '
+    + 'UNION ALL ' + 'SELECT code_p FROM bonv_liv_list '
+    + 'UNION ALL ' + 'SELECT code_p FROM bonp_fac_list '
+    + 'UNION ALL ' + 'SELECT code_p FROM bona_com_list '
+    + 'UNION ALL ' + 'SELECT code_p FROM bona_facr_list '
+    + 'UNION ALL ' + 'SELECT code_p FROM bona_ret_list '
+    + 'UNION ALL ' + 'SELECT code_p FROM bonv_com_list '
+    + 'UNION ALL ' + 'SELECT code_p FROM bonv_facr_list '
+    + 'UNION ALL ' + 'SELECT code_p FROM bonv_ret_list '
+    + ') a WHERE code_p = ' + IntToStr(MainForm.ProduitTable.FieldByName('code_p').AsInteger);
 
   MainForm.SQLQuery.Active := True;
 

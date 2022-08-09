@@ -1067,7 +1067,7 @@ object BonFacPGestionF: TBonFacPGestionF
       Visible = False
     end
     object sSpeedButton7: TsSpeedButton
-      Left = 344
+      Left = 345
       Top = 18
       Width = 30
       Height = 30
