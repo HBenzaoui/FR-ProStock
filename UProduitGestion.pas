@@ -997,8 +997,12 @@ begin
   if Key = VK_DOWN then
     // next control
     SelectNext(Self.ActiveControl, true, true);
+  // Enter key
+  if Key = VK_RETURN then
+  // next control
+  SelectNext(Self.ActiveControl, true, true);
 
-  end;
+end;
 
 procedure TProduitGestionF.FormKeyPress(Sender: TObject; var Key: Char);
 begin
@@ -1023,6 +1027,14 @@ begin
 //   OKProduitGBtnClick(Sender);
 //
 //  end;
+
+  // this is to apply Ctrl + Enter when we want to save and close
+  if (HiWord(GetKeyState(VK_CONTROL)) <> 0) AND (HiWord(GetKeyState(VK_RETURN)) <> 0)  then
+   begin
+     key := #0;
+     OKProduitGBtnClick(Sender);
+
+   end;
 
 end;
 
