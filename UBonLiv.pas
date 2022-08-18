@@ -655,17 +655,18 @@ codeBL:= 0;
       begin
 
         MainForm.Bonv_livTable.Insert;
-        MainForm.Bonv_livTable.FieldValues['code_bvliv']:=1;
-        MainForm.Bonv_livTable.FieldValues['num_bvliv']:= 'BL'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5, 1]);
-        MainForm.Bonv_livTable.FieldValues['date_bvliv']:= DateOf(Today);
-        MainForm.Bonv_livTable.FieldValues['time_bvliv']:=TimeOf(Now);
-        MainForm.Bonv_livTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
+        MainForm.Bonv_livTable.FieldByName('code_bvliv').AsInteger:=1;
+        MainForm.Bonv_livTable.FieldByName('num_bvliv').AsString:= 'BL'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5, 1]);
+        MainForm.Bonv_livTable.FieldByName('date_bvliv').AsDateTime:= DateOf(Today);
+        MainForm.Bonv_livTable.FieldByName('time_bvliv').AsDateTime:=TimeOf(Now);
+        MainForm.Bonv_livTable.FieldByName('code_c').AsInteger:=0;
+        MainForm.Bonv_livTable.FieldByName('code_ur').AsInteger:= StrToInt(MainForm.UserIDLbl.Caption);
         MainForm.Bonv_livTable.Post;
-        codeBL := MainForm.Bonv_livTable.FieldValues['code_bvliv'];
+        codeBL := MainForm.Bonv_livTable.FieldByName('code_bvliv').AsInteger;
       end else
           begin
             MainForm.Bonv_livTable.Last;
-            codeBL := MainForm.Bonv_livTable.FieldValues['code_bvliv'];
+            codeBL := MainForm.Bonv_livTable.FieldByName('code_bvliv').AsInteger;
             MainForm.SQLQuery.Active:=False;    // if soemthig went wrong change it  back to Bonv_liv_listTable
             MainForm.SQLQuery.SQL.Clear;
             MainForm.SQLQuery.SQL.Text:= 'SELECT code_bvliv FROM bonv_liv_list WHERE code_bvliv = ' + IntToStr(codeBL);
@@ -674,22 +675,23 @@ codeBL:= 0;
            if MainForm.SQLQuery.RecNo <= 0 then
            begin
         //   MainForm.Bonv_livTable.Last;
-           codeBL := MainForm.Bonv_livTable.FieldValues['code_bvliv'];
+           codeBL := MainForm.Bonv_livTable.FieldByName('code_bvliv').AsInteger;
              MainForm.Bonv_livTable.Edit;
-             MainForm.Bonv_livTable.FieldValues['date_bvliv']:= DateOf(Today);
-             MainForm.Bonv_livTable.FieldValues['time_bvliv']:= TimeOf(Now);
-             MainForm.Bonv_livTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
+             MainForm.Bonv_livTable.FieldByName('date_bvliv').AsDateTime:= DateOf(Today);
+             MainForm.Bonv_livTable.FieldByName('time_bvliv').AsDateTime:= TimeOf(Now);
+             MainForm.Bonv_livTable.FieldByName('code_ur').AsInteger:= StrToInt(MainForm.UserIDLbl.Caption);
              MainForm.Bonv_livTable.Post;
            end else
            begin
         //   MainForm.Bonv_livTable.Last;
-          // codeBL := MainForm.Bonv_livTable.FieldValues['code_bvliv'];
+          // codeBL := MainForm.Bonv_livTable.FieldByName('code_bvliv'];
              MainForm.Bonv_livTable.Insert;
-             MainForm.Bonv_livTable.FieldValues['code_bvliv']:= codeBL + 1;
-             MainForm.Bonv_livTable.FieldValues['num_bvliv']:=  'BL'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5,(codeBL + 1)]);
-             MainForm.Bonv_livTable.FieldValues['date_bvliv']:= DateOf(Today);
-             MainForm.Bonv_livTable.FieldValues['time_bvliv']:= TimeOf(Now);
-             MainForm.Bonv_livTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
+             MainForm.Bonv_livTable.FieldByName('code_bvliv').AsInteger:= codeBL + 1;
+             MainForm.Bonv_livTable.FieldByName('num_bvliv').AsString:=  'BL'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5,(codeBL + 1)]);
+             MainForm.Bonv_livTable.FieldByName('date_bvliv').AsDateTime:= DateOf(Today);
+             MainForm.Bonv_livTable.FieldByName('time_bvliv').AsDateTime:= TimeOf(Now);
+             MainForm.Bonv_livTable.FieldByName('code_c').AsInteger:=0;
+             MainForm.Bonv_livTable.FieldByName('code_ur').AsInteger:= StrToInt(MainForm.UserIDLbl.Caption);
              MainForm.Bonv_livTable.Post;
 
 

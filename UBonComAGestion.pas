@@ -222,6 +222,7 @@ type
     procedure ListFourBonComGBtnClick(Sender: TObject);
     procedure ProduitsListDBGridEhKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
+    procedure FournisseurBonComGCbxSelect(Sender: TObject);
   private
     procedure GettingData;
     procedure GettingDataSansTax;
@@ -2600,6 +2601,31 @@ begin
     end;
 end;
 
+
+procedure TBonComAGestionF.FournisseurBonComGCbxSelect(Sender: TObject);
+var CodeF: Integer;
+begin
+
+      if FournisseurBonComGCbx.Text <> '' then
+    begin
+//      MainForm.SQLQuery.DisableControls;
+      MainForm.SQLQuery.Active:=false;
+      MainForm.SQLQuery.SQL.Clear;
+      MainForm.SQLQuery.SQL.Text:='Select code_f FROM fournisseur WHERE LOWER(nom_f) LIKE LOWER('+ QuotedStr( FournisseurBonComGCbx.Text )+')'  ;
+      MainForm.SQLQuery.Active:=True;
+
+      CodeF:= MainForm.SQLQuery.FieldByName('code_f').AsInteger ;
+
+        //Here we pot code_f in bonrec table
+        DataModuleF.Bona_comTable.Edit;
+        DataModuleF.Bona_comTable.FieldByName('code_f').AsInteger := CodeF;
+        DataModuleF.Bona_comTable.Post;
+
+      MainForm.SQLQuery.Active:=false;
+      MainForm.SQLQuery.SQL.Clear;
+     end;
+
+end;
 
 procedure FullfillFormBonComA;
 begin

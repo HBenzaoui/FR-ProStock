@@ -3323,6 +3323,7 @@ begin
       
      BonLivGestionF.ClientBonLivGCbx.Text:= MainForm.FDQuery2.fieldbyName('nom_c').asString;
      BonLivGestionF.ClientBonLivGCbxExit(Sender);
+     BonLivGestionF.ClientBonLivGCbxSelect(Sender);
      BonLivGestionF.ProduitBonLivGCbx.SetFocus;
      Close;
 
@@ -3334,6 +3335,7 @@ begin
 
      BonFacPGestionF.ClientBonFacVGCbx.Text:= MainForm.FDQuery2.fieldbyName('nom_c').asString;
      BonFacPGestionF.ClientBonFacVGCbxExit(Sender);
+     BonFacPGestionF.ClientBonFacVGCbxSelect(Sender);
      BonFacPGestionF.ProduitBonFacVGCbx.SetFocus;
      Close;
       
@@ -3345,6 +3347,7 @@ begin
 
      BonFacVGestionF.ClientBonFacVGCbx.Text:= MainForm.FDQuery2.fieldbyName('nom_c').asString;
      BonFacVGestionF.ClientBonFacVGCbxExit(Sender);
+     BonFacVGestionF.ClientBonFacVGCbxSelect(Sender);
      BonFacVGestionF.ProduitBonFacVGCbx.SetFocus;
      Close;
       
@@ -3356,6 +3359,7 @@ begin
 
      BonCtrGestionF.ClientBonCtrGCbx.Text:= MainForm.FDQuery2.fieldbyName('nom_c').asString;
      BonCtrGestionF.ClientBonCtrGCbxExit(Sender);
+     BonCtrGestionF.ClientBonCtrGCbxSelect(Sender);
      BonCtrGestionF.ProduitBonCtrGCbx.SetFocus;
      Close;    
       
@@ -3389,6 +3393,7 @@ begin
     begin
      BonComVGestionF.ClientBonComGCbx.Text:= MainForm.FDQuery2.fieldbyName('nom_c').asString;
      BonComVGestionF.ClientBonComGCbxExit(Sender);
+     BonComVGestionF.ClientBonComGCbxSelect(Sender);
      BonComVGestionF.ProduitBonComGCbx.SetFocus;
      Close;
     end;
@@ -3405,6 +3410,7 @@ begin
 
      BonRecGestionF.FournisseurBonRecGCbx.Text:= MainForm.FDQuery2.fieldbyName('nom_f').asString;
      BonRecGestionF.FournisseurBonRecGCbxExit(Sender);
+     BonRecGestionF.FournisseurBonRecGCbxSelect(Sender);
      BonRecGestionF.ProduitBonRecGCbx.SetFocus;
      Close;
       
@@ -3416,6 +3422,7 @@ begin
 
      BonFacAGestionF.FourBonFacAGCbx.Text:= MainForm.FDQuery2.fieldbyName('nom_f').asString;
      BonFacAGestionF.FourBonFacAGCbxExit(Sender);
+     BonFacAGestionF.FourBonFacAGCbxSelect(Sender);
      BonFacAGestionF.ProduitBonFacAGCbx.SetFocus;
      Close;
       
@@ -3447,6 +3454,7 @@ begin
     begin
      BonComAGestionF.FournisseurBonComGCbx.Text:= MainForm.FDQuery2.fieldbyName('nom_f').asString;
      BonComAGestionF.FournisseurBonComGCbxExit(Sender);
+     BonComAGestionF.FournisseurBonComGCbxSelect(Sender);
      BonComAGestionF.ProduitBonComGCbx.SetFocus;
      Close;
     end;

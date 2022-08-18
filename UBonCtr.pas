@@ -398,11 +398,12 @@ codeCT:= 0;
         begin
 
           MainForm.Bonv_ctrTable.Insert;
-          MainForm.Bonv_ctrTable.FieldValues['code_bvctr']:=1;
-          MainForm.Bonv_ctrTable.FieldValues['num_bvctr']:= 'CT'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5, 1]);
-          MainForm.Bonv_ctrTable.FieldValues['date_bvctr']:= DateOf(Today);
-          MainForm.Bonv_ctrTable.FieldValues['time_bvctr']:=TimeOf(Now);
-          MainForm.Bonv_ctrTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
+          MainForm.Bonv_ctrTable.FieldByName('code_bvctr').AsInteger:=1;
+          MainForm.Bonv_ctrTable.FieldByName('num_bvctr').AsString:= 'CT'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5, 1]);
+          MainForm.Bonv_ctrTable.FieldByName('date_bvctr').AsDateTime:= DateOf(Today);
+          MainForm.Bonv_ctrTable.FieldByName('time_bvctr').AsDateTime:=TimeOf(Now);
+          MainForm.Bonv_ctrTable.FieldByName('code_c').AsInteger:=1;
+          MainForm.Bonv_ctrTable.FieldByName('code_ur').AsInteger:= StrToInt(MainForm.UserIDLbl.Caption);
           MainForm.Bonv_ctrTable.Post;
           codeCT := MainForm.Bonv_ctrTable.FieldByName('code_bvctr').AsInteger;
         end else
@@ -418,23 +419,24 @@ codeCT:= 0;
 //             if MainForm.SQLQuery.RecordCount <= 0 then
 //             begin
 //          //   MainForm.Bonv_ctrTable.Last;
-//             codeCT := MainForm.Bonv_ctrTable.FieldValues['code_bvctr'];
+//             codeCT := MainForm.Bonv_ctrTable.FieldByName('code_bvctr'];
 //
 //               MainForm.Bonv_ctrTable.Edit;
-//               MainForm.Bonv_ctrTable.FieldValues['date_bvctr']:= DateOf(Today);
-//               MainForm.Bonv_ctrTable.FieldValues['time_bvctr']:= TimeOf(Now);
-//               MainForm.Bonv_ctrTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
+//               MainForm.Bonv_ctrTable.FieldByName('date_bvctr']:= DateOf(Today);
+//               MainForm.Bonv_ctrTable.FieldByName('time_bvctr']:= TimeOf(Now);
+//               MainForm.Bonv_ctrTable.FieldByName('code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
 //               MainForm.Bonv_ctrTable.Post;
 //             end else
              begin
           //   MainForm.Bonv_ctrTable.Last;
-            // codeCT := MainForm.Bonv_ctrTable.FieldValues['code_bvliv'];
+            // codeCT := MainForm.Bonv_ctrTable.FieldByName('code_bvliv'];
                MainForm.Bonv_ctrTable.Insert;
-               MainForm.Bonv_ctrTable.FieldValues['code_bvctr']:= codeCT + 1;
-               MainForm.Bonv_ctrTable.FieldValues['num_bvctr']:=  'CT'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5,(codeCT + 1)]);
-               MainForm.Bonv_ctrTable.FieldValues['date_bvctr']:= DateOf(Today);
-               MainForm.Bonv_ctrTable.FieldValues['time_bvctr']:= TimeOf(Now);
-               MainForm.Bonv_ctrTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
+               MainForm.Bonv_ctrTable.FieldByName('code_bvctr').AsInteger:= codeCT + 1;
+               MainForm.Bonv_ctrTable.FieldByName('num_bvctr').AsString:=  'CT'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5,(codeCT + 1)]);
+               MainForm.Bonv_ctrTable.FieldByName('date_bvctr').AsDateTime:= DateOf(Today);
+               MainForm.Bonv_ctrTable.FieldByName('time_bvctr').AsDateTime:= TimeOf(Now);
+               MainForm.Bonv_ctrTable.FieldByName('code_c').AsInteger:=1;
+               MainForm.Bonv_ctrTable.FieldByName('code_ur').AsInteger:= StrToInt(MainForm.UserIDLbl.Caption);
                MainForm.Bonv_ctrTable.Post;
 
 

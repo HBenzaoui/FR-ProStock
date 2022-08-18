@@ -653,17 +653,18 @@ codeBCV:= 0;
       begin
 
         DataModuleF.Bonv_comTable.Insert;
-        DataModuleF.Bonv_comTable.FieldValues['code_bvcom']:=1;
-        DataModuleF.Bonv_comTable.FieldValues['num_bvcom']:= 'BCV'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5, 1]);
-        DataModuleF.Bonv_comTable.FieldValues['date_bvcom']:= DateOf(Today);
-        DataModuleF.Bonv_comTable.FieldValues['time_bvcom']:=TimeOf(Now);
-        DataModuleF.Bonv_comTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
+        DataModuleF.Bonv_comTable.FieldByName('code_bvcom').AsInteger:=1;
+        DataModuleF.Bonv_comTable.FieldByName('num_bvcom').AsString:= 'BCV'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5, 1]);
+        DataModuleF.Bonv_comTable.FieldByName('date_bvcom').AsDateTime:= DateOf(Today);
+        DataModuleF.Bonv_comTable.FieldByName('time_bvcom').AsDateTime:=TimeOf(Now);
+        DataModuleF.Bonv_comTable.FieldByName('code_c').AsInteger:=0;
+        DataModuleF.Bonv_comTable.FieldByName('code_ur').AsInteger:= StrToInt(MainForm.UserIDLbl.Caption);
         DataModuleF.Bonv_comTable.Post;
-        codeBCV := DataModuleF.Bonv_comTable.FieldValues['code_bvcom'];
+        codeBCV := DataModuleF.Bonv_comTable.FieldByName('code_bvcom').AsInteger;
       end else
           begin
             DataModuleF.Bonv_comTable.Last;
-            codeBCV := DataModuleF.Bonv_comTable.FieldValues['code_bvcom'];
+            codeBCV := DataModuleF.Bonv_comTable.FieldByName('code_bvcom').AsInteger;
             MainForm.SQLQuery.Active:=False;    // if soemthig went wrong change it  back to bonv_com_listTable
             MainForm.SQLQuery.SQL.Clear;
             MainForm.SQLQuery.SQL.Text:= 'SELECT code_bvcom FROM bonv_com_list WHERE code_bvcom = ' + IntToStr(codeBCV);
@@ -672,22 +673,23 @@ codeBCV:= 0;
            if MainForm.SQLQuery.RecNo <= 0 then
            begin
         //   DataModuleF.Bonv_comTable.Last;
-           codeBCV := DataModuleF.Bonv_comTable.FieldValues['code_bvcom'];
+           codeBCV := DataModuleF.Bonv_comTable.FieldByName('code_bvcom').AsInteger;
              DataModuleF.Bonv_comTable.Edit;
-             DataModuleF.Bonv_comTable.FieldValues['date_bvcom']:= DateOf(Today);
-             DataModuleF.Bonv_comTable.FieldValues['time_bvcom']:= TimeOf(Now);
-             DataModuleF.Bonv_comTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
+             DataModuleF.Bonv_comTable.FieldByName('date_bvcom').AsDateTime:= DateOf(Today);
+             DataModuleF.Bonv_comTable.FieldByName('time_bvcom').AsDateTime:= TimeOf(Now);
+             DataModuleF.Bonv_comTable.FieldByName('code_ur').AsInteger:= StrToInt(MainForm.UserIDLbl.Caption);
              DataModuleF.Bonv_comTable.Post;
            end else
            begin
         //   DataModuleF.Bonv_comTable.Last;
-          // codeBCV := DataModuleF.Bonv_comTable.FieldValues['code_bvcom'];
+          // codeBCV := DataModuleF.Bonv_comTable.FieldByName('code_bvcom'];
              DataModuleF.Bonv_comTable.Insert;
-             DataModuleF.Bonv_comTable.FieldValues['code_bvcom']:= codeBCV + 1;
-             DataModuleF.Bonv_comTable.FieldValues['num_bvcom']:=  'BCV'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5,(codeBCV + 1)]);
-             DataModuleF.Bonv_comTable.FieldValues['date_bvcom']:= DateOf(Today);
-             DataModuleF.Bonv_comTable.FieldValues['time_bvcom']:= TimeOf(Now);
-             DataModuleF.Bonv_comTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
+             DataModuleF.Bonv_comTable.FieldByName('code_bvcom').AsInteger:= codeBCV + 1;
+             DataModuleF.Bonv_comTable.FieldByName('num_bvcom').AsString:=  'BCV'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5,(codeBCV + 1)]);
+             DataModuleF.Bonv_comTable.FieldByName('date_bvcom').AsDateTime:= DateOf(Today);
+             DataModuleF.Bonv_comTable.FieldByName('time_bvcom').AsDateTime:= TimeOf(Now);
+             DataModuleF.Bonv_comTable.FieldByName('code_c').AsInteger:=0;
+             DataModuleF.Bonv_comTable.FieldByName('code_ur').AsInteger:= StrToInt(MainForm.UserIDLbl.Caption);
              DataModuleF.Bonv_comTable.Post;
 
 

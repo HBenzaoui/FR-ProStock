@@ -569,7 +569,7 @@ object BonRecGestionF: TBonRecGestionF
     end
     object AddFourBonRecGBtn: TAdvToolButton
       Left = 807
-      Top = 84
+      Top = 83
       Width = 26
       Height = 26
       Cursor = crHandPoint
@@ -714,7 +714,7 @@ object BonRecGestionF: TBonRecGestionF
     end
     object AddCompteBonRecGBtn: TAdvToolButton
       Left = 807
-      Top = 128
+      Top = 127
       Width = 26
       Height = 26
       Cursor = crHandPoint
@@ -1231,7 +1231,7 @@ object BonRecGestionF: TBonRecGestionF
     end
     object ListFourBonRecGBtn: TAdvToolButton
       Left = 768
-      Top = 84
+      Top = 83
       Width = 35
       Height = 26
       Cursor = crHandPoint
@@ -1517,6 +1517,7 @@ object BonRecGestionF: TBonRecGestionF
       OnEnter = FournisseurBonRecGCbxEnter
       OnExit = FournisseurBonRecGCbxExit
       OnKeyPress = FournisseurBonRecGCbxKeyPress
+      OnSelect = FournisseurBonRecGCbxSelect
     end
     object Panel12: TPanel
       Left = 0

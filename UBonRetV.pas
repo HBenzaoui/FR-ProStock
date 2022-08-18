@@ -395,17 +395,18 @@ ClearFilterBVLivPMenuClick(Sender);
       begin
 
         DataModuleF.Bonv_retTable.Insert;
-        DataModuleF.Bonv_retTable.FieldValues['code_bvret']:=1;
-        DataModuleF.Bonv_retTable.FieldValues['num_bvret']:= 'BR'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5, 1]);
-        DataModuleF.Bonv_retTable.FieldValues['date_bvret']:= DateOf(Today);
-        DataModuleF.Bonv_retTable.FieldValues['time_bvret']:=TimeOf(Now);
-        DataModuleF.Bonv_retTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
+        DataModuleF.Bonv_retTable.FieldByName('code_bvret').AsInteger:=1;
+        DataModuleF.Bonv_retTable.FieldByName('num_bvret').AsString:= 'BR'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5, 1]);
+        DataModuleF.Bonv_retTable.FieldByName('date_bvret').AsDateTime:= DateOf(Today);
+        DataModuleF.Bonv_retTable.FieldByName('time_bvret').AsDateTime:=TimeOf(Now);
+        DataModuleF.Bonv_retTable.FieldByName('code_c').AsInteger:=0;
+        DataModuleF.Bonv_retTable.FieldByName('code_ur').AsInteger:= StrToInt(MainForm.UserIDLbl.Caption);
         DataModuleF.Bonv_retTable.Post;
-        codeBR := DataModuleF.Bonv_retTable.FieldValues['code_bvret'];
+        codeBR := DataModuleF.Bonv_retTable.FieldByName('code_bvret').AsInteger;
       end else
           begin
             DataModuleF.Bonv_retTable.Last;
-            codeBR := DataModuleF.Bonv_retTable.FieldValues['code_bvret'];
+            codeBR := DataModuleF.Bonv_retTable.FieldByName('code_bvret').AsInteger;
             MainForm.SQLQuery.Active:=False;
             MainForm.SQLQuery.SQL.Clear;
             MainForm.SQLQuery.SQL.Text:= 'SELECT * FROM bonv_ret_list WHERE code_bvret = ' + QuotedStr(IntToStr(codeBR));
@@ -414,23 +415,24 @@ ClearFilterBVLivPMenuClick(Sender);
            if MainForm.SQLQuery.RecordCount <= 0 then
            begin
         //   DataModuleF.Bonv_retTable.Last;
-           codeBR := DataModuleF.Bonv_retTable.FieldValues['code_bvret'];
+           codeBR := DataModuleF.Bonv_retTable.FieldByName('code_bvret').AsInteger;
              DataModuleF.Bonv_retTable.Edit;
-             DataModuleF.Bonv_retTable.FieldValues['date_bvret']:= DateOf(Today);
-             DataModuleF.Bonv_retTable.FieldValues['time_bvret']:= TimeOf(Now);
-             DataModuleF.Bonv_retTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
+             DataModuleF.Bonv_retTable.FieldByName('date_bvret').AsDateTime:= DateOf(Today);
+             DataModuleF.Bonv_retTable.FieldByName('time_bvret').AsDateTime:= TimeOf(Now);
+             DataModuleF.Bonv_retTable.FieldByName('code_ur').AsInteger:= StrToInt(MainForm.UserIDLbl.Caption);
              DataModuleF.Bonv_retTable.Post;
 
            end else
                  begin
               //   DataModuleF.Bonv_retTable.Last;
-                // codeBR := DataModuleF.Bonv_retTable.FieldValues['code_bvret'];
+                // codeBR := DataModuleF.Bonv_retTable.FieldByName('code_bvret'];
                  DataModuleF.Bonv_retTable.Insert;
-                 DataModuleF.Bonv_retTable.FieldValues['code_bvret']:= codeBR + 1;
-                 DataModuleF.Bonv_retTable.FieldValues['num_bvret']:=  'BR'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5,(codeBR + 1)]);
-                 DataModuleF.Bonv_retTable.FieldValues['date_bvret']:= DateOf(Today);
-                 DataModuleF.Bonv_retTable.FieldValues['time_bvret']:= TimeOf(Now);
-                 DataModuleF.Bonv_retTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
+                 DataModuleF.Bonv_retTable.FieldByName('code_bvret').AsInteger:= codeBR + 1;
+                 DataModuleF.Bonv_retTable.FieldByName('num_bvret').AsString:=  'BR'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5,(codeBR + 1)]);
+                 DataModuleF.Bonv_retTable.FieldByName('date_bvret').AsDateTime:= DateOf(Today);
+                 DataModuleF.Bonv_retTable.FieldByName('time_bvret').AsDateTime:= TimeOf(Now);
+                 DataModuleF.Bonv_retTable.FieldByName('code_c').AsInteger:=0;
+                 DataModuleF.Bonv_retTable.FieldByName('code_ur').AsInteger:= StrToInt(MainForm.UserIDLbl.Caption);
                  DataModuleF.Bonv_retTable.Post;
                  end;
      //    BonRetVGestionF.ProduitsListDBGridEh.DataSource.DataSet.EnableControls;

@@ -697,7 +697,7 @@ object BonFacAGestionF: TBonFacAGestionF
     end
     object AddCompteBonFacAGBtn: TAdvToolButton
       Left = 807
-      Top = 126
+      Top = 127
       Width = 26
       Height = 26
       Cursor = crHandPoint
@@ -1230,7 +1230,7 @@ object BonFacAGestionF: TBonFacAGestionF
     end
     object ListFourBonFacAGBtn: TAdvToolButton
       Left = 768
-      Top = 84
+      Top = 83
       Width = 35
       Height = 26
       Cursor = crHandPoint
@@ -1468,6 +1468,7 @@ object BonFacAGestionF: TBonFacAGestionF
       OnEnter = FourBonFacAGCbxEnter
       OnExit = FourBonFacAGCbxExit
       OnKeyPress = FourBonFacAGCbxKeyPress
+      OnSelect = FourBonFacAGCbxSelect
     end
     object Panel12: TPanel
       Left = 0

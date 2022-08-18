@@ -395,17 +395,18 @@ ClearFilterBVLivPMenuClick(Sender);
       begin
 
         MainForm.Bona_recTable.Insert;
-        MainForm.Bona_recTable.FieldValues['code_barec']:=1;
-        MainForm.Bona_recTable.FieldValues['num_barec']:= 'BR'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5, 1]);
-        MainForm.Bona_recTable.FieldValues['date_barec']:= DateOf(Today);
-        MainForm.Bona_recTable.FieldValues['time_barec']:=TimeOf(Now);
-        MainForm.Bona_recTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
+        MainForm.Bona_recTable.FieldByName('code_barec').AsInteger:=1;
+        MainForm.Bona_recTable.FieldByName('num_barec').AsString:= 'BR'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5, 1]);
+        MainForm.Bona_recTable.FieldByName('date_barec').AsDateTime:= DateOf(Today);
+        MainForm.Bona_recTable.FieldByName('time_barec').AsDateTime:=TimeOf(Now);
+        MainForm.Bona_recTable.FieldByName('code_f').AsInteger:=0;
+        MainForm.Bona_recTable.FieldByName('code_ur').AsInteger:= StrToInt(MainForm.UserIDLbl.Caption);
         MainForm.Bona_recTable.Post;
-        codeBR := MainForm.Bona_recTable.FieldValues['code_barec'];
+        codeBR := MainForm.Bona_recTable.FieldByName('code_barec').AsInteger;
       end else
           begin
             MainForm.Bona_recTable.Last;
-            codeBR := MainForm.Bona_recTable.FieldValues['code_barec'];
+            codeBR := MainForm.Bona_recTable.FieldByName('code_barec').AsInteger;
             MainForm.SQLQuery.Active:=False;
             MainForm.SQLQuery.SQL.Clear;
             MainForm.SQLQuery.SQL.Text:= 'SELECT * FROM bona_rec_list WHERE code_barec = ' + QuotedStr(IntToStr(codeBR));
@@ -414,23 +415,24 @@ ClearFilterBVLivPMenuClick(Sender);
            if MainForm.SQLQuery.RecordCount <= 0 then
            begin
         //   MainForm.Bona_recTable.Last;
-           codeBR := MainForm.Bona_recTable.FieldValues['code_barec'];
+           codeBR := MainForm.Bona_recTable.FieldByName('code_barec').AsInteger;
              MainForm.Bona_recTable.Edit;
-             MainForm.Bona_recTable.FieldValues['date_barec']:= DateOf(Today);
-             MainForm.Bona_recTable.FieldValues['time_barec']:= TimeOf(Now);
-             MainForm.Bona_recTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
+             MainForm.Bona_recTable.FieldByName('date_barec').AsDateTime:= DateOf(Today);
+             MainForm.Bona_recTable.FieldByName('time_barec').AsDateTime:= TimeOf(Now);
+             MainForm.Bona_recTable.FieldByName('code_ur').AsInteger:= StrToInt(MainForm.UserIDLbl.Caption);
              MainForm.Bona_recTable.Post;
 
            end else
                  begin
               //   MainForm.Bona_recTable.Last;
-                // codeBR := MainForm.Bona_recTable.FieldValues['code_barec'];
+                // codeBR := MainForm.Bona_recTable.FieldByName('code_barec'];
                  MainForm.Bona_recTable.Insert;
-                 MainForm.Bona_recTable.FieldValues['code_barec']:= codeBR + 1;
-                 MainForm.Bona_recTable.FieldValues['num_barec']:=  'BR'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5,(codeBR + 1)]);
-                 MainForm.Bona_recTable.FieldValues['date_barec']:= DateOf(Today);
-                 MainForm.Bona_recTable.FieldValues['time_barec']:= TimeOf(Now);
-                 MainForm.Bona_recTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
+                 MainForm.Bona_recTable.FieldByName('code_barec').AsInteger:= codeBR + 1;
+                 MainForm.Bona_recTable.FieldByName('num_barec').AsString:=  'BR'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5,(codeBR + 1)]);
+                 MainForm.Bona_recTable.FieldByName('date_barec').AsDateTime:= DateOf(Today);
+                 MainForm.Bona_recTable.FieldByName('time_barec').AsDateTime:= TimeOf(Now);
+                 MainForm.Bona_recTable.FieldByName('code_f').AsInteger:=0;
+                 MainForm.Bona_recTable.FieldByName('code_ur').AsInteger:= StrToInt(MainForm.UserIDLbl.Caption);
                  MainForm.Bona_recTable.Post;
                  end;
      //    BonRecGestionF.ProduitsListDBGridEh.DataSource.DataSet.EnableControls;

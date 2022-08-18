@@ -219,6 +219,7 @@ type
     procedure ListClientBonFacVGBtnClick(Sender: TObject);
     procedure ProduitsListDBGridEhKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
+    procedure ClientBonFacVGCbxSelect(Sender: TObject);
   private
     procedure GettingData;
     { Private declarations }
@@ -2166,6 +2167,31 @@ begin
     key :=#0;
     SelectNext(ActiveControl as TWinControl, true, true);
     end;
+end;
+
+procedure TBonFacVGestionF.ClientBonFacVGCbxSelect(Sender: TObject);
+var CodeC: Integer;
+begin
+
+      if ClientBonFacVGCbx.Text <> '' then
+    begin
+//      MainForm.SQLQuery.DisableControls;
+      MainForm.SQLQuery.Active:=false;
+      MainForm.SQLQuery.SQL.Clear;
+      MainForm.SQLQuery.SQL.Text:='Select code_c FROM client WHERE LOWER(nom_c) LIKE LOWER('+ QuotedStr( ClientBonFacVGCbx.Text )+')'  ;
+      MainForm.SQLQuery.Active:=True;
+
+      CodeC:= MainForm.SQLQuery.FieldByName('code_c').AsInteger ;
+
+        //Here we pot code_f in bonrec table
+        MainForm.Bonv_facTable.Edit;
+        MainForm.Bonv_facTable.FieldByName('code_c').AsInteger := CodeC;
+        MainForm.Bonv_facTable.Post;
+
+      MainForm.SQLQuery.Active:=false;
+      MainForm.SQLQuery.SQL.Clear;
+     end;
+
 end;
 
 procedure TBonFacVGestionF.CompteBonFacVGCbxChange(Sender: TObject);

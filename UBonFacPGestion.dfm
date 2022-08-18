@@ -650,7 +650,7 @@ object BonFacPGestionF: TBonFacPGestionF
     end
     object AddModePaieBonFacVGBtn: TAdvToolButton
       Left = 539
-      Top = 126
+      Top = 127
       Width = 26
       Height = 26
       Cursor = crHandPoint
@@ -700,7 +700,7 @@ object BonFacPGestionF: TBonFacPGestionF
     end
     object AddCompteBonFacVGBtn: TAdvToolButton
       Left = 807
-      Top = 126
+      Top = 127
       Width = 26
       Height = 26
       Cursor = crHandPoint
@@ -1470,6 +1470,7 @@ object BonFacPGestionF: TBonFacPGestionF
       OnEnter = ClientBonFacVGCbxEnter
       OnExit = ClientBonFacVGCbxExit
       OnKeyPress = ClientBonFacVGCbxKeyPress
+      OnSelect = ClientBonFacVGCbxSelect
     end
     object Panel12: TPanel
       Left = 0

@@ -649,7 +649,7 @@ object BonFacVGestionF: TBonFacVGestionF
     end
     object AddModePaieBonFacVGBtn: TAdvToolButton
       Left = 540
-      Top = 128
+      Top = 126
       Width = 26
       Height = 26
       Cursor = crHandPoint
@@ -1266,7 +1266,7 @@ object BonFacVGestionF: TBonFacVGestionF
     end
     object ListClientBonFacVGBtn: TAdvToolButton
       Left = 768
-      Top = 84
+      Top = 83
       Width = 35
       Height = 26
       Cursor = crHandPoint
@@ -1486,7 +1486,7 @@ object BonFacVGestionF: TBonFacVGestionF
     end
     object ClientBonFacVGCbx: TComboBox
       Left = 432
-      Top = 82
+      Top = 83
       Width = 328
       Height = 27
       Ctl3D = True
@@ -1504,6 +1504,7 @@ object BonFacVGestionF: TBonFacVGestionF
       OnEnter = ClientBonFacVGCbxEnter
       OnExit = ClientBonFacVGCbxExit
       OnKeyPress = ClientBonFacVGCbxKeyPress
+      OnSelect = ClientBonFacVGCbxSelect
     end
     object Panel12: TPanel
       Left = 0
@@ -1613,7 +1614,7 @@ object BonFacVGestionF: TBonFacVGestionF
     end
     object ModePaieBonFacVGCbx: TComboBox
       Left = 432
-      Top = 126
+      Top = 125
       Width = 101
       Height = 28
       Font.Charset = DEFAULT_CHARSET
@@ -1636,7 +1637,7 @@ object BonFacVGestionF: TBonFacVGestionF
     end
     object CompteBonFacVGCbx: TComboBox
       Left = 633
-      Top = 126
+      Top = 125
       Width = 160
       Height = 28
       Font.Charset = DEFAULT_CHARSET

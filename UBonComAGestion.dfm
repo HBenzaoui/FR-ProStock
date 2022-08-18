@@ -569,7 +569,7 @@ object BonComAGestionF: TBonComAGestionF
     end
     object AddFourBonComGBtn: TAdvToolButton
       Left = 807
-      Top = 84
+      Top = 83
       Width = 26
       Height = 26
       Cursor = crHandPoint
@@ -714,7 +714,7 @@ object BonComAGestionF: TBonComAGestionF
     end
     object AddCompteBonComGBtn: TAdvToolButton
       Left = 807
-      Top = 128
+      Top = 127
       Width = 26
       Height = 26
       Cursor = crHandPoint
@@ -1231,7 +1231,7 @@ object BonComAGestionF: TBonComAGestionF
     end
     object ListFourBonComGBtn: TAdvToolButton
       Left = 768
-      Top = 84
+      Top = 83
       Width = 35
       Height = 26
       Cursor = crHandPoint
@@ -1469,6 +1469,7 @@ object BonComAGestionF: TBonComAGestionF
       OnEnter = FournisseurBonComGCbxEnter
       OnExit = FournisseurBonComGCbxExit
       OnKeyPress = FournisseurBonComGCbxKeyPress
+      OnSelect = FournisseurBonComGCbxSelect
     end
     object Panel12: TPanel
       Left = 0

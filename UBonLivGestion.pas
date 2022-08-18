@@ -255,6 +255,7 @@ type
     procedure Bondelivraison4Click(Sender: TObject);
     procedure TicketCaisse80Click(Sender: TObject);
     procedure SNumberProduitBonLivGBtnClick(Sender: TObject);
+    procedure ClientBonLivGCbxSelect(Sender: TObject);
   private
     { Private declarations }
     procedure GettingData;
@@ -1517,6 +1518,31 @@ begin
     key :=#0;
     SelectNext(ActiveControl as TWinControl, true, true);
     end;
+end;
+
+procedure TBonLivGestionF.ClientBonLivGCbxSelect(Sender: TObject);
+var CodeC: Integer;
+begin
+
+      if ClientBonLivGCbx.Text <> '' then
+    begin
+//      MainForm.SQLQuery.DisableControls;
+      MainForm.SQLQuery.Active:=false;
+      MainForm.SQLQuery.SQL.Clear;
+      MainForm.SQLQuery.SQL.Text:='Select code_c FROM client WHERE LOWER(nom_c) LIKE LOWER('+ QuotedStr( ClientBonLivGCbx.Text )+')'  ;
+      MainForm.SQLQuery.Active:=True;
+
+      CodeC:= MainForm.SQLQuery.FieldByName('code_c').AsInteger ;
+
+        //Here we pot code_f in bonrec table
+        MainForm.Bonv_livTable.Edit;
+        MainForm.Bonv_livTable.FieldByName('code_c').AsInteger := CodeC;
+        MainForm.Bonv_livTable.Post;
+
+      MainForm.SQLQuery.Active:=false;
+      MainForm.SQLQuery.SQL.Clear;
+     end;
+
 end;
 
 procedure TBonLivGestionF.ClientBonLivGCbxExit(Sender: TObject);

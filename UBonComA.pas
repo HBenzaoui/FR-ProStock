@@ -395,17 +395,18 @@ ClearFilterBVLivPMenuClick(Sender);
       begin
 
         DataModuleF.Bona_comTable.Insert;
-        DataModuleF.Bona_comTable.FieldValues['code_bacom']:=1;
-        DataModuleF.Bona_comTable.FieldValues['num_bacom']:= 'BCA'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5, 1]);
-        DataModuleF.Bona_comTable.FieldValues['date_bacom']:= DateOf(Today);
-        DataModuleF.Bona_comTable.FieldValues['time_bacom']:=TimeOf(Now);
-        DataModuleF.Bona_comTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
+        DataModuleF.Bona_comTable.FieldByName('code_bacom').AsInteger:=1;
+        DataModuleF.Bona_comTable.FieldByName('num_bacom').AsString:= 'BCA'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5, 1]);
+        DataModuleF.Bona_comTable.FieldByName('date_bacom').AsDateTime:= DateOf(Today);
+        DataModuleF.Bona_comTable.FieldByName('time_bacom').AsDateTime:=TimeOf(Now);
+        DataModuleF.Bona_comTable.FieldByName('code_f').AsInteger:=0;
+        DataModuleF.Bona_comTable.FieldByName('code_ur').AsInteger:= StrToInt(MainForm.UserIDLbl.Caption);
         DataModuleF.Bona_comTable.Post;
-        codeBCA := DataModuleF.Bona_comTable.FieldValues['code_bacom'];
+        codeBCA := DataModuleF.Bona_comTable.FieldByName('code_bacom').AsInteger;
       end else
           begin
             DataModuleF.Bona_comTable.Last;
-            codeBCA := DataModuleF.Bona_comTable.FieldValues['code_bacom'];
+            codeBCA := DataModuleF.Bona_comTable.FieldByName('code_bacom').AsInteger;
             MainForm.SQLQuery.Active:=False;
             MainForm.SQLQuery.SQL.Clear;
             MainForm.SQLQuery.SQL.Text:= 'SELECT * FROM bona_com_list WHERE code_bacom = ' + QuotedStr(IntToStr(codeBCA));
@@ -414,23 +415,23 @@ ClearFilterBVLivPMenuClick(Sender);
            if MainForm.SQLQuery.RecordCount <= 0 then
            begin
         //   DataModuleF.Bona_comTable.Last;
-           codeBCA := DataModuleF.Bona_comTable.FieldValues['code_bacom'];
+           codeBCA := DataModuleF.Bona_comTable.FieldByName('code_bacom').AsInteger;
              DataModuleF.Bona_comTable.Edit;
-             DataModuleF.Bona_comTable.FieldValues['date_bacom']:= DateOf(Today);
-             DataModuleF.Bona_comTable.FieldValues['time_bacom']:= TimeOf(Now);
-             DataModuleF.Bona_comTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
+             DataModuleF.Bona_comTable.FieldByName('date_bacom').AsDateTime:= DateOf(Today);
+             DataModuleF.Bona_comTable.FieldByName('time_bacom').AsDateTime:= TimeOf(Now);
+             DataModuleF.Bona_comTable.FieldByName('code_ur').AsInteger:= StrToInt(MainForm.UserIDLbl.Caption);
              DataModuleF.Bona_comTable.Post;
 
            end else
                  begin
               //   DataModuleF.Bona_comTable.Last;
-                // codeBCA := DataModuleF.Bona_comTable.FieldValues['code_bacom'];
+                // codeBCA := DataModuleF.Bona_comTable.FieldByName('code_bacom'];
                  DataModuleF.Bona_comTable.Insert;
-                 DataModuleF.Bona_comTable.FieldValues['code_bacom']:= codeBCA + 1;
-                 DataModuleF.Bona_comTable.FieldValues['num_bacom']:=  'BCA'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5,(codeBCA + 1)]);
-                 DataModuleF.Bona_comTable.FieldValues['date_bacom']:= DateOf(Today);
-                 DataModuleF.Bona_comTable.FieldValues['time_bacom']:= TimeOf(Now);
-                 DataModuleF.Bona_comTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
+                 DataModuleF.Bona_comTable.FieldByName('code_bacom').AsInteger:= codeBCA + 1;
+                 DataModuleF.Bona_comTable.FieldByName('num_bacom').AsString:=  'BCA'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5,(codeBCA + 1)]);
+                 DataModuleF.Bona_comTable.FieldByName('date_bacom').AsDateTime:= DateOf(Today);
+                 DataModuleF.Bona_comTable.FieldByName('time_bacom').AsDateTime:= TimeOf(Now);
+                 DataModuleF.Bona_comTable.FieldByName('code_ur').AsInteger:= StrToInt(MainForm.UserIDLbl.Caption);
                  DataModuleF.Bona_comTable.Post;
                  end;
      //    BonComAGestionF.ProduitsListDBGridEh.DataSource.DataSet.EnableControls;

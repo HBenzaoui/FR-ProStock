@@ -1509,6 +1509,7 @@ object BonComVGestionF: TBonComVGestionF
       OnEnter = ClientBonComGCbxEnter
       OnExit = ClientBonComGCbxExit
       OnKeyPress = ClientBonComGCbxKeyPress
+      OnSelect = ClientBonComGCbxSelect
     end
     object Panel12: TPanel
       Left = 0

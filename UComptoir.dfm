@@ -1382,6 +1382,7 @@ object BonCtrGestionF: TBonCtrGestionF
         OnDropDown = ClientBonCtrGCbxDropDown
         OnEnter = ClientBonCtrGCbxDropDown
         OnExit = ClientBonCtrGCbxExit
+        OnSelect = ClientBonCtrGCbxSelect
       end
     end
     object Panel26: TPanel

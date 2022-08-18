@@ -215,6 +215,7 @@ type
     procedure ListFourBonFacAGBtnClick(Sender: TObject);
     procedure ProduitsListDBGridEhKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
+    procedure FourBonFacAGCbxSelect(Sender: TObject);
   private
     procedure GettingData;
     { Private declarations }
@@ -1852,6 +1853,31 @@ begin
     key :=#0;
     SelectNext(ActiveControl as TWinControl, true, true);
     end;
+end;
+
+procedure TBonFacAGestionF.FourBonFacAGCbxSelect(Sender: TObject);
+var CodeF: Integer;
+begin
+
+      if FourBonFacAGCbx.Text <> '' then
+    begin
+//      MainForm.SQLQuery.DisableControls;
+      MainForm.SQLQuery.Active:=false;
+      MainForm.SQLQuery.SQL.Clear;
+      MainForm.SQLQuery.SQL.Text:='Select code_f FROM fournisseur WHERE LOWER(nom_f) LIKE LOWER('+ QuotedStr( FourBonFacAGCbx.Text )+')'  ;
+      MainForm.SQLQuery.Active:=True;
+
+      CodeF:= MainForm.SQLQuery.FieldByName('code_f').AsInteger ;
+
+        //Here we pot code_f in bonrec table
+        MainForm.Bona_facTable.Edit;
+        MainForm.Bona_facTable.FieldByName('code_f').AsInteger := CodeF;
+        MainForm.Bona_facTable.Post;
+
+      MainForm.SQLQuery.Active:=false;
+      MainForm.SQLQuery.SQL.Clear;
+     end;
+
 end;
 
 procedure TBonFacAGestionF.ModePaieBonFacAGCbxChange(Sender: TObject);

@@ -392,18 +392,19 @@ MainForm.Bonp_facTable.Active:= True;
       begin
 
         MainForm.Bonp_facTable.Append;
-        MainForm.Bonp_facTable.FieldValues['code_bpfac']:=1;
-        MainForm.Bonp_facTable.FieldValues['num_bpfac']:= 'FP'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5, 1]);
-        MainForm.Bonp_facTable.FieldValues['date_bpfac']:= DateOf(Today);
-        MainForm.Bonp_facTable.FieldValues['time_bpfac']:=TimeOf(Now);
-//        MainForm.Bonp_facTable.FieldByName('code_ur').AsInteger:= StrToInt(MainForm.UserIDLbl.Caption);
+        MainForm.Bonp_facTable.FieldByName('code_bpfac').AsInteger:=1;
+        MainForm.Bonp_facTable.FieldByName('num_bpfac').AsString:= 'FP'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5, 1]);
+        MainForm.Bonp_facTable.FieldByName('date_bpfac').AsDateTime:= DateOf(Today);
+        MainForm.Bonp_facTable.FieldByName('time_bpfac').AsDateTime:=TimeOf(Now);
+        MainForm.Bonp_facTable.FieldByName('code_c').AsInteger:=0;
+        MainForm.Bonp_facTable.FieldByName('code_ur').AsInteger:= StrToInt(MainForm.UserIDLbl.Caption);
         MainForm.Bonp_facTable.Post;
-        codeFV := MainForm.Bonp_facTable.FieldValues['code_bpfac'];
+        codeFV := MainForm.Bonp_facTable.FieldByName('code_bpfac').AsInteger;
       end else
           begin
             MainForm.Bonp_facTable.Last;
 
-            codeFV := MainForm.Bonp_facTable.FieldValues['code_bpfac'];
+            codeFV := MainForm.Bonp_facTable.FieldByName('code_bpfac').AsInteger;
             MainForm.SQLQuery.Active:=False;
             MainForm.SQLQuery.SQL.Clear;
             MainForm.SQLQuery.SQL.Text:= 'SELECT code_bpfac FROM bonp_fac_list WHERE code_bpfac = ' + QuotedStr(IntToStr(codeFV));
@@ -412,21 +413,22 @@ MainForm.Bonp_facTable.Active:= True;
            if MainForm.SQLQuery.RecordCount <= 0 then
            begin
 
-           codeFV := MainForm.Bonp_facTable.FieldValues['code_bpfac'];
+           codeFV := MainForm.Bonp_facTable.FieldByName('code_bpfac').AsInteger;
            MainForm.Bonp_facTable.Edit;
-           MainForm.Bonp_facTable.FieldValues['date_bpfac']:= DateOf(Today);
-           MainForm.Bonp_facTable.FieldValues['time_bpfac']:= TimeOf(Now);
-           MainForm.Bonp_facTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
+           MainForm.Bonp_facTable.FieldByName('date_bpfac').AsDateTime:= DateOf(Today);
+           MainForm.Bonp_facTable.FieldByName('time_bpfac').AsDateTime:= TimeOf(Now);
+           MainForm.Bonp_facTable.FieldByName('code_ur').AsInteger:= StrToInt(MainForm.UserIDLbl.Caption);
            MainForm.Bonp_facTable.Post;
            end else
            begin
 
            MainForm.Bonp_facTable.Append;
-           MainForm.Bonp_facTable.FieldValues['code_bpfac']:= codeFV + 1;
-           MainForm.Bonp_facTable.FieldValues['num_bpfac']:=  'FP'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5,(codeFV + 1)]);
-           MainForm.Bonp_facTable.FieldValues['date_bpfac']:= DateOf(Today);
-           MainForm.Bonp_facTable.FieldValues['time_bpfac']:= TimeOf(Now);
-           MainForm.Bonp_facTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
+           MainForm.Bonp_facTable.FieldByName('code_bpfac').AsInteger:= codeFV + 1;
+           MainForm.Bonp_facTable.FieldByName('num_bpfac').AsString:=  'FP'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5,(codeFV + 1)]);
+           MainForm.Bonp_facTable.FieldByName('date_bpfac').AsDateTime:= DateOf(Today);
+           MainForm.Bonp_facTable.FieldByName('time_bpfac').AsDateTime:= TimeOf(Now);
+           MainForm.Bonp_facTable.FieldByName('code_c').AsInteger:=0;
+           MainForm.Bonp_facTable.FieldByName('code_ur').AsInteger:= StrToInt(MainForm.UserIDLbl.Caption);
            MainForm.Bonp_facTable.Post;
 
 

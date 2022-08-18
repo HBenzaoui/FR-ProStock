@@ -683,18 +683,19 @@ MainForm.Bona_facTable.Active:= True;
       begin
 
         MainForm.Bona_facTable.Insert;
-        MainForm.Bona_facTable.FieldValues['code_bafac']:=1;
-        MainForm.Bona_facTable.FieldValues['num_bafac']:= 'FA'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5, 1]);
-        MainForm.Bona_facTable.FieldValues['date_bafac']:= DateOf(Today);
-        MainForm.Bona_facTable.FieldValues['time_bafac']:=TimeOf(Now);
-        MainForm.Bona_facTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
+        MainForm.Bona_facTable.FieldByName('code_bafac').AsInteger:=1;
+        MainForm.Bona_facTable.FieldByName('num_bafac').AsString:= 'FA'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5, 1]);
+        MainForm.Bona_facTable.FieldByName('date_bafac').AsDateTime:= DateOf(Today);
+        MainForm.Bona_facTable.FieldByName('time_bafac').AsDateTime:=TimeOf(Now);
+        MainForm.Bona_facTable.FieldByName('code_f').AsInteger:=0;
+        MainForm.Bona_facTable.FieldByName('code_ur').AsInteger:= StrToInt(MainForm.UserIDLbl.Caption);
         MainForm.Bona_facTable.Post;
-        codeFA := MainForm.Bona_facTable.FieldValues['code_bafac'];
+        codeFA := MainForm.Bona_facTable.FieldByName('code_bafac').AsInteger;
       end else
           begin
             MainForm.Bona_facTable.Last;
 
-            codeFA := MainForm.Bona_facTable.FieldValues['code_bafac'];
+            codeFA := MainForm.Bona_facTable.FieldByName('code_bafac').AsInteger;
             MainForm.SQLQuery.Active:=False;
             MainForm.SQLQuery.SQL.Clear;
             MainForm.SQLQuery.SQL.Text:= 'SELECT * FROM bona_fac_list WHERE code_bafac = ' + QuotedStr(IntToStr(codeFA));
@@ -703,22 +704,23 @@ MainForm.Bona_facTable.Active:= True;
            if MainForm.SQLQuery.RecordCount <= 0 then
            begin
 
-            codeFA := MainForm.Bona_facTable.FieldValues['code_bafac'];
+            codeFA := MainForm.Bona_facTable.FieldByName('code_bafac').AsInteger;
 
              MainForm.Bona_facTable.Edit;
-             MainForm.Bona_facTable.FieldValues['date_bafac']:= DateOf(Today);
-             MainForm.Bona_facTable.FieldValues['time_bafac']:= TimeOf(Now);
-             MainForm.Bona_facTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
+             MainForm.Bona_facTable.FieldByName('date_bafac').AsDateTime:= DateOf(Today);
+             MainForm.Bona_facTable.FieldByName('time_bafac').AsDateTime:= TimeOf(Now);
+             MainForm.Bona_facTable.FieldByName('code_ur').AsInteger:= StrToInt(MainForm.UserIDLbl.Caption);
              MainForm.Bona_facTable.Post;
 
            end else
            begin
              MainForm.Bona_facTable.Insert;
-             MainForm.Bona_facTable.FieldValues['code_bafac']:= codeFA + 1;
-             MainForm.Bona_facTable.FieldValues['num_bafac']:=  'FA'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5,(codeFA + 1)]);
-             MainForm.Bona_facTable.FieldValues['date_bafac']:= DateOf(Today);
-             MainForm.Bona_facTable.FieldValues['time_bafac']:= TimeOf(Now);
-             MainForm.Bona_facTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
+             MainForm.Bona_facTable.FieldByName('code_bafac').AsInteger:= codeFA + 1;
+             MainForm.Bona_facTable.FieldByName('num_bafac').AsString:=  'FA'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5,(codeFA + 1)]);
+             MainForm.Bona_facTable.FieldByName('date_bafac').AsDateTime:= DateOf(Today);
+             MainForm.Bona_facTable.FieldByName('time_bafac').AsDateTime:= TimeOf(Now);
+             MainForm.Bona_facTable.FieldByName('code_f').AsInteger:=0;
+             MainForm.Bona_facTable.FieldByName('code_ur').AsInteger:= StrToInt(MainForm.UserIDLbl.Caption);
              MainForm.Bona_facTable.Post;
            end;
             BonFacAGestionF.ProduitsListDBGridEh.DataSource.DataSet.EnableControls;

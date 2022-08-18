@@ -1557,6 +1557,7 @@ object BonLivGestionF: TBonLivGestionF
       OnEnter = ClientBonLivGCbxEnter
       OnExit = ClientBonLivGCbxExit
       OnKeyPress = ClientBonLivGCbxKeyPress
+      OnSelect = ClientBonLivGCbxSelect
     end
     object Panel12: TPanel
       Left = 0

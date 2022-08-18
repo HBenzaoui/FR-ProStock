@@ -227,6 +227,7 @@ type
     procedure ProduitsListDBGridEhKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure SNumberProduitBonRecGBtnClick(Sender: TObject);
+    procedure FournisseurBonRecGCbxSelect(Sender: TObject);
   private
     procedure GettingData;
     procedure GettingDataSansTax;
@@ -1067,7 +1068,6 @@ begin
        exit;
       end;
       CodeF:= MainForm.SQLQuery.FieldByName('code_f').AsInteger ;
-
 
 //      MainForm.Bona_recTableCredit.DisableControls;
 //      MainForm.Bona_recTableCredit.Active:=false;
@@ -2753,6 +2753,31 @@ begin
 end;
 
 
+procedure TBonRecGestionF.FournisseurBonRecGCbxSelect(Sender: TObject);
+var CodeF: Integer;
+begin
+
+      if FournisseurBonRecGCbx.Text <> '' then
+    begin
+//      MainForm.SQLQuery.DisableControls;
+      MainForm.SQLQuery.Active:=false;
+      MainForm.SQLQuery.SQL.Clear;
+      MainForm.SQLQuery.SQL.Text:='Select code_f FROM fournisseur WHERE LOWER(nom_f) LIKE LOWER('+ QuotedStr( FournisseurBonRecGCbx.Text )+')'  ;
+      MainForm.SQLQuery.Active:=True;
+
+      CodeF:= MainForm.SQLQuery.FieldByName('code_f').AsInteger ;
+
+        //Here we pot code_f in bonrec table
+        MainForm.Bona_recTable.Edit;
+        MainForm.Bona_recTable.FieldByName('code_f').AsInteger := CodeF;
+        MainForm.Bona_recTable.Post;
+
+      MainForm.SQLQuery.Active:=false;
+      MainForm.SQLQuery.SQL.Clear;
+     end;
+
+end;
+
 procedure FullfillFormBonRec;
 begin
      if MainForm.Bona_recTable.FieldByName('valider_barec').AsBoolean = True then
@@ -2803,6 +2828,7 @@ begin
     and (MainForm.Bona_recTable.FieldValues['code_f'] <> Null )  then
 
     begin
+
       MainForm.Bona_recTable.First;
       //  MainForm.Bona_recTable.Refresh;
       MainForm.Bona_recPlistTable.Refresh;
@@ -2904,6 +2930,7 @@ end;
 
 procedure TBonRecGestionF.FournisseurBonRecGCbxChange(Sender: TObject);
 begin
+
 // use this code to make mode pai espece
       ModePaieBonRecGCbxDropDown(Self);
       if Tag = 0 then
