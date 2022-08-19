@@ -140,7 +140,7 @@ implementation
 uses Contnrs,
  UFournisseurList, UMainF, USplash, UClientGestion,
   UProduitGestion, USplashAddUnite, UBonRecGestion, UBonFacAGestion,
-  UReglementFGestion, UBonComAGestion;
+  UReglementFGestion, UBonComAGestion, UReglementFList;
 
 
 
@@ -773,7 +773,10 @@ begin
             end;
 
             BonRecGestionF.FournisseurBonRecGCbx.Text := NameFournisseurGEdt.Text;
-            BonRecGestionF.FournisseurBonRecGCbx.SetFocus;
+            BonRecGestionF.FournisseurBonRecGCbxExit(Sender);
+            BonRecGestionF.FournisseurBonRecGCbxSelect(Sender);
+            BonRecGestionF.ProduitBonRecGCbx.SetFocus;
+//            BonRecGestionF.FournisseurBonRecGCbx.SetFocus;
 
        end else
           begin
@@ -841,7 +844,10 @@ begin
             end;
 
             BonFacAGestionF.FourBonFacAGCbx.Text := NameFournisseurGEdt.Text;
-            BonFacAGestionF.FourBonFacAGCbx.SetFocus;
+            BonFacAGestionF.FourBonFacAGCbxExit(Sender);
+            BonFacAGestionF.FourBonFacAGCbxSelect(Sender);
+            BonFacAGestionF.ProduitBonFacAGCbx.SetFocus;
+//            BonFacAGestionF.FourBonFacAGCbx.SetFocus;
 
        end else
           begin
@@ -908,7 +914,9 @@ begin
             end;
 
             ReglementFGestionF.FournisseurRegFGCbx.Text := NameFournisseurGEdt.Text;
-            ReglementFGestionF.FournisseurRegFGCbx.SetFocus;
+            ReglementFGestionF.FournisseurRegFGCbxChange(Sender);
+            ReglementFGestionF.VerRegFGEdt.SetFocus;
+//            ReglementFGestionF.FournisseurRegFGCbx.SetFocus;
 
        end else
           begin
@@ -975,7 +983,10 @@ if  isFourExist(NameFournisseurGEdt.Text) = False	 then
             end;
 
               BonComAGestionF.FournisseurBonComGCbx.Text := NameFournisseurGEdt.Text;
-              BonComAGestionF.FournisseurBonComGCbx.SetFocus;
+              BonComAGestionF.FournisseurBonComGCbxExit(Sender);
+              BonComAGestionF.FournisseurBonComGCbxSelect(Sender);
+              BonComAGestionF.ProduitBonComGCbx.SetFocus;
+//              BonComAGestionF.FournisseurBonComGCbx.SetFocus;
 
        end else
           begin

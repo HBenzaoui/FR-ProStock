@@ -795,7 +795,10 @@ begin
 
 
             BonLivGestionF.ClientBonLivGCbx.Text := NameClientGEdt.Text;
-            BonLivGestionF.ClientBonLivGCbx.SetFocus;
+            BonLivGestionF.ClientBonLivGCbxExit(Sender);
+            BonLivGestionF.ClientBonLivGCbxSelect(Sender);
+            BonLivGestionF.ProduitBonLivGCbx.SetFocus;
+//            BonLivGestionF.ClientBonLivGCbx.SetFocus;
 
 
       end //End Lookup
@@ -869,7 +872,10 @@ begin
 
 
       BonFacVGestionF.ClientBonFacVGCbx.Text := NameClientGEdt.Text;
-      BonFacVGestionF.ClientBonFacVGCbx.SetFocus;
+      BonFacVGestionF.ClientBonFacVGCbxExit(Sender);
+      BonFacVGestionF.ClientBonFacVGCbxSelect(Sender);
+      BonFacVGestionF.ProduitBonFacVGCbx.SetFocus;
+//      BonFacVGestionF.ClientBonFacVGCbx.SetFocus;
 
       end //End Lookup
       else
@@ -940,7 +946,9 @@ begin
             end;
 
             ReglementCGestionF.ClientRegCGCbx.Text := NameClientGEdt.Text;
-            ReglementCGestionF.ClientRegCGCbx.SetFocus;
+            ReglementCGestionF.ClientRegCGCbxChange(Sender);
+            ReglementCGestionF.VerRegCGEdt.SetFocus;
+//            ReglementCGestionF.ClientRegCGCbx.SetFocus;
 
       end //End Lookup
       else
@@ -1012,6 +1020,8 @@ begin
             end;
 
             BonCtrGestionF.ClientBonCtrGCbx.Text := NameClientGEdt.Text;
+            BonCtrGestionF.ClientBonCtrGCbxExit(Sender);
+            BonCtrGestionF.ClientBonCtrGCbxSelect(Sender);
             BonCtrGestionF.ProduitBonCtrGCbx.SetFocus;
 
       end //End Lookup
@@ -1085,7 +1095,10 @@ begin
 
 
             BonFacPGestionF.ClientBonFacVGCbx.Text := NameClientGEdt.Text;
-            BonFacPGestionF.ClientBonFacVGCbx.SetFocus;
+            BonFacPGestionF.ClientBonFacVGCbxExit(Sender);
+            BonFacPGestionF.ClientBonFacVGCbxSelect(Sender);
+            BonFacPGestionF.ProduitBonFacVGCbx.SetFocus;
+//            BonFacPGestionF.ClientBonFacVGCbx.SetFocus;
 
 
       end //End Lookup
@@ -1162,7 +1175,10 @@ begin
 
 
             BonComVGestionF.ClientBonComGCbx.Text := NameClientGEdt.Text;
-            BonComVGestionF.ClientBonComGCbx.SetFocus;
+            BonComVGestionF.ClientBonComGCbxExit(Sender);
+            BonComVGestionF.ClientBonComGCbxSelect(Sender);
+            BonComVGestionF.ProduitBonComGCbx.SetFocus;
+//            BonComVGestionF.ClientBonComGCbx.SetFocus;
 
 
       end //End Lookup
