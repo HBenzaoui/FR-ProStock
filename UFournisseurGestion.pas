@@ -913,8 +913,12 @@ begin
               addNewFour();
             end;
 
+            MainForm.FournisseurTable.Close;
+            MainForm.FournisseurTable.Open;
+
             ReglementFGestionF.FournisseurRegFGCbx.Text := NameFournisseurGEdt.Text;
             ReglementFGestionF.FournisseurRegFGCbxChange(Sender);
+
             ReglementFGestionF.VerRegFGEdt.SetFocus;
 //            ReglementFGestionF.FournisseurRegFGCbx.SetFocus;
 

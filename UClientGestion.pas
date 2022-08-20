@@ -945,6 +945,8 @@ begin
               addNewClient();
             end;
 
+            MainForm.ClientTable.Close;
+            MainForm.ClientTable.Open;
             ReglementCGestionF.ClientRegCGCbx.Text := NameClientGEdt.Text;
             ReglementCGestionF.ClientRegCGCbxChange(Sender);
             ReglementCGestionF.VerRegCGEdt.SetFocus;
