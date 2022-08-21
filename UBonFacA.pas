@@ -723,7 +723,7 @@ MainForm.Bona_facTable.Active:= True;
              MainForm.Bona_facTable.FieldByName('code_ur').AsInteger:= StrToInt(MainForm.UserIDLbl.Caption);
              MainForm.Bona_facTable.Post;
            end;
-            BonFacAGestionF.ProduitsListDBGridEh.DataSource.DataSet.EnableControls;
+//            BonFacAGestionF.ProduitsListDBGridEh.DataSource.DataSet.EnableControls;
           end;
 
       MainForm.Bona_fac_listTable.Active:=False;

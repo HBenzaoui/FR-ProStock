@@ -694,7 +694,7 @@ codeBCV:= 0;
 
 
            end;
-            BonComVGestionF.ProduitsListDBGridEh.DataSource.DataSet.EnableControls;
+//            BonComVGestionF.ProduitsListDBGridEh.DataSource.DataSet.EnableControls;
           end;
 
       DataModuleF.Bonv_com_listTable.IndexFieldNames:='code_bvcom';

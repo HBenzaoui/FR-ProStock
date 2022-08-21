@@ -433,7 +433,7 @@ MainForm.Bonp_facTable.Active:= True;
 
 
            end;
-            BonFacPGestionF.ProduitsListDBGridEh.DataSource.DataSet.EnableControls;
+//            BonFacPGestionF.ProduitsListDBGridEh.DataSource.DataSet.EnableControls;
           end;
 
 

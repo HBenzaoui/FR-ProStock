@@ -435,7 +435,7 @@ begin
 
 
            end;
-            BonFacVGestionF.ProduitsListDBGridEh.DataSource.DataSet.EnableControls;
+//            BonFacVGestionF.ProduitsListDBGridEh.DataSource.DataSet.EnableControls;
           end;
 
 

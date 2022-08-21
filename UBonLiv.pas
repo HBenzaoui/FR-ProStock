@@ -696,7 +696,7 @@ codeBL:= 0;
 
 
            end;
-            BonLivGestionF.ProduitsListDBGridEh.DataSource.DataSet.EnableControls;
+//            BonLivGestionF.ProduitsListDBGridEh.DataSource.DataSet.EnableControls;
           end;
 
       MainForm.Bonv_liv_listTable.IndexFieldNames:='code_bvliv';
