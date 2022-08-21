@@ -409,22 +409,22 @@ begin
       BonLivRegleLbl.Caption :=         FloatToStrF(StrToFloat(BonLivRegleLbl.Caption),ffNumber,14,2) ;
       BonLivGClientOLDCredit.Caption:= FloatToStrF(StrToFloat(BonLivGClientOLDCredit.Caption),ffNumber,14,2) ;
       BonLivGClientNEWCredit.Caption:= FloatToStrF(StrToFloat(BonLivGClientNEWCredit.Caption),ffNumber,14,2) ;
- CodeBL:= MainForm.Bonv_livTable.FieldValues['code_bvliv']   ;
+ CodeBL:= MainForm.Bonv_livTable.FieldByName('code_bvliv').AsInteger   ;
     NumBonLivGEdt.Caption := 'BL'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5, CodeBL]);
   if (MainForm.Bonv_livTable.FieldByName('code_c').AsInteger <> null)
   AND(MainForm.Bonv_livTable.FieldByName('code_c').AsInteger <> 0) then
    begin
-      if MainForm.Bonv_livTable.FieldValues['clientbvliv'] <> null then
+      if MainForm.Bonv_livTable.FieldByName('clientbvliv').AsWideString <> null then
       begin
-     ClientBonLivGCbx.Text:= MainForm.Bonv_livTable.FieldValues['clientbvliv'];
+     ClientBonLivGCbx.Text:= MainForm.Bonv_livTable.FieldByName('clientbvliv').AsWideString;
       end;
-      if MainForm.Bonv_livTable.FieldValues['ModePaie'] <> null then
+      if MainForm.Bonv_livTable.FieldByName('ModePaie').AsString <> null then
       begin
-     ModePaieBonLivGCbx.Text:= MainForm.Bonv_livTable.FieldValues['ModePaie'];
+     ModePaieBonLivGCbx.Text:= MainForm.Bonv_livTable.FieldByName('ModePaie').AsString;
       end;
-      if MainForm.Bonv_livTable.FieldValues['Compte'] <> null then
+      if MainForm.Bonv_livTable.FieldByName('Compte').AsString <> null then
       begin
-     CompteBonLivGCbx.Text:= MainForm.Bonv_livTable.FieldValues['Compte'];
+     CompteBonLivGCbx.Text:= MainForm.Bonv_livTable.FieldByName('Compte').AsString;
       end;
 
       //Activate this when the client when to set comtpo client atopmatcly
@@ -3268,7 +3268,7 @@ begin
 
   if (MainForm.Bonv_livTable.FieldByName('code_c').AsInteger<> 0) AND (MainForm.Bonv_livTable.FieldByName('code_c').AsInteger<> null) then
   begin
-  BonLivGestionF.ClientBonLivGCbx.Text:=MainForm.Bonv_livTable.FieldByName('clientbvliv').AsString;
+  BonLivGestionF.ClientBonLivGCbx.Text:=MainForm.Bonv_livTable.FieldByName('clientbvliv').AsWideString;
   end;
   if (MainForm.Bonv_livTable.FieldByName('code_mdpai').AsInteger<> 0) AND (MainForm.Bonv_livTable.FieldByName('code_mdpai').AsInteger<>null)  then
   begin

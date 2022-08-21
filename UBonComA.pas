@@ -858,42 +858,42 @@ var
          BonComAGestionF.NumBonComGEdt.Caption := DataModuleF.Bona_comTable.FieldByName('num_bacom').AsString;
          BonComAGestionF.DateBonComGD.Date:= DataModuleF.Bona_comTable.FieldByName('date_bacom').AsDateTime;
          BonComAGestionF.ObserBonComGMem.Lines.Text := DataModuleF.Bona_comTable.FieldByName('obser_bacom').AsString;
-         if (DataModuleF.Bona_comTable.FieldValues['code_f']<> null) and (DataModuleF.Bona_comTable.FieldValues['code_f']<> 0) then
+         if (DataModuleF.Bona_comTable.FieldByName('code_f').AsInteger<> null) and (DataModuleF.Bona_comTable.FieldByName('code_f').AsInteger<> 0) then
          begin
-         CodeF:=DataModuleF.Bona_comTable.FieldValues['code_f'];
-         BonComAGestionF.FournisseurBonComGCbx.Text:= DataModuleF.Bona_comTable.FieldValues['fourbacom'];
+         CodeF:=DataModuleF.Bona_comTable.FieldByName('code_f').AsInteger;
+         BonComAGestionF.FournisseurBonComGCbx.Text:= DataModuleF.Bona_comTable.FieldByName('fourbacom').AsWideString;
           end;
 
-         if (DataModuleF.Bona_comTable.FieldValues['code_mdpai']<> null ) AND (DataModuleF.Bona_comTable.FieldValues['code_mdpai']<> 0) then
+         if (DataModuleF.Bona_comTable.FieldByName('code_mdpai').AsInteger<> null ) AND (DataModuleF.Bona_comTable.FieldByName('code_mdpai').AsInteger<> 0) then
          begin
-         CodeF:=DataModuleF.Bona_comTable.FieldValues['code_mdpai'];
+         CodeF:=DataModuleF.Bona_comTable.FieldByName('code_mdpai').AsInteger;
            MainForm.Mode_paiementTable.Active:=false;
            MainForm.Mode_paiementTable.SQL.Clear;
            MainForm.Mode_paiementTable.SQL.Text:='Select * FROM mode_paiement WHERE code_mdpai ='+(IntToStr( CodeF ) ) ;
            MainForm.Mode_paiementTable.Active:=True;
-           BonComAGestionF.ModePaieBonComGCbx.Text:= MainForm.Mode_paiementTable.FieldValues['nom_mdpai'];
+           BonComAGestionF.ModePaieBonComGCbx.Text:= MainForm.Mode_paiementTable.FieldByName('nom_mdpai').AsString;
            MainForm.Mode_paiementTable.Active:=false;
            MainForm.Mode_paiementTable.SQL.Clear;
            MainForm.Mode_paiementTable.SQL.Text:='SELECT * FROM mode_paiement ' ;
            MainForm.Mode_paiementTable.Active:=True;
 
          end;
-         if (DataModuleF.Bona_comTable.FieldValues['code_cmpt']<> null) AND (DataModuleF.Bona_comTable.FieldValues['code_cmpt']<> 0) then
+         if (DataModuleF.Bona_comTable.FieldByName('code_cmpt').AsInteger<> null) AND (DataModuleF.Bona_comTable.FieldByName('code_cmpt').AsInteger<> 0) then
          begin
-         CodeF:=DataModuleF.Bona_comTable.FieldValues['code_cmpt'];
+         CodeF:=DataModuleF.Bona_comTable.FieldByName('code_cmpt').AsInteger;
            MainForm.CompteTable.Active:=false;
            MainForm.CompteTable.SQL.Clear;
            MainForm.CompteTable.SQL.Text:='Select * FROM compte WHERE code_cmpt ='+(IntToStr( CodeF ) ) ;
            MainForm.CompteTable.Active:=True;
-           BonComAGestionF.CompteBonComGCbx.Text:= MainForm.CompteTable.FieldValues['nom_cmpt'];
+           BonComAGestionF.CompteBonComGCbx.Text:= MainForm.CompteTable.FieldByName('nom_cmpt').AsString;
            MainForm.CompteTable.Active:=false;
            MainForm.CompteTable.SQL.Clear;
            MainForm.CompteTable.SQL.Text:='SELECT * FROM compte ' ;
            MainForm.CompteTable.Active:=True;
          end;
-         if DataModuleF.Bona_comTable.FieldValues['num_cheque_bacom']<> null then
+         if DataModuleF.Bona_comTable.FieldByName('num_cheque_bacom').AsString<> null then
          begin
-          BonComAGestionF.NChequeBonComGCbx.Text:= DataModuleF.Bona_comTable.FieldValues['num_cheque_bacom'];
+          BonComAGestionF.NChequeBonComGCbx.Text:= DataModuleF.Bona_comTable.FieldByName('num_cheque_bacom').AsString;
          end;
 
 

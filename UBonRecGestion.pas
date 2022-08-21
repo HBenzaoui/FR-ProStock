@@ -1033,22 +1033,22 @@ begin
     BonRecRegleLbl.Caption :=         FloatToStrF(StrToFloat(BonRecRegleLbl.Caption),ffNumber,14,2) ;
     BonRecGFourOLDCredit.Caption:= FloatToStrF(StrToFloat(BonRecGFourOLDCredit.Caption),ffNumber,14,2) ;
     BonRecGFourNEWCredit.Caption:= FloatToStrF(StrToFloat(BonRecGFourNEWCredit.Caption),ffNumber,14,2) ;
- CodeCB:= MainForm.Bona_recTable.FieldValues['code_barec']   ;
+ CodeCB:= MainForm.Bona_recTable.FieldByName('code_barec').AsInteger   ;
  NumBonRecGEdt.Caption := 'BR'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5, CodeCB]);
   if (MainForm.Bona_recTable.FieldByName('code_f').AsInteger <> null)
  AND (MainForm.Bona_recTable.FieldByName('code_f').AsInteger <> 0)  then
  begin
-   if MainForm.Bona_recTable.FieldValues['fourbarec'] <> null then
+   if MainForm.Bona_recTable.FieldByName('fourbarec').AsWideString <> null then
     begin
-   FournisseurBonRecGCbx.Text:= MainForm.Bona_recTable.FieldValues['fourbarec'];
+   FournisseurBonRecGCbx.Text:= MainForm.Bona_recTable.FieldByName('fourbarec').AsWideString;
     end;
-    if MainForm.Bona_recTable.FieldValues['ModePaie'] <> null then
+    if MainForm.Bona_recTable.FieldByName('ModePaie').AsString <> null then
     begin
-   ModePaieBonRecGCbx.Text:= MainForm.Bona_recTable.FieldValues['ModePaie'];
+   ModePaieBonRecGCbx.Text:= MainForm.Bona_recTable.FieldByName('ModePaie').AsString;
     end;
-    if MainForm.Bona_recTable.FieldValues['Compte'] <> null then
+    if MainForm.Bona_recTable.FieldByName('Compte').AsString <> null then
     begin
-   CompteBonRecGCbx.Text:= MainForm.Bona_recTable.FieldValues['Compte'];
+   CompteBonRecGCbx.Text:= MainForm.Bona_recTable.FieldByName('Compte').AsString;
     end;
    FournisseurBonRecGCbxExit(Sender);
    ProduitBonRecGCbx.SetFocus;
@@ -2844,7 +2844,7 @@ begin
 
   if (MainForm.Bona_recTable.FieldByName('code_f').AsInteger<> 0) AND (MainForm.Bona_recTable.FieldByName('code_f').AsInteger<> null) then
   begin
-  BonRecGestionF.FournisseurBonRecGCbx.Text:=MainForm.Bona_recTable.FieldByName('fourbarec').AsString;
+  BonRecGestionF.FournisseurBonRecGCbx.Text:=MainForm.Bona_recTable.FieldByName('fourbarec').AsWideString;
   end else begin
   BonRecGestionF.FournisseurBonRecGCbx.Text:='';
   end;

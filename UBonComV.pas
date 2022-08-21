@@ -842,72 +842,72 @@ begin
        BonComVGestionF.NumBonComGEdt.Caption := DataModuleF.Bonv_comTable.FieldByName('num_bvcom').AsString;
        BonComVGestionF.DateBonComGD.Date:= DataModuleF.Bonv_comTable.FieldByName('date_bvcom').AsDateTime;
        BonComVGestionF.ObserBonComGMem.Lines.Text := DataModuleF.Bonv_comTable.FieldByName('obser_bvcom').AsString;
-       if (DataModuleF.Bonv_comTable.FieldValues['code_c']<> null) and (DataModuleF.Bonv_comTable.FieldValues['code_c']<> 0) then
+       if (DataModuleF.Bonv_comTable.FieldByName('code_c').AsInteger<> null) and (DataModuleF.Bonv_comTable.FieldByName('code_c').AsInteger<> 0) then
        begin
-       CodeC:=DataModuleF.Bonv_comTable.FieldValues['code_c'];
-       BonComVGestionF.ClientBonComGCbx.Text:= DataModuleF.Bonv_comTable.FieldValues['clientbvcom'];
+       CodeC:=DataModuleF.Bonv_comTable.FieldByName('code_c').AsInteger;
+       BonComVGestionF.ClientBonComGCbx.Text:= DataModuleF.Bonv_comTable.FieldByName('clientbvcom').AsWideString;
 
         end;
 
-       if (DataModuleF.Bonv_comTable.FieldValues['code_mdpai']<> null ) AND (DataModuleF.Bonv_comTable.FieldValues['code_mdpai']<> 0) then
+       if (DataModuleF.Bonv_comTable.FieldByName('code_mdpai').AsInteger <> null ) AND (DataModuleF.Bonv_comTable.FieldByName('code_mdpai').AsInteger <> 0) then
        begin
-       CodeC:=DataModuleF.Bonv_comTable.FieldValues['code_mdpai'];
+       CodeC:=DataModuleF.Bonv_comTable.FieldByName('code_mdpai').AsInteger;
          MainForm.Mode_paiementTable.Active:=false;
          MainForm.Mode_paiementTable.SQL.Clear;
          MainForm.Mode_paiementTable.SQL.Text:='Select * FROM mode_paiement WHERE code_mdpai ='+(IntToStr( CodeC ) ) ;
          MainForm.Mode_paiementTable.Active:=True;
-         BonComVGestionF.ModePaieBonComGCbx.Text:= MainForm.Mode_paiementTable.FieldValues['nom_mdpai'];
+         BonComVGestionF.ModePaieBonComGCbx.Text:= MainForm.Mode_paiementTable.FieldByName('nom_mdpai').AsString;
          MainForm.Mode_paiementTable.Active:=false;
          MainForm.Mode_paiementTable.SQL.Clear;
          MainForm.Mode_paiementTable.SQL.Text:='SELECT * FROM mode_paiement ' ;
          MainForm.Mode_paiementTable.Active:=True;
 
        end;
-       if (DataModuleF.Bonv_comTable.FieldValues['code_cmpt']<> null) AND (DataModuleF.Bonv_comTable.FieldValues['code_cmpt']<> 0) then
+       if (DataModuleF.Bonv_comTable.FieldByName('code_cmpt').AsInteger<> null) AND (DataModuleF.Bonv_comTable.FieldByName('code_cmpt').AsInteger<> 0) then
        begin
-       CodeC:=DataModuleF.Bonv_comTable.FieldValues['code_cmpt'];
+       CodeC:=DataModuleF.Bonv_comTable.FieldByName('code_cmpt').AsInteger;
          MainForm.CompteTable.Active:=false;
          MainForm.CompteTable.SQL.Clear;
          MainForm.CompteTable.SQL.Text:='Select * FROM compte WHERE code_cmpt ='+(IntToStr( CodeC ) ) ;
          MainForm.CompteTable.Active:=True;
-         BonComVGestionF.CompteBonComGCbx.Text:= MainForm.CompteTable.FieldValues['nom_cmpt'];
+         BonComVGestionF.CompteBonComGCbx.Text:= MainForm.CompteTable.FieldByName('nom_cmpt').AsString;
          MainForm.CompteTable.Active:=false;
          MainForm.CompteTable.SQL.Clear;
          MainForm.CompteTable.SQL.Text:='SELECT * FROM compte ' ;
          MainForm.CompteTable.Active:=True;
        end;
-       if (DataModuleF.Bonv_comTable.FieldValues['num_cheque_bvcom']<> null)  then
+       if (DataModuleF.Bonv_comTable.FieldByName('num_cheque_bvcom').AsString<> null)  then
        begin
-        BonComVGestionF.NChequeBonComGCbx.Text:= DataModuleF.Bonv_comTable.FieldValues['num_cheque_bvcom'];
+        BonComVGestionF.NChequeBonComGCbx.Text:= DataModuleF.Bonv_comTable.FieldByName('num_cheque_bvcom').AsString;
 
        end;
 
 
-     if (DataModuleF.Bonv_comTable.FieldValues['RemisePerc']<> null) AND (DataModuleF.Bonv_comTable.FieldValues['remise_bvcom']<> 0) then
+     if (DataModuleF.Bonv_comTable.FieldByName('RemisePerc').AsFloat <> null) AND (DataModuleF.Bonv_comTable.FieldByName('remise_bvcom').AsFloat <> 0) then
      begin
-     BonComVGestionF.RemisePerctageBonComGEdt.Text :=     CurrToStrF(DataModuleF.Bonv_comTable.FieldValues['RemisePerc'], ffNumber, 2);
-      BonComVGestionF.RemiseBonComGEdt.Text :=     CurrToStrF(DataModuleF.Bonv_comTable.FieldValues['remise_bvcom'], ffNumber, 2);
+     BonComVGestionF.RemisePerctageBonComGEdt.Text :=     CurrToStrF(DataModuleF.Bonv_comTable.FieldByName('RemisePerc').AsFloat, ffNumber, 2);
+      BonComVGestionF.RemiseBonComGEdt.Text :=     CurrToStrF(DataModuleF.Bonv_comTable.FieldByName('remise_bvcom').AsFloat, ffNumber, 2);
      end;
 
-       if (DataModuleF.Bonv_comTable.FieldValues['montht_bvcom']<> null) then
+       if (DataModuleF.Bonv_comTable.FieldByName('montht_bvcom').AsFloat <> null) then
        begin
-      BonComVGestionF.BonComTotalHTLbl.Caption :=    CurrToStrF(DataModuleF.Bonv_comTable.FieldValues['montht_bvcom'], ffNumber, 2);
+      BonComVGestionF.BonComTotalHTLbl.Caption :=    CurrToStrF(DataModuleF.Bonv_comTable.FieldByName('montht_bvcom').AsFloat, ffNumber, 2);
        end;
-      if (DataModuleF.Bonv_comTable.FieldValues['MontantTVA']<> null) then
+      if (DataModuleF.Bonv_comTable.FieldByName('MontantTVA').AsFloat <> null) then
        begin
-      BonComVGestionF.BonComTotalTVALbl.Caption :=   CurrToStrF(DataModuleF.Bonv_comTable.FieldValues['MontantTVA'], ffNumber, 2);
+      BonComVGestionF.BonComTotalTVALbl.Caption :=   CurrToStrF(DataModuleF.Bonv_comTable.FieldByName('MontantTVA').AsFloat, ffNumber, 2);
        end;
-       if (DataModuleF.Bonv_comTable.FieldValues['montttc_bvcom']<> null) then
+       if (DataModuleF.Bonv_comTable.FieldByName('montttc_bvcom').AsFloat <> null) then
        begin
-      BonComVGestionF.BonComTotalTTCLbl.Caption :=   CurrToStrF(DataModuleF.Bonv_comTable.FieldValues['montttc_bvcom'], ffNumber, 2);
+      BonComVGestionF.BonComTotalTTCLbl.Caption :=   CurrToStrF(DataModuleF.Bonv_comTable.FieldByName('montttc_bvcom').AsFloat, ffNumber, 2);
        end;
-       if (DataModuleF.Bonv_comTable.FieldValues['montver_bvcom']<> null) then
+       if (DataModuleF.Bonv_comTable.FieldByName('montver_bvcom').AsFloat <> null) then
        begin
-      BonComVGestionF.BonComRegleLbl.Caption :=      CurrToStrF(DataModuleF.Bonv_comTable.FieldValues['montver_bvcom'], ffNumber, 2);
+      BonComVGestionF.BonComRegleLbl.Caption :=      CurrToStrF(DataModuleF.Bonv_comTable.FieldByName('montver_bvcom').AsFloat, ffNumber, 2);
        end;
-       if (DataModuleF.Bonv_comTable.FieldValues['MontantRes']<> null) then
+       if (DataModuleF.Bonv_comTable.FieldByName('MontantRes').AsFloat <> null) then
        begin
-      BonComVGestionF.BonComResteLbl.Caption :=      CurrToStrF(DataModuleF.Bonv_comTable.FieldValues['MontantRes'], ffNumber, 2);
+      BonComVGestionF.BonComResteLbl.Caption :=      CurrToStrF(DataModuleF.Bonv_comTable.FieldByName('MontantRes').AsFloat, ffNumber, 2);
        end;
 
 

@@ -370,22 +370,22 @@ begin
    BonFacVRegleLbl.Caption :=         FloatToStrF(StrToFloat(BonFacVRegleLbl.Caption),ffNumber,14,2) ;
    BonFacVGClientOLDCredit.Caption:= FloatToStrF(StrToFloat(BonFacVGClientOLDCredit.Caption),ffNumber,14,2) ;
    BonFacVGClientNEWCredit.Caption:= FloatToStrF(StrToFloat(BonFacVGClientNEWCredit.Caption),ffNumber,14,2) ;
- CodeFV:= MainForm.Bonv_facTable.FieldValues['code_bvfac']   ;
+ CodeFV:= MainForm.Bonv_facTable.FieldByName('code_bvfac').AsInteger   ;
  NumBonFacVGEdt.Caption := 'FV'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5, CodeFV]);
   if (MainForm.Bonv_facTable.FieldByName('code_c').AsInteger <> null) 
  AND (MainForm.Bonv_facTable.FieldByName('code_c').AsInteger <> 0) then
  begin
-   if MainForm.Bonv_facTable.FieldValues['clientbvfac'] <> null then
+   if MainForm.Bonv_facTable.FieldByName('clientbvfac').AsWideString <> null then
       begin
-   ClientBonFacVGCbx.Text:= MainForm.Bonv_facTable.FieldValues['clientbvfac'];
+   ClientBonFacVGCbx.Text:= MainForm.Bonv_facTable.FieldByName('clientbvfac').AsWideString;
       end;
-      if MainForm.Bonv_facTable.FieldValues['ModePaie'] <> null then
+      if MainForm.Bonv_facTable.FieldByName('ModePaie').AsString <> null then
       begin
-   ModePaieBonFacVGCbx.Text:= MainForm.Bonv_facTable.FieldValues['ModePaie'];
+   ModePaieBonFacVGCbx.Text:= MainForm.Bonv_facTable.FieldByName('ModePaie').AsString;
       end;
-      if MainForm.Bonv_facTable.FieldValues['Compte'] <> null then
+      if MainForm.Bonv_facTable.FieldByName('Compte').AsString <> null then
       begin
-   CompteBonFacVGCbx.Text:= MainForm.Bonv_facTable.FieldValues['Compte'];
+   CompteBonFacVGCbx.Text:= MainForm.Bonv_facTable.FieldByName('Compte').AsString;
       end;
    ProduitBonFacVGCbx.SetFocus;
  end else
@@ -464,7 +464,7 @@ begin
 
   if (MainForm.Bonv_facTable.FieldByName('code_c').AsInteger<> 0) AND (MainForm.Bonv_facTable.FieldByName('code_c').AsInteger<> null) then
   begin
-  BonFacVGestionF.ClientBonFacVGCbx.Text:=MainForm.Bonv_facTable.FieldByName('clientbvfac').AsString;
+  BonFacVGestionF.ClientBonFacVGCbx.Text:=MainForm.Bonv_facTable.FieldByName('clientbvfac').AsWideString;
   end;
   if (MainForm.Bonv_facTable.FieldByName('code_mdpai').AsInteger<> 0) AND (MainForm.Bonv_facTable.FieldByName('code_mdpai').AsInteger<>null)  then
   begin

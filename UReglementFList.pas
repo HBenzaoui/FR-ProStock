@@ -298,7 +298,7 @@ procedure TReglementFListF.EditBARecBtnClick(Sender: TObject);
 var
  CodeF: Integer;
  begin
- if MainForm.RegfournisseurTable.FieldValues['bon_or_no_rf'] = 1 then
+ if MainForm.RegfournisseurTable.FieldByName('bon_or_no_rf').AsInteger = 1 then
 
  begin
   ReglementFGestionF := TReglementFGestionF.Create(ReglementFListF);
@@ -312,58 +312,58 @@ var
    if NOT (MainForm.RegfournisseurTable.IsEmpty) Then
    begin
 
-       ReglementFGestionF.NumRegFGEdt.Caption := MainForm.RegfournisseurTable.FieldValues['nom_rf'];
-       ReglementFGestionF.DateRegFGD.Date:= MainForm.RegfournisseurTable.FieldValues['date_rf'];
+       ReglementFGestionF.NumRegFGEdt.Caption := MainForm.RegfournisseurTable.FieldByName('nom_rf').AsString;
+       ReglementFGestionF.DateRegFGD.Date:= MainForm.RegfournisseurTable.FieldByName('date_rf').AsDateTime;
        ReglementFGestionF.ObserRegFGMem.Lines.Text := MainForm.RegfournisseurTable.FieldByName('obser_rf').AsString;
-       if (MainForm.RegfournisseurTable.FieldValues['code_f']<> null) and (MainForm.RegfournisseurTable.FieldValues['code_f']<> 0) then
+       if (MainForm.RegfournisseurTable.FieldByName('code_f').AsInteger<> null) and (MainForm.RegfournisseurTable.FieldByName('code_f').AsInteger<> 0) then
        begin
-       CodeF:=MainForm.RegfournisseurTable.FieldValues['code_f'];
-       ReglementFGestionF.FournisseurRegFGCbx.Text:= MainForm.RegfournisseurTable.FieldValues['FourRF'];
+       CodeF:=MainForm.RegfournisseurTable.FieldByName('code_f').AsInteger;
+       ReglementFGestionF.FournisseurRegFGCbx.Text:= MainForm.RegfournisseurTable.FieldByName('FourRF').AsWideString;
          MainForm.SQLQuery.Active:=false;
          MainForm.SQLQuery.SQL.Clear;
          MainForm.SQLQuery.SQL.Text:='Select * FROM fournisseur WHERE code_f ='+(IntToStr( CodeF ) ) ;
          MainForm.SQLQuery.Active:=True;
-         ReglementFGestionF.RegFGFourOLDCredit.Caption:= CurrToStrF(MainForm.SQLQuery.FieldValues['oldcredit_f'],ffNumber,2);
+         ReglementFGestionF.RegFGFourOLDCredit.Caption:= CurrToStrF(MainForm.SQLQuery.FieldByName('oldcredit_f').AsFloat,ffNumber,2);
          MainForm.SQLQuery.Active:=false;
          MainForm.SQLQuery.SQL.Clear;
 //         MainForm.SQLQuery.SQL.Text:='Select * FROM fournisseur ' ;
 //         MainForm.SQLQuery.Active:=True;
         end;
 
-       if (MainForm.RegfournisseurTable.FieldValues['code_mdpai']<> null ) AND (MainForm.RegfournisseurTable.FieldValues['code_mdpai']<> 0) then
+       if (MainForm.RegfournisseurTable.FieldByName('code_mdpai').AsInteger<> null ) AND (MainForm.RegfournisseurTable.FieldByName('code_mdpai').AsInteger<> 0) then
        begin
-       CodeF:=MainForm.RegfournisseurTable.FieldValues['code_mdpai'];
+       CodeF:=MainForm.RegfournisseurTable.FieldByName('code_mdpai').AsInteger;
          MainForm.Mode_paiementTable.Active:=false;
          MainForm.Mode_paiementTable.SQL.Clear;
          MainForm.Mode_paiementTable.SQL.Text:='Select * FROM mode_paiement WHERE code_mdpai ='+(IntToStr( CodeF ) ) ;
          MainForm.Mode_paiementTable.Active:=True;
-         ReglementFGestionF.ModePaieRegFGCbx.Text:= MainForm.Mode_paiementTable.FieldValues['nom_mdpai'];
+         ReglementFGestionF.ModePaieRegFGCbx.Text:= MainForm.Mode_paiementTable.FieldByName('nom_mdpai').AsString;
          MainForm.Mode_paiementTable.Active:=false;
          MainForm.Mode_paiementTable.SQL.Clear;
          MainForm.Mode_paiementTable.SQL.Text:='SELECT * FROM mode_paiement ' ;
          MainForm.Mode_paiementTable.Active:=True;
 
        end;
-       if (MainForm.RegfournisseurTable.FieldValues['code_cmpt']<> null) AND (MainForm.RegfournisseurTable.FieldValues['code_cmpt']<> 0) then
+       if (MainForm.RegfournisseurTable.FieldByName('code_cmpt').AsInteger<> null) AND (MainForm.RegfournisseurTable.FieldByName('code_cmpt').AsInteger<> 0) then
        begin
-       CodeF:=MainForm.RegfournisseurTable.FieldValues['code_cmpt'];
+       CodeF:=MainForm.RegfournisseurTable.FieldByName('code_cmpt').AsInteger;
          MainForm.CompteTable.Active:=false;
          MainForm.CompteTable.SQL.Clear;
          MainForm.CompteTable.SQL.Text:='Select * FROM compte WHERE code_cmpt ='+(IntToStr( CodeF ) ) ;
          MainForm.CompteTable.Active:=True;
-         ReglementFGestionF.CompteRegFGCbx.Text:= MainForm.CompteTable.FieldValues['nom_cmpt'];
+         ReglementFGestionF.CompteRegFGCbx.Text:= MainForm.CompteTable.FieldByName('nom_cmpt').AsString;
          MainForm.CompteTable.Active:=false;
          MainForm.CompteTable.SQL.Clear;
          MainForm.CompteTable.SQL.Text:='SELECT * FROM compte ' ;
          MainForm.CompteTable.Active:=True;
        end;
-       if MainForm.RegfournisseurTable.FieldValues['num_cheque_rf']<> null then
+       if MainForm.RegfournisseurTable.FieldByName('num_cheque_rf').AsString<> null then
        begin
-        ReglementFGestionF.NChequeRegFGCbx.Text:= MainForm.RegfournisseurTable.FieldValues['num_cheque_rf'];
+        ReglementFGestionF.NChequeRegFGCbx.Text:= MainForm.RegfournisseurTable.FieldByName('num_cheque_rf').AsString;
        end;
 
 
-    ReglementFGestionF.VerRegFGEdt.Text :=      CurrToStrF(MainForm.RegfournisseurTable.FieldValues['montver_rf'], ffNumber, 2);
+    ReglementFGestionF.VerRegFGEdt.Text :=      CurrToStrF(MainForm.RegfournisseurTable.FieldByName('montver_rf').AsFloat, ffNumber, 2);
 
 
             ReglementFGestionF.Left:=  (Screen.Width div 2 ) - (ReglementFGestionF.Width div 2)    ;

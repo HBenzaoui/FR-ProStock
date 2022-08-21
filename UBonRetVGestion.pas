@@ -1020,22 +1020,22 @@ begin
     BonRetRegleLbl.Caption :=         FloatToStrF(StrToFloat(BonRetRegleLbl.Caption),ffNumber,14,2) ;
     BonRetGClientOLDCredit.Caption:= FloatToStrF(StrToFloat(BonRetGClientOLDCredit.Caption),ffNumber,14,2) ;
     BonRetGClientNEWCredit.Caption:= FloatToStrF(StrToFloat(BonRetGClientNEWCredit.Caption),ffNumber,14,2) ;
- CodeCB:= DataModuleF.Bonv_retTable.FieldValues['code_bvret']   ;
+ CodeCB:= DataModuleF.Bonv_retTable.FieldByName('code_bvret').AsInteger   ;
  NumBonRetVGEdt.Caption := 'BR'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5, CodeCB]);
   if (DataModuleF.Bonv_retTable.FieldByName('code_c').AsInteger <> null)
  AND (DataModuleF.Bonv_retTable.FieldByName('code_c').AsInteger <> 0)  then
  begin
-   if DataModuleF.Bonv_retTable.FieldValues['clientbvret'] <> null then
+   if DataModuleF.Bonv_retTable.FieldByName('clientbvret').AsWideString <> null then
     begin
-   ClientBonRetVGCbx.Text:= DataModuleF.Bonv_retTable.FieldValues['clientbvret'];
+   ClientBonRetVGCbx.Text:= DataModuleF.Bonv_retTable.FieldByName('clientbvret').AsWideString;
     end;
-    if DataModuleF.Bonv_retTable.FieldValues['ModePaie'] <> null then
+    if DataModuleF.Bonv_retTable.FieldByName('ModePaie').AsString <> null then
     begin
-   ModePaieBonRetVGCbx.Text:= DataModuleF.Bonv_retTable.FieldValues['ModePaie'];
+   ModePaieBonRetVGCbx.Text:= DataModuleF.Bonv_retTable.FieldByName('ModePaie').AsString;
     end;
-    if DataModuleF.Bonv_retTable.FieldValues['Compte'] <> null then
+    if DataModuleF.Bonv_retTable.FieldByName('Compte').AsString <> null then
     begin
-   CompteBonRetVGCbx.Text:= DataModuleF.Bonv_retTable.FieldValues['Compte'];
+   CompteBonRetVGCbx.Text:= DataModuleF.Bonv_retTable.FieldByName('Compte').AsString;
     end;
    ClientBonRetVGCbxExit(Sender);
    ProduitBonRetGCbx.SetFocus;
@@ -2746,7 +2746,7 @@ begin
 
   if (DataModuleF.Bonv_retTable.FieldByName('code_c').AsInteger<> 0) AND (DataModuleF.Bonv_retTable.FieldByName('code_c').AsInteger<> null) then
   begin
-  BonRetVGestionF.ClientBonRetVGCbx.Text:=DataModuleF.Bonv_retTable.FieldByName('clientbvret').AsString;
+  BonRetVGestionF.ClientBonRetVGCbx.Text:=DataModuleF.Bonv_retTable.FieldByName('clientbvret').AsWideString;
   end;
   if (DataModuleF.Bonv_retTable.FieldByName('code_mdpai').AsInteger<> 0) AND (DataModuleF.Bonv_retTable.FieldByName('code_mdpai').AsInteger<>null)  then
   begin

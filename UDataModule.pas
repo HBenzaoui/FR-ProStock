@@ -260,7 +260,6 @@ type
     Bona_comTabletime_bacom: TTimeField;
     Bona_comTablevalider_bacom: TBooleanField;
     Bona_comTablenum_bacom: TWideStringField;
-    Bona_comTablefourbacom: TStringField;
     Bona_comTablenum_cheque_bacom: TWideStringField;
     Bona_comTablecode_mdpai: TSmallintField;
     Bona_comTablecode_cmpt: TSmallintField;
@@ -288,7 +287,6 @@ type
     Bonv_comTablecode_c: TIntegerField;
     Bonv_comTablevalider_bvcom: TBooleanField;
     Bonv_comTablenum_bvcom: TWideStringField;
-    Bonv_comTableclientbvcom: TStringField;
     Bonv_comTablenum_cheque_bvcom: TWideStringField;
     Bonv_comTablecode_mdpai: TSmallintField;
     Bonv_comTablecode_cmpt: TSmallintField;
@@ -317,7 +315,6 @@ type
     Bonv_retTablecode_c: TIntegerField;
     Bonv_retTablevalider_bvret: TBooleanField;
     Bonv_retTablenum_bvret: TWideStringField;
-    Bonv_retTableclientbvret: TStringField;
     Bonv_retTablenum_cheque_bvret: TWideStringField;
     Bonv_retTablecode_mdpai: TSmallintField;
     Bonv_retTablecode_cmpt: TSmallintField;
@@ -523,6 +520,10 @@ type
     AllProduitMovementQRprixuva: TFMTBCDField;
     AllProduitMovementQRmontant: TFMTBCDField;
     AllProduitMovementQRmarge: TFMTBCDField;
+    Bonv_comTableclientbvcom: TWideStringField;
+    Bonv_retTableclientbvret: TWideStringField;
+    Bona_retTableclientbaret: TWideStringField;
+    Bona_comTablefourbacom: TWideStringField;
     procedure DataModuleCreate(Sender: TObject);
     procedure PZeroQCnotifCalcFields(DataSet: TDataSet);
     procedure PCloseZeroQCnotifCalcFields(DataSet: TDataSet);

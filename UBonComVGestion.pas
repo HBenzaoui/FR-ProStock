@@ -385,22 +385,22 @@ begin
       BonComRegleLbl.Caption :=         FloatToStrF(StrToFloat(BonComRegleLbl.Caption),ffNumber,14,2) ;
       BonComGClientOLDCredit.Caption:= FloatToStrF(StrToFloat(BonComGClientOLDCredit.Caption),ffNumber,14,2) ;
       BonComGClientNEWCredit.Caption:= FloatToStrF(StrToFloat(BonComGClientNEWCredit.Caption),ffNumber,14,2) ;
- CodeBCV:= DataModuleF.Bonv_comTable.FieldValues['code_bvcom']   ;
+ CodeBCV:= DataModuleF.Bonv_comTable.FieldByName('code_bvcom').AsInteger   ;
     NumBonComGEdt.Caption := 'BCV'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5, CodeBCV]);
   if (DataModuleF.Bonv_comTable.FieldByName('code_c').AsInteger <> null)
   AND(DataModuleF.Bonv_comTable.FieldByName('code_c').AsInteger <> 0) then
    begin
-      if DataModuleF.Bonv_comTable.FieldValues['clientbvcom'] <> null then
+      if DataModuleF.Bonv_comTable.FieldByName('clientbvcom').AsWideString <> null then
       begin
-     ClientBonComGCbx.Text:= DataModuleF.Bonv_comTable.FieldValues['clientbvcom'];
+     ClientBonComGCbx.Text:= DataModuleF.Bonv_comTable.FieldByName('clientbvcom').AsWideString;
       end;
-      if DataModuleF.Bonv_comTable.FieldValues['ModePaie'] <> null then
+      if DataModuleF.Bonv_comTable.FieldByName('ModePaie').AsString <> null then
       begin
-     ModePaieBonComGCbx.Text:= DataModuleF.Bonv_comTable.FieldValues['ModePaie'];
+     ModePaieBonComGCbx.Text:= DataModuleF.Bonv_comTable.FieldByName('ModePaie').AsString;
       end;
-      if DataModuleF.Bonv_comTable.FieldValues['Compte'] <> null then
+      if DataModuleF.Bonv_comTable.FieldByName('Compte').AsString <> null then
       begin
-     CompteBonComGCbx.Text:= DataModuleF.Bonv_comTable.FieldValues['Compte'];
+     CompteBonComGCbx.Text:= DataModuleF.Bonv_comTable.FieldByName('Compte').AsString;
       end;
 
       //Activate this when the client when to set comtpo client atopmatcly
@@ -2949,7 +2949,7 @@ begin
 
   if (DataModuleF.Bonv_comTable.FieldByName('code_c').AsInteger<> 0) AND (DataModuleF.Bonv_comTable.FieldByName('code_c').AsInteger<> null) then
   begin
-  BonComVGestionF.ClientBonComGCbx.Text:=DataModuleF.Bonv_comTable.FieldByName('clientbvcom').AsString;
+  BonComVGestionF.ClientBonComGCbx.Text:=DataModuleF.Bonv_comTable.FieldByName('clientbvcom').AsWideString;
   end;
   if (DataModuleF.Bonv_comTable.FieldByName('code_mdpai').AsInteger<> 0) AND (DataModuleF.Bonv_comTable.FieldByName('code_mdpai').AsInteger<>null)  then
   begin

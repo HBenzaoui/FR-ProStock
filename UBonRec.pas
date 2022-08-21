@@ -859,42 +859,42 @@ var
          BonRecGestionF.NumBonRecGEdt.Caption := MainForm.Bona_recTable.FieldByName('num_barec').AsString;
          BonRecGestionF.DateBonRecGD.Date:= MainForm.Bona_recTable.FieldByName('date_barec').AsDateTime;
          BonRecGestionF.ObserBonRecGMem.Lines.Text := MainForm.Bona_recTable.FieldByName('obser_barec').AsString;
-         if (MainForm.Bona_recTable.FieldValues['code_f']<> null) and (MainForm.Bona_recTable.FieldValues['code_f']<> 0) then
+         if (MainForm.Bona_recTable.FieldByName('code_f').AsInteger<> null) and (MainForm.Bona_recTable.FieldByName('code_f').AsInteger<> 0) then
          begin
-         CodeF:=MainForm.Bona_recTable.FieldValues['code_f'];
-         BonRecGestionF.FournisseurBonRecGCbx.Text:= MainForm.Bona_recTable.FieldValues['fourbarec'];
+         CodeF:=MainForm.Bona_recTable.FieldByName('code_f').AsInteger;
+         BonRecGestionF.FournisseurBonRecGCbx.Text:= MainForm.Bona_recTable.FieldByName('fourbarec').AsWideString;
           end;
 
-         if (MainForm.Bona_recTable.FieldValues['code_mdpai']<> null ) AND (MainForm.Bona_recTable.FieldValues['code_mdpai']<> 0) then
+         if (MainForm.Bona_recTable.FieldByName('code_mdpai').AsInteger<> null ) AND (MainForm.Bona_recTable.FieldByName('code_mdpai').AsInteger<> 0) then
          begin
-         CodeF:=MainForm.Bona_recTable.FieldValues['code_mdpai'];
+         CodeF:=MainForm.Bona_recTable.FieldByName('code_mdpai').AsInteger;
            MainForm.Mode_paiementTable.Active:=false;
            MainForm.Mode_paiementTable.SQL.Clear;
            MainForm.Mode_paiementTable.SQL.Text:='Select * FROM mode_paiement WHERE code_mdpai ='+(IntToStr( CodeF ) ) ;
            MainForm.Mode_paiementTable.Active:=True;
-           BonRecGestionF.ModePaieBonRecGCbx.Text:= MainForm.Mode_paiementTable.FieldValues['nom_mdpai'];
+           BonRecGestionF.ModePaieBonRecGCbx.Text:= MainForm.Mode_paiementTable.FieldByName('nom_mdpai').AsString;
            MainForm.Mode_paiementTable.Active:=false;
            MainForm.Mode_paiementTable.SQL.Clear;
            MainForm.Mode_paiementTable.SQL.Text:='SELECT * FROM mode_paiement ' ;
            MainForm.Mode_paiementTable.Active:=True;
 
          end;
-         if (MainForm.Bona_recTable.FieldValues['code_cmpt']<> null) AND (MainForm.Bona_recTable.FieldValues['code_cmpt']<> 0) then
+         if (MainForm.Bona_recTable.FieldByName('code_cmpt').AsInteger<> null) AND (MainForm.Bona_recTable.FieldByName('code_cmpt').AsInteger<> 0) then
          begin
-         CodeF:=MainForm.Bona_recTable.FieldValues['code_cmpt'];
+         CodeF:=MainForm.Bona_recTable.FieldByName('code_cmpt').AsInteger;
            MainForm.CompteTable.Active:=false;
            MainForm.CompteTable.SQL.Clear;
            MainForm.CompteTable.SQL.Text:='Select * FROM compte WHERE code_cmpt ='+(IntToStr( CodeF ) ) ;
            MainForm.CompteTable.Active:=True;
-           BonRecGestionF.CompteBonRecGCbx.Text:= MainForm.CompteTable.FieldValues['nom_cmpt'];
+           BonRecGestionF.CompteBonRecGCbx.Text:= MainForm.CompteTable.FieldByName('nom_cmpt').AsString;
            MainForm.CompteTable.Active:=false;
            MainForm.CompteTable.SQL.Clear;
            MainForm.CompteTable.SQL.Text:='SELECT * FROM compte ' ;
            MainForm.CompteTable.Active:=True;
          end;
-         if MainForm.Bona_recTable.FieldValues['num_cheque_barec']<> null then
+         if MainForm.Bona_recTable.FieldByName('num_cheque_barec').AsString <> null then
          begin
-          BonRecGestionF.NChequeBonRecGCbx.Text:= MainForm.Bona_recTable.FieldValues['num_cheque_barec'];
+          BonRecGestionF.NChequeBonRecGCbx.Text:= MainForm.Bona_recTable.FieldByName('num_cheque_barec').AsString;
          end;
 
 

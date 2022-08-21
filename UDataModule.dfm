@@ -2796,14 +2796,14 @@ object DataModuleF: TDataModuleF
       FieldName = 'num_bacom'
       Origin = 'num_bacom'
     end
-    object Bona_comTablefourbacom: TStringField
+    object Bona_comTablefourbacom: TWideStringField
       FieldKind = fkLookup
       FieldName = 'fourbacom'
       LookupDataSet = MainForm.FournisseurTable
       LookupKeyFields = 'code_f'
       LookupResultField = 'nom_f'
       KeyFields = 'code_f'
-      Size = 100
+      Size = 250
       Lookup = True
     end
     object Bona_comTablenum_cheque_bacom: TWideStringField
@@ -3231,16 +3231,6 @@ object DataModuleF: TDataModuleF
       FieldName = 'num_bvcom'
       Origin = 'num_bvcom'
     end
-    object Bonv_comTableclientbvcom: TStringField
-      FieldKind = fkLookup
-      FieldName = 'clientbvcom'
-      LookupDataSet = MainForm.ClientTable
-      LookupKeyFields = 'code_c'
-      LookupResultField = 'nom_c'
-      KeyFields = 'code_c'
-      Size = 100
-      Lookup = True
-    end
     object Bonv_comTablenum_cheque_bvcom: TWideStringField
       FieldName = 'num_cheque_bvcom'
       Origin = 'num_cheque_bvcom'
@@ -3271,6 +3261,16 @@ object DataModuleF: TDataModuleF
       LookupResultField = 'nom_cmpt'
       KeyFields = 'code_cmpt'
       Size = 50
+      Lookup = True
+    end
+    object Bonv_comTableclientbvcom: TWideStringField
+      FieldKind = fkLookup
+      FieldName = 'clientbvcom'
+      LookupDataSet = MainForm.ClientTable
+      LookupKeyFields = 'code_c'
+      LookupResultField = 'nom_c'
+      KeyFields = 'code_c'
+      Size = 250
       Lookup = True
     end
     object Bonv_comTablecode_ur: TIntegerField
@@ -3602,6 +3602,16 @@ object DataModuleF: TDataModuleF
       Origin = 'remise_baret'
       Precision = 64
       Size = 0
+    end
+    object Bona_retTableclientbaret: TWideStringField
+      FieldKind = fkLookup
+      FieldName = 'fourbaret'
+      LookupDataSet = MainForm.FournisseurTable
+      LookupKeyFields = 'code_f'
+      LookupResultField = 'nom_f'
+      KeyFields = 'code_f'
+      Size = 250
+      Lookup = True
     end
     object Bona_retTablenum_cheque_baret: TWideStringField
       FieldName = 'num_cheque_baret'
@@ -3946,14 +3956,14 @@ object DataModuleF: TDataModuleF
       FieldName = 'num_bvret'
       Origin = 'num_bvret'
     end
-    object Bonv_retTableclientbvret: TStringField
+    object Bonv_retTableclientbvret: TWideStringField
       FieldKind = fkLookup
       FieldName = 'clientbvret'
       LookupDataSet = MainForm.ClientTable
       LookupKeyFields = 'code_c'
       LookupResultField = 'nom_c'
       KeyFields = 'code_c'
-      Size = 100
+      Size = 250
       Lookup = True
     end
     object Bonv_retTablenum_cheque_bvret: TWideStringField

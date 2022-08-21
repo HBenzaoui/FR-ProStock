@@ -777,29 +777,29 @@ begin
        BonFacVGestionF.NumBonFacVGEdt.Caption := MainForm.Bonv_facTable.FieldByName('num_bvfac').AsString;
        BonFacVGestionF.DateBonFacVGD.Date:= MainForm.Bonv_facTable.FieldByName('date_bvfac').AsDateTime;
        BonFacVGestionF.ObserBonFacVGMem.Lines.Text := MainForm.Bonv_facTable.FieldByName('obser_bvfac').AsString;
-       if (MainForm.Bonv_facTable.FieldValues['code_c']<> null) and (MainForm.Bonv_facTable.FieldValues['code_c']<> 0) then
+       if (MainForm.Bonv_facTable.FieldByName('code_c').AsInteger<> null) and (MainForm.Bonv_facTable.FieldByName('code_c').AsInteger<> 0) then
        begin
-       CodeC:=MainForm.Bonv_facTable.FieldValues['code_c'];
-       BonFacVGestionF.ClientBonFacVGCbx.Text:= MainForm.Bonv_facTable.FieldValues['clientbvfac'];
+       CodeC:=MainForm.Bonv_facTable.FieldByName('code_c').AsInteger;
+       BonFacVGestionF.ClientBonFacVGCbx.Text:= MainForm.Bonv_facTable.FieldByName('clientbvfac').AsWideString;
 
         end;
 
 
-       if (MainForm.Bonv_facTable.FieldValues['code_mdpai']<> null ) AND (MainForm.Bonv_facTable.FieldValues['code_mdpai']<> 0) then
+       if (MainForm.Bonv_facTable.FieldByName('code_mdpai').AsInteger<> null ) AND (MainForm.Bonv_facTable.FieldByName('code_mdpai').AsInteger<> 0) then
        begin
-       CodeC:=MainForm.Bonv_facTable.FieldValues['code_mdpai'];
+       CodeC:=MainForm.Bonv_facTable.FieldByName('code_mdpai').AsInteger;
          MainForm.Mode_paiementTable.Active:=false;
          MainForm.Mode_paiementTable.SQL.Clear;
          MainForm.Mode_paiementTable.SQL.Text:='Select * FROM mode_paiement WHERE code_mdpai ='+(IntToStr( CodeC ) ) ;
          MainForm.Mode_paiementTable.Active:=True;
-         BonFacVGestionF.ModePaieBonFacVGCbx.Text:= MainForm.Mode_paiementTable.FieldValues['nom_mdpai'];
+         BonFacVGestionF.ModePaieBonFacVGCbx.Text:= MainForm.Mode_paiementTable.FieldByName('nom_mdpai').AsString;
          if  MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger = 1 then
          begin
          BonFacVGestionF.TimberBonFacVGlbl.Visible:= True;
          BonFacVGestionF.TimberPerctageBonFacVGLbl.Visible:= True;
          BonFacVGestionF.TimberPerctageBonFacVGEdt.Visible:= True;
          BonFacVGestionF.TimberBonFacVGEdt.Visible:= True;
-         BonFacVGestionF.TimberBonFacVGEdt.Text :=     CurrToStrF(MainForm.Bonv_facTable.FieldValues['timber_bvfac'], ffNumber, 2);
+         BonFacVGestionF.TimberBonFacVGEdt.Text :=     CurrToStrF(MainForm.Bonv_facTable.FieldByName('timber_bvfac').AsFloat, ffNumber, 2);
          end;
          MainForm.Mode_paiementTable.Active:=false;
          MainForm.Mode_paiementTable.SQL.Clear;
@@ -807,54 +807,54 @@ begin
          MainForm.Mode_paiementTable.Active:=True;
 
        end;
-       if (MainForm.Bonv_facTable.FieldValues['code_cmpt']<> null) AND (MainForm.Bonv_facTable.FieldValues['code_cmpt']<> 0) then
+       if (MainForm.Bonv_facTable.FieldByName('code_cmpt').AsInteger<> null) AND (MainForm.Bonv_facTable.FieldByName('code_cmpt').AsInteger<> 0) then
        begin
-       CodeC:=MainForm.Bonv_facTable.FieldValues['code_cmpt'];
+       CodeC:=MainForm.Bonv_facTable.FieldByName('code_cmpt').AsInteger;
          MainForm.CompteTable.Active:=false;
          MainForm.CompteTable.SQL.Clear;
          MainForm.CompteTable.SQL.Text:='Select * FROM compte WHERE code_cmpt ='+(IntToStr( CodeC ) ) ;
          MainForm.CompteTable.Active:=True;
-         BonFacVGestionF.CompteBonFacVGCbx.Text:= MainForm.CompteTable.FieldValues['nom_cmpt'];
+         BonFacVGestionF.CompteBonFacVGCbx.Text:= MainForm.CompteTable.FieldByName('nom_cmpt').AsString;
          MainForm.CompteTable.Active:=false;
          MainForm.CompteTable.SQL.Clear;
          MainForm.CompteTable.SQL.Text:='SELECT * FROM compte ' ;
          MainForm.CompteTable.Active:=True;
        end;
-       if MainForm.Bonv_facTable.FieldValues['num_cheque_bvfac']<> null then
+       if MainForm.Bonv_facTable.FieldByName('num_cheque_bvfac').AsString<> null then
        begin
-        BonFacVGestionF.NChequeBonFacVGCbx.Text:= MainForm.Bonv_facTable.FieldValues['num_cheque_bvfac'];
+        BonFacVGestionF.NChequeBonFacVGCbx.Text:= MainForm.Bonv_facTable.FieldByName('num_cheque_bvfac').AsString;
        end;
 
 
 
-     if (MainForm.Bonv_facTable.FieldValues['RemisePerc']<> null) AND (MainForm.Bonv_facTable.FieldValues['remise_bvfac']<> 0)   then
+     if (MainForm.Bonv_facTable.FieldByName('RemisePerc').AsFloat<> null) AND (MainForm.Bonv_facTable.FieldByName('remise_bvfac').AsFloat<> 0)   then
      begin
-     BonFacVGestionF.RemisePerctageBonFacVGEdt.Text :=     CurrToStrF(MainForm.Bonv_facTable.FieldValues['RemisePerc'], ffNumber, 2);
-     BonFacVGestionF.RemiseBonFacVGEdt.Text :=       CurrToStrF(MainForm.Bonv_facTable.FieldValues['remise_bvfac'], ffNumber, 2);
+     BonFacVGestionF.RemisePerctageBonFacVGEdt.Text :=     CurrToStrF(MainForm.Bonv_facTable.FieldByName('RemisePerc').AsFloat, ffNumber, 2);
+     BonFacVGestionF.RemiseBonFacVGEdt.Text :=       CurrToStrF(MainForm.Bonv_facTable.FieldByName('remise_bvfac').AsFloat, ffNumber, 2);
      end else
          begin
          BonFacVGestionF.RemisePerctageBonFacVGEdt.Text :='';
           BonFacVGestionF.RemiseBonFacVGEdt.Text :=  '';
          end;
-      if (MainForm.Bonv_facTable.FieldValues['montht_bvfac']<> null)  then
+      if (MainForm.Bonv_facTable.FieldByName('montht_bvfac').AsFloat<> null)  then
       begin
-    BonFacVGestionF.BonFacVTotalHTLbl.Caption :=    CurrToStrF(MainForm.Bonv_facTable.FieldValues['montht_bvfac'], ffNumber, 2);
+    BonFacVGestionF.BonFacVTotalHTLbl.Caption :=    CurrToStrF(MainForm.Bonv_facTable.FieldByName('montht_bvfac').AsFloat, ffNumber, 2);
       end;
-      if (MainForm.Bonv_facTable.FieldValues['MontantTVA']<> null) then
+      if (MainForm.Bonv_facTable.FieldByName('MontantTVA').AsFloat<> null) then
       begin
-    BonFacVGestionF.BonFacVTotalTVALbl.Caption :=   CurrToStrF(MainForm.Bonv_facTable.FieldValues['MontantTVA'], ffNumber, 2);
+    BonFacVGestionF.BonFacVTotalTVALbl.Caption :=   CurrToStrF(MainForm.Bonv_facTable.FieldByName('MontantTVA').AsFloat, ffNumber, 2);
       end;
-      if (MainForm.Bonv_facTable.FieldValues['montttc_bvfac']<> null)   then
+      if (MainForm.Bonv_facTable.FieldByName('montttc_bvfac').AsFloat<> null)   then
       begin
-    BonFacVGestionF.BonFacVTotalTTCLbl.Caption :=   CurrToStrF(MainForm.Bonv_facTable.FieldValues['montttc_bvfac'], ffNumber, 2);
+    BonFacVGestionF.BonFacVTotalTTCLbl.Caption :=   CurrToStrF(MainForm.Bonv_facTable.FieldByName('montttc_bvfac').AsFloat, ffNumber, 2);
       end;
-      if (MainForm.Bonv_facTable.FieldValues['montver_bvfac']<> null) then
+      if (MainForm.Bonv_facTable.FieldByName('montver_bvfac').AsFloat<> null) then
       begin
-    BonFacVGestionF.BonFacVRegleLbl.Caption :=      CurrToStrF(MainForm.Bonv_facTable.FieldValues['montver_bvfac'], ffNumber, 2);
+    BonFacVGestionF.BonFacVRegleLbl.Caption :=      CurrToStrF(MainForm.Bonv_facTable.FieldByName('montver_bvfac').AsFloat, ffNumber, 2);
       end;
-      if (MainForm.Bonv_facTable.FieldValues['MontantRes']<> null) then
+      if (MainForm.Bonv_facTable.FieldByName('MontantRes').AsFloat<> null) then
       begin
-    BonFacVGestionF.BonFacVResteLbl.Caption :=      CurrToStrF(MainForm.Bonv_facTable.FieldValues['MontantRes'], ffNumber, 2);
+    BonFacVGestionF.BonFacVResteLbl.Caption :=      CurrToStrF(MainForm.Bonv_facTable.FieldByName('MontantRes').AsFloat, ffNumber, 2);
       end;
 
        if MainForm.Bonv_facTable.FieldByName('valider_bvfac').AsBoolean = True then

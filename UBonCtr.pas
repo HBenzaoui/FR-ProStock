@@ -526,30 +526,30 @@ begin
        BonCtrGestionF.NumBonCtrGEdt.Caption := MainForm.Bonv_ctrTable.FieldByName('num_bvctr').AsString;
        BonCtrGestionF.DateBonCtrGD.Date:= MainForm.Bonv_ctrTable.FieldByName('date_bvctr').AsDateTime;
        BonCtrGestionF.HourBonCtrGD.Caption:= TimeToStr(MainForm.Bonv_ctrTable.FieldByName('time_bvctr').AsDateTime); //MainForm.Bonv_ctrTable.FieldValues['time_bvctr'];
-       if (MainForm.Bonv_ctrTable.FieldValues['code_c']<> null) and (MainForm.Bonv_ctrTable.FieldValues['code_c']<> 0) then
+       if (MainForm.Bonv_ctrTable.FieldByName('code_c').AsInteger <> null) and (MainForm.Bonv_ctrTable.FieldByName('code_c').asInteger <> 0) then
        begin
-       CodeC:=MainForm.Bonv_ctrTable.FieldValues['code_c'];
-       BonCtrGestionF.ClientBonCtrGCbx.Text:= MainForm.Bonv_ctrTable.FieldValues['clientbvctr'];
+       CodeC:=MainForm.Bonv_ctrTable.FieldByName('code_c').AsInteger;
+       BonCtrGestionF.ClientBonCtrGCbx.Text:= MainForm.Bonv_ctrTable.FieldByName('clientbvctr').AsWideString;
         end;
 
-     if (MainForm.Bonv_ctrTable.FieldValues['RemisePerc']<> null) AND (MainForm.Bonv_ctrTable.FieldByName('remise_bvctr').AsCurrency <> 0) then
+     if (MainForm.Bonv_ctrTable.FieldByName('RemisePerc').AsFloat <> null) AND (MainForm.Bonv_ctrTable.FieldByName('remise_bvctr').AsFloat <> 0) then
      begin
-     BonCtrGestionF.RemisePerctageBonCtrGEdt.Text :=     CurrToStrF(MainForm.Bonv_ctrTable.FieldValues['RemisePerc'], ffNumber, 2);
-     BonCtrGestionF.RemiseBonCtrGEdt.Text :=     CurrToStrF(MainForm.Bonv_ctrTable.FieldValues['remise_bvctr'], ffNumber, 2);
+     BonCtrGestionF.RemisePerctageBonCtrGEdt.Text :=     CurrToStrF(MainForm.Bonv_ctrTable.FieldByName('RemisePerc').AsFloat, ffNumber, 2);
+     BonCtrGestionF.RemiseBonCtrGEdt.Text :=     CurrToStrF(MainForm.Bonv_ctrTable.FieldByName('remise_bvctr').AsFloat, ffNumber, 2);
      end;
 
-//    BonCtrGestionF.BonCtrTotalTVALbl.Caption :=   CurrToStrF(MainForm.Bonv_ctrTable.FieldValues['MontantTVA'], ffNumber, 2);
-    if (MainForm.Bonv_ctrTable.FieldValues['montttc_bvctr']<> null) then
+//    BonCtrGestionF.BonCtrTotalTVALbl.Caption :=   CurrToStrF(MainForm.Bonv_ctrTable.FieldByName('MontantTVA'], ffNumber, 2);
+    if (MainForm.Bonv_ctrTable.FieldByName('montttc_bvctr').AsFloat <> null) then
     begin
-    BonCtrGestionF.BonCtrTotalTTCLbl.Caption :=   CurrToStrF(MainForm.Bonv_ctrTable.FieldValues['montttc_bvctr'], ffNumber, 2);
+    BonCtrGestionF.BonCtrTotalTTCLbl.Caption :=   CurrToStrF(MainForm.Bonv_ctrTable.FieldByName('montttc_bvctr').AsFloat, ffNumber, 2);
     end;
-    if (MainForm.Bonv_ctrTable.FieldValues['montver_bvctr']<> null) then
+    if (MainForm.Bonv_ctrTable.FieldByName('montver_bvctr').AsFloat <> null) then
     begin
-    BonCtrGestionF.BonCtrRegleLbl.Caption :=      CurrToStrF(MainForm.Bonv_ctrTable.FieldValues['montver_bvctr'], ffNumber, 2);
+    BonCtrGestionF.BonCtrRegleLbl.Caption :=      CurrToStrF(MainForm.Bonv_ctrTable.FieldByName('montver_bvctr').AsFloat, ffNumber, 2);
     end;
-    if (MainForm.Bonv_ctrTable.FieldValues['MontantRen']<> null) then
+    if (MainForm.Bonv_ctrTable.FieldByName('MontantRen').AsFloat <> null) then
     begin
-    BonCtrGestionF.BonCtrRenduLbl.Caption :=      CurrToStrF(MainForm.Bonv_ctrTable.FieldValues['MontantRen'], ffNumber, 2);
+    BonCtrGestionF.BonCtrRenduLbl.Caption :=      CurrToStrF(MainForm.Bonv_ctrTable.FieldByName('MontantRen').AsFloat, ffNumber, 2);
     end;
 
 

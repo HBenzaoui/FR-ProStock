@@ -780,7 +780,7 @@ begin
        if (MainForm.Bonp_facTable.FieldValues['code_c']<> null) and (MainForm.Bonp_facTable.FieldValues['code_c']<> 0) then
        begin
        CodeC:=MainForm.Bonp_facTable.FieldByName('code_c').AsInteger;
-       BonFacPGestionF.ClientBonFacVGCbx.Text:= MainForm.Bonp_facTable.FieldByName('clientbvfac').AsString;
+       BonFacPGestionF.ClientBonFacVGCbx.Text:= MainForm.Bonp_facTable.FieldByName('clientbvfac').AsWideString;
 
         end;
 

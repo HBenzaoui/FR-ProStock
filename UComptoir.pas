@@ -657,13 +657,13 @@ begin
       BonCtrRenduLbl.Caption := FloatToStrF(StrToFloat(BonCtrRenduLbl.Caption), ffNumber, 14, 2);
       BonCtrRegleLbl.Caption := FloatToStrF(StrToFloat(BonCtrRegleLbl.Caption), ffNumber, 14, 2);
 
-      CodeBL := MainForm.Bonv_ctrTable.FieldValues['code_bvctr'];
+      CodeBL := MainForm.Bonv_ctrTable.FieldByName('code_bvctr').AsInteger;
       NumBonCtrGEdt.Caption := 'CT' + IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5, CodeBL]);
       if (MainForm.Bonv_ctrTable.FieldByName('code_c').AsInteger <> null) and (MainForm.Bonv_ctrTable.FieldByName('code_c').AsInteger <> 0) then
       begin
-        if MainForm.Bonv_ctrTable.FieldValues['clientbvctr'] <> null then
+        if MainForm.Bonv_ctrTable.FieldByName('clientbvctr').AsWideString <> null then
         begin
-          ClientBonCtrGCbx.Text := MainForm.Bonv_ctrTable.FieldValues['clientbvctr'];
+          ClientBonCtrGCbx.Text := MainForm.Bonv_ctrTable.FieldByName('clientbvctr').AsWideString;
         end;
         ProduitBonCtrGCbx.SetFocus;
       end
@@ -3010,7 +3010,7 @@ begin
 
   if (MainForm.Bonv_ctrTable.FieldByName('code_c').AsInteger <> 0) and (MainForm.Bonv_ctrTable.FieldByName('code_c').AsInteger <> null) then
   begin
-    ClientBonCtrGCbx.Text := MainForm.Bonv_ctrTable.FieldByName('clientbvctr').AsString;
+    ClientBonCtrGCbx.Text := MainForm.Bonv_ctrTable.FieldByName('clientbvctr').AsWideString;
   end;
 //  if (MainForm.Bonv_ctrTable.FieldByName('code_mdpai']<> 0) AND (MainForm.Bonv_ctrTable.FieldByName('code_mdpai']<>null)  then
 //  begin

@@ -663,22 +663,22 @@ begin
       BonFacARegleLbl.Caption :=         FloatToStrF(StrToFloat(BonFacARegleLbl.Caption),ffNumber,14,2) ;
       BonFacAGFourOLDCredit.Caption:= FloatToStrF(StrToFloat(BonFacAGFourOLDCredit.Caption),ffNumber,14,2) ;
       BonFacAGFourNEWCredit.Caption:= FloatToStrF(StrToFloat(BonFacAGFourNEWCredit.Caption),ffNumber,14,2) ;
- CodeFA:= MainForm.Bona_facTable.FieldValues['code_bafac']   ;
+ CodeFA:= MainForm.Bona_facTable.FieldByName('code_bafac').AsInteger   ;
     NumBonFacAGEdt.Caption := 'FA'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5, CodeFA]);
  if (MainForm.Bona_facTable.FieldByName('code_f').AsInteger <> null)
 AND (MainForm.Bona_facTable.FieldByName('code_f').AsInteger <> 0)  then
  begin
-   if MainForm.Bona_facTable.FieldValues['fourbafac'] <> null then
+   if MainForm.Bona_facTable.FieldByName('fourbafac').AsWideString <> null then
       begin
-   FourBonFacAGCbx.Text:= MainForm.Bona_facTable.FieldValues['fourbafac'];
+   FourBonFacAGCbx.Text:= MainForm.Bona_facTable.FieldByName('fourbafac').AsWideString;
       end;
-      if MainForm.Bona_facTable.FieldValues['ModePaie'] <> null then
+      if MainForm.Bona_facTable.FieldByName('ModePaie').AsString <> null then
       begin
-   ModePaieBonFacAGCbx.Text:= MainForm.Bona_facTable.FieldValues['ModePaie'];
+   ModePaieBonFacAGCbx.Text:= MainForm.Bona_facTable.FieldByName('ModePaie').AsString;
       end;
-      if MainForm.Bona_facTable.FieldValues['Compte'] <> null then
+      if MainForm.Bona_facTable.FieldByName('Compte').AsString <> null then
       begin
-   CompteBonFacAGCbx.Text:= MainForm.Bona_facTable.FieldValues['Compte'];
+   CompteBonFacAGCbx.Text:= MainForm.Bona_facTable.FieldByName('Compte').AsString;
       end;
    FourBonFacAGCbxExit(Sender);
    ProduitBonFacAGCbx.SetFocus;
@@ -737,7 +737,7 @@ begin
 
   if (MainForm.Bona_facTable.FieldByName('code_f').AsInteger<> 0) AND (MainForm.Bona_facTable.FieldByName('code_f').AsInteger<> null) then
   begin
-  BonFacAGestionF.FourBonFacAGCbx.Text:=MainForm.Bona_facTable.FieldByName('fourbafac').AsString;
+  BonFacAGestionF.FourBonFacAGCbx.Text:=MainForm.Bona_facTable.FieldByName('fourbafac').AsWideString;
   end;
   if (MainForm.Bona_facTable.FieldByName('code_mdpai').AsInteger<> 0) AND (MainForm.Bona_facTable.FieldByName('code_mdpai').AsInteger<>null)  then
   begin

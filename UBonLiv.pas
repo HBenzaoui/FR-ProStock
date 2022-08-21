@@ -844,43 +844,43 @@ begin
        BonLivGestionF.NumBonLivGEdt.Caption := MainForm.Bonv_livTable.FieldByName('num_bvliv').AsString;
        BonLivGestionF.DateBonLivGD.Date:= MainForm.Bonv_livTable.FieldByName('date_bvliv').AsDateTime;
        BonLivGestionF.ObserBonLivGMem.Lines.Text := MainForm.Bonv_livTable.FieldByName('obser_bvliv').AsString;
-       if (MainForm.Bonv_livTable.FieldValues['code_c']<> null) and (MainForm.Bonv_livTable.FieldValues['code_c']<> 0) then
+       if (MainForm.Bonv_livTable.FieldByName('code_c').AsInteger <> null) and (MainForm.Bonv_livTable.FieldByName('code_c').AsInteger <> 0) then
        begin
-       CodeC:=MainForm.Bonv_livTable.FieldValues['code_c'];
-       BonLivGestionF.ClientBonLivGCbx.Text:= MainForm.Bonv_livTable.FieldValues['clientbvliv'];
+       CodeC:=MainForm.Bonv_livTable.FieldByName('code_c').AsInteger;
+       BonLivGestionF.ClientBonLivGCbx.Text:= MainForm.Bonv_livTable.FieldByName('clientbvliv').AsWideString;
 
         end;
 
-       if (MainForm.Bonv_livTable.FieldValues['code_mdpai']<> null ) AND (MainForm.Bonv_livTable.FieldValues['code_mdpai']<> 0) then
+       if (MainForm.Bonv_livTable.FieldByName('code_mdpai').AsInteger<> null ) AND (MainForm.Bonv_livTable.FieldByName('code_mdpai').AsInteger<> 0) then
        begin
-       CodeC:=MainForm.Bonv_livTable.FieldValues['code_mdpai'];
+       CodeC:=MainForm.Bonv_livTable.FieldByName('code_mdpai').AsInteger;
          MainForm.Mode_paiementTable.Active:=false;
          MainForm.Mode_paiementTable.SQL.Clear;
          MainForm.Mode_paiementTable.SQL.Text:='Select * FROM mode_paiement WHERE code_mdpai ='+(IntToStr( CodeC ) ) ;
          MainForm.Mode_paiementTable.Active:=True;
-         BonLivGestionF.ModePaieBonLivGCbx.Text:= MainForm.Mode_paiementTable.FieldValues['nom_mdpai'];
+         BonLivGestionF.ModePaieBonLivGCbx.Text:= MainForm.Mode_paiementTable.FieldByName('nom_mdpai').AsString;
          MainForm.Mode_paiementTable.Active:=false;
          MainForm.Mode_paiementTable.SQL.Clear;
          MainForm.Mode_paiementTable.SQL.Text:='SELECT * FROM mode_paiement ' ;
          MainForm.Mode_paiementTable.Active:=True;
 
        end;
-       if (MainForm.Bonv_livTable.FieldValues['code_cmpt']<> null) AND (MainForm.Bonv_livTable.FieldValues['code_cmpt']<> 0) then
+       if (MainForm.Bonv_livTable.FieldByName('code_cmpt').AsInteger<> null) AND (MainForm.Bonv_livTable.FieldByName('code_cmpt').AsInteger<> 0) then
        begin
-       CodeC:=MainForm.Bonv_livTable.FieldValues['code_cmpt'];
+       CodeC:=MainForm.Bonv_livTable.FieldByName('code_cmpt').AsInteger;
          MainForm.CompteTable.Active:=false;
          MainForm.CompteTable.SQL.Clear;
          MainForm.CompteTable.SQL.Text:='Select * FROM compte WHERE code_cmpt ='+(IntToStr( CodeC ) ) ;
          MainForm.CompteTable.Active:=True;
-         BonLivGestionF.CompteBonLivGCbx.Text:= MainForm.CompteTable.FieldValues['nom_cmpt'];
+         BonLivGestionF.CompteBonLivGCbx.Text:= MainForm.CompteTable.FieldByName('nom_cmpt').AsString;
          MainForm.CompteTable.Active:=false;
          MainForm.CompteTable.SQL.Clear;
          MainForm.CompteTable.SQL.Text:='SELECT * FROM compte ' ;
          MainForm.CompteTable.Active:=True;
        end;
-       if (MainForm.Bonv_livTable.FieldValues['num_cheque_bvliv']<> null)  then
+       if (MainForm.Bonv_livTable.FieldByName('num_cheque_bvliv').AsString<> null)  then
        begin
-        BonLivGestionF.NChequeBonLivGCbx.Text:= MainForm.Bonv_livTable.FieldValues['num_cheque_bvliv'];
+        BonLivGestionF.NChequeBonLivGCbx.Text:= MainForm.Bonv_livTable.FieldByName('num_cheque_bvliv').AsString;
 
        end;
 

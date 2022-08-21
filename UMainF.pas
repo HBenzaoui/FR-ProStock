@@ -145,7 +145,6 @@ type
     Bona_recTabletime_barec: TTimeField;
     Bona_recTablevalider_barec: TBooleanField;
     Bona_recTablenum_barec: TWideStringField;
-    Bona_recTablefourbarec: TStringField;
     Bona_recPlistTable: TFDQuery;
     ProduitTableQUT: TIntegerField;
     FDQuery2: TFDQuery;
@@ -224,13 +223,10 @@ type
     Bonv_fac_listTablecond_p: TIntegerField;
     WilayasDataS: TDataSource;
     CommunesTablecode_w: TSmallintField;
-    Bonv_livTablefourbarec: TStringField;
     Bonv_livTableModePaie: TStringField;
     Bonv_livTableCompte: TStringField;
-    Bona_facTablefourbarec: TStringField;
     Bona_facTableModePaie: TStringField;
     Bona_facTableCompte: TStringField;
-    Bonv_facTablefourbarec: TStringField;
     Bonv_facTableModePaie: TStringField;
     Bonv_facTableCompte: TStringField;
     Bonv_livTablecode_c: TIntegerField;
@@ -290,7 +286,6 @@ type
     Bonv_ctrTablecode_c: TIntegerField;
     Bonv_ctrTablevalider_bvctr: TBooleanField;
     Bonv_ctrTablenum_bvctr: TWideStringField;
-    Bonv_ctrTableclientbvctr: TStringField;
     TreMainFMnm: TMenuItem;
     C5: TMenuItem;
     B6: TMenuItem;
@@ -347,7 +342,6 @@ type
     RegclientTablenum_cheque_rc: TWideStringField;
     RegclientTablecode_c: TIntegerField;
     RegclientTablecode_ur: TIntegerField;
-    RegclientTableClientrRC: TStringField;
     RegfournisseurTablecode_rf: TIntegerField;
     RegfournisseurTablenom_rf: TWideStringField;
     RegfournisseurTabledate_rf: TDateField;
@@ -356,7 +350,6 @@ type
     RegfournisseurTablenum_cheque_rf: TWideStringField;
     RegfournisseurTablecode_f: TIntegerField;
     RegfournisseurTablecode_ur: TIntegerField;
-    RegfournisseurTableFourRF: TStringField;
     RegclientTableAgent: TStringField;
     RegfournisseurTableAgent: TStringField;
     Bona_recTablebon_or_no_barec: TBooleanField;
@@ -473,7 +466,6 @@ type
     Bonp_fac_listTablecond_p: TIntegerField;
     Bonp_fac_listTablecode_p: TIntegerField;
     Bonp_fac_listTabletva_p: TSmallintField;
-    Bonp_facTableclientbvfac: TStringField;
     Bonp_facTablecode_ur: TIntegerField;
     N21: TMenuItem;
     Label1: TLabel;
@@ -736,6 +728,14 @@ type
     ProduitTablevaluestockvattc: TFMTBCDField;
     ProduitTablevaluestockva2ht: TFMTBCDField;
     ProduitTablevaluestockva2ttc: TFMTBCDField;
+    Bonp_facTableclientbvfac: TWideStringField;
+    Bona_recTablefourbarec2: TWideStringField;
+    Bonv_ctrTableclientbvctr: TWideStringField;
+    Bonv_facTableclientbvfac: TWideStringField;
+    Bonv_livTableclientbvliv: TWideStringField;
+    Bona_facTablefourbafac: TWideStringField;
+    RegfournisseurTableFourRF: TWideStringField;
+    RegclientTableClientrRC: TWideStringField;
     procedure ClientMainFBtnClick(Sender: TObject);
     procedure FourMainFBtnClick(Sender: TObject);
     procedure ProduitMainFBtnClick(Sender: TObject);

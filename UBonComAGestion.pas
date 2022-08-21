@@ -1019,22 +1019,22 @@ begin
     BonComRegleLbl.Caption :=         FloatToStrF(StrToFloat(BonComRegleLbl.Caption),ffNumber,14,2) ;
     BonComGFourOLDCredit.Caption:= FloatToStrF(StrToFloat(BonComGFourOLDCredit.Caption),ffNumber,14,2) ;
     BonComGFourNEWCredit.Caption:= FloatToStrF(StrToFloat(BonComGFourNEWCredit.Caption),ffNumber,14,2) ;
- CodeCB:= DataModuleF.Bona_comTable.FieldValues['code_bacom']   ;
+ CodeCB:= DataModuleF.Bona_comTable.FieldByName('code_bacom').AsInteger   ;
  NumBonComGEdt.Caption := 'BCA'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5, CodeCB]);
   if (DataModuleF.Bona_comTable.FieldByName('code_f').AsInteger <> null)
  AND (DataModuleF.Bona_comTable.FieldByName('code_f').AsInteger <> 0)  then
  begin
-   if DataModuleF.Bona_comTable.FieldValues['fourbacom'] <> null then
+   if DataModuleF.Bona_comTable.FieldByName('fourbacom').AsWideString <> null then
     begin
-   FournisseurBonComGCbx.Text:= DataModuleF.Bona_comTable.FieldValues['fourbacom'];
+   FournisseurBonComGCbx.Text:= DataModuleF.Bona_comTable.FieldByName('fourbacom').AsWideString;
     end;
-    if DataModuleF.Bona_comTable.FieldValues['ModePaie'] <> null then
+    if DataModuleF.Bona_comTable.FieldByName('ModePaie').AsString <> null then
     begin
-   ModePaieBonComGCbx.Text:= DataModuleF.Bona_comTable.FieldValues['ModePaie'];
+   ModePaieBonComGCbx.Text:= DataModuleF.Bona_comTable.FieldByName('ModePaie').AsString;
     end;
-    if DataModuleF.Bona_comTable.FieldValues['Compte'] <> null then
+    if DataModuleF.Bona_comTable.FieldByName('Compte').AsString <> null then
     begin
-   CompteBonComGCbx.Text:= DataModuleF.Bona_comTable.FieldValues['Compte'];
+   CompteBonComGCbx.Text:= DataModuleF.Bona_comTable.FieldByName('Compte').AsString;
     end;
    FournisseurBonComGCbxExit(Sender);
    ProduitBonComGCbx.SetFocus;
