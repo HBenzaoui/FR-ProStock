@@ -253,7 +253,8 @@ uses Winapi.ShellAPI,DateUtils, UClientGestion, UMainF, USplashAddUnite, UFourni
   USplashAddCodeBarre, math, UFournisseurGestion, USplash, UProduitsList
 
   , UComptoir, UBonFacAGestion, UBonFacVGestion, UBonLivGestion, UBonRecGestion,
-  UPertesGestion, UBonFacPGestion, UInventoryGestion, UBonComAGestion;
+  UPertesGestion, UBonFacPGestion, UInventoryGestion, UBonComAGestion,
+  UBonComVGestion, UBonRetVGestion, UBonRetAGestion;
 
 
 //----------- use this procedure to set center aligment text for the combobox---////
@@ -841,8 +842,9 @@ begin
         MainForm.ProduitTable.EnableControls;
         //--- this is to pervet adding dublicate produit when editing adn creatin codebare
        if NOT (Assigned(BonCtrGestionF)) AND NOT (Assigned(BonLivGestionF)) AND NOT (Assigned(BonFacVGestionF))
-          AND NOT (Assigned(BonRecGestionF)) AND NOT (Assigned(BonFacAGestionF)) AND NOT (Assigned(PertesGestionF))
-          AND NOT (Assigned(InventoryGestionF)) AND NOT (Assigned(BonComAGestionF))  then
+          AND NOT (Assigned(BonFacPGestionF)) AND NOT (Assigned(BonComVGestionF)) AND NOT (Assigned(BonRetVGestionF))
+          AND NOT (Assigned(BonRecGestionF)) AND NOT (Assigned(BonFacAGestionF)) AND NOT (Assigned(BonComAGestionF)) AND NOT (Assigned(BonRetAGestionF))
+          AND NOT (Assigned(InventoryGestionF))  AND NOT (Assigned(PertesGestionF))  then
         begin
         if (PAdded = False) AND (ProduitsListF.CodePToUseOut <> 0 )  then
         begin
@@ -863,10 +865,11 @@ begin
 
            MainForm.ProduitTable.Locate('code_p',CodeP,[]) ;
           end;
-          
+
    if NOT (Assigned(BonCtrGestionF)) AND NOT (Assigned(BonLivGestionF)) AND NOT (Assigned(BonFacVGestionF))  /// To make sure access voltation wont show
-      AND NOT (Assigned(BonRecGestionF)) AND NOT (Assigned(BonFacAGestionF)) AND NOT (Assigned(PertesGestionF))
-      AND NOT (Assigned(InventoryGestionF)) AND NOT (Assigned(BonComAGestionF))    then   /// where we are in bons not produit list
+      AND NOT (Assigned(BonFacPGestionF)) AND NOT (Assigned(BonComVGestionF)) AND NOT (Assigned(BonRetVGestionF))
+      AND NOT (Assigned(BonRecGestionF)) AND NOT (Assigned(BonFacAGestionF)) AND NOT (Assigned(BonComAGestionF)) AND NOT (Assigned(BonRetAGestionF))
+      AND NOT (Assigned(InventoryGestionF))  AND NOT (Assigned(PertesGestionF))  then   /// where we are in bons not produit list
     begin
     ProduitsListF.CodePToUseOut:= 0;
     end;
@@ -941,7 +944,7 @@ begin
    if ProduitGestionF.Tag = 0 then
    begin
  //   MainForm.ProduitTable.Last ;
-    codeP:= MainForm.ProduitTable.FieldValues['code_p'];
+    codeP:= MainForm.ProduitTable.FieldByName('code_p').AsInteger;
     MainForm.GstockdcConnection.ExecSQL('DELETE FROM codebarres where codebarres.code_p = ' + IntToStr(codeP));
     MainForm.ProduitTable.Delete ;
     end;

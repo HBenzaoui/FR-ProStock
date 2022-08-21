@@ -392,7 +392,7 @@ begin
   MainForm.ProduitTable.Filtered := False;
   MainForm.ProduitTable.IndexesActive := True;
 //-------- use this code to start creating th form-----//
-  ProduitGestionF := TproduitGestionF.Create(ProduitsListF);
+  ProduitGestionF := TproduitGestionF.Create(MainForm);
 
   if MainForm.ProduitTable.RecordCount <= 0 then
   begin
