@@ -49,7 +49,8 @@ implementation
 uses
   UMainF,Contnrs, UClientGestion, USplashAddUnite, UBonRecGestion, UBonLivGestion,
   UBonFacVGestion, UBonFacAGestion, UReglementCGestion, UReglementFGestion,
-  UChargesGestion, UTransferComptesGestion, UBonComAGestion, UBonComVGestion;
+  UChargesGestion, UTransferComptesGestion, UBonComAGestion, UBonComVGestion,
+  UDataModule;
 
 {$R *.dfm}
 
@@ -190,16 +191,23 @@ procedure TFSplashAddCompte.OKAddCompteSBtnClick(Sender: TObject);
 var CodeCompte : Integer;
 begin
 
+    DataModuleF.SQLQuery3.Active:=False;
+    DataModuleF.SQLQuery3.SQL.Clear;
+    DataModuleF.SQLQuery3.SQL.Text:= 'SELECT * FROM compte ORDER BY code_cmpt DESC LIMIT 1';
+    DataModuleF.SQLQuery3.Active:=True;
+
+
+
 //----- use this tag for adding from the add paiment add copmte uicons------//
  if OKAddCompteSBtn.Tag = 0 then
   begin
    if NameAddCompteSEdt.Text <> '' then
      begin
-            with MainForm.CompteTable do  begin
-               if NOT (MainForm.CompteTable.IsEmpty) then
+            with DataModuleF.SQLQuery3 do  begin
+               if NOT (DataModuleF.SQLQuery3.IsEmpty) then
               begin
-              MainForm.CompteTable.Last;
-              CodeCompte:= MainForm.CompteTable.FieldValues['code_cmpt'] + 1;
+              DataModuleF.SQLQuery3.Last;
+              CodeCompte:= DataModuleF.SQLQuery3.FieldByName('code_cmpt').AsInteger + 1;
               end else
                   begin
                    CodeCompte:= 1;
@@ -250,11 +258,11 @@ begin
   begin
    if NameAddCompteSEdt.Text <> '' then
     begin
-      with MainForm.CompteTable do  begin
-         if NOT (MainForm.CompteTable.IsEmpty) then
+      with DataModuleF.SQLQuery3 do  begin
+         if NOT (DataModuleF.SQLQuery3.IsEmpty) then
         begin
-        MainForm.CompteTable.Last;
-        CodeCompte:= MainForm.CompteTable.FieldValues['code_cmpt'] + 1;
+        DataModuleF.SQLQuery3.Last;
+        CodeCompte:= DataModuleF.SQLQuery3.FieldByName('code_cmpt').AsInteger + 1;
         end else
             begin
              CodeCompte:= 1;
@@ -302,11 +310,11 @@ begin
   begin
    if NameAddCompteSEdt.Text <> '' then
     begin
-        with MainForm.CompteTable do  begin
-          if NOT (MainForm.CompteTable.IsEmpty) then
+        with DataModuleF.SQLQuery3 do  begin
+          if NOT (DataModuleF.SQLQuery3.IsEmpty) then
             begin
-            MainForm.CompteTable.Last;
-            CodeCompte:= MainForm.CompteTable.FieldValues['code_cmpt'] + 1;
+            DataModuleF.SQLQuery3.Last;
+            CodeCompte:= DataModuleF.SQLQuery3.FieldByName('code_cmpt').AsInteger + 1;
             end else
                 begin
                  CodeCompte:= 1;
@@ -354,11 +362,11 @@ begin
   begin
    if NameAddCompteSEdt.Text <> '' then
     begin
-         with MainForm.CompteTable do  begin
-           if NOT (MainForm.CompteTable.IsEmpty) then
+         with DataModuleF.SQLQuery3 do  begin
+           if NOT (DataModuleF.SQLQuery3.IsEmpty) then
           begin
-          MainForm.CompteTable.Last;
-          CodeCompte:= MainForm.CompteTable.FieldValues['code_cmpt'] + 1;
+          DataModuleF.SQLQuery3.Last;
+          CodeCompte:= DataModuleF.SQLQuery3.FieldByName('code_cmpt').AsInteger + 1;
           end else
               begin
                CodeCompte:= 1;
@@ -405,11 +413,11 @@ begin
   begin
    if NameAddCompteSEdt.Text <> '' then
     begin
-             with MainForm.CompteTable do  begin
-               if NOT (MainForm.CompteTable.IsEmpty) then
+             with DataModuleF.SQLQuery3 do  begin
+               if NOT (DataModuleF.SQLQuery3.IsEmpty) then
               begin
-              MainForm.CompteTable.Last;
-              CodeCompte:= MainForm.CompteTable.FieldValues['code_cmpt'] + 1;
+              DataModuleF.SQLQuery3.Last;
+              CodeCompte:= DataModuleF.SQLQuery3.FieldByName('code_cmpt').AsInteger + 1;
               end else
                   begin
                    CodeCompte:= 1;
@@ -455,11 +463,11 @@ begin
   begin
    if NameAddCompteSEdt.Text <> '' then
     begin
-        with MainForm.CompteTable do  begin
-               if NOT (MainForm.CompteTable.IsEmpty) then
+        with DataModuleF.SQLQuery3 do  begin
+               if NOT (DataModuleF.SQLQuery3.IsEmpty) then
               begin
-              MainForm.CompteTable.Last;
-              CodeCompte:= MainForm.CompteTable.FieldValues['code_cmpt'] + 1;
+              DataModuleF.SQLQuery3.Last;
+              CodeCompte:= DataModuleF.SQLQuery3.FieldByName('code_cmpt').AsInteger + 1;
               end else
                   begin
                    CodeCompte:= 1;
@@ -505,11 +513,11 @@ begin
   begin
    if NameAddCompteSEdt.Text <> '' then
     begin
-                 with MainForm.CompteTable do  begin
-               if NOT (MainForm.CompteTable.IsEmpty) then
+                 with DataModuleF.SQLQuery3 do  begin
+               if NOT (DataModuleF.SQLQuery3.IsEmpty) then
               begin
-              MainForm.CompteTable.Last;
-              CodeCompte:= MainForm.CompteTable.FieldValues['code_cmpt'] + 1;
+              DataModuleF.SQLQuery3.Last;
+              CodeCompte:= DataModuleF.SQLQuery3.FieldByName('code_cmpt').AsInteger + 1;
               end else
                   begin
                    CodeCompte:= 1;
@@ -556,11 +564,11 @@ begin
   begin
    if NameAddCompteSEdt.Text <> '' then
     begin
-        with MainForm.CompteTable do  begin
-           if NOT (MainForm.CompteTable.IsEmpty) then
+        with DataModuleF.SQLQuery3 do  begin
+           if NOT (DataModuleF.SQLQuery3.IsEmpty) then
           begin
-          MainForm.CompteTable.Last;
-          CodeCompte:= MainForm.CompteTable.FieldValues['code_cmpt'] + 1;
+          DataModuleF.SQLQuery3.Last;
+          CodeCompte:= DataModuleF.SQLQuery3.FieldByName('code_cmpt').AsInteger + 1;
           end else
               begin
                CodeCompte:= 1;
@@ -609,7 +617,7 @@ begin
   begin
    if NameAddCompteSEdt.Text <> '' then
     begin
-        with MainForm.CompteTable do  begin
+        with DataModuleF.SQLQuery3 do  begin
 
           Edit;
           fieldbyname('nom_cmpt').AsString := NameAddCompteSEdt.Text;
@@ -654,11 +662,11 @@ begin
   begin
    if NameAddCompteSEdt.Text <> '' then
     begin
-             with MainForm.CompteTable do  begin
-               if NOT (MainForm.CompteTable.IsEmpty) then
+             with DataModuleF.SQLQuery3 do  begin
+               if NOT (DataModuleF.SQLQuery3.IsEmpty) then
               begin
-              MainForm.CompteTable.Last;
-              CodeCompte:= MainForm.CompteTable.FieldValues['code_cmpt'] + 1;
+              DataModuleF.SQLQuery3.Last;
+              CodeCompte:= DataModuleF.SQLQuery3.FieldByName('code_cmpt').AsInteger + 1;
               end else
                   begin
                    CodeCompte:= 1;
@@ -706,11 +714,11 @@ begin
   begin
    if NameAddCompteSEdt.Text <> '' then
     begin
-             with MainForm.CompteTable do  begin
-               if NOT (MainForm.CompteTable.IsEmpty) then
+             with DataModuleF.SQLQuery3 do  begin
+               if NOT (DataModuleF.SQLQuery3.IsEmpty) then
               begin
-              MainForm.CompteTable.Last;
-              CodeCompte:= MainForm.CompteTable.FieldValues['code_cmpt'] + 1;
+              DataModuleF.SQLQuery3.Last;
+              CodeCompte:= DataModuleF.SQLQuery3.FieldByName('code_cmpt').AsInteger + 1;
               end else
                   begin
                    CodeCompte:= 1;
@@ -758,11 +766,11 @@ begin
   begin
    if NameAddCompteSEdt.Text <> '' then
     begin
-             with MainForm.CompteTable do  begin
-               if NOT (MainForm.CompteTable.IsEmpty) then
+             with DataModuleF.SQLQuery3 do  begin
+               if NOT (DataModuleF.SQLQuery3.IsEmpty) then
               begin
-              MainForm.CompteTable.Last;
-              CodeCompte:= MainForm.CompteTable.FieldValues['code_cmpt'] + 1;
+              DataModuleF.SQLQuery3.Last;
+              CodeCompte:= DataModuleF.SQLQuery3.FieldByName('code_cmpt').AsInteger + 1;
               end else
                   begin
                    CodeCompte:= 1;
@@ -809,11 +817,11 @@ begin
   begin
    if NameAddCompteSEdt.Text <> '' then
     begin
-      with MainForm.CompteTable do  begin
-         if NOT (MainForm.CompteTable.IsEmpty) then
+      with DataModuleF.SQLQuery3 do  begin
+         if NOT (DataModuleF.SQLQuery3.IsEmpty) then
         begin
-        MainForm.CompteTable.Last;
-        CodeCompte:= MainForm.CompteTable.FieldValues['code_cmpt'] + 1;
+        DataModuleF.SQLQuery3.Last;
+        CodeCompte:= DataModuleF.SQLQuery3.FieldByName('code_cmpt').AsInteger + 1;
         end else
             begin
              CodeCompte:= 1;
@@ -860,11 +868,11 @@ begin
   begin
    if NameAddCompteSEdt.Text <> '' then
     begin
-      with MainForm.CompteTable do  begin
-         if NOT (MainForm.CompteTable.IsEmpty) then
+      with DataModuleF.SQLQuery3 do  begin
+         if NOT (DataModuleF.SQLQuery3.IsEmpty) then
         begin
-        MainForm.CompteTable.Last;
-        CodeCompte:= MainForm.CompteTable.FieldValues['code_cmpt'] + 1;
+        DataModuleF.SQLQuery3.Last;
+        CodeCompte:= DataModuleF.SQLQuery3.FieldByName('code_cmpt').AsInteger + 1;
         end else
             begin
              CodeCompte:= 1;
@@ -905,6 +913,10 @@ begin
       NameAddCompteSEdt.SetFocus;
     end;
   end;
+
+
+  DataModuleF.SQLQuery3.Active:=False;
+  DataModuleF.SQLQuery3.SQL.Clear;
 
 
 end;
