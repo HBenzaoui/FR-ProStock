@@ -769,7 +769,7 @@ begin
     if NOT (MainForm.ProduitTable.IsEmpty) then
     begin
 
-    CodePForFastPList:=MainForm.ProduitTable.FieldValues['code_p'];
+    CodePForFastPList:=MainForm.ProduitTable.FieldByName('code_p').AsInteger;
 
 //----- this tag is for multiple products ------//
     if (OKProduitGBtn.Tag = 0) AND (FastProduitsListF.Tag = 0) then
@@ -808,19 +808,19 @@ begin
            end else
                begin
                 MainForm.Bona_recPlistTable.Last;
-                CodeBR:= MainForm.Bona_recPlistTable.FieldValues['code_barecl'] + 1 ;
+                CodeBR:= MainForm.Bona_recPlistTable.FieldByName('code_barecl').AsInteger + 1 ;
                end;
 
                  if MainForm.ProduitTable.FieldByName('perissable_p').AsBoolean = True then
                  begin
                   BonRecGestionF.ProduitsListDBGridEh.Columns[4].Visible := True
-                 end;               
+                 end;
 
              MainForm.Bona_recPlistTable.Last;
              MainForm.Bona_recPlistTable.Append;
-             MainForm.Bona_recPlistTable.FieldValues['code_barecl']:= CodeBR ;
-             MainForm.Bona_recPlistTable.FieldValues['code_barec']:= MainForm.Bona_recTable.FieldValues['code_barec'];
-             MainForm.Bona_recPlistTable.FieldValues['code_p']:=  MainForm.ProduitTable.FieldValues['code_p'] ;
+             MainForm.Bona_recPlistTable.FieldByName('code_barecl').AsInteger:= CodeBR ;
+             MainForm.Bona_recPlistTable.FieldByName('code_barec').AsInteger:= MainForm.Bona_recTable.FieldByName('code_barec').AsInteger;
+             MainForm.Bona_recPlistTable.FieldByName('code_p').AsInteger:=  MainForm.ProduitTable.FieldByName('code_p').AsInteger ;
              MainForm.Bona_recPlistTable.FieldValues['qut_p'] :=  01;
              MainForm.Bona_recPlistTable.FieldValues['prixht_p']:= MainForm.ProduitTable.FieldValues['prixht_p'];
              MainForm.Bona_recPlistTable.FieldValues['tva_p']:= MainForm.ProduitTable.FieldValues['tva_p'];

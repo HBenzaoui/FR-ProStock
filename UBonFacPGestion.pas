@@ -378,9 +378,9 @@ begin
   if (MainForm.Bonp_facTable.FieldByName('code_c').AsInteger <> null)
  AND (MainForm.Bonp_facTable.FieldByName('code_c').AsInteger <> 0) then
  begin
-   if MainForm.Bonp_facTable.FieldValues['clientbvfac'] <> null then
+   if MainForm.Bonp_facTable.FieldByName('clientbvfac').AsWideString <> null then
       begin
-   ClientBonFacVGCbx.Text:= MainForm.Bonp_facTable.FieldValues['clientbvfac'];
+   ClientBonFacVGCbx.Text:= MainForm.Bonp_facTable.FieldByName('clientbvfac').AsWideString;
       end;
    ProduitBonFacVGCbx.SetFocus;
  end else
@@ -459,7 +459,7 @@ begin
 
   if (MainForm.Bonp_facTable.FieldByName('code_c').AsInteger<> 0) AND (MainForm.Bonp_facTable.FieldByName('code_c').AsInteger<> null) then
   begin
-  BonFacPGestionF.ClientBonFacVGCbx.Text:=MainForm.Bonp_facTable.FieldByName('clientbvfac').AsString;
+  BonFacPGestionF.ClientBonFacVGCbx.Text:=MainForm.Bonp_facTable.FieldByName('clientbvfac').AsWideString;
   end;
 //  if (MainForm.Bonp_facTable.FieldValues['code_mdpai']<> 0) AND (MainForm.Bonp_facTable.FieldValues['code_mdpai']<>null)  then
 //  begin
@@ -872,6 +872,39 @@ ProduitBonFacVGCbx.Text:='';
 //ProduitBonFacVGCbx.AutoDropDown:=False;
 end;
 
+
+procedure addToQutIfSameProduit(CodeP: Integer);
+begin
+          //This is for adding qut if it the same produit
+      MainForm.SQLQuery4.Active := False;
+      MainForm.SQLQuery4.SQL.Clear;
+      MainForm.SQLQuery4.SQL.Text := 'SELECT qut_p,code_p FROM bonp_fac_list WHERE code_bpfac = ' + QuotedStr(IntToStr(MainForm.Bonp_facTable.FieldByName('code_bpfac').AsInteger));
+      MainForm.SQLQuery4.Active := True;
+
+      MainForm.SQLQuery4.First;
+      while not MainForm.SQLQuery4.Eof do
+      begin
+
+        if MainForm.SQLQuery4.FieldByName('code_p').AsInteger = CodeP then
+        begin
+          MainForm.SQLQuery4.Edit;
+          MainForm.SQLQuery4.FieldByName('qut_p').AsFloat := MainForm.SQLQuery4.FieldByName('qut_p').AsFloat + 1;
+          MainForm.SQLQuery4.Post;
+          Refresh_PreservePosition;
+          BonFacPGestionF.ProduitBonFacVGCbx.Clear;
+          sndPlaySound('C:\Windows\Media\speech on.wav', SND_NODEFAULT or SND_ASYNC or SND_RING);
+
+          Exit;
+
+        end;
+        MainForm.SQLQuery4.Next;
+      end;
+
+      MainForm.SQLQuery4.Active := False;
+      MainForm.SQLQuery4.SQL.Clear;
+      MainForm.Bonp_fac_listTable.Refresh;
+end;
+
 procedure TBonFacPGestionF.ProduitBonFacVGCbxKeyPress(Sender: TObject;
   var Key: Char);
 
@@ -1007,47 +1040,53 @@ begin
      end else
      begin
 
-      FSplashAddUnite:=TFSplashAddUnite.Create(Application);
-      FSplashAddUnite.Image1.ImageIndex:=3;
-      FSplashAddUnite.Width:=300;
-      FSplashAddUnite.Height:=160;
-      FSplashAddUnite.Panel1.Color:= $0028CAFE;
-      FSplashAddUnite.Color:= $00EFE9E8;
-      FSplashAddUnite.LineP.Color:=$0028CAFE;
-      FSplashAddUnite.LineP.Top:= (FSplashAddUnite.Height) - 44  ;
-      FSplashAddUnite.OKAddUniteSBtn.Top:= (FSplashAddUnite.Height) - 36;
-      FSplashAddUnite.OKAddUniteSBtn.ImageIndex:=17;
-      FSplashAddUnite.CancelAddUniteSBtn.Top:=(FSplashAddUnite.Height) - 36;
-      FSplashAddUnite.OKAddUniteSBtn.Left:=(FSplashAddUnite.Width div 4) - (FSplashAddUnite.OKAddUniteSBtn.Width div 2) + 15;
-      FSplashAddUnite.CancelAddUniteSBtn.Left:= ((FSplashAddUnite.Width div 2 )+((FSplashAddUnite.Width div 2)div 2 ) ) - (FSplashAddUnite.CancelAddUniteSBtn.Width div 2) - 15;
-      if  MainForm.Bonp_fac_listTable.FieldValues['code_p'] <> NULL then
-      begin
-      NomP:=   MainForm.SQLQuery.FieldValues['nom_p'];
-      end else begin
-        NomP:='';
-      end;
-      FSplashAddUnite.NameAddUniteSLbl.Caption:='Article déja inséré : '+ sLineBreak +  sLineBreak + QuotedStr(NomP);
-      FSplashAddUnite.NameAddUniteSLbl.Font.Height:= 22;
-      FSplashAddUnite.NameAddUniteSLbl.Top:= (FSplashAddUnite.Panel1.Height) + 10 ;
-      FSplashAddUnite.NameAddUniteSLbl.Font.Height:=18;
-      FSplashAddUnite.Image1.Visible:=True;
-      FSplashAddUnite.Image1.Top:= (FSplashAddUnite.Height div 2) - (FSplashAddUnite.Image1.Height div 2 ) ;
-      FSplashAddUnite.FormCaptionAddUniteSLbl.Caption:='Attention...';
-      FSplashAddUnite.FormCaptionAddUniteSLbl.Font.Color:=$0040332D;
-      FSplashAddUnite.FormCaptionAddUniteSLbl.Left:=( FSplashAddUnite.Width div 2) -  ( FSplashAddUnite.FormCaptionAddUniteSLbl.Width div 2);
-      FSplashAddUnite.NameAddUniteSEdt.Visible:=False;
-      FSplashAddUnite.RequiredStarAddUniteSLbl.Visible:=False;
-      FSplashAddUnite.NameAddUniteSLbl.Left:= FSplashAddUnite.Image1.Left + FSplashAddUnite.Image1.Width + 10;
-      FSplashAddUnite.Left:=  (MainForm.Left + MainForm.Width div 2) - (FSplashAddUnite.Width div 2);
-      FSplashAddUnite.Top:=   MainForm.Top + 5;
+        //This is for adding qut if it the same produit
+        addToQutIfSameProduit(CodeP);
 
-      FSplashAddUnite.CancelAddUniteSBtn.Caption:='Ignorer' ;
-      FSplashAddUnite.OKAddUniteSBtn.Enabled:=True;
-      FSplashAddUnite.OKAddUniteSBtn.Tag:= 37 ;
-      AnimateWindow(FSplashAddUnite.Handle, 175, AW_VER_POSITIVE OR AW_SLIDE OR AW_ACTIVATE );
-       FSplashAddUnite.Show;
-    //--- this tage = 0 is for multi name added by produit combobox----//
-       FSplashAddUnite.Tag:=6;
+
+         //We use this when when we to disabable multiple qut for same produit
+
+//      FSplashAddUnite:=TFSplashAddUnite.Create(Application);
+//      FSplashAddUnite.Image1.ImageIndex:=3;
+//      FSplashAddUnite.Width:=300;
+//      FSplashAddUnite.Height:=160;
+//      FSplashAddUnite.Panel1.Color:= $0028CAFE;
+//      FSplashAddUnite.Color:= $00EFE9E8;
+//      FSplashAddUnite.LineP.Color:=$0028CAFE;
+//      FSplashAddUnite.LineP.Top:= (FSplashAddUnite.Height) - 44  ;
+//      FSplashAddUnite.OKAddUniteSBtn.Top:= (FSplashAddUnite.Height) - 36;
+//      FSplashAddUnite.OKAddUniteSBtn.ImageIndex:=17;
+//      FSplashAddUnite.CancelAddUniteSBtn.Top:=(FSplashAddUnite.Height) - 36;
+//      FSplashAddUnite.OKAddUniteSBtn.Left:=(FSplashAddUnite.Width div 4) - (FSplashAddUnite.OKAddUniteSBtn.Width div 2) + 15;
+//      FSplashAddUnite.CancelAddUniteSBtn.Left:= ((FSplashAddUnite.Width div 2 )+((FSplashAddUnite.Width div 2)div 2 ) ) - (FSplashAddUnite.CancelAddUniteSBtn.Width div 2) - 15;
+//      if  MainForm.Bonp_fac_listTable.FieldValues['code_p'] <> NULL then
+//      begin
+//      NomP:=   MainForm.SQLQuery.FieldValues['nom_p'];
+//      end else begin
+//        NomP:='';
+//      end;
+//      FSplashAddUnite.NameAddUniteSLbl.Caption:='Article déja inséré : '+ sLineBreak +  sLineBreak + QuotedStr(NomP);
+//      FSplashAddUnite.NameAddUniteSLbl.Font.Height:= 22;
+//      FSplashAddUnite.NameAddUniteSLbl.Top:= (FSplashAddUnite.Panel1.Height) + 10 ;
+//      FSplashAddUnite.NameAddUniteSLbl.Font.Height:=18;
+//      FSplashAddUnite.Image1.Visible:=True;
+//      FSplashAddUnite.Image1.Top:= (FSplashAddUnite.Height div 2) - (FSplashAddUnite.Image1.Height div 2 ) ;
+//      FSplashAddUnite.FormCaptionAddUniteSLbl.Caption:='Attention...';
+//      FSplashAddUnite.FormCaptionAddUniteSLbl.Font.Color:=$0040332D;
+//      FSplashAddUnite.FormCaptionAddUniteSLbl.Left:=( FSplashAddUnite.Width div 2) -  ( FSplashAddUnite.FormCaptionAddUniteSLbl.Width div 2);
+//      FSplashAddUnite.NameAddUniteSEdt.Visible:=False;
+//      FSplashAddUnite.RequiredStarAddUniteSLbl.Visible:=False;
+//      FSplashAddUnite.NameAddUniteSLbl.Left:= FSplashAddUnite.Image1.Left + FSplashAddUnite.Image1.Width + 10;
+//      FSplashAddUnite.Left:=  (MainForm.Left + MainForm.Width div 2) - (FSplashAddUnite.Width div 2);
+//      FSplashAddUnite.Top:=   MainForm.Top + 5;
+//
+//      FSplashAddUnite.CancelAddUniteSBtn.Caption:='Ignorer' ;
+//      FSplashAddUnite.OKAddUniteSBtn.Enabled:=True;
+//      FSplashAddUnite.OKAddUniteSBtn.Tag:= 37 ;
+//      AnimateWindow(FSplashAddUnite.Handle, 175, AW_VER_POSITIVE OR AW_SLIDE OR AW_ACTIVATE );
+//       FSplashAddUnite.Show;
+//    //--- this tage = 0 is for multi name added by produit combobox----//
+//       FSplashAddUnite.Tag:=6;
      end;
 
      end;
@@ -1124,7 +1163,6 @@ begin
             MainForm.Bonp_fac_listTable.SQL.Clear;
             MainForm.Bonp_fac_listTable.SQL.Text:= FPLSQL +' WHERE code_bpfac = ' + QuotedStr(IntToStr(MainForm.Bonp_facTable.FieldValues['code_bpfac']));
             MainForm.Bonp_fac_listTable.Active:=True;
-            MainForm.Bonp_fac_listTable.EnableControls;
 
             ProduitBonFacVGCbx.Text:='';
             ProduitsListDBGridEh.SetFocus;
@@ -1148,46 +1186,54 @@ begin
          end else
          begin
 
-          FSplashAddUnite:=TFSplashAddUnite.Create(Application);
-            FSplashAddUnite.Image1.ImageIndex:=3;
-            FSplashAddUnite.Width:=300;
-            FSplashAddUnite.Height:=160;
-            FSplashAddUnite.Panel1.Color:= $0028CAFE;
-            FSplashAddUnite.Color:= $00EFE9E8;
-            FSplashAddUnite.LineP.Color:=$0028CAFE;
-            FSplashAddUnite.LineP.Top:= (FSplashAddUnite.Height) - 44  ;
-            FSplashAddUnite.OKAddUniteSBtn.Top:= (FSplashAddUnite.Height) - 36;
-            FSplashAddUnite.OKAddUniteSBtn.ImageIndex:=17;
-            FSplashAddUnite.CancelAddUniteSBtn.Top:=(FSplashAddUnite.Height) - 36;
-            FSplashAddUnite.OKAddUniteSBtn.Left:=(FSplashAddUnite.Width div 4) - (FSplashAddUnite.OKAddUniteSBtn.Width div 2) + 15;
-            FSplashAddUnite.CancelAddUniteSBtn.Left:= ((FSplashAddUnite.Width div 2 )+((FSplashAddUnite.Width div 2)div 2 ) ) - (FSplashAddUnite.CancelAddUniteSBtn.Width div 2) - 15;
-            if  MainForm.Bonp_fac_listTable.FieldValues['code_p'] <> NULL then
-            begin
-            NomP:=   MainForm.SQLQuery.FieldValues['nom_p'];
-            end else begin
-              NomP:='';
-            end;
-            FSplashAddUnite.NameAddUniteSLbl.Caption:='Article déja inséré : '+ sLineBreak +  sLineBreak + QuotedStr(NomP);
-            FSplashAddUnite.NameAddUniteSLbl.Font.Height:= 22;
-            FSplashAddUnite.NameAddUniteSLbl.Top:= (FSplashAddUnite.Panel1.Height) + 10 ;
-            FSplashAddUnite.NameAddUniteSLbl.Font.Height:=18;
-            FSplashAddUnite.Image1.Visible:=True;
-            FSplashAddUnite.Image1.Top:= (FSplashAddUnite.Height div 2) - (FSplashAddUnite.Image1.Height div 2 ) ;
-            FSplashAddUnite.FormCaptionAddUniteSLbl.Caption:='Attention...';
-            FSplashAddUnite.FormCaptionAddUniteSLbl.Font.Color:=$0040332D;
-            FSplashAddUnite.FormCaptionAddUniteSLbl.Left:=( FSplashAddUnite.Width div 2) -  ( FSplashAddUnite.FormCaptionAddUniteSLbl.Width div 2);
-            FSplashAddUnite.NameAddUniteSEdt.Visible:=False;
-            FSplashAddUnite.RequiredStarAddUniteSLbl.Visible:=False;
-            FSplashAddUnite.NameAddUniteSLbl.Left:= FSplashAddUnite.Image1.Left + FSplashAddUnite.Image1.Width + 10;
-            FSplashAddUnite.Left:=  (MainForm.Left + MainForm.Width div 2) - (FSplashAddUnite.Width div 2);
-            FSplashAddUnite.Top:=   MainForm.Top + 5;
-            FSplashAddUnite.CancelAddUniteSBtn.Caption:='Ignorer' ;
-            FSplashAddUnite.OKAddUniteSBtn.Enabled:=True;
-            FSplashAddUnite.OKAddUniteSBtn.Tag:= 37 ;
-            AnimateWindow(FSplashAddUnite.Handle, 175, AW_VER_POSITIVE OR AW_SLIDE OR AW_ACTIVATE );
-             FSplashAddUnite.Show;
-          //--- this tage = 3 is for multi name added by produit combobox----//
-             FSplashAddUnite.Tag:=6;
+
+
+              //This is for adding qut if it the same produit
+              addToQutIfSameProduit(CodeP);
+
+
+              //We use this when when we to disabable multiple qut for same produit
+
+//            FSplashAddUnite:=TFSplashAddUnite.Create(Application);
+//            FSplashAddUnite.Image1.ImageIndex:=3;
+//            FSplashAddUnite.Width:=300;
+//            FSplashAddUnite.Height:=160;
+//            FSplashAddUnite.Panel1.Color:= $0028CAFE;
+//            FSplashAddUnite.Color:= $00EFE9E8;
+//            FSplashAddUnite.LineP.Color:=$0028CAFE;
+//            FSplashAddUnite.LineP.Top:= (FSplashAddUnite.Height) - 44  ;
+//            FSplashAddUnite.OKAddUniteSBtn.Top:= (FSplashAddUnite.Height) - 36;
+//            FSplashAddUnite.OKAddUniteSBtn.ImageIndex:=17;
+//            FSplashAddUnite.CancelAddUniteSBtn.Top:=(FSplashAddUnite.Height) - 36;
+//            FSplashAddUnite.OKAddUniteSBtn.Left:=(FSplashAddUnite.Width div 4) - (FSplashAddUnite.OKAddUniteSBtn.Width div 2) + 15;
+//            FSplashAddUnite.CancelAddUniteSBtn.Left:= ((FSplashAddUnite.Width div 2 )+((FSplashAddUnite.Width div 2)div 2 ) ) - (FSplashAddUnite.CancelAddUniteSBtn.Width div 2) - 15;
+//            if  MainForm.Bonp_fac_listTable.FieldValues['code_p'] <> NULL then
+//            begin
+//            NomP:=   MainForm.SQLQuery.FieldValues['nom_p'];
+//            end else begin
+//              NomP:='';
+//            end;
+//            FSplashAddUnite.NameAddUniteSLbl.Caption:='Article déja inséré : '+ sLineBreak +  sLineBreak + QuotedStr(NomP);
+//            FSplashAddUnite.NameAddUniteSLbl.Font.Height:= 22;
+//            FSplashAddUnite.NameAddUniteSLbl.Top:= (FSplashAddUnite.Panel1.Height) + 10 ;
+//            FSplashAddUnite.NameAddUniteSLbl.Font.Height:=18;
+//            FSplashAddUnite.Image1.Visible:=True;
+//            FSplashAddUnite.Image1.Top:= (FSplashAddUnite.Height div 2) - (FSplashAddUnite.Image1.Height div 2 ) ;
+//            FSplashAddUnite.FormCaptionAddUniteSLbl.Caption:='Attention...';
+//            FSplashAddUnite.FormCaptionAddUniteSLbl.Font.Color:=$0040332D;
+//            FSplashAddUnite.FormCaptionAddUniteSLbl.Left:=( FSplashAddUnite.Width div 2) -  ( FSplashAddUnite.FormCaptionAddUniteSLbl.Width div 2);
+//            FSplashAddUnite.NameAddUniteSEdt.Visible:=False;
+//            FSplashAddUnite.RequiredStarAddUniteSLbl.Visible:=False;
+//            FSplashAddUnite.NameAddUniteSLbl.Left:= FSplashAddUnite.Image1.Left + FSplashAddUnite.Image1.Width + 10;
+//            FSplashAddUnite.Left:=  (MainForm.Left + MainForm.Width div 2) - (FSplashAddUnite.Width div 2);
+//            FSplashAddUnite.Top:=   MainForm.Top + 5;
+//            FSplashAddUnite.CancelAddUniteSBtn.Caption:='Ignorer' ;
+//            FSplashAddUnite.OKAddUniteSBtn.Enabled:=True;
+//            FSplashAddUnite.OKAddUniteSBtn.Tag:= 37 ;
+//            AnimateWindow(FSplashAddUnite.Handle, 175, AW_VER_POSITIVE OR AW_SLIDE OR AW_ACTIVATE );
+//             FSplashAddUnite.Show;
+//          //--- this tage = 3 is for multi name added by produit combobox----//
+//             FSplashAddUnite.Tag:=6;
          end;
     end;
  //---------------------------------------------------------------------------------------------
@@ -1275,7 +1321,6 @@ begin
              MainForm.Bonp_fac_listTable.SQL.Clear;
              MainForm.Bonp_fac_listTable.SQL.Text:= FPLSQL +' WHERE code_bpfac = ' + QuotedStr(IntToStr(MainForm.Bonp_facTable.FieldValues['code_bpfac']));
              MainForm.Bonp_fac_listTable.Active:=True;
-             MainForm.Bonp_fac_listTable.EnableControls;
 
             ProduitBonFacVGCbx.Text:='';
             ProduitsListDBGridEh.SetFocus;
@@ -1298,48 +1343,52 @@ begin
             MainForm.ClientTable.EnableControls;
          end else
              begin
+                  //This is for adding qut if it the same produit
+                  addToQutIfSameProduit(CodeP);
 
 
-          FSplashAddUnite:=TFSplashAddUnite.Create(Application);
-            FSplashAddUnite.Image1.ImageIndex:=3;
-            FSplashAddUnite.Width:=300;
-            FSplashAddUnite.Height:=160;
-            FSplashAddUnite.Panel1.Color:= $0028CAFE;
-            FSplashAddUnite.Color:= $00EFE9E8;
-            FSplashAddUnite.LineP.Color:=$0028CAFE;
-            FSplashAddUnite.LineP.Top:= (FSplashAddUnite.Height) - 44  ;
-            FSplashAddUnite.OKAddUniteSBtn.Top:= (FSplashAddUnite.Height) - 36;
-            FSplashAddUnite.OKAddUniteSBtn.ImageIndex:=17;
-            FSplashAddUnite.CancelAddUniteSBtn.Top:=(FSplashAddUnite.Height) - 36;
-            FSplashAddUnite.OKAddUniteSBtn.Left:=(FSplashAddUnite.Width div 4) - (FSplashAddUnite.OKAddUniteSBtn.Width div 2) + 15;
-            FSplashAddUnite.CancelAddUniteSBtn.Left:= ((FSplashAddUnite.Width div 2 )+((FSplashAddUnite.Width div 2)div 2 ) ) - (FSplashAddUnite.CancelAddUniteSBtn.Width div 2) - 15;
-            if  MainForm.Bonp_fac_listTable.FieldValues['code_p'] <> NULL then
-            begin
-            NomP:=   MainForm.SQLQuery.FieldValues['nom_p'];
-            end else begin
-              NomP:='';
-            end;
-            FSplashAddUnite.NameAddUniteSLbl.Caption:='Article déja inséré : '+ sLineBreak +  sLineBreak + QuotedStr(NomP);
-            FSplashAddUnite.NameAddUniteSLbl.Font.Height:= 22;
-            FSplashAddUnite.NameAddUniteSLbl.Top:= (FSplashAddUnite.Panel1.Height) + 10 ;
-            FSplashAddUnite.NameAddUniteSLbl.Font.Height:=18;
-            FSplashAddUnite.Image1.Visible:=True;
-            FSplashAddUnite.Image1.Top:= (FSplashAddUnite.Height div 2) - (FSplashAddUnite.Image1.Height div 2 ) ;
-            FSplashAddUnite.FormCaptionAddUniteSLbl.Caption:='Attention...';
-            FSplashAddUnite.FormCaptionAddUniteSLbl.Font.Color:=$0040332D;
-            FSplashAddUnite.FormCaptionAddUniteSLbl.Left:=( FSplashAddUnite.Width div 2) -  ( FSplashAddUnite.FormCaptionAddUniteSLbl.Width div 2);
-            FSplashAddUnite.NameAddUniteSEdt.Visible:=False;
-            FSplashAddUnite.RequiredStarAddUniteSLbl.Visible:=False;
-            FSplashAddUnite.NameAddUniteSLbl.Left:= FSplashAddUnite.Image1.Left + FSplashAddUnite.Image1.Width + 10;
-            FSplashAddUnite.Left:=  (MainForm.Left + MainForm.Width div 2) - (FSplashAddUnite.Width div 2);
-            FSplashAddUnite.Top:=   MainForm.Top + 5;
-            FSplashAddUnite.CancelAddUniteSBtn.Caption:='Ignorer' ;
-            FSplashAddUnite.OKAddUniteSBtn.Enabled:=True;
-            FSplashAddUnite.OKAddUniteSBtn.Tag:= 37 ;
-            AnimateWindow(FSplashAddUnite.Handle, 175, AW_VER_POSITIVE OR AW_SLIDE OR AW_ACTIVATE );
-             FSplashAddUnite.Show;
-          //--- this tage = 0 is for multi name added by produit combobox----//
-             FSplashAddUnite.Tag:=6;
+                  //We use this when when we to disabable multiple qut for same produit
+
+//                  FSplashAddUnite:=TFSplashAddUnite.Create(Application);
+//                  FSplashAddUnite.Image1.ImageIndex:=3;
+//                  FSplashAddUnite.Width:=300;
+//                  FSplashAddUnite.Height:=160;
+//                  FSplashAddUnite.Panel1.Color:= $0028CAFE;
+//                  FSplashAddUnite.Color:= $00EFE9E8;
+//                  FSplashAddUnite.LineP.Color:=$0028CAFE;
+//                  FSplashAddUnite.LineP.Top:= (FSplashAddUnite.Height) - 44  ;
+//                  FSplashAddUnite.OKAddUniteSBtn.Top:= (FSplashAddUnite.Height) - 36;
+//                  FSplashAddUnite.OKAddUniteSBtn.ImageIndex:=17;
+//                  FSplashAddUnite.CancelAddUniteSBtn.Top:=(FSplashAddUnite.Height) - 36;
+//                  FSplashAddUnite.OKAddUniteSBtn.Left:=(FSplashAddUnite.Width div 4) - (FSplashAddUnite.OKAddUniteSBtn.Width div 2) + 15;
+//                  FSplashAddUnite.CancelAddUniteSBtn.Left:= ((FSplashAddUnite.Width div 2 )+((FSplashAddUnite.Width div 2)div 2 ) ) - (FSplashAddUnite.CancelAddUniteSBtn.Width div 2) - 15;
+//                  if  MainForm.Bonp_fac_listTable.FieldValues['code_p'] <> NULL then
+//                  begin
+//                  NomP:=   MainForm.SQLQuery.FieldValues['nom_p'];
+//                  end else begin
+//                    NomP:='';
+//                  end;
+//                  FSplashAddUnite.NameAddUniteSLbl.Caption:='Article déja inséré : '+ sLineBreak +  sLineBreak + QuotedStr(NomP);
+//                  FSplashAddUnite.NameAddUniteSLbl.Font.Height:= 22;
+//                  FSplashAddUnite.NameAddUniteSLbl.Top:= (FSplashAddUnite.Panel1.Height) + 10 ;
+//                  FSplashAddUnite.NameAddUniteSLbl.Font.Height:=18;
+//                  FSplashAddUnite.Image1.Visible:=True;
+//                  FSplashAddUnite.Image1.Top:= (FSplashAddUnite.Height div 2) - (FSplashAddUnite.Image1.Height div 2 ) ;
+//                  FSplashAddUnite.FormCaptionAddUniteSLbl.Caption:='Attention...';
+//                  FSplashAddUnite.FormCaptionAddUniteSLbl.Font.Color:=$0040332D;
+//                  FSplashAddUnite.FormCaptionAddUniteSLbl.Left:=( FSplashAddUnite.Width div 2) -  ( FSplashAddUnite.FormCaptionAddUniteSLbl.Width div 2);
+//                  FSplashAddUnite.NameAddUniteSEdt.Visible:=False;
+//                  FSplashAddUnite.RequiredStarAddUniteSLbl.Visible:=False;
+//                  FSplashAddUnite.NameAddUniteSLbl.Left:= FSplashAddUnite.Image1.Left + FSplashAddUnite.Image1.Width + 10;
+//                  FSplashAddUnite.Left:=  (MainForm.Left + MainForm.Width div 2) - (FSplashAddUnite.Width div 2);
+//                  FSplashAddUnite.Top:=   MainForm.Top + 5;
+//                  FSplashAddUnite.CancelAddUniteSBtn.Caption:='Ignorer' ;
+//                  FSplashAddUnite.OKAddUniteSBtn.Enabled:=True;
+//                  FSplashAddUnite.OKAddUniteSBtn.Tag:= 37 ;
+//                  AnimateWindow(FSplashAddUnite.Handle, 175, AW_VER_POSITIVE OR AW_SLIDE OR AW_ACTIVATE );
+//                   FSplashAddUnite.Show;
+//                //--- this tage = 0 is for multi name added by produit combobox----//
+//                   FSplashAddUnite.Tag:=6;
              end;
           end;
 
