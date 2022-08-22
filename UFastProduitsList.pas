@@ -1926,8 +1926,18 @@ begin
 
   //----- this tag is for multiple products ------//
 
+       if BonCtrGestionF.ClientBonCtrGCbx.Text<> '' then //Here we select the client
+       begin
+         DataModuleF.SQLQuery3.Active:=false;
+         DataModuleF.SQLQuery3.SQL.Clear;
+         DataModuleF.SQLQuery3.SQL.Text:='Select tarification_c FROM client WHERE LOWER(nom_c) LIKE LOWER('+ QuotedStr( BonCtrGestionF.ClientBonCtrGCbx.Text )+')'  ;
+         DataModuleF.SQLQuery3.Active:=True;
+       end;///
+
      if (OKProduitGBtn.Tag = 0) AND (FastProduitsListF.Tag = 4) then
-    begin
+     begin
+
+
 
     CodeP:= MainForm.ProduitTable.FieldByName('code_p').AsInteger ;
      ResearchProduitsEdt.Text:='';
@@ -1975,26 +1985,26 @@ begin
              MainForm.Bonv_ctr_listTable.FieldValues['tva_p']:= MainForm.ProduitTable.FieldValues['tva_p'];
              MainForm.Bonv_ctr_listTable.FieldValues['prixht_p']:= MainForm.ProduitTable.FieldValues['prixht_p'];
 
-           if  NOT (MainForm.ClientTable.IsEmpty) AND ( BonCtrGestionF.ClientBonCtrGCbx.Text<> '' ) then
+           if  NOT (DataModuleF.SQLQuery3.IsEmpty) AND ( BonCtrGestionF.ClientBonCtrGCbx.Text<> '' ) then
            begin
 
-             if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 0 then
+             if DataModuleF.SQLQuery3.FieldByName('tarification_c').AsInteger = 0 then
              begin
              MainForm.Bonv_ctr_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixvd_p'];
              end;
-             if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 1 then
+             if DataModuleF.SQLQuery3.FieldByName('tarification_c').AsInteger = 1 then
              begin
              MainForm.Bonv_ctr_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixvr_p'];
              end;
-             if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 2 then
+             if DataModuleF.SQLQuery3.FieldByName('tarification_c').AsInteger = 2 then
              begin
              MainForm.Bonv_ctr_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixvg_p'];
              end;
-             if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 3 then
+             if DataModuleF.SQLQuery3.FieldByName('tarification_c').AsInteger = 3 then
              begin
              MainForm.Bonv_ctr_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixva_p'];
              end;
-             if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 4 then
+             if DataModuleF.SQLQuery3.FieldByName('tarification_c').AsInteger = 4 then
              begin
              MainForm.Bonv_ctr_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixva2_p'];
              end;
@@ -2008,6 +2018,7 @@ begin
              MainForm.Bonv_ctr_listTable.Post ;
 
 
+
       end;
            ProduitsListDBGridEh.SelectedRows.Clear;
            MainForm.Bonv_ctr_listTable.IndexFieldNames:='code_bvctr';
@@ -2019,12 +2030,6 @@ begin
              begin
 
                 //In ctr we add dictrly to the qut if the produit is laready exist
-
-
-
-
-
-
 
 
                 FSplashAddUnite:=TFSplashAddUnite.Create(FastProduitsListF);
@@ -2073,6 +2078,9 @@ begin
              MainForm.Bonv_ctr_listTable.Last;
              BonCtrGestionF.showInPoleClient;
 
+             DataModuleF.SQLQuery3.Active:=false;
+             DataModuleF.SQLQuery3.SQL.Clear;
+
     end else
 
     if (OKproduitGBtn.Tag = 1) AND (FastProduitsListF.Tag = 4) then
@@ -2111,26 +2119,26 @@ begin
              MainForm.Bonv_ctr_listTable.FieldValues['tva_p']:= MainForm.ProduitTable.FieldValues['tva_p'];
              MainForm.Bonv_ctr_listTable.FieldValues['prixht_p']:= MainForm.ProduitTable.FieldValues['prixht_p'];
 
-           if  NOT (MainForm.ClientTable.IsEmpty) AND ( BonCtrGestionF.ClientBonCtrGCbx.Text<> '' ) then
+           if  NOT (DataModuleF.SQLQuery3.IsEmpty) AND ( BonCtrGestionF.ClientBonCtrGCbx.Text<> '' ) then
            begin
 
-             if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 0 then
+             if DataModuleF.SQLQuery3.FieldByName('tarification_c').AsInteger = 0 then
              begin
              MainForm.Bonv_ctr_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixvd_p'];
              end;
-             if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 1 then
+             if DataModuleF.SQLQuery3.FieldByName('tarification_c').AsInteger = 1 then
              begin
              MainForm.Bonv_ctr_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixvr_p'];
              end;
-             if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 2 then
+             if DataModuleF.SQLQuery3.FieldByName('tarification_c').AsInteger = 2 then
              begin
              MainForm.Bonv_ctr_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixvg_p'];
              end;
-             if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 3 then
+             if DataModuleF.SQLQuery3.FieldByName('tarification_c').AsInteger = 3 then
              begin
              MainForm.Bonv_ctr_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixva_p'];
              end;
-             if MainForm.ClientTable.FieldByName('tarification_c').AsInteger = 4 then
+             if DataModuleF.SQLQuery3.FieldByName('tarification_c').AsInteger = 4 then
              begin
              MainForm.Bonv_ctr_listTable.FieldValues['prixvd_p']:= MainForm.ProduitTable.FieldValues['prixva2_p'];
              end;
@@ -2213,9 +2221,10 @@ begin
         MainForm.Bonv_ctr_listTable.Last;
         BonCtrGestionF.showInPoleClient;
 
-
-    end
-     else
+       DataModuleF.SQLQuery3.Active:=false;
+       DataModuleF.SQLQuery3.SQL.Clear;
+      end
+       else
 
 
       if (OKProduitGBtn.Tag = 2) AND (FastProduitsListF.Tag = 4)  then
