@@ -1926,18 +1926,18 @@ begin
 
   //----- this tag is for multiple products ------//
 
-       if BonCtrGestionF.ClientBonCtrGCbx.Text<> '' then //Here we select the client
+
+
+     if (OKProduitGBtn.Tag = 0) AND (FastProduitsListF.Tag = 4) then
+     begin
+
+         if BonCtrGestionF.ClientBonCtrGCbx.Text<> '' then //Here we select the client
        begin
          DataModuleF.SQLQuery3.Active:=false;
          DataModuleF.SQLQuery3.SQL.Clear;
          DataModuleF.SQLQuery3.SQL.Text:='Select tarification_c FROM client WHERE LOWER(nom_c) LIKE LOWER('+ QuotedStr( BonCtrGestionF.ClientBonCtrGCbx.Text )+')'  ;
          DataModuleF.SQLQuery3.Active:=True;
        end;///
-
-     if (OKProduitGBtn.Tag = 0) AND (FastProduitsListF.Tag = 4) then
-     begin
-
-
 
     CodeP:= MainForm.ProduitTable.FieldByName('code_p').AsInteger ;
      ResearchProduitsEdt.Text:='';
@@ -2085,6 +2085,14 @@ begin
 
     if (OKproduitGBtn.Tag = 1) AND (FastProduitsListF.Tag = 4) then
     begin
+
+       if BonCtrGestionF.ClientBonCtrGCbx.Text<> '' then //Here we select the client
+       begin
+         DataModuleF.SQLQuery3.Active:=false;
+         DataModuleF.SQLQuery3.SQL.Clear;
+         DataModuleF.SQLQuery3.SQL.Text:='Select tarification_c FROM client WHERE LOWER(nom_c) LIKE LOWER('+ QuotedStr( BonCtrGestionF.ClientBonCtrGCbx.Text )+')'  ;
+         DataModuleF.SQLQuery3.Active:=True;
+       end;///
 
         CodeP:= MainForm.ProduitTable.FieldByName('code_p').AsInteger ;
 
