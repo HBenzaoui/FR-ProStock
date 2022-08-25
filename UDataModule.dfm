@@ -1340,7 +1340,7 @@ object DataModuleF: TDataModuleF
     object ChargesTableobser_ch: TWideStringField
       FieldName = 'obser_ch'
       Origin = 'obser_ch'
-      Size = 200
+      Size = 1000
     end
     object ChargesTablemontht_ch: TFMTBCDField
       FieldName = 'montht_ch'
@@ -1452,23 +1452,24 @@ object DataModuleF: TDataModuleF
       Size = 50
       Lookup = True
     end
-    object PertesTablenomp: TStringField
+    object PertesTablenomp2: TWideStringField
       FieldKind = fkLookup
       FieldName = 'nomp'
       LookupDataSet = MainForm.ProduitTable
       LookupKeyFields = 'code_p'
       LookupResultField = 'nom_p'
       KeyFields = 'code_p'
-      Size = 150
+      Size = 300
       Lookup = True
     end
-    object PertesTablereferp: TStringField
+    object PertesTablereferp: TWideStringField
       FieldKind = fkLookup
       FieldName = 'referp'
       LookupDataSet = MainForm.ProduitTable
       LookupKeyFields = 'code_p'
       LookupResultField = 'refer_p'
       KeyFields = 'code_p'
+      Size = 50
       Lookup = True
     end
     object PertesTableAgent: TStringField
@@ -1484,12 +1485,12 @@ object DataModuleF: TDataModuleF
     object PertesTablerefer_pr: TWideStringField
       FieldName = 'refer_pr'
       Origin = 'refer_pr'
-      Size = 200
+      Size = 50
     end
     object PertesTableobser_pr: TWideStringField
       FieldName = 'obser_pr'
       Origin = 'obser_pr'
-      Size = 200
+      Size = 1000
     end
     object PertesTablequt_p: TFMTBCDField
       FieldName = 'qut_p'
@@ -1563,7 +1564,7 @@ object DataModuleF: TDataModuleF
     object Transfer_comptesTablerefer_transfer: TWideStringField
       FieldName = 'refer_transfer'
       Origin = 'refer_transfer'
-      Size = 8190
+      Size = 50
     end
     object Transfer_comptesTablenum_cheque_transfer: TWideStringField
       FieldName = 'num_cheque_transfer'
@@ -1822,14 +1823,13 @@ object DataModuleF: TDataModuleF
       FieldName = 'num'
       Origin = 'num'
       ReadOnly = True
-      Size = 8190
     end
     object ClientSituationQRsource: TWideStringField
       AutoGenerateValue = arDefault
       FieldName = 'source'
       Origin = 'source'
       ReadOnly = True
-      Size = 32767
+      Size = 3
     end
     object ClientSituationQRdate_bvcom: TDateField
       AutoGenerateValue = arDefault
@@ -1848,7 +1848,7 @@ object DataModuleF: TDataModuleF
       FieldName = 'mp'
       Origin = 'mp'
       ReadOnly = True
-      Size = 32767
+      Size = 25
     end
     object ClientSituationQRagent: TIntegerField
       AutoGenerateValue = arDefault
@@ -1972,14 +1972,13 @@ object DataModuleF: TDataModuleF
       FieldName = 'num'
       Origin = 'num'
       ReadOnly = True
-      Size = 8190
     end
     object WideStringField2: TWideStringField
       AutoGenerateValue = arDefault
       FieldName = 'source'
       Origin = 'source'
       ReadOnly = True
-      Size = 32767
+      Size = 3
     end
     object DateField1: TDateField
       AutoGenerateValue = arDefault
@@ -1998,7 +1997,7 @@ object DataModuleF: TDataModuleF
       FieldName = 'mp'
       Origin = 'mp'
       ReadOnly = True
-      Size = 32767
+      Size = 25
     end
     object IntegerField2: TIntegerField
       AutoGenerateValue = arDefault
@@ -2241,7 +2240,7 @@ object DataModuleF: TDataModuleF
       FieldName = 'tiers'
       Origin = 'tiers'
       ReadOnly = True
-      Size = 8190
+      Size = 100
     end
     object ProduitMovementQRdate: TDateField
       AutoGenerateValue = arDefault
@@ -2459,21 +2458,21 @@ object DataModuleF: TDataModuleF
       FieldName = 'refer_p'
       Origin = 'refer_p'
       ReadOnly = True
-      Size = 8190
+      Size = 50
     end
     object AllProduitMovementQRnom_p: TWideStringField
       AutoGenerateValue = arDefault
       FieldName = 'nom_p'
       Origin = 'nom_p'
       ReadOnly = True
-      Size = 8190
+      Size = 300
     end
     object AllProduitMovementQRsource: TWideStringField
       AutoGenerateValue = arDefault
       FieldName = 'source'
       Origin = 'source'
       ReadOnly = True
-      Size = 32767
+      Size = 3
     end
     object AllProduitMovementQRnum: TWideStringField
       AutoGenerateValue = arDefault
@@ -2486,7 +2485,7 @@ object DataModuleF: TDataModuleF
       FieldName = 'tiers'
       Origin = 'tiers'
       ReadOnly = True
-      Size = 8190
+      Size = 100
     end
     object AllProduitMovementQRdate: TDateField
       AutoGenerateValue = arDefault
@@ -2598,12 +2597,12 @@ object DataModuleF: TDataModuleF
       FieldName = 'nump_i'
       Origin = 'nump_i'
       ReadOnly = True
-      Size = 32767
+      Size = 300
     end
     object InventoryTableobser_i: TWideStringField
       FieldName = 'obser_i'
       Origin = 'obser_i'
-      Size = 32767
+      Size = 1000
     end
     object InventoryTableAgent: TStringField
       FieldKind = fkLookup
@@ -2670,13 +2669,13 @@ object DataModuleF: TDataModuleF
       AutoGenerateValue = arDefault
       FieldName = 'refer_p'
       Origin = 'refer_p'
-      Size = 8190
+      Size = 50
     end
     object Inventory_listTablenom_p: TWideStringField
       AutoGenerateValue = arDefault
       FieldName = 'nom_p'
       Origin = 'nom_p'
-      Size = 8190
+      Size = 300
     end
     object Inventory_listTablecode_u: TIntegerField
       FieldName = 'code_u'
@@ -2803,7 +2802,7 @@ object DataModuleF: TDataModuleF
       LookupKeyFields = 'code_f'
       LookupResultField = 'nom_f'
       KeyFields = 'code_f'
-      Size = 250
+      Size = 100
       Lookup = True
     end
     object Bona_comTablenum_cheque_bacom: TWideStringField
@@ -2863,7 +2862,7 @@ object DataModuleF: TDataModuleF
     object Bona_comTableobser_bacom: TWideStringField
       FieldName = 'obser_bacom'
       Origin = 'obser_bacom'
-      Size = 200
+      Size = 1000
     end
     object Bona_comTablemontht_bacom: TFMTBCDField
       FieldName = 'montht_bacom'
@@ -3046,13 +3045,13 @@ object DataModuleF: TDataModuleF
       AutoGenerateValue = arDefault
       FieldName = 'nomp'
       Origin = 'nomp'
-      Size = 8190
+      Size = 300
     end
-    object Bona_com_listTablereferp: TWideStringField
+    object o: TWideStringField
       AutoGenerateValue = arDefault
       FieldName = 'referp'
       Origin = 'referp'
-      Size = 8190
+      Size = 50
     end
     object Bona_com_listTablequt_p: TFMTBCDField
       FieldName = 'qut_p'
@@ -3270,7 +3269,7 @@ object DataModuleF: TDataModuleF
       LookupKeyFields = 'code_c'
       LookupResultField = 'nom_c'
       KeyFields = 'code_c'
-      Size = 250
+      Size = 100
       Lookup = True
     end
     object Bonv_comTablecode_ur: TIntegerField
@@ -3280,7 +3279,7 @@ object DataModuleF: TDataModuleF
     object Bonv_comTableobser_bvcom: TWideStringField
       FieldName = 'obser_bvcom'
       Origin = 'obser_bvcom'
-      Size = 32767
+      Size = 1000
     end
     object Bonv_comTableAgent: TStringField
       FieldKind = fkLookup
@@ -3442,13 +3441,13 @@ object DataModuleF: TDataModuleF
       AutoGenerateValue = arDefault
       FieldName = 'nomp'
       Origin = 'nomp'
-      Size = 8190
+      Size = 300
     end
     object Bonv_com_listTablereferp: TWideStringField
       AutoGenerateValue = arDefault
       FieldName = 'referp'
       Origin = 'referp'
-      Size = 8190
+      Size = 50
     end
     object Bonv_com_listTablequt_p: TFMTBCDField
       FieldName = 'qut_p'
@@ -3589,7 +3588,7 @@ object DataModuleF: TDataModuleF
     object Bona_retTableobser_baret: TWideStringField
       FieldName = 'obser_baret'
       Origin = 'obser_baret'
-      Size = 32767
+      Size = 1000
     end
     object Bona_retTablemontttc_baret: TFMTBCDField
       FieldName = 'montttc_baret'
@@ -3610,7 +3609,7 @@ object DataModuleF: TDataModuleF
       LookupKeyFields = 'code_f'
       LookupResultField = 'nom_f'
       KeyFields = 'code_f'
-      Size = 250
+      Size = 100
       Lookup = True
     end
     object Bona_retTablenum_cheque_baret: TWideStringField
@@ -3789,13 +3788,13 @@ object DataModuleF: TDataModuleF
       AutoGenerateValue = arDefault
       FieldName = 'nomp'
       Origin = 'nomp'
-      Size = 8190
+      Size = 300
     end
     object Bona_ret_listTablereferp: TWideStringField
       AutoGenerateValue = arDefault
       FieldName = 'referp'
       Origin = 'referp'
-      Size = 8190
+      Size = 50
     end
     object Bona_ret_listTableprixvd_p: TFMTBCDField
       FieldName = 'prixvd_p'
@@ -3963,7 +3962,7 @@ object DataModuleF: TDataModuleF
       LookupKeyFields = 'code_c'
       LookupResultField = 'nom_c'
       KeyFields = 'code_c'
-      Size = 250
+      Size = 100
       Lookup = True
     end
     object Bonv_retTablenum_cheque_bvret: TWideStringField
@@ -4005,7 +4004,7 @@ object DataModuleF: TDataModuleF
     object Bonv_retTableobser_bvret: TWideStringField
       FieldName = 'obser_bvret'
       Origin = 'obser_bvret'
-      Size = 32767
+      Size = 1000
     end
     object Bonv_retTableAgent: TStringField
       FieldKind = fkLookup
@@ -4170,13 +4169,13 @@ object DataModuleF: TDataModuleF
       AutoGenerateValue = arDefault
       FieldName = 'nomp'
       Origin = 'nomp'
-      Size = 8190
+      Size = 300
     end
     object Bonv_ret_listTablereferp: TWideStringField
       AutoGenerateValue = arDefault
       FieldName = 'referp'
       Origin = 'referp'
-      Size = 8190
+      Size = 50
     end
     object Bonv_ret_listTablelocalisation: TWideStringField
       AutoGenerateValue = arDefault

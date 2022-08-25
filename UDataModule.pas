@@ -87,8 +87,6 @@ type
     PertesTablecode_prt: TSmallintField;
     PertesTableAgent: TStringField;
     PertesTablePRType: TStringField;
-    PertesTablenomp: TStringField;
-    PertesTablereferp: TStringField;
     ChargesTableCompte: TStringField;
     ChargesTableCHType: TStringField;
     Charge_s_typeTablecode_chst: TSmallintField;
@@ -278,7 +276,7 @@ type
     Bona_com_listTabledateperiss_p: TDateField;
     Bona_com_listTabletva_p: TSmallintField;
     Bona_com_listTablenomp: TWideStringField;
-    Bona_com_listTablereferp: TWideStringField;
+    o: TWideStringField;
     BonComAListDataS: TDataSource;
     Bonv_comTable: TFDQuery;
     Bonv_comTablecode_bvcom: TIntegerField;
@@ -524,6 +522,8 @@ type
     Bonv_retTableclientbvret: TWideStringField;
     Bona_retTableclientbaret: TWideStringField;
     Bona_comTablefourbacom: TWideStringField;
+    PertesTablenomp2: TWideStringField;
+    PertesTablereferp: TWideStringField;
     procedure DataModuleCreate(Sender: TObject);
     procedure PZeroQCnotifCalcFields(DataSet: TDataSet);
     procedure PCloseZeroQCnotifCalcFields(DataSet: TDataSet);
