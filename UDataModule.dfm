@@ -1735,23 +1735,24 @@ object DataModuleF: TDataModuleF
     Connection = MainForm.GstockdcConnection
     SQL.Strings = (
       
-        'SELECT  num_bvcom AS Num, Source,date_bvcom, time_bvcom, montttc' +
-        '_bvcom AS Total, montver_bvcom AS Versemt, Rest, MP, code_ur AS ' +
+        'SELECT  num_bvliv AS Num, Source,date_bvliv, time_bvliv, montttc' +
+        '_bvliv AS Total, montver_bvliv AS Versemt, Rest, MP, code_ur AS ' +
         'Agent'
       'FROM'
       '('
       
-        'SELECT code_c,num_bvcom,date_bvcom,time_bvcom,montttc_bvcom,mont' +
-        'ver_bvcom,(montttc_bvcom - montver_bvcom) AS Rest,'#39'BL'#39' AS Source' +
-        ', code_ur,'
+        'SELECT code_c,num_bvliv,date_bvliv,time_bvliv,montttc_bvliv,mont' +
+        'ver_bvliv,(montttc_bvliv- montver_bvliv) AS Rest,'#39'BL'#39' AS Source,' +
+        ' code_ur,'
       '  CASE BL.code_mdpai'
       '    WHEN  1 THEN '#39'Esp'#232'ce'#39
       '    WHEN  2 THEN '#39'Ch'#232'que'#39
       '    WHEN  3 THEN '#39#192' Terme'#39
       '    WHEN  4 THEN '#39'Virement'#39
+      '    WHEN  5 THEN '#39'Carte bancaire'#39
       '    end AS MP'
       
-        'FROM bonv_com BL where code_c = :CodeC AND date_bvcom BETWEEN :D' +
+        'FROM bonv_liv BL where code_c = :CodeC AND date_bvliv BETWEEN :D' +
         'ateStartC AND :DateEndC'
       ''
       'UNION ALL'
@@ -1764,6 +1765,7 @@ object DataModuleF: TDataModuleF
       '    WHEN  2 THEN '#39'Ch'#232'que'#39
       '    WHEN  3 THEN '#39#192' Terme'#39
       '    WHEN  4 THEN '#39'Virement'#39
+      '    WHEN  5 THEN '#39'Carte bancaire'#39
       '    end'
       
         'FROM bonv_fac FC where code_c = :CodeC AND date_bvfac BETWEEN :D' +
@@ -1781,6 +1783,54 @@ object DataModuleF: TDataModuleF
       ''
       'UNION ALL'
       
+        'SELECT code_c,num_bvcom,date_bvcom,time_bvcom,montttc_bvcom,mont' +
+        'ver_bvcom,(montttc_bvcom - montver_bvcom) AS Rest,'#39'BCC'#39' AS Sourc' +
+        'e, code_ur,'
+      '  CASE BCC.code_mdpai'
+      '    WHEN  1 THEN '#39'Esp'#232'ce'#39
+      '    WHEN  2 THEN '#39'Ch'#232'que'#39
+      '    WHEN  3 THEN '#39#192' Terme'#39
+      '    WHEN  4 THEN '#39'Virement'#39
+      '    WHEN  5 THEN '#39'Carte bancaire'#39
+      '    end AS MP'
+      
+        'FROM bonv_com BCC where code_c = :CodeC AND date_bvcom BETWEEN :' +
+        'DateStartC AND :DateEndC'
+      ''
+      'UNION ALL'
+      
+        'SELECT code_c,num_bvret,date_bvret,time_bvret,montttc_bvret,mont' +
+        'ver_bvret,(montttc_bvret - montver_bvret) AS Rest,'#39'BRC'#39' AS Sourc' +
+        'e, code_ur,'
+      '  CASE BRC.code_mdpai'
+      '    WHEN  1 THEN '#39'Esp'#232'ce'#39
+      '    WHEN  2 THEN '#39'Ch'#232'que'#39
+      '    WHEN  3 THEN '#39#192' Terme'#39
+      '    WHEN  4 THEN '#39'Virement'#39
+      '    WHEN  5 THEN '#39'Carte bancaire'#39
+      '    end AS MP'
+      
+        'FROM bonv_ret BRC where code_c = :CodeC AND date_bvret BETWEEN :' +
+        'DateStartC AND :DateEndC'
+      ''
+      'UNION ALL'
+      
+        'SELECT code_c,num_bvfacr,date_bvfacr,time_bvfacr,montttc_bvfacr,' +
+        'montver_bvfacr,(montttc_bvfacr - montver_bvfacr) AS Rest,'#39'FAC'#39' A' +
+        'S Source, code_ur,'
+      '  CASE FAC.code_mdpai'
+      '    WHEN  1 THEN '#39'Esp'#232'ce'#39
+      '    WHEN  2 THEN '#39'Ch'#232'que'#39
+      '    WHEN  3 THEN '#39#192' Terme'#39
+      '    WHEN  4 THEN '#39'Virement'#39
+      '    WHEN  5 THEN '#39'Carte bancaire'#39
+      '    end AS MP'
+      
+        'FROM bonv_facr FAC where code_c = :CodeC AND date_bvfacr BETWEEN' +
+        ' :DateStartC AND :DateEndC'
+      ''
+      'UNION ALL'
+      
         'SELECT code_c,nom_rc,date_rc,time_rc,'#39'0'#39' ,montver_rc,(montver_rc' +
         ' * -1) AS rest, '#39'RC'#39' AS Source, code_ur,'
       '  CASE RG.code_mdpai'
@@ -1788,6 +1838,7 @@ object DataModuleF: TDataModuleF
       '    WHEN  2 THEN '#39'Ch'#232'que'#39
       '    WHEN  3 THEN '#39#192' Terme'#39
       '    WHEN  4 THEN '#39'Virement'#39
+      '    WHEN  5 THEN '#39'Carte bancaire'#39
       '    end'
       
         'FROM regclient RG where code_c = :CodeC AND date_rc BETWEEN :Dat' +
@@ -1796,7 +1847,7 @@ object DataModuleF: TDataModuleF
       'VT'
       '-- INNER JOIN client CL'
       '-- ON  CL.code_c = VT.code_c'
-      '  ORDER BY date_bvcom,time_bvcom;')
+      '  ORDER BY date_bvliv,time_bvliv;')
     Left = 174
     Top = 638
     ParamData = <
@@ -1831,24 +1882,24 @@ object DataModuleF: TDataModuleF
       ReadOnly = True
       Size = 3
     end
-    object ClientSituationQRdate_bvcom: TDateField
-      AutoGenerateValue = arDefault
-      FieldName = 'date_bvcom'
-      Origin = 'date_bvcom'
-      ReadOnly = True
-    end
-    object ClientSituationQRtime_bvcom: TTimeField
-      AutoGenerateValue = arDefault
-      FieldName = 'time_bvcom'
-      Origin = 'time_bvcom'
-      ReadOnly = True
-    end
     object ClientSituationQRmp: TWideStringField
       AutoGenerateValue = arDefault
       FieldName = 'mp'
       Origin = 'mp'
       ReadOnly = True
       Size = 25
+    end
+    object ClientSituationQRtime_bvliv: TTimeField
+      AutoGenerateValue = arDefault
+      FieldName = 'time_bvliv'
+      Origin = 'time_bvliv'
+      ReadOnly = True
+    end
+    object ClientSituationQRdate_bvliv: TDateField
+      AutoGenerateValue = arDefault
+      FieldName = 'date_bvliv'
+      Origin = 'date_bvliv'
+      ReadOnly = True
     end
     object ClientSituationQRagent: TIntegerField
       AutoGenerateValue = arDefault
@@ -1908,6 +1959,7 @@ object DataModuleF: TDataModuleF
       '    WHEN  2 THEN '#39'Ch'#232'que'#39
       '    WHEN  3 THEN '#39#192' Terme'#39
       '    WHEN  4 THEN '#39'Virement'#39
+      '    WHEN  5 THEN '#39'Carte bancaire'#39
       '    end AS MP'
       
         'FROM bona_rec BR where code_f = :CodeF AND date_barec BETWEEN :D' +
@@ -1923,10 +1975,60 @@ object DataModuleF: TDataModuleF
       '    WHEN  2 THEN '#39'Ch'#232'que'#39
       '    WHEN  3 THEN '#39#192' Terme'#39
       '    WHEN  4 THEN '#39'Virement'#39
+      '    WHEN  5 THEN '#39'Carte bancaire'#39
       '    end'
       
         'FROM bona_fac FA where code_f = :CodeF AND date_bafac BETWEEN :D' +
         'ateStartF AND :DateEndF'
+      ''
+      'UNION ALL'
+      
+        'SELECT code_f,num_bacom,date_bacom,time_bacom,montttc_bacom,mont' +
+        'ver_bacom,(montttc_bacom - montver_bacom) AS Rest,'#39'BCF'#39' AS Sourc' +
+        'e, code_ur,'
+      '  CASE BCF.code_mdpai'
+      '    WHEN  1 THEN '#39'Esp'#232'ce'#39
+      '    WHEN  2 THEN '#39'Ch'#232'que'#39
+      '    WHEN  3 THEN '#39#192' Terme'#39
+      '    WHEN  4 THEN '#39'Virement'#39
+      '    WHEN  5 THEN '#39'Carte bancaire'#39
+      '    end'
+      
+        'FROM bona_com BCF where code_f = :CodeF AND date_bacom BETWEEN :' +
+        'DateStartF AND :DateEndF'
+      ''
+      ''
+      'UNION ALL'
+      
+        'SELECT code_f,num_baret,date_baret,time_baret,montttc_baret,mont' +
+        'ver_baret,(montttc_baret - montver_baret) AS Rest,'#39'BRF'#39' AS Sourc' +
+        'e, code_ur,'
+      '  CASE BRF.code_mdpai'
+      '    WHEN  1 THEN '#39'Esp'#232'ce'#39
+      '    WHEN  2 THEN '#39'Ch'#232'que'#39
+      '    WHEN  3 THEN '#39#192' Terme'#39
+      '    WHEN  4 THEN '#39'Virement'#39
+      '    WHEN  5 THEN '#39'Carte bancaire'#39
+      '    end'
+      
+        'FROM bona_ret BRF where code_f = :CodeF AND date_baret BETWEEN :' +
+        'DateStartF AND :DateEndF'
+      ''
+      'UNION ALL'
+      
+        'SELECT code_f,num_bafacr,date_bafacr,time_bafacr,montttc_bafacr,' +
+        'montver_bafacr,(montttc_bafacr - montver_bafacr) AS Rest,'#39'FAF'#39' A' +
+        'S Source, code_ur,'
+      '  CASE FAF.code_mdpai'
+      '    WHEN  1 THEN '#39'Esp'#232'ce'#39
+      '    WHEN  2 THEN '#39'Ch'#232'que'#39
+      '    WHEN  3 THEN '#39#192' Terme'#39
+      '    WHEN  4 THEN '#39'Virement'#39
+      '    WHEN  5 THEN '#39'Carte bancaire'#39
+      '    end'
+      
+        'FROM bona_facr FAF where code_f = :CodeF AND date_bafacr BETWEEN' +
+        ' :DateStartF AND :DateEndF'
       ''
       'UNION ALL'
       
@@ -1937,6 +2039,7 @@ object DataModuleF: TDataModuleF
       '    WHEN  2 THEN '#39'Ch'#232'que'#39
       '    WHEN  3 THEN '#39#192' Terme'#39
       '    WHEN  4 THEN '#39'Virement'#39
+      '    WHEN  5 THEN '#39'Carte bancaire'#39
       '    end'
       
         'FROM regfournisseur RF where code_f = :CodeF AND date_rf BETWEEN' +

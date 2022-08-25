@@ -194,8 +194,6 @@ type
     ClientSituationQR: TFDQuery;
     ClientSituationQRnum: TWideStringField;
     ClientSituationQRsource: TWideStringField;
-    ClientSituationQRdate_bvcom: TDateField;
-    ClientSituationQRtime_bvcom: TTimeField;
     ClientSituationQRmp: TWideStringField;
     ClientSituationQRagent: TIntegerField;
     ClientSituationQRAgentName: TStringField;
@@ -524,6 +522,8 @@ type
     Bona_comTablefourbacom: TWideStringField;
     PertesTablenomp2: TWideStringField;
     PertesTablereferp: TWideStringField;
+    ClientSituationQRdate_bvliv: TDateField;
+    ClientSituationQRtime_bvliv: TTimeField;
     procedure DataModuleCreate(Sender: TObject);
     procedure PZeroQCnotifCalcFields(DataSet: TDataSet);
     procedure PCloseZeroQCnotifCalcFields(DataSet: TDataSet);
