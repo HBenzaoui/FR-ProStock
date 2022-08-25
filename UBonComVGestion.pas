@@ -248,27 +248,27 @@ type
     procedure GettingDataBonCaisse;
     procedure GettingDataBonCaisseA5;
     procedure GettingDataA5;
-    procedure GettingDataBCVSimple;
+    procedure GettingDataBCCSimple;
   public
      
-     const BCVLSQL = 'Select BCVL.code_bvcom,BCVL.code_bvcoml,BCVL.qut_p,BCVL.prixht_p,BCVL.prixvd_p,BCVL.cond_p,BCVL.code_p,BCVL.tva_p,BCVL.code_barec,P.prixht_p,P.nom_p as nomp, P.refer_p as referp, '
-          +' (((BCVL.prixvd_p * BCVL.tva_p)/100)+BCVL.prixvd_p) AS PrixVTTC, '
-          +' ((BCVL.prixht_p * BCVL.qut_p) * cond_p) AS MontantAHT, '
-          +' ((BCVL.prixvd_p * BCVL.qut_p) * cond_p) AS MontantHT, '
-          +' (((((BCVL.prixvd_p * BCVL.tva_p)/100)+BCVL.prixvd_p) * BCVL.qut_p)*cond_p) AS MontantTTC, '
-          +' (((((((BCVL.prixvd_p * BCVL.tva_p)/100)+BCVL.prixvd_p) * BCVL.qut_p)*cond_p) )-(((BCVL.prixvd_p * BCVL.qut_p) * cond_p))) AS MontantTVA, '
-          +' ((P.prixht_p * BCVL.qut_p)* cond_p) AS MontantAHT, '
+     const BCCLSQL = 'Select BCCL.code_bvcom,BCCL.code_bvcoml,BCCL.qut_p,BCCL.prixht_p,BCCL.prixvd_p,BCCL.cond_p,BCCL.code_p,BCCL.tva_p,BCCL.code_barec,P.prixht_p,P.nom_p as nomp, P.refer_p as referp, '
+          +' (((BCCL.prixvd_p * BCCL.tva_p)/100)+BCCL.prixvd_p) AS PrixVTTC, '
+          +' ((BCCL.prixht_p * BCCL.qut_p) * cond_p) AS MontantAHT, '
+          +' ((BCCL.prixvd_p * BCCL.qut_p) * cond_p) AS MontantHT, '
+          +' (((((BCCL.prixvd_p * BCCL.tva_p)/100)+BCCL.prixvd_p) * BCCL.qut_p)*cond_p) AS MontantTTC, '
+          +' (((((((BCCL.prixvd_p * BCCL.tva_p)/100)+BCCL.prixvd_p) * BCCL.qut_p)*cond_p) )-(((BCCL.prixvd_p * BCCL.qut_p) * cond_p))) AS MontantTVA, '
+          +' ((P.prixht_p * BCCL.qut_p)* cond_p) AS MontantAHT, '
           +' CASE '
-          +'      WHEN BCVL.prixvd_p <> ''0''  THEN '
-          +'   CASE WHEN ((P.prixht_p * BCVL.qut_p)* cond_p) <> ''0'' '
-          +'     THEN ( ( (((BCVL.prixvd_p * BCVL.qut_p) * cond_p) - ((P.prixht_p * BCVL.qut_p)* cond_p)) / ((P.prixht_p * BCVL.qut_p)* cond_p) ) *100) '
+          +'      WHEN BCCL.prixvd_p <> ''0''  THEN '
+          +'   CASE WHEN ((P.prixht_p * BCCL.qut_p)* cond_p) <> ''0'' '
+          +'     THEN ( ( (((BCCL.prixvd_p * BCCL.qut_p) * cond_p) - ((P.prixht_p * BCCL.qut_p)* cond_p)) / ((P.prixht_p * BCCL.qut_p)* cond_p) ) *100) '
           +'     ELSE ''100'' '
           +'   END '
           +' END AS Marge, '
-          +' (((BCVL.prixvd_p * BCVL.qut_p) * cond_p) - ((P.prixht_p * BCVL.qut_p)* cond_p) ) AS MargeM '
-          +' FROM bonv_com_list as BCVL '
+          +' (((BCCL.prixvd_p * BCCL.qut_p) * cond_p) - ((P.prixht_p * BCCL.qut_p)* cond_p) ) AS MargeM '
+          +' FROM bonv_com_list as BCCL '
           +' LEFT JOIN produit as P '
-          +' ON BCVL.code_p = P.code_p ';
+          +' ON BCCL.code_p = P.code_p ';
      procedure EnableBonComV;
   end;
 
@@ -367,7 +367,7 @@ begin
   end;
 
 procedure TBonComVGestionF.FormShow(Sender: TObject);
-var CodeBCV: Integer;
+var CodeBCC: Integer;
 OLDCredit,NEWCredit : Double;
 begin
 
@@ -385,8 +385,8 @@ begin
       BonComRegleLbl.Caption :=         FloatToStrF(StrToFloat(BonComRegleLbl.Caption),ffNumber,14,2) ;
       BonComGClientOLDCredit.Caption:= FloatToStrF(StrToFloat(BonComGClientOLDCredit.Caption),ffNumber,14,2) ;
       BonComGClientNEWCredit.Caption:= FloatToStrF(StrToFloat(BonComGClientNEWCredit.Caption),ffNumber,14,2) ;
- CodeBCV:= DataModuleF.Bonv_comTable.FieldByName('code_bvcom').AsInteger   ;
-    NumBonComGEdt.Caption := 'BCV'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5, CodeBCV]);
+ CodeBCC:= DataModuleF.Bonv_comTable.FieldByName('code_bvcom').AsInteger   ;
+    NumBonComGEdt.Caption := 'BCC'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5, CodeBCC]);
   if (DataModuleF.Bonv_comTable.FieldByName('code_c').AsInteger <> null)
   AND(DataModuleF.Bonv_comTable.FieldByName('code_c').AsInteger <> 0) then
    begin
@@ -510,7 +510,7 @@ begin
 //            DataModuleF.Bonv_comTable.DisableControls;
 //            DataModuleF.Bonv_comTable.Active:= False;
 //            DataModuleF.Bonv_comTable.SQL.clear;
-//            DataModuleF.Bonv_comTable.sql.Text:= BonComVF.BCVSQL +' WHERE date_bvcom BETWEEN '''+(DateToStr(BonComVF.DateStartBVComD.Date))+ ''' AND ''' +(DateToStr(BonComVF.DateEndBVComD.Date))+'''';
+//            DataModuleF.Bonv_comTable.sql.Text:= BonComVF.BCCSQL +' WHERE date_bvcom BETWEEN '''+(DateToStr(BonComVF.DateStartBVComD.Date))+ ''' AND ''' +(DateToStr(BonComVF.DateEndBVComD.Date))+'''';
 //            DataModuleF.Bonv_comTable.Active:= True;
 //            DataModuleF.Bonv_comTable.EnableControls;
 //
@@ -519,7 +519,7 @@ begin
 
           DataModuleF.bonv_com_listTable.Active:=false;
           DataModuleF.bonv_com_listTable.SQL.Clear;
-          DataModuleF.bonv_com_listTable.SQL.Text:= BCVLSQL ;
+          DataModuleF.bonv_com_listTable.SQL.Text:= BCCLSQL ;
           DataModuleF.bonv_com_listTable.Active:=True;
           DataModuleF.bonv_com_listTable.EnableControls;
      
@@ -537,9 +537,9 @@ end;
 
 procedure TBonComVGestionF.FormCloseQuery(Sender: TObject;
   var CanClose: Boolean);
-Var  CodeBCV : Integer;
+Var  CodeBCC : Integer;
 begin
-codeBCV:=DataModuleF.Bonv_comTable.FieldByName('code_bvcom').AsInteger;
+codeBCC:=DataModuleF.Bonv_comTable.FieldByName('code_bvcom').AsInteger;
  if  NOT ProduitsListDBGridEh.DataSource.DataSet.IsEmpty then
   begin
     if ClientBonComGCbx.Text = '' then
@@ -649,10 +649,10 @@ codeBCV:=DataModuleF.Bonv_comTable.FieldByName('code_bvcom').AsInteger;
           MainForm.CompteTable.EnableControls;
 
         //------- This is to delete data from tre and reg ih not valide----------------------------------------------
-//           if (codeBCV <> 0) AND (codeBCV <> null) then
+//           if (codeBCC <> 0) AND (codeBCC <> null) then
 //           begin
-//              MainForm.GstockdcConnection.ExecSQL('DELETE FROM regclient where code_bvcom = ' + IntToStr(codeBCV));
-//              MainForm.GstockdcConnection.ExecSQL('DELETE FROM opt_cas_bnk where code_bvcom = ' + IntToStr(codeBCV));
+//              MainForm.GstockdcConnection.ExecSQL('DELETE FROM regclient where code_bvcom = ' + IntToStr(codeBCC));
+//              MainForm.GstockdcConnection.ExecSQL('DELETE FROM opt_cas_bnk where code_bvcom = ' + IntToStr(codeBCC));
 //              MainForm.RegclientTable.Refresh ;
 //              MainForm.Opt_cas_bnk_CaisseTable.Refresh ;
 //           end;
@@ -680,7 +680,7 @@ codeBCV:=DataModuleF.Bonv_comTable.FieldByName('code_bvcom').AsInteger;
 
           if  (DataModuleF.Bonv_comTable.FieldByName('valider_bvcom').AsBoolean = false)  then
          begin
-//          codeBCV:=DataModuleF.Bonv_comTable.FieldByName('code_bvcom').AsInteger;
+//          codeBCC:=DataModuleF.Bonv_comTable.FieldByName('code_bvcom').AsInteger;
 
           MainForm.ClientTable.DisableControls;
           MainForm.ClientTable.Active:=false;
@@ -745,10 +745,10 @@ codeBCV:=DataModuleF.Bonv_comTable.FieldByName('code_bvcom').AsInteger;
           MainForm.CompteTable.EnableControls;
 
         //------- This is to delete data from tre and reg ih not valide----------------------------------------------
-             if (codeBCV <> 0) AND (codeBCV <> null) then
+             if (codeBCC <> 0) AND (codeBCC <> null) then
            begin
-              MainForm.GstockdcConnection.ExecSQL('DELETE FROM regclient where code_bvcom = ' + IntToStr(codeBCV));
-              MainForm.GstockdcConnection.ExecSQL('DELETE FROM opt_cas_bnk where code_bvcom = ' + IntToStr(codeBCV));
+              MainForm.GstockdcConnection.ExecSQL('DELETE FROM regclient where code_bvcom = ' + IntToStr(codeBCC));
+              MainForm.GstockdcConnection.ExecSQL('DELETE FROM opt_cas_bnk where code_bvcom = ' + IntToStr(codeBCC));
               MainForm.RegclientTable.Refresh ;
               MainForm.Opt_cas_bnk_CaisseTable.Refresh ;
            end;
@@ -909,7 +909,7 @@ end;
 
 procedure TBonComVGestionF.ProduitBonComGCbxKeyPress(Sender: TObject;
   var Key: Char);
-  var CodeBCV,CodeCB,CodeP : Integer;
+  var CodeBCC,CodeCB,CodeP : Integer;
       lookupResultRefP : Variant;
       NomP: String;
   const
@@ -982,23 +982,23 @@ begin
             DataModuleF.bonv_com_listTable.IndexFieldNames:='';
             DataModuleF.bonv_com_listTable.Active:=False;
             DataModuleF.bonv_com_listTable.SQL.Clear;
-            DataModuleF.bonv_com_listTable.SQL.Text:= BCVLSQL+' ORDER by code_bvcoml  ' ;
+            DataModuleF.bonv_com_listTable.SQL.Text:= BCCLSQL+' ORDER by code_bvcoml  ' ;
             DataModuleF.bonv_com_listTable.Active:=True;
 
             DataModuleF.bonv_com_listTable.Last;
              if  DataModuleF.bonv_com_listTable.IsEmpty then
              begin
                DataModuleF.bonv_com_listTable.Last;
-               CodeBCV := 1;
+               CodeBCC := 1;
              end else
                  begin
                   DataModuleF.bonv_com_listTable.Last;
-                  CodeBCV:= DataModuleF.bonv_com_listTable.FieldValues['code_bvcoml'] + 1 ;
+                  CodeBCC:= DataModuleF.bonv_com_listTable.FieldValues['code_bvcoml'] + 1 ;
                  end;
 
              DataModuleF.bonv_com_listTable.Last;
              DataModuleF.bonv_com_listTable.Append;
-             DataModuleF.bonv_com_listTable.FieldValues['code_bvcoml']:= CodeBCV ;
+             DataModuleF.bonv_com_listTable.FieldValues['code_bvcoml']:= CodeBCC ;
              DataModuleF.bonv_com_listTable.FieldValues['code_bvcom']:= DataModuleF.Bonv_comTable.FieldValues['code_bvcom'];
              DataModuleF.bonv_com_listTable.FieldValues['code_p']:=  MainForm.SQLQuery.FieldValues['code_p'] ;
              DataModuleF.bonv_com_listTable.FieldValues['qut_p'] :=  01;
@@ -1046,7 +1046,7 @@ begin
 
             DataModuleF.bonv_com_listTable.Active:=False;
             DataModuleF.bonv_com_listTable.SQL.Clear;
-            DataModuleF.bonv_com_listTable.SQL.Text:= BCVLSQL+' WHERE code_bvcom = ' + QuotedStr(IntToStr(DataModuleF.Bonv_comTable.FieldValues['code_bvcom']))+' ';
+            DataModuleF.bonv_com_listTable.SQL.Text:= BCCLSQL+' WHERE code_bvcom = ' + QuotedStr(IntToStr(DataModuleF.Bonv_comTable.FieldValues['code_bvcom']))+' ';
             DataModuleF.bonv_com_listTable.Active:=True;
 
             ProduitBonComGCbx.Text:='';
@@ -1172,18 +1172,18 @@ begin
             DataModuleF.bonv_com_listTable.IndexFieldNames:='';
             DataModuleF.bonv_com_listTable.Active:=False;
             DataModuleF.bonv_com_listTable.SQL.Clear;
-            DataModuleF.bonv_com_listTable.SQL.Text:= BCVLSQL+' ORDER by code_bvcoml' ;
+            DataModuleF.bonv_com_listTable.SQL.Text:= BCCLSQL+' ORDER by code_bvcoml' ;
             DataModuleF.bonv_com_listTable.Active:=True;
            if  DataModuleF.bonv_com_listTable.RecordCount <= 0 then
            begin
-             CodeBCV := 1;
+             CodeBCC := 1;
            end else
                begin
                 DataModuleF.bonv_com_listTable.Last;
-                CodeBCV:= DataModuleF.bonv_com_listTable.FieldValues['code_bvcoml'] + 1 ;
+                CodeBCC:= DataModuleF.bonv_com_listTable.FieldValues['code_bvcoml'] + 1 ;
                end;
              DataModuleF.bonv_com_listTable.Insert;
-             DataModuleF.bonv_com_listTable.FieldValues['code_bvcoml']:= CodeBCV ;
+             DataModuleF.bonv_com_listTable.FieldValues['code_bvcoml']:= CodeBCC ;
              DataModuleF.bonv_com_listTable.FieldValues['code_bvcom']:= DataModuleF.Bonv_comTable.FieldValues['code_bvcom'];
              DataModuleF.bonv_com_listTable.FieldValues['code_p']:=  MainForm.SQLQuery.FieldValues['code_p'] ;
              DataModuleF.bonv_com_listTable.FieldValues['qut_p'] :=  01;
@@ -1231,7 +1231,7 @@ begin
 
             DataModuleF.bonv_com_listTable.Active:=False;
             DataModuleF.bonv_com_listTable.SQL.Clear;
-            DataModuleF.bonv_com_listTable.SQL.Text:= BCVLSQL+' WHERE code_bvcom = ' + QuotedStr(IntToStr(DataModuleF.Bonv_comTable.FieldValues['code_bvcom']))+' ';
+            DataModuleF.bonv_com_listTable.SQL.Text:= BCCLSQL+' WHERE code_bvcom = ' + QuotedStr(IntToStr(DataModuleF.Bonv_comTable.FieldValues['code_bvcom']))+' ';
             DataModuleF.bonv_com_listTable.Active:=True;
 
             ProduitBonComGCbx.Text:='';
@@ -1355,20 +1355,20 @@ begin
             DataModuleF.bonv_com_listTable.IndexFieldNames:='';
             DataModuleF.bonv_com_listTable.Active:=False;
             DataModuleF.bonv_com_listTable.SQL.Clear;
-            DataModuleF.bonv_com_listTable.SQL.Text:= BCVLSQL+' ORDER by code_bvcoml' ;
+            DataModuleF.bonv_com_listTable.SQL.Text:= BCCLSQL+' ORDER by code_bvcoml' ;
             DataModuleF.bonv_com_listTable.Active:=True;
 
            if  DataModuleF.bonv_com_listTable.RecordCount <= 0 then
            begin
-             CodeBCV := 1;
+             CodeBCC := 1;
            end else
                begin
                 DataModuleF.bonv_com_listTable.Last;
-                CodeBCV:= DataModuleF.bonv_com_listTable.FieldValues['code_bvcoml'] + 1 ;
+                CodeBCC:= DataModuleF.bonv_com_listTable.FieldValues['code_bvcoml'] + 1 ;
                end;
 
              DataModuleF.bonv_com_listTable.Insert;
-             DataModuleF.bonv_com_listTable.FieldValues['code_bvcoml']:= CodeBCV ;
+             DataModuleF.bonv_com_listTable.FieldValues['code_bvcoml']:= CodeBCC ;
              DataModuleF.bonv_com_listTable.FieldValues['code_bvcom']:= DataModuleF.Bonv_comTable.FieldValues['code_bvcom'];
              DataModuleF.bonv_com_listTable.FieldValues['code_p']:=  MainForm.SQLQuery.FieldValues['code_p'] ;
              DataModuleF.bonv_com_listTable.FieldValues['qut_p'] :=  01;
@@ -1414,7 +1414,7 @@ begin
 
              DataModuleF.bonv_com_listTable.Active:=False;
              DataModuleF.bonv_com_listTable.SQL.Clear;
-             DataModuleF.bonv_com_listTable.SQL.Text:= BCVLSQL+' WHERE code_bvcom = ' + QuotedStr(IntToStr(DataModuleF.Bonv_comTable.FieldValues['code_bvcom']))+' ';
+             DataModuleF.bonv_com_listTable.SQL.Text:= BCCLSQL+' WHERE code_bvcom = ' + QuotedStr(IntToStr(DataModuleF.Bonv_comTable.FieldValues['code_bvcom']))+' ';
              DataModuleF.bonv_com_listTable.Active:=True;
 
             ProduitBonComGCbx.Text:='';
@@ -1966,7 +1966,7 @@ begin
      begin
 
         Ini := TIniFile.Create(ChangeFileExt(Application.ExeName,'.ini')) ;
-        indexP:= Ini.ReadInteger('', 'Format BCV',0);
+        indexP:= Ini.ReadInteger('', 'Format BCC',0);
         if (indexP = 0) or (indexP = -1) then
         begin
          B1Click(Screen);
@@ -2449,7 +2449,7 @@ begin
 if ValiderBVComBonComGImg.ImageIndex <> 1 then
  begin
 DataModuleF.bonv_com_listTable.DisableControls;
- GettingDataBCVSimple;
+ GettingDataBCCSimple;
 
    OLDCredit:= BonComPListComSimplefrxRprt.FindObject('OLDCredit') as TfrxMemoView;
   OLDCredit.Visible:= True;
@@ -3074,7 +3074,7 @@ end;
 
 procedure TBonComVGestionF.AddBVComBonComGBtnClick(Sender: TObject);
 var
-  codeBCV,CodeCB : integer;
+  codeBCC,CodeCB : integer;
 begin
  Timer1.Enabled:=False;
 
@@ -3100,37 +3100,37 @@ begin
 
    EnableBonComV;
 
- codeBCV:= 0;
+ codeBCC:= 0;
    //   BonRecGestionF := TBonRecGestionF.Create(BonRecGestionF);
      if DataModuleF.Bonv_comTable.RecordCount <= 0 then
       begin
 
         DataModuleF.Bonv_comTable.Insert;
         DataModuleF.Bonv_comTable.FieldValues['code_bvcom']:=1;
-        DataModuleF.Bonv_comTable.FieldValues['num_bvcom']:= 'BCV'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5, 1]);
+        DataModuleF.Bonv_comTable.FieldValues['num_bvcom']:= 'BCC'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5, 1]);
         DataModuleF.Bonv_comTable.FieldValues['date_bvcom']:= DateOf(Today);
         DataModuleF.Bonv_comTable.FieldValues['time_bvcom']:=TimeOf(Now);
         DataModuleF.Bonv_comTable.Post;
-        codeBCV := DataModuleF.Bonv_comTable.FieldValues['code_bvcom'];
+        codeBCC := DataModuleF.Bonv_comTable.FieldValues['code_bvcom'];
       end else
           begin
             DataModuleF.Bonv_comTable.Last;
-            codeBCV := DataModuleF.Bonv_comTable.FieldValues['code_bvcom'];
+            codeBCC := DataModuleF.Bonv_comTable.FieldValues['code_bvcom'];
             DataModuleF.bonv_com_listTable.Active:=False;
             DataModuleF.bonv_com_listTable.SQL.Clear;
-            DataModuleF.bonv_com_listTable.SQL.Text:= BCVLSQL+' WHERE code_bvcom = ' + QuotedStr(IntToStr(codeBCV))+' ';
+            DataModuleF.bonv_com_listTable.SQL.Text:= BCCLSQL+' WHERE code_bvcom = ' + QuotedStr(IntToStr(codeBCC))+' ';
             DataModuleF.bonv_com_listTable.Active:=True;
 
            if DataModuleF.bonv_com_listTable.RecordCount <= 0 then
            begin
         //   DataModuleF.Bonv_comTable.Last;
-           codeBCV := DataModuleF.Bonv_comTable.FieldValues['code_bvcom'];
+           codeBCC := DataModuleF.Bonv_comTable.FieldValues['code_bvcom'];
            end else
            begin
 
              DataModuleF.Bonv_comTable.Insert;
-             DataModuleF.Bonv_comTable.FieldValues['code_bvcom']:= codeBCV + 1;
-             DataModuleF.Bonv_comTable.FieldValues['num_bvcom']:=  'BCV'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5,(codeBCV + 1)]);
+             DataModuleF.Bonv_comTable.FieldValues['code_bvcom']:= codeBCC + 1;
+             DataModuleF.Bonv_comTable.FieldValues['num_bvcom']:=  'BCC'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5,(codeBCC + 1)]);
              DataModuleF.Bonv_comTable.FieldValues['date_bvcom']:= DateOf(Today);
              DataModuleF.Bonv_comTable.FieldValues['time_bvcom']:= TimeOf(Now);
              DataModuleF.Bonv_comTable.Post;
@@ -3152,7 +3152,7 @@ begin
       BonComGClientNEWCredit.Caption:= FloatToStrF(0,ffNumber,14,2) ;
 
  CodeCB:= DataModuleF.Bonv_comTable.FieldValues['code_bvcom']   ;
-   NumBonComGEdt.Caption := 'BCV'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5, CodeCB]);
+   NumBonComGEdt.Caption := 'BCC'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5, CodeCB]);
 
      ClientBonComGCbx.SetFocus;
 
@@ -3167,15 +3167,15 @@ begin
 end;
 
 procedure TBonComVGestionF.EditBVComBonComGBtnClick(Sender: TObject);
-Var  CodeBCV : Integer;
+Var  CodeBCC : Integer;
 begin
-  codeBCV:=DataModuleF.Bonv_comTable.FieldByName('code_bvcom').AsInteger;
+  codeBCC:=DataModuleF.Bonv_comTable.FieldByName('code_bvcom').AsInteger;
 
         //------- This is to delete data from tre and reg ih not valide----------------------------------------------
-           if (codeBCV <> 0) AND (codeBCV <> null) then
+           if (codeBCC <> 0) AND (codeBCC <> null) then
            begin
-              MainForm.GstockdcConnection.ExecSQL('DELETE FROM regclient where code_bvcom = ' + IntToStr(codeBCV));
-              MainForm.GstockdcConnection.ExecSQL('DELETE FROM opt_cas_bnk where code_bvcom = ' + IntToStr(codeBCV));
+              MainForm.GstockdcConnection.ExecSQL('DELETE FROM regclient where code_bvcom = ' + IntToStr(codeBCC));
+              MainForm.GstockdcConnection.ExecSQL('DELETE FROM opt_cas_bnk where code_bvcom = ' + IntToStr(codeBCC));
               MainForm.RegclientTable.Refresh ;
               MainForm.Opt_cas_bnk_CaisseTable.Refresh ;
            end;
@@ -4004,7 +4004,7 @@ begin
  end;
 
 
-procedure TBonComVGestionF.GettingDataBCVSimple;
+procedure TBonComVGestionF.GettingDataBCCSimple;
 var
   NumRX,DateRX,NameRX,MPRX,NEWCredit,OLDCredit  : TfrxMemoView;
   str1 : string;

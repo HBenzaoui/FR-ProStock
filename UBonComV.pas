@@ -150,7 +150,7 @@ type
     { Private declarations }
   public
     { Public declarations }
-    const BCVSQL= 'SELECT *, '
+    const BCCSQL= 'SELECT *, '
     +'   ((montttc_bvcom)-(montht_bvcom - remise_bvcom)) AS MontantTVA,  '
     +'   (montttc_bvcom - montver_bvcom) AS MontantRes, '
     +'  CASE '
@@ -179,7 +179,7 @@ begin
 DataModuleF.Bonv_comTable.DisableControls;
 DataModuleF.Bonv_comTable.Active:= False;
 DataModuleF.Bonv_comTable.SQL.clear;
-DataModuleF.Bonv_comTable.sql.Text:= BCVSQL +' WHERE date_bvcom BETWEEN '''+(DateToStr(DateStartBVComD.Date))+ ''' AND ''' +(DateToStr(DateEndBVComD.Date))+'''';
+DataModuleF.Bonv_comTable.sql.Text:= BCCSQL +' WHERE date_bvcom BETWEEN '''+(DateToStr(DateStartBVComD.Date))+ ''' AND ''' +(DateToStr(DateEndBVComD.Date))+'''';
 DataModuleF.Bonv_comTable.Active:= True;
 DataModuleF.Bonv_comTable.EnableControls;
 end;
@@ -189,7 +189,7 @@ begin
 DataModuleF.Bonv_comTable.DisableControls;
 DataModuleF.Bonv_comTable.Active:= False;
 DataModuleF.Bonv_comTable.SQL.clear;
-DataModuleF.Bonv_comTable.sql.Text:= BCVSQL +' WHERE valider_bvcom = true AND date_bvcom BETWEEN '''+(DateToStr(DateStartBVComD.Date))+ ''' AND ''' +(DateToStr(DateEndBVComD.Date))+'''';
+DataModuleF.Bonv_comTable.sql.Text:= BCCSQL +' WHERE valider_bvcom = true AND date_bvcom BETWEEN '''+(DateToStr(DateStartBVComD.Date))+ ''' AND ''' +(DateToStr(DateEndBVComD.Date))+'''';
 DataModuleF.Bonv_comTable.Active:= True;
 DataModuleF.Bonv_comTable.EnableControls;
 end;
@@ -199,7 +199,7 @@ begin
 DataModuleF.Bonv_comTable.DisableControls;
 DataModuleF.Bonv_comTable.Active:= False;
 DataModuleF.Bonv_comTable.SQL.clear;
-DataModuleF.Bonv_comTable.sql.Text:= BCVSQL +' WHERE valider_bvcom = false AND date_bvcom BETWEEN '''+(DateToStr(DateStartBVComD.Date))+ ''' AND ''' +(DateToStr(DateEndBVComD.Date))+'''';
+DataModuleF.Bonv_comTable.sql.Text:= BCCSQL +' WHERE valider_bvcom = false AND date_bvcom BETWEEN '''+(DateToStr(DateStartBVComD.Date))+ ''' AND ''' +(DateToStr(DateEndBVComD.Date))+'''';
 DataModuleF.Bonv_comTable.Active:= True;
 DataModuleF.Bonv_comTable.EnableControls;
 end;
@@ -209,7 +209,7 @@ begin
 DataModuleF.Bonv_comTable.DisableControls;
 DataModuleF.Bonv_comTable.Active:= False;
 DataModuleF.Bonv_comTable.SQL.clear;
-DataModuleF.Bonv_comTable.sql.Text:= BCVSQL +' WHERE code_mdpai = 1 AND date_bvcom BETWEEN '''+(DateToStr(DateStartBVComD.Date))+ ''' AND ''' +(DateToStr(DateEndBVComD.Date))+'''';
+DataModuleF.Bonv_comTable.sql.Text:= BCCSQL +' WHERE code_mdpai = 1 AND date_bvcom BETWEEN '''+(DateToStr(DateStartBVComD.Date))+ ''' AND ''' +(DateToStr(DateEndBVComD.Date))+'''';
 DataModuleF.Bonv_comTable.Active:= True;
 DataModuleF.Bonv_comTable.EnableControls;
 end;
@@ -219,7 +219,7 @@ begin
 DataModuleF.Bonv_comTable.DisableControls;
 DataModuleF.Bonv_comTable.Active:= False;
 DataModuleF.Bonv_comTable.SQL.clear;
-DataModuleF.Bonv_comTable.sql.Text:= BCVSQL +' WHERE code_mdpai = 2 AND date_bvcom BETWEEN '''+(DateToStr(DateStartBVComD.Date))+ ''' AND ''' +(DateToStr(DateEndBVComD.Date))+'''';
+DataModuleF.Bonv_comTable.sql.Text:= BCCSQL +' WHERE code_mdpai = 2 AND date_bvcom BETWEEN '''+(DateToStr(DateStartBVComD.Date))+ ''' AND ''' +(DateToStr(DateEndBVComD.Date))+'''';
 DataModuleF.Bonv_comTable.Active:= True;
 DataModuleF.Bonv_comTable.EnableControls;
 end;
@@ -229,7 +229,7 @@ begin
 DataModuleF.Bonv_comTable.DisableControls;
 DataModuleF.Bonv_comTable.Active:= False;
 DataModuleF.Bonv_comTable.SQL.clear;
-DataModuleF.Bonv_comTable.sql.Text:= BCVSQL +' WHERE code_mdpai = 3 AND date_bvcom BETWEEN '''+(DateToStr(DateStartBVComD.Date))+ ''' AND ''' +(DateToStr(DateEndBVComD.Date))+'''';
+DataModuleF.Bonv_comTable.sql.Text:= BCCSQL +' WHERE code_mdpai = 3 AND date_bvcom BETWEEN '''+(DateToStr(DateStartBVComD.Date))+ ''' AND ''' +(DateToStr(DateEndBVComD.Date))+'''';
 DataModuleF.Bonv_comTable.Active:= True;
 DataModuleF.Bonv_comTable.EnableControls;
 end;
@@ -239,7 +239,7 @@ begin
 DataModuleF.Bonv_comTable.DisableControls;
 DataModuleF.Bonv_comTable.Active:= False;
 DataModuleF.Bonv_comTable.SQL.clear;
-DataModuleF.Bonv_comTable.sql.Text:= BCVSQL +' WHERE code_mdpai = 4 AND date_bvcom BETWEEN '''+(DateToStr(DateStartBVComD.Date))+ ''' AND ''' +(DateToStr(DateEndBVComD.Date))+'''';
+DataModuleF.Bonv_comTable.sql.Text:= BCCSQL +' WHERE code_mdpai = 4 AND date_bvcom BETWEEN '''+(DateToStr(DateStartBVComD.Date))+ ''' AND ''' +(DateToStr(DateEndBVComD.Date))+'''';
 DataModuleF.Bonv_comTable.Active:= True;
 DataModuleF.Bonv_comTable.EnableControls;
 end;
@@ -249,7 +249,7 @@ begin
 DataModuleF.Bonv_comTable.DisableControls;
 DataModuleF.Bonv_comTable.Active:= False;
 DataModuleF.Bonv_comTable.SQL.clear;
-DataModuleF.Bonv_comTable.sql.Text:= BCVSQL +' WHERE valider_bvcom = true AND code_mdpai = 1 AND date_bvcom BETWEEN '''+(DateToStr(DateStartBVComD.Date))+ ''' AND ''' +(DateToStr(DateEndBVComD.Date))+'''';
+DataModuleF.Bonv_comTable.sql.Text:= BCCSQL +' WHERE valider_bvcom = true AND code_mdpai = 1 AND date_bvcom BETWEEN '''+(DateToStr(DateStartBVComD.Date))+ ''' AND ''' +(DateToStr(DateEndBVComD.Date))+'''';
 DataModuleF.Bonv_comTable.Active:= True;
 DataModuleF.Bonv_comTable.EnableControls;
 end;
@@ -259,7 +259,7 @@ begin
 DataModuleF.Bonv_comTable.DisableControls;
 DataModuleF.Bonv_comTable.Active:= False;
 DataModuleF.Bonv_comTable.SQL.clear;
-DataModuleF.Bonv_comTable.sql.Text:= BCVSQL +' WHERE valider_bvcom = true AND code_mdpai = 2 AND date_bvcom BETWEEN '''+(DateToStr(DateStartBVComD.Date))+ ''' AND ''' +(DateToStr(DateEndBVComD.Date))+'''';
+DataModuleF.Bonv_comTable.sql.Text:= BCCSQL +' WHERE valider_bvcom = true AND code_mdpai = 2 AND date_bvcom BETWEEN '''+(DateToStr(DateStartBVComD.Date))+ ''' AND ''' +(DateToStr(DateEndBVComD.Date))+'''';
 DataModuleF.Bonv_comTable.Active:= True;
 DataModuleF.Bonv_comTable.EnableControls;
 end;
@@ -269,7 +269,7 @@ begin
 DataModuleF.Bonv_comTable.DisableControls;
 DataModuleF.Bonv_comTable.Active:= False;
 DataModuleF.Bonv_comTable.SQL.clear;
-DataModuleF.Bonv_comTable.sql.Text:= BCVSQL +' WHERE valider_bvcom = true AND code_mdpai = 3 AND date_bvcom BETWEEN '''+(DateToStr(DateStartBVComD.Date))+ ''' AND ''' +(DateToStr(DateEndBVComD.Date))+'''';
+DataModuleF.Bonv_comTable.sql.Text:= BCCSQL +' WHERE valider_bvcom = true AND code_mdpai = 3 AND date_bvcom BETWEEN '''+(DateToStr(DateStartBVComD.Date))+ ''' AND ''' +(DateToStr(DateEndBVComD.Date))+'''';
 DataModuleF.Bonv_comTable.Active:= True;
 DataModuleF.Bonv_comTable.EnableControls;
 end;
@@ -279,7 +279,7 @@ begin
 DataModuleF.Bonv_comTable.DisableControls;
 DataModuleF.Bonv_comTable.Active:= False;
 DataModuleF.Bonv_comTable.SQL.clear;
-DataModuleF.Bonv_comTable.sql.Text:= BCVSQL +' WHERE valider_bvcom = true AND code_mdpai = 4 AND date_bvcom BETWEEN '''+(DateToStr(DateStartBVComD.Date))+ ''' AND ''' +(DateToStr(DateEndBVComD.Date))+'''';
+DataModuleF.Bonv_comTable.sql.Text:= BCCSQL +' WHERE valider_bvcom = true AND code_mdpai = 4 AND date_bvcom BETWEEN '''+(DateToStr(DateStartBVComD.Date))+ ''' AND ''' +(DateToStr(DateEndBVComD.Date))+'''';
 DataModuleF.Bonv_comTable.Active:= True;
 DataModuleF.Bonv_comTable.EnableControls;
 end;
@@ -289,7 +289,7 @@ begin
 DataModuleF.Bonv_comTable.DisableControls;
 DataModuleF.Bonv_comTable.Active:= False;
 DataModuleF.Bonv_comTable.SQL.clear;
-DataModuleF.Bonv_comTable.sql.Text:= BCVSQL +' WHERE valider_bvcom = false AND code_mdpai = 1';
+DataModuleF.Bonv_comTable.sql.Text:= BCCSQL +' WHERE valider_bvcom = false AND code_mdpai = 1';
 DataModuleF.Bonv_comTable.Active:= True;
 DataModuleF.Bonv_comTable.EnableControls;
 end;
@@ -299,7 +299,7 @@ begin
 DataModuleF.Bonv_comTable.DisableControls;
 DataModuleF.Bonv_comTable.Active:= False;
 DataModuleF.Bonv_comTable.SQL.clear;
-DataModuleF.Bonv_comTable.sql.Text:= BCVSQL +' WHERE valider_bvcom = false AND code_mdpai = 2 AND date_bvcom BETWEEN '''+(DateToStr(DateStartBVComD.Date))+ ''' AND ''' +(DateToStr(DateEndBVComD.Date))+'''';
+DataModuleF.Bonv_comTable.sql.Text:= BCCSQL +' WHERE valider_bvcom = false AND code_mdpai = 2 AND date_bvcom BETWEEN '''+(DateToStr(DateStartBVComD.Date))+ ''' AND ''' +(DateToStr(DateEndBVComD.Date))+'''';
 DataModuleF.Bonv_comTable.Active:= True;
 DataModuleF.Bonv_comTable.EnableControls;
 end;
@@ -309,7 +309,7 @@ begin
 DataModuleF.Bonv_comTable.DisableControls;
 DataModuleF.Bonv_comTable.Active:= False;
 DataModuleF.Bonv_comTable.SQL.clear;
-DataModuleF.Bonv_comTable.sql.Text:= BCVSQL +' WHERE valider_bvcom = false AND code_mdpai = 3 AND date_bvcom BETWEEN '''+(DateToStr(DateStartBVComD.Date))+ ''' AND ''' +(DateToStr(DateEndBVComD.Date))+'''';
+DataModuleF.Bonv_comTable.sql.Text:= BCCSQL +' WHERE valider_bvcom = false AND code_mdpai = 3 AND date_bvcom BETWEEN '''+(DateToStr(DateStartBVComD.Date))+ ''' AND ''' +(DateToStr(DateEndBVComD.Date))+'''';
 DataModuleF.Bonv_comTable.Active:= True;
 DataModuleF.Bonv_comTable.EnableControls;
 end;
@@ -319,7 +319,7 @@ begin
 DataModuleF.Bonv_comTable.DisableControls;
 DataModuleF.Bonv_comTable.Active:= False;
 DataModuleF.Bonv_comTable.SQL.clear;
-DataModuleF.Bonv_comTable.sql.Text:= BCVSQL +' WHERE valider_bvcom = false AND code_mdpai = 4 AND date_bvcom BETWEEN '''+(DateToStr(DateStartBVComD.Date))+ ''' AND ''' +(DateToStr(DateEndBVComD.Date))+'''';
+DataModuleF.Bonv_comTable.sql.Text:= BCCSQL +' WHERE valider_bvcom = false AND code_mdpai = 4 AND date_bvcom BETWEEN '''+(DateToStr(DateStartBVComD.Date))+ ''' AND ''' +(DateToStr(DateEndBVComD.Date))+'''';
 DataModuleF.Bonv_comTable.Active:= True;
 DataModuleF.Bonv_comTable.EnableControls;
 end;
@@ -412,7 +412,7 @@ begin
           DataModuleF.Bonv_comTable.DisableControls;
           DataModuleF.Bonv_comTable.Active:=False;
           DataModuleF.Bonv_comTable.SQL.Clear;
-          DataModuleF.Bonv_comTable.SQL.Text:= BCVSQL +' WHERE code_c IN( SELECT code_c FROM client WHERE LOWER(nom_c) LIKE LOWER' +'('''+'%'+(ResearchBVComEdt.Text)+'%'+''')' +')';
+          DataModuleF.Bonv_comTable.SQL.Text:= BCCSQL +' WHERE code_c IN( SELECT code_c FROM client WHERE LOWER(nom_c) LIKE LOWER' +'('''+'%'+(ResearchBVComEdt.Text)+'%'+''')' +')';
           DataModuleF.Bonv_comTable.Active:=True;
           DataModuleF.Bonv_comTable.EnableControls;
 
@@ -423,7 +423,7 @@ begin
           DataModuleF.Bonv_comTable.DisableControls;
           DataModuleF.Bonv_comTable.Active:=False;
           DataModuleF.Bonv_comTable.SQL.Clear;
-          DataModuleF.Bonv_comTable.SQL.Text:= BCVSQL +' WHERE LOWER(num_bvcom) LIKE LOWER' +'('''+'%'+(ResearchBVComEdt.Text)+'%'+''')' ;
+          DataModuleF.Bonv_comTable.SQL.Text:= BCCSQL +' WHERE LOWER(num_bvcom) LIKE LOWER' +'('''+'%'+(ResearchBVComEdt.Text)+'%'+''')' ;
           DataModuleF.Bonv_comTable.Active:=True;
           DataModuleF.Bonv_comTable.EnableControls;
           end;
@@ -441,7 +441,7 @@ begin
           DataModuleF.Bonv_comTable.DisableControls;
           DataModuleF.Bonv_comTable.Active:=False;
           DataModuleF.Bonv_comTable.SQL.Clear;
-          DataModuleF.Bonv_comTable.SQL.Text:= BCVSQL ;
+          DataModuleF.Bonv_comTable.SQL.Text:= BCCSQL ;
           DataModuleF.Bonv_comTable.Active:=True;
           DataModuleF.Bonv_comTable.EnableControls;
 
@@ -492,7 +492,7 @@ begin
           DataModuleF.Bonv_comTable.DisableControls;
           DataModuleF.Bonv_comTable.Active:=False;
           DataModuleF.Bonv_comTable.SQL.Clear;
-          DataModuleF.Bonv_comTable.SQL.Text:= BCVSQL +' WHERE code_c IN( SELECT code_c FROM client WHERE LOWER(nom_c) LIKE LOWER' +'('''+(ResearchBVComEdt.Text+'%')+''')' +')';
+          DataModuleF.Bonv_comTable.SQL.Text:= BCCSQL +' WHERE code_c IN( SELECT code_c FROM client WHERE LOWER(nom_c) LIKE LOWER' +'('''+(ResearchBVComEdt.Text+'%')+''')' +')';
           DataModuleF.Bonv_comTable.Active:=True;
           DataModuleF.Bonv_comTable.EnableControls;
 
@@ -503,7 +503,7 @@ begin
           DataModuleF.Bonv_comTable.DisableControls;
           DataModuleF.Bonv_comTable.Active:=False;
           DataModuleF.Bonv_comTable.SQL.Clear;
-          DataModuleF.Bonv_comTable.SQL.Text:= BCVSQL +' WHERE LOWER(num_bvcom) LIKE LOWER' +'('''+(ResearchBVComEdt.Text+'%')+''')' ;
+          DataModuleF.Bonv_comTable.SQL.Text:= BCCSQL +' WHERE LOWER(num_bvcom) LIKE LOWER' +'('''+(ResearchBVComEdt.Text+'%')+''')' ;
           DataModuleF.Bonv_comTable.Active:=True;
           DataModuleF.Bonv_comTable.EnableControls;
           end;
@@ -521,7 +521,7 @@ begin
           DataModuleF.Bonv_comTable.DisableControls;
           DataModuleF.Bonv_comTable.Active:=False;
           DataModuleF.Bonv_comTable.SQL.Clear;
-          DataModuleF.Bonv_comTable.SQL.Text:= BCVSQL ;
+          DataModuleF.Bonv_comTable.SQL.Text:= BCCSQL ;
           DataModuleF.Bonv_comTable.Active:=True;
           DataModuleF.Bonv_comTable.EnableControls;
 
@@ -622,7 +622,7 @@ end;
 
 procedure TBonComVF.AddBVComBtnClick(Sender: TObject);
 var
-  codeBCV : integer;
+  codeBCC : integer;
 
 begin
 ClearFilterBVComPMenuClick(Sender);
@@ -638,14 +638,14 @@ DataModuleF.Bonv_com_listTable.IndexFieldNames:='';
 DataModuleF.Bonv_comTable.DisableControls;
 DataModuleF.Bonv_comTable.Active:= False;
 DataModuleF.Bonv_comTable.SQL.clear;
-DataModuleF.Bonv_comTable.sql.Text:= BCVSQL + ' ORDER By code_bvcom ';
+DataModuleF.Bonv_comTable.sql.Text:= BCCSQL + ' ORDER By code_bvcom ';
 DataModuleF.Bonv_comTable.Active:= True;
 //DataModuleF.Bonv_comTable.EnableControls;
 
 
 ResearchBVComEdt.Text:='';
 
-codeBCV:= 0;
+codeBCC:= 0;
 // if not Assigned (BonComVGestionF) then
     BonComVGestionF := TBonComVGestionF.Create(nil);
     try
@@ -654,26 +654,26 @@ codeBCV:= 0;
 
         DataModuleF.Bonv_comTable.Insert;
         DataModuleF.Bonv_comTable.FieldByName('code_bvcom').AsInteger:=1;
-        DataModuleF.Bonv_comTable.FieldByName('num_bvcom').AsString:= 'BCV'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5, 1]);
+        DataModuleF.Bonv_comTable.FieldByName('num_bvcom').AsString:= 'BCC'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5, 1]);
         DataModuleF.Bonv_comTable.FieldByName('date_bvcom').AsDateTime:= DateOf(Today);
         DataModuleF.Bonv_comTable.FieldByName('time_bvcom').AsDateTime:=TimeOf(Now);
         DataModuleF.Bonv_comTable.FieldByName('code_c').AsInteger:=0;
         DataModuleF.Bonv_comTable.FieldByName('code_ur').AsInteger:= StrToInt(MainForm.UserIDLbl.Caption);
         DataModuleF.Bonv_comTable.Post;
-        codeBCV := DataModuleF.Bonv_comTable.FieldByName('code_bvcom').AsInteger;
+        codeBCC := DataModuleF.Bonv_comTable.FieldByName('code_bvcom').AsInteger;
       end else
           begin
             DataModuleF.Bonv_comTable.Last;
-            codeBCV := DataModuleF.Bonv_comTable.FieldByName('code_bvcom').AsInteger;
+            codeBCC := DataModuleF.Bonv_comTable.FieldByName('code_bvcom').AsInteger;
             MainForm.SQLQuery.Active:=False;    // if soemthig went wrong change it  back to bonv_com_listTable
             MainForm.SQLQuery.SQL.Clear;
-            MainForm.SQLQuery.SQL.Text:= 'SELECT code_bvcom FROM bonv_com_list WHERE code_bvcom = ' + IntToStr(codeBCV);
+            MainForm.SQLQuery.SQL.Text:= 'SELECT code_bvcom FROM bonv_com_list WHERE code_bvcom = ' + IntToStr(codeBCC);
             MainForm.SQLQuery.Active:=True;
 
            if MainForm.SQLQuery.RecNo <= 0 then
            begin
         //   DataModuleF.Bonv_comTable.Last;
-           codeBCV := DataModuleF.Bonv_comTable.FieldByName('code_bvcom').AsInteger;
+           codeBCC := DataModuleF.Bonv_comTable.FieldByName('code_bvcom').AsInteger;
              DataModuleF.Bonv_comTable.Edit;
              DataModuleF.Bonv_comTable.FieldByName('date_bvcom').AsDateTime:= DateOf(Today);
              DataModuleF.Bonv_comTable.FieldByName('time_bvcom').AsDateTime:= TimeOf(Now);
@@ -682,10 +682,10 @@ codeBCV:= 0;
            end else
            begin
         //   DataModuleF.Bonv_comTable.Last;
-          // codeBCV := DataModuleF.Bonv_comTable.FieldByName('code_bvcom'];
+          // codeBCC := DataModuleF.Bonv_comTable.FieldByName('code_bvcom'];
              DataModuleF.Bonv_comTable.Insert;
-             DataModuleF.Bonv_comTable.FieldByName('code_bvcom').AsInteger:= codeBCV + 1;
-             DataModuleF.Bonv_comTable.FieldByName('num_bvcom').AsString:=  'BCV'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5,(codeBCV + 1)]);
+             DataModuleF.Bonv_comTable.FieldByName('code_bvcom').AsInteger:= codeBCC + 1;
+             DataModuleF.Bonv_comTable.FieldByName('num_bvcom').AsString:=  'BCC'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5,(codeBCC + 1)]);
              DataModuleF.Bonv_comTable.FieldByName('date_bvcom').AsDateTime:= DateOf(Today);
              DataModuleF.Bonv_comTable.FieldByName('time_bvcom').AsDateTime:= TimeOf(Now);
              DataModuleF.Bonv_comTable.FieldByName('code_c').AsInteger:=0;
@@ -700,7 +700,7 @@ codeBCV:= 0;
       DataModuleF.Bonv_com_listTable.IndexFieldNames:='code_bvcom';
       DataModuleF.Bonv_com_listTable.Active:=False;
       DataModuleF.Bonv_com_listTable.SQL.Clear;
-      DataModuleF.Bonv_com_listTable.SQL.Text:= BonComVGestionF.BCVLSQL;
+      DataModuleF.Bonv_com_listTable.SQL.Text:= BonComVGestionF.BCCLSQL;
       DataModuleF.Bonv_com_listTable.Active:=True;
 
        MainForm.SQLQuery.Active:=False;
@@ -721,7 +721,7 @@ codeBCV:= 0;
 //       DataModuleF.Bonv_comTable.DisableControls;
 DataModuleF.Bonv_comTable.Active:= False;
 DataModuleF.Bonv_comTable.SQL.clear;
-DataModuleF.Bonv_comTable.sql.Text:= BCVSQL +' WHERE date_bvcom BETWEEN '''+(DateToStr(DateStartBVComD.Date))+ ''' AND ''' +(DateToStr(DateEndBVComD.Date))+'''';
+DataModuleF.Bonv_comTable.sql.Text:= BCCSQL +' WHERE date_bvcom BETWEEN '''+(DateToStr(DateStartBVComD.Date))+ ''' AND ''' +(DateToStr(DateEndBVComD.Date))+'''';
 DataModuleF.Bonv_comTable.Active:= True;
 DataModuleF.Bonv_comTable.Last;
 DataModuleF.Bonv_comTable.EnableControls;
@@ -1251,7 +1251,7 @@ ClearFilterBVComPMenuClick(Sender);
 DataModuleF.Bonv_comTable.DisableControls;
 DataModuleF.Bonv_comTable.Active:= False;
 DataModuleF.Bonv_comTable.SQL.clear;
-DataModuleF.Bonv_comTable.sql.Text:= BCVSQL +' WHERE date_bvcom BETWEEN '''+(DateToStr(DateStartBVComD.Date))+ ''' AND ''' +(DateToStr(DateEndBVComD.Date))+'''';
+DataModuleF.Bonv_comTable.sql.Text:= BCCSQL +' WHERE date_bvcom BETWEEN '''+(DateToStr(DateStartBVComD.Date))+ ''' AND ''' +(DateToStr(DateEndBVComD.Date))+'''';
 DataModuleF.Bonv_comTable.Active:= True;
 DataModuleF.Bonv_comTable.EnableControls;
 end;
@@ -1355,7 +1355,7 @@ end;
 procedure TBonComVF.AdvToolButton1Click(Sender: TObject);
 begin
 
- ProduitListSaveDg.FileName:= 'liste des BCV';
+ ProduitListSaveDg.FileName:= 'liste des BCC';
 if ProduitListSaveDg.Execute then
  begin
 
@@ -1370,7 +1370,7 @@ if ProduitListSaveDg.Execute then
 //    GettingData;
 //
 //BonComVfrxRprt.PrepareReport;
-//frxXLSExport1.FileName := 'liste des BCV';
+//frxXLSExport1.FileName := 'liste des BCC';
 //BonComVfrxRprt.Export(frxXLSExport1);
 //
 //DataModuleF.Bonv_comTable.EnableControls;
@@ -1383,7 +1383,7 @@ DataModuleF.Bonv_comTable.DisableControls;
     GettingData;
 
 BonComVfrxRprt.PrepareReport;
-frxPDFExport1.FileName := 'liste des BCV';
+frxPDFExport1.FileName := 'liste des BCC';
 BonComVfrxRprt.Export(frxPDFExport1);
 
 
@@ -1493,7 +1493,7 @@ end;
 procedure TBonComVF.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
 
-  MainForm.SaveGridLayout(BVComListDBGridEh,GetCurrentDir +'\bin\gc_bcvlst');
+  MainForm.SaveGridLayout(BVComListDBGridEh,GetCurrentDir +'\bin\gc_bcclst');
 
   FreeAndNil(BonComVF);
 
@@ -1501,10 +1501,10 @@ end;
 
 procedure TBonComVF.FormCreate(Sender: TObject);
 begin
-   if FileExists(GetCurrentDir +'\bin\gc_bcvlst') then
+   if FileExists(GetCurrentDir +'\bin\gc_bcclst') then
    begin
 
-    MainForm.LoadGridLayout(BVComListDBGridEh,GetCurrentDir +'\bin\gc_bcvlst');
+    MainForm.LoadGridLayout(BVComListDBGridEh,GetCurrentDir +'\bin\gc_bcclst');
    end;
 
 end;

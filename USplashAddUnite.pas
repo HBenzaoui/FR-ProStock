@@ -1084,7 +1084,7 @@ begin
         DataModuleF.Bona_com_listTable.IndexFieldNames:='';
         DataModuleF.Bona_com_listTable.Active:=False;
         DataModuleF.Bona_com_listTable.SQL.Clear;
-        DataModuleF.Bona_com_listTable.SQL.Text:=  BonComAGestionF.BCALSQL+ ' ORDER by code_bacoml' ;
+        DataModuleF.Bona_com_listTable.SQL.Text:=  BonComAGestionF.BCFLSQL+ ' ORDER by code_bacoml' ;
         DataModuleF.Bona_com_listTable.Active:=True;
      //   DataModuleF.Bona_com_listTable.Last;
 
@@ -1123,7 +1123,7 @@ begin
 
        DataModuleF.Bona_com_listTable.Active:=False;
        DataModuleF.Bona_com_listTable.SQL.Clear;
-       DataModuleF.Bona_com_listTable.SQL.Text:= BonComAGestionF.BCALSQL+ ' WHERE code_bacom = ' + QuotedStr(IntToStr(DataModuleF.Bona_comTable.FieldValues['code_bacom']));
+       DataModuleF.Bona_com_listTable.SQL.Text:= BonComAGestionF.BCFLSQL+ ' WHERE code_bacom = ' + QuotedStr(IntToStr(DataModuleF.Bona_comTable.FieldValues['code_bacom']));
        DataModuleF.Bona_com_listTable.Active:=True;
 
        BonComAGestionF.ProduitBonComGCbx.Text:='';
@@ -1207,7 +1207,7 @@ begin
         DataModuleF.Bonv_com_listTable.IndexFieldNames:='';
         DataModuleF.Bonv_com_listTable.Active:=False;
         DataModuleF.Bonv_com_listTable.SQL.Clear;
-        DataModuleF.Bonv_com_listTable.SQL.Text:= BonComVGestionF.BCVLSQL+' ORDER by code_bvcoml' ;
+        DataModuleF.Bonv_com_listTable.SQL.Text:= BonComVGestionF.BCCLSQL+' ORDER by code_bvcoml' ;
         DataModuleF.Bonv_com_listTable.Active:=True;
      //   DataModuleF.Bonv_com_listTable.Last;
 
@@ -1281,7 +1281,7 @@ begin
 
        DataModuleF.Bonv_com_listTable.Active:=False;
        DataModuleF.Bonv_com_listTable.SQL.Clear;
-       DataModuleF.Bonv_com_listTable.SQL.Text:= BonComVGestionF.BCVLSQL+' WHERE code_bvcom = ' + QuotedStr(IntToStr(DataModuleF.Bonv_comTable.FieldValues['code_bvcom']));
+       DataModuleF.Bonv_com_listTable.SQL.Text:= BonComVGestionF.BCCLSQL+' WHERE code_bvcom = ' + QuotedStr(IntToStr(DataModuleF.Bonv_comTable.FieldValues['code_bvcom']));
        DataModuleF.Bonv_com_listTable.Active:=True;
 
        BonComVGestionF.ProduitBonComGCbx.Text:='';

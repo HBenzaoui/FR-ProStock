@@ -230,52 +230,52 @@ type
   public
     { Public declarations }
 
-    const BCALSQL = 
-      ' SELECT BCAL.code_bacom,BCAL.code_bacoml,BCAL.qut_p,BCAL.cond_p,BCAL.code_p,BCAL.tva_p,BCAL.prixht_p,P.nom_p as nomp, P.refer_p as referp,  '
-      +' BCAL.prixvd_p,BCAL.prixvr_p,BCAL.prixvg_p,BCAL.prixva_p,BCAL.prixva2_p,BCAL.dateperiss_p,BCAL.qutinstock_p, '
-      +'   (((BCAL.prixht_p * BCAL.tva_p)/100)+BCAL.prixht_p) AS PrixATTC, '
-      +'   ((BCAL.prixht_p * BCAL.qut_p) * cond_p) AS MontantHT, '
-      +'   (((((BCAL.prixht_p * BCAL.tva_p)/100)+BCAL.prixht_p) * BCAL.qut_p)*cond_p) AS MontantTTC, '
-      +'   (((((((BCAL.prixht_p * BCAL.tva_p)/100)+BCAL.prixht_p) * BCAL.qut_p)*cond_p) )-(((BCAL.prixht_p * BCAL.qut_p) * cond_p))) AS MontantTVA, '
-      +'   ((BCAL.prixht_p * BCAL.qut_p)* cond_p) AS MontantAHT, '
+    const BCFLSQL =
+      ' SELECT BCFL.code_bacom,BCFL.code_bacoml,BCFL.qut_p,BCFL.cond_p,BCFL.code_p,BCFL.tva_p,BCFL.prixht_p,P.nom_p as nomp, P.refer_p as referp,  '
+      +' BCFL.prixvd_p,BCFL.prixvr_p,BCFL.prixvg_p,BCFL.prixva_p,BCFL.prixva2_p,BCFL.dateperiss_p,BCFL.qutinstock_p, '
+      +'   (((BCFL.prixht_p * BCFL.tva_p)/100)+BCFL.prixht_p) AS PrixATTC, '
+      +'   ((BCFL.prixht_p * BCFL.qut_p) * cond_p) AS MontantHT, '
+      +'   (((((BCFL.prixht_p * BCFL.tva_p)/100)+BCFL.prixht_p) * BCFL.qut_p)*cond_p) AS MontantTTC, '
+      +'   (((((((BCFL.prixht_p * BCFL.tva_p)/100)+BCFL.prixht_p) * BCFL.qut_p)*cond_p) )-(((BCFL.prixht_p * BCFL.qut_p) * cond_p))) AS MontantTVA, '
+      +'   ((BCFL.prixht_p * BCFL.qut_p)* cond_p) AS MontantAHT, '
       +'  CASE  '
-      +'       WHEN BCAL.prixvd_p <> ''0'' THEN '
-      +'     CASE WHEN BCAL.prixht_p <> ''0''   '
-      +'       THEN ( ((BCAL.prixvd_p - BCAL.prixht_p) / BCAL.prixht_p  ) *100) '
+      +'       WHEN BCFL.prixvd_p <> ''0'' THEN '
+      +'     CASE WHEN BCFL.prixht_p <> ''0''   '
+      +'       THEN ( ((BCFL.prixvd_p - BCFL.prixht_p) / BCFL.prixht_p  ) *100) '
       +'       ELSE ''100''  '
       +'     END           '
       +'  END AS MargeD,   '
       +'  CASE             '
-      +'     WHEN BCAL.prixvr_p <> ''0'' THEN '
-      +'   CASE WHEN BCAL.prixht_p <> ''0''    '
-      +'     THEN ( ((BCAL.prixvr_p - BCAL.prixht_p) / BCAL.prixht_p  ) *100) '
+      +'     WHEN BCFL.prixvr_p <> ''0'' THEN '
+      +'   CASE WHEN BCFL.prixht_p <> ''0''    '
+      +'     THEN ( ((BCFL.prixvr_p - BCFL.prixht_p) / BCFL.prixht_p  ) *100) '
       +'     ELSE ''100''  '
       +'   END          '
       +'  END AS MargeR, '
       +'  CASE   '
-      +'     WHEN BCAL.prixvg_p <> ''0'' THEN  '
-      +'   CASE WHEN BCAL.prixht_p <> ''0''   '
-      +'     THEN ( ((BCAL.prixvg_p - BCAL.prixht_p) / BCAL.prixht_p  ) *100)  '
+      +'     WHEN BCFL.prixvg_p <> ''0'' THEN  '
+      +'   CASE WHEN BCFL.prixht_p <> ''0''   '
+      +'     THEN ( ((BCFL.prixvg_p - BCFL.prixht_p) / BCFL.prixht_p  ) *100)  '
       +'     ELSE ''100''  '
       +'   END   '
       +'  END AS MargeG,  '
       +'   CASE    '
-      +'     WHEN BCAL.prixva_p <> ''0'' THEN  '
-      +'   CASE WHEN BCAL.prixht_p <> ''0''  '
-      +'     THEN ( ((BCAL.prixva_p - BCAL.prixht_p) / BCAL.prixht_p  ) *100) '
+      +'     WHEN BCFL.prixva_p <> ''0'' THEN  '
+      +'   CASE WHEN BCFL.prixht_p <> ''0''  '
+      +'     THEN ( ((BCFL.prixva_p - BCFL.prixht_p) / BCFL.prixht_p  ) *100) '
       +'     ELSE ''100''  '
       +'   END  '
       +'  END AS MargeA, '
       +'   CASE   '
-      +'     WHEN BCAL.prixva2_p <> ''0'' THEN  '
-      +'   CASE WHEN BCAL.prixht_p <> ''0''   '
-      +'     THEN ( ((BCAL.prixva2_p - BCAL.prixht_p) / BCAL.prixht_p  ) *100)  '
+      +'     WHEN BCFL.prixva2_p <> ''0'' THEN  '
+      +'   CASE WHEN BCFL.prixht_p <> ''0''   '
+      +'     THEN ( ((BCFL.prixva2_p - BCFL.prixht_p) / BCFL.prixht_p  ) *100)  '
       +'     ELSE ''100''  '
       +'   END  '
       +'  END AS MargeA2   '
-      +' FROM bona_com_list as BCAL '
+      +' FROM bona_com_list as BCFL '
       +' LEFT JOIN produit as P   '
-      +'  ON BCAL.code_p = P.code_p ';
+      +'  ON BCFL.code_p = P.code_p ';
     
     procedure EnableBonCom;
   end;
@@ -503,7 +503,7 @@ begin
 end;
 
 procedure TBonComAGestionF.ProduitBonComGCbxKeyPress(Sender: TObject; var Key: Char);
-  var CodeBCA,CodeCB : Integer;
+  var CodeBCF,CodeCB : Integer;
       lookupResultRefP : Variant;
       NomP: String;
       CodeP: Integer;
@@ -535,18 +535,18 @@ begin
             DataModuleF.Bona_com_listTable.IndexFieldNames:='';
             DataModuleF.Bona_com_listTable.Active:=False;
             DataModuleF.Bona_com_listTable.SQL.Clear;
-            DataModuleF.Bona_com_listTable.SQL.Text:= BCALSQL+ ' ORDER by code_bacoml' ;
+            DataModuleF.Bona_com_listTable.SQL.Text:= BCFLSQL+ ' ORDER by code_bacoml' ;
             DataModuleF.Bona_com_listTable.Active:=True;
 
             DataModuleF.Bona_com_listTable.Last;
              if  DataModuleF.Bona_com_listTable.IsEmpty then
              begin
                DataModuleF.Bona_com_listTable.Last;
-               CodeBCA := 1;
+               CodeBCF := 1;
              end else
                  begin
                   DataModuleF.Bona_com_listTable.Last;
-                  CodeBCA:= DataModuleF.Bona_com_listTable.FieldValues['code_bacoml'] + 1 ;
+                  CodeBCF:= DataModuleF.Bona_com_listTable.FieldValues['code_bacoml'] + 1 ;
                  end;
 
                  if MainForm.SQLQuery.FieldByName('perissable_p').AsBoolean = True then
@@ -556,7 +556,7 @@ begin
 
              DataModuleF.Bona_com_listTable.Last;
              DataModuleF.Bona_com_listTable.Append;
-             DataModuleF.Bona_com_listTable.FieldValues['code_bacoml']:= CodeBCA ;
+             DataModuleF.Bona_com_listTable.FieldValues['code_bacoml']:= CodeBCF ;
              DataModuleF.Bona_com_listTable.FieldValues['code_bacom']:= DataModuleF.Bona_comTable.FieldValues['code_bacom'];
              DataModuleF.Bona_com_listTable.FieldValues['code_p']:=  MainForm.SQLQuery.FieldValues['code_p'] ;
              DataModuleF.Bona_com_listTable.FieldValues['qut_p'] :=  01;
@@ -577,7 +577,7 @@ begin
 
             DataModuleF.Bona_com_listTable.Active:=False;
             DataModuleF.Bona_com_listTable.SQL.Clear;
-            DataModuleF.Bona_com_listTable.SQL.Text:= BCALSQL+ ' WHERE code_bacom = ' + QuotedStr(IntToStr(DataModuleF.Bona_comTable.FieldValues['code_bacom']));
+            DataModuleF.Bona_com_listTable.SQL.Text:= BCFLSQL+ ' WHERE code_bacom = ' + QuotedStr(IntToStr(DataModuleF.Bona_comTable.FieldValues['code_bacom']));
             DataModuleF.Bona_com_listTable.Active:=True;
 
             ProduitBonComGCbx.Text:='';
@@ -669,15 +669,15 @@ begin
             DataModuleF.Bona_com_listTable.IndexFieldNames:='';
             DataModuleF.Bona_com_listTable.Active:=False;
             DataModuleF.Bona_com_listTable.SQL.Clear;
-            DataModuleF.Bona_com_listTable.SQL.Text:= BCALSQL+ ' ORDER by code_bacoml' ;
+            DataModuleF.Bona_com_listTable.SQL.Text:= BCFLSQL+ ' ORDER by code_bacoml' ;
             DataModuleF.Bona_com_listTable.Active:=True;
            if  DataModuleF.Bona_com_listTable.RecordCount <= 0 then
            begin
-             CodeBCA := 1;
+             CodeBCF := 1;
            end else
                begin
                 DataModuleF.Bona_com_listTable.Last;
-                CodeBCA:= DataModuleF.Bona_com_listTable.FieldValues['code_bacoml'] + 1 ;
+                CodeBCF:= DataModuleF.Bona_com_listTable.FieldValues['code_bacoml'] + 1 ;
                end;
 
                  if MainForm.SQLQuery.FieldByName('perissable_p').AsBoolean = True then
@@ -686,7 +686,7 @@ begin
                  end;
                                 
              DataModuleF.Bona_com_listTable.Insert;
-             DataModuleF.Bona_com_listTable.FieldValues['code_bacoml']:= CodeBCA ;
+             DataModuleF.Bona_com_listTable.FieldValues['code_bacoml']:= CodeBCF ;
              DataModuleF.Bona_com_listTable.FieldValues['code_bacom']:= DataModuleF.Bona_comTable.FieldValues['code_bacom'];
              DataModuleF.Bona_com_listTable.FieldValues['code_p']:=  MainForm.SQLQuery.FieldValues['code_p'] ;
              DataModuleF.Bona_com_listTable.FieldValues['qut_p'] :=  01;
@@ -707,7 +707,7 @@ begin
 
             DataModuleF.Bona_com_listTable.Active:=False;
             DataModuleF.Bona_com_listTable.SQL.Clear;
-            DataModuleF.Bona_com_listTable.SQL.Text:= BCALSQL+ ' WHERE code_bacom = ' + QuotedStr(IntToStr(DataModuleF.Bona_comTable.FieldValues['code_bacom']));
+            DataModuleF.Bona_com_listTable.SQL.Text:= BCFLSQL+ ' WHERE code_bacom = ' + QuotedStr(IntToStr(DataModuleF.Bona_comTable.FieldValues['code_bacom']));
             DataModuleF.Bona_com_listTable.Active:=True;
             DataModuleF.Bona_com_listTable.EnableControls;
 
@@ -804,16 +804,16 @@ begin
             DataModuleF.Bona_com_listTable.IndexFieldNames:='';
             DataModuleF.Bona_com_listTable.Active:=False;
             DataModuleF.Bona_com_listTable.SQL.Clear;
-            DataModuleF.Bona_com_listTable.SQL.Text:= BCALSQL+ ' ORDER by code_bacoml' ;
+            DataModuleF.Bona_com_listTable.SQL.Text:= BCFLSQL+ ' ORDER by code_bacoml' ;
             DataModuleF.Bona_com_listTable.Active:=True;
 
            if  DataModuleF.Bona_com_listTable.RecordCount <= 0 then
            begin
-             CodeBCA := 1;
+             CodeBCF := 1;
            end else
                begin
                 DataModuleF.Bona_com_listTable.Last;
-                CodeBCA:= DataModuleF.Bona_com_listTable.FieldValues['code_bacoml'] + 1 ;
+                CodeBCF:= DataModuleF.Bona_com_listTable.FieldValues['code_bacoml'] + 1 ;
                end;
                
                  if MainForm.SQLQuery.FieldByName('perissable_p').AsBoolean = True then
@@ -823,7 +823,7 @@ begin
 
              DataModuleF.Bona_com_listTable.Last;
              DataModuleF.Bona_com_listTable.Append;
-             DataModuleF.Bona_com_listTable.FieldValues['code_bacoml']:= CodeBCA ;
+             DataModuleF.Bona_com_listTable.FieldValues['code_bacoml']:= CodeBCF ;
              DataModuleF.Bona_com_listTable.FieldValues['code_bacom']:= DataModuleF.Bona_comTable.FieldValues['code_bacom'];
              DataModuleF.Bona_com_listTable.FieldValues['code_p']:=  MainForm.SQLQuery.FieldValues['code_p'] ;
              DataModuleF.Bona_com_listTable.FieldValues['qut_p'] :=  01;
@@ -844,7 +844,7 @@ begin
 
              DataModuleF.Bona_com_listTable.Active:=False;
              DataModuleF.Bona_com_listTable.SQL.Clear;
-             DataModuleF.Bona_com_listTable.SQL.Text:= BCALSQL+ ' WHERE code_bacom = ' + QuotedStr(IntToStr(DataModuleF.Bona_comTable.FieldValues['code_bacom']));
+             DataModuleF.Bona_com_listTable.SQL.Text:= BCFLSQL+ ' WHERE code_bacom = ' + QuotedStr(IntToStr(DataModuleF.Bona_comTable.FieldValues['code_bacom']));
              DataModuleF.Bona_com_listTable.Active:=True;
              DataModuleF.Bona_com_listTable.EnableControls;
 
@@ -958,7 +958,7 @@ I : Integer;
 
 procedure TBonComAGestionF.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-MainForm.SaveGridLayout(ProduitsListDBGridEh,GetCurrentDir +'\bin\gc_bca');
+MainForm.SaveGridLayout(ProduitsListDBGridEh,GetCurrentDir +'\bin\gc_BCF');
 
  if ValiderBAComBonComGImg.ImageIndex = 1 then
   begin
@@ -989,7 +989,7 @@ MainForm.SaveGridLayout(ProduitsListDBGridEh,GetCurrentDir +'\bin\gc_bca');
 
           DataModuleF.Bona_com_listTable.Active:=false;
           DataModuleF.Bona_com_listTable.SQL.Clear;
-          DataModuleF.Bona_com_listTable.SQL.Text:= BCALSQL ;
+          DataModuleF.Bona_com_listTable.SQL.Text:= BCFLSQL ;
           DataModuleF.Bona_com_listTable.Active:=True;
           DataModuleF.Bona_com_listTable.EnableControls;
 
@@ -1020,7 +1020,7 @@ begin
     BonComGFourOLDCredit.Caption:= FloatToStrF(StrToFloat(BonComGFourOLDCredit.Caption),ffNumber,14,2) ;
     BonComGFourNEWCredit.Caption:= FloatToStrF(StrToFloat(BonComGFourNEWCredit.Caption),ffNumber,14,2) ;
  CodeCB:= DataModuleF.Bona_comTable.FieldByName('code_bacom').AsInteger   ;
- NumBonComGEdt.Caption := 'BCA'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5, CodeCB]);
+ NumBonComGEdt.Caption := 'BCF'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5, CodeCB]);
   if (DataModuleF.Bona_comTable.FieldByName('code_f').AsInteger <> null)
  AND (DataModuleF.Bona_comTable.FieldByName('code_f').AsInteger <> 0)  then
  begin
@@ -1454,9 +1454,9 @@ end;
 
 procedure TBonComAGestionF.FormCloseQuery(Sender: TObject;
   var CanClose: Boolean);
-  Var CodeBCA : Integer;
+  Var CodeBCF : Integer;
  begin
-   codeBCA:= DataModuleF.Bona_comTable.FieldByName('code_bacom').AsInteger;
+   codeBCF:= DataModuleF.Bona_comTable.FieldByName('code_bacom').AsInteger;
  if  NOT ProduitsListDBGridEh.DataSource.DataSet.IsEmpty then
   begin
     if FournisseurBonComGCbx.Text = '' then
@@ -1564,10 +1564,10 @@ procedure TBonComAGestionF.FormCloseQuery(Sender: TObject;
               MainForm.CompteTable.EnableControls;
 
             //------- This is to delete data from tre and reg ih not valide----------------------------------------------
-//               if (codeBCA <> 0) AND (codeBCA <> null) then
+//               if (codeBCF <> 0) AND (codeBCF <> null) then
 //               begin
-//                  MainForm.GstockdcConnection.ExecSQL('DELETE FROM regfournisseur where code_bacom = ' + IntToStr(codeBCA));
-//                  MainForm.GstockdcConnection.ExecSQL('DELETE FROM opt_cas_bnk where code_bacom = ' + IntToStr(codeBCA));
+//                  MainForm.GstockdcConnection.ExecSQL('DELETE FROM regfournisseur where code_bacom = ' + IntToStr(codeBCF));
+//                  MainForm.GstockdcConnection.ExecSQL('DELETE FROM opt_cas_bnk where code_bacom = ' + IntToStr(codeBCF));
 //                  MainForm.RegfournisseurTable.Refresh ;
 //                  MainForm.Opt_cas_bnk_CaisseTable.Refresh ;
 //               end;
@@ -1595,7 +1595,7 @@ procedure TBonComAGestionF.FormCloseQuery(Sender: TObject;
 
           if  (DataModuleF.Bona_comTable.FieldByName('valider_bacom').AsBoolean = false)  then
          begin
-//          codeBCA:= DataModuleF.Bona_comTable.FieldByName('code_bacom').AsInteger;
+//          codeBCF:= DataModuleF.Bona_comTable.FieldByName('code_bacom').AsInteger;
 
           MainForm.FournisseurTable.DisableControls;
           MainForm.FournisseurTable.Active:=false;
@@ -1660,10 +1660,10 @@ procedure TBonComAGestionF.FormCloseQuery(Sender: TObject;
           MainForm.CompteTable.EnableControls;
 
         //------- This is to delete data from tre and reg ih not valide----------------------------------------------
-           if (codeBCA <> 0) AND (codeBCA <> null) then
+           if (codeBCF <> 0) AND (codeBCF <> null) then
            begin
-              MainForm.GstockdcConnection.ExecSQL('DELETE FROM regfournisseur where code_bacom = ' + IntToStr(codeBCA));
-              MainForm.GstockdcConnection.ExecSQL('DELETE FROM opt_cas_bnk where code_bacom = ' + IntToStr(codeBCA));
+              MainForm.GstockdcConnection.ExecSQL('DELETE FROM regfournisseur where code_bacom = ' + IntToStr(codeBCF));
+              MainForm.GstockdcConnection.ExecSQL('DELETE FROM opt_cas_bnk where code_bacom = ' + IntToStr(codeBCF));
               MainForm.RegfournisseurTable.Refresh ;
               MainForm.Opt_cas_bnk_CaisseTable.Refresh ;
            end;
@@ -2490,14 +2490,14 @@ begin
 end;
 
 procedure TBonComAGestionF.EditBAComBonComGBtnClick(Sender: TObject);
-  Var CodeBCA : Integer;
+  Var CodeBCF : Integer;
  begin
-   codeBCA:= DataModuleF.Bona_comTable.FieldByName('code_bacom').AsInteger;
+   codeBCF:= DataModuleF.Bona_comTable.FieldByName('code_bacom').AsInteger;
                  //------- This is to delete data from tre and reg ih not valide----------------------------------------------
-               if (codeBCA <> 0) AND (codeBCA <> null) then
+               if (codeBCF <> 0) AND (codeBCF <> null) then
                begin
-                  MainForm.GstockdcConnection.ExecSQL('DELETE FROM regfournisseur where code_bacom = ' + IntToStr(codeBCA));
-                  MainForm.GstockdcConnection.ExecSQL('DELETE FROM opt_cas_bnk where code_bacom = ' + IntToStr(codeBCA));
+                  MainForm.GstockdcConnection.ExecSQL('DELETE FROM regfournisseur where code_bacom = ' + IntToStr(codeBCF));
+                  MainForm.GstockdcConnection.ExecSQL('DELETE FROM opt_cas_bnk where code_bacom = ' + IntToStr(codeBCF));
                   MainForm.RegfournisseurTable.Refresh ;
                   MainForm.Opt_cas_bnk_CaisseTable.Refresh ;
                end;
@@ -2550,7 +2550,7 @@ end;
 
 procedure TBonComAGestionF.AddBAComBonComGBtnClick(Sender: TObject);
 var
-  codeBCA,CodeCB : integer;
+  codeBCF,CodeCB : integer;
 begin
       begin
      FournisseurBonComGCbx.Clear;
@@ -2575,38 +2575,38 @@ begin
 
    EnableBonCom;
 
- codeBCA:= 0;
+ codeBCF:= 0;
    //   BonComAGestionF := TBonComAGestionF.Create(BonComAGestionF);
      if DataModuleF.Bona_comTable.RecordCount <= 0 then
       begin
 
         DataModuleF.Bona_comTable.Insert;
         DataModuleF.Bona_comTable.FieldValues['code_bacom']:=1;
-        DataModuleF.Bona_comTable.FieldValues['num_bacom']:= 'BCA'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5, 1]);
+        DataModuleF.Bona_comTable.FieldValues['num_bacom']:= 'BCF'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5, 1]);
         DataModuleF.Bona_comTable.FieldValues['date_bacom']:= DateOf(Today);
         DataModuleF.Bona_comTable.FieldValues['time_bacom']:=TimeOf(Now);
         DataModuleF.Bona_comTable.Post;
-        codeBCA := DataModuleF.Bona_comTable.FieldValues['code_bacom'];
+        codeBCF := DataModuleF.Bona_comTable.FieldValues['code_bacom'];
       end else
           begin
             DataModuleF.Bona_comTable.Last;
-            codeBCA := DataModuleF.Bona_comTable.FieldValues['code_bacom'];
+            codeBCF := DataModuleF.Bona_comTable.FieldValues['code_bacom'];
             DataModuleF.Bona_com_listTable.Active:=False;
             DataModuleF.Bona_com_listTable.SQL.Clear;
-            DataModuleF.Bona_com_listTable.SQL.Text:= BCALSQL+ ' WHERE code_bacom = ' + QuotedStr(IntToStr(codeBCA));
+            DataModuleF.Bona_com_listTable.SQL.Text:= BCFLSQL+ ' WHERE code_bacom = ' + QuotedStr(IntToStr(codeBCF));
             DataModuleF.Bona_com_listTable.Active:=True;
 
            if DataModuleF.Bona_com_listTable.RecordCount <= 0 then
            begin
         //   DataModuleF.Bona_comTable.Last;
-           codeBCA := DataModuleF.Bona_comTable.FieldValues['code_bacom'];
+           codeBCF := DataModuleF.Bona_comTable.FieldValues['code_bacom'];
            end else
            begin
         //   DataModuleF.Bona_comTable.Last;
-          // codeBCA := DataModuleF.Bona_comTable.FieldValues['code_bacom'];
+          // codeBCF := DataModuleF.Bona_comTable.FieldValues['code_bacom'];
            DataModuleF.Bona_comTable.Insert;
-           DataModuleF.Bona_comTable.FieldValues['code_bacom']:= codeBCA + 1;
-           DataModuleF.Bona_comTable.FieldValues['num_bacom']:=  'BCA'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5,(codeBCA + 1)]);
+           DataModuleF.Bona_comTable.FieldValues['code_bacom']:= codeBCF + 1;
+           DataModuleF.Bona_comTable.FieldValues['num_bacom']:=  'BCF'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5,(codeBCF + 1)]);
            DataModuleF.Bona_comTable.FieldValues['date_bacom']:= DateOf(Today);
            DataModuleF.Bona_comTable.FieldValues['time_bacom']:= TimeOf(Now);
            DataModuleF.Bona_comTable.Post;
@@ -2628,7 +2628,7 @@ BonComGFourOLDCredit.Caption:= FloatToStrF(0,ffNumber,14,2) ;
 BonComGFourNEWCredit.Caption:= FloatToStrF(0,ffNumber,14,2) ;
 
  CodeCB:= DataModuleF.Bona_comTable.FieldValues['code_bacom']   ;
- NumBonComGEdt.Caption := 'BCA'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5, CodeCB]);
+ NumBonComGEdt.Caption := 'BCF'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5, CodeCB]);
 
      FournisseurBonComGCbx.SetFocus;
 
@@ -2890,10 +2890,10 @@ end;
 
 procedure TBonComAGestionF.FormCreate(Sender: TObject);
 begin
-     if FileExists(GetCurrentDir +'\bin\gc_bca') then
+     if FileExists(GetCurrentDir +'\bin\gc_BCF') then
    begin
 
-    MainForm.LoadGridLayout(ProduitsListDBGridEh,GetCurrentDir +'\bin\gc_bca');
+    MainForm.LoadGridLayout(ProduitsListDBGridEh,GetCurrentDir +'\bin\gc_BCF');
    end;
 
 

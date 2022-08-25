@@ -641,7 +641,7 @@ InvoiceID :Integer;
 
          MainForm.SQLQuery3.Active:= False;
          MainForm.SQLQuery3.SQL.Clear;
-         MainForm.SQLQuery3.SQL.Text:= BonComAGestionF.BCALSQL+ ' WHERE code_bacom= '+ IntToStr(Bona_comTable.FieldByName('code_bacom').AsInteger) +' ORDER BY code_bacoml ';
+         MainForm.SQLQuery3.SQL.Text:= BonComAGestionF.BCFLSQL+ ' WHERE code_bacom= '+ IntToStr(Bona_comTable.FieldByName('code_bacom').AsInteger) +' ORDER BY code_bacoml ';
          MainForm.SQLQuery3.Active:= True;
 
           MainForm.SQLQuery3.First;
@@ -661,7 +661,7 @@ InvoiceID :Integer;
          InvoiceID := Bona_com_listTable.FieldByName('code_bacoml').AsInteger;
          Bona_com_listTable.Active:=false;
          Bona_com_listTable.SQL.Clear;
-         Bona_com_listTable.SQL.Text:= BonComAGestionF.BCALSQL+ ' ORDER BY code_bacoml ' ;
+         Bona_com_listTable.SQL.Text:= BonComAGestionF.BCFLSQL+ ' ORDER BY code_bacoml ' ;
          Bona_com_listTable.Active:=True;
 
          Bona_com_listTable.Locate('code_bacoml',InvoiceID,[]);
@@ -786,7 +786,7 @@ InvoiceID :Integer;
 
           MainForm.SQLQuery3.Active:= False;
           MainForm.SQLQuery3.SQL.Clear;
-          MainForm.SQLQuery3.SQL.Text:= BonComVGestionF.BCVLSQL+ ' WHERE code_bvcom= '+ IntToStr(Bonv_comTable.FieldByName('code_bvcom').AsInteger) +' ORDER BY code_bvcoml ';
+          MainForm.SQLQuery3.SQL.Text:= BonComVGestionF.BCCLSQL+ ' WHERE code_bvcom= '+ IntToStr(Bonv_comTable.FieldByName('code_bvcom').AsInteger) +' ORDER BY code_bvcoml ';
           MainForm.SQLQuery3.Active:= True;
 
           MainForm.SQLQuery3.First;
@@ -809,7 +809,7 @@ InvoiceID :Integer;
 
          Bonv_com_listTable.Active:=false;
          Bonv_com_listTable.SQL.Clear;
-         Bonv_com_listTable.SQL.Text:= BonComVGestionF.BCVLSQL+' ORDER BY code_bvcoml ' ;
+         Bonv_com_listTable.SQL.Text:= BonComVGestionF.BCCLSQL+' ORDER BY code_bvcoml ' ;
          Bonv_com_listTable.Active:=True;
 
          Bonv_com_listTable.Locate('code_bvcoml',InvoiceID,[]);

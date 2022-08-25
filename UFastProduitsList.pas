@@ -2834,7 +2834,7 @@ begin
       DataModuleF.Bona_com_listTable.IndexFieldNames:='';
       DataModuleF.Bona_com_listTable.Active:=False;
       DataModuleF.Bona_com_listTable.SQL.Clear;
-      DataModuleF.Bona_com_listTable.SQL.Text:= BonComAGestionF.BCALSQL+ ' ORDER by code_bacoml' ;
+      DataModuleF.Bona_com_listTable.SQL.Text:= BonComAGestionF.BCFLSQL+ ' ORDER by code_bacoml' ;
       DataModuleF.Bona_com_listTable.Active:=True;
       DataModuleF.Bona_com_listTable.Last;
 //----- use this code to select more than one produit ------//
@@ -2938,7 +2938,7 @@ begin
       DataModuleF.Bona_com_listTable.IndexFieldNames:='';
       DataModuleF.Bona_com_listTable.Active:=False;
       DataModuleF.Bona_com_listTable.SQL.Clear;
-      DataModuleF.Bona_com_listTable.SQL.Text:= BonComAGestionF.BCALSQL+ ' ORDER by code_bacoml' ;
+      DataModuleF.Bona_com_listTable.SQL.Text:= BonComAGestionF.BCFLSQL+ ' ORDER by code_bacoml' ;
       DataModuleF.Bona_com_listTable.Active:=True;
       DataModuleF.Bona_com_listTable.Last;
            if  DataModuleF.Bona_com_listTable.IsEmpty then
@@ -2978,7 +2978,7 @@ begin
            MainForm.ProduitTable.Filtered:=False;
           DataModuleF.Bona_com_listTable.Active:=False;
           DataModuleF.Bona_com_listTable.SQL.Clear;
-          DataModuleF.Bona_com_listTable.SQL.Text:= BonComAGestionF.BCALSQL+ ' WHERE code_bacom = ' + QuotedStr(IntToStr(DataModuleF.Bona_comTable.FieldValues['code_bacom']));
+          DataModuleF.Bona_com_listTable.SQL.Text:= BonComAGestionF.BCFLSQL+ ' WHERE code_bacom = ' + QuotedStr(IntToStr(DataModuleF.Bona_comTable.FieldValues['code_bacom']));
           DataModuleF.Bona_com_listTable.Active:=True;
           Close;
    end else
@@ -3204,7 +3204,7 @@ begin
             DataModuleF.Bonv_com_listTable.IndexFieldNames:='';
             DataModuleF.Bonv_com_listTable.Active:=False;
             DataModuleF.Bonv_com_listTable.SQL.Clear;
-            DataModuleF.Bonv_com_listTable.SQL.Text:= BonComVGestionF.BCVLSQL+' ORDER by code_bvcoml ' ;
+            DataModuleF.Bonv_com_listTable.SQL.Text:= BonComVGestionF.BCCLSQL+' ORDER by code_bvcoml ' ;
             DataModuleF.Bonv_com_listTable.Active:=True;
             DataModuleF.Bonv_com_listTable.Last;
              if  DataModuleF.Bonv_com_listTable.IsEmpty then
@@ -3259,7 +3259,7 @@ begin
              MainForm.ProduitTable.Filtered:=False;
              DataModuleF.Bonv_com_listTable.Active:=False;
              DataModuleF.Bonv_com_listTable.SQL.Clear;
-             DataModuleF.Bonv_com_listTable.SQL.Text:= BonComVGestionF.BCVLSQL+' WHERE code_bvcom = ' + QuotedStr(IntToStr(DataModuleF.Bonv_comTable.FieldValues['code_bvcom']))+' ';
+             DataModuleF.Bonv_com_listTable.SQL.Text:= BonComVGestionF.BCCLSQL+' WHERE code_bvcom = ' + QuotedStr(IntToStr(DataModuleF.Bonv_comTable.FieldValues['code_bvcom']))+' ';
              DataModuleF.Bonv_com_listTable.Active:=True;
             MainForm.ClientTable.Active:=false;
             MainForm.ClientTable.SQL.Clear;
