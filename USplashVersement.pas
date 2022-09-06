@@ -1147,7 +1147,7 @@ begin
 //          MainForm.SQLQuery.DisableControls;
           MainForm.SQLQuery.Active:=false;
           MainForm.SQLQuery.SQL.Clear;
-          MainForm.SQLQuery.SQL.Text:='Select * FROM fournisseur WHERE LOWER(nom_f) LIKE LOWER('+ QuotedStr(BonRecGestionF.FournisseurBonRecGCbx.Text )+')'  ;
+          MainForm.SQLQuery.SQL.Text:='Select code_f,credit_f FROM fournisseur WHERE LOWER(nom_f) LIKE LOWER('+ QuotedStr(BonRecGestionF.FournisseurBonRecGCbx.Text )+')'  ;
           MainForm.SQLQuery.Active:=True;
 
           MainForm.Mode_paiementTable.DisableControls;
@@ -1374,9 +1374,9 @@ begin
 
           MainForm.SQLQuery.Active:=false;
           MainForm.SQLQuery.SQL.Clear;
-//          MainForm.SQLQuery.SQL.Text:='Select * FROM fournisseur' ;
-//          MainForm.SQLQuery.Active:=True;
-//          MainForm.SQLQuery.EnableControls;
+
+          MainForm.FournisseurTable.Refresh;
+//          BonRecGestionF.BonRecGFourNEWCredit.Caption:=FloatToStrF(0,ffNumber,14,2);
 
          //--- this is for adding the money to the caisse----
          begin
@@ -1689,7 +1689,7 @@ begin
 //          MainForm.SQLQuery.DisableControls;
           MainForm.SQLQuery.Active:=false;
           MainForm.SQLQuery.SQL.Clear;
-          MainForm.SQLQuery.SQL.Text:='Select * FROM client WHERE LOWER(nom_c) LIKE LOWER('+ QuotedStr(BonLivGestionF.ClientBonLivGCbx.Text )+')'  ;
+          MainForm.SQLQuery.SQL.Text:='Select code_c,credit_c FROM client WHERE LOWER(nom_c) LIKE LOWER('+ QuotedStr(BonLivGestionF.ClientBonLivGCbx.Text )+')'  ;
           MainForm.SQLQuery.Active:=True;
 
           MainForm.Mode_paiementTable.DisableControls;
@@ -1928,7 +1928,7 @@ begin
           MainForm.SQLQuery.SQL.Clear;
 //          MainForm.SQLQuery.SQL.Text:='Select * FROM client' ;
 //          MainForm.SQLQuery.Active:=True;
-//          MainForm.SQLQuery.EnableControls;
+          MainForm.ClientTable.Refresh;
 
                     //--- this is for adding the money to the caisse----
          begin
@@ -2255,7 +2255,7 @@ begin
 //          MainForm.SQLQuery.DisableControls;
           MainForm.SQLQuery.Active:=false;
           MainForm.SQLQuery.SQL.Clear;
-          MainForm.SQLQuery.SQL.Text:='Select * FROM client WHERE LOWER(nom_c) LIKE LOWER('+ QuotedStr(BonCtrGestionF.ClientBonCtrGCbx.Text )+')'  ;
+          MainForm.SQLQuery.SQL.Text:='Select code_c,credit_c FROM client WHERE LOWER(nom_c) LIKE LOWER('+ QuotedStr(BonCtrGestionF.ClientBonCtrGCbx.Text )+')'  ;
           MainForm.SQLQuery.Active:=True;
 
           MainForm.Bonv_ctrTable.Edit;
@@ -2413,7 +2413,7 @@ begin
           MainForm.SQLQuery.SQL.Clear;
 //          MainForm.SQLQuery.SQL.Text:='Select * FROM client' ;
 //          MainForm.SQLQuery.Active:=True;
-//          MainForm.SQLQuery.EnableControls;
+          MainForm.ClientTable.Refresh;
 
                               //--- this is for adding the money to the caisse----
          begin
@@ -2657,7 +2657,7 @@ begin
 //          MainForm.SQLQuery.DisableControls;
           MainForm.SQLQuery.Active:=false;
           MainForm.SQLQuery.SQL.Clear;
-          MainForm.SQLQuery.SQL.Text:='Select * FROM fournisseur WHERE LOWER(nom_f) LIKE LOWER('+ QuotedStr(BonComAGestionF.FournisseurBonComGCbx.Text )+')'  ;
+          MainForm.SQLQuery.SQL.Text:='Select code_f,credit_f FROM fournisseur WHERE LOWER(nom_f) LIKE LOWER('+ QuotedStr(BonComAGestionF.FournisseurBonComGCbx.Text )+')'  ;
           MainForm.SQLQuery.Active:=True;
 
           MainForm.Mode_paiementTable.DisableControls;
@@ -2886,7 +2886,7 @@ begin
           MainForm.SQLQuery.SQL.Clear;
 //          MainForm.SQLQuery.SQL.Text:='Select * FROM fournisseur' ;
 //          MainForm.SQLQuery.Active:=True;
-//          MainForm.SQLQuery.EnableControls;
+         MainForm.FournisseurTable.Refresh;
 
          //--- this is for adding the money to the caisse----
          begin
@@ -3126,7 +3126,7 @@ begin
 //          MainForm.SQLQuery.DisableControls;
           MainForm.SQLQuery.Active:=false;
           MainForm.SQLQuery.SQL.Clear;
-          MainForm.SQLQuery.SQL.Text:='Select * FROM client WHERE LOWER(nom_c) LIKE LOWER('+ QuotedStr(BonComVGestionF.ClientBonComGCbx.Text )+')'  ;
+          MainForm.SQLQuery.SQL.Text:='Select code_c,credit_c FROM client WHERE LOWER(nom_c) LIKE LOWER('+ QuotedStr(BonComVGestionF.ClientBonComGCbx.Text )+')'  ;
           MainForm.SQLQuery.Active:=True;
 
           MainForm.Mode_paiementTable.DisableControls;
@@ -3365,7 +3365,7 @@ begin
           MainForm.SQLQuery.SQL.Clear;
 //          MainForm.SQLQuery.SQL.Text:='Select * FROM client' ;
 //          MainForm.SQLQuery.Active:=True;
-//          MainForm.SQLQuery.EnableControls;
+          MainForm.ClientTable.Refresh;
 
                     //--- this is for adding the money to the caisse----
          begin
