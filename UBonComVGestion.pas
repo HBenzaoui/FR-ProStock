@@ -2975,6 +2975,21 @@ begin
    end;
 end;
 
+procedure FullfillCredits(CodeC :Integer) ;
+begin
+   DataModuleF.SQLQuery3.Active:=False;
+   DataModuleF.SQLQuery3.SQL.Clear;
+   DataModuleF.SQLQuery3.SQL.Text:= 'SELECT credit_c from client where code_c ='+ IntToStr(CodeC);
+   DataModuleF.SQLQuery3.Active:=True;
+
+   BonComVGestionF.BonComGClientOLDCredit.Caption:= FloatToStrF(((DataModuleF.SQLQuery3.FieldByName('credit_c').AsFloat)),ffNumber,14,2);
+   BonComVGestionF.BonComGClientNEWCredit.Caption:=FloatToStrF(0,ffNumber,14,2);
+
+   DataModuleF.SQLQuery3.Active:=False;
+   DataModuleF.SQLQuery3.SQL.Clear;
+
+end;
+
 procedure TBonComVGestionF.sSpeedButton7Click(Sender: TObject);
 begin
   if (ClientBonComGCbx.Text <> '')
@@ -2987,6 +3002,8 @@ begin
     DataModuleF.bonv_com_listTable.Refresh;
 
     FullfillFormBonComV();
+
+     FullfillCredits(DataModuleF.Bonv_comTable.FieldByName('code_c').AsInteger);
   end else
     begin
       sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
@@ -3012,6 +3029,8 @@ begin
     DataModuleF.bonv_com_listTable.Refresh;
 
     FullfillFormBonComV();
+
+     FullfillCredits(DataModuleF.Bonv_comTable.FieldByName('code_c').AsInteger);
   end else
     begin
       sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
@@ -3036,6 +3055,8 @@ begin
     DataModuleF.bonv_com_listTable.Refresh;
 
     FullfillFormBonComV();
+
+     FullfillCredits(DataModuleF.Bonv_comTable.FieldByName('code_c').AsInteger);
   end else
     begin
       sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
@@ -3060,6 +3081,8 @@ begin
     DataModuleF.bonv_com_listTable.Refresh;
 
     FullfillFormBonComV();
+
+     FullfillCredits(DataModuleF.Bonv_comTable.FieldByName('code_c').AsInteger);
   end else
     begin
       sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);

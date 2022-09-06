@@ -295,7 +295,7 @@ implementation
 uses   StringTool,Vcl.Imaging.jpeg, IniFiles,
   UBonRec, UMainF, UFournisseurGestion, UFournisseurList, UFastProduitsList,
   UProduitGestion, USplashAddUnite, UProduitsList, USplashAddCompte,
-  USplashVersement, USNumberGestion, UComptoir;
+  USplashVersement, USNumberGestion, UComptoir, UDataModule;
 
 {$R *.dfm}
 
@@ -2595,11 +2595,10 @@ procedure TBonRecGestionF.EditBARecBonRecGBtnClick(Sender: TObject);
 
 
  // this is to enable the componets to edit the bon
-      MainForm.FournisseurTable.DisableControls;
-      MainForm.FournisseurTable.Active:=false;
-      MainForm.FournisseurTable.SQL.Clear;
-      MainForm.FournisseurTable.SQL.Text:='Select * FROM fournisseur WHERE LOWER(nom_f) LIKE LOWER('+ QuotedStr( FournisseurBonRecGCbx.Text )+')'  ;
-      MainForm.FournisseurTable.Active:=True;
+      DataModuleF.SQLQuery3.Active:=False;
+      DataModuleF.SQLQuery3.SQL.Clear;
+      DataModuleF.SQLQuery3.SQL.Text:='Select * FROM fournisseur WHERE LOWER(nom_f) LIKE LOWER('+ QuotedStr( FournisseurBonRecGCbx.Text )+')'  ;
+      DataModuleF.SQLQuery3.Active:=True;
   EnableBonRec;
  // this is to unvalider the bon
   begin
@@ -2610,22 +2609,22 @@ procedure TBonRecGestionF.EditBARecBonRecGBtnClick(Sender: TObject);
 
 // use this code to rest the old credit to the to the last time before he pay anything in that bon so you can aclculate again
   BonRecGFourOLDCredit.Caption:=
-  FloatToStrF((((MainForm.FournisseurTable.FieldByName('credit_f').AsFloat)- StrToFloat(StringReplace(BonRecResteLbl.Caption, #32, '', [rfReplaceAll])))),ffNumber,14,2);
+  FloatToStrF((((DataModuleF.SQLQuery3.FieldByName('credit_f').AsFloat)- StrToFloat(StringReplace(BonRecResteLbl.Caption, #32, '', [rfReplaceAll])))),ffNumber,14,2);
 
         begin
-      MainForm.FournisseurTable.Edit;
-      MainForm.FournisseurTable.FieldByName('credit_f').AsFloat:= (MainForm.FournisseurTable.FieldByName('credit_f').AsFloat) - (MainForm.Bona_recTable.FieldByName('MontantRes').AsFloat);
-      MainForm.FournisseurTable.Post;
+      DataModuleF.SQLQuery3.Edit;
+      DataModuleF.SQLQuery3.FieldByName('credit_f').AsFloat:= (DataModuleF.SQLQuery3.FieldByName('credit_f').AsFloat) - (MainForm.Bona_recTable.FieldByName('MontantRes').AsFloat);
+      DataModuleF.SQLQuery3.Post;
       end;
 
   BonRecRegleLbl.Caption:=FloatToStrF(0,ffNumber,14,2) ;
   BonRecResteLbl.Caption:= BonRecTotalTTCLbl.Caption;
 
-      MainForm.FournisseurTable.Active:=false;
-      MainForm.FournisseurTable.SQL.Clear;
-      MainForm.FournisseurTable.SQL.Text:='Select * FROM fournisseur '  ;
-      MainForm.FournisseurTable.Active:=True;
-      MainForm.FournisseurTable.EnableControls;
+      DataModuleF.SQLQuery3.Active:=false;
+     DataModuleF.SQLQuery3.SQL.Clear;
+//      MainForm.FournisseurTable.SQL.Text:='Select * FROM fournisseur '  ;
+//      MainForm.FournisseurTable.Active:=True;
+      MainForm.FournisseurTable.Refresh;
   //-------------------------------------------
     begin
            MainForm.ProduitTable.DisableControls;
@@ -2872,6 +2871,22 @@ begin
    end;
 end;
 
+procedure FullfillCredits(CodeF :Integer) ;
+begin
+   DataModuleF.SQLQuery3.Active:=False;
+   DataModuleF.SQLQuery3.SQL.Clear;
+   DataModuleF.SQLQuery3.SQL.Text:= 'SELECT credit_f from fournisseur where code_f ='+ IntToStr(CodeF);
+   DataModuleF.SQLQuery3.Active:=True;
+
+   BonRecGestionF.BonRecGFourOLDCredit.Caption:= FloatToStrF(((DataModuleF.SQLQuery3.FieldByName('credit_f').AsFloat)),ffNumber,14,2);
+   BonRecGestionF.BonRecGFourNEWCredit.Caption:=FloatToStrF(0,ffNumber,14,2);
+
+   DataModuleF.SQLQuery3.Active:=False;
+   DataModuleF.SQLQuery3.SQL.Clear;
+
+end;
+
+
 procedure TBonRecGestionF.sSpeedButton10Click(Sender: TObject);
 begin
 
@@ -2886,6 +2901,9 @@ begin
       MainForm.Bona_recPlistTable.Refresh;
 
       FullfillFormBonRec();
+
+      FullfillCredits(MainForm.Bona_recTable.FieldByName('code_f').AsInteger);
+
   end else
   begin
 
@@ -2913,6 +2931,8 @@ begin
       MainForm.Bona_recPlistTable.Refresh;
 
       FullfillFormBonRec();
+
+      FullfillCredits(MainForm.Bona_recTable.FieldByName('code_f').AsInteger);
   end else
   begin
 
@@ -2940,6 +2960,8 @@ begin
       MainForm.Bona_recPlistTable.Refresh;
 
       FullfillFormBonRec();
+
+      FullfillCredits(MainForm.Bona_recTable.FieldByName('code_f').AsInteger);
   end else
   begin
 
@@ -2966,6 +2988,8 @@ begin
     MainForm.Bona_recPlistTable.Refresh;
 
     FullfillFormBonRec();
+
+      FullfillCredits(MainForm.Bona_recTable.FieldByName('code_f').AsInteger);
   end else
   begin
 

@@ -763,6 +763,21 @@ begin
    end;
 end;
 
+procedure FullfillCredits(CodeF :Integer) ;
+begin
+   DataModuleF.SQLQuery3.Active:=False;
+   DataModuleF.SQLQuery3.SQL.Clear;
+   DataModuleF.SQLQuery3.SQL.Text:= 'SELECT credit_f from fournisseur where code_f ='+ IntToStr(CodeF);
+   DataModuleF.SQLQuery3.Active:=True;
+
+   BonFacAGestionF.BonFacAGFourOLDCredit.Caption:= FloatToStrF(((DataModuleF.SQLQuery3.FieldByName('credit_f').AsFloat)),ffNumber,14,2);
+   BonFacAGestionF.BonFacAGFourNEWCredit.Caption:=FloatToStrF(0,ffNumber,14,2);
+
+   DataModuleF.SQLQuery3.Active:=False;
+   DataModuleF.SQLQuery3.SQL.Clear;
+
+end;
+
 procedure TBonFacAGestionF.sSpeedButton7Click(Sender: TObject);
 begin
 
@@ -776,6 +791,8 @@ begin
     MainForm.Bona_fac_listTable.Refresh;
 
     FullfillFormBonFacA();
+
+      FullfillCredits(MainForm.Bona_facTable.FieldByName('code_f').AsInteger);
   end else
 
     begin
@@ -803,6 +820,8 @@ begin
     MainForm.Bona_fac_listTable.Refresh;
 
     FullfillFormBonFacA();
+
+      FullfillCredits(MainForm.Bona_facTable.FieldByName('code_f').AsInteger);
   end else
 
     begin
@@ -829,6 +848,8 @@ begin
     MainForm.Bona_fac_listTable.Refresh;
 
     FullfillFormBonFacA();
+
+      FullfillCredits(MainForm.Bona_facTable.FieldByName('code_f').AsInteger);
   end else
     begin
       sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
@@ -854,6 +875,8 @@ begin
     MainForm.Bona_fac_listTable.Refresh;
 
     FullfillFormBonFacA();
+
+      FullfillCredits(MainForm.Bona_facTable.FieldByName('code_f').AsInteger);
   end else
     begin
       sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
