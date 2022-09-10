@@ -4836,7 +4836,7 @@ begin
         Mainform.Sqlquery.Active := False;
         Mainform.Sqlquery.Sql.Clear;
         Mainform.Sqlquery.Sql.Text := 'SELECT code_bvctrl,code_p,  qut_p, cond_p , prixvd_p,tva_p,code_barec FROM bonv_ctr_list WHERE code_bvctr =  '+
-          IntToStr(MainForm.Bonv_ctrTable.FieldValues['code_bvctr']) + 'GROUP BY code_bvctrl, code_p, qut_p, cond_p,prixvd_p,tva_p,code_barec ';
+          IntToStr(MainForm.Bonv_ctrTable.FieldByName('code_bvctr').AsInteger) + 'GROUP BY code_bvctrl, code_p, qut_p, cond_p,prixvd_p,tva_p,code_barec ';
         MainForm.SQLQuery.Active := True;
         MainForm.SQLQuery.First;
 
@@ -4844,27 +4844,27 @@ begin
         begin
           MainForm.SQLQuery3.Active := False;
           MainForm.SQLQuery3.SQL.Clear;
-          MainForm.SQLQuery3.SQL.Text := 'SELECT code_p, qut_p, tva_p FROM produit WHERE code_p = ' + QuotedStr(MainForm.SQLQuery.FieldValues['code_p']);
+          MainForm.SQLQuery3.SQL.Text := 'SELECT code_p, qut_p, tva_p FROM produit WHERE code_p = ' + IntToStr(MainForm.SQLQuery.FieldByName('code_p').AsInteger);
           MainForm.SQLQuery3.Active := True;
 
           if not MainForm.SQLQuery3.IsEmpty then
           begin
           MainForm.SQLQuery3.Edit;
-          MainForm.SQLQuery3.FieldValues['qut_p'] := (MainForm.SQLQuery3.FieldValues['qut_p'] - ((MainForm.SQLQuery.FieldValues['qut_p']) * ((MainForm.SQLQuery.FieldValues['cond_p']))));
-          MainForm.SQLQuery3.FieldValues['tva_p'] := MainForm.SQLQuery.FieldValues['tva_p'];
+          MainForm.SQLQuery3.FieldByName('qut_p').AsFloat := (MainForm.SQLQuery3.FieldByName('qut_p').AsFloat - ((MainForm.SQLQuery.FieldByName('qut_p').AsFloat) * ((MainForm.SQLQuery.FieldByName('cond_p').AsInteger))));
+          MainForm.SQLQuery3.FieldByName('tva_p').AsFloat := MainForm.SQLQuery.FieldByName('tva_p').AsFloat;
           MainForm.SQLQuery3.Post;
           end;
 
           Mainform.FDQuery2.Active := False;
           Mainform.FDQuery2.Sql.Clear;
           Mainform.FDQuery2.Sql.Text := 'SELECT code_barec, code_p,qutinstock_p FROM bona_rec_list  WHERE code_barec ='+
-            QuotedStr(MainForm.SQLQuery.FieldValues['code_barec']);
+            IntToStr(MainForm.SQLQuery.FieldByName('code_barec').AsInteger);
           MainForm.FDQuery2.Active := True;
           if not (MainForm.FDQuery2.IsEmpty) then
           begin
             MainForm.FDQuery2.Edit;
-            MainForm.FDQuery2.FieldValues['qutinstock_p'] :=
-              (MainForm.FDQuery2.FieldValues['qutinstock_p'] - ((MainForm.SQLQuery.FieldValues['qut_p']) * ((MainForm.SQLQuery.FieldValues['cond_p']))));
+            MainForm.FDQuery2.FieldByName('qutinstock_p').AsFloat :=
+              (MainForm.FDQuery2.FieldByName('qutinstock_p').AsFloat - ((MainForm.SQLQuery.FieldByName('qut_p').AsFloat) * ((MainForm.SQLQuery.FieldByName('cond_p').AsFloat))));
             MainForm.FDQuery2.Post;
 
           end;
@@ -4892,8 +4892,8 @@ begin
         MainForm.SQLQuery.Active := True;
 
         MainForm.Bonv_ctrTable.Edit;
-        MainForm.Bonv_ctrTable.FieldValues['code_c'] := MainForm.SQLQuery.FieldByName('code_c').AsInteger;
-        MainForm.Bonv_ctrTable.FieldValues['code_ur'] := StrToInt(MainForm.UserIDLbl.Caption);
+        MainForm.Bonv_ctrTable.FieldByName('code_c').AsInteger := MainForm.SQLQuery.FieldByName('code_c').AsInteger;
+        MainForm.Bonv_ctrTable.FieldByName('code_ur').AsInteger := StrToInt(MainForm.UserIDLbl.Caption);
         MainForm.Bonv_ctrTable.FieldByName('montaht_bvctr').AsFloat := StrToFloat(StringReplace(BonCtrTotalAHTLbl.Caption, #32, '', [rfReplaceAll]));
         MainForm.Bonv_ctrTable.FieldByName('montht_bvctr').AsFloat := StrToFloat(StringReplace(BonCtrTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
         if RemiseBonCtrGEdt.Text <> '' then
@@ -4909,11 +4909,11 @@ begin
         MainForm.Bonv_ctrTable.FieldByName('montttc_bvctr').AsFloat := StrToFloat(StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
         MainForm.Bonv_ctrTable.FieldByName('marge_bvctr').AsFloat := StrToFloat(StringReplace(BonCTRTotalMargeLbl.Caption, #32, '', [rfReplaceAll]));
         MainForm.Bonv_ctrTable.FieldByName('valider_bvctr').AsBoolean := True;
-        MainForm.Bonv_ctrTable.FieldValues['code_ur'] := StrToInt(MainForm.UserIDLbl.Caption);
+        MainForm.Bonv_ctrTable.FieldByName('code_ur').AsInteger := StrToInt(MainForm.UserIDLbl.Caption);
         if Tag = 0 then
         begin
           MainForm.Bonv_ctrTable.FieldByName('date_bvctr').AsDateTime := DateBonCtrGD.DateTime;
-          MainForm.Bonv_ctrTable.FieldValues['time_bvctr'] := TimeOf(Now);
+          MainForm.Bonv_ctrTable.FieldByName('time_bvctr').AsDateTime := TimeOf(Now);
         end;
 
         MainForm.Bonv_ctrTable.Post;
@@ -4932,7 +4932,7 @@ begin
             if not (MainForm.SQLQuery4.IsEmpty) then
             begin
               MainForm.SQLQuery4.Last;
-              CodeRF := MainForm.SQLQuery4.FieldValues['code_rc'] + 1;
+              CodeRF := MainForm.SQLQuery4.FieldByName('code_rc').AsInteger + 1;
             end
             else
             begin
@@ -4940,16 +4940,16 @@ begin
             end;
 
             MainForm.SQLQuery4.Append;
-            MainForm.SQLQuery4.FieldValues['code_rc'] := CodeRF;
-            MainForm.SQLQuery4.FieldValues['code_bvctr'] := MainForm.Bonv_ctrTable.FieldValues['code_bvctr'];
-            MainForm.SQLQuery4.FieldValues['nom_rc'] := NumBonCtrGEdt.Caption;
-            MainForm.SQLQuery4.FieldValues['code_c'] := MainForm.SQLQuery.FieldByName('code_c').AsInteger;
-            MainForm.SQLQuery4.FieldValues['date_rc'] := DateBonCtrGD.DateTime;
-            MainForm.SQLQuery4.FieldValues['time_rc'] := TimeOf(Now);
-            MainForm.SQLQuery4.FieldValues['code_mdpai'] := MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
-            MainForm.SQLQuery4.FieldValues['code_cmpt'] := MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
-            MainForm.SQLQuery4.FieldValues['bon_or_no_rc'] := 4;
-            MainForm.SQLQuery4.FieldValues['code_ur'] := StrToInt(MainForm.UserIDLbl.Caption);
+            MainForm.SQLQuery4.FieldByName('code_rc').AsInteger := CodeRF;
+            MainForm.SQLQuery4.FieldByName('code_bvctr').AsInteger := MainForm.Bonv_ctrTable.FieldByName('code_bvctr').AsInteger;
+            MainForm.SQLQuery4.FieldByName('nom_rc').AsString := NumBonCtrGEdt.Caption;
+            MainForm.SQLQuery4.FieldByName('code_c').AsInteger := MainForm.SQLQuery.FieldByName('code_c').AsInteger;
+            MainForm.SQLQuery4.FieldByName('date_rc').AsDateTime := DateBonCtrGD.DateTime;
+            MainForm.SQLQuery4.FieldByName('time_rc').AsDateTime := TimeOf(Now);
+            MainForm.SQLQuery4.FieldByName('code_mdpai').AsInteger := MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
+            MainForm.SQLQuery4.FieldByName('code_cmpt').AsInteger := MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
+            MainForm.SQLQuery4.FieldByName('bon_or_no_rc').AsInteger := 4;
+            MainForm.SQLQuery4.FieldByName('code_ur').AsInteger := StrToInt(MainForm.UserIDLbl.Caption);
 
             MainForm.SQLQuery4.FieldByName('montver_rc').AsFloat := StrToFloat(StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
 
@@ -4963,22 +4963,22 @@ begin
 //            MainForm.RegclientTable.DisableControls;
             MainForm.SQLQuery4.Active := false;
             MainForm.SQLQuery4.SQL.Clear;
-            MainForm.SQLQuery4.SQL.Text := 'SELECT * FROM regclient WHERE code_bvctr =' + IntToStr(MainForm.Bonv_ctrTable.FieldValues['code_bvctr']);
+            MainForm.SQLQuery4.SQL.Text := 'SELECT * FROM regclient WHERE code_bvctr =' + IntToStr(MainForm.Bonv_ctrTable.FieldByName('code_bvctr').AsInteger);
             MainForm.SQLQuery4.Active := True;
 
             if not (MainForm.SQLQuery4.IsEmpty) then
             begin
 
               MainForm.SQLQuery4.Edit;
-              MainForm.SQLQuery4.FieldValues['code_bvctr'] := MainForm.Bonv_ctrTable.FieldValues['code_bvctr'];
-              MainForm.SQLQuery4.FieldValues['nom_rc'] := NumBonCtrGEdt.Caption;
-              MainForm.SQLQuery4.FieldValues['code_c'] := MainForm.SQLQuery.FieldByName('code_c').AsInteger;
-              MainForm.SQLQuery4.FieldValues['date_rc'] := DateBonCtrGD.DateTime;
-              MainForm.SQLQuery4.FieldValues['time_rc'] := TimeOf(Now);
-              MainForm.SQLQuery4.FieldValues['code_mdpai'] := MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
-              MainForm.SQLQuery4.FieldValues['code_cmpt'] := MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
-              MainForm.SQLQuery4.FieldValues['bon_or_no_rc'] := 4;
-              MainForm.SQLQuery4.FieldValues['code_ur'] := StrToInt(MainForm.UserIDLbl.Caption);
+              MainForm.SQLQuery4.FieldByName('code_bvctr').AsInteger := MainForm.Bonv_ctrTable.FieldByName('code_bvctr').AsInteger;
+              MainForm.SQLQuery4.FieldByName('nom_rc').AsString := NumBonCtrGEdt.Caption;
+              MainForm.SQLQuery4.FieldByName('code_c').AsInteger := MainForm.SQLQuery.FieldByName('code_c').AsInteger;
+              MainForm.SQLQuery4.FieldByName('date_rc').AsDateTime := DateBonCtrGD.DateTime;
+              MainForm.SQLQuery4.FieldByName('time_rc').AsDateTime := TimeOf(Now);
+              MainForm.SQLQuery4.FieldByName('code_mdpai').AsInteger := MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
+              MainForm.SQLQuery4.FieldByName('code_cmpt').AsInteger := MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
+              MainForm.SQLQuery4.FieldByName('bon_or_no_rc').AsInteger := 4;
+              MainForm.SQLQuery4.FieldByName('code_ur').AsInteger := StrToInt(MainForm.UserIDLbl.Caption);
 
               MainForm.SQLQuery4.FieldByName('montver_rc').AsFloat := StrToFloat(StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
 
@@ -4997,7 +4997,7 @@ begin
               if not (MainForm.SQLQuery4.IsEmpty) then
               begin
                 MainForm.SQLQuery4.Last;
-                CodeRF := MainForm.SQLQuery4.FieldValues['code_rc'] + 1;
+                CodeRF := MainForm.SQLQuery4.FieldByName('code_rc').AsInteger + 1;
               end
               else
               begin
@@ -5005,16 +5005,16 @@ begin
               end;
 
               MainForm.SQLQuery4.Append;
-              MainForm.SQLQuery4.FieldValues['code_rc'] := CodeRF;
-              MainForm.SQLQuery4.FieldValues['code_bvctr'] := MainForm.Bonv_ctrTable.FieldValues['code_bvctr'];
-              MainForm.SQLQuery4.FieldValues['nom_rc'] := NumBonCtrGEdt.Caption;
-              MainForm.SQLQuery4.FieldValues['code_c'] := MainForm.SQLQuery.FieldByName('code_c').AsInteger;
-              MainForm.SQLQuery4.FieldValues['date_rc'] := DateBonCtrGD.DateTime;
-              MainForm.SQLQuery4.FieldValues['time_rc'] := TimeOf(Now);
-              MainForm.SQLQuery4.FieldValues['code_mdpai'] := MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
-              MainForm.SQLQuery4.FieldValues['code_cmpt'] := MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
-              MainForm.SQLQuery4.FieldValues['bon_or_no_rc'] := 4;
-              MainForm.SQLQuery4.FieldValues['code_ur'] := StrToInt(MainForm.UserIDLbl.Caption);
+              MainForm.SQLQuery4.FieldByName('code_rc').AsInteger := CodeRF;
+              MainForm.SQLQuery4.FieldByName('code_bvctr').AsInteger := MainForm.Bonv_ctrTable.FieldByName('code_bvctr').AsInteger;
+              MainForm.SQLQuery4.FieldByName('nom_rc').AsString := NumBonCtrGEdt.Caption;
+              MainForm.SQLQuery4.FieldByName('code_c').AsInteger := MainForm.SQLQuery.FieldByName('code_c').AsInteger;
+              MainForm.SQLQuery4.FieldByName('date_rc').AsDateTime := DateBonCtrGD.DateTime;
+              MainForm.SQLQuery4.FieldByName('time_rc').AsDateTime := TimeOf(Now);
+              MainForm.SQLQuery4.FieldByName('code_mdpai').AsInteger := MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
+              MainForm.SQLQuery4.FieldByName('code_cmpt').AsInteger := MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
+              MainForm.SQLQuery4.FieldByName('bon_or_no_rc').AsInteger := 4;
+              MainForm.SQLQuery4.FieldByName('code_ur').AsInteger := StrToInt(MainForm.UserIDLbl.Caption);
 
               MainForm.SQLQuery4.FieldByName('montver_rc').AsFloat := StrToFloat(StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
 
@@ -5050,7 +5050,7 @@ begin
             if not (MainForm.SQLQuery4.IsEmpty) then
             begin
               MainForm.SQLQuery4.Last;
-              CodeOCB := MainForm.SQLQuery4.FieldValues['code_ocb'] + 1;
+              CodeOCB := MainForm.SQLQuery4.FieldByName('code_ocb').AsInteger + 1;
             end
             else
             begin
@@ -5058,20 +5058,20 @@ begin
             end;
 
             MainForm.SQLQuery4.Append;
-            MainForm.SQLQuery4.FieldValues['code_ocb'] := CodeOCB;
-            MainForm.SQLQuery4.FieldValues['date_ocb'] := DateBonCtrGD.DateTime;
-            MainForm.SQLQuery4.FieldValues['time_ocb'] := TimeOf(Now);
+            MainForm.SQLQuery4.FieldByName('code_ocb').AsInteger := CodeOCB;
+            MainForm.SQLQuery4.FieldByName('date_ocb').AsDateTime := DateBonCtrGD.DateTime;
+            MainForm.SQLQuery4.FieldByName('time_ocb').AsDateTime := TimeOf(Now);
             ;
-            MainForm.SQLQuery4.FieldValues['nom_ocb'] := 'Vente au Comptoir N� ' + NumBonCtrGEdt.Caption;
-            MainForm.SQLQuery4.FieldValues['third_ocb'] := ClientBonCtrGCbx.Text;
-            MainForm.SQLQuery4.FieldValues['encaiss_ocb'] := StrToFloat(StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
+            MainForm.SQLQuery4.FieldByName('nom_ocb').AsString := 'Vente au Comptoir N� ' + NumBonCtrGEdt.Caption;
+            MainForm.SQLQuery4.FieldByName('third_ocb').AsString := ClientBonCtrGCbx.Text;
+            MainForm.SQLQuery4.FieldByName('encaiss_ocb').AsFloat := StrToFloat(StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
 
-            MainForm.SQLQuery4.FieldValues['code_mdpai'] := 1;
+            MainForm.SQLQuery4.FieldByName('code_mdpai').AsInteger := 1;
 
-            MainForm.SQLQuery4.FieldValues['code_cmpt'] := MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
-            MainForm.SQLQuery4.FieldValues['nature_ocb'] := MainForm.CompteTable.FieldByName('nature_cmpt').AsBoolean;
-            MainForm.SQLQuery4.FieldValues['code_ur'] := StrToInt(MainForm.UserIDLbl.Caption);
-            MainForm.SQLQuery4.FieldValues['code_bvctr'] := MainForm.Bonv_ctrTable.FieldValues['code_bvctr'];
+            MainForm.SQLQuery4.FieldByName('code_cmpt').AsInteger := MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
+            MainForm.SQLQuery4.FieldByName('nature_ocb').AsBoolean := MainForm.CompteTable.FieldByName('nature_cmpt').AsBoolean;
+            MainForm.SQLQuery4.FieldByName('code_ur').AsInteger := StrToInt(MainForm.UserIDLbl.Caption);
+            MainForm.SQLQuery4.FieldByName('code_bvctr').AsInteger := MainForm.Bonv_ctrTable.FieldByName('code_bvctr').AsInteger;
 
             MainForm.SQLQuery4.Post;
             MainForm.Opt_cas_bnk_CaisseTable.Refresh;
@@ -5090,25 +5090,25 @@ begin
             MainForm.SQLQuery4.Filtered := false;
             MainForm.SQLQuery4.Active := false;
             MainForm.SQLQuery4.SQL.Clear;
-            MainForm.SQLQuery4.SQL.Text := 'SELECT * FROM opt_cas_bnk WHERE code_bvctr =' + IntToStr(MainForm.Bonv_ctrTable.FieldValues['code_bvctr']);
+            MainForm.SQLQuery4.SQL.Text := 'SELECT * FROM opt_cas_bnk WHERE code_bvctr =' + IntToStr(MainForm.Bonv_ctrTable.FieldByName('code_bvctr').AsInteger);
             MainForm.SQLQuery4.Active := True;
 
             if not (MainForm.SQLQuery4.IsEmpty) then
             begin
               MainForm.SQLQuery4.Edit;
-              MainForm.SQLQuery4.FieldValues['date_ocb'] := DateBonCtrGD.DateTime;
-              MainForm.SQLQuery4.FieldValues['time_ocb'] := TimeOf(Now);
+              MainForm.SQLQuery4.FieldByName('date_ocb').AsDateTime := DateBonCtrGD.DateTime;
+              MainForm.SQLQuery4.FieldByName('time_ocb').AsDateTime := TimeOf(Now);
               ;
-              MainForm.SQLQuery4.FieldValues['nom_ocb'] := 'Vente au Comptoir N� ' + NumBonCtrGEdt.Caption;
-              MainForm.SQLQuery4.FieldValues['third_ocb'] := ClientBonCtrGCbx.Text;
-              MainForm.SQLQuery4.FieldValues['encaiss_ocb'] := StrToFloat(StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
+              MainForm.SQLQuery4.FieldByName('nom_ocb').AsString := 'Vente au Comptoir N� ' + NumBonCtrGEdt.Caption;
+              MainForm.SQLQuery4.FieldByName('third_ocb').AsString := ClientBonCtrGCbx.Text;
+              MainForm.SQLQuery4.FieldByName('encaiss_ocb').AsFloat := StrToFloat(StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
 
-              MainForm.SQLQuery4.FieldValues['code_mdpai'] := 1;
+              MainForm.SQLQuery4.FieldByName('code_mdpai').AsInteger := 1;
 
-              MainForm.SQLQuery4.FieldValues['code_cmpt'] := MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
-              MainForm.SQLQuery4.FieldValues['nature_ocb'] := MainForm.CompteTable.FieldByName('nature_cmpt').AsBoolean;
-              MainForm.SQLQuery4.FieldValues['code_ur'] := StrToInt(MainForm.UserIDLbl.Caption);
-              MainForm.SQLQuery4.FieldValues['code_bvctr'] := MainForm.Bonv_ctrTable.FieldValues['code_bvctr'];
+              MainForm.SQLQuery4.FieldByName('code_cmpt').AsInteger := MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
+              MainForm.SQLQuery4.FieldByName('nature_ocb').AsBoolean := MainForm.CompteTable.FieldByName('nature_cmpt').AsBoolean;
+              MainForm.SQLQuery4.FieldByName('code_ur').AsInteger := StrToInt(MainForm.UserIDLbl.Caption);
+              MainForm.SQLQuery4.FieldByName('code_bvctr').AsInteger := MainForm.Bonv_ctrTable.FieldByName('code_bvctr').AsInteger;
 
               MainForm.SQLQuery4.Post;
               MainForm.Opt_cas_bnk_CaisseTable.Refresh;
@@ -5127,7 +5127,7 @@ begin
               if not (MainForm.SQLQuery4.IsEmpty) then
               begin
                 MainForm.SQLQuery4.Last;
-                CodeOCB := MainForm.SQLQuery4.FieldValues['code_ocb'] + 1;
+                CodeOCB := MainForm.SQLQuery4.FieldByName('code_ocb').AsInteger + 1;
               end
               else
               begin
@@ -5135,20 +5135,20 @@ begin
               end;
 
               MainForm.SQLQuery4.Append;
-              MainForm.SQLQuery4.FieldValues['code_ocb'] := CodeOCB;
-              MainForm.SQLQuery4.FieldValues['date_ocb'] := DateBonCtrGD.DateTime;
-              MainForm.SQLQuery4.FieldValues['time_ocb'] := TimeOf(Now);
+              MainForm.SQLQuery4.FieldByName('code_ocb').AsInteger := CodeOCB;
+              MainForm.SQLQuery4.FieldByName('date_ocb').AsDateTime := DateBonCtrGD.DateTime;
+              MainForm.SQLQuery4.FieldByName('time_ocb').AsDateTime := TimeOf(Now);
               ;
-              MainForm.SQLQuery4.FieldValues['nom_ocb'] := 'Vente au Comptoir N� ' + NumBonCtrGEdt.Caption;
-              MainForm.SQLQuery4.FieldValues['third_ocb'] := ClientBonCtrGCbx.Text;
-              MainForm.SQLQuery4.FieldValues['encaiss_ocb'] := StrToFloat(StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
+              MainForm.SQLQuery4.FieldByName('nom_ocb').AsString := 'Vente au Comptoir N� ' + NumBonCtrGEdt.Caption;
+              MainForm.SQLQuery4.FieldByName('third_ocb').AsString := ClientBonCtrGCbx.Text;
+              MainForm.SQLQuery4.FieldByName('encaiss_ocb').AsFloat:= StrToFloat(StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
 
-              MainForm.SQLQuery4.FieldValues['code_mdpai'] := 1;
+              MainForm.SQLQuery4.FieldByName('code_mdpai').AsInteger := 1;
 
-              MainForm.SQLQuery4.FieldValues['code_cmpt'] := MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
-              MainForm.SQLQuery4.FieldValues['nature_ocb'] := MainForm.CompteTable.FieldByName('nature_cmpt').AsBoolean;
-              MainForm.SQLQuery4.FieldValues['code_ur'] := StrToInt(MainForm.UserIDLbl.Caption);
-              MainForm.SQLQuery4.FieldValues['code_bvctr'] := MainForm.Bonv_ctrTable.FieldValues['code_bvctr'];
+              MainForm.SQLQuery4.FieldByName('code_cmpt').AsInteger := MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
+              MainForm.SQLQuery4.FieldByName('nature_ocb').AsBoolean := MainForm.CompteTable.FieldByName('nature_cmpt').AsBoolean;
+              MainForm.SQLQuery4.FieldByName('code_ur').AsInteger := StrToInt(MainForm.UserIDLbl.Caption);
+              MainForm.SQLQuery4.FieldByName('code_bvctr').AsInteger := MainForm.Bonv_ctrTable.FieldByName('code_bvctr').AsInteger;
 
               MainForm.SQLQuery4.Post;
               MainForm.Opt_cas_bnk_CaisseTable.Refresh;
