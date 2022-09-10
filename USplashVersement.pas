@@ -769,6 +769,17 @@ begin
 end;
 
 
+
+procedure AutoRegleBons;
+begin
+
+
+  FSplashVersement.RegleVersementSGSlider.SliderOn:= True;
+  FSplashVersement.VerVersementSEdt.SetFocus;
+  FSplashVersement.VerVersementSEdt.SelectAll;
+
+end;
+
 procedure TFSplashVersement.FormShow(Sender: TObject);
  var OLDCredit,TotalTTC: Double;
 begin
@@ -803,7 +814,7 @@ begin
        TotalVersementSLbl.Top:= 43;
      end;
 
-     if (LowerCase(BonRecGestionF.ModePaieBonRecGCbx.Text)='� terme' ) OR (LowerCase(BonRecGestionF.ModePaieBonRecGCbx.Text)='a terme' )
+     if (LowerCase(BonRecGestionF.ModePaieBonRecGCbx.Text)='à terme' ) OR (LowerCase(BonRecGestionF.ModePaieBonRecGCbx.Text)='a terme' )
         OR (LowerCase(BonRecGestionF.ModePaieBonRecGCbx.Text)='� terme' )  then
      begin
       VerVersementSEdt.Text:= FloatToStrF(0,ffNumber,14,2);
@@ -813,8 +824,8 @@ begin
       OKVersementSBtn.ImageIndex := 17;
       end;
 
-  VerVersementSEdtChange(Sender);
-
+    VerVersementSEdtChange(Sender);
+    AutoRegleBons();
   end;
 
 
@@ -848,7 +859,7 @@ begin
        TotalVersementSLbl.Top:= 43;
      end;
 
-     if (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='� terme' ) OR (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='a terme' )
+     if (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='à terme' ) OR (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='a terme' )
         OR (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='� terme' )  then
      begin
       VerVersementSEdt.Text:= FloatToStrF(0,ffNumber,14,2);
@@ -859,6 +870,7 @@ begin
       end;
 
    VerVersementSEdtChange(Sender);
+   AutoRegleBons();
    end;
 
    //--------------------------- this tag = 3 is for valdating from comptoir --------
@@ -937,7 +949,7 @@ begin
        TotalVersementSLbl.Top:= 43;
      end;
 
-     if (LowerCase(BonComAGestionF.ModePaieBonComGCbx.Text)='� terme' ) OR (LowerCase(BonComAGestionF.ModePaieBonComGCbx.Text)='a terme' )
+     if (LowerCase(BonComAGestionF.ModePaieBonComGCbx.Text)='à terme' ) OR (LowerCase(BonComAGestionF.ModePaieBonComGCbx.Text)='a terme' )
         OR (LowerCase(BonComAGestionF.ModePaieBonComGCbx.Text)='� terme' )  then
      begin
       VerVersementSEdt.Text:= FloatToStrF(0,ffNumber,14,2);
@@ -947,7 +959,8 @@ begin
       OKVersementSBtn.ImageIndex := 17;
       end;
 
-  VerVersementSEdtChange(Sender);
+    VerVersementSEdtChange(Sender);
+    AutoRegleBons();
 
   end;
 
@@ -976,7 +989,7 @@ begin
        TotalVersementSLbl.Top:= 43;
      end;
 
-     if (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='� terme' ) OR (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='a terme' )
+     if (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='à terme' ) OR (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='a terme' )
         OR (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='� terme' )  then
      begin
       VerVersementSEdt.Text:= FloatToStrF(0,ffNumber,14,2);
@@ -986,16 +999,10 @@ begin
       OKVersementSBtn.ImageIndex := 17;
       end;
 
-  VerVersementSEdtChange(Sender);
+    VerVersementSEdtChange(Sender);
+    AutoRegleBons();
 
   end;
-
-  RegleVersementSGSlider.SliderOn:= True;
-  VerVersementSEdt.SetFocus;
-  VerVersementSEdt.SelectAll;
-
-
-
 
 end;
 
@@ -1097,7 +1104,7 @@ begin
            Mainform.Sqlquery.Active:=False;
            Mainform.Sqlquery.Sql.Clear;
            Mainform.Sqlquery.Sql.Text:='SELECT code_barecl,code_p, qut_p, cond_p, prixht_p,tva_p,prixvd_p,prixvr_p,prixvg_p,prixva_p,prixva2_p,qutinstock_p FROM bona_rec_list WHERE code_barec =  '
-                                                 + IntToStr (MainForm.Bona_recTable.FieldValues['code_barec'])
+                                                 + IntToStr (MainForm.Bona_recTable.FieldByName('code_barec').AsInteger)
                                                  + 'GROUP BY code_barecl, code_p, qut_p, cond_p,prixht_p,tva_p,prixvd_p,prixvr_p,prixvg_p,prixva_p,prixva2_p,qutinstock_p' ;
            MainForm.SQLQuery.Active:=True;
            MainForm.SQLQuery.First;
@@ -1113,24 +1120,24 @@ begin
 
 
             MainForm.FDQuery2.Edit;
-            MainForm.FDQuery2.FieldValues['qut_p']:= ((MainForm.SQLQuery.FieldValues['qut_p']) * ((MainForm.SQLQuery.FieldValues['cond_p']))
-                                                         + MainForm.FDQuery2.FieldValues['qut_p']);
+            MainForm.FDQuery2.FieldByName('qut_p').Value:= ((MainForm.SQLQuery.FieldByName('qut_p').Value) * ((MainForm.SQLQuery.FieldByName('cond_p').AsInteger))
+                                                         + MainForm.FDQuery2.FieldByName('qut_p').Value);
 //            we dont change prix achter bcuz we use pmp
-            MainForm.FDQuery2.FieldValues['prixht_p']:= MainForm.SQLQuery.FieldValues['prixht_p'];
-            MainForm.FDQuery2.FieldByName('pmp_p').AsFloat:=  CalcPMPonRec(MainForm.SQLQuery.FieldByName('code_p').AsInteger);
-            MainForm.FDQuery2.FieldValues['tva_p']:= MainForm.SQLQuery.FieldValues['tva_p'];
-            MainForm.FDQuery2.FieldByName('prixvd_p').AsFloat:=  MainForm.SQLQuery.FieldByName('prixvd_p').AsFloat;
-            MainForm.FDQuery2.FieldByName('prixvr_p').AsFloat:=  MainForm.SQLQuery.FieldByName('prixvr_p').AsFloat;
-            MainForm.FDQuery2.FieldByName('prixvg_p').AsFloat:=  MainForm.SQLQuery.FieldByName('prixvg_p').AsFloat;
-            MainForm.FDQuery2.FieldByName('prixva_p').AsFloat:=  MainForm.SQLQuery.FieldByName('prixva_p').AsFloat;
-            MainForm.FDQuery2.FieldByName('prixva2_p').AsFloat:= MainForm.SQLQuery.FieldByName('prixva2_p').AsFloat;
+            MainForm.FDQuery2.FieldByName('prixht_p').Value:= MainForm.SQLQuery.FieldByName('prixht_p').Value;
+            MainForm.FDQuery2.FieldByName('pmp_p').Value:=  CalcPMPonRec(MainForm.SQLQuery.FieldByName('code_p').AsInteger);
+            MainForm.FDQuery2.FieldByName('tva_p').Value:= MainForm.SQLQuery.FieldByName('tva_p').Value;
+            MainForm.FDQuery2.FieldByName('prixvd_p').Value:=  MainForm.SQLQuery.FieldByName('prixvd_p').Value;
+            MainForm.FDQuery2.FieldByName('prixvr_p').Value:=  MainForm.SQLQuery.FieldByName('prixvr_p').Value;
+            MainForm.FDQuery2.FieldByName('prixvg_p').Value:=  MainForm.SQLQuery.FieldByName('prixvg_p').Value;
+            MainForm.FDQuery2.FieldByName('prixva_p').Value:=  MainForm.SQLQuery.FieldByName('prixva_p').Value;
+            MainForm.FDQuery2.FieldByName('prixva2_p').Value:= MainForm.SQLQuery.FieldByName('prixva2_p').Value;
             MainForm.FDQuery2.Post;
 
              MainForm.SQLQuery.Edit;
-             MainForm.SQLQuery.FieldValues['qutinstock_p']:=
-             (MainForm.SQLQuery.FieldValues['qut_p'])*(MainForm.SQLQuery.FieldValues['cond_p']);
+             MainForm.SQLQuery.FieldByName('qutinstock_p').Value:=
+             (MainForm.SQLQuery.FieldByName('qut_p').Value)*(MainForm.SQLQuery.FieldByName('cond_p').AsInteger);
              MainForm.SQLQuery.Post;  
-             
+
             MainForm.SQLQuery.Next;
            end;
 
@@ -1164,43 +1171,43 @@ begin
 
      //     MainForm.Bona_recTable.DisableControls;
           MainForm.Bona_recTable.Edit;
-          MainForm.Bona_recTable.FieldValues['code_f']:= MainForm.SQLQuery.FieldByName('code_f').AsInteger;
-          MainForm.Bona_recTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
-          MainForm.Bona_recTable.FieldValues['date_barec']:= BonRecGestionF.DateBonRecGD.DateTime;
-          MainForm.Bona_recTable.FieldValues['time_barec']:=TimeOf(Now);
-          MainForm.Bona_recTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
-          MainForm.Bona_recTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
-          MainForm.Bona_recTable.FieldValues['obser_barec']:= BonRecGestionF.ObserBonRecGMem.Text;
-          MainForm.Bona_recTable.FieldValues['num_cheque_barec']:= BonRecGestionF.NChequeBonRecGCbx.Text;
-          MainForm.Bona_recTable.FieldByName('montht_barec').AsFloat:= StrToFloat(StringReplace(BonRecGestionF.BonRecTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
+          MainForm.Bona_recTable.FieldByName('code_f').AsInteger:= MainForm.SQLQuery.FieldByName('code_f').AsInteger;
+          MainForm.Bona_recTable.FieldByName('code_ur').AsInteger:= StrToInt(MainForm.UserIDLbl.Caption);
+          MainForm.Bona_recTable.FieldByName('date_barec').AsDateTime:= BonRecGestionF.DateBonRecGD.DateTime;
+          MainForm.Bona_recTable.FieldByName('time_barec').AsDateTime:=TimeOf(Now);
+          MainForm.Bona_recTable.FieldByName('code_mdpai').AsInteger:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
+          MainForm.Bona_recTable.FieldByName('code_cmpt').AsInteger:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
+          MainForm.Bona_recTable.FieldByName('obser_barec').AsWideString:= BonRecGestionF.ObserBonRecGMem.Text;
+          MainForm.Bona_recTable.FieldByName('num_cheque_barec').AsString:= BonRecGestionF.NChequeBonRecGCbx.Text;
+          MainForm.Bona_recTable.FieldByName('montht_barec').Value:= StrToFloat(StringReplace(BonRecGestionF.BonRecTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
           if BonRecGestionF.RemiseBonRecGEdt.Text<>'' then
           begin
-          MainForm.Bona_recTable.FieldByName('remise_barec').AsFloat:=StrToFloat(StringReplace(BonRecGestionF.RemiseBonRecGEdt.Text, #32, '', [rfReplaceAll]));
+          MainForm.Bona_recTable.FieldByName('remise_barec').Value:=StrToFloat(StringReplace(BonRecGestionF.RemiseBonRecGEdt.Text, #32, '', [rfReplaceAll]));
           end else begin
-                    MainForm.Bona_recTable.FieldByName('remise_barec').AsFloat:=0;
+                    MainForm.Bona_recTable.FieldByName('remise_barec').Value:=0;
                    end;
 
-          MainForm.Bona_recTable.FieldByName('montver_barec').AsFloat:=StrToFloat(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll]));
-          MainForm.Bona_recTable.FieldByName('montttc_barec').AsFloat:=StrToFloat(StringReplace(BonRecGestionF.BonRecTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
+          MainForm.Bona_recTable.FieldByName('montver_barec').Value:=StrToFloat(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll]));
+          MainForm.Bona_recTable.FieldByName('montttc_barec').Value:=StrToFloat(StringReplace(BonRecGestionF.BonRecTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
           MainForm.Bona_recTable.FieldByName('valider_barec').AsBoolean:= True;
           MainForm.Bona_recTable.FieldByName('bon_or_no_barec').AsBoolean:= True;
 
-          if (LowerCase(BonRecGestionF.ModePaieBonRecGCbx.Text)='esp�ce') OR (LowerCase(BonRecGestionF.ModePaieBonRecGCbx.Text)='espece') then
+          if (LowerCase(BonRecGestionF.ModePaieBonRecGCbx.Text)='espèce') OR (LowerCase(BonRecGestionF.ModePaieBonRecGCbx.Text)='espece') then
           begin
-           MainForm.Bona_recTable.FieldValues['code_mdpai']:=1 ;
+           MainForm.Bona_recTable.FieldByName('code_mdpai').AsInteger:=1 ;
           end;
-           if (LowerCase(BonRecGestionF.ModePaieBonRecGCbx.Text)='ch�que') OR (LowerCase(BonRecGestionF.ModePaieBonRecGCbx.Text)='cheque') then
+           if (LowerCase(BonRecGestionF.ModePaieBonRecGCbx.Text)='chèque') OR (LowerCase(BonRecGestionF.ModePaieBonRecGCbx.Text)='cheque') then
           begin
-           MainForm.Bona_recTable.FieldValues['code_mdpai']:=2 ;
+           MainForm.Bona_recTable.FieldByName('code_mdpai').AsInteger:=2 ;
           end;
-          if (LowerCase(BonRecGestionF.ModePaieBonRecGCbx.Text)='� terme' ) OR (LowerCase(BonRecGestionF.ModePaieBonRecGCbx.Text)='a terme' )
-             OR (LowerCase(BonRecGestionF.ModePaieBonRecGCbx.Text)='� terme' ) then
+          if (LowerCase(BonRecGestionF.ModePaieBonRecGCbx.Text)='à terme' ) OR (LowerCase(BonRecGestionF.ModePaieBonRecGCbx.Text)='a terme' )
+             OR (LowerCase(BonRecGestionF.ModePaieBonRecGCbx.Text)='à terme' ) then
           begin
-           MainForm.Bona_recTable.FieldValues['code_mdpai']:=3 ;
+           MainForm.Bona_recTable.FieldByName('code_mdpai').AsInteger:=3 ;
           end;
           if (LowerCase(BonRecGestionF.ModePaieBonRecGCbx.Text)='virement' ) then
           begin
-           MainForm.Bona_recTable.FieldValues['code_mdpai']:=4 ;
+           MainForm.Bona_recTable.FieldByName('code_mdpai').AsInteger:=4 ;
           end;
 
           MainForm.Bona_recTable.Post;
@@ -1215,44 +1222,44 @@ begin
              if NOT (MainForm.RegfournisseurTable.IsEmpty) then
             begin
             MainForm.RegfournisseurTable.Last;
-            CodeRF:= MainForm.RegfournisseurTable.FieldValues['code_rf'] + 1;
+            CodeRF:= MainForm.RegfournisseurTable.FieldByName('code_rf').AsInteger + 1;
             end else
                 begin
                  CodeRF:= 1;
                 end;
 
             MainForm.RegfournisseurTable.Append;
-            MainForm.RegfournisseurTable.FieldValues['code_rf']:= CodeRF;
-            MainForm.RegfournisseurTable.FieldValues['code_barec']:= MainForm.Bona_recTable.FieldValues['code_barec'];
-            MainForm.RegfournisseurTable.FieldValues['nom_rf']:= BonRecGestionF.NumBonRecGEdt.Caption;
-            MainForm.RegfournisseurTable.FieldValues['code_f']:= MainForm.SQLQuery.FieldByName('code_f').AsInteger;
-            MainForm.RegfournisseurTable.FieldValues['date_rf']:= DateOf(Today);
-            MainForm.RegfournisseurTable.FieldValues['time_rf']:=TimeOf(Now);
-            MainForm.RegfournisseurTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
-            MainForm.RegfournisseurTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
-            MainForm.RegfournisseurTable.FieldValues['obser_rf']:= BonRecGestionF.ObserBonRecGMem.Text;
-            MainForm.RegfournisseurTable.FieldValues['num_cheque_rf']:= BonRecGestionF.NChequeBonRecGCbx.Text;
-            MainForm.RegfournisseurTable.FieldValues['bon_or_no_rf']:= 2;
-            MainForm.RegfournisseurTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
+            MainForm.RegfournisseurTable.FieldByName('code_rf').AsInteger:= CodeRF;
+            MainForm.RegfournisseurTable.FieldByName('code_barec').AsInteger:= MainForm.Bona_recTable.FieldByName('code_barec').AsInteger;
+            MainForm.RegfournisseurTable.FieldByName('nom_rf').AsString:= BonRecGestionF.NumBonRecGEdt.Caption;
+            MainForm.RegfournisseurTable.FieldByName('code_f').AsInteger:= MainForm.SQLQuery.FieldByName('code_f').AsInteger;
+            MainForm.RegfournisseurTable.FieldByName('date_rf').AsDateTime:= DateOf(Today);
+            MainForm.RegfournisseurTable.FieldByName('time_rf').AsDateTime:=TimeOf(Now);
+            MainForm.RegfournisseurTable.FieldByName('code_mdpai').AsInteger:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
+            MainForm.RegfournisseurTable.FieldByName('code_cmpt').AsInteger:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
+            MainForm.RegfournisseurTable.FieldByName('obser_rf').AsWideString:= BonRecGestionF.ObserBonRecGMem.Text;
+            MainForm.RegfournisseurTable.FieldByName('num_cheque_rf').AsString:= BonRecGestionF.NChequeBonRecGCbx.Text;
+            MainForm.RegfournisseurTable.FieldByName('bon_or_no_rf').AsInteger:= 2;
+            MainForm.RegfournisseurTable.FieldByName('code_ur').AsInteger:= StrToInt(MainForm.UserIDLbl.Caption);
 
-            MainForm.RegfournisseurTable.FieldByName('montver_rf').AsFloat:=StrToFloat(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll]));
+            MainForm.RegfournisseurTable.FieldByName('montver_rf').Value:=StrToFloat(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll]));
 
-            if (LowerCase(BonRecGestionF.ModePaieBonRecGCbx.Text)='esp�ce') OR (LowerCase(BonRecGestionF.ModePaieBonRecGCbx.Text)='espece') then
+            if (LowerCase(BonRecGestionF.ModePaieBonRecGCbx.Text)='espèce') OR (LowerCase(BonRecGestionF.ModePaieBonRecGCbx.Text)='espece') then
             begin
-             MainForm.RegfournisseurTable.FieldValues['code_mdpai']:=1 ;
+             MainForm.RegfournisseurTable.FieldByName('code_mdpai').AsInteger:=1 ;
             end;
-             if (LowerCase(BonRecGestionF.ModePaieBonRecGCbx.Text)='ch�que') OR (LowerCase(BonRecGestionF.ModePaieBonRecGCbx.Text)='cheque') then
+             if (LowerCase(BonRecGestionF.ModePaieBonRecGCbx.Text)='chèque') OR (LowerCase(BonRecGestionF.ModePaieBonRecGCbx.Text)='cheque') then
             begin
-             MainForm.RegfournisseurTable.FieldValues['code_mdpai']:=2 ;
+             MainForm.RegfournisseurTable.FieldByName('code_mdpai').AsInteger:=2 ;
             end;
-            if (LowerCase(BonRecGestionF.ModePaieBonRecGCbx.Text)='� terme' ) OR (LowerCase(BonRecGestionF.ModePaieBonRecGCbx.Text)='a terme' )
-               OR (LowerCase(BonRecGestionF.ModePaieBonRecGCbx.Text)='� terme' ) then
+            if (LowerCase(BonRecGestionF.ModePaieBonRecGCbx.Text)='à terme' ) OR (LowerCase(BonRecGestionF.ModePaieBonRecGCbx.Text)='a terme' )
+               OR (LowerCase(BonRecGestionF.ModePaieBonRecGCbx.Text)='à terme' ) then
             begin
-             MainForm.RegfournisseurTable.FieldValues['code_mdpai']:=3 ;
+             MainForm.RegfournisseurTable.FieldByName('code_mdpai').AsInteger:=3 ;
             end;
             if (LowerCase(BonRecGestionF.ModePaieBonRecGCbx.Text)='virement' ) then
             begin
-             MainForm.RegfournisseurTable.FieldValues['code_mdpai']:=4 ;
+             MainForm.RegfournisseurTable.FieldByName('code_mdpai').AsInteger:=4 ;
             end;
 
             MainForm.RegfournisseurTable.Post;
@@ -1263,42 +1270,42 @@ begin
                     MainForm.RegfournisseurTable.DisableControls;
                     MainForm.RegfournisseurTable.Active:=false;
                     MainForm.RegfournisseurTable.SQL.Clear;
-                    MainForm.RegfournisseurTable.SQL.Text:='SELECT * FROM regfournisseur WHERE code_barec ='+IntToStr(MainForm.Bona_recTable.FieldValues['code_barec']);
+                    MainForm.RegfournisseurTable.SQL.Text:='SELECT * FROM regfournisseur WHERE code_barec ='+IntToStr(MainForm.Bona_recTable.FieldByName('code_barec').AsInteger);
                     MainForm.RegfournisseurTable.Active:=True;
 
                  if NOT (MainForm.RegfournisseurTable.IsEmpty) then
                   begin
                   MainForm.RegfournisseurTable.Edit;
-                  MainForm.RegfournisseurTable.FieldValues['code_barec']:= MainForm.Bona_recTable.FieldValues['code_barec'];
-                  MainForm.RegfournisseurTable.FieldValues['nom_rf']:= BonRecGestionF.NumBonRecGEdt.Caption;
-                  MainForm.RegfournisseurTable.FieldValues['code_f']:= MainForm.SQLQuery.FieldByName('code_f').AsInteger;
-                  MainForm.RegfournisseurTable.FieldValues['date_rf']:= BonRecGestionF.DateBonRecGD.DateTime;
-                  MainForm.RegfournisseurTable.FieldValues['time_rf']:=TimeOf(Now);
-                  MainForm.RegfournisseurTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
-                  MainForm.RegfournisseurTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
-                  MainForm.RegfournisseurTable.FieldValues['obser_rf']:= BonRecGestionF.ObserBonRecGMem.Text;
-                  MainForm.RegfournisseurTable.FieldValues['num_cheque_rf']:= BonRecGestionF.NChequeBonRecGCbx.Text;
-                  MainForm.RegfournisseurTable.FieldValues['bon_or_no_rf']:= 2;
-                  MainForm.RegfournisseurTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
+                  MainForm.RegfournisseurTable.FieldByName('code_barec').AsInteger:= MainForm.Bona_recTable.FieldByName('code_barec').AsInteger;
+                  MainForm.RegfournisseurTable.FieldByName('nom_rf').AsString:= BonRecGestionF.NumBonRecGEdt.Caption;
+                  MainForm.RegfournisseurTable.FieldByName('code_f').AsInteger:= MainForm.SQLQuery.FieldByName('code_f').AsInteger;
+                  MainForm.RegfournisseurTable.FieldByName('date_rf').AsDateTime:= BonRecGestionF.DateBonRecGD.DateTime;
+                  MainForm.RegfournisseurTable.FieldByName('time_rf').AsDateTime:=TimeOf(Now);
+                  MainForm.RegfournisseurTable.FieldByName('code_mdpai').AsInteger:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
+                  MainForm.RegfournisseurTable.FieldByName('code_cmpt').AsInteger:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
+                  MainForm.RegfournisseurTable.FieldByName('obser_rf').AsWideString:= BonRecGestionF.ObserBonRecGMem.Text;
+                  MainForm.RegfournisseurTable.FieldByName('num_cheque_rf').AsString:= BonRecGestionF.NChequeBonRecGCbx.Text;
+                  MainForm.RegfournisseurTable.FieldByName('bon_or_no_rf').AsInteger:= 2;
+                  MainForm.RegfournisseurTable.FieldByName('code_ur').AsInteger:= StrToInt(MainForm.UserIDLbl.Caption);
 
-                  MainForm.RegfournisseurTable.FieldByName('montver_rf').AsFloat:=StrToFloat(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll]));
+                  MainForm.RegfournisseurTable.FieldByName('montver_rf').Value:=StrToFloat(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll]));
 
-                  if (LowerCase(BonRecGestionF.ModePaieBonRecGCbx.Text)='esp�ce') OR (LowerCase(BonRecGestionF.ModePaieBonRecGCbx.Text)='espece') then
+                  if (LowerCase(BonRecGestionF.ModePaieBonRecGCbx.Text)='espèce') OR (LowerCase(BonRecGestionF.ModePaieBonRecGCbx.Text)='espece') then
                   begin
-                   MainForm.RegfournisseurTable.FieldValues['code_mdpai']:=1 ;
+                   MainForm.RegfournisseurTable.FieldByName('code_mdpai').AsInteger:=1 ;
                   end;
-                   if (LowerCase(BonRecGestionF.ModePaieBonRecGCbx.Text)='ch�que') OR (LowerCase(BonRecGestionF.ModePaieBonRecGCbx.Text)='cheque') then
+                   if (LowerCase(BonRecGestionF.ModePaieBonRecGCbx.Text)='chèque') OR (LowerCase(BonRecGestionF.ModePaieBonRecGCbx.Text)='cheque') then
                   begin
-                   MainForm.RegfournisseurTable.FieldValues['code_mdpai']:=2 ;
+                   MainForm.RegfournisseurTable.FieldByName('code_mdpai').AsInteger:=2 ;
                   end;
-                  if (LowerCase(BonRecGestionF.ModePaieBonRecGCbx.Text)='� terme' ) OR (LowerCase(BonRecGestionF.ModePaieBonRecGCbx.Text)='a terme' )
-                     OR (LowerCase(BonRecGestionF.ModePaieBonRecGCbx.Text)='� terme' ) then
+                  if (LowerCase(BonRecGestionF.ModePaieBonRecGCbx.Text)='à terme' ) OR (LowerCase(BonRecGestionF.ModePaieBonRecGCbx.Text)='a terme' )
+                     OR (LowerCase(BonRecGestionF.ModePaieBonRecGCbx.Text)='à terme' ) then
                   begin
-                   MainForm.RegfournisseurTable.FieldValues['code_mdpai']:=3 ;
+                   MainForm.RegfournisseurTable.FieldByName('code_mdpai').AsInteger:=3 ;
                   end;
                   if (LowerCase(BonRecGestionF.ModePaieBonRecGCbx.Text)='virement' ) then
                   begin
-                   MainForm.RegfournisseurTable.FieldValues['code_mdpai']:=4 ;
+                   MainForm.RegfournisseurTable.FieldByName('code_mdpai').AsInteger:=4 ;
                   end;
 
                   MainForm.RegfournisseurTable.Post;
@@ -1314,44 +1321,44 @@ begin
                                 if NOT (MainForm.RegfournisseurTable.IsEmpty) then
                             begin
                             MainForm.RegfournisseurTable.Last;
-                            CodeRF:= MainForm.RegfournisseurTable.FieldValues['code_rf'] + 1;
+                            CodeRF:= MainForm.RegfournisseurTable.FieldByName('code_rf').AsInteger + 1;
                             end else
                                 begin
                                  CodeRF:= 1;
                                 end;
 
                             MainForm.RegfournisseurTable.Append;
-                            MainForm.RegfournisseurTable.FieldValues['code_rf']:= CodeRF;
-                            MainForm.RegfournisseurTable.FieldValues['code_barec']:= MainForm.Bona_recTable.FieldValues['code_barec'];
-                            MainForm.RegfournisseurTable.FieldValues['nom_rf']:= BonRecGestionF.NumBonRecGEdt.Caption;
-                            MainForm.RegfournisseurTable.FieldValues['code_f']:= MainForm.SQLQuery.FieldByName('code_f').AsInteger;
-                            MainForm.RegfournisseurTable.FieldValues['date_rf']:= BonRecGestionF.DateBonRecGD.DateTime;;
-                            MainForm.RegfournisseurTable.FieldValues['time_rf']:=TimeOf(Now);
-                            MainForm.RegfournisseurTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
-                            MainForm.RegfournisseurTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
-                            MainForm.RegfournisseurTable.FieldValues['obser_rf']:= BonRecGestionF.ObserBonRecGMem.Text;
-                            MainForm.RegfournisseurTable.FieldValues['num_cheque_rf']:= BonRecGestionF.NChequeBonRecGCbx.Text;
-                            MainForm.RegfournisseurTable.FieldValues['bon_or_no_rf']:= 2;
-                            MainForm.RegfournisseurTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
+                            MainForm.RegfournisseurTable.FieldByName('code_rf').AsInteger:= CodeRF;
+                            MainForm.RegfournisseurTable.FieldByName('code_barec').AsInteger:= MainForm.Bona_recTable.FieldByName('code_barec').AsInteger;
+                            MainForm.RegfournisseurTable.FieldByName('nom_rf').AsString:= BonRecGestionF.NumBonRecGEdt.Caption;
+                            MainForm.RegfournisseurTable.FieldByName('code_f').AsInteger:= MainForm.SQLQuery.FieldByName('code_f').AsInteger;
+                            MainForm.RegfournisseurTable.FieldByName('date_rf').AsDateTime:= BonRecGestionF.DateBonRecGD.DateTime;;
+                            MainForm.RegfournisseurTable.FieldByName('time_rf').AsDateTime:=TimeOf(Now);
+                            MainForm.RegfournisseurTable.FieldByName('code_mdpai').AsInteger:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
+                            MainForm.RegfournisseurTable.FieldByName('code_cmpt').AsInteger:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
+                            MainForm.RegfournisseurTable.FieldByName('obser_rf').AsWideString:= BonRecGestionF.ObserBonRecGMem.Text;
+                            MainForm.RegfournisseurTable.FieldByName('num_cheque_rf').AsString:= BonRecGestionF.NChequeBonRecGCbx.Text;
+                            MainForm.RegfournisseurTable.FieldByName('bon_or_no_rf').AsInteger:= 2;
+                            MainForm.RegfournisseurTable.FieldByName('code_ur').AsInteger:= StrToInt(MainForm.UserIDLbl.Caption);
 
-                            MainForm.RegfournisseurTable.FieldByName('montver_rf').AsFloat:=StrToFloat(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll]));
+                            MainForm.RegfournisseurTable.FieldByName('montver_rf').Value:=StrToFloat(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll]));
 
-                            if (LowerCase(BonRecGestionF.ModePaieBonRecGCbx.Text)='esp�ce') OR (LowerCase(BonRecGestionF.ModePaieBonRecGCbx.Text)='espece') then
+                            if (LowerCase(BonRecGestionF.ModePaieBonRecGCbx.Text)='espèce') OR (LowerCase(BonRecGestionF.ModePaieBonRecGCbx.Text)='espece') then
                             begin
-                             MainForm.RegfournisseurTable.FieldValues['code_mdpai']:=1 ;
+                             MainForm.RegfournisseurTable.FieldByName('code_mdpai').AsInteger:=1 ;
                             end;
-                             if (LowerCase(BonRecGestionF.ModePaieBonRecGCbx.Text)='ch�que') OR (LowerCase(BonRecGestionF.ModePaieBonRecGCbx.Text)='cheque') then
+                             if (LowerCase(BonRecGestionF.ModePaieBonRecGCbx.Text)='chèque') OR (LowerCase(BonRecGestionF.ModePaieBonRecGCbx.Text)='cheque') then
                             begin
-                             MainForm.RegfournisseurTable.FieldValues['code_mdpai']:=2 ;
+                             MainForm.RegfournisseurTable.FieldByName('code_mdpai').AsInteger:=2 ;
                             end;
-                            if (LowerCase(BonRecGestionF.ModePaieBonRecGCbx.Text)='� terme' ) OR (LowerCase(BonRecGestionF.ModePaieBonRecGCbx.Text)='a terme' )
-                               OR (LowerCase(BonRecGestionF.ModePaieBonRecGCbx.Text)='� terme' ) then
+                            if (LowerCase(BonRecGestionF.ModePaieBonRecGCbx.Text)='à terme' ) OR (LowerCase(BonRecGestionF.ModePaieBonRecGCbx.Text)='a terme' )
+                               OR (LowerCase(BonRecGestionF.ModePaieBonRecGCbx.Text)='à terme' ) then
                             begin
-                             MainForm.RegfournisseurTable.FieldValues['code_mdpai']:=3 ;
+                             MainForm.RegfournisseurTable.FieldByName('code_mdpai').AsInteger:=3 ;
                             end;
                             if (LowerCase(BonRecGestionF.ModePaieBonRecGCbx.Text)='virement' ) then
                             begin
-                             MainForm.RegfournisseurTable.FieldValues['code_mdpai']:=4 ;
+                             MainForm.RegfournisseurTable.FieldByName('code_mdpai').AsInteger:=4 ;
                             end;
 
                             MainForm.RegfournisseurTable.Post;
@@ -1368,7 +1375,7 @@ begin
           end;
 
           MainForm.SQLQuery.Edit;
-          MainForm.SQLQuery.FieldByName('credit_f').AsFloat:=
+          MainForm.SQLQuery.FieldByName('credit_f').Value:=
           ((StrToFloat(StringReplace(BonRecGestionF.BonRecGFourNEWCredit.Caption, #32, '', [rfReplaceAll]))));
           MainForm.SQLQuery.Post;
 
@@ -1392,43 +1399,43 @@ begin
             if NOT (MainForm.Opt_cas_bnk_CaisseTable.IsEmpty) then
             begin
             MainForm.Opt_cas_bnk_CaisseTable.Last;
-            CodeOCB:= MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ocb'] + 1;
+            CodeOCB:= MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_ocb').AsInteger + 1;
             end else
                 begin
                  CodeOCB:= 1;
                 end;
               MainForm.Opt_cas_bnk_CaisseTable.Append;
-              MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ocb']:= CodeOCB;
-              MainForm.Opt_cas_bnk_CaisseTable.FieldValues['date_ocb']:= BonRecGestionF.DateBonRecGD.DateTime;;
-              MainForm.Opt_cas_bnk_CaisseTable.FieldValues['time_ocb']:= TimeOf(Now);
-              MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
-              MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nom_ocb']:= 'Versement au Fournisseur pièce N° '+BonRecGestionF.NumBonRecGEdt.Caption;
-              MainForm.Opt_cas_bnk_CaisseTable.FieldValues['third_ocb']:= BonRecGestionF.FournisseurBonRecGCbx.Text;
-      //        MainForm.Opt_cas_bnk_CaisseTable.FieldValues['encaiss_ocb']:= StrToFloat(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll]));
-             MainForm.Opt_cas_bnk_CaisseTable.FieldValues['decaiss_ocb']:= StrToFloat(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll]));
+              MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_ocb').AsInteger:= CodeOCB;
+              MainForm.Opt_cas_bnk_CaisseTable.FieldByName('date_ocb').AsDateTime:= BonRecGestionF.DateBonRecGD.DateTime;;
+              MainForm.Opt_cas_bnk_CaisseTable.FieldByName('time_ocb').AsDateTime:= TimeOf(Now);
+              MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_mdpai').AsInteger:=MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
+              MainForm.Opt_cas_bnk_CaisseTable.FieldByName('nom_ocb').AsString:= 'Versement au Fournisseur pièce N° '+BonRecGestionF.NumBonRecGEdt.Caption;
+              MainForm.Opt_cas_bnk_CaisseTable.FieldByName('third_ocb').AsString:= BonRecGestionF.FournisseurBonRecGCbx.Text;
+      //        MainForm.Opt_cas_bnk_CaisseTable.FieldByName('encaiss_ocb']:= StrToFloat(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll]));
+             MainForm.Opt_cas_bnk_CaisseTable.FieldByName('decaiss_ocb').Value:= StrToFloat(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll]));
 
-               if (LowerCase(BonRecGestionF.ModePaieBonrecGCbx.Text)='esp�ce') OR (LowerCase(BonRecGestionF.ModePaieBonrecGCbx.Text)='espece') then
+               if (LowerCase(BonRecGestionF.ModePaieBonrecGCbx.Text)='espèce') OR (LowerCase(BonRecGestionF.ModePaieBonrecGCbx.Text)='espece') then
               begin
-               MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=1 ;
+               MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_mdpai').AsInteger:=1 ;
               end;
-               if (LowerCase(BonRecGestionF.ModePaieBonrecGCbx.Text)='ch�que') OR (LowerCase(BonRecGestionF.ModePaieBonrecGCbx.Text)='cheque') then
+               if (LowerCase(BonRecGestionF.ModePaieBonrecGCbx.Text)='chèque') OR (LowerCase(BonRecGestionF.ModePaieBonrecGCbx.Text)='cheque') then
               begin
-               MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=2 ;
+               MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_mdpai').AsInteger:=2 ;
               end;
-              if (LowerCase(BonRecGestionF.ModePaieBonrecGCbx.Text)='� terme' ) OR (LowerCase(BonRecGestionF.ModePaieBonrecGCbx.Text)='a terme' )
-                 OR (LowerCase(BonRecGestionF.ModePaieBonrecGCbx.Text)='� terme' ) then
+              if (LowerCase(BonRecGestionF.ModePaieBonrecGCbx.Text)='à terme' ) OR (LowerCase(BonRecGestionF.ModePaieBonrecGCbx.Text)='a terme' )
+                 OR (LowerCase(BonRecGestionF.ModePaieBonrecGCbx.Text)='à terme' ) then
               begin
-               MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=3 ;
+               MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_mdpai').AsInteger:=3 ;
               end;
               if (LowerCase(BonRecGestionF.ModePaieBonRecGCbx.Text)='virement' ) then
               begin
-               MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=4 ;
+               MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_mdpai').AsInteger:=4 ;
               end;
 
-              MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_cmpt']:=MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
-              MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nature_ocb']:= MainForm.CompteTable.FieldByName('nature_cmpt').AsBoolean;
-              MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_barec']:= MainForm.Bona_recTable.FieldValues['code_barec'];
-              MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
+              MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_cmpt').AsInteger:=MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
+              MainForm.Opt_cas_bnk_CaisseTable.FieldByName('nature_ocb').AsBoolean:= MainForm.CompteTable.FieldByName('nature_cmpt').AsBoolean;
+              MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_barec').AsInteger:= MainForm.Bona_recTable.FieldByName('code_barec').AsInteger;
+              MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_ur').AsInteger:= StrToInt(MainForm.UserIDLbl.Caption);
               MainForm.Opt_cas_bnk_CaisseTable.Post;
               MainForm.Opt_cas_bnk_CaisseTable.Refresh;
               MainForm.Opt_cas_bnk_BankTable.Refresh;
@@ -1445,40 +1452,40 @@ begin
                     MainForm.Opt_cas_bnk_CaisseTable.Filtered:=false;
                     MainForm.Opt_cas_bnk_CaisseTable.Active:=false;
                     MainForm.Opt_cas_bnk_CaisseTable.SQL.Clear;
-                    MainForm.Opt_cas_bnk_CaisseTable.SQL.Text:='SELECT * FROM opt_cas_bnk WHERE code_barec ='+IntToStr(MainForm.Bona_recTable.FieldValues['code_barec']); ;
+                    MainForm.Opt_cas_bnk_CaisseTable.SQL.Text:='SELECT * FROM opt_cas_bnk WHERE code_barec ='+IntToStr(MainForm.Bona_recTable.FieldByName('code_barec').AsInteger); ;
                     MainForm.Opt_cas_bnk_CaisseTable.Active:=True;
 
                 if NOT (MainForm.Opt_cas_bnk_CaisseTable.IsEmpty) Then
                 begin
                      MainForm.Opt_cas_bnk_CaisseTable.Edit;
-                     MainForm.Opt_cas_bnk_CaisseTable.FieldValues['date_ocb']:= BonRecGestionF.DateBonRecGD.DateTime;;
-                     MainForm.Opt_cas_bnk_CaisseTable.FieldValues['time_ocb']:= TimeOf(Now);
-                     MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
-                     MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nom_ocb']:= 'Versement au Fournisseur pièce N° '+BonRecGestionF.NumBonRecGEdt.Caption;
-                     MainForm.Opt_cas_bnk_CaisseTable.FieldValues['third_ocb']:= BonRecGestionF.FournisseurBonRecGCbx.Text;
-                     MainForm.Opt_cas_bnk_CaisseTable.FieldValues['decaiss_ocb']:= StrToFloat(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll]));
+                     MainForm.Opt_cas_bnk_CaisseTable.FieldByName('date_ocb').AsDateTime:= BonRecGestionF.DateBonRecGD.DateTime;;
+                     MainForm.Opt_cas_bnk_CaisseTable.FieldByName('time_ocb').AsDateTime:= TimeOf(Now);
+                     MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_mdpai').AsInteger:=MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
+                     MainForm.Opt_cas_bnk_CaisseTable.FieldByName('nom_ocb').AsString:= 'Versement au Fournisseur pièce N° '+BonRecGestionF.NumBonRecGEdt.Caption;
+                     MainForm.Opt_cas_bnk_CaisseTable.FieldByName('third_ocb').AsString:= BonRecGestionF.FournisseurBonRecGCbx.Text;
+                     MainForm.Opt_cas_bnk_CaisseTable.FieldByName('decaiss_ocb').Value:= StrToFloat(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll]));
 
-                       if (LowerCase(BonRecGestionF.ModePaieBonrecGCbx.Text)='esp�ce') OR (LowerCase(BonRecGestionF.ModePaieBonrecGCbx.Text)='espece') then
+                       if (LowerCase(BonRecGestionF.ModePaieBonrecGCbx.Text)='espèce') OR (LowerCase(BonRecGestionF.ModePaieBonrecGCbx.Text)='espece') then
                       begin
-                       MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=1 ;
+                       MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_mdpai').AsInteger:=1 ;
                       end;
-                       if (LowerCase(BonRecGestionF.ModePaieBonrecGCbx.Text)='ch�que') OR (LowerCase(BonRecGestionF.ModePaieBonrecGCbx.Text)='cheque') then
+                       if (LowerCase(BonRecGestionF.ModePaieBonrecGCbx.Text)='chèque') OR (LowerCase(BonRecGestionF.ModePaieBonrecGCbx.Text)='cheque') then
                       begin
-                       MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=2 ;
+                       MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_mdpai').AsInteger:=2 ;
                       end;
-                      if (LowerCase(BonRecGestionF.ModePaieBonrecGCbx.Text)='� terme' ) OR (LowerCase(BonRecGestionF.ModePaieBonrecGCbx.Text)='a terme' )
-                         OR (LowerCase(BonRecGestionF.ModePaieBonrecGCbx.Text)='� terme' ) then
+                      if (LowerCase(BonRecGestionF.ModePaieBonrecGCbx.Text)='à terme' ) OR (LowerCase(BonRecGestionF.ModePaieBonrecGCbx.Text)='a terme' )
+                         OR (LowerCase(BonRecGestionF.ModePaieBonrecGCbx.Text)='à terme' ) then
                       begin
-                       MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=3 ;
+                       MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_mdpai').AsInteger:=3 ;
                       end;
                       if (LowerCase(BonRecGestionF.ModePaieBonRecGCbx.Text)='virement' ) then
                       begin
-                       MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=4 ;
+                       MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_mdpai').AsInteger:=4 ;
                       end;
-                      MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_cmpt']:=MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
-                      MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nature_ocb']:= MainForm.CompteTable.FieldByName('nature_cmpt').AsBoolean;
-                      MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_barec']:= MainForm.Bona_recTable.FieldValues['code_barec'];
-                      MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
+                      MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_cmpt').AsInteger:=MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
+                      MainForm.Opt_cas_bnk_CaisseTable.FieldByName('nature_ocb').AsBoolean:= MainForm.CompteTable.FieldByName('nature_cmpt').AsBoolean;
+                      MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_barec').AsInteger:= MainForm.Bona_recTable.FieldByName('code_barec').AsInteger;
+                      MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_ur').AsInteger:= StrToInt(MainForm.UserIDLbl.Caption);
                       MainForm.Opt_cas_bnk_CaisseTable.Post;
                       MainForm.Opt_cas_bnk_CaisseTable.Refresh;
                       MainForm.Opt_cas_bnk_BankTable.Refresh;
@@ -1494,42 +1501,42 @@ begin
                       if NOT (MainForm.Opt_cas_bnk_CaisseTable.IsEmpty) then
                       begin
                       MainForm.Opt_cas_bnk_CaisseTable.Last;
-                      CodeOCB:= MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ocb'] + 1;
+                      CodeOCB:= MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_ocb').AsInteger + 1;
                       end else
                           begin
                            CodeOCB:= 1;
                           end;
                         MainForm.Opt_cas_bnk_CaisseTable.Append;
-                        MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ocb']:= CodeOCB;
-                        MainForm.Opt_cas_bnk_CaisseTable.FieldValues['date_ocb']:= BonRecGestionF.DateBonRecGD.DateTime;;
-                        MainForm.Opt_cas_bnk_CaisseTable.FieldValues['time_ocb']:= TimeOf(Now);
-                        MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
-                        MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nom_ocb']:= 'Versement au Fournisseur pièce N° '+BonRecGestionF.NumBonRecGEdt.Caption;
-                        MainForm.Opt_cas_bnk_CaisseTable.FieldValues['third_ocb']:= BonRecGestionF.FournisseurBonRecGCbx.Text;
-                        MainForm.Opt_cas_bnk_CaisseTable.FieldValues['decaiss_ocb']:= StrToFloat(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll]));
+                        MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_ocb').AsInteger:= CodeOCB;
+                        MainForm.Opt_cas_bnk_CaisseTable.FieldByName('date_ocb').AsDateTime:= BonRecGestionF.DateBonRecGD.DateTime;;
+                        MainForm.Opt_cas_bnk_CaisseTable.FieldByName('time_ocb').AsDateTime:= TimeOf(Now);
+                        MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_mdpai').AsInteger:=MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
+                        MainForm.Opt_cas_bnk_CaisseTable.FieldByName('nom_ocb').AsString:= 'Versement au Fournisseur pièce N° '+BonRecGestionF.NumBonRecGEdt.Caption;
+                        MainForm.Opt_cas_bnk_CaisseTable.FieldByName('third_ocb').AsString:= BonRecGestionF.FournisseurBonRecGCbx.Text;
+                        MainForm.Opt_cas_bnk_CaisseTable.FieldByName('decaiss_ocb').Value:= StrToFloat(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll]));
 
-                         if (LowerCase(BonRecGestionF.ModePaieBonrecGCbx.Text)='esp�ce') OR (LowerCase(BonRecGestionF.ModePaieBonrecGCbx.Text)='espece') then
+                         if (LowerCase(BonRecGestionF.ModePaieBonrecGCbx.Text)='espèce') OR (LowerCase(BonRecGestionF.ModePaieBonrecGCbx.Text)='espece') then
                         begin
-                         MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=1 ;
+                         MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_mdpai').AsInteger:=1 ;
                         end;
-                         if (LowerCase(BonRecGestionF.ModePaieBonrecGCbx.Text)='ch�que') OR (LowerCase(BonRecGestionF.ModePaieBonrecGCbx.Text)='cheque') then
+                         if (LowerCase(BonRecGestionF.ModePaieBonrecGCbx.Text)='chèque') OR (LowerCase(BonRecGestionF.ModePaieBonrecGCbx.Text)='cheque') then
                         begin
-                         MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=2 ;
+                         MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_mdpai').AsInteger:=2 ;
                         end;
-                        if (LowerCase(BonRecGestionF.ModePaieBonrecGCbx.Text)='� terme' ) OR (LowerCase(BonRecGestionF.ModePaieBonrecGCbx.Text)='a terme' )
-                           OR (LowerCase(BonRecGestionF.ModePaieBonrecGCbx.Text)='� terme' ) then
+                        if (LowerCase(BonRecGestionF.ModePaieBonrecGCbx.Text)='à terme' ) OR (LowerCase(BonRecGestionF.ModePaieBonrecGCbx.Text)='a terme' )
+                           OR (LowerCase(BonRecGestionF.ModePaieBonrecGCbx.Text)='à terme' ) then
                         begin
-                         MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=3 ;
+                         MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_mdpai').AsInteger:=3 ;
                         end;
                         if (LowerCase(BonRecGestionF.ModePaieBonRecGCbx.Text)='virement' ) then
                         begin
-                         MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=4 ;
+                         MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_mdpai').AsInteger:=4 ;
                         end;
 
-                        MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_cmpt']:=MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
-                        MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nature_ocb']:= MainForm.CompteTable.FieldByName('nature_cmpt').AsBoolean;
-                        MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_barec']:= MainForm.Bona_recTable.FieldValues['code_barec'];
-                        MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
+                        MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_cmpt').AsInteger:=MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
+                        MainForm.Opt_cas_bnk_CaisseTable.FieldByName('nature_ocb').AsBoolean:= MainForm.CompteTable.FieldByName('nature_cmpt').AsBoolean;
+                        MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_barec').AsInteger:= MainForm.Bona_recTable.FieldByName('code_barec').AsInteger;
+                        MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_ur').AsInteger:= StrToInt(MainForm.UserIDLbl.Caption);
                         MainForm.Opt_cas_bnk_CaisseTable.Post;
                         MainForm.Opt_cas_bnk_CaisseTable.Refresh;
                         MainForm.Opt_cas_bnk_BankTable.Refresh;
@@ -1616,7 +1623,7 @@ begin
            Mainform.Sqlquery.Active:=False;
            Mainform.Sqlquery.Sql.Clear;
            Mainform.Sqlquery.Sql.Text:='SELECT code_bvlivl,code_p,  qut_p, cond_p , prixvd_p,tva_p,code_barec FROM bonv_liv_list WHERE code_bvliv =  '
-                                                 + IntToStr (MainForm.Bonv_livTable.FieldValues['code_bvliv'])
+                                                 + IntToStr (MainForm.Bonv_livTable.FieldByName('code_bvliv').AsInteger)
                                                  + 'GROUP BY code_bvlivl, code_p, qut_p, cond_p,prixvd_p,tva_p,code_barec ' ;
            MainForm.SQLQuery.Active:=True;
            MainForm.SQLQuery.First;
@@ -1624,23 +1631,23 @@ begin
            begin
             MainForm.SQLQuery3.Active:=False;
             MainForm.SQLQuery3.SQL.Clear;
-            MainForm.SQLQuery3.SQL.Text:='SELECT code_p,qut_p,tva_p FROM produit WHERE code_p = ' +QuotedStr(MainForm.SQLQuery.FieldValues['code_p']) ;
+            MainForm.SQLQuery3.SQL.Text:='SELECT code_p,qut_p,tva_p FROM produit WHERE code_p = ' +IntToStr(MainForm.SQLQuery.FieldByName('code_p').AsInteger) ;
             MainForm.SQLQuery3.Active:=True;
             MainForm.SQLQuery3.Edit;
-            MainForm.SQLQuery3.FieldValues['qut_p']:= ( MainForm.SQLQuery3.FieldValues['qut_p']
-                                                         - ((MainForm.SQLQuery.FieldValues['qut_p']) * ((MainForm.SQLQuery.FieldValues['cond_p']))));
-            MainForm.SQLQuery3.FieldValues['tva_p']:= MainForm.SQLQuery.FieldValues['tva_p'];
+            MainForm.SQLQuery3.FieldByName('qut_p').Value:= ( MainForm.SQLQuery3.FieldByName('qut_p').Value
+                                                         - ((MainForm.SQLQuery.FieldByName('qut_p').Value) * ((MainForm.SQLQuery.FieldByName('cond_p').AsInteger))));
+            MainForm.SQLQuery3.FieldByName('tva_p').Value:= MainForm.SQLQuery.FieldByName('tva_p').Value;
             MainForm.SQLQuery3.Post;
 
             Mainform.FDQuery2.Active:=False;
             Mainform.FDQuery2.Sql.Clear;
-            Mainform.FDQuery2.Sql.Text:='SELECT code_barec, code_p,qutinstock_p FROM bona_rec_list  WHERE code_barec =' +QuotedStr(MainForm.SQLQuery.FieldValues['code_barec']) ;
+            Mainform.FDQuery2.Sql.Text:='SELECT code_barec, code_p,qutinstock_p FROM bona_rec_list  WHERE code_barec =' +IntToStr(MainForm.SQLQuery.FieldByName('code_barec').AsInteger) ;
             MainForm.FDQuery2.Active:=True;
             if NOT (MainForm.FDQuery2.IsEmpty) then
             begin
               MainForm.FDQuery2.Edit;
-              MainForm.FDQuery2.FieldValues['qutinstock_p'] := ( MainForm.FDQuery2.FieldValues['qutinstock_p']
-                                                              - ((MainForm.SQLQuery.FieldValues['qut_p'] ) * ((MainForm.SQLQuery.FieldValues['cond_p'] ))));
+              MainForm.FDQuery2.FieldByName('qutinstock_p').Value := ( MainForm.FDQuery2.FieldByName('qutinstock_p').Value
+                                                              - ((MainForm.SQLQuery.FieldByName('qut_p').Value ) * ((MainForm.SQLQuery.FieldByName('cond_p').AsInteger ))));
               MainForm.FDQuery2.Post;
 
             end;
@@ -1705,44 +1712,44 @@ begin
           MainForm.CompteTable.Active:=True;
 
           MainForm.Bonv_livTable.Edit;
-          MainForm.Bonv_livTable.FieldValues['code_c']:= MainForm.SQLQuery.FieldByName('code_c').AsInteger;
-          MainForm.Bonv_livTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
+          MainForm.Bonv_livTable.FieldByName('code_c').AsInteger:= MainForm.SQLQuery.FieldByName('code_c').AsInteger;
+          MainForm.Bonv_livTable.FieldByName('code_ur').AsInteger:= StrToInt(MainForm.UserIDLbl.Caption);
           MainForm.Bonv_livTable.FieldByName('date_bvliv').AsDateTime:= BonLivGestionF.DateBonLivGD.DateTime;
-          MainForm.Bonv_livTable.FieldValues['time_bvliv']:=TimeOf(Now);
-          MainForm.Bonv_livTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
-          MainForm.Bonv_livTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
-          MainForm.Bonv_livTable.FieldValues['obser_bvliv']:= BonLivGestionF.ObserBonLivGMem.Text;
-          MainForm.Bonv_livTable.FieldValues['num_cheque_bvliv']:= BonLivGestionF.NChequeBonLivGCbx.Text;
-          MainForm.Bonv_livTable.FieldByName('montaht_bvliv').AsFloat:= StrToFloat(StringReplace(BonLivGestionF.BonLivTotalAHTLbl.Caption, #32, '', [rfReplaceAll]));
-          MainForm.Bonv_livTable.FieldByName('montht_bvliv').AsFloat:= StrToFloat(StringReplace(BonLivGestionF.BonLivTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
+          MainForm.Bonv_livTable.FieldByName('time_bvliv').AsDateTime:=TimeOf(Now);
+          MainForm.Bonv_livTable.FieldByName('code_mdpai').AsInteger:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
+          MainForm.Bonv_livTable.FieldByName('code_cmpt').AsInteger:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
+          MainForm.Bonv_livTable.FieldByName('obser_bvliv').AsWideString:= BonLivGestionF.ObserBonLivGMem.Text;
+          MainForm.Bonv_livTable.FieldByName('num_cheque_bvliv').AsString:= BonLivGestionF.NChequeBonLivGCbx.Text;
+          MainForm.Bonv_livTable.FieldByName('montaht_bvliv').Value:= StrToFloat(StringReplace(BonLivGestionF.BonLivTotalAHTLbl.Caption, #32, '', [rfReplaceAll]));
+          MainForm.Bonv_livTable.FieldByName('montht_bvliv').Value:= StrToFloat(StringReplace(BonLivGestionF.BonLivTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
           if BonLivGestionF.RemiseBonLivGEdt.Text<>'' then
           begin
-          MainForm.Bonv_livTable.FieldByName('remise_bvliv').AsFloat:=StrToFloat(StringReplace(BonLivGestionF.RemiseBonLivGEdt.Text, #32, '', [rfReplaceAll]));
+          MainForm.Bonv_livTable.FieldByName('remise_bvliv').Value:=StrToFloat(StringReplace(BonLivGestionF.RemiseBonLivGEdt.Text, #32, '', [rfReplaceAll]));
           end else begin
-                    MainForm.Bonv_livTable.FieldByName('remise_bvliv').AsFloat:=0;
+                    MainForm.Bonv_livTable.FieldByName('remise_bvliv').Value:=0;
                    end;
 
-          MainForm.Bonv_livTable.FieldByName('montver_bvliv').AsFloat:=StrToFloat(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll]));
-          MainForm.Bonv_livTable.FieldByName('montttc_bvliv').AsFloat:=StrToFloat(StringReplace(BonLivGestionF.BonLivTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
-          MainForm.Bonv_livTable.FieldByName('marge_bvliv').AsFloat:=StrToFloat(StringReplace(BonLivGestionF.BonLivTotalMargeLbl.Caption, #32, '', [rfReplaceAll]));
+          MainForm.Bonv_livTable.FieldByName('montver_bvliv').Value:=StrToFloat(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll]));
+          MainForm.Bonv_livTable.FieldByName('montttc_bvliv').Value:=StrToFloat(StringReplace(BonLivGestionF.BonLivTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
+          MainForm.Bonv_livTable.FieldByName('marge_bvliv').Value:=StrToFloat(StringReplace(BonLivGestionF.BonLivTotalMargeLbl.Caption, #32, '', [rfReplaceAll]));
           MainForm.Bonv_livTable.FieldByName('valider_bvliv').AsBoolean:= True;
 
-          if (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='esp�ce') OR (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='espece') then
+          if (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='espèce') OR (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='espece') then
           begin
-           MainForm.Bonv_livTable.FieldValues['code_mdpai']:=1 ;
+           MainForm.Bonv_livTable.FieldByName('code_mdpai').AsInteger:=1 ;
           end;
-           if (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='ch�que') OR (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='cheque') then
+           if (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='chèque') OR (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='cheque') then
           begin
-           MainForm.Bonv_livTable.FieldValues['code_mdpai']:=2 ;
+           MainForm.Bonv_livTable.FieldByName('code_mdpai').AsInteger:=2 ;
           end;
-          if (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='� terme' ) OR (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='a terme' )
+          if (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='à terme' ) OR (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='a terme' )
              OR (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='� terme' ) then
           begin
-           MainForm.Bonv_livTable.FieldValues['code_mdpai']:=3 ;
+           MainForm.Bonv_livTable.FieldByName('code_mdpai').AsInteger:=3 ;
           end;
           if (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='virement' ) then
           begin
-           MainForm.Bonv_livTable.FieldValues['code_mdpai']:=4 ;
+           MainForm.Bonv_livTable.FieldByName('code_mdpai').AsInteger:=4 ;
           end;
 
           MainForm.Bonv_livTable.Post;
@@ -1759,44 +1766,44 @@ begin
             if NOT (MainForm.RegclientTable.IsEmpty) then
             begin
             MainForm.RegclientTable.Last;
-            CodeRF:= MainForm.RegclientTable.FieldValues['code_rc'] + 1;
+            CodeRF:= MainForm.RegclientTable.FieldByName('code_rc').AsInteger + 1;
             end else
                 begin
                  CodeRF:= 1;
                 end;
 
             Mainform.Regclienttable.Append;
-            MainForm.RegclientTable.FieldValues['code_rc']:= CodeRF;
-            MainForm.RegclientTable.FieldValues['code_bvliv']:= MainForm.Bonv_livTable.FieldValues['code_bvliv'];
-            MainForm.RegclientTable.FieldValues['nom_rc']:= BonLivGestionF.NumBonLivGEdt.Caption;
-            MainForm.RegclientTable.FieldValues['code_c']:= MainForm.SQLQuery.FieldByName('code_c').AsInteger;
-            MainForm.RegclientTable.FieldValues['date_rc']:= BonLivGestionF.DateBonLivGD.DateTime;
-            MainForm.RegclientTable.FieldValues['time_rc']:=TimeOf(Now);
-            MainForm.RegclientTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
-            MainForm.RegclientTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
-            MainForm.RegclientTable.FieldValues['obser_rc']:= BonLivGestionF.ObserBonLivGMem.Text;
-            MainForm.RegclientTable.FieldValues['num_cheque_rc']:= BonLivGestionF.NChequeBonLivGCbx.Text;
-            MainForm.RegclientTable.FieldValues['bon_or_no_rc']:= 2;
-            MainForm.RegclientTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
+            MainForm.RegclientTable.FieldByName('code_rc').AsInteger:= CodeRF;
+            MainForm.RegclientTable.FieldByName('code_bvliv').AsInteger:= MainForm.Bonv_livTable.FieldByName('code_bvliv').AsInteger;
+            MainForm.RegclientTable.FieldByName('nom_rc').AsString:= BonLivGestionF.NumBonLivGEdt.Caption;
+            MainForm.RegclientTable.FieldByName('code_c').AsInteger:= MainForm.SQLQuery.FieldByName('code_c').AsInteger;
+            MainForm.RegclientTable.FieldByName('date_rc').AsDateTime:= BonLivGestionF.DateBonLivGD.DateTime;
+            MainForm.RegclientTable.FieldByName('time_rc').AsDateTime:=TimeOf(Now);
+            MainForm.RegclientTable.FieldByName('code_mdpai').AsInteger:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
+            MainForm.RegclientTable.FieldByName('code_cmpt').AsInteger:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
+            MainForm.RegclientTable.FieldByName('obser_rc').AsWideString:= BonLivGestionF.ObserBonLivGMem.Text;
+            MainForm.RegclientTable.FieldByName('num_cheque_rc').AsString:= BonLivGestionF.NChequeBonLivGCbx.Text;
+            MainForm.RegclientTable.FieldByName('bon_or_no_rc').AsInteger:= 2;
+            MainForm.RegclientTable.FieldByName('code_ur').AsInteger:= StrToInt(MainForm.UserIDLbl.Caption);
 
             MainForm.RegclientTable.FieldByName('montver_rc').AsFloat:=StrToFloat(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll]));
 
-            if (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='esp�ce') OR (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='espece') then
+            if (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='espèce') OR (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='espece') then
             begin
-             MainForm.RegclientTable.FieldValues['code_mdpai']:=1 ;
+             MainForm.RegclientTable.FieldByName('code_mdpai').AsInteger:=1 ;
             end;
-             if (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='ch�que') OR (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='cheque') then
+             if (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='chèque') OR (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='cheque') then
             begin
-             MainForm.RegclientTable.FieldValues['code_mdpai']:=2 ;
+             MainForm.RegclientTable.FieldByName('code_mdpai').AsInteger:=2 ;
             end;
-            if (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='� terme' ) OR (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='a terme' )
+            if (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='à terme' ) OR (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='a terme' )
                OR (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='� terme' ) then
             begin
-             MainForm.RegclientTable.FieldValues['code_mdpai']:=3 ;
+             MainForm.RegclientTable.FieldByName('code_mdpai').AsInteger:=3 ;
             end;
             if (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='virement' ) then
             begin
-             MainForm.RegclientTable.FieldValues['code_mdpai']:=4 ;
+             MainForm.RegclientTable.FieldByName('code_mdpai').AsInteger:=4 ;
             end;
 
             MainForm.RegclientTable.Post;
@@ -1808,42 +1815,42 @@ begin
                 MainForm.RegclientTable.DisableControls;
                 MainForm.RegclientTable.Active:=false;
                 MainForm.RegclientTable.SQL.Clear;
-                MainForm.RegclientTable.SQL.Text:='SELECT * FROM regclient WHERE code_bvliv ='+IntToStr(MainForm.Bonv_livTable.FieldValues['code_bvliv']) ;
+                MainForm.RegclientTable.SQL.Text:='SELECT * FROM regclient WHERE code_bvliv ='+IntToStr(MainForm.Bonv_livTable.FieldByName('code_bvliv').AsInteger) ;
                 MainForm.RegclientTable.Active:=True;
 
                 if NOT (MainForm.RegclientTable.IsEmpty) then
                 begin
                   MainForm.RegclientTable.Edit;
-                  MainForm.RegclientTable.FieldValues['code_bvliv']:= MainForm.Bonv_livTable.FieldValues['code_bvliv'];
-                  MainForm.RegclientTable.FieldValues['nom_rc']:= BonLivGestionF.NumBonLivGEdt.Caption;
-                  MainForm.RegclientTable.FieldValues['code_c']:= MainForm.SQLQuery.FieldByName('code_c').AsInteger;
-                  MainForm.RegclientTable.FieldValues['date_rc']:= BonLivGestionF.DateBonLivGD.DateTime;
-                  MainForm.RegclientTable.FieldValues['time_rc']:=TimeOf(Now);
-                  MainForm.RegclientTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
-                  MainForm.RegclientTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
-                  MainForm.RegclientTable.FieldValues['obser_rc']:= BonLivGestionF.ObserBonLivGMem.Text;
-                  MainForm.RegclientTable.FieldValues['num_cheque_rc']:= BonLivGestionF.NChequeBonLivGCbx.Text;
-                  MainForm.RegclientTable.FieldValues['bon_or_no_rc']:= 2;
-                  MainForm.RegclientTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
+                  MainForm.RegclientTable.FieldByName('code_bvliv').AsInteger:= MainForm.Bonv_livTable.FieldByName('code_bvliv').AsInteger;
+                  MainForm.RegclientTable.FieldByName('nom_rc').AsString:= BonLivGestionF.NumBonLivGEdt.Caption;
+                  MainForm.RegclientTable.FieldByName('code_c').AsInteger:= MainForm.SQLQuery.FieldByName('code_c').AsInteger;
+                  MainForm.RegclientTable.FieldByName('date_rc').AsDateTime:= BonLivGestionF.DateBonLivGD.DateTime;
+                  MainForm.RegclientTable.FieldByName('time_rc').AsDateTime:=TimeOf(Now);
+                  MainForm.RegclientTable.FieldByName('code_mdpai').AsInteger:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
+                  MainForm.RegclientTable.FieldByName('code_cmpt').AsInteger:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
+                  MainForm.RegclientTable.FieldByName('obser_rc').AsWideString:= BonLivGestionF.ObserBonLivGMem.Text;
+                  MainForm.RegclientTable.FieldByName('num_cheque_rc').AsString:= BonLivGestionF.NChequeBonLivGCbx.Text;
+                  MainForm.RegclientTable.FieldByName('bon_or_no_rc').AsInteger:= 2;
+                  MainForm.RegclientTable.FieldByName('code_ur').AsInteger:= StrToInt(MainForm.UserIDLbl.Caption);
 
                   MainForm.RegclientTable.FieldByName('montver_rc').AsFloat:=StrToFloat(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll]));
 
-                  if (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='esp�ce') OR (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='espece') then
+                  if (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='espèce') OR (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='espece') then
                   begin
-                   MainForm.RegclientTable.FieldValues['code_mdpai']:=1 ;
+                   MainForm.RegclientTable.FieldByName('code_mdpai').AsInteger:=1 ;
                   end;
-                   if (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='ch�que') OR (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='cheque') then
+                   if (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='chèque') OR (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='cheque') then
                   begin
-                   MainForm.RegclientTable.FieldValues['code_mdpai']:=2 ;
+                   MainForm.RegclientTable.FieldByName('code_mdpai').AsInteger:=2 ;
                   end;
-                  if (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='� terme' ) OR (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='a terme' )
+                  if (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='à terme' ) OR (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='a terme' )
                      OR (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='� terme' ) then
                   begin
-                   MainForm.RegclientTable.FieldValues['code_mdpai']:=3 ;
+                   MainForm.RegclientTable.FieldByName('code_mdpai').AsInteger:=3 ;
                   end;
                   if (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='virement' ) then
                   begin
-                   MainForm.RegclientTable.FieldValues['code_mdpai']:=4 ;
+                   MainForm.RegclientTable.FieldByName('code_mdpai').AsInteger:=4 ;
                   end;
 
                   MainForm.RegclientTable.Post;
@@ -1859,44 +1866,44 @@ begin
                       if NOT (MainForm.RegclientTable.IsEmpty) then
                       begin
                       MainForm.RegclientTable.Last;
-                      CodeRF:= MainForm.RegclientTable.FieldValues['code_rc'] + 1;
+                      CodeRF:= MainForm.RegclientTable.FieldByName('code_rc').AsInteger + 1;
                       end else
                           begin
                            CodeRF:= 1;
                           end;
 
                       Mainform.Regclienttable.Append;
-                      MainForm.RegclientTable.FieldValues['code_rc']:= CodeRF;
-                      MainForm.RegclientTable.FieldValues['code_bvliv']:= MainForm.Bonv_livTable.FieldValues['code_bvliv'];
-                      MainForm.RegclientTable.FieldValues['nom_rc']:= BonLivGestionF.NumBonLivGEdt.Caption;
-                      MainForm.RegclientTable.FieldValues['code_c']:= MainForm.SQLQuery.FieldByName('code_c').AsInteger;
-                      MainForm.RegclientTable.FieldValues['date_rc']:= BonLivGestionF.DateBonLivGD.DateTime;
-                      MainForm.RegclientTable.FieldValues['time_rc']:=TimeOf(Now);
-                      MainForm.RegclientTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
-                      MainForm.RegclientTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
-                      MainForm.RegclientTable.FieldValues['obser_rc']:= BonLivGestionF.ObserBonLivGMem.Text;
-                      MainForm.RegclientTable.FieldValues['num_cheque_rc']:= BonLivGestionF.NChequeBonLivGCbx.Text;
-                      MainForm.RegclientTable.FieldValues['bon_or_no_rc']:= 2;
-                      MainForm.RegclientTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
+                      MainForm.RegclientTable.FieldByName('code_rc').AsInteger:= CodeRF;
+                      MainForm.RegclientTable.FieldByName('code_bvliv').AsInteger:= MainForm.Bonv_livTable.FieldByName('code_bvliv').AsInteger;
+                      MainForm.RegclientTable.FieldByName('nom_rc').AsString:= BonLivGestionF.NumBonLivGEdt.Caption;
+                      MainForm.RegclientTable.FieldByName('code_c').AsInteger:= MainForm.SQLQuery.FieldByName('code_c').AsInteger;
+                      MainForm.RegclientTable.FieldByName('date_rc').AsDateTime:= BonLivGestionF.DateBonLivGD.DateTime;
+                      MainForm.RegclientTable.FieldByName('time_rc').AsDateTime:=TimeOf(Now);
+                      MainForm.RegclientTable.FieldByName('code_mdpai').AsInteger:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
+                      MainForm.RegclientTable.FieldByName('code_cmpt').AsInteger:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
+                      MainForm.RegclientTable.FieldByName('obser_rc').AsWideString:= BonLivGestionF.ObserBonLivGMem.Text;
+                      MainForm.RegclientTable.FieldByName('num_cheque_rc').AsString:= BonLivGestionF.NChequeBonLivGCbx.Text;
+                      MainForm.RegclientTable.FieldByName('bon_or_no_rc').AsInteger:= 2;
+                      MainForm.RegclientTable.FieldByName('code_ur').AsInteger:= StrToInt(MainForm.UserIDLbl.Caption);
 
                       MainForm.RegclientTable.FieldByName('montver_rc').AsFloat:=StrToFloat(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll]));
 
-                      if (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='esp�ce') OR (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='espece') then
+                      if (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='espèce') OR (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='espece') then
                       begin
-                       MainForm.RegclientTable.FieldValues['code_mdpai']:=1 ;
+                       MainForm.RegclientTable.FieldByName('code_mdpai').AsInteger:=1 ;
                       end;
-                       if (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='ch�que') OR (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='cheque') then
+                       if (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='chèque') OR (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='cheque') then
                       begin
-                       MainForm.RegclientTable.FieldValues['code_mdpai']:=2 ;
+                       MainForm.RegclientTable.FieldByName('code_mdpai').AsInteger:=2 ;
                       end;
-                      if (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='� terme' ) OR (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='a terme' )
+                      if (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='à terme' ) OR (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='a terme' )
                          OR (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='� terme' ) then
                       begin
-                       MainForm.RegclientTable.FieldValues['code_mdpai']:=3 ;
+                       MainForm.RegclientTable.FieldByName('code_mdpai').AsInteger:=3 ;
                       end;
                       if (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='virement' ) then
                       begin
-                       MainForm.RegclientTable.FieldValues['code_mdpai']:=4 ;
+                       MainForm.RegclientTable.FieldByName('code_mdpai').AsInteger:=4 ;
                       end;
 
                       MainForm.RegclientTable.Post;
@@ -1919,7 +1926,7 @@ begin
           if  MainForm.SQLQuery.FieldByName('code_c').AsInteger <> 1 then
           begin
           MainForm.SQLQuery.Edit;
-          MainForm.SQLQuery.FieldByName('credit_c').AsFloat:=
+          MainForm.SQLQuery.FieldByName('credit_c').Value:=
           ((StrToFloat(StringReplace(BonLivGestionF.BonLivGClientNEWCredit.Caption, #32, '', [rfReplaceAll]))));
           MainForm.SQLQuery.Post;
           end;
@@ -1944,43 +1951,43 @@ begin
                 if NOT (MainForm.Opt_cas_bnk_CaisseTable.IsEmpty) then
                 begin
                 MainForm.Opt_cas_bnk_CaisseTable.Last;
-                CodeOCB:= MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ocb'] + 1;
+                CodeOCB:= MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_ocb').AsInteger + 1;
                 end else
                     begin
                      CodeOCB:= 1;
                     end;
                   MainForm.Opt_cas_bnk_CaisseTable.Append;
-                  MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ocb']:= CodeOCB;
-                  MainForm.Opt_cas_bnk_CaisseTable.FieldValues['date_ocb']:= BonLivGestionF.DateBonLivGD.DateTime;
-                  MainForm.Opt_cas_bnk_CaisseTable.FieldValues['time_ocb']:= TimeOf(Now);
-                  MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
-                  MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nom_ocb']:= 'Règlement  Pièce N° '+BonLivGestionF.NumBonLivGEdt.Caption;
-                  MainForm.Opt_cas_bnk_CaisseTable.FieldValues['third_ocb']:= BonLivGestionF.ClientBonLivGCbx.Text;
-                  MainForm.Opt_cas_bnk_CaisseTable.FieldValues['encaiss_ocb']:= StrToFloat(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll]));
-          //        MainForm.Opt_cas_bnk_CaisseTable.FieldValues['decaiss_ocb']:= ;
+                  MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_ocb').AsInteger:= CodeOCB;
+                  MainForm.Opt_cas_bnk_CaisseTable.FieldByName('date_ocb').AsDateTime:= BonLivGestionF.DateBonLivGD.DateTime;
+                  MainForm.Opt_cas_bnk_CaisseTable.FieldByName('time_ocb').AsDateTime:= TimeOf(Now);
+                  MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_mdpai').AsInteger:=MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
+                  MainForm.Opt_cas_bnk_CaisseTable.FieldByName('nom_ocb').AsString:= 'Règlement  Pièce N° '+BonLivGestionF.NumBonLivGEdt.Caption;
+                  MainForm.Opt_cas_bnk_CaisseTable.FieldByName('third_ocb').AsString:= BonLivGestionF.ClientBonLivGCbx.Text;
+                  MainForm.Opt_cas_bnk_CaisseTable.FieldByName('encaiss_ocb').Value:= StrToFloat(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll]));
+          //        MainForm.Opt_cas_bnk_CaisseTable.FieldByName('decaiss_ocb']:= ;
 
-                   if (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='esp�ce') OR (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='espece') then
+                   if (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='espèce') OR (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='espece') then
                   begin
-                   MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=1 ;
+                   MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_mdpai').AsInteger:=1 ;
                   end;
-                   if (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='ch�que') OR (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='cheque') then
+                   if (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='chèque') OR (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='cheque') then
                   begin
-                   MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=2 ;
+                   MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_mdpai').AsInteger:=2 ;
                   end;
-                  if (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='� terme' ) OR (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='a terme' )
+                  if (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='à terme' ) OR (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='a terme' )
                      OR (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='� terme' ) then
                   begin
-                   MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=3 ;
+                   MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_mdpai').AsInteger:=3 ;
                   end;
                   if (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='virement' ) then
                   begin
-                   MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=4 ;
+                   MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_mdpai').AsInteger:=4 ;
                   end;
 
-                  MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_cmpt']:=MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
-                  MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nature_ocb']:= MainForm.CompteTable.FieldByName('nature_cmpt').AsBoolean;
-                  MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_bvliv']:= MainForm.Bonv_livTable.FieldByName('code_bvliv').AsInteger;
-                  MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
+                  MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_cmpt').AsInteger:=MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
+                  MainForm.Opt_cas_bnk_CaisseTable.FieldByName('nature_ocb').AsBoolean:= MainForm.CompteTable.FieldByName('nature_cmpt').AsBoolean;
+                  MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_bvliv').AsInteger:= MainForm.Bonv_livTable.FieldByName('code_bvliv').AsInteger;
+                  MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_ur').AsInteger:= StrToInt(MainForm.UserIDLbl.Caption);
 
                   MainForm.Opt_cas_bnk_CaisseTable.Post;
                   MainForm.Opt_cas_bnk_CaisseTable.Refresh;
@@ -2005,36 +2012,36 @@ begin
                      begin
 
                       MainForm.Opt_cas_bnk_CaisseTable.Edit;
-                      MainForm.Opt_cas_bnk_CaisseTable.FieldValues['date_ocb']:= BonLivGestionF.DateBonLivGD.DateTime;
-                      MainForm.Opt_cas_bnk_CaisseTable.FieldValues['time_ocb']:= TimeOf(Now);
-                      MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
-                      MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nom_ocb']:= 'Règlement  Pièce N° '+BonLivGestionF.NumBonLivGEdt.Caption;
-                      MainForm.Opt_cas_bnk_CaisseTable.FieldValues['third_ocb']:= BonLivGestionF.ClientBonLivGCbx.Text;
-                      MainForm.Opt_cas_bnk_CaisseTable.FieldValues['encaiss_ocb']:= StrToFloat(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll]));
-              //        MainForm.Opt_cas_bnk_CaisseTable.FieldValues['decaiss_ocb']:= ;
+                      MainForm.Opt_cas_bnk_CaisseTable.FieldByName('date_ocb').AsDateTime:= BonLivGestionF.DateBonLivGD.DateTime;
+                      MainForm.Opt_cas_bnk_CaisseTable.FieldByName('time_ocb').AsDateTime:= TimeOf(Now);
+                      MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_mdpai').AsInteger:=MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
+                      MainForm.Opt_cas_bnk_CaisseTable.FieldByName('nom_ocb').AsString:= 'Règlement  Pièce N° '+BonLivGestionF.NumBonLivGEdt.Caption;
+                      MainForm.Opt_cas_bnk_CaisseTable.FieldByName('third_ocb').AsString:= BonLivGestionF.ClientBonLivGCbx.Text;
+                      MainForm.Opt_cas_bnk_CaisseTable.FieldByName('encaiss_ocb').Value:= StrToFloat(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll]));
+              //        MainForm.Opt_cas_bnk_CaisseTable.FieldByName('decaiss_ocb']:= ;
 
-                       if (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='esp�ce') OR (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='espece') then
+                       if (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='espèce') OR (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='espece') then
                       begin
-                       MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=1 ;
+                       MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_mdpai').AsInteger:=1 ;
                       end;
-                       if (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='ch�que') OR (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='cheque') then
+                       if (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='chèque') OR (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='cheque') then
                       begin
-                       MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=2 ;
+                       MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_mdpai').AsInteger:=2 ;
                       end;
-                      if (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='� terme' ) OR (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='a terme' )
+                      if (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='à terme' ) OR (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='a terme' )
                          OR (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='� terme' ) then
                       begin
-                       MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=3 ;
+                       MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_mdpai').AsInteger:=3 ;
                       end;
                       if (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='virement' ) then
                       begin
-                       MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=4 ;
+                       MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_mdpai').AsInteger:=4 ;
                       end;
 
-                      MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_cmpt']:=MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
-                      MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nature_ocb']:= MainForm.CompteTable.FieldByName('nature_cmpt').AsBoolean;
-                      MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_bvliv']:= MainForm.Bonv_livTable.FieldByName('code_bvliv').AsInteger;
-                      MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
+                      MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_cmpt').AsInteger:=MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
+                      MainForm.Opt_cas_bnk_CaisseTable.FieldByName('nature_ocb').AsBoolean:= MainForm.CompteTable.FieldByName('nature_cmpt').AsBoolean;
+                      MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_bvliv').AsInteger:= MainForm.Bonv_livTable.FieldByName('code_bvliv').AsInteger;
+                      MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_ur').AsInteger:= StrToInt(MainForm.UserIDLbl.Caption);
                       MainForm.Opt_cas_bnk_CaisseTable.Post;
                       MainForm.Opt_cas_bnk_CaisseTable.Refresh;
                       MainForm.Opt_cas_bnk_BankTable.Refresh;
@@ -2049,44 +2056,44 @@ begin
                         if  NOT (MainForm.Opt_cas_bnk_CaisseTable.IsEmpty) then
                       begin
                       MainForm.Opt_cas_bnk_CaisseTable.Last;
-                      CodeOCB:= MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ocb'] + 1;
+                      CodeOCB:= MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_ocb').AsInteger + 1;
                       end else
                           begin
                            CodeOCB:= 1;
                           end;
 
                       MainForm.Opt_cas_bnk_CaisseTable.Append;
-                      MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ocb']:= CodeOCB;
-                      MainForm.Opt_cas_bnk_CaisseTable.FieldValues['date_ocb']:= BonLivGestionF.DateBonLivGD.DateTime;
-                      MainForm.Opt_cas_bnk_CaisseTable.FieldValues['time_ocb']:= TimeOf(Now);
-                      MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
-                      MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nom_ocb']:= 'Règlement  Pièce N° '+BonLivGestionF.NumBonLivGEdt.Caption;
-                      MainForm.Opt_cas_bnk_CaisseTable.FieldValues['third_ocb']:= BonLivGestionF.ClientBonLivGCbx.Text;
-                      MainForm.Opt_cas_bnk_CaisseTable.FieldValues['encaiss_ocb']:= StrToFloat(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll]));
-              //        MainForm.Opt_cas_bnk_CaisseTable.FieldValues['decaiss_ocb']:= ;
+                      MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_ocb').AsInteger:= CodeOCB;
+                      MainForm.Opt_cas_bnk_CaisseTable.FieldByName('date_ocb').AsDateTime:= BonLivGestionF.DateBonLivGD.DateTime;
+                      MainForm.Opt_cas_bnk_CaisseTable.FieldByName('time_ocb').AsDateTime:= TimeOf(Now);
+                      MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_mdpai').AsInteger:=MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
+                      MainForm.Opt_cas_bnk_CaisseTable.FieldByName('nom_ocb').AsString:= 'Règlement  Pièce N° '+BonLivGestionF.NumBonLivGEdt.Caption;
+                      MainForm.Opt_cas_bnk_CaisseTable.FieldByName('third_ocb').AsString:= BonLivGestionF.ClientBonLivGCbx.Text;
+                      MainForm.Opt_cas_bnk_CaisseTable.FieldByName('encaiss_ocb').Value:= StrToFloat(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll]));
+              //        MainForm.Opt_cas_bnk_CaisseTable.FieldByName('decaiss_ocb']:= ;
 
-                       if (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='esp�ce') OR (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='espece') then
+                       if (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='espèce') OR (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='espece') then
                       begin
-                       MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=1 ;
+                       MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_mdpai').AsInteger:=1 ;
                       end;
-                       if (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='ch�que') OR (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='cheque') then
+                       if (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='chèque') OR (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='cheque') then
                       begin
-                       MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=2 ;
+                       MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_mdpai').AsInteger:=2 ;
                       end;
-                      if (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='� terme' ) OR (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='a terme' )
+                      if (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='à terme' ) OR (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='a terme' )
                          OR (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='� terme' ) then
                       begin
-                       MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=3 ;
+                       MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_mdpai').AsInteger:=3 ;
                       end;
                       if (LowerCase(BonLivGestionF.ModePaieBonLivGCbx.Text)='virement' ) then
                       begin
-                       MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=4 ;
+                       MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_mdpai').AsInteger:=4 ;
                       end;
 
-                      MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_cmpt']:=MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
-                      MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nature_ocb']:= MainForm.CompteTable.FieldByName('nature_cmpt').AsBoolean;
-                      MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_bvliv']:= MainForm.Bonv_livTable.FieldByName('code_bvliv').AsInteger;
-                      MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
+                      MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_cmpt').AsInteger:=MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
+                      MainForm.Opt_cas_bnk_CaisseTable.FieldByName('nature_ocb').AsBoolean:= MainForm.CompteTable.FieldByName('nature_cmpt').AsBoolean;
+                      MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_bvliv').AsInteger:= MainForm.Bonv_livTable.FieldByName('code_bvliv').AsInteger;
+                      MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_ur').AsInteger:= StrToInt(MainForm.UserIDLbl.Caption);
 
                       MainForm.Opt_cas_bnk_CaisseTable.Post;
                       MainForm.Opt_cas_bnk_CaisseTable.Refresh;
@@ -2200,7 +2207,7 @@ begin
            Mainform.Sqlquery.Active:=False;
            Mainform.Sqlquery.Sql.Clear;
            Mainform.Sqlquery.Sql.Text:='SELECT code_bvctrl,code_p,  qut_p, cond_p , prixvd_p,tva_p,code_barec FROM bonv_ctr_list WHERE code_bvctr =  '
-                                                 + IntToStr (MainForm.Bonv_ctrTable.FieldValues['code_bvctr'])
+                                                 + IntToStr (MainForm.Bonv_ctrTable.FieldByName('code_bvctr').AsInteger)
                                                  + 'GROUP BY code_bvctrl, code_p, qut_p, cond_p,prixvd_p,tva_p,code_barec ' ;
            MainForm.SQLQuery.Active:=True;
            MainForm.SQLQuery.First;
@@ -2208,28 +2215,28 @@ begin
            begin
             MainForm.SQLQuery3.Active:=False;
             MainForm.SQLQuery3.SQL.Clear;
-            MainForm.SQLQuery3.SQL.Text:='SELECT code_p, qut_p, tva_p  FROM produit WHERE code_p = ' +QuotedStr(MainForm.SQLQuery.FieldValues['code_p']) ;
+            MainForm.SQLQuery3.SQL.Text:='SELECT code_p, qut_p, tva_p  FROM produit WHERE code_p = ' +IntToStr(MainForm.SQLQuery.FieldByName('code_p').AsInteger) ;
             MainForm.SQLQuery3.Active:=True;
 
             if not MainForm.SQLQuery3.IsEmpty then
             begin
             MainForm.SQLQuery3.Edit;
-            MainForm.SQLQuery3.FieldValues['qut_p']:= ( MainForm.SQLQuery3.FieldValues['qut_p']
-                                                         - ((MainForm.SQLQuery.FieldValues['qut_p']) * ((MainForm.SQLQuery.FieldValues['cond_p']))));
-            MainForm.SQLQuery3.FieldValues['tva_p']:= MainForm.SQLQuery.FieldValues['tva_p'];
+            MainForm.SQLQuery3.FieldByName('qut_p').Value:= ( MainForm.SQLQuery3.FieldByName('qut_p').Value
+                                                         - ((MainForm.SQLQuery.FieldByName('qut_p').Value) * ((MainForm.SQLQuery.FieldByName('cond_p').AsInteger))));
+            MainForm.SQLQuery3.FieldByName('tva_p').Value:= MainForm.SQLQuery.FieldByName('tva_p').Value;
             MainForm.SQLQuery3.Post;
             end;
 
 
             Mainform.FDQuery2.Active:=False;
             Mainform.FDQuery2.Sql.Clear;
-            Mainform.FDQuery2.Sql.Text:='SELECT code_barec, code_p,qutinstock_p FROM bona_rec_list  WHERE code_barec =' +QuotedStr(MainForm.SQLQuery.FieldValues['code_barec']) ;
+            Mainform.FDQuery2.Sql.Text:='SELECT code_barec, code_p,qutinstock_p FROM bona_rec_list  WHERE code_barec =' +IntToStr(MainForm.SQLQuery.FieldByName('code_barec').AsInteger) ;
             MainForm.FDQuery2.Active:=True;
             if NOT (MainForm.FDQuery2.IsEmpty) then
             begin
               MainForm.FDQuery2.Edit;
-              MainForm.FDQuery2.FieldValues['qutinstock_p'] := ( MainForm.FDQuery2.FieldValues['qutinstock_p']
-                                                              - ((MainForm.SQLQuery.FieldValues['qut_p'] ) * ((MainForm.SQLQuery.FieldValues['cond_p'] ))));
+              MainForm.FDQuery2.FieldByName('qutinstock_p').Value := ( MainForm.FDQuery2.FieldByName('qutinstock_p').Value
+                                                              - ((MainForm.SQLQuery.FieldByName('qut_p').Value ) * ((MainForm.SQLQuery.FieldByName('cond_p').AsInteger ))));
               MainForm.FDQuery2.Post;
 
             end;
@@ -2259,24 +2266,24 @@ begin
           MainForm.SQLQuery.Active:=True;
 
           MainForm.Bonv_ctrTable.Edit;
-          MainForm.Bonv_ctrTable.FieldValues['code_c']:= MainForm.SQLQuery.FieldByName('code_c').AsInteger;
-          MainForm.Bonv_ctrTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
+          MainForm.Bonv_ctrTable.FieldByName('code_c').AsInteger:= MainForm.SQLQuery.FieldByName('code_c').AsInteger;
+          MainForm.Bonv_ctrTable.FieldByName('code_ur').AsInteger:= StrToInt(MainForm.UserIDLbl.Caption);
           MainForm.Bonv_ctrTable.FieldByName('date_bvctr').AsDateTime:= BonCtrGestionF.DateBonCtrGD.DateTime;
-          MainForm.Bonv_ctrTable.FieldValues['time_bvctr']:=TimeOf(Now);
-          MainForm.Bonv_ctrTable.FieldByName('montaht_bvctr').AsFloat := StrToFloat(StringReplace(BonCtrGestionF.BonCtrTotalAHTLbl.Caption, #32, '', [rfReplaceAll]));
-          MainForm.Bonv_ctrTable.FieldByName('montht_bvctr').AsFloat:= StrToFloat(StringReplace(BonCtrGestionF.BonCtrTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
+          MainForm.Bonv_ctrTable.FieldByName('time_bvctr').AsDateTime:=TimeOf(Now);
+          MainForm.Bonv_ctrTable.FieldByName('montaht_bvctr').Value := StrToFloat(StringReplace(BonCtrGestionF.BonCtrTotalAHTLbl.Caption, #32, '', [rfReplaceAll]));
+          MainForm.Bonv_ctrTable.FieldByName('montht_bvctr').Value:= StrToFloat(StringReplace(BonCtrGestionF.BonCtrTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
           if BonCtrGestionF.RemiseBonCtrGEdt.Text<>'' then
           begin
-          MainForm.Bonv_ctrTable.FieldByName('remise_bvctr').AsFloat:=StrToFloat(StringReplace(BonCtrGestionF.RemiseBonCtrGEdt.Text, #32, '', [rfReplaceAll]));
+          MainForm.Bonv_ctrTable.FieldByName('remise_bvctr').Value:=StrToFloat(StringReplace(BonCtrGestionF.RemiseBonCtrGEdt.Text, #32, '', [rfReplaceAll]));
           end else begin
-                    MainForm.Bonv_ctrTable.FieldByName('remise_bvctr').AsFloat:=0;
+                    MainForm.Bonv_ctrTable.FieldByName('remise_bvctr').Value:=0;
                    end;
 
-          MainForm.Bonv_ctrTable.FieldByName('montver_bvctr').AsFloat:=StrToFloat(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll]));
-          MainForm.Bonv_ctrTable.FieldByName('montttc_bvctr').AsFloat:=StrToFloat(StringReplace(BonCtrGestionF.BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
-          MainForm.Bonv_ctrTable.FieldByName('marge_bvctr').AsFloat:=StrToFloat(StringReplace(BonCtrGestionF.BonCTRTotalMargeLbl.Caption, #32, '', [rfReplaceAll]));
+          MainForm.Bonv_ctrTable.FieldByName('montver_bvctr').Value:=StrToFloat(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll]));
+          MainForm.Bonv_ctrTable.FieldByName('montttc_bvctr').Value:=StrToFloat(StringReplace(BonCtrGestionF.BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
+          MainForm.Bonv_ctrTable.FieldByName('marge_bvctr').Value:=StrToFloat(StringReplace(BonCtrGestionF.BonCTRTotalMargeLbl.Caption, #32, '', [rfReplaceAll]));
           MainForm.Bonv_ctrTable.FieldByName('valider_bvctr').AsBoolean:= True;
-          MainForm.Bonv_ctrTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption) ;
+          MainForm.Bonv_ctrTable.FieldByName('code_ur').AsInteger:= StrToInt(MainForm.UserIDLbl.Caption) ;
 
           MainForm.Bonv_ctrTable.Post;
           MainForm.Bonv_ctrTable.Refresh;
@@ -2309,25 +2316,25 @@ begin
             if NOT (MainForm.RegclientTable.IsEmpty) then
             begin
             MainForm.RegclientTable.Last;
-            CodeRF:= MainForm.RegclientTable.FieldValues['code_rc'] + 1;
+            CodeRF:= MainForm.RegclientTable.FieldByName('code_rc').AsInteger + 1;
             end else
                 begin
                  CodeRF:= 1;
                 end;
 
             MainForm.RegclientTable.Append;
-            MainForm.RegclientTable.FieldValues['code_rc']:= CodeRF;
-            MainForm.RegclientTable.FieldValues['code_bvctr']:= MainForm.Bonv_ctrTable.FieldValues['code_bvctr'];
-            MainForm.RegclientTable.FieldValues['nom_rc']:= BonCtrGestionF.NumBonCtrGEdt.Caption;
-            MainForm.RegclientTable.FieldValues['code_c']:= MainForm.SQLQuery.FieldByName('code_c').AsInteger;
-            MainForm.RegclientTable.FieldValues['date_rc']:= BonCtrGestionF.DateBonCtrGD.DateTime;
-            MainForm.RegclientTable.FieldValues['time_rc']:=TimeOf(Now);
-            MainForm.RegclientTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
-            MainForm.RegclientTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
-            MainForm.RegclientTable.FieldValues['bon_or_no_rc']:= 4;
-            MainForm.RegclientTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
+            MainForm.RegclientTable.FieldByName('code_rc').AsInteger:= CodeRF;
+            MainForm.RegclientTable.FieldByName('code_bvctr').AsInteger:= MainForm.Bonv_ctrTable.FieldByName('code_bvctr').AsInteger;
+            MainForm.RegclientTable.FieldByName('nom_rc').AsString:= BonCtrGestionF.NumBonCtrGEdt.Caption;
+            MainForm.RegclientTable.FieldByName('code_c').AsInteger:= MainForm.SQLQuery.FieldByName('code_c').AsInteger;
+            MainForm.RegclientTable.FieldByName('date_rc').AsDateTime:= BonCtrGestionF.DateBonCtrGD.DateTime;
+            MainForm.RegclientTable.FieldByName('time_rc').AsDateTime:=TimeOf(Now);
+            MainForm.RegclientTable.FieldByName('code_mdpai').AsInteger:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
+            MainForm.RegclientTable.FieldByName('code_cmpt').AsInteger:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
+            MainForm.RegclientTable.FieldByName('bon_or_no_rc').AsInteger:= 4;
+            MainForm.RegclientTable.FieldByName('code_ur').AsInteger:= StrToInt(MainForm.UserIDLbl.Caption);
 
-            MainForm.RegclientTable.FieldByName('montver_rc').AsFloat:=StrToFloat(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll]));
+            MainForm.RegclientTable.FieldByName('montver_rc').Value:=StrToFloat(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll]));
 
             MainForm.RegclientTable.Post;
             MainForm.RegclientTable.Refresh;
@@ -2338,23 +2345,23 @@ begin
                 MainForm.RegclientTable.DisableControls;
                 MainForm.RegclientTable.Active:=false;
                 MainForm.RegclientTable.SQL.Clear;
-                MainForm.RegclientTable.SQL.Text:='SELECT * FROM regclient WHERE code_bvctr ='+IntToStr(MainForm.Bonv_ctrTable.FieldValues['code_bvctr']) ;
+                MainForm.RegclientTable.SQL.Text:='SELECT * FROM regclient WHERE code_bvctr ='+IntToStr(MainForm.Bonv_ctrTable.FieldByName('code_bvctr').AsInteger) ;
                 MainForm.RegclientTable.Active:=True;
                 if NOT(MainForm.RegclientTable.IsEmpty) then
                 begin
 
                   MainForm.RegclientTable.Edit;
-                  MainForm.RegclientTable.FieldValues['code_bvctr']:= MainForm.Bonv_ctrTable.FieldValues['code_bvctr'];
-                  MainForm.RegclientTable.FieldValues['nom_rc']:= BonCtrGestionF.NumBonCtrGEdt.Caption;
-                  MainForm.RegclientTable.FieldValues['code_c']:= MainForm.SQLQuery.FieldByName('code_c').AsInteger;
-                  MainForm.RegclientTable.FieldValues['date_rc']:= BonCtrGestionF.DateBonCtrGD.DateTime;
-                  MainForm.RegclientTable.FieldValues['time_rc']:=TimeOf(Now);
-                  MainForm.RegclientTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
-                  MainForm.RegclientTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
-                  MainForm.RegclientTable.FieldValues['bon_or_no_rc']:= 4;
-                  MainForm.RegclientTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
+                  MainForm.RegclientTable.FieldByName('code_bvctr').AsInteger:= MainForm.Bonv_ctrTable.FieldByName('code_bvctr').AsInteger;
+                  MainForm.RegclientTable.FieldByName('nom_rc').AsString:= BonCtrGestionF.NumBonCtrGEdt.Caption;
+                  MainForm.RegclientTable.FieldByName('code_c').AsInteger:= MainForm.SQLQuery.FieldByName('code_c').AsInteger;
+                  MainForm.RegclientTable.FieldByName('date_rc').AsDateTime:= BonCtrGestionF.DateBonCtrGD.DateTime;
+                  MainForm.RegclientTable.FieldByName('time_rc').AsDateTime:=TimeOf(Now);
+                  MainForm.RegclientTable.FieldByName('code_mdpai').AsInteger:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
+                  MainForm.RegclientTable.FieldByName('code_cmpt').AsInteger:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
+                  MainForm.RegclientTable.FieldByName('bon_or_no_rc').AsInteger:= 4;
+                  MainForm.RegclientTable.FieldByName('code_ur').AsInteger:= StrToInt(MainForm.UserIDLbl.Caption);
 
-                  MainForm.RegclientTable.FieldByName('montver_rc').AsFloat:=StrToFloat(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll]));
+                  MainForm.RegclientTable.FieldByName('montver_rc').Value:=StrToFloat(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll]));
 
                   MainForm.RegclientTable.Post;
                   MainForm.RegclientTable.Refresh;
@@ -2369,25 +2376,25 @@ begin
                         if NOT (MainForm.RegclientTable.IsEmpty) then
                         begin
                         MainForm.RegclientTable.Last;
-                        CodeRF:= MainForm.RegclientTable.FieldValues['code_rc'] + 1;
+                        CodeRF:= MainForm.RegclientTable.FieldByName('code_rc').AsInteger + 1;
                         end else
                             begin
                              CodeRF:= 1;
                             end;
 
                         MainForm.RegclientTable.Append;
-                        MainForm.RegclientTable.FieldValues['code_rc']:= CodeRF;
-                        MainForm.RegclientTable.FieldValues['code_bvctr']:= MainForm.Bonv_ctrTable.FieldValues['code_bvctr'];
-                        MainForm.RegclientTable.FieldValues['nom_rc']:= BonCtrGestionF.NumBonCtrGEdt.Caption;
-                        MainForm.RegclientTable.FieldValues['code_c']:= MainForm.SQLQuery.FieldByName('code_c').AsInteger;
-                        MainForm.RegclientTable.FieldValues['date_rc']:= BonCtrGestionF.DateBonCtrGD.DateTime;
-                        MainForm.RegclientTable.FieldValues['time_rc']:=TimeOf(Now);
-                        MainForm.RegclientTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
-                        MainForm.RegclientTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
-                        MainForm.RegclientTable.FieldValues['bon_or_no_rc']:= 4;
-                        MainForm.RegclientTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
+                        MainForm.RegclientTable.FieldByName('code_rc').AsInteger:= CodeRF;
+                        MainForm.RegclientTable.FieldByName('code_bvctr').AsInteger:= MainForm.Bonv_ctrTable.FieldByName('code_bvctr').AsInteger;
+                        MainForm.RegclientTable.FieldByName('nom_rc').AsString:= BonCtrGestionF.NumBonCtrGEdt.Caption;
+                        MainForm.RegclientTable.FieldByName('code_c').AsInteger:= MainForm.SQLQuery.FieldByName('code_c').AsInteger;
+                        MainForm.RegclientTable.FieldByName('date_rc').AsDateTime:= BonCtrGestionF.DateBonCtrGD.DateTime;
+                        MainForm.RegclientTable.FieldByName('time_rc').AsDateTime:=TimeOf(Now);
+                        MainForm.RegclientTable.FieldByName('code_mdpai').AsInteger:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
+                        MainForm.RegclientTable.FieldByName('code_cmpt').AsInteger:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
+                        MainForm.RegclientTable.FieldByName('bon_or_no_rc').AsInteger:= 4;
+                        MainForm.RegclientTable.FieldByName('code_ur').AsInteger:= StrToInt(MainForm.UserIDLbl.Caption);
 
-                        MainForm.RegclientTable.FieldByName('montver_rc').AsFloat:=StrToFloat(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll]));
+                        MainForm.RegclientTable.FieldByName('montver_rc').Value:=StrToFloat(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll]));
 
                         MainForm.RegclientTable.Post;
                         MainForm.RegclientTable.Refresh;
@@ -2404,7 +2411,7 @@ begin
           if  MainForm.SQLQuery.FieldByName('code_c').AsInteger <> 1 then
           begin
           MainForm.SQLQuery.Edit;
-          MainForm.SQLQuery.FieldByName('credit_c').AsFloat:= (-1) *
+          MainForm.SQLQuery.FieldByName('credit_c').Value:= (-1) *
           ((StrToFloat(StringReplace(BonCtrGestionF.BonCtrRenduLbl.Caption, #32, '', [rfReplaceAll]))));
           MainForm.SQLQuery.Post;
           end;
@@ -2431,25 +2438,25 @@ begin
                 if NOT (MainForm.Opt_cas_bnk_CaisseTable.IsEmpty) then
                 begin
                 MainForm.Opt_cas_bnk_CaisseTable.Last;
-                CodeOCB:= MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ocb'] + 1;
+                CodeOCB:= MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_ocb').AsInteger + 1;
                 end else
                     begin
                      CodeOCB:= 1;
                     end;
 
                   MainForm.Opt_cas_bnk_CaisseTable.Append;
-                  MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ocb']:= CodeOCB;
-                  MainForm.Opt_cas_bnk_CaisseTable.FieldValues['date_ocb']:= BonCtrGestionF.DateBonCtrGD.DateTime;
-                  MainForm.Opt_cas_bnk_CaisseTable.FieldValues['time_ocb']:= TimeOf(Now);
-                  MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
-                  MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nom_ocb']:= 'Vente au Comptoir N° '+BonCtrGestionF.NumBonCtrGEdt.Caption;
-                  MainForm.Opt_cas_bnk_CaisseTable.FieldValues['third_ocb']:= BonCtrGestionF.ClientBonCtrGCbx.Text;
-                  MainForm.Opt_cas_bnk_CaisseTable.FieldValues['encaiss_ocb']:= StrToFloat(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll]));
-                  MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=1 ;
-                  MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_cmpt']:=MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
-                  MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nature_ocb']:= MainForm.CompteTable.FieldByName('nature_cmpt').AsBoolean;
-                  MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption) ;
-                  MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_bvctr']:= MainForm.Bonv_ctrTable.FieldValues['code_bvctr'];;
+                  MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_ocb').AsInteger:= CodeOCB;
+                  MainForm.Opt_cas_bnk_CaisseTable.FieldByName('date_ocb').AsDateTime:= BonCtrGestionF.DateBonCtrGD.DateTime;
+                  MainForm.Opt_cas_bnk_CaisseTable.FieldByName('time_ocb').AsDateTime:= TimeOf(Now);
+                  MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_mdpai').AsInteger:=MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
+                  MainForm.Opt_cas_bnk_CaisseTable.FieldByName('nom_ocb').AsString:= 'Vente au Comptoir N° '+BonCtrGestionF.NumBonCtrGEdt.Caption;
+                  MainForm.Opt_cas_bnk_CaisseTable.FieldByName('third_ocb').AsString:= BonCtrGestionF.ClientBonCtrGCbx.Text;
+                  MainForm.Opt_cas_bnk_CaisseTable.FieldByName('encaiss_ocb').Value:= StrToFloat(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll]));
+                  MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_mdpai').AsInteger:=1 ;
+                  MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_cmpt').AsInteger:=MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
+                  MainForm.Opt_cas_bnk_CaisseTable.FieldByName('nature_ocb').AsBoolean:= MainForm.CompteTable.FieldByName('nature_cmpt').AsBoolean;
+                  MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_ur').AsInteger:= StrToInt(MainForm.UserIDLbl.Caption) ;
+                  MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_bvctr').AsInteger:= MainForm.Bonv_ctrTable.FieldByName('code_bvctr').AsInteger;
 
                   MainForm.Opt_cas_bnk_CaisseTable.Post;
                   MainForm.Opt_cas_bnk_CaisseTable.Refresh;
@@ -2467,26 +2474,26 @@ begin
                     MainForm.Opt_cas_bnk_CaisseTable.Filtered:=false;
                     MainForm.Opt_cas_bnk_CaisseTable.Active:=false;
                     MainForm.Opt_cas_bnk_CaisseTable.SQL.Clear;
-                    MainForm.Opt_cas_bnk_CaisseTable.SQL.Text:='SELECT * FROM opt_cas_bnk WHERE code_bvctr ='+IntToStr(MainForm.Bonv_ctrTable.FieldValues['code_bvctr']) ;
+                    MainForm.Opt_cas_bnk_CaisseTable.SQL.Text:='SELECT * FROM opt_cas_bnk WHERE code_bvctr ='+IntToStr(MainForm.Bonv_ctrTable.FieldByName('code_bvctr').AsInteger) ;
                     MainForm.Opt_cas_bnk_CaisseTable.Active:=True;
 
                     if NOT (MainForm.Opt_cas_bnk_CaisseTable.IsEmpty) then
                     begin
 
                     MainForm.Opt_cas_bnk_CaisseTable.Edit;
-                    MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ocb']:= CodeOCB;
-                    MainForm.Opt_cas_bnk_CaisseTable.FieldValues['date_ocb']:= BonCtrGestionF.DateBonCtrGD.DateTime;
-                    MainForm.Opt_cas_bnk_CaisseTable.FieldValues['time_ocb']:= TimeOf(Now);
-                    MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
-                    MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nom_ocb']:= 'Vente au Comptoir N° '+BonCtrGestionF.NumBonCtrGEdt.Caption;
-                    MainForm.Opt_cas_bnk_CaisseTable.FieldValues['third_ocb']:= BonCtrGestionF.ClientBonCtrGCbx.Text;
-                    MainForm.Opt_cas_bnk_CaisseTable.FieldValues['encaiss_ocb']:= StrToFloat(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll]));
-                    MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=1 ;
+                    MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_ocb').AsInteger:= CodeOCB;
+                    MainForm.Opt_cas_bnk_CaisseTable.FieldByName('date_ocb').AsDateTime:= BonCtrGestionF.DateBonCtrGD.DateTime;
+                    MainForm.Opt_cas_bnk_CaisseTable.FieldByName('time_ocb').AsDateTime:= TimeOf(Now);
+                    MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_mdpai').AsInteger:=MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
+                    MainForm.Opt_cas_bnk_CaisseTable.FieldByName('nom_ocb').AsString:= 'Vente au Comptoir N° '+BonCtrGestionF.NumBonCtrGEdt.Caption;
+                    MainForm.Opt_cas_bnk_CaisseTable.FieldByName('third_ocb').AsString:= BonCtrGestionF.ClientBonCtrGCbx.Text;
+                    MainForm.Opt_cas_bnk_CaisseTable.FieldByName('encaiss_ocb').Value:= StrToFloat(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll]));
+                    MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_mdpai').AsInteger:=1 ;
 
-                    MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_cmpt']:=MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
-                    MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nature_ocb']:= MainForm.CompteTable.FieldByName('nature_cmpt').AsBoolean;
-                    MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption) ;
-                    MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_bvctr']:= MainForm.Bonv_ctrTable.FieldValues['code_bvctr'];
+                    MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_cmpt').AsInteger:=MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
+                    MainForm.Opt_cas_bnk_CaisseTable.FieldByName('nature_ocb').AsBoolean:= MainForm.CompteTable.FieldByName('nature_cmpt').AsBoolean;
+                    MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_ur').AsInteger:= StrToInt(MainForm.UserIDLbl.Caption) ;
+                    MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_bvctr').AsInteger:= MainForm.Bonv_ctrTable.FieldByName('code_bvctr').AsInteger;
 
                     MainForm.Opt_cas_bnk_CaisseTable.Post;
                     MainForm.Opt_cas_bnk_CaisseTable.Refresh;
@@ -2504,25 +2511,25 @@ begin
                           if NOT (MainForm.Opt_cas_bnk_CaisseTable.IsEmpty) then
                           begin
                           MainForm.Opt_cas_bnk_CaisseTable.Last;
-                          CodeOCB:= MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ocb'] + 1;
+                          CodeOCB:= MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_ocb').AsInteger + 1;
                           end else
                               begin
                                CodeOCB:= 1;
                               end;
 
                             MainForm.Opt_cas_bnk_CaisseTable.Append;
-                            MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ocb']:= CodeOCB;
-                            MainForm.Opt_cas_bnk_CaisseTable.FieldValues['date_ocb']:= BonCtrGestionF.DateBonCtrGD.DateTime;
-                            MainForm.Opt_cas_bnk_CaisseTable.FieldValues['time_ocb']:= TimeOf(Now);
-                            MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
-                            MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nom_ocb']:= 'Vente au Comptoir N° '+BonCtrGestionF.NumBonCtrGEdt.Caption;
-                            MainForm.Opt_cas_bnk_CaisseTable.FieldValues['third_ocb']:= BonCtrGestionF.ClientBonCtrGCbx.Text;
-                            MainForm.Opt_cas_bnk_CaisseTable.FieldValues['encaiss_ocb']:= StrToFloat(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll]));
-                            MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=1 ;
-                            MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_cmpt']:=MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
-                            MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nature_ocb']:= MainForm.CompteTable.FieldByName('nature_cmpt').AsBoolean;
-                            MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption) ;
-                            MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_bvctr']:= MainForm.Bonv_ctrTable.FieldValues['code_bvctr'];;
+                            MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_ocb').AsInteger:= CodeOCB;
+                            MainForm.Opt_cas_bnk_CaisseTable.FieldByName('date_ocb').AsDateTime:= BonCtrGestionF.DateBonCtrGD.DateTime;
+                            MainForm.Opt_cas_bnk_CaisseTable.FieldByName('time_ocb').AsDateTime:= TimeOf(Now);
+                            MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_mdpai').AsInteger:=MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
+                            MainForm.Opt_cas_bnk_CaisseTable.FieldByName('nom_ocb').AsString:= 'Vente au Comptoir N° '+BonCtrGestionF.NumBonCtrGEdt.Caption;
+                            MainForm.Opt_cas_bnk_CaisseTable.FieldByName('third_ocb').AsString:= BonCtrGestionF.ClientBonCtrGCbx.Text;
+                            MainForm.Opt_cas_bnk_CaisseTable.FieldByName('encaiss_ocb').Value:= StrToFloat(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll]));
+                            MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_mdpai').AsInteger:=1 ;
+                            MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_cmpt').AsInteger:=MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
+                            MainForm.Opt_cas_bnk_CaisseTable.FieldByName('nature_ocb').AsBoolean:= MainForm.CompteTable.FieldByName('nature_cmpt').AsBoolean;
+                            MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_ur').AsInteger:= StrToInt(MainForm.UserIDLbl.Caption) ;
+                            MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_bvctr').AsInteger:= MainForm.Bonv_ctrTable.FieldByName('code_bvctr').AsInteger;
 
                             MainForm.Opt_cas_bnk_CaisseTable.Post;
                             MainForm.Opt_cas_bnk_CaisseTable.Refresh;
@@ -2570,7 +2577,7 @@ begin
   begin
 
      MainForm.Bonv_ctr_listTable.Edit;
-     MainForm.Bonv_ctr_listTable.FieldByName('qut_p').AsFloat:= StrToFloat(TotalVersementSLbl.Caption);
+     MainForm.Bonv_ctr_listTable.FieldByName('qut_p').Value:= StrToFloat(StringReplace(TotalVersementSLbl.Caption, #32, '', [rfReplaceAll]));
      MainForm.Bonv_ctr_listTable.Post;
      MainForm.Bonv_ctr_listTable.Refresh;
 
@@ -2588,7 +2595,7 @@ begin
   begin
 
      MainForm.Bonv_ctr_listTable.Edit;
-     MainForm.Bonv_ctr_listTable.FieldByName('prixvd_p').AsFloat:= StrToFloat(TotalVersementSLbl.Caption);
+     MainForm.Bonv_ctr_listTable.FieldByName('prixvd_p').Value:= StrToFloat(StringReplace(TotalVersementSLbl.Caption, #32, '', [rfReplaceAll]));
      MainForm.Bonv_ctr_listTable.Post;
      MainForm.Bonv_ctr_listTable.Refresh;
 
@@ -2674,43 +2681,43 @@ begin
 
      //     DataModuleF.Bona_comTable.DisableControls;
           DataModuleF.Bona_comTable.Edit;
-          DataModuleF.Bona_comTable.FieldValues['code_f']:= MainForm.SQLQuery.FieldByName('code_f').AsInteger;
-          DataModuleF.Bona_comTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
-          DataModuleF.Bona_comTable.FieldValues['date_bacom']:= BonComAGestionF.DateBonComGD.DateTime;
-          DataModuleF.Bona_comTable.FieldValues['time_bacom']:=TimeOf(Now);
-          DataModuleF.Bona_comTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
-          DataModuleF.Bona_comTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
-          DataModuleF.Bona_comTable.FieldValues['obser_bacom']:= BonComAGestionF.ObserBonComGMem.Text;
-          DataModuleF.Bona_comTable.FieldValues['num_cheque_bacom']:= BonComAGestionF.NChequeBonComGCbx.Text;
-          DataModuleF.Bona_comTable.FieldByName('montht_bacom').AsFloat:= StrToFloat(StringReplace(BonComAGestionF.BonComTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
+          DataModuleF.Bona_comTable.FieldByName('code_f').AsInteger:= MainForm.SQLQuery.FieldByName('code_f').AsInteger;
+          DataModuleF.Bona_comTable.FieldByName('code_ur').AsInteger:= StrToInt(MainForm.UserIDLbl.Caption);
+          DataModuleF.Bona_comTable.FieldByName('date_bacom').AsDateTime:= BonComAGestionF.DateBonComGD.DateTime;
+          DataModuleF.Bona_comTable.FieldByName('time_bacom').AsDateTime:=TimeOf(Now);
+          DataModuleF.Bona_comTable.FieldByName('code_mdpai').AsInteger:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
+          DataModuleF.Bona_comTable.FieldByName('code_cmpt').AsInteger:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
+          DataModuleF.Bona_comTable.FieldByName('obser_bacom').AsWideString:= BonComAGestionF.ObserBonComGMem.Text;
+          DataModuleF.Bona_comTable.FieldByName('num_cheque_bacom').AsString:= BonComAGestionF.NChequeBonComGCbx.Text;
+          DataModuleF.Bona_comTable.FieldByName('montht_bacom').Value:= StrToFloat(StringReplace(BonComAGestionF.BonComTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
           if BonComAGestionF.RemiseBonComGEdt.Text<>'' then
           begin
-          DataModuleF.Bona_comTable.FieldByName('remise_bacom').AsFloat:=StrToFloat(StringReplace(BonComAGestionF.RemiseBonComGEdt.Text, #32, '', [rfReplaceAll]));
+          DataModuleF.Bona_comTable.FieldByName('remise_bacom').Value:=StrToFloat(StringReplace(BonComAGestionF.RemiseBonComGEdt.Text, #32, '', [rfReplaceAll]));
           end else begin
-                    DataModuleF.Bona_comTable.FieldByName('remise_bacom').AsFloat:=0;
+                    DataModuleF.Bona_comTable.FieldByName('remise_bacom').Value:=0;
                    end;
 
-          DataModuleF.Bona_comTable.FieldByName('montver_bacom').AsFloat:=StrToFloat(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll]));
-          DataModuleF.Bona_comTable.FieldByName('montttc_bacom').AsFloat:=StrToFloat(StringReplace(BonComAGestionF.BonComTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
+          DataModuleF.Bona_comTable.FieldByName('montver_bacom').Value:=StrToFloat(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll]));
+          DataModuleF.Bona_comTable.FieldByName('montttc_bacom').Value:=StrToFloat(StringReplace(BonComAGestionF.BonComTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
           DataModuleF.Bona_comTable.FieldByName('valider_bacom').AsBoolean:= True;
           DataModuleF.Bona_comTable.FieldByName('bon_or_no_bacom').AsBoolean:= True;
 
-          if (LowerCase(BonComAGestionF.ModePaieBonComGCbx.Text)='esp�ce') OR (LowerCase(BonComAGestionF.ModePaieBonComGCbx.Text)='espece') then
+          if (LowerCase(BonComAGestionF.ModePaieBonComGCbx.Text)='espèce') OR (LowerCase(BonComAGestionF.ModePaieBonComGCbx.Text)='espece') then
           begin
-           DataModuleF.Bona_comTable.FieldValues['code_mdpai']:=1 ;
+           DataModuleF.Bona_comTable.FieldByName('code_mdpai').AsInteger:=1 ;
           end;
-           if (LowerCase(BonComAGestionF.ModePaieBonComGCbx.Text)='ch�que') OR (LowerCase(BonComAGestionF.ModePaieBonComGCbx.Text)='cheque') then
+           if (LowerCase(BonComAGestionF.ModePaieBonComGCbx.Text)='chèque') OR (LowerCase(BonComAGestionF.ModePaieBonComGCbx.Text)='cheque') then
           begin
-           DataModuleF.Bona_comTable.FieldValues['code_mdpai']:=2 ;
+           DataModuleF.Bona_comTable.FieldByName('code_mdpai').AsInteger:=2 ;
           end;
-          if (LowerCase(BonComAGestionF.ModePaieBonComGCbx.Text)='� terme' ) OR (LowerCase(BonComAGestionF.ModePaieBonComGCbx.Text)='a terme' )
+          if (LowerCase(BonComAGestionF.ModePaieBonComGCbx.Text)='à terme' ) OR (LowerCase(BonComAGestionF.ModePaieBonComGCbx.Text)='a terme' )
              OR (LowerCase(BonComAGestionF.ModePaieBonComGCbx.Text)='� terme' ) then
           begin
-           DataModuleF.Bona_comTable.FieldValues['code_mdpai']:=3 ;
+           DataModuleF.Bona_comTable.FieldByName('code_mdpai').AsInteger:=3 ;
           end;
           if (LowerCase(BonComAGestionF.ModePaieBonComGCbx.Text)='virement' ) then
           begin
-           DataModuleF.Bona_comTable.FieldValues['code_mdpai']:=4 ;
+           DataModuleF.Bona_comTable.FieldByName('code_mdpai').AsInteger:=4 ;
           end;
 
           DataModuleF.Bona_comTable.Post;
@@ -2725,44 +2732,44 @@ begin
              if NOT (MainForm.RegfournisseurTable.IsEmpty) then
             begin
             MainForm.RegfournisseurTable.Last;
-            CodeRF:= MainForm.RegfournisseurTable.FieldValues['code_rf'] + 1;
+            CodeRF:= MainForm.RegfournisseurTable.FieldByName('code_rf').AsInteger + 1;
             end else
                 begin
                  CodeRF:= 1;
                 end;
 
             MainForm.RegfournisseurTable.Append;
-            MainForm.RegfournisseurTable.FieldValues['code_rf']:= CodeRF;
-            MainForm.RegfournisseurTable.FieldValues['code_bacom']:= DataModuleF.Bona_comTable.FieldValues['code_bacom'];
-            MainForm.RegfournisseurTable.FieldValues['nom_rf']:= BonComAGestionF.NumBonComGEdt.Caption;
-            MainForm.RegfournisseurTable.FieldValues['code_f']:= MainForm.SQLQuery.FieldByName('code_f').AsInteger;
-            MainForm.RegfournisseurTable.FieldValues['date_rf']:= DateOf(Today);
-            MainForm.RegfournisseurTable.FieldValues['time_rf']:=TimeOf(Now);
-            MainForm.RegfournisseurTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
-            MainForm.RegfournisseurTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
-            MainForm.RegfournisseurTable.FieldValues['obser_rf']:= BonComAGestionF.ObserBonComGMem.Text;
-            MainForm.RegfournisseurTable.FieldValues['num_cheque_rf']:= BonComAGestionF.NChequeBonComGCbx.Text;
-            MainForm.RegfournisseurTable.FieldValues['bon_or_no_rf']:= 5;
-            MainForm.RegfournisseurTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
+            MainForm.RegfournisseurTable.FieldByName('code_rf').AsInteger:= CodeRF;
+            MainForm.RegfournisseurTable.FieldByName('code_bacom').AsInteger:= DataModuleF.Bona_comTable.FieldByName('code_bacom').AsInteger;
+            MainForm.RegfournisseurTable.FieldByName('nom_rf').AsString:= BonComAGestionF.NumBonComGEdt.Caption;
+            MainForm.RegfournisseurTable.FieldByName('code_f').AsInteger:= MainForm.SQLQuery.FieldByName('code_f').AsInteger;
+            MainForm.RegfournisseurTable.FieldByName('date_rf').AsDateTime:= DateOf(Today);
+            MainForm.RegfournisseurTable.FieldByName('time_rf').AsDateTime:=TimeOf(Now);
+            MainForm.RegfournisseurTable.FieldByName('code_mdpai').AsInteger:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
+            MainForm.RegfournisseurTable.FieldByName('code_cmpt').AsInteger:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
+            MainForm.RegfournisseurTable.FieldByName('obser_rf').AsWideString:= BonComAGestionF.ObserBonComGMem.Text;
+            MainForm.RegfournisseurTable.FieldByName('num_cheque_rf').AsString:= BonComAGestionF.NChequeBonComGCbx.Text;
+            MainForm.RegfournisseurTable.FieldByName('bon_or_no_rf').AsInteger:= 5;
+            MainForm.RegfournisseurTable.FieldByName('code_ur').AsInteger:= StrToInt(MainForm.UserIDLbl.Caption);
 
-            MainForm.RegfournisseurTable.FieldByName('montver_rf').AsFloat:=StrToFloat(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll]));
+            MainForm.RegfournisseurTable.FieldByName('montver_rf').Value:=StrToFloat(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll]));
 
-            if (LowerCase(BonComAGestionF.ModePaieBonComGCbx.Text)='esp�ce') OR (LowerCase(BonComAGestionF.ModePaieBonComGCbx.Text)='espece') then
+            if (LowerCase(BonComAGestionF.ModePaieBonComGCbx.Text)='espèce') OR (LowerCase(BonComAGestionF.ModePaieBonComGCbx.Text)='espece') then
             begin
-             MainForm.RegfournisseurTable.FieldValues['code_mdpai']:=1 ;
+             MainForm.RegfournisseurTable.FieldByName('code_mdpai').AsInteger:=1 ;
             end;
-             if (LowerCase(BonComAGestionF.ModePaieBonComGCbx.Text)='ch�que') OR (LowerCase(BonComAGestionF.ModePaieBonComGCbx.Text)='cheque') then
+             if (LowerCase(BonComAGestionF.ModePaieBonComGCbx.Text)='chèque') OR (LowerCase(BonComAGestionF.ModePaieBonComGCbx.Text)='cheque') then
             begin
-             MainForm.RegfournisseurTable.FieldValues['code_mdpai']:=2 ;
+             MainForm.RegfournisseurTable.FieldByName('code_mdpai').AsInteger:=2 ;
             end;
-            if (LowerCase(BonComAGestionF.ModePaieBonComGCbx.Text)='� terme' ) OR (LowerCase(BonComAGestionF.ModePaieBonComGCbx.Text)='a terme' )
+            if (LowerCase(BonComAGestionF.ModePaieBonComGCbx.Text)='à terme' ) OR (LowerCase(BonComAGestionF.ModePaieBonComGCbx.Text)='a terme' )
                OR (LowerCase(BonComAGestionF.ModePaieBonComGCbx.Text)='� terme' ) then
             begin
-             MainForm.RegfournisseurTable.FieldValues['code_mdpai']:=3 ;
+             MainForm.RegfournisseurTable.FieldByName('code_mdpai').AsInteger:=3 ;
             end;
             if (LowerCase(BonComAGestionF.ModePaieBonComGCbx.Text)='virement' ) then
             begin
-             MainForm.RegfournisseurTable.FieldValues['code_mdpai']:=4 ;
+             MainForm.RegfournisseurTable.FieldByName('code_mdpai').AsInteger:=4 ;
             end;
 
             MainForm.RegfournisseurTable.Post;
@@ -2773,42 +2780,42 @@ begin
                     MainForm.RegfournisseurTable.DisableControls;
                     MainForm.RegfournisseurTable.Active:=false;
                     MainForm.RegfournisseurTable.SQL.Clear;
-                    MainForm.RegfournisseurTable.SQL.Text:='SELECT * FROM regfournisseur WHERE code_bacom ='+IntToStr(DataModuleF.Bona_comTable.FieldValues['code_bacom']);
+                    MainForm.RegfournisseurTable.SQL.Text:='SELECT * FROM regfournisseur WHERE code_bacom ='+IntToStr(DataModuleF.Bona_comTable.FieldByName('code_bacom').AsInteger);
                     MainForm.RegfournisseurTable.Active:=True;
 
                  if NOT (MainForm.RegfournisseurTable.IsEmpty) then
                   begin
                   MainForm.RegfournisseurTable.Edit;
-                  MainForm.RegfournisseurTable.FieldValues['code_bacom']:= DataModuleF.Bona_comTable.FieldValues['code_bacom'];
-                  MainForm.RegfournisseurTable.FieldValues['nom_rf']:= BonComAGestionF.NumBonComGEdt.Caption;
-                  MainForm.RegfournisseurTable.FieldValues['code_f']:= MainForm.SQLQuery.FieldByName('code_f').AsInteger;
-                  MainForm.RegfournisseurTable.FieldValues['date_rf']:= BonComAGestionF.DateBonComGD.DateTime;
-                  MainForm.RegfournisseurTable.FieldValues['time_rf']:=TimeOf(Now);
-                  MainForm.RegfournisseurTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
-                  MainForm.RegfournisseurTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
-                  MainForm.RegfournisseurTable.FieldValues['obser_rf']:= BonComAGestionF.ObserBonComGMem.Text;
-                  MainForm.RegfournisseurTable.FieldValues['num_cheque_rf']:= BonComAGestionF.NChequeBonComGCbx.Text;
-                  MainForm.RegfournisseurTable.FieldValues['bon_or_no_rf']:= 5;
-                  MainForm.RegfournisseurTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
+                  MainForm.RegfournisseurTable.FieldByName('code_bacom').AsInteger:= DataModuleF.Bona_comTable.FieldByName('code_bacom').AsInteger;
+                  MainForm.RegfournisseurTable.FieldByName('nom_rf').AsString:= BonComAGestionF.NumBonComGEdt.Caption;
+                  MainForm.RegfournisseurTable.FieldByName('code_f').AsInteger:= MainForm.SQLQuery.FieldByName('code_f').AsInteger;
+                  MainForm.RegfournisseurTable.FieldByName('date_rf').AsDateTime:= BonComAGestionF.DateBonComGD.DateTime;
+                  MainForm.RegfournisseurTable.FieldByName('time_rf').AsDateTime:=TimeOf(Now);
+                  MainForm.RegfournisseurTable.FieldByName('code_mdpai').AsInteger:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
+                  MainForm.RegfournisseurTable.FieldByName('code_cmpt').AsInteger:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
+                  MainForm.RegfournisseurTable.FieldByName('obser_rf').AsWideString:= BonComAGestionF.ObserBonComGMem.Text;
+                  MainForm.RegfournisseurTable.FieldByName('num_cheque_rf').AsString:= BonComAGestionF.NChequeBonComGCbx.Text;
+                  MainForm.RegfournisseurTable.FieldByName('bon_or_no_rf').AsInteger:= 5;
+                  MainForm.RegfournisseurTable.FieldByName('code_ur').AsInteger:= StrToInt(MainForm.UserIDLbl.Caption);
 
-                  MainForm.RegfournisseurTable.FieldByName('montver_rf').AsFloat:=StrToFloat(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll]));
+                  MainForm.RegfournisseurTable.FieldByName('montver_rf').Value:=StrToFloat(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll]));
 
-                  if (LowerCase(BonComAGestionF.ModePaieBonComGCbx.Text)='esp�ce') OR (LowerCase(BonComAGestionF.ModePaieBonComGCbx.Text)='espece') then
+                  if (LowerCase(BonComAGestionF.ModePaieBonComGCbx.Text)='espèce') OR (LowerCase(BonComAGestionF.ModePaieBonComGCbx.Text)='espece') then
                   begin
-                   MainForm.RegfournisseurTable.FieldValues['code_mdpai']:=1 ;
+                   MainForm.RegfournisseurTable.FieldByName('code_mdpai').AsInteger:=1 ;
                   end;
-                   if (LowerCase(BonComAGestionF.ModePaieBonComGCbx.Text)='ch�que') OR (LowerCase(BonComAGestionF.ModePaieBonComGCbx.Text)='cheque') then
+                   if (LowerCase(BonComAGestionF.ModePaieBonComGCbx.Text)='chèque') OR (LowerCase(BonComAGestionF.ModePaieBonComGCbx.Text)='cheque') then
                   begin
-                   MainForm.RegfournisseurTable.FieldValues['code_mdpai']:=2 ;
+                   MainForm.RegfournisseurTable.FieldByName('code_mdpai').AsInteger:=2 ;
                   end;
-                  if (LowerCase(BonComAGestionF.ModePaieBonComGCbx.Text)='� terme' ) OR (LowerCase(BonComAGestionF.ModePaieBonComGCbx.Text)='a terme' )
+                  if (LowerCase(BonComAGestionF.ModePaieBonComGCbx.Text)='à terme' ) OR (LowerCase(BonComAGestionF.ModePaieBonComGCbx.Text)='a terme' )
                      OR (LowerCase(BonComAGestionF.ModePaieBonComGCbx.Text)='� terme' ) then
                   begin
-                   MainForm.RegfournisseurTable.FieldValues['code_mdpai']:=3 ;
+                   MainForm.RegfournisseurTable.FieldByName('code_mdpai').AsInteger:=3 ;
                   end;
                   if (LowerCase(BonComAGestionF.ModePaieBonComGCbx.Text)='virement' ) then
                   begin
-                   MainForm.RegfournisseurTable.FieldValues['code_mdpai']:=4 ;
+                   MainForm.RegfournisseurTable.FieldByName('code_mdpai').AsInteger:=4 ;
                   end;
 
                   MainForm.RegfournisseurTable.Post;
@@ -2824,44 +2831,44 @@ begin
                                 if NOT (MainForm.RegfournisseurTable.IsEmpty) then
                             begin
                             MainForm.RegfournisseurTable.Last;
-                            CodeRF:= MainForm.RegfournisseurTable.FieldValues['code_rf'] + 1;
+                            CodeRF:= MainForm.RegfournisseurTable.FieldByName('code_rf').AsInteger + 1;
                             end else
                                 begin
                                  CodeRF:= 1;
                                 end;
 
                             MainForm.RegfournisseurTable.Append;
-                            MainForm.RegfournisseurTable.FieldValues['code_rf']:= CodeRF;
-                            MainForm.RegfournisseurTable.FieldValues['code_bacom']:= DataModuleF.Bona_comTable.FieldValues['code_bacom'];
-                            MainForm.RegfournisseurTable.FieldValues['nom_rf']:= BonComAGestionF.NumBonComGEdt.Caption;
-                            MainForm.RegfournisseurTable.FieldValues['code_f']:= MainForm.SQLQuery.FieldByName('code_f').AsInteger;
-                            MainForm.RegfournisseurTable.FieldValues['date_rf']:= BonComAGestionF.DateBonComGD.DateTime;;
-                            MainForm.RegfournisseurTable.FieldValues['time_rf']:=TimeOf(Now);
-                            MainForm.RegfournisseurTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
-                            MainForm.RegfournisseurTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
-                            MainForm.RegfournisseurTable.FieldValues['obser_rf']:= BonComAGestionF.ObserBonComGMem.Text;
-                            MainForm.RegfournisseurTable.FieldValues['num_cheque_rf']:= BonComAGestionF.NChequeBonComGCbx.Text;
-                            MainForm.RegfournisseurTable.FieldValues['bon_or_no_rf']:= 5;
-                            MainForm.RegfournisseurTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
+                            MainForm.RegfournisseurTable.FieldByName('code_rf').AsInteger:= CodeRF;
+                            MainForm.RegfournisseurTable.FieldByName('code_bacom').AsInteger:= DataModuleF.Bona_comTable.FieldByName('code_bacom').AsInteger;
+                            MainForm.RegfournisseurTable.FieldByName('nom_rf').AsString:= BonComAGestionF.NumBonComGEdt.Caption;
+                            MainForm.RegfournisseurTable.FieldByName('code_f').AsInteger:= MainForm.SQLQuery.FieldByName('code_f').AsInteger;
+                            MainForm.RegfournisseurTable.FieldByName('date_rf').AsDateTime:= BonComAGestionF.DateBonComGD.DateTime;;
+                            MainForm.RegfournisseurTable.FieldByName('time_rf').AsDateTime:=TimeOf(Now);
+                            MainForm.RegfournisseurTable.FieldByName('code_mdpai').AsInteger:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
+                            MainForm.RegfournisseurTable.FieldByName('code_cmpt').AsInteger:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
+                            MainForm.RegfournisseurTable.FieldByName('obser_rf').AsWideString:= BonComAGestionF.ObserBonComGMem.Text;
+                            MainForm.RegfournisseurTable.FieldByName('num_cheque_rf').AsString:= BonComAGestionF.NChequeBonComGCbx.Text;
+                            MainForm.RegfournisseurTable.FieldByName('bon_or_no_rf').AsInteger:= 5;
+                            MainForm.RegfournisseurTable.FieldByName('code_ur').AsInteger:= StrToInt(MainForm.UserIDLbl.Caption);
 
-                            MainForm.RegfournisseurTable.FieldByName('montver_rf').AsFloat:=StrToFloat(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll]));
+                            MainForm.RegfournisseurTable.FieldByName('montver_rf').Value:=StrToFloat(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll]));
 
-                            if (LowerCase(BonComAGestionF.ModePaieBonComGCbx.Text)='esp�ce') OR (LowerCase(BonComAGestionF.ModePaieBonComGCbx.Text)='espece') then
+                            if (LowerCase(BonComAGestionF.ModePaieBonComGCbx.Text)='espèce') OR (LowerCase(BonComAGestionF.ModePaieBonComGCbx.Text)='espece') then
                             begin
-                             MainForm.RegfournisseurTable.FieldValues['code_mdpai']:=1 ;
+                             MainForm.RegfournisseurTable.FieldByName('code_mdpai').AsInteger:=1 ;
                             end;
-                             if (LowerCase(BonComAGestionF.ModePaieBonComGCbx.Text)='ch�que') OR (LowerCase(BonComAGestionF.ModePaieBonComGCbx.Text)='cheque') then
+                             if (LowerCase(BonComAGestionF.ModePaieBonComGCbx.Text)='chèque') OR (LowerCase(BonComAGestionF.ModePaieBonComGCbx.Text)='cheque') then
                             begin
-                             MainForm.RegfournisseurTable.FieldValues['code_mdpai']:=2 ;
+                             MainForm.RegfournisseurTable.FieldByName('code_mdpai').AsInteger:=2 ;
                             end;
-                            if (LowerCase(BonComAGestionF.ModePaieBonComGCbx.Text)='� terme' ) OR (LowerCase(BonComAGestionF.ModePaieBonComGCbx.Text)='a terme' )
+                            if (LowerCase(BonComAGestionF.ModePaieBonComGCbx.Text)='à terme' ) OR (LowerCase(BonComAGestionF.ModePaieBonComGCbx.Text)='a terme' )
                                OR (LowerCase(BonComAGestionF.ModePaieBonComGCbx.Text)='� terme' ) then
                             begin
-                             MainForm.RegfournisseurTable.FieldValues['code_mdpai']:=3 ;
+                             MainForm.RegfournisseurTable.FieldByName('code_mdpai').AsInteger:=3 ;
                             end;
                             if (LowerCase(BonComAGestionF.ModePaieBonComGCbx.Text)='virement' ) then
                             begin
-                             MainForm.RegfournisseurTable.FieldValues['code_mdpai']:=4 ;
+                             MainForm.RegfournisseurTable.FieldByName('code_mdpai').AsInteger:=4 ;
                             end;
 
                             MainForm.RegfournisseurTable.Post;
@@ -2878,7 +2885,7 @@ begin
           end;
 
           MainForm.SQLQuery.Edit;
-          MainForm.SQLQuery.FieldByName('credit_f').AsFloat:=
+          MainForm.SQLQuery.FieldByName('credit_f').Value:=
           ((StrToFloat(StringReplace(BonComAGestionF.BonComGFourNEWCredit.Caption, #32, '', [rfReplaceAll]))));
           MainForm.SQLQuery.Post;
 
@@ -2902,43 +2909,43 @@ begin
             if NOT (MainForm.Opt_cas_bnk_CaisseTable.IsEmpty) then
             begin
             MainForm.Opt_cas_bnk_CaisseTable.Last;
-            CodeOCB:= MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ocb'] + 1;
+            CodeOCB:= MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_ocb').AsInteger + 1;
             end else
                 begin
                  CodeOCB:= 1;
                 end;
               MainForm.Opt_cas_bnk_CaisseTable.Append;
-              MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ocb']:= CodeOCB;
-              MainForm.Opt_cas_bnk_CaisseTable.FieldValues['date_ocb']:= BonComAGestionF.DateBonComGD.DateTime;;
-              MainForm.Opt_cas_bnk_CaisseTable.FieldValues['time_ocb']:= TimeOf(Now);
-              MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
-              MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nom_ocb']:= 'Versement au Fournisseur pièce N° '+BonComAGestionF.NumBonComGEdt.Caption;
-              MainForm.Opt_cas_bnk_CaisseTable.FieldValues['third_ocb']:= BonComAGestionF.FournisseurBonComGCbx.Text;
-      //        MainForm.Opt_cas_bnk_CaisseTable.FieldValues['encaiss_ocb']:= StrToFloat(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll]));
-             MainForm.Opt_cas_bnk_CaisseTable.FieldValues['decaiss_ocb']:= StrToFloat(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll]));
+              MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_ocb').AsInteger:= CodeOCB;
+              MainForm.Opt_cas_bnk_CaisseTable.FieldByName('date_ocb').AsDateTime:= BonComAGestionF.DateBonComGD.DateTime;;
+              MainForm.Opt_cas_bnk_CaisseTable.FieldByName('time_ocb').AsDateTime:= TimeOf(Now);
+              MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_mdpai').AsInteger:=MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
+              MainForm.Opt_cas_bnk_CaisseTable.FieldByName('nom_ocb').AsString:= 'Versement au Fournisseur pièce N° '+BonComAGestionF.NumBonComGEdt.Caption;
+              MainForm.Opt_cas_bnk_CaisseTable.FieldByName('third_ocb').AsString:= BonComAGestionF.FournisseurBonComGCbx.Text;
+      //        MainForm.Opt_cas_bnk_CaisseTable.FieldByName('encaiss_ocb']:= StrToFloat(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll]));
+             MainForm.Opt_cas_bnk_CaisseTable.FieldByName('decaiss_ocb').Value:= StrToFloat(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll]));
 
-               if (LowerCase(BonComAGestionF.ModePaieBoncomGCbx.Text)='esp�ce') OR (LowerCase(BonComAGestionF.ModePaieBoncomGCbx.Text)='espece') then
+               if (LowerCase(BonComAGestionF.ModePaieBoncomGCbx.Text)='espèce') OR (LowerCase(BonComAGestionF.ModePaieBoncomGCbx.Text)='espece') then
               begin
-               MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=1 ;
+               MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_mdpai').AsInteger:=1 ;
               end;
-               if (LowerCase(BonComAGestionF.ModePaieBoncomGCbx.Text)='ch�que') OR (LowerCase(BonComAGestionF.ModePaieBoncomGCbx.Text)='cheque') then
+               if (LowerCase(BonComAGestionF.ModePaieBoncomGCbx.Text)='chèque') OR (LowerCase(BonComAGestionF.ModePaieBoncomGCbx.Text)='cheque') then
               begin
-               MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=2 ;
+               MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_mdpai').AsInteger:=2 ;
               end;
-              if (LowerCase(BonComAGestionF.ModePaieBoncomGCbx.Text)='� terme' ) OR (LowerCase(BonComAGestionF.ModePaieBoncomGCbx.Text)='a terme' )
+              if (LowerCase(BonComAGestionF.ModePaieBoncomGCbx.Text)='à terme' ) OR (LowerCase(BonComAGestionF.ModePaieBoncomGCbx.Text)='a terme' )
                  OR (LowerCase(BonComAGestionF.ModePaieBoncomGCbx.Text)='� terme' ) then
               begin
-               MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=3 ;
+               MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_mdpai').AsInteger:=3 ;
               end;
               if (LowerCase(BonComAGestionF.ModePaieBonComGCbx.Text)='virement' ) then
               begin
-               MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=4 ;
+               MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_mdpai').AsInteger:=4 ;
               end;
 
-              MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_cmpt']:=MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
-              MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nature_ocb']:= MainForm.CompteTable.FieldByName('nature_cmpt').AsBoolean;
-              MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_bacom']:= DataModuleF.Bona_comTable.FieldValues['code_bacom'];
-              MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
+              MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_cmpt').AsInteger:=MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
+              MainForm.Opt_cas_bnk_CaisseTable.FieldByName('nature_ocb').AsBoolean:= MainForm.CompteTable.FieldByName('nature_cmpt').AsBoolean;
+              MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_bacom').AsInteger:= DataModuleF.Bona_comTable.FieldByName('code_bacom').AsInteger;
+              MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_ur').AsInteger:= StrToInt(MainForm.UserIDLbl.Caption);
               MainForm.Opt_cas_bnk_CaisseTable.Post;
               MainForm.Opt_cas_bnk_CaisseTable.Refresh;
               MainForm.Opt_cas_bnk_BankTable.Refresh;
@@ -2955,40 +2962,40 @@ begin
                     MainForm.Opt_cas_bnk_CaisseTable.Filtered:=false;
                     MainForm.Opt_cas_bnk_CaisseTable.Active:=false;
                     MainForm.Opt_cas_bnk_CaisseTable.SQL.Clear;
-                    MainForm.Opt_cas_bnk_CaisseTable.SQL.Text:='SELECT * FROM opt_cas_bnk WHERE code_bacom ='+IntToStr(DataModuleF.Bona_comTable.FieldValues['code_bacom']); ;
+                    MainForm.Opt_cas_bnk_CaisseTable.SQL.Text:='SELECT * FROM opt_cas_bnk WHERE code_bacom ='+IntToStr(DataModuleF.Bona_comTable.FieldByName('code_bacom').AsInteger); ;
                     MainForm.Opt_cas_bnk_CaisseTable.Active:=True;
 
                 if NOT (MainForm.Opt_cas_bnk_CaisseTable.IsEmpty) Then
                 begin
                      MainForm.Opt_cas_bnk_CaisseTable.Edit;
-                     MainForm.Opt_cas_bnk_CaisseTable.FieldValues['date_ocb']:= BonComAGestionF.DateBonComGD.DateTime;;
-                     MainForm.Opt_cas_bnk_CaisseTable.FieldValues['time_ocb']:= TimeOf(Now);
-                     MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
-                     MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nom_ocb']:= 'Versement au Fournisseur pièce N° '+BonComAGestionF.NumBonComGEdt.Caption;
-                     MainForm.Opt_cas_bnk_CaisseTable.FieldValues['third_ocb']:= BonComAGestionF.FournisseurBonComGCbx.Text;
-                     MainForm.Opt_cas_bnk_CaisseTable.FieldValues['decaiss_ocb']:= StrToFloat(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll]));
+                     MainForm.Opt_cas_bnk_CaisseTable.FieldByName('date_ocb').AsDateTime:= BonComAGestionF.DateBonComGD.DateTime;;
+                     MainForm.Opt_cas_bnk_CaisseTable.FieldByName('time_ocb').AsDateTime:= TimeOf(Now);
+                     MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_mdpai').AsInteger:=MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
+                     MainForm.Opt_cas_bnk_CaisseTable.FieldByName('nom_ocb').AsString:= 'Versement au Fournisseur pièce N° '+BonComAGestionF.NumBonComGEdt.Caption;
+                     MainForm.Opt_cas_bnk_CaisseTable.FieldByName('third_ocb').AsString:= BonComAGestionF.FournisseurBonComGCbx.Text;
+                     MainForm.Opt_cas_bnk_CaisseTable.FieldByName('decaiss_ocb').Value:= StrToFloat(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll]));
 
-                       if (LowerCase(BonComAGestionF.ModePaieBoncomGCbx.Text)='esp�ce') OR (LowerCase(BonComAGestionF.ModePaieBoncomGCbx.Text)='espece') then
+                       if (LowerCase(BonComAGestionF.ModePaieBoncomGCbx.Text)='espèce') OR (LowerCase(BonComAGestionF.ModePaieBoncomGCbx.Text)='espece') then
                       begin
-                       MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=1 ;
+                       MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_mdpai').AsInteger:=1 ;
                       end;
-                       if (LowerCase(BonComAGestionF.ModePaieBoncomGCbx.Text)='ch�que') OR (LowerCase(BonComAGestionF.ModePaieBoncomGCbx.Text)='cheque') then
+                       if (LowerCase(BonComAGestionF.ModePaieBoncomGCbx.Text)='chèque') OR (LowerCase(BonComAGestionF.ModePaieBoncomGCbx.Text)='cheque') then
                       begin
-                       MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=2 ;
+                       MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_mdpai').AsInteger:=2 ;
                       end;
-                      if (LowerCase(BonComAGestionF.ModePaieBoncomGCbx.Text)='� terme' ) OR (LowerCase(BonComAGestionF.ModePaieBoncomGCbx.Text)='a terme' )
+                      if (LowerCase(BonComAGestionF.ModePaieBoncomGCbx.Text)='à terme' ) OR (LowerCase(BonComAGestionF.ModePaieBoncomGCbx.Text)='a terme' )
                          OR (LowerCase(BonComAGestionF.ModePaieBoncomGCbx.Text)='� terme' ) then
                       begin
-                       MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=3 ;
+                       MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_mdpai').AsInteger:=3 ;
                       end;
                       if (LowerCase(BonComAGestionF.ModePaieBonComGCbx.Text)='virement' ) then
                       begin
-                       MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=4 ;
+                       MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_mdpai').AsInteger:=4 ;
                       end;
-                      MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_cmpt']:=MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
-                      MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nature_ocb']:= MainForm.CompteTable.FieldByName('nature_cmpt').AsBoolean;
-                      MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_bacom']:= DataModuleF.Bona_comTable.FieldValues['code_bacom'];
-                      MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
+                      MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_cmpt').AsInteger:=MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
+                      MainForm.Opt_cas_bnk_CaisseTable.FieldByName('nature_ocb').AsBoolean:= MainForm.CompteTable.FieldByName('nature_cmpt').AsBoolean;
+                      MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_bacom').AsInteger:= DataModuleF.Bona_comTable.FieldByName('code_bacom').AsInteger;
+                      MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_ur').AsInteger:= StrToInt(MainForm.UserIDLbl.Caption);
                       MainForm.Opt_cas_bnk_CaisseTable.Post;
                       MainForm.Opt_cas_bnk_CaisseTable.Refresh;
                       MainForm.Opt_cas_bnk_BankTable.Refresh;
@@ -3004,42 +3011,42 @@ begin
                       if NOT (MainForm.Opt_cas_bnk_CaisseTable.IsEmpty) then
                       begin
                       MainForm.Opt_cas_bnk_CaisseTable.Last;
-                      CodeOCB:= MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ocb'] + 1;
+                      CodeOCB:= MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_ocb').AsInteger + 1;
                       end else
                           begin
                            CodeOCB:= 1;
                           end;
                         MainForm.Opt_cas_bnk_CaisseTable.Append;
-                        MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ocb']:= CodeOCB;
-                        MainForm.Opt_cas_bnk_CaisseTable.FieldValues['date_ocb']:= BonComAGestionF.DateBonComGD.DateTime;;
-                        MainForm.Opt_cas_bnk_CaisseTable.FieldValues['time_ocb']:= TimeOf(Now);
-                        MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
-                        MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nom_ocb']:= 'Versement au Fournisseur pièce N° '+BonComAGestionF.NumBonComGEdt.Caption;
-                        MainForm.Opt_cas_bnk_CaisseTable.FieldValues['third_ocb']:= BonComAGestionF.FournisseurBonComGCbx.Text;
-                        MainForm.Opt_cas_bnk_CaisseTable.FieldValues['decaiss_ocb']:= StrToFloat(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll]));
+                        MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_ocb').AsInteger:= CodeOCB;
+                        MainForm.Opt_cas_bnk_CaisseTable.FieldByName('date_ocb').AsDateTime:= BonComAGestionF.DateBonComGD.DateTime;;
+                        MainForm.Opt_cas_bnk_CaisseTable.FieldByName('time_ocb').AsDateTime:= TimeOf(Now);
+                        MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_mdpai').AsInteger:=MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
+                        MainForm.Opt_cas_bnk_CaisseTable.FieldByName('nom_ocb').AsString:= 'Versement au Fournisseur pièce N° '+BonComAGestionF.NumBonComGEdt.Caption;
+                        MainForm.Opt_cas_bnk_CaisseTable.FieldByName('third_ocb').AsString:= BonComAGestionF.FournisseurBonComGCbx.Text;
+                        MainForm.Opt_cas_bnk_CaisseTable.FieldByName('decaiss_ocb').Value:= StrToFloat(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll]));
 
-                         if (LowerCase(BonComAGestionF.ModePaieBoncomGCbx.Text)='esp�ce') OR (LowerCase(BonComAGestionF.ModePaieBoncomGCbx.Text)='espece') then
+                         if (LowerCase(BonComAGestionF.ModePaieBoncomGCbx.Text)='espèce') OR (LowerCase(BonComAGestionF.ModePaieBoncomGCbx.Text)='espece') then
                         begin
-                         MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=1 ;
+                         MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_mdpai').AsInteger:=1 ;
                         end;
-                         if (LowerCase(BonComAGestionF.ModePaieBoncomGCbx.Text)='ch�que') OR (LowerCase(BonComAGestionF.ModePaieBoncomGCbx.Text)='cheque') then
+                         if (LowerCase(BonComAGestionF.ModePaieBoncomGCbx.Text)='chèque') OR (LowerCase(BonComAGestionF.ModePaieBoncomGCbx.Text)='cheque') then
                         begin
-                         MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=2 ;
+                         MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_mdpai').AsInteger:=2 ;
                         end;
-                        if (LowerCase(BonComAGestionF.ModePaieBoncomGCbx.Text)='� terme' ) OR (LowerCase(BonComAGestionF.ModePaieBoncomGCbx.Text)='a terme' )
+                        if (LowerCase(BonComAGestionF.ModePaieBoncomGCbx.Text)='à terme' ) OR (LowerCase(BonComAGestionF.ModePaieBoncomGCbx.Text)='a terme' )
                            OR (LowerCase(BonComAGestionF.ModePaieBoncomGCbx.Text)='� terme' ) then
                         begin
-                         MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=3 ;
+                         MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_mdpai').AsInteger:=3 ;
                         end;
                         if (LowerCase(BonComAGestionF.ModePaieBonComGCbx.Text)='virement' ) then
                         begin
-                         MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=4 ;
+                         MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_mdpai').AsInteger:=4 ;
                         end;
 
-                        MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_cmpt']:=MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
-                        MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nature_ocb']:= MainForm.CompteTable.FieldByName('nature_cmpt').AsBoolean;
-                        MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_bacom']:= DataModuleF.Bona_comTable.FieldValues['code_bacom'];
-                        MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
+                        MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_cmpt').AsInteger:=MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
+                        MainForm.Opt_cas_bnk_CaisseTable.FieldByName('nature_ocb').AsBoolean:= MainForm.CompteTable.FieldByName('nature_cmpt').AsBoolean;
+                        MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_bacom').AsInteger:= DataModuleF.Bona_comTable.FieldByName('code_bacom').AsInteger;
+                        MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_ur').AsInteger:= StrToInt(MainForm.UserIDLbl.Caption);
                         MainForm.Opt_cas_bnk_CaisseTable.Post;
                         MainForm.Opt_cas_bnk_CaisseTable.Refresh;
                         MainForm.Opt_cas_bnk_BankTable.Refresh;
@@ -3142,44 +3149,44 @@ begin
           MainForm.CompteTable.Active:=True;
 
           DataModuleF.Bonv_comTable.Edit;
-          DataModuleF.Bonv_comTable.FieldValues['code_c']:= MainForm.SQLQuery.FieldByName('code_c').AsInteger;
-          DataModuleF.Bonv_comTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
+          DataModuleF.Bonv_comTable.FieldByName('code_c').AsInteger:= MainForm.SQLQuery.FieldByName('code_c').AsInteger;
+          DataModuleF.Bonv_comTable.FieldByName('code_ur').AsInteger:= StrToInt(MainForm.UserIDLbl.Caption);
           DataModuleF.Bonv_comTable.FieldByName('date_bvcom').AsDateTime:= BonComVGestionF.DateBonComGD.DateTime;
-          DataModuleF.Bonv_comTable.FieldValues['time_bvcom']:=TimeOf(Now);
-          DataModuleF.Bonv_comTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
-          DataModuleF.Bonv_comTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
-          DataModuleF.Bonv_comTable.FieldValues['obser_bvcom']:= BonComVGestionF.ObserBonComGMem.Text;
-          DataModuleF.Bonv_comTable.FieldValues['num_cheque_bvcom']:= BonComVGestionF.NChequeBonComGCbx.Text;
-          DataModuleF.Bonv_comTable.FieldByName('montaht_bvcom').AsFloat:= StrToFloat(StringReplace(BonComVGestionF.BonComTotalAHTLbl.Caption, #32, '', [rfReplaceAll]));
-          DataModuleF.Bonv_comTable.FieldByName('montht_bvcom').AsFloat:= StrToFloat(StringReplace(BonComVGestionF.BonComTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
+          DataModuleF.Bonv_comTable.FieldByName('time_bvcom').AsDateTime:=TimeOf(Now);
+          DataModuleF.Bonv_comTable.FieldByName('code_mdpai').AsInteger:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
+          DataModuleF.Bonv_comTable.FieldByName('code_cmpt').AsInteger:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
+          DataModuleF.Bonv_comTable.FieldByName('obser_bvcom').AsWideString:= BonComVGestionF.ObserBonComGMem.Text;
+          DataModuleF.Bonv_comTable.FieldByName('num_cheque_bvcom').AsString:= BonComVGestionF.NChequeBonComGCbx.Text;
+          DataModuleF.Bonv_comTable.FieldByName('montaht_bvcom').Value:= StrToFloat(StringReplace(BonComVGestionF.BonComTotalAHTLbl.Caption, #32, '', [rfReplaceAll]));
+          DataModuleF.Bonv_comTable.FieldByName('montht_bvcom').Value:= StrToFloat(StringReplace(BonComVGestionF.BonComTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
           if BonComVGestionF.RemiseBonComGEdt.Text<>'' then
           begin
-          DataModuleF.Bonv_comTable.FieldByName('remise_bvcom').AsFloat:=StrToFloat(StringReplace(BonComVGestionF.RemiseBonComGEdt.Text, #32, '', [rfReplaceAll]));
+          DataModuleF.Bonv_comTable.FieldByName('remise_bvcom').Value:=StrToFloat(StringReplace(BonComVGestionF.RemiseBonComGEdt.Text, #32, '', [rfReplaceAll]));
           end else begin
-                    DataModuleF.Bonv_comTable.FieldByName('remise_bvcom').AsFloat:=0;
+                    DataModuleF.Bonv_comTable.FieldByName('remise_bvcom').Value:=0;
                    end;
 
-          DataModuleF.Bonv_comTable.FieldByName('montver_bvcom').AsFloat:=StrToFloat(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll]));
-          DataModuleF.Bonv_comTable.FieldByName('montttc_bvcom').AsFloat:=StrToFloat(StringReplace(BonComVGestionF.BonComTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
-          DataModuleF.Bonv_comTable.FieldByName('marge_bvcom').AsFloat:=StrToFloat(StringReplace(BonComVGestionF.BonComTotalMargeLbl.Caption, #32, '', [rfReplaceAll]));
+          DataModuleF.Bonv_comTable.FieldByName('montver_bvcom').Value:=StrToFloat(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll]));
+          DataModuleF.Bonv_comTable.FieldByName('montttc_bvcom').Value:=StrToFloat(StringReplace(BonComVGestionF.BonComTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
+          DataModuleF.Bonv_comTable.FieldByName('marge_bvcom').Value:=StrToFloat(StringReplace(BonComVGestionF.BonComTotalMargeLbl.Caption, #32, '', [rfReplaceAll]));
           DataModuleF.Bonv_comTable.FieldByName('valider_bvcom').AsBoolean:= True;
 
-          if (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='esp�ce') OR (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='espece') then
+          if (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='espèce') OR (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='espece') then
           begin
-           DataModuleF.Bonv_comTable.FieldValues['code_mdpai']:=1 ;
+           DataModuleF.Bonv_comTable.FieldByName('code_mdpai').AsInteger:=1 ;
           end;
-           if (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='ch�que') OR (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='cheque') then
+           if (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='chèque') OR (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='cheque') then
           begin
-           DataModuleF.Bonv_comTable.FieldValues['code_mdpai']:=2 ;
+           DataModuleF.Bonv_comTable.FieldByName('code_mdpai').AsInteger:=2 ;
           end;
-          if (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='� terme' ) OR (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='a terme' )
+          if (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='à terme' ) OR (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='a terme' )
              OR (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='� terme' ) then
           begin
-           DataModuleF.Bonv_comTable.FieldValues['code_mdpai']:=3 ;
+           DataModuleF.Bonv_comTable.FieldByName('code_mdpai').AsInteger:=3 ;
           end;
           if (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='virement' ) then
           begin
-           DataModuleF.Bonv_comTable.FieldValues['code_mdpai']:=4 ;
+           DataModuleF.Bonv_comTable.FieldByName('code_mdpai').AsInteger:=4 ;
           end;
 
           DataModuleF.Bonv_comTable.Post;
@@ -3196,44 +3203,44 @@ begin
             if NOT (MainForm.RegclientTable.IsEmpty) then
             begin
             MainForm.RegclientTable.Last;
-            CodeRF:= MainForm.RegclientTable.FieldValues['code_rc'] + 1;
+            CodeRF:= MainForm.RegclientTable.FieldByName('code_rc').AsInteger + 1;
             end else
                 begin
                  CodeRF:= 1;
                 end;
 
             Mainform.Regclienttable.Append;
-            MainForm.RegclientTable.FieldValues['code_rc']:= CodeRF;
-            MainForm.RegclientTable.FieldValues['code_bvcom']:= DataModuleF.Bonv_comTable.FieldValues['code_bvcom'];
-            MainForm.RegclientTable.FieldValues['nom_rc']:= BonComVGestionF.NumBonComGEdt.Caption;
-            MainForm.RegclientTable.FieldValues['code_c']:= MainForm.SQLQuery.FieldByName('code_c').AsInteger;
-            MainForm.RegclientTable.FieldValues['date_rc']:= BonComVGestionF.DateBonComGD.DateTime;
-            MainForm.RegclientTable.FieldValues['time_rc']:=TimeOf(Now);
-            MainForm.RegclientTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
-            MainForm.RegclientTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
-            MainForm.RegclientTable.FieldValues['obser_rc']:= BonComVGestionF.ObserBonComGMem.Text;
-            MainForm.RegclientTable.FieldValues['num_cheque_rc']:= BonComVGestionF.NChequeBonComGCbx.Text;
-            MainForm.RegclientTable.FieldValues['bon_or_no_rc']:= 5;
-            MainForm.RegclientTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
+            MainForm.RegclientTable.FieldByName('code_rc').AsInteger:= CodeRF;
+            MainForm.RegclientTable.FieldByName('code_bvcom').AsInteger:= DataModuleF.Bonv_comTable.FieldByName('code_bvcom').AsInteger;
+            MainForm.RegclientTable.FieldByName('nom_rc').AsString:= BonComVGestionF.NumBonComGEdt.Caption;
+            MainForm.RegclientTable.FieldByName('code_c').AsInteger:= MainForm.SQLQuery.FieldByName('code_c').AsInteger;
+            MainForm.RegclientTable.FieldByName('date_rc').AsDateTime:= BonComVGestionF.DateBonComGD.DateTime;
+            MainForm.RegclientTable.FieldByName('time_rc').AsDateTime:=TimeOf(Now);
+            MainForm.RegclientTable.FieldByName('code_mdpai').AsInteger:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
+            MainForm.RegclientTable.FieldByName('code_cmpt').AsInteger:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
+            MainForm.RegclientTable.FieldByName('obser_rc').AsWideString:= BonComVGestionF.ObserBonComGMem.Text;
+            MainForm.RegclientTable.FieldByName('num_cheque_rc').AsString:= BonComVGestionF.NChequeBonComGCbx.Text;
+            MainForm.RegclientTable.FieldByName('bon_or_no_rc').AsInteger:= 5;
+            MainForm.RegclientTable.FieldByName('code_ur').AsInteger:= StrToInt(MainForm.UserIDLbl.Caption);
 
-            MainForm.RegclientTable.FieldByName('montver_rc').AsFloat:=StrToFloat(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll]));
+            MainForm.RegclientTable.FieldByName('montver_rc').Value:=StrToFloat(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll]));
 
-            if (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='esp�ce') OR (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='espece') then
+            if (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='espèce') OR (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='espece') then
             begin
-             MainForm.RegclientTable.FieldValues['code_mdpai']:=1 ;
+             MainForm.RegclientTable.FieldByName('code_mdpai').AsInteger:=1 ;
             end;
-             if (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='ch�que') OR (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='cheque') then
+             if (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='chèque') OR (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='cheque') then
             begin
-             MainForm.RegclientTable.FieldValues['code_mdpai']:=2 ;
+             MainForm.RegclientTable.FieldByName('code_mdpai').AsInteger:=2 ;
             end;
-            if (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='� terme' ) OR (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='a terme' )
+            if (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='à terme' ) OR (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='a terme' )
                OR (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='� terme' ) then
             begin
-             MainForm.RegclientTable.FieldValues['code_mdpai']:=3 ;
+             MainForm.RegclientTable.FieldByName('code_mdpai').AsInteger:=3 ;
             end;
             if (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='virement' ) then
             begin
-             MainForm.RegclientTable.FieldValues['code_mdpai']:=4 ;
+             MainForm.RegclientTable.FieldByName('code_mdpai').AsInteger:=4 ;
             end;
 
             MainForm.RegclientTable.Post;
@@ -3245,42 +3252,42 @@ begin
                 MainForm.RegclientTable.DisableControls;
                 MainForm.RegclientTable.Active:=false;
                 MainForm.RegclientTable.SQL.Clear;
-                MainForm.RegclientTable.SQL.Text:='SELECT * FROM regclient WHERE code_bvcom ='+IntToStr(DataModuleF.Bonv_comTable.FieldValues['code_bvcom']) ;
+                MainForm.RegclientTable.SQL.Text:='SELECT * FROM regclient WHERE code_bvcom ='+IntToStr(DataModuleF.Bonv_comTable.FieldByName('code_bvcom').AsInteger) ;
                 MainForm.RegclientTable.Active:=True;
 
                 if NOT (MainForm.RegclientTable.IsEmpty) then
                 begin
                   MainForm.RegclientTable.Edit;
-                  MainForm.RegclientTable.FieldValues['code_bvcom']:= DataModuleF.Bonv_comTable.FieldValues['code_bvcom'];
-                  MainForm.RegclientTable.FieldValues['nom_rc']:= BonComVGestionF.NumBonComGEdt.Caption;
-                  MainForm.RegclientTable.FieldValues['code_c']:= MainForm.SQLQuery.FieldByName('code_c').AsInteger;
-                  MainForm.RegclientTable.FieldValues['date_rc']:= BonComVGestionF.DateBonComGD.DateTime;
-                  MainForm.RegclientTable.FieldValues['time_rc']:=TimeOf(Now);
-                  MainForm.RegclientTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
-                  MainForm.RegclientTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
-                  MainForm.RegclientTable.FieldValues['obser_rc']:= BonComVGestionF.ObserBonComGMem.Text;
-                  MainForm.RegclientTable.FieldValues['num_cheque_rc']:= BonComVGestionF.NChequeBonComGCbx.Text;
-                  MainForm.RegclientTable.FieldValues['bon_or_no_rc']:= 5;
-                  MainForm.RegclientTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
+                  MainForm.RegclientTable.FieldByName('code_bvcom').AsInteger:= DataModuleF.Bonv_comTable.FieldByName('code_bvcom').AsInteger;
+                  MainForm.RegclientTable.FieldByName('nom_rc').AsString:= BonComVGestionF.NumBonComGEdt.Caption;
+                  MainForm.RegclientTable.FieldByName('code_c').AsInteger:= MainForm.SQLQuery.FieldByName('code_c').AsInteger;
+                  MainForm.RegclientTable.FieldByName('date_rc').AsDateTime:= BonComVGestionF.DateBonComGD.DateTime;
+                  MainForm.RegclientTable.FieldByName('time_rc').AsDateTime:=TimeOf(Now);
+                  MainForm.RegclientTable.FieldByName('code_mdpai').AsInteger:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
+                  MainForm.RegclientTable.FieldByName('code_cmpt').AsInteger:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
+                  MainForm.RegclientTable.FieldByName('obser_rc').AsWideString:= BonComVGestionF.ObserBonComGMem.Text;
+                  MainForm.RegclientTable.FieldByName('num_cheque_rc').AsString:= BonComVGestionF.NChequeBonComGCbx.Text;
+                  MainForm.RegclientTable.FieldByName('bon_or_no_rc').AsInteger:= 5;
+                  MainForm.RegclientTable.FieldByName('code_ur').AsInteger:= StrToInt(MainForm.UserIDLbl.Caption);
 
-                  MainForm.RegclientTable.FieldByName('montver_rc').AsFloat:=StrToFloat(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll]));
+                  MainForm.RegclientTable.FieldByName('montver_rc').Value:=StrToFloat(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll]));
 
-                  if (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='esp�ce') OR (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='espece') then
+                  if (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='espèce') OR (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='espece') then
                   begin
-                   MainForm.RegclientTable.FieldValues['code_mdpai']:=1 ;
+                   MainForm.RegclientTable.FieldByName('code_mdpai').AsInteger:=1 ;
                   end;
-                   if (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='ch�que') OR (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='cheque') then
+                   if (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='chèque') OR (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='cheque') then
                   begin
-                   MainForm.RegclientTable.FieldValues['code_mdpai']:=2 ;
+                   MainForm.RegclientTable.FieldByName('code_mdpai').AsInteger:=2 ;
                   end;
-                  if (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='� terme' ) OR (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='a terme' )
+                  if (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='à terme' ) OR (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='a terme' )
                      OR (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='� terme' ) then
                   begin
-                   MainForm.RegclientTable.FieldValues['code_mdpai']:=3 ;
+                   MainForm.RegclientTable.FieldByName('code_mdpai').AsInteger:=3 ;
                   end;
                   if (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='virement' ) then
                   begin
-                   MainForm.RegclientTable.FieldValues['code_mdpai']:=4 ;
+                   MainForm.RegclientTable.FieldByName('code_mdpai').AsInteger:=4 ;
                   end;
 
                   MainForm.RegclientTable.Post;
@@ -3296,44 +3303,44 @@ begin
                       if NOT (MainForm.RegclientTable.IsEmpty) then
                       begin
                       MainForm.RegclientTable.Last;
-                      CodeRF:= MainForm.RegclientTable.FieldValues['code_rc'] + 1;
+                      CodeRF:= MainForm.RegclientTable.FieldByName('code_rc').AsInteger + 1;
                       end else
                           begin
                            CodeRF:= 1;
                           end;
 
                       Mainform.Regclienttable.Append;
-                      MainForm.RegclientTable.FieldValues['code_rc']:= CodeRF;
-                      MainForm.RegclientTable.FieldValues['code_bvcom']:= DataModuleF.Bonv_comTable.FieldValues['code_bvcom'];
-                      MainForm.RegclientTable.FieldValues['nom_rc']:= BonComVGestionF.NumBonComGEdt.Caption;
-                      MainForm.RegclientTable.FieldValues['code_c']:= MainForm.SQLQuery.FieldByName('code_c').AsInteger;
-                      MainForm.RegclientTable.FieldValues['date_rc']:= BonComVGestionF.DateBonComGD.DateTime;
-                      MainForm.RegclientTable.FieldValues['time_rc']:=TimeOf(Now);
-                      MainForm.RegclientTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
-                      MainForm.RegclientTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
-                      MainForm.RegclientTable.FieldValues['obser_rc']:= BonComVGestionF.ObserBonComGMem.Text;
-                      MainForm.RegclientTable.FieldValues['num_cheque_rc']:= BonComVGestionF.NChequeBonComGCbx.Text;
-                      MainForm.RegclientTable.FieldValues['bon_or_no_rc']:= 5;
-                      MainForm.RegclientTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
+                      MainForm.RegclientTable.FieldByName('code_rc').AsInteger:= CodeRF;
+                      MainForm.RegclientTable.FieldByName('code_bvcom').AsInteger:= DataModuleF.Bonv_comTable.FieldByName('code_bvcom').AsInteger;
+                      MainForm.RegclientTable.FieldByName('nom_rc').AsString:= BonComVGestionF.NumBonComGEdt.Caption;
+                      MainForm.RegclientTable.FieldByName('code_c').AsInteger:= MainForm.SQLQuery.FieldByName('code_c').AsInteger;
+                      MainForm.RegclientTable.FieldByName('date_rc').AsDateTime:= BonComVGestionF.DateBonComGD.DateTime;
+                      MainForm.RegclientTable.FieldByName('time_rc').AsDateTime:=TimeOf(Now);
+                      MainForm.RegclientTable.FieldByName('code_mdpai').AsInteger:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
+                      MainForm.RegclientTable.FieldByName('code_cmpt').AsInteger:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
+                      MainForm.RegclientTable.FieldByName('obser_rc').AsWideString:= BonComVGestionF.ObserBonComGMem.Text;
+                      MainForm.RegclientTable.FieldByName('num_cheque_rc').AsString:= BonComVGestionF.NChequeBonComGCbx.Text;
+                      MainForm.RegclientTable.FieldByName('bon_or_no_rc').AsInteger:= 5;
+                      MainForm.RegclientTable.FieldByName('code_ur').AsInteger:= StrToInt(MainForm.UserIDLbl.Caption);
 
-                      MainForm.RegclientTable.FieldByName('montver_rc').AsFloat:=StrToFloat(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll]));
+                      MainForm.RegclientTable.FieldByName('montver_rc').Value:=StrToFloat(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll]));
 
-                      if (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='esp�ce') OR (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='espece') then
+                      if (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='espèce') OR (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='espece') then
                       begin
-                       MainForm.RegclientTable.FieldValues['code_mdpai']:=1 ;
+                       MainForm.RegclientTable.FieldByName('code_mdpai').AsInteger:=1 ;
                       end;
-                       if (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='ch�que') OR (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='cheque') then
+                       if (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='chèque') OR (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='cheque') then
                       begin
-                       MainForm.RegclientTable.FieldValues['code_mdpai']:=2 ;
+                       MainForm.RegclientTable.FieldByName('code_mdpai').AsInteger:=2 ;
                       end;
-                      if (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='� terme' ) OR (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='a terme' )
+                      if (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='à terme' ) OR (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='a terme' )
                          OR (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='� terme' ) then
                       begin
-                       MainForm.RegclientTable.FieldValues['code_mdpai']:=3 ;
+                       MainForm.RegclientTable.FieldByName('code_mdpai').AsInteger:=3 ;
                       end;
                       if (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='virement' ) then
                       begin
-                       MainForm.RegclientTable.FieldValues['code_mdpai']:=4 ;
+                       MainForm.RegclientTable.FieldByName('code_mdpai').AsInteger:=4 ;
                       end;
 
                       MainForm.RegclientTable.Post;
@@ -3356,7 +3363,7 @@ begin
           if  MainForm.SQLQuery.FieldByName('code_c').AsInteger <> 1 then
           begin
           MainForm.SQLQuery.Edit;
-          MainForm.SQLQuery.FieldByName('credit_c').AsFloat:=
+          MainForm.SQLQuery.FieldByName('credit_c').Value:=
           ((StrToFloat(StringReplace(BonComVGestionF.BonComGClientNEWCredit.Caption, #32, '', [rfReplaceAll]))));
           MainForm.SQLQuery.Post;
           end;
@@ -3381,43 +3388,43 @@ begin
                 if NOT (MainForm.Opt_cas_bnk_CaisseTable.IsEmpty) then
                 begin
                 MainForm.Opt_cas_bnk_CaisseTable.Last;
-                CodeOCB:= MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ocb'] + 1;
+                CodeOCB:= MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_ocb').AsInteger + 1;
                 end else
                     begin
                      CodeOCB:= 1;
                     end;
                   MainForm.Opt_cas_bnk_CaisseTable.Append;
-                  MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ocb']:= CodeOCB;
-                  MainForm.Opt_cas_bnk_CaisseTable.FieldValues['date_ocb']:= BonComVGestionF.DateBonComGD.DateTime;
-                  MainForm.Opt_cas_bnk_CaisseTable.FieldValues['time_ocb']:= TimeOf(Now);
-                  MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
-                  MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nom_ocb']:= 'Règlement  Pièce N° '+BonComVGestionF.NumBonComGEdt.Caption;
-                  MainForm.Opt_cas_bnk_CaisseTable.FieldValues['third_ocb']:= BonComVGestionF.ClientBonComGCbx.Text;
-                  MainForm.Opt_cas_bnk_CaisseTable.FieldValues['encaiss_ocb']:= StrToFloat(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll]));
-          //        MainForm.Opt_cas_bnk_CaisseTable.FieldValues['decaiss_ocb']:= ;
+                  MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_ocb').AsInteger:= CodeOCB;
+                  MainForm.Opt_cas_bnk_CaisseTable.FieldByName('date_ocb').AsDateTime:= BonComVGestionF.DateBonComGD.DateTime;
+                  MainForm.Opt_cas_bnk_CaisseTable.FieldByName('time_ocb').AsDateTime:= TimeOf(Now);
+                  MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_mdpai').AsInteger:=MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
+                  MainForm.Opt_cas_bnk_CaisseTable.FieldByName('nom_ocb').AsString:= 'Règlement  Pièce N° '+BonComVGestionF.NumBonComGEdt.Caption;
+                  MainForm.Opt_cas_bnk_CaisseTable.FieldByName('third_ocb').AsString:= BonComVGestionF.ClientBonComGCbx.Text;
+                  MainForm.Opt_cas_bnk_CaisseTable.FieldByName('encaiss_ocb').Value:= StrToFloat(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll]));
+          //        MainForm.Opt_cas_bnk_CaisseTable.FieldByName('decaiss_ocb']:= ;
 
-                   if (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='esp�ce') OR (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='espece') then
+                   if (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='espèce') OR (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='espece') then
                   begin
-                   MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=1 ;
+                   MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_mdpai').AsInteger:=1 ;
                   end;
-                   if (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='ch�que') OR (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='cheque') then
+                   if (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='chèque') OR (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='cheque') then
                   begin
-                   MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=2 ;
+                   MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_mdpai').AsInteger:=2 ;
                   end;
-                  if (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='� terme' ) OR (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='a terme' )
+                  if (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='à terme' ) OR (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='a terme' )
                      OR (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='� terme' ) then
                   begin
-                   MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=3 ;
+                   MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_mdpai').AsInteger:=3 ;
                   end;
                   if (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='virement' ) then
                   begin
-                   MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=4 ;
+                   MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_mdpai').AsInteger:=4 ;
                   end;
 
-                  MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_cmpt']:=MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
-                  MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nature_ocb']:= MainForm.CompteTable.FieldByName('nature_cmpt').AsBoolean;
-                  MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_bvcom']:= DataModuleF.Bonv_comTable.FieldByName('code_bvcom').AsInteger;
-                  MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
+                  MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_cmpt').AsInteger:=MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
+                  MainForm.Opt_cas_bnk_CaisseTable.FieldByName('nature_ocb').AsBoolean:= MainForm.CompteTable.FieldByName('nature_cmpt').AsBoolean;
+                  MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_bvcom').AsInteger:= DataModuleF.Bonv_comTable.FieldByName('code_bvcom').AsInteger;
+                  MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_ur').AsInteger:= StrToInt(MainForm.UserIDLbl.Caption);
 
                   MainForm.Opt_cas_bnk_CaisseTable.Post;
                   MainForm.Opt_cas_bnk_CaisseTable.Refresh;
@@ -3442,36 +3449,36 @@ begin
                      begin
 
                       MainForm.Opt_cas_bnk_CaisseTable.Edit;
-                      MainForm.Opt_cas_bnk_CaisseTable.FieldValues['date_ocb']:= BonComVGestionF.DateBonComGD.DateTime;
-                      MainForm.Opt_cas_bnk_CaisseTable.FieldValues['time_ocb']:= TimeOf(Now);
-                      MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
-                      MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nom_ocb']:= 'Règlement  Pièce N° '+BonComVGestionF.NumBonComGEdt.Caption;
-                      MainForm.Opt_cas_bnk_CaisseTable.FieldValues['third_ocb']:= BonComVGestionF.ClientBonComGCbx.Text;
-                      MainForm.Opt_cas_bnk_CaisseTable.FieldValues['encaiss_ocb']:= StrToFloat(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll]));
-              //        MainForm.Opt_cas_bnk_CaisseTable.FieldValues['decaiss_ocb']:= ;
+                      MainForm.Opt_cas_bnk_CaisseTable.FieldByName('date_ocb').AsDateTime:= BonComVGestionF.DateBonComGD.DateTime;
+                      MainForm.Opt_cas_bnk_CaisseTable.FieldByName('time_ocb').AsDateTime:= TimeOf(Now);
+                      MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_mdpai').AsInteger:=MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
+                      MainForm.Opt_cas_bnk_CaisseTable.FieldByName('nom_ocb').AsString:= 'Règlement  Pièce N° '+BonComVGestionF.NumBonComGEdt.Caption;
+                      MainForm.Opt_cas_bnk_CaisseTable.FieldByName('third_ocb').AsString:= BonComVGestionF.ClientBonComGCbx.Text;
+                      MainForm.Opt_cas_bnk_CaisseTable.FieldByName('encaiss_ocb').Value:= StrToFloat(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll]));
+              //        MainForm.Opt_cas_bnk_CaisseTable.FieldByName('decaiss_ocb']:= ;
 
-                       if (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='esp�ce') OR (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='espece') then
+                       if (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='espèce') OR (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='espece') then
                       begin
-                       MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=1 ;
+                       MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_mdpai').AsInteger:=1 ;
                       end;
-                       if (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='ch�que') OR (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='cheque') then
+                       if (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='chèque') OR (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='cheque') then
                       begin
-                       MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=2 ;
+                       MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_mdpai').AsInteger:=2 ;
                       end;
-                      if (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='� terme' ) OR (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='a terme' )
+                      if (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='à terme' ) OR (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='a terme' )
                          OR (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='� terme' ) then
                       begin
-                       MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=3 ;
+                       MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_mdpai').AsInteger:=3 ;
                       end;
                       if (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='virement' ) then
                       begin
-                       MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=4 ;
+                       MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_mdpai').AsInteger:=4 ;
                       end;
 
-                      MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_cmpt']:=MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
-                      MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nature_ocb']:= MainForm.CompteTable.FieldByName('nature_cmpt').AsBoolean;
-                      MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_bvcom']:= DataModuleF.Bonv_comTable.FieldByName('code_bvcom').AsInteger;
-                      MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
+                      MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_cmpt').AsInteger:=MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
+                      MainForm.Opt_cas_bnk_CaisseTable.FieldByName('nature_ocb').AsBoolean:= MainForm.CompteTable.FieldByName('nature_cmpt').AsBoolean;
+                      MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_bvcom').AsInteger:= DataModuleF.Bonv_comTable.FieldByName('code_bvcom').AsInteger;
+                      MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_ur').AsInteger:= StrToInt(MainForm.UserIDLbl.Caption);
                       MainForm.Opt_cas_bnk_CaisseTable.Post;
                       MainForm.Opt_cas_bnk_CaisseTable.Refresh;
                       MainForm.Opt_cas_bnk_BankTable.Refresh;
@@ -3486,44 +3493,44 @@ begin
                         if  NOT (MainForm.Opt_cas_bnk_CaisseTable.IsEmpty) then
                       begin
                       MainForm.Opt_cas_bnk_CaisseTable.Last;
-                      CodeOCB:= MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ocb'] + 1;
+                      CodeOCB:= MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_ocb').AsInteger + 1;
                       end else
                           begin
                            CodeOCB:= 1;
                           end;
 
                       MainForm.Opt_cas_bnk_CaisseTable.Append;
-                      MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ocb']:= CodeOCB;
-                      MainForm.Opt_cas_bnk_CaisseTable.FieldValues['date_ocb']:= BonComVGestionF.DateBonComGD.DateTime;
-                      MainForm.Opt_cas_bnk_CaisseTable.FieldValues['time_ocb']:= TimeOf(Now);
-                      MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
-                      MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nom_ocb']:= 'Règlement  Pièce N° '+BonComVGestionF.NumBonComGEdt.Caption;
-                      MainForm.Opt_cas_bnk_CaisseTable.FieldValues['third_ocb']:= BonComVGestionF.ClientBonComGCbx.Text;
-                      MainForm.Opt_cas_bnk_CaisseTable.FieldValues['encaiss_ocb']:= StrToFloat(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll]));
-              //        MainForm.Opt_cas_bnk_CaisseTable.FieldValues['decaiss_ocb']:= ;
+                      MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_ocb').AsInteger:= CodeOCB;
+                      MainForm.Opt_cas_bnk_CaisseTable.FieldByName('date_ocb').AsDateTime:= BonComVGestionF.DateBonComGD.DateTime;
+                      MainForm.Opt_cas_bnk_CaisseTable.FieldByName('time_ocb').AsDateTime:= TimeOf(Now);
+                      MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_mdpai').AsInteger:=MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
+                      MainForm.Opt_cas_bnk_CaisseTable.FieldByName('nom_ocb').AsString:= 'Règlement  Pièce N° '+BonComVGestionF.NumBonComGEdt.Caption;
+                      MainForm.Opt_cas_bnk_CaisseTable.FieldByName('third_ocb').AsString:= BonComVGestionF.ClientBonComGCbx.Text;
+                      MainForm.Opt_cas_bnk_CaisseTable.FieldByName('encaiss_ocb').Value:= StrToFloat(StringReplace(VerVersementSEdt.Text, #32, '', [rfReplaceAll]));
+              //        MainForm.Opt_cas_bnk_CaisseTable.FieldByName('decaiss_ocb']:= ;
 
-                       if (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='esp�ce') OR (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='espece') then
+                       if (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='espèce') OR (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='espece') then
                       begin
-                       MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=1 ;
+                       MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_mdpai').AsInteger:=1 ;
                       end;
-                       if (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='ch�que') OR (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='cheque') then
+                       if (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='chèque') OR (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='cheque') then
                       begin
-                       MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=2 ;
+                       MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_mdpai').AsInteger:=2 ;
                       end;
-                      if (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='� terme' ) OR (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='a terme' )
+                      if (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='à terme' ) OR (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='a terme' )
                          OR (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='� terme' ) then
                       begin
-                       MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=3 ;
+                       MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_mdpai').AsInteger:=3 ;
                       end;
                       if (LowerCase(BonComVGestionF.ModePaieBonComGCbx.Text)='virement' ) then
                       begin
-                       MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_mdpai']:=4 ;
+                       MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_mdpai').AsInteger:=4 ;
                       end;
 
-                      MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_cmpt']:=MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
-                      MainForm.Opt_cas_bnk_CaisseTable.FieldValues['nature_ocb']:= MainForm.CompteTable.FieldByName('nature_cmpt').AsBoolean;
-                      MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_bvcom']:= DataModuleF.Bonv_comTable.FieldByName('code_bvcom').AsInteger;
-                      MainForm.Opt_cas_bnk_CaisseTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
+                      MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_cmpt').AsInteger:=MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
+                      MainForm.Opt_cas_bnk_CaisseTable.FieldByName('nature_ocb').AsBoolean:= MainForm.CompteTable.FieldByName('nature_cmpt').AsBoolean;
+                      MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_bvcom').AsInteger:= DataModuleF.Bonv_comTable.FieldByName('code_bvcom').AsInteger;
+                      MainForm.Opt_cas_bnk_CaisseTable.FieldByName('code_ur').AsInteger:= StrToInt(MainForm.UserIDLbl.Caption);
 
                       MainForm.Opt_cas_bnk_CaisseTable.Post;
                       MainForm.Opt_cas_bnk_CaisseTable.Refresh;
