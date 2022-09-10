@@ -2504,11 +2504,11 @@ procedure TBonComAGestionF.EditBAComBonComGBtnClick(Sender: TObject);
 
 
  // this is to enable the componets to edit the bon
-      MainForm.FournisseurTable.DisableControls;
-      MainForm.FournisseurTable.Active:=false;
-      MainForm.FournisseurTable.SQL.Clear;
-      MainForm.FournisseurTable.SQL.Text:='Select * FROM fournisseur WHERE LOWER(nom_f) LIKE LOWER('+ QuotedStr( FournisseurBonComGCbx.Text )+')'  ;
-      MainForm.FournisseurTable.Active:=True;
+
+      DataModuleF.SQLQuery3.Active:=False;
+      DataModuleF.SQLQuery3.SQL.Clear;
+      DataModuleF.SQLQuery3.SQL.Text:='Select credit_f FROM fournisseur WHERE LOWER(nom_f) LIKE LOWER('+ QuotedStr( FournisseurBonComGCbx.Text )+')'  ;
+      DataModuleF.SQLQuery3.Active:=True;
   EnableBonCom;
  // this is to unvalider the bon
   begin
@@ -2519,22 +2519,20 @@ procedure TBonComAGestionF.EditBAComBonComGBtnClick(Sender: TObject);
 
 // use this code to rest the old credit to the to the last time before he pay anything in that bon so you can aclculate again
   BonComGFourOLDCredit.Caption:=
-  CurrToStrF((((MainForm.FournisseurTable.FieldValues['credit_f'])-(StringReplace(BonComResteLbl.Caption, #32, '', [rfReplaceAll])))),ffNumber,2);
+  FloatToStrF((((DataModuleF.SQLQuery3.FieldByName('credit_f').AsFloat)- StrToFloat(StringReplace(BonComResteLbl.Caption, #32, '', [rfReplaceAll])))),ffNumber,14,2);
 
-        begin
-      MainForm.FournisseurTable.Edit;
-      MainForm.FournisseurTable.FieldByName('credit_f').AsFloat:= (MainForm.FournisseurTable.FieldByName('credit_f').AsFloat) - (DataModuleF.Bona_comTable.FieldByName('MontantRes').AsFloat);
-      MainForm.FournisseurTable.Post;
-      end;
+    begin
+      DataModuleF.SQLQuery3.Edit;
+      DataModuleF.SQLQuery3.FieldByName('credit_f').AsFloat:= (DataModuleF.SQLQuery3.FieldByName('credit_f').AsFloat) - (DataModuleF.Bona_comTable.FieldByName('MontantRes').AsFloat);
+      DataModuleF.SQLQuery3.Post;
+    end;
 
   BonComRegleLbl.Caption:=FloatToStrF(0,ffNumber,14,2) ;
   BonComResteLbl.Caption:= BonComTotalTTCLbl.Caption;
 
-      MainForm.FournisseurTable.Active:=false;
-      MainForm.FournisseurTable.SQL.Clear;
-      MainForm.FournisseurTable.SQL.Text:='Select * FROM fournisseur '  ;
-      MainForm.FournisseurTable.Active:=True;
-      MainForm.FournisseurTable.EnableControls;
+      DataModuleF.SQLQuery3.Active:=false;
+      DataModuleF.SQLQuery3.SQL.Clear;
+      MainForm.FournisseurTable.Refresh;
   //-------------------------------------------
   
   //== This is to delete produit from store after editing bon

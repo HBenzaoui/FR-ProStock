@@ -2597,7 +2597,7 @@ procedure TBonRecGestionF.EditBARecBonRecGBtnClick(Sender: TObject);
  // this is to enable the componets to edit the bon
       DataModuleF.SQLQuery3.Active:=False;
       DataModuleF.SQLQuery3.SQL.Clear;
-      DataModuleF.SQLQuery3.SQL.Text:='Select * FROM fournisseur WHERE LOWER(nom_f) LIKE LOWER('+ QuotedStr( FournisseurBonRecGCbx.Text )+')'  ;
+      DataModuleF.SQLQuery3.SQL.Text:='Select credit_f FROM fournisseur WHERE LOWER(nom_f) LIKE LOWER('+ QuotedStr( FournisseurBonRecGCbx.Text )+')'  ;
       DataModuleF.SQLQuery3.Active:=True;
   EnableBonRec;
  // this is to unvalider the bon
@@ -2620,11 +2620,9 @@ procedure TBonRecGestionF.EditBARecBonRecGBtnClick(Sender: TObject);
   BonRecRegleLbl.Caption:=FloatToStrF(0,ffNumber,14,2) ;
   BonRecResteLbl.Caption:= BonRecTotalTTCLbl.Caption;
 
-      DataModuleF.SQLQuery3.Active:=false;
+     DataModuleF.SQLQuery3.Active:=false;
      DataModuleF.SQLQuery3.SQL.Clear;
-//      MainForm.FournisseurTable.SQL.Text:='Select * FROM fournisseur '  ;
-//      MainForm.FournisseurTable.Active:=True;
-      MainForm.FournisseurTable.Refresh;
+     MainForm.FournisseurTable.Refresh;
   //-------------------------------------------
     begin
            MainForm.ProduitTable.DisableControls;

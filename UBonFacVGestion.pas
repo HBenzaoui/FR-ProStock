@@ -721,11 +721,11 @@ begin
             MainForm.Opt_cas_bnk_CaisseTable.Refresh ;
            end;
 
-      MainForm.ClientTable.DisableControls;
-      MainForm.ClientTable.Active:=false;
-      MainForm.ClientTable.SQL.Clear;
-      MainForm.ClientTable.SQL.Text:='Select * FROM client WHERE LOWER(nom_c) LIKE LOWER('+ QuotedStr( ClientBonFacVGCbx.Text )+')'  ;
-      MainForm.ClientTable.Active:=True;
+
+      DataModuleF.SQLQuery3.Active:=False;
+      DataModuleF.SQLQuery3.SQL.Clear;
+      DataModuleF.SQLQuery3.SQL.Text:='Select credit_c FROM client WHERE LOWER(nom_c) LIKE LOWER('+ QuotedStr( ClientBonFacVGCbx.Text )+')'  ;
+      DataModuleF.SQLQuery3.Active:=True;
  // this is to enable the componets to edit the bon
 
   EnableBonFacV;
@@ -740,18 +740,16 @@ begin
 
 // use this code to rest the old credit to the to the last time before he pay anything in that bon so you can aclculate again
   BonFacVGClientOLDCredit.Caption:=
-  CurrToStrF((((MainForm.ClientTable.FieldValues['credit_c'])-(StringReplace(BonFacVResteLbl.Caption, #32, '', [rfReplaceAll])))),ffNumber,2);
+  FloatToStrF((((DataModuleF.SQLQuery3.FieldByName('credit_c').AsFloat)- StrToFloat(StringReplace(BonFacVResteLbl.Caption, #32, '', [rfReplaceAll])))),ffNumber,14,2);
 
   BonFacVRegleLbl.Caption:=FloatToStrF(0,ffNumber,14,2) ;
   BonFacVResteLbl.Caption:= BonFacVTotalTTCLbl.Caption;
 
 
 
-      MainForm.ClientTable.Active:=false;
-      MainForm.ClientTable.SQL.Clear;
-      MainForm.ClientTable.SQL.Text:='Select * FROM client '  ;
-      MainForm.ClientTable.Active:=True;
-      MainForm.ClientTable.EnableControls ;
+      DataModuleF.SQLQuery3.Active:=false;
+      DataModuleF.SQLQuery3.SQL.Clear;
+      MainForm.ClientTable.Refresh ;
 
  //----------------------------------------
 

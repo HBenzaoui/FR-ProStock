@@ -4607,7 +4607,7 @@ begin
 //    MainForm.ClientTable.DisableControls;
     MainForm.SQLQuery4.Active := false;
     MainForm.SQLQuery4.SQL.Clear;
-    MainForm.SQLQuery4.SQL.Text := 'Select * FROM client WHERE LOWER(nom_c) LIKE LOWER(' + QuotedStr(ClientBonCtrGCbx.Text) + ')';
+    MainForm.SQLQuery4.SQL.Text := 'Select credit_c FROM client WHERE LOWER(nom_c) LIKE LOWER(' + QuotedStr(ClientBonCtrGCbx.Text) + ')';
     MainForm.SQLQuery4.Active := True;
 
 // use this code to rest the old credit to the to the last time before he pay anything in that bon so you can aclculate again

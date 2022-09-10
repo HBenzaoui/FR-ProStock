@@ -3521,11 +3521,17 @@ begin
               MainForm.Opt_cas_bnk_CaisseTable.Refresh ;
            end;
 
-      MainForm.ClientTable.DisableControls;
-      MainForm.ClientTable.Active:=false;
-      MainForm.ClientTable.SQL.Clear;
-      MainForm.ClientTable.SQL.Text:='Select * FROM client WHERE LOWER(nom_c) LIKE LOWER('+ QuotedStr( ClientBonLivGCbx.Text )+')'  ;
-      MainForm.ClientTable.Active:=True;
+//      MainForm.ClientTable.DisableControls;
+//      MainForm.ClientTable.Active:=false;
+//      MainForm.ClientTable.SQL.Clear;
+//      MainForm.ClientTable.SQL.Text:='Select * FROM client WHERE LOWER(nom_c) LIKE LOWER('+ QuotedStr( ClientBonLivGCbx.Text )+')'  ;
+//      MainForm.ClientTable.Active:=True;
+
+
+      DataModuleF.SQLQuery3.Active:=False;
+      DataModuleF.SQLQuery3.SQL.Clear;
+      DataModuleF.SQLQuery3.SQL.Text:='Select code_c,credit_c FROM client WHERE LOWER(nom_c) LIKE LOWER('+ QuotedStr( ClientBonLivGCbx.Text )+')'  ;  ;
+      DataModuleF.SQLQuery3.Active:=True;
  // this is to enable the componets to edit the bon
 
   EnableBonLiv;
@@ -3540,13 +3546,13 @@ begin
 
 // use this code to rest the old credit to the to the last time before he pay anything in that bon so you can aclculate again
   BonLivGClientOLDCredit.Caption:=
-  FloatToStrF((((MainForm.ClientTable.FieldByName('credit_c').AsFloat) - StrToFloat(StringReplace( BonLivResteLbl.Caption, #32, '', [rfReplaceAll])))),ffNumber,14,2);
+  FloatToStrF((((DataModuleF.SQLQuery3.FieldByName('credit_c').AsFloat) - StrToFloat(StringReplace( BonLivResteLbl.Caption, #32, '', [rfReplaceAll])))),ffNumber,14,2);
 
-      if  (MainForm.ClientTable.FieldByName('code_c').AsInteger <> 1) then
+      if  (DataModuleF.SQLQuery3.FieldByName('code_c').AsInteger <> 1) then
       begin
-      MainForm.ClientTable.Edit;
-      MainForm.ClientTable.FieldByName('credit_c').AsFloat:= (MainForm.ClientTable.FieldByName('credit_c').AsFloat) - (MainForm.Bonv_livTable.FieldByName('MontantRes').AsFloat);
-      MainForm.ClientTable.Post;
+      DataModuleF.SQLQuery3.Edit;
+      DataModuleF.SQLQuery3.FieldByName('credit_c').AsFloat:= (DataModuleF.SQLQuery3.FieldByName('credit_c').AsFloat) - (MainForm.Bonv_livTable.FieldByName('MontantRes').AsFloat);
+      DataModuleF.SQLQuery3.Post;
       end;
 
   BonLivRegleLbl.Caption:=FloatToStrF(0,ffNumber,14,2) ;
@@ -3554,11 +3560,9 @@ begin
 
 
 
-      MainForm.ClientTable.Active:=false;
-      MainForm.ClientTable.SQL.Clear;
-      MainForm.ClientTable.SQL.Text:='Select * FROM client '  ;
-      MainForm.ClientTable.Active:=True;
-      MainForm.ClientTable.EnableControls ;
+      DataModuleF.SQLQuery3.Active:=false;
+      DataModuleF.SQLQuery3.SQL.Clear;
+      MainForm.ClientTable.Refresh ;
 
  //----------------------------------------
 

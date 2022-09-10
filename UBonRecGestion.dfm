@@ -396,7 +396,7 @@ object BonRecGestionF: TBonRecGestionF
       Pen.Color = 15970832
     end
     object EditBARecBonRecGBtn: TAdvToolButton
-      Left = 589
+      Left = 587
       Top = 18
       Width = 100
       Height = 30

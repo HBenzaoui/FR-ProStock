@@ -991,11 +991,10 @@ begin
             MainForm.Opt_cas_bnk_CaisseTable.Refresh ;
            end;
 
-      MainForm.FournisseurTable.DisableControls;
-      MainForm.FournisseurTable.Active:=false;
-      MainForm.FournisseurTable.SQL.Clear;
-      MainForm.FournisseurTable.SQL.Text:='Select * FROM fournisseur WHERE LOWER(nom_f) LIKE LOWER('+ QuotedStr( FourBonFacAGCbx.Text )+')'  ;
-      MainForm.FournisseurTable.Active:=True;
+      DataModuleF.SQLQuery3.Active:=False;
+      DataModuleF.SQLQuery3.SQL.Clear;
+      DataModuleF.SQLQuery3.SQL.Text:='Select credit_f FROM fournisseur WHERE LOWER(nom_f) LIKE LOWER('+ QuotedStr( FourBonFacAGCbx.Text )+')'  ;
+      DataModuleF.SQLQuery3.Active:=True;
  // this is to enable the componets to edit the bon
 
   EnableBonFacA;
@@ -1009,16 +1008,14 @@ begin
 
 // use this code to rest the old credit to the to the last time before he pay anything in that bon so you can aclculate again
   BonFacAGFourOLDCredit.Caption:=
-  CurrToStrF((((MainForm.FournisseurTable.FieldValues['credit_f'])-(StringReplace(BonFacAResteLbl.Caption, #32, '', [rfReplaceAll])))),ffNumber,2);
+  FloatToStrF((((DataModuleF.SQLQuery3.FieldByName('credit_f').AsFloat)- StrToFloat(StringReplace(BonFacAResteLbl.Caption, #32, '', [rfReplaceAll])))),ffNumber,14,2);
 
   BonFacARegleLbl.Caption:=FloatToStrF(0,ffNumber,14,2) ;
   BonFacAResteLbl.Caption:= BonFacATotalTTCLbl.Caption;
 
-      MainForm.FournisseurTable.Active:=false;
-      MainForm.FournisseurTable.SQL.Clear;
-      MainForm.FournisseurTable.SQL.Text:='Select * FROM fournisseur '  ;
-      MainForm.FournisseurTable.Active:=True;
-      MainForm.FournisseurTable.EnableControls ;
+      DataModuleF.SQLQuery3.Active:=false;
+      DataModuleF.SQLQuery3.SQL.Clear;
+      MainForm.FournisseurTable.Refresh ;
  //----------------------------------------
       begin
            MainForm.ProduitTable.DisableControls;
