@@ -2631,12 +2631,12 @@ begin
 
 //           ClientBonFacVGCbxChange(Sender);
 //      MainForm.SQLQuery.DisableControls;
-      MainForm.SQLQuery.Active:=false;
-      MainForm.SQLQuery.SQL.Clear;
-      MainForm.SQLQuery.SQL.Text:='Select * FROM client WHERE LOWER(nom_c) LIKE LOWER('+ QuotedStr( ClientBonFacVGCbx.Text )+')'  ;
-      MainForm.SQLQuery.Active:=True;
+      MainForm.SQLQuery4.Active:=false;
+      MainForm.SQLQuery4.SQL.Clear;
+      MainForm.SQLQuery4.SQL.Text:='Select code_c FROM client WHERE LOWER(nom_c) LIKE LOWER('+ QuotedStr( ClientBonFacVGCbx.Text )+')'  ;
+      MainForm.SQLQuery4.Active:=True;
 
-        if (MainForm.SQLQuery.IsEmpty) then
+        if (MainForm.SQLQuery4.IsEmpty) then
         begin
          ClientBonFacVGCbx.Text := '';
          BonFacVGClientOLDCredit.Caption:= FloatToStrF(0,ffNumber,14,2) ;
@@ -2650,8 +2650,8 @@ begin
          exit;
         end;
 
-      MainForm.SQLQuery.Active:=false;
-      MainForm.SQLQuery.SQL.Clear;
+//      MainForm.SQLQuery.Active:=false;
+//      MainForm.SQLQuery.SQL.Clear;
 //      MainForm.SQLQuery/.SQL.Text:='Select * FROM client' ;
 //      MainForm.SQLQuery.Active:=True;
 //      MainForm.SQLQuery.EnableControls;
@@ -2735,10 +2735,10 @@ begin
 //--- this is to set the facture de vente fileds
      begin
 //          MainForm.SQLQuery.DisableControls;
-          MainForm.SQLQuery.Active:=false;
-          MainForm.SQLQuery.SQL.Clear;
-          MainForm.SQLQuery.SQL.Text:='Select * FROM client WHERE LOWER(nom_c) LIKE LOWER('+ QuotedStr(ClientBonFacVGCbx.Text )+')'  ;
-          MainForm.SQLQuery.Active:=True;
+//          MainForm.SQLQuery.Active:=false;
+//          MainForm.SQLQuery.SQL.Clear;
+//          MainForm.SQLQuery.SQL.Text:='Select code_c FROM client WHERE LOWER(nom_c) LIKE LOWER('+ QuotedStr(ClientBonFacVGCbx.Text )+')'  ;
+//          MainForm.SQLQuery.Active:=True;
 
 //          MainForm.Mode_paiementTable.DisableControls;
 //          MainForm.Mode_paiementTable.Active:=false;
@@ -2753,33 +2753,33 @@ begin
 //          MainForm.CompteTable.Active:=True;
 
           MainForm.Bonp_facTable.Edit;
-          MainForm.Bonp_facTable.FieldValues['code_c']:= MainForm.SQLQuery.FieldByName('code_c').AsInteger;
-          MainForm.Bonp_facTable.FieldValues['code_ur']:= StrToInt(MainForm.UserIDLbl.Caption);
+          MainForm.Bonp_facTable.FieldByName('code_c').AsInteger:= MainForm.SQLQuery4.FieldByName('code_c').AsInteger;
+          MainForm.Bonp_facTable.FieldByName('code_ur').AsInteger:= StrToInt(MainForm.UserIDLbl.Caption);
           MainForm.Bonp_facTable.FieldByName('date_bpfac').AsDateTime:= DateBonFacVGD.DateTime;
-          MainForm.Bonp_facTable.FieldValues['time_bpfac']:=TimeOf(Now);
+          MainForm.Bonp_facTable.FieldByName('time_bpfac').AsDateTime:=TimeOf(Now);
 //          MainForm.Bonp_facTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
 //          MainForm.Bonp_facTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
-          MainForm.Bonp_facTable.FieldValues['obser_bpfac']:= ObserBonFacVGMem.Text;
+          MainForm.Bonp_facTable.FieldByName('obser_bpfac').AsWideString:= ObserBonFacVGMem.Text;
 //          MainForm.Bonp_facTable.FieldValues['num_cheque_bvfac']:= NChequeBonFacVGCbx.Text;
-          MainForm.Bonp_facTable.FieldByName('montaht_bpfac').AsFloat:= StrToFloat(StringReplace(BonFacVTotalAHTLbl.Caption, #32, '', [rfReplaceAll]));
-          MainForm.Bonp_facTable.FieldByName('montht_bpfac').AsFloat:= StrToFloat(StringReplace(BonFacVTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
+          MainForm.Bonp_facTable.FieldByName('montaht_bpfac').Value:= StrToFloat(StringReplace(BonFacVTotalAHTLbl.Caption, #32, '', [rfReplaceAll]));
+          MainForm.Bonp_facTable.FieldByName('montht_bpfac').Value:= StrToFloat(StringReplace(BonFacVTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
 
           if TimberBonFacVGEdt.Visible = True then
           begin
-          MainForm.Bonp_facTable.FieldByName('timber_bpfac').AsFloat:= StrToFloat(StringReplace(TimberBonFacVGEdt.Text, #32, '', [rfReplaceAll]));
+          MainForm.Bonp_facTable.FieldByName('timber_bpfac').Value:= StrToFloat(StringReplace(TimberBonFacVGEdt.Text, #32, '', [rfReplaceAll]));
 
           end;
 
           if RemiseBonFAcVGEdt.Text<>'' then
           begin
-          MainForm.Bonp_facTable.FieldByName('remise_bpfac').AsFloat:=StrToFloat(StringReplace(RemiseBonFacVGEdt.Text, #32, '', [rfReplaceAll]));
+          MainForm.Bonp_facTable.FieldByName('remise_bpfac').Value:=StrToFloat(StringReplace(RemiseBonFacVGEdt.Text, #32, '', [rfReplaceAll]));
           end else begin
-                    MainForm.Bonp_facTable.FieldByName('remise_bpfac').AsFloat:=0;
+                    MainForm.Bonp_facTable.FieldByName('remise_bpfac').Value:=0;
                    end;
 
-          MainForm.Bonp_facTable.FieldByName('montver_bpfac').AsFloat:=StrToFloat(StringReplace(BonFacVTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
-          MainForm.Bonp_facTable.FieldByName('montttc_bpfac').AsFloat:=StrToFloat(StringReplace(BonFacVTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
-          MainForm.Bonp_facTable.FieldByName('marge_bpfac').AsFloat:=StrToFloat(StringReplace(BonFacVTotalMargeLbl.Caption, #32, '', [rfReplaceAll]));
+          MainForm.Bonp_facTable.FieldByName('montver_bpfac').Value:=StrToFloat(StringReplace(BonFacVTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
+          MainForm.Bonp_facTable.FieldByName('montttc_bpfac').Value:=StrToFloat(StringReplace(BonFacVTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
+          MainForm.Bonp_facTable.FieldByName('marge_bpfac').Value:=StrToFloat(StringReplace(BonFacVTotalMargeLbl.Caption, #32, '', [rfReplaceAll]));
           MainForm.Bonp_facTable.FieldByName('valider_bpfac').AsBoolean:= True;
 
 //          if (LowerCase(ModePaieBonFacVGCbx.Text)='espèce') OR (LowerCase(ModePaieBonFacVGCbx.Text)='espece') then
@@ -2808,8 +2808,8 @@ begin
 
               //-----------------------------------------------------------------------------------------------------------------------------------------------------------
 
-          MainForm.SQLQuery.Active:=false;
-          MainForm.SQLQuery.SQL.Clear;
+          MainForm.SQLQuery4.Active:=false;
+          MainForm.SQLQuery4.SQL.Clear;
 //          MainForm.SQLQuery.SQL.Text:='Select * FROM client' ;
 //          MainForm.SQLQuery.Active:=True;
 //          MainForm.SQLQuery.EnableControls;

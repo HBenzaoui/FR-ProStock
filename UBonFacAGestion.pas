@@ -1008,7 +1008,7 @@ begin
 
 // use this code to rest the old credit to the to the last time before he pay anything in that bon so you can aclculate again
   BonFacAGFourOLDCredit.Caption:=
-  FloatToStrF((((DataModuleF.SQLQuery3.FieldByName('credit_f').AsFloat)- StrToFloat(StringReplace(BonFacAResteLbl.Caption, #32, '', [rfReplaceAll])))),ffNumber,14,2);
+  FloatToStrF((((DataModuleF.SQLQuery3.FieldByName('credit_f').Value)- StrToFloat(StringReplace(BonFacAResteLbl.Caption, #32, '', [rfReplaceAll])))),ffNumber,14,2);
 
   BonFacARegleLbl.Caption:=FloatToStrF(0,ffNumber,14,2) ;
   BonFacAResteLbl.Caption:= BonFacATotalTTCLbl.Caption;
@@ -1018,66 +1018,66 @@ begin
       MainForm.FournisseurTable.Refresh ;
  //----------------------------------------
       begin
-           MainForm.ProduitTable.DisableControls;
-           MainForm.ProduitTable.Active:=False;
-           MainForm.ProduitTable.SQL.Clear;
-           MainForm.ProduitTable.SQL.Text:='SELECT *, '
-          +' ((prixht_p * tva_p)/100+ prixht_p ) AS PrixATTC, '
-          +' ((prixvd_p * tva_p)/100+ prixvd_p ) AS PrixVTTCD, '
-          +' ((prixvr_p * tva_p)/100+ prixvr_p ) AS PrixVTTCR, '
-          +' ((prixvg_p * tva_p)/100+ prixvg_p ) AS PrixVTTCG, '
-          +' ((prixva_p * tva_p)/100+ prixva_p ) AS PrixVTTCA, '
-          +' ((prixva2_p * tva_p)/100+ prixva2_p ) AS PrixVTTCA2, '
-          +' (qut_p + qutini_p ) AS QutDispo, '
-          +' ((qut_p + qutini_p) * prixht_p ) AS ValueStock '
-          +' FROM produit ' ;
-           MainForm.ProduitTable.Active:=True;
+//           MainForm.ProduitTable.DisableControls;
+//           MainForm.ProduitTable.Active:=False;
+//           MainForm.ProduitTable.SQL.Clear;
+//           MainForm.ProduitTable.SQL.Text:='SELECT *, '
+//          +' ((prixht_p * tva_p)/100+ prixht_p ) AS PrixATTC, '
+//          +' ((prixvd_p * tva_p)/100+ prixvd_p ) AS PrixVTTCD, '
+//          +' ((prixvr_p * tva_p)/100+ prixvr_p ) AS PrixVTTCR, '
+//          +' ((prixvg_p * tva_p)/100+ prixvg_p ) AS PrixVTTCG, '
+//          +' ((prixva_p * tva_p)/100+ prixva_p ) AS PrixVTTCA, '
+//          +' ((prixva2_p * tva_p)/100+ prixva2_p ) AS PrixVTTCA2, '
+//          +' (qut_p + qutini_p ) AS QutDispo, '
+//          +' ((qut_p + qutini_p) * prixht_p ) AS ValueStock '
+//          +' FROM produit ' ;
+//           MainForm.ProduitTable.Active:=True;
+
+
            Mainform.Sqlquery.Active:=False;
            Mainform.Sqlquery.Sql.Clear;
            Mainform.Sqlquery.Sql.Text:='SELECT code_bafacl,code_p,  qut_p, cond_p  FROM bona_fac_list WHERE code_bafac =  '
-                                                 + IntToStr (MainForm.Bona_facTable.FieldValues['code_bafac'])
+                                                 + IntToStr (MainForm.Bona_facTable.FieldByName('code_bafac').AsInteger)
                                                  + 'GROUP BY code_bafacl, code_p, qut_p, cond_p ' ;
            MainForm.SQLQuery.Active:=True;
            MainForm.SQLQuery.First;
            while  NOT (MainForm.SQLQuery.Eof) do
            begin
 
-            MainForm.ProduitTable.Active:=False;
-            MainForm.ProduitTable.SQL.Clear;
-            MainForm.ProduitTable.SQL.Text:='SELECT *, '
-            +' ((prixht_p * tva_p)/100+ prixht_p ) AS PrixATTC, '
-            +' ((prixvd_p * tva_p)/100+ prixvd_p ) AS PrixVTTCD, '
-            +' ((prixvr_p * tva_p)/100+ prixvr_p ) AS PrixVTTCR, '
-            +' ((prixvg_p * tva_p)/100+ prixvg_p ) AS PrixVTTCG, '
-            +' ((prixva_p * tva_p)/100+ prixva_p ) AS PrixVTTCA, '
-            +' ((prixva2_p * tva_p)/100+ prixva2_p ) AS PrixVTTCA2, '
-            +' (qut_p + qutini_p ) AS QutDispo, '
-            +' ((qut_p + qutini_p) * prixht_p ) AS ValueStock '
-            +' FROM produit WHERE code_p = ' +QuotedStr(MainForm.SQLQuery.FieldValues['code_p']) ;
-            MainForm.ProduitTable.Active:=True;
-            MainForm.ProduitTable.Edit;
-            MainForm.ProduitTable.FieldValues['qut_p']:= ( MainForm.ProduitTable.FieldValues['qut_p']
+            MainForm.SQLQuery3.Active:=False;
+            MainForm.SQLQuery3.SQL.Clear;
+            MainForm.SQLQuery3.SQL.Text:='SELECT * FROM produit WHERE code_p = ' +IntToStr(MainForm.SQLQuery.FieldByName('code_p').AsInteger) ;
+            MainForm.SQLQuery3.Active:=True;
+            MainForm.SQLQuery3.Edit;
+            MainForm.SQLQuery3.FieldValues['qut_p']:= ( MainForm.SQLQuery3.FieldValues['qut_p']
                                                          - ((MainForm.SQLQuery.FieldValues['qut_p']) * ((MainForm.SQLQuery.FieldValues['cond_p']))));
 //            MainForm.ProduitTable.FieldValues['prixht_p']:= MainForm.SQLQuery.FieldValues['prixht_p'];
 //            MainForm.ProduitTable.FieldValues['tva_p']:= MainForm.SQLQuery.FieldValues['tva_p'];
-            MainForm.ProduitTable.Post;
+            MainForm.SQLQuery3.Post;
+
+
+
+
             MainForm.SQLQuery.Next;
            end;
 
-            MainForm.ProduitTable.Active:=False;
-           MainForm.ProduitTable.SQL.Clear;
-           MainForm.ProduitTable.SQL.Text:='SELECT *, '
-            +' ((prixht_p * tva_p)/100+ prixht_p ) AS PrixATTC, '
-            +' ((prixvd_p * tva_p)/100+ prixvd_p ) AS PrixVTTCD, '
-            +' ((prixvr_p * tva_p)/100+ prixvr_p ) AS PrixVTTCR, '
-            +' ((prixvg_p * tva_p)/100+ prixvg_p ) AS PrixVTTCG, '
-            +' ((prixva_p * tva_p)/100+ prixva_p ) AS PrixVTTCA, '
-            +' ((prixva2_p * tva_p)/100+ prixva2_p ) AS PrixVTTCA2, '
-            +' (qut_p + qutini_p ) AS QutDispo, '
-            +' ((qut_p + qutini_p) * prixht_p ) AS ValueStock '
-            +' FROM produit ' ;
-           MainForm.ProduitTable.Active:=True;
-           MainForm.ProduitTable.EnableControls;
+           MainForm.SQLQuery3.Active:=False;
+           MainForm.SQLQuery3.SQL.Clear;
+
+//            MainForm.ProduitTable.Active:=False;
+//           MainForm.ProduitTable.SQL.Clear;
+//           MainForm.ProduitTable.SQL.Text:='SELECT *, '
+//            +' ((prixht_p * tva_p)/100+ prixht_p ) AS PrixATTC, '
+//            +' ((prixvd_p * tva_p)/100+ prixvd_p ) AS PrixVTTCD, '
+//            +' ((prixvr_p * tva_p)/100+ prixvr_p ) AS PrixVTTCR, '
+//            +' ((prixvg_p * tva_p)/100+ prixvg_p ) AS PrixVTTCG, '
+//            +' ((prixva_p * tva_p)/100+ prixva_p ) AS PrixVTTCA, '
+//            +' ((prixva2_p * tva_p)/100+ prixva2_p ) AS PrixVTTCA2, '
+//            +' (qut_p + qutini_p ) AS QutDispo, '
+//            +' ((qut_p + qutini_p) * prixht_p ) AS ValueStock '
+//            +' FROM produit ' ;
+//           MainForm.ProduitTable.Active:=True;
+           MainForm.ProduitTable.Refresh;
            MainForm.SQLQuery.Active:=False;
            MainForm.SQLQuery.SQL.Clear;
           MainForm.Bona_facTable.Refresh;
