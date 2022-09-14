@@ -1543,25 +1543,25 @@ procedure TBonRecGestionF.FormCloseQuery(Sender: TObject;
 
               MainForm.Bona_recTable.DisableControls;
               MainForm.Bona_recTable.Edit;
-              MainForm.Bona_recTable.FieldValues['code_f']:= MainForm.FournisseurTable.FieldByName('code_f').AsInteger;
+              MainForm.Bona_recTable.FieldByName('code_f').AsInteger:= MainForm.FournisseurTable.FieldByName('code_f').AsInteger;
               MainForm.Bona_recTable.FieldByName('date_barec').AsDateTime:= DateBonRecGD.DateTime;
-              MainForm.Bona_recTable.FieldValues['time_barec']:=TimeOf(Now);
-              MainForm.Bona_recTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
-              MainForm.Bona_recTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
-              MainForm.Bona_recTable.FieldValues['obser_barec']:= ObserBonRecGMem.Text;
-              MainForm.Bona_recTable.FieldValues['num_cheque_barec']:= NChequeBonRecGCbx.Text;
-              MainForm.Bona_recTable.FieldByName('montht_barec').AsFloat:= StrToFloat(StringReplace(BonRecTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
+              MainForm.Bona_recTable.FieldByName('time_barec').AsDateTime:=TimeOf(Now);
+              MainForm.Bona_recTable.FieldByName('code_mdpai').AsInteger:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
+              MainForm.Bona_recTable.FieldByName('code_cmpt').AsInteger:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
+              MainForm.Bona_recTable.FieldByName('obser_barec').AsWideString:= ObserBonRecGMem.Text;
+              MainForm.Bona_recTable.FieldByName('num_cheque_barec').AsString:= NChequeBonRecGCbx.Text;
+              MainForm.Bona_recTable.FieldByName('montht_barec').Value:= StrToFloat(StringReplace(BonRecTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
 
               if RemiseBonRecGEdt.Text<>'' then
               begin
-                 MainForm.Bona_recTable.FieldByName('remise_barec').AsFloat:=StrToFloat(StringReplace(RemiseBonRecGEdt.Text, #32, '', [rfReplaceAll]));
+                 MainForm.Bona_recTable.FieldByName('remise_barec').Value:=StrToFloat(StringReplace(RemiseBonRecGEdt.Text, #32, '', [rfReplaceAll]));
               end else begin
-                        MainForm.Bona_recTable.FieldByName('remise_barec').AsFloat:=0;
+                        MainForm.Bona_recTable.FieldByName('remise_barec').Value:=0;
                        end;
 
 
-              MainForm.Bona_recTable.FieldByName('montver_barec').AsFloat:=StrToFloat(StringReplace(BonRecRegleLbl.Caption, #32, '', [rfReplaceAll]));
-              MainForm.Bona_recTable.FieldByName('montttc_barec').AsFloat:=StrToFloat(StringReplace(BonRecTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
+              MainForm.Bona_recTable.FieldByName('montver_barec').Value:=StrToFloat(StringReplace(BonRecRegleLbl.Caption, #32, '', [rfReplaceAll]));
+              MainForm.Bona_recTable.FieldByName('montttc_barec').Value:=StrToFloat(StringReplace(BonRecTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
 
               MainForm.Bona_recTable.Post;
               MainForm.Bona_recTable.EnableControls;
@@ -1639,25 +1639,25 @@ procedure TBonRecGestionF.FormCloseQuery(Sender: TObject;
 
           MainForm.Bona_recTable.DisableControls;
           MainForm.Bona_recTable.Edit;
-          MainForm.Bona_recTable.FieldValues['code_f']:= MainForm.FournisseurTable.FieldByName('code_f').AsInteger;
+          MainForm.Bona_recTable.FieldByName('code_f').AsInteger:= MainForm.FournisseurTable.FieldByName('code_f').AsInteger;
           MainForm.Bona_recTable.FieldByName('date_barec').AsDateTime:= DateBonRecGD.DateTime;
-          MainForm.Bona_recTable.FieldValues['time_barec']:=TimeOf(Now);
-          MainForm.Bona_recTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
-          MainForm.Bona_recTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
-          MainForm.Bona_recTable.FieldValues['obser_barec']:= ObserBonRecGMem.Text;
-          MainForm.Bona_recTable.FieldValues['num_cheque_barec']:= NChequeBonRecGCbx.Text;
-          MainForm.Bona_recTable.FieldByName('montht_barec').AsFloat:= StrToFloat(StringReplace(BonRecTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
+          MainForm.Bona_recTable.FieldByName('time_barec').AsDateTime:=TimeOf(Now);
+          MainForm.Bona_recTable.FieldByName('code_mdpai').AsInteger:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
+          MainForm.Bona_recTable.FieldByName('code_cmpt').AsInteger:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
+          MainForm.Bona_recTable.FieldByName('obser_barec').AsWideString:= ObserBonRecGMem.Text;
+          MainForm.Bona_recTable.FieldByName('num_cheque_barec').AsString:= NChequeBonRecGCbx.Text;
+          MainForm.Bona_recTable.FieldByName('montht_barec').Value:= StrToFloat(StringReplace(BonRecTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
 
           if RemiseBonRecGEdt.Text<>'' then
           begin
-             MainForm.Bona_recTable.FieldByName('remise_barec').AsFloat:=StrToFloat(StringReplace(RemiseBonRecGEdt.Text, #32, '', [rfReplaceAll]));
+             MainForm.Bona_recTable.FieldByName('remise_barec').Value:=StrToFloat(StringReplace(RemiseBonRecGEdt.Text, #32, '', [rfReplaceAll]));
           end else begin
-                    MainForm.Bona_recTable.FieldByName('remise_barec').AsFloat:=0;
+                    MainForm.Bona_recTable.FieldByName('remise_barec').Value:=0;
                    end;
 
 
-          MainForm.Bona_recTable.FieldByName('montver_barec').AsFloat:=StrToFloat(StringReplace(BonRecRegleLbl.Caption, #32, '', [rfReplaceAll]));
-          MainForm.Bona_recTable.FieldByName('montttc_barec').AsFloat:=StrToFloat(StringReplace(BonRecTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
+          MainForm.Bona_recTable.FieldByName('montver_barec').Value:=StrToFloat(StringReplace(BonRecRegleLbl.Caption, #32, '', [rfReplaceAll]));
+          MainForm.Bona_recTable.FieldByName('montttc_barec').Value:=StrToFloat(StringReplace(BonRecTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
 
           MainForm.Bona_recTable.Post;
           MainForm.Bona_recTable.EnableControls;

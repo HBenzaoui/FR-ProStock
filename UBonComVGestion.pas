@@ -606,26 +606,26 @@ codeBCC:=DataModuleF.Bonv_comTable.FieldByName('code_bvcom').AsInteger;
 
           DataModuleF.Bonv_comTable.DisableControls;
           DataModuleF.Bonv_comTable.Edit;
-          DataModuleF.Bonv_comTable.FieldValues['code_c']:= MainForm.ClientTable.FieldByName('code_c').AsInteger;
+          DataModuleF.Bonv_comTable.FieldByName('code_c').AsInteger:= MainForm.ClientTable.FieldByName('code_c').AsInteger;
           DataModuleF.Bonv_comTable.FieldByName('date_bvcom').AsDateTime:= DateBonComGD.DateTime;
-          DataModuleF.Bonv_comTable.FieldValues['time_bvcom']:=TimeOf(Now);
-          DataModuleF.Bonv_comTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
-          DataModuleF.Bonv_comTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
-          DataModuleF.Bonv_comTable.FieldValues['obser_bvcom']:= ObserBonComGMem.Text;
-          DataModuleF.Bonv_comTable.FieldValues['num_cheque_bvcom']:= NChequeBonComGCbx.Text;
-          DataModuleF.Bonv_comTable.FieldByName('montht_bvcom').AsFloat:= StrToFloat(StringReplace(BonComTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
-          DataModuleF.Bonv_comTable.FieldByName('montaht_bvcom').AsFloat:= StrToFloat(StringReplace(BonComTotalAHTLbl.Caption, #32, '', [rfReplaceAll]));
+          DataModuleF.Bonv_comTable.FieldByName('time_bvcom').AsDateTime:=TimeOf(Now);
+          DataModuleF.Bonv_comTable.FieldByName('code_mdpai').AsInteger:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
+          DataModuleF.Bonv_comTable.FieldByName('code_cmpt').AsInteger:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
+          DataModuleF.Bonv_comTable.FieldByName('obser_bvcom').AsWideString:= ObserBonComGMem.Text;
+          DataModuleF.Bonv_comTable.FieldByName('num_cheque_bvcom').AsString:= NChequeBonComGCbx.Text;
+          DataModuleF.Bonv_comTable.FieldByName('montht_bvcom').Value:= StrToFloat(StringReplace(BonComTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
+          DataModuleF.Bonv_comTable.FieldByName('montaht_bvcom').Value:= StrToFloat(StringReplace(BonComTotalAHTLbl.Caption, #32, '', [rfReplaceAll]));
 
           if RemiseBonComGEdt.Text<>'' then
           begin
-             DataModuleF.Bonv_comTable.FieldByName('remise_bvcom').AsFloat:=StrToFloat(StringReplace(RemiseBonComGEdt.Text, #32, '', [rfReplaceAll]));
+             DataModuleF.Bonv_comTable.FieldByName('remise_bvcom').Value:=StrToFloat(StringReplace(RemiseBonComGEdt.Text, #32, '', [rfReplaceAll]));
           end else begin
-                    DataModuleF.Bonv_comTable.FieldByName('remise_bvcom').AsFloat:=0;
+                    DataModuleF.Bonv_comTable.FieldByName('remise_bvcom').Value:=0;
                    end;
 
 
-          DataModuleF.Bonv_comTable.FieldByName('montver_bvcom').AsFloat:=StrToFloat(StringReplace(BonComRegleLbl.Caption, #32, '', [rfReplaceAll]));
-          DataModuleF.Bonv_comTable.FieldByName('montttc_bvcom').AsFloat:=StrToFloat(StringReplace(BonComTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
+          DataModuleF.Bonv_comTable.FieldByName('montver_bvcom').Value:=StrToFloat(StringReplace(BonComRegleLbl.Caption, #32, '', [rfReplaceAll]));
+          DataModuleF.Bonv_comTable.FieldByName('montttc_bvcom').Value:=StrToFloat(StringReplace(BonComTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
 
           DataModuleF.Bonv_comTable.Post;
           DataModuleF.Bonv_comTable.EnableControls;
@@ -703,25 +703,25 @@ codeBCC:=DataModuleF.Bonv_comTable.FieldByName('code_bvcom').AsInteger;
 
           DataModuleF.Bonv_comTable.DisableControls;
           DataModuleF.Bonv_comTable.Edit;
-          DataModuleF.Bonv_comTable.FieldValues['code_c']:= MainForm.ClientTable.FieldByName('code_c').AsInteger;
+          DataModuleF.Bonv_comTable.FieldByName('code_c').AsInteger:= MainForm.ClientTable.FieldByName('code_c').AsInteger;
           DataModuleF.Bonv_comTable.FieldByName('date_bvcom').AsDateTime:= DateBonComGD.DateTime;
-          DataModuleF.Bonv_comTable.FieldValues['time_bvcom']:=TimeOf(Now);
-          DataModuleF.Bonv_comTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
-          DataModuleF.Bonv_comTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
-          DataModuleF.Bonv_comTable.FieldValues['obser_bvcom']:= ObserBonComGMem.Text;
-          DataModuleF.Bonv_comTable.FieldValues['num_cheque_bvcom']:= NChequeBonComGCbx.Text;
-          DataModuleF.Bonv_comTable.FieldByName('montht_bvcom').AsFloat:= StrToFloat(StringReplace(BonComTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
+          DataModuleF.Bonv_comTable.FieldByName('time_bvcom').AsDateTime:=TimeOf(Now);
+          DataModuleF.Bonv_comTable.FieldByName('code_mdpai').AsInteger:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
+          DataModuleF.Bonv_comTable.FieldByName('code_cmpt').AsInteger:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
+          DataModuleF.Bonv_comTable.FieldByName('obser_bvcom').AsWideString:= ObserBonComGMem.Text;
+          DataModuleF.Bonv_comTable.FieldByName('num_cheque_bvcom').AsString:= NChequeBonComGCbx.Text;
+          DataModuleF.Bonv_comTable.FieldByName('montht_bvcom').Value:= StrToFloat(StringReplace(BonComTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
 
           if RemiseBonComGEdt.Text<>'' then
           begin
-             DataModuleF.Bonv_comTable.FieldByName('remise_bvcom').AsFloat:=StrToFloat(StringReplace(RemiseBonComGEdt.Text, #32, '', [rfReplaceAll]));
+             DataModuleF.Bonv_comTable.FieldByName('remise_bvcom').Value:=StrToFloat(StringReplace(RemiseBonComGEdt.Text, #32, '', [rfReplaceAll]));
           end else begin
-                    DataModuleF.Bonv_comTable.FieldByName('remise_bvcom').AsFloat:=0;
+                    DataModuleF.Bonv_comTable.FieldByName('remise_bvcom').Value:=0;
                    end;
 
 
-          DataModuleF.Bonv_comTable.FieldByName('montver_bvcom').AsFloat:=StrToFloat(StringReplace(BonComRegleLbl.Caption, #32, '', [rfReplaceAll]));
-          DataModuleF.Bonv_comTable.FieldByName('montttc_bvcom').AsFloat:=StrToFloat(StringReplace(BonComTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
+          DataModuleF.Bonv_comTable.FieldByName('montver_bvcom').Value:=StrToFloat(StringReplace(BonComRegleLbl.Caption, #32, '', [rfReplaceAll]));
+          DataModuleF.Bonv_comTable.FieldByName('montttc_bvcom').Value:=StrToFloat(StringReplace(BonComTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
 
           DataModuleF.Bonv_comTable.Post;
           DataModuleF.Bonv_comTable.EnableControls;

@@ -630,26 +630,26 @@ codeBL:=MainForm.Bonv_livTable.FieldByName('code_bvliv').AsInteger;
 
           MainForm.Bonv_livTable.DisableControls;
           MainForm.Bonv_livTable.Edit;
-          MainForm.Bonv_livTable.FieldValues['code_c']:= MainForm.ClientTable.FieldByName('code_c').AsInteger;
+          MainForm.Bonv_livTable.FieldByName('code_c').AsInteger:= MainForm.ClientTable.FieldByName('code_c').AsInteger;
           MainForm.Bonv_livTable.FieldByName('date_bvliv').AsDateTime:= DateBonLivGD.DateTime;
-          MainForm.Bonv_livTable.FieldValues['time_bvliv']:=TimeOf(Now);
-          MainForm.Bonv_livTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
-          MainForm.Bonv_livTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
-          MainForm.Bonv_livTable.FieldValues['obser_bvliv']:= ObserBonLivGMem.Text;
-          MainForm.Bonv_livTable.FieldValues['num_cheque_bvliv']:= NChequeBonLivGCbx.Text;
-          MainForm.Bonv_livTable.FieldByName('montht_bvliv').AsFloat:= StrToFloat(StringReplace(BonLivTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
-          MainForm.Bonv_livTable.FieldByName('montaht_bvliv').AsFloat:= StrToFloat(StringReplace(BonLivTotalAHTLbl.Caption, #32, '', [rfReplaceAll]));
+          MainForm.Bonv_livTable.FieldByName('time_bvliv').AsDateTime:=TimeOf(Now);
+          MainForm.Bonv_livTable.FieldByName('code_mdpai').AsInteger:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
+          MainForm.Bonv_livTable.FieldByName('code_cmpt').AsInteger:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
+          MainForm.Bonv_livTable.FieldByName('obser_bvliv').AsWideString:= ObserBonLivGMem.Text;
+          MainForm.Bonv_livTable.FieldByName('num_cheque_bvliv').AsString:= NChequeBonLivGCbx.Text;
+          MainForm.Bonv_livTable.FieldByName('montht_bvliv').Value:= StrToFloat(StringReplace(BonLivTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
+          MainForm.Bonv_livTable.FieldByName('montaht_bvliv').Value:= StrToFloat(StringReplace(BonLivTotalAHTLbl.Caption, #32, '', [rfReplaceAll]));
 
           if RemiseBonLivGEdt.Text<>'' then
           begin
-             MainForm.Bonv_livTable.FieldByName('remise_bvliv').AsFloat:=StrToFloat(StringReplace(RemiseBonLivGEdt.Text, #32, '', [rfReplaceAll]));
+             MainForm.Bonv_livTable.FieldByName('remise_bvliv').Value:=StrToFloat(StringReplace(RemiseBonLivGEdt.Text, #32, '', [rfReplaceAll]));
           end else begin
-                    MainForm.Bonv_livTable.FieldByName('remise_bvliv').AsFloat:=0;
+                    MainForm.Bonv_livTable.FieldByName('remise_bvliv').Value:=0;
                    end;
 
 
-          MainForm.Bonv_livTable.FieldByName('montver_bvliv').AsFloat:=StrToFloat(StringReplace(BonLivRegleLbl.Caption, #32, '', [rfReplaceAll]));
-          MainForm.Bonv_livTable.FieldByName('montttc_bvliv').AsFloat:=StrToFloat(StringReplace(BonLivTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
+          MainForm.Bonv_livTable.FieldByName('montver_bvliv').Value:=StrToFloat(StringReplace(BonLivRegleLbl.Caption, #32, '', [rfReplaceAll]));
+          MainForm.Bonv_livTable.FieldByName('montttc_bvliv').Value:=StrToFloat(StringReplace(BonLivTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
 
           MainForm.Bonv_livTable.Post;
           MainForm.Bonv_livTable.EnableControls;
@@ -727,25 +727,25 @@ codeBL:=MainForm.Bonv_livTable.FieldByName('code_bvliv').AsInteger;
 
           MainForm.Bonv_livTable.DisableControls;
           MainForm.Bonv_livTable.Edit;
-          MainForm.Bonv_livTable.FieldValues['code_c']:= MainForm.ClientTable.FieldByName('code_c').AsInteger;
+          MainForm.Bonv_livTable.FieldByName('code_c').AsInteger:= MainForm.ClientTable.FieldByName('code_c').AsInteger;
           MainForm.Bonv_livTable.FieldByName('date_bvliv').AsDateTime:= DateBonLivGD.DateTime;
-          MainForm.Bonv_livTable.FieldValues['time_bvliv']:=TimeOf(Now);
-          MainForm.Bonv_livTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
-          MainForm.Bonv_livTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
-          MainForm.Bonv_livTable.FieldValues['obser_bvliv']:= ObserBonLivGMem.Text;
-          MainForm.Bonv_livTable.FieldValues['num_cheque_bvliv']:= NChequeBonLivGCbx.Text;
-          MainForm.Bonv_livTable.FieldByName('montht_bvliv').AsFloat:= StrToFloat(StringReplace(BonLivTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
+          MainForm.Bonv_livTable.FieldByName('time_bvliv').AsDateTime:=TimeOf(Now);
+          MainForm.Bonv_livTable.FieldByName('code_mdpai').AsInteger:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
+          MainForm.Bonv_livTable.FieldByName('code_cmpt').AsInteger:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
+          MainForm.Bonv_livTable.FieldByName('obser_bvliv').AsWideString:= ObserBonLivGMem.Text;
+          MainForm.Bonv_livTable.FieldByName('num_cheque_bvliv').AsString:= NChequeBonLivGCbx.Text;
+          MainForm.Bonv_livTable.FieldByName('montht_bvliv').Value:= StrToFloat(StringReplace(BonLivTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
 
           if RemiseBonLivGEdt.Text<>'' then
           begin
-             MainForm.Bonv_livTable.FieldByName('remise_bvliv').AsFloat:=StrToFloat(StringReplace(RemiseBonLivGEdt.Text, #32, '', [rfReplaceAll]));
+             MainForm.Bonv_livTable.FieldByName('remise_bvliv').Value:=StrToFloat(StringReplace(RemiseBonLivGEdt.Text, #32, '', [rfReplaceAll]));
           end else begin
-                    MainForm.Bonv_livTable.FieldByName('remise_bvliv').AsFloat:=0;
+                    MainForm.Bonv_livTable.FieldByName('remise_bvliv').Value:=0;
                    end;
 
 
-          MainForm.Bonv_livTable.FieldByName('montver_bvliv').AsFloat:=StrToFloat(StringReplace(BonLivRegleLbl.Caption, #32, '', [rfReplaceAll]));
-          MainForm.Bonv_livTable.FieldByName('montttc_bvliv').AsFloat:=StrToFloat(StringReplace(BonLivTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
+          MainForm.Bonv_livTable.FieldByName('montver_bvliv').Value:=StrToFloat(StringReplace(BonLivRegleLbl.Caption, #32, '', [rfReplaceAll]));
+          MainForm.Bonv_livTable.FieldByName('montttc_bvliv').Value:=StrToFloat(StringReplace(BonLivTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
 
           MainForm.Bonv_livTable.Post;
           MainForm.Bonv_livTable.EnableControls;

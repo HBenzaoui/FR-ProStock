@@ -777,7 +777,7 @@ begin
        BonFacPGestionF.NumBonFacVGEdt.Caption := MainForm.Bonp_facTable.FieldByName('num_bpfac').AsString;
        BonFacPGestionF.DateBonFacVGD.Date:= MainForm.Bonp_facTable.FieldByName('date_bpfac').AsDateTime;
        BonFacPGestionF.ObserBonFacVGMem.Lines.Text := MainForm.Bonp_facTable.FieldByName('obser_bpfac').AsString;
-       if (MainForm.Bonp_facTable.FieldValues['code_c']<> null) and (MainForm.Bonp_facTable.FieldValues['code_c']<> 0) then
+       if (MainForm.Bonp_facTable.FieldByName('code_c').AsInteger<> null) and (MainForm.Bonp_facTable.FieldByName('code_c').AsInteger<> 0) then
        begin
        CodeC:=MainForm.Bonp_facTable.FieldByName('code_c').AsInteger;
        BonFacPGestionF.ClientBonFacVGCbx.Text:= MainForm.Bonp_facTable.FieldByName('clientbvfac').AsWideString;
@@ -787,35 +787,35 @@ begin
 
 
 
-     if (MainForm.Bonp_facTable.FieldValues['RemisePerc']<> null) AND (MainForm.Bonp_facTable.FieldValues['remise_bpfac']<> 0)   then
+     if (MainForm.Bonp_facTable.FieldByName('RemisePerc').Value<> null) AND (MainForm.Bonp_facTable.FieldByName('remise_bpfac').Value<> 0)   then
      begin
-     BonFacPGestionF.RemisePerctageBonFacVGEdt.Text :=     CurrToStrF(MainForm.Bonp_facTable.FieldValues['RemisePerc'], ffNumber, 2);
-     BonFacPGestionF.RemiseBonFacVGEdt.Text :=       CurrToStrF(MainForm.Bonp_facTable.FieldValues['remise_bpfac'], ffNumber, 2);
+     BonFacPGestionF.RemisePerctageBonFacVGEdt.Text :=     CurrToStrF(MainForm.Bonp_facTable.FieldByName('RemisePerc').Value, ffNumber, 2);
+     BonFacPGestionF.RemiseBonFacVGEdt.Text :=       CurrToStrF(MainForm.Bonp_facTable.FieldByName('remise_bpfac').Value, ffNumber, 2);
      end else
          begin
          BonFacPGestionF.RemisePerctageBonFacVGEdt.Text :='';
           BonFacPGestionF.RemiseBonFacVGEdt.Text :=  '';
          end;
 
-    if (MainForm.Bonp_facTable.FieldValues['montht_bpfac']<> null)  then
+    if (MainForm.Bonp_facTable.FieldByName('montht_bpfac').Value<> null)  then
       begin
-    BonFacPGestionF.BonFacVTotalHTLbl.Caption :=    CurrToStrF(MainForm.Bonp_facTable.FieldValues['montht_bpfac'], ffNumber, 2);
+    BonFacPGestionF.BonFacVTotalHTLbl.Caption :=    CurrToStrF(MainForm.Bonp_facTable.FieldByName('montht_bpfac').Value, ffNumber, 2);
       end;
-    if (MainForm.Bonp_facTable.FieldValues['MontantTVA']<> null)  then
+    if (MainForm.Bonp_facTable.FieldByName('MontantTVA').Value<> null)  then
       begin
-    BonFacPGestionF.BonFacVTotalTVALbl.Caption :=   CurrToStrF(MainForm.Bonp_facTable.FieldValues['MontantTVA'], ffNumber, 2);
+    BonFacPGestionF.BonFacVTotalTVALbl.Caption :=   CurrToStrF(MainForm.Bonp_facTable.FieldByName('MontantTVA').Value, ffNumber, 2);
       end;
-     if (MainForm.Bonp_facTable.FieldValues['montttc_bpfac']<> null)  then
+     if (MainForm.Bonp_facTable.FieldByName('montttc_bpfac').Value<> null)  then
       begin
-    BonFacPGestionF.BonFacVTotalTTCLbl.Caption :=   CurrToStrF(MainForm.Bonp_facTable.FieldValues['montttc_bpfac'], ffNumber, 2);
+    BonFacPGestionF.BonFacVTotalTTCLbl.Caption :=   CurrToStrF(MainForm.Bonp_facTable.FieldByName('montttc_bpfac').Value, ffNumber, 2);
       end;
-    if (MainForm.Bonp_facTable.FieldValues['montver_bpfac']<> null)  then
+    if (MainForm.Bonp_facTable.FieldByName('montver_bpfac').Value<> null)  then
       begin
-    BonFacPGestionF.BonFacVRegleLbl.Caption :=      CurrToStrF(MainForm.Bonp_facTable.FieldValues['montver_bpfac'], ffNumber, 2);
+    BonFacPGestionF.BonFacVRegleLbl.Caption :=      CurrToStrF(MainForm.Bonp_facTable.FieldByName('montver_bpfac').Value, ffNumber, 2);
       end;
-    if (MainForm.Bonp_facTable.FieldValues['MontantRes']<> null)  then
+    if (MainForm.Bonp_facTable.FieldByName('MontantRes').Value<> null)  then
       begin
-    BonFacPGestionF.BonFacVResteLbl.Caption :=      CurrToStrF(MainForm.Bonp_facTable.FieldValues['MontantRes'], ffNumber, 2);
+    BonFacPGestionF.BonFacVResteLbl.Caption :=      CurrToStrF(MainForm.Bonp_facTable.FieldByName('MontantRes').Value, ffNumber, 2);
       end;
 
        if MainForm.Bonp_facTable.FieldByName('valider_bpfac').AsBoolean = True then

@@ -676,7 +676,6 @@ MainForm.Bona_facTable.Active:= True;
 
   end;
 
-  MainForm.Bona_fac_listTable.IndexFieldNames:='';
   codeFA:= 0;
 
      if MainForm.Bona_facTable.RecordCount <= 0 then
@@ -728,7 +727,7 @@ MainForm.Bona_facTable.Active:= True;
 
       MainForm.Bona_fac_listTable.Active:=False;
       MainForm.Bona_fac_listTable.SQL.Clear;
-      MainForm.Bona_fac_listTable.SQL.Text:= BonFacAGestionF.FALSQL ;
+      MainForm.Bona_fac_listTable.SQL.Text:= BonFacAGestionF.FALSQL +' ORDER BY code_bafacl ';
       MainForm.Bona_fac_listTable.Active:=True;
 
       MainForm.SQLQuery.Active:=False;
@@ -807,7 +806,7 @@ begin
          BonFacAGestionF.TimberPerctageBonFacAGLbl.Visible:= True;
          BonFacAGestionF.TimberPerctageBonFacAGEdt.Visible:= True;
          BonFacAGestionF.TimberBonFacAGEdt.Visible:= True;
-         BonFacAGestionF.TimberBonFacAGEdt.Text :=     CurrToStrF(MainForm.Bona_facTable.FieldByName('timber_bafac').AsFloat, ffNumber, 2);
+         BonFacAGestionF.TimberBonFacAGEdt.Text :=     CurrToStrF(MainForm.Bona_facTable.FieldByName('timber_bafac').Value, ffNumber, 2);
          end;
          MainForm.Mode_paiementTable.Active:=false;
          MainForm.Mode_paiementTable.SQL.Clear;
@@ -834,19 +833,19 @@ begin
        end;
 
 
-     if (MainForm.Bona_facTable.FieldByName('RemisePerc').AsFloat<> null) AND (MainForm.Bona_facTable.FieldByName('remise_bafac').AsFloat<> 0)  then
+     if (MainForm.Bona_facTable.FieldByName('RemisePerc').Value<> null) AND (MainForm.Bona_facTable.FieldByName('remise_bafac').Value<> 0)  then
      begin
-     BonFacAGestionF.RemisePerctageBonFacAGEdt.Text :=     CurrToStrF(MainForm.Bona_facTable.FieldByName('RemisePerc').AsFloat, ffNumber, 2);
-     BonFacAGestionF.RemiseBonFacAGEdt.Text :=       CurrToStrF(MainForm.Bona_facTable.FieldByName('remise_bafac').AsFloat, ffNumber, 2);
+     BonFacAGestionF.RemisePerctageBonFacAGEdt.Text :=     CurrToStrF(MainForm.Bona_facTable.FieldByName('RemisePerc').Value, ffNumber, 2);
+     BonFacAGestionF.RemiseBonFacAGEdt.Text :=       CurrToStrF(MainForm.Bona_facTable.FieldByName('remise_bafac').Value, ffNumber, 2);
 
      end;
 
-    BonFacAGestionF.BonFacATotalHTLbl.Caption :=    CurrToStrF(MainForm.Bona_facTable.FieldByName('montht_bafac').AsFloat, ffNumber, 2);
+    BonFacAGestionF.BonFacATotalHTLbl.Caption :=    CurrToStrF(MainForm.Bona_facTable.FieldByName('montht_bafac').Value, ffNumber, 2);
 
-    BonFacAGestionF.BonFacATotalTVALbl.Caption :=   CurrToStrF(MainForm.Bona_facTable.FieldByName('MontantTVA').AsFloat, ffNumber, 2);
-    BonFacAGestionF.BonFacATotalTTCLbl.Caption :=   CurrToStrF(MainForm.Bona_facTable.FieldByName('montttc_bafac').AsFloat, ffNumber, 2);
-    BonFacAGestionF.BonFacARegleLbl.Caption :=      CurrToStrF(MainForm.Bona_facTable.FieldByName('montver_bafac').AsFloat, ffNumber, 2);
-    BonFacAGestionF.BonFacAResteLbl.Caption :=      CurrToStrF(MainForm.Bona_facTable.FieldByName('MontantRes').AsFloat, ffNumber, 2);
+    BonFacAGestionF.BonFacATotalTVALbl.Caption :=   CurrToStrF(MainForm.Bona_facTable.FieldByName('MontantTVA').Value, ffNumber, 2);
+    BonFacAGestionF.BonFacATotalTTCLbl.Caption :=   CurrToStrF(MainForm.Bona_facTable.FieldByName('montttc_bafac').Value, ffNumber, 2);
+    BonFacAGestionF.BonFacARegleLbl.Caption :=      CurrToStrF(MainForm.Bona_facTable.FieldByName('montver_bafac').Value, ffNumber, 2);
+    BonFacAGestionF.BonFacAResteLbl.Caption :=      CurrToStrF(MainForm.Bona_facTable.FieldByName('MontantRes').Value, ffNumber, 2);
 
        if MainForm.Bona_facTable.FieldByName('valider_bafac').AsBoolean = True then
        begin

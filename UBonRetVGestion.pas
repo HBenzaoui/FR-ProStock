@@ -1522,25 +1522,25 @@ procedure TBonRetVGestionF.FormCloseQuery(Sender: TObject;
 
               DataModuleF.Bonv_retTable.DisableControls;
               DataModuleF.Bonv_retTable.Edit;
-              DataModuleF.Bonv_retTable.FieldValues['code_c']:= MainForm.ClientTable.FieldByName('code_c').AsInteger;
+              DataModuleF.Bonv_retTable.FieldByName('code_c').AsInteger:= MainForm.ClientTable.FieldByName('code_c').AsInteger;
               DataModuleF.Bonv_retTable.FieldByName('date_bvret').AsDateTime:= DateBonRetVGD.DateTime;
-              DataModuleF.Bonv_retTable.FieldValues['time_bvret']:=TimeOf(Now);
-              DataModuleF.Bonv_retTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
-              DataModuleF.Bonv_retTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
-              DataModuleF.Bonv_retTable.FieldValues['obser_bvret']:= ObserBonRetVGMem.Text;
-              DataModuleF.Bonv_retTable.FieldValues['num_cheque_bvret']:= NChequeBonRetVGCbx.Text;
-              DataModuleF.Bonv_retTable.FieldByName('montht_bvret').AsFloat:= StrToFloat(StringReplace(BonRetTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
+              DataModuleF.Bonv_retTable.FieldByName('time_bvret').AsDateTime:=TimeOf(Now);
+              DataModuleF.Bonv_retTable.FieldByName('code_mdpai').AsInteger:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
+              DataModuleF.Bonv_retTable.FieldByName('code_cmpt').AsInteger:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
+              DataModuleF.Bonv_retTable.FieldByName('obser_bvret').AsWideString:= ObserBonRetVGMem.Text;
+              DataModuleF.Bonv_retTable.FieldByName('num_cheque_bvret').AsString:= NChequeBonRetVGCbx.Text;
+              DataModuleF.Bonv_retTable.FieldByName('montht_bvret').Value:= StrToFloat(StringReplace(BonRetTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
 
               if RemiseBonRetVGEdt.Text<>'' then
               begin
-                 DataModuleF.Bonv_retTable.FieldByName('remise_bvret').AsFloat:=StrToFloat(StringReplace(RemiseBonRetVGEdt.Text, #32, '', [rfReplaceAll]));
+                 DataModuleF.Bonv_retTable.FieldByName('remise_bvret').Value:=StrToFloat(StringReplace(RemiseBonRetVGEdt.Text, #32, '', [rfReplaceAll]));
               end else begin
-                        DataModuleF.Bonv_retTable.FieldByName('remise_bvret').AsFloat:=0;
+                        DataModuleF.Bonv_retTable.FieldByName('remise_bvret').Value:=0;
                        end;
 
 
-              DataModuleF.Bonv_retTable.FieldByName('montver_bvret').AsFloat:=StrToFloat(StringReplace(BonRetRegleLbl.Caption, #32, '', [rfReplaceAll]));
-              DataModuleF.Bonv_retTable.FieldByName('montttc_bvret').AsFloat:=StrToFloat(StringReplace(BonRetTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
+              DataModuleF.Bonv_retTable.FieldByName('montver_bvret').Value:=StrToFloat(StringReplace(BonRetRegleLbl.Caption, #32, '', [rfReplaceAll]));
+              DataModuleF.Bonv_retTable.FieldByName('montttc_bvret').Value:=StrToFloat(StringReplace(BonRetTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
 
               DataModuleF.Bonv_retTable.Post;
               DataModuleF.Bonv_retTable.EnableControls;
@@ -1618,25 +1618,25 @@ procedure TBonRetVGestionF.FormCloseQuery(Sender: TObject;
 
           DataModuleF.Bonv_retTable.DisableControls;
           DataModuleF.Bonv_retTable.Edit;
-          DataModuleF.Bonv_retTable.FieldValues['code_c']:= MainForm.ClientTable.FieldByName('code_c').AsInteger;
+          DataModuleF.Bonv_retTable.FieldByName('code_c').AsInteger:= MainForm.ClientTable.FieldByName('code_c').AsInteger;
           DataModuleF.Bonv_retTable.FieldByName('date_bvret').AsDateTime:= DateBonRetVGD.DateTime;
-          DataModuleF.Bonv_retTable.FieldValues['time_bvret']:=TimeOf(Now);
-          DataModuleF.Bonv_retTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
-          DataModuleF.Bonv_retTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
-          DataModuleF.Bonv_retTable.FieldValues['obser_bvret']:= ObserBonRetVGMem.Text;
-          DataModuleF.Bonv_retTable.FieldValues['num_cheque_bvret']:= NChequeBonRetVGCbx.Text;
-          DataModuleF.Bonv_retTable.FieldByName('montht_bvret').AsFloat:= StrToFloat(StringReplace(BonRetTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
+          DataModuleF.Bonv_retTable.FieldByName('time_bvret').AsDateTime:=TimeOf(Now);
+          DataModuleF.Bonv_retTable.FieldByName('code_mdpai').AsInteger:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
+          DataModuleF.Bonv_retTable.FieldByName('code_cmpt').AsInteger:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
+          DataModuleF.Bonv_retTable.FieldByName('obser_bvret').AsWideString:= ObserBonRetVGMem.Text;
+          DataModuleF.Bonv_retTable.FieldByName('num_cheque_bvret').AsString:= NChequeBonRetVGCbx.Text;
+          DataModuleF.Bonv_retTable.FieldByName('montht_bvret').Value:= StrToFloat(StringReplace(BonRetTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
 
           if RemiseBonRetVGEdt.Text<>'' then
           begin
-             DataModuleF.Bonv_retTable.FieldByName('remise_bvret').AsFloat:=StrToFloat(StringReplace(RemiseBonRetVGEdt.Text, #32, '', [rfReplaceAll]));
+             DataModuleF.Bonv_retTable.FieldByName('remise_bvret').Value:=StrToFloat(StringReplace(RemiseBonRetVGEdt.Text, #32, '', [rfReplaceAll]));
           end else begin
-                    DataModuleF.Bonv_retTable.FieldByName('remise_bvret').AsFloat:=0;
+                    DataModuleF.Bonv_retTable.FieldByName('remise_bvret').Value:=0;
                    end;
 
 
-          DataModuleF.Bonv_retTable.FieldByName('montver_bvret').AsFloat:=StrToFloat(StringReplace(BonRetRegleLbl.Caption, #32, '', [rfReplaceAll]));
-          DataModuleF.Bonv_retTable.FieldByName('montttc_bvret').AsFloat:=StrToFloat(StringReplace(BonRetTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
+          DataModuleF.Bonv_retTable.FieldByName('montver_bvret').Value:=StrToFloat(StringReplace(BonRetRegleLbl.Caption, #32, '', [rfReplaceAll]));
+          DataModuleF.Bonv_retTable.FieldByName('montttc_bvret').Value:=StrToFloat(StringReplace(BonRetTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
 
           DataModuleF.Bonv_retTable.Post;
           DataModuleF.Bonv_retTable.EnableControls;

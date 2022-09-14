@@ -1919,23 +1919,23 @@ begin
 
           MainForm.Bonv_ctrTable.DisableControls;
           MainForm.Bonv_ctrTable.Edit;
-          MainForm.Bonv_ctrTable.FieldValues['code_c'] := MainForm.ClientTable.FieldByName('code_c').AsInteger;
+          MainForm.Bonv_ctrTable.FieldByName('code_c').AsInteger := MainForm.ClientTable.FieldByName('code_c').AsInteger;
           MainForm.Bonv_ctrTable.FieldByName('date_bvctr').AsDateTime:= DateBonCtrGD.DateTime;
-          MainForm.Bonv_ctrTable.FieldValues['time_bvctr']:=TimeOf(Now);
-          MainForm.Bonv_ctrTable.FieldByName('montaht_bvctr').AsFloat := StrToFloat(StringReplace(BonCtrTotalAHTLbl.Caption, #32, '', [rfReplaceAll]));
-          MainForm.Bonv_ctrTable.FieldByName('montht_bvctr').AsFloat := StrToFloat(StringReplace(BonCtrTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
+          MainForm.Bonv_ctrTable.FieldByName('time_bvctr').AsDateTime:=TimeOf(Now);
+          MainForm.Bonv_ctrTable.FieldByName('montaht_bvctr').Value := StrToFloat(StringReplace(BonCtrTotalAHTLbl.Caption, #32, '', [rfReplaceAll]));
+          MainForm.Bonv_ctrTable.FieldByName('montht_bvctr').Value := StrToFloat(StringReplace(BonCtrTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
 
           if RemiseBonCtrGEdt.Text <> '' then
           begin
-            MainForm.Bonv_ctrTable.FieldByName('remise_bvctr').AsFloat := StrToFloat(StringReplace(RemiseBonCtrGEdt.Text, #32, '', [rfReplaceAll]));
+            MainForm.Bonv_ctrTable.FieldByName('remise_bvctr').Value := StrToFloat(StringReplace(RemiseBonCtrGEdt.Text, #32, '', [rfReplaceAll]));
           end
           else
           begin
-            MainForm.Bonv_ctrTable.FieldByName('remise_bvctr').AsFloat := 0;
+            MainForm.Bonv_ctrTable.FieldByName('remise_bvctr').Value := 0;
           end;
 
-          MainForm.Bonv_ctrTable.FieldByName('montver_bvctr').AsFloat := StrToFloat(StringReplace(BonCtrRegleLbl.Caption, #32, '', [rfReplaceAll]));
-          MainForm.Bonv_ctrTable.FieldByName('montttc_bvctr').AsFloat := StrToFloat(StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
+          MainForm.Bonv_ctrTable.FieldByName('montver_bvctr').Value := StrToFloat(StringReplace(BonCtrRegleLbl.Caption, #32, '', [rfReplaceAll]));
+          MainForm.Bonv_ctrTable.FieldByName('montttc_bvctr').Value := StrToFloat(StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
 
           MainForm.Bonv_ctrTable.Post;
           MainForm.Bonv_ctrTable.EnableControls;
@@ -1983,21 +1983,21 @@ begin
 
       MainForm.Bonv_ctrTable.DisableControls;
       MainForm.Bonv_ctrTable.Edit;
-      MainForm.Bonv_ctrTable.FieldValues['code_c'] := MainForm.ClientTable.FieldByName('code_c').AsInteger;
+      MainForm.Bonv_ctrTable.FieldByName('code_c').AsInteger := MainForm.ClientTable.FieldByName('code_c').AsInteger;
       MainForm.Bonv_ctrTable.FieldByName('date_bvctr').AsDateTime:= DateBonCtrGD.DateTime;
-      MainForm.Bonv_ctrTable.FieldValues['time_bvctr']:=TimeOf(Now);
+      MainForm.Bonv_ctrTable.FieldByName('time_bvctr').AsDateTime:=TimeOf(Now);
 
       if RemiseBonCtrGEdt.Text <> '' then
       begin
-        MainForm.Bonv_ctrTable.FieldByName('remise_bvctr').AsFloat := StrToFloat(StringReplace(RemiseBonCtrGEdt.Text, #32, '', [rfReplaceAll]));
+        MainForm.Bonv_ctrTable.FieldByName('remise_bvctr').Value := StrToFloat(StringReplace(RemiseBonCtrGEdt.Text, #32, '', [rfReplaceAll]));
       end
       else
       begin
-        MainForm.Bonv_ctrTable.FieldByName('remise_bvctr').AsFloat := 0;
+        MainForm.Bonv_ctrTable.FieldByName('remise_bvctr').Value := 0;
       end;
 
-      MainForm.Bonv_ctrTable.FieldByName('montver_bvctr').AsFloat := StrToFloat(StringReplace(BonCtrRegleLbl.Caption, #32, '', [rfReplaceAll]));
-      MainForm.Bonv_ctrTable.FieldByName('montttc_bvctr').AsFloat := StrToFloat(StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
+      MainForm.Bonv_ctrTable.FieldByName('montver_bvctr').Value := StrToFloat(StringReplace(BonCtrRegleLbl.Caption, #32, '', [rfReplaceAll]));
+      MainForm.Bonv_ctrTable.FieldByName('montttc_bvctr').Value := StrToFloat(StringReplace(BonCtrTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
 
       MainForm.Bonv_ctrTable.Post;
       MainForm.Bonv_ctrTable.EnableControls;

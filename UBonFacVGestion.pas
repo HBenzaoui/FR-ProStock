@@ -2702,29 +2702,29 @@ begin
 
           MainForm.Bonv_facTable.DisableControls;
           MainForm.Bonv_facTable.Edit;
-          MainForm.Bonv_facTable.FieldValues['code_c']:= MainForm.ClientTable.FieldByName('code_c').AsInteger;
+          MainForm.Bonv_facTable.FieldByName('code_c').AsInteger:= MainForm.ClientTable.FieldByName('code_c').AsInteger;
           MainForm.Bonv_facTable.FieldByName('date_bvfac').AsDateTime:= DateBonFacVGD.DateTime;
-          MainForm.Bonv_facTable.FieldValues['time_bvfac']:=TimeOf(Now);
-          MainForm.Bonv_facTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
-          MainForm.Bonv_facTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
-          MainForm.Bonv_facTable.FieldValues['obser_bvfac']:= ObserBonFacVGMem.Text;
-          MainForm.Bonv_facTable.FieldValues['num_cheque_bvfac']:= NChequeBonFacVGCbx.Text;
-          MainForm.Bonv_facTable.FieldByName('montht_bvfac').AsFloat:= StrToCurr(StringReplace(BonFacVTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
-          MainForm.Bonv_facTable.FieldByName('montaht_bvfac').AsFloat:= StrToCurr(StringReplace(BonFacVTotalAHTLbl.Caption, #32, '', [rfReplaceAll]));
+          MainForm.Bonv_facTable.FieldByName('time_bvfac').AsDateTime:=TimeOf(Now);
+          MainForm.Bonv_facTable.FieldByName('code_mdpai').AsInteger:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
+          MainForm.Bonv_facTable.FieldByName('code_cmpt').AsInteger:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
+          MainForm.Bonv_facTable.FieldByName('obser_bvfac').AsWideString:= ObserBonFacVGMem.Text;
+          MainForm.Bonv_facTable.FieldByName('num_cheque_bvfac').AsString:= NChequeBonFacVGCbx.Text;
+          MainForm.Bonv_facTable.FieldByName('montht_bvfac').Value:= StrToCurr(StringReplace(BonFacVTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
+          MainForm.Bonv_facTable.FieldByName('montaht_bvfac').Value:= StrToCurr(StringReplace(BonFacVTotalAHTLbl.Caption, #32, '', [rfReplaceAll]));
 
           if RemiseBonFacVGEdt.Text<>'' then
           begin
-             MainForm.Bonv_facTable.FieldByName('remise_bvfac').AsFloat:=StrToCurr(StringReplace(RemiseBonFacVGEdt.Text, #32, '', [rfReplaceAll]));
+             MainForm.Bonv_facTable.FieldByName('remise_bvfac').Value:=StrToCurr(StringReplace(RemiseBonFacVGEdt.Text, #32, '', [rfReplaceAll]));
           end else begin
-                    MainForm.Bonv_facTable.FieldByName('remise_bvfac').AsFloat:=0;
+                    MainForm.Bonv_facTable.FieldByName('remise_bvfac').Value:=0;
                 end;
 
-          MainForm.Bonv_facTable.FieldByName('montver_bvfac').AsFloat:=StrToCurr(StringReplace(BonFacVRegleLbl.Caption, #32, '', [rfReplaceAll]));
-          MainForm.Bonv_facTable.FieldByName('montttc_bvfac').AsFloat:=StrToCurr(StringReplace(BonFacVTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
+          MainForm.Bonv_facTable.FieldByName('montver_bvfac').Value:=StrToCurr(StringReplace(BonFacVRegleLbl.Caption, #32, '', [rfReplaceAll]));
+          MainForm.Bonv_facTable.FieldByName('montttc_bvfac').Value:=StrToCurr(StringReplace(BonFacVTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
 
           if (TimberBonFacVGEdt.Visible = True) AND (TimberBonFacVGEdt.Text <> '') then
           begin
-          MainForm.Bonv_facTable.FieldByName('timber_bvfac').AsFloat:=StrToCurr(StringReplace(TimberBonFacVGEdt.Text, #32, '', [rfReplaceAll]));
+          MainForm.Bonv_facTable.FieldByName('timber_bvfac').Value:=StrToCurr(StringReplace(TimberBonFacVGEdt.Text, #32, '', [rfReplaceAll]));
           end;
 
             MainForm.Bonv_facTable.Post;
@@ -2799,26 +2799,26 @@ begin
 
           MainForm.Bonv_facTable.DisableControls;
           MainForm.Bonv_facTable.Edit;
-          MainForm.Bonv_facTable.FieldValues['code_c']:= MainForm.ClientTable.FieldByName('code_c').AsInteger;
-          MainForm.Bonv_facTable.FieldValues['code_mdpai']:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
-          MainForm.Bonv_facTable.FieldValues['code_cmpt']:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
-          MainForm.Bonv_facTable.FieldValues['obser_bvfac']:= ObserBonFacVGMem.Text;
-          MainForm.Bonv_facTable.FieldValues['num_cheque_bvfac']:= NChequeBonFacVGCbx.Text;
-          MainForm.Bonv_facTable.FieldByName('montht_bvfac').AsFloat:= StrToCurr(StringReplace(BonFacVTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
+          MainForm.Bonv_facTable.FieldByName('code_c').AsInteger:= MainForm.ClientTable.FieldByName('code_c').AsInteger;
+          MainForm.Bonv_facTable.FieldByName('code_mdpai').AsInteger:= MainForm.Mode_paiementTable.FieldByName('code_mdpai').AsInteger;
+          MainForm.Bonv_facTable.FieldByName('code_cmpt').AsInteger:= MainForm.CompteTable.FieldByName('code_cmpt').AsInteger;
+          MainForm.Bonv_facTable.FieldByName('obser_bvfac').AsWideString:= ObserBonFacVGMem.Text;
+          MainForm.Bonv_facTable.FieldByName('num_cheque_bvfac').AsString:= NChequeBonFacVGCbx.Text;
+          MainForm.Bonv_facTable.FieldByName('montht_bvfac').Value:= StrToCurr(StringReplace(BonFacVTotalHTLbl.Caption, #32, '', [rfReplaceAll]));
 
           if RemiseBonFacVGEdt.Text<>'' then
           begin
-             MainForm.Bonv_facTable.FieldByName('remise_bvfac').AsFloat:=StrToCurr(StringReplace(RemiseBonFacVGEdt.Text, #32, '', [rfReplaceAll]));
+             MainForm.Bonv_facTable.FieldByName('remise_bvfac').Value:=StrToCurr(StringReplace(RemiseBonFacVGEdt.Text, #32, '', [rfReplaceAll]));
           end else begin
-                    MainForm.Bonv_facTable.FieldByName('remise_bvfac').AsFloat:=0;
+                    MainForm.Bonv_facTable.FieldByName('remise_bvfac').Value:=0;
                 end;
 
-          MainForm.Bonv_facTable.FieldByName('montver_bvfac').AsFloat:=StrToCurr(StringReplace(BonFacVRegleLbl.Caption, #32, '', [rfReplaceAll]));
-          MainForm.Bonv_facTable.FieldByName('montttc_bvfac').AsFloat:=StrToCurr(StringReplace(BonFacVTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
+          MainForm.Bonv_facTable.FieldByName('montver_bvfac').Value:=StrToCurr(StringReplace(BonFacVRegleLbl.Caption, #32, '', [rfReplaceAll]));
+          MainForm.Bonv_facTable.FieldByName('montttc_bvfac').Value:=StrToCurr(StringReplace(BonFacVTotalTTCLbl.Caption, #32, '', [rfReplaceAll]));
 
           if (TimberBonFacVGEdt.Visible = True) AND (TimberBonFacVGEdt.Text <> '') then
           begin
-           MainForm.Bonv_facTable.FieldByName('timber_bvfac').AsFloat:=StrToCurr(StringReplace(TimberBonFacVGEdt.Text, #32, '', [rfReplaceAll]));
+           MainForm.Bonv_facTable.FieldByName('timber_bvfac').Value:=StrToCurr(StringReplace(TimberBonFacVGEdt.Text, #32, '', [rfReplaceAll]));
           end;
 
             MainForm.Bonv_facTable.Post;
