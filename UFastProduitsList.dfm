@@ -729,7 +729,7 @@ object FastProduitsListF: TFastProduitsListF
         DisplayFormat = '#,##0.00'
         DynProps = <>
         EditButtons = <>
-        FieldName = 'PrixVTTC2'
+        FieldName = 'prixvttca2'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
         Font.Height = 14
