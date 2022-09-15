@@ -747,30 +747,6 @@ object FastProduitsListF: TFastProduitsListF
         Title.Font.Quality = fqProof
         Width = 100
         WordWrap = False
-      end
-      item
-        Alignment = taCenter
-        CellButtons = <>
-        DynProps = <>
-        EditButtons = <>
-        FieldName = 'fourp'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = 4207405
-        Font.Height = 14
-        Font.Name = 'Helvetica LT Std'
-        Font.Style = []
-        Footers = <>
-        Layout = tlCenter
-        Title.Alignment = taCenter
-        Title.Caption = 'Fournisseur'
-        Title.Font.Charset = DEFAULT_CHARSET
-        Title.Font.Color = 4207405
-        Title.Font.Height = 16
-        Title.Font.Name = 'Helvetica LT Std'
-        Title.Font.Style = []
-        Title.Font.Quality = fqProof
-        Width = 150
-        WordWrap = False
       end>
     object RowDetailData: TRowDetailPanelControlEh
     end
