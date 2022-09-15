@@ -4378,4 +4378,202 @@ object DataModuleF: TDataModuleF
     Left = 76
     Top = 336
   end
+  object FastProduitTable: TFDQuery
+    FilterOptions = [foCaseInsensitive]
+    Connection = MainForm.GstockdcConnection
+    SQL.Strings = (
+      'SELECT code_p,refer_p,nom_p,code_famp,code_sfamp,code_u,'
+      '       code_mrkp,qut_p,qutini_p, prixht_p,prixvd_p,'
+      
+        '       prixvr_p,prixvg_p,prixva_p,prixva2_p,tva_p,pmp_p,perissab' +
+        'le_p,'
+      '  ((prixht_p * tva_p)/100+ prixht_p ) AS PrixATTC,'
+      '  ((prixvd_p * tva_p)/100+ prixvd_p ) AS PrixVTTCD,'
+      '  ((prixvr_p * tva_p)/100+ prixvr_p ) AS PrixVTTCR,'
+      '  ((prixvg_p * tva_p)/100+ prixvg_p ) AS PrixVTTCG,'
+      '  ((prixva_p * tva_p)/100+ prixva_p ) AS PrixVTTCA,'
+      '  ((prixva2_p * tva_p)/100+ prixva2_p ) AS PrixVTTCA2,'
+      '  (qut_p + qutini_p ) AS QutDispo'
+      'FROM produit ')
+    Left = 184
+    Top = 368
+    object FastProduitTablecode_p: TIntegerField
+      FieldName = 'code_p'
+      Origin = 'code_p'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+    end
+    object FastProduitTablecode_famp: TIntegerField
+      FieldName = 'code_famp'
+      Origin = 'code_famp'
+    end
+    object FastProduitTablecode_sfamp: TIntegerField
+      FieldName = 'code_sfamp'
+      Origin = 'code_sfamp'
+    end
+    object FastProduitTablefamp: TStringField
+      FieldKind = fkLookup
+      FieldName = 'famp'
+      LookupDataSet = MainForm.FamproduitTable
+      LookupKeyFields = 'code_famp'
+      LookupResultField = 'nom_famp'
+      KeyFields = 'code_famp'
+      Size = 40
+      Lookup = True
+    end
+    object FastProduitTablesfamp: TStringField
+      FieldKind = fkLookup
+      FieldName = 'sfamp'
+      LookupDataSet = MainForm.SfamproduitTable
+      LookupKeyFields = 'code_sfamp'
+      LookupResultField = 'nom_sfamp'
+      KeyFields = 'code_sfamp'
+      Size = 40
+      Lookup = True
+    end
+    object FastProduitTabletva_p: TSmallintField
+      FieldName = 'tva_p'
+      Origin = 'tva_p'
+    end
+    object FastProduitTableprixht_p: TFMTBCDField
+      FieldName = 'prixht_p'
+      Origin = 'prixht_p'
+      Precision = 64
+      Size = 0
+    end
+    object FastProduitTableprixvd_p: TFMTBCDField
+      FieldName = 'prixvd_p'
+      Origin = 'prixvd_p'
+      Precision = 64
+      Size = 0
+    end
+    object FastProduitTableprixvr_p: TFMTBCDField
+      FieldName = 'prixvr_p'
+      Origin = 'prixvr_p'
+      Precision = 64
+      Size = 0
+    end
+    object FastProduitTableprixvg_p: TFMTBCDField
+      FieldName = 'prixvg_p'
+      Origin = 'prixvg_p'
+      Precision = 64
+      Size = 0
+    end
+    object FastProduitTableprixva_p: TFMTBCDField
+      FieldName = 'prixva_p'
+      Origin = 'prixva_p'
+      Precision = 64
+      Size = 0
+    end
+    object FastProduitTableprixva2_p: TFMTBCDField
+      FieldName = 'prixva2_p'
+      Origin = 'prixva2_p'
+      Precision = 64
+      Size = 0
+    end
+    object FastProduitTablequt_p: TFMTBCDField
+      FieldName = 'qut_p'
+      Origin = 'qut_p'
+      Precision = 64
+      Size = 0
+    end
+    object FastProduitTablequtini_p: TFMTBCDField
+      FieldName = 'qutini_p'
+      Origin = 'qutini_p'
+      Precision = 64
+      Size = 0
+    end
+    object FastProduitTablepmp_p: TFMTBCDField
+      FieldName = 'pmp_p'
+      Origin = 'pmp_p'
+      Precision = 64
+      Size = 0
+    end
+    object FastProduitTablecode_mrkp: TSmallintField
+      FieldName = 'code_mrkp'
+      Origin = 'code_mrkp'
+    end
+    object FastProduitTableprixattc: TFMTBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'prixattc'
+      Origin = 'prixattc'
+      ReadOnly = True
+      Precision = 64
+      Size = 0
+    end
+    object FastProduitTableprixvttcd: TFMTBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'prixvttcd'
+      Origin = 'prixvttcd'
+      ReadOnly = True
+      Precision = 64
+      Size = 0
+    end
+    object FastProduitTableprixvttcr: TFMTBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'prixvttcr'
+      Origin = 'prixvttcr'
+      ReadOnly = True
+      Precision = 64
+      Size = 0
+    end
+    object FastProduitTableprixvttcg: TFMTBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'prixvttcg'
+      Origin = 'prixvttcg'
+      ReadOnly = True
+      Precision = 64
+      Size = 0
+    end
+    object FastProduitTableprixvttca: TFMTBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'prixvttca'
+      Origin = 'prixvttca'
+      ReadOnly = True
+      Precision = 64
+      Size = 0
+    end
+    object FastProduitTableprixvttca2: TFMTBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'prixvttca2'
+      Origin = 'prixvttca2'
+      ReadOnly = True
+      Precision = 64
+      Size = 0
+    end
+    object FastProduitTablequtdispo: TFMTBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'qutdispo'
+      Origin = 'qutdispo'
+      ReadOnly = True
+      Precision = 64
+      Size = 0
+    end
+    object FastProduitTableperissable_p: TBooleanField
+      FieldName = 'perissable_p'
+      Origin = 'perissable_p'
+    end
+    object FastProduitTablecode_u: TSmallintField
+      FieldName = 'code_u'
+      Origin = 'code_u'
+    end
+    object FastProduitTableunit: TStringField
+      FieldKind = fkLookup
+      FieldName = 'unit'
+      LookupDataSet = MainForm.UniteTable
+      LookupKeyFields = 'code_u'
+      LookupResultField = 'nom_u'
+      KeyFields = 'code_u'
+      Lookup = True
+    end
+    object FastProduitTablerefer_p: TWideStringField
+      FieldName = 'refer_p'
+      Origin = 'refer_p'
+      Size = 8190
+    end
+    object FastProduitTablenom_p: TWideStringField
+      FieldName = 'nom_p'
+      Origin = 'nom_p'
+      Size = 8190
+    end
+  end
 end

@@ -752,7 +752,7 @@ object FastProduitsListF: TFastProduitsListF
     end
   end
   object ProduitListDataS: TDataSource
-    DataSet = MainForm.ProduitTable
+    DataSet = DataModuleF.FastProduitTable
     Left = 862
     Top = 484
   end
