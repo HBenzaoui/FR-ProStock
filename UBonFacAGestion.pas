@@ -3040,7 +3040,7 @@ if RemiseBonFacAGEdt.Focused then
           BonFARemiseHTNewLbl.Caption:='0';
           RemisePerctageBonFacAGEdt.Text:='';
           BonFATotalHTNewLbl.Caption:=BonFacATotalHTLbl.Caption;
-          MainForm.Bona_fac_listTable.Refresh;
+//          MainForm.Bona_fac_listTable.Refresh;
         end;
  end;
 end;

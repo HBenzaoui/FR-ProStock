@@ -2520,7 +2520,7 @@ if RemiseBonFacVGEdt.Focused then
           BonFVRemiseHTNewLbl.Caption:='0';
           RemisePerctageBonFacVGEdt.Text:='';
           BonFVTotalHTNewLbl.Caption:=BonFacVTotalHTLbl.Caption;
-          MainForm.Bonv_fac_listTable.Refresh;
+//          MainForm.Bonv_fac_listTable.Refresh;
         end;
  end;
 end;

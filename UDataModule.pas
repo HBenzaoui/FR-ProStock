@@ -670,16 +670,26 @@ InvoiceID :Integer;
 
          MainForm.SQLQuery3.Active:= False;
          MainForm.SQLQuery3.SQL.Clear;
-         MainForm.SQLQuery3.SQL.Text:= BonComAGestionF.BCFLSQL+ ' WHERE code_bacom= '+ IntToStr(Bona_comTable.FieldByName('code_bacom').AsInteger) +' ORDER BY code_bacoml ';
+//         MainForm.SQLQuery3.SQL.Text:= BonComAGestionF.BCFLSQL
+         MainForm.SQLQuery3.SQL.Text:= ' SELECT BCFL.code_bacom,BCFL.code_bacoml,BCFL.tva_p, '
+      +'   (((BCFL.prixht_p * BCFL.tva_p)/100)+BCFL.prixht_p) AS PrixATTC, '
+      +'   ((BCFL.prixht_p * BCFL.qut_p) * cond_p) AS MontantHT, '
+      +'   (((((BCFL.prixht_p * BCFL.tva_p)/100)+BCFL.prixht_p) * BCFL.qut_p)*cond_p) AS MontantTTC, '
+      +'   (((((((BCFL.prixht_p * BCFL.tva_p)/100)+BCFL.prixht_p) * BCFL.qut_p)*cond_p) )-(((BCFL.prixht_p * BCFL.qut_p) * cond_p))) AS MontantTVA, '
+      +'   ((BCFL.prixht_p * BCFL.qut_p)* cond_p) AS MontantAHT '
+      +' FROM bona_com_list as BCFL '
+      +' LEFT JOIN produit as P   '
+      +'  ON BCFL.code_p = P.code_p '
+         + ' WHERE code_bacom= '+ IntToStr(Bona_comTable.FieldByName('code_bacom').AsInteger) +' ORDER BY code_bacoml ';
          MainForm.SQLQuery3.Active:= True;
 
           MainForm.SQLQuery3.First;
           while not MainForm.SQLQuery3.Eof do
           begin
-            TotalHT:= TotalHT + (MainForm.SQLQuery3.FieldValues['MontantHT'] );
-            TotalTVA:= TotalTVA + MainForm.SQLQuery3.FieldValues['MontantTVA'];
-            TotalTTC:= TotalTTC + MainForm.SQLQuery3.FieldValues['MontantTTC'];
-            TVA:=TVA + MainForm.SQLQuery3.FieldValues['tva_p'] ;
+            TotalHT:= TotalHT + (MainForm.SQLQuery3.FieldByName('MontantHT').Value );
+            TotalTVA:= TotalTVA + MainForm.SQLQuery3.FieldByName('MontantTVA').Value;
+            TotalTTC:= TotalTTC + MainForm.SQLQuery3.FieldByName('MontantTTC').Value;
+            TVA:=TVA + MainForm.SQLQuery3.FieldByName('tva_p').Value ;
             LeReste:= TotalTTC - StrToFloat(StringReplace(BonComAGestionF.BonComRegleLbl.Caption, #32, '', [rfReplaceAll]))  ;
             MainForm.SQLQuery3.Next;
           end;
@@ -705,9 +715,9 @@ InvoiceID :Integer;
     BonComAGestionF.BonCATotalHTNewLbl.Caption :=   CurrToStrF(((TotalHT)),ffNumber,2) ;
     BonComAGestionF.TotalTVANewLbl.Caption :=      CurrToStrF(((TotalTVA)),ffNumber,2) ;
 
-    if Bona_comTable.FieldValues['montver_bacom']<> Null then
+    if Bona_comTable.FieldByName('montver_bacom').Value<> Null then
     begin
-    Regle:= Bona_comTable.FieldValues['montver_bacom'];
+    Regle:= Bona_comTable.FieldByName('montver_bacom').Value;
     BonComAGestionF.BonComRegleLbl.Caption :=      CurrToStrF(((Regle)),ffNumber,2) ;
     end;
 
@@ -815,18 +825,30 @@ InvoiceID :Integer;
 
           MainForm.SQLQuery3.Active:= False;
           MainForm.SQLQuery3.SQL.Clear;
-          MainForm.SQLQuery3.SQL.Text:= BonComVGestionF.BCCLSQL+ ' WHERE code_bvcom= '+ IntToStr(Bonv_comTable.FieldByName('code_bvcom').AsInteger) +' ORDER BY code_bvcoml ';
+//          MainForm.SQLQuery3.SQL.Text:= BonComVGestionF.BCCLSQL
+          MainForm.SQLQuery3.SQL.Text:= 'Select BCCL.code_bvcom,BCCL.code_bvcoml,BCCL.tva_p, '
+          +' (((BCCL.prixvd_p * BCCL.tva_p)/100)+BCCL.prixvd_p) AS PrixVTTC, '
+          +' ((BCCL.prixht_p * BCCL.qut_p) * cond_p) AS MontantAHT, '
+          +' ((BCCL.prixvd_p * BCCL.qut_p) * cond_p) AS MontantHT, '
+          +' (((((BCCL.prixvd_p * BCCL.tva_p)/100)+BCCL.prixvd_p) * BCCL.qut_p)*cond_p) AS MontantTTC, '
+          +' (((((((BCCL.prixvd_p * BCCL.tva_p)/100)+BCCL.prixvd_p) * BCCL.qut_p)*cond_p) )-(((BCCL.prixvd_p * BCCL.qut_p) * cond_p))) AS MontantTVA, '
+          +' ((P.prixht_p * BCCL.qut_p)* cond_p) AS MontantAHT, '
+          +' (((BCCL.prixvd_p * BCCL.qut_p) * cond_p) - ((P.prixht_p * BCCL.qut_p)* cond_p) ) AS MargeM '
+          +' FROM bonv_com_list as BCCL '
+          +' LEFT JOIN produit as P '
+          +' ON BCCL.code_p = P.code_p '
+          + ' WHERE code_bvcom= '+ IntToStr(Bonv_comTable.FieldByName('code_bvcom').AsInteger) +' ORDER BY code_bvcoml ';
           MainForm.SQLQuery3.Active:= True;
 
           MainForm.SQLQuery3.First;
           while not MainForm.SQLQuery3.Eof do
           begin
-            TotalAHT:= TotalAHT + (MainForm.SQLQuery3.FieldByName('MontantAHT').AsFloat );
-            TotalHT:= TotalHT + (MainForm.SQLQuery3.FieldByName('MontantHT').AsFloat );
-            TotalTVA:= TotalTVA + MainForm.SQLQuery3.FieldByName('MontantTVA').AsFloat;
-            TotalTTC:= TotalTTC + MainForm.SQLQuery3.FieldByName('MontantTTC').AsFloat;
+            TotalAHT:= TotalAHT + (MainForm.SQLQuery3.FieldByName('MontantAHT').Value );
+            TotalHT:= TotalHT + (MainForm.SQLQuery3.FieldByName('MontantHT').Value );
+            TotalTVA:= TotalTVA + MainForm.SQLQuery3.FieldByName('MontantTVA').Value;
+            TotalTTC:= TotalTTC + MainForm.SQLQuery3.FieldByName('MontantTTC').Value;
             TVA:=TVA + MainForm.SQLQuery3.FieldByName('tva_p').AsInteger;
-            Marge:=Marge + MainForm.SQLQuery3.FieldByName('MargeM').AsFloat ;
+            Marge:=Marge + MainForm.SQLQuery3.FieldByName('MargeM').Value ;
             LeReste:= TotalTTC - StrToFloat(StringReplace(BonComVGestionF.BonComRegleLbl.Caption, #32, '', [rfReplaceAll]))  ;
             MainForm.SQLQuery3.Next;
           end;
@@ -854,9 +876,9 @@ InvoiceID :Integer;
     BonComVGestionF.TotalTVANewLbl.Caption :=      CurrToStrF(((TotalTVA)),ffNumber,2) ;
     BonComVGestionF.BonComTotalMargeLbl.Caption := CurrToStrF(((Marge)),ffNumber,2) ;
 
-    if Bonv_comTable.FieldByName('montver_bvcom').AsFloat <> Null then
+    if Bonv_comTable.FieldByName('montver_bvcom').Value <> Null then
     begin
-    Regle:= Bonv_comTable.FieldByName('montver_bvcom').AsFloat;
+    Regle:= Bonv_comTable.FieldByName('montver_bvcom').Value;
     BonComVGestionF.BonComRegleLbl.Caption :=      CurrToStrF(((Regle)),ffNumber,2) ;
     end;
 
@@ -962,18 +984,29 @@ InvoiceID :Integer;
 
           MainForm.SQLQuery3.Active:= False;
           MainForm.SQLQuery3.SQL.Clear;
-          MainForm.SQLQuery3.SQL.Text:= BonRetVGestionF.BRVLSQL+ ' WHERE code_bvret= '+ IntToStr(Bonv_retTable.FieldByName('code_bvret').AsInteger) +' ORDER BY code_bvretl ';
+//          MainForm.SQLQuery3.SQL.Text:= BonRetVGestionF.BRVLSQL
+          MainForm.SQLQuery3.SQL.Text:= 'Select BRVL.code_bvret,BRVL.code_bvretl,BRVL.tva_p,'
+          +' (((BRVL.prixvd_p * BRVL.tva_p)/100)+BRVL.prixvd_p) AS PrixVTTC, '
+          +' ((BRVL.prixht_p * BRVL.qut_p) * cond_p) AS MontantAHT, '
+          +' ((BRVL.prixvd_p * BRVL.qut_p) * cond_p) AS MontantHT, '
+          +' (((((BRVL.prixvd_p * BRVL.tva_p)/100)+BRVL.prixvd_p) * BRVL.qut_p)*cond_p) AS MontantTTC, '
+          +' (((((((BRVL.prixvd_p * BRVL.tva_p)/100)+BRVL.prixvd_p) * BRVL.qut_p)*cond_p) )-(((BRVL.prixvd_p * BRVL.qut_p) * cond_p))) AS MontantTVA, '
+          +' ((P.prixht_p * BRVL.qut_p)* cond_p) AS MontantAHT '
+          +' FROM bonv_ret_list as BRVL '
+          +' LEFT JOIN produit as P '
+          +' ON BRVL.code_p = P.code_p '
+          + ' WHERE code_bvret= '+ IntToStr(Bonv_retTable.FieldByName('code_bvret').AsInteger) +' ORDER BY code_bvretl ';
           MainForm.SQLQuery3.Active:= True;
 
           MainForm.SQLQuery3.First;
           while not MainForm.SQLQuery3.Eof do
           begin
-            TotalAHT:= TotalAHT + (MainForm.SQLQuery3.FieldByName('MontantAHT').AsFloat );
-            TotalHT:= TotalHT + (MainForm.SQLQuery3.FieldByName('MontantHT').AsFloat );
-            TotalTVA:= TotalTVA + MainForm.SQLQuery3.FieldByName('MontantTVA').AsFloat;
-            TotalTTC:= TotalTTC + MainForm.SQLQuery3.FieldByName('MontantTTC').AsFloat;
+            TotalAHT:= TotalAHT + (MainForm.SQLQuery3.FieldByName('MontantAHT').Value );
+            TotalHT:= TotalHT + (MainForm.SQLQuery3.FieldByName('MontantHT').Value );
+            TotalTVA:= TotalTVA + MainForm.SQLQuery3.FieldByName('MontantTVA').Value;
+            TotalTTC:= TotalTTC + MainForm.SQLQuery3.FieldByName('MontantTTC').Value;
             TVA:=TVA + MainForm.SQLQuery3.FieldByName('tva_p').AsInteger;
-            Marge:=Marge + MainForm.SQLQuery3.FieldByName('MargeM').AsFloat ;
+            Marge:=Marge + MainForm.SQLQuery3.FieldByName('MargeM').Value ;
             LeReste:= TotalTTC - StrToFloat(StringReplace(BonRetVGestionF.BonRetRegleLbl.Caption, #32, '', [rfReplaceAll]))  ;
             MainForm.SQLQuery3.Next;
           end;
@@ -1001,9 +1034,9 @@ InvoiceID :Integer;
     BonRetVGestionF.TotalTVANewLbl.Caption :=      CurrToStrF(((TotalTVA)),ffNumber,2) ;
 //    BonRetVGestionF.BonRetTotalMargeLbl.Caption := CurrToStrF(((Marge)),ffNumber,2) ;
 
-    if Bonv_retTable.FieldByName('montver_bvret').AsFloat <> Null then
+    if Bonv_retTable.FieldByName('montver_bvret').Value <> Null then
     begin
-    Regle:= Bonv_retTable.FieldByName('montver_bvret').AsFloat ;
+    Regle:= Bonv_retTable.FieldByName('montver_bvret').Value ;
     BonRetVGestionF.BonRetRegleLbl.Caption :=      CurrToStrF(((Regle)),ffNumber,2) ;
     end;
 
