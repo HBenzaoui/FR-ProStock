@@ -2264,15 +2264,15 @@ const
   N = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0',',','.', Char(VK_back)];
    F = ['.'];
 begin
-  if not(Key in N) then
-  begin
-     key := #0;
-  end;
-
-   if (Key in F) then
-  begin
-    key :=  #44;
-  end;
+//  if not(Key in N) then
+//  begin
+//     key := #0;
+//  end;
+//
+//   if (Key in F) then
+//  begin
+//    key :=  #44;
+//  end;
   if (Key = '.') AND (Pos(Key, (RemiseBonRecGEdt.Text)) > 0) Then
   begin
       Key := #0;
@@ -3025,7 +3025,7 @@ end;
 
 procedure TBonRecGestionF.RemiseBonRecGEdtEnter(Sender: TObject);
 begin
-MainForm.Bona_recPlistTable.Refresh;
+//MainForm.Bona_recPlistTable.Refresh;
  RemisePerctageBonRecGEdtChange(Sender);
 end;
 

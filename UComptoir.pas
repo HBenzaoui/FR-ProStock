@@ -309,6 +309,7 @@ type
     procedure sSpeedButton3Click(Sender: TObject);
     procedure ListClientBonCtrGBtnClick(Sender: TObject);
     procedure ClientBonCtrGCbxSelect(Sender: TObject);
+    procedure RemiseBonCtrGEdtClick(Sender: TObject);
   private
     procedure GettingData;
     procedure addingState;
@@ -722,15 +723,15 @@ const
   N =['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', ',', '.', Char(VK_back)];
   F =['.'];
 begin
-  if not (Key in N) then
-  begin
-    Key := #0;
-  end;
-
-  if (Key in F) then
-  begin
-    Key := #44;
-  end;
+//  if not (Key in N) then
+//  begin
+//    Key := #0;
+//  end;
+//
+//  if (Key in F) then
+//  begin
+//    Key := #44;
+//  end;
   if (Key = '.') and (Pos(Key, (RemiseBonCtrGEdt.Text)) > 0) then
   begin
     Key := #0;
@@ -3248,6 +3249,12 @@ begin
    //       BonCTotalHTNewLbl.Caption:=BonCtrTotalHTLbl.Caption;
     end;
   end;
+end;
+
+procedure TBonCtrGestionF.RemiseBonCtrGEdtClick(Sender: TObject);
+begin
+RemiseBonCtrGEdt.Text := StringReplace(RemiseBonCtrGEdt.Text, #32, '', [rfReplaceAll]);
+RemiseBonCtrGEdt.SelectAll;
 end;
 
 procedure TBonCtrGestionF.ValiderBVCtrBonCtrGBtn1Click(Sender: TObject);

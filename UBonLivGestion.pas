@@ -3175,15 +3175,15 @@ const
   N = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0',',','.', Char(VK_back)];
    F = ['.'];
 begin
-  if not(Key in N) then
-  begin
-     key := #0;
-  end;
-
-   if (Key in F) then
-  begin
-    key :=  #44;
-  end;
+//  if not(Key in N) then
+//  begin
+//     key := #0;
+//  end;
+//
+//   if (Key in F) then
+//  begin
+//    key :=  #44;
+//  end;
   if (Key = '.') AND (Pos(Key, (RemiseBonLivGEdt.Text)) > 0) Then
   begin
       Key := #0;
@@ -3202,7 +3202,7 @@ begin
 end;
 procedure TBonLivGestionF.RemiseBonLivGEdtEnter(Sender: TObject);
 begin
-MainForm.Bonv_liv_listTable.Refresh;
+//MainForm.Bonv_liv_listTable.Refresh;
  RemisePerctageBonLivGEdtChange(Sender);
 end;
 

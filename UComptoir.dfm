@@ -1588,6 +1588,7 @@ object BonCtrGestionF: TBonCtrGestionF
         ShowHint = True
         TabOrder = 3
         OnChange = RemiseBonCtrGEdtChange
+        OnClick = RemiseBonCtrGEdtClick
         OnDblClick = RemiseBonCtrGEdtDblClick
         OnKeyPress = RemiseBonCtrGEdtKeyPress
         OnMouseEnter = RemiseBonCtrGEdtMouseEnter

@@ -2209,7 +2209,7 @@ begin
 
 
 
-         BonFacVResteLbl.Caption:= BonFacVTotalTTCLbl.Caption;                       //REst
+//         BonFacVResteLbl.Caption:= BonFacVTotalTTCLbl.Caption;                       //REst
             if RemisePerctageBonFacVGEdt.Focused then
             begin
             RemiseBonFacVGEdt.Text:=FloatToStrF((BonFVTotalHT - NewHT),ffNumber,14,2);
@@ -2235,7 +2235,7 @@ begin
            TotalTVANet:=StrToFloat(StringReplace(TotalTVANewLbl.Caption, #32, '', [rfReplaceAll]));
            end;
             BonFacVTotalTTCLbl.Caption:=FloatToStrF((BonFVTotalHT + TotalTVANet ),ffNumber,14,2);
-            BonFacVResteLbl.Caption:= BonFacVTotalTTCLbl.Caption;
+//            BonFacVResteLbl.Caption:= BonFacVTotalTTCLbl.Caption;
             BonFacVTotalTVALbl.Caption := TotalTVANewLbl.Caption;
             RemiseBonFacVGEdt.Text:='';
             BonFVRemiseHTNewLbl.Caption:='0';
@@ -2287,7 +2287,7 @@ begin
          end;
 
 
-         BonFacVResteLbl.Caption:=BonFacVTotalTTCLbl.Caption;
+//         BonFacVResteLbl.Caption:=BonFacVTotalTTCLbl.Caption;
 
            if BonFacVTotalHTLbl.Caption <>'' then
             begin
@@ -2309,7 +2309,7 @@ begin
              RemiseBonFacVGEdt.Text:='';
              BonFVRemiseHTNewLbl.Caption:='0';
              BonFacVTotalTTCLbl.Caption := BonFVTotalTTCNewLbl.Caption;
-             BonFacVResteLbl.Caption:=BonFacVTotalTTCLbl.Caption;
+//             BonFacVResteLbl.Caption:=BonFacVTotalTTCLbl.Caption;
              BonFacVTotalTVALbl.Caption:=TotalTVANewLbl.Caption;
              BonFVTotalHTNewLbl.Caption:=BonFacVTotalHTLbl.Caption;
 
@@ -2400,7 +2400,7 @@ if RemiseBonFacVGEdt.Focused then
           BonFVRemiseHTNewLbl.Caption:='0';
           RemisePerctageBonFacVGEdt.Text:='';
           BonFVTotalHTNewLbl.Caption:=BonFacVTotalHTLbl.Caption;
-          MainForm.Bonp_fac_listTable.Refresh;
+//          MainForm.Bonp_fac_listTable.Refresh;
         end;
  end;
 end;
@@ -2414,7 +2414,7 @@ end;
 
 procedure TBonFacPGestionF.RemiseBonFacVGEdtEnter(Sender: TObject);
 begin
-MainForm.Bonp_fac_listTable.Refresh;
+//MainForm.Bonp_fac_listTable.Refresh;
  RemisePerctageBonFacVGEdtChange(Sender);
 end;
 
@@ -2435,15 +2435,15 @@ const
   N = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0',',','.', Char(VK_back)];
    F = ['.'];
 begin
-  if not(Key in N) then
-  begin
-     key := #0;
-  end;
+//  if not(Key in N) then
+//  begin
+//     key := #0;
+//  end;
 
-   if (Key in F) then
-  begin
-    key :=  #44;
-  end;
+//   if (Key in F) then
+//  begin
+//    key :=  #44;
+//  end;
   if (Key = '.') AND (Pos(Key, (RemiseBonFacVGEdt.Text)) > 0) Then
   begin
       Key := #0;

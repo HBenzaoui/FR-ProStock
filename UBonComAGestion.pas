@@ -2219,15 +2219,15 @@ const
   N = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0',',','.', Char(VK_back)];
    F = ['.'];
 begin
-  if not(Key in N) then
-  begin
-     key := #0;
-  end;
-
-   if (Key in F) then
-  begin
-    key :=  #44;
-  end;
+//  if not(Key in N) then
+//  begin
+//     key := #0;
+//  end;
+//
+//   if (Key in F) then
+//  begin
+//    key :=  #44;
+//  end;
   if (Key = '.') AND (Pos(Key, (RemiseBonComGEdt.Text)) > 0) Then
   begin
       Key := #0;
@@ -2857,7 +2857,7 @@ end;
 
 procedure TBonComAGestionF.RemiseBonComGEdtEnter(Sender: TObject);
 begin
-DataModuleF.Bona_com_listTable.Refresh;
+//DataModuleF.Bona_com_listTable.Refresh;
  RemisePerctageBonComGEdtChange(Sender);
 end;
 
