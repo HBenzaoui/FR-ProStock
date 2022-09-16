@@ -4374,7 +4374,7 @@ object DataModuleF: TDataModuleF
   end
   object SQLQuery3: TFDQuery
     FilterOptions = [foCaseInsensitive]
-    Connection = MainForm.GstockdcConnection
+    Connection = GstockdcConnection02
     Left = 76
     Top = 336
   end

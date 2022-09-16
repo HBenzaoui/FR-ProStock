@@ -1,7 +1,7 @@
 object BonComAF: TBonComAF
   Left = 2219
   Top = 177
-  Caption = 'Bon de Commande'
+  Caption = 'Commande Fournisseur'
   ClientHeight = 741
   ClientWidth = 951
   Color = clBtnFace
