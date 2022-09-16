@@ -671,7 +671,7 @@ InvoiceID :Integer;
          MainForm.SQLQuery3.Active:= False;
          MainForm.SQLQuery3.SQL.Clear;
 //         MainForm.SQLQuery3.SQL.Text:= BonComAGestionF.BCFLSQL
-         MainForm.SQLQuery3.SQL.Text:= ' SELECT BCFL.code_bacom,BCFL.code_bacoml,BCFL.tva_p, '
+         MainForm.SQLQuery3.SQL.Text:= ' SELECT BCFL.code_bacoml,BCFL.tva_p, '
       +'   (((BCFL.prixht_p * BCFL.tva_p)/100)+BCFL.prixht_p) AS PrixATTC, '
       +'   ((BCFL.prixht_p * BCFL.qut_p) * cond_p) AS MontantHT, '
       +'   (((((BCFL.prixht_p * BCFL.tva_p)/100)+BCFL.prixht_p) * BCFL.qut_p)*cond_p) AS MontantTTC, '
@@ -826,7 +826,7 @@ InvoiceID :Integer;
           MainForm.SQLQuery3.Active:= False;
           MainForm.SQLQuery3.SQL.Clear;
 //          MainForm.SQLQuery3.SQL.Text:= BonComVGestionF.BCCLSQL
-          MainForm.SQLQuery3.SQL.Text:= 'Select BCCL.code_bvcom,BCCL.code_bvcoml,BCCL.tva_p, '
+          MainForm.SQLQuery3.SQL.Text:= 'Select BCCL.code_bvcoml,BCCL.tva_p, '
           +' (((BCCL.prixvd_p * BCCL.tva_p)/100)+BCCL.prixvd_p) AS PrixVTTC, '
           +' ((BCCL.prixht_p * BCCL.qut_p) * cond_p) AS MontantAHT, '
           +' ((BCCL.prixvd_p * BCCL.qut_p) * cond_p) AS MontantHT, '
@@ -985,7 +985,7 @@ InvoiceID :Integer;
           MainForm.SQLQuery3.Active:= False;
           MainForm.SQLQuery3.SQL.Clear;
 //          MainForm.SQLQuery3.SQL.Text:= BonRetVGestionF.BRVLSQL
-          MainForm.SQLQuery3.SQL.Text:= 'Select BRVL.code_bvret,BRVL.code_bvretl,BRVL.tva_p,'
+          MainForm.SQLQuery3.SQL.Text:= 'Select BRVL.code_bvretl,BRVL.tva_p,'
           +' (((BRVL.prixvd_p * BRVL.tva_p)/100)+BRVL.prixvd_p) AS PrixVTTC, '
           +' ((BRVL.prixht_p * BRVL.qut_p) * cond_p) AS MontantAHT, '
           +' ((BRVL.prixvd_p * BRVL.qut_p) * cond_p) AS MontantHT, '
