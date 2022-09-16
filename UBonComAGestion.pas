@@ -32,7 +32,7 @@ uses
   dxSkinValentine, dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
   dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
   dxSkinXmas2008Blue, cxTextEdit, cxMaskEdit, cxDropDownEdit, Vcl.Menus,
-  Vcl.AppEvnts, frxExportBaseDialog;
+  Vcl.AppEvnts, frxExportBaseDialog, System.Actions, Vcl.ActnList;
 
 type
   TBonComAGestionF = class(TForm)
@@ -158,6 +158,18 @@ type
     ApplicationEvents1: TApplicationEvents;
     Label31: TLabel;
     ListFourBonComGBtn: TAdvToolButton;
+    Label33: TLabel;
+    ActionList1: TActionList;
+    F3: TAction;
+    F4: TAction;
+    F5: TAction;
+    F6: TAction;
+    F7: TAction;
+    F8: TAction;
+    F9: TAction;
+    F10: TAction;
+    F11: TAction;
+    F12: TAction;
     procedure ProduitBonComGCbxEnter(Sender: TObject);
     procedure ProduitBonComGCbxKeyPress(Sender: TObject; var Key: Char);
     procedure FournisseurBonComGCbxEnter(Sender: TObject);
@@ -223,6 +235,16 @@ type
     procedure ProduitsListDBGridEhKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure FournisseurBonComGCbxSelect(Sender: TObject);
+    procedure F3Execute(Sender: TObject);
+    procedure F4Execute(Sender: TObject);
+    procedure F5Execute(Sender: TObject);
+    procedure F6Execute(Sender: TObject);
+    procedure F7Execute(Sender: TObject);
+    procedure F8Execute(Sender: TObject);
+    procedure F9Execute(Sender: TObject);
+    procedure F10Execute(Sender: TObject);
+    procedure F11Execute(Sender: TObject);
+    procedure F12Execute(Sender: TObject);
   private
     procedure GettingData;
     procedure GettingDataSansTax;
@@ -956,6 +978,144 @@ I : Integer;
   end;
 
 
+
+
+procedure TBonComAGestionF.F3Execute(Sender: TObject);
+begin
+     //--- this is to focus in produit --------------------------
+  if  AddBAComBonComGBtn.Enabled = False then
+  begin
+     ProduitBonComGCbx.SetFocus;
+  end;
+end;
+
+procedure TBonComAGestionF.F4Execute(Sender: TObject);
+begin
+   if AddBAComBonComGBtn.Enabled = True then
+  begin
+     AddBAComBonComGBtnClick(Screen);
+  end;
+end;
+
+procedure TBonComAGestionF.F5Execute(Sender: TObject);
+begin
+  if EditBAComBonComGBtn.Enabled = True then
+  begin
+     EditBAComBonComGBtnClick(Screen);
+  end;
+end;
+
+procedure TBonComAGestionF.F6Execute(Sender: TObject);
+Var I :Integer;
+begin
+  //--- this is to switch between produits and quntity--------------------------
+  if EditBAComBonComGBtn.Enabled = False then
+  begin
+       ProduitsListDBGridEh.SetFocus;
+       if ProduitsListDBGridEh.SelectedField.FieldName <>'qut_p' then
+       begin
+        for I := 0 to ProduitsListDBGridEh.FieldCount do
+        begin
+          if ProduitsListDBGridEh.SelectedField.FieldName ='qut_p' then
+          begin
+            ProduitsListDBGridEh.SelectedIndex:= i - 1;
+            Break    ;
+          end else
+              begin
+               ProduitsListDBGridEh.SelectedIndex:=i;
+              end;
+        end;
+       end;
+  end;
+end;
+
+procedure TBonComAGestionF.F7Execute(Sender: TObject);
+Var I: Integer;
+begin
+  //--- this is to switch between produits and prix----------------------------
+  if EditBAComBonComGBtn.Enabled = False then
+  begin
+       ProduitsListDBGridEh.SetFocus;
+       if ProduitsListDBGridEh.SelectedField.FieldName <>'prixht_p' then
+       begin
+        for I := 0 to ProduitsListDBGridEh.FieldCount do
+        begin
+          if ProduitsListDBGridEh.SelectedField.FieldName ='prixht_p' then
+          begin
+            ProduitsListDBGridEh.SelectedIndex:= i - 1;
+            Break    ;
+          end else
+              begin
+               ProduitsListDBGridEh.SelectedIndex:=i;
+              end;
+        end;
+       end;
+  end;
+
+end;
+
+procedure TBonComAGestionF.F8Execute(Sender: TObject);
+begin
+   if EditBAComBonComGBtn.Enabled = False then
+  begin
+     ListAddProduitBonComGBtnClick(Screen);
+  end;
+end;
+
+procedure TBonComAGestionF.F9Execute(Sender: TObject);
+begin
+  if ValiderBAComBonComGBtn.Enabled = True then
+  begin
+    ValiderBAComBonComGBtnClick(Screen);
+  end;
+end;
+
+procedure TBonComAGestionF.F10Execute(Sender: TObject);
+begin
+  if EditBAComBonComGBtn.Enabled = False then
+  begin
+     ListFourBonComGBtnClick(Screen);
+  end;
+end;
+
+procedure TBonComAGestionF.F11Execute(Sender: TObject);
+begin
+  if NewAddProduitBonComGBtn.Enabled = True then
+  begin
+     NewAddProduitBonComGBtnClick(Screen);
+  end;
+end;
+
+procedure TBonComAGestionF.F12Execute(Sender: TObject);
+var
+Ini: TIniFile;
+indexP: Integer;
+begin
+  if ValiderBAComBonComGImg.ImageIndex <> 1 then
+  begin
+        Ini := TIniFile.Create(ChangeFileExt(Application.ExeName,'.ini')) ;
+        indexP:= Ini.ReadInteger('', 'Format BCF',0);
+        if (indexP = 0) or (indexP = -1) then
+        begin
+         B1Click(Screen);
+        end;
+        if indexP = 1 then
+        begin
+          BondeCommande1Click(Screen);
+        end;
+        if indexP = 2 then
+        begin
+          Bondecommande2Click(Screen);
+        end;
+        if indexP = 3 then
+        begin
+          Bondecommandehorstaxe1Click(Screen);
+        end;
+        Ini.Free;
+  end;
+
+end;
+
 procedure TBonComAGestionF.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
 MainForm.SaveGridLayout(ProduitsListDBGridEh,GetCurrentDir +'\bin\gc_BCF');
@@ -1228,134 +1388,137 @@ end;
 
 procedure TBonComAGestionF.ApplicationEvents1ShortCut(var Msg: TWMKey;
   var Handled: Boolean);
-var
-NEWCredit,OLDCredit,NEWCreditLbl,OLDCreditLbl  : TfrxMemoView;
-LineCredit,LineCreditTop :TfrxShapeView;
-I : Integer;
-Ini: TIniFile;
-indexP: Integer;
+//var
+//NEWCredit,OLDCredit,NEWCreditLbl,OLDCreditLbl  : TfrxMemoView;
+//LineCredit,LineCreditTop :TfrxShapeView;
+//I : Integer;
+//Ini: TIniFile;
+//indexP: Integer;
 begin
-
-   //--- this is to focus in produit --------------------------
-  if  (GetKeyState(VK_F3) < 0) and (AddBAComBonComGBtn.Enabled = False ) then
-  begin
-      ProduitBonComGCbx.SetFocus;
-      Handled := true;
-  end;
-
-
-
-  if  (GetKeyState(VK_F4) < 0) and (AddBAComBonComGBtn.Enabled = True ) then
-  begin
-      AddBAComBonComGBtnClick(Screen);
-
-    Handled := true;
-  end;
-
-
-  if  (GetKeyState(VK_F5) < 0) and (EditBAComBonComGBtn.Enabled = True ) then
-  begin
-      EditBAComBonComGBtnClick(Screen);
-
-    Handled := true;
-  end;
-
-     //--- this is to switch between produits and quntity--------------------------
-   if  (GetKeyState(VK_F6) < 0) and (EditBAComBonComGBtn.Enabled = False ) then
-  begin
-       ProduitsListDBGridEh.SetFocus;
-       if ProduitsListDBGridEh.SelectedField.FieldName <>'qut_p' then
-       begin
-        for I := 0 to ProduitsListDBGridEh.FieldCount do
-        begin
-          if ProduitsListDBGridEh.SelectedField.FieldName ='qut_p' then
-          begin
-            ProduitsListDBGridEh.SelectedIndex:= i - 1;
-            Handled := true;
-            Break    ;
-          end else
-              begin
-               ProduitsListDBGridEh.SelectedIndex:=i;
-              end;
-        end;
-       end;
-       Handled := true;
-  end;
-  //--- this is to switch between produits and prix----------------------------
-   if  (GetKeyState(VK_F7) < 0) and (EditBAComBonComGBtn.Enabled = False ) then
-  begin
-       ProduitsListDBGridEh.SetFocus;
-       if ProduitsListDBGridEh.SelectedField.FieldName <>'prixht_p' then
-       begin
-        for I := 0 to ProduitsListDBGridEh.FieldCount do
-        begin
-          if ProduitsListDBGridEh.SelectedField.FieldName ='prixht_p' then
-          begin
-            ProduitsListDBGridEh.SelectedIndex:= i - 1;
-            Handled := true;
-            Break    ;
-          end else
-              begin
-               ProduitsListDBGridEh.SelectedIndex:=i;
-              end;
-        end;
-       end;
-       Handled := true;
-  end;
-
-
-  if  (GetKeyState(VK_F8) < 0) and (EditBAComBonComGBtn.Enabled = False ) then
-  begin
-      ListAddProduitBonComGBtnClick(Screen);
-
-    Handled := true;
-  end;
-
-   if  (GetKeyState(VK_F9) < 0)  then
-  begin
-
-      ValiderBAComBonComGBtnClick(Screen);
-
-    Handled := true;
-  end;
-
-     //--- this is for new produit--------------------------
-     if  (GetKeyState(VK_F11) < 0)  then
-  begin
-
-      NewAddProduitBonComGBtnClick(Screen);
-
-    Handled := true;
-  end;
-
-     if  (GetKeyState(VK_F12) < 0)  then
-  begin
-
-     if ValiderBAComBonComGImg.ImageIndex <> 1 then
-     begin
-        Ini := TIniFile.Create(ChangeFileExt(Application.ExeName,'.ini')) ;
-        indexP:= Ini.ReadInteger('', 'Format FA',0);
-        if (indexP = 0) or (indexP = -1) then
-        begin
-         B1Click(Screen);
-        end;
-        if indexP = 1 then
-        begin
-          BondeCommande1Click(Screen);
-        end;
-        if indexP = 2 then
-        begin
-          Bondecommande2Click(Screen);
-        end;
-        if indexP = 3 then
-        begin
-          Bondecommandehorstaxe1Click(Screen);
-        end;
-
-        Ini.Free;
-        Handled := true;
-     end;
-  end;
+//
+//   //--- this is to focus in produit --------------------------
+//  if  (GetKeyState(VK_F3) < 0) and (AddBAComBonComGBtn.Enabled = False ) then
+//  begin
+//      ProduitBonComGCbx.SetFocus;
+//      Handled := true;
+//  end;
+//
+//  if  (GetKeyState(VK_F4) < 0) and (AddBAComBonComGBtn.Enabled = True ) then
+//  begin
+//      AddBAComBonComGBtnClick(Screen);
+//
+//    Handled := true;
+//  end;
+//
+//  if  (GetKeyState(VK_F5) < 0) and (EditBAComBonComGBtn.Enabled = True ) then
+//  begin
+//      EditBAComBonComGBtnClick(Screen);
+//
+//    Handled := true;
+//  end;
+//
+//     //--- this is to switch between produits and quntity--------------------------
+//   if  (GetKeyState(VK_F6) < 0) and (EditBAComBonComGBtn.Enabled = False ) then
+//  begin
+//       ProduitsListDBGridEh.SetFocus;
+//       if ProduitsListDBGridEh.SelectedField.FieldName <>'qut_p' then
+//       begin
+//        for I := 0 to ProduitsListDBGridEh.FieldCount do
+//        begin
+//          if ProduitsListDBGridEh.SelectedField.FieldName ='qut_p' then
+//          begin
+//            ProduitsListDBGridEh.SelectedIndex:= i - 1;
+//            Handled := true;
+//            Break    ;
+//          end else
+//              begin
+//               ProduitsListDBGridEh.SelectedIndex:=i;
+//              end;
+//        end;
+//       end;
+//       Handled := true;
+//  end;
+//  //--- this is to switch between produits and prix----------------------------
+//   if  (GetKeyState(VK_F7) < 0) and (EditBAComBonComGBtn.Enabled = False ) then
+//  begin
+//       ProduitsListDBGridEh.SetFocus;
+//       if ProduitsListDBGridEh.SelectedField.FieldName <>'prixht_p' then
+//       begin
+//        for I := 0 to ProduitsListDBGridEh.FieldCount do
+//        begin
+//          if ProduitsListDBGridEh.SelectedField.FieldName ='prixht_p' then
+//          begin
+//            ProduitsListDBGridEh.SelectedIndex:= i - 1;
+//            Handled := true;
+//            Break    ;
+//          end else
+//              begin
+//               ProduitsListDBGridEh.SelectedIndex:=i;
+//              end;
+//        end;
+//       end;
+//       Handled := true;
+//  end;
+//
+//  if  (GetKeyState(VK_F8) < 0) and (EditBAComBonComGBtn.Enabled = False ) then
+//  begin
+//      ListAddProduitBonComGBtnClick(Screen);
+//
+//    Handled := true;
+//  end;
+//
+//  if (GetKeyState(VK_F9) < 0) AND (ValiderBAComBonComGBtn.Enabled = True)
+//      AND NOT (Assigned(FSplashVersement)) then
+//  begin
+//      ValiderBAComBonComGBtnClick(Screen);
+//
+//    Handled := true;
+//  end else
+//  if  (GetKeyState(VK_F9) < 0) AND (ValiderBAComBonComGBtn.Enabled = True)
+//       AND NOT (FSplashVersement.Showing) then
+//      begin
+//        ValiderBAComBonComGBtnClick(Screen);
+//
+//      Handled := true;
+//      end;
+//
+//     //--- this is for new produit--------------------------
+//     if  (GetKeyState(VK_F11) < 0)  then
+//  begin
+//
+//      NewAddProduitBonComGBtnClick(Screen);
+//
+//    Handled := true;
+//  end;
+//
+//     if  (GetKeyState(VK_F12) < 0)  then
+//  begin
+//
+//     if ValiderBAComBonComGImg.ImageIndex <> 1 then
+//     begin
+//        Ini := TIniFile.Create(ChangeFileExt(Application.ExeName,'.ini')) ;
+//        indexP:= Ini.ReadInteger('', 'Format FA',0);
+//        if (indexP = 0) or (indexP = -1) then
+//        begin
+//         B1Click(Screen);
+//        end;
+//        if indexP = 1 then
+//        begin
+//          BondeCommande1Click(Screen);
+//        end;
+//        if indexP = 2 then
+//        begin
+//          Bondecommande2Click(Screen);
+//        end;
+//        if indexP = 3 then
+//        begin
+//          Bondecommandehorstaxe1Click(Screen);
+//        end;
+//
+//        Ini.Free;
+//        Handled := true;
+//     end;
+//  end;
 
 end;
 

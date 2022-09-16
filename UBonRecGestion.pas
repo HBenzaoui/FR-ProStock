@@ -32,7 +32,7 @@ uses
   dxSkinValentine, dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
   dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
   dxSkinXmas2008Blue, cxTextEdit, cxMaskEdit, cxDropDownEdit, Vcl.Menus,
-  Vcl.AppEvnts, frxExportBaseDialog;
+  Vcl.AppEvnts, frxExportBaseDialog, System.Actions, Vcl.ActnList;
 
 type
   TBonRecGestionF = class(TForm)
@@ -162,6 +162,17 @@ type
     SNumberProduitBonRecGBtn: TAdvToolButton;
     S01: TPanel;
     Label33: TLabel;
+    ActionList1: TActionList;
+    F3: TAction;
+    F4: TAction;
+    F5: TAction;
+    F6: TAction;
+    F7: TAction;
+    F8: TAction;
+    F9: TAction;
+    F10: TAction;
+    F11: TAction;
+    F12: TAction;
     procedure ProduitBonRecGCbxEnter(Sender: TObject);
     procedure ProduitBonRecGCbxKeyPress(Sender: TObject; var Key: Char);
     procedure FournisseurBonRecGCbxEnter(Sender: TObject);
@@ -228,6 +239,16 @@ type
       Shift: TShiftState);
     procedure SNumberProduitBonRecGBtnClick(Sender: TObject);
     procedure FournisseurBonRecGCbxSelect(Sender: TObject);
+    procedure F3Execute(Sender: TObject);
+    procedure F4Execute(Sender: TObject);
+    procedure F5Execute(Sender: TObject);
+    procedure F6Execute(Sender: TObject);
+    procedure F7Execute(Sender: TObject);
+    procedure F8Execute(Sender: TObject);
+    procedure F9Execute(Sender: TObject);
+    procedure F10Execute(Sender: TObject);
+    procedure F11Execute(Sender: TObject);
+    procedure F12Execute(Sender: TObject);
   private
     procedure GettingData;
     procedure GettingDataSansTax;
@@ -410,7 +431,7 @@ begin
 
       MainForm.SQLQuery.Active:=False;
       MainForm.SQLQuery.SQL.Clear;
-      MainForm.SQLQuery.SQL.Text:= 'SELECT nom_p FROM produit ';
+      MainForm.SQLQuery.SQL.Text:= 'SELECT nom_p FROM produit ORDER By code_p';
       MainForm.SQLQuery.Active := True;
 
       MainForm.SQLQuery.first;
@@ -435,7 +456,7 @@ begin
 
       MainForm.SQLQuery.Active:=False;
       MainForm.SQLQuery.SQL.Clear;
-      MainForm.SQLQuery.SQL.Text:= 'SELECT refer_p FROM produit ';
+      MainForm.SQLQuery.SQL.Text:= 'SELECT refer_p FROM produit ORDER By code_p';
       MainForm.SQLQuery.Active := True;
 
       MainForm.SQLQuery.first;
@@ -484,7 +505,7 @@ begin
         //This is for adding qut if it the same produit
       MainForm.SQLQuery4.Active := False;
       MainForm.SQLQuery4.SQL.Clear;
-      MainForm.SQLQuery4.SQL.Text := 'SELECT qut_p,code_p FROM bona_rec_list WHERE code_barec = ' + QuotedStr(IntToStr(MainForm.Bona_recTable.FieldByName('code_barec').AsInteger));
+      MainForm.SQLQuery4.SQL.Text := 'SELECT code_barecl,qut_p,code_p FROM bona_rec_list WHERE code_barec = ' + QuotedStr(IntToStr(MainForm.Bona_recTable.FieldByName('code_barec').AsInteger));
       MainForm.SQLQuery4.Active := True;
 
       MainForm.SQLQuery4.First;
@@ -1241,143 +1262,155 @@ end;
 
 procedure TBonRecGestionF.ApplicationEvents1ShortCut(var Msg: TWMKey;
   var Handled: Boolean);
-var
-NEWCredit,OLDCredit,NEWCreditLbl,OLDCreditLbl  : TfrxMemoView;
-LineCredit,LineCreditTop :TfrxShapeView;
-I : Integer;
-Ini: TIniFile;
-indexP: Integer;
+//var
+//NEWCredit,OLDCredit,NEWCreditLbl,OLDCreditLbl  : TfrxMemoView;
+//LineCredit,LineCreditTop :TfrxShapeView;
+//I : Integer;
+//Ini: TIniFile;
+//indexP: Integer;
 begin
 
-   //--- this is to focus in produit --------------------------
-  if  (GetKeyState(VK_F3) < 0) and (AddBARecBonRecGBtn.Enabled = False ) then
-  begin
-      ProduitBonRecGCbx.SetFocus;
-      Handled := true;
-  end;
+//   //--- this is to focus in produit --------------------------
+//  if  (GetKeyState(VK_F3) < 0) and (AddBARecBonRecGBtn.Enabled = False )  then
+//  begin
+//      ProduitBonRecGCbx.SetFocus;
+//      Handled := true;
+//  end;
+//  else
+//  if  (GetKeyState(VK_F3) < 0) and (AddBARecBonRecGBtn.Enabled = False ) AND
+//      NOT (FSplashVersement.Showing) AND NOT (FastProduitsListF.Showing) AND NOT (ProduitGestionF.Showing) then
+//  begin
+//      ProduitBonRecGCbx.SetFocus;
+//      Handled := true;
+//  end;
 
 
-
-  if  (GetKeyState(VK_F4) < 0) and (AddBARecBonRecGBtn.Enabled = True ) then
-  begin
-      AddBARecBonRecGBtnClick(Screen);
-
-    Handled := true;
-  end;
-
-
-  if  (GetKeyState(VK_F5) < 0) and (EditBARecBonRecGBtn.Enabled = True ) then
-  begin
-      EditBARecBonRecGBtnClick(Screen);
-
-    Handled := true;
-  end;
-
-     //--- this is to switch between produits and quntity--------------------------
-   if  (GetKeyState(VK_F6) < 0) and (EditBARecBonRecGBtn.Enabled = False ) then
-  begin
-       ProduitsListDBGridEh.SetFocus;
-       if ProduitsListDBGridEh.SelectedField.FieldName <>'qut_p' then
-       begin
-        for I := 0 to ProduitsListDBGridEh.FieldCount do
-        begin
-          if ProduitsListDBGridEh.SelectedField.FieldName ='qut_p' then
-          begin
-            ProduitsListDBGridEh.SelectedIndex:= i - 1;
-            Handled := true;
-            Break    ;
-          end else
-              begin
-               ProduitsListDBGridEh.SelectedIndex:=i;
-              end;
-        end;
-       end;
-       Handled := true;
-  end;
-  //--- this is to switch between produits and prix----------------------------
-   if  (GetKeyState(VK_F7) < 0) and (EditBARecBonRecGBtn.Enabled = False ) then
-  begin
-       ProduitsListDBGridEh.SetFocus;
-       if ProduitsListDBGridEh.SelectedField.FieldName <>'prixht_p' then
-       begin
-        for I := 0 to ProduitsListDBGridEh.FieldCount do
-        begin
-          if ProduitsListDBGridEh.SelectedField.FieldName ='prixht_p' then
-          begin
-            ProduitsListDBGridEh.SelectedIndex:= i - 1;
-            Handled := true;
-            Break    ;
-          end else
-              begin
-               ProduitsListDBGridEh.SelectedIndex:=i;
-              end;
-        end;
-       end;
-       Handled := true;
-  end;
+//  if  (GetKeyState(VK_F4) < 0) and (AddBARecBonRecGBtn.Enabled = True ) then
+//  begin
+//      AddBARecBonRecGBtnClick(Screen);
+//
+//    Handled := true;
+//  end;
 
 
-  if  (GetKeyState(VK_F8) < 0) and (EditBARecBonRecGBtn.Enabled = False ) then
-  begin
-      ListAddProduitBonRecGBtnClick(Screen);
+//  if  (GetKeyState(VK_F5) < 0) and (EditBARecBonRecGBtn.Enabled = True ) then
+//  begin
+//      EditBARecBonRecGBtnClick(Screen);
+//
+//    Handled := true;
+//  end;
 
-    Handled := true;
-  end;
+//     //--- this is to switch between produits and quntity--------------------------
+//   if  (GetKeyState(VK_F6) < 0) and (EditBARecBonRecGBtn.Enabled = False ) then
+//  begin
+//       ProduitsListDBGridEh.SetFocus;
+//       if ProduitsListDBGridEh.SelectedField.FieldName <>'qut_p' then
+//       begin
+//        for I := 0 to ProduitsListDBGridEh.FieldCount do
+//        begin
+//          if ProduitsListDBGridEh.SelectedField.FieldName ='qut_p' then
+//          begin
+//            ProduitsListDBGridEh.SelectedIndex:= i - 1;
+//            Handled := true;
+//            Break    ;
+//          end else
+//              begin
+//               ProduitsListDBGridEh.SelectedIndex:=i;
+//              end;
+//        end;
+//       end;
+//       Handled := true;
+//  end;
+//  //--- this is to switch between produits and prix----------------------------
+//   if  (GetKeyState(VK_F7) < 0) and (EditBARecBonRecGBtn.Enabled = False ) then
+//  begin
+//       ProduitsListDBGridEh.SetFocus;
+//       if ProduitsListDBGridEh.SelectedField.FieldName <>'prixht_p' then
+//       begin
+//        for I := 0 to ProduitsListDBGridEh.FieldCount do
+//        begin
+//          if ProduitsListDBGridEh.SelectedField.FieldName ='prixht_p' then
+//          begin
+//            ProduitsListDBGridEh.SelectedIndex:= i - 1;
+//            Handled := true;
+//            Break    ;
+//          end else
+//              begin
+//               ProduitsListDBGridEh.SelectedIndex:=i;
+//              end;
+//        end;
+//       end;
+//       Handled := true;
+//  end;
 
-   if  (GetKeyState(VK_F9) < 0) AND (ValiderBARecBonRecGBtn.Enabled = True)  then
-  begin
 
-      ValiderBARecBonRecGBtnClick(Screen);
+//  if  (GetKeyState(VK_F8) < 0) and (EditBARecBonRecGBtn.Enabled = False ) then
+//  begin
+//      ListAddProduitBonRecGBtnClick(Screen);
+//
+//    Handled := true;
+//  end;
 
-    Handled := true;
-  end;
+//  if (GetKeyState(VK_F9) < 0) AND (ValiderBARecBonRecGBtn.Enabled = True)
+//      AND NOT (Assigned(FSplashVersement)) then
+//  begin
+//    ValiderBARecBonRecGBtnClick(Screen);
+//
+//    Handled := true;
+//  end else
+//  if  (GetKeyState(VK_F9) < 0) AND (ValiderBARecBonRecGBtn.Enabled = True)
+//       AND NOT (FSplashVersement.Showing) then
+//      begin
+//         ValiderBARecBonRecGBtnClick(Screen);
+//
+//        Handled := true;
+//      end;
 
 
-
-  if  (GetKeyState(VK_F10) < 0) and (EditBARecBonRecGBtn.Enabled = False ) then
-  begin
-      ListFourBonRecGBtnClick(Screen);
-
-    Handled := true;
-  end;
-
-     //--- this is for new produit--------------------------
-     if  (GetKeyState(VK_F11) < 0) AND (NewAddProduitBonRecGBtn.Enabled = True) then
-  begin
-
-      NewAddProduitBonRecGBtnClick(Screen);
-
-    Handled := true;
-  end;
-
-     if  (GetKeyState(VK_F12) < 0)  then
-  begin
-
-     if ValiderBARecBonRecGImg.ImageIndex <> 1 then
-     begin
-        Ini := TIniFile.Create(ChangeFileExt(Application.ExeName,'.ini')) ;
-        indexP:= Ini.ReadInteger('', 'Format FA',0);
-        if (indexP = 0) or (indexP = -1) then
-        begin
-         B1Click(Screen);
-        end;
-        if indexP = 1 then
-        begin
-          BondeRception1Click(Screen);
-        end;
-        if indexP = 2 then
-        begin
-          Bonderception2Click(Screen);
-        end;
-        if indexP = 3 then
-        begin
-          Bonderceptionhorstaxe1Click(Screen);
-        end;
-
-        Ini.Free;
-        Handled := true;
-     end;
-  end;
+//  if  (GetKeyState(VK_F10) < 0) and (EditBARecBonRecGBtn.Enabled = False ) then
+//  begin
+//      ListFourBonRecGBtnClick(Screen);
+//
+//    Handled := true;
+//  end;
+//
+//     //--- this is for new produit--------------------------
+//     if  (GetKeyState(VK_F11) < 0) AND (NewAddProduitBonRecGBtn.Enabled = True) then
+//  begin
+//
+//      NewAddProduitBonRecGBtnClick(Screen);
+//
+//    Handled := true;
+//  end;
+//
+//     if  (GetKeyState(VK_F12) < 0)  then
+//  begin
+//
+//     if ValiderBARecBonRecGImg.ImageIndex <> 1 then
+//     begin
+//        Ini := TIniFile.Create(ChangeFileExt(Application.ExeName,'.ini')) ;
+//        indexP:= Ini.ReadInteger('', 'Format FA',0);
+//        if (indexP = 0) or (indexP = -1) then
+//        begin
+//         B1Click(Screen);
+//        end;
+//        if indexP = 1 then
+//        begin
+//          BondeRception1Click(Screen);
+//        end;
+//        if indexP = 2 then
+//        begin
+//          Bonderception2Click(Screen);
+//        end;
+//        if indexP = 3 then
+//        begin
+//          Bonderceptionhorstaxe1Click(Screen);
+//        end;
+//
+//        Ini.Free;
+//        Handled := true;
+//     end;
+//  end;
 
 end;
 
@@ -2699,6 +2732,140 @@ procedure TBonRecGestionF.EditBARecBonRecGBtnClick(Sender: TObject);
 
      FournisseurBonRecGCbxExit(Sender);
 
+end;
+
+procedure TBonRecGestionF.F3Execute(Sender: TObject);
+begin
+   //--- this is to focus in produit --------------------------
+  if  AddBARecBonRecGBtn.Enabled = False then
+  begin
+     ProduitBonRecGCbx.SetFocus;
+  end;
+end;
+
+procedure TBonRecGestionF.F4Execute(Sender: TObject);
+begin
+  if AddBARecBonRecGBtn.Enabled = True then
+  begin
+     AddBARecBonRecGBtnClick(Screen);
+  end;
+end;
+
+procedure TBonRecGestionF.F5Execute(Sender: TObject);
+begin
+  if EditBARecBonRecGBtn.Enabled = True then
+  begin
+     EditBARecBonRecGBtnClick(Screen);
+  end;
+end;
+
+procedure TBonRecGestionF.F6Execute(Sender: TObject);
+Var I :Integer;
+begin
+  //--- this is to switch between produits and quntity--------------------------
+  if EditBARecBonRecGBtn.Enabled = False then
+  begin
+       ProduitsListDBGridEh.SetFocus;
+       if ProduitsListDBGridEh.SelectedField.FieldName <>'qut_p' then
+       begin
+        for I := 0 to ProduitsListDBGridEh.FieldCount do
+        begin
+          if ProduitsListDBGridEh.SelectedField.FieldName ='qut_p' then
+          begin
+            ProduitsListDBGridEh.SelectedIndex:= i - 1;
+            Break    ;
+          end else
+              begin
+               ProduitsListDBGridEh.SelectedIndex:=i;
+              end;
+        end;
+       end;
+  end;
+end;
+
+procedure TBonRecGestionF.F7Execute(Sender: TObject);
+Var I: Integer;
+begin
+  //--- this is to switch between produits and prix----------------------------
+  if EditBARecBonRecGBtn.Enabled = False then
+  begin
+       ProduitsListDBGridEh.SetFocus;
+       if ProduitsListDBGridEh.SelectedField.FieldName <>'prixht_p' then
+       begin
+        for I := 0 to ProduitsListDBGridEh.FieldCount do
+        begin
+          if ProduitsListDBGridEh.SelectedField.FieldName ='prixht_p' then
+          begin
+            ProduitsListDBGridEh.SelectedIndex:= i - 1;
+            Break    ;
+          end else
+              begin
+               ProduitsListDBGridEh.SelectedIndex:=i;
+              end;
+        end;
+       end;
+  end;
+end;
+
+procedure TBonRecGestionF.F8Execute(Sender: TObject);
+begin
+  if EditBARecBonRecGBtn.Enabled = False then
+  begin
+     ListAddProduitBonRecGBtnClick(Screen);
+  end;
+end;
+
+procedure TBonRecGestionF.F9Execute(Sender: TObject);
+begin
+  if ValiderBARecBonRecGBtn.Enabled = True then
+  begin
+    ValiderBARecBonRecGBtnClick(Screen);
+  end;
+end;
+
+procedure TBonRecGestionF.F10Execute(Sender: TObject);
+begin
+  if EditBARecBonRecGBtn.Enabled = False then
+  begin
+     ListFourBonRecGBtnClick(Screen);
+  end;
+end;
+
+procedure TBonRecGestionF.F11Execute(Sender: TObject);
+begin
+  if NewAddProduitBonRecGBtn.Enabled = True then
+  begin
+     NewAddProduitBonRecGBtnClick(Screen);
+  end;
+end;
+
+procedure TBonRecGestionF.F12Execute(Sender: TObject);
+var
+Ini: TIniFile;
+indexP: Integer;
+begin
+  if ValiderBARecBonRecGImg.ImageIndex <> 1 then
+  begin
+        Ini := TIniFile.Create(ChangeFileExt(Application.ExeName,'.ini')) ;
+        indexP:= Ini.ReadInteger('', 'Format BR',0);
+        if (indexP = 0) or (indexP = -1) then
+        begin
+         B1Click(Screen);
+        end;
+        if indexP = 1 then
+        begin
+          BondeRception1Click(Screen);
+        end;
+        if indexP = 2 then
+        begin
+          Bonderception2Click(Screen);
+        end;
+        if indexP = 3 then
+        begin
+          Bonderceptionhorstaxe1Click(Screen);
+        end;
+        Ini.Free;
+  end;
 end;
 
 procedure TBonRecGestionF.AddBARecBonRecGBtnClick(Sender: TObject);

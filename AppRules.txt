@@ -1,0 +1,16 @@
+{Sizes}
+nomp   = 300
+referp = 50		
+nomC-F = 100
+obser  = 1000
+phone  = 25
+email  = 50
+site   = 50
+
+
+num    = 20
+source = 3
+mp     = 25
+
+BCA To Become = BCF
+BCV To Become = BCC

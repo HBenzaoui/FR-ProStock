@@ -32,7 +32,7 @@ uses
   dxSkinValentine, dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
   dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
   dxSkinXmas2008Blue, cxTextEdit, cxMaskEdit, cxDropDownEdit, Vcl.Menus,
-  Vcl.AppEvnts, frxExportBaseDialog;
+  Vcl.AppEvnts, frxExportBaseDialog, System.Actions, Vcl.ActnList;
 
 type
   TBonRetVGestionF = class(TForm)
@@ -158,6 +158,18 @@ type
     ApplicationEvents1: TApplicationEvents;
     Label31: TLabel;
     ListClientBonRetGBtn: TAdvToolButton;
+    Label33: TLabel;
+    ActionList1: TActionList;
+    F3: TAction;
+    F4: TAction;
+    F5: TAction;
+    F6: TAction;
+    F7: TAction;
+    F8: TAction;
+    F9: TAction;
+    F10: TAction;
+    F11: TAction;
+    F12: TAction;
     procedure ProduitBonRetGCbxEnter(Sender: TObject);
     procedure ProduitBonRetGCbxKeyPress(Sender: TObject; var Key: Char);
     procedure ClientBonRetVGCbxEnter(Sender: TObject);
@@ -223,6 +235,16 @@ type
     procedure ProduitsListDBGridEhKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure ClientBonRetVGCbxSelect(Sender: TObject);
+    procedure F3Execute(Sender: TObject);
+    procedure F4Execute(Sender: TObject);
+    procedure F5Execute(Sender: TObject);
+    procedure F6Execute(Sender: TObject);
+    procedure F7Execute(Sender: TObject);
+    procedure F8Execute(Sender: TObject);
+    procedure F9Execute(Sender: TObject);
+    procedure F10Execute(Sender: TObject);
+    procedure F11Execute(Sender: TObject);
+    procedure F12Execute(Sender: TObject);
   private
     procedure GettingData;
     procedure GettingDataSansTax;
@@ -935,7 +957,7 @@ end;
 procedure TBonRetVGestionF.ClientBonRetVGCbxEnter(Sender: TObject);
 var
 I : Integer;
-  begin
+begin
           ClientBonRetVGCbx.Items.Clear;
 //          MainForm.SQLQuery.DisableControls;
           MainForm.SQLQuery.Active:=false;
@@ -954,7 +976,141 @@ I : Integer;
 
           MainForm.SQLQuery.Active:=false;
           MainForm.SQLQuery.SQL.Clear;
+end;
+
+procedure TBonRetVGestionF.F3Execute(Sender: TObject);
+begin
+   //--- this is to focus in produit --------------------------
+  if  AddBVRetBonRetGBtn.Enabled = False then
+  begin
+     ProduitBonRetGCbx.SetFocus;
   end;
+end;
+
+procedure TBonRetVGestionF.F4Execute(Sender: TObject);
+begin
+  if AddBVRetBonRetGBtn.Enabled = True then
+  begin
+     AddBVRetBonRetGBtnClick(Screen);
+  end;
+end;
+
+procedure TBonRetVGestionF.F5Execute(Sender: TObject);
+begin
+  if EditBVRetBonRetGBtn.Enabled = True then
+  begin
+     EditBVRetBonRetGBtnClick(Screen);
+  end;
+end;
+
+procedure TBonRetVGestionF.F6Execute(Sender: TObject);
+Var I :Integer;
+begin
+  //--- this is to switch between produits and quntity--------------------------
+  if EditBVRetBonRetGBtn.Enabled = False then
+  begin
+       ProduitsListDBGridEh.SetFocus;
+       if ProduitsListDBGridEh.SelectedField.FieldName <>'qut_p' then
+       begin
+        for I := 0 to ProduitsListDBGridEh.FieldCount do
+        begin
+          if ProduitsListDBGridEh.SelectedField.FieldName ='qut_p' then
+          begin
+            ProduitsListDBGridEh.SelectedIndex:= i - 1;
+            Break    ;
+          end else
+              begin
+               ProduitsListDBGridEh.SelectedIndex:=i;
+              end;
+        end;
+       end;
+  end;
+end;
+
+procedure TBonRetVGestionF.F7Execute(Sender: TObject);
+Var I: Integer;
+begin
+  //--- this is to switch between produits and prix----------------------------
+  if EditBVRetBonRetGBtn.Enabled = False then
+  begin
+       ProduitsListDBGridEh.SetFocus;
+       if ProduitsListDBGridEh.SelectedField.FieldName <>'prixvd_p' then
+       begin
+        for I := 0 to ProduitsListDBGridEh.FieldCount do
+        begin
+          if ProduitsListDBGridEh.SelectedField.FieldName ='prixvd_p' then
+          begin
+            ProduitsListDBGridEh.SelectedIndex:= i - 1;
+            Break    ;
+          end else
+              begin
+               ProduitsListDBGridEh.SelectedIndex:=i;
+              end;
+        end;
+       end;
+  end;
+end;
+
+procedure TBonRetVGestionF.F8Execute(Sender: TObject);
+begin
+  if EditBVRetBonRetGBtn.Enabled = False then
+  begin
+     ListAddProduitBonRetGBtnClick(Screen);
+  end;
+end;
+
+procedure TBonRetVGestionF.F9Execute(Sender: TObject);
+begin
+  if ValiderBVRetBonRetGBtn.Enabled = True then
+  begin
+    ValiderBVRetBonRetGBtnClick(Screen);
+  end;
+end;
+
+procedure TBonRetVGestionF.F10Execute(Sender: TObject);
+begin
+  if EditBVRetBonRetGBtn.Enabled = False then
+  begin
+     ListClientBonRetGBtnClick(Screen);
+  end;
+end;
+
+procedure TBonRetVGestionF.F11Execute(Sender: TObject);
+begin
+  if NewAddProduitBonRetGBtn.Enabled = True then
+  begin
+     NewAddProduitBonRetGBtnClick(Screen);
+  end;
+end;
+
+procedure TBonRetVGestionF.F12Execute(Sender: TObject);
+var
+Ini: TIniFile;
+indexP: Integer;
+begin
+  if ValiderBVRetBonRetGImg.ImageIndex <> 1 then
+  begin
+    Ini := TIniFile.Create(ChangeFileExt(Application.ExeName,'.ini')) ;
+    indexP:= Ini.ReadInteger('', 'Format BRC',0);
+    if (indexP = 0) or (indexP = -1) then
+    begin
+     B1Click(Screen);
+    end;
+    if indexP = 1 then
+    begin
+      BondeRetourClient1Click(Screen);
+    end;
+    if indexP = 2 then
+    begin
+      BondeRetourClient2Click(Screen);
+    end;
+    if indexP = 3 then
+    begin
+      BondeRetourClienthorstaxe1Click(Screen);
+    end;
+    Ini.Free;
+  end;
+end;
 
 
 procedure TBonRetVGestionF.FormClose(Sender: TObject; var Action: TCloseAction);
@@ -1229,134 +1385,141 @@ end;
 
 procedure TBonRetVGestionF.ApplicationEvents1ShortCut(var Msg: TWMKey;
   var Handled: Boolean);
-var
-NEWCredit,OLDCredit,NEWCreditLbl,OLDCreditLbl  : TfrxMemoView;
-LineCredit,LineCreditTop :TfrxShapeView;
-I : Integer;
-Ini: TIniFile;
-indexP: Integer;
+//var
+//NEWCredit,OLDCredit,NEWCreditLbl,OLDCreditLbl  : TfrxMemoView;
+//LineCredit,LineCreditTop :TfrxShapeView;
+//I : Integer;
+//Ini: TIniFile;
+//indexP: Integer;
 begin
 
-   //--- this is to focus in produit --------------------------
-  if  (GetKeyState(VK_F3) < 0) and (AddBVRetBonRetGBtn.Enabled = False ) then
-  begin
-      ProduitBonRetGCbx.SetFocus;
-      Handled := true;
-  end;
-
-
-
-  if  (GetKeyState(VK_F4) < 0) and (AddBVRetBonRetGBtn.Enabled = True ) then
-  begin
-      AddBVRetBonRetGBtnClick(Screen);
-
-    Handled := true;
-  end;
-
-
-  if  (GetKeyState(VK_F5) < 0) and (EditBVRetBonRetGBtn.Enabled = True ) then
-  begin
-      EditBVRetBonRetGBtnClick(Screen);
-
-    Handled := true;
-  end;
-
-     //--- this is to switch between produits and quntity--------------------------
-   if  (GetKeyState(VK_F6) < 0) and (EditBVRetBonRetGBtn.Enabled = False ) then
-  begin
-       ProduitsListDBGridEh.SetFocus;
-       if ProduitsListDBGridEh.SelectedField.FieldName <>'qut_p' then
-       begin
-        for I := 0 to ProduitsListDBGridEh.FieldCount do
-        begin
-          if ProduitsListDBGridEh.SelectedField.FieldName ='qut_p' then
-          begin
-            ProduitsListDBGridEh.SelectedIndex:= i - 1;
-            Handled := true;
-            Break    ;
-          end else
-              begin
-               ProduitsListDBGridEh.SelectedIndex:=i;
-              end;
-        end;
-       end;
-       Handled := true;
-  end;
-  //--- this is to switch between produits and prix----------------------------
-   if  (GetKeyState(VK_F7) < 0) and (EditBVRetBonRetGBtn.Enabled = False ) then
-  begin
-       ProduitsListDBGridEh.SetFocus;
-       if ProduitsListDBGridEh.SelectedField.FieldName <>'prixht_p' then
-       begin
-        for I := 0 to ProduitsListDBGridEh.FieldCount do
-        begin
-          if ProduitsListDBGridEh.SelectedField.FieldName ='prixht_p' then
-          begin
-            ProduitsListDBGridEh.SelectedIndex:= i - 1;
-            Handled := true;
-            Break    ;
-          end else
-              begin
-               ProduitsListDBGridEh.SelectedIndex:=i;
-              end;
-        end;
-       end;
-       Handled := true;
-  end;
-
-
-  if  (GetKeyState(VK_F8) < 0) and (EditBVRetBonRetGBtn.Enabled = False ) then
-  begin
-      ListAddProduitBonRetGBtnClick(Screen);
-
-    Handled := true;
-  end;
-
-   if  (GetKeyState(VK_F9) < 0)  then
-  begin
-
-      ValiderBVRetBonRetGBtnClick(Screen);
-
-    Handled := true;
-  end;
-
-     //--- this is for new produit--------------------------
-     if  (GetKeyState(VK_F11) < 0)  then
-  begin
-
-      NewAddProduitBonRetGBtnClick(Screen);
-
-    Handled := true;
-  end;
-
-     if  (GetKeyState(VK_F12) < 0)  then
-  begin
-
-     if ValiderBVRetBonRetGImg.ImageIndex <> 1 then
-     begin
-        Ini := TIniFile.Create(ChangeFileExt(Application.ExeName,'.ini')) ;
-        indexP:= Ini.ReadInteger('', 'Format FA',0);
-        if (indexP = 0) or (indexP = -1) then
-        begin
-         B1Click(Screen);
-        end;
-        if indexP = 1 then
-        begin
-          BondeRetourClient1Click(Screen);
-        end;
-        if indexP = 2 then
-        begin
-          BondeRetourClient2Click(Screen);
-        end;
-        if indexP = 3 then
-        begin
-          BondeRetourClienthorstaxe1Click(Screen);
-        end;
-
-        Ini.Free;
-        Handled := true;
-     end;
-  end;
+//   //--- this is to focus in produit --------------------------
+//  if  (GetKeyState(VK_F3) < 0) and (AddBVRetBonRetGBtn.Enabled = False ) then
+//  begin
+//      ProduitBonRetGCbx.SetFocus;
+//      Handled := true;
+//  end;
+//
+//
+//
+//  if  (GetKeyState(VK_F4) < 0) and (AddBVRetBonRetGBtn.Enabled = True ) then
+//  begin
+//      AddBVRetBonRetGBtnClick(Screen);
+//
+//    Handled := true;
+//  end;
+//
+//
+//  if  (GetKeyState(VK_F5) < 0) and (EditBVRetBonRetGBtn.Enabled = True ) then
+//  begin
+//      EditBVRetBonRetGBtnClick(Screen);
+//
+//    Handled := true;
+//  end;
+//
+//     //--- this is to switch between produits and quntity--------------------------
+//   if  (GetKeyState(VK_F6) < 0) and (EditBVRetBonRetGBtn.Enabled = False ) then
+//  begin
+//       ProduitsListDBGridEh.SetFocus;
+//       if ProduitsListDBGridEh.SelectedField.FieldName <>'qut_p' then
+//       begin
+//        for I := 0 to ProduitsListDBGridEh.FieldCount do
+//        begin
+//          if ProduitsListDBGridEh.SelectedField.FieldName ='qut_p' then
+//          begin
+//            ProduitsListDBGridEh.SelectedIndex:= i - 1;
+//            Handled := true;
+//            Break    ;
+//          end else
+//              begin
+//               ProduitsListDBGridEh.SelectedIndex:=i;
+//              end;
+//        end;
+//       end;
+//       Handled := true;
+//  end;
+//  //--- this is to switch between produits and prix----------------------------
+//   if  (GetKeyState(VK_F7) < 0) and (EditBVRetBonRetGBtn.Enabled = False ) then
+//  begin
+//       ProduitsListDBGridEh.SetFocus;
+//       if ProduitsListDBGridEh.SelectedField.FieldName <>'prixht_p' then
+//       begin
+//        for I := 0 to ProduitsListDBGridEh.FieldCount do
+//        begin
+//          if ProduitsListDBGridEh.SelectedField.FieldName ='prixht_p' then
+//          begin
+//            ProduitsListDBGridEh.SelectedIndex:= i - 1;
+//            Handled := true;
+//            Break    ;
+//          end else
+//              begin
+//               ProduitsListDBGridEh.SelectedIndex:=i;
+//              end;
+//        end;
+//       end;
+//       Handled := true;
+//  end;
+//
+//
+//  if  (GetKeyState(VK_F8) < 0) and (EditBVRetBonRetGBtn.Enabled = False ) then
+//  begin
+//      ListAddProduitBonRetGBtnClick(Screen);
+//
+//    Handled := true;
+//  end;
+//
+//  if (GetKeyState(VK_F9) < 0) AND (ValiderBVRetBonRetGBtn.Enabled = True)
+//      AND NOT (Assigned(FSplashVersement)) then
+//  begin
+//      ValiderBVRetBonRetGBtnClick(Screen);
+//
+//    Handled := true;
+//  end else
+//  if  (GetKeyState(VK_F9) < 0) AND (ValiderBVRetBonRetGBtn.Enabled = True)
+//       AND NOT (FSplashVersement.Showing) then
+//      begin
+//          ValiderBVRetBonRetGBtnClick(Screen);
+//
+//        Handled := true;
+//      end;
+//
+//     //--- this is for new produit--------------------------
+//     if  (GetKeyState(VK_F11) < 0)  then
+//  begin
+//
+//      NewAddProduitBonRetGBtnClick(Screen);
+//
+//    Handled := true;
+//  end;
+//
+//     if  (GetKeyState(VK_F12) < 0)  then
+//  begin
+//
+//     if ValiderBVRetBonRetGImg.ImageIndex <> 1 then
+//     begin
+//        Ini := TIniFile.Create(ChangeFileExt(Application.ExeName,'.ini')) ;
+//        indexP:= Ini.ReadInteger('', 'Format BRV',0);
+//        if (indexP = 0) or (indexP = -1) then
+//        begin
+//         B1Click(Screen);
+//        end;
+//        if indexP = 1 then
+//        begin
+//          BondeRetourClient1Click(Screen);
+//        end;
+//        if indexP = 2 then
+//        begin
+//          BondeRetourClient2Click(Screen);
+//        end;
+//        if indexP = 3 then
+//        begin
+//          BondeRetourClienthorstaxe1Click(Screen);
+//        end;
+//
+//        Ini.Free;
+//        Handled := true;
+//     end;
+//  end;
 
 end;
 
@@ -2639,7 +2802,7 @@ begin
 
         DataModuleF.Bonv_retTable.Insert;
         DataModuleF.Bonv_retTable.FieldValues['code_bvret']:=1;
-        DataModuleF.Bonv_retTable.FieldValues['num_bvret']:= 'BR'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5, 1]);
+        DataModuleF.Bonv_retTable.FieldValues['num_bvret']:= 'BRC'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5, 1]);
         DataModuleF.Bonv_retTable.FieldValues['date_bvret']:= DateOf(Today);
         DataModuleF.Bonv_retTable.FieldValues['time_bvret']:=TimeOf(Now);
         DataModuleF.Bonv_retTable.Post;
@@ -2663,7 +2826,7 @@ begin
           // codeBR := DataModuleF.Bonv_retTable.FieldValues['code_bvret'];
            DataModuleF.Bonv_retTable.Insert;
            DataModuleF.Bonv_retTable.FieldValues['code_bvret']:= codeBR + 1;
-           DataModuleF.Bonv_retTable.FieldValues['num_bvret']:=  'BR'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5,(codeBR + 1)]);
+           DataModuleF.Bonv_retTable.FieldValues['num_bvret']:=  'BRC'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5,(codeBR + 1)]);
            DataModuleF.Bonv_retTable.FieldValues['date_bvret']:= DateOf(Today);
            DataModuleF.Bonv_retTable.FieldValues['time_bvret']:= TimeOf(Now);
            DataModuleF.Bonv_retTable.Post;

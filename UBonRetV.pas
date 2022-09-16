@@ -396,7 +396,7 @@ ClearFilterBVLivPMenuClick(Sender);
 
         DataModuleF.Bonv_retTable.Insert;
         DataModuleF.Bonv_retTable.FieldByName('code_bvret').AsInteger:=1;
-        DataModuleF.Bonv_retTable.FieldByName('num_bvret').AsString:= 'BR'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5, 1]);
+        DataModuleF.Bonv_retTable.FieldByName('num_bvret').AsString:= 'BRC'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5, 1]);
         DataModuleF.Bonv_retTable.FieldByName('date_bvret').AsDateTime:= DateOf(Today);
         DataModuleF.Bonv_retTable.FieldByName('time_bvret').AsDateTime:=TimeOf(Now);
         DataModuleF.Bonv_retTable.FieldByName('code_c').AsInteger:=0;
@@ -428,7 +428,7 @@ ClearFilterBVLivPMenuClick(Sender);
                 // codeBR := DataModuleF.Bonv_retTable.FieldByName('code_bvret'];
                  DataModuleF.Bonv_retTable.Insert;
                  DataModuleF.Bonv_retTable.FieldByName('code_bvret').AsInteger:= codeBR + 1;
-                 DataModuleF.Bonv_retTable.FieldByName('num_bvret').AsString:=  'BR'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5,(codeBR + 1)]);
+                 DataModuleF.Bonv_retTable.FieldByName('num_bvret').AsString:=  'BRC'+IntToStr(YearOf(Today)) + '/' + Format('%.*d', [5,(codeBR + 1)]);
                  DataModuleF.Bonv_retTable.FieldByName('date_bvret').AsDateTime:= DateOf(Today);
                  DataModuleF.Bonv_retTable.FieldByName('time_bvret').AsDateTime:= TimeOf(Now);
                  DataModuleF.Bonv_retTable.FieldByName('code_c').AsInteger:=0;

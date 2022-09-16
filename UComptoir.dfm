@@ -3793,6 +3793,7 @@ object BonCtrGestionF: TBonCtrGestionF
       Color = 15527148
       ParentBackground = False
       TabOrder = 0
+      ExplicitTop = -1
       DesignSize = (
         563
         147)
@@ -4266,6 +4267,34 @@ object BonCtrGestionF: TBonCtrGestionF
         ImageIndex = 46
         Images = MainForm.PanelIcons24
         SkinData.SkinSection = 'CHECKBOX'
+      end
+      object Label16: TLabel
+        Left = 409
+        Top = 118
+        Width = 15
+        Height = 12
+        Anchors = [akRight, akBottom]
+        Caption = '[F8]'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 10395294
+        Font.Height = -9
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        ParentFont = False
+      end
+      object Label24: TLabel
+        Left = 499
+        Top = 118
+        Width = 20
+        Height = 12
+        Anchors = [akRight, akBottom]
+        Caption = '[F11]'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 10395294
+        Font.Height = -9
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        ParentFont = False
       end
       object Panel29: TPanel
         Left = 0
@@ -5859,8 +5888,8 @@ object BonCtrGestionF: TBonCtrGestionF
   end
   object ApplicationEvents1: TApplicationEvents
     OnShortCut = ApplicationEvents1ShortCut
-    Left = 634
-    Top = 342
+    Left = 512
+    Top = 460
   end
   object ComPort1: TComPort
     BaudRate = br9600
@@ -6894,6 +6923,60 @@ object BonCtrGestionF: TBonCtrGestionF
           ParentFont = False
         end
       end
+    end
+  end
+  object ActionList1: TActionList
+    Left = 602
+    Top = 466
+    object F3: TAction
+      Caption = 'F3'
+      ShortCut = 114
+      OnExecute = F3Execute
+    end
+    object F4: TAction
+      Caption = 'F4'
+      ShortCut = 115
+      OnExecute = F4Execute
+    end
+    object F5: TAction
+      Caption = 'F5'
+      ShortCut = 116
+      OnExecute = F5Execute
+    end
+    object F6: TAction
+      Caption = 'F6'
+      ShortCut = 117
+      OnExecute = F6Execute
+    end
+    object F7: TAction
+      Caption = 'F7'
+      ShortCut = 118
+      OnExecute = F7Execute
+    end
+    object F8: TAction
+      Caption = 'F8'
+      ShortCut = 119
+      OnExecute = F8Execute
+    end
+    object F9: TAction
+      Caption = 'F9'
+      ShortCut = 120
+      OnExecute = F9Execute
+    end
+    object F10: TAction
+      Caption = 'F10'
+      ShortCut = 121
+      OnExecute = F10Execute
+    end
+    object F11: TAction
+      Caption = 'F11'
+      ShortCut = 122
+      OnExecute = F11Execute
+    end
+    object F12: TAction
+      Caption = 'F12'
+      ShortCut = 123
+      OnExecute = F12Execute
     end
   end
 end

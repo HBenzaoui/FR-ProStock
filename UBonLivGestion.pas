@@ -28,7 +28,7 @@ uses
   dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
   dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
   dxSkinXmas2008Blue, cxTextEdit, cxMaskEdit, cxDropDownEdit, Vcl.Menus,
-  Vcl.AppEvnts, frxExportBaseDialog;
+  Vcl.AppEvnts, frxExportBaseDialog, System.Actions, Vcl.ActnList;
 
 type
   TBonLivGestionF = class(TForm)
@@ -183,6 +183,17 @@ type
     SNumberProduitBonLivGBtn: TAdvToolButton;
     S01: TPanel;
     Label33: TLabel;
+    ActionList1: TActionList;
+    F3: TAction;
+    F4: TAction;
+    F5: TAction;
+    F6: TAction;
+    F7: TAction;
+    F8: TAction;
+    F9: TAction;
+    F10: TAction;
+    F11: TAction;
+    F12: TAction;
     procedure FormShow(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
@@ -256,6 +267,16 @@ type
     procedure TicketCaisse80Click(Sender: TObject);
     procedure SNumberProduitBonLivGBtnClick(Sender: TObject);
     procedure ClientBonLivGCbxSelect(Sender: TObject);
+    procedure F3Execute(Sender: TObject);
+    procedure F4Execute(Sender: TObject);
+    procedure F5Execute(Sender: TObject);
+    procedure F6Execute(Sender: TObject);
+    procedure F7Execute(Sender: TObject);
+    procedure F8Execute(Sender: TObject);
+    procedure F9Execute(Sender: TObject);
+    procedure F10Execute(Sender: TObject);
+    procedure F11Execute(Sender: TObject);
+    procedure F12Execute(Sender: TObject);
   private
     { Private declarations }
     procedure GettingData;
@@ -496,6 +517,160 @@ begin
           ProduitsListDBGridEh.FieldColumns['prixht_p'].MaxWidth:= 1;
 
       end;
+end;
+
+procedure TBonLivGestionF.F3Execute(Sender: TObject);
+begin
+   //--- this is to focus in produit --------------------------
+  if  AddBVlivBonLivGBtn.Enabled = False then
+  begin
+     ProduitBonLivGCbx.SetFocus;
+  end;
+end;
+
+procedure TBonLivGestionF.F4Execute(Sender: TObject);
+begin
+  if AddBVlivBonLivGBtn.Enabled = True then
+  begin
+     AddBVlivBonLivGBtnClick(Screen);
+  end;
+end;
+
+procedure TBonLivGestionF.F5Execute(Sender: TObject);
+begin
+  if EditBVlivBonLivGBtn.Enabled = True then
+  begin
+     EditBVlivBonLivGBtnClick(Screen);
+  end;
+end;
+
+procedure TBonLivGestionF.F6Execute(Sender: TObject);
+Var I :Integer;
+begin
+  //--- this is to switch between produits and quntity--------------------------
+  if EditBVlivBonLivGBtn.Enabled = False then
+  begin
+       ProduitsListDBGridEh.SetFocus;
+       if ProduitsListDBGridEh.SelectedField.FieldName <>'qut_p' then
+       begin
+        for I := 0 to ProduitsListDBGridEh.FieldCount do
+        begin
+          if ProduitsListDBGridEh.SelectedField.FieldName ='qut_p' then
+          begin
+            ProduitsListDBGridEh.SelectedIndex:= i - 1;
+            Break    ;
+          end else
+              begin
+               ProduitsListDBGridEh.SelectedIndex:=i;
+              end;
+        end;
+       end;
+  end;
+end;
+
+procedure TBonLivGestionF.F7Execute(Sender: TObject);
+Var I: Integer;
+begin
+  //--- this is to switch between produits and prix----------------------------
+  if EditBVlivBonLivGBtn.Enabled = False then
+  begin
+       ProduitsListDBGridEh.SetFocus;
+       if ProduitsListDBGridEh.SelectedField.FieldName <>'prixvd_p' then
+       begin
+        for I := 0 to ProduitsListDBGridEh.FieldCount do
+        begin
+          if ProduitsListDBGridEh.SelectedField.FieldName ='prixvd_p' then
+          begin
+            ProduitsListDBGridEh.SelectedIndex:= i - 1;
+            Break    ;
+          end else
+              begin
+               ProduitsListDBGridEh.SelectedIndex:=i;
+              end;
+        end;
+       end;
+  end;
+end;
+
+procedure TBonLivGestionF.F8Execute(Sender: TObject);
+begin
+  if EditBVlivBonLivGBtn.Enabled = False then
+  begin
+     ListAddProduitBonLivGBtnClick(Screen);
+  end;
+end;
+
+procedure TBonLivGestionF.F9Execute(Sender: TObject);
+begin
+  if ValiderBVlivBonLivGBtn.Enabled = True then
+  begin
+    ValiderBVlivBonLivGBtnClick(Screen);
+  end;
+end;
+
+procedure TBonLivGestionF.F10Execute(Sender: TObject);
+begin
+  if EditBVlivBonLivGBtn.Enabled = False then
+  begin
+     ListClientBonLivGBtnClick(Screen);
+  end;
+end;
+
+procedure TBonLivGestionF.F11Execute(Sender: TObject);
+begin
+  if NewAddProduitBonLivGBtn.Enabled = True then
+  begin
+     NewAddProduitBonLivGBtnClick(Screen);
+  end;
+end;
+
+procedure TBonLivGestionF.F12Execute(Sender: TObject);
+var
+Ini: TIniFile;
+indexP: Integer;
+begin
+  if ValiderBVlivBonLivGImg.ImageIndex <> 1 then
+  begin
+        Ini := TIniFile.Create(ChangeFileExt(Application.ExeName,'.ini')) ;
+        indexP:= Ini.ReadInteger('', 'Format BL',0);
+        if (indexP = 0) or (indexP = -1) then
+        begin
+         B1Click(Screen);
+        end;
+        if indexP = 1 then
+        begin
+         Bondelivraison2Click(Screen);
+        end;
+        if indexP = 2 then
+        begin
+         BondeRception1Click(Screen);
+        end;
+        if indexP = 3 then
+        begin
+         Bondelivraison3Click(Screen);
+        end;
+        if indexP = 4 then
+        begin
+         BondeCaisseSimple1Click(Screen);
+        end;
+        if indexP = 5 then
+        begin
+         Bondecaissesimple3Click(Screen);
+        end;
+        if indexP = 6 then
+        begin
+         BondeLivraison1Click(Screen);
+        end;
+        if indexP = 7 then
+        begin
+         BondeLivraisonhorstaxe1Click(Screen);
+        end;
+        if indexP = 8 then
+        begin
+         BondeCaisseSimple2Click(Screen);
+        end;
+        Ini.Free;
+  end;
 end;
 
 procedure TBonLivGestionF.FormClose(Sender: TObject; var Action: TCloseAction);
@@ -1884,171 +2059,185 @@ end;
 procedure TBonLivGestionF.ApplicationEvents1ShortCut(var Msg: TWMKey;
   var Handled: Boolean);
 
-var
-NEWCredit,OLDCredit,NEWCreditLbl,OLDCreditLbl  : TfrxMemoView;
-LineCredit :TfrxShapeView;
-I : Integer;
-Ini: TIniFile;
-indexP: Integer;
-
+//var
+//NEWCredit,OLDCredit,NEWCreditLbl,OLDCreditLbl  : TfrxMemoView;
+//LineCredit :TfrxShapeView;
+//I : Integer;
+//Ini: TIniFile;
+//indexP: Integer;
+//
 begin
-
-   //--- this is to focus in produit --------------------------
-  if  (GetKeyState(VK_F3) < 0) and (AddBVlivBonLivGBtn.Enabled = False ) then
-  begin
-      ProduitBonLivGCbx.SetFocus;
-      Handled := true;
-  end;
-
-
-  if  (GetKeyState(VK_F4) < 0) and (AddBVlivBonLivGBtn.Enabled = True ) then
-  begin
-      AddBVlivBonLivGBtnClick(Screen);
-
-    Handled := true;
-  end;
-
-
-  if  (GetKeyState(VK_F5) < 0) and (EditBVlivBonLivGBtn.Enabled = True ) then
-  begin
-      EditBVlivBonLivGBtnClick(Screen);
-
-    Handled := true;
-  end;
-
-
-   //--- this is to switch between produits and quntity--------------------------
-   if  (GetKeyState(VK_F6) < 0) and (EditBVlivBonLivGBtn.Enabled = False ) then
-  begin
-       ProduitsListDBGridEh.SetFocus;
-       if ProduitsListDBGridEh.SelectedField.FieldName <>'qut_p' then
-       begin
-        for I := 0 to ProduitsListDBGridEh.FieldCount do
-        begin
-          if ProduitsListDBGridEh.SelectedField.FieldName ='qut_p' then
-          begin
-            ProduitsListDBGridEh.SelectedIndex:= i - 1;
-            Handled := true;
-            Break    ;
-          end else
-              begin
-               ProduitsListDBGridEh.SelectedIndex:=i;
-              end;
-        end;
-       end;
-       Handled := true;
-  end;
-  //--- this is to switch between produits and prix----------------------------
-   if  (GetKeyState(VK_F7) < 0) and (EditBVlivBonLivGBtn.Enabled = False ) then
-  begin
-       ProduitsListDBGridEh.SetFocus;
-       if ProduitsListDBGridEh.SelectedField.FieldName <>'prixvd_p' then
-       begin
-        for I := 0 to ProduitsListDBGridEh.FieldCount do
-        begin
-          if ProduitsListDBGridEh.SelectedField.FieldName ='prixvd_p' then
-          begin
-            ProduitsListDBGridEh.SelectedIndex:= i - 1;
-            Handled := true;
-            Break    ;
-          end else
-              begin
-               ProduitsListDBGridEh.SelectedIndex:=i;
-              end;
-        end;
-       end;
-       Handled := true;
-  end;
-
-  if  (GetKeyState(VK_F8) < 0) and (EditBVlivBonLivGBtn.Enabled = False ) then
-  begin
-      ListAddProduitBonLivGBtnClick(Screen);
-
-    Handled := true;
-  end;
- //--- F9 is to Validate Bon ----------------------------
-   if  (GetKeyState(VK_F9) < 0) AND (ValiderBVLivBonLivGBtn.Enabled = True) AND NOT (Assigned(FSplashVersement)) then
-  begin
-      ValiderBVlivBonLivGBtnClick(Screen);
-      Handled := true;
-
-  end
-   else if (GetKeyState(VK_F9) < 0) AND (ValiderBVLivBonLivGBtn.Enabled = True) AND (FSplashVersement.Tag <> 2)  then
-      begin
-          ValiderBVlivBonLivGBtnClick(Screen);
-          Handled := true;
-
-      end;
-
-
-  if  (GetKeyState(VK_F10) < 0) and (EditBVlivBonLivGBtn.Enabled = False ) then
-  begin
-      ListClientBonLivGBtnClick(Screen);
-
-    Handled := true;
-  end;
-
-       //--- this is for new produit--------------------------
-  if  (GetKeyState(VK_F11) < 0) AND (NewAddProduitBonLivGBtn.Enabled = True) AND NOT (Assigned(ProduitGestionF)) AND NOT (Assigned(FSplashVersement)) then
-  begin
-      NewAddProduitBonLivGBtnClick(Screen);
-      Handled := true;
-  end
-    else if (GetKeyState(VK_F11) < 0) AND (NewAddProduitBonLivGBtn.Enabled = True) AND NOT (Assigned(ProduitGestionF))  then
-    begin
-        NewAddProduitBonLivGBtnClick(Screen);
-        Handled := true;
-    end;
-
-  if  (GetKeyState(VK_F12) < 0) then
-  begin
-
-    if ValiderBVlivBonLivGImg.ImageIndex <> 1 then
-     begin
-
-        Ini := TIniFile.Create(ChangeFileExt(Application.ExeName,'.ini')) ;
-        indexP:= Ini.ReadInteger('', 'Format BL',0);
-        if (indexP = 0) or (indexP = -1) then
-        begin
-         B1Click(Screen);
-        end;
-        if indexP = 1 then
-        begin
-         Bondelivraison2Click(Screen);
-        end;
-        if indexP = 2 then
-        begin
-         BondeRception1Click(Screen);
-        end;
-        if indexP = 3 then
-        begin
-         Bondelivraison3Click(Screen);
-        end;
-        if indexP = 4 then
-        begin
-         BondeCaisseSimple1Click(Screen);
-        end;
-        if indexP = 5 then
-        begin
-         Bondecaissesimple3Click(Screen);
-        end;
-        if indexP = 6 then
-        begin
-         BondeLivraison1Click(Screen);
-        end;
-        if indexP = 7 then
-        begin
-         BondeLivraisonhorstaxe1Click(Screen);
-        end;
-        if indexP = 8 then
-        begin
-         BondeCaisseSimple2Click(Screen);
-        end;
-
-        Ini.Free;
-        Handled := true;
-     end;
-  end;
+//
+//   //--- this is to focus in produit --------------------------
+//  if  (GetKeyState(VK_F3) < 0) and (AddBVlivBonLivGBtn.Enabled = False ) then
+//  begin
+//      ProduitBonLivGCbx.SetFocus;
+//      Handled := true;
+//  end;
+//
+//
+//  if  (GetKeyState(VK_F4) < 0) and (AddBVlivBonLivGBtn.Enabled = True ) then
+//  begin
+//      AddBVlivBonLivGBtnClick(Screen);
+//
+//    Handled := true;
+//  end;
+//
+//
+//  if  (GetKeyState(VK_F5) < 0) and (EditBVlivBonLivGBtn.Enabled = True ) then
+//  begin
+//      EditBVlivBonLivGBtnClick(Screen);
+//
+//    Handled := true;
+//  end;
+//
+//
+//   //--- this is to switch between produits and quntity--------------------------
+//   if  (GetKeyState(VK_F6) < 0) and (EditBVlivBonLivGBtn.Enabled = False ) then
+//  begin
+//       ProduitsListDBGridEh.SetFocus;
+//       if ProduitsListDBGridEh.SelectedField.FieldName <>'qut_p' then
+//       begin
+//        for I := 0 to ProduitsListDBGridEh.FieldCount do
+//        begin
+//          if ProduitsListDBGridEh.SelectedField.FieldName ='qut_p' then
+//          begin
+//            ProduitsListDBGridEh.SelectedIndex:= i - 1;
+//            Handled := true;
+//            Break    ;
+//          end else
+//              begin
+//               ProduitsListDBGridEh.SelectedIndex:=i;
+//              end;
+//        end;
+//       end;
+//       Handled := true;
+//  end;
+//  //--- this is to switch between produits and prix----------------------------
+//   if  (GetKeyState(VK_F7) < 0) and (EditBVlivBonLivGBtn.Enabled = False ) then
+//  begin
+//       ProduitsListDBGridEh.SetFocus;
+//       if ProduitsListDBGridEh.SelectedField.FieldName <>'prixvd_p' then
+//       begin
+//        for I := 0 to ProduitsListDBGridEh.FieldCount do
+//        begin
+//          if ProduitsListDBGridEh.SelectedField.FieldName ='prixvd_p' then
+//          begin
+//            ProduitsListDBGridEh.SelectedIndex:= i - 1;
+//            Handled := true;
+//            Break    ;
+//          end else
+//              begin
+//               ProduitsListDBGridEh.SelectedIndex:=i;
+//              end;
+//        end;
+//       end;
+//       Handled := true;
+//  end;
+//
+//  if  (GetKeyState(VK_F8) < 0) and (EditBVlivBonLivGBtn.Enabled = False ) then
+//  begin
+//      ListAddProduitBonLivGBtnClick(Screen);
+//
+//    Handled := true;
+//  end;
+// //--- F9 is to Validate Bon ----------------------------
+////   if  (GetKeyState(VK_F9) < 0) AND (ValiderBVLivBonLivGBtn.Enabled = True) AND NOT (Assigned(FSplashVersement)) then
+////  begin
+////      ValiderBVlivBonLivGBtnClick(Screen);
+////      Handled := true;
+////
+////  end
+////   else if (GetKeyState(VK_F9) < 0) AND (ValiderBVLivBonLivGBtn.Enabled = True) AND (FSplashVersement.Tag <> 2)  then
+////      begin
+////          ValiderBVlivBonLivGBtnClick(Screen);
+////          Handled := true;
+////
+////      end;
+//
+//
+//  if (GetKeyState(VK_F9) < 0) AND (ValiderBVLivBonLivGBtn.Enabled = True)
+//      AND NOT (Assigned(FSplashVersement)) then
+//  begin
+//    ValiderBVlivBonLivGBtnClick(Screen);
+//    Handled := true;
+//  end else
+//  if  (GetKeyState(VK_F9) < 0) AND (ValiderBVLivBonLivGBtn.Enabled = True)
+//       AND NOT (FSplashVersement.Showing) then
+//      begin
+//        ValiderBVlivBonLivGBtnClick(Screen);
+//        Handled := true;
+//      end;
+//
+//
+//  if  (GetKeyState(VK_F10) < 0) and (EditBVlivBonLivGBtn.Enabled = False ) then
+//  begin
+//      ListClientBonLivGBtnClick(Screen);
+//
+//    Handled := true;
+//  end;
+//
+//       //--- this is for new produit--------------------------
+//  if  (GetKeyState(VK_F11) < 0) AND (NewAddProduitBonLivGBtn.Enabled = True) AND NOT (Assigned(ProduitGestionF)) AND NOT (Assigned(FSplashVersement)) then
+//  begin
+//      NewAddProduitBonLivGBtnClick(Screen);
+//      Handled := true;
+//  end
+//    else if (GetKeyState(VK_F11) < 0) AND (NewAddProduitBonLivGBtn.Enabled = True) AND NOT (Assigned(ProduitGestionF))  then
+//    begin
+//        NewAddProduitBonLivGBtnClick(Screen);
+//        Handled := true;
+//    end;
+//
+//  if  (GetKeyState(VK_F12) < 0) then
+//  begin
+//
+//    if ValiderBVlivBonLivGImg.ImageIndex <> 1 then
+//     begin
+//
+//        Ini := TIniFile.Create(ChangeFileExt(Application.ExeName,'.ini')) ;
+//        indexP:= Ini.ReadInteger('', 'Format BL',0);
+//        if (indexP = 0) or (indexP = -1) then
+//        begin
+//         B1Click(Screen);
+//        end;
+//        if indexP = 1 then
+//        begin
+//         Bondelivraison2Click(Screen);
+//        end;
+//        if indexP = 2 then
+//        begin
+//         BondeRception1Click(Screen);
+//        end;
+//        if indexP = 3 then
+//        begin
+//         Bondelivraison3Click(Screen);
+//        end;
+//        if indexP = 4 then
+//        begin
+//         BondeCaisseSimple1Click(Screen);
+//        end;
+//        if indexP = 5 then
+//        begin
+//         Bondecaissesimple3Click(Screen);
+//        end;
+//        if indexP = 6 then
+//        begin
+//         BondeLivraison1Click(Screen);
+//        end;
+//        if indexP = 7 then
+//        begin
+//         BondeLivraisonhorstaxe1Click(Screen);
+//        end;
+//        if indexP = 8 then
+//        begin
+//         BondeCaisseSimple2Click(Screen);
+//        end;
+//
+//        Ini.Free;
+//        Handled := true;
+//     end;
+//  end;
 
 
 end;

@@ -556,7 +556,7 @@ object BonComVGestionF: TBonComVGestionF
       Width = 164
       Height = 22
       AutoSize = False
-      Caption = 'BCV2016/12458740'
+      Caption = 'BCC2016/12458740'
       Color = 15722984
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 10379008
@@ -1300,6 +1300,19 @@ object BonComVGestionF: TBonComVGestionF
       OnClick = ListClientBonComGBtnClick
       Version = '1.7.2.0'
       TMSStyle = 0
+    end
+    object Label33: TLabel
+      Left = 775
+      Top = 111
+      Width = 20
+      Height = 12
+      Caption = '[F10]'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 10395294
+      Font.Height = -9
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
     end
     object CompteGErrorP: TPanel
       Left = 632
@@ -10050,6 +10063,60 @@ object BonComVGestionF: TBonComVGestionF
           VAlign = vaCenter
         end
       end
+    end
+  end
+  object ActionList1: TActionList
+    Left = 984
+    Top = 256
+    object F3: TAction
+      Caption = 'F3'
+      ShortCut = 114
+      OnExecute = F3Execute
+    end
+    object F4: TAction
+      Caption = 'F4'
+      ShortCut = 115
+      OnExecute = F4Execute
+    end
+    object F5: TAction
+      Caption = 'F5'
+      ShortCut = 116
+      OnExecute = F5Execute
+    end
+    object F6: TAction
+      Caption = 'F6'
+      ShortCut = 117
+      OnExecute = F6Execute
+    end
+    object F7: TAction
+      Caption = 'F7'
+      ShortCut = 118
+      OnExecute = F7Execute
+    end
+    object F8: TAction
+      Caption = 'F8'
+      ShortCut = 119
+      OnExecute = F8Execute
+    end
+    object F9: TAction
+      Caption = 'F9'
+      ShortCut = 120
+      OnExecute = F9Execute
+    end
+    object F10: TAction
+      Caption = 'F10'
+      ShortCut = 121
+      OnExecute = F10Execute
+    end
+    object F11: TAction
+      Caption = 'F11'
+      ShortCut = 122
+      OnExecute = F11Execute
+    end
+    object F12: TAction
+      Caption = 'F12'
+      ShortCut = 123
+      OnExecute = F12Execute
     end
   end
 end

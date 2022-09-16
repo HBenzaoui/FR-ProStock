@@ -28,7 +28,8 @@ uses
   dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
   dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
   dxSkinXmas2008Blue, cxTextEdit, cxMaskEdit, cxDropDownEdit, Vcl.AppEvnts,
-  CPort, sPageControl, ToolPanels, frxExportBaseDialog;
+  CPort, sPageControl, ToolPanels, frxExportBaseDialog, System.Actions,
+  Vcl.ActnList;
 
 type
   TBonCtrGestionF = class(TForm)
@@ -236,6 +237,19 @@ type
     sSpeedButton3: TsSpeedButton;
     ListClientBonCtrGBtn: TAdvToolButton;
     BonCtrTotalAHTLbl: TLabel;
+    ActionList1: TActionList;
+    F3: TAction;
+    F4: TAction;
+    F5: TAction;
+    F6: TAction;
+    F7: TAction;
+    F8: TAction;
+    F9: TAction;
+    F10: TAction;
+    F11: TAction;
+    F12: TAction;
+    Label16: TLabel;
+    Label24: TLabel;
     procedure FormShow(Sender: TObject);
     procedure RemiseBonCtrGEdtDblClick(Sender: TObject);
     procedure ShowKeyBoardBonCtrGBtnClick(Sender: TObject);
@@ -310,6 +324,16 @@ type
     procedure ListClientBonCtrGBtnClick(Sender: TObject);
     procedure ClientBonCtrGCbxSelect(Sender: TObject);
     procedure RemiseBonCtrGEdtClick(Sender: TObject);
+    procedure F3Execute(Sender: TObject);
+    procedure F4Execute(Sender: TObject);
+    procedure F5Execute(Sender: TObject);
+    procedure F6Execute(Sender: TObject);
+    procedure F7Execute(Sender: TObject);
+    procedure F8Execute(Sender: TObject);
+    procedure F9Execute(Sender: TObject);
+    procedure F10Execute(Sender: TObject);
+    procedure F11Execute(Sender: TObject);
+    procedure F12Execute(Sender: TObject);
   private
     procedure GettingData;
     procedure addingState;
@@ -2352,6 +2376,143 @@ begin
     BonCtrGNEWStock.Caption := floatTostrF((0), ffNumber, 14, 2);
 
     ProduitsListDBGridEh.ReadOnly := True;
+  end;
+end;
+
+procedure TBonCtrGestionF.F3Execute(Sender: TObject);
+begin
+   //--- this is to focus in produit --------------------------
+  if  AddBVCtrBonCtrGBtn.Enabled = False then
+  begin
+     ProduitBonCtrGCbx.SetFocus;
+  end;
+end;
+
+procedure TBonCtrGestionF.F4Execute(Sender: TObject);
+begin
+  if AddBVCtrBonCtrGBtn.Enabled = True then
+  begin
+     AddBVCtrBonCtrGBtnClick(Screen);
+  end;
+end;
+
+procedure TBonCtrGestionF.F5Execute(Sender: TObject);
+begin
+  if EditBVCtrBonCtrGBtn.Enabled = True then
+  begin
+     EditBVCtrBonCtrGBtnClick(Screen);
+  end;
+end;
+
+procedure TBonCtrGestionF.F6Execute(Sender: TObject);
+Var I :Integer;
+begin
+  //--- this is to switch between produits and quntity--------------------------
+  if EditBVCtrBonCtrGBtn.Enabled = False then
+  begin
+       ProduitsListDBGridEh.SetFocus;
+       if ProduitsListDBGridEh.SelectedField.FieldName <>'qut_p' then
+       begin
+        for I := 0 to ProduitsListDBGridEh.FieldCount do
+        begin
+          if ProduitsListDBGridEh.SelectedField.FieldName ='qut_p' then
+          begin
+            ProduitsListDBGridEh.SelectedIndex:= i - 1;
+            Break    ;
+          end else
+              begin
+               ProduitsListDBGridEh.SelectedIndex:=i;
+              end;
+        end;
+       end;
+  end;
+end;
+
+procedure TBonCtrGestionF.F7Execute(Sender: TObject);
+Var I: Integer;
+begin
+  //--- this is to switch between produits and prix----------------------------
+  if EditBVCtrBonCtrGBtn.Enabled = False then
+  begin
+       ProduitsListDBGridEh.SetFocus;
+       if ProduitsListDBGridEh.SelectedField.FieldName <>'prixvd_p' then
+       begin
+        for I := 0 to ProduitsListDBGridEh.FieldCount do
+        begin
+          if ProduitsListDBGridEh.SelectedField.FieldName ='prixvd_p' then
+          begin
+            ProduitsListDBGridEh.SelectedIndex:= i - 1;
+            Break    ;
+          end else
+              begin
+               ProduitsListDBGridEh.SelectedIndex:=i;
+              end;
+        end;
+       end;
+  end;
+end;
+
+procedure TBonCtrGestionF.F8Execute(Sender: TObject);
+begin
+  if EditBVCtrBonCtrGBtn.Enabled = False then
+  begin
+     ListAddProduitBonCtrGBtnClick(Screen);
+  end;
+end;
+
+procedure TBonCtrGestionF.F9Execute(Sender: TObject);
+begin
+  if ValiderBVCtrBonCtrGBtn.Enabled = True then
+  begin
+    ValiderBVCtrBonCtrGBtn1Click(Screen);
+  end;
+end;
+
+procedure TBonCtrGestionF.F10Execute(Sender: TObject);
+begin
+  //For CTR  F10 is used for ExValider Decide later Where to do ClientList maybe F2
+//  if EditBVCtrBonCtrGBtn.Enabled = False then
+//  begin
+//     ListClientBonCtrGBtnClick(Screen);
+//  end;
+
+  if ExValiderBVCtrBonCtrGBtn.Enabled = True then
+  begin
+    ExValiderBVCtrBonCtrGBtnClick(Screen);
+  end;
+
+end;
+
+procedure TBonCtrGestionF.F11Execute(Sender: TObject);
+begin
+  if NewAddProduitBonCtrGBtn.Enabled = True then
+  begin
+     NewAddProduitBonCtrGBtnClick(Screen);
+  end;
+end;
+
+procedure TBonCtrGestionF.F12Execute(Sender: TObject);
+var
+Ini: TIniFile;
+indexP: Integer;
+begin
+  if ValiderBVCtrBonCtrGImg.ImageIndex <> 1 then
+  begin
+
+    PrintTicketBVCtrBonCtrGBtnClick(Screen);
+
+//    Ini := TIniFile.Create(ChangeFileExt(Application.ExeName,'.ini')) ;
+//    indexP:= Ini.ReadInteger('', 'Format FV',0);
+//    if (indexP = 0) or (indexP = -1) then
+//    begin
+//      B1Click(Screen);
+//    end;
+//    if indexP = 1 then
+//    begin
+//      BondeCaisseSimple2Click(Screen);
+//    end;
+//
+//    Ini.Free;
   end;
 end;
 
@@ -4429,158 +4590,166 @@ begin
 end;
 
 procedure TBonCtrGestionF.ApplicationEvents1ShortCut(var Msg: TWMKey; var Handled: Boolean);
-var
-  I: Integer;
+//var
+//  I: Integer;
 begin
 
-  if (Showing) and ((WindowState = wsMaximized) or (WindowState = wsNormal)) then
-  begin
-
-
-
-   //--- this is to clear the bon --------------------------
-    if (GetKeyState(VK_CONTROL) < 0) and (GetKeyState(VK_DELETE) < 0) and (AddBVCtrBonCtrGBtn.Enabled = True) then
-    begin
-      ClearProduitBonCtrGBtnClick(Screen);
-
-      Handled := true;
-    end;
-
-
-    //--- this is to focus in produit --------------------------
-    if (GetKeyState(VK_F1) < 0) then
-    begin
-
-      if Panel1.Tag = 0 then
-      begin
-        sndPlaySound('C:\Windows\Media\change_statut_ctr.wav', SND_NODEFAULT or SND_ASYNC or SND_RING);
-        deletingState;
-      end
-      else if Panel1.Tag = 1 then
-      begin
-        sndPlaySound('C:\Windows\Media\change_statut_ctr.wav', SND_NODEFAULT or SND_ASYNC or SND_RING);
-        addingState;
-
-      end;
-      Handled := true;
-    end;
-
-   //--- this is to focus in produit --------------------------
-    if (GetKeyState(VK_F3) < 0) and (AddBVCtrBonCtrGBtn.Enabled = False) then
-    begin
-      ProduitBonCtrGCbx.SetFocus;
-      Handled := true;
-    end;
-
-
- //--- this is to add new bon --------------------------
-    if (GetKeyState(VK_F4) < 0) and (AddBVCtrBonCtrGBtn.Enabled = True) then
-    begin
-      SetFocus;
-      AddBVCtrBonCtrGBtnClick(Screen);
-
-        ProduitBonCtrGCbx.SetFocus;
-
-      Handled := true;
-    end;
-
- //--- this is to edit the bon--------------------------
-    if (GetKeyState(VK_F5) < 0) and (EditBVCtrBonCtrGBtn.Enabled = True) then
-    begin
-      EditBVCtrBonCtrGBtnClick(Screen);
-
-      Handled := true;
-    end;
-
- //--- this is to switch between produits and quntity--------------------------
-    if (GetKeyState(VK_F6) < 0) and (EditBVCtrBonCtrGBtn.Enabled = False) then
-    begin
-      ProduitsListDBGridEh.SetFocus;
-      if ProduitsListDBGridEh.SelectedField.FieldName <> 'qut_p' then
-      begin
-        for I := 0 to ProduitsListDBGridEh.FieldCount do
-        begin
-          if ProduitsListDBGridEh.SelectedField.FieldName = 'qut_p' then
-          begin
-            ProduitsListDBGridEh.SelectedIndex := I - 1;
-            Handled := true;
-            Break;
-          end
-          else
-          begin
-            ProduitsListDBGridEh.SelectedIndex := I;
-          end;
-        end;
-      end;
-      Handled := true;
-    end;
-  //--- this is to switch between produits and prix----------------------------
-    if (GetKeyState(VK_F7) < 0) and (EditBVCtrBonCtrGBtn.Enabled = False) then
-    begin
-      ProduitsListDBGridEh.SetFocus;
-      if ProduitsListDBGridEh.SelectedField.FieldName <> 'prixvd_p' then
-      begin
-        for I := 0 to ProduitsListDBGridEh.FieldCount do
-        begin
-          if ProduitsListDBGridEh.SelectedField.FieldName = 'prixvd_p' then
-          begin
-            ProduitsListDBGridEh.SelectedIndex := I - 1;
-            Handled := true;
-            Break;
-          end
-          else
-          begin
-            ProduitsListDBGridEh.SelectedIndex := I;
-          end;
-        end;
-      end;
-      Handled := true;
-    end;
-
- //--- this is to show the list produits -------------------------
-    if (GetKeyState(VK_F8) < 0) and (EditBVCtrBonCtrGBtn.Enabled = False) then
-    begin
-      ListAddProduitBonCtrGBtnClick(Screen);
-
-      Handled := true;
-    end;
- //--- this is to validate the bon--------------------------
-    if (GetKeyState(VK_F9) < 0) then
-    begin
-
-      ValiderBVCtrBonCtrGBtnClick(Screen);
-
-      Handled := true;
-    end;
-
- //--- this is for fast validate--------------------------
-    if (GetKeyState(VK_F10) < 0) then
-    begin
-
-      ExValiderBVCtrBonCtrGBtnClick(Screen);
-
-      Handled := true;
-    end;
-
-
-   //--- this is for new produit--------------------------
-    if (GetKeyState(VK_F11) < 0) then
-    begin
-
-      NewAddProduitBonCtrGBtnClick(Screen);
-
-      Handled := true;
-    end;
-
- //--- this is print the bon--------------------------
-    if (GetKeyState(VK_F12) < 0) then
-    begin
-
-      PrintTicketBVCtrBonCtrGBtnClick(Screen);
-
-      Handled := true;
-    end;
-  end;
+//  if (Showing) and ((WindowState = wsMaximized) or (WindowState = wsNormal)) then
+//  begin
+//
+//
+//
+//   //--- this is to clear the bon --------------------------
+//    if (GetKeyState(VK_CONTROL) < 0) and (GetKeyState(VK_DELETE) < 0) and (AddBVCtrBonCtrGBtn.Enabled = True) then
+//    begin
+//      ClearProduitBonCtrGBtnClick(Screen);
+//
+//      Handled := true;
+//    end;
+//
+//
+//    //--- this is to focus in produit --------------------------
+//    if (GetKeyState(VK_F1) < 0) then
+//    begin
+//
+//      if Panel1.Tag = 0 then
+//      begin
+//        sndPlaySound('C:\Windows\Media\change_statut_ctr.wav', SND_NODEFAULT or SND_ASYNC or SND_RING);
+//        deletingState;
+//      end
+//      else if Panel1.Tag = 1 then
+//      begin
+//        sndPlaySound('C:\Windows\Media\change_statut_ctr.wav', SND_NODEFAULT or SND_ASYNC or SND_RING);
+//        addingState;
+//
+//      end;
+//      Handled := true;
+//    end;
+//
+//   //--- this is to focus in produit --------------------------
+//    if (GetKeyState(VK_F3) < 0) and (AddBVCtrBonCtrGBtn.Enabled = False) then
+//    begin
+//      ProduitBonCtrGCbx.SetFocus;
+//      Handled := true;
+//    end;
+//
+//
+// //--- this is to add new bon --------------------------
+//    if (GetKeyState(VK_F4) < 0) and (AddBVCtrBonCtrGBtn.Enabled = True) then
+//    begin
+//      SetFocus;
+//      AddBVCtrBonCtrGBtnClick(Screen);
+//
+//        ProduitBonCtrGCbx.SetFocus;
+//
+//      Handled := true;
+//    end;
+//
+// //--- this is to edit the bon--------------------------
+//    if (GetKeyState(VK_F5) < 0) and (EditBVCtrBonCtrGBtn.Enabled = True) then
+//    begin
+//      EditBVCtrBonCtrGBtnClick(Screen);
+//
+//      Handled := true;
+//    end;
+//
+// //--- this is to switch between produits and quntity--------------------------
+//    if (GetKeyState(VK_F6) < 0) and (EditBVCtrBonCtrGBtn.Enabled = False) then
+//    begin
+//      ProduitsListDBGridEh.SetFocus;
+//      if ProduitsListDBGridEh.SelectedField.FieldName <> 'qut_p' then
+//      begin
+//        for I := 0 to ProduitsListDBGridEh.FieldCount do
+//        begin
+//          if ProduitsListDBGridEh.SelectedField.FieldName = 'qut_p' then
+//          begin
+//            ProduitsListDBGridEh.SelectedIndex := I - 1;
+//            Handled := true;
+//            Break;
+//          end
+//          else
+//          begin
+//            ProduitsListDBGridEh.SelectedIndex := I;
+//          end;
+//        end;
+//      end;
+//      Handled := true;
+//    end;
+//  //--- this is to switch between produits and prix----------------------------
+//    if (GetKeyState(VK_F7) < 0) and (EditBVCtrBonCtrGBtn.Enabled = False) then
+//    begin
+//      ProduitsListDBGridEh.SetFocus;
+//      if ProduitsListDBGridEh.SelectedField.FieldName <> 'prixvd_p' then
+//      begin
+//        for I := 0 to ProduitsListDBGridEh.FieldCount do
+//        begin
+//          if ProduitsListDBGridEh.SelectedField.FieldName = 'prixvd_p' then
+//          begin
+//            ProduitsListDBGridEh.SelectedIndex := I - 1;
+//            Handled := true;
+//            Break;
+//          end
+//          else
+//          begin
+//            ProduitsListDBGridEh.SelectedIndex := I;
+//          end;
+//        end;
+//      end;
+//      Handled := true;
+//    end;
+//
+// //--- this is to show the list produits -------------------------
+//    if (GetKeyState(VK_F8) < 0) and (EditBVCtrBonCtrGBtn.Enabled = False) then
+//    begin
+//      ListAddProduitBonCtrGBtnClick(Screen);
+//
+//      Handled := true;
+//    end;
+// //--- this is to validate the bon--------------------------
+//
+//    if (GetKeyState(VK_F9) < 0) AND (ValiderBVCtrBonCtrGBtn.Enabled = True)
+//        AND NOT (Assigned(FSplashVersement)) then
+//    begin
+//      ValiderBVCtrBonCtrGBtnClick(Screen);
+//
+//      Handled := true;
+//    end else
+//    if  (GetKeyState(VK_F9) < 0) AND (ValiderBVCtrBonCtrGBtn.Enabled = True)
+//         AND NOT (FSplashVersement.Showing) then
+//        begin
+//          ValiderBVCtrBonCtrGBtnClick(Screen);
+//
+//          Handled := true;
+//        end;
+//
+// //--- this is for fast validate--------------------------
+//    if (GetKeyState(VK_F10) < 0) then
+//    begin
+//
+//      ExValiderBVCtrBonCtrGBtnClick(Screen);
+//
+//      Handled := true;
+//    end;
+//
+//
+//   //--- this is for new produit--------------------------
+//    if (GetKeyState(VK_F11) < 0) then
+//    begin
+//
+//      NewAddProduitBonCtrGBtnClick(Screen);
+//
+//      Handled := true;
+//    end;
+//
+// //--- this is print the bon--------------------------
+//    if (GetKeyState(VK_F12) < 0) then
+//    begin
+//
+//      PrintTicketBVCtrBonCtrGBtnClick(Screen);
+//
+//      Handled := true;
+//    end;
+//  end;
 
 end;
 

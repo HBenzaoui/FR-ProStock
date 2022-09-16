@@ -3095,8 +3095,8 @@ object BonRecGestionF: TBonRecGestionF
   object BonRecPListDataS: TDataSource
     DataSet = MainForm.Bona_recPlistTable
     OnDataChange = BonRecPListDataSDataChange
-    Left = 984
-    Top = 480
+    Left = 988
+    Top = 546
   end
   object frxBonRecDT: TfrxDBDataset
     UserName = 'frxBonRecDB'
@@ -5655,7 +5655,61 @@ object BonRecGestionF: TBonRecGestionF
   end
   object ApplicationEvents1: TApplicationEvents
     OnShortCut = ApplicationEvents1ShortCut
-    Left = 982
-    Top = 248
+    Left = 862
+    Top = 254
+  end
+  object ActionList1: TActionList
+    Left = 984
+    Top = 256
+    object F3: TAction
+      Caption = 'F3'
+      ShortCut = 114
+      OnExecute = F3Execute
+    end
+    object F4: TAction
+      Caption = 'F4'
+      ShortCut = 115
+      OnExecute = F4Execute
+    end
+    object F5: TAction
+      Caption = 'F5'
+      ShortCut = 116
+      OnExecute = F5Execute
+    end
+    object F6: TAction
+      Caption = 'F6'
+      ShortCut = 117
+      OnExecute = F6Execute
+    end
+    object F7: TAction
+      Caption = 'F7'
+      ShortCut = 118
+      OnExecute = F7Execute
+    end
+    object F8: TAction
+      Caption = 'F8'
+      ShortCut = 119
+      OnExecute = F8Execute
+    end
+    object F9: TAction
+      Caption = 'F9'
+      ShortCut = 120
+      OnExecute = F9Execute
+    end
+    object F10: TAction
+      Caption = 'F10'
+      ShortCut = 121
+      OnExecute = F10Execute
+    end
+    object F11: TAction
+      Caption = 'F11'
+      ShortCut = 122
+      OnExecute = F11Execute
+    end
+    object F12: TAction
+      Caption = 'F12'
+      ShortCut = 123
+      OnExecute = F12Execute
+    end
   end
 end
