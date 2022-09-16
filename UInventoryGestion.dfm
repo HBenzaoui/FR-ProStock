@@ -472,7 +472,7 @@ object InventoryGestionF: TInventoryGestionF
     ShowHint = True
     Spacing = -1
     OnClick = ListAddProduitInvGBtnClick
-    Version = '1.6.2.0'
+    Version = '1.7.2.0'
     TMSStyle = 0
   end
   object RequiredStarInvGLbl: TLabel
@@ -520,7 +520,7 @@ object InventoryGestionF: TInventoryGestionF
     ShowHint = True
     Spacing = -1
     OnClick = AddProduitInvGBtnClick
-    Version = '1.6.2.0'
+    Version = '1.7.2.0'
     TMSStyle = 0
   end
   object ValiderInvGLbl: TLabel
@@ -587,7 +587,7 @@ object InventoryGestionF: TInventoryGestionF
     ShowHint = True
     Spacing = -1
     OnClick = EnterAddProduitBonLivGBtnClick
-    Version = '1.6.2.0'
+    Version = '1.7.2.0'
     TMSStyle = 0
   end
   object DeleteProduitInvGBtn: TAdvToolButton
@@ -621,7 +621,7 @@ object InventoryGestionF: TInventoryGestionF
     Spacing = -1
     Visible = False
     OnClick = DeleteProduitInvGBtnClick
-    Version = '1.6.2.0'
+    Version = '1.7.2.0'
     TMSStyle = 0
   end
   object ClearProduitInvGBtn: TAdvToolButton
@@ -655,7 +655,7 @@ object InventoryGestionF: TInventoryGestionF
     Spacing = -1
     Visible = False
     OnClick = ClearProduitInvGBtnClick
-    Version = '1.6.2.0'
+    Version = '1.7.2.0'
     TMSStyle = 0
   end
   object sSpeedButton7: TsSpeedButton
@@ -663,12 +663,11 @@ object InventoryGestionF: TInventoryGestionF
     Top = 182
     Width = 26
     Height = 26
+    ImageIndex = 0
+    Images = MainForm.PanelIcons24
     ParentShowHint = False
     ShowHint = True
     OnClick = sSpeedButton7Click
-    SkinData.SkinSection = 'SPEEDBUTTON'
-    Images = MainForm.PanelIcons24
-    ImageIndex = 0
     ShowCaption = False
   end
   object sSpeedButton6: TsSpeedButton
@@ -676,24 +675,22 @@ object InventoryGestionF: TInventoryGestionF
     Top = 182
     Width = 26
     Height = 26
+    ImageIndex = 1
+    Images = MainForm.PanelIcons24
     ParentShowHint = False
     ShowHint = True
     OnClick = sSpeedButton6Click
-    SkinData.SkinSection = 'SPEEDBUTTON'
-    Images = MainForm.PanelIcons24
-    ImageIndex = 1
   end
   object sSpeedButton5: TsSpeedButton
     Left = 427
     Top = 182
     Width = 26
     Height = 26
+    ImageIndex = 2
+    Images = MainForm.PanelIcons24
     ParentShowHint = False
     ShowHint = True
     OnClick = sSpeedButton5Click
-    SkinData.SkinSection = 'SPEEDBUTTON'
-    Images = MainForm.PanelIcons24
-    ImageIndex = 2
     ShowCaption = False
   end
   object sSpeedButton4: TsSpeedButton
@@ -701,12 +698,11 @@ object InventoryGestionF: TInventoryGestionF
     Top = 182
     Width = 26
     Height = 26
+    ImageIndex = 3
+    Images = MainForm.PanelIcons24
     ParentShowHint = False
     ShowHint = True
     OnClick = sSpeedButton4Click
-    SkinData.SkinSection = 'SPEEDBUTTON'
-    Images = MainForm.PanelIcons24
-    ImageIndex = 3
   end
   object Label29: TLabel
     Left = 818
@@ -1367,7 +1363,7 @@ object InventoryGestionF: TInventoryGestionF
       ShowHint = True
       Spacing = -1
       OnClick = CancelInvGBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object SaveInvGBtn: TAdvToolButton
@@ -1399,7 +1395,7 @@ object InventoryGestionF: TInventoryGestionF
       ShowHint = True
       Spacing = -1
       OnClick = SaveInvGBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object SaveValideInvGBtn: TAdvToolButton
@@ -1430,7 +1426,7 @@ object InventoryGestionF: TInventoryGestionF
       Shaded = False
       Spacing = -1
       OnClick = SaveValideInvGBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object Label1: TLabel
@@ -1527,7 +1523,7 @@ object InventoryGestionF: TInventoryGestionF
       ShowHint = True
       Spacing = -2
       Visible = False
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object RefreshGirdBtn: TAdvToolButton
@@ -1560,7 +1556,7 @@ object InventoryGestionF: TInventoryGestionF
       Shaded = False
       ShowHint = True
       Spacing = -2
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object AdvToolButton1: TAdvToolButton
@@ -1594,7 +1590,7 @@ object InventoryGestionF: TInventoryGestionF
       ShowHint = True
       Spacing = -2
       OnClick = AdvToolButton1Click
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object AdvToolButton2: TAdvToolButton
@@ -1628,7 +1624,7 @@ object InventoryGestionF: TInventoryGestionF
       ShowHint = True
       Spacing = -2
       OnClick = AdvToolButton2Click
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object AdvToolButton3: TAdvToolButton
@@ -1662,7 +1658,7 @@ object InventoryGestionF: TInventoryGestionF
       ShowHint = True
       Spacing = -2
       OnClick = AdvToolButton3Click
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object S01: TPanel
@@ -1775,6 +1771,7 @@ object InventoryGestionF: TInventoryGestionF
     OverwritePrompt = True
     DataOnly = False
     EmbeddedFonts = True
+    InteractiveFormsFontSubset = 'A-Z,a-z,0-9,#43-#47 '
     OpenAfterExport = True
     PrintOptimized = False
     Outline = False
@@ -1805,7 +1802,7 @@ object InventoryGestionF: TInventoryGestionF
     Top = 472
   end
   object INVfrxRprt: TfrxReport
-    Version = '6.3.12'
+    Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]

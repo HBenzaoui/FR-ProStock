@@ -2169,7 +2169,7 @@ begin
 
       MainForm.SQLQuery.Active:=False;
       MainForm.SQLQuery.SQL.Clear;
-      MainForm.SQLQuery.SQL.Text:= 'SELECT nom_p FROM produit ';
+      MainForm.SQLQuery.SQL.Text:= 'SELECT nom_p FROM produit ORDER By code_p ';
       MainForm.SQLQuery.Active := True;
 
       MainForm.SQLQuery.first;
@@ -2194,7 +2194,7 @@ begin
 
       MainForm.SQLQuery.Active:=False;
       MainForm.SQLQuery.SQL.Clear;
-      MainForm.SQLQuery.SQL.Text:= 'SELECT refer_p FROM produit ';
+      MainForm.SQLQuery.SQL.Text:= 'SELECT refer_p FROM produit ORDER By code_p ';
       MainForm.SQLQuery.Active := True;
 
       MainForm.SQLQuery.first;

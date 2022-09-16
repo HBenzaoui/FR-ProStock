@@ -409,7 +409,7 @@ begin
                                     +' INNER JOIN client CL             '
                                     +'     on BL.code_c = CL.code_c     '
                                     +' WHERE BL.valider_bvliv = TRUE AND LOWER(CL.nom_c) LIKE LOWER('+ QuotedStr( ClientBonRetVGCbx.Text )+') '
-                                    +'         GROUP BY BLL.code_p, P.nom_p;';
+                                    +'         GROUP BY BLL.code_p, P.nom_p ORDER By code_p';
       MainForm.SQLQuery.Active := True;
 
       MainForm.SQLQuery.first;
@@ -443,7 +443,7 @@ begin
                                     +' INNER JOIN client CL             '
                                     +'     on BL.code_c = CL.code_c     '
                                     +' WHERE BL.valider_bvliv = TRUE AND LOWER(CL.nom_c) LIKE LOWER('+ QuotedStr( ClientBonRetVGCbx.Text )+') '
-                                    +'         GROUP BY BLL.code_p, P.refer_p;';
+                                    +'         GROUP BY BLL.code_p, P.refer_p ORDER By code_p';
       MainForm.SQLQuery.Active := True;
 
       MainForm.SQLQuery.first;
