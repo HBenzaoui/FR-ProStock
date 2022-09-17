@@ -550,7 +550,7 @@ begin
    begin
         MainForm.SQLQuery.Active:=False;
         MainForm.SQLQuery.SQL.Clear;
-        MainForm.SQLQuery.SQL.Text:= 'SELECT code_p,nom_p,prixht_p,prixvd_p,prixvr_p,prixvg_p,prixva_p,prixva2_p,tva_p,perissable_p FROM produit WHERE LOWER(nom_p) LIKE LOWER('+QuotedStr(ProduitBonRecGCbx.Text)+')';
+        MainForm.SQLQuery.SQL.Text:= 'SELECT code_p,prixht_p,prixvd_p,prixvr_p,prixvg_p,prixva_p,prixva2_p,tva_p,perissable_p FROM produit WHERE LOWER(nom_p) LIKE LOWER('+QuotedStr(ProduitBonRecGCbx.Text)+')';
         MainForm.SQLQuery.Active:=True;
         CodeP:= MainForm.SQLQuery.FieldByName('code_p').AsInteger ;
 
@@ -686,7 +686,7 @@ begin
   begin
             MainForm.SQLQuery.Active:=False;
             MainForm.SQLQuery.SQL.Clear;
-            MainForm.SQLQuery.SQL.Text:= 'SELECT code_p,refer_p,nom_p,prixht_p,prixvd_p,prixvr_p,prixvg_p,prixva_p,prixva2_p,tva_p,perissable_p FROM produit WHERE LOWER(refer_p) LIKE LOWER('+QuotedStr(ProduitBonRecGCbx.Text)+')';
+            MainForm.SQLQuery.SQL.Text:= 'SELECT code_p,refer_p,prixht_p,prixvd_p,prixvr_p,prixvg_p,prixva_p,prixva2_p,tva_p,perissable_p FROM produit WHERE LOWER(refer_p) LIKE LOWER('+QuotedStr(ProduitBonRecGCbx.Text)+')';
             MainForm.SQLQuery.Active:=True;
             CodeP:= MainForm.SQLQuery.FieldByName('code_p').AsInteger ;
 
@@ -823,7 +823,7 @@ begin
 
     MainForm.SQLQuery.Active:=False;
     MainForm.SQLQuery.SQL.Clear;
-    MainForm.SQLQuery.SQL.Text:= 'SELECT code_p,nom_p,codebar_p,prixht_p,prixvd_p,prixvr_p,prixvg_p,prixva_p,prixva2_p,tva_p,perissable_p FROM produit WHERE code_p = '+QuotedStr(IntToStr(CodeCB)) +'OR'+ ' LOWER(codebar_p) LIKE LOWER(' + QuotedStr(ProduitBonRecGCbx.Text)+')';
+    MainForm.SQLQuery.SQL.Text:= 'SELECT code_p,codebar_p,prixht_p,prixvd_p,prixvr_p,prixvg_p,prixva_p,prixva2_p,tva_p,perissable_p FROM produit WHERE code_p = '+QuotedStr(IntToStr(CodeCB)) +'OR'+ ' LOWER(codebar_p) LIKE LOWER(' + QuotedStr(ProduitBonRecGCbx.Text)+')';
     MainForm.SQLQuery.Active:=True;
     CodeP:= MainForm.SQLQuery.FieldByName('code_p').AsInteger ;
 
