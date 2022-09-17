@@ -934,7 +934,7 @@ begin
           //This is for adding qut if it the same produit
       MainForm.SQLQuery4.Active := False;
       MainForm.SQLQuery4.SQL.Clear;
-      MainForm.SQLQuery4.SQL.Text := 'SELECT qut_p,code_p FROM bonv_fac_list WHERE code_bvfac = ' + QuotedStr(IntToStr(MainForm.Bonv_facTable.FieldByName('code_bvfac').AsInteger));
+      MainForm.SQLQuery4.SQL.Text := 'SELECT code_bvfacl,qut_p,code_p FROM bonv_fac_list WHERE code_bvfac = ' + QuotedStr(IntToStr(MainForm.Bonv_facTable.FieldByName('code_bvfac').AsInteger));
       MainForm.SQLQuery4.Active := True;
 
       MainForm.SQLQuery4.First;
@@ -944,7 +944,7 @@ begin
         if MainForm.SQLQuery4.FieldByName('code_p').AsInteger = CodeP then
         begin
           MainForm.SQLQuery4.Edit;
-          MainForm.SQLQuery4.FieldByName('qut_p').AsFloat := MainForm.SQLQuery4.FieldByName('qut_p').AsFloat + 1;
+          MainForm.SQLQuery4.FieldByName('qut_p').Value := MainForm.SQLQuery4.FieldByName('qut_p').Value + 1;
           MainForm.SQLQuery4.Post;
           Refresh_PreservePosition;
           BonFacVGestionF.ProduitBonFacVGCbx.Clear;
@@ -958,7 +958,7 @@ begin
 
       MainForm.SQLQuery4.Active := False;
       MainForm.SQLQuery4.SQL.Clear;
-      MainForm.Bonv_fac_listTable.Refresh;
+//      MainForm.Bonv_fac_listTable.Refresh;
 end;
 
 procedure TBonFacVGestionF.ProduitBonFacVGCbxKeyPress(Sender: TObject;

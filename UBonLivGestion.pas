@@ -1080,7 +1080,7 @@ begin
           //This is for adding qut if it the same produit
       MainForm.SQLQuery4.Active := False;
       MainForm.SQLQuery4.SQL.Clear;
-      MainForm.SQLQuery4.SQL.Text := 'SELECT qut_p,code_p FROM bonv_liv_list WHERE code_bvliv = ' + QuotedStr(IntToStr(MainForm.Bonv_livTable.FieldByName('code_bvliv').AsInteger));
+      MainForm.SQLQuery4.SQL.Text := 'SELECT code_bvlivl,qut_p,code_p FROM bonv_liv_list WHERE code_bvliv = ' + QuotedStr(IntToStr(MainForm.Bonv_livTable.FieldByName('code_bvliv').AsInteger));
       MainForm.SQLQuery4.Active := True;
 
       MainForm.SQLQuery4.First;
@@ -1090,7 +1090,7 @@ begin
         if MainForm.SQLQuery4.FieldByName('code_p').AsInteger = CodeP then
         begin
           MainForm.SQLQuery4.Edit;
-          MainForm.SQLQuery4.FieldByName('qut_p').AsFloat := MainForm.SQLQuery4.FieldByName('qut_p').AsFloat + 1;
+          MainForm.SQLQuery4.FieldByName('qut_p').Value := MainForm.SQLQuery4.FieldByName('qut_p').Value + 1;
           MainForm.SQLQuery4.Post;
           Refresh_PreservePosition;
           BonLivGestionF.ProduitBonLivGCbx.Clear;
@@ -1104,7 +1104,7 @@ begin
 
       MainForm.SQLQuery4.Active := False;
       MainForm.SQLQuery4.SQL.Clear;
-      MainForm.Bonv_liv_listTable.Refresh;
+//      MainForm.Bonv_liv_listTable.Refresh;
 end;
 
 procedure TBonLivGestionF.ProduitBonLivGCbxKeyPress(Sender: TObject;

@@ -250,6 +250,7 @@ type
     F12: TAction;
     Label16: TLabel;
     Label24: TLabel;
+    F1: TAction;
     procedure FormShow(Sender: TObject);
     procedure RemiseBonCtrGEdtDblClick(Sender: TObject);
     procedure ShowKeyBoardBonCtrGBtnClick(Sender: TObject);
@@ -324,6 +325,7 @@ type
     procedure ListClientBonCtrGBtnClick(Sender: TObject);
     procedure ClientBonCtrGCbxSelect(Sender: TObject);
     procedure RemiseBonCtrGEdtClick(Sender: TObject);
+    procedure F1Execute(Sender: TObject);
     procedure F3Execute(Sender: TObject);
     procedure F4Execute(Sender: TObject);
     procedure F5Execute(Sender: TObject);
@@ -334,6 +336,7 @@ type
     procedure F10Execute(Sender: TObject);
     procedure F11Execute(Sender: TObject);
     procedure F12Execute(Sender: TObject);
+
   private
     procedure GettingData;
     procedure addingState;
@@ -1526,21 +1529,27 @@ begin
             //AND NOT TryStrToInt(Copy(ProduitBonCtrGCbx.Text,2,Length(ProduitBonCtrGCbx.Text)),Numcheck)
             then
             begin
-              MainForm.SQLQuery4.First;
-              while not MainForm.SQLQuery4.Eof do
+
+              DataModuleF.SQLQuery3.Active := False;
+              DataModuleF.SQLQuery3.SQL.Clear;
+              DataModuleF.SQLQuery3.SQL.Text := 'SELECT code_bvctrl,qut_p,code_p FROM bonv_ctr_list WHERE code_bvctr = ' + QuotedStr(IntToStr(MainForm.Bonv_ctrTable.FieldByName('code_bvctr').AsInteger));
+              DataModuleF.SQLQuery3.Active := True;
+
+              DataModuleF.SQLQuery3.First;
+              while not DataModuleF.SQLQuery3.Eof do
               begin
 
-                if MainForm.SQLQuery4.FieldByName('code_p').AsInteger = CodeP then
+                if DataModuleF.SQLQuery3.FieldByName('code_p').AsInteger = CodeP then
                 begin
-                  MainForm.SQLQuery4.Edit;
+                  DataModuleF.SQLQuery3.Edit;
                   if NOT isBalCode then
                   begin
-                  MainForm.SQLQuery4.FieldByName('qut_p').AsFloat := MainForm.SQLQuery4.FieldByName('qut_p').AsFloat + 1;
+                  DataModuleF.SQLQuery3.FieldByName('qut_p').Value := DataModuleF.SQLQuery3.FieldByName('qut_p').Value + 1;
                   end else
                       begin
-                      MainForm.SQLQuery4.FieldByName('qut_p').AsFloat := MainForm.SQLQuery4.FieldByName('qut_p').AsFloat + BalQut;
+                      DataModuleF.SQLQuery3.FieldByName('qut_p').Value := DataModuleF.SQLQuery3.FieldByName('qut_p').Value + BalQut;
                       end;
-                  MainForm.SQLQuery4.Post;
+                  DataModuleF.SQLQuery3.Post;
                   Refresh_PreservePosition;
                   ProduitBonCtrGCbx.Clear;
                   sndPlaySound('C:\Windows\Media\speech on.wav', SND_NODEFAULT or SND_ASYNC or SND_RING);
@@ -1549,35 +1558,45 @@ begin
                   Exit;
 
                 end;
-                MainForm.SQLQuery4.Next;
+                DataModuleF.SQLQuery3.Next;
               end;
+
+              DataModuleF.SQLQuery3.Active := False;
+              DataModuleF.SQLQuery3.SQL.Clear;
+
 
             end   //This is for deleting when it supression mode
             else if (Panel1.Tag = 1) and (MainForm.SQLQuery4.IsEmpty = False) AND NOT(Copy(ProduitBonCtrGCbx.Text,1,1) = '-') AND NOT(Copy(ProduitBonCtrGCbx.Text,1,1) = '+')
             //AND NOT TryStrToInt(Copy(ProduitBonCtrGCbx.Text,2,Length(ProduitBonCtrGCbx.Text)),Numcheck)
             then
             begin
-              MainForm.SQLQuery4.First;
-              while not MainForm.SQLQuery4.Eof do
+
+              DataModuleF.SQLQuery3.Active := False;
+              DataModuleF.SQLQuery3.SQL.Clear;
+              DataModuleF.SQLQuery3.SQL.Text := 'SELECT code_bvctrl,qut_p,code_p FROM bonv_ctr_list WHERE code_bvctr = ' + QuotedStr(IntToStr(MainForm.Bonv_ctrTable.FieldByName('code_bvctr').AsInteger));
+              DataModuleF.SQLQuery3.Active := True;
+
+              DataModuleF.SQLQuery3.First;
+              while not DataModuleF.SQLQuery3.Eof do
               begin
 
-                if MainForm.SQLQuery4.FieldByName('code_p').AsInteger = CodeP then
+                if DataModuleF.SQLQuery3.FieldByName('code_p').AsInteger = CodeP then
                 begin
-                  if MainForm.SQLQuery4.FieldByName('qut_p').AsFloat > 1 then
+                  if DataModuleF.SQLQuery3.FieldByName('qut_p').AsFloat > 1 then
                   begin
-                    MainForm.SQLQuery4.Edit;
+                    DataModuleF.SQLQuery3.Edit;
                     if NOT isBalCode then
                     begin
-                    MainForm.SQLQuery4.FieldByName('qut_p').AsFloat := MainForm.SQLQuery4.FieldByName('qut_p').AsFloat - 1;
+                    DataModuleF.SQLQuery3.FieldByName('qut_p').Value := DataModuleF.SQLQuery3.FieldByName('qut_p').Value - 1;
                     end else
                         begin
-                         MainForm.SQLQuery4.FieldByName('qut_p').AsFloat := MainForm.SQLQuery4.FieldByName('qut_p').AsFloat - BalQut;
+                         DataModuleF.SQLQuery3.FieldByName('qut_p').Value := DataModuleF.SQLQuery3.FieldByName('qut_p').Value - BalQut;
                         end;
-                    MainForm.SQLQuery4.Post;
+                    DataModuleF.SQLQuery3.Post;
                   end
                   else
                   begin
-                    MainForm.SQLQuery4.Delete;
+                    DataModuleF.SQLQuery3.Delete;
                   end;
                   Refresh_PreservePosition;
                   ProduitBonCtrGCbx.Clear;
@@ -1587,8 +1606,11 @@ begin
                   Exit;
 
                 end;
-                MainForm.SQLQuery4.Next;
+                DataModuleF.SQLQuery3.Next;
               end;
+
+              DataModuleF.SQLQuery3.Active := False;
+              DataModuleF.SQLQuery3.SQL.Clear;
 
             end else //This is for adding DIVERS
             begin
@@ -1797,7 +1819,7 @@ begin
 
       MainForm.Bonv_ctr_listTable.Refresh;
       MainForm.Bonv_ctr_listTable.Last;
-      DataModuleF.Top5produit.Refresh;
+//      DataModuleF.Top5produit.Refresh;
 //        ProduitBonCtrGCbx.AutoDropDown:=False;
       ProduitBonCtrGCbx.SelectAll;
 
@@ -2376,6 +2398,21 @@ begin
     BonCtrGNEWStock.Caption := floatTostrF((0), ffNumber, 14, 2);
 
     ProduitsListDBGridEh.ReadOnly := True;
+  end;
+end;
+
+procedure TBonCtrGestionF.F1Execute(Sender: TObject);
+begin
+  //--- this is to switch mode adding and deleting--------------------------
+  if Panel1.Tag = 0 then
+  begin
+    sndPlaySound('C:\Windows\Media\change_statut_ctr.wav', SND_NODEFAULT or SND_ASYNC or SND_RING);
+    deletingState;
+  end
+  else if Panel1.Tag = 1 then
+  begin
+    sndPlaySound('C:\Windows\Media\change_statut_ctr.wav', SND_NODEFAULT or SND_ASYNC or SND_RING);
+    addingState;
   end;
 end;
 

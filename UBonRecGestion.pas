@@ -515,7 +515,7 @@ begin
         if MainForm.SQLQuery4.FieldByName('code_p').AsInteger = CodeP then
         begin
           MainForm.SQLQuery4.Edit;
-          MainForm.SQLQuery4.FieldByName('qut_p').AsFloat := MainForm.SQLQuery4.FieldByName('qut_p').AsFloat + 1;
+          MainForm.SQLQuery4.FieldByName('qut_p').Value := MainForm.SQLQuery4.FieldByName('qut_p').Value + 1;
           MainForm.SQLQuery4.Post;
           Refresh_PreservePosition;
           BonRecGestionF.ProduitBonRecGCbx.Clear;
@@ -529,7 +529,7 @@ begin
 
       MainForm.SQLQuery4.Active := False;
       MainForm.SQLQuery4.SQL.Clear;
-      MainForm.Bona_recPlistTable.Refresh;
+//      MainForm.Bona_recPlistTable.Refresh;
 end;
 
 procedure TBonRecGestionF.ProduitBonRecGCbxKeyPress(Sender: TObject; var Key: Char);

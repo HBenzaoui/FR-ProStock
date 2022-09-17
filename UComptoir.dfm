@@ -3793,7 +3793,6 @@ object BonCtrGestionF: TBonCtrGestionF
       Color = 15527148
       ParentBackground = False
       TabOrder = 0
-      ExplicitTop = -1
       DesignSize = (
         563
         147)
@@ -6928,6 +6927,11 @@ object BonCtrGestionF: TBonCtrGestionF
   object ActionList1: TActionList
     Left = 602
     Top = 466
+    object F1: TAction
+      Caption = 'F1'
+      ShortCut = 112
+      OnExecute = F1Execute
+    end
     object F3: TAction
       Caption = 'F3'
       ShortCut = 114

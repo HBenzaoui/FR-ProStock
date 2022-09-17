@@ -2249,7 +2249,7 @@ begin
           //This is for adding qut if it the same produit
       MainForm.SQLQuery4.Active := False;
       MainForm.SQLQuery4.SQL.Clear;
-      MainForm.SQLQuery4.SQL.Text := 'SELECT qut_p,code_p FROM bona_fac_list WHERE code_bafac = ' + QuotedStr(IntToStr(MainForm.Bona_facTable.FieldByName('code_bafac').AsInteger));
+      MainForm.SQLQuery4.SQL.Text := 'SELECT code_bafacl,qut_p,code_p FROM bona_fac_list WHERE code_bafac = ' + QuotedStr(IntToStr(MainForm.Bona_facTable.FieldByName('code_bafac').AsInteger));
       MainForm.SQLQuery4.Active := True;
 
       MainForm.SQLQuery4.First;
@@ -2259,7 +2259,7 @@ begin
         if MainForm.SQLQuery4.FieldByName('code_p').AsInteger = CodeP then
         begin
           MainForm.SQLQuery4.Edit;
-          MainForm.SQLQuery4.FieldByName('qut_p').AsFloat := MainForm.SQLQuery4.FieldByName('qut_p').AsFloat + 1;
+          MainForm.SQLQuery4.FieldByName('qut_p').Value := MainForm.SQLQuery4.FieldByName('qut_p').Value + 1;
           MainForm.SQLQuery4.Post;
           Refresh_PreservePosition;
           BonFacAGestionF.ProduitBonFacAGCbx.Clear;
@@ -2273,7 +2273,7 @@ begin
 
       MainForm.SQLQuery4.Active := False;
       MainForm.SQLQuery4.SQL.Clear;
-      MainForm.Bona_fac_listTable.Refresh;
+//      MainForm.Bona_fac_listTable.Refresh;
 end;
 
 procedure TBonFacAGestionF.ProduitBonFacAGCbxKeyPress(Sender: TObject;
