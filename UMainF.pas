@@ -728,14 +728,14 @@ type
     ProduitTablevaluestockvattc: TFMTBCDField;
     ProduitTablevaluestockva2ht: TFMTBCDField;
     ProduitTablevaluestockva2ttc: TFMTBCDField;
-    Bonp_facTableclientbvfac: TWideStringField;
-    Bona_recTablefourbarec2: TWideStringField;
-    Bonv_ctrTableclientbvctr: TWideStringField;
     Bonv_facTableclientbvfac: TWideStringField;
     Bonv_livTableclientbvliv: TWideStringField;
     Bona_facTablefourbafac: TWideStringField;
     RegfournisseurTableFourRF: TWideStringField;
     RegclientTableClientrRC: TWideStringField;
+    Bonp_facTableclientbvfac: TWideStringField;
+    Bona_recTablefourbarec: TWideStringField;
+    Bonv_ctrTableclientbvctr: TWideStringField;
     procedure ClientMainFBtnClick(Sender: TObject);
     procedure FourMainFBtnClick(Sender: TObject);
     procedure ProduitMainFBtnClick(Sender: TObject);
