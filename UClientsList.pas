@@ -812,19 +812,19 @@ begin
        taLeftJustify:  HlRect.Left := ARect.Left + AGrid.Canvas.TextWidth(Copy(DisplayText, 1, Position-1)) + 1;
        taRightJustify: begin
          Offset := AGrid.Canvas.TextWidth(Copy(DisplayText, 1,1)) - 1;
-         HlRect.Left :=  (ARect.Right - AGrid.Canvas.TextWidth(DisplayText)-offset) + AGrid.Canvas.TextWidth(Copy(DisplayText, 1, Position-1));
+         HlRect.Left :=  (ARect.Right - AGrid.Canvas.TextWidth(DisplayText)-offset) + AGrid.Canvas.TextWidth(Copy(DisplayText, 1, Position-1)) -10;
        end;
        taCenter: begin
          Offset := ((ARect.Right - ARect.Left) div 2) - (AGrid.Canvas.TextWidth(DisplayText) div 2)
          - (AGrid.Canvas.TextWidth(Copy(DisplayText, 1,1)) - 2);
 
-         HlRect.Left := (ARect.Right - AGrid.Canvas.TextWidth(DisplayText)- offset) + AGrid.Canvas.TextWidth(Copy(DisplayText, 1, Position-1));
+         HlRect.Left := (ARect.Right - AGrid.Canvas.TextWidth(DisplayText)- offset) + AGrid.Canvas.TextWidth(Copy(DisplayText, 1, Position-1)) - 10;
        end;
      end;
 
-     HlRect.Top := ARect.Top + 1;
-     HlRect.Right := HlRect.Left +AGrid.Canvas.TextWidth(Copy(DisplayText, Position, Length(FilterText))) + 1 ;
-     HlRect.Bottom := ARect.Bottom - 1;
+     HlRect.Top := ARect.Top ;
+     HlRect.Right := HlRect.Left +AGrid.Canvas.TextWidth(Copy(DisplayText, Position, Length(FilterText))) + 2 ;
+     HlRect.Bottom := ARect.Bottom ;
 
      //check for  limit of the cell
      if HlRect.Right > ARect.Right then
@@ -832,9 +832,9 @@ begin
 
      // setup the color and draw the rectangle in a width of the matching text
      if gdSelected in AState then
-       AGrid.Canvas.Brush.Color := $006DCEFE//$00F8CA90//$0083CAF4
+       AGrid.Canvas.Brush.Color := $006DCEFE//$00626262//$0000FFFF//$00F8CA90//$0083CAF4    $00FD9732 //
      else
-       AGrid.Canvas.Brush.Color := $006DCEFE;//$00F8CA90;//$0083CAF4;
+       AGrid.Canvas.Brush.Color := $006DCEFE;//$00626262;//$0000FFFF;//$00F8CA90;//$0083CAF4; $00FD9732;
 
      AGrid.Canvas.FillRect(HlRect);
 

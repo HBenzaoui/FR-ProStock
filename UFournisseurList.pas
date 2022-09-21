@@ -1137,19 +1137,19 @@ begin
        taLeftJustify:  HlRect.Left := ARect.Left + AGrid.Canvas.TextWidth(Copy(DisplayText, 1, Position-1)) + 1;
        taRightJustify: begin
          Offset := AGrid.Canvas.TextWidth(Copy(DisplayText, 1,1)) - 1;
-         HlRect.Left :=  (ARect.Right - AGrid.Canvas.TextWidth(DisplayText)-offset) + AGrid.Canvas.TextWidth(Copy(DisplayText, 1, Position-1));
+         HlRect.Left :=  (ARect.Right - AGrid.Canvas.TextWidth(DisplayText)-offset) + AGrid.Canvas.TextWidth(Copy(DisplayText, 1, Position-1)) -10;
        end;
        taCenter: begin
          Offset := ((ARect.Right - ARect.Left) div 2) - (AGrid.Canvas.TextWidth(DisplayText) div 2)
          - (AGrid.Canvas.TextWidth(Copy(DisplayText, 1,1)) - 2);
 
-         HlRect.Left := (ARect.Right - AGrid.Canvas.TextWidth(DisplayText)- offset) + AGrid.Canvas.TextWidth(Copy(DisplayText, 1, Position-1));
+         HlRect.Left := (ARect.Right - AGrid.Canvas.TextWidth(DisplayText)- offset) + AGrid.Canvas.TextWidth(Copy(DisplayText, 1, Position-1)) - 10;
        end;
      end;
 
-     HlRect.Top := ARect.Top + 1;
-     HlRect.Right := HlRect.Left +AGrid.Canvas.TextWidth(Copy(DisplayText, Position, Length(FilterText))) + 1 ;
-     HlRect.Bottom := ARect.Bottom - 1;
+     HlRect.Top := ARect.Top ;
+     HlRect.Right := HlRect.Left +AGrid.Canvas.TextWidth(Copy(DisplayText, Position, Length(FilterText))) + 2 ;
+     HlRect.Bottom := ARect.Bottom ;
 
      //check for  limit of the cell
      if HlRect.Right > ARect.Right then
