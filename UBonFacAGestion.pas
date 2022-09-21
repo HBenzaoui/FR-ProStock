@@ -2356,10 +2356,10 @@ if key = #13 then
             MainForm.Bona_fac_listTable.Active:=True;
 
             ProduitBonFacAGCbx.Text:='';
-            ProduitsListDBGridEh.SetFocus;
-
-           ProduitsListDBGridEh.SelectedIndex:=2;
-           ProduitsListDBGridEh.EditorMode:=True;
+//            ProduitsListDBGridEh.SetFocus;
+//
+//           ProduitsListDBGridEh.SelectedIndex:=2;
+//           ProduitsListDBGridEh.EditorMode:=True;
 
            MainForm.Bona_fac_listTable.EnableControls;
            MainForm.Bona_fac_listTable.Last;
@@ -2487,10 +2487,10 @@ if key = #13 then
             MainForm.Bona_fac_listTable.Active:=True;
 
             ProduitBonFacAGCbx.Text:='';
-            ProduitsListDBGridEh.SetFocus;
-
-           ProduitsListDBGridEh.SelectedIndex:=2;
-           ProduitsListDBGridEh.EditorMode:=True;
+//            ProduitsListDBGridEh.SetFocus;
+//
+//           ProduitsListDBGridEh.SelectedIndex:=2;
+//           ProduitsListDBGridEh.EditorMode:=True;
 
            MainForm.Bona_fac_listTable.EnableControls;
             MainForm.Bona_fac_listTable.Last;
@@ -2624,10 +2624,10 @@ if key = #13 then
              MainForm.Bona_fac_listTable.Active:=True;
 
             ProduitBonFacAGCbx.Text:='';
-            ProduitsListDBGridEh.SetFocus;
-
-           ProduitsListDBGridEh.SelectedIndex:=2;
-           ProduitsListDBGridEh.EditorMode:=True;
+//            ProduitsListDBGridEh.SetFocus;
+//
+//           ProduitsListDBGridEh.SelectedIndex:=2;
+//           ProduitsListDBGridEh.EditorMode:=True;
 
            MainForm.Bona_fac_listTable.EnableControls;
             MainForm.Bona_fac_listTable.Last;

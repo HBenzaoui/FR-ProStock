@@ -1064,10 +1064,10 @@ begin
             MainForm.Bonp_fac_listTable.Active:=True;
 
             ProduitBonFacVGCbx.Text:='';
-            ProduitsListDBGridEh.SetFocus;
-
-           ProduitsListDBGridEh.SelectedIndex:=2;
-           ProduitsListDBGridEh.EditorMode:=True;
+//            ProduitsListDBGridEh.SetFocus;
+//
+//           ProduitsListDBGridEh.SelectedIndex:=2;
+//           ProduitsListDBGridEh.EditorMode:=True;
 
            MainForm.Bonp_fac_listTable.EnableControls;
            MainForm.Bonp_fac_listTable.Last;
@@ -1211,10 +1211,10 @@ begin
             MainForm.Bonp_fac_listTable.Active:=True;
 
             ProduitBonFacVGCbx.Text:='';
-            ProduitsListDBGridEh.SetFocus;
-
-           ProduitsListDBGridEh.SelectedIndex:=2;
-           ProduitsListDBGridEh.EditorMode:=True;
+//            ProduitsListDBGridEh.SetFocus;
+//
+//           ProduitsListDBGridEh.SelectedIndex:=2;
+//           ProduitsListDBGridEh.EditorMode:=True;
 
            MainForm.Bonp_fac_listTable.EnableControls;
             MainForm.Bonp_fac_listTable.Last;
@@ -1369,10 +1369,10 @@ begin
              MainForm.Bonp_fac_listTable.Active:=True;
 
             ProduitBonFacVGCbx.Text:='';
-            ProduitsListDBGridEh.SetFocus;
-
-           ProduitsListDBGridEh.SelectedIndex:=2;
-           ProduitsListDBGridEh.EditorMode:=True;
+//            ProduitsListDBGridEh.SetFocus;
+//
+//           ProduitsListDBGridEh.SelectedIndex:=2;
+//           ProduitsListDBGridEh.EditorMode:=True;
 
            MainForm.Bonp_fac_listTable.EnableControls;
             MainForm.Bonp_fac_listTable.Last;
