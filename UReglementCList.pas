@@ -296,53 +296,50 @@ MainForm.RegclientTable.Open;
 end;
 
 procedure TReglementCListF.ResearchRegCEdtChange(Sender: TObject);
+var SearchValue : String;
 begin
  //----------- Searching in databese-------------------//
-
-    if ResearchRegCEdt.Text<>'' then
+  if ResearchRegCEdt.Text<>'' then
+  begin
+    SearchValue:=   '('''+'%'+(ResearchRegCEdt.Text)+'%'+''')';
+    if ResherchRegCClientRdioBtn.Checked then
     begin
-
-          if ResherchRegCClientRdioBtn.Checked then
-          begin
-          MainForm.RegclientTable.DisableControls;
-          MainForm.RegclientTable.Active:=False;
-          MainForm.RegclientTable.SQL.Clear;
-          MainForm.RegclientTable.SQL.Text:='SELECT * FROM regclient WHERE code_c IN( SELECT code_c FROM client WHERE LOWER(nom_c) LIKE LOWER' +'('''+'%'+(ResearchRegCEdt.Text)+'%'+''')' +')';
-          MainForm.RegclientTable.Active:=True;
-          MainForm.RegclientTable.EnableControls;
-
-          end;
-
-          if ResherchRegCNumBRdioBtn.Checked then
-          begin
-          MainForm.RegclientTable.DisableControls;
-          MainForm.RegclientTable.Active:=False;
-          MainForm.RegclientTable.SQL.Clear;
-          MainForm.RegclientTable.SQL.Text:='SELECT * FROM regclient WHERE LOWER(nom_rc) LIKE LOWER' +'('''+'%'+(ResearchRegCEdt.Text)+'%'+''')' ;
-          MainForm.RegclientTable.Active:=True;
-          MainForm.RegclientTable.EnableControls;
-          end;
-
-
-    end else
-     begin
-          MainForm.RegclientTable.DisableControls;
-          MainForm.RegclientTable.Active:=False;
-          MainForm.RegclientTable.SQL.Clear;
-          MainForm.RegclientTable.SQL.Text:='SELECT * FROM regclient ' ;
-          MainForm.RegclientTable.Active:=True;
-          MainForm.RegclientTable.EnableControls;
-
-
-          MainForm.ClientTable.DisableControls;
-          MainForm.ClientTable.Active:=False;
-          MainForm.ClientTable.SQL.Clear;
-          MainForm.ClientTable.SQL.Text:='SELECT * FROM client ' ;
-          MainForm.ClientTable.Active:=True;
-          MainForm.ClientTable.EnableControls;
-
-
-
+      MainForm.RegclientTable.DisableControls;
+      MainForm.RegclientTable.Active:=False;
+      MainForm.RegclientTable.SQL.Clear;
+      MainForm.RegclientTable.SQL.Text:='SELECT * FROM regclient '
+      +' WHERE code_c IN( '+
+        'SELECT code_c FROM client WHERE LOWER(nom_c) LIKE LOWER' + SearchValue
+        +' OR LOWER(activite_c) LIKE LOWER '+ SearchValue
+        +' OR fix_c LIKE'+ SearchValue
+        +' OR mob_c LIKE'+ SearchValue
+        +' OR mob2_c LIKE'+ SearchValue
+        +' OR fax_c LIKE'+ SearchValue
+        +' OR LOWER(adr_c) LIKE LOWER '+ SearchValue
+        +' OR LOWER(ville_c) LIKE LOWER '+ SearchValue
+        +' OR LOWER(willaya_c) LIKE LOWER '+ SearchValue
+        +' OR LOWER(email_c) LIKE LOWER '+ SearchValue
+        +' OR LOWER(siteweb_c) LIKE LOWER '+ SearchValue +')';
+      MainForm.RegclientTable.Active:=True;
+      MainForm.RegclientTable.EnableControls;
+    end;
+    if ResherchRegCNumBRdioBtn.Checked then
+    begin
+      MainForm.RegclientTable.DisableControls;
+      MainForm.RegclientTable.Active:=False;
+      MainForm.RegclientTable.SQL.Clear;
+      MainForm.RegclientTable.SQL.Text:='SELECT * FROM regclient WHERE LOWER(nom_rc) LIKE LOWER' +'('''+'%'+(ResearchRegCEdt.Text)+'%'+''')' ;
+      MainForm.RegclientTable.Active:=True;
+      MainForm.RegclientTable.EnableControls;
+    end;
+  end else
+   begin
+      MainForm.ClientTable.DisableControls;
+      MainForm.ClientTable.Active:=False;
+      MainForm.ClientTable.SQL.Clear;
+      MainForm.ClientTable.SQL.Text:='SELECT * FROM client ' ;
+      MainForm.ClientTable.Active:=True;
+      MainForm.ClientTable.EnableControls;
      end;
 end;
 

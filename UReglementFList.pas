@@ -528,54 +528,50 @@ MainForm.RegfournisseurTable.Open;
 end;
 
 procedure TReglementFListF.ResearchRegFEdtChange(Sender: TObject);
+var SearchValue : String;
 begin
  //----------- Searching in databese-------------------//
-
-    if ResearchRegFEdt.Text<>'' then
+  if ResearchRegFEdt.Text<>'' then
+  begin
+    SearchValue:=   '('''+'%'+(ResearchRegFEdt.Text)+'%'+''')';
+    if ResherchRegFFourRdioBtn.Checked then
     begin
-
-          if ResherchRegFFourRdioBtn.Checked then
-          begin
-          MainForm.RegfournisseurTable.DisableControls;
-          MainForm.RegfournisseurTable.Active:=False;
-          MainForm.RegfournisseurTable.SQL.Clear;
-          MainForm.RegfournisseurTable.SQL.Text:='SELECT * FROM regfournisseur WHERE code_f IN( SELECT code_f FROM fournisseur WHERE LOWER(nom_f) LIKE LOWER' +'('''+'%'+(ResearchRegFEdt.Text)+'%'+''')' +')';
-          MainForm.RegfournisseurTable.Active:=True;
-          MainForm.RegfournisseurTable.EnableControls;
-
-          end;
-
-          if ResherchRegFNumBRdioBtn.Checked then
-          begin
-          MainForm.RegfournisseurTable.DisableControls;
-          MainForm.RegfournisseurTable.Active:=False;
-          MainForm.RegfournisseurTable.SQL.Clear;
-          MainForm.RegfournisseurTable.SQL.Text:='SELECT * FROM regfournisseur WHERE LOWER(nom_rf) LIKE LOWER' +'('''+'%'+(ResearchRegFEdt.Text)+'%'+''')' ;
-          MainForm.RegfournisseurTable.Active:=True;
-          MainForm.RegfournisseurTable.EnableControls;
-          end;
-
-
-    end else
-     begin
-          MainForm.RegfournisseurTable.DisableControls;
-          MainForm.RegfournisseurTable.Active:=False;
-          MainForm.RegfournisseurTable.SQL.Clear;
-          MainForm.RegfournisseurTable.SQL.Text:='SELECT * FROM regfournisseur ' ;
-          MainForm.RegfournisseurTable.Active:=True;
-          MainForm.RegfournisseurTable.EnableControls;
-
-
-          MainForm.FournisseurTable.DisableControls;
-          MainForm.FournisseurTable.Active:=False;
-          MainForm.FournisseurTable.SQL.Clear;
-          MainForm.FournisseurTable.SQL.Text:='SELECT * FROM fournisseur ' ;
-          MainForm.FournisseurTable.Active:=True;
-          MainForm.FournisseurTable.EnableControls;
-
-
-
-     end;
+      MainForm.RegfournisseurTable.DisableControls;
+      MainForm.RegfournisseurTable.Active:=False;
+      MainForm.RegfournisseurTable.SQL.Clear;
+      MainForm.RegfournisseurTable.SQL.Text:='SELECT * FROM regfournisseur '
+      +' WHERE code_f IN( '+
+          'SELECT code_f FROM fournisseur WHERE LOWER(nom_f) LIKE LOWER' + SearchValue
+          +' OR fix_f LIKE'+ SearchValue
+          +' OR mob_f LIKE'+ SearchValue
+          +' OR mob2_f LIKE'+ SearchValue
+          +' OR fax_f LIKE'+ SearchValue
+          +' OR LOWER(adr_f) LIKE LOWER '+ SearchValue
+          +' OR LOWER(ville_f) LIKE LOWER '+ SearchValue
+          +' OR LOWER(willaya_f) LIKE LOWER '+ SearchValue
+          +' OR LOWER(email_f) LIKE LOWER '+ SearchValue
+          +' OR LOWER(siteweb_f) LIKE LOWER '+ SearchValue +')';
+      MainForm.RegfournisseurTable.Active:=True;
+      MainForm.RegfournisseurTable.EnableControls;
+    end;
+    if ResherchRegFNumBRdioBtn.Checked then
+    begin
+      MainForm.RegfournisseurTable.DisableControls;
+      MainForm.RegfournisseurTable.Active:=False;
+      MainForm.RegfournisseurTable.SQL.Clear;
+      MainForm.RegfournisseurTable.SQL.Text:='SELECT * FROM regfournisseur WHERE LOWER(nom_rf) LIKE LOWER' +'('''+'%'+(ResearchRegFEdt.Text)+'%'+''')' ;
+      MainForm.RegfournisseurTable.Active:=True;
+      MainForm.RegfournisseurTable.EnableControls;
+    end;
+  end else
+   begin
+      MainForm.FournisseurTable.DisableControls;
+      MainForm.FournisseurTable.Active:=False;
+      MainForm.FournisseurTable.SQL.Clear;
+      MainForm.FournisseurTable.SQL.Text:='SELECT * FROM fournisseur ' ;
+      MainForm.FournisseurTable.Active:=True;
+      MainForm.FournisseurTable.EnableControls;
+   end;
 end;
 
 procedure TReglementFListF.ResearchRegFEdtKeyDown(Sender: TObject;
