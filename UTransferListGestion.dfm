@@ -105,7 +105,7 @@ object TransferListGestionF: TTransferListGestionF
       ShowHint = True
       Spacing = -1
       OnClick = EditBARecBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object DeleteBARecBtn: TAdvToolButton
@@ -137,7 +137,7 @@ object TransferListGestionF: TTransferListGestionF
       ShowHint = True
       Spacing = -2
       OnClick = DeleteBARecBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object AddBARecBtn: TAdvToolButton
@@ -169,13 +169,13 @@ object TransferListGestionF: TTransferListGestionF
       ShowHint = True
       Spacing = -1
       OnClick = AddBARecBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object ResearchBACtrLbl: TLabel
       Left = 2
       Top = 31
-      Width = 76
+      Width = 74
       Height = 16
       Caption = 'Rechercher'
       Color = 15722984
@@ -226,12 +226,11 @@ object TransferListGestionF: TTransferListGestionF
       Top = 23
       Width = 25
       Height = 25
+      ImageIndex = 0
+      Images = MainForm.PanelIcons24
       ParentShowHint = False
       ShowHint = True
       OnClick = FisrtBARecbtnClick
-      SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
-      ImageIndex = 0
       ShowCaption = False
     end
     object PreviosBARecbtn: TsSpeedButton
@@ -239,24 +238,22 @@ object TransferListGestionF: TTransferListGestionF
       Top = 23
       Width = 25
       Height = 25
+      ImageIndex = 1
+      Images = MainForm.PanelIcons24
       ParentShowHint = False
       ShowHint = True
       OnClick = PreviosBARecbtnClick
-      SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
-      ImageIndex = 1
     end
     object NextBARecbtn: TsSpeedButton
       Left = 502
       Top = 23
       Width = 25
       Height = 25
+      ImageIndex = 2
+      Images = MainForm.PanelIcons24
       ParentShowHint = False
       ShowHint = True
       OnClick = NextBARecbtnClick
-      SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
-      ImageIndex = 2
       ShowCaption = False
     end
     object LastBARecbtn: TsSpeedButton
@@ -264,12 +261,11 @@ object TransferListGestionF: TTransferListGestionF
       Top = 23
       Width = 25
       Height = 25
+      ImageIndex = 3
+      Images = MainForm.PanelIcons24
       ParentShowHint = False
       ShowHint = True
       OnClick = LastBARecbtnClick
-      SkinData.SkinSection = 'SPEEDBUTTON'
-      Images = MainForm.PanelIcons24
-      ImageIndex = 3
     end
     object Label26: TLabel
       Left = 611
@@ -710,7 +706,8 @@ object TransferListGestionF: TTransferListGestionF
           '1'
           '2'
           '3'
-          '4')
+          '4'
+          '5')
         Layout = tlCenter
         ReadOnly = True
         Title.Alignment = taCenter
@@ -865,7 +862,7 @@ object TransferListGestionF: TTransferListGestionF
       ShowHint = True
       Spacing = -2
       OnClick = SumGirdProduitBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object RefreshGirdBtn: TAdvToolButton
@@ -899,7 +896,7 @@ object TransferListGestionF: TTransferListGestionF
       ShowHint = True
       Spacing = -2
       OnClick = RefreshGirdBtnClick
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object AdvToolButton1: TAdvToolButton
@@ -933,7 +930,7 @@ object TransferListGestionF: TTransferListGestionF
       ShowHint = True
       Spacing = -2
       OnClick = AdvToolButton1Click
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object AdvToolButton2: TAdvToolButton
@@ -967,7 +964,7 @@ object TransferListGestionF: TTransferListGestionF
       ShowHint = True
       Spacing = -2
       OnClick = AdvToolButton2Click
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object AdvToolButton3: TAdvToolButton
@@ -1002,7 +999,7 @@ object TransferListGestionF: TTransferListGestionF
       Shaded = False
       ShowHint = True
       Spacing = -2
-      Version = '1.6.2.0'
+      Version = '1.7.2.0'
       TMSStyle = 0
     end
     object Panel5: TPanel
@@ -1114,6 +1111,7 @@ object TransferListGestionF: TTransferListGestionF
     OverwritePrompt = True
     DataOnly = False
     EmbeddedFonts = True
+    InteractiveFormsFontSubset = 'A-Z,a-z,0-9,#43-#47 '
     OpenAfterExport = True
     PrintOptimized = False
     Outline = False
@@ -1137,7 +1135,7 @@ object TransferListGestionF: TTransferListGestionF
     Top = 480
   end
   object TransferListfrxRprt: TfrxReport
-    Version = '6.3.12'
+    Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]

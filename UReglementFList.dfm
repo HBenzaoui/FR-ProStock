@@ -1056,7 +1056,8 @@ object ReglementFListF: TReglementFListF
           '1'
           '2'
           '3'
-          '4')
+          '4'
+          '5')
         Layout = tlCenter
         ReadOnly = True
         Title.Alignment = taCenter
