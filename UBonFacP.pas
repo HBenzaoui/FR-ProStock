@@ -620,51 +620,50 @@ begin
 end;
 
 procedure TBonFacPF.ResearchBVFacEdtChange(Sender: TObject);
+var SearchValue : String;
 begin
  //----------- Searching in databese-------------------//
-
-    if ResearchBVFacEdt.Text<>'' then
+  if ResearchBVFacEdt.Text<>'' then
+  begin
+    SearchValue:=  '('''+'%'+(ResearchBVFacEdt.Text)+'%'+''')';
+    if ResherchBFVClientRdioBtn.Checked then
     begin
-
-          if ResherchBFVClientRdioBtn.Checked then
-          begin
-          MainForm.Bonp_facTable.DisableControls;
-          MainForm.Bonp_facTable.Active:=False;
-          MainForm.Bonp_facTable.SQL.Clear;
-          MainForm.Bonp_facTable.SQL.Text:= FPSQL +' WHERE code_c IN( SELECT code_c FROM client WHERE LOWER(nom_c) LIKE LOWER' +'('''+'%'+(ResearchBVFacEdt.Text)+'%'+''')' +')';
-          MainForm.Bonp_facTable.Active:=True;
-          MainForm.Bonp_facTable.EnableControls;
-
-          end;
-
-          if ResherchBFVNumBRdioBtn.Checked then
-          begin
-          MainForm.Bonp_facTable.DisableControls;
-          MainForm.Bonp_facTable.Active:=False;
-          MainForm.Bonp_facTable.SQL.Clear;
-          MainForm.Bonp_facTable.SQL.Text:= FPSQL +' WHERE LOWER(num_bpfac) LIKE LOWER' +'('''+'%'+(ResearchBVFacEdt.Text)+'%'+''')' ;
-          MainForm.Bonp_facTable.Active:=True;
-          MainForm.Bonp_facTable.EnableControls;
-          end;
-
-
-    end else
-     begin
-          MainForm.ClientTable.DisableControls;
-          MainForm.ClientTable.Active:=False;
-          MainForm.ClientTable.SQL.Clear;
-          MainForm.ClientTable.SQL.Text:='SELECT * FROM client ' ;
-          MainForm.ClientTable.Active:=True;
-          MainForm.ClientTable.EnableControls;
-
-          MainForm.Bonp_facTable.DisableControls;
-          MainForm.Bonp_facTable.Active:=False;
-          MainForm.Bonp_facTable.SQL.Clear;
-          MainForm.Bonp_facTable.SQL.Text:= FPSQL ;
-          MainForm.Bonp_facTable.Active:=True;
-          MainForm.Bonp_facTable.EnableControls;
-
-     end;
+      MainForm.Bonp_facTable.DisableControls;
+      MainForm.Bonp_facTable.Active:=False;
+      MainForm.Bonp_facTable.SQL.Clear;
+      MainForm.Bonp_facTable.SQL.Text:= FPSQL +' WHERE code_c IN( '+
+        'SELECT code_c FROM client WHERE LOWER(nom_c) LIKE LOWER' + SearchValue
+        +' OR LOWER(activite_c) LIKE LOWER '+ SearchValue
+        +' OR fix_c LIKE'+ SearchValue
+        +' OR mob_c LIKE'+ SearchValue
+        +' OR mob2_c LIKE'+ SearchValue
+        +' OR fax_c LIKE'+ SearchValue
+        +' OR LOWER(adr_c) LIKE LOWER '+ SearchValue
+        +' OR LOWER(ville_c) LIKE LOWER '+ SearchValue
+        +' OR LOWER(willaya_c) LIKE LOWER '+ SearchValue
+        +' OR LOWER(email_c) LIKE LOWER '+ SearchValue
+        +' OR LOWER(siteweb_c) LIKE LOWER '+ SearchValue +')';
+      MainForm.Bonp_facTable.Active:=True;
+      MainForm.Bonp_facTable.EnableControls;
+    end;
+    if ResherchBFVNumBRdioBtn.Checked then
+    begin
+      MainForm.Bonp_facTable.DisableControls;
+      MainForm.Bonp_facTable.Active:=False;
+      MainForm.Bonp_facTable.SQL.Clear;
+      MainForm.Bonp_facTable.SQL.Text:= FPSQL +' WHERE LOWER(num_bpfac) LIKE LOWER' +'('''+'%'+(ResearchBVFacEdt.Text)+'%'+''')' ;
+      MainForm.Bonp_facTable.Active:=True;
+      MainForm.Bonp_facTable.EnableControls;
+    end;
+  end else
+   begin
+      MainForm.Bonp_facTable.DisableControls;
+      MainForm.Bonp_facTable.Active:=False;
+      MainForm.Bonp_facTable.SQL.Clear;
+      MainForm.Bonp_facTable.SQL.Text:= FPSQL ;
+      MainForm.Bonp_facTable.Active:=True;
+      MainForm.Bonp_facTable.EnableControls;
+   end;
 end;
 
 procedure TBonFacPF.ResearchBVFacEdtKeyDown(Sender: TObject; var Key: Word;

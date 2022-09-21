@@ -1200,7 +1200,7 @@ begin
  end;
 end;
 // disabled becouse error
-// HighlightCellText(TDBGridEh(Sender),Rect, Column,ResearchFournisseurEdt.Text,State);
+ HighlightCellText(TDBGridEh(Sender),Rect, Column,ResearchFournisseurEdt.Text,State);
 end;
 
 procedure TFournisseurListF.FournisseursListDBGridEhKeyDown(Sender: TObject;
@@ -1334,31 +1334,35 @@ Select_Valid_Credit;
 end;
 
 procedure TFournisseurListF.ResearchFournisseurEdtChange(Sender: TObject);
+var SearchValue : String;
 begin
-//      if (ResearchFournisseurEdt.text <> '') then
-//
-//                begin
-//
-//                  MainForm.FournisseurTable.Filtered:=false;
-//                  MainForm.FournisseurTable.Filter := '[nom_f] LIKE ' + quotedstr(  '%'+  ResearchFournisseurEdt.Text +'%');
-//                  MainForm.FournisseurTable.Filtered :=True;
-//
-//                  end
-//                else
-//
-//                    begin
-//                        MainForm.FournisseurTable.Filtered := False;
-//
-//                           end;
-
-
-
-          MainForm.FournisseurTable.DisableControls;
-          MainForm.FournisseurTable.Active:=False;
-          MainForm.FournisseurTable.SQL.Clear;
-          MainForm.FournisseurTable.SQL.Text:='SELECT * FROM fournisseur WHERE LOWER(nom_f) LIKE LOWER' +'('''+'%'+(ResearchFournisseurEdt.Text)+'%'+''')' ;
-          MainForm.FournisseurTable.Active:=True;
-          MainForm.FournisseurTable.EnableControls;
+  if (ResearchFournisseurEdt.text <> '') then
+  begin
+    SearchValue:=   '('''+'%'+(ResearchFournisseurEdt.Text)+'%'+''')';
+    MainForm.FournisseurTable.DisableControls;
+    MainForm.FournisseurTable.Active:=False;
+    MainForm.FournisseurTable.SQL.Clear;
+    MainForm.FournisseurTable.SQL.Text:= 'SELECT * FROM fournisseur WHERE LOWER(nom_f) LIKE LOWER' + SearchValue
+        +' OR fix_f LIKE'+ SearchValue
+        +' OR mob_f LIKE'+ SearchValue
+        +' OR mob2_f LIKE'+ SearchValue
+        +' OR fax_f LIKE'+ SearchValue
+        +' OR LOWER(adr_f) LIKE LOWER '+ SearchValue
+        +' OR LOWER(ville_f) LIKE LOWER '+ SearchValue
+        +' OR LOWER(willaya_f) LIKE LOWER '+ SearchValue
+        +' OR LOWER(email_f) LIKE LOWER '+ SearchValue
+        +' OR LOWER(siteweb_f) LIKE LOWER '+ SearchValue ;
+    MainForm.FournisseurTable.Active:=True;
+    MainForm.FournisseurTable.EnableControls;
+  end else
+      begin
+        MainForm.FournisseurTable.DisableControls;
+        MainForm.FournisseurTable.Active:=False;
+        MainForm.FournisseurTable.SQL.Clear;
+        MainForm.FournisseurTable.SQL.Text:='SELECT * FROM fournisseur ' ;
+        MainForm.FournisseurTable.Active:=True;
+        MainForm.FournisseurTable.EnableControls;
+      end;
 
 end;
 

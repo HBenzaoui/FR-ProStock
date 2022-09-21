@@ -372,7 +372,7 @@ end;
 
 procedure TFastProduitsListF.ResearchProduitsEdtChange(Sender: TObject);
 var  CodeCB : Integer;
-
+var SearchValue : String;
 const
 E = ['-', '&', '"', '(', ')', '_',',','.'];
 
@@ -435,29 +435,45 @@ begin
 
    if Caption='Liste des Clients' then
    begin
-
+      SearchValue:=   '('''+'%'+(ResearchProduitsEdt.Text)+'%'+''')';
       MainForm.FDQuery2.Active:=False;
       MainForm.FDQuery2.SQL.Clear;
       MainForm.FDQuery2.SQL.Text:=
-     'SELECT code_c,nom_c,activite_c,fix_c,mob_c,adr_c,credit_c FROM client WHERE LOWER(nom_c) LIKE LOWER' +'('''+'%'+(ResearchProduitsEdt.Text)+'%'+''')' ;
+      'SELECT code_c,nom_c,activite_c,fix_c,mob_c,adr_c,credit_c FROM client WHERE LOWER(nom_c) LIKE LOWER' + SearchValue
+        +' OR LOWER(activite_c) LIKE LOWER '+ SearchValue
+        +' OR fix_c LIKE'+ SearchValue
+        +' OR mob_c LIKE'+ SearchValue
+        +' OR mob2_c LIKE'+ SearchValue
+        +' OR fax_c LIKE'+ SearchValue
+        +' OR LOWER(adr_c) LIKE LOWER '+ SearchValue
+        +' OR LOWER(ville_c) LIKE LOWER '+ SearchValue
+        +' OR LOWER(willaya_c) LIKE LOWER '+ SearchValue
+        +' OR LOWER(email_c) LIKE LOWER '+ SearchValue
+        +' OR LOWER(siteweb_c) LIKE LOWER '+ SearchValue ;
       MainForm.FDQuery2.Active:=True
 
-     
    end;
 
    if Caption='Liste des Fournisseurs' then
    begin
-
+      SearchValue:=   '('''+'%'+(ResearchProduitsEdt.Text)+'%'+''')';
       MainForm.FDQuery2.Active:=False;
       MainForm.FDQuery2.SQL.Clear;
       MainForm.FDQuery2.SQL.Text:=
-     'SELECT code_f,nom_f,fix_f,mob_f,adr_f,credit_f FROM fournisseur WHERE LOWER(nom_f) LIKE LOWER' +'('''+'%'+(ResearchProduitsEdt.Text)+'%'+''')' ;
+     'SELECT code_f,nom_f,fix_f,mob_f,adr_f,credit_f FROM fournisseur WHERE LOWER(nom_f) LIKE LOWER' + SearchValue
+        +' OR fix_f LIKE'+ SearchValue
+        +' OR mob_f LIKE'+ SearchValue
+        +' OR mob2_f LIKE'+ SearchValue
+        +' OR fax_f LIKE'+ SearchValue
+        +' OR LOWER(adr_f) LIKE LOWER '+ SearchValue
+        +' OR LOWER(ville_f) LIKE LOWER '+ SearchValue
+        +' OR LOWER(willaya_f) LIKE LOWER '+ SearchValue
+        +' OR LOWER(email_f) LIKE LOWER '+ SearchValue
+        +' OR LOWER(siteweb_f) LIKE LOWER '+ SearchValue ;
       MainForm.FDQuery2.Active:=True
 
-     
    end;
-   
-   
+
 end;
 
 procedure TFastProduitsListF.ResearchProduitsEdtDblClick(Sender: TObject);

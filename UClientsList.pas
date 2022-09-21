@@ -832,9 +832,9 @@ begin
 
      // setup the color and draw the rectangle in a width of the matching text
      if gdSelected in AState then
-       AGrid.Canvas.Brush.Color := $0000FFFF//$00F8CA90//$0083CAF4
+       AGrid.Canvas.Brush.Color := $006DCEFE//$00F8CA90//$0083CAF4
      else
-       AGrid.Canvas.Brush.Color := $0000FFFF;//$00F8CA90;//$0083CAF4;
+       AGrid.Canvas.Brush.Color := $006DCEFE;//$00F8CA90;//$0083CAF4;
 
      AGrid.Canvas.FillRect(HlRect);
 
@@ -879,7 +879,7 @@ if  ClientListDataS.DataSet = MainForm.ClientTable then
  end;
  end;
 
-//  HighlightCellText(TDBGridEh(Sender),Rect, Column,ResearchClientsEdt.Text,State);
+  HighlightCellText(TDBGridEh(Sender),Rect, Column,ResearchClientsEdt.Text,State);
 end;
 
 procedure TClientListF.ClientsListDBGridEhKeyDown(Sender: TObject; var Key: Word;
@@ -1356,26 +1356,74 @@ FilteredColor;
 Select_Valid_Credit;
 end;
 
+//function RemoveAllNonNumbers(aText:string):string;
+//var
+//  Character:Char;
+//begin
+//  for Character in aText do
+//    if CharInSet(Character,['0'..'9']) then
+//      Result := Result + Character;
+//end;
+
 procedure TClientListF.ResearchClientsEdtChange(Sender: TObject);
+var SearchValue : String;
 begin
-//  if (ResearchClientsEdt.text <> '') then
-//      begin
-//      MainForm.ClientTable.Filtered:=false;
-//      MainForm.ClientTable.Filter := '[nom_c] LIKE ' + quotedstr(  '%'+  ResearchClientsEdt.Text +'%');
-//      MainForm.ClientTable.Filtered :=True;
-//    end  else
-//      begin
-//        MainForm.ClientTable.Filtered := False;
-//       end;
+
+      if ResearchClientsEdt.Text <>'' then
+      begin
+        SearchValue:= '('''+'%'+(ResearchClientsEdt.Text)+'%'+''')';
+
+        MainForm.ClientTable.DisableControls;
+        MainForm.ClientTable.Active:=False;
+        MainForm.ClientTable.SQL.Clear;
+        MainForm.ClientTable.SQL.Text:='SELECT * FROM client WHERE LOWER(nom_c) LIKE LOWER' + SearchValue
+        +' OR LOWER(activite_c) LIKE LOWER '+ SearchValue
+        +' OR fix_c LIKE'+ SearchValue
+        +' OR mob_c LIKE'+ SearchValue
+        +' OR mob2_c LIKE'+ SearchValue
+        +' OR fax_c LIKE'+ SearchValue
+        +' OR LOWER(adr_c) LIKE LOWER '+ SearchValue
+        +' OR LOWER(ville_c) LIKE LOWER '+ SearchValue
+        +' OR LOWER(willaya_c) LIKE LOWER '+ SearchValue
+        +' OR LOWER(email_c) LIKE LOWER '+ SearchValue
+        +' OR LOWER(siteweb_c) LIKE LOWER '+ SearchValue ;
+        MainForm.ClientTable.Active:=True;
+        MainForm.ClientTable.EnableControls;
+
+//************* Use this code for selecting only numbers in a string *******************
+
+//     SearchValue:= '('''+'%'+(ResearchClientsEdt.Text)+'%'+''')';
+//     SearchValueNumbers:= '('''+'%'+(RemoveAllNonNumbers(ResearchClientsEdt.Text))+'%'+''')';
+//
+//      MainForm.ClientTable.DisableControls;
+//      MainForm.ClientTable.Active:=False;
+//      MainForm.ClientTable.SQL.Clear;
+//      MainForm.ClientTable.SQL.Text:='SELECT * FROM client WHERE LOWER(nom_c) LIKE LOWER' + SearchValue
+//      +' OR LOWER(activite_c) LIKE LOWER '+ SearchValue
+//      +' OR regexp_replace(fix_c, ''[^0-9]+'', '''', ''g'') LIKE'+ SearchValueNumbers
+//      +' OR regexp_replace(mob_c, ''[^0-9]+'', '''', ''g'') LIKE'+ SearchValueNumbers
+//      +' OR regexp_replace(mob2_c, ''[^0-9]+'', '''', ''g'') LIKE'+ SearchValueNumbers
+//      +' OR regexp_replace(fax_c, ''[^0-9]+'', '''', ''g'') LIKE'+ SearchValueNumbers
+//      +' OR LOWER(adr_c) LIKE LOWER '+ SearchValue
+//      +' OR LOWER(ville_c) LIKE LOWER '+ SearchValue
+//      +' OR LOWER(willaya_c) LIKE LOWER '+ SearchValue
+//      +' OR LOWER(email_c) LIKE LOWER '+ SearchValue
+//      +' OR LOWER(siteweb_c) LIKE LOWER '+ SearchValue ;
+//      MainForm.ClientTable.Active:=True;
+//      MainForm.ClientTable.EnableControls;
+      end else
+          begin
+            MainForm.ClientTable.DisableControls;
+            MainForm.ClientTable.Active:=False;
+            MainForm.ClientTable.SQL.Clear;
+            MainForm.ClientTable.SQL.Text:='SELECT * FROM client ' ;
+            MainForm.ClientTable.Active:=True;
+            MainForm.ClientTable.EnableControls;
+          end;
 
 
 
-          MainForm.ClientTable.DisableControls;
-          MainForm.ClientTable.Active:=False;
-          MainForm.ClientTable.SQL.Clear;
-          MainForm.ClientTable.SQL.Text:='SELECT * FROM client WHERE LOWER(nom_c) LIKE LOWER' +'('''+'%'+(ResearchClientsEdt.Text)+'%'+''')' ;
-          MainForm.ClientTable.Active:=True;
-          MainForm.ClientTable.EnableControls;
+
 end;
 
 procedure TClientListF.ResearchClientsEdtKeyDown(Sender: TObject; var Key: Word;

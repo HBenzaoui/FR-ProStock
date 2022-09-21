@@ -1135,53 +1135,49 @@ begin
 end;
 
 procedure TBonRecF.ResearchBARecEdtChange(Sender: TObject);
-
+var SearchValue : String;
 begin
-
  //----------- Searching in databese-------------------//
-
-    if ResearchBARecEdt.Text<>'' then
+  if ResearchBARecEdt.Text<>'' then
+  begin
+    SearchValue:=   '('''+'%'+(ResearchBARecEdt.Text)+'%'+''')';
+    if ResherchBARFourRdioBtn.Checked then
     begin
-
-          if ResherchBARFourRdioBtn.Checked then
-          begin
-          MainForm.Bona_recTable.DisableControls;
-          MainForm.Bona_recTable.Active:=False;
-          MainForm.Bona_recTable.SQL.Clear;
-          MainForm.Bona_recTable.SQL.Text:= BRSQL+' WHERE code_f IN( SELECT code_f FROM fournisseur WHERE LOWER(nom_f) LIKE LOWER' +'('''+'%'+(ResearchBARecEdt.Text)+'%'+''')' +')';
-          MainForm.Bona_recTable.Active:=True;
-          MainForm.Bona_recTable.EnableControls;
-
-          end;
-
-          if ResherchBARNumBRdioBtn.Checked then
-          begin
-          MainForm.Bona_recTable.DisableControls;
-          MainForm.Bona_recTable.Active:=False;
-          MainForm.Bona_recTable.SQL.Clear;
-          MainForm.Bona_recTable.SQL.Text:= BRSQL+' WHERE LOWER(num_barec) LIKE LOWER' +'('''+'%'+(ResearchBARecEdt.Text)+'%'+''')' ;
-          MainForm.Bona_recTable.Active:=True;
-          MainForm.Bona_recTable.EnableControls;
-          end;
-
-
-    end else
-     begin
-          MainForm.FournisseurTable.DisableControls;
-          MainForm.FournisseurTable.Active:=False;
-          MainForm.FournisseurTable.SQL.Clear;
-          MainForm.FournisseurTable.SQL.Text:='SELECT * FROM fournisseur ' ;
-          MainForm.FournisseurTable.Active:=True;
-          MainForm.FournisseurTable.EnableControls;
-
-          MainForm.Bona_recTable.DisableControls;
-          MainForm.Bona_recTable.Active:=False;
-          MainForm.Bona_recTable.SQL.Clear;
-          MainForm.Bona_recTable.SQL.Text:= BRSQL+' WHERE bon_or_no_barec = true ' ;
-          MainForm.Bona_recTable.Active:=True;
-          MainForm.Bona_recTable.EnableControls;
-
-     end;
+      MainForm.Bona_recTable.DisableControls;
+      MainForm.Bona_recTable.Active:=False;
+      MainForm.Bona_recTable.SQL.Clear;
+      MainForm.Bona_recTable.SQL.Text:= BRSQL +' WHERE code_f IN( '+
+        'SELECT code_f FROM fournisseur WHERE LOWER(nom_f) LIKE LOWER' + SearchValue
+        +' OR fix_f LIKE'+ SearchValue
+        +' OR mob_f LIKE'+ SearchValue
+        +' OR mob2_f LIKE'+ SearchValue
+        +' OR fax_f LIKE'+ SearchValue
+        +' OR LOWER(adr_f) LIKE LOWER '+ SearchValue
+        +' OR LOWER(ville_f) LIKE LOWER '+ SearchValue
+        +' OR LOWER(willaya_f) LIKE LOWER '+ SearchValue
+        +' OR LOWER(email_f) LIKE LOWER '+ SearchValue
+        +' OR LOWER(siteweb_f) LIKE LOWER '+ SearchValue +')';
+      MainForm.Bona_recTable.Active:=True;
+      MainForm.Bona_recTable.EnableControls;
+    end;
+    if ResherchBARNumBRdioBtn.Checked then
+    begin
+      MainForm.Bona_recTable.DisableControls;
+      MainForm.Bona_recTable.Active:=False;
+      MainForm.Bona_recTable.SQL.Clear;
+      MainForm.Bona_recTable.SQL.Text:= BRSQL+' WHERE LOWER(num_barec) LIKE LOWER' +'('''+'%'+(ResearchBARecEdt.Text)+'%'+''')' ;
+      MainForm.Bona_recTable.Active:=True;
+      MainForm.Bona_recTable.EnableControls;
+    end;
+  end else
+   begin
+      MainForm.Bona_recTable.DisableControls;
+      MainForm.Bona_recTable.Active:=False;
+      MainForm.Bona_recTable.SQL.Clear;
+      MainForm.Bona_recTable.SQL.Text:= BRSQL+' WHERE bon_or_no_barec = true ' ;
+      MainForm.Bona_recTable.Active:=True;
+      MainForm.Bona_recTable.EnableControls;
+   end;
 
 end;
 

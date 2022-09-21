@@ -1134,54 +1134,49 @@ begin
 end;
 
 procedure TBonComAF.ResearchBAComEdtChange(Sender: TObject);
-
+var SearchValue : String;
 begin
-
  //----------- Searching in databese-------------------//
-
-    if ResearchBAComEdt.Text<>'' then
+  if ResearchBAComEdt.Text<>'' then
+  begin
+    SearchValue:=   '('''+'%'+(ResearchBAComEdt.Text)+'%'+''')';
+    if ResherchBARFourRdioBtn.Checked then
     begin
-
-          if ResherchBARFourRdioBtn.Checked then
-          begin
-          DataModuleF.Bona_comTable.DisableControls;
-          DataModuleF.Bona_comTable.Active:=False;
-          DataModuleF.Bona_comTable.SQL.Clear;
-          DataModuleF.Bona_comTable.SQL.Text:= BCFSQL+' WHERE code_f IN( SELECT code_f FROM fournisseur WHERE LOWER(nom_f) LIKE LOWER' +'('''+'%'+(ResearchBAComEdt.Text)+'%'+''')' +')';
-          DataModuleF.Bona_comTable.Active:=True;
-          DataModuleF.Bona_comTable.EnableControls;
-
-          end;
-
-          if ResherchBARNumBRdioBtn.Checked then
-          begin
-          DataModuleF.Bona_comTable.DisableControls;
-          DataModuleF.Bona_comTable.Active:=False;
-          DataModuleF.Bona_comTable.SQL.Clear;
-          DataModuleF.Bona_comTable.SQL.Text:= BCFSQL+' WHERE LOWER(num_bacom) LIKE LOWER' +'('''+'%'+(ResearchBAComEdt.Text)+'%'+''')' ;
-          DataModuleF.Bona_comTable.Active:=True;
-          DataModuleF.Bona_comTable.EnableControls;
-          end;
-
-
-    end else
-     begin
-          MainForm.FournisseurTable.DisableControls;
-          MainForm.FournisseurTable.Active:=False;
-          MainForm.FournisseurTable.SQL.Clear;
-          MainForm.FournisseurTable.SQL.Text:='SELECT * FROM fournisseur ' ;
-          MainForm.FournisseurTable.Active:=True;
-          MainForm.FournisseurTable.EnableControls;
-
-          DataModuleF.Bona_comTable.DisableControls;
-          DataModuleF.Bona_comTable.Active:=False;
-          DataModuleF.Bona_comTable.SQL.Clear;
-          DataModuleF.Bona_comTable.SQL.Text:= BCFSQL+' WHERE bon_or_no_bacom = true ' ;
-          DataModuleF.Bona_comTable.Active:=True;
-          DataModuleF.Bona_comTable.EnableControls;
-
+      DataModuleF.Bona_comTable.DisableControls;
+      DataModuleF.Bona_comTable.Active:=False;
+      DataModuleF.Bona_comTable.SQL.Clear;
+      DataModuleF.Bona_comTable.SQL.Text:= BCFSQL +' WHERE code_f IN( '+
+        'SELECT code_f FROM fournisseur WHERE LOWER(nom_f) LIKE LOWER' + SearchValue
+        +' OR fix_f LIKE'+ SearchValue
+        +' OR mob_f LIKE'+ SearchValue
+        +' OR mob2_f LIKE'+ SearchValue
+        +' OR fax_f LIKE'+ SearchValue
+        +' OR LOWER(adr_f) LIKE LOWER '+ SearchValue
+        +' OR LOWER(ville_f) LIKE LOWER '+ SearchValue
+        +' OR LOWER(willaya_f) LIKE LOWER '+ SearchValue
+        +' OR LOWER(email_f) LIKE LOWER '+ SearchValue
+        +' OR LOWER(siteweb_f) LIKE LOWER '+ SearchValue +')';
+      DataModuleF.Bona_comTable.Active:=True;
+      DataModuleF.Bona_comTable.EnableControls;
+    end;
+    if ResherchBARNumBRdioBtn.Checked then
+    begin
+      DataModuleF.Bona_comTable.DisableControls;
+      DataModuleF.Bona_comTable.Active:=False;
+      DataModuleF.Bona_comTable.SQL.Clear;
+      DataModuleF.Bona_comTable.SQL.Text:= BCFSQL+' WHERE LOWER(num_bacom) LIKE LOWER' +'('''+'%'+(ResearchBAComEdt.Text)+'%'+''')' ;
+      DataModuleF.Bona_comTable.Active:=True;
+      DataModuleF.Bona_comTable.EnableControls;
+    end;
+  end else
+   begin
+      DataModuleF.Bona_comTable.DisableControls;
+      DataModuleF.Bona_comTable.Active:=False;
+      DataModuleF.Bona_comTable.SQL.Clear;
+      DataModuleF.Bona_comTable.SQL.Text:= BCFSQL+' WHERE bon_or_no_bacom = true ' ;
+      DataModuleF.Bona_comTable.Active:=True;
+      DataModuleF.Bona_comTable.EnableControls;
      end;
-
 end;
 
 procedure TBonComAF.ResearchBAComEdtKeyDown(Sender: TObject; var Key: Word;

@@ -839,48 +839,52 @@ begin
 end;
 
 procedure TBonCtrF.ResearchBVCtrEdtChange(Sender: TObject);
+var SearchValue : String;
 begin
  //----------- Searching in databese-------------------//
 
-    if ResearchBVCtrEdt.Text<>'' then
+  if ResearchBVCtrEdt.Text<>'' then
+  begin
+    SearchValue:=  '('''+'%'+(ResearchBVCtrEdt.Text)+'%'+''')';
+    if ResherchBVCTClientRdioBtn.Checked then
     begin
+      MainForm.Bonv_ctrTable.DisableControls;
+      MainForm.Bonv_ctrTable.Active:=False;
+      MainForm.Bonv_ctrTable.SQL.Clear;
+      MainForm.Bonv_ctrTable.SQL.Text:= BCSQL +' WHERE code_c IN( '+
+          'SELECT code_c FROM client WHERE LOWER(nom_c) LIKE LOWER' + SearchValue
+          +' OR LOWER(activite_c) LIKE LOWER '+ SearchValue
+          +' OR fix_c LIKE'+ SearchValue
+          +' OR mob_c LIKE'+ SearchValue
+          +' OR mob2_c LIKE'+ SearchValue
+          +' OR fax_c LIKE'+ SearchValue
+          +' OR LOWER(adr_c) LIKE LOWER '+ SearchValue
+          +' OR LOWER(ville_c) LIKE LOWER '+ SearchValue
+          +' OR LOWER(willaya_c) LIKE LOWER '+ SearchValue
+          +' OR LOWER(email_c) LIKE LOWER '+ SearchValue
+          +' OR LOWER(siteweb_c) LIKE LOWER '+ SearchValue +')';
+      MainForm.Bonv_ctrTable.Active:=True;
+      MainForm.Bonv_ctrTable.EnableControls;
+    end;
 
-          if ResherchBVCTClientRdioBtn.Checked then
-          begin
-          MainForm.Bonv_ctrTable.DisableControls;
-          MainForm.Bonv_ctrTable.Active:=False;
-          MainForm.Bonv_ctrTable.SQL.Clear;
-          MainForm.Bonv_ctrTable.SQL.Text:= BCSQL +' WHERE code_c IN( SELECT code_c FROM client WHERE LOWER(nom_c) LIKE LOWER' +'('''+'%'+(ResearchBVCtrEdt.Text)+'%'+''')' +')';
-          MainForm.Bonv_ctrTable.Active:=True;
-          MainForm.Bonv_ctrTable.EnableControls;
-          end;
+    if ResherchBVCTNumBRdioBtn.Checked then
+    begin
+      MainForm.Bonv_ctrTable.DisableControls;
+      MainForm.Bonv_ctrTable.Active:=False;
+      MainForm.Bonv_ctrTable.SQL.Clear;
+      MainForm.Bonv_ctrTable.SQL.Text:= BCSQL +' WHERE LOWER(num_bvctr) LIKE LOWER' +'('''+'%'+(ResearchBVCtrEdt.Text)+'%'+''')' ;
+      MainForm.Bonv_ctrTable.Active:=True;
+      MainForm.Bonv_ctrTable.EnableControls;
+    end;
 
-          if ResherchBVCTNumBRdioBtn.Checked then
-          begin
-          MainForm.Bonv_ctrTable.DisableControls;
-          MainForm.Bonv_ctrTable.Active:=False;
-          MainForm.Bonv_ctrTable.SQL.Clear;
-          MainForm.Bonv_ctrTable.SQL.Text:= BCSQL +' WHERE LOWER(num_bvctr) LIKE LOWER' +'('''+'%'+(ResearchBVCtrEdt.Text)+'%'+''')' ;
-          MainForm.Bonv_ctrTable.Active:=True;
-          MainForm.Bonv_ctrTable.EnableControls;
-          end;
-
-    end else
-     begin
-          MainForm.ClientTable.DisableControls;
-          MainForm.ClientTable.Active:=False;
-          MainForm.ClientTable.SQL.Clear;
-          MainForm.ClientTable.SQL.Text:='SELECT * FROM client ' ;
-          MainForm.ClientTable.Active:=True;
-          MainForm.ClientTable.EnableControls;
-
-          MainForm.Bonv_ctrTable.DisableControls;
-          MainForm.Bonv_ctrTable.Active:=False;
-          MainForm.Bonv_ctrTable.SQL.Clear;
-          MainForm.Bonv_ctrTable.SQL.Text:= BCSQL ;
-          MainForm.Bonv_ctrTable.Active:=True;
-          MainForm.Bonv_ctrTable.EnableControls;
-
+  end else
+   begin
+      MainForm.Bonv_ctrTable.DisableControls;
+      MainForm.Bonv_ctrTable.Active:=False;
+      MainForm.Bonv_ctrTable.SQL.Clear;
+      MainForm.Bonv_ctrTable.SQL.Text:= BCSQL ;
+      MainForm.Bonv_ctrTable.Active:=True;
+      MainForm.Bonv_ctrTable.EnableControls;
      end;
 end;
 

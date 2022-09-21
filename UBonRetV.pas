@@ -1135,53 +1135,50 @@ begin
 end;
 
 procedure TBonRetVF.ResearchBVRetEdtChange(Sender: TObject);
-
+var SearchValue : String;
 begin
-
  //----------- Searching in databese-------------------//
-
-    if ResearchBVRetEdt.Text<>'' then
+  if ResearchBVRetEdt.Text<>'' then
+  begin
+    SearchValue:= '('''+'%'+(ResearchBVRetEdt.Text)+'%'+''')';
+    if ResherchBVRClientRdioBtn.Checked then
     begin
-
-          if ResherchBVRClientRdioBtn.Checked then
-          begin
-          DataModuleF.Bonv_retTable.DisableControls;
-          DataModuleF.Bonv_retTable.Active:=False;
-          DataModuleF.Bonv_retTable.SQL.Clear;
-          DataModuleF.Bonv_retTable.SQL.Text:= BRVSQL+' WHERE code_c IN( SELECT code_c FROM client WHERE LOWER(nom_c) LIKE LOWER' +'('''+'%'+(ResearchBVRetEdt.Text)+'%'+''')' +')';
-          DataModuleF.Bonv_retTable.Active:=True;
-          DataModuleF.Bonv_retTable.EnableControls;
-
-          end;
-
-          if ResherchBVRNumBRdioBtn.Checked then
-          begin
-          DataModuleF.Bonv_retTable.DisableControls;
-          DataModuleF.Bonv_retTable.Active:=False;
-          DataModuleF.Bonv_retTable.SQL.Clear;
-          DataModuleF.Bonv_retTable.SQL.Text:= BRVSQL+' WHERE LOWER(num_bvret) LIKE LOWER' +'('''+'%'+(ResearchBVRetEdt.Text)+'%'+''')' ;
-          DataModuleF.Bonv_retTable.Active:=True;
-          DataModuleF.Bonv_retTable.EnableControls;
-          end;
-
-
-    end else
-     begin
-          MainForm.ClientTable.DisableControls;
-          MainForm.ClientTable.Active:=False;
-          MainForm.ClientTable.SQL.Clear;
-          MainForm.ClientTable.SQL.Text:='SELECT * FROM client ' ;
-          MainForm.ClientTable.Active:=True;
-          MainForm.ClientTable.EnableControls;
-
-          DataModuleF.Bonv_retTable.DisableControls;
-          DataModuleF.Bonv_retTable.Active:=False;
-          DataModuleF.Bonv_retTable.SQL.Clear;
-          DataModuleF.Bonv_retTable.SQL.Text:= BRVSQL ;
-          DataModuleF.Bonv_retTable.Active:=True;
-          DataModuleF.Bonv_retTable.EnableControls;
-
-     end;
+      DataModuleF.Bonv_retTable.DisableControls;
+      DataModuleF.Bonv_retTable.Active:=False;
+      DataModuleF.Bonv_retTable.SQL.Clear;
+      DataModuleF.Bonv_retTable.SQL.Text:= BRVSQL +' WHERE code_c IN( '+
+        'SELECT code_c FROM client WHERE LOWER(nom_c) LIKE LOWER' + SearchValue
+        +' OR LOWER(activite_c) LIKE LOWER '+ SearchValue
+        +' OR fix_c LIKE'+ SearchValue
+        +' OR mob_c LIKE'+ SearchValue
+        +' OR mob2_c LIKE'+ SearchValue
+        +' OR fax_c LIKE'+ SearchValue
+        +' OR LOWER(adr_c) LIKE LOWER '+ SearchValue
+        +' OR LOWER(ville_c) LIKE LOWER '+ SearchValue
+        +' OR LOWER(willaya_c) LIKE LOWER '+ SearchValue
+        +' OR LOWER(email_c) LIKE LOWER '+ SearchValue
+        +' OR LOWER(siteweb_c) LIKE LOWER '+ SearchValue +')';
+      DataModuleF.Bonv_retTable.Active:=True;
+      DataModuleF.Bonv_retTable.EnableControls;
+    end;
+    if ResherchBVRNumBRdioBtn.Checked then
+    begin
+      DataModuleF.Bonv_retTable.DisableControls;
+      DataModuleF.Bonv_retTable.Active:=False;
+      DataModuleF.Bonv_retTable.SQL.Clear;
+      DataModuleF.Bonv_retTable.SQL.Text:= BRVSQL+' WHERE LOWER(num_bvret) LIKE LOWER' +'('''+'%'+(ResearchBVRetEdt.Text)+'%'+''')' ;
+      DataModuleF.Bonv_retTable.Active:=True;
+      DataModuleF.Bonv_retTable.EnableControls;
+    end;
+  end else
+   begin
+      DataModuleF.Bonv_retTable.DisableControls;
+      DataModuleF.Bonv_retTable.Active:=False;
+      DataModuleF.Bonv_retTable.SQL.Clear;
+      DataModuleF.Bonv_retTable.SQL.Text:= BRVSQL ;
+      DataModuleF.Bonv_retTable.Active:=True;
+      DataModuleF.Bonv_retTable.EnableControls;
+   end;
 
 end;
 

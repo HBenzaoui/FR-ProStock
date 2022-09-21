@@ -493,51 +493,49 @@ begin
 end;
 
 procedure TBonFacAF.ResearchBAFacEdtChange(Sender: TObject);
+var SearchValue : String;
 begin
  //----------- Searching in databese-------------------//
-
-    if ResearchBAFacEdt.Text<>'' then
+  if ResearchBAFacEdt.Text<>'' then
+  begin
+    SearchValue:=   '('''+'%'+(ResearchBAFacEdt.Text)+'%'+''')';
+    if ResherchBFAFourRdioBtn.Checked then
     begin
-
-          if ResherchBFAFourRdioBtn.Checked then
-          begin
-            MainForm.Bona_FacTable.DisableControls;
-            MainForm.Bona_FacTable.Active:=False;
-            MainForm.Bona_FacTable.SQL.Clear;
-            MainForm.Bona_FacTable.SQL.Text:= FASQL +' WHERE code_f IN( SELECT code_f FROM fournisseur WHERE LOWER(nom_f) LIKE LOWER' +'('''+'%'+(ResearchBAFacEdt.Text)+'%'+''')' +')';
-            MainForm.Bona_FacTable.Active:=True;
-            MainForm.Bona_FacTable.EnableControls;
-
-          end;
-
-          if ResherchBFANumBRdioBtn.Checked then
-          begin
-            MainForm.Bona_FacTable.DisableControls;
-            MainForm.Bona_FacTable.Active:=False;
-            MainForm.Bona_FacTable.SQL.Clear;
-            MainForm.Bona_FacTable.SQL.Text:= FASQL +' WHERE LOWER(num_bafac) LIKE LOWER' +'('''+'%'+(ResearchBAFacEdt.Text)+'%'+''')' ;
-            MainForm.Bona_FacTable.Active:=True;
-            MainForm.Bona_FacTable.EnableControls;
-          end;
-
-
-    end else
-     begin
-            MainForm.FournisseurTable.DisableControls;
-            MainForm.FournisseurTable.Active:=False;
-            MainForm.FournisseurTable.SQL.Clear;
-            MainForm.FournisseurTable.SQL.Text:='SELECT * FROM fournisseur ' ;
-            MainForm.FournisseurTable.Active:=True;
-            MainForm.FournisseurTable.EnableControls;
-
-            MainForm.Bona_FacTable.DisableControls;
-            MainForm.Bona_FacTable.Active:=False;
-            MainForm.Bona_FacTable.SQL.Clear;
-            MainForm.Bona_FacTable.SQL.Text:= FASQL ;
-            MainForm.Bona_FacTable.Active:=True;
-            MainForm.Bona_FacTable.EnableControls;
-
-     end;
+      MainForm.Bona_FacTable.DisableControls;
+      MainForm.Bona_FacTable.Active:=False;
+      MainForm.Bona_FacTable.SQL.Clear;
+      MainForm.Bona_FacTable.SQL.Text:= FASQL +' WHERE code_f IN( '+
+        'SELECT code_f FROM fournisseur WHERE LOWER(nom_f) LIKE LOWER' + SearchValue
+        +' OR fix_f LIKE'+ SearchValue
+        +' OR mob_f LIKE'+ SearchValue
+        +' OR mob2_f LIKE'+ SearchValue
+        +' OR fax_f LIKE'+ SearchValue
+        +' OR LOWER(adr_f) LIKE LOWER '+ SearchValue
+        +' OR LOWER(ville_f) LIKE LOWER '+ SearchValue
+        +' OR LOWER(willaya_f) LIKE LOWER '+ SearchValue
+        +' OR LOWER(email_f) LIKE LOWER '+ SearchValue
+        +' OR LOWER(siteweb_f) LIKE LOWER '+ SearchValue +')';
+      MainForm.Bona_FacTable.Active:=True;
+      MainForm.Bona_FacTable.EnableControls;
+    end;
+    if ResherchBFANumBRdioBtn.Checked then
+    begin
+      MainForm.Bona_FacTable.DisableControls;
+      MainForm.Bona_FacTable.Active:=False;
+      MainForm.Bona_FacTable.SQL.Clear;
+      MainForm.Bona_FacTable.SQL.Text:= FASQL +' WHERE LOWER(num_bafac) LIKE LOWER' +'('''+'%'+(ResearchBAFacEdt.Text)+'%'+''')' ;
+      MainForm.Bona_FacTable.Active:=True;
+      MainForm.Bona_FacTable.EnableControls;
+    end;
+  end else
+   begin
+      MainForm.Bona_FacTable.DisableControls;
+      MainForm.Bona_FacTable.Active:=False;
+      MainForm.Bona_FacTable.SQL.Clear;
+      MainForm.Bona_FacTable.SQL.Text:= FASQL ;
+      MainForm.Bona_FacTable.Active:=True;
+      MainForm.Bona_FacTable.EnableControls;
+   end;
 end;
 
 procedure TBonFacAF.ResearchBAFacEdtKeyDown(Sender: TObject; var Key: Word;

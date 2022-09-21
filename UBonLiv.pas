@@ -403,51 +403,58 @@ begin
 end;
 
 procedure TBonLivF.ResearchBVLivEdtChange(Sender: TObject);
+var SearchValue : String;
 begin
  //----------- Searching in databese-------------------//
 
-    if ResearchBVLIVEdt.Text<>'' then
+  if ResearchBVLIVEdt.Text<>'' then
+  begin
+    SearchValue :=  '('''+'%'+(ResearchBVLIVEdt.Text)+'%'+''')';
+    if ResherchBVlClientRdioBtn.Checked then
     begin
+      MainForm.Bonv_livTable.DisableControls;
+      MainForm.Bonv_livTable.Active:=False;
+      MainForm.Bonv_livTable.SQL.Clear;
+      MainForm.Bonv_livTable.SQL.Text:= BLSQL +' WHERE code_c IN( '+
+        'SELECT code_c FROM client WHERE LOWER(nom_c) LIKE LOWER' + SearchValue
+        +' OR LOWER(activite_c) LIKE LOWER '+ SearchValue
+        +' OR fix_c LIKE'+ SearchValue
+        +' OR mob_c LIKE'+ SearchValue
+        +' OR mob2_c LIKE'+ SearchValue
+        +' OR fax_c LIKE'+ SearchValue
+        +' OR LOWER(adr_c) LIKE LOWER '+ SearchValue
+        +' OR LOWER(ville_c) LIKE LOWER '+ SearchValue
+        +' OR LOWER(willaya_c) LIKE LOWER '+ SearchValue
+        +' OR LOWER(email_c) LIKE LOWER '+ SearchValue
+        +' OR LOWER(siteweb_c) LIKE LOWER '+ SearchValue +')';
 
-          if ResherchBVlClientRdioBtn.Checked then
-          begin
-          MainForm.Bonv_livTable.DisableControls;
-          MainForm.Bonv_livTable.Active:=False;
-          MainForm.Bonv_livTable.SQL.Clear;
-          MainForm.Bonv_livTable.SQL.Text:= BLSQL +' WHERE code_c IN( SELECT code_c FROM client WHERE LOWER(nom_c) LIKE LOWER' +'('''+'%'+(ResearchBVLIVEdt.Text)+'%'+''')' +')';
-          MainForm.Bonv_livTable.Active:=True;
-          MainForm.Bonv_livTable.EnableControls;
+      MainForm.Bonv_livTable.Active:=True;
+      MainForm.Bonv_livTable.EnableControls;
 
-          end;
+    end;
 
-          if ResherchBVLNumBRdioBtn.Checked then
-          begin
-          MainForm.Bonv_livTable.DisableControls;
-          MainForm.Bonv_livTable.Active:=False;
-          MainForm.Bonv_livTable.SQL.Clear;
-          MainForm.Bonv_livTable.SQL.Text:= BLSQL +' WHERE LOWER(num_bvliv) LIKE LOWER' +'('''+'%'+(ResearchBVLIVEdt.Text)+'%'+''')' ;
-          MainForm.Bonv_livTable.Active:=True;
-          MainForm.Bonv_livTable.EnableControls;
-          end;
+    if ResherchBVLNumBRdioBtn.Checked then
+    begin
+      MainForm.Bonv_livTable.DisableControls;
+      MainForm.Bonv_livTable.Active:=False;
+      MainForm.Bonv_livTable.SQL.Clear;
+      MainForm.Bonv_livTable.SQL.Text:= BLSQL +' WHERE LOWER(num_bvliv) LIKE LOWER' + SearchValue;
+      MainForm.Bonv_livTable.Active:=True;
+      MainForm.Bonv_livTable.EnableControls;
+    end;
 
 
-    end else
-     begin
-          MainForm.ClientTable.DisableControls;
-          MainForm.ClientTable.Active:=False;
-          MainForm.ClientTable.SQL.Clear;
-          MainForm.ClientTable.SQL.Text:='SELECT * FROM client ' ;
-          MainForm.ClientTable.Active:=True;
-          MainForm.ClientTable.EnableControls;
+  end else
+   begin
 
-          MainForm.Bonv_livTable.DisableControls;
-          MainForm.Bonv_livTable.Active:=False;
-          MainForm.Bonv_livTable.SQL.Clear;
-          MainForm.Bonv_livTable.SQL.Text:= BLSQL ;
-          MainForm.Bonv_livTable.Active:=True;
-          MainForm.Bonv_livTable.EnableControls;
+      MainForm.Bonv_livTable.DisableControls;
+      MainForm.Bonv_livTable.Active:=False;
+      MainForm.Bonv_livTable.SQL.Clear;
+      MainForm.Bonv_livTable.SQL.Text:= BLSQL ;
+      MainForm.Bonv_livTable.Active:=True;
+      MainForm.Bonv_livTable.EnableControls;
 
-     end;
+   end;
 end;
 
 procedure TBonLivF.ResearchBVLivEdtKeyDown(Sender: TObject; var Key: Word;
