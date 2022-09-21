@@ -736,6 +736,7 @@ type
     Bonp_facTableclientbvfac: TWideStringField;
     Bona_recTablefourbarec: TWideStringField;
     Bonv_ctrTableclientbvctr: TWideStringField;
+    ProduitTablemrkp: TWideStringField;
     procedure ClientMainFBtnClick(Sender: TObject);
     procedure FourMainFBtnClick(Sender: TObject);
     procedure ProduitMainFBtnClick(Sender: TObject);
@@ -3939,6 +3940,7 @@ begin
 
       DataModuleF.InventoryTable.Active:= False;
       DataModuleF.Inventory_listTable.Active:= False;
+      DataModuleF.MrkProduitTable.Active:= False;
 end;
 
 
@@ -4016,6 +4018,8 @@ begin
       DataModuleF.InventoryTable.Active:= True;
       DataModuleF.Inventory_listTable.Active:= True;
 
+      DataModuleF.MrkProduitTable.Active:= True;
+
 
 end;
 
@@ -4084,6 +4088,7 @@ begin
 
       DataModuleF.InventoryTable.Refresh;
       DataModuleF.Inventory_listTable.Refresh;
+      DataModuleF.MrkProduitTable.Refresh;
 end;
 
 
@@ -4149,7 +4154,7 @@ begin
       if DataModuleF.Transfer_comptesTable.ControlsDisabled  then  begin DataModuleF.Transfer_comptesTable.EnableControls; end;
 
       if DataModuleF.PerissBona_recTable.ControlsDisabled  then  begin DataModuleF.PerissBona_recTable.EnableControls; end;
-
+      if DataModuleF.MrkProduitTable.ControlsDisabled  then  begin DataModuleF.MrkProduitTable.EnableControls; end;
 
 end;
 

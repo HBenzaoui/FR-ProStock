@@ -598,17 +598,29 @@ begin
         //	FamP:= fieldbyname('code_famp').Value;
         if (fieldbyname('famp').Value <> null) then
         begin
-          ProduitGestionF.FamilleProduitGCbx.Text := fieldbyname('famp').Value;
+//          ProduitGestionF.FamilleProduitGCbx.Text := fieldbyname('famp').Value;
+          ProduitGestionF.FamilleProduitGCbx.Items.Add(fieldbyname('famp').Value) ;
+          ProduitGestionF.FamilleProduitGCbx.ItemIndex:= 0;
         end;
         //	FamSP:= fieldbyname('code_sfamp').Value;
         if (fieldbyname('sfamp').Value <> null) then
         begin
-          ProduitGestionF.SFamilleProduitGCbx.Text := fieldbyname('sfamp').Value;
+//          ProduitGestionF.SFamilleProduitGCbx.Text := fieldbyname('sfamp').Value;
+          ProduitGestionF.SFamilleProduitGCbx.Items.Add(fieldbyname('sfamp').Value) ;
+          ProduitGestionF.SFamilleProduitGCbx.ItemIndex:= 0;
+        end;
+        if (fieldbyname('mrkp').Value <> null) then
+        begin
+//          ProduitGestionF.MarkProduitGCbx.Text := fieldbyname('mrkp').Value;
+          ProduitGestionF.MarkProduitGCbx.Items.Add(fieldbyname('mrkp').Value) ;
+          ProduitGestionF.MarkProduitGCbx.ItemIndex:= 0;
         end;
           //  ProduitGestionF.UniteProduitGCbx.Text:= fieldbyname('unite_p').Value;
         if (fieldbyname('unit').Value <> null) then
         begin
-          ProduitGestionF.UniteProduitGCbx.Text := fieldbyname('unit').Value;
+//          ProduitGestionF.UniteProduitGCbx.Text := fieldbyname('unit').Value;
+          ProduitGestionF.UniteProduitGCbx.Items.Add(fieldbyname('unit').Value) ;
+          ProduitGestionF.UniteProduitGCbx.ItemIndex:= 0;
         end;
         ProduitGestionF.TVAProduitGCbx.Text := fieldbyname('tva_p').Value;
         ProduitGestionF.PerProduitGSlider.SliderOn := fieldbyname('perissable_p').Value;

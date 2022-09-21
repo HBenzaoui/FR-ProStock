@@ -950,7 +950,6 @@ object ProduitGestionF: TProduitGestionF
           Font.Style = []
           ParentColor = False
           ParentFont = False
-          Visible = False
           StyleElements = []
         end
         object AddMarkProduitGBtn: TAdvToolButton
@@ -981,7 +980,6 @@ object ProduitGestionF: TProduitGestionF
           Shaded = False
           ShowHint = True
           Spacing = -1
-          Visible = False
           OnClick = AddMarkProduitGBtnClick
           Version = '1.7.2.0'
           TMSStyle = 0
@@ -1079,8 +1077,8 @@ object ProduitGestionF: TProduitGestionF
           ItemHeight = 20
           ParentFont = False
           TabOrder = 3
-          OnDropDown = FamilleProduitGCbxEnter
           OnEnter = FamilleProduitGCbxEnter
+          OnExit = FamilleProduitGCbxExit
         end
         object SFamilleProduitGCbx: TComboBox
           Left = 307
@@ -1096,8 +1094,8 @@ object ProduitGestionF: TProduitGestionF
           ItemHeight = 20
           ParentFont = False
           TabOrder = 4
-          OnDropDown = SFamilleProduitGCbxEnter
           OnEnter = SFamilleProduitGCbxEnter
+          OnExit = SFamilleProduitGCbxExit
         end
         object UniteProduitGCbx: TComboBox
           Left = 92
@@ -1111,8 +1109,8 @@ object ProduitGestionF: TProduitGestionF
           Font.Style = []
           ParentFont = False
           TabOrder = 5
-          OnDropDown = UniteProduitGCbxDropDown
           OnEnter = UniteProduitGCbxEnter
+          OnExit = UniteProduitGCbxExit
         end
         object TVAProduitGCbx: TComboBox
           Left = 262
@@ -1789,9 +1787,8 @@ object ProduitGestionF: TProduitGestionF
           ItemHeight = 20
           ParentFont = False
           TabOrder = 39
-          Visible = False
-          OnDropDown = MarkProduitGCbxEnter
           OnEnter = MarkProduitGCbxEnter
+          OnExit = MarkProduitGCbxExit
         end
       end
     end

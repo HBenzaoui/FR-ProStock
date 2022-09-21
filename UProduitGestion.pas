@@ -162,10 +162,8 @@ type
     procedure AddUniteProduitGBtnClick(Sender: TObject);
     procedure AddFourProduitGBtnClick(Sender: TObject);
     procedure UniteProduitGCbxEnter(Sender: TObject);
-    procedure UniteProduitGCbxDropDown(Sender: TObject);
     procedure AddFamilleProduitGBtnClick(Sender: TObject);
     procedure AddSousFamilleProduitGBtnClick(Sender: TObject);
-    procedure FamilleProduitGCbxEnter(Sender: TObject);
     procedure SFamilleProduitGCbxEnter(Sender: TObject);
     procedure MulteCBProduitGBtnClick(Sender: TObject);
     procedure RandomCBProduitGBtnClick(Sender: TObject);
@@ -231,6 +229,12 @@ type
     procedure AddMarkProduitGBtnClick(Sender: TObject);
     procedure CancelProduitGBtnMouseEnter(Sender: TObject);
     procedure CancelProduitGBtnMouseLeave(Sender: TObject);
+    procedure SFamilleProduitGCbxDropDown(Sender: TObject);
+    procedure FamilleProduitGCbxEnter(Sender: TObject);
+    procedure FamilleProduitGCbxExit(Sender: TObject);
+    procedure SFamilleProduitGCbxExit(Sender: TObject);
+    procedure MarkProduitGCbxExit(Sender: TObject);
+    procedure UniteProduitGCbxExit(Sender: TObject);
 
   private
     { Private declarations }
@@ -254,7 +258,7 @@ uses Winapi.ShellAPI,DateUtils, UClientGestion, UMainF, USplashAddUnite, UFourni
 
   , UComptoir, UBonFacAGestion, UBonFacVGestion, UBonLivGestion, UBonRecGestion,
   UPertesGestion, UBonFacPGestion, UInventoryGestion, UBonComAGestion,
-  UBonComVGestion, UBonRetVGestion, UBonRetAGestion;
+  UBonComVGestion, UBonRetVGestion, UBonRetAGestion, UDataModule;
 
 
 //----------- use this procedure to set center aligment text for the combobox---////
@@ -637,7 +641,7 @@ begin
   AnimateWindow(FSplashAddUnite.Handle, 175, AW_VER_POSITIVE OR AW_SLIDE OR AW_ACTIVATE );
   FSplashAddUnite.Show;
   FSplashAddUnite.NameAddUniteSEdt.SetFocus;
-  FSplashAddUnite.OKAddUniteSBtn.Tag:= 0 ;
+  FSplashAddUnite.OKAddUniteSBtn.Tag:= 52 ;
 end;
 
 procedure TProduitGestionF.ShowCalculaturProduitGBtnClick(Sender: TObject);
@@ -914,21 +918,32 @@ end;
 procedure TProduitGestionF.FamilleProduitGCbxEnter(Sender: TObject);
 var
 I : Integer;
-  begin
-     MainForm.FamproduitTable.Refresh;
-     FamilleProduitGCbx.Items.Clear;
-      MainForm.FamproduitTable.Active := False;
-     MainForm.FamproduitTable.sql.Clear;
-     mainform.FamproduitTable.SQL.Text:= 'SELECT * FROM famproduit ' ;
-     MainForm.FamproduitTable.Active := True;
-     MainForm.FamproduitTable.first;
+begin
 
-     for I := 0 to MainForm.FamproduitTable.RecordCount - 1 do
-     if MainForm.FamproduitTable.FieldByName('nom_famp').IsNull = False then
+//     FamilleProduitGCbx.Items.Clear;
+     MainForm.SQLQuery4.Active := False;
+     MainForm.SQLQuery4.sql.Clear;
+     mainform.SQLQuery4.SQL.Text:= 'SELECT * FROM famproduit WHERE nom_famp NOT LIKE'+ QuotedStr(FamilleProduitGCbx.Text) +' ORDER By code_famp' ;
+     MainForm.SQLQuery4.Active := True;
+     MainForm.SQLQuery4.first;
+
+     for I := 0 to MainForm.SQLQuery4.RecordCount - 1 do
+     if MainForm.SQLQuery4.FieldByName('nom_famp').IsNull = False then
      begin
-       FamilleProduitGCbx.Items.Add(MainForm.FamproduitTable.FieldByName('nom_famp').AsString);
-       MainForm.FamproduitTable.Next;
-      end;
+       FamilleProduitGCbx.Items.Add(MainForm.SQLQuery4.FieldByName('nom_famp').AsString);
+       MainForm.SQLQuery4.Next;
+     end;
+     MainForm.SQLQuery4.Active := False;
+     MainForm.SQLQuery4.sql.Clear;
+end;
+
+procedure TProduitGestionF.FamilleProduitGCbxExit(Sender: TObject);
+Var KeepValue :String;
+begin
+  Keepvalue:= FamilleProduitGCbx.Text;
+  FamilleProduitGCbx.Items.Clear;
+  FamilleProduitGCbx.Items.Add(KeepValue);
+  FamilleProduitGCbx.ItemIndex:=0;
 end;
 
 procedure TProduitGestionF.FormActivate(Sender: TObject);
@@ -1391,7 +1406,7 @@ end;
 
 procedure TProduitGestionF.OKProduitGBtnClick(Sender: TObject);
 var
-AlertJours,MinStock,MaxStock,StockIN,StockAlert ,FamP,FamSP,UnitP,FourP,LoucP,CodeP: Integer;
+AlertJours,MinStock,MaxStock,StockIN,StockAlert ,FamP,FamSP,MarkP,UnitP,FourP,LoucP,CodeP: Integer;
 //DatePer : TDateTime;
   S : TStream;
   lookupResultNomP,lookupResultRefP : Variant;
@@ -1440,7 +1455,7 @@ begin
                   if NOT (IsEmpty) then
                   begin
                   Last;
-                  FamP:= FieldValues['code_famp'] + 1;
+                  FamP:= FieldByName('code_famp').AsInteger + 1;
                   end else
                       begin
                        FamP:= 1;
@@ -1461,7 +1476,7 @@ begin
                   if NOT (IsEmpty) then
                   begin
                   Last;
-                  FamSP:= FieldValues['code_sfamp'] + 1;
+                  FamSP:= FieldByName('code_sfamp').AsInteger + 1;
                   end else
                       begin
                        FamSP:= 1;
@@ -1473,6 +1488,27 @@ begin
                   end;
             end;
             end ;
+          //----------- use this code to inster new mark produit when just type name it if empty exit-------------
+          if MarkProduitGCbx.Text <> '' then
+          begin
+          if NOT  DataModuleF.MrkProduitTable.Locate('nom_mrkp', MarkProduitGCbx.Text, [loCaseInsensitive]) then
+            begin
+                 with DataModuleF.MrkProduitTable do  begin
+                  if NOT (IsEmpty) then
+                  begin
+                  Last;
+                  MarkP:= FieldByName('code_mrkp').AsInteger + 1;
+                  end else
+                      begin
+                       MarkP:= 1;
+                      end;
+                    Append;
+                    fieldbyname('code_mrkp').AsInteger := MarkP;
+                    fieldbyname('nom_mrkp').Value := SFamilleProduitGCbx.Text;
+                    post;
+                  end;
+            end;
+          end ;
           //----------- use this code to inster new unite when just type name it if empty exit-------------
            if UniteProduitGCbx.Text <> '' then
           begin
@@ -1482,7 +1518,7 @@ begin
                   if NOT (IsEmpty) then
                   begin
                   Last;
-                  UnitP:= FieldValues['code_u'] + 1;
+                  UnitP:= FieldByName('code_u').AsInteger + 1;
                   end else
                       begin
                        UnitP:= 1;
@@ -1528,6 +1564,12 @@ begin
           MainForm.SFamproduitTable.SQL.Text:='Select * FROM sfamproduit WHERE LOWER(nom_sfamp) LIKE LOWER('+ QuotedStr( SFamilleProduitGCbx.Text )+')'  ;
           MainForm.SFamproduitTable.Active:=True;
           FamSP:= MainForm.SFamproduitTable.FieldByName('code_sfamp').AsInteger;
+         //----------- Making produit mark produit integer in produit database table and read it as string from Combobox-------------
+          DataModuleF.MrkProduitTable.Active:=false;
+          DataModuleF.MrkProduitTable.SQL.Clear;
+          DataModuleF.MrkProduitTable.SQL.Text:='Select * FROM markproduit WHERE LOWER(nom_mrkp) LIKE LOWER('+ QuotedStr( MarkProduitGCbx.Text )+')'  ;
+          DataModuleF.MrkProduitTable.Active:=True;
+          MarkP:= DataModuleF.MrkProduitTable.FieldByName('code_mrkp').AsInteger;
           //----------- Making produit unites integer in produit database table and read it as string from Combobox-------------
           MainForm.UniteTable.Active:=false;
           MainForm.UniteTable.SQL.Clear;
@@ -1550,14 +1592,15 @@ begin
            if OKProduitGBtn.Tag = 0 then
             begin Last; end;
             Edit;
-            fieldbyname('refer_p').Value := RefProduitGEdt.Text;
-            fieldbyname('codebar_p').Value := CodeBarProduitGEdt.Text;
+            fieldbyname('refer_p').AsWideString := RefProduitGEdt.Text;
+            fieldbyname('codebar_p').AsString := CodeBarProduitGEdt.Text;
             fieldbyname('nom_p').Value := NameProduitGEdt.Text;
-            fieldbyname('code_famp').Value := FamP;
-            fieldbyname('code_sfamp').Value := FamSP;
-            fieldbyname('code_u').Value := UnitP;
+            fieldbyname('code_famp').AsInteger := FamP;
+            fieldbyname('code_sfamp').AsInteger := FamSP;
+            fieldbyname('code_mrkp').AsInteger := MarkP;
+            fieldbyname('code_u').AsInteger := UnitP;
             fieldbyname('tva_p').Value := TVAProduitGCbx.Text;
-            fieldbyname('perissable_p').Value := PerProduitGSlider.SliderOn;
+            fieldbyname('perissable_p').AsBoolean := PerProduitGSlider.SliderOn;
             if DatePerProduitGD.Format <>' ' then
             begin
         //     if TryStrToDate(DatePerProduitGD.Date, DatePer) then
@@ -1570,7 +1613,7 @@ begin
             fieldbyname('alertdays_p').Value := AlertJours;
             if PrixAHTProduitEdt.Text<>'' then
             begin
-            FieldValues['prixht_p'] :=       StrToFloat(StringReplace(PrixAHTProduitEdt.Text, #32, '', [rfReplaceAll]));
+            fieldbyname('prixht_p').Value :=       StrToFloat(StringReplace(PrixAHTProduitEdt.Text, #32, '', [rfReplaceAll]));
             end else begin FieldValues['prixht_p']:=  StrToFloat('0')  end;
             if PrixVHTDProduitEdt.Text<>'' then
             begin
@@ -1862,7 +1905,7 @@ begin
                   if NOT (IsEmpty) then
                   begin
                   Last;
-                  FamP:= FieldValues['code_famp'] + 1;
+                  FamP:= FieldByName('code_famp').AsInteger + 1;
                   end else
                       begin
                        FamP:= 1;
@@ -1883,7 +1926,7 @@ begin
                   if NOT (IsEmpty) then
                   begin
                   Last;
-                  FamSP:= FieldValues['code_sfamp'] + 1;
+                  FamSP:= FieldByName('code_sfamp').AsInteger + 1;
                   end else
                       begin
                        FamSP:= 1;
@@ -1895,6 +1938,35 @@ begin
                   end;
             end;
             end ;
+          //----------- use this code to inster new mark produit when just type name it if empty exit-------------
+          if MarkProduitGCbx.Text <> '' then
+          begin
+
+             DataModuleF.SQLQuery3.Active:=False;
+             DataModuleF.SQLQuery3.SQL.Clear;
+             DataModuleF.SQLQuery3.SQL.Text:='SELECT * FROM markproduit WHERE LOWER(nom_mrkp) LIKE LOWER' +  '('''+'%'+(MarkProduitGCbx.Text)+'%'+''')';
+//             DataModuleF.SQLQuery3.SQL.Text:='SELECT * from markproduit where LOWER(nom_mrkp) LIKE LOWER '+  '('''+'%'+(MarkProduitGCbx.Text)+'%'+''')';
+             DataModuleF.SQLQuery3.Active:=True;
+
+            if NOT  DataModuleF.SQLQuery3.IsEmpty then
+//            if NOT  DataModuleF.MrkProduitTable.Locate('nom_mrkp', MarkProduitGCbx.Text, [loCaseInsensitive]) then
+            begin
+                 with DataModuleF.MrkProduitTable do  begin
+                  if NOT (IsEmpty) then
+                  begin
+                  Last;
+                  MarkP:= FieldByName('code_mrkp').AsInteger + 1;
+                  end else
+                      begin
+                       MarkP:= 1;
+                      end;
+                    Append;
+                    fieldbyname('code_mrkp').AsInteger := MarkP;
+                    fieldbyname('nom_mrkp').Value := SFamilleProduitGCbx.Text;
+                    post;
+                  end;
+            end;
+          end ;
           //----------- use this code to inster new unite when just type name it if empty exit-------------
            if UniteProduitGCbx.Text <> '' then
           begin
@@ -1904,7 +1976,7 @@ begin
                   if NOT (IsEmpty) then
                   begin
                   Last;
-                  UnitP:= FieldValues['code_u'] + 1;
+                  UnitP:= FieldByName('code_u').AsInteger + 1;
                   end else
                       begin
                        UnitP:= 1;
@@ -1950,6 +2022,12 @@ begin
           MainForm.SFamproduitTable.SQL.Text:='Select * FROM sfamproduit WHERE LOWER(nom_sfamp) LIKE LOWER('+ QuotedStr( SFamilleProduitGCbx.Text )+')'  ;
           MainForm.SFamproduitTable.Active:=True;
           FamSP:= MainForm.SFamproduitTable.FieldByName('code_sfamp').AsInteger;
+          //----------- Making produit mark produit integer in produit database table and read it as string from Combobox-------------
+          DataModuleF.MrkProduitTable.Active:=false;
+          DataModuleF.MrkProduitTable.SQL.Clear;
+          DataModuleF.MrkProduitTable.SQL.Text:='Select * FROM markproduit WHERE LOWER(nom_mrkp) LIKE LOWER('+ QuotedStr( MarkProduitGCbx.Text )+')'  ;
+          DataModuleF.MrkProduitTable.Active:=True;
+          MarkP:= DataModuleF.MrkProduitTable.FieldByName('code_mrkp').AsInteger;
           //----------- Making produit unites integer in produit database table and read it as string from Combobox-------------
           MainForm.UniteTable.Active:=false;
           MainForm.UniteTable.SQL.Clear;
@@ -1976,6 +2054,7 @@ begin
             fieldbyname('nom_p').Value := NameProduitGEdt.Text;
             fieldbyname('code_famp').Value := FamP;
             fieldbyname('code_sfamp').Value := FamSP;
+            fieldbyname('code_mrkp').AsInteger := MarkP;
             fieldbyname('code_u').Value := UnitP;
             fieldbyname('tva_p').Value := TVAProduitGCbx.Text;
             fieldbyname('perissable_p').Value := PerProduitGSlider.SliderOn;
@@ -2944,20 +3023,55 @@ begin
   end;
 end;
 
+procedure TProduitGestionF.SFamilleProduitGCbxDropDown(Sender: TObject);
+var
+I : Integer;
+begin
+     MainForm.SQLQuery4.Active := False;
+     MainForm.SQLQuery4.sql.Clear;
+     mainform.SQLQuery4.SQL.Text:= 'SELECT * FROM sfamproduit WHERE nom_sfamp NOT LIKE'+ QuotedStr(SFamilleProduitGCbx.Text) +' ORDER By code_sfamp' ;
+     MainForm.SQLQuery4.Active := True;
+     MainForm.SQLQuery4.first;
+
+     for I := 0 to MainForm.SQLQuery4.RecordCount - 1 do
+     if MainForm.SQLQuery4.FieldByName('nom_sfamp').IsNull = False then
+     begin
+       SFamilleProduitGCbx.Items.Add(MainForm.SQLQuery4.FieldByName('nom_sfamp').AsString);
+       MainForm.SQLQuery4.Next;
+     end;
+     MainForm.SQLQuery4.Active := False;
+     MainForm.SQLQuery4.sql.Clear;
+end;
+
 procedure TProduitGestionF.SFamilleProduitGCbxEnter(Sender: TObject);
 var
 I : Integer;
-  begin
-     MainForm.SFamproduitTable.Refresh;
-     SFamilleProduitGCbx.Items.Clear;
-     MainForm.SFamproduitTable.Active := True;
-     MainForm.SFamproduitTable.first;
-     for I := 0 to MainForm.SFamproduitTable.RecordCount - 1 do
-     if MainForm.SFamproduitTable.FieldByName('nom_sfamp').IsNull = False then
+begin
+
+//     SFamilleProduitGCbx.Items.Clear;
+     MainForm.SQLQuery4.Active := False;
+     MainForm.SQLQuery4.sql.Clear;
+     mainform.SQLQuery4.SQL.Text:= 'SELECT * FROM sfamproduit WHERE nom_sfamp NOT LIKE'+ QuotedStr(SFamilleProduitGCbx.Text) +' ORDER By code_sfamp' ;
+     MainForm.SQLQuery4.Active := True;
+     MainForm.SQLQuery4.first;
+
+     for I := 0 to MainForm.SQLQuery4.RecordCount - 1 do
+     if MainForm.SQLQuery4.FieldByName('nom_sfamp').IsNull = False then
      begin
-       SFamilleProduitGCbx.Items.Add(MainForm.SFamproduitTable.FieldByName('nom_sfamp').AsString);
-       MainForm.SFamproduitTable.Next;
-      end;
+       SFamilleProduitGCbx.Items.Add(MainForm.SQLQuery4.FieldByName('nom_sfamp').AsString);
+       MainForm.SQLQuery4.Next;
+     end;
+     MainForm.SQLQuery4.Active := False;
+     MainForm.SQLQuery4.sql.Clear;
+end;
+
+procedure TProduitGestionF.SFamilleProduitGCbxExit(Sender: TObject);
+Var KeepValue :String;
+begin
+  Keepvalue:= SFamilleProduitGCbx.Text;
+  SFamilleProduitGCbx.Items.Clear;
+  SFamilleProduitGCbx.Items.Add(KeepValue);
+  SFamilleProduitGCbx.ItemIndex:=0;
 end;
 
 procedure TProduitGestionF.TVAProduitGCbxChange(Sender: TObject);
@@ -3033,26 +3147,34 @@ begin
 
 end;
 
-procedure TProduitGestionF.UniteProduitGCbxDropDown(Sender: TObject);
-begin
-UniteProduitGCbxEnter(Sender);
-end;
-
 procedure TProduitGestionF.UniteProduitGCbxEnter(Sender: TObject);
 var
 I : Integer;
-  begin
-       MainForm.UniteTable.Refresh;
-       UniteProduitGCbx.Items.Clear;
-       MainForm.UniteTable.Active := True;
-       MainForm.UniteTable.first;
-     for I := 0 to MainForm.UniteTable.RecordCount - 1 do
-     if MainForm.UniteTable.FieldByName('nom_u').IsNull = False then
+begin
+//     FamilleProduitGCbx.Items.Clear;
+     MainForm.SQLQuery4.Active := False;
+     MainForm.SQLQuery4.sql.Clear;
+     mainform.SQLQuery4.SQL.Text:= 'SELECT * FROM unite WHERE nom_u NOT LIKE'+ QuotedStr(UniteProduitGCbx.Text) +' ORDER By code_u' ;
+     MainForm.SQLQuery4.Active := True;
+     MainForm.SQLQuery4.first;
+
+     for I := 0 to MainForm.SQLQuery4.RecordCount - 1 do
+     if MainForm.SQLQuery4.FieldByName('nom_u').IsNull = False then
      begin
-       UniteProduitGCbx.Items.Add(MainForm.UniteTable.FieldByName('nom_u').AsString);
-       MainForm.UniteTable.Next;
-       UniteProduitGCbx.Refresh;
-      end;
+       UniteProduitGCbx.Items.Add(MainForm.SQLQuery4.FieldByName('nom_u').AsString);
+       MainForm.SQLQuery4.Next;
+     end;
+     MainForm.SQLQuery4.Active := False;
+     MainForm.SQLQuery4.sql.Clear;
+end;
+
+procedure TProduitGestionF.UniteProduitGCbxExit(Sender: TObject);
+Var KeepValue :String;
+begin
+  Keepvalue:= UniteProduitGCbx.Text;
+  UniteProduitGCbx.Items.Clear;
+  UniteProduitGCbx.Items.Add(KeepValue);
+  UniteProduitGCbx.ItemIndex:=0;
 end;
 
 procedure TProduitGestionF.MargeDProduitEdtClick(Sender: TObject);
@@ -3559,26 +3681,31 @@ end;
 procedure TProduitGestionF.MarkProduitGCbxEnter(Sender: TObject);
 var
 I : Integer;
-
 begin
+//     MarkProduitGCbx.Items.Clear;
+     MainForm.SQLQuery4.Active := False;
+     MainForm.SQLQuery4.sql.Clear;
+     mainform.SQLQuery4.SQL.Text:= 'SELECT * FROM markproduit WHERE nom_mrkp NOT LIKE'+ QuotedStr(MarkProduitGCbx.Text) +' ORDER By code_mrkp' ;
+     MainForm.SQLQuery4.Active := True;
+     MainForm.SQLQuery4.first;
 
-   MarkProduitGCbx.Items.Clear;
-   MainForm.SQLQuery4.Active:= False;
-   MainForm.SQLQuery4.SQL.Clear;
-   MainForm.SQLQuery4.SQL.Text:= 'SELECT nom_mrkp FROM markproduit ORDER BY code_mrkp';
-   MainForm.SQLQuery4.Active:= true;
-
-    for I := 0 to MainForm.SQLQuery4.RecordCount - 1 do
-     if ( MainForm.SQLQuery4.FieldByName('nom_mrkp').IsNull = False )  then
+     for I := 0 to MainForm.SQLQuery4.RecordCount - 1 do
+     if MainForm.SQLQuery4.FieldByName('nom_mrkp').IsNull = False then
      begin
-       MarkProduitGCbx.Items.Add(MainForm.SQLQuery4.FieldByName('nom_mrkp').AsString );
+       MarkProduitGCbx.Items.Add(MainForm.SQLQuery4.FieldByName('nom_mrkp').AsString);
        MainForm.SQLQuery4.Next;
-      end;
+     end;
+     MainForm.SQLQuery4.Active := False;
+     MainForm.SQLQuery4.sql.Clear;
+end;
 
-    MainForm.SQLQuery4.Active:= False;
-    MainForm.SQLQuery4.SQL.Clear;
-
-
+procedure TProduitGestionF.MarkProduitGCbxExit(Sender: TObject);
+Var KeepValue :String;
+begin
+  Keepvalue:= MarkProduitGCbx.Text;
+  MarkProduitGCbx.Items.Clear;
+  MarkProduitGCbx.Items.Add(KeepValue);
+  MarkProduitGCbx.ItemIndex:=0;
 end;
 
 procedure TProduitGestionF.PrixVHTGProduitEdtKeyPress(Sender: TObject;

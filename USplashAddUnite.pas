@@ -1446,7 +1446,7 @@ begin
             if NOT (IsEmpty) then
             begin
             Last;
-            CodeUNIT:= FieldValues['code_famp'] + 1;
+            CodeUNIT:= FieldByName('code_famp').AsInteger + 1;
             end else
                 begin
                  CodeUNIT:= 1;
@@ -1472,7 +1472,10 @@ begin
 
        if Assigned(ProduitGestionF) then
        begin
-        ProduitGestionF.FamilleProduitGCbx.Text:= NameAddUniteSEdt.Text;
+//        ProduitGestionF.FamilleProduitGCbx.Text:= NameAddUniteSEdt.Text;
+        ProduitGestionF.FamilleProduitGCbx.Items.Clear;
+        ProduitGestionF.FamilleProduitGCbx.Items.Add(NameAddUniteSEdt.Text);
+        ProduitGestionF.FamilleProduitGCbx.ItemIndex:= 0;
         ProduitGestionF.FamilleProduitGCbx.SetFocus;
         end;   end   else
        try
@@ -1499,7 +1502,7 @@ begin
             if NOT (IsEmpty) then
             begin
             Last;
-            CodeUNIT:= FieldValues['code_sfamp'] + 1;
+            CodeUNIT:= FieldByName('code_sfamp').AsInteger + 1;
             end else
                 begin
                  CodeUNIT:= 1;
@@ -1526,8 +1529,11 @@ begin
 
        if Assigned(ProduitGestionF) then
        begin
-       ProduitGestionF.SFamilleProduitGCbx.Text:= NameAddUniteSEdt.Text;
-       ProduitGestionF.SFamilleProduitGCbx.SetFocus;
+//        ProduitGestionF.SFamilleProduitGCbx.Text:= NameAddUniteSEdt.Text;
+        ProduitGestionF.SFamilleProduitGCbx.Items.Clear;
+        ProduitGestionF.SFamilleProduitGCbx.Items.Add(NameAddUniteSEdt.Text);
+        ProduitGestionF.SFamilleProduitGCbx.ItemIndex:= 0;
+        ProduitGestionF.SFamilleProduitGCbx.SetFocus;
        end;
          end
         else
@@ -1581,8 +1587,11 @@ begin
         sndPlaySound('C:\Windows\Media\speech on.wav', SND_NODEFAULT Or SND_ASYNC Or  SND_RING);
        if Assigned(ProduitGestionF) then
        begin
-       ProduitGestionF.UniteProduitGCbx.Text:= NameAddUniteSEdt.Text;
-       ProduitGestionF.UniteProduitGCbx.SetFocus;
+//       ProduitGestionF.UniteProduitGCbx.Text:= NameAddUniteSEdt.Text;
+        ProduitGestionF.UniteProduitGCbx.Items.Clear;
+        ProduitGestionF.UniteProduitGCbx.Items.Add(NameAddUniteSEdt.Text);
+        ProduitGestionF.UniteProduitGCbx.ItemIndex:= 0;
+        ProduitGestionF.UniteProduitGCbx.SetFocus;
        end;
        end
       else
@@ -3651,7 +3660,64 @@ begin
 
    end;
 
+  //---This TAG = 52 for Add in Produit mark--///
+  if OKAddUniteSBtn.Tag = 52 then
+  begin
+      if NameAddUniteSEdt.Text <> '' then
+   begin
 
+        with DataModuleF.MrkProduitTable do  begin
+
+          if Image1.Tag = 0 then
+         begin
+            if NOT (IsEmpty) then
+            begin
+            Last;
+            CodeUNIT:= FieldByName('code_mrkp').AsInteger + 1;
+            end else
+                begin
+                 CodeUNIT:= 1;
+                end;
+          Append;
+          fieldbyname('code_mrkp').AsInteger := CodeUNIT;
+          fieldbyname('nom_mrkp').AsString := NameAddUniteSEdt.Text;
+          post;
+
+           end;
+         if Image1.Tag = 1 then
+         begin
+          Edit;
+          fieldbyname('nom_mrkp').AsString := NameAddUniteSEdt.Text;
+          post;
+           end;
+        end;
+
+        NameAddUniteSErrorP.Visible:=False;
+       RequiredAddUniteSlbl.Visible:=False;
+       AnimateWindow(FSplashAddUnite.Handle, 175, AW_VER_NEGATIVE OR AW_SLIDE OR AW_HIDE);
+       FSplashAddUnite.Release;
+       sndPlaySound('C:\Windows\Media\speech on.wav', SND_NODEFAULT Or SND_ASYNC Or  SND_RING);
+
+       if Assigned(ProduitGestionF) then
+       begin
+//        ProduitGestionF.FamilleProduitGCbx.Text:= NameAddUniteSEdt.Text;
+        ProduitGestionF.MarkProduitGCbx.Items.Clear;
+        ProduitGestionF.MarkProduitGCbx.Items.Add(NameAddUniteSEdt.Text);
+        ProduitGestionF.MarkProduitGCbx.ItemIndex:= 0;
+        ProduitGestionF.MarkProduitGCbx.SetFocus;
+        end;   end   else
+       try
+       NameAddUniteSEdt.BorderStyle:= bsNone;
+      NameAddUniteSEdt.StyleElements:= [];
+      RequiredAddUniteSlbl.Visible:= True;
+      NameAddUniteSErrorP.Visible:= True;
+      sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
+     OKAddUniteSBtn.Enabled := False;
+     OKAddUniteSBtn.ImageIndex := 18;
+      finally
+      NameAddUniteSEdt.SetFocus;
+    end;
+  end;
 
 end;
 

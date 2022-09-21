@@ -4576,4 +4576,11 @@ object DataModuleF: TDataModuleF
       Size = 8190
     end
   end
+  object MrkProduitTable: TFDQuery
+    Connection = GstockdcConnection02
+    SQL.Strings = (
+      'SELECT * FROM markproduit ')
+    Left = 282
+    Top = 368
+  end
 end
