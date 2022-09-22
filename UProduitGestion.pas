@@ -1504,7 +1504,7 @@ begin
                       end;
                     Append;
                     fieldbyname('code_mrkp').AsInteger := MarkP;
-                    fieldbyname('nom_mrkp').Value := SFamilleProduitGCbx.Text;
+                    fieldbyname('nom_mrkp').Value := MarkProduitGCbx.Text;
                     post;
                   end;
             end;
@@ -1539,7 +1539,7 @@ begin
                   if NOT (IsEmpty) then
                   begin
                   Last;
-                  LoucP:= FieldValues['code_l'] + 1;
+                  LoucP:= FieldByName('code_l').AsInteger + 1;
                   end else
                       begin
                        LoucP:= 1;
@@ -1941,15 +1941,7 @@ begin
           //----------- use this code to inster new mark produit when just type name it if empty exit-------------
           if MarkProduitGCbx.Text <> '' then
           begin
-
-             DataModuleF.SQLQuery3.Active:=False;
-             DataModuleF.SQLQuery3.SQL.Clear;
-             DataModuleF.SQLQuery3.SQL.Text:='SELECT * FROM markproduit WHERE LOWER(nom_mrkp) LIKE LOWER' +  '('''+'%'+(MarkProduitGCbx.Text)+'%'+''')';
-//             DataModuleF.SQLQuery3.SQL.Text:='SELECT * from markproduit where LOWER(nom_mrkp) LIKE LOWER '+  '('''+'%'+(MarkProduitGCbx.Text)+'%'+''')';
-             DataModuleF.SQLQuery3.Active:=True;
-
-            if NOT  DataModuleF.SQLQuery3.IsEmpty then
-//            if NOT  DataModuleF.MrkProduitTable.Locate('nom_mrkp', MarkProduitGCbx.Text, [loCaseInsensitive]) then
+            if NOT  DataModuleF.MrkProduitTable.Locate('nom_mrkp', MarkProduitGCbx.Text, [loCaseInsensitive]) then
             begin
                  with DataModuleF.MrkProduitTable do  begin
                   if NOT (IsEmpty) then
@@ -1962,7 +1954,7 @@ begin
                       end;
                     Append;
                     fieldbyname('code_mrkp').AsInteger := MarkP;
-                    fieldbyname('nom_mrkp').Value := SFamilleProduitGCbx.Text;
+                    fieldbyname('nom_mrkp').Value := MarkProduitGCbx.Text;
                     post;
                   end;
             end;
@@ -1997,7 +1989,7 @@ begin
                   if NOT (IsEmpty) then
                   begin
                   Last;
-                  LoucP:= FieldValues['code_l'] + 1;
+                  LoucP:= FieldByName('code_l').AsInteger + 1;
                   end else
                       begin
                        LoucP:= 1;
@@ -2070,8 +2062,8 @@ begin
             fieldbyname('alertdays_p').Value := AlertJours;
             if PrixAHTProduitEdt.Text<>'' then
             begin
-            FieldValues['prixht_p'] :=       StrToFloat(StringReplace(PrixAHTProduitEdt.Text, #32, '', [rfReplaceAll]));
-            end else begin FieldValues['prixht_p']:=  StrToInt('0')  end;
+            FieldByName('prixht_p').Value :=       StrToFloat(StringReplace(PrixAHTProduitEdt.Text, #32, '', [rfReplaceAll]));
+            end else begin FieldByName('prixht_p').Value:=  StrToInt('0')  end;
             if PrixVHTDProduitEdt.Text<>'' then
             begin
             fieldbyname('prixvd_p').Value := StrToFloat(StringReplace(PrixVHTDProduitEdt.Text, #32, '', [rfReplaceAll]));
@@ -2166,6 +2158,11 @@ begin
            MainForm.SFamproduitTable.sql.Clear;
            mainform.SFamproduitTable.SQL.Text:= 'SELECT * FROM sfamproduit ' ;
            MainForm.SFamproduitTable.Active := True;
+
+           DataModuleF.MrkProduitTable.Active := False;
+           DataModuleF.MrkProduitTable.sql.Clear;
+           DataModuleF.MrkProduitTable.SQL.Text:= 'SELECT * FROM markproduit ' ;
+           DataModuleF.MrkProduitTable.Active := True;
 
            MainForm.FournisseurTable.Active:=false;
            MainForm.FournisseurTable.SQL.Clear;

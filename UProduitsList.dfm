@@ -327,9 +327,9 @@ object ProduitsListF: TProduitsListF
   TextHeight = 13
   object ProduitsListDBGridEh: TDBGridEh
     Left = 1
-    Top = 77
+    Top = 69
     Width = 950
-    Height = 647
+    Height = 652
     Anchors = [akLeft, akTop, akRight, akBottom]
     Border.Color = 4207405
     Border.ExtendedDraw = False
@@ -1544,7 +1544,7 @@ object ProduitsListF: TProduitsListF
     object ResearchProduitsLbl: TLabel
       Left = 1
       Top = 31
-      Width = 74
+      Width = 66
       Height = 16
       Caption = 'Rechercher'
       Color = 15722984
@@ -1656,7 +1656,7 @@ object ProduitsListF: TProduitsListF
       Left = 528
       Top = 5
       Width = 6
-      Height = 13
+      Height = 14
       Caption = '0'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 11544476

@@ -64,8 +64,8 @@ object ProduitGestionF: TProduitGestionF
         object FamilleProduitGLbl: TLabel
           Left = 36
           Top = 110
-          Width = 53
-          Height = 18
+          Width = 51
+          Height = 17
           Caption = 'Famille:'
           Color = 4207405
           Font.Charset = DEFAULT_CHARSET
@@ -80,8 +80,8 @@ object ProduitGestionF: TProduitGestionF
         object RefProduitGLbl: TLabel
           Left = 16
           Top = 17
-          Width = 73
-          Height = 18
+          Width = 72
+          Height = 17
           Caption = 'R'#233'ference:'
           Color = 4207405
           Font.Charset = DEFAULT_CHARSET
@@ -96,8 +96,8 @@ object ProduitGestionF: TProduitGestionF
         object NameProduitGLbl: TLabel
           Left = 2
           Top = 66
-          Width = 87
-          Height = 18
+          Width = 81
+          Height = 17
           Caption = 'D'#233'signation:'
           Color = 4207405
           Font.Charset = DEFAULT_CHARSET
@@ -112,8 +112,8 @@ object ProduitGestionF: TProduitGestionF
         object PrixAHTProduitLbl: TLabel
           Left = 24
           Top = 310
-          Width = 55
-          Height = 18
+          Width = 50
+          Height = 17
           Caption = 'Prix HT:'
           Color = 4207405
           Font.Charset = DEFAULT_CHARSET
@@ -128,7 +128,7 @@ object ProduitGestionF: TProduitGestionF
         object RequiredStarProduitGLbl: TLabel
           Left = 629
           Top = 64
-          Width = 8
+          Width = 7
           Height = 22
           Caption = '*'
           Color = clBtnFace
@@ -163,8 +163,8 @@ object ProduitGestionF: TProduitGestionF
         object Label1: TLabel
           Left = 239
           Top = 110
-          Width = 66
-          Height = 18
+          Width = 65
+          Height = 17
           Caption = 'S.Famille:'
           Color = 4207405
           Font.Charset = DEFAULT_CHARSET
@@ -179,8 +179,8 @@ object ProduitGestionF: TProduitGestionF
         object Label2: TLabel
           Left = 49
           Top = 155
-          Width = 40
-          Height = 18
+          Width = 37
+          Height = 17
           Caption = 'Unit'#233':'
           Color = 4207405
           Font.Charset = DEFAULT_CHARSET
@@ -195,8 +195,8 @@ object ProduitGestionF: TProduitGestionF
         object Label3: TLabel
           Left = 227
           Top = 155
-          Width = 31
-          Height = 18
+          Width = 30
+          Height = 17
           Caption = 'TVA:'
           Color = 4207405
           Font.Charset = DEFAULT_CHARSET
@@ -211,8 +211,8 @@ object ProduitGestionF: TProduitGestionF
         object Label4: TLabel
           Left = 13
           Top = 198
-          Width = 76
-          Height = 18
+          Width = 73
+          Height = 17
           Caption = 'P'#233'rissable:'
           Color = 4207405
           Font.Charset = DEFAULT_CHARSET
@@ -227,7 +227,7 @@ object ProduitGestionF: TProduitGestionF
         object PerProduitGLbl: TLabel
           Left = 140
           Top = 202
-          Width = 22
+          Width = 19
           Height = 14
           Caption = 'Non'
           Color = 4207405
@@ -245,7 +245,7 @@ object ProduitGestionF: TProduitGestionF
           Left = 221
           Top = 198
           Width = 35
-          Height = 18
+          Height = 17
           Caption = 'Date:'
           Color = 4207405
           Enabled = False
@@ -261,8 +261,8 @@ object ProduitGestionF: TProduitGestionF
         object AlertJoursProduitLbl: TLabel
           Left = 406
           Top = 198
-          Width = 105
-          Height = 18
+          Width = 97
+          Height = 17
           Caption = 'M'#39'avertir avant:'
           Color = 4207405
           Enabled = False
@@ -278,7 +278,7 @@ object ProduitGestionF: TProduitGestionF
         object AlertJoursProduitLbl2: TLabel
           Left = 608
           Top = 200
-          Width = 31
+          Width = 33
           Height = 15
           Caption = 'Jours'
           Color = clBtnFace
@@ -296,7 +296,7 @@ object ProduitGestionF: TProduitGestionF
           Left = 17
           Top = 374
           Width = 62
-          Height = 18
+          Height = 17
           Caption = 'Prix TTC:'
           Color = 4207405
           Font.Charset = DEFAULT_CHARSET
@@ -311,7 +311,7 @@ object ProduitGestionF: TProduitGestionF
         object Label10: TLabel
           Left = 73
           Top = 246
-          Width = 87
+          Width = 90
           Height = 19
           Caption = 'Prix D'#39'Achat'
           Color = 4207405
@@ -359,7 +359,7 @@ object ProduitGestionF: TProduitGestionF
         object Label13: TLabel
           Left = 394
           Top = 246
-          Width = 95
+          Width = 100
           Height = 19
           Caption = 'Prix De Vente'
           Color = 4207405
@@ -375,7 +375,7 @@ object ProduitGestionF: TProduitGestionF
         object Label14: TLabel
           Left = 574
           Top = 285
-          Width = 39
+          Width = 36
           Height = 16
           Caption = 'Marge'
           Color = 4207405
@@ -391,7 +391,7 @@ object ProduitGestionF: TProduitGestionF
         object Label15: TLabel
           Left = 272
           Top = 311
-          Width = 36
+          Width = 37
           Height = 16
           Caption = 'Detail:'
           Color = 4207405
@@ -407,7 +407,7 @@ object ProduitGestionF: TProduitGestionF
         object Label16: TLabel
           Left = 240
           Top = 344
-          Width = 68
+          Width = 64
           Height = 16
           Caption = 'Revendeur:'
           Color = 4207405
@@ -471,7 +471,7 @@ object ProduitGestionF: TProduitGestionF
         object Label20: TLabel
           Left = 626
           Top = 312
-          Width = 11
+          Width = 13
           Height = 18
           Caption = '%'
           Color = clBtnFace
@@ -487,7 +487,7 @@ object ProduitGestionF: TProduitGestionF
         object Label21: TLabel
           Left = 626
           Top = 344
-          Width = 11
+          Width = 13
           Height = 18
           Caption = '%'
           Color = clBtnFace
@@ -503,7 +503,7 @@ object ProduitGestionF: TProduitGestionF
         object Label22: TLabel
           Left = 626
           Top = 377
-          Width = 11
+          Width = 13
           Height = 18
           Caption = '%'
           Color = clBtnFace
@@ -519,7 +519,7 @@ object ProduitGestionF: TProduitGestionF
         object Label23: TLabel
           Left = 626
           Top = 408
-          Width = 11
+          Width = 13
           Height = 18
           Caption = '%'
           Color = clBtnFace
@@ -535,7 +535,7 @@ object ProduitGestionF: TProduitGestionF
         object Label24: TLabel
           Left = 626
           Top = 440
-          Width = 11
+          Width = 13
           Height = 18
           Caption = '%'
           Color = clBtnFace
@@ -551,8 +551,8 @@ object ProduitGestionF: TProduitGestionF
         object Label25: TLabel
           Left = 3
           Top = 496
-          Width = 85
-          Height = 18
+          Width = 77
+          Height = 17
           Caption = 'Stock Initial:'
           Color = 4207405
           Font.Charset = DEFAULT_CHARSET
@@ -567,8 +567,8 @@ object ProduitGestionF: TProduitGestionF
         object Label26: TLabel
           Left = 464
           Top = 496
-          Width = 47
-          Height = 18
+          Width = 45
+          Height = 17
           Caption = 'Alerte :'
           Color = 4207405
           Font.Charset = DEFAULT_CHARSET
@@ -583,8 +583,8 @@ object ProduitGestionF: TProduitGestionF
         object Label27: TLabel
           Left = 214
           Top = 496
-          Width = 94
-          Height = 18
+          Width = 88
+          Height = 17
           Caption = 'Stock Actuel :'
           Color = 4207405
           Font.Charset = DEFAULT_CHARSET
@@ -599,8 +599,8 @@ object ProduitGestionF: TProduitGestionF
         object Label28: TLabel
           Left = 3
           Top = 543
-          Width = 86
-          Height = 18
+          Width = 82
+          Height = 17
           Caption = 'Fournisseur:'
           Color = 4207405
           Font.Charset = DEFAULT_CHARSET
@@ -615,7 +615,7 @@ object ProduitGestionF: TProduitGestionF
         object Label29: TLabel
           Left = 341
           Top = 156
-          Width = 11
+          Width = 13
           Height = 18
           Caption = '%'
           Color = clBtnFace
@@ -664,7 +664,7 @@ object ProduitGestionF: TProduitGestionF
           Left = 320
           Top = 18
           Width = 91
-          Height = 18
+          Height = 17
           Caption = 'Code '#226' Barre:'
           Color = 4207405
           Font.Charset = DEFAULT_CHARSET
@@ -923,8 +923,8 @@ object ProduitGestionF: TProduitGestionF
         object PMPProduitLbl: TLabel
           Left = 34
           Top = 439
-          Width = 45
-          Height = 18
+          Width = 41
+          Height = 17
           Caption = 'P.M.P:'
           Color = 4207405
           Font.Charset = DEFAULT_CHARSET
@@ -939,8 +939,8 @@ object ProduitGestionF: TProduitGestionF
         object MarkProduitGLbl: TLabel
           Left = 451
           Top = 110
-          Width = 56
-          Height = 18
+          Width = 52
+          Height = 17
           Caption = 'Marque:'
           Color = 4207405
           Font.Charset = DEFAULT_CHARSET
@@ -1811,7 +1811,7 @@ object ProduitGestionF: TProduitGestionF
         object ObserClientGLbl: TLabel
           Left = 11
           Top = 414
-          Width = 95
+          Width = 96
           Height = 18
           Caption = 'Observations:'
           Color = 4207405
@@ -1875,7 +1875,7 @@ object ProduitGestionF: TProduitGestionF
         object Label31: TLabel
           Left = 30
           Top = 107
-          Width = 76
+          Width = 77
           Height = 18
           Caption = 'Max.Stock:'
           Color = 4207405
@@ -2015,7 +2015,7 @@ object ProduitGestionF: TProduitGestionF
         object NSeriesProduitGLbl: TLabel
           Left = 11
           Top = 256
-          Width = 95
+          Width = 101
           Height = 18
           Caption = 'Les N'#176' S'#233'ries:'
           Color = 4207405
