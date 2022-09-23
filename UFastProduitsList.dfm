@@ -39,7 +39,7 @@ object FastProduitsListF: TFastProduitsListF
     object ResearchProduitsLbl: TLabel
       Left = 11
       Top = 24
-      Width = 74
+      Width = 66
       Height = 16
       Caption = 'Rechercher'
       Color = 15722984
@@ -165,7 +165,7 @@ object FastProduitsListF: TFastProduitsListF
     object SelectAllLbl: TLabel
       Left = 10
       Top = 44
-      Width = 108
+      Width = 98
       Height = 16
       Caption = 'Tout s'#233'lectionner'
       Color = 4207405
@@ -545,6 +545,30 @@ object FastProduitsListF: TFastProduitsListF
         Layout = tlCenter
         Title.Alignment = taCenter
         Title.Caption = 'Sous Famille'
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = 4207405
+        Title.Font.Height = 16
+        Title.Font.Name = 'Helvetica LT Std'
+        Title.Font.Style = []
+        Title.Font.Quality = fqProof
+        Width = 130
+        WordWrap = False
+      end
+      item
+        Alignment = taCenter
+        CellButtons = <>
+        DynProps = <>
+        EditButtons = <>
+        FieldName = 'mrkp'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 14
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
+        Footers = <>
+        Layout = tlCenter
+        Title.Alignment = taCenter
+        Title.Caption = 'Marque'
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = 4207405
         Title.Font.Height = 16

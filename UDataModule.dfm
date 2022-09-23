@@ -4575,6 +4575,16 @@ object DataModuleF: TDataModuleF
       Origin = 'nom_p'
       Size = 8190
     end
+    object FastProduitTablemrkp: TWideStringField
+      FieldKind = fkLookup
+      FieldName = 'mrkp'
+      LookupDataSet = MrkProduitTable
+      LookupKeyFields = 'code_mrkp'
+      LookupResultField = 'nom_mrkp'
+      KeyFields = 'code_mrkp'
+      Size = 40
+      Lookup = True
+    end
   end
   object MrkProduitTable: TFDQuery
     Connection = GstockdcConnection02

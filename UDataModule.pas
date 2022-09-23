@@ -554,6 +554,7 @@ type
     FastProduitTablerefer_p: TWideStringField;
     FastProduitTablenom_p: TWideStringField;
     MrkProduitTable: TFDQuery;
+    FastProduitTablemrkp: TWideStringField;
     procedure DataModuleCreate(Sender: TObject);
     procedure PZeroQCnotifCalcFields(DataSet: TDataSet);
     procedure PCloseZeroQCnotifCalcFields(DataSet: TDataSet);
