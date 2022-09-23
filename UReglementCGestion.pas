@@ -308,23 +308,23 @@ var
 I : Integer;
   begin
 
-          MainForm.SQLQuery.Active:=false;
-          MainForm.SQLQuery.SQL.Clear;
-          MainForm.SQLQuery.SQL.Text:='Select nom_c FROM client ORDER by code_c'  ;
-          MainForm.SQLQuery.Active:=True;
+          MainForm.FDQuery2.Active:=false;
+          MainForm.FDQuery2.SQL.Clear;
+          MainForm.FDQuery2.SQL.Text:='Select nom_c FROM client ORDER by code_c'  ;
+          MainForm.FDQuery2.Active:=True;
 
-       MainForm.SQLQuery.Refresh;
+       MainForm.FDQuery2.Refresh;
        ClientRegCGCbx.Items.Clear;
-       MainForm.SQLQuery.first;
+       MainForm.FDQuery2.first;
 
-     for I := 0 to MainForm.SQLQuery.RecordCount - 1 do
-     if MainForm.SQLQuery.FieldByName('nom_c').IsNull = False then
+     for I := 0 to MainForm.FDQuery2.RecordCount - 1 do
+     if MainForm.FDQuery2.FieldByName('nom_c').IsNull = False then
      begin
-          ClientRegCGCbx.Items.Add(MainForm.SQLQuery.FieldByName('nom_c').AsString);
-       MainForm.SQLQuery.Next;
+          ClientRegCGCbx.Items.Add(MainForm.FDQuery2.FieldByName('nom_c').AsWideString);
+       MainForm.FDQuery2.Next;
       end;
-          MainForm.SQLQuery.Active:=false;
-          MainForm.SQLQuery.SQL.Clear;
+          MainForm.FDQuery2.Active:=false;
+          MainForm.FDQuery2.SQL.Clear;
 end;
 
 procedure TReglementCGestionF.ModePaieRegCGCbxDropDown(Sender: TObject);

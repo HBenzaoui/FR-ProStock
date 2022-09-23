@@ -229,25 +229,25 @@ var
 I : Integer;
   begin
 
-          MainForm.SQLQuery.Active:=false;
-          MainForm.SQLQuery.SQL.Clear;
-          MainForm.SQLQuery.SQL.Text:='Select nom_f FROM fournisseur ORDER BY code_f'  ;
-          MainForm.SQLQuery.Active:=True;
+          MainForm.FDQuery2.Active:=false;
+          MainForm.FDQuery2.SQL.Clear;
+          MainForm.FDQuery2.SQL.Text:='Select nom_f FROM fournisseur ORDER BY code_f'  ;
+          MainForm.FDQuery2.Active:=True;
 
-       MainForm.SQLQuery.Refresh;
+       MainForm.FDQuery2.Refresh;
        FournisseurRegFGCbx.Items.Clear;
-       MainForm.SQLQuery.first;
+       MainForm.FDQuery2.first;
 
 
-     for I := 0 to MainForm.SQLQuery.RecordCount - 1 do
-     if MainForm.SQLQuery.FieldByName('nom_f').IsNull = False then
+     for I := 0 to MainForm.FDQuery2.RecordCount - 1 do
+     if MainForm.FDQuery2.FieldByName('nom_f').IsNull = False then
      begin
-          FournisseurRegFGCbx.Items.Add(MainForm.SQLQuery.FieldByName('nom_f').AsString);
-       MainForm.SQLQuery.Next;
+          FournisseurRegFGCbx.Items.Add(MainForm.FDQuery2.FieldByName('nom_f').AsWideString);
+       MainForm.FDQuery2.Next;
       end;
 
-          MainForm.SQLQuery.Active:=false;
-          MainForm.SQLQuery.SQL.Clear;
+          MainForm.FDQuery2.Active:=false;
+          MainForm.FDQuery2.SQL.Clear;
 
 
   end;

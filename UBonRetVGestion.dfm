@@ -359,7 +359,7 @@ object BonRetVGestionF: TBonRetVGestionF
       Left = 795
       Top = 136
       Width = 4
-      Height = 13
+      Height = 12
       Caption = '*'
       Color = clBtnFace
       Font.Charset = DEFAULT_CHARSET
@@ -375,7 +375,7 @@ object BonRetVGestionF: TBonRetVGestionF
       Left = 535
       Top = 135
       Width = 4
-      Height = 13
+      Height = 12
       Caption = '*'
       Color = clBtnFace
       Font.Charset = DEFAULT_CHARSET
@@ -464,8 +464,8 @@ object BonRetVGestionF: TBonRetVGestionF
     object Label4: TLabel
       Left = 9
       Top = 252
-      Width = 92
-      Height = 18
+      Width = 96
+      Height = 19
       Anchors = [akLeft, akBottom]
       Caption = 'Les Produits:'
       Color = 15722984
@@ -521,8 +521,8 @@ object BonRetVGestionF: TBonRetVGestionF
     object Label5: TLabel
       Left = 16
       Top = 63
-      Width = 35
-      Height = 20
+      Width = 34
+      Height = 19
       Caption = 'Date'
       Color = 15722984
       Font.Charset = DEFAULT_CHARSET
@@ -537,8 +537,8 @@ object BonRetVGestionF: TBonRetVGestionF
     object Label6: TLabel
       Left = 15
       Top = 23
-      Width = 119
-      Height = 20
+      Width = 117
+      Height = 19
       Caption = 'Retour Client N'#176
       Color = 15722984
       Font.Charset = DEFAULT_CHARSET
@@ -602,7 +602,7 @@ object BonRetVGestionF: TBonRetVGestionF
     object Label8: TLabel
       Left = 387
       Top = 87
-      Width = 43
+      Width = 44
       Height = 18
       Caption = 'Client:'
       Color = 4207405
@@ -651,7 +651,7 @@ object BonRetVGestionF: TBonRetVGestionF
     object Label7: TLabel
       Left = 387
       Top = 131
-      Width = 43
+      Width = 44
       Height = 18
       Caption = 'Mode:'
       Color = 4207405
@@ -699,7 +699,7 @@ object BonRetVGestionF: TBonRetVGestionF
     object Label16: TLabel
       Left = 574
       Top = 130
-      Width = 57
+      Width = 60
       Height = 18
       Caption = 'Compte:'
       Color = 4207405
@@ -973,7 +973,7 @@ object BonRetVGestionF: TBonRetVGestionF
     object Label23: TLabel
       Left = 353
       Top = 175
-      Width = 77
+      Width = 80
       Height = 18
       Caption = 'N'#176' Ch'#233'que:'
       Color = 4207405
@@ -989,8 +989,8 @@ object BonRetVGestionF: TBonRetVGestionF
     object ObserBonRetGLbl: TLabel
       Left = 15
       Top = 99
-      Width = 102
-      Height = 20
+      Width = 99
+      Height = 19
       Caption = 'Observations:'
       Color = 4207405
       Font.Charset = DEFAULT_CHARSET
@@ -1080,7 +1080,7 @@ object BonRetVGestionF: TBonRetVGestionF
     object Label21: TLabel
       Left = 762
       Top = 89
-      Width = 6
+      Width = 5
       Height = 16
       Caption = '*'
       Color = clBtnFace
@@ -1451,7 +1451,7 @@ object BonRetVGestionF: TBonRetVGestionF
       Left = 73
       Top = 60
       Width = 124
-      Height = 26
+      Height = 27
       Date = 42583.000000000000000000
       Time = 42583.000000000000000000
       Font.Charset = DEFAULT_CHARSET
@@ -1466,7 +1466,7 @@ object BonRetVGestionF: TBonRetVGestionF
       Left = 432
       Top = 82
       Width = 328
-      Height = 28
+      Height = 27
       Ctl3D = True
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -1593,7 +1593,7 @@ object BonRetVGestionF: TBonRetVGestionF
       Left = 432
       Top = 126
       Width = 101
-      Height = 28
+      Height = 27
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -17
@@ -1616,7 +1616,7 @@ object BonRetVGestionF: TBonRetVGestionF
       Left = 633
       Top = 126
       Width = 160
-      Height = 28
+      Height = 27
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -17
@@ -1695,7 +1695,7 @@ object BonRetVGestionF: TBonRetVGestionF
       object Label18: TLabel
         Left = 6
         Top = 78
-        Width = 109
+        Width = 110
         Height = 18
         Anchors = [akTop, akRight]
         Caption = 'Nouveau Solde:'
@@ -1712,7 +1712,7 @@ object BonRetVGestionF: TBonRetVGestionF
       object Label17: TLabel
         Left = 6
         Top = 6
-        Width = 94
+        Width = 97
         Height = 18
         Anchors = [akTop, akRight]
         Caption = 'Ancien Solde:'
@@ -1743,7 +1743,7 @@ object BonRetVGestionF: TBonRetVGestionF
       Left = 432
       Top = 170
       Width = 361
-      Height = 28
+      Height = 27
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -17
@@ -2266,7 +2266,7 @@ object BonRetVGestionF: TBonRetVGestionF
     object Label1: TLabel
       Left = 413
       Top = 6
-      Width = 65
+      Width = 67
       Height = 17
       Caption = 'Total TVA:'
       Color = clWhite
@@ -2423,7 +2423,7 @@ object BonRetVGestionF: TBonRetVGestionF
     object Label10: TLabel
       Left = 412
       Top = 64
-      Width = 66
+      Width = 68
       Height = 17
       Caption = 'Total TTC:'
       Color = 15722984
@@ -2439,7 +2439,7 @@ object BonRetVGestionF: TBonRetVGestionF
     object Label3: TLabel
       Left = 212
       Top = 64
-      Width = 49
+      Width = 50
       Height = 17
       Caption = 'Timber:'
       Color = clWhite
@@ -2458,7 +2458,7 @@ object BonRetVGestionF: TBonRetVGestionF
       Left = 392
       Top = 66
       Width = 10
-      Height = 17
+      Height = 16
       Margins.Left = 0
       Margins.Top = 0
       Margins.Right = 0
@@ -2483,7 +2483,7 @@ object BonRetVGestionF: TBonRetVGestionF
       Left = 392
       Top = 6
       Width = 10
-      Height = 17
+      Height = 16
       Margins.Left = 0
       Margins.Top = 0
       Margins.Right = 0
@@ -2505,7 +2505,7 @@ object BonRetVGestionF: TBonRetVGestionF
     object Label14: TLabel
       Left = 212
       Top = 6
-      Width = 54
+      Width = 55
       Height = 17
       Caption = 'Remise:'
       Color = 14727239
@@ -2521,8 +2521,8 @@ object BonRetVGestionF: TBonRetVGestionF
     object Label15: TLabel
       Left = 12
       Top = 62
-      Width = 138
-      Height = 56
+      Width = 141
+      Height = 54
       Caption = 'Bon de '#13#10'Retour Client'
       Color = 15722984
       Font.Charset = DEFAULT_CHARSET

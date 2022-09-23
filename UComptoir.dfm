@@ -363,7 +363,7 @@ object BonCtrGestionF: TBonCtrGestionF
     object Label1: TLabel
       Left = 5
       Top = 4
-      Width = 70
+      Width = 75
       Height = 28
       Caption = 'Total'
       Font.Charset = DEFAULT_CHARSET
@@ -374,9 +374,9 @@ object BonCtrGestionF: TBonCtrGestionF
       ParentFont = False
     end
     object Label17: TLabel
-      Left = 884
+      Left = 877
       Top = 4
-      Width = 106
+      Width = 113
       Height = 28
       Anchors = [akTop, akRight]
       BiDiMode = bdRightToLeft
@@ -834,8 +834,8 @@ object BonCtrGestionF: TBonCtrGestionF
       object RegleVersementSGLbl: TLabel
         Left = 3
         Top = 2
-        Width = 85
-        Height = 13
+        Width = 80
+        Height = 14
         Anchors = [akLeft, akBottom]
         Caption = 'Impression Auto:'
         Color = 4207405
@@ -1226,7 +1226,7 @@ object BonCtrGestionF: TBonCtrGestionF
       object Label9: TLabel
         Left = 6
         Top = 20
-        Width = 36
+        Width = 37
         Height = 16
         Caption = 'Client:'
         Color = 4207405
@@ -1398,7 +1398,7 @@ object BonCtrGestionF: TBonCtrGestionF
       object Label18: TLabel
         Left = 6
         Top = 7
-        Width = 54
+        Width = 51
         Height = 16
         Caption = 'Montant:'
         Font.Charset = DEFAULT_CHARSET
@@ -1452,7 +1452,7 @@ object BonCtrGestionF: TBonCtrGestionF
       object Label22: TLabel
         Left = 6
         Top = 37
-        Width = 47
+        Width = 48
         Height = 16
         Caption = 'Remise:'
         Font.Charset = DEFAULT_CHARSET
@@ -1465,7 +1465,7 @@ object BonCtrGestionF: TBonCtrGestionF
       object Label23: TLabel
         Left = 6
         Top = 97
-        Width = 42
+        Width = 41
         Height = 16
         Caption = 'Rendu:'
         Font.Charset = DEFAULT_CHARSET
@@ -1608,7 +1608,7 @@ object BonCtrGestionF: TBonCtrGestionF
       object Label2: TLabel
         Left = 6
         Top = 6
-        Width = 44
+        Width = 45
         Height = 16
         Caption = 'Bon N'#176':'
         Font.Charset = DEFAULT_CHARSET
@@ -1635,7 +1635,7 @@ object BonCtrGestionF: TBonCtrGestionF
       object Label4: TLabel
         Left = 6
         Top = 69
-        Width = 30
+        Width = 31
         Height = 16
         Caption = 'Date:'
         Font.Charset = DEFAULT_CHARSET
@@ -1648,7 +1648,7 @@ object BonCtrGestionF: TBonCtrGestionF
       object Label7: TLabel
         Left = 6
         Top = 35
-        Width = 39
+        Width = 38
         Height = 16
         Caption = 'Heure:'
         Font.Charset = DEFAULT_CHARSET
@@ -3799,7 +3799,7 @@ object BonCtrGestionF: TBonCtrGestionF
       object Label6: TLabel
         Left = 8
         Top = 92
-        Width = 76
+        Width = 73
         Height = 15
         Anchors = [akLeft, akBottom]
         Caption = 'Les Produits:'

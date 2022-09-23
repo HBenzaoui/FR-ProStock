@@ -4568,12 +4568,12 @@ object DataModuleF: TDataModuleF
     object FastProduitTablerefer_p: TWideStringField
       FieldName = 'refer_p'
       Origin = 'refer_p'
-      Size = 8190
+      Size = 50
     end
     object FastProduitTablenom_p: TWideStringField
       FieldName = 'nom_p'
       Origin = 'nom_p'
-      Size = 8190
+      Size = 300
     end
     object FastProduitTablemrkp: TWideStringField
       FieldKind = fkLookup
