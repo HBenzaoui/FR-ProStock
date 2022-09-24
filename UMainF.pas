@@ -737,6 +737,7 @@ type
     Bona_recTablefourbarec: TWideStringField;
     Bonv_ctrTableclientbvctr: TWideStringField;
     ProduitTablemrkp: TWideStringField;
+    ProduitTabledetail_p: TWideStringField;
     procedure ClientMainFBtnClick(Sender: TObject);
     procedure FourMainFBtnClick(Sender: TObject);
     procedure ProduitMainFBtnClick(Sender: TObject);

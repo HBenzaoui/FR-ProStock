@@ -595,6 +595,10 @@ begin
          //----- this is to move the coursour to the last  --------------------------------------------------------
           ProduitGestionF.NameProduitGEdt.SelStart := ProduitGestionF.NameProduitGEdt.GetTextLen;
         end;
+        if (fieldbyname('detail_p').AsWideString <> '') then
+        begin
+          ProduitGestionF.DetailProduitGMem.Text := fieldbyname('detail_p').AsWideString;
+        end;
         //	FamP:= fieldbyname('code_famp').Value;
         if (fieldbyname('famp').Value <> null) then
         begin

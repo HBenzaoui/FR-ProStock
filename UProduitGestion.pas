@@ -81,8 +81,6 @@ type
     Label26: TLabel;
     StockActuelProduitEdt: TEdit;
     Label27: TLabel;
-    FournisseurProduitGCbx: TComboBox;
-    Label28: TLabel;
     Label29: TLabel;
     CodeBarProduitGEdt: TEdit;
     RandomCBProduitGBtn: TAdvToolButton;
@@ -90,7 +88,6 @@ type
     AddSousFamilleProduitGBtn: TAdvToolButton;
     AddFamilleProduitGBtn: TAdvToolButton;
     AddUniteProduitGBtn: TAdvToolButton;
-    AddFourProduitGBtn: TAdvToolButton;
     LocalisationProduitGCbx: TComboBox;
     Label30: TLabel;
     AddLocationProduitGBtn: TAdvToolButton;
@@ -123,6 +120,11 @@ type
     OKProduitGBtn: TAdvToolButton;
     Panel1: TPanel;
     NSeriesCountProduitGLbl: TLabel;
+    Label28: TLabel;
+    FournisseurProduitGCbx: TComboBox;
+    AddFourProduitGBtn: TAdvToolButton;
+    Label6: TLabel;
+    DetailProduitGMem: TMemo;
     procedure ShowCalculaturProduitGBtnClick(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -1018,7 +1020,7 @@ begin
     // next control
     SelectNext(Self.ActiveControl, true, true);
   // Enter key
-  if NOT (NSeriesProduitGMem.Focused) then
+  if NOT (NSeriesProduitGMem.Focused) AND NOT (DetailProduitGMem.Focused) then
   begin
     if (Key = VK_RETURN) then
     // next control
@@ -1609,7 +1611,8 @@ begin
             Edit;
             fieldbyname('refer_p').AsWideString := RefProduitGEdt.Text;
             fieldbyname('codebar_p').AsString := CodeBarProduitGEdt.Text;
-            fieldbyname('nom_p').Value := NameProduitGEdt.Text;
+            fieldbyname('nom_p').AsWideString := NameProduitGEdt.Text;
+            fieldbyname('detail_p').AsWideString := DetailProduitGMem.Text;
             fieldbyname('code_famp').AsInteger := FamP;
             fieldbyname('code_sfamp').AsInteger := FamSP;
             fieldbyname('code_mrkp').AsInteger := MarkP;
@@ -2058,7 +2061,8 @@ begin
             Edit;
             fieldbyname('refer_p').Value := RefProduitGEdt.Text;
             fieldbyname('codebar_p').Value := CodeBarProduitGEdt.Text;
-            fieldbyname('nom_p').Value := NameProduitGEdt.Text;
+            fieldbyname('nom_p').AsWideString := NameProduitGEdt.Text;
+            fieldbyname('detail_p').AsWideString := DetailProduitGMem.Text;
             fieldbyname('code_famp').Value := FamP;
             fieldbyname('code_sfamp').Value := FamSP;
             fieldbyname('code_mrkp').AsInteger := MarkP;

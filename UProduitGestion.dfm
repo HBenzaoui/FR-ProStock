@@ -30,7 +30,7 @@ object ProduitGestionF: TProduitGestionF
     Top = 0
     Width = 662
     Height = 668
-    ActivePage = PlusInfoClientGTB
+    ActivePage = GeneralClientGTB
     Align = alClient
     DoubleBuffered = True
     Font.Charset = DEFAULT_CHARSET
@@ -63,7 +63,7 @@ object ProduitGestionF: TProduitGestionF
           633)
         object FamilleProduitGLbl: TLabel
           Left = 36
-          Top = 110
+          Top = 162
           Width = 51
           Height = 17
           Caption = 'Famille:'
@@ -95,7 +95,7 @@ object ProduitGestionF: TProduitGestionF
         end
         object NameProduitGLbl: TLabel
           Left = 2
-          Top = 66
+          Top = 63
           Width = 81
           Height = 17
           Caption = 'D'#233'signation:'
@@ -111,7 +111,7 @@ object ProduitGestionF: TProduitGestionF
         end
         object PrixAHTProduitLbl: TLabel
           Left = 24
-          Top = 310
+          Top = 358
           Width = 50
           Height = 17
           Caption = 'Prix HT:'
@@ -127,9 +127,9 @@ object ProduitGestionF: TProduitGestionF
         end
         object RequiredStarProduitGLbl: TLabel
           Left = 629
-          Top = 64
+          Top = 65
           Width = 7
-          Height = 22
+          Height = 15
           Caption = '*'
           Color = clBtnFace
           Font.Charset = DEFAULT_CHARSET
@@ -143,7 +143,7 @@ object ProduitGestionF: TProduitGestionF
         end
         object RequiredProduitGlbl: TLabel
           Left = 257
-          Top = 42
+          Top = 41
           Width = 203
           Height = 15
           AutoSize = False
@@ -162,7 +162,7 @@ object ProduitGestionF: TProduitGestionF
         end
         object Label1: TLabel
           Left = 239
-          Top = 110
+          Top = 162
           Width = 65
           Height = 17
           Caption = 'S.Famille:'
@@ -178,7 +178,7 @@ object ProduitGestionF: TProduitGestionF
         end
         object Label2: TLabel
           Left = 49
-          Top = 155
+          Top = 207
           Width = 37
           Height = 17
           Caption = 'Unit'#233':'
@@ -194,7 +194,7 @@ object ProduitGestionF: TProduitGestionF
         end
         object Label3: TLabel
           Left = 227
-          Top = 155
+          Top = 207
           Width = 30
           Height = 17
           Caption = 'TVA:'
@@ -210,7 +210,7 @@ object ProduitGestionF: TProduitGestionF
         end
         object Label4: TLabel
           Left = 13
-          Top = 198
+          Top = 250
           Width = 73
           Height = 17
           Caption = 'P'#233'rissable:'
@@ -226,7 +226,7 @@ object ProduitGestionF: TProduitGestionF
         end
         object PerProduitGLbl: TLabel
           Left = 140
-          Top = 202
+          Top = 254
           Width = 19
           Height = 14
           Caption = 'Non'
@@ -243,7 +243,7 @@ object ProduitGestionF: TProduitGestionF
         end
         object DatePerProduitGLbl: TLabel
           Left = 221
-          Top = 198
+          Top = 250
           Width = 35
           Height = 17
           Caption = 'Date:'
@@ -260,7 +260,7 @@ object ProduitGestionF: TProduitGestionF
         end
         object AlertJoursProduitLbl: TLabel
           Left = 406
-          Top = 198
+          Top = 250
           Width = 97
           Height = 17
           Caption = 'M'#39'avertir avant:'
@@ -277,7 +277,7 @@ object ProduitGestionF: TProduitGestionF
         end
         object AlertJoursProduitLbl2: TLabel
           Left = 608
-          Top = 200
+          Top = 252
           Width = 33
           Height = 15
           Caption = 'Jours'
@@ -294,7 +294,7 @@ object ProduitGestionF: TProduitGestionF
         end
         object PrixATTCProduitLbl: TLabel
           Left = 17
-          Top = 374
+          Top = 422
           Width = 62
           Height = 17
           Caption = 'Prix TTC:'
@@ -310,7 +310,7 @@ object ProduitGestionF: TProduitGestionF
         end
         object Label10: TLabel
           Left = 73
-          Top = 246
+          Top = 294
           Width = 90
           Height = 19
           Caption = 'Prix D'#39'Achat'
@@ -326,7 +326,7 @@ object ProduitGestionF: TProduitGestionF
         end
         object Label11: TLabel
           Left = 349
-          Top = 285
+          Top = 333
           Width = 43
           Height = 16
           Caption = 'Prix HT'
@@ -342,7 +342,7 @@ object ProduitGestionF: TProduitGestionF
         end
         object Label12: TLabel
           Left = 469
-          Top = 285
+          Top = 333
           Width = 50
           Height = 16
           Caption = 'Prix TTC'
@@ -358,7 +358,7 @@ object ProduitGestionF: TProduitGestionF
         end
         object Label13: TLabel
           Left = 394
-          Top = 246
+          Top = 294
           Width = 100
           Height = 19
           Caption = 'Prix De Vente'
@@ -374,7 +374,7 @@ object ProduitGestionF: TProduitGestionF
         end
         object Label14: TLabel
           Left = 574
-          Top = 285
+          Top = 333
           Width = 36
           Height = 16
           Caption = 'Marge'
@@ -390,7 +390,7 @@ object ProduitGestionF: TProduitGestionF
         end
         object Label15: TLabel
           Left = 272
-          Top = 311
+          Top = 359
           Width = 37
           Height = 16
           Caption = 'Detail:'
@@ -406,7 +406,7 @@ object ProduitGestionF: TProduitGestionF
         end
         object Label16: TLabel
           Left = 240
-          Top = 344
+          Top = 392
           Width = 64
           Height = 16
           Caption = 'Revendeur:'
@@ -422,7 +422,7 @@ object ProduitGestionF: TProduitGestionF
         end
         object Label17: TLabel
           Left = 276
-          Top = 376
+          Top = 424
           Width = 32
           Height = 16
           Caption = 'Gros:'
@@ -438,7 +438,7 @@ object ProduitGestionF: TProduitGestionF
         end
         object Label18: TLabel
           Left = 262
-          Top = 408
+          Top = 456
           Width = 46
           Height = 16
           Caption = 'Autre 1:'
@@ -454,7 +454,7 @@ object ProduitGestionF: TProduitGestionF
         end
         object Label19: TLabel
           Left = 262
-          Top = 440
+          Top = 488
           Width = 46
           Height = 16
           Caption = 'Autre 2:'
@@ -470,7 +470,7 @@ object ProduitGestionF: TProduitGestionF
         end
         object Label20: TLabel
           Left = 626
-          Top = 312
+          Top = 360
           Width = 13
           Height = 18
           Caption = '%'
@@ -486,7 +486,7 @@ object ProduitGestionF: TProduitGestionF
         end
         object Label21: TLabel
           Left = 626
-          Top = 344
+          Top = 392
           Width = 13
           Height = 18
           Caption = '%'
@@ -502,7 +502,7 @@ object ProduitGestionF: TProduitGestionF
         end
         object Label22: TLabel
           Left = 626
-          Top = 377
+          Top = 425
           Width = 13
           Height = 18
           Caption = '%'
@@ -518,7 +518,7 @@ object ProduitGestionF: TProduitGestionF
         end
         object Label23: TLabel
           Left = 626
-          Top = 408
+          Top = 456
           Width = 13
           Height = 18
           Caption = '%'
@@ -534,7 +534,7 @@ object ProduitGestionF: TProduitGestionF
         end
         object Label24: TLabel
           Left = 626
-          Top = 440
+          Top = 488
           Width = 13
           Height = 18
           Caption = '%'
@@ -550,7 +550,7 @@ object ProduitGestionF: TProduitGestionF
         end
         object Label25: TLabel
           Left = 3
-          Top = 496
+          Top = 545
           Width = 77
           Height = 17
           Caption = 'Stock Initial:'
@@ -566,7 +566,7 @@ object ProduitGestionF: TProduitGestionF
         end
         object Label26: TLabel
           Left = 464
-          Top = 496
+          Top = 545
           Width = 45
           Height = 17
           Caption = 'Alerte :'
@@ -582,7 +582,7 @@ object ProduitGestionF: TProduitGestionF
         end
         object Label27: TLabel
           Left = 214
-          Top = 496
+          Top = 545
           Width = 88
           Height = 17
           Caption = 'Stock Actuel :'
@@ -596,25 +596,9 @@ object ProduitGestionF: TProduitGestionF
           ParentFont = False
           StyleElements = []
         end
-        object Label28: TLabel
-          Left = 3
-          Top = 543
-          Width = 82
-          Height = 17
-          Caption = 'Fournisseur:'
-          Color = 4207405
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = 4207405
-          Font.Height = -15
-          Font.Name = 'Roboto'
-          Font.Style = []
-          ParentColor = False
-          ParentFont = False
-          StyleElements = []
-        end
         object Label29: TLabel
           Left = 341
-          Top = 156
+          Top = 208
           Width = 13
           Height = 18
           Caption = '%'
@@ -678,7 +662,7 @@ object ProduitGestionF: TProduitGestionF
         end
         object AddSousFamilleProduitGBtn: TAdvToolButton
           Left = 422
-          Top = 106
+          Top = 158
           Width = 26
           Height = 26
           Cursor = crHandPoint
@@ -710,7 +694,7 @@ object ProduitGestionF: TProduitGestionF
         end
         object AddFamilleProduitGBtn: TAdvToolButton
           Left = 207
-          Top = 106
+          Top = 158
           Width = 26
           Height = 26
           Cursor = crHandPoint
@@ -742,7 +726,7 @@ object ProduitGestionF: TProduitGestionF
         end
         object AddUniteProduitGBtn: TAdvToolButton
           Left = 169
-          Top = 152
+          Top = 204
           Width = 26
           Height = 26
           Cursor = crHandPoint
@@ -772,41 +756,9 @@ object ProduitGestionF: TProduitGestionF
           Version = '1.7.2.0'
           TMSStyle = 0
         end
-        object AddFourProduitGBtn: TAdvToolButton
-          Left = 627
-          Top = 539
-          Width = 26
-          Height = 26
-          Cursor = crHandPoint
-          AutoThemeAdapt = False
-          BorderColor = clWhite
-          BorderDownColor = 7854350
-          BorderHotColor = 15970832
-          Color = clWhite
-          ColorDown = 7854350
-          ColorHot = clBtnFace
-          ColorChecked = clNone
-          DropDownSplit = False
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = 4207405
-          Font.Height = 18
-          Font.Name = 'Roboto'
-          Font.Style = []
-          ImageIndex = 10
-          Images = MainForm.PanelIcons24
-          ParentFont = False
-          ParentShowHint = False
-          Rounded = True
-          Shaded = False
-          ShowHint = True
-          Spacing = -1
-          OnClick = AddFourProduitGBtnClick
-          Version = '1.7.2.0'
-          TMSStyle = 0
-        end
         object ShowCalculaturProduitGBtn: TAdvToolButton
           Left = 601
-          Top = 244
+          Top = 292
           Width = 26
           Height = 26
           Cursor = crHandPoint
@@ -890,7 +842,7 @@ object ProduitGestionF: TProduitGestionF
         end
         object ShowKeyBoardProduitGBtn: TAdvToolButton
           Left = 627
-          Top = 244
+          Top = 292
           Width = 26
           Height = 26
           Cursor = crHandPoint
@@ -922,7 +874,7 @@ object ProduitGestionF: TProduitGestionF
         end
         object PMPProduitLbl: TLabel
           Left = 34
-          Top = 439
+          Top = 487
           Width = 41
           Height = 17
           Caption = 'P.M.P:'
@@ -938,7 +890,7 @@ object ProduitGestionF: TProduitGestionF
         end
         object MarkProduitGLbl: TLabel
           Left = 451
-          Top = 110
+          Top = 162
           Width = 52
           Height = 17
           Caption = 'Marque:'
@@ -954,7 +906,7 @@ object ProduitGestionF: TProduitGestionF
         end
         object AddMarkProduitGBtn: TAdvToolButton
           Left = 627
-          Top = 106
+          Top = 158
           Width = 26
           Height = 26
           Cursor = crHandPoint
@@ -984,9 +936,25 @@ object ProduitGestionF: TProduitGestionF
           Version = '1.7.2.0'
           TMSStyle = 0
         end
+        object Label6: TLabel
+          Left = 34
+          Top = 101
+          Width = 49
+          Height = 17
+          Caption = 'D'#233'tails:'
+          Color = 4207405
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 4207405
+          Font.Height = -15
+          Font.Name = 'Roboto'
+          Font.Style = []
+          ParentColor = False
+          ParentFont = False
+          StyleElements = []
+        end
         object NameProduitGErrorP: TPanel
           Left = 90
-          Top = 60
+          Top = 57
           Width = 535
           Height = 30
           BevelOuter = bvNone
@@ -997,13 +965,13 @@ object ProduitGestionF: TProduitGestionF
           ParentBackground = False
           ParentCtl3D = False
           ShowCaption = False
-          TabOrder = 13
+          TabOrder = 34
           Visible = False
           StyleElements = []
         end
         object LineP: TPanel
           Left = 0
-          Top = 236
+          Top = 288
           Width = 661
           Height = 1
           Anchors = [akLeft, akTop, akRight]
@@ -1012,12 +980,12 @@ object ProduitGestionF: TProduitGestionF
           DoubleBuffered = True
           ParentBackground = False
           ParentDoubleBuffered = False
-          TabOrder = 9
+          TabOrder = 32
           StyleElements = []
         end
         object PrixAHTProduitEdt: TEdit
           Left = 85
-          Top = 307
+          Top = 355
           Width = 114
           Height = 26
           Alignment = taRightJustify
@@ -1030,7 +998,7 @@ object ProduitGestionF: TProduitGestionF
           MaxLength = 14
           ParentDoubleBuffered = False
           ParentFont = False
-          TabOrder = 10
+          TabOrder = 12
           OnChange = PrixAHTProduitEdtChange
           OnClick = PrixAHTProduitEdtClick
           OnExit = PrixAHTProduitEdtExit
@@ -1039,7 +1007,7 @@ object ProduitGestionF: TProduitGestionF
         end
         object NameProduitGEdt: TEdit
           Left = 92
-          Top = 62
+          Top = 59
           Width = 531
           Height = 26
           BevelInner = bvSpace
@@ -1064,7 +1032,7 @@ object ProduitGestionF: TProduitGestionF
         end
         object FamilleProduitGCbx: TComboBox
           Left = 92
-          Top = 106
+          Top = 158
           Width = 115
           Height = 26
           BevelEdges = []
@@ -1076,13 +1044,13 @@ object ProduitGestionF: TProduitGestionF
           Font.Style = []
           ItemHeight = 20
           ParentFont = False
-          TabOrder = 3
+          TabOrder = 4
           OnEnter = FamilleProduitGCbxEnter
           OnExit = FamilleProduitGCbxExit
         end
         object SFamilleProduitGCbx: TComboBox
           Left = 307
-          Top = 106
+          Top = 158
           Width = 115
           Height = 26
           Style = csOwnerDrawVariable
@@ -1093,13 +1061,13 @@ object ProduitGestionF: TProduitGestionF
           Font.Style = []
           ItemHeight = 20
           ParentFont = False
-          TabOrder = 4
+          TabOrder = 5
           OnEnter = SFamilleProduitGCbxEnter
           OnExit = SFamilleProduitGCbxExit
         end
         object UniteProduitGCbx: TComboBox
           Left = 92
-          Top = 152
+          Top = 204
           Width = 74
           Height = 26
           Font.Charset = DEFAULT_CHARSET
@@ -1108,13 +1076,13 @@ object ProduitGestionF: TProduitGestionF
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
           ParentFont = False
-          TabOrder = 5
+          TabOrder = 7
           OnEnter = UniteProduitGCbxEnter
           OnExit = UniteProduitGCbxExit
         end
         object TVAProduitGCbx: TComboBox
           Left = 262
-          Top = 152
+          Top = 204
           Width = 74
           Height = 26
           BiDiMode = bdLeftToRight
@@ -1127,7 +1095,7 @@ object ProduitGestionF: TProduitGestionF
           MaxLength = 3
           ParentBiDiMode = False
           ParentFont = False
-          TabOrder = 6
+          TabOrder = 8
           Text = '20'
           OnChange = TVAProduitGCbxChange
           OnKeyDown = TVAProduitGCbxKeyDown
@@ -1139,7 +1107,7 @@ object ProduitGestionF: TProduitGestionF
         end
         object PerProduitGSlider: TsSlider
           Left = 92
-          Top = 200
+          Top = 252
           Width = 40
           Height = 16
           BevelOuter = bvNone
@@ -1155,7 +1123,7 @@ object ProduitGestionF: TProduitGestionF
           ParentBackground = False
           ParentCtl3D = False
           ParentFont = False
-          TabOrder = 7
+          TabOrder = 9
           TabStop = True
           BoundLabel.Caption = 'sSlider1'
           BoundLabel.Layout = sclBottomCenter
@@ -1171,7 +1139,7 @@ object ProduitGestionF: TProduitGestionF
         end
         object AlertJoursProduitEdt: TEdit
           Left = 517
-          Top = 195
+          Top = 247
           Width = 85
           Height = 26
           Alignment = taCenter
@@ -1186,13 +1154,13 @@ object ProduitGestionF: TProduitGestionF
           NumbersOnly = True
           ParentDoubleBuffered = False
           ParentFont = False
-          TabOrder = 8
+          TabOrder = 11
           Text = '0'
           StyleElements = []
         end
         object PrixATTCProduitEdt: TEdit
           Left = 85
-          Top = 371
+          Top = 419
           Width = 114
           Height = 26
           Alignment = taRightJustify
@@ -1205,7 +1173,7 @@ object ProduitGestionF: TProduitGestionF
           MaxLength = 14
           ParentDoubleBuffered = False
           ParentFont = False
-          TabOrder = 11
+          TabOrder = 13
           OnChange = PrixAHTProduitEdtChange
           OnClick = PrixATTCProduitEdtClick
           OnExit = PrixATTCProduitEdtExit
@@ -1214,7 +1182,7 @@ object ProduitGestionF: TProduitGestionF
         end
         object LineP3: TPanel
           Left = 86
-          Top = 270
+          Top = 318
           Width = 60
           Height = 1
           Anchors = [akLeft, akTop, akRight]
@@ -1223,12 +1191,12 @@ object ProduitGestionF: TProduitGestionF
           DoubleBuffered = True
           ParentBackground = False
           ParentDoubleBuffered = False
-          TabOrder = 12
+          TabOrder = 33
           StyleElements = []
         end
         object PrixVHTDProduitEdt: TEdit
           Left = 314
-          Top = 307
+          Top = 355
           Width = 114
           Height = 26
           Alignment = taRightJustify
@@ -1251,7 +1219,7 @@ object ProduitGestionF: TProduitGestionF
         end
         object PrixVTTCDProduitEdt: TEdit
           Left = 438
-          Top = 307
+          Top = 355
           Width = 114
           Height = 26
           Alignment = taRightJustify
@@ -1274,7 +1242,7 @@ object ProduitGestionF: TProduitGestionF
         end
         object LineP4: TPanel
           Left = 406
-          Top = 271
+          Top = 319
           Width = 71
           Height = 1
           Anchors = [akLeft, akTop, akRight]
@@ -1283,12 +1251,12 @@ object ProduitGestionF: TProduitGestionF
           DoubleBuffered = True
           ParentBackground = False
           ParentDoubleBuffered = False
-          TabOrder = 29
+          TabOrder = 35
           StyleElements = []
         end
         object MargeDProduitEdt: TEdit
           Left = 563
-          Top = 307
+          Top = 355
           Width = 60
           Height = 26
           Alignment = taCenter
@@ -1302,7 +1270,7 @@ object ProduitGestionF: TProduitGestionF
           MaxLength = 5
           ParentDoubleBuffered = False
           ParentFont = False
-          TabOrder = 24
+          TabOrder = 16
           StyleElements = [seClient, seBorder]
           OnChange = MargeDProduitEdtChange
           OnClick = MargeDProduitEdtClick
@@ -1311,30 +1279,7 @@ object ProduitGestionF: TProduitGestionF
         end
         object PrixVHTRProduitEdt: TEdit
           Left = 314
-          Top = 339
-          Width = 114
-          Height = 26
-          Alignment = taRightJustify
-          DoubleBuffered = True
-          Enabled = False
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = 18
-          Font.Name = 'Helvetica LT Std'
-          Font.Style = []
-          MaxLength = 14
-          ParentDoubleBuffered = False
-          ParentFont = False
-          TabOrder = 16
-          OnChange = PrixVHTRProduitEdtChange
-          OnClick = PrixVHTRProduitEdtClick
-          OnExit = PrixVHTRProduitEdtExit
-          OnKeyDown = PrixVHTDProduitEdtKeyDown
-          OnKeyPress = PrixVHTRProduitEdtKeyPress
-        end
-        object PrixVTTCRProduitEdt: TEdit
-          Left = 438
-          Top = 339
+          Top = 387
           Width = 114
           Height = 26
           Alignment = taRightJustify
@@ -1350,36 +1295,14 @@ object ProduitGestionF: TProduitGestionF
           ParentFont = False
           TabOrder = 17
           OnChange = PrixVHTRProduitEdtChange
-          OnClick = PrixVTTCRProduitEdtClick
-          OnExit = PrixVTTCRProduitEdtExit
+          OnClick = PrixVHTRProduitEdtClick
+          OnExit = PrixVHTRProduitEdtExit
           OnKeyDown = PrixVHTDProduitEdtKeyDown
-          OnKeyPress = PrixVTTCRProduitEdtKeyPress
+          OnKeyPress = PrixVHTRProduitEdtKeyPress
         end
-        object MargeRProduitEdt: TEdit
-          Left = 563
-          Top = 339
-          Width = 60
-          Height = 26
-          Alignment = taCenter
-          DoubleBuffered = True
-          Enabled = False
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = 18
-          Font.Name = 'Helvetica LT Std'
-          Font.Style = []
-          MaxLength = 5
-          ParentDoubleBuffered = False
-          ParentFont = False
-          TabOrder = 25
-          OnChange = MargeRProduitEdtChange
-          OnClick = MargeRProduitEdtClick
-          OnKeyDown = PrixVHTDProduitEdtKeyDown
-          OnKeyPress = MargeRProduitEdtKeyPress
-        end
-        object PrixVHTGProduitEdt: TEdit
-          Left = 314
-          Top = 371
+        object PrixVTTCRProduitEdt: TEdit
+          Left = 438
+          Top = 387
           Width = 114
           Height = 26
           Alignment = taRightJustify
@@ -1394,38 +1317,15 @@ object ProduitGestionF: TProduitGestionF
           ParentDoubleBuffered = False
           ParentFont = False
           TabOrder = 18
-          OnChange = PrixVHTGProduitEdtChange
-          OnClick = PrixVHTGProduitEdtClick
-          OnExit = PrixVHTGProduitEdtExit
+          OnChange = PrixVHTRProduitEdtChange
+          OnClick = PrixVTTCRProduitEdtClick
+          OnExit = PrixVTTCRProduitEdtExit
           OnKeyDown = PrixVHTDProduitEdtKeyDown
-          OnKeyPress = PrixVHTGProduitEdtKeyPress
+          OnKeyPress = PrixVTTCRProduitEdtKeyPress
         end
-        object PrixVTTCGProduitEdt: TEdit
-          Left = 438
-          Top = 371
-          Width = 114
-          Height = 26
-          Alignment = taRightJustify
-          DoubleBuffered = True
-          Enabled = False
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = 18
-          Font.Name = 'Helvetica LT Std'
-          Font.Style = []
-          MaxLength = 14
-          ParentDoubleBuffered = False
-          ParentFont = False
-          TabOrder = 19
-          OnChange = PrixVHTGProduitEdtChange
-          OnClick = PrixVTTCGProduitEdtClick
-          OnExit = PrixVTTCGProduitEdtExit
-          OnKeyDown = PrixVHTDProduitEdtKeyDown
-          OnKeyPress = PrixVTTCGProduitEdtKeyPress
-        end
-        object MargeGProduitEdt: TEdit
+        object MargeRProduitEdt: TEdit
           Left = 563
-          Top = 371
+          Top = 387
           Width = 60
           Height = 26
           Alignment = taCenter
@@ -1439,15 +1339,15 @@ object ProduitGestionF: TProduitGestionF
           MaxLength = 5
           ParentDoubleBuffered = False
           ParentFont = False
-          TabOrder = 26
-          OnChange = MargeGProduitEdtChange
-          OnClick = MargeGProduitEdtClick
+          TabOrder = 19
+          OnChange = MargeRProduitEdtChange
+          OnClick = MargeRProduitEdtClick
           OnKeyDown = PrixVHTDProduitEdtKeyDown
-          OnKeyPress = MargeGProduitEdtKeyPress
+          OnKeyPress = MargeRProduitEdtKeyPress
         end
-        object PrixVHTA1ProduitEdt: TEdit
+        object PrixVHTGProduitEdt: TEdit
           Left = 314
-          Top = 403
+          Top = 419
           Width = 114
           Height = 26
           Alignment = taRightJustify
@@ -1462,15 +1362,15 @@ object ProduitGestionF: TProduitGestionF
           ParentDoubleBuffered = False
           ParentFont = False
           TabOrder = 20
-          OnChange = PrixVHTA1ProduitEdtChange
-          OnClick = PrixVHTA1ProduitEdtClick
-          OnExit = PrixVHTA1ProduitEdtExit
+          OnChange = PrixVHTGProduitEdtChange
+          OnClick = PrixVHTGProduitEdtClick
+          OnExit = PrixVHTGProduitEdtExit
           OnKeyDown = PrixVHTDProduitEdtKeyDown
-          OnKeyPress = PrixVHTA1ProduitEdtKeyPress
+          OnKeyPress = PrixVHTGProduitEdtKeyPress
         end
-        object PrixVTTCA1ProduitEdt: TEdit
+        object PrixVTTCGProduitEdt: TEdit
           Left = 438
-          Top = 403
+          Top = 419
           Width = 114
           Height = 26
           Alignment = taRightJustify
@@ -1485,15 +1385,15 @@ object ProduitGestionF: TProduitGestionF
           ParentDoubleBuffered = False
           ParentFont = False
           TabOrder = 21
-          OnChange = PrixVHTA1ProduitEdtChange
-          OnClick = PrixVTTCA1ProduitEdtClick
-          OnExit = PrixVTTCA1ProduitEdtExit
+          OnChange = PrixVHTGProduitEdtChange
+          OnClick = PrixVTTCGProduitEdtClick
+          OnExit = PrixVTTCGProduitEdtExit
           OnKeyDown = PrixVHTDProduitEdtKeyDown
-          OnKeyPress = PrixVTTCA1ProduitEdtKeyPress
+          OnKeyPress = PrixVTTCGProduitEdtKeyPress
         end
-        object MargeA1ProduitEdt: TEdit
+        object MargeGProduitEdt: TEdit
           Left = 563
-          Top = 403
+          Top = 419
           Width = 60
           Height = 26
           Alignment = taCenter
@@ -1507,38 +1407,15 @@ object ProduitGestionF: TProduitGestionF
           MaxLength = 5
           ParentDoubleBuffered = False
           ParentFont = False
-          TabOrder = 27
-          OnChange = MargeA1ProduitEdtChange
-          OnClick = MargeA1ProduitEdtClick
-          OnKeyDown = PrixVHTDProduitEdtKeyDown
-          OnKeyPress = MargeA1ProduitEdtKeyPress
-        end
-        object PrixVHTA2ProduitEdt: TEdit
-          Left = 314
-          Top = 435
-          Width = 114
-          Height = 26
-          Alignment = taRightJustify
-          DoubleBuffered = True
-          Enabled = False
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = 18
-          Font.Name = 'Helvetica LT Std'
-          Font.Style = []
-          MaxLength = 14
-          ParentDoubleBuffered = False
-          ParentFont = False
           TabOrder = 22
-          OnChange = PrixVHTA2ProduitEdtChange
-          OnClick = PrixVHTA2ProduitEdtClick
-          OnExit = PrixVHTA2ProduitEdtExit
+          OnChange = MargeGProduitEdtChange
+          OnClick = MargeGProduitEdtClick
           OnKeyDown = PrixVHTDProduitEdtKeyDown
-          OnKeyPress = PrixVHTA2ProduitEdtKeyPress
+          OnKeyPress = MargeGProduitEdtKeyPress
         end
-        object PrixVTTCA2ProduitEdt: TEdit
-          Left = 438
-          Top = 435
+        object PrixVHTA1ProduitEdt: TEdit
+          Left = 314
+          Top = 451
           Width = 114
           Height = 26
           Alignment = taRightJustify
@@ -1553,6 +1430,97 @@ object ProduitGestionF: TProduitGestionF
           ParentDoubleBuffered = False
           ParentFont = False
           TabOrder = 23
+          OnChange = PrixVHTA1ProduitEdtChange
+          OnClick = PrixVHTA1ProduitEdtClick
+          OnExit = PrixVHTA1ProduitEdtExit
+          OnKeyDown = PrixVHTDProduitEdtKeyDown
+          OnKeyPress = PrixVHTA1ProduitEdtKeyPress
+        end
+        object PrixVTTCA1ProduitEdt: TEdit
+          Left = 438
+          Top = 451
+          Width = 114
+          Height = 26
+          Alignment = taRightJustify
+          DoubleBuffered = True
+          Enabled = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = 18
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = []
+          MaxLength = 14
+          ParentDoubleBuffered = False
+          ParentFont = False
+          TabOrder = 24
+          OnChange = PrixVHTA1ProduitEdtChange
+          OnClick = PrixVTTCA1ProduitEdtClick
+          OnExit = PrixVTTCA1ProduitEdtExit
+          OnKeyDown = PrixVHTDProduitEdtKeyDown
+          OnKeyPress = PrixVTTCA1ProduitEdtKeyPress
+        end
+        object MargeA1ProduitEdt: TEdit
+          Left = 563
+          Top = 451
+          Width = 60
+          Height = 26
+          Alignment = taCenter
+          DoubleBuffered = True
+          Enabled = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = 18
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = []
+          MaxLength = 5
+          ParentDoubleBuffered = False
+          ParentFont = False
+          TabOrder = 25
+          OnChange = MargeA1ProduitEdtChange
+          OnClick = MargeA1ProduitEdtClick
+          OnKeyDown = PrixVHTDProduitEdtKeyDown
+          OnKeyPress = MargeA1ProduitEdtKeyPress
+        end
+        object PrixVHTA2ProduitEdt: TEdit
+          Left = 314
+          Top = 483
+          Width = 114
+          Height = 26
+          Alignment = taRightJustify
+          DoubleBuffered = True
+          Enabled = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = 18
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = []
+          MaxLength = 14
+          ParentDoubleBuffered = False
+          ParentFont = False
+          TabOrder = 26
+          OnChange = PrixVHTA2ProduitEdtChange
+          OnClick = PrixVHTA2ProduitEdtClick
+          OnExit = PrixVHTA2ProduitEdtExit
+          OnKeyDown = PrixVHTDProduitEdtKeyDown
+          OnKeyPress = PrixVHTA2ProduitEdtKeyPress
+        end
+        object PrixVTTCA2ProduitEdt: TEdit
+          Left = 438
+          Top = 483
+          Width = 114
+          Height = 26
+          Alignment = taRightJustify
+          DoubleBuffered = True
+          Enabled = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = 18
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = []
+          MaxLength = 14
+          ParentDoubleBuffered = False
+          ParentFont = False
+          TabOrder = 27
           OnChange = PrixVHTA2ProduitEdtChange
           OnClick = PrixVTTCA2ProduitEdtClick
           OnExit = PrixVTTCA2ProduitEdtExit
@@ -1561,7 +1529,7 @@ object ProduitGestionF: TProduitGestionF
         end
         object MargeA2ProduitEdt: TEdit
           Left = 563
-          Top = 435
+          Top = 483
           Width = 60
           Height = 26
           Alignment = taCenter
@@ -1583,7 +1551,7 @@ object ProduitGestionF: TProduitGestionF
         end
         object LineP2: TPanel
           Left = 0
-          Top = 475
+          Top = 527
           Width = 661
           Height = 1
           Anchors = [akLeft, akTop, akRight]
@@ -1592,12 +1560,12 @@ object ProduitGestionF: TProduitGestionF
           DoubleBuffered = True
           ParentBackground = False
           ParentDoubleBuffered = False
-          TabOrder = 30
+          TabOrder = 36
           StyleElements = []
         end
         object StockINProduitEdt: TEdit
           Left = 92
-          Top = 493
+          Top = 542
           Width = 108
           Height = 26
           Alignment = taCenter
@@ -1609,12 +1577,12 @@ object ProduitGestionF: TProduitGestionF
           Font.Style = []
           ParentDoubleBuffered = False
           ParentFont = False
-          TabOrder = 31
+          TabOrder = 29
           OnKeyDown = PrixVHTDProduitEdtKeyDown
         end
         object StockAlertProduitEdt: TEdit
           Left = 515
-          Top = 493
+          Top = 542
           Width = 108
           Height = 26
           Alignment = taCenter
@@ -1626,12 +1594,12 @@ object ProduitGestionF: TProduitGestionF
           Font.Style = []
           ParentDoubleBuffered = False
           ParentFont = False
-          TabOrder = 32
+          TabOrder = 30
           OnKeyDown = PrixVHTDProduitEdtKeyDown
         end
         object StockActuelProduitEdt: TEdit
           Left = 314
-          Top = 493
+          Top = 542
           Width = 114
           Height = 26
           TabStop = False
@@ -1647,28 +1615,12 @@ object ProduitGestionF: TProduitGestionF
           ParentDoubleBuffered = False
           ParentFont = False
           ReadOnly = True
-          TabOrder = 33
+          TabOrder = 37
           Text = '0'
-        end
-        object FournisseurProduitGCbx: TComboBox
-          Left = 92
-          Top = 539
-          Width = 531
-          Height = 26
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = 18
-          Font.Name = 'Helvetica LT Std'
-          Font.Style = []
-          ParentFont = False
-          Sorted = True
-          TabOrder = 34
-          OnDropDown = FournisseurProduitGCbxEnter
-          OnEnter = FournisseurProduitGCbxEnter
         end
         object LineP5: TPanel
           Left = 220
-          Top = 236
+          Top = 288
           Width = 1
           Height = 239
           BevelOuter = bvNone
@@ -1676,7 +1628,7 @@ object ProduitGestionF: TProduitGestionF
           DoubleBuffered = True
           ParentBackground = False
           ParentDoubleBuffered = False
-          TabOrder = 35
+          TabOrder = 38
           StyleElements = []
         end
         object RefProduitGErrorP: TPanel
@@ -1692,7 +1644,7 @@ object ProduitGestionF: TProduitGestionF
           ParentBackground = False
           ParentCtl3D = False
           ShowCaption = False
-          TabOrder = 36
+          TabOrder = 39
           Visible = False
           StyleElements = []
         end
@@ -1715,7 +1667,7 @@ object ProduitGestionF: TProduitGestionF
         end
         object DatePerProduitGD: TDateTimePicker
           Left = 262
-          Top = 195
+          Top = 247
           Width = 121
           Height = 24
           Date = 42435.000000000000000000
@@ -1728,7 +1680,7 @@ object ProduitGestionF: TProduitGestionF
           Font.Name = 'Roboto'
           Font.Style = []
           ParentFont = False
-          TabOrder = 37
+          TabOrder = 10
           OnKeyUp = DatePerProduitGDKeyUp
         end
         object CodeBarProduitGEdt: TEdit
@@ -1754,7 +1706,7 @@ object ProduitGestionF: TProduitGestionF
         end
         object PMPProduitEdt: TEdit
           Left = 85
-          Top = 435
+          Top = 483
           Width = 114
           Height = 26
           TabStop = False
@@ -1770,12 +1722,12 @@ object ProduitGestionF: TProduitGestionF
           ParentDoubleBuffered = False
           ParentFont = False
           ReadOnly = True
-          TabOrder = 38
+          TabOrder = 31
           Text = '0'
         end
         object MarkProduitGCbx: TComboBox
           Left = 508
-          Top = 106
+          Top = 158
           Width = 115
           Height = 26
           Style = csOwnerDrawFixed
@@ -1786,9 +1738,23 @@ object ProduitGestionF: TProduitGestionF
           Font.Style = []
           ItemHeight = 20
           ParentFont = False
-          TabOrder = 39
+          TabOrder = 6
           OnEnter = MarkProduitGCbxEnter
           OnExit = MarkProduitGCbxExit
+        end
+        object DetailProduitGMem: TMemo
+          Left = 92
+          Top = 101
+          Width = 531
+          Height = 45
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = 18
+          Font.Name = 'Roboto'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 3
+          OnChange = NSeriesProduitGMemChange
         end
       end
     end
@@ -1825,8 +1791,8 @@ object ProduitGestionF: TProduitGestionF
           StyleElements = []
         end
         object Label30: TLabel
-          Left = 18
-          Top = 168
+          Left = 17
+          Top = 147
           Width = 88
           Height = 18
           Caption = 'Localisation:'
@@ -1841,8 +1807,8 @@ object ProduitGestionF: TProduitGestionF
           StyleElements = []
         end
         object AddLocationProduitGBtn: TAdvToolButton
-          Left = 384
-          Top = 165
+          Left = 431
+          Top = 143
           Width = 26
           Height = 26
           Cursor = crHandPoint
@@ -1873,8 +1839,8 @@ object ProduitGestionF: TProduitGestionF
           TMSStyle = 0
         end
         object Label31: TLabel
-          Left = 30
-          Top = 107
+          Left = 28
+          Top = 86
           Width = 77
           Height = 18
           Caption = 'Max.Stock:'
@@ -1889,8 +1855,8 @@ object ProduitGestionF: TProduitGestionF
           StyleElements = []
         end
         object Label32: TLabel
-          Left = 33
-          Top = 47
+          Left = 32
+          Top = 26
           Width = 73
           Height = 18
           Caption = 'Min.Stock:'
@@ -2046,6 +2012,54 @@ object ProduitGestionF: TProduitGestionF
           ParentFont = False
           StyleElements = []
         end
+        object Label28: TLabel
+          Left = 8
+          Top = 205
+          Width = 97
+          Height = 17
+          Caption = 'Four. Principal:'
+          Color = 4207405
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 4207405
+          Font.Height = -15
+          Font.Name = 'Roboto'
+          Font.Style = []
+          ParentColor = False
+          ParentFont = False
+          StyleElements = []
+        end
+        object AddFourProduitGBtn: TAdvToolButton
+          Left = 431
+          Top = 200
+          Width = 26
+          Height = 26
+          Cursor = crHandPoint
+          AutoThemeAdapt = False
+          BorderColor = clWhite
+          BorderDownColor = 7854350
+          BorderHotColor = 15970832
+          Color = clWhite
+          ColorDown = 7854350
+          ColorHot = clBtnFace
+          ColorChecked = clNone
+          DropDownSplit = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 4207405
+          Font.Height = 18
+          Font.Name = 'Roboto'
+          Font.Style = []
+          ImageIndex = 10
+          Images = MainForm.PanelIcons24
+          ParentFont = False
+          ParentShowHint = False
+          Rounded = True
+          Shaded = False
+          ShowHint = True
+          Spacing = -1
+          OnClick = AddFourProduitGBtnClick
+          Version = '1.7.2.0'
+          TMSStyle = 0
+        end
         object LineP03: TPanel
           Left = 0
           Top = 246
@@ -2057,7 +2071,7 @@ object ProduitGestionF: TProduitGestionF
           DoubleBuffered = True
           ParentBackground = False
           ParentDoubleBuffered = False
-          TabOrder = 5
+          TabOrder = 6
           StyleElements = []
         end
         object ObserProduitGMem: TMemo
@@ -2071,12 +2085,12 @@ object ProduitGestionF: TProduitGestionF
           Font.Name = 'Roboto'
           Font.Style = []
           ParentFont = False
-          TabOrder = 4
+          TabOrder = 5
         end
         object LocalisationProduitGCbx: TComboBox
-          Left = 112
-          Top = 165
-          Width = 270
+          Left = 110
+          Top = 143
+          Width = 317
           Height = 26
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -2089,9 +2103,9 @@ object ProduitGestionF: TProduitGestionF
           OnEnter = LocalisationProduitGCbxEnter
         end
         object MinStockProduitGCbx: TEdit
-          Left = 112
-          Top = 44
-          Width = 126
+          Left = 110
+          Top = 22
+          Width = 132
           Height = 26
           Alignment = taRightJustify
           DoubleBuffered = True
@@ -2105,9 +2119,9 @@ object ProduitGestionF: TProduitGestionF
           TabOrder = 0
         end
         object MaxStockProduitGCbx: TEdit
-          Left = 112
-          Top = 104
-          Width = 126
+          Left = 110
+          Top = 82
+          Width = 132
           Height = 26
           Alignment = taRightJustify
           DoubleBuffered = True
@@ -2131,8 +2145,25 @@ object ProduitGestionF: TProduitGestionF
           Font.Name = 'Roboto'
           Font.Style = []
           ParentFont = False
-          TabOrder = 3
+          TabOrder = 4
           OnChange = NSeriesProduitGMemChange
+        end
+        object FournisseurProduitGCbx: TComboBox
+          Left = 111
+          Top = 201
+          Width = 317
+          Height = 26
+          Hint = 'Fournisseur principal'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = 18
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = []
+          ParentFont = False
+          Sorted = True
+          TabOrder = 3
+          OnDropDown = FournisseurProduitGCbxEnter
+          OnEnter = FournisseurProduitGCbxEnter
         end
       end
     end
@@ -2230,8 +2261,8 @@ object ProduitGestionF: TProduitGestionF
   end
   object OpenPictureDialogProduitG: TOpenPictureDialog
     Filter = 'JPEG graphics|*.jpg'
-    Left = 596
-    Top = 183
+    Left = 366
+    Top = 49
   end
   object sAlphaImageList1: TsAlphaImageList
     Height = 96
@@ -2287,8 +2318,8 @@ object ProduitGestionF: TProduitGestionF
           F5192E7DA3362F8C9E5814E362CCEC71E10457AF7009312D3C9ED0CEB16BF05A
           A7FFCE3F0F6AAD62752ECB450000000049454E44AE426082}
       end>
-    Left = 634
-    Top = 184
+    Left = 350
+    Top = 100
     Bitmap = {}
   end
 end
