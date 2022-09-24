@@ -283,17 +283,12 @@ type
     GeneralOptionGTB: TsTabSheet;
     sTabSheet7: TsTabSheet;
     AdrCompanyOptionEdt: TEdit;
-    ImageCompanyOptionImg: TsImage;
-    ImageDeleteProduitGBtn: TAdvToolButton;
-    ImageEditProduitGBtn: TAdvToolButton;
-    Label10: TLabel;
     Label6: TLabel;
     Label7: TLabel;
     Label8: TLabel;
     Label9: TLabel;
     MobCompanyOptionEdt: TEdit;
     NameCompanyOptionEdt: TEdit;
-    Shape1: TShape;
     TelCompanyOptionEdt: TEdit;
     APrintOptionGSlider: TsSlider;
     AutoImL: TLabel;
@@ -308,14 +303,6 @@ type
     FormatFOptionCodeBCbx: TComboBox;
     Label4: TLabel;
     PrixVenteListFOptionCodeBCbx: TComboBox;
-    RCCompanyGLbl: TLabel;
-    NIFCompanyGLbl: TLabel;
-    NIFCompanyGEdt: TEdit;
-    RCCompanyGEdt: TEdit;
-    NArtCompanyLbl: TLabel;
-    NArtCompanyGEdt: TEdit;
-    NISCompanyGLbl: TLabel;
-    NISCompanyGEdt: TEdit;
     Panel2: TPanel;
     Panel3: TPanel;
     Label1: TLabel;
@@ -339,8 +326,28 @@ type
     BRSdrF25: TsSlider;
     FVSdrF26: TsSlider;
     FASdrF27: TsSlider;
-    Label51: TLabel;
+    Label52: TLabel;
+    EmailCompanyOptionEdt: TEdit;
+    Label53: TLabel;
+    WebsiteCompanyOptionEdt: TEdit;
+    Label54: TLabel;
+    Adr2CompanyOptionEdt: TEdit;
     RIBCompanyGEdt: TEdit;
+    Label51: TLabel;
+    NISCompanyGEdt: TEdit;
+    NISCompanyGLbl: TLabel;
+    NArtCompanyGEdt: TEdit;
+    NArtCompanyLbl: TLabel;
+    NIFCompanyGEdt: TEdit;
+    NIFCompanyGLbl: TLabel;
+    RCCompanyGEdt: TEdit;
+    RCCompanyGLbl: TLabel;
+    sTabSheet5: TsTabSheet;
+    Shape1: TShape;
+    ImageCompanyOptionImg: TsImage;
+    Label10: TLabel;
+    ImageEditProduitGBtn: TAdvToolButton;
+    ImageDeleteProduitGBtn: TAdvToolButton;
     procedure FormShow(Sender: TObject);
     procedure OKFPrintingBtnClick(Sender: TObject);
     procedure ImageCompanyOptionImgMouseEnter(Sender: TObject);
@@ -822,42 +829,55 @@ begin
  //---------SHOW THE DATA ON THE CLIENT GESTION PANEL -----------------------------//
       with MainForm.CompanyTable do
       begin
-        if (fieldbyname('nom_comp').Value <> null) then
+        if (fieldbyname('nom_comp').AsWideString <> '') then
         begin
-         NameCompanyOptionEdt.Text := fieldbyname('nom_comp').Value;
+         NameCompanyOptionEdt.Text := fieldbyname('nom_comp').AsWideString;
         end;
-        if (fieldbyname('fix_comp').Value <> null) then
+        if (fieldbyname('fix_comp').AsString <> '') then
         begin
-         TelCompanyOptionEdt.Text := fieldbyname('fix_comp').Value;
+         TelCompanyOptionEdt.Text := fieldbyname('fix_comp').AsString;
         end;
-        if (fieldbyname('mob_comp').Value <> null) then
+        if (fieldbyname('mob_comp').AsString <> '') then
         begin
-         MobCompanyOptionEdt.Text := fieldbyname('mob_comp').Value;
+         MobCompanyOptionEdt.Text := fieldbyname('mob_comp').AsString;
         end;
-        if (fieldbyname('adr_comp').Value <> null) then
+        if (fieldbyname('adr_comp').AsWideString <> '') then
         begin
-         AdrCompanyOptionEdt.Text := fieldbyname('adr_comp').Value;
+         AdrCompanyOptionEdt.Text := fieldbyname('adr_comp').AsWideString;
         end;
-        if (fieldbyname('rc_comp').Value <> null) then
+         if (fieldbyname('adr2_comp').AsWideString <> '') then
         begin
-         RCCompanyGEdt.Text := fieldbyname('rc_comp').Value;
+         Adr2CompanyOptionEdt.Text := fieldbyname('adr2_comp').AsWideString;
         end;
-        if (fieldbyname('nif_comp').Value <> null) then
+        if (fieldbyname('email_comp').AsString <> '') then
         begin
-         NIFCompanyGEdt.Text := fieldbyname('nif_comp').Value;
+         EmailCompanyOptionEdt.Text := fieldbyname('email_comp').AsString;
         end;
-        if (fieldbyname('nart_comp').Value <> null) then
+        if (fieldbyname('website_comp').AsString <> '') then
         begin
-         NArtCompanyGEdt.Text := fieldbyname('nart_comp').Value;
+         WebsiteCompanyOptionEdt.Text := fieldbyname('website_comp').AsString;
         end;
-        if (fieldbyname('nis_comp').Value <> null) then
+        if (fieldbyname('rc_comp').AsString <> '') then
         begin
-         NISCompanyGEdt.Text := fieldbyname('nis_comp').Value;
+         RCCompanyGEdt.Text := fieldbyname('rc_comp').AsString;
         end;
-        if (fieldbyname('rib_comp').Value <> null) then
+        if (fieldbyname('nif_comp').AsString <> '') then
         begin
-         RIBCompanyGEdt.Text := fieldbyname('rib_comp').Value;
+         NIFCompanyGEdt.Text := fieldbyname('nif_comp').AsString;
         end;
+        if (fieldbyname('nart_comp').AsString <> '') then
+        begin
+         NArtCompanyGEdt.Text := fieldbyname('nart_comp').AsString;
+        end;
+        if (fieldbyname('nis_comp').AsString <> '') then
+        begin
+         NISCompanyGEdt.Text := fieldbyname('nis_comp').AsString;
+        end;
+        if (fieldbyname('rib_comp').AsString <> '') then
+        begin
+         RIBCompanyGEdt.Text := fieldbyname('rib_comp').AsString;
+        end;
+
         if (fieldbyname('logo_comp').Value <> null) then
         begin
           S := TMemoryStream.Create;
@@ -933,6 +953,9 @@ begin
             fieldbyname('fix_comp').Value := TelCompanyOptionEdt.Text;
             fieldbyname('mob_comp').Value := MobCompanyOptionEdt.Text;
             fieldbyname('adr_comp').Value := AdrCompanyOptionEdt.Text;
+            fieldbyname('adr2_comp').Value := Adr2CompanyOptionEdt.Text;
+            fieldbyname('email_comp').Value := EmailCompanyOptionEdt.Text;
+            fieldbyname('website_comp').Value := WebsiteCompanyOptionEdt.Text;
             fieldbyname('rc_comp').Value := RCCompanyGEdt.Text;
             fieldbyname('nif_comp').Value := NIFCompanyGEdt.Text;
             fieldbyname('nart_comp').Value := NArtCompanyGEdt.Text;
@@ -965,6 +988,9 @@ begin
               fieldbyname('fix_comp').Value := TelCompanyOptionEdt.Text;
               fieldbyname('mob_comp').Value := MobCompanyOptionEdt.Text;
               fieldbyname('adr_comp').Value := AdrCompanyOptionEdt.Text;
+              fieldbyname('adr2_comp').Value := Adr2CompanyOptionEdt.Text;
+              fieldbyname('email_comp').Value := EmailCompanyOptionEdt.Text;
+              fieldbyname('website_comp').Value := WebsiteCompanyOptionEdt.Text;
               fieldbyname('rc_comp').Value := RCCompanyGEdt.Text;
               fieldbyname('nif_comp').Value := NIFCompanyGEdt.Text;
               fieldbyname('nart_comp').Value := NArtCompanyGEdt.Text;
