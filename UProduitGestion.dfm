@@ -30,7 +30,7 @@ object ProduitGestionF: TProduitGestionF
     Top = 0
     Width = 662
     Height = 668
-    ActivePage = GeneralClientGTB
+    ActivePage = PlusInfoClientGTB
     Align = alClient
     DoubleBuffered = True
     Font.Charset = DEFAULT_CHARSET
@@ -2028,6 +2028,24 @@ object ProduitGestionF: TProduitGestionF
           ParentFont = False
           StyleElements = []
         end
+        object NSeriesCountProduitGLbl: TLabel
+          Left = 537
+          Top = 256
+          Width = 101
+          Height = 18
+          Alignment = taRightJustify
+          AutoSize = False
+          Caption = '0'
+          Color = 4207405
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 4207405
+          Font.Height = 18
+          Font.Name = 'Roboto'
+          Font.Style = []
+          ParentColor = False
+          ParentFont = False
+          StyleElements = []
+        end
         object LineP03: TPanel
           Left = 0
           Top = 246
@@ -2114,6 +2132,7 @@ object ProduitGestionF: TProduitGestionF
           Font.Style = []
           ParentFont = False
           TabOrder = 3
+          OnChange = NSeriesProduitGMemChange
         end
       end
     end

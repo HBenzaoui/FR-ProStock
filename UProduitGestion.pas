@@ -122,6 +122,7 @@ type
     CancelProduitGBtn: TAdvToolButton;
     OKProduitGBtn: TAdvToolButton;
     Panel1: TPanel;
+    NSeriesCountProduitGLbl: TLabel;
     procedure ShowCalculaturProduitGBtnClick(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -235,6 +236,7 @@ type
     procedure SFamilleProduitGCbxExit(Sender: TObject);
     procedure MarkProduitGCbxExit(Sender: TObject);
     procedure UniteProduitGCbxExit(Sender: TObject);
+    procedure NSeriesProduitGMemChange(Sender: TObject);
 
   private
     { Private declarations }
@@ -1016,9 +1018,12 @@ begin
     // next control
     SelectNext(Self.ActiveControl, true, true);
   // Enter key
-  if Key = VK_RETURN then
-  // next control
-  SelectNext(Self.ActiveControl, true, true);
+  if NOT (NSeriesProduitGMem.Focused) then
+  begin
+    if (Key = VK_RETURN) then
+    // next control
+    SelectNext(Self.ActiveControl, true, true);
+  end;
 
 end;
 
@@ -1071,6 +1076,10 @@ begin
       end;
 
   DatePerProduitGD.Date:=EncodeDate (YearOf(Now),MonthOf(Now),DayOf(Now));
+
+  //Update how many serial numbers it has this produit
+  NSeriesCountProduitGLbl.Caption := IntToStr(NSeriesProduitGMem.Lines.Count)
+
 end;
 
 procedure TProduitGestionF.FournisseurProduitGCbxEnter(Sender: TObject);
@@ -1402,6 +1411,12 @@ begin
   Application.HintHidePause := 5000;
   NameProduitGEdt.ShowHint := True;
   NameProduitGEdt.Hint := 'Double-cliquez ici pour afficher le clavier';
+end;
+
+procedure TProduitGestionF.NSeriesProduitGMemChange(Sender: TObject);
+begin
+  //Update how many serial numbers it has this produit
+  NSeriesCountProduitGLbl.Caption := IntToStr(NSeriesProduitGMem.Lines.Count)
 end;
 
 procedure TProduitGestionF.OKProduitGBtnClick(Sender: TObject);
@@ -2112,17 +2127,29 @@ begin
               MainForm.SQLQuery4.Active:=True;
               if NOT MainForm.SQLQuery4.IsEmpty then
               begin
-                MainForm.GstockdcConnection.ExecSQL('DELETE FROM n_series WHERE code_p = '+ IntToStr(MainForm.ProduitTable.FieldByName('code_p').AsInteger))
+                MainForm.GstockdcConnection.ExecSQL('DELETE FROM n_series WHERE code_p = '+ IntToStr(MainForm.ProduitTable.FieldByName('code_p').AsInteger)
+                +' AND code_barec IS NULL'
+                );
               end;
 
               for I := 0 to NSeriesProduitGMem.Lines.Count-1 do
               begin
                if NSeriesProduitGMem.Lines.Strings[i] <> '' then
                begin
-                 MainForm.SQLQuery4.Append;
-                 MainForm.SQLQuery4.FieldByName('nom_ns').AsString:= NSeriesProduitGMem.Lines.Strings[i];
-                 MainForm.SQLQuery4.FieldByName('code_p').AsInteger:= MainForm.ProduitTable.FieldByName('code_p').AsInteger;
-                 MainForm.SQLQuery4.Post;
+
+                  MainForm.SQLQuery4.Active:=false;
+                  MainForm.SQLQuery4.SQL.Clear;
+                  MainForm.SQLQuery4.SQL.Text:='Select * FROM n_series where code_p = '+ IntToStr(MainForm.ProduitTable.FieldByName('code_p').AsInteger)
+                  +' AND LOWER(nom_ns) LIKE LOWER ' + '('''+'%'+(NSeriesProduitGMem.Lines.Strings[i])+'%'+''')';
+                  MainForm.SQLQuery4.Active:=True;
+
+                  if  MainForm.SQLQuery4.IsEmpty then
+                  begin
+                     MainForm.SQLQuery4.Append;
+                     MainForm.SQLQuery4.FieldByName('nom_ns').AsString:= NSeriesProduitGMem.Lines.Strings[i];
+                     MainForm.SQLQuery4.FieldByName('code_p').AsInteger:= MainForm.ProduitTable.FieldByName('code_p').AsInteger;
+                     MainForm.SQLQuery4.Post;
+                  end;
                end;
               end;
               MainForm.SQLQuery4.Active:=false;
