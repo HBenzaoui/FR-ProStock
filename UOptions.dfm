@@ -237,6 +237,22 @@ object FOptions: TFOptions
         ParentFont = False
         StyleElements = []
       end
+      object Label55: TLabel
+        Left = 409
+        Top = 3
+        Width = 20
+        Height = 15
+        Caption = 'EU:'
+        Color = 4207405
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 15
+        Font.Name = 'Roboto'
+        Font.Style = []
+        ParentColor = False
+        ParentFont = False
+        StyleElements = []
+      end
       object AdrCompanyOptionEdt: TEdit
         Left = 25
         Top = 172
@@ -443,6 +459,38 @@ object FOptions: TFOptions
         ParentDoubleBuffered = False
         ParentFont = False
         TabOrder = 12
+      end
+      object IsEUOptionGSlider: TsSlider
+        Left = 435
+        Top = 3
+        Width = 37
+        Height = 15
+        BevelOuter = bvNone
+        BiDiMode = bdLeftToRight
+        Color = 2497560
+        Ctl3D = False
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 12
+        Font.Name = 'Roboto'
+        Font.Style = []
+        StyleElements = []
+        ParentBiDiMode = False
+        ParentBackground = False
+        ParentCtl3D = False
+        ParentFont = False
+        TabOrder = 13
+        BoundLabel.Caption = 'sSlider1'
+        BoundLabel.Layout = sclBottomCenter
+        FontOn.Charset = DEFAULT_CHARSET
+        FontOn.Color = 4207405
+        FontOn.Height = 12
+        FontOn.Name = 'Roboto'
+        FontOn.Style = []
+        SliderCursor = crHandPoint
+        Reversed = True
+        SliderOn = False
+        OnChanging = PoleDisplayActiveSdrChanging
       end
     end
     object sTabSheet5: TsTabSheet
@@ -7390,7 +7438,7 @@ object FOptions: TFOptions
       36)
     object OKFPrintingBtn: TAdvToolButton
       Tag = 2
-      Left = 235
+      Left = 166
       Top = 3
       Width = 187
       Height = 30

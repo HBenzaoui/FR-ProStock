@@ -348,6 +348,8 @@ type
     Label10: TLabel;
     ImageEditProduitGBtn: TAdvToolButton;
     ImageDeleteProduitGBtn: TAdvToolButton;
+    Label55: TLabel;
+    IsEUOptionGSlider: TsSlider;
     procedure FormShow(Sender: TObject);
     procedure OKFPrintingBtnClick(Sender: TObject);
     procedure ImageCompanyOptionImgMouseEnter(Sender: TObject);
@@ -813,6 +815,13 @@ begin
          BalBtn.Caption:= Ini.ReadString('','Bal '+IntToStr(I), BalBtn.Caption);
         end;
 
+      IsEUOptionGSlider.SliderOn:= Ini.ReadBool('', 'Is EU',IsEUOptionGSlider.SliderOn);
+      if Ini.ReadBool('', 'Is EU',False) then
+      begin
+//        ShowMessage('IS EU');
+      end;
+
+
        Ini.Free;
 
       ImageEditProduitGBtn.Visible:=false;
@@ -1091,6 +1100,10 @@ begin
      Ini.WriteString(Caption,'Bal '+IntToStr(I)+'Code ',  IntToStr(MainForm.SQLQuery.FieldByName('code_p').AsInteger) );
 
     end;
+
+    Ini.WriteBool(Caption,   'Is EU', IsEUOptionGSlider.SliderOn);
+
+
 
     MainForm.SQLQuery.Active:= False;
     MainForm.SQLQuery.SQL.Clear;
