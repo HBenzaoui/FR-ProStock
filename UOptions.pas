@@ -284,10 +284,10 @@ type
     sTabSheet7: TsTabSheet;
     AdrCompanyOptionEdt: TEdit;
     Label6: TLabel;
-    Label7: TLabel;
-    Label8: TLabel;
+    TelCompanyOptionLbl: TLabel;
+    FaxCompanyOptionLbl: TLabel;
     Label9: TLabel;
-    MobCompanyOptionEdt: TEdit;
+    FaxCompanyOptionEdt: TEdit;
     NameCompanyOptionEdt: TEdit;
     TelCompanyOptionEdt: TEdit;
     APrintOptionGSlider: TsSlider;
@@ -326,18 +326,18 @@ type
     BRSdrF25: TsSlider;
     FVSdrF26: TsSlider;
     FASdrF27: TsSlider;
-    Label52: TLabel;
+    EmailCompanyOptionLbl: TLabel;
     EmailCompanyOptionEdt: TEdit;
-    Label53: TLabel;
+    WebsiteCompanyOptionLbl: TLabel;
     WebsiteCompanyOptionEdt: TEdit;
     Label54: TLabel;
     Adr2CompanyOptionEdt: TEdit;
     RIBCompanyGEdt: TEdit;
-    Label51: TLabel;
+    RIBCompanyGLbl: TLabel;
     NISCompanyGEdt: TEdit;
     NISCompanyGLbl: TLabel;
     NArtCompanyGEdt: TEdit;
-    NArtCompanyLbl: TLabel;
+    NArtCompanyGLbl: TLabel;
     NIFCompanyGEdt: TEdit;
     NIFCompanyGLbl: TLabel;
     RCCompanyGEdt: TEdit;
@@ -350,6 +350,23 @@ type
     ImageDeleteProduitGBtn: TAdvToolButton;
     Label55: TLabel;
     IsEUOptionGSlider: TsSlider;
+    AcitiviteCompanyOptionLbl: TLabel;
+    AcitiviteCompanyOptionEdt: TEdit;
+    VilleCompanyOptionLbl: TLabel;
+    VilleCompanyOptionEdt: TEdit;
+    CPostalCompanyOptionLbl: TLabel;
+    CPostalCompanyOptionEdt: TEdit;
+    MobCompanyOptionLbl: TLabel;
+    MobCompanyOptionEdt: TEdit;
+    Mob2CompanyOptionLbl: TLabel;
+    Mob2CompanyOptionEdt: TEdit;
+    CapitalCompanyOptionLbl: TLabel;
+    CapitalCompanyOptionEdt: TEdit;
+    WilayaCompanyOptionLbl: TLabel;
+    Label58: TLabel;
+    CountryCompanyOptionEdt: TEdit;
+    WilayaCompanyOptionEdt: TEdit;
+    Panel15: TPanel;
     procedure FormShow(Sender: TObject);
     procedure OKFPrintingBtnClick(Sender: TObject);
     procedure ImageCompanyOptionImgMouseEnter(Sender: TObject);
@@ -390,6 +407,7 @@ type
     procedure UploadToBalBtnClick(Sender: TObject);
     procedure FormPaint(Sender: TObject);
     procedure BalBtnLblDrawerTimerTimer(Sender: TObject);
+    procedure CapitalCompanyOptionEdtExit(Sender: TObject);
   private
     procedure EnableFavBtns;
     procedure DisableFavBtns;
@@ -574,6 +592,19 @@ end;
 procedure TFOptions.Bal1spMouseEnter(Sender: TObject);
 begin
 BalBtn := Sender as TsSpeedButton;
+
+end;
+
+procedure TFOptions.CapitalCompanyOptionEdtExit(Sender: TObject);
+var
+CapitalCompanyOption: Double;
+begin
+
+  if CapitalCompanyOptionEdt.Text<>'' then
+  begin
+  CapitalCompanyOption:=StrToFloat(StringReplace(CapitalCompanyOptionEdt.Text, #32, '', [rfReplaceAll]));
+  CapitalCompanyOptionEdt.Text := FloatToStrF(CapitalCompanyOption,ffNumber,14,2);
+  end;
 
 end;
 
@@ -815,14 +846,32 @@ begin
          BalBtn.Caption:= Ini.ReadString('','Bal '+IntToStr(I), BalBtn.Caption);
         end;
 
+      //Here we check if is EU (FR) and change views and values
       IsEUOptionGSlider.SliderOn:= Ini.ReadBool('', 'Is EU',IsEUOptionGSlider.SliderOn);
+
       if Ini.ReadBool('', 'Is EU',False) then
       begin
-//        ShowMessage('IS EU');
-      end;
+       RCCompanyGLbl.Caption:='N° Siret:';
+       NIFCompanyGLbl.Caption:='Code NAF/APE:';
+       NArtCompanyGLbl.Caption:='N° TVA intracom:';
 
 
-       Ini.Free;
+
+
+      end else
+          begin
+
+            RCCompanyGLbl.Caption:='RC:';
+            NIFCompanyGLbl.Caption:='NIF:';
+            NArtCompanyGLbl.Caption:='N°Art:';
+          end;
+
+      //Here we change the visibility of components depends on EU or NOT
+      NISCompanyGLbl.Visible:= NOT Ini.ReadBool('', 'Is EU',False);
+      NISCompanyGEdt.Visible:= NOT Ini.ReadBool('', 'Is EU',False);
+
+
+      Ini.Free;
 
       ImageEditProduitGBtn.Visible:=false;
       ImageDeleteProduitGBtn.Visible:=false;
@@ -842,9 +891,17 @@ begin
         begin
          NameCompanyOptionEdt.Text := fieldbyname('nom_comp').AsWideString;
         end;
+        if (fieldbyname('activite_c').AsWideString <> '') then
+        begin
+         AcitiviteCompanyOptionEdt.Text := fieldbyname('activite_c').AsWideString;
+        end;
         if (fieldbyname('fix_comp').AsString <> '') then
         begin
          TelCompanyOptionEdt.Text := fieldbyname('fix_comp').AsString;
+        end;
+        if (fieldbyname('fax_comp').AsString <> '') then
+        begin
+         FaxCompanyOptionEdt.Text := fieldbyname('fax_comp').AsString;
         end;
         if (fieldbyname('mob_comp').AsString <> '') then
         begin
@@ -854,9 +911,25 @@ begin
         begin
          AdrCompanyOptionEdt.Text := fieldbyname('adr_comp').AsWideString;
         end;
-         if (fieldbyname('adr2_comp').AsWideString <> '') then
+        if (fieldbyname('adr2_comp').AsWideString <> '') then
         begin
          Adr2CompanyOptionEdt.Text := fieldbyname('adr2_comp').AsWideString;
+        end;
+        if (fieldbyname('ville_comp').AsWideString <> '') then
+        begin
+         VilleCompanyOptionEdt.Text := fieldbyname('ville_comp').AsWideString;
+        end;
+        if (fieldbyname('cpostal_comp').AsString <> '') then
+        begin
+         CPostalCompanyOptionEdt.Text := fieldbyname('cpostal_comp').AsString;
+        end;
+        if (fieldbyname('willaya_comp').AsWideString <> '') then
+        begin
+         WilayaCompanyOptionEdt.Text := fieldbyname('willaya_comp').AsWideString;
+        end;
+        if (fieldbyname('country_comp').AsWideString <> '') then
+        begin
+         CountryCompanyOptionEdt.Text := fieldbyname('country_comp').AsWideString;
         end;
         if (fieldbyname('email_comp').AsString <> '') then
         begin
@@ -885,6 +958,10 @@ begin
         if (fieldbyname('rib_comp').AsString <> '') then
         begin
          RIBCompanyGEdt.Text := fieldbyname('rib_comp').AsString;
+        end;
+        if (fieldbyname('capital_comp').Value <> null) then
+        begin
+         CapitalCompanyOptionEdt.Text := FloatToStrF(FieldByName('capital_comp').Value, ffNumber,14, 2);
         end;
 
         if (fieldbyname('logo_comp').Value <> null) then
@@ -958,18 +1035,33 @@ begin
            with MainForm.CompanyTable do  begin
             Insert;
             fieldbyname('code_comp').Value := 1;
-            fieldbyname('nom_comp').Value := NameCompanyOptionEdt.Text;
-            fieldbyname('fix_comp').Value := TelCompanyOptionEdt.Text;
-            fieldbyname('mob_comp').Value := MobCompanyOptionEdt.Text;
-            fieldbyname('adr_comp').Value := AdrCompanyOptionEdt.Text;
-            fieldbyname('adr2_comp').Value := Adr2CompanyOptionEdt.Text;
-            fieldbyname('email_comp').Value := EmailCompanyOptionEdt.Text;
-            fieldbyname('website_comp').Value := WebsiteCompanyOptionEdt.Text;
-            fieldbyname('rc_comp').Value := RCCompanyGEdt.Text;
-            fieldbyname('nif_comp').Value := NIFCompanyGEdt.Text;
-            fieldbyname('nart_comp').Value := NArtCompanyGEdt.Text;
-            fieldbyname('nis_comp').Value := NISCompanyGEdt.Text;
-            fieldbyname('rib_comp').Value := RIBCompanyGEdt.Text;
+            fieldbyname('nom_comp').AsWideString := NameCompanyOptionEdt.Text;
+            fieldbyname('activite_c').AsWideString := AcitiviteCompanyOptionEdt.Text;
+            fieldbyname('fix_comp').AsString := TelCompanyOptionEdt.Text;
+            fieldbyname('fax_comp').AsString := FaxCompanyOptionEdt.Text;
+            fieldbyname('mob_comp').AsString := MobCompanyOptionEdt.Text;
+            fieldbyname('mob2_comp').AsString := Mob2CompanyOptionEdt.Text;
+            fieldbyname('adr_comp').AsWideString := AdrCompanyOptionEdt.Text;
+            fieldbyname('adr2_comp').AsWideString := Adr2CompanyOptionEdt.Text;
+            fieldbyname('ville_comp').AsWideString := VilleCompanyOptionEdt.Text;
+            fieldbyname('cpostal_comp').AsString := CPostalCompanyOptionEdt.Text;
+            fieldbyname('willaya_comp').AsWideString := WilayaCompanyOptionEdt.Text;
+            fieldbyname('country_comp').AsWideString := CountryCompanyOptionEdt.Text;
+            fieldbyname('email_comp').AsWideString := EmailCompanyOptionEdt.Text;
+            fieldbyname('website_comp').AsWideString := WebsiteCompanyOptionEdt.Text;
+            fieldbyname('rc_comp').AsWideString := RCCompanyGEdt.Text;
+            fieldbyname('nif_comp').AsWideString := NIFCompanyGEdt.Text;
+            fieldbyname('nart_comp').AsWideString := NArtCompanyGEdt.Text;
+            fieldbyname('nis_comp').AsWideString := NISCompanyGEdt.Text;
+            fieldbyname('rib_comp').AsWideString := RIBCompanyGEdt.Text;
+            if CapitalCompanyOptionEdt.Text<>'' then
+            begin
+              fieldbyname('capital_comp').Value := StrToFloat(StringReplace(CapitalCompanyOptionEdt.Text, #32, '', [rfReplaceAll]));
+            end else
+                begin
+                  fieldbyname('capital_comp').Value:=  StrToFloat('0')
+                end;
+
               {Creat the stream using BlobStream is better the to the blob dictely }
               S :=CreateBlobStream(FieldByName('logo_comp'), bmWrite);
              try
@@ -993,18 +1085,32 @@ begin
           begin
                with MainForm.CompanyTable do  begin
               Edit;
-              fieldbyname('nom_comp').Value := NameCompanyOptionEdt.Text;
-              fieldbyname('fix_comp').Value := TelCompanyOptionEdt.Text;
-              fieldbyname('mob_comp').Value := MobCompanyOptionEdt.Text;
-              fieldbyname('adr_comp').Value := AdrCompanyOptionEdt.Text;
-              fieldbyname('adr2_comp').Value := Adr2CompanyOptionEdt.Text;
-              fieldbyname('email_comp').Value := EmailCompanyOptionEdt.Text;
-              fieldbyname('website_comp').Value := WebsiteCompanyOptionEdt.Text;
-              fieldbyname('rc_comp').Value := RCCompanyGEdt.Text;
-              fieldbyname('nif_comp').Value := NIFCompanyGEdt.Text;
-              fieldbyname('nart_comp').Value := NArtCompanyGEdt.Text;
-              fieldbyname('nis_comp').Value := NISCompanyGEdt.Text;
-              fieldbyname('rib_comp').Value := RIBCompanyGEdt.Text;
+              fieldbyname('nom_comp').AsWideString := NameCompanyOptionEdt.Text;
+              fieldbyname('activite_c').AsWideString := AcitiviteCompanyOptionEdt.Text;
+              fieldbyname('fix_comp').AsString := TelCompanyOptionEdt.Text;
+              fieldbyname('fax_comp').AsString := FaxCompanyOptionEdt.Text;
+              fieldbyname('mob_comp').AsString := MobCompanyOptionEdt.Text;
+              fieldbyname('mob2_comp').AsString := Mob2CompanyOptionEdt.Text;
+              fieldbyname('adr_comp').AsWideString := AdrCompanyOptionEdt.Text;
+              fieldbyname('adr2_comp').AsWideString := Adr2CompanyOptionEdt.Text;
+              fieldbyname('ville_comp').AsWideString := VilleCompanyOptionEdt.Text;
+              fieldbyname('cpostal_comp').AsString := CPostalCompanyOptionEdt.Text;
+              fieldbyname('willaya_comp').AsWideString := WilayaCompanyOptionEdt.Text;
+              fieldbyname('country_comp').AsWideString := CountryCompanyOptionEdt.Text;
+              fieldbyname('email_comp').AsWideString := EmailCompanyOptionEdt.Text;
+              fieldbyname('website_comp').AsWideString := WebsiteCompanyOptionEdt.Text;
+              fieldbyname('rc_comp').AsWideString := RCCompanyGEdt.Text;
+              fieldbyname('nif_comp').AsWideString := NIFCompanyGEdt.Text;
+              fieldbyname('nart_comp').AsWideString := NArtCompanyGEdt.Text;
+              fieldbyname('nis_comp').AsWideString := NISCompanyGEdt.Text;
+              fieldbyname('rib_comp').AsWideString := RIBCompanyGEdt.Text;
+              if CapitalCompanyOptionEdt.Text<>'' then
+              begin
+                fieldbyname('capital_comp').Value := StrToFloat(StringReplace(CapitalCompanyOptionEdt.Text, #32, '', [rfReplaceAll]));
+              end else
+                  begin
+                    fieldbyname('capital_comp').Value:=  StrToFloat('0')
+                  end;
               {Creat the stream using BlobStream is better the to the blob dictely }
               S :=CreateBlobStream(FieldByName('logo_comp'), bmWrite);
              try

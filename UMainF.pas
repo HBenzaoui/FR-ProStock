@@ -3083,7 +3083,7 @@ begin
 
      //---always update tbale numbers when we add new table
 //     if SQLQuery.FieldByName('ntable').AsInteger <> 42 then
-     if StrToInt(DataModuleF.SQLQuery1.FieldByName('dbversion').AsString) < 2 then
+     if StrToInt(DataModuleF.SQLQuery1.FieldByName('dbversion').AsString) < 3 then
      begin
 
       CreateTablesFDScript.ExecuteAll;                                 // Eable this is only for releasing
@@ -3092,7 +3092,7 @@ begin
       AltersDBChangesFDScript.ExecuteAll;                              // Eable this is only for releasing
 
       DataModuleF.SQLQuery1.Edit;
-      DataModuleF.SQLQuery1.FieldByName('dbversion').AsString:='2';
+      DataModuleF.SQLQuery1.FieldByName('dbversion').AsString:='3';
       DataModuleF.SQLQuery1.Post;
 
      end;

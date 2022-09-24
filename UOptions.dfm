@@ -47,7 +47,7 @@ object FOptions: TFOptions
         625)
       object Label6: TLabel
         Left = 10
-        Top = 0
+        Top = 11
         Width = 128
         Height = 16
         Caption = 'Nom - Raison sociale:'
@@ -61,9 +61,9 @@ object FOptions: TFOptions
         ParentFont = False
         StyleElements = []
       end
-      object Label7: TLabel
+      object TelCompanyOptionLbl: TLabel
         Left = 10
-        Top = 50
+        Top = 309
         Width = 63
         Height = 16
         Caption = 'T'#233'l'#233'phone:'
@@ -77,12 +77,12 @@ object FOptions: TFOptions
         ParentFont = False
         StyleElements = []
       end
-      object Label8: TLabel
-        Left = 10
-        Top = 101
-        Width = 42
+      object FaxCompanyOptionLbl: TLabel
+        Left = 250
+        Top = 309
+        Width = 26
         Height = 16
-        Caption = 'Mobile:'
+        Caption = 'Fax:'
         Color = 4207405
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
@@ -95,7 +95,7 @@ object FOptions: TFOptions
       end
       object Label9: TLabel
         Left = 10
-        Top = 152
+        Top = 105
         Width = 52
         Height = 16
         Caption = 'Adresse:'
@@ -109,9 +109,9 @@ object FOptions: TFOptions
         ParentFont = False
         StyleElements = []
       end
-      object Label52: TLabel
+      object EmailCompanyOptionLbl: TLabel
         Left = 12
-        Top = 256
+        Top = 401
         Width = 37
         Height = 16
         Caption = 'Email:'
@@ -125,9 +125,9 @@ object FOptions: TFOptions
         ParentFont = False
         StyleElements = []
       end
-      object Label53: TLabel
-        Left = 12
-        Top = 311
+      object WebsiteCompanyOptionLbl: TLabel
+        Left = 252
+        Top = 401
         Width = 58
         Height = 16
         Caption = 'Site Web:'
@@ -143,7 +143,7 @@ object FOptions: TFOptions
       end
       object Label54: TLabel
         Left = 10
-        Top = 204
+        Top = 151
         Width = 92
         Height = 16
         Caption = 'Adresse (suite):'
@@ -157,16 +157,16 @@ object FOptions: TFOptions
         ParentFont = False
         StyleElements = []
       end
-      object Label51: TLabel
-        Left = 16
-        Top = 571
-        Width = 29
-        Height = 18
+      object RIBCompanyGLbl: TLabel
+        Left = 12
+        Top = 558
+        Width = 25
+        Height = 16
         Caption = 'RIB:'
         Color = 4207405
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
-        Font.Height = 18
+        Font.Height = 16
         Font.Name = 'Roboto'
         Font.Style = []
         ParentColor = False
@@ -174,31 +174,31 @@ object FOptions: TFOptions
         StyleElements = []
       end
       object NISCompanyGLbl: TLabel
-        Left = 16
-        Top = 520
-        Width = 29
-        Height = 18
+        Left = 252
+        Top = 513
+        Width = 25
+        Height = 16
         Caption = 'NIS:'
         Color = 4207405
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
-        Font.Height = 18
+        Font.Height = 16
         Font.Name = 'Roboto'
         Font.Style = []
         ParentColor = False
         ParentFont = False
         StyleElements = []
       end
-      object NArtCompanyLbl: TLabel
-        Left = 16
-        Top = 470
-        Width = 41
-        Height = 18
+      object NArtCompanyGLbl: TLabel
+        Left = 12
+        Top = 512
+        Width = 35
+        Height = 16
         Caption = 'N'#176'Art:'
         Color = 4207405
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
-        Font.Height = 18
+        Font.Height = 16
         Font.Name = 'Roboto'
         Font.Style = []
         ParentColor = False
@@ -206,15 +206,15 @@ object FOptions: TFOptions
         StyleElements = []
       end
       object NIFCompanyGLbl: TLabel
-        Left = 16
-        Top = 422
-        Width = 28
-        Height = 18
+        Left = 252
+        Top = 466
+        Width = 24
+        Height = 16
         Caption = 'NIF:'
         Color = 4207405
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
-        Font.Height = 18
+        Font.Height = 16
         Font.Name = 'Roboto'
         Font.Style = []
         ParentColor = False
@@ -222,15 +222,15 @@ object FOptions: TFOptions
         StyleElements = []
       end
       object RCCompanyGLbl: TLabel
-        Left = 16
-        Top = 371
-        Width = 27
-        Height = 18
+        Left = 12
+        Top = 467
+        Width = 22
+        Height = 16
         Caption = 'RC:'
         Color = 4207405
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
-        Font.Height = 18
+        Font.Height = 16
         Font.Name = 'Roboto'
         Font.Style = []
         ParentColor = False
@@ -239,7 +239,7 @@ object FOptions: TFOptions
       end
       object Label55: TLabel
         Left = 409
-        Top = 3
+        Top = 1
         Width = 20
         Height = 15
         Caption = 'EU:'
@@ -253,32 +253,158 @@ object FOptions: TFOptions
         ParentFont = False
         StyleElements = []
       end
+      object AcitiviteCompanyOptionLbl: TLabel
+        Left = 10
+        Top = 57
+        Width = 46
+        Height = 16
+        Caption = 'Activit'#233':'
+        Color = 4207405
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 16
+        Font.Name = 'Roboto'
+        Font.Style = []
+        ParentColor = False
+        ParentFont = False
+        StyleElements = []
+      end
+      object VilleCompanyOptionLbl: TLabel
+        Left = 10
+        Top = 199
+        Width = 29
+        Height = 16
+        Caption = 'Ville:'
+        Color = 4207405
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 16
+        Font.Name = 'Roboto'
+        Font.Style = []
+        ParentColor = False
+        ParentFont = False
+        StyleElements = []
+      end
+      object CPostalCompanyOptionLbl: TLabel
+        Left = 250
+        Top = 199
+        Width = 75
+        Height = 16
+        Caption = 'Code Postal:'
+        Color = 4207405
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 16
+        Font.Name = 'Roboto'
+        Font.Style = []
+        ParentColor = False
+        ParentFont = False
+        StyleElements = []
+      end
+      object MobCompanyOptionLbl: TLabel
+        Left = 10
+        Top = 356
+        Width = 42
+        Height = 16
+        Caption = 'Mobile:'
+        Color = 4207405
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 16
+        Font.Name = 'Roboto'
+        Font.Style = []
+        ParentColor = False
+        ParentFont = False
+        StyleElements = []
+      end
+      object Mob2CompanyOptionLbl: TLabel
+        Left = 250
+        Top = 356
+        Width = 53
+        Height = 16
+        Caption = 'Mobile 2:'
+        Color = 4207405
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 16
+        Font.Name = 'Roboto'
+        Font.Style = []
+        ParentColor = False
+        ParentFont = False
+        StyleElements = []
+      end
+      object CapitalCompanyOptionLbl: TLabel
+        Left = 252
+        Top = 558
+        Width = 82
+        Height = 16
+        Caption = 'Capital social:'
+        Color = 4207405
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 16
+        Font.Name = 'Roboto'
+        Font.Style = []
+        ParentColor = False
+        ParentFont = False
+        StyleElements = []
+      end
+      object WilayaCompanyOptionLbl: TLabel
+        Left = 10
+        Top = 246
+        Width = 44
+        Height = 16
+        Caption = 'Wilaya:'
+        Color = 4207405
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 16
+        Font.Name = 'Roboto'
+        Font.Style = []
+        ParentColor = False
+        ParentFont = False
+        StyleElements = []
+      end
+      object Label58: TLabel
+        Left = 250
+        Top = 246
+        Width = 41
+        Height = 16
+        Caption = 'Payes:'
+        Color = 4207405
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 16
+        Font.Name = 'Roboto'
+        Font.Style = []
+        ParentColor = False
+        ParentFont = False
+        StyleElements = []
+      end
       object AdrCompanyOptionEdt: TEdit
         Left = 25
-        Top = 172
-        Width = 443
-        Height = 26
-        Alignment = taCenter
+        Top = 123
+        Width = 450
+        Height = 24
         DoubleBuffered = True
         Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = 18
+        Font.Color = 4207405
+        Font.Height = 16
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
         ParentDoubleBuffered = False
         ParentFont = False
         TabOrder = 3
       end
-      object MobCompanyOptionEdt: TEdit
-        Left = 25
-        Top = 122
-        Width = 443
-        Height = 26
-        Alignment = taCenter
+      object FaxCompanyOptionEdt: TEdit
+        Left = 265
+        Top = 328
+        Width = 210
+        Height = 24
         DoubleBuffered = True
         Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = 18
+        Font.Color = 4207405
+        Font.Height = 16
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
         ParentDoubleBuffered = False
@@ -287,14 +413,13 @@ object FOptions: TFOptions
       end
       object NameCompanyOptionEdt: TEdit
         Left = 25
-        Top = 22
-        Width = 443
-        Height = 26
-        Alignment = taCenter
+        Top = 30
+        Width = 450
+        Height = 24
         DoubleBuffered = True
         Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = 18
+        Font.Color = 4207405
+        Font.Height = 16
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
         ParentDoubleBuffered = False
@@ -303,14 +428,13 @@ object FOptions: TFOptions
       end
       object TelCompanyOptionEdt: TEdit
         Left = 25
-        Top = 72
-        Width = 443
-        Height = 26
-        Alignment = taCenter
+        Top = 328
+        Width = 210
+        Height = 24
         DoubleBuffered = True
         Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = 18
+        Font.Color = 4207405
+        Font.Height = 16
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
         ParentDoubleBuffered = False
@@ -318,8 +442,8 @@ object FOptions: TFOptions
         TabOrder = 1
       end
       object Panel2: TPanel
-        Left = -3
-        Top = 366
+        Left = 0
+        Top = 457
         Width = 507
         Height = 1
         Anchors = [akLeft, akTop, akRight]
@@ -330,18 +454,16 @@ object FOptions: TFOptions
         ParentDoubleBuffered = False
         TabOrder = 4
         StyleElements = []
-        ExplicitWidth = 659
       end
       object EmailCompanyOptionEdt: TEdit
         Left = 25
-        Top = 276
-        Width = 443
-        Height = 26
-        Alignment = taCenter
+        Top = 419
+        Width = 210
+        Height = 24
         DoubleBuffered = True
         Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = 18
+        Font.Color = 4207405
+        Font.Height = 16
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
         ParentDoubleBuffered = False
@@ -349,15 +471,14 @@ object FOptions: TFOptions
         TabOrder = 5
       end
       object WebsiteCompanyOptionEdt: TEdit
-        Left = 25
-        Top = 331
-        Width = 443
-        Height = 26
-        Alignment = taCenter
+        Left = 265
+        Top = 419
+        Width = 210
+        Height = 24
         DoubleBuffered = True
         Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = 18
+        Font.Color = 4207405
+        Font.Height = 16
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
         ParentDoubleBuffered = False
@@ -366,14 +487,13 @@ object FOptions: TFOptions
       end
       object Adr2CompanyOptionEdt: TEdit
         Left = 25
-        Top = 224
-        Width = 443
-        Height = 26
-        Alignment = taCenter
+        Top = 169
+        Width = 450
+        Height = 24
         DoubleBuffered = True
         Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = 18
+        Font.Color = 4207405
+        Font.Height = 16
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
         ParentDoubleBuffered = False
@@ -381,15 +501,14 @@ object FOptions: TFOptions
         TabOrder = 7
       end
       object RIBCompanyGEdt: TEdit
-        Left = 32
-        Top = 592
-        Width = 443
-        Height = 26
-        Alignment = taCenter
+        Left = 25
+        Top = 575
+        Width = 210
+        Height = 24
         DoubleBuffered = True
         Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = 18
+        Font.Color = 4207405
+        Font.Height = 16
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
         ParentDoubleBuffered = False
@@ -397,15 +516,14 @@ object FOptions: TFOptions
         TabOrder = 8
       end
       object NISCompanyGEdt: TEdit
-        Left = 31
-        Top = 542
-        Width = 443
-        Height = 26
-        Alignment = taCenter
+        Left = 265
+        Top = 530
+        Width = 210
+        Height = 24
         DoubleBuffered = True
         Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = 18
+        Font.Color = 4207405
+        Font.Height = 16
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
         ParentDoubleBuffered = False
@@ -413,15 +531,14 @@ object FOptions: TFOptions
         TabOrder = 9
       end
       object NArtCompanyGEdt: TEdit
-        Left = 31
-        Top = 492
-        Width = 443
-        Height = 26
-        Alignment = taCenter
+        Left = 25
+        Top = 530
+        Width = 210
+        Height = 24
         DoubleBuffered = True
         Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = 18
+        Font.Color = 4207405
+        Font.Height = 16
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
         ParentDoubleBuffered = False
@@ -429,15 +546,14 @@ object FOptions: TFOptions
         TabOrder = 10
       end
       object NIFCompanyGEdt: TEdit
-        Left = 31
-        Top = 442
-        Width = 443
-        Height = 26
-        Alignment = taCenter
+        Left = 265
+        Top = 482
+        Width = 210
+        Height = 24
         DoubleBuffered = True
         Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = 18
+        Font.Color = 4207405
+        Font.Height = 16
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
         ParentDoubleBuffered = False
@@ -445,15 +561,14 @@ object FOptions: TFOptions
         TabOrder = 11
       end
       object RCCompanyGEdt: TEdit
-        Left = 31
-        Top = 390
-        Width = 443
-        Height = 26
-        Alignment = taCenter
+        Left = 25
+        Top = 482
+        Width = 210
+        Height = 24
         DoubleBuffered = True
         Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = 18
+        Font.Color = 4207405
+        Font.Height = 16
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
         ParentDoubleBuffered = False
@@ -462,7 +577,7 @@ object FOptions: TFOptions
       end
       object IsEUOptionGSlider: TsSlider
         Left = 435
-        Top = 3
+        Top = 1
         Width = 37
         Height = 15
         BevelOuter = bvNone
@@ -491,6 +606,142 @@ object FOptions: TFOptions
         Reversed = True
         SliderOn = False
         OnChanging = PoleDisplayActiveSdrChanging
+      end
+      object AcitiviteCompanyOptionEdt: TEdit
+        Left = 25
+        Top = 75
+        Width = 450
+        Height = 24
+        DoubleBuffered = True
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 16
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
+        ParentDoubleBuffered = False
+        ParentFont = False
+        TabOrder = 14
+      end
+      object VilleCompanyOptionEdt: TEdit
+        Left = 25
+        Top = 218
+        Width = 220
+        Height = 24
+        DoubleBuffered = True
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 16
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
+        ParentDoubleBuffered = False
+        ParentFont = False
+        TabOrder = 15
+      end
+      object CPostalCompanyOptionEdt: TEdit
+        Left = 265
+        Top = 218
+        Width = 210
+        Height = 24
+        DoubleBuffered = True
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 16
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
+        ParentDoubleBuffered = False
+        ParentFont = False
+        TabOrder = 16
+      end
+      object MobCompanyOptionEdt: TEdit
+        Left = 25
+        Top = 375
+        Width = 210
+        Height = 24
+        DoubleBuffered = True
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 16
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
+        ParentDoubleBuffered = False
+        ParentFont = False
+        TabOrder = 17
+      end
+      object Mob2CompanyOptionEdt: TEdit
+        Left = 265
+        Top = 375
+        Width = 210
+        Height = 24
+        DoubleBuffered = True
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 16
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
+        ParentDoubleBuffered = False
+        ParentFont = False
+        TabOrder = 18
+      end
+      object CapitalCompanyOptionEdt: TEdit
+        Left = 265
+        Top = 575
+        Width = 210
+        Height = 24
+        Alignment = taRightJustify
+        DoubleBuffered = True
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 16
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
+        ParentDoubleBuffered = False
+        ParentFont = False
+        TabOrder = 19
+        OnExit = CapitalCompanyOptionEdtExit
+      end
+      object CountryCompanyOptionEdt: TEdit
+        Left = 265
+        Top = 265
+        Width = 210
+        Height = 24
+        DoubleBuffered = True
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 16
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
+        ParentDoubleBuffered = False
+        ParentFont = False
+        TabOrder = 20
+      end
+      object WilayaCompanyOptionEdt: TEdit
+        Left = 25
+        Top = 265
+        Width = 220
+        Height = 24
+        DoubleBuffered = True
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 16
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
+        ParentDoubleBuffered = False
+        ParentFont = False
+        TabOrder = 21
+      end
+      object Panel15: TPanel
+        Left = -5
+        Top = 300
+        Width = 507
+        Height = 1
+        Anchors = [akLeft, akTop, akRight]
+        BevelOuter = bvNone
+        Color = 7854350
+        DoubleBuffered = True
+        ParentBackground = False
+        ParentDoubleBuffered = False
+        TabOrder = 22
+        StyleElements = []
       end
     end
     object sTabSheet5: TsTabSheet
@@ -829,11 +1080,11 @@ object FOptions: TFOptions
       object PrintersListFOptionCaisseCbx: TComboBox
         Left = 25
         Top = 72
-        Width = 443
+        Width = 450
         Height = 24
         Style = csDropDownList
         Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
+        Font.Color = 4207405
         Font.Height = 16
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
@@ -858,11 +1109,11 @@ object FOptions: TFOptions
       object PrintersListFOptionCodeBCbx: TComboBox
         Left = 25
         Top = 132
-        Width = 443
+        Width = 450
         Height = 24
         Style = csDropDownList
         Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
+        Font.Color = 4207405
         Font.Height = 16
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
@@ -872,11 +1123,11 @@ object FOptions: TFOptions
       object FormatFOptionCodeBCbx: TComboBox
         Left = 25
         Top = 181
-        Width = 443
+        Width = 450
         Height = 24
         Style = csDropDownList
         Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
+        Font.Color = 4207405
         Font.Height = 16
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
@@ -896,11 +1147,11 @@ object FOptions: TFOptions
       object PrixVenteListFOptionCodeBCbx: TComboBox
         Left = 25
         Top = 229
-        Width = 443
+        Width = 450
         Height = 24
         Style = csDropDownList
         Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
+        Font.Color = 4207405
         Font.Height = 16
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
@@ -931,11 +1182,11 @@ object FOptions: TFOptions
       object FormatBLOptionCbx: TComboBox
         Left = 25
         Top = 293
-        Width = 443
+        Width = 450
         Height = 24
         Style = csDropDownList
         Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
+        Font.Color = 4207405
         Font.Height = 16
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
@@ -955,11 +1206,11 @@ object FOptions: TFOptions
       object FormatFPOptionCbx: TComboBox
         Left = 25
         Top = 341
-        Width = 443
+        Width = 450
         Height = 24
         Style = csDropDownList
         Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
+        Font.Color = 4207405
         Font.Height = 16
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
@@ -972,11 +1223,11 @@ object FOptions: TFOptions
       object FormatFVOptionCbx: TComboBox
         Left = 25
         Top = 390
-        Width = 443
+        Width = 450
         Height = 24
         Style = csDropDownList
         Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
+        Font.Color = 4207405
         Font.Height = 16
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
@@ -989,11 +1240,11 @@ object FOptions: TFOptions
       object FormatBROptionCbx: TComboBox
         Left = 25
         Top = 440
-        Width = 443
+        Width = 450
         Height = 24
         Style = csDropDownList
         Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
+        Font.Color = 4207405
         Font.Height = 16
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
@@ -1008,11 +1259,11 @@ object FOptions: TFOptions
       object FormatFAOptionCbx: TComboBox
         Left = 25
         Top = 488
-        Width = 443
+        Width = 450
         Height = 24
         Style = csDropDownList
         Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
+        Font.Color = 4207405
         Font.Height = 16
         Font.Name = 'Helvetica LT Std'
         Font.Style = []
@@ -1202,11 +1453,11 @@ object FOptions: TFOptions
         object PoleDisplayCOMListCbx: TComboBox
           Left = 22
           Top = 76
-          Width = 443
+          Width = 450
           Height = 24
           Enabled = False
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
+          Font.Color = 4207405
           Font.Height = 16
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
@@ -1230,14 +1481,14 @@ object FOptions: TFOptions
         object PoleDisplayMsgEdt: TEdit
           Left = 21
           Top = 130
-          Width = 443
-          Height = 26
+          Width = 450
+          Height = 24
           Alignment = taCenter
           DoubleBuffered = True
           Enabled = False
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = 18
+          Font.Color = 4207405
+          Font.Height = 16
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
           MaxLength = 19
@@ -1249,14 +1500,14 @@ object FOptions: TFOptions
         object PoleDisplayMsg2Edt: TEdit
           Left = 22
           Top = 184
-          Width = 443
-          Height = 26
+          Width = 450
+          Height = 24
           Alignment = taCenter
           DoubleBuffered = True
           Enabled = False
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = 18
+          Font.Color = 4207405
+          Font.Height = 16
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
           MaxLength = 19
@@ -1268,12 +1519,12 @@ object FOptions: TFOptions
         object PoleDisplayTotalEdt: TComboBox
           Left = 20
           Top = 240
-          Width = 443
+          Width = 450
           Height = 24
           Style = csDropDownList
           Enabled = False
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
+          Font.Color = 4207405
           Font.Height = 16
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
@@ -1446,11 +1697,11 @@ object FOptions: TFOptions
         object TiroirCaisseCOMListCbx: TComboBox
           Left = 27
           Top = 108
-          Width = 443
+          Width = 450
           Height = 24
           Enabled = False
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
+          Font.Color = 4207405
           Font.Height = 16
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
@@ -1485,12 +1736,12 @@ object FOptions: TFOptions
         object TiroirCaissePrinterListCbx: TComboBox
           Left = 27
           Top = 197
-          Width = 443
+          Width = 450
           Height = 24
           Style = csDropDownList
           Enabled = False
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
+          Font.Color = 4207405
           Font.Height = 16
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
@@ -2760,7 +3011,7 @@ object FOptions: TFOptions
           Alignment = taCenter
           DoubleBuffered = True
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
+          Font.Color = 4207405
           Font.Height = 15
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
@@ -5427,12 +5678,12 @@ object FOptions: TFOptions
         object BalanceIPListCbx: TComboBox
           Left = 22
           Top = 76
-          Width = 443
+          Width = 450
           Height = 24
           Style = csDropDownList
           Enabled = False
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
+          Font.Color = 4207405
           Font.Height = 16
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
@@ -5447,14 +5698,14 @@ object FOptions: TFOptions
         object BalanceIPAdressIPEdt: TEdit
           Left = 21
           Top = 129
-          Width = 443
-          Height = 26
+          Width = 450
+          Height = 24
           Alignment = taCenter
           DoubleBuffered = True
           Enabled = False
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = 18
+          Font.Color = 4207405
+          Font.Height = 16
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
           MaxLength = 19
@@ -5466,12 +5717,12 @@ object FOptions: TFOptions
         object BalanceIPBareCodeListCbx: TComboBox
           Left = 21
           Top = 183
-          Width = 443
+          Width = 450
           Height = 24
           Style = csDropDownList
           Enabled = False
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
+          Font.Color = 4207405
           Font.Height = 16
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
