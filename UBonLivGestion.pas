@@ -3096,7 +3096,6 @@ end;
 procedure TBonLivGestionF.SNumberProduitBonLivGBtnClick(Sender: TObject);
 begin
           SNumberGestionF := TSNumberGestionF.Create(BonLivGestionF);
-          SNumberGestionF.Tag := 2;
           SNumberGestionF.Left := (MainForm.Left + MainForm.Width div 2) - (SNumberGestionF.Width div 2);
           SNumberGestionF.Top := MainForm.Top + 5;
 

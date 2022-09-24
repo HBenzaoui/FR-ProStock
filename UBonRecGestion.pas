@@ -2548,11 +2548,11 @@ end;
 procedure TBonRecGestionF.SNumberProduitBonRecGBtnClick(Sender: TObject);
 begin
           SNumberGestionF := TSNumberGestionF.Create(BonRecGestionF);
-          SNumberGestionF.Tag := 2;
           SNumberGestionF.Left := (MainForm.Left + MainForm.Width div 2) - (SNumberGestionF.Width div 2);
           SNumberGestionF.Top := MainForm.Top + 5;
           SNumberGestionF.NSeriesNewMem.Left:= 32;
           SNumberGestionF.NSeriesNewMem.Width:= 548;
+          SNumberGestionF.NSeriesDispoLbl.Visible := False;
 
           SNumberGestionF.RefNSeriesLbl.Caption:= MainForm.Bona_recPlistTable.FieldByName('referp').AsString;
           SNumberGestionF.NameNSeriesLbl.Caption:= MainForm.Bona_recPlistTable.FieldByName('nomp').AsString;
