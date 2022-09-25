@@ -288,6 +288,9 @@ begin
 
           DataModuleF.SQLQuery3.Refresh;
 
+
+ //**************Find A better Solution for deleting unscaned serial in bonrec from database*************************
+
 //          MainForm.SQLQuery.Active:=false;
 //          MainForm.SQLQuery.SQL.Clear;
 //          MainForm.SQLQuery.SQL.Text:='Select code_ns,nom_ns,code_barec FROM n_series WHERE '
@@ -321,11 +324,19 @@ begin
 //          +' AND sold_ns = FALSE'
 //          );
 
+//**********************************************************************************************************************
+
+
+     //Here We count the scaned serial numbers and pust qut in bon
+     MainForm.Bona_recPlistTable.Edit;
+     MainForm.Bona_recPlistTable.FieldByName('qut_p').Value:=  NSeriesNewMem.Lines.Count;
+     MainForm.Bona_recPlistTable.Post;
+     MainForm.Bona_recPlistTable.Refresh;
 
 
 
-       MainForm.SQLQuery.Active:=false;
-          MainForm.SQLQuery.SQL.Clear;
+      MainForm.SQLQuery.Active:=false;
+      MainForm.SQLQuery.SQL.Clear;
 
       MainForm.SQLQuery3.Active:=false;
       MainForm.SQLQuery3.SQL.Clear;
@@ -351,6 +362,14 @@ begin
           DataModuleF.SQLQuery3.Post;
         end;
       end;
+
+
+     //Here We count the scaned serial numbers and pust qut in bon
+     MainForm.Bonv_liv_listTable.Edit;
+     MainForm.Bonv_liv_listTable.FieldByName('qut_p').Value:=  NSeriesNewMem.Lines.Count;
+     MainForm.Bonv_liv_listTable.Post;
+     MainForm.Bonv_liv_listTable.Refresh;
+
    end;
  end;
 

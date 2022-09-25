@@ -234,7 +234,6 @@ object SNumberGestionF: TSNumberGestionF
     ParentDoubleBuffered = False
     TabOrder = 2
     StyleElements = []
-    ExplicitTop = 372
   end
   object NSeriesDispoLsBox: TListBox
     Left = 32
