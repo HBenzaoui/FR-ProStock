@@ -8,7 +8,7 @@ object ProduitGestionF: TProduitGestionF
   Color = 15527148
   DoubleBuffered = True
   Font.Charset = DEFAULT_CHARSET
-  Font.Color = clWindowText
+  Font.Color = 4207405
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
@@ -62,7 +62,7 @@ object ProduitGestionF: TProduitGestionF
           654
           633)
         object FamilleProduitGLbl: TLabel
-          Left = 36
+          Left = 37
           Top = 162
           Width = 51
           Height = 17
@@ -94,7 +94,7 @@ object ProduitGestionF: TProduitGestionF
           StyleElements = []
         end
         object NameProduitGLbl: TLabel
-          Left = 2
+          Left = 7
           Top = 63
           Width = 81
           Height = 17
@@ -110,8 +110,8 @@ object ProduitGestionF: TProduitGestionF
           StyleElements = []
         end
         object PrixAHTProduitLbl: TLabel
-          Left = 24
-          Top = 358
+          Left = 28
+          Top = 360
           Width = 50
           Height = 17
           Caption = 'Prix HT:'
@@ -129,7 +129,7 @@ object ProduitGestionF: TProduitGestionF
           Left = 629
           Top = 65
           Width = 7
-          Height = 15
+          Height = 22
           Caption = '*'
           Color = clBtnFace
           Font.Charset = DEFAULT_CHARSET
@@ -177,11 +177,12 @@ object ProduitGestionF: TProduitGestionF
           StyleElements = []
         end
         object Label2: TLabel
-          Left = 49
+          Left = 8
           Top = 207
-          Width = 37
+          Width = 80
           Height = 17
-          Caption = 'Unit'#233':'
+          Alignment = taRightJustify
+          Caption = 'Unit'#233' de M. :'
           Color = 4207405
           Font.Charset = DEFAULT_CHARSET
           Font.Color = 4207405
@@ -209,7 +210,7 @@ object ProduitGestionF: TProduitGestionF
           StyleElements = []
         end
         object Label4: TLabel
-          Left = 13
+          Left = 15
           Top = 250
           Width = 73
           Height = 17
@@ -293,8 +294,8 @@ object ProduitGestionF: TProduitGestionF
           StyleElements = [seClient, seBorder]
         end
         object PrixATTCProduitLbl: TLabel
-          Left = 17
-          Top = 422
+          Left = 21
+          Top = 424
           Width = 62
           Height = 17
           Caption = 'Prix TTC:'
@@ -311,9 +312,9 @@ object ProduitGestionF: TProduitGestionF
         object Label10: TLabel
           Left = 73
           Top = 294
-          Width = 90
+          Width = 85
           Height = 19
-          Caption = 'Prix D'#39'Achat'
+          Caption = 'Prix d'#39'achat'
           Color = 4207405
           Font.Charset = DEFAULT_CHARSET
           Font.Color = 4207405
@@ -359,9 +360,9 @@ object ProduitGestionF: TProduitGestionF
         object Label13: TLabel
           Left = 394
           Top = 294
-          Width = 100
+          Width = 94
           Height = 19
-          Caption = 'Prix De Vente'
+          Caption = 'Prix de vente'
           Color = 4207405
           Font.Charset = DEFAULT_CHARSET
           Font.Color = 4207405
@@ -388,11 +389,13 @@ object ProduitGestionF: TProduitGestionF
           ParentFont = False
           StyleElements = []
         end
-        object Label15: TLabel
-          Left = 272
+        object PrixVHTDProduitLbl: TLabel
+          Left = 220
           Top = 359
-          Width = 37
+          Width = 90
           Height = 16
+          Alignment = taRightJustify
+          AutoSize = False
           Caption = 'Detail:'
           Color = 4207405
           Font.Charset = DEFAULT_CHARSET
@@ -404,11 +407,13 @@ object ProduitGestionF: TProduitGestionF
           ParentFont = False
           StyleElements = []
         end
-        object Label16: TLabel
-          Left = 240
+        object PrixVHTRProduitLbl: TLabel
+          Left = 220
           Top = 392
-          Width = 64
+          Width = 90
           Height = 16
+          Alignment = taRightJustify
+          AutoSize = False
           Caption = 'Revendeur:'
           Color = 4207405
           Font.Charset = DEFAULT_CHARSET
@@ -420,11 +425,13 @@ object ProduitGestionF: TProduitGestionF
           ParentFont = False
           StyleElements = []
         end
-        object Label17: TLabel
-          Left = 276
+        object PrixVHTGProduitLbl: TLabel
+          Left = 220
           Top = 424
-          Width = 32
+          Width = 90
           Height = 16
+          Alignment = taRightJustify
+          AutoSize = False
           Caption = 'Gros:'
           Color = 4207405
           Font.Charset = DEFAULT_CHARSET
@@ -436,11 +443,13 @@ object ProduitGestionF: TProduitGestionF
           ParentFont = False
           StyleElements = []
         end
-        object Label18: TLabel
-          Left = 262
+        object PrixVHTA1ProduitLbl: TLabel
+          Left = 220
           Top = 456
-          Width = 46
+          Width = 90
           Height = 16
+          Alignment = taRightJustify
+          AutoSize = False
           Caption = 'Autre 1:'
           Color = 4207405
           Font.Charset = DEFAULT_CHARSET
@@ -452,11 +461,13 @@ object ProduitGestionF: TProduitGestionF
           ParentFont = False
           StyleElements = []
         end
-        object Label19: TLabel
-          Left = 262
+        object PrixVHTA2ProduitLbl: TLabel
+          Left = 220
           Top = 488
-          Width = 46
+          Width = 90
           Height = 16
+          Alignment = taRightJustify
+          AutoSize = False
           Caption = 'Autre 2:'
           Color = 4207405
           Font.Charset = DEFAULT_CHARSET
@@ -553,7 +564,7 @@ object ProduitGestionF: TProduitGestionF
           Top = 545
           Width = 77
           Height = 17
-          Caption = 'Stock Initial:'
+          Caption = 'Stock initial:'
           Color = 4207405
           Font.Charset = DEFAULT_CHARSET
           Font.Color = 4207405
@@ -585,7 +596,7 @@ object ProduitGestionF: TProduitGestionF
           Top = 545
           Width = 88
           Height = 17
-          Caption = 'Stock Actuel :'
+          Caption = 'Stock actuel :'
           Color = 4207405
           Font.Charset = DEFAULT_CHARSET
           Font.Color = 4666873
@@ -647,9 +658,9 @@ object ProduitGestionF: TProduitGestionF
         object Label9: TLabel
           Left = 320
           Top = 18
-          Width = 91
+          Width = 89
           Height = 17
-          Caption = 'Code '#226' Barre:'
+          Caption = 'Code '#226' barre:'
           Color = 4207405
           Font.Charset = DEFAULT_CHARSET
           Font.Color = 4207405
@@ -873,8 +884,8 @@ object ProduitGestionF: TProduitGestionF
           TMSStyle = 0
         end
         object PMPProduitLbl: TLabel
-          Left = 34
-          Top = 487
+          Left = 38
+          Top = 488
           Width = 41
           Height = 17
           Caption = 'P.M.P:'
@@ -937,7 +948,7 @@ object ProduitGestionF: TProduitGestionF
           TMSStyle = 0
         end
         object Label6: TLabel
-          Left = 34
+          Left = 39
           Top = 101
           Width = 49
           Height = 17
@@ -991,7 +1002,7 @@ object ProduitGestionF: TProduitGestionF
           Alignment = taRightJustify
           DoubleBuffered = True
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
+          Font.Color = 4207405
           Font.Height = 18
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
@@ -1016,7 +1027,7 @@ object ProduitGestionF: TProduitGestionF
           Ctl3D = True
           DoubleBuffered = True
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
+          Font.Color = 4207405
           Font.Height = 18
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
@@ -1038,7 +1049,7 @@ object ProduitGestionF: TProduitGestionF
           BevelEdges = []
           Style = csOwnerDrawFixed
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
+          Font.Color = 4207405
           Font.Height = -15
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
@@ -1055,7 +1066,7 @@ object ProduitGestionF: TProduitGestionF
           Height = 26
           Style = csOwnerDrawVariable
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
+          Font.Color = 4207405
           Font.Height = -15
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
@@ -1071,7 +1082,7 @@ object ProduitGestionF: TProduitGestionF
           Width = 74
           Height = 26
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
+          Font.Color = 4207405
           Font.Height = 18
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
@@ -1087,23 +1098,20 @@ object ProduitGestionF: TProduitGestionF
           Height = 26
           BiDiMode = bdLeftToRight
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
+          Font.Color = 4207405
           Font.Height = 18
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
-          ItemIndex = 2
-          MaxLength = 3
+          ItemIndex = 0
           ParentBiDiMode = False
           ParentFont = False
           TabOrder = 8
-          Text = '20'
+          Text = '0'
           OnChange = TVAProduitGCbxChange
           OnKeyDown = TVAProduitGCbxKeyDown
-          OnKeyPress = TVAProduitGCbxKeyPress
+          OnKeyPress = PrixAHTProduitEdtKeyPress
           Items.Strings = (
-            '0'
-            '10'
-            '20')
+            '0')
         end
         object PerProduitGSlider: TsSlider
           Left = 92
@@ -1146,7 +1154,7 @@ object ProduitGestionF: TProduitGestionF
           DoubleBuffered = True
           Enabled = False
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clSilver
+          Font.Color = 4207405
           Font.Height = 18
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
@@ -1166,7 +1174,7 @@ object ProduitGestionF: TProduitGestionF
           Alignment = taRightJustify
           DoubleBuffered = True
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
+          Font.Color = 4207405
           Font.Height = 18
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
@@ -1178,7 +1186,7 @@ object ProduitGestionF: TProduitGestionF
           OnClick = PrixATTCProduitEdtClick
           OnExit = PrixATTCProduitEdtExit
           OnKeyDown = PrixVHTDProduitEdtKeyDown
-          OnKeyPress = PrixATTCProduitEdtKeyPress
+          OnKeyPress = PrixAHTProduitEdtKeyPress
         end
         object LineP3: TPanel
           Left = 86
@@ -1203,7 +1211,7 @@ object ProduitGestionF: TProduitGestionF
           DoubleBuffered = True
           Enabled = False
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
+          Font.Color = 4207405
           Font.Height = 18
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
@@ -1215,7 +1223,7 @@ object ProduitGestionF: TProduitGestionF
           OnClick = PrixVHTDProduitEdtClick
           OnExit = PrixVHTDProduitEdtExit
           OnKeyDown = PrixVHTDProduitEdtKeyDown
-          OnKeyPress = PrixVHTDProduitEdtKeyPress
+          OnKeyPress = PrixAHTProduitEdtKeyPress
         end
         object PrixVTTCDProduitEdt: TEdit
           Left = 438
@@ -1226,7 +1234,7 @@ object ProduitGestionF: TProduitGestionF
           DoubleBuffered = True
           Enabled = False
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
+          Font.Color = 4207405
           Font.Height = 18
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
@@ -1238,7 +1246,7 @@ object ProduitGestionF: TProduitGestionF
           OnClick = PrixVTTCDProduitEdtClick
           OnExit = PrixVTTCDProduitEdtExit
           OnKeyDown = PrixVHTDProduitEdtKeyDown
-          OnKeyPress = PrixVTTCDProduitEdtKeyPress
+          OnKeyPress = PrixAHTProduitEdtKeyPress
         end
         object LineP4: TPanel
           Left = 406
@@ -1263,7 +1271,7 @@ object ProduitGestionF: TProduitGestionF
           DoubleBuffered = True
           Enabled = False
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
+          Font.Color = 4207405
           Font.Height = 18
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
@@ -1275,7 +1283,7 @@ object ProduitGestionF: TProduitGestionF
           OnChange = MargeDProduitEdtChange
           OnClick = MargeDProduitEdtClick
           OnKeyDown = PrixVHTDProduitEdtKeyDown
-          OnKeyPress = MargeDProduitEdtKeyPress
+          OnKeyPress = PrixAHTProduitEdtKeyPress
         end
         object PrixVHTRProduitEdt: TEdit
           Left = 314
@@ -1286,7 +1294,7 @@ object ProduitGestionF: TProduitGestionF
           DoubleBuffered = True
           Enabled = False
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
+          Font.Color = 4207405
           Font.Height = 18
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
@@ -1298,7 +1306,7 @@ object ProduitGestionF: TProduitGestionF
           OnClick = PrixVHTRProduitEdtClick
           OnExit = PrixVHTRProduitEdtExit
           OnKeyDown = PrixVHTDProduitEdtKeyDown
-          OnKeyPress = PrixVHTRProduitEdtKeyPress
+          OnKeyPress = PrixAHTProduitEdtKeyPress
         end
         object PrixVTTCRProduitEdt: TEdit
           Left = 438
@@ -1309,7 +1317,7 @@ object ProduitGestionF: TProduitGestionF
           DoubleBuffered = True
           Enabled = False
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
+          Font.Color = 4207405
           Font.Height = 18
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
@@ -1321,7 +1329,7 @@ object ProduitGestionF: TProduitGestionF
           OnClick = PrixVTTCRProduitEdtClick
           OnExit = PrixVTTCRProduitEdtExit
           OnKeyDown = PrixVHTDProduitEdtKeyDown
-          OnKeyPress = PrixVTTCRProduitEdtKeyPress
+          OnKeyPress = PrixAHTProduitEdtKeyPress
         end
         object MargeRProduitEdt: TEdit
           Left = 563
@@ -1332,7 +1340,7 @@ object ProduitGestionF: TProduitGestionF
           DoubleBuffered = True
           Enabled = False
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
+          Font.Color = 4207405
           Font.Height = 18
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
@@ -1343,7 +1351,7 @@ object ProduitGestionF: TProduitGestionF
           OnChange = MargeRProduitEdtChange
           OnClick = MargeRProduitEdtClick
           OnKeyDown = PrixVHTDProduitEdtKeyDown
-          OnKeyPress = MargeRProduitEdtKeyPress
+          OnKeyPress = PrixAHTProduitEdtKeyPress
         end
         object PrixVHTGProduitEdt: TEdit
           Left = 314
@@ -1354,7 +1362,7 @@ object ProduitGestionF: TProduitGestionF
           DoubleBuffered = True
           Enabled = False
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
+          Font.Color = 4207405
           Font.Height = 18
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
@@ -1366,7 +1374,7 @@ object ProduitGestionF: TProduitGestionF
           OnClick = PrixVHTGProduitEdtClick
           OnExit = PrixVHTGProduitEdtExit
           OnKeyDown = PrixVHTDProduitEdtKeyDown
-          OnKeyPress = PrixVHTGProduitEdtKeyPress
+          OnKeyPress = PrixAHTProduitEdtKeyPress
         end
         object PrixVTTCGProduitEdt: TEdit
           Left = 438
@@ -1377,7 +1385,7 @@ object ProduitGestionF: TProduitGestionF
           DoubleBuffered = True
           Enabled = False
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
+          Font.Color = 4207405
           Font.Height = 18
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
@@ -1389,7 +1397,7 @@ object ProduitGestionF: TProduitGestionF
           OnClick = PrixVTTCGProduitEdtClick
           OnExit = PrixVTTCGProduitEdtExit
           OnKeyDown = PrixVHTDProduitEdtKeyDown
-          OnKeyPress = PrixVTTCGProduitEdtKeyPress
+          OnKeyPress = PrixAHTProduitEdtKeyPress
         end
         object MargeGProduitEdt: TEdit
           Left = 563
@@ -1400,7 +1408,7 @@ object ProduitGestionF: TProduitGestionF
           DoubleBuffered = True
           Enabled = False
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
+          Font.Color = 4207405
           Font.Height = 18
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
@@ -1411,7 +1419,7 @@ object ProduitGestionF: TProduitGestionF
           OnChange = MargeGProduitEdtChange
           OnClick = MargeGProduitEdtClick
           OnKeyDown = PrixVHTDProduitEdtKeyDown
-          OnKeyPress = MargeGProduitEdtKeyPress
+          OnKeyPress = PrixAHTProduitEdtKeyPress
         end
         object PrixVHTA1ProduitEdt: TEdit
           Left = 314
@@ -1422,7 +1430,7 @@ object ProduitGestionF: TProduitGestionF
           DoubleBuffered = True
           Enabled = False
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
+          Font.Color = 4207405
           Font.Height = 18
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
@@ -1434,7 +1442,7 @@ object ProduitGestionF: TProduitGestionF
           OnClick = PrixVHTA1ProduitEdtClick
           OnExit = PrixVHTA1ProduitEdtExit
           OnKeyDown = PrixVHTDProduitEdtKeyDown
-          OnKeyPress = PrixVHTA1ProduitEdtKeyPress
+          OnKeyPress = PrixAHTProduitEdtKeyPress
         end
         object PrixVTTCA1ProduitEdt: TEdit
           Left = 438
@@ -1445,7 +1453,7 @@ object ProduitGestionF: TProduitGestionF
           DoubleBuffered = True
           Enabled = False
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
+          Font.Color = 4207405
           Font.Height = 18
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
@@ -1457,7 +1465,7 @@ object ProduitGestionF: TProduitGestionF
           OnClick = PrixVTTCA1ProduitEdtClick
           OnExit = PrixVTTCA1ProduitEdtExit
           OnKeyDown = PrixVHTDProduitEdtKeyDown
-          OnKeyPress = PrixVTTCA1ProduitEdtKeyPress
+          OnKeyPress = PrixAHTProduitEdtKeyPress
         end
         object MargeA1ProduitEdt: TEdit
           Left = 563
@@ -1468,7 +1476,7 @@ object ProduitGestionF: TProduitGestionF
           DoubleBuffered = True
           Enabled = False
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
+          Font.Color = 4207405
           Font.Height = 18
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
@@ -1479,7 +1487,7 @@ object ProduitGestionF: TProduitGestionF
           OnChange = MargeA1ProduitEdtChange
           OnClick = MargeA1ProduitEdtClick
           OnKeyDown = PrixVHTDProduitEdtKeyDown
-          OnKeyPress = MargeA1ProduitEdtKeyPress
+          OnKeyPress = PrixAHTProduitEdtKeyPress
         end
         object PrixVHTA2ProduitEdt: TEdit
           Left = 314
@@ -1490,7 +1498,7 @@ object ProduitGestionF: TProduitGestionF
           DoubleBuffered = True
           Enabled = False
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
+          Font.Color = 4207405
           Font.Height = 18
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
@@ -1502,7 +1510,7 @@ object ProduitGestionF: TProduitGestionF
           OnClick = PrixVHTA2ProduitEdtClick
           OnExit = PrixVHTA2ProduitEdtExit
           OnKeyDown = PrixVHTDProduitEdtKeyDown
-          OnKeyPress = PrixVHTA2ProduitEdtKeyPress
+          OnKeyPress = PrixAHTProduitEdtKeyPress
         end
         object PrixVTTCA2ProduitEdt: TEdit
           Left = 438
@@ -1513,7 +1521,7 @@ object ProduitGestionF: TProduitGestionF
           DoubleBuffered = True
           Enabled = False
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
+          Font.Color = 4207405
           Font.Height = 18
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
@@ -1525,7 +1533,7 @@ object ProduitGestionF: TProduitGestionF
           OnClick = PrixVTTCA2ProduitEdtClick
           OnExit = PrixVTTCA2ProduitEdtExit
           OnKeyDown = PrixVHTDProduitEdtKeyDown
-          OnKeyPress = PrixVTTCA2ProduitEdtKeyPress
+          OnKeyPress = PrixAHTProduitEdtKeyPress
         end
         object MargeA2ProduitEdt: TEdit
           Left = 563
@@ -1536,7 +1544,7 @@ object ProduitGestionF: TProduitGestionF
           DoubleBuffered = True
           Enabled = False
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
+          Font.Color = 4207405
           Font.Height = 18
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
@@ -1547,7 +1555,7 @@ object ProduitGestionF: TProduitGestionF
           OnChange = MargeA2ProduitEdtChange
           OnClick = MargeA2ProduitEdtClick
           OnKeyDown = PrixVHTDProduitEdtKeyDown
-          OnKeyPress = MargeA2ProduitEdtKeyPress
+          OnKeyPress = PrixAHTProduitEdtKeyPress
         end
         object LineP2: TPanel
           Left = 0
@@ -1571,7 +1579,7 @@ object ProduitGestionF: TProduitGestionF
           Alignment = taCenter
           DoubleBuffered = True
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
+          Font.Color = 4207405
           Font.Height = 18
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
@@ -1588,7 +1596,7 @@ object ProduitGestionF: TProduitGestionF
           Alignment = taCenter
           DoubleBuffered = True
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
+          Font.Color = 4207405
           Font.Height = 18
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
@@ -1655,7 +1663,7 @@ object ProduitGestionF: TProduitGestionF
           Height = 26
           DoubleBuffered = True
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
+          Font.Color = 4207405
           Font.Height = 18
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
@@ -1691,7 +1699,7 @@ object ProduitGestionF: TProduitGestionF
           Alignment = taCenter
           DoubleBuffered = True
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
+          Font.Color = 4207405
           Font.Height = 18
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
@@ -1732,7 +1740,7 @@ object ProduitGestionF: TProduitGestionF
           Height = 26
           Style = csOwnerDrawFixed
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
+          Font.Color = 4207405
           Font.Height = -15
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
@@ -1748,7 +1756,7 @@ object ProduitGestionF: TProduitGestionF
           Width = 531
           Height = 45
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
+          Font.Color = 4207405
           Font.Height = 18
           Font.Name = 'Roboto'
           Font.Style = []
@@ -1759,7 +1767,7 @@ object ProduitGestionF: TProduitGestionF
       end
     end
     object PlusInfoClientGTB: TsTabSheet
-      Caption = 'Plus D'#39'info'
+      Caption = 'Plus d'#39'info'
       object PlusInfoTB: TPanel
         Left = 0
         Top = 0
@@ -1873,9 +1881,9 @@ object ProduitGestionF: TProduitGestionF
         object Label5: TLabel
           Left = 494
           Top = 6
-          Width = 109
+          Width = 106
           Height = 17
-          Caption = 'Photo De produit'
+          Caption = 'Photo de produit'
           Color = 4207405
           Font.Charset = DEFAULT_CHARSET
           Font.Color = 4207405
@@ -2080,7 +2088,7 @@ object ProduitGestionF: TProduitGestionF
           Width = 616
           Height = 128
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
+          Font.Color = 4207405
           Font.Height = 18
           Font.Name = 'Roboto'
           Font.Style = []
@@ -2093,7 +2101,7 @@ object ProduitGestionF: TProduitGestionF
           Width = 317
           Height = 26
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
+          Font.Color = 4207405
           Font.Height = 18
           Font.Name = 'Roboto'
           Font.Style = []
@@ -2110,7 +2118,7 @@ object ProduitGestionF: TProduitGestionF
           Alignment = taRightJustify
           DoubleBuffered = True
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
+          Font.Color = 4207405
           Font.Height = 18
           Font.Name = 'Roboto'
           Font.Style = []
@@ -2126,7 +2134,7 @@ object ProduitGestionF: TProduitGestionF
           Alignment = taRightJustify
           DoubleBuffered = True
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
+          Font.Color = 4207405
           Font.Height = 18
           Font.Name = 'Roboto'
           Font.Style = []
@@ -2140,7 +2148,7 @@ object ProduitGestionF: TProduitGestionF
           Width = 616
           Height = 128
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
+          Font.Color = 4207405
           Font.Height = 18
           Font.Name = 'Roboto'
           Font.Style = []
@@ -2155,7 +2163,7 @@ object ProduitGestionF: TProduitGestionF
           Height = 26
           Hint = 'Fournisseur principal'
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
+          Font.Color = 4207405
           Font.Height = 18
           Font.Name = 'Helvetica LT Std'
           Font.Style = []

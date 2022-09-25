@@ -56,23 +56,23 @@ type
     LineP4: TPanel;
     MargeDProduitEdt: TEdit;
     Label14: TLabel;
-    Label15: TLabel;
+    PrixVHTDProduitLbl: TLabel;
     PrixVHTRProduitEdt: TEdit;
     PrixVTTCRProduitEdt: TEdit;
     MargeRProduitEdt: TEdit;
-    Label16: TLabel;
+    PrixVHTRProduitLbl: TLabel;
     PrixVHTGProduitEdt: TEdit;
     PrixVTTCGProduitEdt: TEdit;
     MargeGProduitEdt: TEdit;
-    Label17: TLabel;
+    PrixVHTGProduitLbl: TLabel;
     PrixVHTA1ProduitEdt: TEdit;
     PrixVTTCA1ProduitEdt: TEdit;
     MargeA1ProduitEdt: TEdit;
-    Label18: TLabel;
+    PrixVHTA1ProduitLbl: TLabel;
     PrixVHTA2ProduitEdt: TEdit;
     PrixVTTCA2ProduitEdt: TEdit;
     MargeA2ProduitEdt: TEdit;
-    Label19: TLabel; Label20: TLabel;
+    PrixVHTA2ProduitLbl: TLabel; Label20: TLabel;
     Label21: TLabel; Label22: TLabel;
     Label23: TLabel; Label24: TLabel;
     LineP2: TPanel;  Label25: TLabel;
@@ -207,27 +207,11 @@ type
     procedure FormCreate(Sender: TObject);
     procedure PrixVTTCDProduitEdtKeyPress(Sender: TObject; var Key: Char);
     procedure PrixAHTProduitEdtKeyPress(Sender: TObject; var Key: Char);
-    procedure PrixATTCProduitEdtKeyPress(Sender: TObject; var Key: Char);
-    procedure PrixVHTDProduitEdtKeyPress(Sender: TObject; var Key: Char);
-    procedure MargeDProduitEdtKeyPress(Sender: TObject; var Key: Char);
-    procedure PrixVHTRProduitEdtKeyPress(Sender: TObject; var Key: Char);
-    procedure PrixVTTCRProduitEdtKeyPress(Sender: TObject; var Key: Char);
-    procedure MargeRProduitEdtKeyPress(Sender: TObject; var Key: Char);
-    procedure PrixVHTGProduitEdtKeyPress(Sender: TObject; var Key: Char);
-    procedure PrixVTTCGProduitEdtKeyPress(Sender: TObject; var Key: Char);
-    procedure MargeGProduitEdtKeyPress(Sender: TObject; var Key: Char);
-    procedure PrixVHTA1ProduitEdtKeyPress(Sender: TObject; var Key: Char);
-    procedure PrixVTTCA1ProduitEdtKeyPress(Sender: TObject; var Key: Char);
-    procedure MargeA1ProduitEdtKeyPress(Sender: TObject; var Key: Char);
-    procedure PrixVHTA2ProduitEdtKeyPress(Sender: TObject; var Key: Char);
-    procedure PrixVTTCA2ProduitEdtKeyPress(Sender: TObject; var Key: Char);
-    procedure MargeA2ProduitEdtKeyPress(Sender: TObject; var Key: Char);
     procedure CodeBarProduitGEdtEnter(Sender: TObject);
     procedure ShowKeyBoardProduitGBtnClick(Sender: TObject);
     procedure NameProduitGEdtMouseEnter(Sender: TObject);
     procedure TVAProduitGCbxKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
-    procedure TVAProduitGCbxKeyPress(Sender: TObject; var Key: Char);
     procedure MarkProduitGCbxEnter(Sender: TObject);
     procedure AddMarkProduitGBtnClick(Sender: TObject);
     procedure CancelProduitGBtnMouseEnter(Sender: TObject);
@@ -257,12 +241,11 @@ implementation
 
 {$R *.dfm}
 
-uses Winapi.ShellAPI,DateUtils, UClientGestion, UMainF, USplashAddUnite, UFournisseurList,
-  USplashAddCodeBarre, math, UFournisseurGestion, USplash, UProduitsList
-
-  , UComptoir, UBonFacAGestion, UBonFacVGestion, UBonLivGestion, UBonRecGestion,
-  UPertesGestion, UBonFacPGestion, UInventoryGestion, UBonComAGestion,
-  UBonComVGestion, UBonRetVGestion, UBonRetAGestion, UDataModule;
+uses Winapi.ShellAPI,DateUtils,Math,IniFiles,
+  UMainF, UDataModule, USplashAddUnite, UFournisseurList,USplashAddCodeBarre,
+  UFournisseurGestion,UClientGestion, USplash, UProduitsList,UPertesGestion,UInventoryGestion,
+  UComptoir, UBonFacAGestion,UBonFacVGestion,UBonLivGestion,UBonRecGestion,
+  UBonFacPGestion,UBonComAGestion,UBonComVGestion,UBonRetVGestion, UBonRetAGestion;
 
 
 //----------- use this procedure to set center aligment text for the combobox---////
@@ -303,7 +286,7 @@ begin
   ProduitGestionF.FamilleProduitGCbx.Clear;
   ProduitGestionF.SFamilleProduitGCbx.Clear;
   ProduitGestionF.UniteProduitGCbx.Clear;
-  ProduitGestionF.TVAProduitGCbx.ItemIndex := 0;
+//  ProduitGestionF.TVAProduitGCbx.ItemIndex := 0;
   ProduitGestionF.PerProduitGSlider.SliderOn := False;
   ProduitGestionF.AlertJoursProduitEdt.Text:= '0';
   ProduitGestionF.StockINProduitEdt.Clear;
@@ -952,7 +935,7 @@ end;
 
 procedure TProduitGestionF.FormActivate(Sender: TObject);
 begin
-  ComboboxAligment;
+
     SetWindowPos(ProduitGestionF.Handle,HWND_TOPMOST,0,0,0,0,HWND_TOPMOST OR  SWP_NOACTIVATE or SWP_NOMOVE or SWP_NOSIZE);
 end;
 
@@ -1064,7 +1047,11 @@ begin
 end;
 
 procedure TProduitGestionF.FormShow(Sender: TObject);
+Var Ini: TIniFile;
+    SysDecimalSeparator :char;
 begin
+  //Here we get the system DecimalSeparator is being used
+  SysDecimalSeparator:= FormatSettings.DecimalSeparator ;
   GrayForms  ;
   MainForm.ProduitTable.DisableControls;
   if NOT (ImageShowProduitG.Picture.Graphic = nil) then
@@ -1080,7 +1067,63 @@ begin
   DatePerProduitGD.Date:=EncodeDate (YearOf(Now),MonthOf(Now),DayOf(Now));
 
   //Update how many serial numbers it has this produit
-  NSeriesCountProduitGLbl.Caption := IntToStr(NSeriesProduitGMem.Lines.Count)
+  NSeriesCountProduitGLbl.Caption := IntToStr(NSeriesProduitGMem.Lines.Count);
+
+  Ini := TIniFile.Create(ChangeFileExt(Application.ExeName,'.ini')) ;
+  //Here we check if is EU (FR) and change views and values
+  if Ini.ReadBool('', 'Is EU',False) then
+  begin
+   PrixVHTDProduitLbl.Caption:='Particulier:';
+   PrixVHTRProduitLbl.Caption:='Professional:';
+   PrixVHTGProduitLbl.Caption:='Société:';
+   PrixVHTA1ProduitLbl.Caption:='Catégorie 1:';
+   PrixVHTA2ProduitLbl.Caption:='Catégorie 2:';
+
+   TVAProduitGCbx.Items.Clear;
+//   TVAProduitGCbx.Items.Add('0'+SysDecimalSeparator+'00'); //Active When we chnage tva_p from int to numiric in produit table and bons
+   TVAProduitGCbx.Items.Add('0');
+//   TVAProduitGCbx.Items.Add('2'+SysDecimalSeparator+'10');
+   TVAProduitGCbx.Items.Add('5');
+//   TVAProduitGCbx.Items.Add('5'+SysDecimalSeparator+'50');
+   TVAProduitGCbx.Items.Add('7');
+   TVAProduitGCbx.Items.Add('10');
+//   TVAProduitGCbx.Items.Add('19'+SysDecimalSeparator+'60');
+   TVAProduitGCbx.Items.Add('20');
+//   TVAProduitGCbx.Items.Add('20'+SysDecimalSeparator+'60');
+
+   if ProduitGestionF.Tag = 0 then//load last used TVA only when create
+   TVAProduitGCbx.ItemIndex:= Ini.ReadInteger(Caption, 'Default TVA',TVAProduitGCbx.ItemIndex);
+   if TVAProduitGCbx.ItemIndex = -1 then
+   TVAProduitGCbx.ItemIndex := 0;
+
+  end else
+      begin
+       ComboboxAligment;//Here we center the TVA cuz we use small numbers
+       PrixVHTDProduitLbl.Caption:='Detail:';
+       PrixVHTRProduitLbl.Caption:='Revendeur:';
+       PrixVHTGProduitLbl.Caption:='Gros:';
+       PrixVHTA1ProduitLbl.Caption:='Autre 1:';
+       PrixVHTA2ProduitLbl.Caption:='Autre 2:';
+
+       TVAProduitGCbx.Items.Clear;
+       TVAProduitGCbx.Items.Add('0');
+       TVAProduitGCbx.Items.Add('9');
+       TVAProduitGCbx.Items.Add('19');
+
+       if ProduitGestionF.Tag = 0 then//load last used TVA only when create
+       TVAProduitGCbx.ItemIndex:= Ini.ReadInteger(Caption, 'Default TVA',TVAProduitGCbx.ItemIndex);
+       if TVAProduitGCbx.ItemIndex = -1 then
+       TVAProduitGCbx.ItemIndex := 0;
+      end;
+
+    //Here we change the visibility of components depends on EU or NOT
+//      NISCompanyGLbl.Visible:= NOT Ini.ReadBool('', 'Is EU',False);
+//      NISCompanyGEdt.Visible:= NOT Ini.ReadBool('', 'Is EU',False);
+
+
+    Ini.Free;
+
+
 
 end;
 
@@ -1427,11 +1470,9 @@ AlertJours,MinStock,MaxStock,StockIN,StockAlert ,FamP,FamSP,MarkP,UnitP,FourP,Lo
 //DatePer : TDateTime;
   S : TStream;
   lookupResultNomP,lookupResultRefP : Variant;
-
   testInt : Integer;
-
   I : Integer;
-
+  Ini: TIniFile;
 begin
                   //AND  TryStrToInt(NameProduitGEdt.Text,testInt) = True
  if (NameProduitGEdt.Text <> '')  then
@@ -1846,6 +1887,10 @@ begin
           NameProduitGErrorP.Visible:= false;
           sndPlaySound('C:\Windows\Media\speech on.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
 
+          //Here we register the used TVA for next open
+          Ini := TIniFile.Create(ChangeFileExt(Application.ExeName,'.ini'));
+          Ini.WriteInteger(Caption, 'Default TVA', TVAProduitGCbx.ItemIndex);
+          Ini.Free;
           FreeAndNil(ProduitGestionF);
         //  NormalForms;
           end else // End of lookup  ref_p
@@ -2240,6 +2285,10 @@ begin
           NameProduitGErrorP.Visible:= false;
           sndPlaySound('C:\Windows\Media\speech on.wav', SND_NODEFAULT Or SND_ASYNC Or SND_RING);
 
+          //Here we register the used TVA for next open
+          Ini := TIniFile.Create(ChangeFileExt(Application.ExeName,'.ini'));
+          Ini.WriteInteger(Caption, 'Default TVA', TVAProduitGCbx.ItemIndex);
+          Ini.Free;
           FreeAndNil(ProduitGestionF);
             //////////////////
             //////////////////
@@ -3151,30 +3200,6 @@ if key = VK_RETURN then
 SelectNext(ActiveControl as TWinControl, True,True );
 end;
 
-procedure TProduitGestionF.TVAProduitGCbxKeyPress(Sender: TObject;
-  var Key: Char);
-const
-  N = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0',',','.', Char(VK_back)];
-  F = ['.'];
-begin
-
-  if NOT(Key in N) then
-  begin
-     key := #0;
-  end;
-
-  if (Key in F) then
-  begin
-    key :=  #0;
-  end;
-
-  if (Key = ',') AND (Pos(Key, (TVAProduitGCbx.Text)) > 0) Then
-  begin
-      Key := #0;
-  end;
-
-end;
-
 procedure TProduitGestionF.UniteProduitGCbxEnter(Sender: TObject);
 var
 I : Integer;
@@ -3524,7 +3549,7 @@ end;
 procedure TProduitGestionF.FormCreate(Sender: TObject);
 begin
 //  Application.UpdateFormatSettings := false;
-//  FormatSettings.DecimalSeparator := '.';
+//  FormatSettings.DecimalSeparator := ',';
 //  FormatSettings.ThousandSeparator := ' ';
 //  FormatSettings.CurrencyDecimals := 2;
 //  FormatSettings.DateSeparator:= '/';
@@ -3555,152 +3580,38 @@ procedure TProduitGestionF.PrixAHTProduitEdtKeyPress(Sender: TObject;
   var Key: Char);
 const
   N = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0',',','.', Char(VK_back)];
-  F = ['.'];
+  P = ['.'];
+  C = [','];
 begin
-
   if NOT(Key in N) then
   begin
      key := #0;
   end;
-
-  if (Key in F) then
+  //To Check if period is pressed
+  if (Key in P) then
   begin
-    key :=  #44;
+   if FormatSettings.DecimalSeparator = ',' then
+   begin
+     key :=  #44; // #44 is ','
+   end;
+    if FormatSettings.DecimalSeparator = '.' then
+   begin
+     key :=  #46; // #44 is ','
+   end;
   end;
-
-  if (Key = ',') AND (Pos(Key, (PrixAHTProduitEdt.Text)) > 0) Then
+  //To Check if comma is pressed
+  if (Key in C) then
   begin
-      Key := #0;
+   if FormatSettings.DecimalSeparator = ',' then
+   begin
+     key :=  #44; // #44 is ','
+   end;
+    if FormatSettings.DecimalSeparator = '.' then
+   begin
+     key :=  #46; // #46 is '.'
+   end;
   end;
-
-end;
-
-procedure TProduitGestionF.PrixATTCProduitEdtKeyPress(Sender: TObject;
-  var Key: Char);
-const
-  N = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0',',','.', Char(VK_back)];
-   F = ['.'];
-begin
-  if not(Key in N) then
-  begin
-     key := #0;
-  end;
-
-   if (Key in F) then
-  begin
-    key :=  #44;
-  end;
-  if (Key = ',') AND (Pos(Key, (PrixATTCProduitEdt.Text)) > 0) Then
-  begin
-      Key := #0;
-  end;
-
-end;
-
-procedure TProduitGestionF.PrixVHTDProduitEdtKeyPress(Sender: TObject;
-  var Key: Char);
-const
-  N = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0',',','.', Char(VK_back)];
-   F = ['.'];
-begin
-  if not(Key in N) then
-  begin
-     key := #0;
-  end;
-
-   if (Key in F) then
-  begin
-    key :=  #44;
-  end;
-  if (Key = ',') AND (Pos(Key, (PrixVHTDProduitEdt.Text)) > 0) Then
-  begin
-      Key := #0;
-  end;
-
-end;
-
-procedure TProduitGestionF.MargeDProduitEdtKeyPress(Sender: TObject;
-  var Key: Char);
-const
-  N = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0',',','.', Char(VK_back)];
-   F = ['.'];
-begin
-  if not(Key in N) then
-  begin
-     key := #0;
-  end;
-
-   if (Key in F) then
-  begin
-    key :=  #44;
-  end;
-  if (Key = ',') AND (Pos(Key, (MargeDProduitEdt.Text)) > 0) Then
-  begin
-      Key := #0;
-  end;
-
-end;
-
-procedure TProduitGestionF.PrixVHTRProduitEdtKeyPress(Sender: TObject;
-  var Key: Char);
-const
-  N = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0',',','.', Char(VK_back)];
-   F = ['.'];
-begin
-  if not(Key in N) then
-  begin
-     key := #0;
-  end;
-
-   if (Key in F) then
-  begin
-    key :=  #44;
-  end;
-  if (Key = ',') AND (Pos(Key, (PrixVHTRProduitEdt.Text)) > 0) Then
-  begin
-      Key := #0;
-  end;
-
-end;
-
-procedure TProduitGestionF.PrixVTTCRProduitEdtKeyPress(Sender: TObject;
-  var Key: Char);
-const
-  N = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0',',','.', Char(VK_back)];
-   F = ['.'];
-begin
-  if not(Key in N) then
-  begin
-     key := #0;
-  end;
-
-   if (Key in F) then
-  begin
-    key :=  #44;
-  end;
-  if (Key = ',') AND (Pos(Key, (PrixVTTCRProduitEdt.Text)) > 0) Then
-  begin
-      Key := #0;
-  end;
-
-end;
-
-procedure TProduitGestionF.MargeRProduitEdtKeyPress(Sender: TObject;
-  var Key: Char);
-const
-  N = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0',',','.', Char(VK_back)];
-   F = ['.'];
-begin
-  if not(Key in N) then
-  begin
-     key := #0;
-  end;
-
-   if (Key in F) then
-  begin
-    key :=  #44;
-  end;
-  if (Key = ',') AND (Pos(Key, (MargeRProduitEdt.Text)) > 0) Then
+  if ((Key = ',') OR (Key = '.')) AND (Pos(Key, (TEdit(Sender).Text)) > 0) Then
   begin
       Key := #0;
   end;
@@ -3736,200 +3647,6 @@ begin
   MarkProduitGCbx.ItemIndex:=0;
 end;
 
-procedure TProduitGestionF.PrixVHTGProduitEdtKeyPress(Sender: TObject;
-  var Key: Char);
-const
-  N = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0',',','.', Char(VK_back)];
-   F = ['.'];
-begin
-  if not(Key in N) then
-  begin
-     key := #0;
-  end;
 
-   if (Key in F) then
-  begin
-    key :=  #44;
-  end;
-  if (Key = ',') AND (Pos(Key, (PrixVHTGProduitEdt.Text)) > 0) Then
-  begin
-      Key := #0;
-  end;
-end;
-
-procedure TProduitGestionF.PrixVTTCGProduitEdtKeyPress(Sender: TObject;
-  var Key: Char);
-const
-  N = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0',',','.', Char(VK_back)];
-   F = ['.'];
-begin
-  if not(Key in N) then
-  begin
-     key := #0;
-  end;
-
-   if (Key in F) then
-  begin
-    key :=  #44;
-  end;
-  if (Key = ',') AND (Pos(Key, (PrixVTTCGProduitEdt.Text)) > 0) Then
-  begin
-      Key := #0;
-  end;
-
-end;
-
-procedure TProduitGestionF.MargeGProduitEdtKeyPress(Sender: TObject;
-  var Key: Char);
-const
-  N = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0',',','.', Char(VK_back)];
-   F = ['.'];
-begin
-  if not(Key in N) then
-  begin
-     key := #0;
-  end;
-
-   if (Key in F) then
-  begin
-    key :=  #44;
-  end;
-  if (Key = ',') AND (Pos(Key, (MargeGProduitEdt.Text)) > 0) Then
-  begin
-      Key := #0;
-  end;
-
-end;
-
-procedure TProduitGestionF.PrixVHTA1ProduitEdtKeyPress(Sender: TObject;
-  var Key: Char);
-const
-  N = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0',',','.', Char(VK_back)];
-   F = ['.'];
-begin
-  if not(Key in N) then
-  begin
-     key := #0;
-  end;
-
-   if (Key in F) then
-  begin
-    key :=  #44;
-  end;
-  if (Key = ',') AND (Pos(Key, (PrixVHTA1ProduitEdt.Text)) > 0) Then
-  begin
-      Key := #0;
-  end;
-
-end;
-
-procedure TProduitGestionF.PrixVTTCA1ProduitEdtKeyPress(Sender: TObject;
-  var Key: Char);
-const
-  N = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0',',','.', Char(VK_back)];
-   F = ['.'];
-begin
-  if not(Key in N) then
-  begin
-     key := #0;
-  end;
-
-   if (Key in F) then
-  begin
-    key :=  #44;
-  end;
-  if (Key = ',') AND (Pos(Key, (PrixVTTCA1ProduitEdt.Text)) > 0) Then
-  begin
-      Key := #0;
-  end;
-
-end;
-
-procedure TProduitGestionF.MargeA1ProduitEdtKeyPress(Sender: TObject;
-  var Key: Char);
-const
-  N = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0',',','.', Char(VK_back)];
-   F = ['.'];
-begin
-  if not(Key in N) then
-  begin
-     key := #0;
-  end;
-
-   if (Key in F) then
-  begin
-    key :=  #44;
-  end;
-  if (Key = ',') AND (Pos(Key, (MargeA1ProduitEdt.Text)) > 0) Then
-  begin
-      Key := #0;
-  end;
-
-end;
-
-procedure TProduitGestionF.PrixVHTA2ProduitEdtKeyPress(Sender: TObject;
-  var Key: Char);
-const
-  N = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0',',','.', Char(VK_back)];
-   F = ['.'];
-begin
-  if not(Key in N) then
-  begin
-     key := #0;
-  end;
-
-   if (Key in F) then
-  begin
-    key :=  #44;
-  end;
-  if (Key = ',') AND (Pos(Key, (PrixVHTA2ProduitEdt.Text)) > 0) Then
-  begin
-      Key := #0;
-  end;
-
-end;
-
-procedure TProduitGestionF.PrixVTTCA2ProduitEdtKeyPress(Sender: TObject;
-  var Key: Char);
-const
-  N = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0',',','.', Char(VK_back)];
-   F = ['.'];
-begin
-  if not(Key in N) then
-  begin
-     key := #0;
-  end;
-
-   if (Key in F) then
-  begin
-    key :=  #44;
-  end;
-  if (Key = ',') AND (Pos(Key, (PrixVTTCA2ProduitEdt.Text)) > 0) Then
-  begin
-      Key := #0;
-  end;
-end;
-
-procedure TProduitGestionF.MargeA2ProduitEdtKeyPress(Sender: TObject;
-  var Key: Char);
-const
-  N = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0',',','.', Char(VK_back)];
-   F = ['.'];
-begin
-  if not(Key in N) then
-  begin
-     key := #0;
-  end;
-
-   if (Key in F) then
-  begin
-    key :=  #44;
-  end;
-  if (Key = ',') AND (Pos(Key, (MargeA2ProduitEdt.Text)) > 0) Then
-  begin
-      Key := #0;
-  end;
-
-end;
 
 end.

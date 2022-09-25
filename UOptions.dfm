@@ -1104,7 +1104,6 @@ object FOptions: TFOptions
         ParentDoubleBuffered = False
         TabOrder = 4
         StyleElements = []
-        ExplicitWidth = 434
       end
       object PrintersListFOptionCodeBCbx: TComboBox
         Left = 25
@@ -1177,7 +1176,6 @@ object FOptions: TFOptions
         ParentDoubleBuffered = False
         TabOrder = 8
         StyleElements = []
-        ExplicitWidth = 434
       end
       object FormatBLOptionCbx: TComboBox
         Left = 25
@@ -1773,7 +1771,6 @@ object FOptions: TFOptions
           ParentDoubleBuffered = False
           TabOrder = 6
           StyleElements = []
-          ExplicitWidth = 433
         end
         object Panel10: TPanel
           Left = 9
@@ -1788,7 +1785,6 @@ object FOptions: TFOptions
           ParentDoubleBuffered = False
           TabOrder = 7
           StyleElements = []
-          ExplicitWidth = 433
         end
         object TiroirCaisseCasePasswordSdr: TsSlider
           Left = 294
@@ -1854,7 +1850,6 @@ object FOptions: TFOptions
         Color = 15658734
         ParentBackground = False
         TabOrder = 4
-        ExplicitLeft = 472
       end
     end
     object sTabSheet2: TsTabSheet
@@ -3263,7 +3258,6 @@ object FOptions: TFOptions
         Color = 15658734
         ParentBackground = False
         TabOrder = 2
-        ExplicitLeft = 472
       end
     end
     object sTabSheet3: TsTabSheet
@@ -3341,7 +3335,6 @@ object FOptions: TFOptions
         StyleElements = []
         ShowFocus = False
         TabsLineSkin = 'DIVIDER'
-        ExplicitWidth = 477
         object Fav1ListTB: TsTabSheet
           Caption = 'Liste 1'
           Font.Charset = DEFAULT_CHARSET
@@ -3361,7 +3354,6 @@ object FOptions: TFOptions
             ParentBackground = False
             TabOrder = 0
             StyleElements = []
-            ExplicitWidth = 469
           end
           object GridPanel2: TGridPanel
             Left = 0
@@ -3466,7 +3458,6 @@ object FOptions: TFOptions
               end>
             ShowCaption = False
             TabOrder = 1
-            ExplicitWidth = 469
             DesignSize = (
               494
               533)
@@ -3785,7 +3776,6 @@ object FOptions: TFOptions
             ParentBackground = False
             TabOrder = 0
             StyleElements = []
-            ExplicitWidth = 646
           end
           object GridPanel3: TGridPanel
             Left = 0
@@ -3890,7 +3880,6 @@ object FOptions: TFOptions
               end>
             ShowCaption = False
             TabOrder = 1
-            ExplicitWidth = 646
             DesignSize = (
               494
               533)
@@ -4209,7 +4198,6 @@ object FOptions: TFOptions
             ParentBackground = False
             TabOrder = 0
             StyleElements = []
-            ExplicitWidth = 646
           end
           object GridPanel4: TGridPanel
             Left = 0
@@ -4314,7 +4302,6 @@ object FOptions: TFOptions
               end>
             ShowCaption = False
             TabOrder = 1
-            ExplicitWidth = 646
             DesignSize = (
               494
               533)
@@ -4633,7 +4620,6 @@ object FOptions: TFOptions
             ParentBackground = False
             TabOrder = 0
             StyleElements = []
-            ExplicitWidth = 646
           end
           object GridPanel5: TGridPanel
             Left = 0
@@ -4738,7 +4724,6 @@ object FOptions: TFOptions
               end>
             ShowCaption = False
             TabOrder = 1
-            ExplicitWidth = 646
             DesignSize = (
               494
               533)
@@ -5057,7 +5042,6 @@ object FOptions: TFOptions
             ParentBackground = False
             TabOrder = 0
             StyleElements = []
-            ExplicitWidth = 646
           end
           object GridPanel6: TGridPanel
             Left = 0
@@ -5162,7 +5146,6 @@ object FOptions: TFOptions
               end>
             ShowCaption = False
             TabOrder = 1
-            ExplicitWidth = 646
             DesignSize = (
               494
               533)
@@ -5786,7 +5769,6 @@ object FOptions: TFOptions
         Color = 15658734
         ParentBackground = False
         TabOrder = 3
-        ExplicitLeft = 472
       end
       object Panel14: TPanel
         Left = 3
@@ -7662,7 +7644,6 @@ object FOptions: TFOptions
     ParentFont = False
     TabOrder = 1
     StyleElements = []
-    ExplicitWidth = 437
   end
   object Panel4: TPanel
     Left = 0
@@ -7683,7 +7664,6 @@ object FOptions: TFOptions
     ParentFont = False
     TabOrder = 2
     StyleElements = []
-    ExplicitWidth = 437
     DesignSize = (
       510
       36)

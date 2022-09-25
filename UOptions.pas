@@ -851,24 +851,34 @@ begin
 
       if Ini.ReadBool('', 'Is EU',False) then
       begin
+
+       WilayaCompanyOptionLbl.Caption:='Département:';
        RCCompanyGLbl.Caption:='N° Siret:';
        NIFCompanyGLbl.Caption:='Code NAF/APE:';
        NArtCompanyGLbl.Caption:='N° TVA intracom:';
+       NISCompanyGLbl.Caption:='RCS:';
 
 
+//       CapitalCompanyOptionLbl.Top:= 513;
+//       CapitalCompanyOptionEdt.Top:= 530;
 
 
       end else
           begin
-
+            WilayaCompanyOptionLbl.Caption:='Wilaya:';
             RCCompanyGLbl.Caption:='RC:';
             NIFCompanyGLbl.Caption:='NIF:';
             NArtCompanyGLbl.Caption:='N°Art:';
+            NISCompanyGLbl.Caption:='NIS:';
+
+//            CapitalCompanyOptionLbl.Top:= 558;
+//            CapitalCompanyOptionEdt.Top:= 575;
+
           end;
 
       //Here we change the visibility of components depends on EU or NOT
-      NISCompanyGLbl.Visible:= NOT Ini.ReadBool('', 'Is EU',False);
-      NISCompanyGEdt.Visible:= NOT Ini.ReadBool('', 'Is EU',False);
+//      NISCompanyGLbl.Visible:= NOT Ini.ReadBool('', 'Is EU',False);
+//      NISCompanyGEdt.Visible:= NOT Ini.ReadBool('', 'Is EU',False);
 
 
       Ini.Free;
