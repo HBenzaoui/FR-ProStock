@@ -1686,12 +1686,30 @@ begin
           end;
 
    end;
-          MainForm.SQLQuery.Active:=False;
-          MainForm.SQLQuery.SQL.Clear;
 
-         MainForm.Bonv_liv_listTable.Refresh;
-//        ProduitBonLivGCbx.AutoDropDown:=False;
-         ProduitBonLivGCbx.SelectAll;
+
+//********Here we check if the entred produit has serial numbers if so we show serial number panel*********
+     DataModuleF.SQLQuery3.Active:= False;
+     DataModuleF.SQLQuery3.SQL.Clear ;
+     DataModuleF.SQLQuery3.SQL.Text:= 'SELECT code_ns FROM n_series WHERE code_p ='+ IntToStr(CodeP)
+     +' AND sold_ns = false';
+     DataModuleF.SQLQuery3.Active:= True;
+     if DataModuleF.SQLQuery3.IsEmpty = False then
+     begin
+      SNumberProduitBonLivGBtnClick(Sender);
+     end;
+     DataModuleF.SQLQuery3.Active:= False;
+     DataModuleF.SQLQuery3.SQL.Clear ;
+
+
+
+
+     MainForm.SQLQuery.Active:=False;
+     MainForm.SQLQuery.SQL.Clear;
+
+     MainForm.Bonv_liv_listTable.Refresh;
+//   ProduitBonLivGCbx.AutoDropDown:=False;
+     ProduitBonLivGCbx.SelectAll;
 
      end else
          begin
