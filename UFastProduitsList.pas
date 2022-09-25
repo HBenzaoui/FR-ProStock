@@ -1340,12 +1340,27 @@ begin
 
        MainForm.Bonv_liv_listTable.Refresh;
 
-          BonLivGestionF.ProduitsListDBGridEh.SetFocus;
+       BonLivGestionF.ProduitsListDBGridEh.SetFocus;
 
-           BonLivGestionF.ProduitsListDBGridEh.SelectedIndex:=2;
-           BonLivGestionF.ProduitsListDBGridEh.EditorMode:=True;
+       BonLivGestionF.ProduitsListDBGridEh.SelectedIndex:=2;
+       BonLivGestionF.ProduitsListDBGridEh.EditorMode:=True;
 
-           MainForm.Bonv_liv_listTable.Last;
+       MainForm.Bonv_liv_listTable.Last;
+
+//********Here we check if the entred produit has serial numbers if so we show serial number panel*********
+       DataModuleF.SQLQuery3.Active:= False;
+       DataModuleF.SQLQuery3.SQL.Clear ;
+       DataModuleF.SQLQuery3.SQL.Text:= 'SELECT code_ns FROM n_series WHERE code_p ='+ IntToStr(CodeP)
+       +' AND sold_ns = false';
+       DataModuleF.SQLQuery3.Active:= True;
+       if DataModuleF.SQLQuery3.IsEmpty = False then
+       begin
+        BonLivGestionF.SNumberProduitBonLivGBtnClick(Sender);
+       end;
+       DataModuleF.SQLQuery3.Active:= False;
+       DataModuleF.SQLQuery3.SQL.Clear ;
+
+
     end
      else
 
