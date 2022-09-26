@@ -342,20 +342,12 @@ type
     NIFCompanyGLbl: TLabel;
     RCCompanyGEdt: TEdit;
     RCCompanyGLbl: TLabel;
-    sTabSheet5: TsTabSheet;
-    Shape1: TShape;
-    ImageCompanyOptionImg: TsImage;
-    Label10: TLabel;
-    ImageEditProduitGBtn: TAdvToolButton;
-    ImageDeleteProduitGBtn: TAdvToolButton;
     Label55: TLabel;
     IsEUOptionGSlider: TsSlider;
     AcitiviteCompanyOptionLbl: TLabel;
     AcitiviteCompanyOptionEdt: TEdit;
     VilleCompanyOptionLbl: TLabel;
-    VilleCompanyOptionEdt: TEdit;
     CPostalCompanyOptionLbl: TLabel;
-    CPostalCompanyOptionEdt: TEdit;
     MobCompanyOptionLbl: TLabel;
     MobCompanyOptionEdt: TEdit;
     Mob2CompanyOptionLbl: TLabel;
@@ -364,9 +356,17 @@ type
     CapitalCompanyOptionEdt: TEdit;
     WilayaCompanyOptionLbl: TLabel;
     Label58: TLabel;
-    CountryCompanyOptionEdt: TEdit;
-    WilayaCompanyOptionEdt: TEdit;
     Panel15: TPanel;
+    Panel18: TPanel;
+    Shape1: TShape;
+    ImageCompanyOptionImg: TsImage;
+    ImageDeleteProduitGBtn: TAdvToolButton;
+    ImageEditProduitGBtn: TAdvToolButton;
+    Label10: TLabel;
+    VilleCompanyOptionCbx: TComboBox;
+    CPostalCompanyOptionCbx: TComboBox;
+    WilayaCompanyOptionCbx: TComboBox;
+    CountryCompanyOptionCbx: TComboBox;
     procedure FormShow(Sender: TObject);
     procedure OKFPrintingBtnClick(Sender: TObject);
     procedure ImageCompanyOptionImgMouseEnter(Sender: TObject);
@@ -408,6 +408,10 @@ type
     procedure FormPaint(Sender: TObject);
     procedure BalBtnLblDrawerTimerTimer(Sender: TObject);
     procedure CapitalCompanyOptionEdtExit(Sender: TObject);
+    procedure VilleCompanyOptionCbxEnter(Sender: TObject);
+    procedure WilayaCompanyOptionCbxEnter(Sender: TObject);
+    procedure CPostalCompanyOptionCbxEnter(Sender: TObject);
+    procedure CountryCompanyOptionCbxEnter(Sender: TObject);
   private
     procedure EnableFavBtns;
     procedure DisableFavBtns;
@@ -421,7 +425,8 @@ var
   ScaleLib:IScale;
 implementation
 uses      PLU,ScaleAPI,ShopName,
-Printers,IniFiles, UClientGestion, UMainF, UWorkingSplash, UFastProduitsList;
+Printers,IniFiles, UClientGestion, UMainF, UWorkingSplash, UFastProduitsList,
+  UDataModule;
 
 {$R *.dfm}
 procedure TFOptions.AllSdr0Changing(Sender: TObject; var CanChange: Boolean);
@@ -645,6 +650,68 @@ begin
           RCSdr7.Enabled:= True;
 
       end;
+end;
+
+procedure TFOptions.CountryCompanyOptionCbxEnter(Sender: TObject);
+var
+Ini: TIniFile;
+begin
+ Ini := TIniFile.Create(ChangeFileExt(Application.ExeName,'.ini'));
+ if Ini.ReadBool('', 'Is EU',False) then
+ begin
+    //Here we add France data
+    CountryCompanyOptionCbx.Items.Clear;
+    CountryCompanyOptionCbx.Items.Add('France');
+ end else
+     begin
+        CountryCompanyOptionCbx.Items.Clear;
+        CountryCompanyOptionCbx.Items.Add('Algérie');
+     end;
+   Ini.Free;
+end;
+
+procedure TFOptions.CPostalCompanyOptionCbxEnter(Sender: TObject);
+Var I,CodeW: Integer;
+Ini: TIniFile;
+begin
+ Ini := TIniFile.Create(ChangeFileExt(Application.ExeName,'.ini'));
+ if Ini.ReadBool('', 'Is EU',False) then
+ begin
+    //Here we add France data
+ end else
+     begin
+       if WilayaCompanyOptionCbx.Text <> '' then
+       begin
+        DataModuleF.SQLQuery3.Active:=False;
+        DataModuleF.SQLQuery3.SQL.Clear;
+        DataModuleF.SQLQuery3.SQL.Text:= 'SELECT code_w FROM wilayas WHERE LOWER(nom_w) LIKE LOWER('+QuotedStr(WilayaCompanyOptionCbx.Text)+')' ;
+        DataModuleF.SQLQuery3.Active := True;
+
+        CodeW:= DataModuleF.SQLQuery3.FieldByName('code_w').AsInteger;
+
+        DataModuleF.SQLQuery3.Active:=False;
+        DataModuleF.SQLQuery3.SQL.Clear;
+        DataModuleF.SQLQuery3.SQL.Text:= 'SELECT codepostal_cumm FROM communes WHERE code_w ='+ IntToStr(CodeW) + ' ORDER By code_cumm';
+        DataModuleF.SQLQuery3.Active := True;
+
+        DataModuleF.SQLQuery3.Refresh;
+        CPostalCompanyOptionCbx.Items.Clear;
+
+        DataModuleF.SQLQuery3.first;
+        begin
+         for I := 0 to DataModuleF.SQLQuery3.RecordCount - 1 do
+         if ( DataModuleF.SQLQuery3.FieldByName('codepostal_cumm').IsNull = False )  then
+         begin
+           CPostalCompanyOptionCbx.Items.Add(DataModuleF.SQLQuery3.FieldByName('codepostal_cumm').AsString);
+           DataModuleF.SQLQuery3.Next;
+          end;
+        end;
+
+        DataModuleF.SQLQuery3.Active:=False;
+        DataModuleF.SQLQuery3.SQL.Clear;
+       end;
+     end;
+   Ini.Free;
 end;
 
 procedure TFOptions.Fav1spClick(Sender: TObject);
@@ -927,19 +994,19 @@ begin
         end;
         if (fieldbyname('ville_comp').AsWideString <> '') then
         begin
-         VilleCompanyOptionEdt.Text := fieldbyname('ville_comp').AsWideString;
+         VilleCompanyOptionCbx.Text := fieldbyname('ville_comp').AsWideString;
         end;
         if (fieldbyname('cpostal_comp').AsString <> '') then
         begin
-         CPostalCompanyOptionEdt.Text := fieldbyname('cpostal_comp').AsString;
+         CPostalCompanyOptionCbx.Text := fieldbyname('cpostal_comp').AsString;
         end;
         if (fieldbyname('willaya_comp').AsWideString <> '') then
         begin
-         WilayaCompanyOptionEdt.Text := fieldbyname('willaya_comp').AsWideString;
+         WilayaCompanyOptionCbx.Text := fieldbyname('willaya_comp').AsWideString;
         end;
         if (fieldbyname('country_comp').AsWideString <> '') then
         begin
-         CountryCompanyOptionEdt.Text := fieldbyname('country_comp').AsWideString;
+         CountryCompanyOptionCbx.Text := fieldbyname('country_comp').AsWideString;
         end;
         if (fieldbyname('email_comp').AsString <> '') then
         begin
@@ -1053,10 +1120,10 @@ begin
             fieldbyname('mob2_comp').AsString := Mob2CompanyOptionEdt.Text;
             fieldbyname('adr_comp').AsWideString := AdrCompanyOptionEdt.Text;
             fieldbyname('adr2_comp').AsWideString := Adr2CompanyOptionEdt.Text;
-            fieldbyname('ville_comp').AsWideString := VilleCompanyOptionEdt.Text;
-            fieldbyname('cpostal_comp').AsString := CPostalCompanyOptionEdt.Text;
-            fieldbyname('willaya_comp').AsWideString := WilayaCompanyOptionEdt.Text;
-            fieldbyname('country_comp').AsWideString := CountryCompanyOptionEdt.Text;
+            fieldbyname('ville_comp').AsWideString := VilleCompanyOptionCbx.Text;
+            fieldbyname('cpostal_comp').AsString := CPostalCompanyOptionCbx.Text;
+            fieldbyname('willaya_comp').AsWideString := WilayaCompanyOptionCbx.Text;
+            fieldbyname('country_comp').AsWideString := CountryCompanyOptionCbx.Text;
             fieldbyname('email_comp').AsWideString := EmailCompanyOptionEdt.Text;
             fieldbyname('website_comp').AsWideString := WebsiteCompanyOptionEdt.Text;
             fieldbyname('rc_comp').AsWideString := RCCompanyGEdt.Text;
@@ -1103,10 +1170,10 @@ begin
               fieldbyname('mob2_comp').AsString := Mob2CompanyOptionEdt.Text;
               fieldbyname('adr_comp').AsWideString := AdrCompanyOptionEdt.Text;
               fieldbyname('adr2_comp').AsWideString := Adr2CompanyOptionEdt.Text;
-              fieldbyname('ville_comp').AsWideString := VilleCompanyOptionEdt.Text;
-              fieldbyname('cpostal_comp').AsString := CPostalCompanyOptionEdt.Text;
-              fieldbyname('willaya_comp').AsWideString := WilayaCompanyOptionEdt.Text;
-              fieldbyname('country_comp').AsWideString := CountryCompanyOptionEdt.Text;
+              fieldbyname('ville_comp').AsWideString := VilleCompanyOptionCbx.Text;
+              fieldbyname('cpostal_comp').AsString := CPostalCompanyOptionCbx.Text;
+              fieldbyname('willaya_comp').AsWideString := WilayaCompanyOptionCbx.Text;
+              fieldbyname('country_comp').AsWideString := CountryCompanyOptionCbx.Text;
               fieldbyname('email_comp').AsWideString := EmailCompanyOptionEdt.Text;
               fieldbyname('website_comp').AsWideString := WebsiteCompanyOptionEdt.Text;
               fieldbyname('rc_comp').AsWideString := RCCompanyGEdt.Text;
@@ -2360,6 +2427,85 @@ end;
 procedure TFOptions.Viderlechamp1Click(Sender: TObject);
 begin
     BalBtn.Caption:='';
+end;
+
+procedure TFOptions.VilleCompanyOptionCbxEnter(Sender: TObject);
+Var I,CodeW: Integer;
+Ini: TIniFile;
+begin
+ Ini := TIniFile.Create(ChangeFileExt(Application.ExeName,'.ini'));
+ if Ini.ReadBool('', 'Is EU',False) then
+ begin
+    //Here we add France data
+ end else
+     begin
+       if WilayaCompanyOptionCbx.Text <> '' then
+       begin
+        DataModuleF.SQLQuery3.Active:=False;
+        DataModuleF.SQLQuery3.SQL.Clear;
+        DataModuleF.SQLQuery3.SQL.Text:= 'SELECT code_w FROM wilayas WHERE LOWER(nom_w) LIKE LOWER('+QuotedStr(WilayaCompanyOptionCbx.Text)+')' ;
+        DataModuleF.SQLQuery3.Active := True;
+
+        CodeW:= DataModuleF.SQLQuery3.FieldByName('code_w').AsInteger;
+
+        DataModuleF.SQLQuery3.Active:=False;
+        DataModuleF.SQLQuery3.SQL.Clear;
+        DataModuleF.SQLQuery3.SQL.Text:= 'SELECT nom_cumm FROM communes WHERE code_w ='+ IntToStr(CodeW) + ' ORDER By code_cumm';
+        DataModuleF.SQLQuery3.Active := True;
+
+        DataModuleF.SQLQuery3.Refresh;
+        VilleCompanyOptionCbx.Items.Clear;
+
+        DataModuleF.SQLQuery3.first;
+        begin
+         for I := 0 to DataModuleF.SQLQuery3.RecordCount - 1 do
+         if ( DataModuleF.SQLQuery3.FieldByName('nom_cumm').IsNull = False )  then
+         begin
+           VilleCompanyOptionCbx.Items.Add(DataModuleF.SQLQuery3.FieldByName('nom_cumm').AsString);
+           DataModuleF.SQLQuery3.Next;
+          end;
+        end;
+
+        DataModuleF.SQLQuery3.Active:=False;
+        DataModuleF.SQLQuery3.SQL.Clear;
+       end
+
+     end;
+
+
+     Ini.Free;
+end;
+
+procedure TFOptions.WilayaCompanyOptionCbxEnter(Sender: TObject);
+Var I: Integer;
+Ini: TIniFile;
+begin
+ Ini := TIniFile.Create(ChangeFileExt(Application.ExeName,'.ini'));
+ if Ini.ReadBool('', 'Is EU',True) then
+ begin
+    //Here we add France data
+ end else
+     begin
+        DataModuleF.SQLQuery3.Active:=False;
+        DataModuleF.SQLQuery3.SQL.Clear;
+        DataModuleF.SQLQuery3.SQL.Text:= 'SELECT nom_w FROM wilayas ORDER By code_w';
+        DataModuleF.SQLQuery3.Active := True;
+
+        WilayaCompanyOptionCbx.Items.Clear;
+        DataModuleF.SQLQuery3.first;
+        begin
+          for I := 0 to DataModuleF.SQLQuery3.RecordCount - 1 do
+          if ( DataModuleF.SQLQuery3.FieldByName('nom_w').IsNull = False )  then
+          begin
+            WilayaCompanyOptionCbx.Items.Add(DataModuleF.SQLQuery3.FieldByName('nom_w').AsWideString);
+            DataModuleF.SQLQuery3.Next;
+          end;
+        end;
+
+        DataModuleF.SQLQuery3.Active:=False;
+        DataModuleF.SQLQuery3.SQL.Clear;
+     end;
+   Ini.Free;
 end;
 
 procedure TFOptions.TiroirCaisseCaseCOMRbtnClick(Sender: TObject);
