@@ -1274,7 +1274,7 @@ begin
   GstockdcConnection02.Params.Values['user_name'] := 'postgres';    // adjust to suit
   GstockdcConnection02.Params.Values['password'] := ''; // ditto
   GstockdcConnection02.Params.Values['Port'] := '5432';
-  GstockdcConnection02.Params.Values['CharacterSet'] := 'SQL_ASCII';
+//  GstockdcConnection02.Params.Values['CharacterSet'] := 'SQL_ASCII';
   GstockdcConnection02.LoginPrompt := False;
 
 
