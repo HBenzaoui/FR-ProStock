@@ -60,15 +60,15 @@ object FournisseurGestionF: TFournisseurGestionF
           508
           458)
         object WilayaFournisseurGLbl: TLabel
-          Left = 18
-          Top = 226
-          Width = 49
-          Height = 18
-          Caption = 'Wilaya:'
+          Left = 10
+          Top = 231
+          Width = 78
+          Height = 16
+          Caption = 'D'#233'partement:'
           Color = 4207405
           Font.Charset = DEFAULT_CHARSET
           Font.Color = 4207405
-          Font.Height = 18
+          Font.Height = 16
           Font.Name = 'Roboto'
           Font.Style = []
           ParentColor = False
@@ -76,15 +76,15 @@ object FournisseurGestionF: TFournisseurGestionF
           StyleElements = []
         end
         object VilleFournisseurGLbl: TLabel
-          Left = 288
-          Top = 226
-          Width = 33
-          Height = 18
+          Left = 10
+          Top = 186
+          Width = 29
+          Height = 16
           Caption = 'Ville:'
           Color = 4207405
           Font.Charset = DEFAULT_CHARSET
           Font.Color = 4207405
-          Font.Height = 18
+          Font.Height = 16
           Font.Name = 'Roboto'
           Font.Style = []
           ParentColor = False
@@ -92,31 +92,15 @@ object FournisseurGestionF: TFournisseurGestionF
           StyleElements = []
         end
         object ActiveFournisseurGLbl: TLabel
-          Left = 11
+          Left = 10
           Top = 15
-          Width = 121
-          Height = 18
+          Width = 101
+          Height = 16
           Caption = 'Fournisseur Actif:'
           Color = 4207405
           Font.Charset = DEFAULT_CHARSET
           Font.Color = 4207405
-          Font.Height = 18
-          Font.Name = 'Roboto'
-          Font.Style = []
-          ParentColor = False
-          ParentFont = False
-          StyleElements = []
-        end
-        object NameFournisseurGLbl: TLabel
-          Left = 30
-          Top = 64
-          Width = 37
-          Height = 18
-          Caption = 'Nom:'
-          Color = 4207405
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = 4207405
-          Font.Height = 18
+          Font.Height = 16
           Font.Name = 'Roboto'
           Font.Style = []
           ParentColor = False
@@ -124,15 +108,15 @@ object FournisseurGestionF: TFournisseurGestionF
           StyleElements = []
         end
         object AdrFournisseurGLbl: TLabel
-          Left = 8
-          Top = 144
-          Width = 59
-          Height = 18
+          Left = 10
+          Top = 94
+          Width = 52
+          Height = 16
           Caption = 'Adresse:'
           Color = 4207405
           Font.Charset = DEFAULT_CHARSET
           Font.Color = 4207405
-          Font.Height = 18
+          Font.Height = 16
           Font.Name = 'Roboto'
           Font.Style = []
           ParentColor = False
@@ -140,15 +124,15 @@ object FournisseurGestionF: TFournisseurGestionF
           StyleElements = []
         end
         object FixFournisseurGLbl: TLabel
-          Left = 35
-          Top = 306
-          Width = 25
-          Height = 18
-          Caption = 'T'#233'l:'
+          Left = 10
+          Top = 294
+          Width = 63
+          Height = 16
+          Caption = 'T'#233'l'#233'phone:'
           Color = 4207405
           Font.Charset = DEFAULT_CHARSET
           Font.Color = 4207405
-          Font.Height = 18
+          Font.Height = 16
           Font.Name = 'Roboto'
           Font.Style = []
           ParentColor = False
@@ -157,14 +141,14 @@ object FournisseurGestionF: TFournisseurGestionF
         end
         object SiteFournisseurGLbl: TLabel
           Left = 257
-          Top = 414
-          Width = 64
-          Height = 18
+          Top = 402
+          Width = 58
+          Height = 16
           Caption = 'Site Web:'
           Color = 4207405
           Font.Charset = DEFAULT_CHARSET
           Font.Color = 4207405
-          Font.Height = 18
+          Font.Height = 16
           Font.Name = 'Roboto'
           Font.Style = []
           ParentColor = False
@@ -172,15 +156,15 @@ object FournisseurGestionF: TFournisseurGestionF
           StyleElements = []
         end
         object EmailFournisseurGLbl: TLabel
-          Left = 19
-          Top = 414
-          Width = 41
-          Height = 18
+          Left = 10
+          Top = 402
+          Width = 37
+          Height = 16
           Caption = 'Email:'
           Color = 4207405
           Font.Charset = DEFAULT_CHARSET
           Font.Color = 4207405
-          Font.Height = 18
+          Font.Height = 16
           Font.Name = 'Roboto'
           Font.Style = []
           ParentColor = False
@@ -188,15 +172,15 @@ object FournisseurGestionF: TFournisseurGestionF
           StyleElements = []
         end
         object MobileFournisseurGLbl: TLabel
-          Left = 9
-          Top = 360
-          Width = 51
-          Height = 18
+          Left = 10
+          Top = 348
+          Width = 42
+          Height = 16
           Caption = 'Mobile:'
           Color = 4207405
           Font.Charset = DEFAULT_CHARSET
           Font.Color = 4207405
-          Font.Height = 18
+          Font.Height = 16
           Font.Name = 'Roboto'
           Font.Style = []
           ParentColor = False
@@ -204,15 +188,15 @@ object FournisseurGestionF: TFournisseurGestionF
           StyleElements = []
         end
         object Mobile2CFournisseurGLbl: TLabel
-          Left = 262
-          Top = 360
-          Width = 59
-          Height = 18
-          Caption = 'Mobile2:'
+          Left = 257
+          Top = 348
+          Width = 53
+          Height = 16
+          Caption = 'Mobile 2:'
           Color = 4207405
           Font.Charset = DEFAULT_CHARSET
           Font.Color = 4207405
-          Font.Height = 18
+          Font.Height = 16
           Font.Name = 'Roboto'
           Font.Style = []
           ParentColor = False
@@ -220,15 +204,15 @@ object FournisseurGestionF: TFournisseurGestionF
           StyleElements = []
         end
         object FaxFournisseurGLbl: TLabel
-          Left = 293
-          Top = 306
-          Width = 28
-          Height = 18
+          Left = 257
+          Top = 294
+          Width = 26
+          Height = 16
           Caption = 'Fax:'
           Color = 4207405
           Font.Charset = DEFAULT_CHARSET
           Font.Color = 4207405
-          Font.Height = 18
+          Font.Height = 16
           Font.Name = 'Roboto'
           Font.Style = []
           ParentColor = False
@@ -236,9 +220,9 @@ object FournisseurGestionF: TFournisseurGestionF
           StyleElements = []
         end
         object RequiredStarFournisseurGLbl: TLabel
-          Left = 500
-          Top = 62
-          Width = 8
+          Left = 491
+          Top = 70
+          Width = 7
           Height = 22
           Caption = '*'
           Color = clBtnFace
@@ -252,13 +236,13 @@ object FournisseurGestionF: TFournisseurGestionF
           StyleElements = [seClient, seBorder]
         end
         object RequiredFournisseurGlbl: TLabel
-          Left = 73
-          Top = 38
-          Width = 426
+          Left = 25
+          Top = 47
+          Width = 460
           Height = 16
           Alignment = taCenter
           AutoSize = False
-          Caption = 'S'#39'il vous pla'#238't entrer un nom'
+          Caption = 'Champ obligatoire'
           Color = clBtnFace
           Font.Charset = DEFAULT_CHARSET
           Font.Color = 4666873
@@ -272,9 +256,9 @@ object FournisseurGestionF: TFournisseurGestionF
           StyleElements = [seClient, seBorder]
         end
         object ActiveFournisseurGOuiOuNon: TLabel
-          Left = 184
-          Top = 18
-          Width = 18
+          Left = 166
+          Top = 17
+          Width = 16
           Height = 14
           Caption = 'Oui'
           Color = 4207405
@@ -287,11 +271,59 @@ object FournisseurGestionF: TFournisseurGestionF
           ParentFont = False
           StyleElements = []
         end
+        object CPostalFournisseurGLbl: TLabel
+          Left = 257
+          Top = 186
+          Width = 75
+          Height = 16
+          Caption = 'Code Postal:'
+          Color = 4207405
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 4207405
+          Font.Height = 16
+          Font.Name = 'Roboto'
+          Font.Style = []
+          ParentColor = False
+          ParentFont = False
+          StyleElements = []
+        end
+        object CountryFournisseurGLbl: TLabel
+          Left = 257
+          Top = 231
+          Width = 41
+          Height = 16
+          Caption = 'Payes:'
+          Color = 4207405
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 4207405
+          Font.Height = 16
+          Font.Name = 'Roboto'
+          Font.Style = []
+          ParentColor = False
+          ParentFont = False
+          StyleElements = []
+        end
+        object NameFournisseurGLbl: TLabel
+          Left = 10
+          Top = 47
+          Width = 128
+          Height = 16
+          Caption = 'Nom - Raison sociale:'
+          Color = 4207405
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 4207405
+          Font.Height = 16
+          Font.Name = 'Roboto'
+          Font.Style = []
+          ParentColor = False
+          ParentFont = False
+          StyleElements = []
+        end
         object NameFournisseurGErrorP: TPanel
-          Left = 71
-          Top = 58
-          Width = 428
-          Height = 30
+          Left = 24
+          Top = 64
+          Width = 462
+          Height = 28
           BevelOuter = bvNone
           BevelWidth = 2
           Color = 8421631
@@ -306,7 +338,7 @@ object FournisseurGestionF: TFournisseurGestionF
         end
         object LineP: TPanel
           Left = 0
-          Top = 276
+          Top = 286
           Width = 515
           Height = 2
           Anchors = [akLeft, akTop, akRight]
@@ -319,14 +351,14 @@ object FournisseurGestionF: TFournisseurGestionF
           StyleElements = []
         end
         object AdrFournisseurGEdt: TEdit
-          Left = 73
-          Top = 141
-          Width = 424
-          Height = 26
+          Left = 25
+          Top = 113
+          Width = 460
+          Height = 24
           DoubleBuffered = False
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = 18
+          Font.Color = 4207405
+          Font.Height = 16
           Font.Name = 'Roboto'
           Font.Style = []
           ParentDoubleBuffered = False
@@ -334,14 +366,14 @@ object FournisseurGestionF: TFournisseurGestionF
           TabOrder = 1
         end
         object FixFournisseurGEdt: TEdit
-          Left = 66
-          Top = 303
-          Width = 170
-          Height = 26
+          Left = 25
+          Top = 313
+          Width = 210
+          Height = 24
           DoubleBuffered = False
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = 18
+          Font.Color = 4207405
+          Font.Height = 16
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
           ParentDoubleBuffered = False
@@ -350,14 +382,14 @@ object FournisseurGestionF: TFournisseurGestionF
           OnKeyDown = FixFournisseurGEdtKeyDown
         end
         object EmailFournisseurGEdt: TEdit
-          Left = 66
-          Top = 411
-          Width = 170
-          Height = 26
+          Left = 25
+          Top = 421
+          Width = 210
+          Height = 24
           DoubleBuffered = False
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = 18
+          Font.Color = 4207405
+          Font.Height = 16
           Font.Name = 'Roboto'
           Font.Style = []
           ParentDoubleBuffered = False
@@ -365,14 +397,14 @@ object FournisseurGestionF: TFournisseurGestionF
           TabOrder = 8
         end
         object SiteFournisseurGEdt: TEdit
-          Left = 327
-          Top = 411
-          Width = 170
-          Height = 26
+          Left = 275
+          Top = 421
+          Width = 210
+          Height = 24
           DoubleBuffered = False
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = 18
+          Font.Color = 4207405
+          Font.Height = 16
           Font.Name = 'Roboto'
           Font.Style = []
           ParentDoubleBuffered = False
@@ -380,14 +412,14 @@ object FournisseurGestionF: TFournisseurGestionF
           TabOrder = 9
         end
         object MobileFournisseurGEdt: TEdit
-          Left = 66
-          Top = 357
-          Width = 170
-          Height = 26
+          Left = 25
+          Top = 367
+          Width = 210
+          Height = 24
           DoubleBuffered = False
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = 18
+          Font.Color = 4207405
+          Font.Height = 16
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
           ParentDoubleBuffered = False
@@ -396,14 +428,14 @@ object FournisseurGestionF: TFournisseurGestionF
           OnKeyDown = FixFournisseurGEdtKeyDown
         end
         object Mobile2FournisseurGEdt: TEdit
-          Left = 327
-          Top = 357
-          Width = 170
-          Height = 26
+          Left = 275
+          Top = 367
+          Width = 210
+          Height = 24
           DoubleBuffered = False
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = 18
+          Font.Color = 4207405
+          Font.Height = 16
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
           ParentDoubleBuffered = False
@@ -412,14 +444,14 @@ object FournisseurGestionF: TFournisseurGestionF
           OnKeyDown = FixFournisseurGEdtKeyDown
         end
         object FaxFournisseurGEdt: TEdit
-          Left = 327
-          Top = 303
-          Width = 170
-          Height = 26
+          Left = 275
+          Top = 313
+          Width = 210
+          Height = 24
           DoubleBuffered = False
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = 18
+          Font.Color = 4207405
+          Font.Height = 16
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
           ParentDoubleBuffered = False
@@ -428,10 +460,10 @@ object FournisseurGestionF: TFournisseurGestionF
           OnKeyDown = FixFournisseurGEdtKeyDown
         end
         object NameFournisseurGEdt: TEdit
-          Left = 73
-          Top = 60
-          Width = 424
-          Height = 26
+          Left = 25
+          Top = 66
+          Width = 460
+          Height = 24
           AutoSelect = False
           BevelInner = bvSpace
           BevelKind = bkFlat
@@ -439,8 +471,8 @@ object FournisseurGestionF: TFournisseurGestionF
           Ctl3D = True
           DoubleBuffered = True
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = 18
+          Font.Color = 4207405
+          Font.Height = 16
           Font.Name = 'Roboto'
           Font.Style = []
           ParentCtl3D = False
@@ -451,8 +483,8 @@ object FournisseurGestionF: TFournisseurGestionF
           OnChange = NameFournisseurGEdtChange
         end
         object ActiveFournisseurGSlider: TsSlider
-          Left = 138
-          Top = 17
+          Left = 118
+          Top = 15
           Width = 40
           Height = 16
           BevelOuter = bvNone
@@ -481,88 +513,65 @@ object FournisseurGestionF: TFournisseurGestionF
           OnChanging = ActiveFournisseurGSliderChanging
         end
         object WilayaFournisseurGCbx: TComboBox
-          Left = 73
-          Top = 223
-          Width = 170
-          Height = 26
+          Left = 25
+          Top = 250
+          Width = 210
+          Height = 24
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = 18
+          Font.Color = 4207405
+          Font.Height = 16
           Font.Name = 'Roboto'
           Font.Style = []
           ParentFont = False
           TabOrder = 2
-          OnDropDown = WilayaFournisseurGCbxEnter
           OnEnter = WilayaFournisseurGCbxEnter
-          Items.Strings = (
-            'Adrar'
-            'A'#239'n-Defla'
-            'A'#239'n-T'#233'mouchent'
-            'Alger'
-            'Annaba'
-            'Batna'
-            'B'#233'char'
-            'B'#233'ja'#239'a'
-            'Biskra'
-            'Blida'
-            'Bordj-Bou-Arreridj'
-            'Bouira'
-            'Boumerd'#232's'
-            'Chlef'
-            'Constantine'
-            'Djelfa'
-            'El-Bayadh'
-            'El-Oued'
-            'El-Taref'
-            'Ghardaia'
-            'Guelma'
-            'Illizi'
-            'Jijel'
-            'Khenchela'
-            'Laghouat'
-            'M'#39'Sila'
-            'Mascara'
-            'M'#233'd'#233'a'
-            'Mila'
-            'Mostaganem'
-            'Na'#226'ma'
-            'Oran'
-            'Ouargla'
-            'Oum-El-Bouaghi'
-            'Relizane'
-            'Saida'
-            'S'#233'tif'
-            'Sidi-Bel-Abb'#232's'
-            'Skikda'
-            'Souk-Ahras'
-            'Tamanrasset'
-            'T'#233'bessa'
-            'Tiaret'
-            'Tindouf'
-            'Tipaza'
-            'Tissemsilt'
-            'Tizi-Ouzou'
-            'Tlemcen')
         end
         object VilleFournisseurGCbx: TComboBox
-          Left = 327
-          Top = 223
-          Width = 170
-          Height = 26
+          Left = 25
+          Top = 205
+          Width = 210
+          Height = 24
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = 18
+          Font.Color = 4207405
+          Font.Height = 16
           Font.Name = 'Roboto'
           Font.Style = []
           ParentFont = False
           TabOrder = 3
-          OnDropDown = VilleFournisseurGCbxEnter
           OnEnter = VilleFournisseurGCbxEnter
+        end
+        object CPostalFournisseurGCbx: TComboBox
+          Left = 275
+          Top = 205
+          Width = 210
+          Height = 24
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 4207405
+          Font.Height = 16
+          Font.Name = 'Roboto'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 13
+          OnEnter = CPostalFournisseurGCbxEnter
+        end
+        object CountryFournisseurGCbx: TComboBox
+          Left = 275
+          Top = 250
+          Width = 210
+          Height = 24
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 4207405
+          Font.Height = 16
+          Font.Name = 'Roboto'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 14
+          OnEnter = CountryFournisseurGCbxEnter
         end
       end
     end
     object PlusInfoClientGTB: TsTabSheet
-      Caption = 'Plus D'#39'info'
+      Caption = 'Plus d'#39'info'
       object PlusInfoTB: TPanel
         Left = 0
         Top = 0
@@ -578,15 +587,15 @@ object FournisseurGestionF: TFournisseurGestionF
           508
           458)
         object RCFournisseurGLbl: TLabel
-          Left = 22
-          Top = 18
-          Width = 23
-          Height = 18
+          Left = 10
+          Top = 5
+          Width = 22
+          Height = 16
           Caption = 'RC:'
           Color = 4207405
           Font.Charset = DEFAULT_CHARSET
           Font.Color = 4207405
-          Font.Height = 18
+          Font.Height = 16
           Font.Name = 'Roboto'
           Font.Style = []
           ParentColor = False
@@ -594,15 +603,15 @@ object FournisseurGestionF: TFournisseurGestionF
           StyleElements = []
         end
         object NArtFournisseurGLbl: TLabel
-          Left = 258
-          Top = 18
-          Width = 40
-          Height = 18
+          Left = 257
+          Top = 5
+          Width = 35
+          Height = 16
           Caption = 'N'#176'Art:'
           Color = 4207405
           Font.Charset = DEFAULT_CHARSET
           Font.Color = 4207405
-          Font.Height = 18
+          Font.Height = 16
           Font.Name = 'Roboto'
           Font.Style = []
           ParentColor = False
@@ -610,15 +619,15 @@ object FournisseurGestionF: TFournisseurGestionF
           StyleElements = []
         end
         object NIFFournisseurGLbl: TLabel
-          Left = 18
-          Top = 64
-          Width = 27
-          Height = 18
+          Left = 10
+          Top = 51
+          Width = 24
+          Height = 16
           Caption = 'NIF:'
           Color = 4207405
           Font.Charset = DEFAULT_CHARSET
           Font.Color = 4207405
-          Font.Height = 18
+          Font.Height = 16
           Font.Name = 'Roboto'
           Font.Style = []
           ParentColor = False
@@ -626,15 +635,15 @@ object FournisseurGestionF: TFournisseurGestionF
           StyleElements = []
         end
         object NISFournisseurGLbl: TLabel
-          Left = 270
-          Top = 64
-          Width = 28
-          Height = 18
+          Left = 257
+          Top = 51
+          Width = 25
+          Height = 16
           Caption = 'NIS:'
           Color = 4207405
           Font.Charset = DEFAULT_CHARSET
           Font.Color = 4207405
-          Font.Height = 18
+          Font.Height = 16
           Font.Name = 'Roboto'
           Font.Style = []
           ParentColor = False
@@ -642,15 +651,15 @@ object FournisseurGestionF: TFournisseurGestionF
           StyleElements = []
         end
         object ObserFournisseurGLbl: TLabel
-          Left = 16
-          Top = 303
-          Width = 95
-          Height = 18
+          Left = 10
+          Top = 324
+          Width = 79
+          Height = 16
           Caption = 'Observations:'
           Color = 4207405
           Font.Charset = DEFAULT_CHARSET
           Font.Color = 4207405
-          Font.Height = 18
+          Font.Height = 16
           Font.Name = 'Roboto'
           Font.Style = []
           ParentColor = False
@@ -658,67 +667,32 @@ object FournisseurGestionF: TFournisseurGestionF
           StyleElements = []
         end
         object MaxCreditFournisseurGLbl: TLabel
-          Left = 258
-          Top = 209
-          Width = 77
-          Height = 18
+          Left = 257
+          Top = 252
+          Width = 67
+          Height = 16
           Caption = 'Cr'#233'dit Max:'
           Color = 4207405
           Enabled = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = 4207405
-          Font.Height = 18
+          Font.Height = 16
           Font.Name = 'Roboto'
           Font.Style = []
           ParentColor = False
           ParentFont = False
           StyleElements = []
         end
-        object CurrencyFournisseurG: TLabel
-          Left = 234
-          Top = 241
-          Width = 20
-          Height = 18
-          Caption = 'DA'
-          Color = clBtnFace
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clGreen
-          Font.Height = 18
-          Font.Name = 'Roboto'
-          Font.Style = [fsBold]
-          ParentColor = False
-          ParentFont = False
-          Visible = False
-          StyleElements = [seClient, seBorder]
-        end
-        object CurrencyFournisseurG1: TLabel
-          Left = 486
-          Top = 241
-          Width = 20
-          Height = 18
-          Caption = 'DA'
-          Color = clBtnFace
-          Enabled = False
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clGreen
-          Font.Height = 18
-          Font.Name = 'Roboto'
-          Font.Style = [fsBold]
-          ParentColor = False
-          ParentFont = False
-          Visible = False
-          StyleElements = [seClient, seBorder]
-        end
         object OldCreditFournisseurGLbl: TLabel
-          Left = 8
-          Top = 208
-          Width = 94
-          Height = 18
+          Left = 10
+          Top = 252
+          Width = 80
+          Height = 16
           Caption = 'Ancien cr'#233'dit:'
           Color = 4207405
           Font.Charset = DEFAULT_CHARSET
           Font.Color = 4207405
-          Font.Height = 18
+          Font.Height = 16
           Font.Name = 'Roboto'
           Font.Style = []
           ParentColor = False
@@ -726,15 +700,15 @@ object FournisseurGestionF: TFournisseurGestionF
           StyleElements = []
         end
         object NBankFournisseurGLbl: TLabel
-          Left = 8
-          Top = 119
-          Width = 121
-          Height = 18
+          Left = 10
+          Top = 113
+          Width = 104
+          Height = 16
           Caption = 'Compte Bancaire:'
           Color = 4207405
           Font.Charset = DEFAULT_CHARSET
           Font.Color = 4207405
-          Font.Height = 18
+          Font.Height = 16
           Font.Name = 'Roboto'
           Font.Style = []
           ParentColor = False
@@ -742,15 +716,15 @@ object FournisseurGestionF: TFournisseurGestionF
           StyleElements = []
         end
         object RIBFournisseurGLbl: TLabel
-          Left = 270
-          Top = 119
-          Width = 28
-          Height = 18
+          Left = 257
+          Top = 113
+          Width = 25
+          Height = 16
           Caption = 'RIB:'
           Color = 4207405
           Font.Charset = DEFAULT_CHARSET
           Font.Color = 4207405
-          Font.Height = 18
+          Font.Height = 16
           Font.Name = 'Roboto'
           Font.Style = []
           ParentColor = False
@@ -759,7 +733,7 @@ object FournisseurGestionF: TFournisseurGestionF
         end
         object LineP03: TPanel
           Left = -4
-          Top = 291
+          Top = 315
           Width = 509
           Height = 2
           Anchors = [akLeft, akTop, akRight]
@@ -772,14 +746,14 @@ object FournisseurGestionF: TFournisseurGestionF
           StyleElements = []
         end
         object RCFournisseurGEdt: TEdit
-          Left = 49
-          Top = 15
-          Width = 186
-          Height = 26
+          Left = 25
+          Top = 23
+          Width = 210
+          Height = 24
           DoubleBuffered = False
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = 18
+          Font.Color = 4207405
+          Font.Height = 16
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
           ParentDoubleBuffered = False
@@ -787,14 +761,14 @@ object FournisseurGestionF: TFournisseurGestionF
           TabOrder = 0
         end
         object NArtFournisseurGEdt: TEdit
-          Left = 299
-          Top = 15
-          Width = 186
-          Height = 26
+          Left = 275
+          Top = 24
+          Width = 210
+          Height = 24
           DoubleBuffered = False
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = 18
+          Font.Color = 4207405
+          Font.Height = 16
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
           ParentDoubleBuffered = False
@@ -802,14 +776,14 @@ object FournisseurGestionF: TFournisseurGestionF
           TabOrder = 1
         end
         object NIFFournisseurGEdt: TEdit
-          Left = 49
-          Top = 61
-          Width = 186
-          Height = 26
+          Left = 25
+          Top = 69
+          Width = 210
+          Height = 24
           DoubleBuffered = False
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = 18
+          Font.Color = 4207405
+          Font.Height = 16
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
           ParentDoubleBuffered = False
@@ -817,14 +791,14 @@ object FournisseurGestionF: TFournisseurGestionF
           TabOrder = 2
         end
         object NISFournisseurGEdt: TEdit
-          Left = 299
-          Top = 61
-          Width = 186
-          Height = 26
+          Left = 275
+          Top = 69
+          Width = 210
+          Height = 24
           DoubleBuffered = False
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = 18
+          Font.Color = 4207405
+          Font.Height = 16
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
           ParentDoubleBuffered = False
@@ -846,28 +820,28 @@ object FournisseurGestionF: TFournisseurGestionF
           StyleElements = []
         end
         object ObserFournisseurGMem: TMemo
-          Left = 22
-          Top = 327
+          Left = 25
+          Top = 344
           Width = 460
-          Height = 117
+          Height = 103
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = 18
+          Font.Height = 16
           Font.Name = 'Roboto'
           Font.Style = []
           ParentFont = False
           TabOrder = 8
         end
         object OldCreditFournisseurGEdt: TEdit
-          Left = 47
-          Top = 232
-          Width = 186
-          Height = 26
+          Left = 25
+          Top = 275
+          Width = 210
+          Height = 24
           Alignment = taRightJustify
           DoubleBuffered = False
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = 18
+          Font.Color = 4207405
+          Font.Height = 16
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
           ParentDoubleBuffered = False
@@ -880,16 +854,16 @@ object FournisseurGestionF: TFournisseurGestionF
           OnKeyPress = OldCreditFournisseurGEdtKeyPress
         end
         object MaxCreditFournisseurGEdt: TEdit
-          Left = 299
-          Top = 232
-          Width = 186
-          Height = 26
+          Left = 275
+          Top = 275
+          Width = 210
+          Height = 24
           Alignment = taRightJustify
           DoubleBuffered = False
           Enabled = False
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = 18
+          Font.Color = 4207405
+          Font.Height = 16
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
           ParentDoubleBuffered = False
@@ -902,7 +876,7 @@ object FournisseurGestionF: TFournisseurGestionF
         end
         object LineP02: TPanel
           Left = 0
-          Top = 190
+          Top = 175
           Width = 508
           Height = 2
           Anchors = [akLeft, akTop, akRight]
@@ -915,14 +889,14 @@ object FournisseurGestionF: TFournisseurGestionF
           StyleElements = []
         end
         object NBankFournisseurGEdt: TEdit
-          Left = 49
-          Top = 142
-          Width = 186
-          Height = 26
+          Left = 25
+          Top = 136
+          Width = 210
+          Height = 24
           DoubleBuffered = False
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = 18
+          Font.Color = 4207405
+          Font.Height = 16
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
           ParentDoubleBuffered = False
@@ -930,14 +904,14 @@ object FournisseurGestionF: TFournisseurGestionF
           TabOrder = 4
         end
         object RIBFournisseurGEdt: TEdit
-          Left = 299
-          Top = 141
-          Width = 186
-          Height = 26
+          Left = 275
+          Top = 136
+          Width = 210
+          Height = 24
           DoubleBuffered = False
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = 18
+          Font.Color = 4207405
+          Font.Height = 16
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
           MaxLength = 20
@@ -948,14 +922,14 @@ object FournisseurGestionF: TFournisseurGestionF
       end
     end
     object FicheFourTB: TsTabSheet
-      Caption = 'Fiche Fournisseur'
+      Caption = 'Fiche fournisseur'
       DesignSize = (
         508
         458)
       object Label1: TLabel
         Left = 12
         Top = 17
-        Width = 151
+        Width = 153
         Height = 18
         Caption = 'Ajouter comme Client:'
         Color = 4207405
@@ -994,8 +968,8 @@ object FournisseurGestionF: TFournisseurGestionF
       object Label4: TLabel
         Left = 12
         Top = 65
-        Width = 31
-        Height = 18
+        Width = 29
+        Height = 17
         Caption = 'C.A:'
         Color = clWhite
         Font.Charset = DEFAULT_CHARSET
@@ -1010,8 +984,8 @@ object FournisseurGestionF: TFournisseurGestionF
       object Label3: TLabel
         Left = 12
         Top = 129
-        Width = 47
-        Height = 18
+        Width = 42
+        Height = 17
         Caption = 'R'#233'gl'#233':'
         Color = clWhite
         Font.Charset = DEFAULT_CHARSET
@@ -1048,8 +1022,8 @@ object FournisseurGestionF: TFournisseurGestionF
       object Label6: TLabel
         Left = 12
         Top = 187
-        Width = 47
-        Height = 18
+        Width = 43
+        Height = 17
         Caption = 'Cr'#233'dit:'
         Color = clWhite
         Font.Charset = DEFAULT_CHARSET
@@ -1103,7 +1077,7 @@ object FournisseurGestionF: TFournisseurGestionF
       object Label2: TLabel
         Left = 213
         Top = 19
-        Width = 22
+        Width = 19
         Height = 14
         Caption = 'Non'
         Color = 4207405

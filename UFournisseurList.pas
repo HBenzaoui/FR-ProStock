@@ -148,7 +148,7 @@ implementation
 
 {$R *.dfm}
 
-uses UMainF, UFournisseurGestion, USplash, UClientGestion,Threading, UWorkingSplash, UComptoir, USplashPrintReport;
+uses UMainF,IniFiles, UFournisseurGestion, USplash, UClientGestion,Threading, UWorkingSplash, UComptoir, USplashPrintReport;
 
 
 procedure TFournisseurListF.Select_Valid;
@@ -815,11 +815,17 @@ begin
         if fieldbyname('adr_f').Value <> null then begin
         FournisseurGestionF.AdrFournisseurGEdt.Text:= fieldbyname('adr_f').Value;
         end;
+        if fieldbyname('ville_f').Value <> null then begin
+        FournisseurGestionF.VilleFournisseurGCbx.Text:= fieldbyname('ville_f').Value;
+        end;
+        if fieldbyname('cpostal_f').Value <> null then begin
+        FournisseurGestionF.CPostalFournisseurGCbx.Text:= fieldbyname('cpostal_f').Value;
+        end;
         if fieldbyname('willaya_f').Value <> null then begin
         FournisseurGestionF.WilayaFournisseurGCbx.Text:= fieldbyname('willaya_f').Value;
         end;
-        if fieldbyname('ville_f').Value <> null then begin
-        FournisseurGestionF.VilleFournisseurGCbx.Text:= fieldbyname('ville_f').Value;
+        if fieldbyname('country_f').Value <> null then begin
+        FournisseurGestionF.CountryFournisseurGCbx.Text:= fieldbyname('country_f').Value;
         end;
         if fieldbyname('fix_f').Value <> null then begin
         FournisseurGestionF.FixFournisseurGEdt.Text:= fieldbyname('fix_f').Value;
@@ -1045,9 +1051,22 @@ begin
 end;
 
 procedure TFournisseurListF.FormShow(Sender: TObject);
+Var Ini: TIniFile;
 begin
-
        ResearchFournisseurEdt.SetFocus ;
+
+        Ini := TIniFile.Create(ChangeFileExt(Application.ExeName,'.ini'));
+
+        if Ini.ReadBool('', 'Is EU',False) then
+        begin
+          FournisseursListDBGridEh.FindFieldColumn('willaya_f').Title.Caption := 'Département';
+        end else
+            begin
+              FournisseursListDBGridEh.FindFieldColumn('willaya_f').Title.Caption := 'Wilaya';
+            end;
+
+        Ini.Free;
+
   //----- for show how many Fournisseur on the database--------------//
 //      ToutFournisseursLbl.Caption:= IntToStr( MainForm.FournisseurTable.RecordCount) ;
 //

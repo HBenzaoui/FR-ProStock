@@ -622,6 +622,31 @@ object FournisseurListF: TFournisseurListF
         Width = 130
         WordWrap = False
       end
+	  item
+        Alignment = taCenter
+        CellButtons = <>
+        DynProps = <>
+        EditButtons = <>
+        FieldName = 'cpostal_f'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 16
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
+        Footers = <>
+        Layout = tlCenter
+        Title.Alignment = taCenter
+        Title.Caption = 'Code Postal'
+        Title.EndEllipsis = True
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = 4207405
+        Title.Font.Height = 16
+        Title.Font.Name = 'Helvetica LT Std'
+        Title.Font.Style = []
+        Title.ToolTips = True
+        Width = 130
+        WordWrap = False
+      end
       item
         Alignment = taCenter
         CellButtons = <>
@@ -636,7 +661,32 @@ object FournisseurListF: TFournisseurListF
         Footers = <>
         Layout = tlCenter
         Title.Alignment = taCenter
-        Title.Caption = 'Willaya'
+        Title.Caption = 'D'#233'partement'
+        Title.EndEllipsis = True
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = 4207405
+        Title.Font.Height = 16
+        Title.Font.Name = 'Helvetica LT Std'
+        Title.Font.Style = []
+        Title.ToolTips = True
+        Width = 130
+        WordWrap = False
+      end
+	  item
+        Alignment = taCenter
+        CellButtons = <>
+        DynProps = <>
+        EditButtons = <>
+        FieldName = 'country_f'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4207405
+        Font.Height = 16
+        Font.Name = 'Helvetica LT Std'
+        Font.Style = []
+        Footers = <>
+        Layout = tlCenter
+        Title.Alignment = taCenter
+        Title.Caption = 'Payes'
         Title.EndEllipsis = True
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = 4207405
@@ -1066,7 +1116,7 @@ object FournisseurListF: TFournisseurListF
     object ResearchFournisseursLbl: TLabel
       Left = 1
       Top = 28
-      Width = 74
+      Width = 66
       Height = 16
       Caption = 'Rechercher'
       Color = 15722984
@@ -1358,7 +1408,7 @@ object FournisseurListF: TFournisseurListF
       Left = 76
       Top = 23
       Width = 220
-      Height = 26
+      Height = 25
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 4207405
       Font.Height = -15

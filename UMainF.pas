@@ -738,6 +738,14 @@ type
     Bonv_ctrTableclientbvctr: TWideStringField;
     ProduitTablemrkp: TWideStringField;
     ProduitTabledetail_p: TWideStringField;
+    ClientTablecpostal_c: TWideStringField;
+    ClientTablecountry_c: TWideStringField;
+    ClientTablecapital_c: TFMTBCDField;
+    ClientTabledoc_c: TBlobField;
+    FournisseurTablecpostal_f: TWideStringField;
+    FournisseurTablecountry_f: TWideStringField;
+    FournisseurTablecapital_f: TFMTBCDField;
+    FournisseurTabledoc_f: TBlobField;
     procedure ClientMainFBtnClick(Sender: TObject);
     procedure FourMainFBtnClick(Sender: TObject);
     procedure ProduitMainFBtnClick(Sender: TObject);

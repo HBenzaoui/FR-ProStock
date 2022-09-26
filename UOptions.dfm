@@ -352,9 +352,9 @@ object FOptions: TFOptions
       object WilayaCompanyOptionLbl: TLabel
         Left = 10
         Top = 246
-        Width = 44
+        Width = 78
         Height = 16
-        Caption = 'Wilaya:'
+        Caption = 'D'#233'partement:'
         Color = 4207405
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4207405
@@ -625,7 +625,7 @@ object FOptions: TFOptions
       object VilleCompanyOptionEdt: TEdit
         Left = 25
         Top = 218
-        Width = 220
+        Width = 210
         Height = 24
         DoubleBuffered = True
         Font.Charset = DEFAULT_CHARSET
@@ -717,7 +717,7 @@ object FOptions: TFOptions
       object WilayaCompanyOptionEdt: TEdit
         Left = 25
         Top = 265
-        Width = 220
+        Width = 210
         Height = 24
         DoubleBuffered = True
         Font.Charset = DEFAULT_CHARSET

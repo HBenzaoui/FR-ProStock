@@ -68,8 +68,6 @@ type
     MaxCreditClientGEdt: TEdit;
     ModeTarifClientGCbx: TComboBox;
     ModeTarifClientGLbl: TLabel;
-    CurrencyClientG: TLabel;
-    CurrencyClientG1: TLabel;
     LineP02: TPanel;
     NBankClientGEdt: TEdit;
     NBankClientGLbl: TLabel;
@@ -94,6 +92,10 @@ type
     Panel4: TPanel;
     Label2: TLabel;
     Label5: TLabel;
+    CountryClientGCbx: TComboBox;
+    CountryClientGLbl: TLabel;
+    CPostalClientGCbx: TComboBox;
+    CPostalClientGLbl: TLabel;
     procedure FormDestroy(Sender: TObject);
     procedure CancelClientGBtnClick(Sender: TObject);
     procedure OKClientGBtnClick(Sender: TObject);
@@ -126,6 +128,8 @@ type
     procedure PayClientFourGSliderChanging(Sender: TObject;
       var CanChange: Boolean);
     procedure FormShow(Sender: TObject);
+    procedure CPostalClientGCbxEnter(Sender: TObject);
+    procedure CountryClientGCbxEnter(Sender: TObject);
 
   private
     procedure AddSameClientDetailInCFList( NameF: string);
@@ -146,15 +150,16 @@ var
 
 implementation
 
-uses Contnrs, UMainF, UClientsList, USplash, UBonLivGestion,
+uses Contnrs,IniFiles, UMainF, UClientsList, USplash, UBonLivGestion,
   UBonFacVGestion, UReglementCList,  UReglementCGestion, UBonCtr, UComptoir,
-  UBonFacP, UBonFacPGestion, UBonComVGestion;
+  UBonFacP, UBonFacPGestion, UBonComVGestion, UDataModule;
 
 {$R *.dfm}
 
 
   var
     gGrayForms: TComponentList;
+    Ini: TIniFile;
 
 procedure GrayFormsClient;
 var
@@ -242,6 +247,61 @@ begin
     Label2.Caption := 'Non'
   else
     Label2.Caption := 'Oui'
+end;
+
+procedure TClientGestionF.CountryClientGCbxEnter(Sender: TObject);
+begin
+ if Ini.ReadBool('', 'Is EU',False) then
+ begin
+    //Here we add France data
+    CountryClientGCbx.Items.Clear;
+    CountryClientGCbx.Items.Add('France');
+ end else
+     begin
+        CountryClientGCbx.Items.Clear;
+        CountryClientGCbx.Items.Add('Algérie');
+     end;
+end;
+
+procedure TClientGestionF.CPostalClientGCbxEnter(Sender: TObject);
+Var I,CodeW: Integer;
+begin
+ if Ini.ReadBool('', 'Is EU',False) then
+ begin
+    //Here we add France data
+ end else
+     begin
+       if WilayaClientGCbx.Text <> '' then
+       begin
+        DataModuleF.SQLQuery3.Active:=False;
+        DataModuleF.SQLQuery3.SQL.Clear;
+        DataModuleF.SQLQuery3.SQL.Text:= 'SELECT code_w FROM wilayas WHERE LOWER(nom_w) LIKE LOWER('+QuotedStr(WilayaClientGCbx.Text)+')' ;
+        DataModuleF.SQLQuery3.Active := True;
+
+        CodeW:= DataModuleF.SQLQuery3.FieldByName('code_w').AsInteger;
+
+        DataModuleF.SQLQuery3.Active:=False;
+        DataModuleF.SQLQuery3.SQL.Clear;
+        DataModuleF.SQLQuery3.SQL.Text:= 'SELECT codepostal_cumm FROM communes WHERE code_w ='+ IntToStr(CodeW) + ' ORDER By code_cumm';
+        DataModuleF.SQLQuery3.Active := True;
+
+        DataModuleF.SQLQuery3.Refresh;
+        CPostalClientGCbx.Items.Clear;
+
+        DataModuleF.SQLQuery3.first;
+        begin
+         for I := 0 to DataModuleF.SQLQuery3.RecordCount - 1 do
+         if ( DataModuleF.SQLQuery3.FieldByName('codepostal_cumm').IsNull = False )  then
+         begin
+           CPostalClientGCbx.Items.Add(DataModuleF.SQLQuery3.FieldByName('codepostal_cumm').AsString);
+           DataModuleF.SQLQuery3.Next;
+          end;
+        end;
+
+        DataModuleF.SQLQuery3.Active:=False;
+        DataModuleF.SQLQuery3.SQL.Clear;
+       end;
+     end;
 end;
 
 procedure TClientGestionF.OldCreditClientGEdtExit(Sender: TObject);
@@ -395,6 +455,7 @@ procedure TClientGestionF.FormDestroy(Sender: TObject);
 begin
   NormalFormsClient;
 
+  Ini.Free;
 end;
 
 procedure TClientGestionF.FormKeyDown(Sender: TObject; var Key: Word;
@@ -416,10 +477,11 @@ begin
   OKClientGBtn.ImageIndex := 17;
   NameClientGEdt.BorderStyle := bsSingle;
   NameClientGEdt.StyleElements := [seClient, seBorder];
-  RequiredClientGlbl.Visible := false;
   RequiredStarClientGLbl.Font.Height:= 16;
-  RequiredClientGlbl.Top:=38;
   RequiredStarClientGLbl.Left:= NameClientGEdt.Left;
+  RequiredClientGlbl.Visible := false;
+//  RequiredClientGlbl.Top:=38;
+
   NameClientGErrorP.Visible := false;
 
 end;
@@ -464,11 +526,13 @@ begin
           Append;
           fieldbyname('code_c').AsInteger:= CodeC;
           FieldValues['activ_c'] := ActiveClientGSlider.SliderOn;
-          fieldbyname('nom_c').AsString := NameClientGEdt.Text;
-          fieldbyname('activite_c').AsString := AcitiviteClientGEdt.Text;
-          fieldbyname('adr_c').AsString := AdrClientGEdt.Text;
-          fieldbyname('willaya_c').AsString := WilayaClientGCbx.Text;
-          fieldbyname('ville_c').AsString := VilleClientGCbx.Text;
+          fieldbyname('nom_c').AsWideString := NameClientGEdt.Text;
+          fieldbyname('activite_c').AsWideString := AcitiviteClientGEdt.Text;
+          fieldbyname('adr_c').AsWideString := AdrClientGEdt.Text;
+          fieldbyname('ville_c').Value := VilleClientGCbx.Text;
+          fieldbyname('cpostal_c').Value := CPostalClientGCbx.Text;
+          fieldbyname('willaya_c').Value := WilayaClientGCbx.Text;
+          fieldbyname('country_c').Value := CountryClientGCbx.Text;
           fieldbyname('fix_c').AsString := FixClientGEdt.Text;
           fieldbyname('fax_c').AsString := FaxClientGEdt.Text;
           fieldbyname('mob_c').AsString := MobileClientGEdt.Text;
@@ -581,11 +645,13 @@ begin
     begin
       Edit;
       FieldValues['activ_c'] := ActiveClientGSlider.SliderOn;
-      fieldbyname('nom_c').AsString := NameClientGEdt.Text;
-      fieldbyname('activite_c').AsString := AcitiviteClientGEdt.Text;
-      fieldbyname('adr_c').AsString := AdrClientGEdt.Text;
-      fieldbyname('willaya_c').AsString := WilayaClientGCbx.Text;
-      fieldbyname('ville_c').AsString := VilleClientGCbx.Text;
+      fieldbyname('nom_c').AsWideString := NameClientGEdt.Text;
+      fieldbyname('activite_c').AsWideString := AcitiviteClientGEdt.Text;
+      fieldbyname('adr_c').AsWideString := AdrClientGEdt.Text;
+      fieldbyname('ville_c').Value := VilleClientGCbx.Text;
+      fieldbyname('cpostal_c').Value := CPostalClientGCbx.Text;
+      fieldbyname('willaya_c').Value := WilayaClientGCbx.Text;
+      fieldbyname('country_c').Value := CountryClientGCbx.Text;
       fieldbyname('fix_c').AsString := FixClientGEdt.Text;
       fieldbyname('fax_c').AsString := FaxClientGEdt.Text;
       fieldbyname('mob_c').AsString := MobileClientGEdt.Text;
@@ -1309,7 +1375,7 @@ begin
     try
       NameClientGEdt.BorderStyle := bsNone;
       NameClientGEdt.StyleElements := [];
-      RequiredClientGlbl.Caption:= 'S''il vous plaît entrer un nom';
+      RequiredClientGlbl.Caption:= 'Champ obligatoire';
       RequiredClientGlbl.Visible := true;
       NameClientGErrorP.Visible := true;
       sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav',
@@ -1379,68 +1445,71 @@ end;
 
 procedure TClientGestionF.VilleClientGCbxEnter(Sender: TObject);
 Var I,CodeW: Integer;
-
 begin
- if WilayaClientGCbx.Text <> '' then
+ if Ini.ReadBool('', 'Is EU',False) then
  begin
-      MainForm.WilayasTable.Active:=False;
-      MainForm.WilayasTable.SQL.Clear;
-      MainForm.WilayasTable.SQL.Text:= 'SELECT * FROM wilayas WHERE LOWER(nom_w) LIKE LOWER('+QuotedStr(WilayaClientGCbx.Text)+')' ;
-      MainForm.WilayasTable.Active := True;
-
- CodeW:=MainForm.WilayasTable.FieldValues['code_w'];
-
-      MainForm.CommunesTable.Active:=False;
-      MainForm.CommunesTable.SQL.Clear;
-      MainForm.CommunesTable.SQL.Text:= 'SELECT * FROM communes WHERE code_w ='+ IntToStr(CodeW);
-      MainForm.CommunesTable.Active := True;
-
-      MainForm.CommunesTable.Refresh;
-      VilleClientGCbx.Items.Clear;
-
-      MainForm.CommunesTable.first;
+    //Here we add France data
+ end else
      begin
-
-       for I := 0 to MainForm.CommunesTable.RecordCount - 1 do
-       if ( MainForm.CommunesTable.FieldByName('nom_cumm').IsNull = False )  then
+       if WilayaClientGCbx.Text <> '' then
        begin
-         VilleClientGCbx.Items.Add(MainForm.CommunesTable.FieldByName('nom_cumm').AsString);
-         MainForm.CommunesTable.Next;
+        DataModuleF.SQLQuery3.Active:=False;
+        DataModuleF.SQLQuery3.SQL.Clear;
+        DataModuleF.SQLQuery3.SQL.Text:= 'SELECT code_w FROM wilayas WHERE LOWER(nom_w) LIKE LOWER('+QuotedStr(WilayaClientGCbx.Text)+')' ;
+        DataModuleF.SQLQuery3.Active := True;
+
+        CodeW:= DataModuleF.SQLQuery3.FieldByName('code_w').AsInteger;
+
+        DataModuleF.SQLQuery3.Active:=False;
+        DataModuleF.SQLQuery3.SQL.Clear;
+        DataModuleF.SQLQuery3.SQL.Text:= 'SELECT nom_cumm FROM communes WHERE code_w ='+ IntToStr(CodeW) + ' ORDER By code_cumm';
+        DataModuleF.SQLQuery3.Active := True;
+
+        DataModuleF.SQLQuery3.Refresh;
+        VilleClientGCbx.Items.Clear;
+
+        DataModuleF.SQLQuery3.first;
+        begin
+         for I := 0 to DataModuleF.SQLQuery3.RecordCount - 1 do
+         if ( DataModuleF.SQLQuery3.FieldByName('nom_cumm').IsNull = False )  then
+         begin
+           VilleClientGCbx.Items.Add(DataModuleF.SQLQuery3.FieldByName('nom_cumm').AsString);
+           DataModuleF.SQLQuery3.Next;
+          end;
         end;
 
+        DataModuleF.SQLQuery3.Active:=False;
+        DataModuleF.SQLQuery3.SQL.Clear;
+       end;
      end;
-
-      MainForm.WilayasTable.Active:=False;
-      MainForm.WilayasTable.SQL.Clear;
-      MainForm.WilayasTable.SQL.Text:= 'SELECT * FROM wilayas ' ;
-      MainForm.WilayasTable.Active := True;
-
- end;
-
 end;
 
 procedure TClientGestionF.WilayaClientGCbxEnter(Sender: TObject);
 Var I: Integer;
-
 begin
-// CodeW:=MainForm.WilayasTable.FieldValues['code_w'];
-       MainForm.WilayasTable.Active:=False;
-      MainForm.WilayasTable.SQL.Clear;
-      MainForm.WilayasTable.SQL.Text:= 'SELECT * FROM wilayas ';
-      MainForm.WilayasTable.Active := True;
-
-      MainForm.WilayasTable.Refresh;
-      WilayaClientGCbx.Items.Clear;
-
-      MainForm.WilayasTable.first;
+ if Ini.ReadBool('', 'Is EU',True) then
+ begin
+    //Here we add France data
+ end else
      begin
+        DataModuleF.SQLQuery3.Active:=False;
+        DataModuleF.SQLQuery3.SQL.Clear;
+        DataModuleF.SQLQuery3.SQL.Text:= 'SELECT nom_w FROM wilayas ORDER By code_w';
+        DataModuleF.SQLQuery3.Active := True;
 
-     for I := 0 to MainForm.WilayasTable.RecordCount - 1 do
-     if ( MainForm.WilayasTable.FieldByName('nom_w').IsNull = False )  then
-     begin
-       WilayaClientGCbx.Items.Add(MainForm.WilayasTable.FieldByName('nom_w').AsString);
-       MainForm.WilayasTable.Next;
-      end;
+        WilayaClientGCbx.Items.Clear;
+        DataModuleF.SQLQuery3.first;
+        begin
+          for I := 0 to DataModuleF.SQLQuery3.RecordCount - 1 do
+          if ( DataModuleF.SQLQuery3.FieldByName('nom_w').IsNull = False )  then
+          begin
+            WilayaClientGCbx.Items.Add(DataModuleF.SQLQuery3.FieldByName('nom_w').AsWideString);
+            DataModuleF.SQLQuery3.Next;
+          end;
+        end;
+
+        DataModuleF.SQLQuery3.Active:=False;
+        DataModuleF.SQLQuery3.SQL.Clear;
      end;
 end;
 
@@ -1469,11 +1538,47 @@ begin
     Label2.Visible:= True;
     ClientFourGSlider.Visible:= True;
 	end;
+
+  if Ini.ReadBool('', 'Is EU',False) then
+  begin
+   WilayaClientGLbl.Caption:='Département:';
+   RCClientGLbl.Caption:='N° Siret:';
+   NIFClientGLbl.Caption:='Code NAF/APE:';
+   NArtClientGLbl.Caption:='N° TVA intracom:';
+   NISClientGLbl.Caption:='RCS:';
+   ModeTarifClientGCbx.Items.BeginUpdate;
+   ModeTarifClientGCbx.Items.Clear;
+   ModeTarifClientGCbx.Items.Add('Particulier');
+   ModeTarifClientGCbx.Items.Add('Professional');
+   ModeTarifClientGCbx.Items.Add('Société');
+   ModeTarifClientGCbx.Items.Add('Catégorie 1');
+   ModeTarifClientGCbx.Items.Add('Catégorie 2');
+   ModeTarifClientGCbx.Items.EndUpdate;
+   ModeTarifClientGCbx.ItemIndex:= 0;
+  end else
+      begin
+        WilayaClientGLbl.Caption:='Wilaya:';
+        RCClientGLbl.Caption:='RC:';
+        NIFClientGLbl.Caption:='NIF:';
+        NArtClientGLbl.Caption:='N°Art:';
+        NISClientGLbl.Caption:='NIS:';
+
+        ModeTarifClientGCbx.Items.Clear;
+        ModeTarifClientGCbx.Items.Add('Détaillant');
+        ModeTarifClientGCbx.Items.Add('Revendeur');
+        ModeTarifClientGCbx.Items.Add('Gros');
+        ModeTarifClientGCbx.Items.Add('Autre 1');
+        ModeTarifClientGCbx.Items.Add('Autre 2');
+        ;
+        ModeTarifClientGCbx.ItemIndex:= 0;
+      end;
 end;
 
 procedure TClientGestionF.FormCreate(Sender: TObject);
 begin
   GrayFormsClient;
+
+  Ini := TIniFile.Create(ChangeFileExt(Application.ExeName,'.ini'));
 end;
 
 procedure TClientGestionF.OldCreditClientGEdtChange(Sender: TObject);
@@ -1528,17 +1633,18 @@ begin
           Append;
           FieldValues['code_f'] := codeF;
           FieldValues['activ_f'] := ActiveClientGSlider.SliderOn;
-          fieldbyname('nom_f').Value := NameF;
-          fieldbyname('adr_f').Value := AdrClientGEdt.Text;
-          fieldbyname('willaya_f').Value := WilayaClientGCbx.Text;
+          fieldbyname('nom_f').AsWideString := NameF;
+          fieldbyname('adr_f').AsWideString := AdrClientGEdt.Text;
           fieldbyname('ville_f').Value := VilleClientGCbx.Text;
+          fieldbyname('willaya_f').Value := WilayaClientGCbx.Text;
+          fieldbyname('cpostal_f').Value := CPostalClientGCbx.Text;
+          fieldbyname('country_f').Value := CountryClientGCbx.Text;
           fieldbyname('fix_f').Value := FixClientGEdt.Text;
           fieldbyname('fax_f').Value := FaxClientGEdt.Text;
           fieldbyname('mob_f').Value := MobileClientGEdt.Text;
           fieldbyname('mob2_f').Value := Mobile2ClientGEdt.Text;
           fieldbyname('email_f').Value := EmailClientGEdt.Text;
           fieldbyname('siteweb_f').Value := SiteClientGEdt.Text;
-
           fieldbyname('rc_f').Value := RCClientGEdt.Text;
           fieldbyname('nart_f').Value := NArtClientGEdt.Text;
           fieldbyname('nif_f').Value := NIFClientGEdt.Text;
@@ -1574,10 +1680,12 @@ begin
    begin
     Edit;
     FieldValues['activ_f'] := ActiveClientGSlider.SliderOn;
-    fieldbyname('nom_f').Value := NameClientGEdt.Text;
-    fieldbyname('adr_f').Value := AdrClientGEdt.Text;
-    fieldbyname('willaya_f').Value := WilayaClientGCbx.Text;
+    fieldbyname('nom_f').AsWideString := NameClientGEdt.Text;
+    fieldbyname('adr_f').AsWideString := AdrClientGEdt.Text;
     fieldbyname('ville_f').Value := VilleClientGCbx.Text;
+    fieldbyname('willaya_f').Value := WilayaClientGCbx.Text;
+    fieldbyname('cpostal_f').Value := CPostalClientGCbx.Text;
+    fieldbyname('country_f').Value := CountryClientGCbx.Text;
     fieldbyname('fix_f').Value := FixClientGEdt.Text;
     fieldbyname('fax_f').Value := FaxClientGEdt.Text;
     fieldbyname('mob_f').Value := MobileClientGEdt.Text;

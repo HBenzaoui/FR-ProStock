@@ -155,7 +155,7 @@ implementation
 
 {$R *.dfm}
 
-uses UMainF,   UClientGestion, USplash,System.Threading, UWorkingSplash, UComptoir, USplashPrintReport,
+uses UMainF,IniFiles,UClientGestion, USplash,System.Threading, UWorkingSplash, UComptoir, USplashPrintReport,
   UFastProduitsList;
 
 procedure TClientListF.Select_Valid;
@@ -388,8 +388,11 @@ begin
       ClientGestionF.NameClientGEdt.Text:= fieldbyname('nom_c').AsString;
       ClientGestionF.AcitiviteClientGEdt.Text:= fieldbyname('activite_c').AsString;
       ClientGestionF.AdrClientGEdt.Text:= fieldbyname('adr_c').AsString;
-      ClientGestionF.WilayaClientGCbx.Text:= fieldbyname('willaya_c').AsString;
+
       ClientGestionF.VilleClientGCbx.Text:= fieldbyname('ville_c').AsString;
+      ClientGestionF.CPostalClientGCbx.Text:= fieldbyname('cpostal_c').AsString;
+      ClientGestionF.WilayaClientGCbx.Text:= fieldbyname('willaya_c').AsString;
+      ClientGestionF.CountryClientGCbx.Text:= fieldbyname('country_c').AsString;
       ClientGestionF.FixClientGEdt.Text:= fieldbyname('fix_c').AsString;
       ClientGestionF.FaxClientGEdt.Text:= fieldbyname('fax_c').AsString;
       ClientGestionF.MobileClientGEdt.Text:= fieldbyname('mob_c').AsString;
@@ -958,8 +961,24 @@ begin
 end;
 
 procedure TClientListF.FormShow(Sender: TObject);
+Var Ini: TIniFile;
 begin
        ResearchClientsEdt.SetFocus ;
+
+
+       Ini := TIniFile.Create(ChangeFileExt(Application.ExeName,'.ini'));
+       if Ini.ReadBool('', 'Is EU',False) then
+       begin
+          ClientsListDBGridEh.FindFieldColumn('willaya_c').Title.Caption := 'Département';
+       end else
+            begin
+              ClientsListDBGridEh.FindFieldColumn('willaya_c').Title.Caption := 'Wilaya';
+            end;
+
+       Ini.Free;
+
+
+
    //----- for show how many Clients on the database--------------//
 //
 //      ToutClientsLbl.Caption:= IntToStr( MainForm.ClientTable.RecordCount) ;

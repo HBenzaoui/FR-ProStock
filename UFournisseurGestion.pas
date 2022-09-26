@@ -48,8 +48,6 @@ type
     NISFournisseurGLbl: TLabel;
     ObserFournisseurGLbl: TLabel;
     MaxCreditFournisseurGLbl: TLabel;
-    CurrencyFournisseurG: TLabel;
-    CurrencyFournisseurG1: TLabel;
     OldCreditFournisseurGLbl: TLabel;
     NBankFournisseurGLbl: TLabel;
     RIBFournisseurGLbl: TLabel;
@@ -86,6 +84,10 @@ type
     Panel4: TPanel;
     Label2: TLabel;
     Label5: TLabel;
+    CPostalFournisseurGCbx: TComboBox;
+    CPostalFournisseurGLbl: TLabel;
+    CountryFournisseurGCbx: TComboBox;
+    CountryFournisseurGLbl: TLabel;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
@@ -117,6 +119,8 @@ type
     procedure PayFourClientGSliderChanging(Sender: TObject;
       var CanChange: Boolean);
     procedure FormShow(Sender: TObject);
+    procedure CPostalFournisseurGCbxEnter(Sender: TObject);
+    procedure CountryFournisseurGCbxEnter(Sender: TObject);
 	private
 		procedure EditSameClientDetailInCList(NameC: string);
     procedure addNewFour;
@@ -137,15 +141,16 @@ implementation
 
 {$R *.dfm}
 
-uses Contnrs,
+uses Contnrs,  IniFiles,
  UFournisseurList, UMainF, USplash, UClientGestion,
   UProduitGestion, USplashAddUnite, UBonRecGestion, UBonFacAGestion,
-  UReglementFGestion, UBonComAGestion, UReglementFList;
+  UReglementFGestion, UBonComAGestion, UReglementFList, UDataModule;
 
 
 
   var
     gGrayForms: TComponentList;
+    Ini: TIniFile;
 
 procedure GrayFormsFour;
 var
@@ -217,6 +222,61 @@ begin
 
 end;
 
+procedure TFournisseurGestionF.CountryFournisseurGCbxEnter(Sender: TObject);
+begin
+ if Ini.ReadBool('', 'Is EU',False) then
+ begin
+    //Here we add France data
+    CountryFournisseurGCbx.Items.Clear;
+    CountryFournisseurGCbx.Items.Add('France');
+ end else
+     begin
+        CountryFournisseurGCbx.Items.Clear;
+        CountryFournisseurGCbx.Items.Add('Algérie');
+     end;
+end;
+
+procedure TFournisseurGestionF.CPostalFournisseurGCbxEnter(Sender: TObject);
+Var I,CodeW: Integer;
+begin
+ if Ini.ReadBool('', 'Is EU',False) then
+ begin
+    //Here we add France data
+ end else
+     begin
+       if WilayaFournisseurGCbx.Text <> '' then
+       begin
+        DataModuleF.SQLQuery3.Active:=False;
+        DataModuleF.SQLQuery3.SQL.Clear;
+        DataModuleF.SQLQuery3.SQL.Text:= 'SELECT code_w FROM wilayas WHERE LOWER(nom_w) LIKE LOWER('+QuotedStr(WilayaFournisseurGCbx.Text)+')' ;
+        DataModuleF.SQLQuery3.Active := True;
+
+        CodeW:= DataModuleF.SQLQuery3.FieldByName('code_w').AsInteger;
+
+        DataModuleF.SQLQuery3.Active:=False;
+        DataModuleF.SQLQuery3.SQL.Clear;
+        DataModuleF.SQLQuery3.SQL.Text:= 'SELECT codepostal_cumm FROM communes WHERE code_w ='+ IntToStr(CodeW) + ' ORDER By code_cumm';
+        DataModuleF.SQLQuery3.Active := True;
+
+        DataModuleF.SQLQuery3.Refresh;
+        CPostalFournisseurGCbx.Items.Clear;
+
+        DataModuleF.SQLQuery3.first;
+        begin
+         for I := 0 to DataModuleF.SQLQuery3.RecordCount - 1 do
+         if ( DataModuleF.SQLQuery3.FieldByName('codepostal_cumm').IsNull = False )  then
+         begin
+           CPostalFournisseurGCbx.Items.Add(DataModuleF.SQLQuery3.FieldByName('codepostal_cumm').AsString);
+           DataModuleF.SQLQuery3.Next;
+          end;
+        end;
+
+        DataModuleF.SQLQuery3.Active:=False;
+        DataModuleF.SQLQuery3.SQL.Clear;
+       end;
+     end;
+end;
+
 procedure TFournisseurGestionF.FourClientGSliderChanging(Sender: TObject;
   var CanChange: Boolean);
 begin
@@ -271,6 +331,7 @@ begin
 end;
 
 procedure TFournisseurGestionF.FormCreate(Sender: TObject);
+
 begin
   if assigned(ProduitGestionF) then
   begin
@@ -278,6 +339,9 @@ begin
       SWP_NOMOVE or SWP_NOSIZE);
   end;
   GrayFormsFour;
+
+  Ini := TIniFile.Create(ChangeFileExt(Application.ExeName,'.ini'));
+
 end;
 
 procedure TFournisseurGestionF.FormDestroy(Sender: TObject);
@@ -292,6 +356,8 @@ begin
   // begin
   // FournisseurListF.FournisseursListDBGridEh.SetFocus;
   // end;
+
+  Ini.Free;
 
 end;
 
@@ -355,9 +421,9 @@ begin
   NameFournisseurGEdt.BorderStyle := bsSingle;
   NameFournisseurGEdt.StyleElements := [seClient, seBorder];
   RequiredFournisseurGlbl.Visible := false;
-  RequiredFournisseurGlbl.Font.Height:= 16;
-  RequiredFournisseurGlbl.Top:=38;
-  RequiredFournisseurGlbl.Left:= NameFournisseurGEdt.Left;
+//  RequiredFournisseurGlbl.Font.Height:= 16;
+//  RequiredFournisseurGlbl.Top:=38;
+//  RequiredFournisseurGlbl.Left:= NameFournisseurGEdt.Left;
   NameFournisseurGErrorP.Visible := false;
 
  end;
@@ -387,10 +453,12 @@ begin
           Append;
           FieldValues['code_f'] := codeF;
           FieldValues['activ_f'] := ActiveFournisseurGSlider.SliderOn;
-          fieldbyname('nom_f').Value := NameFournisseurGEdt.Text;
-          fieldbyname('adr_f').Value := AdrFournisseurGEdt.Text;
-          fieldbyname('willaya_f').Value := WilayaFournisseurGCbx.Text;
+          fieldbyname('nom_f').AsWideString := NameFournisseurGEdt.Text;
+          fieldbyname('adr_f').AsWideString := AdrFournisseurGEdt.Text;
           fieldbyname('ville_f').Value := VilleFournisseurGCbx.Text;
+          fieldbyname('cpostal_f').Value := CPostalFournisseurGCbx.Text;
+          fieldbyname('willaya_f').Value := WilayaFournisseurGCbx.Text;
+          fieldbyname('country_f').Value := CountryFournisseurGCbx.Text;
           fieldbyname('fix_f').Value := FixFournisseurGEdt.Text;
           fieldbyname('fax_f').Value := FaxFournisseurGEdt.Text;
           fieldbyname('mob_f').Value := MobileFournisseurGEdt.Text;
@@ -508,8 +576,10 @@ begin
     FieldValues['activ_f'] := ActiveFournisseurGSlider.SliderOn;
     fieldbyname('nom_f').Value := NameFournisseurGEdt.Text;
     fieldbyname('adr_f').Value := AdrFournisseurGEdt.Text;
-    fieldbyname('willaya_f').Value := WilayaFournisseurGCbx.Text;
     fieldbyname('ville_f').Value := VilleFournisseurGCbx.Text;
+    fieldbyname('cpostal_f').Value := CPostalFournisseurGCbx.Text;
+    fieldbyname('willaya_f').Value := WilayaFournisseurGCbx.Text;
+    fieldbyname('country_f').Value := CountryFournisseurGCbx.Text;
     fieldbyname('fix_f').Value := FixFournisseurGEdt.Text;
     fieldbyname('fax_f').Value := FaxFournisseurGEdt.Text;
     fieldbyname('mob_f').Value := MobileFournisseurGEdt.Text;
@@ -1121,7 +1191,7 @@ if  isFourExist(NameFournisseurGEdt.Text) = False	 then
     try
       NameFournisseurGEdt.BorderStyle := bsNone;
       NameFournisseurGEdt.StyleElements := [];
-      RequiredFournisseurGlbl.Caption:= 'S''il vous plaît entrer un nom';
+      RequiredFournisseurGlbl.Caption:= 'Champ obligatoire';
       RequiredFournisseurGlbl.Visible := true;
       NameFournisseurGErrorP.Visible := true;
       sndPlaySound('C:\Windows\Media\Windows Hardware Fail.wav',
@@ -1224,31 +1294,36 @@ begin
        Label5.Font.Color:=$0077D90E;
        Label5.Visible:= False;
 
-        
+
       end;
 end;
 
 procedure TFournisseurGestionF.WilayaFournisseurGCbxEnter(Sender: TObject);
 Var I: Integer;
-
 begin
-// CodeW:=MainForm.WilayasTable.FieldValues['code_w'];
-       MainForm.WilayasTable.Active:=False;
-      MainForm.WilayasTable.SQL.Clear;
-      MainForm.WilayasTable.SQL.Text:= 'SELECT * FROM wilayas ';
-      MainForm.WilayasTable.Active := True;
-
-      MainForm.WilayasTable.Refresh;
-      WilayaFournisseurGCbx.Items.Clear;
-
-      MainForm.WilayasTable.first;
+ if Ini.ReadBool('', 'Is EU',True) then
+ begin
+    //Here we add France data
+ end else
      begin
-     for I := 0 to MainForm.WilayasTable.RecordCount - 1 do
-     if ( MainForm.WilayasTable.FieldByName('nom_w').IsNull = False )  then
-     begin
-       WilayaFournisseurGCbx.Items.Add(MainForm.WilayasTable.FieldByName('nom_w').AsString);
-       MainForm.WilayasTable.Next;
-      end;
+        DataModuleF.SQLQuery3.Active:=False;
+        DataModuleF.SQLQuery3.SQL.Clear;
+        DataModuleF.SQLQuery3.SQL.Text:= 'SELECT nom_w FROM wilayas ORDER By code_w';
+        DataModuleF.SQLQuery3.Active := True;
+
+        WilayaFournisseurGCbx.Items.Clear;
+        DataModuleF.SQLQuery3.first;
+        begin
+          for I := 0 to DataModuleF.SQLQuery3.RecordCount - 1 do
+          if ( DataModuleF.SQLQuery3.FieldByName('nom_w').IsNull = False )  then
+          begin
+            WilayaFournisseurGCbx.Items.Add(DataModuleF.SQLQuery3.FieldByName('nom_w').AsWideString);
+            DataModuleF.SQLQuery3.Next;
+          end;
+        end;
+
+        DataModuleF.SQLQuery3.Active:=False;
+        DataModuleF.SQLQuery3.SQL.Clear;
      end;
 end;
 
@@ -1276,44 +1351,43 @@ end;
 
 procedure TFournisseurGestionF.VilleFournisseurGCbxEnter(Sender: TObject);
 Var I,CodeW: Integer;
-
 begin
- if WilayaFournisseurGCbx.Text <> '' then
+ if Ini.ReadBool('', 'Is EU',False) then
  begin
-      MainForm.WilayasTable.Active:=False;
-      MainForm.WilayasTable.SQL.Clear;
-      MainForm.WilayasTable.SQL.Text:= 'SELECT * FROM wilayas WHERE LOWER(nom_w) LIKE LOWER('+QuotedStr(WilayaFournisseurGCbx.Text)+')' ;
-      MainForm.WilayasTable.Active := True;
-
- CodeW:=MainForm.WilayasTable.FieldValues['code_w'];
-
-      MainForm.CommunesTable.Active:=False;
-      MainForm.CommunesTable.SQL.Clear;
-      MainForm.CommunesTable.SQL.Text:= 'SELECT * FROM communes WHERE code_w ='+ IntToStr(CodeW);
-      MainForm.CommunesTable.Active := True;
-
-      MainForm.CommunesTable.Refresh;
-      VilleFournisseurGCbx.Items.Clear;
-
-      MainForm.CommunesTable.first;
+    //Here we add France data
+ end else
      begin
-
-       for I := 0 to MainForm.CommunesTable.RecordCount - 1 do
-       if ( MainForm.CommunesTable.FieldByName('nom_cumm').IsNull = False )  then
+       if WilayaFournisseurGCbx.Text <> '' then
        begin
-         VilleFournisseurGCbx.Items.Add(MainForm.CommunesTable.FieldByName('nom_cumm').AsString);
-         MainForm.CommunesTable.Next;
+        DataModuleF.SQLQuery3.Active:=False;
+        DataModuleF.SQLQuery3.SQL.Clear;
+        DataModuleF.SQLQuery3.SQL.Text:= 'SELECT code_w FROM wilayas WHERE LOWER(nom_w) LIKE LOWER('+QuotedStr(WilayaFournisseurGCbx.Text)+')' ;
+        DataModuleF.SQLQuery3.Active := True;
+
+        CodeW:= DataModuleF.SQLQuery3.FieldByName('code_w').AsInteger;
+
+        DataModuleF.SQLQuery3.Active:=False;
+        DataModuleF.SQLQuery3.SQL.Clear;
+        DataModuleF.SQLQuery3.SQL.Text:= 'SELECT nom_cumm FROM communes WHERE code_w ='+ IntToStr(CodeW) + ' ORDER By code_cumm';
+        DataModuleF.SQLQuery3.Active := True;
+
+        DataModuleF.SQLQuery3.Refresh;
+        VilleFournisseurGCbx.Items.Clear;
+
+        DataModuleF.SQLQuery3.first;
+        begin
+         for I := 0 to DataModuleF.SQLQuery3.RecordCount - 1 do
+         if ( DataModuleF.SQLQuery3.FieldByName('nom_cumm').IsNull = False )  then
+         begin
+           VilleFournisseurGCbx.Items.Add(DataModuleF.SQLQuery3.FieldByName('nom_cumm').AsString);
+           DataModuleF.SQLQuery3.Next;
+          end;
         end;
 
+        DataModuleF.SQLQuery3.Active:=False;
+        DataModuleF.SQLQuery3.SQL.Clear;
+       end;
      end;
-
-      MainForm.WilayasTable.Active:=False;
-      MainForm.WilayasTable.SQL.Clear;
-      MainForm.WilayasTable.SQL.Text:= 'SELECT * FROM wilayas ' ;
-      MainForm.WilayasTable.Active := True;
-
- end;
-
 end;
 
 procedure TFournisseurGestionF.FormKeyPress(Sender: TObject; var Key: Char);
@@ -1341,6 +1415,23 @@ begin
 		Label2.Visible:= True;
 		FourClientGSlider.Visible:= True;
 	end;
+
+  if Ini.ReadBool('', 'Is EU',False) then
+  begin
+   WilayaFournisseurGLbl.Caption:='Département:';
+   RCFournisseurGLbl.Caption:='N° Siret:';
+   NIFFournisseurGLbl.Caption:='Code NAF/APE:';
+   NArtFournisseurGLbl.Caption:='N° TVA intracom:';
+   NISFournisseurGLbl.Caption:='RCS:';
+  end else
+      begin
+        WilayaFournisseurGLbl.Caption:='Wilaya:';
+        RCFournisseurGLbl.Caption:='RC:';
+        NIFFournisseurGLbl.Caption:='NIF:';
+        NArtFournisseurGLbl.Caption:='N°Art:';
+        NISFournisseurGLbl.Caption:='NIS:';
+      end;
+
 end;
 
 procedure TFournisseurGestionF.MaxCreditFournisseurGEdtClick(Sender: TObject);
@@ -1395,10 +1486,12 @@ begin
           Append;
           FieldValues['code_c'] := codeC;
           FieldValues['activ_c'] := ActiveFournisseurGSlider.SliderOn;
-          fieldbyname('nom_c').Value := NameC;
-          fieldbyname('adr_c').Value := AdrFournisseurGEdt.Text;
-          fieldbyname('willaya_c').Value := WilayaFournisseurGCbx.Text;
+          fieldbyname('nom_c').AsWideString := NameC;
+          fieldbyname('adr_c').AsWideString := AdrFournisseurGEdt.Text;
           fieldbyname('ville_c').Value := VilleFournisseurGCbx.Text;
+          fieldbyname('willaya_c').Value := WilayaFournisseurGCbx.Text;
+          fieldbyname('cpostal_c').Value := CPostalFournisseurGCbx.Text;
+          fieldbyname('country_c').Value := CountryFournisseurGCbx.Text;
           fieldbyname('fix_c').Value := FixFournisseurGEdt.Text;
           fieldbyname('fax_c').Value := FaxFournisseurGEdt.Text;
           fieldbyname('mob_c').Value := MobileFournisseurGEdt.Text;
@@ -1442,10 +1535,12 @@ begin
 	 begin
 		Edit;
 		FieldValues['activ_c'] := ActiveFournisseurGSlider.SliderOn;
-		fieldbyname('nom_c').AsString := NameFournisseurGEdt.Text;
-		fieldbyname('adr_c').AsString := AdrFournisseurGEdt.Text;
-		fieldbyname('willaya_c').AsString := WilayaFournisseurGCbx.Text;
-		fieldbyname('ville_c').AsString := VilleFournisseurGCbx.Text;
+		fieldbyname('nom_c').AsWideString := NameFournisseurGEdt.Text;
+		fieldbyname('adr_c').AsWideString := AdrFournisseurGEdt.Text;
+		fieldbyname('ville_c').Value := VilleFournisseurGCbx.Text;
+    fieldbyname('willaya_c').Value := WilayaFournisseurGCbx.Text;
+    fieldbyname('cpostal_c').Value := CPostalFournisseurGCbx.Text;
+    fieldbyname('country_c').Value := CountryFournisseurGCbx.Text;
 		fieldbyname('fix_c').AsString := FixFournisseurGEdt.Text;
 		fieldbyname('fax_c').AsString := FaxFournisseurGEdt.Text;
 		fieldbyname('mob_c').AsString := MobileFournisseurGEdt.Text;
