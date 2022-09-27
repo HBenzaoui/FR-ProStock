@@ -3627,6 +3627,16 @@ object DataModuleF: TDataModuleF
       Precision = 64
       Size = 0
     end
+    object Bonv_com_listTabledetailp: TWideStringField
+      FieldKind = fkLookup
+      FieldName = 'detailp'
+      LookupDataSet = MainForm.ProduitTable
+      LookupKeyFields = 'code_p'
+      LookupResultField = 'detail_p'
+      KeyFields = 'code_p'
+      Size = 500
+      Lookup = True
+    end
   end
   object BonComVListDataS: TDataSource
     DataSet = Bonv_comTable
@@ -4360,6 +4370,16 @@ object DataModuleF: TDataModuleF
       ReadOnly = True
       Precision = 64
       Size = 0
+    end
+    object Bonv_ret_listTabledetailp: TWideStringField
+      FieldKind = fkLookup
+      FieldName = 'detailp'
+      LookupDataSet = MainForm.ProduitTable
+      LookupKeyFields = 'code_p'
+      LookupResultField = 'detail_p'
+      KeyFields = 'code_p'
+      Size = 500
+      Lookup = True
     end
   end
   object BonRetVListDataS: TDataSource

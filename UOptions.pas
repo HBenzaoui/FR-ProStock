@@ -968,9 +968,9 @@ begin
         begin
          NameCompanyOptionEdt.Text := fieldbyname('nom_comp').AsWideString;
         end;
-        if (fieldbyname('activite_c').AsWideString <> '') then
+        if (fieldbyname('activite_comp').AsWideString <> '') then
         begin
-         AcitiviteCompanyOptionEdt.Text := fieldbyname('activite_c').AsWideString;
+         AcitiviteCompanyOptionEdt.Text := fieldbyname('activite_comp').AsWideString;
         end;
         if (fieldbyname('fix_comp').AsString <> '') then
         begin
@@ -1113,7 +1113,7 @@ begin
             Insert;
             fieldbyname('code_comp').Value := 1;
             fieldbyname('nom_comp').AsWideString := NameCompanyOptionEdt.Text;
-            fieldbyname('activite_c').AsWideString := AcitiviteCompanyOptionEdt.Text;
+            fieldbyname('activite_comp').AsWideString := AcitiviteCompanyOptionEdt.Text;
             fieldbyname('fix_comp').AsString := TelCompanyOptionEdt.Text;
             fieldbyname('fax_comp').AsString := FaxCompanyOptionEdt.Text;
             fieldbyname('mob_comp').AsString := MobCompanyOptionEdt.Text;
@@ -1163,7 +1163,7 @@ begin
                with MainForm.CompanyTable do  begin
               Edit;
               fieldbyname('nom_comp').AsWideString := NameCompanyOptionEdt.Text;
-              fieldbyname('activite_c').AsWideString := AcitiviteCompanyOptionEdt.Text;
+              fieldbyname('activite_comp').AsWideString := AcitiviteCompanyOptionEdt.Text;
               fieldbyname('fix_comp').AsString := TelCompanyOptionEdt.Text;
               fieldbyname('fax_comp').AsString := FaxCompanyOptionEdt.Text;
               fieldbyname('mob_comp').AsString := MobCompanyOptionEdt.Text;

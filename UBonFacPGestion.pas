@@ -1697,8 +1697,8 @@ begin
 
 if ValiderBVFacBonFacVGImg.ImageIndex <> 1 then
  begin
-MainForm.Bonp_fac_listTable.DisableControls;
- GettingData;
+  MainForm.Bonp_fac_listTable.DisableControls;
+  GettingData;
 
   OLDCredit:= BonFacPPListfrxRprt.FindObject('OLDCredit') as TfrxMemoView;
   OLDCredit.Visible:= False;
@@ -1725,9 +1725,13 @@ MainForm.Bonp_fac_listTable.DisableControls;
   LineCreditTop.Visible:= False;
 
 
-BonFacPPListfrxRprt.PrepareReport;
-BonFacPPListfrxRprt.ShowReport;
-MainForm.Bonp_fac_listTable.EnableControls;
+
+
+
+
+  BonFacPPListfrxRprt.PrepareReport;
+  BonFacPPListfrxRprt.ShowReport;
+  MainForm.Bonp_fac_listTable.EnableControls;
  end;
 end;
 
@@ -3246,23 +3250,48 @@ end;
 
 procedure TBonFacPGestionF.GettingData;
  var
-  MoneyWordRX,NumRX,DateRX,NameRX,AdrRX,VilleRX,WilayaRX,MPRX,NCHeqRX,
+  MoneyWordRX,NumRX,DateRX,NameRX,AdrRX,MPRX,NCHeqRX,
   TauxTVA9,TauxTVA19,MontantTVA9,MontantTVA19,RC,NArt,NIF,NIS,NEWCredit,OLDCredit : TfrxMemoView;
   str1 : string;
   Montant9,Montant19,RemisePerctageBonFacV : Double;
-  Name,Tel,Mob,Adr,ComRC,ComNArt,ComNIF,ComNIS,ComRIB : TfrxMemoView;
+  Name,Activite,Tel,Mob,Email,Adr,ComRC,ComNArt,ComNIF,ComNIS,ComRIB : TfrxMemoView;
   RCLbl,NArtLbl,NIFLbl,NISLbl,ComRCLbl,ComNArtLbl,ComNIFLbl,ComNISLbl,ComRIBLbl : TfrxMemoView;
   Logo : TfrxPictureView;
     S: TMemoryStream;
   Jpg: TJPEGImage;
+  Ini: TIniFile;
+ IsEU: Boolean;
+ ComFullAddress: WideString;
 begin
+
+  Ini := TIniFile.Create(ChangeFileExt(Application.ExeName,'.ini'));
+  IsEU := Ini.ReadBool('', 'Is EU',False);
+  Ini.Free;
+
+//    if Ini.ReadBool('', 'Is EU',False) then
+//    begin
+//      //Here we add France data
+////      CountryClientGCbx.Items.Clear;
+////      CountryClientGCbx.Items.Add('France');
+//      end else
+//     begin
+////        CountryClientGCbx.Items.Clear;
+////        CountryClientGCbx.Items.Add('Algérie');
+//     end;
+
+
+
+
 
   if NOT (MainForm.CompanyTable.IsEmpty) then
   begin
-
     Name:= BonFacPPListfrxRprt.FindObject('Name') as TfrxMemoView;
     Name.Text:= MainForm.CompanyTable.FieldByName('nom_comp').AsString ;
     Name.Visible:=True;
+
+    Activite:= BonFacPPListfrxRprt.FindObject('Activite') as TfrxMemoView;
+    Activite.Text:= MainForm.CompanyTable.FieldByName('activite_comp').AsString ;
+    Activite.Visible:=True;
 
     Tel:= BonFacPPListfrxRprt.FindObject('Tel') as TfrxMemoView;
     Tel.Text:= MainForm.CompanyTable.FieldByName('fix_comp').AsString ;
@@ -3272,8 +3301,20 @@ begin
     Mob.Text:= MainForm.CompanyTable.FieldByName('mob_comp').AsString ;
     Mob.Visible:=True;
 
+    Email:= BonFacPPListfrxRprt.FindObject('Email') as TfrxMemoView;
+    Email.Text:= MainForm.CompanyTable.FieldByName('email_comp').AsString ;
+    Email.Visible:=True;
+
+    ComFullAddress:=
+    MainForm.CompanyTable.FieldByName('adr_comp').AsWideString
+    +' ' + MainForm.CompanyTable.FieldByName('ville_comp').AsWideString
+    +' ' + MainForm.CompanyTable.FieldByName('cpostal_comp').AsWideString
+    +' ' + MainForm.CompanyTable.FieldByName('willaya_comp').AsWideString
+    +' ' + MainForm.CompanyTable.FieldByName('country_comp').AsWideString
+    ;
+
     Adr:= BonFacPPListfrxRprt.FindObject('Adr') as TfrxMemoView;
-    Adr.Text:= MainForm.CompanyTable.FieldByName('adr_comp').AsString ;
+    Adr.Text:= ComFullAddress ;
     Adr.Visible:=True;
 
     ComRC:= BonFacPPListfrxRprt.FindObject('ComRC') as TfrxMemoView;
@@ -3306,9 +3347,8 @@ begin
     ComRIBLbl:= BonFacPPListfrxRprt.FindObject('ComRIBLbl') as TfrxMemoView;
     ComRIBLbl.Visible:=True;
 
-
-      Logo:= BonFacPPListfrxRprt.FindObject('Logo') as TfrxPictureView;
-      Logo.Visible:=True;
+    Logo:= BonFacPPListfrxRprt.FindObject('Logo') as TfrxPictureView;
+    Logo.Visible:=True;
 
         if (MainForm.CompanyTable.fieldbyname('logo_comp').Value <> null) then
       begin
@@ -3335,6 +3375,8 @@ begin
   str1[1] := Upcase(str1[1]);
   MoneyWordRX := BonFacPPListfrxRprt.FindObject('MoneyWordRX') as TfrxMemoView;
   MoneyWordRX.Text :=str1;// StringReplace(ObserBonLivGLbl.Caption, '%my_str%', 'new string', [rfReplaceAll]);
+  MoneyWordRX.Visible:= NOT IsEU;
+  TfrxMemoView(BonFacPPListfrxRprt.FindObject('Memo13')).Visible:= NOT IsEU;
 
   NumRX:= BonFacPPListfrxRprt.FindObject('NumRX') as TfrxMemoView;
   NumRX.Text:= NumBonFacVGEdt.Caption;
@@ -3347,50 +3389,45 @@ begin
 
     MainForm.SQLQuery.Active:=False;
     MainForm.SQLQuery.SQL.Clear;
-    MainForm.SQLQuery.SQL.Text:='SELECT code_c,adr_c,ville_c,willaya_c,rc_c,nart_c,nif_c,nis_c FROM client WHERE code_c ='
+    MainForm.SQLQuery.SQL.Text:='SELECT code_c,adr_c,ville_c,cpostal_c,willaya_c,country_c,rc_c,nart_c,nif_c,nis_c FROM client WHERE code_c ='
     + IntToStr(MainForm.Bonp_facTable.FieldByName('code_c').AsInteger);
     MainForm.SQLQuery.Active:=True;
 
-   with MainForm.SQLQuery do
+  with MainForm.SQLQuery do
   begin
 
-      AdrRX:= BonFacPPListfrxRprt.FindObject('AdrRX') as TfrxMemoView;
-      AdrRX.Text:= FieldByName('adr_c').AsString;
+    AdrRX:= BonFacPPListfrxRprt.FindObject('AdrRX') as TfrxMemoView;
 
-      VilleRX:= BonFacPPListfrxRprt.FindObject('VilleRX') as TfrxMemoView;
-      VilleRX.Text:= FieldByName('ville_c').AsString;
+    AdrRX.Text:= FieldByName('adr_c').AsWideString;
+    AdrRX.Memo.Add(FieldByName('ville_c').AsWideString) ;
+    AdrRX.Memo.Add(FieldByName('cpostal_c').AsWideString) ;
+    AdrRX.Memo.Add(FieldByName('willaya_c').AsWideString) ;
+    AdrRX.Memo.Add(FieldByName('country_c').AsWideString) ;
 
-      WilayaRX:= BonFacPPListfrxRprt.FindObject('WilayaRX') as TfrxMemoView;
-      WilayaRX.Text:=  FieldByName('willaya_c').AsString;
+    RC:= BonFacPPListfrxRprt.FindObject('RC') as TfrxMemoView;
+    RC.Text:= FieldByName('rc_c').AsString;
+    RCLbl:= BonFacPPListfrxRprt.FindObject('RCLbl') as TfrxMemoView;
+    RCLbl.Visible:= NOT FieldByName('rc_c').AsWideString.IsEmpty;
 
-      RC:= BonFacPPListfrxRprt.FindObject('RC') as TfrxMemoView;
-      RC.Text:= FieldByName('rc_c').AsString;
-      RC.Visible:= True;
-      RCLbl:= BonFacPPListfrxRprt.FindObject('RCLbl') as TfrxMemoView;
-      RCLbl.Visible:= True;
+    NArt:= BonFacPPListfrxRprt.FindObject('NArt') as TfrxMemoView;
+    NArt.Text:= FieldByName('nart_c').AsString;
+    NArtLbl:= BonFacPPListfrxRprt.FindObject('NArtLbl') as TfrxMemoView;
+    NArtLbl.Visible:= NOT FieldByName('nart_c').AsWideString.IsEmpty;;
 
-      NArt:= BonFacPPListfrxRprt.FindObject('NArt') as TfrxMemoView;
-      NArt.Text:= FieldByName('nart_c').AsString;
-      NArt.Visible:= True;
-      NArtLbl:= BonFacPPListfrxRprt.FindObject('NArtLbl') as TfrxMemoView;
-      NArtLbl.Visible:= True;
+    NIF:= BonFacPPListfrxRprt.FindObject('NIF') as TfrxMemoView;
+    NIF.Text:=  FieldByName('nif_c').AsString;
+    NIFLbl:= BonFacPPListfrxRprt.FindObject('NIFLbl') as TfrxMemoView;
+    NIFLbl.Visible:= NOT FieldByName('nif_c').AsWideString.IsEmpty;;
 
-      NIF:= BonFacPPListfrxRprt.FindObject('NIF') as TfrxMemoView;
-      NIF.Text:=  FieldByName('nif_c').AsString;
-      NIF.Visible:= True;
-      NIFLbl:= BonFacPPListfrxRprt.FindObject('NIFLbl') as TfrxMemoView;
-      NIFLbl.Visible:= True;
-
-      NIS:= BonFacPPListfrxRprt.FindObject('NIS') as TfrxMemoView;
-      NIS.Text:=  FieldByName('nis_c').AsString;
-      NIS.Visible:= True;
-      NISLbl:= BonFacPPListfrxRprt.FindObject('NISLbl') as TfrxMemoView;
-      NISLbl.Visible:= True;
+    NIS:= BonFacPPListfrxRprt.FindObject('NIS') as TfrxMemoView;
+    NIS.Text:=  FieldByName('nis_c').AsString;
+    NISLbl:= BonFacPPListfrxRprt.FindObject('NISLbl') as TfrxMemoView;
+    NISLbl.Visible:= NOT FieldByName('nis_c').AsWideString.IsEmpty;
 
   end;
 
-    MainForm.SQLQuery.Active:=False;
-    MainForm.SQLQuery.SQL.Clear;
+  MainForm.SQLQuery.Active:=False;
+  MainForm.SQLQuery.SQL.Clear;
 
      begin
       MainForm.Bonp_fac_listTable.DisableControls;
@@ -3480,18 +3517,76 @@ begin
 
 
     MPRX:= BonFacPPListfrxRprt.FindObject('MPRX') as TfrxMemoView;
-  MPRX.Text:= ModePaieBonFacVGCbx.Text;
+    MPRX.Text:= ModePaieBonFacVGCbx.Text;
 
     NCHeqRX:= BonFacPPListfrxRprt.FindObject('NCHeqRX') as TfrxMemoView;
-  NCHeqRX.Text:= NChequeBonFacVGCbx.Text;
+    NCHeqRX.Text:= NChequeBonFacVGCbx.Text;
 
 
-            OLDCredit:= BonFacPPListfrxRprt.FindObject('OLDCredit') as TfrxMemoView;
-  OLDCredit.Text:= BonFacVGClientOLDCredit.Caption;
+    OLDCredit:= BonFacPPListfrxRprt.FindObject('OLDCredit') as TfrxMemoView;
+    OLDCredit.Text:= BonFacVGClientOLDCredit.Caption;
 
 
-      NEWCredit:= BonFacPPListfrxRprt.FindObject('NEWCredit') as TfrxMemoView;
-  NEWCredit.Text:= BonFacVGClientNEWCredit.Caption;
+    NEWCredit:= BonFacPPListfrxRprt.FindObject('NEWCredit') as TfrxMemoView;
+    NEWCredit.Text:= BonFacVGClientNEWCredit.Caption;
+
+    //Here We tech if EU (FR) or DZ
+    if IsEU then
+    begin
+      ComRCLbl.Memo.Text:='N° Siret:';
+      ComNArtLbl.Memo.Text:='N° TVA intracom:';
+      ComNIFLbl.Memo.Text:='Code NAF/APE:';
+      ComNISLbl.Text:='RCS:';
+
+      RCLbl.Memo.Text:='N° Siret:';
+      NArtLbl.Memo.Text:='N° TVA intracom:';
+      NIFLbl.Memo.Text:='Code NAF/APE:';
+      NISLbl.Memo.Text:='RCS:';
+
+      //Hiding Total TTC if Not EU
+      TfrxMemoView(BonFacPPListfrxRprt.FindObject('Memo27')).Visible:= False;
+      TfrxMemoView(BonFacPPListfrxRprt.FindObject('Memo28')).Visible:= False;
+      //Hiding Timber Fiscal if Not EU
+      TfrxMemoView(BonFacPPListfrxRprt.FindObject('Memo29')).Visible:= False;
+      TfrxMemoView(BonFacPPListfrxRprt.FindObject('Memo30')).Visible:= False;
+
+      //Net A payer
+      TfrxMemoView(BonFacPPListfrxRprt.FindObject('Memo12')).Text:= 'Total TTC :';
+      TfrxMemoView(BonFacPPListfrxRprt.FindObject('Memo12')).Top := TfrxMemoView(BonFacPPListfrxRprt.FindObject('Memo27')).Top;
+      TfrxMemoView(BonFacPPListfrxRprt.FindObject('frxBonLivDTmontttc_bvliv')).Top := TfrxMemoView(BonFacPPListfrxRprt.FindObject('Memo28')).Top;
+
+      //Signature
+      TfrxMemoView(BonFacPPListfrxRprt.FindObject('Memo14')).Top:=
+      TfrxMemoView(BonFacPPListfrxRprt.FindObject('frxBonLivDTmontttc_bvliv')).Top +
+      TfrxMemoView(BonFacPPListfrxRprt.FindObject('frxBonLivDTmontttc_bvliv')).Height + 10;
+
+      //Hiding TVA Table on the right until find solution for better place
+      TfrxMemoView(BonFacPPListfrxRprt.FindObject('Memo35')).Visible:= False;
+      TfrxMemoView(BonFacPPListfrxRprt.FindObject('Memo36')).Visible:= False;
+      TfrxMemoView(BonFacPPListfrxRprt.FindObject('TauxTVA19')).Visible:= False;
+      TfrxMemoView(BonFacPPListfrxRprt.FindObject('MontantTVA19')).Visible:= False;
+      TfrxMemoView(BonFacPPListfrxRprt.FindObject('TauxTVA9')).Visible:= False;
+      TfrxMemoView(BonFacPPListfrxRprt.FindObject('MontantTVA9')).Visible:= False;
+
+    end else
+        begin
+          ComRCLbl.Memo.Text:='RC:';
+          ComNArtLbl.Memo.Text:='N° Art:';
+          ComNIFLbl.Memo.Text:='NIF:';
+          ComNISLbl.Memo.Text:='NIS:';
+
+          RCLbl.Memo.Text:='NIS:';
+          NArtLbl.Memo.Text:='N° Art:';
+          NIFLbl.Memo.Text:='NIF:';
+          NISLbl.Memo.Text:='NIS:';
+
+
+          //Show Timber Fiscal if Not EU
+          TfrxMemoView(BonFacPPListfrxRprt.FindObject('Memo29')).Visible:= True;
+          TfrxMemoView(BonFacPPListfrxRprt.FindObject('Memo30')).Visible:= True;
+
+        end;
+
 
  end;
 

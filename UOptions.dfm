@@ -52,10 +52,6 @@ object FOptions: TFOptions
         Color = clWhite
         ParentBackground = False
         TabOrder = 0
-        ExplicitLeft = 282
-        ExplicitTop = 152
-        ExplicitWidth = 185
-        ExplicitHeight = 41
         DesignSize = (
           502
           625)

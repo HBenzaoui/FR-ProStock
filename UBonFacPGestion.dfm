@@ -2852,6 +2852,7 @@ object BonFacPGestionF: TBonFacPGestionF
     OverwritePrompt = True
     DataOnly = False
     EmbeddedFonts = True
+    EmbedFontsIfProtected = False
     InteractiveFormsFontSubset = 'A-Z,a-z,0-9,#43-#47 '
     OpenAfterExport = True
     PrintOptimized = False
@@ -2964,29 +2965,30 @@ object BonFacPGestionF: TBonFacPGestionF
     FieldAliases.Strings = (
       'code_bpfacl=code_bpfacl'
       'code_bpfac=code_bpfac'
-      'qut_p=qut_p'
-      'prixvd_p=prixvd_p'
       'cond_p=cond_p'
-      'PrixVTTC=PrixVTTC'
-      'MontantHT=MontantHT'
-      'MontantTVA=MontantTVA'
-      'MontantTTC=MontantTTC'
       'code_p=code_p'
+      'tva_p=tva_p'
       'nomp=nomp'
       'referp=referp'
-      'TVA=TVA'
-      'tva_p=tva_p'
-      'Marge=Marge'
-      'MontantAHT=MontantAHT'
+      'localisation=localisation'
+      'qut_p=qut_p'
+      'prixvd_p=prixvd_p'
       'prixht_p=prixht_p'
-      'MargeM=MargeM')
+      'prixvttc=PrixVTTC'
+      'montantht=MontantHT'
+      'montantttc=MontantTTC'
+      'montanttva=MontantTVA'
+      'montantaht=MontantAHT'
+      'marge=Marge'
+      'margem=MargeM'
+      'detailp=detailp')
     DataSource = BonFacVPListDataS
     BCDToCurrency = False
     Left = 248
     Top = 384
   end
   object BonFacPPListfrxRprt: TfrxReport
-    Version = '6.9.3'
+    Version = '6.9.15'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -2994,11 +2996,13 @@ object BonFacPGestionF: TBonFacPGestionF
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 42576.399521435200000000
-    ReportOptions.LastChange = 44732.571988113430000000
+    ReportOptions.LastChange = 44831.481512349540000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       ''
       'begin'
+      ''
+      ''
       ''
       'end.')
     Left = 256
@@ -3081,8 +3085,6 @@ object BonFacPGestionF: TBonFacPGestionF
       Width = 1000.000000000000000000
     end
     object Page1: TfrxReportPage
-      VGuides.Strings = (
-        '400,63018')
       PaperWidth = 210.000000000000000000
       PaperHeight = 297.000000000000000000
       PaperSize = 9
@@ -3094,9 +3096,13 @@ object BonFacPGestionF: TBonFacPGestionF
       MirrorMode = []
       object PageFooter1: TfrxPageFooter
         FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
         Frame.Typ = []
         Height = 21.057381430000000000
-        Top = 907.087200000000000000
+        Top = 823.937540000000000000
         Width = 718.110700000000000000
         object Memo7: TfrxMemoView
           AllowVectorExport = True
@@ -3118,7 +3124,7 @@ object BonFacPGestionF: TBonFacPGestionF
         object Shape2: TfrxShapeView
           AllowVectorExport = True
           Width = 718.110700000000000000
-          Height = 3.023622050000000000
+          Height = 2.267716535433070000
           Fill.BackColor = 13948116
           Fill.ForeColor = clNone
           Frame.Color = clNone
@@ -3169,21 +3175,25 @@ object BonFacPGestionF: TBonFacPGestionF
       end
       object PageHeader1: TfrxPageHeader
         FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
         Frame.Typ = []
-        Height = 418.771653540000000000
+        Height = 366.771653540000000000
         Top = 18.897650000000000000
         Width = 718.110700000000000000
         object Memo3: TfrxMemoView
           AllowVectorExport = True
           Left = 277.157700000000000000
-          Top = 390.425196850000000000
+          Top = 338.425196850000000000
           Width = 68.031496060000000000
           Height = 28.346456690000000000
           AllowExpressions = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -11
-          Font.Name = 'Gotham Rounded Light'
+          Font.Name = 'Helvetica LT Std'
           Font.Style = [fsBold]
           Frame.Typ = []
           Fill.BackColor = 13948116
@@ -3195,14 +3205,14 @@ object BonFacPGestionF: TBonFacPGestionF
         end
         object Memo4: TfrxMemoView
           AllowVectorExport = True
-          Top = 390.425196850000000000
+          Top = 338.425196850000000000
           Width = 19.584837270000000000
           Height = 28.346456690000000000
           AllowExpressions = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -11
-          Font.Name = 'Gotham Rounded Light'
+          Font.Name = 'Helvetica LT Std'
           Font.Style = [fsBold]
           Frame.Typ = []
           Fill.BackColor = 13948116
@@ -3215,18 +3225,18 @@ object BonFacPGestionF: TBonFacPGestionF
         object Memo6: TfrxMemoView
           AllowVectorExport = True
           Left = 574.504330000000000000
-          Top = 390.425196850000000000
+          Top = 338.425196850000000000
           Width = 143.622044800000000000
           Height = 28.346456690000000000
           AllowExpressions = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -11
-          Font.Name = 'Gotham Rounded Light'
+          Font.Name = 'Helvetica LT Std'
           Font.Style = [fsBold]
           Frame.Typ = []
           Fill.BackColor = 13948116
-          HAlign = haCenter
+          HAlign = haRight
           Memo.UTF8W = (
             'Montant HT')
           ParentFont = False
@@ -3235,18 +3245,18 @@ object BonFacPGestionF: TBonFacPGestionF
         object Memo5: TfrxMemoView
           AllowVectorExport = True
           Left = 344.748300000000000000
-          Top = 390.425196850000000000
-          Width = 151.181104800000000000
+          Top = 338.425196850000000000
+          Width = 147.401574800000000000
           Height = 28.346456690000000000
           AllowExpressions = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -11
-          Font.Name = 'Gotham Rounded Light'
+          Font.Name = 'Helvetica LT Std'
           Font.Style = [fsBold]
           Frame.Typ = []
           Fill.BackColor = 13948116
-          HAlign = haCenter
+          HAlign = haRight
           Memo.UTF8W = (
             'Prix Unitaire HT')
           ParentFont = False
@@ -3255,14 +3265,14 @@ object BonFacPGestionF: TBonFacPGestionF
         object Memo2: TfrxMemoView
           AllowVectorExport = True
           Left = 18.692950000000000000
-          Top = 390.425196850000000000
+          Top = 338.425196850000000000
           Width = 261.543309530000000000
           Height = 28.346456690000000000
           AllowExpressions = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -11
-          Font.Name = 'Gotham Rounded Light'
+          Font.Name = 'Helvetica LT Std'
           Font.Style = [fsBold]
           Frame.Typ = []
           Fill.BackColor = 13948116
@@ -3274,8 +3284,8 @@ object BonFacPGestionF: TBonFacPGestionF
         end
         object Memo20: TfrxMemoView
           AllowVectorExport = True
-          Left = 357.897650000000000000
-          Top = 102.582677170000000000
+          Left = 350.338590000000000000
+          Top = 71.582677170000000000
           Width = 52.652762760000000000
           Height = 19.418964480000000000
           Font.Charset = DEFAULT_CHARSET
@@ -3287,17 +3297,18 @@ object BonFacPGestionF: TBonFacPGestionF
           Memo.UTF8W = (
             'Date :')
           ParentFont = False
+          WordWrap = False
           VAlign = vaCenter
         end
         object Memo21: TfrxMemoView
           AllowVectorExport = True
-          Left = 357.897650000000000000
-          Top = 55.031540000000000000
+          Left = 350.338590000000000000
+          Top = 38.031540000000000000
           Width = 44.667172730000000000
-          Height = 39.169674550000000000
+          Height = 27.968503940000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = 4144959
-          Font.Height = -33
+          Font.Height = -29
           Font.Name = 'Helvetica LT Std'
           Font.Style = [fsBold]
           Frame.Typ = []
@@ -3308,13 +3319,13 @@ object BonFacPGestionF: TBonFacPGestionF
         end
         object NumRX: TfrxMemoView
           AllowVectorExport = True
-          Left = 410.811070000000000000
-          Top = 55.031540000000000000
-          Width = 305.454742730000000000
-          Height = 39.169674550000000000
+          Left = 403.811070000000000000
+          Top = 38.031540000000000000
+          Width = 309.234272730000000000
+          Height = 27.968503940000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = 4144959
-          Font.Height = -33
+          Font.Height = -29
           Font.Name = 'Helvetica LT Std'
           Font.Style = [fsBold]
           Frame.Typ = []
@@ -3325,9 +3336,9 @@ object BonFacPGestionF: TBonFacPGestionF
         end
         object DateRX: TfrxMemoView
           AllowVectorExport = True
-          Left = 410.811070000000000000
-          Top = 104.472442170000000000
-          Width = 305.881272760000000000
+          Left = 404.811070000000000000
+          Top = 73.472442170000000000
+          Width = 309.660802760000000000
           Height = 15.639434480000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -3338,14 +3349,15 @@ object BonFacPGestionF: TBonFacPGestionF
           Memo.UTF8W = (
             'Date :')
           ParentFont = False
+          WordWrap = False
           VAlign = vaCenter
         end
         object Memo24: TfrxMemoView
           AllowVectorExport = True
           Left = -1.047000000000000000
-          Top = 200.165430000000000000
+          Top = 204.165430000000000000
           Width = 117.852617270000000000
-          Height = 28.724409450000000000
+          Height = 27.968503940000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -3362,77 +3374,44 @@ object BonFacPGestionF: TBonFacPGestionF
         object NameRX: TfrxMemoView
           AllowVectorExport = True
           Left = 12.953000000000000000
-          Top = 244.960730000000000000
-          Width = 377.692342760000000000
-          Height = 23.198494480000000000
+          Top = 234.181200000000000000
+          Width = 415.487642760000000000
+          Height = 18.897637800000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
-          Font.Height = -16
+          Font.Height = -13
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
           Frame.Typ = []
           Memo.UTF8W = (
             'Name Client')
           ParentFont = False
+          WordWrap = False
           VAlign = vaCenter
         end
         object AdrRX: TfrxMemoView
           AllowVectorExport = True
           Left = 12.953000000000000000
-          Top = 279.976500000000000000
-          Width = 377.692342760000000000
-          Height = 23.198494480000000000
+          Top = 254.620594000000000000
+          Width = 415.487642760000000000
+          Height = 79.370066540000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
-          Font.Height = -16
+          Font.Height = -13
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
           Frame.Typ = []
           Memo.UTF8W = (
             'Adresse')
           ParentFont = False
-          VAlign = vaCenter
-        end
-        object VilleRX: TfrxMemoView
-          AllowVectorExport = True
-          Left = 12.953000000000000000
-          Top = 313.212740000000000000
-          Width = 377.692342760000000000
-          Height = 23.198494480000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -16
-          Font.Name = 'Helvetica LT Std'
-          Font.Style = []
-          Frame.Typ = []
-          Memo.UTF8W = (
-            'Ville')
-          ParentFont = False
-          VAlign = vaCenter
-        end
-        object WilayaRX: TfrxMemoView
-          AllowVectorExport = True
-          Left = 12.953000000000000000
-          Top = 346.448980000000000000
-          Width = 377.692342760000000000
-          Height = 23.198494480000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -16
-          Font.Name = 'Helvetica LT Std'
-          Font.Style = []
-          Frame.Typ = []
-          Memo.UTF8W = (
-            'Wilaya')
-          ParentFont = False
-          VAlign = vaCenter
+          WordWrap = False
         end
         object Shape5: TfrxShapeView
           AllowVectorExport = True
           Left = 115.000310000000000000
-          Top = 226.244170160000000000
+          Top = 229.110311890000000000
           Width = 600.945270000000000000
-          Height = 2.645669290000000000
+          Height = 2.267716535433070000
           Fill.BackColor = 13948116
           Fill.ForeColor = clNone
           Frame.Color = 13948116
@@ -3442,18 +3421,18 @@ object BonFacPGestionF: TBonFacPGestionF
         object Memo1: TfrxMemoView
           AllowVectorExport = True
           Left = 491.575140000000000000
-          Top = 390.425196850000000000
+          Top = 338.425196850000000000
           Width = 83.149606300000000000
           Height = 28.346456690000000000
           AllowExpressions = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -11
-          Font.Name = 'Gotham Rounded Light'
+          Font.Name = 'Helvetica LT Std'
           Font.Style = [fsBold]
           Frame.Typ = []
           Fill.BackColor = 13948116
-          HAlign = haCenter
+          HAlign = haRight
           Memo.UTF8W = (
             'TVA')
           ParentFont = False
@@ -3461,218 +3440,215 @@ object BonFacPGestionF: TBonFacPGestionF
         end
         object RC: TfrxMemoView
           AllowVectorExport = True
-          Left = 448.583180000000000000
-          Top = 244.960730000000000000
-          Width = 268.085972760000000000
-          Height = 23.198494480000000000
-          Visible = False
+          Left = 527.953310000000000000
+          Top = 254.620594000000000000
+          Width = 188.715842760000000000
+          Height = 18.897637800000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
-          Font.Height = -16
+          Font.Height = -13
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
           Frame.Typ = []
-          Memo.UTF8W = (
-            'RC :')
           ParentFont = False
+          WordWrap = False
           VAlign = vaCenter
         end
         object NArt: TfrxMemoView
           AllowVectorExport = True
-          Left = 448.583180000000000000
-          Top = 279.976500000000000000
-          Width = 268.085972760000000000
-          Height = 23.198494480000000000
-          Visible = False
+          Left = 527.953310000000000000
+          Top = 274.778070250000000000
+          Width = 188.715842760000000000
+          Height = 18.897637800000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
-          Font.Height = -16
+          Font.Height = -13
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
           Frame.Typ = []
-          Memo.UTF8W = (
-            'N'#176' Art :')
           ParentFont = False
+          WordWrap = False
           VAlign = vaCenter
         end
         object NIF: TfrxMemoView
           AllowVectorExport = True
-          Left = 448.583180000000000000
-          Top = 313.212740000000000000
-          Width = 268.085972760000000000
-          Height = 23.198494480000000000
-          Visible = False
+          Left = 527.953310000000000000
+          Top = 294.935546490000000000
+          Width = 188.715842760000000000
+          Height = 18.897637800000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
-          Font.Height = -16
+          Font.Height = -13
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
           Frame.Typ = []
-          Memo.UTF8W = (
-            'NIF :')
           ParentFont = False
+          WordWrap = False
           VAlign = vaCenter
         end
         object NIS: TfrxMemoView
           AllowVectorExport = True
-          Left = 448.583180000000000000
-          Top = 346.448980000000000000
-          Width = 268.085972760000000000
-          Height = 23.198494480000000000
-          Visible = False
+          Left = 527.953310000000000000
+          Top = 315.093022740000000000
+          Width = 188.715842760000000000
+          Height = 18.897637800000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
-          Font.Height = -16
+          Font.Height = -13
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
           Frame.Typ = []
-          Memo.UTF8W = (
-            'NIS :')
           ParentFont = False
+          WordWrap = False
           VAlign = vaCenter
         end
         object RCLbl: TfrxMemoView
           AllowVectorExport = True
-          Left = 401.048537240000000000
-          Top = 244.960730000000000000
-          Width = 45.093702760000000000
-          Height = 23.198494480000000000
+          Left = 408.189240000000000000
+          Top = 254.620594000000000000
+          Width = 120.684302760000000000
+          Height = 18.897637800000000000
           Visible = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
-          Font.Height = -16
+          Font.Height = -13
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            'RC :')
+            'RC:')
           ParentFont = False
+          WordWrap = False
           VAlign = vaCenter
         end
         object NArtLbl: TfrxMemoView
           AllowVectorExport = True
-          Left = 390.071120000000000000
-          Top = 279.976500000000000000
-          Width = 56.432292760000000000
-          Height = 23.198494480000000000
+          Left = 408.189240000000000000
+          Top = 274.778070250000000000
+          Width = 120.684302760000000000
+          Height = 18.897637800000000000
           Visible = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
-          Font.Height = -16
+          Font.Height = -13
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            'N'#176' Art :')
+            'N'#176' Art:')
           ParentFont = False
+          WordWrap = False
           VAlign = vaCenter
         end
         object NIFLbl: TfrxMemoView
           AllowVectorExport = True
-          Left = 400.409710000000000000
-          Top = 313.212740000000000000
-          Width = 45.093702760000000000
-          Height = 23.198494480000000000
+          Left = 408.189240000000000000
+          Top = 294.935546490000000000
+          Width = 120.684302760000000000
+          Height = 18.897637800000000000
           Visible = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
-          Font.Height = -16
+          Font.Height = -13
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            'NIF :')
+            'NIF:')
           ParentFont = False
+          WordWrap = False
           VAlign = vaCenter
         end
         object NISLbl: TfrxMemoView
           AllowVectorExport = True
-          Left = 400.409710000000000000
-          Top = 346.448980000000000000
-          Width = 45.093702760000000000
-          Height = 23.198494480000000000
+          Left = 408.189240000000000000
+          Top = 315.093022740000000000
+          Width = 120.684302760000000000
+          Height = 18.897637800000000000
           Visible = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
-          Font.Height = -16
+          Font.Height = -13
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            'NIS :')
+            'NIS:')
           ParentFont = False
+          WordWrap = False
           VAlign = vaCenter
         end
         object Name: TfrxMemoView
           AllowVectorExport = True
           Left = 11.338590000000000000
-          Top = 84.031540000000000000
+          Top = 74.472480000000000000
           Width = 328.819110000000000000
-          Height = 22.677165350000000000
+          Height = 15.118110240000000000
           Visible = False
           DataSetName = 'S_CONFIG'
           Font.Charset = ANSI_CHARSET
           Font.Color = clWindowText
-          Font.Height = -16
+          Font.Height = -12
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
           Frame.Typ = []
           Memo.UTF8W = (
             'Name')
           ParentFont = False
+          WordWrap = False
         end
         object Tel: TfrxMemoView
           AllowVectorExport = True
-          Left = 12.464575630000000000
-          Top = 110.047234330000000000
-          Width = 326.693124370000000000
-          Height = 22.677165350000000000
+          Left = 11.338590000000000000
+          Top = 111.029783980000000000
+          Width = 328.819110000000000000
+          Height = 15.118110240000000000
           Visible = False
           DataSetName = 'S_CONFIG'
           Font.Charset = ANSI_CHARSET
           Font.Color = clWindowText
-          Font.Height = -16
+          Font.Height = -12
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
           Frame.Typ = []
           Memo.UTF8W = (
             'Tel:')
           ParentFont = False
+          WordWrap = False
         end
         object Mob: TfrxMemoView
           AllowVectorExport = True
-          Left = 12.464575630000000000
-          Top = 135.724414330000000000
-          Width = 326.551310470000000000
-          Height = 22.677165350000000000
-          Visible = False
+          Left = 11.338590000000000000
+          Top = 129.308435970000000000
+          Width = 328.819110000000000000
+          Height = 15.118110240000000000
           DataSetName = 'S_CONFIG'
           Font.Charset = ANSI_CHARSET
           Font.Color = clWindowText
-          Font.Height = -16
+          Font.Height = -12
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
           Frame.Typ = []
           Memo.UTF8W = (
             'Mob:')
           ParentFont = False
+          WordWrap = False
         end
         object Adr: TfrxMemoView
           AllowVectorExport = True
           Left = 11.338590000000000000
-          Top = 161.622064330000000000
+          Top = 165.865739950000000000
           Width = 328.819110000000000000
-          Height = 34.015755350000000000
+          Height = 30.236220470000000000
           Visible = False
-          StretchMode = smActualHeight
           DataSetName = 'S_CONFIG'
           Font.Charset = ANSI_CHARSET
           Font.Color = clWindowText
-          Font.Height = -16
+          Font.Height = -12
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
           Frame.Typ = []
@@ -3682,13 +3658,13 @@ object BonFacPGestionF: TBonFacPGestionF
         end
         object Memo19: TfrxMemoView
           AllowVectorExport = True
-          Left = 351.220470000000000000
+          Left = 350.338590000000000000
           Top = 5.897650000000000000
           Width = 365.927222730000000000
-          Height = 39.169674550000000000
+          Height = 27.831084550000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = 4144959
-          Font.Height = -33
+          Font.Height = -29
           Font.Name = 'Helvetica LT Std'
           Font.Style = [fsBold]
           Frame.Typ = []
@@ -3714,86 +3690,80 @@ object BonFacPGestionF: TBonFacPGestionF
         end
         object ComRC: TfrxMemoView
           AllowVectorExport = True
-          Left = 397.709947240000000000
-          Top = 137.063080000000000000
-          Width = 143.361482760000000000
-          Height = 23.198494480000000000
-          Visible = False
+          Left = 491.078242760000000000
+          Top = 107.869251990000000000
+          Width = 222.731612760000000000
+          Height = 15.118110240000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
-          Font.Height = -13
+          Font.Height = -12
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
           Frame.Typ = []
-          Memo.UTF8W = (
-            'RC :')
           ParentFont = False
+          WordWrap = False
           VAlign = vaCenter
         end
         object ComNArt: TfrxMemoView
           AllowVectorExport = True
-          Left = 397.709947240000000000
-          Top = 172.078850000000000000
-          Width = 143.361482760000000000
-          Height = 23.198494480000000000
-          Visible = False
+          Left = 491.078242760000000000
+          Top = 144.426551080000000000
+          Width = 222.731612760000000000
+          Height = 15.118110240000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
-          Font.Height = -13
+          Font.Height = -12
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
           Frame.Typ = []
-          Memo.UTF8W = (
-            'N'#176' Art :')
           ParentFont = False
+          WordWrap = False
           VAlign = vaCenter
         end
         object ComNIF: TfrxMemoView
           AllowVectorExport = True
-          Left = 559.646260000000000000
-          Top = 138.283550000000000000
-          Width = 158.479602760000000000
-          Height = 23.198494480000000000
-          Visible = False
+          Left = 491.078242760000000000
+          Top = 126.147901540000000000
+          Width = 222.731612760000000000
+          Height = 15.118110240000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
-          Font.Height = -13
+          Font.Height = -12
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
           Frame.Typ = []
-          Memo.UTF8W = (
-            'NIF :')
           ParentFont = False
+          WordWrap = False
           VAlign = vaCenter
         end
         object ComNIS: TfrxMemoView
           AllowVectorExport = True
-          Left = 559.646260000000000000
-          Top = 171.519790000000000000
-          Width = 158.479602760000000000
-          Height = 23.198494480000000000
-          Visible = False
+          Left = 491.078242760000000000
+          Top = 162.705200630000000000
+          Width = 222.731612760000000000
+          Height = 15.118110240000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
-          Font.Height = -13
+          Font.Height = -12
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
           Frame.Typ = []
-          Memo.UTF8W = (
-            'NIS :')
           ParentFont = False
+          WordWrap = False
           VAlign = vaCenter
         end
         object ComRCLbl: TfrxMemoView
+          Anchors = [fraTop, fraRight]
           AllowVectorExport = True
-          Left = 362.175304480000000000
-          Top = 137.063080000000000000
-          Width = 37.534642760000000000
-          Height = 23.198494480000000000
+          Left = 355.275820000000000000
+          Top = 107.869251990000000000
+          Width = 135.802422760000000000
+          Height = 15.118110240000000000
           Visible = False
+          AutoWidth = True
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
-          Font.Height = -13
+          Font.Height = -12
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
           Frame.Typ = []
@@ -3804,15 +3774,17 @@ object BonFacPGestionF: TBonFacPGestionF
           VAlign = vaCenter
         end
         object ComNArtLbl: TfrxMemoView
+          Anchors = [fraTop, fraRight]
           AllowVectorExport = True
-          Left = 349.836714480000000000
-          Top = 172.078850000000000000
-          Width = 48.873232760000000000
-          Height = 23.198494480000000000
+          Left = 355.275820000000000000
+          Top = 144.426551080000000000
+          Width = 135.802422760000000000
+          Height = 15.118110240000000000
           Visible = False
+          AutoWidth = True
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
-          Font.Height = -13
+          Font.Height = -12
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
           Frame.Typ = []
@@ -3820,18 +3792,21 @@ object BonFacPGestionF: TBonFacPGestionF
           Memo.UTF8W = (
             'N'#176' Art :')
           ParentFont = False
+          WordWrap = False
           VAlign = vaCenter
         end
         object ComNIFLbl: TfrxMemoView
+          Anchors = [fraTop, fraRight]
           AllowVectorExport = True
-          Left = 524.953917240000000000
-          Top = 138.283550000000000000
-          Width = 33.755112760000000000
-          Height = 23.198494480000000000
+          Left = 355.275820000000000000
+          Top = 126.147901540000000000
+          Width = 135.802422760000000000
+          Height = 15.118110240000000000
           Visible = False
+          AutoWidth = True
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
-          Font.Height = -13
+          Font.Height = -12
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
           Frame.Typ = []
@@ -3839,18 +3814,21 @@ object BonFacPGestionF: TBonFacPGestionF
           Memo.UTF8W = (
             'NIF :')
           ParentFont = False
+          WordWrap = False
           VAlign = vaCenter
         end
         object ComNISLbl: TfrxMemoView
+          Anchors = [fraTop, fraRight]
           AllowVectorExport = True
-          Left = 524.953917240000000000
-          Top = 171.519790000000000000
-          Width = 33.755112760000000000
-          Height = 23.198494480000000000
+          Left = 355.275820000000000000
+          Top = 162.705200630000000000
+          Width = 135.802422760000000000
+          Height = 15.118110240000000000
           Visible = False
+          AutoWidth = True
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
-          Font.Height = -13
+          Font.Height = -12
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
           Frame.Typ = []
@@ -3858,36 +3836,35 @@ object BonFacPGestionF: TBonFacPGestionF
           Memo.UTF8W = (
             'NIS :')
           ParentFont = False
+          WordWrap = False
           VAlign = vaCenter
         end
         object ComRIB: TfrxMemoView
           AllowVectorExport = True
-          Left = 559.646260000000000000
-          Top = 199.535560000000000000
-          Width = 158.479602760000000000
-          Height = 23.198494480000000000
-          Visible = False
+          Left = 491.078242760000000000
+          Top = 180.983850180000000000
+          Width = 222.731612760000000000
+          Height = 15.118110240000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
-          Font.Height = -13
+          Font.Height = -12
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
           Frame.Typ = []
-          Memo.UTF8W = (
-            'RIB :')
           ParentFont = False
+          WordWrap = False
           VAlign = vaCenter
         end
         object ComRIBLbl: TfrxMemoView
           AllowVectorExport = True
-          Left = 524.953917240000000000
-          Top = 199.535560000000000000
-          Width = 33.755112760000000000
-          Height = 23.198494480000000000
+          Left = 355.275820000000000000
+          Top = 180.983850180000000000
+          Width = 135.802422760000000000
+          Height = 15.118110240000000000
           Visible = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
-          Font.Height = -13
+          Font.Height = -12
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
           Frame.Typ = []
@@ -3895,63 +3872,118 @@ object BonFacPGestionF: TBonFacPGestionF
           Memo.UTF8W = (
             'RIB :')
           ParentFont = False
+          WordWrap = False
           VAlign = vaCenter
+        end
+        object Email: TfrxMemoView
+          AllowVectorExport = True
+          Left = 11.338590000000000000
+          Top = 147.587087960000000000
+          Width = 328.819110000000000000
+          Height = 15.118110240000000000
+          DataSetName = 'S_CONFIG'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            'Email:')
+          ParentFont = False
+          WordWrap = False
+        end
+        object Activite: TfrxMemoView
+          AllowVectorExport = True
+          Left = 11.338590000000000000
+          Top = 92.751131990000000000
+          Width = 328.819110000000000000
+          Height = 15.118110240000000000
+          DataSetName = 'S_CONFIG'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            'Activity:')
+          ParentFont = False
+          WordWrap = False
         end
       end
       object MasterData1: TfrxMasterData
         FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
         Frame.Typ = []
-        Height = 24.566929130000000000
-        Top = 498.897960000000000000
+        Height = 21.897637800000000000
+        Top = 445.984540000000000000
         Width = 718.110700000000000000
         DataSet = frxBonFacPPListDB
         DataSetName = 'frxBonFacPPListDB'
+        PrintIfDetailEmpty = True
         RowCount = 0
         Stretched = True
         object frxDBDataset1nomp: TfrxMemoView
           AllowVectorExport = True
           Left = 19.133890000000000000
-          Top = 3.559060000000000000
+          Top = 3.000000000000000000
           Width = 257.763779530000000000
-          Height = 18.897650000000000000
+          Height = 18.897637800000000000
           StretchMode = smActualHeight
-          DataField = 'nomp'
+          AllowHTMLTags = True
           DataSet = frxBonFacPPListDB
           DataSetName = 'frxBonFacPPListDB'
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
+          Font.Color = clWindowText
           Font.Height = -12
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
-          Frame.Typ = []
+          Frame.Color = 16382457
+          Frame.Typ = [ftBottom]
           Memo.UTF8W = (
-            '[frxBonFacPPListDB."nomp"]')
+            
+              '[frxBonFacPPListDB."nomp"][IIF(<frxBonFacPPListDB."detailp">='#39#39',' +
+              #39#39',#13#10)]<font color=GRAY><i>[frxBonFacPPListDB."detailp"]</i>' +
+              '</font>')
           ParentFont = False
-          VAlign = vaCenter
+          Formats = <
+            item
+            end
+            item
+            end
+            item
+            end>
         end
         object Line: TfrxMemoView
           AllowVectorExport = True
-          Top = 3.559060000000000000
-          Width = 18.897637795275600000
-          Height = 18.897650000000000000
+          Top = 3.000000000000000000
+          Width = 18.897637800000000000
+          Height = 18.897637800000000000
+          StretchMode = smMaxHeight
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -12
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
-          Frame.Typ = []
+          Frame.Color = 16382457
+          Frame.Typ = [ftBottom]
           HAlign = haCenter
           Memo.UTF8W = (
             '[Line]')
           ParentFont = False
-          VAlign = vaCenter
+          WordWrap = False
         end
         object frxDBDataset1qut_p: TfrxMemoView
           AllowVectorExport = True
           Left = 277.157700000000000000
-          Top = 3.559060000000000000
+          Top = 3.000000000000000000
           Width = 68.031496060000000000
-          Height = 18.897650000000000000
+          Height = 18.897637800000000000
+          StretchMode = smMaxHeight
           DataField = 'qut_p'
           DataSet = frxBonFacPPListDB
           DataSetName = 'frxBonFacPPListDB'
@@ -3960,19 +3992,21 @@ object BonFacPGestionF: TBonFacPGestionF
           Font.Height = -12
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
-          Frame.Typ = []
+          Frame.Color = 16382457
+          Frame.Typ = [ftBottom]
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxBonFacPPListDB."qut_p"]')
           ParentFont = False
-          VAlign = vaCenter
+          WordWrap = False
         end
         object frxDBDataset1prixvd_p: TfrxMemoView
           AllowVectorExport = True
           Left = 344.748300000000000000
-          Top = 3.559060000000000000
+          Top = 3.000000000000000000
           Width = 147.401574800000000000
-          Height = 18.897650000000000000
+          Height = 18.897637800000000000
+          StretchMode = smMaxHeight
           DataField = 'prixvd_p'
           DataSet = frxBonFacPPListDB
           DataSetName = 'frxBonFacPPListDB'
@@ -3983,19 +4017,21 @@ object BonFacPGestionF: TBonFacPGestionF
           Font.Height = -12
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
-          Frame.Typ = []
+          Frame.Color = 16382457
+          Frame.Typ = [ftBottom]
           HAlign = haRight
           Memo.UTF8W = (
             '[frxBonFacPPListDB."prixvd_p"]')
           ParentFont = False
-          VAlign = vaCenter
+          WordWrap = False
         end
         object frxDBDataset1MontantHT: TfrxMemoView
           AllowVectorExport = True
           Left = 574.504330000000000000
-          Top = 3.559060000000000000
+          Top = 3.000000000000000000
           Width = 143.622044800000000000
-          Height = 18.897650000000000000
+          Height = 18.897637800000000000
+          StretchMode = smMaxHeight
           DataField = 'MontantHT'
           DataSet = frxBonFacPPListDB
           DataSetName = 'frxBonFacPPListDB'
@@ -4006,19 +4042,21 @@ object BonFacPGestionF: TBonFacPGestionF
           Font.Height = -12
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
-          Frame.Typ = []
+          Frame.Color = 16382457
+          Frame.Typ = [ftBottom]
           HAlign = haRight
           Memo.UTF8W = (
             '[frxBonFacPPListDB."MontantHT"]')
           ParentFont = False
-          VAlign = vaCenter
+          WordWrap = False
         end
         object Memo16: TfrxMemoView
           AllowVectorExport = True
           Left = 491.582669840000000000
-          Top = 3.439370080000000000
+          Top = 3.000000000000000000
           Width = 83.149606300000000000
-          Height = 18.897650000000000000
+          Height = 18.897637800000000000
+          StretchMode = smMaxHeight
           DataField = 'tva_p'
           DataSet = frxBonFacPPListDB
           DataSetName = 'frxBonFacPPListDB'
@@ -4029,25 +4067,31 @@ object BonFacPGestionF: TBonFacPGestionF
           Font.Height = -12
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
-          Frame.Typ = []
+          Frame.Color = 16382457
+          Frame.Typ = [ftBottom]
           HAlign = haRight
           Memo.UTF8W = (
             '[frxBonFacPPListDB."tva_p"]')
           ParentFont = False
-          VAlign = vaCenter
+          WordWrap = False
         end
       end
       object Footer1: TfrxFooter
         FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
         Frame.Typ = []
-        Height = 297.295075460000000000
-        Top = 548.031850000000000000
+        Height = 270.684453590000000000
+        Top = 491.338900000000000000
         Width = 718.110700000000000000
         object Shape3: TfrxShapeView
           AllowVectorExport = True
-          Top = 231.315090000000000000
+          Top = 230.315090000000000000
           Width = 718.110700000000000000
-          Height = 3.212598430000000000
+          Height = 2.267716540000000000
+          Visible = False
           Fill.BackColor = 13948116
           Fill.ForeColor = clNone
           Frame.Color = 13948116
@@ -4057,7 +4101,7 @@ object BonFacPGestionF: TBonFacPGestionF
           AllowVectorExport = True
           Top = 20.472480000000000000
           Width = 718.110700000000000000
-          Height = 3.023622050000000000
+          Height = 2.267716540000000000
           Fill.BackColor = 13948116
           Fill.ForeColor = clNone
           Frame.Color = clNone
@@ -4066,30 +4110,30 @@ object BonFacPGestionF: TBonFacPGestionF
         object Memo8: TfrxMemoView
           AllowVectorExport = True
           Left = 415.748300000000000000
-          Top = 31.399172310000000000
+          Top = 25.399172310000000000
           Width = 148.855335380000000000
           Height = 16.281052310000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
-          Font.Height = -15
+          Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            'Total HT :')
+            'Total HT:')
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo9: TfrxMemoView
           AllowVectorExport = True
           Left = 415.748300000000000000
-          Top = 60.472480000000000000
+          Top = 45.570170700000000000
           Width = 148.855335380000000000
           Height = 16.281052310000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
-          Font.Height = -15
+          Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
           Frame.Typ = []
@@ -4102,12 +4146,12 @@ object BonFacPGestionF: TBonFacPGestionF
         object Memo10: TfrxMemoView
           AllowVectorExport = True
           Left = 415.748300000000000000
-          Top = 90.708720000000000000
+          Top = 65.741169100000000000
           Width = 148.855335380000000000
           Height = 16.281052310000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
-          Font.Height = -15
+          Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
           Frame.Typ = []
@@ -4120,27 +4164,27 @@ object BonFacPGestionF: TBonFacPGestionF
         object Memo11: TfrxMemoView
           AllowVectorExport = True
           Left = 415.748300000000000000
-          Top = 120.944960000000000000
+          Top = 85.912167490000000000
           Width = 148.855335380000000000
           Height = 16.281052310000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
-          Font.Height = -15
+          Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            'TVA :')
+            'Montant TVA:')
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo12: TfrxMemoView
           AllowVectorExport = True
           Left = 415.748300000000000000
-          Top = 203.181200000000000000
+          Top = 146.267780000000000000
           Width = 148.855335380000000000
-          Height = 31.399172310000000000
+          Height = 28.346456690000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -4150,23 +4194,23 @@ object BonFacPGestionF: TBonFacPGestionF
           Fill.BackColor = 13948116
           HAlign = haRight
           Memo.UTF8W = (
-            'Net a payer :')
+            'Net a payer:')
           ParentFont = False
           VAlign = vaCenter
         end
         object frxBonLivDTremise_bvliv: TfrxMemoView
           AllowVectorExport = True
           Left = 565.929500000000000000
-          Top = 60.472480000000000000
+          Top = 45.570170700000000000
           Width = 151.181200000000000000
-          Height = 18.897650000000000000
+          Height = 16.281052310000000000
           DataSet = frxBonFacPDT
           DataSetName = 'frxBonFacPDB'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
-          Font.Height = -15
+          Font.Height = -13
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
           Frame.Typ = []
@@ -4179,18 +4223,18 @@ object BonFacPGestionF: TBonFacPGestionF
         object frxBonLivDTmontht_bvliv: TfrxMemoView
           AllowVectorExport = True
           Left = 565.929500000000000000
-          Top = 31.236240000000000000
+          Top = 25.399172310000000000
           Width = 151.181200000000000000
-          Height = 18.897650000000000000
+          Height = 16.281052310000000000
           DataSet = frxBonFacPDT
           DataSetName = 'frxBonFacPDB'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
-          Font.Height = -15
+          Font.Height = -13
           Font.Name = 'Helvetica LT Std'
-          Font.Style = []
+          Font.Style = [fsBold]
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
@@ -4201,16 +4245,16 @@ object BonFacPGestionF: TBonFacPGestionF
         object frxBonLivDTMontantTVA: TfrxMemoView
           AllowVectorExport = True
           Left = 565.929500000000000000
-          Top = 120.944960000000000000
+          Top = 85.912167490000000000
           Width = 151.181200000000000000
-          Height = 18.897650000000000000
+          Height = 16.281052310000000000
           DataSet = frxBonFacPDT
           DataSetName = 'frxBonFacPDB'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
-          Font.Height = -15
+          Font.Height = -13
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
           Frame.Typ = []
@@ -4223,16 +4267,16 @@ object BonFacPGestionF: TBonFacPGestionF
         object frxBonLivDTmontttc_bvliv: TfrxMemoView
           AllowVectorExport = True
           Left = 563.149970000000000000
-          Top = 203.338582680000000000
+          Top = 146.425162680000000000
           Width = 154.960730000000000000
-          Height = 31.370086060000000000
+          Height = 28.346456690000000000
           DataSet = frxBonFacPDT
           DataSetName = 'frxBonFacPDB'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
-          Font.Height = -15
+          Font.Height = -13
           Font.Name = 'Helvetica LT Std'
           Font.Style = [fsBold]
           Frame.Typ = []
@@ -4246,18 +4290,18 @@ object BonFacPGestionF: TBonFacPGestionF
         object frxBonLivDTNeTHT: TfrxMemoView
           AllowVectorExport = True
           Left = 565.929500000000000000
-          Top = 90.708720000000000000
+          Top = 65.741169100000000000
           Width = 151.181200000000000000
-          Height = 18.897650000000000000
+          Height = 16.281052310000000000
           DataSet = frxBonFacPDT
           DataSetName = 'frxBonFacPDB'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
-          Font.Height = -15
+          Font.Height = -13
           Font.Name = 'Helvetica LT Std'
-          Font.Style = []
+          Font.Style = [fsBold]
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
@@ -4268,13 +4312,13 @@ object BonFacPGestionF: TBonFacPGestionF
         object MoneyWordRX: TfrxMemoView
           AllowVectorExport = True
           Left = 3.779530000000000000
-          Top = 264.345870910000000000
-          Width = 562.462782730000000000
-          Height = 31.610614550000000000
+          Top = 253.566340910000000000
+          Width = 713.643982730000000000
+          Height = 12.850393700000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
+          Font.Height = -11
+          Font.Name = 'Helvetica LT Std'
           Font.Style = []
           Frame.Typ = []
           Memo.UTF8W = (
@@ -4284,32 +4328,33 @@ object BonFacPGestionF: TBonFacPGestionF
         end
         object Memo14: TfrxMemoView
           AllowVectorExport = True
-          Left = 566.992270000000000000
-          Top = 241.196970000000000000
-          Width = 132.022892760000000000
+          Left = 585.957478620000000000
+          Top = 180.724490000000000000
+          Width = 109.345712760000000000
           Height = 15.639434480000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -11
-          Font.Name = 'Arial'
-          Font.Style = []
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = [fsBold]
           Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
-            'Cachet et Signature :')
+            'Cachet et Signature')
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo13: TfrxMemoView
           AllowVectorExport = True
-          Top = 241.414998280000000000
-          Width = 218.952082760000000000
+          Left = 3.779530000000000000
+          Top = 234.414998280000000000
+          Width = 226.511142760000000000
           Height = 15.639434480000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -11
-          Font.Name = 'Arial'
-          Font.Style = []
+          Font.Name = 'Helvetica LT Std'
+          Font.Style = [fsBold]
           Frame.Typ = []
           Memo.UTF8W = (
             'Arr'#233't'#233'e la pr'#233'sente facture a la somme de :')
@@ -4318,9 +4363,9 @@ object BonFacPGestionF: TBonFacPGestionF
         object frxBonRecDBRemisePerc: TfrxMemoView
           AllowVectorExport = True
           Left = 500.354670000000000000
-          Top = 58.960629920000000000
+          Top = 45.570170700000000000
           Width = 60.472480000000000000
-          Height = 18.897650000000000000
+          Height = 16.281052310000000000
           DataSet = frxBonFacPDT
           DataSetName = 'frxBonFacPDB'
           DisplayFormat.FormatStr = '%2.2f'
@@ -4340,36 +4385,36 @@ object BonFacPGestionF: TBonFacPGestionF
         object Memo27: TfrxMemoView
           AllowVectorExport = True
           Left = 415.748300000000000000
-          Top = 151.181200000000000000
+          Top = 106.083165890000000000
           Width = 148.855335380000000000
           Height = 16.281052310000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
-          Font.Height = -15
+          Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            'Total TTC :')
+            'Total TTC:')
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo28: TfrxMemoView
           AllowVectorExport = True
           Left = 565.929500000000000000
-          Top = 151.181200000000000000
+          Top = 106.083165890000000000
           Width = 151.181200000000000000
-          Height = 18.897650000000000000
+          Height = 16.281052310000000000
           DataSet = frxBonFacPDT
           DataSetName = 'frxBonFacPDB'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
-          Font.Height = -15
+          Font.Height = -13
           Font.Name = 'Helvetica LT Std'
-          Font.Style = []
+          Font.Style = [fsBold]
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
@@ -4380,34 +4425,34 @@ object BonFacPGestionF: TBonFacPGestionF
         object Memo29: TfrxMemoView
           AllowVectorExport = True
           Left = 415.748300000000000000
-          Top = 177.637910000000000000
+          Top = 126.254164280000000000
           Width = 148.855335380000000000
           Height = 16.281052310000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
-          Font.Height = -15
+          Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            'Timber Fiscal :')
+            'Timber Fiscal:')
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo30: TfrxMemoView
           AllowVectorExport = True
           Left = 565.929500000000000000
-          Top = 177.637910000000000000
+          Top = 126.254164280000000000
           Width = 151.181200000000000000
-          Height = 18.897650000000000000
+          Height = 16.281052310000000000
           DataSet = frxBonFacPDT
           DataSetName = 'frxBonFacPDB'
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
-          Font.Height = -15
+          Font.Height = -13
           Font.Name = 'Helvetica LT Std'
           Font.Style = []
           Frame.Typ = []
@@ -4419,7 +4464,7 @@ object BonFacPGestionF: TBonFacPGestionF
         end
         object Memo35: TfrxMemoView
           AllowVectorExport = True
-          Top = 20.409448818897600000
+          Top = 20.409448820000000000
           Width = 99.721445380000000000
           Height = 28.346456690000000000
           Font.Charset = DEFAULT_CHARSET
@@ -4543,7 +4588,7 @@ object BonFacPGestionF: TBonFacPGestionF
         object Memo15: TfrxMemoView
           AllowVectorExport = True
           Left = 19.923622550000000000
-          Top = 195.606370000000000000
+          Top = 197.606370000000000000
           Width = 128.243362760000000000
           Height = 15.639434480000000000
           Visible = False
@@ -4562,9 +4607,9 @@ object BonFacPGestionF: TBonFacPGestionF
         object MPRX: TfrxMemoView
           AllowVectorExport = True
           Left = 149.309522550000000000
-          Top = 195.179839970000000000
+          Top = 197.606370000000000000
           Width = 260.100382730000000000
-          Height = 16.492494550000000000
+          Height = 15.639434480000000000
           Visible = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -4599,9 +4644,9 @@ object BonFacPGestionF: TBonFacPGestionF
         object NCHeqRX: TfrxMemoView
           AllowVectorExport = True
           Left = 149.309522550000000000
-          Top = 212.975139970000000000
+          Top = 213.401670000000000000
           Width = 260.100382730000000000
-          Height = 16.492494550000000000
+          Height = 15.639434480000000000
           Visible = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -4619,7 +4664,7 @@ object BonFacPGestionF: TBonFacPGestionF
           Left = -2.753557450000000000
           Top = 193.732388430000000000
           Width = 268.346456690000000000
-          Height = 0.566931570000000000
+          Height = 0.377952755905512000
           Fill.BackColor = 13948116
           Fill.ForeColor = clNone
           Frame.Color = 13948116
@@ -4630,7 +4675,7 @@ object BonFacPGestionF: TBonFacPGestionF
           Left = -3.779334720000000000
           Top = 114.944960000000000000
           Width = 268.346456690000000000
-          Height = 0.566931570000000000
+          Height = 0.377952755905512000
           Fill.BackColor = 13948116
           Fill.ForeColor = clNone
           Frame.Color = 13948116

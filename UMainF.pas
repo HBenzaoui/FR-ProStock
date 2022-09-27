@@ -746,6 +746,9 @@ type
     FournisseurTablecountry_f: TWideStringField;
     FournisseurTablecapital_f: TFMTBCDField;
     FournisseurTabledoc_f: TBlobField;
+    Bonp_fac_listTabledetailp: TWideStringField;
+    Bonv_liv_listTabledetailp: TWideStringField;
+    Bonv_fac_listTabledetailp: TWideStringField;
     procedure ClientMainFBtnClick(Sender: TObject);
     procedure FourMainFBtnClick(Sender: TObject);
     procedure ProduitMainFBtnClick(Sender: TObject);

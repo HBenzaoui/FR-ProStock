@@ -555,6 +555,8 @@ type
     FastProduitTablenom_p: TWideStringField;
     MrkProduitTable: TFDQuery;
     FastProduitTablemrkp: TWideStringField;
+    Bonv_com_listTabledetailp: TWideStringField;
+    Bonv_ret_listTabledetailp: TWideStringField;
     procedure DataModuleCreate(Sender: TObject);
     procedure PZeroQCnotifCalcFields(DataSet: TDataSet);
     procedure PCloseZeroQCnotifCalcFields(DataSet: TDataSet);
