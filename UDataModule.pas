@@ -274,7 +274,7 @@ type
     Bona_com_listTabledateperiss_p: TDateField;
     Bona_com_listTabletva_p: TSmallintField;
     Bona_com_listTablenomp: TWideStringField;
-    o: TWideStringField;
+    Bona_com_listTablereferp: TWideStringField;
     BonComAListDataS: TDataSource;
     Bonv_comTable: TFDQuery;
     Bonv_comTablecode_bvcom: TIntegerField;
@@ -517,10 +517,9 @@ type
     AllProduitMovementQRmontant: TFMTBCDField;
     AllProduitMovementQRmarge: TFMTBCDField;
     Bonv_comTableclientbvcom: TWideStringField;
+    Bona_retTablefourtbaret: TWideStringField;
     Bonv_retTableclientbvret: TWideStringField;
-    Bona_retTableclientbaret: TWideStringField;
     Bona_comTablefourbacom: TWideStringField;
-    PertesTablenomp2: TWideStringField;
     PertesTablereferp: TWideStringField;
     ClientSituationQRdate_bvliv: TDateField;
     ClientSituationQRtime_bvliv: TTimeField;
@@ -555,8 +554,8 @@ type
     FastProduitTablenom_p: TWideStringField;
     MrkProduitTable: TFDQuery;
     FastProduitTablemrkp: TWideStringField;
-    Bonv_com_listTabledetailp: TWideStringField;
     Bonv_ret_listTabledetailp: TWideStringField;
+    Bonv_com_listTabledetailp: TWideStringField;
     procedure DataModuleCreate(Sender: TObject);
     procedure PZeroQCnotifCalcFields(DataSet: TDataSet);
     procedure PCloseZeroQCnotifCalcFields(DataSet: TDataSet);

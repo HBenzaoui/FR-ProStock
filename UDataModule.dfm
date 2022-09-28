@@ -1452,7 +1452,7 @@ object DataModuleF: TDataModuleF
       Size = 50
       Lookup = True
     end
-    object PertesTablenomp2: TWideStringField
+    object PertesTablenomp: TWideStringField
       FieldKind = fkLookup
       FieldName = 'nomp'
       LookupDataSet = MainForm.ProduitTable
@@ -3150,7 +3150,7 @@ object DataModuleF: TDataModuleF
       Origin = 'nomp'
       Size = 300
     end
-    object o: TWideStringField
+    object Bona_com_listTablereferp: TWideStringField
       AutoGenerateValue = arDefault
       FieldName = 'referp'
       Origin = 'referp'
@@ -3715,7 +3715,7 @@ object DataModuleF: TDataModuleF
       Precision = 64
       Size = 0
     end
-    object Bona_retTableclientbaret: TWideStringField
+    object Bona_retTablefourtbaret: TWideStringField
       FieldKind = fkLookup
       FieldName = 'fourbaret'
       LookupDataSet = MainForm.FournisseurTable
