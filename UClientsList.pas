@@ -970,9 +970,24 @@ begin
        if Ini.ReadBool('', 'Is EU',False) then
        begin
           ClientsListDBGridEh.FindFieldColumn('willaya_c').Title.Caption := 'Département';
+
+          ClientsListDBGridEh.FindFieldColumn('rc_c').Title.Caption := 'N° Siret';
+          ClientsListDBGridEh.FindFieldColumn('nif_c').Title.Caption := 'Code NAF/APE';
+          ClientsListDBGridEh.FindFieldColumn('nart_c').Title.Caption := 'N° TVA Intracom';
+          ClientsListDBGridEh.FindFieldColumn('nis_c').Title.Caption := 'R.C.S';
+          ClientsListDBGridEh.FindFieldColumn('nbank_c').Title.Caption := 'IBAN';
+          ClientsListDBGridEh.FindFieldColumn('rib_c').Title.Caption := 'BIC';
+
        end else
             begin
               ClientsListDBGridEh.FindFieldColumn('willaya_c').Title.Caption := 'Wilaya';
+
+              ClientsListDBGridEh.FindFieldColumn('rc_c').Title.Caption := 'R.C';
+              ClientsListDBGridEh.FindFieldColumn('nif_c').Title.Caption := 'N.I.F';
+              ClientsListDBGridEh.FindFieldColumn('nart_c').Title.Caption := 'N° ART';
+              ClientsListDBGridEh.FindFieldColumn('nis_c').Title.Caption := 'N.I.S';
+              ClientsListDBGridEh.FindFieldColumn('nbank_c').Title.Caption := 'Compte Bancaire';
+              ClientsListDBGridEh.FindFieldColumn('rib_c').Title.Caption := 'R.I.B';
             end;
 
        Ini.Free;

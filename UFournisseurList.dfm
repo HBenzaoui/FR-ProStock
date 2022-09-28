@@ -622,7 +622,7 @@ object FournisseurListF: TFournisseurListF
         Width = 130
         WordWrap = False
       end
-	  item
+      item
         Alignment = taCenter
         CellButtons = <>
         DynProps = <>
@@ -672,7 +672,7 @@ object FournisseurListF: TFournisseurListF
         Width = 130
         WordWrap = False
       end
-	  item
+      item
         Alignment = taCenter
         CellButtons = <>
         DynProps = <>
@@ -1834,6 +1834,7 @@ object FournisseurListF: TFournisseurListF
     OverwritePrompt = True
     DataOnly = False
     EmbeddedFonts = True
+    EmbedFontsIfProtected = False
     InteractiveFormsFontSubset = 'A-Z,a-z,0-9,#43-#47 '
     OpenAfterExport = True
     PrintOptimized = False
@@ -1907,7 +1908,7 @@ object FournisseurListF: TFournisseurListF
     Top = 304
   end
   object FourListfrxRprt: TfrxReport
-    Version = '6.9.3'
+    Version = '6.9.15'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -2009,6 +2010,10 @@ object FournisseurListF: TFournisseurListF
       MirrorMode = []
       object PageHeader1: TfrxPageHeader
         FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
         Frame.Typ = []
         Height = 84.826840000000000000
         Top = 18.897650000000000000
@@ -2192,6 +2197,10 @@ object FournisseurListF: TFournisseurListF
       end
       object PageFooter1: TfrxPageFooter
         FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
         Frame.Typ = []
         Height = 22.677180000000000000
         Top = 317.480520000000000000
@@ -2264,6 +2273,10 @@ object FournisseurListF: TFournisseurListF
       end
       object MasterData1: TfrxMasterData
         FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
         Frame.Typ = []
         Height = 21.236240000000000000
         Top = 166.299320000000000000
@@ -2416,6 +2429,10 @@ object FournisseurListF: TFournisseurListF
       end
       object Footer1: TfrxFooter
         FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
         Frame.Typ = []
         Height = 44.472480000000000000
         Top = 211.653680000000000000

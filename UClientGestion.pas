@@ -1544,8 +1544,12 @@ begin
    WilayaClientGLbl.Caption:='Département:';
    RCClientGLbl.Caption:='N° Siret:';
    NIFClientGLbl.Caption:='Code NAF/APE:';
-   NArtClientGLbl.Caption:='N° TVA intracom:';
+   NArtClientGLbl.Caption:='N° TVA Intracom:';
    NISClientGLbl.Caption:='RCS:';
+
+   NBankClientGLbl.Caption:= 'IBAN:';
+   RIBClientGLbl.Caption:= 'BIC:';
+
    ModeTarifClientGCbx.Items.BeginUpdate;
    ModeTarifClientGCbx.Items.Clear;
    ModeTarifClientGCbx.Items.Add('Particulier');
@@ -1563,13 +1567,17 @@ begin
         NArtClientGLbl.Caption:='N°Art:';
         NISClientGLbl.Caption:='NIS:';
 
+        NBankClientGLbl.Caption:= 'Compte Bancaire:';
+        RIBClientGLbl.Caption:= 'RIB:';
+
+        ModeTarifClientGCbx.Items.BeginUpdate;
         ModeTarifClientGCbx.Items.Clear;
         ModeTarifClientGCbx.Items.Add('Détaillant');
         ModeTarifClientGCbx.Items.Add('Revendeur');
         ModeTarifClientGCbx.Items.Add('Gros');
         ModeTarifClientGCbx.Items.Add('Autre 1');
         ModeTarifClientGCbx.Items.Add('Autre 2');
-        ;
+        ModeTarifClientGCbx.Items.EndUpdate;
         ModeTarifClientGCbx.ItemIndex:= 0;
       end;
 end;

@@ -1421,8 +1421,13 @@ begin
    WilayaFournisseurGLbl.Caption:='Département:';
    RCFournisseurGLbl.Caption:='N° Siret:';
    NIFFournisseurGLbl.Caption:='Code NAF/APE:';
-   NArtFournisseurGLbl.Caption:='N° TVA intracom:';
+   NArtFournisseurGLbl.Caption:='N° TVA Intracom:';
    NISFournisseurGLbl.Caption:='RCS:';
+
+   NBankFournisseurGLbl.Caption:= 'IBAN:';
+   RIBFournisseurGLbl.Caption:= 'BIC:';
+
+
   end else
       begin
         WilayaFournisseurGLbl.Caption:='Wilaya:';
@@ -1430,6 +1435,12 @@ begin
         NIFFournisseurGLbl.Caption:='NIF:';
         NArtFournisseurGLbl.Caption:='N°Art:';
         NISFournisseurGLbl.Caption:='NIS:';
+
+        NBankFournisseurGLbl.Caption:= 'Compte Bancaire:';
+        RIBFournisseurGLbl.Caption:= 'RIB:';
+
+
+
       end;
 
 end;

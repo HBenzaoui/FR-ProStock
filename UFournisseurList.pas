@@ -1060,9 +1060,21 @@ begin
         if Ini.ReadBool('', 'Is EU',False) then
         begin
           FournisseursListDBGridEh.FindFieldColumn('willaya_f').Title.Caption := 'Département';
+          FournisseursListDBGridEh.FindFieldColumn('rc_f').Title.Caption := 'N° Siret';
+          FournisseursListDBGridEh.FindFieldColumn('nif_f').Title.Caption := 'Code NAF/APE';
+          FournisseursListDBGridEh.FindFieldColumn('nart_f').Title.Caption := 'N° TVA Intracom';
+          FournisseursListDBGridEh.FindFieldColumn('nis_f').Title.Caption := 'R.C.S';
+          FournisseursListDBGridEh.FindFieldColumn('nbank_f').Title.Caption := 'IBAN';
+          FournisseursListDBGridEh.FindFieldColumn('rib_f').Title.Caption := 'BIC';
         end else
             begin
               FournisseursListDBGridEh.FindFieldColumn('willaya_f').Title.Caption := 'Wilaya';
+              FournisseursListDBGridEh.FindFieldColumn('rc_f').Title.Caption := 'R.C';
+              FournisseursListDBGridEh.FindFieldColumn('nif_f').Title.Caption := 'N.I.F';
+              FournisseursListDBGridEh.FindFieldColumn('nart_f').Title.Caption := 'N° ART';
+              FournisseursListDBGridEh.FindFieldColumn('nis_f').Title.Caption := 'N.I.S';
+              FournisseursListDBGridEh.FindFieldColumn('nbank_f').Title.Caption := 'Compte Bancaire';
+              FournisseursListDBGridEh.FindFieldColumn('rib_f').Title.Caption := 'R.I.B';
             end;
 
         Ini.Free;

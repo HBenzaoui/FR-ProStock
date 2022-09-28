@@ -3537,7 +3537,7 @@ begin
       ComNISLbl.Text:='RCS:';
 
       RCLbl.Memo.Text:='N° Siret:';
-      NArtLbl.Memo.Text:='N° TVA intracom:';
+      NArtLbl.Memo.Text:='N° TVA Intracom:';
       NIFLbl.Memo.Text:='Code NAF/APE:';
       NISLbl.Memo.Text:='RCS:';
 

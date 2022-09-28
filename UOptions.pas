@@ -922,7 +922,7 @@ begin
        WilayaCompanyOptionLbl.Caption:='Département:';
        RCCompanyGLbl.Caption:='N° Siret:';
        NIFCompanyGLbl.Caption:='Code NAF/APE:';
-       NArtCompanyGLbl.Caption:='N° TVA intracom:';
+       NArtCompanyGLbl.Caption:='N° TVA Intracom:';
        NISCompanyGLbl.Caption:='RCS:';
 
 

@@ -28,7 +28,7 @@ object ClientGestionF: TClientGestionF
     Top = 0
     Width = 516
     Height = 493
-    ActivePage = GeneralClientGTB
+    ActivePage = PlusInfoClientGTB
     Align = alClient
     DoubleBuffered = True
     Font.Charset = DEFAULT_CHARSET
