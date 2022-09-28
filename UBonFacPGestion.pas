@@ -3375,8 +3375,6 @@ begin
   str1[1] := Upcase(str1[1]);
   MoneyWordRX := BonFacPPListfrxRprt.FindObject('MoneyWordRX') as TfrxMemoView;
   MoneyWordRX.Text :=str1;// StringReplace(ObserBonLivGLbl.Caption, '%my_str%', 'new string', [rfReplaceAll]);
-  MoneyWordRX.Visible:= NOT IsEU;
-  TfrxMemoView(BonFacPPListfrxRprt.FindObject('Memo13')).Visible:= NOT IsEU;
 
   NumRX:= BonFacPPListfrxRprt.FindObject('NumRX') as TfrxMemoView;
   NumRX.Text:= NumBonFacVGEdt.Caption;
@@ -3558,7 +3556,7 @@ begin
       //Signature
       TfrxMemoView(BonFacPPListfrxRprt.FindObject('Memo14')).Top:=
       TfrxMemoView(BonFacPPListfrxRprt.FindObject('frxBonLivDTmontttc_bvliv')).Top +
-      TfrxMemoView(BonFacPPListfrxRprt.FindObject('frxBonLivDTmontttc_bvliv')).Height + 10;
+      TfrxMemoView(BonFacPPListfrxRprt.FindObject('frxBonLivDTmontttc_bvliv')).Height + 7;
 
       //Hiding TVA Table on the right until find solution for better place
       TfrxMemoView(BonFacPPListfrxRprt.FindObject('Memo35')).Visible:= False;
@@ -3567,6 +3565,37 @@ begin
       TfrxMemoView(BonFacPPListfrxRprt.FindObject('MontantTVA19')).Visible:= False;
       TfrxMemoView(BonFacPPListfrxRprt.FindObject('TauxTVA9')).Visible:= False;
       TfrxMemoView(BonFacPPListfrxRprt.FindObject('MontantTVA9')).Visible:= False;
+
+
+      //Hide money to word
+//      MoneyWordRX.Visible:= False;
+//      TfrxMemoView(BonFacPPListfrxRprt.FindObject('Memo13')).Visible:= False;
+
+
+//      TfrxMemoView(BonFacPPListfrxRprt.FindObject('Memo13')).Anchors:= [fraLeft,fraBottom ];
+      TfrxMemoView(BonFacPPListfrxRprt.FindObject('Memo13')).AllowHTMLTags:= True;
+      TfrxMemoView(BonFacPPListfrxRprt.FindObject('Memo13')).Font.Style:=[];
+      TfrxMemoView(BonFacPPListfrxRprt.FindObject('Memo13')).Font.Size:= 7;
+      TfrxMemoView(BonFacPPListfrxRprt.FindObject('Memo13')).StretchMode:= smMaxHeight;
+      TfrxMemoView(BonFacPPListfrxRprt.FindObject('Memo13')).Text:=
+      '<b>RESERVE DE PROPRIETE:</b> Nous nous réservons la propriété des marchandises jusqu''au complet paiement'
+      +' du prix par l''acheteur. Notre droit de revendication porte aussibien sur les marchandises que sur'
+      +' leur prix si elles ont déja été revendues (Loi du 12 mai 1980).';
+
+
+
+      MoneyWordRX.Top:=  TfrxMemoView(BonFacPPListfrxRprt.FindObject('Memo13')).Top;
+      MoneyWordRX.left:= TfrxMemoView(BonFacPPListfrxRprt.FindObject('Memo13')).Width + 28;
+      MoneyWordRX.Width:=  420;
+      MoneyWordRX.VAlign:=  vaTop;
+      MoneyWordRX.Font.Size:= 7;
+      MoneyWordRX.StretchMode:= smMaxHeight;
+      MoneyWordRX.Text:=
+      'Conformément aux articles L.441-3 et L.441-6 du Code de Commerce, tout professionnel en situation de retard'
+      +' de paiement est de plein droit débiteur à notre égard d''une indemnité forfaitaire pour frais de recouvrement'
+      +' d''un montant de 40 euros. Si les frais de recouvrement exposés sont supérieurs. nous nous réservons la faculté de demander une indemnisation'
+      +' complémentaire, sur justification.';
+
 
     end else
         begin
@@ -3582,8 +3611,8 @@ begin
 
 
           //Show Timber Fiscal if Not EU
-          TfrxMemoView(BonFacPPListfrxRprt.FindObject('Memo29')).Visible:= True;
-          TfrxMemoView(BonFacPPListfrxRprt.FindObject('Memo30')).Visible:= True;
+//          TfrxMemoView(BonFacPPListfrxRprt.FindObject('Memo29')).Visible:= True;
+//          TfrxMemoView(BonFacPPListfrxRprt.FindObject('Memo30')).Visible:= True;
 
         end;
 

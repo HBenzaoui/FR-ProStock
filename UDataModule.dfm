@@ -140,7 +140,7 @@ object DataModuleF: TDataModuleF
       'DriverID=pG')
     LoginPrompt = False
     Left = 69
-    Top = 492
+    Top = 494
   end
   object ToatalVerMonthVCTR: TFDQuery
     Connection = GstockdcConnection02

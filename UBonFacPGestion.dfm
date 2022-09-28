@@ -2996,7 +2996,7 @@ object BonFacPGestionF: TBonFacPGestionF
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 42576.399521435200000000
-    ReportOptions.LastChange = 44831.481512349540000000
+    ReportOptions.LastChange = 44831.709367268520000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       ''
@@ -3101,7 +3101,7 @@ object BonFacPGestionF: TBonFacPGestionF
         FillGap.Bottom = 0
         FillGap.Right = 0
         Frame.Typ = []
-        Height = 21.057381430000000000
+        Height = 20.057381430000000000
         Top = 823.937540000000000000
         Width = 718.110700000000000000
         object Memo7: TfrxMemoView
@@ -3284,8 +3284,8 @@ object BonFacPGestionF: TBonFacPGestionF
         end
         object Memo20: TfrxMemoView
           AllowVectorExport = True
-          Left = 350.338590000000000000
-          Top = 71.582677170000000000
+          Left = 393.773982070000000000
+          Top = 79.582677170000000000
           Width = 52.652762760000000000
           Height = 19.418964480000000000
           Font.Charset = DEFAULT_CHARSET
@@ -3302,8 +3302,8 @@ object BonFacPGestionF: TBonFacPGestionF
         end
         object Memo21: TfrxMemoView
           AllowVectorExport = True
-          Left = 350.338590000000000000
-          Top = 38.031540000000000000
+          Left = 393.773982070000000000
+          Top = 46.031540000000000000
           Width = 44.667172730000000000
           Height = 27.968503940000000000
           Font.Charset = DEFAULT_CHARSET
@@ -3319,9 +3319,9 @@ object BonFacPGestionF: TBonFacPGestionF
         end
         object NumRX: TfrxMemoView
           AllowVectorExport = True
-          Left = 403.811070000000000000
-          Top = 38.031540000000000000
-          Width = 309.234272730000000000
+          Left = 444.709472790000000000
+          Top = 46.031540000000000000
+          Width = 543.565132730000000000
           Height = 27.968503940000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = 4144959
@@ -3336,9 +3336,9 @@ object BonFacPGestionF: TBonFacPGestionF
         end
         object DateRX: TfrxMemoView
           AllowVectorExport = True
-          Left = 404.811070000000000000
-          Top = 73.472442170000000000
-          Width = 309.660802760000000000
+          Left = 444.709472790000000000
+          Top = 81.472442170000000000
+          Width = 271.438972730000000000
           Height = 15.639434480000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -3441,7 +3441,7 @@ object BonFacPGestionF: TBonFacPGestionF
         object RC: TfrxMemoView
           AllowVectorExport = True
           Left = 527.953310000000000000
-          Top = 254.620594000000000000
+          Top = 246.061534000000000000
           Width = 188.715842760000000000
           Height = 18.897637800000000000
           Font.Charset = DEFAULT_CHARSET
@@ -3457,7 +3457,7 @@ object BonFacPGestionF: TBonFacPGestionF
         object NArt: TfrxMemoView
           AllowVectorExport = True
           Left = 527.953310000000000000
-          Top = 274.778070250000000000
+          Top = 269.072030246666700000
           Width = 188.715842760000000000
           Height = 18.897637800000000000
           Font.Charset = DEFAULT_CHARSET
@@ -3473,7 +3473,7 @@ object BonFacPGestionF: TBonFacPGestionF
         object NIF: TfrxMemoView
           AllowVectorExport = True
           Left = 527.953310000000000000
-          Top = 294.935546490000000000
+          Top = 292.082526493333300000
           Width = 188.715842760000000000
           Height = 18.897637800000000000
           Font.Charset = DEFAULT_CHARSET
@@ -3505,7 +3505,7 @@ object BonFacPGestionF: TBonFacPGestionF
         object RCLbl: TfrxMemoView
           AllowVectorExport = True
           Left = 408.189240000000000000
-          Top = 254.620594000000000000
+          Top = 246.061534000000000000
           Width = 120.684302760000000000
           Height = 18.897637800000000000
           Visible = False
@@ -3525,7 +3525,7 @@ object BonFacPGestionF: TBonFacPGestionF
         object NArtLbl: TfrxMemoView
           AllowVectorExport = True
           Left = 408.189240000000000000
-          Top = 274.778070250000000000
+          Top = 269.072030246666700000
           Width = 120.684302760000000000
           Height = 18.897637800000000000
           Visible = False
@@ -3545,7 +3545,7 @@ object BonFacPGestionF: TBonFacPGestionF
         object NIFLbl: TfrxMemoView
           AllowVectorExport = True
           Left = 408.189240000000000000
-          Top = 294.935546490000000000
+          Top = 292.082526493333300000
           Width = 120.684302760000000000
           Height = 18.897637800000000000
           Visible = False
@@ -3658,9 +3658,9 @@ object BonFacPGestionF: TBonFacPGestionF
         end
         object Memo19: TfrxMemoView
           AllowVectorExport = True
-          Left = 350.338590000000000000
-          Top = 5.897650000000000000
-          Width = 365.927222730000000000
+          Left = 393.773982070000000000
+          Top = 13.897650000000000000
+          Width = 324.352392730000000000
           Height = 27.831084550000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = 4144959
@@ -3707,7 +3707,7 @@ object BonFacPGestionF: TBonFacPGestionF
         object ComNArt: TfrxMemoView
           AllowVectorExport = True
           Left = 491.078242760000000000
-          Top = 144.426551080000000000
+          Top = 150.095846085000000000
           Width = 222.731612760000000000
           Height = 15.118110240000000000
           Font.Charset = DEFAULT_CHARSET
@@ -3723,7 +3723,7 @@ object BonFacPGestionF: TBonFacPGestionF
         object ComNIF: TfrxMemoView
           AllowVectorExport = True
           Left = 491.078242760000000000
-          Top = 126.147901540000000000
+          Top = 128.982549037500000000
           Width = 222.731612760000000000
           Height = 15.118110240000000000
           Font.Charset = DEFAULT_CHARSET
@@ -3739,7 +3739,7 @@ object BonFacPGestionF: TBonFacPGestionF
         object ComNIS: TfrxMemoView
           AllowVectorExport = True
           Left = 491.078242760000000000
-          Top = 162.705200630000000000
+          Top = 171.209143132500000000
           Width = 222.731612760000000000
           Height = 15.118110240000000000
           Font.Charset = DEFAULT_CHARSET
@@ -3777,7 +3777,7 @@ object BonFacPGestionF: TBonFacPGestionF
           Anchors = [fraTop, fraRight]
           AllowVectorExport = True
           Left = 355.275820000000000000
-          Top = 144.426551080000000000
+          Top = 150.095846085000000000
           Width = 135.802422760000000000
           Height = 15.118110240000000000
           Visible = False
@@ -3799,7 +3799,7 @@ object BonFacPGestionF: TBonFacPGestionF
           Anchors = [fraTop, fraRight]
           AllowVectorExport = True
           Left = 355.275820000000000000
-          Top = 126.147901540000000000
+          Top = 128.982549037500000000
           Width = 135.802422760000000000
           Height = 15.118110240000000000
           Visible = False
@@ -3821,7 +3821,7 @@ object BonFacPGestionF: TBonFacPGestionF
           Anchors = [fraTop, fraRight]
           AllowVectorExport = True
           Left = 355.275820000000000000
-          Top = 162.705200630000000000
+          Top = 171.209143132500000000
           Width = 135.802422760000000000
           Height = 15.118110240000000000
           Visible = False
@@ -3842,7 +3842,7 @@ object BonFacPGestionF: TBonFacPGestionF
         object ComRIB: TfrxMemoView
           AllowVectorExport = True
           Left = 491.078242760000000000
-          Top = 180.983850180000000000
+          Top = 192.322440180000000000
           Width = 222.731612760000000000
           Height = 15.118110240000000000
           Font.Charset = DEFAULT_CHARSET
@@ -3858,7 +3858,7 @@ object BonFacPGestionF: TBonFacPGestionF
         object ComRIBLbl: TfrxMemoView
           AllowVectorExport = True
           Left = 355.275820000000000000
-          Top = 180.983850180000000000
+          Top = 192.322440180000000000
           Width = 135.802422760000000000
           Height = 15.118110240000000000
           Visible = False
@@ -3910,6 +3910,28 @@ object BonFacPGestionF: TBonFacPGestionF
             'Activity:')
           ParentFont = False
           WordWrap = False
+        end
+        object BarCode1: TfrxBarCodeView
+          AllowVectorExport = True
+          Left = 399.773982070000000000
+          Top = -1.000000000000000000
+          Width = 117.795300000000000000
+          Height = 15.118120000000000000
+          AutoSize = False
+          BarType = bcCode128
+          Frame.Typ = []
+          Rotation = 0
+          ShowText = False
+          TestLine = False
+          Text = '12345678'
+          WideBarRatio = 2.000000000000000000
+          Zoom = 1.472441250000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = []
+          ColorBar = 4144959
         end
       end
       object MasterData1: TfrxMasterData
@@ -4348,7 +4370,7 @@ object BonFacPGestionF: TBonFacPGestionF
           AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 234.414998280000000000
-          Width = 226.511142760000000000
+          Width = 271.865502760000000000
           Height = 15.639434480000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
