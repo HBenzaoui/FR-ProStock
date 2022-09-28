@@ -26,8 +26,8 @@ object FSplashPrinting: TFSplashPrinting
   object NameAddCompteSLbl: TLabel
     Left = 56
     Top = 112
-    Width = 83
-    Height = 18
+    Width = 86
+    Height = 19
     Caption = 'Imprimante:'
     Color = 4207405
     Font.Charset = DEFAULT_CHARSET
@@ -54,7 +54,7 @@ object FSplashPrinting: TFSplashPrinting
   object CompteAddCompteSLbl: TLabel
     Left = 87
     Top = 161
-    Width = 52
+    Width = 54
     Height = 18
     Caption = 'Format:'
     Color = 4207405
@@ -72,7 +72,7 @@ object FSplashPrinting: TFSplashPrinting
     Left = 103
     Top = 64
     Width = 36
-    Height = 18
+    Height = 19
     Caption = 'Titre:'
     Color = 4207405
     Font.Charset = DEFAULT_CHARSET
@@ -87,8 +87,8 @@ object FSplashPrinting: TFSplashPrinting
   object Label2: TLabel
     Left = 43
     Top = 209
-    Width = 96
-    Height = 18
+    Width = 99
+    Height = 19
     Caption = 'Prix de vente:'
     Color = 4207405
     Font.Charset = DEFAULT_CHARSET
@@ -337,7 +337,7 @@ object FSplashPrinting: TFSplashPrinting
     Value = 1
   end
   object PrintTicketfrxRprt: TfrxReport
-    Version = '6.9.3'
+    Version = '6.9.15'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     Preview = PrintTicketfrxPreview
@@ -547,7 +547,7 @@ object FSplashPrinting: TFSplashPrinting
     Top = 56
   end
   object frxReport2: TfrxReport
-    Version = '6.9.3'
+    Version = '6.9.15'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     Preview = PrintTicketfrxPreview
@@ -667,7 +667,7 @@ object FSplashPrinting: TFSplashPrinting
     end
   end
   object frxReport1: TfrxReport
-    Version = '6.9.3'
+    Version = '6.9.15'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     Preview = PrintTicketfrxPreview
@@ -809,7 +809,7 @@ object FSplashPrinting: TFSplashPrinting
     end
   end
   object frxReport3: TfrxReport
-    Version = '6.9.3'
+    Version = '6.9.15'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     Preview = PrintTicketfrxPreview
@@ -939,7 +939,7 @@ object FSplashPrinting: TFSplashPrinting
     end
   end
   object frxReport4: TfrxReport
-    Version = '6.9.3'
+    Version = '6.9.15'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     Preview = PrintTicketfrxPreview
@@ -1047,7 +1047,7 @@ object FSplashPrinting: TFSplashPrinting
     end
   end
   object frxReport5: TfrxReport
-    Version = '6.9.3'
+    Version = '6.9.15'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     Preview = PrintTicketfrxPreview
@@ -1183,7 +1183,7 @@ object FSplashPrinting: TFSplashPrinting
     end
   end
   object frxReport47X30: TfrxReport
-    Version = '6.9.3'
+    Version = '6.9.15'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     Preview = PrintTicketfrxPreview
@@ -1350,7 +1350,7 @@ object FSplashPrinting: TFSplashPrinting
     end
   end
   object frxReport47X30s: TfrxReport
-    Version = '6.9.3'
+    Version = '6.9.15'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     Preview = PrintTicketfrxPreview
@@ -1495,7 +1495,7 @@ object FSplashPrinting: TFSplashPrinting
     end
   end
   object frxReport58X45p: TfrxReport
-    Version = '6.9.3'
+    Version = '6.9.15'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     Preview = PrintTicketfrxPreview

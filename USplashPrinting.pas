@@ -50,6 +50,7 @@ type
     procedure FormShow(Sender: TObject);
   private
     { Private declarations }
+
   public
     { Public declarations }
   end;
@@ -63,6 +64,10 @@ uses IniFiles,
   UClientGestion, Printers, UMainF, UOptions;
 
 {$R *.dfm}
+
+var
+Ini: TIniFile;
+
 
  procedure SetDefaultPrinter(NewDefPrinter: string);
 var
@@ -215,7 +220,42 @@ end;
 
 procedure TFSplashPrinting.FormShow(Sender: TObject);
 begin
-PrixFPrintingCbxChange(Sender);
+  if Ini.ReadBool('', 'Is EU',False) then
+  begin
+    //Here we add France data
+    PrixFPrintingCbx.Items.BeginUpdate;
+    PrixFPrintingCbx.Items.Clear;
+    PrixFPrintingCbx.Items.Add('Particulier');
+    PrixFPrintingCbx.Items.Add('Professional');
+    PrixFPrintingCbx.Items.Add('Société');
+    PrixFPrintingCbx.Items.Add('Catégorie 1');
+    PrixFPrintingCbx.Items.Add('Catégorie 2');
+    PrixFPrintingCbx.Items.EndUpdate;
+  //    PrixFPrintingCbx.ItemIndex:= 0;
+  end else
+   begin
+      PrixFPrintingCbx.Items.BeginUpdate;
+      PrixFPrintingCbx.Items.Clear;
+      PrixFPrintingCbx.Items.Add('Détaillant');
+      PrixFPrintingCbx.Items.Add('Revendeur');
+      PrixFPrintingCbx.Items.Add('Gros');
+      PrixFPrintingCbx.Items.Add('Autre 1');
+      PrixFPrintingCbx.Items.Add('Autre 2');
+      PrixFPrintingCbx.Items.EndUpdate;
+  //      PrixFPrintingCbx.ItemIndex:= 0;
+   end;
+  PrintersListFPrintingCbx.ItemIndex := Ini.ReadInteger('', 'Printer Barcode',0);
+  FormatFPrintingCbx.ItemIndex := Ini.ReadInteger('', 'Format Barcode',0);
+  PrixFPrintingCbx.ItemIndex := Ini.ReadInteger('', 'Prix de Vente',0);
+
+  FormatFPrintingCbxChange(Sender);
+
+  TitleFPrintingEdt.Text:= MainForm.CompanyTable.FieldByName('nom_comp').AsString;
+
+  PrixFPrintingCbxChange(Sender);
+
+
+
 end;
 
 procedure TFSplashPrinting.FormatFPrintingCbxChange(Sender: TObject);
@@ -819,8 +859,6 @@ begin
 end;
 
 procedure TFSplashPrinting.FormCreate(Sender: TObject);
-var
-  Ini: TMemIniFile;
 begin
 
   Height := 291;
@@ -829,27 +867,16 @@ begin
 
   PrintersListFPrintingCbx.Items.Assign(Printer.Printers);
 
-   Ini := TMemIniFile.Create(ChangeFileExt(Application.ExeName,'.ini')) ;
-   try
-    PrintersListFPrintingCbx.ItemIndex := Ini.ReadInteger('', 'Printer Barcode',0);
-    FormatFPrintingCbx.ItemIndex := Ini.ReadInteger('', 'Format Barcode',0);
-    PrixFPrintingCbx.ItemIndex := Ini.ReadInteger('', 'Prix de Vente',0);
+  Ini := TIniFile.Create(ChangeFileExt(Application.ExeName,'.ini'));
 
-   finally
-   ini.UpdateFile;
-    Ini.Free;
-   end;
-
-
-       FormatFPrintingCbxChange(Sender);
-
-     TitleFPrintingEdt.Text:= MainForm.CompanyTable.FieldByName('nom_comp').AsString;
 
 end;
 
 procedure TFSplashPrinting.FormDestroy(Sender: TObject);
 begin
 NormalForms;
+
+Ini.free
 end;
 
 end.
